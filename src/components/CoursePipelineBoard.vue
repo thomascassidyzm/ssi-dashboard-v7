@@ -436,7 +436,7 @@ function cycleLegacyStatus(course) {
 <style scoped>
 .pipeline-board {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
-  background: var(--color-shadow, #1e293b);
+  background: var(--color-shadow, var(--surface));
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -449,8 +449,8 @@ function cycleLegacyStatus(course) {
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1.25rem;
-  border-bottom: 1px solid var(--color-graphite, #475569);
-  background: var(--color-slate, #334155);
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
+  background: var(--color-slate, var(--surface-2));
   flex-wrap: wrap;
   gap: 0.5rem;
 }
@@ -463,7 +463,7 @@ function cycleLegacyStatus(course) {
 
 .course-count {
   font-size: 0.9375rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -474,7 +474,7 @@ function cycleLegacyStatus(course) {
 .clear-all {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.75rem;
   font-family: inherit;
   padding: 0.125rem 0.5rem;
@@ -485,7 +485,7 @@ function cycleLegacyStatus(course) {
 
 .clear-all:hover {
   background: rgba(255, 255, 255, 0.15);
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 /* Sort buttons */
@@ -506,7 +506,7 @@ function cycleLegacyStatus(course) {
   background: none;
   border: none;
   border-radius: 4px;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.75rem;
   font-family: inherit;
   font-weight: 500;
@@ -517,12 +517,12 @@ function cycleLegacyStatus(course) {
 
 .sort-btn:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .sort-btn.active {
   background: rgba(255, 255, 255, 0.12);
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .sort-arrow {
@@ -580,7 +580,7 @@ function cycleLegacyStatus(course) {
 .chip-target.active {
   background: rgba(255, 166, 48, 0.18);
   border-color: rgba(255, 166, 48, 0.5);
-  color: #ffa630;
+  color: var(--accent);
 }
 
 /* Known — blue/cyan */
@@ -642,8 +642,8 @@ function cycleLegacyStatus(course) {
   min-width: 180px;
   max-height: 320px;
   overflow-y: auto;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
   z-index: 100;
@@ -659,7 +659,7 @@ function cycleLegacyStatus(course) {
   background: none;
   border: none;
   border-radius: 4px;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.8125rem;
   font-family: inherit;
   cursor: pointer;
@@ -669,13 +669,13 @@ function cycleLegacyStatus(course) {
 
 .dropdown-option:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 /* Selected option inherits parent chip color */
 .dropdown-target .dropdown-option.selected {
   background: rgba(255, 166, 48, 0.15);
-  color: #ffa630;
+  color: var(--accent);
 }
 .dropdown-known .dropdown-option.selected {
   background: rgba(56, 189, 248, 0.15);
@@ -717,18 +717,18 @@ function cycleLegacyStatus(course) {
   gap: 0.5rem;
   padding: 0.25rem 0.625rem;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 6px;
   transition: all 0.2s;
 }
 
 .search-box.focused {
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
   box-shadow: 0 0 0 2px rgba(255, 166, 48, 0.15);
 }
 
 .search-icon {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   flex-shrink: 0;
 }
 
@@ -736,14 +736,14 @@ function cycleLegacyStatus(course) {
   background: transparent;
   border: none;
   outline: none;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   font-size: 0.875rem;
   font-family: inherit;
   width: 140px;
 }
 
 .search-box input::placeholder {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 /* Course grid */
@@ -796,7 +796,7 @@ function cycleLegacyStatus(course) {
 .course-name-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
   line-height: 1.25;
   white-space: nowrap;
   overflow: hidden;
@@ -808,7 +808,7 @@ function cycleLegacyStatus(course) {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.6875rem;
   font-weight: 400;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   letter-spacing: 0.01em;
   opacity: 0.6;
 }
@@ -839,14 +839,14 @@ function cycleLegacyStatus(course) {
 
 .app-badge.inactive:hover {
   border-color: rgba(255, 255, 255, 0.15);
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 /* New App colors */
 .app-badge.status-testing {
   background: rgba(148, 163, 184, 0.15);
   border-color: rgba(148, 163, 184, 0.3);
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .app-badge.status-beta {
@@ -865,7 +865,7 @@ function cycleLegacyStatus(course) {
 .app-badge.legacy.status-testing {
   background: rgba(148, 163, 184, 0.1);
   border-color: rgba(6, 182, 212, 0.25);
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .app-badge.legacy.status-beta {
@@ -890,7 +890,7 @@ function cycleLegacyStatus(course) {
   align-items: center;
   justify-content: center;
   padding: 3rem 1rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .empty-text {
@@ -904,8 +904,8 @@ function cycleLegacyStatus(course) {
   justify-content: center;
   gap: 2rem;
   padding: 0.625rem 1.25rem;
-  background: var(--color-slate, #334155);
-  border-top: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border-top: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .footer-stat {
@@ -919,13 +919,13 @@ function cycleLegacyStatus(course) {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   font-variant-numeric: tabular-nums;
 }
 
 .footer-label {
   font-size: 0.6875rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -937,7 +937,7 @@ function cycleLegacyStatus(course) {
 .footer-divider {
   width: 1px;
   height: 24px;
-  background: var(--color-graphite, #475569);
+  background: var(--color-graphite, var(--surface-3));
 }
 
 /* Row transitions */
@@ -1015,5 +1015,121 @@ function cycleLegacyStatus(course) {
   .filter-chips {
     flex-wrap: wrap;
   }
+}
+
+/* ============================================================
+   LIGHT MODE OVERRIDES
+   Dark mode is the default above and is untouched by this block.
+   The component leans on rgba(255,255,255,X) white overlays and
+   neon literal colours that are designed for dark surfaces; on
+   light surfaces those vanish or fail WCAG contrast. We re-derive
+   each with theme-aware tokens / sufficiently-dark hues, scoped to
+   [data-theme="light"] so dark stays exactly as-is.
+   ============================================================ */
+:root[data-theme="light"] .clear-all {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+:root[data-theme="light"] .clear-all:hover {
+  background: var(--surface-3);
+}
+
+:root[data-theme="light"] .sort-buttons {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+:root[data-theme="light"] .sort-btn:hover {
+  background: var(--surface-3);
+}
+:root[data-theme="light"] .sort-btn.active {
+  background: var(--surface-3);
+}
+
+/* Filter chips: keep hue identity but darken text to pass AA on the
+   light tinted fills (white tints alone left text ~2:1). */
+:root[data-theme="light"] .chip-target {
+  color: #92400e; /* amber-800, 6.4:1 on chip fill */
+}
+:root[data-theme="light"] .chip-known {
+  color: #1d4ed8; /* blue-700, ~6.5:1 */
+}
+:root[data-theme="light"] .chip-known.active {
+  color: #1d4ed8;
+}
+:root[data-theme="light"] .chip-app {
+  color: #047857; /* emerald-700 */
+}
+:root[data-theme="light"] .chip-app.active {
+  color: #047857;
+}
+
+:root[data-theme="light"] .filter-chip.open {
+  border-color: var(--accent);
+}
+
+:root[data-theme="light"] .filter-dropdown {
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+}
+:root[data-theme="light"] .dropdown-option:hover {
+  background: var(--surface-3);
+}
+:root[data-theme="light"] .dropdown-known .dropdown-option.selected {
+  color: #1d4ed8;
+}
+:root[data-theme="light"] .dropdown-app .dropdown-option.selected {
+  color: #047857;
+}
+
+:root[data-theme="light"] .search-box {
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+/* Cards: white-on-white hover overlay is invisible on a light board;
+   use a visible surface step plus a real border for separation. */
+:root[data-theme="light"] .course-card:hover,
+:root[data-theme="light"] .course-card.active {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+/* App badges: inactive uses white overlays (invisible) and the active
+   states use neon literals that fail AA on white fills. */
+:root[data-theme="light"] .app-badge.inactive {
+  border-color: var(--line);
+  color: var(--faint);
+}
+:root[data-theme="light"] .app-badge.inactive:hover {
+  border-color: var(--muted);
+  color: var(--muted);
+}
+:root[data-theme="light"] .app-badge.status-testing {
+  background: rgba(71, 85, 105, 0.12);
+  border-color: rgba(71, 85, 105, 0.35);
+  color: var(--muted);
+}
+:root[data-theme="light"] .app-badge.status-beta {
+  background: rgba(180, 83, 9, 0.12);
+  border-color: rgba(180, 83, 9, 0.4);
+  color: #b45309; /* amber-700, 5.0:1 */
+}
+:root[data-theme="light"] .app-badge.status-live {
+  background: rgba(4, 120, 87, 0.12);
+  border-color: rgba(4, 120, 87, 0.4);
+  color: #047857; /* emerald-700, 5.5:1 */
+}
+:root[data-theme="light"] .app-badge.legacy.status-beta {
+  background: rgba(14, 116, 144, 0.1);
+  border-color: rgba(14, 116, 144, 0.4);
+  color: #0e7490; /* cyan-700, 5.4:1 */
+}
+:root[data-theme="light"] .app-badge.legacy.status-live {
+  background: rgba(14, 116, 144, 0.14);
+  border-color: rgba(14, 116, 144, 0.45);
+  color: #0e7490;
+}
+
+:root[data-theme="light"] .footer-stat.highlight .footer-value {
+  color: #047857; /* emerald-700 instead of neon #10b981 */
 }
 </style>

@@ -1,23 +1,23 @@
 <template>
-  <div class="min-h-screen bg-slate-900 flex items-center justify-center p-8">
+  <div class="min-h-screen bg-canvas flex items-center justify-center p-8">
     <div class="text-center">
       <div v-if="loading" class="space-y-4">
         <div class="text-6xl animate-pulse">🔐</div>
-        <p class="text-slate-400">Verifying your login...</p>
+        <p class="text-muted">Verifying your login...</p>
       </div>
 
       <div v-else-if="error" class="space-y-4">
         <div class="text-6xl">❌</div>
-        <p class="text-red-400">{{ error }}</p>
-        <router-link to="/login" class="text-emerald-400 hover:underline">
+        <p class="text-danger">{{ error }}</p>
+        <router-link to="/login" class="text-accent-2 hover:underline">
           Try again
         </router-link>
       </div>
 
       <div v-else class="space-y-4">
         <div class="text-6xl">✅</div>
-        <p class="text-emerald-400">Logged in successfully!</p>
-        <p class="text-slate-400">Redirecting...</p>
+        <p class="text-accent-2">Logged in successfully!</p>
+        <p class="text-muted">Redirecting...</p>
       </div>
     </div>
   </div>

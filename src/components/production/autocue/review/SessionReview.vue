@@ -87,8 +87,8 @@ const stats = computed(() => {
 }
 
 .review-header {
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -98,14 +98,14 @@ const stats = computed(() => {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0 0 0.5rem 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .review-subtitle {
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin: 0 0 1.5rem 0;
 }
 
@@ -118,7 +118,8 @@ const stats = computed(() => {
   flex: 1;
   text-align: center;
   padding: 1rem;
-  background: var(--color-void, #0f172a);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--line);
   border-radius: 8px;
 }
 
@@ -136,7 +137,7 @@ const stats = computed(() => {
 }
 
 .summary-value.medium {
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
   text-shadow: 0 0 20px rgba(255, 166, 48, 0.5);
 }
 
@@ -147,15 +148,15 @@ const stats = computed(() => {
 
 .summary-label {
   font-size: 0.85rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 /* Batch Actions */
 .batch-actions {
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 1rem;
   margin-bottom: 1.5rem;
@@ -165,9 +166,9 @@ const stats = computed(() => {
 
 .batch-btn {
   flex: 1;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
-  color: var(--color-paper, #f7f7f2);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--line);
+  color: var(--color-paper, var(--ink));
   padding: 0.75rem 1rem;
   border-radius: 8px;
   font-family: 'Josefin Sans', sans-serif;
@@ -188,7 +189,7 @@ const stats = computed(() => {
 }
 
 .batch-btn:hover {
-  background: var(--color-graphite, #475569);
+  background: var(--color-graphite, var(--surface-3));
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
@@ -208,13 +209,13 @@ const stats = computed(() => {
   gap: 1rem;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--color-graphite, #475569);
+  border-top: 1px solid var(--line);
 }
 
 .control-btn {
-  background: var(--color-slate, #334155);
-  border: 2px solid var(--color-graphite, #475569);
-  color: var(--color-paper, #f7f7f2);
+  background: var(--color-slate, var(--surface-2));
+  border: 2px solid var(--line);
+  color: var(--color-paper, var(--ink));
   padding: 0.75rem 1.5rem;
   border-radius: 12px;
   font-family: 'Josefin Sans', sans-serif;
@@ -232,13 +233,13 @@ const stats = computed(() => {
 .control-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
 }
 
 .control-btn.success {
   background: linear-gradient(135deg, var(--color-emerald, #06ffa5), #04cc84);
   border-color: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0f172a);
+  color: var(--color-void, var(--canvas));
 }
 
 .control-btn.success:hover {

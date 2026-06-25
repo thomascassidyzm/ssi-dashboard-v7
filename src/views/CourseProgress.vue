@@ -1,17 +1,17 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100">
+  <div class="min-h-screen bg-canvas text-ink">
     <!-- Header -->
-    <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
+    <header class="bg-surface/50 border-b border-line backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="flex items-center justify-between">
           <div>
-            <router-link to="/" class="text-emerald-400 hover:text-emerald-300 text-sm mb-2 inline-block">
+            <router-link to="/" class="text-accent-2 hover:opacity-80 text-sm mb-2 inline-block">
               ← Back to Dashboard
             </router-link>
-            <h1 class="text-3xl font-bold text-emerald-400">
+            <h1 class="text-3xl font-bold text-accent-2">
               Course Progress: {{ courseCode }}
             </h1>
-            <p class="mt-2 text-slate-400" v-if="progress">
+            <p class="mt-2 text-muted" v-if="progress">
               Status: <span :class="statusColor">{{ progress.overallStatus }}</span>
             </p>
           </div>
@@ -24,18 +24,18 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
       <!-- Loading State -->
-      <div v-if="loading && !progress" class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8 text-center">
+      <div v-if="loading && !progress" class="bg-surface rounded-lg border border-line shadow-sm p-8 text-center">
         <div class="animate-pulse">
           <div class="text-4xl mb-4">⏳</div>
-          <p class="text-slate-300">Loading progress...</p>
+          <p class="text-ink">Loading progress...</p>
         </div>
       </div>
 
       <!-- Error State -->
-      <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
-        <h3 class="text-xl font-semibold text-red-400 mb-2">Error Loading Progress</h3>
-        <p class="text-red-300 mb-2">{{ error }}</p>
-        <p class="text-xs text-red-400/60">Trying to reach: {{ apiUrl }}</p>
+      <div v-else-if="error" class="error-panel border rounded-lg p-6">
+        <h3 class="text-xl font-semibold text-danger mb-2">Error Loading Progress</h3>
+        <p class="text-danger mb-2">{{ error }}</p>
+        <p class="text-xs text-danger">Trying to reach: {{ apiUrl }}</p>
         <button @click="fetchProgress" class="mt-4 px-4 py-2 bg-red-600 hover:bg-red-500 rounded text-white">
           Retry
         </button>
@@ -64,16 +64,16 @@
         />
 
         <!-- Completion Card (shown when complete) -->
-        <div v-if="progress.overallStatus === 'complete'" class="bg-slate-800/50 rounded-lg border border-emerald-500/30 p-8">
+        <div v-if="progress.overallStatus === 'complete'" class="bg-surface rounded-lg border border-line shadow-sm p-8">
           <div class="flex items-center gap-4 mb-4">
             <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
-              <svg class="w-6 h-6 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-6 h-6 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
               </svg>
             </div>
             <div>
-              <h2 class="text-2xl font-semibold text-emerald-400">Course Ready!</h2>
-              <p class="text-slate-400">{{ courseCode }} generated successfully</p>
+              <h2 class="text-2xl font-semibold text-accent-2">Course Ready!</h2>
+              <p class="text-muted">{{ courseCode }} generated successfully</p>
             </div>
           </div>
           <router-link
@@ -89,7 +89,7 @@
 
         <!-- Technical Details (collapsible) -->
         <details class="group" open>
-          <summary class="cursor-pointer text-slate-400 hover:text-slate-300 text-sm mb-4 flex items-center gap-2">
+          <summary class="cursor-pointer text-muted hover:text-ink text-sm mb-4 flex items-center gap-2">
             <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
@@ -132,16 +132,16 @@
         </div>
 
         <!-- Live Logs -->
-        <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-6">
-          <h2 class="text-xl font-semibold text-slate-100 mb-4">Live Logs</h2>
-          <div class="bg-slate-900/80 rounded p-4 font-mono text-sm max-h-96 overflow-y-auto">
+        <div class="bg-surface rounded-lg border border-line shadow-sm p-6">
+          <h2 class="text-xl font-semibold text-ink mb-4">Live Logs</h2>
+          <div class="bg-surface-2 border border-line rounded p-4 font-mono text-sm max-h-96 overflow-y-auto">
             <div v-if="progress.recentLogs && progress.recentLogs.length > 0" class="space-y-1">
               <div v-for="(log, index) in progress.recentLogs" :key="index" class="flex gap-3">
-                <span class="text-slate-500">{{ formatLogTime(log.time) }}</span>
+                <span class="text-faint">{{ formatLogTime(log.time) }}</span>
                 <span :class="logLevelColor(log.level)">{{ log.message }}</span>
               </div>
             </div>
-            <div v-else class="text-slate-500 text-center py-8">
+            <div v-else class="text-faint text-center py-8">
               No logs yet...
             </div>
           </div>
@@ -175,11 +175,11 @@ const statusColor = computed(() => {
   if (!progress.value) return ''
   const status = progress.value.overallStatus
   return {
-    'running': 'text-emerald-400',
-    'complete': 'text-green-400',
-    'error': 'text-red-400',
-    'idle': 'text-slate-400'
-  }[status] || 'text-slate-400'
+    'running': 'text-accent-2',
+    'complete': 'text-accent-2',
+    'error': 'text-danger',
+    'idle': 'text-muted'
+  }[status] || 'text-muted'
 })
 
 const statusBadgeClass = computed(() => {
@@ -189,8 +189,8 @@ const statusBadgeClass = computed(() => {
     'running': 'bg-emerald-600 text-white',
     'complete': 'bg-green-600 text-white',
     'error': 'bg-red-600 text-white',
-    'idle': 'bg-slate-600 text-white'
-  }[status] || 'bg-slate-600 text-white'
+    'idle': 'bg-surface-3 text-ink'
+  }[status] || 'bg-surface-3 text-ink'
 })
 
 // For PipelineProgress component
@@ -271,10 +271,10 @@ function formatLogTime(isoString) {
 // Log level color
 function logLevelColor(level) {
   return {
-    'info': 'text-slate-300',
-    'warning': 'text-yellow-400',
-    'error': 'text-red-400'
-  }[level] || 'text-slate-300'
+    'info': 'text-ink',
+    'warning': 'text-accent',
+    'error': 'text-danger'
+  }[level] || 'text-ink'
 }
 
 // Lifecycle
@@ -324,7 +324,7 @@ const PhaseCard = defineComponent({
         teal: 'border-teal-500',
         emerald: 'border-emerald-500'
       }
-      return colors[this.color] || 'border-slate-500'
+      return colors[this.color] || 'border-line'
     },
     bgColor() {
       const colors = {
@@ -334,29 +334,29 @@ const PhaseCard = defineComponent({
         teal: 'bg-teal-500/10',
         emerald: 'bg-emerald-500/10'
       }
-      return colors[this.color] || 'bg-slate-500/10'
+      return colors[this.color] || 'bg-surface-3/10'
     }
   },
   template: `
-    <div :class="['rounded-lg border-2 p-4', borderColor, bgColor]">
+    <div :class="['phase-card rounded-lg border-2 p-4', borderColor, bgColor]">
       <div class="flex items-center justify-between mb-3">
         <div>
           <div class="text-2xl font-bold">{{ phase }}</div>
-          <div class="text-sm text-slate-400">{{ title }}</div>
+          <div class="text-sm text-muted">{{ title }}</div>
         </div>
         <div class="text-3xl">{{ statusIcon }}</div>
       </div>
 
       <div class="text-sm">
-        <div class="text-slate-300 font-semibold mb-2">{{ statusText }}</div>
+        <div class="text-ink font-semibold mb-2">{{ statusText }}</div>
 
-        <div v-if="data && data.status === 'complete'" class="space-y-1 text-xs text-slate-400">
+        <div v-if="data && data.status === 'complete'" class="space-y-1 text-xs text-muted">
           <div v-if="data.seedsComplete">Seeds: {{ data.seedsComplete }}</div>
           <div v-if="data.legoCount">LEGOs: {{ data.legoCount }}</div>
           <div v-if="data.introCount">Intros: {{ data.introCount }}</div>
           <div v-if="data.basketCount">Baskets: {{ data.basketCount }}</div>
           <div v-if="data.phraseCount">Phrases: {{ data.phraseCount }}</div>
-          <div v-if="data.validation && data.validation.passed !== undefined" :class="data.validation.passed ? 'text-green-400' : 'text-yellow-400'">
+          <div v-if="data.validation && data.validation.passed !== undefined" :class="data.validation.passed ? 'text-accent-2' : 'text-accent'">
             {{ data.validation.passed ? '✅ Validation passed' : '⚠️ Validation warnings' }}
           </div>
         </div>
@@ -372,3 +372,25 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+/* Error panel: danger-tinted surface that separates in both themes. */
+.error-panel {
+  background-color: color-mix(in srgb, var(--danger) 8%, var(--surface));
+  border-color: color-mix(in srgb, var(--danger) 70%, var(--line));
+}
+/* Light: darken danger text on the tinted panel to clear AA for body copy. */
+:root[data-theme="light"] .error-panel .text-danger {
+  color: #b91c1c; /* red-700 */
+}
+
+/* Light-mode only: lift phase cards off the canvas and strengthen the
+   teal border so it clears the 3:1 UI-contrast threshold.
+   Dark mode is untouched. */
+:root[data-theme="light"] .phase-card {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+:root[data-theme="light"] .phase-card.border-teal-500 {
+  border-color: #0d9488; /* teal-600, ~3.0:1 on the light canvas */
+}
+</style>

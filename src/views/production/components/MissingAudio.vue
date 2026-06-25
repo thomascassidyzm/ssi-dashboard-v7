@@ -1,15 +1,15 @@
 <template>
-  <div class="bg-slate-800/50 border border-slate-700 rounded-lg overflow-hidden">
+  <div class="missing-audio bg-surface border border-line rounded-lg overflow-hidden">
     <!-- Header -->
     <button
       @click="expanded = !expanded"
-      class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-700/30 transition-colors"
+      class="w-full px-6 py-4 flex items-center justify-between hover:bg-surface-2/30 transition-colors"
     >
       <div class="flex items-center gap-3">
         <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
         </svg>
-        <span class="text-lg font-semibold text-slate-100">Missing Audio</span>
+        <span class="text-lg font-semibold text-ink">Missing Audio</span>
         <span v-if="totalMissing > 0" class="px-2 py-0.5 text-xs bg-amber-500/20 text-amber-400 rounded">
           {{ totalMissing }} missing
         </span>
@@ -18,7 +18,7 @@
         </span>
       </div>
       <svg
-        class="w-5 h-5 text-slate-400 transition-transform"
+        class="w-5 h-5 text-muted transition-transform"
         :class="{ 'rotate-180': expanded }"
         fill="none"
         stroke="currentColor"
@@ -29,11 +29,11 @@
     </button>
 
     <!-- Content -->
-    <div v-show="expanded" class="border-t border-slate-700 p-6">
+    <div v-show="expanded" class="border-t border-line p-6">
       <!-- Loading -->
       <div v-if="loading" class="text-center py-8">
         <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500 mx-auto"></div>
-        <p class="mt-3 text-slate-400">Loading missing audio data...</p>
+        <p class="mt-3 text-muted">Loading missing audio data...</p>
       </div>
 
       <!-- Error -->
@@ -48,10 +48,10 @@
           <!-- Process Groups -->
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
             <!-- Azure TTS (Phrases) -->
-            <div class="bg-slate-700/50 rounded-lg p-3 border-l-4 border-blue-500">
+            <div class="bg-surface-2 border border-line rounded-lg p-3 border-l-4 border-l-blue-500">
               <div class="flex items-center gap-2 mb-1">
                 <span class="text-xs font-medium text-blue-400 uppercase tracking-wide">Azure</span>
-                <span class="text-xs text-slate-500">(Phrases)</span>
+                <span class="text-xs text-faint">(Phrases)</span>
               </div>
               <p class="text-xl font-bold" :class="byProcess.azure?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">
                 {{ byProcess.azure?.missing || 0 }}
@@ -59,10 +59,10 @@
             </div>
 
             <!-- Azure TTS (Seeds) -->
-            <div class="bg-slate-700/50 rounded-lg p-3 border-l-4 border-cyan-500">
+            <div class="bg-surface-2 border border-line rounded-lg p-3 border-l-4 border-l-cyan-500">
               <div class="flex items-center gap-2 mb-1">
                 <span class="text-xs font-medium text-cyan-400 uppercase tracking-wide">Azure</span>
-                <span class="text-xs text-slate-500">(Seeds)</span>
+                <span class="text-xs text-faint">(Seeds)</span>
               </div>
               <p class="text-xl font-bold" :class="byProcess.azureSeeds?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">
                 {{ byProcess.azureSeeds?.missing || 0 }}
@@ -70,10 +70,10 @@
             </div>
 
             <!-- Azure TTS (LEGOs) -->
-            <div class="bg-slate-700/50 rounded-lg p-3 border-l-4 border-teal-500">
+            <div class="bg-surface-2 border border-line rounded-lg p-3 border-l-4 border-l-teal-500">
               <div class="flex items-center gap-2 mb-1">
                 <span class="text-xs font-medium text-teal-400 uppercase tracking-wide">Azure</span>
-                <span class="text-xs text-slate-500">(LEGOs)</span>
+                <span class="text-xs text-faint">(LEGOs)</span>
               </div>
               <p class="text-xl font-bold" :class="byProcess.azureLegos?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">
                 {{ byProcess.azureLegos?.missing || 0 }}
@@ -85,8 +85,8 @@
           </div>
 
           <!-- Total -->
-          <div class="flex items-center justify-between bg-slate-900/50 rounded-lg px-4 py-2">
-            <span class="text-slate-400 text-sm">Total Missing</span>
+          <div class="flex items-center justify-between bg-surface-2 border border-line rounded-lg px-4 py-2">
+            <span class="text-muted text-sm">Total Missing</span>
             <span class="text-xl font-bold" :class="totalMissing > 0 ? 'text-amber-400' : 'text-emerald-400'">
               {{ totalMissing }}
             </span>
@@ -139,7 +139,7 @@
               <table class="w-full text-xs">
                 <thead class="sticky top-0 bg-rose-950/50">
                   <tr class="text-left text-rose-300/70">
-                    <th class="py-2 px-3 font-medium">Source</th>
+                    <th class="py-2 px-3 font-medium">From</th>
                     <th class="py-2 px-3 font-medium">Role</th>
                     <th class="py-2 px-3 font-medium">ID</th>
                     <th class="py-2 px-3 font-medium">Text</th>
@@ -159,7 +159,7 @@
         </div>
 
         <!-- Category Tabs -->
-        <div class="border-b border-slate-700">
+        <div class="border-b border-line">
           <!-- Azure Phrases -->
           <div class="flex items-center gap-1 mb-2">
             <span class="text-xs text-blue-400 font-medium px-2">Azure (Phrases)</span>
@@ -172,7 +172,7 @@
               class="px-3 py-1.5 rounded text-sm font-medium transition-colors"
               :class="selectedCategory === 'phrase' && selectedRole === role.id
                 ? 'bg-blue-600 text-white'
-                : 'bg-slate-700/50 text-slate-400 hover:text-slate-200'"
+                : 'bg-surface-2 border border-line text-muted hover:text-ink'"
             >
               {{ role.label }}
               <span class="ml-1 text-xs opacity-70">({{ missingCounts[role.id] }})</span>
@@ -191,7 +191,7 @@
               class="px-3 py-1.5 rounded text-sm font-medium transition-colors"
               :class="selectedCategory === 'seed' && selectedRole === role.id
                 ? 'bg-cyan-600 text-white'
-                : 'bg-slate-700/50 text-slate-400 hover:text-slate-200'"
+                : 'bg-surface-2 border border-line text-muted hover:text-ink'"
             >
               {{ role.label }}
               <span class="ml-1 text-xs opacity-70">({{ seedMissingCounts[role.id] }})</span>
@@ -210,7 +210,7 @@
               class="px-3 py-1.5 rounded text-sm font-medium transition-colors"
               :class="selectedCategory === 'lego' && selectedRole === role.id
                 ? 'bg-teal-600 text-white'
-                : 'bg-slate-700/50 text-slate-400 hover:text-slate-200'"
+                : 'bg-surface-2 border border-line text-muted hover:text-ink'"
             >
               {{ role.label }}
               <span class="ml-1 text-xs opacity-70">({{ legoMissingCounts[role.id] }})</span>
@@ -227,7 +227,7 @@
               class="px-3 py-1.5 rounded text-sm font-medium transition-colors"
               :class="selectedCategory === 'shared' && selectedRole === 'encouragements'
                 ? 'bg-purple-600 text-white'
-                : 'bg-slate-700/50 text-slate-400 hover:text-slate-200'"
+                : 'bg-surface-2 border border-line text-muted hover:text-ink'"
             >
               Encouragements
               <span class="ml-1 text-xs opacity-70">({{ sharedAudio?.encouragements?.missing || 0 }})</span>
@@ -237,7 +237,7 @@
               class="px-3 py-1.5 rounded text-sm font-medium transition-colors"
               :class="selectedCategory === 'shared' && selectedRole === 'instructions'
                 ? 'bg-purple-600 text-white'
-                : 'bg-slate-700/50 text-slate-400 hover:text-slate-200'"
+                : 'bg-surface-2 border border-line text-muted hover:text-ink'"
             >
               Instructions
               <span class="ml-1 text-xs opacity-70">({{ sharedAudio?.instructions?.missing || 0 }})</span>
@@ -247,7 +247,7 @@
               class="px-3 py-1.5 rounded text-sm font-medium transition-colors"
               :class="selectedCategory === 'shared' && selectedRole === 'welcome'
                 ? 'bg-purple-600 text-white'
-                : 'bg-slate-700/50 text-slate-400 hover:text-slate-200'"
+                : 'bg-surface-2 border border-line text-muted hover:text-ink'"
             >
               Welcome
               <span class="ml-1 text-xs opacity-70">({{ welcomeMissing }})</span>
@@ -256,12 +256,12 @@
         </div>
 
         <!-- Sample Audio Player for Voice Matching (phrase roles only) -->
-        <div v-if="selectedCategory === 'phrase' && samples[selectedRole]" class="bg-slate-700/30 rounded-lg p-4">
+        <div v-if="selectedCategory === 'phrase' && samples[selectedRole]" class="bg-surface-2 border border-line rounded-lg p-4">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-slate-400 mb-1">Sample audio for voice matching:</p>
-              <p class="text-slate-200 font-medium">"{{ samples[selectedRole].text }}"</p>
-              <p class="text-xs text-slate-500 mt-1">Voice: {{ samples[selectedRole].voiceId }}</p>
+              <p class="text-sm text-muted mb-1">Sample audio for voice matching:</p>
+              <p class="text-ink font-medium">"{{ samples[selectedRole].text }}"</p>
+              <p class="text-xs text-faint mt-1">Voice: {{ samples[selectedRole].voiceId }}</p>
             </div>
             <button
               @click="playSample(selectedRole)"
@@ -285,31 +285,31 @@
         </div>
 
         <!-- Shared Audio Info (ElevenLabs categories) -->
-        <div v-else-if="selectedCategory === 'shared'" class="bg-slate-700/30 rounded-lg p-4">
+        <div v-else-if="selectedCategory === 'shared'" class="bg-surface-2 border border-line rounded-lg p-4">
           <div v-if="selectedRole === 'encouragements'" class="space-y-2">
-            <p class="text-slate-300">
+            <p class="text-ink">
               <span class="text-purple-400 font-medium">Encouragements</span> are pooled feedback phrases played randomly during lessons.
             </p>
-            <p class="text-sm text-slate-400">
+            <p class="text-sm text-muted">
               Required: {{ sharedAudio?.encouragements?.expected || 26 }} |
               Existing: {{ sharedAudio?.encouragements?.existing || 0 }} |
               Missing: <span :class="sharedAudio?.encouragements?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">{{ sharedAudio?.encouragements?.missing || 0 }}</span>
             </p>
-            <p class="text-xs text-slate-500">Language: {{ sharedAudio?.language || 'eng' }} | Generated via ElevenLabs</p>
+            <p class="text-xs text-faint">Language: {{ sharedAudio?.language || 'eng' }} | Generated via ElevenLabs</p>
           </div>
           <div v-else-if="selectedRole === 'instructions'" class="space-y-2">
-            <p class="text-slate-300">
+            <p class="text-ink">
               <span class="text-purple-400 font-medium">Instructions</span> are ordered prompts that guide learners through exercises.
             </p>
-            <p class="text-sm text-slate-400">
+            <p class="text-sm text-muted">
               Required: {{ sharedAudio?.instructions?.expected || 48 }} |
               Existing: {{ sharedAudio?.instructions?.existing || 0 }} |
               Missing: <span :class="sharedAudio?.instructions?.missing > 0 ? 'text-amber-400' : 'text-emerald-400'">{{ sharedAudio?.instructions?.missing || 0 }}</span>
             </p>
-            <p class="text-xs text-slate-500">Language: {{ sharedAudio?.language || 'eng' }} | Generated via ElevenLabs</p>
+            <p class="text-xs text-faint">Language: {{ sharedAudio?.language || 'eng' }} | Generated via ElevenLabs</p>
           </div>
           <div v-else-if="selectedRole === 'welcome'" class="space-y-2">
-            <p class="text-slate-300">
+            <p class="text-ink">
               <span class="text-purple-400 font-medium">Welcome</span> is the introduction message played when starting the course.
             </p>
             <div v-if="welcome?.hasAudio" class="text-sm text-emerald-400">
@@ -318,15 +318,15 @@
             <div v-else class="text-sm text-amber-400">
               Welcome audio missing
             </div>
-            <p class="text-xs text-slate-500">Generated via ElevenLabs</p>
+            <p class="text-xs text-faint">Generated via ElevenLabs</p>
           </div>
         </div>
 
         <!-- Missing Items List -->
         <div class="max-h-96 overflow-y-auto">
           <table class="w-full text-sm">
-            <thead class="sticky top-0 bg-slate-800">
-              <tr class="text-left text-slate-400 border-b border-slate-700">
+            <thead class="sticky top-0 bg-surface">
+              <tr class="text-left text-muted border-b border-line">
                 <th class="py-2 px-3">Location</th>
                 <th class="py-2 px-3">Text</th>
               </tr>
@@ -335,13 +335,13 @@
               <tr
                 v-for="(item, idx) in currentMissingItems"
                 :key="idx"
-                class="border-b border-slate-700/50 hover:bg-slate-700/30"
+                class="border-b border-line/50 hover:bg-surface-2/30"
               >
-                <td class="py-2 px-3 text-slate-500 font-mono text-xs">{{ item.legoId || item.seedId || '-' }}</td>
-                <td class="py-2 px-3 text-slate-200">{{ item.text }}</td>
+                <td class="py-2 px-3 text-faint font-mono text-xs">{{ item.legoId || item.seedId || '-' }}</td>
+                <td class="py-2 px-3 text-ink">{{ item.text }}</td>
               </tr>
               <tr v-if="currentMissingItems.length === 0">
-                <td colspan="2" class="py-8 text-center text-slate-500">
+                <td colspan="2" class="py-8 text-center text-faint">
                   <span v-if="selectedCategory === 'shared'">
                     {{ selectedRole === 'welcome' ? (welcome?.hasAudio ? 'Welcome audio exists' : 'Welcome audio needs to be generated in ElevenLabs') : `${selectedRole} need to be generated in ElevenLabs` }}
                   </span>
@@ -650,3 +650,54 @@ onMounted(() => {
   }
 })
 </script>
+
+<style scoped>
+/*
+ * LIGHT-MODE color fixes ONLY.
+ * The template uses dark-tuned Tailwind literals (amber/emerald/blue/cyan/teal/
+ * purple/rose -400/-300 + low-alpha tints) that wash out on a light canvas.
+ * Everything below is scoped under [data-theme="light"] so DARK MODE IS UNTOUCHED.
+ * Each override keeps the same hue family but darkens text / solidifies fills to
+ * meet WCAG AA on the new light surfaces (#ffffff / #f1f5f9 / #eef2f6).
+ */
+
+/* --- Status / accent TEXT (was ~1.4-2.6:1 on white -> now >=4.5:1) --- */
+:root[data-theme="light"] .missing-audio :deep(.text-amber-400) { color: #b45309; }  /* amber-700  ~5.0:1 */
+:root[data-theme="light"] .missing-audio :deep(.text-amber-300) { color: #92400e; }  /* amber-800  ~6.7:1 */
+:root[data-theme="light"] .missing-audio :deep(.text-emerald-400) { color: #047857; } /* emerald-700 ~4.8:1 */
+:root[data-theme="light"] .missing-audio :deep(.text-blue-400)  { color: #1d4ed8; }  /* blue-700   ~6.3:1 */
+:root[data-theme="light"] .missing-audio :deep(.text-cyan-400)  { color: #0e7490; }  /* cyan-700   ~4.6:1 */
+:root[data-theme="light"] .missing-audio :deep(.text-teal-400)  { color: #0f766e; }  /* teal-700   ~5.2:1 */
+:root[data-theme="light"] .missing-audio :deep(.text-purple-400){ color: #7e22ce; }  /* purple-700 ~6.4:1 */
+:root[data-theme="light"] .missing-audio :deep(.text-red-400)   { color: #b91c1c; }  /* red-700    ~5.9:1 */
+
+/* --- "missing/all complete" pills in the header (translucent tint -> near-white) --- */
+:root[data-theme="light"] .missing-audio :deep(.bg-amber-500\/20) {
+  background-color: #fef3c7; /* amber-100 */
+}
+:root[data-theme="light"] .missing-audio :deep(.bg-emerald-500\/20) {
+  background-color: #d1fae5; /* emerald-100 */
+}
+
+/* --- Orphan-LEGO warning banner (amber-900/20 fill, amber text) --- */
+:root[data-theme="light"] .missing-audio :deep(.bg-amber-900\/20) {
+  background-color: #fef3c7; /* amber-100 */
+}
+:root[data-theme="light"] .missing-audio :deep(.border-amber-500\/30) {
+  border-color: #fbbf24; /* amber-400 — readable border on light */
+}
+
+/* --- Ungeneratable warning panel (rose family) --- */
+:root[data-theme="light"] .missing-audio :deep(.bg-rose-900\/20) { background-color: #ffe4e6; } /* rose-100 */
+:root[data-theme="light"] .missing-audio :deep(.bg-rose-950\/50) { background-color: #fecdd3; } /* rose-200 (sticky header) */
+:root[data-theme="light"] .missing-audio :deep(.border-rose-500\/30) { border-color: #fb7185; }
+:root[data-theme="light"] .missing-audio :deep(.border-rose-500\/20) { border-color: #fda4af; }
+:root[data-theme="light"] .missing-audio :deep(.border-rose-500\/10) { border-color: #fecaca; }
+:root[data-theme="light"] .missing-audio :deep(.text-rose-400) { color: #be123c; }      /* rose-700 */
+:root[data-theme="light"] .missing-audio :deep(.text-rose-400\/70) { color: #9f1239; }  /* rose-800 */
+:root[data-theme="light"] .missing-audio :deep(.text-rose-300) { color: #9f1239; }      /* rose-800 ~6:1 on rose-100 */
+:root[data-theme="light"] .missing-audio :deep(.text-rose-300\/80) { color: #9f1239; }
+:root[data-theme="light"] .missing-audio :deep(.text-rose-300\/70) { color: #9f1239; }
+:root[data-theme="light"] .missing-audio :deep(.text-rose-300\/60) { color: #9f1239; }
+:root[data-theme="light"] .missing-audio :deep(.text-rose-100) { color: #881337; }      /* rose-900 (the actual text value) */
+</style>

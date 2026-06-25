@@ -9,8 +9,8 @@
 <style scoped>
 .docs-layout {
   min-height: 100vh;
-  background: #0f172a;
-  color: #f1f5f9;
+  background: var(--canvas);
+  color: var(--ink);
 }
 
 .docs-content {

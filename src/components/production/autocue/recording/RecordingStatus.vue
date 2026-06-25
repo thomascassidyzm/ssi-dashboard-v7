@@ -54,14 +54,15 @@ onUnmounted(() => {
   position: fixed;
   top: 1rem;
   right: 1rem;
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
   z-index: 1000;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
   opacity: 0;
   transform: translateY(-10px);
   transition: all 0.3s ease;
@@ -103,6 +104,6 @@ onUnmounted(() => {
 .rec-timer {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 1rem;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 </style>

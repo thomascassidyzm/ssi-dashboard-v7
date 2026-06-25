@@ -63,10 +63,39 @@
       </p>
 
       <p class="auto-prune-note">
-        <strong>Auto-prune:</strong> entries older than 7 days are removed daily at 03:00 UTC by a pg_cron job.
-        Use the manual cleanup above to prune sooner (e.g. after a known incident).
-        Anything older than 7 days has to be recovered from the daily Supabase backup, not from this log.
+        <strong>Auto-prune:</strong> handled by the nightly <strong>archive + prune</strong> below
+        (03:00 UTC, when <code>AUDIT_ARCHIVE_CRON=on</code>) — older days are copied to S3 cold storage
+        <em>before</em> deletion, so they stay recoverable via
+        <code>recover-pod-audio-from-audit.cjs --archive</code>. The delete-only cleanup above is for
+        pruning sooner without archiving. (The old pg_cron job is dead; this replaces it.)
       </p>
+
+      <h2 class="section-title section-title-secondary">Archive to S3 (cold tiering)</h2>
+      <p class="section-blurb">
+        Archive audit days older than the hot window to S3 as gzipped NDJSON, then —
+        with prune — delete them from Postgres. <strong>Preview</strong> is read-only;
+        <strong>Archive + Prune</strong> writes to S3 and deletes, but only after each day's
+        upload is verified. Capped at ~110s per click — click again to continue a long run.
+      </p>
+      <div class="cleanup-row">
+        <label class="days-input">
+          Hot window
+          <input type="number" v-model.number="archiveHotDays" min="1" max="365" step="1" />
+          days
+        </label>
+        <label class="days-input">
+          Scan back
+          <input type="number" v-model.number="archiveMaxDays" min="1" max="400" step="1" />
+          days
+        </label>
+        <button class="cleanup-btn" :disabled="archiving" @click="runArchive(false)">
+          {{ archiving ? 'Running…' : 'Preview (dry run)' }}
+        </button>
+        <button class="cleanup-btn" :disabled="archiving" @click="confirmArchivePrune">
+          {{ archiving ? 'Running…' : 'Archive + Prune now' }}
+        </button>
+      </div>
+      <pre v-if="archiveOutput" class="archive-output">{{ archiveOutput }}</pre>
 
       <h2 class="section-title section-title-secondary">Recent changes</h2>
       <p class="section-blurb">
@@ -404,6 +433,12 @@ const cleaning = ref(false)
 const showConfirm = ref(false)
 const lastResult = ref(null)
 
+// Audit archive (S3 cold tiering)
+const archiveHotDays = ref(14)
+const archiveMaxDays = ref(30)
+const archiving = ref(false)
+const archiveOutput = ref('')
+
 // Recent-changes feed state
 const events = ref([])
 const totalEvents = ref(0)
@@ -481,6 +516,43 @@ async function runCleanup() {
     loadError.value = `Cleanup failed: ${e.message}`
   } finally {
     cleaning.value = false
+  }
+}
+
+function confirmArchivePrune() {
+  if (window.confirm(
+    'Archive every audit day older than the hot window to S3, then DELETE those rows from Postgres?\n\n' +
+    'Each day is uploaded and verified BEFORE deletion, and pruned rows stay recoverable via ' +
+    'recover-pod-audio-from-audit.cjs --archive.'
+  )) {
+    runArchive(true)
+  }
+}
+
+// prune=false → dry-run preview (read-only). prune=true → archive to S3 + delete.
+async function runArchive(prune) {
+  archiving.value = true
+  archiveOutput.value = ''
+  loadError.value = ''
+  try {
+    const r = await authedFetch('/api/admin/audit-archive', {
+      method: 'POST',
+      body: JSON.stringify({
+        hotDays: archiveHotDays.value,
+        maxDays: archiveMaxDays.value,
+        execute: prune,
+        prune
+      })
+    })
+    const body = await r.json()
+    if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
+    archiveOutput.value = body.output || '(no output)'
+    if (body.timedOut) archiveOutput.value += '\n\n⏱ hit the 110s cap — partial progress is saved, click again to continue.'
+    await loadStats()
+  } catch (e) {
+    loadError.value = `Archive failed: ${e.message}`
+  } finally {
+    archiving.value = false
   }
 }
 
@@ -799,7 +871,7 @@ onMounted(() => {
 <style scoped>
 .maintenance-page {
   padding: 32px 28px;
-  color: #e2e8f0;
+  color: var(--ink);
 }
 .maintenance-inner {
   width: 100%;
@@ -811,12 +883,13 @@ onMounted(() => {
 }
 .section-blurb {
   font-size: 14px;
-  color: #94a3b8;
+  color: var(--muted);
   margin: 0 0 24px 0;
   line-height: 1.6;
 }
 .section-blurb code {
-  background: rgba(148, 163, 184, 0.12);
+  background: var(--surface-3);
+  color: var(--ink);
   padding: 1px 5px;
   border-radius: 3px;
   font-size: 12px;
@@ -830,6 +903,10 @@ onMounted(() => {
   font-size: 13px;
   margin-bottom: 16px;
 }
+[data-theme="light"] .error-banner {
+  background: rgba(239, 68, 68, 0.1);
+  color: #b91c1c;
+}
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -837,8 +914,8 @@ onMounted(() => {
   margin-bottom: 24px;
 }
 .stat-card {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  background: var(--surface);
+  border: 1px solid var(--line);
   padding: 14px 16px;
   border-radius: 8px;
 }
@@ -848,7 +925,7 @@ onMounted(() => {
 }
 .stat-label {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 6px;
@@ -856,7 +933,7 @@ onMounted(() => {
 .stat-value {
   font-size: 22px;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--ink);
 }
 .stale-tag {
   display: inline-block;
@@ -870,9 +947,13 @@ onMounted(() => {
   border-radius: 4px;
   vertical-align: middle;
 }
+[data-theme="light"] .stale-tag {
+  background: rgba(180, 83, 9, 0.18);
+  color: #92400e;
+}
 .loading {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--muted);
   margin-bottom: 24px;
 }
 .cleanup-row {
@@ -880,22 +961,22 @@ onMounted(() => {
   align-items: center;
   gap: 16px;
   padding: 14px 16px;
-  background: rgba(30, 41, 59, 0.45);
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
 }
 .days-input {
   font-size: 14px;
-  color: #cbd5e1;
+  color: var(--ink);
   display: flex;
   align-items: center;
   gap: 8px;
 }
 .days-input input {
   width: 64px;
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  color: #f1f5f9;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink);
   padding: 6px 8px;
   border-radius: 4px;
   font-size: 14px;
@@ -916,7 +997,7 @@ onMounted(() => {
 }
 .cleanup-btn:disabled {
   background: rgba(148, 163, 184, 0.2);
-  color: #64748b;
+  color: var(--faint);
   cursor: not-allowed;
 }
 .result-line {
@@ -924,18 +1005,42 @@ onMounted(() => {
   font-size: 13px;
   color: #86efac;
 }
+[data-theme="light"] .result-line {
+  color: var(--success);
+}
+
+.archive-output {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: rgba(2, 6, 23, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink);
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 360px;
+  overflow-y: auto;
+}
+/* Keep the console-style dark block in light mode but force legible light text */
+[data-theme="light"] .archive-output {
+  color: #e2e8f0;
+}
 
 .auto-prune-note {
   margin-top: 18px;
   padding: 12px 14px;
-  background: rgba(30, 41, 59, 0.45);
-  border-left: 3px solid rgba(148, 163, 184, 0.35);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
   border-radius: 4px;
   font-size: 12.5px;
   line-height: 1.55;
-  color: #cbd5e1;
+  color: var(--ink);
 }
-.auto-prune-note strong { color: #f1f5f9; }
+.auto-prune-note strong { color: var(--ink); }
 
 .modal-backdrop {
   position: fixed;
@@ -947,8 +1052,8 @@ onMounted(() => {
   z-index: 50;
 }
 .modal {
-  background: #1e293b;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 20px 24px;
   max-width: 440px;
@@ -960,7 +1065,7 @@ onMounted(() => {
 }
 .modal p {
   font-size: 14px;
-  color: #cbd5e1;
+  color: var(--ink);
   line-height: 1.6;
   margin: 0 0 20px 0;
 }
@@ -978,8 +1083,8 @@ onMounted(() => {
   cursor: pointer;
 }
 .modal-cancel {
-  background: rgba(148, 163, 184, 0.2);
-  color: #cbd5e1;
+  background: var(--surface-3);
+  color: var(--ink);
 }
 .modal-confirm {
   background: #b91c1c;
@@ -998,9 +1103,9 @@ onMounted(() => {
 }
 .filter-row select,
 .filter-row .search-input {
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  color: #f1f5f9;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink);
   padding: 6px 10px;
   border-radius: 4px;
   font-size: 13px;
@@ -1024,7 +1129,7 @@ onMounted(() => {
 
 .empty {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--muted);
   padding: 24px;
   text-align: center;
   border: 1px dashed rgba(148, 163, 184, 0.2);
@@ -1040,7 +1145,7 @@ onMounted(() => {
   text-align: left;
   padding: 8px 10px;
   border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-  color: #94a3b8;
+  color: var(--muted);
   font-weight: 500;
   text-transform: uppercase;
   font-size: 11px;
@@ -1061,21 +1166,27 @@ onMounted(() => {
 .event-row.expanded {
   background: rgba(30, 41, 59, 0.5);
 }
+[data-theme="light"] .event-row.expanded {
+  background: var(--surface-2);
+}
+[data-theme="light"] .event-row:hover {
+  background: var(--surface-2);
+}
 .cell-time {
-  color: #cbd5e1;
+  color: var(--ink);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
 .cell-table code,
 .cell-pk code {
-  background: rgba(148, 163, 184, 0.1);
+  background: var(--surface-3);
   padding: 1px 5px;
   border-radius: 3px;
   font-size: 12px;
-  color: #cbd5e1;
+  color: var(--ink);
 }
 .cell-by {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 12px;
   max-width: 200px;
   overflow: hidden;
@@ -1084,7 +1195,7 @@ onMounted(() => {
 }
 .cell-expand {
   text-align: right;
-  color: #64748b;
+  color: var(--faint);
   width: 20px;
 }
 .op-tag {
@@ -1103,17 +1214,29 @@ onMounted(() => {
   background: rgba(239, 68, 68, 0.15);
   color: #fca5a5;
 }
+[data-theme="light"] .op-update {
+  background: rgba(37, 99, 235, 0.12);
+  color: #1d4ed8;
+}
+[data-theme="light"] .op-delete {
+  background: rgba(220, 38, 38, 0.1);
+  color: #b91c1c;
+}
 .expanded-row td {
   background: rgba(15, 23, 42, 0.6);
   padding: 0;
+}
+[data-theme="light"] .expanded-row td {
+  background: var(--surface-2);
 }
 .diff-loading,
 .diff-error {
   padding: 14px;
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--muted);
 }
 .diff-error { color: #fca5a5; }
+[data-theme="light"] .diff-error { color: #b91c1c; }
 .diff-container {
   padding: 8px 0;
   max-height: 360px;
@@ -1131,7 +1254,7 @@ onMounted(() => {
 }
 .diff-header {
   font-weight: 500;
-  color: #94a3b8;
+  color: var(--muted);
   text-transform: uppercase;
   font-size: 10px;
   letter-spacing: 0.05em;
@@ -1140,17 +1263,17 @@ onMounted(() => {
   margin-bottom: 4px;
 }
 .diff-col-label {
-  color: #94a3b8;
+  color: var(--muted);
 }
 .diff-field-name {
   font-family: 'Geist Mono', ui-monospace, monospace;
-  color: #cbd5e1;
+  color: var(--ink);
   font-size: 11px;
   padding-top: 2px;
 }
 .diff-value {
   font-family: 'Geist Mono', ui-monospace, monospace;
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 11px;
   word-break: break-word;
   white-space: pre-wrap;
@@ -1164,8 +1287,14 @@ onMounted(() => {
 .diff-row.diff-changed .diff-current {
   color: #fca5a5;
 }
+[data-theme="light"] .diff-row.diff-changed .diff-captured {
+  color: var(--success);
+}
+[data-theme="light"] .diff-row.diff-changed .diff-current {
+  color: #b91c1c;
+}
 .diff-row.diff-changed .diff-field-name {
-  color: #f1f5f9;
+  color: var(--ink);
   font-weight: 500;
 }
 .missing-tag {
@@ -1180,6 +1309,10 @@ onMounted(() => {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+[data-theme="light"] .missing-tag {
+  background: rgba(220, 38, 38, 0.12);
+  color: #b91c1c;
+}
 
 .pagination {
   display: flex;
@@ -1193,7 +1326,7 @@ onMounted(() => {
   padding: 6px 12px;
   background: rgba(30, 41, 59, 0.6);
   border: 1px solid rgba(148, 163, 184, 0.2);
-  color: #cbd5e1;
+  color: var(--ink);
   border-radius: 4px;
   font-size: 13px;
   cursor: pointer;
@@ -1201,13 +1334,20 @@ onMounted(() => {
 .page-btn:hover:not(:disabled) {
   background: rgba(30, 41, 59, 0.9);
 }
+[data-theme="light"] .page-btn {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+[data-theme="light"] .page-btn:hover:not(:disabled) {
+  background: var(--surface-3);
+}
 .page-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
 .page-info {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
 
@@ -1223,9 +1363,13 @@ onMounted(() => {
   font-size: 13px;
   color: #bfdbfe;
 }
+[data-theme="light"] .selection-bar {
+  background: rgba(29, 78, 216, 0.08);
+  color: #1e40af;
+}
 .selection-bar > span {
   font-weight: 500;
-  color: #f1f5f9;
+  color: var(--ink);
 }
 .bulk-restore-btn {
   padding: 6px 14px;
@@ -1249,6 +1393,9 @@ onMounted(() => {
   text-decoration: underline;
   padding: 4px 8px;
 }
+[data-theme="light"] .link-btn {
+  color: #1d4ed8;
+}
 
 .cell-check {
   width: 32px;
@@ -1266,7 +1413,7 @@ onMounted(() => {
 }
 .modal-note {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--muted);
   font-style: italic;
   margin-top: -8px !important;
   margin-bottom: 16px !important;
@@ -1279,9 +1426,15 @@ onMounted(() => {
   margin-bottom: 16px;
   font-size: 13px;
 }
+[data-theme="light"] .restore-result {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
 .restore-ok { color: #86efac; }
-.restore-skipped { color: #94a3b8; margin-top: 4px; }
+.restore-skipped { color: var(--muted); margin-top: 4px; }
 .restore-failed { color: #fca5a5; margin-top: 4px; }
+[data-theme="light"] .restore-ok { color: var(--success); }
+[data-theme="light"] .restore-failed { color: #b91c1c; }
 .restore-failed ul {
   margin: 4px 0 0 18px;
   font-size: 12px;
@@ -1297,8 +1450,8 @@ onMounted(() => {
   gap: 14px;
   margin-bottom: 16px;
   padding: 12px 16px;
-  background: rgba(30, 41, 59, 0.45);
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
 }
 .course-select {
@@ -1306,12 +1459,12 @@ onMounted(() => {
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: #cbd5e1;
+  color: var(--ink);
 }
 .course-select select {
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  color: #f1f5f9;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink);
   padding: 6px 10px;
   border-radius: 4px;
   font-size: 13px;
@@ -1337,13 +1490,13 @@ onMounted(() => {
 .decomp-sample {
   margin-top: 16px;
   padding: 14px 16px;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
 }
 .decomp-sample-title {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 10px;
@@ -1361,14 +1514,14 @@ onMounted(() => {
   font-size: 12px;
 }
 .decomp-sample-head code {
-  background: rgba(148, 163, 184, 0.1);
+  background: var(--surface-3);
   padding: 1px 5px;
   border-radius: 3px;
   font-size: 11px;
-  color: #cbd5e1;
+  color: var(--ink);
 }
 .decomp-target {
-  color: #f1f5f9;
+  color: var(--ink);
   font-weight: 500;
 }
 .decomp-blocks {
@@ -1393,7 +1546,7 @@ onMounted(() => {
   border-color: rgba(148, 163, 184, 0.4);
 }
 .decomp-block-target {
-  color: #f1f5f9;
+  color: var(--ink);
   font-weight: 500;
   white-space: pre;
 }
@@ -1404,8 +1557,11 @@ onMounted(() => {
   font-family: 'Geist Mono', ui-monospace, monospace;
   letter-spacing: 0.02em;
 }
+[data-theme="light"] .decomp-block-lego {
+  color: #1d4ed8;
+}
 .decomp-ghost-tag {
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .decomp-failures {
@@ -1416,6 +1572,10 @@ onMounted(() => {
   border-radius: 6px;
   font-size: 12px;
   color: #fca5a5;
+}
+[data-theme="light"] .decomp-failures {
+  background: rgba(220, 38, 38, 0.06);
+  color: #b91c1c;
 }
 .decomp-failures-title {
   font-weight: 500;
@@ -1434,5 +1594,8 @@ onMounted(() => {
   border-radius: 3px;
   font-size: 11px;
   color: #fecaca;
+}
+[data-theme="light"] .decomp-failures code {
+  color: #991b1b;
 }
 </style>

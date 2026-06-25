@@ -1,24 +1,24 @@
 <template>
-  <div class="min-h-screen bg-slate-900">
+  <div class="min-h-screen bg-canvas">
     <!-- Header -->
-    <header class="bg-slate-800/50 border-b border-slate-700/50 backdrop-blur-sm sticky top-0 z-10">
+    <header class="bg-surface/50 border-b border-line/50 backdrop-blur-sm sticky top-0 z-10">
       <div class="max-w-6xl mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-4">
             <router-link
               to="/courses"
-              class="text-slate-400 hover:text-slate-200 transition-colors flex items-center gap-2"
+              class="text-muted hover:text-ink transition-colors flex items-center gap-2"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
               </svg>
               <span class="text-sm">Library</span>
             </router-link>
-            <div class="w-px h-6 bg-slate-700"></div>
-            <h1 class="text-xl font-semibold text-slate-100">Course Manager</h1>
+            <div class="w-px h-6 bg-surface-2"></div>
+            <h1 class="text-xl font-semibold text-ink">Course Manager</h1>
             <span
               v-if="courseCode"
-              class="px-3 py-1 bg-slate-700/50 border border-slate-600/50 rounded text-sm font-mono text-emerald-400"
+              class="px-3 py-1 bg-surface-2/50 border border-line/50 rounded text-sm font-mono text-emerald-400"
             >
               {{ courseCode }}
             </span>
@@ -36,7 +36,7 @@
             </div>
 
             <!-- Data Source -->
-            <span class="text-xs text-slate-500 uppercase tracking-wide">Database</span>
+            <span class="text-xs text-faint uppercase tracking-wide">Database</span>
           </div>
         </div>
       </div>
@@ -44,19 +44,19 @@
 
     <main class="max-w-6xl mx-auto px-6 py-8 space-y-6">
       <!-- Configuration Section (Collapsible) -->
-      <section class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
+      <section class="bg-surface/30 border border-line/50 rounded-lg overflow-hidden">
         <button
           @click="configExpanded = !configExpanded"
-          class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800/50 transition-colors"
+          class="w-full px-6 py-4 flex items-center justify-between hover:bg-surface/50 transition-colors"
         >
           <div class="flex items-center gap-3">
-            <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Configuration</span>
-            <span v-if="!configExpanded && courseCode" class="text-sm text-slate-500">
+            <span class="text-sm font-medium text-ink uppercase tracking-wide">Configuration</span>
+            <span v-if="!configExpanded && courseCode" class="text-sm text-faint">
               {{ displayName }} &middot; {{ seedCount }} seeds &middot; {{ agentEngine.toUpperCase() }} &middot; {{ selectedMachineProfile }}{{ showLegacyMode ? ` · ${buildMode === 'builder' ? 'Course Builder' : 'Phases 1-3'}` : '' }}
             </span>
           </div>
           <svg
-            class="w-5 h-5 text-slate-400 transition-transform duration-200"
+            class="w-5 h-5 text-muted transition-transform duration-200"
             :class="{ 'rotate-180': configExpanded }"
             fill="none" stroke="currentColor" viewBox="0 0 24 24"
           >
@@ -66,17 +66,17 @@
 
         <div
           v-show="configExpanded"
-          class="px-6 pb-6 border-t border-slate-700/50 space-y-6"
+          class="px-6 pb-6 border-t border-line/50 space-y-6"
         >
           <!-- Language Pair -->
           <div class="pt-6">
-            <label class="block text-xs font-medium text-slate-400 uppercase tracking-wide mb-3">
+            <label class="block text-xs font-medium text-muted uppercase tracking-wide mb-3">
               Language Pair
             </label>
             <div v-if="isNewCourse" class="grid grid-cols-2 gap-4">
               <select
                 v-model="knownLang"
-                class="bg-slate-700/50 border border-slate-600/50 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20"
+                class="bg-surface-2/50 border border-line/50 rounded-lg px-4 py-3 text-ink focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20"
               >
                 <option value="">Select known language</option>
                 <option v-for="lang in languages" :key="lang.code" :value="lang.code">
@@ -85,7 +85,7 @@
               </select>
               <select
                 v-model="targetLang"
-                class="bg-slate-700/50 border border-slate-600/50 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20"
+                class="bg-surface-2/50 border border-line/50 rounded-lg px-4 py-3 text-ink focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20"
               >
                 <option value="">Select target language</option>
                 <option v-for="lang in languages" :key="lang.code" :value="lang.code">
@@ -93,7 +93,7 @@
                 </option>
               </select>
             </div>
-            <div v-else class="text-lg text-slate-200">
+            <div v-else class="text-lg text-ink">
               {{ displayName }}
             </div>
 
@@ -111,7 +111,7 @@
 
           <!-- Course Size -->
           <div>
-            <label class="block text-xs font-medium text-slate-400 uppercase tracking-wide mb-3">
+            <label class="block text-xs font-medium text-muted uppercase tracking-wide mb-3">
               Course Size
             </label>
             <div class="flex gap-2">
@@ -122,7 +122,7 @@
                 class="flex-1 px-4 py-3 rounded-lg border transition-all text-sm"
                 :class="seedCount === size.seeds
                   ? 'bg-emerald-600/20 border-emerald-500/50 text-emerald-400'
-                  : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
+                  : 'bg-surface-2/30 border-line/50 text-muted hover:border-line/50'"
               >
                 <div class="font-medium">{{ size.label }}</div>
                 <div class="text-xs opacity-70 mt-0.5">{{ size.seeds }} seeds</div>
@@ -134,7 +134,7 @@
           <div class="grid grid-cols-2 gap-4">
             <!-- Agent Engine -->
             <div>
-              <label class="block text-xs font-medium text-slate-400 uppercase tracking-wide mb-3">
+              <label class="block text-xs font-medium text-muted uppercase tracking-wide mb-3">
                 Agent Engine
               </label>
               <div class="flex gap-2">
@@ -145,7 +145,7 @@
                   class="flex-1 px-3 py-2 rounded-lg border transition-all text-sm"
                   :class="agentEngine === engine.id
                     ? 'bg-emerald-600/20 border-emerald-500/50 text-emerald-400'
-                    : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
+                    : 'bg-surface-2/30 border-line/50 text-muted hover:border-line/50'"
                 >
                   <div class="font-medium">{{ engine.label }}</div>
                   <div class="text-xs opacity-70 mt-0.5">{{ engine.description }}</div>
@@ -155,7 +155,7 @@
 
             <!-- Machine Profile -->
             <div>
-              <label class="block text-xs font-medium text-slate-400 uppercase tracking-wide mb-3">
+              <label class="block text-xs font-medium text-muted uppercase tracking-wide mb-3">
                 Machine Profile
               </label>
               <div class="flex gap-2">
@@ -166,7 +166,7 @@
                   class="flex-1 px-3 py-2 rounded-lg border transition-all text-sm"
                   :class="selectedMachineProfile === profile.id
                     ? 'bg-purple-600/20 border-purple-500/50 text-purple-400'
-                    : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
+                    : 'bg-surface-2/30 border-line/50 text-muted hover:border-line/50'"
                 >
                   <div class="font-medium">{{ profile.name }}</div>
                   <div class="text-xs opacity-70 mt-0.5">{{ profile.description }}</div>
@@ -177,7 +177,7 @@
 
           <!-- Build Mode (hidden by default - legacy feature) -->
           <div v-if="showLegacyMode">
-            <label class="block text-xs font-medium text-slate-400 uppercase tracking-wide mb-3">
+            <label class="block text-xs font-medium text-muted uppercase tracking-wide mb-3">
               Build Mode
             </label>
             <div class="flex gap-2">
@@ -188,7 +188,7 @@
                 class="flex-1 px-4 py-3 rounded-lg border transition-all text-sm"
                 :class="buildMode === mode.id
                   ? 'bg-cyan-600/20 border-cyan-500/50 text-cyan-400'
-                  : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
+                  : 'bg-surface-2/30 border-line/50 text-muted hover:border-line/50'"
               >
                 <div class="font-medium">{{ mode.label }}</div>
                 <div class="text-xs opacity-70 mt-0.5">{{ mode.description }}</div>
@@ -201,7 +201,7 @@
             <button
               @click="createCourse"
               :disabled="!canCreateCourse"
-              class="w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white font-medium rounded-lg transition-colors"
+              class="w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white font-medium rounded-lg transition-colors"
             >
               Create Course
             </button>
@@ -212,10 +212,10 @@
       <!-- Phase Progress (Phases 1-3 mode) - Legacy, hidden by default -->
       <section v-if="showLegacyMode && buildMode === 'phases'" class="space-y-4">
         <div class="flex items-center justify-between">
-          <h2 class="text-sm font-medium text-slate-400 uppercase tracking-wide">Phase Progress</h2>
-          <div v-if="etaDisplay" class="text-sm text-slate-400">
+          <h2 class="text-sm font-medium text-muted uppercase tracking-wide">Phase Progress</h2>
+          <div v-if="etaDisplay" class="text-sm text-muted">
             <span class="text-emerald-400">~{{ etaDisplay.time }}</span>
-            <span class="text-slate-500"> at {{ etaDisplay.rate }}</span>
+            <span class="text-faint"> at {{ etaDisplay.rate }}</span>
           </div>
         </div>
 
@@ -230,8 +230,8 @@
               <div class="flex items-center gap-3">
                 <span class="status-dot" :class="statusDotClassFor(phase.status)"></span>
                 <div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wide">Phase {{ phase.number }}</div>
-                  <div class="text-sm font-medium text-slate-200">{{ phase.name }}</div>
+                  <div class="text-xs text-faint uppercase tracking-wide">Phase {{ phase.number }}</div>
+                  <div class="text-sm font-medium text-ink">{{ phase.name }}</div>
                 </div>
               </div>
               <span
@@ -243,7 +243,7 @@
             </div>
 
             <!-- Progress Bar -->
-            <div class="h-1.5 bg-slate-700/50 rounded-full overflow-hidden mb-2">
+            <div class="h-1.5 bg-surface-2/50 rounded-full overflow-hidden mb-2">
               <div
                 class="h-full transition-all duration-500 rounded-full"
                 :class="progressBarClass(phase.status)"
@@ -253,10 +253,10 @@
 
             <!-- Count -->
             <div class="flex items-baseline gap-1 font-mono text-sm">
-              <span class="text-slate-200">{{ phase.completed.toLocaleString() }}</span>
-              <span class="text-slate-500">/</span>
-              <span class="text-slate-500">{{ phase.total.toLocaleString() }}</span>
-              <span class="text-slate-600 text-xs ml-1">{{ phase.unit }}</span>
+              <span class="text-ink">{{ phase.completed.toLocaleString() }}</span>
+              <span class="text-faint">/</span>
+              <span class="text-faint">{{ phase.total.toLocaleString() }}</span>
+              <span class="text-faint text-xs ml-1">{{ phase.unit }}</span>
             </div>
           </div>
         </div>
@@ -265,37 +265,37 @@
       <!-- Course Builder Progress (Builder mode) -->
       <section v-else class="space-y-4">
         <div class="flex items-center justify-between">
-          <h2 class="text-sm font-medium text-slate-400 uppercase tracking-wide">Course Builder</h2>
-          <div v-if="builderProgress.status === 'running'" class="text-sm text-slate-400">
+          <h2 class="text-sm font-medium text-muted uppercase tracking-wide">Course Builder</h2>
+          <div v-if="builderProgress.status === 'running'" class="text-sm text-muted">
             <span class="text-cyan-400">Building...</span>
           </div>
         </div>
 
-        <div class="bg-slate-800/30 border rounded-lg p-6"
-          :class="builderProgress.status === 'running' ? 'border-cyan-500/30' : 'border-slate-700/50'"
+        <div class="bg-surface/30 border rounded-lg p-6"
+          :class="builderProgress.status === 'running' ? 'border-cyan-500/30' : 'border-line/50'"
         >
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-3">
-              <span class="status-dot" :class="builderProgress.status === 'running' ? 'bg-cyan-500 animate-pulse' : builderProgress.status === 'complete' ? 'bg-emerald-500' : 'bg-slate-500'"></span>
+              <span class="status-dot" :class="builderProgress.status === 'running' ? 'bg-cyan-500 animate-pulse' : builderProgress.status === 'complete' ? 'bg-emerald-500' : 'bg-surface-3'"></span>
               <div>
-                <div class="text-xs text-slate-500 uppercase tracking-wide">
+                <div class="text-xs text-faint uppercase tracking-wide">
                   {{ parallelPhase === 'finalizing' ? 'Finalizing' : '10 Parallel Agents' }}
                 </div>
-                <div class="text-sm font-medium text-slate-200">
+                <div class="text-sm font-medium text-ink">
                   {{ parallelPhase === 'finalizing' ? 'Merging to Live' : 'Drafting Seeds' }}
                 </div>
               </div>
             </div>
             <span
               class="text-xs uppercase tracking-wide px-2 py-0.5 rounded"
-              :class="builderProgress.status === 'running' ? 'bg-cyan-500/20 text-cyan-400' : builderProgress.status === 'complete' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-700/50 text-slate-500'"
+              :class="builderProgress.status === 'running' ? 'bg-cyan-500/20 text-cyan-400' : builderProgress.status === 'complete' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-surface-2/50 text-faint'"
             >
               {{ builderProgress.status }}
             </span>
           </div>
 
           <!-- Progress Bar -->
-          <div class="h-2 bg-slate-700/50 rounded-full overflow-hidden mb-3 flex">
+          <div class="h-2 bg-surface-2/50 rounded-full overflow-hidden mb-3 flex">
             <!-- Draft progress (cyan) -->
             <div class="h-full bg-cyan-500 transition-all duration-500"
               :style="{ width: `${draftsExpected > 0 ? Math.min(100, draftsSubmitted / draftsExpected * 100) : 0}%` }">
@@ -312,38 +312,38 @@
               <div class="text-2xl font-mono font-semibold text-cyan-400">
                 {{ draftsSubmitted }}
               </div>
-              <div class="text-xs text-slate-500">/ {{ draftsExpected }} drafted</div>
+              <div class="text-xs text-faint">/ {{ draftsExpected }} drafted</div>
             </div>
             <div>
               <div class="text-2xl font-mono font-semibold text-emerald-400">
                 {{ builderProgress.currentSeed }}
               </div>
-              <div class="text-xs text-slate-500">/ {{ builderProgress.totalSeeds || seedCount }} finalized</div>
+              <div class="text-xs text-faint">/ {{ builderProgress.totalSeeds || seedCount }} finalized</div>
             </div>
             <div>
-              <div class="text-2xl font-mono font-semibold text-slate-200">
+              <div class="text-2xl font-mono font-semibold text-ink">
                 {{ builderProgress.legosInserted }}
               </div>
-              <div class="text-xs text-slate-500 uppercase tracking-wide">LEGOs</div>
+              <div class="text-xs text-faint uppercase tracking-wide">LEGOs</div>
             </div>
             <div>
-              <div class="text-2xl font-mono font-semibold text-slate-200">
+              <div class="text-2xl font-mono font-semibold text-ink">
                 {{ builderProgress.phrasesInserted }}
               </div>
-              <div class="text-xs text-slate-500 uppercase tracking-wide">Phrases</div>
+              <div class="text-xs text-faint uppercase tracking-wide">Phrases</div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Calibration Review Queue -->
-      <section v-if="calibrationReview.pending > 0 || calibrationReview.approved > 0" class="bg-slate-800/30 border border-amber-500/30 rounded-lg p-4">
+      <section v-if="calibrationReview.pending > 0 || calibrationReview.approved > 0" class="bg-surface/30 border border-amber-500/30 rounded-lg p-4">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
             <span class="status-dot bg-amber-500 animate-pulse"></span>
             <div>
-              <div class="text-sm font-medium text-slate-200">Calibration Review Queue</div>
-              <div class="text-xs text-slate-500">
+              <div class="text-sm font-medium text-ink">Calibration Review Queue</div>
+              <div class="text-xs text-faint">
                 {{ calibrationReview.approved }}/{{ calibrationReview.total }} approved
                 <span v-if="calibrationReview.pending > 0" class="text-amber-400 ml-1">
                   &middot; {{ calibrationReview.pending }} awaiting review
@@ -365,12 +365,12 @@
         <div
           v-for="stat in stats"
           :key="stat.label"
-          class="bg-slate-800/30 border border-slate-700/50 rounded-lg px-4 py-3"
+          class="bg-surface/30 border border-line/50 rounded-lg px-4 py-3"
         >
-          <div class="text-2xl font-mono font-semibold text-slate-200">
+          <div class="text-2xl font-mono font-semibold text-ink">
             {{ stat.value.toLocaleString() }}
           </div>
-          <div class="text-xs text-slate-500 uppercase tracking-wide mt-1">
+          <div class="text-xs text-faint uppercase tracking-wide mt-1">
             {{ stat.label }}
           </div>
         </div>
@@ -379,12 +379,12 @@
       <!-- Job Control -->
       <section
         v-if="jobStatus !== 'idle' || hasWorkToDo"
-        class="bg-slate-800/30 border border-slate-700/50 rounded-lg p-6"
+        class="bg-surface/30 border border-line/50 rounded-lg p-6"
       >
         <div class="flex items-center justify-between">
           <div>
             <div class="flex items-center gap-3 mb-2">
-              <h3 class="text-sm font-medium text-slate-300 uppercase tracking-wide">Job Control</h3>
+              <h3 class="text-sm font-medium text-ink uppercase tracking-wide">Job Control</h3>
               <span
                 v-if="isStuck"
                 class="px-2 py-0.5 bg-amber-500/20 border border-amber-500/30 rounded text-xs text-amber-400 uppercase tracking-wide"
@@ -393,14 +393,14 @@
               </span>
             </div>
 
-            <div v-if="jobStatus === 'running'" class="text-sm text-slate-400 space-y-1">
-              <div>Elapsed: <span class="font-mono text-slate-300">{{ elapsedTime }}</span></div>
-              <div v-if="buildMode === 'phases'">Workers: <span class="font-mono text-slate-300">{{ activeWorkers }} active</span></div>
-              <div v-if="buildMode === 'builder'">Seed: <span class="font-mono text-slate-300">{{ builderProgress.currentSeed }} / {{ builderProgress.totalSeeds }}</span></div>
-              <div v-if="lastActivityAgo">Last activity: <span class="font-mono text-slate-300">{{ lastActivityAgo }}</span></div>
+            <div v-if="jobStatus === 'running'" class="text-sm text-muted space-y-1">
+              <div>Elapsed: <span class="font-mono text-ink">{{ elapsedTime }}</span></div>
+              <div v-if="buildMode === 'phases'">Workers: <span class="font-mono text-ink">{{ activeWorkers }} active</span></div>
+              <div v-if="buildMode === 'builder'">Seed: <span class="font-mono text-ink">{{ builderProgress.currentSeed }} / {{ builderProgress.totalSeeds }}</span></div>
+              <div v-if="lastActivityAgo">Last activity: <span class="font-mono text-ink">{{ lastActivityAgo }}</span></div>
             </div>
 
-            <div v-else-if="hasWorkToDo" class="text-sm text-slate-400">
+            <div v-else-if="hasWorkToDo" class="text-sm text-muted">
               <template v-if="buildMode === 'builder'">
                 Ready to build {{ seedCount }} seeds with single agent
               </template>
@@ -416,7 +416,7 @@
               v-if="showLegacyMode && buildMode === 'phases' && jobStatus === 'idle' && hasIncompletePhases && !previewExpanded"
               @click="fetchPreview"
               :disabled="previewLoading"
-              class="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 text-slate-200 font-medium rounded-lg transition-colors flex items-center gap-2"
+              class="px-5 py-2.5 bg-surface-2 hover:bg-surface-3 disabled:opacity-50 text-ink font-medium rounded-lg transition-colors flex items-center gap-2"
             >
               <svg v-if="previewLoading" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -447,7 +447,7 @@
             <button
               v-if="previewExpanded"
               @click="closePreview"
-              class="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium rounded-lg transition-colors"
+              class="px-5 py-2.5 bg-surface-2 hover:bg-surface-3 text-ink font-medium rounded-lg transition-colors"
             >
               Cancel
             </button>
@@ -471,7 +471,7 @@
               v-if="jobStatus === 'running'"
               @click="stopJob"
               :disabled="jobStatus === 'stopping'"
-              class="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 text-slate-200 font-medium rounded-lg transition-colors"
+              class="px-5 py-2.5 bg-surface-2 hover:bg-surface-3 disabled:opacity-50 text-ink font-medium rounded-lg transition-colors"
             >
               {{ jobStatus === 'stopping' ? 'Stopping...' : 'Stop Job' }}
             </button>
@@ -490,12 +490,12 @@
         <!-- Inline Preview Panel -->
         <div
           v-if="previewExpanded && previewData"
-          class="border-t border-slate-700/50 px-6 py-5 bg-slate-800/20"
+          class="border-t border-line/50 px-6 py-5 bg-surface/20"
         >
           <div class="flex items-start justify-between mb-4">
             <div>
-              <h4 class="text-sm font-medium text-slate-300 uppercase tracking-wide mb-1">Dry Run Preview</h4>
-              <p class="text-sm text-slate-400">{{ previewData.summary }}</p>
+              <h4 class="text-sm font-medium text-ink uppercase tracking-wide mb-1">Dry Run Preview</h4>
+              <p class="text-sm text-muted">{{ previewData.summary }}</p>
             </div>
             <span class="text-xs text-emerald-400 uppercase tracking-wide px-2 py-1 bg-emerald-500/10 rounded">
               Phase {{ previewData.phase }}
@@ -504,57 +504,57 @@
 
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <!-- Work to do -->
-            <div class="bg-slate-800/50 rounded-lg p-4">
-              <div class="text-xs text-slate-500 uppercase tracking-wide mb-1">Work</div>
-              <div class="text-2xl font-semibold text-slate-200">
+            <div class="bg-surface/50 rounded-lg p-4">
+              <div class="text-xs text-faint uppercase tracking-wide mb-1">Work</div>
+              <div class="text-2xl font-semibold text-ink">
                 {{ previewData.legosToProcess || previewData.seedsToProcess || 0 }}
               </div>
-              <div class="text-xs text-slate-400">
+              <div class="text-xs text-muted">
                 {{ previewData.phase === 3 ? 'LEGOs' : 'seeds' }} to process
               </div>
             </div>
 
             <!-- Mode -->
-            <div class="bg-slate-800/50 rounded-lg p-4">
-              <div class="text-xs text-slate-500 uppercase tracking-wide mb-1">Mode</div>
+            <div class="bg-surface/50 rounded-lg p-4">
+              <div class="text-xs text-faint uppercase tracking-wide mb-1">Mode</div>
               <div class="text-lg font-semibold" :class="previewData.isResumeMode ? 'text-amber-400' : 'text-emerald-400'">
                 {{ previewData.isResumeMode ? 'Resume' : 'Fresh' }}
               </div>
-              <div class="text-xs text-slate-400">
+              <div class="text-xs text-muted">
                 {{ previewData.isResumeMode ? 'Continuing work' : 'Starting new' }}
               </div>
             </div>
 
             <!-- Workers -->
-            <div class="bg-slate-800/50 rounded-lg p-4">
-              <div class="text-xs text-slate-500 uppercase tracking-wide mb-1">Workers</div>
-              <div class="text-lg font-semibold text-slate-200">
+            <div class="bg-surface/50 rounded-lg p-4">
+              <div class="text-xs text-faint uppercase tracking-wide mb-1">Workers</div>
+              <div class="text-lg font-semibold text-ink">
                 {{ previewData.browserTabs }} &times; {{ previewData.agentsPerBrowser }}
               </div>
-              <div class="text-xs text-slate-400">
+              <div class="text-xs text-muted">
                 {{ previewData.totalAgents }} total agents
               </div>
             </div>
 
             <!-- Estimate -->
-            <div class="bg-slate-800/50 rounded-lg p-4">
-              <div class="text-xs text-slate-500 uppercase tracking-wide mb-1">Estimate</div>
-              <div class="text-lg font-semibold text-slate-200">
+            <div class="bg-surface/50 rounded-lg p-4">
+              <div class="text-xs text-faint uppercase tracking-wide mb-1">Estimate</div>
+              <div class="text-lg font-semibold text-ink">
                 ~{{ previewData.estimatedMinutes }} min
               </div>
-              <div class="text-xs text-slate-400">
+              <div class="text-xs text-muted">
                 at {{ previewData.estimatedRate }} {{ previewData.phase === 3 ? 'LEGOs' : 'seeds' }}/min
               </div>
             </div>
           </div>
 
           <!-- LEGO type breakdown (Phase 3 only) -->
-          <div v-if="previewData.typeBreakdown && Object.keys(previewData.typeBreakdown).length > 0" class="mt-4 pt-4 border-t border-slate-700/30">
-            <div class="text-xs text-slate-500 uppercase tracking-wide mb-2">LEGO Types</div>
+          <div v-if="previewData.typeBreakdown && Object.keys(previewData.typeBreakdown).length > 0" class="mt-4 pt-4 border-t border-line/30">
+            <div class="text-xs text-faint uppercase tracking-wide mb-2">LEGO Types</div>
             <div class="flex gap-4">
               <div v-for="(count, type) in previewData.typeBreakdown" :key="type" class="text-sm">
-                <span class="text-slate-400">{{ type }}-type:</span>
-                <span class="text-slate-200 font-mono ml-1">{{ count }}</span>
+                <span class="text-muted">{{ type }}-type:</span>
+                <span class="text-ink font-mono ml-1">{{ count }}</span>
               </div>
             </div>
           </div>
@@ -567,9 +567,9 @@
       </section>
 
       <!-- Pipeline Stepper -->
-      <section v-if="courseCode && pipelineStatus" class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden px-6 py-5">
+      <section v-if="courseCode && pipelineStatus" class="bg-surface/30 border border-line/50 rounded-lg overflow-hidden px-6 py-5">
         <div class="flex items-center justify-between mb-4">
-          <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Pipeline</span>
+          <span class="text-sm font-medium text-ink uppercase tracking-wide">Pipeline</span>
           <div class="flex items-center gap-3">
             <span v-if="pipelineStatus.is_running" class="flex items-center gap-1.5 text-xs text-emerald-400">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Running
@@ -604,20 +604,20 @@
               <span v-else-if="stageCurrent(stage)" class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span>
               <span>{{ stage.label }}</span>
             </div>
-            <span v-if="idx < pipelineStages.length - 1" class="text-slate-700">&rarr;</span>
+            <span v-if="idx < pipelineStages.length - 1" class="text-faint">&rarr;</span>
           </template>
         </div>
       </section>
 
       <!-- Seed Grid (Rebuild Visualization) -->
-      <section v-if="seedGrid.length > 0" class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
+      <section v-if="seedGrid.length > 0" class="bg-surface/30 border border-line/50 rounded-lg overflow-hidden">
         <button
           @click="seedGridExpanded = !seedGridExpanded"
-          class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800/50 transition-colors"
+          class="w-full px-6 py-4 flex items-center justify-between hover:bg-surface/50 transition-colors"
         >
           <div class="flex items-center gap-3">
-            <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Seed Grid</span>
-            <span class="text-xs text-slate-500">
+            <span class="text-sm font-medium text-ink uppercase tracking-wide">Seed Grid</span>
+            <span class="text-xs text-faint">
               {{ seedGridFinalized }}/{{ seedGrid.length }} finalized
             </span>
             <span v-if="seedGridDrafted > 0" class="text-xs text-amber-400">
@@ -628,7 +628,7 @@
             </span>
           </div>
           <svg
-            class="w-5 h-5 text-slate-400 transition-transform duration-200"
+            class="w-5 h-5 text-muted transition-transform duration-200"
             :class="{ 'rotate-180': seedGridExpanded }"
             fill="none" stroke="currentColor" viewBox="0 0 24 24"
           >
@@ -636,21 +636,21 @@
           </svg>
         </button>
 
-        <div v-show="seedGridExpanded" class="border-t border-slate-700/50 px-6 py-5">
+        <div v-show="seedGridExpanded" class="border-t border-line/50 px-6 py-5">
           <!-- Rebuild Controls -->
           <div class="flex items-center gap-4 mb-4">
             <div class="flex items-center gap-2">
-              <label class="text-xs text-slate-400">From</label>
+              <label class="text-xs text-muted">From</label>
               <input
                 v-model.number="rebuildFrom"
                 type="number" min="1" :max="rebuildTo"
-                class="w-20 bg-slate-700/50 border border-slate-600/50 rounded px-2 py-1 text-sm text-slate-200 font-mono"
+                class="w-20 bg-surface-2/50 border border-line/50 rounded px-2 py-1 text-sm text-ink font-mono"
               />
-              <label class="text-xs text-slate-400">To</label>
+              <label class="text-xs text-muted">To</label>
               <input
                 v-model.number="rebuildTo"
                 type="number" :min="rebuildFrom" max="999"
-                class="w-20 bg-slate-700/50 border border-slate-600/50 rounded px-2 py-1 text-sm text-slate-200 font-mono"
+                class="w-20 bg-surface-2/50 border border-line/50 rounded px-2 py-1 text-sm text-ink font-mono"
               />
             </div>
             <button
@@ -672,7 +672,7 @@
               </button>
               <button
                 @click="rebuildConfirming = false"
-                class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded-lg transition-colors"
+                class="px-3 py-1.5 bg-surface-2 hover:bg-surface-3 text-ink text-sm rounded-lg transition-colors"
               >
                 Cancel
               </button>
@@ -691,8 +691,8 @@
           </div>
 
           <!-- Legend -->
-          <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/80"></span> Empty</span>
+          <div class="flex items-center gap-4 mt-3 text-xs text-faint">
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-surface-2/80"></span> Empty</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500/80"></span> Drafted</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-red-500/80"></span> Collision</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Finalized</span>
@@ -701,15 +701,15 @@
       </section>
 
       <!-- Wipe Course -->
-      <section class="bg-slate-800/30 border border-red-900/30 rounded-lg overflow-hidden">
+      <section class="bg-surface/30 border border-red-900/30 rounded-lg overflow-hidden">
         <div class="px-6 py-4 flex items-center justify-between">
           <div class="flex items-center gap-3">
             <span class="text-sm font-medium text-red-400 uppercase tracking-wide">Wipe Course</span>
-            <span class="text-xs text-slate-500">Delete all content, keep course shell</span>
+            <span class="text-xs text-faint">Delete all content, keep course shell</span>
           </div>
           <div class="flex items-center gap-3">
-            <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer">
-              <input type="checkbox" v-model="wipeKeepAudio" class="rounded border-slate-600 bg-slate-700" />
+            <label class="flex items-center gap-2 text-xs text-muted cursor-pointer">
+              <input type="checkbox" v-model="wipeKeepAudio" class="rounded border-line bg-surface-2" />
               Keep audio
             </label>
             <button
@@ -731,7 +731,7 @@
               </button>
               <button
                 @click="wipeConfirming = false"
-                class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded-lg transition-colors"
+                class="px-3 py-1.5 bg-surface-2 hover:bg-surface-3 text-ink text-sm rounded-lg transition-colors"
               >
                 Cancel
               </button>
@@ -741,14 +741,14 @@
       </section>
 
       <!-- Event Log (Collapsible) -->
-      <section class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
+      <section class="bg-surface/30 border border-line/50 rounded-lg overflow-hidden">
         <button
           @click="logExpanded = !logExpanded"
-          class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800/50 transition-colors"
+          class="w-full px-6 py-4 flex items-center justify-between hover:bg-surface/50 transition-colors"
         >
           <div class="flex items-center gap-3">
-            <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Event Log</span>
-            <span class="text-xs text-slate-500">{{ events.length }} events</span>
+            <span class="text-sm font-medium text-ink uppercase tracking-wide">Event Log</span>
+            <span class="text-xs text-faint">{{ events.length }} events</span>
           </div>
           <div class="flex items-center gap-3">
             <span
@@ -759,7 +759,7 @@
               Live
             </span>
             <svg
-              class="w-5 h-5 text-slate-400 transition-transform duration-200"
+              class="w-5 h-5 text-muted transition-transform duration-200"
               :class="{ 'rotate-180': logExpanded }"
               fill="none" stroke="currentColor" viewBox="0 0 24 24"
             >
@@ -770,17 +770,17 @@
 
         <div
           v-show="logExpanded"
-          class="border-t border-slate-700/50 max-h-64 overflow-y-auto"
+          class="border-t border-line/50 max-h-64 overflow-y-auto"
         >
           <div
             v-for="event in events"
             :key="event.id"
-            class="px-6 py-2 border-b border-slate-700/30 last:border-0 flex items-start gap-4 text-sm"
+            class="px-6 py-2 border-b border-line/30 last:border-0 flex items-start gap-4 text-sm"
           >
-            <span class="font-mono text-slate-500 text-xs whitespace-nowrap">{{ event.time }}</span>
-            <span class="text-slate-300">{{ event.message }}</span>
+            <span class="font-mono text-faint text-xs whitespace-nowrap">{{ event.time }}</span>
+            <span class="text-ink">{{ event.message }}</span>
           </div>
-          <div v-if="events.length === 0" class="px-6 py-8 text-center text-slate-500 text-sm">
+          <div v-if="events.length === 0" class="px-6 py-8 text-center text-faint text-sm">
             No events yet
           </div>
         </div>
@@ -922,10 +922,10 @@ const pipelineStages = [
 ]
 
 function stageClass(stage, idx) {
-  if (!pipelineStatus.value) return 'bg-slate-800/50 text-slate-600'
+  if (!pipelineStatus.value) return 'bg-surface/50 text-faint'
   if (stageComplete(stage, idx)) return 'bg-emerald-500/10 text-emerald-400'
   if (stageCurrent(stage)) return 'bg-cyan-500/15 text-cyan-400 ring-1 ring-cyan-500/30'
-  return 'bg-slate-800/50 text-slate-600'
+  return 'bg-surface/50 text-faint'
 }
 
 function stageComplete(stage, idx) {
@@ -986,7 +986,7 @@ function seedCellClass(cell) {
   if (cell.status === 'complete') return 'bg-emerald-500/80'
   if (cell.status === 'drafted') return 'bg-amber-500/80'
   if (cell.status === 'collision' || cell.status === 'rework') return 'bg-red-500/80'
-  return 'bg-slate-700/80'
+  return 'bg-surface-2/80'
 }
 
 async function executeWipe() {
@@ -1002,6 +1002,7 @@ async function executeWipe() {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
 
+    if (!response.ok) throw new Error((await response.clone().json().catch(() => ({}))).error || `HTTP ${response.status}`)
     const data = await response.json()
     if (data.ok) {
       const parts = Object.entries(data.deleted || {}).filter(([, v]) => v > 0).map(([k, v]) => `${v} ${k}`).join(', ')
@@ -1052,6 +1053,7 @@ async function executeRebuild() {
       body: JSON.stringify({ from_seed: rebuildFrom.value, to_seed: rebuildTo.value, confirm: true })
     })
 
+    if (!response.ok) throw new Error((await response.clone().json().catch(() => ({}))).error || `HTTP ${response.status}`)
     const data = await response.json()
     if (data.ok) {
       addEvent(`Rebuild started: wiped ${data.legos_deleted} LEGOs + ${data.phrases_deleted} phrases for seeds ${rebuildFrom.value}-${rebuildTo.value}`)
@@ -1248,7 +1250,7 @@ const statusBadgeClass = computed(() => {
     case 'running': return 'bg-blue-500/20 border border-blue-500/30 text-blue-400'
     case 'stopping': return 'bg-amber-500/20 border border-amber-500/30 text-amber-400'
     case 'stuck': return 'bg-red-500/20 border border-red-500/30 text-red-400'
-    default: return 'bg-slate-700/50 text-slate-400'
+    default: return 'bg-surface-2/50 text-muted'
   }
 })
 
@@ -1257,7 +1259,7 @@ const statusDotClass = computed(() => {
     case 'running': return 'bg-blue-500 animate-pulse'
     case 'stopping': return 'bg-amber-500'
     case 'stuck': return 'bg-red-500'
-    default: return 'bg-slate-500'
+    default: return 'bg-surface-3'
   }
 })
 
@@ -1344,18 +1346,18 @@ function statusDotClassFor(status) {
     case 'complete': return 'bg-emerald-500'
     case 'partial': return 'bg-amber-500'
     case 'failed': return 'bg-red-500'
-    default: return 'bg-slate-500'
+    default: return 'bg-surface-3'
   }
 }
 
 function phaseCardClass(phase) {
-  const base = 'bg-slate-800/30 border rounded-lg p-4 transition-all'
+  const base = 'bg-surface/30 border rounded-lg p-4 transition-all'
   switch (phase.status) {
     case 'running': return `${base} border-blue-500/30`
     case 'complete': return `${base} border-emerald-500/30`
     case 'partial': return `${base} border-amber-500/30`
     case 'failed': return `${base} border-red-500/30`
-    default: return `${base} border-slate-700/50`
+    default: return `${base} border-line/50`
   }
 }
 
@@ -1365,7 +1367,7 @@ function statusLabelClass(status) {
     case 'complete': return 'bg-emerald-500/20 text-emerald-400'
     case 'partial': return 'bg-amber-500/20 text-amber-400'
     case 'failed': return 'bg-red-500/20 text-red-400'
-    default: return 'bg-slate-700/50 text-slate-500'
+    default: return 'bg-surface-2/50 text-faint'
   }
 }
 
@@ -1375,7 +1377,7 @@ function progressBarClass(status) {
     case 'complete': return 'bg-emerald-500'
     case 'partial': return 'bg-amber-500'
     case 'failed': return 'bg-red-500'
-    default: return 'bg-slate-600'
+    default: return 'bg-surface-3'
   }
 }
 
@@ -2042,5 +2044,39 @@ watch(selectedMachineProfile, (newProfile) => {
 
 .overflow-y-auto::-webkit-scrollbar-thumb:hover {
   background: theme('colors.slate.600');
+}
+
+/* ── LIGHT-MODE CONTRAST FIXES (dark mode untouched) ──
+   The status/badge palette uses Tailwind -400 colored TEXT, tuned for dark
+   surfaces. On light's white/near-white surfaces those fail WCAG (1.4–2.8:1).
+   Remap the colored TEXT utilities to deeper shades only under light, which pass
+   on both #fff (≥5:1) and the tinted /10–/20 pills (≥4.3:1) while keeping the
+   same hue identity. Backgrounds/borders stay as-is (theme-aware tints). */
+:global([data-theme="light"]) .text-emerald-400 { color: #047857; }   /* 1.92 → 5.48 on #fff */
+:global([data-theme="light"]) .text-emerald-500 { color: #047857; }   /* 2.54 → 5.48 */
+:global([data-theme="light"]) .text-cyan-400    { color: #0e7490; }   /* 1.81 → 5.36 */
+:global([data-theme="light"]) .text-amber-400   { color: #b45309; }   /* 1.67 → 5.02 */
+:global([data-theme="light"]) .text-blue-400    { color: #1d4ed8; }   /* 2.54 → 6.70 */
+:global([data-theme="light"]) .text-purple-400  { color: #7e22ce; }   /* 2.64 → 6.98 */
+:global([data-theme="light"]) .text-red-400     { color: #b91c1c; }   /* 2.77 → 6.47 */
+
+/* Card separation: panels use bg-surface/30 + border-line/50, which over the
+   slate canvas barely separate in light (fill 1.04:1, border ~1.12:1). Make the
+   card fill solid --surface (white) and the border solid --line under light so
+   they read as crisp white cards on the slate canvas (the design target).
+   Dark mode keeps the translucent look (these overrides are light-gated). */
+:global([data-theme="light"]) .bg-surface\/30 { background-color: var(--surface); }
+:global([data-theme="light"]) .bg-surface\/20 { background-color: var(--surface-2); }
+:global([data-theme="light"]) .bg-surface\/50 { background-color: var(--surface); }
+:global([data-theme="light"]) .border-line\/50 { border-color: var(--line); }
+:global([data-theme="light"]) .border-line\/30 { border-color: var(--line); }
+
+/* Scrollbar thumb is a hardcoded dark slate (theme() resolves to a fixed value,
+   doesn't flip) — too dark on a light panel; lighten it for light mode. */
+:global([data-theme="light"]) .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: theme('colors.slate.400');
+}
+:global([data-theme="light"]) .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.slate.500');
 }
 </style>

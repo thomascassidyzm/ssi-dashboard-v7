@@ -7,7 +7,7 @@
         <div class="progress-bar-container">
           <div class="progress-bar" :style="{ width: progressPercent + '%' }"></div>
         </div>
-        <span class="progress-label">{{ complete }} / {{ total }} seeds complete</span>
+        <span class="progress-label">{{ complete }} / {{ courseTotal || total }} seeds complete</span>
       </div>
       <div class="header-right">
         <select v-model="filter" class="filter-select">
@@ -24,7 +24,8 @@
         />
         <button
           class="btn-approve"
-          :disabled="complete < 300 || approving"
+          :disabled="courseTotal === 0 || complete < courseTotal || approving"
+          :title="courseTotal > 0 && complete < courseTotal ? `${courseTotal - complete} of ${courseTotal} seeds still need both languages` : ''"
           @click="approveSeeds"
         >
           {{ approving ? 'Approving...' : 'Approve Seeds' }}
@@ -130,6 +131,7 @@ const PAGE_SIZE = 50
 
 const seeds = ref([])
 const total = ref(0)
+const courseTotal = ref(0) // full course seed count (stable across filter/search)
 const complete = ref(0)
 const page = ref(1)
 const filter = ref('all')
@@ -145,7 +147,10 @@ const savedKey = ref(null)
 let savedTimer = null
 
 const totalPages = computed(() => Math.max(1, Math.ceil(total.value / PAGE_SIZE)))
-const progressPercent = computed(() => total.value > 0 ? (complete.value / total.value) * 100 : 0)
+const progressPercent = computed(() => {
+  const denom = courseTotal.value || total.value
+  return denom > 0 ? (complete.value / denom) * 100 : 0
+})
 
 function statusClass(seed) {
   if (seed.known_text && seed.target_text) return 'green'
@@ -181,6 +186,11 @@ async function loadSeeds() {
       seeds.value = data.seeds
       total.value = data.total
       complete.value = data.complete
+      // data.total is the FILTERED count; only an unfiltered load reflects the
+      // course's true seed count. Approval gates on the course's own size.
+      if (filter.value === 'all' && !search.value) {
+        courseTotal.value = data.total
+      }
     }
   } catch (err) {
     console.error('Failed to load seeds:', err)
@@ -299,7 +309,7 @@ onMounted(loadSeeds)
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0;
   white-space: nowrap;
 }
@@ -307,14 +317,14 @@ onMounted(loadSeeds)
 .progress-bar-container {
   width: 120px;
   height: 6px;
-  background: var(--color-graphite, #475569);
+  background: var(--color-graphite, var(--surface-3));
   border-radius: 3px;
   overflow: hidden;
 }
 
 .progress-bar {
   height: 100%;
-  background: var(--color-emerald, #06ffa5);
+  background: var(--accent-2);
   border-radius: 3px;
   transition: width 0.3s ease;
 }
@@ -322,7 +332,7 @@ onMounted(loadSeeds)
 .progress-label {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   white-space: nowrap;
 }
 
@@ -336,9 +346,9 @@ onMounted(loadSeeds)
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.8rem;
   padding: 0.4rem 0.75rem;
-  background: var(--color-shadow, #1e293b);
-  color: var(--color-paper, #f7f7f2);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  color: var(--color-paper, var(--ink));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 4px;
   cursor: pointer;
 }
@@ -347,14 +357,17 @@ onMounted(loadSeeds)
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.8rem;
   padding: 0.4rem 0.75rem;
-  background: var(--color-shadow, #1e293b);
-  color: var(--color-paper, #f7f7f2);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  color: var(--color-paper, var(--ink));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 4px;
   width: 160px;
 }
 .search-input::placeholder {
-  color: var(--color-graphite, #475569);
+  color: var(--color-graphite, var(--surface-3));
+}
+:root[data-theme="light"] .search-input::placeholder {
+  color: var(--faint);
 }
 
 .btn-approve {
@@ -363,7 +376,7 @@ onMounted(loadSeeds)
   font-weight: 600;
   padding: 0.4rem 1rem;
   background: var(--color-emerald, #06ffa5);
-  color: var(--color-void, #0f172a);
+  color: var(--color-void, var(--canvas));
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -377,12 +390,20 @@ onMounted(loadSeeds)
 .btn-approve:hover:not(:disabled) {
   opacity: 0.85;
 }
+:root[data-theme="light"] .btn-approve {
+  background: var(--accent-2);
+  color: #ffffff;
+}
 
 /* Table */
 .table-container {
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   overflow: hidden;
+}
+:root[data-theme="light"] .table-container {
+  border-color: var(--line);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
 .seed-table {
@@ -391,7 +412,7 @@ onMounted(loadSeeds)
 }
 
 .seed-table thead {
-  background: var(--color-shadow, #1e293b);
+  background: var(--color-shadow, var(--surface));
 }
 
 .seed-table th {
@@ -400,16 +421,16 @@ onMounted(loadSeeds)
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   padding: 0.75rem 1rem;
   text-align: left;
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .seed-table td {
   padding: 0.6rem 1rem;
   font-size: 0.85rem;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   border-bottom: 1px solid rgba(71, 85, 105, 0.3);
   vertical-align: middle;
 }
@@ -422,6 +443,13 @@ onMounted(loadSeeds)
   background: rgba(255, 255, 255, 0.055);
 }
 
+:root[data-theme="light"] .seed-row.row-alt {
+  background: var(--surface-2);
+}
+:root[data-theme="light"] .seed-row:hover {
+  background: var(--surface-3);
+}
+
 .col-num {
   width: 60px;
   white-space: nowrap;
@@ -430,7 +458,7 @@ onMounted(loadSeeds)
 .seed-number {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.8rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   margin-right: 0.5rem;
 }
 
@@ -440,12 +468,14 @@ onMounted(loadSeeds)
   height: 8px;
   border-radius: 50%;
 }
-.status-dot.green { background: #34d399; }
+.status-dot.green { background: var(--accent-2); }
 .status-dot.yellow { background: #fbbf24; }
 .status-dot.red { background: #f87171; }
+:root[data-theme="light"] .status-dot.yellow { background: #d97706; }
+:root[data-theme="light"] .status-dot.red { background: #dc2626; }
 
 .col-canonical {
-  color: var(--color-paper-dim, #64748b);
+  color: var(--color-paper-dim, var(--faint));
   font-style: italic;
 }
 
@@ -456,9 +486,15 @@ onMounted(loadSeeds)
 .editable:hover {
   background: rgba(255, 255, 255, 0.04);
 }
+:root[data-theme="light"] .editable:hover {
+  background: var(--surface-3);
+}
 
 .editable .empty {
-  color: var(--color-graphite, #475569);
+  color: var(--color-graphite, var(--surface-3));
+}
+:root[data-theme="light"] .editable .empty {
+  color: var(--faint);
 }
 
 .cell-wrap {
@@ -468,7 +504,7 @@ onMounted(loadSeeds)
 }
 
 .save-tick {
-  color: #34d399;
+  color: var(--accent-2);
   font-size: 1rem;
   font-weight: 700;
   flex-shrink: 0;
@@ -493,9 +529,9 @@ onMounted(loadSeeds)
   font-family: inherit;
   font-size: 0.85rem;
   padding: 0.25rem 0.4rem;
-  background: var(--color-void, #0f172a);
-  color: var(--color-paper, #f7f7f2);
-  border: 1px solid var(--color-tungsten, #ffa630);
+  background: var(--color-void, var(--canvas));
+  color: var(--color-paper, var(--ink));
+  border: 1px solid var(--color-tungsten, var(--accent));
   border-radius: 3px;
   outline: none;
 }
@@ -503,7 +539,7 @@ onMounted(loadSeeds)
 .loading-cell {
   text-align: center;
   padding: 2rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-style: italic;
 }
 
@@ -520,9 +556,9 @@ onMounted(loadSeeds)
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.8rem;
   padding: 0.4rem 0.75rem;
-  background: var(--color-slate, #334155);
-  color: var(--color-paper, #f7f7f2);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  color: var(--color-paper, var(--ink));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 4px;
   cursor: pointer;
 }
@@ -531,13 +567,20 @@ onMounted(loadSeeds)
   cursor: not-allowed;
 }
 .pagination button:hover:not(:disabled) {
-  background: var(--color-graphite, #475569);
+  background: var(--color-graphite, var(--surface-3));
 }
 
 .page-info {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.8rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
+}
+
+/* Light-mode: faint --surface-3 borders disappear on white inputs/buttons; use --line */
+:root[data-theme="light"] .filter-select,
+:root[data-theme="light"] .search-input,
+:root[data-theme="light"] .pagination button {
+  border-color: var(--line);
 }
 
 @media (max-width: 800px) {

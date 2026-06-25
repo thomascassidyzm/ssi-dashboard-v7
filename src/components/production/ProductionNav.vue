@@ -74,26 +74,26 @@ function isActive(routeName) {
   display: flex;
   gap: 0.5rem;
   padding: 1rem;
-  background: var(--color-shadow, #1e293b);
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border-bottom: 1px solid var(--line);
 }
 
 .nav-item {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   padding: 0.5rem 1rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-decoration: none;
   border-radius: 4px;
   transition: all 0.2s ease;
 }
 
 .nav-item:hover {
-  color: var(--color-paper, #f7f7f2);
-  background: var(--color-slate, #334155);
+  color: var(--color-paper, var(--ink));
+  background: var(--color-slate, var(--surface-2));
 }
 
 .nav-item.active {
-  color: var(--color-tungsten, #ffa630);
-  background: var(--color-slate, #334155);
+  color: var(--color-tungsten, var(--accent));
+  background: var(--color-slate, var(--surface-2));
 }
 </style>

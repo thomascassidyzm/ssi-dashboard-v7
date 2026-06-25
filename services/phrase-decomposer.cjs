@@ -79,14 +79,34 @@ function consumeOneToken(residue, charLevel) {
   return { token: residue, rest: '' }
 }
 
+// A "word char" for boundary tests: letters, marks (combining/diacritics),
+// digits. Whitespace, punctuation, and end-of-string are boundaries.
+const WORD_CHAR = /[\p{L}\p{M}\p{N}]/u
+function isBoundaryAt(text, pos) {
+  if (pos < 0 || pos >= text.length) return true // start / end
+  return !WORD_CHAR.test(text[pos])
+}
+
 // Try to match the longest vocabulary entry starting at position 0 of
 // `residue`. Vocabulary is pre-sorted longest-first, so the first hit wins.
 // Returns the matched lego or null.
-function findLongestMatch(residue, vocabulary) {
+function findLongestMatch(residue, vocabulary, charLevel) {
   for (const lego of vocabulary) {
     const t = lego.target_text
     if (!t) continue
-    if (residue.startsWith(t)) return lego
+    // Case-insensitive, FIXED-LENGTH prefix compare. We fold case for the
+    // match test only; the caller slices the ORIGINAL surface by t.length, so
+    // the displayed casing and the reassembly/integrity contract are both
+    // preserved. Comparing exactly t.length chars means accent/ß-style
+    // case expansions can only fail-to-match (→ ghost), never corrupt the
+    // slice length. Fixes sentence-initial capitals (Quiero/Ich/No) ghosting.
+    if (residue.length < t.length) continue
+    if (residue.slice(0, t.length).toLowerCase() !== t.toLowerCase()) continue
+    // Word-boundary guard for whitespace-delimited scripts: the match must END
+    // at a boundary, so a short LEGO ("el") can't match the prefix of a longer
+    // word ("ella"). CJK/char-level has a boundary at every char, so skip.
+    if (!charLevel && !isBoundaryAt(residue, t.length)) continue
+    return lego
   }
   return null
 }
@@ -162,12 +182,16 @@ function decomposeText(targetText, vocabulary) {
     const leadingWs = wsMatch ? wsMatch[1] : ''
     const matchStart = leadingWs ? residue.slice(leadingWs.length) : residue
 
-    const lego = findLongestMatch(matchStart, sorted)
+    const lego = findLongestMatch(matchStart, sorted, charLevel)
 
     if (lego) {
+      // Carry the ORIGINAL surface (case-preserving) — NOT lego.target_text —
+      // so case-insensitive matching can't corrupt reassembly, and the tile
+      // shows the phrase's actual casing.
+      const surface = matchStart.slice(0, lego.target_text.length)
       blocks.push({
         legoId: lego.lego_id,
-        target: leadingWs + lego.target_text,
+        target: leadingWs + surface,
         known: lego.known_text || '',
         isGhost: false
       })
@@ -204,6 +228,237 @@ function decomposeText(targetText, vocabulary) {
   }
 
   return blocks
+}
+
+// =============================================================================
+// Salient-anchored decomposition
+// =============================================================================
+
+// Find the parent LEGO's surface span in the phrase: case-folded, fixed-length
+// (so accent/case expansion can't drift the index), and — for whitespace-
+// delimited scripts — only at whole-word boundaries (so "한" can't match inside
+// "한국어"). CJK/char-level scripts have a boundary at every char.
+function findParentSpan(targetText, parentTarget, charLevel) {
+  if (!parentTarget) return null
+  const L = parentTarget.length
+  if (L === 0 || L > targetText.length) return null
+  const folded = parentTarget.toLowerCase()
+  for (let i = 0; i + L <= targetText.length; i++) {
+    if (targetText.slice(i, i + L).toLowerCase() !== folded) continue
+    // Whole-word boundary on both sides (whitespace, punctuation, or edge) so
+    // "한" can't match inside "한국어". CJK/char-level: every char is a boundary.
+    if (!charLevel && !(isBoundaryAt(targetText, i - 1) && isBoundaryAt(targetText, i + L))) continue
+    return { index: i, length: L }
+  }
+  return null
+}
+
+// Word spans (word-level scripts): [{ surface, start, end }] for each
+// non-whitespace run. Used by the INSERT matcher.
+function wordSpans(text) {
+  const out = []
+  const re = /\S+/g
+  let m
+  while ((m = re.exec(text)) !== null) out.push({ surface: m[0], start: m.index, end: m.index + m[0].length })
+  return out
+}
+const foldEq = (a, b) => a.toLowerCase() === b.toLowerCase()
+
+// INSERT match (Tom's rule: inserted words are NOT errors — the LEGO's legs are
+// present and in order, the words wedged between them are ghosts). Word-level
+// only. Finds the phrase span [first..last] where every parent word appears as
+// an ordered whole-word subsequence, with ≥1 non-parent word inside the span
+// (the ghost insert). Classic case: German/Dutch separable verbs and pronoun/
+// adverb interpolation ("habe gemacht" → "habe es gemacht").
+// Returns { start, end, parentWordSpans, ghostWordSpans } or null.
+function findInsertSpan(targetText, parentTarget) {
+  const parentWords = parentTarget.trim().split(/\s+/).filter(Boolean)
+  if (parentWords.length < 2) return null // a single-word LEGO can't be split by an insert
+  const words = wordSpans(targetText)
+  // Greedy earliest ordered subsequence match.
+  const matched = []
+  let j = 0
+  for (let i = 0; i < words.length && j < parentWords.length; i++) {
+    if (foldEq(words[i].surface, parentWords[j])) { matched.push(i); j++ }
+  }
+  if (j < parentWords.length) return null // not all parent words present in order
+  const first = matched[0], last = matched[matched.length - 1]
+  if (last - first + 1 === matched.length) return null // contiguous → exact path already handles it
+  const matchedSet = new Set(matched)
+  const parentWordSpans = matched.map(i => words[i])
+  const ghostWordSpans = []
+  for (let i = first; i <= last; i++) if (!matchedSet.has(i)) ghostWordSpans.push(words[i])
+  return { start: words[first].start, end: words[last].end, parentWordSpans, ghostWordSpans }
+}
+
+// Celtic initial-consonant mutations (Tom's rule: mutations are NOT errors — you
+// can't introduce every mutated form as its own LEGO). We forward-mutate the
+// LEGO's FIRST-WORD initial into each grammatical variant and retry the match,
+// so a mutated surface still anchors on its parent. Forward mutation of the
+// known LEGO is exact and bounded; de-mutation would be ambiguous (many-to-one).
+// Rules: [originalInitial, mutatedInitial], applied longest-initial-first.
+const MUTATION_RULES = {
+  cym: [ // Welsh: soft / nasal / aspirate
+    ['ll', 'l'], ['rh', 'r'],
+    ['c', 'g'], ['p', 'b'], ['t', 'd'], ['g', ''], ['b', 'f'], ['d', 'dd'], ['m', 'f'], // soft
+    ['c', 'ngh'], ['p', 'mh'], ['t', 'nh'], ['g', 'ng'], ['b', 'm'], ['d', 'n'],        // nasal
+    ['c', 'ch'], ['p', 'ph'], ['t', 'th'],                                              // aspirate
+  ],
+  gle: [ // Irish: lenition + eclipsis
+    ['b', 'bh'], ['c', 'ch'], ['d', 'dh'], ['f', 'fh'], ['g', 'gh'], ['m', 'mh'], ['p', 'ph'], ['s', 'sh'], ['t', 'th'], // lenition
+    ['b', 'mb'], ['c', 'gc'], ['d', 'nd'], ['f', 'bhf'], ['g', 'ng'], ['p', 'bp'], ['t', 'dt'],                          // eclipsis
+  ],
+  gla: [ // Scottish Gaelic: lenition
+    ['b', 'bh'], ['c', 'ch'], ['d', 'dh'], ['f', 'fh'], ['g', 'gh'], ['m', 'mh'], ['p', 'ph'], ['s', 'sh'], ['t', 'th'],
+  ],
+  bre: [ // Breton: soft + spirant (best-effort)
+    ['gw', 'w'], ['k', 'g'], ['p', 'b'], ['t', 'd'], ['g', "c'h"], ['b', 'v'], ['d', 'z'], ['m', 'v'], // soft
+    ['k', "c'h"], ['p', 'f'], ['t', 'z'],                                                              // spirant
+  ],
+}
+function mutationVariants(parentTarget, langPrefix) {
+  const rules = MUTATION_RULES[langPrefix]
+  if (!rules) return []
+  const m = parentTarget.match(/^(\s*)(\S+)([\s\S]*)$/)
+  if (!m) return []
+  const [, lead, firstWord, rest] = m
+  const lower = firstWord.toLowerCase()
+  const variants = new Set()
+  for (const [from, to] of rules) {
+    if (from.length > 0 && lower.startsWith(from)) {
+      // Mutation only rewrites the word-initial; the rest of the word keeps its
+      // surface (and casing). Mutated initials are inherently lower-case.
+      variants.add(lead + to + firstWord.slice(from.length) + rest)
+    }
+  }
+  variants.delete(parentTarget)
+  return [...variants]
+}
+
+// Unified parent anchor: exact → insert → mutation (retrying exact + insert with
+// each mutated LEGO surface). Returns a descriptor with `kind`, or null when the
+// parent genuinely can't be located — which the caller treats as a content/
+// production error (Tom's rule: a conjugated or absent LEGO is a generation
+// failure, not something to paper over).
+function findParentMatch(targetText, parentLego, charLevel, langPrefix) {
+  const pt = parentLego.target_text
+  // A LEGO's canonical surface sometimes carries sentence punctuation
+  // ("Muchas gracias.") that the phrase doesn't ("Muchas gracias pero…"). Try
+  // the raw form first, then a leading/trailing-punctuation-trimmed form.
+  const trimmed = pt.replace(/^[\p{P}\s]+|[\p{P}\s]+$/gu, '')
+  const surfaces = trimmed && trimmed !== pt ? [pt, trimmed] : [pt]
+
+  for (const s of surfaces) {
+    const exact = findParentSpan(targetText, s, charLevel)
+    if (exact) return { kind: 'exact', span: exact }
+    if (!charLevel) {
+      const ins = findInsertSpan(targetText, s)
+      if (ins) return { kind: 'insert', insert: ins }
+    }
+  }
+  if (!charLevel) {
+    for (const base of surfaces) {
+      for (const variant of mutationVariants(base, langPrefix)) {
+        const ex = findParentSpan(targetText, variant, charLevel)
+        if (ex) return { kind: 'mutation', span: ex }
+        const mi = findInsertSpan(targetText, variant)
+        if (mi) return { kind: 'mutation', insert: mi }
+      }
+    }
+  }
+  return null
+}
+
+/**
+ * Like decomposeText, but GUARANTEES the parent (salient) LEGO is anchored as
+ * its own block(s) whenever it's present — exactly, split by ghost inserts, or
+ * via a Celtic mutation. Every phrase belongs to its parent course_lego, so the
+ * salient is always KNOWN; this anchors it rather than leaving it to the greedy
+ * matcher.
+ *
+ * Returns { blocks, kind } where kind is one of:
+ *   'exact'    — parent surface present verbatim
+ *   'insert'   — parent legs present in order, ghost word(s) wedged between them
+ *   'mutation' — parent present under a Celtic initial-consonant mutation
+ *   'error'    — parent neither exact, inserted, nor mutated → conjugated or
+ *                absent. A PRODUCTION ERROR (the phrase doesn't cleanly contain
+ *                its LEGO). We still emit a salient-less greedy tiling so the
+ *                player renders something; the caller flags the error for review.
+ *   'no-parent'— no parent LEGO supplied (provenance gap, not a content error)
+ *
+ * @param {string} targetText
+ * @param {Array<{lego_id,target_text,known_text}>} vocabulary
+ * @param {{lego_id,target_text,known_text}|null} parentLego
+ * @param {string} [langPrefix] course code or target-lang prefix (for mutations)
+ */
+function decomposeAnchored(targetText, vocabulary, parentLego, langPrefix) {
+  if (!parentLego || !parentLego.target_text) {
+    return { blocks: decomposeText(targetText, vocabulary), kind: 'no-parent' }
+  }
+  const charLevel = isCharLevelScript(targetText)
+  const prefix = (langPrefix || '').split('_')[0]
+  const match = findParentMatch(targetText, parentLego, charLevel, prefix)
+  if (!match) {
+    // Conjugation or genuine absence — flag it (caller), but still render.
+    return { blocks: decomposeText(targetText, vocabulary), kind: 'error' }
+  }
+
+  // Carve the salient span. EXACT/MUTATION-exact → one salient block. INSERT →
+  // alternating salient legs + ghost inserts.
+  let spanStart, spanEnd
+  const salientBlocks = []
+  const known = parentLego.known_text || ''
+  if (match.span) {
+    spanStart = match.span.index
+    spanEnd = match.span.index + match.span.length
+    salientBlocks.push({
+      legoId: parentLego.lego_id,
+      target: targetText.slice(spanStart, spanEnd),
+      known, isGhost: false, isSalient: true,
+    })
+  } else {
+    const ins = match.insert
+    spanStart = ins.start
+    spanEnd = ins.end
+    // Walk every word in the span in order; attach inter-word whitespace to the
+    // FOLLOWING word's leading edge (mirrors decomposeText) so reassembly is exact.
+    const inSpan = [
+      ...ins.parentWordSpans.map(w => ({ ...w, parent: true })),
+      ...ins.ghostWordSpans.map(w => ({ ...w, parent: false })),
+    ].sort((a, b) => a.start - b.start)
+    let cursor = spanStart
+    let firstLeg = true
+    for (const w of inSpan) {
+      const lead = targetText.slice(cursor, w.start)
+      if (w.parent) {
+        salientBlocks.push({ legoId: parentLego.lego_id, target: lead + w.surface, known: firstLeg ? known : '', isGhost: false, isSalient: true })
+        firstLeg = false
+      } else {
+        salientBlocks.push({ legoId: null, target: lead + w.surface, known: '', isGhost: true })
+      }
+      cursor = w.end
+    }
+  }
+
+  const before = targetText.slice(0, spanStart)
+  const after = targetText.slice(spanEnd)
+  // decomposeText can't consume a trailing-whitespace-only residue, so peel the
+  // separator whitespace off the end of `before` and fold it onto the first
+  // salient block's leading edge (keeps the concat invariant exact).
+  const beforeContent = before.replace(/\s+$/, '')
+  const sepWs = before.slice(beforeContent.length)
+  if (sepWs && salientBlocks.length) salientBlocks[0].target = sepWs + salientBlocks[0].target
+
+  const blocks = []
+  if (beforeContent.length) blocks.push(...decomposeText(beforeContent, vocabulary))
+  blocks.push(...salientBlocks)
+  if (after.length) blocks.push(...decomposeText(after, vocabulary))
+
+  const recomposed = blocks.map(b => b.target).join('')
+  if (normaliseWhitespace(recomposed) !== normaliseWhitespace(targetText)) {
+    throw new Error(`decomposeAnchored: integrity violation — "${recomposed}" != "${targetText}"`)
+  }
+  return { blocks, kind: match.kind }
 }
 
 // =============================================================================
@@ -278,6 +533,7 @@ async function decomposePhrase(supabase, courseCode, seedNumber, targetText) {
 
 module.exports = {
   decomposeText,
+  decomposeAnchored,
   decomposePhrase,
   // Exported for testing/debugging; not part of the public surface
   _internal: {

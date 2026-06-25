@@ -1,28 +1,28 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
         <div class="flex items-center gap-4 mb-4">
-          <router-link to="/" class="text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-2">
+          <router-link to="/" class="text-accent-2 hover:opacity-80 inline-flex items-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
             </svg>
             Home
           </router-link>
-          <span class="text-slate-600">•</span>
-          <router-link to="/courses" class="text-emerald-400 hover:text-emerald-300">
+          <span class="text-faint">•</span>
+          <router-link to="/courses" class="text-accent-2 hover:opacity-80">
             Course Library
           </router-link>
         </div>
         <div v-if="course" class="flex items-start justify-between">
           <div>
-            <h1 class="text-4xl font-bold text-emerald-400 mb-2">
+            <h1 class="text-4xl font-bold text-accent-2 mb-2">
               {{ formatCourseCode(course.course_code) }}
             </h1>
-            <p class="text-slate-400">
+            <p class="text-muted">
               <template v-if="course.isEmpty">
-                {{ getCourseName(course.course_code) }} • <span class="text-amber-400">Ready to generate</span>
+                {{ getCourseName(course.course_code) }} • <span class="text-accent">Ready to generate</span>
               </template>
               <template v-else>
                 {{ course.total_seeds }} seeds • Version {{ course.version }}
@@ -54,21 +54,21 @@
 
       <!-- Loading State -->
       <div v-if="loading" class="text-center py-12">
-        <div class="text-slate-400">Loading course...</div>
+        <div class="text-muted">Loading course...</div>
       </div>
 
       <!-- Error State -->
       <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
-        <h3 class="text-red-400 font-semibold mb-2">Error Loading Course</h3>
-        <p class="text-slate-300">{{ error }}</p>
+        <h3 class="text-danger font-semibold mb-2">Error Loading Course</h3>
+        <p class="text-ink">{{ error }}</p>
       </div>
 
       <!-- Empty Course State - Show Generator UI -->
       <div v-else-if="course?.isEmpty" class="space-y-6">
-        <div class="bg-slate-800 border border-emerald-500/50 rounded-lg p-8 text-center">
+        <div class="bg-surface border border-emerald-500/50 rounded-lg p-8 text-center">
           <div class="text-6xl mb-4">🌱</div>
-          <h2 class="text-2xl font-bold text-emerald-400 mb-2">New Course Created</h2>
-          <p class="text-slate-400 mb-6 max-w-lg mx-auto">
+          <h2 class="text-2xl font-bold text-accent-2 mb-2">New Course Created</h2>
+          <p class="text-muted mb-6 max-w-lg mx-auto">
             <strong>{{ getCourseName(course.course_code) }}</strong> has been created but has no content yet.
             Start the generation pipeline to create translations and LEGOs.
           </p>
@@ -82,31 +82,31 @@
               </svg>
               Start Course Generator
             </router-link>
-            <p class="text-sm text-slate-500">
+            <p class="text-sm text-faint">
               This will run Phase 1 (Translation) → Phase 2 (LEGO Extraction) → Phase 3 (Basket Generation)
             </p>
           </div>
         </div>
 
         <!-- Course Info Card -->
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-          <h3 class="text-lg font-semibold text-slate-300 mb-4">Course Details</h3>
+        <div class="bg-surface border border-line rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-ink mb-4">Course Details</h3>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <div>
-              <div class="text-slate-500">Code</div>
-              <div class="text-slate-300 font-mono">{{ course.course_code }}</div>
+              <div class="text-faint">Code</div>
+              <div class="text-ink font-mono">{{ course.course_code }}</div>
             </div>
             <div>
-              <div class="text-slate-500">Target Language</div>
-              <div class="text-slate-300">{{ course.target_lang }}</div>
+              <div class="text-faint">Target Language</div>
+              <div class="text-ink">{{ course.target_lang }}</div>
             </div>
             <div>
-              <div class="text-slate-500">Known Language</div>
-              <div class="text-slate-300">{{ course.known_lang }}</div>
+              <div class="text-faint">Known Language</div>
+              <div class="text-ink">{{ course.known_lang }}</div>
             </div>
             <div>
-              <div class="text-slate-500">Status</div>
-              <div class="text-amber-400">{{ course.status }}</div>
+              <div class="text-faint">Status</div>
+              <div class="text-accent">{{ course.status }}</div>
             </div>
           </div>
         </div>
@@ -116,32 +116,32 @@
       <div v-else-if="course" class="space-y-6">
         <!-- Stats Overview (from database counts) -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">SEED_PAIRS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ course.seed_pairs || 0 }}</div>
-            <div class="text-xs text-slate-500 mt-1">Seeds in database</div>
+          <div class="bg-surface border border-line rounded-lg p-6">
+            <div class="text-sm text-muted mb-1">SEED_PAIRS</div>
+            <div class="text-3xl font-bold text-accent-2">{{ course.seed_pairs || 0 }}</div>
+            <div class="text-xs text-faint mt-1">Seeds in database</div>
           </div>
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">LEGO_PAIRS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ course.lego_pairs || 0 }}</div>
-            <div class="text-xs text-slate-500 mt-1">LEGOs in database</div>
+          <div class="bg-surface border border-line rounded-lg p-6">
+            <div class="text-sm text-muted mb-1">LEGO_PAIRS</div>
+            <div class="text-3xl font-bold text-accent-2">{{ course.lego_pairs || 0 }}</div>
+            <div class="text-xs text-faint mt-1">LEGOs in database</div>
           </div>
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">LEGO_BASKETS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ course.lego_baskets || 0 }}</div>
-            <div class="text-xs text-slate-500 mt-1">Baskets in database</div>
+          <div class="bg-surface border border-line rounded-lg p-6">
+            <div class="text-sm text-muted mb-1">LEGO_BASKETS</div>
+            <div class="text-3xl font-bold text-accent-2">{{ course.lego_baskets || 0 }}</div>
+            <div class="text-xs text-faint mt-1">Baskets in database</div>
           </div>
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">INTRODUCTIONS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ course.amino_acids?.introductions || 0 }}</div>
-            <div class="text-xs text-slate-500 mt-1">Presentations in database</div>
+          <div class="bg-surface border border-line rounded-lg p-6">
+            <div class="text-sm text-muted mb-1">INTRODUCTIONS</div>
+            <div class="text-3xl font-bold text-accent-2">{{ course.amino_acids?.introductions || 0 }}</div>
+            <div class="text-xs text-faint mt-1">Presentations in database</div>
           </div>
         </div>
 
         <!-- QC Flags Panel -->
-        <div v-if="unresolvedFlags.length > 0" class="bg-slate-800 border border-amber-500/50 rounded-lg p-6">
+        <div v-if="unresolvedFlags.length > 0" class="bg-surface border border-amber-500/50 rounded-lg p-6">
           <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-semibold text-amber-400 flex items-center gap-2">
+            <h3 class="text-xl font-semibold text-accent flex items-center gap-2">
               🚩 QC Flags
               <span class="bg-amber-600 text-white text-sm px-2 py-0.5 rounded-full">
                 {{ unresolvedFlags.length }}
@@ -149,7 +149,7 @@
             </h3>
             <button
               @click="showFlagsExpanded = !showFlagsExpanded"
-              class="text-slate-400 hover:text-slate-300 text-sm"
+              class="text-muted hover:text-ink text-sm"
             >
               {{ showFlagsExpanded ? 'Collapse' : 'Expand' }}
             </button>
@@ -159,7 +159,7 @@
             <div
               v-for="flag in unresolvedFlags"
               :key="flag.id"
-              class="bg-slate-900/50 border border-slate-700 rounded-lg p-4"
+              class="bg-canvas/50 border border-line rounded-lg p-4"
             >
               <div class="flex items-start justify-between">
                 <div class="flex-1">
@@ -170,17 +170,17 @@
                     <span v-if="flag.legoId" class="text-sm font-mono text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded">
                       {{ flag.legoId }}
                     </span>
-                    <span class="text-xs text-slate-500 bg-slate-700 px-2 py-0.5 rounded">
+                    <span class="text-xs text-faint bg-surface-2 px-2 py-0.5 rounded">
                       {{ flag.issueType }}
                     </span>
                   </div>
-                  <div v-if="flag.suggestedCorrection" class="text-sm text-emerald-400 mb-1">
+                  <div v-if="flag.suggestedCorrection" class="text-sm text-accent-2 mb-1">
                     💡 {{ flag.suggestedCorrection }}
                   </div>
-                  <div v-if="flag.notes" class="text-sm text-slate-400">
+                  <div v-if="flag.notes" class="text-sm text-muted">
                     {{ flag.notes }}
                   </div>
-                  <div class="text-xs text-slate-600 mt-2">
+                  <div class="text-xs text-faint mt-2">
                     {{ new Date(flag.created).toLocaleDateString() }}
                   </div>
                 </div>
@@ -195,7 +195,7 @@
             </div>
           </div>
 
-          <div v-else class="text-sm text-slate-400">
+          <div v-else class="text-sm text-muted">
             {{ unresolvedFlags.length }} flag{{ unresolvedFlags.length !== 1 ? 's' : '' }} pending review
           </div>
         </div>
@@ -208,20 +208,20 @@
         />
 
         <!-- Validation & Fix Panel -->
-        <div v-if="showValidationPanel" class="bg-slate-800 border border-emerald-500/50 rounded-lg p-6">
-          <h3 class="text-xl font-semibold text-emerald-400 mb-6">🔬 Quality Control & Basket Management</h3>
+        <div v-if="showValidationPanel" class="bg-surface border border-emerald-500/50 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-accent-2 mb-6">🔬 Quality Control & Basket Management</h3>
 
           <div class="grid grid-cols-4 gap-6">
             <!-- LUT Check -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
-              <h4 class="font-semibold text-emerald-400 mb-2">LUT Check (Phase 3.6)</h4>
-              <p class="text-sm text-slate-400 mb-4">
+            <div class="bg-canvas/50 border border-line rounded-lg p-4">
+              <h4 class="font-semibold text-accent-2 mb-2">LUT Check (Phase 3.6)</h4>
+              <p class="text-sm text-muted mb-4">
                 Check for LEGO collisions (same KNOWN → different TARGETs)
               </p>
               <button
                 @click="runLUTCheck"
                 :disabled="lutCheckLoading"
-                class="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+                class="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint rounded-lg transition text-white flex items-center justify-center gap-2"
               >
                 <span v-if="lutCheckLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
                 <span v-else>🔍</span>
@@ -234,31 +234,31 @@
                 'bg-red-900/20 border-red-500/50': lutCheckResult.status === 'fail'
               }">
                 <div class="flex items-center gap-2 mb-2">
-                  <span v-if="lutCheckResult.status === 'pass'" class="text-emerald-400">✓</span>
-                  <span v-else class="text-red-400">✗</span>
+                  <span v-if="lutCheckResult.status === 'pass'" class="text-accent-2">✓</span>
+                  <span v-else class="text-danger">✗</span>
                   <span class="font-semibold" :class="{
-                    'text-emerald-400': lutCheckResult.status === 'pass',
-                    'text-red-400': lutCheckResult.status === 'fail'
+                    'text-accent-2': lutCheckResult.status === 'pass',
+                    'text-danger': lutCheckResult.status === 'fail'
                   }">
                     {{ lutCheckResult.status === 'pass' ? 'No Collisions' : `${lutCheckResult.collisions} Collisions Found` }}
                   </span>
                 </div>
-                <p v-if="lutCheckResult.manifest" class="text-xs text-slate-400">
+                <p v-if="lutCheckResult.manifest" class="text-xs text-muted">
                   Affected seeds: {{ lutCheckResult.manifest.affected_seeds?.length || 0 }}
                 </p>
               </div>
             </div>
 
             <!-- Infinitive Check (English only) -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
-              <h4 class="font-semibold text-emerald-400 mb-2">Infinitive Check</h4>
-              <p class="text-sm text-slate-400 mb-4">
+            <div class="bg-canvas/50 border border-line rounded-lg p-4">
+              <h4 class="font-semibold text-accent-2 mb-2">Infinitive Check</h4>
+              <p class="text-sm text-muted mb-4">
                 Validate infinitive forms in English LEGOs
               </p>
               <button
                 @click="runInfinitiveCheck"
                 :disabled="infinitiveCheckLoading"
-                class="w-full px-4 py-2 bg-yellow-600 hover:bg-yellow-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+                class="w-full px-4 py-2 bg-yellow-600 hover:bg-yellow-500 disabled:bg-surface-2 disabled:text-faint rounded-lg transition text-white flex items-center justify-center gap-2"
               >
                 <span v-if="infinitiveCheckLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
                 <span v-else>📝</span>
@@ -269,23 +269,23 @@
               <div v-if="infinitiveCheckResult" class="mt-4 p-3 rounded-lg border" :class="{
                 'bg-emerald-900/20 border-emerald-500/50': infinitiveCheckResult.status === 'pass',
                 'bg-yellow-900/20 border-yellow-500/50': infinitiveCheckResult.status === 'fail',
-                'bg-slate-900/20 border-slate-500/50': infinitiveCheckResult.status === 'skip'
+                'bg-canvas/20 border-line/50': infinitiveCheckResult.status === 'skip'
               }">
                 <div class="flex items-center gap-2 mb-2">
-                  <span v-if="infinitiveCheckResult.status === 'pass'" class="text-emerald-400">✓</span>
+                  <span v-if="infinitiveCheckResult.status === 'pass'" class="text-accent-2">✓</span>
                   <span v-else-if="infinitiveCheckResult.status === 'fail'" class="text-yellow-400">⚠</span>
-                  <span v-else class="text-slate-400">—</span>
+                  <span v-else class="text-muted">—</span>
                   <span class="font-semibold text-sm" :class="{
-                    'text-emerald-400': infinitiveCheckResult.status === 'pass',
+                    'text-accent-2': infinitiveCheckResult.status === 'pass',
                     'text-yellow-400': infinitiveCheckResult.status === 'fail',
-                    'text-slate-400': infinitiveCheckResult.status === 'skip'
+                    'text-muted': infinitiveCheckResult.status === 'skip'
                   }">
                     {{ infinitiveCheckResult.status === 'pass' ? 'All Valid' :
                        infinitiveCheckResult.status === 'skip' ? 'N/A' :
                        `${infinitiveCheckResult.violations} Issues` }}
                   </span>
                 </div>
-                <div v-if="infinitiveCheckResult.summary" class="text-xs text-slate-400 space-y-1">
+                <div v-if="infinitiveCheckResult.summary" class="text-xs text-muted space-y-1">
                   <div v-if="infinitiveCheckResult.summary.critical > 0">
                     Critical: {{ infinitiveCheckResult.summary.critical }}
                   </div>
@@ -297,15 +297,15 @@
             </div>
 
             <!-- Basket Gap Analysis -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
-              <h4 class="font-semibold text-emerald-400 mb-2">Basket Gap Analysis</h4>
-              <p class="text-sm text-slate-400 mb-4">
+            <div class="bg-canvas/50 border border-line rounded-lg p-4">
+              <h4 class="font-semibold text-accent-2 mb-2">Basket Gap Analysis</h4>
+              <p class="text-sm text-muted mb-4">
                 Identify missing baskets and deprecated baskets
               </p>
               <button
                 @click="runBasketGapAnalysis"
                 :disabled="gapAnalysisLoading"
-                class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+                class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-surface-2 disabled:text-faint rounded-lg transition text-white flex items-center justify-center gap-2"
               >
                 <span v-if="gapAnalysisLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
                 <span v-else>📊</span>
@@ -315,15 +315,15 @@
               <!-- Gap Results -->
               <div v-if="gapAnalysisResult" class="mt-4 p-3 rounded-lg border bg-blue-900/20 border-blue-500/50">
                 <div class="text-sm space-y-1">
-                  <div class="flex justify-between text-slate-300">
+                  <div class="flex justify-between text-ink">
                     <span>Coverage:</span>
                     <span class="font-semibold">{{ gapAnalysisResult.coverage_percentage }}%</span>
                   </div>
-                  <div class="flex justify-between text-slate-400">
+                  <div class="flex justify-between text-muted">
                     <span>Missing:</span>
                     <span>{{ gapAnalysisResult.baskets_missing?.length || 0 }}</span>
                   </div>
-                  <div class="flex justify-between text-slate-400">
+                  <div class="flex justify-between text-muted">
                     <span>To Delete:</span>
                     <span>{{ gapAnalysisResult.baskets_to_delete?.length || 0 }}</span>
                   </div>
@@ -332,15 +332,15 @@
             </div>
 
             <!-- Regenerate Baskets -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
-              <h4 class="font-semibold text-emerald-400 mb-2">Regenerate Baskets</h4>
-              <p class="text-sm text-slate-400 mb-4">
+            <div class="bg-canvas/50 border border-line rounded-lg p-4">
+              <h4 class="font-semibold text-accent-2 mb-2">Regenerate Baskets</h4>
+              <p class="text-sm text-muted mb-4">
                 Generate missing baskets after collision fixes
               </p>
               <button
                 @click="regenerateBaskets"
                 :disabled="regenerationLoading || !gapAnalysisResult || (gapAnalysisResult.baskets_missing?.length || 0) === 0"
-                class="w-full px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+                class="w-full px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-surface-2 disabled:text-faint rounded-lg transition text-white flex items-center justify-center gap-2"
               >
                 <span v-if="regenerationLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
                 <span v-else>🔄</span>
@@ -349,7 +349,7 @@
 
               <!-- Regeneration Status -->
               <div v-if="regenerationResult" class="mt-4 p-3 rounded-lg border bg-purple-900/20 border-purple-500/50">
-                <div class="text-sm text-slate-300">
+                <div class="text-sm text-ink">
                   <div>✓ Cleanup: {{ regenerationResult.cleanup?.deletedOldBaskets || 0 }} deleted</div>
                   <div>⏳ Generating {{ regenerationResult.segmentation?.totalBaskets || 0 }} baskets...</div>
                 </div>
@@ -359,46 +359,46 @@
         </div>
 
         <!-- Pipeline Actions (Manifest & Audio) -->
-        <div class="bg-slate-800 border border-purple-500/50 rounded-lg p-6">
+        <div class="bg-surface border border-purple-500/50 rounded-lg p-6">
           <h3 class="text-xl font-semibold text-purple-400 mb-6">🎵 Audio Generation</h3>
 
           <div class="grid grid-cols-2 gap-6">
             <!-- Manifest Status -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
-              <h4 class="font-semibold text-emerald-400 mb-2">Manifest Status</h4>
-              <p class="text-sm text-slate-400 mb-4">
+            <div class="bg-canvas/50 border border-line rounded-lg p-4">
+              <h4 class="font-semibold text-accent-2 mb-2">Manifest Status</h4>
+              <p class="text-sm text-muted mb-4">
                 Course manifest must be compiled before audio generation
               </p>
               <div class="p-3 rounded-lg border" :class="{
                 'bg-emerald-900/20 border-emerald-500/50': isManifestComplete,
-                'bg-slate-900/20 border-slate-500/50': !isManifestComplete
+                'bg-canvas/20 border-line/50': !isManifestComplete
               }">
                 <div class="flex items-center gap-2">
-                  <span v-if="isManifestComplete" class="text-emerald-400 text-lg">✓</span>
-                  <span v-else class="text-slate-500 text-lg">○</span>
+                  <span v-if="isManifestComplete" class="text-accent-2 text-lg">✓</span>
+                  <span v-else class="text-faint text-lg">○</span>
                   <span class="font-semibold" :class="{
-                    'text-emerald-400': isManifestComplete,
-                    'text-slate-400': !isManifestComplete
+                    'text-accent-2': isManifestComplete,
+                    'text-muted': !isManifestComplete
                   }">
                     {{ isManifestComplete ? 'Ready for Audio' : 'Manifest Not Compiled' }}
                   </span>
                 </div>
-                <p class="text-xs text-slate-500 mt-2">
+                <p class="text-xs text-faint mt-2">
                   Phases completed: {{ course.phases_completed?.join(', ') || 'None' }}
                 </p>
               </div>
             </div>
 
             <!-- Audio Generation -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+            <div class="bg-canvas/50 border border-line rounded-lg p-4">
               <h4 class="font-semibold text-purple-400 mb-2">Generate Audio (TTS)</h4>
-              <p class="text-sm text-slate-400 mb-4">
+              <p class="text-sm text-muted mb-4">
                 Generate audio files for all course samples
               </p>
               <button
                 @click="startAudioGeneration"
                 :disabled="audioGenerationLoading || !isManifestComplete"
-                class="w-full px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+                class="w-full px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-surface-2 disabled:text-faint rounded-lg transition text-white flex items-center justify-center gap-2"
               >
                 <span v-if="audioGenerationLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
                 <span v-else>🎵</span>
@@ -413,7 +413,7 @@
                 <div class="text-sm">
                   <div v-if="audioGenerationResult.success" class="text-purple-300">
                     <div>✓ Job started: {{ audioGenerationResult.jobId }}</div>
-                    <div class="text-xs text-slate-400 mt-1">
+                    <div class="text-xs text-muted mt-1">
                       Phase: {{ audioGenerationResult.phase }}
                     </div>
                   </div>
@@ -427,16 +427,16 @@
         </div>
 
         <!-- Tabs -->
-        <div class="bg-slate-800 border border-slate-700 rounded-lg">
-          <div class="flex border-b border-slate-700">
+        <div class="bg-surface border border-line rounded-lg">
+          <div class="flex border-b border-line">
             <button
               v-for="tab in tabs"
               :key="tab.id"
               @click="activeTab = tab.id"
               class="px-6 py-3 text-sm font-medium transition-colors"
               :class="activeTab === tab.id
-                ? 'text-emerald-400 border-b-2 border-emerald-400'
-                : 'text-slate-400 hover:text-slate-300'"
+                ? 'text-accent-2 border-b-2 border-emerald-400'
+                : 'text-muted hover:text-ink'"
             >
               {{ tab.label }}
             </button>
@@ -446,8 +446,8 @@
             <!-- LEGOs Tab -->
             <div v-if="activeTab === 'legos'">
               <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-semibold text-emerald-400">SEED → LEGO Breakdown (Phase 3)</h3>
-                <div class="text-sm text-slate-400">
+                <h3 class="text-lg font-semibold text-accent-2">SEED → LEGO Breakdown (Phase 3)</h3>
+                <div class="text-sm text-muted">
                   <span v-if="legoSearchQuery">{{ filteredLegoBreakdowns.length }} of </span>{{ legoBreakdowns.length }} seeds • {{ legos.length }} LEGO pairs
                 </div>
               </div>
@@ -458,15 +458,15 @@
                   v-model="legoSearchQuery"
                   type="text"
                   placeholder="Search by SEED ID (e.g. S0001), target phrase, known phrase, or LEGO content..."
-                  class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-2 text-sm text-slate-300 focus:outline-none focus:border-emerald-500"
+                  class="w-full bg-canvas border border-line rounded px-4 py-2 text-sm text-ink focus:outline-none focus:border-emerald-500"
                 />
               </div>
 
-              <div v-if="legoBreakdowns.length === 0" class="text-center py-8 text-slate-400">
+              <div v-if="legoBreakdowns.length === 0" class="text-center py-8 text-muted">
                 No LEGO_PAIRS found. Run Phase 3-4 to generate them.
               </div>
 
-              <div v-else-if="filteredLegoBreakdowns.length === 0" class="text-center py-8 text-slate-400">
+              <div v-else-if="filteredLegoBreakdowns.length === 0" class="text-center py-8 text-muted">
                 No breakdowns match your search.
               </div>
 
@@ -474,19 +474,19 @@
                 <div
                   v-for="breakdown in filteredLegoBreakdowns"
                   :key="breakdown.seed_id"
-                  class="bg-slate-800 border rounded-lg overflow-hidden"
+                  class="bg-surface border rounded-lg overflow-hidden"
                   :class="{
                     'border-emerald-500': breakdown.lego_pairs?.length > 0,
                     'border-yellow-500': !breakdown.lego_pairs || breakdown.lego_pairs.length === 0
                   }"
                 >
                   <!-- Breakdown Header -->
-                  <div class="px-6 py-4 border-b bg-slate-800/50 flex items-center justify-between border-slate-700">
+                  <div class="px-6 py-4 border-b bg-surface/50 flex items-center justify-between border-line">
                     <div class="flex items-center gap-4">
                       <span class="text-sm font-mono text-cyan-400 bg-cyan-400/10 px-3 py-1 rounded">
                         {{ breakdown.seed_id }}
                       </span>
-                      <span class="text-xs text-slate-400">
+                      <span class="text-xs text-muted">
                         {{ breakdown.lego_pairs?.length || 0 }} LEGOs • {{ (breakdown.feeder_pairs || []).length }} FEEDERs
                       </span>
                       <span v-if="breakdown.lego_pairs?.some(lp => lp.lego_type === 'COMPOSITE')" class="text-xs text-purple-400">
@@ -505,12 +505,12 @@
                   <!-- Breakdown Content -->
                   <div class="p-6">
                     <!-- Full Sentences (Reference) -->
-                    <div class="mb-6 text-sm text-slate-400 bg-slate-900/50 rounded p-4">
+                    <div class="mb-6 text-sm text-muted bg-canvas/50 rounded p-4">
                       <div class="mb-2">
-                        <span class="text-emerald-400 font-semibold">Target:</span> {{ breakdown.original_target }}
+                        <span class="text-accent-2 font-semibold">Target:</span> {{ breakdown.original_target }}
                       </div>
                       <div>
-                        <span class="text-slate-300 font-semibold">Known:</span> {{ breakdown.original_known }}
+                        <span class="text-ink font-semibold">Known:</span> {{ breakdown.original_known }}
                       </div>
                     </div>
 
@@ -529,24 +529,24 @@
                               pair.is_new ? 'border-2' : 'border border-dashed opacity-60',
                               pair.lego_type === 'COMPOSITE'
                                 ? (pair.is_new ? 'bg-purple-900/30 border-purple-500 hover:bg-purple-900/50' : 'bg-purple-900/20 border-purple-600/50 hover:bg-purple-900/40')
-                                : (pair.is_new ? 'bg-blue-900/30 border-blue-600 hover:bg-blue-900/50' : 'bg-slate-800/50 border-slate-500/50 hover:bg-slate-800/70')
+                                : (pair.is_new ? 'bg-blue-900/30 border-blue-600 hover:bg-blue-900/50' : 'bg-surface/50 border-line/50 hover:bg-surface/70')
                             ]"
                             title="Click to flag this LEGO for review"
                           >
-                            <div :class="pair.is_new ? 'text-blue-100' : 'text-slate-400'" class="font-medium text-center mb-1">
+                            <div :class="pair.is_new ? 'text-blue-100' : 'text-muted'" class="font-medium text-center mb-1">
                               {{ pair.target_chunk }}
                             </div>
-                            <div class="text-xs text-center font-mono" :class="pair.is_new ? 'text-blue-400' : 'text-slate-500'">
+                            <div class="text-xs text-center font-mono" :class="pair.is_new ? 'text-blue-400' : 'text-faint'">
                               {{ pair.lego_id }}
                               <span v-if="pair.lego_type === 'COMPOSITE'" class="ml-1 text-purple-400">⚡</span>
-                              <span v-if="!pair.is_new" class="ml-1 text-slate-500" title="Previously introduced">↺</span>
+                              <span v-if="!pair.is_new" class="ml-1 text-faint" title="Previously introduced">↺</span>
                             </div>
                           </div>
                         </div>
 
                         <!-- Arrow Down -->
                         <div class="flex justify-center">
-                          <svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg class="w-6 h-6 text-faint" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
                           </svg>
                         </div>
@@ -566,7 +566,7 @@
                             ]"
                             title="Click to flag this LEGO for review"
                           >
-                            <div :class="pair.is_new ? 'text-blue-100' : 'text-slate-400'" class="font-medium text-center">
+                            <div :class="pair.is_new ? 'text-blue-100' : 'text-muted'" class="font-medium text-center">
                               {{ pair.known_chunk }}
                             </div>
                           </div>
@@ -581,13 +581,13 @@
                           <div class="text-sm font-semibold text-purple-300 mb-2">
                             {{ pair.lego_id }} COMPONENTIZATION:
                           </div>
-                          <div class="text-sm text-slate-300 font-mono bg-slate-900/50 rounded p-3 mb-3">
+                          <div class="text-sm text-ink font-mono bg-canvas/50 rounded p-3 mb-3">
                             {{ pair.componentization || 'No componentization details provided' }}
                           </div>
 
                           <!-- Associated Feeders (filtered by parent_lego_id) -->
                           <div v-if="getFeedersForLego(breakdown, pair.lego_id).length > 0" class="mt-3">
-                            <div class="text-xs text-slate-400 mb-2 uppercase">Associated Feeders:</div>
+                            <div class="text-xs text-muted mb-2 uppercase">Associated Feeders:</div>
                             <div class="flex flex-wrap gap-2">
                               <div
                                 v-for="feeder in getFeedersForLego(breakdown, pair.lego_id)"
@@ -603,7 +603,7 @@
 
                       </div>
 
-                      <div v-else class="text-center py-8 text-slate-400">
+                      <div v-else class="text-center py-8 text-muted">
                         No LEGO_PAIRS extracted yet
                       </div>
                     </div>
@@ -619,9 +619,9 @@
 
             <!-- Introductions Tab -->
             <div v-if="activeTab === 'introductions'">
-              <h3 class="text-lg font-semibold text-emerald-400 mb-4">LEGO Presentations (Phase 6)</h3>
+              <h3 class="text-lg font-semibold text-accent-2 mb-4">LEGO Presentations (Phase 6)</h3>
 
-              <div v-if="!introductionsData || !introductionsData.presentations" class="text-center py-8 text-slate-400">
+              <div v-if="!introductionsData || !introductionsData.presentations" class="text-center py-8 text-muted">
                 No presentations found. Phase 6 may not be complete yet.
               </div>
 
@@ -629,7 +629,7 @@
                 <div
                   v-for="(presentation, legoId) in introductionsData.presentations"
                   :key="legoId"
-                  class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/50 transition-colors"
+                  class="bg-canvas/50 border border-line rounded-lg p-4 hover:border-emerald-500/50 transition-colors"
                 >
                   <div class="flex items-start gap-4">
                     <div class="font-mono text-xs text-cyan-400 bg-cyan-900/30 px-2 py-1 rounded h-fit">
@@ -638,8 +638,8 @@
                     <div class="flex-1">
                       <!-- View mode -->
                       <div v-if="editingIntro !== legoId">
-                        <p class="text-slate-300 text-sm leading-relaxed">{{ typeof presentation === 'string' ? presentation : presentation.text }}</p>
-                        <span v-if="typeof presentation === 'object' && presentation.edited" class="inline-block mt-2 text-xs text-amber-400 bg-amber-900/30 px-2 py-1 rounded">
+                        <p class="text-ink text-sm leading-relaxed">{{ typeof presentation === 'string' ? presentation : presentation.text }}</p>
+                        <span v-if="typeof presentation === 'object' && presentation.edited" class="inline-block mt-2 text-xs text-accent bg-amber-900/30 px-2 py-1 rounded">
                           ✏️ Custom edited
                         </span>
                       </div>
@@ -648,12 +648,12 @@
                       <div v-else>
                         <textarea
                           v-model="editedIntroText"
-                          class="w-full bg-slate-800 border border-slate-600 rounded px-3 py-2 text-slate-300 text-sm leading-relaxed font-mono resize-none"
+                          class="w-full bg-surface border border-line rounded px-3 py-2 text-ink text-sm leading-relaxed font-mono resize-none"
                           rows="3"
                           placeholder="Edit introduction text..."
                         ></textarea>
-                        <div class="mt-2 text-xs text-slate-500">
-                          Use <code class="bg-slate-800 px-1 rounded">{target1}</code> for target language audio
+                        <div class="mt-2 text-xs text-faint">
+                          Use <code class="bg-surface px-1 rounded">{target1}</code> for target language audio
                         </div>
                       </div>
                     </div>
@@ -663,7 +663,7 @@
                       <button
                         v-if="editingIntro !== legoId"
                         @click="startEditIntro(legoId, presentation)"
-                        class="text-emerald-400 hover:text-emerald-300 text-sm px-3 py-1 border border-emerald-500/30 hover:border-emerald-500/50 rounded transition-colors"
+                        class="text-accent-2 hover:opacity-80 text-sm px-3 py-1 border border-emerald-500/30 hover:border-emerald-500/50 rounded transition-colors"
                       >
                         Edit
                       </button>
@@ -671,14 +671,14 @@
                         <button
                           @click="saveIntro(legoId)"
                           :disabled="savingIntro"
-                          class="text-emerald-400 hover:text-emerald-300 text-sm px-3 py-1 border border-emerald-500/30 hover:border-emerald-500/50 rounded transition-colors disabled:opacity-50"
+                          class="text-accent-2 hover:opacity-80 text-sm px-3 py-1 border border-emerald-500/30 hover:border-emerald-500/50 rounded transition-colors disabled:opacity-50"
                         >
                           {{ savingIntro ? 'Saving...' : 'Save' }}
                         </button>
                         <button
                           @click="cancelEditIntro"
                           :disabled="savingIntro"
-                          class="text-slate-400 hover:text-slate-300 text-sm px-3 py-1 border border-slate-600 hover:border-slate-500 rounded transition-colors disabled:opacity-50"
+                          class="text-muted hover:text-ink text-sm px-3 py-1 border border-line hover:border-line rounded transition-colors disabled:opacity-50"
                         >
                           Cancel
                         </button>
@@ -699,14 +699,14 @@
     <!-- Enhanced Regeneration Progress UI -->
     <div
       v-if="regenerationState.active"
-      class="fixed bottom-4 right-4 bg-slate-800 border border-emerald-500/30 rounded-lg p-6 w-96 shadow-2xl z-50"
+      class="fixed bottom-4 right-4 bg-surface border border-emerald-500/30 rounded-lg p-6 w-96 shadow-2xl z-50"
     >
       <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold text-emerald-400">Regenerating Course</h3>
+        <h3 class="text-lg font-semibold text-accent-2">Regenerating Course</h3>
         <button
           v-if="regenerationState.status === 'complete' || regenerationState.status === 'failed'"
           @click="dismissRegenerationProgress"
-          class="text-slate-400 hover:text-slate-300"
+          class="text-muted hover:text-ink"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -738,7 +738,7 @@
           <span>Regeneration complete!</span>
         </div>
 
-        <div v-else-if="regenerationState.status === 'failed'" class="flex items-center gap-2 text-red-400">
+        <div v-else-if="regenerationState.status === 'failed'" class="flex items-center gap-2 text-danger">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
           </svg>
@@ -748,24 +748,24 @@
 
       <!-- Progress bar -->
       <div v-if="regenerationState.status === 'running' || regenerationState.status === 'queued'" class="mb-3">
-        <div class="w-full bg-slate-700 rounded-full h-2">
+        <div class="w-full bg-surface-2 rounded-full h-2">
           <div
             class="bg-emerald-500 h-2 rounded-full transition-all duration-300"
             :style="{ width: regenerationState.progress + '%' }"
           ></div>
         </div>
-        <div class="text-xs text-slate-400 mt-1 text-right">
+        <div class="text-xs text-muted mt-1 text-right">
           {{ Math.round(regenerationState.progress) }}%
         </div>
       </div>
 
       <!-- Error message -->
-      <div v-if="regenerationState.error" class="mt-3 text-sm text-red-400 bg-red-900/20 border border-red-500/30 rounded p-2">
+      <div v-if="regenerationState.error" class="mt-3 text-sm text-danger bg-red-900/20 border border-red-500/30 rounded p-2">
         {{ regenerationState.error }}
       </div>
 
       <!-- Job ID for debugging -->
-      <div class="text-xs text-slate-500 mt-3">
+      <div class="text-xs text-faint mt-3">
         Job ID: {{ regenerationState.jobId }}
       </div>
     </div>
@@ -776,16 +776,16 @@
       class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4"
       @click.self="closeEditModal"
     >
-      <div class="bg-slate-800 border border-slate-700 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+      <div class="bg-surface border border-line rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
         <!-- Modal Header -->
-        <div class="flex items-center justify-between p-6 border-b border-slate-700">
+        <div class="flex items-center justify-between p-6 border-b border-line">
           <div>
-            <h2 class="text-2xl font-bold text-amber-400">Flag for Review</h2>
-            <p class="text-sm text-slate-400 mt-1">{{ editModal.translation?.seed_id }}</p>
+            <h2 class="text-2xl font-bold text-accent">Flag for Review</h2>
+            <p class="text-sm text-muted mt-1">{{ editModal.translation?.seed_id }}</p>
           </div>
           <button
             @click="closeEditModal"
-            class="text-slate-400 hover:text-slate-300 text-2xl"
+            class="text-muted hover:text-ink text-2xl"
           >
             ×
           </button>
@@ -794,22 +794,22 @@
         <!-- Modal Body -->
         <div class="p-6 space-y-6">
           <!-- Read-only Translation Display -->
-          <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 space-y-3">
+          <div class="bg-canvas/50 border border-line rounded-lg p-4 space-y-3">
             <div>
-              <div class="text-xs text-slate-400 mb-1">Known (Source)</div>
-              <div class="text-slate-200 font-mono">{{ editModal.translation?.source }}</div>
+              <div class="text-xs text-muted mb-1">Known</div>
+              <div class="text-ink font-mono">{{ editModal.translation?.source }}</div>
             </div>
             <div>
-              <div class="text-xs text-slate-400 mb-1">Target</div>
-              <div class="text-slate-200 font-mono text-lg">{{ editModal.translation?.target }}</div>
+              <div class="text-xs text-muted mb-1">Target</div>
+              <div class="text-ink font-mono text-lg">{{ editModal.translation?.target }}</div>
             </div>
           </div>
 
           <!-- Flag Details Form -->
           <div class="space-y-4">
             <div>
-              <label class="block text-sm font-medium text-slate-300 mb-2">Issue Type</label>
-              <select v-model="editModal.issueType" class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-2 text-slate-100">
+              <label class="block text-sm font-medium text-ink mb-2">Issue Type</label>
+              <select v-model="editModal.issueType" class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink">
                 <option value="translation">Translation incorrect</option>
                 <option value="lego_breakdown">LEGO breakdown issue</option>
                 <option value="unnatural">Sounds unnatural</option>
@@ -817,11 +817,11 @@
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium text-slate-300 mb-2">Notes / Suggestion</label>
+              <label class="block text-sm font-medium text-ink mb-2">Notes / Suggestion</label>
               <textarea
                 v-model="editModal.notes"
                 placeholder="Describe the issue or suggest a correction..."
-                class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-3 text-slate-100 focus:outline-none focus:border-amber-500"
+                class="w-full bg-canvas border border-line rounded px-4 py-3 text-ink focus:outline-none focus:border-amber-500"
                 rows="4"
               ></textarea>
             </div>
@@ -829,17 +829,17 @@
         </div>
 
         <!-- Modal Footer -->
-        <div class="flex items-center justify-end gap-3 p-6 border-t border-slate-700">
+        <div class="flex items-center justify-end gap-3 p-6 border-t border-line">
           <button
             @click="closeEditModal"
-            class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition-colors"
+            class="px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink rounded transition-colors"
           >
             Cancel
           </button>
           <button
             @click="submitFlag"
             :disabled="editModal.saving"
-            class="px-6 py-2 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors"
+            class="px-6 py-2 bg-amber-600 hover:bg-amber-500 disabled:bg-surface-2 disabled:text-faint text-white rounded transition-colors"
           >
             {{ editModal.saving ? 'Submitting...' : 'Submit Flag' }}
           </button>
@@ -849,26 +849,26 @@
 
     <!-- Regeneration Confirmation Modal -->
     <div v-if="regenerationResult?.confirming" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div class="bg-slate-800 border border-purple-500/50 rounded-lg max-w-lg w-full p-6">
+      <div class="bg-surface border border-purple-500/50 rounded-lg max-w-lg w-full p-6">
         <h3 class="text-2xl font-bold text-purple-400 mb-4">🔄 Regenerate Baskets?</h3>
 
         <div class="space-y-4 mb-6">
-          <p class="text-slate-300">
-            This will regenerate <span class="font-bold text-emerald-400">{{ regenerationResult.missing }}</span> missing baskets.
+          <p class="text-ink">
+            This will regenerate <span class="font-bold text-accent-2">{{ regenerationResult.missing }}</span> missing baskets.
           </p>
 
-          <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 space-y-2 text-sm">
+          <div class="bg-canvas/50 border border-line rounded-lg p-4 space-y-2 text-sm">
             <div class="flex items-center gap-2">
-              <span class="text-slate-400">1.</span>
-              <span class="text-slate-300">Delete <span class="font-semibold text-red-400">{{ regenerationResult.toDelete }}</span> deprecated baskets</span>
+              <span class="text-muted">1.</span>
+              <span class="text-ink">Delete <span class="font-semibold text-danger">{{ regenerationResult.toDelete }}</span> deprecated baskets</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-slate-400">2.</span>
-              <span class="text-slate-300">Generate <span class="font-semibold text-emerald-400">{{ regenerationResult.missing }}</span> new baskets</span>
+              <span class="text-muted">2.</span>
+              <span class="text-ink">Generate <span class="font-semibold text-accent-2">{{ regenerationResult.missing }}</span> new baskets</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-slate-400">3.</span>
-              <span class="text-slate-300">Auto-merge when complete</span>
+              <span class="text-muted">3.</span>
+              <span class="text-ink">Auto-merge when complete</span>
             </div>
           </div>
 
@@ -877,7 +877,7 @@
               <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              <span class="text-slate-300">Estimated time: <span class="font-semibold text-blue-400">~{{ regenerationResult.estimatedMinutes }} minutes</span></span>
+              <span class="text-ink">Estimated time: <span class="font-semibold text-blue-400">~{{ regenerationResult.estimatedMinutes }} minutes</span></span>
             </div>
           </div>
         </div>
@@ -885,14 +885,14 @@
         <div class="flex gap-3">
           <button
             @click="cancelRegeneration"
-            class="flex-1 px-4 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition font-semibold"
+            class="flex-1 px-4 py-3 bg-surface-2 hover:bg-surface-3 text-ink rounded-lg transition font-semibold"
           >
             Cancel
           </button>
           <button
             @click="confirmRegeneration"
             :disabled="regenerationLoading"
-            class="flex-1 px-4 py-3 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded-lg transition font-semibold flex items-center justify-center gap-2"
+            class="flex-1 px-4 py-3 bg-purple-600 hover:bg-purple-500 disabled:bg-surface-2 disabled:text-faint text-white rounded-lg transition font-semibold flex items-center justify-center gap-2"
           >
             <span v-if="regenerationLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
             {{ regenerationLoading ? 'Starting...' : 'OK' }}
@@ -903,42 +903,42 @@
 
     <!-- Regeneration Success/Error Modal -->
     <div v-if="regenerationResult && !regenerationResult.confirming && (regenerationResult.success || regenerationResult.error)" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div class="bg-slate-800 border rounded-lg max-w-lg w-full p-6" :class="regenerationResult.error ? 'border-red-500/50' : 'border-emerald-500/50'">
-        <h3 class="text-2xl font-bold mb-4" :class="regenerationResult.error ? 'text-red-400' : 'text-emerald-400'">
+      <div class="bg-surface border rounded-lg max-w-lg w-full p-6" :class="regenerationResult.error ? 'border-red-500/50' : 'border-emerald-500/50'">
+        <h3 class="text-2xl font-bold mb-4" :class="regenerationResult.error ? 'text-danger' : 'text-accent-2'">
           {{ regenerationResult.error ? '❌ Error' : '✅ Started!' }}
         </h3>
 
         <div v-if="regenerationResult.error" class="mb-6">
-          <p class="text-slate-300 mb-2">Failed to start basket regeneration:</p>
+          <p class="text-ink mb-2">Failed to start basket regeneration:</p>
           <div class="bg-red-900/20 border border-red-500/50 rounded-lg p-3 text-sm text-red-300">
             {{ regenerationResult.error }}
           </div>
         </div>
 
         <div v-else class="space-y-4 mb-6">
-          <p class="text-slate-300">Basket regeneration has started!</p>
+          <p class="text-ink">Basket regeneration has started!</p>
 
-          <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 space-y-2 text-sm">
+          <div class="bg-canvas/50 border border-line rounded-lg p-4 space-y-2 text-sm">
             <div class="flex justify-between">
-              <span class="text-slate-400">Browsers:</span>
-              <span class="text-emerald-400 font-semibold">{{ regenerationResult.segmentation?.browsersNeeded || 0 }}</span>
+              <span class="text-muted">Browsers:</span>
+              <span class="text-accent-2 font-semibold">{{ regenerationResult.segmentation?.browsersNeeded || 0 }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Baskets:</span>
-              <span class="text-emerald-400 font-semibold">{{ regenerationResult.segmentation?.totalBaskets || 0 }}</span>
+              <span class="text-muted">Baskets:</span>
+              <span class="text-accent-2 font-semibold">{{ regenerationResult.segmentation?.totalBaskets || 0 }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Estimated time:</span>
+              <span class="text-muted">Estimated time:</span>
               <span class="text-blue-400 font-semibold">{{ regenerationResult.segmentation?.estimatedTime || 'Unknown' }}</span>
             </div>
           </div>
 
-          <p class="text-sm text-slate-400">The process will run in the background. Baskets will auto-merge when complete.</p>
+          <p class="text-sm text-muted">The process will run in the background. Baskets will auto-merge when complete.</p>
         </div>
 
         <button
           @click="regenerationResult = null"
-          class="w-full px-4 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition font-semibold"
+          class="w-full px-4 py-3 bg-surface-2 hover:bg-surface-3 text-ink rounded-lg transition font-semibold"
         >
           Close
         </button>
@@ -951,13 +951,13 @@
       class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
       @click.self="closeFlagModal"
     >
-      <div class="bg-slate-800 border border-slate-700 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div class="bg-surface border border-line rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <!-- Header -->
-        <div class="px-6 py-4 border-b border-slate-700 flex items-center justify-between">
-          <h3 class="text-xl font-semibold text-emerald-400">Flag {{ flagModal.legoId }}</h3>
+        <div class="px-6 py-4 border-b border-line flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-accent-2">Flag {{ flagModal.legoId }}</h3>
           <button
             @click="closeFlagModal"
-            class="text-slate-400 hover:text-slate-300 text-2xl leading-none"
+            class="text-muted hover:text-ink text-2xl leading-none"
           >
             &times;
           </button>
@@ -967,56 +967,56 @@
         <div class="p-6 space-y-4">
           <!-- Target Phrase -->
           <div>
-            <label class="block text-sm font-semibold text-slate-300 mb-2">Target Phrase</label>
-            <div class="bg-slate-900/50 border border-slate-700 rounded px-4 py-3 text-slate-300">
+            <label class="block text-sm font-semibold text-ink mb-2">Target Phrase</label>
+            <div class="bg-canvas/50 border border-line rounded px-4 py-3 text-ink">
               {{ flagModal.targetPhrase }}
             </div>
           </div>
 
           <!-- Known Translation -->
           <div>
-            <label class="block text-sm font-semibold text-slate-300 mb-2">Current Known Translation</label>
-            <div class="bg-slate-900/50 border border-slate-700 rounded px-4 py-3 text-slate-300">
+            <label class="block text-sm font-semibold text-ink mb-2">Current Known Translation</label>
+            <div class="bg-canvas/50 border border-line rounded px-4 py-3 text-ink">
               {{ flagModal.knownPhrase }}
             </div>
           </div>
 
           <!-- Suggested Correction -->
           <div>
-            <label class="block text-sm font-semibold text-slate-300 mb-2">Suggested Correction</label>
+            <label class="block text-sm font-semibold text-ink mb-2">Suggested Correction</label>
             <input
               v-model="flagModal.suggestedCorrection"
               type="text"
               placeholder="Enter your suggested correction (optional)"
-              class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-3 text-slate-300 focus:outline-none focus:border-emerald-500"
+              class="w-full bg-canvas border border-line rounded px-4 py-3 text-ink focus:outline-none focus:border-emerald-500"
             />
           </div>
 
           <!-- Notes -->
           <div>
-            <label class="block text-sm font-semibold text-slate-300 mb-2">Notes (optional)</label>
+            <label class="block text-sm font-semibold text-ink mb-2">Notes (optional)</label>
             <textarea
               v-model="flagModal.notes"
               rows="4"
               placeholder="Explain the issue or provide additional context..."
-              class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-3 text-slate-300 focus:outline-none focus:border-emerald-500 resize-none"
+              class="w-full bg-canvas border border-line rounded px-4 py-3 text-ink focus:outline-none focus:border-emerald-500 resize-none"
             ></textarea>
           </div>
         </div>
 
         <!-- Footer -->
-        <div class="px-6 py-4 border-t border-slate-700 flex gap-3 justify-end">
+        <div class="px-6 py-4 border-t border-line flex gap-3 justify-end">
           <button
             @click="closeFlagModal"
             :disabled="flagModal.saving"
-            class="px-6 py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 text-white rounded transition"
+            class="px-6 py-2 bg-surface-2 hover:bg-surface-3 disabled:bg-surface disabled:text-faint text-ink rounded transition"
           >
             Cancel
           </button>
           <button
             @click="submitLegoFlag"
             :disabled="flagModal.saving"
-            class="px-6 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-emerald-800 disabled:text-slate-400 text-white rounded transition flex items-center gap-2"
+            class="px-6 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-emerald-800 disabled:text-muted text-white rounded transition flex items-center gap-2"
           >
             <span v-if="flagModal.saving" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
             <span>{{ flagModal.saving ? 'Submitting...' : 'Submit Flag' }}</span>
@@ -1063,6 +1063,7 @@ const translations = ref([])
 const legos = ref([])
 const legoBreakdowns = ref([]) // Raw breakdown data for visualizer
 const baskets = ref([])
+const provenanceResult = ref(null) // traceProvenance() wrote to this before it was declared (ReferenceError)
 const basketsData = ref(null) // LEGO_BASKETS data structure from baskets.json
 const legoPairsData = ref(null) // LEGO_PAIRS data structure from lego_pairs.json
 const expandedBaskets = ref({}) // Track which baskets are expanded
@@ -1084,7 +1085,7 @@ const savingIntro = ref(false) // Saving state
 const audioRoles = [
   { id: 'target1', label: 'Target 1', icon: '🗣️', description: 'Primary target language (slow)' },
   { id: 'target2', label: 'Target 2', icon: '👥', description: 'Secondary target language (slow)' },
-  { id: 'source', label: 'Source', icon: '🔊', description: 'Known language (natural)' },
+  { id: 'source', label: 'Known', icon: '🔊', description: 'Known language (natural)' },
   { id: 'presentation', label: 'Presentation', icon: '🎤', description: 'Introductions & explanations' }
 ]
 const selectedAudioRole = ref(null)
@@ -1263,8 +1264,6 @@ async function loadCourse() {
 
     if (isFromDatabase && response.lego_breakdowns?.length > 0) {
       // Use database data - transform to component format
-      console.log('🗄️ Using database data for LEGOs:', response.legos?.length, 'legos from', response.lego_breakdowns?.length, 'seeds')
-
       legoBreakdowns.value = response.lego_breakdowns.map(seed => ({
         seed_id: seed.seed_id,
         original_target: seed.seed_pair?.target || '',
@@ -1283,7 +1282,6 @@ async function loadCourse() {
       }))
 
       legos.value = response.legos || []
-      console.log(`✅ Loaded ${legoBreakdowns.value.length} seeds with ${legos.value.length} LEGOs from database`)
     } else {
       // Legacy: load from S3/VFS files
       legos.value = []
@@ -1591,7 +1589,7 @@ function getStatusClass(status) {
   } else if (status === 'in_progress') {
     return 'bg-yellow-600 text-white'
   } else {
-    return 'bg-slate-600 text-slate-300'
+    return 'bg-surface-3 text-ink'
   }
 }
 
@@ -2069,21 +2067,12 @@ function loadSampleFromHistory(sample) {
 async function flagCurrentSample() {
   if (!currentAudioSample.value) return
 
-  // Mark as flagged in history
-  const historyItem = audioSampleHistory.value.find(s => s.id === currentAudioSample.value.id)
-  if (historyItem) {
-    historyItem.flagged = true
-  }
-  currentAudioSample.value.flagged = true
-
-  // TODO: Save flag to backend
-  toast.success('Sample flagged for review')
+  toast.info("Flagging audio samples isn't available yet.")
 }
 
 // Handle flag from learning cycle player
 function handleCycleFlag(sampleId) {
-  toast.success(`Cycle sample ${sampleId} flagged for review`)
-  // TODO: Save flag to backend
+  toast.info("Flagging cycle samples isn't available yet.")
 }
 
 // Cleanup on component unmount
@@ -2095,3 +2084,21 @@ onUnmounted(() => {
   }
 })
 </script>
+
+<!--
+  Light-mode-only contrast fixes for raw Tailwind palette text colours that do
+  NOT re-theme. The -400/-300/-200/-100 utilities below are near-invisible on the
+  light canvas/surface (1.3:1–2.9:1). Scoped under [data-theme="light"] so DARK
+  MODE IS COMPLETELY UNCHANGED. Same hue family, darkened to pass WCAG AA.
+-->
+<style scoped>
+:root[data-theme="light"] .text-cyan-400  { color: #0e7490; } /* cyan-700  ~4.7:1 on white */
+:root[data-theme="light"] .text-blue-400  { color: #1d4ed8; } /* blue-700  ~6.3:1 */
+:root[data-theme="light"] .text-blue-100  { color: #1e3a8a; } /* blue-900  on pale-blue chip */
+:root[data-theme="light"] .text-purple-400,
+:root[data-theme="light"] .text-purple-300 { color: #7e22ce; } /* purple-700 ~5.1:1 */
+:root[data-theme="light"] .text-yellow-400 { color: #a16207; } /* yellow-700 ~4.6:1 */
+:root[data-theme="light"] .text-green-400  { color: #047857; } /* match --accent-2 5.5:1 */
+:root[data-theme="light"] .text-emerald-300,
+:root[data-theme="light"] .text-emerald-200 { color: #065f46; } /* emerald-800 on pale-emerald feeder chip */
+</style>

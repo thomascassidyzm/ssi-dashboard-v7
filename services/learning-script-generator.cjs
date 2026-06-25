@@ -1,50 +1,110 @@
 /**
- * Learning Script Generator v4.0 - SSoT with Learning App
+ * Learning Script Generator v5.0 — dashboard mirror of the learner app
  *
- * Algorithm matches generateLearningScript.ts in ssi-learning-app exactly.
- * Both implementations produce identical, deterministic round sequences.
+ * Parallel implementation of generateLearningScript.ts in ssi-learning-app
+ * (no shared code — keep the two in sync by hand; see
+ * docs/voice-engine/script-divergence-report.md for the verified mapping).
  *
- * ROUND Structure:
- * 1. INTRO - Introduction audio ("The Japanese for X is...")
- * 2. DEBUT - The LEGO itself (debut)
- * 3. BUILD ×7 - BUILD phrases first (sorted by syllable count),
- *    then fill remaining slots with USE phrases (excluding 2 reserved for CONSOLIDATE)
- * 4. REVIEW - Fibonacci-based reviews using USE phrases from older LEGOs
- *    Round-robin selection via useIndex (deterministic, no randomness)
- * 5. CONSOLIDATE ×2 - The 2 reserved USE phrases (deterministic)
+ * CONVERGED 2026-06-10 — Script View shows what the learner actually gets:
+ * - Spaced-rep offsets + round shape are read LIVE from algorithm_config
+ *   key='script_shape' (the same table/key the learner app reads via
+ *   useAlgorithmConfig.ts). The built-in constants below are a fallback used
+ *   ONLY when the config row is missing, with a logged warning.
+ * - NO component priming cycles. The learner renders M-LEGO components as
+ *   visual ghost tiles on intro/debut only — it NEVER plays component_intro /
+ *   component_practice audio cycles (generateLearningScript.ts:1208-1212).
+ * - NO L1 listening clusters in main rounds. The learner removed L1 from the
+ *   main flow on 2026-05-19 — it lives exclusively in Listening MODE.
+ *   Seed graduation is still tracked here (catalogue-ordinal based, same as
+ *   the learner) because graduated seeds drop out of spaced rep.
+ * - NO pod (L2) emission. Live pods are runtime-scheduled PER-LEARNER by
+ *   usePodLapScheduler.ts on a ratchet counter
+ *   (course_enrollments.completed_pod_rounds) — a course-level projection
+ *   cannot model them. PodsView owns pods.
+ * - Optional learner audio view (options.learnerView): applies the learner's
+ *   audio gates — LEGOs/phrases missing any of known/target1/target2 audio are
+ *   dropped BEFORE the walk, so round numbers compress exactly as the
+ *   learner's do (generateLearningScript.ts:816-823 / :726-768). Default
+ *   (production view) keeps every row, flagged hasAudio:false — that is the
+ *   review tool's job.
  *
- * Key differences from v3.x:
- * - No Math.random() anywhere — fully deterministic
- * - BUILD sorted by syllable count, not text length
- * - 2 USE phrases reserved for CONSOLIDATE before BUILD fill
- * - REVIEW uses round-robin (useIndex % length), not random
- * - No Round 1 special-casing (runs normally, just no REVIEW)
- * - Legacy 'practice' role: if USE exists → build, else → use
- * - legoState map tracks lastRound + useIndex per LEGO for REVIEW
+ * ROUND structure (verified line-by-line against the learner):
+ * 1. INTRO  - presentation audio ("The Japanese for X is...")
+ * 2. DEBUT  - the LEGO itself
+ * 3. BUILD  - up to maxBuildPhrases (syllable-sorted; USE fill after reserving)
+ * 4. REVIEW - spaced rep at script_shape.spacedRepOffsets (max
+ *             maxSpacedRepPhrases, N-1 gets n1PhraseCount, round-robin
+ *             useIndex, one LEGO per offset via legoState.lastRound)
+ * 5. CONSOLIDATE - useConsolidationCount reserved USE phrases
+ * then consecutive-duplicate dedup. Fully deterministic, no randomness.
  */
 
 const createLogger = require('./shared/logger.cjs')
 const logger = createLogger('LearningScriptGenerator')
 
-// Fibonacci-based skip numbers for spaced repetition
+// FALLBACK spaced-rep offsets — used ONLY when algorithm_config.script_shape
+// is missing. The live config row (which the learner app reads) is the truth;
+// as of 2026-06-10 it is [1,2,3,5,8,13,21,34,55,89].
 const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55]
 
-// Constants (matching learning app)
-const MAX_BUILD_PHRASES = 7
-const CONSOLIDATE_COUNT = 2
-const MAX_SPACED_REP_PHRASES = 12
-const N1_PHRASE_COUNT = 3
+// Fallback round shape (mirrors the learner's behaviour when its own config
+// fetch fails). Only consulted when the script_shape config row is missing.
+const DEFAULT_SCRIPT_SHAPE = {
+  spacedRepOffsets: FIBONACCI,
+  maxBuildPhrases: 7,
+  useConsolidationCount: 2,
+  maxSpacedRepPhrases: 12,
+  n1PhraseCount: 3,
+}
 
-// Listening configuration (Aran spec, 2026-04-29 — canonical visualiser at
-// popty.app/listening-playground.html). Graduation is event-driven (1 LEGO ==
-// 1 round; a seed graduates LISTENING_OFFSET rounds after its last LEGO).
-// Active-10 and reserve-50 fire on co-prime intervals so they only clash
-// every 39 rounds; both can also clash with the every-round L2 firing.
-const LISTENING_OFFSET = 56
-const L1_ACTIVE_SIZE = 10
-const L1_ACTIVE_INTERVAL = 3
-const L1_RESERVE_SIZE = 50           // overflow → Choice Pods later
-const L1_RESERVE_INTERVAL = 13
+// Fallback listening config — graduation only (offset rounds after a seed's
+// last LEGO before the seed drops out of spaced rep). Mirrors the learner's
+// DEFAULT_LISTENING_CONFIG (generateLearningScript.ts:171-179). L1 clusters
+// themselves are NOT emitted here — Listening MODE owns them.
+const DEFAULT_LISTENING = {
+  enabled: true,
+  offset: 90,
+}
+
+/**
+ * Load the live algorithm config rows the learner app reads
+ * (useAlgorithmConfig.ts). Field-level merge over defaults, same as the
+ * learner. Falls back to the built-in constants ONLY when the row is missing.
+ */
+async function loadAlgorithmConfig(supabase) {
+  let scriptShape = { ...DEFAULT_SCRIPT_SHAPE }
+  let listening = { ...DEFAULT_LISTENING }
+  let scriptShapeSource = 'fallback'
+
+  try {
+    const { data, error } = await supabase
+      .from('algorithm_config')
+      .select('key, config')
+      .in('key', ['script_shape', 'listening'])
+
+    if (error) {
+      logger.warn(`algorithm_config fetch failed (${error.message}) — using built-in fallback shape [${FIBONACCI.join(',')}]. Script View may diverge from the learner.`)
+      return { scriptShape, listening, scriptShapeSource }
+    }
+
+    const byKey = new Map((data || []).map(r => [r.key, r.config || {}]))
+
+    if (byKey.has('script_shape')) {
+      scriptShape = { ...DEFAULT_SCRIPT_SHAPE, ...byKey.get('script_shape') }
+      scriptShapeSource = 'algorithm_config'
+    } else {
+      logger.warn(`algorithm_config.script_shape row MISSING — falling back to built-in offsets [${FIBONACCI.join(',')}]. The learner app would use its own defaults; fix the config row.`)
+    }
+
+    if (byKey.has('listening')) {
+      listening = { ...DEFAULT_LISTENING, ...byKey.get('listening') }
+    }
+  } catch (err) {
+    logger.warn(`algorithm_config fetch threw (${err.message}) — using built-in fallback shape.`)
+  }
+
+  return { scriptShape, listening, scriptShapeSource }
+}
 
 /**
  * Count syllables in target text.
@@ -63,6 +123,12 @@ function countTargetSyllables(targetText) {
 /**
  * Check if a phrase contains the LEGO target as a contiguous substring.
  * Case-insensitive, punctuation-stripped comparison.
+ *
+ * UNUSED by design — kept only as documentation of the removed gate.
+ * Do NOT re-add this filter to phrase selection: the learner app has no such
+ * gate (selection is purely seed_number+lego_index+role) and gating here hid
+ * legitimately word-order-inverted phrases (e.g. Croatian clitic inversion:
+ * LEGO "sličan si" vs phrase "...si sličan...") from Script View.
  */
 function phraseContainsLegoChars(phraseTarget, legoTarget) {
   if (!phraseTarget || !legoTarget) return false
@@ -74,15 +140,17 @@ function phraseContainsLegoChars(phraseTarget, legoTarget) {
 }
 
 /**
- * Calculate which previous LEGOs to review during ROUND N
- * Based on formula: N - fibonacci[i] >= 1
+ * Calculate which previous LEGOs to review during ROUND N.
+ * Based on formula: N - offsets[i] >= 1, one review slot per offset.
+ * Offsets come from algorithm_config.script_shape.spacedRepOffsets
+ * (ascending); FIBONACCI is the fallback. PURE — unit tested.
  */
-function calculateSpacedRepReviews(roundNumber) {
+function calculateSpacedRepReviews(roundNumber, offsets = FIBONACCI) {
   const reviews = []
   const seenLegos = new Set()
 
-  for (let i = 0; i < FIBONACCI.length; i++) {
-    const skip = FIBONACCI[i]
+  for (let i = 0; i < offsets.length; i++) {
+    const skip = offsets[i]
     const reviewLego = roundNumber - skip
     if (reviewLego < 1) break
     if (seenLegos.has(reviewLego)) continue
@@ -93,9 +161,64 @@ function calculateSpacedRepReviews(roundNumber) {
   return reviews
 }
 
-// L1 sentences play once at 2× per Aran's simplification (visualiser canonical).
-// Real impl could add a 1×→2× ramp on the first few replays per seed; deferred.
-const L1_LISTENING_SPEED = 'double'
+/**
+ * Learner audio-completeness gates — PURE, unit tested.
+ * Mirrors ssi-learning-app generateLearningScript.ts:
+ * - LEGOs: "a cycle must never present without all three audio IDs" (:820-822)
+ * - Phrases: phraseHasFullAudio (:726-727)
+ */
+function legoHasFullAudio(lego) {
+  return !!(lego.known_audio_uuid && lego.target1_audio_uuid && lego.target2_audio_uuid)
+}
+
+function phraseHasFullAudio(phrase) {
+  return !!(phrase.known_audio_uuid && phrase.target1_audio_uuid && phrase.target2_audio_uuid)
+}
+
+/**
+ * Apply the learner's audio gates to the loaded course content — PURE.
+ * LEGOs missing any of known/target1/target2 audio are dropped BEFORE the
+ * round walk (so survivors take consecutive round numbers — the learner's
+ * round compression, generateLearningScript.ts:816-823). BUILD/USE pools are
+ * filtered to fully-voiced phrases (:761-764). Original maps are not mutated.
+ */
+function applyLearnerAudioGate(legoRecords, buildMap, useMap) {
+  const legos = legoRecords.filter(rec => legoHasFullAudio(rec.lego))
+
+  const gateMap = (map) => {
+    const out = new Map()
+    for (const [key, phrases] of map.entries()) {
+      const kept = phrases.filter(phraseHasFullAudio)
+      if (kept.length > 0) out.set(key, kept)
+    }
+    return out
+  }
+
+  return {
+    legos,
+    buildMap: gateMap(buildMap),
+    useMap: gateMap(useMap),
+  }
+}
+
+/**
+ * Assign round numbers to a LEGO walk — PURE, unit tested.
+ * Mirrors the generator walk's numbering: every is_new LEGO takes the next
+ * consecutive round; non-new LEGOs are skipped without consuming a number.
+ * Run AFTER applyLearnerAudioGate and the numbering compresses exactly the
+ * way the learner's does (dropped LEGOs leave no gap).
+ */
+function numberRounds(legoRecords, startRound = 0) {
+  let n = startRound
+  const numbered = []
+  for (let i = 0; i < legoRecords.length; i++) {
+    const rec = legoRecords[i]
+    if (!rec.lego.new) continue
+    n++
+    numbered.push({ record: rec, roundNumber: n, sourceIndex: i })
+  }
+  return numbered
+}
 
 /**
  * Load ALL unique LEGOs for a course
@@ -165,6 +288,8 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
 /**
  * Load ALL practice phrases grouped by LEGO
  * Returns buildMap, useMap, and componentMap
+ * (componentMap is informational only — component cycles are NEVER emitted;
+ * the learner shows components as visual tiles, not audio cycles.)
  */
 async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
   const buildMap = new Map()
@@ -343,140 +468,105 @@ async function loadIntroductionAudio(supabase, courseCode, legoIds) {
 /**
  * Generate the complete learning script with ROUNDs and spaced repetition.
  *
- * Algorithm matches generateLearningScript.ts in ssi-learning-app exactly:
+ * Mirrors generateLearningScript.ts in ssi-learning-app:
  * - Deterministic (no randomness)
- * - BUILD first, then USE fill (BUILD fills to 7, CONSOLIDATE reuses if needed)
- * - Round-robin REVIEW selection
- * - legoState map for REVIEW lookups
+ * - Round shape + spaced-rep offsets from algorithm_config.script_shape
+ * - BUILD first, then USE fill (BUILD fills the quota, CONSOLIDATE reuses if needed)
+ * - Round-robin REVIEW selection; graduated seeds excluded from REVIEW
+ * - No component priming / listening clusters / pod laps (see header)
+ *
+ * @param {object} options
+ * @param {boolean} options.learnerView  Apply the learner's audio gates: drop
+ *   LEGOs/phrases missing any audio ID and compress round numbers the way the
+ *   learner does. Default false = production view (gaps shown, flagged).
  */
-async function generateLearningScript(supabase, courseCode, maxLegos = 50, offset = 0) {
+async function generateLearningScript(supabase, courseCode, maxLegos = 50, offset = 0, options = {}) {
   if (!supabase) {
     logger.warn('No Supabase client available')
     return { rounds: [], allItems: [], stats: {} }
   }
 
+  const learnerView = !!options.learnerView
   const startTime = Date.now()
 
-  // Pre-load extra LEGOs before offset for Fibonacci lookback (max skip = 55)
-  const maxFibLookback = FIBONACCI[FIBONACCI.length - 1] // 55
+  // Live round shape — same table/key the learner app reads.
+  const { scriptShape, listening, scriptShapeSource } = await loadAlgorithmConfig(supabase)
+  const SPACED_REP_OFFSETS = scriptShape.spacedRepOffsets
+  const MAX_BUILD_PHRASES = scriptShape.maxBuildPhrases
+  const CONSOLIDATE_COUNT = scriptShape.useConsolidationCount
+  const MAX_SPACED_REP_PHRASES = scriptShape.maxSpacedRepPhrases
+  const N1_PHRASE_COUNT = scriptShape.n1PhraseCount
+
+  // Pre-load extra LEGOs before offset for spaced-rep lookback
+  // (max offset = 89 with the live config, 55 with the fallback)
+  const maxFibLookback = Math.max(...SPACED_REP_OFFSETS)
   const lookbackStart = Math.max(0, offset - maxFibLookback)
   const lookbackCount = offset - lookbackStart  // how many extra LEGOs to pre-process
   const totalToLoad = lookbackCount + maxLegos
 
-  const legos = await loadAllUniqueLegos(supabase, courseCode, totalToLoad, lookbackStart)
+  // Load the FULL unique-LEGO list, then window AFTER the (optional) audio
+  // gate — gating must happen course-wide so learner-view round numbers match
+  // the learner's full-course compressed numbering.
+  let allLegoRecords = await loadAllUniqueLegos(supabase, courseCode, Number.MAX_SAFE_INTEGER, 0)
+  if (allLegoRecords.length === 0) {
+    return { rounds: [], allItems: [], stats: { legosLoaded: 0 } }
+  }
+
+  let { buildMap, useMap } = await loadAllPracticePhrasesGrouped(supabase, courseCode)
+
+  let legosDroppedForAudio = 0
+  let phrasesDroppedForAudio = 0
+  if (learnerView) {
+    const legosBefore = allLegoRecords.length
+    const countPhrases = (m) => { let c = 0; for (const arr of m.values()) c += arr.length; return c }
+    const phrasesBefore = countPhrases(buildMap) + countPhrases(useMap)
+    const gated = applyLearnerAudioGate(allLegoRecords, buildMap, useMap)
+    allLegoRecords = gated.legos
+    buildMap = gated.buildMap
+    useMap = gated.useMap
+    legosDroppedForAudio = legosBefore - allLegoRecords.length
+    phrasesDroppedForAudio = phrasesBefore - (countPhrases(buildMap) + countPhrases(useMap))
+    if (legosDroppedForAudio > 0 || phrasesDroppedForAudio > 0) {
+      logger.info(`Learner view: dropped ${legosDroppedForAudio} LEGOs + ${phrasesDroppedForAudio} phrases awaiting audio (rounds renumbered)`)
+    }
+  }
+
+  const legos = allLegoRecords.slice(lookbackStart, lookbackStart + totalToLoad)
   if (legos.length === 0) {
     return { rounds: [], allItems: [], stats: { legosLoaded: 0 } }
   }
 
-  const { buildMap, useMap, componentMap } = await loadAllPracticePhrasesGrouped(supabase, courseCode)
-
   const legoIds = legos.map(l => l.lego.id)
   const introAudioMap = await loadIntroductionAudio(supabase, courseCode, legoIds)
 
-  // Load seed sentences for listening items
-  const { data: seedRows } = await supabase
-    .from('course_seeds')
-    .select('seed_number, known_text, target_text')
-    .eq('course_code', courseCode)
-    .order('seed_number', { ascending: true })
-
-  const seedMap = new Map() // seed_number → { known_text, target_text }
-  const seedTargetTexts = []
-  for (const row of (seedRows || [])) {
-    seedMap.set(row.seed_number, { known_text: row.known_text, target_text: row.target_text })
-    if (row.target_text) seedTargetTexts.push(row.target_text)
-  }
-
-  // Load audio UUIDs for seed sentences directly from course_audio
-  // Use a text-set filter in JS to avoid Supabase .in() URL-length issues with CJK
-  const seedAudioMap = new Map() // target_text → audio_uuid
-  if (seedTargetTexts.length > 0) {
-    const seedTextSet = new Set(seedTargetTexts)
-    let offset = 0
-    const pageSize = 1000
-    while (true) {
-      const { data: audioRows, error } = await supabase
-        .from('course_audio')
-        .select('text, id')
-        .eq('course_code', courseCode)
-        .eq('role', 'target1')
-        .range(offset, offset + pageSize - 1)
-
-      if (error) {
-        logger.error('Failed to load seed audio:', error)
-        break
-      }
-      if (!audioRows || audioRows.length === 0) break
-
-      for (const row of audioRows) {
-        if (seedTextSet.has(row.text)) {
-          seedAudioMap.set(row.text, row.id)
-        }
-      }
-      if (audioRows.length < pageSize) break
-      offset += pageSize
+  // Graduation tracking (spaced-rep exclusion only — NO listening emission).
+  // Mirrors the learner: graduation is anchored to absolute LEGO position in
+  // the course catalogue (ALL course_legos rows, duplicates included), not to
+  // chunk-local round numbers (generateLearningScript.ts:899-922,1433-1441).
+  const seedLastLegoOrdinal = new Map()  // seedNum → ordinal of its highest-index LEGO
+  const legoOrdinalMap = new Map()       // legoId → ordinal
+  if (listening.enabled) {
+    const { data: catRows, error: catErr } = await supabase
+      .from('course_legos')
+      .select('seed_number, lego_index')
+      .eq('course_code', courseCode)
+      .order('seed_number', { ascending: true })
+      .order('lego_index', { ascending: true })
+      .limit(10000)
+    if (catErr) {
+      logger.warn('Failed to load LEGO catalogue for graduation tracking:', catErr.message)
     }
-    logger.info(`Loaded ${seedAudioMap.size} seed audio UUIDs from course_audio (scanned ${seedTextSet.size} seed texts)`)
+    let ord = 0
+    for (const row of (catRows || [])) {
+      ord++
+      const k = 'S' + String(row.seed_number).padStart(4, '0') + 'L' + String(row.lego_index).padStart(2, '0')
+      legoOrdinalMap.set(k, ord)
+      // Final write per seed wins → the seed's last-LEGO ordinal
+      seedLastLegoOrdinal.set(row.seed_number, ord)
+    }
   }
-
-  // Pre-fetch the LISTEN-block bookend audio for this course. Both must be
-  // present for either to be emitted. Generated by
-  // scripts/generate-listen-bookends.cjs in this repo. Keep in sync with the
-  // matching block in ssi-learning-app generateLearningScript.ts.
-  const { data: bookendRows, error: bookendErr } = await supabase
-    .from('course_audio')
-    .select('role, text, id')
-    .eq('course_code', courseCode)
-    .in('role', ['bookend_listen_intro', 'bookend_listen_outro'])
-  if (bookendErr) logger.warn('Failed to load listen bookends:', bookendErr.message)
-  const bookendByRole = new Map()
-  for (const row of (bookendRows || [])) bookendByRole.set(row.role, { id: row.id, text: row.text })
-  const listenIntroAudio = bookendByRole.get('bookend_listen_intro') || null
-  const listenOutroAudio = bookendByRole.get('bookend_listen_outro') || null
-  const hasBookends = !!(listenIntroAudio && listenOutroAudio)
-
-  // Pre-fetch Pod 0 sentences for Layer 2 round-end lap. Mirrors the
-  // matching fetch in generateLearningScript.ts. Pod ID: ${course}:pod-0.
-  const { data: podRows, error: podErr } = await supabase
-    .from('listening_pod_sentences')
-    .select('global_order, target_text, known_text, target_audio_id, known_audio_id')
-    .eq('pod_id', `${courseCode}:pod-0`)
-    .order('global_order', { ascending: true })
-  if (podErr) logger.warn('Failed to load pod sentences:', podErr.message)
-  const podSentences = podRows || []
-  const hasPods = podSentences.length > 0
-
-  // Pod-lap mechanics (matches popty.app/listening-playground.html, Aran 2026-04-29).
-  // L2 fires every round at and after POD_ACTIVATION_ROUND (R6 default). Pod-round
-  // is a 1:1 mapping from main-round - activation + 1.
-  const POD_ACTIVATION_ROUND = 6
-  function podRoundForMainRound(mainRound) {
-    if (mainRound < POD_ACTIVATION_ROUND) return 0
-    return mainRound - POD_ACTIVATION_ROUND + 1
-  }
-  // Stage playlists: PS = pod sentence at 1.0×, PS×2 at 2.0×, trans = English
-  // translation. Stages 1-6 each last 3 pod-rounds; stage 7 is the eternal
-  // holding bay.
-  const POD_STAGE_PLAYLIST = {
-    1: ['ps', 'trans', 'ps', 'ps2x'],
-    2: ['ps', 'trans', 'ps2x', 'ps2x'],
-    3: ['ps', 'trans', 'ps2x'],
-    4: ['ps2x', 'trans', 'ps2x'],
-    5: ['ps', 'ps2x'],
-    6: ['ps2x', 'ps2x'],
-    7: ['ps2x'],
-  }
-  function podStageFor(entry, current) {
-    const alive = current - entry + 1
-    if (alive < 1) return null
-    if (alive <= 3) return { stage: 1, iter: alive }
-    if (alive <= 6) return { stage: 2, iter: alive - 3 }
-    if (alive <= 9) return { stage: 3, iter: alive - 6 }
-    if (alive <= 12) return { stage: 4, iter: alive - 9 }
-    if (alive <= 15) return { stage: 5, iter: alive - 12 }
-    if (alive <= 18) return { stage: 6, iter: alive - 15 }
-    return { stage: 7, iter: null }
-  }
+  let currentLegoOrdinal = 0
+  const graduatedSeeds = new Set()
 
   const rounds = []
   const allItems = []
@@ -487,49 +577,12 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
   // legoState map: tracks lastRound and useIndex per LEGO for deterministic REVIEW
   const legoState = new Map()
-  let roundCounter = lookbackStart
 
-  // Listening state tracking
-  const seedLastRound = new Map()   // seed_number → last round where seed had a LEGO
-  const graduatedSeedSet = new Set()        // idempotency
-  const graduatedQueue = []         // graduation order; L1 windows are slices
-  const graduatedLegoIds = new Set()        // LEGO IDs from graduated seeds (excluded from REVIEW)
+  // Walk numbering — every is_new LEGO takes the next consecutive round.
+  // numberRounds is the pure helper that owns the compression behaviour.
+  const numbered = numberRounds(legos, lookbackStart)
 
-  function l1ActiveSeedsList() {
-    return graduatedQueue.slice(-L1_ACTIVE_SIZE)
-  }
-  function l1ReserveSeedsList() {
-    if (graduatedQueue.length <= L1_ACTIVE_SIZE) return []
-    const reserveEnd = graduatedQueue.length - L1_ACTIVE_SIZE
-    const reserveStart = Math.max(0, reserveEnd - L1_RESERVE_SIZE)
-    return graduatedQueue.slice(reserveStart, reserveEnd)
-  }
-  function l1ActiveFiresAt(round) {
-    return round > 0 && round % L1_ACTIVE_INTERVAL === 0 && graduatedQueue.length > 0
-  }
-  function l1ReserveFiresAt(round) {
-    return round > 0 && round % L1_RESERVE_INTERVAL === 0 && graduatedQueue.length > L1_ACTIVE_SIZE
-  }
-  function l2FiresAt(round) {
-    return hasPods && round >= POD_ACTIVATION_ROUND
-  }
-
-  for (let legoIdx = 0; legoIdx < legos.length; legoIdx++) {
-    const currentLego = legos[legoIdx]
-
-    // Skip duplicate LEGOs
-    if (!currentLego.lego.new) {
-      logger.debug(`Skipping duplicate LEGO: ${currentLego.lego.id}`)
-      continue
-    }
-
-    roundCounter++
-    const n = roundCounter
-
-    // Track which seed this LEGO belongs to (for listening graduation)
-    const seedNum = currentLego.seed.seed_number
-    seedLastRound.set(seedNum, n)
-
+  for (const { record: currentLego, roundNumber: n, sourceIndex } of numbered) {
     const currentBuildPhrases = buildMap.get(currentLego.lego.id) || []
     const currentUsePhrases = useMap.get(currentLego.lego.id) || []
     const roundItems = []
@@ -538,80 +591,33 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     const baseItem = {
       roundNumber: n,
       legoId: currentLego.lego.id,
-      legoIndex: legoIdx + 1,
+      legoIndex: sourceIndex + 1,
       seedId: currentLego.seed.seed_id,
       seedNumber: currentLego.seed.seed_number,
       legoType: currentLego.lego.type,
       isNew: currentLego.lego.new,
     }
 
-    // Phase 1: INTRO or COMPONENT PRIMING
-    // M-LEGOs with components: prime each component individually, then present
-    //   the assembled M-LEGO so the learner hears the full unit.
-    //   Overkill >> learner uncertainty at the onset of a new LEGO.
-    // A-LEGOs / Welsh: standard intro with presentation audio.
-    const isWelsh = courseCode.startsWith('cym_')
-    const allCompPhrases = isWelsh ? [] : (componentMap.get(currentLego.lego.id) || [])
-    // Only generate audio cycles for components meant to be introduced
-    const compPhrases = allCompPhrases.filter(c => c.introduce !== false)
-    if (compPhrases.length > 0) {
-      const practiceReps = 2
-      for (const comp of compPhrases) {
-        // Component intro: presentation audio prompt → target audio confirmation
-        roundItems.push({
-          ...baseItem,
-          type: 'component_intro',
-          known_text: `${comp.known_text}, as in ${currentLego.lego.known_text}`,
-          target_text: comp.target_text,
-          presentation_audio: comp.presentation_audio_id ? { id: comp.presentation_audio_id, s3_key: null } : null,
-          target1_audio_uuid: comp.target1_audio_uuid,
-          target2_audio_uuid: comp.target2_audio_uuid,
-          hasAudio: !!(comp.presentation_audio_id && comp.target1_audio_uuid),
-        })
-
-        // Component practice: standard 4-phase cycle (tapered by seed)
-        for (let cp = 0; cp < practiceReps; cp++) {
-          roundItems.push({
-            ...baseItem,
-            type: 'component_practice',
-            known_text: comp.known_text,
-            target_text: comp.target_text,
-            known_audio_uuid: comp.known_audio_uuid,
-            target1_audio_uuid: comp.target1_audio_uuid,
-            target2_audio_uuid: comp.target2_audio_uuid,
-            hasAudio: !!(comp.known_audio_uuid && comp.target1_audio_uuid),
-          })
-        }
-      }
-
-      // M-LEGO intro: after all components are primed, present the assembled
-      // M-LEGO so the learner hears how the pieces snap together as a single unit.
-      // Overkill >> learner uncertainty at the onset of a new LEGO.
-      const introAudio = introAudioMap.get(currentLego.lego.id)
-      roundItems.push({
-        ...baseItem,
-        type: 'intro',
-        known_text: currentLego.lego.known_text,
-        target_text: currentLego.lego.target_text,
-        presentation_audio: introAudio || null,
-        target1_audio_uuid: currentLego.lego.target1_audio_uuid,
-        target2_audio_uuid: currentLego.lego.target2_audio_uuid,
-        hasAudio: !!(introAudio && currentLego.lego.target1_audio_uuid),
-      })
-    } else {
-      // A-LEGO or Welsh: standard intro with presentation audio
-      const introAudio = introAudioMap.get(currentLego.lego.id)
-      roundItems.push({
-        ...baseItem,
-        type: 'intro',
-        known_text: currentLego.lego.known_text,
-        target_text: currentLego.lego.target_text,
-        presentation_audio: introAudio || null,
-        target1_audio_uuid: currentLego.lego.target1_audio_uuid,
-        target2_audio_uuid: currentLego.lego.target2_audio_uuid,
-        hasAudio: !!(introAudio && currentLego.lego.target1_audio_uuid),
-      })
-    }
+    // Phase 1: INTRO — standard presentation for ALL LEGOs.
+    // NO component priming: the learner never plays component_intro /
+    // component_practice cycles (components are visual ghost tiles on the
+    // intro/debut cards only — generateLearningScript.ts:1208-1212).
+    const introAudio = introAudioMap.get(currentLego.lego.id) || null
+    // Learner view: mirror the learner's fallback — when presentation audio is
+    // missing the intro still plays the LEGO via known audio (:1199-1202).
+    const effectiveIntroAudio = (learnerView && !introAudio && currentLego.lego.known_audio_uuid)
+      ? { id: currentLego.lego.known_audio_uuid, s3_key: null }
+      : introAudio
+    roundItems.push({
+      ...baseItem,
+      type: 'intro',
+      known_text: currentLego.lego.known_text,
+      target_text: currentLego.lego.target_text,
+      presentation_audio: effectiveIntroAudio,
+      target1_audio_uuid: currentLego.lego.target1_audio_uuid,
+      target2_audio_uuid: currentLego.lego.target2_audio_uuid,
+      hasAudio: !!(effectiveIntroAudio && currentLego.lego.target1_audio_uuid),
+    })
 
     // Phase 2: DEBUT
     roundItems.push({
@@ -626,15 +632,15 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     })
     usedPhrasesInRound.add(getPhraseId(currentLego.lego.known_text, currentLego.lego.target_text))
 
-    // Phase 3: BUILD ×7
-    // Step 1: BUILD phrases first, sorted by syllable count
-    const legoTarget = currentLego.lego.target_text
-
-    // Filter BUILD phrases for LEGO char validation
-    const validBuildPhrases = currentBuildPhrases.filter(p =>
-      phraseContainsLegoChars(p.target_text, legoTarget)
-    )
-    const sortedBuildPhrases = [...validBuildPhrases].sort((a, b) =>
+    // Phase 3: BUILD — BUILD phrases first, sorted by syllable count
+    // NO substring gate — learner-app parity. The learner (generateLearningScript.ts /
+    // CourseDataProvider) selects phrases purely by seed_number+lego_index with NO
+    // phraseContainsLegoChars filter. This .cjs is the dashboard MIRROR; gating here had
+    // DIVERGED from the learner and hid legitimately word-order-inverted phrases (e.g.
+    // Croatian clitic inversion: LEGO "sličan si" vs phrase "...si sličan..."), so they were
+    // invisible/uneditable in Script View though the learner plays them. Do NOT re-add this
+    // filter to "match the app" — the app has no such gate; removing it IS the parity fix.
+    const sortedBuildPhrases = [...currentBuildPhrases].sort((a, b) =>
       (a.target_syllable_count || countTargetSyllables(a.target_text)) -
       (b.target_syllable_count || countTargetSyllables(b.target_text))
     )
@@ -662,16 +668,16 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       practiceCount++
     }
 
-    // Step 2: Reserve 2 USE phrases for consolidation BEFORE using them for BUILD padding
+    // Step 2: Reserve USE phrases for consolidation BEFORE using them for BUILD padding
     const sortedUsePhrases = [...currentUsePhrases]
-      .filter(p => phraseContainsLegoChars(p.target_text, legoTarget))
+      // No phraseContainsLegoChars gate — learner-app parity (see BUILD note above).
       .sort((a, b) =>
         (a.target_syllable_count || countTargetSyllables(a.target_text)) -
         (b.target_syllable_count || countTargetSyllables(b.target_text))
       )
 
     // Step 3: Fill remaining BUILD slots with USE phrases (BUILD priority > CONSOLIDATE)
-    // CONSOLIDATE can repeat BUILD phrases if needed — filling 7 BUILD is non-negotiable
+    // CONSOLIDATE can repeat BUILD phrases if needed — filling the BUILD quota is non-negotiable
     for (const phrase of sortedUsePhrases) {
       if (practiceCount >= MAX_BUILD_PHRASES) break
       const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
@@ -702,8 +708,12 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       lego: currentLego,
     })
 
-    // Phase 4: REVIEW - Fibonacci spaced repetition using legoState
-    const reviews = calculateSpacedRepReviews(n)
+    // Update absolute LEGO ordinal for graduation tracking (catalogue lookup,
+    // NOT round number — mirrors generateLearningScript.ts:1326)
+    currentLegoOrdinal = legoOrdinalMap.get(currentLego.lego.id) ?? currentLegoOrdinal
+
+    // Phase 4: REVIEW — spaced repetition at the live config offsets
+    const reviews = calculateSpacedRepReviews(n, SPACED_REP_OFFSETS)
     const reviewIndices = []
     let reviewCount = 0
     const seenReviewLegos = new Set()
@@ -723,7 +733,8 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
 
       if (!reviewLegoState) continue
-      if (graduatedLegoIds.has(reviewLegoState.legoId)) continue
+      // Graduated seeds have dropped out of spaced rep (learner :1340)
+      if (graduatedSeeds.has(reviewLegoState.lego.seed.seed_number)) continue
       if (seenReviewLegos.has(reviewLegoState.legoId)) continue
       seenReviewLegos.add(reviewLegoState.legoId)
 
@@ -771,7 +782,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
     }
 
-    // Phase 5: CONSOLIDATE ×2 - prefer unused USE phrases, allow reuse if pool exhausted
+    // Phase 5: CONSOLIDATE — prefer unused USE phrases, allow reuse if pool exhausted
     let consolidateCount = 0
     const emitConsolidate = (phrase) => {
       consolidateCount++
@@ -804,161 +815,16 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
     }
 
-    // Phase 5b: SURFACE MISMATCHES — a USE phrase normally only appears if its
-    // target still contains the LEGO target as a contiguous substring
-    // (phraseContainsLegoChars). When a reviewer edits a phrase and the edit
-    // breaks that contiguous chunk (e.g. inserting words inside it), the phrase
-    // would otherwise be silently filtered out of its own round — reading to the
-    // reviewer as "my edit vanished". Instead we emit those phrases here with a
-    // legoMismatch flag so they stay visible and the view can show a warning.
-    // USE phrases only: BUILD phrases legitimately climb toward the LEGO and may
-    // not yet contain it as a contiguous chunk (e.g. "Este" under "este trabajo"),
-    // so flagging them would be noise rather than a real "vanished edit".
-    const mismatchedPhrases = currentUsePhrases
-      .filter(p => !phraseContainsLegoChars(p.target_text, legoTarget))
-    for (const phrase of mismatchedPhrases) {
-      const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
-      if (usedPhrasesInRound.has(phraseId)) continue
-      usedPhrasesInRound.add(phraseId)
-      roundItems.push({
-        ...baseItem,
-        type: 'build',
-        legoMismatch: true,
-        phrase_id: phrase.id,
-        known_text: phrase.known_text,
-        target_text: phrase.target_text,
-        known_audio_uuid: phrase.known_audio_uuid,
-        target1_audio_uuid: phrase.target1_audio_uuid,
-        target2_audio_uuid: phrase.target2_audio_uuid,
-        hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
-      })
-    }
-
-    // Phase 6: Layer 1 — graduation tracking + dual-rotation cluster emission.
-    // A seed graduates LISTENING_OFFSET rounds after its last LEGO. Active-10
-    // fires every 3 rounds; reserve-50 fires every 13 rounds. When both fire
-    // (every 39 rounds) we emit one combined cluster, reserve first.
-    for (const [sNum, lastRound] of seedLastRound.entries()) {
-      if (graduatedSeedSet.has(sNum)) continue
-      if (n - lastRound < LISTENING_OFFSET) continue
-      graduatedSeedSet.add(sNum)
-      graduatedQueue.push(sNum)
-      // Mark all LEGOs from this seed as graduated (exclude from future REVIEW)
-      for (const [legoId, state] of legoState.entries()) {
-        if (state.lego.seed.seed_number === sNum) {
-          graduatedLegoIds.add(legoId)
-        }
-      }
-    }
-
-    const fireActive = l1ActiveFiresAt(n)
-    const fireReserve = l1ReserveFiresAt(n)
-    if (fireActive || fireReserve) {
-      const seedNums = []
-      if (fireReserve) seedNums.push(...l1ReserveSeedsList())
-      if (fireActive) seedNums.push(...l1ActiveSeedsList())
-
-      const listeningEmissions = []
-      for (const sNum of seedNums) {
-        const seedData = seedMap.get(sNum)
-        if (!seedData) continue
-        const seedAudioUuid = seedAudioMap.get(seedData.target_text) || null
-        if (!seedAudioUuid) continue
-        listeningEmissions.push({
-          roundNumber: n,
-          type: 'listening',
-          seedNumber: sNum,
-          known_text: seedData.known_text,
-          target_text: seedData.target_text,
-          listeningSpeed: L1_LISTENING_SPEED,
-          target1_audio_uuid: seedAudioUuid,
-          hasAudio: true,
-        })
-      }
-
-      if (listeningEmissions.length > 0) {
-        if (hasBookends) {
-          roundItems.push({
-            roundNumber: n,
-            type: 'listen_intro',
-            known_text: listenIntroAudio.text,
-            target_text: '',
-            known_audio_uuid: listenIntroAudio.id,
-            hasAudio: true,
-          })
-        }
-        for (const item of listeningEmissions) roundItems.push(item)
-        if (hasBookends) {
-          roundItems.push({
-            roundNumber: n,
-            type: 'listen_outro',
-            known_text: listenOutroAudio.text,
-            target_text: '',
-            known_audio_uuid: listenOutroAudio.id,
-            hasAudio: true,
-          })
-        }
-      }
-    }
-
-    // Phase 7: POD 0 round-end lap. Mirrors the matching block in
-    // ssi-learning-app generateLearningScript.ts. Fires every round at and
-    // after POD_ACTIVATION_ROUND.
-    if (l2FiresAt(n)) {
-      const podRound = podRoundForMainRound(n)
-      if (podRound >= 1) {
-        const activeCount = Math.min(podRound, podSentences.length)
-        const podPlays = []
-        for (let i = 1; i <= activeCount; i++) {
-          const sentence = podSentences[i - 1]
-          if (!sentence.target_audio_id) continue
-          const stageInfo = podStageFor(i, podRound)
-          if (!stageInfo) continue
-          for (const playRole of POD_STAGE_PLAYLIST[stageInfo.stage]) {
-            if (playRole === 'trans' && !sentence.known_audio_id) continue
-            podPlays.push({ i, sentence, playRole, stage: stageInfo.stage })
-          }
-        }
-        if (podPlays.length > 0) {
-          if (hasBookends) {
-            roundItems.push({
-              roundNumber: n,
-              type: 'listen_intro',
-              known_text: listenIntroAudio.text,
-              target_text: '',
-              known_audio_uuid: listenIntroAudio.id,
-              hasAudio: true,
-            })
-          }
-          for (const { i, sentence, playRole, stage } of podPlays) {
-            // Aran spec: only 1.0× and 2.0× exist for listening.
-            const speed = playRole === 'ps2x' ? 2.0 : 1.0
-            const isTrans = playRole === 'trans'
-            roundItems.push({
-              roundNumber: n,
-              type: 'pod',
-              podSentenceIdx: i,
-              podStage: stage,
-              podPlayRole: playRole,
-              known_text: isTrans ? sentence.known_text : '',
-              target_text: isTrans ? '' : sentence.target_text,
-              known_audio_uuid: isTrans ? sentence.known_audio_id : null,
-              target1_audio_uuid: isTrans ? null : sentence.target_audio_id,
-              playbackSpeed: speed,
-              hasAudio: true,
-            })
-          }
-          if (hasBookends) {
-            roundItems.push({
-              roundNumber: n,
-              type: 'listen_outro',
-              known_text: listenOutroAudio.text,
-              target_text: '',
-              known_audio_uuid: listenOutroAudio.id,
-              hasAudio: true,
-            })
-          }
-        }
+    // Graduation check AFTER the round's content (mirrors learner ordering,
+    // generateLearningScript.ts:1433-1441 — the final in-window review at the
+    // max offset fires BEFORE its seed graduates). NO listening emission here:
+    // L1 lives in Listening MODE, pods are runtime-scheduled per-learner.
+    if (listening.enabled) {
+      for (const [sNum, lastOrd] of seedLastLegoOrdinal) {
+        if (graduatedSeeds.has(sNum)) continue
+        if (currentLegoOrdinal === 0) continue
+        if (currentLegoOrdinal - lastOrd < listening.offset) continue
+        graduatedSeeds.add(sNum)
       }
     }
 
@@ -967,8 +833,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     let lastItem = null
 
     for (const item of roundItems) {
-      if (item.type === 'intro' || item.type === 'debut' || item.type === 'component_intro' ||
-          item.type === 'listen_intro' || item.type === 'listen_outro' || item.type === 'pod') {
+      if (item.type === 'intro' || item.type === 'debut') {
         dedupedItems.push(item)
         continue
       }
@@ -1002,7 +867,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   }
 
   const elapsed = Date.now() - startTime
-  logger.info(`Generated ${rounds.length} rounds with ${allItems.length} total items in ${elapsed}ms`)
+  logger.info(`Generated ${rounds.length} rounds with ${allItems.length} total items in ${elapsed}ms (shape: ${scriptShapeSource}, offsets [${SPACED_REP_OFFSETS.join(',')}]${learnerView ? ', learner view' : ''})`)
 
   const stats = {
     legosLoaded: legos.length,
@@ -1010,18 +875,18 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     totalItems: allItems.length,
     itemsByType: {
       intro: allItems.filter(i => i.type === 'intro').length,
-      component_intro: allItems.filter(i => i.type === 'component_intro').length,
-      component_practice: allItems.filter(i => i.type === 'component_practice').length,
       debut: allItems.filter(i => i.type === 'debut').length,
       build: allItems.filter(i => i.type === 'build').length,
       review: allItems.filter(i => i.type === 'review').length,
       consolidate: allItems.filter(i => i.type === 'consolidate').length,
-      listening: allItems.filter(i => i.type === 'listening').length,
     },
     itemsWithAudio: allItems.filter(i => i.hasAudio).length,
     itemsMissingAudio: allItems.filter(i => !i.hasAudio && i.type !== 'intro').length,
-    graduatedSeeds: graduatedQueue.length,
-    listeningItems: allItems.filter(i => i.type === 'listening').length,
+    graduatedSeeds: graduatedSeeds.size,
+    spacedRepOffsets: SPACED_REP_OFFSETS,
+    scriptShapeSource,
+    learnerView,
+    ...(learnerView ? { legosDroppedForAudio, phrasesDroppedForAudio } : {}),
     generationTimeMs: elapsed,
   }
 
@@ -1033,6 +898,13 @@ module.exports = {
   loadAllUniqueLegos,
   loadAllPracticePhrasesGrouped,
   loadIntroductionAudio,
+  loadAlgorithmConfig,
   calculateSpacedRepReviews,
+  legoHasFullAudio,
+  phraseHasFullAudio,
+  applyLearnerAudioGate,
+  numberRounds,
   FIBONACCI,
+  DEFAULT_SCRIPT_SHAPE,
+  DEFAULT_LISTENING,
 }

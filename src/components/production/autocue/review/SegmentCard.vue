@@ -65,10 +65,10 @@ function getBarHeight(index) {
 
 <style scoped>
 .segment-card {
-  background: var(--color-shadow, #1e293b);
+  background: var(--color-shadow, var(--surface));
   border-radius: 12px;
   padding: 1rem;
-  border-left: 4px solid var(--color-graphite, #475569);
+  border-left: 4px solid var(--color-graphite, var(--surface-3));
   transition: all 0.3s ease;
 }
 
@@ -77,7 +77,7 @@ function getBarHeight(index) {
 }
 
 .segment-card.medium {
-  border-left-color: var(--color-tungsten, #ffa630);
+  border-left-color: var(--color-tungsten, var(--accent));
 }
 
 .segment-card.low {
@@ -100,7 +100,7 @@ function getBarHeight(index) {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
   font-size: 1rem;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .confidence-badge {
@@ -118,7 +118,7 @@ function getBarHeight(index) {
 
 .confidence-badge.medium {
   background: rgba(255, 166, 48, 0.2);
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
 }
 
 .confidence-badge.low {
@@ -129,7 +129,7 @@ function getBarHeight(index) {
 .segment-text {
   font-family: 'Crimson Pro', serif;
   font-size: 1.2rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin-bottom: 0.75rem;
   font-style: italic;
 }
@@ -140,16 +140,16 @@ function getBarHeight(index) {
   margin-bottom: 0.75rem;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.85rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .segment-meta .has-issue {
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
 }
 
 .segment-waveform {
   height: 60px;
-  background: var(--color-void, #0f172a);
+  background: var(--color-void, var(--canvas));
   border-radius: 6px;
   margin-bottom: 0.75rem;
   display: flex;
@@ -168,7 +168,7 @@ function getBarHeight(index) {
 }
 
 .segment-card.medium .waveform-bar {
-  background: var(--color-tungsten, #ffa630);
+  background: var(--color-tungsten, var(--accent));
 }
 
 .segment-card.low .waveform-bar {
@@ -186,9 +186,9 @@ function getBarHeight(index) {
 
 .segment-btn {
   flex: 1;
-  background: var(--color-void, #0f172a);
-  border: 1px solid var(--color-graphite, #475569);
-  color: var(--color-paper, #f7f7f2);
+  background: var(--color-void, var(--canvas));
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  color: var(--color-paper, var(--ink));
   padding: 0.5rem;
   border-radius: 6px;
   font-family: 'Josefin Sans', sans-serif;
@@ -208,13 +208,40 @@ function getBarHeight(index) {
 }
 
 .segment-btn:hover {
-  background: var(--color-tungsten, #ffa630);
-  color: var(--color-void, #0f172a);
-  border-color: var(--color-tungsten, #ffa630);
+  background: var(--color-tungsten, var(--accent));
+  color: var(--color-void, var(--canvas));
+  border-color: var(--color-tungsten, var(--accent));
 }
 
 .segment-btn.approve:hover {
   background: var(--color-emerald, #06ffa5);
   border-color: var(--color-emerald, #06ffa5);
+}
+
+/* Light-mode refinements: dark mode untouched.
+   The confidence-badge backgrounds bake neon-tinted rgba that, in light mode,
+   sit pale under the re-themed (darker) token text and fail WCAG AA. Replace
+   with theme-token tints + darker borders, and lift the faint button border. */
+:root[data-theme="light"] .confidence-badge.high {
+  background: rgba(4, 120, 87, 0.14);
+  color: #03543c;
+}
+
+:root[data-theme="light"] .confidence-badge.medium {
+  background: rgba(168, 85, 8, 0.14);
+  color: #8a4607;
+}
+
+:root[data-theme="light"] .confidence-badge.low {
+  background: rgba(220, 38, 38, 0.12);
+  color: #b91c1c;
+}
+
+:root[data-theme="light"] .segment-btn {
+  border-color: var(--line);
+}
+
+:root[data-theme="light"] .segment-card:hover {
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
 }
 </style>

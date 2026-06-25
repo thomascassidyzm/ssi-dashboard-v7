@@ -55,7 +55,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: linear-gradient(180deg, #0a0f1a 0%, #0f172a 100%);
+  background: linear-gradient(180deg, #0a0f1a 0%, var(--canvas) 100%);
 }
 
 .deprecated-content {
@@ -83,13 +83,13 @@
 .deprecated-content h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--ink);
   margin: 0 0 0.5rem 0;
   letter-spacing: 0.05em;
 }
 
 .deprecated-message {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 1rem;
   margin: 0 0 2rem 0;
 }
@@ -100,8 +100,8 @@
 
 .info-box {
   text-align: left;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 0.75rem;
   padding: 1.5rem;
   margin-bottom: 2rem;
@@ -117,7 +117,7 @@
 }
 
 .info-box p {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 0.875rem;
   margin: 0 0 1rem 0;
   line-height: 1.6;
@@ -126,7 +126,7 @@
 .info-box ul {
   margin: 0;
   padding-left: 1.25rem;
-  color: #64748b;
+  color: var(--faint);
   font-size: 0.8125rem;
 }
 
@@ -135,7 +135,7 @@
 }
 
 .info-box code {
-  background: #0f172a;
+  background: var(--canvas);
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
   font-family: 'SF Mono', Monaco, monospace;
@@ -164,17 +164,31 @@
 }
 
 .btn-primary:hover {
-  background: #34d399;
+  background: var(--accent-2);
 }
 
 .btn-secondary {
-  background: #1e293b;
-  border: 1px solid #334155;
-  color: #94a3b8;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
 }
 
 .btn-secondary:hover {
-  border-color: #475569;
-  color: #f1f5f9;
+  border-color: var(--faint);
+  color: var(--ink);
+}
+
+/* Light mode: the dark-tuned greens/ambers lose contrast on light surfaces.
+   Scope overrides here so dark mode is untouched. */
+:root[data-theme="light"] .deprecated-message strong {
+  color: var(--accent-2);
+}
+
+:root[data-theme="light"] .info-box h3 {
+  color: var(--accent);
+}
+
+:root[data-theme="light"] .info-box code {
+  color: var(--accent-2);
 }
 </style>

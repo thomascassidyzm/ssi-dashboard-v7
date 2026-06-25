@@ -1,31 +1,34 @@
 <template>
   <div class="learning-journey-view">
     <!-- Stats Header -->
-    <div v-if="stats" class="stats-bar bg-slate-700 rounded-lg p-4 mb-6">
+    <div v-if="stats" class="stats-bar bg-surface border border-line rounded-lg p-4 mb-6">
       <div class="flex flex-wrap gap-6">
         <div class="stat-item">
-          <span class="text-slate-400 text-sm">Rounds</span>
-          <span class="text-white font-bold text-lg ml-2">{{ stats.roundsGenerated }}</span>
+          <span class="text-muted text-sm">Rounds</span>
+          <span class="text-ink font-bold text-lg ml-2">{{ stats.roundsGenerated }}</span>
         </div>
         <div class="stat-item">
-          <span class="text-slate-400 text-sm">Total Items</span>
-          <span class="text-white font-bold text-lg ml-2">{{ stats.totalItems }}</span>
+          <span class="text-muted text-sm">Total Items</span>
+          <span class="text-ink font-bold text-lg ml-2">{{ stats.totalItems }}</span>
         </div>
         <div class="stat-item">
-          <span class="text-emerald-400 text-sm">With Audio</span>
-          <span class="text-emerald-300 font-bold text-lg ml-2">{{ stats.itemsWithAudio }}</span>
+          <span class="stat-label-audio text-emerald-400 text-sm">With Audio</span>
+          <span class="stat-val-audio text-emerald-300 font-bold text-lg ml-2">{{ stats.itemsWithAudio }}</span>
         </div>
         <div v-if="stats.itemsMissingAudio > 0" class="stat-item">
-          <span class="text-amber-400 text-sm">Missing Audio</span>
-          <span class="text-amber-300 font-bold text-lg ml-2">{{ stats.itemsMissingAudio }}</span>
+          <span class="stat-label-missing text-amber-400 text-sm">Missing Audio</span>
+          <span class="stat-val-missing text-amber-300 font-bold text-lg ml-2">{{ stats.itemsMissingAudio }}</span>
         </div>
-        <div v-if="stats.listeningItems > 0" class="stat-item">
-          <span class="text-pink-400 text-sm">Listening</span>
-          <span class="text-pink-300 font-bold text-lg ml-2">{{ stats.listeningItems }}</span>
+        <!-- Learner view: how much content is hidden because audio is missing -->
+        <div v-if="stats.learnerView" class="stat-item">
+          <span class="stat-label-audio text-emerald-400 text-sm">Learner view</span>
+          <span class="stat-val-audio text-emerald-300 text-sm ml-2">
+            {{ (stats.legosDroppedForAudio || 0) }} LEGOs + {{ (stats.phrasesDroppedForAudio || 0) }} phrases awaiting audio hidden, rounds renumbered
+          </span>
         </div>
         <div class="stat-item ml-auto">
-          <span class="text-slate-400 text-sm">Generated in</span>
-          <span class="text-slate-300 text-lg ml-2">{{ stats.generationTimeMs }}ms</span>
+          <span class="text-muted text-sm">Generated in</span>
+          <span class="text-ink text-lg ml-2">{{ stats.generationTimeMs }}ms</span>
         </div>
       </div>
     </div>
@@ -36,27 +39,23 @@
       <div class="legend flex flex-wrap gap-4 text-sm">
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-purple-500"></span>
-          <span class="text-slate-300">Intro</span>
+          <span class="text-ink">Intro</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-          <span class="text-slate-300">LEGO</span>
+          <span class="text-ink">LEGO</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-          <span class="text-slate-300">BUILD</span>
+          <span class="text-ink">BUILD</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-          <span class="text-slate-300">REVIEW</span>
+          <span class="text-ink">REVIEW</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
-          <span class="text-slate-300">CONSOLIDATE</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="w-3 h-3 rounded-full bg-pink-500"></span>
-          <span class="text-slate-300">LISTENING</span>
+          <span class="text-ink">CONSOLIDATE</span>
         </div>
       </div>
 
@@ -64,13 +63,13 @@
       <div v-if="!hideControls" class="expand-collapse-btns flex gap-2">
         <button
           @click="collapseAll"
-          class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+          class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors"
         >
           Collapse All
         </button>
         <button
           @click="expandAll"
-          class="px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+          class="px-3 py-1.5 text-sm text-ink hover:text-ink bg-surface-2 hover:bg-surface-3 rounded transition-colors"
         >
           Expand All
         </button>
@@ -83,11 +82,11 @@
         v-for="round in rounds"
         :key="round.roundNumber"
         :ref="el => setRoundRef(round.roundNumber, el)"
-        class="round-card bg-slate-800 rounded-lg overflow-hidden"
+        class="round-card bg-surface border border-line rounded-lg overflow-hidden"
       >
         <!-- Round Header -->
         <div
-          class="round-header px-4 py-3 bg-slate-700 flex items-center justify-between cursor-pointer"
+          class="round-header px-4 py-3 bg-surface-2 flex items-center justify-between cursor-pointer"
           @click="toggleRound(round.roundNumber)"
         >
           <div class="flex items-center gap-4">
@@ -97,7 +96,7 @@
               class="play-round-btn w-8 h-8 flex items-center justify-center rounded-full transition-colors"
               :class="isRoundPlaying(round.roundNumber)
                 ? 'bg-emerald-500 text-white'
-                : 'bg-slate-500 bg-opacity-50 text-slate-300 hover:bg-emerald-500 hover:text-white'"
+                : 'bg-surface-3 bg-opacity-50 text-white hover:bg-emerald-500 hover:text-white'"
               :title="`Play Round ${round.roundNumber}`"
               @click.stop="playRound(round)"
             >
@@ -109,17 +108,17 @@
               </svg>
             </button>
 
-            <div class="round-number bg-slate-600 text-white px-3 py-1 rounded-full text-sm font-mono">
+            <div class="round-number bg-surface-3 text-ink px-3 py-1 rounded-full text-sm font-mono">
               R{{ round.roundNumber }}
             </div>
             <div class="lego-info">
-              <span class="text-emerald-400 font-mono text-sm">{{ round.legoId }}</span>
+              <span class="lego-id-text text-emerald-400 font-mono text-sm">{{ round.legoId }}</span>
             </div>
             <!-- LEGO Text: known = target -->
-            <div class="lego-text text-slate-300 text-sm">
-              <span class="text-slate-400">{{ getLegoKnownText(round) }}</span>
-              <span class="text-slate-500 mx-2">=</span>
-              <span class="text-white">{{ getLegoTargetText(round) }}</span>
+            <div class="lego-text text-ink text-sm">
+              <span class="text-muted">{{ getLegoKnownText(round) }}</span>
+              <span class="text-faint mx-2">=</span>
+              <span class="text-ink">{{ getLegoTargetText(round) }}</span>
             </div>
           </div>
 
@@ -129,30 +128,25 @@
               <span
                 v-for="reviewIdx in round.spacedRepReviews.slice(0, 5)"
                 :key="reviewIdx"
-                class="px-2 py-0.5 bg-amber-500 bg-opacity-20 text-amber-400 text-xs rounded font-mono"
+                class="px-2 py-0.5 bg-amber-600 text-white text-xs rounded font-mono"
                 :title="`Reviewing R${reviewIdx}`"
               >
                 R{{ reviewIdx }}
               </span>
               <span
                 v-if="round.spacedRepReviews.length > 5"
-                class="px-2 py-0.5 bg-slate-600 text-slate-400 text-xs rounded"
+                class="px-2 py-0.5 bg-surface-3 text-muted text-xs rounded"
               >
                 +{{ round.spacedRepReviews.length - 5 }}
               </span>
             </div>
 
-            <div class="item-count text-slate-400 text-sm">
-              <template v-if="hideListening && visibleItems(round).length !== round.itemCount">
-                {{ visibleItems(round).length }} of {{ round.itemCount }} items
-              </template>
-              <template v-else>
-                {{ round.itemCount }} items
-              </template>
+            <div class="item-count text-muted text-sm">
+              {{ round.itemCount }} items
             </div>
 
             <svg
-              class="w-5 h-5 text-slate-400 transition-transform"
+              class="w-5 h-5 text-muted transition-transform"
               :class="{ 'rotate-180': expandedRounds.has(round.roundNumber) }"
               fill="none"
               stroke="currentColor"
@@ -167,13 +161,13 @@
         <Transition name="slide">
           <div v-if="expandedRounds.has(round.roundNumber)" class="round-items p-4 space-y-2">
             <div
-              v-for="(item, idx) in visibleItems(round)"
-              :key="item.phrase_id ? `${round.roundNumber}-p${item.phrase_id}-${item.type}` : `${round.roundNumber}-${item.type}-${idx}`"
+              v-for="(item, idx) in round.items"
+              :key="`${round.roundNumber}-${idx}`"
               :ref="el => setItemRef(round.roundNumber, idx, el)"
               class="item-row flex items-center gap-3 p-3 rounded-lg transition-all"
               :class="[
                 getItemBgClass(item),
-                isItemPlaying(round.roundNumber, idx) ? 'ring-2 ring-emerald-400 bg-emerald-900 bg-opacity-20' : 'hover:bg-slate-700'
+                isItemPlaying(round.roundNumber, idx) ? 'ring-2 ring-emerald-400 bg-emerald-900 bg-opacity-20' : 'hover:bg-surface-2'
               ]"
             >
               <!-- Play Item Button -->
@@ -182,7 +176,7 @@
                 class="play-item-btn w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full transition-colors"
                 :class="isItemPlaying(round.roundNumber, idx)
                   ? 'bg-emerald-500 text-white'
-                  : 'bg-slate-600 text-slate-400 hover:bg-emerald-500 hover:text-white'"
+                  : 'bg-surface-3 text-muted hover:bg-emerald-500 hover:text-white'"
                 :title="isItemPlaying(round.roundNumber, idx) ? 'Playing...' : 'Play from here'"
                 @click="playFromItem(round, idx)"
               >
@@ -213,51 +207,21 @@
                 R{{ item.reviewOf }}
               </div>
 
-              <!-- LEGO Mismatch Warning - phrase no longer contains its LEGO chunk
-                   (usually because a recent edit broke the contiguous substring) -->
-              <div
-                v-if="item.legoMismatch"
-                class="lego-mismatch-badge px-2 py-1 bg-red-600 text-white text-xs rounded font-bold"
-                title="This phrase no longer contains its LEGO as a contiguous chunk — likely a recent edit broke it. The edit IS saved; check whether it still belongs in this round."
-              >
-                ⚠ LEGO?
-              </div>
-
-              <!-- Listening badges: speed + batch -->
-              <div v-if="item.type === 'listening'" class="flex gap-1">
-                <span
-                  class="px-2 py-1 text-xs rounded font-bold"
-                  :class="item.listeningSpeed === 'double'
-                    ? 'bg-pink-600 text-white'
-                    : 'bg-pink-500 bg-opacity-30 text-pink-300'"
-                >
-                  {{ item.listeningSpeed === 'double' ? '2×' : '1×' }}
-                </span>
-                <span class="px-2 py-1 bg-slate-600 text-slate-300 text-xs rounded font-mono">
-                  B{{ item.listeningBatch }}
-                </span>
-              </div>
-
-              <!-- Content -->
+              <!-- Content: known → target -->
               <div class="item-content flex-1 min-w-0">
-                <!-- Listening: target only -->
-                <div v-if="item.type === 'listening'" class="flex gap-2 items-center">
-                  <span class="text-pink-200">{{ item.target_text }}</span>
-                  <span class="text-slate-500 text-xs">#{{ item.listeningPlayCount }}</span>
-                </div>
-                <!-- Normal: known → target -->
-                <div v-else class="flex gap-4">
-                  <span class="text-slate-400 truncate flex-1">{{ item.known_text }}</span>
-                  <span class="text-slate-500">&rarr;</span>
-                  <span class="text-white truncate flex-1">{{ item.target_text }}</span>
+                <div class="flex gap-4">
+                  <span class="text-muted truncate flex-1">{{ item.known_text }}</span>
+                  <span class="text-faint">&rarr;</span>
+                  <span class="text-ink truncate flex-1">{{ item.target_text }}</span>
                 </div>
               </div>
 
               <!-- Edit & Flag Buttons -->
               <div class="edit-flags flex items-center gap-1 flex-shrink-0">
-                <!-- Pencil edit button -->
+                <!-- Pencil edit button — LEGO text (debut) is NOT editable; only phrases -->
                 <button
-                  class="w-6 h-6 flex items-center justify-center rounded text-slate-500 hover:text-white hover:bg-slate-600 transition-colors"
+                  v-if="item.type !== 'debut'"
+                  class="w-6 h-6 flex items-center justify-center rounded text-faint hover:text-ink hover:bg-surface-3 transition-colors"
                   title="Edit text"
                   @click.stop="emit('item-edit', item)"
                 >
@@ -265,40 +229,39 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                   </svg>
                 </button>
-                <!-- F (target1) quick-flag -->
+                <!-- Presentation (intro narration) edit + regen -->
+                <button
+                  v-if="item.type === 'intro'"
+                  class="w-6 h-6 flex items-center justify-center rounded text-purple-400 hover:text-white hover:bg-purple-500 hover:bg-opacity-30 transition-colors"
+                  title="Edit intro narration & regenerate audio"
+                  @click.stop="emit('presentation-edit', item)"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-14 0m7 7v3m0-3a4 4 0 01-4-4V7a4 4 0 118 0v7a4 4 0 01-4 4z" />
+                  </svg>
+                </button>
+                <!-- Voice 1 (target1) — play -->
                 <button
                   v-if="item.target1_audio_uuid"
-                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'bg-pink-500 text-white' : 'text-pink-500 hover:bg-pink-500 hover:bg-opacity-20'"
-                  :title="flaggedAudioUuids.has(item.target1_audio_uuid!) ? 'Unflag target1 (F) audio' : 'Flag target1 (F) audio'"
-                  @click.stop="emit('audio-flag', item, 'target1')"
-                >F</button>
-                <!-- F regen button -->
-                <button
-                  v-if="item.target1_audio_uuid && flaggedAudioUuids.has(item.target1_audio_uuid!)"
-                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="regeneratingUuids.has(item.target1_audio_uuid!) ? 'text-pink-300 animate-spin' : 'text-pink-400 hover:bg-pink-500 hover:bg-opacity-20'"
-                  :disabled="regeneratingUuids.has(item.target1_audio_uuid!)"
-                  title="Regenerate target1 audio"
-                  @click.stop="emit('audio-regen', item, 'target1', item.target1_audio_uuid!)"
-                >↻</button>
-                <!-- M (target2) quick-flag -->
+                  class="h-5 px-1.5 flex items-center gap-0.5 rounded text-xs font-semibold transition-colors"
+                  :class="playingTrackUuid === item.target1_audio_uuid ? 'bg-emerald-500 text-white' : 'text-muted hover:text-ink hover:bg-surface-3'"
+                  title="Play Voice 1"
+                  @click.stop="playTrack(item.target1_audio_uuid!)"
+                >
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>
+                  1
+                </button>
+                <!-- Voice 2 (target2) — play -->
                 <button
                   v-if="item.target2_audio_uuid"
-                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'bg-blue-500 text-white' : 'text-blue-500 hover:bg-blue-500 hover:bg-opacity-20'"
-                  :title="flaggedAudioUuids.has(item.target2_audio_uuid!) ? 'Unflag target2 (M) audio' : 'Flag target2 (M) audio'"
-                  @click.stop="emit('audio-flag', item, 'target2')"
-                >M</button>
-                <!-- M regen button -->
-                <button
-                  v-if="item.target2_audio_uuid && flaggedAudioUuids.has(item.target2_audio_uuid!)"
-                  class="w-5 h-5 flex items-center justify-center rounded text-xs font-bold transition-colors"
-                  :class="regeneratingUuids.has(item.target2_audio_uuid!) ? 'text-blue-300 animate-spin' : 'text-blue-400 hover:bg-blue-500 hover:bg-opacity-20'"
-                  :disabled="regeneratingUuids.has(item.target2_audio_uuid!)"
-                  title="Regenerate target2 audio"
-                  @click.stop="emit('audio-regen', item, 'target2', item.target2_audio_uuid!)"
-                >↻</button>
+                  class="h-5 px-1.5 flex items-center gap-0.5 rounded text-xs font-semibold transition-colors"
+                  :class="playingTrackUuid === item.target2_audio_uuid ? 'bg-emerald-500 text-white' : 'text-muted hover:text-ink hover:bg-surface-3'"
+                  title="Play Voice 2"
+                  @click.stop="playTrack(item.target2_audio_uuid!)"
+                >
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>
+                  2
+                </button>
                 <!-- Trash/flag phrase for deletion -->
                 <button
                   v-if="item.phrase_id"
@@ -319,7 +282,7 @@
                   v-for="phase in ['prompt', 'pause', 'voice1', 'voice2']"
                   :key="phase"
                   class="w-2 h-2 rounded-full transition-colors"
-                  :class="player.currentPhase.value === phase ? 'bg-emerald-400' : 'bg-slate-600'"
+                  :class="player.currentPhase.value === phase ? 'bg-emerald-400' : 'bg-surface-3'"
                   :title="phase"
                 ></span>
               </div>
@@ -328,7 +291,7 @@
               <div v-else class="audio-status flex gap-2">
                 <span
                   v-if="item.hasAudio"
-                  class="text-emerald-400"
+                  class="audio-ok-icon text-emerald-400"
                   title="Audio available"
                 >
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -337,7 +300,7 @@
                 </span>
                 <span
                   v-else
-                  class="text-amber-400"
+                  class="audio-missing-icon text-amber-400"
                   title="Audio missing"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -349,7 +312,7 @@
               <!-- LEGO Badge (for review items showing which LEGO) -->
               <div
                 v-if="item.type === 'review' && item.legoId !== round.legoId"
-                class="lego-badge px-2 py-1 bg-slate-600 text-slate-300 text-xs rounded font-mono"
+                class="lego-badge px-2 py-1 bg-surface-3 text-ink text-xs rounded font-mono"
               >
                 {{ item.legoId }}
               </div>
@@ -361,11 +324,11 @@
 
     <!-- Empty State -->
     <div v-if="rounds.length === 0 && !isLoading" class="empty-state text-center py-12">
-      <svg class="w-16 h-16 mx-auto text-slate-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-16 h-16 mx-auto text-faint mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
       </svg>
-      <h3 class="text-lg font-medium text-slate-400">No Learning Journey Data</h3>
-      <p class="text-slate-500 mt-2">This course may not have any LEGOs or practice phrases yet.</p>
+      <h3 class="text-lg font-medium text-muted">No Learning Journey Data</h3>
+      <p class="text-faint mt-2">This course may not have any LEGOs or practice phrases yet.</p>
     </div>
   </div>
 </template>
@@ -375,17 +338,17 @@ import { ref, computed, watch, nextTick } from 'vue'
 import { useScriptPlayer } from '@/composables/useScriptPlayer'
 import { getApiUrl } from '@/services/api'
 
+// Mirrors the learner session's cycle types: the generator emits ONLY
+// intro/debut/build/review/consolidate. Component priming, listening clusters
+// and pod laps are never played in the learner's main flow (Listening MODE
+// and the per-learner pod scheduler own those) so Script View no longer
+// projects them — see docs/voice-engine/script-divergence-report.md.
 interface ScriptItem {
   roundNumber: number
   legoId: string
   legoIndex: number
   seedId: string
-  type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate' | 'listening' | 'component_intro' | 'component_practice' | 'listen_intro' | 'listen_outro' | 'pod'
-  // Pod-specific (Layer 2 round-end lap)
-  podSentenceIdx?: number
-  podStage?: number
-  podPlayRole?: 'slow' | 'trans' | 'fast' | 'fast2x'
-  playbackSpeed?: number
+  type: 'intro' | 'debut' | 'build' | 'review' | 'consolidate'
   phrase_id?: string
   known_text: string
   target_text: string
@@ -401,9 +364,6 @@ interface ScriptItem {
   known_duration_ms?: number
   target1_duration_ms?: number
   target2_duration_ms?: number
-  listeningSpeed?: 'normal' | 'double'
-  listeningBatch?: number
-  listeningPlayCount?: number
 }
 
 interface RoundData {
@@ -424,8 +384,11 @@ interface Stats {
   itemsWithAudio: number
   itemsMissingAudio: number
   generationTimeMs: number
-  listeningItems?: number
   graduatedSeeds?: number
+  // Audio-gap toggle ("As the learner hears it") — set by the generator
+  learnerView?: boolean
+  legosDroppedForAudio?: number
+  phrasesDroppedForAudio?: number
 }
 
 const props = defineProps<{
@@ -435,17 +398,8 @@ const props = defineProps<{
   courseCode: string
   isLoading?: boolean
   hideControls?: boolean
-  hideListening?: boolean
-  flaggedAudioUuids?: Set<string>
-  regeneratingUuids?: Set<string>
   flaggedPhraseIds?: Set<string>
 }>()
-
-// Listening item types (LISTEN intro/outro, POD lap, retired-seed listening cluster)
-// — hidden from the journey view when reviewers are checking main course content.
-const LISTENING_TYPES = new Set(['listening', 'listen_intro', 'listen_outro', 'pod'])
-const visibleItems = (round: RoundData) =>
-  props.hideListening ? round.items.filter(i => !LISTENING_TYPES.has(i.type)) : round.items
 
 const emit = defineEmits<{
   'playback-state': [state: {
@@ -458,16 +412,42 @@ const emit = defineEmits<{
     totalItems: number
   }]
   'item-edit': [item: ScriptItem]
-  'audio-flag': [item: ScriptItem, track: 'target1' | 'target2']
-  'audio-regen': [item: ScriptItem, track: 'target1' | 'target2', audioUuid: string]
+  'presentation-edit': [item: ScriptItem]
   'phrase-flag': [item: ScriptItem]
 }>()
 
 // Default empty sets for optional props
 const emptySet = new Set<string>()
-const flaggedAudioUuids = computed(() => props.flaggedAudioUuids || emptySet)
-const regeneratingUuids = computed(() => props.regeneratingUuids || emptySet)
 const flaggedPhraseIds = computed(() => props.flaggedPhraseIds || emptySet)
+
+// Quick audition of a single voice track (F = target1, M = target2).
+const playingTrackUuid = ref<string | null>(null)
+let trackAudioEl: HTMLAudioElement | null = null
+async function playTrack(uuid: string) {
+  if (!uuid) return
+  // Toggle off if the same track is already playing.
+  if (trackAudioEl && playingTrackUuid.value === uuid) {
+    trackAudioEl.pause();
+    playingTrackUuid.value = null;
+    return;
+  }
+  try {
+    let url = `${apiBaseUrl}/api/production/${props.courseCode}/audio/${uuid}/url`
+    const s3Key = introS3KeyMap.value.get(uuid)
+    if (s3Key) url += `?s3Key=${encodeURIComponent(s3Key)}`
+    const resp = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+    if (!resp.ok) return
+    const data = await resp.json()
+    if (!data.url) return
+    if (trackAudioEl) trackAudioEl.pause()
+    trackAudioEl = new Audio(data.url)
+    playingTrackUuid.value = uuid
+    trackAudioEl.onended = () => { playingTrackUuid.value = null }
+    await trackAudioEl.play()
+  } catch {
+    playingTrackUuid.value = null
+  }
+}
 
 // ============================================================================
 // PLAYER SETUP
@@ -507,7 +487,7 @@ const player = useScriptPlayer({
 // Intro cycle: presentation audio (PROMPT) → pause → LEGO target1 → LEGO target2
 const playerItems = computed(() => {
   return props.allItems.map(item => {
-    if (item.type === 'intro' || item.type === 'component_intro') {
+    if (item.type === 'intro') {
       const presId = (item as any).presentation_audio?.id || null
       return {
         sourceId: presId,
@@ -748,44 +728,30 @@ const getLegoTargetText = (round: RoundData): string => {
 const formatItemType = (type: string, phrasePosition?: number, consolidateIndex?: number): string => {
   switch (type) {
     case 'intro': return 'Intro'
-    case 'component_intro': return 'CMP'
-    case 'component_practice': return 'CMP'
     case 'debut': return 'LEGO'
     case 'build': return phrasePosition ? `BUILD-${phrasePosition}` : 'BUILD'
     case 'review': return 'REVIEW'
     case 'consolidate': return consolidateIndex ? `CONSOLIDATE-${consolidateIndex}` : 'CONSOLIDATE'
-    case 'listening': return 'LISTEN'
-    case 'listen_intro': return 'LISTEN ▸'
-    case 'listen_outro': return '◂ LISTEN'
-    case 'pod': return 'POD'
     default: return type
   }
 }
 
 const getTypeBadgeClass = (type: string): string => {
   switch (type) {
-    case 'intro': return 'bg-purple-500 bg-opacity-30 text-purple-300'
-    case 'component_intro': return 'bg-violet-500 bg-opacity-30 text-violet-300'
-    case 'component_practice': return 'bg-violet-500 bg-opacity-30 text-violet-300'
-    case 'debut': return 'bg-emerald-500 bg-opacity-30 text-emerald-300'
-    case 'build': return 'bg-blue-500 bg-opacity-30 text-blue-300'
-    case 'review': return 'bg-amber-500 bg-opacity-40 text-amber-300'
-    case 'consolidate': return 'bg-cyan-500 bg-opacity-40 text-cyan-300'
-    case 'listening': return 'bg-pink-500 bg-opacity-30 text-pink-300'
-    case 'listen_intro':
-    case 'listen_outro': return 'bg-fuchsia-500 bg-opacity-30 text-fuchsia-200'
-    case 'pod': return 'bg-orange-500 bg-opacity-30 text-orange-300'
-    default: return 'bg-slate-600 text-slate-400'
+    // Solid badge + white text reads in BOTH themes (the tint+light-text pattern washed out on
+    // white). White stays white here regardless of theme — high contrast on a saturated -600.
+    case 'intro': return 'bg-purple-600 text-white'
+    case 'debut': return 'bg-emerald-600 text-white'
+    case 'build': return 'bg-blue-600 text-white'
+    case 'review': return 'bg-amber-600 text-white'
+    case 'consolidate': return 'bg-cyan-600 text-white'
+    default: return 'bg-surface-3 text-muted'
   }
 }
 
 const getItemBgClass = (item: ScriptItem): string => {
-  if (item.type === 'intro') return 'bg-slate-800'
-  if (item.type === 'component_intro') return 'bg-violet-900 bg-opacity-10'
-  if (item.type === 'listening') return 'bg-pink-900 bg-opacity-10'
-  if (item.type === 'listen_intro' || item.type === 'listen_outro') return 'bg-fuchsia-900 bg-opacity-10'
-  if (item.type === 'pod') return 'bg-orange-900 bg-opacity-10'
-  if (!item.hasAudio && item.type !== 'intro' && item.type !== 'component_intro') return 'bg-amber-900 bg-opacity-10'
+  if (item.type === 'intro') return 'bg-surface'
+  if (!item.hasAudio && item.type !== 'intro') return 'bg-amber-900 bg-opacity-10'
   return ''
 }
 </script>
@@ -809,5 +775,21 @@ const getItemBgClass = (item: ScriptItem): string => {
 .slide-leave-from {
   max-height: 2000px;
   opacity: 1;
+}
+
+/* Light-mode legibility: the raw Tailwind emerald/amber-300/400 text and icons
+   fall to ~1.3–1.5:1 on the light surfaces. Re-tint to the darkened accent
+   tokens (same hue family) so they pass WCAG AA. Dark mode is untouched. */
+:root[data-theme="light"] .stat-label-audio,
+:root[data-theme="light"] .stat-val-audio,
+:root[data-theme="light"] .lego-id-text,
+:root[data-theme="light"] .audio-ok-icon {
+  color: var(--accent-2); /* #047857 emerald family, 4.9:1 on surface, 4.5:1 on surface-2 */
+}
+
+:root[data-theme="light"] .stat-label-missing,
+:root[data-theme="light"] .stat-val-missing,
+:root[data-theme="light"] .audio-missing-icon {
+  color: var(--accent); /* #a85508 amber/orange family, 5.4:1 on surface */
 }
 </style>

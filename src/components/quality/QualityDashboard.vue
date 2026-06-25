@@ -1,30 +1,35 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
         <div class="flex items-center justify-between mb-4">
           <div>
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">Quality Review Dashboard</h1>
-            <p class="text-slate-400">{{ courseCode }} - {{ totalSeeds }} SEEDs</p>
+            <p class="text-muted">{{ courseCode }} - {{ totalSeeds }} SEEDs</p>
           </div>
           <div class="flex gap-3">
             <button
               @click="exportReport('csv')"
-              class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition-colors"
+              disabled
+              title="Not implemented yet"
+              class="px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink rounded transition-colors"
             >
               Export CSV
             </button>
             <button
               @click="exportReport('pdf')"
-              class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition-colors"
+              disabled
+              title="Not implemented yet"
+              class="px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink rounded transition-colors"
             >
               Export PDF
             </button>
             <button
               @click="refreshData"
+              disabled
+              title="Not implemented yet"
               class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded transition-colors"
-              :disabled="loading"
             >
               {{ loading ? 'Refreshing...' : 'Refresh' }}
             </button>
@@ -33,38 +38,38 @@
 
         <!-- Course Health Stats -->
         <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">Average Quality</div>
+          <div class="bg-surface border border-line rounded-lg p-6">
+            <div class="text-sm text-muted mb-1">Average Quality</div>
             <div class="text-3xl font-bold" :class="getQualityColor(stats.avgQuality)">
               {{ stats.avgQuality.toFixed(1) }}
             </div>
-            <div class="text-xs text-slate-500 mt-1">out of 10.0</div>
+            <div class="text-xs text-faint mt-1">out of 10.0</div>
           </div>
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">Flagged SEEDs</div>
+          <div class="bg-surface border border-line rounded-lg p-6">
+            <div class="text-sm text-muted mb-1">Flagged SEEDs</div>
             <div class="text-3xl font-bold text-yellow-400">{{ stats.flaggedCount }}</div>
-            <div class="text-xs text-slate-500 mt-1">{{ stats.flaggedPercent }}% need review</div>
+            <div class="text-xs text-faint mt-1">{{ stats.flaggedPercent }}% need review</div>
           </div>
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">Accepted</div>
+          <div class="bg-surface border border-line rounded-lg p-6">
+            <div class="text-sm text-muted mb-1">Accepted</div>
             <div class="text-3xl font-bold text-emerald-400">{{ stats.acceptedCount }}</div>
-            <div class="text-xs text-slate-500 mt-1">{{ stats.acceptedPercent }}% approved</div>
+            <div class="text-xs text-faint mt-1">{{ stats.acceptedPercent }}% approved</div>
           </div>
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">Avg Attempts</div>
+          <div class="bg-surface border border-line rounded-lg p-6">
+            <div class="text-sm text-muted mb-1">Avg Attempts</div>
             <div class="text-3xl font-bold text-blue-400">{{ stats.avgAttempts.toFixed(1) }}</div>
-            <div class="text-xs text-slate-500 mt-1">per SEED</div>
+            <div class="text-xs text-faint mt-1">per SEED</div>
           </div>
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">Ready for Review</div>
+          <div class="bg-surface border border-line rounded-lg p-6">
+            <div class="text-sm text-muted mb-1">Ready for Review</div>
             <div class="text-3xl font-bold text-purple-400">{{ stats.pendingReview }}</div>
-            <div class="text-xs text-slate-500 mt-1">awaiting action</div>
+            <div class="text-xs text-faint mt-1">awaiting action</div>
           </div>
         </div>
       </div>
 
       <!-- Quality Distribution Chart -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <h3 class="text-lg font-semibold text-emerald-400 mb-4">Quality Score Distribution</h3>
         <div class="flex items-end gap-2 h-48">
           <div
@@ -80,24 +85,24 @@
             >
               <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
             </div>
-            <div class="absolute -bottom-6 left-0 right-0 text-center text-xs text-slate-400">
+            <div class="absolute -bottom-6 left-0 right-0 text-center text-xs text-muted">
               {{ bucket.label }}
             </div>
-            <div class="absolute top-0 left-0 right-0 text-center text-xs font-semibold text-slate-300 -mt-5 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="absolute top-0 left-0 right-0 text-center text-xs font-semibold text-ink -mt-5 opacity-0 group-hover:opacity-100 transition-opacity">
               {{ bucket.count }}
             </div>
           </div>
         </div>
-        <div class="text-xs text-slate-500 mt-8 text-center">Click a bar to filter by quality range</div>
+        <div class="text-xs text-faint mt-8 text-center">Click a bar to filter by quality range</div>
       </div>
 
       <!-- Filters and Controls -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-lg font-semibold text-emerald-400">Filters & Actions</h3>
           <button
             @click="clearFilters"
-            class="text-sm text-slate-400 hover:text-slate-300"
+            class="text-sm text-muted hover:text-ink"
           >
             Clear All Filters
           </button>
@@ -106,21 +111,21 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
           <!-- Search -->
           <div>
-            <label class="block text-sm text-slate-400 mb-2">Search</label>
+            <label class="block text-sm text-muted mb-2">Search</label>
             <input
               v-model="filters.search"
               type="text"
               placeholder="SEED ID, content..."
-              class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-2 text-sm text-slate-300 focus:outline-none focus:border-emerald-500"
+              class="w-full bg-canvas border border-line rounded px-4 py-2 text-sm text-ink focus:outline-none focus:border-emerald-500"
             />
           </div>
 
           <!-- Status Filter -->
           <div>
-            <label class="block text-sm text-slate-400 mb-2">Status</label>
+            <label class="block text-sm text-muted mb-2">Status</label>
             <select
               v-model="filters.status"
-              class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-2 text-sm text-slate-300 focus:outline-none focus:border-emerald-500"
+              class="w-full bg-canvas border border-line rounded px-4 py-2 text-sm text-ink focus:outline-none focus:border-emerald-500"
             >
               <option value="">All Statuses</option>
               <option value="pending">Pending Review</option>
@@ -132,10 +137,10 @@
 
           <!-- Quality Range -->
           <div>
-            <label class="block text-sm text-slate-400 mb-2">Quality Score</label>
+            <label class="block text-sm text-muted mb-2">Quality Score</label>
             <select
               v-model="filters.qualityRange"
-              class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-2 text-sm text-slate-300 focus:outline-none focus:border-emerald-500"
+              class="w-full bg-canvas border border-line rounded px-4 py-2 text-sm text-ink focus:outline-none focus:border-emerald-500"
             >
               <option value="">All Scores</option>
               <option value="9-10">Excellent (9.0-10.0)</option>
@@ -147,10 +152,10 @@
 
           <!-- Concerns Filter -->
           <div>
-            <label class="block text-sm text-slate-400 mb-2">Concerns</label>
+            <label class="block text-sm text-muted mb-2">Concerns</label>
             <select
               v-model="filters.concern"
-              class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-2 text-sm text-slate-300 focus:outline-none focus:border-emerald-500"
+              class="w-full bg-canvas border border-line rounded px-4 py-2 text-sm text-ink focus:outline-none focus:border-emerald-500"
             >
               <option value="">All Concerns</option>
               <option value="boundary">Boundary Issues</option>
@@ -164,7 +169,7 @@
 
         <!-- Sort Controls -->
         <div class="flex items-center gap-4">
-          <label class="text-sm text-slate-400">Sort by:</label>
+          <label class="text-sm text-muted">Sort by:</label>
           <button
             v-for="sort in sortOptions"
             :key="sort.value"
@@ -172,7 +177,7 @@
             class="px-3 py-1 rounded text-sm transition-colors"
             :class="filters.sortBy === sort.value
               ? 'bg-emerald-600 text-white'
-              : 'bg-slate-700 text-slate-300 hover:bg-slate-600'"
+              : 'bg-surface-2 text-ink hover:bg-surface-3'"
           >
             {{ sort.label }}
             <span v-if="filters.sortBy === sort.value" class="ml-1">
@@ -183,15 +188,15 @@
       </div>
 
       <!-- Bulk Actions -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-4 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-4 mb-6">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-4">
-            <label class="flex items-center gap-2 text-sm text-slate-400">
+            <label class="flex items-center gap-2 text-sm text-muted">
               <input
                 type="checkbox"
                 v-model="selectAll"
                 @change="toggleSelectAll"
-                class="w-4 h-4 rounded border-slate-600 bg-slate-900 text-emerald-600 focus:ring-emerald-500"
+                class="w-4 h-4 rounded border-line bg-canvas text-emerald-600 focus:ring-emerald-500"
               />
               Select All ({{ selectedSeeds.length }} selected)
             </label>
@@ -199,22 +204,25 @@
           <div class="flex gap-2">
             <button
               @click="bulkAction('accept')"
-              :disabled="selectedSeeds.length === 0"
-              class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded text-sm transition-colors"
+              disabled
+              title="Not implemented yet"
+              class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white rounded text-sm transition-colors"
             >
               Accept Selected
             </button>
             <button
               @click="bulkAction('rerun')"
-              :disabled="selectedSeeds.length === 0"
-              class="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded text-sm transition-colors"
+              disabled
+              title="Not implemented yet"
+              class="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-surface-2 disabled:text-faint text-white rounded text-sm transition-colors"
             >
               Re-run Selected
             </button>
             <button
               @click="bulkAction('remove')"
-              :disabled="selectedSeeds.length === 0"
-              class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded text-sm transition-colors"
+              disabled
+              title="Not implemented yet"
+              class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-surface-2 disabled:text-faint text-white rounded text-sm transition-colors"
             >
               Remove Selected
             </button>
@@ -223,18 +231,18 @@
       </div>
 
       <!-- SEED List -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg">
-        <div class="p-4 border-b border-slate-700">
+      <div class="bg-surface border border-line rounded-lg">
+        <div class="p-4 border-b border-line">
           <h3 class="text-lg font-semibold text-emerald-400">
             SEEDs ({{ filteredSeeds.length }} of {{ totalSeeds }})
           </h3>
         </div>
 
-        <div class="divide-y divide-slate-700">
+        <div class="divide-y divide-line">
           <div
             v-for="seed in paginatedSeeds"
             :key="seed.id"
-            class="p-4 hover:bg-slate-700/30 transition-colors cursor-pointer"
+            class="p-4 hover:bg-surface-2/30 transition-colors cursor-pointer"
             @click="viewSeedDetail(seed)"
           >
             <div class="flex items-start gap-4">
@@ -244,7 +252,7 @@
                 v-model="selectedSeeds"
                 :value="seed.id"
                 @click.stop
-                class="w-5 h-5 rounded border-slate-600 bg-slate-900 text-emerald-600 focus:ring-emerald-500 mt-1"
+                class="w-5 h-5 rounded border-line bg-canvas text-emerald-600 focus:ring-emerald-500 mt-1"
               />
 
               <!-- Content -->
@@ -252,7 +260,7 @@
                 <div class="flex items-start justify-between mb-2">
                   <div class="flex-1">
                     <div class="flex items-center gap-3 mb-1">
-                      <span class="text-slate-400 font-mono text-sm">{{ seed.id }}</span>
+                      <span class="text-muted font-mono text-sm">{{ seed.id }}</span>
                       <span
                         class="px-2 py-1 rounded text-xs font-medium"
                         :class="getStatusBadgeClass(seed.status)"
@@ -266,8 +274,8 @@
                         {{ seed.concerns.length }} concern{{ seed.concerns.length > 1 ? 's' : '' }}
                       </span>
                     </div>
-                    <div class="text-slate-300 mb-1">{{ seed.source }}</div>
-                    <div class="text-slate-500 text-sm">{{ seed.target }}</div>
+                    <div class="text-ink mb-1">{{ seed.source }}</div>
+                    <div class="text-faint text-sm">{{ seed.target }}</div>
                   </div>
 
                   <!-- Quality Score -->
@@ -278,7 +286,7 @@
                     >
                       {{ seed.quality_score.toFixed(1) }}
                     </div>
-                    <div class="text-xs text-slate-400">{{ seed.attempt_count }} attempt{{ seed.attempt_count > 1 ? 's' : '' }}</div>
+                    <div class="text-xs text-muted">{{ seed.attempt_count }} attempt{{ seed.attempt_count > 1 ? 's' : '' }}</div>
                   </div>
                 </div>
 
@@ -294,7 +302,7 @@
                 </div>
 
                 <!-- Agent's Assessment Preview -->
-                <div v-if="seed.agent_assessment" class="mt-2 text-sm text-slate-400 italic">
+                <div v-if="seed.agent_assessment" class="mt-2 text-sm text-muted italic">
                   "{{ truncate(seed.agent_assessment, 120) }}"
                 </div>
 
@@ -302,12 +310,16 @@
                 <div class="flex gap-2 mt-3">
                   <button
                     @click.stop="quickAccept(seed.id)"
+                    disabled
+                    title="Not implemented yet"
                     class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs transition-colors"
                   >
                     Accept
                   </button>
                   <button
                     @click.stop="quickRerun(seed.id)"
+                    disabled
+                    title="Not implemented yet"
                     class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs transition-colors"
                   >
                     Re-run
@@ -315,7 +327,7 @@
                   <router-link
                     :to="`/quality/${courseCode}/${seed.id}`"
                     @click.stop
-                    class="px-3 py-1 bg-slate-600 hover:bg-slate-500 text-white rounded text-xs transition-colors inline-block no-underline"
+                    class="px-3 py-1 bg-surface-3 hover:bg-surface-3 text-ink rounded text-xs transition-colors inline-block no-underline"
                   >
                     Review Details
                   </router-link>
@@ -326,7 +338,7 @@
 
           <!-- Empty State -->
           <div v-if="filteredSeeds.length === 0" class="p-12 text-center">
-            <div class="text-slate-400 mb-2">No SEEDs match your filters</div>
+            <div class="text-muted mb-2">No SEEDs match your filters</div>
             <button
               @click="clearFilters"
               class="text-emerald-400 hover:text-emerald-300 text-sm"
@@ -337,15 +349,15 @@
         </div>
 
         <!-- Pagination -->
-        <div v-if="filteredSeeds.length > 0" class="p-4 border-t border-slate-700 flex items-center justify-between">
-          <div class="text-sm text-slate-400">
+        <div v-if="filteredSeeds.length > 0" class="p-4 border-t border-line flex items-center justify-between">
+          <div class="text-sm text-muted">
             Showing {{ (currentPage - 1) * pageSize + 1 }}-{{ Math.min(currentPage * pageSize, filteredSeeds.length) }} of {{ filteredSeeds.length }}
           </div>
           <div class="flex gap-2">
             <button
               @click="prevPage"
               :disabled="currentPage === 1"
-              class="px-3 py-1 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 text-slate-300 rounded text-sm transition-colors"
+              class="px-3 py-1 bg-surface-2 hover:bg-surface-3 disabled:bg-surface disabled:text-faint text-ink rounded text-sm transition-colors"
             >
               Previous
             </button>
@@ -357,7 +369,7 @@
                 class="px-3 py-1 rounded text-sm transition-colors"
                 :class="currentPage === page
                   ? 'bg-emerald-600 text-white'
-                  : 'bg-slate-700 hover:bg-slate-600 text-slate-300'"
+                  : 'bg-surface-2 hover:bg-surface-3 text-ink'"
               >
                 {{ page }}
               </button>
@@ -365,7 +377,7 @@
             <button
               @click="nextPage"
               :disabled="currentPage === totalPages"
-              class="px-3 py-1 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 text-slate-300 rounded text-sm transition-colors"
+              class="px-3 py-1 bg-surface-2 hover:bg-surface-3 disabled:bg-surface disabled:text-faint text-ink rounded text-sm transition-colors"
             >
               Next
             </button>
@@ -380,32 +392,32 @@
       class="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
       @click="showShortcutsHelp = false"
     >
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 max-w-md" @click.stop>
+      <div class="bg-surface border border-line rounded-lg p-6 max-w-md" @click.stop>
         <h3 class="text-xl font-bold text-emerald-400 mb-4">Keyboard Shortcuts</h3>
         <div class="space-y-2 text-sm">
           <div class="flex justify-between">
-            <kbd class="px-2 py-1 bg-slate-900 rounded border border-slate-600">j/k</kbd>
-            <span class="text-slate-300">Navigate up/down</span>
+            <kbd class="px-2 py-1 bg-canvas rounded border border-line">j/k</kbd>
+            <span class="text-ink">Navigate up/down</span>
           </div>
           <div class="flex justify-between">
-            <kbd class="px-2 py-1 bg-slate-900 rounded border border-slate-600">Enter</kbd>
-            <span class="text-slate-300">View details</span>
+            <kbd class="px-2 py-1 bg-canvas rounded border border-line">Enter</kbd>
+            <span class="text-ink">View details</span>
           </div>
           <div class="flex justify-between">
-            <kbd class="px-2 py-1 bg-slate-900 rounded border border-slate-600">a</kbd>
-            <span class="text-slate-300">Accept current</span>
+            <kbd class="px-2 py-1 bg-canvas rounded border border-line">a</kbd>
+            <span class="text-ink">Accept current</span>
           </div>
           <div class="flex justify-between">
-            <kbd class="px-2 py-1 bg-slate-900 rounded border border-slate-600">r</kbd>
-            <span class="text-slate-300">Re-run current</span>
+            <kbd class="px-2 py-1 bg-canvas rounded border border-line">r</kbd>
+            <span class="text-ink">Re-run current</span>
           </div>
           <div class="flex justify-between">
-            <kbd class="px-2 py-1 bg-slate-900 rounded border border-slate-600">x</kbd>
-            <span class="text-slate-300">Toggle selection</span>
+            <kbd class="px-2 py-1 bg-canvas rounded border border-line">x</kbd>
+            <span class="text-ink">Toggle selection</span>
           </div>
           <div class="flex justify-between">
-            <kbd class="px-2 py-1 bg-slate-900 rounded border border-slate-600">?</kbd>
-            <span class="text-slate-300">Show this help</span>
+            <kbd class="px-2 py-1 bg-canvas rounded border border-line">?</kbd>
+            <span class="text-ink">Show this help</span>
           </div>
         </div>
       </div>
@@ -620,7 +632,7 @@ function getStatusBadgeClass(status) {
     accepted: 'bg-emerald-900/50 text-emerald-400 border border-emerald-600/50',
     rejected: 'bg-red-900/50 text-red-400 border border-red-600/50'
   }
-  return classes[status] || 'bg-slate-700 text-slate-300'
+  return classes[status] || 'bg-surface-2 text-ink'
 }
 
 function truncate(text, length) {
@@ -670,13 +682,7 @@ function nextPage() {
 }
 
 async function refreshData() {
-  loading.value = true
-  try {
-    // TODO: Fetch real data from API
-    await new Promise(resolve => setTimeout(resolve, 1000))
-  } finally {
-    loading.value = false
-  }
+  alert("Refresh isn't available yet.")
 }
 
 function viewSeedDetail(seed) {
@@ -686,40 +692,19 @@ function viewSeedDetail(seed) {
 }
 
 async function quickAccept(seedId) {
-  // TODO: API call to accept seed
-  console.log('Accepting seed:', seedId)
-  const seed = seeds.value.find(s => s.id === seedId)
-  if (seed) seed.status = 'accepted'
+  alert("Accept isn't available yet.")
 }
 
 async function quickRerun(seedId) {
-  // TODO: API call to trigger re-run
-  console.log('Re-running seed:', seedId)
+  alert("Re-run isn't available yet.")
 }
 
 async function bulkAction(action) {
-  if (selectedSeeds.value.length === 0) return
-
-  const confirmed = confirm(`${action.toUpperCase()} ${selectedSeeds.value.length} selected SEEDs?`)
-  if (!confirmed) return
-
-  // TODO: API call for bulk action
-  console.log(`Bulk ${action}:`, selectedSeeds.value)
-
-  if (action === 'accept') {
-    selectedSeeds.value.forEach(seedId => {
-      const seed = seeds.value.find(s => s.id === seedId)
-      if (seed) seed.status = 'accepted'
-    })
-  }
-
-  selectedSeeds.value = []
-  selectAll.value = false
+  alert("Bulk actions aren't available yet.")
 }
 
 function exportReport(format) {
-  // TODO: Implement export functionality
-  console.log(`Exporting report as ${format}`)
+  alert("Export isn't available yet.")
 }
 
 // Keyboard shortcuts

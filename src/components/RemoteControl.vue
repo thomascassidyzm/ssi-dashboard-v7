@@ -346,16 +346,16 @@ onBeforeUnmount(() => {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
-  color: var(--color-paper-dim, #c1c1bb);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  color: var(--color-paper-dim, var(--muted));
   padding: 0.375rem 0.625rem;
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.75rem;
   transition: border-color 0.2s, color 0.2s;
 }
-.rc-toggle:hover { border-color: var(--color-tungsten, #ffa630); }
+.rc-toggle:hover { border-color: var(--color-tungsten, var(--accent)); }
 .rc-toggle.warn { color: #fbbf24; border-color: #b45309; }
 .rc-toggle.crit { color: #fca5a5; border-color: #b91c1c; }
 
@@ -366,62 +366,62 @@ onBeforeUnmount(() => {
   top: calc(100% + 0.5rem);
   right: 0;
   width: 22rem;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   padding: 0.75rem;
   z-index: 1000;
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .rc-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
 .rc-title { font-weight: 600; font-size: 0.875rem; }
-.rc-host { font-size: 0.7rem; color: #94a3b8; margin-left: auto; }
-.rc-close { background: transparent; border: 0; color: #94a3b8; font-size: 1.25rem; cursor: pointer; line-height: 1; padding: 0 0.25rem; }
-.rc-close:hover { color: #e2e8f0; }
+.rc-host { font-size: 0.7rem; color: var(--muted); margin-left: auto; }
+.rc-close { background: transparent; border: 0; color: var(--muted); font-size: 1.25rem; cursor: pointer; line-height: 1; padding: 0 0.25rem; }
+.rc-close:hover { color: var(--ink); }
 
-.rc-section { border-top: 1px solid #334155; padding-top: 0.5rem; margin-top: 0.5rem; }
+.rc-section { border-top: 1px solid var(--line); padding-top: 0.5rem; margin-top: 0.5rem; }
 .rc-section:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
-.rc-section-head { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #94a3b8; margin-bottom: 0.375rem; }
-.rc-refresh { background: transparent; border: 0; color: #94a3b8; cursor: pointer; font-size: 0.875rem; }
-.rc-refresh:hover { color: #e2e8f0; }
+.rc-section-head { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--muted); margin-bottom: 0.375rem; }
+.rc-refresh { background: transparent; border: 0; color: var(--muted); cursor: pointer; font-size: 0.875rem; }
+.rc-refresh:hover { color: var(--ink); }
 
 .rc-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; margin-bottom: 0.25rem; }
-.rc-label { width: 2.5rem; color: #94a3b8; }
-.rc-meta { color: #cbd5e1; font-variant-numeric: tabular-nums; font-size: 0.7rem; }
+.rc-label { width: 2.5rem; color: var(--muted); }
+.rc-meta { color: var(--ink); font-variant-numeric: tabular-nums; font-size: 0.7rem; }
 
-.rc-bar { flex: 1; height: 6px; background: #0f172a; border-radius: 3px; overflow: hidden; }
+.rc-bar { flex: 1; height: 6px; background: var(--canvas); border-radius: 3px; overflow: hidden; }
 .rc-bar-fill { height: 100%; background: #22c55e; transition: width 0.3s; }
 .rc-bar-fill.warn { background: #fbbf24; }
 .rc-bar-fill.crit { background: #ef4444; }
 
 .rc-procs { list-style: none; margin: 0; padding: 0; max-height: 14rem; overflow-y: auto; }
-.rc-proc { display: flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0; border-bottom: 1px solid #273445; }
+.rc-proc { display: flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0; border-bottom: 1px solid var(--line); }
 .rc-proc:last-child { border-bottom: 0; }
 .rc-proc-main { flex: 1; display: flex; align-items: center; gap: 0.4rem; min-width: 0; }
-.rc-proc-dot { width: 8px; height: 8px; border-radius: 50%; background: #64748b; flex-shrink: 0; }
+.rc-proc-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--faint); flex-shrink: 0; }
 .rc-proc-dot.online { background: #22c55e; }
-.rc-proc-dot.stopped { background: #64748b; }
+.rc-proc-dot.stopped { background: var(--faint); }
 .rc-proc-dot.errored { background: #ef4444; }
 .rc-proc-name { font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.rc-proc-meta { font-size: 0.65rem; color: #94a3b8; margin-left: auto; font-variant-numeric: tabular-nums; flex-shrink: 0; }
+.rc-proc-meta { font-size: 0.65rem; color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; flex-shrink: 0; }
 
 .rc-btn {
   padding: 0.25rem 0.5rem; font-size: 0.7rem; font-weight: 500;
-  background: #334155; border: 1px solid #475569; color: #e2e8f0;
+  background: var(--surface-2); border: 1px solid var(--surface-3); color: var(--ink);
   border-radius: 4px; cursor: pointer; transition: background 0.15s;
   flex-shrink: 0;
 }
-.rc-btn:hover:not(:disabled) { background: #475569; }
+.rc-btn:hover:not(:disabled) { background: var(--surface-3); }
 .rc-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .rc-btn-wide {
   width: 100%; padding: 0.5rem; font-size: 0.75rem; font-weight: 500;
-  background: #334155; border: 1px solid #475569; color: #e2e8f0;
+  background: var(--surface-2); border: 1px solid var(--surface-3); color: var(--ink);
   border-radius: 4px; cursor: pointer; transition: background 0.15s;
 }
-.rc-btn-wide:hover:not(:disabled) { background: #475569; }
+.rc-btn-wide:hover:not(:disabled) { background: var(--surface-3); }
 .rc-btn-wide:disabled { opacity: 0.5; cursor: not-allowed; }
 .rc-btn-restart-all { margin-top: 0.4rem; }
 
@@ -435,15 +435,22 @@ onBeforeUnmount(() => {
 .rc-readiness .rc-row { margin-bottom: 0.2rem; }
 .rc-readiness-dot { width: 8px; height: 8px; border-radius: 50%; background: #ef4444; flex-shrink: 0; }
 .rc-readiness-dot.ok { background: #22c55e; }
-.rc-readiness-label { flex: 1; font-size: 0.7rem; color: #cbd5e1; }
+.rc-readiness-label { flex: 1; font-size: 0.7rem; color: var(--ink); }
 
-.rc-fix { margin-top: 0.4rem; padding: 0.4rem 0.5rem; background: #0f172a; border-radius: 4px; }
-.rc-fix-label { font-size: 0.65rem; color: #94a3b8; margin-bottom: 0.2rem; }
+.rc-fix { margin-top: 0.4rem; padding: 0.4rem 0.5rem; background: var(--canvas); border-radius: 4px; }
+.rc-fix-label { font-size: 0.65rem; color: var(--muted); margin-bottom: 0.2rem; }
 .rc-fix-cmd { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.65rem; color: #fbbf24; word-break: break-all; user-select: all; }
 
-.rc-loading, .rc-error { font-size: 0.75rem; color: #94a3b8; padding: 0.5rem 0; }
+.rc-loading, .rc-error { font-size: 0.75rem; color: var(--muted); padding: 0.5rem 0; }
 .rc-error { color: #fca5a5; }
 
 .rc-message { margin-top: 0.5rem; font-size: 0.7rem; color: #86efac; padding: 0.375rem 0.5rem; background: #064e3b; border-radius: 4px; }
 .rc-message.error { color: #fca5a5; background: #7f1d1d; }
+
+/* Light-mode-only fixes: amber/red status text sits on light surfaces here
+   (in dark mode these light tints read fine, so scope these overrides to light). */
+:root[data-theme="light"] .rc-toggle.warn { color: #b45309; }
+:root[data-theme="light"] .rc-toggle.crit { color: #b91c1c; }
+:root[data-theme="light"] .rc-error { color: #b91c1c; }
+:root[data-theme="light"] .rc-fix-cmd { color: #92400e; }
 </style>

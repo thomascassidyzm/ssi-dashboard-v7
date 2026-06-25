@@ -169,6 +169,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useAuth } from '../composables/useAuth'
+import { getApiUrl } from '../services/api'
 
 const { getAccessToken } = useAuth()
 
@@ -183,7 +184,9 @@ const dbError = ref('')
 let pollTimer = null
 
 function apiBase() {
-  return localStorage.getItem('api_base_url') || 'http://localhost:3470'
+  // getApiUrl() already honours the EnvironmentSwitcher's api_base_url override,
+  // then resolves popty.app → the SSi Machine tunnel (never a dead localhost).
+  return getApiUrl()
 }
 
 async function authedFetch(path, init = {}) {
@@ -354,7 +357,7 @@ const poolClass = computed(() => {
 
 <style scoped>
 .uptime-panel {
-  color: #e2e8f0;
+  color: var(--ink);
   margin-bottom: 48px;
 }
 .section-title {
@@ -364,7 +367,7 @@ const poolClass = computed(() => {
 }
 .section-blurb {
   font-size: 14px;
-  color: #94a3b8;
+  color: var(--muted);
   margin: 0 0 24px 0;
   line-height: 1.6;
 }
@@ -381,7 +384,7 @@ const poolClass = computed(() => {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #94a3b8;
+  color: var(--muted);
   margin: 28px 0 12px 0;
 }
 .subsection-title-spaced {
@@ -389,7 +392,7 @@ const poolClass = computed(() => {
 }
 .subsection-blurb {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--muted);
   margin: 0 0 16px 0;
   line-height: 1.6;
 }
@@ -402,14 +405,17 @@ const poolClass = computed(() => {
   font-size: 13px;
   margin-bottom: 16px;
 }
+[data-theme="light"] .error-banner {
+  color: var(--danger);
+}
 .loading {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--muted);
   margin-bottom: 24px;
 }
 .empty-inline {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--muted);
   padding: 14px;
   text-align: center;
   border: 1px dashed rgba(148, 163, 184, 0.2);
@@ -418,8 +424,8 @@ const poolClass = computed(() => {
 
 /* ─── Setup CTA ─── */
 .setup-cta {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px dashed rgba(148, 163, 184, 0.3);
+  background: var(--surface-2);
+  border: 1px dashed var(--line);
   border-radius: 8px;
   padding: 18px 20px;
   margin-bottom: 16px;
@@ -427,18 +433,18 @@ const poolClass = computed(() => {
 .setup-cta-title {
   font-size: 14px;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--ink);
   margin-bottom: 8px;
 }
 .setup-cta-body {
   font-size: 13px;
-  color: #cbd5e1;
+  color: var(--ink);
   margin: 0 0 10px 0;
   line-height: 1.6;
 }
 .setup-cta-list {
   font-size: 13px;
-  color: #cbd5e1;
+  color: var(--ink);
   margin: 0 0 10px 18px;
   line-height: 1.7;
 }
@@ -448,8 +454,8 @@ const poolClass = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background: rgba(30, 41, 59, 0.45);
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 14px 18px;
 }
@@ -468,16 +474,16 @@ const poolClass = computed(() => {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #64748b;
+  background: var(--faint);
   box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.15);
 }
 .dot-up { background: #22c55e; box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18); }
 .dot-down { background: #ef4444; box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.22); }
-.dot-paused { background: #94a3b8; }
+.dot-paused { background: var(--muted); }
 .dot-pending,
 .dot-validating { background: #f59e0b; box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18); }
 .monitor-name {
-  color: #f1f5f9;
+  color: var(--ink);
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -488,15 +494,19 @@ const poolClass = computed(() => {
   font-size: 11px;
   letter-spacing: 0.05em;
   font-weight: 600;
-  color: #cbd5e1;
+  color: var(--ink);
 }
 .status-up { color: #86efac; }
 .status-down { color: #fca5a5; }
 .status-pending,
 .status-validating { color: #fbbf24; }
+[data-theme="light"] .status-up { color: var(--accent-2); }
+[data-theme="light"] .status-down { color: var(--danger); }
+[data-theme="light"] .status-pending,
+[data-theme="light"] .status-validating { color: #b45309; }
 .monitor-last,
 .monitor-rt {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
@@ -516,7 +526,7 @@ const poolClass = computed(() => {
   font-size: 13px;
 }
 .availability-label {
-  color: #cbd5e1;
+  color: var(--ink);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -533,12 +543,12 @@ const poolClass = computed(() => {
   transition: width 0.4s ease;
 }
 .availability-pct {
-  color: #f1f5f9;
+  color: var(--ink);
   font-variant-numeric: tabular-nums;
   font-weight: 500;
 }
 .availability-incidents {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 12px;
 }
 
@@ -552,7 +562,7 @@ const poolClass = computed(() => {
   text-align: left;
   padding: 8px 10px;
   border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-  color: #94a3b8;
+  color: var(--muted);
   font-weight: 500;
   text-transform: uppercase;
   font-size: 11px;
@@ -561,10 +571,10 @@ const poolClass = computed(() => {
 .incident-table td {
   padding: 8px 10px;
   border-bottom: 1px solid rgba(148, 163, 184, 0.08);
-  color: #cbd5e1;
+  color: var(--ink);
 }
 .incident-cause {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 12px;
 }
 
@@ -579,8 +589,8 @@ const poolClass = computed(() => {
   .metric-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .metric-card {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  background: var(--surface);
+  border: 1px solid var(--line);
   padding: 14px 16px;
   border-radius: 8px;
 }
@@ -598,7 +608,7 @@ const poolClass = computed(() => {
 }
 .metric-label {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 6px;
@@ -606,21 +616,24 @@ const poolClass = computed(() => {
 .metric-value {
   font-size: 22px;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
 .metric-sublabel {
   font-size: 11px;
-  color: #64748b;
+  color: var(--faint);
   margin-top: 4px;
 }
 .db-meta {
   font-size: 11px;
-  color: #64748b;
+  color: var(--faint);
   margin-top: 4px;
   font-variant-numeric: tabular-nums;
 }
 .db-missing {
   color: #fbbf24;
+}
+[data-theme="light"] .db-missing {
+  color: #b45309;
 }
 </style>

@@ -433,8 +433,8 @@ onUnmounted(() => {
 <style scoped>
 .activity-monitor {
   min-height: 100vh;
-  background: #0f172a;
-  color: #e2e8f0;
+  background: var(--canvas);
+  color: var(--ink);
   position: relative;
   overflow: hidden;
 }
@@ -483,7 +483,7 @@ onUnmounted(() => {
 .am-header {
   position: relative;
   z-index: 1;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  border-bottom: 1px solid var(--line);
 }
 
 .header-inner {
@@ -507,12 +507,12 @@ onUnmounted(() => {
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  color: #94a3b8;
+  color: var(--muted);
   transition: color 0.15s;
 }
 
 .back-link:hover {
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .back-link svg {
@@ -528,13 +528,13 @@ onUnmounted(() => {
 .page-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--ink);
   line-height: 1.2;
 }
 
 .page-subtitle {
   font-size: 0.8rem;
-  color: #64748b;
+  color: var(--faint);
   margin-top: 0.15rem;
 }
 
@@ -548,7 +548,7 @@ onUnmounted(() => {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #64748b;
+  background: var(--faint);
   transition: background 0.3s;
 }
 
@@ -565,7 +565,7 @@ onUnmounted(() => {
 
 .live-label {
   font-size: 0.75rem;
-  color: #64748b;
+  color: var(--faint);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -589,7 +589,7 @@ onUnmounted(() => {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #64748b;
+  color: var(--faint);
   margin-bottom: 0.75rem;
   padding-left: 0.25rem;
 }
@@ -600,15 +600,15 @@ onUnmounted(() => {
   justify-content: center;
   gap: 0.75rem;
   padding: 2rem 1rem;
-  color: #64748b;
+  color: var(--faint);
   font-size: 0.8rem;
 }
 
 .loading-spinner {
   width: 16px;
   height: 16px;
-  border: 2px solid #334155;
-  border-top-color: #64748b;
+  border: 2px solid var(--surface-2);
+  border-top-color: var(--faint);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -620,14 +620,14 @@ onUnmounted(() => {
 .empty-state {
   text-align: center;
   padding: 4rem 1rem;
-  color: #64748b;
+  color: var(--faint);
   font-size: 0.9rem;
 }
 
 .empty-state-small {
   text-align: center;
   padding: 1.5rem 1rem;
-  color: #475569;
+  color: var(--faint);
   font-size: 0.8rem;
 }
 
@@ -638,8 +638,8 @@ onUnmounted(() => {
   gap: 0;
   margin-bottom: 0.625rem;
   border-radius: 10px;
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.1);
+  background: var(--surface);
+  border: 1px solid var(--line);
   text-decoration: none;
   color: inherit;
   transition: all 0.2s;
@@ -648,10 +648,14 @@ onUnmounted(() => {
 }
 
 .course-row:hover {
-  background: rgba(30, 41, 59, 0.85);
-  border-color: rgba(255, 166, 48, 0.25);
+  background: var(--surface-3);
+  border-color: var(--accent);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transform: translateY(-1px);
+}
+
+:root[data-theme="light"] .course-row:hover {
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
 }
 
 /* Left accent bar */
@@ -659,7 +663,7 @@ onUnmounted(() => {
   content: '';
   width: 3px;
   flex-shrink: 0;
-  background: #334155;
+  background: var(--line);
   border-radius: 10px 0 0 10px;
 }
 
@@ -675,7 +679,7 @@ onUnmounted(() => {
 
 .recent-time {
   font-size: 0.75rem;
-  color: #64748b;
+  color: var(--faint);
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-weight: 500;
 }
@@ -700,7 +704,7 @@ onUnmounted(() => {
 .course-name {
   font-size: 0.9375rem;
   font-weight: 500;
-  color: #ffa630;
+  color: var(--accent);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -708,7 +712,7 @@ onUnmounted(() => {
 
 .course-code {
   font-size: 0.6875rem;
-  color: #64748b;
+  color: var(--faint);
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   opacity: 0.7;
 }
@@ -723,19 +727,19 @@ onUnmounted(() => {
 
 .stat {
   font-size: 0.8125rem;
-  color: #94a3b8;
+  color: var(--muted);
   white-space: nowrap;
 }
 
 .stat-num {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
-  color: #e2e8f0;
+  color: var(--ink);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 
 .stat-sep {
-  color: #334155;
+  color: var(--faint);
   font-size: 0.5rem;
 }
 
@@ -763,12 +767,12 @@ onUnmounted(() => {
 }
 
 .last-change.dim {
-  color: #64748b;
+  color: var(--faint);
 }
 
 .delta {
   font-size: 0.6875rem;
-  color: #34d399;
+  color: var(--accent-2);
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-weight: 500;
 }
@@ -778,6 +782,19 @@ onUnmounted(() => {
   color: #38bdf8;
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-weight: 500;
+}
+
+/* Light-mode: darken hardcoded status hues for AA contrast on white rows */
+:root[data-theme="light"] .last-change.green {
+  color: #047857;
+}
+
+:root[data-theme="light"] .last-change.amber {
+  color: #b45309;
+}
+
+:root[data-theme="light"] .audio-badge {
+  color: #0369a1;
 }
 
 /* Responsive */

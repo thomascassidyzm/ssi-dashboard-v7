@@ -1,5 +1,5 @@
 <template>
-  <div class="audio-pipeline text-slate-100">
+  <div class="audio-pipeline text-ink">
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-6 py-6">
       <!-- Error State -->
@@ -12,7 +12,7 @@
           </div>
           <h2 class="text-lg font-semibold text-red-400">Error</h2>
         </div>
-        <p class="text-slate-300 ml-13">{{ error }}</p>
+        <p class="text-ink ml-13">{{ error }}</p>
       </div>
 
       <!-- Pipeline View -->
@@ -61,52 +61,34 @@
           </span>
         </div>
 
-        <!-- AUDIO QUEUE PANEL — shows the running job (any course) + jobs waiting behind it.
-             Jobs run one at a time; new triggers queue instead of being blocked. -->
-        <div v-if="otherCourseJobActive || audioQueue.length > 0" class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-amber-500/30 rounded-xl p-5">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-2 h-2 bg-amber-500 rounded-full animate-pulse flex-shrink-0"></div>
-            <div class="text-sm font-medium text-amber-300">Audio queue</div>
-            <div class="text-xs text-slate-500">Jobs run one at a time — new ones queue automatically</div>
+        <!-- OTHER COURSE JOB BANNER (when audio job is active for a different course) -->
+        <div v-if="audioProgress.active && audioProgress.courseCode && audioProgress.courseCode !== courseCode" class="bg-gradient-to-br from-surface/80 to-surface/40 border border-amber-500/30 rounded-xl p-5 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
           </div>
-
-          <!-- Running job (when it belongs to a different course; this course's job shows in the live panel below) -->
-          <div v-if="otherCourseJobActive" class="flex items-center justify-between gap-3 py-2 border-t border-slate-700/40">
-            <div class="flex items-center gap-2 text-xs">
-              <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-medium">running</span>
-              <span class="font-medium text-slate-100">{{ audioProgress.courseCode }}</span>
-              <span class="text-slate-400">{{ audioProgress.operation }}{{ audioProgress.role ? ' · ' + audioProgress.role : '' }}</span>
+          <div class="flex-1">
+            <div class="text-sm font-medium text-amber-300">Audio job running on another course</div>
+            <div class="text-xs text-muted mt-1">
+              Only one audio job can run at a time. Currently
+              {{ audioProgress.operation === 'regenerate-role' ? 'regenerating' : 'generating' }}
+              audio for <span class="text-amber-400 font-medium">{{ audioProgress.courseCode }}</span>
+              — {{ audioProgress.current }}/{{ audioProgress.total }} processed.
             </div>
-            <span class="text-xs text-slate-400">{{ audioProgress.current }}/{{ audioProgress.total }}</span>
           </div>
-
-          <!-- Queued jobs (waiting) -->
-          <div v-for="job in audioQueue" :key="job.jobId" class="flex items-center justify-between gap-3 py-2 border-t border-slate-700/40">
-            <div class="flex items-center gap-2 text-xs">
-              <span class="text-slate-500 tabular-nums">#{{ job.position }}</span>
-              <span class="font-medium" :class="job.courseCode === courseCode ? 'text-amber-300' : 'text-slate-200'">{{ job.courseCode }}</span>
-              <span class="text-slate-400">{{ job.operation }}{{ job.role ? ' · ' + job.role : '' }}</span>
-              <span v-if="job.willGenerate || job.willRegenerate || job.willSplice" class="text-slate-500">
-                ({{ job.willGenerate || job.willRegenerate || job.willSplice }} items)
-              </span>
-            </div>
-            <button
-              @click="removeFromQueue(job.jobId)"
-              :disabled="removingJobId === job.jobId"
-              class="text-xs text-red-400 hover:text-red-300 disabled:text-slate-600 transition-colors"
-            >
-              {{ removingJobId === job.jobId ? 'Removing…' : 'Remove' }}
-            </button>
+          <div class="flex-shrink-0">
+            <div class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
           </div>
         </div>
 
         <!-- LIVE PROGRESS (when active for THIS course) -->
-        <div v-if="audioProgress.active && (!audioProgress.courseCode || audioProgress.courseCode === courseCode)" class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-emerald-500/30 rounded-xl p-6">
+        <div v-if="audioProgress.active && (!audioProgress.courseCode || audioProgress.courseCode === courseCode)" class="bg-gradient-to-br from-surface/80 to-surface/40 border border-emerald-500/30 rounded-xl p-6">
           <div class="flex items-center gap-6">
             <!-- Circular Progress -->
             <div class="relative w-28 h-28 flex-shrink-0">
               <svg class="w-28 h-28 transform -rotate-90">
-                <circle cx="56" cy="56" r="48" stroke="currentColor" stroke-width="8" fill="none" class="text-slate-700"/>
+                <circle cx="56" cy="56" r="48" stroke="currentColor" stroke-width="8" fill="none" class="text-faint"/>
                 <circle
                   cx="56" cy="56" r="48"
                   stroke="currentColor"
@@ -129,7 +111,7 @@
             <div class="flex-1">
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                <h2 class="text-lg font-semibold text-slate-100">
+                <h2 class="text-lg font-semibold text-ink">
                   {{ audioProgress.operation === 'regenerate-role' ? `Regenerating ${audioProgress.role}` : 'Generating Missing Audio' }}
                 </h2>
                 <span class="px-2 py-0.5 text-xs bg-emerald-500/20 text-emerald-400 rounded-full font-medium">
@@ -138,32 +120,28 @@
               </div>
 
               <!-- Stats Row -->
-              <div class="grid grid-cols-5 gap-4">
+              <div class="grid grid-cols-4 gap-4">
                 <div>
-                  <div class="text-2xl font-bold text-slate-100">{{ audioProgress.current }}</div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wide">Processed</div>
+                  <div class="text-2xl font-bold text-ink">{{ audioProgress.current }}</div>
+                  <div class="text-xs text-faint uppercase tracking-wide">Processed</div>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold text-slate-400">{{ audioProgress.total }}</div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wide">Total</div>
+                  <div class="text-2xl font-bold text-muted">{{ audioProgress.total }}</div>
+                  <div class="text-xs text-faint uppercase tracking-wide">Total</div>
                 </div>
                 <div>
                   <div class="text-2xl font-bold text-emerald-400">{{ audioProgress.success }}</div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wide">Success</div>
+                  <div class="text-xs text-faint uppercase tracking-wide">Success</div>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold" :class="audioProgress.failed > 0 ? 'text-red-400' : 'text-slate-600'">{{ audioProgress.failed }}</div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wide">Failed</div>
-                </div>
-                <div>
-                  <div class="text-2xl font-bold" :class="audioProgress.timedOut > 0 ? 'text-amber-400' : 'text-slate-600'">{{ audioProgress.timedOut || 0 }}</div>
-                  <div class="text-xs text-slate-500 uppercase tracking-wide">Timed Out</div>
+                  <div class="text-2xl font-bold" :class="audioProgress.failed > 0 ? 'text-red-400' : 'text-faint'">{{ audioProgress.failed }}</div>
+                  <div class="text-xs text-faint uppercase tracking-wide">Failed</div>
                 </div>
               </div>
 
               <!-- Current Item -->
-              <div v-if="audioProgress.lastItem" class="mt-4 text-sm text-slate-500 truncate">
-                Processing: <span class="text-slate-400">{{ audioProgress.lastItem }}...</span>
+              <div v-if="audioProgress.lastItem" class="mt-4 text-sm text-faint truncate">
+                Processing: <span class="text-muted">{{ audioProgress.lastItem }}...</span>
               </div>
             </div>
           </div>
@@ -172,8 +150,8 @@
         <!-- VOICE CONFIGURATION Section -->
         <section>
           <div class="flex items-center gap-4 mb-4">
-            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Voice Configuration</h2>
-            <div class="flex-1 h-px bg-slate-700/50"></div>
+            <h2 class="text-xs font-semibold text-faint uppercase tracking-wider">Voice Configuration</h2>
+            <div class="flex-1 h-px bg-surface-2/50"></div>
             <span v-if="voicesConfigured" class="px-2.5 py-1 text-xs bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
               ● Configured
             </span>
@@ -182,10 +160,10 @@
             </span>
           </div>
 
-          <div class="bg-gradient-to-br from-slate-800/60 to-slate-800/30 border border-slate-700/50 rounded-xl overflow-hidden">
+          <div class="bg-gradient-to-br from-surface/60 to-surface/30 border border-line/50 rounded-xl overflow-hidden">
             <button
               @click="showVoiceConfig = !showVoiceConfig"
-              class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-700/20 transition-colors"
+              class="w-full px-6 py-4 flex items-center justify-between hover:bg-surface-2/20 transition-colors"
             >
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
@@ -194,12 +172,12 @@
                   </svg>
                 </div>
                 <div class="text-left">
-                  <div class="font-medium text-slate-100">Configure Voices</div>
-                  <div class="text-sm text-slate-400">Select TTS voices for each audio role</div>
+                  <div class="font-medium text-ink">Configure Voices</div>
+                  <div class="text-sm text-muted">Select TTS voices for each audio role</div>
                 </div>
               </div>
               <svg
-                class="w-5 h-5 text-slate-400 transition-transform duration-200"
+                class="w-5 h-5 text-muted transition-transform duration-200"
                 :class="{ 'rotate-180': showVoiceConfig }"
                 fill="none"
                 stroke="currentColor"
@@ -208,7 +186,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div v-show="showVoiceConfig" class="border-t border-slate-700/50">
+            <div v-show="showVoiceConfig" class="border-t border-line/50">
               <VoiceConfiguration
                 :course-code="courseCode"
                 @config-saved="onVoiceConfigSaved"
@@ -221,13 +199,13 @@
         <!-- AUDIO GENERATION Section -->
         <section>
           <div class="flex items-center gap-4 mb-4">
-            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Audio Generation</h2>
-            <div class="flex-1 h-px bg-slate-700/50"></div>
+            <h2 class="text-xs font-semibold text-faint uppercase tracking-wider">Audio Generation</h2>
+            <div class="flex-1 h-px bg-surface-2/50"></div>
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <!-- Regenerate by Role Card -->
-            <div class="bg-gradient-to-br from-slate-800/60 to-slate-800/30 border border-slate-700/50 rounded-xl p-6">
+            <div class="bg-gradient-to-br from-surface/60 to-surface/30 border border-line/50 rounded-xl p-6">
               <div class="flex items-start justify-between mb-4">
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
@@ -236,8 +214,8 @@
                     </svg>
                   </div>
                   <div>
-                    <h3 class="font-semibold text-slate-100">Regenerate by Role</h3>
-                    <p class="text-sm text-slate-400">Replace audio for a specific role</p>
+                    <h3 class="font-semibold text-ink">Regenerate by Role</h3>
+                    <p class="text-sm text-muted">Replace audio for a specific role</p>
                   </div>
                 </div>
                 <span class="px-2 py-0.5 text-xs bg-amber-500/10 text-amber-400 rounded border border-amber-500/20">
@@ -249,67 +227,50 @@
               <div class="space-y-3 mb-4">
                 <select
                   v-model="regenerateRole"
-                  class="w-full bg-slate-900/50 text-slate-100 px-4 py-3 rounded-lg border border-slate-600/50 focus:border-amber-500/50 focus:outline-none focus:ring-1 focus:ring-amber-500/20 transition-colors"
+                  class="w-full bg-canvas/50 text-ink px-4 py-3 rounded-lg border border-line/50 focus:border-amber-500/50 focus:outline-none focus:ring-1 focus:ring-amber-500/20 transition-colors"
                 >
                   <option value="">Select role...</option>
-                  <option value="target1">Target 1 (Primary voice)</option>
-                  <option value="target2">Target 2 (Secondary voice)</option>
-                  <option value="known">Known (Source language)</option>
+                  <option value="target1">Voice 1</option>
+                  <option value="target2">Voice 2</option>
+                  <option value="known">Known language</option>
                   <option value="presentation">Presentation (Introductions)</option>
                 </select>
-
-                <label class="flex items-center gap-3 cursor-pointer group">
-                  <div class="relative">
-                    <input
-                      type="checkbox"
-                      v-model="flaggedOnly"
-                      class="peer sr-only"
-                    />
-                    <div class="w-5 h-5 rounded border-2 border-slate-600 peer-checked:border-amber-500 peer-checked:bg-amber-500 transition-colors flex items-center justify-center">
-                      <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <span class="text-sm text-slate-300 group-hover:text-slate-100 transition-colors">Regen queue only</span>
-                </label>
               </div>
 
               <!-- Action Buttons -->
               <div class="flex gap-3">
                 <button
                   @click="previewRegenerate"
-                  :disabled="!regenerateRole || regenerating"
-                  class="flex-1 px-4 py-2.5 bg-slate-700/50 hover:bg-slate-700 disabled:bg-slate-800 disabled:text-slate-600 text-slate-200 rounded-lg transition-colors text-sm font-medium"
+                  :disabled="!regenerateRole || regenerating || otherCourseJobActive"
+                  class="flex-1 px-4 py-2.5 bg-surface-2/50 hover:bg-surface-2 disabled:bg-surface disabled:text-faint text-ink rounded-lg transition-colors text-sm font-medium"
                 >
                   Preview
                 </button>
                 <button
                   @click="executeRegenerate"
-                  :disabled="!regenerateRole || regenerating"
-                  class="flex-1 px-4 py-2.5 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
+                  :disabled="!regenerateRole || regenerating || otherCourseJobActive"
+                  class="flex-1 px-4 py-2.5 bg-amber-600 hover:bg-amber-500 disabled:bg-surface disabled:text-faint text-white rounded-lg transition-colors text-sm font-medium"
                 >
                   {{ regenerating ? 'Working...' : 'Regenerate' }}
                 </button>
               </div>
 
               <!-- Result -->
-              <div v-if="regenerateResult" class="mt-4 p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
+              <div v-if="regenerateResult" class="mt-4 p-4 bg-canvas/50 rounded-lg border border-line/30">
                 <div class="flex justify-between items-center">
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 rounded-full" :class="regenerateResult.error ? 'bg-red-500' : regenerateResult.dryRun ? 'bg-amber-500' : regenerateResult.status === 'running' ? 'bg-blue-500 animate-pulse' : 'bg-emerald-500'"></div>
                     <span class="text-sm font-medium" :class="regenerateResult.error ? 'text-red-400' : regenerateResult.dryRun ? 'text-amber-400' : regenerateResult.status === 'running' ? 'text-blue-400' : 'text-emerald-400'">
                       {{ regenerateResult.error ? 'Error' : regenerateResult.dryRun ? 'Preview' : regenerateResult.status === 'running' ? 'Running...' : 'Complete' }}
                     </span>
-                    <span v-if="regenerateResult.flaggedOnly" class="text-xs text-amber-400">(queue)</span>
                   </div>
                   <div class="text-right">
-                    <span class="text-xl font-bold text-slate-100">{{ regenerateResult.count || regenerateResult.total || 0 }}</span>
-                    <span class="text-xs text-slate-500 ml-1">items</span>
+                    <span class="text-xl font-bold text-ink">{{ regenerateResult.count || regenerateResult.total || 0 }}</span>
+                    <span class="text-xs text-faint ml-1">items</span>
                   </div>
                 </div>
-                <div v-if="regenerateResult.voiceId" class="mt-2 text-xs text-slate-400">
-                  Voice: <code class="text-emerald-400 bg-slate-800 px-1.5 py-0.5 rounded">{{ regenerateResult.voiceId }}</code>
+                <div v-if="regenerateResult.voiceId" class="mt-2 text-xs text-muted">
+                  Voice: <code class="text-emerald-400 bg-surface px-1.5 py-0.5 rounded">{{ regenerateResult.voiceId }}</code>
                 </div>
                 <div v-if="regenerateResult.error" class="mt-2 text-sm text-red-400">{{ regenerateResult.error }}</div>
                 <div v-if="regenerateResult.status === 'running'" class="mt-2 text-sm text-blue-400">
@@ -318,70 +279,11 @@
                 <div v-if="regenerateResult.status === 'completed'" class="mt-2 text-sm text-emerald-400">
                   {{ regenerateResult.success }} generated, {{ regenerateResult.failed }} failed
                 </div>
-
-                <!-- Review Panel for Regenerated Items -->
-                <div v-if="regenerateResult.regeneratedItems?.length > 0" class="mt-4 pt-4 border-t border-slate-700/50">
-                  <div class="flex items-center justify-between mb-3">
-                    <h4 class="text-sm font-medium text-slate-300">Review Regenerated Audio</h4>
-                    <span class="text-xs text-slate-500">{{ regenerateResult.regeneratedItems.length }} items</span>
-                  </div>
-                  <div class="space-y-2 max-h-64 overflow-y-auto">
-                    <div
-                      v-for="item in regenerateResult.regeneratedItems"
-                      :key="item.id"
-                      class="flex items-center gap-3 p-2 bg-slate-800/50 rounded-lg border border-slate-700/30"
-                    >
-                      <!-- Play button (use item.id which is course_audio record ID) -->
-                      <button
-                        @click="playReviewAudio(item.id)"
-                        class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center hover:bg-emerald-500/20 transition-colors"
-                        :class="{ 'bg-emerald-500/30': playingAudioId === item.id }"
-                      >
-                        <svg v-if="playingAudioId !== item.id" class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z"/>
-                        </svg>
-                        <svg v-else class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                        </svg>
-                      </button>
-                      <!-- Text -->
-                      <div class="flex-1 min-w-0">
-                        <p class="text-sm text-slate-200 truncate">{{ item.text }}</p>
-                        <p class="text-xs text-slate-500">{{ item.role }}</p>
-                      </div>
-                      <!-- Done button (happy with this audio, delete flag) -->
-                      <button
-                        @click="markItemDone(item)"
-                        class="px-2 py-1 text-xs bg-emerald-500/10 text-emerald-400 rounded border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
-                        title="Happy with audio - remove from regen queue"
-                      >
-                        ✓ Done
-                      </button>
-                    </div>
-                  </div>
-                  <!-- Bulk actions -->
-                  <div class="flex gap-2 mt-3 pt-3 border-t border-slate-700/30">
-                    <button
-                      @click="markAllDone"
-                      class="flex-1 px-3 py-2 text-sm bg-emerald-500/10 text-emerald-400 rounded-lg border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
-                    >
-                      ✓ All Done
-                    </button>
-                    <button
-                      @click="clearReviewPanel"
-                      class="px-3 py-2 text-sm bg-slate-700/50 text-slate-400 rounded-lg border border-slate-600/30 hover:bg-slate-700 transition-colors"
-                      title="Close panel - items stay in regen queue"
-                    >
-                      Close
-                    </button>
-                  </div>
-                  <p class="text-xs text-slate-500 mt-2 text-center">Not happy? Close and click Regenerate again</p>
-                </div>
               </div>
             </div>
 
             <!-- Generate Presentation Text Card -->
-            <div class="bg-gradient-to-br from-slate-800/60 to-slate-800/30 border border-slate-700/50 rounded-xl p-6">
+            <div class="bg-gradient-to-br from-surface/60 to-surface/30 border border-line/50 rounded-xl p-6">
               <div class="flex items-start justify-between mb-4">
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
@@ -390,8 +292,8 @@
                     </svg>
                   </div>
                   <div>
-                    <h3 class="font-semibold text-slate-100">Presentation Text</h3>
-                    <p class="text-sm text-slate-400">Generate LEGO introduction scripts</p>
+                    <h3 class="font-semibold text-ink">Presentation Text</h3>
+                    <p class="text-sm text-muted">Generate LEGO introduction scripts</p>
                   </div>
                 </div>
                 <span class="px-2 py-0.5 text-xs bg-purple-500/10 text-purple-400 rounded border border-purple-500/20">
@@ -399,7 +301,7 @@
                 </span>
               </div>
 
-              <p class="text-sm text-slate-400 mb-4">
+              <p class="text-sm text-muted mb-4">
                 Generates introduction scripts for LEGOs that are missing presentation text. Pattern: "The Spanish for — 'I want' — as in — 'I want to speak Spanish' — is:" Context is drawn from a USE phrase or seed sentence (~15% get no context for variety).
               </p>
 
@@ -408,21 +310,21 @@
                 <button
                   @click="previewPresentations"
                   :disabled="regeneratingPresentations"
-                  class="flex-1 px-4 py-2.5 bg-slate-700/50 hover:bg-slate-700 disabled:bg-slate-800 disabled:text-slate-600 text-slate-200 rounded-lg transition-colors text-sm font-medium"
+                  class="flex-1 px-4 py-2.5 bg-surface-2/50 hover:bg-surface-2 disabled:bg-surface disabled:text-faint text-ink rounded-lg transition-colors text-sm font-medium"
                 >
                   Preview
                 </button>
                 <button
                   @click="executePresentations"
                   :disabled="regeneratingPresentations"
-                  class="flex-1 px-4 py-2.5 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
+                  class="flex-1 px-4 py-2.5 bg-purple-600 hover:bg-purple-500 disabled:bg-surface disabled:text-faint text-white rounded-lg transition-colors text-sm font-medium"
                 >
                   {{ regeneratingPresentations ? 'Working...' : 'Generate Missing' }}
                 </button>
               </div>
 
               <!-- Result -->
-              <div v-if="presentationsResult" class="mt-4 p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
+              <div v-if="presentationsResult" class="mt-4 p-4 bg-canvas/50 rounded-lg border border-line/30">
                 <div class="flex justify-between items-center">
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 rounded-full" :class="presentationsResult.error ? 'bg-red-500' : presentationsResult.dryRun ? 'bg-purple-500' : 'bg-emerald-500'"></div>
@@ -431,18 +333,18 @@
                     </span>
                   </div>
                   <div class="text-right">
-                    <span class="text-xl font-bold text-slate-100">{{ presentationsResult.count || presentationsResult.total || 0 }}</span>
-                    <span class="text-xs text-slate-500 ml-1">LEGOs</span>
+                    <span class="text-xl font-bold text-ink">{{ presentationsResult.count || presentationsResult.total || 0 }}</span>
+                    <span class="text-xs text-faint ml-1">LEGOs</span>
                   </div>
                 </div>
-                <div v-if="presentationsResult.template" class="mt-2 text-xs text-slate-400">
-                  Template: <code class="text-purple-400 bg-slate-800 px-1.5 py-0.5 rounded">{{ presentationsResult.template }}</code>
+                <div v-if="presentationsResult.template" class="mt-2 text-xs text-muted">
+                  Template: <code class="text-purple-400 bg-surface px-1.5 py-0.5 rounded">{{ presentationsResult.template }}</code>
                 </div>
                 <div v-if="presentationsResult.sample" class="mt-3 space-y-1.5">
-                  <div v-for="(s, i) in presentationsResult.sample.slice(0, 2)" :key="i" class="text-xs bg-slate-800/50 p-2 rounded">
+                  <div v-for="(s, i) in presentationsResult.sample.slice(0, 2)" :key="i" class="text-xs bg-surface/50 p-2 rounded">
                     <span class="text-amber-400">{{ s.known }}</span>
-                    <span class="text-slate-500 mx-1">→</span>
-                    <span class="text-slate-300">{{ s.presentation_text }}</span>
+                    <span class="text-faint mx-1">→</span>
+                    <span class="text-ink">{{ s.presentation_text }}</span>
                   </div>
                 </div>
                 <div v-if="presentationsResult.error" class="mt-2 text-sm text-red-400">{{ presentationsResult.error }}</div>
@@ -453,98 +355,13 @@
             </div>
           </div>
 
-          <!-- Regenerate All Flagged Card -->
-          <div class="bg-gradient-to-br from-slate-800/60 to-slate-800/30 border border-slate-700/50 rounded-xl p-6 lg:col-span-2">
-            <div class="flex items-start justify-between mb-4">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                  <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-slate-100">Regenerate All Flagged</h3>
-                  <p class="text-sm text-slate-400">Process entire regen queue across all roles</p>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 text-xs bg-emerald-500/10 text-emerald-400 rounded border border-emerald-500/20">
-                BATCH
-              </span>
-            </div>
-
-            <p class="text-sm text-slate-400 mb-4">
-              Regenerate all samples in the queue in a single batch. Azure TTS handles concurrency internally,
-              so this processes known, target1, and target2 roles simultaneously.
-            </p>
-
-            <!-- Queue Summary -->
-            <div v-if="allFlaggedQueue" class="mb-4 grid grid-cols-4 gap-3">
-              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
-                <div class="text-xl font-bold text-slate-100">{{ allFlaggedQueue.total }}</div>
-                <div class="text-xs text-slate-500 uppercase">Total</div>
-              </div>
-              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
-                <div class="text-xl font-bold text-amber-400">{{ allFlaggedQueue.byRole?.known || 0 }}</div>
-                <div class="text-xs text-slate-500 uppercase">Known</div>
-              </div>
-              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
-                <div class="text-xl font-bold text-emerald-400">{{ allFlaggedQueue.byRole?.target1 || 0 }}</div>
-                <div class="text-xs text-slate-500 uppercase">Target1</div>
-              </div>
-              <div class="bg-slate-900/50 rounded-lg p-3 text-center">
-                <div class="text-xl font-bold text-teal-400">{{ allFlaggedQueue.byRole?.target2 || 0 }}</div>
-                <div class="text-xs text-slate-500 uppercase">Target2</div>
-              </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="flex gap-3">
-              <button
-                @click="previewAllFlagged"
-                :disabled="regeneratingAll"
-                class="flex-1 px-4 py-2.5 bg-slate-700/50 hover:bg-slate-700 disabled:bg-slate-800 disabled:text-slate-600 text-slate-200 rounded-lg transition-colors text-sm font-medium"
-              >
-                {{ loadingAllFlaggedQueue ? 'Loading...' : 'Preview Queue' }}
-              </button>
-              <button
-                @click="executeAllFlagged"
-                :disabled="regeneratingAll || !allFlaggedQueue?.total"
-                class="flex-1 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded-lg transition-colors text-sm font-medium"
-              >
-                {{ regeneratingAll ? 'Working...' : 'Regenerate All' }}
-              </button>
-            </div>
-
-            <!-- Result -->
-            <div v-if="allFlaggedResult" class="mt-4 p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
-              <div class="flex justify-between items-center">
-                <div class="flex items-center gap-2">
-                  <div class="w-2 h-2 rounded-full" :class="allFlaggedResult.error ? 'bg-red-500' : 'bg-emerald-500'"></div>
-                  <span class="text-sm font-medium" :class="allFlaggedResult.error ? 'text-red-400' : 'text-emerald-400'">
-                    {{ allFlaggedResult.error ? 'Error' : 'Triggered' }}
-                  </span>
-                </div>
-                <div v-if="!allFlaggedResult.error" class="text-right">
-                  <span class="text-xl font-bold text-slate-100">{{ allFlaggedResult.count }}</span>
-                  <span class="text-xs text-slate-500 ml-1">samples</span>
-                </div>
-              </div>
-              <div v-if="allFlaggedResult.error" class="mt-2 text-sm text-red-400">{{ allFlaggedResult.error }}</div>
-              <div v-else-if="allFlaggedResult.jobId" class="mt-2 text-xs text-slate-400">
-                Job ID: <code class="text-emerald-400 bg-slate-800 px-1.5 py-0.5 rounded">{{ allFlaggedResult.jobId }}</code>
-              </div>
-              <p v-if="!allFlaggedResult.error" class="mt-2 text-xs text-slate-500">
-                {{ allFlaggedResult.message || 'Watch the live progress panel above for real-time updates.' }}
-              </p>
-            </div>
-          </div>
         </section>
 
         <!-- PIPELINE STATUS Section -->
         <section>
           <div class="flex items-center gap-4 mb-4">
-            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pipeline Status</h2>
-            <div class="flex-1 h-px bg-slate-700/50"></div>
+            <h2 class="text-xs font-semibold text-faint uppercase tracking-wider">Pipeline Status</h2>
+            <div class="flex-1 h-px bg-surface-2/50"></div>
             <span v-if="productionStore.isLinkingAudio" class="text-xs text-teal-400/70 flex items-center gap-1">
               <svg class="w-3 h-3 animate-spin" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -554,7 +371,7 @@
             </span>
             <button
               @click="refreshAudioStats"
-              class="text-xs text-slate-500 hover:text-slate-300 transition-colors flex items-center gap-1"
+              class="text-xs text-faint hover:text-ink transition-colors flex items-center gap-1"
               :disabled="refreshingStats"
               title="Refresh stats"
             >
@@ -580,12 +397,12 @@
           />
 
           <!-- Concurrency Control -->
-          <div class="mt-4 flex items-center gap-4 p-3 bg-slate-800/40 rounded-lg border border-slate-700/30">
+          <div class="mt-4 flex items-center gap-4 p-3 bg-surface/40 rounded-lg border border-line/30">
             <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
-              <span class="text-sm text-slate-400">Concurrency</span>
+              <span class="text-sm text-muted">Concurrency</span>
             </div>
             <input
               type="range"
@@ -593,7 +410,7 @@
               @input="updateConcurrency(Number(($event.target as HTMLInputElement).value))"
               min="1"
               max="20"
-              class="flex-1 h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+              class="flex-1 h-2 bg-surface-2 rounded-lg appearance-none cursor-pointer accent-emerald-500"
             />
             <div class="flex items-center gap-2">
               <input
@@ -602,9 +419,9 @@
                 @change="updateConcurrency(Number(($event.target as HTMLInputElement).value))"
                 min="1"
                 max="20"
-                class="w-14 px-2 py-1 bg-slate-900/50 text-slate-100 text-center rounded border border-slate-600/50 text-sm"
+                class="w-14 px-2 py-1 bg-canvas/50 text-ink text-center rounded border border-line/50 text-sm"
               />
-              <span class="text-xs text-slate-500">/ 20</span>
+              <span class="text-xs text-faint">/ 20</span>
             </div>
           </div>
 
@@ -613,7 +430,7 @@
             <button
               @click="startGeneration"
               :disabled="!canStartGeneration || isGenerating || startingGeneration"
-              class="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-slate-700 disabled:to-slate-600 disabled:text-slate-500 rounded-lg font-medium transition-all text-sm flex items-center gap-2"
+              class="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-surface-2 disabled:to-surface-3 disabled:text-faint rounded-lg font-medium transition-all text-sm flex items-center gap-2"
             >
               <svg v-if="isGenerating || startingGeneration" class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -648,7 +465,7 @@
           </div>
 
           <!-- Audio Linking Result -->
-          <div v-if="linkResult" class="mt-4 bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-teal-500/30 rounded-xl p-4 flex items-center gap-3">
+          <div v-if="linkResult" class="mt-4 bg-gradient-to-br from-surface/80 to-surface/40 border border-teal-500/30 rounded-xl p-4 flex items-center gap-3">
             <svg class="w-5 h-5 text-teal-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
             </svg>
@@ -656,7 +473,7 @@
           </div>
 
           <!-- Plan Results Display -->
-          <div v-if="showingPlan && planResult" class="mt-4 bg-gradient-to-br from-slate-800/80 to-slate-800/40 border border-purple-500/30 rounded-xl p-6">
+          <div v-if="showingPlan && planResult" class="mt-4 bg-gradient-to-br from-surface/80 to-surface/40 border border-purple-500/30 rounded-xl p-6">
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
@@ -664,11 +481,11 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                   </svg>
                 </div>
-                <span class="font-medium text-slate-100">Generation Plan</span>
+                <span class="font-medium text-ink">Generation Plan</span>
               </div>
               <button
                 @click="showingPlan = false"
-                class="text-slate-400 hover:text-slate-200 transition-colors"
+                class="text-muted hover:text-ink transition-colors"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -682,33 +499,33 @@
 
             <div v-else class="space-y-4">
               <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div class="bg-slate-900/50 rounded-lg p-3 text-center">
-                  <div class="text-xl font-bold text-slate-100">{{ (planResult.total || 0).toLocaleString() }}</div>
-                  <div class="text-xs text-slate-500 uppercase">Total Needed</div>
+                <div class="bg-canvas/50 rounded-lg p-3 text-center">
+                  <div class="text-xl font-bold text-ink">{{ (planResult.total || 0).toLocaleString() }}</div>
+                  <div class="text-xs text-faint uppercase">Total Needed</div>
                 </div>
-                <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                <div class="bg-canvas/50 rounded-lg p-3 text-center">
                   <div class="text-xl font-bold text-emerald-400">{{ (planResult.existing || 0).toLocaleString() }}</div>
-                  <div class="text-xs text-slate-500 uppercase">Already Done</div>
+                  <div class="text-xs text-faint uppercase">Already Done</div>
                 </div>
-                <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                <div class="bg-canvas/50 rounded-lg p-3 text-center">
                   <div class="text-xl font-bold text-amber-400">{{ (planResult.missing || 0).toLocaleString() }}</div>
-                  <div class="text-xs text-slate-500 uppercase">To Generate</div>
+                  <div class="text-xs text-faint uppercase">To Generate</div>
                 </div>
-                <div class="bg-slate-900/50 rounded-lg p-3 text-center">
+                <div class="bg-canvas/50 rounded-lg p-3 text-center">
                   <div class="text-xl font-bold text-purple-400">{{ planResult.estimatedCost || '$0.00' }}</div>
-                  <div class="text-xs text-slate-500 uppercase">Est. Cost</div>
+                  <div class="text-xs text-faint uppercase">Est. Cost</div>
                 </div>
               </div>
 
-              <div v-if="planResult.estimatedTime" class="text-sm text-slate-400 text-center">
-                Estimated time: <span class="text-slate-200 font-medium">{{ planResult.estimatedTime }}</span>
+              <div v-if="planResult.estimatedTime" class="text-sm text-muted text-center">
+                Estimated time: <span class="text-ink font-medium">{{ planResult.estimatedTime }}</span>
               </div>
 
               <div v-if="planResult.missing > 0" class="pt-2">
                 <button
                   @click="startGeneration(); showingPlan = false;"
                   :disabled="isGenerating"
-                  class="w-full px-4 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-slate-700 disabled:to-slate-600 rounded-lg font-semibold transition-all text-sm flex items-center justify-center gap-2"
+                  class="w-full px-4 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-surface-2 disabled:to-surface-3 rounded-lg font-semibold transition-all text-sm flex items-center justify-center gap-2"
                 >
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
@@ -727,8 +544,8 @@
         <!-- MISSING AUDIO Section -->
         <section>
           <div class="flex items-center gap-4 mb-4">
-            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Missing Audio</h2>
-            <div class="flex-1 h-px bg-slate-700/50"></div>
+            <h2 class="text-xs font-semibold text-faint uppercase tracking-wider">Missing Audio</h2>
+            <div class="flex-1 h-px bg-surface-2/50"></div>
           </div>
 
           <MissingAudio :course-code="courseCode" :refresh-trigger="missingAudioKey" />
@@ -737,8 +554,8 @@
         <!-- SHARED AUDIO Section (encouragements, instructions, welcome, paywall) -->
         <section>
           <div class="flex items-center gap-4 mb-4">
-            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Shared Audio</h2>
-            <div class="flex-1 h-px bg-slate-700/50"></div>
+            <h2 class="text-xs font-semibold text-faint uppercase tracking-wider">Shared Audio</h2>
+            <div class="flex-1 h-px bg-surface-2/50"></div>
           </div>
 
           <SharedAudio :course-code="courseCode" />
@@ -782,21 +599,10 @@ const voiceConfig = ref<any>(null)
 const regenerateRole = ref('')
 const regenerating = ref(false)
 const regenerateResult = ref<any>(null)
-const flaggedOnly = ref(false)
-
-// Review panel state
-const playingAudioId = ref<string | null>(null)
-const reviewAudioElement = ref<HTMLAudioElement | null>(null)
 
 // Regenerate presentations state
 const regeneratingPresentations = ref(false)
 const presentationsResult = ref<any>(null)
-
-// Regenerate all flagged state
-const allFlaggedQueue = ref<any>(null)
-const loadingAllFlaggedQueue = ref(false)
-const regeneratingAll = ref(false)
-const allFlaggedResult = ref<any>(null)
 
 // Plan/dry run state (kept for plan panel compatibility)
 const planResult = ref<any>(null)
@@ -808,7 +614,6 @@ const statsLoaded = ref(false)  // Track if pipeline stats have loaded
 const startingGeneration = ref(false)
 const refreshingStats = ref(false)
 const linkResult = ref<{ linked: number } | null>(null)
-const removingJobId = ref<string | null>(null)  // queue job currently being removed
 
 // Concurrency control (1-20, stored in localStorage, default 20 for paid Azure tier)
 const concurrency = ref(parseInt(localStorage.getItem('audio_concurrency') || '20', 10))
@@ -1012,11 +817,6 @@ onMounted(async () => {
     // because /generate runs link first as Step A, and /audio-stats reports
     // toLink separately so the user can see linkable rows without doing them
     // first. Avoiding the extra Supabase RPC on every page load.
-
-    // Check for mode=flagged query param (from Script Viewer link)
-    if (route.query.mode === 'flagged') {
-      flaggedOnly.value = true
-    }
   } catch (err) {
     console.error('Failed to load pipeline:', err)
     error.value = 'Failed to load pipeline data. Please try again.'
@@ -1034,22 +834,16 @@ onUnmounted(() => {
 // Computed properties
 const progressStats = computed(() => productionStore.pipelineStats)
 const isGenerating = computed(() => productionStore.jobStatus === 'running')
-// Another course currently has the running audio job. Jobs are now QUEUED rather
-// than blocked, so this no longer disables actions — it only drives messaging
-// (e.g. "Queue behind <course>") and the queue panel.
 const otherCourseJobActive = computed(() =>
   audioProgress.value.active && audioProgress.value.courseCode && audioProgress.value.courseCode !== courseCode.value
 )
-// Queued jobs waiting behind the running one (from Phase 8 /status).
-const audioQueue = computed(() => audioProgress.value.queue || [])
 const hasFailed = computed(() => progressStats.value.failed > 0)
 // Generate is allowed when:
 //  - There's TTS work (pending > 0), OR
 //  - There's link-only work (linkable > 0) — Generate runs the linker even with no TTS
 //  - AND presentation text is ready (LEGOs/components have pending course_audio rows)
 const canStartGeneration = computed(() => {
-  // Note: another course running no longer blocks — the job simply queues.
-  if (isGenerating.value) return false
+  if (isGenerating.value || otherCourseJobActive.value) return false
   const ps = progressStats.value
   const hasWork = (ps.pending > 0) || ((ps.linkable || 0) > 0)
   const ready = ps.readyForGenerate !== false  // default true if undefined
@@ -1058,7 +852,7 @@ const canStartGeneration = computed(() => {
 const generateButtonLabel = computed(() => {
   if (isGenerating.value) return 'Generating...'
   if (startingGeneration.value) return 'Starting...'
-  if (otherCourseJobActive.value) return `Queue behind ${audioProgress.value.courseCode}`
+  if (otherCourseJobActive.value) return `Busy (${audioProgress.value.courseCode})`
   const ps = progressStats.value
   if (ps.readyForGenerate === false) return 'Presentation text required'
   if (ps.pending === 0 && (ps.linkable || 0) > 0) return `Link ${ps.linkable} audios (no TTS)`
@@ -1095,28 +889,6 @@ const startGeneration = async () => {
 
 const cancelGeneration = async () => {
   await productionStore.cancelGeneration(courseCode.value)
-}
-
-// Remove a queued (not-yet-started) audio job from the Phase 8 queue.
-const removeFromQueue = async (jobId: string) => {
-  if (!jobId || removingJobId.value) return
-  removingJobId.value = jobId
-  try {
-    const response = await fetch(`${apiBaseUrl}/api/audio/queue/${encodeURIComponent(jobId)}`, {
-      method: 'DELETE',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (!response.ok) {
-      const data = await response.json().catch(() => ({}))
-      error.value = data.error || 'Failed to remove job from queue'
-    }
-    // Refresh the queue immediately so the row disappears without waiting for the poll.
-    await pollAudioProgress()
-  } catch (err: any) {
-    error.value = err.message || 'Failed to remove job from queue'
-  } finally {
-    removingJobId.value = null
-  }
 }
 
 const retryFailed = async () => {
@@ -1189,8 +961,7 @@ const previewRegenerate = async () => {
       },
       body: JSON.stringify({
         role: regenerateRole.value,
-        dryRun: true,
-        flaggedOnly: flaggedOnly.value
+        dryRun: true
       })
     })
 
@@ -1200,7 +971,6 @@ const previewRegenerate = async () => {
     } else {
       regenerateResult.value = {
         dryRun: true,
-        flaggedOnly: flaggedOnly.value,
         count: data.count,
         voiceId: data.voiceId,
         language: data.language,
@@ -1217,11 +987,9 @@ const previewRegenerate = async () => {
 const executeRegenerate = async () => {
   if (!regenerateRole.value) return
 
-  const scope = flaggedOnly.value ? 'flagged' : 'all'
   const count = regenerateResult.value?.count || 'unknown number of'
   const confirmed = confirm(
     `This will regenerate ${count} ${regenerateRole.value} audio files for ${courseCode.value}.\n\n` +
-    `Scope: ${scope}\n` +
     `Existing audio files will be replaced.\n\n` +
     `Continue?`
   )
@@ -1239,8 +1007,7 @@ const executeRegenerate = async () => {
       },
       body: JSON.stringify({
         role: regenerateRole.value,
-        dryRun: false,
-        flaggedOnly: flaggedOnly.value
+        dryRun: false
       })
     })
 
@@ -1251,7 +1018,6 @@ const executeRegenerate = async () => {
       // Non-blocking: regeneration running in background
       regenerateResult.value = {
         dryRun: false,
-        flaggedOnly: flaggedOnly.value,
         status: 'running',
         total: data.total,
         voiceId: data.voiceId,
@@ -1262,14 +1028,12 @@ const executeRegenerate = async () => {
     } else {
       regenerateResult.value = {
         dryRun: false,
-        flaggedOnly: flaggedOnly.value,
         status: 'completed',
         total: data.total,
         success: data.success,
         failed: data.failed,
         voiceId: data.voiceId,
-        language: data.language,
-        regeneratedItems: data.regeneratedItems || []
+        language: data.language
       }
       // Reload pipeline stats
       await productionStore.loadCourse(courseCode.value)
@@ -1279,99 +1043,6 @@ const executeRegenerate = async () => {
   } finally {
     regenerating.value = false
   }
-}
-
-// Review panel functions
-const playReviewAudio = async (audioId: string) => {
-  // Toggle if already playing
-  if (playingAudioId.value === audioId) {
-    reviewAudioElement.value?.pause()
-    playingAudioId.value = null
-    return
-  }
-
-  // Stop any currently playing audio
-  if (reviewAudioElement.value) {
-    reviewAudioElement.value.pause()
-  }
-
-  try {
-    // Get signed URL for the audio
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio/${audioId}/url`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-    if (!response.ok) throw new Error('Failed to get audio URL')
-
-    const { url } = await response.json()
-
-    // Create and play audio
-    reviewAudioElement.value = new Audio(url)
-    reviewAudioElement.value.onended = () => {
-      playingAudioId.value = null
-    }
-    reviewAudioElement.value.onerror = () => {
-      playingAudioId.value = null
-    }
-
-    playingAudioId.value = audioId
-    await reviewAudioElement.value.play()
-  } catch (err) {
-    console.error('Error playing review audio:', err)
-    playingAudioId.value = null
-  }
-}
-
-const markItemDone = async (item: any) => {
-  try {
-    // Delete the flag using new audio-flags endpoint - user is happy with this audio
-    await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/${item.id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      }
-    })
-    // Remove from review list
-    if (regenerateResult.value?.regeneratedItems) {
-      regenerateResult.value.regeneratedItems = regenerateResult.value.regeneratedItems.filter(
-        (i: any) => i.id !== item.id
-      )
-    }
-  } catch (err) {
-    console.error('Error marking item done:', err)
-  }
-}
-
-const markAllDone = async () => {
-  if (!regenerateResult.value?.regeneratedItems?.length) return
-
-  try {
-    const uuids = regenerateResult.value.regeneratedItems.map((item: any) => item.id).filter(Boolean)
-    if (uuids.length > 0) {
-      await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-flags/bulk-delete`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true'
-        },
-        body: JSON.stringify({ audio_uuids: uuids })
-      })
-    }
-    // Clear review list
-    regenerateResult.value.regeneratedItems = []
-  } catch (err) {
-    console.error('Error marking all done:', err)
-  }
-}
-
-const clearReviewPanel = () => {
-  if (regenerateResult.value) {
-    regenerateResult.value.regeneratedItems = []
-  }
-  if (reviewAudioElement.value) {
-    reviewAudioElement.value.pause()
-  }
-  playingAudioId.value = null
 }
 
 // Presentation text regeneration functions
@@ -1438,101 +1109,55 @@ const executePresentations = async () => {
     regeneratingPresentations.value = false
   }
 }
-
-// Regenerate All Flagged functions
-const previewAllFlagged = async () => {
-  loadingAllFlaggedQueue.value = true
-  allFlaggedResult.value = null
-
-  try {
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/regeneration/queue`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
-    })
-
-    const data = await response.json()
-    if (!response.ok) {
-      allFlaggedQueue.value = null
-      allFlaggedResult.value = { error: data.error || 'Failed to load queue' }
-    } else {
-      // Count by role
-      const byRole: Record<string, number> = { known: 0, target1: 0, target2: 0, presentation: 0 }
-      for (const item of data.items || []) {
-        const role = item.audio?.role || 'unknown'
-        if (byRole[role] !== undefined) {
-          byRole[role]++
-        }
-      }
-
-      allFlaggedQueue.value = {
-        total: data.total || 0,
-        items: data.items || [],
-        byRole
-      }
-    }
-  } catch (err: any) {
-    allFlaggedQueue.value = null
-    allFlaggedResult.value = { error: err.message }
-  } finally {
-    loadingAllFlaggedQueue.value = false
-  }
-}
-
-const executeAllFlagged = async () => {
-  if (!allFlaggedQueue.value?.total) return
-
-  const confirmed = confirm(
-    `This will regenerate ${allFlaggedQueue.value.total} flagged samples across all roles.\n\n` +
-    `Breakdown:\n` +
-    `• Known: ${allFlaggedQueue.value.byRole?.known || 0}\n` +
-    `• Target1: ${allFlaggedQueue.value.byRole?.target1 || 0}\n` +
-    `• Target2: ${allFlaggedQueue.value.byRole?.target2 || 0}\n` +
-    `• Presentation: ${allFlaggedQueue.value.byRole?.presentation || 0}\n\n` +
-    `Existing audio files will be replaced.\n\n` +
-    `Continue?`
-  )
-  if (!confirmed) return
-
-  regeneratingAll.value = true
-  allFlaggedResult.value = null
-
-  try {
-    const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/regeneration/trigger-all`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      }
-    })
-
-    const data = await response.json()
-    if (!response.ok) {
-      allFlaggedResult.value = { error: data.error || 'Regeneration failed' }
-    } else {
-      // Regeneration is now QUEUED (runs in the background, one role-job at a time).
-      // There are no regenerated items to preview synchronously — they appear once
-      // the queue processes them. The queue panel shows the pending jobs.
-      const jobCount = data.queuedJobs?.length || 0
-      allFlaggedResult.value = {
-        success: data.success !== false,
-        queued: true,
-        count: data.count,
-        message: `Queued ${jobCount} regeneration job${jobCount === 1 ? '' : 's'} (${data.count} samples). Running in the background — flags clear automatically when each job finishes.`
-      }
-      // Clear the queue preview since the jobs are now enqueued.
-      allFlaggedQueue.value = null
-      // Refresh the queue panel immediately.
-      await pollAudioProgress()
-    }
-  } catch (err: any) {
-    allFlaggedResult.value = { error: err.message }
-  } finally {
-    regeneratingAll.value = false
-  }
-}
 </script>
 
 <style scoped>
 .audio-pipeline {
   padding: 0;
+}
+
+/*
+ * LIGHT-MODE CONTRAST OVERRIDES (dark mode untouched).
+ * This view uses fixed Tailwind palette utilities (emerald/amber/purple/blue/
+ * teal/red -400 and -300) that were tuned for dark card backgrounds. On the
+ * light theme those shades sit on white/slate-50 surfaces at ~1.4:1–3.3:1 and
+ * fail WCAG AA. Re-map the foreground swatches to their darker (-700/-600)
+ * equivalents only under [data-theme="light"] so status text, stat numbers,
+ * badge labels and inline <code> stay the same hue but become legible.
+ * All ratios below are vs white (#ffffff, --surface) which is the worst case;
+ * the slate-50 chip fills are darker so ratios there are marginally higher.
+ */
+:global([data-theme='light']) .audio-pipeline :deep(.text-emerald-400),
+:global([data-theme='light']) .audio-pipeline :deep(.text-emerald-300) {
+  color: #047857 !important; /* emerald-700: 4.9:1 on #fff (was #34d399 1.7:1) */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-amber-400),
+:global([data-theme='light']) .audio-pipeline :deep(.text-amber-300) {
+  color: #b45309 !important; /* amber-700: 4.9:1 on #fff (was #fbbf24 1.4:1) */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-purple-400),
+:global([data-theme='light']) .audio-pipeline :deep(.text-purple-300),
+:global([data-theme='light']) .audio-pipeline :deep(.text-purple-200) {
+  color: #7e22ce !important; /* purple-700: 5.9:1 on #fff (was #c084fc 2.4:1) */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-blue-400) {
+  color: #1d4ed8 !important; /* blue-700: 6.3:1 on #fff (was #60a5fa 2.6:1) */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-teal-400),
+:global([data-theme='light']) .audio-pipeline :deep(.text-teal-300) {
+  color: #0f766e !important; /* teal-700: 5.2:1 on #fff (was #2dd4bf 1.7:1) */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-red-400) {
+  color: #b91c1c !important; /* red-700: 6.0:1 on #fff (was #f87171 3.3:1) */
+}
+/* Opacity-modifier subtext variants (rgb a/0.7) — drop the alpha + darken. */
+:global([data-theme='light']) .audio-pipeline :deep(.text-emerald-400\/70) {
+  color: #047857 !important; /* emerald-700, full alpha */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-amber-400\/70) {
+  color: #b45309 !important; /* amber-700, full alpha */
+}
+:global([data-theme='light']) .audio-pipeline :deep(.text-teal-400\/70) {
+  color: #0f766e !important; /* teal-700, full alpha */
 }
 </style>

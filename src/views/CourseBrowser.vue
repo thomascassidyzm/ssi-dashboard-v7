@@ -1,19 +1,19 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
-        <router-link to="/" class="text-emerald-400 hover:text-emerald-300 mb-4 inline-block">
+        <router-link to="/" class="text-accent-2 hover:opacity-80 mb-4 inline-block">
           ← Back to Dashboard
         </router-link>
         <div class="flex items-start justify-between">
           <div>
-            <h1 class="text-4xl font-bold text-emerald-400 mb-2">Course Library</h1>
-            <p class="text-slate-400">Browse and edit existing courses</p>
+            <h1 class="text-4xl font-bold text-accent-2 mb-2">Course Library</h1>
+            <p class="text-muted">Browse and edit existing courses</p>
           </div>
           <router-link
             to="/production/new/text"
-            class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+            class="bg-accent-2 hover:opacity-90 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
           >
             <span class="text-lg">+</span>
             <span>New Course</span>
@@ -27,41 +27,41 @@
           v-model="searchQuery"
           type="text"
           placeholder="Search courses (e.g., 'Spanish', 'fra_for_eng', 'Basket Generation')..."
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+          class="w-full bg-surface border border-line rounded-lg px-4 py-3 text-ink placeholder-faint focus:outline-none focus:border-accent-2 focus:ring-1 focus:ring-accent-2"
         />
       </div>
 
       <!-- Filter Pills -->
       <div class="mb-6 flex flex-wrap items-center gap-3">
         <!-- Status filters -->
-        <span class="text-xs text-slate-500 uppercase tracking-wider">Status</span>
+        <span class="text-xs text-faint uppercase tracking-wider">Status</span>
         <button
           v-for="s in statusFilters"
           :key="s.value"
           @click="toggleStatusFilter(s.value)"
           :class="[
-            'px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer',
+            'filter-pill px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer',
             activeStatusFilters.has(s.value)
               ? s.activeClass
-              : 'border-slate-600 text-slate-500 hover:border-slate-400 hover:text-slate-300'
+              : 'border-line text-faint hover:border-line hover:text-ink'
           ]"
         >
           {{ s.label }}
         </button>
 
-        <span class="text-slate-700 mx-1">|</span>
+        <span class="text-faint mx-1">|</span>
 
         <!-- Pricing filters -->
-        <span class="text-xs text-slate-500 uppercase tracking-wider">Pricing</span>
+        <span class="text-xs text-faint uppercase tracking-wider">Pricing</span>
         <button
           v-for="p in pricingFilters"
           :key="p.value"
           @click="togglePricingFilter(p.value)"
           :class="[
-            'px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer',
+            'filter-pill px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer',
             activePricingFilters.has(p.value)
               ? p.activeClass
-              : 'border-slate-600 text-slate-500 hover:border-slate-400 hover:text-slate-300'
+              : 'border-line text-faint hover:border-line hover:text-ink'
           ]"
         >
           {{ p.label }}
@@ -69,32 +69,32 @@
       </div>
 
       <!-- Stats loading indicator -->
-      <div v-if="loadingStats" class="mb-4 flex items-center gap-2 text-sm text-slate-500">
-        <div class="w-3 h-3 border-2 border-slate-500 border-t-emerald-400 rounded-full animate-spin"></div>
+      <div v-if="loadingStats" class="mb-4 flex items-center gap-2 text-sm text-faint">
+        <div class="w-3 h-3 border-2 border-line border-t-accent-2 rounded-full animate-spin"></div>
         Loading course stats...
       </div>
 
       <!-- Loading State -->
       <div v-if="loading" class="text-center py-12">
-        <div class="text-slate-400">Loading courses...</div>
+        <div class="text-muted">Loading courses...</div>
       </div>
 
       <!-- Error State -->
-      <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
-        <h3 class="text-red-400 font-semibold mb-2">Error Loading Courses</h3>
-        <p class="text-slate-300">{{ error }}</p>
+      <div v-else-if="error" class="error-panel bg-red-900/20 border border-red-500/50 rounded-lg p-6">
+        <h3 class="error-title text-red-400 font-semibold mb-2">Error Loading Courses</h3>
+        <p class="text-ink">{{ error }}</p>
       </div>
 
       <!-- Empty State -->
       <div v-else-if="filteredCourses.length === 0" class="text-center py-12">
-        <div v-if="searchQuery" class="text-slate-400 mb-4">
+        <div v-if="searchQuery" class="text-muted mb-4">
           No courses matching "{{ searchQuery }}"
         </div>
-        <div v-else class="text-slate-400 mb-4">No courses found</div>
+        <div v-else class="text-muted mb-4">No courses found</div>
         <router-link
           v-if="!searchQuery"
           to="/production/new/text"
-          class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-lg transition-colors"
+          class="inline-block bg-accent-2 hover:opacity-90 text-white px-6 py-3 rounded-lg transition-colors"
         >
           Create Your First Course
         </router-link>
@@ -107,39 +107,39 @@
           :key="course.course_code"
           :to="`/production/${course.course_code}`"
           :class="[
-            'bg-slate-800 rounded-lg p-5 transition-all cursor-pointer hover:bg-slate-750 hover:shadow-lg hover:shadow-emerald-500/10 group',
+            'bg-surface rounded-lg p-5 transition-all cursor-pointer hover:bg-surface-2 hover:shadow-lg shadow-sm group',
             highlightedCourses.has(course.course_code)
-              ? 'border-2 border-emerald-500 shadow-lg shadow-emerald-500/20'
-              : 'border border-slate-700 hover:border-emerald-500/50'
+              ? 'border-2 border-accent-2 shadow-lg'
+              : 'border border-line hover:border-accent-2'
           ]"
         >
           <!-- Header -->
           <div class="flex items-start justify-between mb-3">
             <div>
               <div class="flex items-center gap-2 mb-1">
-                <h3 class="text-lg font-semibold text-emerald-400 group-hover:text-emerald-300">
+                <h3 class="text-lg font-semibold text-accent-2 group-hover:opacity-80">
                   {{ formatCourseCode(course.course_code) }}
                 </h3>
                 <span
                   v-if="highlightedCourses.has(course.course_code)"
-                  class="px-2 py-0.5 bg-emerald-500 text-white text-xs font-bold rounded-full animate-pulse"
+                  class="px-2 py-0.5 bg-accent-2 text-white text-xs font-bold rounded-full animate-pulse"
                 >
                   NEW
                 </span>
               </div>
-              <p class="text-sm text-slate-400">
+              <p class="text-sm text-muted">
                 {{ getFullCourseName(course.course_code) }}
               </p>
             </div>
             <div class="flex items-center gap-2 flex-shrink-0">
               <span
-                class="px-2 py-0.5 rounded-full text-xs font-medium"
+                class="pricing-pill px-2 py-0.5 rounded-full text-xs font-medium"
                 :class="getPricingClass(course.pricing_tier)"
               >
                 {{ (course.pricing_tier || 'premium').toUpperCase() }}
               </span>
               <span
-                class="px-3 py-1 rounded-full text-xs font-medium"
+                class="status-pill px-3 py-1 rounded-full text-xs font-medium"
                 :class="getStatusClass(course.status)"
               >
                 {{ formatStatus(course.status) }}
@@ -150,29 +150,29 @@
           <!-- Stats Grid -->
           <div class="grid grid-cols-2 gap-2 text-sm">
             <!-- Seeds -->
-            <div class="bg-slate-700/50 rounded px-3 py-2">
-              <div class="text-slate-500 text-xs mb-1">Seeds</div>
+            <div class="bg-surface-2 border border-line rounded px-3 py-2">
+              <div class="text-faint text-xs mb-1">Seeds</div>
               <div class="font-mono">
-                <span class="text-emerald-400">{{ course.seed_pairs || 0 }}</span>
-                <span class="text-slate-500"> / {{ course.seed_count || 668 }}</span>
+                <span class="text-accent-2">{{ course.seed_pairs || 0 }}</span>
+                <span v-if="course.seed_count" class="text-faint"> / {{ course.seed_count }}</span>
               </div>
             </div>
             <!-- LEGOs -->
-            <div class="bg-slate-700/50 rounded px-3 py-2">
-              <div class="text-slate-500 text-xs mb-1">LEGOs</div>
-              <div class="font-mono text-emerald-400">{{ course.lego_pairs || 0 }}</div>
+            <div class="bg-surface-2 border border-line rounded px-3 py-2">
+              <div class="text-faint text-xs mb-1">LEGOs</div>
+              <div class="font-mono text-accent-2">{{ course.lego_pairs || 0 }}</div>
             </div>
             <!-- Phrases -->
-            <div class="bg-slate-700/50 rounded px-3 py-2">
-              <div class="text-slate-500 text-xs mb-1">Phrases</div>
-              <div class="font-mono text-emerald-400">{{ (course.phrases || 0).toLocaleString() }}</div>
+            <div class="bg-surface-2 border border-line rounded px-3 py-2">
+              <div class="text-faint text-xs mb-1">Phrases</div>
+              <div class="font-mono text-accent-2">{{ (course.phrases || 0).toLocaleString() }}</div>
             </div>
             <!-- Audio coverage available per-course in Production Suite -->
           </div>
 
           <!-- Click hint -->
-          <div class="mt-3 pt-3 border-t border-slate-700 text-center">
-            <span class="text-xs text-slate-500 group-hover:text-emerald-400 transition-colors">
+          <div class="mt-3 pt-3 border-t border-line text-center">
+            <span class="text-xs text-faint group-hover:text-accent-2 transition-colors">
               Click to open Production Suite →
             </span>
           </div>
@@ -205,7 +205,7 @@ const activeStatusFilters = ref(new Set())
 const activePricingFilters = ref(new Set())
 
 const statusFilters = [
-  { value: 'draft', label: 'Testing', activeClass: 'bg-slate-600/30 border-slate-400 text-slate-300' },
+  { value: 'draft', label: 'Testing', activeClass: 'bg-surface-3/30 border-line text-ink' },
   { value: 'beta', label: 'Beta', activeClass: 'bg-yellow-600/20 border-yellow-500 text-yellow-400' },
   { value: 'released', label: 'Live', activeClass: 'bg-emerald-600/20 border-emerald-500 text-emerald-400' },
 ]
@@ -393,15 +393,86 @@ function getStatusClass(status) {
   } else if (status === 'in_progress') {
     return 'bg-yellow-600 text-white'
   } else {
-    return 'bg-slate-600 text-slate-300'
+    return 'bg-surface-3 text-ink'
   }
 }
 
 function getPricingClass(tier) {
-  if (tier === 'free') return 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-  if (tier === 'community') return 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-  return 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+  if (tier === 'free') return 'pp-free bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+  if (tier === 'community') return 'pp-community bg-blue-500/20 text-blue-400 border border-blue-500/30'
+  return 'pp-premium bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
 }
 
 
 </script>
+
+<!--
+  Light-mode-only overrides. Dark mode is untouched: every rule below is scoped
+  under [data-theme="light"]. The hardcoded Tailwind emerald/yellow/blue/red
+  utilities used for status & pricing pills/filters are near-invisible on light
+  backgrounds (e.g. text-yellow-400 #facc15 on white = 1.53:1), so we darken the
+  text/fill to AA-passing values while keeping the same hue family.
+-->
+<style scoped>
+/* Error panel — dark literals (bg-red-900/20, text-red-400) don't read on light */
+:root[data-theme="light"] .error-panel {
+  background-color: #fef2f2 !important;   /* red-50 */
+  border-color: #fca5a5 !important;       /* red-300 */
+}
+:root[data-theme="light"] .error-title {
+  color: #b91c1c !important;              /* red-700 — 5.30:1 on red-50 */
+}
+
+/* Inactive filter pills: text-faint already AA (5.30:1 on canvas) — leave.
+   Active filter pills carry hardcoded yellow/blue/emerald — darken text+fill. */
+:root[data-theme="light"] .filter-pill {
+  /* emerald active (released / free) */
+}
+:root[data-theme="light"] .filter-pill.text-yellow-400 {
+  background-color: #fef3c7 !important;   /* amber-100 */
+  border-color: #d97706 !important;       /* amber-600 */
+  color: #854d0e !important;              /* yellow-800 — 6.15:1 */
+}
+:root[data-theme="light"] .filter-pill.text-emerald-400 {
+  background-color: #d1fae5 !important;   /* emerald-100 */
+  border-color: #047857 !important;
+  color: #047857 !important;              /* 4.84:1 */
+}
+:root[data-theme="light"] .filter-pill.text-blue-400 {
+  background-color: #dbeafe !important;   /* blue-100 */
+  border-color: #1d4ed8 !important;
+  color: #1e40af !important;              /* 7.15:1 */
+}
+:root[data-theme="light"] .filter-pill.text-ink {
+  /* draft/Testing active (bg-surface-3/30 text-ink) — bump fill opacity */
+  background-color: #e2e8f0 !important;   /* surface-3 — 14.48:1 with ink */
+  border-color: #94a3b8 !important;
+}
+
+/* Pricing pills on cards */
+:root[data-theme="light"] .pricing-pill.pp-free {
+  background-color: #d1fae5 !important;
+  border-color: #047857 !important;
+  color: #047857 !important;              /* 4.84:1 */
+}
+:root[data-theme="light"] .pricing-pill.pp-community {
+  background-color: #dbeafe !important;
+  border-color: #1d4ed8 !important;
+  color: #1e40af !important;              /* 7.15:1 */
+}
+:root[data-theme="light"] .pricing-pill.pp-premium {
+  background-color: #fef3c7 !important;
+  border-color: #d97706 !important;
+  color: #854d0e !important;              /* 6.15:1 */
+}
+
+/* Status pills on cards: solid-fill variants.
+   bg-emerald-600/bg-yellow-600 are a touch light for white text in light mode. */
+:root[data-theme="light"] .status-pill.bg-emerald-600 {
+  background-color: #047857 !important;   /* white text = 5.48:1 */
+}
+:root[data-theme="light"] .status-pill.bg-yellow-600 {
+  background-color: #b45309 !important;   /* amber-700 — white text = 5.02:1 */
+}
+/* bg-surface-3 text-ink default status pill already 14.48:1 — no override. */
+</style>

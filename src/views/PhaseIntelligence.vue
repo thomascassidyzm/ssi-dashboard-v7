@@ -18,13 +18,13 @@
       <!-- v14 Architecture Notice -->
       <div class="mb-6 p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg">
         <div class="flex items-start gap-3">
-          <span class="text-amber-400 text-xl">&#x26A0;</span>
+          <span class="text-accent text-xl">&#x26A0;</span>
           <div>
-            <h3 class="text-amber-400 font-semibold">v14 Architecture Change</h3>
-            <p class="text-slate-400 text-sm mt-1">
+            <h3 class="text-accent font-semibold">v14 Architecture Change</h3>
+            <p class="text-muted text-sm mt-1">
               Phases 0-3 (translation, conflict resolution, basket generation) have been
-              <strong class="text-amber-300">consolidated into the Course Builder API</strong>.
-              The methodology skills in <code class="text-emerald-400">.claude/commands/</code> now define how content is created.
+              <strong class="text-accent">consolidated into the Course Builder API</strong>.
+              The methodology skills in <code class="text-accent-2">.claude/commands/</code> now define how content is created.
             </p>
           </div>
         </div>
@@ -32,7 +32,7 @@
 
       <!-- Phase Selector -->
       <div class="mb-8">
-        <h2 class="text-xl font-semibold text-slate-100 mb-4">Select Phase</h2>
+        <h2 class="text-xl font-semibold text-ink mb-4">Select Phase</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           <button
             v-for="phase in phases"
@@ -43,8 +43,8 @@
               selectedPhase === phase.id
                 ? 'bg-emerald-600 border-emerald-400 text-white'
                 : phase.status === 'deprecated'
-                  ? 'bg-slate-800/50 border-slate-700 text-slate-500 hover:border-slate-500'
-                  : 'bg-slate-800 border-slate-600 text-slate-300 hover:border-emerald-500/50'
+                  ? 'bg-surface-2 border-line text-faint hover:border-line'
+                  : 'bg-surface border-line text-ink hover:border-emerald-500/50'
             ]"
           >
             <div class="text-center">
@@ -54,15 +54,15 @@
                 <span
                   :class="[
                     'text-xs px-2 py-1 rounded',
-                    phase.status === 'active' ? 'bg-green-500/20 text-green-400' :
-                    phase.status === 'primary' ? 'bg-emerald-500/20 text-emerald-400' :
-                    phase.status === 'deprecated' ? 'bg-red-500/20 text-red-400' :
-                    'bg-gray-500/20 text-gray-400'
+                    phase.status === 'active' ? 'bg-green-500/20 text-accent-2' :
+                    phase.status === 'primary' ? 'bg-emerald-500/20 text-accent-2' :
+                    phase.status === 'deprecated' ? 'bg-red-500/20 text-danger' :
+                    'bg-surface-3 text-muted'
                   ]"
                 >
                   {{ phase.status }}
                 </span>
-                <span v-if="phase.version" class="text-xs text-emerald-400 ml-2">
+                <span v-if="phase.version" class="text-xs text-accent-2 ml-2">
                   v{{ phase.version }}
                 </span>
               </div>
@@ -72,27 +72,27 @@
       </div>
 
       <!-- Intelligence Content -->
-      <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-6">
+      <div class="bg-surface rounded-lg border border-line p-6">
         <div v-if="!currentPhase">
-          <p class="text-slate-400 text-center py-12">Select a phase to view its intelligence</p>
+          <p class="text-muted text-center py-12">Select a phase to view its intelligence</p>
         </div>
 
         <div v-else>
           <!-- Intelligence metadata -->
-          <div class="mb-4 pb-4 border-b border-slate-600">
+          <div class="mb-4 pb-4 border-b border-line">
             <div class="flex items-center justify-between">
               <div>
-                <h3 class="text-xl font-semibold text-slate-100">
+                <h3 class="text-xl font-semibold text-ink">
                   {{ currentPhase.id === 'CB' ? 'Course Builder' : `Phase ${selectedPhase}` }}: {{ currentPhase.name }}
                 </h3>
-                <p class="text-sm text-slate-400 mt-1">
-                  <span v-if="currentPhase.status === 'primary'" class="text-emerald-400">
+                <p class="text-sm text-muted mt-1">
+                  <span v-if="currentPhase.status === 'primary'" class="text-accent-2">
                     &#x2B50; Primary content creation method (v14)
                   </span>
-                  <span v-else-if="currentPhase.status === 'active'" class="text-green-400">
+                  <span v-else-if="currentPhase.status === 'active'" class="text-accent-2">
                     &#x2705; Active module
                   </span>
-                  <span v-else-if="currentPhase.status === 'deprecated'" class="text-red-400">
+                  <span v-else-if="currentPhase.status === 'deprecated'" class="text-danger">
                     &#x274C; Deprecated in v14 - use Course Builder
                   </span>
                   <span v-if="currentPhase.version" class="ml-2">
@@ -100,7 +100,7 @@
                   </span>
                 </p>
               </div>
-              <div class="text-sm text-slate-400">
+              <div class="text-sm text-muted">
                 <span class="font-mono">{{ currentPhase.path }}</span>
               </div>
             </div>
@@ -108,29 +108,29 @@
 
           <!-- Deprecation notice for phases 1-3 -->
           <div v-if="currentPhase.status === 'deprecated'" class="mb-4 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-            <p class="text-red-300 text-sm">
+            <p class="text-danger text-sm">
               <strong>This phase is deprecated.</strong> In v14, content creation uses the Course Builder API
-              (<code class="text-emerald-400">POST /api/seed/complete</code>).
-              The methodology is defined in <code class="text-emerald-400">.claude/commands/</code> skills.
+              (<code class="text-accent-2">POST /api/seed/complete</code>).
+              The methodology is defined in <code class="text-accent-2">.claude/commands/</code> skills.
             </p>
           </div>
 
           <!-- Raw markdown display -->
-          <pre class="whitespace-pre-wrap font-mono text-sm text-slate-300 leading-relaxed overflow-x-auto">{{ intelligence }}</pre>
+          <pre class="whitespace-pre-wrap font-mono text-sm text-ink leading-relaxed overflow-x-auto">{{ intelligence }}</pre>
         </div>
       </div>
 
       <!-- Workflow Info -->
-      <div class="mt-8 bg-slate-800/30 rounded-lg border border-slate-600/30 p-6">
-        <h3 class="text-lg font-semibold text-slate-100 mb-3">v14 Content Creation Workflow</h3>
-        <ol class="text-slate-400 space-y-2 text-sm">
-          <li>1. Read methodology skills: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">.claude/commands/ssi-*.md</code></li>
-          <li>2. Agent submits seeds: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">POST /api/seed/complete</code></li>
+      <div class="mt-8 bg-surface rounded-lg border border-line p-6">
+        <h3 class="text-lg font-semibold text-ink mb-3">v14 Content Creation Workflow</h3>
+        <ol class="text-muted space-y-2 text-sm">
+          <li>1. Read methodology skills: <code class="text-accent-2 bg-surface-2 px-2 py-1 rounded">.claude/commands/ssi-*.md</code></li>
+          <li>2. Agent submits seeds: <code class="text-accent-2 bg-surface-2 px-2 py-1 rounded">POST /api/seed/complete</code></li>
           <li>3. API validates atomically (tiling, ZUT, vocabulary, phrases)</li>
-          <li>4. Generate audio: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">Phase 8 (port 3465)</code></li>
-          <li>5. Compile manifest: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">Phase 9 (port 3466)</code></li>
+          <li>4. Generate audio: <code class="text-accent-2 bg-surface-2 px-2 py-1 rounded">Phase 8 (port 3465)</code></li>
+          <li>5. Compile manifest: <code class="text-accent-2 bg-surface-2 px-2 py-1 rounded">Phase 9 (port 3466)</code></li>
         </ol>
-        <p class="text-slate-500 text-xs mt-4">
+        <p class="text-faint text-xs mt-4">
           Pipeline: Course Builder &rarr; Audio Generation &rarr; Manifest Compilation
         </p>
       </div>
@@ -270,7 +270,7 @@ selectPhase('CB')
 }
 
 .page-subtitle {
-  color: #94a3b8;
+  color: var(--muted);
   margin: 0;
 }
 
@@ -290,11 +290,22 @@ selectPhase('CB')
 }
 
 .version-label {
-  color: #64748b;
+  color: var(--faint);
   font-size: 0.75rem;
 }
 
 .content-area {
   max-width: 100%;
+}
+
+/* Light mode: emerald #10b981 fails contrast on the pale canvas/tint;
+   use the darker themed accent-2 (#047857) so dark mode is untouched. */
+:root[data-theme="light"] .page-title {
+  color: var(--accent-2);
+}
+
+:root[data-theme="light"] .version-badge {
+  background: rgba(4, 120, 87, 0.14);
+  color: var(--accent-2);
 }
 </style>

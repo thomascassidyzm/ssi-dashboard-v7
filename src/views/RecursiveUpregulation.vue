@@ -1,80 +1,80 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
-        <router-link to="/" class="text-emerald-400 hover:text-emerald-300 mb-4 inline-block">
+        <router-link to="/" class="text-accent-2 hover:opacity-80 mb-4 inline-block">
           ← Back to Dashboard
         </router-link>
         <div class="flex items-start gap-3">
           <div class="text-4xl">🧠</div>
           <div>
-            <h1 class="text-4xl font-bold text-emerald-400 mb-2">
+            <h1 class="text-4xl font-bold text-accent-2 mb-2">
               Recursive Up-Regulation
             </h1>
-            <p class="text-slate-400">AI Operating System: Self-Learning & Self-Healing</p>
+            <p class="text-muted">AI Operating System: Self-Learning & Self-Healing</p>
           </div>
         </div>
       </div>
 
       <!-- Current Generation Status -->
       <section class="mb-8">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">
+        <h2 class="text-2xl font-semibold text-accent-2 mb-6">
           Generation {{ currentGeneration }} Status
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           <!-- Quality Score Card -->
-          <div class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-2">Quality Score</div>
+          <div class="bg-surface border border-line rounded-lg p-6 shadow-sm">
+            <div class="text-sm text-muted mb-2">Quality Score</div>
             <div class="text-3xl font-bold" :class="{
-              'text-emerald-400': qualityClass === 'excellent',
+              'text-accent-2': qualityClass === 'excellent',
               'text-green-400': qualityClass === 'good',
               'text-yellow-400': qualityClass === 'fair',
               'text-red-400': qualityClass === 'poor',
-              'text-slate-500': !latestMetrics
+              'text-faint': !latestMetrics
             }">
               {{ latestMetrics?.quality_score?.toFixed(1) || 'N/A' }}%
             </div>
-            <div v-if="qualityImprovement" class="text-sm text-emerald-400 mt-2">
+            <div v-if="qualityImprovement" class="text-sm text-accent-2 mt-2">
               +{{ qualityImprovement.toFixed(1) }}% vs Gen {{ currentGeneration - 1 }}
             </div>
           </div>
 
           <!-- FCFS Violations Card -->
-          <div class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-2">FCFS Violations</div>
+          <div class="bg-surface border border-line rounded-lg p-6 shadow-sm">
+            <div class="text-sm text-muted mb-2">FCFS Violations</div>
             <div class="text-3xl font-bold" :class="{
-              'text-emerald-400': fcfsClass === 'excellent',
+              'text-accent-2': fcfsClass === 'excellent',
               'text-green-400': fcfsClass === 'good',
               'text-yellow-400': fcfsClass === 'fair',
               'text-red-400': fcfsClass === 'poor'
             }">
               {{ latestMetrics?.fcfs_violations || 0 }}
             </div>
-            <div v-if="fcfsReduction" class="text-sm text-emerald-400 mt-2">
+            <div v-if="fcfsReduction" class="text-sm text-accent-2 mt-2">
               {{ fcfsReduction }} fewer than Gen {{ currentGeneration - 1 }}
             </div>
           </div>
 
           <!-- Training Examples Card -->
-          <div class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-2">Training Examples</div>
+          <div class="bg-surface border border-line rounded-lg p-6 shadow-sm">
+            <div class="text-sm text-muted mb-2">Training Examples</div>
             <div class="text-3xl font-bold text-purple-400">
               {{ trainingDatasetSize }}
             </div>
-            <div class="text-sm text-slate-400 mt-2">
+            <div class="text-sm text-muted mt-2">
               {{ baselineExamples }} baseline + {{ correctionsAdded }} corrections
             </div>
           </div>
 
           <!-- Human Intervention Card -->
-          <div class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-2">Human Intervention</div>
+          <div class="bg-surface border border-line rounded-lg p-6 shadow-sm">
+            <div class="text-sm text-muted mb-2">Human Intervention</div>
             <div class="text-3xl font-bold text-blue-400">
               {{ interventionRate?.toFixed(1) || 'N/A' }}%
             </div>
-            <div class="text-sm text-slate-400 mt-2">
+            <div class="text-sm text-muted mt-2">
               Target: Decreasing
             </div>
           </div>
@@ -104,15 +104,15 @@
 
       <!-- Fine-Tuning In Progress -->
       <section v-if="fineTuningInProgress" class="mb-8">
-        <div class="bg-slate-800/50 border border-blue-400/30 rounded-lg p-8">
+        <div class="bg-surface border border-line rounded-lg p-8 shadow-sm">
           <div class="flex items-center gap-4 mb-4">
             <div class="animate-spin text-3xl">⚙️</div>
             <div>
               <h3 class="text-2xl font-bold text-blue-400">Fine-Tuning in Progress</h3>
-              <p class="text-slate-400">Generation {{ currentGeneration + 1 }} training via Claude Code</p>
+              <p class="text-muted">Generation {{ currentGeneration + 1 }} training via Claude Code</p>
             </div>
           </div>
-          <div class="text-sm text-slate-400">
+          <div class="text-sm text-muted">
             Status: {{ fineTuningStatus }} • Check Warp terminal for progress
           </div>
         </div>
@@ -120,24 +120,24 @@
 
       <!-- Prerequisites Checklist -->
       <section v-if="!readyToFineTune" class="mb-8">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Prerequisites</h2>
-        <div class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6">
+        <h2 class="text-2xl font-semibold text-accent-2 mb-6">Prerequisites</h2>
+        <div class="bg-surface border border-line rounded-lg p-6 shadow-sm">
           <div class="space-y-3">
             <div class="flex items-center gap-3">
-              <div :class="hasBaseline ? 'text-emerald-400' : 'text-slate-500'">
+              <div :class="hasBaseline ? 'text-accent-2' : 'text-faint'">
                 {{ hasBaseline ? '✅' : '⬜' }}
               </div>
-              <span class="text-slate-300">Generation 0 baseline measured</span>
+              <span class="text-ink">Generation 0 baseline measured</span>
             </div>
             <div class="flex items-center gap-3">
-              <div :class="hasCorrections ? 'text-emerald-400' : 'text-slate-500'">
+              <div :class="hasCorrections ? 'text-accent-2' : 'text-faint'">
                 {{ hasCorrections ? '✅' : '⬜' }}
               </div>
-              <span class="text-slate-300">Training data with corrections ready</span>
+              <span class="text-ink">Training data with corrections ready</span>
             </div>
             <div class="flex items-center gap-3">
-              <div class="text-emerald-400">✅</div>
-              <span class="text-slate-300">Claude Code configured with API access</span>
+              <div class="text-accent-2">✅</div>
+              <span class="text-ink">Claude Code configured with API access</span>
             </div>
           </div>
         </div>
@@ -145,28 +145,28 @@
 
       <!-- Self-Healing Patterns -->
       <section v-if="selfHealingData" class="mb-8">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Self-Healing Verification</h2>
+        <h2 class="text-2xl font-semibold text-accent-2 mb-6">Self-Healing Verification</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div
             v-for="pattern in selfHealingData"
             :key="pattern.name"
-            class="bg-slate-800/50 border rounded-lg p-6"
+            class="bg-surface border rounded-lg p-6 shadow-sm heal-card"
             :class="{
-              'border-emerald-400/50': pattern.healed,
-              'border-yellow-400/50': pattern.gen1_count < pattern.gen0_count && !pattern.healed,
-              'border-slate-400/20': pattern.gen1_count >= pattern.gen0_count
+              'heal-card--healed': pattern.healed,
+              'heal-card--improved': pattern.gen1_count < pattern.gen0_count && !pattern.healed,
+              'border-line': pattern.gen1_count >= pattern.gen0_count
             }">
-            <div class="text-lg font-semibold text-slate-100 mb-3">
+            <div class="text-lg font-semibold text-ink mb-3">
               {{ pattern.name }}
             </div>
             <div class="space-y-2 text-sm">
-              <div class="text-slate-400">
+              <div class="text-muted">
                 Gen 0: <span class="text-red-400">{{ pattern.gen0_count }} violations</span>
               </div>
-              <div class="text-slate-400">
-                Gen 1: <span class="text-emerald-400">{{ pattern.gen1_count }} violations</span>
+              <div class="text-muted">
+                Gen 1: <span class="text-accent-2">{{ pattern.gen1_count }} violations</span>
               </div>
-              <div v-if="pattern.healed" class="text-emerald-400 font-semibold mt-3">
+              <div v-if="pattern.healed" class="text-accent-2 font-semibold mt-3">
                 ✅ HEALED
               </div>
               <div v-else-if="pattern.gen1_count < pattern.gen0_count" class="text-yellow-400 font-semibold mt-3">
@@ -179,25 +179,25 @@
 
       <!-- Comparison Results -->
       <section v-if="comparisonData" class="mb-8">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">A/B Comparison Results</h2>
+        <h2 class="text-2xl font-semibold text-accent-2 mb-6">A/B Comparison Results</h2>
 
-        <div class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-8 mb-6">
+        <div class="bg-surface border border-line rounded-lg p-8 shadow-sm mb-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <div class="text-sm text-slate-400 mb-2">Quality Improvement</div>
-              <div class="text-4xl font-bold text-emerald-400">
+              <div class="text-sm text-muted mb-2">Quality Improvement</div>
+              <div class="text-4xl font-bold text-accent-2">
                 +{{ comparisonData.improvement?.quality?.improvement?.toFixed(1) }}%
               </div>
-              <div class="text-slate-400 mt-2">
+              <div class="text-muted mt-2">
                 {{ comparisonData.generation_0?.quality }}% → {{ comparisonData.generation_1?.quality }}%
               </div>
             </div>
             <div>
-              <div class="text-sm text-slate-400 mb-2">FCFS Violations Reduced</div>
-              <div class="text-4xl font-bold text-emerald-400">
+              <div class="text-sm text-muted mb-2">FCFS Violations Reduced</div>
+              <div class="text-4xl font-bold text-accent-2">
                 -{{ comparisonData.improvement?.fcfs_violations?.reduction }}
               </div>
-              <div class="text-slate-400 mt-2">
+              <div class="text-muted mt-2">
                 {{ comparisonData.generation_0?.fcfs_violations }} → {{ comparisonData.generation_1?.fcfs_violations }}
               </div>
             </div>
@@ -206,24 +206,24 @@
 
         <!-- Success Criteria -->
         <div class="bg-gradient-to-br from-emerald-900/30 to-teal-900/30 border border-emerald-400/30 rounded-lg p-8">
-          <h3 class="text-xl font-bold text-emerald-400 mb-4">Success Criteria</h3>
+          <h3 class="text-xl font-bold text-accent-2 mb-4">Success Criteria</h3>
           <div class="space-y-3">
             <div
               v-for="criterion in comparisonData.success_criteria"
               :key="criterion.name"
               class="flex items-center gap-3">
-              <div :class="criterion.met ? 'text-emerald-400' : 'text-slate-500'">
+              <div :class="criterion.met ? 'text-accent-2' : 'text-faint'">
                 {{ criterion.met ? '✅' : '❌' }}
               </div>
-              <span class="text-slate-300">{{ criterion.name }}</span>
-              <span class="text-slate-500 text-sm ml-auto">
+              <span class="text-ink">{{ criterion.name }}</span>
+              <span class="text-faint text-sm ml-auto">
                 {{ criterion.actual?.toFixed(1) }}
               </span>
             </div>
           </div>
 
           <div v-if="comparisonData.all_criteria_met" class="mt-6 pt-6 border-t border-emerald-400/30">
-            <div class="text-2xl font-bold text-emerald-400">
+            <div class="text-2xl font-bold text-accent-2">
               🎉 Recursive Up-Regulation PROVEN ✅
             </div>
             <p class="text-emerald-200/80 mt-2">
@@ -238,7 +238,7 @@
 </template>
 
 <script>
-import { baseURL } from '../services/api.js';
+import { baseURL, fetchJson } from '../services/api.js';
 
 export default {
   name: 'RecursiveUpregulation',
@@ -287,8 +287,7 @@ export default {
   methods: {
     async loadMetrics() {
       try {
-        const response = await fetch(`${baseURL}/api/metrics/generations`);
-        const data = await response.json();
+        const data = await fetchJson(`${baseURL}/api/metrics/generations`);
 
         // Extract data from the nested structure
         if (data.generation_0) {
@@ -323,8 +322,7 @@ export default {
 
     async checkReadyState() {
       try {
-        const response = await fetch(`${baseURL}/api/fine-tuning/ready`);
-        const data = await response.json();
+        const data = await fetchJson(`${baseURL}/api/fine-tuning/ready`);
 
         this.readyToFineTune = data.ready;
         this.hasBaseline = data.prerequisites?.baseline_metrics;
@@ -336,12 +334,10 @@ export default {
 
     async startFineTuning() {
       try {
-        const response = await fetch(`${baseURL}/api/fine-tuning/start`, {
+        const data = await fetchJson(`${baseURL}/api/fine-tuning/start`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' }
         });
-
-        const data = await response.json();
 
         if (data.success) {
           this.fineTuningInProgress = true;
@@ -356,11 +352,9 @@ export default {
 
     async runComparison() {
       try {
-        const response = await fetch(`${baseURL}/api/fine-tuning/compare`, {
+        const data = await fetchJson(`${baseURL}/api/fine-tuning/compare`, {
           method: 'POST'
         });
-
-        const data = await response.json();
         this.comparisonData = data.comparison;
         this.selfHealingData = Object.values(data.comparison.self_healing || {});
       } catch (error) {
@@ -370,3 +364,27 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+/* Light-mode-only contrast fixes for raw Tailwind status colors.
+   Dark mode keeps the original bright-on-dark Tailwind values untouched.
+   :deep not needed — these classes live on this component's own elements. */
+:global([data-theme="light"]) .text-green-400 { color: #15803d; }   /* green-700, ~5.4:1 on white */
+:global([data-theme="light"]) .text-yellow-400 { color: #b45309; }  /* amber-700, ~4.7:1 */
+:global([data-theme="light"]) .text-red-400 { color: #dc2626; }     /* red-600, ~4.5:1 */
+:global([data-theme="light"]) .text-purple-400 { color: #7e22ce; }  /* purple-700, ~5.7:1 */
+:global([data-theme="light"]) .text-blue-400 { color: #1d4ed8; }    /* blue-700, ~6.3:1 */
+
+/* Self-healing card status borders — visible on white */
+.heal-card--healed { border-color: var(--accent-2); }
+.heal-card--improved { border-color: #b45309; }  /* amber-700, ~3.2:1 border on white */
+
+/* Fine-tune "ready" gradient panel: darken text + purple chrome for light */
+:global([data-theme="light"]) .text-purple-200 { color: #581c87; }      /* purple-900 */
+:global([data-theme="light"]) .text-purple-200\/80 { color: rgba(88, 28, 135, 0.85); }
+:global([data-theme="light"]) .text-emerald-200\/80 { color: rgba(6, 78, 59, 0.9); }   /* emerald-900 */
+
+/* Gradient-panel borders: faint at /30 over white — strengthen for light */
+:global([data-theme="light"]) .border-purple-400\/30 { border-color: rgba(126, 34, 206, 0.45); }
+:global([data-theme="light"]) .border-emerald-400\/30 { border-color: rgba(4, 120, 87, 0.45); }
+</style>

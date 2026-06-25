@@ -1,5 +1,5 @@
 <template>
-  <div class="learned-rules-view min-h-screen bg-slate-900 text-slate-100 p-6">
+  <div class="learned-rules-view min-h-screen bg-canvas text-ink p-6">
     <!-- Header -->
     <div class="max-w-7xl mx-auto mb-8">
       <router-link :to="`/quality/${courseCode}/evolution`" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition mb-4">
@@ -7,7 +7,7 @@
         <span>Back to Prompt Evolution</span>
       </router-link>
       <h1 class="text-3xl font-bold text-emerald-400 mb-2">🧠 Self-Learning Rules</h1>
-      <p class="text-slate-400">
+      <p class="text-muted">
         Rules extracted from manual edits - the system learns and improves with every correction
       </p>
     </div>
@@ -28,20 +28,20 @@
     <div v-else class="max-w-7xl mx-auto space-y-6">
       <!-- Summary Stats -->
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-          <div class="text-sm text-slate-400">Total Rules</div>
+        <div class="bg-surface border border-line rounded-lg p-4">
+          <div class="text-sm text-muted">Total Rules</div>
           <div class="text-3xl font-bold text-emerald-400">{{ summary.total_rules }}</div>
         </div>
-        <div class="bg-slate-800 border border-yellow-700 rounded-lg p-4">
-          <div class="text-sm text-slate-400">Experimental</div>
+        <div class="bg-surface border border-yellow-700 rounded-lg p-4">
+          <div class="text-sm text-muted">Experimental</div>
           <div class="text-3xl font-bold text-yellow-400">{{ summary.experimental }}</div>
         </div>
-        <div class="bg-slate-800 border border-blue-700 rounded-lg p-4">
-          <div class="text-sm text-slate-400">Validated</div>
+        <div class="bg-surface border border-blue-700 rounded-lg p-4">
+          <div class="text-sm text-muted">Validated</div>
           <div class="text-3xl font-bold text-blue-400">{{ summary.validated }}</div>
         </div>
-        <div class="bg-slate-800 border border-emerald-700 rounded-lg p-4">
-          <div class="text-sm text-slate-400">Committed</div>
+        <div class="bg-surface border border-emerald-700 rounded-lg p-4">
+          <div class="text-sm text-muted">Committed</div>
           <div class="text-3xl font-bold text-emerald-400">{{ summary.committed }}</div>
         </div>
       </div>
@@ -59,12 +59,12 @@
       </div>
 
       <!-- Rules List -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-        <h2 class="text-xl font-semibold text-slate-100 mb-4">
+      <div class="bg-surface border border-line rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-ink mb-4">
           Learned Rules ({{ rules.length }})
         </h2>
 
-        <div v-if="rules.length === 0" class="text-center py-8 text-slate-400">
+        <div v-if="rules.length === 0" class="text-center py-8 text-muted">
           No rules learned yet. Start editing LEGO breakdowns to teach the system!
         </div>
 
@@ -72,7 +72,7 @@
           <div
             v-for="(rule, index) in sortedRules"
             :key="index"
-            class="bg-slate-700/50 border rounded-lg p-4"
+            class="bg-surface-2/50 border rounded-lg p-4"
             :class="{
               'border-yellow-600': rule.status === 'experimental',
               'border-blue-600': rule.status === 'validated',
@@ -92,19 +92,19 @@
                   >
                     {{ rule.status }}
                   </span>
-                  <span class="text-xs text-slate-400">
+                  <span class="text-xs text-muted">
                     Confidence: {{ (rule.confidence * 100).toFixed(0) }}%
                   </span>
-                  <span class="text-xs text-slate-400">
+                  <span class="text-xs text-muted">
                     Occurrences: {{ rule.occurrences }}
                   </span>
                 </div>
 
-                <div class="text-slate-100 font-medium mb-1">
+                <div class="text-ink font-medium mb-1">
                   {{ rule.description }}
                 </div>
 
-                <div class="text-xs text-slate-400">
+                <div class="text-xs text-muted">
                   <span>First seen: {{ formatDate(rule.first_seen) }}</span>
                   <span class="ml-4">Last seen: {{ formatDate(rule.last_seen) }}</span>
                 </div>
@@ -119,12 +119,12 @@
       </div>
 
       <!-- Recent Manual Edits -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-        <h2 class="text-xl font-semibold text-slate-100 mb-4">
+      <div class="bg-surface border border-line rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-ink mb-4">
           Recent Manual Edits (Last 10)
         </h2>
 
-        <div v-if="manual_edits.length === 0" class="text-center py-8 text-slate-400">
+        <div v-if="manual_edits.length === 0" class="text-center py-8 text-muted">
           No manual edits recorded yet
         </div>
 
@@ -132,22 +132,22 @@
           <div
             v-for="(edit, index) in manual_edits"
             :key="index"
-            class="bg-slate-700/50 border border-slate-600 rounded-lg p-4"
+            class="bg-surface-2/50 border border-line rounded-lg p-4"
           >
             <div class="flex items-center gap-3 mb-2">
               <span class="text-sm font-mono text-cyan-400 bg-cyan-400/10 px-2 py-1 rounded">
                 SEED {{ edit.seed_id }}
               </span>
-              <span class="text-xs text-slate-400">
+              <span class="text-xs text-muted">
                 {{ formatDate(edit.timestamp) }}
               </span>
             </div>
 
-            <div class="text-sm text-slate-300 mb-2">
+            <div class="text-sm text-ink mb-2">
               Changed from {{ edit.original_count }} LEGOs to {{ edit.edited_count }} LEGOs
             </div>
 
-            <div v-if="edit.patterns && edit.patterns.length > 0" class="text-xs text-slate-400">
+            <div v-if="edit.patterns && edit.patterns.length > 0" class="text-xs text-muted">
               Patterns: {{ edit.patterns.map(p => p.type).join(', ') }}
             </div>
           </div>

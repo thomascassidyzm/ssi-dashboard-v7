@@ -60,7 +60,12 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:3470',
         changeOrigin: true,
-        secure: false
+        secure: false,
+        // Add x-forwarded-for so dev-proxied requests are NOT mistaken for
+        // same-host service-mesh calls (isLoopbackDirectRequest in
+        // production-api). Without it, the course-scope gate silently no-ops
+        // for all `npm run dev` traffic and never gets exercised before prod.
+        xfwd: true
       }
     }
   },

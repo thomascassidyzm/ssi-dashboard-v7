@@ -50,6 +50,9 @@
             <button @click="showPasswordModal = true; showUserMenu = false" class="user-dropdown-item">
               {{ hasPassword ? 'Change password' : 'Set password' }}
             </button>
+            <button @click="toggleTheme" class="user-dropdown-item">
+              {{ theme === 'light' ? '🌙 Dark mode' : '☀️ Light mode' }}
+            </button>
             <button @click="handleLogout" class="user-dropdown-logout">Sign out</button>
           </div>
         </div>
@@ -58,10 +61,10 @@
 
     <!-- Password Modal -->
     <div v-if="showPasswordModal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50" @click.self="closePasswordModal">
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 w-full max-w-sm">
-        <h3 class="text-lg font-semibold text-slate-100 mb-4">{{ hasPassword ? 'Change Password' : 'Set Password' }}</h3>
+      <div class="bg-surface border border-line rounded-lg p-6 w-full max-w-sm">
+        <h3 class="text-lg font-semibold text-ink mb-4">{{ hasPassword ? 'Change Password' : 'Set Password' }}</h3>
 
-        <div v-if="passwordSuccess" class="text-emerald-400 text-center py-4">
+        <div v-if="passwordSuccess" class="text-accent-2 text-center py-4">
           Password updated!
         </div>
 
@@ -70,7 +73,7 @@
             v-model="newPassword"
             type="password"
             placeholder="New password (min 8 chars)"
-            class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none text-sm"
+            class="w-full bg-canvas border border-line rounded-lg px-4 py-2.5 text-ink placeholder-faint focus:border-emerald-500 focus:outline-none text-sm"
             @keyup.enter="$refs.confirmPw?.focus()"
           />
           <input
@@ -78,19 +81,19 @@
             v-model="confirmPassword"
             type="password"
             placeholder="Confirm password"
-            class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2.5 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none text-sm"
+            class="w-full bg-canvas border border-line rounded-lg px-4 py-2.5 text-ink placeholder-faint focus:border-emerald-500 focus:outline-none text-sm"
             @keyup.enter="handleSetPassword"
           />
-          <p v-if="passwordError" class="text-red-400 text-xs">{{ passwordError }}</p>
+          <p v-if="passwordError" class="text-danger text-xs">{{ passwordError }}</p>
           <div class="flex gap-2 pt-1">
             <button
               @click="closePasswordModal"
-              class="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm font-medium rounded-lg transition-colors"
+              class="flex-1 px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink text-sm font-medium rounded-lg transition-colors"
             >Cancel</button>
             <button
               @click="handleSetPassword"
               :disabled="passwordSaving"
-              class="flex-1 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white text-sm font-medium rounded-lg transition-colors"
+              class="flex-1 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 text-white text-sm font-medium rounded-lg transition-colors"
             >{{ passwordSaving ? 'Saving...' : 'Save' }}</button>
           </div>
         </div>
@@ -111,7 +114,17 @@ import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
 const route = useRoute()
 const router = useRouter()
 const { courses, loading, loadCourses, courseCount, inProductionCount, getCourseName } = useCourses()
-const { isAuthenticated, isAdmin, hasDashboardAccess, user, learner, hasPassword, updatePassword, logout, getAccessToken } = useAuth()
+const { isAuthenticated, isAdmin, isRecorder, hasDashboardAccess, user, learner, hasPassword, updatePassword, logout, getAccessToken } = useAuth()
+
+// Theme: 'dark' (default) | 'light'. Persisted; applied on <html data-theme>.
+// Initial state set by main.js before mount; the menu item flips it here.
+const theme = ref(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark')
+function toggleTheme() {
+  theme.value = theme.value === 'light' ? 'dark' : 'light'
+  if (theme.value === 'light') document.documentElement.dataset.theme = 'light'
+  else delete document.documentElement.dataset.theme
+  try { localStorage.setItem('popty-theme', theme.value) } catch { /* private mode */ }
+}
 
 // Audit-log stale check — surfaces a numeric badge on the Maintenance tab
 // when the oldest audit row is older than 30 days, prompting a cleanup.
@@ -202,20 +215,22 @@ onUnmounted(() => document.removeEventListener('click', handleClickOutside))
 
 const activeCourseCount = ref(0)
 
-// Hide on auth routes
-const isHidden = computed(() => route.meta.public === true)
+// Hide on auth routes — and for recorders, who live in the Record Room shell
+// and never see the admin console chrome.
+const isHidden = computed(() => route.meta.public === true || isRecorder.value)
 
 // Context detection
 const isHome = computed(() => route.path === '/')
 const isJobs = computed(() => route.path === '/jobs')
 const isMaintenance = computed(() => route.path === '/maintenance')
+const isInsights = computed(() => route.path === '/insights')
 const isDocs = computed(() => route.path.startsWith('/docs'))
 const isProduction = computed(() => route.path.startsWith('/production/') && route.params.courseCode)
 const courseCode = computed(() => route.params.courseCode || null)
 const isCreateMode = computed(() => courseCode.value === 'new')
 
 // Home-section tabs show on Courses, Activity, and Maintenance pages
-const inHomeSection = computed(() => isHome.value || isJobs.value || isMaintenance.value)
+const inHomeSection = computed(() => isHome.value || isJobs.value || isMaintenance.value || isInsights.value)
 
 // Show course summary only on home page
 const showSummary = computed(() => isHome.value)
@@ -254,37 +269,22 @@ const tabs = computed(() => {
         to: '/maintenance',
         active: isMaintenance.value,
         badge: auditStaleDays.value ? `${auditStaleDays.value}d` : null
-      }
+      },
+      { label: 'Insights', to: '/insights', active: isInsights.value }
     ]
   }
 
   if (isProduction.value && !isCreateMode.value) {
     const code = courseCode.value
+    // ONE door per course (Tom, 2026-06-10): Overview is the hub — every
+    // working surface (Text, Audio, Record Room, QA, …) is a card there.
+    // Per-flow tabs in the navbar just duplicated the hub and confused
+    // community builders.
     return [
       {
         label: 'Overview',
         to: `/production/${code}`,
         active: route.name === 'ProductionDashboard'
-      },
-      {
-        label: 'Text',
-        to: `/production/${code}/text`,
-        active: route.name === 'TextGeneration'
-      },
-      {
-        label: 'Audio',
-        to: `/production/${code}/pipeline`,
-        active: route.name === 'AudioPipelineProduction'
-      },
-      {
-        label: 'Recording',
-        to: `/production/${code}/recording`,
-        active: route.name === 'AutocueStudioCourse'
-      },
-      {
-        label: 'QA',
-        to: { name: 'ScriptViewer', params: { courseCode: code }, query: { filter: 'flagged' } },
-        active: route.name === 'ScriptViewer' && route.query.filter === 'flagged'
       }
     ]
   }
@@ -303,6 +303,7 @@ const tabs = computed(() => {
       { label: 'Glossary', to: '/docs/terminology', active: route.name === 'TerminologyGlossary' },
       { label: 'Seeds', to: '/docs/seeds', active: route.name === 'CanonicalSeeds' },
       { label: 'Content', to: '/docs/canonical', active: route.name === 'CanonicalContent' },
+      { label: 'Pods', to: '/docs/pods', active: route.name === 'PodsDoc' },
       { label: 'Pipeline', to: '/docs/pipeline', active: route.name === 'ProcessOverview' },
       { label: 'Intelligence', to: '/docs/intelligence', active: route.name === 'PhaseIntelligence' }
     ]
@@ -322,8 +323,8 @@ onMounted(() => {
   top: 0;
   z-index: 100;
   height: 56px;
-  background: var(--color-shadow, #1e293b);
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
   padding: 0 1.5rem;
 }
 
@@ -345,7 +346,7 @@ onMounted(() => {
 }
 
 .back-link {
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
   text-decoration: none;
   font-size: 0.875rem;
   white-space: nowrap;
@@ -353,14 +354,14 @@ onMounted(() => {
 }
 
 .back-link:hover {
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .navbar-title {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0;
   white-space: nowrap;
 }
@@ -382,7 +383,7 @@ onMounted(() => {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.875rem;
   padding: 0.5rem 0.875rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-decoration: none;
   border-radius: 4px;
   transition: all 0.2s ease;
@@ -393,25 +394,31 @@ onMounted(() => {
 }
 
 .tab-item:hover {
-  color: var(--color-paper, #f7f7f2);
-  background: var(--color-slate, #334155);
+  color: var(--color-paper, var(--ink));
+  background: var(--color-slate, var(--surface-2));
 }
 
 .tab-item.active {
-  color: var(--color-tungsten, #ffa630);
-  background: var(--color-slate, #334155);
+  color: var(--color-tungsten, var(--accent));
+  background: var(--color-slate, var(--surface-2));
 }
 
 .tab-badge {
   font-size: 0.6875rem;
   font-weight: 700;
-  color: var(--color-shadow, #1e293b);
+  color: var(--color-shadow, var(--surface));
   background: #8b5cf6;
   border-radius: 9px;
   padding: 0 0.375rem;
   min-width: 18px;
   text-align: center;
   line-height: 18px;
+}
+
+/* Light mode: deepen the badge purple so white text clears AA on small bold
+   text (white on #8b5cf6 = 4.23:1 fail). #6d28d9 = 7.1:1, same violet hue. */
+:root[data-theme="light"] .tab-badge {
+  background: #6d28d9;
 }
 
 /* Right section */
@@ -431,13 +438,13 @@ onMounted(() => {
 
 .course-summary {
   font-size: 0.75rem;
-  color: var(--color-paper-muted, #64748b);
+  color: var(--color-paper-muted, var(--faint));
   white-space: nowrap;
 }
 
 .summary-value {
   font-weight: 700;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-variant-numeric: tabular-nums;
 }
 
@@ -455,9 +462,9 @@ onMounted(() => {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
-  color: var(--color-paper-dim, #c1c1bb);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  color: var(--color-paper-dim, var(--muted));
   font-weight: 700;
   font-size: 0.8125rem;
   cursor: pointer;
@@ -468,16 +475,16 @@ onMounted(() => {
 }
 
 .avatar-btn:hover {
-  border-color: var(--color-tungsten, #ffa630);
-  color: var(--color-paper, #f7f7f2);
+  border-color: var(--color-tungsten, var(--accent));
+  color: var(--color-paper, var(--ink));
 }
 
 .user-dropdown {
   position: absolute;
   top: 40px;
   right: 0;
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
   padding: 0.5rem 0;
   min-width: 180px;
@@ -488,8 +495,8 @@ onMounted(() => {
 .user-dropdown-name {
   padding: 0.5rem 1rem;
   font-size: 0.8125rem;
-  color: var(--color-paper-dim, #c1c1bb);
-  border-bottom: 1px solid var(--color-graphite, #475569);
+  color: var(--color-paper-dim, var(--muted));
+  border-bottom: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .user-dropdown-item {
@@ -497,7 +504,7 @@ onMounted(() => {
   width: 100%;
   padding: 0.5rem 1rem;
   font-size: 0.8125rem;
-  color: #94a3b8;
+  color: var(--muted);
   background: none;
   border: none;
   text-align: left;
@@ -509,7 +516,7 @@ onMounted(() => {
 
 .user-dropdown-item:hover {
   background: rgba(148, 163, 184, 0.1);
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .user-dropdown-logout {
@@ -517,7 +524,7 @@ onMounted(() => {
   width: 100%;
   padding: 0.5rem 1rem;
   font-size: 0.8125rem;
-  color: #ef4444;
+  color: var(--danger);
   background: none;
   border: none;
   text-align: left;
@@ -564,7 +571,7 @@ onMounted(() => {
     width: 100%;
     justify-content: center;
     padding: 0.25rem 0;
-    border-top: 1px solid var(--color-graphite, #475569);
+    border-top: 1px solid var(--color-graphite, var(--surface-3));
     margin-top: 0.375rem;
   }
 

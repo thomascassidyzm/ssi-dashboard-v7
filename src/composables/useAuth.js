@@ -21,6 +21,9 @@ const initialized = ref(false)
 // Computed
 const isAuthenticated = computed(() => !!dashboardUser.value)
 const isAdmin = computed(() => dashboardUser.value?.role === 'admin')
+// 'recorder' = recording-only helper tier (still in the dashboard_users schema CHECK).
+// Recorders live in the Record Room shell, never the admin console.
+const isRecorder = computed(() => dashboardUser.value?.role === 'recorder')
 const hasDashboardAccess = computed(() => !!dashboardUser.value)
 const hasPassword = computed(() => !!user.value?.user_metadata?.has_password)
 
@@ -47,37 +50,76 @@ function clearCachedUser() {
 
 /**
  * Fetch the dashboard_users row by email.
- * Uses service key via production-api because dashboard_users
- * has RLS restricted to service_role (and that's fine).
+ * Direct read works for YOUR OWN row (RLS own-row policy); the API
+ * fallback uses the service key and also resolves ssi_admin learners
+ * without dashboard rows.
  */
+// True when the LAST lookup got an AUTHORITATIVE answer (a row, or a
+// definite "no row" from the API). False = the production machine could
+// not be reached — callers must NOT tell the user they lack access then
+// (a down tunnel was sending admins invite-code hunting, 2026-06-11).
+let lastLookupAuthoritative = false
+
 async function fetchDashboardUser(email) {
-  if (!email) return null
+  if (!email) { lastLookupAuthoritative = true; return null }
+  lastLookupAuthoritative = false
 
   try {
-    // Try direct Supabase first (works if anon has read access)
+    // Direct Supabase read — data here is authoritative, but an EMPTY
+    // result is not (RLS hides rows from anon/other sessions).
     if (supabase) {
       const { data, error: fetchError } = await supabase
         .from('dashboard_users')
-        .select('email, name, role, courses')
+        .select('email, name, role, courses, voice_id')
         .eq('email', email)
         .single()
 
-      if (data) return data
-      // RLS might block anon — fall through to API
+      if (data) { lastLookupAuthoritative = true; return data }
       if (fetchError) console.warn('[Auth] Direct dashboard_users query failed, trying API:', fetchError.message)
     }
 
-    // Fallback: ask production-api (uses service key)
+    // Same-origin serverless /api/auth/me (Vercel) — deployed WITH the
+    // frontend, so it's reachable whenever the site itself is, with no
+    // dependency on any production machine or tunnel. Only exists on
+    // popty.app (vite dev would 404 this with HTML, which must not count
+    // as an authoritative "no row").
+    if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') {
+      try {
+        const resp = await fetch(`/api/auth/me?email=${encodeURIComponent(email)}`)
+        if (resp.ok) {
+          lastLookupAuthoritative = true
+          return await resp.json()
+        }
+        if (resp.status === 404) {
+          lastLookupAuthoritative = true
+          return null
+        }
+      } catch { /* fall through to the machine API */ }
+    }
+
+    // Fallback: production-api. 200 and 404 are both authoritative;
+    // anything else (network error, 5xx) means "couldn't reach it".
     const { getApiUrl } = await import('../services/api.js')
     const resp = await fetch(`${getApiUrl()}/api/auth/me?email=${encodeURIComponent(email)}`)
     if (resp.ok) {
-      const data = await resp.json()
-      return data
+      lastLookupAuthoritative = true
+      return await resp.json()
+    }
+    if (resp.status === 404) {
+      lastLookupAuthoritative = true
+      return null
     }
   } catch (err) {
     console.warn('[Auth] fetchDashboardUser error:', err.message)
   }
   return null
+}
+
+/** Message for a failed access lookup that does not lie about access. */
+function accessLookupFailureMessage() {
+  return lastLookupAuthoritative
+    ? 'No dashboard access for this email. Contact an SSi admin.'
+    : 'Could not reach the course production machine — check the machine selector (top right) or try again in a moment.'
 }
 
 /**
@@ -100,13 +142,21 @@ async function signInWithPassword(email, password) {
       session.value = data.session
 
       const dbUser = await fetchDashboardUser(email)
-      if (dbUser) {
-        dashboardUser.value = dbUser
-        cacheUser(dbUser)
+      const rescue = !dbUser && !lastLookupAuthoritative ? loadCachedUser(email) : null
+      if (dbUser || rescue) {
+        // Identity is already proven (password verified); the cache only
+        // carries role/courses from a previous successful lookup. Using it
+        // when every access source is unreachable keeps admins working
+        // through an outage instead of locking them out.
+        dashboardUser.value = dbUser || rescue
+        if (dbUser) cacheUser(dbUser)
       } else {
-        error.value = 'No dashboard access for this email. Contact an SSi admin.'
+        error.value = accessLookupFailureMessage()
         dashboardUser.value = null
-        clearCachedUser()
+        // Only forget the cached row on a definite "no row" — wiping it on
+        // a network failure destroys the one thing that keeps the user
+        // working while the machine is unreachable.
+        if (lastLookupAuthoritative) clearCachedUser()
       }
     }
 
@@ -191,14 +241,19 @@ async function verifyOTP(email, token) {
 
       // Look up dashboard access by email
       const dbUser = await fetchDashboardUser(email)
-      if (dbUser) {
-        dashboardUser.value = dbUser
-        cacheUser(dbUser)
+      const rescue = !dbUser && !lastLookupAuthoritative ? loadCachedUser(email) : null
+      if (dbUser || rescue) {
+        // Cache rescue: identity proven by OTP; a previously-verified
+        // role/courses row beats locking the user out during an outage.
+        dashboardUser.value = dbUser || rescue
+        if (dbUser) cacheUser(dbUser)
       } else {
-        // OTP verified but no dashboard_users row — no dashboard access
-        error.value = 'No dashboard access for this email. Contact an SSi admin.'
+        // OTP verified but no usable answer — distinguish "no access"
+        // from "couldn't reach the machine" (never invite-code-wall admins
+        // over a down tunnel).
+        error.value = accessLookupFailureMessage()
         dashboardUser.value = null
-        clearCachedUser()
+        if (lastLookupAuthoritative) clearCachedUser()
       }
     }
 
@@ -239,8 +294,9 @@ async function initAuth() {
         if (dbUser) {
           dashboardUser.value = dbUser
           cacheUser(dbUser)
-        } else if (!cached) {
-          // No cache and no DB row — not a dashboard user
+        } else if (!cached && lastLookupAuthoritative) {
+          // Definitive "no row" — not a dashboard user. (A non-authoritative
+          // miss — machine unreachable — must not sign anyone out.)
           dashboardUser.value = null
         }
       }).catch(() => {
@@ -328,6 +384,7 @@ export function useAuth() {
     // Computed
     isAuthenticated,
     isAdmin,
+    isRecorder,
     hasDashboardAccess,
     hasPassword,
     accessibleCourses,
@@ -341,6 +398,10 @@ export function useAuth() {
     logout,
     getAccessToken,
     canAccessCourse,
+    // True only when the last access lookup got a definite answer (row or
+    // confirmed no-row). LoginForm must check this before invite-walling:
+    // a network miss means "machine unreachable", not "no access".
+    accessLookupWasAuthoritative: () => lastLookupAuthoritative,
     refreshAccess: async (email) => {
       const dbUser = await fetchDashboardUser(email)
       if (dbUser) {

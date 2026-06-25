@@ -5,6 +5,7 @@
   <!-- Edit Guardian inline status (progress / accepted / flagged + urgent lane) -->
   <GuardianStatus />
 
+  <!-- Theme toggle now lives in the account menu (AppNavbar) — see ThemeToggle item there. -->
   <div class="build-label">
     {{ gitCommit }}
   </div>
@@ -15,9 +16,6 @@ import AppNavbar from './components/AppNavbar.vue'
 import GuardianStatus from './components/GuardianStatus.vue'
 
 const gitCommit = __GIT_COMMIT__
-
-// Clean v7.0 build with Vue Router
-console.log(`🚀 SSi Dashboard ${gitCommit} - Clean Build`)
 </script>
 
 <style scoped>
@@ -37,5 +35,16 @@ console.log(`🚀 SSi Dashboard ${gitCommit} - Clean Build`)
   pointer-events: none;
   text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
   box-shadow: 0 0 12px rgba(0, 255, 136, 0.15);
+}
+
+/* Light mode: the neon-green-on-black build label washes out on a light canvas
+   (#00ff88 on ~#eef2f6 ≈ 1.19:1). Re-tone to the green accent token (legible,
+   same hue family) and drop the dark-mode glow. Dark mode is untouched. */
+:root[data-theme="light"] .build-label {
+  color: var(--accent-2);
+  background: var(--surface);
+  border-color: var(--line);
+  text-shadow: none;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
 }
 </style>

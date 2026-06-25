@@ -4,7 +4,6 @@ import ProcessOverview from '../views/ProcessOverview.vue'
 import CanonicalSeeds from '../views/CanonicalSeeds.vue'
 import CanonicalContent from '../views/CanonicalContent.vue'
 import APMLSpec from '../views/APMLSpec.vue'
-import CourseGeneration from '../views/CourseGeneration.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
 import CourseCompilation from '../views/CourseCompilation.vue'
@@ -34,10 +33,10 @@ import AuthVerify from '../views/AuthVerify.vue'
 import { useAuth } from '../composables/useAuth'
 
 // Production Suite v2.1 Components (APML-generated) - Now the default
-const MissionControl = () => import('../views/production/MissionControl.vue')
 const ScriptViewer = () => import('../views/production/ScriptViewer.vue')
 const AudioPipeline = () => import('../views/production/AudioPipeline.vue')
-const RecordingStudioV2 = () => import('../views/production/RecordingStudio.vue')
+// RecordingStudio.vue (V2) is deprecated — its upload body shape always 400s.
+// The route below redirects to the Autocue recorder; the component file is kept.
 const UserFeedback = () => import('../views/production/UserFeedback.vue')
 
 // Note: SamplesBrowser removed - QA now uses ScriptViewer with filter=flagged
@@ -58,6 +57,12 @@ const routes = [
     name: 'Maintenance',
     component: () => import('../views/Maintenance.vue'),
     meta: { title: 'Maintenance' }
+  },
+  {
+    path: '/insights',
+    name: 'Insights',
+    component: () => import('../views/Insights.vue'),
+    meta: { title: 'Insights' }
   },
   // ============================================
   // Documentation Section (nested routes with shared layout)
@@ -101,6 +106,12 @@ const routes = [
         name: 'CanonicalContent',
         component: CanonicalContent,
         meta: { title: 'Canonical Content' }
+      },
+      {
+        path: 'pods',
+        name: 'PodsDoc',
+        component: () => import('../views/PodsDoc.vue'),
+        meta: { title: 'Listening Pods' }
       },
       {
         path: 'pipeline',
@@ -255,18 +266,32 @@ const routes = [
     redirect: to => `/production/${to.params.courseCode}/pipeline`
   },
   {
-    // DEPRECATED: Redirect to Autocue Studio
-    path: '/record',
+    // DEPRECATED name kept for legacy named pushes (MissionControl) — lands in
+    // the Record Room now, carrying the course when one was passed. The bare
+    // /record path itself is owned by RecordRoom below.
+    path: '/record-studio/:courseCode?',
     name: 'RecordingStudio',
-    redirect: '/autocue'
+    redirect: to => `/record/${to.params.courseCode || ''}`
   },
 
-  // Autocue Recording System (standalone entry point - course-specific handled by nested routes)
+  // DEPRECATED: standalone autocue had no courseCode, so it fetched
+  // /api/production/null/recording-script and failed. Recording lives at
+  // /production/:courseCode/recording — pick a course from Mission Control.
   {
     path: '/autocue',
     name: 'AutocueStudio',
-    component: () => import('../components/production/autocue/AutocueStudio.vue'),
-    meta: { title: 'Autocue Studio', requiresAuth: true }
+    redirect: '/'
+  },
+
+  // Record Room — minimal recording shell for voice helpers (role 'recorder').
+  // A recorder is confined here by the router guard; editors/admins can use it too.
+  // courseCode is optional so an unassigned recorder still has somewhere to land.
+  {
+    path: '/record/:courseCode?',
+    name: 'RecordRoom',
+    component: () => import('../views/RecordRoom.vue'),
+    props: true,
+    meta: { title: 'Record Room', requiresAuth: true }
   },
   {
     path: '/users',
@@ -366,6 +391,14 @@ const routes = [
     component: () => import('../views/ListeningAdmin.vue'),
     meta: { title: 'Listening Config - Admin' }
   },
+  // Stage 0 tuner — standalone in-app page that frames the self-contained
+  // public/stage0-tuner.html tool. Global/not per-course, like /admin/listening.
+  {
+    path: '/admin/stage0-tuner',
+    name: 'Stage0Tuner',
+    component: () => import('../views/Stage0Tuner.vue'),
+    meta: { title: 'Stage 0 Tuner - Admin' }
+  },
   // Production Suite v2.1 Routes (Default)
   // ===========================================
   {
@@ -388,6 +421,15 @@ const routes = [
         component: () => import('../views/production/ProductionOverview.vue'),
         props: true,
         meta: { title: 'Overview - Production Suite' }
+      },
+      {
+        // Guided leader's journey — plain-language step-by-step shell over the
+        // existing flows (translate → decompose → verify → record → synthesize → QA → publish)
+        path: 'journey',
+        name: 'LeaderJourney',
+        component: () => import('../views/production/LeaderJourney.vue'),
+        props: true,
+        meta: { title: 'Course Journey - Production Suite' }
       },
       {
         path: 'seeds',
@@ -441,11 +483,12 @@ const routes = [
         meta: { title: 'Script Viewer - Production Suite' }
       },
       {
+        // DEPRECATED: RecordingStudio V2's uploads always 400 (wrong body shape).
+        // Name kept so existing router.push({ name: 'RecordingStudioProduction' })
+        // calls resolve, then land on the working Autocue recorder.
         path: 'recording-studio',
         name: 'RecordingStudioProduction',
-        component: RecordingStudioV2,
-        props: true,
-        meta: { title: 'Recording Studio - Production Suite' }
+        redirect: to => `/production/${to.params.courseCode}/recording`
       },
       {
         path: 'feedback',
@@ -460,6 +503,13 @@ const routes = [
         component: () => import('../views/RecordingOptimizer.vue'),
         props: true,
         meta: { title: 'Recording Optimizer - Production Suite' }
+      },
+      {
+        path: 'team',
+        name: 'TeamRoster',
+        component: () => import('../views/production/TeamRoster.vue'),
+        props: true,
+        meta: { title: 'Team - Production Suite' }
       },
       {
         path: 'calibration-review',
@@ -488,6 +538,13 @@ const routes = [
         component: () => import('../views/PodDetailView.vue'),
         props: true,
         meta: { title: 'Pod Detail - Production Suite' }
+      },
+      {
+        path: 'canonical/:slug',
+        name: 'CanonicalPod',
+        component: () => import('../views/CanonicalPodView.vue'),
+        props: true,
+        meta: { title: 'Canonical Scenarios - Production Suite' }
       }
     ]
   },
@@ -525,7 +582,7 @@ router.beforeEach(async (to, from, next) => {
   // Public routes (login, auth verify) don't need auth
   if (to.meta.public) return next()
 
-  const { isAuthenticated, initAuth } = useAuth()
+  const { isAuthenticated, initAuth, isRecorder, learner, canAccessCourse } = useAuth()
 
   // Initialize auth if not already done (first page load)
   await initAuth()
@@ -533,6 +590,44 @@ router.beforeEach(async (to, from, next) => {
   // OTP is the gate. If you have a session, you're in.
   if (!isAuthenticated.value) {
     return next({ name: 'Login', query: { redirect: to.fullPath } })
+  }
+
+  // Recorders are confined to their Record Room — never the admin console.
+  // This block runs BEFORE the generic course-scope check and returns early:
+  // a recorder must bounce to /record/..., never to the course list.
+  if (isRecorder.value) {
+    const courses = learner.value?.courses
+    const courseList = Array.isArray(courses) ? courses : []
+    const firstCourse = courseList[0] || null
+    // One course → straight into that room. Several (Catrin records North
+    // AND South) → the bare Record Room renders the room picker.
+    const homeRoom = courseList.length === 1 ? `/record/${firstCourse}` : { name: 'RecordRoom' }
+
+    if (to.name !== 'RecordRoom') {
+      return next(homeRoom)
+    }
+
+    // Inside the room: only their own assigned course(s)
+    const recorderCourse = to.params.courseCode
+    if (recorderCourse && !canAccessCourse(recorderCourse)) {
+      return next(homeRoom)
+    }
+
+    // Landed at /record with no course but exactly one assigned — take them straight in
+    if (!recorderCourse && courseList.length === 1) {
+      return next(`/record/${firstCourse}`)
+    }
+
+    return next()
+  }
+
+  // Course scoping: a course-scoped route needs membership of THAT course
+  // (admin → all; others → '*' or list membership — canAccessCourse handles
+  // both). URL-hopping into an unassigned course bounces to the course list.
+  const courseCode = to.params.courseCode || to.params.code
+  if (courseCode && !canAccessCourse(courseCode)) {
+    console.warn(`[Router] No access to course ${courseCode} — redirecting to course list`)
+    return next({ name: 'CourseBrowser' })
   }
 
   next()

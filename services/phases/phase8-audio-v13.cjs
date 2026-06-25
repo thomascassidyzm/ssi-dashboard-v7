@@ -28,8 +28,9 @@ const { v4: uuidv4 } = require('uuid')
 const fs = require('fs-extra')
 const path = require('path')
 const os = require('os')
-const { bumpCourseVersion } = require('../shared/course-version.cjs')
+const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
+const { pickPreferredAudioRow } = require('../shared/audio-link-preference.cjs')
 const createLogger = require('../shared/logger.cjs')
 const ttsService = require('../tts-service.cjs')
 const { toBcp47 } = require('../voice-discovery-service.cjs')
@@ -41,7 +42,7 @@ const { claudeChat } = require('../shared/claude-cli.cjs')
 const { emitProgress } = require('../shared/emit-progress.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
-const { toIso3, getName: getLangEnglishName, databaseToManifest } = require('../language-code-service.cjs')
+const { toIso3, getName: getLangEnglishName, databaseToManifest, getAzureLocale } = require('../language-code-service.cjs')
 
 const app = express()
 app.use(cors())
@@ -59,7 +60,29 @@ const supabase = createClient(
   { auth: { persistSession: false } }
 )
 
-const s3 = new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })
+// S3 uploads were the REAL source of the bulk-pod ECONNRESET cascade (2026-06-08):
+// the bare client uses Node's https.globalAgent (keepAlive:true but
+// maxSockets:Infinity), so a concurrent fan-out opens unbounded TLS connections
+// that flood the router NAT table → resets (provider-agnostic, same family as the
+// 2026-06-07 TTS windows). Bound the socket pool + reuse connections, and let the
+// SDK retry transient network errors (ECONNRESET) instead of failing the clip.
+const https = require('https')
+const { NodeHttpHandler } = require('@smithy/node-http-handler')
+const s3KeepAliveAgent = new https.Agent({
+  keepAlive: true,
+  keepAliveMsecs: 30000,
+  maxSockets: Number(process.env.S3_MAX_SOCKETS) > 0 ? Math.floor(Number(process.env.S3_MAX_SOCKETS)) : 16,
+  maxFreeSockets: 8,
+})
+const s3 = new S3Client({
+  region: process.env.AWS_REGION || 'eu-west-1',
+  maxAttempts: Number(process.env.S3_MAX_ATTEMPTS) > 0 ? Math.floor(Number(process.env.S3_MAX_ATTEMPTS)) : 6,
+  requestHandler: new NodeHttpHandler({
+    httpsAgent: s3KeepAliveAgent,
+    connectionTimeout: 6000,
+    requestTimeout: 60000,
+  }),
+})
 
 /**
  * Get the effective release target for a course.
@@ -236,6 +259,31 @@ async function getExistingAudioSet(courseCode) {
   return existingSet
 }
 
+// =============================================================================
+// PRECIOUS-AUDIO GUARD: origin='human' rows are irreplaceable recordings.
+// Every TTS write path must check the upsert conflict key
+// (course_code,text_normalized,language,role,voice_id) BEFORE writing — a
+// human row must never have its s3_key/origin/voice_id overwritten by TTS.
+// (A re-recorded row keeps its original — often TTS — voice_id, so the
+// conflict key CAN collide with human audio.) Throws on query failure so a
+// transient DB error fails the clip instead of silently clobbering (fail-closed).
+// Returns the human row if one occupies the key, else null.
+// =============================================================================
+async function humanRowAtAudioKey(courseCode, textNormalized, language, role, voiceId) {
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('*')
+    .eq('course_code', courseCode)
+    .eq('text_normalized', textNormalized)
+    .eq('language', language)
+    .eq('role', role)
+    .eq('voice_id', voiceId)
+    .eq('origin', 'human')
+    .maybeSingle()
+  if (error) throw new Error(`precious-audio guard query failed: ${error.message}`)
+  return data || null
+}
+
 /**
  * Check whether presentation text has been generated for all new LEGOs and
  * component phrases in the release window. Used to gate `/generate` — the
@@ -248,14 +296,17 @@ async function getExistingAudioSet(courseCode) {
  * @param {number} releaseTarget - Max seed number
  * @returns {Promise<{ready: boolean, missingLegoPresentations: number, missingComponentPresentations: number, totalMissing: number}>}
  */
-async function checkPresentationReadiness(courseCode, releaseTarget) {
+async function checkPresentationReadiness(courseCode, releaseTarget, seeds = null) {
+  const scopeSeeds = (Array.isArray(seeds) && seeds.length) ? seeds : null
   // 1) New LEGOs (is_new=true) within release_target
-  const { data: newLegos } = await supabase
+  let newLegosQ = supabase
     .from('course_legos')
     .select('lego_id, presentation_audio_id')
     .eq('course_code', courseCode)
     .eq('is_new', true)
     .lte('seed_number', releaseTarget)
+  if (scopeSeeds) newLegosQ = newLegosQ.in('seed_number', scopeSeeds)
+  const { data: newLegos } = await newLegosQ
 
   // 2) All presentation rows in course_audio for this course
   //    (pending OR generated — both count as "ready", since /generate will TTS pending ones)
@@ -276,8 +327,42 @@ async function checkPresentationReadiness(courseCode, releaseTarget) {
     missingLegoPresentations++
   }
 
-  // Components don't need presentations (Kai 2026-05-19). Only new LEGOs do.
-  const missingComponentPresentations = 0
+  // 3) Component phrases — they get their own presentation rows by text match.
+  //    Each component should have at least one presentation row (any text).
+  //    Approximation: count component phrases lacking a `presentation_audio_id`
+  //    binding AND whose own text doesn't appear in the existing presentation set.
+  //    For now we use the simpler check: component phrases with NULL presentation_audio_id.
+  //    /regenerate-presentations creates these rows, so this is a meaningful gate.
+  // METHODOLOGY-AWARE: only introduce:true components need a presentation.
+  // introduce:false components (e.g. grammatical particles like 才) are never
+  // introduced alone, so they must NOT be counted as "missing a presentation".
+  let compMissingQ = supabase
+    .from('course_practice_phrases')
+    .select('id', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+    .eq('phrase_role', 'component')
+    .eq('introduce', true)
+    .lte('seed_number', releaseTarget)
+    .is('presentation_audio_id', null)
+  if (scopeSeeds) compMissingQ = compMissingQ.in('seed_number', scopeSeeds)
+  const { count: componentMissingCount } = await compMissingQ
+
+  // But the component's text may have a matching course_audio row even when
+  // presentation_audio_id is null on the phrase. So we don't strictly require
+  // the per-phrase binding — only that course_audio has *some* row that could match.
+  // For the gate, "no component pending rows at all" is the failure mode worth catching.
+  const { count: pendingCompPresCount } = await supabase
+    .from('course_audio')
+    .select('id', { count: 'exact', head: true })
+    .eq('course_code', courseCode)
+    .eq('role', 'presentation')
+    .is('lego_id', null)  // component presentations have null lego_id
+
+  // If there are component phrases needing audio but ZERO component presentation
+  // rows in course_audio, /regenerate-presentations hasn't been run yet.
+  const missingComponentPresentations = (componentMissingCount > 0 && pendingCompPresCount === 0)
+    ? componentMissingCount
+    : 0
 
   const totalMissing = missingLegoPresentations + missingComponentPresentations
   return {
@@ -289,226 +374,6 @@ async function checkPresentationReadiness(courseCode, releaseTarget) {
 }
 
 /**
- * Delete orphan course_audio rows for a course. Safe + idempotent.
- *
- * Orphan rules:
- *  - role='presentation': delete if no course_legos row has presentation_audio_id = audio.id
- *  - role='known': delete if text_normalized doesn't match any phrase/lego/seed known_text
- *  - role='target1'/'target2': delete if text_normalized doesn't match any phrase/lego/seed target_text
- *
- * Welcome / encouragement / instruction / bookend_* / shared rows are never touched.
- *
- * The text_normalized comparison uses the DB-stored value (the trigger strips ?/¿
- * and lowercases — same as what `normalizeForAudio` in the linking code would produce).
- *
- * Returns: { presentation, known, target1, target2 } counts deleted.
- */
-// TTL cache: skip cleanup if it ran within the last 5 minutes for this course.
-// Released-course cleanups can take 10-15s on a fresh start because they scan all
-// course_audio rows; once the orphans are gone, subsequent runs find nothing to do
-// but still pay the scan cost. So we just gate it.
-const _orphanCleanupCache = new Map() // courseCode -> { lastRun, lastResult }
-const ORPHAN_CLEANUP_TTL_MS = 5 * 60 * 1000
-
-async function cleanupOrphanAudio(courseCode) {
-  const cached = _orphanCleanupCache.get(courseCode)
-  if (cached && Date.now() - cached.lastRun < ORPHAN_CLEANUP_TTL_MS) {
-    return cached.lastResult
-  }
-
-  const PAGE = 1000
-  const result = { presentation: 0, known: 0, target1: 0, target2: 0 }
-
-  // 1. Map LEGOs to their current presentation_audio_id state.
-  // A presentation row is "safe to keep" if either (a) some LEGO's
-  // presentation_audio_id points at it, OR (b) it has lego_id set
-  // pointing at a LEGO whose presentation_audio_id is NULL (i.e. the
-  // row is a freshly-inserted candidate waiting for linkAudioIds to bind it).
-  const presRefIds = new Set()       // course_audio.id pointed at by some LEGO
-  const legosWithNullPres = new Set() // lego_ids whose LEGO has NULL presentation_audio_id
-  let lOffset = 0
-  while (true) {
-    const { data, error } = await supabase.from('course_legos')
-      .select('lego_id, presentation_audio_id')
-      .eq('course_code', courseCode)
-      .range(lOffset, lOffset + PAGE - 1)
-    if (error) throw error
-    for (const r of (data || [])) {
-      if (r.presentation_audio_id) presRefIds.add(r.presentation_audio_id)
-      else legosWithNullPres.add(r.lego_id)
-    }
-    if (!data || data.length < PAGE) break
-    lOffset += PAGE
-  }
-
-  // 1b. Collect referenced phrase audio ids (known/target1/target2) from phrases/legos
-  // Conservative: an audio row directly referenced by ANY phrase/lego is NOT orphan,
-  // even if its text_normalized doesn't match (handles legacy or hand-linked rows).
-  const refKnown = new Set()
-  const refTarget1 = new Set()
-  const refTarget2 = new Set()
-  const refTables = [
-    { table: 'course_practice_phrases' },
-    { table: 'course_legos' }
-  ]
-  for (const rt of refTables) {
-    let off = 0
-    while (true) {
-      const { data, error } = await supabase.from(rt.table)
-        .select('known_audio_id, target1_audio_id, target2_audio_id')
-        .eq('course_code', courseCode)
-        .range(off, off + PAGE - 1)
-      if (error) throw error
-      for (const r of (data || [])) {
-        if (r.known_audio_id) refKnown.add(r.known_audio_id)
-        if (r.target1_audio_id) refTarget1.add(r.target1_audio_id)
-        if (r.target2_audio_id) refTarget2.add(r.target2_audio_id)
-      }
-      if (!data || data.length < PAGE) break
-      off += PAGE
-    }
-  }
-
-  // 1c. Protect audio referenced by listening_pod_sentences.
-  // Pod audios live in course_audio with role known/target1 but their text
-  // never matches any phrase/lego/seed (pods have their own scripts), so without
-  // this scan they fail BOTH orphan gates and get deleted — silently nulling the
-  // pods via the FK's ON DELETE SET NULL. (Lost the fra/hrv pods twice: 19 + 28 May.)
-  // listening_pod_sentences has no course_code column, so join via listening_pods.
-  const podRefIds = new Set()
-  {
-    const podIds = []
-    let pOff = 0
-    while (true) {
-      const { data, error } = await supabase.from('listening_pods')
-        .select('id')
-        .eq('course_code', courseCode)
-        .range(pOff, pOff + PAGE - 1)
-      if (error) throw error
-      for (const p of (data || [])) podIds.push(p.id)
-      if (!data || data.length < PAGE) break
-      pOff += PAGE
-    }
-    for (let i = 0; i < podIds.length; i += 200) {
-      const idChunk = podIds.slice(i, i + 200)
-      let sOff = 0
-      while (true) {
-        const { data, error } = await supabase.from('listening_pod_sentences')
-          .select('target_audio_id, known_audio_id, explainer_audio_id')
-          .in('pod_id', idChunk)
-          .range(sOff, sOff + PAGE - 1)
-        if (error) throw error
-        for (const s of (data || [])) {
-          if (s.target_audio_id) podRefIds.add(s.target_audio_id)
-          if (s.known_audio_id) podRefIds.add(s.known_audio_id)
-          if (s.explainer_audio_id) podRefIds.add(s.explainer_audio_id)
-        }
-        if (!data || data.length < PAGE) break
-        sOff += PAGE
-      }
-    }
-  }
-
-  // 2. Build "wanted text" sets for known + target roles, sourced from phrases/legos/seeds
-  // Uses normalizeForAudio (same as DB trigger normalization).
-  const wantedKnown = new Set()
-  const wantedTarget = new Set()
-  const sources = [
-    { table: 'course_practice_phrases', knownCol: 'known_text', targetCol: 'target_text' },
-    { table: 'course_legos',            knownCol: 'known_text', targetCol: 'target_text' },
-    { table: 'course_seeds',            knownCol: 'known_text', targetCol: 'target_text' }
-  ]
-  for (const src of sources) {
-    let off = 0
-    while (true) {
-      const { data, error } = await supabase.from(src.table)
-        .select(`${src.knownCol}, ${src.targetCol}`)
-        .eq('course_code', courseCode)
-        .range(off, off + PAGE - 1)
-      if (error) throw error
-      for (const r of (data || [])) {
-        if (r[src.knownCol]) wantedKnown.add(normalizeForAudio(r[src.knownCol]))
-        if (r[src.targetCol]) wantedTarget.add(normalizeForAudio(r[src.targetCol]))
-      }
-      if (!data || data.length < PAGE) break
-      off += PAGE
-    }
-  }
-
-  // 3. Scan course_audio, find orphans
-  const orphanIds = { presentation: [], known: [], target1: [], target2: [] }
-  let totalAudioScanned = 0
-  let aOffset = 0
-  while (true) {
-    const { data, error } = await supabase.from('course_audio')
-      .select('id, role, text_normalized, lego_id')
-      .eq('course_code', courseCode)
-      .in('role', ['presentation', 'known', 'target1', 'target2'])
-      .range(aOffset, aOffset + PAGE - 1)
-    if (error) throw error
-    for (const r of (data || [])) {
-      totalAudioScanned++
-      if (r.role === 'presentation') {
-        // Orphan when: not referenced by any LEGO AND (no lego_id OR the LEGO it
-        // names already has a different presentation_audio_id — i.e. won't be
-        // adopted by linkAudioIds).
-        const safelyLinkable = r.lego_id && legosWithNullPres.has(r.lego_id)
-        if (!presRefIds.has(r.id) && !safelyLinkable) orphanIds.presentation.push(r.id)
-      } else if (r.role === 'known') {
-        // Orphan only if NOT directly referenced (phrases/legos OR pods) AND text doesn't match anything wanted
-        if (!refKnown.has(r.id) && !podRefIds.has(r.id) && !wantedKnown.has(r.text_normalized)) orphanIds.known.push(r.id)
-      } else if (r.role === 'target1') {
-        if (!refTarget1.has(r.id) && !podRefIds.has(r.id) && !wantedTarget.has(r.text_normalized)) orphanIds.target1.push(r.id)
-      } else if (r.role === 'target2') {
-        if (!refTarget2.has(r.id) && !podRefIds.has(r.id) && !wantedTarget.has(r.text_normalized)) orphanIds.target2.push(r.id)
-      }
-    }
-    if (!data || data.length < PAGE) break
-    aOffset += PAGE
-  }
-
-  // 3b. Safety circuit-breaker. A healthy orphan cleanup after content edits removes a
-  // handful-to-dozens of rows. Deleting hundreds — or a large fraction of the course's
-  // audio — is the signature of a blind-spot bug (e.g. the listening-pod losses of 19 + 28
-  // May: 7,092 rows nulled across fra/hrv). We can't switch the pod FKs to ON DELETE RESTRICT
-  // (no DDL access on the live DB), so this is the code-level equivalent of "fail loudly
-  // instead of silently cascading": refuse to mass-delete and log an error. Override with
-  // PHASE8_ORPHAN_CLEANUP_FORCE=1 after confirming the orphans are genuinely stale.
-  const totalOrphans = orphanIds.presentation.length + orphanIds.known.length
-    + orphanIds.target1.length + orphanIds.target2.length
-  const ABS_CAP = parseInt(process.env.PHASE8_ORPHAN_CLEANUP_ABS_CAP || '500', 10)
-  const PCT_CAP = parseFloat(process.env.PHASE8_ORPHAN_CLEANUP_PCT_CAP || '0.25')
-  const pctOfCourse = totalAudioScanned > 0 ? totalOrphans / totalAudioScanned : 0
-  if (totalOrphans > 0 && (totalOrphans > ABS_CAP || pctOfCourse > PCT_CAP)) {
-    if (process.env.PHASE8_ORPHAN_CLEANUP_FORCE === '1') {
-      logger.warn(`cleanupOrphanAudio(${courseCode}): ${totalOrphans} orphans (${(pctOfCourse * 100).toFixed(1)}% of ${totalAudioScanned}) exceeds safety cap but PHASE8_ORPHAN_CLEANUP_FORCE=1 — proceeding`)
-    } else {
-      logger.error(`cleanupOrphanAudio(${courseCode}): ABORT — would delete ${totalOrphans} rows (${(pctOfCourse * 100).toFixed(1)}% of ${totalAudioScanned}; abs cap ${ABS_CAP}, pct cap ${(PCT_CAP * 100)}%). Refusing — this is almost always an unscanned reference table, not real orphans. Investigate, then set PHASE8_ORPHAN_CLEANUP_FORCE=1 to override.`)
-      const aborted = { presentation: 0, known: 0, target1: 0, target2: 0, aborted: true, wouldDelete: totalOrphans }
-      _orphanCleanupCache.set(courseCode, { lastRun: Date.now(), lastResult: aborted })
-      return aborted
-    }
-  }
-
-  // 4. Delete in batches of 100
-  for (const role of ['presentation', 'known', 'target1', 'target2']) {
-    const ids = orphanIds[role]
-    for (let i = 0; i < ids.length; i += 100) {
-      const batch = ids.slice(i, i + 100)
-      const { error } = await supabase.from('course_audio').delete().in('id', batch)
-      if (error) {
-        logger.warn(`cleanupOrphanAudio(${courseCode}): delete batch failed for ${role}: ${error.message}`)
-        continue
-      }
-      result[role] += batch.length
-    }
-  }
-
-  _orphanCleanupCache.set(courseCode, { lastRun: Date.now(), lastResult: result })
-  return result
-}
-
-/**
  * Unified audio needs detection. Single source of truth for /plan, /generate, /needs.
  *
  * 1. Finds all slots (phrases/LEGOs/seeds) with NULL audio_id
@@ -516,30 +381,19 @@ async function cleanupOrphanAudio(courseCode) {
  * 3. Adds pending presentation rows (role='presentation' AND s3_key LIKE 'pending/%') to toGenerate
  * 4. Returns: toLink (audio exists, just bind), toGenerate (needs TTS), readyForGenerate (presentations done?)
  *
- * Side effect: runs cleanupOrphanAudio() up front to delete course_audio rows
- * that no phrase/LEGO/seed references. This is intentionally part of the "check"
- * step so the dashboard's audio counts stay accurate after content edits that
- * leave stale rows behind (e.g. /regenerate-presentations creating new rows
- * without removing the old ones).
+ * Pure read — no side effects, no DB writes.
  *
  * @param {string} courseCode
  * @param {number} releaseTarget - Max seed number
  * @param {object} course - Course record with known_lang, target_lang
  * @returns {Promise<{toLink: number, toGenerate: Array, stats: object, readyForGenerate: boolean, presentationStatus: object}>}
  */
-async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = false) {
+async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = false, seeds = null) {
   const PAGE_SIZE = 1000
-
-  // Step 0: opportunistic orphan cleanup (safe, idempotent, scoped to this course)
-  try {
-    const cleaned = await cleanupOrphanAudio(courseCode)
-    const total = cleaned.presentation + cleaned.known + cleaned.target1 + cleaned.target2
-    if (total > 0) {
-      logger.info(`getAudioNeeds(${courseCode}): cleaned ${total} orphan course_audio rows (${cleaned.presentation}pres + ${cleaned.known}known + ${cleaned.target1}t1 + ${cleaned.target2}t2)`)
-    }
-  } catch (e) {
-    logger.warn(`getAudioNeeds(${courseCode}): orphan cleanup failed (non-fatal): ${e.message}`)
-  }
+  // Optional incremental scope: when `seeds` is a non-empty array, every query is
+  // restricted to those seed numbers. Default (null) = full-course behaviour, unchanged.
+  const scopeSeeds = (Array.isArray(seeds) && seeds.length) ? seeds : null
+  const seedOf = (legoId) => { const m = /S(\d+)L/.exec(legoId || ''); return m ? parseInt(m[1], 10) : null }
 
   // Step 1: Find all unlinked slots (NULL audio_id)
   const slotDefs = [
@@ -573,6 +427,9 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
       if (slot.statusFilter) {
         query = query.eq('status', slot.statusFilter)
       }
+      if (scopeSeeds) {
+        query = query.in('seed_number', scopeSeeds)
+      }
 
       const { data, error } = await query
       if (error) throw error
@@ -592,12 +449,14 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
   }
 
   // Also check presentation audio (uses lego_id, not text matching)
-  const { data: newLegos } = await supabase
+  let newLegosQuery = supabase
     .from('course_legos')
     .select('lego_id, known_text, presentation_audio_id')
     .eq('course_code', courseCode)
     .eq('is_new', true)
     .lte('seed_number', releaseTarget)
+  if (scopeSeeds) newLegosQuery = newLegosQuery.in('seed_number', scopeSeeds)
+  const { data: newLegos } = await newLegosQuery
 
   const { data: rawPresentations } = await supabase
     .from('course_audio')
@@ -635,47 +494,36 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     logger.info(`getAudioNeeds: forceGenerate=true, all ${unlinked.length} unlinked items classified as to-generate`)
   }
 
-  // Step 3: Pending audio rows — concrete texts in course_audio waiting for TTS.
-  // These have s3_key LIKE 'pending/%' and can be any role: presentation rows
-  // come from /regenerate-presentations; target/known rows come from text edits
-  // (?, ¡?, etc.) that need re-TTS. /generate will TTS them all.
-  const { data: pendingRows } = await supabase
+  // Step 3: Pending presentation rows — concrete texts in course_audio waiting for TTS.
+  // These were created by /regenerate-presentations (the "Generate Missing Presentation Text"
+  // button) and have s3_key LIKE 'pending/%'. /generate will TTS them.
+  const { data: pendingPresRowsRaw } = await supabase
     .from('course_audio')
-    .select('id, text, language, role, voice_id, lego_id')
+    .select('id, text, language, voice_id, lego_id')
     .eq('course_code', courseCode)
+    .eq('role', 'presentation')
     .like('s3_key', 'pending/%')
+  // Scope pending presentations to the requested seeds.
+  // LEGO presentations: parse seed from lego_id. Component presentations have
+  // lego_id=null, so scope them by matching their "as in — '<parent>'" context to
+  // a LEGO known_text in the scoped seeds — otherwise orphaned/other-seed component
+  // presentations (lego_id=null) leak into EVERY scoped run and hog it.
+  let scopedKnownSet = null
+  if (scopeSeeds) {
+    const { data: scopedLegos } = await supabase
+      .from('course_legos').select('known_text')
+      .eq('course_code', courseCode).in('seed_number', scopeSeeds)
+    scopedKnownSet = new Set((scopedLegos || []).map(l => l.known_text))
+  }
+  const pendingPresRows = scopeSeeds
+    ? (pendingPresRowsRaw || []).filter(r => {
+        if (r.lego_id != null) return scopeSeeds.includes(seedOf(r.lego_id))
+        const m = /as in — '([^']+)'/.exec(r.text || '')
+        return m ? scopedKnownSet.has(m[1]) : false  // component pres: only if parent is in scope
+      })
+    : pendingPresRowsRaw
 
-  // Auto-fix: normalize voice_id to "${provider}_${voiceId}" form so the
-  // upsert conflict key matches what /generate will write. Historically some
-  // writers (phrase-edit reconcile, older regenerate-presentations) stored
-  // voice_id without the provider prefix or as NULL; those pending rows then
-  // failed to match /generate's upsert (which writes with prefix) and stuck
-  // forever — a duplicate mastered row appeared and the pending stayed.
-  // Fixing voice_id here means the existing upsert path can correctly update
-  // the pending row in-place during this run.
-  const voicesByRole = (course?.voice_config?.voices) || {}
-  const fixVoiceId = (role) => {
-    const v = voicesByRole[role]
-    if (!v) return null
-    if (v.provider && v.voiceId) return `${v.provider}_${v.voiceId}`
-    return v.voiceId || null
-  }
-  const fixesNeeded = []
-  for (const pres of (pendingRows || [])) {
-    const expected = fixVoiceId(pres.role)
-    if (expected && pres.voice_id !== expected) {
-      fixesNeeded.push({ id: pres.id, expected, was: pres.voice_id })
-      pres.voice_id = expected
-    }
-  }
-  if (fixesNeeded.length > 0) {
-    logger.warn(`getAudioNeeds(${courseCode}): normalizing voice_id on ${fixesNeeded.length} pending rows (e.g. "${fixesNeeded[0].was}" → "${fixesNeeded[0].expected}")`)
-    for (const f of fixesNeeded) {
-      await supabase.from('course_audio').update({ voice_id: f.expected }).eq('id', f.id)
-    }
-  }
-
-  for (const pres of (pendingRows || [])) {
+  for (const pres of (pendingPresRows || [])) {
     if (isPunctuationOnly(pres.text)) {
       ungeneratable++
       continue
@@ -683,7 +531,7 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     toGenerate.push({
       text: pres.text,
       language: pres.language || course.known_lang,
-      role: pres.role || 'presentation',
+      role: 'presentation',
       lego_id: pres.lego_id || null,
       voice_id: pres.voice_id || null  // preserved so /generate can pick it up
     })
@@ -696,7 +544,7 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
 
   // Step 5: Check whether presentation text generation has been run.
   // /generate will refuse to run if not ready (no on-the-fly text synthesis any more).
-  const presentationStatus = await checkPresentationReadiness(courseCode, releaseTarget)
+  const presentationStatus = await checkPresentationReadiness(courseCode, releaseTarget, scopeSeeds)
 
   const totalMissing = unlinked.length + missingPresentation
   const stats = {
@@ -736,27 +584,28 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
 async function processInParallel(items, processor, concurrency = CONCURRENCY) {
   const results = { success: 0, failed: 0, errors: [] }
 
-  // Process in batches
-  for (let i = 0; i < items.length; i += concurrency) {
-    const batch = items.slice(i, i + concurrency)
-
-    const batchResults = await Promise.allSettled(
-      batch.map(item => processor(item))
-    )
-
-    for (let j = 0; j < batchResults.length; j++) {
-      const result = batchResults[j]
-      if (result.status === 'fulfilled') {
+  // True worker pool (not batch-barrier): N workers pull from a shared cursor,
+  // so a slow item never blocks the other lanes. The old slice-of-N +
+  // Promise.allSettled shape paid a "slowest of each batch" tax every round —
+  // with TTS renders ranging 1.5–8s that roughly halved effective throughput.
+  let cursor = 0
+  const worker = async () => {
+    while (true) {
+      const i = cursor++
+      if (i >= items.length) return
+      try {
+        await processor(items[i])
         results.success++
-      } else {
+      } catch (err) {
         results.failed++
         results.errors.push({
-          item: batch[j],
-          error: result.reason?.message || 'Unknown error'
+          item: items[i],
+          error: err?.message || 'Unknown error'
         })
       }
     }
   }
+  await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, worker))
 
   return results
 }
@@ -813,7 +662,6 @@ const currentWork = {
   total: 0,
   success: 0,
   failed: 0,
-  timedOut: 0,          // Items that exceeded the per-item timeout (counted separately, not as failures)
   startedAt: null,
   lastItem: null,       // Last processed item (for display)
   errors: []            // Recent errors
@@ -829,7 +677,6 @@ function startWork(operation, courseCode, total, role = null) {
   currentWork.total = total
   currentWork.success = 0
   currentWork.failed = 0
-  currentWork.timedOut = 0
   currentWork.startedAt = new Date().toISOString()
   currentWork.lastItem = null
   currentWork.errors = []
@@ -845,28 +692,10 @@ function cancelWork() {
   return false
 }
 
-// outcome: 'success' | 'failed' | 'timeout' (booleans accepted for back-compat: true→success, false→failed)
-function updateWork(itemText, outcome = 'success', errorMsg = null) {
-  if (outcome === true) outcome = 'success'
-  else if (outcome === false) outcome = 'failed'
-
-  // Defensive clamp: never report more items processed than the total. A late-completing
-  // promise (e.g. a TTS call that finishes after its timeout already settled the batch)
-  // must not push the counter past 100%. Update lastItem for display but don't double-count.
-  if (currentWork.total > 0 && currentWork.current >= currentWork.total) {
-    currentWork.lastItem = itemText?.substring(0, 40)
-    return
-  }
-
+function updateWork(itemText, success = true, errorMsg = null) {
   currentWork.current++
-  if (outcome === 'success') {
+  if (success) {
     currentWork.success++
-  } else if (outcome === 'timeout') {
-    currentWork.timedOut++
-    if (errorMsg) {
-      currentWork.errors.push({ text: itemText?.substring(0, 50), error: errorMsg, timeout: true })
-      if (currentWork.errors.length > 10) currentWork.errors.shift() // Keep last 10
-    }
   } else {
     currentWork.failed++
     if (errorMsg) {
@@ -878,45 +707,13 @@ function updateWork(itemText, outcome = 'success', errorMsg = null) {
 
   // Log progress every 10 items or on completion
   if (currentWork.current % 10 === 0 || currentWork.current === currentWork.total) {
-    logger.info(`[PROGRESS] ${currentWork.current}/${currentWork.total} (${currentWork.success} ok, ${currentWork.failed} failed, ${currentWork.timedOut} timed out)`)
+    logger.info(`[PROGRESS] ${currentWork.current}/${currentWork.total} (${currentWork.success} ok, ${currentWork.failed} failed)`)
   }
 }
 
 function endWork() {
-  const t = currentWork.timedOut ? `, ${currentWork.timedOut} timed out` : ''
-  logger.info(`[PROGRESS] Completed: ${currentWork.success}/${currentWork.total} success, ${currentWork.failed} failed${t}`)
+  logger.info(`[PROGRESS] Completed: ${currentWork.success}/${currentWork.total} success, ${currentWork.failed} failed`)
   currentWork.active = false
-}
-
-// =============================================================================
-// IN-MEMORY JOB QUEUE (see services/phases/audio-job-queue.cjs)
-// =============================================================================
-// Heavy audio operations enqueue a job and return 202 immediately; a single
-// serial worker runs them one at a time, reusing currentWork + emitProgress.
-const { createJobQueue } = require('./audio-job-queue.cjs')
-const { enqueueJob, removeQueuedJob, queueSnapshot } = createJobQueue({
-  logger,
-  isWorkActive: () => currentWork.active,
-  releaseWork: () => { if (currentWork.active) endWork() }
-})
-
-// Wrap an async fn with a per-item timeout. On timeout the returned promise rejects with
-// an error tagged isTimeout=true. The underlying fn keeps running, but its late settlement
-// is swallowed so it can neither become an unhandledRejection nor double-count progress
-// after the batch has already moved on. Used by the generation loops so a flaky/slow
-// connection produces a clean "timed out" tally instead of inflating the processed count.
-function withTimeout(fn, ms = 120_000) {
-  const underlying = Promise.resolve().then(fn)
-  underlying.catch(() => {}) // swallow late rejection after the race has settled
-  let timer
-  const timeout = new Promise((_, reject) => {
-    timer = setTimeout(() => {
-      const err = new Error(`Timed out after ${ms / 1000}s`)
-      err.isTimeout = true
-      reject(err)
-    }, ms)
-  })
-  return Promise.race([underlying, timeout]).finally(() => clearTimeout(timer))
 }
 
 // =============================================================================
@@ -932,27 +729,7 @@ app.get('/health', (req, res) => {
 // =============================================================================
 
 app.get('/status', (req, res) => {
-  // currentWork = the active (running) job; queue = jobs waiting behind it.
-  res.json({ ...currentWork, queue: queueSnapshot() })
-})
-
-// =============================================================================
-// QUEUE ENDPOINTS - Inspect and manage the in-memory job queue
-// =============================================================================
-
-// List queued (waiting) jobs. The running job is in /status (currentWork).
-app.get('/queue', (req, res) => {
-  res.json({ active: currentWork.active ? { courseCode: currentWork.courseCode, operation: currentWork.operation, role: currentWork.role, current: currentWork.current, total: currentWork.total } : null, queue: queueSnapshot() })
-})
-
-// Remove a still-queued job (one that hasn't started yet). A running job must be
-// stopped via /cancel — it cannot be removed from the queue.
-app.delete('/queue/:jobId', (req, res) => {
-  const removed = removeQueuedJob(req.params.jobId)
-  if (!removed) {
-    return res.status(404).json({ error: 'Job not found in queue (already running, finished, or never existed)', jobId: req.params.jobId })
-  }
-  res.json({ success: true, removed: req.params.jobId, queue: queueSnapshot() })
+  res.json({ ...currentWork })
 })
 
 // =============================================================================
@@ -1017,6 +794,27 @@ app.delete('/cancel/:courseCode', (req, res) => {
 // HELPER: Link audio IDs to phrases/legos/seeds
 // =============================================================================
 async function linkAudioIds(courseCode) {
+  // PRECIOUS-AUDIO PREFERENCE: the SQL RPC fills NULL FKs with a bare LIMIT 1
+  // (no origin preference, no ORDER BY). Run a human-first JS pass beforehand
+  // so that when a text has both a human and a TTS clip, the human one wins
+  // the FK; the RPC then fills whatever is still NULL. Costs one head-count
+  // query when the course has no human audio (the common case).
+  try {
+    const { count: humanCount, error: humanCountErr } = await supabase
+      .from('course_audio')
+      .select('id', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .eq('origin', 'human')
+    if (!humanCountErr && humanCount > 0) {
+      const humanResult = await linkAudioIdsBatch(courseCode, { humanOnly: true })
+      if (humanResult.total > 0) {
+        logger.info(`linkAudioIds: human-first pass linked ${humanResult.total} FKs to human recordings for ${courseCode}`)
+      }
+    }
+  } catch (e) {
+    logger.warn(`linkAudioIds: human-first pass failed (${e.message}) — continuing with RPC`)
+  }
+
   // Try RPC first (single DB round-trip, handles normalization correctly)
   const { data, error } = await supabase.rpc('link_all_audio_ids', {
     p_course_code: courseCode
@@ -1045,32 +843,41 @@ async function linkAudioIds(courseCode) {
  * JS fallback for linking audio IDs when the SQL RPC times out on large courses.
  * Loads the audio map, then batch-updates each table's NULL audio_id columns.
  * Uses text_normalized from course_audio (written by SQL normalize_text) for matching.
+ * When several rows share a key, pickPreferredAudioRow decides (human > newest >
+ * deterministic) — no more arbitrary last-row-wins.
+ * opts.humanOnly: link only origin='human' rows (the human-first pre-pass).
  */
-async function linkAudioIdsBatch(courseCode) {
+async function linkAudioIdsBatch(courseCode, opts = {}) {
+  const { humanOnly = false } = opts
   const result = { total: 0 }
   const PAGE_SIZE = 1000
   const BATCH = 200
 
-  // Load audio map keyed by normalizeForAudio(raw text) — which PRESERVES ?/! —
-  // so question/exclamation intonation is significant for linking (a "...?" phrase
-  // must not relink to a "..." recording; it should stay unlinked → regenerated).
-  // This aligns linkAudioIdsBatch with getAudioNeeds (the /plan + /generate source of
-  // truth), which also keys by normalizeForAudio. We deliberately do NOT use the DB
-  // text_normalized column here (it strips ?/¿/! and would mis-link).
-  const { data: audioRows, error: audioErr } = await supabase
+  // Load audio map keyed by normalizeForAudio(raw text) — which PRESERVES ?/! — so
+  // question/exclamation intonation is significant (a "...?" phrase won't link to a
+  // "..." recording). origin + created_at let pickPreferredAudioRow favour human > newest.
+  let audioQuery = supabase
     .from('course_audio')
-    .select('id, text, language, role, s3_key')
+    .select('id, text, language, role, s3_key, origin, created_at')
     .eq('course_code', courseCode)
     .not('s3_key', 'like', 'pending/%')
     .limit(100000)
+  if (humanOnly) audioQuery = audioQuery.eq('origin', 'human')
+  const { data: audioRows, error: audioErr } = await audioQuery
   if (audioErr) throw new Error(`Failed to load course_audio: ${audioErr.message}`)
+
+  if (humanOnly && !(audioRows || []).length) return result
 
   const audioMap = new Map()
   for (const a of (audioRows || [])) {
+    // Key on normalizeForAudio(raw text) so ?/! are preserved; pickPreferredAudioRow
+    // resolves collisions (human > newest). Map value is the chosen ROW.
     const norm = normalizeForAudio(a.text)
-    if (norm) audioMap.set(`${norm}|${a.language}|${a.role}`, a.id)
+    if (!norm) continue
+    const key = `${norm}|${a.language}|${a.role}`
+    audioMap.set(key, pickPreferredAudioRow(audioMap.get(key), a))
   }
-  logger.info(`linkAudioIdsBatch: loaded ${audioMap.size} audio entries for ${courseCode}`)
+  logger.info(`linkAudioIdsBatch${humanOnly ? ' (human-only)' : ''}: loaded ${audioMap.size} audio entries for ${courseCode}`)
 
   // Helper: link one slot on one table
   async function linkSlot(table, idCol, textCol, audioCol, lang, role) {
@@ -1093,12 +900,11 @@ async function linkAudioIdsBatch(courseCode) {
       for (const row of rows) {
         const norm = normalizeForAudio(row[textCol])
         if (!norm) continue
-        // Key preserves ?/! (via normalizeForAudio). A "...?" phrase will only match a
-        // "...?" recording; if none exists it stays unlinked and is regenerated with the
-        // correct question intonation. (We intentionally removed the old ?-stripping
-        // fallback that re-linked question phrases to flat statement audio.)
-        const audioId = audioMap.get(`${norm}|${lang}|${role}`)
-        if (audioId) updates.push({ id: row[idCol], audioId })
+        // Key preserves ?/! — a "...?" phrase only matches a "...?" recording; if none
+        // exists it stays unlinked → regenerated with correct question intonation. No
+        // ?-stripping fallback (it would relink question phrases to flat statement audio).
+        const audioRow = audioMap.get(`${norm}|${lang}|${role}`)
+        if (audioRow) updates.push({ id: row[idCol], audioId: audioRow.id })
       }
 
       // Batch update
@@ -1149,6 +955,10 @@ async function linkAudioIdsBatch(courseCode) {
     result.total += n
     if (n > 0) logger.info(`linkAudioIdsBatch: ${key} = ${n}`)
   }
+
+  // Presentation linking is lego_id-keyed (no human/TTS text collision to
+  // resolve) and runs in the main pass — skip it in the human-only pre-pass.
+  if (humanOnly) return result
 
   // Presentation audio
   const presResult = await linkPresentationAudio(courseCode)
@@ -1377,6 +1187,11 @@ app.get('/plan/:courseCode', planHandler)
 async function planHandler(req, res) {
   try {
     const { courseCode } = req.params
+    // Optional incremental scope: ?seeds=80,81 (GET) or body.seeds (POST) limits the plan.
+    const rawSeeds = req.query?.seeds ?? req.body?.seeds
+    const scopeSeeds = rawSeeds
+      ? String(rawSeeds).split(',').map(n => parseInt(n, 10)).filter(n => !isNaN(n))
+      : null
 
     // Get course info
     const { data: course, error: courseError } = await supabase
@@ -1392,7 +1207,7 @@ async function planHandler(req, res) {
     const releaseTarget = await getEffectiveReleaseTarget(courseCode, course.seed_count)
 
     // Single source of truth — same enumeration /generate uses.
-    const audioNeeds = await getAudioNeeds(courseCode, releaseTarget, course)
+    const audioNeeds = await getAudioNeeds(courseCode, releaseTarget, course, false, scopeSeeds && scopeSeeds.length ? scopeSeeds : null)
 
     // Cost estimation — character count of what would actually be TTS'd.
     const totalChars = audioNeeds.toGenerate.reduce((sum, n) => sum + (n.text || '').length, 0)
@@ -1497,7 +1312,11 @@ app.get('/inventory/:courseCode', async (req, res) => {
 app.post('/generate/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const { dryRun = false, limit = 50000, concurrency: requestedConcurrency, roles: requestedRoles } = req.body  // High default for bulk generation
+    const { dryRun = false, limit = 50000, concurrency: requestedConcurrency, roles: requestedRoles, seeds: requestedSeeds } = req.body  // High default for bulk generation
+    // Optional incremental scope: restrict generation to specific seed numbers.
+    const scopeSeeds = Array.isArray(requestedSeeds) && requestedSeeds.length
+      ? requestedSeeds.map(n => parseInt(n, 10)).filter(n => !isNaN(n))
+      : null
 
     // Use requested concurrency if provided, clamped to 1-20, otherwise use env/default
     const concurrencyToUse = requestedConcurrency
@@ -1557,7 +1376,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     }
 
     // Step B: Find what still needs generating (after linking)
-    const audioNeeds = await getAudioNeeds(courseCode, releaseTarget, course)
+    const audioNeeds = await getAudioNeeds(courseCode, releaseTarget, course, false, scopeSeeds)
 
     // Step B0: Guard — refuse to run if presentation text isn't ready.
     // Presentation text is created by /regenerate-presentations (the dashboard's
@@ -1632,10 +1451,6 @@ app.post('/generate/:courseCode', async (req, res) => {
       })
     }
 
-    // Enqueue the heavy work; the serial queue worker runs it. Respond 202 now so
-    // the HTTP request isn't held open for the (possibly multi-hour) generation —
-    // progress comes from /status polling + emitProgress websocket beats.
-    const run = async (job) => {
     // Start progress tracking
     startWork('generate', courseCode, uniqueNeeded.length)
 
@@ -1648,12 +1463,26 @@ app.post('/generate/:courseCode', async (req, res) => {
     // Process items in parallel with concurrency limit
     logger.info(`Generating ${uniqueNeeded.length} audio files with concurrency=${concurrencyToUse}`)
 
-    const results = { success: 0, failed: 0, timedOut: 0, errors: [] }
+    const results = { success: 0, failed: 0, errors: [] }
 
     // Helper to generate a single audio item
     const generateItem = async (item) => {
-      // Show what's in flight immediately (counting happens once, in the batch loop)
-      currentWork.lastItem = item.text?.substring(0, 40)
+      // PRECIOUS-AUDIO GUARD: if a human recording occupies this exact audio key
+      // (a re-recorded row keeps its original voice_id), never TTS over it — the
+      // upsert below would flip origin back to 'tts' and repoint s3_key.
+      // (No voiceId → no upsert key to collide with; the item fails at TTS
+      // dispatch below exactly as it always did.)
+      if (item.voiceId) {
+        const guardedHuman = await humanRowAtAudioKey(
+          courseCode, normalizeForAudio(item.text), item.language, item.role, item.voiceId
+        )
+        if (guardedHuman) {
+          updateWork(item.text, true)
+          logger.info(`[PreciousAudio] SKIP generate: "${item.text.substring(0, 40)}" (${item.role}) — human recording ${guardedHuman.id} holds this key`)
+          return { success: true, item, skippedHuman: true }
+        }
+      }
+
       // -----------------------------------------------------------------------
       // Cross-course audio sharing: reuse S3 files from sibling courses
       // If another course already has audio for the same text+language+role+voice,
@@ -1707,6 +1536,7 @@ app.post('/generate/:courseCode', async (req, res) => {
                   .eq('lego_index', parseInt(legoMatch[2], 10))
               }
             }
+            updateWork(item.text, true)
             logger.info(`Shared: ${item.role} - "${item.text.substring(0, 40)}..." (reused from sibling course)`)
             return { success: true, item, shared: true }
           }
@@ -1831,6 +1661,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         }
       }
 
+      updateWork(item.text, true)
       logger.info(`Generated: ${item.role} - "${item.text.substring(0, 30)}..."`)
       return { success: true, item }
     }
@@ -1849,36 +1680,33 @@ app.post('/generate/:courseCode', async (req, res) => {
 
       logger.info(`Processing batch ${batchNum}/${totalBatches} (${batch.length} items)`)
 
+      // Wrap each item with a 120s timeout to prevent hung Supabase/TTS calls from blocking the batch
+      const withTimeout = (fn, ms = 120_000) => Promise.race([
+        fn(),
+        new Promise((_, reject) => setTimeout(() => reject(new Error(`Timed out after ${ms / 1000}s`)), ms))
+      ])
       const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => generateItem(item))))
 
       for (let j = 0; j < batchResults.length; j++) {
         const result = batchResults[j]
-        const item = batch[j]
         if (result.status === 'fulfilled') {
           results.success++
-          updateWork(item.text, 'success')
-        } else if (result.reason?.isTimeout) {
-          // Timed out (slow/flaky connection). Counted separately, NOT as a failure — the
-          // item simply wasn't confirmed within the window and will be retried next run.
-          results.timedOut++
-          updateWork(item.text, 'timeout', result.reason.message)
-          logger.warn(`Timeout: ${item.role} - "${item.text.substring(0, 30)}..." (will retry next run)`)
         } else {
           results.failed++
+          const item = batch[j]
           results.errors.push({
             text: item.text.substring(0, 50),
             role: item.role,
             error: result.reason?.message || 'Unknown error'
           })
-          updateWork(item.text, 'failed', result.reason?.message)
+          updateWork(item.text, false, result.reason?.message)
           logger.error(`Failed: ${item.role} - "${item.text.substring(0, 30)}...": ${result.reason?.message}`)
         }
       }
 
       // Emit progress every 10 batches
       if (batchNum % 10 === 0) {
-        const extra = [results.failed ? `${results.failed} failed` : '', results.timedOut ? `${results.timedOut} timed out` : ''].filter(Boolean).join(', ')
-        emitProgress(supabase, courseCode, `Audio: ${results.success}/${uniqueNeeded.length} generated${extra ? ` (${extra})` : ''}`, { phase: 'audio', action: 'generate', progress: results.success, total: uniqueNeeded.length, failed: results.failed, timedOut: results.timedOut })
+        emitProgress(supabase, courseCode, `Audio: ${results.success}/${uniqueNeeded.length} generated${results.failed > 0 ? ` (${results.failed} failed)` : ''}`, { phase: 'audio', action: 'generate', progress: results.success, total: uniqueNeeded.length, failed: results.failed })
       }
 
       // Periodically link audio IDs every 10 batches so progress is visible
@@ -1912,35 +1740,25 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     if (!wasCancelled && results.success > 0) {
       await bumpCourseVersion(supabase, courseCode, 'patch')
+      // Bump the integer revalidation key once so the learning app
+      // auto-detects this freshly generated audio (the course_legos trigger
+      // never fires on audio-only runs).
+      await bumpCourseRevalidation(supabase, courseCode)
     }
 
     // Emit completion
     const statusWord = wasCancelled ? 'Audio generation cancelled' : 'Audio generation complete'
-    const doneExtra = [results.failed ? `${results.failed} failed` : '', results.timedOut ? `${results.timedOut} timed out` : '', linked > 0 ? `${linked} audio IDs linked` : ''].filter(Boolean).join(', ')
-    emitProgress(supabase, courseCode, `${statusWord}: ${results.success}/${uniqueNeeded.length} generated${doneExtra ? `, ${doneExtra}` : ''}`, { phase: 'audio', action: 'generate-complete', success: results.success, failed: results.failed, timedOut: results.timedOut, linked })
+    emitProgress(supabase, courseCode, `${statusWord}: ${results.success}/${uniqueNeeded.length} generated${results.failed > 0 ? `, ${results.failed} failed` : ''}${linked > 0 ? `, ${linked} audio IDs linked` : ''}`, { phase: 'audio', action: 'generate-complete', success: results.success, failed: results.failed, linked })
 
-    job.result = {
+    res.json({
       status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: uniqueNeeded.length,
       success: results.success,
       failed: results.failed,
-      timedOut: results.timedOut,
       cancelled: wasCancelled,
       errors: results.errors.slice(0, 10),
       linked
-    }
-    return job.result
-    } // end run
-
-    const q = enqueueJob({ courseCode, operation: 'generate', role: null, meta: { willGenerate: uniqueNeeded.length }, run })
-    return res.status(202).json({
-      status: q.alreadyQueued ? 'already_queued' : 'queued',
-      jobId: q.jobId,
-      position: q.position,
-      courseCode,
-      operation: 'generate',
-      willGenerate: uniqueNeeded.length
     })
 
   } catch (error) {
@@ -2024,7 +1842,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
         const batch = flaggedIds.slice(i, i + BATCH_SIZE)
         let flaggedQuery = supabase
           .from('course_audio')
-          .select('id, text, text_normalized, language, role, voice_id, s3_key')
+          .select('id, text, text_normalized, language, role, voice_id, s3_key, origin')
           .eq('course_code', courseCode)
           .eq('role', role)
           .in('id', batch)
@@ -2039,7 +1857,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       // Get all audio for this role
       let allQuery = supabase
         .from('course_audio')
-        .select('id, text, text_normalized, language, role, voice_id, s3_key')
+        .select('id, text, text_normalized, language, role, voice_id, s3_key, origin')
         .eq('course_code', courseCode)
         .eq('role', role)
 
@@ -2061,6 +1879,46 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           ? `No flagged audio found for role: ${role}`
           : `No audio found for role: ${role}`
       })
+    }
+
+    // EXCLUDE pod-linked clips: Listening Pod dialogue shares role='target1'/
+    // 'known' with course phrases but is voiced per-CHARACTER from
+    // listening_pods.speakers (multi-voice casting). A role-wide regen with the
+    // course voice would flatten the whole cast to one voice (this happened
+    // 2026-06-07 — 110 pod clips steamrolled to eve). Pod audio is regenerated
+    // via /generate-pods, never via role regen.
+    {
+      const { data: podSents, error: podErr } = await supabase
+        .from('listening_pod_sentences')
+        .select('target_audio_id, known_audio_id')
+        .like('pod_id', `${courseCode}:%`)
+      if (podErr) throw podErr
+      const podAudioIds = new Set()
+      for (const s of (podSents || [])) {
+        if (s.target_audio_id) podAudioIds.add(s.target_audio_id)
+        if (s.known_audio_id) podAudioIds.add(s.known_audio_id)
+      }
+      if (podAudioIds.size) {
+        const before = audioToRegenerate.length
+        audioToRegenerate = audioToRegenerate.filter(a => !podAudioIds.has(a.id))
+        const excluded = before - audioToRegenerate.length
+        if (excluded) logger.info(`[regenerate-role] excluded ${excluded} pod-linked clips (pod casting is per-character; use /generate-pods)`)
+      }
+    }
+
+    // PRECIOUS-AUDIO GUARD: never TTS over human recordings. A role-wide regen
+    // must leave origin='human' rows untouched (s3_key/origin/voice_id intact).
+    let excludedHuman = 0
+    {
+      const humanRows = audioToRegenerate.filter(a => a.origin === 'human')
+      if (humanRows.length) {
+        audioToRegenerate = audioToRegenerate.filter(a => a.origin !== 'human')
+        excludedHuman = humanRows.length
+        logger.info(`[regenerate-role] excluded ${excludedHuman} human-origin clips (precious — human recordings are never regenerated by TTS)`)
+        for (const h of humanRows.slice(0, 10)) {
+          logger.info(`[regenerate-role]   skipped human: ${h.id} "${(h.text || '').substring(0, 40)}"`)
+        }
+      }
     }
 
     // Determine language for this role
@@ -2087,6 +1945,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
         voiceConfigured: !!voiceId,
         language,
         count: audioToRegenerate.length,
+        excludedHuman,
         sample: audioToRegenerate.slice(0, 5).map(a => ({
           text: a.text.substring(0, 50),
           currentVoice: a.voice_id
@@ -2104,8 +1963,6 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       })
     }
 
-    // Enqueue the heavy work; the serial queue worker runs it. Respond 202 now.
-    const run = async (job) => {
     // Start progress tracking
     startWork('regenerate-role', courseCode, audioToRegenerate.length, role)
 
@@ -2119,14 +1976,12 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // Process items in parallel with concurrency limit
     logger.info(`Regenerating ${audioToRegenerate.length} ${role} audio files with concurrency=${CONCURRENCY}`)
 
-    const results = { success: 0, failed: 0, timedOut: 0, errors: [] }
+    const results = { success: 0, failed: 0, errors: [] }
     // Use speed from voice config (everything is a parameter!)
     const speed = voiceSettings.settings?.speed || 1.0
 
     // Helper to regenerate a single audio item
     const regenerateItem = async (item) => {
-      // Show what's in flight immediately (counting happens once, in the batch loop)
-      currentWork.lastItem = item.text?.substring(0, 40)
       // Get regeneration attempt count for this item (Azure determinism workaround)
       const regenerationAttempt = (regenerationCounts[item.id] || 0) + 1
 
@@ -2202,6 +2057,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
       if (updateError) throw updateError
 
+      updateWork(item.text, true)
       logger.info(`Regenerated: ${role} - "${item.text.substring(0, 30)}..." (${durationMs}ms)`)
       return { success: true, item, audioId }
     }
@@ -2209,49 +2065,68 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // Track successfully regenerated items for review
     const regeneratedItems = []
 
-    // Process in parallel batches
-    for (let i = 0; i < audioToRegenerate.length; i += CONCURRENCY) {
-      // Check for cancellation at the start of each batch
+    // True worker pool + end-of-run retry rounds. The old slice-of-CONCURRENCY
+    // + Promise.allSettled barrier paid a slowest-of-each-batch tax (renders
+    // range 1.5–8s → effective concurrency ~1/3 of nominal); and failures were
+    // only logged, forcing a full manual re-run to converge. Now: N workers
+    // pull from a shared cursor (no barrier), failures collect and get up to
+    // RETRY_ROUNDS extra passes (transient connection resets usually clear).
+    const RETRY_ROUNDS = 2
+    const runPool = async (queue, round) => {
+      let cursor = 0
+      const failures = []
+      const worker = async () => {
+        while (true) {
+          if (currentWork.cancelled) return
+          const i = cursor++
+          if (i >= queue.length) return
+          const item = queue[i]
+          try {
+            const value = await regenerateItem(item)
+            results.success++
+            regeneratedItems.push({
+              id: value.item.id,
+              audioId: value.audioId,
+              text: value.item.text,
+              role: value.item.role
+            })
+          } catch (err) {
+            failures.push({ item, error: err?.message || 'Unknown error' })
+            if (round === 0) {
+              logger.warn(`Failed (will retry): ${role} - "${item.text.substring(0, 30)}...": ${err?.message}`)
+            }
+          }
+        }
+      }
+      await Promise.all(Array.from({ length: Math.min(CONCURRENCY, queue.length) }, worker))
+      return failures
+    }
+
+    let pending = audioToRegenerate
+    for (let round = 0; round <= RETRY_ROUNDS; round++) {
       if (currentWork.cancelled) {
         logger.info(`[PROGRESS] Cancelled after ${currentWork.current}/${currentWork.total} items`)
         break
       }
-
-      const batch = audioToRegenerate.slice(i, i + CONCURRENCY)
-      const batchNum = Math.floor(i / CONCURRENCY) + 1
-      const totalBatches = Math.ceil(audioToRegenerate.length / CONCURRENCY)
-
-      logger.info(`Processing batch ${batchNum}/${totalBatches} (${batch.length} items)`)
-
-      const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => regenerateItem(item))))
-
-      for (let j = 0; j < batchResults.length; j++) {
-        const result = batchResults[j]
-        const item = batch[j]
-        if (result.status === 'fulfilled') {
-          results.success++
-          updateWork(item.text, 'success')
-          // Track for review
-          regeneratedItems.push({
-            id: result.value.item.id,
-            audioId: result.value.audioId,
-            text: result.value.item.text,
-            role: result.value.item.role
-          })
-        } else if (result.reason?.isTimeout) {
-          results.timedOut++
-          updateWork(item.text, 'timeout', result.reason.message)
-          logger.warn(`Timeout: ${role} - "${item.text.substring(0, 30)}..." (will retry next run)`)
-        } else {
+      if (round > 0) {
+        logger.info(`Retry round ${round}/${RETRY_ROUNDS}: ${pending.length} failed items`)
+        await new Promise(r => setTimeout(r, 5000 * round)) // brief breather between rounds
+      }
+      const failures = await runPool(pending, round)
+      if (failures.length === 0) { pending = []; break }
+      if (round === RETRY_ROUNDS) {
+        // Final round exhausted — record what's still failing
+        for (const f of failures) {
           results.failed++
           results.errors.push({
-            text: item.text.substring(0, 50),
-            error: result.reason?.message || 'Unknown error'
+            text: f.item.text.substring(0, 50),
+            error: f.error
           })
-          updateWork(item.text, 'failed', result.reason?.message)
-          logger.error(`Failed: ${role} - "${item.text.substring(0, 30)}...": ${result.reason?.message}`)
+          updateWork(f.item.text, false, f.error)
+          logger.error(`Failed (after ${RETRY_ROUNDS} retries): ${role} - "${f.item.text.substring(0, 30)}...": ${f.error}`)
         }
       }
+      pending = failures.map(f => f.item)
     }
 
     // Note: Flag stays at 'flagged' - user will delete it when satisfied with the audio
@@ -2315,7 +2190,17 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     const wasCancelled = currentWork.cancelled
     endWork()
 
-    job.result = {
+    // This route generates real audio (presentation/known/target1/target2),
+    // but previously bumped NEITHER version column — so regenerated audio went
+    // undetected by the learning app. Bump both, once, on a successful run.
+    if (!wasCancelled && results.success > 0) {
+      await bumpCourseVersion(supabase, courseCode, 'patch')
+      // Integer revalidation key — once per run — so the app picks up the
+      // regenerated audio.
+      await bumpCourseRevalidation(supabase, courseCode)
+    }
+
+    res.json({
       status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       role,
@@ -2323,23 +2208,10 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       total: audioToRegenerate.length,
       success: results.success,
       failed: results.failed,
-      timedOut: results.timedOut,
       cancelled: wasCancelled,
+      excludedHuman,
       errors: results.errors.slice(0, 10),
       regeneratedItems: regeneratedItems.slice(0, 50) // Return up to 50 for review
-    }
-    return job.result
-    } // end run
-
-    const q = enqueueJob({ courseCode, operation: 'regenerate-role', role, meta: { willRegenerate: audioToRegenerate.length, voiceId }, run })
-    return res.status(202).json({
-      status: q.alreadyQueued ? 'already_queued' : 'queued',
-      jobId: q.jobId,
-      position: q.position,
-      courseCode,
-      operation: 'regenerate-role',
-      role,
-      willRegenerate: audioToRegenerate.length
     })
 
   } catch (error) {
@@ -2372,6 +2244,19 @@ app.post('/insert', async (req, res) => {
     // Normalize language to ISO 639-3 (e.g. 'en-GB' → 'eng')
     const normalizedLanguage = toIso3(language)
 
+    // PRECIOUS-AUDIO GUARD: a non-human insert must never overwrite a human
+    // recording occupying the same conflict key. Return the existing human row
+    // instead (the audio for this key already exists — and it is precious).
+    if (origin !== 'human') {
+      const guardedHuman = await humanRowAtAudioKey(
+        courseCode, normalizeForAudio(text), normalizedLanguage, role, voiceId
+      )
+      if (guardedHuman) {
+        logger.info(`[PreciousAudio] /insert SKIP: human recording ${guardedHuman.id} holds key for "${text.substring(0, 40)}" (${role}) — returning existing row`)
+        return res.json({ success: true, audio: guardedHuman, skipped_human: true })
+      }
+    }
+
     const { data, error } = await supabase
       .from('course_audio')
       .upsert({
@@ -2401,6 +2286,110 @@ app.post('/insert', async (req, res) => {
 // =============================================================================
 // POST REGENERATE-PRESENTATIONS - Regenerate presentation text for a course
 // =============================================================================
+
+// =========================================================================
+// SCOPED, ADDITION-ONLY presentation prep — the incremental/surgical alternative
+// to /regenerate-presentations (which is course-wide + delete-on-change).
+// Prepares ONLY the missing presentations for the given seeds, INSERT-only
+// (never deletes / never rewrites existing), and HONORS introduce:false
+// (skips silent particle components — e.g. 才). Safe on a live course.
+// POST /prepare-presentations-scoped/:courseCode { seeds:[80], dryRun:true }
+// =========================================================================
+app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { seeds, dryRun = true } = req.body
+    const scopeSeeds = Array.isArray(seeds) && seeds.length
+      ? seeds.map(n => parseInt(n, 10)).filter(n => !isNaN(n)) : null
+    if (!scopeSeeds) {
+      return res.status(400).json({ error: 'seeds (non-empty array) is required — this endpoint is intentionally scoped' })
+    }
+
+    const { data: course } = await supabase.from('courses').select('*').eq('course_code', courseCode).single()
+    if (!course) return res.status(404).json({ error: 'Course not found' })
+
+    const knownLang = course.known_lang
+    const targetLangName = getLocalisedLangName(course.target_lang, knownLang)
+    const template = await getOrCreatePresentationTemplate(knownLang)
+    // Short form (no "as in" context) — same stripping the course-wide endpoint uses.
+    const shortTemplate = template
+      .replace(/, as in — '\{seed\}',/g, ',')
+      .replace(/, as in '\{seed\}'/g, '')
+      .replace(/ as in — '\{seed\}' —/g, ' ')
+      .replace(/\{seed\}/g, '')
+    const voiceConfig = course.voice_config || {}
+    // Match the generator's voice_id format exactly (provider_voiceId), else the
+    // pending row's voice_id won't reconcile with the generated row → duplicate.
+    const presVoice = voiceConfig.voices?.presentation
+    const presentationVoiceId = (presVoice?.provider && presVoice?.voiceId)
+      ? `${presVoice.provider}_${presVoice.voiceId}`
+      : (presVoice?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural')
+
+    // Existing presentation rows — so we ONLY add what's genuinely missing.
+    const { data: existingPres } = await supabase.from('course_audio')
+      .select('lego_id, text_normalized').eq('course_code', courseCode).eq('role', 'presentation')
+    const existingLegoIds = new Set((existingPres || []).map(p => p.lego_id).filter(Boolean))
+    const existingTextNorms = new Set((existingPres || []).map(p => p.text_normalized))
+
+    const toInsert = []
+
+    // 1) LEGO presentations: is_new LEGOs in scope, lacking a presentation.
+    const { data: legos } = await supabase.from('course_legos')
+      .select('lego_id, known_text, presentation_audio_id')
+      .eq('course_code', courseCode).eq('is_new', true).in('seed_number', scopeSeeds)
+    for (const l of (legos || [])) {
+      if (l.presentation_audio_id || existingLegoIds.has(l.lego_id)) continue
+      const text = shortTemplate.replace('{target_lang_name}', targetLangName).replace('{known}', l.known_text)
+      toInsert.push({ kind: 'lego', lego_id: l.lego_id, known: l.known_text, text })
+    }
+
+    // 2) Component presentations: introduce:true components in scope, with a parent
+    //    M-LEGO, lacking a presentation. introduce:false (particles) are SKIPPED.
+    const { data: comps } = await supabase.from('course_practice_phrases')
+      .select('id, seed_number, lego_index, known_text, introduce, presentation_audio_id')
+      .eq('course_code', courseCode).eq('phrase_role', 'component').in('seed_number', scopeSeeds)
+    const parentMap = new Map()
+    if (comps && comps.length) {
+      const { data: parents } = await supabase.from('course_legos')
+        .select('seed_number, lego_index, known_text')
+        .eq('course_code', courseCode).eq('type', 'M').in('seed_number', scopeSeeds)
+      for (const p of (parents || [])) parentMap.set(`${p.seed_number}:${p.lego_index}`, p)
+    }
+    for (const c of (comps || [])) {
+      if (c.introduce === false) continue            // METHODOLOGY: never introduce a silent particle
+      if (c.presentation_audio_id) continue
+      const parent = parentMap.get(`${c.seed_number}:${c.lego_index}`)
+      if (!parent) continue
+      const text = template.replace('{target_lang_name}', targetLangName)
+        .replace('{known}', c.known_text).replace('{seed}', parent.known_text)
+      if (existingTextNorms.has(normalizeForAudio(text))) continue
+      toInsert.push({ kind: 'component', phrase_id: c.id, known: c.known_text, text })
+    }
+
+    if (dryRun) {
+      return res.json({ success: true, dryRun: true, courseCode, seeds: scopeSeeds, wouldInsert: toInsert.length, items: toInsert })
+    }
+
+    // INSERT-only (ignoreDuplicates). Never deletes, never rewrites existing.
+    const rows = toInsert.map(it => ({
+      course_code: courseCode, text: it.text, text_normalized: normalizeForAudio(it.text),
+      language: knownLang, role: 'presentation', voice_id: presentationVoiceId, origin: 'tts',
+      s3_key: `pending/${uuidv4().toUpperCase()}.mp3`, lego_id: it.kind === 'lego' ? it.lego_id : null
+    }))
+    let inserted = 0
+    if (rows.length) {
+      const { error } = await supabase.from('course_audio')
+        .upsert(rows, { onConflict: 'course_code,text_normalized,language,role,voice_id', ignoreDuplicates: true })
+      if (error) return res.status(500).json({ error: error.message })
+      inserted = rows.length
+    }
+    logger.info(`prepare-presentations-scoped(${courseCode}, seeds=${scopeSeeds}): inserted ${inserted} pending presentations`)
+    res.json({ success: true, courseCode, seeds: scopeSeeds, inserted, items: toInsert })
+  } catch (err) {
+    logger.error('/prepare-presentations-scoped error:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
 
 app.post('/regenerate-presentations/:courseCode', async (req, res) => {
   try {
@@ -2755,19 +2744,9 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       })
     }
 
-    // Bulk upsert presentation text to course_audio.
-    // IMPORTANT: voice_id MUST include the provider prefix (e.g.
-    // "azure_en-GB-SoniaNeural"), because /generate's upsert key includes
-    // voice_id and resolves it via `${provider}_${voiceId}`. Storing
-    // unprefixed here causes the conflict-key mismatch — /generate inserts
-    // a duplicate mastered row alongside the pending one, the pending
-    // never gets cleared, and the LEGO might still point at the pending
-    // row. See memory: voice-id-prefix-inconsistency.md.
+    // Bulk upsert presentation text to course_audio
     const voiceConfig = course.voice_config || {}
-    const presVoice = voiceConfig.voices?.presentation || voiceConfig.presentation
-    const presentationVoiceId = (presVoice?.provider && presVoice?.voiceId)
-      ? `${presVoice.provider}_${presVoice.voiceId}`
-      : presVoice?.voiceId || presVoice || 'azure_en-GB-SoniaNeural'
+    const presentationVoiceId = voiceConfig.voices?.presentation?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural'
 
     const BATCH_SIZE = 200
     const legoIdList = presentations.map(p => p.lego_id)
@@ -2779,7 +2758,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       const batch = legoIdList.slice(i, i + BATCH_SIZE)
       const { data: existing } = await supabase
         .from('course_audio')
-        .select('id, lego_id, text_normalized, s3_key')
+        .select('id, lego_id, text_normalized, s3_key, origin')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
         .in('lego_id', batch)
@@ -2789,17 +2768,27 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     }
 
     // Delete records where text changed (otherwise upsert creates duplicates)
+    // PRECIOUS-AUDIO GUARD: human-origin presentations (e.g. the relinked Welsh
+    // human intros) are NEVER deleted or replaced — even when the template text
+    // differs, the human recording stays the presentation for that lego.
     const idsToDelete = []
     const unchangedLegoIds = new Set()
+    let humanPreserved = 0
     for (const pres of presentations) {
       const existing = existingByLegoId.get(pres.lego_id)
       if (!existing) continue
       const newNorm = normalizeForAudio(pres.presentation_text)
-      if (existing.text_normalized === newNorm) {
+      if (existing.origin === 'human') {
+        unchangedLegoIds.add(pres.lego_id)  // human → keep, never delete/re-insert
+        if (existing.text_normalized !== newNorm) humanPreserved++
+      } else if (existing.text_normalized === newNorm) {
         unchangedLegoIds.add(pres.lego_id)  // text same → keep existing record
       } else {
         idsToDelete.push(existing.id)  // text changed → delete old, insert new
       }
+    }
+    if (humanPreserved > 0) {
+      logger.info(`[PreciousAudio] preserved ${humanPreserved} human-origin presentations whose template text changed (human recordings are never deleted)`)
     }
 
     if (idsToDelete.length > 0) {
@@ -2840,13 +2829,18 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     while (true) {
       const { data: orphanBatch } = await supabase
         .from('course_audio')
-        .select('id, text_normalized')
+        .select('id, text_normalized, origin')
         .eq('course_code', courseCode)
         .eq('role', 'presentation')
         .is('lego_id', null)
         .range(orphanOffset, orphanOffset + 999)
       if (!orphanBatch || orphanBatch.length === 0) break
       for (const rec of orphanBatch) {
+        // PRECIOUS-AUDIO GUARD: never delete human recordings, even as "orphans"
+        if (rec.origin === 'human') {
+          logger.info(`[PreciousAudio] keeping human-origin orphan presentation ${rec.id} (human recordings are never deleted)`)
+          continue
+        }
         if (!allNewTextsNorm.has(rec.text_normalized) && !allCompTextsNorm.has(rec.text_normalized)) {
           orphanIds.push(rec.id)
         }
@@ -2894,11 +2888,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     logger.info(`Upserted ${audioRecords.length} presentation texts`)
 
     // Populate course_legos.presentation_audio_id using lego_id (reliable, no query size limits)
-    // Include pending audio rows — they're the freshly-inserted candidates; pointing
-    // the LEGO at them now means later TTS generation updates the same id without
-    // a transient orphan window. (Earlier this skipped pending rows, which left
-    // every regen-without-TTS in a state where the LEGO still pointed at NOTHING
-    // and orphan pending rows accumulated.)
+    // Only link non-pending audio (pending = text placeholder, no actual audio yet)
     let allPresAudio = []
     for (let i = 0; i < legoIdList.length; i += BATCH_SIZE) {
       const batch = legoIdList.slice(i, i + BATCH_SIZE)
@@ -2912,7 +2902,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       if (batchError) {
         logger.warn(`Batch query error at offset ${i}:`, batchError.message)
       } else if (batchData) {
-        allPresAudio = allPresAudio.concat(batchData)
+        // Filter pending/ s3_keys client-side
+        allPresAudio = allPresAudio.concat(batchData.filter(a => !a.s3_key || !a.s3_key.startsWith('pending/')))
       }
     }
 
@@ -2938,12 +2929,12 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
           .in('text_normalized', batch)
         if (matchedAudio) {
           for (const audio of matchedAudio) {
-            // Link to either mastered OR pending — pending is fine as it'll resolve
-            // when audio gen runs; the alternative leaves the LEGO unlinked.
-            // Find all unlinked LEGOs with this text
-            for (const p of unlinkedPres) {
-              if (normalizeForAudio(p.presentation_text) === audio.text_normalized) {
-                allPresAudio.push({ id: audio.id, lego_id: p.lego_id, s3_key: audio.s3_key })
+            if (audio.s3_key && !audio.s3_key.startsWith('pending/')) {
+              // Find all unlinked LEGOs with this text
+              for (const p of unlinkedPres) {
+                if (normalizeForAudio(p.presentation_text) === audio.text_normalized) {
+                  allPresAudio.push({ id: audio.id, lego_id: p.lego_id, s3_key: audio.s3_key })
+                }
               }
             }
           }
@@ -3138,6 +3129,9 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     } catch (e) { /* production-api may not be running */ }
 
     await bumpCourseVersion(supabase, courseCode, 'patch')
+    // Integer revalidation key — once per run. Presentation text changed here,
+    // which the round-map/decomposition care about; bump so the app revalidates.
+    await bumpCourseRevalidation(supabase, courseCode)
 
     res.json({
       success: true,
@@ -3149,6 +3143,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       componentTotal: componentPresentations.length,
       textChanged: idsToDelete.length,
       textUnchanged: unchangedLegoIds.size,
+      humanPreserved,
       newRecords: audioRecords.length,
       componentNewRecords: compNewRecords,
       componentUnchanged: compTextUnchanged,
@@ -3272,13 +3267,23 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     // 1. Lookup the course_audio record
     const { data: audioRecord, error: audioError } = await supabase
       .from('course_audio')
-      .select('id, text, role, language, voice_id, s3_key')
+      .select('id, text, role, language, voice_id, s3_key, origin')
       .eq('id', audioUuid)
       .eq('course_code', courseCode)
       .single()
 
     if (audioError || !audioRecord) {
       return res.status(404).json({ error: `Audio not found: ${audioUuid} in ${courseCode}` })
+    }
+
+    // PRECIOUS-AUDIO GUARD: human recordings are irreplaceable — never TTS over them.
+    if (audioRecord.origin === 'human') {
+      logger.warn(`[Regen Single] SKIP ${audioUuid}: origin=human (precious) — refusing TTS overwrite`)
+      return res.status(409).json({
+        error: 'This clip is a human recording (origin=human, precious). TTS regeneration is blocked for human audio.',
+        origin: 'human',
+        audioUuid
+      })
     }
 
     // 2. Get course voice config
@@ -3313,26 +3318,16 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
 
     const regenCount = flagRecord?.regen_count || 0
 
-    // 4. Gender expansion — consult the pre-computed course_gender_expansions
-    // cache first (populated by gender-prep-coordinator at course-build time
-    // and refreshed per-phrase on edit). Fall through to analyzeAndExpand
-    // (single-item Haiku call) if the cache is empty for this text.
+    // 4. Gender expansion
     let textForTTS = text
     const lang = language || (role === 'known' ? course.known_lang : course.target_lang)
     if ((role === 'target1' || role === 'target2') && genderHaikuService.GENDERED_LANGUAGES.includes(lang)) {
+      // Try Haiku gender expansion
       try {
-        const genderMap = await genderHaikuService.loadGenderMap(courseCode, supabase)
-        const cached = genderMap.get(`${text}|${lang}|${role}`)
-        if (cached?.wasModified) {
-          textForTTS = cached.expandedText
-          logger.info(`Gender (cached): "${text}" → "${textForTTS}" (${role})`)
-        } else {
-          // Cache miss — fall back to a single Haiku call for this text
-          const result = await genderHaikuService.analyzeAndExpand(text, lang, role)
-          if (result?.wasModified) {
-            textForTTS = result.expandedText
-            logger.info(`Gender (live): "${text}" → "${textForTTS}" (${role})`)
-          }
+        const result = await genderHaikuService.expandGender(text, lang, role)
+        if (result?.wasModified) {
+          textForTTS = result.expandedText
+          logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
         }
       } catch (e) {
         logger.warn(`Gender expansion failed, using original text: ${e.message}`)
@@ -3445,6 +3440,518 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
 })
 
 // =============================================================================
+// POST REGENERATE-PRESENTATION - Surgical per-LEGO presentation edit + regen
+// =============================================================================
+// Single-LEGO scope of /regenerate-presentations. Edits the AUTHORITATIVE text
+// store for intro audio (course_audio.text, role='presentation') for ONE lego_id,
+// then regenerates JUST that row's TTS. No-op for every other row.
+//
+// Authority note: course-wide regen sources presentation text from the DB
+// (course_legos + template) and writes it to course_audio.text — which the TTS
+// step (/generate, /regenerate-role, /regenerate-single) reads verbatim. The S3
+// introductions.json written by api/courses/.../introductions/[legoId].js is a
+// SEPARATE store that the audio path never reads. So course_audio.text is
+// authoritative here, and we follow the same recipe as the bulk path: whole
+// presentation line → known-language presentation voice → master → S3 → row.
+//
+// Body: { text? }  — if provided, becomes the new presentation text (forces regen
+//                    even if other content unchanged). If omitted, regenerates the
+//                    existing row's text as-is (or computes default text if the row
+//                    must be created).
+// Returns: { success, lego_id, audio_id, duration_ms }
+// =============================================================================
+app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
+  const { courseCode, legoId } = req.params
+  const { text: providedText } = req.body || {}
+
+  try {
+    // 1. Load course + voice config
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('voice_config, known_lang, target_lang')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseError || !course) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` })
+    }
+
+    const knownLang = course.known_lang
+    const voiceConfig = course.voice_config || {}
+    const voiceSettings = voiceConfig.voices?.presentation || {}
+    const voiceId = voiceSettings.voiceId || voiceConfig.presentation
+    const voiceProvider = voiceSettings.provider || 'azure'
+    const speed = voiceSettings.settings?.speed || 1.0
+
+    if (!voiceId) {
+      return res.status(400).json({ error: 'No voice configured for role: presentation' })
+    }
+
+    // 2. Parse lego_id → seed_number + lego_index (e.g. "S0001L03")
+    const legoMatch = String(legoId).match(/S(\d+)L(\d+)/)
+    if (!legoMatch) {
+      return res.status(400).json({ error: `Invalid lego_id format: ${legoId}` })
+    }
+    const seedNumber = parseInt(legoMatch[1], 10)
+    const legoIndex = parseInt(legoMatch[2], 10)
+
+    // 3. Find the existing presentation row for THIS lego (the only row we touch)
+    const { data: existingRow } = await supabase
+      .from('course_audio')
+      .select('id, text, s3_key, origin')
+      .eq('course_code', courseCode)
+      .eq('role', 'presentation')
+      .eq('lego_id', legoId)
+      .maybeSingle()
+
+    // PRECIOUS-AUDIO GUARD: human recordings are irreplaceable — never TTS over them.
+    if (existingRow?.origin === 'human') {
+      logger.warn(`[Regen Presentation] SKIP ${courseCode}/${legoId}: origin=human (precious) — refusing TTS overwrite`)
+      return res.status(409).json({
+        error: `The presentation for ${legoId} is a human recording (origin=human, precious). TTS regeneration is blocked for human audio.`,
+        origin: 'human',
+        lego_id: legoId
+      })
+    }
+
+    // 4. Resolve the presentation text to speak.
+    //    - explicit text wins (and is persisted as the new authoritative text)
+    //    - else reuse the existing row's text
+    //    - else compute a default the same way the bulk path does (short template)
+    let presentationText = (typeof providedText === 'string' && providedText.trim())
+      ? providedText.trim()
+      : (existingRow?.text || null)
+
+    if (!presentationText) {
+      // No row and no text supplied — compute default from template + lego known_text.
+      const { data: lego } = await supabase
+        .from('course_legos')
+        .select('known_text')
+        .eq('course_code', courseCode)
+        .eq('seed_number', seedNumber)
+        .eq('lego_index', legoIndex)
+        .maybeSingle()
+
+      if (!lego) {
+        return res.status(404).json({ error: `LEGO not found and no text provided: ${legoId}` })
+      }
+
+      const template = await getOrCreatePresentationTemplate(knownLang)
+      // Short form (no "as in" context) — matches the bulk path's no-context branch.
+      const shortTemplate = template
+        .replace(/, as in — '\{seed\}',/g, ',')
+        .replace(/ as in — '\{seed\}' —| como en — '\{seed\}' —| comme dans — '\{seed\}' —| wie in — '\{seed\}' —| como em — '\{seed\}' —| come in — '\{seed\}' —| fel yn — '\{seed\}' —| — 「\{seed\}」のように —| — '\{seed\}'처럼 —| كما في — '\{seed\}' —| kaip — '\{seed\}' —| 如「\{seed\}」—|, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
+      const targetLangName = getLocalisedLangName(course.target_lang, knownLang)
+      const knownForPresentation = lego.known_text.includes(' / ')
+        ? lego.known_text.split(' / ')[0].trim()
+        : lego.known_text
+      presentationText = shortTemplate
+        .replace('{target_lang_name}', targetLangName)
+        .replace('{known}', knownForPresentation)
+        .replace('{seed}', '')
+    }
+
+    // 5. Generate TTS for the single presentation line (whole line → known voice).
+    logger.info(`[Regen Presentation] ${courseCode}/${legoId} voice=${voiceId} "${presentationText.substring(0, 50)}..."`)
+
+    let rawAudioBuffer, wordBoundaries
+    if (voiceProvider === 'azure') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'azure', {
+        subscriptionKey: process.env.AZURE_SPEECH_KEY,
+        region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+        voiceName: voiceId,
+        speed
+      }))
+    } else if (voiceProvider === 'elevenlabs') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'elevenlabs', {
+        apiKey: process.env.ELEVENLABS_API_KEY,
+        voiceId: voiceId,
+        speed
+      }))
+    } else if (voiceProvider === 'xai') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'xai', {
+        apiKey: process.env.XAI_API_KEY,
+        voiceId: voiceId,
+        language: toBcp47(knownLang)
+      }))
+    } else {
+      return res.status(400).json({ error: `Unknown TTS provider: ${voiceProvider}` })
+    }
+
+    // 6. Master audio (−16 LUFS, duration)
+    const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+
+    // 7. Upload mastered audio to S3 (fresh UUID, UPPERCASE to match convention)
+    const newAudioId = uuidv4().toUpperCase()
+    const newS3Key = `mastered/${newAudioId}.mp3`
+    await s3.send(new PutObjectCommand({
+      Bucket: S3_BUCKET,
+      Key: newS3Key,
+      Body: masteredBuffer,
+      ContentType: 'audio/mpeg'
+    }))
+
+    // 8. Update the existing row in place, or insert a new one for this lego.
+    //    Either way: exactly one course_audio row is written.
+    let audioRowId
+    if (existingRow) {
+      const { error: updateError } = await supabase
+        .from('course_audio')
+        .update({
+          text: presentationText,
+          text_normalized: normalizeForAudio(presentationText),
+          language: knownLang,
+          voice_id: voiceId,
+          origin: 'tts',
+          s3_key: newS3Key,
+          duration_ms: durationMs,
+          word_boundaries: wordBoundaries || null
+        })
+        .eq('id', existingRow.id)
+      if (updateError) throw updateError
+      audioRowId = existingRow.id
+    } else {
+      const { data: inserted, error: insertError } = await supabase
+        .from('course_audio')
+        .insert({
+          course_code: courseCode,
+          text: presentationText,
+          text_normalized: normalizeForAudio(presentationText),
+          language: knownLang,
+          role: 'presentation',
+          voice_id: voiceId,
+          origin: 'tts',
+          s3_key: newS3Key,
+          duration_ms: durationMs,
+          lego_id: legoId,
+          word_boundaries: wordBoundaries || null
+        })
+        .select('id')
+        .single()
+      if (insertError) throw insertError
+      audioRowId = inserted.id
+    }
+
+    // 9. Bind presentation_audio_id on course_legos + lego_introductions (same as
+    //    the bulk path) so the learning app resolves the fresh clip for this lego.
+    await supabase
+      .from('course_legos')
+      .update({ presentation_audio_id: audioRowId })
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNumber)
+      .eq('lego_index', legoIndex)
+
+    const { error: introError } = await supabase
+      .from('lego_introductions')
+      .upsert({
+        course_code: courseCode,
+        lego_id: legoId,
+        presentation_audio_id: audioRowId,
+        audio_uuid: audioRowId
+      }, { onConflict: 'course_code,lego_id', ignoreDuplicates: false })
+    if (introError) logger.warn(`Could not upsert lego_introductions for ${legoId}: ${introError.message}`)
+
+    // 10. Bust production-api stats cache + bump course version (matches bulk path)
+    try {
+      await fetch(`http://localhost:3470/api/production/${courseCode}/audio-stats?fresh=1`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+    } catch (e) { /* production-api may not be running */ }
+    await bumpCourseVersion(supabase, courseCode, 'patch')
+
+    logger.info(`[Regen Presentation] Done: ${legoId} → ${newS3Key} (${durationMs}ms), audio_id=${audioRowId}`)
+
+    res.json({
+      success: true,
+      lego_id: legoId,
+      audio_id: audioRowId,
+      duration_ms: durationMs,
+      text: presentationText,
+      created: !existingRow
+    })
+
+  } catch (error) {
+    logger.error('Regenerate presentation error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// POST REGENERATE-PHRASE - Surgical per-PHRASE text edit + audio regen (auto-approve)
+// =============================================================================
+// Clones /regenerate-presentation's recipe but targets a course_practice_phrases
+// row (component_practice / build / use phrases) instead of presentation intros.
+//
+// THE LOAD-BEARING TRAP this endpoint exists to avoid:
+//   /regenerate-single RE-READS course_audio.text and re-TTSes the OLD text, so it
+//   CANNOT be used after a TEXT edit (stale audio under new text = audio/text desync).
+//   This endpoint takes the NEW text, TTSes IT, persists course_audio.text +
+//   text_normalized = the NEW text, mints a FRESH uuid + S3 key, and rebinds the
+//   phrase pointer. No accept step (PODs auto-approve model). Old S3 never deleted.
+//
+// Roles map to course_practice_phrases columns + voice_config.voices:
+//   'known'   → known_text   → known_audio_id    → voices.known   (known_lang)
+//   'target1' → target_text  → target1_audio_id  → voices.target1 (target_lang)
+//   'target2' → target_text  → target2_audio_id  → voices.target2 (target_lang)
+// (target1 & target2 are two voices of the SAME target text.)
+//
+// Body: { known_text?, target_text?, roles: ['known'|'target1'|'target2', ...] }
+//   - Persists known_text/target_text to course_practice_phrases IF passed (so DB
+//     text + audio text agree). Idempotent: the UI may also PATCH text separately;
+//     we only write text columns that were passed AND actually differ, then rebind.
+//   - Regenerates ONLY the requested roles. Untouched roles keep their existing id.
+// Returns: { known_audio_id, target1_audio_id, target2_audio_id,
+//            durations: { known?, target1?, target2? } }
+// =============================================================================
+
+app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
+  const { courseCode, phraseId } = req.params
+  const { known_text: knownText, target_text: targetText, roles } = req.body || {}
+
+  try {
+    // 0. Validate roles
+    const VALID_ROLES = ['known', 'target1', 'target2']
+    const requestedRoles = Array.isArray(roles) ? [...new Set(roles)] : []
+    if (requestedRoles.length === 0 || requestedRoles.some(r => !VALID_ROLES.includes(r))) {
+      return res.status(400).json({
+        error: `roles must be a non-empty subset of ${JSON.stringify(VALID_ROLES)}`
+      })
+    }
+
+    // 1. Load course + voice config
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('voice_config, known_lang, target_lang')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseError || !course) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` })
+    }
+    const knownLang = course.known_lang
+    const targetLang = course.target_lang
+    const voiceConfig = course.voice_config || {}
+    const voices = voiceConfig.voices || voiceConfig  // support nested + flat
+
+    // 2. Load the phrase row (PK = id, the deterministic text id e.g. fra_for_eng:S0042L03U05)
+    const { data: phrase, error: phraseError } = await supabase
+      .from('course_practice_phrases')
+      .select('id, course_code, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id, seed_number, lego_index, lego_id, phrase_role')
+      .eq('id', phraseId)
+      .eq('course_code', courseCode)
+      .maybeSingle()
+
+    if (phraseError) throw phraseError
+    if (!phrase) {
+      return res.status(404).json({ error: `Phrase not found: ${phraseId} in ${courseCode}` })
+    }
+
+    // 3. Persist edited text FIRST (only columns passed AND actually changed).
+    //    Order matters: the course_practice_phrases trigger nulls the matching
+    //    *_audio_id when text changes — so we let that fire here, then rebind the
+    //    fresh uuid in step 6. Idempotent: a no-op (same text) writes nothing, so
+    //    a prior UI PATCH of the same text won't re-null our binding.
+    const textPatch = {}
+    if (typeof knownText === 'string' && knownText !== phrase.known_text) {
+      textPatch.known_text = knownText
+    }
+    if (typeof targetText === 'string' && targetText !== phrase.target_text) {
+      textPatch.target_text = targetText
+    }
+    if (Object.keys(textPatch).length > 0) {
+      const { error: textErr } = await supabase
+        .from('course_practice_phrases')
+        .update(textPatch)
+        .eq('id', phraseId)
+        .eq('course_code', courseCode)
+      if (textErr) throw textErr
+    }
+
+    // Authoritative text to speak per role (explicit body wins, else current row).
+    const effectiveKnown = (typeof knownText === 'string') ? knownText : phrase.known_text
+    const effectiveTarget = (typeof targetText === 'string') ? targetText : phrase.target_text
+
+    // 4. Regenerate each requested role. Reuses the EXACT recipe of the bulk role
+    //    path: gender expansion (target only) → provider TTS → master → S3 → mint
+    //    course_audio row with NEW text → rebind phrase pointer.
+    const PHRASE_AUDIO_COLUMN = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id' }
+
+    // Start with the existing ids so untouched roles round-trip unchanged.
+    const result = {
+      known_audio_id: phrase.known_audio_id || null,
+      target1_audio_id: phrase.target1_audio_id || null,
+      target2_audio_id: phrase.target2_audio_id || null,
+      durations: {}
+    }
+    const skippedHumanRoles = []
+
+    for (const role of requestedRoles) {
+      const isKnown = role === 'known'
+      const text = isKnown ? effectiveKnown : effectiveTarget
+      const language = isKnown ? knownLang : targetLang
+
+      if (typeof text !== 'string' || !text.trim()) {
+        return res.status(400).json({
+          error: `No text available for role "${role}" (need ${isKnown ? 'known_text' : 'target_text'})`
+        })
+      }
+
+      // Resolve voice for this role (voiceId / provider / speed).
+      const voiceSettings = voices?.[role] || {}
+      const voiceId = voiceSettings.voiceId || (typeof voices?.[role] === 'string' ? voices[role] : null)
+      const voiceProvider = voiceSettings.provider || 'azure'
+      const speed = voiceSettings.settings?.speed || 1.0
+      if (!voiceId) {
+        return res.status(400).json({ error: `No voice configured for role: ${role}` })
+      }
+
+      const column = PHRASE_AUDIO_COLUMN[role]
+
+      // Flagging a role in the edit modal is an EXPLICIT request to regenerate
+      // (e.g. apply a changed voice config, or replace a bad take), so we ALWAYS
+      // render fresh TTS for every requested role — no dedup reuse-skip. The
+      // unique-key collision (reverting to prior text, double-regen of identical
+      // text, etc.) is handled by the upsert-on-conflict at the write below, which
+      // UPDATES the existing row's s3_key/duration/text in place rather than 500ing.
+      const textNormalized = normalizeForAudio(text)
+
+      // PRECIOUS-AUDIO GUARD: if a human recording occupies this exact audio key,
+      // the upsert below would flip it back to TTS. Keep the human take — rebind
+      // the phrase pointer to it and skip TTS for this role.
+      const guardedHuman = await humanRowAtAudioKey(courseCode, textNormalized, language, role, voiceId)
+      if (guardedHuman) {
+        const { error: humanBindError } = await supabase
+          .from('course_practice_phrases')
+          .update({ [column]: guardedHuman.id })
+          .eq('id', phraseId)
+          .eq('course_code', courseCode)
+        if (humanBindError) throw humanBindError
+        result[column] = guardedHuman.id
+        skippedHumanRoles.push(role)
+        logger.info(`[Regen Phrase] SKIP ${phraseId} ${role}: human recording ${guardedHuman.id} holds this key — phrase rebound to the human take`)
+        continue
+      }
+
+      // Gender expansion (target1/target2 only) — Haiku first, marker regex fallback.
+      let textForTTS = text
+      if ((role === 'target1' || role === 'target2') && genderHaikuService.GENDERED_LANGUAGES.includes(language)) {
+        try {
+          const gr = await genderHaikuService.expandGender(text, language, role)
+          if (gr?.wasModified) {
+            textForTTS = gr.expandedText
+            logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
+          }
+        } catch (e) {
+          logger.warn(`Gender expansion failed, using original text: ${e.message}`)
+        }
+      }
+      if (textForTTS === text && (role === 'target1' || role === 'target2') && genderService.hasGenderMarker(text)) {
+        const mr = genderService.analyzeAndExpand(text, language, role)
+        if (mr.wasModified) {
+          textForTTS = mr.expandedText
+          logger.info(`Gender (marker): "${text}" → "${textForTTS}" (${role})`)
+        }
+      }
+
+      // TTS generate (same provider branches as the bulk path).
+      logger.info(`[Regen Phrase] ${courseCode}/${phraseId} role=${role} voice=${voiceId} "${textForTTS.substring(0, 40)}..."`)
+      let rawAudioBuffer, wordBoundaries
+      if (voiceProvider === 'azure') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+          subscriptionKey: process.env.AZURE_SPEECH_KEY,
+          region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+          voiceName: voiceId,
+          speed
+        }))
+      } else if (voiceProvider === 'elevenlabs') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+          apiKey: process.env.ELEVENLABS_API_KEY,
+          voiceId: voiceId,
+          speed
+        }))
+      } else if (voiceProvider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceId,
+          language: toBcp47(language)
+        }))
+      } else {
+        return res.status(400).json({ error: `Unknown TTS provider: ${voiceProvider}` })
+      }
+
+      // Master audio (−16 LUFS, duration).
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+
+      // Upload mastered audio to S3 (fresh UUID, UPPERCASE per convention).
+      const newAudioId = uuidv4().toUpperCase()
+      const newS3Key = `mastered/${newAudioId}.mp3`
+      await s3.send(new PutObjectCommand({
+        Bucket: S3_BUCKET,
+        Key: newS3Key,
+        Body: masteredBuffer,
+        ContentType: 'audio/mpeg'
+      }))
+
+      // Mint a course_audio row carrying the NEW text. We checked above that no row
+      // exists for this key, so this is a fresh clip — but UPSERT on the unique key
+      // (the canonical bulk-path pattern) is belt-and-suspenders against a concurrent
+      // write that created the row between our lookup and here, so we never 500 on
+      // unique_course_audio_per_voice. On conflict the existing row's id is returned.
+      const { data: insertedAudio, error: audioInsertError } = await supabase
+        .from('course_audio')
+        .upsert({
+          course_code: courseCode,
+          text,                                   // authoritative NEW text
+          text_normalized: textNormalized,
+          language,
+          role,
+          voice_id: voiceId,
+          origin: 'tts',
+          s3_key: newS3Key,
+          duration_ms: durationMs,
+          word_boundaries: wordBoundaries || null
+        }, {
+          onConflict: 'course_code,text_normalized,language,role,voice_id'
+        })
+        .select('id')
+        .single()
+      if (audioInsertError) throw audioInsertError
+      const audioRowId = insertedAudio.id
+
+      // Rebind the phrase pointer to the fresh uuid (single-column update so the
+      // text-change trigger can't fire here and re-null our binding).
+      const { error: bindError } = await supabase
+        .from('course_practice_phrases')
+        .update({ [column]: audioRowId })
+        .eq('id', phraseId)
+        .eq('course_code', courseCode)
+      if (bindError) throw bindError
+
+      result[column] = audioRowId
+      result.durations[role] = durationMs
+      logger.info(`[Regen Phrase] Done: ${phraseId} ${role} → ${newS3Key} (${durationMs}ms), audio_id=${audioRowId}`)
+    }
+
+    // 5. Bust production-api stats cache + bump course version (matches bulk paths).
+    try {
+      await fetch(`http://localhost:3470/api/production/${courseCode}/audio-stats?fresh=1`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+    } catch (e) { /* production-api may not be running */ }
+    await bumpCourseVersion(supabase, courseCode, 'patch')
+
+    // Additive field — only present when a human take was preserved.
+    if (skippedHumanRoles.length > 0) result.skipped_human = skippedHumanRoles
+
+    res.json(result)
+
+  } catch (error) {
+    logger.error('Regenerate phrase error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
 // POST GENERATE-COMPONENTS - Generate audio for M-LEGO component phrases
 // =============================================================================
 
@@ -3456,6 +3963,13 @@ app.post('/generate-components/:courseCode', async (req, res) => {
     const concurrencyToUse = requestedConcurrency
       ? Math.max(1, Math.min(20, parseInt(requestedConcurrency, 10) || CONCURRENCY))
       : CONCURRENCY
+
+    if (currentWork.active) {
+      return res.status(409).json({
+        error: 'Another job is already running',
+        activeJob: { operation: currentWork.operation, courseCode: currentWork.courseCode }
+      })
+    }
 
     // 1. Load course + voice config
     const { data: course, error: courseError } = await supabase
@@ -3649,8 +4163,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       })
     }
 
-    // 7. Enqueue generation; the serial queue worker runs it. Respond 202 now.
-    const run = async (job) => {
+    // 7. Start generation
     startWork('generate-components', courseCode, uniqueNeeded.length)
 
     // Load gender expansions if needed
@@ -3660,12 +4173,23 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       logger.info(`Loaded ${genderMap.size} gender expansions from DB`)
     }
 
-    const results = { success: 0, failed: 0, timedOut: 0, errors: [] }
+    const results = { success: 0, failed: 0, errors: [] }
 
     // Generate items using the same pattern as /generate
     const generateItem = async (item) => {
-      // Show what's in flight immediately (counting happens once, in the batch loop)
-      currentWork.lastItem = item.text?.substring(0, 40)
+      // PRECIOUS-AUDIO GUARD: never TTS over a human recording at this key.
+      // (No voiceId → no upsert key to collide with; fails at dispatch as before.)
+      if (item.voiceId) {
+        const guardedHuman = await humanRowAtAudioKey(
+          courseCode, normalizeForAudio(item.text), item.language, item.role, item.voiceId
+        )
+        if (guardedHuman) {
+          updateWork(item.text, true)
+          logger.info(`[PreciousAudio] SKIP generate-components: "${item.text.substring(0, 40)}" (${item.role}) — human recording ${guardedHuman.id} holds this key`)
+          return { success: true, item, skippedHuman: true }
+        }
+      }
+
       // Cross-course sharing
       try {
         const { data: siblingAudio } = await supabase
@@ -3701,6 +4225,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
             .single()
 
           if (!insertError && insertedAudio) {
+            updateWork(item.text, true)
             logger.info(`Shared: ${item.role} - "${item.text.substring(0, 40)}..." (sibling)`)
             return { success: true, item, shared: true }
           }
@@ -3779,6 +4304,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
 
       if (insertError) throw insertError
 
+      updateWork(item.text, true)
       logger.info(`Generated: ${item.role} - "${item.text.substring(0, 30)}..."`)
       return { success: true, item }
     }
@@ -3792,26 +4318,26 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       const totalBatches = Math.ceil(uniqueNeeded.length / concurrencyToUse)
       logger.info(`[Components] Batch ${batchNum}/${totalBatches} (${batch.length} items)`)
 
+      const withTimeout = (fn, ms = 120_000) => Promise.race([
+        fn(),
+        new Promise((_, reject) => setTimeout(() => reject(new Error(`Timed out after ${ms / 1000}s`)), ms))
+      ])
+
       const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => generateItem(item))))
 
       for (let j = 0; j < batchResults.length; j++) {
         const result = batchResults[j]
-        const item = batch[j]
         if (result.status === 'fulfilled') {
           results.success++
-          updateWork(item.text, 'success')
-        } else if (result.reason?.isTimeout) {
-          results.timedOut++
-          updateWork(item.text, 'timeout', result.reason.message)
-          logger.warn(`[Components] Timeout: ${item.role} - "${item.text.substring(0, 30)}..." (will retry next run)`)
         } else {
           results.failed++
+          const item = batch[j]
           results.errors.push({
             text: item.text.substring(0, 50),
             role: item.role,
             error: result.reason?.message || 'Unknown error'
           })
-          updateWork(item.text, 'failed', result.reason?.message)
+          updateWork(item.text, false, result.reason?.message)
         }
       }
     }
@@ -3827,35 +4353,25 @@ app.post('/generate-components/:courseCode', async (req, res) => {
 
     if (!wasCancelled && results.success > 0) {
       await bumpCourseVersion(supabase, courseCode, 'patch')
+      // Integer revalidation key — once per run — so the app picks up the
+      // new component audio.
+      await bumpCourseRevalidation(supabase, courseCode)
     }
 
-    job.result = {
+    res.json({
       status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: uniqueNeeded.length,
       success: results.success,
       failed: results.failed,
-      timedOut: results.timedOut,
       cancelled: wasCancelled,
       errors: results.errors.slice(0, 10),
       linked: linkResult
-    }
-    return job.result
-    } // end run
-
-    const q = enqueueJob({ courseCode, operation: 'generate-components', role: null, meta: { willGenerate: uniqueNeeded.length }, run })
-    return res.status(202).json({
-      status: q.alreadyQueued ? 'already_queued' : 'queued',
-      jobId: q.jobId,
-      position: q.position,
-      courseCode,
-      operation: 'generate-components',
-      willGenerate: uniqueNeeded.length
     })
 
   } catch (error) {
     logger.error('Generate components error:', error)
-    if (currentWork.active) endWork()
+    endWork()
     res.status(500).json({ error: error.message })
   }
 })
@@ -3871,21 +4387,23 @@ async function linkComponentAudio(courseCode, knownLang, targetLang, components,
   // Using .in('text_normalized', batch) with long Unicode strings can exceed
   // PostgREST URL length limits, causing silent failures. Instead, fetch all
   // audio for the relevant roles and build the map locally.
-  const audioMap = new Map() // "normalized|lang|role" -> course_audio.id
+  const audioMap = new Map() // "normalized|lang|role" -> preferred course_audio row
 
   for (const role of ['known', 'target1', 'target2', 'presentation']) {
     let offset = 0
     while (true) {
       const { data, error } = await supabase
         .from('course_audio')
-        .select('id, text_normalized, language, role, s3_key')
+        .select('id, text_normalized, language, role, s3_key, origin, created_at')
         .eq('course_code', courseCode)
         .eq('role', role)
         .not('s3_key', 'like', 'pending/%')
         .range(offset, offset + 999)
       if (error || !data?.length) break
       for (const a of data) {
-        audioMap.set(`${normalizeText(a.text_normalized)}|${a.language}|${a.role}`, a.id)
+        // human > newest > deterministic — never arbitrary when keys collide
+        const key = `${normalizeText(a.text_normalized)}|${a.language}|${a.role}`
+        audioMap.set(key, pickPreferredAudioRow(audioMap.get(key), a))
       }
       if (data.length < 1000) break
       offset += 1000
@@ -3898,19 +4416,19 @@ async function linkComponentAudio(courseCode, knownLang, targetLang, components,
   for (const comp of components) {
     const updates = {}
 
-    const knownAudioId = audioMap.get(`${normalizeText(comp.known_text)}|${knownLang}|known`)
+    const knownAudioId = audioMap.get(`${normalizeText(comp.known_text)}|${knownLang}|known`)?.id
     if (knownAudioId && comp.known_audio_id !== knownAudioId) {
       updates.known_audio_id = knownAudioId
       result.known++
     }
 
-    const t1AudioId = audioMap.get(`${normalizeText(comp.target_text)}|${targetLang}|target1`)
+    const t1AudioId = audioMap.get(`${normalizeText(comp.target_text)}|${targetLang}|target1`)?.id
     if (t1AudioId && comp.target1_audio_id !== t1AudioId) {
       updates.target1_audio_id = t1AudioId
       result.target1++
     }
 
-    const t2AudioId = audioMap.get(`${normalizeText(comp.target_text)}|${targetLang}|target2`)
+    const t2AudioId = audioMap.get(`${normalizeText(comp.target_text)}|${targetLang}|target2`)?.id
     if (t2AudioId && comp.target2_audio_id !== t2AudioId) {
       updates.target2_audio_id = t2AudioId
       result.target2++
@@ -3918,7 +4436,7 @@ async function linkComponentAudio(courseCode, knownLang, targetLang, components,
 
     const presText = compPresTexts.get(comp.id)
     if (presText) {
-      const presAudioId = audioMap.get(`${normalizeText(presText)}|${knownLang}|presentation`)
+      const presAudioId = audioMap.get(`${normalizeText(presText)}|${knownLang}|presentation`)?.id
       if (presAudioId && comp.presentation_audio_id !== presAudioId) {
         updates.presentation_audio_id = presAudioId
         result.presentation++
@@ -4068,6 +4586,13 @@ app.post('/splice-components/:courseCode', async (req, res) => {
     const { courseCode } = req.params
     const { dryRun = false, roles = ['target1', 'target2'] } = req.body || {}
 
+    if (currentWork.active) {
+      return res.status(409).json({
+        error: 'Another job is already running',
+        activeJob: { operation: currentWork.operation, courseCode: currentWork.courseCode }
+      })
+    }
+
     // 1. Load course
     const { data: course, error: courseError } = await supabase
       .from('courses')
@@ -4211,8 +4736,7 @@ app.post('/splice-components/:courseCode', async (req, res) => {
       })
     }
 
-    // 6. Enqueue splice execution; the serial queue worker runs it. Respond 202 now.
-    const run = async (job) => {
+    // 6. Execute splices
     startWork('splice-components', courseCode, splicePlan.length)
 
     // Cache downloaded parent audio to avoid re-downloading the same file
@@ -4224,6 +4748,23 @@ app.post('/splice-components/:courseCode', async (req, res) => {
       if (currentWork.cancelled) break
 
       try {
+        // PRECIOUS-AUDIO GUARD: if a human recording occupies this component's
+        // audio key, keep it — link the phrase to the human take, never splice over.
+        const guardedHuman = await humanRowAtAudioKey(
+          courseCode, normalizeForAudio(splice.componentText), splice.language, splice.role, 'spliced'
+        )
+        if (guardedHuman) {
+          const humanAudioCol = splice.role === 'target1' ? 'target1_audio_id' : 'target2_audio_id'
+          await supabase
+            .from('course_practice_phrases')
+            .update({ [humanAudioCol]: guardedHuman.id })
+            .eq('id', splice.componentId)
+          results.success++
+          updateWork(`${splice.componentText} (${splice.role})`, true)
+          logger.info(`[PreciousAudio] SKIP splice: "${splice.componentText}" (${splice.role}) — human recording ${guardedHuman.id} holds this key, linked instead`)
+          continue
+        }
+
         // Download parent audio (with cache)
         let parentBuffer = parentAudioCache.get(splice.parentS3Key)
         if (!parentBuffer) {
@@ -4297,9 +4838,12 @@ app.post('/splice-components/:courseCode', async (req, res) => {
 
     if (!wasCancelled && results.success > 0) {
       await bumpCourseVersion(supabase, courseCode, 'patch')
+      // Integer revalidation key — once per run — so the app picks up the
+      // spliced component audio.
+      await bumpCourseRevalidation(supabase, courseCode)
     }
 
-    job.result = {
+    res.json({
       status: wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: splicePlan.length,
@@ -4307,22 +4851,10 @@ app.post('/splice-components/:courseCode', async (req, res) => {
       failed: results.failed,
       skipped,
       errors: results.errors.slice(0, 20)
-    }
-    return job.result
-    } // end run
-
-    const q = enqueueJob({ courseCode, operation: 'splice-components', role: null, meta: { willSplice: splicePlan.length }, run })
-    return res.status(202).json({
-      status: q.alreadyQueued ? 'already_queued' : 'queued',
-      jobId: q.jobId,
-      position: q.position,
-      courseCode,
-      operation: 'splice-components',
-      willSplice: splicePlan.length
     })
 
   } catch (err) {
-    if (currentWork.active) endWork()
+    endWork()
     logger.error('[Splice] Error:', err)
     res.status(500).json({ error: err.message })
   }
@@ -4344,6 +4876,82 @@ app.post('/splice-components/:courseCode', async (req, res) => {
 
 const POD_CHARS_TO_COST = 4.20 / 1_000_000  // xAI pricing; near-identical to Azure scale, rough estimate
 
+// Safe ceiling for concurrent xAI TTS calls during pod generation. xAI's
+// /v1/tts throws intermittent 500 "Timeout expired" / ECONNRESET under heavy
+// fan-out, so we keep the worker pool small. The /generate-pods endpoint
+// clamps any caller-supplied concurrency to this ceiling.
+const POD_GEN_CONCURRENCY_DEFAULT = 5
+const POD_GEN_CONCURRENCY_MAX = 6
+
+// Default Azure neural voice per Azure locale, used as the safety-net voice
+// when xAI synthesis fails for a clip and we fall back to Azure. These are
+// standard, broadly-available neural voices; the map covers the SSi launch
+// languages plus Croatian. Unlisted locales fall through to a null lookup and
+// the clip is left for xAI to retry on a later run (no silent wrong-voice).
+const DEFAULT_AZURE_VOICE_BY_LOCALE = {
+  'en-GB': 'en-GB-SoniaNeural',
+  'en-US': 'en-US-JennyNeural',
+  'cy-GB': 'cy-GB-NiaNeural',
+  'es-ES': 'es-ES-ElviraNeural',
+  'es-MX': 'es-MX-DaliaNeural',
+  'fr-FR': 'fr-FR-DeniseNeural',
+  'de-DE': 'de-DE-KatjaNeural',
+  'it-IT': 'it-IT-ElsaNeural',
+  'pt-PT': 'pt-PT-RaquelNeural',
+  'pt-BR': 'pt-BR-FranciscaNeural',
+  'nl-NL': 'nl-NL-ColetteNeural',
+  'pl-PL': 'pl-PL-ZofiaNeural',
+  'tr-TR': 'tr-TR-EmelNeural',
+  'hr-HR': 'hr-HR-GabrijelaNeural',
+}
+
+/**
+ * Pick the Azure safety-net voice for a clip whose primary (xAI) provider
+ * failed after all retries.
+ *
+ * Resolution order:
+ *   1. A course-configured Azure voice for this track, if one is Azure already
+ *      (known track → ctx.knownVoice; either track → the course voice_config
+ *      role voice). This reuses the voice the course author actually chose.
+ *   2. A standard default Azure neural voice for the clip's language locale
+ *      (DEFAULT_AZURE_VOICE_BY_LOCALE).
+ *
+ * Returns { voice_id, provider:'azure', gender } or null if no Azure voice can
+ * be determined (caller then leaves the clip unsynthesised rather than guess).
+ *
+ * @param {object} ctx - course context from getCourseContext (knownVoice, voiceConfig)
+ * @param {('target'|'known')} track - which pod track failed
+ * @param {string} language - the clip's language code (target or known lang)
+ */
+function pickAzureFallbackVoice(ctx, track, language) {
+  // 1a. Known track: the course's known voice is often already Azure.
+  if (track === 'known' && ctx.knownVoice && (ctx.knownVoice.provider || 'azure') === 'azure' && ctx.knownVoice.voice_id) {
+    return { voice_id: ctx.knownVoice.voice_id, provider: 'azure', gender: ctx.knownVoice.gender || 'n' }
+  }
+
+  // 1b. Either track: if the course voice_config role voice is Azure, reuse it.
+  const voices = (ctx.voiceConfig && (ctx.voiceConfig.voices || ctx.voiceConfig)) || {}
+  const roleVoice = track === 'target' ? (voices.target1 || voices.target) : voices.known
+  if (roleVoice && (roleVoice.provider || 'azure') === 'azure') {
+    const vid = roleVoice.voiceId || roleVoice.voice_id
+    if (vid) return { voice_id: vid, provider: 'azure', gender: roleVoice.gender || 'n' }
+  }
+
+  // 2. Standard default Azure neural voice for the language's Azure locale.
+  let locale = null
+  try {
+    locale = getAzureLocale(language)
+  } catch (_) {
+    locale = null  // language not Azure-configured
+  }
+  const voiceId = locale ? DEFAULT_AZURE_VOICE_BY_LOCALE[locale] : null
+  if (voiceId) {
+    return { voice_id: voiceId, provider: 'azure', gender: 'n' }
+  }
+
+  return null
+}
+
 // Canonical speaker name = parens stripped. Mirrors tools/pod-sync.cjs so the
 // same key collapses timed/gendered variants ("Susjed (08:00)" / "Susjed (M)"
 // → "Susjed") into one voice assignment.
@@ -4364,12 +4972,16 @@ function resolvePodSpeakerVoice(podSpeakers, speaker, track) {
   const entry = mapping[canon] || mapping[speaker] || mapping._default
   if (!entry) return null
 
-  // New shape (per-track)
+  // New shape (per-track). `locale` is the explicit TTS handle the coverage map
+  // resolved (e.g. pt-PT for European Portuguese, es-MX, native fr, Azure hr-HR);
+  // it overrides the default toBcp47() mapping in buildPodTTSConfig so regional
+  // variants render correctly instead of collapsing to the base language.
   if (entry[track] && entry[track].voice_id) {
     return {
       voice_id: entry[track].voice_id,
       provider: entry[track].provider || 'azure',
       gender: entry.gender || 'n',
+      locale: entry[track].locale || null,
     }
   }
   // Legacy shape only carries the target voice
@@ -4390,7 +5002,10 @@ function buildPodTTSConfig(voice, language) {
   const base = { voiceId: voice.voice_id, speed: 1.0 }
   if (voice.provider === 'xai') {
     base.apiKey = process.env.XAI_API_KEY
-    base.language = toBcp47(language)
+    // Prefer the coverage-map locale carried on the voice (pt-PT, es-MX, ar-EG,
+    // native fr/zh, …). toBcp47() strips region (pt-PT→pt=Brazilian), so only
+    // use it as the fallback when a voice has no explicit locale.
+    base.language = voice.locale || toBcp47(language)
   } else if (voice.provider === 'elevenlabs') {
     base.apiKey = process.env.ELEVENLABS_API_KEY
   } else {
@@ -4418,32 +5033,84 @@ async function findExistingAudio(courseCode, text, language, role, voiceId) {
     .eq('voice_id', voiceId)
     .limit(1)
   if (error) {
-    logger.warn(`[Pod] findExistingAudio: ${error.message}`)
-    return null
+    // Fail CLOSED: a swallowed lookup error used to fall through to the upsert,
+    // which on a key conflict would overwrite the existing row (including a
+    // precious origin='human' one). Failing the clip is recoverable; a clobbered
+    // human recording is not.
+    throw new Error(`[Pod] findExistingAudio failed: ${error.message}`)
   }
   return data?.[0]?.id || null
 }
 
 /**
  * Generate one audio clip and insert into course_audio. Returns the audio_id.
+ *
+ * Resilience: the primary voice (often xAI for known/English clips) is tried
+ * first via generateWithRetry (backoff + jitter on transient 5xx/ECONNRESET).
+ * If it still fails after all retries AND the primary was xAI, we fall back to
+ * an Azure voice for that one clip so it generates rather than staying NULL.
+ * The Azure voice is chosen by pickAzureFallbackVoice (course voice → default).
+ *
+ * @param {object} args
+ * @param {object} [args.ctx] - course context (for Azure fallback voice pick)
+ * @param {('target'|'known')} [args.track] - which pod track this clip is
+ * @param {string} [args.sentenceId] - pod sentence id (for the fallback log line)
  */
-async function generatePodAudio({ courseCode, text, language, role, voice }) {
+async function generatePodAudio({ courseCode, text, language, role, voice, ctx, track, sentenceId }) {
   // Reuse by text+voice hash
   const existing = await findExistingAudio(courseCode, text, language, role, voice.voice_id)
   if (existing) return { id: existing, reused: true }
 
-  const ttsConfig = buildPodTTSConfig(voice, language)
-  const { audioBuffer } = await ttsService.generateWithRetry(text, voice.provider || 'azure', ttsConfig)
-  const { buffer: masteredBuffer, durationMs } = await masterAudio(audioBuffer)
+  let provider = voice.provider || 'azure'
+  let activeVoice = voice
+  let audioBuffer
+  try {
+    const ttsConfig = buildPodTTSConfig(activeVoice, language)
+    ;({ audioBuffer } = await ttsService.generateWithRetry(text, provider, ttsConfig))
+  } catch (primaryErr) {
+    // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
+    // back when the primary was xAI — Azure failing has nowhere better to go,
+    // and elevenlabs failures aren't in scope for this safety net.
+    if (provider !== 'xai') { primaryErr.message = `[STAGE=tts:${provider}] ${primaryErr.message}`; throw primaryErr }
+
+    const kind = track || (role === 'known' ? 'known' : 'target')
+    const azureVoice = ctx ? pickAzureFallbackVoice(ctx, kind, language) : null
+    if (!azureVoice) {
+      // No Azure voice determinable — surface the original xAI failure so the
+      // clip is recorded as failed (not silently wrong-voiced).
+      primaryErr.message = `[STAGE=tts:xai,no-azure-fallback] ${primaryErr.message}`; throw primaryErr
+    }
+
+    logger.info(`[Pods] fallback xAI→Azure for ${sentenceId || '?'} ${kind} voice=${azureVoice.voice_id} (${primaryErr.message})`)
+    provider = 'azure'
+    activeVoice = azureVoice
+    const azureConfig = buildPodTTSConfig(activeVoice, language)
+    try {
+      ;({ audioBuffer } = await ttsService.generateWithRetry(text, 'azure', azureConfig))
+    } catch (e) { e.message = `[STAGE=tts:azure-fallback,xai-also-failed] ${e.message}`; throw e }
+  }
+  voice = activeVoice  // course_audio row records the voice that actually produced the clip
+  let masteredBuffer, durationMs
+  try {
+    ;({ buffer: masteredBuffer, durationMs } = await masterAudio(audioBuffer))
+  } catch (e) {
+    // Empty/corrupt TTS buffer (buflen=0) usually means a cross-language voice
+    // mismatch (e.g. an English voice handed non-English text) — keep prov/voice
+    // /buflen so the failure is self-diagnosing.
+    e.message = `[STAGE=master prov=${provider} voice=${voice?.voice_id} lang=${language} buflen=${audioBuffer ? audioBuffer.length : -1}] ${e.message}`
+    throw e
+  }
 
   const audioId = uuidv4().toUpperCase()
   const s3Key = `mastered/${audioId}.mp3`
-  await s3.send(new PutObjectCommand({
-    Bucket: S3_BUCKET,
-    Key: s3Key,
-    Body: masteredBuffer,
-    ContentType: 'audio/mpeg',
-  }))
+  try {
+    await s3.send(new PutObjectCommand({
+      Bucket: S3_BUCKET,
+      Key: s3Key,
+      Body: masteredBuffer,
+      ContentType: 'audio/mpeg',
+    }))
+  } catch (e) { e.message = `[STAGE=s3] ${e.message}`; throw e }
 
   const { data: inserted, error: insertError } = await supabase
     .from('course_audio')
@@ -4509,6 +5176,7 @@ async function getCourseContext(courseCode) {
     knownLang: course.known_lang,
     targetLang: course.target_lang,
     knownVoice,
+    voiceConfig: vc,  // raw voice_config — pickAzureFallbackVoice reads role voices for the Azure safety net
   }
 }
 
@@ -4584,7 +5252,9 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     const body = req.body || {}
     const podIds = body.pod_ids || null
     const roles = body.roles || ['target', 'known']
-    const concurrency = Math.max(1, Math.min(10, body.concurrency || 5))
+    // Cap fan-out: xAI TTS is flaky under heavy concurrency, so clamp to a
+    // small safe ceiling (POD_GEN_CONCURRENCY_MAX) regardless of caller input.
+    const concurrency = Math.max(1, Math.min(POD_GEN_CONCURRENCY_MAX, body.concurrency || POD_GEN_CONCURRENCY_DEFAULT))
 
     const ctx = await getCourseContext(courseCode)
 
@@ -4648,6 +5318,9 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
             language: item.language,
             role: item.role,
             voice: item.voice,
+            ctx,                  // enables Azure fallback when xAI fails
+            track: item.kind,     // 'target' | 'known'
+            sentenceId: item.sentence_id,
           })
 
           // Link the audio onto the pod sentence
@@ -4716,3 +5389,9 @@ module.exports.findExistingAudio = findExistingAudio
 module.exports.generatePodAudio = generatePodAudio
 module.exports.s3 = s3
 module.exports.S3_BUCKET = S3_BUCKET
+// Human-first FK link pass (G2 pre-pass + RPC) — the voice engine's link
+// step calls this instead of the bare RPC so fresh human rows win links.
+module.exports.linkAudioIds = linkAudioIds
+// PRECIOUS-AUDIO GUARD helper (G1) — exported so the pods recording stream can
+// unit-test that TTS paths refuse to write over human pod rows (additive).
+module.exports.humanRowAtAudioKey = humanRowAtAudioKey

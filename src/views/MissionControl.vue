@@ -120,8 +120,8 @@ onMounted(() => {
 <style scoped>
 .mission-control {
   min-height: 100vh;
-  background: #0f172a;
-  color: #f1f5f9;
+  background: var(--canvas);
+  color: var(--ink);
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
 }
 
@@ -141,7 +141,7 @@ onMounted(() => {
   font-weight: 500;
   border: 1px solid transparent;
   background: transparent;
-  color: #64748b;
+  color: var(--faint);
   cursor: pointer;
   transition: all 0.15s ease;
   white-space: nowrap;
@@ -149,9 +149,9 @@ onMounted(() => {
 }
 
 .chip:hover {
-  border-color: #334155;
-  color: #94a3b8;
-  background: #334155;
+  border-color: var(--surface-2);
+  color: var(--muted);
+  background: var(--surface-2);
 }
 
 .mc-main {

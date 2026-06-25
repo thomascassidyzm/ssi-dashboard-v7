@@ -104,15 +104,15 @@ function formatTime(timestamp) {
 
 <style scoped>
 .pipeline-item {
-  background: #1e293b;
-  border: 1px solid #475569;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .pipeline-item:hover {
-  border-color: #ffa630;
+  border-color: var(--accent);
 }
 
 .pipeline-item.status-processing {
@@ -145,7 +145,7 @@ function formatTime(timestamp) {
   text-align: center;
 }
 
-.icon-pending { color: #c1c1bb; }
+.icon-pending { color: var(--muted); }
 .icon-processing { color: #06b6d4; }
 .icon-complete { color: #06ffa5; }
 .icon-failed { color: #e63946; }
@@ -168,14 +168,14 @@ function formatTime(timestamp) {
 .item-id {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
-  color: #c1c1bb;
+  color: var(--muted);
   display: block;
 }
 
 .item-text {
   font-family: 'Crimson Pro', serif;
   font-size: 1rem;
-  color: #f7f7f2;
+  color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -191,7 +191,7 @@ function formatTime(timestamp) {
 .progress-bar {
   flex: 1;
   height: 6px;
-  background: #475569;
+  background: var(--surface-3);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -221,13 +221,13 @@ function formatTime(timestamp) {
   display: block;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
-  color: #c1c1bb;
+  color: var(--muted);
 }
 
 .expand-btn {
   background: transparent;
   border: none;
-  color: #c1c1bb;
+  color: var(--muted);
   font-size: 0.75rem;
   cursor: pointer;
   padding: 0.25rem;
@@ -236,8 +236,8 @@ function formatTime(timestamp) {
 /* Expanded Details */
 .item-details {
   padding: 1rem;
-  background: #0f172a;
-  border-top: 1px solid #475569;
+  background: var(--canvas);
+  border-top: 1px solid var(--line);
 }
 
 .detail-row {
@@ -248,13 +248,13 @@ function formatTime(timestamp) {
 }
 
 .detail-label {
-  color: #c1c1bb;
+  color: var(--muted);
   min-width: 60px;
   flex-shrink: 0;
 }
 
 .detail-value {
-  color: #f7f7f2;
+  color: var(--ink);
 }
 
 .detail-value.mono {
@@ -274,10 +274,10 @@ function formatTime(timestamp) {
 
 .action-btn {
   padding: 0.4rem 0.75rem;
-  background: #334155;
-  border: 1px solid #475569;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: 6px;
-  color: #f7f7f2;
+  color: var(--ink);
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.8rem;
   cursor: pointer;
@@ -285,7 +285,7 @@ function formatTime(timestamp) {
 }
 
 .action-btn:hover {
-  background: #475569;
+  background: var(--surface-3);
 }
 
 .action-btn.retry:hover {
@@ -301,6 +301,26 @@ function formatTime(timestamp) {
 .action-btn.remove:hover {
   background: rgba(230, 57, 70, 0.2);
   border-color: #e63946;
+}
+
+/* Light mode: darken neon state colors so text/icons/borders stay legible on white.
+   Dark mode keeps the cinematic neon values defined above. */
+:root[data-theme="light"] .pipeline-item.status-complete {
+  border-color: #047857;
+}
+:root[data-theme="light"] .pipeline-item.status-processing {
+  border-color: #0e7490;
+}
+:root[data-theme="light"] .icon-processing,
+:root[data-theme="light"] .progress-text {
+  color: #0e7490;
+}
+:root[data-theme="light"] .icon-complete {
+  color: #047857;
+}
+:root[data-theme="light"] .icon-failed,
+:root[data-theme="light"] .detail-value.error {
+  color: #b91c1c;
 }
 
 /* Transition */

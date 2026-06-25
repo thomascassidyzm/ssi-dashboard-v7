@@ -2,15 +2,15 @@
   <div class="text-generation">
     <div class="max-w-4xl mx-auto px-6 py-8 space-y-6">
       <!-- Language Selection (Create Mode) -->
-      <section v-if="isCreateMode" class="bg-slate-800/30 border border-emerald-500/30 rounded-lg p-6">
+      <section v-if="isCreateMode" class="bg-surface/30 border border-emerald-500/30 rounded-lg p-6">
         <h2 class="text-sm font-medium text-emerald-400 uppercase tracking-wide mb-4">New Course</h2>
 
         <div class="grid grid-cols-2 gap-6">
           <div>
-            <label class="block text-xs text-slate-500 mb-2">Known Language (Learning FROM)</label>
+            <label class="block text-xs text-faint mb-2">Known Language (Learning FROM)</label>
             <select
               v-model="knownLanguage"
-              class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+              class="w-full bg-surface-2 border border-line rounded-lg px-3 py-2 text-ink text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
             >
               <option value="" disabled selected>{{ languagesLoading ? 'Loading...' : 'Select known language' }}</option>
               <option v-for="lang in languages" :key="lang.code" :value="lang.code">
@@ -19,10 +19,10 @@
             </select>
           </div>
           <div>
-            <label class="block text-xs text-slate-500 mb-2">Target Language (Learning TO)</label>
+            <label class="block text-xs text-faint mb-2">Target Language (Learning TO)</label>
             <select
               v-model="targetLanguage"
-              class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+              class="w-full bg-surface-2 border border-line rounded-lg px-3 py-2 text-ink text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
             >
               <option value="" disabled selected>{{ languagesLoading ? 'Loading...' : 'Select target language' }}</option>
               <option v-for="lang in languages" :key="lang.code" :value="lang.code">
@@ -34,13 +34,13 @@
 
         <div v-if="computedCourseCode" class="mt-4 flex items-center justify-between bg-emerald-900/20 border border-emerald-500/20 rounded-lg p-3">
           <p class="text-sm">
-            <span class="text-slate-400">Course code:</span>
+            <span class="text-muted">Course code:</span>
             <span class="text-emerald-400 font-mono ml-2">{{ computedCourseCode }}</span>
           </p>
           <button
             @click="createCourse"
             :disabled="creatingCourse"
-            class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-all"
+            class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-3 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-all"
           >
             {{ creatingCourse ? 'Creating...' : 'Create Course' }}
           </button>
@@ -48,9 +48,9 @@
       </section>
 
       <!-- Target seeds control -->
-      <section v-if="!isCreateMode" class="bg-slate-800/30 border border-slate-700/50 rounded-lg px-4 py-2">
+      <section v-if="!isCreateMode" class="bg-surface/30 border border-line/50 rounded-lg px-4 py-2">
         <div class="flex items-center gap-4">
-          <span class="text-xs text-slate-500 uppercase">Target</span>
+          <span class="text-xs text-faint uppercase">Target</span>
           <div class="flex items-center gap-2">
             <button
               v-for="size in courseSizes"
@@ -59,7 +59,7 @@
               class="px-2.5 py-1 rounded border transition-all text-xs font-medium"
               :class="seedCount === size.seeds
                 ? 'bg-emerald-600/20 border-emerald-500/50 text-emerald-400'
-                : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:border-slate-500/50'"
+                : 'bg-surface-2/30 border-line/50 text-muted hover:border-line/50'"
             >
               {{ size.label }}
             </button>
@@ -68,34 +68,34 @@
               type="number"
               min="1"
               max="1000"
-              class="w-16 px-2 py-1 rounded border bg-slate-700/50 border-slate-600/50 text-slate-200 text-xs text-center font-mono"
+              class="w-16 px-2 py-1 rounded border bg-surface-2/50 border-line/50 text-ink text-xs text-center font-mono"
             />
           </div>
         </div>
       </section>
 
       <!-- Course Stats Summary Bar -->
-      <section v-if="progress.currentSeed > 0 || progress.legosInserted > 0" class="bg-slate-800/30 border border-slate-700/50 rounded-lg px-6 py-3">
+      <section v-if="progress.currentSeed > 0 || progress.legosInserted > 0" class="bg-surface/30 border border-line/50 rounded-lg px-6 py-3">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-6">
             <div class="flex items-center gap-2">
-              <span class="text-xs text-slate-500 uppercase">Seeds</span>
-              <span class="text-sm font-mono font-semibold text-slate-200">{{ progress.currentSeed }}/{{ progress.totalSeeds || seedCount }}</span>
+              <span class="text-xs text-faint uppercase">Seeds</span>
+              <span class="text-sm font-mono font-semibold text-ink">{{ progress.currentSeed }}/{{ progress.totalSeeds || seedCount }}</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-xs text-slate-500 uppercase">LEGOs</span>
-              <span class="text-sm font-mono font-semibold text-slate-200">{{ progress.legosInserted }}</span>
+              <span class="text-xs text-faint uppercase">LEGOs</span>
+              <span class="text-sm font-mono font-semibold text-ink">{{ progress.legosInserted }}</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-xs text-slate-500 uppercase">Phrases</span>
-              <span class="text-sm font-mono font-semibold text-slate-200">{{ progress.phrasesInserted.toLocaleString() }}</span>
+              <span class="text-xs text-faint uppercase">Phrases</span>
+              <span class="text-sm font-mono font-semibold text-ink">{{ progress.phrasesInserted.toLocaleString() }}</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-xs text-slate-500 uppercase">Ratio</span>
+              <span class="text-xs text-faint uppercase">Ratio</span>
               <span class="text-sm font-mono font-semibold" :class="ratioClass">{{ ratio }}</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-xs text-slate-500 uppercase">Quality</span>
+              <span class="text-xs text-faint uppercase">Quality</span>
               <span class="text-sm font-mono font-semibold" :class="qualityScoreClass">{{ progress.avgPhraseScore || '—' }}</span>
             </div>
           </div>
@@ -116,7 +116,7 @@
         </div>
 
         <div class="flex items-center justify-between mb-3">
-          <h2 class="text-xs font-medium text-slate-500 uppercase tracking-wide">Pipeline</h2>
+          <h2 class="text-xs font-medium text-faint uppercase tracking-wide">Pipeline</h2>
           <div class="flex items-center gap-2">
             <button
               @click="chatExpanded = !chatExpanded"
@@ -125,7 +125,7 @@
                 ? 'bg-violet-600/20 border-violet-500/50 text-violet-400'
                 : orchestratorHasPending
                   ? 'bg-amber-600/20 border-amber-500/50 text-amber-400 animate-pulse'
-                  : 'bg-slate-700/30 border-slate-600/50 text-slate-500 hover:border-violet-500/50 hover:text-violet-400'"
+                  : 'bg-surface-2/30 border-line/50 text-faint hover:border-violet-500/50 hover:text-violet-400'"
             >
               Chat
               <span v-if="unreadChatCount > 0 && !chatExpanded" class="absolute -top-1.5 -right-1.5 min-w-[1.1rem] h-[1.1rem] flex items-center justify-center rounded-full bg-amber-500 text-[10px] font-bold text-slate-900 px-1">{{ unreadChatCount > 99 ? '99+' : unreadChatCount }}</span>
@@ -134,24 +134,24 @@
         </div>
 
         <!-- Chat Panel -->
-        <div v-if="chatExpanded" class="mb-3 bg-slate-900/60 border rounded-lg overflow-hidden flex flex-col"
-          :class="orchestratorHasPending ? 'border-amber-500/40' : 'border-slate-600/40'"
+        <div v-if="chatExpanded" class="mb-3 bg-canvas/60 border rounded-lg overflow-hidden flex flex-col"
+          :class="orchestratorHasPending ? 'border-amber-500/40' : 'border-line/40'"
         >
           <!-- Header -->
-          <div class="flex items-center justify-between px-3 py-2 border-b border-slate-700/50">
+          <div class="flex items-center justify-between px-3 py-2 border-b border-line/50">
             <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full" :class="agents.running_count > 0 ? 'bg-emerald-400' : 'bg-slate-600'"></span>
-              <span class="text-xs font-medium" :class="agents.running_count > 0 ? 'text-emerald-400' : 'text-slate-500'">
+              <span class="w-2 h-2 rounded-full" :class="agents.running_count > 0 ? 'bg-emerald-400' : 'bg-surface-3'"></span>
+              <span class="text-xs font-medium" :class="agents.running_count > 0 ? 'text-emerald-400' : 'text-faint'">
                 Agent Chat
               </span>
-              <span v-if="visibleChatMessages.length" class="text-xs text-slate-600">{{ visibleChatMessages.length }} messages</span>
+              <span v-if="visibleChatMessages.length" class="text-xs text-faint">{{ visibleChatMessages.length }} messages</span>
             </div>
-            <button @click="clearChat" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Clear</button>
+            <button @click="clearChat" class="text-xs text-faint hover:text-muted transition-colors">Clear</button>
           </div>
 
           <!-- Message thread -->
           <div ref="chatScrollEl" class="flex-1 overflow-y-auto px-3 py-2 space-y-2 max-h-72">
-            <div v-if="!visibleChatMessages.length" class="text-xs text-slate-600 text-center py-4">
+            <div v-if="!visibleChatMessages.length" class="text-xs text-faint text-center py-4">
               Messages with the decompose agent will appear here
             </div>
             <div
@@ -163,24 +163,24 @@
               <div
                 class="max-w-[85%] rounded-lg px-3 py-2 text-xs"
                 :class="msg.direction === 'human_to_agent' || msg._human
-                  ? 'bg-violet-600/20 border border-violet-500/30 text-slate-200'
+                  ? 'bg-violet-600/20 border border-violet-500/30 text-white'
                   : msg.status === 'responded'
-                    ? 'bg-slate-800/60 border border-slate-700/40 text-slate-400'
-                    : 'bg-slate-800/80 border border-slate-600/40 text-slate-200'"
+                    ? 'bg-surface/60 border border-line/40 text-muted'
+                    : 'bg-surface/80 border border-line/40 text-ink'"
               >
                 <div>{{ msg.message || msg.response }}</div>
-                <div class="text-slate-600 mt-1">{{ formatTime(msg.created_at) }}</div>
+                <div class="text-faint mt-1">{{ formatTime(msg.created_at) }}</div>
               </div>
             </div>
           </div>
 
           <!-- Input -->
-          <div class="px-3 py-2 border-t border-slate-700/50 flex gap-2">
+          <div class="px-3 py-2 border-t border-line/50 flex gap-2">
             <textarea
               v-model="chatInput"
               placeholder="Message the agent..."
               rows="2"
-              class="flex-1 bg-slate-800/50 border border-slate-600/40 rounded px-2 py-1.5 text-xs text-slate-200 placeholder-slate-600 resize-none focus:outline-none focus:border-violet-500/50"
+              class="flex-1 bg-surface/50 border border-line/40 rounded px-2 py-1.5 text-xs text-ink placeholder-faint resize-none focus:outline-none focus:border-violet-500/50"
               @keydown.meta.enter="sendChat"
             />
             <button
@@ -199,7 +199,7 @@
           <div class="flex items-center gap-3">
             <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
             <span class="text-xs text-cyan-300">{{ latestProcessMessage }}</span>
-            <span class="text-xs text-slate-500 ml-auto">{{ formatSecondsAgo(secondsSince(lastProgressMessageAt)) }}</span>
+            <span class="text-xs text-faint ml-auto">{{ formatSecondsAgo(secondsSince(lastProgressMessageAt)) }}</span>
           </div>
         </div>
 
@@ -209,18 +209,18 @@
             <div class="flex items-center gap-3">
               <span class="stage-number" :class="stageNumberClass('translate')">1</span>
               <div>
-                <div class="text-sm font-medium text-slate-200">Translate</div>
-                <div class="text-xs text-slate-500">668 seed translations</div>
+                <div class="text-sm font-medium text-ink">Translate</div>
+                <div class="text-xs text-faint">{{ translateTotal }} seed translations</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <span class="text-xs font-mono text-slate-300">{{ progress.seedsTranslated || 0 }}/668</span>
+              <span class="text-xs font-mono text-ink">{{ progress.seedsTranslated || 0 }}/{{ translateTotal }}</span>
               <span v-if="stageComplete('translate')" class="stage-badge-complete">Done</span>
               <button
                 v-if="stageComplete('translate')"
                 @click="confirmResetTranslations"
                 :disabled="translateResetting"
-                class="px-3 py-1 bg-slate-600/20 border border-slate-500/50 text-slate-400 hover:border-red-400/70 hover:text-red-400 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                class="px-3 py-1 bg-surface-3/20 border border-line/50 text-muted hover:border-red-400/70 hover:text-red-400 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
                 {{ translateResetting ? 'Resetting...' : 'Reset' }}
               </button>
@@ -232,7 +232,7 @@
                 <span class="text-xs text-amber-400">No new seeds for {{ translateLastActivity }}</span>
                 <button
                   @click="buildMonitor.refresh()"
-                  class="px-2 py-0.5 bg-slate-600/20 border border-slate-500/50 text-slate-300 hover:border-slate-400/70 text-xs font-medium rounded-lg transition-all"
+                  class="px-2 py-0.5 bg-surface-3/20 border border-line/50 text-ink hover:border-line/70 text-xs font-medium rounded-lg transition-all"
                 >Check</button>
                 <button
                   @click="startTranslation"
@@ -250,7 +250,7 @@
               </button>
             </div>
           </div>
-          <div class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
+          <div class="mt-2 h-1 bg-surface-2/50 rounded-full overflow-hidden">
             <div class="h-full rounded-full bg-blue-500 transition-all duration-500" :style="{ width: `${translatePercent}%` }"></div>
           </div>
         </div>
@@ -261,12 +261,12 @@
             <div class="flex items-center gap-3">
               <span class="stage-number" :class="stageNumberClass('build-team')">2</span>
               <div>
-                <div class="text-sm font-medium text-slate-200">Build Team</div>
-                <div class="text-xs text-slate-500">{{ buildTeamSubtitle }}</div>
+                <div class="text-sm font-medium text-ink">Build Team</div>
+                <div class="text-xs text-faint">{{ buildTeamSubtitle }}</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <span class="text-xs font-mono text-slate-300">{{ progress.currentSeed || 0 }}/{{ seedCount }}</span>
+              <span class="text-xs font-mono text-ink">{{ progress.currentSeed || 0 }}/{{ seedCount }}</span>
               <span v-if="stageComplete('build-team')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('build-team')" class="stage-badge-locked">Locked</span>
               <span v-else-if="buildActive" class="text-xs text-emerald-400">
@@ -277,7 +277,7 @@
                 <span class="text-xs text-amber-400">No new seeds for {{ buildLastActivity }}</span>
                 <button
                   @click="buildMonitor.refresh()"
-                  class="px-2 py-0.5 bg-slate-600/20 border border-slate-500/50 text-slate-300 hover:border-slate-400/70 text-xs font-medium rounded-lg transition-all"
+                  class="px-2 py-0.5 bg-surface-3/20 border border-line/50 text-ink hover:border-line/70 text-xs font-medium rounded-lg transition-all"
                 >Check</button>
                 <button
                   @click="startBuildTeam"
@@ -295,7 +295,7 @@
               </button>
             </div>
           </div>
-          <div v-if="!stageLocked('build-team')" class="mt-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">
+          <div v-if="!stageLocked('build-team')" class="mt-2 h-1 bg-surface-2/50 rounded-full overflow-hidden">
             <div class="h-full rounded-full bg-emerald-500 transition-all duration-500" :style="{ width: `${buildPercent}%` }"></div>
           </div>
         </div>
@@ -306,8 +306,8 @@
             <div class="flex items-center gap-3">
               <span class="stage-number" :class="stageNumberClass('final-pass')">3</span>
               <div>
-                <div class="text-sm font-medium text-slate-200">Final Pass</div>
-                <div class="text-xs text-slate-500">{{ finalPassSubtitle }}</div>
+                <div class="text-sm font-medium text-ink">Final Pass</div>
+                <div class="text-xs text-faint">{{ finalPassSubtitle }}</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
@@ -335,7 +335,7 @@
             </div>
           </div>
           <!-- Progress summary (when not locked and not complete) -->
-          <div v-if="!stageLocked('final-pass') && !stageComplete('final-pass') && finalPassSummary" class="mt-2 text-xs text-slate-500">
+          <div v-if="!stageLocked('final-pass') && !stageComplete('final-pass') && finalPassSummary" class="mt-2 text-xs text-faint">
             {{ finalPassSummary }}
           </div>
         </div>
@@ -346,8 +346,8 @@
             <div class="flex items-center gap-3">
               <span class="stage-number" :class="componentNumberClass">4</span>
               <div>
-                <div class="text-sm font-medium text-slate-200">Verify Components</div>
-                <div class="text-xs text-slate-500">
+                <div class="text-sm font-medium text-ink">Verify Components</div>
+                <div class="text-xs text-faint">
                   <template v-if="componentGaps === null">M-LEGO component completeness</template>
                   <template v-else-if="componentGaps.complete">All {{ componentGaps.total_m_legos }} M-LEGOs have components</template>
                   <template v-else>{{ componentGaps.gaps.total }} of {{ componentGaps.total_m_legos }} M-LEGOs need components</template>
@@ -356,7 +356,7 @@
             </div>
             <div class="flex items-center gap-3">
               <template v-if="componentGaps !== null && !componentGaps.complete">
-                <span class="text-xs text-slate-400">
+                <span class="text-xs text-muted">
                   <span v-if="componentGaps.gaps.null_components" class="text-rose-400">{{ componentGaps.gaps.null_components }} missing</span>
                   <span v-if="componentGaps.gaps.empty_components" class="text-orange-400 ml-2">{{ componentGaps.gaps.empty_components }} empty</span>
                   <span v-if="componentGaps.gaps.partial_components" class="text-amber-400 ml-2">{{ componentGaps.gaps.partial_components }} partial</span>
@@ -383,7 +383,7 @@
                 v-if="componentGaps !== null"
                 @click="checkComponentGaps"
                 :disabled="componentCheckLoading"
-                class="px-3 py-1 bg-slate-600/20 border border-slate-500/50 text-slate-400 hover:border-slate-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                class="px-3 py-1 bg-surface-3/20 border border-line/50 text-muted hover:border-line/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
               >
                 {{ componentCheckLoading ? '...' : 'Recheck' }}
               </button>
@@ -391,14 +391,68 @@
           </div>
         </div>
 
-        <!-- Stage 5: Gender Prep (hidden for non-gendered languages) -->
-        <div v-if="isGenderedLanguage" class="pipeline-card" :class="stageCardClass('gender')">
+        <!-- Stage: Zero Uncertainty (ZUT) — one English prompt → one answer -->
+        <div class="pipeline-card" :class="zutCardClass">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="stage-number" :class="zutNumberClass">Z</span>
+              <div>
+                <div class="text-sm font-medium text-ink">Zero Uncertainty (ZUT)</div>
+                <div class="text-xs text-faint">
+                  <template v-if="zutCollisions === null">One English prompt → one answer</template>
+                  <template v-else-if="zutCollisions.complete">No collisions — every prompt maps to one answer</template>
+                  <template v-else>{{ zutCollisions.collisions.total }} prompts map to multiple answers</template>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span v-if="zutCollisions !== null && !zutCollisions.complete" class="text-xs text-rose-400">{{ zutCollisions.collisions.total }} collisions</span>
+              <span v-if="zutCollisions !== null && zutCollisions.complete" class="stage-badge-complete">Done</span>
+              <button
+                v-if="zutCollisions === null"
+                @click="checkZutCollisions"
+                :disabled="zutCheckLoading"
+                class="px-3 py-1 bg-teal-600/20 border border-teal-500/50 text-teal-400 hover:border-teal-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ zutCheckLoading ? 'Checking...' : 'Check' }}
+              </button>
+              <button
+                v-else-if="!zutCollisions.complete"
+                @click="startZutResolve"
+                :disabled="zutResolveStarting || zutResolveSpawned"
+                class="px-3 py-1 bg-teal-600/20 border border-teal-500/50 text-teal-400 hover:border-teal-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ zutResolveStarting ? 'Spawning...' : zutResolveSpawned ? 'Agent working...' : `Resolve ${zutCollisions.collisions.total}` }}
+              </button>
+              <button
+                v-if="zutCollisions !== null"
+                @click="checkZutCollisions"
+                :disabled="zutCheckLoading"
+                class="px-3 py-1 bg-surface-3/20 border border-line/50 text-muted hover:border-line/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ zutCheckLoading ? '...' : 'Recheck' }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 5: Gender Prep — always shown; the known-gendered list only
+             changes the hint, it never hides the stage (e.g. Macedonian is
+             gendered but was not on the original 6-language hard-code). -->
+        <div class="pipeline-card" :class="stageCardClass('gender')">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
               <span class="stage-number" :class="stageNumberClass('gender')">5</span>
               <div>
-                <div class="text-sm font-medium text-slate-200">Gender Prep</div>
-                <div class="text-xs text-slate-500">Gender expansions</div>
+                <div class="text-sm font-medium text-ink">
+                  Gender Prep
+                  <span v-if="!genderPrepRecommended" class="ml-2 text-[10px] uppercase tracking-wide text-faint border border-line/60 rounded px-1.5 py-0.5 align-middle">Optional</span>
+                </div>
+                <div class="text-xs text-faint">
+                  {{ genderPrepRecommended
+                    ? 'Gender expansions — this language changes words depending on who is speaking or spoken about'
+                    : 'Run this if the target language has masculine/feminine word forms; skip it if not' }}
+                </div>
               </div>
             </div>
             <div class="flex items-center gap-3">
@@ -419,14 +473,14 @@
       </section>
 
       <!-- Seed Grid -->
-      <section v-if="seedGrid.length > 0" class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
+      <section v-if="seedGrid.length > 0" class="bg-surface/30 border border-line/50 rounded-lg overflow-hidden">
         <button
           @click="seedGridExpanded = !seedGridExpanded"
-          class="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800/50 transition-colors"
+          class="w-full px-6 py-4 flex items-center justify-between hover:bg-surface/50 transition-colors"
         >
           <div class="flex items-center gap-3">
-            <span class="text-sm font-medium text-slate-300 uppercase tracking-wide">Seed Grid</span>
-            <span class="text-xs text-slate-500">
+            <span class="text-sm font-medium text-ink uppercase tracking-wide">Seed Grid</span>
+            <span class="text-xs text-faint">
               {{ seedGridFinalized }}/{{ seedGrid.length }} finalized
             </span>
             <span v-if="seedGridDrafted > 0" class="text-xs text-amber-400">
@@ -443,7 +497,7 @@
             </span>
           </div>
           <svg
-            class="w-5 h-5 text-slate-400 transition-transform duration-200"
+            class="w-5 h-5 text-muted transition-transform duration-200"
             :class="{ 'rotate-180': seedGridExpanded }"
             fill="none" stroke="currentColor" viewBox="0 0 24 24"
           >
@@ -451,22 +505,22 @@
           </svg>
         </button>
 
-        <div v-show="seedGridExpanded" class="border-t border-slate-700/50 px-6 py-5">
+        <div v-show="seedGridExpanded" class="border-t border-line/50 px-6 py-5">
           <!-- Grid -->
           <div class="flex flex-wrap gap-1">
             <div
               v-for="cell in seedGrid"
               :key="cell.seed"
               class="seed-cell w-5 h-5 rounded-sm cursor-pointer transition-colors"
-              :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-slate-900' : '']"
+              :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-surface' : '']"
               :data-seed="cell.seed"
               @click="selectSeed(cell.seed)"
             ></div>
           </div>
 
           <!-- Legend -->
-          <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
-            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-slate-700/30"></span> Empty</span>
+          <div class="flex items-center gap-4 mt-3 text-xs text-faint">
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-surface-2/30"></span> Empty</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-indigo-400/60"></span> Building</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-cyan-500/60"></span> Decomposed</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/70 ring-1 ring-inset ring-rose-400"></span> Flagged</span>
@@ -477,54 +531,54 @@
       </section>
 
       <!-- Phrase Viewer (standalone, below grid) -->
-      <section v-if="selectedSeed !== null" class="bg-slate-800/30 border border-slate-700/50 rounded-lg overflow-hidden">
+      <section v-if="selectedSeed !== null" class="bg-surface/30 border border-line/50 rounded-lg overflow-hidden">
         <div class="px-6 py-4">
           <div class="flex items-center justify-between mb-3">
-            <span class="text-sm font-mono font-medium text-slate-300">Seed {{ selectedSeed }}</span>
-            <button @click="selectedSeed = null; seedViewPhrases = []; seedViewSeedText = null" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">✕ close</button>
+            <span class="text-sm font-mono font-medium text-ink">Seed {{ selectedSeed }}</span>
+            <button @click="selectedSeed = null; seedViewPhrases = []; seedViewSeedText = null" class="text-xs text-faint hover:text-ink transition-colors">✕ close</button>
           </div>
           <!-- Seed sentence -->
-          <div v-if="seedViewSeedText" class="mb-4 p-3 bg-slate-800/60 border border-slate-700/40 rounded">
-            <div class="text-[10px] text-slate-500 mb-1 font-mono tracking-wider uppercase">Seed</div>
+          <div v-if="seedViewSeedText" class="mb-4 p-3 bg-surface/60 border border-line/40 rounded">
+            <div class="text-[10px] text-faint mb-1 font-mono tracking-wider uppercase">Seed</div>
             <div class="flex items-start gap-2 flex-wrap">
-              <span class="text-base font-medium text-slate-200">{{ seedViewSeedText.known_text || '…' }}</span>
-              <span class="text-slate-500 text-sm mt-0.5">→</span>
+              <span class="text-base font-medium text-ink">{{ seedViewSeedText.known_text || '…' }}</span>
+              <span class="text-faint text-sm mt-0.5">→</span>
               <span class="text-base text-emerald-400">{{ seedViewSeedText.target_text || '…' }}</span>
             </div>
           </div>
-          <div v-if="seedViewLoading" class="text-sm text-slate-500 animate-pulse py-2">Loading...</div>
-          <div v-else-if="seedViewPhrases.length === 0" class="text-sm text-slate-600 py-2">No phrases found for this seed.</div>
+          <div v-if="seedViewLoading" class="text-sm text-faint animate-pulse py-2">Loading...</div>
+          <div v-else-if="seedViewPhrases.length === 0" class="text-sm text-faint py-2">No phrases found for this seed.</div>
           <div v-else class="space-y-3">
-            <div v-for="lego in seedViewPhrases" :key="lego.lego_index" class="border border-slate-700/40 rounded p-3">
+            <div v-for="lego in seedViewPhrases" :key="lego.lego_index" class="border border-line/40 rounded p-3">
               <!-- LEGO header -->
               <div class="flex items-center gap-2 mb-2">
-                <span class="text-[10px] font-mono text-slate-600">L{{ lego.lego_index }}</span>
+                <span class="text-[10px] font-mono text-faint">L{{ lego.lego_index }}</span>
                 <template v-if="lego.meta">
-                  <span class="text-[10px] px-1 rounded font-mono" :class="(lego.meta.type || lego.meta.lego_type) === 'M' ? 'bg-violet-900/40 text-violet-400' : 'bg-slate-700/40 text-slate-400'">{{ lego.meta.type || lego.meta.lego_type }}</span>
-                  <span class="text-base font-medium text-slate-200">{{ lego.meta.known_text }}</span>
-                  <span class="text-slate-600 text-sm">→</span>
+                  <span class="text-[10px] px-1 rounded font-mono" :class="(lego.meta.type || lego.meta.lego_type) === 'M' ? 'bg-violet-900/40 text-violet-400' : 'bg-surface-2/40 text-muted'">{{ lego.meta.type || lego.meta.lego_type }}</span>
+                  <span class="text-base font-medium text-ink">{{ lego.meta.known_text }}</span>
+                  <span class="text-faint text-sm">→</span>
                   <span class="text-base font-medium text-emerald-400">{{ lego.meta.target_text }}</span>
                 </template>
               </div>
               <!-- Phrases -->
               <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex gap-2 text-sm py-0.5 pl-3">
-                <span class="font-mono w-8 shrink-0 text-xs" :class="phrase.phrase_role === 'use' ? 'text-emerald-400/70' : phrase.phrase_role === 'component' ? 'text-slate-500' : 'text-amber-400/70'">
+                <span class="font-mono w-8 shrink-0 text-xs" :class="phrase.phrase_role === 'use' ? 'text-emerald-400/70' : phrase.phrase_role === 'component' ? 'text-faint' : 'text-amber-400/70'">
                   {{ phrase.phrase_role === 'use' ? 'USE' : phrase.phrase_role === 'component' ? 'CMP' : 'BLD' }}
                 </span>
-                <span class="text-slate-300">{{ phrase.known_text }}</span>
-                <span class="text-slate-600 shrink-0">→</span>
-                <span class="text-slate-400">{{ phrase.target_text }}</span>
+                <span class="text-ink">{{ phrase.known_text }}</span>
+                <span class="text-faint shrink-0">→</span>
+                <span class="text-muted">{{ phrase.target_text }}</span>
               </div>
             </div>
           </div>
 
           <!-- Approve / Redo controls -->
-          <div class="mt-4 pt-4 border-t border-slate-700/50 flex gap-3 items-start">
+          <div class="mt-4 pt-4 border-t border-line/50 flex gap-3 items-start">
             <textarea
               v-model="seedReviewNotes"
               placeholder="Notes for redo (optional)..."
               rows="2"
-              class="flex-1 bg-slate-800/80 border border-slate-700 rounded text-sm text-slate-300 placeholder-slate-600 px-3 py-2 resize-none"
+              class="flex-1 bg-surface/80 border border-line rounded text-sm text-ink placeholder-faint px-3 py-2 resize-none"
             />
             <button
               @click="redoSeed"
@@ -548,7 +602,7 @@
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
-import { getApiUrl } from '@/services/api'
+import { getApiUrl, fetchJson } from '@/services/api'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
 import { isConfigured as isSupabaseConfigured, getCourseProgress, getSeedGrid as sbGetSeedGrid, getSeedDetail } from '@/services/supabase'
 
@@ -645,6 +699,12 @@ const componentCheckLoading = ref(false)
 const componentBackfillStarting = ref(false)
 const componentBackfillSpawned = ref(false)
 const componentGaps = ref(null) // null = not checked yet, object = { total_m_legos, gaps: { total, null_components, empty_components, partial_components }, complete }
+
+const zutCheckLoading = ref(false)
+const zutResolveStarting = ref(false)
+const zutResolveSpawned = ref(false)
+const zutCollisions = ref(null) // null = not checked; object = { collisions: { total, items }, complete }
+let zutResolveSpawnedMsgCount = 0
 const actionError = ref(null) // { message, timestamp } — auto-dismisses after 8s
 let actionErrorTimer = null
 function showActionError(msg) {
@@ -753,8 +813,12 @@ const seedGridUnderThreshold = computed(() => seedGrid.value.filter(s => s.statu
 
 // --- Pipeline computeds ---
 
+// Denominator for the Translate stage — the course's own seed count,
+// falling back to the selected target size (never a hard-coded canon size).
+const translateTotal = computed(() => progress.value.totalSeeds || seedCount.value)
+
 const translatePercent = computed(() => {
-  const total = progress.value.totalSeeds || 668
+  const total = translateTotal.value || 1
   return Math.round(((progress.value.seedsTranslated || 0) / total) * 100)
 })
 
@@ -770,7 +834,10 @@ const pipelinePhase = computed(() => {
   return 'gender'
 })
 
-const GENDERED_LANGUAGES = ['spa', 'ita', 'por', 'fra', 'ara', 'bre']
+// Languages where Gender Prep is KNOWN to be needed (recommendation only —
+// the stage is shown for every course and works for any language; this list
+// must never hide or exclude the stage for unlisted gendered languages).
+const GENDER_PREP_RECOMMENDED_LANGUAGES = ['spa', 'ita', 'por', 'fra', 'ara', 'bre']
 const courseTargetLang = computed(() => {
   // In create mode, use the dropdown; for existing courses, extract from course code (e.g. "spa_for_eng" → "spa")
   if (targetLanguage.value) return targetLanguage.value
@@ -778,7 +845,7 @@ const courseTargetLang = computed(() => {
   if (code && code.includes('_for_')) return code.split('_for_')[0].split('_')[0]
   return ''
 })
-const isGenderedLanguage = computed(() => GENDERED_LANGUAGES.includes(courseTargetLang.value))
+const genderPrepRecommended = computed(() => GENDER_PREP_RECOMMENDED_LANGUAGES.includes(courseTargetLang.value))
 
 // --- Activity detection — is an agent actively working? ---
 
@@ -947,7 +1014,7 @@ const finalPassSummary = computed(() => {
 function stageComplete(stage) {
   // Data-driven: derive status from actual data, not build_jobs flags
   switch (stage) {
-    case 'translate': return (progress.value.seedsTranslated || 0) >= (progress.value.totalSeeds || 668)
+    case 'translate': return translateTotal.value > 0 && (progress.value.seedsTranslated || 0) >= translateTotal.value
     case 'build-team': return (progress.value.currentSeed || 0) >= seedCount.value
     case 'final-pass': return seedGridFinalized.value > 0 && seedGridDrafted.value === 0 && seedGridFlagged.value === 0 && seedGridUnderThreshold.value === 0
     case 'gender': return (progress.value.genderExpansions || 0) > 0
@@ -966,17 +1033,17 @@ function stageLocked(stage) {
 }
 
 function stageCardClass(stage) {
-  if (stageLocked(stage)) return 'border-slate-700/30 opacity-50'
+  if (stageLocked(stage)) return 'border-line/30 opacity-50'
   if (pipelinePhase.value === stage) return 'border-cyan-500/30'
   if (stageComplete(stage)) return 'border-emerald-500/20'
-  return 'border-slate-700/50'
+  return 'border-line/50'
 }
 
 function stageNumberClass(stage) {
   if (stageComplete(stage)) return 'bg-emerald-500/20 text-emerald-400'
   if (pipelinePhase.value === stage) return 'bg-cyan-500/20 text-cyan-400'
-  if (stageLocked(stage)) return 'bg-slate-700/50 text-slate-500'
-  return 'bg-slate-700/50 text-slate-400'
+  if (stageLocked(stage)) return 'bg-surface-2/50 text-faint'
+  return 'bg-surface-2/50 text-muted'
 }
 
 function seedCellClass(cell) {
@@ -997,7 +1064,7 @@ function seedCellClass(cell) {
     case 'building':
       return 'bg-indigo-400/60'
     default:
-      return 'bg-slate-700/30'
+      return 'bg-surface-2/30'
   }
 }
 
@@ -1011,12 +1078,12 @@ const ratioClass = computed(() => {
   const r = parseFloat(ratio.value)
   if (r >= 7) return 'text-emerald-400'
   if (r >= 5) return 'text-yellow-400'
-  return 'text-slate-200'
+  return 'text-ink'
 })
 
 const qualityScoreClass = computed(() => {
   const score = parseFloat(progress.value.avgPhraseScore)
-  if (isNaN(score)) return 'text-slate-400'
+  if (isNaN(score)) return 'text-muted'
   if (score >= 7.5) return 'text-emerald-400'
   if (score >= 6.5) return 'text-cyan-400'
   if (score >= 5.5) return 'text-yellow-400'
@@ -1120,6 +1187,7 @@ async function createCourse() {
         seedCount: seedCount.value
       })
     })
+    if (!response.ok) throw new Error((await response.clone().json().catch(() => ({}))).error || `HTTP ${response.status}`)
     const result = await response.json()
     if (!response.ok) throw new Error(result.error || 'Failed to create course')
     router.push(`/production/${courseCode}/text`)
@@ -1138,11 +1206,10 @@ async function startTranslation() {
   translateStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/translate/${courseCode}`, {
+    const result = await fetchJson(`${apiBase}/api/build/translate/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       translateSpawned.value = true
       buildMonitor.refresh()
@@ -1168,11 +1235,10 @@ async function confirmResetTranslations() {
   translateResetting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/course/${courseCode}/reset-translations`, {
+    const result = await fetchJson(`${apiBase}/api/course/${courseCode}/reset-translations`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       console.log(`[reset] Wiped ${result.seeds_reset} translations for ${courseCode}`)
       buildMonitor.refresh()
@@ -1193,12 +1259,11 @@ async function startBuildTeam() {
   buildTeamStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/team-start/${courseCode}`, {
+    const result = await fetchJson(`${apiBase}/api/build/team-start/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
       body: JSON.stringify({ targetSeeds: seedCount.value })
     })
-    const result = await response.json()
     if (result.ok) {
       buildTeamSpawned.value = true
       buildMonitor.refresh()
@@ -1231,11 +1296,10 @@ async function startFinalPass(mode = 'all') {
       }
     }
 
-    const response = await fetch(url, {
+    const result = await fetchJson(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       finalPassSpawned.value = true
       buildMonitor.refresh()
@@ -1256,17 +1320,15 @@ async function massApproveSeeds() {
   massApproving.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/mass-approve/${courseCode}`, {
+    const result = await fetchJson(`${apiBase}/api/build/mass-approve/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       // Refresh the seed grid
-      const gridResp = await fetch(`${apiBase}/api/build/seed-grid/${courseCode}`, {
+      const data = await fetchJson(`${apiBase}/api/build/seed-grid/${courseCode}`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       })
-      const data = await gridResp.json()
       seedGrid.value = data.seeds || []
     } else {
       showActionError(`Mass approve failed: ${result.error}`)
@@ -1281,12 +1343,12 @@ async function massApproveSeeds() {
 const componentCardClass = computed(() => {
   if (componentGaps.value !== null && componentGaps.value.complete) return 'border-emerald-500/20'
   if (componentGaps.value !== null && !componentGaps.value.complete) return 'border-teal-500/30'
-  return 'border-slate-700/50'
+  return 'border-line/50'
 })
 
 const componentNumberClass = computed(() => {
   if (componentGaps.value !== null && componentGaps.value.complete) return 'bg-emerald-500/20 text-emerald-400'
-  return 'bg-slate-700/50 text-slate-400'
+  return 'bg-surface-2/50 text-muted'
 })
 
 async function checkComponentGaps() {
@@ -1296,10 +1358,9 @@ async function checkComponentGaps() {
   componentCheckLoading.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/component-gaps/${courseCode}`, {
+    const data = await fetchJson(`${apiBase}/api/build/component-gaps/${courseCode}`, {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
-    const data = await response.json()
     componentGaps.value = data
   } catch (err) {
     console.error('Failed to check component gaps:', err)
@@ -1315,11 +1376,10 @@ async function startComponentBackfill() {
   componentBackfillStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/component-backfill/${courseCode}`, {
+    const result = await fetchJson(`${apiBase}/api/build/component-backfill/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       componentBackfillSpawnedMsgCount = orchestratorMessages.value.length
       componentBackfillSpawned.value = true
@@ -1334,6 +1394,57 @@ async function startComponentBackfill() {
   }
 }
 
+async function checkZutCollisions() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  zutCheckLoading.value = true
+  try {
+    const apiBase = getApiUrl()
+    const data = await fetchJson(`${apiBase}/api/build/zut-collisions/${courseCode}`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    zutCollisions.value = data
+  } catch (err) {
+    console.error('Failed to check ZUT collisions:', err)
+  } finally {
+    zutCheckLoading.value = false
+  }
+}
+
+async function startZutResolve() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode) return
+  zutResolveStarting.value = true
+  try {
+    const apiBase = getApiUrl()
+    const result = await fetchJson(`${apiBase}/api/build/zut-resolve/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (result.ok) {
+      zutResolveSpawnedMsgCount = orchestratorMessages.value.length
+      zutResolveSpawned.value = true
+      buildMonitor.refresh()
+    } else {
+      showActionError(`ZUT resolve failed: ${result.error}`)
+    }
+  } catch (err) {
+    showActionError(`ZUT resolve failed: ${err.message}`)
+  } finally {
+    zutResolveStarting.value = false
+  }
+}
+
+const zutCardClass = computed(() => {
+  if (zutCollisions.value !== null && zutCollisions.value.complete) return 'border-emerald-500/20'
+  if (zutCollisions.value !== null && !zutCollisions.value.complete) return 'border-teal-500/30'
+  return 'border-line/50'
+})
+const zutNumberClass = computed(() => {
+  if (zutCollisions.value !== null && zutCollisions.value.complete) return 'bg-emerald-500/20 text-emerald-400'
+  return 'bg-surface-2/50 text-muted'
+})
+
 async function startBackfillPhrases() {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
@@ -1341,11 +1452,10 @@ async function startBackfillPhrases() {
   backfillPhrasesStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/build/backfill-phrases/${courseCode}`, {
+    const result = await fetchJson(`${apiBase}/api/build/backfill-phrases/${courseCode}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       backfillPhrasesSpawned.value = true
       buildMonitor.refresh()
@@ -1366,11 +1476,10 @@ async function startGenderPrep() {
   genderStarting.value = true
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/production/${courseCode}/gender-prep/start`, {
+    const result = await fetchJson(`${apiBase}/api/production/${courseCode}/gender-prep/start`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok !== false) {
       genderSpawnedMsgCount = orchestratorMessages.value.length
       genderSpawned.value = true
@@ -1426,11 +1535,10 @@ async function forceResetBuilder() {
 async function killAgent(pid) {
   try {
     const apiBase = getApiUrl()
-    const response = await fetch(`${apiBase}/api/agents/${pid}`, {
+    const result = await fetchJson(`${apiBase}/api/agents/${pid}`, {
       method: 'DELETE',
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
-    const result = await response.json()
     if (result.ok) {
       fetchProgress()
     }
@@ -1737,7 +1845,7 @@ onUnmounted(() => {
 <style scoped>
 .text-generation {
   min-height: 100vh;
-  background: var(--color-shadow, #1e293b);
+  background: var(--color-shadow, var(--surface));
 }
 
 .pipeline-card {
@@ -1746,6 +1854,14 @@ onUnmounted(() => {
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
   transition: all 0.2s;
+}
+
+/* Light mode: the dark translucent fill above reads as a muddy grey on a
+   white canvas. Use a true card surface with a visible border + subtle shadow
+   so each pipeline card separates from the page. Dark mode untouched. */
+:root[data-theme="light"] .pipeline-card {
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
 .stage-number {
@@ -1770,6 +1886,12 @@ onUnmounted(() => {
   background: rgba(16, 185, 129, 0.2);
   color: rgb(52, 211, 153);
 }
+/* Light: emerald-400 text (#34d399) on a pale pill is ~1.4:1 — illegible.
+   Deepen the fill + use a dark emerald ink (passes AA on the tinted pill). */
+:root[data-theme="light"] .stage-badge-complete {
+  background: rgba(5, 150, 105, 0.16);
+  color: #065f46;
+}
 
 .stage-badge-locked {
   font-size: 0.65rem;
@@ -1779,6 +1901,12 @@ onUnmounted(() => {
   border-radius: 0.25rem;
   background: rgba(71, 85, 105, 0.3);
   color: rgb(148, 163, 184);
+}
+/* Light: slate-400 text (#94a3b8) on a pale slate pill is ~2.3:1 — fails.
+   Use the muted token as ink on a faint surface tint. */
+:root[data-theme="light"] .stage-badge-locked {
+  background: rgba(71, 85, 105, 0.12);
+  color: #334155;
 }
 
 @keyframes pulse {
@@ -1799,7 +1927,7 @@ onUnmounted(() => {
 }
 
 .overflow-y-auto::-webkit-scrollbar-thumb {
-  background: var(--color-graphite, #475569);
+  background: var(--color-graphite, var(--surface-3));
   border-radius: 3px;
 }
 
@@ -1815,8 +1943,8 @@ onUnmounted(() => {
   transform: translateX(-50%);
   font-size: 0.6rem;
   font-family: ui-monospace, monospace;
-  color: #e2e8f0;
-  background: #1e293b;
+  color: var(--ink);
+  background: var(--surface);
   border: 1px solid rgba(100, 116, 139, 0.5);
   padding: 1px 4px;
   border-radius: 3px;
@@ -1829,4 +1957,32 @@ onUnmounted(() => {
 .seed-cell:hover::after {
   opacity: 1;
 }
+
+/* ── LIGHT MODE status-text contrast ──
+   Inline status pills/labels use bright Tailwind -400 (and a couple of -300)
+   hues over very pale translucent (/20) fills. On a white card those texts run
+   ~1.4–2.6:1 and fail WCAG AA. These light-scoped overrides deepen each to its
+   -700 shade — same hue family, but >=4.5:1 on the pale fill / white card.
+   Dark mode keeps the original -400/-300 utilities (these rules don't apply). */
+:root[data-theme="light"] .text-emerald-400 { color: #047857 !important; }
+:root[data-theme="light"] .text-blue-400    { color: #1d4ed8 !important; }
+:root[data-theme="light"] .text-cyan-400,
+:root[data-theme="light"] .text-cyan-300    { color: #0e7490 !important; }
+:root[data-theme="light"] .text-violet-400  { color: #6d28d9 !important; }
+:root[data-theme="light"] .text-amber-400   { color: #b45309 !important; }
+:root[data-theme="light"] .text-teal-400    { color: #0f766e !important; }
+:root[data-theme="light"] .text-rose-400    { color: #be123c !important; }
+:root[data-theme="light"] .text-pink-400    { color: #be185d !important; }
+:root[data-theme="light"] .text-orange-400  { color: #c2410c !important; }
+:root[data-theme="light"] .text-indigo-400  { color: #4338ca !important; }
+:root[data-theme="light"] .text-yellow-400  { color: #a16207 !important; }
+:root[data-theme="light"] .text-red-400,
+:root[data-theme="light"] .text-red-300     { color: #b91c1c !important; }
+
+/* Light mode: section panels use bg-surface/30 (≈#f5f7f9) over the #eef2f6
+   canvas with a 50%-alpha line border — ~1.04:1 fill separation and a barely
+   visible edge. Make these panels a solid card surface with the full --line
+   border so they read as distinct cards. Dark mode unaffected. */
+:root[data-theme="light"] .bg-surface\/30 { background-color: var(--surface) !important; }
+:root[data-theme="light"] .border-line\/50 { border-color: var(--line) !important; }
 </style>

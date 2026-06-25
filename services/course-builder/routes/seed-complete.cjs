@@ -19,9 +19,53 @@ const {
 const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
-  checkLegoConflict,
+  checkLegoConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss,
+  loadPairContract, checkKnownSide, compileKnownContract, stemKnownGloss, tokenizeKnown,
 } = require('../lib/validation.cjs');
 const { loadCourseVocab, addToCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cjs');
+
+// Build a SEED-indexed known-side context (mirror of the round-indexed CLI ctx):
+// gloss-stems & construction/unit carriers keyed by debut SEED, from prior-seed
+// legos (DB) folded with the current submission's legos.
+async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentLegos, contract) {
+  const prior = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await supabase.from('course_legos')
+      .select('target_text,known_text,components,seed_number')
+      .eq('course_code', courseCode).lt('seed_number', currentSeed).range(from, from + 999);
+    if (error) throw new Error(error.message);
+    prior.push(...data);
+    if (data.length < 1000) break;
+  }
+  const cur = (currentLegos || []).map(l => ({
+    target_text: l.target, known_text: l.known, components: l.components || [], seed_number: currentSeed,
+  }));
+  const all = [...prior, ...cur];
+  const stemFirstPos = new Map();
+  const addStem = (s, seed) => { const k = stemKnownGloss(s); if (!k) return; if (!stemFirstPos.has(k) || stemFirstPos.get(k) > seed) stemFirstPos.set(k, seed); };
+  for (const l of all) {
+    for (const t of tokenizeKnown(l.known_text)) addStem(t, l.seed_number);
+    for (const c of l.components || []) for (const t of tokenizeKnown(c.known)) addStem(t, l.seed_number);
+  }
+  const carrierSeed = (carrier) => {
+    let min = Infinity;
+    for (const l of all) {
+      const hit = l.target_text === carrier || (l.components || []).some(c => c.target === carrier);
+      if (hit && l.seed_number < min) min = l.seed_number;
+    }
+    return min;
+  };
+  for (const [carrier, syns] of Object.entries(contract.glossSynonyms || {})) {
+    const seed = carrierSeed(carrier);
+    if (seed < Infinity) for (const syn of syns) addStem(syn, seed);
+  }
+  const consPos = {};
+  for (const con of contract.constructions || []) {
+    consPos[con.id] = con.cluster ? (contract.clusterSeeds?.[con.cluster] ?? contract.clusterRounds?.[con.cluster] ?? Infinity) : carrierSeed(con.carrier);
+  }
+  const unitPos = (contract.glossUnits || []).map(u => ({ phrase: u.phrase, pos: carrierSeed(u.carrier) }));
+  return { ...compileKnownContract(contract), stemFirstPos, consPos, unitPos };
+}
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { isMarkdownSubmission, extractMarkdown, parseMarkdownSeed } = require('../lib/markdown-parser.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
@@ -227,8 +271,14 @@ async function analyzePatternRecency(ctx, courseCode, windowSize) {
 /**
  * Initialize course_seeds from canonical_seeds for a new course.
  */
+// Versioned-course support: a trailing "_vN" isolates a regenerated course in its own DB
+// partition (the FULL course_code stays the partition key everywhere) while inheriting the
+// base pair's language config + pair-contract. Strip the suffix ONLY for language derivation
+// and contract lookup — NEVER for DB keys.
+const baseCourseCode = (c) => (c || '').replace(/_v\d+$/, '');
+
 async function initializeCourseSeeds(ctx, courseCode) {
-  const parts = courseCode.split('_for_');
+  const parts = baseCourseCode(courseCode).split('_for_');
   const targetLang = parts[0] || '';
   const knownLang = parts[1] || '';
   const knownIsEng = knownLang === 'eng';
@@ -345,6 +395,8 @@ module.exports = function seedCompleteRoutes(ctx) {
       const phraseCount = phrases?.length || 0;
       const legoId = `S${String(seed).padStart(4,'0')}L${String(idx).padStart(2,'0')}`;
       const { MIN_PHRASES_PER_LEGO, MAX_PHRASES_PER_LEGO } = ctx.config;
+      let zutHeldOut = 0;            // phrase-granular ZUT: count held out of `phrases`
+      const zutCollisionsOut = [];   // surfaced in the response (never rejects the lego)
 
       let minRequired = MIN_PHRASES_PER_LEGO;
       if (seed === 1 && idx === 1) minRequired = 0;
@@ -455,6 +507,39 @@ module.exports = function seedCompleteRoutes(ctx) {
             skills: ['ralph-methodology.md'],
             hint: `Phrases must only use vocabulary already introduced. Unknown: ${violations[0].unknown}. Review ralph-methodology.md for vocabulary rules.`,
           });
+        }
+
+        // ZUT gate (production-direction): same English prompt must not map to a different target
+        // than the course already teaches. PHRASE-GRANULAR (Tom 2026-06-14): hold out ONLY the
+        // transgressing phrase(s) from this lego's basket (so a known collision never enters the
+        // course) and still insert the lego + every conforming phrase. Surfaced, never rejected.
+        if (!allowValidationBypass(req.body)) {
+          const zutCollisions = await checkPhraseZUT(ctx.supabase, course_code, phrases, seed);
+          if (zutCollisions.length > 0) {
+            const nkZut = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
+            const flaggedKnowns = new Set(zutCollisions.map(c => nkZut(c.known)));
+            for (let i = phrases.length - 1; i >= 0; i--) {
+              if (phrases[i] && phrases[i].known && flaggedKnowns.has(nkZut(phrases[i].known))) {
+                phrases.splice(i, 1);
+                zutHeldOut++;
+              }
+            }
+            zutCollisionsOut.push(...zutCollisions);
+            console.log(`⚠ ${legoId}: ZUT (phrase) — held out ${zutHeldOut} transgressing phrase(s), ${zutCollisions.length} collision(s); lego proceeds`);
+            zutCollisions.forEach(c => console.log(`   "${c.known}" → new "${c.new_target}" vs existing "${c.existing_target}" (S${c.existing_seed})`));
+          }
+        }
+      }
+
+      // Frame-coverage check (7th principle) — WARN-ONLY, never rejects.
+      // The metric has known false positives (lexical variety IS the axis for
+      // negators/nouns), so warnings are surfaced for adjudication, not blocked on.
+      let frameWarnings = [];
+      if (phrases && phrases.length > 0 && !skipBaskets) {
+        frameWarnings = checkBasketFrameCoverage(phrases, target);
+        if (frameWarnings.length > 0) {
+          console.log(`⚠ ${legoId}: frame-coverage warnings:`);
+          frameWarnings.forEach(w => console.log(`   [${w.code}] ${w.detail}`));
         }
       }
 
@@ -569,6 +654,15 @@ module.exports = function seedCompleteRoutes(ctx) {
         phrases: totalPhrases,
         buildup_phrases: buildupCount,
         practice_phrases: practiceCount,
+        ...(frameWarnings.length > 0 ? {
+          frame_warnings: frameWarnings,
+          frame_hint: 'Non-blocking. 7th principle: vary along the axis that carries the new distinction — see ralph-methodology.md.',
+        } : {}),
+        ...(zutHeldOut > 0 ? {
+          zut_held_out: zutHeldOut,
+          zut_collisions: zutCollisionsOut.slice(0, 10),
+          zut_hint: 'ZUT (phrase) — these transgressing phrase(s) were held out (not inserted); the lego + conforming phrases were saved. CONSOLIDATE to the existing target or DIFFERENTIATE the English prompt, then resubmit the held-out phrase(s).',
+        } : {}),
       });
 
     } catch (err) {
@@ -862,7 +956,7 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       }
 
-      const courseParts = course_code?.split('_for_') || [];
+      const courseParts = baseCourseCode(course_code).split('_for_');
       const targetLang = courseParts[0] || '';
       const knownLang = courseParts[1] || '';
       const knownIsEng = knownLang === 'eng';
@@ -1181,6 +1275,106 @@ module.exports = function seedCompleteRoutes(ctx) {
           legos_with_violations: vocabViolations,
           methodology: METHODOLOGY_HINTS.vocab,
         });
+      }
+
+      // 3a-ZUT. PHRASE-LEVEL ZUT (production direction): the same English prompt must not map to a
+      // different target than the course already teaches. PHRASE-GRANULAR (Tom 2026-06-14): a
+      // collision holds out ONLY the transgressing phrase(s) — they are not inserted, so a known
+      // collision never enters the course (the ZUT guarantee holds) — while the seed and every
+      // conforming phrase still insert. The held-out phrases are surfaced (not silently dropped) so
+      // the author can CONSOLIDATE (use the existing target) or DIFFERENTIATE (specialise the English
+      // prompt) and resubmit just those. NEVER rejects the whole seed.
+      if (!SKIP_VALIDATION) {
+        const zutPhrases = [];
+        for (const lego of legos) {
+          const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+          if (duplicateLegos.some(d => d.lego_id === legoId)) continue;
+          if (usesBuildUseFormat(lego)) zutPhrases.push(...(lego.build || []), ...(lego.use || []));
+          else if (lego.phrases) zutPhrases.push(...lego.phrases);
+        }
+        if (zutPhrases.length > 0) {
+          const zutCollisions = await checkPhraseZUT(ctx.supabase, course_code, zutPhrases, seed_number);
+          if (zutCollisions.length > 0) {
+            const nkZut = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
+            const flaggedKnowns = new Set(zutCollisions.map(c => nkZut(c.known)));
+            let heldOut = 0;
+            const holdOut = (arr) => {
+              if (!Array.isArray(arr)) return arr;
+              const kept = arr.filter(p => !(p && p.known && flaggedKnowns.has(nkZut(p.known))));
+              heldOut += arr.length - kept.length;
+              return kept;
+            };
+            for (const lego of legos) {
+              const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+              if (duplicateLegos.some(d => d.lego_id === legoId)) continue;
+              if (usesBuildUseFormat(lego)) { lego.build = holdOut(lego.build); lego.use = holdOut(lego.use); }
+              else if (lego.phrases) lego.phrases = holdOut(lego.phrases);
+            }
+            warnings.push({
+              type: 'zut_phrase',
+              message: 'ZUT (phrase) — transgressing phrase(s) held out; the seed and all conforming phrases were inserted',
+              held_out: heldOut,
+              collisions: zutCollisions.slice(0, 10),
+              total_collisions: zutCollisions.length,
+              hint: `One English prompt → one target (Zero Uncertainty). "${zutCollisions[0].known}" already maps to "${zutCollisions[0].existing_target}" (S${zutCollisions[0].existing_seed}); you submitted "${zutCollisions[0].new_target}". CONSOLIDATE to the existing target or DIFFERENTIATE the English prompt, then resubmit the held-out phrase(s).`,
+              methodology: METHODOLOGY_HINTS.zut,
+            });
+            console.log(`⚠ ${seedId}: ZUT (phrase) — held out ${heldOut} transgressing phrase(s) across ${zutCollisions.length} collision(s); seed proceeds`);
+          }
+        }
+      }
+
+      // 3a-META. METADATA-GLOSS (warn): a debut must give a producible intention,
+      // not a grammar label (least action to confidence). Surfaces classifiers /
+      // markers / aspect-notes glossed as metadata for re-gloss-or-upchunk.
+      {
+        const metaWarnings = checkMetadataGloss(legos);
+        for (const w of metaWarnings) {
+          warnings.push({ type: 'metadata_gloss', ...w });
+          console.log(`⚠ ${seedId}L${String(w.lego_index).padStart(2, '0')}: metadata gloss "${w.known}"`);
+        }
+      }
+
+      // 3a-FRAME. FRAME-COVERAGE (warn): each USE basket should vary along the axis
+      // that carries the new distinction (Principle 7), not just swap the slot filler.
+      // Convergence pairs are exempt by construction. Was enforced only on /lego.
+      for (const lego of legos) {
+        const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+        if (duplicateLegos.some(d => d.lego_id === legoId)) continue;
+        let basket = [];
+        if (usesBuildUseFormat(lego)) basket = [...(lego.build || []), ...(lego.use || [])];
+        else if (lego.phrases) basket = lego.phrases;
+        const fw = checkBasketFrameCoverage(basket, lego.target);
+        for (const w of fw) {
+          warnings.push({ type: 'frame_coverage', lego_id: legoId, lego_target: lego.target, ...w });
+          console.log(`⚠ ${legoId}: frame-coverage [${w.code}]`);
+        }
+      }
+
+      // 3a-KNOWN. KNOWN-SIDE reconstructability (warn, contract-gated): every prompt
+      // must compose from introduced glosses + licensed constructions (Principle 1 in
+      // both languages). Fires ONLY when a pair-contract exists AND its known language
+      // matches — English machinery must not be applied to a non-English-known course.
+      {
+        const contract = loadPairContract(course_code);
+        if (contract && (!contract.known_lang || contract.known_lang === knownLang)) {
+          const knownCtx = await buildKnownSideSeedCtx(ctx.supabase, course_code, seed_number, legos, contract);
+          for (const lego of legos) {
+            const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
+            if (duplicateLegos.some(d => d.lego_id === legoId)) continue;
+            let basket = [];
+            if (usesBuildUseFormat(lego)) basket = [...(lego.build || []), ...(lego.use || [])];
+            else if (lego.phrases) basket = lego.phrases;
+            for (const phrase of basket) {
+              if (!phrase.known) continue;
+              const probs = checkKnownSide(phrase.known, seed_number, knownCtx);
+              if (probs.length) {
+                warnings.push({ type: 'known_side', lego_id: legoId, known: phrase.known, target: phrase.target, problems: probs.slice(0, 4) });
+                console.log(`⚠ ${legoId}: known-side "${phrase.known}" — ${probs[0]}`);
+              }
+            }
+          }
+        }
       }
 
       // 3b. PHRASE LENGTH RATIO VALIDATION

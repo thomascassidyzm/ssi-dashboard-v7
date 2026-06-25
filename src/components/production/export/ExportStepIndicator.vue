@@ -62,29 +62,29 @@ const steps = [
 
 function getStepClass(stepNumber: number): string {
   if (props.completedSteps.includes(stepNumber)) {
-    return 'bg-emerald-500 text-white'
+    return 'step-circle--done bg-emerald-500 text-white'
   }
   if (stepNumber === props.currentStep) {
-    return 'bg-blue-500 text-white ring-2 ring-blue-300'
+    return 'step-circle--current bg-blue-500 text-white ring-2 ring-blue-300'
   }
-  return 'bg-slate-600 text-slate-400'
+  return 'bg-surface-3 text-muted'
 }
 
 function getLabelClass(stepNumber: number): string {
   if (props.completedSteps.includes(stepNumber)) {
-    return 'text-emerald-400'
+    return 'step-label--done text-emerald-400'
   }
   if (stepNumber === props.currentStep) {
-    return 'text-blue-400'
+    return 'step-label--current text-blue-400'
   }
-  return 'text-slate-500'
+  return 'text-faint'
 }
 
 function getConnectorClass(stepNumber: number): string {
   if (props.completedSteps.includes(stepNumber)) {
-    return 'bg-emerald-500'
+    return 'connector--done bg-emerald-500'
   }
-  return 'bg-slate-600'
+  return 'bg-surface-3'
 }
 </script>
 
@@ -99,5 +99,22 @@ function getConnectorClass(stepNumber: number): string {
 
 .connector {
   min-width: 1.5rem;
+}
+
+/* Light-mode contrast fixes — dark mode keeps the original Tailwind literals. */
+:root[data-theme='light'] .step-circle--done {
+  background-color: var(--accent-2); /* #047857: white text -> 5.3:1 */
+}
+:root[data-theme='light'] .connector--done {
+  background-color: var(--accent-2);
+}
+:root[data-theme='light'] .step-circle--current {
+  background-color: #1d4ed8; /* blue-700: white text -> 5.7:1; keeps blue hue */
+}
+:root[data-theme='light'] .step-label--done {
+  color: var(--accent-2); /* #047857 on #eef2f6 canvas -> 4.9:1 */
+}
+:root[data-theme='light'] .step-label--current {
+  color: #1d4ed8; /* blue-700 on canvas -> 6.0:1 */
 }
 </style>

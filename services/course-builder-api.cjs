@@ -72,7 +72,16 @@ app.listen(PORT, () => {
   console.log(`║  POST /api/orchestrator/chat - Agent ↔ human chat             ║`);
   console.log(`╚══════════════════════════════════════════════════════════════╝\n`);
 
-  // Start build manager to monitor running jobs from DB
-  startBuildManager(ctx);
-  console.log('[BUILD] Build manager started - monitoring running jobs from DB');
+  // Start build manager to monitor running jobs from DB.
+  // GUARD: a PARALLEL instance (e.g. the gated v2 build lane on another port) must
+  // run BUILD_MANAGER=off, or its 30s checkBuilds loop would fight the production
+  // instance over the shared build_jobs table (double-respawn / status thrash). With
+  // the manager off it's a pure validate+insert API — drive it via direct
+  // POST /api/seed/complete. Default (unset) keeps production behaviour unchanged.
+  if (process.env.BUILD_MANAGER === 'off') {
+    console.log('[BUILD] Build manager DISABLED (BUILD_MANAGER=off) — pure validate+insert API, no job orchestration');
+  } else {
+    startBuildManager(ctx);
+    console.log('[BUILD] Build manager started - monitoring running jobs from DB');
+  }
 });

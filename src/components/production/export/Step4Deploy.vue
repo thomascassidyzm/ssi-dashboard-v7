@@ -1,18 +1,18 @@
 <template>
   <div class="step-content space-y-4">
-    <h4 class="text-lg font-semibold text-white">Step 4: Deploy Audio to Production</h4>
+    <h4 class="text-lg font-semibold text-ink">Step 4: Deploy Audio to Production</h4>
 
-    <p class="text-slate-300 text-sm">
+    <p class="text-ink text-sm">
       Copy audio files from stage bucket to production bucket.
     </p>
 
-    <div class="bucket-info p-3 bg-slate-700 rounded-lg border border-slate-600 text-sm">
-      <div class="flex items-center gap-2 text-slate-400">
-        <span class="font-mono text-slate-300">ssi-audio-stage</span>
+    <div class="bucket-info p-3 bg-surface-2 rounded-lg border border-line text-sm">
+      <div class="flex items-center gap-2 text-muted">
+        <span class="font-mono text-ink">ssi-audio-stage</span>
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>
-        <span class="font-mono text-slate-300">ssiborg-assets</span>
+        <span class="font-mono text-ink">ssiborg-assets</span>
       </div>
     </div>
 
@@ -30,11 +30,11 @@
 
     <!-- Plan checking progress -->
     <div v-if="isLoading && planProgress.phase !== 'idle'" class="progress-section space-y-3">
-      <div class="flex justify-between text-sm text-slate-400 mb-2">
+      <div class="flex justify-between text-sm text-muted mb-2">
         <span>{{ planProgress.phase === 'existence' ? 'Checking files in production...' : 'Verifying overwrite durations...' }}</span>
         <span>{{ planProgress.checked.toLocaleString() }} / {{ planProgress.total.toLocaleString() }}</span>
       </div>
-      <div class="progress-bar-container bg-slate-700 rounded-full h-3 overflow-hidden">
+      <div class="progress-bar-container bg-surface-2 rounded-full h-3 overflow-hidden">
         <div
           class="progress-bar h-full transition-all duration-300"
           :class="planProgress.phase === 'existence' ? 'bg-amber-500' : 'bg-purple-500'"
@@ -46,15 +46,15 @@
       <div v-if="planProgress.phase === 'duration'" class="grid grid-cols-3 gap-2 text-xs">
         <div class="text-center">
           <div class="text-emerald-400 font-medium">{{ planProgress.matched }}</div>
-          <div class="text-slate-500">Matched</div>
+          <div class="text-faint">Matched</div>
         </div>
         <div class="text-center">
           <div class="text-amber-400 font-medium">{{ planProgress.mismatched }}</div>
-          <div class="text-slate-500">Different</div>
+          <div class="text-faint">Different</div>
         </div>
         <div class="text-center">
           <div class="text-red-400 font-medium">{{ planProgress.errors }}</div>
-          <div class="text-slate-500">Errors</div>
+          <div class="text-faint">Errors</div>
         </div>
       </div>
     </div>
@@ -100,13 +100,13 @@
 
         <!-- Stats (only show if there are new files) -->
         <div v-if="deployPlan.newFiles > 0" class="stats-grid grid grid-cols-2 gap-3 text-sm">
-          <div class="stat-item flex flex-col p-3 bg-slate-800 rounded border border-slate-600">
-            <span class="text-slate-400">New Files</span>
+          <div class="stat-item flex flex-col p-3 bg-surface rounded border border-line">
+            <span class="text-muted">New Files</span>
             <span class="text-emerald-400 font-semibold text-lg">{{ deployPlan.newFiles.toLocaleString() }}</span>
           </div>
-          <div class="stat-item flex flex-col p-3 bg-slate-800 rounded border border-slate-600">
-            <span class="text-slate-400">Identical (skip)</span>
-            <span class="text-slate-400 font-semibold text-lg">{{ deployPlan.overwrites.toLocaleString() }}</span>
+          <div class="stat-item flex flex-col p-3 bg-surface rounded border border-line">
+            <span class="text-muted">Identical (skip)</span>
+            <span class="text-muted font-semibold text-lg">{{ deployPlan.overwrites.toLocaleString() }}</span>
           </div>
         </div>
 
@@ -127,9 +127,9 @@
         </p>
 
         <!-- Secondary option -->
-        <p v-if="!state.audioDeployed && deployPlan.newFiles > 0" class="text-center text-xs text-slate-500">
+        <p v-if="!state.audioDeployed && deployPlan.newFiles > 0" class="text-center text-xs text-faint">
           or
-          <button @click="handleDeploy('overwrite')" class="text-slate-400 hover:text-white underline">
+          <button @click="handleDeploy('overwrite')" class="text-muted hover:text-ink underline">
             deploy all {{ deployPlan.total.toLocaleString() }} files anyway
           </button>
         </p>
@@ -147,7 +147,7 @@
               <p class="text-amber-400 font-medium text-sm">
                 {{ getDifferentCount }} files in production have different durations
               </p>
-              <p class="text-slate-400 text-xs mt-1">
+              <p class="text-muted text-xs mt-1">
                 These files may be used by live courses. If they are, overwriting will affect learners immediately.
                 Make sure you know it's safe to overwrite these files.
               </p>
@@ -157,16 +157,16 @@
 
         <!-- Stats -->
         <div class="stats-grid grid grid-cols-3 gap-3 text-sm">
-          <div class="stat-item flex flex-col p-3 bg-slate-700 rounded border border-slate-600">
-            <span class="text-slate-400">New Files</span>
+          <div class="stat-item flex flex-col p-3 bg-surface-2 rounded border border-line">
+            <span class="text-muted">New Files</span>
             <span class="text-emerald-400 font-semibold text-lg">{{ deployPlan.newFiles.toLocaleString() }}</span>
           </div>
-          <div class="stat-item flex flex-col p-3 bg-slate-700 rounded border border-slate-600">
-            <span class="text-slate-400">Identical</span>
-            <span class="text-slate-400 font-semibold text-lg">{{ identicalCount.toLocaleString() }}</span>
+          <div class="stat-item flex flex-col p-3 bg-surface-2 rounded border border-line">
+            <span class="text-muted">Identical</span>
+            <span class="text-muted font-semibold text-lg">{{ identicalCount.toLocaleString() }}</span>
           </div>
-          <div class="stat-item flex flex-col p-3 bg-slate-700 rounded border border-slate-600">
-            <span class="text-slate-400">Different</span>
+          <div class="stat-item flex flex-col p-3 bg-surface-2 rounded border border-line">
+            <span class="text-muted">Different</span>
             <span class="text-amber-400 font-semibold text-lg">{{ getDifferentCount.toLocaleString() }}</span>
           </div>
         </div>
@@ -175,11 +175,11 @@
         <div v-if="deployPlan.overwriteDurations?.mismatchDetails?.length" class="mismatch-details">
           <button
             @click="showMismatchDetails = !showMismatchDetails"
-            class="w-full flex items-center justify-between p-3 bg-slate-800 border border-slate-600 rounded-lg text-sm hover:bg-slate-700 transition-colors"
+            class="w-full flex items-center justify-between p-3 bg-surface border border-line rounded-lg text-sm hover:bg-surface-2 transition-colors"
           >
-            <span class="text-slate-300">View {{ deployPlan.overwriteDurations.mismatchDetails.length }} mismatched files</span>
+            <span class="text-ink">View {{ deployPlan.overwriteDurations.mismatchDetails.length }} mismatched files</span>
             <svg
-              class="w-4 h-4 text-slate-400 transition-transform"
+              class="w-4 h-4 text-muted transition-transform"
               :class="{ 'rotate-180': showMismatchDetails }"
               fill="none" stroke="currentColor" viewBox="0 0 24 24"
             >
@@ -187,11 +187,11 @@
             </svg>
           </button>
 
-          <div v-if="showMismatchDetails" class="mt-2 p-3 bg-slate-800 border border-slate-600 rounded-lg space-y-3">
+          <div v-if="showMismatchDetails" class="mt-2 p-3 bg-surface border border-line rounded-lg space-y-3">
             <!-- Download button -->
             <button
               @click="handleDownloadMismatchDetails"
-              class="w-full px-3 py-2 text-xs font-medium border border-slate-500 text-slate-300 rounded hover:bg-slate-700 transition-colors flex items-center justify-center gap-2"
+              class="w-full px-3 py-2 text-xs font-medium border border-line text-ink rounded hover:bg-surface-2 transition-colors flex items-center justify-center gap-2"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -204,16 +204,16 @@
               <div
                 v-for="detail in deployPlan.overwriteDurations.mismatchDetails"
                 :key="detail.uuid"
-                class="p-3 bg-slate-900 rounded border border-slate-700 space-y-2"
+                class="p-3 bg-canvas rounded border border-line space-y-2"
               >
                 <!-- Text (if available) -->
-                <div v-if="detail.text" class="text-white text-sm font-medium">
+                <div v-if="detail.text" class="text-ink text-sm font-medium">
                   "{{ detail.text }}"
-                  <span v-if="detail.role" class="text-slate-500 text-xs ml-1">({{ detail.role }})</span>
+                  <span v-if="detail.role" class="text-faint text-xs ml-1">({{ detail.role }})</span>
                 </div>
-                <div class="font-mono text-slate-500 text-xs truncate" :title="detail.uuid">{{ detail.uuid }}</div>
-                <div class="flex flex-wrap gap-3 text-slate-500">
-                  <span>Stage: <span class="text-white">{{ detail.expectedDuration?.toFixed(3) }}s</span></span>
+                <div class="font-mono text-faint text-xs truncate" :title="detail.uuid">{{ detail.uuid }}</div>
+                <div class="flex flex-wrap gap-3 text-faint">
+                  <span>Stage: <span class="text-ink">{{ detail.expectedDuration?.toFixed(3) }}s</span></span>
                   <span>Prod: <span class="text-amber-400">{{ detail.actualDuration?.toFixed(3) }}s</span></span>
                   <span>Diff: <span class="text-red-400">{{ Math.abs(detail.difference || 0).toFixed(3) }}s</span></span>
                 </div>
@@ -222,7 +222,7 @@
                   <button
                     @click="handleDownloadAudioFiles(detail.uuid)"
                     :disabled="downloadingUuids.has(detail.uuid)"
-                    class="flex-1 px-2 py-1 text-xs font-medium bg-slate-700 text-slate-200 rounded hover:bg-slate-600 transition-colors disabled:opacity-50 flex items-center justify-center gap-1"
+                    class="flex-1 px-2 py-1 text-xs font-medium bg-surface-2 text-ink rounded hover:bg-surface-3 transition-colors disabled:opacity-50 flex items-center justify-center gap-1"
                   >
                     <svg v-if="!downloadingUuids.has(detail.uuid)" class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -260,15 +260,15 @@
         </button>
 
         <!-- Overwrite confirmation section -->
-        <div v-if="!state.audioDeployed" class="p-4 bg-slate-800 border border-slate-600 rounded-lg space-y-3">
-          <label class="text-sm text-slate-400 block">
+        <div v-if="!state.audioDeployed" class="p-4 bg-surface border border-line rounded-lg space-y-3">
+          <label class="text-sm text-muted block">
             Type "overwrite" to confirm overwriting all files:
           </label>
           <input
             v-model="confirmationText"
             type="text"
             placeholder="overwrite"
-            class="w-full px-3 py-2 text-sm bg-slate-900 border border-slate-600 rounded text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+            class="w-full px-3 py-2 text-sm bg-canvas border border-line rounded text-ink placeholder-faint focus:outline-none focus:border-amber-500"
           />
           <button
             @click="handleDeploy(confirmationText)"
@@ -281,20 +281,20 @@
       </div>
 
       <!-- LEGACY: No scenario (old plan format) -->
-      <div v-else class="scenario-box p-4 bg-slate-700 border border-slate-600 rounded-lg space-y-4">
+      <div v-else class="scenario-box p-4 bg-surface-2 border border-line rounded-lg space-y-4">
         <!-- Stats -->
         <div class="stats-grid grid grid-cols-3 gap-3 text-sm">
-          <div class="stat-item flex flex-col p-3 bg-slate-800 rounded border border-slate-600">
-            <span class="text-slate-400">Total</span>
-            <span class="text-white font-semibold text-lg">{{ (deployPlan.total || 0).toLocaleString() }}</span>
+          <div class="stat-item flex flex-col p-3 bg-surface rounded border border-line">
+            <span class="text-muted">Total</span>
+            <span class="text-ink font-semibold text-lg">{{ (deployPlan.total || 0).toLocaleString() }}</span>
           </div>
-          <div class="stat-item flex flex-col p-3 bg-slate-800 rounded border border-slate-600">
-            <span class="text-slate-400">New Files</span>
+          <div class="stat-item flex flex-col p-3 bg-surface rounded border border-line">
+            <span class="text-muted">New Files</span>
             <span class="text-emerald-400 font-semibold text-lg">{{ (deployPlan.newFiles || 0).toLocaleString() }}</span>
           </div>
-          <div class="stat-item flex flex-col p-3 bg-slate-800 rounded border border-slate-600">
-            <span class="text-slate-400">Overwrites</span>
-            <span :class="(deployPlan.overwrites || 0) > 0 ? 'text-amber-400' : 'text-slate-400'" class="font-semibold text-lg">
+          <div class="stat-item flex flex-col p-3 bg-surface rounded border border-line">
+            <span class="text-muted">Overwrites</span>
+            <span :class="(deployPlan.overwrites || 0) > 0 ? 'text-amber-400' : 'text-muted'" class="font-semibold text-lg">
               {{ (deployPlan.overwrites || 0).toLocaleString() }}
             </span>
           </div>
@@ -310,7 +310,7 @@
               <p class="text-amber-400 font-medium text-sm">
                 {{ deployPlan.overwrites }} files already exist in production
               </p>
-              <p class="text-slate-400 text-xs mt-1">
+              <p class="text-muted text-xs mt-1">
                 Overwriting affects ALL courses using these files.
                 Time this with manifest deployment to avoid sync issues.
               </p>
@@ -319,14 +319,14 @@
 
           <!-- Confirmation input -->
           <div class="confirmation-input">
-            <label class="text-sm text-slate-400 block mb-2">
+            <label class="text-sm text-muted block mb-2">
               Type "overwrite" to confirm:
             </label>
             <input
               v-model="confirmationText"
               type="text"
               placeholder="overwrite"
-              class="w-full px-3 py-2 text-sm bg-slate-800 border border-slate-600 rounded text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+              class="w-full px-3 py-2 text-sm bg-surface border border-line rounded text-ink placeholder-faint focus:outline-none focus:border-amber-500"
             />
           </div>
         </div>
@@ -348,28 +348,28 @@
     <div v-if="isDeploying" class="progress-section space-y-4">
       <!-- Phase 1: Copying files -->
       <div v-if="!progress.verifying">
-        <div class="flex justify-between text-sm text-slate-400 mb-2">
+        <div class="flex justify-between text-sm text-muted mb-2">
           <span>Deploying to production...</span>
           <span>{{ progress.deployed.toLocaleString() }} / {{ progress.total.toLocaleString() }}</span>
         </div>
-        <div class="progress-bar-container bg-slate-700 rounded-full h-3 overflow-hidden">
+        <div class="progress-bar-container bg-surface-2 rounded-full h-3 overflow-hidden">
           <div
             class="progress-bar bg-amber-500 h-full transition-all duration-300"
             :style="{ width: `${progressPercent}%` }"
           />
         </div>
-        <p class="text-center text-xs text-slate-500 mt-2">
+        <p class="text-center text-xs text-faint mt-2">
           {{ progressPercent }}% complete
         </p>
       </div>
 
       <!-- Phase 2: Post-deploy verification -->
       <div v-else>
-        <div class="flex justify-between text-sm text-slate-400 mb-2">
+        <div class="flex justify-between text-sm text-muted mb-2">
           <span>Verifying production audio...</span>
           <span>{{ (progress.verifyChecked || 0).toLocaleString() }} / {{ (progress.verifyTotal || 0).toLocaleString() }}</span>
         </div>
-        <div class="progress-bar-container bg-slate-700 rounded-full h-3 overflow-hidden">
+        <div class="progress-bar-container bg-surface-2 rounded-full h-3 overflow-hidden">
           <div
             class="progress-bar bg-purple-500 h-full transition-all duration-300"
             :style="{ width: `${verifyPercent}%` }"
@@ -378,15 +378,15 @@
         <div class="grid grid-cols-3 gap-2 text-xs mt-2">
           <div class="text-center">
             <div class="text-emerald-400 font-medium">{{ (progress.verifyMatched || 0).toLocaleString() }}</div>
-            <div class="text-slate-500">Matched</div>
+            <div class="text-faint">Matched</div>
           </div>
           <div class="text-center">
             <div class="text-amber-400 font-medium">{{ (progress.verifyMismatched || 0).toLocaleString() }}</div>
-            <div class="text-slate-500">Mismatched</div>
+            <div class="text-faint">Mismatched</div>
           </div>
           <div class="text-center">
             <div class="text-red-400 font-medium">{{ (progress.verifyErrors || 0).toLocaleString() }}</div>
-            <div class="text-slate-500">Errors</div>
+            <div class="text-faint">Errors</div>
           </div>
         </div>
       </div>
@@ -397,9 +397,9 @@
       v-if="deployPlan && deployPlan.total !== undefined && !isDeploying && !isLoading && !state.audioDeployed"
       @click="handleCheckPlan"
       :disabled="isLoading"
-      class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+      class="w-full px-4 py-2 text-sm font-medium border border-line text-ink rounded-lg hover:bg-surface-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
     >
-      <span v-if="isLoading" class="spinner w-4 h-4 border-2 border-slate-300 border-t-transparent rounded-full animate-spin"></span>
+      <span v-if="isLoading" class="spinner w-4 h-4 border-2 border-line border-t-transparent rounded-full animate-spin"></span>
       <span>{{ isLoading ? 'Checking...' : 'Refresh Plan' }}</span>
     </button>
 
@@ -413,27 +413,27 @@
         <span>Deployment verification failed</span>
       </div>
 
-      <p v-if="state.deployVerification.message" class="text-sm text-slate-300">
+      <p v-if="state.deployVerification.message" class="text-sm text-ink">
         {{ state.deployVerification.message }}
       </p>
 
       <!-- Stats grid -->
       <div class="grid grid-cols-4 gap-2 text-sm">
-        <div class="text-center p-2 bg-slate-800 rounded">
+        <div class="text-center p-2 bg-surface rounded">
           <div class="text-emerald-400 font-semibold">{{ (state.deployVerification.matched || 0).toLocaleString() }}</div>
-          <div class="text-slate-500 text-xs">OK</div>
+          <div class="text-faint text-xs">OK</div>
         </div>
-        <div class="text-center p-2 bg-slate-800 rounded">
-          <div :class="(state.deployVerification.mismatched || 0) > 0 ? 'text-amber-400' : 'text-slate-400'" class="font-semibold">{{ (state.deployVerification.mismatched || 0).toLocaleString() }}</div>
-          <div class="text-slate-500 text-xs">Mismatched</div>
+        <div class="text-center p-2 bg-surface rounded">
+          <div :class="(state.deployVerification.mismatched || 0) > 0 ? 'text-amber-400' : 'text-muted'" class="font-semibold">{{ (state.deployVerification.mismatched || 0).toLocaleString() }}</div>
+          <div class="text-faint text-xs">Mismatched</div>
         </div>
-        <div class="text-center p-2 bg-slate-800 rounded">
-          <div :class="(state.deployVerification.errors || 0) > 0 ? 'text-red-400' : 'text-slate-400'" class="font-semibold">{{ (state.deployVerification.errors || 0).toLocaleString() }}</div>
-          <div class="text-slate-500 text-xs">Errors</div>
+        <div class="text-center p-2 bg-surface rounded">
+          <div :class="(state.deployVerification.errors || 0) > 0 ? 'text-red-400' : 'text-muted'" class="font-semibold">{{ (state.deployVerification.errors || 0).toLocaleString() }}</div>
+          <div class="text-faint text-xs">Errors</div>
         </div>
-        <div class="text-center p-2 bg-slate-800 rounded">
-          <div :class="(state.deployVerification as any).missing > 0 ? 'text-red-400' : 'text-slate-400'" class="font-semibold">{{ ((state.deployVerification as any).missing || 0).toLocaleString() }}</div>
-          <div class="text-slate-500 text-xs">Missing</div>
+        <div class="text-center p-2 bg-surface rounded">
+          <div :class="(state.deployVerification as any).missing > 0 ? 'text-red-400' : 'text-muted'" class="font-semibold">{{ ((state.deployVerification as any).missing || 0).toLocaleString() }}</div>
+          <div class="text-faint text-xs">Missing</div>
         </div>
       </div>
 
@@ -441,21 +441,21 @@
       <div v-if="state.deployVerification.details && state.deployVerification.details.length > 0"
            class="p-3 bg-red-900/20 border border-red-800 rounded text-xs">
         <p class="text-red-400 font-medium mb-1">Issues ({{ state.deployVerification.details.length }}):</p>
-        <div class="max-h-40 overflow-y-auto space-y-1 text-slate-400 font-mono">
+        <div class="max-h-40 overflow-y-auto space-y-1 text-muted font-mono">
           <div v-for="detail in state.deployVerification.details.slice(0, 10)" :key="detail.uuid">
             {{ detail.uuid.substring(0, 8) }}... {{ detail.issue }}
             <span v-if="detail.expected != null && detail.actual != null">
               (expected {{ detail.expected.toFixed(6) }}s, got {{ detail.actual.toFixed(6) }}s)
             </span>
           </div>
-          <p v-if="state.deployVerification.details.length > 10" class="text-slate-500 italic">
+          <p v-if="state.deployVerification.details.length > 10" class="text-faint italic">
             ...and {{ state.deployVerification.details.length - 10 }} more
           </p>
         </div>
       </div>
 
       <button @click="handleCheckPlan"
-        class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors flex items-center justify-center gap-2">
+        class="w-full px-4 py-2 text-sm font-medium border border-line text-ink rounded-lg hover:bg-surface-2 transition-colors flex items-center justify-center gap-2">
         Re-check Production Status
       </button>
     </div>
@@ -471,37 +471,37 @@
 
       <!-- Deployment summary -->
       <div v-if="state.deployVerification" class="space-y-2">
-        <p v-if="state.deployVerification.message" class="text-sm text-slate-300">
+        <p v-if="state.deployVerification.message" class="text-sm text-ink">
           {{ state.deployVerification.message }}
         </p>
 
         <!-- Stats grid -->
         <div class="grid grid-cols-3 gap-2 text-sm">
-          <div class="text-center p-2 bg-slate-800 rounded">
+          <div class="text-center p-2 bg-surface rounded">
             <div class="text-emerald-400 font-semibold">{{ (state.deployVerification.matched || 0).toLocaleString() }}</div>
-            <div class="text-slate-500 text-xs">Verified</div>
+            <div class="text-faint text-xs">Verified</div>
           </div>
-          <div v-if="state.deployVerification.mismatched > 0" class="text-center p-2 bg-slate-800 rounded">
+          <div v-if="state.deployVerification.mismatched > 0" class="text-center p-2 bg-surface rounded">
             <div class="text-amber-400 font-semibold">{{ (state.deployVerification.mismatched || 0).toLocaleString() }}</div>
-            <div class="text-slate-500 text-xs">Mismatched</div>
+            <div class="text-faint text-xs">Mismatched</div>
           </div>
-          <div v-if="state.deployVerification.errors > 0" class="text-center p-2 bg-slate-800 rounded">
+          <div v-if="state.deployVerification.errors > 0" class="text-center p-2 bg-surface rounded">
             <div class="text-red-400 font-semibold">{{ (state.deployVerification.errors || 0).toLocaleString() }}</div>
-            <div class="text-slate-500 text-xs">Errors</div>
+            <div class="text-faint text-xs">Errors</div>
           </div>
         </div>
       </div>
 
-      <p class="text-xs text-slate-500">
+      <p class="text-xs text-faint">
         Deployed: {{ formatDate(state.audioDeployedAt) }}
       </p>
 
       <button
         @click="handleCheckPlan"
         :disabled="isLoading"
-        class="w-full px-4 py-2 text-sm font-medium border border-slate-500 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        class="w-full px-4 py-2 text-sm font-medium border border-line text-ink rounded-lg hover:bg-surface-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
-        <span v-if="isLoading" class="spinner w-4 h-4 border-2 border-slate-300 border-t-transparent rounded-full animate-spin"></span>
+        <span v-if="isLoading" class="spinner w-4 h-4 border-2 border-line border-t-transparent rounded-full animate-spin"></span>
         <span>{{ isLoading ? 'Checking...' : 'Re-check Production Status' }}</span>
       </button>
     </div>
@@ -510,6 +510,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { getApiUrl } from '@/services/api'
 import type { ExportState, DeployPlan } from '@/composables/useExportWorkflow'
 
 const props = defineProps<{
@@ -633,8 +634,9 @@ async function handleDownloadAudioFiles(uuid: string) {
 
   downloadingUuids.value.add(uuid)
   try {
-    // Get API base URL from localStorage
-    const apiBase = localStorage.getItem('api_base_url') || ''
+    // Route through the SSi Machine tunnel (getApiUrl honours the api_base_url
+    // override); '' fell through to the SPA origin and downloaded index.html.
+    const apiBase = getApiUrl()
 
     // Download via backend proxy to avoid CORS issues
     const downloadFile = async (bucket: string, filename: string) => {
@@ -679,7 +681,7 @@ async function handleDownloadAudioFiles(uuid: string) {
 }
 
 .progress-bar-container {
-  background: #334155;
+  background: var(--surface-2);
 }
 
 .progress-bar {
@@ -692,5 +694,79 @@ async function handleDownloadAudioFiles(uuid: string) {
 
 .progress-bar.bg-emerald-500 {
   background: linear-gradient(90deg, #10b981, #059669);
+}
+
+/*
+ * Light-mode contrast fixes. The template uses dark-mode-tuned Tailwind color
+ * literals (emerald/amber/red-400 text, *-900/30 tinted boxes, *-700 borders)
+ * that do NOT re-theme. On the light canvas these fail WCAG AA badly:
+ *   - text-emerald-400 #34d399 on #fff  -> ~1.5:1 (need 4.5)
+ *   - text-amber-400   #fbbf24 on #fff  -> ~1.4:1
+ *   - text-red-400     #f87171 on #fff  -> ~2.5:1
+ *   - text-emerald-300 / text-emerald-200 even worse
+ * The dark *-900/30 status boxes also render as heavy dark tints in light mode.
+ * Below we re-tone these ONLY under [data-theme="light"] so dark mode is
+ * untouched. Hues stay in the same family; text is darkened to >=4.5:1 on the
+ * (now light) tinted box backgrounds.
+ */
+:root[data-theme="light"] .step-content :is(.text-emerald-400, .text-emerald-300) {
+  /* #047857 on #fff -> 4.95:1, on emerald-50 tint -> ~4.7:1 */
+  color: #047857;
+}
+/* NOTE: .text-emerald-200 is left as-is on purpose: it is the "(safe)" hint
+   that sits ONLY inside the (dark-green) deploy button, where light emerald
+   text is correct. */
+:root[data-theme="light"] .step-content .text-amber-400 {
+  /* #b45309 on #fff -> 4.92:1, on amber-50 tint -> ~4.6:1 */
+  color: #b45309;
+}
+:root[data-theme="light"] .step-content .text-red-400 {
+  /* #dc2626 on #fff -> 4.53:1, on red-50 tint -> ~4.3:1 (large/bold UI numbers ok >=3) */
+  color: #c81e1e;
+}
+
+/* Status boxes: flip dark *-900/30 tints to light same-hue tints with readable borders */
+:root[data-theme="light"] .step-content .bg-emerald-900\/30 {
+  background-color: #ecfdf5; /* emerald-50 */
+}
+:root[data-theme="light"] .step-content .border-emerald-700 {
+  border-color: #6ee7b7; /* emerald-300, visible on emerald-50 */
+}
+:root[data-theme="light"] .step-content .bg-amber-900\/30 {
+  background-color: #fffbeb; /* amber-50 */
+}
+:root[data-theme="light"] .step-content .border-amber-700 {
+  border-color: #fcd34d; /* amber-300 */
+}
+:root[data-theme="light"] .step-content :is(.bg-red-900\/30, .bg-red-900\/20) {
+  background-color: #fef2f2; /* red-50 */
+}
+:root[data-theme="light"] .step-content :is(.border-red-700, .border-red-800) {
+  border-color: #fca5a5; /* red-300 */
+}
+
+/*
+ * Solid action buttons carry white text on amber-500 (#f59e0b -> white 1.9:1)
+ * and amber-600 (#d97706 -> white 2.6:1), both failing AA. Darken the amber
+ * fills in light mode only so white text clears 4.5:1; emerald-500 (#10b981 ->
+ * white 1.95:1) likewise. Hover states darkened in step. Dark mode untouched.
+ */
+:root[data-theme="light"] .step-content button.bg-amber-500 {
+  background-color: #a85508; /* white 4.6:1 */
+}
+:root[data-theme="light"] .step-content button.bg-amber-500:hover {
+  background-color: #8f4707;
+}
+:root[data-theme="light"] .step-content button.bg-amber-600 {
+  background-color: #92480a; /* white 5.3:1 */
+}
+:root[data-theme="light"] .step-content button.bg-amber-600:hover {
+  background-color: #7c3d08;
+}
+:root[data-theme="light"] .step-content button.bg-emerald-500 {
+  background-color: #047857; /* white 4.8:1 */
+}
+:root[data-theme="light"] .step-content button.bg-emerald-500:hover {
+  background-color: #036249;
 }
 </style>

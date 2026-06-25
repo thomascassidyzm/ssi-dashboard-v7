@@ -67,9 +67,9 @@ defineEmits(['toggle-recording', 'pause', 'previous', 'next', 'slower', 'faster'
 }
 
 .control-btn {
-  background: var(--color-slate, #334155);
-  border: 2px solid var(--color-graphite, #475569);
-  color: var(--color-paper, #f7f7f2);
+  background: var(--color-slate, var(--surface-2));
+  border: 2px solid var(--color-graphite, var(--surface-3));
+  color: var(--color-paper, var(--ink));
   padding: 0.75rem 1.5rem;
   border-radius: 12px;
   font-family: 'Josefin Sans', sans-serif;
@@ -93,7 +93,7 @@ defineEmits(['toggle-recording', 'pause', 'previous', 'next', 'slower', 'faster'
 .control-btn:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
 }
 
 .control-btn:disabled {
@@ -116,8 +116,8 @@ defineEmits(['toggle-recording', 'pause', 'previous', 'next', 'slower', 'faster'
 }
 
 .control-btn.record.recording {
-  background: var(--color-graphite, #475569);
-  border-color: var(--color-graphite, #475569);
+  background: var(--color-graphite, var(--surface-3));
+  border-color: var(--color-graphite, var(--surface-3));
   box-shadow: none;
 }
 
@@ -130,16 +130,39 @@ defineEmits(['toggle-recording', 'pause', 'previous', 'next', 'slower', 'faster'
 .hint {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 kbd {
-  background: var(--color-void, #0f172a);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-void, var(--canvas));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 4px;
   padding: 0.15rem 0.4rem;
   margin-right: 0.25rem;
   font-size: 0.7rem;
+}
+
+/* Light mode: faint surface-3 borders (~1.1:1) are invisible on near-white
+   surfaces, so the buttons/keys lose their shape. Use the stronger --line
+   border token plus a subtle shadow for separation. Scoped to light so dark
+   mode keeps its original surface-3 borders untouched. */
+:root[data-theme="light"] .control-btn {
+  border-color: var(--line);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+:root[data-theme="light"] .control-btn.record,
+:root[data-theme="light"] .control-btn.record.recording {
+  border-color: var(--color-film-red, #e63946);
+  box-shadow: 0 4px 16px rgba(230, 57, 70, 0.3);
+}
+
+:root[data-theme="light"] .control-btn.record.recording {
+  border-color: var(--line);
+}
+
+:root[data-theme="light"] kbd {
+  border-color: var(--line);
 }
 
 @media (max-width: 768px) {

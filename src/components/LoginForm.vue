@@ -1,18 +1,18 @@
 <template>
-  <div class="login-form max-w-md mx-auto bg-slate-800 border border-slate-700 rounded-lg p-8">
-    <h2 class="text-2xl font-bold text-emerald-400 mb-6 text-center">
+  <div class="login-form max-w-md mx-auto bg-surface border border-line rounded-lg p-8">
+    <h2 class="text-2xl font-bold text-accent-2 mb-6 text-center">
       Sign In to Popty
     </h2>
 
     <!-- Step 1: Email Entry -->
     <div v-if="step === 'email'" class="space-y-4">
       <div>
-        <label class="block text-sm text-slate-400 mb-2">Email Address</label>
+        <label class="block text-sm text-muted mb-2">Email Address</label>
         <input
           v-model="email"
           type="email"
           placeholder="you@example.com"
-          class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none"
+          class="w-full bg-canvas border border-line rounded-lg px-4 py-3 text-ink placeholder-faint focus:border-emerald-500 focus:outline-none"
           @keyup.enter="goToAuth"
         />
       </div>
@@ -20,20 +20,20 @@
       <button
         @click="goToAuth"
         :disabled="loading || !email"
-        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white py-3 rounded-lg font-semibold transition-colors"
+        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white py-3 rounded-lg font-semibold transition-colors"
       >
         <span v-if="loading">Sending code...</span>
         <span v-else>Send Login Code</span>
       </button>
 
-      <p v-if="error" class="text-red-400 text-sm text-center">
+      <p v-if="error" class="text-danger text-sm text-center">
         {{ error }}
       </p>
 
       <div v-if="email" class="text-center">
         <button
           @click="step = 'password'; nextTick(() => passwordInput?.focus())"
-          class="text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+          class="text-sm text-muted hover:text-accent-2 transition-colors"
         >
           Use password instead
         </button>
@@ -42,18 +42,18 @@
 
     <!-- Step 2: Password Entry -->
     <div v-else-if="step === 'password'" class="space-y-4">
-      <p class="text-slate-300 text-center mb-2">
-        <strong class="text-emerald-400">{{ email }}</strong>
+      <p class="text-ink text-center mb-2">
+        <strong class="text-accent-2">{{ email }}</strong>
       </p>
 
       <div>
-        <label class="block text-sm text-slate-400 mb-2">Password</label>
+        <label class="block text-sm text-muted mb-2">Password</label>
         <input
           ref="passwordInput"
           v-model="password"
           type="password"
           placeholder="Enter your password"
-          class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none"
+          class="w-full bg-canvas border border-line rounded-lg px-4 py-3 text-ink placeholder-faint focus:border-emerald-500 focus:outline-none"
           @keyup.enter="handlePasswordLogin"
         />
       </div>
@@ -61,13 +61,13 @@
       <button
         @click="handlePasswordLogin"
         :disabled="loading || !password"
-        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white py-3 rounded-lg font-semibold transition-colors"
+        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white py-3 rounded-lg font-semibold transition-colors"
       >
         <span v-if="loading">Signing in...</span>
         <span v-else>Sign In</span>
       </button>
 
-      <p v-if="error" class="text-red-400 text-sm text-center">
+      <p v-if="error" class="text-danger text-sm text-center">
         {{ error }}
       </p>
 
@@ -75,13 +75,13 @@
         <button
           @click="switchToOTP"
           :disabled="loading"
-          class="text-slate-400 hover:text-emerald-400 transition-colors"
+          class="text-muted hover:text-accent-2 transition-colors"
         >
           Use login code instead
         </button>
         <button
           @click="reset"
-          class="text-slate-400 hover:text-slate-300 transition-colors"
+          class="text-muted hover:text-ink transition-colors"
         >
           Different email
         </button>
@@ -90,20 +90,20 @@
 
     <!-- Step 3: OTP Code Entry -->
     <div v-else-if="step === 'code'" class="space-y-4">
-      <p class="text-slate-300 text-center mb-4">
+      <p class="text-ink text-center mb-4">
         We sent a 6-digit code to<br/>
-        <strong class="text-emerald-400">{{ email }}</strong>
+        <strong class="text-accent-2">{{ email }}</strong>
       </p>
 
       <div>
-        <label class="block text-sm text-slate-400 mb-2">Enter Code</label>
+        <label class="block text-sm text-muted mb-2">Enter Code</label>
         <input
           ref="codeInput"
           v-model="code"
           type="text"
           maxlength="6"
           placeholder="000000"
-          class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none text-center text-2xl tracking-widest font-mono"
+          class="w-full bg-canvas border border-line rounded-lg px-4 py-3 text-ink placeholder-faint focus:border-emerald-500 focus:outline-none text-center text-2xl tracking-widest font-mono"
           @keyup.enter="handleVerifyOTP"
         />
       </div>
@@ -111,13 +111,13 @@
       <button
         @click="handleVerifyOTP"
         :disabled="loading || code.length < 6"
-        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white py-3 rounded-lg font-semibold transition-colors"
+        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white py-3 rounded-lg font-semibold transition-colors"
       >
         <span v-if="loading">Verifying...</span>
         <span v-else>Sign In</span>
       </button>
 
-      <p v-if="error" class="text-red-400 text-sm text-center">
+      <p v-if="error" class="text-danger text-sm text-center">
         {{ error }}
       </p>
 
@@ -125,19 +125,19 @@
         <button
           @click="handleSendOTP"
           :disabled="loading"
-          class="text-slate-400 hover:text-emerald-400 transition-colors"
+          class="text-muted hover:text-accent-2 transition-colors"
         >
           Resend code
         </button>
         <button
           @click="switchToPassword"
-          class="text-slate-400 hover:text-slate-300 transition-colors"
+          class="text-muted hover:text-ink transition-colors"
         >
           Use password
         </button>
         <button
           @click="reset"
-          class="text-slate-400 hover:text-slate-300 transition-colors"
+          class="text-muted hover:text-ink transition-colors"
         >
           Different email
         </button>
@@ -146,10 +146,10 @@
 
     <!-- Step 4: Invite Code (shown when authenticated but no dashboard access) -->
     <div v-else-if="step === 'invite-code'" class="space-y-4">
-      <p class="text-slate-300 text-center mb-2">
-        Signed in as <strong class="text-emerald-400">{{ email }}</strong>
+      <p class="text-ink text-center mb-2">
+        Signed in as <strong class="text-accent-2">{{ email }}</strong>
       </p>
-      <p class="text-slate-400 text-sm text-center mb-4">
+      <p class="text-muted text-sm text-center mb-4">
         Enter your invite code to get access.
       </p>
 
@@ -160,7 +160,7 @@
           type="text"
           maxlength="8"
           placeholder="XXXXXXXX"
-          class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-500 focus:border-emerald-500 focus:outline-none text-center text-2xl tracking-widest font-mono uppercase"
+          class="w-full bg-canvas border border-line rounded-lg px-4 py-3 text-ink placeholder-faint focus:border-emerald-500 focus:outline-none text-center text-2xl tracking-widest font-mono uppercase"
           @keyup.enter="handleRedeemCode"
         />
       </div>
@@ -168,20 +168,20 @@
       <button
         @click="handleRedeemCode"
         :disabled="redeemLoading || inviteCode.length < 4"
-        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white py-3 rounded-lg font-semibold transition-colors"
+        class="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:text-faint text-white py-3 rounded-lg font-semibold transition-colors"
       >
         <span v-if="redeemLoading">Redeeming...</span>
         <span v-else>Redeem Code</span>
       </button>
 
-      <p v-if="redeemError" class="text-red-400 text-sm text-center">
+      <p v-if="redeemError" class="text-danger text-sm text-center">
         {{ redeemError }}
       </p>
 
       <div class="text-center text-sm">
         <button
           @click="reset"
-          class="text-slate-400 hover:text-slate-300 transition-colors"
+          class="text-muted hover:text-ink transition-colors"
         >
           Different email
         </button>
@@ -197,7 +197,7 @@ import { useAuth } from '../composables/useAuth'
 import { getApiUrl } from '../services/api'
 
 const router = useRouter()
-const { sendOTP, verifyOTP, signInWithPassword, loading, error, hasDashboardAccess, refreshAccess } = useAuth()
+const { sendOTP, verifyOTP, signInWithPassword, loading, error, hasDashboardAccess, refreshAccess, accessLookupWasAuthoritative } = useAuth()
 
 const step = ref('email')
 const email = ref('')
@@ -231,6 +231,11 @@ async function handlePasswordLogin() {
   try {
     await signInWithPassword(email.value, password.value)
     if (!hasDashboardAccess.value) {
+      // Only invite-wall on a DEFINITE "no row". A failed lookup (machine
+      // unreachable) keeps the useAuth error visible on this step so the
+      // user can retry — an admin must never be asked for an invite code
+      // because a tunnel was down.
+      if (!accessLookupWasAuthoritative()) return
       error.value = null
       step.value = 'invite-code'
       inviteCode.value = ''
@@ -280,6 +285,8 @@ async function handleVerifyOTP() {
   try {
     await verifyOTP(email.value, code.value)
     if (!hasDashboardAccess.value) {
+      // Same guard as the password path: network miss ≠ no access.
+      if (!accessLookupWasAuthoritative()) return
       error.value = null
       step.value = 'invite-code'
       inviteCode.value = ''

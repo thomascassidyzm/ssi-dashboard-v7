@@ -29,6 +29,9 @@ const publishManifestService = require('./publish-manifest-service.cjs')
 const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
+const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext } = require('./recording-upload-helpers.cjs')
+const podsRegistration = require('./voice-engine/pods-registration.cjs')
+const { resolvePoptyIdentity } = require('./shared/popty-identity.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -238,30 +241,24 @@ async function verifySupabaseJWT(token) {
     const { data: { user }, error } = await supabaseClient.getClient().auth.getUser(token)
     if (error || !user) return null
 
-    const { data: lr } = await supabaseClient.getClient()
-      .from('learners')
-      .select('id, user_id, display_name, platform_role, educational_role, dashboard_courses')
-      .eq('user_id', user.id)
-      .single()
+    // AUTHORITY ORDER (services/shared/popty-identity.cjs): the
+    // dashboard_users row governs Popty authorization when one exists —
+    // editing that table must always change effective access. The learners
+    // ssi_admin/god check is the no-row fallback that keeps the
+    // single-account convenience (one Supabase login → learning app AND
+    // Popty) working for SSi staff.
+    const [dashboardRow, learnerRow] = await Promise.all([
+      authGetUser(user.email).catch(() => null),
+      supabaseClient.getClient()
+        .from('learners')
+        .select('id, user_id, display_name, platform_role, educational_role, dashboard_courses')
+        .eq('user_id', user.id)
+        .maybeSingle()
+        .then(({ data }) => data)
+        .catch(() => null),
+    ])
 
-    if (!lr) return null
-
-    const pr = lr.platform_role
-    const er = lr.educational_role
-    if (pr !== 'ssi_admin' && pr !== 'popty_user' && er !== 'god') return null
-
-    // Course access: admins/god get all, popty_user gets dashboard_courses
-    const isAdminUser = pr === 'ssi_admin' || er === 'god'
-    const dc = lr.dashboard_courses || []
-    const coursesAccess = isAdminUser ? '*' : (dc.includes('*') ? '*' : dc)
-
-    return {
-      name: lr.display_name,
-      email: user.email,
-      role: isAdminUser ? 'admin' : 'user',
-      courses: coursesAccess,
-      learner_id: lr.id,
-    }
+    return resolvePoptyIdentity({ email: user.email, dashboardRow, learnerRow })
   } catch (err) {
     logger.error('[Auth] Supabase JWT verification error:', err)
     return null
@@ -304,6 +301,143 @@ async function requireDashboardUser(req, res) {
   if (!user) { res.status(403).json({ error: 'Dashboard access required' }); return null }
   return user
 }
+
+// =============================================================================
+// COURSE SCOPING — every route carrying :courseCode is gated in ONE place:
+// the caller must be a dashboard user AND hold access to that course.
+// A missing/empty course list on a non-admin record is a DENY (the
+// dashboard_users.courses DB default of '"*"' is fail-open; only an explicit
+// '*' or list membership grants access — userCanAccessCourse handles both).
+// =============================================================================
+
+// Same-host service-mesh calls (phase8 cache busts, course-builder/build-team
+// agents spawned ON the host — the working remote design) arrive on loopback
+// with NO forwarded headers. ngrok and LAN traffic always carry
+// x-forwarded-for / a non-loopback peer address, so they cannot spoof this.
+function isLoopbackDirectRequest(req) {
+  const addr = req.socket?.remoteAddress || ''
+  const isLoopback = addr === '127.0.0.1' || addr === '::1' || addr === '::ffff:127.0.0.1'
+  return isLoopback && !req.headers['x-forwarded-for'] && !req.headers['x-real-ip']
+}
+
+// Resolve the calling dashboard user WITHOUT writing a response. Tries, in
+// order: Supabase JWT → learners (popty_user/ssi_admin/god), legacy dashboard
+// session id, then Supabase JWT email → dashboard_users (the client's OTP
+// model: email = identity, dashboard_users = access control — mirrors
+// /api/auth/me so an OTP'd editor without a learners role still resolves).
+async function resolveDashboardUser(req) {
+  const token = req.headers.authorization?.replace('Bearer ', '')
+  if (!token) return null
+
+  const supabaseUser = await verifySupabaseJWT(token)
+  if (supabaseUser) return supabaseUser
+
+  const sessionUser = await authValidateSession(token)
+  if (sessionUser) return sessionUser
+
+  try {
+    const { data: { user } } = await supabaseClient.getClient().auth.getUser(token)
+    if (user?.email) return await authGetUser(user.email)
+  } catch (err) { /* invalid token — fall through to null */ }
+  return null
+}
+
+// Small TTL cache so polling surfaces (build monitor, audio-stats, upload
+// queue) don't hit Supabase auth on every request.
+const courseScopeUserCache = new Map() // token → { user, expires }
+const COURSE_SCOPE_CACHE_TTL = 60 * 1000
+const COURSE_SCOPE_CACHE_MAX = 500
+
+async function resolveDashboardUserCached(req) {
+  const token = req.headers.authorization?.replace('Bearer ', '')
+  if (!token) return null
+  const hit = courseScopeUserCache.get(token)
+  if (hit && hit.expires > Date.now()) return hit.user
+  const user = await resolveDashboardUser(req)
+  if (user) {
+    if (courseScopeUserCache.size >= COURSE_SCOPE_CACHE_MAX) {
+      const oldest = courseScopeUserCache.keys().next().value
+      courseScopeUserCache.delete(oldest)
+    }
+    courseScopeUserCache.set(token, { user, expires: Date.now() + COURSE_SCOPE_CACHE_TTL })
+  }
+  return user
+}
+
+app.param('courseCode', async (req, res, next, courseCode) => {
+  try {
+    if (isLoopbackDirectRequest(req)) return next()
+
+    const user = await resolveDashboardUserCached(req)
+    if (!user) {
+      return res.status(401).json({ error: 'Authentication required' })
+    }
+    // admin → all courses (matches useAuth.canAccessCourse); everyone else
+    // needs '*' or list membership. Missing/empty courses on the record = DENY.
+    if (user.role !== 'admin' && !userCanAccessCourse(user, courseCode)) {
+      logger.warn(`[CourseScope] DENY ${user.email || 'unknown'} → ${courseCode} (${req.method} ${req.path})`)
+      return res.status(403).json({ error: `No access to course ${courseCode}` })
+    }
+    req.dashboardUser = user
+    next()
+  } catch (err) {
+    logger.error('[CourseScope] error:', err)
+    res.status(500).json({ error: 'Course access check failed' })
+  }
+})
+
+// Human voice engine: synthesis jobs + honest coverage. Mounted under
+// /api/production/:courseCode so the app.param course-scope gate above fires
+// for every route (the router itself uses mergeParams — it must NOT declare
+// :courseCode internally or it would escape the gate).
+app.use('/api/production/:courseCode/voice-engine',
+  require('./voice-engine/router.cjs').createVoiceEngineRouter())
+
+// Voice-engine team roster: members, voice-slot assignment (writes
+// courses.voice_config — surgical single-slot merge), recorder invites.
+// Same gate coverage as above; bumpCourseVersion so learner apps re-fetch
+// after a voice_config change (mirrors voice-config-service).
+app.use('/api/production/:courseCode/team',
+  require('./voice-engine/team-router.cjs')({
+    requireDashboardUser,
+    userCanAccessCourse,
+    getDb: () => supabaseClient.getClient(),
+    logger,
+    bumpCourseVersion: require('./shared/course-version.cjs').bumpCourseVersion,
+  }))
+
+// Pod recording coverage (keystone §5): per cast voice (voice_config.podCast)
+// lines recorded / remaining + per-pod breakdown, human-vs-tts per sentence.
+// REGISTERED BEFORE the pods router on purpose: this read-only route relies on
+// the app.param gate alone (which keeps the same-host loopback bypass); the
+// router's per-route requireDashboardUser has no such bypass and would 401
+// mesh/local tooling.
+app.get('/api/production/:courseCode/pods/coverage', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const { computePodsCoverage } = require('./voice-engine/pods-coverage.cjs')
+    const coverage = await computePodsCoverage(
+      { supabase: supabaseClient.getClient(), logger }, req.params.courseCode)
+    res.json(coverage)
+  } catch (err) {
+    logger.error(`[PodsCoverage] ${err.message}`)
+    res.status(err.status || 500).json({ error: err.message })
+  }
+})
+
+// Pod casting + per-voice recording plans (human pod recording keystone).
+// Same gate coverage as the voice-engine mounts above. Writes touch ONLY
+// courses.voice_config.podCast — an additive key TTS serving never reads —
+// via a surgical merge (pods-cast.cjs), so no course-version bump is needed.
+app.use('/api/production/:courseCode/pods',
+  require('./voice-engine/pods-router.cjs')({
+    requireDashboardUser,
+    userCanAccessCourse,
+    getDb: () => supabaseClient.getClient(),
+    logger,
+  }))
 
 // POST /api/auth/login — login with email + code
 app.post('/api/auth/login', async (req, res) => {
@@ -443,11 +577,18 @@ async function handleInvite(req, res) {
   if (!adminUser) return
   const { email, name, courses, role = 'editor' } = req.body
   if (!email) return res.status(400).json({ error: 'Email is required' })
-  if (!courses || !Array.isArray(courses) || courses.length === 0) return res.status(400).json({ error: 'At least one course must be assigned' })
   // 'recorder' still accepted for backward-compat with existing rows; new
   // invites default to 'editor'. Recorder role was retired from the UI on
   // 2026-04-21 — the only gating going forward is per-course access.
   if (!['recorder', 'editor', 'admin'].includes(role)) return res.status(400).json({ error: 'Invalid role' })
+  // Admins always have access to every course — store the '*' wildcard (renders
+  // as a single "All courses" chip, not a wall of every course code) and skip
+  // the per-course requirement. Non-admins must get at least one specific course.
+  const isAdminInvite = role === 'admin'
+  if (!isAdminInvite && (!courses || !Array.isArray(courses) || courses.length === 0)) {
+    return res.status(400).json({ error: 'At least one course must be assigned' })
+  }
+  const effectiveCourses = isAdminInvite ? '*' : courses
   try {
     const db = supabaseClient.getClient()
     if (req.method === 'POST') {
@@ -475,11 +616,11 @@ async function handleInvite(req, res) {
       }
 
       const sanitizedEmail = email.split('@')[0].replace(/[^a-z0-9]/gi, '_').toLowerCase()
-      const primaryLanguage = courses[0]?.split('_')[0] || 'unknown'
+      const primaryLanguage = (Array.isArray(courses) ? courses[0] : null)?.split('_')[0] || 'unknown'
       // Non-admins get a voice_id since editors are the ones recording now.
       const voiceId = role !== 'admin' ? `human_${sanitizedEmail}_${primaryLanguage}` : null
       const row = {
-        email, name: name || email.split('@')[0], role, courses,
+        email, name: name || email.split('@')[0], role, courses: effectiveCourses,
         ...(voiceId && { voice_id: voiceId }),
         invited_by: adminUser.email || adminUser.name, invited_at: new Date().toISOString()
       }
@@ -491,7 +632,7 @@ async function handleInvite(req, res) {
       const existing = await authGetUser(email)
       if (!existing) return res.status(404).json({ error: 'User not found' })
       const updates = {
-        ...(name && { name }), role, courses,
+        ...(name && { name }), role, courses: effectiveCourses,
         updated_by: adminUser.email || adminUser.name, updated_at: new Date().toISOString()
       }
       const { data, error } = await db.from('dashboard_users').update(updates).eq('email', email).select().single()
@@ -1986,6 +2127,43 @@ app.get('/api/production/:courseCode/introductions', async (req, res) => {
     })
   } catch (err) {
     logger.error(`Failed to get introductions for ${courseCode}:`, err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// Get the presentation (intro) text + audio for a single LEGO.
+// Reads the AUTHORITATIVE store (course_audio.text, role='presentation') — the same
+// text the audio path generates from — so the Script Viewer edit affordance shows
+// exactly what was/will-be spoken (not the orphaned S3 introductions.json).
+// GET /api/production/:courseCode/presentation/:legoId
+app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => {
+  const { courseCode, legoId } = req.params
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const db = supabaseClient.getClient()
+    const { data, error } = await db
+      .from('course_audio')
+      .select('id, text, s3_key, duration_ms')
+      .eq('course_code', courseCode)
+      .eq('role', 'presentation')
+      .eq('lego_id', legoId)
+      .maybeSingle()
+    if (error) throw error
+
+    const isPending = !data?.s3_key || data.s3_key.startsWith('pending/')
+    res.json({
+      success: true,
+      lego_id: legoId,
+      exists: !!data,
+      text: data?.text || null,
+      audio_id: data?.id || null,
+      duration_ms: data?.duration_ms || null,
+      hasAudio: !!data && !isPending
+    })
+  } catch (err) {
+    logger.error(`Failed to get presentation for ${courseCode}/${legoId}:`, err)
     res.status(500).json({ error: err.message })
   }
 })
@@ -3604,6 +3782,330 @@ app.get('/api/pods/:courseCode/:slug', async (req, res) => {
   }
 })
 
+// POST /api/admin/pods/generate — create/extend a listening pod for a course by
+// flexing the canonical scenarios (canonical_pod_scenarios) into the course's
+// language pair via the Max-plan Claude CLI. Resumable: generates scenes within
+// a wall-time budget and returns more_remaining; the UI calls again to continue
+// (same loop shape as /api/admin/pod-explainer-generate). Generated sentences
+// have no audio yet, so they're a reviewable/editable DRAFT until audio is run.
+// Refuses to overwrite a pod that already has audio unless { force: true }.
+app.post('/api/admin/pods/generate', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const courseCode = String(req.body?.courseCode || '').trim()
+  const slug = String(req.body?.slug || 'pod-0').trim()
+  const force = req.body?.force === true
+  // mode: 'full' | 'sync' | 'resume'. 'sync' propagates a canonical edit
+  // surgically (re-flex only changed scenes, preserve the rest + its audio).
+  const mode = ['full', 'sync', 'resume'].includes(req.body?.mode) ? req.body.mode : undefined
+  if (!courseCode) return res.status(400).json({ error: 'courseCode required' })
+  try {
+    const podGenerator = require('./pod-dialogue-generator.cjs')
+    const r = await podGenerator.generatePodBatch({
+      courseCode, podSlug: slug, force, mode,
+      deadlineMs: 45_000, maxScenes: 4, // bounded per call; UI loops until more_remaining=false
+      log: (m) => logger.info('[PodGen] ' + m),
+    })
+    res.json({ ok: true, ...r })
+  } catch (e) {
+    logger.error('[PodGen] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// PATCH /api/admin/pod-sentences/:id — edit a generated pod sentence's text.
+// Editing target/known text nulls its audio (the recorded audio no longer
+// matches), same convention as the course-content tables — Phase 8 regenerates.
+app.patch('/api/admin/pod-sentences/:id', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const id = String(req.params.id || '')
+  const patch = {}
+  if (typeof req.body?.target_text === 'string') { patch.target_text = req.body.target_text.trim(); patch.target_audio_id = null }
+  if (typeof req.body?.known_text === 'string') { patch.known_text = req.body.known_text.trim(); patch.known_audio_id = null }
+  if (Object.keys(patch).length === 0) return res.status(400).json({ error: 'target_text or known_text required' })
+  try {
+    const sb = supabaseClient.getClient()
+    const { data, error } = await sb.from('listening_pod_sentences').update(patch).eq('id', id).select('id, target_text, known_text').maybeSingle()
+    if (error) throw error
+    if (!data) return res.status(404).json({ error: `sentence not found: ${id}` })
+    res.json({ ok: true, sentence: data })
+  } catch (e) {
+    logger.error('[PodSentence] patch error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// GET /api/admin/pods/:courseCode/audio-plan — what pod audio is missing.
+// Thin passthrough to Phase 8's /plan-pods (port 3465). Optional ?slug=<slug>
+// scopes to one pod (Phase 8's route takes a comma-separated ?pods=<id> list,
+// where a pod id is `${courseCode}:${slug}`). Returns Phase 8's shape so the UI
+// reads total_clips_to_generate + per-pod missing counts directly.
+app.get('/api/admin/pods/:courseCode/audio-plan', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const { courseCode } = req.params
+  const slug = req.query.slug ? String(req.query.slug).trim() : null
+  try {
+    let path = `/plan-pods/${courseCode}`
+    if (slug) path += `?pods=${encodeURIComponent(`${courseCode}:${slug}`)}`
+    const response = await proxyToPhase8('GET', path)
+    logger.info(`[Pods audio-plan] ${courseCode}${slug ? ' (' + slug + ')' : ''}: ${response.status}`)
+    res.status(response.status).json(response.data)
+  } catch (e) {
+    logger.error('[Pods audio-plan] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// POST /api/admin/pods/:courseCode/generate-audio — fill MISSING pod audio.
+// Thin passthrough to Phase 8's /generate-pods (port 3465). Body may carry
+// { pod_ids?: string[], roles?, concurrency? }; Phase 8 only generates clips
+// whose audio_id is null, so this never deletes or overwrites existing audio.
+// Returns Phase 8's shape ({ generated, reused, failed, total, ... }).
+app.post('/api/admin/pods/:courseCode/generate-audio', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const { courseCode } = req.params
+  try {
+    const response = await proxyToPhase8('POST', `/generate-pods/${courseCode}`, req.body || {})
+    logger.info(`[Pods generate-audio] ${courseCode}: ${response.status} (generated=${response.data?.generated}, failed=${response.data?.failed})`)
+    res.status(response.status).json(response.data)
+  } catch (e) {
+    logger.error('[Pods generate-audio] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// POST /api/admin/pods/:courseCode/generate-explainer-audio — render the
+// Stage-1 explainer narration (Tom's branded xAI voice gfzdpspr5fdp) for
+// sentences that HAVE explainer_text but NO explainer_audio_id yet, then write
+// the resulting audio id back to the row. Mirrors the audio pass of
+// services/run-pod-explainer-batch.cjs EXACTLY — same generatePodAudio params
+// (text = explainer_text, language 'auto', role 'pod_explainer', voice
+// {voice_id:'gfzdpspr5fdp', provider:'xai'}), same null-only scoping, same
+// bounded fan-out. It never regenerates text and never overwrites an existing
+// explainer_audio_id. Body may carry { pod_ids?: string[] } or ?slug=<slug> to
+// scope to one pod. Calls phase8's generatePodAudio in-process (it inherits the
+// xAI→Azure fallback + retry resilience); PHASE8_NO_LISTEN keeps it from
+// grabbing port 3465 when required here.
+const EXPLAINER_VOICE_ID = 'gfzdpspr5fdp'
+const EXPLAINER_LANGUAGE = 'auto'
+const EXPLAINER_ROLE = 'pod_explainer'
+const EXPLAINER_PROVIDER = 'xai'
+const EXPLAINER_AUDIO_PARALLEL = 4
+app.post('/api/admin/pods/:courseCode/generate-explainer-audio', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const { courseCode } = req.params
+  try {
+    const supabase = supabaseClient.getClient()
+
+    // Scope: explicit pod_ids list, or a single pod via ?slug / body slug
+    // (pod id is `${courseCode}:${slug}`). No scope = every pod in the course.
+    let podIds = null
+    if (Array.isArray(req.body?.pod_ids) && req.body.pod_ids.length) {
+      podIds = req.body.pod_ids.map(String).filter(Boolean)
+    } else {
+      const slug = (req.query.slug || req.body?.slug)
+      if (slug) podIds = [`${courseCode}:${String(slug).trim()}`]
+    }
+
+    // Candidates: explainer_text non-empty AND explainer_audio_id IS NULL.
+    let query = supabase
+      .from('listening_pod_sentences')
+      .select('id, explainer_text, explainer_audio_id')
+      .not('explainer_text', 'is', null)
+      .neq('explainer_text', '')
+      .is('explainer_audio_id', null)
+    if (podIds && podIds.length) {
+      query = podIds.length === 1 ? query.eq('pod_id', podIds[0]) : query.in('pod_id', podIds)
+    } else {
+      // No explicit scope: still bound to this course's pods.
+      query = query.like('pod_id', `${courseCode}:%`)
+    }
+    const { data: rows, error } = await query
+    if (error) throw new Error(`load explainer-audio candidates: ${error.message}`)
+
+    const total = (rows || []).length
+    if (total === 0) {
+      logger.info(`[Pods generate-explainer-audio] ${courseCode}: nothing to render`)
+      return res.json({ generated: 0, failed: 0, total: 0 })
+    }
+
+    // Lazy-load phase8 (pulls the full audio graph). PHASE8_NO_LISTEN stops its
+    // app.listen() so requiring it here never collides with port 3465.
+    process.env.PHASE8_NO_LISTEN = '1'
+    const { generatePodAudio } = require('./phases/phase8-audio-v13.cjs')
+
+    let generated = 0
+    let failed = 0
+    const errors = []
+    for (let i = 0; i < rows.length; i += EXPLAINER_AUDIO_PARALLEL) {
+      const wave = rows.slice(i, i + EXPLAINER_AUDIO_PARALLEL)
+      await Promise.all(wave.map(async row => {
+        try {
+          const result = await generatePodAudio({
+            courseCode,
+            text: row.explainer_text,
+            language: EXPLAINER_LANGUAGE,
+            role: EXPLAINER_ROLE,
+            voice: {
+              voice_id: EXPLAINER_VOICE_ID,
+              provider: EXPLAINER_PROVIDER,
+            },
+          })
+          const audioId = result?.id
+          if (!audioId) throw new Error('no audio id returned from generatePodAudio')
+          const { error: upErr } = await supabase
+            .from('listening_pod_sentences')
+            .update({ explainer_audio_id: audioId })
+            .eq('id', row.id)
+          if (upErr) throw new Error(`link write failed: ${upErr.message}`)
+          generated++
+        } catch (err) {
+          failed++
+          const msg = err?.message || String(err)
+          errors.push({ id: row.id, error: msg })
+          logger.error(`[Pods generate-explainer-audio] ${courseCode} fail for ${row.id}:`, msg)
+        }
+      }))
+    }
+
+    logger.info(`[Pods generate-explainer-audio] ${courseCode}: generated=${generated}, failed=${failed}, total=${total}`)
+    const payload = { generated, failed, total }
+    if (errors.length) payload.errors = errors
+    res.json(payload)
+  } catch (e) {
+    logger.error('[Pods generate-explainer-audio] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// GET /api/admin/canonical-pods/:slug — the language-neutral English scenarios
+// (the editable source the generator flexes per course).
+app.get('/api/admin/canonical-pods/:slug', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    const sb = supabaseClient.getClient()
+    const { data, error } = await sb.from('canonical_pod_scenarios')
+      .select('id, scene_number, scene_label, scene_title, scene_subtitle, sentence_number, global_order, speaker, english_text, author_notes')
+      .eq('pod_slug', String(req.params.slug || 'pod-0')).order('global_order', { ascending: true })
+    if (error) throw error
+    res.json({ slug: req.params.slug, scenarios: data || [] })
+  } catch (e) {
+    logger.error('[CanonicalPods] list error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// PATCH /api/admin/canonical-pods/:id — edit a canonical scenario line (English
+// + optional speaker/notes). This is the "Aran writes the English" surface.
+app.patch('/api/admin/canonical-pods/:id', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const id = String(req.params.id || '')
+  const patch = {}
+  for (const k of ['english_text', 'speaker', 'author_notes']) {
+    if (typeof req.body?.[k] === 'string') patch[k] = req.body[k]
+  }
+  if (Object.keys(patch).length === 0) return res.status(400).json({ error: 'nothing to update' })
+  try {
+    const sb = supabaseClient.getClient()
+    const { data, error } = await sb.from('canonical_pod_scenarios').update(patch).eq('id', id).select('id, english_text, speaker, author_notes').maybeSingle()
+    if (error) throw error
+    if (!data) return res.status(404).json({ error: `canonical line not found: ${id}` })
+    res.json({ ok: true, line: data })
+  } catch (e) {
+    logger.error('[CanonicalPods] patch error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// GET /api/canonical-seeds — the 668 language-neutral English seeds (the SSoT
+// in the canonical_seeds table). Public read: this drives the docs/seeds page.
+// Returns the shape that view renders: { id, seed_number, seed_id, canonical_id, source }.
+app.get('/api/canonical-seeds', async (req, res) => {
+  try {
+    const sb = supabaseClient.getClient()
+    const { data, error } = await sb.from('canonical_seeds')
+      .select('id, seed_number, seed_id, canonical_id, source_text')
+      .order('seed_number', { ascending: true })
+    if (error) throw error
+    const seeds = (data || []).map(r => ({
+      id: r.id, seed_number: r.seed_number, seed_id: r.seed_id,
+      canonical_id: r.canonical_id, source: r.source_text,
+    }))
+    res.json({ seeds, total: seeds.length })
+  } catch (e) {
+    logger.error('[CanonicalSeeds] list error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// PATCH /api/admin/canonical-seeds/:id — edit a canonical seed's English source.
+// Admin-gated. Updates source_text only; re-translation is a separate pipeline
+// step (editing the canonical does not auto-propagate to course translations).
+app.patch('/api/admin/canonical-seeds/:id', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const id = String(req.params.id || '')
+  const source = req.body?.source
+  if (typeof source !== 'string' || !source.trim()) {
+    return res.status(400).json({ error: 'source (non-empty string) required' })
+  }
+  try {
+    const sb = supabaseClient.getClient()
+    const { data, error } = await sb.from('canonical_seeds')
+      .update({ source_text: source }).eq('id', id)
+      .select('id, seed_id, source_text').maybeSingle()
+    if (error) throw error
+    if (!data) return res.status(404).json({ error: `seed not found: ${id}` })
+    res.json({ ok: true, seed: { id: data.id, seed_id: data.seed_id, source: data.source_text } })
+  } catch (e) {
+    logger.error('[CanonicalSeeds] patch error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// =============================================================================
+// DOCUMENTATION API
+// -----------------------------------------------------------------------------
+// Live docs are served from Supabase (documentation_content / _sections).
+// These endpoints used to live only on the orchestrator (3456), which is now
+// optional — but the frontend talks to 3470, so getDocumentation() calls 404'd
+// and every /docs page silently fell back to hardcoded content. Serving them
+// here reconnects the live-from-DB pipe. supabase-client.cjs is already required
+// above and exports both helpers (with RPC + manual-query fallbacks).
+//
+// Order matters: /list is registered before /:slug so the catch-all param route
+// does not shadow it.
+// =============================================================================
+
+// GET /api/docs/list — document list for docs navigation. Query: ?category=...
+app.get('/api/docs/list', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Database not initialized' })
+    }
+    const { category } = req.query
+    const docs = await supabaseClient.getDocumentationList(category || null)
+    res.json({ success: true, count: docs.length, documents: docs })
+  } catch (e) {
+    logger.error('[Docs API] list error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// GET /api/docs/:slug — a single document with all its sections.
+app.get('/api/docs/:slug', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Database not initialized' })
+    }
+    const { slug } = req.params
+    const doc = await supabaseClient.getDocumentation(slug)
+    if (!doc) return res.status(404).json({ error: 'Document not found', slug })
+    res.json({ success: true, document: doc })
+  } catch (e) {
+    logger.error(`[Docs API] get error for ${req.params.slug}:`, e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
 // Get signed URL for audio playback
 // Looks up s3_key from database for v13 audio, falls back to legacy path
 app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
@@ -3750,13 +4252,69 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       mimeType = 'audio/webm'
     } = req.body
 
-    if (!uuid || !audioData) {
+    // Script-mode takes (new-course autocue) have no pre-existing audio identity;
+    // regeneration-mode takes re-record an existing course_audio row by real uuid.
+    // Pod-mode takes (dialogue autocue) carry pod identity in metadata — a NEW
+    // course_audio row is minted and the pod sentence FK re-pointed at commit.
+    const isPodMode = podsRegistration.isPodModeUpload(metadata)
+    const isScriptMode = !isPodMode && isScriptModeUpload(uuid, metadata)
+
+    if (!audioData || (!uuid && !isScriptMode && !isPodMode)) {
       return res.status(400).json({ error: 'uuid and audioData required' })
+    }
+
+    // Script mode: mint the take's identity server-side and store at the canon
+    // prefix. Client-fabricated ids (script-0..N) produced one global key per index
+    // (ssiborg-assets/mastered/script-0.mp3) shared across every course, session
+    // and voice — later sessions PUT over earlier ones.
+    // Every take gets a FRESH object key — an existing S3 object is never PUT over.
+    // Regeneration mode: the course_audio row keeps its id; its s3_key moves to the
+    // fresh key after upload (the old object stays at the old key for reversibility).
+    const audioId = (isScriptMode || isPodMode) ? crypto.randomUUID().toUpperCase() : uuid
+    const s3KeyUuid = isScriptMode ? audioId : crypto.randomUUID().toUpperCase()
+    const s3Key = `mastered/${s3KeyUuid}.mp3`
+
+    // Pod mode: validate identity + resolve the cast voice BEFORE the S3 PUT
+    // (same principle as the regeneration lookup below — a bad sentenceId must
+    // never orphan bytes). voice_id resolves SERVER-side from
+    // voice_config.podCast (client metadata.voiceId advisory).
+    let podContext = null
+    if (isPodMode) {
+      if (!supabaseClient.isInitialized()) {
+        return res.status(503).json({ error: 'Supabase not initialized — pod recordings cannot be registered' })
+      }
+      const prep = await podsRegistration.preparePodRegistration({
+        supabase: supabaseClient.getClient(), courseCode, metadata, logger
+      })
+      if (prep.error) return res.status(prep.status || 400).json({ error: prep.error })
+      podContext = prep.context
+    }
+
+    // Regeneration mode re-records an existing course_audio row — look it up
+    // BEFORE the S3 PUT so a bad uuid can't orphan bytes.
+    let existingRow = null
+    if (!isScriptMode && !isPodMode && supabaseClient.isInitialized()) {
+      const { data: row, error: rowError } = await supabaseClient.getClient()
+        .from('course_audio')
+        .select('id, s3_key, origin')
+        .eq('id', uuid)
+        .eq('course_code', courseCode)
+        .maybeSingle()
+      if (rowError) {
+        if (rowError.code === '22P02') {
+          return res.status(400).json({ error: `Invalid course_audio uuid: ${uuid}` })
+        }
+        throw rowError
+      }
+      if (!row) {
+        return res.status(404).json({ error: `No course_audio row ${uuid} in ${courseCode}` })
+      }
+      existingRow = row
     }
 
     // Decode base64 audio data
     const rawBuffer = Buffer.from(audioData, 'base64')
-    logger.log(`[Upload] Received ${rawBuffer.length} bytes for ${uuid}`)
+    logger.log(`[Upload] Received ${rawBuffer.length} bytes for ${audioId}${isScriptMode ? ' (script mode, server-minted)' : ''}`)
 
     // Determine input format from MIME type
     let inputFormat = 'webm'
@@ -3783,69 +4341,199 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       logger.warn(`[Upload] Audio processing skipped: ${audioMeta.reason}`)
     }
 
-    // Upload processed audio to S3
-    const result = await s3Service.uploadRecording(courseCode, uuid, processedBuffer, {
-      ...metadata,
+    // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
+    // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
+    // text and chunk maps percent-encode at ~6-9 bytes per non-Latin char and
+    // would 400 the PUT. Supabase (recording_provenance) holds the truth; keep
+    // only short identifiers on the object.
+    const { text: _metaText, chunksString: _metaChunks, ...s3SafeMetadata } = metadata
+    const result = await s3Service.uploadRecording(courseCode, audioId, processedBuffer, {
+      ...s3SafeMetadata,
       recordedBy: 'human',
-      source: 'recording',
+      via: 'recording',
       audioProcessing: audioMeta
-    })
+    }, { s3Key })
 
-    // Update the sample flag in Supabase to mark as recorded
-    if (supabaseClient.isInitialized()) {
-      await supabaseClient.updateSampleFlag(
-        uuid,
+    // Regeneration mode: repoint the course_audio row at the fresh human take.
+    // origin='human' marks it precious (allowed by the live CHECK: 'tts'|'human').
+    // The old s3_key is recorded in recording_provenance below for reversibility.
+    if (existingRow) {
+      const rowUpdate = { s3_key: s3Key, origin: 'human' }
+      if (audioMeta.processed && audioMeta.durationMs) {
+        rowUpdate.duration_ms = audioMeta.durationMs
+        rowUpdate.file_size_bytes = processedBuffer.length
+      }
+      const { error: updateError } = await supabaseClient.getClient()
+        .from('course_audio')
+        .update(rowUpdate)
+        .eq('id', uuid)
+        .eq('course_code', courseCode)
+      if (updateError) throw updateError
+      logger.log(`[Upload] course_audio ${uuid} repointed ${existingRow.s3_key} -> ${s3Key} (origin=human)`)
+    }
+
+    // Pod mode: register the human take (course_audio upsert, origin='human',
+    // role per kind — recon §1) and re-point the sentence's audio FK explicitly
+    // (recon §2: the autolink trigger never touches listening_pod_sentences).
+    // Re-record = new/repointed row + re-point; the old take's row and S3
+    // object are kept (replaced ids recorded in provenance below).
+    let podResult = null
+    if (isPodMode && podContext) {
+      podResult = await podsRegistration.commitPodRegistration({
+        supabase: supabaseClient.getClient(),
         courseCode,
-        'needs_review',
-        `Recorded by ${metadata.recordedBy || provenance.recordedBy || 'human'} at ${new Date().toISOString()}`,
-        metadata.recordedBy || provenance.recordedBy || 'human'
-      )
+        context: podContext,
+        s3Key,
+        durationMs: (audioMeta.processed && audioMeta.durationMs) ? audioMeta.durationMs : null,
+        fileSizeBytes: processedBuffer.length,
+        logger
+      })
+    }
 
-      // Insert recording provenance if metadata provided
-      if (provenance.recordedBy) {
-        try {
-          await supabaseClient.insertRecordingProvenance({
-            audioUuid: uuid,
-            recordedBy: provenance.recordedBy,
-            speakerNativeLanguage: provenance.speakerNativeLanguage,
-            speakerProficiency: provenance.speakerProficiency,
-            speakerAgeRange: provenance.speakerAgeRange,
-            speakerDialect: provenance.speakerDialect,
-            speakerRegion: provenance.speakerRegion,
-            recordedAt: provenance.recordedAt || new Date().toISOString(),
-            recordingLocation: provenance.recordingLocation,
-            recordingDevice: provenance.recordingDevice,
-            recordingEnvironment: provenance.recordingEnvironment,
-            speakerConsent: provenance.speakerConsent !== undefined ? provenance.speakerConsent : true,
-            consentFormRef: provenance.consentFormRef,
-            usageRights: provenance.usageRights,
-            qualityNotes: provenance.qualityNotes,
-            retakeCount: provenance.retakeCount || 0
-          })
-          logger.log(`Provenance metadata recorded for ${uuid}`)
-        } catch (provenanceError) {
-          // Log error but don't fail the upload
-          logger.error('Error inserting provenance metadata:', provenanceError)
-          logger.error('Upload succeeded but provenance recording failed')
-        }
+    // Who recorded this take: the authenticated user's email when a session token
+    // is presented, else the client-sent recorded_by. Clients send snake_case
+    // provenance keys; the old camelCase-only gate meant recording_provenance was
+    // NEVER written (live: 0 rows ever).
+    const prov = normalizeProvenance(provenance)
+    let recordedBy = prov.recordedBy || metadata.recordedBy || 'human'
+    const authToken = req.headers.authorization?.replace('Bearer ', '')
+    if (authToken) {
+      try {
+        const sessionUser = (await verifySupabaseJWT(authToken)) || (await authValidateSession(authToken))
+        if (sessionUser?.email) recordedBy = sessionUser.email
+      } catch (authErr) {
+        // Endpoint is not auth-gated — fall back to the client-sent identity
       }
     }
+
+    // Update the sample flag in Supabase to mark as recorded.
+    // Regeneration mode only: script-mode takes have no sample_flags row (their
+    // identity is server-minted) and the insert here used to 500 the upload AFTER
+    // the S3 PUT succeeded. QA-state failures must never fail an uploaded take.
+    // Pod-mode takes also skip — pod sentences have no sample_flags row.
+    if (supabaseClient.isInitialized()) {
+      if (!isScriptMode && !isPodMode) {
+        try {
+          await supabaseClient.updateRecordingStatus(
+            uuid,
+            courseCode,
+            'needs_review',
+            `Recorded by ${recordedBy} at ${new Date().toISOString()}`,
+            recordedBy
+          )
+        } catch (flagError) {
+          logger.error('Error updating recording status (upload kept):', flagError)
+        }
+      }
+
+      // Register the take in recording_provenance — who/when plus the aligner-critical
+      // context (course, seed/phrase identity, chunks_string pause map, replaced
+      // s3_key). The live table has no dedicated columns for that context, so it
+      // rides in quality_notes as JSON. Keyed by the take's fresh S3 uuid so every
+      // re-record gets its own row.
+      // voice_id is resolved SERVER-side from the course's voice_config slot —
+      // the client's metadata.voiceId is advisory (used only when the slot has
+      // no human voice assigned yet, e.g. recording ahead of roster assignment).
+      let slotVoiceId = null
+      if (isPodMode && podContext) {
+        // Pod mode already resolved the cast voice server-side in prepare
+        // (voice_config.podCast[speaker] / podCast.__explainer__).
+        slotVoiceId = podContext.voiceId
+      } else {
+        try {
+          const slotRole = metadata?.role || null
+          if (slotRole) {
+            const { data: courseRow } = await supabaseClient.getClient()
+              .from('courses').select('voice_config').eq('course_code', courseCode).single()
+            slotVoiceId = courseRow?.voice_config?.voices?.[slotRole]?.voiceId || null
+            if (metadata?.voiceId && slotVoiceId && metadata.voiceId !== slotVoiceId) {
+              logger.warn(`[Recording] client voiceId ${metadata.voiceId} disagrees with voice_config ${slotRole}=${slotVoiceId} — server value wins`)
+            }
+          }
+        } catch (voiceResolveError) {
+          logger.warn('[Recording] voice_config resolve failed, falling back to client voiceId:', voiceResolveError.message)
+        }
+        if (!slotVoiceId && metadata?.voiceId) slotVoiceId = metadata.voiceId
+      }
+      const provenanceContext = buildProvenanceContext({
+        courseCode,
+        isScriptMode,
+        metadata,
+        provenance: prov,
+        s3Key,
+        courseAudioId: isPodMode
+          ? (podResult ? podResult.audioRow.id : null)
+          : (existingRow ? uuid : null),
+        replacedS3Key: isPodMode
+          ? (podResult ? podResult.replacedS3Key : null)
+          : (existingRow ? existingRow.s3_key : null),
+        voiceId: slotVoiceId,
+        pod: (isPodMode && podContext) ? {
+          podId: podContext.podId,
+          sentenceId: podContext.sentenceId,
+          kind: podContext.kind,
+          replacedAudioId: podResult ? podResult.replacedAudioId : podContext.replacedAudioId
+        } : null
+      })
+      try {
+        await supabaseClient.insertRecordingProvenance({
+          audioUuid: s3KeyUuid,
+          recordedBy,
+          speakerNativeLanguage: prov.speakerNativeLanguage,
+          speakerProficiency: prov.speakerProficiency,
+          speakerAgeRange: prov.speakerAgeRange,
+          speakerDialect: prov.speakerDialect,
+          speakerRegion: prov.speakerRegion,
+          recordedAt: prov.recordedAt || new Date().toISOString(),
+          recordingLocation: prov.recordingLocation,
+          recordingDevice: prov.recordingDevice,
+          recordingEnvironment: prov.recordingEnvironment,
+          speakerConsent: prov.speakerConsent !== undefined ? prov.speakerConsent : true,
+          consentFormRef: prov.consentFormRef,
+          usageRights: prov.usageRights,
+          qualityNotes: JSON.stringify(provenanceContext),
+          retakeCount: prov.retakeCount || 0
+        })
+        logger.log(`Provenance recorded for ${s3KeyUuid} (${provenanceContext.mode} mode)`)
+      } catch (provenanceError) {
+        // Log error but don't fail the upload
+        logger.error('Error inserting provenance metadata:', provenanceError)
+        logger.error('Upload succeeded but provenance recording failed')
+      }
+    }
+
+    // Pod mode: the take's canonical identity is the course_audio row the
+    // sentence FK now points at (clients carry this, not the minted s3 uuid).
+    const responseUuid = (isPodMode && podResult) ? podResult.audioRow.id : audioId
 
     // Emit recording_completed event
     io.to(`course:${courseCode}`).emit('recording_completed', {
       courseCode,
-      uuid,
+      uuid: responseUuid,
       metadata: {
-        recordedAt: provenance.recordedAt || new Date().toISOString(),
-        recordedBy: metadata.recordedBy || provenance.recordedBy || 'human',
-        source: 'recording',
+        recordedAt: prov.recordedAt || new Date().toISOString(),
+        recordedBy,
+        via: 'recording',
         ...metadata
       }
     })
 
     res.json({
       success: true,
-      uuid,
+      // Script mode: the server-minted identity — clients must carry this, not script-N
+      // Pod mode: the course_audio row id now linked on the pod sentence
+      uuid: responseUuid,
+      ...(isPodMode && podResult ? {
+        pod: {
+          podId: podContext.podId,
+          sentenceId: podContext.sentenceId,
+          kind: podContext.kind,
+          audioId: podResult.audioRow.id,
+          replacedAudioId: podResult.replacedAudioId,
+          voiceId: podContext.voiceId
+        }
+      } : {}),
+      s3Key: s3Key || null,
       uploaded: true,
       audioProcessing: audioMeta.processed ? {
         durationMs: audioMeta.durationMs,
@@ -4479,6 +5167,43 @@ app.post('/api/audio/regenerate-single/:courseCode/:audioUuid', async (req, res)
   }
 })
 
+// Surgical per-LEGO presentation edit + regen (single intro clip)
+// POST /api/audio/regenerate-presentation/:courseCode/:legoId
+// Body: { text? } — if provided, persists new presentation text to course_audio
+// (the authoritative store for intro audio) then regenerates ONLY this lego's
+// presentation clip. No-op for every other row. Proxies to phase8.
+app.post('/api/audio/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
+  try {
+    const { courseCode, legoId } = req.params
+    logger.log(`[Regenerate Presentation] ${courseCode} / ${legoId}`)
+    const response = await proxyToPhase8('POST', `/regenerate-presentation/${courseCode}/${legoId}`, req.body || {})
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Regenerate presentation proxy error:', error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
+// Surgical per-PHRASE text edit + role-scoped regen (component_practice/build/use rows)
+// POST /api/audio/regenerate-phrase/:courseCode/:phraseId
+// Body: { known_text?, target_text?, roles: ["known"|"target1"|"target2", ...] }
+// TTSes the NEW text (never re-reads stale course_audio.text — the desync trap),
+// persists course_practice_phrases text + course_audio.text, mints a fresh UUID/S3 key
+// per regenerated role, rebinds the phrase pointer, returns fresh *_audio_id + durations.
+// Auto-approve (no accept step); old S3 objects survive. Admin-only — it costs TTS (D3).
+app.post('/api/audio/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    const { courseCode, phraseId } = req.params
+    logger.log(`[Regenerate Phrase] ${courseCode} / ${phraseId}`)
+    const response = await proxyToPhase8('POST', `/regenerate-phrase/${courseCode}/${phraseId}`, req.body || {})
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Regenerate phrase proxy error:', error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
 // Regenerate presentation audio
 // POST /api/audio/regenerate-presentations/:courseCode
 // Body: { dryRun, regenerateAudio }
@@ -4592,6 +5317,12 @@ app.get('/api/production/voices/:voiceId', async (req, res) => {
 // Body: { voiceId, humanName, humanEmail, languages, metadata }
 app.post('/api/production/voices/register-human', async (req, res) => {
   try {
+    // No :courseCode here, so the course-scope param gate never fires — gate
+    // explicitly: the human-voice registry anchors recording provenance and
+    // must not be writable anonymously.
+    const authedUser = await requireDashboardUser(req, res)
+    if (!authedUser) return
+
     const { voiceId, humanName, humanEmail, languages, metadata } = req.body
 
     // Validation
@@ -6155,11 +6886,15 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
 // Ported from ssi-learning-app's generateLearningScript()
 app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
   const { courseCode } = req.params
-  const { maxLegos, offset } = req.query
+  const { maxLegos, offset, learnerView } = req.query
 
   // Parse query params
   const maxLegosNum = maxLegos ? parseInt(maxLegos, 10) : 50
   const offsetNum = offset ? parseInt(offset, 10) : 0
+  // learnerView=1 applies the learner app's audio gates: LEGOs/phrases missing
+  // any audio ID are dropped and round numbers compress, exactly as the
+  // learner's script does. Default (production view) keeps + flags the gaps.
+  const learnerViewFlag = learnerView === '1' || learnerView === 'true'
 
   try {
     if (!supabaseClient.isInitialized()) {
@@ -6173,7 +6908,8 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
         supabase,
         courseCode,
         maxLegosNum,
-        offsetNum
+        offsetNum,
+        { learnerView: learnerViewFlag }
       ),
       supabase.from('course_legos').select('id', { count: 'exact', head: true }).eq('course_code', courseCode)
     ])
@@ -6684,7 +7420,7 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         wordCount: p.wordCount,
         coversLegos: p.coversLegos,
         known: p.known || '',
-        source: p.source || '',
+        phraseOrigin: p.source || '',
         seedNumber: p.seedNumber || null,
         ...chunkFields
       })
@@ -6697,7 +7433,7 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         wordCount: p.wordCount,
         coversLegos: p.coversLegos,
         known: p.known || '',
-        source: p.source || '',
+        phraseOrigin: p.source || '',
         seedNumber: p.seedNumber || null,
         ...chunkFields
       })
@@ -10176,6 +10912,59 @@ app.post('/api/admin/audit-cleanup', async (req, res) => {
 })
 
 // ============================================================================
+// Audit archive (S3 tiering) — POST /api/admin/audit-archive
+// ============================================================================
+// Tiers content_audit_log: archive days older than hotDays to S3 as gzipped
+// NDJSON (recovery-readable via recover-pod-audio-from-audit.cjs --archive),
+// and with prune=true delete them from Postgres. Reuses the tested CLI
+// (tools/archive-audit-log.cjs) via spawn rather than duplicating its logic.
+// Capped at ~110s wall time — archive-before-delete means partial progress is
+// safe; click again to continue. The nightly scheduler (below) runs the same
+// CLI with --execute --prune.
+const { spawn: spawnArchive } = require('child_process')
+const ARCHIVE_TOOL = path.join(__dirname, '..', 'tools', 'archive-audit-log.cjs')
+
+function runArchiveTool(flags, { timeoutMs = 110_000 } = {}) {
+  return new Promise((resolve) => {
+    const child = spawnArchive('node', [ARCHIVE_TOOL, ...flags], {
+      cwd: path.join(__dirname, '..'),
+      env: process.env,
+    })
+    let stdout = '', stderr = '', timedOut = false
+    const killer = setTimeout(() => { timedOut = true; child.kill('SIGTERM') }, timeoutMs)
+    child.stdout.on('data', d => { stdout += d })
+    child.stderr.on('data', d => { stderr += d })
+    child.on('close', (code) => { clearTimeout(killer); resolve({ code, stdout, stderr, timedOut }) })
+    child.on('error', (e) => { clearTimeout(killer); resolve({ code: -1, stdout, stderr: `${stderr}\n${e.message}`, timedOut }) })
+  })
+}
+
+app.post('/api/admin/audit-archive', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const hotDays = Math.max(1, Math.min(365, Math.floor(Number(req.body?.hotDays)) || 14))
+  const maxDays = Math.max(1, Math.min(400, Math.floor(Number(req.body?.maxDays)) || 30))
+  const execute = req.body?.execute === true
+  const prune = req.body?.prune === true
+  const flags = [`--hot-days=${hotDays}`, `--max-days=${maxDays}`]
+  if (execute) flags.push('--execute')
+  if (prune) flags.push('--prune')
+  try {
+    logger.info(`[AuditArchive] run ${flags.join(' ')}`)
+    const r = await runArchiveTool(flags)
+    res.json({
+      ok: r.code === 0 && !r.timedOut,
+      execute, prune, hotDays, maxDays,
+      timedOut: r.timedOut,
+      exitCode: r.code,
+      output: `${r.stdout}${r.stderr ? `\n[stderr]\n${r.stderr}` : ''}`.trim(),
+    })
+  } catch (e) {
+    logger.error('[AuditArchive] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
+// ============================================================================
 // Phrase decomposition — backfill + audit
 // ============================================================================
 // See new_vision/PHRASE_DECOMPOSITION_SPEC.md.
@@ -10925,6 +11714,161 @@ app.post('/api/admin/pod-explainer-generate', async (req, res) => {
   }
 })
 
+// ============================================================================
+// Nightly audit-log archive+prune scheduler
+// ============================================================================
+// Tiers content_audit_log to S3 each night at 03:00 UTC via the same CLI the
+// Maintenance button uses. pg_cron can't write to S3, so the schedule lives
+// here in the long-running API process. OPT-IN: set AUDIT_ARCHIVE_CRON=on, so
+// merely deploying this code never silently starts deleting prod audit rows.
+function scheduleNightlyArchive() {
+  if (process.env.AUDIT_ARCHIVE_CRON !== 'on') {
+    logger.log('[AuditArchive] nightly schedule DISABLED — set AUDIT_ARCHIVE_CRON=on to enable')
+    return
+  }
+  const HOUR_UTC = 3
+  const hotDays = Math.max(1, Math.floor(Number(process.env.AUDIT_ARCHIVE_HOT_DAYS)) || 14)
+  const msUntilNext = () => {
+    const now = new Date()
+    const next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), HOUR_UTC, 0, 0))
+    if (next <= now) next.setUTCDate(next.getUTCDate() + 1)
+    return next - now
+  }
+  const arm = () => {
+    const delay = msUntilNext()
+    logger.log(`[AuditArchive] nightly armed — next run in ${(delay / 3600000).toFixed(1)}h (03:00 UTC, hot-days=${hotDays})`)
+    setTimeout(async () => {
+      try {
+        logger.log('[AuditArchive] nightly run starting')
+        const r = await runArchiveTool([`--hot-days=${hotDays}`, '--max-days=120', '--execute', '--prune'], { timeoutMs: 30 * 60_000 })
+        logger.log(`[AuditArchive] nightly run done (exit ${r.code}${r.timedOut ? ', TIMED OUT' : ''})`)
+      } catch (e) {
+        logger.error('[AuditArchive] nightly run error:', e?.message || e)
+      } finally {
+        arm() // reschedule for tomorrow
+      }
+    }, delay)
+  }
+  arm()
+}
+
+// ============================================================
+// INSIGHT DISCOVERY — trigger the SSi-learning-app insights deep-run on this
+// machine so it can be fired from popty without being at the box. Runs the
+// zero-dep discovery script (claude --print on the Max plan — same headless
+// mechanism as services/shared/claude-cli.cjs — school-demo learners excluded),
+// which writes findings to the shared insight_discoveries table. The learning
+// app's /admin/insights feed then reads them. requireAdmin.
+// ============================================================
+const INSIGHT_SCRIPT = process.env.INSIGHT_DISCOVERY_SCRIPT
+  || path.resolve(__dirname, 'insight-discovery.cjs')  // services/insight-discovery.cjs (this repo — present on every machine)
+const INSIGHT_CWD = path.resolve(__dirname, '..')      // dashboard repo root (its .env)
+
+app.post('/api/insight-discovery/run', async (req, res) => {
+  const admin = await requireAdmin(req, res)
+  if (!admin) return
+  const demo = req.body && req.body.demo === true
+  const args = [INSIGHT_SCRIPT, '--write']
+  if (demo) args.push('--demo')
+  try {
+    const { spawn: spawnProc } = require('child_process')
+    // Nested claude --print: scrub the billed key (use the subscription) and
+    // unset CLAUDECODE (per CLAUDE.md — required for nested Claude CLI calls).
+    const childEnv = { ...process.env }
+    delete childEnv.ANTHROPIC_API_KEY
+    delete childEnv.ANTHROPIC_AUTH_TOKEN
+    delete childEnv.CLAUDECODE
+    const child = spawnProc('node', args, { cwd: INSIGHT_CWD, detached: true, stdio: 'ignore', env: childEnv })
+    child.on('error', (e) => logger.error(`[InsightDiscovery] spawn error: ${e.message}`))
+    child.unref()
+    logger.log(`[InsightDiscovery] triggered (${demo ? 'demo' : 'real'}) by ${admin.email || admin.id} → ${INSIGHT_SCRIPT}`)
+    res.status(202).json({ triggered: true, source: demo ? 'demo' : 'real', note: 'Deep-run started on the machine; the feed updates when it finishes (~1-2 min).' })
+  } catch (e) {
+    logger.error(`[InsightDiscovery] failed to start: ${e.message}`)
+    res.status(500).json({ error: 'Failed to start discovery run', detail: e.message })
+  }
+})
+
+// GET the latest persisted discovery (service-key read — popty's own auth can't
+// pass the table's god-gate, so the dashboard reads it through this admin route).
+app.get('/api/insight-discovery/latest', async (req, res) => {
+  const admin = await requireAdmin(req, res)
+  if (!admin) return
+  const source = req.query.source === 'demo' ? 'demo' : 'real'
+  try {
+    const base = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL
+    const key = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY
+    const r = await fetch(`${base}/rest/v1/insight_discoveries?source=eq.${source}&order=generated_at.desc&limit=1&select=generated_at,window_days,source,findings`, {
+      headers: { apikey: key, Authorization: `Bearer ${key}` },
+    })
+    const rows = await r.json()
+    res.json({ latest: Array.isArray(rows) && rows[0] ? rows[0] : null })
+  } catch (e) {
+    logger.error(`[InsightDiscovery] latest read failed: ${e.message}`)
+    res.status(500).json({ error: 'Failed to read latest discovery' })
+  }
+})
+
+// ============================================================
+// RELEASE NOTES — generate a LEARNER-FACING release note from the
+// learning-app's main..staging delta, then publish it. Mirrors the insight-
+// discovery flow: the service (services/release-notes.cjs) reads main..staging
+// via local git (machine SSH creds, no token), filters engineering noise, runs `claude --print` on the Max
+// subscription (billed key + CLAUDECODE scrubbed — done inside the service),
+// and writes to the shared release_notes table. Unlike insight-discovery
+// (fire-and-forget), generation is SYNCHRONOUS so the draft can be returned to
+// the UI for review/edit before publishing. requireAdmin.
+// ============================================================
+const releaseNotesSvc = require('./release-notes.cjs')
+
+// POST /api/release-notes/generate — build a draft from main..staging.
+// Optional body { version } overrides the version SHA. Returns the draft.
+app.post('/api/release-notes/generate', async (req, res) => {
+  const admin = await requireAdmin(req, res)
+  if (!admin) return
+  const version = req.body && typeof req.body.version === 'string' ? req.body.version.trim() : undefined
+  try {
+    const draft = await releaseNotesSvc.generateDraft(version ? { version } : {})
+    logger.log(`[ReleaseNotes] draft generated (id=${draft.id}, version=${draft.version}, ${draft.commitCount} commits) by ${admin.email || admin.id}`)
+    res.json(draft)
+  } catch (e) {
+    logger.error(`[ReleaseNotes] generate failed: ${e.message}`)
+    res.status(500).json({ error: e.message })
+  }
+})
+
+// POST /api/release-notes/publish — flip a draft to published, saving any edits.
+// Body { id, headline?, bullets? }. Returns the updated row.
+app.post('/api/release-notes/publish', async (req, res) => {
+  const admin = await requireAdmin(req, res)
+  if (!admin) return
+  const { id, headline, bullets } = req.body || {}
+  if (id === undefined || id === null || id === '') {
+    return res.status(400).json({ error: 'id required' })
+  }
+  try {
+    const row = await releaseNotesSvc.publishNote({ id, headline, bullets })
+    logger.log(`[ReleaseNotes] published id=${id} (version=${row.version}) by ${admin.email || admin.id}`)
+    res.json(row)
+  } catch (e) {
+    logger.error(`[ReleaseNotes] publish failed: ${e.message}`)
+    res.status(500).json({ error: e.message })
+  }
+})
+
+// GET /api/release-notes/drafts — unpublished rows, newest-first (for the UI).
+app.get('/api/release-notes/drafts', async (req, res) => {
+  const admin = await requireAdmin(req, res)
+  if (!admin) return
+  try {
+    const drafts = await releaseNotesSvc.listDrafts()
+    res.json({ drafts: Array.isArray(drafts) ? drafts : [] })
+  } catch (e) {
+    logger.error(`[ReleaseNotes] drafts read failed: ${e.message}`)
+    res.status(500).json({ error: e.message })
+  }
+})
+
 const PORT = process.env.PRODUCTION_API_PORT || 3470
 
 httpServer.listen(PORT, () => {
@@ -10942,6 +11886,8 @@ httpServer.listen(PORT, () => {
   } catch (e) {
     logger.warn?.(`[guardian] init skipped: ${e.message}`)
   }
+
+  scheduleNightlyArchive()
 })
 
 module.exports = { app, io, emitToRoom }

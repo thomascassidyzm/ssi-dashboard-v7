@@ -151,22 +151,46 @@ async function audioFileExists(uuid) {
   }
 }
 
+// S3 user metadata rides in HTTP headers: values must be ASCII strings.
+// Drop null/undefined, stringify non-strings, percent-encode non-ASCII (Cyrillic
+// target text, chunk maps, etc. would otherwise break the PUT). This metadata is
+// informational only — Supabase holds the truth.
+// AWS caps TOTAL user metadata at 2KB, so any runaway value is truncated (at a
+// percent-escape boundary) rather than letting one long field 400 the PUT.
+const S3_META_VALUE_MAX = 512
+function toS3Metadata(raw) {
+  const out = {}
+  for (const [key, value] of Object.entries(raw)) {
+    if (value === null || value === undefined) continue
+    let str = typeof value === 'string' ? value : JSON.stringify(value)
+    if (/[^\x20-\x7e]/.test(str)) str = encodeURIComponent(str)
+    if (str.length > S3_META_VALUE_MAX) {
+      str = str.slice(0, S3_META_VALUE_MAX).replace(/%[0-9A-Fa-f]?$/, '')
+    }
+    out[key] = str
+  }
+  return out
+}
+
 // Upload recording
-async function uploadRecording(courseCode, uuid, audioBuffer, metadata = {}) {
+// options.s3Key: explicit object key (canon: mastered/{UUID}.mp3). Falls back to the
+// legacy v12-era prefix only for callers that don't pass one.
+async function uploadRecording(courseCode, uuid, audioBuffer, metadata = {}, options = {}) {
+  const key = options.s3Key || `ssiborg-assets/mastered/${uuid}.mp3`
   const command = new PutObjectCommand({
     Bucket: BUCKET,
-    Key: `ssiborg-assets/mastered/${uuid}.mp3`,
+    Key: key,
     Body: audioBuffer,
     ContentType: 'audio/mpeg',
-    Metadata: {
+    Metadata: toS3Metadata({
       courseCode,
       uploadedAt: new Date().toISOString(),
       ...metadata
-    }
+    })
   })
 
   await s3Client.send(command)
-  return { uuid, uploaded: true }
+  return { uuid, key, uploaded: true }
 }
 
 // Batch check if audio files exist in ssi-audio-stage bucket
@@ -209,5 +233,6 @@ module.exports = {
   batchCheckAudio,
   getAudioSignedUrl,
   audioFileExists,
-  uploadRecording
+  uploadRecording,
+  toS3Metadata
 }

@@ -1,13 +1,20 @@
 <template>
   <div class="listening-admin">
     <header class="admin-header">
-      <button class="back-btn" @click="goBack" title="Back">←</button>
-      <div>
-        <h1>Listening &amp; algorithm config</h1>
-        <p class="sub">
-          Global settings — applies to every course, every learner.
-          Changes propagate to new sessions within ~5 min (cache TTL).
-        </p>
+      <nav class="admin-crumbs">
+        <router-link to="/" class="crumb-link">Home</router-link>
+        <span class="crumb-sep">/</span>
+        <span class="crumb-here">Listening Config</span>
+      </nav>
+      <div class="admin-head-main">
+        <div class="admin-head-titles">
+          <h1>Listening &amp; algorithm config</h1>
+          <p class="sub">
+            Global settings — applies to every course, every learner.
+            Changes propagate to new sessions within ~5 min (cache TTL).
+          </p>
+        </div>
+        <router-link class="stage0-link" :to="{ name: 'Stage0Tuner' }">Stage 0 Tuner →</router-link>
       </div>
       <span v-if="!isAdmin && currentUser" class="admin-warn">
         Signed in as {{ currentUser.email }} (not admin) — saves will fail.
@@ -33,8 +40,7 @@
         <div v-if="selectedCourseCode" class="preview-stats">
           <span>{{ totalSeeds }} seeds</span>
           <span>{{ graduatedQueue.length }} graduated</span>
-          <span>active <strong>{{ l1ActiveFires ? '✓' : '–' }}</strong></span>
-          <span>reserve <strong>{{ l1ReserveFires ? '✓' : '–' }}</strong></span>
+          <span>L1 lap <strong>{{ l1ActiveFires ? '✓' : '–' }}</strong></span>
           <span class="cycle-ratio" title="Listening cycles / speaking cycles this round. Speaking is a script-shape estimate; listening is exact for L1 + approximate for L2 (assumes 1 pod lap per round from activation).">
             {{ cycleStats.listening }} listen + ~{{ cycleStats.speaking }} speak =
             <strong :class="{ 'ratio-hot': cycleStats.listeningPct >= 50 }">{{ cycleStats.listeningPct }}% listening</strong>
@@ -49,91 +55,48 @@
 
     <div v-else class="rows">
       <!-- ==================== LISTENING ==================== -->
-      <section v-if="drafts.listening" class="config-row">
-        <RowHeader
-          title="Layer 1 listening"
-          desc="Per-seed playback at the round-end listening cluster, plus the graduation + window rules that pick which seeds play."
-          :row="rowMap.listening"
-          :dirty="isDirty('listening')"
-          :saving="savingKey === 'listening'"
-          :error="rowErrors.listening"
-          @save="save('listening')"
-          @reset="reset('listening')"
-        />
-
-        <div class="field-block" v-if="drafts.listening.layer1StagePlaylist">
-          <label>L1 staged playlist <span class="hint">each seed advances stage on each L1 fire — eternal stage is the highest-numbered</span></label>
-          <div class="stage-grid">
-            <template v-for="(stage, idx) in l1StageKeys" :key="`l1-${stage}`">
-              <div class="stage-row">
-                <span class="stage-label">
-                  stage {{ stage }}
-                  <span v-if="idx === l1StageKeys.length - 1" class="stage-eternal">eternal</span>
-                </span>
-                <PlaylistEditor :modelValue="getL1StageList(stage)" @update:modelValue="setL1StageList(stage, $event)" :compact="true" />
-                <button
-                  class="stage-audition-btn"
-                  :disabled="!auditionExampleSeed"
-                  @click="auditionL1Stage(stage)"
-                  :title="auditionExampleSeed ? `Audition stage ${stage} with seed S${String(auditionExampleSeed).padStart(4,'0')}` : 'Pick a course with graduated seeds to audition'"
-                >▶</button>
-                <button
-                  class="stage-remove-btn"
-                  :disabled="l1StageKeys.length <= 1"
-                  @click="removeL1Stage(stage)"
-                  title="Remove this stage"
-                >×</button>
-              </div>
-              <button class="stage-insert-btn" @click="addL1StageAfter(stage)" :title="`Insert L1 stage after ${stage}`">
-                + insert L1 stage after {{ stage }}
-              </button>
-            </template>
+      <!-- Layer 1 is FIXED IN CODE (Tom 2026-06-11): the live scheduler
+           (useLayer1Scheduler.ts in the learning app) takes no input from
+           algorithm_config. This card states the real behaviour; the old
+           editable knobs edited a row the player never read. To change L1,
+           change DEFAULT_LAYER1_CONFIG in the app and ship it. -->
+      <section class="config-row">
+        <div class="row-header">
+          <div>
+            <h2>Layer 1 listening <span class="fixed-badge">fixed in code</span></h2>
+            <p class="row-desc">
+              The round-end listening cluster is not configurable from here — these are the live values,
+              read from <code>useLayer1Scheduler.ts</code>. Each seed plays its target sentence at
+              <strong>1× then 2×</strong>. A seed graduates {{ L1_FIXED.offset }} LEGO-ordinals after its
+              last LEGO; a lap fires every {{ L1_FIXED.interval }} rounds from round
+              {{ L1_FIXED.activationRound }}; the session bucket holds up to {{ L1_FIXED.bucketCap }} seeds
+              ({{ L1_FIXED.activeSize }} freshest always kept, the rest sampled).
+            </p>
           </div>
         </div>
 
-        <div class="field-block" v-else>
-          <label>Per-seed playlist (legacy) <span class="hint">staged playlist not configured — every fire uses this flat playlist</span></label>
-          <PlaylistEditor v-model="drafts.listening.layer1Playlist" />
-        </div>
-
-        <div class="field-grid">
-          <NumField v-model="drafts.listening.layer1StageDuration" label="L1 stage duration" suffix="fires per stage"
-            help="How many L1 emissions a seed spends in each transitional stage before promoting." />
-          <NumField v-model="drafts.listening.offset" label="Graduation offset" suffix="rounds"
-            help="Rounds after a seed's last LEGO before it graduates into Layer 1 listening." />
-          <NumField v-model="drafts.listening.l1ActiveSize" label="Active window size" suffix="seeds"
-            help="Most-recently-graduated seeds in the active rotation." />
-          <NumField v-model="drafts.listening.l1ActiveInterval" label="Active fires every" suffix="rounds" />
-          <NumField v-model="drafts.listening.l1ReserveSize" label="Reserve window size" suffix="seeds"
-            help="Older graduated seeds (next slice after active)." />
-          <NumField v-model="drafts.listening.l1ReserveInterval" label="Reserve fires every" suffix="rounds" />
-        </div>
-
-        <!-- Live preview: what would Layer 1 play right now? -->
+        <!-- Live preview: which seeds are in the L1 rotation right now? -->
         <div v-if="selectedCourseCode && !courseLoading" class="preview-block">
           <div class="preview-block-head">
             <span class="preview-block-title">Preview · {{ selectedCourseCode }} @ round {{ previewRound }}</span>
             <span class="preview-block-meta">
-              Active window — {{ activeWindow.length }} seeds
-              {{ l1ActiveFires ? '· playing this round' : '· not firing this round' }}
+              {{ graduatedQueue.length }} graduated · showing freshest {{ activeWindow.length }}
+              {{ l1ActiveFires ? '· lap fires this round' : '· no lap this round' }}
             </span>
           </div>
           <div v-if="!activeWindow.length" class="preview-empty">
-            No seeds graduated yet at this round (need {{ drafts.listening.offset }} rounds since each seed's last LEGO).
+            No seeds graduated yet at this round (a seed needs {{ L1_FIXED.offset }} LEGO-ordinals since its last LEGO).
           </div>
           <div v-else class="preview-seeds">
             <div v-for="sNum in activeWindow" :key="sNum" class="preview-seed">
               <div class="preview-seed-head">
                 <span class="seed-id">S{{ String(sNum).padStart(4, '0') }}</span>
-                <span v-if="seedL1Stage(sNum) != null" class="seed-stage" :title="`${seedL1PriorFires(sNum)} prior L1 fires`">
-                  stage {{ seedL1Stage(sNum) }}
-                </span>
                 <span class="seed-target">{{ seedDisplayTarget(sNum) }}</span>
                 <span class="seed-known">{{ seedDisplayKnown(sNum) }}</span>
               </div>
               <div class="preview-seed-pills">
                 <button
-                  v-for="(role, idx) in seedL1Playlist(sNum)"
+                  v-for="(role, idx) in L1_FIXED.playlist"
                   :key="idx"
                   class="preview-pill"
                   :class="`role-${role}`"
@@ -145,24 +108,11 @@
                   <span class="pill-icon">▶</span>
                   {{ ROLE_LABEL[role] }}
                 </button>
-                <button class="preview-sequence" @click="playSequence(sNum)" title="Play full sequence with bookends">
+                <button class="preview-sequence" @click="playSequence(sNum)" title="Play the fixed 1×→2× sequence">
                   ▶▶ play full
                 </button>
               </div>
             </div>
-          </div>
-          <div v-if="reserveWindow.length" class="preview-reserve">
-            <details>
-              <summary>+{{ reserveWindow.length }} seeds in reserve window (every {{ drafts.listening.l1ReserveInterval }} rounds)</summary>
-              <div class="preview-seeds compact">
-                <div v-for="sNum in reserveWindow" :key="sNum" class="preview-seed compact">
-                  <div class="preview-seed-head">
-                    <span class="seed-id">S{{ String(sNum).padStart(4, '0') }}</span>
-                    <span class="seed-target">{{ seedDisplayTarget(sNum) }}</span>
-                  </div>
-                </div>
-              </div>
-            </details>
           </div>
         </div>
       </section>
@@ -181,7 +131,7 @@
         />
 
         <div class="field-block">
-          <label>Stage playlists <span class="hint">highest-numbered stage is the eternal hold · + adds, × removes, drag rows by editing the playlist</span></label>
+          <label>Stage playlists <span class="hint">highest-numbered stage is the eternal hold · per-stage rounds box overrides the default duration · ⓘ = explainer (plays INSTEAD of the translation; sentences without one fall back to EN in that slot)</span></label>
           <div class="stage-grid">
             <template v-for="(stage, idx) in podsStageKeys" :key="stage">
               <div class="stage-row">
@@ -189,6 +139,15 @@
                   stage {{ stage }}
                   <span v-if="idx === podsStageKeys.length - 1" class="stage-eternal">eternal</span>
                 </span>
+                <span v-if="idx < podsStageKeys.length - 1" class="stage-rounds" title="Pod-rounds in this stage before promoting. Empty = the default stage duration below.">
+                  <input
+                    type="number" min="1"
+                    :placeholder="String(drafts.pods.stageDuration ?? 5)"
+                    :value="getStageRounds(stage)"
+                    @input="setStageRounds(stage, $event.target.value)"
+                  /><span class="stage-rounds-suffix">r</span>
+                </span>
+                <span v-else class="stage-rounds eternal-spacer">∞</span>
                 <PlaylistEditor :modelValue="getStageList(stage)" @update:modelValue="setStageList(stage, $event)" :compact="true" />
                 <button
                   class="stage-audition-btn"
@@ -215,8 +174,8 @@
             help="First main-round at which Layer 2 pods fire (per-learner pin still wins)." />
           <NumField v-model="drafts.pods.roundInterval" label="Pod fires every" suffix="rounds"
             help="1 = every round (default). 2 = every other round, 3 = every third, etc. Stretches every pod stage proportionally — pod-rounds only tick on actual fires." />
-          <NumField v-model="drafts.pods.stageDuration" label="Stage duration" suffix="pod-rounds"
-            help="Pod-rounds spent in each of stages 1–6 before promoting (stage 7 is eternal)." />
+          <NumField v-model="drafts.pods.stageDuration" label="Default stage duration" suffix="pod-rounds"
+            help="Fallback pod-rounds for stages without their own rounds value (set per-stage in the rows above — e.g. Phase 0 = 2, Phase 1 = 3). The highest stage is eternal." />
           <NumField v-model="drafts.pods.gapSuperTightMs" label="Gap: super tight" suffix="ms"
             help="known→target, target→target inside one chunk." />
           <NumField v-model="drafts.pods.gapTightMs" label="Gap: tight" suffix="ms"
@@ -326,15 +285,29 @@ import { useAuth } from '../composables/useAuth'
 const router = useRouter()
 const { getAccessToken, isAdmin, learner: currentUser } = useAuth()
 
-const KEYS = ['listening', 'pods', 'script_shape', 'turbo_boost', 'normal_mode']
-const ROLE_LABEL = { ps08x: '0.8×', ps: '1×', ps15x: '1.5×', ps2x: '2×', trans: 'EN' }
-const ROLE_SPEED = { ps08x: 0.8, ps: 1.0, ps15x: 1.5, ps2x: 2.0, trans: 1.0 }
+// 'listening' (the old L1 knobs row) was retired 2026-06-11: the live L1
+// scheduler (useLayer1Scheduler.ts in the learning app) is fixed in code and
+// never read it. The row stays in the DB untouched; this page just stopped
+// pretending to edit it. L1_FIXED below mirrors DEFAULT_LAYER1_CONFIG + the
+// hardcoded per-seed playlist — update BOTH if the app constants ever change.
+const KEYS = ['pods', 'script_shape', 'turbo_boost', 'normal_mode']
+const L1_FIXED = {
+  offset: 90,          // LEGO-ordinals after a seed's last LEGO before it graduates
+  interval: 50,        // a lap fires every N main rounds…
+  activationRound: 100, // …from this round onward
+  bucketCap: 100,      // session bucket hard cap
+  activeSize: 80,      // freshest always kept; the rest sampled
+  playlist: ['ps', 'ps2x'], // per-seed: target at 1×, then 2×
+}
+const ROLE_LABEL = { ps08x: '0.8×', ps: '1×', ps15x: '1.5×', ps2x: '2×', trans: 'EN', explainer: 'ⓘ' }
+const ROLE_SPEED = { ps08x: 0.8, ps: 1.0, ps15x: 1.5, ps2x: 2.0, trans: 1.0, explainer: 1.0 }
 const ROLE_DESC = {
   ps08x: 'target at 0.8× — extra-slow for first exposure',
   ps: 'target at 1.0× — slow listen for clarity',
   ps15x: 'target at 1.5× — gentle stretch on the way up',
   ps2x: 'target at 2.0× — fast rep for retention',
   trans: 'known-language audio at 1.0×',
+  explainer: "Tom-voiced chunk breakdown — Phase 0 plays it INSTEAD of the translation; sentences without one fall back to the translation in this slot",
 }
 // The audio proxy lives on saysomethingin.app (CORS *). popty.app doesn't
 // serve /api/audio so we hit the deployed learning-app endpoint directly.
@@ -384,36 +357,24 @@ const previewRoundMax = computed(() => {
 
 const seedRowMap = computed(() => new Map(courseSeeds.value.map(s => [s.seed_number, s])))
 
+// L1 preview mirrors the FIXED live scheduler (L1_FIXED). The live graduation
+// rule counts LEGO-ordinals; the preview approximates with rounds (≈1 LEGO
+// per main round) — close enough to read which seeds are in rotation.
 const graduatedQueue = computed(() => {
-  const off = drafts.listening?.offset ?? 56
   const r = previewRound.value
   return [...seedLastRound.value.entries()]
-    .filter(([, last]) => r - last >= off)
+    .filter(([, last]) => r - last >= L1_FIXED.offset)
     .sort((a, b) => a[1] - b[1] || a[0] - b[0])
     .map(([s]) => s)
 })
 const activeWindow = computed(() => {
-  const size = drafts.listening?.l1ActiveSize ?? 10
-  return graduatedQueue.value.slice(-size)
-})
-const reserveWindow = computed(() => {
-  const aSize = drafts.listening?.l1ActiveSize ?? 10
-  const rSize = drafts.listening?.l1ReserveSize ?? 50
-  if (graduatedQueue.value.length <= aSize) return []
-  const end = graduatedQueue.value.length - aSize
-  const start = Math.max(0, end - rSize)
-  return graduatedQueue.value.slice(start, end)
+  return graduatedQueue.value.slice(-L1_FIXED.activeSize)
 })
 const l1ActiveFires = computed(() => {
   const r = previewRound.value
-  const interval = drafts.listening?.l1ActiveInterval ?? 3
-  return r > 0 && r % interval === 0 && graduatedQueue.value.length > 0
-})
-const l1ReserveFires = computed(() => {
-  const r = previewRound.value
-  const interval = drafts.listening?.l1ReserveInterval ?? 13
-  const aSize = drafts.listening?.l1ActiveSize ?? 10
-  return r > 0 && r % interval === 0 && graduatedQueue.value.length > aSize
+  return r >= L1_FIXED.activationRound
+    && (r - L1_FIXED.activationRound) % L1_FIXED.interval === 0
+    && graduatedQueue.value.length > 0
 })
 
 function seedDisplayTarget(sNum) {
@@ -432,47 +393,6 @@ function seedAudioId(sNum, role) {
   return role === 'trans' ? row.known_audio_id : row.target1_audio_id
 }
 
-// ---------------------------------------------------------------------
-// Per-seed L1 stage progression (mirrors generateLearningScript.ts)
-// ---------------------------------------------------------------------
-// Each L1 emit increments a per-seed fire counter; stage = layer1StageFor
-// (fireCount), capped at the eternal stage. Active-window seeds sit in
-// the active window from graduation onward, so prior fires = number of
-// active-interval-multiples between graduation and (R - 1).
-function seedL1PriorFires(sNum) {
-  const last = seedLastRound.value.get(sNum)
-  if (last == null) return 0
-  const off = drafts.listening?.offset ?? 56
-  const gR = last + off
-  const interval = drafts.listening?.l1ActiveInterval ?? 3
-  const R = previewRound.value
-  if (R < gR || interval <= 0) return 0
-  return Math.floor((R - 1) / interval) - Math.floor((gR - 1) / interval)
-}
-
-function seedL1Stage(sNum) {
-  const sp = drafts.listening?.layer1StagePlaylist || {}
-  const keys = Object.keys(sp).map(Number).filter(n => !Number.isNaN(n)).sort((a, b) => a - b)
-  if (keys.length === 0) return null
-  const eternal = keys[keys.length - 1]
-  const duration = drafts.listening?.layer1StageDuration ?? 3
-  // Fire count for this emission = prior + 1 — the playlist for the
-  // next/current fire slot, which is what the admin wants to audition.
-  const fireCount = seedL1PriorFires(sNum) + 1
-  for (const stage of keys) {
-    if (stage === eternal) return stage
-    if (fireCount <= stage * duration) return stage
-  }
-  return eternal
-}
-
-function seedL1Playlist(sNum) {
-  const stage = seedL1Stage(sNum)
-  if (stage == null) return drafts.listening?.layer1Playlist || []
-  const list = getL1StageList(stage)
-  if (list && list.length) return list
-  return drafts.listening?.layer1Playlist || []
-}
 function audioUrl(audioId) {
   if (!audioId || !selectedCourseCode.value) return null
   return `${AUDIO_BASE}/${audioId}?courseId=${encodeURIComponent(selectedCourseCode.value)}`
@@ -509,27 +429,8 @@ async function playPlaylistForSeed(playlist, sNum) {
 }
 
 async function playSequence(sNum) {
-  await playPlaylistForSeed(seedL1Playlist(sNum), sNum)
+  await playPlaylistForSeed(L1_FIXED.playlist, sNum)
 }
-
-// Audition a specific L1 stage with the currently-selected example seed.
-// Useful when you want to hear what Stage N sounds like even if no seed
-// is currently sitting in that stage at the previewRound.
-function auditionL1Stage(stage) {
-  const sNum = auditionExampleSeed.value
-  if (sNum == null) return
-  playPlaylistForSeed(getL1StageList(stage), sNum)
-}
-
-// Example seed for stage audition. Prefers the most-recently graduated
-// seed (what a learner is hearing right now); falls back to oldest
-// graduated or the first course seed if nothing has graduated yet.
-const auditionExampleSeed = computed(() => {
-  if (activeWindow.value.length) return activeWindow.value[activeWindow.value.length - 1]
-  if (graduatedQueue.value.length) return graduatedQueue.value[graduatedQueue.value.length - 1]
-  if (courseSeeds.value.length) return courseSeeds.value[0].seed_number
-  return null
-})
 
 // Example pod sentence for L2 stage audition — first sentence of the
 // pod (global_order = 1). Null if the course has no pod loaded.
@@ -544,8 +445,13 @@ const auditionExamplePodSentence = computed(() => {
 async function playPodPlaylistForSentence(playlist, sentence) {
   if (currentAudio) { try { currentAudio.pause() } catch {} }
   for (const role of playlist) {
-    const isTrans = role === 'trans'
-    const id = isTrans ? sentence.known_audio_id : sentence.target_audio_id
+    // Mirrors the runtime: explainer slot falls back to the translation when
+    // the sentence has no explainer audio (fully-repeat lines, vocab codas).
+    const id = role === 'explainer'
+      ? (sentence.explainer_audio_id || sentence.known_audio_id)
+      : role === 'trans'
+        ? sentence.known_audio_id
+        : sentence.target_audio_id
     const url = audioUrl(id)
     if (!url) continue
     await new Promise((resolve) => {
@@ -566,14 +472,20 @@ function auditionPodStage(stage) {
   playPodPlaylistForSentence(getStageList(stage), sentence)
 }
 
+
 // Port of usePodLapScheduler.podStageFor — admin-side cycle-count
 // estimate, no runtime dep. Returns the stage a pod sentence at
 // entryPodRound would sit in when the lap is currentPodRound.
-function podStageForAdmin(entryPodRound, currentPodRound, stageDuration, totalStages) {
+// stageDurations = per-stage overrides ({'1': 2, '2': 3}); unlisted
+// stages use the uniform stageDuration — mirrors the runtime maths.
+function podStageForAdmin(entryPodRound, currentPodRound, stageDuration, totalStages, stageDurations) {
   const alive = currentPodRound - entryPodRound + 1
   if (alive < 1) return null
+  let cum = 0
   for (let stage = 1; stage < totalStages; stage++) {
-    if (alive <= stage * stageDuration) return stage
+    const d = stageDurations?.[stage] ?? stageDurations?.[String(stage)] ?? stageDuration
+    if (alive <= cum + d) return stage
+    cum += d
   }
   return totalStages
 }
@@ -597,21 +509,9 @@ const cycleStats = computed(() => {
   const R = previewRound.value
   let listening = 0
 
-  // L1
+  // L1 — fixed live behaviour: each rotation seed plays the 1×→2× pair.
   if (l1ActiveFires.value) {
-    for (const sNum of activeWindow.value) {
-      listening += seedL1Playlist(sNum).length
-    }
-  }
-  if (l1ReserveFires.value) {
-    // Reserve seeds are by definition old; use the eternal stage's
-    // playlist length as a steady-state approximation.
-    const sp = drafts.listening?.layer1StagePlaylist || {}
-    const keys = Object.keys(sp).map(Number).filter(n => !Number.isNaN(n)).sort((a, b) => a - b)
-    const eternalLen = keys.length
-      ? getL1StageList(keys[keys.length - 1]).length
-      : (drafts.listening?.layer1Playlist || []).length
-    listening += reserveWindow.value.length * eternalLen
+    listening += activeWindow.value.length * L1_FIXED.playlist.length
   }
 
   // L2 — pods fire every drafts.pods.roundInterval main rounds from
@@ -619,9 +519,7 @@ const cycleStats = computed(() => {
   // so the stage clock and active-count grow at the cadence of fires
   // (not session rounds). Non-firing rounds contribute 0 listening
   // cycles from L2.
-  // Pod activation lives on drafts.pods now; legacy `listening` rows still
-  // carry it until they're re-saved. Prefer pods, fall back to listening.
-  const activation = drafts.pods?.podActivationRound ?? drafts.listening?.podActivationRound ?? 6
+  const activation = drafts.pods?.podActivationRound ?? 6
   const interval = Math.max(1, Math.floor(drafts.pods?.roundInterval ?? 1))
   const totalPodSentences = coursePodSentences.value.length
   const offset = R - activation
@@ -632,7 +530,7 @@ const cycleStats = computed(() => {
     const stageDuration = drafts.pods.stageDuration ?? 5
     const totalStages = podsStageKeys.value.length || 1
     for (let i = 1; i <= activeCount; i++) {
-      const stage = podStageForAdmin(i, podRound, stageDuration, totalStages)
+      const stage = podStageForAdmin(i, podRound, stageDuration, totalStages, drafts.pods.stageDurations)
       if (stage == null) continue
       listening += getStageList(stage).length
     }
@@ -706,7 +604,7 @@ async function loadCoursePreview(courseCode) {
     // exists. Courses without pods still preview L1 fine.
     const { data: podRows, error: podErr } = await sb
       .from('listening_pod_sentences')
-      .select('global_order, target_text, known_text, target_audio_id, known_audio_id')
+      .select('global_order, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id')
       .eq('pod_id', `${courseCode}:pod-0`)
       .order('global_order', { ascending: true })
     if (podErr) {
@@ -805,12 +703,6 @@ const podsStageKeys = computed(() => {
   if (!sp) return []
   return Object.keys(sp).map(Number).filter(n => !Number.isNaN(n)).sort((a, b) => a - b)
 })
-const l1StageKeys = computed(() => {
-  const sp = drafts.listening?.layer1StagePlaylist
-  if (!sp) return []
-  return Object.keys(sp).map(Number).filter(n => !Number.isNaN(n)).sort((a, b) => a - b)
-})
-
 function getStageList(stage) {
   if (!drafts.pods) return []
   const sp = drafts.pods.stagePlaylist || {}
@@ -820,6 +712,40 @@ function setStageList(stage, list) {
   if (!drafts.pods) return
   if (!drafts.pods.stagePlaylist) drafts.pods.stagePlaylist = {}
   drafts.pods.stagePlaylist[String(stage)] = list
+}
+
+// Per-stage duration overrides (PodsConfig.stageDurations — e.g. {'1': 2,
+// '2': 3} for Phase 0 / Phase 1). Empty input = no override = the uniform
+// stageDuration fallback; the key is deleted so the runtime falls back too.
+function getStageRounds(stage) {
+  const sd = drafts.pods?.stageDurations || {}
+  const v = sd[String(stage)] ?? sd[stage]
+  return v == null ? '' : v
+}
+function setStageRounds(stage, raw) {
+  if (!drafts.pods) return
+  const n = parseInt(raw, 10)
+  if (!drafts.pods.stageDurations) drafts.pods.stageDurations = {}
+  if (Number.isFinite(n) && n >= 1) {
+    drafts.pods.stageDurations[String(stage)] = n
+  } else {
+    delete drafts.pods.stageDurations[String(stage)]
+  }
+}
+
+/** Renumber the stageDurations map with the same key shift applied to the
+ *  playlist keys, so per-stage rounds stay glued to their stage. */
+function shiftStageDurations(shiftKey) {
+  const sd = drafts.pods.stageDurations
+  if (!sd) return
+  const next = {}
+  for (const [k, v] of Object.entries(sd)) {
+    const n = Number(k)
+    if (Number.isNaN(n)) continue
+    const newKey = shiftKey(n)
+    if (newKey != null) next[String(newKey)] = v
+  }
+  drafts.pods.stageDurations = next
 }
 
 /** Insert a new stage immediately after `stage`. Shifts all higher
@@ -835,6 +761,7 @@ function addStageAfter(stage) {
   }
   next[String(stage + 1)] = ['ps', 'trans', 'ps', 'ps2x']
   drafts.pods.stagePlaylist = next
+  shiftStageDurations(n => (n > stage ? n + 1 : n))
 }
 
 /** Remove a stage. Shifts all higher keys down by 1 so the sequence
@@ -851,46 +778,7 @@ function removeStage(stage) {
     next[String(newKey)] = sp[String(k)] || sp[k] || []
   }
   drafts.pods.stagePlaylist = next
-}
-
-// L1 staged-playlist helpers — identical shape to the pods ones above
-// (mirror Layer 2's stage UX). Per-seed fire counter advances on each L1
-// emit; stage = floor((fireCount-1)/layer1StageDuration)+1, capped at
-// the highest key (eternal hold).
-function getL1StageList(stage) {
-  if (!drafts.listening) return []
-  const sp = drafts.listening.layer1StagePlaylist || {}
-  return sp[String(stage)] || sp[stage] || []
-}
-function setL1StageList(stage, list) {
-  if (!drafts.listening) return
-  if (!drafts.listening.layer1StagePlaylist) drafts.listening.layer1StagePlaylist = {}
-  drafts.listening.layer1StagePlaylist[String(stage)] = list
-}
-function addL1StageAfter(stage) {
-  if (!drafts.listening) return
-  const sp = drafts.listening.layer1StagePlaylist || {}
-  const keys = l1StageKeys.value
-  const next = {}
-  for (const k of keys) {
-    const newKey = k > stage ? k + 1 : k
-    next[String(newKey)] = sp[String(k)] || sp[k] || []
-  }
-  next[String(stage + 1)] = ['ps2x', 'ps2x']
-  drafts.listening.layer1StagePlaylist = next
-}
-function removeL1Stage(stage) {
-  if (!drafts.listening) return
-  const keys = l1StageKeys.value
-  if (keys.length <= 1) return
-  const sp = drafts.listening.layer1StagePlaylist || {}
-  const next = {}
-  for (const k of keys) {
-    if (k === stage) continue
-    const newKey = k > stage ? k - 1 : k
-    next[String(newKey)] = sp[String(k)] || sp[k] || []
-  }
-  drafts.listening.layer1StagePlaylist = next
+  shiftStageDurations(n => (n === stage ? null : n > stage ? n - 1 : n))
 }
 
 function toggleFib(idx) {
@@ -1127,30 +1015,34 @@ const RowHeader = defineComponent({
   padding: 1.5rem;
   max-width: 1100px;
   margin: 0 auto;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .admin-header {
   margin-bottom: 1.5rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: start;
-  column-gap: 0.75rem;
-  row-gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
-.admin-header > .admin-warn { grid-column: 1 / -1; }
+.admin-crumbs { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; }
+.admin-crumbs .crumb-link { color: var(--accent-2); text-decoration: none; }
+.admin-crumbs .crumb-link:hover { color: #6ee7b7; }
+.admin-crumbs .crumb-sep { color: var(--surface-3); }
+.admin-crumbs .crumb-here { color: var(--muted); }
+.admin-head-main { display: flex; align-items: flex-start; gap: 1rem; }
+.admin-head-titles { flex: 1; min-width: 0; }
 .back-btn {
   background: transparent;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 8px;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 1rem;
   width: 36px; height: 36px;
   cursor: pointer;
 }
-.back-btn:hover { border-color: var(--color-paper-dim, #94a3b8); color: var(--color-paper, #f7f7f2); }
+.back-btn:hover { border-color: var(--color-paper-dim, var(--muted)); color: var(--color-paper, var(--ink)); }
 h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
-.sub { margin: 0; color: var(--color-paper-dim, #94a3b8); font-size: 0.875rem; line-height: 1.5; max-width: 700px; }
+.sub { margin: 0; color: var(--color-paper-dim, var(--muted)); font-size: 0.875rem; line-height: 1.5; max-width: 700px; }
 .admin-warn {
   background: rgba(251, 146, 60, 0.12);
   border: 1px solid rgba(251, 146, 60, 0.3);
@@ -1163,7 +1055,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .loading, .err {
   padding: 2rem;
   text-align: center;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
 }
 .err { color: #f87171; background: rgba(248, 113, 113, 0.08); border-radius: 8px; }
 
@@ -1175,7 +1067,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 
 .config-row {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--color-graphite, #334155);
+  border: 1px solid var(--color-graphite, var(--surface-2));
   border-radius: 10px;
   padding: 1.25rem 1.5rem;
 }
@@ -1198,12 +1090,12 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 :deep(.row-meta) {
   margin-top: 0.25rem;
   font-size: 0.7rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
 }
 :deep(.row-desc) {
   margin: 0.5rem 0 0;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.8125rem;
   line-height: 1.5;
 }
@@ -1225,14 +1117,14 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   margin-bottom: 0.5rem;
 }
 .hint {
   text-transform: none;
   letter-spacing: 0;
   font-weight: 400;
-  color: var(--color-paper-dim, #64748b);
+  color: var(--color-paper-dim, var(--faint));
   margin-left: 0.5rem;
   font-size: 0.7rem;
 }
@@ -1252,14 +1144,14 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   margin-bottom: 0.25rem;
 }
 :deep(.num-input-wrap) {
   display: flex;
   align-items: center;
   background: rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--color-graphite, #334155);
+  border: 1px solid var(--color-graphite, var(--surface-2));
   border-radius: 6px;
   overflow: hidden;
 }
@@ -1269,7 +1161,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   background: transparent;
   border: 0;
   outline: none;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   padding: 0.5rem 0.75rem;
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
   font-size: 0.875rem;
@@ -1277,7 +1169,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 :deep(.suffix) {
   padding: 0 0.75rem;
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   white-space: nowrap;
 }
 
@@ -1285,8 +1177,8 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 :deep(.num-list-input) {
   width: 100%;
   background: rgba(0, 0, 0, 0.25);
-  color: var(--color-paper, #f7f7f2);
-  border: 1px solid var(--color-graphite, #334155);
+  color: var(--color-paper, var(--ink));
+  border: 1px solid var(--color-graphite, var(--surface-2));
   border-radius: 6px;
   padding: 0.5rem 0.75rem;
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
@@ -1343,28 +1235,28 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 :deep(.micro) {
   width: 22px; height: 18px;
   border-radius: 4px;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   background: transparent;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.7rem;
   cursor: pointer;
   padding: 0;
   display: inline-flex;
   align-items: center; justify-content: center;
 }
-:deep(.micro:hover:not(:disabled)) { color: var(--color-paper, #f7f7f2); border-color: var(--color-paper-dim, #94a3b8); }
+:deep(.micro:hover:not(:disabled)) { color: var(--color-paper, var(--ink)); border-color: var(--color-paper-dim, var(--muted)); }
 :deep(.micro:disabled) { opacity: 0.3; cursor: not-allowed; }
 :deep(.micro.remove:hover:not(:disabled)) { color: #f87171; border-color: #f87171; }
 :deep(.add-pill) {
   width: 32px; height: 32px;
   border-radius: 999px;
-  border: 1px dashed var(--color-graphite, #475569);
+  border: 1px dashed var(--color-graphite, var(--surface-3));
   background: transparent;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 1rem;
   cursor: pointer;
 }
-:deep(.add-pill:hover) { color: var(--color-paper, #f7f7f2); border-color: var(--color-paper-dim, #94a3b8); }
+:deep(.add-pill:hover) { color: var(--color-paper, var(--ink)); border-color: var(--color-paper-dim, var(--muted)); }
 
 :deep(.playlist-editor.compact .role-pill) { padding: 0.25rem 0.6rem 0.25rem 0.35rem; font-size: 0.7rem; }
 :deep(.playlist-editor.compact .pill-num) { width: 14px; height: 14px; font-size: 0.6rem; }
@@ -1386,24 +1278,34 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   background: rgba(0, 0, 0, 0.15);
   border-radius: 6px;
 }
+.stage0-link {
+  margin-left: auto; align-self: center; white-space: nowrap;
+  font-family: ui-monospace, "IBM Plex Mono", Menlo, monospace;
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--accent); text-decoration: none;
+  border: 1px solid var(--surface-3); border-radius: 999px; padding: 0.4rem 0.85rem;
+  transition: border-color 0.15s, color 0.15s;
+}
+.stage0-link:hover { border-color: var(--accent); color: var(--ink); }
+
 .stage-audition-btn {
   width: 28px; height: 28px;
   border-radius: 6px;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   background: transparent;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.85rem;
   cursor: pointer;
 }
 .stage-audition-btn:hover:not(:disabled) {
-  border-color: #34d399;
-  color: #34d399;
+  border-color: var(--accent-2);
+  color: var(--accent-2);
 }
 .stage-audition-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 .stage-label {
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   text-transform: uppercase;
   letter-spacing: 0.06em;
   display: flex;
@@ -1416,12 +1318,51 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
+.stage-rounds {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex: 0 0 auto;
+}
+.stage-rounds input {
+  width: 44px;
+  padding: 3px 4px;
+  border-radius: 6px;
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  background: transparent;
+  color: var(--color-paper, var(--ink));
+  font-size: 0.75rem;
+  text-align: center;
+}
+.stage-rounds input::placeholder { color: var(--color-paper-dim, var(--faint)); }
+.stage-rounds-suffix {
+  font-size: 0.65rem;
+  color: var(--color-paper-dim, var(--muted));
+}
+.stage-rounds.eternal-spacer {
+  width: 50px;
+  justify-content: center;
+  color: #93c5fd;
+  font-size: 0.8rem;
+}
+.fixed-badge {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-paper-dim, var(--muted));
+  vertical-align: middle;
+}
 .stage-remove-btn {
   width: 28px; height: 28px;
   border-radius: 6px;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   background: transparent;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 1rem;
   cursor: pointer;
 }
@@ -1437,15 +1378,15 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   border-radius: 4px;
   border: 1px dashed transparent;
   background: transparent;
-  color: var(--color-paper-dim, #64748b);
+  color: var(--color-paper-dim, var(--faint));
   font-size: 0.7rem;
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
   cursor: pointer;
   transition: all 0.15s;
 }
 .stage-insert-btn:hover {
-  border-color: var(--color-graphite, #475569);
-  color: var(--color-paper, #f7f7f2);
+  border-color: var(--color-graphite, var(--surface-3));
+  color: var(--color-paper, var(--ink));
 }
 
 /* Fib pills */
@@ -1457,15 +1398,15 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .fib-pill {
   padding: 0.4rem 0.7rem;
   border-radius: 999px;
-  border: 1px solid var(--color-graphite, #475569);
+  border: 1px solid var(--color-graphite, var(--surface-3));
   background: transparent;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
   font-size: 0.75rem;
   cursor: pointer;
   transition: all 0.15s;
 }
-.fib-pill:hover { color: var(--color-paper, #f7f7f2); border-color: var(--color-paper-dim, #94a3b8); }
+.fib-pill:hover { color: var(--color-paper, var(--ink)); border-color: var(--color-paper-dim, var(--muted)); }
 .fib-pill.on {
   background: rgba(96, 165, 250, 0.15);
   border-color: #60a5fa;
@@ -1481,7 +1422,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   padding: 0 1.5rem;
   background: rgba(15, 23, 42, 0.92);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--color-graphite, #334155);
+  border-bottom: 1px solid var(--color-graphite, var(--surface-2));
 }
 .preview-bar-inner {
   display: flex;
@@ -1499,14 +1440,14 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
 }
 .picker-group select,
 .picker-group input[type="number"] {
   background: rgba(0,0,0,0.3);
-  border: 1px solid var(--color-graphite, #334155);
+  border: 1px solid var(--color-graphite, var(--surface-2));
   border-radius: 6px;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   padding: 0.35rem 0.5rem;
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
   font-size: 0.8125rem;
@@ -1523,17 +1464,17 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 }
 .round-display {
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
 }
 .preview-stats {
   display: flex;
   gap: 0.85rem;
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
 }
-.preview-stats strong { color: var(--color-paper, #f7f7f2); }
+.preview-stats strong { color: var(--color-paper, var(--ink)); }
 .preview-stats .cycle-ratio {
   padding: 0.1rem 0.45rem;
   background: rgba(255, 255, 255, 0.04);
@@ -1543,7 +1484,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .preview-stats .ratio-hot { color: #fb923c; }
 .preview-loading {
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-style: italic;
 }
 
@@ -1572,11 +1513,11 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 }
 .preview-block-meta {
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
 }
 .preview-empty {
   font-style: italic;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.8125rem;
   padding: 0.5rem 0;
 }
@@ -1601,7 +1542,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .seed-id {
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
   font-size: 0.7rem;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   min-width: 56px;
 }
 .seed-stage {
@@ -1609,14 +1550,14 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   background: rgba(255, 255, 255, 0.06);
   padding: 0.1rem 0.4rem;
   border-radius: 3px;
 }
 .seed-target { font-weight: 500; }
 .seed-known {
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   font-style: italic;
   font-size: 0.875rem;
 }
@@ -1661,25 +1602,25 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .preview-sequence {
   margin-left: auto;
   background: transparent;
-  border: 1px solid var(--color-graphite, #475569);
-  color: var(--color-paper-dim, #94a3b8);
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  color: var(--color-paper-dim, var(--muted));
   padding: 0.3rem 0.65rem;
   border-radius: 999px;
   font-size: 0.7rem;
   cursor: pointer;
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
 }
-.preview-sequence:hover { border-color: var(--color-paper, #f7f7f2); color: var(--color-paper, #f7f7f2); }
+.preview-sequence:hover { border-color: var(--color-paper, var(--ink)); color: var(--color-paper, var(--ink)); }
 .preview-reserve {
   margin-top: 0.75rem;
   font-size: 0.75rem;
 }
 .preview-reserve summary {
-  color: var(--color-paper-dim, #94a3b8);
+  color: var(--color-paper-dim, var(--muted));
   cursor: pointer;
   padding: 0.4rem 0;
 }
-.preview-reserve summary:hover { color: var(--color-paper, #f7f7f2); }
+.preview-reserve summary:hover { color: var(--color-paper, var(--ink)); }
 .preview-reserve[open] .preview-seeds { margin-top: 0.5rem; }
 
 /* Buttons (primary / secondary) */
@@ -1695,12 +1636,107 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 }
 :deep(.btn-primary) { background: #3b82f6; border-color: #2563eb; color: white; }
 :deep(.btn-primary:hover:not(:disabled)) { background: #2563eb; }
-:deep(.btn-primary:disabled) { background: #334155; border-color: #334155; cursor: not-allowed; opacity: 0.5; }
+:deep(.btn-primary:disabled) { background: var(--surface-2); border-color: var(--surface-2); cursor: not-allowed; opacity: 0.5; }
 :deep(.btn-secondary) {
   background: transparent;
-  border-color: var(--color-graphite, #475569);
-  color: var(--color-paper-dim, #94a3b8);
+  border-color: var(--color-graphite, var(--surface-3));
+  color: var(--color-paper-dim, var(--muted));
 }
-:deep(.btn-secondary:hover:not(:disabled)) { border-color: var(--color-paper, #f7f7f2); color: var(--color-paper, #f7f7f2); }
+:deep(.btn-secondary:hover:not(:disabled)) { border-color: var(--color-paper, var(--ink)); color: var(--color-paper, var(--ink)); }
 :deep(.btn-secondary:disabled) { opacity: 0.4; cursor: not-allowed; }
+
+/* ============================================================================
+   LIGHT MODE OVERRIDES
+   The base styles above were authored for dark mode and bake in dark-only
+   literals (rgba(255,255,255,.03) "card" fills, rgba(0,0,0,.25) input fills,
+   a hardcoded dark slate sticky bar, and faint --surface-2 borders). On the
+   light canvas those collapse to ~1.03:1 separation or, in the sticky bar's
+   case, a dark band that swallows the dark --ink text. These overrides are
+   scoped to [data-theme="light"] so DARK MODE IS UNTOUCHED.
+   ============================================================================ */
+
+/* Cards: opaque white surface + a visible border so they lift off the canvas
+   (was rgba(255,255,255,.03) on #eef2f6 ≈ 1.03:1, invisible). */
+[data-theme="light"] .config-row {
+  background: var(--surface);
+  border-color: var(--line);                 /* #cbd5e1 on #eef2f6 ≈ 1.3:1 edge, plus shadow */
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+/* Sticky preview bar: was rgba(15,23,42,.92) — a DARK band on a light page
+   that hid its own --muted/--ink children (≈1.4:1). Make it a frosted light
+   surface with a real bottom border. */
+[data-theme="light"] .preview-bar {
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom-color: var(--line);
+}
+
+/* Inputs / selects: dark translucent fills (rgba(0,0,0,.25)/.3) → raised
+   surface-2 with a readable border. Text stays --ink. */
+[data-theme="light"] :deep(.num-input-wrap),
+[data-theme="light"] :deep(.num-list-input),
+[data-theme="light"] .picker-group select,
+[data-theme="light"] .picker-group input[type="number"],
+[data-theme="light"] .stage-rounds input {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+/* Inner panels (stage rows, seed cards, ratio/stage chips) used near-black
+   translucent fills that muddy on white → light raised surfaces + a border. */
+[data-theme="light"] .stage-row,
+[data-theme="light"] .preview-seed {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+[data-theme="light"] .preview-stats .cycle-ratio,
+[data-theme="light"] .seed-stage {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+
+/* pill-num counters sat on a dark rgba(0,0,0,.18) chip; on the bright pill
+   fills in light mode a translucent-dark token reads better as a hairline. */
+[data-theme="light"] :deep(.pill-num),
+[data-theme="light"] .preview-pill .pill-num {
+  background: rgba(15, 23, 42, 0.14);
+}
+
+/* "EN" / trans pill: #6b7280 fill with #f9fafb text = ~4.0:1. Bold ~12px is
+   below the 18.66px large-text threshold, so nudge the fill darker to clear
+   AA (#4b5563 + #f9fafb ≈ 7.0:1) while staying the same gray hue family. */
+[data-theme="light"] :deep(.role-pill.role-trans),
+[data-theme="light"] .preview-pill.role-trans {
+  background: #4b5563;
+}
+
+/* Light-blue accent TEXT (#93c5fd ≈ 1.6:1 on white = unreadable) → a darker
+   blue that clears AA on the light surfaces it sits on (#1d4ed8 ≈ 7.5:1).
+   Same blue hue family as dark mode. */
+[data-theme="light"] .stage-eternal,
+[data-theme="light"] .stage-rounds.eternal-spacer,
+[data-theme="light"] .preview-block-title,
+[data-theme="light"] .fib-pill.on {
+  color: #1d4ed8;
+}
+[data-theme="light"] .fib-pill.on {
+  background: rgba(37, 99, 235, 0.1);
+  border-color: #1d4ed8;
+}
+
+/* Preview block tint: the blue wash + faint blue border barely register on
+   the light canvas — give it a readable tinted panel. */
+[data-theme="light"] .preview-block {
+  background: rgba(37, 99, 235, 0.06);
+  border-color: rgba(37, 99, 235, 0.28);
+}
+
+/* Inline warning/error banners used light-bg + light text (#fbbf24/#f87171)
+   on a translucent tint = washed out on white. Darken the text to clear AA. */
+[data-theme="light"] .admin-warn { color: #92400e; }
+[data-theme="light"] .err,
+[data-theme="light"] :deep(.save-err) { color: #b91c1c; }
+
+/* Crumb hover (#6ee7b7) is invisible on white → use the themed accent-2. */
+[data-theme="light"] .admin-crumbs .crumb-link:hover { color: var(--accent-2); }
 </style>

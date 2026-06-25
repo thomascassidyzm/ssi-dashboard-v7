@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
@@ -13,12 +13,12 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">Course Health Report</h1>
-            <p class="text-slate-400">{{ courseCode }} - Last updated {{ lastUpdated }}</p>
+            <p class="text-muted">{{ courseCode }} - Last updated {{ lastUpdated }}</p>
           </div>
 
           <!-- Overall Health Score -->
           <div class="text-center">
-            <div class="text-sm text-slate-400 mb-1">Overall Health</div>
+            <div class="text-sm text-muted mb-1">Overall Health</div>
             <div class="relative w-32 h-32">
               <svg class="transform -rotate-90" width="128" height="128">
                 <circle
@@ -28,7 +28,7 @@
                   stroke="currentColor"
                   stroke-width="8"
                   fill="none"
-                  class="text-slate-700"
+                  class="text-faint"
                 />
                 <circle
                   cx="64"
@@ -47,7 +47,7 @@
                   <div class="text-3xl font-bold" :class="getHealthColor(healthScore)">
                     {{ healthScore }}
                   </div>
-                  <div class="text-xs text-slate-500">/ 100</div>
+                  <div class="text-xs text-faint">/ 100</div>
                 </div>
               </div>
             </div>
@@ -60,30 +60,30 @@
         <div
           v-for="factor in healthFactors"
           :key="factor.name"
-          class="bg-slate-800 border border-slate-700 rounded-lg p-6"
+          class="bg-surface border border-line rounded-lg p-6"
         >
           <div class="flex items-start justify-between mb-3">
             <div class="flex-1">
-              <div class="text-sm text-slate-400 mb-1">{{ factor.name }}</div>
+              <div class="text-sm text-muted mb-1">{{ factor.name }}</div>
               <div class="text-2xl font-bold mb-2" :class="getFactorColor(factor.score)">
                 {{ factor.score }}/100
               </div>
             </div>
             <div class="text-3xl">{{ factor.icon }}</div>
           </div>
-          <div class="w-full bg-slate-700 rounded-full h-2 mb-2">
+          <div class="w-full bg-surface-2 rounded-full h-2 mb-2">
             <div
               class="h-2 rounded-full transition-all"
               :class="getFactorColor(factor.score).replace('text-', 'bg-')"
               :style="{ width: `${factor.score}%` }"
             ></div>
           </div>
-          <div class="text-xs text-slate-500">{{ factor.description }}</div>
+          <div class="text-xs text-faint">{{ factor.description }}</div>
         </div>
       </div>
 
       <!-- Quality Trend Over Time -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <h3 class="text-lg font-semibold text-emerald-400 mb-4">Quality Trend (Last 30 Days)</h3>
 
         <div class="h-64 flex items-end gap-1">
@@ -102,31 +102,31 @@
             </div>
 
             <!-- Tooltip -->
-            <div class="absolute -top-20 left-1/2 transform -translate-x-1/2 bg-slate-900 border border-slate-700 rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
-              <div class="text-xs text-slate-400">{{ point.date }}</div>
+            <div class="absolute -top-20 left-1/2 transform -translate-x-1/2 bg-canvas border border-line rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
+              <div class="text-xs text-muted">{{ point.date }}</div>
               <div class="text-sm font-semibold" :class="getQualityColor(point.avgQuality)">
                 {{ point.avgQuality.toFixed(1) }} avg quality
               </div>
-              <div class="text-xs text-slate-500">{{ point.seedsProcessed }} SEEDs</div>
+              <div class="text-xs text-faint">{{ point.seedsProcessed }} SEEDs</div>
             </div>
           </div>
         </div>
 
-        <div class="flex justify-between mt-4 text-xs text-slate-500">
+        <div class="flex justify-between mt-4 text-xs text-faint">
           <span>{{ qualityTrend[0]?.date }}</span>
           <span>{{ qualityTrend[qualityTrend.length - 1]?.date }}</span>
         </div>
       </div>
 
       <!-- Phase Completion Status -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <h3 class="text-lg font-semibold text-emerald-400 mb-4">Phase Completion Status</h3>
 
         <div class="space-y-4">
           <div
             v-for="phase in phases"
             :key="phase.id"
-            class="bg-slate-900/50 border border-slate-700 rounded-lg p-4"
+            class="bg-canvas/50 border border-line rounded-lg p-4"
           >
             <div class="flex items-center justify-between mb-2">
               <div class="flex items-center gap-3">
@@ -140,26 +140,26 @@
                 </div>
                 <div>
                   <div class="text-emerald-400 font-semibold">{{ phase.name }}</div>
-                  <div class="text-xs text-slate-500">{{ phase.description }}</div>
+                  <div class="text-xs text-faint">{{ phase.description }}</div>
                 </div>
               </div>
               <div class="text-right">
                 <div class="text-2xl font-bold" :class="getQualityColor(phase.quality)">
                   {{ phase.quality.toFixed(1) }}
                 </div>
-                <div class="text-xs text-slate-500">avg quality</div>
+                <div class="text-xs text-faint">avg quality</div>
               </div>
             </div>
 
             <!-- Progress bar -->
-            <div class="w-full bg-slate-700 rounded-full h-2 mt-3">
+            <div class="w-full bg-surface-2 rounded-full h-2 mt-3">
               <div
                 class="h-2 rounded-full transition-all"
                 :class="phase.status === 'complete' ? 'bg-emerald-600' : 'bg-blue-600'"
                 :style="{ width: `${phase.progress}%` }"
               ></div>
             </div>
-            <div class="flex justify-between mt-1 text-xs text-slate-500">
+            <div class="flex justify-between mt-1 text-xs text-faint">
               <span>{{ phase.completed }} / {{ phase.total }} completed</span>
               <span>{{ phase.progress }}%</span>
             </div>
@@ -168,42 +168,42 @@
       </div>
 
       <!-- Re-run Statistics -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <h3 class="text-lg font-semibold text-emerald-400 mb-4">Re-run Statistics</h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- Attempts Distribution -->
           <div>
-            <div class="text-sm text-slate-400 mb-3">Distribution of Attempts</div>
+            <div class="text-sm text-muted mb-3">Distribution of Attempts</div>
             <div class="space-y-2">
               <div
                 v-for="dist in attemptsDistribution"
                 :key="dist.attempts"
                 class="flex items-center gap-3"
               >
-                <div class="text-sm text-slate-400 w-20">{{ dist.attempts }} attempt{{ dist.attempts > 1 ? 's' : '' }}</div>
-                <div class="flex-1 bg-slate-700 rounded-full h-6">
+                <div class="text-sm text-muted w-20">{{ dist.attempts }} attempt{{ dist.attempts > 1 ? 's' : '' }}</div>
+                <div class="flex-1 bg-surface-2 rounded-full h-6">
                   <div
                     class="h-6 rounded-full flex items-center justify-end px-2 transition-all"
                     :class="getAttemptsColor(dist.attempts)"
                     :style="{ width: `${(dist.count / totalSeeds) * 100}%` }"
                   >
-                    <span class="text-xs font-semibold text-white">{{ dist.count }}</span>
+                    <span class="text-xs font-semibold text-ink">{{ dist.count }}</span>
                   </div>
                 </div>
-                <div class="text-xs text-slate-500 w-12 text-right">
+                <div class="text-xs text-faint w-12 text-right">
                   {{ ((dist.count / totalSeeds) * 100).toFixed(1) }}%
                 </div>
               </div>
             </div>
 
-            <div class="mt-4 pt-4 border-t border-slate-700">
+            <div class="mt-4 pt-4 border-t border-line">
               <div class="flex justify-between text-sm">
-                <span class="text-slate-400">Average Attempts</span>
+                <span class="text-muted">Average Attempts</span>
                 <span class="text-emerald-400 font-semibold">{{ avgAttempts.toFixed(1) }}</span>
               </div>
               <div class="flex justify-between text-sm mt-2">
-                <span class="text-slate-400">Total Re-runs</span>
+                <span class="text-muted">Total Re-runs</span>
                 <span class="text-blue-400 font-semibold">{{ totalReruns }}</span>
               </div>
             </div>
@@ -211,21 +211,21 @@
 
           <!-- Re-run Reasons -->
           <div>
-            <div class="text-sm text-slate-400 mb-3">Common Re-run Triggers</div>
+            <div class="text-sm text-muted mb-3">Common Re-run Triggers</div>
             <div class="space-y-2">
               <div
                 v-for="reason in rerunReasons"
                 :key="reason.type"
-                class="bg-slate-900/50 border border-slate-700 rounded-lg p-3"
+                class="bg-canvas/50 border border-line rounded-lg p-3"
               >
                 <div class="flex items-start justify-between mb-2">
                   <div class="flex-1">
                     <div class="text-sm font-medium text-emerald-400">{{ reason.type }}</div>
-                    <div class="text-xs text-slate-500 mt-1">{{ reason.description }}</div>
+                    <div class="text-xs text-faint mt-1">{{ reason.description }}</div>
                   </div>
                   <div class="text-right ml-3">
                     <div class="text-lg font-bold text-yellow-400">{{ reason.count }}</div>
-                    <div class="text-xs text-slate-500">{{ ((reason.count / totalReruns) * 100).toFixed(0) }}%</div>
+                    <div class="text-xs text-faint">{{ ((reason.count / totalReruns) * 100).toFixed(0) }}%</div>
                   </div>
                 </div>
               </div>
@@ -235,14 +235,14 @@
       </div>
 
       <!-- Common Concerns/Issues -->
-      <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-line rounded-lg p-6 mb-6">
         <h3 class="text-lg font-semibold text-emerald-400 mb-4">Common Concerns & Issues</h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div
             v-for="concern in commonConcerns"
             :key="concern.type"
-            class="bg-slate-900/50 border border-yellow-700/50 rounded-lg p-4"
+            class="bg-canvas/50 border border-yellow-700/50 rounded-lg p-4"
           >
             <div class="flex items-start gap-3">
               <div class="text-2xl">⚠️</div>
@@ -251,12 +251,12 @@
                   <div class="text-yellow-400 font-semibold">{{ concern.type }}</div>
                   <div class="text-sm text-yellow-400">{{ concern.frequency }}%</div>
                 </div>
-                <div class="text-sm text-slate-300 mb-2">{{ concern.description }}</div>
-                <div class="text-xs text-slate-500">Affects {{ concern.seedsAffected }} SEEDs</div>
+                <div class="text-sm text-ink mb-2">{{ concern.description }}</div>
+                <div class="text-xs text-faint">Affects {{ concern.seedsAffected }} SEEDs</div>
 
                 <!-- Suggested Action -->
-                <div class="mt-3 pt-3 border-t border-slate-700">
-                  <div class="text-xs text-slate-400 mb-1">Recommended Action:</div>
+                <div class="mt-3 pt-3 border-t border-line">
+                  <div class="text-xs text-muted mb-1">Recommended Action:</div>
                   <div class="text-xs text-emerald-400">{{ concern.suggestion }}</div>
                 </div>
               </div>
@@ -268,54 +268,54 @@
       <!-- System Information -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <!-- Current Configuration -->
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
+        <div class="bg-surface border border-line rounded-lg p-6">
           <h3 class="text-lg font-semibold text-emerald-400 mb-4">Current Configuration</h3>
           <div class="space-y-3 text-sm">
             <div class="flex justify-between">
-              <span class="text-slate-400">Prompt Version</span>
-              <span class="text-slate-300 font-mono">{{ config.promptVersion }}</span>
+              <span class="text-muted">Prompt Version</span>
+              <span class="text-ink font-mono">{{ config.promptVersion }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Model</span>
-              <span class="text-slate-300 font-mono">{{ config.model }}</span>
+              <span class="text-muted">Model</span>
+              <span class="text-ink font-mono">{{ config.model }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Active Rules</span>
+              <span class="text-muted">Active Rules</span>
               <span class="text-emerald-400 font-semibold">{{ config.activeRules }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Quality Threshold</span>
+              <span class="text-muted">Quality Threshold</span>
               <span class="text-emerald-400 font-semibold">{{ config.qualityThreshold }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Max Attempts</span>
+              <span class="text-muted">Max Attempts</span>
               <span class="text-blue-400 font-semibold">{{ config.maxAttempts }}</span>
             </div>
           </div>
         </div>
 
         <!-- Performance Metrics -->
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
+        <div class="bg-surface border border-line rounded-lg p-6">
           <h3 class="text-lg font-semibold text-emerald-400 mb-4">Performance Metrics</h3>
           <div class="space-y-3 text-sm">
             <div class="flex justify-between">
-              <span class="text-slate-400">Avg Processing Time</span>
-              <span class="text-slate-300">{{ performance.avgProcessingTime }}ms</span>
+              <span class="text-muted">Avg Processing Time</span>
+              <span class="text-ink">{{ performance.avgProcessingTime }}ms</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Total API Calls</span>
-              <span class="text-slate-300">{{ performance.totalApiCalls.toLocaleString() }}</span>
+              <span class="text-muted">Total API Calls</span>
+              <span class="text-ink">{{ performance.totalApiCalls.toLocaleString() }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Success Rate</span>
+              <span class="text-muted">Success Rate</span>
               <span class="text-emerald-400 font-semibold">{{ performance.successRate }}%</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Error Rate</span>
+              <span class="text-muted">Error Rate</span>
               <span class="text-red-400 font-semibold">{{ performance.errorRate }}%</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Cache Hit Rate</span>
+              <span class="text-muted">Cache Hit Rate</span>
               <span class="text-blue-400 font-semibold">{{ performance.cacheHitRate }}%</span>
             </div>
           </div>
@@ -323,14 +323,14 @@
       </div>
 
       <!-- Recommendations -->
-      <div class="bg-slate-800 border border-emerald-700/50 rounded-lg p-6 mb-6">
+      <div class="bg-surface border border-emerald-700/50 rounded-lg p-6 mb-6">
         <h3 class="text-lg font-semibold text-emerald-400 mb-4">System Recommendations</h3>
 
         <div class="space-y-3">
           <div
             v-for="rec in recommendations"
             :key="rec.id"
-            class="bg-slate-900/50 border border-slate-700 rounded-lg p-4"
+            class="bg-canvas/50 border border-line rounded-lg p-4"
           >
             <div class="flex items-start gap-3">
               <div
@@ -341,14 +341,16 @@
               </div>
               <div class="flex-1">
                 <div class="text-emerald-400 font-semibold mb-1">{{ rec.title }}</div>
-                <div class="text-sm text-slate-300 mb-2">{{ rec.description }}</div>
+                <div class="text-sm text-ink mb-2">{{ rec.description }}</div>
                 <div class="flex items-center gap-2">
-                  <span class="text-xs text-slate-500">Impact:</span>
+                  <span class="text-xs text-faint">Impact:</span>
                   <span class="text-xs text-emerald-400">{{ rec.impact }}</span>
                 </div>
               </div>
               <button
                 @click="applyRecommendation(rec.id)"
+                disabled
+                title="Not implemented yet"
                 class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-sm transition-colors"
               >
                 Apply
@@ -359,9 +361,11 @@
       </div>
 
       <!-- Export Actions -->
-      <div class="flex items-center justify-end gap-4 sticky bottom-8 bg-slate-800 border border-slate-700 rounded-lg p-6 shadow-xl">
+      <div class="flex items-center justify-end gap-4 sticky bottom-8 bg-surface border border-line rounded-lg p-6 shadow-xl">
         <button
           @click="exportReport('pdf')"
+          disabled
+          title="Not implemented yet"
           class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white rounded-lg text-lg font-medium transition-colors flex items-center gap-2"
         >
           <span>📄</span>
@@ -369,6 +373,8 @@
         </button>
         <button
           @click="exportReport('csv')"
+          disabled
+          title="Not implemented yet"
           class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-lg font-medium transition-colors flex items-center gap-2"
         >
           <span>📊</span>
@@ -376,6 +382,8 @@
         </button>
         <button
           @click="scheduleReport"
+          disabled
+          title="Not implemented yet"
           class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-lg font-medium transition-colors flex items-center gap-2"
         >
           <span>📅</span>
@@ -632,7 +640,7 @@ function getQualityBarColor(quality) {
 function getPhaseStatusClass(status) {
   if (status === 'complete') return 'bg-emerald-600 border-emerald-400 text-white'
   if (status === 'in_progress') return 'bg-blue-600 border-blue-400 text-white'
-  return 'bg-slate-700 border-slate-600 text-slate-400'
+  return 'bg-surface-2 border-line text-muted'
 }
 
 function getAttemptsColor(attempts) {
@@ -649,22 +657,19 @@ function getPriorityClass(priority) {
     Medium: 'bg-yellow-900/50 text-yellow-400 border border-yellow-600/50',
     Low: 'bg-blue-900/50 text-blue-400 border border-blue-600/50'
   }
-  return classes[priority] || 'bg-slate-700 text-slate-300'
+  return classes[priority] || 'bg-surface-2 text-ink'
 }
 
 function exportReport(format) {
-  console.log(`Exporting health report as ${format}`)
-  // TODO: Generate and download report
+  alert("Exporting the report isn't available yet.")
 }
 
 function scheduleReport() {
-  console.log('Opening schedule report modal')
-  // TODO: Open modal for scheduling periodic reports
+  alert("Scheduling reports isn't available yet.")
 }
 
 function applyRecommendation(recId) {
-  console.log('Applying recommendation:', recId)
-  // TODO: API call to apply recommendation
+  alert("Applying recommendations isn't available yet.")
 }
 
 // Lifecycle

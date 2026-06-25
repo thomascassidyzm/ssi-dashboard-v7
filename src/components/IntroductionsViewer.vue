@@ -1,17 +1,17 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-slate-100 p-8">
+  <div class="min-h-screen bg-canvas text-ink p-8">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8 flex items-center justify-between">
         <div>
-          <h1 class="text-4xl font-bold text-emerald-400 mb-2">Introductions Editor</h1>
-          <p class="text-slate-400">Edit LEGO introduction presentations</p>
+          <h1 class="text-4xl font-bold text-accent-2 mb-2">Introductions Editor</h1>
+          <p class="text-muted">Edit LEGO introduction presentations</p>
         </div>
         <div class="flex gap-3">
           <button
             @click="recompileManifest"
             :disabled="!selectedCourseCode || recompilingManifest"
-            class="bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white px-6 py-2 rounded-lg transition-colors font-medium"
+            class="bg-purple-600 hover:bg-purple-500 disabled:bg-surface-2 disabled:cursor-not-allowed text-white px-6 py-2 rounded-lg transition-colors font-medium"
           >
             {{ recompilingManifest ? 'Recompiling...' : 'Recompile Manifest' }}
           </button>
@@ -19,12 +19,12 @@
       </div>
 
       <!-- Course Selector -->
-      <div class="mb-6 bg-slate-800 border border-slate-700 rounded-lg p-4">
-        <label class="block text-sm font-medium text-slate-300 mb-2">Select Course</label>
+      <div class="mb-6 bg-surface border border-line rounded-lg p-4">
+        <label class="block text-sm font-medium text-ink mb-2">Select Course</label>
         <select
           v-model="selectedCourseCode"
           @change="loadIntroductions"
-          class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-slate-100"
+          class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink"
         >
           <option value="">-- Select a course --</option>
           <option v-for="course in availableCourses" :key="course" :value="course">
@@ -35,70 +35,70 @@
 
       <!-- Loading State -->
       <div v-if="loading" class="text-center py-12">
-        <div class="text-slate-400">Loading introductions...</div>
+        <div class="text-muted">Loading introductions...</div>
       </div>
 
       <!-- Error State -->
-      <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
-        <h3 class="text-red-400 font-semibold mb-2">Error Loading Introductions</h3>
-        <p class="text-slate-300">{{ error }}</p>
+      <div v-else-if="error" class="status-error rounded-lg p-6">
+        <h3 class="status-error-title font-semibold mb-2">Error Loading Introductions</h3>
+        <p class="text-ink">{{ error }}</p>
       </div>
 
       <!-- Introductions List -->
       <div v-else-if="introductionsList.length > 0">
         <!-- Search/Filter -->
-        <div class="mb-6 bg-slate-800 border border-slate-700 rounded-lg p-4">
-          <label class="block text-sm font-medium text-slate-300 mb-2">Search</label>
+        <div class="mb-6 bg-surface border border-line rounded-lg p-4">
+          <label class="block text-sm font-medium text-ink mb-2">Search</label>
           <input
             v-model="searchQuery"
             type="text"
             placeholder="Search by LEGO ID or introduction text..."
-            class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-slate-100"
+            class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink"
           />
         </div>
 
         <!-- Stats -->
         <div class="mb-6 grid grid-cols-3 gap-4">
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-            <div class="text-slate-400 text-sm mb-1">Total Introductions</div>
-            <div class="text-2xl font-bold text-emerald-400">{{ introductionsList.length }}</div>
+          <div class="bg-surface border border-line rounded-lg p-4">
+            <div class="text-muted text-sm mb-1">Total Introductions</div>
+            <div class="text-2xl font-bold text-accent-2">{{ introductionsList.length }}</div>
           </div>
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-            <div class="text-slate-400 text-sm mb-1">Filtered Results</div>
-            <div class="text-2xl font-bold text-emerald-400">{{ filteredIntroductions.length }}</div>
+          <div class="bg-surface border border-line rounded-lg p-4">
+            <div class="text-muted text-sm mb-1">Filtered Results</div>
+            <div class="text-2xl font-bold text-accent-2">{{ filteredIntroductions.length }}</div>
           </div>
-          <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
-            <div class="text-slate-400 text-sm mb-1">Modified</div>
-            <div class="text-2xl font-bold text-yellow-400">{{ modifiedCount }}</div>
+          <div class="bg-surface border border-line rounded-lg p-4">
+            <div class="text-muted text-sm mb-1">Modified</div>
+            <div class="text-2xl font-bold modified-count">{{ modifiedCount }}</div>
           </div>
         </div>
 
         <!-- Introductions Table -->
-        <div class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden">
+        <div class="bg-surface border border-line rounded-lg overflow-hidden">
           <div class="overflow-x-auto max-h-[600px] overflow-y-auto">
             <table class="w-full">
-              <thead class="bg-slate-900 sticky top-0">
+              <thead class="bg-canvas sticky top-0">
                 <tr>
-                  <th class="text-left px-4 py-3 text-slate-300 font-medium">LEGO ID</th>
-                  <th class="text-left px-4 py-3 text-slate-300 font-medium">Introduction Text</th>
-                  <th class="px-4 py-3 text-slate-300 font-medium w-32">Actions</th>
+                  <th class="text-left px-4 py-3 text-ink font-medium">LEGO ID</th>
+                  <th class="text-left px-4 py-3 text-ink font-medium">Introduction Text</th>
+                  <th class="px-4 py-3 text-ink font-medium w-32">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr
                   v-for="intro in filteredIntroductions"
                   :key="intro.id"
-                  class="border-t border-slate-700 hover:bg-slate-700/50"
-                  :class="{ 'bg-yellow-900/20': intro.modified }"
+                  class="border-t border-line hover:bg-surface-2/50"
+                  :class="{ 'row-modified': intro.modified }"
                 >
                   <td class="px-4 py-3">
-                    <code class="text-emerald-400 font-mono text-sm">{{ intro.id }}</code>
+                    <code class="text-accent-2 font-mono text-sm">{{ intro.id }}</code>
                   </td>
                   <td class="px-4 py-3">
                     <div v-if="editingId === intro.id">
                       <textarea
                         v-model="editText"
-                        class="w-full bg-slate-900 border border-emerald-500 rounded px-3 py-2 text-slate-100 font-mono text-sm min-h-[80px]"
+                        class="w-full bg-canvas border border-accent-2 rounded px-3 py-2 text-ink font-mono text-sm min-h-[80px]"
                         @keydown.ctrl.enter="saveEdit(intro.id)"
                         @keydown.meta.enter="saveEdit(intro.id)"
                         @keydown.escape="cancelEdit"
@@ -112,13 +112,13 @@
                         </button>
                         <button
                           @click="cancelEdit"
-                          class="bg-slate-600 hover:bg-slate-500 text-white px-3 py-1 rounded text-sm"
+                          class="bg-surface-3 hover:bg-surface-3 text-ink px-3 py-1 rounded text-sm"
                         >
                           Cancel (Esc)
                         </button>
                       </div>
                     </div>
-                    <div v-else class="font-mono text-sm text-slate-300">
+                    <div v-else class="font-mono text-sm text-ink">
                       {{ intro.text }}
                     </div>
                   </td>
@@ -138,23 +138,23 @@
         </div>
 
         <!-- Save Changes -->
-        <div v-if="modifiedCount > 0" class="mt-6 bg-yellow-900/20 border border-yellow-500/50 rounded-lg p-6">
+        <div v-if="modifiedCount > 0" class="mt-6 status-warn rounded-lg p-6">
           <div class="flex items-center justify-between">
             <div>
-              <h3 class="text-yellow-400 font-semibold mb-1">Unsaved Changes</h3>
-              <p class="text-slate-300 text-sm">You have {{ modifiedCount }} modified introduction(s)</p>
+              <h3 class="status-warn-title font-semibold mb-1">Unsaved Changes</h3>
+              <p class="text-ink text-sm">You have {{ modifiedCount }} modified introduction(s)</p>
             </div>
             <div class="flex gap-3">
               <button
                 @click="discardChanges"
-                class="bg-slate-700 hover:bg-slate-600 text-white px-6 py-2 rounded-lg transition-colors"
+                class="bg-surface-2 hover:bg-surface-3 text-ink px-6 py-2 rounded-lg transition-colors"
               >
                 Discard Changes
               </button>
               <button
                 @click="saveAllChanges"
                 :disabled="saving"
-                class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white px-6 py-2 rounded-lg transition-colors font-medium"
+                class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-surface-2 disabled:cursor-not-allowed text-white px-6 py-2 rounded-lg transition-colors font-medium"
               >
                 {{ saving ? 'Saving...' : 'Save All Changes' }}
               </button>
@@ -164,7 +164,7 @@
       </div>
 
       <!-- Empty State -->
-      <div v-else class="text-center py-12 text-slate-400">
+      <div v-else class="text-center py-12 text-muted">
         Select a course to view introductions
       </div>
     </div>
@@ -357,3 +357,39 @@ async function recompileManifest() {
   }
 }
 </script>
+
+<style scoped>
+/* Dark-mode defaults: preserve original yellow/red appearance */
+.modified-count { color: #facc15; } /* yellow-400 */
+
+.status-error {
+  background-color: rgba(127, 29, 29, 0.2); /* red-900/20 */
+  border: 1px solid rgba(239, 68, 68, 0.5); /* red-500/50 */
+}
+.status-error-title { color: #f87171; } /* red-400 */
+
+.status-warn {
+  background-color: rgba(113, 63, 18, 0.2); /* yellow-900/20 */
+  border: 1px solid rgba(234, 179, 8, 0.5); /* yellow-500/50 */
+}
+.status-warn-title { color: #facc15; } /* yellow-400 */
+
+.row-modified { background-color: rgba(113, 63, 18, 0.2); } /* yellow-900/20 */
+
+/* Light-mode overrides: AA-legible amber/red on light tint, same hue families */
+:root[data-theme="light"] .modified-count { color: #b45309; } /* amber-700 ~5.9:1 on white */
+
+:root[data-theme="light"] .status-error {
+  background-color: #fef2f2; /* red-50 */
+  border-color: #fca5a5; /* red-300 */
+}
+:root[data-theme="light"] .status-error-title { color: #b91c1c; } /* red-700 ~6.4:1 on red-50 */
+
+:root[data-theme="light"] .status-warn {
+  background-color: #fffbeb; /* amber-50 */
+  border-color: #fcd34d; /* amber-300 */
+}
+:root[data-theme="light"] .status-warn-title { color: #b45309; } /* amber-700 ~5.4:1 on amber-50 */
+
+:root[data-theme="light"] .row-modified { background-color: #fffbeb; } /* amber-50 */
+</style>

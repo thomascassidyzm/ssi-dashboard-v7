@@ -6,15 +6,15 @@
         class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
         @click.self="close"
       >
-        <div class="modal-content bg-slate-800 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="modal-content bg-surface rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <!-- Header -->
-          <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-slate-700 sticky top-0 bg-slate-800 z-10">
-            <h3 class="text-lg font-semibold text-white">Export & Publish Workflow</h3>
+          <div class="modal-header flex items-center justify-between px-6 py-4 border-b border-line sticky top-0 bg-surface z-10">
+            <h3 class="text-lg font-semibold text-ink">Export & Publish Workflow</h3>
             <div class="flex items-center gap-2">
               <!-- Reset button -->
               <button
                 @click="handleReset"
-                class="text-slate-400 hover:text-white transition-colors p-1"
+                class="text-muted hover:text-ink transition-colors p-1"
                 title="Reset workflow"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -24,7 +24,7 @@
               <!-- Close button -->
               <button
                 @click="close"
-                class="text-slate-400 hover:text-white transition-colors"
+                class="text-muted hover:text-ink transition-colors"
                 title="Close (Esc)"
               >
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -38,7 +38,7 @@
           <div class="modal-body px-6 py-6 space-y-6">
             <!-- Loading state -->
             <div v-if="isLoadingState" class="flex items-center justify-center py-8">
-              <div class="spinner w-8 h-8 border-4 border-slate-600 border-t-emerald-500 rounded-full animate-spin"></div>
+              <div class="spinner w-8 h-8 border-4 border-line border-t-emerald-500 rounded-full animate-spin"></div>
             </div>
 
             <template v-else>
@@ -50,7 +50,7 @@
 
               <!-- Error message -->
               <div v-if="workflow.error.value" class="error-box p-4 bg-red-900/30 border border-red-700 rounded-lg">
-                <p class="text-red-400 text-sm">{{ workflow.error.value }}</p>
+                <p class="error-box-text text-red-400 text-sm">{{ workflow.error.value }}</p>
               </div>
 
               <!-- Step 1: Generate Manifest -->
@@ -84,18 +84,18 @@
                 />
 
                 <!-- Override: skip verification and proceed to Step 3 -->
-                <div v-if="workflow.state.value.s3Verification && !s3VerificationPassing && !isVerifying" class="mt-4 p-3 border rounded-lg" :class="s3VerifyOverride ? 'bg-amber-900/20 border-amber-700' : 'border-slate-700'">
+                <div v-if="workflow.state.value.s3Verification && !s3VerificationPassing && !isVerifying" class="mt-4 p-3 border rounded-lg" :class="s3VerifyOverride ? 'amber-box bg-amber-900/20 border-amber-700' : 'border-line'">
                   <label class="flex items-center gap-2 cursor-pointer group">
                     <input
                       v-model="s3VerifyOverride"
                       type="checkbox"
                       class="w-4 h-4 rounded"
                     />
-                    <span class="text-xs group-hover:text-slate-300 transition-colors" :class="s3VerifyOverride ? 'text-amber-400' : 'text-slate-500'">
+                    <span class="text-xs group-hover:text-ink transition-colors" :class="s3VerifyOverride ? 'amber-text text-amber-400' : 'text-faint'">
                       Skip verification — proceed to publish anyway
                     </span>
                   </label>
-                  <p v-if="s3VerifyOverride" class="text-xs text-amber-500/70 mt-1.5 ml-6">
+                  <p v-if="s3VerifyOverride" class="amber-text-dim text-xs text-amber-500/70 mt-1.5 ml-6">
                     Duration metadata in the manifest may not match S3 audio files.
                   </p>
                 </div>
@@ -147,14 +147,14 @@
           </div>
 
           <!-- Unpushed commits warning -->
-          <div v-if="showPushWarning" class="px-6 py-3 bg-amber-900/40 border-t border-amber-700">
+          <div v-if="showPushWarning" class="push-warn px-6 py-3 bg-amber-900/40 border-t border-amber-700">
             <div class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="amber-text w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
               <div class="flex-1">
-                <p class="text-amber-400 text-sm font-medium">course-configs has unpushed commits</p>
-                <p class="text-slate-400 text-xs mt-1">Push to remote before deploying so the app picks up the new manifest.</p>
+                <p class="amber-text text-amber-400 text-sm font-medium">course-configs has unpushed commits</p>
+                <p class="text-muted text-xs mt-1">Push to remote before deploying so the app picks up the new manifest.</p>
                 <div class="flex gap-2 mt-2">
                   <button
                     @click="handlePushAndProceed"
@@ -166,13 +166,13 @@
                   </button>
                   <button
                     @click="showPushWarning = false; activeStep++"
-                    class="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-white transition-colors"
+                    class="px-3 py-1.5 text-xs font-medium text-muted hover:text-ink transition-colors"
                   >
                     Skip anyway
                   </button>
                   <button
                     @click="showPushWarning = false"
-                    class="px-3 py-1.5 text-xs font-medium text-slate-500 hover:text-slate-300 transition-colors"
+                    class="px-3 py-1.5 text-xs font-medium text-faint hover:text-ink transition-colors"
                   >
                     Cancel
                   </button>
@@ -182,13 +182,13 @@
           </div>
 
           <!-- Footer -->
-          <div class="modal-footer flex items-center justify-between px-6 py-4 border-t border-slate-700 sticky bottom-0 bg-slate-800">
+          <div class="modal-footer flex items-center justify-between px-6 py-4 border-t border-line sticky bottom-0 bg-surface">
             <!-- Navigation buttons -->
             <div class="flex items-center gap-2">
               <button
                 v-if="activeStep > 1"
                 @click="previousStep"
-                class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                class="px-4 py-2 text-sm font-medium text-ink hover:text-ink transition-colors"
               >
                 Previous
               </button>
@@ -198,7 +198,7 @@
               <button
                 v-if="activeStep < 4 && canProceedToNextStep"
                 @click="nextStep"
-                class="px-4 py-2 text-sm font-medium bg-slate-600 text-white rounded-lg hover:bg-slate-500 transition-colors"
+                class="px-4 py-2 text-sm font-medium bg-surface-3 text-ink rounded-lg hover:bg-surface-3 transition-colors"
               >
                 Next Step
               </button>
@@ -218,6 +218,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { fetchJson } from '@/services/api.js'
 import { useExportWorkflow } from '@/composables/useExportWorkflow'
 import ExportStepIndicator from './export/ExportStepIndicator.vue'
 import Step1Generate from './export/Step1Generate.vue'
@@ -311,8 +312,7 @@ async function nextStep() {
     if (activeStep.value === 3) {
       try {
         const apiBase = localStorage.getItem('api_base_url') || ''
-        const res = await fetch(`${apiBase}/api/production/course-configs/status`)
-        const status = await res.json()
+        const status = await fetchJson(`${apiBase}/api/production/course-configs/status`)
         if (status.success && status.commitsAhead > 0) {
           showPushWarning.value = true
           return
@@ -407,11 +407,10 @@ async function handlePushToRemote() {
   try {
     // Get API base URL from localStorage (consistent with useExportWorkflow)
     const apiBase = localStorage.getItem('api_base_url') || ''
-    const response = await fetch(`${apiBase}/api/production/course-configs/push`, {
+    const result = await fetchJson(`${apiBase}/api/production/course-configs/push`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
     })
-    const result = await response.json()
     pushResult.value = result
   } catch (err) {
     pushResult.value = { success: false, error: (err as Error).message }
@@ -541,19 +540,19 @@ onUnmounted(() => {
 }
 
 .modal-content {
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: var(--surface);
+  border: 1px solid var(--line);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .modal-header {
-  background: linear-gradient(180deg, #334155 0%, transparent 100%);
-  border-bottom-color: #334155;
+  background: linear-gradient(180deg, var(--surface-2) 0%, transparent 100%);
+  border-bottom-color: var(--line);
 }
 
 .modal-footer {
-  background: #1e293b;
-  border-top-color: #334155;
+  background: var(--surface);
+  border-top-color: var(--line);
 }
 
 /* Spinner */
@@ -592,5 +591,36 @@ onUnmounted(() => {
 /* Step panel */
 .step-panel {
   min-height: 200px;
+}
+
+/*
+ * Light-mode status-color overrides.
+ * The error/amber boxes use dark-tuned Tailwind classes (red-900/30, amber-900/40,
+ * text-red-400, text-amber-400) that have far-too-low contrast on light surfaces.
+ * These overrides are scoped to [data-theme="light"] only, so dark mode is untouched.
+ * Hues are kept in the same family (red / amber) and meet WCAG AA on light bg.
+ */
+:global([data-theme="light"]) .error-box {
+  background: #fef2f2; /* red-50 */
+  border-color: #fca5a5; /* red-300 — ~3:1 vs white */
+}
+:global([data-theme="light"]) .error-box-text {
+  color: #b91c1c; /* red-700 on red-50 ≈ 6.6:1 */
+}
+
+:global([data-theme="light"]) .amber-box {
+  background: #fffbeb; /* amber-50 */
+  border-color: #d97706; /* amber-600 */
+}
+:global([data-theme="light"]) .push-warn {
+  background: #fef3c7; /* amber-100 */
+  border-top-color: #d97706; /* amber-600 */
+}
+:global([data-theme="light"]) .amber-text {
+  color: #92400e; /* amber-800 — ≈ 7:1 on amber-50/100 */
+}
+:global([data-theme="light"]) .amber-text-dim {
+  color: #b45309; /* amber-700 — ≈ 4.8:1 on amber-50 */
+  opacity: 1;
 }
 </style>

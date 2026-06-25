@@ -92,8 +92,8 @@ function beginSession() {
 }
 
 .role-setup-card {
-  background: linear-gradient(135deg, var(--color-shadow, #1e293b), var(--color-slate, #334155));
-  border: 2px solid var(--color-graphite, #475569);
+  background: linear-gradient(135deg, var(--color-shadow, var(--surface)), var(--color-slate, var(--surface-2)));
+  border: 2px solid var(--color-graphite, var(--surface-3));
   border-radius: 16px;
   padding: 2.5rem;
 }
@@ -102,7 +102,7 @@ function beginSession() {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0 0 2rem 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -116,12 +116,12 @@ function beginSession() {
 
 .course-label {
   font-size: 1rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .course-name {
   font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
 }
 
 .selection-label {
@@ -129,7 +129,7 @@ function beginSession() {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
@@ -144,8 +144,8 @@ function beginSession() {
 }
 
 .role-option {
-  background: var(--color-void, #0f172a);
-  border: 2px solid var(--color-graphite, #475569);
+  background: var(--color-void, var(--canvas));
+  border: 2px solid var(--color-graphite, var(--surface-3));
   border-radius: 12px;
   padding: 1.5rem;
   cursor: pointer;
@@ -154,13 +154,13 @@ function beginSession() {
 }
 
 .role-option:hover {
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(255, 166, 48, 0.3);
 }
 
 .role-option.selected {
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
   background: linear-gradient(135deg, rgba(255, 166, 48, 0.15), transparent);
   box-shadow: 0 0 30px rgba(255, 166, 48, 0.3);
 }
@@ -169,7 +169,7 @@ function beginSession() {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.25rem;
@@ -177,14 +177,14 @@ function beginSession() {
 
 .role-language {
   font-size: 1.2rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin-bottom: 1rem;
 }
 
 .role-radio {
   width: 24px;
   height: 24px;
-  border: 3px solid var(--color-graphite, #475569);
+  border: 3px solid var(--color-graphite, var(--surface-3));
   border-radius: 50%;
   margin: 0 auto;
   display: flex;
@@ -194,8 +194,8 @@ function beginSession() {
 }
 
 .role-option.selected .role-radio {
-  border-color: var(--color-tungsten, #ffa630);
-  background: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
+  background: var(--color-tungsten, var(--accent));
   box-shadow: 0 0 16px rgba(255, 166, 48, 0.6);
 }
 
@@ -203,12 +203,12 @@ function beginSession() {
   content: '';
   width: 8px;
   height: 8px;
-  background: var(--color-void, #0f172a);
+  background: var(--color-void, var(--canvas));
   border-radius: 50%;
 }
 
 .session-summary {
-  background: var(--color-void, #0f172a);
+  background: var(--color-void, var(--canvas));
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 2rem;
@@ -217,7 +217,7 @@ function beginSession() {
 
 .summary-line {
   font-size: 1rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin-bottom: 0.5rem;
 }
 
@@ -234,7 +234,7 @@ function beginSession() {
   width: 100%;
   background: linear-gradient(135deg, var(--color-film-red, #e63946), #c4313d);
   border: 2px solid var(--color-film-red, #e63946);
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   padding: 1rem 2rem;
   border-radius: 12px;
   font-family: 'Josefin Sans', sans-serif;
@@ -255,6 +255,13 @@ function beginSession() {
 .begin-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+/* In light mode --ink flips to near-black, which would put dark text on the
+   saturated red CTA (muddy, ~4.3:1). Keep the button label light, as it is in
+   dark mode, for a crisp white-on-red CTA. Scoped so dark mode is untouched. */
+:root[data-theme="light"] .begin-btn {
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {

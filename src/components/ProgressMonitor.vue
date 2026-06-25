@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-6">
-    <h3 class="text-xl font-semibold text-slate-100 mb-4">Progress Monitor</h3>
+  <div class="progress-monitor bg-surface/50 rounded-lg border border-line/20 p-6">
+    <h3 class="text-xl font-semibold text-ink mb-4">Progress Monitor</h3>
 
     <!-- Execution Mode Badge -->
     <div class="mb-4">
@@ -23,11 +23,11 @@
           <div class="text-emerald-400 animate-pulse text-xl">●</div>
           <div>
             <div class="text-lg font-semibold text-emerald-400">{{ getPhaseTitle(liveProgress.currentPhase) }}</div>
-            <div class="text-xs text-slate-400">Started {{ formatRelativeTime(liveProgress.startTime) }}</div>
+            <div class="text-xs text-muted">Started {{ formatRelativeTime(liveProgress.startTime) }}</div>
           </div>
         </div>
         <div v-if="currentPhaseData && currentPhaseData.eta" class="text-right">
-          <div class="text-xs text-slate-400">ETA</div>
+          <div class="text-xs text-muted">ETA</div>
           <div class="text-sm font-medium text-emerald-400">{{ currentPhaseData.etaHuman }}</div>
         </div>
       </div>
@@ -36,15 +36,15 @@
       <div v-if="currentPhaseData && (currentPhaseData.seedsTotal || currentPhaseData.legosTotal)" class="mb-3">
         <div class="flex items-center justify-between text-xs mb-1">
           <!-- Legacy Phase 5 (now Phase 3): Show LEGOs and seeds -->
-          <span v-if="liveProgress.currentPhase === 5 && currentPhaseData.legosTotal" class="text-slate-300">
+          <span v-if="liveProgress.currentPhase === 5 && currentPhaseData.legosTotal" class="text-ink">
             {{ currentPhaseData.legosCompleted || 0 }} / {{ currentPhaseData.legosTotal }} LEGOs
-            <span class="text-slate-500 ml-2">({{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds)</span>
+            <span class="text-faint ml-2">({{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds)</span>
           </span>
           <!-- Other phases: Show agent breakdown or seeds -->
-          <span v-else-if="currentPhaseData.agentCount" class="text-slate-300">
+          <span v-else-if="currentPhaseData.agentCount" class="text-ink">
             {{ currentPhaseData.agentCount }} agents × {{ currentPhaseData.seedsPerAgent }} seeds/agent
           </span>
-          <span v-else class="text-slate-300">{{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds</span>
+          <span v-else class="text-ink">{{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds</span>
 
           <!-- Percentage: Use LEGOs for Phase 5, seeds for others -->
           <span class="text-emerald-400 font-medium">
@@ -54,7 +54,7 @@
             }}%
           </span>
         </div>
-        <div class="w-full bg-slate-700 rounded-full h-2.5">
+        <div class="w-full bg-surface-2 rounded-full h-2.5">
           <div
             class="bg-emerald-500 h-2.5 rounded-full transition-all duration-500"
             :style="{ width: `${
@@ -67,10 +67,10 @@
       </div>
 
       <!-- Recent Activity -->
-      <div v-if="liveProgress.recentLogs && liveProgress.recentLogs.length > 0" class="bg-slate-900/50 rounded p-2 max-h-32 overflow-y-auto">
-        <div class="text-xs font-medium text-slate-400 mb-1.5">Recent Activity</div>
-        <div v-for="(log, i) in liveProgress.recentLogs.slice(0, 5)" :key="i" class="text-xs text-slate-300 py-0.5">
-          <span class="text-slate-500">{{ formatTime(log.time) }}</span>
+      <div v-if="liveProgress.recentLogs && liveProgress.recentLogs.length > 0" class="bg-canvas/50 rounded p-2 max-h-32 overflow-y-auto">
+        <div class="text-xs font-medium text-muted mb-1.5">Recent Activity</div>
+        <div v-for="(log, i) in liveProgress.recentLogs.slice(0, 5)" :key="i" class="text-xs text-ink py-0.5">
+          <span class="text-faint">{{ formatTime(log.time) }}</span>
           <span class="mx-1">•</span>
           <span>{{ log.message }}</span>
         </div>
@@ -78,7 +78,7 @@
     </div>
 
     <!-- Simple status message when not running -->
-    <div v-else class="text-center py-8 text-slate-400">
+    <div v-else class="text-center py-8 text-muted">
       <div class="text-sm">No active pipeline running</div>
       <div class="text-xs mt-2">Start a course generation to see live progress</div>
     </div>
@@ -175,3 +175,55 @@ onUnmounted(() => {
   if (interval) clearInterval(interval)
 })
 </script>
+
+<style scoped>
+/* Light-mode only: dark mode is untouched (no rules outside this selector). */
+
+/* Card separation: faint border/half-opacity surface vanish on slate canvas.
+   Give the card a solid white surface, a visible --line border and a subtle shadow. */
+:root[data-theme="light"] .progress-monitor {
+  background-color: var(--surface);
+  border-color: var(--line);
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.06), 0 1px 2px rgb(15 23 42 / 0.04);
+}
+
+/* Emerald accents (phase title / ETA / percentage / live dot):
+   emerald-400 #34d399 on white ≈ 1.6:1. Use emerald-700 #047857 ≈ 4.95:1. */
+:root[data-theme="light"] .progress-monitor :deep(.text-emerald-400) {
+  color: #047857;
+}
+/* Progress fill + live gradient panel: keep emerald hue but ensure the fill
+   and the tinted live panel read against white. */
+:root[data-theme="light"] .progress-monitor :deep(.bg-emerald-500) {
+  background-color: #059669;
+}
+:root[data-theme="light"] .progress-monitor :deep(.border-emerald-500\/30),
+:root[data-theme="light"] .progress-monitor :deep(.border-emerald-500\/50) {
+  border-color: #059669;
+}
+
+/* Execution-mode pill (web=emerald, local=blue, hybrid=purple):
+   *-400 text on a *-500/20 fill is washed out on white. Darken text to AA
+   and give the fill a touch more saturation while keeping the hue family. */
+:root[data-theme="light"] .progress-monitor :deep(.text-blue-400) {
+  color: #1d4ed8; /* blue-700 ≈ 5.2:1 on white */
+}
+:root[data-theme="light"] .progress-monitor :deep(.text-purple-400) {
+  color: #7e22ce; /* purple-700 ≈ 5.0:1 on white */
+}
+:root[data-theme="light"] .progress-monitor :deep(.bg-emerald-500\/20) {
+  background-color: rgb(16 185 129 / 0.14);
+}
+:root[data-theme="light"] .progress-monitor :deep(.bg-blue-500\/20) {
+  background-color: rgb(59 130 246 / 0.14);
+}
+:root[data-theme="light"] .progress-monitor :deep(.bg-purple-500\/20) {
+  background-color: rgb(168 85 247 / 0.14);
+}
+:root[data-theme="light"] .progress-monitor :deep(.border-blue-500\/50) {
+  border-color: #2563eb;
+}
+:root[data-theme="light"] .progress-monitor :deep(.border-purple-500\/50) {
+  border-color: #9333ea;
+}
+</style>

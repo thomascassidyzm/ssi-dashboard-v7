@@ -213,28 +213,10 @@ export const useProductionStore = defineStore('production', () => {
     }
   })
 
-  // Computed: blockers (uses NEW audio_flags system)
-  const blockers = computed(() => {
-    const blockersArray = []
-    const flags = audioFlags.value.flags || []
-    const stats = audioFlags.value.stats || {}
-
-    // Count audio flagged for regeneration (from new audio_flags table)
-    const flaggedCount = stats.flagged || flags.filter(f => f.status === 'flagged').length
-    if (flaggedCount > 0) {
-      blockersArray.push({
-        id: 'audio_flagged',
-        severity: 'medium',
-        icon: '👀',
-        count: flaggedCount,
-        message: `${flaggedCount} audio files flagged for review`,
-        suggestedAction: 'Review in Script Viewer',
-        action: 'reviewFlaggedAudio'
-      })
-    }
-
-    return blockersArray
-  })
+  // Blockers retired with the audio-flag model (2026-06-19): problems are now
+  // fixed in place in Script View, and missing audio is resolved by generating,
+  // not flagging. Kept as an empty list so existing consumers stay valid.
+  const blockers = computed(() => [])
 
   // Computed: pipeline stages (uses NEW audio_flags system)
   const pipelineStagesComputed = computed(() => {

@@ -446,36 +446,6 @@ async function upsertCourseAudio({
 }
 
 /**
- * Get all audio for a course
- *
- * @param {string} courseCode
- * @param {Object} filters - Optional filters
- * @param {string} filters.role - Filter by role
- * @param {string} filters.language - Filter by language
- * @returns {Promise<Array>}
- */
-async function getCourseAudioList(courseCode, filters = {}) {
-  if (!supabase) throw new Error('Supabase not initialized')
-
-  let query = supabase
-    .from('course_audio')
-    .select('*')
-    .eq('course_code', courseCode)
-
-  if (filters.role) {
-    query = query.eq('role', filters.role)
-  }
-  if (filters.language) {
-    query = query.eq('language', filters.language)
-  }
-
-  const { data, error } = await query.order('created_at')
-
-  if (error) throw error
-  return data || []
-}
-
-/**
  * Get audio inventory summary for a course
  *
  * @param {string} courseCode
@@ -1928,7 +1898,6 @@ module.exports = {
   findCourseAudio,
   insertCourseAudio,
   upsertCourseAudio,
-  getCourseAudioList,
   getCourseAudioSummary,
   getMissingAudio,
   batchCheckCourseAudio,

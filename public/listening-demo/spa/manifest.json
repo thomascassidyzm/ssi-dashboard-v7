@@ -1,0 +1,151 @@
+{
+  "sentence": "Muy bien, gracias. ¿Vas al trabajo?",
+  "knownText": "I'm very well, thank you. Are you going to work?",
+  "course": "spa_for_eng",
+  "pod": "pod-0",
+  "globalOrder": 3,
+  "castVoice": "yis75yfp",
+  "castProvider": "xai",
+  "knownVoice": "en-GB-SoniaNeural",
+  "atomSource": "file2-slice",
+  "intentions": [
+    {
+      "text": "Muy bien, gracias.",
+      "gloss": "I'm very well, thank you",
+      "atoms": [
+        {
+          "target": "Muy bien",
+          "gloss": "I'm very well"
+        },
+        {
+          "target": "gracias",
+          "gloss": "thank you"
+        }
+      ]
+    },
+    {
+      "text": "¿Vas al trabajo?",
+      "gloss": "are you going to work",
+      "atoms": [
+        {
+          "target": "¿Vas",
+          "gloss": "are you going"
+        },
+        {
+          "target": "al trabajo",
+          "gloss": "to work"
+        }
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "id": "atom-0",
+      "role": "atom",
+      "intentionIndex": 0,
+      "atomIndex": 0,
+      "text": "Muy bien",
+      "durationMs": 960,
+      "file": "atom-0-muy-bien.mp3"
+    },
+    {
+      "id": "atom-1",
+      "role": "atom",
+      "intentionIndex": 0,
+      "atomIndex": 1,
+      "text": "gracias",
+      "durationMs": 960,
+      "file": "atom-1-gracias.mp3"
+    },
+    {
+      "id": "atom-2",
+      "role": "atom",
+      "intentionIndex": 1,
+      "atomIndex": 2,
+      "text": "¿Vas",
+      "durationMs": 720,
+      "file": "atom-2-vas.mp3"
+    },
+    {
+      "id": "atom-3",
+      "role": "atom",
+      "intentionIndex": 1,
+      "atomIndex": 3,
+      "text": "al trabajo",
+      "durationMs": 1080,
+      "file": "atom-3-al-trabajo.mp3"
+    },
+    {
+      "id": "intention-take-0",
+      "role": "intentionTake",
+      "intentionIndex": 0,
+      "atomIndex": null,
+      "text": "Muy bien, gracias.",
+      "durationMs": 1224,
+      "file": "take-int0.mp3"
+    },
+    {
+      "id": "intention-take-1",
+      "role": "intentionTake",
+      "intentionIndex": 1,
+      "atomIndex": null,
+      "text": "¿Vas al trabajo?",
+      "durationMs": 864,
+      "file": "take-int1.mp3"
+    },
+    {
+      "id": "atom-gloss-0",
+      "role": "atomGloss",
+      "intentionIndex": 0,
+      "atomIndex": 0,
+      "text": "I'm very well",
+      "durationMs": 1032,
+      "file": "gloss-atom-0.mp3"
+    },
+    {
+      "id": "atom-gloss-1",
+      "role": "atomGloss",
+      "intentionIndex": 0,
+      "atomIndex": 1,
+      "text": "thank you",
+      "durationMs": 720,
+      "file": "gloss-atom-1.mp3"
+    },
+    {
+      "id": "atom-gloss-2",
+      "role": "atomGloss",
+      "intentionIndex": 1,
+      "atomIndex": 2,
+      "text": "are you going",
+      "durationMs": 840,
+      "file": "gloss-atom-2.mp3"
+    },
+    {
+      "id": "atom-gloss-3",
+      "role": "atomGloss",
+      "intentionIndex": 1,
+      "atomIndex": 3,
+      "text": "to work",
+      "durationMs": 696,
+      "file": "gloss-atom-3.mp3"
+    },
+    {
+      "id": "intention-gloss-0",
+      "role": "intentionGloss",
+      "intentionIndex": 0,
+      "atomIndex": null,
+      "text": "I'm very well, thank you",
+      "durationMs": 1848,
+      "file": "gloss-int0.mp3"
+    },
+    {
+      "id": "intention-gloss-1",
+      "role": "intentionGloss",
+      "intentionIndex": 1,
+      "atomIndex": null,
+      "text": "are you going to work",
+      "durationMs": 1224,
+      "file": "gloss-int1.mp3"
+    }
+  ]
+}

@@ -214,6 +214,14 @@ import RecordingControls from './recording/RecordingControls.vue'
 import RecordingStatus from './recording/RecordingStatus.vue'
 import SessionReview from './review/SessionReview.vue'
 
+// Recording identity, threaded in by the Record Room shell. Left at defaults
+// when mounted from the production console (/production/:courseCode/recording),
+// where the session falls back to the explicit target1 default.
+const props = defineProps({
+  recordSlot: { type: String, default: null }, // 'known' | 'target1' | 'target2' | 'presentation'
+  voiceId: { type: String, default: null }     // human voice id from courses.voice_config
+})
+
 const route = useRoute()
 
 // Use shared autocue state
@@ -224,6 +232,7 @@ const {
   completionPercent,
   sessionInfo,
   formattedTime,
+  setRecordingIdentity,
   selectMode,
   beginSession,
   beginContinuousSession,
@@ -270,18 +279,26 @@ continuousRecorder.onSegmentCaptured((segment) => {
   // Store in state
   onSegmentCaptured(segment, itemIndex)
 
-  // Queue background upload
+  // Queue background upload — script-mode takes carry the script's identity
+  // (seedNumber/legoId/text); the server mints the audio uuid per take.
   uploadQueue.queueUpload({
     blob: segment.blob,
     courseCode: state.courseCode,
-    uuid: phrase.id,
+    uuid: null,
     metadata: {
-      role: 'target1',
+      mode: 'script',
+      role: state.selectedRole || 'target1',
+      voiceId: state.voiceId || null,
       cadence: phrase.cadence,
       text: phrase.text,
       type: phrase.type,
       phraseIndex: phrase.phraseIndex,
+      seedNumber: phrase.seedNumber ?? null,
+      legoId: phrase.legoId || null,
       coversLegos: phrase.coversLegos,
+      // Pipe-delimited pause map — the aligner's required input; persisted
+      // server-side with the take so slow passes stay alignable.
+      chunksString: phrase.chunksString || null,
       scriptSessionId: state.scriptSessionId
     },
     provenance: {
@@ -372,6 +389,10 @@ function handleKeydown(e) {
 onMounted(() => {
   document.addEventListener('keydown', handleKeydown)
 
+  // Bind (or clear) the session's voice-slot identity on every mount so a
+  // Record Room session never leaks into a production-console session.
+  setRecordingIdentity({ role: props.recordSlot, voiceId: props.voiceId })
+
   // Load course data if available from route
   const courseCode = route.params.courseCode
   if (courseCode) {
@@ -392,20 +413,33 @@ onUnmounted(() => {
 <style scoped>
 .autocue-studio {
   min-height: 100vh;
-  background: var(--color-void, #0f172a);
+  background: var(--color-void, var(--canvas));
   padding: 2rem;
   position: relative;
 
   /* CSS Variables for the cinematic theme */
-  --color-void: #0f172a;
-  --color-shadow: #1e293b;
-  --color-slate: #334155;
-  --color-graphite: #475569;
+  --color-void: var(--canvas);
+  --color-shadow: var(--surface);
+  --color-slate: var(--surface-2);
+  --color-graphite: var(--surface-3);
   --color-film-red: #e63946;
-  --color-tungsten: #ffa630;
+  --color-tungsten: var(--accent);
   --color-emerald: #06ffa5;
-  --color-paper: #f7f7f2;
-  --color-paper-dim: #c1c1bb;
+  --color-paper: var(--ink);
+  --color-paper-dim: var(--muted);
+}
+
+/*
+ * Light-mode legibility: the cinematic palette uses two hardcoded neon
+ * literals (emerald #06ffa5, film-red #e63946) that are unreadable on the
+ * light canvas/surface, and remaps borders to --surface-3 (too faint on
+ * white). Re-point these to the theme's accent-2/danger/line ONLY in light
+ * mode so dark mode keeps its neon identity untouched.
+ */
+:root[data-theme="light"] .autocue-studio {
+  --color-emerald: var(--accent-2);
+  --color-film-red: var(--danger);
+  --color-graphite: var(--line);
 }
 
 /* Film grain overlay */

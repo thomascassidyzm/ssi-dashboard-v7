@@ -80,8 +80,8 @@ onMounted(() => {
 <style scoped>
 .teleprompter-viewport {
   position: relative;
-  background: var(--color-void, #0f172a);
-  border: 3px solid var(--color-graphite, #475569);
+  background: var(--color-void, var(--canvas));
+  border: 3px solid var(--color-graphite, var(--surface-3));
   border-radius: 20px;
   padding: 2rem;
   height: 500px;
@@ -90,11 +90,28 @@ onMounted(() => {
   transition: all 0.3s ease;
 }
 
+/* Light mode: the heavy black inset vignette reads as a muddy stain on a
+   light canvas, and surface-3 borders are near-invisible (~1.05:1 on canvas).
+   Use a readable --line border + a soft neutral inset for crisp separation.
+   Scoped so dark mode is untouched. */
+:root[data-theme="light"] .teleprompter-viewport {
+  border-color: var(--line);
+  box-shadow: inset 0 0 30px rgba(15, 23, 42, 0.06);
+}
+
 .teleprompter-viewport.recording {
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
   box-shadow:
     inset 0 0 60px rgba(0, 0, 0, 0.8),
     0 0 40px rgba(255, 166, 48, 0.3);
+}
+
+/* Light mode recording: keep the orange glow (hue identity) but swap the
+   muddy black inset for a soft neutral one. Scoped — dark untouched. */
+:root[data-theme="light"] .teleprompter-viewport.recording {
+  box-shadow:
+    inset 0 0 30px rgba(15, 23, 42, 0.06),
+    0 0 40px rgba(168, 85, 8, 0.28);
 }
 
 /* Recording indicator bar */
@@ -105,7 +122,7 @@ onMounted(() => {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, transparent, var(--color-tungsten, #ffa630), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-tungsten, var(--accent)), transparent);
   animation: shimmer 3s linear infinite;
   z-index: 10;
 }
@@ -136,11 +153,11 @@ onMounted(() => {
 
 .gradient-top {
   top: 0;
-  background: linear-gradient(to bottom, var(--color-void, #0f172a), transparent);
+  background: linear-gradient(to bottom, var(--color-void, var(--canvas)), transparent);
 }
 
 .gradient-bottom {
   bottom: 0;
-  background: linear-gradient(to top, var(--color-void, #0f172a), transparent);
+  background: linear-gradient(to top, var(--color-void, var(--canvas)), transparent);
 }
 </style>

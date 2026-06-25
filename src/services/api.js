@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getCachedCourse, setCachedCourse, clearCourseCache, isCacheValid, clearAllCache, getCacheStats, cleanupExpiredCache } from './courseCache.js'
 import { getStorageConfig, STORAGE_CONFIG } from '../config/storage.js'
-import { isConfigured as isSupabaseConfigured, getAllCourses } from './supabase.js'
+import { supabase, isConfigured as isSupabaseConfigured, getAllCourses } from './supabase.js'
 
 // Build version for cache busting (set by Vite at build time)
 export const BUILD_VERSION = typeof __GIT_COMMIT__ !== 'undefined' ? __GIT_COMMIT__ : 'dev'
@@ -58,6 +58,33 @@ function getProductionApiUrl() {
 // Export for direct access
 export { getProductionApiUrl, getApiBaseUrl }
 
+/**
+ * fetch + guard + parse JSON in one call. Throws a CLEAN Error on a non-OK or
+ * non-JSON response, instead of the cryptic "Unexpected token '<'" you get when
+ * an HTML error page or SPA-404 (`<!doctype …>`) is fed straight to res.json().
+ * Pass a full URL (build it with getApiUrl() for API calls, or a /vfs/… path for
+ * static files) — this helper does NOT prefix anything.
+ */
+export async function fetchJson(url, init = {}) {
+  const res = await fetch(url, {
+    ...init,
+    headers: { 'ngrok-skip-browser-warning': 'true', ...(init.headers || {}) },
+  })
+  const ct = res.headers.get('content-type') || ''
+  if (!res.ok) {
+    let msg = `HTTP ${res.status}`
+    try {
+      const body = ct.includes('json') ? await res.json() : await res.text()
+      msg = (body && body.error) || (typeof body === 'string' && body.slice(0, 200)) || msg
+    } catch { /* keep HTTP status */ }
+    throw new Error(msg)
+  }
+  if (!ct.includes('json')) {
+    throw new Error(`Expected JSON but got ${ct || 'unknown content'} (HTTP ${res.status}) — is the API/file reachable?`)
+  }
+  return res.json()
+}
+
 const API_BASE_URL = getApiBaseUrl()
 
 const api = axios.create({
@@ -83,6 +110,24 @@ api.interceptors.request.use(config => {
   // Add build version to all requests for cache busting
   config.params = config.params || {}
   config.params._v = BUILD_VERSION
+  return config
+})
+
+// Attach the dashboard session token — course-scoped API routes are
+// auth-gated server-side. Calls that set their own header pass through
+// unchanged. (Raw fetch() calls get the same treatment centrally via
+// services/authFetch.js, installed in main.js.)
+api.interceptors.request.use(async config => {
+  try {
+    if (supabase && !config.headers?.Authorization) {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (session?.access_token) {
+        config.headers.Authorization = `Bearer ${session.access_token}`
+      }
+    }
+  } catch {
+    // Never block a request over auth decoration
+  }
   return config
 })
 

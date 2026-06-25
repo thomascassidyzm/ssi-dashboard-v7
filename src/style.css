@@ -16,29 +16,74 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Cinematic Dark Palette - Production Suite (Harmonized with Tailwind Slate) */
-  --color-void: #0f172a;      /* slate-900 - Main background */
-  --color-shadow: #1e293b;    /* slate-800 - Elevated surfaces */
-  --color-slate: #334155;     /* slate-700 - Cards & panels */
-  --color-graphite: #475569;  /* slate-600 - Borders & dividers */
+  /* Legacy "cinematic" palette — now ALIASES the semantic theme tokens (defined below) so any
+     component using var(--color-*) re-themes automatically. Dark values are unchanged; light
+     values flow from [data-theme="light"]. Resolution is at use-time, so order doesn't matter. */
+  --color-void: var(--canvas);      /* was slate-900 - Main background */
+  --color-shadow: var(--surface);   /* was slate-800 - Elevated surfaces */
+  --color-slate: var(--surface-2);  /* was slate-700 - Cards & panels */
+  --color-graphite: var(--surface-3); /* was slate-600 - Borders & dividers */
 
-  --color-film-red: #e63946;
-  --color-tungsten: #ffa630;
-  --color-emerald: #06ffa5;
+  --color-film-red: var(--danger);
+  --color-tungsten: var(--accent);
+  --color-emerald: var(--accent-2);
 
-  --color-paper: #f7f7f2;
-  --color-paper-dim: #c1c1bb;
+  --color-paper: var(--ink);        /* was #f7f7f2 near-white text */
+  --color-paper-dim: var(--muted);
+  --color-paper-muted: var(--faint);
 
   /* Typography */
   --font-display: 'Crimson Pro', serif;
   --font-ui: 'Josefin Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
+
+  /* ── SEMANTIC THEME TOKENS (dark = default) ──────────────────────────────
+     Tailwind utilities bg-canvas / bg-surface / text-ink / text-muted / border-line …
+     map to these (tailwind.config.js). Light values below under [data-theme="light"]. */
+  --canvas:    #0f172a;  /* slate-900  page bg            */
+  --surface:   #1e293b;  /* slate-800  cards / panels     */
+  --surface-2: #334155;  /* slate-700  raised / inputs    */
+  --surface-3: #475569;  /* slate-600  hover / active      */
+  --line:      #334155;  /* slate-700  borders            */
+  --ink:       #f1f5f9;  /* slate-100  primary text       */
+  --muted:     #94a3b8;  /* slate-400  secondary text     */
+  --faint:     #64748b;  /* slate-500  tertiary text      */
+  --accent:    #ffa630;  /* brand orange                  */
+  --accent-2:  #34d399;  /* brand green                   */
+  --success:   #34d399;
+  --danger:    #f87171;
+}
+
+/* ── LIGHT THEME ── set <html data-theme="light"> to flip. Re-tuned, not inverted:
+   white surfaces, slate-50 canvas, accents darkened for contrast on light backgrounds. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  color: #0f172a;
+  background-color: #eef2f6;
+  /* Re-tuned for crisp separation: canvas deepened off pure-white so white cards
+     pop; --line lifted to slate-300 (visible 1px frame); muted/faint darkened to
+     pass WCAG AA on BOTH white surface and the canvas; accents darkened so colored
+     text/IDs/pills stay >=4.5:1 on white while keeping their hue family. */
+  --canvas:    #eef2f6;  /* slate-100-ish, deeper than slate-50 so white cards separate */
+  --surface:   #ffffff;  /* white cards                   */
+  --surface-2: #f1f5f9;  /* slate-100 inputs              */
+  --surface-3: #e2e8f0;  /* slate-200 hover               */
+  --line:      #cbd5e1;  /* slate-300 borders (clearly visible on white & canvas) */
+  --ink:       #0f172a;  /* slate-900 primary text  (17.9:1 / 15.9:1)             */
+  --muted:     #475569;  /* slate-600 secondary text (7.6:1 / 6.7:1)              */
+  --faint:     #586573;  /* darkened slate-500 tertiary (6.0:1 / 5.3:1)           */
+  --accent:    #a85508;  /* darkened amber (5.3:1 white / 4.7:1 canvas)           */
+  --accent-2:  #047857;  /* emerald-700 (5.5:1 / 4.9:1)                           */
+  --success:   #047857;
+  --danger:    #cf1f1f;  /* deepened red so danger text clears AA on canvas too (5.4:1 / 4.8:1) */
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--canvas);
+  color: var(--ink);
 }
 
 #app {

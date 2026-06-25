@@ -109,8 +109,8 @@ function toggleSlowMode() {
 
 <style scoped>
 .autocue-display {
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 12px;
   padding: 2rem;
   display: flex;
@@ -131,7 +131,7 @@ function toggleSlowMode() {
 .context-label {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-transform: uppercase;
   letter-spacing: 0.1em;
   display: block;
@@ -141,12 +141,13 @@ function toggleSlowMode() {
 .context-text {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 1rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   margin: 0;
 }
 
 .current-phrase {
-  background: var(--color-slate, #334155);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
@@ -158,19 +159,19 @@ function toggleSlowMode() {
 }
 
 .current-phrase.slow-mode {
-  background: linear-gradient(135deg, var(--color-slate, #334155), var(--color-graphite, #475569));
+  background: linear-gradient(135deg, var(--color-slate, var(--surface-2)), var(--color-graphite, var(--surface-3)));
 }
 
 .phrase-meta {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.875rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
 .meta-item {
-  color: var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, var(--accent));
 }
 
 .meta-separator {
@@ -183,7 +184,7 @@ function toggleSlowMode() {
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.3;
-  color: var(--color-paper, #f7f7f2);
+  color: var(--color-paper, var(--ink));
   margin: 0;
 }
 
@@ -191,7 +192,8 @@ function toggleSlowMode() {
   display: inline-block;
   margin: 0 0.5rem;
   padding: 0.25rem 0.5rem;
-  background: var(--color-void, #0f172a);
+  background: var(--color-void, var(--canvas));
+  border: 1px solid var(--line);
   border-radius: 4px;
   animation: wordPulse 2s ease-in-out infinite;
 }
@@ -216,7 +218,7 @@ function toggleSlowMode() {
 .phrase-translation {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 1.25rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-style: italic;
 }
 
@@ -226,8 +228,8 @@ function toggleSlowMode() {
   justify-content: center;
   gap: 0.75rem;
   padding: 1rem;
-  background: var(--color-tungsten, #ffa630);
-  color: var(--color-void, #0f172a);
+  background: var(--color-tungsten, var(--accent));
+  color: var(--color-void, var(--canvas));
   border-radius: 6px;
   margin-top: 1rem;
 }
@@ -248,7 +250,7 @@ function toggleSlowMode() {
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-graphite, #475569);
+  border-top: 1px solid var(--color-graphite, var(--surface-3));
 }
 
 .slow-mode-toggle {
@@ -256,10 +258,10 @@ function toggleSlowMode() {
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
   border-radius: 6px;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.875rem;
   font-weight: 500;
@@ -268,14 +270,14 @@ function toggleSlowMode() {
 }
 
 .slow-mode-toggle:hover {
-  background: var(--color-graphite, #475569);
-  color: var(--color-paper, #f7f7f2);
+  background: var(--color-graphite, var(--surface-3));
+  color: var(--color-paper, var(--ink));
 }
 
 .slow-mode-toggle.active {
-  background: var(--color-tungsten, #ffa630);
-  border-color: var(--color-tungsten, #ffa630);
-  color: var(--color-void, #0f172a);
+  background: var(--color-tungsten, var(--accent));
+  border-color: var(--color-tungsten, var(--accent));
+  color: var(--color-void, var(--canvas));
 }
 
 .slow-mode-toggle .icon {
@@ -289,13 +291,14 @@ function toggleSlowMode() {
 .phrase-metadata {
   font-family: var(--font-mono, 'IBM Plex Mono', monospace);
   font-size: 0.75rem;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
   opacity: 0.5;
 }
 
 .uuid-display {
   padding: 0.25rem 0.5rem;
-  background: var(--color-void, #0f172a);
+  background: var(--color-void, var(--canvas));
+  border: 1px solid var(--line);
   border-radius: 4px;
 }
 

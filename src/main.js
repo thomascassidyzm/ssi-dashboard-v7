@@ -3,6 +3,17 @@ import { createPinia } from 'pinia'
 import './style.css'
 import App from './App.vue'
 import router from './router'
+import { installAuthFetch } from './services/authFetch'
+
+// Attach the dashboard session token to all API-bound fetch() calls —
+// course-scoped routes are auth-gated server-side. Must install before
+// any component fires its first request.
+installAuthFetch()
+
+// Apply the saved light/dark theme before mount (dark is the default = no attribute).
+try {
+  if (localStorage.getItem('popty-theme') === 'light') document.documentElement.dataset.theme = 'light'
+} catch { /* private mode — stay on default dark */ }
 
 const pinia = createPinia()
 const app = createApp(App)

@@ -616,15 +616,304 @@ function formatDecompositionPatterns(goldenSeeds) {
   return lines.join('\n');
 }
 
+// ─── Phrase-level ZUT (production-direction uniqueness) ─────────────────
+// The LEGO-level checkLegoConflict enforces one-known→one-target for LEGOs,
+// but practice PHRASES had no such gate — so a decomposition could gloss
+// "I think" as 我觉得 in one seed and 我想 in another. That is a ZUT
+// violation: the learner, prompted with one English thought, cannot know
+// which target to produce. This checks each submitted phrase's known→target
+// against the existing course (prior seeds). Punctuation/whitespace is
+// normalised away (你准备好了吗？ vs 你准备好了吗 = same spoken answer, NOT a
+// collision); only a genuinely different target for the same English collides.
+// Resolution (the builder must do one): CONSOLIDATE to the existing target, or
+// DIFFERENTIATE the English prompt so each maps uniquely.
+async function checkPhraseZUT(supabase, courseCode, phrases, currentSeedNumber = null) {
+  const nk = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
+  const nt = s => (s || '').replace(/[\s。，？！、.?!,]/g, '');
+  const subByKnown = new Map(); // normKnown -> { known, target, normTarget }
+  const rawKnowns = [];
+  for (const p of phrases || []) {
+    if (!p.known || !p.target) continue;
+    const k = nk(p.known);
+    if (!subByKnown.has(k)) { subByKnown.set(k, { known: p.known, target: p.target, normTarget: nt(p.target) }); rawKnowns.push(p.known); }
+  }
+  if (!rawKnowns.length) return [];
+
+  const fetch = async (table) => {
+    let q = supabase.from(table).select('known_text, target_text, seed_number').eq('course_code', courseCode).in('known_text', [...new Set(rawKnowns)]);
+    if (currentSeedNumber !== null) q = q.lt('seed_number', currentSeedNumber);
+    const { data } = await q;
+    return data || [];
+  };
+  const existing = [...(await fetch('course_practice_phrases')), ...(await fetch('course_legos'))];
+
+  const collisions = [], seen = new Set();
+  for (const e of existing) {
+    const sub = subByKnown.get(nk(e.known_text));
+    if (!sub) continue;
+    if (nt(e.target_text) !== sub.normTarget) {
+      const key = `${nk(e.known_text)}|${nt(e.target_text)}`;
+      if (seen.has(key)) continue; seen.add(key);
+      collisions.push({ known: sub.known, new_target: sub.target, existing_target: e.target_text, existing_seed: e.seed_number });
+    }
+  }
+  return collisions;
+}
+
+// ─── Frame coverage (7th principle) — WARN-ONLY ────────────────────────
+// "Vary along the axis that carries the new distinction." A USE basket whose
+// phrases differ only by the filler of one slot (pronoun swaps, topic swaps)
+// spends production cycles where the learner gains no new pattern. BUILD may
+// repeat frames (chunk automatization); USE must buy new frames — USE phrases
+// are eternal spaced-repetition stock.
+// Signature = phrase with the LEGO slotted out (◇) and pronouns collapsed (Ⓟ),
+// so subject swaps count as ONE pattern. Non-blocking by design: the metric
+// has known false positives (e.g. a negator like 没 legitimately varies verbs
+// = "lexical" variety IS its axis), so a human/agent adjudicates warnings.
+// KNOWN LIMITATION: catches pronoun paradigms and literal repeats, but NOT
+// topic-swaps ([X]很有用 ×N — unique signatures, one frame). Those need the
+// language-aware frame-family analysis in tools/audit-frame-diversity.cjs,
+// run per-course as an audit, not per-submission here.
+const FRAME_PRONOUNS_CJK = ['我们', '你们', '他们', '她们', '大家', '我', '你', '他', '她', '它'];
+// Latin-script subject/clitic pronouns across the major _for_eng target families, so the
+// frame lens collapses subject-swaps in space-separated languages too (was CJK-only, which
+// is why frame-coverage read 0 on French). Union is safe — pronoun collisions across langs
+// are harmless for a frame signature.
+const FRAME_PRONOUNS_LATIN = new Set([
+  'je', 'j', 'tu', 'il', 'elle', 'on', 'nous', 'vous', 'ils', 'elles', 'me', 'te', 'se',          // fr
+  'yo', 'tú', 'él', 'ella', 'usted', 'nosotros', 'nosotras', 'vosotros', 'vosotras', 'ellos', 'ellas', 'ustedes', // es
+  'io', 'lui', 'lei', 'noi', 'voi', 'loro',                                                         // it
+  'eu', 'você', 'voce', 'ele', 'ela', 'nós', 'nos', 'eles', 'elas',                                 // pt
+  'ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr',                                                     // de
+  'i', 'you', 'he', 'she', 'we', 'they', 'it',                                                      // en
+]);
+const FRAME_CJK_RE = /[㐀-鿿぀-ヿ가-힯]/;
+
+function phraseFrameSignature(target, legoTarget) {
+  const t = target || '', lg = legoTarget || '';
+  if (FRAME_CJK_RE.test(t)) {
+    // char-based (CJK): strip spaces, slot out the LEGO, collapse pronoun chars (original behaviour)
+    let s = t.replace(/[？。，！、?!,.\s]/g, '');
+    const lego = lg.replace(/[？。，！、?!,.\s]/g, '');
+    const i = s.indexOf(lego);
+    if (i === -1) return null;
+    s = s.slice(0, i) + '◇' + s.slice(i + lego.length);
+    for (const p of FRAME_PRONOUNS_CJK) s = s.split(p).join('Ⓟ');
+    return s;
+  }
+  // space-separated (latin etc.): token-based — slot out the LEGO token-span, collapse pronoun WORDS
+  const norm = x => x.toLowerCase().replace(/[.,!?;:'"¿¡()«»]/g, '').trim();
+  const toks = t.split(/\s+/).map(norm).filter(Boolean);
+  const ltoks = lg.split(/\s+/).map(norm).filter(Boolean);
+  if (!ltoks.length) return null;
+  let idx = -1;
+  for (let i = 0; i + ltoks.length <= toks.length; i++) { if (ltoks.every((w, j) => toks[i + j] === w)) { idx = i; break; } }
+  if (idx === -1) return null;
+  const out = [...toks.slice(0, idx), '◇', ...toks.slice(idx + ltoks.length)]
+    .map(w => (w === '◇' ? '◇' : (FRAME_PRONOUNS_LATIN.has(w) ? 'Ⓟ' : w)));
+  return out.join('·');
+}
+
+function checkBasketFrameCoverage(phrases, legoTarget) {
+  const use = (phrases || []).filter(p => {
+    const r = p.role || p.phrase_role;
+    return !r || r === 'use';
+  });
+  if (use.length < 3) return [];
+
+  const stripT = s => (s || '').replace(/[？。，！、?!,.\s]/g, '');
+  // Count DISTINCT TARGETS per signature, not raw phrases — so CONVERGENCE PAIRS
+  // (same target, different English prompt = deliberate many-known→one-target
+  // teaching) collapse to one and can't read as monotony, while real pronoun/
+  // topic swaps (different targets sharing a collapsed signature) still flag.
+  const sigTargets = new Map();
+  for (const p of use) {
+    const sig = phraseFrameSignature(p.target, legoTarget);
+    if (sig == null) continue;
+    if (!sigTargets.has(sig)) sigTargets.set(sig, new Set());
+    sigTargets.get(sig).add(stripT(p.target));
+  }
+  const distinctTotal = [...sigTargets.values()].reduce((a, s) => a + s.size, 0);
+  if (!distinctTotal) return [];
+
+  let nakedSwaps = 0;
+  const warnings = [];
+  for (const [sig, targets] of sigTargets) {
+    const count = targets.size;
+    if (/^Ⓟ*◇Ⓟ*$/.test(sig.replace(/·/g, ''))) nakedSwaps += count;
+    if (count >= 3) {
+      warnings.push({
+        code: 'repeated_frame',
+        detail: `${count} distinct USE phrases share one plug-in pattern "${sig}" — vary the frame (question/negation/time/embedding/connective), not the slot filler`,
+      });
+    }
+  }
+  if (nakedSwaps > 2) {
+    warnings.push({
+      code: 'naked_swaps',
+      detail: `${nakedSwaps} USE phrases are just [pronoun]+LEGO — subject variation is one pattern, worth at most 2 slots`,
+    });
+  }
+  const diversity = sigTargets.size / distinctTotal;
+  if (distinctTotal >= 4 && diversity < 0.6) {
+    warnings.push({
+      code: 'low_frame_diversity',
+      detail: `${sigTargets.size} distinct plug-in patterns across ${distinctTotal} USE phrases (${diversity.toFixed(2)}) — each USE phrase should show a new way the LEGO combines with prior vocabulary`,
+    });
+  }
+  return warnings;
+}
+
+// ─── Metadata-gloss check (least-action-to-confidence) ─────────────────
+// A debut must hand the learner a producible communicative INTENTION, not a
+// grammatical label. "把 = object marker", "条 = measure word for long thin
+// objects", "吧 = softening particle" cost cognitive effort and yield zero
+// confidence — the learner can produce nothing from them. This is the
+// learner-facing form of the methodology's "honest whole-intention gloss, no
+// grammar metadata" principle, and it subsumes the older bare-particle idea:
+// classifiers and aspect/structural markers are construction-features too, and
+// belong INSIDE an M-LEGO (introduce:false), never as a bare debut.
+// WARN, not reject: some flags are an intention WITH a parenthetical note
+// (杯 "cup/glass (measure word)") that just needs the note stripped, vs pure
+// metadata (把 "object marker") that needs upchunking. A human/agent triages.
+const METADATA_GLOSS = /\b(marker|particle|classifier|measure word|copula|aspect|disposal|structural|grammatical|degree (?:particle|complement))\b|\((?:ba|de|le|guo|zhe|bei)\)|\((?:disposal|object|passive|progressive|perfective|measure word)\)/i;
+
+function checkMetadataGloss(legos) {
+  const warnings = [];
+  for (const lego of legos || []) {
+    const known = lego.known || lego.known_text || '';
+    if (METADATA_GLOSS.test(known)) {
+      warnings.push({
+        code: 'metadata_gloss',
+        lego_index: lego.idx ?? lego.lego_index,
+        target: lego.target || lego.target_text,
+        known,
+        detail: `Debut gloss "${known}" is grammar metadata, not a communicative intention. A learner can produce nothing from it (high action, zero confidence). Strip a parenthetical note if the intention is there (杯 "cup/glass"), or upchunk a true construction-feature into a whole-thought M-LEGO (把/条/吧).`,
+      });
+    }
+  }
+  return warnings;
+}
+
+// ─── Known-side reconstructability (both-sides tiling — Principle 1 in full) ───
+// Pure + POSITION-AGNOSTIC: callers pass currentPos + a compiled ctx whose maps
+// use the SAME unit (round for the reorder CLI, seed for generation). A prompt
+// must compose from introduced known-glosses + the free class (glue / inflection
+// / NPI-under-negation) + construction licenses whose carrier has debuted.
+function stemKnownGloss(tok) {
+  // EXACT-FORM normaliser (Tom 2026-06-15): NO inflection allowance. A form is usable only if it
+  // was introduced as a LEGO or a COMPONENT of an M-LEGO — exact form. Previously this stripped
+  // ing/ed/s/e/d, which wrongly let any inflection through; that is expressly disallowed. Lowercase
+  // + strip non-letters only. (Genuine glue/NPI stay free via the contract's freeGlue/npiTokens.)
+  return (tok || '').toLowerCase().replace(/[^a-z']/g, '');
+}
+// Expand English contractions so the base word + function word are checked
+// separately (shouldn't → should not; that's → that is; I've → I have).
+function expandContractions(s) {
+  return (s || '').toLowerCase()
+    .replace(/n['’]t\b/g, ' not')
+    .replace(/['’]ve\b/g, ' have').replace(/['’]re\b/g, ' are').replace(/['’]m\b/g, ' am')
+    .replace(/['’]ll\b/g, ' will').replace(/['’]d\b/g, ' would').replace(/['’]s\b/g, ' is');
+}
+const tokenizeKnown = (s) => expandContractions(s).split(/[^a-z']+/).filter(Boolean);
+// English machinery tokens → governing construction id(s). Known-language-specific
+// (valid for *_for_eng; a non-English-known contract restates this).
+const KNOWN_GRAMMAR = {
+  been: ['have-you-been'], got: ['have-got'], going: ['going-to'],
+  have: ['have-you-been', 'have-got', 'want-to-have'], "'ve": ['have-you-been', 'have-got', 'want-to-have'],
+  ve: ['have-you-been', 'have-got', 'want-to-have'],
+};
+// Dummy auxiliaries: always free at the token level. The do-support QUESTION
+// word-order is gated by its construction regex, not the bare token (so "do not"
+// from an expanded contraction never trips do-support).
+const DO_AUX = new Set(['do', 'does', 'did']);
+
+// Position-independent free-class sets compiled from a contract.
+function compileKnownContract(contract) {
+  return {
+    contract,
+    glue: new Set((contract.freeGlue || []).map(stemKnownGloss)),
+    npi: new Set((contract.npiTokens || []).map(stemKnownGloss)),
+    neg: new Set([...(contract.negationWords || []), ...(contract.negationWords || []).map(stemKnownGloss)]),
+    grammar: KNOWN_GRAMMAR,
+  };
+}
+
+// ctx = { ...compileKnownContract, stemFirstPos:Map(stem->pos), consPos:{id->pos}, unitPos:[{phrase,pos}] }
+function checkKnownSide(known, currentPos, ctx) {
+  const C = ctx.contract;
+  const probs = [];
+  const negRe = C.negationMarkers instanceof RegExp ? C.negationMarkers : new RegExp(C.negationMarkers, 'i');
+  const negated = negRe.test(known);
+  for (const con of C.constructions || []) {
+    const test = con.test instanceof RegExp ? con.test : new RegExp(con.test, 'i');
+    if (test.test(known)) {
+      const cp = ctx.consPos[con.id];
+      if (cp == null || currentPos < cp) probs.push(`construction '${con.id}' not licensed until ${cp === Infinity ? '∞' : cp}`);
+    }
+  }
+  let masked = ' ' + known.toLowerCase() + ' ';
+  for (const u of ctx.unitPos || []) {
+    const re = new RegExp('\\b' + u.phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'g');
+    if (re.test(masked)) {
+      if (u.pos == null || currentPos < u.pos) probs.push(`gloss-unit "${u.phrase}" not introduced until ${u.pos === Infinity ? '∞' : u.pos}`);
+      masked = masked.replace(re, ' ');
+    }
+  }
+  for (const raw of tokenizeKnown(masked)) {
+    const s = stemKnownGloss(raw);
+    if (!s) continue;
+    if (ctx.glue.has(s)) continue;
+    if (DO_AUX.has(raw)) continue;
+    if (ctx.neg.has(raw) || ctx.neg.has(s)) {
+      const cp = ctx.consPos['negation'];
+      if (cp == null || currentPos < cp) probs.push(`negation "${raw}" not licensed until ${cp === Infinity ? '∞' : cp}`);
+      continue;
+    }
+    if (ctx.npi.has(s)) { if (negated) continue; probs.push(`NPI token "${raw}" without negation`); continue; }
+    if (ctx.grammar[raw] || ctx.grammar[s]) {
+      const govs = ctx.grammar[raw] || ctx.grammar[s];
+      const ok = govs.some((g) => currentPos >= (ctx.consPos[g] ?? Infinity));
+      if (!ok) probs.push(`machinery "${raw}" needs ${govs.join('/')} (unlicensed)`);
+      continue;
+    }
+    const fp = ctx.stemFirstPos.get(s);
+    if (fp == null) probs.push(`unknown gloss "${raw}"`);
+    else if (fp > currentPos) probs.push(`gloss "${raw}" not introduced until ${fp}`);
+  }
+  return probs;
+}
+
+// Load a pair-contract by course_code; null if none. Cached.
+const _contractCache = new Map();
+function loadPairContract(courseCode) {
+  if (_contractCache.has(courseCode)) return _contractCache.get(courseCode);
+  let contract = null;
+  // Strip a trailing "_vN" so a versioned course (e.g. zho_for_eng_v2) inherits the base
+  // pair's contract. The full course_code stays the DB partition key elsewhere.
+  const contractCode = courseCode.replace(/_v\d+$/, '');
+  try { contract = require(`../../../docs/pair-contracts/${contractCode}.contract.cjs`); } catch (_) { contract = null; }
+  _contractCache.set(courseCode, contract);
+  return contract;
+}
+
 module.exports = {
   METHODOLOGY_HINTS,
   checkTiling,
+  checkMetadataGloss,
+  stemKnownGloss,
+  tokenizeKnown,
+  compileKnownContract,
+  checkKnownSide,
+  loadPairContract,
   checkPhraseComplexity,
   checkVocabViolations,
   calculateLegoBalanceScores,
   checkPhraseBalance,
   checkLegoConflict,
   checkLegoOverlap,
+  checkPhraseZUT,
+  checkBasketFrameCoverage,
   classifySeedPattern,
   formatDecompositionPatterns,
 };

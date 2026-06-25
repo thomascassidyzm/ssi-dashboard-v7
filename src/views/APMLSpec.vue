@@ -6,19 +6,19 @@
       <p class="page-subtitle">
         Course Builder Consolidation - Simplified content creation pipeline
       </p>
-      <p class="page-meta">Build: v14.0.0 | Jan 15, 2026</p>
+      <p class="page-meta">Build: v14.1 | Jun 2026</p>
     </div>
 
     <!-- Main Content -->
     <main class="content-area">
-      <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
+      <div class="bg-surface rounded-lg border border-line p-8">
 
         <!-- Breaking Change Banner -->
         <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4 mb-8">
           <h3 class="text-emerald-400 font-semibold flex items-center gap-2">
             <span>&#9733;</span> v14 Architecture: Course Builder Consolidation
           </h3>
-          <p class="text-sm text-slate-300 mt-2">
+          <p class="text-sm text-ink mt-2">
             Phases 0-3 (translation, conflict resolution, basket generation) are now <strong>consolidated into the Course Builder API</strong>.
             Single endpoint <code class="text-emerald-300">POST /api/seed/complete</code> validates atomically (tiling, ZUT, vocabulary).
             Pipeline is now: <strong>Course Builder → Phase 8 (Audio) → Phase 9 (Manifest)</strong>.
@@ -27,67 +27,67 @@
 
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">The 12 Directions</h2>
-          <p class="text-slate-300 mb-4">APML v14 is guided by these architectural principles:</p>
+          <p class="text-ink mb-4">APML v14 is guided by these architectural principles:</p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D01: Parameterization</h4>
-              <p class="text-xs text-slate-400 mt-1">Everything is a parameter. No magic numbers.</p>
+              <p class="text-xs text-muted mt-1">Everything is a parameter. No magic numbers.</p>
             </div>
-            <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D02: Separation of Concerns</h4>
-              <p class="text-xs text-slate-400 mt-1">Each component does one thing well.</p>
+              <p class="text-xs text-muted mt-1">Each component does one thing well.</p>
             </div>
-            <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D03: Immutability of Source</h4>
-              <p class="text-xs text-slate-400 mt-1">Source data is never mutated, only extended.</p>
+              <p class="text-xs text-muted mt-1">Source data is never mutated, only extended.</p>
             </div>
-            <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D04: Idempotency</h4>
-              <p class="text-xs text-slate-400 mt-1">Same operation twice = same result.</p>
+              <p class="text-xs text-muted mt-1">Same operation twice = same result.</p>
             </div>
-            <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D05: Store Raw, Compute Derived</h4>
-              <p class="text-xs text-slate-400 mt-1">Persist source of truth, compute the rest.</p>
+              <p class="text-xs text-muted mt-1">Persist source of truth, compute the rest.</p>
             </div>
-            <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D06: Explicit over Implicit</h4>
-              <p class="text-xs text-slate-400 mt-1">Make relationships and dependencies visible.</p>
+              <p class="text-xs text-muted mt-1">Make relationships and dependencies visible.</p>
             </div>
-            <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D07: Context-Agnostic</h4>
-              <p class="text-xs text-slate-400 mt-1">Components work regardless of context.</p>
+              <p class="text-xs text-muted mt-1">Components work regardless of context.</p>
             </div>
-            <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D08: Explicit Feedback</h4>
-              <p class="text-xs text-slate-400 mt-1">Errors include reasons, not just status.</p>
+              <p class="text-xs text-muted mt-1">Errors include reasons, not just status.</p>
             </div>
-            <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D09: Progressive Enhancement</h4>
-              <p class="text-xs text-slate-400 mt-1">Core works without optional features.</p>
+              <p class="text-xs text-muted mt-1">Core works without optional features.</p>
             </div>
-            <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D10: Observability</h4>
-              <p class="text-xs text-slate-400 mt-1">Everything can be queried and inspected.</p>
+              <p class="text-xs text-muted mt-1">Everything can be queried and inspected.</p>
             </div>
-            <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D11: Reversibility</h4>
-              <p class="text-xs text-slate-400 mt-1">Actions can be undone or understood.</p>
+              <p class="text-xs text-muted mt-1">Actions can be undone or understood.</p>
             </div>
-            <div class="bg-slate-900/50 border border-slate-600/30 rounded p-3">
+            <div class="bg-surface-2 border border-line rounded p-3">
               <h4 class="text-emerald-300 font-semibold text-sm">D12: Composition over Config</h4>
-              <p class="text-xs text-slate-400 mt-1">Build complex from simple, composable parts.</p>
+              <p class="text-xs text-muted mt-1">Build complex from simple, composable parts.</p>
             </div>
           </div>
         </section>
 
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Audio Registry Architecture</h2>
-          <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
+          <div class="prose prose-invert prose-emerald max-w-none text-ink">
             <p><strong>Core Principle:</strong> Courses own their audio. Simple is better.</p>
 
-            <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-4 my-4 font-mono text-xs">
-              <pre class="text-slate-300">
+            <div class="bg-surface-2 border border-emerald-500/30 rounded p-4 my-4 font-mono text-xs">
+              <pre class="text-ink">
 ┌─────────────────────────────────────────────────────────────────┐
 │                     SIMPLE OWNERSHIP                            │
 │                                                                 │
@@ -101,25 +101,25 @@
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Database Schema (v13)</h3>
             <div class="space-y-3 mt-4">
-              <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+              <div class="bg-surface-2 border border-line rounded p-4">
                 <h4 class="font-semibold text-emerald-300">courses</h4>
-                <p class="text-sm text-slate-400 mt-1">
+                <p class="text-sm text-muted mt-1">
                   Course metadata with voice configuration<br/>
-                  <code class="text-xs">code (PK) | display_name | known_lang | target_lang | voice_config (JSONB)</code><br/>
-                  <span class="text-xs text-amber-400">PRIMARY KEY(code)</span>
+                  <code class="text-xs">course_code (PK) | display_name | known_lang | target_lang | voice_config (JSONB)</code><br/>
+                  <span class="text-xs text-amber-400">PRIMARY KEY(course_code)</span>
                 </p>
               </div>
-              <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+              <div class="bg-surface-2 border border-line rounded p-4">
                 <h4 class="font-semibold text-emerald-300">course_audio</h4>
-                <p class="text-sm text-slate-400 mt-1">
+                <p class="text-sm text-muted mt-1">
                   Audio owned by courses (flat, no joins)<br/>
                   <code class="text-xs">id (UUID) | course_code | text | language | role | voice_id | origin | s3_key</code><br/>
                   <span class="text-xs text-amber-400">UNIQUE(course_code, text_normalized, language, role)</span>
                 </p>
               </div>
-              <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+              <div class="bg-surface-2 border border-line rounded p-4">
                 <h4 class="font-semibold text-emerald-300">shared_audio</h4>
-                <p class="text-sm text-slate-400 mt-1">
+                <p class="text-sm text-muted mt-1">
                   Shared content (encouragements, instructions only)<br/>
                   <code class="text-xs">id (UUID) | text | language | audio_type | voice_id | origin | s3_key</code><br/>
                   <span class="text-xs text-amber-400">UNIQUE(text_normalized, language, audio_type)</span>
@@ -129,39 +129,39 @@
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">v12 vs v13 Comparison</h3>
             <div class="overflow-x-auto">
-              <table class="w-full text-sm border border-slate-600">
-                <thead class="bg-slate-800">
+              <table class="w-full text-sm border border-line">
+                <thead class="bg-surface">
                   <tr>
-                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Aspect</th>
-                    <th class="border border-slate-600 px-3 py-2 text-left text-red-300">v12 (Join-based)</th>
-                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">v13 (Flat)</th>
+                    <th class="border border-line px-3 py-2 text-left text-emerald-300">Aspect</th>
+                    <th class="border border-line px-3 py-2 text-left text-red-300">v12 (Join-based)</th>
+                    <th class="border border-line px-3 py-2 text-left text-emerald-300">v13 (Flat)</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border border-slate-600 px-3 py-2">Tables</td>
-                    <td class="border border-slate-600 px-3 py-2 text-red-300">texts + audio_files + course_audio</td>
-                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">course_audio + shared_audio</td>
+                    <td class="border border-line px-3 py-2">Tables</td>
+                    <td class="border border-line px-3 py-2 text-red-300">texts + audio_files + course_audio</td>
+                    <td class="border border-line px-3 py-2 text-emerald-300">course_audio + shared_audio</td>
                   </tr>
                   <tr>
-                    <td class="border border-slate-600 px-3 py-2">Lookup</td>
-                    <td class="border border-slate-600 px-3 py-2 text-red-300">JOIN across 3 tables</td>
-                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">Single table query</td>
+                    <td class="border border-line px-3 py-2">Lookup</td>
+                    <td class="border border-line px-3 py-2 text-red-300">JOIN across 3 tables</td>
+                    <td class="border border-line px-3 py-2 text-emerald-300">Single table query</td>
                   </tr>
                   <tr>
-                    <td class="border border-slate-600 px-3 py-2">Voice Config</td>
-                    <td class="border border-slate-600 px-3 py-2 text-red-300">voices table</td>
-                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">courses.voice_config JSONB</td>
+                    <td class="border border-line px-3 py-2">Voice Config</td>
+                    <td class="border border-line px-3 py-2 text-red-300">voices table</td>
+                    <td class="border border-line px-3 py-2 text-emerald-300">courses.voice_config JSONB</td>
                   </tr>
                   <tr>
-                    <td class="border border-slate-600 px-3 py-2">S3 Storage</td>
-                    <td class="border border-slate-600 px-3 py-2 text-red-300">mastered/{uuid}.mp3</td>
-                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">{uuid}.mp3 (flat)</td>
+                    <td class="border border-line px-3 py-2">S3 Storage</td>
+                    <td class="border border-line px-3 py-2 text-red-300">mastered/{uuid}.mp3</td>
+                    <td class="border border-line px-3 py-2 text-emerald-300">mastered/{uuid}.mp3</td>
                   </tr>
                   <tr>
-                    <td class="border border-slate-600 px-3 py-2">Origin Tracking</td>
-                    <td class="border border-slate-600 px-3 py-2 text-red-300">Inferred from voice</td>
-                    <td class="border border-slate-600 px-3 py-2 text-emerald-300">Explicit: tts/human</td>
+                    <td class="border border-line px-3 py-2">Origin Tracking</td>
+                    <td class="border border-line px-3 py-2 text-red-300">Inferred from voice</td>
+                    <td class="border border-line px-3 py-2 text-emerald-300">Explicit: tts/human</td>
                   </tr>
                 </tbody>
               </table>
@@ -185,41 +185,41 @@
 
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Pipeline Architecture (v14)</h2>
-          <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
+          <div class="prose prose-invert prose-emerald max-w-none text-ink">
 
-            <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-3 my-3">
-              <p class="text-xs text-slate-400">Pipeline v14: <span class="text-emerald-400">Course Builder (3471) → Phase 8 Audio (3465) → Phase 9 Manifest (3466)</span></p>
+            <div class="bg-surface-2 border border-emerald-500/30 rounded p-3 my-3">
+              <p class="text-xs text-muted">Pipeline v14: <span class="text-emerald-400">Course Builder (3471) → Phase 8 Audio (3465) → Phase 9 Manifest (3466)</span></p>
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Service Pipeline</h3>
             <div class="overflow-x-auto">
-              <table class="w-full text-sm border border-slate-600">
-                <thead class="bg-slate-800">
+              <table class="w-full text-sm border border-line">
+                <thead class="bg-surface">
                   <tr>
-                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Service</th>
-                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Port</th>
-                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Endpoint</th>
-                    <th class="border border-slate-600 px-3 py-2 text-left text-emerald-300">Output</th>
+                    <th class="border border-line px-3 py-2 text-left text-emerald-300">Service</th>
+                    <th class="border border-line px-3 py-2 text-left text-emerald-300">Port</th>
+                    <th class="border border-line px-3 py-2 text-left text-emerald-300">Endpoint</th>
+                    <th class="border border-line px-3 py-2 text-left text-emerald-300">Output</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="bg-emerald-900/20">
-                    <td class="border border-slate-600 px-3 py-2 text-emerald-400 font-semibold">Course Builder</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">3471</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">POST /api/seed/complete</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">course_seeds, course_legos, course_practice_phrases</td>
+                    <td class="border border-line px-3 py-2 text-emerald-400 font-semibold">Course Builder</td>
+                    <td class="border border-line px-3 py-2 font-mono text-xs">3471</td>
+                    <td class="border border-line px-3 py-2 font-mono text-xs">POST /api/seed/complete</td>
+                    <td class="border border-line px-3 py-2 font-mono text-xs">course_seeds, course_legos, course_practice_phrases</td>
                   </tr>
                   <tr class="bg-purple-900/20">
-                    <td class="border border-slate-600 px-3 py-2 text-purple-400">Phase 8 Audio</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">3465</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">POST /generate</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">course_audio + S3</td>
+                    <td class="border border-line px-3 py-2 text-purple-400">Phase 8 Audio</td>
+                    <td class="border border-line px-3 py-2 font-mono text-xs">3465</td>
+                    <td class="border border-line px-3 py-2 font-mono text-xs">POST /generate</td>
+                    <td class="border border-line px-3 py-2 font-mono text-xs">course_audio + S3</td>
                   </tr>
                   <tr class="bg-amber-900/20">
-                    <td class="border border-slate-600 px-3 py-2 text-amber-400">Phase 9 Manifest</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">3466</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">POST /compile</td>
-                    <td class="border border-slate-600 px-3 py-2 font-mono text-xs">course_manifest.json</td>
+                    <td class="border border-line px-3 py-2 text-amber-400">Phase 9 Manifest</td>
+                    <td class="border border-line px-3 py-2 font-mono text-xs">3466</td>
+                    <td class="border border-line px-3 py-2 font-mono text-xs">POST /compile</td>
+                    <td class="border border-line px-3 py-2 font-mono text-xs">course_manifest.json</td>
                   </tr>
                 </tbody>
               </table>
@@ -230,8 +230,8 @@
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Course Builder Validation</h3>
-            <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4 font-mono text-xs">
-              <pre class="text-slate-300">
+            <div class="bg-surface-2 border border-line rounded p-4 font-mono text-xs">
+              <pre class="text-ink">
 POST /api/seed/complete validates atomically:
 1. Tiling: Seed translation constructable from LEGO targets
 2. ZUT Conflicts: Same known → different target = REJECT
@@ -242,14 +242,51 @@ On failure: Nothing inserted, clear error with fix suggestions
 On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
             </div>
 
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Phrase-Level ZUT <span class="text-xs text-amber-400">(new 2026-06-14)</span></h3>
+            <div class="space-y-3">
+              <p class="text-sm text-ink">
+                <strong class="text-accent-2">ZUT (Zero Uncertainty Translation):</strong> one known (English) prompt maps to exactly one target form.
+                LEGO-level ZUT (existing) checks this across LEGOs: if a LEGO's known text already maps to a different target in a prior seed,
+                the <strong>whole seed is REJECTED</strong>.
+              </p>
+              <p class="text-sm text-ink">
+                <strong class="text-accent-2">Phrase-level ZUT (new)</strong> extends the same rule to individual practice <strong>phrases</strong> across the
+                entire course history, not just LEGOs. Previously a decomposition could gloss e.g. &ldquo;I think&rdquo; as one target in one seed and a
+                different target in another &mdash; a ZUT violation invisible to the LEGO gate.
+              </p>
+              <div class="bg-surface-2 border border-line rounded p-4">
+                <h4 class="font-semibold text-emerald-300">Normalisation</h4>
+                <p class="text-sm text-muted mt-1">
+                  Matching normalises away punctuation/whitespace, so &ldquo;你准备好了吗？&rdquo; vs &ldquo;你准备好了吗&rdquo; is <strong>not</strong> a collision.
+                  Only a genuinely different target for the same English collides.
+                </p>
+              </div>
+              <div class="bg-amber-900/20 border border-amber-500/30 rounded p-4">
+                <h4 class="font-semibold text-amber-300">Hold-out, not rejection (by design)</h4>
+                <p class="text-sm text-muted mt-1">
+                  Unlike LEGO-level ZUT (which rejects the whole seed), a phrase-level conflict is a <strong>hold-out</strong>: the seed and all
+                  conforming phrases are still inserted, and only the transgressing phrase(s) are held out. The collision is surfaced with a hint to
+                  either <strong>consolidate</strong> to the existing target or <strong>differentiate</strong> the English prompt, then resubmit the
+                  held-out phrase(s).
+                </p>
+              </div>
+              <div class="bg-surface-2 border border-line rounded p-4">
+                <h4 class="font-semibold text-emerald-300">Implementation</h4>
+                <p class="text-sm text-muted mt-1">
+                  <code class="text-xs">checkPhraseZUT()</code> in <code class="text-xs">services/course-builder/lib/validation.cjs</code>,
+                  enforced in <code class="text-xs">routes/seed-complete.cjs</code> as gate #5 (after tiling and vocabulary).
+                </p>
+              </div>
+            </div>
+
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Audio Generation Flow (v14)</h3>
-            <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4 font-mono text-xs">
-              <pre class="text-slate-300">
+            <div class="bg-surface-2 border border-line rounded p-4 font-mono text-xs">
+              <pre class="text-ink">
 1. Get course voice_config from courses table
 2. Extract audio needs from course_practice_phrases (Supabase)
 3. Check what's missing: get_missing_audio() RPC
 4. Generate TTS for missing audio (Azure)
-5. Upload to S3: {uuid}.mp3 (flat storage)
+5. Upload to S3: mastered/{uuid}.mp3
 6. INSERT INTO course_audio (course_code, text, language, role, voice_id, origin, s3_key)
 7. Verify completeness: get_course_audio_summary() RPC</pre>
             </div>
@@ -261,23 +298,23 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
           <div class="space-y-3">
             <div class="bg-emerald-900/20 border border-emerald-500/30 rounded p-4">
               <h4 class="font-semibold text-emerald-300">Supabase Tables (Source of Truth)</h4>
-              <p class="text-sm text-slate-400 mt-1">
+              <p class="text-sm text-muted mt-1">
                 <strong>Course Data:</strong> <code class="text-xs">course_seeds</code>, <code class="text-xs">course_legos</code>, <code class="text-xs">course_practice_phrases</code><br/>
                 <strong>Audio Registry:</strong> <code class="text-xs">courses</code>, <code class="text-xs">course_audio</code>, <code class="text-xs">shared_audio</code><br/>
                 <span class="text-emerald-400 text-xs">All content written by Course Builder API, read by Phase 8 & 9</span>
               </p>
             </div>
-            <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-              <h4 class="font-semibold text-slate-300">course_manifest.json</h4>
-              <p class="text-sm text-slate-400 mt-1">
+            <div class="bg-surface-2 border border-line rounded p-4">
+              <h4 class="font-semibold text-ink">course_manifest.json</h4>
+              <p class="text-sm text-muted mt-1">
                 Phase 9 output: compiled manifest for learning app<br/>
-                Generated ON-DEMAND from Supabase (not stored, regenerable)
+                Generated ON-DEMAND and written to public/vfs/courses/{courseCode}/course_manifest.json (regenerable)
               </p>
             </div>
             <div class="bg-amber-900/20 border border-amber-500/30 rounded p-4">
               <h4 class="font-semibold text-amber-300">Deprecated JSON Files (v13)</h4>
-              <p class="text-sm text-slate-400 mt-1">
-                <span class="line-through text-slate-500">draft_lego_pairs.json, lego_pairs.json, lego_baskets.json</span><br/>
+              <p class="text-sm text-muted mt-1">
+                <span class="line-through text-faint">draft_lego_pairs.json, lego_pairs.json, lego_baskets.json</span><br/>
                 <span class="text-xs text-amber-400">Legacy artifacts only - do not read course data from JSON files</span>
               </p>
             </div>
@@ -287,28 +324,28 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Key Algorithms</h2>
           <div class="space-y-4">
-            <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-              <h4 class="font-semibold text-emerald-300">find_or_create_audio()</h4>
-              <p class="text-sm text-slate-400 mt-2">
-                Idempotent database function: finds existing audio or creates entry.<br/>
-                Returns <code class="text-xs">{audio_id, s3_key, needs_generation}</code>
+            <div class="bg-surface-2 border border-line rounded p-4">
+              <h4 class="font-semibold text-emerald-300">get_missing_audio() / get_course_audio_summary()</h4>
+              <p class="text-sm text-muted mt-2">
+                Database RPCs used by Phase 8: identify which audio still needs generation and verify course audio completeness.<br/>
+                <span class="text-xs text-amber-400">(Replaces deprecated v12 find_or_create_audio())</span>
               </p>
             </div>
-            <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+            <div class="bg-surface-2 border border-line rounded p-4">
               <h4 class="font-semibold text-emerald-300">FCFS vs Utility</h4>
-              <p class="text-sm text-slate-400 mt-2">
+              <p class="text-sm text-muted mt-2">
                 Balances First-Can-First-Say chronological order against pedagogical utility scores.
               </p>
             </div>
-            <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+            <div class="bg-surface-2 border border-line rounded p-4">
               <h4 class="font-semibold text-emerald-300">IRON RULE</h4>
-              <p class="text-sm text-slate-400 mt-2">
-                No LEGO begins or ends with a preposition. Absolute rule enforced during Phase 1.
+              <p class="text-sm text-muted mt-2">
+                No LEGO begins or ends with a preposition. Absolute rule enforced in the Course Builder validation gates.
               </p>
             </div>
-            <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+            <div class="bg-surface-2 border border-line rounded p-4">
               <h4 class="font-semibold text-emerald-300">Graph Edge Coverage</h4>
-              <p class="text-sm text-slate-400 mt-2">
+              <p class="text-sm text-muted mt-2">
                 Pattern-aware basket construction maximizes unique LEGO adjacency edge coverage.
               </p>
             </div>
@@ -317,25 +354,25 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
 
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">LEGO Types</h2>
-          <div class="space-y-4 bg-slate-900/80 border border-slate-400/20 rounded p-4">
+          <div class="space-y-4 bg-surface-2 border border-line rounded p-4">
             <div>
               <p class="text-sm"><strong class="text-blue-300">"A" (A-type)</strong> = ATOMIC LEGO</p>
-              <p class="text-xs text-slate-400 mt-1 ml-4">Smallest teachable unit that passes ZUT (Zero Uncertainty Test). Can be single-word or multi-word. The learner hears the known text and produces the target with zero ambiguity.</p>
+              <p class="text-xs text-muted mt-1 ml-4">Smallest teachable unit that passes ZUT (Zero Uncertainty Test). Can be single-word or multi-word. The learner hears the known text and produces the target with zero ambiguity.</p>
             </div>
             <div>
               <p class="text-sm"><strong class="text-emerald-300">"M" (M-type)</strong> = MOLECULAR LEGO</p>
-              <p class="text-xs text-slate-400 mt-1 ml-4">An introducible unit that CANNOT be inferred by the learner from what they already know. Required when: (1) missing components, (2) glue/filler words, or (3) order mismatch between languages.</p>
+              <p class="text-xs text-muted mt-1 ml-4">An introducible unit that CANNOT be inferred by the learner from what they already know. Required when: (1) missing components, (2) glue/filler words, or (3) order mismatch between languages.</p>
             </div>
             <div class="mt-4 bg-amber-900/20 border border-amber-500/30 rounded p-3">
               <p class="text-amber-400 text-xs font-semibold mb-2">The Inferability Test:</p>
-              <p class="text-slate-300 text-xs">Given what the learner already knows, can they figure this out themselves?</p>
-              <ul class="text-slate-300 text-xs mt-2 space-y-1">
+              <p class="text-ink text-xs">Given what the learner already knows, can they figure this out themselves?</p>
+              <ul class="text-ink text-xs mt-2 space-y-1">
                 <li>• <strong class="text-emerald-300">Yes</strong> = Not a new LEGO, just tile existing A-types</li>
                 <li>• <strong class="text-amber-300">No</strong> = M-type needed (requires explicit introduction)</li>
               </ul>
             </div>
-            <div class="mt-3 border-t border-slate-600 pt-3">
-              <p class="text-xs text-slate-500 italic">Deprecated: B/C/F type codes are no longer used. Use A-type and M-type instead.</p>
+            <div class="mt-3 border-t border-line pt-3">
+              <p class="text-xs text-faint italic">Deprecated: B/C/F type codes are no longer used. Use A-type and M-type instead.</p>
             </div>
           </div>
         </section>
@@ -346,7 +383,6 @@ On success: All tables updated atomically (seeds, LEGOs, phrases)</pre>
 </template>
 
 <script setup>
-console.log('APML Specification Loaded')
 </script>
 
 <style scoped>
@@ -366,17 +402,68 @@ console.log('APML Specification Loaded')
 }
 
 .page-subtitle {
-  color: #94a3b8;
+  color: var(--muted);
   margin: 0;
 }
 
 .page-meta {
   font-size: 0.75rem;
-  color: #64748b;
+  color: var(--faint);
   margin-top: 0.25rem;
 }
 
 .content-area {
   max-width: 100%;
+}
+
+/*
+ * Light-mode contrast fixes. The template uses hardcoded Tailwind color
+ * utilities (text-emerald/red/amber/blue/purple-*) that do NOT re-theme and
+ * fail WCAG AA on light backgrounds (e.g. emerald-400 #34d399 = 1.66:1 on
+ * white). These overrides are scoped strictly to [data-theme="light"] so DARK
+ * MODE IS UNTOUCHED, and keep each hue family while reaching >=4.5:1 body.
+ */
+:root[data-theme="light"] .page-title {
+  color: var(--accent-2); /* #047857 on #eef2f6 canvas ~= 4.5:1 */
+}
+:root[data-theme="light"] .apml-spec-view :deep(.text-emerald-400),
+:root[data-theme="light"] .apml-spec-view :deep(.text-emerald-300) {
+  color: #047857; /* ~4.7:1 on white */
+}
+:root[data-theme="light"] .apml-spec-view :deep(.text-red-300) {
+  color: #b91c1c; /* ~5.9:1 on white */
+}
+:root[data-theme="light"] .apml-spec-view :deep(.text-amber-400),
+:root[data-theme="light"] .apml-spec-view :deep(.text-amber-300) {
+  color: #b45309; /* ~4.9:1 on white */
+}
+:root[data-theme="light"] .apml-spec-view :deep(.text-blue-300) {
+  color: #1d4ed8; /* ~6.3:1 on white */
+}
+:root[data-theme="light"] .apml-spec-view :deep(.text-purple-400) {
+  color: #7e22ce; /* ~6.0:1 on white */
+}
+/* Colored row tints / banners: bg-*-900/20 and bg-*-500/10 read near-white in
+ * light mode. Give them a recognizable, slightly stronger hue wash so rows and
+ * callout banners separate, without disturbing the (now-darkened) text. */
+:root[data-theme="light"] .apml-spec-view :deep(.bg-emerald-900\/20) {
+  background-color: rgba(4, 120, 87, 0.10);
+}
+:root[data-theme="light"] .apml-spec-view :deep(.bg-purple-900\/20) {
+  background-color: rgba(126, 34, 206, 0.10);
+}
+:root[data-theme="light"] .apml-spec-view :deep(.bg-amber-900\/20),
+:root[data-theme="light"] .apml-spec-view :deep(.bg-amber-500\/10) {
+  background-color: rgba(180, 83, 9, 0.10);
+}
+:root[data-theme="light"] .apml-spec-view :deep(.bg-emerald-500\/10) {
+  background-color: rgba(4, 120, 87, 0.10);
+}
+/* Faint colored borders on banners become solid-enough in light mode. */
+:root[data-theme="light"] .apml-spec-view :deep(.border-emerald-500\/30) {
+  border-color: rgba(4, 120, 87, 0.45);
+}
+:root[data-theme="light"] .apml-spec-view :deep(.border-amber-500\/30) {
+  border-color: rgba(180, 83, 9, 0.45);
 }
 </style>

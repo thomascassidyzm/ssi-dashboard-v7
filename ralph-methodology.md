@@ -14,6 +14,60 @@ This methodology doc (ralph-methodology.md) is what to do once the target transl
 
 ---
 
+## The World-Class Breakdown — Quality Bar
+
+A breakdown is world-class only if it satisfies all seven. Each is both an audit dimension and a build-time check. (Distilled from the zho_for_eng particle/decomposition rebuild, 2026-06-07; Principle 7 + the doctrine sections that follow added 2026-06-13 from the reorder/encoding work.)
+
+1. **Reconstructability is sacred.** Every SEED must rebuild *perfectly, in both languages*, from its own decomposition plus already-taught vocabulary. This is the master rule — most other failures are special cases of breaking it.
+
+2. **Nothing load-bearing is acquired by accident.** Every piece a seed leans on — pronouns, question particles, verbs, connectors — must be *deliberately introduced* before/at that seed (a clean LEGO or a declared component). "Grokable from context" is fine for reinforcement, **never** for the pieces a seed actually needs to be rebuilt.
+
+3. **Particles are construction-features, never units of intention.** Never a bare A-LEGO; taught in-context via overlap, **in the seed's own sense**, silent (`introduce:false`). Multi-sense particles are introduced once *per real usage* — coverage-driven, not a fixed count. (See *Intention-units vs construction-features* below, and synonym-choice §6.) **Coverage rule:** ≥1 chosen context must reconstruct the seed's own use of the particle; a sense the seed uses but you don't teach is an ERROR.
+
+4. **Glosses are honest and whole-intention.** No mis-glosses (才≠"only then", 了≠"already", 把≠"take"), no surface-word particle labels, no grammar metadata. The known side names the *whole communicative intention*.
+
+5. **Don't re-teach the known.** Already-introduced pieces are never re-narrated (non-greedy introduction / fuzzy-availability — a component already taught earlier carries `introduce:false`).
+
+6. **Idiomatic chunks are their own units.** Non-derivable combinations (准备好 = "ready", not "prepare"+"good"; 见过 = "have seen") are taught whole, not as a sum of parts that doesn't add up.
+
+7. **Vary along the axis that carries the new distinction.** A basket exists to make the *new* LEGO's contribution salient. Every USE phrase must vary along the axis the LEGO actually changes — the lateness-trigger for 才 (现在才 / 明天才 / 之后才), the verb for a new verb, the polarity for a negator — never along an axis carrying zero information about the new piece. Swapping only the subject pronoun (我→你→他) or the topic noun ([X]很有用 ×7) holds the frame constant and teaches nothing. **BUILD may repeat frames** — its job is to automatize the chunk. **USE must buy a new frame per phrase** — USE enters the eternal spaced-repetition pool, so a low-diversity USE basket pollutes review forever. *Convergence pairs (same target, different English) are exempt: they teach the unification, not monotony.*
+
+---
+
+## ZUT Outranks Naturalness — the decision lens
+
+**One English intention → exactly one target form, course-wide. Always.** This is the production-direction law (ZUT), and it outranks naturalness. We do not care if a mapping isn't the most natural way to say it in the target — the method optimises **confidence to interact, not native-likeness**. A learner with a deterministic production function interacts fearlessly; one juggling natural variants freezes. The reverse is not only allowed but useful: *many* English intentions converging on *one* target form (convergence pairs) teaches the unification cheaply.
+
+The general rule behind every methodology call: **decide by least action to confidence, not by truth.** When a question looks like "what's linguistically correct?", reframe it as "what gets the learner to confident production with the least cognitive action?" — that axis resolves what the truth axis cannot.
+
+---
+
+## The Known Side Is a Controlled Language
+
+Reconstructability (Principle 1) holds in **both** languages. The English prompt is **not** free natural English — it is a designed, controlled language. Every prompt must compose from: (a) the known-glosses of introduced LEGOs, (b) the **free class** — glue words, ‑s/‑ed/‑ing inflection, NPI ("any/ever") under negation, dummy auxiliaries (do/does/did), and (c) constructions **licensed by a debuted carrier** — do-support questions, "have you been V-ing", "want to have", etc.
+
+Slightly stilted but tileable English is **correct** — it is the known-side mirror of "ZUT over naturalness". A prompt using unlicensed English machinery is *unmappable*: it forks or stalls production exactly like a target-side ZUT violation. "How do you say it?" cannot appear before its do-support carrier is introduced; "would you like…" smuggles the want/'d-like convergence in early. Compose prompts from what the learner has been given, not from natural English.
+
+---
+
+## Conservative Suppression & Honest Glosses
+
+**A debut must hand the learner a producible intention, never a grammar label.** "把 = object marker", "条 = measure word for long thin objects", "吧 = softening particle" cost cognitive action and yield zero confidence — the learner can produce nothing from them. Glosses name the *whole communicative intention*; never grammar metadata. This subsumes the bare-particle rule: classifiers, markers and aspect are construction-features — they live *inside* an M-LEGO (`introduce:false`), never as a bare debut.
+
+**"Don't re-teach the known" (Principle 5) is a scalpel, not a cull.** Suppress a debut (`is_new:false`) *only* for a pure same-meaning re-statement — the identical intention and identical target, adding no new word, sense, idiom, or contrast. Everything else keeps its debut: **distinct words** (喝/买/准备 are not "components" of a chunk just because their characters appear inside it — that is the overlap mechanism working, not duplication), **idiomatic chunks** (准备好 ≠ 准备+好), **overlap-ladder rungs**, and **deliberate nuance re-debuts**. The lever is minor by design — in the zho audit, ~15 of ~1,100 rounds.
+
+---
+
+## The Pair-Contract
+
+Every language pair gets its own rule layer: `docs/pair-contracts/{course_code}.contract.cjs` — gloss-determinism forks, construction licenses, multi-gloss synonyms, bound gloss-units, the free class, and the **known language** it is written for. The Chinese rules (能/会 by collocation, the 很 split, the 了 cue-table) are **instances of categories, not universals** — do not copy them to another pair; derive that pair's contract on first contact.
+
+Crucially, the free class / NPI / inflection / machinery are **known-language-specific** — a `_for_jpn` contract restates them in Japanese; English regexes must never gate a non-English-known course.
+
+**Deriving a contract:** translate the seeds → find the forks (one English intention that would map to several natural targets) → decide each determinism rule (consolidate or differentiate) → mark silent construction-features → register multi-gloss synonyms and bound gloss-units → restate the free class for the known language → **adversarially verify every rule** (does a fork ever collapse two distinct intentions? does a "synonym" smuggle a ZUT violation?) before setting `ratified`. The gates read this file; if it is absent the known-side check silently skips, so an un-contracted course is never wrongly blocked.
+
+---
+
 ## The Core Philosophy
 
 ### Grammar is INFERRED, Never Taught
@@ -59,6 +113,10 @@ Multi-word phrase. Patterns are inferred through overlap with related A-LEGOs.
 }
 ```
 
+> **Type is author-declared, not computed.** "Single word = A, multi-word = M" is the convention *you* follow — the validator never counts words to assign type. It only checks the literal value is `'A'` or `'M'` (a missing type defaults to `'A'`), and rejects an `'M'` with no `components[]`.
+>
+> **The real size guard is syllables, not word count.** Every LEGO — A or M — has its target capped at **8 syllables** (`MAX_LEGO_SYLLABLES`), estimated from character length per language. This cap **always runs, even under `skip_validation`**. An oversized LEGO is rejected with a prompt to decompose it into multiple smaller LEGOs (aim for 2-4 words, max 8 syllables).
+
 ### Optional Component Introduction (`introduce: false`)
 
 M-LEGO components are required for tiling validation, but not all are worth introducing to the learner solo. Set `introduce: false` on components that would confuse more than help — single-letter prepositions, particles, or stubs that only make sense attached.
@@ -95,6 +153,28 @@ LEGOs (with overlaps allowed):
 ```
 
 The learner sees "importante" alone, then sees it inside "es importante" - the overlap lets them infer the pattern without explanation.
+
+### Intention-units vs construction-features
+
+A language has two kinds of piece, and they are taught oppositely:
+
+- **Units of intention** — what the learner *means* (book, want, speak). The learner forms an intention and reaches for it. These map one-to-one (ZUT), are chosen deliberately, and are atomised as A-LEGOs.
+- **Features of construction** — *how* the target assembles a thought (Chinese 才, 了, 都, 把; particles, aspect markers, structural glue). The learner never forms an intention to "say 才"; they mean a whole thought, and the particle is a texture of how it is built. These are **never atomised and never chosen** — they are absorbed inside whole thoughts.
+
+Introducing a construction-feature as a bare A-LEGO ("才 = only then") is a **category error**: it asks the learner to *mean* something that is not a unit of meaning. That is why such a card never reads naturally — the fix is not a better gloss, it is to stop atomising it.
+
+**Particles are consolidated, not introduced.** A construction-feature's debut is not scheduled at the first seed it happens to appear; it is made salient once the learner already commands enough whole-thoughts that contain it. Placement is *pull, not push* — and the signal the moment has come is that the carrier phrases already exist in earlier baskets.
+
+**Contrastive twin debut.** Realise the consolidation as two (or three) overlapping M-LEGOs that share the feature — A+B and A+C, where A is the particle (constant) and B/C are already-known frames:
+
+```
+她才开始     = "she's only just started"   +   我现在才懂   = "I get it only now"
+把它放在桌子上 = "put it on the table"        +   把手举起来   = "raise your hand up"
+```
+
+Both headword cards are whole, natural thoughts; only the particle is new on each; the learner infers the feature by triangulation. The two English glosses are deliberately *near-but-different* so the learner experiences "English splits this, the target unifies it" at first contact — pre-teaching the one-to-many mapping with no rule stated.
+
+**Gloss the whole intention, never the sub-word.** Glossing the particle with an English surface word ("just", "only") smuggles a fork back in — "just" maps to 就/刚/只/才 by intention. The gloss names the whole thought ("she's-only-just-started"), not the particle.
 
 ---
 
@@ -183,11 +263,13 @@ USE examples for "after you finish" → "despues de que termines":
 
 ### Round Structure for a New LEGO
 
-1. **Intro** - LEGO introduced
+1. **Intro** - LEGO introduced (presentation audio)
 2. **Debut** - the LEGO itself
-3. **Practice** - ~7 phrases total (all BUILD + enough USE to reach ~7)
-4. **Review** - USE phrases from previous LEGOs (spaced repetition)
-5. **Consolidate** - 2x USE phrases from this LEGO
+3. **Practice** - all BUILD phrases first (shortest-first by syllable count), then USE phrases fill remaining slots, **capped at 7 total**
+4. **Review** - USE phrases of *older* LEGOs on a Fibonacci-style offset schedule (spaced repetition); see below
+5. **Consolidate** - up to **2** of this LEGO's own USE phrases not already used this round
+
+**Spaced repetition (Review) at runtime:** earlier LEGOs' USE phrases are revisited at offsets `[1, 2, 3, 5, 8, 13, 21, 34, 55, 89]` rounds back. The most-recent prior LEGO (offset 1, "N-1") contributes **3** USE phrases; every other due LEGO contributes **1**, drawn from a rotating pool so successive reviews surface fresh sentences. Total review items per round are **capped at 12**. Only USE phrases are ever reviewed — BUILD never enters spaced repetition. Components are skipped entirely at runtime.
 
 ### Syllable Guidelines
 
@@ -198,6 +280,8 @@ USE examples for "after you finish" → "despues de que termines":
 | USE (long) | LEGO + 7-10 | Yes (required) | Yes (consolidate, review) | Yes |
 
 **Key principle:** Syllable count is the proxy for cognitive load. The progression SHORT → MEDIUM → LONG creates a smooth ramp, not a cliff.
+
+> **Note on enforcement:** the SHORT/MEDIUM/LONG length spread is **pedagogical guidance, not a hard gate**. The validator's phrase-complexity tier check is **warning-only — it never blocks a submission** (it logs spread feedback as the course matures). Treat the length mix as a quality bar you hold yourself to, not a wall the API enforces. (The real always-on size limit is the 8-syllable LEGO cap above — that one does reject.)
 
 ---
 
@@ -287,6 +371,35 @@ Below shows how overlapping LEGOs work in practice. Note that "importante" appea
 
 ---
 
+## How the API Processes Your Submission
+
+### "Atomic" = validate everything, then insert everything (or nothing)
+
+When you POST a seed, **every validation gate runs first** and accumulates all failures into a single error list — ZUT/duplicate, syllable cap, tiling, vocabulary + containment, length-ratio, phrase counts, and (late-course) the balance check. **Only if that list is empty** does the insert phase run, writing `course_seeds`, `course_legos`, and `course_practice_phrases`. If any hard error exists, **nothing is inserted** and you get a structured 400 with the *full* list of problems and fix hints — there is no partial save.
+
+This is what "atomic" means here: validate-all-then-insert-all (or insert nothing). It is achieved by gating before any write, **not** by a database transaction/rollback. The upside for you: you see *all* problems at once, so fix them in one pass and resubmit rather than discovering them one at a time.
+
+### Deterministic phrase IDs — the API assigns them, you never do
+
+Every phrase gets a stable, self-describing ID **assigned by the API** — agents never set phrase IDs. Format:
+
+```
+{course_code}:S{NNNN}L{NN}{R}{NN}
+```
+
+- `S{NNNN}` = seed number, zero-padded to 4
+- `L{NN}` = LEGO index, zero-padded to 2
+- `{R}` = role letter: **C** (component), **B** (build), **U** (use)
+- `{NN}` = 1-based index within that role for that LEGO, zero-padded to 2
+
+Example: `fra_for_eng:S0042L03U05` = the 5th USE phrase of LEGO 3 in seed 42. The same phrase always gets the same ID, so audio and progress stay stable across rebuilds. Do **not** put IDs in your submission.
+
+### Intake text normalization + the canonical mismatch
+
+On intake the API normalizes all known/target text: it strips bookend punctuation and lowercases known/target — **except** non-cased scripts (Japanese, Chinese, Arabic, Korean, Hebrew, Thai, etc.) and an allowlist of always-capitalised words ("I", language names, …). Your English `known_text` for the seed **must match the canonical seed** (after normalization), or you get a `CANONICAL MISMATCH` 400 — you cannot quietly reword the seed. (Diacritics are stripped only for the internal ZUT comparison; storage and containment keep them.)
+
+---
+
 ## Seed Decomposition
 
 ### Seeds Are Vehicles for LEGOs
@@ -368,11 +481,15 @@ Introducing "now" (现在) early when there's nothing to combine with would be l
 
 Same KNOWN → same TARGET. Always.
 
+**ZUT runs in the production direction, on intentions.** One intention (KNOWN) → one form (TARGET), so the generating learner never forks. The reverse — one TARGET rendered by several natural English phrasings (Chinese 才 ≈ "only just / only now / not until") — is the *reception* direction and is harmless. Never atomise a construction-feature, or contort its gloss, just because its English shadow varies (see *Intention-units vs construction-features*).
+
 ### Violation Example
 ```
 Seed 10: "know" → 알다
-Seed 45: "know" → 알고 있다  ← REJECTED! Conflicts with seed 10
+Seed 45: "know" → 알고 있다  ← conflicts with seed 10
 ```
+
+> **Note on enforcement (granularity).** ZUT is enforced at the level of the thing that collides. A new **LEGO's** known→target that conflicts with an established mapping is the seed's *core wiring* (the seed's translation tiles from its LEGOs) — that is a hard reject; you fix the mapping and resubmit. A **practice phrase** whose known collides is enforced **per-phrase**: only the transgressing phrase is **held out** — never inserted, so a known collision can't reach a learner — while the seed and every conforming phrase still save. The held-out phrase is returned in the response (`zut_phrase` warning / `zut_held_out`) with the existing target and a consolidate-or-differentiate hint, so you fix just that one and resubmit it. ZUT is never a reason to lose a whole seed of good work. (Tom, 2026-06-14.)
 
 ### Fix: Use Different Natural Phrases
 ```
@@ -403,6 +520,12 @@ For LEGO N in seed S, phrases can ONLY use:
 - Overlapping A-LEGOs that appear within M-LEGOs above
 
 **You CANNOT use vocabulary not yet introduced!**
+
+**Phrases tile from WHOLE already-introduced chunks — never re-split into words.** The validator reconstructs each phrase only from complete LEGO/component targets that have already been introduced; it never re-splices or re-conjugates word forms. This is what blocks untaught conjugations, inversions, and contractions: if a wording needs a form you haven't introduced as a whole chunk, it fails. Vocabulary accumulates strictly in seed/idx order (LEGOs sorted by `idx`), so LEGO N may draw on prior seeds plus LEGOs 1..N-1 — **never a later sibling**. No forward references.
+
+### Late-course balance check (seeds > 20)
+
+From seed 21 onward (non-draft submissions only), a balance check guards against leaning on a handful of over-taught LEGOs while ignoring under-used ones. Each LEGO gets a `practice_score`; a submission is flagged when **more than half** its new-phrase vocabulary references are "overused" LEGOs **and** it includes **zero** "underused" ones. Escalation is **three-strike**: the first two flags are warnings, the third consecutive flag is a hard reject. A balanced submission resets the counter. In practice: keep spreading your phrases across the whole accumulated vocabulary, not just the latest few LEGOs.
 
 ---
 
@@ -616,6 +739,15 @@ For each seed:
 3. Work on the next incomplete seed
 ```
 
+### Creator vs Checker — the role guard
+
+`POST /api/seed/complete` enforces a **two-role workflow**. A request carrying `x-agent-role: creator` (or `?agent_role=creator`) is **rejected with 403** — creators may *draft* but may not *submit*.
+
+- **Creator (Sonnet):** drafts the decomposition and phrases, then hands the draft to a checker (routed via SendMessage).
+- **Checker (Opus):** reviews the draft and is the role that actually submits to `/api/seed/complete`.
+
+If you are running as a creator and try to submit, expect a 403 — that's the guard working, not a bug. Pass the draft to the checker rather than forcing the submission.
+
 ---
 
 ## QA Checkpoints
@@ -737,16 +869,18 @@ When all seeds pass validation:
 
 ---
 
-## Early Seeds (1-5): Relaxed Requirements
+## Early Seeds: The Graduated Phrase-Count Ramp
 
-Seeds 1-5 have limited vocabulary. Requirements are relaxed:
+Early seeds have limited vocabulary, so the enforced BUILD/USE minimums ramp up gradually. The validator applies exactly this graduated ramp (minimums shown as **BUILD / USE**):
 
-- Seed 1, LEGO 1: 0-2 BUILD, 0-2 USE (almost nothing to combine)
-- Seed 1, LEGO 2: 2 BUILD, 2 USE (can use L1)
-- Seeds 2-5: BUILD as needed (flexible), minimum 3 USE
-- Seeds 6+: BUILD as needed (flexible), minimum 5 USE
+- **Seed 1, LEGO 1 → 0 / 0** (nothing to combine yet)
+- **Rest of seed 1 → 1 / 1** (can use L1)
+- **Seeds 2-3 → 1 / 1**
+- **Seeds 4-5 onward → 3 / 5** — the full minimum, and it stays there for the rest of the course
 
-The BUILD quantity is always flexible based on LEGO length and cognitive load. USE minimums ensure enough eternal phrases for spaced repetition.
+A LEGO caps at **13** phrases total (`MAX_PHRASES_PER_LEGO`). These are *minimums and a maximum* — above the minimum, BUILD quantity stays flexible based on LEGO length and cognitive load, and USE minimums ensure enough eternal phrases for spaced repetition. A LEGO with **no** phrases at all is always rejected. Only phrases that literally contain the LEGO target count toward these minimums.
+
+`skip_validation` (honoured **only for seeds 1-3**) silences these phrase-count minimums — but structural gates still run, so even a skip-validation submission must tile, pass ZUT, respect vocabulary, and stay under the syllable cap.
 
 ---
 

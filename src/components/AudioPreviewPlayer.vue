@@ -381,12 +381,12 @@ watch(() => props.knownText + props.targetText, async () => {
 .audio-preview-player {
   --accent: #10b981;
   --accent-glow: rgba(16, 185, 129, 0.3);
-  --bg: #1e293b;
-  --bg-elevated: #334155;
-  --text: #f1f5f9;
-  --text-muted: #94a3b8;
+  --bg: var(--surface);
+  --bg-elevated: var(--surface-2);
+  --text: var(--ink);
+  --text-muted: var(--muted);
   --known-color: #a78bfa;
-  --target-color: #34d399;
+  --target-color: var(--accent-2);
 
   background: var(--bg);
   border-radius: 0 0 12px 12px;
@@ -466,6 +466,7 @@ watch(() => props.knownText + props.targetText, async () => {
   background: var(--bg-elevated);
   padding: 12px 16px;
   border-radius: 8px;
+  border: 1px solid var(--line);
 }
 
 .language-badge {
@@ -636,5 +637,24 @@ watch(() => props.knownText + props.targetText, async () => {
 
 .audio-error {
   color: #f87171;
+}
+
+/* Light-mode-only contrast fixes (dark mode untouched) */
+:root[data-theme="light"] .language-badge.known {
+  background: rgba(124, 58, 237, 0.14);
+  color: #6d28d9;
+}
+
+:root[data-theme="light"] .language-badge.target {
+  background: rgba(4, 120, 87, 0.14);
+  color: var(--accent-2);
+}
+
+:root[data-theme="light"] .no-audio {
+  color: #b45309;
+}
+
+:root[data-theme="light"] .audio-error {
+  color: var(--danger);
 }
 </style>

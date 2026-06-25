@@ -28,6 +28,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') }
 
 const { createClient } = require('@supabase/supabase-js')
 const podExplainer = require('./pod-explainer-generator.cjs')
+const { resolveExplainerLanguage } = require('../tools/pod-voice-coverage.cjs')
 
 // =============================================================================
 // CONFIG
@@ -37,7 +38,12 @@ const podExplainer = require('./pod-explainer-generator.cjs')
 // useful for testing whether stubborn xAI ECONNRESETs are voice-endpoint-specific
 // (e.g. retry the same failed sentence with public 'leo' / 'rex' to compare).
 const EXPLAINER_VOICE_ID = process.env.VOICE_ID || 'gfzdpspr5fdp'
-const EXPLAINER_LANGUAGE = 'auto'         // xAI multilingual handles code-switching
+// Explainer language is now resolved PER COURSE to the target language (fr,
+// pt-PT, es-MX, …) via the coverage map — Tom-validated 2026-06-07 that an
+// explicit target cue pronounces ambiguous tokens ("bien", "pain") far better
+// than 'auto'. Falls back to 'auto' for languages xAI can't speak (Azure tail).
+// This also changes the course_audio.language dedup key, so switching a course
+// from the old 'auto' clips forces fresh synthesis (no stale reuse).
 // IMPORTANT: must be 'pod_explainer'. Using role='presentation' here makes
 // these rows indistinguishable from course-intro presentation audio, and the
 // /regenerate-presentations endpoint in phase8-audio-v13.cjs deletes any
@@ -96,19 +102,55 @@ const TARGET_POD_SUFFIX = 'pod-0'
 // Stored explainer_text in DB stays clean prose for dashboard display; the
 // quoted form is rebuilt at TTS time from explainer_decomposition.
 
-function buildExplainerNarration(decomposition) {
-  // Build "X". means Y. "A". means B. from the structured chunk list.
-  // Returns null if decomposition is empty/malformed — caller falls back
-  // to plain explainer_text.
-  if (!Array.isArray(decomposition) || decomposition.length === 0) return null
-  const parts = []
-  for (const chunk of decomposition) {
-    if (!chunk || typeof chunk.chunk_target !== 'string' || typeof chunk.chunk_known !== 'string') {
-      return null
-    }
-    parts.push(`"${chunk.chunk_target}". means ${chunk.chunk_known}.`)
+// The sparse rule-3 construction tail ("— so 'from Split I am'" / "— literally
+// 'I ask'") is appended at the end of explainer_text and is NOT present in the
+// structured decomposition. Pull it so the P5 rebuild can keep it.
+function extractConstructionTail(explainerText) {
+  if (typeof explainerText !== 'string') return null
+  const m = explainerText.match(/[—–-]\s*(so|literally)\b[\s\S]*$/i)
+  if (!m) return null
+  return m[0].replace(/^[—–\-]\s*/, '').trim().replace(/[.\s]*$/, '.')
+}
+
+function buildExplainerNarration(decomposition, explainerText, connector = 'means') {
+  // FIRST-ENCOUNTER DISCIPLINE (Tom 2026-06-10): chunks flagged
+  // first_encounter:false by runOncePass are repeats — never narrated again.
+  // A flagless chunk counts as first (pre-once-pass rows keep old behaviour).
+  // Identity chunks ("Sarah" means Sarah — untranslated proper nouns the
+  // model failed to drop per rule 6) carry zero information: never narrated.
+  if (Array.isArray(decomposition) && decomposition.length > 0) {
+    const active = decomposition.filter(c => c && c.first_encounter !== false && !isIdentityChunk(c))
+    if (active.length === 0) return null // everything already introduced — no explainer
+    decomposition = active
   }
-  return parts.join(' ')
+  // P5 PUNCTUATION FORM (Tom-validated 2026-05-20 across spa+ita; see
+  // reference_ssi_tts_recipe_and_intro_model): double-quote each target chunk
+  // and put a period after it, joined by the localised connector —
+  //   "buongiorno". means good morning. "come stai". means how are you doing.
+  // The quotes+period give xAI an unambiguous discrete-foreign-token cue with
+  // NOTHING to misparse (the SSML <voice xml:lang> approach leaked the word
+  // "voice" in 5-15% of clips). Built from the structured decomposition (the
+  // clean target/known pairs). The rare construction tail lives only in
+  // explainer_text, so we extract + append it. NOTE: verbatim TTS of the clean
+  // dashboard prose would DROP the quote cue, so we rebuild from decomposition
+  // whenever it's present and fall back to verbatim prose only when it isn't.
+  if (Array.isArray(decomposition) && decomposition.length > 0) {
+    const parts = []
+    let ok = true
+    for (const chunk of decomposition) {
+      if (!chunk || typeof chunk.chunk_target !== 'string' || typeof chunk.chunk_known !== 'string') { ok = false; break }
+      parts.push(`"${chunk.chunk_target}". ${connector} ${chunk.chunk_known}.`)
+    }
+    if (ok && parts.length) {
+      let narration = parts.join(' ')
+      const tail = extractConstructionTail(explainerText)
+      if (tail) narration += ` ${tail}`
+      return narration
+    }
+  }
+  // Fallback: no usable decomposition → TTS explainer_text verbatim.
+  if (typeof explainerText === 'string' && explainerText.trim()) return explainerText.trim()
+  return null
 }
 
 // =============================================================================
@@ -187,12 +229,23 @@ async function runTextPass(courseCode) {
   // Pull all in-scope candidates for this course (canonical pod only by default).
   const podPattern = podFilter(courseCode)
   const podQuery = allPods
-    ? supabase.from('listening_pod_sentences').select('id, target_text, known_text').like('pod_id', podPattern)
-    : supabase.from('listening_pod_sentences').select('id, target_text, known_text').eq('pod_id', podPattern)
+    ? supabase.from('listening_pod_sentences').select('id, target_text, known_text, speaker').like('pod_id', podPattern)
+    : supabase.from('listening_pod_sentences').select('id, target_text, known_text, speaker').eq('pod_id', podPattern)
   const { data: rows, error } = await podQuery.is('explainer_text', null)
   if (error) throw new Error(`load candidates: ${error.message}`)
 
-  const valid = (rows || []).filter(r => r.target_text && r.known_text)
+  // Narrator rows are the canon-v2 vocab codas (numbers/colours/days). They
+  // NEVER get an explainer — the translation plays anyway (Tom 2026-06-10).
+  // Stamp them '' so they're deliberately done, not re-scanned every run.
+  const codas = (rows || []).filter(r => r.speaker === 'Narrator')
+  for (const r of codas) {
+    const { error: codaErr } = await supabase.from('listening_pod_sentences')
+      .update({ explainer_decomposition: [], explainer_text: '' }).eq('id', r.id)
+    if (codaErr) log(`[${courseCode}] coda stamp failed:`, r.id, codaErr.message)
+  }
+  if (codas.length) log(`[${courseCode}] text: ${codas.length} Narrator coda(s) stamped no-explainer`)
+
+  const valid = (rows || []).filter(r => r.target_text && r.known_text && r.speaker !== 'Narrator')
   log(`[${courseCode}] text: ${valid.length} sentences to process`)
   if (valid.length === 0) return { updated: 0, failed: 0, skipped: false }
 
@@ -243,11 +296,96 @@ async function runTextPass(courseCode) {
 }
 
 // =============================================================================
+// ONCE PASS — first-encounter discipline (Tom 2026-06-10)
+// =============================================================================
+// "We never want an explainer for something ALREADY introduced." Deterministic
+// code, not LLM judgement: walk each pod in global_order, flag every chunk's
+// FIRST occurrence (first_encounter:true) and every repeat (false). Narration
+// (buildExplainerNarration) speaks only first-encounter chunks; a sentence
+// with nothing new gets explainer_text '' and no audio — the player just plays
+// the translation. Decomposition data is kept intact (flags are additive).
+// Idempotent: same rows in, same flags out; audio is nulled ONLY when the
+// effective narration actually changed.
+
+function normChunkKey(s) {
+  return String(s || '').normalize('NFC').toLowerCase()
+    .replace(/\s+/g, ' ')
+    .replace(/^[\p{P}\s]+|[\p{P}\s]+$/gu, '')
+    .trim()
+}
+
+// "X means X" is always noise — an untranslated token (proper noun, loanword
+// echo) the model should have dropped. Excluded from narration and prose.
+function isIdentityChunk(ch) {
+  const t = normChunkKey(ch && ch.chunk_target)
+  return t !== '' && t === normChunkKey(ch && ch.chunk_known)
+}
+
+async function runOncePass(courseCode) {
+  const { learner } = podExplainer.parseCourseCode(courseCode)
+  const connector = podExplainer.getConnectorForLearnerLang(learner)
+  const podPattern = podFilter(courseCode)
+  const COLS = 'id, pod_id, global_order, explainer_decomposition, explainer_text, explainer_audio_id'
+  const q = allPods
+    ? supabase.from('listening_pod_sentences').select(COLS).like('pod_id', podPattern)
+    : supabase.from('listening_pod_sentences').select(COLS).eq('pod_id', podPattern)
+  const { data: rows, error } = await q.order('pod_id').order('global_order')
+  if (error) throw new Error(`once-pass load: ${error.message}`)
+
+  let flagged = 0, emptied = 0, revoice = 0
+  const seenByPod = new Map()
+  for (const row of rows || []) {
+    const dec = Array.isArray(row.explainer_decomposition) ? row.explainer_decomposition : null
+    if (!dec || dec.length === 0) continue
+    if (!seenByPod.has(row.pod_id)) seenByPod.set(row.pod_id, new Set())
+    const seen = seenByPod.get(row.pod_id)
+
+    const oldNarration = buildExplainerNarration(dec, row.explainer_text, connector)
+    const newDec = dec.map(ch => {
+      const key = normChunkKey(ch && ch.chunk_target)
+      if (!key) return ch
+      const first = !seen.has(key)
+      seen.add(key)
+      return { ...ch, first_encounter: first }
+    })
+    const newNarration = buildExplainerNarration(newDec, row.explainer_text, connector)
+
+    const active = newDec.filter(c => c && c.first_encounter !== false && !isIdentityChunk(c))
+    const flagsChanged = JSON.stringify(newDec) !== JSON.stringify(dec)
+    const narrationChanged = newNarration !== oldNarration
+
+    if (!flagsChanged && !narrationChanged) continue
+
+    // Display prose mirrors the spoken form: first-encounter chunks only,
+    // tail preserved while any chunk survives; '' when nothing is new.
+    const tail = extractConstructionTail(row.explainer_text)
+    const newText = active.length === 0 ? '' :
+      active.map(ch => `${ch.chunk_target} ${connector} ${ch.chunk_known}`).join(', ') + (tail ? ` — ${tail.replace(/\.$/, '')}` : '')
+
+    const update = { explainer_decomposition: newDec, explainer_text: newText }
+    if (narrationChanged && row.explainer_audio_id) { update.explainer_audio_id = null; revoice++ }
+    const { error: upErr } = await supabase.from('listening_pod_sentences').update(update).eq('id', row.id)
+    if (upErr) { log(`[${courseCode}] once-pass write failed:`, row.id, upErr.message); continue }
+    flagged++
+    if (active.length === 0) emptied++
+  }
+  log(`[${courseCode}] once-pass: ${flagged} rows updated (${emptied} fully-repeat → no explainer, ${revoice} queued for re-voice)`)
+  return { flagged, emptied, revoice }
+}
+
+// =============================================================================
 // AUDIO PASS
 // =============================================================================
 
 async function runAudioPass(courseCode) {
-  log(`[${courseCode}] audio: scanning rows ready for TTS...`)
+  // Localised connector for the P5 narration ("means" for _for_eng, "veut dire"
+  // for _for_fra, …), keyed on the learner (known) half of the course code.
+  const { target, learner } = podExplainer.parseCourseCode(courseCode)
+  const connector = podExplainer.getConnectorForLearnerLang(learner)
+  // Explicit target-language cue (fr / pt-PT / es-MX / …) so ambiguous tokens
+  // pronounce correctly; 'auto' only for languages xAI can't speak.
+  const explainerLanguage = resolveExplainerLanguage(target)
+  log(`[${courseCode}] audio: scanning rows ready for TTS... (connector="${connector}", language="${explainerLanguage}")`)
   // Pull sentences where explainer_text is non-empty AND explainer_audio_id is NULL.
   // Empty explainer_text rows are intentional skips (one-chunk sentences) and
   // shouldn't generate audio. explainer_decomposition is the structured form
@@ -269,48 +407,67 @@ async function runAudioPass(courseCode) {
   const { generatePodAudio } = getPhase8()
   let rendered = 0
   let reused = 0
-  let failed = 0
 
-  // Fan out AUDIO_PARALLEL TTS calls — each one mastering + uploading +
-  // inserting into course_audio independently. The findExistingAudio cache
-  // inside generatePodAudio dedupes by text+voice across sentences with
-  // identical explainer_text (rare but possible).
-  for (let i = 0; i < rows.length; i += AUDIO_PARALLEL) {
-    const wave = rows.slice(i, i + AUDIO_PARALLEL)
-    await Promise.all(wave.map(async row => {
-      try {
-        // Prefer the P5-quoted form built from the structured decomposition;
-        // if that's missing/malformed (legacy rows before the explainer
-        // columns landed) fall back to the flat explainer_text.
-        const narration = buildExplainerNarration(row.explainer_decomposition)
-        const ttsText = narration || row.explainer_text
-        const result = await generatePodAudio({
-          courseCode,
-          text: ttsText,
-          language: EXPLAINER_LANGUAGE,
-          role: EXPLAINER_ROLE,
-          voice: {
-            voice_id: EXPLAINER_VOICE_ID,
-            provider: EXPLAINER_PROVIDER,
-          },
-        })
-        const audioId = result.id
-        if (!audioId) throw new Error('no audio id returned from generatePodAudio')
-        const { error: upErr } = await supabase
-          .from('listening_pod_sentences')
-          .update({ explainer_audio_id: audioId })
-          .eq('id', row.id)
-        if (upErr) throw new Error(`link write failed: ${upErr.message}`)
-        if (result.reused) reused++
-        else rendered++
-      } catch (err) {
-        failed++
-        log(`[${courseCode}] audio fail for ${row.id}:`, err?.message || err)
-      }
-    }))
-    log(`[${courseCode}] audio progress: ${rendered} rendered + ${reused} reused, ${failed} failed (of ${rows.length})`)
+  async function renderOne(row) {
+    // TTS the authored explainer_text VERBATIM (it carries the calibrated
+    // tail / usage note). Only legacy rows with no explainer_text fall back
+    // to the rebuilt P5-quoted form from the structured decomposition.
+    const narration = buildExplainerNarration(row.explainer_decomposition, row.explainer_text, connector)
+    const ttsText = narration || row.explainer_text
+    const result = await generatePodAudio({
+      courseCode,
+      text: ttsText,
+      language: explainerLanguage,
+      role: EXPLAINER_ROLE,
+      voice: {
+        voice_id: EXPLAINER_VOICE_ID,
+        provider: EXPLAINER_PROVIDER,
+        // carry the locale so buildPodTTSConfig uses it directly (toBcp47
+        // would strip pt-PT→pt, es-MX→es; the explainer needs the exact cue)
+        locale: explainerLanguage === 'auto' ? null : explainerLanguage,
+      },
+    })
+    const audioId = result.id
+    if (!audioId) throw new Error('no audio id returned from generatePodAudio')
+    const { error: upErr } = await supabase
+      .from('listening_pod_sentences')
+      .update({ explainer_audio_id: audioId })
+      .eq('id', row.id)
+    if (upErr) throw new Error(`link write failed: ${upErr.message}`)
+    return result.reused
   }
-  return { rendered, reused, failed }
+
+  // Round 0 over all rows, then retry rounds over ONLY the still-failed rows.
+  // generatePodAudio dedupes by text+voice (findExistingAudio), so a retry
+  // re-attempts just the failures. This mirrors the tts stage's retry-rounds so
+  // transient S3 / Supabase / connection blips under load self-heal instead of
+  // permanently failing the clip (this stage previously had NO retry, which made
+  // it the fragile link whenever the machine was under concurrent load).
+  let queue = rows
+  for (let round = 0; round <= 3 && queue.length; round++) {
+    if (round > 0) {
+      log(`[${courseCode}] explainer retry round ${round}: ${queue.length} failed clip(s)`)
+      await new Promise(r => setTimeout(r, 3000 * round))
+    }
+    const stillFailed = []
+    for (let i = 0; i < queue.length; i += AUDIO_PARALLEL) {
+      const wave = queue.slice(i, i + AUDIO_PARALLEL)
+      await Promise.all(wave.map(async row => {
+        try {
+          const wasReused = await renderOne(row)
+          if (wasReused) reused++; else rendered++
+        } catch (err) {
+          stillFailed.push(row)
+          // err.message carries a [STAGE=...] tag from generatePodAudio identifying
+          // which call failed (tts / master / s3) — keep it for triage.
+          log(`[${courseCode}] audio fail for ${row.id}: code=${err?.code || '?'} ${err?.message || err}`)
+        }
+      }))
+      log(`[${courseCode}] audio progress: ${rendered} rendered + ${reused} reused, ${stillFailed.length} failing-this-round (of ${queue.length})`)
+    }
+    queue = stillFailed
+  }
+  return { rendered, reused, failed: queue.length }
 }
 
 // =============================================================================
@@ -327,9 +484,20 @@ async function runAudioPass(courseCode) {
     const courseStart = Date.now()
     let textResult = null
     let audioResult = null
+    // COMPOSITE EXPLAINERS FOR ALL COURSES (Tom 2026-06-11). Born as the
+    // fix for languages the clone can't speak, promoted to THE method:
+    // the learner hears each chunk as THE CHARACTER ACTUALLY SAYS IT (the
+    // cast voice), with "means …" glosses in the known voice — absolute
+    // consistency, no second generative rendering to drift or mispronounce,
+    // and it works for every language pair. The clone path (runAudioPass)
+    // is retired; see services/pod-explainer-composite.cjs.
     try {
       if (runText) textResult = await runTextPass(courseCode)
-      if (runAudio) audioResult = await runAudioPass(courseCode)
+      await runOncePass(courseCode) // first-encounter discipline before any TTS
+      if (runAudio) {
+        const { compositeExplainersForCourse } = require('./pod-explainer-composite.cjs')
+        audioResult = await compositeExplainersForCourse(courseCode, { log })
+      }
     } catch (err) {
       log(`[${courseCode}] FATAL:`, err?.message || err)
       summary.push({ courseCode, error: err?.message || String(err) })

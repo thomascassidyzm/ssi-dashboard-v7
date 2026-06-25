@@ -231,9 +231,9 @@ defineExpose({
 }
 
 .env-select {
-  background: var(--color-slate, #334155);
-  border: 1px solid var(--color-graphite, #475569);
-  color: var(--color-paper-dim, #c1c1bb);
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--line);
+  color: var(--color-paper-dim, var(--muted));
   font-size: 0.8125rem;
   padding: 0.375rem 2.5rem 0.375rem 0.75rem;
   border-radius: 6px;
@@ -243,14 +243,14 @@ defineExpose({
 }
 
 .env-select:hover {
-  border-color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, var(--accent));
 }
 
 .select-arrow {
   position: absolute;
   right: 1.75rem;
   pointer-events: none;
-  color: var(--color-paper-dim, #c1c1bb);
+  color: var(--color-paper-dim, var(--muted));
 }
 
 .status-dot {
@@ -277,7 +277,7 @@ defineExpose({
   padding: 0.375rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 500;
-  color: #e2e8f0;
+  color: #ffffff;
   background: #1e40af;
   border: 1px solid #2563eb;
   border-radius: 6px;
