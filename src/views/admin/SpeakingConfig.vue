@@ -146,10 +146,7 @@
                 {{ b.label }} <span class="belt-spd">{{ b.speed }}×</span>
               </button>
             </div>
-            <label v-else class="lab-rate">Turbo speed
-              <input type="number" min="0.8" max="2" step="0.05" v-model.number="labCfg.playback_speed" />
-              <span class="lab-rate-note">× — ignores belt ramp</span>
-            </label>
+            <span v-else class="lab-belt-label">Turbo · 1.0× (no belt ramp, never faster than native)</span>
             <label class="lab-rate">~ms / syllable
               <input type="number" min="50" step="10" v-model.number="msPerSyllable" />
             </label>
@@ -285,10 +282,10 @@ const belt = ref('white')
 const beltSpeedVal = computed(() => (BELTS.find(b => b.key === belt.value) || {}).speed || 1)
 
 // Effective playback speed driving actual-time pause + audio: Normal follows
-// the belt ramp; Turbo plays at its OWN full speed, ignoring the belt (it
-// doesn't slow for beginners) — mirrors the runtime getPlaybackSpeedMultiplier.
+// the belt ramp; Turbo plays at native 1.0× — drops the belt ramp but is capped
+// at 1.0× (never speeds the voice up). Mirrors getPlaybackSpeedMultiplier.
 const isTurbo = computed(() => labMode.value === 'turbo_boost')
-const effectiveSpeed = computed(() => isTurbo.value ? (labCfg.value?.playback_speed || 1) : beltSpeedVal.value)
+const effectiveSpeed = computed(() => isTurbo.value ? Math.min(labCfg.value?.playback_speed || 1, 1.0) : beltSpeedVal.value)
 
 // A sensible starting curve per mode — reference = average of both voices, a
 // real boot floor, and a knee so long sentences level off instead of scaling
