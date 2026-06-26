@@ -121,19 +121,19 @@
           </div>
         </div>
 
-        <div class="field-grid">
-          <NumField v-model="labCfg.min_pause_ms" label="Floor (boot / reaction)" suffix="ms"
-            help="Hard minimum — the pause can never go below this, however short the phrase." />
-          <NumField v-model="labCfg.pause_base_ms" label="Base" suffix="ms"
-            help="Flat amount added before the length-proportional part." />
-          <NumField v-model="labCfg.pause_multiplier" label="Multiplier (short/med)" suffix="× ref dur" :step="0.05"
-            help="Slope up to the knee — how much pause per ms of reference duration." />
-          <NumField v-model="labCfg.pause_knee_ms" label="Knee" suffix="ms ref"
-            help="Reference-duration point where the slope relaxes. Below it = full multiplier; above it = the gentler tail multiplier. Set very high for a straight line." />
-          <NumField v-model="labCfg.pause_tail_multiplier" label="Tail multiplier (long)" suffix="× ref dur" :step="0.05"
-            help="Gentler slope beyond the knee, so long sentences don't keep scaling at the full rate." />
-          <NumField v-model="labCfg.max_pause_ms" label="Ceiling" suffix="ms"
-            help="Hard maximum the pause is clamped to." />
+        <div class="knob-grid">
+          <div v-for="k in KNOBS" :key="k.key" class="knob">
+            <div class="knob-top">
+              <label>{{ k.label }}</label>
+              <span class="knob-val">{{ k.fmt(labCfg[k.key] ?? 0) }}</span>
+            </div>
+            <input
+              type="range"
+              :min="k.min" :max="k.max" :step="k.step"
+              :value="labCfg[k.key] ?? 0"
+              @input="labCfg[k.key] = Number($event.target.value)"
+            />
+          </div>
         </div>
 
         <!-- Live preview across syllable buckets -->
@@ -146,24 +146,36 @@
             <span class="lab-rate-note">at {{ (labCfg.playback_speed || 1) }}× playback · each voice ≈ syllables × this</span>
           </div>
 
-          <div class="lab-buckets">
-            <div v-for="b in previewBuckets" :key="b.key" class="lab-bucket">
-              <div class="lab-bucket-label">{{ b.label }} <span class="lab-bucket-range">{{ b.range }}</span></div>
-              <div class="lab-rows">
-                <div v-for="r in b.rows" :key="r.syll" class="lab-bar-row">
-                  <span class="lab-syll">{{ r.syll }} syl</span>
-                  <div class="lab-track">
-                    <div class="lab-floor" :style="{ left: pct(labCfg.min_pause_ms) }" title="floor"></div>
-                    <div class="lab-bar" :class="{ atfloor: r.pause <= (labCfg.min_pause_ms || 0), atceil: r.pause >= (labCfg.max_pause_ms || Infinity) }" :style="{ width: pct(r.pause) }"></div>
-                  </div>
-                  <span class="lab-pause">{{ (r.pause / 1000).toFixed(1) }}s</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="lab-axis">
-            <span>0s</span><span>floor {{ ((labCfg.min_pause_ms||0)/1000).toFixed(1) }}s</span><span>{{ (labAxisMaxMs/1000).toFixed(0) }}s</span>
-          </div>
+          <svg v-if="curve" class="lab-chart" :viewBox="`0 0 ${CHART.w} ${CHART.h}`" preserveAspectRatio="xMidYMid meet">
+            <!-- y grid + labels (seconds) -->
+            <g class="chart-grid">
+              <line v-for="t in curve.yTicks" :key="'yl'+t.label" :x1="CHART.padL" :x2="CHART.w - CHART.padR" :y1="t.y" :y2="t.y" />
+              <text v-for="t in curve.yTicks" :key="'yt'+t.label" :x="CHART.padL - 6" :y="t.y + 3" text-anchor="end" class="chart-axis-text">{{ t.label }}</text>
+            </g>
+            <!-- x labels (syllables) -->
+            <text v-for="t in curve.xTicks" :key="'xt'+t.label" :x="t.x" :y="CHART.h - 8" text-anchor="middle" class="chart-axis-text">{{ t.label }}</text>
+            <text :x="CHART.w - CHART.padR" :y="CHART.h - 8" text-anchor="end" class="chart-axis-title">syllables</text>
+            <!-- floor -->
+            <line class="chart-floor" :x1="CHART.padL" :x2="CHART.w - CHART.padR" :y1="curve.floorY" :y2="curve.floorY" />
+            <text :x="CHART.w - CHART.padR" :y="curve.floorY - 4" text-anchor="end" class="chart-mark-text">floor</text>
+            <!-- ceiling -->
+            <template v-if="curve.ceilInView">
+              <line class="chart-ceil" :x1="CHART.padL" :x2="CHART.w - CHART.padR" :y1="curve.ceilY" :y2="curve.ceilY" />
+              <text :x="CHART.w - CHART.padR" :y="curve.ceilY - 4" text-anchor="end" class="chart-mark-text">ceiling</text>
+            </template>
+            <!-- knee -->
+            <template v-if="curve.kneeX != null">
+              <line class="chart-knee" :x1="curve.kneeX" :x2="curve.kneeX" :y1="CHART.padT" :y2="curve.baseY" />
+              <text :x="curve.kneeX" :y="CHART.padT + 8" text-anchor="middle" class="chart-mark-text knee">knee</text>
+            </template>
+            <!-- the curve -->
+            <polyline class="chart-curve" :points="curve.polyline" />
+            <!-- real sample dots -->
+            <g v-for="d in curve.dots" :key="d.key">
+              <circle class="chart-dot" :cx="d.x" :cy="d.y" r="4" />
+              <text :x="d.x" :y="d.y - 8" text-anchor="middle" class="chart-dot-text">{{ (d.ms/1000).toFixed(1) }}s</text>
+            </g>
+          </svg>
         </div>
 
         <!-- Audible preview — hear the gap on real sentences -->
@@ -207,7 +219,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../../composables/useAuth'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './algorithmConfigShared'
-import { pauseFromRef, referenceMs, computePauseDuration, SYLLABLE_BUCKETS } from './pauseModel'
+import { computePauseDuration, SYLLABLE_BUCKETS } from './pauseModel'
 import CoursePicker from '../../components/CoursePicker.vue'
 import { getApiBaseUrl } from '../../services/api'
 
@@ -268,34 +280,61 @@ function applySuggested() {
   if (labCfg.value) Object.assign(labCfg.value, SUGGESTED[labMode.value] || {})
 }
 
-// Per syllable count, estimate each answer voice's duration then run the live
-// (unsaved) config through the real pause formula.
-function pauseForSyllables(syll) {
-  const cfg = labCfg.value
-  if (!cfg) return 0
-  const perVoiceMs = syll * (msPerSyllable.value || 0)
-  const ref = referenceMs(perVoiceMs, perVoiceMs, cfg)
-  return pauseFromRef(ref, cfg)
-}
+// Slider specs — drag, don't type. Each binds to a labCfg field.
+const KNOBS = [
+  { key: 'min_pause_ms', label: 'Floor (boot / reaction)', min: 0, max: 6000, step: 100, unit: 'ms', fmt: v => v + 'ms' },
+  { key: 'pause_base_ms', label: 'Base', min: 0, max: 4000, step: 100, unit: 'ms', fmt: v => v + 'ms' },
+  { key: 'pause_multiplier', label: 'Multiplier (short / med)', min: 0, max: 3, step: 0.05, unit: '×', fmt: v => Number(v).toFixed(2) + '×' },
+  { key: 'pause_knee_ms', label: 'Knee (where it bends)', min: 500, max: 8000, step: 100, unit: 'ms', fmt: v => v + 'ms' },
+  { key: 'pause_tail_multiplier', label: 'Tail multiplier (long)', min: 0, max: 2, step: 0.05, unit: '×', fmt: v => Number(v).toFixed(2) + '×' },
+  { key: 'max_pause_ms', label: 'Ceiling', min: 4000, max: 20000, step: 500, unit: 'ms', fmt: v => v + 'ms' },
+]
 
-const previewBuckets = computed(() =>
-  SYLLABLE_BUCKETS.map(b => ({
-    ...b,
-    rows: b.samples.map(syll => ({ syll, pause: pauseForSyllables(syll) })),
-  }))
-)
-
-// Axis scales to the longest previewed pause (or the ceiling, whichever the
-// bars actually reach), so the floor/ceiling markers stay meaningful.
-const labAxisMaxMs = computed(() => {
+// ============================================================================
+// Live curve — pause (y) vs sentence length in syllables (x). Redraws on every
+// knob drag so "knee" et al are visible, not abstract. Real sample sentences
+// are plotted as dots so the synthetic curve is anchored to actual clips.
+// ============================================================================
+const CHART = { w: 580, h: 220, padL: 44, padR: 14, padT: 14, padB: 30, maxSyll: 18 }
+const curve = computed(() => {
   const cfg = labCfg.value
-  if (!cfg) return 10000
-  const maxPause = Math.max(...previewBuckets.value.flatMap(b => b.rows.map(r => r.pause)), cfg.min_pause_ms || 0)
-  return Math.max(maxPause * 1.05, 1000)
+  if (!cfg) return null
+  const rate = msPerSyllable.value || 280
+  const yTop = Math.max(cfg.max_pause_ms || 16000, 6000)
+  const plotW = CHART.w - CHART.padL - CHART.padR
+  const plotH = CHART.h - CHART.padT - CHART.padB
+  const xOf = syll => CHART.padL + (syll / CHART.maxSyll) * plotW
+  const yOf = ms => CHART.padT + plotH - (Math.min(ms, yTop) / yTop) * plotH
+
+  const pts = []
+  for (let s = 0; s <= CHART.maxSyll; s += 0.5) {
+    const perVoice = s * rate
+    pts.push(`${xOf(s).toFixed(1)},${yOf(computePauseDuration(perVoice, perVoice, cfg)).toFixed(1)}`)
+  }
+  // ref = perVoice for avg/target1 (t1=t2 in the synthetic curve); ×2 for sum.
+  const refMult = cfg.pause_reference === 'sum' ? 2 : 1
+  const kneeSyll = (cfg.pause_knee_ms ?? Infinity) / (refMult * rate)
+  const dots = sampleByBucket.value
+    .filter(b => b.sentence)
+    .map(b => ({ key: b.key, label: b.label, x: xOf(b.sentence.syll), y: yOf(computePauseFor(b.sentence)), s: b.sentence.syll, ms: computePauseFor(b.sentence) }))
+
+  // Axis ticks
+  const xTicks = []
+  for (let s = 0; s <= CHART.maxSyll; s += 3) xTicks.push({ x: xOf(s), label: String(s) })
+  const yTicks = []
+  const stepS = yTop <= 8000 ? 2000 : 4000
+  for (let ms = 0; ms <= yTop; ms += stepS) yTicks.push({ y: yOf(ms), label: (ms / 1000) + 's' })
+
+  return {
+    polyline: pts.join(' '),
+    floorY: yOf(cfg.min_pause_ms || 0),
+    ceilY: yOf(cfg.max_pause_ms || yTop),
+    ceilInView: (cfg.max_pause_ms || yTop) <= yTop,
+    kneeX: kneeSyll <= CHART.maxSyll && Number.isFinite(kneeSyll) ? xOf(kneeSyll) : null,
+    baseY: CHART.padT + plotH,
+    xTicks, yTicks, dots,
+  }
 })
-function pct(ms) {
-  return `${Math.max(0, Math.min(100, (100 * (ms || 0)) / labAxisMaxMs.value))}%`
-}
 
 // ============================================================================
 // Audible preview — hear the gap. Plays a real sentence as the learner does:
@@ -662,19 +701,26 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.8125rem; outline: none;
 }
 .lab-rate-note { font-size: 0.72rem; color: var(--color-paper-dim, var(--faint)); }
-.lab-buckets { display: flex; flex-direction: column; gap: 0.85rem; }
-.lab-bucket-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-paper-dim, var(--muted)); margin-bottom: 0.3rem; }
-.lab-bucket-range { text-transform: none; letter-spacing: 0; color: var(--color-paper-dim, var(--faint)); margin-left: 0.3rem; }
-.lab-rows { display: flex; flex-direction: column; gap: 0.25rem; }
-.lab-bar-row { display: grid; grid-template-columns: 52px 1fr 44px; align-items: center; gap: 0.5rem; }
-.lab-syll { font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.72rem; color: var(--color-paper-dim, var(--muted)); text-align: right; }
-.lab-track { position: relative; height: 16px; background: rgba(0,0,0,0.22); border-radius: 4px; overflow: hidden; }
-.lab-bar { height: 100%; background: #3b82f6; border-radius: 4px; transition: width 0.12s ease; }
-.lab-bar.atfloor { background: #f59e0b; }
-.lab-bar.atceil { background: #ef4444; }
-.lab-floor { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1px dashed rgba(255,255,255,0.45); z-index: 2; }
-.lab-pause { font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.78rem; color: var(--color-paper, var(--ink)); }
-.lab-axis { display: flex; justify-content: space-between; margin-top: 0.5rem; font-size: 0.68rem; color: var(--color-paper-dim, var(--faint)); font-family: var(--font-mono, ui-monospace, Menlo, monospace); }
+/* Knob sliders */
+.knob-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.85rem 1.25rem; margin-bottom: 0.5rem; }
+.knob-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.3rem; }
+.knob-top label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-paper-dim, var(--muted)); }
+.knob-val { font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 0.82rem; color: var(--color-paper, var(--ink)); }
+.knob input[type="range"] { width: 100%; accent-color: #3b82f6; height: 20px; cursor: pointer; }
+
+/* Live curve chart */
+.lab-chart { width: 100%; height: auto; display: block; }
+.chart-grid line { stroke: rgba(255,255,255,0.07); stroke-width: 1; }
+.chart-axis-text { fill: var(--color-paper-dim, var(--faint)); font-size: 10px; font-family: var(--font-mono, ui-monospace, Menlo, monospace); }
+.chart-axis-title { fill: var(--color-paper-dim, var(--muted)); font-size: 10px; }
+.chart-curve { fill: none; stroke: #60a5fa; stroke-width: 2.5; }
+.chart-floor { stroke: #f59e0b; stroke-width: 1.5; stroke-dasharray: 5 4; }
+.chart-ceil { stroke: #ef4444; stroke-width: 1.5; stroke-dasharray: 5 4; }
+.chart-knee { stroke: #93c5fd; stroke-width: 1.5; stroke-dasharray: 3 3; }
+.chart-mark-text { fill: var(--color-paper-dim, var(--muted)); font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em; font-family: var(--font-mono, ui-monospace, Menlo, monospace); }
+.chart-mark-text.knee { fill: #93c5fd; }
+.chart-dot { fill: #fbbf24; stroke: var(--color-ink, #0b1220); stroke-width: 1.5; }
+.chart-dot-text { fill: var(--color-paper, var(--ink)); font-size: 9px; font-family: var(--font-mono, ui-monospace, Menlo, monospace); }
 
 /* Audible preview */
 .lab-hear { margin-top: 1rem; padding-top: 0.85rem; border-top: 1px dashed var(--color-graphite, var(--surface-3)); }
@@ -749,7 +795,10 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 [data-theme="light"] .lab-preview-title { color: #1d4ed8; }
 [data-theme="light"] .lab-rate input,
 [data-theme="light"] .lab-track { background: var(--surface-2); border: 1px solid var(--line); }
-[data-theme="light"] .lab-floor { border-left-color: rgba(15, 23, 42, 0.4); }
+[data-theme="light"] .chart-grid line { stroke: rgba(15, 23, 42, 0.08); }
+[data-theme="light"] .chart-dot { stroke: #fff; }
+[data-theme="light"] .chart-knee { stroke: #1d4ed8; }
+[data-theme="light"] .chart-mark-text.knee { fill: #1d4ed8; }
 [data-theme="light"] .admin-warn { color: #92400e; }
 [data-theme="light"] .err,
 [data-theme="light"] :deep(.save-err) { color: #b91c1c; }
