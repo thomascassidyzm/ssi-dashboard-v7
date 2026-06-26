@@ -461,26 +461,29 @@ async function playClip(id, rate) {
   })
 }
 // Play one sentence as the learner hears it, with the LIVE (unsaved) pause.
+// Clips play at their natural recorded speed (1.0×). The real player applies a
+// SEPARATE belt-based target-speed ramp (computePlaybackSpeed — slower for
+// beginners, →1.0); that's not part of pause config, so the lab doesn't model
+// it. This preview is about the GAP, not the speaking speed.
 async function playWithPause(sample, key) {
   if (!sample || !labCfg.value) return
   stopPreview()
   previewStop = false
   playingKey.value = key
-  const rate = labCfg.value.playback_speed || 1
   const pauseMs = computePauseDuration(sample.t1ms, sample.t2ms, labCfg.value)
   playingPhase.value = 'known'
-  await playClip(sample.known_id, rate)
+  await playClip(sample.known_id, 1)
   if (previewStop) return
   playingPhase.value = 'pause'                       // the gap under test
   await new Promise(r => setTimeout(r, pauseMs))
   if (previewStop) return
   playingPhase.value = 'target1'
-  await playClip(sample.t1_id, rate)
+  await playClip(sample.t1_id, 1)
   if (previewStop) return
   await new Promise(r => setTimeout(r, 250))
   if (previewStop) return
   playingPhase.value = 'target2'
-  await playClip(sample.t2_id, rate)
+  await playClip(sample.t2_id, 1)
   playingPhase.value = ''
   playingKey.value = ''
 }
