@@ -101,9 +101,14 @@
           @reset="reset(labMode)"
         />
 
-        <div class="lab-modeswitch">
-          <button :class="{ on: labMode === 'normal_mode' }" @click="labMode = 'normal_mode'">Normal</button>
-          <button :class="{ on: labMode === 'turbo_boost' }" @click="labMode = 'turbo_boost'">Turbo</button>
+        <div class="lab-modeswitch-row">
+          <div class="lab-modeswitch">
+            <button :class="{ on: labMode === 'normal_mode' }" @click="labMode = 'normal_mode'">Normal</button>
+            <button :class="{ on: labMode === 'turbo_boost' }" @click="labMode = 'turbo_boost'">Turbo</button>
+          </div>
+          <button class="lab-suggest" @click="applySuggested" title="Drop a sensible starting curve into the knobs (unsaved — tweak, then Save)">
+            ✨ Load suggested
+          </button>
         </div>
 
         <!-- Reference: what duration the pause scales with -->
@@ -251,6 +256,17 @@ function toggleFib(idx) {
 const labMode = ref('normal_mode')
 const msPerSyllable = ref(280)
 const labCfg = computed(() => drafts[labMode.value] || null)
+
+// A sensible starting curve per mode — reference = average of both voices, a
+// real boot floor, and a knee so long sentences level off instead of scaling
+// at the full multiplier. Applied UNSAVED via the lab button; tweak then Save.
+const SUGGESTED = {
+  normal_mode: { pause_reference: 'avg', min_pause_ms: 2500, pause_base_ms: 800, pause_multiplier: 1.0, pause_knee_ms: 2200, pause_tail_multiplier: 0.4, max_pause_ms: 16000, playback_speed: 1.0 },
+  turbo_boost: { pause_reference: 'avg', min_pause_ms: 1800, pause_base_ms: 500, pause_multiplier: 0.8, pause_knee_ms: 2000, pause_tail_multiplier: 0.3, max_pause_ms: 12000 },
+}
+function applySuggested() {
+  if (labCfg.value) Object.assign(labCfg.value, SUGGESTED[labMode.value] || {})
+}
 
 // Per syllable count, estimate each answer voice's duration then run the live
 // (unsaved) config through the real pause formula.
@@ -605,7 +621,13 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .fib-pill.on { background: rgba(96, 165, 250, 0.15); border-color: #60a5fa; color: #93c5fd; }
 
 /* Mode switch + segmented pills */
-.lab-modeswitch { display: inline-flex; gap: 0; border: 1px solid var(--color-graphite, var(--surface-3)); border-radius: 8px; overflow: hidden; margin-bottom: 1rem; }
+.lab-modeswitch-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.lab-suggest {
+  background: rgba(96, 165, 250, 0.12); border: 1px solid #60a5fa; color: #93c5fd;
+  border-radius: 8px; padding: 0.4rem 0.85rem; font-size: 0.8rem; cursor: pointer; transition: all 0.15s;
+}
+.lab-suggest:hover { background: #3b82f6; color: #fff; }
+.lab-modeswitch { display: inline-flex; gap: 0; border: 1px solid var(--color-graphite, var(--surface-3)); border-radius: 8px; overflow: hidden; }
 .lab-modeswitch button {
   background: transparent; border: 0; color: var(--color-paper-dim, var(--muted));
   padding: 0.4rem 1rem; font-size: 0.8125rem; cursor: pointer;
