@@ -47,6 +47,33 @@ export function computePauseDuration(target1Ms, target2Ms, cfg) {
   return pauseFromRef(referenceMs(target1Ms, target2Ms, cfg), cfg)
 }
 
+// Belt-based target-voice speed ramp — MIRROR of beltSpeed() in
+// ssi-learning-app/packages/player-vue/src/providers/toSimpleRounds.ts. Early
+// belts play the target slower, so the SAME clip takes longer to hear:
+//   actual play ms = raw clip ms / beltSpeed.
+// The pause should scale with that actual play time, so it's longer for
+// beginners (where it matters most). Assumes nativeSpeed courses, globalSpeed 1.
+export function beltSpeed(seedNumber) {
+  if (seedNumber < 8) return 0.8    // White  (seeds 1-7)
+  if (seedNumber < 20) return 0.9   // Yellow (seeds 8-19)
+  if (seedNumber < 40) return 0.95  // Orange (seeds 20-39)
+  return 1.0                        // Green+ (seeds 40+)
+}
+
+export const BELTS = [
+  { key: 'white', label: 'White', repSeed: 1, speed: 0.8 },
+  { key: 'yellow', label: 'Yellow', repSeed: 10, speed: 0.9 },
+  { key: 'orange', label: 'Orange', repSeed: 25, speed: 0.95 },
+  { key: 'green', label: 'Green+', repSeed: 40, speed: 1.0 },
+]
+
+/** Pause from RAW clip durations at a given playback speed — sizes the gap on
+ *  the actual time the learner hears, not the raw file length. */
+export function computePauseForBelt(rawT1Ms, rawT2Ms, cfg, speed) {
+  const s = speed || 1
+  return computePauseDuration((rawT1Ms || 0) / s, (rawT2Ms || 0) / s, cfg)
+}
+
 // Syllable length buckets for the Lab — words are a poor proxy, syllables track
 // spoken length far better.
 export const SYLLABLE_BUCKETS = [

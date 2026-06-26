@@ -140,10 +140,16 @@
         <div class="lab-preview">
           <div class="lab-preview-head">
             <span class="lab-preview-title">Live preview · {{ labMode === 'normal_mode' ? 'Normal' : 'Turbo' }}</span>
+            <div class="lab-belt">
+              <span class="lab-belt-label">Belt</span>
+              <button v-for="b in BELTS" :key="b.key" class="belt-pill" :class="['belt-' + b.key, { on: belt === b.key }]" @click="belt = b.key">
+                {{ b.label }} <span class="belt-spd">{{ b.speed }}×</span>
+              </button>
+            </div>
             <label class="lab-rate">~ms / syllable
               <input type="number" min="50" step="10" v-model.number="msPerSyllable" />
             </label>
-            <span class="lab-rate-note">at {{ (labCfg.playback_speed || 1) }}× playback · each voice ≈ syllables × this</span>
+            <span class="lab-rate-note">voices play at {{ beltSpeedVal }}× → actual length = clip ÷ {{ beltSpeedVal }}; pause sized off that</span>
           </div>
 
           <svg v-if="curve" class="lab-chart" :viewBox="`0 0 ${CHART.w} ${CHART.h}`" preserveAspectRatio="xMidYMid meet">
@@ -202,7 +208,7 @@
               <span class="lab-hear-bucket">{{ b.label }} <span class="lab-bucket-range">{{ b.range }}</span></span>
               <span class="lab-hear-sentence">{{ b.sentence ? b.sentence.text : '—' }}</span>
               <span class="lab-hear-pause">
-                <span v-if="b.sentence" class="lab-hear-dur">{{ (b.sentence.t1ms / 1000).toFixed(1) }}s say</span>
+                <span v-if="b.sentence" class="lab-hear-dur">{{ (b.sentence.t1ms / beltSpeedVal / 1000).toFixed(1) }}s say</span>
                 <span v-if="b.sentence" class="lab-hear-gap">{{ (computePauseFor(b.sentence) / 1000).toFixed(1) }}s gap</span>
               </span>
             </div>
@@ -219,7 +225,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../../composables/useAuth'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './algorithmConfigShared'
-import { computePauseDuration, SYLLABLE_BUCKETS } from './pauseModel'
+import { computePauseDuration, computePauseForBelt, BELTS, SYLLABLE_BUCKETS } from './pauseModel'
 import CoursePicker from '../../components/CoursePicker.vue'
 import { getApiBaseUrl } from '../../services/api'
 
@@ -269,6 +275,11 @@ const labMode = ref('normal_mode')
 const msPerSyllable = ref(280)
 const labCfg = computed(() => drafts[labMode.value] || null)
 
+// Belt selection — early belts slow the voice, lengthening actual play time and
+// thus the pause. Default White: the pause matters most at the beginning.
+const belt = ref('white')
+const beltSpeedVal = computed(() => (BELTS.find(b => b.key === belt.value) || {}).speed || 1)
+
 // A sensible starting curve per mode — reference = average of both voices, a
 // real boot floor, and a knee so long sentences level off instead of scaling
 // at the full multiplier. Applied UNSAVED via the lab button; tweak then Save.
@@ -306,14 +317,15 @@ const curve = computed(() => {
   const xOf = syll => CHART.padL + (syll / CHART.maxSyll) * plotW
   const yOf = ms => CHART.padT + plotH - (Math.min(ms, yTop) / yTop) * plotH
 
+  const spd = beltSpeedVal.value
   const pts = []
   for (let s = 0; s <= CHART.maxSyll; s += 0.5) {
-    const perVoice = s * rate
-    pts.push(`${xOf(s).toFixed(1)},${yOf(computePauseDuration(perVoice, perVoice, cfg)).toFixed(1)}`)
+    const perVoice = s * rate            // raw clip ms for an s-syllable phrase
+    pts.push(`${xOf(s).toFixed(1)},${yOf(computePauseForBelt(perVoice, perVoice, cfg, spd)).toFixed(1)}`)
   }
-  // ref = perVoice for avg/target1 (t1=t2 in the synthetic curve); ×2 for sum.
+  // ref = actual perVoice (raw/speed) for avg/target1 (t1=t2 here); ×2 for sum.
   const refMult = cfg.pause_reference === 'sum' ? 2 : 1
-  const kneeSyll = (cfg.pause_knee_ms ?? Infinity) / (refMult * rate)
+  const kneeSyll = (cfg.pause_knee_ms ?? Infinity) * spd / (refMult * rate)
   const dots = sampleByBucket.value
     .filter(b => b.sentence)
     .map(b => ({ key: b.key, label: b.label, x: xOf(b.sentence.syll), y: yOf(computePauseFor(b.sentence)), s: b.sentence.syll, ms: computePauseFor(b.sentence) }))
@@ -416,10 +428,10 @@ const sampleByBucket = computed(() => {
   })
 })
 
-// Live pause (ms) for a real sentence under the current unsaved config — for
-// the per-row readout next to each play button.
+// Live pause (ms) for a real sentence under the current unsaved config, sized
+// off the ACTUAL play time at the selected belt (raw clip ms / belt speed).
 function computePauseFor(sample) {
-  return labCfg.value ? computePauseDuration(sample.t1ms, sample.t2ms, labCfg.value) : 0
+  return labCfg.value ? computePauseForBelt(sample.t1ms, sample.t2ms, labCfg.value, beltSpeedVal.value) : 0
 }
 
 // Signed playback URL via popty's production API (same as ScriptView). Cached
@@ -460,17 +472,17 @@ async function playClip(id, rate) {
     a.play().catch(resolve)
   })
 }
-// Play one sentence as the learner hears it, with the LIVE (unsaved) pause.
-// Clips play at their natural recorded speed (1.0×). The real player applies a
-// SEPARATE belt-based target-speed ramp (computePlaybackSpeed — slower for
-// beginners, →1.0); that's not part of pause config, so the lab doesn't model
-// it. This preview is about the GAP, not the speaking speed.
+// Play one sentence as a learner at the selected BELT hears it: the target
+// voices play at the belt's speed ramp (slower for beginners), and the pause is
+// sized off the resulting ACTUAL play time. The known prompt plays at 1.0×
+// (the ramp is a target-voice effect).
 async function playWithPause(sample, key) {
   if (!sample || !labCfg.value) return
   stopPreview()
   previewStop = false
   playingKey.value = key
-  const pauseMs = computePauseDuration(sample.t1ms, sample.t2ms, labCfg.value)
+  const spd = beltSpeedVal.value
+  const pauseMs = computePauseForBelt(sample.t1ms, sample.t2ms, labCfg.value, spd)
   playingPhase.value = 'known'
   await playClip(sample.known_id, 1)
   if (previewStop) return
@@ -478,12 +490,12 @@ async function playWithPause(sample, key) {
   await new Promise(r => setTimeout(r, pauseMs))
   if (previewStop) return
   playingPhase.value = 'target1'
-  await playClip(sample.t1_id, 1)
+  await playClip(sample.t1_id, spd)
   if (previewStop) return
   await new Promise(r => setTimeout(r, 250))
   if (previewStop) return
   playingPhase.value = 'target2'
-  await playClip(sample.t2_id, 1)
+  await playClip(sample.t2_id, spd)
   playingPhase.value = ''
   playingKey.value = ''
 }
@@ -697,6 +709,21 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   font-family: var(--font-mono, ui-monospace, Menlo, monospace);
   font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #93c5fd;
 }
+.lab-belt { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
+.lab-belt-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-paper-dim, var(--muted)); }
+.belt-pill {
+  display: inline-flex; align-items: baseline; gap: 0.3rem;
+  padding: 0.3rem 0.6rem; border-radius: 999px; cursor: pointer; font-size: 0.74rem;
+  border: 1px solid var(--color-graphite, var(--surface-3)); background: transparent;
+  color: var(--color-paper-dim, var(--muted)); transition: all 0.15s;
+}
+.belt-pill .belt-spd { font-size: 0.64rem; opacity: 0.7; font-family: var(--font-mono, ui-monospace, Menlo, monospace); }
+.belt-pill:hover { border-color: var(--color-paper-dim, var(--muted)); color: var(--color-paper, var(--ink)); }
+.belt-pill.on { color: var(--color-paper, var(--ink)); border-width: 2px; }
+.belt-pill.belt-white.on { border-color: #cbd5e1; background: rgba(203,213,225,0.12); }
+.belt-pill.belt-yellow.on { border-color: #facc15; background: rgba(250,204,21,0.14); }
+.belt-pill.belt-orange.on { border-color: #fb923c; background: rgba(251,146,60,0.14); }
+.belt-pill.belt-green.on { border-color: #4ade80; background: rgba(74,222,128,0.14); }
 .lab-rate { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--color-paper-dim, var(--muted)); }
 .lab-rate input {
   width: 72px; background: rgba(0,0,0,0.25); border: 1px solid var(--color-graphite, var(--surface-2));
