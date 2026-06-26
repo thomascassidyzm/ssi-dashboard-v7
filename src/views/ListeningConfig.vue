@@ -30,20 +30,8 @@
           <label>Preview course</label>
           <CoursePicker :modelValue="selectedCourseCode" @update:modelValue="onCoursePick" placeholder="Search courses…" />
         </div>
-        <div class="picker-group round-group" v-if="selectedCourseCode">
-          <label>Round</label>
-          <input type="number" min="1" :max="previewRoundMax" v-model.number="previewRound" />
-          <input type="range" min="1" :max="previewRoundMax" v-model.number="previewRound" />
-          <span class="round-display">/ {{ previewRoundMax }}</span>
-        </div>
         <div v-if="selectedCourseCode" class="preview-stats">
           <span>{{ totalSeeds }} seeds</span>
-          <span>{{ graduatedQueue.length }} graduated</span>
-          <span>L1 lap <strong>{{ l1ActiveFires ? '✓' : '–' }}</strong></span>
-          <span class="cycle-ratio" title="Listening cycles / speaking cycles this round. Speaking is a script-shape estimate; listening is exact for L1 + approximate for L2 (assumes 1 pod lap per round from activation).">
-            {{ cycleStats.listening }} listen + ~{{ cycleStats.speaking }} speak =
-            <strong :class="{ 'ratio-hot': cycleStats.listeningPct >= 50 }">{{ cycleStats.listeningPct }}% listening</strong>
-          </span>
         </div>
         <div v-if="courseLoading" class="preview-loading">Loading course data…</div>
       </div>
@@ -53,74 +41,11 @@
     <div v-else-if="loadError" class="err"><strong>Failed to load:</strong> {{ loadError }}</div>
 
     <div v-else class="rows">
-      <!-- ==================== LISTENING ==================== -->
-      <!-- Layer 1 is FIXED IN CODE (Tom 2026-06-11): the live scheduler
-           (useLayer1Scheduler.ts in the learning app) takes no input from
-           algorithm_config. This card states the real behaviour; the old
-           editable knobs edited a row the player never read. To change L1,
-           change DEFAULT_LAYER1_CONFIG in the app and ship it. -->
-      <section class="config-row">
-        <div class="row-header">
-          <div>
-            <h2>Layer 1 listening <span class="fixed-badge">fixed in code</span></h2>
-            <p class="row-desc">
-              The round-end listening cluster is not configurable from here — these are the live values,
-              read from <code>useLayer1Scheduler.ts</code>. Each seed plays its target sentence at
-              <strong>1× then 2×</strong>. A seed graduates {{ L1_FIXED.offset }} LEGO-ordinals after its
-              last LEGO; a lap fires every {{ L1_FIXED.interval }} rounds from round
-              {{ L1_FIXED.activationRound }}; the session bucket holds up to {{ L1_FIXED.bucketCap }} seeds
-              ({{ L1_FIXED.activeSize }} freshest always kept, the rest sampled).
-            </p>
-          </div>
-        </div>
-
-        <!-- Live preview: which seeds are in the L1 rotation right now? -->
-        <div v-if="selectedCourseCode && !courseLoading" class="preview-block">
-          <div class="preview-block-head">
-            <span class="preview-block-title">Preview · {{ selectedCourseCode }} @ round {{ previewRound }}</span>
-            <span class="preview-block-meta">
-              {{ graduatedQueue.length }} graduated · showing freshest {{ activeWindow.length }}
-              {{ l1ActiveFires ? '· lap fires this round' : '· no lap this round' }}
-            </span>
-          </div>
-          <div v-if="!activeWindow.length" class="preview-empty">
-            No seeds graduated yet at this round (a seed needs {{ L1_FIXED.offset }} LEGO-ordinals since its last LEGO).
-          </div>
-          <div v-else class="preview-seeds">
-            <div v-for="sNum in activeWindow" :key="sNum" class="preview-seed">
-              <div class="preview-seed-head">
-                <span class="seed-id">S{{ String(sNum).padStart(4, '0') }}</span>
-                <span class="seed-target">{{ seedDisplayTarget(sNum) }}</span>
-                <span class="seed-known">{{ seedDisplayKnown(sNum) }}</span>
-              </div>
-              <div class="preview-seed-pills">
-                <button
-                  v-for="(role, idx) in L1_FIXED.playlist"
-                  :key="idx"
-                  class="preview-pill"
-                  :class="`role-${role}`"
-                  :disabled="!seedAudioId(sNum, role)"
-                  :title="ROLE_DESC[role]"
-                  @click="playOne(sNum, role)"
-                >
-                  <span class="pill-num">{{ idx + 1 }}</span>
-                  <span class="pill-icon">▶</span>
-                  {{ ROLE_LABEL[role] }}
-                </button>
-                <button class="preview-sequence" @click="playSequence(sNum)" title="Play the fixed 1×→2× sequence">
-                  ▶▶ play full
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- ==================== LAYER 1 (seed listening) ==================== -->
       <section v-if="drafts.listening" class="config-row">
         <RowHeader
-          title="Layer 1 — seed listening"
-          desc="The cup wheel: introduced seeds graduate into cups, one cup poured per round (per seed: target → known → target → target@2×). These four knobs drive useLayer1Scheduler live; the per-seed sandwich itself is fixed in code."
+          title="Layer 1 — seed listening (cup wheel)"
+          desc="Fluency maintenance through input: introduced seeds collect into cups, one cup poured at the end of every round. These knobs + the per-seed sandwich below drive useLayer1Scheduler live (the cup placement/cluster logic itself stays in code)."
           :row="rowMap.listening"
           :dirty="isDirty('listening')"
           :saving="savingKey === 'listening'"
@@ -133,6 +58,14 @@
           <NumField v-model="drafts.listening.activationCount" label="Activation count" suffix="seeds" help="Introduced-seed count before the first lap fires (also the one-seed-per-cup point)." />
           <NumField v-model="drafts.listening.maxSeedsPerCup" label="Max seeds / cup" suffix="seeds" help="Cup-fill caps at cups × this (e.g. 30 × 20 = 600 introduced)." />
           <NumField v-model="drafts.listening.clusterStep" label="Re-cluster every" suffix="seeds/cup" help="Re-cluster at each multiple of this many seeds per cup (5, 10, 15, 20…)." />
+        </div>
+
+        <div class="field-block">
+          <label>Per-seed sandwich <span class="hint">what each seed plays in the poured cup · tap a pill to cycle its role · ↔ reorder · default: V1 → known → V2 → V1·2×</span></label>
+          <L1PlaylistEditor :modelValue="seedPlaylist" @update:modelValue="setSeedPlaylist" />
+          <p class="row-desc l1-roles-key">
+            <strong>V1</strong> target voice 1 · <strong>V2</strong> target voice 2 · <strong>known</strong> the meaning (known-language clip) · <strong>·2×</strong> double-speed stretch rep. A seed with no second voice plays V1 for V2; no known audio drops the known slot.
+          </p>
         </div>
       </section>
 
@@ -304,29 +237,8 @@ const { isAdmin, learner: currentUser } = useAuth()
 // practice script, not listening. This page still LOADS them (the preview's
 // listening/speaking ratio reads script_shape) but renders no editor for them.
 //
-// 'listening' (the old L1 knobs row) was retired 2026-06-11: the live L1
-// scheduler (useLayer1Scheduler.ts in the learning app) is fixed in code and
-// never read it. The row stays in the DB untouched; this page just stopped
-// pretending to edit it. L1_FIXED below mirrors DEFAULT_LAYER1_CONFIG + the
-// hardcoded per-seed playlist — update BOTH if the app constants ever change.
-const L1_FIXED = {
-  offset: 90,          // LEGO-ordinals after a seed's last LEGO before it graduates
-  interval: 50,        // a lap fires every N main rounds…
-  activationRound: 100, // …from this round onward
-  bucketCap: 100,      // session bucket hard cap
-  activeSize: 80,      // freshest always kept; the rest sampled
-  playlist: ['ps', 'ps2x'], // per-seed: target at 1×, then 2×
-}
-const ROLE_LABEL = { ps08x: '0.8×', ps: '1×', ps15x: '1.5×', ps2x: '2×', trans: 'EN', explainer: 'ⓘ' }
+// ROLE_SPEED drives the pod-stage audition playback rate (Layer-2 preview).
 const ROLE_SPEED = { ps08x: 0.8, ps: 1.0, ps15x: 1.5, ps2x: 2.0, trans: 1.0, explainer: 1.0 }
-const ROLE_DESC = {
-  ps08x: 'target at 0.8× — extra-slow for first exposure',
-  ps: 'target at 1.0× — slow listen for clarity',
-  ps15x: 'target at 1.5× — gentle stretch on the way up',
-  ps2x: 'target at 2.0× — fast rep for retention',
-  trans: 'known-language audio at 1.0×',
-  explainer: "Tom-voiced chunk breakdown — Phase 0 plays it INSTEAD of the translation; sentences without one fall back to the translation in this slot",
-}
 // The audio proxy lives on saysomethingin.app (CORS *). popty.app doesn't
 // serve /api/audio so we hit the deployed learning-app endpoint directly.
 const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
@@ -345,10 +257,8 @@ const {
 // ============================================================================
 const allCourses = ref([])
 const selectedCourseCode = ref('')
-const previewRound = ref(100)
 const courseLoading = ref(false)
 const courseLegos = ref([])           // is_new only, ordered by seed,lego_index
-const courseSeeds = ref([])           // course_seeds rows for picked course
 const coursePodSentences = ref([])    // listening_pod_sentences rows, ordered by global_order
 // Stage-0 clip maps for the full-arc preview (loaded per course in loadCoursePreview).
 const stage0GlossMap = ref(new Map())       // lego_key → merged "means" clip id
@@ -378,47 +288,12 @@ const seedLastRound = computed(() => {
   return map
 })
 const totalSeeds = computed(() => seedLastRound.value.size)
-const previewRoundMax = computed(() => {
-  const r = courseLegos.value.filter(l => l.is_new).length
-  return Math.max(r, 100)
-})
 
-const seedRowMap = computed(() => new Map(courseSeeds.value.map(s => [s.seed_number, s])))
-
-// L1 preview mirrors the FIXED live scheduler (L1_FIXED). The live graduation
-// rule counts LEGO-ordinals; the preview approximates with rounds (≈1 LEGO
-// per main round) — close enough to read which seeds are in rotation.
-const graduatedQueue = computed(() => {
-  const r = previewRound.value
-  return [...seedLastRound.value.entries()]
-    .filter(([, last]) => r - last >= L1_FIXED.offset)
-    .sort((a, b) => a[1] - b[1] || a[0] - b[0])
-    .map(([s]) => s)
-})
-const activeWindow = computed(() => {
-  return graduatedQueue.value.slice(-L1_FIXED.activeSize)
-})
-const l1ActiveFires = computed(() => {
-  const r = previewRound.value
-  return r >= L1_FIXED.activationRound
-    && (r - L1_FIXED.activationRound) % L1_FIXED.interval === 0
-    && graduatedQueue.value.length > 0
-})
-
-function seedDisplayTarget(sNum) {
-  const row = seedRowMap.value.get(sNum)
-  if (!row) return '— missing in course_seeds —'
-  return row.target_text_roman || row.target_text || ''
-}
-function seedDisplayKnown(sNum) {
-  const row = seedRowMap.value.get(sNum)
-  return row?.known_text || ''
-}
-function seedAudioId(sNum, role) {
-  const row = seedRowMap.value.get(sNum)
-  if (!row) return null
-  // 'trans' plays known audio; 'ps' / 'ps2x' play target.
-  return role === 'trans' ? row.known_audio_id : row.target1_audio_id
+// Per-seed sandwich playlist (admin-tunable; saved on the 'listening' row).
+const DEFAULT_SEED_PLAYLIST = ['t1', 'known', 't2', 't1x2']
+const seedPlaylist = computed(() => drafts.listening?.seedPlaylist || DEFAULT_SEED_PLAYLIST)
+function setSeedPlaylist(next) {
+  if (drafts.listening) drafts.listening.seedPlaylist = next
 }
 
 function audioUrl(audioId) {
@@ -427,38 +302,6 @@ function audioUrl(audioId) {
 }
 
 let currentAudio = null
-function playOne(sNum, role) {
-  const id = seedAudioId(sNum, role)
-  const url = audioUrl(id)
-  if (!url) return
-  if (currentAudio) { try { currentAudio.pause() } catch {} }
-  const a = new Audio(url)
-  a.playbackRate = ROLE_SPEED[role] ?? 1.0
-  a.play().catch(err => console.warn('audio play failed:', err))
-  currentAudio = a
-}
-async function playPlaylistForSeed(playlist, sNum) {
-  if (currentAudio) { try { currentAudio.pause() } catch {} }
-  for (const role of playlist) {
-    const id = seedAudioId(sNum, role)
-    const url = audioUrl(id)
-    if (!url) continue
-    await new Promise((resolve) => {
-      const a = new Audio(url)
-      a.playbackRate = ROLE_SPEED[role] ?? 1.0
-      currentAudio = a
-      a.onended = resolve
-      a.onerror = resolve
-      a.play().catch(resolve)
-    })
-    // Inter-pill gap: small breath between plays in the preview.
-    await new Promise((r) => setTimeout(r, 250))
-  }
-}
-
-async function playSequence(sNum) {
-  await playPlaylistForSeed(L1_FIXED.playlist, sNum)
-}
 
 // Example pod sentence for L2 stage audition — first sentence of the
 // pod (global_order = 1). Null if the course has no pod loaded.
@@ -501,92 +344,9 @@ function auditionPodStage(stage) {
 }
 
 
-// Port of usePodLapScheduler.podStageFor — admin-side cycle-count
-// estimate, no runtime dep. Returns the stage a pod sentence at
-// entryPodRound would sit in when the lap is currentPodRound.
-// stageDurations = per-stage overrides ({'1': 2, '2': 3}); unlisted
-// stages use the uniform stageDuration — mirrors the runtime maths.
-function podStageForAdmin(entryPodRound, currentPodRound, stageDuration, totalStages, stageDurations) {
-  const alive = currentPodRound - entryPodRound + 1
-  if (alive < 1) return null
-  let cum = 0
-  for (let stage = 1; stage < totalStages; stage++) {
-    const d = stageDurations?.[stage] ?? stageDurations?.[String(stage)] ?? stageDuration
-    if (alive <= cum + d) return stage
-    cum += d
-  }
-  return totalStages
-}
-
-// Cycle-count breakdown at the preview round. Answers the pedagogy
-// question 'is the listening / speaking ratio off?' with a single
-// number the admin can dial against.
-//
-// Speaking: rough per-round estimate from script_shape config —
-//   main-loop rounds (R ≤ totalLegos) emit intro+debut+build+SR+USE;
-//   infinite-play rounds emit ~20 (TARGET_ROUND_CYCLES from
-//   generateLearningScript). Off by a few cycles in either direction
-//   for any given round, but consistent enough to read trends.
-//
-// Listening: exact for L1 (sum of per-seed current-stage playlist
-// lengths for the windows that fire this round) and approximate for
-// L2 (assumes 1 pod lap per round from podActivationRound onward,
-// activeCount grows by 1 per lap up to total pod sentences). L2 stage
-// progression mirrors podStageFor.
-const cycleStats = computed(() => {
-  const R = previewRound.value
-  let listening = 0
-
-  // L1 — fixed live behaviour: each rotation seed plays the 1×→2× pair.
-  if (l1ActiveFires.value) {
-    listening += activeWindow.value.length * L1_FIXED.playlist.length
-  }
-
-  // L2 — pods fire every drafts.pods.roundInterval main rounds from
-  // activation onward. podRound counts actual fires, not player rounds,
-  // so the stage clock and active-count grow at the cadence of fires
-  // (not session rounds). Non-firing rounds contribute 0 listening
-  // cycles from L2.
-  const activation = drafts.pods?.podActivationRound ?? 6
-  const interval = Math.max(1, Math.floor(drafts.pods?.roundInterval ?? 1))
-  const totalPodSentences = coursePodSentences.value.length
-  const offset = R - activation
-  const podFiresThisRound = drafts.pods && totalPodSentences > 0 && R >= activation && offset % interval === 0
-  if (podFiresThisRound) {
-    const podRound = Math.floor(offset / interval) + 1
-    const activeCount = Math.min(podRound, totalPodSentences)
-    const stageDuration = drafts.pods.stageDuration ?? 5
-    const totalStages = podsStageKeys.value.length || 1
-    for (let i = 1; i <= activeCount; i++) {
-      const stage = podStageForAdmin(i, podRound, stageDuration, totalStages, drafts.pods.stageDurations)
-      if (stage == null) continue
-      listening += getStageList(stage).length
-    }
-  }
-
-  // Speaking — script-shape estimate.
-  const ss = drafts.script_shape || {}
-  const maxBuild = ss.maxBuildPhrases ?? 7
-  const maxSR = ss.maxSpacedRepPhrases ?? 10
-  const useCons = ss.useConsolidationCount ?? 2
-  const totalLegos = previewRoundMax.value
-  const speaking = R <= totalLegos
-    ? 2 + maxBuild + maxSR + useCons  // intro + debut + build + SR + USE
-    : 20                              // TARGET_ROUND_CYCLES (infinite play)
-
-  const total = listening + speaking
-  return {
-    listening,
-    speaking,
-    total,
-    listeningPct: total > 0 ? Math.round((100 * listening) / total) : 0,
-  }
-})
-
 async function loadCoursePreview(courseCode) {
   courseLoading.value = true
   courseLegos.value = []
-  courseSeeds.value = []
   coursePodSentences.value = []
   try {
     const sb = await import('../services/supabase').then(m => m.supabase)
@@ -610,23 +370,6 @@ async function loadCoursePreview(courseCode) {
       from += limit
     }
     courseLegos.value = legos
-
-    // Seed sentences
-    const seeds = []
-    from = 0
-    while (true) {
-      const { data, error } = await sb
-        .from('course_seeds')
-        .select('seed_number, known_text, target_text, target_text_roman, known_audio_id, target1_audio_id, target2_audio_id')
-        .eq('course_code', courseCode)
-        .order('seed_number', { ascending: true })
-        .range(from, from + limit - 1)
-      if (error) throw error
-      seeds.push(...(data || []))
-      if (!data || data.length < limit) break
-      from += limit
-    }
-    courseSeeds.value = seeds
 
     // Pod sentences (for L2 audition). One pod per course; load whatever
     // exists. Courses without pods still preview L1 fine.
@@ -670,10 +413,8 @@ function onCoursePick(code) {
 async function onCourseChange() {
   if (selectedCourseCode.value) {
     await loadCoursePreview(selectedCourseCode.value)
-    if (previewRound.value > previewRoundMax.value) previewRound.value = previewRoundMax.value
   } else {
     courseLegos.value = []
-    courseSeeds.value = []
   }
 }
 
@@ -882,6 +623,11 @@ function backfillDefaults(d) {
     const l1d = { cups: 30, activationCount: 30, maxSeedsPerCup: 20, clusterStep: 5 }
     for (const k in l1d) if (d.listening[k] == null) d.listening[k] = l1d[k]
   }
+  // Per-seed sandwich — default to the comprehensible-input order. Mirrors
+  // DEFAULT_SEED_PLAYLIST in useLayer1Scheduler.ts (V1 → known → V2 → V1·2×).
+  if (!Array.isArray(d.listening.seedPlaylist) || !d.listening.seedPlaylist.length) {
+    d.listening.seedPlaylist = [...DEFAULT_SEED_PLAYLIST]
+  }
   // Stage 0: ensure the gaps matrix + tiers array exist so the editor binds
   // to defined values (a row saved before a gap key existed backfills here).
   if (d.stage0) {
@@ -972,6 +718,73 @@ const PlaylistEditor = defineComponent({
                 class: 'micro remove', title: 'Remove',
                 disabled: props.modelValue.length <= 1, onClick: () => removeAt(idx),
               }, '×'),
+            ]),
+          ])
+        ),
+        h('button', { class: 'add-pill', title: 'Add', onClick: add }, '+'),
+      ]
+    )
+  },
+})
+
+// ============================================================================
+// L1PlaylistEditor — the per-seed sandwich. Roles map to Layer1SlotRole in
+// useLayer1Scheduler.ts (t1/t2 = target voices, t1x2/t2x2 = same at 2×, known =
+// the meaning clip). Reuses the pod pill colours (target = ps, known = trans,
+// 2× = ps2x) so it reads consistently. Tap a pill to cycle role, ← → reorder,
+// × remove, + add.
+// ============================================================================
+const L1PlaylistEditor = defineComponent({
+  name: 'L1PlaylistEditor',
+  props: { modelValue: { type: Array, required: true } },
+  emits: ['update:modelValue'],
+  setup(props, { emit }) {
+    const ROLES = ['t1', 'known', 't2', 't1x2', 't2x2']
+    const ROLE_LABEL = { t1: 'V1', t2: 'V2', known: 'known', t1x2: 'V1·2×', t2x2: 'V2·2×' }
+    const ROLE_COLOR = { t1: 'ps', t2: 'ps', known: 'trans', t1x2: 'ps2x', t2x2: 'ps2x' }
+
+    function update(next) { emit('update:modelValue', next) }
+    function cycle(idx) {
+      const cur = props.modelValue[idx]
+      const next = [...props.modelValue]
+      next[idx] = ROLES[(ROLES.indexOf(cur) + 1) % ROLES.length]
+      update(next)
+    }
+    function moveLeft(idx) {
+      if (idx === 0) return
+      const next = [...props.modelValue]
+      ;[next[idx - 1], next[idx]] = [next[idx], next[idx - 1]]
+      update(next)
+    }
+    function moveRight(idx) {
+      if (idx === props.modelValue.length - 1) return
+      const next = [...props.modelValue]
+      ;[next[idx], next[idx + 1]] = [next[idx + 1], next[idx]]
+      update(next)
+    }
+    function removeAt(idx) {
+      const next = [...props.modelValue]
+      next.splice(idx, 1)
+      update(next)
+    }
+    function add() { update([...props.modelValue, 't1']) }
+
+    return () => h('div', { class: 'playlist-editor' },
+      [
+        ...props.modelValue.map((role, idx) =>
+          h('div', { class: 'pill-wrap', key: `${idx}-${role}` }, [
+            h('button', {
+              class: ['role-pill', `role-${ROLE_COLOR[role] || 'ps'}`],
+              title: 'Tap to cycle role',
+              onClick: () => cycle(idx),
+            }, [
+              h('span', { class: 'pill-num' }, String(idx + 1)),
+              ROLE_LABEL[role] || role,
+            ]),
+            h('div', { class: 'pill-controls' }, [
+              h('button', { class: 'micro', title: 'Move left', disabled: idx === 0, onClick: () => moveLeft(idx) }, '←'),
+              h('button', { class: 'micro', title: 'Move right', disabled: idx === props.modelValue.length - 1, onClick: () => moveRight(idx) }, '→'),
+              h('button', { class: 'micro remove', title: 'Remove', disabled: props.modelValue.length <= 1, onClick: () => removeAt(idx) }, '×'),
             ]),
           ])
         ),
