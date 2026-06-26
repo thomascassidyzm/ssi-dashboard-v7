@@ -140,16 +140,20 @@
         <div class="lab-preview">
           <div class="lab-preview-head">
             <span class="lab-preview-title">Live preview · {{ labMode === 'normal_mode' ? 'Normal' : 'Turbo' }}</span>
-            <div class="lab-belt">
+            <div v-if="!isTurbo" class="lab-belt">
               <span class="lab-belt-label">Belt</span>
               <button v-for="b in BELTS" :key="b.key" class="belt-pill" :class="['belt-' + b.key, { on: belt === b.key }]" @click="belt = b.key">
                 {{ b.label }} <span class="belt-spd">{{ b.speed }}×</span>
               </button>
             </div>
+            <label v-else class="lab-rate">Turbo speed
+              <input type="number" min="0.8" max="2" step="0.05" v-model.number="labCfg.playback_speed" />
+              <span class="lab-rate-note">× — ignores belt ramp</span>
+            </label>
             <label class="lab-rate">~ms / syllable
               <input type="number" min="50" step="10" v-model.number="msPerSyllable" />
             </label>
-            <span class="lab-rate-note">voices play at {{ beltSpeedVal }}× → actual length = clip ÷ {{ beltSpeedVal }}; pause sized off that</span>
+            <span class="lab-rate-note">voices play at {{ effectiveSpeed }}× → actual length = clip ÷ {{ effectiveSpeed }}; pause sized off that</span>
           </div>
 
           <svg v-if="curve" class="lab-chart" :viewBox="`0 0 ${CHART.w} ${CHART.h}`" preserveAspectRatio="xMidYMid meet">
@@ -208,7 +212,7 @@
               <span class="lab-hear-bucket">{{ b.label }} <span class="lab-bucket-range">{{ b.range }}</span></span>
               <span class="lab-hear-sentence">{{ b.sentence ? b.sentence.text : '—' }}</span>
               <span class="lab-hear-pause">
-                <span v-if="b.sentence" class="lab-hear-dur">{{ (b.sentence.t1ms / beltSpeedVal / 1000).toFixed(1) }}s say</span>
+                <span v-if="b.sentence" class="lab-hear-dur">{{ (b.sentence.t1ms / effectiveSpeed / 1000).toFixed(1) }}s say</span>
                 <span v-if="b.sentence" class="lab-hear-gap">{{ (computePauseFor(b.sentence) / 1000).toFixed(1) }}s gap</span>
               </span>
             </div>
@@ -280,6 +284,12 @@ const labCfg = computed(() => drafts[labMode.value] || null)
 const belt = ref('white')
 const beltSpeedVal = computed(() => (BELTS.find(b => b.key === belt.value) || {}).speed || 1)
 
+// Effective playback speed driving actual-time pause + audio: Normal follows
+// the belt ramp; Turbo plays at its OWN full speed, ignoring the belt (it
+// doesn't slow for beginners) — mirrors the runtime getPlaybackSpeedMultiplier.
+const isTurbo = computed(() => labMode.value === 'turbo_boost')
+const effectiveSpeed = computed(() => isTurbo.value ? (labCfg.value?.playback_speed || 1) : beltSpeedVal.value)
+
 // A sensible starting curve per mode — reference = average of both voices, a
 // real boot floor, and a knee so long sentences level off instead of scaling
 // at the full multiplier. Applied UNSAVED via the lab button; tweak then Save.
@@ -317,7 +327,7 @@ const curve = computed(() => {
   const xOf = syll => CHART.padL + (syll / CHART.maxSyll) * plotW
   const yOf = ms => CHART.padT + plotH - (Math.min(ms, yTop) / yTop) * plotH
 
-  const spd = beltSpeedVal.value
+  const spd = effectiveSpeed.value
   const pts = []
   for (let s = 0; s <= CHART.maxSyll; s += 0.5) {
     const perVoice = s * rate            // raw clip ms for an s-syllable phrase
@@ -431,7 +441,7 @@ const sampleByBucket = computed(() => {
 // Live pause (ms) for a real sentence under the current unsaved config, sized
 // off the ACTUAL play time at the selected belt (raw clip ms / belt speed).
 function computePauseFor(sample) {
-  return labCfg.value ? computePauseForBelt(sample.t1ms, sample.t2ms, labCfg.value, beltSpeedVal.value) : 0
+  return labCfg.value ? computePauseForBelt(sample.t1ms, sample.t2ms, labCfg.value, effectiveSpeed.value) : 0
 }
 
 // Signed playback URL via popty's production API (same as ScriptView). Cached
@@ -481,7 +491,7 @@ async function playWithPause(sample, key) {
   stopPreview()
   previewStop = false
   playingKey.value = key
-  const spd = beltSpeedVal.value
+  const spd = effectiveSpeed.value
   const pauseMs = computePauseForBelt(sample.t1ms, sample.t2ms, labCfg.value, spd)
   playingPhase.value = 'known'
   await playClip(sample.known_id, 1)

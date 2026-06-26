@@ -46,6 +46,11 @@ require('dotenv').config()
 const zlib = require('zlib')
 const { createClient } = require('@supabase/supabase-js')
 const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
+const { Upload } = require('@aws-sdk/lib-storage')
+const os = require('os')
+const path = require('path')
+const fs = require('fs')
+const { once } = require('events')
 
 const arg = (name, def) => {
   const hit = process.argv.find(a => a.startsWith(`--${name}=`))
@@ -69,6 +74,7 @@ const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_K
 })
 const s3 = new S3Client({
   region: process.env.AWS_REGION,
+  maxAttempts: 6, // ride out transient resets/timeouts on a flaky uplink
   credentials: {
     accessKeyId: (process.env.AWS_ACCESS_KEY_ID || '').trim(),
     secretAccessKey: (process.env.AWS_SECRET_ACCESS_KEY || '').trim(),
@@ -78,32 +84,42 @@ const s3 = new S3Client({
 const log = (...a) => console.log(`[${new Date().toISOString().slice(11, 19)}]`, ...a)
 const dayStr = (d) => d.toISOString().slice(0, 10)
 
-/**
- * Fetch every audit row whose changed_at is in [fromMs, toMs), robust against
- * the bloated table: adaptively bisect the window on timeout or page-cap so
- * each leaf query stays small. Same pattern as recover-pod-audio-from-audit.
- */
-async function fetchRange(fromMs, toMs, sink) {
-  const { data, error } = await sb
-    .from('content_audit_log')
-    .select('id, table_name, change_type, changed_at, changed_by_role, changed_by_uid, primary_key, old_row')
-    .gte('changed_at', new Date(fromMs).toISOString())
-    .lt('changed_at', new Date(toMs).toISOString())
-    .order('changed_at', { ascending: false })
-    .limit(PAGE)
+const COLS = 'id, table_name, change_type, changed_at, changed_by_role, changed_by_uid, primary_key, old_row'
 
-  if (error || (data && data.length === PAGE)) {
-    if (toMs - fromMs <= MIN_SLICE_MS) {
-      if (error) { log(`  ⚠ range stuck (${error.message}) — skipping ${new Date(fromMs).toISOString()}`); return }
-      // sub-30s window with >1000 rows: take what we got (rare; same-instant burst)
-    } else {
-      const mid = fromMs + Math.floor((toMs - fromMs) / 2)
-      await fetchRange(mid, toMs, sink)
-      await fetchRange(fromMs, mid, sink)
-      return
-    }
+// Open a per-table gzip TEMP FILE. We stream rows to disk during the (slow) fetch,
+// then upload the finished file afterwards — uploading concurrently with the fetch
+// leaves the multipart connection idle and S3 kills it. Disk-bound, not memory-
+// bound, so a million-row incident day archives without OOM.
+function openTableFile(tmpdir, table) {
+  const gzPath = path.join(tmpdir, `${table}.ndjson.gz`)
+  const gz = zlib.createGzip()
+  const ws = fs.createWriteStream(gzPath)
+  const written = new Promise((res, rej) => { ws.on('finish', res); ws.on('error', rej); gz.on('error', rej) })
+  gz.pipe(ws)
+  return { gzPath, gz, written, count: 0 }
+}
+
+// Write one NDJSON row, honouring gzip backpressure so memory stays flat.
+async function writeRow(f, row) {
+  if (!f.gz.write(JSON.stringify(row) + '\n')) await once(f.gz, 'drain')
+  f.count++
+}
+
+// Fetch one page, retrying transient failures (statement timeouts under DB load —
+// e.g. while a big prune is running — or dropped connections) so a blip doesn't
+// kill a long archive run.
+async function selectPage(fromIso, toIso, cursor) {
+  for (let attempt = 1; ; attempt++) {
+    const { data, error } = await sb
+      .from('content_audit_log').select(COLS)
+      .gte('changed_at', fromIso).lt('changed_at', toIso)
+      .gt('id', cursor).order('id', { ascending: true }).limit(PAGE)
+    if (!error) return data
+    const transient = error.code === '57014' || /timeout|fetch failed|epipe|econnreset|socket/i.test(error.message || '')
+    if (!transient || attempt >= 6) throw error
+    log(`    ⚠ page retry ${attempt} @cursor ${cursor}: ${error.message}`)
+    await new Promise(r => setTimeout(r, 800 * attempt))
   }
-  for (const row of data || []) sink(row)
 }
 
 async function s3Head(key) {
@@ -111,72 +127,93 @@ async function s3Head(key) {
   catch (e) { if (e.name === 'NotFound' || e.$metadata?.httpStatusCode === 404) return null; throw e }
 }
 
-/** Archive (and optionally prune) one UTC day. Returns a summary. */
+/** Archive (and optionally prune) one UTC day. Streams to disk, then uploads. */
 async function archiveDay(day) {
-  const fromMs = Date.parse(`${day}T00:00:00.000Z`)
-  const toMs = fromMs + 86_400_000
+  const fromIso = `${day}T00:00:00.000Z`
+  const toIso = new Date(Date.parse(fromIso) + 86_400_000).toISOString()
 
-  // 1. Pull the whole day, grouped by table.
-  const byTable = new Map()
-  let total = 0
-  await fetchRange(fromMs, toMs, (row) => {
-    total++
-    if (!byTable.has(row.table_name)) byTable.set(row.table_name, [])
-    byTable.get(row.table_name).push(row)
-  })
-
-  if (total === 0) return { day, total: 0, tables: 0, skipped: true }
-  log(`  ${day}: ${total} rows across ${byTable.size} tables`)
-  if (total > 1_000_000) log(`  ⚠ ${day} is large (${total}); held in memory — fine for now, stream if days grow`)
-
-  // 2. One gzipped NDJSON per table + a day manifest.
-  const manifest = { day, archived_at: new Date().toISOString(), tables: {} }
-  for (const [table, rows] of byTable) {
-    manifest.tables[table] = rows.length
-    const key = `${PREFIX}/dt=${day}/${table}.ndjson.gz`
-    if (EXECUTE) {
-      const existing = await s3Head(key)
-      if (existing && existing.ContentLength > 0) {
-        log(`    ${table.padEnd(28)} ${String(rows.length).padStart(7)} rows — already archived, skip upload`)
-      } else {
-        const ndjson = rows.map(r => JSON.stringify(r)).join('\n') + '\n'
-        const gz = zlib.gzipSync(Buffer.from(ndjson, 'utf8'))
-        await s3.send(new PutObjectCommand({
-          Bucket: BUCKET, Key: key, Body: gz,
-          ContentType: 'application/x-ndjson', ContentEncoding: 'gzip',
-        }))
-        const head = await s3Head(key) // verify before any prune
-        if (!head || head.ContentLength === 0) throw new Error(`verify failed for ${key}`)
-        log(`    ${table.padEnd(28)} ${String(rows.length).padStart(7)} rows → ${key} (${gz.length}b)`)
-      }
-    } else {
-      log(`    [dry] ${table.padEnd(28)} ${String(rows.length).padStart(7)} rows → ${key}`)
-    }
-  }
+  // Resume-safe: if the day's manifest already exists the archive is done — skip
+  // re-uploading, but still run the prune (covers a crash between the two steps).
+  let alreadyArchived = false
   if (EXECUTE) {
-    await s3.send(new PutObjectCommand({
-      Bucket: BUCKET, Key: `${PREFIX}/dt=${day}/_manifest.json`,
-      Body: Buffer.from(JSON.stringify(manifest, null, 2)), ContentType: 'application/json',
-    }))
+    const m = await s3Head(`${PREFIX}/dt=${day}/_manifest.json`)
+    alreadyArchived = !!(m && m.ContentLength > 0)
   }
 
-  // 3. Prune (only after verified archive, only with --prune).
+  const writing = EXECUTE && !alreadyArchived
+  const tmpdir = writing ? fs.mkdtempSync(path.join(os.tmpdir(), 'auditarch-')) : null
+  const counts = {}
+  const files = new Map()
+  let cursor = 0, total = 0
+  try {
+    // 1. Stream the whole day by ID cursor (robust to any volume / same-instant
+    //    bursts — the old time-window bisect silently capped at 1000 rows/slice)
+    //    into per-table gzip temp files on disk.
+    for (;;) {
+      const data = await selectPage(fromIso, toIso, cursor)
+      if (!data || data.length === 0) break
+      for (const row of data) {
+        total++
+        counts[row.table_name] = (counts[row.table_name] || 0) + 1
+        if (writing) {
+          let f = files.get(row.table_name)
+          if (!f) { f = openTableFile(tmpdir, row.table_name); files.set(row.table_name, f) }
+          await writeRow(f, row)
+        }
+      }
+      cursor = data[data.length - 1].id
+      if (data.length < PAGE) break
+    }
+
+    if (total === 0) { if (tmpdir) fs.rmSync(tmpdir, { recursive: true, force: true }); return { day, total: 0, tables: 0, skipped: true } }
+    log(`  ${day}: ${total} rows across ${Object.keys(counts).length} tables${alreadyArchived ? ' (already archived — prune only)' : ''}`)
+
+    // 2. Upload each FINISHED temp file (multipart) and VERIFY before any prune.
+    if (writing) {
+      for (const [table, f] of files) {
+        f.gz.end(); await f.written
+        const key = `${PREFIX}/dt=${day}/${table}.ndjson.gz`
+        await new Upload({
+          client: s3,
+          params: { Bucket: BUCKET, Key: key, Body: fs.createReadStream(f.gzPath), ContentType: 'application/x-ndjson', ContentEncoding: 'gzip' },
+          queueSize: 4, partSize: 8 * 1024 * 1024,
+        }).done()
+        const head = await s3Head(key)
+        if (!head || head.ContentLength === 0) throw new Error(`verify failed for ${key}`)
+        log(`    ${table.padEnd(28)} ${String(f.count).padStart(8)} rows → ${key} (${head.ContentLength}b)`)
+      }
+      await s3.send(new PutObjectCommand({
+        Bucket: BUCKET, Key: `${PREFIX}/dt=${day}/_manifest.json`,
+        Body: Buffer.from(JSON.stringify({ day, archived_at: new Date().toISOString(), tables: counts }, null, 2)),
+        ContentType: 'application/json',
+      }))
+    } else if (!EXECUTE) {
+      for (const [t, n] of Object.entries(counts)) log(`    [dry] ${t.padEnd(28)} ${String(n).padStart(8)} rows`)
+    }
+  } finally {
+    if (tmpdir) { try { fs.rmSync(tmpdir, { recursive: true, force: true }) } catch {} }
+  }
+
+  // 3. Prune — only after a verified archive (or a confirmed pre-existing one).
+  //    Batched + committed per batch via PostgREST so a stall can't roll it back.
   let deleted = 0
   if (PRUNE && EXECUTE) {
-    const ids = []
-    for (const rows of byTable.values()) for (const r of rows) ids.push(r.id)
-    for (let i = 0; i < ids.length; i += DELETE_BATCH) {
-      const chunk = ids.slice(i, i + DELETE_BATCH)
-      const { error } = await sb.from('content_audit_log').delete().in('id', chunk)
-      if (error) { log(`    ⚠ delete batch failed: ${error.message}`); break }
-      deleted += chunk.length
+    for (;;) {
+      const { data, error } = await sb.from('content_audit_log').select('id')
+        .gte('changed_at', fromIso).lt('changed_at', toIso).limit(DELETE_BATCH)
+      if (error) throw error
+      if (!data || !data.length) break
+      const { error: derr } = await sb.from('content_audit_log').delete().in('id', data.map(r => r.id))
+      if (derr) { log(`    ⚠ delete batch failed: ${derr.message}`); break }
+      deleted += data.length
+      if (data.length < DELETE_BATCH) break
     }
-    log(`    pruned ${deleted}/${ids.length} rows from DB`)
+    log(`    pruned ${deleted} rows from DB`)
   } else if (PRUNE) {
     log(`    [dry] would prune ${total} rows from DB`)
   }
 
-  return { day, total, tables: byTable.size, deleted }
+  return { day, total, tables: Object.keys(counts).length, deleted }
 }
 
 async function main() {
