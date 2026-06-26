@@ -1140,6 +1140,49 @@ app.get('/api/stats/:courseCode', async (req, res) => {
 // Course Builder runs on a separate service that handles osascript/iTerm launch
 const COURSE_BUILDER_URL = process.env.COURSE_BUILDER_URL || 'http://localhost:3471'
 
+// Course-code shape, e.g. spa_for_eng / eng_for_jpn. The proxy mounts below are
+// wildcards (/api/build/*, /api/v2/*, …) so the app.param('courseCode') gate
+// never fires for them, and :courseCode sits in varying path positions. We
+// locate the scoped course by matching this shape against the path segments
+// (and, as a fallback, the JSON body) rather than by position.
+const PROXY_COURSE_CODE_RE = /^[a-z]{2,4}_for_[a-z]{2,4}$/
+
+function extractProxyCourseCode(req) {
+  for (const seg of (req.path || '').split('/')) {
+    if (PROXY_COURSE_CODE_RE.test(seg)) return seg
+  }
+  const bodyCode = req.body && (req.body.course_code || req.body.courseCode)
+  if (typeof bodyCode === 'string' && PROXY_COURSE_CODE_RE.test(bodyCode)) return bodyCode
+  return null
+}
+
+// Gate for the course-builder proxy routes. Course Builder (3471) has no auth of
+// its own and these routes spawn Claude CLI agents on the host (osascript →
+// iTerm2/Terminal → node/claude). Without this gate any caller reaching 3470
+// could drive the machine for ANY course. Mirrors the app.param('courseCode')
+// gate: same-host mesh/agent callbacks bypass; everyone else must be a resolved
+// dashboard user, and a course named in the path/body is scoped to that user.
+async function requireProxyCourseAccess(req, res, next) {
+  try {
+    // Same-host service-mesh / agent callbacks (spawned ON the host) — keep working.
+    if (isLoopbackDirectRequest(req)) return next()
+
+    const user = await resolveDashboardUserCached(req)
+    if (!user) return res.status(401).json({ error: 'Authentication required' })
+
+    const courseCode = extractProxyCourseCode(req)
+    if (courseCode && user.role !== 'admin' && !userCanAccessCourse(user, courseCode)) {
+      logger.warn(`[ProxyScope] DENY ${user.email || 'unknown'} → ${courseCode} (${req.method} ${req.path})`)
+      return res.status(403).json({ error: `No access to course ${courseCode}` })
+    }
+    req.dashboardUser = user
+    next()
+  } catch (err) {
+    logger.error('[ProxyScope] error:', err)
+    res.status(500).json({ error: 'Course access check failed' })
+  }
+}
+
 // Generic proxy function for course-builder routes
 async function proxyCourseBuilder(req, res) {
   try {
@@ -1153,7 +1196,10 @@ async function proxyCourseBuilder(req, res) {
     const fetchOptions = {
       method: req.method,
       headers: {
-        'Content-Type': req.headers['content-type'] || 'application/json'
+        'Content-Type': req.headers['content-type'] || 'application/json',
+        // Forward the caller's identity so 3471 can attribute/log the spawn and
+        // make its own decisions (defence-in-depth). Previously dropped.
+        ...(req.headers.authorization ? { Authorization: req.headers.authorization } : {})
       },
       body
     }
@@ -1168,17 +1214,17 @@ async function proxyCourseBuilder(req, res) {
   }
 }
 
-app.all('/api/build/*', proxyCourseBuilder)
-app.all('/api/v2/*', proxyCourseBuilder)
-app.all('/api/golden/*', proxyCourseBuilder)
-app.all('/api/phrases/*', proxyCourseBuilder)
-app.all('/api/legos/*', proxyCourseBuilder)
-app.all('/api/agents', proxyCourseBuilder)
-app.all('/api/agents/*', proxyCourseBuilder)
-app.all('/api/orchestrator/*', proxyCourseBuilder)
-app.all('/api/qa/*', proxyCourseBuilder)
-app.all('/api/course/*', proxyCourseBuilder)
-app.all('/api/seeds/*', proxyCourseBuilder)
+app.all('/api/build/*', requireProxyCourseAccess, proxyCourseBuilder)
+app.all('/api/v2/*', requireProxyCourseAccess, proxyCourseBuilder)
+app.all('/api/golden/*', requireProxyCourseAccess, proxyCourseBuilder)
+app.all('/api/phrases/*', requireProxyCourseAccess, proxyCourseBuilder)
+app.all('/api/legos/*', requireProxyCourseAccess, proxyCourseBuilder)
+app.all('/api/agents', requireProxyCourseAccess, proxyCourseBuilder)
+app.all('/api/agents/*', requireProxyCourseAccess, proxyCourseBuilder)
+app.all('/api/orchestrator/*', requireProxyCourseAccess, proxyCourseBuilder)
+app.all('/api/qa/*', requireProxyCourseAccess, proxyCourseBuilder)
+app.all('/api/course/*', requireProxyCourseAccess, proxyCourseBuilder)
+app.all('/api/seeds/*', requireProxyCourseAccess, proxyCourseBuilder)
 
 // Proxy to orchestrator (port 3456) for mission-control and health endpoints
 const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456'
