@@ -146,27 +146,36 @@ function buildMainStage(sentence, stage, playlist) {
  */
 export function composeArc(sentence, glossMap, targetClipMap, stage0Cfg, podsStagePlaylist) {
   const out = []
-  const atoms = resolveAtoms(sentence.atom_map, glossMap, targetClipMap)
-  const clips = clipsFromRow(sentence)
+  // The INTENTION is the operational unit (Tom 2026-06-27): a turn splits into
+  // self-contained intentions, each running the FULL arc (Stage-0 → Stages 1-N)
+  // on its own. Legacy turns with no intentions fall back to the whole sentence.
+  const units = (Array.isArray(sentence.intentions) && sentence.intentions.length)
+    ? sentence.intentions.map((it, idx) => ({ unit: it, prefix: sentence.intentions.length > 1 ? `I${idx + 1}·` : '' }))
+    : [{ unit: sentence, prefix: '' }]
+  const stages = Object.keys(podsStagePlaylist || {}).map(Number).filter((n) => !Number.isNaN(n)).sort((a, b) => a - b)
 
-  // STAGE 0 — only where at least one atom resolves to a target clip
-  if (stage0Cfg && Array.isArray(stage0Cfg.tiers) && atoms.some((a) => a.targetClipId)) {
-    for (const tier of stage0Cfg.tiers) {
-      const visits = Math.max(1, tier.visits || 1)
-      for (let v = 0; v < visits; v++) {
-        const plays = foldEventsToPlays(tierSequence(tier, atoms, clips, stage0Cfg))
-        for (const p of plays) out.push({ audioId: p.audioId, speed: p.speed || 1, role: p.role, label: p.label, stageLabel: `0·${tier.key}`, gapAfterMs: p.gapAfterMs })
+  for (const { unit, prefix } of units) {
+    const atoms = resolveAtoms(unit.atom_map, glossMap, targetClipMap)
+    const clips = clipsFromRow(unit)
+
+    // STAGE 0 — only where at least one atom resolves to a target clip
+    if (stage0Cfg && Array.isArray(stage0Cfg.tiers) && atoms.some((a) => a.targetClipId)) {
+      for (const tier of stage0Cfg.tiers) {
+        const visits = Math.max(1, tier.visits || 1)
+        for (let v = 0; v < visits; v++) {
+          const plays = foldEventsToPlays(tierSequence(tier, atoms, clips, stage0Cfg))
+          for (const p of plays) out.push({ audioId: p.audioId, speed: p.speed || 1, role: p.role, label: p.label, stageLabel: `${prefix}0·${tier.key}`, gapAfterMs: p.gapAfterMs })
+        }
       }
     }
-  }
 
-  // STAGES 1..N — ascending
-  const stages = Object.keys(podsStagePlaylist || {}).map(Number).filter((n) => !Number.isNaN(n)).sort((a, b) => a - b)
-  for (const stage of stages) {
-    const playlist = podsStagePlaylist[stage] || podsStagePlaylist[String(stage)]
-    if (!playlist) continue
-    for (const p of buildMainStage(sentence, stage, playlist)) {
-      out.push({ audioId: p.audioId, speed: p.playbackSpeed || 1, role: p.playRole, label: p.text, stageLabel: String(stage), gapAfterMs: 0 })
+    // STAGES 1..N — ascending, per intention
+    for (const stage of stages) {
+      const playlist = podsStagePlaylist[stage] || podsStagePlaylist[String(stage)]
+      if (!playlist) continue
+      for (const p of buildMainStage(unit, stage, playlist)) {
+        out.push({ audioId: p.audioId, speed: p.playbackSpeed || 1, role: p.playRole, label: p.text, stageLabel: `${prefix}${stage}`, gapAfterMs: 0 })
+      }
     }
   }
   return out
