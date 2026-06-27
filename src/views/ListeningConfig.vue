@@ -135,17 +135,21 @@
           <button class="arc-stop" :disabled="arcPlayingIdx < 0" @click="stopArc">■ Stop</button>
           <span v-if="!arcPlays.length" class="arc-empty">No playable arc — this sentence has no resolvable atoms/clips.</span>
         </div>
-        <div class="arc-strip">
-          <span
-            v-for="(p, i) in arcPlays" :key="i"
-            class="arc-chip"
-            :class="[String(p.stageLabel).startsWith('0') ? 'arc-chip--s0' : 'arc-chip--sn', { playing: arcPlayingIdx === i }]"
-            :title="`${p.stageLabel} · ${p.role} · ${p.speed}×`"
-          >
-            <span class="arc-chip-stage">{{ p.stageLabel }}</span>
-            <span class="arc-chip-label">{{ p.label }}</span>
-            <span v-if="p.speed !== 1" class="arc-chip-speed">{{ p.speed }}×</span>
-          </span>
+        <div class="arc-rows">
+          <div v-for="(row, r) in arcRows" :key="r" class="arc-row">
+            <span class="arc-row-label">{{ row.stageLabel }}</span>
+            <div class="arc-row-chips">
+              <span
+                v-for="{ p, i } in row.plays" :key="i"
+                class="arc-chip"
+                :class="[String(p.stageLabel).startsWith('0') ? 'arc-chip--s0' : 'arc-chip--sn', { playing: arcPlayingIdx === i }]"
+                :title="`${p.stageLabel} · ${p.role} · ${p.speed}×`"
+              >
+                <span class="arc-chip-label">{{ p.label }}</span>
+                <span v-if="p.speed !== 1" class="arc-chip-speed">{{ p.speed }}×</span>
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -573,6 +577,18 @@ const arcPlays = computed(() => {
     return []
   }
 })
+// Group plays into rows by stage/tier (keep each play's global index for the
+// playing-highlight). One row per stage = one breakdown movement / escalation
+// stage on its own line.
+const arcRows = computed(() => {
+  const rows = []
+  let cur = null
+  arcPlays.value.forEach((p, i) => {
+    if (!cur || cur.stageLabel !== p.stageLabel) { cur = { stageLabel: p.stageLabel, plays: [] }; rows.push(cur) }
+    cur.plays.push({ p, i })
+  })
+  return rows
+})
 function stopArc() {
   arcStopFlag.value = true
   arcPlayingIdx.value = -1
@@ -597,7 +613,10 @@ async function playArc() {
       a.onerror = resolve
       a.play().catch(resolve)
     })
-    const gap = Math.min(p.gapAfterMs || 0, 1500) // cap so the preview stays snappy
+    // Longer breath (2s) at the end of each row/stage; snappy within a row.
+    const next = plays[i + 1]
+    const rowEnd = !next || next.stageLabel !== p.stageLabel
+    const gap = rowEnd ? 2000 : Math.min(p.gapAfterMs || 0, 1500)
     if (gap > 0 && !arcStopFlag.value) await new Promise((r) => setTimeout(r, gap))
   }
   arcPlayingIdx.value = -1
@@ -1104,7 +1123,14 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .arc-play:hover:not(:disabled) { border-color: var(--accent-2); color: var(--accent-2); }
 .arc-play:disabled, .arc-stop:disabled { opacity: 0.35; cursor: not-allowed; }
 .arc-empty { font-size: 0.78rem; color: var(--muted); }
-.arc-strip { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.arc-rows { display: flex; flex-direction: column; gap: 0.35rem; }
+.arc-row { display: grid; grid-template-columns: 88px 1fr; align-items: start; gap: 0.5rem; }
+.arc-row-label {
+  font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+  font-size: 0.68rem; color: var(--accent); padding-top: 0.28rem; text-align: right;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.arc-row-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 .arc-chip {
   display: inline-flex; align-items: baseline; gap: 0.35rem;
   padding: 0.2rem 0.45rem; border-radius: 5px; font-size: 0.74rem;
