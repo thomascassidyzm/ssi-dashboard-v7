@@ -38,19 +38,26 @@ function tierSequence(tier, atoms, clips, cfg) {
   const withTarget = atoms.filter((a) => a.targetClipId)
 
   if (tier.key === 'explainer' || (tier.granularity === 'atoms' && tier.key === 'explainer')) {
-    const chunkGap = tier.fusionGap ?? g.fusionPairs
-    const pushChunkedWhole = () => withTarget.forEach((a, i) => { clip(a.targetClipId, 'target', a.targetSurface); if (i < withTarget.length - 1) gap(chunkGap) })
-    pushChunkedWhole()
-    if (clips.translationId) { gap(g.targetMeaning); clip(clips.translationId, 'translation', clips.knownText) }
-    gap(g.betweenChunks)
-    atoms.forEach((a, j) => {
-      if (!a.targetClipId) return
-      clip(a.targetClipId, 'target', a.targetSurface)
-      if (a.meansGlossClipId) { gap(g.beforeMeans); clip(a.meansGlossClipId, 'meansGloss', `means ${a.gloss}`) }
-      if (j < atoms.length - 1) gap(g.betweenChunks)
-    })
-    gap(g.betweenChunks)
-    pushChunkedWhole()
+    // 4-MOVEMENT breakdown (Tom 2026-06-27): whole target → whole known →
+    // per-MEANINGFUL-chunk (target → "means X") → whole target. Each chunk is
+    // heard ONCE. A chunk with no gloss (a name) is NEVER drilled on its own —
+    // it's heard only inside the whole takes, in context.
+    const meaningful = atoms.filter((a) => a.targetClipId && a.meansGlossClipId)
+    // 1 · whole target
+    if (clips.wholeTakeId) clip(clips.wholeTakeId, 'wholeTake', clips.targetText)
+    // 2 · whole known (the meaning)
+    if (clips.translationId) { if (seq.length) gap(g.targetMeaning); clip(clips.translationId, 'translation', clips.knownText) }
+    // 3 · per meaningful chunk: target → "means X"
+    if (meaningful.length) {
+      gap(g.betweenChunks)
+      meaningful.forEach((a, j) => {
+        clip(a.targetClipId, 'target', a.targetSurface)
+        gap(g.beforeMeans); clip(a.meansGlossClipId, 'meansGloss', `means ${a.gloss}`)
+        if (j < meaningful.length - 1) gap(g.betweenChunks)
+      })
+    }
+    // 4 · whole target (wrap, now understood)
+    if (clips.wholeTakeId) { gap(g.betweenChunks); clip(clips.wholeTakeId, 'wholeTake', clips.targetText) }
     trimTrailingGap()
     return seq
   }
