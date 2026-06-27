@@ -142,7 +142,7 @@
               <span
                 v-for="{ p, i } in row.plays" :key="i"
                 class="arc-chip"
-                :class="[String(p.stageLabel).startsWith('0') ? 'arc-chip--s0' : 'arc-chip--sn', { playing: arcPlayingIdx === i }]"
+                :class="[String(p.stageLabel).includes('0·') ? 'arc-chip--s0' : 'arc-chip--sn', { playing: arcPlayingIdx === i }]"
                 :title="`${p.stageLabel} · ${p.role} · ${p.speed}×`"
               >
                 <span class="arc-chip-label">{{ p.label }}</span>
@@ -379,7 +379,7 @@ async function loadCoursePreview(courseCode) {
     // exists. Courses without pods still preview L1 fine.
     const { data: podRows, error: podErr } = await sb
       .from('listening_pod_sentences')
-      .select('global_order, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, atom_map')
+      .select('global_order, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, atom_map, intentions')
       .eq('pod_id', `${courseCode}:pod-0`)
       .order('global_order', { ascending: true })
     if (podErr) {
