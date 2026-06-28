@@ -131,8 +131,9 @@
               <option v-for="(s, i) in coursePodSentences" :key="i" :value="i">{{ i + 1 }}. {{ s.target_text }}</option>
             </select>
           </label>
-          <button class="arc-play" :disabled="!arcPlays.length || arcPlayingIdx >= 0" @click="playArc">▶ Play full arc · {{ arcPlays.length }} plays</button>
+          <button class="arc-play" :disabled="!arcIndexed.length || arcPlayingIdx >= 0" @click="playArc">▶ Play {{ showFullArc ? 'full arc' : 'breakdown' }} · {{ arcIndexed.length }} plays</button>
           <button class="arc-stop" :disabled="arcPlayingIdx < 0" @click="stopArc">■ Stop</button>
+          <label class="arc-fulltoggle"><input type="checkbox" v-model="showFullArc" /> show Stages 1-N</label>
           <span v-if="!arcPlays.length" class="arc-empty">No playable arc — this sentence has no resolvable atoms/clips.</span>
         </div>
         <div class="arc-rows">
@@ -577,16 +578,22 @@ const arcPlays = computed(() => {
     return []
   }
 })
-// Group plays into rows by stage/tier (keep each play's global index for the
-// playing-highlight). One row per stage = one breakdown movement / escalation
-// stage on its own line.
+// In configs we care about the Stage-0 BREAKDOWN tiers (per intention). Stages
+// 1-N are just the whole phrase repeated — hidden by default (toggle to show).
+const showFullArc = ref(false)
+const arcIndexed = computed(() =>
+  arcPlays.value
+    .map((p, i) => ({ p, i }))                                  // keep global index for the highlight
+    .filter(x => showFullArc.value || String(x.p.stageLabel).includes('0·'))
+)
+// Group displayed plays into rows by stage/tier (one row per tier line).
 const arcRows = computed(() => {
   const rows = []
   let cur = null
-  arcPlays.value.forEach((p, i) => {
+  for (const { p, i } of arcIndexed.value) {
     if (!cur || cur.stageLabel !== p.stageLabel) { cur = { stageLabel: p.stageLabel, plays: [] }; rows.push(cur) }
     cur.plays.push({ p, i })
-  })
+  }
   return rows
 })
 function stopArc() {
@@ -595,16 +602,16 @@ function stopArc() {
   if (currentAudio) { try { currentAudio.pause() } catch {} }
 }
 async function playArc() {
-  const plays = arcPlays.value
+  const plays = arcIndexed.value.map(x => x.p)
   if (!plays.length) return
   arcStopFlag.value = false
   if (currentAudio) { try { currentAudio.pause() } catch {} }
-  for (let i = 0; i < plays.length; i++) {
+  for (let k = 0; k < plays.length; k++) {
     if (arcStopFlag.value) break
-    const p = plays[i]
+    const p = plays[k]
     const url = audioUrl(p.audioId)
     if (!url) continue
-    arcPlayingIdx.value = i
+    arcPlayingIdx.value = arcIndexed.value[k].i
     await new Promise((resolve) => {
       const a = new Audio(url)
       a.playbackRate = p.speed || 1
@@ -613,8 +620,8 @@ async function playArc() {
       a.onerror = resolve
       a.play().catch(resolve)
     })
-    // Longer breath (2s) at the end of each row/stage; snappy within a row.
-    const next = plays[i + 1]
+    // Longer breath (2s) at the end of each row/tier; snappy within a row.
+    const next = plays[k + 1]
     const rowEnd = !next || next.stageLabel !== p.stageLabel
     const gap = rowEnd ? 2000 : Math.min(p.gapAfterMs || 0, 1500)
     if (gap > 0 && !arcStopFlag.value) await new Promise((r) => setTimeout(r, gap))
@@ -1123,6 +1130,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .arc-play:hover:not(:disabled) { border-color: var(--accent-2); color: var(--accent-2); }
 .arc-play:disabled, .arc-stop:disabled { opacity: 0.35; cursor: not-allowed; }
 .arc-empty { font-size: 0.78rem; color: var(--muted); }
+.arc-fulltoggle { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.78rem; color: var(--muted); cursor: pointer; }
 .arc-rows { display: flex; flex-direction: column; gap: 0.35rem; }
 .arc-row { display: grid; grid-template-columns: 88px 1fr; align-items: start; gap: 0.5rem; }
 .arc-row-label {
