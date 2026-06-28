@@ -380,7 +380,7 @@ async function loadCoursePreview(courseCode) {
     // exists. Courses without pods still preview L1 fine.
     const { data: podRows, error: podErr } = await sb
       .from('listening_pod_sentences')
-      .select('global_order, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, atom_map, intentions')
+      .select('global_order, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, atom_map, sentence_audio_ids, sentence_known_audio_ids')
       .eq('pod_id', `${courseCode}:pod-0`)
       .order('global_order', { ascending: true })
     if (podErr) {

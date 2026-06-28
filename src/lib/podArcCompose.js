@@ -144,19 +144,71 @@ function buildMainStage(sentence, stage, playlist) {
  * with a clip) followed by Stages 1..N. Returns a flat ordered play-list:
  *   { audioId, speed, role, label, stageLabel, gapAfterMs }
  */
+// ── per-SENTENCE split + atom-partition (ports of podSentenceSplit.ts) ────────
+// The UNIT the learner hears is the SENTENCE, not the turn (Tom 2026-06-16):
+// a multi-sentence turn carries sentence_audio_ids / sentence_known_audio_ids,
+// and the flat atom_map is partitioned per sentence. Verified 2026-06-28 that
+// sentence == intention for this content, so we reuse the runtime split rather
+// than a parallel structure. Keep byte-faithful to podSentenceSplit.ts.
+const POD_SENTENCE_BOUNDARY = /(?<=[.!?…])\s+/
+const splitText = (t) => (t || '').split(POD_SENTENCE_BOUNDARY).map((s) => s.trim()).filter(Boolean)
+const alnumOnly = (s) => (s || '').toLowerCase().replace(/[^\p{L}\p{N}\p{M}]/gu, '')
+
+function splitRowUnits(row) {
+  const clips = (Array.isArray(row.sentence_audio_ids) ? row.sentence_audio_ids : []).filter(Boolean)
+  const knownClips = (Array.isArray(row.sentence_known_audio_ids) ? row.sentence_known_audio_ids : []).filter(Boolean)
+  if (clips.length < 2) {
+    return [{ targetText: row.target_text || '', knownText: row.known_text || '', targetAudioId: row.target_audio_id || null, knownAudioId: row.known_audio_id || null }]
+  }
+  const tSents = splitText(row.target_text)
+  const kSents = splitText(row.known_text)
+  const knownMatches = knownClips.length === clips.length
+  return clips.map((clip, i) => ({
+    targetText: tSents[i] || tSents[tSents.length - 1] || row.target_text || '',
+    knownText: knownMatches ? (kSents[i] || '') : '',
+    targetAudioId: clip,
+    knownAudioId: knownMatches ? knownClips[i] : null,
+  }))
+}
+
+function partitionAtomMap(atomMap, sentenceTexts) {
+  if (!Array.isArray(atomMap) || atomMap.length === 0) return null
+  if (sentenceTexts.length < 2) return null
+  const targets = sentenceTexts.map(alnumOnly)
+  if (targets.some((t) => !t)) return null
+  const groups = sentenceTexts.map(() => [])
+  let si = 0, acc = ''
+  for (const entry of atomMap) {
+    if (si >= groups.length) return null
+    groups[si].push(entry)
+    if (entry.kind === 'atom' || entry.kind === 'passthrough') {
+      const surf = alnumOnly(entry.target_surface || '')
+      if (surf) {
+        acc += surf
+        if (acc === targets[si]) { si++; acc = '' }
+        else if (!targets[si].startsWith(acc)) return null
+      }
+    }
+  }
+  if (si !== groups.length || acc !== '') return null
+  if (groups.some((g) => g.length === 0)) return null
+  return groups
+}
+
 export function composeArc(sentence, glossMap, targetClipMap, stage0Cfg, podsStagePlaylist) {
   const out = []
-  // The INTENTION is the operational unit (Tom 2026-06-27): a turn splits into
-  // self-contained intentions, each running the FULL arc (Stage-0 → Stages 1-N)
-  // on its own. Legacy turns with no intentions fall back to the whole sentence.
-  const units = (Array.isArray(sentence.intentions) && sentence.intentions.length)
-    ? sentence.intentions.map((it, idx) => ({ unit: it, prefix: sentence.intentions.length > 1 ? `I${idx + 1}·` : '' }))
-    : [{ unit: sentence, prefix: '' }]
+  const units = splitRowUnits(sentence)
+  // Partition the flat atom_map across the split sentences (null ⇒ no Stage-0,
+  // same as the runtime — never a wrong ladder).
+  const atomGroups = units.length > 1 ? partitionAtomMap(sentence.atom_map, units.map((u) => u.targetText)) : null
   const stages = Object.keys(podsStagePlaylist || {}).map(Number).filter((n) => !Number.isNaN(n)).sort((a, b) => a - b)
 
-  for (const { unit, prefix } of units) {
-    const atoms = resolveAtoms(unit.atom_map, glossMap, targetClipMap)
-    const clips = clipsFromRow(unit)
+  units.forEach((u, ui) => {
+    const prefix = units.length > 1 ? `S${ui + 1}·` : ''
+    const unitAtomMap = units.length > 1 ? (atomGroups ? atomGroups[ui] : []) : (sentence.atom_map || [])
+    const atoms = resolveAtoms(unitAtomMap, glossMap, targetClipMap)
+    const clips = { wholeTakeId: u.targetAudioId, translationId: u.knownAudioId, targetText: u.targetText, knownText: u.knownText }
+    const sentLike = { target_audio_id: u.targetAudioId, known_audio_id: u.knownAudioId, explainer_audio_id: null, target_text: u.targetText, known_text: u.knownText }
 
     // STAGE 0 — only where at least one atom resolves to a target clip
     if (stage0Cfg && Array.isArray(stage0Cfg.tiers) && atoms.some((a) => a.targetClipId)) {
@@ -169,14 +221,14 @@ export function composeArc(sentence, glossMap, targetClipMap, stage0Cfg, podsSta
       }
     }
 
-    // STAGES 1..N — ascending, per intention
+    // STAGES 1..N — ascending, per sentence
     for (const stage of stages) {
       const playlist = podsStagePlaylist[stage] || podsStagePlaylist[String(stage)]
       if (!playlist) continue
-      for (const p of buildMainStage(unit, stage, playlist)) {
+      for (const p of buildMainStage(sentLike, stage, playlist)) {
         out.push({ audioId: p.audioId, speed: p.playbackSpeed || 1, role: p.playRole, label: p.text, stageLabel: `${prefix}${stage}`, gapAfterMs: 0 })
       }
     }
-  }
+  })
   return out
 }
