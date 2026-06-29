@@ -1,25 +1,25 @@
 <template>
-  <header v-if="!isHidden" class="app-navbar">
+  <header v-if="!isHidden" ref="navbarRef" class="app-navbar">
     <div class="navbar-inner">
-      <!-- Left: Back link + Title -->
+      <!-- Left: Popty brand (→ Home) + course breadcrumb -->
       <div class="navbar-left">
-        <router-link v-if="backLink" :to="backLink.to" class="back-link">
-          {{ backLink.label }}
-        </router-link>
-        <h1 class="navbar-title">{{ title }}</h1>
+        <router-link to="/" class="navbar-brand">Popty</router-link>
+        <span v-if="courseCrumb" class="navbar-crumb">
+          <span class="crumb-sep">/</span>
+          <span class="crumb-current">{{ courseCrumb }}</span>
+        </span>
       </div>
 
-      <!-- Center: Tabs -->
-      <nav v-if="tabs.length" class="navbar-tabs">
+      <!-- Center: persistent primary nav -->
+      <nav class="navbar-tabs">
         <router-link
-          v-for="tab in tabs"
+          v-for="tab in primaryTabs"
           :key="tab.label"
           :to="tab.to"
           class="tab-item"
           :class="{ active: tab.active }"
         >
           {{ tab.label }}
-          <span v-if="tab.badge" class="tab-badge">{{ tab.badge }}</span>
         </router-link>
       </nav>
 
@@ -41,6 +41,9 @@
           </button>
           <div v-if="showUserMenu" class="user-dropdown">
             <div class="user-dropdown-name">{{ learner?.name || user?.email }}</div>
+            <router-link v-if="isAdmin" to="/admin" class="user-dropdown-item" @click="showUserMenu = false">
+              Admin
+            </router-link>
             <router-link v-if="isAdmin" to="/users" class="user-dropdown-item" @click="showUserMenu = false">
               Users
             </router-link>
@@ -57,6 +60,22 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Contextual second row: per-section sub-navigation -->
+    <div v-if="sectionTabs.length" class="navbar-subbar">
+      <nav class="navbar-subtabs">
+        <router-link
+          v-for="tab in sectionTabs"
+          :key="tab.label"
+          :to="tab.to"
+          class="tab-item"
+          :class="{ active: tab.active }"
+        >
+          {{ tab.label }}
+          <span v-if="tab.badge" class="tab-badge">{{ tab.badge }}</span>
+        </router-link>
+      </nav>
     </div>
 
     <!-- Password Modal -->
@@ -103,7 +122,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useCourses } from '../composables/useCourses'
 import { useAuth } from '../composables/useAuth'
@@ -219,58 +238,77 @@ const activeCourseCount = ref(0)
 // and never see the admin console chrome.
 const isHidden = computed(() => route.meta.public === true || isRecorder.value)
 
-// Context detection
-const isHome = computed(() => route.path === '/')
+// Context detection — route semantics after the nav unification:
+// '/' is the Home hub; the courses library lives at '/courses'.
+const courseCode = computed(() => route.params.courseCode || null)
+const isCreateMode = computed(() => courseCode.value === 'new')
+const isCoursesBoard = computed(() => route.path === '/courses')
+const isDocs = computed(() => route.path.startsWith('/docs'))
+const isUsers = computed(() => route.path === '/users')
 const isJobs = computed(() => route.path === '/jobs')
 const isMaintenance = computed(() => route.path === '/maintenance')
 const isInsights = computed(() => route.path === '/insights')
-const isDocs = computed(() => route.path.startsWith('/docs'))
+const isAdminHub = computed(() => route.path === '/admin')
 const isProduction = computed(() => route.path.startsWith('/production/') && route.params.courseCode)
-const courseCode = computed(() => route.params.courseCode || null)
-const isCreateMode = computed(() => courseCode.value === 'new')
 
-// Home-section tabs show on Courses, Activity, and Maintenance pages
-const inHomeSection = computed(() => isHome.value || isJobs.value || isMaintenance.value || isInsights.value)
+// "Courses" owns the whole course pipeline: the library, a course overview,
+// and every working surface under /production/:code.
+const isCourseSection = computed(() =>
+  route.path.startsWith('/courses') ||
+  route.path.startsWith('/course/') ||
+  (route.path.startsWith('/production/') && !!courseCode.value)
+)
 
-// Show course summary only on home page
-const showSummary = computed(() => isHome.value)
+// The Admin section groups platform-wide tooling under one tab row.
+const isAdminSection = computed(() =>
+  route.path.startsWith('/admin') || isJobs.value || isMaintenance.value || isInsights.value || isUsers.value
+)
 
-// Back link
-const backLink = computed(() => {
-  if (isHome.value) return null
-  return { to: '/', label: 'Courses' }
-})
+// Show the course-count chip only on the Courses library.
+const showSummary = computed(() => isCoursesBoard.value)
 
-// Title
-const title = computed(() => {
-  if (isHome.value) return 'Popty'
-  if (isDocs.value) return 'Documentation'
-  if (isJobs.value) return 'Activity'
-  if (isMaintenance.value) return 'Maintenance'
+// Breadcrumb — on course-scoped routes, show the course name after the brand.
+// "Courses" itself is always one click away via the persistent primary tab.
+const courseCrumb = computed(() => {
   if (isCreateMode.value) return 'New Course'
-  if (isProduction.value) return getCourseName(courseCode.value)
-  return route.meta.title || 'Popty'
+  if (courseCode.value) return getCourseName(courseCode.value)
+  return null
 })
 
-// Tabs
-const tabs = computed(() => {
-  if (inHomeSection.value) {
+// PRIMARY tabs — always visible everywhere. The persistent top-level nav,
+// with an active-state highlight driven by the current section.
+const primaryTabs = computed(() => [
+  { label: 'Courses', to: '/courses', active: isCourseSection.value },
+  { label: 'Docs', to: '/docs', active: isDocs.value },
+  { label: 'Admin', to: '/admin', active: isAdminSection.value }
+])
+
+// SECTION sub-tabs — contextual nav rendered as a second row under the
+// primary bar (the per-section tooling: admin tools, docs pages, course view).
+const sectionTabs = computed(() => {
+  // Admin section — platform-wide tooling under one tab row.
+  if (isAdminSection.value) {
     return [
-      { label: 'Courses', to: '/', active: isHome.value },
+      { label: 'Admin', to: '/admin', active: isAdminHub.value },
+      {
+        label: 'Configs',
+        to: '/admin/configs',
+        active: route.path.startsWith('/admin/configs') || route.path.startsWith('/admin/listening')
+      },
+      { label: 'Insights', to: '/insights', active: isInsights.value },
       {
         label: 'Activity',
         to: '/jobs',
         active: isJobs.value,
         badge: activeCourseCount.value > 0 ? activeCourseCount.value : null
       },
-      { label: 'Docs', to: '/docs', active: false },
       {
         label: 'Maintenance',
         to: '/maintenance',
         active: isMaintenance.value,
         badge: auditStaleDays.value ? `${auditStaleDays.value}d` : null
       },
-      { label: 'Insights', to: '/insights', active: isInsights.value }
+      { label: 'Users', to: '/users', active: isUsers.value }
     ]
   }
 
@@ -315,6 +353,27 @@ const tabs = computed(() => {
 onMounted(() => {
   loadCourses()
 })
+
+// Publish the navbar's real height as --app-navbar-height so full-screen
+// takeover pages (e.g. Stage0Tuner, position:fixed inset:0) can offset below
+// it — robust to the one-row vs two-row (sub-tabs) height change.
+const navbarRef = ref(null)
+let navbarRO = null
+function syncNavbarHeight() {
+  const h = navbarRef.value ? navbarRef.value.offsetHeight : 0
+  document.documentElement.style.setProperty('--app-navbar-height', `${h}px`)
+}
+onMounted(() => {
+  navbarRO = new ResizeObserver(syncNavbarHeight)
+  watchEffect(() => {
+    if (navbarRef.value) { navbarRO.observe(navbarRef.value); syncNavbarHeight() }
+    else { navbarRO.disconnect(); syncNavbarHeight() }
+  })
+})
+onUnmounted(() => {
+  navbarRO?.disconnect()
+  document.documentElement.style.removeProperty('--app-navbar-height')
+})
 </script>
 
 <style scoped>
@@ -322,7 +381,6 @@ onMounted(() => {
   position: sticky;
   top: 0;
   z-index: 100;
-  height: 56px;
   background: var(--color-shadow, var(--surface));
   border-bottom: 1px solid var(--color-graphite, var(--surface-3));
   padding: 0 1.5rem;
@@ -331,7 +389,7 @@ onMounted(() => {
 .navbar-inner {
   max-width: 1400px;
   margin: 0 auto;
-  height: 100%;
+  height: 56px;
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -341,20 +399,60 @@ onMounted(() => {
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   flex-shrink: 0;
 }
 
-.back-link {
-  color: var(--color-tungsten, var(--accent));
+.navbar-brand {
+  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-paper, var(--ink));
   text-decoration: none;
-  font-size: 0.875rem;
   white-space: nowrap;
-  transition: color 0.2s;
+  transition: opacity 0.2s;
 }
 
-.back-link:hover {
-  color: var(--color-paper, var(--ink));
+.navbar-brand:hover {
+  opacity: 0.8;
+}
+
+.navbar-crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+}
+
+.crumb-sep {
+  color: var(--color-tungsten, var(--muted));
+}
+
+.crumb-current {
+  color: var(--color-paper-dim, var(--muted));
+}
+
+/* Contextual second row */
+.navbar-subbar {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--color-graphite, var(--surface-3));
+}
+
+.navbar-subtabs {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.navbar-subtabs::-webkit-scrollbar {
+  display: none;
 }
 
 .navbar-title {
@@ -543,6 +641,7 @@ onMounted(() => {
   }
 
   .navbar-inner {
+    height: auto;
     flex-wrap: wrap;
     padding: 0.5rem 0;
     gap: 0;

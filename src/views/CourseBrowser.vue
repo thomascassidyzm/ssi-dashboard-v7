@@ -31,41 +31,75 @@
         />
       </div>
 
-      <!-- Filter Pills -->
-      <div class="mb-6 flex flex-wrap items-center gap-3">
-        <!-- Status filters -->
-        <span class="text-xs text-faint uppercase tracking-wider">Status</span>
+      <!-- Recents — the fast path back to what you were working on -->
+      <div v-if="recentCourses.length" class="mb-4 flex items-center gap-2 flex-wrap">
+        <span class="text-xs text-faint uppercase tracking-wider">Recent</span>
+        <button
+          v-for="code in recentCourses"
+          :key="code"
+          @click="openCourse(code)"
+          class="recent-chip font-mono"
+        >
+          {{ code }}
+        </button>
+      </div>
+
+      <!-- Filters -->
+      <div class="mb-2 flex flex-wrap items-center gap-2.5">
+        <!-- Release status (tri-state) -->
+        <span class="text-xs text-faint uppercase tracking-wider">Release</span>
         <button
           v-for="s in statusFilters"
           :key="s.value"
-          @click="toggleStatusFilter(s.value)"
-          :class="[
-            'filter-pill px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer',
-            activeStatusFilters.has(s.value)
-              ? s.activeClass
-              : 'border-line text-faint hover:border-line hover:text-ink'
-          ]"
+          @click="cycleFilter('status', s.value)"
+          :class="chipClass('status', s)"
         >
           {{ s.label }}
         </button>
 
         <span class="text-faint mx-1">|</span>
 
-        <!-- Pricing filters -->
+        <!-- Pricing (tri-state) -->
         <span class="text-xs text-faint uppercase tracking-wider">Pricing</span>
         <button
           v-for="p in pricingFilters"
           :key="p.value"
-          @click="togglePricingFilter(p.value)"
-          :class="[
-            'filter-pill px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer',
-            activePricingFilters.has(p.value)
-              ? p.activeClass
-              : 'border-line text-faint hover:border-line hover:text-ink'
-          ]"
+          @click="cycleFilter('pricing', p.value)"
+          :class="chipClass('pricing', p)"
         >
           {{ p.label }}
         </button>
+      </div>
+
+      <!-- Language dropdowns + reset -->
+      <div class="mb-5 flex flex-wrap items-center gap-2.5">
+        <span class="text-xs text-faint uppercase tracking-wider">Known</span>
+        <select v-model="knownFilter" class="filter-select">
+          <option value="">All</option>
+          <option v-for="l in knownLangs" :key="l" :value="l">{{ l }}</option>
+        </select>
+
+        <span class="text-xs text-faint uppercase tracking-wider ml-2">Target</span>
+        <select v-model="targetFilter" class="filter-select">
+          <option value="">All</option>
+          <option v-for="l in targetLangs" :key="l" :value="l">{{ l }}</option>
+        </select>
+
+        <button
+          v-if="hasActiveFilters"
+          @click="resetFilters"
+          class="ml-2 text-xs text-faint hover:text-ink underline underline-offset-2"
+        >
+          Reset filters
+        </button>
+        <button
+          @click="setSort('recent')"
+          class="recent-sort-btn"
+          :class="{ 'recent-sort-active': sortKey === 'recent' }"
+        >
+          ↻ Recently used
+        </button>
+        <span class="ml-auto text-xs text-faint">{{ filteredCourses.length }} of {{ accessibleCount }} courses</span>
       </div>
 
       <!-- Stats loading indicator -->
@@ -100,83 +134,106 @@
         </router-link>
       </div>
 
-      <!-- Courses Grid -->
-      <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <router-link
-          v-for="course in filteredCourses"
-          :key="course.course_code"
-          :to="`/production/${course.course_code}`"
-          :class="[
-            'bg-surface rounded-lg p-5 transition-all cursor-pointer hover:bg-surface-2 hover:shadow-lg shadow-sm group',
-            highlightedCourses.has(course.course_code)
-              ? 'border-2 border-accent-2 shadow-lg'
-              : 'border border-line hover:border-accent-2'
-          ]"
-        >
-          <!-- Header -->
-          <div class="flex items-start justify-between mb-3">
-            <div>
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="text-lg font-semibold text-accent-2 group-hover:opacity-80">
-                  {{ formatCourseCode(course.course_code) }}
-                </h3>
-                <span
-                  v-if="highlightedCourses.has(course.course_code)"
-                  class="px-2 py-0.5 bg-accent-2 text-white text-xs font-bold rounded-full animate-pulse"
-                >
-                  NEW
+      <!-- Courses table — dense, scannable, scales -->
+      <div v-else class="course-table-wrap border border-line rounded-lg overflow-x-auto">
+        <table class="course-table w-full text-sm">
+          <thead>
+            <tr class="text-faint text-xs uppercase tracking-wider">
+              <th class="w-9 px-3 py-2 text-center">
+                <input type="checkbox" :checked="allFilteredSelected" @change="toggleSelectAll" />
+              </th>
+              <th class="text-left px-3 py-2 th-sort" @click="setSort('code')">Code{{ sortIndicator('code') }}</th>
+              <th class="text-left px-3 py-2 th-sort" @click="setSort('name')">Name{{ sortIndicator('name') }}</th>
+              <th class="text-left px-3 py-2 th-sort hidden md:table-cell" @click="setSort('known')">Known{{ sortIndicator('known') }}</th>
+              <th class="text-left px-3 py-2 th-sort hidden md:table-cell" @click="setSort('target')">Target{{ sortIndicator('target') }}</th>
+              <th class="text-left px-3 py-2 th-sort" @click="setSort('pricing')">Pricing{{ sortIndicator('pricing') }}</th>
+              <th class="text-left px-3 py-2 th-sort" @click="setSort('stage')">Stage{{ sortIndicator('stage') }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="course in sortedCourses"
+              :key="course.course_code"
+              class="course-row border-t border-line cursor-pointer transition-colors"
+              :class="{ 'row-selected': selected.has(course.course_code), 'row-new': highlightedCourses.has(course.course_code) }"
+              @click="openCourse(course.course_code)"
+            >
+              <td class="px-3 py-2 text-center" @click.stop>
+                <input
+                  type="checkbox"
+                  :checked="selected.has(course.course_code)"
+                  @change="toggleSelect(course.course_code)"
+                />
+              </td>
+              <td class="px-3 py-2 font-mono text-accent-2 whitespace-nowrap">
+                {{ course.course_code }}
+                <span v-if="highlightedCourses.has(course.course_code)" class="ml-1 text-[10px] text-accent-2 font-sans">• new</span>
+              </td>
+              <td class="px-3 py-2 text-muted max-w-xs truncate">{{ getFullCourseName(course.course_code) }}</td>
+              <td class="px-3 py-2 text-faint font-mono hidden md:table-cell">{{ parseLangs(course.course_code).known }}</td>
+              <td class="px-3 py-2 text-faint font-mono hidden md:table-cell">{{ parseLangs(course.course_code).target }}</td>
+              <td class="px-3 py-2">
+                <span class="pricing-pill px-2 py-0.5 rounded-full text-[11px] font-medium" :class="getPricingClass(course.pricing_tier)">
+                  {{ (course.pricing_tier || 'premium').toUpperCase() }}
                 </span>
-              </div>
-              <p class="text-sm text-muted">
-                {{ getFullCourseName(course.course_code) }}
-              </p>
-            </div>
-            <div class="flex items-center gap-2 flex-shrink-0">
-              <span
-                class="pricing-pill px-2 py-0.5 rounded-full text-xs font-medium"
-                :class="getPricingClass(course.pricing_tier)"
-              >
-                {{ (course.pricing_tier || 'premium').toUpperCase() }}
-              </span>
-              <span
-                class="status-pill px-3 py-1 rounded-full text-xs font-medium"
-                :class="getStatusClass(course.status)"
-              >
-                {{ formatStatus(course.status) }}
-              </span>
-            </div>
-          </div>
+              </td>
+              <td class="px-3 py-2">
+                <span class="status-pill px-2 py-0.5 rounded-full text-[11px] font-medium border" :class="getStatusClass(course.status)">
+                  {{ statusLabel(course.status) }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-          <!-- Stats Grid -->
-          <div class="grid grid-cols-2 gap-2 text-sm">
-            <!-- Seeds -->
-            <div class="bg-surface-2 border border-line rounded px-3 py-2">
-              <div class="text-faint text-xs mb-1">Seeds</div>
-              <div class="font-mono">
-                <span class="text-accent-2">{{ course.seed_pairs || 0 }}</span>
-                <span v-if="course.seed_count" class="text-faint"> / {{ course.seed_count }}</span>
-              </div>
-            </div>
-            <!-- LEGOs -->
-            <div class="bg-surface-2 border border-line rounded px-3 py-2">
-              <div class="text-faint text-xs mb-1">LEGOs</div>
-              <div class="font-mono text-accent-2">{{ course.lego_pairs || 0 }}</div>
-            </div>
-            <!-- Phrases -->
-            <div class="bg-surface-2 border border-line rounded px-3 py-2">
-              <div class="text-faint text-xs mb-1">Phrases</div>
-              <div class="font-mono text-accent-2">{{ (course.phrases || 0).toLocaleString() }}</div>
-            </div>
-            <!-- Audio coverage available per-course in Production Suite -->
-          </div>
+    <!-- Bulk action bar -->
+    <div v-if="selected.size" class="bulk-bar">
+      <span class="font-medium text-ink">{{ selected.size }} selected</span>
+      <button @click="clearSelection" class="text-faint hover:text-ink text-sm">Clear</button>
+      <span class="bulk-sep"></span>
+      <span class="text-xs text-faint uppercase tracking-wider">Stage →</span>
+      <button v-for="s in statusFilters" :key="s.value" :disabled="bulkBusy" @click="applyBulkStatus(s.value)" class="bulk-action">
+        {{ s.label }}
+      </button>
+      <span class="bulk-sep"></span>
+      <span class="text-xs text-faint uppercase tracking-wider">Pricing →</span>
+      <button v-for="p in pricingFilters" :key="p.value" :disabled="bulkBusy" @click="applyBulkPricing(p.value)" class="bulk-action">
+        {{ p.label }}
+      </button>
+      <span v-if="bulkBusy" class="text-xs text-faint ml-2">Applying… {{ bulkDone }}/{{ bulkTotal }}</span>
+    </div>
 
-          <!-- Click hint -->
-          <div class="mt-3 pt-3 border-t border-line text-center">
-            <span class="text-xs text-faint group-hover:text-accent-2 transition-colors">
-              Click to open Production Suite →
-            </span>
-          </div>
-        </router-link>
+    <!-- Bulk confirm modal -->
+    <div v-if="pendingBulk" class="bulk-modal-overlay" @click.self="cancelBulk">
+      <div class="bulk-modal">
+        <h3 class="bulk-modal-title">
+          Set {{ pendingBulk.kind === 'status' ? 'stage' : 'pricing' }} →
+          <span class="text-accent-2">{{ pendingBulk.label }}</span>
+        </h3>
+        <p class="bulk-modal-body">
+          This will change <strong>{{ pendingBulk.count }}</strong>
+          course{{ pendingBulk.count > 1 ? 's' : '' }}.
+        </p>
+
+        <div v-if="pendingBulk.learnerVisible" class="bulk-modal-warn">
+          ⚠️ <strong>{{ pendingBulk.label }}</strong> makes {{ pendingBulk.count > 1 ? 'these courses' : 'this course' }}
+          <strong>visible to learners</strong> in the app
+          <template v-if="pendingBulk.value === 'beta'"> (Beta courses are shown to learners too)</template>.
+          Double-check the selection before confirming.
+        </div>
+
+        <div class="bulk-modal-actions">
+          <button @click="cancelBulk" class="bulk-modal-cancel">Cancel</button>
+          <button
+            @click="confirmBulk"
+            class="bulk-modal-confirm"
+            :class="{ 'bulk-modal-confirm-danger': pendingBulk.learnerVisible }"
+          >
+            {{ pendingBulk.learnerVisible ? `Yes, set ${pendingBulk.count} to ${pendingBulk.label}` : `Set ${pendingBulk.count} to ${pendingBulk.label}` }}
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -184,6 +241,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import api, { getApiUrl } from '../services/api'
 import { isConfigured as isSupabaseConfigured, getAllCourses, getAllCourseStats } from '../services/supabase'
@@ -191,7 +249,8 @@ import { useCourses } from '../composables/useCourses'
 import { useAuth } from '../composables/useAuth'
 
 const toast = useToast()
-const { canAccessCourse } = useAuth()
+const router = useRouter()
+const { canAccessCourse, getAccessToken } = useAuth()
 const { getCourseName } = useCourses()
 const courses = ref([])
 const loading = ref(true)
@@ -200,12 +259,15 @@ const error = ref(null)
 const searchQuery = ref('')
 const highlightedCourses = ref(new Set()) // Courses to highlight as new/updated
 
-// Filter state — empty Set means "show all"
-const activeStatusFilters = ref(new Set())
-const activePricingFilters = ref(new Set())
+// Tri-state filters: a value maps to 'include' (show only) or 'exclude' (hide).
+// Absent = neutral. Cycle: neutral → include → exclude → neutral.
+const statusState = ref({})
+const pricingState = ref({})
+const knownFilter = ref('')
+const targetFilter = ref('')
 
 const statusFilters = [
-  { value: 'draft', label: 'Testing', activeClass: 'bg-surface-3/30 border-line text-ink' },
+  { value: 'draft', label: 'Testing', activeClass: 'bg-surface-3/40 border-slate-400 text-ink' },
   { value: 'beta', label: 'Beta', activeClass: 'bg-yellow-600/20 border-yellow-500 text-yellow-400' },
   { value: 'released', label: 'Live', activeClass: 'bg-emerald-600/20 border-emerald-500 text-emerald-400' },
 ]
@@ -216,44 +278,203 @@ const pricingFilters = [
   { value: 'community', label: 'Community', activeClass: 'bg-blue-600/20 border-blue-500 text-blue-400' },
 ]
 
-function toggleStatusFilter(value) {
-  if (activeStatusFilters.value.has(value)) {
-    activeStatusFilters.value.delete(value)
-  } else {
-    activeStatusFilters.value.add(value)
-  }
-  activeStatusFilters.value = new Set(activeStatusFilters.value) // trigger reactivity
+const filterGroups = { status: statusState, pricing: pricingState }
+
+// Simple on/off filter: a value is either included or not.
+function cycleFilter(group, value) {
+  const stateRef = filterGroups[group]
+  const next = { ...stateRef.value }
+  if (next[value]) delete next[value]
+  else next[value] = 'include'
+  stateRef.value = next
 }
 
-function togglePricingFilter(value) {
-  if (activePricingFilters.value.has(value)) {
-    activePricingFilters.value.delete(value)
-  } else {
-    activePricingFilters.value.add(value)
+function chipClass(group, item) {
+  const active = !!filterGroups[group].value[item.value]
+  const base = 'filter-pill px-3 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer inline-flex items-center gap-1'
+  return active ? `${base} ${item.activeClass}` : `${base} border-line text-faint hover:border-line hover:text-ink`
+}
+
+// Parse `{target}_for_{known}` (target may carry a region, e.g. ara_eg, por_br).
+function parseLangs(code) {
+  const i = code.indexOf('_for_')
+  if (i === -1) return { target: code, known: '' }
+  return { target: code.slice(0, i), known: code.slice(i + 5) }
+}
+
+const accessibleCourses = computed(() => courses.value.filter(c => canAccessCourse(c.course_code)))
+const accessibleCount = computed(() => accessibleCourses.value.length)
+
+const knownLangs = computed(() =>
+  [...new Set(accessibleCourses.value.map(c => parseLangs(c.course_code).known).filter(Boolean))].sort()
+)
+const targetLangs = computed(() =>
+  [...new Set(accessibleCourses.value.map(c => parseLangs(c.course_code).target).filter(Boolean))].sort()
+)
+
+const hasActiveFilters = computed(() =>
+  Object.keys(statusState.value).length > 0 ||
+  Object.keys(pricingState.value).length > 0 ||
+  !!knownFilter.value || !!targetFilter.value || !!searchQuery.value
+)
+
+function resetFilters() {
+  statusState.value = {}
+  pricingState.value = {}
+  knownFilter.value = ''
+  targetFilter.value = ''
+  searchQuery.value = ''
+}
+
+// ── Recents (the 90% path: get back to a course you were working on) ──
+const RECENTS_KEY = 'popty:recentCourses'
+const recentCourses = ref([])
+
+function loadRecents() {
+  try {
+    recentCourses.value = JSON.parse(localStorage.getItem(RECENTS_KEY) || '[]').slice(0, 8)
+  } catch { recentCourses.value = [] }
+}
+
+function pushRecent(code) {
+  const list = [code, ...recentCourses.value.filter(c => c !== code)].slice(0, 8)
+  recentCourses.value = list
+  try { localStorage.setItem(RECENTS_KEY, JSON.stringify(list)) } catch { /* private mode */ }
+}
+
+function openCourse(code) {
+  pushRecent(code)
+  router.push(`/production/${code}`)
+}
+
+// ── Multi-select + bulk course-level ops ──
+const selected = ref(new Set())
+
+function toggleSelect(code) {
+  const next = new Set(selected.value)
+  next.has(code) ? next.delete(code) : next.add(code)
+  selected.value = next
+}
+
+const allFilteredSelected = computed(() =>
+  filteredCourses.value.length > 0 && filteredCourses.value.every(c => selected.value.has(c.course_code))
+)
+
+function toggleSelectAll() {
+  const next = new Set(selected.value)
+  if (allFilteredSelected.value) filteredCourses.value.forEach(c => next.delete(c.course_code))
+  else filteredCourses.value.forEach(c => next.add(c.course_code))
+  selected.value = next
+}
+
+function clearSelection() {
+  selected.value = new Set()
+}
+
+const bulkBusy = ref(false)
+const bulkDone = ref(0)
+const bulkTotal = ref(0)
+
+async function authHeaders() {
+  const h = { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+  try {
+    const token = await getAccessToken?.()
+    if (token) h.Authorization = `Bearer ${token}`
+  } catch { /* unauthenticated fetch still attempted */ }
+  return h
+}
+
+// Pending bulk action awaiting confirmation in the modal.
+const pendingBulk = ref(null) // { kind, value, label, count, learnerVisible }
+
+// kind: 'status' (value = draft|beta|released) or 'pricing' (value = free|premium|community)
+function requestBulk(kind, value) {
+  const codes = [...selected.value]
+  if (!codes.length || bulkBusy.value) return
+  pendingBulk.value = {
+    kind,
+    value,
+    label: kind === 'status' ? statusLabel(value) : value.charAt(0).toUpperCase() + value.slice(1),
+    count: codes.length,
+    // beta + released (Live) both make courses visible to learners in the app.
+    learnerVisible: kind === 'status' && (value === 'beta' || value === 'released'),
   }
-  activePricingFilters.value = new Set(activePricingFilters.value)
+}
+
+function cancelBulk() {
+  pendingBulk.value = null
+}
+
+async function confirmBulk() {
+  const pending = pendingBulk.value
+  if (!pending || bulkBusy.value) return
+  const { kind, value, label } = pending
+  pendingBulk.value = null
+
+  const codes = [...selected.value]
+  if (!codes.length) return
+
+  bulkBusy.value = true
+  bulkTotal.value = codes.length
+  bulkDone.value = 0
+
+  const base = getApiUrl()
+  const headers = await authHeaders()
+  let ok = 0
+  const failed = []
+
+  for (const code of codes) {
+    try {
+      const url = kind === 'status'
+        ? `${base}/api/production/${code}/status`
+        : `${base}/api/production/${code}/pricing-tier`
+      const body = kind === 'status' ? { status: value } : { pricingTier: value }
+      const res = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) })
+      if (!res.ok) throw new Error(`${res.status}`)
+      const c = courses.value.find(x => x.course_code === code)
+      if (c) {
+        if (kind === 'status') c.status = value
+        else c.pricing_tier = value
+      }
+      ok++
+    } catch (e) {
+      failed.push(code)
+      console.warn(`Bulk ${kind} failed for ${code}:`, e.message)
+    }
+    bulkDone.value++
+  }
+
+  courses.value = [...courses.value] // trigger reactivity for updated pills
+  bulkBusy.value = false
+  clearSelection()
+
+  if (failed.length) toast.warning(`Updated ${ok}/${codes.length} — failed: ${failed.join(', ')}`)
+  else toast.success(`Updated ${ok} course${ok > 1 ? 's' : ''} → ${label}`)
+}
+
+function applyBulkStatus(value) { requestBulk('status', value) }
+function applyBulkPricing(value) { requestBulk('pricing', value) }
+
+// One dimension's filter: no selection = all; otherwise must match one.
+function passesTriState(state, value) {
+  const includes = Object.keys(state).filter(k => state[k] === 'include')
+  return includes.length === 0 || includes.includes(value)
 }
 
 // Computed: Filtered courses based on search query + filters
 const filteredCourses = computed(() => {
-  // Filter by user's course access first
-  let result = courses.value.filter(c => canAccessCourse(c.course_code))
+  let result = accessibleCourses.value
 
-  // Apply status filter
-  if (activeStatusFilters.value.size > 0) {
-    result = result.filter(c => {
-      const status = c.status || 'draft'
-      return activeStatusFilters.value.has(status)
-    })
-  }
-
-  // Apply pricing filter
-  if (activePricingFilters.value.size > 0) {
-    result = result.filter(c => {
-      const tier = c.pricing_tier || 'premium'
-      return activePricingFilters.value.has(tier)
-    })
-  }
+  result = result.filter(c => {
+    const status = c.status || 'draft'
+    const tier = c.pricing_tier || 'premium'
+    const { known, target } = parseLangs(c.course_code)
+    if (!passesTriState(statusState.value, status)) return false
+    if (!passesTriState(pricingState.value, tier)) return false
+    if (knownFilter.value && known !== knownFilter.value) return false
+    if (targetFilter.value && target !== targetFilter.value) return false
+    return true
+  })
 
   // Apply search
   if (!searchQuery.value) return result
@@ -270,7 +491,59 @@ const filteredCourses = computed(() => {
   })
 })
 
+// ── Column sorting ──
+const sortKey = ref('code')   // code | name | known | target | pricing | stage | recent
+const sortDir = ref('asc')
+
+const STAGE_RANK = { draft: 0, beta: 1, released: 2 }
+const PRICING_RANK = { free: 0, premium: 1, community: 2 }
+
+function setSort(key) {
+  if (sortKey.value === key) {
+    sortDir.value = sortDir.value === 'asc' ? 'desc' : 'asc'
+  } else {
+    sortKey.value = key
+    // Recent reads most-recent-first by default; everything else A→Z.
+    sortDir.value = key === 'recent' ? 'desc' : 'asc'
+  }
+}
+
+function sortIndicator(key) {
+  if (sortKey.value !== key) return ''
+  return sortDir.value === 'asc' ? ' ▲' : ' ▼'
+}
+
+function sortValue(course, key) {
+  const code = course.course_code
+  const { known, target } = parseLangs(code)
+  switch (key) {
+    case 'name': return getFullCourseName(code).toLowerCase()
+    case 'known': return known
+    case 'target': return target
+    case 'pricing': return PRICING_RANK[course.pricing_tier || 'premium'] ?? 9
+    case 'stage': return STAGE_RANK[course.status || 'draft'] ?? 9
+    case 'recent': {
+      const i = recentCourses.value.indexOf(code)
+      return i === -1 ? -1 : recentCourses.value.length - i  // higher = more recent
+    }
+    default: return code  // code
+  }
+}
+
+const sortedCourses = computed(() => {
+  const dir = sortDir.value === 'asc' ? 1 : -1
+  return [...filteredCourses.value].sort((a, b) => {
+    const va = sortValue(a, sortKey.value)
+    const vb = sortValue(b, sortKey.value)
+    if (va < vb) return -1 * dir
+    if (va > vb) return 1 * dir
+    // tie-break on code for stable, predictable ordering
+    return a.course_code < b.course_code ? -1 : a.course_code > b.course_code ? 1 : 0
+  })
+})
+
 onMounted(async () => {
+  loadRecents()
   await loadCourses()
 })
 
@@ -383,18 +656,21 @@ function getFullCourseName(courseCode) {
   return getCourseName(courseCode)
 }
 
-function formatStatus(status) {
-  return status?.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) || 'Unknown'
+// Unified release vocabulary — same labels & colours as the filter chips.
+// draft → Testing, beta → Beta, released → Live.
+function statusLabel(status) {
+  const s = (status || 'draft').toLowerCase()
+  if (s === 'released' || s === 'live' || s === 'complete') return 'Live'
+  if (s === 'beta') return 'Beta'
+  if (s === 'draft' || s === 'in_progress') return 'Testing'
+  return status?.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) || 'Testing'
 }
 
 function getStatusClass(status) {
-  if (status === 'complete' || status === 'ready_for_phase_2') {
-    return 'bg-emerald-600 text-white'
-  } else if (status === 'in_progress') {
-    return 'bg-yellow-600 text-white'
-  } else {
-    return 'bg-surface-3 text-ink'
-  }
+  const label = statusLabel(status)
+  if (label === 'Live') return 'sp-live bg-emerald-600/20 border-emerald-500 text-emerald-400'
+  if (label === 'Beta') return 'sp-beta bg-yellow-600/20 border-yellow-500 text-yellow-400'
+  return 'sp-testing bg-surface-3/40 border-slate-500 text-muted'
 }
 
 function getPricingClass(tier) {
@@ -414,6 +690,208 @@ function getPricingClass(tier) {
   text/fill to AA-passing values while keeping the same hue family.
 -->
 <style scoped>
+/* Language dropdowns */
+.filter-select {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 9999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.filter-select:focus {
+  outline: none;
+  border-color: var(--accent-2, var(--accent));
+}
+.chip-no {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+/* Recents */
+.recent-chip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--accent-2, var(--accent));
+  border-radius: 9999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.recent-chip:hover {
+  border-color: var(--accent-2, var(--accent));
+  background: var(--surface-2);
+}
+
+/* Recent sort button */
+.recent-sort-btn {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 9999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.recent-sort-btn:hover {
+  border-color: var(--accent-2, var(--accent));
+  color: var(--ink);
+}
+.recent-sort-active {
+  border-color: var(--accent-2, var(--accent)) !important;
+  color: var(--accent-2, var(--accent)) !important;
+}
+
+/* Dense course table */
+.course-table-wrap {
+  background: var(--surface);
+}
+.course-table thead tr {
+  background: var(--surface-2);
+}
+.th-sort {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+.th-sort:hover {
+  color: var(--ink);
+}
+.course-row:hover {
+  background: var(--surface-2);
+}
+.course-row.row-selected {
+  background: color-mix(in srgb, var(--accent-2, var(--accent)) 12%, transparent);
+}
+.course-row.row-new {
+  box-shadow: inset 3px 0 0 var(--accent-2, var(--accent));
+}
+.course-table input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: var(--accent-2, var(--accent));
+}
+
+/* Bulk action bar — sticky at the bottom while a selection exists */
+.bulk-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  max-width: calc(100vw - 2rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: 0.6rem 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.bulk-sep {
+  width: 1px;
+  height: 1.25rem;
+  background: var(--line);
+}
+.bulk-action {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.bulk-action:hover:not(:disabled) {
+  border-color: var(--accent-2, var(--accent));
+  color: var(--accent-2, var(--accent));
+}
+.bulk-action:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Bulk confirm modal */
+.bulk-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.bulk-modal {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 30rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+.bulk-modal-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+.bulk-modal-body {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+.bulk-modal-warn {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  color: var(--ink);
+  border-radius: 0.6rem;
+  padding: 0.75rem 0.85rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  margin-bottom: 1.1rem;
+}
+.bulk-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+.bulk-modal-cancel {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 0.55rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.bulk-modal-cancel:hover {
+  border-color: var(--muted);
+}
+.bulk-modal-confirm {
+  background: var(--accent-2, var(--accent));
+  border: 1px solid var(--accent-2, var(--accent));
+  color: #fff;
+  border-radius: 0.55rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.bulk-modal-confirm:hover {
+  opacity: 0.9;
+}
+.bulk-modal-confirm-danger {
+  background: #d97706;
+  border-color: #d97706;
+}
+
 /* Error panel — dark literals (bg-red-900/20, text-red-400) don't read on light */
 :root[data-theme="light"] .error-panel {
   background-color: #fef2f2 !important;   /* red-50 */
@@ -466,13 +944,27 @@ function getPricingClass(tier) {
   color: #854d0e !important;              /* 6.15:1 */
 }
 
-/* Status pills on cards: solid-fill variants.
-   bg-emerald-600/bg-yellow-600 are a touch light for white text in light mode. */
-:root[data-theme="light"] .status-pill.bg-emerald-600 {
-  background-color: #047857 !important;   /* white text = 5.48:1 */
+/* Release pills on cards (Testing/Beta/Live) — darken hue families for light. */
+:root[data-theme="light"] .status-pill.sp-live {
+  background-color: #d1fae5 !important;
+  border-color: #047857 !important;
+  color: #047857 !important;              /* 4.84:1 */
 }
-:root[data-theme="light"] .status-pill.bg-yellow-600 {
-  background-color: #b45309 !important;   /* amber-700 — white text = 5.02:1 */
+:root[data-theme="light"] .status-pill.sp-beta {
+  background-color: #fef3c7 !important;
+  border-color: #d97706 !important;
+  color: #854d0e !important;              /* 6.15:1 */
 }
-/* bg-surface-3 text-ink default status pill already 14.48:1 — no override. */
+:root[data-theme="light"] .status-pill.sp-testing {
+  background-color: #e2e8f0 !important;
+  border-color: #94a3b8 !important;
+  color: #475569 !important;              /* slate-600 — AA */
+}
+
+/* Excluded (tri-state) chips carry text-red-400 — darken for light. */
+:root[data-theme="light"] .filter-pill.text-red-400 {
+  background-color: #fee2e2 !important;   /* red-100 */
+  border-color: #dc2626 !important;
+  color: #b91c1c !important;              /* red-700 */
+}
 </style>

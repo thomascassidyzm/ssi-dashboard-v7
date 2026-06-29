@@ -1,6 +1,8 @@
 <template>
   <div class="maintenance-page">
     <div class="maintenance-inner">
+      <RecoveryPanel />
+
       <UptimePanel />
 
       <h2 class="section-title">Content audit log</h2>
@@ -422,6 +424,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../composables/useAuth'
 import UptimePanel from '../components/UptimePanel.vue'
+import RecoveryPanel from '../components/RecoveryPanel.vue'
 
 const { getAccessToken } = useAuth()
 

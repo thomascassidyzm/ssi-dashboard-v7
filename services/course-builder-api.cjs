@@ -47,6 +47,7 @@ app.use('/api', require('./course-builder/routes/build.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/orchestrator.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/v2.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/translation.cjs')(ctx));
+app.use('/api', require('./course-builder/routes/edit-cascade.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/qa.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/components.cjs')(ctx));
 app.use('/api', require('./course-builder/routes/drafts.cjs')(ctx));

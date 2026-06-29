@@ -262,10 +262,17 @@ function buildAtempoFilterChain(factor) {
  * @param {number} targetLUFS - Target loudness in LUFS (default: -16.0)
  * @returns {Promise<void>}
  */
+// Short fade at both ends so a TTS endpoint discontinuity can NEVER click
+// (Tom 2026-06-26: a click-off MUST never happen). 8ms in + 8ms out is
+// imperceptible on speech but removes the DC step. The end fade uses the
+// areverse trick (reverse → fade the new "start" → reverse back) so it works
+// without knowing the clip's duration up front.
+const ANTI_CLICK_FADE = 'afade=t=in:st=0:d=0.008,areverse,afade=t=in:st=0:d=0.008,areverse';
+
 async function normalizeAudio(inputPath, outputPath, targetLUFS = -16.0) {
   try {
     await ffmpegFilterToLameMp3(inputPath, outputPath, {
-      filterChain: `loudnorm=I=${targetLUFS}:LRA=11:TP=-1.5`
+      filterChain: `loudnorm=I=${targetLUFS}:LRA=11:TP=-1.5,${ANTI_CLICK_FADE}`
     });
   } catch (error) {
     throw new Error(`Failed to normalize audio: ${error.message}`);

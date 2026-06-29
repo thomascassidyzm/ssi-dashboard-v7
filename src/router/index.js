@@ -46,11 +46,36 @@ const routes = [
   // ============================================
   // Mission Control Hub - Main Entry Point
   // ============================================
+  // Nav unification (Option A): '/' is the Home hub; the persistent Courses
+  // tab covers the "courses one click away" need that previously kept the
+  // pipeline board at root.
   {
     path: '/',
+    name: 'Home',
+    component: () => import('../views/Home.vue'),
+    meta: { title: 'Home' }
+  },
+  // Legacy path kept working — redirects to the new root.
+  {
+    path: '/home',
+    redirect: '/'
+  },
+  // The pipeline board (formerly at '/') retained as a reachable surface.
+  // Its courses-list role is covered by the Courses library at '/courses';
+  // this preserves the board's import/pipeline widgets while the nav settles.
+  {
+    path: '/pipeline',
     name: 'MissionControl',
     component: MissionControlHub,
-    meta: { title: 'Mission Control' }
+    meta: { title: 'Pipeline Board' }
+  },
+  // Admin hub — platform-wide tooling (Configs, Insights, Activity,
+  // Maintenance, Users). Not per-course; gating is RLS/component-level.
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('../views/Admin.vue'),
+    meta: { title: 'Admin' }
   },
   {
     path: '/maintenance',
@@ -384,21 +409,31 @@ const routes = [
 
   // ===========================================
   // Global admin — algorithm_config tweaker. Lives outside /production
-  // because it's not per-course.
+  // because it's not per-course. Split by domain under /admin/configs:
+  // an index hub, then Listening + Speaking surfaces.
   {
-    path: '/admin/listening',
-    name: 'ListeningAdmin',
-    component: () => import('../views/ListeningAdmin.vue'),
+    path: '/admin/configs',
+    name: 'ConfigsIndex',
+    component: () => import('../views/admin/ConfigsIndex.vue'),
+    meta: { title: 'Configs - Admin' }
+  },
+  {
+    path: '/admin/configs/listening',
+    name: 'ListeningConfig',
+    component: () => import('../views/ListeningConfig.vue'),
     meta: { title: 'Listening Config - Admin' }
   },
-  // Stage 0 tuner — standalone in-app page that frames the self-contained
-  // public/stage0-tuner.html tool. Global/not per-course, like /admin/listening.
   {
-    path: '/admin/stage0-tuner',
-    name: 'Stage0Tuner',
-    component: () => import('../views/Stage0Tuner.vue'),
-    meta: { title: 'Stage 0 Tuner - Admin' }
+    path: '/admin/configs/speaking',
+    name: 'SpeakingConfig',
+    component: () => import('../views/admin/SpeakingConfig.vue'),
+    meta: { title: 'Speaking Config - Admin' }
   },
+  // Legacy path — the old single Listening page lived here. Redirect bookmarks.
+  { path: '/admin/listening', redirect: '/admin/configs/listening' },
+  // (Stage 0 Tuner retired 2026-06-24 — absorbed into the Listening config,
+  // which now sets Stage 0 structurally AND previews the full arc. The
+  // standalone public/stage0-tuner.html iframe tool is gone.)
   // Production Suite v2.1 Routes (Default)
   // ===========================================
   {
