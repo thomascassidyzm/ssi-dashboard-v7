@@ -13,13 +13,17 @@
 export const ROLE_SPEED = { ps08x: 0.8, ps: 1.0, ps15x: 1.5, ps2x: 2.0, trans: 1.0, explainer: 1.0 }
 
 // ── stage-0 atom resolution (port of resolveAtoms / clipsFromRow) ────────────
+// Case-insensitive, accent-preserving surface key for "[atom] <surface>" lookup
+// (a sentence-initial "Come" resolves the same slice as "come"; "È"≠"e"). MUST
+// match the key normalisation where targetClipMap is built (ListeningConfig).
+export const normSurface = (s) => (s || '').toLowerCase().replace(/\s+/g, ' ').trim()
 export function resolveAtoms(atomMap, glossMap, targetClipMap) {
   return (atomMap || [])
     .filter((e) => e.kind === 'atom' || e.kind === 'passthrough')
     .map((e) => ({
       targetSurface: e.target_surface,
       gloss: e.gloss,
-      targetClipId: targetClipMap.get(e.target_surface) ?? null,
+      targetClipId: targetClipMap.get(normSurface(e.target_surface)) ?? null,
       meansGlossClipId: glossMap.get(e.lego_key) ?? null,
     }))
 }
