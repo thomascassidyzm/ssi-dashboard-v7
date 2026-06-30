@@ -32,8 +32,13 @@ const { execFile } = require('child_process')
 const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
+const MEANS_ONLY = process.argv.includes('--means-only') // re-voice means from existing atom_maps (no LLM, no atom re-author)
 const MODEL = process.env.BD_MODEL || 'opus'
 const ROLE = 'pod_explainer'
+// xAI officially supports these (per services/voice-discovery-service.cjs); use
+// xAI wherever the language is supported (known OR target), Azure only as fallback.
+const XAI_OFFICIAL = new Set(['en', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'ru', 'zh', 'ja', 'ko', 'vi', 'hi', 'bn', 'ar', 'tr', 'pl'])
+const TOM_CLONE = 'gfzdpspr5fdp' // Tom's cloned xAI voice — the teacher voice for the English "means" line
 if (!COURSE) { console.error('usage: breakdown-flat.cjs <course> [orders] [--dry]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
@@ -81,9 +86,11 @@ async function ensureAtomSlice(surface) {
   sliceInFlight.set(nk, p)
   return p
 }
-async function ensureMeans(legoKey, target, gloss, order) {
-  const { data: pl } = await supabase.from('pod_legos').select('explainer_audio_id').eq('course_code', COURSE).eq('lego_key', legoKey).limit(1).maybeSingle()
-  if (pl && pl.explainer_audio_id) return pl.explainer_audio_id
+async function ensureMeans(legoKey, target, gloss, order, force = false) {
+  if (!force) {
+    const { data: pl } = await supabase.from('pod_legos').select('explainer_audio_id').eq('course_code', COURSE).eq('lego_key', legoKey).limit(1).maybeSingle()
+    if (pl && pl.explainer_audio_id) return pl.explainer_audio_id
+  }
   const res = await p8.generatePodAudio({ courseCode: COURSE, text: `means, ${gloss}`, language: MEANS_LANG, role: ROLE, voice: MEANS_VOICE })
   await supabase.from('pod_legos').upsert({ id: require('crypto').randomUUID(), course_code: COURSE, lego_key: legoKey, target, known: gloss, explainer_audio_id: res.id, is_name: false, first_seen_order: order }, { onConflict: 'course_code,lego_key' })
   return res.id
@@ -95,10 +102,41 @@ async function ensureMeans(legoKey, target, gloss, order) {
   const v = (course && course.voice_config && course.voice_config.voices) || {}
   const t1 = v.target1, kn = v.known
   if (!t1 || !t1.voiceId || !kn || !kn.voiceId) { console.error(`ERR: ${COURSE} voice_config missing target1/known`); process.exit(1) }
-  ATOM_VOICE = { voice_id: t1.voiceId, provider: t1.provider, locale: t1.language }
-  MEANS_VOICE = { voice_id: kn.voiceId, provider: kn.provider, locale: kn.language }
-  ATOM_LANG = t1.language; MEANS_LANG = kn.language
-  console.log(`${COURSE}: atom=${t1.voiceId}/${t1.provider}/${t1.language}  means=${kn.voiceId}/${kn.provider}/${kn.language}${dry ? '  [DRY — no render]' : ''}`)
+  const base = (l) => (l || '').split('-')[0].toLowerCase()
+  const xaiHas = (l) => XAI_OFFICIAL.has(base(l))
+  // ATOM (target word): keep the course's xAI target voice; upgrade an Azure
+  // target to xAI where xAI supports the language; else stay Azure (e.g. Croatian).
+  ATOM_VOICE = t1.provider === 'xai' ? { voice_id: t1.voiceId, provider: 'xai', locale: t1.language }
+    : xaiHas(t1.language) ? { voice_id: 'eve', provider: 'xai', locale: base(t1.language) }
+    : { voice_id: t1.voiceId, provider: t1.provider, locale: t1.language }
+  // MEANS (the English/known explainer line): Tom's clone for English; an xAI
+  // stock voice for any other xAI-supported known language; else Azure fallback.
+  MEANS_VOICE = base(kn.language) === 'en' ? { voice_id: TOM_CLONE, provider: 'xai', locale: 'en' }
+    : xaiHas(kn.language) ? { voice_id: 'eve', provider: 'xai', locale: base(kn.language) }
+    : { voice_id: kn.voiceId, provider: kn.provider, locale: kn.language }
+  ATOM_LANG = ATOM_VOICE.locale; MEANS_LANG = MEANS_VOICE.locale
+  console.log(`${COURSE}: atom=${ATOM_VOICE.voice_id}/${ATOM_VOICE.provider}/${ATOM_LANG}  means=${MEANS_VOICE.voice_id}/${MEANS_VOICE.provider}/${MEANS_LANG}${dry ? '  [DRY]' : ''}`)
+
+  // --means-only: re-voice the "means" clips from the EXISTING atom_maps (no LLM,
+  // no atom re-author, no atom_map write) — force-renders each into MEANS_VOICE
+  // and repoints pod_legos. Use to switch the means voice without churning the
+  // verified breakdowns. Idempotent only with --force semantics (always renders).
+  if (MEANS_ONLY) {
+    let q = supabase.from('listening_pod_sentences').select('global_order, atom_map').eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+    if (ORDERS.length) q = q.in('global_order', ORDERS)
+    const { data: turns } = await q
+    let n = 0
+    const doTurn = async (t) => {
+      const atoms = (t.atom_map || []).filter((e) => e.kind === 'atom' && e.lego_key && e.gloss)
+      for (const e of atoms) { if (!dry) await ensureMeans(e.lego_key, e.target_surface, String(e.gloss).trim(), t.global_order, true); n++ }
+      console.log(`S${t.global_order}: ${atoms.length} means`)
+    }
+    const C = Number(process.env.BD_CONC || 20)
+    let i = 0
+    await Promise.all(Array.from({ length: Math.min(C, (turns || []).length) }, async () => { while (i < turns.length) await doTurn(turns[i++]) }))
+    console.log(`\n${dry ? '[DRY] ' : ''}${COURSE}: ${n} means re-voiced → ${MEANS_VOICE.voice_id}/${MEANS_VOICE.provider}.`)
+    process.exit(0)
+  }
 
   const { data: legos } = await supabase.from('course_legos').select('target_text, known_text').eq('course_code', COURSE).limit(5000)
   const inv = (legos || []).filter(l => l.target_text && l.known_text).map(l => ({ t: l.target_text, k: l.known_text, b: bare(l.target_text) }))
