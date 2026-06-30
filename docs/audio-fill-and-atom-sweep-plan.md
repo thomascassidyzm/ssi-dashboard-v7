@@ -51,12 +51,17 @@ earlier pass → needs a **re-sweep** to the keep-together flat model (idempoten
 ### Axis 1 — atom sweep
 1. **Prereq:** course pod must be silence-split (`sentence_audio_ids`). If not,
    run the split first (the 2026-06-16 silence-split tooling).
-2. `scripts/experiments/breakdown-flat.cjs <course>` — authors the flat tiling
-   `atom_map` per turn (keep-together granularity, literal glosses, names
-   passthrough) and renders `[atom]` slices + "means" clips. Idempotent.
-3. **Verify:** `scripts/experiments/verify-ita-breakdown.cjs <course>` — must
-   report **0 partition fails, 100% whole/known/means, 100% `[atom]` slice**.
-   (The case-insensitive resolver is already in both composers; expect 100%.)
+2. `node tools/breakdown-flat.cjs <course> [--dry]` — authors the flat tiling
+   `atom_map` per turn and renders `[atom]` slices + "means" clips. Granularity =
+   **intention is the unit, atoms explain the construction, best-fit per
+   language-pair** (break only where it reveals a reusable construction; keep
+   useful multi-word chunks whole). Voices auto-read from `voice_config`
+   (`target1` → atom in the target language, `known` → means in English).
+   Idempotent. `--dry` does LLM authoring only (no TTS, no writes — outside the
+   cost gate); use it to preview granularity + get the render count first.
+3. **Verify:** `node tools/verify-breakdown.cjs <course>` — must report **0
+   partition fails, 100% whole/known/means, 100% `[atom]` slice** (exits non-zero
+   on any hole). The case-insensitive resolver is in both composers; expect 100%.
 4. Spot-check a few turns in the dashboard Listening Config preview.
 
 ### Axis 2 — audio fill
@@ -84,6 +89,9 @@ sign-off.** Rough order of magnitude:
 - **Parallel by course.** One agent per course, after Croatian proves the recipe
   end-to-end. Each agent: dry-run count → (on approval) render → **verify** →
   report holes. Idempotent, so a re-run is always safe.
+- **The tools are committed** (`tools/breakdown-flat.cjs`, `tools/verify-breakdown.cjs`)
+  so parallel agents on fresh checkouts have them; voices self-configure from
+  `voice_config`, so no per-course tuning.
 - **A manifest tracks per-course state across both axes** so nothing is
   double-done or silently skipped.
 
