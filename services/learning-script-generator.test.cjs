@@ -15,11 +15,14 @@ import { describe, it, expect } from 'vitest'
 
 const {
   calculateSpacedRepReviews,
+  seedSentenceFor,
+  reviewItemIsSeed,
   legoHasFullAudio,
   phraseHasFullAudio,
   applyLearnerAudioGate,
   numberRounds,
   FIBONACCI,
+  SEED_PHASE_START_OFFSET,
   DEFAULT_SCRIPT_SHAPE,
 } = require('./learning-script-generator.cjs')
 
@@ -31,8 +34,10 @@ describe('calculateSpacedRepReviews — offset expansion from config shape', () 
   it('defaults to the fallback FIBONACCI offsets when no offsets passed', () => {
     const reviews = calculateSpacedRepReviews(56)
     const offsetsUsed = reviews.map(r => 56 - r.legoIndex)
+    // At round 56 only offsets <= 55 reach back to round >= 1 (56-89 < 1 breaks).
     expect(offsetsUsed).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55])
-    expect(FIBONACCI).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55])
+    // FIBONACCI was extended to span a full course (89→…→2584).
+    expect(FIBONACCI).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584])
   })
 
   it('includes the N-89 review when given the live config offsets', () => {
@@ -68,6 +73,85 @@ describe('calculateSpacedRepReviews — offset expansion from config shape', () 
       maxSpacedRepPhrases: 12,
       n1PhraseCount: 3,
     })
+  })
+})
+
+// --- spaced-rep seed-sentence extension (post-89) --------------------------
+
+describe('FIBONACCI series extension past the historical tail', () => {
+  it('extends past 89 to span a full course (finite — no clamp-and-repeat)', () => {
+    expect(FIBONACCI.slice(9)).toEqual([89, 144, 233, 377, 610, 987, 1597, 2584])
+    // The series terminates at 2584 (first Fibonacci term past ~2000 LEGOs).
+    expect(FIBONACCI[FIBONACCI.length - 1]).toBe(2584)
+  })
+
+  it('schedules reviews at the mid-tail offsets when the course is long enough', () => {
+    // Round 378 reaches offsets up to 377 (378-610 < 1 breaks before 610).
+    const reviews = calculateSpacedRepReviews(378, FIBONACCI)
+    const offsetsUsed = reviews.map(r => 378 - r.legoIndex)
+    expect(offsetsUsed).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377])
+  })
+
+  it('reviews the earliest LEGO late in a full-length course (offset 2584 → round 1)', () => {
+    // A 2585-round course still reviews round 1 at the final offset.
+    const reviews = calculateSpacedRepReviews(2585, FIBONACCI)
+    const offsetsUsed = reviews.map(r => 2585 - r.legoIndex)
+    expect(offsetsUsed).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584])
+    expect(reviews[reviews.length - 1].legoIndex).toBe(1)
+  })
+})
+
+describe('reviewItemIsSeed — the 89 → 144 boundary', () => {
+  it('SEED_PHASE_START_OFFSET is 144 (the first term past 89)', () => {
+    expect(SEED_PHASE_START_OFFSET).toBe(144)
+  })
+
+  it('the 89-step is still a use-phrase; 144 and beyond are seeds', () => {
+    expect(reviewItemIsSeed(89)).toBe(false)   // last use-phrase
+    expect(reviewItemIsSeed(143)).toBe(false)
+    expect(reviewItemIsSeed(144)).toBe(true)    // first seed
+    expect(reviewItemIsSeed(233)).toBe(true)
+    expect(reviewItemIsSeed(377)).toBe(true)
+  })
+})
+
+describe('seedSentenceFor — parent seed lookup (first 5 chars of LEGO id)', () => {
+  const seedMap = new Map([
+    ['S0001', {
+      original_known: 'Je veux parler anglais avec toi maintenant.',
+      original_target: 'I want to speak English with you now.',
+      known_audio_uuid: 'ka', target1_audio_uuid: 't1a', target2_audio_uuid: 't2a',
+    }],
+  ])
+
+  it('resolves S0001L03 → seed S0001 with the full parent sentence + audio', () => {
+    expect(seedSentenceFor('S0001L03', seedMap)).toEqual({
+      seedId: 'S0001',
+      known_text: 'Je veux parler anglais avec toi maintenant.',
+      target_text: 'I want to speak English with you now.',
+      known_audio_uuid: 'ka',
+      target1_audio_uuid: 't1a',
+      target2_audio_uuid: 't2a',
+    })
+  })
+
+  it('feeder ids (S0001F01) resolve to the same parent seed', () => {
+    expect(seedSentenceFor('S0001F01', seedMap).seedId).toBe('S0001')
+  })
+
+  it('returns null for a missing seed record (guard → caller falls back)', () => {
+    expect(seedSentenceFor('S9999L01', seedMap)).toBeNull()
+  })
+
+  it('returns null for an empty record (no original_target/known)', () => {
+    const empty = new Map([['S0002', { original_known: '', original_target: '' }]])
+    expect(seedSentenceFor('S0002L01', empty)).toBeNull()
+  })
+
+  it('returns null for a malformed lego id or missing map', () => {
+    expect(seedSentenceFor('not-a-lego', seedMap)).toBeNull()
+    expect(seedSentenceFor(undefined, seedMap)).toBeNull()
+    expect(seedSentenceFor('S0001L03', null)).toBeNull()
   })
 })
 
