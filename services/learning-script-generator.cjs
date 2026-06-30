@@ -44,8 +44,35 @@ const logger = createLogger('LearningScriptGenerator')
 
 // FALLBACK spaced-rep offsets — used ONLY when algorithm_config.script_shape
 // is missing. The live config row (which the learner app reads) is the truth;
-// as of 2026-06-10 it is [1,2,3,5,8,13,21,34,55,89].
-const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55]
+// as of 2026-06-10 it was [1,2,3,5,8,13,21,34,55,89].
+//
+// EXTENDED 2026-06-30 past the historical tail (…,55,89) with 144,233,377 to
+// carry spaced repetition into the SEED-SENTENCE phase: a review whose skip
+// offset reaches SEED_PHASE_START_OFFSET (144) shows the full parent seed
+// sentence instead of a use-phrase (the 89-step stays the last use-phrase).
+//
+// TERMINAL BEHAVIOUR — FINITE, NO clamp-and-repeat. The series simply ends at
+// 377 (its last term). Clamp-and-repeat was rejected because it would be a
+// no-op here: calculateSpacedRepReviews keys reviews by target round and dedupes
+// (seenLegos), so a repeated final offset collapses onto the same already-seen
+// LEGO and emits nothing. To lengthen the tail, append further Fibonacci terms.
+const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377]
+
+// First skip offset (rounds since a LEGO debuted) at which the spaced-rep review
+// item switches from a use-phrase to the FULL PARENT SEED SENTENCE. 144 is the
+// first Fibonacci term past the historical tail, so the 89-step remains the last
+// use-phrase. One-line tunable — the whole seed-phase boundary lives here.
+const SEED_PHASE_START_OFFSET = 144
+
+/**
+ * Is a review at this skip offset in the seed-sentence phase? — PURE.
+ * The skip offset is `roundNumber - reviewedRound` (how many rounds since the
+ * reviewed LEGO debuted). At/after SEED_PHASE_START_OFFSET the review renders
+ * the parent seed sentence; before it, a use-phrase.
+ */
+function reviewItemIsSeed(reviewOffset) {
+  return reviewOffset >= SEED_PHASE_START_OFFSET
+}
 
 // Fallback round shape (mirrors the learner's behaviour when its own config
 // fetch fails). Only consulted when the script_shape config row is missing.
@@ -159,6 +186,35 @@ function calculateSpacedRepReviews(roundNumber, offsets = FIBONACCI) {
   }
 
   return reviews
+}
+
+/**
+ * Resolve the FULL PARENT SEED SENTENCE for a LEGO id — PURE, unit tested.
+ *
+ * Parent seed id = first 5 chars of the LEGO id (`S` + 4-digit seed number),
+ * per the canonical UID format `^(S\d{4})(?:L|F)\d{2}$`. The seed sentence text
+ * lives on the breakdown/seed record as original_target / original_known; pass
+ * those in via seedSentenceMap (seedId → record), built by loadSeedSentences.
+ *
+ * GUARD (edge 3 in SEED_REVIEW_EXTENSION_PLAN): a missing/empty record returns
+ * null — callers MUST fall back to a use-phrase, never render an empty seed card.
+ */
+function seedSentenceFor(legoId, seedSentenceMap) {
+  const m = typeof legoId === 'string' ? legoId.match(/^(S\d{4})/) : null
+  if (!m) return null
+  const seedId = m[1]
+  const record = (seedSentenceMap && typeof seedSentenceMap.get === 'function')
+    ? seedSentenceMap.get(seedId)
+    : null
+  if (!record || (!record.original_target && !record.original_known)) return null
+  return {
+    seedId,
+    known_text: record.original_known,
+    target_text: record.original_target,
+    known_audio_uuid: record.known_audio_uuid || null,
+    target1_audio_uuid: record.target1_audio_uuid || null,
+    target2_audio_uuid: record.target2_audio_uuid || null,
+  }
 }
 
 /**
@@ -466,6 +522,47 @@ async function loadIntroductionAudio(supabase, courseCode, legoIds) {
 }
 
 /**
+ * Load parent SEED SENTENCES for a course, keyed by seed id (S + 4-digit
+ * seed_number). The seed sentence text is course_seeds.{known_text,target_text}
+ * — surfaced here under the original_known / original_target names the seed
+ * helper expects (the breakdown record fields in SEED_REVIEW_EXTENSION_PLAN A1).
+ * Used by the seed-sentence review phase (skip offset >= SEED_PHASE_START_OFFSET).
+ */
+async function loadSeedSentences(supabase, courseCode) {
+  const map = new Map()
+  if (!supabase) return map
+
+  try {
+    const { data, error } = await supabase
+      .from('course_seeds')
+      .select('seed_number, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
+      .eq('course_code', courseCode)
+      .order('seed_number', { ascending: true })
+
+    if (error) {
+      logger.warn(`Failed to load seed sentences for ${courseCode}: ${error.message} — seed-phase reviews will fall back to use-phrases.`)
+      return map
+    }
+
+    for (const row of (data || [])) {
+      const seedId = 'S' + String(row.seed_number).padStart(4, '0')
+      map.set(seedId, {
+        original_known: row.known_text,
+        original_target: row.target_text,
+        known_audio_uuid: row.known_audio_id,
+        target1_audio_uuid: row.target1_audio_id,
+        target2_audio_uuid: row.target2_audio_id,
+      })
+    }
+    logger.info(`Loaded ${map.size} seed sentences for ${courseCode}`)
+  } catch (err) {
+    logger.warn(`loadSeedSentences threw: ${err.message} — seed-phase reviews will fall back to use-phrases.`)
+  }
+
+  return map
+}
+
+/**
  * Generate the complete learning script with ROUNDs and spaced repetition.
  *
  * Mirrors generateLearningScript.ts in ssi-learning-app:
@@ -538,6 +635,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
   const legoIds = legos.map(l => l.lego.id)
   const introAudioMap = await loadIntroductionAudio(supabase, courseCode, legoIds)
+
+  // Parent seed sentences for the extended (post-89) spaced-rep phase: a review
+  // whose skip offset reaches SEED_PHASE_START_OFFSET shows the seed sentence
+  // instead of a use-phrase. Loaded once, keyed by seed id.
+  const seedSentenceMap = await loadSeedSentences(supabase, courseCode)
 
   // Graduation tracking (spaced-rep exclusion only — NO listening emission).
   // Mirrors the learner: graduation is anchored to absolute LEGO position in
@@ -738,6 +840,46 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       if (seenReviewLegos.has(reviewLegoState.legoId)) continue
       seenReviewLegos.add(reviewLegoState.legoId)
 
+      // Seed-sentence phase: once the skip offset reaches SEED_PHASE_START_OFFSET
+      // (144+), the review item switches from a use-phrase to the FULL PARENT
+      // SEED SENTENCE. The 89-step stays a use-phrase. Clustering (successive
+      // LEGOs crossing the threshold => same seed a few rounds running) is
+      // DESIRED — no de-clustering/dedup here. Falls back to the use-phrase path
+      // if the seed record is missing (never render an empty seed card).
+      const reviewOffset = n - review.legoIndex
+      if (reviewItemIsSeed(reviewOffset)) {
+        const seed = seedSentenceFor(reviewLegoState.legoId, seedSentenceMap)
+        if (seed) {
+          const seedPhraseId = getPhraseId(seed.known_text, seed.target_text)
+          reviewIndices.push(review.legoIndex)
+          if (!usedPhrasesInRound.has(seedPhraseId)) {
+            usedPhrasesInRound.add(seedPhraseId)
+            roundItems.push({
+              roundNumber: n,
+              legoId: reviewLegoState.legoId,
+              legoIndex: review.legoIndex,
+              seedId: seed.seedId,
+              seedNumber: reviewLegoState.lego.seed.seed_number,
+              type: 'review',
+              reviewItemKind: 'seed',
+              reviewOf: review.legoIndex,
+              fibonacciPosition: review.fibPosition,
+              reviewOffset,
+              isFirstRevisit: false,
+              known_text: seed.known_text,
+              target_text: seed.target_text,
+              known_audio_uuid: seed.known_audio_uuid,
+              target1_audio_uuid: seed.target1_audio_uuid,
+              target2_audio_uuid: seed.target2_audio_uuid,
+              hasAudio: !!(seed.known_audio_uuid && seed.target1_audio_uuid),
+            })
+            reviewCount++
+          }
+          continue
+        }
+        logger.warn(`Seed-phase review (offset ${reviewOffset}) for ${reviewLegoState.legoId} has no parent seed sentence (${reviewLegoState.legoId.slice(0, 5)}) — falling back to use-phrase.`)
+      }
+
       if (reviewLegoState.usePhrases.length === 0) continue
 
       const isN1 = review.legoIndex === n - 1
@@ -898,13 +1040,17 @@ module.exports = {
   loadAllUniqueLegos,
   loadAllPracticePhrasesGrouped,
   loadIntroductionAudio,
+  loadSeedSentences,
   loadAlgorithmConfig,
   calculateSpacedRepReviews,
+  seedSentenceFor,
+  reviewItemIsSeed,
   legoHasFullAudio,
   phraseHasFullAudio,
   applyLearnerAudioGate,
   numberRounds,
   FIBONACCI,
+  SEED_PHASE_START_OFFSET,
   DEFAULT_SCRIPT_SHAPE,
   DEFAULT_LISTENING,
 }
