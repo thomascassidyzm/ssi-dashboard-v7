@@ -1,6 +1,22 @@
 # Secrets — central Vault (encrypted) with one bootstrap credential
 
-*2026-06-30. Status: spike validated (Vault round-trips, encrypted at rest); rollout pending.*
+*2026-06-30. Status: **LIVE** — Vault holds the shared secrets (encrypted, verified). Services still read from `.env`; the cutover to Vault is the remaining (optional) step.*
+
+## Current state (read this first)
+
+- **9 shared secrets are now in Vault**, encrypted at rest, verified 9/9 round-trip:
+  `XAI_API_KEY`, `ELEVENLABS_API_KEY`, `AZURE_SPEECH_KEY`, `AWS_ACCESS_KEY_ID`,
+  `AWS_SECRET_ACCESS_KEY`, `SUPABASE_SERVICE_KEY`, `SUPABASE_ANON_KEY`,
+  `VITE_SUPABASE_ANON_KEY`, `ADMIN_SECRET`.
+- **`.env` is unchanged** — services still read from it exactly as before, so
+  nothing has changed at runtime. Vault is a **parallel source of truth**, ready
+  to switch to.
+- **Not in Vault (deliberately):** `DATABASE_URL` (secret-zero, stays in
+  `.env.psql`); machine-specific paths (`VFS_ROOT`, `LEARNING_APP_REPO`);
+  non-secret config (regions, buckets, URLs, ports, flags); and `.env`
+  placeholders (`your-…`). Machine-specific values should stay local.
+- To inspect what's there: `node tools/secrets.cjs list` (names + descriptions,
+  no values; needs `DATABASE_URL` in env).
 
 ## Model
 
@@ -41,13 +57,18 @@ node tools/secrets.cjs load > .env     # then the app loads .env as usual
 await require('./tools/secrets').loadSecrets()  // returns count applied
 ```
 
-## Rollout (pending)
+## Rollout
 
-1. Push the real secrets from an existing `.env` into Vault (`set` each).
-2. Add `await loadSecrets()` at service startup (or `secrets.cjs load > .env` in
-   the boot script).
-3. Trim machine `.env`s down to `DATABASE_URL` only.
-4. Rotate: change a key in one place (`set`) — all machines pick it up next boot.
+1. ✅ **DONE** — the shared secrets are pushed into Vault (additive; `.env`
+   untouched; verified). Re-runnable via `scripts/migrate-secrets-to-vault.cjs`
+   (gitignored — handles values; explicit allowlist).
+2. ⬜ **Wire services to Vault** — add `await loadSecrets()` at startup, or
+   `node tools/secrets.cjs load > .env` in the boot script. Do this **one path
+   at a time** and test each — it changes how a running service gets its keys.
+3. ⬜ **Trim machine `.env`s** down to `DATABASE_URL` + machine-specific config.
+4. **Rotate** any key in one place (`set NAME newvalue`) — machines pick it up
+   next boot / next `load`.
 
-Validated on the spike: set → ciphertext at rest → decrypted round-trip → load
-(.env + export) → in-process loadSecrets → upsert → rm, all clean.
+Validated end-to-end: set → ciphertext at rest → decrypted round-trip → load
+(.env + export) → in-process `loadSecrets` → upsert → rm → live migration of 9
+secrets (9/9 verified).
