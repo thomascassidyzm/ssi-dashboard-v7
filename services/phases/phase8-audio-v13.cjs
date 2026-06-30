@@ -5055,23 +5055,24 @@ async function findExistingAudio(courseCode, text, language, role, voiceId) {
  * @param {string} [args.sentenceId] - pod sentence id (for the fallback log line)
  */
 async function generatePodAudio({ courseCode, text, language, role, voice, ctx, track, sentenceId }) {
-  // Reuse by text+voice hash
-  const existing = await findExistingAudio(courseCode, text, language, role, voice.voice_id)
-  if (existing) return { id: existing, reused: true }
-
   // Pod TURN whole-takes: insert a pause cue (" … ") between sentences so the
   // engine PAUSES at each boundary, making the take cleanly splittable per
   // sentence (the newer ElevenLabs/xAI voices otherwise run sentences together,
   // leaving silence-detect nothing to cut on). ONE generation → no cross-sentence
   // voice drift (Tom 2026-06-30). Only multi-sentence target/known turns are
-  // affected — atom slices / single-sentence clips are untouched. Dedup + the
-  // stored course_audio.text use the original `text`; only the TTS input carries
-  // the cue, so display text stays clean.
+  // affected — atom slices / single-sentence clips are untouched. The pause cue
+  // is the canonical text for the clip (dedup + storage below), so a paused take
+  // never collides with an old un-paused one; pod display text comes from
+  // listening_pod_sentences, not course_audio, so it stays clean.
   let ttsText = text
   if (track === 'target' || track === 'known') {
     const sents = String(text || '').split(/(?<=[.!?…])\s+/).map(s => s.trim()).filter(Boolean)
     if (sents.length > 1) ttsText = sents.join(' … ')
   }
+
+  // Reuse by text+voice hash — keyed on the ACTUAL synthesised text.
+  const existing = await findExistingAudio(courseCode, ttsText, language, role, voice.voice_id)
+  if (existing) return { id: existing, reused: true }
 
   let provider = voice.provider || 'azure'
   let activeVoice = voice
@@ -5128,8 +5129,8 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
     .from('course_audio')
     .upsert({
       course_code: courseCode,
-      text,
-      text_normalized: normalizeForAudio(text),
+      text: ttsText,
+      text_normalized: normalizeForAudio(ttsText),
       language,
       role,
       voice_id: voice.voice_id,
