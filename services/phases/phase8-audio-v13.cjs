@@ -5059,12 +5059,26 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
   const existing = await findExistingAudio(courseCode, text, language, role, voice.voice_id)
   if (existing) return { id: existing, reused: true }
 
+  // Pod TURN whole-takes: insert a pause cue (" … ") between sentences so the
+  // engine PAUSES at each boundary, making the take cleanly splittable per
+  // sentence (the newer ElevenLabs/xAI voices otherwise run sentences together,
+  // leaving silence-detect nothing to cut on). ONE generation → no cross-sentence
+  // voice drift (Tom 2026-06-30). Only multi-sentence target/known turns are
+  // affected — atom slices / single-sentence clips are untouched. Dedup + the
+  // stored course_audio.text use the original `text`; only the TTS input carries
+  // the cue, so display text stays clean.
+  let ttsText = text
+  if (track === 'target' || track === 'known') {
+    const sents = String(text || '').split(/(?<=[.!?…])\s+/).map(s => s.trim()).filter(Boolean)
+    if (sents.length > 1) ttsText = sents.join(' … ')
+  }
+
   let provider = voice.provider || 'azure'
   let activeVoice = voice
   let audioBuffer
   try {
     const ttsConfig = buildPodTTSConfig(activeVoice, language)
-    ;({ audioBuffer } = await ttsService.generateWithRetry(text, provider, ttsConfig))
+    ;({ audioBuffer } = await ttsService.generateWithRetry(ttsText, provider, ttsConfig))
   } catch (primaryErr) {
     // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
     // back when the primary was xAI — Azure failing has nowhere better to go,
@@ -5084,7 +5098,7 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
     activeVoice = azureVoice
     const azureConfig = buildPodTTSConfig(activeVoice, language)
     try {
-      ;({ audioBuffer } = await ttsService.generateWithRetry(text, 'azure', azureConfig))
+      ;({ audioBuffer } = await ttsService.generateWithRetry(ttsText, 'azure', azureConfig))
     } catch (e) { e.message = `[STAGE=tts:azure-fallback,xai-also-failed] ${e.message}`; throw e }
   }
   voice = activeVoice  // course_audio row records the voice that actually produced the clip
