@@ -36,8 +36,8 @@ describe('calculateSpacedRepReviews — offset expansion from config shape', () 
     const offsetsUsed = reviews.map(r => 56 - r.legoIndex)
     // At round 56 only offsets <= 55 reach back to round >= 1 (56-89 < 1 breaks).
     expect(offsetsUsed).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55])
-    // FIBONACCI was extended past the historical tail with 89,144,233,377.
-    expect(FIBONACCI).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377])
+    // FIBONACCI was extended to span a full course (89→…→2584).
+    expect(FIBONACCI).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584])
   })
 
   it('includes the N-89 review when given the live config offsets', () => {
@@ -79,17 +79,25 @@ describe('calculateSpacedRepReviews — offset expansion from config shape', () 
 // --- spaced-rep seed-sentence extension (post-89) --------------------------
 
 describe('FIBONACCI series extension past the historical tail', () => {
-  it('appends 144, 233, 377 after 89 (finite — no clamp-and-repeat)', () => {
-    expect(FIBONACCI.slice(-4)).toEqual([89, 144, 233, 377])
-    // The series terminates at 377; nothing beyond it.
-    expect(FIBONACCI[FIBONACCI.length - 1]).toBe(377)
+  it('extends past 89 to span a full course (finite — no clamp-and-repeat)', () => {
+    expect(FIBONACCI.slice(9)).toEqual([89, 144, 233, 377, 610, 987, 1597, 2584])
+    // The series terminates at 2584 (first Fibonacci term past ~2000 LEGOs).
+    expect(FIBONACCI[FIBONACCI.length - 1]).toBe(2584)
   })
 
-  it('schedules reviews at the extended offsets when the course is long enough', () => {
-    // Round 378 reaches all the way back: offset 377 → round 1.
+  it('schedules reviews at the mid-tail offsets when the course is long enough', () => {
+    // Round 378 reaches offsets up to 377 (378-610 < 1 breaks before 610).
     const reviews = calculateSpacedRepReviews(378, FIBONACCI)
     const offsetsUsed = reviews.map(r => 378 - r.legoIndex)
     expect(offsetsUsed).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377])
+  })
+
+  it('reviews the earliest LEGO late in a full-length course (offset 2584 → round 1)', () => {
+    // A 2585-round course still reviews round 1 at the final offset.
+    const reviews = calculateSpacedRepReviews(2585, FIBONACCI)
+    const offsetsUsed = reviews.map(r => 2585 - r.legoIndex)
+    expect(offsetsUsed).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584])
+    expect(reviews[reviews.length - 1].legoIndex).toBe(1)
   })
 })
 

@@ -51,12 +51,20 @@ const logger = createLogger('LearningScriptGenerator')
 // offset reaches SEED_PHASE_START_OFFSET (144) shows the full parent seed
 // sentence instead of a use-phrase (the 89-step stays the last use-phrase).
 //
-// TERMINAL BEHAVIOUR — FINITE, NO clamp-and-repeat. The series simply ends at
-// 377 (its last term). Clamp-and-repeat was rejected because it would be a
-// no-op here: calculateSpacedRepReviews keys reviews by target round and dedupes
-// (seenLegos), so a repeated final offset collapses onto the same already-seen
-// LEGO and emits nothing. To lengthen the tail, append further Fibonacci terms.
-const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377]
+// EXTENDED AGAIN 2026-06-30 to 610,987,1597,2584 so the series SPANS A FULL
+// COURSE. The skip offset is "rounds since a LEGO debuted" ≈ "how many LEGOs
+// ago", and full courses run ~1200–2000 LEGOs (≈668 seeds, lang-pair dependent).
+// At 377 the memory horizon was only 377 rounds: a LEGO learned early stopped
+// being reviewed ~1000+ rounds before the course ended, so the entire front of
+// a course went cold. 2584 is the first Fibonacci term past 2000, so even the
+// earliest LEGO keeps getting (seed-phase) reviews until the longest course ends.
+//
+// TERMINAL BEHAVIOUR — FINITE, NO clamp-and-repeat. The series ends at 2584 (its
+// last term). Clamp-and-repeat was rejected because it would be a no-op here:
+// calculateSpacedRepReviews keys reviews by target round and dedupes (seenLegos),
+// so a repeated final offset collapses onto the same already-seen LEGO and emits
+// nothing. To span even longer courses, append further Fibonacci terms (4181…).
+const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]
 
 // First skip offset (rounds since a LEGO debuted) at which the spaced-rep review
 // item switches from a use-phrase to the FULL PARENT SEED SENTENCE. 144 is the
