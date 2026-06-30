@@ -62,24 +62,18 @@ function elevenVoice(v, locale) {
 }
 
 // -----------------------------------------------------------------------------
-// KNOWN (English) pool — British only. xAI first, en-GB Azure for colour headroom.
-// gfzdpspr5fdp (Tom) intentionally absent: reserved for the explainer narrator.
-// -----------------------------------------------------------------------------
+// KNOWN (English) pool — a SINGLE voice: Tom's xAI clone (Tom 2026-06-30).
+// The English track is a comprehension aid / translator, not the drama — the
+// target cast already carries "who's speaking", so per-character English voices
+// added complexity for no real value. One consistent coach voice for ALL English
+// (translations AND the "means …" breakdown glosses, which already use it).
+// Both gender slots point to the same voice — the known track is a translator,
+// not the character performing, so gender needn't track the speaker.
+const TOM_CLONE_KNOWN = { provider: 'xai', voice_id: 'gfzdpspr5fdp', name: 'Tom', gender: 'm', locale: 'en' }
 const KNOWN_POOL = {
-  locale: 'en-GB',
-  f: [
-    { provider: 'xai',   voice_id: 'bedd6226',           name: 'Olivia', gender: 'f', locale: 'en' },
-    { provider: 'azure', voice_id: 'en-GB-SoniaNeural',  name: 'Sonia',  gender: 'f', locale: 'en-GB' },
-    { provider: 'azure', voice_id: 'en-GB-LibbyNeural',  name: 'Libby',  gender: 'f', locale: 'en-GB' },
-    { provider: 'azure', voice_id: 'en-GB-HollieNeural', name: 'Hollie', gender: 'f', locale: 'en-GB' },
-    { provider: 'azure', voice_id: 'en-GB-MaisieNeural', name: 'Maisie', gender: 'f', locale: 'en-GB' },
-  ],
-  m: [
-    { provider: 'xai',   voice_id: 'leo',                name: 'Leo',    gender: 'm', locale: 'en' },
-    { provider: 'azure', voice_id: 'en-GB-RyanNeural',   name: 'Ryan',   gender: 'm', locale: 'en-GB' },
-    { provider: 'azure', voice_id: 'en-GB-ThomasNeural', name: 'Thomas', gender: 'm', locale: 'en-GB' },
-    { provider: 'azure', voice_id: 'en-GB-AlfieNeural',  name: 'Alfie',  gender: 'm', locale: 'en-GB' },
-  ],
+  locale: 'en',
+  f: [TOM_CLONE_KNOWN],
+  m: [TOM_CLONE_KNOWN],
 }
 
 // -----------------------------------------------------------------------------
