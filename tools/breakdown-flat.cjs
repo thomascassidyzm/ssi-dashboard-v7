@@ -63,13 +63,23 @@ Output ONLY JSON: {"atoms":[{"target":"...","gloss":"... or null","source":"lego
 
 let ATOM_VOICE, MEANS_VOICE, ATOM_LANG, MEANS_LANG
 
+// In-flight guard: under concurrency, the SAME atom surface can appear in many
+// turns at once. Coalesce concurrent renders of one surface onto a single
+// promise so we never double-render / duplicate the row.
+const sliceInFlight = new Map()
 async function ensureAtomSlice(surface) {
   const key = `[atom] ${surface}`
-  const { data: ex } = await supabase.from('course_audio').select('id').eq('course_code', COURSE).eq('role', ROLE).eq('text_normalized', norm(key)).limit(1).maybeSingle()
-  if (ex) return ex.id
-  const res = await p8.generatePodAudio({ courseCode: COURSE, text: surface, language: ATOM_LANG, role: ROLE, voice: ATOM_VOICE })
-  await supabase.from('course_audio').update({ text: key, text_normalized: norm(key) }).eq('id', res.id)
-  return res.id
+  const nk = norm(key)
+  if (sliceInFlight.has(nk)) return sliceInFlight.get(nk)
+  const p = (async () => {
+    const { data: ex } = await supabase.from('course_audio').select('id').eq('course_code', COURSE).eq('role', ROLE).eq('text_normalized', nk).limit(1).maybeSingle()
+    if (ex) return ex.id
+    const res = await p8.generatePodAudio({ courseCode: COURSE, text: surface, language: ATOM_LANG, role: ROLE, voice: ATOM_VOICE })
+    await supabase.from('course_audio').update({ text: key, text_normalized: nk }).eq('id', res.id)
+    return res.id
+  })()
+  sliceInFlight.set(nk, p)
+  return p
 }
 async function ensureMeans(legoKey, target, gloss, order) {
   const { data: pl } = await supabase.from('pod_legos').select('explainer_audio_id').eq('course_code', COURSE).eq('lego_key', legoKey).limit(1).maybeSingle()
@@ -97,17 +107,17 @@ async function ensureMeans(legoKey, target, gloss, order) {
   const { data: sents } = await q
 
   let ok = 0, tilefail = 0
-  for (const s of sents) {
+  async function processTurn(s) {
     const sb = ' ' + bare(s.target_text) + ' '
     const matches = inv.filter(l => l.b.length >= 2 && (sb.includes(' ' + l.b + ' ') || (sb.includes(' ' + l.b) && l.b.length > 3))).sort((a, c) => c.b.length - a.b.length).slice(0, 24).map(l => `  "${l.t}" = ${l.k}`)
     const prompt = `${RULES}\n\nSPEAKING-COURSE LEGO UNITS present:\n${matches.join('\n') || '  (none)'}\n\nTURN (${COURSE}):\ntarget: ${s.target_text}\nknown:  ${s.known_text}\n\nJSON only:`
     let plan
-    try { const o = await claude(prompt); plan = JSON.parse(o.slice(o.indexOf('{'), o.lastIndexOf('}') + 1)) } catch (e) { console.log(`S${s.global_order}: PARSE FAIL`); continue }
+    try { const o = await claude(prompt); plan = JSON.parse(o.slice(o.indexOf('{'), o.lastIndexOf('}') + 1)) } catch (e) { console.log(`S${s.global_order}: PARSE FAIL`); return }
     const atoms = (plan.atoms || []).map(a => ({ ...a, target: cleanSurface(a.target) })).filter(a => bare(a.target))
     const tiled = atoms.map(a => alnum(a.target)).join('')
     if (tiled !== alnum(s.target_text)) {
-      console.log(`S${s.global_order}: ✗ TILING MISMATCH — skipped\n   want: ${alnum(s.target_text)}\n   got:  ${tiled}`)
-      tilefail++; continue
+      console.log(`S${s.global_order}: ✗ TILING MISMATCH — skipped`)
+      tilefail++; return
     }
     const atomMap = []
     for (const a of atoms) {
@@ -122,6 +132,12 @@ async function ensureMeans(legoKey, target, gloss, order) {
     console.log(`S${s.global_order}: ✓ ${atomMap.length} atoms — ${atoms.map(a => a.gloss ? a.target : a.target + '(name)').join(' · ')}`)
     ok++
   }
+  // Concurrency: turns are independent (own LLM call + own row). Cap with a
+  // worker pool; same-surface slice renders are coalesced by sliceInFlight.
+  const CONC = Number(process.env.BD_CONC || 20)
+  let next = 0
+  const worker = async () => { while (next < sents.length) await processTurn(sents[next++]) }
+  await Promise.all(Array.from({ length: Math.min(CONC, sents.length) }, worker))
   console.log(`\n${dry ? '[DRY] ' : ''}${COURSE}: ${ok} authored, ${tilefail} tiling-fail.`)
   process.exit(0)
 })().catch(e => { console.error('ERR:', e.message); process.exit(1) })
