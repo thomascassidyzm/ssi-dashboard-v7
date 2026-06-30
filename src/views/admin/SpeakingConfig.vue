@@ -150,7 +150,7 @@
             <label class="lab-rate">~ms / syllable
               <input type="number" min="50" step="10" v-model.number="msPerSyllable" />
             </label>
-            <span class="lab-rate-note">voices play at {{ effectiveSpeed }}× → actual length = clip ÷ {{ effectiveSpeed }}; pause sized off that</span>
+            <span class="lab-rate-note">voices play at {{ effectiveSpeed }}× audio; the gap is sized off the phrase's native length, then tapered at this belt — boot ×{{ beltTaper.boot.toFixed(2) }}, assembly ×{{ beltTaper.assembly.toFixed(2) }}</span>
           </div>
 
           <svg v-if="curve" class="lab-chart" :viewBox="`0 0 ${CHART.w} ${CHART.h}`" preserveAspectRatio="xMidYMid meet">
@@ -226,7 +226,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../../composables/useAuth'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './algorithmConfigShared'
-import { computePauseDuration, computePauseForBelt, BELTS, SYLLABLE_BUCKETS } from './pauseModel'
+import { computePauseDuration, computePauseForBelt, beltProgress, BELTS, SYLLABLE_BUCKETS } from './pauseModel'
 import CoursePicker from '../../components/CoursePicker.vue'
 import { getApiBaseUrl } from '../../services/api'
 
@@ -299,6 +299,19 @@ const beltSpeedVal = computed(() => (BELTS.find(b => b.key === belt.value) || {}
 // at 1.0× (never speeds the voice up). Mirrors getPlaybackSpeedMultiplier.
 const isTurbo = computed(() => labMode.value === 'turbo_boost')
 const effectiveSpeed = computed(() => isTurbo.value ? Math.min(labCfg.value?.playback_speed || 1, 1.0) : beltSpeedVal.value)
+
+// Belt taper applied at the selected belt — boot/assembly multipliers the
+// boot+assembly model uses (White anchors at 1.0; Green = the configured
+// endpoint; between interpolated by belt speed position). Mirrors
+// beltProgress() in pauseModel.js.
+const beltTaper = computed(() => {
+  const cfg = labCfg.value || {}
+  const p = beltProgress(effectiveSpeed.value)
+  return {
+    boot: 1 + p * ((cfg.pause_belt_boot ?? 1) - 1),
+    assembly: 1 + p * ((cfg.pause_belt_assembly ?? 1) - 1),
+  }
+})
 
 // A sensible starting curve per mode — reference = average of both voices, a
 // real boot floor, and a knee so long sentences level off instead of scaling
