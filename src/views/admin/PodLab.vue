@@ -155,18 +155,21 @@ const atomCount = computed(() => {
 async function loadLiveConfig() {
   try {
     const res = await fetch('/api/algorithm-config')
-    if (!res.ok) return
-    const { rows } = await res.json()
-    const byKey = Object.fromEntries((rows || []).map((r) => [r.key, r.config]))
-    if (byKey.stage0 && Array.isArray(byKey.stage0.tiers)) {
-      liveStage0.value = clone(byKey.stage0)
-    }
-    if (byKey.pods && byKey.pods.stagePlaylist) {
-      liveStagePlaylist.value = clone(byKey.pods.stagePlaylist)
+    if (res.ok) {
+      const { rows } = await res.json()
+      const byKey = Object.fromEntries((rows || []).map((r) => [r.key, r.config]))
+      if (byKey.stage0 && Array.isArray(byKey.stage0.tiers)) {
+        liveStage0.value = clone(byKey.stage0)
+      }
+      if (byKey.pods && byKey.pods.stagePlaylist) {
+        liveStagePlaylist.value = clone(byKey.pods.stagePlaylist)
+      }
     }
   } catch (e) {
     console.warn('[pod-lab] live config load failed (using fallbacks):', e)
   }
+  // ALWAYS seed the editors — even when the live-config fetch fails, the
+  // fallback ladder must land in the JSON editors or they render empty.
   applyPreset('live')
 }
 
@@ -467,45 +470,57 @@ loadLiveConfig()
   max-width: 1180px;
   margin: 0 auto;
   padding: 20px 22px 60px;
-  color: var(--text, #1c1b19);
+  color: var(--color-paper, var(--ink));
 }
 .admin-crumbs {
-  font-size: 13px;
-  color: var(--muted, #8a857d);
+  font-size: 0.8125rem;
   margin-bottom: 10px;
 }
 .admin-crumbs a {
-  color: var(--accent-2, #b3541e);
+  color: var(--accent-2);
   text-decoration: none;
+}
+.admin-crumbs a:hover {
+  color: #6ee7b7;
 }
 .admin-crumbs .sep {
   margin: 0 6px;
+  color: var(--surface-3);
+}
+.admin-crumbs .cur {
+  color: var(--muted);
 }
 .lab-head h1 {
   margin: 0 0 6px;
-  font-size: 26px;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
 }
 .lab-head .sub {
   margin: 0 0 8px;
   max-width: 780px;
-  color: var(--muted, #6b665e);
+  color: var(--muted);
+  font-size: 0.875rem;
   line-height: 1.5;
 }
 .lab-head .safety {
   margin: 0 0 18px;
-  font-size: 13px;
-  color: #8a5a1e;
-  background: #fdf3e5;
-  border: 1px solid #f0dcc0;
+  font-size: 0.8125rem;
+  color: #fbbf24;
+  background: rgba(251, 146, 60, 0.12);
+  border: 1px solid rgba(251, 146, 60, 0.3);
   border-radius: 8px;
   padding: 8px 12px;
   max-width: 780px;
 }
+[data-theme='light'] .lab-head .safety {
+  color: #92400e;
+}
 code {
-  background: var(--surface-3, #f1ede7);
+  background: var(--surface-2);
   padding: 1px 5px;
   border-radius: 4px;
   font-size: 0.9em;
+  font-family: var(--font-mono, ui-monospace, Menlo, monospace);
 }
 .pickers {
   display: flex;
@@ -517,16 +532,16 @@ code {
   font-size: 12px;
   padding: 3px 9px;
   border-radius: 999px;
-  background: var(--surface-3, #f1ede7);
-  color: var(--muted, #6b665e);
+  background: var(--surface-2);
+  color: var(--muted);
 }
 .chip.ok {
-  background: #e7f3ea;
-  color: #2f6d43;
+  background: rgba(52, 211, 153, 0.14);
+  color: var(--accent-2);
 }
 .chip.err {
-  background: #fbe9e7;
-  color: #b23b2e;
+  background: rgba(248, 113, 113, 0.12);
+  color: var(--danger);
 }
 .cols {
   display: grid;
@@ -535,8 +550,8 @@ code {
   align-items: start;
 }
 .panel {
-  background: var(--surface-2, #fff);
-  border: 1px solid var(--border, #e6e1d9);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 16px 18px;
 }
@@ -552,18 +567,19 @@ code {
 }
 .lbl.small {
   font-weight: 500;
-  color: var(--muted, #6b665e);
+  color: var(--muted);
 }
 .select {
   width: 100%;
   padding: 8px 10px;
-  border: 1px solid var(--border, #e6e1d9);
+  border: 1px solid var(--line);
   border-radius: 8px;
   font-size: 14px;
-  background: #fff;
+  background: var(--surface-2);
+  color: var(--ink);
 }
 .line-card {
-  background: var(--surface-3, #f7f4ef);
+  background: var(--surface-2);
   border-radius: 10px;
   padding: 12px 14px;
   margin-bottom: 16px;
@@ -573,16 +589,16 @@ code {
   font-weight: 600;
 }
 .line-card .knw {
-  color: var(--muted, #6b665e);
+  color: var(--muted);
   margin-top: 2px;
 }
 .line-card .meta {
   font-size: 12px;
-  color: var(--muted, #8a857d);
+  color: var(--muted);
   margin-top: 8px;
 }
 .muted {
-  color: var(--muted, #a29c92);
+  color: var(--faint);
 }
 .cfg-head {
   display: flex;
@@ -599,24 +615,30 @@ code {
   font-size: 12px;
   padding: 4px 10px;
   border-radius: 999px;
-  border: 1px solid var(--border, #e6e1d9);
-  background: #fff;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
   cursor: pointer;
 }
+.presets button:hover {
+  color: var(--ink);
+  border-color: var(--muted);
+}
 .presets button.on {
-  background: var(--accent-2, #b3541e);
-  color: #fff;
-  border-color: var(--accent-2, #b3541e);
+  background: rgba(52, 211, 153, 0.15);
+  color: var(--accent-2);
+  border-color: var(--accent-2);
 }
 .json {
   width: 100%;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-mono, ui-monospace, Menlo, monospace);
   font-size: 12px;
   line-height: 1.5;
-  border: 1px solid var(--border, #e6e1d9);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 10px;
-  background: #fcfbf9;
+  background: var(--canvas);
+  color: var(--ink);
   resize: vertical;
 }
 .adv {
@@ -625,12 +647,12 @@ code {
 .adv summary {
   cursor: pointer;
   font-size: 13px;
-  color: var(--muted, #6b665e);
+  color: var(--muted);
   margin-bottom: 8px;
 }
 .note {
   font-size: 12px;
-  color: var(--muted, #8a857d);
+  color: var(--muted);
   line-height: 1.5;
   margin: 0 0 8px;
 }
@@ -638,14 +660,14 @@ code {
   width: 100%;
   padding: 9px;
   border-radius: 8px;
-  border: 1px solid var(--accent-2, #b3541e);
-  color: var(--accent-2, #b3541e);
-  background: #fff;
+  border: 1px solid var(--accent-2);
+  color: var(--accent-2);
+  background: transparent;
   font-weight: 600;
   cursor: pointer;
 }
 .export:hover {
-  background: #fdf3e5;
+  background: rgba(52, 211, 153, 0.12);
 }
 .transport {
   display: flex;
@@ -658,8 +680,8 @@ code {
   padding: 8px 14px;
   border-radius: 8px;
   border: none;
-  background: var(--accent-2, #b3541e);
-  color: #fff;
+  background: var(--accent-2);
+  color: var(--canvas);
   font-weight: 600;
   cursor: pointer;
 }
@@ -670,8 +692,9 @@ code {
 .stop {
   padding: 8px 12px;
   border-radius: 8px;
-  border: 1px solid var(--border, #e6e1d9);
-  background: #fff;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
   cursor: pointer;
 }
 .stop:disabled {
@@ -689,11 +712,11 @@ code {
   border-radius: 999px;
 }
 .stage-row {
-  border-top: 1px solid var(--border, #eee6dc);
+  border-top: 1px solid var(--line);
   padding: 10px 0;
 }
 .stage-row.s0 {
-  background: #fbf7ff;
+  background: rgba(139, 92, 246, 0.08);
   border-radius: 8px;
   padding: 10px 8px;
   border-top: none;
@@ -709,8 +732,9 @@ code {
   width: 26px;
   height: 26px;
   border-radius: 6px;
-  border: 1px solid var(--border, #e6e1d9);
-  background: #fff;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--ink);
   cursor: pointer;
   font-size: 11px;
 }
@@ -738,27 +762,36 @@ code {
   opacity: 0.7;
 }
 .playchip.now {
-  outline: 2px solid var(--accent-2, #b3541e);
+  outline: 2px solid var(--accent-2);
   outline-offset: 1px;
 }
 .r-target {
-  background: #e7f0fb;
-  color: #245b93;
+  background: rgba(59, 130, 246, 0.16);
+  color: #93c5fd;
 }
 .r-known {
-  background: #f3ece0;
-  color: #8a6d3b;
+  background: rgba(251, 191, 36, 0.14);
+  color: #fbbf24;
 }
 .r-explainer {
-  background: #efe7fb;
-  color: #6b46a8;
+  background: rgba(167, 139, 250, 0.16);
+  color: #c4b5fd;
 }
 .r-other {
-  background: #eee;
-  color: #555;
+  background: var(--surface-2);
+  color: var(--muted);
+}
+[data-theme='light'] .r-target {
+  color: #1d4ed8;
+}
+[data-theme='light'] .r-known {
+  color: #92400e;
+}
+[data-theme='light'] .r-explainer {
+  color: #6d28d9;
 }
 .empty {
-  color: var(--muted, #8a857d);
+  color: var(--muted);
   font-size: 14px;
 }
 .empty.pad {
