@@ -19,7 +19,10 @@
  */
 import { ref, computed, reactive, watch } from 'vue'
 import CoursePicker from '../../components/CoursePicker.vue'
-import { composeSentenceArc, loadStage0ClipMaps, DEFAULT_STAGE0 } from '@ssi/core/pods'
+// Vendored VERBATIM from @ssi/core/pods (the engine the learner's main flow
+// runs) — see src/lib/podEngine + tools/sync-pod-engine.sh. Vendored, not
+// cross-repo-imported, because Popty's Vercel build is single-repo.
+import { composeSentenceArc, loadStage0ClipMaps, DEFAULT_STAGE0 } from '../../lib/podEngine'
 
 // ── audio (the deployed learning-app proxy; popty.app doesn't serve /api/audio) ──
 const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
