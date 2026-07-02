@@ -334,6 +334,7 @@ const SHAPE_DEFS = [
   { key: 'parts-whole', name: 'Parts → whole', desc: 'Build up, then the natural take lands.' },
   { key: 'wpw', name: 'Whole–parts–whole', desc: 'The mystery, the breakdown, the resolution.' },
   { key: 'climb', name: 'Compressed climb', desc: 'The full fusion ladder in one sitting: atoms → pairs → … → whole.' },
+  { key: 'rungs', name: "Aran's ladder", desc: 'One rung per visit: visit 1 finest chunks, each next visit fuses pairwise, final visit = the whole.' },
   { key: 'tree', name: 'Tree walk', desc: 'Each prosodic group opened up in turn, then the whole.' },
 ]
 
@@ -377,9 +378,20 @@ function stepGroupTake(atoms, takeId) {
   }
 }
 
+function stepMarker(text) {
+  return { kind: 'marker', text, clips: [], approx: false }
+}
+
 function wantGloss(atoms) {
   if (glossMode.value === 'none') return false
-  if (glossMode.value === 'long') return atoms.map((a) => a.targetSurface).join(' ').includes(' ')
+  if (glossMode.value === 'long') {
+    const t = atoms.map((a) => a.targetSurface).join(' ')
+    // "long" = multi-word — or, for space-free scripts (CJK), 5+ CJK characters
+    return (
+      t.includes(' ') ||
+      t.replace(/[^぀-ヿ㐀-䶿一-鿿가-힯]/g, '').length >= 5
+    )
+  }
   return true
 }
 
@@ -436,6 +448,24 @@ function composeShape(key, s, atoms) {
       if (level.length > 1) pushChunks(level, { gloss: false })
     }
     steps.push(stepWhole(s))
+  } else if (key === 'rungs') {
+    // Aran's exposures, made explicit: each marker = a separate VISIT (a later
+    // lap in real delivery) — played here back-to-back for audition only.
+    let level = fine
+    let visit = 1
+    steps.push(stepMarker(`Visit ${visit}`))
+    pushChunks(level)
+    while (level.length > 1) {
+      level = fusePairs(level)
+      visit++
+      steps.push(stepMarker(`Visit ${visit}`))
+      if (level.length > 1) pushChunks(level, { gloss: false })
+      else steps.push(stepWhole(s))
+    }
+    if (fine.length === 1) {
+      steps.push(stepMarker('Visit 2'))
+      steps.push(stepWhole(s))
+    }
   } else if (key === 'tree') {
     const groups = atomGroups(s, atoms)
     if (groups.length <= 1) {
@@ -468,7 +498,7 @@ const shapeRows = computed(() => {
   return SHAPE_DEFS.map((d) => ({ ...d, steps: composeShape(d.key, s, shapeAtoms.value) }))
 })
 
-const STEP_CLS = { chunk: 'r-target', gloss: 'r-known', whole: 'r-whole', group: 'r-explainer' }
+const STEP_CLS = { chunk: 'r-target', gloss: 'r-known', whole: 'r-whole', group: 'r-explainer', marker: 'r-marker' }
 
 async function playShapeSteps(steps) {
   stop()
@@ -476,6 +506,7 @@ async function playShapeSteps(steps) {
   isPlaying.value = true
   for (const st of steps) {
     if (myToken !== stopToken) break
+    if (st.kind === 'marker') continue
     playingStepKey.value = st.key
     const clips = st.clips.filter(Boolean)
     for (let i = 0; i < clips.length; i++) {
@@ -675,7 +706,11 @@ loadLiveConfig()
                 class="playchip shapechip"
                 :class="[
                   STEP_CLS[st.kind],
-                  { now: playingStepKey === st.key, approx: st.approx, missing: !st.clips.some(Boolean) },
+                  {
+                    now: playingStepKey === st.key,
+                    approx: st.approx,
+                    missing: st.kind !== 'marker' && !st.clips.some(Boolean),
+                  },
                 ]"
                 :title="st.kind + (st.approx ? ' (approximated: concatenated clips)' : '') + ' — ' + st.text"
                 @click="playShapeSteps([st])"
@@ -1092,6 +1127,17 @@ code {
 .r-whole {
   background: rgba(52, 211, 153, 0.14);
   color: var(--accent-2);
+}
+.r-marker {
+  background: transparent;
+  color: var(--faint);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 10px;
+  cursor: default;
+  padding-left: 0;
+  flex-basis: 100%;
 }
 .r-target {
   background: rgba(59, 130, 246, 0.16);
