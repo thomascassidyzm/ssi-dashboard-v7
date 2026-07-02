@@ -191,7 +191,7 @@ async function loadCourse(courseCode) {
     const { data: rows, error: podErr } = await sb
       .from('listening_pod_sentences')
       .select(
-        'id, global_order, speaker, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, glue_to_next, atom_map, sentence_audio_ids',
+        'id, global_order, speaker, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, glue_to_next, atom_map, atom_map_fine, sentence_audio_ids',
       )
       .eq('pod_id', `${courseCode}:pod-0`)
       .order('global_order', { ascending: true })
@@ -327,6 +327,7 @@ function stop() {
 
 const mode = ref('shapes') // 'shapes' | 'arc'
 const glossMode = ref('all') // 'all' | 'long' | 'none'
+const unitsSource = ref('live') // 'live' (atom_map) | 'fine' (draft atom_map_fine)
 const playingStepKey = ref('')
 
 const SHAPE_DEFS = [
@@ -342,10 +343,15 @@ const GAP_BETWEEN_STEPS = 700
 const GAP_AFTER_GLOSS = 500
 const GAP_INTRA_FUSE = 120
 
+// Does ANY line of this pod carry a draft fine map? (gates the units toggle)
+const hasFine = computed(() => sentences.value.some((s) => Array.isArray(s.atom_map_fine) && s.atom_map_fine.length))
+const usingFine = computed(() => unitsSource.value === 'fine' && Array.isArray(selectedSentence.value?.atom_map_fine))
+
 const shapeAtoms = computed(() => {
   const s = selectedSentence.value
   if (!s) return []
-  return resolveAtoms(s.atom_map, glossMap.value, targetClipMap.value)
+  const map = usingFine.value ? s.atom_map_fine : s.atom_map
+  return resolveAtoms(map, glossMap.value, targetClipMap.value)
 })
 
 // One playable step: a chunk / gloss / whole chip. `clips` may hold several
@@ -407,6 +413,8 @@ function fusePairs(chunks) {
 // Split the atom list into prosodic groups at sentence-terminal punctuation
 // (walked off target_text between consecutive atom surfaces) — sound-wave
 // grouping, no grammar.
+const SENTENCE_PUNCT = /[.!?…。！？]/
+
 function atomGroups(s, atoms) {
   const text = s.target_text || ''
   const lower = text.toLowerCase()
@@ -414,11 +422,18 @@ function atomGroups(s, atoms) {
   let cursor = 0
   for (let i = 0; i < atoms.length; i++) {
     const idx = lower.indexOf(atoms[i].targetSurface.toLowerCase(), cursor)
-    if (i > 0 && idx !== -1 && /[.!?…]/.test(text.slice(cursor, idx))) groups.push([])
+    if (i > 0 && idx !== -1 && SENTENCE_PUNCT.test(text.slice(cursor, idx))) groups.push([])
     groups[groups.length - 1].push(atoms[i])
     if (idx !== -1) cursor = idx + atoms[i].targetSurface.length
   }
   return groups.filter((g) => g.length)
+}
+
+// Per-sentence takes when the re-split produced them (else null per group).
+function groupTakes(s, groups) {
+  return Array.isArray(s.sentence_audio_ids) && s.sentence_audio_ids.length === groups.length
+    ? s.sentence_audio_ids
+    : groups.map(() => null)
 }
 
 function composeShape(key, s, atoms) {
@@ -439,31 +454,33 @@ function composeShape(key, s, atoms) {
     steps.push(stepWhole(s))
     pushChunks(fine)
     steps.push(stepWhole(s))
-  } else if (key === 'climb') {
-    // meaning attaches at the finest rung only; fusion carries it upward
-    pushChunks(fine)
-    let level = fine
-    while (level.length > 2) {
-      level = fusePairs(level)
-      if (level.length > 1) pushChunks(level, { gloss: false })
-    }
-    steps.push(stepWhole(s))
-  } else if (key === 'rungs') {
-    // Aran's exposures, made explicit: each marker = a separate VISIT (a later
-    // lap in real delivery) — played here back-to-back for audition only.
-    let level = fine
+  } else if (key === 'climb' || key === 'rungs') {
+    // Aran's fusion ladder, SENTENCE-AWARE: chunks fuse pairwise WITHIN their
+    // sentence — a fused chunk never crosses a sentence wall ("we never split
+    // to pervert a natural punctuation breakage"). A sentence collapsed to one
+    // chunk plays as its real per-sentence take; the turn whole closes the
+    // ladder. 'rungs' = one rung per VISIT (markers); 'climb' = same ladder
+    // compressed into one sitting. Meaning attaches at the finest rung only.
+    const groups = atomGroups(s, atoms)
+    const takes = groupTakes(s, groups)
+    const markers = key === 'rungs'
+    let levels = groups.map((g) => g.map((a) => [a]))
     let visit = 1
-    steps.push(stepMarker(`Visit ${visit}`))
-    pushChunks(level)
-    while (level.length > 1) {
-      level = fusePairs(level)
+    if (markers) steps.push(stepMarker(`Visit ${visit}`))
+    levels.forEach((lvl) => pushChunks(lvl))
+    while (levels.some((l) => l.length > 1)) {
+      levels = levels.map((l) => (l.length > 1 ? fusePairs(l) : l))
       visit++
-      steps.push(stepMarker(`Visit ${visit}`))
-      if (level.length > 1) pushChunks(level, { gloss: false })
-      else steps.push(stepWhole(s))
+      if (markers) steps.push(stepMarker(`Visit ${visit}`))
+      levels.forEach((lvl, gi) => {
+        if (lvl.length === 1) steps.push(stepGroupTake(groups[gi], takes[gi]))
+        else pushChunks(lvl, { gloss: false })
+      })
     }
-    if (fine.length === 1) {
-      steps.push(stepMarker('Visit 2'))
+    // Multi-sentence turns close on the whole turn; a single-sentence line's
+    // last rung already IS the whole. A single-unit line still earns its whole.
+    if (groups.length > 1 || atoms.length === 1) {
+      if (markers) steps.push(stepMarker(`Visit ${visit + 1}`))
       steps.push(stepWhole(s))
     }
   } else if (key === 'tree') {
@@ -473,11 +490,7 @@ function composeShape(key, s, atoms) {
       pushChunks(fine)
       steps.push(stepWhole(s))
     } else {
-      // real per-sentence takes when the re-split produced them; else approx
-      const takes =
-        Array.isArray(s.sentence_audio_ids) && s.sentence_audio_ids.length === groups.length
-          ? s.sentence_audio_ids
-          : groups.map(() => null)
+      const takes = groupTakes(s, groups)
       groups.forEach((g, i) => {
         steps.push(stepGroupTake(g, takes[i]))
         pushChunks(g.map((a) => [a]))
@@ -578,6 +591,9 @@ loadLiveConfig()
           <div class="knw">{{ selectedSentence.known_text }}</div>
           <div class="meta">
             {{ atomCount }} atom{{ atomCount === 1 ? '' : 's' }}
+            <span v-if="Array.isArray(selectedSentence.atom_map_fine)" class="muted">
+              · {{ selectedSentence.atom_map_fine.length }} draft fine units</span
+            >
             <span v-if="!selectedSentence.explainer_audio_id" class="muted"> · no explainer clip</span>
             <span v-if="selectedSentence.glue_to_next" class="muted"> · glues on</span>
           </div>
@@ -677,10 +693,24 @@ loadLiveConfig()
         <!-- VISIT SHAPES — candidate Stage-0 visit compositions, same line, by ear -->
         <template v-else>
           <p class="shape-note">
-            Candidate shapes for ONE Stage-0 visit — same line, same clips, different composition.
-            Fused chunks are approximated by butting atom clips together until the slow gapped take
-            (Take&nbsp;G) exists: real structure and rhythm, not final prosody. Wholes are the real take.
+            <template v-if="usingFine">
+              DRAFT fine units (Aran granularity) — judge the CUTS. Text preview only: chunk audio
+              arrives with Take&nbsp;G, cut at exactly these seams. Wholes still play the real take.
+            </template>
+            <template v-else>
+              Candidate shapes for ONE Stage-0 visit — same line, same clips, different composition.
+              Fused chunks are approximated by butting atom clips together until the slow gapped take
+              (Take&nbsp;G) exists: real structure and rhythm, not final prosody. Wholes are the real take.
+            </template>
           </p>
+
+          <div v-if="hasFine" class="gloss-dial">
+            <span class="lbl small">Units:</span>
+            <button :class="{ on: unitsSource === 'live' }" @click="unitsSource = 'live'">live atoms</button>
+            <button :class="{ on: unitsSource === 'fine' }" @click="unitsSource = 'fine'">
+              draft fine (Aran)
+            </button>
+          </div>
 
           <div class="gloss-dial">
             <span class="lbl small">Meaning ('means') plays:</span>
@@ -709,7 +739,7 @@ loadLiveConfig()
                   {
                     now: playingStepKey === st.key,
                     approx: st.approx,
-                    missing: st.kind !== 'marker' && !st.clips.some(Boolean),
+                    missing: st.kind !== 'marker' && !usingFine && !st.clips.some(Boolean),
                   },
                 ]"
                 :title="st.kind + (st.approx ? ' (approximated: concatenated clips)' : '') + ' — ' + st.text"
