@@ -326,16 +326,23 @@ function stop() {
 // real structure and rhythm, not final prosody. Whole plays are the real take.
 
 const mode = ref('shapes') // 'shapes' | 'arc'
-const glossMode = ref('all') // 'all' | 'long' | 'none'
+// 'means' retired from the ladder (Tom 2026-07-02): Aran's ladder always plays
+// plain unit translations at V1 and nothing after; this dial now only affects
+// the other (parked) shapes, and defaults off.
+const glossMode = ref('none') // 'all' | 'long' | 'none'
 const unitsSource = ref('live') // 'live' (atom_map) | 'fine' (draft atom_map_fine)
 const playingStepKey = ref('')
 
 const SHAPE_DEFS = [
+  {
+    key: 'rungs',
+    name: "Aran's ladder",
+    desc: 'Per SENTENCE: units + meaning → chained overlapping windows → whole; short sentences repeat their whole while long ones climb. The turn closes once as the immersion flow.',
+  },
   { key: 'parts', name: 'Pure parts', desc: 'Finest chunks only — no whole, no framing.' },
   { key: 'parts-whole', name: 'Parts → whole', desc: 'Build up, then the natural take lands.' },
   { key: 'wpw', name: 'Whole–parts–whole', desc: 'The mystery, the breakdown, the resolution.' },
   { key: 'climb', name: 'Compressed climb', desc: 'The full fusion ladder in one sitting: atoms → pairs → … → whole.' },
-  { key: 'rungs', name: "Aran's ladder", desc: 'One rung per visit: visit 1 finest chunks, each next visit fuses pairwise, final visit = the whole.' },
   { key: 'tree', name: 'Tree walk', desc: 'Each prosodic group opened up in turn, then the whole.' },
 ]
 
@@ -376,11 +383,12 @@ function stepWhole(s) {
   return { kind: 'whole', text: s.target_text, clips: [s.target_audio_id], approx: false }
 }
 function stepGroupTake(atoms, takeId) {
+  const takeClips = takeId ? (Array.isArray(takeId) ? takeId : [takeId]) : null
   return {
     kind: 'group',
     text: atoms.map((a) => a.targetSurface).join(' '),
-    clips: takeId ? [takeId] : atoms.map((a) => a.targetClipId),
-    approx: !takeId,
+    clips: takeClips || atoms.map((a) => a.targetClipId),
+    approx: !takeClips,
   }
 }
 
@@ -454,35 +462,89 @@ function composeShape(key, s, atoms) {
     steps.push(stepWhole(s))
     pushChunks(fine)
     steps.push(stepWhole(s))
-  } else if (key === 'climb' || key === 'rungs') {
-    // Aran's fusion ladder, SENTENCE-AWARE: chunks fuse pairwise WITHIN their
-    // sentence — a fused chunk never crosses a sentence wall ("we never split
-    // to pervert a natural punctuation breakage"). A sentence collapsed to one
-    // chunk plays as its real per-sentence take; the turn whole closes the
-    // ladder. 'rungs' = one rung per VISIT (markers); 'climb' = same ladder
-    // compressed into one sitting. Meaning attaches at the finest rung only.
+  } else if (key === 'rungs') {
+    // ARAN'S DRILL LADDER (Tom 2026-07-02): the DRILL unit is the SENTENCE —
+    // a leading one-unit exclamation ("Ciao!") glues onto the sentence that
+    // follows. Each sentence climbs:
+    //   V1  its units in order, each followed by its plain translation
+    //       (the 'means' formula is retired — meaning is just the gloss)
+    //   V2  chained OVERLAPPING windows (~half the sentence each, sharing an
+    //       edge unit) — no translation; skipped when the sentence is short
+    //   V3  the whole sentence (real per-sentence take)
+    // Short sentences REPEAT their whole while longer ones are still climbing
+    // (all sentences of a turn ride the same visit). Multi-sentence turns
+    // close ONCE with the whole-turn take — the immersion flow, not a drill.
+    const rawGroups = atomGroups(s, atoms)
+    const rawTakes = groupTakes(s, rawGroups)
+    const groups = []
+    const takes = []
+    let carry = []
+    rawGroups.forEach((g, i) => {
+      if (g.length === 1 && i < rawGroups.length - 1) {
+        carry.push(...g)
+        return
+      }
+      groups.push([...carry, ...g])
+      takes.push(carry.length ? null : rawTakes[i])
+      carry = []
+    })
+    if (carry.length) {
+      if (groups.length) {
+        groups[groups.length - 1].push(...carry)
+        takes[takes.length - 1] = null
+      } else {
+        groups.push(carry)
+        takes.push(null)
+      }
+    }
+
+    const ladders = groups.map((g, gi) => {
+      const visits = []
+      const v1 = []
+      g.forEach((u) => {
+        v1.push(stepChunk([u]))
+        if (u.gloss) v1.push(stepGloss([u]))
+      })
+      visits.push(v1)
+      if (g.length > 3) {
+        const width = Math.ceil(g.length / 2)
+        const lvl = []
+        for (let start = 0; ; start += width - 1) {
+          const end = Math.min(start + width - 1, g.length - 1)
+          lvl.push(stepChunk(g.slice(start, end + 1)))
+          if (end >= g.length - 1) break
+        }
+        visits.push(lvl)
+      }
+      visits.push([stepGroupTake(g, takes[gi])])
+      return visits
+    })
+    const maxVisits = Math.max(...ladders.map((l) => l.length))
+    for (let v = 0; v < maxVisits; v++) {
+      steps.push(stepMarker(`Visit ${v + 1}`))
+      ladders.forEach((l) => {
+        // a sentence that has topped out repeats its whole on later visits
+        steps.push(...l[Math.min(v, l.length - 1)].map((st) => ({ ...st })))
+      })
+    }
+    if (groups.length > 1) {
+      steps.push(stepMarker('Immersion flow'))
+      steps.push(stepWhole(s))
+    }
+  } else if (key === 'climb') {
+    // Pairwise fusion within sentence walls, compressed into one sitting.
     const groups = atomGroups(s, atoms)
     const takes = groupTakes(s, groups)
-    const markers = key === 'rungs'
     let levels = groups.map((g) => g.map((a) => [a]))
-    let visit = 1
-    if (markers) steps.push(stepMarker(`Visit ${visit}`))
     levels.forEach((lvl) => pushChunks(lvl))
     while (levels.some((l) => l.length > 1)) {
       levels = levels.map((l) => (l.length > 1 ? fusePairs(l) : l))
-      visit++
-      if (markers) steps.push(stepMarker(`Visit ${visit}`))
       levels.forEach((lvl, gi) => {
         if (lvl.length === 1) steps.push(stepGroupTake(groups[gi], takes[gi]))
         else pushChunks(lvl, { gloss: false })
       })
     }
-    // Multi-sentence turns close on the whole turn; a single-sentence line's
-    // last rung already IS the whole. A single-unit line still earns its whole.
-    if (groups.length > 1 || atoms.length === 1) {
-      if (markers) steps.push(stepMarker(`Visit ${visit + 1}`))
-      steps.push(stepWhole(s))
-    }
+    if (groups.length > 1 || atoms.length === 1) steps.push(stepWhole(s))
   } else if (key === 'tree') {
     const groups = atomGroups(s, atoms)
     if (groups.length <= 1) {
