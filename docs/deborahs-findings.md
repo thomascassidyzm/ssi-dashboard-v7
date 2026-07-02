@@ -141,6 +141,16 @@ Deborah speaks Spanish, German, French, and English. For these courses her findi
 | 2026-04-10 | (course-wide) | capitalisation | Still mixed capital/lowercase starts | 🚧 | |
 | 2026-04-16 | S33, S38 | grammar_incomplete | "llevas/llevo aprendiendo" without time period | 🚧 | Flagged build team |
 | 2026-04-16 | ~156 phrases | vocab_ordering | Combined word+chunk scan, 156 Cat A | ✅ | 155 deleted |
+| 2026-06-19 | S143 R343 | vocab_ordering | `ya` (R346) used early; known says "now" anyway | ✅ | Fixed → `ahora` (×2) |
+| 2026-06-19 | S144 R345 | grammar_incomplete | LEGO `desperté` not reflexive; rest of course uses `despertarse` | ❌ | Fixed → `me desperté` (LEGO + 18 phrases) |
+| 2026-06-19 | S173 R413 | punctuation | LEGO target `gracias.` has stray full stop | ✅ | Fixed → `gracias` (audio kept) |
+| 2026-06-19 | S137/147/152/153/161 R330–387 | vocab_ordering | forward-ref USE/BUILD using `perfecto`/`nervioso`/`si hubiera sabido`/`de la misma manera`/`domingo` before introduced | ✅ | 23 phrases deleted (unfixable w/ available vocab) |
+| 2026-06-19 | S148 R356, S169 R404 | vocab_ordering | `pude`/`quieres que haga` 1 round early — but next round already covers them (S148L2/S169L2) | ✅ | 9 redundant forward-refs deleted (incl. a verbatim dup) |
+| 2026-06-19 | S126–137 (items 1–8,11–16) | vocab_ordering | `forma`/`que estés`/`en mi cabeza`/`puedes`/`preguntarle` etc. | ✅ | Already fixed in prior pass (verified each only in own LEGO) |
+| 2026-06-19 | S173 R414/415 | gender_mismatch | F voice (Elvira) says masculine `solo` (should be `sola`) | ❌ | Deferred — full gender-prep pass later (`course_gender_expansions` empty for spa); exposing masc OK for now (Kai) |
+| 2026-06-19 | S133 R318/319, S134 | grammar_incomplete | "you together" needs plural `trabajáis juntos`/`tenéis` (vosotros) — not yet taught | ❌ | Parked — curriculum call + spa_mx variant (Kai to review) |
+
+> **Systemic note (2026-06-19):** spa_for_eng's gender forms live in the **`course_gender_expansions`** table (expanded per-voice at TTS time), NOT in phrase text. spa has **0 rows** there (fra=852, ita=267) — the gender pass was dropped in the Feb–Jun rebuild to 668 seeds. A full gender-prep (Haiku) pass + `target1` regen is the proper fix; deferred per Kai.
 
 ## Mexican Spanish for English Speakers (spa_mx_for_eng)
 
@@ -314,3 +324,6 @@ Deborah speaks Spanish, German, French, and English. For these courses her findi
 *(Populated after Step 5 of the scanner improvement plan — run each mechanical check against this catalog, measure precision/recall per category.)*
 
 TBD
+
+## 2026-07-02 — Kai-relayed batch (16 items, S0038–S0182)
+Applied same-day: 26 phrase deletions (pre-debut previews with healthy baskets + 2 never-introduced imperfect subjunctives + 3 broken rows), 6 rewords/retargets (S0133 agreement mismatches, S0169 lo-que-hago indicative, 2 garbled glosses), 2 build inserts (S0182 mis-llaves basket gap). Gender items (cansada, sola) confirmed covered by the new course_gender_expansions rows — female voice resolves at the xAI regen; presentation-drift item (S0038 "about") also self-heals at regen. S0071L02 (dejar que) left with 0 USE — needs a methodology call (imperfect subjunctive unavoidable in past-matrix contexts before its R178 debut). Pattern notes: Deborah's R##/Build-## ordinals no longer match DB ordinals after today's renumbering — matched everything by content; her "one-round-early" class is within-seed preview, policy = delete when basket keeps ≥7 USE. Full log: temp/spa-deborah-2026-07-02/log.md.
