@@ -326,24 +326,18 @@ function stop() {
 // real structure and rhythm, not final prosody. Whole plays are the real take.
 
 const mode = ref('shapes') // 'shapes' | 'arc'
-// 'means' retired from the ladder (Tom 2026-07-02): Aran's ladder always plays
-// plain unit translations at V1 and nothing after; this dial now only affects
-// the other (parked) shapes, and defaults off.
-const glossMode = ref('none') // 'all' | 'long' | 'none'
-const unitsSource = ref('live') // 'live' (atom_map) | 'fine' (draft atom_map_fine)
+const unitsSource = ref('fine') // 'fine' (draft atom_map_fine, default) | 'live' (atom_map)
 const playingStepKey = ref('')
 
+// The exploration shapes (pure parts / parts→whole / whole–parts–whole /
+// compressed climb / tree walk) are RETIRED — Tom locked Aran's ladder on
+// 2026-07-02. They live in git history (up to fe6fe72c) if ever needed.
 const SHAPE_DEFS = [
   {
     key: 'rungs',
     name: "Aran's ladder",
     desc: 'Per SENTENCE: units + meaning → chained overlapping windows → whole; short sentences repeat their whole while long ones climb. The turn closes once as the immersion flow.',
   },
-  { key: 'parts', name: 'Pure parts', desc: 'Finest chunks only — no whole, no framing.' },
-  { key: 'parts-whole', name: 'Parts → whole', desc: 'Build up, then the natural take lands.' },
-  { key: 'wpw', name: 'Whole–parts–whole', desc: 'The mystery, the breakdown, the resolution.' },
-  { key: 'climb', name: 'Compressed climb', desc: 'The full fusion ladder in one sitting: atoms → pairs → … → whole.' },
-  { key: 'tree', name: 'Tree walk', desc: 'Each prosodic group opened up in turn, then the whole.' },
 ]
 
 const GAP_BETWEEN_STEPS = 700
@@ -396,28 +390,6 @@ function stepMarker(text) {
   return { kind: 'marker', text, clips: [], approx: false }
 }
 
-function wantGloss(atoms) {
-  if (glossMode.value === 'none') return false
-  if (glossMode.value === 'long') {
-    const t = atoms.map((a) => a.targetSurface).join(' ')
-    // "long" = multi-word — or, for space-free scripts (CJK), 5+ CJK characters
-    return (
-      t.includes(' ') ||
-      t.replace(/[^぀-ヿ㐀-䶿一-鿿가-힯]/g, '').length >= 5
-    )
-  }
-  return true
-}
-
-// Pairwise left-to-right fusion; an odd tail survives unfused (Aran's 3→2).
-function fusePairs(chunks) {
-  const out = []
-  for (let i = 0; i < chunks.length; i += 2) {
-    out.push(i + 1 < chunks.length ? chunks[i].concat(chunks[i + 1]) : chunks[i])
-  }
-  return out
-}
-
 // Split the atom list into prosodic groups at sentence-terminal punctuation
 // (walked off target_text between consecutive atom surfaces) — sound-wave
 // grouping, no grammar.
@@ -446,23 +418,7 @@ function groupTakes(s, groups) {
 
 function composeShape(key, s, atoms) {
   const steps = []
-  const fine = atoms.map((a) => [a])
-  const pushChunks = (chunks, { gloss = true } = {}) => {
-    for (const c of chunks) {
-      steps.push(stepChunk(c))
-      if (gloss && wantGloss(c)) steps.push(stepGloss(c))
-    }
-  }
-  if (key === 'parts') {
-    pushChunks(fine)
-  } else if (key === 'parts-whole') {
-    pushChunks(fine)
-    steps.push(stepWhole(s))
-  } else if (key === 'wpw') {
-    steps.push(stepWhole(s))
-    pushChunks(fine)
-    steps.push(stepWhole(s))
-  } else if (key === 'rungs') {
+  if (key === 'rungs') {
     // ARAN'S DRILL LADDER (Tom 2026-07-02): the DRILL unit is the SENTENCE —
     // a leading one-unit exclamation ("Ciao!") glues onto the sentence that
     // follows. Each sentence climbs:
@@ -529,35 +485,6 @@ function composeShape(key, s, atoms) {
     }
     if (groups.length > 1) {
       steps.push(stepMarker('Immersion flow'))
-      steps.push(stepWhole(s))
-    }
-  } else if (key === 'climb') {
-    // Pairwise fusion within sentence walls, compressed into one sitting.
-    const groups = atomGroups(s, atoms)
-    const takes = groupTakes(s, groups)
-    let levels = groups.map((g) => g.map((a) => [a]))
-    levels.forEach((lvl) => pushChunks(lvl))
-    while (levels.some((l) => l.length > 1)) {
-      levels = levels.map((l) => (l.length > 1 ? fusePairs(l) : l))
-      levels.forEach((lvl, gi) => {
-        if (lvl.length === 1) steps.push(stepGroupTake(groups[gi], takes[gi]))
-        else pushChunks(lvl, { gloss: false })
-      })
-    }
-    if (groups.length > 1 || atoms.length === 1) steps.push(stepWhole(s))
-  } else if (key === 'tree') {
-    const groups = atomGroups(s, atoms)
-    if (groups.length <= 1) {
-      steps.push(stepWhole(s))
-      pushChunks(fine)
-      steps.push(stepWhole(s))
-    } else {
-      const takes = groupTakes(s, groups)
-      groups.forEach((g, i) => {
-        steps.push(stepGroupTake(g, takes[i]))
-        pushChunks(g.map((a) => [a]))
-        steps.push(stepGroupTake(g, takes[i]))
-      })
       steps.push(stepWhole(s))
     }
   }
@@ -955,7 +882,7 @@ loadLiveConfig()
           </div>
         </template>
 
-        <!-- VISIT SHAPES — candidate Stage-0 visit compositions, same line, by ear -->
+        <!-- ARAN'S LADDER — the locked Stage-0 drill model, per sentence -->
         <template v-else>
           <p class="shape-note">
             <template v-if="usingFine">
@@ -963,29 +890,21 @@ loadLiveConfig()
               arrives with Take&nbsp;G, cut at exactly these seams. Wholes still play the real take.
             </template>
             <template v-else>
-              Candidate shapes for ONE Stage-0 visit — same line, same clips, different composition.
-              Fused chunks are approximated by butting atom clips together until the slow gapped take
-              (Take&nbsp;G) exists: real structure and rhythm, not final prosody. Wholes are the real take.
+              This course has no fine-unit draft yet — showing the LIVE atom_map (coarser,
+              intention-level cuts). Run <code>tools/breakdown-fine.cjs</code> to author fine units.
             </template>
           </p>
 
           <div v-if="hasFine" class="gloss-dial">
             <span class="lbl small">Units:</span>
-            <button :class="{ on: unitsSource === 'live' }" @click="unitsSource = 'live'">live atoms</button>
             <button :class="{ on: unitsSource === 'fine' }" @click="unitsSource = 'fine'">
               draft fine (Aran)
             </button>
-          </div>
-
-          <div class="gloss-dial">
-            <span class="lbl small">Meaning ('means') plays:</span>
-            <button :class="{ on: glossMode === 'all' }" @click="glossMode = 'all'">every chunk</button>
-            <button :class="{ on: glossMode === 'long' }" @click="glossMode = 'long'">long chunks only</button>
-            <button :class="{ on: glossMode === 'none' }" @click="glossMode = 'none'">never</button>
+            <button :class="{ on: unitsSource === 'live' }" @click="unitsSource = 'live'">live atoms</button>
           </div>
 
           <div v-if="!shapeRows.length" class="empty">
-            This line has no atom_map — pick a line with atoms to audition visit shapes.
+            This line has no atom_map — pick a line with atoms to audition the ladder.
           </div>
 
           <div v-for="row in shapeRows" :key="row.key" class="shape-row">
