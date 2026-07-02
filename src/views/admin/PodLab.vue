@@ -513,6 +513,168 @@ const shapeRows = computed(() => {
 
 const STEP_CLS = { chunk: 'r-target', gloss: 'r-known', whole: 'r-whole', group: 'r-explainer', marker: 'r-marker' }
 
+// ── SEAM EDITOR — drag the cuts of a draft fine map ─────────────────────────
+// Every token boundary is a clickable handle: click to cut, click to merge.
+// Punctuation seams are locked (mandatory — Take G always breathes there).
+// Saves ONLY atom_map_fine via /api/pod-fine-map (auth'd, tiling-verified).
+const editorTokens = ref([])
+const editorSeams = ref(new Set())
+const editorUnits = ref([])
+const seamDirty = ref(false)
+const seamSaving = ref(false)
+const seamMsg = ref('')
+
+const CJK_RE = /[぀-ヿ㐀-䶿一-鿿가-힯]/
+const HARD_PUNCT = /[.!?。！？…，,;；、:：]/
+const alnumLocal = (t) => (t || '').toLowerCase().replace(/[^\p{L}\p{N}\p{M}]/gu, '')
+const slugify = (t) =>
+  alnumLocal(t) ? (t || '').toLowerCase().replace(/[.,!?;:¿¡"'’，。？！、]/g, '').trim().replace(/\s+/g, '-').replace(/[^\p{L}\p{N}-]/gu, '').slice(0, 64) : ''
+
+// Tokenize target_text into glossable tokens: each CJK char is one token, a
+// latin word-run is one token. punctAfter marks a locked seam after the token.
+function tokenizeTarget(text) {
+  const out = []
+  let i = 0
+  const isWord = (c) => /[\p{L}\p{N}\p{M}'’-]/u.test(c)
+  while (i < text.length) {
+    const c = text[i]
+    if (CJK_RE.test(c)) {
+      out.push({ text: c, punctAfter: false })
+      i++
+    } else if (isWord(c)) {
+      let j = i + 1
+      while (j < text.length && isWord(text[j]) && !CJK_RE.test(text[j])) j++
+      out.push({ text: text.slice(i, j), punctAfter: false })
+      i = j
+    } else {
+      if (out.length && HARD_PUNCT.test(c)) out[out.length - 1].punctAfter = true
+      i++
+    }
+  }
+  return out
+}
+
+function joinTokens(tokens, start, end) {
+  let out = ''
+  for (let i = start; i <= end; i++) {
+    if (i > start) {
+      const prev = tokens[i - 1].text
+      const cur = tokens[i].text
+      if (!CJK_RE.test(prev[prev.length - 1]) && !CJK_RE.test(cur[0])) out += ' '
+    }
+    out += tokens[i].text
+  }
+  return out
+}
+
+function initSeamEditor() {
+  seamMsg.value = ''
+  seamDirty.value = false
+  editorTokens.value = []
+  editorSeams.value = new Set()
+  editorUnits.value = []
+  const s = selectedSentence.value
+  if (!s || !usingFine.value) return
+  const tokens = tokenizeTarget(s.target_text || '')
+  const units = []
+  const seams = new Set()
+  let ti = 0
+  for (const u of s.atom_map_fine) {
+    const target = alnumLocal(u.target_surface)
+    if (!target) continue
+    const start = ti
+    let acc = ''
+    while (ti < tokens.length && acc.length < target.length) {
+      acc += alnumLocal(tokens[ti].text)
+      ti++
+    }
+    if (acc !== target) {
+      seamMsg.value = 'seam editor unavailable — stored units do not walk this text'
+      return
+    }
+    units.push({ start, end: ti - 1, surface: u.target_surface, gloss: u.gloss || '', kind: u.kind || 'atom' })
+    if (ti < tokens.length) seams.add(ti - 1)
+  }
+  if (ti !== tokens.length) {
+    seamMsg.value = 'seam editor unavailable — stored units do not cover this text'
+    return
+  }
+  editorTokens.value = tokens
+  editorSeams.value = seams
+  editorUnits.value = units
+}
+
+function deriveUnits(prevUnits) {
+  const tokens = editorTokens.value
+  const ranges = []
+  let start = 0
+  for (let i = 0; i < tokens.length; i++) {
+    if (i === tokens.length - 1 || tokens[i].punctAfter || editorSeams.value.has(i)) {
+      ranges.push({ start, end: i })
+      start = i + 1
+    }
+  }
+  return ranges.map((r) => {
+    const surface = joinTokens(tokens, r.start, r.end)
+    const exact = (prevUnits || []).find((u) => u.start === r.start && u.end === r.end)
+    if (exact) return { ...r, surface, gloss: exact.gloss, kind: exact.kind }
+    // a merge inherits its parts' glosses joined; a split starts blank
+    const contained = (prevUnits || []).filter((u) => u.start >= r.start && u.end <= r.end)
+    const gloss = contained.length > 1 ? contained.map((u) => u.gloss).filter(Boolean).join(' ') : ''
+    return { ...r, surface, gloss, kind: 'atom' }
+  })
+}
+
+function toggleSeam(i) {
+  if (editorTokens.value[i]?.punctAfter) return
+  const seams = new Set(editorSeams.value)
+  if (seams.has(i)) seams.delete(i)
+  else seams.add(i)
+  const prev = editorUnits.value
+  editorSeams.value = seams
+  editorUnits.value = deriveUnits(prev)
+  seamDirty.value = true
+}
+
+async function saveFineMap() {
+  const s = selectedSentence.value
+  if (!s) return
+  seamSaving.value = true
+  seamMsg.value = ''
+  try {
+    const sb = await import('../../services/supabase').then((m) => m.supabase)
+    const { data: { session } } = await sb.auth.getSession()
+    if (!session) throw new Error('no session — sign in')
+    const map = editorUnits.value.map((u) => {
+      const gloss = (u.gloss || '').trim()
+      return {
+        kind: gloss ? 'atom' : 'passthrough',
+        gloss: gloss || null,
+        lego_key: gloss ? `s${s.global_order}-${slugify(u.surface)}` : null,
+        target_surface: u.surface,
+        target_start_ms: null,
+        target_end_ms: null,
+      }
+    })
+    const res = await fetch('/api/pod-fine-map', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.access_token}` },
+      body: JSON.stringify({ id: s.id, atom_map_fine: map }),
+    })
+    const body = await res.json().catch(() => ({}))
+    if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)
+    s.atom_map_fine = map
+    seamDirty.value = false
+    seamMsg.value = `Saved ✓ ${map.length} units`
+  } catch (e) {
+    seamMsg.value = `Save failed: ${e.message}`
+  } finally {
+    seamSaving.value = false
+  }
+}
+
+watch([selectedIdx, unitsSource, sentences], initSeamEditor)
+
 async function playShapeSteps(steps) {
   stop()
   const myToken = ++stopToken
@@ -597,6 +759,47 @@ loadLiveConfig()
             <span v-if="!selectedSentence.explainer_audio_id" class="muted"> · no explainer clip</span>
             <span v-if="selectedSentence.glue_to_next" class="muted"> · glues on</span>
           </div>
+        </div>
+
+        <!-- SEAM EDITOR — reshape the draft cuts by hand -->
+        <div v-if="mode === 'shapes' && usingFine" class="seam-editor">
+          <div class="cfg-head">
+            <span class="lbl">Seam editor</span>
+            <button class="save-seams" :disabled="!seamDirty || seamSaving" @click="saveFineMap">
+              {{ seamSaving ? 'Saving…' : 'Save cuts' }}
+            </button>
+          </div>
+          <p class="note">
+            Click a gap to cut or merge — <strong>·</strong> open, <strong>|</strong> seam,
+            <strong>‖</strong> punctuation (always a seam). Merges join their glosses; a split
+            starts blank — type the gloss. Saves the DRAFT map only.
+          </p>
+          <div v-if="editorTokens.length" class="seam-line">
+            <template v-for="(t, i) in editorTokens" :key="i">
+              <span class="tok">{{ t.text }}</span>
+              <button
+                v-if="i < editorTokens.length - 1"
+                class="seam"
+                :class="{ on: editorSeams.has(i) && !t.punctAfter, locked: t.punctAfter }"
+                :title="t.punctAfter ? 'punctuation — always a seam' : editorSeams.has(i) ? 'merge (remove seam)' : 'cut here'"
+                @click="toggleSeam(i)"
+              >
+                {{ t.punctAfter ? '‖' : editorSeams.has(i) ? '|' : '·' }}
+              </button>
+            </template>
+          </div>
+          <div v-if="editorTokens.length" class="unit-glosses">
+            <div v-for="(u, i) in editorUnits" :key="u.start + ':' + u.end" class="unit-row">
+              <span class="unit-surface">{{ u.surface }}</span>
+              <input
+                v-model="u.gloss"
+                class="gloss-input"
+                placeholder="gloss…"
+                @input="seamDirty = true"
+              />
+            </div>
+          </div>
+          <span v-if="seamMsg" class="chip" :class="{ err: seamMsg.startsWith('Save failed') || seamMsg.startsWith('seam editor unavailable') }">{{ seamMsg }}</span>
         </div>
 
         <div v-if="mode === 'arc'" class="config">
@@ -1168,6 +1371,93 @@ code {
   cursor: default;
   padding-left: 0;
   flex-basis: 100%;
+}
+.seam-editor {
+  border-top: 1px solid var(--line);
+  margin-top: 4px;
+  padding-top: 12px;
+}
+.save-seams {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--accent-2);
+  color: var(--accent-2);
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+}
+.save-seams:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.seam-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  row-gap: 8px;
+  background: var(--surface-2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.seam-line .tok {
+  padding: 0 1px;
+}
+.seam {
+  min-width: 16px;
+  padding: 0 2px;
+  border: none;
+  background: transparent;
+  color: var(--faint);
+  font-size: 15px;
+  cursor: pointer;
+  line-height: 1;
+}
+.seam:hover {
+  color: var(--accent-2);
+}
+.seam.on {
+  color: var(--accent-2);
+  font-weight: 700;
+}
+.seam.locked {
+  color: var(--muted);
+  cursor: default;
+}
+.unit-glosses {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.unit-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.unit-surface {
+  min-width: 40%;
+  max-width: 55%;
+  font-size: 13px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gloss-input {
+  flex: 1;
+  font-size: 12px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--canvas);
+  color: var(--ink);
+}
+.gloss-input::placeholder {
+  color: var(--faint);
 }
 .r-target {
   background: rgba(59, 130, 246, 0.16);
