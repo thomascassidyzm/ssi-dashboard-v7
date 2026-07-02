@@ -22,7 +22,7 @@ import CoursePicker from '../../components/CoursePicker.vue'
 // Vendored VERBATIM from @ssi/core/pods (the engine the learner's main flow
 // runs) — see src/lib/podEngine + tools/sync-pod-engine.sh. Vendored, not
 // cross-repo-imported, because Popty's Vercel build is single-repo.
-import { composeSentenceArc, loadStage0ClipMaps, DEFAULT_STAGE0 } from '../../lib/podEngine'
+import { composeSentenceArc, loadStage0ClipMaps, DEFAULT_STAGE0, resolveAtoms } from '../../lib/podEngine'
 
 // ── audio (the deployed learning-app proxy; popty.app doesn't serve /api/audio) ──
 const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
@@ -191,7 +191,7 @@ async function loadCourse(courseCode) {
     const { data: rows, error: podErr } = await sb
       .from('listening_pod_sentences')
       .select(
-        'id, global_order, speaker, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, glue_to_next, atom_map',
+        'id, global_order, speaker, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, glue_to_next, atom_map, sentence_audio_ids',
       )
       .eq('pod_id', `${courseCode}:pod-0`)
       .order('global_order', { ascending: true })
@@ -311,6 +311,185 @@ function stop() {
   }
   isPlaying.value = false
   playingIdx.value = -1
+  playingStepKey.value = ''
+}
+
+// ── VISIT SHAPES — Stage-0 exploration (2026-07-02) ─────────────────────────
+// Candidate compositions for what ONE Stage-0 visit sounds like, side by side
+// on the same line, so the design is chosen by ear rather than argument. This
+// is deliberately audition-only UI — no candidate is wired into the learner
+// engine; the composer in @ssi/core/pods is rebuilt only once a shape wins.
+//
+// AUDIO HONESTY: the model's fused chunks want Take G — a slower whole take
+// with TTS-punctuation gaps at unit boundaries, sliced per rung. Take G isn't
+// rendered yet, so fused chunks here butt the constituent atom clips together:
+// real structure and rhythm, not final prosody. Whole plays are the real take.
+
+const mode = ref('shapes') // 'shapes' | 'arc'
+const glossMode = ref('all') // 'all' | 'long' | 'none'
+const playingStepKey = ref('')
+
+const SHAPE_DEFS = [
+  { key: 'parts', name: 'Pure parts', desc: 'Finest chunks only — no whole, no framing.' },
+  { key: 'parts-whole', name: 'Parts → whole', desc: 'Build up, then the natural take lands.' },
+  { key: 'wpw', name: 'Whole–parts–whole', desc: 'The mystery, the breakdown, the resolution.' },
+  { key: 'climb', name: 'Compressed climb', desc: 'The full fusion ladder in one sitting: atoms → pairs → … → whole.' },
+  { key: 'tree', name: 'Tree walk', desc: 'Each prosodic group opened up in turn, then the whole.' },
+]
+
+const GAP_BETWEEN_STEPS = 700
+const GAP_AFTER_GLOSS = 500
+const GAP_INTRA_FUSE = 120
+
+const shapeAtoms = computed(() => {
+  const s = selectedSentence.value
+  if (!s) return []
+  return resolveAtoms(s.atom_map, glossMap.value, targetClipMap.value)
+})
+
+// One playable step: a chunk / gloss / whole chip. `clips` may hold several
+// ids (a fused chunk approximated by consecutive atom clips → approx: true).
+function stepChunk(atoms) {
+  return {
+    kind: 'chunk',
+    text: atoms.map((a) => a.targetSurface).join(' '),
+    clips: atoms.map((a) => a.targetClipId),
+    approx: atoms.length > 1,
+  }
+}
+function stepGloss(atoms) {
+  return {
+    kind: 'gloss',
+    text: atoms.map((a) => a.gloss).join(' · '),
+    clips: atoms.map((a) => a.meansGlossClipId),
+    approx: atoms.length > 1,
+  }
+}
+function stepWhole(s) {
+  return { kind: 'whole', text: s.target_text, clips: [s.target_audio_id], approx: false }
+}
+function stepGroupTake(atoms, takeId) {
+  return {
+    kind: 'group',
+    text: atoms.map((a) => a.targetSurface).join(' '),
+    clips: takeId ? [takeId] : atoms.map((a) => a.targetClipId),
+    approx: !takeId,
+  }
+}
+
+function wantGloss(atoms) {
+  if (glossMode.value === 'none') return false
+  if (glossMode.value === 'long') return atoms.map((a) => a.targetSurface).join(' ').includes(' ')
+  return true
+}
+
+// Pairwise left-to-right fusion; an odd tail survives unfused (Aran's 3→2).
+function fusePairs(chunks) {
+  const out = []
+  for (let i = 0; i < chunks.length; i += 2) {
+    out.push(i + 1 < chunks.length ? chunks[i].concat(chunks[i + 1]) : chunks[i])
+  }
+  return out
+}
+
+// Split the atom list into prosodic groups at sentence-terminal punctuation
+// (walked off target_text between consecutive atom surfaces) — sound-wave
+// grouping, no grammar.
+function atomGroups(s, atoms) {
+  const text = s.target_text || ''
+  const lower = text.toLowerCase()
+  const groups = [[]]
+  let cursor = 0
+  for (let i = 0; i < atoms.length; i++) {
+    const idx = lower.indexOf(atoms[i].targetSurface.toLowerCase(), cursor)
+    if (i > 0 && idx !== -1 && /[.!?…]/.test(text.slice(cursor, idx))) groups.push([])
+    groups[groups.length - 1].push(atoms[i])
+    if (idx !== -1) cursor = idx + atoms[i].targetSurface.length
+  }
+  return groups.filter((g) => g.length)
+}
+
+function composeShape(key, s, atoms) {
+  const steps = []
+  const fine = atoms.map((a) => [a])
+  const pushChunks = (chunks, { gloss = true } = {}) => {
+    for (const c of chunks) {
+      steps.push(stepChunk(c))
+      if (gloss && wantGloss(c)) steps.push(stepGloss(c))
+    }
+  }
+  if (key === 'parts') {
+    pushChunks(fine)
+  } else if (key === 'parts-whole') {
+    pushChunks(fine)
+    steps.push(stepWhole(s))
+  } else if (key === 'wpw') {
+    steps.push(stepWhole(s))
+    pushChunks(fine)
+    steps.push(stepWhole(s))
+  } else if (key === 'climb') {
+    // meaning attaches at the finest rung only; fusion carries it upward
+    pushChunks(fine)
+    let level = fine
+    while (level.length > 2) {
+      level = fusePairs(level)
+      if (level.length > 1) pushChunks(level, { gloss: false })
+    }
+    steps.push(stepWhole(s))
+  } else if (key === 'tree') {
+    const groups = atomGroups(s, atoms)
+    if (groups.length <= 1) {
+      steps.push(stepWhole(s))
+      pushChunks(fine)
+      steps.push(stepWhole(s))
+    } else {
+      // real per-sentence takes when the re-split produced them; else approx
+      const takes =
+        Array.isArray(s.sentence_audio_ids) && s.sentence_audio_ids.length === groups.length
+          ? s.sentence_audio_ids
+          : groups.map(() => null)
+      groups.forEach((g, i) => {
+        steps.push(stepGroupTake(g, takes[i]))
+        pushChunks(g.map((a) => [a]))
+        steps.push(stepGroupTake(g, takes[i]))
+      })
+      steps.push(stepWhole(s))
+    }
+  }
+  steps.forEach((st, i) => {
+    st.key = `${key}:${i}`
+  })
+  return steps
+}
+
+const shapeRows = computed(() => {
+  const s = selectedSentence.value
+  if (!s || !shapeAtoms.value.length) return []
+  return SHAPE_DEFS.map((d) => ({ ...d, steps: composeShape(d.key, s, shapeAtoms.value) }))
+})
+
+const STEP_CLS = { chunk: 'r-target', gloss: 'r-known', whole: 'r-whole', group: 'r-explainer' }
+
+async function playShapeSteps(steps) {
+  stop()
+  const myToken = ++stopToken
+  isPlaying.value = true
+  for (const st of steps) {
+    if (myToken !== stopToken) break
+    playingStepKey.value = st.key
+    const clips = st.clips.filter(Boolean)
+    for (let i = 0; i < clips.length; i++) {
+      await playClip(clips[i], 1)
+      if (myToken !== stopToken) break
+      if (i < clips.length - 1) await sleep(GAP_INTRA_FUSE)
+    }
+    if (myToken !== stopToken) break
+    await sleep(st.kind === 'gloss' ? GAP_AFTER_GLOSS : GAP_BETWEEN_STEPS)
+  }
+  if (myToken === stopToken) {
+    isPlaying.value = false
+    playingStepKey.value = ''
+  }
 }
 
 // stop audio if the line changes out from under a running playback
@@ -373,7 +552,7 @@ loadLiveConfig()
           </div>
         </div>
 
-        <div class="config">
+        <div v-if="mode === 'arc'" class="config">
           <div class="cfg-head">
             <span class="lbl">Ladder config</span>
             <div class="presets">
@@ -422,39 +601,90 @@ loadLiveConfig()
 
       <!-- RIGHT: the assembly -->
       <section class="panel">
-        <div class="transport">
-          <button class="play-all" :disabled="!arc.length" @click="playWholeArc">▶ Play whole arc</button>
-          <button class="stop" :disabled="!isPlaying" @click="stop">■ Stop</button>
-          <span class="legend">
-            <span class="chip-role r-target">T target</span>
-            <span class="chip-role r-known">K known</span>
-            <span class="chip-role r-explainer">Ex explainer</span>
-          </span>
+        <div class="mode-switch">
+          <button :class="{ on: mode === 'shapes' }" @click="mode = 'shapes'">Visit shapes</button>
+          <button :class="{ on: mode === 'arc' }" @click="mode = 'arc'">Stage arc</button>
+          <button class="stop right" :disabled="!isPlaying" @click="stop">■ Stop</button>
         </div>
 
-        <div v-if="!arc.length" class="empty">
-          No arc — the line has no target audio, or the config produced no plays.
-        </div>
+        <!-- STAGE ARC — the established Stage-0 tiers + Stages 1..N ladder -->
+        <template v-if="mode === 'arc'">
+          <div class="transport">
+            <button class="play-all" :disabled="!arc.length" @click="playWholeArc">▶ Play whole arc</button>
+            <span class="legend">
+              <span class="chip-role r-target">T target</span>
+              <span class="chip-role r-known">K known</span>
+              <span class="chip-role r-explainer">Ex explainer</span>
+            </span>
+          </div>
 
-        <div v-for="g in groups" :key="g.key" class="stage-row" :class="{ s0: g.isStage0 }">
-          <div class="stage-head">
-            <button class="mini" @click="playGroup(g)">▶</button>
-            <span class="stage-label">{{ g.label }}</span>
+          <div v-if="!arc.length" class="empty">
+            No arc — the line has no target audio, or the config produced no plays.
           </div>
-          <div class="plays">
-            <button
-              v-for="p in g.plays"
-              :key="p._idx"
-              class="playchip"
-              :class="[roleMeta(p.playRole).cls, { now: playingIdx === p._idx }]"
-              :title="`${roleMeta(p.playRole).title} — ${p.text || ''}`"
-              @click="playOne(p)"
-            >
-              <span class="rl">{{ roleMeta(p.playRole).short }}</span>
-              <span class="spd">{{ p.playbackSpeed }}×</span>
-            </button>
+
+          <div v-for="g in groups" :key="g.key" class="stage-row" :class="{ s0: g.isStage0 }">
+            <div class="stage-head">
+              <button class="mini" @click="playGroup(g)">▶</button>
+              <span class="stage-label">{{ g.label }}</span>
+            </div>
+            <div class="plays">
+              <button
+                v-for="p in g.plays"
+                :key="p._idx"
+                class="playchip"
+                :class="[roleMeta(p.playRole).cls, { now: playingIdx === p._idx }]"
+                :title="`${roleMeta(p.playRole).title} — ${p.text || ''}`"
+                @click="playOne(p)"
+              >
+                <span class="rl">{{ roleMeta(p.playRole).short }}</span>
+                <span class="spd">{{ p.playbackSpeed }}×</span>
+              </button>
+            </div>
           </div>
-        </div>
+        </template>
+
+        <!-- VISIT SHAPES — candidate Stage-0 visit compositions, same line, by ear -->
+        <template v-else>
+          <p class="shape-note">
+            Candidate shapes for ONE Stage-0 visit — same line, same clips, different composition.
+            Fused chunks are approximated by butting atom clips together until the slow gapped take
+            (Take&nbsp;G) exists: real structure and rhythm, not final prosody. Wholes are the real take.
+          </p>
+
+          <div class="gloss-dial">
+            <span class="lbl small">Meaning ('means') plays:</span>
+            <button :class="{ on: glossMode === 'all' }" @click="glossMode = 'all'">every chunk</button>
+            <button :class="{ on: glossMode === 'long' }" @click="glossMode = 'long'">long chunks only</button>
+            <button :class="{ on: glossMode === 'none' }" @click="glossMode = 'none'">never</button>
+          </div>
+
+          <div v-if="!shapeRows.length" class="empty">
+            This line has no atom_map — pick a line with atoms to audition visit shapes.
+          </div>
+
+          <div v-for="row in shapeRows" :key="row.key" class="shape-row">
+            <div class="shape-head">
+              <button class="mini" @click="playShapeSteps(row.steps)">▶</button>
+              <span class="shape-name">{{ row.name }}</span>
+              <span class="shape-desc">{{ row.desc }}</span>
+            </div>
+            <div class="plays">
+              <button
+                v-for="st in row.steps"
+                :key="st.key"
+                class="playchip shapechip"
+                :class="[
+                  STEP_CLS[st.kind],
+                  { now: playingStepKey === st.key, approx: st.approx, missing: !st.clips.some(Boolean) },
+                ]"
+                :title="st.kind + (st.approx ? ' (approximated: concatenated clips)' : '') + ' — ' + st.text"
+                @click="playShapeSteps([st])"
+              >
+                {{ st.text }}
+              </button>
+            </div>
+          </div>
+        </template>
       </section>
     </div>
 
@@ -764,6 +994,104 @@ code {
 .playchip.now {
   outline: 2px solid var(--accent-2);
   outline-offset: 1px;
+}
+.mode-switch {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.mode-switch button {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.mode-switch button:hover {
+  color: var(--ink);
+  border-color: var(--muted);
+}
+.mode-switch button.on {
+  background: rgba(52, 211, 153, 0.15);
+  color: var(--accent-2);
+  border-color: var(--accent-2);
+}
+.mode-switch .right {
+  margin-left: auto;
+}
+.shape-note {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+.gloss-dial {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.gloss-dial .lbl {
+  margin: 0 4px 0 0;
+}
+.gloss-dial button {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.gloss-dial button.on {
+  background: rgba(52, 211, 153, 0.15);
+  color: var(--accent-2);
+  border-color: var(--accent-2);
+}
+.shape-row {
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+}
+.shape-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.shape-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+.shape-desc {
+  font-size: 12px;
+  color: var(--muted);
+}
+.shapechip {
+  max-width: 340px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  font-size: 12px;
+}
+.shapechip.approx {
+  border: 1px dashed currentColor;
+  opacity: 0.92;
+}
+.shapechip.missing {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+.r-whole {
+  background: rgba(52, 211, 153, 0.14);
+  color: var(--accent-2);
 }
 .r-target {
   background: rgba(59, 130, 246, 0.16);
