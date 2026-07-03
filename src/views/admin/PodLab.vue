@@ -191,7 +191,7 @@ async function loadCourse(courseCode) {
     const { data: rows, error: podErr } = await sb
       .from('listening_pod_sentences')
       .select(
-        'id, global_order, speaker, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, glue_to_next, atom_map, atom_map_fine, sentence_audio_ids',
+        'id, global_order, speaker, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, glue_to_next, atom_map, atom_map_fine, sentence_audio_ids, sentence_known_audio_ids',
       )
       .eq('pod_id', `${courseCode}:pod-0`)
       .order('global_order', { ascending: true })
@@ -336,7 +336,7 @@ const SHAPE_DEFS = [
   {
     key: 'rungs',
     name: "Aran's ladder",
-    desc: 'Per SENTENCE: units + meaning → chained overlapping windows → whole; short sentences repeat their whole while long ones climb. The turn closes once as the immersion flow.',
+    desc: 'Every chunk at every size plays t·k·t·t. Units → chained windows → the whole sentence (= its Stage-1 entry); each SENTENCE then cascades Stages 1–8 independently. The turn plays whole once — the immersion flow. Dashed known chips = legacy "means X" audio until plain translations render.',
   },
 ]
 
@@ -368,9 +368,11 @@ function stepChunk(atoms) {
 function stepGloss(atoms) {
   return {
     kind: 'gloss',
-    text: atoms.map((a) => a.gloss).join(' · '),
+    text: atoms.map((a) => a.gloss).filter(Boolean).join(' '),
+    // dashed = placeholder audio: today's per-unit known clips are the legacy
+    // "means X" renders; plain translations arrive with the Take G render.
     clips: atoms.map((a) => a.meansGlossClipId),
-    approx: atoms.length > 1,
+    approx: true,
   }
 }
 function stepWhole(s) {
@@ -419,21 +421,29 @@ function groupTakes(s, groups) {
 function composeShape(key, s, atoms) {
   const steps = []
   if (key === 'rungs') {
-    // ARAN'S DRILL LADDER (Tom 2026-07-02): the DRILL unit is the SENTENCE —
+    // ARAN'S DRILL LADDER (Tom 2026-07-02/03): the DRILL unit is the SENTENCE —
     // a leading one-unit exclamation ("Ciao!") glues onto the sentence that
-    // follows. Each sentence climbs:
-    //   V1  its units in order, each followed by its plain translation
-    //       (the 'means' formula is retired — meaning is just the gloss)
-    //   V2  chained OVERLAPPING windows (~half the sentence each, sharing an
-    //       edge unit) — no translation; skipped when the sentence is short
-    //   V3  the whole sentence (real per-sentence take)
-    // Short sentences REPEAT their whole while longer ones are still climbing
-    // (all sentences of a turn ride the same visit). Multi-sentence turns
-    // close ONCE with the whole-turn take — the immersion flow, not a drill.
+    // follows. EVERY chunk at EVERY size plays t·k·t·t (target · known ·
+    // target · target) while the sentence is broken down:
+    //   V1  finest units, t·k·t·t each
+    //   V2  chained OVERLAPPING windows sharing an edge unit, t·k·t·t each
+    //       (skipped when the sentence is short)
+    //   V3  the whole sentence at t·k·t·t — this IS Stage 1: from here the
+    //       sentence cascades Stages 1–8 INDEPENDENTLY (not the turn).
+    // Short sentences repeat their whole while longer siblings climb. The turn
+    // plays whole exactly once at the end — the immersion-mode surface.
+    // AUDIO HONESTY: per-unit known audio today = legacy "means X" clips
+    // (dashed); plain translations + Take G slices arrive with the render.
+    // Sentence-level known uses the REAL per-sentence translation takes.
     const rawGroups = atomGroups(s, atoms)
     const rawTakes = groupTakes(s, rawGroups)
+    const rawKnown =
+      Array.isArray(s.sentence_known_audio_ids) && s.sentence_known_audio_ids.length === rawGroups.length
+        ? s.sentence_known_audio_ids
+        : rawGroups.map(() => null)
     const groups = []
     const takes = []
+    const knownTakes = []
     let carry = []
     rawGroups.forEach((g, i) => {
       if (g.length === 1 && i < rawGroups.length - 1) {
@@ -442,49 +452,61 @@ function composeShape(key, s, atoms) {
       }
       groups.push([...carry, ...g])
       takes.push(carry.length ? null : rawTakes[i])
+      knownTakes.push(carry.length ? null : rawKnown[i])
       carry = []
     })
     if (carry.length) {
       if (groups.length) {
         groups[groups.length - 1].push(...carry)
         takes[takes.length - 1] = null
+        knownTakes[knownTakes.length - 1] = null
       } else {
         groups.push(carry)
         takes.push(null)
+        knownTakes.push(null)
       }
     }
 
+    // t·k·t·t for one chunk; known slot omitted only when there is no gloss.
+    const tktt = (chunk, gloss) => (gloss ? [chunk, gloss, { ...chunk }, { ...chunk }] : [chunk, { ...chunk }])
+
     const ladders = groups.map((g, gi) => {
       const visits = []
-      const v1 = []
-      g.forEach((u) => {
-        v1.push(stepChunk([u]))
-        if (u.gloss) v1.push(stepGloss([u]))
-      })
-      visits.push(v1)
+      visits.push(g.flatMap((u) => tktt(stepChunk([u]), u.gloss ? stepGloss([u]) : null)))
       if (g.length > 3) {
         const width = Math.ceil(g.length / 2)
         const lvl = []
         for (let start = 0; ; start += width - 1) {
           const end = Math.min(start + width - 1, g.length - 1)
-          lvl.push(stepChunk(g.slice(start, end + 1)))
+          const w = g.slice(start, end + 1)
+          lvl.push(...tktt(stepChunk(w), stepGloss(w)))
           if (end >= g.length - 1) break
         }
         visits.push(lvl)
       }
-      visits.push([stepGroupTake(g, takes[gi])])
+      // Graduation: the whole sentence at t·k·t·t = its Stage-1 entry.
+      const known = knownTakes[gi]
+        ? {
+            kind: 'gloss',
+            text: g.map((u) => u.gloss).filter(Boolean).join(' '),
+            clips: [knownTakes[gi]],
+            approx: false,
+          }
+        : stepGloss(g)
+      visits.push(tktt(stepGroupTake(g, takes[gi]), known).map((st, i) => (i > 1 ? stepGroupTake(g, takes[gi]) : st)))
       return visits
     })
     const maxVisits = Math.max(...ladders.map((l) => l.length))
     for (let v = 0; v < maxVisits; v++) {
       steps.push(stepMarker(`Visit ${v + 1}`))
       ladders.forEach((l) => {
-        // a sentence that has topped out repeats its whole on later visits
+        // a topped-out sentence repeats its whole-sentence t·k·t·t (≈ Stage 2)
         steps.push(...l[Math.min(v, l.length - 1)].map((st) => ({ ...st })))
       })
     }
+    steps.push(stepMarker('→ each sentence cascades Stages 1–8 independently'))
     if (groups.length > 1) {
-      steps.push(stepMarker('Immersion flow'))
+      steps.push(stepMarker('Immersion flow — the whole turn'))
       steps.push(stepWhole(s))
     }
   }
