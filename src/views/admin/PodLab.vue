@@ -3,9 +3,10 @@
  * Pod Lab — /admin/configs/pods
  *
  * A tuning + audition surface for the Layer-2 pod acquisition ladder, sibling to
- * the Pause Lab (/admin/configs/speaking). Pick a course + a pod line, and hear
- * its WHOLE acquisition arc — the Stage-0 breakdown tiers followed by every
- * whole-sentence stage — assembled by the REAL engine.
+ * the Pause Lab (/admin/configs/speaking). Two modes on the same real line:
+ * THE LADDER — the unified climb (Tom 2026-07-03): fusion rungs from finest
+ * units to the whole turn, then the speed cascade to pure 2× — and STAGE ARC,
+ * today's live engine output, for comparison.
  *
  * No drift by construction: the arc is composed by `composeSentenceArc` imported
  * straight from `@ssi/core/pods` — the exact function the learner's main flow
@@ -314,31 +315,32 @@ function stop() {
   playingStepKey.value = ''
 }
 
-// ── VISIT SHAPES — Stage-0 exploration (2026-07-02) ─────────────────────────
-// Candidate compositions for what ONE Stage-0 visit sounds like, side by side
-// on the same line, so the design is chosen by ear rather than argument. This
-// is deliberately audition-only UI — no candidate is wired into the learner
-// engine; the composer in @ssi/core/pods is rebuilt only once a shape wins.
+// ── THE UNIFIED LADDER — Stage 0 → pure-2× turn (Tom 2026-07-03) ────────────
+// One ladder, one pattern. The stage number IS the fusion level until the
+// chunk is the whole turn, then it becomes the speed ramp:
+//   Stage 0      finest units, t·k·t·t each, 1×
+//   Stage 1..    successive fusions — within sentence first, then sentences
+//                conjoin — every chunk t·k·t·t, still 1×
+//   Stage k      the chunk IS the whole turn: t·k·t·t at 1× ≡ engine Stage 1
+//   Stage k+1..  the locked speed cascade (engine Stages 2–8) on the turn,
+//                topping out at pure t@2× — no known left: immersion emerges,
+//                mature turns segue turn → turn.
+// The TURN never stops being the traversal unit (sentences don't travel
+// independently — that's what keeps dialogue flow coherent), so the whole pod
+// can ride one stage counter; short sentences repeat their whole t·k·t·t while
+// longer siblings climb. No explainer stage, no 'means' formula anywhere.
+// This supersedes v3's per-sentence Stage-1-8 cascade (62317b5d).
 //
-// AUDIO HONESTY: the model's fused chunks want Take G — a slower whole take
-// with TTS-punctuation gaps at unit boundaries, sliced per rung. Take G isn't
-// rendered yet, so fused chunks here butt the constituent atom clips together:
-// real structure and rhythm, not final prosody. Whole plays are the real take.
+// AUDIO HONESTY: sub-sentence chunks butt their unit clips together (Take G,
+// sliced at exactly these seams, replaces them); per-unit knowns are the
+// legacy "means X" renders and window translations don't exist yet — both
+// dashed, both on the Take G shopping list. Sentence wholes play the REAL
+// per-sentence takes (target + translation); the turn plays its real takes.
 
-const mode = ref('shapes') // 'shapes' | 'arc'
+const mode = ref('shapes') // 'shapes' = the unified ladder | 'arc' = live engine arc
 const unitsSource = ref('fine') // 'fine' (draft atom_map_fine, default) | 'live' (atom_map)
+const fusionMode = ref('pairwise') // 'pairwise' (Aran: disjoint pairs L→R) | 'chained' (Tom: adjacent windows share an edge chunk)
 const playingStepKey = ref('')
-
-// The exploration shapes (pure parts / parts→whole / whole–parts–whole /
-// compressed climb / tree walk) are RETIRED — Tom locked Aran's ladder on
-// 2026-07-02. They live in git history (up to fe6fe72c) if ever needed.
-const SHAPE_DEFS = [
-  {
-    key: 'rungs',
-    name: "Aran's ladder",
-    desc: 'Every chunk at every size plays t·k·t·t. Units → chained windows → the whole sentence (= its Stage-1 entry); each SENTENCE then cascades Stages 1–8 independently. The turn plays whole once — the immersion flow. Dashed known chips = legacy "means X" audio until plain translations render.',
-  },
-]
 
 const GAP_BETWEEN_STEPS = 700
 const GAP_AFTER_GLOSS = 500
@@ -355,41 +357,41 @@ const shapeAtoms = computed(() => {
   return resolveAtoms(map, glossMap.value, targetClipMap.value)
 })
 
-// One playable step: a chunk / gloss / whole chip. `clips` may hold several
-// ids (a fused chunk approximated by consecutive atom clips → approx: true).
-function stepChunk(atoms) {
-  return {
-    kind: 'chunk',
-    text: atoms.map((a) => a.targetSurface).join(' '),
-    clips: atoms.map((a) => a.targetClipId),
-    approx: atoms.length > 1,
+// One fusion step over spans of unit indices.
+//   pairwise: disjoint pairs L→R, an odd tail stands alone until the next rung
+//   chained:  adjacent windows share an edge chunk ("ma non posso" /
+//             "non posso parlare") — gentler climb, one more rung per size
+function fuseSpans(spans, fusion) {
+  if (spans.length <= 1) return spans
+  const out = []
+  if (fusion === 'chained') {
+    for (let i = 0; i < spans.length - 1; i++) out.push({ start: spans[i].start, end: spans[i + 1].end })
+  } else {
+    for (let i = 0; i < spans.length; i += 2)
+      out.push({ start: spans[i].start, end: spans[Math.min(i + 1, spans.length - 1)].end })
   }
-}
-function stepGloss(atoms) {
-  return {
-    kind: 'gloss',
-    text: atoms.map((a) => a.gloss).filter(Boolean).join(' '),
-    // dashed = placeholder audio: today's per-unit known clips are the legacy
-    // "means X" renders; plain translations arrive with the Take G render.
-    clips: atoms.map((a) => a.meansGlossClipId),
-    approx: true,
-  }
-}
-function stepWhole(s) {
-  return { kind: 'whole', text: s.target_text, clips: [s.target_audio_id], approx: false }
-}
-function stepGroupTake(atoms, takeId) {
-  const takeClips = takeId ? (Array.isArray(takeId) ? takeId : [takeId]) : null
-  return {
-    kind: 'group',
-    text: atoms.map((a) => a.targetSurface).join(' '),
-    clips: takeClips || atoms.map((a) => a.targetClipId),
-    approx: !takeClips,
-  }
+  return out
 }
 
-function stepMarker(text) {
-  return { kind: 'marker', text, clips: [], approx: false }
+// Every fusion level for an n-unit stretch: units → … → the whole.
+function spanLadder(n, fusion) {
+  let spans = Array.from({ length: n }, (_, i) => ({ start: i, end: i }))
+  const levels = [spans]
+  while (spans.length > 1) {
+    spans = fuseSpans(spans, fusion)
+    levels.push(spans)
+  }
+  return levels
+}
+
+const clipList = (take) => (Array.isArray(take) ? take : [take])
+
+// t·k·t·t for one chunk — the ONE pattern every rung of the ladder plays.
+// The known slot is dropped only when there is nothing to say in it.
+function tktt(chunk, known) {
+  return known && (known.clips.some(Boolean) || known.text)
+    ? [chunk, known, { ...chunk }, { ...chunk }]
+    : [chunk, { ...chunk }]
 }
 
 // Split the atom list into prosodic groups at sentence-terminal punctuation
@@ -418,111 +420,217 @@ function groupTakes(s, groups) {
     : groups.map(() => null)
 }
 
-function composeShape(key, s, atoms) {
-  const steps = []
-  if (key === 'rungs') {
-    // ARAN'S DRILL LADDER (Tom 2026-07-02/03): the DRILL unit is the SENTENCE —
-    // a leading one-unit exclamation ("Ciao!") glues onto the sentence that
-    // follows. EVERY chunk at EVERY size plays t·k·t·t (target · known ·
-    // target · target) while the sentence is broken down:
-    //   V1  finest units, t·k·t·t each
-    //   V2  chained OVERLAPPING windows sharing an edge unit, t·k·t·t each
-    //       (skipped when the sentence is short)
-    //   V3  the whole sentence at t·k·t·t — this IS Stage 1: from here the
-    //       sentence cascades Stages 1–8 INDEPENDENTLY (not the turn).
-    // Short sentences repeat their whole while longer siblings climb. The turn
-    // plays whole exactly once at the end — the immersion-mode surface.
-    // AUDIO HONESTY: per-unit known audio today = legacy "means X" clips
-    // (dashed); plain translations + Take G slices arrive with the render.
-    // Sentence-level known uses the REAL per-sentence translation takes.
-    const rawGroups = atomGroups(s, atoms)
-    const rawTakes = groupTakes(s, rawGroups)
-    const rawKnown =
-      Array.isArray(s.sentence_known_audio_ids) && s.sentence_known_audio_ids.length === rawGroups.length
-        ? s.sentence_known_audio_ids
-        : rawGroups.map(() => null)
-    const groups = []
-    const takes = []
-    const knownTakes = []
-    let carry = []
-    rawGroups.forEach((g, i) => {
-      if (g.length === 1 && i < rawGroups.length - 1) {
-        carry.push(...g)
-        return
-      }
-      groups.push([...carry, ...g])
-      takes.push(carry.length ? null : rawTakes[i])
-      knownTakes.push(carry.length ? null : rawKnown[i])
-      carry = []
-    })
-    if (carry.length) {
-      if (groups.length) {
-        groups[groups.length - 1].push(...carry)
-        takes[takes.length - 1] = null
-        knownTakes[knownTakes.length - 1] = null
-      } else {
-        groups.push(carry)
-        takes.push(null)
-        knownTakes.push(null)
-      }
-    }
+// The whole unified climb for the selected turn, one entry per rung (= one
+// stage = one visit): fusion rungs from finest units to the whole turn, then
+// the locked speed cascade. Rung count varies with the turn's fusion depth —
+// the speed rungs are the same ladder entered later on long turns.
+const ladderRungs = computed(() => {
+  const s = selectedSentence.value
+  const atoms = shapeAtoms.value
+  if (!s || !atoms.length) return []
 
-    // t·k·t·t for one chunk; known slot omitted only when there is no gloss.
-    const tktt = (chunk, gloss) => (gloss ? [chunk, gloss, { ...chunk }, { ...chunk }] : [chunk, { ...chunk }])
-
-    const ladders = groups.map((g, gi) => {
-      const visits = []
-      visits.push(g.flatMap((u) => tktt(stepChunk([u]), u.gloss ? stepGloss([u]) : null)))
-      if (g.length > 3) {
-        const width = Math.ceil(g.length / 2)
-        const lvl = []
-        for (let start = 0; ; start += width - 1) {
-          const end = Math.min(start + width - 1, g.length - 1)
-          const w = g.slice(start, end + 1)
-          lvl.push(...tktt(stepChunk(w), stepGloss(w)))
-          if (end >= g.length - 1) break
-        }
-        visits.push(lvl)
-      }
-      // Graduation: the whole sentence at t·k·t·t = its Stage-1 entry.
-      const known = knownTakes[gi]
-        ? {
-            kind: 'gloss',
-            text: g.map((u) => u.gloss).filter(Boolean).join(' '),
-            clips: [knownTakes[gi]],
-            approx: false,
-          }
-        : stepGloss(g)
-      visits.push(tktt(stepGroupTake(g, takes[gi]), known).map((st, i) => (i > 1 ? stepGroupTake(g, takes[gi]) : st)))
-      return visits
-    })
-    const maxVisits = Math.max(...ladders.map((l) => l.length))
-    for (let v = 0; v < maxVisits; v++) {
-      steps.push(stepMarker(`Visit ${v + 1}`))
-      ladders.forEach((l) => {
-        // a topped-out sentence repeats its whole-sentence t·k·t·t (≈ Stage 2)
-        steps.push(...l[Math.min(v, l.length - 1)].map((st) => ({ ...st })))
-      })
+  // Sentences, with a leading one-unit exclamation ("Ciao!") glued onto the
+  // sentence that follows — the drill never strands a bare interjection.
+  const rawGroups = atomGroups(s, atoms)
+  const rawTakes = groupTakes(s, rawGroups)
+  const rawKnown =
+    Array.isArray(s.sentence_known_audio_ids) && s.sentence_known_audio_ids.length === rawGroups.length
+      ? s.sentence_known_audio_ids
+      : rawGroups.map(() => null)
+  const groups = []
+  const takes = []
+  const knownTakes = []
+  let carry = []
+  rawGroups.forEach((g, i) => {
+    if (g.length === 1 && i < rawGroups.length - 1) {
+      carry.push(...g)
+      return
     }
-    steps.push(stepMarker('→ each sentence cascades Stages 1–8 independently'))
-    if (groups.length > 1) {
-      steps.push(stepMarker('Immersion flow — the whole turn'))
-      steps.push(stepWhole(s))
+    groups.push([...carry, ...g])
+    takes.push(carry.length ? null : rawTakes[i])
+    knownTakes.push(carry.length ? null : rawKnown[i])
+    carry = []
+  })
+  if (carry.length) {
+    if (groups.length) {
+      groups[groups.length - 1].push(...carry)
+      takes[takes.length - 1] = null
+      knownTakes[knownTakes.length - 1] = null
+    } else {
+      groups.push(carry)
+      takes.push(null)
+      knownTakes.push(null)
     }
   }
-  steps.forEach((st, i) => {
-    st.key = `${key}:${i}`
-  })
-  return steps
-}
 
-const shapeRows = computed(() => {
-  const s = selectedSentence.value
-  if (!s || !shapeAtoms.value.length) return []
-  return SHAPE_DEFS.map((d) => ({ ...d, steps: composeShape(d.key, s, shapeAtoms.value) }))
+  const single = groups.length === 1
+
+  // sub-sentence chunk + its known (concat approximations until Take G)
+  const chunkStep = (g, span) => {
+    const us = g.slice(span.start, span.end + 1)
+    return {
+      kind: 'chunk',
+      text: us.map((a) => a.targetSurface).join(' '),
+      clips: us.map((a) => a.targetClipId),
+      approx: us.length > 1,
+      rate: 1,
+    }
+  }
+  const knownStep = (g, span) => {
+    const us = g.slice(span.start, span.end + 1)
+    return {
+      kind: 'gloss',
+      text: us.map((a) => a.gloss).filter(Boolean).join(' '),
+      clips: us.map((a) => a.meansGlossClipId),
+      approx: true, // legacy "means X" clips; window translations not rendered yet
+      rate: 1,
+    }
+  }
+  // a sentence at its whole — REAL takes; for a single-sentence turn the
+  // sentence whole IS the turn whole, so fall through to the turn takes
+  const wholeSentenceChunk = (gi) => {
+    const g = groups[gi]
+    const take = takes[gi] || (single ? s.target_audio_id : null)
+    return {
+      kind: 'group',
+      text: g.map((a) => a.targetSurface).join(' '),
+      clips: take ? clipList(take) : g.map((a) => a.targetClipId),
+      approx: !take,
+      rate: 1,
+    }
+  }
+  const wholeSentenceKnown = (gi) => {
+    const g = groups[gi]
+    const take = knownTakes[gi] || (single ? s.known_audio_id : null)
+    return {
+      kind: 'gloss',
+      text: single && s.known_text ? s.known_text : g.map((a) => a.gloss).filter(Boolean).join(' '),
+      clips: take ? clipList(take) : g.map((a) => a.meansGlossClipId),
+      approx: !take,
+      rate: 1,
+    }
+  }
+  // conjoined sentences below the whole turn: butted sentence takes until Take G
+  const conjoinChunk = (span) => {
+    const gs = groups.slice(span.start, span.end + 1)
+    const tks = takes.slice(span.start, span.end + 1)
+    return {
+      kind: 'group',
+      text: gs.map((g) => g.map((a) => a.targetSurface).join(' ')).join(' '),
+      clips: tks.every(Boolean) ? tks.flatMap(clipList) : gs.flat().map((a) => a.targetClipId),
+      approx: true,
+      rate: 1,
+    }
+  }
+  const conjoinKnown = (span) => {
+    const gs = groups.slice(span.start, span.end + 1)
+    const kts = knownTakes.slice(span.start, span.end + 1)
+    return {
+      kind: 'gloss',
+      text: gs.map((g) => g.map((a) => a.gloss).filter(Boolean).join(' ')).join(' '),
+      clips: kts.every(Boolean) ? kts.flatMap(clipList) : gs.flat().map((a) => a.meansGlossClipId),
+      approx: true,
+      rate: 1,
+    }
+  }
+  const wholeTurnChunk = (rate = 1) => ({
+    kind: 'whole',
+    text: s.target_text,
+    clips: [s.target_audio_id],
+    approx: false,
+    rate,
+  })
+  const wholeTurnKnown = () => ({
+    kind: 'gloss',
+    text: s.known_text || '',
+    clips: [s.known_audio_id],
+    approx: !s.known_audio_id,
+    rate: 1,
+  })
+
+  const fusion = fusionMode.value
+  const ladders = groups.map((g) => spanLadder(g.length, fusion))
+  const maxDepth = Math.max(...ladders.map((l) => l.length))
+  const rungs = []
+
+  // fusion rungs: every sentence rides every rung; a sentence already at its
+  // whole repeats its whole t·k·t·t while longer siblings climb
+  for (let r = 0; r < maxDepth; r++) {
+    const steps = []
+    groups.forEach((g, gi) => {
+      const l = ladders[gi]
+      const lvl = l[Math.min(r, l.length - 1)]
+      if (lvl.length === 1) steps.push(...tktt(wholeSentenceChunk(gi), wholeSentenceKnown(gi)))
+      else lvl.forEach((span) => steps.push(...tktt(chunkStep(g, span), knownStep(g, span))))
+    })
+    const last = r === maxDepth - 1
+    rungs.push({
+      label:
+        last && single
+          ? `Stage ${r} · the whole turn`
+          : r === 0
+            ? 'Stage 0 · finest units'
+            : last
+              ? `Stage ${r} · whole sentences`
+              : `Stage ${r} · fusion`,
+      note:
+        last && single
+          ? 't·k·t·t at 1× — ≡ engine Stage 1'
+          : r === 0
+            ? 'every unit t·k·t·t · 1×'
+            : last
+              ? 'real sentence takes + real translation takes'
+              : fusion === 'chained'
+                ? 'windows share an edge chunk'
+                : 'pairwise fusion',
+      steps,
+    })
+  }
+
+  // conjoining rungs: the sentences fuse on into the turn (the all-wholes
+  // level IS the previous rung, so it is skipped)
+  let stageN = maxDepth
+  if (!single) {
+    for (const lvl of spanLadder(groups.length, fusion).slice(1)) {
+      const isTurn = lvl.length === 1
+      const steps = isTurn
+        ? tktt(wholeTurnChunk(), wholeTurnKnown())
+        : lvl.flatMap((span) => tktt(conjoinChunk(span), conjoinKnown(span)))
+      rungs.push({
+        label: isTurn ? `Stage ${stageN} · the whole turn` : `Stage ${stageN} · sentences conjoin`,
+        note: isTurn ? 't·k·t·t at 1× — ≡ engine Stage 1' : 'sentence takes butted until Take G',
+        steps,
+      })
+      stageN++
+    }
+  }
+
+  // the speed ramp: the locked engine cascade (Stages 2–8) on the whole turn
+  const GLYPH = { ps: 't', trans: 'k', ps2x: 't@2×' }
+  for (let es = 2; es <= 8; es++) {
+    const pat = PROPOSED_STAGE_PLAYLIST[es] || []
+    rungs.push({
+      label: `Stage ${stageN} · turn — engine Stage ${es}`,
+      note:
+        pat.map((role) => GLYPH[role] || role).join(' · ') +
+        (es === 8 ? ' — no known left: immersion emerges, turn segues into turn' : ''),
+      steps: pat.map((role) => (role === 'trans' ? wholeTurnKnown() : wholeTurnChunk(role === 'ps2x' ? 2 : 1))),
+    })
+    stageN++
+  }
+
+  rungs.forEach((rung, ri) => {
+    rung.key = `r${ri}`
+    rung.steps.forEach((st, i) => {
+      st.key = `r${ri}:${i}`
+    })
+  })
+  return rungs
 })
 
-const STEP_CLS = { chunk: 'r-target', gloss: 'r-known', whole: 'r-whole', group: 'r-explainer', marker: 'r-marker' }
+const playWholeClimb = () => playShapeSteps(ladderRungs.value.flatMap((r) => r.steps))
+
+const STEP_CLS = { chunk: 'r-target', gloss: 'r-known', whole: 'r-whole', group: 'r-explainer' }
 
 // ── SEAM EDITOR — drag the cuts of a draft fine map ─────────────────────────
 // Every token boundary is a clickable handle: click to cut, click to merge.
@@ -692,11 +800,10 @@ async function playShapeSteps(steps) {
   isPlaying.value = true
   for (const st of steps) {
     if (myToken !== stopToken) break
-    if (st.kind === 'marker') continue
     playingStepKey.value = st.key
     const clips = st.clips.filter(Boolean)
     for (let i = 0; i < clips.length; i++) {
-      await playClip(clips[i], 1)
+      await playClip(clips[i], st.rate || 1)
       if (myToken !== stopToken) break
       if (i < clips.length - 1) await sleep(GAP_INTRA_FUSE)
     }
@@ -726,9 +833,10 @@ loadLiveConfig()
     <header class="lab-head">
       <h1>Pod Lab</h1>
       <p class="sub">
-        Hear one pod line's whole acquisition arc — Stage-0 breakdown then every whole-sentence
-        stage — assembled by the <strong>real</strong> <code>@ssi/core/pods</code> engine the
-        learner runs. Tune the ladder, hear the effect, export the config.
+        <strong>The ladder</strong> auditions the unified climb (2026-07-03): one t·k·t·t pattern
+        from finest units, fusing rung by rung into the whole turn, then the speed cascade to
+        pure&nbsp;2× — where immersion emerges. <strong>Stage arc</strong> plays the same line
+        through today's <strong>real</strong> <code>@ssi/core/pods</code> engine for comparison.
       </p>
       <p class="safety">
         Preview &amp; export only — this Lab never writes <code>algorithm_config</code> (those writes
@@ -863,8 +971,8 @@ loadLiveConfig()
       <!-- RIGHT: the assembly -->
       <section class="panel">
         <div class="mode-switch">
-          <button :class="{ on: mode === 'shapes' }" @click="mode = 'shapes'">Visit shapes</button>
-          <button :class="{ on: mode === 'arc' }" @click="mode = 'arc'">Stage arc</button>
+          <button :class="{ on: mode === 'shapes' }" @click="mode = 'shapes'">The ladder</button>
+          <button :class="{ on: mode === 'arc' }" @click="mode = 'arc'">Stage arc (live engine)</button>
           <button class="stop right" :disabled="!isPlaying" @click="stop">■ Stop</button>
         </div>
 
@@ -904,12 +1012,14 @@ loadLiveConfig()
           </div>
         </template>
 
-        <!-- ARAN'S LADDER — the locked Stage-0 drill model, per sentence -->
+        <!-- THE UNIFIED LADDER — fusion rungs then the speed ramp, one row per stage -->
         <template v-else>
           <p class="shape-note">
+            One rung = one stage = one visit. Fusion climbs to the whole turn (≡ engine Stage 1),
+            then the locked speed cascade tops out at pure&nbsp;t@2× — immersion.
             <template v-if="usingFine">
-              DRAFT fine units (Aran granularity) — judge the CUTS. Text preview only: chunk audio
-              arrives with Take&nbsp;G, cut at exactly these seams. Wholes still play the real take.
+              DRAFT fine units — judge the CUTS. Sub-sentence chunk audio arrives with Take&nbsp;G,
+              cut at exactly these seams; wholes already play the real takes.
             </template>
             <template v-else>
               This course has no fine-unit draft yet — showing the LIVE atom_map (coarser,
@@ -917,27 +1027,43 @@ loadLiveConfig()
             </template>
           </p>
 
-          <div v-if="hasFine" class="gloss-dial">
-            <span class="lbl small">Units:</span>
-            <button :class="{ on: unitsSource === 'fine' }" @click="unitsSource = 'fine'">
-              draft fine (Aran)
+          <div class="gloss-dial">
+            <template v-if="hasFine">
+              <span class="lbl small">Units:</span>
+              <button :class="{ on: unitsSource === 'fine' }" @click="unitsSource = 'fine'">
+                draft fine (Aran)
+              </button>
+              <button :class="{ on: unitsSource === 'live' }" @click="unitsSource = 'live'">live atoms</button>
+            </template>
+            <span class="lbl small">Fusion:</span>
+            <button :class="{ on: fusionMode === 'pairwise' }" @click="fusionMode = 'pairwise'">
+              pairwise (Aran)
             </button>
-            <button :class="{ on: unitsSource === 'live' }" @click="unitsSource = 'live'">live atoms</button>
+            <button :class="{ on: fusionMode === 'chained' }" @click="fusionMode = 'chained'">
+              chained overlap (Tom)
+            </button>
           </div>
 
-          <div v-if="!shapeRows.length" class="empty">
+          <div class="transport">
+            <button class="play-all" :disabled="!ladderRungs.length" @click="playWholeClimb">
+              ▶ Play the whole climb
+            </button>
+            <span v-if="ladderRungs.length" class="legend">{{ ladderRungs.length }} rungs</span>
+          </div>
+
+          <div v-if="!ladderRungs.length" class="empty">
             This line has no atom_map — pick a line with atoms to audition the ladder.
           </div>
 
-          <div v-for="row in shapeRows" :key="row.key" class="shape-row">
+          <div v-for="rung in ladderRungs" :key="rung.key" class="shape-row">
             <div class="shape-head">
-              <button class="mini" @click="playShapeSteps(row.steps)">▶</button>
-              <span class="shape-name">{{ row.name }}</span>
-              <span class="shape-desc">{{ row.desc }}</span>
+              <button class="mini" @click="playShapeSteps(rung.steps)">▶</button>
+              <span class="shape-name">{{ rung.label }}</span>
+              <span class="shape-desc">{{ rung.note }}</span>
             </div>
             <div class="plays">
               <button
-                v-for="st in row.steps"
+                v-for="st in rung.steps"
                 :key="st.key"
                 class="playchip shapechip"
                 :class="[
@@ -945,13 +1071,19 @@ loadLiveConfig()
                   {
                     now: playingStepKey === st.key,
                     approx: st.approx,
-                    missing: st.kind !== 'marker' && !usingFine && !st.clips.some(Boolean),
+                    missing: !usingFine && !st.clips.some(Boolean),
                   },
                 ]"
-                :title="st.kind + (st.approx ? ' (approximated: concatenated clips)' : '') + ' — ' + st.text"
+                :title="
+                  st.kind +
+                  (st.rate === 2 ? ' · 2×' : '') +
+                  (st.approx ? ' (approximated: concatenated clips)' : '') +
+                  ' — ' +
+                  st.text
+                "
                 @click="playShapeSteps([st])"
               >
-                {{ st.text }}
+                {{ st.text }}<span v-if="st.rate === 2" class="x2">2×</span>
               </button>
             </div>
           </div>
@@ -1360,20 +1492,16 @@ code {
   opacity: 0.35;
   text-decoration: line-through;
 }
+.shapechip .x2 {
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 4px;
+  opacity: 0.75;
+  vertical-align: top;
+}
 .r-whole {
   background: rgba(52, 211, 153, 0.14);
   color: var(--accent-2);
-}
-.r-marker {
-  background: transparent;
-  color: var(--faint);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-size: 10px;
-  cursor: default;
-  padding-left: 0;
-  flex-basis: 100%;
 }
 .seam-editor {
   border-top: 1px solid var(--line);
