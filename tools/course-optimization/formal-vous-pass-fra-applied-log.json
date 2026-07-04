@@ -738,5 +738,66 @@
       "presentation_audio_id": null
     },
     "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "ab327e37-0bc2-42b5-9234-19eb4f9ec3f7",
+    "seed": 651,
+    "before": {
+      "known": "what do you think?",
+      "target": "qu'en pensez-vous ?"
+    },
+    "after": {
+      "known_text": "what do you think madam?",
+      "known_audio_id": null,
+      "target_text": "qu'en pensez-vous madame ?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    },
+    "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "fra_for_eng:S0651L01B01",
+    "seed": 651,
+    "was": {
+      "known": "what do you think?",
+      "target": "qu'en pensez-vous ?"
+    },
+    "duplicateOf": "fra_for_eng:S0651L01U01",
+    "reason": "bare build would duplicate marked row fra_for_eng:S0651L01U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0651L01B02",
+    "seed": 651,
+    "before": {
+      "known": "what do you think about this?",
+      "target": "qu'en pensez-vous de cela ?"
+    },
+    "after": {
+      "known_text": "what do you think about this madam?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0651L01U04",
+    "seed": 651,
+    "before": {
+      "known": "what do you think about this idea?",
+      "target": "qu'en pensez-vous de cette idée ?"
+    },
+    "after": {
+      "known_text": "what do you think about this idea madam?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
   }
 ]
