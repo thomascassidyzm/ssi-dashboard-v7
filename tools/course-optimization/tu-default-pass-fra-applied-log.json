@@ -400,5 +400,342 @@
       "presentation_audio_id": null,
       "decomposition": null
     }
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "5da8f598-78dd-466f-a977-87b50cea8430",
+    "seed": 179,
+    "before": {
+      "known": "you are going to",
+      "target": "vous allez",
+      "components": [
+        {
+          "known": "you are",
+          "target": "vous"
+        },
+        {
+          "known": "going to",
+          "target": "allez"
+        }
+      ]
+    },
+    "after": {
+      "target_text": "tu vas",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "components": [
+        {
+          "known": "you are",
+          "target": "tu"
+        },
+        {
+          "known": "going to",
+          "target": "vas"
+        }
+      ]
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01B01",
+    "seed": 179,
+    "before": {
+      "known": "you are going to",
+      "target": "vous allez"
+    },
+    "after": {
+      "target_text": "tu vas",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01B02",
+    "seed": 179,
+    "before": {
+      "known": "you are going to",
+      "target": "vous allez"
+    },
+    "after": {
+      "target_text": "tu vas",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01B03",
+    "seed": 179,
+    "before": {
+      "known": "you are going to do",
+      "target": "vous allez faire"
+    },
+    "after": {
+      "target_text": "tu vas faire",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01B04",
+    "seed": 179,
+    "before": {
+      "known": "what are you going to do",
+      "target": "qu'est-ce que vous allez faire"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu vas faire",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01C01",
+    "seed": 179,
+    "before": {
+      "known": "you are",
+      "target": "vous"
+    },
+    "after": {
+      "target_text": "tu",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01C02",
+    "seed": 179,
+    "before": {
+      "known": "going to",
+      "target": "allez"
+    },
+    "after": {
+      "target_text": "vas",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01U01",
+    "seed": 179,
+    "before": {
+      "known": "what are you going to read?",
+      "target": "qu'est-ce que vous allez lire?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu vas lire?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01U02",
+    "seed": 179,
+    "before": {
+      "known": "what are you going to say?",
+      "target": "qu'est-ce que vous allez dire?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu vas dire?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01U03",
+    "seed": 179,
+    "before": {
+      "known": "what are you going to do?",
+      "target": "qu'est-ce que vous allez faire?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu vas faire?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01U04",
+    "seed": 179,
+    "before": {
+      "known": "where are you going to work?",
+      "target": "où est-ce que vous allez travailler?"
+    },
+    "after": {
+      "target_text": "où est-ce que tu vas travailler?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01U05",
+    "seed": 179,
+    "before": {
+      "known": "what are you going to do tomorrow?",
+      "target": "qu'est-ce que vous allez faire demain?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu vas faire demain?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01U06",
+    "seed": 179,
+    "before": {
+      "known": "when are you going to start?",
+      "target": "quand est-ce que vous allez commencer?"
+    },
+    "after": {
+      "target_text": "quand est-ce que tu vas commencer?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01U07",
+    "seed": 179,
+    "before": {
+      "known": "how are you going to do it?",
+      "target": "comment est-ce que vous allez faire ça?"
+    },
+    "after": {
+      "target_text": "comment est-ce que tu vas faire ça?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01U08",
+    "seed": 179,
+    "before": {
+      "known": "what are you going to do this morning?",
+      "target": "qu'est-ce que vous allez faire ce matin?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu vas faire ce matin?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L01U09",
+    "seed": 179,
+    "before": {
+      "known": "what are you going to do now?",
+      "target": "qu'est-ce que vous allez faire maintenant?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu vas faire maintenant?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0179L02U08",
+    "seed": 179,
+    "before": {
+      "known": "what are you going to do on Sunday afternoon?",
+      "target": "qu'est-ce que vous allez faire dimanche après-midi?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu vas faire dimanche après-midi?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_SEED",
+    "seed": 179,
+    "before": {
+      "known": "what are you going to do on Sunday afternoon?",
+      "target": "qu'est-ce que vous allez faire dimanche après-midi?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu vas faire dimanche après-midi?",
+      "target1_audio_id": null,
+      "target2_audio_id": null
+    }
   }
 ]
