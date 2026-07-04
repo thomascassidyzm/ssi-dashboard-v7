@@ -1,429 +1,667 @@
 {
-  "courses": 59,
-  "totalKnownSideSlots": 461216,
-  "uniqueNormalizedTexts": 239981,
-  "dedupRatio": 1.92,
-  "totalCharsAcrossUniqueTexts": 6916729,
-  "oneTimeCloneRenderCostUSD": 103.75,
-  "totalMissingSlotsToday": 111791,
-  "copyableTodayFromExistingClone": 269,
-  "avgSlotsPerCourse": 7817.2,
-  "avgMarginalNovelTextsPerNewCourse": 3359.3,
-  "avgMarginalCostPerNewCourseUSD": 1.4743,
-  "medianMarginalCostPerNewCourseUSD": 1.1904,
-  "perCourse": [
-    {
-      "course_code": "ara_eg_for_eng",
-      "slots": 6847,
-      "uniqueTexts": 5663,
-      "missingSlots": 0,
-      "copyableToday": 0
+  "families": {
+    "X_for_eng": {
+      "courses": 59,
+      "totalSlots": 461216,
+      "uniqueTexts": 239981,
+      "dedupRatio": 1.92,
+      "totalMissingSlotsToday": 111791,
+      "copyableTodayFromExistingClone": 22733
     },
-    {
-      "course_code": "por_br_for_eng",
-      "slots": 7357,
-      "uniqueTexts": 6173,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "srp_for_eng",
-      "slots": 6592,
-      "uniqueTexts": 5597,
-      "missingSlots": 1,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "kan_for_eng",
-      "slots": 0,
-      "uniqueTexts": 0,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "fin_for_eng",
-      "slots": 0,
-      "uniqueTexts": 0,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "ben_for_eng",
-      "slots": 7832,
-      "uniqueTexts": 6005,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "gla_for_eng",
-      "slots": 6909,
-      "uniqueTexts": 5331,
-      "missingSlots": 6909,
-      "copyableToday": 18
-    },
-    {
-      "course_code": "kor_for_eng",
-      "slots": 15987,
-      "uniqueTexts": 12199,
-      "missingSlots": 9044,
-      "copyableToday": 23
-    },
-    {
-      "course_code": "pol_for_eng",
-      "slots": 7158,
-      "uniqueTexts": 5734,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "ron_for_eng",
-      "slots": 6730,
-      "uniqueTexts": 5816,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "ukr_for_eng",
-      "slots": 5931,
-      "uniqueTexts": 5159,
-      "missingSlots": 4,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "est_for_eng",
-      "slots": 6069,
-      "uniqueTexts": 5281,
-      "missingSlots": 1,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "fra_for_eng",
-      "slots": 18211,
-      "uniqueTexts": 14470,
-      "missingSlots": 140,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "yor_for_eng",
-      "slots": 0,
-      "uniqueTexts": 0,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "mkd_for_eng",
-      "slots": 0,
-      "uniqueTexts": 0,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "mar_for_eng",
-      "slots": 16619,
-      "uniqueTexts": 13806,
-      "missingSlots": 16619,
-      "copyableToday": 38
-    },
-    {
-      "course_code": "eus_for_eng",
-      "slots": 7502,
-      "uniqueTexts": 6069,
-      "missingSlots": 124,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "gle_for_eng",
-      "slots": 7585,
-      "uniqueTexts": 6461,
-      "missingSlots": 9,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "tel_for_eng",
-      "slots": 14887,
-      "uniqueTexts": 13268,
-      "missingSlots": 14887,
-      "copyableToday": 25
-    },
-    {
-      "course_code": "mlt_for_eng",
-      "slots": 6844,
-      "uniqueTexts": 5919,
-      "missingSlots": 6844,
-      "copyableToday": 20
-    },
-    {
-      "course_code": "ara_for_eng",
-      "slots": 14752,
-      "uniqueTexts": 12319,
-      "missingSlots": 7927,
-      "copyableToday": 13
-    },
-    {
-      "course_code": "ell_for_eng",
-      "slots": 9395,
-      "uniqueTexts": 7791,
-      "missingSlots": 1,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "nld_for_eng",
-      "slots": 5901,
-      "uniqueTexts": 4721,
-      "missingSlots": 314,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "bre_for_eng",
-      "slots": 549,
-      "uniqueTexts": 472,
-      "missingSlots": 549,
-      "copyableToday": 2
-    },
-    {
-      "course_code": "cym_s_for_eng",
-      "slots": 6378,
-      "uniqueTexts": 6122,
-      "missingSlots": 242,
-      "copyableToday": 1
-    },
-    {
-      "course_code": "bul_for_eng",
-      "slots": 5735,
-      "uniqueTexts": 4891,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "lit_for_eng",
-      "slots": 7046,
-      "uniqueTexts": 5943,
-      "missingSlots": 42,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "tur_for_eng",
-      "slots": 11060,
-      "uniqueTexts": 9226,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "ara_sy_for_eng",
-      "slots": 0,
-      "uniqueTexts": 0,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "fra_ca_for_eng",
-      "slots": 8864,
-      "uniqueTexts": 7260,
-      "missingSlots": 364,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "swe_for_eng",
-      "slots": 6447,
-      "uniqueTexts": 5482,
-      "missingSlots": 1,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "isl_for_eng",
-      "slots": 6094,
-      "uniqueTexts": 5247,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "cym_n_for_eng",
-      "slots": 5937,
-      "uniqueTexts": 5808,
-      "missingSlots": 315,
-      "copyableToday": 1
-    },
-    {
-      "course_code": "nor_for_eng",
-      "slots": 5493,
-      "uniqueTexts": 4628,
-      "missingSlots": 1,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "lav_for_eng",
-      "slots": 6204,
-      "uniqueTexts": 5226,
-      "missingSlots": 2,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "fas_for_eng",
-      "slots": 8390,
-      "uniqueTexts": 6980,
-      "missingSlots": 13,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "rus_for_eng",
-      "slots": 7481,
-      "uniqueTexts": 6460,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "jpn_for_eng",
-      "slots": 13887,
-      "uniqueTexts": 10949,
-      "missingSlots": 8527,
-      "copyableToday": 23
-    },
-    {
-      "course_code": "hrv_for_eng",
-      "slots": 7327,
-      "uniqueTexts": 6099,
-      "missingSlots": 2,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "heb_for_eng",
-      "slots": 6683,
-      "uniqueTexts": 5473,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "deu_for_eng",
-      "slots": 16075,
-      "uniqueTexts": 13474,
-      "missingSlots": 9278,
-      "copyableToday": 41
-    },
-    {
-      "course_code": "zho_for_eng",
-      "slots": 13601,
-      "uniqueTexts": 10813,
-      "missingSlots": 6288,
-      "copyableToday": 26
-    },
-    {
-      "course_code": "sbx_for_eng",
-      "slots": 549,
-      "uniqueTexts": 472,
-      "missingSlots": 549,
-      "copyableToday": 2
-    },
-    {
-      "course_code": "ita_for_eng",
-      "slots": 15550,
-      "uniqueTexts": 12689,
-      "missingSlots": 1124,
-      "copyableToday": 4
-    },
-    {
-      "course_code": "por_for_eng",
-      "slots": 16273,
-      "uniqueTexts": 12853,
-      "missingSlots": 8679,
-      "copyableToday": 15
-    },
-    {
-      "course_code": "afr_for_eng",
-      "slots": 4936,
-      "uniqueTexts": 4338,
-      "missingSlots": 4,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "hun_for_eng",
-      "slots": 6089,
-      "uniqueTexts": 5354,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "ara_lb_for_eng",
-      "slots": 6429,
-      "uniqueTexts": 5225,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "tha_for_eng",
-      "slots": 5802,
-      "uniqueTexts": 4894,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "swa_for_eng",
-      "slots": 7454,
-      "uniqueTexts": 6239,
-      "missingSlots": 4,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "nep_for_eng",
-      "slots": 8517,
-      "uniqueTexts": 7259,
-      "missingSlots": 19,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "spa_for_eng",
-      "slots": 18846,
-      "uniqueTexts": 15785,
-      "missingSlots": 6616,
-      "copyableToday": 3
-    },
-    {
-      "course_code": "hin_for_eng",
-      "slots": 7201,
-      "uniqueTexts": 6022,
-      "missingSlots": 2,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "hye_for_eng",
-      "slots": 6624,
-      "uniqueTexts": 5534,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "ces_for_eng",
-      "slots": 7615,
-      "uniqueTexts": 5944,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "deu_at_for_eng",
-      "slots": 6353,
-      "uniqueTexts": 5595,
-      "missingSlots": 6332,
-      "copyableToday": 14
-    },
-    {
-      "course_code": "dan_for_eng",
-      "slots": 6031,
-      "uniqueTexts": 4969,
-      "missingSlots": 0,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "cat_for_eng",
-      "slots": 6376,
-      "uniqueTexts": 5335,
-      "missingSlots": 14,
-      "copyableToday": 0
-    },
-    {
-      "course_code": "spa_mx_for_eng",
-      "slots": 8212,
-      "uniqueTexts": 7239,
-      "missingSlots": 0,
-      "copyableToday": 0
+    "eng_for_X": {
+      "courses": 19,
+      "totalSlots": 269348,
+      "uniqueTexts": 67513,
+      "dedupRatio": 3.99,
+      "totalMissingSlotsToday": 42454,
+      "copyableTodayFromExistingClone": 20404
     }
-  ]
+  },
+  "combined": {
+    "totalSlots": 730564,
+    "uniqueEnglishPhrasePoolSize": 289828,
+    "dedupRatio": 2.52,
+    "totalCharsAcrossUniquePhrases": 8759144,
+    "oneTimeCloneRenderCostUSD_wholeEstate": 131.39,
+    "totalMissingSlotsToday": 154245,
+    "copyableTodayFromExistingClone": 43137
+  },
+  "speedDropGrowth": {
+    "poolSizeWithoutSpeedKey_current": 400146,
+    "poolSizeWithSpeedKey_hypotheticalOldPolicy": 432298,
+    "extraVariantsUnderOldPolicy": 32152,
+    "growthPercent": 8,
+    "methodology": "Compares (language,text,voice) [current canonical key] vs (language,text,voice,configured-speed) [hypothetical old-policy key], using each course's CURRENT voice_config speed as a stand-in — course_audio has no persisted per-row speed, so historical render speed cannot be recovered exactly. This is a lower-bound-ish estimate of the old policy's fragmentation, not an exact historical count."
+  },
+  "verifiedRenderBehaviorPerProvider": {
+    "xai": "No speed param on the TTS request at all (services/tts-service.cjs generateXai) — every render is at natural/1x pace regardless of any configured speed. Trusted as a canonical 1x source.",
+    "elevenlabs": "`speed` is destructured from config in generateElevenLabs but never placed into the request body — the configured speed is silently ignored. Every render is at ElevenLabs' fixed pace (1x-equivalent, not user-adjustable). Trusted as a canonical 1x source.",
+    "azure": "BAKES speed into the SSML <prosody rate=\"...\"> tag (services/tts-service.cjs generateAzure, ~line 148-154) — a clip rendered with a non-1.0 configured speed has that pace PHYSICALLY baked into the stored MP3. course_audio has NO persisted per-row speed, so a historical Azure row cannot be verified 1x after the fact. NOT trusted as a canonical copy source (services/shared/clone-copy-match.cjs isTrusted1xEngine excludes it) until proven otherwise."
+  },
+  "voiceConfigSpeedReadSites": [
+    "services/phases/phase8-audio-v13.cjs getSpeedForRole()/getEffectiveSpeed-equivalent (~line 1364, ~line 3996): reads voice_config.voices[role].settings.speed and passes it into the TTS request as `item.speed` for Azure/ElevenLabs renders (Azure bakes it; ElevenLabs ignores it in practice).",
+    "services/voice-config-service.cjs getEffectiveSpeed()/buildTTSConfig(): combines voice_config speed with a cadence multiplier and forwards it into the provider-specific TTS config (azure: voiceName+speed; elevenlabs: speed passed but unused downstream; xai: speed passed but provider has no such param).",
+    "Under Tom's ruling these are now PLAYBACK/LEGACY metadata, not identity — the player renders belt-appropriate pace live (0.8x white / 0.9x yellow / 0.95x orange / 1.0x thereafter), so course_audio should be rendered at 1x going forward and voice_config's speed field should eventually be cleaned up / repurposed as a playback default rather than a render parameter."
+  ],
+  "physicalDuplicates": {
+    "totalEnglishRows": 728249,
+    "distinctContentGroups": 456213,
+    "groupsWithDuplicateObjects": 40526,
+    "redundantObjectsConsolidationOpportunity": 126608,
+    "topVoicesByRedundancy": [
+      {
+        "voiceId": "azure_en-GB-SoniaNeural",
+        "redundantObjects": 43003
+      },
+      {
+        "voiceId": "bedd6226",
+        "redundantObjects": 26518
+      },
+      {
+        "voiceId": "gfzdpspr5fdp",
+        "redundantObjects": 24056
+      },
+      {
+        "voiceId": "azure_en-GB-RyanNeural",
+        "redundantObjects": 14345
+      },
+      {
+        "voiceId": "leo",
+        "redundantObjects": 8469
+      },
+      {
+        "voiceId": "en-GB-SoniaNeural",
+        "redundantObjects": 5080
+      },
+      {
+        "voiceId": "en-GB-LibbyNeural",
+        "redundantObjects": 1156
+      },
+      {
+        "voiceId": "en-GB-RyanNeural",
+        "redundantObjects": 983
+      },
+      {
+        "voiceId": "f15c6a6a",
+        "redundantObjects": 738
+      },
+      {
+        "voiceId": "en-GB-HollieNeural",
+        "redundantObjects": 664
+      },
+      {
+        "voiceId": "en-GB-AlfieNeural",
+        "redundantObjects": 313
+      },
+      {
+        "voiceId": "legacy_import",
+        "redundantObjects": 275
+      },
+      {
+        "voiceId": "en-GB-ThomasNeural",
+        "redundantObjects": 270
+      },
+      {
+        "voiceId": "en-GB-MaisieNeural",
+        "redundantObjects": 240
+      },
+      {
+        "voiceId": "sal",
+        "redundantObjects": 187
+      }
+    ],
+    "note": "Consolidation opportunity ONLY — no consolidation performed. Includes ALL voices (not just the clone), which is why it surfaces the much larger pre-existing Azure/Sonia-era duplication alongside the small clone-specific slice."
+  },
+  "perCourse": {
+    "X_for_eng": [
+      {
+        "course_code": "ara_eg_for_eng",
+        "slots": 6847,
+        "uniqueTexts": 5663,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "por_br_for_eng",
+        "slots": 7357,
+        "uniqueTexts": 6173,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "srp_for_eng",
+        "slots": 6592,
+        "uniqueTexts": 5597,
+        "missingSlots": 1,
+        "copyableToday": 1
+      },
+      {
+        "course_code": "kan_for_eng",
+        "slots": 0,
+        "uniqueTexts": 0,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "fin_for_eng",
+        "slots": 0,
+        "uniqueTexts": 0,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "ben_for_eng",
+        "slots": 7832,
+        "uniqueTexts": 6005,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "gla_for_eng",
+        "slots": 6909,
+        "uniqueTexts": 5331,
+        "missingSlots": 6909,
+        "copyableToday": 3233
+      },
+      {
+        "course_code": "kor_for_eng",
+        "slots": 15987,
+        "uniqueTexts": 12199,
+        "missingSlots": 9044,
+        "copyableToday": 1132
+      },
+      {
+        "course_code": "pol_for_eng",
+        "slots": 7158,
+        "uniqueTexts": 5734,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "ron_for_eng",
+        "slots": 6730,
+        "uniqueTexts": 5816,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "ukr_for_eng",
+        "slots": 5931,
+        "uniqueTexts": 5159,
+        "missingSlots": 4,
+        "copyableToday": 3
+      },
+      {
+        "course_code": "est_for_eng",
+        "slots": 6069,
+        "uniqueTexts": 5281,
+        "missingSlots": 1,
+        "copyableToday": 1
+      },
+      {
+        "course_code": "fra_for_eng",
+        "slots": 18211,
+        "uniqueTexts": 14470,
+        "missingSlots": 140,
+        "copyableToday": 21
+      },
+      {
+        "course_code": "yor_for_eng",
+        "slots": 0,
+        "uniqueTexts": 0,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "mkd_for_eng",
+        "slots": 0,
+        "uniqueTexts": 0,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "mar_for_eng",
+        "slots": 16619,
+        "uniqueTexts": 13806,
+        "missingSlots": 16619,
+        "copyableToday": 2734
+      },
+      {
+        "course_code": "eus_for_eng",
+        "slots": 7502,
+        "uniqueTexts": 6069,
+        "missingSlots": 124,
+        "copyableToday": 44
+      },
+      {
+        "course_code": "gle_for_eng",
+        "slots": 7585,
+        "uniqueTexts": 6461,
+        "missingSlots": 9,
+        "copyableToday": 6
+      },
+      {
+        "course_code": "tel_for_eng",
+        "slots": 14887,
+        "uniqueTexts": 13268,
+        "missingSlots": 14887,
+        "copyableToday": 2273
+      },
+      {
+        "course_code": "mlt_for_eng",
+        "slots": 6844,
+        "uniqueTexts": 5919,
+        "missingSlots": 6844,
+        "copyableToday": 2553
+      },
+      {
+        "course_code": "ara_for_eng",
+        "slots": 14752,
+        "uniqueTexts": 12319,
+        "missingSlots": 7927,
+        "copyableToday": 981
+      },
+      {
+        "course_code": "ell_for_eng",
+        "slots": 9395,
+        "uniqueTexts": 7791,
+        "missingSlots": 1,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "nld_for_eng",
+        "slots": 5901,
+        "uniqueTexts": 4721,
+        "missingSlots": 314,
+        "copyableToday": 314
+      },
+      {
+        "course_code": "bre_for_eng",
+        "slots": 549,
+        "uniqueTexts": 472,
+        "missingSlots": 549,
+        "copyableToday": 276
+      },
+      {
+        "course_code": "cym_s_for_eng",
+        "slots": 6378,
+        "uniqueTexts": 6122,
+        "missingSlots": 242,
+        "copyableToday": 32
+      },
+      {
+        "course_code": "bul_for_eng",
+        "slots": 5735,
+        "uniqueTexts": 4891,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "lit_for_eng",
+        "slots": 7046,
+        "uniqueTexts": 5943,
+        "missingSlots": 42,
+        "copyableToday": 37
+      },
+      {
+        "course_code": "tur_for_eng",
+        "slots": 11060,
+        "uniqueTexts": 9226,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "ara_sy_for_eng",
+        "slots": 0,
+        "uniqueTexts": 0,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "fra_ca_for_eng",
+        "slots": 8864,
+        "uniqueTexts": 7260,
+        "missingSlots": 364,
+        "copyableToday": 364
+      },
+      {
+        "course_code": "swe_for_eng",
+        "slots": 6447,
+        "uniqueTexts": 5482,
+        "missingSlots": 1,
+        "copyableToday": 1
+      },
+      {
+        "course_code": "isl_for_eng",
+        "slots": 6094,
+        "uniqueTexts": 5247,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "cym_n_for_eng",
+        "slots": 5937,
+        "uniqueTexts": 5808,
+        "missingSlots": 315,
+        "copyableToday": 53
+      },
+      {
+        "course_code": "nor_for_eng",
+        "slots": 5493,
+        "uniqueTexts": 4628,
+        "missingSlots": 1,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "lav_for_eng",
+        "slots": 6204,
+        "uniqueTexts": 5226,
+        "missingSlots": 2,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "fas_for_eng",
+        "slots": 8390,
+        "uniqueTexts": 6980,
+        "missingSlots": 13,
+        "copyableToday": 2
+      },
+      {
+        "course_code": "rus_for_eng",
+        "slots": 7481,
+        "uniqueTexts": 6460,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "jpn_for_eng",
+        "slots": 13887,
+        "uniqueTexts": 10949,
+        "missingSlots": 8527,
+        "copyableToday": 1341
+      },
+      {
+        "course_code": "hrv_for_eng",
+        "slots": 7327,
+        "uniqueTexts": 6099,
+        "missingSlots": 2,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "heb_for_eng",
+        "slots": 6683,
+        "uniqueTexts": 5473,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "deu_for_eng",
+        "slots": 16075,
+        "uniqueTexts": 13474,
+        "missingSlots": 9278,
+        "copyableToday": 1335
+      },
+      {
+        "course_code": "zho_for_eng",
+        "slots": 13601,
+        "uniqueTexts": 10813,
+        "missingSlots": 6288,
+        "copyableToday": 993
+      },
+      {
+        "course_code": "sbx_for_eng",
+        "slots": 549,
+        "uniqueTexts": 472,
+        "missingSlots": 549,
+        "copyableToday": 275
+      },
+      {
+        "course_code": "ita_for_eng",
+        "slots": 15550,
+        "uniqueTexts": 12689,
+        "missingSlots": 1124,
+        "copyableToday": 315
+      },
+      {
+        "course_code": "por_for_eng",
+        "slots": 16273,
+        "uniqueTexts": 12853,
+        "missingSlots": 8679,
+        "copyableToday": 1710
+      },
+      {
+        "course_code": "afr_for_eng",
+        "slots": 4936,
+        "uniqueTexts": 4338,
+        "missingSlots": 4,
+        "copyableToday": 3
+      },
+      {
+        "course_code": "hun_for_eng",
+        "slots": 6089,
+        "uniqueTexts": 5354,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "ara_lb_for_eng",
+        "slots": 6429,
+        "uniqueTexts": 5225,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "tha_for_eng",
+        "slots": 5802,
+        "uniqueTexts": 4894,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "swa_for_eng",
+        "slots": 7454,
+        "uniqueTexts": 6239,
+        "missingSlots": 4,
+        "copyableToday": 2
+      },
+      {
+        "course_code": "nep_for_eng",
+        "slots": 8517,
+        "uniqueTexts": 7259,
+        "missingSlots": 19,
+        "copyableToday": 5
+      },
+      {
+        "course_code": "spa_for_eng",
+        "slots": 18846,
+        "uniqueTexts": 15785,
+        "missingSlots": 6616,
+        "copyableToday": 872
+      },
+      {
+        "course_code": "hin_for_eng",
+        "slots": 7201,
+        "uniqueTexts": 6022,
+        "missingSlots": 2,
+        "copyableToday": 1
+      },
+      {
+        "course_code": "hye_for_eng",
+        "slots": 6624,
+        "uniqueTexts": 5534,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "ces_for_eng",
+        "slots": 7615,
+        "uniqueTexts": 5944,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "deu_at_for_eng",
+        "slots": 6353,
+        "uniqueTexts": 5595,
+        "missingSlots": 6332,
+        "copyableToday": 1811
+      },
+      {
+        "course_code": "dan_for_eng",
+        "slots": 6031,
+        "uniqueTexts": 4969,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "cat_for_eng",
+        "slots": 6376,
+        "uniqueTexts": 5335,
+        "missingSlots": 14,
+        "copyableToday": 9
+      },
+      {
+        "course_code": "spa_mx_for_eng",
+        "slots": 8212,
+        "uniqueTexts": 7239,
+        "missingSlots": 0,
+        "copyableToday": 0
+      }
+    ],
+    "eng_for_X": [
+      {
+        "course_code": "eng_for_urd",
+        "slots": 12880,
+        "uniqueTexts": 5291,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "eng_for_deu",
+        "slots": 13620,
+        "uniqueTexts": 5429,
+        "missingSlots": 150,
+        "copyableToday": 72
+      },
+      {
+        "course_code": "eng_for_tel",
+        "slots": 12016,
+        "uniqueTexts": 5120,
+        "missingSlots": 12016,
+        "copyableToday": 5884
+      },
+      {
+        "course_code": "eng_for_jpn",
+        "slots": 23578,
+        "uniqueTexts": 9369,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "eng_for_spa",
+        "slots": 14172,
+        "uniqueTexts": 5933,
+        "missingSlots": 252,
+        "copyableToday": 186
+      },
+      {
+        "course_code": "eng_for_mar",
+        "slots": 13682,
+        "uniqueTexts": 5779,
+        "missingSlots": 13682,
+        "copyableToday": 5470
+      },
+      {
+        "course_code": "eng_for_kan",
+        "slots": 15682,
+        "uniqueTexts": 6354,
+        "missingSlots": 15682,
+        "copyableToday": 8364
+      },
+      {
+        "course_code": "eng_for_ara",
+        "slots": 14376,
+        "uniqueTexts": 6076,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "eng_for_ben",
+        "slots": 13404,
+        "uniqueTexts": 5422,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "eng_for_hin",
+        "slots": 14032,
+        "uniqueTexts": 5732,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "eng_for_zho",
+        "slots": 11788,
+        "uniqueTexts": 4964,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "eng_for_tam",
+        "slots": 15226,
+        "uniqueTexts": 6107,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "eng_for_pan",
+        "slots": 13230,
+        "uniqueTexts": 5566,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "eng_for_fra",
+        "slots": 14546,
+        "uniqueTexts": 5961,
+        "missingSlots": 116,
+        "copyableToday": 60
+      },
+      {
+        "course_code": "eng_for_por",
+        "slots": 13854,
+        "uniqueTexts": 5774,
+        "missingSlots": 182,
+        "copyableToday": 108
+      },
+      {
+        "course_code": "eng_for_ita",
+        "slots": 13118,
+        "uniqueTexts": 5543,
+        "missingSlots": 120,
+        "copyableToday": 90
+      },
+      {
+        "course_code": "eng_for_kor",
+        "slots": 12508,
+        "uniqueTexts": 5281,
+        "missingSlots": 254,
+        "copyableToday": 170
+      },
+      {
+        "course_code": "eng_for_guj",
+        "slots": 14912,
+        "uniqueTexts": 5988,
+        "missingSlots": 0,
+        "copyableToday": 0
+      },
+      {
+        "course_code": "eng_for_sin",
+        "slots": 12724,
+        "uniqueTexts": 5464,
+        "missingSlots": 0,
+        "copyableToday": 0
+      }
+    ]
+  }
 }
