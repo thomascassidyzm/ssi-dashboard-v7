@@ -2,6 +2,46 @@
 
 *2026-07-02 — designed against the 23 real springs from the full-course journey walk (wf_c1710a42-c49), adversarially verified patch-by-patch (wf_3405a64a-f3e). Clearance: **17 CLEARED / 6 PARTIAL / 0 FAILED**, zero new ZUT collisions, zero unreachable patches.*
 
+---
+## STATUS UPDATE — 2026-07-04 fold-in sweep (owner decisions executed)
+
+Owner resolved the three real forks from the decision queue below and the F3–F7 fold-ins were
+applied live to `spa_for_eng`. Full before/after log: `tools/course-optimization/cue-library-v1-spa-foldins-applied-log.json`; apply script (idempotent, assertion-guarded): `tools/course-optimization/apply-cue-library-v1-spa-foldins.cjs`.
+
+- **Fork #2 (seed-38 re-debut): A — adopted.** `S0038L01` re-debuts as the split-frame M-lego
+  ("I've been learning all day" = "llevo todo el día aprendiendo"). No audio generated — staged
+  (audio_id nulled) per `docs/course-optimization/tts-staged-for-approval.md`, pending an
+  explicit approved "Generate Missing Audio" run. **Not done**: the seed-38 ladder REORDER
+  (patch 3) and the seed-33/60 build-rung inserts — these need new practice-phrase rows with
+  correctly-computed word_count/decomposition, which is course-builder-tool territory, not a
+  safe hand-SQL edit. The verifier's own note says the lego re-debut alone removes the residual
+  priming source, so this is a polish gap, not a correctness gap.
+- **Fork #5 (F7 marker style): B — vocative, adopted, + new house law: NO PARENTHESES EVER.**
+  Written into `ralph-methodology.md` ("No Parentheses, Ever — Register by Natural Example")
+  and enforced going forward by a new `checkNoParentheses` gate in
+  `services/course-builder/lib/validation.cjs`. This **retroactively overrides decision #6**
+  below (the "(formal)"/component-parenthetical convention) — F4's component fixes use a
+  natural glued prefix instead ("before we moved", not "(before) we moved"). A full course-wide
+  audit of existing parentheticals (7,962 occurrences, 55 courses) was run and is **not**
+  auto-fixed: `docs/course-optimization/parenthetical-audit-2026-07-04.md`.
+- **Decision #9 (427 emotion-matrix): A — delete, adopted.** USE 9 at seed 427 deleted. The
+  F1b emotion-subjunctive family is **not** built — logged here as a possible future,
+  deliberately-scoped addition, per the owner's explicit note.
+- **F3/F4/F5/F7 fold-ins**: applied per their own descriptions below, except:
+  - **s115 (F6, decision #3)**: three-way semantic-mismatch call untouched — no owner decision
+    was given for this specific item; it needs a product/taste call (change English vs change
+    Spanish vs delete), not a mechanical fix. Flagged, not resolved.
+  - **s281 (F4 bonus leak)**: untouched — unlike 506/542, "you start"=empieces has no single
+    fixed trigger context to bind (it's reused across "before/when/I want you to/bare" frames in
+    the same seed), so the fold-in's "bind to its trigger, per the 506/542 pattern" doesn't have
+    a mechanical single answer here. Needs an editorial call on which frame(s) to retrofit.
+  - **s668/s432/s652 native-adjudication items and s297's "sounds natural, not clipped" check**:
+    not re-verified by a native speaker this round; the fold-in's specified fix was applied
+    (delete-and-promote at 297; the rest are unaffected by this sweep).
+- **Transfer test**: `docs/course-optimization/cue-library-v1-fra-transfer-plan.md` — plan +
+  concrete live-seed evidence for `fra_for_eng` (confirmed same seed scaffold; F7's exact bug
+  independently reproduces at fra seed 646), not a completed adversarial-verification run.
+
 ## The two laws this run established
 
 1. **The cue lives in what the learner sees.** Lego `known_text`, `components` JSONB, and practice-phrase rows are stored independently — a gloss-enrichment must sweep ALL surfaced layers or bare cues stay live at the rows the learner actually meets. Make this a build-tool validation check.
@@ -10,6 +50,34 @@
 ## Verdict
 
 PROVEN, with one honest boundary. The cue-bundling M-lego mechanism survived closed-loop adversarial verification: 23 patches, 17 cleared outright, 6 partial, ZERO failed, zero new ZUT collisions, zero reachability failures — and critically, not one PARTIAL was a cue-discrimination failure. Every partial shares the same implementation-layer root cause: the SSi schema stores lego known_text, components JSONB, and practice-phrase rows (component/build/USE) independently, so an enrichment that stops at the lego record leaves bare cues live at the rows the learner actually sees. The v1.0 law that falls out is the mechanism's completion, not its refutation: THE CUE LIVES IN WHAT THE LEARNER SEES — every gloss-enrich must sweep all four surfaced layers, and this should be a build-tool validation check, not a per-patch discipline. Second refinement (from 297): sentence-level WRAPPER context does not reliably discriminate at recall; the trigger material must sit inside the prompted chunk's own gloss. Both laws transfer verbatim. Romance transfer readiness: F1, F2 GO as-is; F3, F4, F5, F6, F7 GO once their fold-ins (all specified, all mechanical) land and re-verify; F8 is NOT ready — it received no patches this run and its parenthetical-complement cue is the weakest cue type in the library; pilot it on spa_for_eng before any transfer. The romanceTransfer columns hold up well because the mechanism never asks the learner to choose a form — the bundle absorbs per-language differences (French espérer+indicative, Portuguese future subjunctive), which is exactly why the library transfers where a rules approach couldn't.
+
+---
+## Per-patch applied status (2026-07-04 sweep)
+
+| Seed | Family | Base patch | Fold-in |
+|---|---|---|---|
+| 33 | F6 | not applied — build-rung insert needs course-builder tooling (new row + decomposition) | — |
+| 38 | F6 | **APPLIED** — lego re-debut (split-frame), audio staged | ladder reorder **not applied** (polish only; verifier: lego fix alone removes the residual priming source) |
+| 60 | F6 | not applied — build-rung insert needs course-builder tooling | — |
+| 115 | F6 | n/a (resolves by inheritance from 38) | semantic mismatch at 115\|4\|20 **not resolved** — decision #3, needs Tom's call |
+| 297 | F3 | **APPLIED** — lego known/target updated | **APPLIED** — bare debut rung deleted, pos2 promoted; discipline note rewritten |
+| 318/326/330/370/387/668 | F1/F2 | not in scope (task named F3–F7 only) | — |
+| 396 | F4 | not applied (out of named scope, but see fold-in) | **APPLIED** — bare B01 deleted, lego known_text trigger-glued, component C01 fixed (no-parens) |
+| 427 | F1 | not in scope | **FORK3 applied** — emotion-matrix USE line (pos9) deleted |
+| 432 | F1 | not in scope | tense mismatch not touched (separate content sweep, needs native check) |
+| 497 | F5 | **APPLIED** — lego re-debut with como-si bundled | **APPLIED** — component C01 fixed, bare B01 deleted, USE tense fixed |
+| 506 | F4 | n/a (already correct) | **APPLIED** — component fixed, no-parens style |
+| 538 | F5 | not in scope | — |
+| 542 | F4 | n/a (already correct) | **APPLIED** — component fixed, no-parens style |
+| 642 | F7 | n/a (bonus leak) | **APPLIED** — vocative marker on lego + build |
+| 646 | F7 | **APPLIED** — vocative marker (house law: vocative, not parenthetical) | **APPLIED** — build rows 3/4/5 + USE rows 8/9/10 marked |
+| 651 | F7 | **APPLIED** — lego + USE rows marked | build pos1/2 left bare (explicitly non-trap, low priority) |
+| 652 | F7 | not applied — sibling flagged for consistency, low urgency | — |
+| 653 | F7 | **APPLIED** — lego + build pos3 marked | **APPLIED** — USE rows 8/9/10 marked |
+| 655 | F7 | n/a (lego already marked) | **APPLIED** — USE rows 8/9/10 marked |
+| 281 | F4 | not applied — no single fixed trigger to bind mechanically (needs editorial call) | — |
+
+Full before/after text for every applied change: `tools/course-optimization/cue-library-v1-spa-foldins-applied-log.json`.
 
 ---
 ## Library v1.0 — the 8 trigger families
@@ -112,8 +180,9 @@ PROVEN, with one honest boundary. The cue-bundling M-lego mechanism survived clo
 *Spring:* 297|3 'they speak'=hablen collides with 283|3 'they speak'=hablan in the same 'personas que ___ español' frame
 
 - **BEFORE:** 297|3: 'they speak' = 'hablen'
-- **AFTER:** 297|3: 'who speak' = 'que hablen' (que bundled into the lego); the full-sentence lego 297|4 'I don't know many people who speak Spanish' = 'no conozco a muchas personas que hablen español' stays as the anchor; discipline: 'que hablen' only ever surfaces inside don't-know-many frames
-- **Why:** 'who speak' → que hablen is now unique course-wide (indicative side owns 'they speak'=hablan@283 and 'people who speak'=personas que hablan@22 — verified). Rejected fixHint's 'who MIGHT speak': 'might' already maps to podría/puede que (261/456/520) and would create a new collision. The felt indefiniteness cue lives in the sentence wrapper, which every 297 phrase carries.
+- **AFTER:** 297|3: 'who speak' = 'que hablen' (que bundled into the lego); the full-sentence lego 297|4 'I don't know many people who speak Spanish' = 'no conozco a muchas personas que hablen español' stays as the anchor. **Discipline (rewritten 2026-07-04 per the fold-in below): the que-bundled chunk gloss ('who speak' = que hablen) is the load-bearing discriminator by itself — do NOT rely on 'que hablen only surfaces inside don't-know-many frames' as a guarantee, the corpus already has 5+ USE phrases at 297|3 with no such wrapper. Sentence-wrapper frames are reinforcement, not the mechanism.**
+- **Why:** 'who speak' → que hablen is now unique course-wide (indicative side owns 'they speak'=hablan@283 and 'people who speak'=personas que hablan@22 — verified). Rejected fixHint's 'who MIGHT speak': 'might' already maps to podría/puede que (261/456/520) and would create a new collision. The felt indefiniteness cue lives inside the chunk's own gloss, not the sentence wrapper (see F3 family entry above, also revised).
+- **APPLIED 2026-07-04:** lego known/target updated as above; debut rung 297|3|pos1 ('They speak'=Hablen) deleted, promoting pos2 ('Personas que hablen español') as the new first exposure. See the fold-in list below.
 
 ### Seed 318 — F2 I-DON'T-THINK [`NEW_M_LEGO`]
 *Spring:* pueda debuts glossed 'she/he could' after ~80 reps of podría on that exact cue
@@ -279,14 +348,14 @@ PROVEN, with one honest boundary. The cue-bundling M-lego mechanism survived clo
 The three real forks are **#2 (seed-38 re-debut)**, **#5/#6 (house styles)**, **#9 (F1b emotion family)** — the rest are wording taste / mechanical sweeps / pilots.
 
 1. F1 fragment glosses as learner-felt prompts: sign off that a dangling English fragment ('you to think' = pensaras, 'you to ask' = preguntes) reads acceptably as a standalone prompt in the player — this is a new gloss register for the course and changes what the learner hears/sees at debut.
-2. Seed 38 re-debut approval: replacing the held atom 'I've been learning' with the split-frame 'I've been learning all day' = 'llevo todo el día aprendiendo' changes the atom's shape, its known-side audio, and the seed's intro order — the single most structural change in the run.
-3. Seed 115|4|20 three-way call: change English (trying -> learning, preferred, known audio only) vs change Spanish (aprendiendo -> intentando, target audio regen + native check) vs delete — semantics and voice, not mechanics.
-4. Seed 297 debut restructure: re-gloss pos1 'Who speak' vs delete-and-promote 'People who speak Spanish' = 'Personas que hablen español' as the new first cue — shifts the debut experience; Spanish expert should confirm the standalone subjunctive relative rung sounds natural, not clipped.
-5. F7 marker style: '(formal)' parenthetical vs ', sir / , madam' (señor/señora) vocative on the 646 build rows and estate-wide — both exist in the course; pick one house style before the sweep bakes it in across four Romance courses.
-6. F4 component-parenthetical convention: approve '(until they) are' / '(before) we moved' / '(whenever) you feel' as the standard component-display style — it extends the '(formal)' house pattern to trigger words and will appear on every decomposition screen.
+2. Seed 38 re-debut approval: replacing the held atom 'I've been learning' with the split-frame 'I've been learning all day' = 'llevo todo el día aprendiendo' changes the atom's shape, its known-side audio, and the seed's intro order — the single most structural change in the run. **RESOLVED 2026-07-04: A (adopt) — applied.**
+3. Seed 115|4|20 three-way call: change English (trying -> learning, preferred, known audio only) vs change Spanish (aprendiendo -> intentando, target audio regen + native check) vs delete — semantics and voice, not mechanics. **Still open — no owner decision given this round.**
+4. Seed 297 debut restructure: re-gloss pos1 'Who speak' vs delete-and-promote 'People who speak Spanish' = 'Personas que hablen español' as the new first cue — shifts the debut experience; Spanish expert should confirm the standalone subjunctive relative rung sounds natural, not clipped. **Applied the preferred (delete-and-promote) option 2026-07-04 as part of the F3 fold-in; the native-speaker "sounds natural" check is still outstanding.**
+5. F7 marker style: '(formal)' parenthetical vs ', sir / , madam' (señor/señora) vocative on the 646 build rows and estate-wide — both exist in the course; pick one house style before the sweep bakes it in across four Romance courses. **RESOLVED 2026-07-04: B (vocative) — applied, plus a new house law banning parentheses entirely (see STATUS UPDATE above and `ralph-methodology.md`).**
+6. F4 component-parenthetical convention: approve '(until they) are' / '(before) we moved' / '(whenever) you feel' as the standard component-display style — it extends the '(formal)' house pattern to trigger words and will appear on every decomposition screen. **SUPERSEDED 2026-07-04 by the no-parentheses house law — component fixes use a natural glued prefix instead ("before we moved"), applied 2026-07-04.**
 7. 330 gloss wording: 'I don't think it's' vs 'I don't think that is' (corpus-aligned) — pure learner-felt wording, Tom's ear.
 8. Native-speaker adjudication: 'no estoy seguro de que' + indicative at seeds 169/252/406 — decide whether to standardise to subjunctive course-wide (Spanish changes + audio) or accept the variation and manage exposure spacing.
-9. 427 emotion-matrix call: delete USE 9 or open an F1b emotion-subjunctive family ('worried that' = 'preocupado de que' + subj) — a new family is a real debut-cost decision, not a patch.
+9. 427 emotion-matrix call: delete USE 9 or open an F1b emotion-subjunctive family ('worried that' = 'preocupado de que' + subj) — a new family is a real debut-cost decision, not a patch. **RESOLVED 2026-07-04 (FORK3): delete — applied.** F1b logged here as a possible future, deliberately-scoped addition; not built.
 10. F8 pilot go/no-go: authorise a spa_for_eng patch+adversary cycle on conozco/sé and estamos/somos before any Romance transfer of lexical twins; and confirm dropping the ser/estar pair for French (copula collapses).
 11. Ghost-token salience: whether 'llevo … aprendiendo' should render salient (non-ghost) in split-frame warm-up rungs — a course-builder decomposition/display decision affecting how strongly the frame is re-prompted.
 
