@@ -353,5 +353,111 @@
       "presentation_audio_id": null
     },
     "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "9b4a771d-2b95-4d6a-aeb6-90a5ac37375a",
+    "seed": 647,
+    "before": {
+      "known": "you speak it",
+      "target": "vous le parlez"
+    },
+    "after": {
+      "known_text": "you speak it madam",
+      "known_audio_id": null,
+      "target_text": "vous le parlez madame",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    },
+    "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "fra_for_eng:S0647L01B01",
+    "seed": 647,
+    "was": {
+      "known": "you speak it",
+      "target": "vous le parlez"
+    },
+    "duplicateOf": "fra_for_eng:S0647L01U01",
+    "reason": "bare build would duplicate marked row fra_for_eng:S0647L01U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0647L01B02",
+    "seed": 647,
+    "before": {
+      "known": "yes you speak it",
+      "target": "oui vous le parlez"
+    },
+    "after": {
+      "known_text": "yes you speak it madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0647L01B03",
+    "seed": 647,
+    "before": {
+      "known": "you speak it well",
+      "target": "vous le parlez bien"
+    },
+    "after": {
+      "known_text": "you speak it well madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0647L01U03",
+    "seed": 647,
+    "before": {
+      "known": "yes you speak it well",
+      "target": "oui vous le parlez bien"
+    },
+    "after": {
+      "known_text": "yes you speak it well madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0647L01U04",
+    "seed": 647,
+    "before": {
+      "known": "you speak it better than me",
+      "target": "vous le parlez mieux que moi"
+    },
+    "after": {
+      "known_text": "you speak it better than me madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0647L01U05",
+    "seed": 647,
+    "before": {
+      "known": "you speak it with confidence",
+      "target": "vous le parlez avec confiance"
+    },
+    "after": {
+      "known_text": "you speak it with confidence madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
   }
 ]
