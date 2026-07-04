@@ -63,5 +63,306 @@
       "target1_audio_id": null,
       "target2_audio_id": null
     }
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "33951a88-c049-44af-bfc0-85d240c952d7",
+    "seed": 162,
+    "before": {
+      "known": "you think",
+      "target": "vous pensez",
+      "components": [
+        {
+          "known": "do you",
+          "target": "vous"
+        },
+        {
+          "known": "think",
+          "target": "pensez"
+        }
+      ]
+    },
+    "after": {
+      "target_text": "tu penses",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "components": [
+        {
+          "known": "do you",
+          "target": "tu"
+        },
+        {
+          "known": "think",
+          "target": "penses"
+        }
+      ]
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01B01",
+    "seed": 162,
+    "before": {
+      "known": "do you think",
+      "target": "vous pensez"
+    },
+    "after": {
+      "target_text": "tu penses",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01B02",
+    "seed": 162,
+    "before": {
+      "known": "do you think",
+      "target": "vous pensez"
+    },
+    "after": {
+      "target_text": "tu penses",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01B03",
+    "seed": 162,
+    "before": {
+      "known": "do you think that",
+      "target": "vous pensez que"
+    },
+    "after": {
+      "target_text": "tu penses que",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01B04",
+    "seed": 162,
+    "before": {
+      "known": "what do you think",
+      "target": "qu'est-ce que vous pensez"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu penses",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01C01",
+    "seed": 162,
+    "before": {
+      "known": "do you",
+      "target": "vous"
+    },
+    "after": {
+      "target_text": "tu",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01C02",
+    "seed": 162,
+    "before": {
+      "known": "think",
+      "target": "pensez"
+    },
+    "after": {
+      "target_text": "penses",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01U01",
+    "seed": 162,
+    "before": {
+      "known": "what do you think about this?",
+      "target": "qu'est-ce que vous pensez de ça?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu penses de ça?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01U02",
+    "seed": 162,
+    "before": {
+      "known": "do you think I can do that?",
+      "target": "vous pensez que je peux faire ça?"
+    },
+    "after": {
+      "target_text": "tu penses que je peux faire ça?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01U03",
+    "seed": 162,
+    "before": {
+      "known": "do you think that's a good idea?",
+      "target": "vous pensez que c'est une bonne idée?"
+    },
+    "after": {
+      "target_text": "tu penses que c'est une bonne idée?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01U04",
+    "seed": 162,
+    "before": {
+      "known": "do you think it's going to be difficult?",
+      "target": "vous pensez que ça va être difficile?"
+    },
+    "after": {
+      "target_text": "tu penses que ça va être difficile?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01U05",
+    "seed": 162,
+    "before": {
+      "known": "I'd like to know what you think",
+      "target": "j'aimerais savoir ce que vous pensez"
+    },
+    "after": {
+      "target_text": "j'aimerais savoir ce que tu penses",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01U06",
+    "seed": 162,
+    "before": {
+      "known": "what do you think about that book?",
+      "target": "qu'est-ce que vous pensez de ce livre?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu penses de ce livre?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01U07",
+    "seed": 162,
+    "before": {
+      "known": "what do you think about my idea?",
+      "target": "qu'est-ce que vous pensez de mon idée?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu penses de mon idée?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0162L01U08",
+    "seed": 162,
+    "before": {
+      "known": "what do you think I should do?",
+      "target": "qu'est-ce que vous pensez que je dois faire?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu penses que je dois faire?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_SEED",
+    "seed": 162,
+    "before": {
+      "known": "what do you think about that?",
+      "target": "qu'est-ce que vous pensez de ça?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu penses de ça?",
+      "target1_audio_id": null,
+      "target2_audio_id": null
+    }
   }
 ]
