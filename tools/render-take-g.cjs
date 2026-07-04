@@ -133,7 +133,7 @@ function cuedGroupText(turnText, group) {
         res.reused ? reused++ : rendered++
         ids.push(res.id)
       } catch (e) {
-        console.log(`S${s.global_order}: ✗ TTS fail — ${e.message.slice(0, 120)}`)
+        console.log(`S${s.global_order} g${ids.length} [${voice.provider}/${voice.voice_id}] "${cued.slice(0, 50)}": ✗ ${e.message.slice(0, 140)}`)
         failed++; ids.push(null)
       }
     }

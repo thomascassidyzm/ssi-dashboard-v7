@@ -5119,14 +5119,23 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
 
   const audioId = uuidv4().toUpperCase()
   const s3Key = `mastered/${audioId}.mp3`
-  try {
-    await s3.send(new PutObjectCommand({
-      Bucket: S3_BUCKET,
-      Key: s3Key,
-      Body: masteredBuffer,
-      ContentType: 'audio/mpeg',
-    }))
-  } catch (e) { e.message = `[STAGE=s3] ${e.message}`; throw e }
+  // Retry the upload: after a long TTS synthesis the pooled S3 socket can
+  // come back with a transient ECONNRESET — losing a paid render to that is
+  // worse than a second attempt on a fresh connection.
+  for (let attempt = 1; ; attempt++) {
+    try {
+      await s3.send(new PutObjectCommand({
+        Bucket: S3_BUCKET,
+        Key: s3Key,
+        Body: masteredBuffer,
+        ContentType: 'audio/mpeg',
+      }))
+      break
+    } catch (e) {
+      if (attempt >= 3) { e.message = `[STAGE=s3 after ${attempt} attempts] ${e.message}`; throw e }
+      await new Promise((r) => setTimeout(r, 600 * attempt))
+    }
+  }
 
   const { data: inserted, error: insertError } = await supabase
     .from('course_audio')
