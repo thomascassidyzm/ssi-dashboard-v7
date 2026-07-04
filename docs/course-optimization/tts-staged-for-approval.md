@@ -1,4 +1,27 @@
-# TTS staged for approval — cue-library v1.0 fold-in sweep (spa_for_eng)
+# TTS staged for approval — cue-library v1.0 fold-in sweep (spa_for_eng) + formal-vous pass (fra_for_eng)
+
+## fra_for_eng — formal-vous pass, 2026-07-04 (seeds 642-655)
+
+*Same rules as below: no TTS generated; changed rows' `*_audio_id` fields nulled (staged
+per edit-cascade-spec §2d) and now sit in fra_for_eng's "Generate Missing Audio" queue,
+which only renders on explicit go-ahead.*
+
+**Full re-record (known + target both changed — lego realigned to the seed's own spoken
+vocative form, French target audio changes):** seed 642 lego `S0642L02`, 643 `S0643L01`,
+645 `S0645L01`, 647 `S0647L01`, 649 `S0649L02`, 650 `S0650L01`, 651 `S0651L01`,
+652 `S0652L01`, 653 `S0653L02` — 9 legos.
+
+**Known-side only (English cue gained a vocative marker, French target audio untouched):**
+seed 644 lego `S0644L02` + B01/B02/B03/U03/U04/U05; 654 lego `S0654L02` + B01/B02/U02-U05;
+655 lego `S0655L01` + B01-B03/U02-U04; plus the marked build/USE rows of seeds 642 (U02-U04),
+643 (U04), 645 (B02/B03/U03-U05), 647 (B02/B03/U03-U05), 648 (B02/B03/U02-U05),
+649 (B03/U03/U05), 650 (B02/B03/U04/U05), 651 (B02/U04), 652 (U04), 653 (L01 U04/U05 +
+L02 B02/B03/U03-U05) — 50 rows.
+
+**Deleted (redundant bare precursors, no audio needed):** 14 build rows — see the applied log.
+
+Full machine-readable before/after: `tools/course-optimization/formal-vous-pass-fra-applied-log.json`.
+
 
 *Generated 2026-07-04 by the fold-in sweep. No TTS was generated. This is the "flag it" step
 per CLAUDE.md's approval gate: known_text/target_text changed on the rows below, their

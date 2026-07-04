@@ -8,6 +8,45 @@ the original spa run), sized for a dedicated pass, not something to fold silentl
 session.*
 
 ---
+## STATUS UPDATE — 2026-07-04 dedicated formal-vous pass (COMPLETE for the 639-655 block)
+
+The dedicated Fable-5-design + N-Sonnet-adversary pass this doc called for has run. Scope was
+widened per the scope note ("every formal-`vous` seed, not just the F7-labelled ones"): a
+course-wide scan found the formal-vous block is seeds **639-655** (the original 9-seed list
+missed 639/643/644/645/647/648/649/650/654, and mis-included 162/657/661/666 — see below).
+
+- **FIXED & VERIFIED (13 seeds): 642, 643, 644, 645, 647, 648, 649, 650, 651, 652, 653, 654,
+  655.** 81 actions (58 vocative marks, 9 lego realignments to each seed's own spoken form,
+  14 redundant-bare-precursor deletions), each independently verified by one of three Sonnet
+  adversaries against the live DB before apply (before-states, course-wide uniqueness incl.
+  new-vs-new, deletion safety, closed loop, house law). Post-apply re-scan: **zero bare
+  formal-vous cued rows across 639-655**. Apply tool + verified proposals + applied log:
+  `tools/course-optimization/apply-formal-vous-pass-fra.cjs` / `formal-vous-pass-fra-proposals.json`
+  / `formal-vous-pass-fra-applied-log.json`. Audio staged/nulled only (see
+  `tts-staged-for-approval.md`); `course_round_index` needs no refresh (view holds ids/order
+  only; no legos added/removed). 651's "structurally harder" case (below) resolved cleanly:
+  the debut realigns to the seed's own `qu'en pensez-vous madame ?` (byte-copy of its U01 and
+  of `course_seeds` 651) — no editorial wording was needed anywhere.
+- **639 and 646**: already clean / already fixed; only component rows (visual tiles, not cued
+  production) remain bare there and course-wide, per the committed 646 precedent.
+- **NOT formal seeds, delisted**: 657/661/666 are plural "you all" seeds (discriminated by
+  all/tous) — only their component tiles are bare; no action. 162 is an early bare-vous seed —
+  moved to the owner decision list below.
+- **OWNER DECISION LIST (not applied — register/wording calls, no vocative vocabulary available
+  at those course positions since monsieur/madame debut at 639):** seeds **161, 162, 165, 179,
+  194, 196, 204** each drill bare `vous` cues (lego/build/use, not just components) whose known
+  texts collide with drilled `tu` twins (e.g. 162 U02 "do you think I can do that?" =
+  `vous pensez...` vs seed 135 U02 identical known = `tu penses...`). Options per seed:
+  plural-mark the known ("you all..."), reword one side, or accept as register variation.
+  Plus two minor flags: seed 414/624/630 "please" doublet (`s'il vous plaît` vs `s'il te
+  plaît` under the same bare known), and seed 267 "have you heard" = `tu as eu` (looks like a
+  mis-gloss: that target means "you have had"). Machine-readable collision list:
+  `unmarkedVousLiveCollisions` in `formal-vous-pass-fra-proposals.json`.
+- **Native-review flags from the adversaries** (pre-existing, untouched): embedded-inversion
+  French in 642 U03/U04 (`j'aimerais savoir comment vous sentez-vous`), redundant `en` + `de
+  cela` in 651 B02/U04 (`qu'en pensez-vous de cela`), 649 lego now lowercase-initial
+  (`êtes-vous...`, matches its donor row), `course_seeds` 645 capitalisation nit.
+
 ## STATUS UPDATE — 2026-07-04 transfer execution (seed 646 applied; wider F7 bug confirmed live)
 
 The confirmed F7 finding above (seed 646 reproduces spa's exact bare-build bug) was applied to
