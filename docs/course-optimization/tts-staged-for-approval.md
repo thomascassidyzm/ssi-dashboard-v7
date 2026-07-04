@@ -1,5 +1,29 @@
 # TTS staged for approval — cue-library v1.0 fold-in sweep (spa_for_eng) + formal-vous pass (fra_for_eng)
 
+## RENDERED 2026-07-04 (owner-approved TTS render, this pass)
+
+Both staged sets below were pushed through the repo's existing render pipeline
+(`POST /api/production/:courseCode/audio-pipeline/start` → Phase 8 `/generate/:courseCode`,
+i.e. exactly the dashboard's "Generate Missing Audio" action — no new pipeline invented),
+**scoped to just the seeds named below** via Phase 8's existing `seeds` param
+(`/plan` and `/generate` both accept `?seeds=`/`body.seeds`). This mattered because each
+course carries a much larger pre-existing missing-audio backlog unrelated to this session
+(spa_for_eng: ~18.5k clips / ~$74 course-wide, going back to 2026-05-28; fra_for_eng: ~460-510
+clips / ~$2 course-wide) — running the whole-course action would have rendered that backlog
+too, well outside what was approved here. Scoped runs instead:
+
+- **spa_for_eng** (seeds 38, 297, 396, 497, 506, 542, 642, 646, 651, 653, 655): 454 clips,
+  ~$0.18. First pass: 451/454 succeeded, 3 failed on transient network errors (`fetch failed`,
+  `ECONNRESET`). Retried the same scoped call twice more (idempotent — only fills remaining
+  nulls): 1 more succeeded, then the last 2 succeeded. **454/454 rendered, 0 missing
+  remaining in scope.**
+- **fra_for_eng** (seeds 642-655): 61 clips, ~$0.03. **61/61 rendered on the first pass, 0
+  failures, 0 missing remaining in scope.**
+
+Course-wide backlog for both courses (pre-existing, not part of this approval) is untouched
+and still sits in each course's Generate Missing Audio queue for a future, separately-scoped
+decision.
+
 ## fra_for_eng — formal-vous pass, 2026-07-04 (seeds 642-655)
 
 *Same rules as below: no TTS generated; changed rows' `*_audio_id` fields nulled (staged
