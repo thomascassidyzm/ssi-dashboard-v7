@@ -142,5 +142,110 @@
       "presentation_audio_id": null
     },
     "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "77d3eed8-1af9-42b0-8cbe-81b7fa08a40a",
+    "seed": 644,
+    "before": {
+      "known": "could you?",
+      "target": "pourriez-vous ?"
+    },
+    "after": {
+      "known_text": "could you sir?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark, unique course-wide (646 lego precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0644L02B01",
+    "seed": 644,
+    "before": {
+      "known": "could you?",
+      "target": "pourriez-vous ?"
+    },
+    "after": {
+      "known_text": "could you sir?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0644L02B02",
+    "seed": 644,
+    "before": {
+      "known": "could you please do that?",
+      "target": "pourriez-vous faire cela s'il vous plaît ?"
+    },
+    "after": {
+      "known_text": "could you please do that sir?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0644L02B03",
+    "seed": 644,
+    "before": {
+      "known": "could you help right now?",
+      "target": "pourriez-vous aider maintenant ?"
+    },
+    "after": {
+      "known_text": "could you help right now sir?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0644L02U03",
+    "seed": 644,
+    "before": {
+      "known": "could you help me?",
+      "target": "pourriez-vous m'aider ?"
+    },
+    "after": {
+      "known_text": "could you help me sir?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0644L02U04",
+    "seed": 644,
+    "before": {
+      "known": "could you wait?",
+      "target": "pourriez-vous attendre ?"
+    },
+    "after": {
+      "known_text": "could you wait sir?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0644L02U05",
+    "seed": 644,
+    "before": {
+      "known": "could you come?",
+      "target": "pourriez-vous venir ?"
+    },
+    "after": {
+      "known_text": "could you come sir?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
   }
 ]
