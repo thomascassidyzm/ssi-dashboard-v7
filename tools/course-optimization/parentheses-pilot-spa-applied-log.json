@@ -58,5 +58,65 @@
       "target": "se"
     },
     "reason": "stale-duplicate component JSON; sibling S0642L02C01 already reads bare \"you\". Note: seed 642 has a separate, pre-existing, documented bare-USE-line ZUT collision (cue-library-v1-spa.md: se siente vs te sientes@40 / te sientas@542) — untouched by this fix."
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "5de869ce-05a7-42f5-8db5-bcea89dc2997",
+    "seed": 645,
+    "legoIndex": 1,
+    "before": {
+      "known": "you (formal)",
+      "target": "le"
+    },
+    "after": {
+      "known": "you",
+      "target": "le"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0645L01C02 already reads bare \"you\" (register carried by U01/U02 vocative siblings)"
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "b71a47e4-1b06-4065-a7b8-602ee4dc5936",
+    "seed": 653,
+    "legoIndex": 1,
+    "before": {
+      "known": "you (formal)",
+      "target": "le"
+    },
+    "after": {
+      "known": "you",
+      "target": "le"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0653L01C01 already reads bare \"you\" (register already carried by the lego's own known_text \"does it matter to you sir\")"
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "9aa27f68-dff1-463b-af24-470c23a39f02",
+    "seed": 657,
+    "legoIndex": 1,
+    "before": {
+      "known": "you all (reflexive)",
+      "target": "os"
+    },
+    "after": {
+      "known": "you all",
+      "target": "os"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0657L01C01 already reads bare \"you all\""
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "999f0b56-cb67-432f-a868-03dea334fe51",
+    "seed": 667,
+    "legoIndex": 1,
+    "before": {
+      "known": "you all (indirect)",
+      "target": "os"
+    },
+    "after": {
+      "known": "you all",
+      "target": "os"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0667L01C01 already reads bare \"you all\""
   }
 ]
