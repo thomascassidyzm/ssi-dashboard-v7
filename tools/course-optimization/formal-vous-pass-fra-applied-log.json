@@ -459,5 +459,106 @@
       "presentation_audio_id": null
     },
     "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "fra_for_eng:S0648L01B01",
+    "seed": 648,
+    "was": {
+      "known": "what you said",
+      "target": "ce que vous avez dit"
+    },
+    "duplicateOf": "de8d030e-9e88-43f0-840d-99775f0af2a3",
+    "reason": "bare build would duplicate marked row de8d030e-9e88-43f0-840d-99775f0af2a3 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0648L01B02",
+    "seed": 648,
+    "before": {
+      "known": "she knows what you said",
+      "target": "elle sait ce que vous avez dit"
+    },
+    "after": {
+      "known_text": "she knows what you said madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0648L01B03",
+    "seed": 648,
+    "before": {
+      "known": "he knows what you said",
+      "target": "il sait ce que vous avez dit"
+    },
+    "after": {
+      "known_text": "he knows what you said madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0648L01U02",
+    "seed": 648,
+    "before": {
+      "known": "I understood what you said",
+      "target": "j'ai compris ce que vous avez dit"
+    },
+    "after": {
+      "known_text": "I understood what you said madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0648L01U03",
+    "seed": 648,
+    "before": {
+      "known": "that is what you said",
+      "target": "c'est ce que vous avez dit"
+    },
+    "after": {
+      "known_text": "that is what you said madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0648L01U04",
+    "seed": 648,
+    "before": {
+      "known": "I know what you said",
+      "target": "je sais ce que vous avez dit"
+    },
+    "after": {
+      "known_text": "I know what you said madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0648L01U05",
+    "seed": 648,
+    "before": {
+      "known": "I think about what you said",
+      "target": "je pense à ce que vous avez dit"
+    },
+    "after": {
+      "known_text": "I think about what you said madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
   }
 ]
