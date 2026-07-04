@@ -76,6 +76,12 @@ const sentences = ref([]) // listening_pod_sentences rows
 const selectedIdx = ref(0)
 const glossMap = ref(new Map())
 const targetClipMap = ref(new Map())
+const fineKnownMap = ref(new Map()) // text_normalized → pod_fine_known clip id
+
+// mirror of services/shared/text-normalize.cjs normalizeForAudio — every
+// lookup against course_audio.text_normalized must use exactly this
+const normForAudio = (t) =>
+  (t || '').toLowerCase().trim().replace(/\s+/g, ' ').replace(/[.!。！]+$/, '')
 
 // tunable config (starts from live, editable in-session, never written back)
 const labStage0 = ref(clone(DEFAULT_STAGE0))
@@ -192,7 +198,7 @@ async function loadCourse(courseCode) {
     const { data: rows, error: podErr } = await sb
       .from('listening_pod_sentences')
       .select(
-        'id, global_order, speaker, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, glue_to_next, atom_map, atom_map_fine, sentence_audio_ids, sentence_known_audio_ids',
+        'id, global_order, speaker, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, glue_to_next, atom_map, atom_map_fine, window_known_map, takeg_audio_ids, sentence_audio_ids, sentence_known_audio_ids',
       )
       .eq('pod_id', `${courseCode}:pod-0`)
       .order('global_order', { ascending: true })
@@ -204,6 +210,15 @@ async function loadCourse(courseCode) {
     const maps = await loadStage0ClipMaps(sb, courseCode)
     glossMap.value = maps.glossMap
     targetClipMap.value = maps.targetClipMap
+
+    // Fine-known clips: plain English per unit gloss / window translation,
+    // text-keyed (same normalisation as course_audio.text_normalized).
+    const { data: fineRows } = await sb
+      .from('course_audio')
+      .select('id, text_normalized')
+      .eq('course_code', courseCode)
+      .eq('role', 'pod_fine_known')
+    fineKnownMap.value = new Map((fineRows || []).map((r) => [r.text_normalized, r.id]))
 
     if (!sentences.value.length) error.value = `No pod sentences found for ${courseCode}:pod-0.`
   } catch (e) {
@@ -274,15 +289,27 @@ function exportJson() {
 function audioUrl(id) {
   return `${AUDIO_BASE}/${id}?courseId=${encodeURIComponent(selectedCourseCode.value)}`
 }
-function playClip(id, speed) {
+// clip = a course_audio id, or { id, startMs, endMs } — a timed slice of one
+// (how every Take G chunk plays: one gapped take, ms spans, no per-chunk files)
+function playClip(clip, speed) {
   return new Promise((resolve) => {
-    if (!id) return resolve()
-    const a = new Audio(audioUrl(id))
+    if (!clip) return resolve()
+    const slice = typeof clip === 'object'
+    const a = new Audio(audioUrl(slice ? clip.id : clip))
     a.playbackRate = speed || 1
     currentAudio.value = a
-    a.onended = resolve
-    a.onerror = resolve
-    a.play().catch(resolve)
+    let done = false
+    const finish = () => { if (!done) { done = true; resolve() } }
+    a.onended = finish
+    a.onerror = finish
+    if (slice) {
+      a.currentTime = clip.startMs / 1000
+      const endS = clip.endMs / 1000
+      a.ontimeupdate = () => {
+        if (a.currentTime >= endS) { a.pause(); finish() }
+      }
+    }
+    a.play().catch(finish)
   })
 }
 async function playPlays(plays) {
@@ -331,11 +358,14 @@ function stop() {
 // longer siblings climb. No explainer stage, no 'means' formula anywhere.
 // This supersedes v3's per-sentence Stage-1-8 cascade (62317b5d).
 //
-// AUDIO HONESTY: sub-sentence chunks butt their unit clips together (Take G,
-// sliced at exactly these seams, replaces them); per-unit knowns are the
-// legacy "means X" renders and window translations don't exist yet — both
-// dashed, both on the Take G shopping list. Sentence wholes play the REAL
-// per-sentence takes (target + translation); the turn plays its real takes.
+// AUDIO HONESTY: where the course has been through the Take G run
+// (render-take-g → slice-take-g → render-fine-knowns → author-window-knowns),
+// every sub-sentence chunk is a real ms SLICE of its sentence's gapped Take G
+// render, and every known is the real fine-known clip (plain unit gloss /
+// authored window translation, coach voice). Chips fall back to the old
+// dashed approximations (butted unit clips / legacy "means X") only where a
+// course hasn't had the run. Conjoined-sentence rungs butt real takes by
+// design; sentence wholes and the turn play their real takes.
 
 const mode = ref('shapes') // 'shapes' = the unified ladder | 'arc' = live engine arc
 const unitsSource = ref('fine') // 'fine' (draft atom_map_fine, default) | 'live' (atom_map)
@@ -354,7 +384,15 @@ const shapeAtoms = computed(() => {
   const s = selectedSentence.value
   if (!s) return []
   const map = usingFine.value ? s.atom_map_fine : s.atom_map
-  return resolveAtoms(map, glossMap.value, targetClipMap.value)
+  const resolved = resolveAtoms(map, glossMap.value, targetClipMap.value)
+  // carry the Take G ms spans through (resolveAtoms keeps atom+passthrough in
+  // order, so a positional zip against the same filter is exact)
+  const src = (map || []).filter((e) => e.kind === 'atom' || e.kind === 'passthrough')
+  return resolved.map((a, i) => ({
+    ...a,
+    target_start_ms: src[i]?.target_start_ms ?? null,
+    target_end_ms: src[i]?.target_end_ms ?? null,
+  }))
 })
 
 // One fusion step over spans of unit indices.
@@ -465,24 +503,51 @@ const ladderRungs = computed(() => {
 
   const single = groups.length === 1
 
-  // sub-sentence chunk + its known (concat approximations until Take G)
-  const chunkStep = (g, span) => {
+  // Take G takes (uuid[] aligned to these glued groups) + flat unit offsets,
+  // for slicing chunks out of the gapped take and finding window knowns.
+  const takegIds =
+    Array.isArray(s.takeg_audio_ids) && s.takeg_audio_ids.length === groups.length
+      ? s.takeg_audio_ids
+      : groups.map(() => null)
+  const offsets = []
+  {
+    let off = 0
+    for (const g of groups) { offsets.push(off); off += g.length }
+  }
+  const winKnown = new Map()
+  for (const w of s.window_known_map || []) winKnown.set(`${w.start}-${w.end}`, w.known)
+
+  // sub-sentence chunk: a contiguous ms SLICE of the group's Take G render
+  // (gaps preserved); butted unit clips only where Take G is missing
+  const chunkStep = (g, span, gi) => {
     const us = g.slice(span.start, span.end + 1)
+    const takeg = takegIds[gi]
+    const sliced = takeg && us.every((a) => a.target_start_ms != null && a.target_end_ms != null)
     return {
       kind: 'chunk',
       text: us.map((a) => a.targetSurface).join(' '),
-      clips: us.map((a) => a.targetClipId),
-      approx: us.length > 1,
+      clips: sliced
+        ? [{ id: takeg, startMs: us[0].target_start_ms, endMs: us[us.length - 1].target_end_ms }]
+        : us.map((a) => a.targetClipId),
+      approx: !sliced && us.length > 1,
       rate: 1,
     }
   }
-  const knownStep = (g, span) => {
+  // chunk's known: the REAL fine-known clip for the unit gloss / authored
+  // window translation; legacy "means X" butt only where it's missing
+  const knownStep = (g, span, gi) => {
     const us = g.slice(span.start, span.end + 1)
+    const text =
+      us.length === 1
+        ? us[0].gloss || ''
+        : winKnown.get(`${offsets[gi] + span.start}-${offsets[gi] + span.end}`) ||
+          us.map((a) => a.gloss).filter(Boolean).join(' ')
+    const real = fineKnownMap.value.get(normForAudio(text))
     return {
       kind: 'gloss',
-      text: us.map((a) => a.gloss).filter(Boolean).join(' '),
-      clips: us.map((a) => a.meansGlossClipId),
-      approx: true, // legacy "means X" clips; window translations not rendered yet
+      text,
+      clips: real ? [real] : us.map((a) => a.meansGlossClipId),
+      approx: !real,
       rate: 1,
     }
   }
@@ -491,22 +556,27 @@ const ladderRungs = computed(() => {
   const wholeSentenceChunk = (gi) => {
     const g = groups[gi]
     const take = takes[gi] || (single ? s.target_audio_id : null)
+    // no natural take (the glue-merged turns): the group's full Take G is the
+    // real, correctly-voiced render of exactly this sentence — gaps and all
+    const clips = take ? clipList(take) : takegIds[gi] ? [takegIds[gi]] : g.map((a) => a.targetClipId)
     return {
       kind: 'group',
       text: g.map((a) => a.targetSurface).join(' '),
-      clips: take ? clipList(take) : g.map((a) => a.targetClipId),
-      approx: !take,
+      clips,
+      approx: !take && !takegIds[gi],
       rate: 1,
     }
   }
   const wholeSentenceKnown = (gi) => {
     const g = groups[gi]
     const take = knownTakes[gi] || (single ? s.known_audio_id : null)
+    const text = single && s.known_text ? s.known_text : g.map((a) => a.gloss).filter(Boolean).join(' ')
+    const real = take ? null : fineKnownMap.value.get(normForAudio(text))
     return {
       kind: 'gloss',
-      text: single && s.known_text ? s.known_text : g.map((a) => a.gloss).filter(Boolean).join(' '),
-      clips: take ? clipList(take) : g.map((a) => a.meansGlossClipId),
-      approx: !take,
+      text,
+      clips: take ? clipList(take) : real ? [real] : g.map((a) => a.meansGlossClipId),
+      approx: !take && !real,
       rate: 1,
     }
   }
@@ -514,21 +584,31 @@ const ladderRungs = computed(() => {
   const conjoinChunk = (span) => {
     const gs = groups.slice(span.start, span.end + 1)
     const tks = takes.slice(span.start, span.end + 1)
+    // per sentence: natural take, else its Take G, else butted unit clips
+    const perGroup = gs.map((g, i) => {
+      const t = tks[i] || takegIds[span.start + i]
+      return t ? clipList(t) : g.map((a) => a.targetClipId)
+    })
     return {
       kind: 'group',
       text: gs.map((g) => g.map((a) => a.targetSurface).join(' ')).join(' '),
-      clips: tks.every(Boolean) ? tks.flatMap(clipList) : gs.flat().map((a) => a.targetClipId),
-      approx: true,
+      clips: perGroup.flat(),
+      approx: true, // butted takes until a conjoined render exists — by design
       rate: 1,
     }
   }
   const conjoinKnown = (span) => {
     const gs = groups.slice(span.start, span.end + 1)
     const kts = knownTakes.slice(span.start, span.end + 1)
+    const perGroup = gs.map((g, i) => {
+      if (kts[i]) return clipList(kts[i])
+      const real = fineKnownMap.value.get(normForAudio(g.map((a) => a.gloss).filter(Boolean).join(' ')))
+      return real ? [real] : g.map((a) => a.meansGlossClipId)
+    })
     return {
       kind: 'gloss',
       text: gs.map((g) => g.map((a) => a.gloss).filter(Boolean).join(' ')).join(' '),
-      clips: kts.every(Boolean) ? kts.flatMap(clipList) : gs.flat().map((a) => a.meansGlossClipId),
+      clips: perGroup.flat(),
       approx: true,
       rate: 1,
     }
@@ -561,7 +641,7 @@ const ladderRungs = computed(() => {
       const l = ladders[gi]
       const lvl = l[Math.min(r, l.length - 1)]
       if (lvl.length === 1) steps.push(...tktt(wholeSentenceChunk(gi), wholeSentenceKnown(gi)))
-      else lvl.forEach((span) => steps.push(...tktt(chunkStep(g, span), knownStep(g, span))))
+      else lvl.forEach((span) => steps.push(...tktt(chunkStep(g, span, gi), knownStep(g, span, gi))))
     })
     const last = r === maxDepth - 1
     rungs.push({
