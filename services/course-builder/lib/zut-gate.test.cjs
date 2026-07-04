@@ -52,6 +52,57 @@ describe('checkNewPhrases (pre-insert gate for new rows)', () => {
   })
 })
 
+describe('checkNewPhrases — component-role exemption (Tom\'s ruling, 2026-07-04)', () => {
+  it('ACCEPTS a component row whose known text collides with an existing different target', async () => {
+    const db = {
+      course_seeds: [
+        { course_code: COURSE, seed_number: 10, target_text: 'il n\'aimait pas cet endroit' },
+      ],
+      course_practice_phrases: [
+        { id: 'p1', course_code: COURSE, known_text: 'that', target_text: 'que', seed_number: 3 },
+      ],
+      course_legos: [],
+    }
+    const supabase = makeFakeSupabase(db)
+    const collisions = await checkNewPhrases(supabase, COURSE, [
+      { known: 'that', target: 'cet', role: 'component', seedNumber: 10 },
+    ])
+    expect(collisions).toHaveLength(0)
+  })
+
+  it('REJECTS a component row whose target_text is not part of its own seed\'s target sentence', async () => {
+    const db = {
+      course_seeds: [
+        { course_code: COURSE, seed_number: 10, target_text: 'il n\'aimait pas cet endroit' },
+      ],
+      course_practice_phrases: [],
+      course_legos: [],
+    }
+    const supabase = makeFakeSupabase(db)
+    const collisions = await checkNewPhrases(supabase, COURSE, [
+      { known: 'that', target: 'dire', role: 'component', seedNumber: 10 },
+    ])
+    expect(collisions).toHaveLength(1)
+    expect(collisions[0]).toMatchObject({ type: 'target_membership', new_target: 'dire', existing_seed: 10 })
+  })
+
+  it('non-component rows are unaffected by the exemption (unchanged bidirectional check)', async () => {
+    const db = {
+      course_seeds: [],
+      course_practice_phrases: [
+        { id: 'p1', course_code: COURSE, known_text: 'that', target_text: 'que', seed_number: 3 },
+      ],
+      course_legos: [],
+    }
+    const supabase = makeFakeSupabase(db)
+    const collisions = await checkNewPhrases(supabase, COURSE, [
+      { known: 'that', target: 'cet' },
+    ])
+    expect(collisions).toHaveLength(1)
+    expect(collisions[0]).toMatchObject({ type: 'known_side', existing_target: 'que' })
+  })
+})
+
 describe('checkEditedPhrase (post-write gate for in-place edits)', () => {
   it('rolls back an edit that collides with a DIFFERENT existing row', async () => {
     const db = {

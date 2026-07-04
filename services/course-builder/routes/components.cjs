@@ -246,7 +246,7 @@ module.exports = function (ctx) {
           // so this is a clean pre-check for new rows (no self-collision risk).
           const zutCollisions = await checkNewPhrases(
             ctx.supabase, courseCode,
-            componentPhrases.map(p => ({ known: p.known_text, target: p.target_text }))
+            componentPhrases.map(p => ({ known: p.known_text, target: p.target_text, role: 'component', seedNumber: seed_number }))
           );
           if (zutCollisions.length > 0) {
             const c = zutCollisions[0];

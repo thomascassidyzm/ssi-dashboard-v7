@@ -627,36 +627,100 @@ function formatDecompositionPatterns(goldenSeeds) {
 // collision); only a genuinely different target for the same English collides.
 // Resolution (the builder must do one): CONSOLIDATE to the existing target, or
 // DIFFERENTIATE the English prompt so each maps uniquely.
+//
+// COMPONENT-ROLE EXEMPTION (Tom's ruling, 2026-07-04, see
+// docs/course-optimization/zut-violation-sweep-pilot-fra-40.md): a
+// `course_practice_phrases` row with phrase_role:'component' is a per-sentence
+// tiling gloss, not an atomized intention — its known_text is often a literal,
+// context-bound back-gloss (e.g. "dire" glossed as part of an idiom), so it is
+// EXEMPT from the known-side check above, both as a submitted phrase (never
+// flagged for its own known->target pairing) and as an existing DB row (never
+// used to flag someone else's phrase). Pass `role: 'component'` per phrase to
+// opt in; phrases with no `role` (or any other role) get the unchanged,
+// full bidirectional check. Callers that never submit components (build/use
+// baskets) don't need to change.
+//
+// Component rows are NOT exempt on the target side: `target` must still be a
+// genuine constituent of the phrase's own seed's target sentence (Tom: "They
+// MUST be part of the target sentence of course."). Pass `seedNumber` per
+// component phrase to enable this check.
+//
+// Matching rule: plain SUBSTRING containment (normalizeForContainment(seed)
+// .includes(normalizeForContainment(target))), not the word-multiset
+// checkWordContainment used elsewhere for "does this phrase contain its
+// LEGO" (which tolerates word reordering — needed there because a LEGO can
+// legitimately appear mid-phrase, and German-style bracket constructions can
+// separate its words). A component is supposed to be a LITERAL, CONTIGUOUS
+// slice of its seed's target sentence, not a reordered word-set, so
+// contiguous substring is the more faithful test — and it composes for free
+// with the tiling's own elision/inversion conventions (French subject-verb
+// inversion "voulons-nous", elision "qu'il", Spanish enclitics "seguirnos")
+// that a whitespace/word-based check would wrongly flag as non-members, since
+// none of those introduce a space where the component's characters sit.
 async function checkPhraseZUT(supabase, courseCode, phrases, currentSeedNumber = null) {
   const nk = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '');
   const nt = s => (s || '').replace(/[\s。，？！、.?!,]/g, '');
   const subByKnown = new Map(); // normKnown -> { known, target, normTarget }
   const rawKnowns = [];
+  const componentSubs = []; // component-role phrases: { known, target, seedNumber }
   for (const p of phrases || []) {
     if (!p.known || !p.target) continue;
+    if (p.role === 'component') {
+      componentSubs.push(p);
+      continue;
+    }
     const k = nk(p.known);
     if (!subByKnown.has(k)) { subByKnown.set(k, { known: p.known, target: p.target, normTarget: nt(p.target) }); rawKnowns.push(p.known); }
   }
-  if (!rawKnowns.length) return [];
 
-  const fetch = async (table) => {
-    let q = supabase.from(table).select('known_text, target_text, seed_number').eq('course_code', courseCode).in('known_text', [...new Set(rawKnowns)]);
-    if (currentSeedNumber !== null) q = q.lt('seed_number', currentSeedNumber);
-    const { data } = await q;
-    return data || [];
-  };
-  const existing = [...(await fetch('course_practice_phrases')), ...(await fetch('course_legos'))];
+  const collisions = [];
 
-  const collisions = [], seen = new Set();
-  for (const e of existing) {
-    const sub = subByKnown.get(nk(e.known_text));
-    if (!sub) continue;
-    if (nt(e.target_text) !== sub.normTarget) {
-      const key = `${nk(e.known_text)}|${nt(e.target_text)}`;
-      if (seen.has(key)) continue; seen.add(key);
-      collisions.push({ known: sub.known, new_target: sub.target, existing_target: e.target_text, existing_seed: e.seed_number });
+  if (rawKnowns.length) {
+    const fetch = async (table, withRole) => {
+      const cols = withRole ? 'known_text, target_text, seed_number, phrase_role' : 'known_text, target_text, seed_number';
+      let q = supabase.from(table).select(cols).eq('course_code', courseCode).in('known_text', [...new Set(rawKnowns)]);
+      if (currentSeedNumber !== null) q = q.lt('seed_number', currentSeedNumber);
+      const { data } = await q;
+      return data || [];
+    };
+    // course_legos has no phrase_role column (LEGOs are never components) — only
+    // course_practice_phrases rows need filtering to drop component partners.
+    const existingPhrases = (await fetch('course_practice_phrases', true)).filter(e => e.phrase_role !== 'component');
+    const existingLegos = await fetch('course_legos', false);
+    const existing = [...existingPhrases, ...existingLegos];
+
+    const seen = new Set();
+    for (const e of existing) {
+      const sub = subByKnown.get(nk(e.known_text));
+      if (!sub) continue;
+      if (nt(e.target_text) !== sub.normTarget) {
+        const key = `${nk(e.known_text)}|${nt(e.target_text)}`;
+        if (seen.has(key)) continue; seen.add(key);
+        collisions.push({ known: sub.known, new_target: sub.target, existing_target: e.target_text, existing_seed: e.seed_number, type: 'known_side' });
+      }
     }
   }
+
+  if (componentSubs.length) {
+    const seedNumbers = [...new Set(componentSubs.filter(p => p.seedNumber != null).map(p => p.seedNumber))];
+    let seedTargetByNumber = new Map();
+    if (seedNumbers.length) {
+      const { data: seeds } = await supabase.from('course_seeds').select('seed_number, target_text').eq('course_code', courseCode).in('seed_number', seedNumbers);
+      seedTargetByNumber = new Map((seeds || []).map(s => [s.seed_number, s.target_text]));
+    }
+    for (const p of componentSubs) {
+      const seedTarget = p.seedNumber != null ? seedTargetByNumber.get(p.seedNumber) : null;
+      if (!seedTarget) continue; // no seed context to validate against — don't false-positive
+      const isMember = normalizeForContainment(seedTarget).includes(normalizeForContainment(p.target));
+      if (!isMember) {
+        collisions.push({
+          known: p.known, new_target: p.target, existing_target: null, existing_seed: p.seedNumber,
+          type: 'target_membership',
+        });
+      }
+    }
+  }
+
   return collisions;
 }
 

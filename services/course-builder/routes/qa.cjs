@@ -1131,7 +1131,7 @@ end tell`;
       // Get current phrase for logging
       const { data: current } = await supabase
         .from('course_practice_phrases')
-        .select('known_text, target_text, course_code, seed_number')
+        .select('known_text, target_text, course_code, seed_number, phrase_role')
         .eq('id', id)
         .single();
 
@@ -1174,6 +1174,8 @@ end tell`;
         id,
         known: finalKnown,
         target: finalTarget,
+        role: current.phrase_role,
+        seedNumber: current.seed_number,
         revertFields: { known_text: current.known_text, target_text: current.target_text, updated_at: new Date().toISOString() },
       });
       if (!zutCheck.ok) {

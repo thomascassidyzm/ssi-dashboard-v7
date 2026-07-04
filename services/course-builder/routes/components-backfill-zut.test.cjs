@@ -1,8 +1,14 @@
 /**
  * End-to-end test of the ZUT gate wired into POST /course/:courseCode/components/backfill
  * (services/course-builder/routes/components.cjs). Drives the real Express handler
- * against an in-memory fake Supabase — proves a colliding component write is rejected
- * and a clean one still succeeds.
+ * against an in-memory fake Supabase.
+ *
+ * Per Tom's ruling (2026-07-04, docs/course-optimization/zut-violation-sweep-pilot-fra-40.md):
+ * component rows are per-sentence literal tiling glosses, not atomized intentions — they
+ * are EXEMPT from the known-side ZUT check (a component's known_text colliding with another
+ * row's known->target mapping is no longer rejected), but NOT exempt on the target side: a
+ * component's target_text must still be a genuine constituent of its own seed's target
+ * sentence (target-membership check).
  *
  * Run: npx vitest run services/course-builder/routes/components-backfill-zut
  */
@@ -34,8 +40,11 @@ function buildRouterWithDb(db) {
 }
 
 describe('POST /course/:courseCode/components/backfill — ZUT gate', () => {
-  it('rejects a component whose known text collides with an existing different target', async () => {
+  it('ACCEPTS a component whose known text collides with an existing different target (known-side exemption)', async () => {
     const db = {
+      course_seeds: [
+        { course_code: COURSE, seed_number: 20, known_text: 'he is going to want to leave', target_text: 'il va vouloir partir' },
+      ],
       course_legos: [
         {
           course_code: COURSE, seed_number: 20, lego_index: 1,
@@ -59,7 +68,51 @@ describe('POST /course/:courseCode/components/backfill — ZUT gate', () => {
           lego_index: 1,
           components: [
             { known: 'want', target: 'vouloir' },
-            { known: 'to leave', target: 'partir' }, // collides: "to leave" already -> "sortir"
+            // "to leave" already -> "sortir" elsewhere — a real LEGO/BUILD/USE row would
+            // be rejected for this, but a component's known label is exempt: "partir" IS
+            // a genuine constituent of seed 20's target sentence, so it must be accepted.
+            { known: 'to leave', target: 'partir' },
+          ],
+        }],
+      },
+    }
+    const res = makeRes()
+    await handler(req, res)
+
+    expect(res.body.processed).toBe(1)
+    expect(res.body.failed).toBe(0)
+    const componentRows = db.course_practice_phrases.filter(p => p.phrase_role === 'component')
+    expect(componentRows.map(r => r.target_text)).toContain('partir')
+  })
+
+  it('REJECTS a component whose target_text is not a constituent of its own seed target sentence (target-membership)', async () => {
+    const db = {
+      course_seeds: [
+        { course_code: COURSE, seed_number: 20, known_text: 'he is going to want to leave', target_text: 'il va vouloir partir' },
+      ],
+      course_legos: [
+        {
+          course_code: COURSE, seed_number: 20, lego_index: 1,
+          known_text: 'want to leave', target_text: 'vouloir partir',
+          type: 'M', components: null,
+        },
+      ],
+      course_practice_phrases: [],
+    }
+    const { router } = buildRouterWithDb(db)
+    const handler = getHandler(router, 'post', '/course/:courseCode/components/backfill')
+
+    const req = {
+      params: { courseCode: COURSE },
+      query: {},
+      body: {
+        legos: [{
+          seed_number: 20,
+          lego_index: 1,
+          components: [
+            { known: 'want', target: 'vouloir' },
+            // "sortir" never appears in seed 20's target sentence ("il veut partir") — orphan.
+            { known: 'to leave', target: 'sortir' },
           ],
         }],
       },
@@ -70,12 +123,14 @@ describe('POST /course/:courseCode/components/backfill — ZUT gate', () => {
     expect(res.body.processed).toBe(0)
     expect(res.body.failed).toBe(1)
     expect(res.body.errors[0].error).toMatch(/ZUT violation/)
-    // Components JSONB was written (step 1 precedes the gate) but no new phrase rows were inserted.
-    expect(db.course_practice_phrases).toHaveLength(1)
+    expect(db.course_practice_phrases.some(p => p.target_text === 'sortir')).toBe(false)
   })
 
-  it('golden path: non-colliding components still insert', async () => {
+  it('golden path: non-colliding, sentence-member components still insert', async () => {
     const db = {
+      course_seeds: [
+        { course_code: COURSE, seed_number: 20, known_text: 'he is going to want to leave', target_text: 'il va vouloir partir' },
+      ],
       course_legos: [
         {
           course_code: COURSE, seed_number: 20, lego_index: 1,
