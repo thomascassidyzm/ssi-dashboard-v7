@@ -737,5 +737,233 @@
       "target1_audio_id": null,
       "target2_audio_id": null
     }
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "f26fbbb9-6239-47d1-9f31-be8bf0dd22bc",
+    "seed": 194,
+    "before": {
+      "known": "you are looking for",
+      "target": "vous cherchez",
+      "components": null
+    },
+    "after": {
+      "target_text": "tu cherches",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0194L01B01",
+    "seed": 194,
+    "before": {
+      "known": "you are looking for the book",
+      "target": "vous cherchez le livre"
+    },
+    "after": {
+      "target_text": "tu cherches le livre",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0194L01B02",
+    "seed": 194,
+    "before": {
+      "known": "what are you looking for?",
+      "target": "qu'est-ce que vous cherchez?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu cherches?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0194L01B03",
+    "seed": 194,
+    "before": {
+      "known": "are you looking for something?",
+      "target": "est-ce que vous cherchez quelque chose?"
+    },
+    "after": {
+      "target_text": "est-ce que tu cherches quelque chose?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0194L01U01",
+    "seed": 194,
+    "before": {
+      "known": "I know what you are looking for, I saw it before",
+      "target": "je sais ce que vous cherchez, je l'ai vu avant"
+    },
+    "after": {
+      "target_text": "je sais ce que tu cherches, je l'ai vu avant",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0194L01U02",
+    "seed": 194,
+    "before": {
+      "known": "what are you looking for in the house right now?",
+      "target": "qu'est-ce que vous cherchez dans la maison maintenant?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu cherches dans la maison maintenant?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0194L01U03",
+    "seed": 194,
+    "before": {
+      "known": "are you looking for the book I talked about yesterday?",
+      "target": "est-ce que vous cherchez le livre dont j'ai parlé hier?"
+    },
+    "after": {
+      "target_text": "est-ce que tu cherches le livre dont j'ai parlé hier?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0194L01U04",
+    "seed": 194,
+    "before": {
+      "known": "what are you looking for? I thought you have everything",
+      "target": "qu'est-ce que vous cherchez? Je pensais que vous avez tout"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu cherches? Je pensais que tu as tout",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0194L01U05",
+    "seed": 194,
+    "before": {
+      "known": "what are you looking for? Can I help you find it?",
+      "target": "qu'est-ce que vous cherchez? Je peux vous aider à le trouver?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu cherches? Je peux t'aider à le trouver?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0194L01U06",
+    "seed": 194,
+    "before": {
+      "known": "if you are looking for the restaurant, I can show you where it is",
+      "target": "si vous cherchez le restaurant, je peux vous montrer où il est"
+    },
+    "after": {
+      "target_text": "si tu cherches le restaurant, je peux te montrer où il est",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0194L01U07",
+    "seed": 194,
+    "before": {
+      "known": "I think I know what you are looking for but I'm not sure",
+      "target": "je pense que je sais ce que vous cherchez mais je ne suis pas sûr"
+    },
+    "after": {
+      "target_text": "je pense que je sais ce que tu cherches mais je ne suis pas sûr",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0194L01U08",
+    "seed": 194,
+    "before": {
+      "known": "are you looking for work or do you have a job?",
+      "target": "est-ce que vous cherchez du travail ou est-ce que vous avez un travail?"
+    },
+    "after": {
+      "target_text": "est-ce que tu cherches du travail ou est-ce que tu as un travail?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_SEED",
+    "seed": 194,
+    "before": {
+      "known": "what are you looking for?",
+      "target": "qu'est-ce que vous cherchez?"
+    },
+    "after": {
+      "target_text": "qu'est-ce que tu cherches?",
+      "target1_audio_id": null,
+      "target2_audio_id": null
+    }
   }
 ]
