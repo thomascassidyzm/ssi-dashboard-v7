@@ -269,10 +269,34 @@ function buildAtempoFilterChain(factor) {
 // without knowing the clip's duration up front.
 const ANTI_CLICK_FADE = 'afade=t=in:st=0:d=0.008,areverse,afade=t=in:st=0:d=0.008,areverse';
 
+// Peaky voices (esp. xAI voice clones, crest factor ~19dB) hit the -1.5dBTP true-peak
+// ceiling before a single loudnorm pass reaches targetLUFS, stalling 4-6 LUFS short
+// (measured: Azure Sonia lands accurately at -16, xAI Tom clone lands at -20 to -22).
+// Fix: tame the crest with a compressor, measure the resulting loudness, apply a plain
+// gain to hit target (+1dB, which the final limiter's gain-reduction eats back), then
+// true-peak-limit via 4x oversampling as a safety net. Verified this chain also still
+// lands Azure/ElevenLabs clips accurately at target, so it's used universally rather
+// than branching on provider.
+const PRE_COMPRESS = 'acompressor=threshold=-24dB:ratio=8:attack=5:release=80:knee=8';
+const TRUE_PEAK_LIMIT = 'aresample=176400,alimiter=limit=0.841:attack=1:release=50:level=false';
+
+async function measureIntegratedLoudness(inputPath, preFilter) {
+  const { stdout, stderr } = await execAsync(
+    `ffmpeg -i "${inputPath}" -af "${preFilter},ebur128=framelog=quiet" -f null - 2>&1 || true`,
+    { shell: '/bin/bash' }
+  ).catch(e => ({ stdout: e.stdout || '', stderr: e.stderr || '' }));
+  const output = `${stdout}${stderr}`;
+  const match = (output.match(/I:\s*(-?[\d.]+)\s*LUFS/g) || []).pop();
+  if (!match) throw new Error('Could not measure integrated loudness (no ebur128 I: line in ffmpeg output)');
+  return parseFloat(match.match(/(-?[\d.]+)/)[1]);
+}
+
 async function normalizeAudio(inputPath, outputPath, targetLUFS = -16.0) {
   try {
+    const measured = await measureIntegratedLoudness(inputPath, PRE_COMPRESS);
+    const gain = (targetLUFS + 1.0 - measured).toFixed(2);
     await ffmpegFilterToLameMp3(inputPath, outputPath, {
-      filterChain: `loudnorm=I=${targetLUFS}:LRA=11:TP=-1.5,${ANTI_CLICK_FADE}`
+      filterChain: `${PRE_COMPRESS},volume=${gain}dB,${TRUE_PEAK_LIMIT},${ANTI_CLICK_FADE}`
     });
   } catch (error) {
     throw new Error(`Failed to normalize audio: ${error.message}`);
