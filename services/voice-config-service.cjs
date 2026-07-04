@@ -111,6 +111,10 @@ const DEFAULT_VOICE_CONFIG = {
       enabled: true,
       apiKeyEnvVar: 'AZURE_SPEECH_KEY',
       regionEnvVar: 'AZURE_SPEECH_REGION'
+    },
+    xai: {
+      enabled: true,
+      apiKeyEnvVar: 'XAI_API_KEY'
     }
   },
 
@@ -187,6 +191,58 @@ async function ensureVoiceRegistered(voiceSettings) {
 
   const voiceId = voiceSettings.voiceId;
   const provider = voiceSettings.provider || 'azure';
+
+  // xAI voices — incl. custom cloned voice ids (e.g. 'gfzdpspr5fdp') that don't
+  // follow Azure's "xx-YY-Name" locale convention. Register so they're
+  // discoverable in voice pickers; language is taken from the config, not parsed
+  // from the id. Own insert path, then return (skips the Azure locale parsing).
+  if (provider === 'xai') {
+    try {
+      const { data: existing } = await supabase
+        .from('voices')
+        .select('voice_id')
+        .eq('voice_id', voiceId)
+        .single();
+      if (existing) return;
+
+      const lang = voiceSettings.language || '';
+      const xaiLocaleToLang = {
+        'en-GB': 'eng', 'en-US': 'eng', 'en': 'eng',
+        'es-ES': 'spa', 'es': 'spa',
+        'it-IT': 'ita', 'it': 'ita',
+        'fr-FR': 'fra', 'fr': 'fra',
+        'de-DE': 'deu', 'de': 'deu',
+        'pt-BR': 'por', 'pt': 'por',
+        'ar-EG': 'ara', 'ar': 'ara',
+        'ja-JP': 'jpn', 'ja': 'jpn',
+        'ko-KR': 'kor', 'ko': 'kor',
+        'zh-CN': 'zho', 'zh': 'zho'
+      };
+      const langCode = xaiLocaleToLang[lang] || lang.split('-')[0] || 'unknown';
+
+      const { error } = await supabase
+        .from('voices')
+        .insert({
+          voice_id: voiceId,
+          type: 'tts',
+          tts_engine: 'xai',
+          tts_voice_name: voiceSettings.name || voiceId,
+          tts_locale: lang || null,
+          languages: [langCode],
+          display_name: voiceSettings.name || voiceId,
+          is_active: true
+        });
+
+      if (error && error.code !== '23505') { // Ignore duplicate key errors
+        console.warn(`[VoiceConfig] Could not auto-register xAI voice ${voiceId}:`, error.message);
+      } else {
+        console.log(`[VoiceConfig] Auto-registered xAI voice: ${voiceId}`);
+      }
+    } catch (err) {
+      console.warn(`[VoiceConfig] xAI voice registration skipped for ${voiceId}:`, err.message);
+    }
+    return;
+  }
 
   // Only auto-register Azure voices (ElevenLabs should be manually added)
   if (provider !== 'azure') return;
@@ -397,6 +453,20 @@ function buildTTSConfig(voiceConfig, cadence, cadenceProfiles) {
       subscriptionKey: process.env.AZURE_SPEECH_KEY,
       region: process.env.AZURE_SPEECH_REGION || 'westeurope',
       voiceName: voiceConfig.voiceId,
+      speed: effectiveSpeed
+    };
+  }
+
+  if (provider === 'xai') {
+    // voiceId may be a preset ('eve'|'ara'|'leo'|'rex'|'sal') OR a custom
+    // cloned voice id (e.g. 'gfzdpspr5fdp') — generateXai passes it through
+    // verbatim. xAI has no speed param on /v1/tts; speed is applied downstream
+    // in masterAudio, so it's advisory here (kept for symmetry with other roles).
+    return {
+      provider: 'xai',
+      apiKey: process.env.XAI_API_KEY,
+      voiceId: voiceConfig.voiceId,
+      language: voiceConfig.language || 'auto',
       speed: effectiveSpeed
     };
   }
