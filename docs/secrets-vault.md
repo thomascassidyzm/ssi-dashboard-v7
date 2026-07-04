@@ -26,6 +26,23 @@ Anthropic, S3, …) lives **encrypted** in **Supabase Vault** (`vault.secrets`,
 `supabase_vault` 0.3.1, pgsodium) and is read back through the
 `vault.decrypted_secrets` view.
 
+## Provisioning a machine (secret zero)
+
+Secret zero lives in **`.env.psql` at the repo root** of each machine's
+dashboard checkout (one line: `DATABASE_URL=…`, the pooler connection string —
+see the psql note in `.env.example`). It is **gitignored (`.env.*`), so it
+never arrives via `git pull`** — every fresh checkout needs it copied over by
+scp, then `chmod 600`. Without it a machine cannot run direct SQL, migrations,
+canaries, or `tools/secrets.cjs`. Symptom: SQL tooling dead ("no DATABASE_URL")
+on an otherwise-working checkout.
+
+Machine map (checkout paths differ per machine):
+- **Tom's local box** (`MacBook-Air-3`): `~/SSi/ssi-dashboard-v7-clean/.env.psql` ✓
+- **SSi Machine, Camberley** (Tailscale `toms-air`; runs the pm2 stack +
+  `ssi-machine.ngrok.app`): `~/ssi-dashboard-v7-clean/.env.psql` — note the
+  repo sits at the home-dir **root** there, not under `~/SSi/`. Was missing
+  until 2026-07-04; copied from Tom's box and verified with a live query.
+
 Why this is safe:
 - The raw `vault.secrets.secret` column is **ciphertext at rest** (verified) — a
   DB dump does not leak plaintext keys.
