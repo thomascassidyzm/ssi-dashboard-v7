@@ -72,3 +72,10 @@ work (mostly "recast as a natural example," occasionally "needs its own bundled 
 the house-law doc) — a scoping/prioritization call for Tom, not a mechanical sweep. The new
 `checkNoParentheses` gate in `services/course-builder/lib/validation.cjs` stops the count from
 growing on any future submission; it does not touch existing rows.
+
+## Update 2026-07-04: spa_for_eng piloted
+The spa_for_eng pilot (9 hits) is complete — 8 fixed live, 1 to an owner decision list, closed-
+loop re-verified. Turned out to be mostly a stale-duplicate-JSON bug, not fresh content work —
+see `parentheses-pilot-spa.md` for the pattern-class breakdown and the template for the other
+54 courses (including a cheap pre-check that may shrink the true remaining effort below the
+raw 7,953 count).
