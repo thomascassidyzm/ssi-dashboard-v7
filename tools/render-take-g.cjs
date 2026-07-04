@@ -33,7 +33,11 @@ const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
-if (!COURSE) { console.error('usage: render-take-g.cjs <course> [orders] [--dry]'); process.exit(1) }
+// --force-azure: re-synthesise azure takes even when the row exists — same
+// conflict key so the row id (and links) survive, but the row gains
+// word_boundaries, which the slicer prefers over silence detection.
+const forceAzure = process.argv.includes('--force-azure')
+if (!COURSE) { console.error('usage: render-take-g.cjs <course> [orders] [--dry|--force-azure]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const ROLE = 'pod_take_g'
@@ -58,14 +62,14 @@ function glueGroups(rawGroups) {
   const groups = []
   let carry = []
   rawGroups.forEach((g, i) => {
-    if (g.length === 1 && i < rawGroups.length - 1) { carry.push(...g); return }
+    // Only TURN-INITIAL one-unit groups (leading "Ciao!" interjections) glue
+    // forward; a mid-turn one-unit group is a real sentence ("Impresioniran
+    // sam.") and must stand alone — gluing it swallowed its known take.
+    if (groups.length === 0 && g.length === 1 && i < rawGroups.length - 1) { carry.push(...g); return }
     groups.push([...carry, ...g])
     carry = []
   })
-  if (carry.length) {
-    if (groups.length) groups[groups.length - 1].push(...carry)
-    else groups.push(carry)
-  }
+  if (carry.length) groups.push(carry)
   return groups
 }
 
@@ -124,7 +128,8 @@ function cuedGroupText(turnText, group) {
       if (!cued) { console.log(`S${s.global_order}: ✗ unit not found in turn text — group skipped`); failed++; ids.push(null); continue }
       if (dry) { console.log(`S${s.global_order} [${s.speaker}→${voice.voice_id}]: "${cued}"`); ids.push(null); continue }
       try {
-        const res = await p8.generatePodAudio({ courseCode: COURSE, text: cued, language: targetLang, role: ROLE, voice })
+        const force = forceAzure && voice.provider === 'azure'
+        const res = await p8.generatePodAudio({ courseCode: COURSE, text: cued, language: targetLang, role: ROLE, voice, force })
         res.reused ? reused++ : rendered++
         ids.push(res.id)
       } catch (e) {

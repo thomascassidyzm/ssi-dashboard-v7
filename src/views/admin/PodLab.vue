@@ -305,9 +305,17 @@ function playClip(clip, speed) {
     if (slice) {
       a.currentTime = clip.startMs / 1000
       const endS = clip.endMs / 1000
-      a.ontimeupdate = () => {
-        if (a.currentTime >= endS) { a.pause(); finish() }
+      // timeupdate only fires ~4×/s — it overshoots into the next word. Poll
+      // at frame rate and back-stop with a rate-scaled wall timer.
+      const tick = () => {
+        if (done) return
+        if (a.currentTime >= endS) { a.pause(); finish(); return }
+        requestAnimationFrame(tick)
       }
+      a.onplaying = () => requestAnimationFrame(tick)
+      setTimeout(() => {
+        if (!done) { a.pause(); finish() }
+      }, (clip.endMs - clip.startMs) / (speed || 1) + 700)
     }
     a.play().catch(finish)
   })
@@ -480,7 +488,10 @@ const ladderRungs = computed(() => {
   const knownTakes = []
   let carry = []
   rawGroups.forEach((g, i) => {
-    if (g.length === 1 && i < rawGroups.length - 1) {
+    // Only TURN-INITIAL one-unit groups (leading "Ciao!" interjections) glue
+    // forward — a mid-turn one-unit group is a real sentence ("Impresioniran
+    // sam.") with its own takes; gluing it swallowed its known audio.
+    if (groups.length === 0 && g.length === 1 && i < rawGroups.length - 1) {
       carry.push(...g)
       return
     }
@@ -490,15 +501,9 @@ const ladderRungs = computed(() => {
     carry = []
   })
   if (carry.length) {
-    if (groups.length) {
-      groups[groups.length - 1].push(...carry)
-      takes[takes.length - 1] = null
-      knownTakes[knownTakes.length - 1] = null
-    } else {
-      groups.push(carry)
-      takes.push(null)
-      knownTakes.push(null)
-    }
+    groups.push(carry)
+    takes.push(null)
+    knownTakes.push(null)
   }
 
   const single = groups.length === 1

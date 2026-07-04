@@ -5,9 +5,11 @@
  * relative to the group's takeg_audio_ids clip).
  *
  * This is the slicing model: ONE gapped take per sentence, chunks at every
- * fusion rung = contiguous ms slices of it — no per-chunk files. Boundaries
- * land at the MIDPOINT of each detected gap (the house convention from the
- * sentence-split work), so every slice keeps natural lead-in/out breath.
+ * fusion rung = ms slices of it — no per-chunk files. Each unit's span ends a
+ * third of the way into the following gap and starts a third of the way
+ * before it ends (capped at 150ms), so slices keep a little breath while the
+ * remaining two-thirds of the gap absorbs any playback-stop overshoot —
+ * midpoint cuts left too little margin and bled the next word's onset.
  *
  * CODE GATE per group: ffmpeg silencedetect runs permissive (-30dB, 180ms),
  * then the (units−1) LONGEST silences are taken as the seams; a group FAILS
@@ -58,14 +60,14 @@ function glueGroups(rawGroups) {
   const groups = []
   let carry = []
   rawGroups.forEach((g, i) => {
-    if (g.length === 1 && i < rawGroups.length - 1) { carry.push(...g); return }
+    // Only TURN-INITIAL one-unit groups (leading "Ciao!" interjections) glue
+    // forward; a mid-turn one-unit group is a real sentence ("Impresioniran
+    // sam.") and must stand alone — gluing it swallowed its known take.
+    if (groups.length === 0 && g.length === 1 && i < rawGroups.length - 1) { carry.push(...g); return }
     groups.push([...carry, ...g])
     carry = []
   })
-  if (carry.length) {
-    if (groups.length) groups[groups.length - 1].push(...carry)
-    else groups.push(carry)
-  }
+  if (carry.length) groups.push(carry)
   return groups
 }
 
@@ -76,18 +78,35 @@ async function download(s3Key, dest) {
 
 const alnum = (s) => String(s || '').toLowerCase().replace(/[^\p{L}\p{N}\p{M}]/gu, '')
 
+// pad into a gap: a third of it each side, capped — the rest stays as margin
+const PAD_MS = Number(process.env.SLICE_PAD_MS || 150)
+const pad = (gapMs) => Math.max(0, Math.min(PAD_MS, Math.round(gapMs / 3)))
+
+/** Per-unit padded spans from word/gap edges. edges[i] = {end of speech i,
+ *  start of speech i+1}; spans need not tile — windows span first-start to
+ *  last-end and keep the interior gaps. */
+function paddedSpans(speech, durMs) {
+  return speech.map((sp, i) => {
+    const prevGap = i === 0 ? null : { from: speech[i - 1].end, to: sp.start }
+    const nextGap = i === speech.length - 1 ? null : { from: sp.end, to: speech[i + 1].start }
+    return {
+      start: prevGap ? Math.round(sp.start - pad(sp.start - prevGap.from)) : 0,
+      end: nextGap ? Math.round(sp.end + pad(nextGap.to - sp.end)) : Math.round(durMs),
+    }
+  })
+}
+
 /**
- * Seam bounds from Azure word-boundary events (exact — no audio inspection):
- * consume boundary words until each unit's surface is reconstructed
- * (alnum-normalised), then cut at the midpoint between one unit's last word
- * end and the next unit's first word start. Gate: every unit must
- * reconstruct exactly and all words must be consumed. Returns null when the
- * boundaries don't tile the group (caller falls back to silence detection).
+ * Per-unit spans from Azure word-boundary events (exact — no audio
+ * inspection): consume boundary words until each unit's surface is
+ * reconstructed (alnum-normalised). Gate: every unit must reconstruct
+ * exactly and all words must be consumed. Returns null when the boundaries
+ * don't tile the group (caller falls back to silence detection).
  */
-function boundsFromWordBoundaries(wb, group, durMs) {
+function spansFromWordBoundaries(wb, group, durMs) {
   const words = (wb || []).filter((w) => alnum(w.text))
   if (!words.length) return null
-  const spans = []
+  const speech = []
   let wi = 0
   for (const a of group) {
     const want = alnum(a.target_surface)
@@ -95,13 +114,10 @@ function boundsFromWordBoundaries(wb, group, durMs) {
     const start = wi
     while (wi < words.length && got.length < want.length) { got += alnum(words[wi].text); wi++ }
     if (got !== want) return null
-    spans.push({ start: words[start].offset, end: words[wi - 1].offset + (words[wi - 1].duration || 0) })
+    speech.push({ start: words[start].offset, end: words[wi - 1].offset + (words[wi - 1].duration || 0) })
   }
   if (wi !== words.length) return null
-  const bounds = [0]
-  for (let i = 1; i < spans.length; i++) bounds.push(Math.round((spans[i - 1].end + spans[i].start) / 2))
-  bounds.push(Math.round(durMs))
-  return bounds
+  return paddedSpans(speech, durMs)
 }
 
 function ffSilences(file) {
@@ -161,14 +177,14 @@ function ffSilences(file) {
 
       // exact path: Azure word boundaries stored on the clip → no audio needed
       if (clip.word_boundaries && clip.duration_ms) {
-        const wbBounds = boundsFromWordBoundaries(clip.word_boundaries, g, clip.duration_ms)
-        if (wbBounds) {
+        const wbSpans = spansFromWordBoundaries(clip.word_boundaries, g, clip.duration_ms)
+        if (wbSpans) {
           for (let ui = 0; ui < g.length; ui++) {
             const mi = mapIdx[offsets[gi] + ui]
-            map[mi] = { ...map[mi], target_start_ms: wbBounds[ui], target_end_ms: wbBounds[ui + 1] }
+            map[mi] = { ...map[mi], target_start_ms: wbSpans[ui].start, target_end_ms: wbSpans[ui].end }
           }
           okGroups++; touched = true
-          if (dry) console.log(`S${s.global_order} g${gi}: ✓ ${g.length} units (word-boundaries) — ${wbBounds.join(' | ')}`)
+          if (dry) console.log(`S${s.global_order} g${gi}: ✓ ${g.length} units (word-boundaries) — ${wbSpans.map((x) => `${x.start}-${x.end}`).join(' | ')}`)
           continue
         }
         console.log(`S${s.global_order} g${gi}: word boundaries don't tile — falling back to silence detect`)
@@ -197,13 +213,21 @@ function ffSilences(file) {
         console.log(`S${s.global_order} g${gi}: ✗ chosen gap under ${MIN_GAP_MS}ms — not trusting the cut`)
         failGroups++; continue
       }
-      const bounds = [0, ...seams.map((x) => Math.round((x.start + x.end) / 2)), Math.round(dur)]
+      // speech stretches between seams → padded per-unit spans
+      const speech = []
+      for (let ui = 0; ui < g.length; ui++) {
+        speech.push({
+          start: ui === 0 ? 0 : seams[ui - 1].end,
+          end: ui === g.length - 1 ? Math.round(dur) : seams[ui].start,
+        })
+      }
+      const spans = paddedSpans(speech, dur)
       for (let ui = 0; ui < g.length; ui++) {
         const mi = mapIdx[offsets[gi] + ui]
-        map[mi] = { ...map[mi], target_start_ms: bounds[ui], target_end_ms: bounds[ui + 1] }
+        map[mi] = { ...map[mi], target_start_ms: spans[ui].start, target_end_ms: spans[ui].end }
       }
       okGroups++; touched = true
-      if (dry) console.log(`S${s.global_order} g${gi}: ✓ ${g.length} units — ${bounds.join(' | ')}`)
+      if (dry) console.log(`S${s.global_order} g${gi}: ✓ ${g.length} units — ${spans.map((x) => `${x.start}-${x.end}`).join(' | ')}`)
     }
     if (touched && !dry) {
       const { error: werr } = await supabase.from('listening_pod_sentences').update({ atom_map_fine: map }).eq('id', s.id)

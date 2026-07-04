@@ -66,14 +66,14 @@ function glueGroups(rawGroups) {
   const groups = []
   let carry = []
   rawGroups.forEach((g, i) => {
-    if (g.length === 1 && i < rawGroups.length - 1) { carry.push(...g); return }
+    // Only TURN-INITIAL one-unit groups (leading "Ciao!" interjections) glue
+    // forward; a mid-turn one-unit group is a real sentence ("Impresioniran
+    // sam.") and must stand alone — gluing it swallowed its known take.
+    if (groups.length === 0 && g.length === 1 && i < rawGroups.length - 1) { carry.push(...g); return }
     groups.push([...carry, ...g])
     carry = []
   })
-  if (carry.length) {
-    if (groups.length) groups[groups.length - 1].push(...carry)
-    else groups.push(carry)
-  }
+  if (carry.length) groups.push(carry)
   return groups
 }
 
