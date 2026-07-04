@@ -1,0 +1,34 @@
+[
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "fra_for_eng:S0164L01C01",
+    "seed": 164,
+    "known": "an interesting",
+    "target": "un livre",
+    "reason": "book/9: adjective-noun word-order crossing — component pairs got swapped (target \"un livre\"=\"a book\" mislabeled against known \"an interesting\"). Sibling S0164L01C02 is the matching swapped half. BUILD phrase S0164L01B01 already teaches the correct combined chunk \"an interesting book\"->\"un livre intéressant\"."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "fra_for_eng:S0164L01C02",
+    "seed": 164,
+    "known": "book",
+    "target": "intéressant",
+    "reason": "book/9: other half of the same word-order-crossing pair as S0164L01C01."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "fra_for_eng:S0364L04C02",
+    "seed": 364,
+    "known": "that",
+    "target": "dire",
+    "reason": "that/21: orphan of the idiom \"entendu dire\" (\"heard tell\") — \"dire\" has no clean 1:1 English word match; forcing this component split mislabeled it as \"that\". BUILD phrase S0364L04B01 already teaches the correct combined chunk \"I heard that\"->\"j'ai entendu dire\"."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "fra_for_eng:S0428L02C02",
+    "seed": 428,
+    "known": "to pay",
+    "target": "rendre",
+    "reason": "to pay/40: orphan of \"rendre visite\" (\"to visit\") — master sentence for seed 428 lego 2 is entirely about visiting, not paying (\"would they like to VISIT us\"). Renaming to the accurate label (\"to\") was rejected: it would immediately collide with many other unrelated \"to\" components course-wide. BUILD phrase S0428L02B01 already teaches the correct combined chunk \"to visit us\"->\"nous rendre visite\"."
+  }
+]
