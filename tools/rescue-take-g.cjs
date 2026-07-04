@@ -90,7 +90,7 @@ function cuedGroupText(turnText, group, cue) {
     .eq('pod_id', `${COURSE}:pod-0`).not('takeg_audio_ids', 'is', null).order('global_order')
   if (error) { console.error(error.message); process.exit(1) }
 
-  let azure = 0, eleven = 0, skipped = 0, failed = 0
+  let azure = 0, eleven = 0, xai = 0, skipped = 0, failed = 0
   for (const s of sents || []) {
     const atoms = (s.atom_map_fine || []).filter((a) => a.kind !== 'note')
     if (!atoms.length) continue
@@ -112,6 +112,16 @@ function cuedGroupText(turnText, group, cue) {
           const res = await p8.generatePodAudio({ courseCode: COURSE, text: cued, language: targetLang, role: ROLE, voice })
           if (res.id !== ids[gi]) { ids[gi] = res.id; relink = true }
           eleven++
+        } else if (voice.provider === 'xai') {
+          // xAI: no word boundaries, and its pause at "…" varies take to
+          // take — re-roll with ASCII dots (its normaliser treats "..." more
+          // reliably) and force, so every rescue round is a fresh dice roll.
+          const cued = cuedGroupText(s.target_text, g, ' ... ')
+          if (!cued) { failed++; continue }
+          if (dry) { console.log(`S${s.global_order} g${gi} [xai ${voice.voice_id}]: "${cued.slice(0, 100)}"`); continue }
+          const res = await p8.generatePodAudio({ courseCode: COURSE, text: cued, language: targetLang, role: ROLE, voice, force: true })
+          if (res.id !== ids[gi]) { ids[gi] = res.id; relink = true }
+          xai++
         } else {
           // azure (and anything word-boundary-capable): same text, in place
           const cued = cuedGroupText(s.target_text, g, CUE)
@@ -130,6 +140,6 @@ function cuedGroupText(turnText, group, cue) {
       if (werr) { console.log(`S${s.global_order}: LINK FAIL ${werr.message}`); failed++ }
     }
   }
-  console.log(`\n${dry ? '[DRY] ' : ''}${COURSE}: ${azure} azure force re-renders, ${eleven} elevenlabs break-tag re-renders, ${failed} failed.`)
+  console.log(`\n${dry ? '[DRY] ' : ''}${COURSE}: ${azure} azure force re-renders, ${xai} xai ascii-dot re-rolls, ${eleven} elevenlabs break-tag re-renders, ${failed} failed.`)
   process.exit(failed ? 2 : 0)
 })().catch((e) => { console.error('ERR:', e.message); process.exit(1) })
