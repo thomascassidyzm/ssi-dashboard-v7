@@ -30,7 +30,8 @@ const { S3Client, CopyObjectCommand } = require('@aws-sdk/client-s3')
 const { v4: uuidv4 } = require('uuid')
 const { normalizeForAudio } = require('../../services/shared/text-normalize.cjs')
 const { isPunctuationOnly } = require('../../services/shared/text-classification.cjs')
-const { CLONE_VOICE_ID, computeAudioKey, decideCopy } = require('./clone-copy-lib.cjs')
+const { CLONE_VOICE_ID, decideCopy } = require('../../services/shared/clone-copy-match.cjs')
+const { getEngineForVoice, buildSourceIndex } = require('../../services/shared/clone-copy-index.cjs')
 
 const PAGE = 2000
 const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
@@ -83,76 +84,9 @@ async function fetchMissingKnownSlots(courseCode) {
   return { byNormText, totalMissing }
 }
 
-async function getEngineForVoice(voiceId) {
-  const { data } = await supabase.from('voices').select('tts_engine').eq('voice_id', voiceId).maybeSingle()
-  return data?.tts_engine || null
-}
-
 async function getConfiguredSpeed(courseCode, role) {
   const { data } = await supabase.from('courses').select('voice_config').eq('course_code', courseCode).maybeSingle()
   return data?.voice_config?.voices?.[role]?.settings?.speed || 1.0
-}
-
-/**
- * Global index of every rendered course_audio row for (role, voiceId), keyed
- * by computeAudioKey. speedMatters=false (e.g. xAI, which has no speed
- * param) skips reading per-course voice_config entirely — it can't affect
- * the render, and voice_config can drift after the row was rendered anyway.
- */
-async function buildSourceIndex(role, voiceId, speedMatters) {
-  const rows = []
-  let offset = 0
-  while (true) {
-    const { data, error } = await supabase
-      .from('course_audio')
-      .select('id, course_code, text, language, s3_key, created_at, duration_ms, file_size_bytes, word_boundaries, text_stripped')
-      .eq('role', role)
-      .eq('voice_id', voiceId)
-      .range(offset, offset + PAGE - 1)
-    if (error) throw new Error(`course_audio source index: ${error.message}`)
-    rows.push(...data)
-    if (data.length < PAGE) break
-    offset += PAGE
-  }
-  const real = rows.filter(r => r.s3_key && !r.s3_key.startsWith('pending/'))
-
-  let speedByCourse = new Map()
-  if (speedMatters) {
-    const courseCodes = [...new Set(real.map(r => r.course_code))]
-    for (let i = 0; i < courseCodes.length; i += 200) {
-      const chunk = courseCodes.slice(i, i + 200)
-      const { data: courses, error } = await supabase.from('courses').select('course_code, voice_config').in('course_code', chunk)
-      if (error) throw new Error(`voice_config batch: ${error.message}`)
-      for (const c of (courses || [])) {
-        speedByCourse.set(c.course_code, c.voice_config?.voices?.[role]?.settings?.speed || 1.0)
-      }
-    }
-  }
-
-  const index = new Map()
-  for (const r of real) {
-    const key = computeAudioKey({
-      text: r.text,
-      language: r.language,
-      role,
-      voiceId,
-      speed: speedMatters ? speedByCourse.get(r.course_code) : undefined,
-    }, speedMatters)
-    const entry = {
-      courseCode: r.course_code,
-      s3Key: r.s3_key,
-      text: r.text,
-      id: r.id,
-      createdAt: r.created_at,
-      durationMs: r.duration_ms,
-      fileSizeBytes: r.file_size_bytes,
-      wordBoundaries: r.word_boundaries,
-      textStripped: r.text_stripped,
-    }
-    if (!index.has(key)) index.set(key, [])
-    index.get(key).push(entry)
-  }
-  return index
 }
 
 async function copyS3Object(sourceKey) {
@@ -196,13 +130,13 @@ async function run(courseCode, { apply, voiceId, role }) {
   if (courseErr) throw courseErr
   if (!course) throw new Error(`Course not found: ${courseCode}`)
 
-  const engine = await getEngineForVoice(voiceId)
+  const engine = await getEngineForVoice(supabase, voiceId)
   const speedMatters = engine !== 'xai'
   console.log(`[${courseCode}] voice=${voiceId} engine=${engine || 'unknown'} speedMatters=${speedMatters}`)
 
   const [{ byNormText, totalMissing }, sourceIndex] = await Promise.all([
     fetchMissingKnownSlots(courseCode),
-    buildSourceIndex(role, voiceId, speedMatters),
+    buildSourceIndex(supabase, { role, voiceId, speedMatters }),
   ])
   console.log(`[${courseCode}] ${totalMissing} missing known-side slots -> ${byNormText.size} unique normalized texts`)
 
@@ -282,4 +216,4 @@ if (require.main === module) {
   main().catch(err => { console.error(err); process.exit(1) })
 }
 
-module.exports = { run, fetchMissingKnownSlots, buildSourceIndex }
+module.exports = { run, fetchMissingKnownSlots }

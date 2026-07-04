@@ -23,7 +23,7 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const { createClient } = require('@supabase/supabase-js')
-const { S3Client, PutObjectCommand, HeadObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3')
+const { S3Client, PutObjectCommand, HeadObjectCommand, GetObjectCommand, CopyObjectCommand } = require('@aws-sdk/client-s3')
 const { v4: uuidv4 } = require('uuid')
 const fs = require('fs-extra')
 const path = require('path')
@@ -31,6 +31,8 @@ const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
 const { pickPreferredAudioRow } = require('../shared/audio-link-preference.cjs')
+const { decideCopy } = require('../shared/clone-copy-match.cjs')
+const { buildSourceIndex, speedMattersForVoice } = require('../shared/clone-copy-index.cjs')
 const createLogger = require('../shared/logger.cjs')
 const ttsService = require('../tts-service.cjs')
 const { toBcp47 } = require('../voice-discovery-service.cjs')
@@ -386,8 +388,99 @@ async function checkPresentationReadiness(courseCode, releaseTarget, seeds = nul
  * @param {string} courseCode
  * @param {number} releaseTarget - Max seed number
  * @param {object} course - Course record with known_lang, target_lang
- * @returns {Promise<{toLink: number, toGenerate: Array, stats: object, readyForGenerate: boolean, presentationStatus: object}>}
+ * @returns {Promise<{toLink: number, toGenerate: Array, toCopy: Array, stats: object, readyForGenerate: boolean, presentationStatus: object}>}
  */
+/**
+ * "Clone once, copy everywhere": split the known-role slice of toGenerate
+ * into items that already exist as rendered audio for this course's
+ * configured known-voice in ANOTHER course (toCopy) vs the remainder that
+ * genuinely needs TTS. Read-only (queries course_audio/voices/courses) —
+ * getAudioNeeds must stay side-effect-free, so this only classifies; the
+ * actual S3 copy + row insert happens in /generate, never in a plan/needs read.
+ *
+ * Not hardcoded to the xAI clone specifically — it checks whichever voice_id
+ * this course has configured for its 'known' role, so it naturally does
+ * nothing for courses still on a non-clone voice, and naturally activates
+ * once a course's voice_config.voices.known.voiceId is switched to the clone
+ * (gfzdpspr5fdp, Tom's estate-wide English/known-side voice).
+ */
+async function classifyKnownCopyBucket(courseCode, course, uniqueToGenerate) {
+  const knownItems = uniqueToGenerate.filter(i => i.role === 'known')
+  const knownVoiceId = course.voice_config?.voices?.known?.voiceId
+  if (!knownItems.length || !knownVoiceId) return { toGenerate: uniqueToGenerate, toCopy: [] }
+
+  const speedMatters = await speedMattersForVoice(supabase, knownVoiceId)
+  const sourceIndex = await buildSourceIndex(supabase, { role: 'known', voiceId: knownVoiceId, speedMatters })
+  if (!sourceIndex.size) return { toGenerate: uniqueToGenerate, toCopy: [] }
+
+  const destSpeed = course.voice_config?.voices?.known?.settings?.speed || 1.0
+  const toCopy = []
+  const copyKeys = new Set()
+  for (const item of knownItems) {
+    const decision = decideCopy(
+      { text: item.text, language: item.language, role: 'known', voiceId: knownVoiceId, speed: destSpeed, courseCode },
+      sourceIndex,
+      speedMatters
+    )
+    if (decision.action === 'COPY') {
+      toCopy.push({ ...item, voiceId: knownVoiceId, copySource: decision.source })
+      copyKeys.add(`${normalizeText(item.text)}|${item.language}|${item.role}`)
+    }
+  }
+  if (!toCopy.length) return { toGenerate: uniqueToGenerate, toCopy: [] }
+
+  const toGenerate = uniqueToGenerate.filter(i => !copyKeys.has(`${normalizeText(i.text)}|${i.language}|${i.role}`))
+  logger.info(`classifyKnownCopyBucket(${courseCode}): ${toCopy.length} known-side item(s) copyable from another course's clone-voice audio (voice=${knownVoiceId})`)
+  return { toGenerate, toCopy }
+}
+
+/**
+ * Execute the copy bucket produced by classifyKnownCopyBucket: for each item,
+ * a REAL S3 object copy to a fresh mastered/<uuid>.mp3 key (never shares an
+ * s3_key across courses — re-mastering one course must never affect
+ * another), then an owned course_audio row for this course. Only called from
+ * the /generate write path, never from /plan or /needs (which must stay pure
+ * reads) — this is where "copy first, TTS only the remainder" actually happens.
+ */
+async function executeCopyBucket(courseCode, knownLang, toCopy) {
+  let copied = 0
+  let failed = 0
+  for (const item of toCopy) {
+    try {
+      const destKey = `mastered/${uuidv4().toUpperCase()}.mp3`
+      await s3.send(new CopyObjectCommand({
+        Bucket: S3_BUCKET,
+        CopySource: `${S3_BUCKET}/${item.copySource.s3Key}`,
+        Key: destKey,
+        MetadataDirective: 'COPY',
+      }))
+      const { error } = await supabase
+        .from('course_audio')
+        .upsert({
+          course_code: courseCode,
+          text: item.text,
+          text_normalized: normalizeForAudio(item.text),
+          language: item.language || knownLang,
+          role: item.role,
+          voice_id: item.voiceId,
+          origin: 'tts',
+          s3_key: destKey,
+          duration_ms: item.copySource.durationMs,
+          file_size_bytes: item.copySource.fileSizeBytes,
+          word_boundaries: item.copySource.wordBoundaries,
+          text_stripped: item.copySource.textStripped,
+          lego_id: null,
+        }, { onConflict: 'course_code,text_normalized,language,role,voice_id' })
+      if (error) throw new Error(error.message)
+      copied++
+    } catch (e) {
+      failed++
+      logger.error(`executeCopyBucket: failed to copy "${(item.text || '').substring(0, 40)}" for ${courseCode} from ${item.copySource?.courseCode}: ${e.message}`)
+    }
+  }
+  return { copied, failed }
+}
+
 async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = false, seeds = null) {
   const PAGE_SIZE = 1000
   // Optional incremental scope: when `seeds` is a non-empty array, every query is
@@ -538,9 +631,17 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
   }
 
   // Step 4: Deduplicate toGenerate (same text used by multiple phrases)
-  const uniqueToGenerate = [...new Map(
+  const dedupedToGenerate = [...new Map(
     toGenerate.map(n => [`${normalizeText(n.text)}|${n.language}|${n.role}`, n])
   ).values()]
+
+  // Step 4.5: "Clone once, copy everywhere" — pull known-role items that
+  // already exist as rendered audio elsewhere out of toGenerate and into a
+  // distinct toCopy bucket, so /generate copies them (no TTS) instead of
+  // re-rendering. See classifyKnownCopyBucket() above.
+  const { toGenerate: uniqueToGenerate, toCopy } = forceGenerate
+    ? { toGenerate: dedupedToGenerate, toCopy: [] }
+    : await classifyKnownCopyBucket(courseCode, course, dedupedToGenerate)
 
   // Step 5: Check whether presentation text generation has been run.
   // /generate will refuse to run if not ready (no on-the-fly text synthesis any more).
@@ -553,6 +654,7 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     missing: totalMissing,
     toLink: toLinkCount,
     toGenerate: uniqueToGenerate.length,
+    toCopy: toCopy.length,
     missingPresentation,
     ungeneratable,
     breakdown: {
@@ -563,10 +665,11 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     }
   }
 
-  logger.info(`getAudioNeeds(${courseCode}): ${totalMissing} missing (${toLinkCount} to link, ${uniqueToGenerate.length} to generate, ${ungeneratable} ungeneratable, presentations ready: ${presentationStatus.ready})`)
+  logger.info(`getAudioNeeds(${courseCode}): ${totalMissing} missing (${toLinkCount} to link, ${uniqueToGenerate.length} to generate, ${toCopy.length} to copy, ${ungeneratable} ungeneratable, presentations ready: ${presentationStatus.ready})`)
 
   return {
     toLink: toLinkCount,
+    toCopy,
     toGenerate: uniqueToGenerate,
     stats,
     readyForGenerate: presentationStatus.ready,
@@ -1260,6 +1363,10 @@ async function planHandler(req, res) {
       missing: audioNeeds.toGenerate.length,
       // Free: rows whose audio already exists, just need the audio_id binding
       linkable: audioNeeds.toLink,
+      // Clone once, copy everywhere: known-side items /generate will S3-copy
+      // from another course's clone-voice audio instead of TTS-ing (0 chars,
+      // 0 cost — already excluded from `missing`/estimatedCost above).
+      copyable: audioNeeds.toCopy?.length || 0,
       // Dashboard "total" stays the union of slots vs. actual existing
       existing: audioNeeds.stats.existing,
       total: audioNeeds.stats.totalSlots,
@@ -1404,6 +1511,17 @@ app.post('/generate/:courseCode', async (req, res) => {
       logger.info(`Reclassified: now ${audioNeeds.toGenerate.length} to generate`)
     }
 
+    // Step B3: "Clone once, copy everywhere" — copy first, TTS only the
+    // remainder. audioNeeds.toCopy already excludes anything still in
+    // audioNeeds.toGenerate (see classifyKnownCopyBucket), so this can only
+    // add coverage, never re-render a phrase the clone already has. Skipped
+    // entirely on dryRun — a preview must never write.
+    let copyBucketResult = { copied: 0, failed: 0 }
+    if (!dryRun && audioNeeds.toCopy?.length) {
+      copyBucketResult = await executeCopyBucket(courseCode, course.known_lang, audioNeeds.toCopy)
+      logger.info(`Copy bucket for ${courseCode}: ${copyBucketResult.copied} copied, ${copyBucketResult.failed} failed (0 TTS calls for these)`)
+    }
+
     // Add voice config to each item. Always resolve from voice_config — the
     // role determines the voice. Don't trust item.voice_id from pending rows;
     // some flows store it without the provider prefix (e.g. "pt-PT-RaquelNeural"
@@ -1445,6 +1563,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       return res.json({
         dryRun: true,
         wouldGenerate: uniqueNeeded.length,
+        wouldCopy: audioNeeds.toCopy?.length || 0,
         samples: uniqueNeeded.slice(0, 10)
       })
     }
@@ -1756,7 +1875,9 @@ app.post('/generate/:courseCode', async (req, res) => {
       failed: results.failed,
       cancelled: wasCancelled,
       errors: results.errors.slice(0, 10),
-      linked
+      linked,
+      copied: copyBucketResult.copied,
+      copyFailed: copyBucketResult.failed
     })
 
   } catch (error) {
@@ -5422,3 +5543,8 @@ module.exports.linkAudioIds = linkAudioIds
 // unit-test that TTS paths refuse to write over human pod rows (additive).
 module.exports.humanRowAtAudioKey = humanRowAtAudioKey
 module.exports.resolvePodSpeakerVoice = resolvePodSpeakerVoice
+// Clone-once-copy-everywhere: exported so the copy-pass tool/tests can drive
+// the exact same classification the live /generate and /plan routes use.
+module.exports.getAudioNeeds = getAudioNeeds
+module.exports.classifyKnownCopyBucket = classifyKnownCopyBucket
+module.exports.executeCopyBucket = executeCopyBucket

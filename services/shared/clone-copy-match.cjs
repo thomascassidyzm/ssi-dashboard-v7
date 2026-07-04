@@ -2,9 +2,11 @@
  * Clone-once, copy-everywhere — pure matching logic.
  *
  * No I/O here (no Supabase, no S3) so this is unit-testable in isolation.
- * See clone-copy-pass.cjs for the DB/S3-driving CLI that uses this.
+ * Used by tools/course-optimization/clone-copy-pass.cjs (the standalone
+ * copy-pass CLI) and services/phases/phase8-audio-v13.cjs (the live
+ * getAudioNeeds/generate 'copy' bucket).
  */
-const { normalizeForAudio } = require('../../services/shared/text-normalize.cjs')
+const { normalizeForAudio } = require('./text-normalize.cjs')
 
 // Tom's ruling: the xAI clone is the estate-wide English/known-side voice.
 const CLONE_VOICE_ID = 'gfzdpspr5fdp'
