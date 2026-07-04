@@ -1,0 +1,78 @@
+[
+  {
+    "action": "UPDATE_LEGO",
+    "id": "f32de3d2-baa8-46ab-ae14-19356d70689c",
+    "seed": 646,
+    "legoIndex": 1,
+    "before": {
+      "known": "you are doing",
+      "target": "vous faites"
+    },
+    "after": {
+      "known_text": "you are doing sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 transfer (fra): vocative marker on lego debut, mirrors spa S0646L01 fix; target unchanged (already formal vous)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0646L01B01",
+    "before": {
+      "known": "you are doing",
+      "target": "vous faites"
+    },
+    "after": {
+      "known_text": "you are doing sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 transfer (fra): debut echo build, mirrors lego"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "fra_for_eng:S0646L01B02",
+    "was": {
+      "known": "you are doing something",
+      "target": "vous faites quelque chose"
+    },
+    "reason": "F7 transfer (fra): bare build would exact-duplicate marked USE row S0646L01U01 (\"you are doing something sir\") under a different target once marked — delete redundant bare precursor, marked form already exists downstream"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "fra_for_eng:S0646L01B03",
+    "was": {
+      "known": "you are doing well",
+      "target": "vous faites bien"
+    },
+    "reason": "F7 transfer (fra): bare build would exact-duplicate marked USE row S0646L01U02 (\"you are doing well sir\") under a different target once marked — delete redundant bare precursor, marked form already exists downstream"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0646L01U03",
+    "before": {
+      "known": "you are doing something important",
+      "target": "vous faites quelque chose d'important"
+    },
+    "after": {
+      "known_text": "you are doing something important sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 transfer (fra): USE line was left bare; confirmed unique with marker appended"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0646L01U05",
+    "before": {
+      "known": "you are doing a lot",
+      "target": "vous faites beaucoup"
+    },
+    "after": {
+      "known_text": "you are doing a lot sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 transfer (fra): USE line was left bare; confirmed unique with marker appended"
+  }
+]

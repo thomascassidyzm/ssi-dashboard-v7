@@ -7,6 +7,56 @@ adversarial verification — that's a Fable-5-design + N-Sonnet-adversary run (t
 the original spa run), sized for a dedicated pass, not something to fold silently into this
 session.*
 
+---
+## STATUS UPDATE — 2026-07-04 transfer execution (seed 646 applied; wider F7 bug confirmed live)
+
+The confirmed F7 finding above (seed 646 reproduces spa's exact bare-build bug) was applied to
+`fra_for_eng` live. Apply script (idempotent, assertion-guarded, dry-run capable):
+`tools/course-optimization/apply-cue-library-v1-fra-transfer.cjs`; before/after log:
+`tools/course-optimization/cue-library-v1-fra-transfer-applied-log.json`.
+
+- **S0646L01 — APPLIED.** Lego debut + build pos3 ("you are doing" = "vous faites", bare)
+  re-glossed "you are doing sir" (target unchanged, already formal `vous`). Build rows pos4/5
+  ("you are doing something" / "you are doing well") were NOT re-glossed the same way: fra_for_eng
+  bakes the vocative into the **French target audio** on some rows (USE lines already read
+  "…monsieur"/"…madame" aloud) but not others (builds) — a pre-existing authoring difference from
+  spa_for_eng, which never speaks "señor"/"señora" in the Spanish target, only in the English cue.
+  Marking these two builds "sir" would have made their known_text byte-identical to the seed's own
+  later USE rows (`S0646L01U01`/`U02`), which already own that exact marked text under a
+  *different* target (with "monsieur" spoken) — a same-known-two-targets ZUT violation. Resolved
+  by **deleting the redundant bare precursor** (mirrors the spa precedent of deleting bare rungs
+  that duplicate already-correct text at seeds 297/396/497), not by editing target text. The two
+  previously-bare USE lines (`U03`, `U05`) were marked directly — confirmed unique course-wide, no
+  target edit needed. No audio generated; all changed rows have audio_id fields nulled, staged per
+  `docs/course-optimization/tts-staged-for-approval.md`. Closed-loop check post-apply: seed 646 now
+  has zero bare formal-`vous` rows, headroom 8 phrases (was 10, floor is ≥3), zero new collisions
+  introduced (verified against the full tu-form corpus — see below).
+
+- **New finding, bigger than this plan's original scope: the F7 bare-build bug is not confined to
+  646.** Collision-checking the live DB against fra_for_eng's own heavily-rehearsed **informal
+  `tu`-form corpus** (the exact discriminator the spa mechanism protects) turned up the identical
+  bare-`vous` bug, independently confirmed, at seeds **162, 642, 651, 652, 653, 655, 657, 661,
+  666** — e.g. seed 651's lego debut "what do you think?" = "qu'en pensez-vous ?" is bare while
+  "penses-tu"/"tu penses" (the informal twin) is drilled across 30+ phrases in seeds 121–492;
+  653's "do you mind?" = bare `vous dérange` sits downstream of "ça te dérange" drilled at seed
+  281; 642/657's "how do you feel" sits downstream of "comment te sens-tu" drilled at seed 40.
+  **None of these were fixed in this pass** — per-seed inspection (done for 651 as a test case)
+  shows fra_for_eng's baked-in target-side vocatives (see above) make several of them structurally
+  harder than 646: 651's bare lego text collides with **both** existing marked USE variants
+  ("…sir?"/"…madam?") under different targets, so the mechanical "just append a marker" move isn't
+  available — the fix needs either a target-text realignment (copying the seed's own later spoken
+  form onto the debut) or an editorial call on wording, which is exactly the kind of judgment this
+  session was told not to make unilaterally. Flagging for the dedicated Fable-5-design +
+  N-Sonnet-adversary pass this doc already called for below — that pass should treat "every
+  formal-`vous` seed, not just the F7-labelled ones from spa's seed-parity table" as its search
+  scope, since the bug appears tied to the register itself, not to the specific seed numbers spa
+  happened to patch.
+
+- **F3/F4/F5 (seeds 297/396/427/497/506/542/668):** not touched, per the plan's own findings above
+  — 297 doesn't manifest the bug (French subjunctive-relative behaves correctly there), 396's only
+  live issue is the unrelated mood error (flagged, untouched, native-review queue), and F1/F2/F5
+  were never spot-checked for bugs in the first place (no confirmed defect to fix).
+
 ## Headline finding: fra_for_eng shares spa_for_eng's seed scaffold
 
 `fra_for_eng` (668 seeds, 1,653 legos, released) was built from the same English known-side
