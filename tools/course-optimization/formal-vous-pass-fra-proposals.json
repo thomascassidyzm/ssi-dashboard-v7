@@ -1,0 +1,1987 @@
+{
+  "proposals": {
+    "642": {
+      "seedSentence": "how do you feel madam? = comment vous sentez-vous madame ?",
+      "vocative": "madam",
+      "phraseCountBefore": 14,
+      "phraseCountAfter": 13,
+      "actions": [
+        {
+          "op": "UPDATE_LEGO",
+          "id": "2b2d88ee-6b7b-4a96-8f3b-83f28426db4b",
+          "seed": 642,
+          "lego": 2,
+          "knownBefore": "how do you feel?",
+          "targetBefore": "comment vous sentez-vous ?",
+          "knownAfter": "how do you feel madam?",
+          "targetAfter": "comment vous sentez-vous madame ?",
+          "donor": "fra_for_eng:S0642L02U01",
+          "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0642L02B01",
+          "seed": 642,
+          "knownBefore": "how do you feel?",
+          "targetBefore": "comment vous sentez-vous ?",
+          "duplicateOf": "fra_for_eng:S0642L02U01",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0642L02U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0642L02U02",
+          "seed": 642,
+          "knownBefore": "how do you feel this morning?",
+          "targetBefore": "comment vous sentez-vous ce matin ?",
+          "knownAfter": "how do you feel this morning madam?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0642L02U03",
+          "seed": 642,
+          "knownBefore": "I would like to know how you feel",
+          "targetBefore": "j'aimerais savoir comment vous sentez-vous",
+          "knownAfter": "I would like to know how you feel madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0642L02U04",
+          "seed": 642,
+          "knownBefore": "can you tell me how you feel?",
+          "targetBefore": "pouvez-vous me dire comment vous sentez-vous ?",
+          "knownAfter": "can you tell me how you feel madam?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0642L02C02 left untouched (visual tile, 646 precedent): \"do you feel\" = \"vous sentez-vous\""
+      ],
+      "tuTwinEvidence": [
+        {
+          "bare": "2b2d88ee-6b7b-4a96-8f3b-83f28426db4b \"how do you feel?\"=\"comment vous sentez-vous ?\"",
+          "twin": "fra_for_eng:S0040L01B02 (seed 40) \"how do you feel\"=\"comment te sens-tu\""
+        },
+        {
+          "bare": "2b2d88ee-6b7b-4a96-8f3b-83f28426db4b \"how do you feel?\"=\"comment vous sentez-vous ?\"",
+          "twin": "fra_for_eng:S0040L01U01 (seed 40) \"how do you feel?\"=\"comment te sens-tu ?\""
+        },
+        {
+          "bare": "fra_for_eng:S0642L02C02 \"do you feel\"=\"vous sentez-vous\"",
+          "twin": "788dcc5c-54ea-4392-a88e-ebf247912be2 (seed 40) \"do you feel\"=\"te sens-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0642L02C02 \"do you feel\"=\"vous sentez-vous\"",
+          "twin": "fra_for_eng:S0040L01B01 (seed 40) \"do you feel\"=\"te sens-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0642L02B01 \"how do you feel?\"=\"comment vous sentez-vous ?\"",
+          "twin": "fra_for_eng:S0040L01B02 (seed 40) \"how do you feel\"=\"comment te sens-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0642L02B01 \"how do you feel?\"=\"comment vous sentez-vous ?\"",
+          "twin": "fra_for_eng:S0040L01U01 (seed 40) \"how do you feel?\"=\"comment te sens-tu ?\""
+        },
+        {
+          "bare": "fra_for_eng:S0642L02U02 \"how do you feel this morning?\"=\"comment vous sentez-vous ce matin ?\"",
+          "twin": "fra_for_eng:S0040L01U05 (seed 40) \"how do you feel this morning?\"=\"comment te sens-tu ce matin ?\""
+        }
+      ]
+    },
+    "643": {
+      "seedSentence": "do you want sir = voulez-vous monsieur",
+      "vocative": "sir",
+      "phraseCountBefore": 8,
+      "phraseCountAfter": 5,
+      "actions": [
+        {
+          "op": "UPDATE_LEGO",
+          "id": "46584401-42c4-4044-af39-95b251105031",
+          "seed": 643,
+          "lego": 1,
+          "knownBefore": "do you want?",
+          "targetBefore": "voulez-vous ?",
+          "knownAfter": "do you want sir",
+          "targetAfter": "voulez-vous monsieur",
+          "donor": "fra_for_eng:S0643L01U01",
+          "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0643L01B01",
+          "seed": 643,
+          "knownBefore": "do you want?",
+          "targetBefore": "voulez-vous ?",
+          "duplicateOf": "fra_for_eng:S0643L01U01",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0643L01U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0643L01B02",
+          "seed": 643,
+          "knownBefore": "do you want some more?",
+          "targetBefore": "voulez-vous encore ?",
+          "duplicateOf": "fra_for_eng:S0643L01U03",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0643L01U03 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0643L01B03",
+          "seed": 643,
+          "knownBefore": "do you want to go?",
+          "targetBefore": "voulez-vous partir ?",
+          "duplicateOf": "fra_for_eng:S0643L01U02",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0643L01U02 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0643L01U04",
+          "seed": 643,
+          "knownBefore": "do you want to know?",
+          "targetBefore": "voulez-vous savoir ?",
+          "knownAfter": "do you want to know sir?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0643L01C01 left untouched (visual tile, 646 precedent): \"do you want\" = \"voulez-vous\""
+      ],
+      "tuTwinEvidence": [
+        {
+          "bare": "46584401-42c4-4044-af39-95b251105031 \"do you want?\"=\"voulez-vous ?\"",
+          "twin": "e4b8ebed-a091-4488-a968-65ecb4c8ea48 (seed 67) \"do you want\"=\"veux-tu\""
+        },
+        {
+          "bare": "46584401-42c4-4044-af39-95b251105031 \"do you want?\"=\"voulez-vous ?\"",
+          "twin": "fra_for_eng:S0067L01B01 (seed 67) \"do you want\"=\"veux-tu\""
+        },
+        {
+          "bare": "46584401-42c4-4044-af39-95b251105031 \"do you want?\"=\"voulez-vous ?\"",
+          "twin": "fra_for_eng:S0067L01B02 (seed 67) \"do you want\"=\"veux-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0643L01C01 \"do you want\"=\"voulez-vous\"",
+          "twin": "e4b8ebed-a091-4488-a968-65ecb4c8ea48 (seed 67) \"do you want\"=\"veux-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0643L01C01 \"do you want\"=\"voulez-vous\"",
+          "twin": "fra_for_eng:S0067L01B01 (seed 67) \"do you want\"=\"veux-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0643L01C01 \"do you want\"=\"voulez-vous\"",
+          "twin": "fra_for_eng:S0067L01B02 (seed 67) \"do you want\"=\"veux-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0643L01B01 \"do you want?\"=\"voulez-vous ?\"",
+          "twin": "e4b8ebed-a091-4488-a968-65ecb4c8ea48 (seed 67) \"do you want\"=\"veux-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0643L01B01 \"do you want?\"=\"voulez-vous ?\"",
+          "twin": "fra_for_eng:S0067L01B01 (seed 67) \"do you want\"=\"veux-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0643L01B01 \"do you want?\"=\"voulez-vous ?\"",
+          "twin": "fra_for_eng:S0067L01B02 (seed 67) \"do you want\"=\"veux-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0643L01B03 \"do you want to go?\"=\"voulez-vous partir ?\"",
+          "twin": "fra_for_eng:S0093L02U02 (seed 93) \"do you want to go?\"=\"veux-tu y aller ?\""
+        }
+      ]
+    },
+    "644": {
+      "seedSentence": "could you say that sir? = pourriez-vous dire cela monsieur ?",
+      "vocative": "sir",
+      "phraseCountBefore": 16,
+      "phraseCountAfter": 16,
+      "actions": [
+        {
+          "op": "UPDATE_LEGO",
+          "id": "77d3eed8-1af9-42b0-8cbe-81b7fa08a40a",
+          "seed": 644,
+          "lego": 2,
+          "knownBefore": "could you?",
+          "targetBefore": "pourriez-vous ?",
+          "knownAfter": "could you sir?",
+          "reason": "known-only vocative mark, unique course-wide (646 lego precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0644L02B01",
+          "seed": 644,
+          "knownBefore": "could you?",
+          "targetBefore": "pourriez-vous ?",
+          "knownAfter": "could you sir?",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0644L02B02",
+          "seed": 644,
+          "knownBefore": "could you please do that?",
+          "targetBefore": "pourriez-vous faire cela s'il vous plaît ?",
+          "knownAfter": "could you please do that sir?",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0644L02B03",
+          "seed": 644,
+          "knownBefore": "could you help right now?",
+          "targetBefore": "pourriez-vous aider maintenant ?",
+          "knownAfter": "could you help right now sir?",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0644L02U03",
+          "seed": 644,
+          "knownBefore": "could you help me?",
+          "targetBefore": "pourriez-vous m'aider ?",
+          "knownAfter": "could you help me sir?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0644L02U04",
+          "seed": 644,
+          "knownBefore": "could you wait?",
+          "targetBefore": "pourriez-vous attendre ?",
+          "knownAfter": "could you wait sir?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0644L02U05",
+          "seed": 644,
+          "knownBefore": "could you come?",
+          "targetBefore": "pourriez-vous venir ?",
+          "knownAfter": "could you come sir?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0644L02C02 left untouched (visual tile, 646 precedent): \"you\" = \"vous\""
+      ],
+      "tuTwinEvidence": [
+        {
+          "bare": "77d3eed8-1af9-42b0-8cbe-81b7fa08a40a \"could you?\"=\"pourriez-vous ?\"",
+          "twin": "2867feff-65cf-4d55-8b3c-1eb70ef71e63 (seed 61) \"could you\"=\"tu pourrais\""
+        },
+        {
+          "bare": "77d3eed8-1af9-42b0-8cbe-81b7fa08a40a \"could you?\"=\"pourriez-vous ?\"",
+          "twin": "fra_for_eng:S0061L01B02 (seed 61) \"could you\"=\"tu pourrais\""
+        },
+        {
+          "bare": "77d3eed8-1af9-42b0-8cbe-81b7fa08a40a \"could you?\"=\"pourriez-vous ?\"",
+          "twin": "fra_for_eng:S0061L01B01 (seed 61) \"could you\"=\"tu pourrais\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0249L01C01 (seed 249) \"you\"=\"que tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0049L03C01 (seed 49) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0489L04C01 (seed 489) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0120L02C01 (seed 120) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0301L01C01 (seed 301) \"you\"=\"te\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0344L02C02 (seed 344) \"you\"=\"te\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0355L01C01 (seed 355) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0497L02C01 (seed 497) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0063L01C01 (seed 63) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0281L04C01 (seed 281) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0135L02C01 (seed 135) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0121L03C01 (seed 121) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0524L02C02 (seed 524) \"you\"=\"te\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0030L02C01 (seed 30) \"you\"=\"te\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0491L03C02 (seed 491) \"you\"=\"dont tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0415L03C02 (seed 415) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0471L01C02 (seed 471) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0100L01C01 (seed 100) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0432L03C05 (seed 432) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0388L03C03 (seed 388) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0427L02C02 (seed 427) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0068L01C02 (seed 68) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0099L01C01 (seed 99) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0061L01C01 (seed 61) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02C02 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0113L03C01 (seed 113) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02B01 \"could you?\"=\"pourriez-vous ?\"",
+          "twin": "2867feff-65cf-4d55-8b3c-1eb70ef71e63 (seed 61) \"could you\"=\"tu pourrais\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02B01 \"could you?\"=\"pourriez-vous ?\"",
+          "twin": "fra_for_eng:S0061L01B02 (seed 61) \"could you\"=\"tu pourrais\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02B01 \"could you?\"=\"pourriez-vous ?\"",
+          "twin": "fra_for_eng:S0061L01B01 (seed 61) \"could you\"=\"tu pourrais\""
+        },
+        {
+          "bare": "fra_for_eng:S0644L02U03 \"could you help me?\"=\"pourriez-vous m'aider ?\"",
+          "twin": "fra_for_eng:S0061L01B04 (seed 61) \"could you help me\"=\"tu pourrais m'aider\""
+        }
+      ]
+    },
+    "645": {
+      "seedSentence": "I can help you madam = Je peux vous aider madame",
+      "vocative": "madam",
+      "phraseCountBefore": 8,
+      "phraseCountAfter": 7,
+      "actions": [
+        {
+          "op": "UPDATE_LEGO",
+          "id": "86361899-159c-4bbf-aaaa-8226f02b6c70",
+          "seed": 645,
+          "lego": 1,
+          "knownBefore": "I can help you",
+          "targetBefore": "je peux vous aider",
+          "knownAfter": "I can help you madam",
+          "targetAfter": "je peux vous aider madame",
+          "donor": "fra_for_eng:S0645L01U01",
+          "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0645L01B01",
+          "seed": 645,
+          "knownBefore": "I can help you",
+          "targetBefore": "je peux vous aider",
+          "duplicateOf": "fra_for_eng:S0645L01U01",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0645L01U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0645L01B02",
+          "seed": 645,
+          "knownBefore": "I can help you today",
+          "targetBefore": "je peux vous aider aujourd'hui",
+          "knownAfter": "I can help you today madam",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0645L01B03",
+          "seed": 645,
+          "knownBefore": "of course I can help you",
+          "targetBefore": "bien sûr je peux vous aider",
+          "knownAfter": "of course I can help you madam",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0645L01U03",
+          "seed": 645,
+          "knownBefore": "yes I can help you",
+          "targetBefore": "oui je peux vous aider",
+          "knownAfter": "yes I can help you madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0645L01U04",
+          "seed": 645,
+          "knownBefore": "I can help you right now",
+          "targetBefore": "je peux vous aider maintenant",
+          "knownAfter": "I can help you right now madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0645L01U05",
+          "seed": 645,
+          "knownBefore": "I know I can help you",
+          "targetBefore": "je sais que je peux vous aider",
+          "knownAfter": "I know I can help you madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0645L01C02 left untouched (visual tile, 646 precedent): \"help you\" = \"vous aider\""
+      ],
+      "tuTwinEvidence": [
+        {
+          "bare": "fra_for_eng:S0645L01C02 \"help you\"=\"vous aider\"",
+          "twin": "fra_for_eng:S0246L01C01 (seed 246) \"help you\"=\"t'aide\""
+        }
+      ]
+    },
+    "647": {
+      "seedSentence": "you speak it madam = vous le parlez madame",
+      "vocative": "madam",
+      "phraseCountBefore": 8,
+      "phraseCountAfter": 7,
+      "actions": [
+        {
+          "op": "UPDATE_LEGO",
+          "id": "9b4a771d-2b95-4d6a-aeb6-90a5ac37375a",
+          "seed": 647,
+          "lego": 1,
+          "knownBefore": "you speak it",
+          "targetBefore": "vous le parlez",
+          "knownAfter": "you speak it madam",
+          "targetAfter": "vous le parlez madame",
+          "donor": "fra_for_eng:S0647L01U01",
+          "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0647L01B01",
+          "seed": 647,
+          "knownBefore": "you speak it",
+          "targetBefore": "vous le parlez",
+          "duplicateOf": "fra_for_eng:S0647L01U01",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0647L01U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0647L01B02",
+          "seed": 647,
+          "knownBefore": "yes you speak it",
+          "targetBefore": "oui vous le parlez",
+          "knownAfter": "yes you speak it madam",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0647L01B03",
+          "seed": 647,
+          "knownBefore": "you speak it well",
+          "targetBefore": "vous le parlez bien",
+          "knownAfter": "you speak it well madam",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0647L01U03",
+          "seed": 647,
+          "knownBefore": "yes you speak it well",
+          "targetBefore": "oui vous le parlez bien",
+          "knownAfter": "yes you speak it well madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0647L01U04",
+          "seed": 647,
+          "knownBefore": "you speak it better than me",
+          "targetBefore": "vous le parlez mieux que moi",
+          "knownAfter": "you speak it better than me madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0647L01U05",
+          "seed": 647,
+          "knownBefore": "you speak it with confidence",
+          "targetBefore": "vous le parlez avec confiance",
+          "knownAfter": "you speak it with confidence madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0647L01C01 left untouched (visual tile, 646 precedent): \"you\" = \"vous\""
+      ],
+      "tuTwinEvidence": [
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0249L01C01 (seed 249) \"you\"=\"que tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0049L03C01 (seed 49) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0489L04C01 (seed 489) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0120L02C01 (seed 120) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0301L01C01 (seed 301) \"you\"=\"te\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0344L02C02 (seed 344) \"you\"=\"te\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0355L01C01 (seed 355) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0497L02C01 (seed 497) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0063L01C01 (seed 63) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0281L04C01 (seed 281) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0135L02C01 (seed 135) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0121L03C01 (seed 121) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0524L02C02 (seed 524) \"you\"=\"te\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0030L02C01 (seed 30) \"you\"=\"te\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0491L03C02 (seed 491) \"you\"=\"dont tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0415L03C02 (seed 415) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0471L01C02 (seed 471) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0100L01C01 (seed 100) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0432L03C05 (seed 432) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0388L03C03 (seed 388) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0427L02C02 (seed 427) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0068L01C02 (seed 68) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0099L01C01 (seed 99) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0061L01C01 (seed 61) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0647L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0113L03C01 (seed 113) \"you\"=\"tu\""
+        }
+      ]
+    },
+    "648": {
+      "seedSentence": "what you said madam = ce que vous avez dit madame",
+      "vocative": "madam",
+      "phraseCountBefore": 8,
+      "phraseCountAfter": 7,
+      "actions": [
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0648L01B01",
+          "seed": 648,
+          "knownBefore": "what you said",
+          "targetBefore": "ce que vous avez dit",
+          "duplicateOf": "de8d030e-9e88-43f0-840d-99775f0af2a3",
+          "reason": "bare build would duplicate marked row de8d030e-9e88-43f0-840d-99775f0af2a3 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0648L01B02",
+          "seed": 648,
+          "knownBefore": "she knows what you said",
+          "targetBefore": "elle sait ce que vous avez dit",
+          "knownAfter": "she knows what you said madam",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0648L01B03",
+          "seed": 648,
+          "knownBefore": "he knows what you said",
+          "targetBefore": "il sait ce que vous avez dit",
+          "knownAfter": "he knows what you said madam",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0648L01U02",
+          "seed": 648,
+          "knownBefore": "I understood what you said",
+          "targetBefore": "j'ai compris ce que vous avez dit",
+          "knownAfter": "I understood what you said madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0648L01U03",
+          "seed": 648,
+          "knownBefore": "that is what you said",
+          "targetBefore": "c'est ce que vous avez dit",
+          "knownAfter": "that is what you said madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0648L01U04",
+          "seed": 648,
+          "knownBefore": "I know what you said",
+          "targetBefore": "je sais ce que vous avez dit",
+          "knownAfter": "I know what you said madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0648L01U05",
+          "seed": 648,
+          "knownBefore": "I think about what you said",
+          "targetBefore": "je pense à ce que vous avez dit",
+          "knownAfter": "I think about what you said madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0648L01C02 left untouched (visual tile, 646 precedent): \"you said\" = \"vous avez dit\""
+      ],
+      "tuTwinEvidence": [
+        {
+          "bare": "fra_for_eng:S0648L01C02 \"you said\"=\"vous avez dit\"",
+          "twin": "87800161-d693-438a-a7fa-3bed383d904b (seed 113) \"you said\"=\"tu as dit\""
+        },
+        {
+          "bare": "fra_for_eng:S0648L01C02 \"you said\"=\"vous avez dit\"",
+          "twin": "fra_for_eng:S0113L03B02 (seed 113) \"you said\"=\"tu as dit\""
+        },
+        {
+          "bare": "fra_for_eng:S0648L01C02 \"you said\"=\"vous avez dit\"",
+          "twin": "fra_for_eng:S0113L03B01 (seed 113) \"you said\"=\"tu as dit\""
+        },
+        {
+          "bare": "fra_for_eng:S0648L01C02 \"you said\"=\"vous avez dit\"",
+          "twin": "fra_for_eng:S0078L02C02 (seed 78) \"you said\"=\"tu as dit\""
+        },
+        {
+          "bare": "fra_for_eng:S0648L01B01 \"what you said\"=\"ce que vous avez dit\"",
+          "twin": "46fdd9b1-bb26-457e-84cb-42300d2fa992 (seed 78) \"what you said\"=\"ce que tu as dit\""
+        },
+        {
+          "bare": "fra_for_eng:S0648L01B01 \"what you said\"=\"ce que vous avez dit\"",
+          "twin": "34ae69ce-8dbb-492d-9321-fed046e62a70 (seed 83) \"what you said\"=\"ce que tu as dit\""
+        },
+        {
+          "bare": "fra_for_eng:S0648L01B01 \"what you said\"=\"ce que vous avez dit\"",
+          "twin": "fra_for_eng:S0078L02B01 (seed 78) \"what you said\"=\"ce que tu as dit\""
+        },
+        {
+          "bare": "fra_for_eng:S0648L01B01 \"what you said\"=\"ce que vous avez dit\"",
+          "twin": "fra_for_eng:S0113L03B03 (seed 113) \"what you said\"=\"ce que tu as dit\""
+        },
+        {
+          "bare": "fra_for_eng:S0648L01U04 \"I know what you said\"=\"je sais ce que vous avez dit\"",
+          "twin": "fra_for_eng:S0078L02U01 (seed 78) \"I know what you said\"=\"je sais ce que tu as dit\""
+        }
+      ]
+    },
+    "649": {
+      "seedSentence": "are you ready sir? = Êtes-vous prêt monsieur ?",
+      "vocative": "sir",
+      "phraseCountBefore": 7,
+      "phraseCountAfter": 5,
+      "actions": [
+        {
+          "op": "UPDATE_LEGO",
+          "id": "9e5268f4-eed4-45db-9bdf-91546d662a8c",
+          "seed": 649,
+          "lego": 2,
+          "knownBefore": "are you ready?",
+          "targetBefore": "Êtes-vous prêt ?",
+          "knownAfter": "are you ready sir?",
+          "targetAfter": "êtes-vous prêt monsieur ?",
+          "donor": "fra_for_eng:S0649L02U01",
+          "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0649L02B01",
+          "seed": 649,
+          "knownBefore": "are you ready?",
+          "targetBefore": "êtes-vous prêt ?",
+          "duplicateOf": "fra_for_eng:S0649L02U01",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0649L02U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0649L02B02",
+          "seed": 649,
+          "knownBefore": "are you ready to go?",
+          "targetBefore": "êtes-vous prêt à partir ?",
+          "duplicateOf": "fra_for_eng:S0649L02U02",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0649L02U02 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0649L02B03",
+          "seed": 649,
+          "knownBefore": "are you ready to start?",
+          "targetBefore": "êtes-vous prêt à commencer ?",
+          "knownAfter": "are you ready to start sir?",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0649L02U03",
+          "seed": 649,
+          "knownBefore": "are you ready now?",
+          "targetBefore": "êtes-vous prêt maintenant ?",
+          "knownAfter": "are you ready now sir?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0649L02U05",
+          "seed": 649,
+          "knownBefore": "are you really ready?",
+          "targetBefore": "êtes-vous vraiment prêt ?",
+          "knownAfter": "are you really ready sir?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0649L02C01 left untouched (visual tile, 646 precedent): \"are you\" = \"êtes-vous\""
+      ],
+      "tuTwinEvidence": [
+        {
+          "bare": "9e5268f4-eed4-45db-9bdf-91546d662a8c \"are you ready?\"=\"Êtes-vous prêt ?\"",
+          "twin": "fra_for_eng:S0063L01B04 (seed 63) \"are you ready\"=\"tu es prêt\""
+        },
+        {
+          "bare": "fra_for_eng:S0649L02C01 \"are you\"=\"êtes-vous\"",
+          "twin": "f8f0a961-5309-406e-ac48-f76fdabda600 (seed 63) \"are you\"=\"tu es\""
+        },
+        {
+          "bare": "fra_for_eng:S0649L02C01 \"are you\"=\"êtes-vous\"",
+          "twin": "fra_for_eng:S0063L01B02 (seed 63) \"are you\"=\"tu es\""
+        },
+        {
+          "bare": "fra_for_eng:S0649L02C01 \"are you\"=\"êtes-vous\"",
+          "twin": "fra_for_eng:S0063L01B01 (seed 63) \"are you\"=\"tu es\""
+        },
+        {
+          "bare": "fra_for_eng:S0649L02C01 \"are you\"=\"êtes-vous\"",
+          "twin": "fra_for_eng:S0025L01C01 (seed 25) \"are you\"=\"est-ce que tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0649L02C01 \"are you\"=\"êtes-vous\"",
+          "twin": "fra_for_eng:S0095L01C01 (seed 95) \"are you\"=\"es-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0649L02B01 \"are you ready?\"=\"êtes-vous prêt ?\"",
+          "twin": "fra_for_eng:S0063L01B04 (seed 63) \"are you ready\"=\"tu es prêt\""
+        },
+        {
+          "bare": "fra_for_eng:S0649L02B03 \"are you ready to start?\"=\"êtes-vous prêt à commencer ?\"",
+          "twin": "fra_for_eng:S0063L01U05 (seed 63) \"are you ready to start?\"=\"tu es prêt à commencer ?\""
+        }
+      ]
+    },
+    "650": {
+      "seedSentence": "do you want to go madam? = voulez-vous partir madame ?",
+      "vocative": "madam",
+      "phraseCountBefore": 8,
+      "phraseCountAfter": 7,
+      "actions": [
+        {
+          "op": "UPDATE_LEGO",
+          "id": "dea92d9a-797c-472a-bdf4-c9cb6c6b0a34",
+          "seed": 650,
+          "lego": 1,
+          "knownBefore": "do you want to go?",
+          "targetBefore": "voulez-vous partir ?",
+          "knownAfter": "do you want to go madam?",
+          "targetAfter": "voulez-vous partir madame ?",
+          "donor": "fra_for_eng:S0650L01U01",
+          "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0650L01B01",
+          "seed": 650,
+          "knownBefore": "do you want to go?",
+          "targetBefore": "voulez-vous partir ?",
+          "duplicateOf": "fra_for_eng:S0650L01U01",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0650L01U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0650L01B02",
+          "seed": 650,
+          "knownBefore": "do you want to go now?",
+          "targetBefore": "voulez-vous partir maintenant ?",
+          "knownAfter": "do you want to go now madam?",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0650L01B03",
+          "seed": 650,
+          "knownBefore": "do you want to go with me?",
+          "targetBefore": "voulez-vous partir avec moi ?",
+          "knownAfter": "do you want to go with me madam?",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0650L01U04",
+          "seed": 650,
+          "knownBefore": "do you want to go today?",
+          "targetBefore": "voulez-vous partir aujourd'hui ?",
+          "knownAfter": "do you want to go today madam?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0650L01U05",
+          "seed": 650,
+          "knownBefore": "do you want to go already?",
+          "targetBefore": "voulez-vous partir déjà ?",
+          "knownAfter": "do you want to go already madam?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0650L01C01 left untouched (visual tile, 646 precedent): \"do you want\" = \"voulez-vous\""
+      ],
+      "tuTwinEvidence": [
+        {
+          "bare": "dea92d9a-797c-472a-bdf4-c9cb6c6b0a34 \"do you want to go?\"=\"voulez-vous partir ?\"",
+          "twin": "fra_for_eng:S0093L02U02 (seed 93) \"do you want to go?\"=\"veux-tu y aller ?\""
+        },
+        {
+          "bare": "fra_for_eng:S0650L01C01 \"do you want\"=\"voulez-vous\"",
+          "twin": "e4b8ebed-a091-4488-a968-65ecb4c8ea48 (seed 67) \"do you want\"=\"veux-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0650L01C01 \"do you want\"=\"voulez-vous\"",
+          "twin": "fra_for_eng:S0067L01B01 (seed 67) \"do you want\"=\"veux-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0650L01C01 \"do you want\"=\"voulez-vous\"",
+          "twin": "fra_for_eng:S0067L01B02 (seed 67) \"do you want\"=\"veux-tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0650L01B01 \"do you want to go?\"=\"voulez-vous partir ?\"",
+          "twin": "fra_for_eng:S0093L02U02 (seed 93) \"do you want to go?\"=\"veux-tu y aller ?\""
+        }
+      ]
+    },
+    "651": {
+      "seedSentence": "what do you think madam? = qu'en pensez-vous madame ?",
+      "vocative": "madam",
+      "phraseCountBefore": 6,
+      "phraseCountAfter": 5,
+      "actions": [
+        {
+          "op": "UPDATE_LEGO",
+          "id": "ab327e37-0bc2-42b5-9234-19eb4f9ec3f7",
+          "seed": 651,
+          "lego": 1,
+          "knownBefore": "what do you think?",
+          "targetBefore": "qu'en pensez-vous ?",
+          "knownAfter": "what do you think madam?",
+          "targetAfter": "qu'en pensez-vous madame ?",
+          "donor": "fra_for_eng:S0651L01U01",
+          "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0651L01B01",
+          "seed": 651,
+          "knownBefore": "what do you think?",
+          "targetBefore": "qu'en pensez-vous ?",
+          "duplicateOf": "fra_for_eng:S0651L01U01",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0651L01U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0651L01B02",
+          "seed": 651,
+          "knownBefore": "what do you think about this?",
+          "targetBefore": "qu'en pensez-vous de cela ?",
+          "knownAfter": "what do you think about this madam?",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0651L01U04",
+          "seed": 651,
+          "knownBefore": "what do you think about this idea?",
+          "targetBefore": "qu'en pensez-vous de cette idée ?",
+          "knownAfter": "what do you think about this idea madam?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0651L01C01 left untouched (visual tile, 646 precedent): \"what do you think\" = \"qu'en pensez-vous\""
+      ],
+      "tuTwinEvidence": []
+    },
+    "652": {
+      "seedSentence": "what do you need sir? = de quoi avez-vous besoin monsieur ?",
+      "vocative": "sir",
+      "phraseCountBefore": 6,
+      "phraseCountAfter": 4,
+      "actions": [
+        {
+          "op": "UPDATE_LEGO",
+          "id": "cfa3c5ec-9b59-4ab6-8a6f-48617c430a00",
+          "seed": 652,
+          "lego": 1,
+          "knownBefore": "what do you need?",
+          "targetBefore": "de quoi avez-vous besoin ?",
+          "knownAfter": "what do you need sir?",
+          "targetAfter": "de quoi avez-vous besoin monsieur ?",
+          "donor": "fra_for_eng:S0652L01U01",
+          "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0652L01B01",
+          "seed": 652,
+          "knownBefore": "what do you need?",
+          "targetBefore": "de quoi avez-vous besoin ?",
+          "duplicateOf": "fra_for_eng:S0652L01U01",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0652L01U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0652L01B02",
+          "seed": 652,
+          "knownBefore": "what do you need today?",
+          "targetBefore": "de quoi avez-vous besoin aujourd'hui ?",
+          "duplicateOf": "fra_for_eng:S0652L01U03",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0652L01U03 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0652L01U04",
+          "seed": 652,
+          "knownBefore": "what do you need for this?",
+          "targetBefore": "de quoi avez-vous besoin pour ça ?",
+          "knownAfter": "what do you need for this sir?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0652L01C02 left untouched (visual tile, 646 precedent): \"do you need\" = \"avez-vous besoin\""
+      ],
+      "tuTwinEvidence": []
+    },
+    "653": {
+      "seedSentence": "do you mind madam? = est-ce que ça vous dérange madame ?",
+      "vocative": "madam",
+      "phraseCountBefore": 16,
+      "phraseCountAfter": 15,
+      "actions": [
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0653L01U04",
+          "seed": 653,
+          "knownBefore": "it bothers you",
+          "targetBefore": "ça vous dérange",
+          "knownAfter": "it bothers you madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0653L01U05",
+          "seed": 653,
+          "knownBefore": "it bothers you a lot",
+          "targetBefore": "ça vous dérange beaucoup",
+          "knownAfter": "it bothers you a lot madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_LEGO",
+          "id": "0253739f-903d-4e38-a1db-e2925f41ece4",
+          "seed": 653,
+          "lego": 2,
+          "knownBefore": "do you mind?",
+          "targetBefore": "est-ce que ça vous dérange ?",
+          "knownAfter": "do you mind madam?",
+          "targetAfter": "est-ce que ça vous dérange madame ?",
+          "donor": "fra_for_eng:S0653L02U01",
+          "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+        },
+        {
+          "op": "DELETE_PHRASE",
+          "id": "fra_for_eng:S0653L02B01",
+          "seed": 653,
+          "knownBefore": "do you mind?",
+          "targetBefore": "est-ce que ça vous dérange ?",
+          "duplicateOf": "fra_for_eng:S0653L02U01",
+          "reason": "bare build would duplicate marked row fra_for_eng:S0653L02U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0653L02B02",
+          "seed": 653,
+          "knownBefore": "do you mind a lot?",
+          "targetBefore": "est-ce que ça vous dérange beaucoup ?",
+          "knownAfter": "do you mind a lot madam?",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0653L02B03",
+          "seed": 653,
+          "knownBefore": "do you mind if I stay?",
+          "targetBefore": "est-ce que ça vous dérange si je reste ?",
+          "knownAfter": "do you mind if I stay madam?",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0653L02U03",
+          "seed": 653,
+          "knownBefore": "does it bother you at all?",
+          "targetBefore": "est-ce que ça vous dérange du tout ?",
+          "knownAfter": "does it bother you at all madam?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0653L02U04",
+          "seed": 653,
+          "knownBefore": "does it really bother you?",
+          "targetBefore": "est-ce que ça vous dérange vraiment ?",
+          "knownAfter": "does it really bother you madam?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0653L02U05",
+          "seed": 653,
+          "knownBefore": "do you mind today?",
+          "targetBefore": "est-ce que ça vous dérange aujourd'hui ?",
+          "knownAfter": "do you mind today madam?",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0653L02C02 left untouched (visual tile, 646 precedent): \"that bothers you\" = \"ça vous dérange\""
+      ],
+      "tuTwinEvidence": [
+        {
+          "bare": "0253739f-903d-4e38-a1db-e2925f41ece4 \"do you mind?\"=\"est-ce que ça vous dérange ?\"",
+          "twin": "b37892a9-9214-4c83-8717-a19f8cedf13e (seed 281) \"do you mind\"=\"ça te dérange\""
+        },
+        {
+          "bare": "0253739f-903d-4e38-a1db-e2925f41ece4 \"do you mind?\"=\"est-ce que ça vous dérange ?\"",
+          "twin": "fra_for_eng:S0281L03B01 (seed 281) \"do you mind\"=\"ça te dérange\""
+        },
+        {
+          "bare": "0253739f-903d-4e38-a1db-e2925f41ece4 \"do you mind?\"=\"est-ce que ça vous dérange ?\"",
+          "twin": "fra_for_eng:S0281L03B02 (seed 281) \"do you mind\"=\"ça te dérange\""
+        },
+        {
+          "bare": "fra_for_eng:S0653L02B01 \"do you mind?\"=\"est-ce que ça vous dérange ?\"",
+          "twin": "b37892a9-9214-4c83-8717-a19f8cedf13e (seed 281) \"do you mind\"=\"ça te dérange\""
+        },
+        {
+          "bare": "fra_for_eng:S0653L02B01 \"do you mind?\"=\"est-ce que ça vous dérange ?\"",
+          "twin": "fra_for_eng:S0281L03B01 (seed 281) \"do you mind\"=\"ça te dérange\""
+        },
+        {
+          "bare": "fra_for_eng:S0653L02B01 \"do you mind?\"=\"est-ce que ça vous dérange ?\"",
+          "twin": "fra_for_eng:S0281L03B02 (seed 281) \"do you mind\"=\"ça te dérange\""
+        }
+      ]
+    },
+    "654": {
+      "seedSentence": "I'm not sure if I can help you, sir = Je ne suis pas sûr de pouvoir vous aider, monsieur",
+      "vocative": "sir",
+      "phraseCountBefore": 15,
+      "phraseCountAfter": 15,
+      "actions": [
+        {
+          "op": "UPDATE_LEGO",
+          "id": "f902460e-c15a-43fe-87d2-2ca73a70dad6",
+          "seed": 654,
+          "lego": 2,
+          "knownBefore": "to be able to help you",
+          "targetBefore": "de pouvoir vous aider",
+          "knownAfter": "to be able to help you sir",
+          "reason": "known-only vocative mark, unique course-wide (646 lego precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0654L02B01",
+          "seed": 654,
+          "knownBefore": "to be able to help you",
+          "targetBefore": "de pouvoir vous aider",
+          "knownAfter": "to be able to help you sir",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0654L02B02",
+          "seed": 654,
+          "knownBefore": "not sure to be able to help you",
+          "targetBefore": "pas sûr de pouvoir vous aider",
+          "knownAfter": "not sure to be able to help you sir",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0654L02U02",
+          "seed": 654,
+          "knownBefore": "I'm not sure I can help you",
+          "targetBefore": "je ne suis pas sûr de pouvoir vous aider",
+          "knownAfter": "I'm not sure I can help you sir",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0654L02U03",
+          "seed": 654,
+          "knownBefore": "yes I am sure I can help you",
+          "targetBefore": "oui je suis sûr de pouvoir vous aider",
+          "knownAfter": "yes I am sure I can help you sir",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0654L02U04",
+          "seed": 654,
+          "knownBefore": "he is not sure he can help you",
+          "targetBefore": "il n'est pas sûr de pouvoir vous aider",
+          "knownAfter": "he is not sure he can help you sir",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0654L02U05",
+          "seed": 654,
+          "knownBefore": "he is sure he can help you",
+          "targetBefore": "il est sûr de pouvoir vous aider",
+          "knownAfter": "he is sure he can help you sir",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0654L02C02 left untouched (visual tile, 646 precedent): \"help you\" = \"vous aider\""
+      ],
+      "tuTwinEvidence": [
+        {
+          "bare": "fra_for_eng:S0654L02C02 \"help you\"=\"vous aider\"",
+          "twin": "fra_for_eng:S0246L01C01 (seed 246) \"help you\"=\"t'aide\""
+        }
+      ]
+    },
+    "655": {
+      "seedSentence": "I think that you're doing very well, madam = Je pense que vous vous en sortez très bien, madame",
+      "vocative": "madam",
+      "phraseCountBefore": 8,
+      "phraseCountAfter": 8,
+      "actions": [
+        {
+          "op": "UPDATE_LEGO",
+          "id": "309d0717-58e0-4878-b931-4231f75758cb",
+          "seed": 655,
+          "lego": 1,
+          "knownBefore": "you are doing very well",
+          "targetBefore": "vous vous en sortez très bien",
+          "knownAfter": "you are doing very well madam",
+          "reason": "known-only vocative mark, unique course-wide (646 lego precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0655L01B01",
+          "seed": 655,
+          "knownBefore": "you are doing very well",
+          "targetBefore": "vous vous en sortez très bien",
+          "knownAfter": "you are doing very well madam",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0655L01B02",
+          "seed": 655,
+          "knownBefore": "I know you are doing very well",
+          "targetBefore": "je sais que vous vous en sortez très bien",
+          "knownAfter": "I know you are doing very well madam",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0655L01B03",
+          "seed": 655,
+          "knownBefore": "she knows you are doing very well",
+          "targetBefore": "elle sait que vous vous en sortez très bien",
+          "knownAfter": "she knows you are doing very well madam",
+          "reason": "known-only vocative mark on bare build, unique course-wide"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0655L01U02",
+          "seed": 655,
+          "knownBefore": "you are doing very well today",
+          "targetBefore": "vous vous en sortez très bien aujourd'hui",
+          "knownAfter": "you are doing very well today madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0655L01U03",
+          "seed": 655,
+          "knownBefore": "she thinks you are doing very well",
+          "targetBefore": "elle pense que vous vous en sortez très bien",
+          "knownAfter": "she thinks you are doing very well madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        },
+        {
+          "op": "UPDATE_PHRASE",
+          "id": "fra_for_eng:S0655L01U04",
+          "seed": 655,
+          "knownBefore": "yes you are doing very well",
+          "targetBefore": "oui vous vous en sortez très bien",
+          "knownAfter": "yes you are doing very well madam",
+          "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+        }
+      ],
+      "notes": [
+        "component fra_for_eng:S0655L01C01 left untouched (visual tile, 646 precedent): \"you\" = \"vous\"",
+        "component fra_for_eng:S0655L01C02 left untouched (visual tile, 646 precedent): \"are doing\" = \"vous en sortez\""
+      ],
+      "tuTwinEvidence": [
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0249L01C01 (seed 249) \"you\"=\"que tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0049L03C01 (seed 49) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0489L04C01 (seed 489) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0120L02C01 (seed 120) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0301L01C01 (seed 301) \"you\"=\"te\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0344L02C02 (seed 344) \"you\"=\"te\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0355L01C01 (seed 355) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0497L02C01 (seed 497) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0063L01C01 (seed 63) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0281L04C01 (seed 281) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0135L02C01 (seed 135) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0121L03C01 (seed 121) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0524L02C02 (seed 524) \"you\"=\"te\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0030L02C01 (seed 30) \"you\"=\"te\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0491L03C02 (seed 491) \"you\"=\"dont tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0415L03C02 (seed 415) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0471L01C02 (seed 471) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0100L01C01 (seed 100) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0432L03C05 (seed 432) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0388L03C03 (seed 388) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0427L02C02 (seed 427) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0068L01C02 (seed 68) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0099L01C01 (seed 99) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0061L01C01 (seed 61) \"you\"=\"tu\""
+        },
+        {
+          "bare": "fra_for_eng:S0655L01C01 \"you\"=\"vous\"",
+          "twin": "fra_for_eng:S0113L03C01 (seed 113) \"you\"=\"tu\""
+        }
+      ]
+    }
+  },
+  "decisions": [],
+  "unmarkedVousLiveCollisions": [
+    {
+      "seed": 161,
+      "row": "70dac8f8-5584-4184-ba64-59e02d396809 [lego] \"can you\"=\"pouvez-vous\"",
+      "tuTwin": "fra_for_eng:S0150L01C01 (seed 150) \"can you\"=\"peux-tu\""
+    },
+    {
+      "seed": 196,
+      "row": "ea2910c3-e45e-447a-8cd6-3a9ff653301e [lego] \"have you heard\"=\"avez-vous entendu\"",
+      "tuTwin": "fra_for_eng:S0267L01C01 (seed 267) \"have you heard\"=\"tu as eu\""
+    },
+    {
+      "seed": 204,
+      "row": "7f589458-206f-43ab-ae07-9d4c8b1aaa01 [lego] \"her to help you\"=\"qu'elle vous aide\"",
+      "tuTwin": "fra_for_eng:S0246L01B01 (seed 246) \"her to help you\"=\"qu'elle t'aide\""
+    },
+    {
+      "seed": 204,
+      "row": "7f589458-206f-43ab-ae07-9d4c8b1aaa01 [lego] \"her to help you\"=\"qu'elle vous aide\"",
+      "tuTwin": "fra_for_eng:S0246L01B02 (seed 246) \"her to help you\"=\"qu'elle t'aide\""
+    },
+    {
+      "seed": 663,
+      "row": "fra_for_eng:S0663L01C01 [component] \"what you said\"=\"ce que vous avez dit\"",
+      "tuTwin": "46fdd9b1-bb26-457e-84cb-42300d2fa992 (seed 78) \"what you said\"=\"ce que tu as dit\""
+    },
+    {
+      "seed": 663,
+      "row": "fra_for_eng:S0663L01C01 [component] \"what you said\"=\"ce que vous avez dit\"",
+      "tuTwin": "34ae69ce-8dbb-492d-9321-fed046e62a70 (seed 83) \"what you said\"=\"ce que tu as dit\""
+    },
+    {
+      "seed": 663,
+      "row": "fra_for_eng:S0663L01C01 [component] \"what you said\"=\"ce que vous avez dit\"",
+      "tuTwin": "fra_for_eng:S0078L02B01 (seed 78) \"what you said\"=\"ce que tu as dit\""
+    },
+    {
+      "seed": 663,
+      "row": "fra_for_eng:S0663L01C01 [component] \"what you said\"=\"ce que vous avez dit\"",
+      "tuTwin": "fra_for_eng:S0113L03B03 (seed 113) \"what you said\"=\"ce que tu as dit\""
+    },
+    {
+      "seed": 204,
+      "row": "fra_for_eng:S0204L01C02 [component] \"help you\"=\"vous aide\"",
+      "tuTwin": "fra_for_eng:S0246L01C01 (seed 246) \"help you\"=\"t'aide\""
+    },
+    {
+      "seed": 204,
+      "row": "fra_for_eng:S0204L01B01 [build] \"her to help you\"=\"qu'elle vous aide\"",
+      "tuTwin": "fra_for_eng:S0246L01B01 (seed 246) \"her to help you\"=\"qu'elle t'aide\""
+    },
+    {
+      "seed": 204,
+      "row": "fra_for_eng:S0204L01B01 [build] \"her to help you\"=\"qu'elle vous aide\"",
+      "tuTwin": "fra_for_eng:S0246L01B02 (seed 246) \"her to help you\"=\"qu'elle t'aide\""
+    },
+    {
+      "seed": 204,
+      "row": "fra_for_eng:S0204L01B02 [build] \"I wanted her to help you\"=\"je voulais qu'elle vous aide\"",
+      "tuTwin": "fra_for_eng:S0246L01B04 (seed 246) \"I wanted her to help you\"=\"je voulais qu'elle t'aide\""
+    },
+    {
+      "seed": 204,
+      "row": "fra_for_eng:S0204L01B03 [build] \"I want her to help you\"=\"je veux qu'elle vous aide\"",
+      "tuTwin": "fra_for_eng:S0246L01B03 (seed 246) \"I want her to help you\"=\"je veux qu'elle t'aide\""
+    },
+    {
+      "seed": 664,
+      "row": "fra_for_eng:S0664L01C01 [component] \"are you ready\"=\"êtes-vous prêt\"",
+      "tuTwin": "fra_for_eng:S0063L01B04 (seed 63) \"are you ready\"=\"tu es prêt\""
+    },
+    {
+      "seed": 657,
+      "row": "fra_for_eng:S0657L01C01 [component] \"how do you feel\"=\"comment vous sentez-vous\"",
+      "tuTwin": "fra_for_eng:S0040L01B02 (seed 40) \"how do you feel\"=\"comment te sens-tu\""
+    },
+    {
+      "seed": 657,
+      "row": "fra_for_eng:S0657L01C01 [component] \"how do you feel\"=\"comment vous sentez-vous\"",
+      "tuTwin": "fra_for_eng:S0040L01U01 (seed 40) \"how do you feel?\"=\"comment te sens-tu ?\""
+    },
+    {
+      "seed": 179,
+      "row": "fra_for_eng:S0179L01U02 [use] \"what are you going to say?\"=\"qu'est-ce que vous allez dire?\"",
+      "tuTwin": "fra_for_eng:S0068L01U01 (seed 68) \"what are you going to say?\"=\"qu'est-ce que tu vas dire ?\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0249L01C01 (seed 249) \"you\"=\"que tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0049L03C01 (seed 49) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0489L04C01 (seed 489) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0120L02C01 (seed 120) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0301L01C01 (seed 301) \"you\"=\"te\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0344L02C02 (seed 344) \"you\"=\"te\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0355L01C01 (seed 355) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0497L02C01 (seed 497) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0063L01C01 (seed 63) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0281L04C01 (seed 281) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0135L02C01 (seed 135) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0121L03C01 (seed 121) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0524L02C02 (seed 524) \"you\"=\"te\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0030L02C01 (seed 30) \"you\"=\"te\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0491L03C02 (seed 491) \"you\"=\"dont tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0415L03C02 (seed 415) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0471L01C02 (seed 471) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0100L01C01 (seed 100) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0432L03C05 (seed 432) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0388L03C03 (seed 388) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0427L02C02 (seed 427) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0068L01C02 (seed 68) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0099L01C01 (seed 99) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0061L01C01 (seed 61) \"you\"=\"tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06C02 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0113L03C01 (seed 113) \"you\"=\"tu\""
+    },
+    {
+      "seed": 529,
+      "row": "fra_for_eng:S0529L02C01 [component] \"can you\"=\"est-ce que vous pouvez\"",
+      "tuTwin": "fra_for_eng:S0150L01C01 (seed 150) \"can you\"=\"peux-tu\""
+    },
+    {
+      "seed": 162,
+      "row": "fra_for_eng:S0162L01B02 [build] \"do you think\"=\"vous pensez\"",
+      "tuTwin": "f6abe3c7-0b11-4d54-8c02-5f9fbb8c9a7f (seed 316) \"do you think\"=\"penses-tu\""
+    },
+    {
+      "seed": 162,
+      "row": "fra_for_eng:S0162L01B02 [build] \"do you think\"=\"vous pensez\"",
+      "tuTwin": "fra_for_eng:S0337L03C01 (seed 337) \"do you think\"=\"penses-tu\""
+    },
+    {
+      "seed": 162,
+      "row": "fra_for_eng:S0162L01B02 [build] \"do you think\"=\"vous pensez\"",
+      "tuTwin": "fra_for_eng:S0316L01B01 (seed 316) \"do you think\"=\"penses-tu\""
+    },
+    {
+      "seed": 161,
+      "row": "fra_for_eng:S0161L01B02 [build] \"can you\"=\"pouvez-vous\"",
+      "tuTwin": "fra_for_eng:S0150L01C01 (seed 150) \"can you\"=\"peux-tu\""
+    },
+    {
+      "seed": 179,
+      "row": "fra_for_eng:S0179L01B04 [build] \"what are you going to do\"=\"qu'est-ce que vous allez faire\"",
+      "tuTwin": "fra_for_eng:S0068L01U02 (seed 68) \"what are you going to do?\"=\"qu'est-ce que tu vas faire ?\""
+    },
+    {
+      "seed": 179,
+      "row": "fra_for_eng:S0179L01U03 [use] \"what are you going to do?\"=\"qu'est-ce que vous allez faire?\"",
+      "tuTwin": "fra_for_eng:S0068L01U02 (seed 68) \"what are you going to do?\"=\"qu'est-ce que tu vas faire ?\""
+    },
+    {
+      "seed": 165,
+      "row": "fra_for_eng:S0165L01U04 [use] \"do you think that's true?\"=\"vous pensez que c'est vrai?\"",
+      "tuTwin": "fra_for_eng:S0316L01U01 (seed 316) \"do you think that's true?\"=\"penses-tu que c'est vrai ?\""
+    },
+    {
+      "seed": 162,
+      "row": "fra_for_eng:S0162L01U02 [use] \"do you think I can do that?\"=\"vous pensez que je peux faire ça?\"",
+      "tuTwin": "fra_for_eng:S0135L02U02 (seed 135) \"do you think I can do that?\"=\"tu penses que je peux faire ça ?\""
+    },
+    {
+      "seed": 152,
+      "row": "fra_for_eng:S0152L04C02 [component] \"you wanted\"=\"vous vouliez\"",
+      "tuTwin": "11450a79-90b7-4b4c-a587-01eccea645db (seed 31) \"you wanted\"=\"tu voulais\""
+    },
+    {
+      "seed": 152,
+      "row": "fra_for_eng:S0152L04C02 [component] \"you wanted\"=\"vous vouliez\"",
+      "tuTwin": "fra_for_eng:S0031L01B01 (seed 31) \"you wanted\"=\"tu voulais\""
+    },
+    {
+      "seed": 194,
+      "row": "fra_for_eng:S0194L01B02 [build] \"what are you looking for?\"=\"qu'est-ce que vous cherchez?\"",
+      "tuTwin": "fra_for_eng:S0068L02U01 (seed 68) \"what are you looking for?\"=\"qu'est-ce que tu cherches ?\""
+    },
+    {
+      "seed": 194,
+      "row": "fra_for_eng:S0194L01B02 [build] \"what are you looking for?\"=\"qu'est-ce que vous cherchez?\"",
+      "tuTwin": "fra_for_eng:S0068L02B04 (seed 68) \"what are you looking for\"=\"qu'est-ce que tu cherches\""
+    },
+    {
+      "seed": 667,
+      "row": "fra_for_eng:S0667L01C01 [component] \"does it bother you\"=\"vous dérange\"",
+      "tuTwin": "fra_for_eng:S0281L03B03 (seed 281) \"does it bother you\"=\"ça te dérange\""
+    },
+    {
+      "seed": 665,
+      "row": "fra_for_eng:S0665L01C01 [component] \"do you want to go\"=\"voulez-vous partir\"",
+      "tuTwin": "fra_for_eng:S0093L02U02 (seed 93) \"do you want to go?\"=\"veux-tu y aller ?\""
+    },
+    {
+      "seed": 659,
+      "row": "fra_for_eng:S0659L01C01 [component] \"could you\"=\"pourriez-vous\"",
+      "tuTwin": "2867feff-65cf-4d55-8b3c-1eb70ef71e63 (seed 61) \"could you\"=\"tu pourrais\""
+    },
+    {
+      "seed": 659,
+      "row": "fra_for_eng:S0659L01C01 [component] \"could you\"=\"pourriez-vous\"",
+      "tuTwin": "fra_for_eng:S0061L01B02 (seed 61) \"could you\"=\"tu pourrais\""
+    },
+    {
+      "seed": 659,
+      "row": "fra_for_eng:S0659L01C01 [component] \"could you\"=\"pourriez-vous\"",
+      "tuTwin": "fra_for_eng:S0061L01B01 (seed 61) \"could you\"=\"tu pourrais\""
+    },
+    {
+      "seed": 658,
+      "row": "fra_for_eng:S0658L01C01 [component] \"do you want\"=\"voulez-vous\"",
+      "tuTwin": "e4b8ebed-a091-4488-a968-65ecb4c8ea48 (seed 67) \"do you want\"=\"veux-tu\""
+    },
+    {
+      "seed": 658,
+      "row": "fra_for_eng:S0658L01C01 [component] \"do you want\"=\"voulez-vous\"",
+      "tuTwin": "fra_for_eng:S0067L01B01 (seed 67) \"do you want\"=\"veux-tu\""
+    },
+    {
+      "seed": 658,
+      "row": "fra_for_eng:S0658L01C01 [component] \"do you want\"=\"voulez-vous\"",
+      "tuTwin": "fra_for_eng:S0067L01B02 (seed 67) \"do you want\"=\"veux-tu\""
+    },
+    {
+      "seed": 162,
+      "row": "fra_for_eng:S0162L01C01 [component] \"do you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0316L01C02 (seed 316) \"do you\"=\"tu\""
+    },
+    {
+      "seed": 161,
+      "row": "fra_for_eng:S0161L01B01 [build] \"can you\"=\"pouvez-vous\"",
+      "tuTwin": "fra_for_eng:S0150L01C01 (seed 150) \"can you\"=\"peux-tu\""
+    },
+    {
+      "seed": 196,
+      "row": "fra_for_eng:S0196L01B01 [build] \"have you heard\"=\"avez-vous entendu\"",
+      "tuTwin": "fra_for_eng:S0267L01C01 (seed 267) \"have you heard\"=\"tu as eu\""
+    },
+    {
+      "seed": 162,
+      "row": "fra_for_eng:S0162L01B01 [build] \"do you think\"=\"vous pensez\"",
+      "tuTwin": "f6abe3c7-0b11-4d54-8c02-5f9fbb8c9a7f (seed 316) \"do you think\"=\"penses-tu\""
+    },
+    {
+      "seed": 162,
+      "row": "fra_for_eng:S0162L01B01 [build] \"do you think\"=\"vous pensez\"",
+      "tuTwin": "fra_for_eng:S0337L03C01 (seed 337) \"do you think\"=\"penses-tu\""
+    },
+    {
+      "seed": 162,
+      "row": "fra_for_eng:S0162L01B01 [build] \"do you think\"=\"vous pensez\"",
+      "tuTwin": "fra_for_eng:S0316L01B01 (seed 316) \"do you think\"=\"penses-tu\""
+    },
+    {
+      "seed": 169,
+      "row": "fra_for_eng:S0169L01C02 [component] \"do you want\"=\"vous voulez\"",
+      "tuTwin": "e4b8ebed-a091-4488-a968-65ecb4c8ea48 (seed 67) \"do you want\"=\"veux-tu\""
+    },
+    {
+      "seed": 169,
+      "row": "fra_for_eng:S0169L01C02 [component] \"do you want\"=\"vous voulez\"",
+      "tuTwin": "fra_for_eng:S0067L01B01 (seed 67) \"do you want\"=\"veux-tu\""
+    },
+    {
+      "seed": 169,
+      "row": "fra_for_eng:S0169L01C02 [component] \"do you want\"=\"vous voulez\"",
+      "tuTwin": "fra_for_eng:S0067L01B02 (seed 67) \"do you want\"=\"veux-tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0249L01C01 (seed 249) \"you\"=\"que tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0049L03C01 (seed 49) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0489L04C01 (seed 489) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0120L02C01 (seed 120) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0301L01C01 (seed 301) \"you\"=\"te\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0344L02C02 (seed 344) \"you\"=\"te\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0355L01C01 (seed 355) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0497L02C01 (seed 497) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0063L01C01 (seed 63) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0281L04C01 (seed 281) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0135L02C01 (seed 135) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0121L03C01 (seed 121) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0524L02C02 (seed 524) \"you\"=\"te\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0030L02C01 (seed 30) \"you\"=\"te\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0491L03C02 (seed 491) \"you\"=\"dont tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0415L03C02 (seed 415) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0471L01C02 (seed 471) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0100L01C01 (seed 100) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0432L03C05 (seed 432) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0388L03C03 (seed 388) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0427L02C02 (seed 427) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0068L01C02 (seed 68) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0099L01C01 (seed 99) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0061L01C01 (seed 61) \"you\"=\"tu\""
+    },
+    {
+      "seed": 170,
+      "row": "fra_for_eng:S0170L02C01 [component] \"you\"=\"vous\"",
+      "tuTwin": "fra_for_eng:S0113L03C01 (seed 113) \"you\"=\"tu\""
+    },
+    {
+      "seed": 154,
+      "row": "fra_for_eng:S0154L01C02 [component] \"do you want\"=\"voulez-vous\"",
+      "tuTwin": "e4b8ebed-a091-4488-a968-65ecb4c8ea48 (seed 67) \"do you want\"=\"veux-tu\""
+    },
+    {
+      "seed": 154,
+      "row": "fra_for_eng:S0154L01C02 [component] \"do you want\"=\"voulez-vous\"",
+      "tuTwin": "fra_for_eng:S0067L01B01 (seed 67) \"do you want\"=\"veux-tu\""
+    },
+    {
+      "seed": 154,
+      "row": "fra_for_eng:S0154L01C02 [component] \"do you want\"=\"voulez-vous\"",
+      "tuTwin": "fra_for_eng:S0067L01B02 (seed 67) \"do you want\"=\"veux-tu\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06B01 [build] \"please\"=\"s'il vous plaît\"",
+      "tuTwin": "89248c83-2ba9-4ec6-aec1-ad2396e1c337 (seed 624) \"please\"=\"s'il te plaît\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06B01 [build] \"please\"=\"s'il vous plaît\"",
+      "tuTwin": "861f3114-1e87-46a8-a9dc-ba98e0f7900b (seed 630) \"please\"=\"s'il te plaît\""
+    },
+    {
+      "seed": 414,
+      "row": "fra_for_eng:S0414L06B01 [build] \"please\"=\"s'il vous plaît\"",
+      "tuTwin": "fra_for_eng:S0624L02B01 (seed 624) \"please\"=\"s'il te plaît\""
+    }
+  ],
+  "unmarkedVousCollisionSeeds": [
+    152,
+    154,
+    161,
+    162,
+    165,
+    169,
+    170,
+    179,
+    194,
+    196,
+    204,
+    414,
+    529,
+    657,
+    658,
+    659,
+    663,
+    664,
+    665,
+    667
+  ]
+}
