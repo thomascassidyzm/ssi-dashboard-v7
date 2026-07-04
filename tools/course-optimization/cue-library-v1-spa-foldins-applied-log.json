@@ -1,0 +1,660 @@
+[
+  {
+    "action": "UPDATE_LEGO",
+    "id": "2aaf2cee-687f-4939-8996-18d1a26d8548",
+    "seed": 38,
+    "legoIndex": 1,
+    "before": {
+      "known": "I've been learning",
+      "target": "llevo aprendiendo",
+      "components": [
+        {
+          "known": "I've been",
+          "target": "llevo"
+        },
+        {
+          "known": "learning",
+          "target": "aprendiendo"
+        }
+      ]
+    },
+    "after": {
+      "known_text": "I've been learning all day",
+      "known_audio_id": null,
+      "target_text": "llevo todo el día aprendiendo",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "components": [
+        {
+          "known": "I've been",
+          "target": "llevo"
+        },
+        {
+          "known": "all day",
+          "target": "todo el día"
+        },
+        {
+          "known": "learning",
+          "target": "aprendiendo"
+        }
+      ],
+      "presentation_audio_id": null
+    },
+    "reason": "FORK1: retire glued contiguous atom, re-debut as split-frame (teach gap-form from first exposure)"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "spa_for_eng:S0427L01U05",
+    "was": {
+      "known": "I was worried you'd think about this",
+      "target": "estaba preocupada de que pensaras en esto"
+    },
+    "reason": "FORK3: delete stray emotion-subjunctive sentence (no F1 cue); emotion-subjunctive family noted as possible future scoped addition, not built here"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "dc1588a0-8dad-4184-8f82-427e2986cc10",
+    "seed": 297,
+    "legoIndex": 3,
+    "before": {
+      "known": "they speak",
+      "target": "hablen",
+      "components": null
+    },
+    "after": {
+      "known_text": "who speak",
+      "known_audio_id": null,
+      "target_text": "que hablen",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F3 fold-in: bundle que into the lego so who-speak != they-speak (283 collision)"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "spa_for_eng:S0297L03B01",
+    "was": {
+      "known": "They speak",
+      "target": "Hablen"
+    },
+    "reason": "F3 fold-in: delete bare debut rung, promote pos2 (Personas que hablen español) as new debut"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "spa_for_eng:S0396L03B01",
+    "was": {
+      "known": "are ready",
+      "target": "estén listos"
+    },
+    "reason": "F4 fold-in: delete bare rung duplicating stale lego text"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "ac1733b3-bdbe-4e63-b6b7-6edffb6ee9be",
+    "seed": 396,
+    "legoIndex": 3,
+    "before": {
+      "known": "are ready",
+      "target": "estén listos",
+      "components": [
+        {
+          "known": "are",
+          "target": "estén",
+          "introduce": false
+        },
+        {
+          "known": "ready",
+          "target": "listos"
+        }
+      ]
+    },
+    "after": {
+      "known_text": "until they are ready",
+      "known_audio_id": null,
+      "components": [
+        {
+          "known": "until they are",
+          "target": "estén",
+          "introduce": false
+        },
+        {
+          "known": "ready",
+          "target": "listos"
+        }
+      ],
+      "presentation_audio_id": null
+    },
+    "reason": "F4 fold-in: lego known_text drives debut card, must carry trigger (target unchanged)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0396L03C01",
+    "before": {
+      "known": "are",
+      "target": "estén"
+    },
+    "after": {
+      "known_text": "until they are",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F4 fold-in: no-parens house law — natural glued prefix instead of \"(until they) are\""
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "f7e7f9a0-51e9-4ecc-8181-9d510eda47a1",
+    "seed": 506,
+    "legoIndex": 4,
+    "before": {
+      "known": "before we moved",
+      "target": "antes de que nos mudáramos",
+      "components": [
+        {
+          "known": "before",
+          "target": "antes de que"
+        },
+        {
+          "known": "we moved",
+          "target": "nos mudáramos"
+        }
+      ]
+    },
+    "after": {
+      "components": [
+        {
+          "known": "before",
+          "target": "antes de que"
+        },
+        {
+          "known": "before we moved",
+          "target": "nos mudáramos"
+        }
+      ],
+      "presentation_audio_id": null
+    },
+    "reason": "F4 fold-in: no-parens house law — component gloss \"before we moved\" not \"(before) we moved\""
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0506L04C02",
+    "before": {
+      "known": "we moved",
+      "target": "nos mudáramos"
+    },
+    "after": {
+      "known_text": "before we moved",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F4 fold-in: no-parens house law"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "4c5ace26-6004-4a6b-8218-8a977897c598",
+    "seed": 542,
+    "legoIndex": 1,
+    "before": {
+      "known": "whenever you feel",
+      "target": "siempre que te sientas",
+      "components": [
+        {
+          "known": "whenever",
+          "target": "siempre que"
+        },
+        {
+          "known": "you feel",
+          "target": "te sientas"
+        }
+      ]
+    },
+    "after": {
+      "components": [
+        {
+          "known": "whenever",
+          "target": "siempre que"
+        },
+        {
+          "known": "whenever you feel",
+          "target": "te sientas"
+        }
+      ],
+      "presentation_audio_id": null
+    },
+    "reason": "F4 fold-in: no-parens house law — component gloss \"whenever you feel\" not \"(whenever) you feel\""
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0542L01C02",
+    "before": {
+      "known": "you feel",
+      "target": "te sientas"
+    },
+    "after": {
+      "known_text": "whenever you feel",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F4 fold-in: no-parens house law"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "14f0a69d-417d-424a-81dc-99fe80518a8d",
+    "seed": 497,
+    "legoIndex": 2,
+    "before": {
+      "known": "you needed to sleep",
+      "target": "necesitaras dormir",
+      "components": [
+        {
+          "known": "you needed to",
+          "target": "necesitaras"
+        },
+        {
+          "known": "to sleep",
+          "target": "dormir"
+        }
+      ]
+    },
+    "after": {
+      "known_text": "as if you needed to sleep",
+      "known_audio_id": null,
+      "target_text": "como si necesitaras dormir",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "components": [
+        {
+          "known": "as if you needed to",
+          "target": "como si necesitaras"
+        },
+        {
+          "known": "to sleep",
+          "target": "dormir"
+        }
+      ],
+      "presentation_audio_id": null
+    },
+    "reason": "F5: re-debut with como-si bundled (matches ladder content already at pos4/5); never expose necesitaras under bare \"you needed to\""
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0497L02C01",
+    "before": {
+      "known": "you needed to",
+      "target": "necesitaras"
+    },
+    "after": {
+      "known_text": "as if you needed to",
+      "known_audio_id": null,
+      "target_text": "como si necesitaras",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F5 fold-in: component fires before the enriched build — must carry como-si too"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "spa_for_eng:S0497L02B01",
+    "was": {
+      "known": "you needed to sleep",
+      "target": "necesitaras dormir"
+    },
+    "reason": "F5: bare rung duplicating stale lego text, now redundant"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0497L02U01",
+    "before": {
+      "known": "that sounds as though you need to get some sleep",
+      "target": "eso suena como si necesitaras dormir un poco"
+    },
+    "after": {
+      "known_text": "that sounds as though you needed to get some sleep",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F5: past-shift English to match held \"as if I were\" glosses"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "30f55cf1-a864-490a-9bbc-35e734f002da",
+    "seed": 646,
+    "legoIndex": 1,
+    "before": {
+      "known": "you're doing",
+      "target": "está haciendo",
+      "components": [
+        {
+          "known": "you are",
+          "target": "está"
+        },
+        {
+          "known": "doing",
+          "target": "haciendo"
+        }
+      ]
+    },
+    "after": {
+      "known_text": "you're doing sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 fold-in: vocative marker on lego debut (target unchanged, already formal)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0646L01B01",
+    "before": {
+      "known": "you're doing",
+      "target": "está haciendo"
+    },
+    "after": {
+      "known_text": "you're doing sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 fold-in"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0646L01B02",
+    "before": {
+      "known": "you're doing something",
+      "target": "está haciendo algo"
+    },
+    "after": {
+      "known_text": "you're doing something sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 fold-in"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0646L01B03",
+    "before": {
+      "known": "what you're doing",
+      "target": "lo que está haciendo"
+    },
+    "after": {
+      "known_text": "what you're doing sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 fold-in"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0646L01U03",
+    "before": {
+      "known": "I can see you're doing something",
+      "target": "puedo ver que está haciendo algo"
+    },
+    "after": {
+      "known_text": "I can see you're doing something sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 fold-in"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0646L01U04",
+    "before": {
+      "known": "I wonder what you're doing",
+      "target": "me pregunto qué está haciendo"
+    },
+    "after": {
+      "known_text": "I wonder what you're doing madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 fold-in"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0646L01U05",
+    "before": {
+      "known": "I think you're doing well",
+      "target": "pienso que está haciendo bien"
+    },
+    "after": {
+      "known_text": "I think you're doing well madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 fold-in"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "9db1b1ed-63bf-4480-b788-cd859f8b55f6",
+    "seed": 651,
+    "legoIndex": 1,
+    "before": {
+      "known": "think",
+      "target": "piensa",
+      "components": []
+    },
+    "after": {
+      "known_text": "you think sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7: lego debut was bare \"think\"=piensa, identical to informal twin cue"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0651L01U03",
+    "before": {
+      "known": "I want to know what you think",
+      "target": "quiero saber qué piensa"
+    },
+    "after": {
+      "known_text": "I want to know what you think sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0651L01U04",
+    "before": {
+      "known": "can you tell me what you think?",
+      "target": "¿puede decirme qué piensa?"
+    },
+    "after": {
+      "known_text": "can you tell me what you think madam?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0651L01U05",
+    "before": {
+      "known": "I wonder what you think about that",
+      "target": "me pregunto qué piensa de eso"
+    },
+    "after": {
+      "known_text": "I wonder what you think about that sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "b71a47e4-1b06-4065-a7b8-602ee4dc5936",
+    "seed": 653,
+    "legoIndex": 1,
+    "before": {
+      "known": "does it matter to you",
+      "target": "le importa",
+      "components": [
+        {
+          "known": "you (formal)",
+          "target": "le"
+        },
+        {
+          "known": "matter",
+          "target": "importa"
+        }
+      ]
+    },
+    "after": {
+      "known_text": "does it matter to you sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7: lego debut bare, twin te importa@281 primed"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0653L01B01",
+    "before": {
+      "known": "does it matter to you",
+      "target": "le importa"
+    },
+    "after": {
+      "known_text": "does it matter to you sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7: promote build to match lego"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0653L01U03",
+    "before": {
+      "known": "I wonder if it matters to you",
+      "target": "me pregunto si le importa"
+    },
+    "after": {
+      "known_text": "I wonder if it matters to you sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0653L01U04",
+    "before": {
+      "known": "I think it matters to you",
+      "target": "pienso que le importa"
+    },
+    "after": {
+      "known_text": "I think it matters to you madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0653L01U05",
+    "before": {
+      "known": "I want to know if it matters to you",
+      "target": "quiero saber si le importa"
+    },
+    "after": {
+      "known_text": "I want to know if it matters to you madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0655L01U03",
+    "before": {
+      "known": "I can see you're doing it well",
+      "target": "puedo ver que lo está haciendo bien"
+    },
+    "after": {
+      "known_text": "I can see you're doing it well madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0655L01U04",
+    "before": {
+      "known": "I wonder if you know how well you're doing it",
+      "target": "me pregunto si sabe lo bien que lo está haciendo"
+    },
+    "after": {
+      "known_text": "I wonder if you know how well you're doing it sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0655L01U05",
+    "before": {
+      "known": "you're doing it so well",
+      "target": "lo está haciendo tan bien"
+    },
+    "after": {
+      "known_text": "you're doing it so well madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "860464ae-f499-4115-a3a5-888381fc90aa",
+    "seed": 642,
+    "legoIndex": 2,
+    "before": {
+      "known": "you feel",
+      "target": "se siente",
+      "components": [
+        {
+          "known": "you (reflexive)",
+          "target": "se"
+        },
+        {
+          "known": "feel",
+          "target": "siente"
+        }
+      ]
+    },
+    "after": {
+      "known_text": "you feel madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 bonus leak: 3-way collision surface with te sientes@40 / te sientas@542"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "spa_for_eng:S0642L02B01",
+    "before": {
+      "known": "you feel",
+      "target": "se siente"
+    },
+    "after": {
+      "known_text": "you feel madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "F7 bonus leak"
+  }
+]
