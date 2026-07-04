@@ -11,6 +11,7 @@ const { Router } = require('express');
 const { isChinese } = require('../lib/language-config.cjs');
 const { getMeaningfulComponents, makePhraseId, computeLegoPosition } = require('../lib/phrase-structure.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
+const { checkNewPhrases } = require('../lib/zut-gate.cjs');
 
 module.exports = function (ctx) {
   const router = Router();
@@ -241,6 +242,18 @@ module.exports = function (ctx) {
         }));
 
         if (componentPhrases.length > 0) {
+          // ZUT gate — old component phrases for this LEGO were already deleted above,
+          // so this is a clean pre-check for new rows (no self-collision risk).
+          const zutCollisions = await checkNewPhrases(
+            ctx.supabase, courseCode,
+            componentPhrases.map(p => ({ known: p.known_text, target: p.target_text }))
+          );
+          if (zutCollisions.length > 0) {
+            const c = zutCollisions[0];
+            throw new Error(`ZUT violation: "${c.known}" -> "${c.new_target}" conflicts with existing `
+              + `"${c.existing_target}" (seed ${c.existing_seed}); ${zutCollisions.length} collision(s) total`);
+          }
+
           const { error: insertErr } = await ctx.supabase
             .from('course_practice_phrases')
             .upsert(componentPhrases, { onConflict: 'id' });

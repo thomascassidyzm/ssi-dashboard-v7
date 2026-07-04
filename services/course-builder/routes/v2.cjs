@@ -18,6 +18,7 @@ const { normalizeForZUT, normalizeForStorage, normalizeForContainment, extractVo
 const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat, checkBuildUsePhrases, generateBuildupPhrases } = require('../lib/phrase-structure.cjs');
 const { loadCourseVocab, loadTranslationVocab, addToCourseVocab, invalidateVocabCache } = require('../lib/vocab-cache.cjs');
 const { checkTiling, checkVocabViolations, formatDecompositionPatterns } = require('../lib/validation.cjs');
+const { checkNewPhrases, zutErrorBody } = require('../lib/zut-gate.cjs');
 const { getBuildProgress, startBuildManager } = require('../lib/build-manager.cjs');
 const { fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
@@ -729,6 +730,19 @@ module.exports = function(ctx) {
             entry: entryLabel,
             error: `Containment: ${containmentFails.length} phrase(s) don't contain LEGO target "${lego.target_text}"`
           });
+          continue;
+        }
+
+        // 4b. ZUT gate — same known prompt must not map to a different target than the
+        // course already teaches. Course-wide (no seed cutoff): this route writes into
+        // an already-decomposed course, so later seeds may already exist.
+        const zutPhrases = [
+          ...build.map(p => ({ known: p.known_text || p.known, target: p.target_text || p.target })),
+          ...use.map(p => ({ known: p.known_text || p.known, target: p.target_text || p.target })),
+        ];
+        const zutCollisions = await checkNewPhrases(ctx.supabase, courseCode, zutPhrases);
+        if (zutCollisions.length > 0) {
+          errors.push({ entry: entryLabel, ...zutErrorBody(zutCollisions) });
           continue;
         }
 

@@ -15,6 +15,13 @@ require('dotenv').config()
 const fs = require('fs')
 const path = require('path')
 const { supabase } = require('../../services/supabase-client.cjs')
+// Shared ZUT preflight (services/course-builder/lib/zut-gate.cjs) — the same gate
+// wired into every content-write route. Checked AFTER the write (a pre-check on an
+// in-place target_text edit would self-collide against the row's own pre-edit
+// value); rolls the row back if the edit exposed a genuine collision elsewhere.
+// This is the reference wiring for future one-off course-optimization scripts:
+// copy this file's require + the two checkEditedPhrase calls below.
+const { checkEditedPhrase } = require('../../services/course-builder/lib/zut-gate.cjs')
 
 const COURSE = 'fra_for_eng'
 const DRY_RUN = process.env.DRY_RUN === '1'
@@ -80,6 +87,16 @@ async function applyAction(a) {
     if (!DRY_RUN) {
       const { error } = await supabase.from('course_legos').update(update).eq('id', a.id)
       if (error) throw error
+      if (update.target_text !== undefined) {
+        const zutCheck = await checkEditedPhrase(supabase, COURSE, {
+          table: 'course_legos', id: a.id, known: row.known_text, target: update.target_text,
+          revertFields: { target_text: row.target_text, target1_audio_id: row.target1_audio_id, target2_audio_id: row.target2_audio_id, target1_duration_ms: row.target1_duration_ms, target2_duration_ms: row.target2_duration_ms },
+        })
+        if (!zutCheck.ok) {
+          record('REJECTED_ZUT', { id: a.id, seed: a.seed, collisions: zutCheck.collisions })
+          throw new Error(`ZUT violation: lego ${a.id} "${row.known_text}" -> "${update.target_text}" collides with an existing different target — reverted, aborting.`)
+        }
+      }
     }
   } else if (a.op === 'UPDATE_PHRASE') {
     const row = await getPhrase(a.id)
@@ -94,6 +111,16 @@ async function applyAction(a) {
     if (!DRY_RUN) {
       const { error } = await supabase.from('course_practice_phrases').update(update).eq('id', a.id).eq('course_code', COURSE)
       if (error) throw error
+      if (update.target_text !== undefined) {
+        const zutCheck = await checkEditedPhrase(supabase, COURSE, {
+          table: 'course_practice_phrases', id: a.id, known: row.known_text, target: update.target_text,
+          revertFields: { target_text: row.target_text, presentation_audio_id: row.presentation_audio_id, decomposition: row.decomposition, target1_audio_id: row.target1_audio_id, target2_audio_id: row.target2_audio_id, target1_duration_ms: row.target1_duration_ms, target2_duration_ms: row.target2_duration_ms },
+        })
+        if (!zutCheck.ok) {
+          record('REJECTED_ZUT', { id: a.id, seed: a.seed, collisions: zutCheck.collisions })
+          throw new Error(`ZUT violation: phrase ${a.id} "${row.known_text}" -> "${update.target_text}" collides with an existing different target — reverted, aborting.`)
+        }
+      }
     }
   } else if (a.op === 'UPDATE_SEED') {
     const row = await getSeed(a.seed)

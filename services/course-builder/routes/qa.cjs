@@ -15,6 +15,7 @@ const { getGoldenSeedCount, getLanguageName } = require('../lib/language-config.
 const { spawnParallelQAAgent } = require('../lib/agent-spawner.cjs');
 const { advancePipeline, setPipelineStage } = require('../lib/pipeline.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
+const { checkEditedPhrase, zutErrorBody } = require('../lib/zut-gate.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 
 // TODO: Extract generateStrictQABrief to briefs module
@@ -1161,6 +1162,24 @@ end tell`;
         .single();
 
       if (error) throw error;
+
+      // ZUT gate — checked AFTER the write (pre-checking an in-place edit would
+      // self-collide against this row's own pre-edit target, since it's still
+      // live in the DB at check time). Rolls back if the edit exposed a genuine
+      // collision against a DIFFERENT row.
+      const finalKnown = updates.known_text || current.known_text;
+      const finalTarget = updates.target_text || current.target_text;
+      const zutCheck = await checkEditedPhrase(supabase, current.course_code, {
+        table: 'course_practice_phrases',
+        id,
+        known: finalKnown,
+        target: finalTarget,
+        revertFields: { known_text: current.known_text, target_text: current.target_text, updated_at: new Date().toISOString() },
+      });
+      if (!zutCheck.ok) {
+        console.log(`[QA-FIX] REJECTED phrase ${id} in ${current.course_code} S${current.seed_number} — ZUT collision, reverted`);
+        return res.status(409).json({ phrase_id: id, ...zutErrorBody(zutCheck.collisions) });
+      }
 
       console.log(`[QA-FIX] Updated phrase ${id} in ${current.course_code} S${current.seed_number}:`);
       if (updates.known_text) console.log(`  known: "${current.known_text}" → "${updates.known_text}"`);

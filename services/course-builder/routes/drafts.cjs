@@ -8,6 +8,7 @@ const { isChinese } = require('../lib/language-config.cjs');
 const { normalizePhrase, normalizeForZUT, normalizeForStorage, normalizeForContainment, extractVocab } = require('../lib/text-normalization.cjs');
 const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat, generateBuildupPhrases } = require('../lib/phrase-structure.cjs');
 const { loadTranslationVocab, invalidateVocabCache } = require('../lib/vocab-cache.cjs');
+const { checkNewPhrases, zutErrorBody } = require('../lib/zut-gate.cjs');
 
 module.exports = function(ctx) {
   const router = Router();
@@ -282,6 +283,34 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
           colliding_seeds: collidingSeeds,
           fix_instructions: fixBatches
         });
+      }
+
+      // =====================================================================
+      // STEP 4b: Phrase-level ZUT gate \u2014 same known prompt must not map to a
+      // different target than the course already teaches. Checked BEFORE any
+      // write (these seeds are new/replaced, so nothing to self-collide with).
+      // =====================================================================
+      const draftZutPhrases = [];
+      for (const draft of drafts) {
+        const draftLegos = draft.submission_data?.legos || [];
+        const legoStatuses = dedupResults.get(draft.seed_number);
+        for (const lego of draftLegos) {
+          if ((legoStatuses?.get(lego.idx) || 'new') === 'duplicate') continue;
+          if (usesBuildUseFormat(lego)) {
+            draftZutPhrases.push(...(lego.build || []), ...(lego.use || []));
+          } else if (lego.phrases) {
+            draftZutPhrases.push(...lego.phrases);
+          }
+        }
+      }
+      if (draftZutPhrases.length > 0) {
+        const zutCollisions = await checkNewPhrases(ctx.supabase, courseCode, draftZutPhrases);
+        if (zutCollisions.length > 0) {
+          return res.status(409).json({
+            ...zutErrorBody(zutCollisions),
+            message: `${zutCollisions.length} phrase-level ZUT collision(s) found \u2014 cannot finalize until resolved`,
+          });
+        }
       }
 
       // =====================================================================

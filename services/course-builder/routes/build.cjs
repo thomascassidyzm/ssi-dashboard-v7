@@ -990,6 +990,7 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
 
   const { makePhraseId, computeLegoPosition } = require('../lib/phrase-structure.cjs');
   const { normalizeForContainment } = require('../lib/text-normalization.cjs');
+  const { checkNewPhrases, zutErrorBody } = require('../lib/zut-gate.cjs');
 
   router.post('/build/backfill-submit/:courseCode', async (req, res) => {
     try {
@@ -1043,6 +1044,16 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
         });
         if (containmentFails.length > 0) {
           errors.push({ entry: label, error: `${containmentFails.length} phrase(s) don't contain LEGO target "${lego.target_text}"` });
+          continue;
+        }
+
+        // ZUT gate — same English prompt must not map to a different target than
+        // the course already teaches. Backfill writes into an already-decomposed
+        // course, so later seeds may already exist: check course-wide (no seed cutoff).
+        const zutPhrases = use.map(p => ({ known: p.known_text || p.known, target: p.target_text || p.target }));
+        const zutCollisions = await checkNewPhrases(ctx.supabase, courseCode, zutPhrases);
+        if (zutCollisions.length > 0) {
+          errors.push({ entry: label, ...zutErrorBody(zutCollisions) });
           continue;
         }
 
