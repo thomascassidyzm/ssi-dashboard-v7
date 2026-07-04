@@ -1,0 +1,67 @@
+[
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "70dac8f8-5584-4184-ba64-59e02d396809"
+  },
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "fra_for_eng:S0161L01B01"
+  },
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "fra_for_eng:S0161L01B02"
+  },
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "fra_for_eng:S0161L01B03"
+  },
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "fra_for_eng:S0161L01B04"
+  },
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "fra_for_eng:S0161L01U01"
+  },
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "fra_for_eng:S0161L01U02"
+  },
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "fra_for_eng:S0161L01U03"
+  },
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "fra_for_eng:S0161L01U04"
+  },
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "fra_for_eng:S0161L01U05"
+  },
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "fra_for_eng:S0161L01U07"
+  },
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "fra_for_eng:S0161L01U08"
+  },
+  {
+    "action": "SKIP_ALREADY_APPLIED",
+    "id": "fra_for_eng:S0161L02U03"
+  },
+  {
+    "action": "UPDATE_SEED",
+    "seed": 161,
+    "before": {
+      "known": "Can you give me that book on Sunday morning?",
+      "target": "pouvez-vous me donner ce livre dimanche matin?"
+    },
+    "after": {
+      "target_text": "peux-tu me donner ce livre dimanche matin?",
+      "target1_audio_id": null,
+      "target2_audio_id": null
+    }
+  }
+]

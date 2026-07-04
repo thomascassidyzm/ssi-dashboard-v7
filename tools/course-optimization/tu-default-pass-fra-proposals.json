@@ -1,0 +1,167 @@
+{
+  "_ruling": "Owner ruling 2026-07-04: tu-first-as-default for the 8 pre-639 fra_for_eng register collisions (unmarkedVousLiveCollisions in formal-vous-pass-fra-proposals.json). Bare-vous rows converted to already-drilled tu forms, unifying each collision. Seed 414 (restaurant/waiter ordering scenario) excepted — context insists on formality, left as vous, not in this proposals file.",
+  "proposals": {
+    "161": {
+      "seedSentence": "Can you give me that book on Sunday morning? = pouvez-vous me donner ce livre dimanche matin? -> peux-tu me donner ce livre dimanche matin?",
+      "tuTwin": "fra_for_eng:S0150L01C01 (seed 150) \"can you\" = \"peux-tu\"",
+      "actions": [
+        { "op": "UPDATE_LEGO", "id": "70dac8f8-5584-4184-ba64-59e02d396809", "seed": 161, "knownBefore": "can you", "targetBefore": "pouvez-vous", "targetAfter": "peux-tu" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0161L01B01", "seed": 161, "knownBefore": "can you", "targetBefore": "pouvez-vous", "targetAfter": "peux-tu" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0161L01B02", "seed": 161, "knownBefore": "can you", "targetBefore": "pouvez-vous", "targetAfter": "peux-tu" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0161L01B03", "seed": 161, "knownBefore": "can you help", "targetBefore": "pouvez-vous aider", "targetAfter": "peux-tu aider" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0161L01B04", "seed": 161, "knownBefore": "can you give", "targetBefore": "pouvez-vous donner", "targetAfter": "peux-tu donner" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0161L01U01", "seed": 161, "knownBefore": "Can you wait for me here?", "targetBefore": "pouvez-vous m'attendre ici?", "targetAfter": "peux-tu m'attendre ici?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0161L01U02", "seed": 161, "knownBefore": "Can you help me with that?", "targetBefore": "pouvez-vous m'aider avec ça?", "targetAfter": "peux-tu m'aider avec ça?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0161L01U03", "seed": 161, "knownBefore": "Can you hear me well?", "targetBefore": "pouvez-vous m'entendre bien?", "targetAfter": "peux-tu m'entendre bien?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0161L01U04", "seed": 161, "knownBefore": "Can you tell me where that is?", "targetBefore": "pouvez-vous me dire où c'est?", "targetAfter": "peux-tu me dire où c'est?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0161L01U05", "seed": 161, "knownBefore": "Can you give me that later?", "targetBefore": "pouvez-vous me donner ça plus tard?", "targetAfter": "peux-tu me donner ça plus tard?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0161L01U07", "seed": 161, "knownBefore": "Can you show me how to do that?", "targetBefore": "pouvez-vous me montrer comment faire ça?", "targetAfter": "peux-tu me montrer comment faire ça?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0161L01U08", "seed": 161, "knownBefore": "Can you understand what I'm trying to say?", "targetBefore": "pouvez-vous comprendre ce que j'essaie de dire?", "targetAfter": "peux-tu comprendre ce que j'essaie de dire?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0161L02U03", "seed": 161, "knownBefore": "Can you give me the book?", "targetBefore": "pouvez-vous me donner le livre?", "targetAfter": "peux-tu me donner le livre?" },
+        { "op": "UPDATE_SEED", "seed": 161, "knownBefore": "Can you give me that book on Sunday morning?", "targetBefore": "pouvez-vous me donner ce livre dimanche matin?", "targetAfter": "peux-tu me donner ce livre dimanche matin?" }
+      ]
+    },
+    "162": {
+      "seedSentence": "what do you think about that? = qu'est-ce que vous pensez de ça? -> qu'est-ce que tu penses de ça?",
+      "tuTwin": "fra_for_eng:S0316L01B01 / S0337L03C01 (seeds 316, 337) \"do you think\" = \"penses-tu\"",
+      "actions": [
+        { "op": "UPDATE_LEGO", "id": "33951a88-c049-44af-bfc0-85d240c952d7", "seed": 162, "knownBefore": "you think", "targetBefore": "vous pensez", "targetAfter": "tu penses", "componentsAfter": [{"known":"do you","target":"tu"},{"known":"think","target":"penses"}] },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01B01", "seed": 162, "knownBefore": "do you think", "targetBefore": "vous pensez", "targetAfter": "tu penses" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01B02", "seed": 162, "knownBefore": "do you think", "targetBefore": "vous pensez", "targetAfter": "tu penses" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01B03", "seed": 162, "knownBefore": "do you think that", "targetBefore": "vous pensez que", "targetAfter": "tu penses que" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01B04", "seed": 162, "knownBefore": "what do you think", "targetBefore": "qu'est-ce que vous pensez", "targetAfter": "qu'est-ce que tu penses" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01C01", "seed": 162, "knownBefore": "do you", "targetBefore": "vous", "targetAfter": "tu" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01C02", "seed": 162, "knownBefore": "think", "targetBefore": "pensez", "targetAfter": "penses" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01U01", "seed": 162, "knownBefore": "what do you think about this?", "targetBefore": "qu'est-ce que vous pensez de ça?", "targetAfter": "qu'est-ce que tu penses de ça?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01U02", "seed": 162, "knownBefore": "do you think I can do that?", "targetBefore": "vous pensez que je peux faire ça?", "targetAfter": "tu penses que je peux faire ça?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01U03", "seed": 162, "knownBefore": "do you think that's a good idea?", "targetBefore": "vous pensez que c'est une bonne idée?", "targetAfter": "tu penses que c'est une bonne idée?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01U04", "seed": 162, "knownBefore": "do you think it's going to be difficult?", "targetBefore": "vous pensez que ça va être difficile?", "targetAfter": "tu penses que ça va être difficile?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01U05", "seed": 162, "knownBefore": "I'd like to know what you think", "targetBefore": "j'aimerais savoir ce que vous pensez", "targetAfter": "j'aimerais savoir ce que tu penses" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01U06", "seed": 162, "knownBefore": "what do you think about that book?", "targetBefore": "qu'est-ce que vous pensez de ce livre?", "targetAfter": "qu'est-ce que tu penses de ce livre?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01U07", "seed": 162, "knownBefore": "what do you think about my idea?", "targetBefore": "qu'est-ce que vous pensez de mon idée?", "targetAfter": "qu'est-ce que tu penses de mon idée?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0162L01U08", "seed": 162, "knownBefore": "what do you think I should do?", "targetBefore": "qu'est-ce que vous pensez que je dois faire?", "targetAfter": "qu'est-ce que tu penses que je dois faire?" },
+        { "op": "UPDATE_SEED", "seed": 162, "knownBefore": "what do you think about that?", "targetBefore": "qu'est-ce que vous pensez de ça?", "targetAfter": "qu'est-ce que tu penses de ça?" }
+      ]
+    },
+    "165": {
+      "seedSentence": "but I'm not sure if it's true = mais je ne suis pas sûr si c'est vrai (headline unaffected; two derived USE lines carry the vous collisions)",
+      "tuTwin": "fra_for_eng:S0316L01U01 (seed 316) \"do you think that's true?\" = \"penses-tu que c'est vrai ?\"; and the seed-150/161 \"can you\"=\"peux-tu\" twin (165's own U07 shares that root and would otherwise re-open the same collision)",
+      "actions": [
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0165L01U04", "seed": 165, "knownBefore": "do you think that's true?", "targetBefore": "vous pensez que c'est vrai?", "targetAfter": "penses-tu que c'est vrai ?", "reason": "exact unification with established twin S0316L01U01 (own words, its spacing)" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0165L01U07", "seed": 165, "knownBefore": "Can you tell me if that's true?", "targetBefore": "pouvez-vous me dire si c'est vrai?", "targetAfter": "peux-tu me dire si c'est vrai?", "reason": "shares 'can you' root with seed 161/150 unification; left unconverted it would reopen that exact collision" }
+      ]
+    },
+    "179": {
+      "seedSentence": "what are you going to do on Sunday afternoon? = qu'est-ce que vous allez faire dimanche après-midi? -> qu'est-ce que tu vas faire dimanche après-midi?",
+      "tuTwin": "fra_for_eng:S0068L01U01/U02 (seed 68) \"what are you going to say/do?\" = \"qu'est-ce que tu vas dire/faire ?\"",
+      "actions": [
+        { "op": "UPDATE_LEGO", "id": "5da8f598-78dd-466f-a977-87b50cea8430", "seed": 179, "knownBefore": "you are going to", "targetBefore": "vous allez", "targetAfter": "tu vas", "componentsAfter": [{"known":"you are","target":"tu"},{"known":"going to","target":"vas"}] },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01B01", "seed": 179, "knownBefore": "you are going to", "targetBefore": "vous allez", "targetAfter": "tu vas" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01B02", "seed": 179, "knownBefore": "you are going to", "targetBefore": "vous allez", "targetAfter": "tu vas" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01B03", "seed": 179, "knownBefore": "you are going to do", "targetBefore": "vous allez faire", "targetAfter": "tu vas faire" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01B04", "seed": 179, "knownBefore": "what are you going to do", "targetBefore": "qu'est-ce que vous allez faire", "targetAfter": "qu'est-ce que tu vas faire" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01C01", "seed": 179, "knownBefore": "you are", "targetBefore": "vous", "targetAfter": "tu" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01C02", "seed": 179, "knownBefore": "going to", "targetBefore": "allez", "targetAfter": "vas" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01U01", "seed": 179, "knownBefore": "what are you going to read?", "targetBefore": "qu'est-ce que vous allez lire?", "targetAfter": "qu'est-ce que tu vas lire?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01U02", "seed": 179, "knownBefore": "what are you going to say?", "targetBefore": "qu'est-ce que vous allez dire?", "targetAfter": "qu'est-ce que tu vas dire?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01U03", "seed": 179, "knownBefore": "what are you going to do?", "targetBefore": "qu'est-ce que vous allez faire?", "targetAfter": "qu'est-ce que tu vas faire?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01U04", "seed": 179, "knownBefore": "where are you going to work?", "targetBefore": "où est-ce que vous allez travailler?", "targetAfter": "où est-ce que tu vas travailler?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01U05", "seed": 179, "knownBefore": "what are you going to do tomorrow?", "targetBefore": "qu'est-ce que vous allez faire demain?", "targetAfter": "qu'est-ce que tu vas faire demain?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01U06", "seed": 179, "knownBefore": "when are you going to start?", "targetBefore": "quand est-ce que vous allez commencer?", "targetAfter": "quand est-ce que tu vas commencer?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01U07", "seed": 179, "knownBefore": "how are you going to do it?", "targetBefore": "comment est-ce que vous allez faire ça?", "targetAfter": "comment est-ce que tu vas faire ça?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01U08", "seed": 179, "knownBefore": "what are you going to do this morning?", "targetBefore": "qu'est-ce que vous allez faire ce matin?", "targetAfter": "qu'est-ce que tu vas faire ce matin?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L01U09", "seed": 179, "knownBefore": "what are you going to do now?", "targetBefore": "qu'est-ce que vous allez faire maintenant?", "targetAfter": "qu'est-ce que tu vas faire maintenant?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0179L02U08", "seed": 179, "knownBefore": "what are you going to do on Sunday afternoon?", "targetBefore": "qu'est-ce que vous allez faire dimanche après-midi?", "targetAfter": "qu'est-ce que tu vas faire dimanche après-midi?" },
+        { "op": "UPDATE_SEED", "seed": 179, "knownBefore": "what are you going to do on Sunday afternoon?", "targetBefore": "qu'est-ce que vous allez faire dimanche après-midi?", "targetAfter": "qu'est-ce que tu vas faire dimanche après-midi?" }
+      ]
+    },
+    "194": {
+      "seedSentence": "what are you looking for? = qu'est-ce que vous cherchez? -> qu'est-ce que tu cherches?",
+      "tuTwin": "fra_for_eng:S0068L02U01/B04 (seed 68) \"what/are you looking for\" = \"qu'est-ce que tu cherches\"",
+      "actions": [
+        { "op": "UPDATE_LEGO", "id": "f26fbbb9-6239-47d1-9f31-be8bf0dd22bc", "seed": 194, "knownBefore": "you are looking for", "targetBefore": "vous cherchez", "targetAfter": "tu cherches" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0194L01B01", "seed": 194, "knownBefore": "you are looking for the book", "targetBefore": "vous cherchez le livre", "targetAfter": "tu cherches le livre" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0194L01B02", "seed": 194, "knownBefore": "what are you looking for?", "targetBefore": "qu'est-ce que vous cherchez?", "targetAfter": "qu'est-ce que tu cherches?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0194L01B03", "seed": 194, "knownBefore": "are you looking for something?", "targetBefore": "est-ce que vous cherchez quelque chose?", "targetAfter": "est-ce que tu cherches quelque chose?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0194L01U01", "seed": 194, "knownBefore": "I know what you are looking for, I saw it before", "targetBefore": "je sais ce que vous cherchez, je l'ai vu avant", "targetAfter": "je sais ce que tu cherches, je l'ai vu avant" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0194L01U02", "seed": 194, "knownBefore": "what are you looking for in the house right now?", "targetBefore": "qu'est-ce que vous cherchez dans la maison maintenant?", "targetAfter": "qu'est-ce que tu cherches dans la maison maintenant?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0194L01U03", "seed": 194, "knownBefore": "are you looking for the book I talked about yesterday?", "targetBefore": "est-ce que vous cherchez le livre dont j'ai parlé hier?", "targetAfter": "est-ce que tu cherches le livre dont j'ai parlé hier?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0194L01U04", "seed": 194, "knownBefore": "what are you looking for? I thought you have everything", "targetBefore": "qu'est-ce que vous cherchez? Je pensais que vous avez tout", "targetAfter": "qu'est-ce que tu cherches? Je pensais que tu as tout" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0194L01U05", "seed": 194, "knownBefore": "what are you looking for? Can I help you find it?", "targetBefore": "qu'est-ce que vous cherchez? Je peux vous aider à le trouver?", "targetAfter": "qu'est-ce que tu cherches? Je peux t'aider à le trouver?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0194L01U06", "seed": 194, "knownBefore": "if you are looking for the restaurant, I can show you where it is", "targetBefore": "si vous cherchez le restaurant, je peux vous montrer où il est", "targetAfter": "si tu cherches le restaurant, je peux te montrer où il est" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0194L01U07", "seed": 194, "knownBefore": "I think I know what you are looking for but I'm not sure", "targetBefore": "je pense que je sais ce que vous cherchez mais je ne suis pas sûr", "targetAfter": "je pense que je sais ce que tu cherches mais je ne suis pas sûr" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0194L01U08", "seed": 194, "knownBefore": "are you looking for work or do you have a job?", "targetBefore": "est-ce que vous cherchez du travail ou est-ce que vous avez un travail?", "targetAfter": "est-ce que tu cherches du travail ou est-ce que tu as un travail?" },
+        { "op": "UPDATE_SEED", "seed": 194, "knownBefore": "what are you looking for?", "targetBefore": "qu'est-ce que vous cherchez?", "targetAfter": "qu'est-ce que tu cherches?" }
+      ]
+    },
+    "196": {
+      "seedSentence": "have you heard the latest idea? = avez-vous entendu la dernière idée? -> as-tu entendu la dernière idée?",
+      "tuTwin": "established as-tu + past-participle pattern course-wide (seeds 75, 366, 559, 569, 572); 267's own 'tu as eu' twin verified NOT applicable (different idiom, see notes)",
+      "notes": [
+        "267 verdict: NOT a mis-gloss. 'have you heard from' = 'tu as eu des nouvelles de' is the idiom avoir des nouvelles de (to have news of), a legitimate partial-component gloss combining with C02 'from'='des nouvelles de'. It is a different construction from 196's literal entendre (to hear [an idea]), so 196 is converted using the established as-tu+participle pattern (as-tu entendu), not by copying 267's text.",
+        "S0196L03U03 'do you have an idea?'='avez-vous une idée?' is a separate, non-colliding lego (L03, different known text) — left untouched, out of ruling scope."
+      ],
+      "actions": [
+        { "op": "UPDATE_LEGO", "id": "ea2910c3-e45e-447a-8cd6-3a9ff653301e", "seed": 196, "knownBefore": "have you heard", "targetBefore": "avez-vous entendu", "targetAfter": "as-tu entendu" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01B01", "seed": 196, "knownBefore": "have you heard", "targetBefore": "avez-vous entendu", "targetAfter": "as-tu entendu" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01B02", "seed": 196, "knownBefore": "have you heard that", "targetBefore": "avez-vous entendu ça", "targetAfter": "as-tu entendu ça" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01B03", "seed": 196, "knownBefore": "have you heard that?", "targetBefore": "avez-vous entendu ça?", "targetAfter": "as-tu entendu ça?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01U01", "seed": 196, "knownBefore": "have you heard before", "targetBefore": "avez-vous entendu avant", "targetAfter": "as-tu entendu avant" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01U02", "seed": 196, "knownBefore": "have you heard that before?", "targetBefore": "avez-vous entendu ça avant?", "targetAfter": "as-tu entendu ça avant?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01U03", "seed": 196, "knownBefore": "have you heard something?", "targetBefore": "avez-vous entendu quelque chose?", "targetAfter": "as-tu entendu quelque chose?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01U04", "seed": 196, "knownBefore": "have you heard that today?", "targetBefore": "avez-vous entendu ça aujourd'hui?", "targetAfter": "as-tu entendu ça aujourd'hui?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01U05", "seed": 196, "knownBefore": "have you heard about the idea?", "targetBefore": "avez-vous entendu parler de l'idée?", "targetAfter": "as-tu entendu parler de l'idée?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01U06", "seed": 196, "knownBefore": "have you heard what she said?", "targetBefore": "avez-vous entendu ce qu'elle a dit?", "targetAfter": "as-tu entendu ce qu'elle a dit?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01U07", "seed": 196, "knownBefore": "have you heard something about that?", "targetBefore": "avez-vous entendu quelque chose de ça?", "targetAfter": "as-tu entendu quelque chose de ça?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01U08", "seed": 196, "knownBefore": "have you heard about that idea?", "targetBefore": "avez-vous entendu parler de cette idée?", "targetAfter": "as-tu entendu parler de cette idée?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01U09", "seed": 196, "knownBefore": "have you heard what I said before?", "targetBefore": "avez-vous entendu ce que j'ai dit avant?", "targetAfter": "as-tu entendu ce que j'ai dit avant?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L01U10", "seed": 196, "knownBefore": "have you heard something about the idea?", "targetBefore": "avez-vous entendu quelque chose de l'idée?", "targetAfter": "as-tu entendu quelque chose de l'idée?" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0196L02U05", "seed": 196, "knownBefore": "have you heard the latest idea?", "targetBefore": "avez-vous entendu la dernière idée?", "targetAfter": "as-tu entendu la dernière idée?" },
+        { "op": "UPDATE_SEED", "seed": 196, "knownBefore": "have you heard the latest idea?", "targetBefore": "avez-vous entendu la dernière idée?", "targetAfter": "as-tu entendu la dernière idée?" }
+      ]
+    },
+    "204": {
+      "seedSentence": "I wanted her to help you to deal with the arrangements = Je voulais qu'elle vous aide à vous occuper des préparatifs -> Je voulais qu'elle t'aide à t'occuper des préparatifs",
+      "tuTwin": "fra_for_eng:S0246L01* (seed 246) \"her to help you\"/\"help you\" = \"qu'elle t'aide\"/\"t'aide\"",
+      "actions": [
+        { "op": "UPDATE_LEGO", "id": "7f589458-206f-43ab-ae07-9d4c8b1aaa01", "seed": 204, "knownBefore": "her to help you", "targetBefore": "qu'elle vous aide", "targetAfter": "qu'elle t'aide", "componentsAfter": [{"known":"her to","target":"qu'elle","introduce":false},{"known":"help you","target":"t'aide","introduce":true}] },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L01B01", "seed": 204, "knownBefore": "her to help you", "targetBefore": "qu'elle vous aide", "targetAfter": "qu'elle t'aide" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L01B02", "seed": 204, "knownBefore": "I wanted her to help you", "targetBefore": "je voulais qu'elle vous aide", "targetAfter": "je voulais qu'elle t'aide" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L01B03", "seed": 204, "knownBefore": "I want her to help you", "targetBefore": "je veux qu'elle vous aide", "targetAfter": "je veux qu'elle t'aide" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L01B04", "seed": 204, "knownBefore": "I would like her to help you", "targetBefore": "j'aimerais qu'elle vous aide", "targetAfter": "j'aimerais qu'elle t'aide" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L01C02", "seed": 204, "knownBefore": "help you", "targetBefore": "vous aide", "targetAfter": "t'aide" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L01U01", "seed": 204, "knownBefore": "I wanted her to help you this morning", "targetBefore": "je voulais qu'elle vous aide ce matin", "targetAfter": "je voulais qu'elle t'aide ce matin" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L01U02", "seed": 204, "knownBefore": "I want her to help you today", "targetBefore": "je veux qu'elle vous aide aujourd'hui", "targetAfter": "je veux qu'elle t'aide aujourd'hui" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L01U03", "seed": 204, "knownBefore": "I would like her to help you tomorrow morning", "targetBefore": "j'aimerais qu'elle vous aide demain matin", "targetAfter": "j'aimerais qu'elle t'aide demain matin" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L01U04", "seed": 204, "knownBefore": "I want her to help you this afternoon", "targetBefore": "je veux qu'elle vous aide cet après-midi", "targetAfter": "je veux qu'elle t'aide cet après-midi" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L01U05", "seed": 204, "knownBefore": "I wanted her to help you with the young dog", "targetBefore": "je voulais qu'elle vous aide avec le jeune chien", "targetAfter": "je voulais qu'elle t'aide avec le jeune chien" },
+        { "op": "UPDATE_LEGO", "id": "bae19398-37af-4a3b-a533-855296eef2f6", "seed": 204, "knownBefore": "to deal with", "targetBefore": "à vous occuper", "targetAfter": "à t'occuper", "componentsAfter": [{"known":"to","target":"à","introduce":false},{"known":"deal with","target":"t'occuper","introduce":true}] },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L02B01", "seed": 204, "knownBefore": "to deal with", "targetBefore": "à vous occuper", "targetAfter": "à t'occuper" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L02B02", "seed": 204, "knownBefore": "her to help you to deal with", "targetBefore": "qu'elle vous aide à vous occuper", "targetAfter": "qu'elle t'aide à t'occuper" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L02B03", "seed": 204, "knownBefore": "I wanted her to help you to deal with", "targetBefore": "je voulais qu'elle vous aide à vous occuper", "targetAfter": "je voulais qu'elle t'aide à t'occuper" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L02B04", "seed": 204, "knownBefore": "to help you to deal with", "targetBefore": "vous aide à vous occuper", "targetAfter": "t'aide à t'occuper" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L02C02", "seed": 204, "knownBefore": "deal with", "targetBefore": "vous occuper", "targetAfter": "t'occuper" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L02U01", "seed": 204, "knownBefore": "I wanted her to help you deal with the young dog", "targetBefore": "je voulais qu'elle vous aide à vous occuper du jeune chien", "targetAfter": "je voulais qu'elle t'aide à t'occuper du jeune chien" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L02U02", "seed": 204, "knownBefore": "I want her to help you deal with the young dog today", "targetBefore": "je veux qu'elle vous aide à vous occuper du jeune chien aujourd'hui", "targetAfter": "je veux qu'elle t'aide à t'occuper du jeune chien aujourd'hui" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L02U03", "seed": 204, "knownBefore": "I would like her to help you deal with the young dog", "targetBefore": "j'aimerais qu'elle vous aide à vous occuper du jeune chien", "targetAfter": "j'aimerais qu'elle t'aide à t'occuper du jeune chien" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L02U04", "seed": 204, "knownBefore": "I wanted her to help you deal with the young dog this morning", "targetBefore": "je voulais qu'elle vous aide à vous occuper du jeune chien ce matin", "targetAfter": "je voulais qu'elle t'aide à t'occuper du jeune chien ce matin" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L02U05", "seed": 204, "knownBefore": "I want her to help you deal with the young dog this afternoon", "targetBefore": "je veux qu'elle vous aide à vous occuper du jeune chien cet après-midi", "targetAfter": "je veux qu'elle t'aide à t'occuper du jeune chien cet après-midi" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L03B02", "seed": 204, "knownBefore": "to deal with the arrangements", "targetBefore": "à vous occuper des préparatifs", "targetAfter": "à t'occuper des préparatifs" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L03B03", "seed": 204, "knownBefore": "her to help you to deal with the arrangements", "targetBefore": "qu'elle vous aide à vous occuper des préparatifs", "targetAfter": "qu'elle t'aide à t'occuper des préparatifs" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L03B04", "seed": 204, "knownBefore": "help you to deal with the arrangements", "targetBefore": "vous aide à vous occuper des préparatifs", "targetAfter": "t'aide à t'occuper des préparatifs" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L03U01", "seed": 204, "knownBefore": "I wanted her to help you deal with the arrangements", "targetBefore": "je voulais qu'elle vous aide à vous occuper des préparatifs", "targetAfter": "je voulais qu'elle t'aide à t'occuper des préparatifs" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L03U02", "seed": 204, "knownBefore": "I want her to help you deal with the arrangements", "targetBefore": "je veux qu'elle vous aide à vous occuper des préparatifs", "targetAfter": "je veux qu'elle t'aide à t'occuper des préparatifs" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L03U03", "seed": 204, "knownBefore": "I would like her to help you deal with the arrangements", "targetBefore": "j'aimerais qu'elle vous aide à vous occuper des préparatifs", "targetAfter": "j'aimerais qu'elle t'aide à t'occuper des préparatifs" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L03U04", "seed": 204, "knownBefore": "I want her to help you deal with the arrangements today", "targetBefore": "je veux qu'elle vous aide à vous occuper des préparatifs aujourd'hui", "targetAfter": "je veux qu'elle t'aide à t'occuper des préparatifs aujourd'hui" },
+        { "op": "UPDATE_PHRASE", "id": "fra_for_eng:S0204L03U05", "seed": 204, "knownBefore": "I wanted her to help you deal with the arrangements this morning", "targetBefore": "je voulais qu'elle vous aide à vous occuper des préparatifs ce matin", "targetAfter": "je voulais qu'elle t'aide à t'occuper des préparatifs ce matin" },
+        { "op": "UPDATE_SEED", "seed": 204, "knownBefore": "I wanted her to help you to deal with the arrangements", "targetBefore": "Je voulais qu'elle vous aide à vous occuper des préparatifs", "targetAfter": "Je voulais qu'elle t'aide à t'occuper des préparatifs" }
+      ]
+    }
+  },
+  "excepted": {
+    "414": {
+      "reason": "Context insists on formality: seed 414 ('could we have a bottle of red wine please?') sits in the restaurant-booking narrative arc (411 'we would like to reserve a table for four tonight'), addressing restaurant service staff to order wine — a stranger/service interaction, the canonical vous context. Both flagged rows (S0414L06C02 'you'='vous', S0414L06B01 'please'='s'il vous plaît', including the please-doublet vs 624/630) are left unconverted.",
+      "rowsLeftAsVous": ["fra_for_eng:S0414L06C02", "fra_for_eng:S0414L06B01"]
+    }
+  }
+}
