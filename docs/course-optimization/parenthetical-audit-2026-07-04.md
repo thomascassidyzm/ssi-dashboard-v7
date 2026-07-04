@@ -2,7 +2,9 @@
 
 *Requested alongside the no-parentheses house law (`ralph-methodology.md`, "No Parentheses,
 Ever"). **Count + locations only — no mass edit performed.** Full raw data (every hit, with
-course/seed/lego/position/text) is in `tools/course-optimization/parenthetical-audit-2026-07-04-full.json`.*
+course/seed/lego/position/text) is reproducible on demand via
+`node tools/course-optimization/audit-parentheticals.cjs` (not committed as a static JSON —
+7,962 rows was too large to push reliably over this session's connection).*
 
 ## Method
 Scanned every row in `course_legos` (known_text + each `components[].known`) and every row in
