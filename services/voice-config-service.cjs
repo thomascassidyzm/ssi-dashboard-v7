@@ -412,15 +412,64 @@ function buildTTSConfig(voiceConfig, cadence, cadenceProfiles) {
  * @param {number} count - Number of samples to return
  * @returns {Promise<Array>} Array of sample phrases
  */
+const DEFAULT_SAMPLE_PHRASES = [
+  { text: 'Hello', known: 'Hello', source: 'default' },
+  { text: 'Good morning', known: 'Good morning', source: 'default' },
+  { text: 'How are you?', known: 'How are you?', source: 'default' },
+  { text: 'Thank you very much', known: 'Thank you very much', source: 'default' },
+  { text: 'See you later', known: 'See you later', source: 'default' }
+];
+
+/**
+ * Pick `count` rows spread across the full array (not just the first N),
+ * so a preview covers early, mid, and late course content.
+ */
+function pickSpread(rows, count) {
+  if (rows.length <= count) return rows;
+  const picks = [];
+  for (let i = 0; i < count; i++) {
+    const idx = Math.floor((i * (rows.length - 1)) / (count - 1 || 1));
+    picks.push(rows[idx]);
+  }
+  return picks;
+}
+
 async function getSamplePhrases(courseCode, count = 5) {
-  // Return generic samples - course-specific phrases would require additional DB queries
-  return [
-    { text: 'Hello', known: 'Hello', source: 'default' },
-    { text: 'Good morning', known: 'Good morning', source: 'default' },
-    { text: 'How are you?', known: 'How are you?', source: 'default' },
-    { text: 'Thank you very much', known: 'Thank you very much', source: 'default' },
-    { text: 'See you later', known: 'See you later', source: 'default' }
-  ].slice(0, count);
+  if (!supabase) return DEFAULT_SAMPLE_PHRASES.slice(0, count);
+
+  try {
+    const { data: seeds } = await supabase
+      .from('course_seeds')
+      .select('seed_number, known_text, target_text')
+      .eq('course_code', courseCode)
+      .eq('status', 'released')
+      .order('seed_number', { ascending: true });
+
+    let rows = (seeds || []).map(r => ({ ...r, source: 'course_seeds' }));
+
+    if (!rows.length) {
+      const { data: legos } = await supabase
+        .from('course_legos')
+        .select('seed_number, lego_index, known_text, target_text')
+        .eq('course_code', courseCode)
+        .order('seed_number', { ascending: true })
+        .order('lego_index', { ascending: true });
+
+      rows = (legos || []).map(r => ({ ...r, source: 'course_legos' }));
+    }
+
+    rows = rows.filter(r => r.target_text && r.known_text);
+
+    if (!rows.length) return DEFAULT_SAMPLE_PHRASES.slice(0, count);
+
+    return pickSpread(rows, count).map(r => ({
+      text: r.target_text,
+      known: r.known_text,
+      source: r.source
+    }));
+  } catch (err) {
+    return DEFAULT_SAMPLE_PHRASES.slice(0, count);
+  }
 }
 
 /**
