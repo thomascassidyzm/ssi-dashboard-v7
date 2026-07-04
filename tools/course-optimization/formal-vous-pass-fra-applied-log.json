@@ -647,5 +647,96 @@
       "presentation_audio_id": null
     },
     "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "dea92d9a-797c-472a-bdf4-c9cb6c6b0a34",
+    "seed": 650,
+    "before": {
+      "known": "do you want to go?",
+      "target": "voulez-vous partir ?"
+    },
+    "after": {
+      "known_text": "do you want to go madam?",
+      "known_audio_id": null,
+      "target_text": "voulez-vous partir madame ?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    },
+    "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "fra_for_eng:S0650L01B01",
+    "seed": 650,
+    "was": {
+      "known": "do you want to go?",
+      "target": "voulez-vous partir ?"
+    },
+    "duplicateOf": "fra_for_eng:S0650L01U01",
+    "reason": "bare build would duplicate marked row fra_for_eng:S0650L01U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0650L01B02",
+    "seed": 650,
+    "before": {
+      "known": "do you want to go now?",
+      "target": "voulez-vous partir maintenant ?"
+    },
+    "after": {
+      "known_text": "do you want to go now madam?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0650L01B03",
+    "seed": 650,
+    "before": {
+      "known": "do you want to go with me?",
+      "target": "voulez-vous partir avec moi ?"
+    },
+    "after": {
+      "known_text": "do you want to go with me madam?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0650L01U04",
+    "seed": 650,
+    "before": {
+      "known": "do you want to go today?",
+      "target": "voulez-vous partir aujourd'hui ?"
+    },
+    "after": {
+      "known_text": "do you want to go today madam?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0650L01U05",
+    "seed": 650,
+    "before": {
+      "known": "do you want to go already?",
+      "target": "voulez-vous partir déjà ?"
+    },
+    "after": {
+      "known_text": "do you want to go already madam?",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
   }
 ]
