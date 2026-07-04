@@ -49,7 +49,7 @@ item; if it needs detail, **link a doc** (the plans under `docs/`, e.g. `docs/co
 - [ ] **Script View edit-flow rework** — inline edit → Phase 8 regen → auto-approved preview (clone a new `regenerate-phrase` from `regenerate-presentation`; the existing `regenerate-single` re-voices OLD text). Display fix merged (see Done archive) — confirm whether the regen-flow half landed too before re-scoping. → `services/course-builder`
 - [ ] **Extend the phrase-level gates** — coverage-rule gate + 了/aspect-cue determinism gate (deferred by BSC; prompt-only for now). The phrase-ZUT gate is already wired to `/api/lego`. → `services/course-builder/lib/validation.cjs`
 - [ ] **Pod-ladder productization** — Pod Lab has converged on the unified ladder (one t·k·t·t climb, finest units → pure-2× turn; supersedes the per-sentence Stage-1-8 cascade). Next: take it from lab prototype to served product. → `feat/pod-lab` (now on `main`)
-- [ ] **Cue-library rollout** — `spa_for_eng` cue-library v1.0 closed-loop verified (8 trigger families restoring ZUT 1:1 against 23 real springs, clearance 17/6/0, zero new collisions). Next: extend the two implementation laws (sweep all surfaced gloss layers; cue inside the prompted chunk) to other pairs. → `docs/course-optimization/cue-library-v1-spa.md`
+- [~] @claude-foldin-sweep 07-04 **Cue-library rollout** — `spa_for_eng` cue-library v1.0 closed-loop verified (8 trigger families restoring ZUT 1:1 against 23 real springs, clearance 17/6/0, zero new collisions). Next: extend the two implementation laws (sweep all surfaced gloss layers; cue inside the prompted chunk) to other pairs. → `docs/course-optimization/cue-library-v1-spa.md`
 
 ## 🤔 Areas to think through   (open design — link the think-piece)
 
