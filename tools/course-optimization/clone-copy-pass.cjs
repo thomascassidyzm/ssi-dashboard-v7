@@ -2,50 +2,76 @@
 /**
  * Clone-once, copy-everywhere — copy-pass tool.
  *
- * For a given *_for_eng course, finds known-side slots (course_seeds,
- * course_legos, course_practice_phrases; known_audio_id IS NULL) whose exact
- * (normalizeForAudio(text) + role + voice_id[+speed]) key already exists as a
- * rendered clone-voice course_audio row in ANY OTHER course. For each match:
+ * Language-scoped, not direction-scoped (Tom's ruling): an English clip is an
+ * English clip regardless of whether it fills a known-side slot in a
+ * X_for_eng course or a target-side slot in eng_for_X — same voice, same
+ * text, same audio. So this tool works for BOTH course families:
+ *   - X_for_eng:  known-role slots   (course.known_lang === 'eng')
+ *   - eng_for_X:  target1/2-role slots (course.target_lang === 'eng')
  *
- *   1. S3-copies the source mastered/<uuid>.mp3 object to a NEW
- *      mastered/<uuid>.mp3 key in the SAME bucket (ssi-audio-stage) — never
- *      shares an s3_key across courses, so re-mastering one course can never
- *      silently affect another.
- *   2. Inserts a new course_audio row OWNED by the destination course.
- *   3. Runs linkAudioIds(courseCode) to bind the new rows to their slots.
+ * For a given course, finds English slots (course_seeds/course_legos/
+ * course_practice_phrases; audio_id IS NULL) whose exact
+ * (language + normalizeForAudio(text) + voice_id) key already exists as a
+ * rendered course_audio row in ANY OTHER course/role. Role and speed are NOT
+ * part of the identity — see services/shared/clone-copy-match.cjs.
  *
- * DRY-RUN BY DEFAULT. Pass --apply to actually copy/write. Never runs TTS —
- * slots with no existing clone-voice source are just reported, not generated.
- * Idempotent: a destination course that already owns a matching row is
- * skipped (SKIP_ALREADY_OWNED), so re-running is always safe.
+ * STORAGE MODEL: logical ownership per-course (a fresh course_audio row for
+ * this course), PHYSICAL storage SHARED (the new row points at the SAME
+ * s3_key as the source — no S3 copy, no new object). This is safe only
+ * because canonical objects are write-once: this tool NEVER overwrites an
+ * existing mastered/<uuid>.mp3, and the insert is insert-or-noop (never
+ * updates an existing row's s3_key). A course dropping a phrase just deletes
+ * its row — canonical objects are never deleted by course-level operations
+ * (no refcounting, by design).
+ *
+ * Only trusts voice_ids whose engine is verified speed-invariant at render
+ * (xai, elevenlabs — see isTrusted1xEngine). Azure bakes a rate into the
+ * SSML at render time and course_audio has no persisted per-row speed, so
+ * historical Azure clips can't be verified 1x — this tool refuses to source
+ * copies from them and reports that explicitly instead of silently matching.
+ *
+ * DRY-RUN BY DEFAULT. Pass --apply to actually write. Never runs TTS — slots
+ * with no existing source are just reported, not generated. Idempotent: a
+ * destination course that already owns a matching row is skipped
+ * (SKIP_ALREADY_OWNED), so re-running is always safe.
  *
  * Usage:
- *   node tools/course-optimization/clone-copy-pass.cjs <course_code> [--apply] [--voice=<voiceId>] [--role=known]
+ *   node tools/course-optimization/clone-copy-pass.cjs <course_code> [--apply] [--voice=<voiceId>]
  */
 require('dotenv').config()
 const path = require('path')
 const fs = require('fs')
 const { createClient } = require('@supabase/supabase-js')
-const { S3Client, CopyObjectCommand } = require('@aws-sdk/client-s3')
-const { v4: uuidv4 } = require('uuid')
 const { normalizeForAudio } = require('../../services/shared/text-normalize.cjs')
 const { isPunctuationOnly } = require('../../services/shared/text-classification.cjs')
 const { CLONE_VOICE_ID, decideCopy } = require('../../services/shared/clone-copy-match.cjs')
-const { getEngineForVoice, buildSourceIndex } = require('../../services/shared/clone-copy-index.cjs')
+const { buildSourceIndex } = require('../../services/shared/clone-copy-index.cjs')
 
 const PAGE = 2000
-const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } })
-const s3 = new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' })
 
-// Known-side slot definitions — mirrors getAudioNeeds()'s 'known' role scope
-// in services/phases/phase8-audio-v13.cjs.
-const SLOT_DEFS = [
-  { table: 'course_seeds', textCol: 'known_text', audioCol: 'known_audio_id', statusFilter: 'released' },
-  { table: 'course_legos', textCol: 'known_text', audioCol: 'known_audio_id' },
-  { table: 'course_practice_phrases', textCol: 'known_text', audioCol: 'known_audio_id' },
+// English slot definitions for each course family. Exactly one family applies
+// to a given course (known_lang and target_lang are never both 'eng').
+const KNOWN_SIDE_SLOTS = [ // X_for_eng
+  { table: 'course_seeds', textCol: 'known_text', audioCol: 'known_audio_id', role: 'known', statusFilter: 'released' },
+  { table: 'course_legos', textCol: 'known_text', audioCol: 'known_audio_id', role: 'known' },
+  { table: 'course_practice_phrases', textCol: 'known_text', audioCol: 'known_audio_id', role: 'known' },
 ]
+const TARGET_SIDE_SLOTS = [ // eng_for_X
+  { table: 'course_seeds', textCol: 'target_text', audioCol: 'target1_audio_id', role: 'target1', statusFilter: 'released' },
+  { table: 'course_seeds', textCol: 'target_text', audioCol: 'target2_audio_id', role: 'target2', statusFilter: 'released' },
+  { table: 'course_legos', textCol: 'target_text', audioCol: 'target1_audio_id', role: 'target1' },
+  { table: 'course_legos', textCol: 'target_text', audioCol: 'target2_audio_id', role: 'target2' },
+  { table: 'course_practice_phrases', textCol: 'target_text', audioCol: 'target1_audio_id', role: 'target1' },
+  { table: 'course_practice_phrases', textCol: 'target_text', audioCol: 'target2_audio_id', role: 'target2' },
+]
+
+function slotDefsForCourse(course) {
+  if (course.known_lang === 'eng') return KNOWN_SIDE_SLOTS
+  if (course.target_lang === 'eng') return TARGET_SIDE_SLOTS
+  return []
+}
 
 async function fetchAllForCourse(table, textCol, audioCol, courseCode, statusFilter) {
   const rows = []
@@ -65,43 +91,40 @@ async function fetchAllForCourse(table, textCol, audioCol, courseCode, statusFil
   return rows
 }
 
-async function fetchMissingKnownSlots(courseCode) {
-  // Map: normalizedText -> { text (representative), slotCount }
-  const byNormText = new Map()
+/**
+ * Missing English slots for this course, grouped by (role, normalizedText) —
+ * role is kept as a grouping key here (each role needs its own resolved
+ * voice_id and its own course_audio row), even though role is NOT part of
+ * the cross-course MATCH key.
+ */
+async function fetchMissingEnglishSlots(course) {
+  const slotDefs = slotDefsForCourse(course)
+  const byRoleAndNormText = new Map() // `${role}|${norm}` -> { role, text, count }
   let totalMissing = 0
-  for (const slot of SLOT_DEFS) {
-    const rows = await fetchAllForCourse(slot.table, slot.textCol, slot.audioCol, courseCode, slot.statusFilter)
+  for (const slot of slotDefs) {
+    const rows = await fetchAllForCourse(slot.table, slot.textCol, slot.audioCol, course.course_code, slot.statusFilter)
     for (const row of rows) {
       const text = row[slot.textCol]
       if (!text || isPunctuationOnly(text)) continue
       if (row[slot.audioCol] != null) continue // already linked — not this tool's job
       totalMissing++
       const norm = normalizeForAudio(text)
-      if (!byNormText.has(norm)) byNormText.set(norm, { text, count: 0 })
-      byNormText.get(norm).count++
+      const groupKey = `${slot.role}|${norm}`
+      if (!byRoleAndNormText.has(groupKey)) byRoleAndNormText.set(groupKey, { role: slot.role, text, count: 0 })
+      byRoleAndNormText.get(groupKey).count++
     }
   }
-  return { byNormText, totalMissing }
+  return { byRoleAndNormText, totalMissing }
 }
 
-async function getConfiguredSpeed(courseCode, role) {
-  const { data } = await supabase.from('courses').select('voice_config').eq('course_code', courseCode).maybeSingle()
-  return data?.voice_config?.voices?.[role]?.settings?.speed || 1.0
-}
-
-async function copyS3Object(sourceKey) {
-  const destKey = `mastered/${uuidv4().toUpperCase()}.mp3`
-  await s3.send(new CopyObjectCommand({
-    Bucket: S3_BUCKET,
-    CopySource: `${S3_BUCKET}/${sourceKey}`,
-    Key: destKey,
-    MetadataDirective: 'COPY',
-  }))
-  return destKey
-}
-
-async function insertOwnedRow({ courseCode, text, language, role, voiceId, source, destKey }) {
-  const { data, error } = await supabase
+/**
+ * Insert-or-noop: never updates an existing row (immutability of ownership —
+ * a destination course's row, once created, is not silently repointed by a
+ * later run). decideCopy's SKIP_ALREADY_OWNED already prevents normal
+ * re-processing; ignoreDuplicates is a second safety net against races.
+ */
+async function insertOwnedRow({ courseCode, text, language, role, voiceId, source }) {
+  const { error } = await supabase
     .from('course_audio')
     .upsert({
       course_code: courseCode,
@@ -111,48 +134,46 @@ async function insertOwnedRow({ courseCode, text, language, role, voiceId, sourc
       role,
       voice_id: voiceId,
       origin: 'tts',
-      s3_key: destKey,
+      s3_key: source.s3Key, // SHARED physical object — never a new copy
       duration_ms: source.durationMs,
       file_size_bytes: source.fileSizeBytes,
       word_boundaries: source.wordBoundaries,
       text_stripped: source.textStripped,
       lego_id: null,
-    }, { onConflict: 'course_code,text_normalized,language,role,voice_id' })
-    .select('id')
-    .single()
+    }, { onConflict: 'course_code,text_normalized,language,role,voice_id', ignoreDuplicates: true })
   if (error) throw new Error(`insert owned row failed: ${error.message}`)
-  return data.id
 }
 
-async function run(courseCode, { apply, voiceId, role }) {
+async function run(courseCode, { apply, voiceId }) {
   const { data: course, error: courseErr } = await supabase
     .from('courses').select('course_code, known_lang, target_lang').eq('course_code', courseCode).maybeSingle()
   if (courseErr) throw courseErr
   if (!course) throw new Error(`Course not found: ${courseCode}`)
 
-  const engine = await getEngineForVoice(supabase, voiceId)
-  const speedMatters = engine !== 'xai'
-  console.log(`[${courseCode}] voice=${voiceId} engine=${engine || 'unknown'} speedMatters=${speedMatters}`)
+  const family = course.known_lang === 'eng' ? 'X_for_eng (known-side)' : course.target_lang === 'eng' ? 'eng_for_X (target-side)' : null
+  if (!family) throw new Error(`${courseCode}: neither known_lang nor target_lang is 'eng' — nothing to copy`)
 
-  const [{ byNormText, totalMissing }, sourceIndex] = await Promise.all([
-    fetchMissingKnownSlots(courseCode),
-    buildSourceIndex(supabase, { role, voiceId, speedMatters }),
-  ])
-  console.log(`[${courseCode}] ${totalMissing} missing known-side slots -> ${byNormText.size} unique normalized texts`)
-
-  const destSpeed = speedMatters ? await getConfiguredSpeed(courseCode, role) : undefined
-
-  const decisions = []
-  for (const [norm, { text, count }] of byNormText) {
-    const decision = decideCopy(
-      { text, language: course.known_lang, role, voiceId, speed: destSpeed, courseCode },
-      sourceIndex,
-      speedMatters
-    )
-    decisions.push({ ...decision, text, normalizedText: norm, slotCount: count })
+  // Sequential, not Promise.all: both hit large tables and running them
+  // concurrently against the same project has tripped the statement timeout
+  // in practice (course_audio's source-index scan starved behind the
+  // slot-table scan). Neither is large enough alone to need parallelism.
+  const { byRoleAndNormText, totalMissing } = await fetchMissingEnglishSlots(course)
+  const { index: sourceIndex, trusted, engine } = await buildSourceIndex(supabase, { voiceId, language: 'eng' })
+  console.log(`[${courseCode}] family=${family} voice=${voiceId} engine=${engine || 'unknown'} trusted1x=${trusted}`)
+  console.log(`[${courseCode}] ${totalMissing} missing English slots -> ${byRoleAndNormText.size} unique (role,text) groups`)
+  if (!trusted) {
+    console.log(`[${courseCode}] REFUSING to source copies from voice=${voiceId} (engine=${engine || 'unknown'} not verified speed-invariant at render — see clone-copy-match.cjs isTrusted1xEngine). All slots will report SKIP_UNTRUSTED_VOICE.`)
   }
 
-  const summary = { COPY: 0, SKIP_ALREADY_OWNED: 0, SKIP_NO_SOURCE: 0, ERROR: 0 }
+  const decisions = []
+  for (const [groupKey, { role, text, count }] of byRoleAndNormText) {
+    const decision = trusted
+      ? decideCopy({ text, language: 'eng', voiceId, courseCode, role }, sourceIndex)
+      : { action: 'SKIP_UNTRUSTED_VOICE', key: groupKey, source: null, reason: `voice engine '${engine || 'unknown'}' not verified speed-invariant at render` }
+    decisions.push({ ...decision, role, text, normalizedText: normalizeForAudio(text), slotCount: count })
+  }
+
+  const summary = { COPY: 0, SKIP_ALREADY_OWNED: 0, SKIP_NO_SOURCE: 0, SKIP_UNTRUSTED_VOICE: 0, ERROR: 0 }
   for (const d of decisions) summary[d.action] = (summary[d.action] || 0) + 1
 
   let copied = 0
@@ -161,9 +182,7 @@ async function run(courseCode, { apply, voiceId, role }) {
     for (const d of decisions) {
       if (d.action !== 'COPY') continue
       try {
-        const destKey = await copyS3Object(d.source.s3Key)
-        await insertOwnedRow({ courseCode, text: d.text, language: course.known_lang, role, voiceId, source: d.source, destKey })
-        d.destS3Key = destKey
+        await insertOwnedRow({ courseCode, text: d.text, language: 'eng', role: d.role, voiceId, source: d.source })
         d.applied = true
         copied++
       } catch (e) {
@@ -180,16 +199,15 @@ async function run(courseCode, { apply, voiceId, role }) {
     }
   }
 
-  return { courseCode, apply, voiceId, role, speedMatters, totalMissing, uniqueTexts: byNormText.size, summary, copied, linked, decisions }
+  return { courseCode, family, apply, voiceId, engine, trusted, totalMissing, uniqueGroups: byRoleAndNormText.size, summary, copied, linked, decisions }
 }
 
 function parseArgs(argv) {
   const positional = []
-  const flags = { apply: false, voice: CLONE_VOICE_ID, role: 'known' }
+  const flags = { apply: false, voice: CLONE_VOICE_ID }
   for (const a of argv) {
     if (a === '--apply') flags.apply = true
     else if (a.startsWith('--voice=')) flags.voice = a.slice('--voice='.length)
-    else if (a.startsWith('--role=')) flags.role = a.slice('--role='.length)
     else positional.push(a)
   }
   return { courseCode: positional[0], flags }
@@ -198,11 +216,11 @@ function parseArgs(argv) {
 async function main() {
   const { courseCode, flags } = parseArgs(process.argv.slice(2))
   if (!courseCode) {
-    console.error('Usage: node clone-copy-pass.cjs <course_code> [--apply] [--voice=<voiceId>] [--role=known]')
+    console.error('Usage: node clone-copy-pass.cjs <course_code> [--apply] [--voice=<voiceId>]')
     process.exit(1)
   }
 
-  const result = await run(courseCode, { apply: flags.apply, voiceId: flags.voice, role: flags.role })
+  const result = await run(courseCode, { apply: flags.apply, voiceId: flags.voice })
 
   console.log(`\n=== ${courseCode} (${flags.apply ? 'APPLIED' : 'DRY RUN'}) ===`)
   console.log(JSON.stringify({ ...result, decisions: undefined }, null, 2))
@@ -216,4 +234,4 @@ if (require.main === module) {
   main().catch(err => { console.error(err); process.exit(1) })
 }
 
-module.exports = { run, fetchMissingKnownSlots }
+module.exports = { run, fetchMissingEnglishSlots, slotDefsForCourse }
