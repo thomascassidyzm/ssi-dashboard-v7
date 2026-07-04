@@ -1097,5 +1097,110 @@
       "presentation_audio_id": null
     },
     "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "309d0717-58e0-4878-b931-4231f75758cb",
+    "seed": 655,
+    "before": {
+      "known": "you are doing very well",
+      "target": "vous vous en sortez très bien"
+    },
+    "after": {
+      "known_text": "you are doing very well madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark, unique course-wide (646 lego precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0655L01B01",
+    "seed": 655,
+    "before": {
+      "known": "you are doing very well",
+      "target": "vous vous en sortez très bien"
+    },
+    "after": {
+      "known_text": "you are doing very well madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0655L01B02",
+    "seed": 655,
+    "before": {
+      "known": "I know you are doing very well",
+      "target": "je sais que vous vous en sortez très bien"
+    },
+    "after": {
+      "known_text": "I know you are doing very well madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0655L01B03",
+    "seed": 655,
+    "before": {
+      "known": "she knows you are doing very well",
+      "target": "elle sait que vous vous en sortez très bien"
+    },
+    "after": {
+      "known_text": "she knows you are doing very well madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0655L01U02",
+    "seed": 655,
+    "before": {
+      "known": "you are doing very well today",
+      "target": "vous vous en sortez très bien aujourd'hui"
+    },
+    "after": {
+      "known_text": "you are doing very well today madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0655L01U03",
+    "seed": 655,
+    "before": {
+      "known": "she thinks you are doing very well",
+      "target": "elle pense que vous vous en sortez très bien"
+    },
+    "after": {
+      "known_text": "she thinks you are doing very well madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0655L01U04",
+    "seed": 655,
+    "before": {
+      "known": "yes you are doing very well",
+      "target": "oui vous vous en sortez très bien"
+    },
+    "after": {
+      "known_text": "yes you are doing very well madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
   }
 ]
