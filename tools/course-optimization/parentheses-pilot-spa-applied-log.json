@@ -1,0 +1,62 @@
+[
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "b40deb6e-9260-459e-b418-8ab61145b652",
+    "seed": 332,
+    "legoIndex": 2,
+    "before": {
+      "known": "new (feminine)",
+      "target": "nueva"
+    },
+    "after": {
+      "known": "new",
+      "target": "nueva"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0332L02C02 already reads bare \"new\""
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "0cef3f71-ce6b-40e7-a2ba-239e3f17e01d",
+    "seed": 398,
+    "legoIndex": 1,
+    "before": {
+      "known": "patient (plural)",
+      "target": "pacientes"
+    },
+    "after": {
+      "known": "patient",
+      "target": "pacientes"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0398L01C03 already reads bare \"patient\""
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "ab5f78ca-51ab-4f93-81ff-666dcdebd47f",
+    "seed": 454,
+    "legoIndex": 1,
+    "before": {
+      "known": "the (time)",
+      "target": "las"
+    },
+    "after": {
+      "known": "the",
+      "target": "las"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0454L01C01 already reads bare \"the\""
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "860464ae-f499-4115-a3a5-888381fc90aa",
+    "seed": 642,
+    "legoIndex": 2,
+    "before": {
+      "known": "you (reflexive)",
+      "target": "se"
+    },
+    "after": {
+      "known": "you",
+      "target": "se"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0642L02C01 already reads bare \"you\". Note: seed 642 has a separate, pre-existing, documented bare-USE-line ZUT collision (cue-library-v1-spa.md: se siente vs te sientes@40 / te sientas@542) — untouched by this fix."
+  }
+]
