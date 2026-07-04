@@ -8,6 +8,10 @@
  *     the plain translation the unit rung plays ('means,' formula retired)
  *   - one clip per distinct fusion-WINDOW translation (window_known_map,
  *     authored by author-window-knowns.cjs)
+ *   - one clip per distinct SENTENCE of each multi-sentence turn's known_text
+ *     (glue-mapped to the ladder's sentence groups) — the whole-sentence
+ *     known slot prefers these over the June silence-split take slices,
+ *     several of which cut wrong (a 312ms "sentence" = its neighbour's tail)
  *
  * Clips are keyed by TEXT (deduped on phase8's normalizeForAudio), so a
  * window whose English equals a unit's gloss shares one clip, and the
@@ -34,6 +38,40 @@ const ROLE = 'pod_fine_known'
 const TOM_CLONE = 'gfzdpspr5fdp'
 const XAI_OFFICIAL = new Set(['en', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'ru', 'zh', 'ja', 'ko', 'vi', 'hi', 'bn', 'ar', 'tr', 'pl'])
 const base = (l) => String(l || '').toLowerCase().split('-')[0]
+const SENTENCE_PUNCT = /[.!?…。！？]/
+
+// same grouping + glue as the Lab, to map known_text sentences onto groups
+function atomGroups(targetText, atoms) {
+  const text = targetText || ''
+  const lower = text.toLowerCase()
+  const groups = [[]]
+  let cursor = 0
+  for (let i = 0; i < atoms.length; i++) {
+    const idx = lower.indexOf(atoms[i].target_surface.toLowerCase(), cursor)
+    if (i > 0 && idx !== -1 && SENTENCE_PUNCT.test(text.slice(cursor, idx))) groups.push([])
+    groups[groups.length - 1].push(atoms[i])
+    if (idx !== -1) cursor = idx + atoms[i].target_surface.length
+  }
+  return groups.filter((g) => g.length)
+}
+// glued per-group known texts, or null when counts don't align
+function gluedKnownTexts(targetText, atoms, knownText) {
+  const rawGroups = atomGroups(targetText, atoms)
+  if (rawGroups.length < 2) return null
+  const sents = String(knownText || '').split(/(?<=[.!?…])\s+/).filter(Boolean)
+  if (sents.length !== rawGroups.length) return null
+  const out = []
+  let pushedAny = false
+  let carry = []
+  rawGroups.forEach((g, i) => {
+    if (!pushedAny && g.length === 1 && i < rawGroups.length - 1) { carry.push(sents[i]); return }
+    out.push([...carry, sents[i]].join(' '))
+    pushedAny = true
+    carry = []
+  })
+  if (carry.length) out.push(carry.join(' '))
+  return out
+}
 
 ;(async () => {
   const { data: course } = await supabase.from('courses').select('voice_config').eq('course_code', COURSE).single()
@@ -46,13 +84,13 @@ const base = (l) => String(l || '').toLowerCase().split('-')[0]
   console.log(`${COURSE}: known=${VOICE.voice_id}/${VOICE.provider}/${KNOWN_LANG}${dry ? '  [DRY]' : ''}`)
 
   const { data: sents, error } = await supabase.from('listening_pod_sentences')
-    .select('global_order, atom_map_fine, window_known_map')
+    .select('global_order, target_text, known_text, atom_map_fine, window_known_map')
     .eq('pod_id', `${COURSE}:pod-0`).order('global_order')
   if (error) { console.error(error.message); process.exit(1) }
 
   // Distinct texts, first-come order; norm-key mirrors findExistingAudio.
   const texts = new Map() // normKey → text
-  let unitTexts = 0, windowTexts = 0
+  let unitTexts = 0, windowTexts = 0, sentenceTexts = 0, unalignedTurns = 0
   for (const s of sents || []) {
     for (const a of s.atom_map_fine || []) {
       if (a.kind !== 'atom' || !a.gloss) continue
@@ -64,9 +102,21 @@ const base = (l) => String(l || '').toLowerCase().split('-')[0]
       const k = normalizeForAudio(w.known)
       if (!texts.has(k)) { texts.set(k, w.known.trim()); windowTexts++ }
     }
+    const atoms = (s.atom_map_fine || []).filter((a) => a.kind !== 'note')
+    if (atoms.length) {
+      const kts = gluedKnownTexts(s.target_text, atoms, s.known_text)
+      if (kts) {
+        for (const t of kts) {
+          const k = normalizeForAudio(t)
+          if (!texts.has(k)) { texts.set(k, t.trim()); sentenceTexts++ }
+        }
+      } else if (String(s.known_text || '').split(/(?<=[.!?…])\s+/).filter(Boolean).length > 1) {
+        unalignedTurns++
+      }
+    }
   }
   const todo = [...texts.values()]
-  console.log(`${COURSE}: ${todo.length} distinct texts (${unitTexts} unit glosses + ${windowTexts} window-only)`)
+  console.log(`${COURSE}: ${todo.length} distinct texts (${unitTexts} unit glosses + ${windowTexts} window-only + ${sentenceTexts} sentence knowns; ${unalignedTurns} turns known-split-unaligned)`)
   if (dry) { todo.slice(0, 20).forEach((t) => console.log(`  "${t}"`)); process.exit(0) }
 
   let rendered = 0, reused = 0, failed = 0

@@ -483,27 +483,40 @@ const ladderRungs = computed(() => {
     Array.isArray(s.sentence_known_audio_ids) && s.sentence_known_audio_ids.length === rawGroups.length
       ? s.sentence_known_audio_ids
       : rawGroups.map(() => null)
+  // Per-sentence KNOWN texts from the turn translation (same boundary as the
+  // engine's podSentenceSplit). When they align with the sentence groups,
+  // these are the authoritative whole-sentence knowns — text-keyed fresh
+  // renders are preferred over the June silence-split take slices, several of
+  // which cut wrong (a 312ms "sentence" = the tail of its neighbour).
+  const rawKnownTexts = (s.known_text || '').split(/(?<=[.!?…])\s+/).filter(Boolean)
+  const knownTextsAligned = rawKnownTexts.length === rawGroups.length
   const groups = []
   const takes = []
   const knownTakes = []
+  const knownTexts = []
   let carry = []
+  let carryKnown = []
   rawGroups.forEach((g, i) => {
     // Only TURN-INITIAL one-unit groups (leading "Ciao!" interjections) glue
     // forward — a mid-turn one-unit group is a real sentence ("Impresioniran
     // sam.") with its own takes; gluing it swallowed its known audio.
     if (groups.length === 0 && g.length === 1 && i < rawGroups.length - 1) {
       carry.push(...g)
+      if (knownTextsAligned) carryKnown.push(rawKnownTexts[i])
       return
     }
     groups.push([...carry, ...g])
     takes.push(carry.length ? null : rawTakes[i])
     knownTakes.push(carry.length ? null : rawKnown[i])
+    knownTexts.push(knownTextsAligned ? [...carryKnown, rawKnownTexts[i]].join(' ') : null)
     carry = []
+    carryKnown = []
   })
   if (carry.length) {
     groups.push(carry)
     takes.push(null)
     knownTakes.push(null)
+    knownTexts.push(knownTextsAligned ? carryKnown.join(' ') : null)
   }
 
   const single = groups.length === 1
@@ -575,13 +588,18 @@ const ladderRungs = computed(() => {
   const wholeSentenceKnown = (gi) => {
     const g = groups[gi]
     const take = knownTakes[gi] || (single ? s.known_audio_id : null)
-    const text = single && s.known_text ? s.known_text : g.map((a) => a.gloss).filter(Boolean).join(' ')
-    const real = take ? null : fineKnownMap.value.get(normForAudio(text))
+    const sentText = single && s.known_text ? s.known_text : knownTexts[gi]
+    const joinText = g.map((a) => a.gloss).filter(Boolean).join(' ')
+    // fresh render of the REAL sentence translation first — audio provably
+    // matches text; the June split slices come second (several cut wrong)
+    const sentReal = sentText ? fineKnownMap.value.get(normForAudio(sentText)) : null
+    const joinReal = fineKnownMap.value.get(normForAudio(joinText))
+    const clips = sentReal ? [sentReal] : take ? clipList(take) : joinReal ? [joinReal] : g.map((a) => a.meansGlossClipId)
     return {
       kind: 'gloss',
-      text,
-      clips: take ? clipList(take) : real ? [real] : g.map((a) => a.meansGlossClipId),
-      approx: !take && !real,
+      text: sentText || joinText,
+      clips,
+      approx: !sentReal && !take && !joinReal,
       rate: 1,
     }
   }
@@ -606,13 +624,16 @@ const ladderRungs = computed(() => {
     const gs = groups.slice(span.start, span.end + 1)
     const kts = knownTakes.slice(span.start, span.end + 1)
     const perGroup = gs.map((g, i) => {
+      const gi = span.start + i
+      const sentReal = knownTexts[gi] ? fineKnownMap.value.get(normForAudio(knownTexts[gi])) : null
+      if (sentReal) return [sentReal]
       if (kts[i]) return clipList(kts[i])
       const real = fineKnownMap.value.get(normForAudio(g.map((a) => a.gloss).filter(Boolean).join(' ')))
       return real ? [real] : g.map((a) => a.meansGlossClipId)
     })
     return {
       kind: 'gloss',
-      text: gs.map((g) => g.map((a) => a.gloss).filter(Boolean).join(' ')).join(' '),
+      text: gs.map((g, i) => knownTexts[span.start + i] || g.map((a) => a.gloss).filter(Boolean).join(' ')).join(' '),
       clips: perGroup.flat(),
       approx: true,
       rate: 1,
