@@ -5054,7 +5054,7 @@ async function findExistingAudio(courseCode, text, language, role, voiceId) {
  * @param {('target'|'known')} [args.track] - which pod track this clip is
  * @param {string} [args.sentenceId] - pod sentence id (for the fallback log line)
  */
-async function generatePodAudio({ courseCode, text, language, role, voice, ctx, track, sentenceId }) {
+async function generatePodAudio({ courseCode, text, language, role, voice, ctx, track, sentenceId, force }) {
   // Pod TURN whole-takes: insert a pause cue (" … ") between sentences so the
   // engine PAUSES at each boundary, making the take cleanly splittable per
   // sentence (the newer ElevenLabs/xAI voices otherwise run sentences together,
@@ -5071,15 +5071,18 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
   }
 
   // Reuse by text+voice hash — keyed on the ACTUAL synthesised text.
+  // force: re-synthesise even when the row exists — the upsert below hits the
+  // same conflict key, so the row (and every link to its id) is kept and just
+  // gets fresh audio + word_boundaries. Used by the Take G rescue pass.
   const existing = await findExistingAudio(courseCode, ttsText, language, role, voice.voice_id)
-  if (existing) return { id: existing, reused: true }
+  if (existing && !force) return { id: existing, reused: true }
 
   let provider = voice.provider || 'azure'
   let activeVoice = voice
-  let audioBuffer
+  let audioBuffer, wordBoundaries
   try {
     const ttsConfig = buildPodTTSConfig(activeVoice, language)
-    ;({ audioBuffer } = await ttsService.generateWithRetry(ttsText, provider, ttsConfig))
+    ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, provider, ttsConfig))
   } catch (primaryErr) {
     // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
     // back when the primary was xAI — Azure failing has nowhere better to go,
@@ -5099,7 +5102,7 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
     activeVoice = azureVoice
     const azureConfig = buildPodTTSConfig(activeVoice, language)
     try {
-      ;({ audioBuffer } = await ttsService.generateWithRetry(ttsText, 'azure', azureConfig))
+      ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, 'azure', azureConfig))
     } catch (e) { e.message = `[STAGE=tts:azure-fallback,xai-also-failed] ${e.message}`; throw e }
   }
   voice = activeVoice  // course_audio row records the voice that actually produced the clip
@@ -5137,6 +5140,7 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
       origin: 'tts',
       s3_key: s3Key,
       duration_ms: durationMs,
+      word_boundaries: wordBoundaries && wordBoundaries.length ? wordBoundaries : null,
     }, {
       onConflict: 'course_code,text_normalized,language,role,voice_id',
     })
@@ -5408,3 +5412,4 @@ module.exports.linkAudioIds = linkAudioIds
 // PRECIOUS-AUDIO GUARD helper (G1) — exported so the pods recording stream can
 // unit-test that TTS paths refuse to write over human pod rows (additive).
 module.exports.humanRowAtAudioKey = humanRowAtAudioKey
+module.exports.resolvePodSpeakerVoice = resolvePodSpeakerVoice
