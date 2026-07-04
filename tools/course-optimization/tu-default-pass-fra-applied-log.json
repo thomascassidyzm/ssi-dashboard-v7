@@ -1247,5 +1247,574 @@
       "target1_audio_id": null,
       "target2_audio_id": null
     }
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "7f589458-206f-43ab-ae07-9d4c8b1aaa01",
+    "seed": 204,
+    "before": {
+      "known": "her to help you",
+      "target": "qu'elle vous aide",
+      "components": [
+        {
+          "known": "her to",
+          "target": "qu'elle",
+          "introduce": false
+        },
+        {
+          "known": "help you",
+          "target": "vous aide",
+          "introduce": true
+        }
+      ]
+    },
+    "after": {
+      "target_text": "qu'elle t'aide",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "components": [
+        {
+          "known": "her to",
+          "target": "qu'elle",
+          "introduce": false
+        },
+        {
+          "known": "help you",
+          "target": "t'aide",
+          "introduce": true
+        }
+      ]
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L01B01",
+    "seed": 204,
+    "before": {
+      "known": "her to help you",
+      "target": "qu'elle vous aide"
+    },
+    "after": {
+      "target_text": "qu'elle t'aide",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L01B02",
+    "seed": 204,
+    "before": {
+      "known": "I wanted her to help you",
+      "target": "je voulais qu'elle vous aide"
+    },
+    "after": {
+      "target_text": "je voulais qu'elle t'aide",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L01B03",
+    "seed": 204,
+    "before": {
+      "known": "I want her to help you",
+      "target": "je veux qu'elle vous aide"
+    },
+    "after": {
+      "target_text": "je veux qu'elle t'aide",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L01B04",
+    "seed": 204,
+    "before": {
+      "known": "I would like her to help you",
+      "target": "j'aimerais qu'elle vous aide"
+    },
+    "after": {
+      "target_text": "j'aimerais qu'elle t'aide",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L01C02",
+    "seed": 204,
+    "before": {
+      "known": "help you",
+      "target": "vous aide"
+    },
+    "after": {
+      "target_text": "t'aide",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L01U01",
+    "seed": 204,
+    "before": {
+      "known": "I wanted her to help you this morning",
+      "target": "je voulais qu'elle vous aide ce matin"
+    },
+    "after": {
+      "target_text": "je voulais qu'elle t'aide ce matin",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L01U02",
+    "seed": 204,
+    "before": {
+      "known": "I want her to help you today",
+      "target": "je veux qu'elle vous aide aujourd'hui"
+    },
+    "after": {
+      "target_text": "je veux qu'elle t'aide aujourd'hui",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L01U03",
+    "seed": 204,
+    "before": {
+      "known": "I would like her to help you tomorrow morning",
+      "target": "j'aimerais qu'elle vous aide demain matin"
+    },
+    "after": {
+      "target_text": "j'aimerais qu'elle t'aide demain matin",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L01U04",
+    "seed": 204,
+    "before": {
+      "known": "I want her to help you this afternoon",
+      "target": "je veux qu'elle vous aide cet après-midi"
+    },
+    "after": {
+      "target_text": "je veux qu'elle t'aide cet après-midi",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L01U05",
+    "seed": 204,
+    "before": {
+      "known": "I wanted her to help you with the young dog",
+      "target": "je voulais qu'elle vous aide avec le jeune chien"
+    },
+    "after": {
+      "target_text": "je voulais qu'elle t'aide avec le jeune chien",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "bae19398-37af-4a3b-a533-855296eef2f6",
+    "seed": 204,
+    "before": {
+      "known": "to deal with",
+      "target": "à vous occuper",
+      "components": [
+        {
+          "known": "to",
+          "target": "à",
+          "introduce": false
+        },
+        {
+          "known": "deal with",
+          "target": "vous occuper",
+          "introduce": true
+        }
+      ]
+    },
+    "after": {
+      "target_text": "à t'occuper",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "components": [
+        {
+          "known": "to",
+          "target": "à",
+          "introduce": false
+        },
+        {
+          "known": "deal with",
+          "target": "t'occuper",
+          "introduce": true
+        }
+      ]
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L02B01",
+    "seed": 204,
+    "before": {
+      "known": "to deal with",
+      "target": "à vous occuper"
+    },
+    "after": {
+      "target_text": "à t'occuper",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L02B02",
+    "seed": 204,
+    "before": {
+      "known": "her to help you to deal with",
+      "target": "qu'elle vous aide à vous occuper"
+    },
+    "after": {
+      "target_text": "qu'elle t'aide à t'occuper",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L02B03",
+    "seed": 204,
+    "before": {
+      "known": "I wanted her to help you to deal with",
+      "target": "je voulais qu'elle vous aide à vous occuper"
+    },
+    "after": {
+      "target_text": "je voulais qu'elle t'aide à t'occuper",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L02B04",
+    "seed": 204,
+    "before": {
+      "known": "to help you to deal with",
+      "target": "vous aide à vous occuper"
+    },
+    "after": {
+      "target_text": "t'aide à t'occuper",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L02C02",
+    "seed": 204,
+    "before": {
+      "known": "deal with",
+      "target": "vous occuper"
+    },
+    "after": {
+      "target_text": "t'occuper",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L02U01",
+    "seed": 204,
+    "before": {
+      "known": "I wanted her to help you deal with the young dog",
+      "target": "je voulais qu'elle vous aide à vous occuper du jeune chien"
+    },
+    "after": {
+      "target_text": "je voulais qu'elle t'aide à t'occuper du jeune chien",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L02U02",
+    "seed": 204,
+    "before": {
+      "known": "I want her to help you deal with the young dog today",
+      "target": "je veux qu'elle vous aide à vous occuper du jeune chien aujourd'hui"
+    },
+    "after": {
+      "target_text": "je veux qu'elle t'aide à t'occuper du jeune chien aujourd'hui",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L02U03",
+    "seed": 204,
+    "before": {
+      "known": "I would like her to help you deal with the young dog",
+      "target": "j'aimerais qu'elle vous aide à vous occuper du jeune chien"
+    },
+    "after": {
+      "target_text": "j'aimerais qu'elle t'aide à t'occuper du jeune chien",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L02U04",
+    "seed": 204,
+    "before": {
+      "known": "I wanted her to help you deal with the young dog this morning",
+      "target": "je voulais qu'elle vous aide à vous occuper du jeune chien ce matin"
+    },
+    "after": {
+      "target_text": "je voulais qu'elle t'aide à t'occuper du jeune chien ce matin",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L02U05",
+    "seed": 204,
+    "before": {
+      "known": "I want her to help you deal with the young dog this afternoon",
+      "target": "je veux qu'elle vous aide à vous occuper du jeune chien cet après-midi"
+    },
+    "after": {
+      "target_text": "je veux qu'elle t'aide à t'occuper du jeune chien cet après-midi",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L03B02",
+    "seed": 204,
+    "before": {
+      "known": "to deal with the arrangements",
+      "target": "à vous occuper des préparatifs"
+    },
+    "after": {
+      "target_text": "à t'occuper des préparatifs",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L03B03",
+    "seed": 204,
+    "before": {
+      "known": "her to help you to deal with the arrangements",
+      "target": "qu'elle vous aide à vous occuper des préparatifs"
+    },
+    "after": {
+      "target_text": "qu'elle t'aide à t'occuper des préparatifs",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L03B04",
+    "seed": 204,
+    "before": {
+      "known": "help you to deal with the arrangements",
+      "target": "vous aide à vous occuper des préparatifs"
+    },
+    "after": {
+      "target_text": "t'aide à t'occuper des préparatifs",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L03U01",
+    "seed": 204,
+    "before": {
+      "known": "I wanted her to help you deal with the arrangements",
+      "target": "je voulais qu'elle vous aide à vous occuper des préparatifs"
+    },
+    "after": {
+      "target_text": "je voulais qu'elle t'aide à t'occuper des préparatifs",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L03U02",
+    "seed": 204,
+    "before": {
+      "known": "I want her to help you deal with the arrangements",
+      "target": "je veux qu'elle vous aide à vous occuper des préparatifs"
+    },
+    "after": {
+      "target_text": "je veux qu'elle t'aide à t'occuper des préparatifs",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L03U03",
+    "seed": 204,
+    "before": {
+      "known": "I would like her to help you deal with the arrangements",
+      "target": "j'aimerais qu'elle vous aide à vous occuper des préparatifs"
+    },
+    "after": {
+      "target_text": "j'aimerais qu'elle t'aide à t'occuper des préparatifs",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L03U04",
+    "seed": 204,
+    "before": {
+      "known": "I want her to help you deal with the arrangements today",
+      "target": "je veux qu'elle vous aide à vous occuper des préparatifs aujourd'hui"
+    },
+    "after": {
+      "target_text": "je veux qu'elle t'aide à t'occuper des préparatifs aujourd'hui",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0204L03U05",
+    "seed": 204,
+    "before": {
+      "known": "I wanted her to help you deal with the arrangements this morning",
+      "target": "je voulais qu'elle vous aide à vous occuper des préparatifs ce matin"
+    },
+    "after": {
+      "target_text": "je voulais qu'elle t'aide à t'occuper des préparatifs ce matin",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    }
+  },
+  {
+    "action": "UPDATE_SEED",
+    "seed": 204,
+    "before": {
+      "known": "I wanted her to help you to deal with the arrangements",
+      "target": "Je voulais qu'elle vous aide à vous occuper des préparatifs"
+    },
+    "after": {
+      "target_text": "Je voulais qu'elle t'aide à t'occuper des préparatifs",
+      "target1_audio_id": null,
+      "target2_audio_id": null
+    }
   }
 ]
