@@ -60,13 +60,11 @@ Presentation text was never creative *per LEGO* — it's a frame with slots. The
 
 `FLAG:` lines are logged (surface in the dashboard as a content-QA feed — free QA channel from the authoring pass).
 
-## Consumer reconciliation (implementation task)
+## Consumer paths (verified 2026-07-05 — NOT an open decision)
 
-Two playback paths exist in ssi-learning-app:
-1. `api/courses/[code]/cycles.ts` — INTRO cycles read `lego.presentation_audio_id` (primary; the FK this design binds).
-2. `packages/player-vue/src/composables/useScriptCache.ts` — reads a `lego_introductions` table with fallback to `course_audio`.
+Two playback paths exist in ssi-learning-app and BOTH are live: `api/courses/[code]/cycles.ts` INTRO cycles read `lego.presentation_audio_id`, and `LearningPlayer.vue` loads intro audio via `loadIntroAudio()` (useScriptCache) from the `lego_introductions` table (22,650 rows / 45 courses; carries both `presentation_audio_id` and legacy `audio_uuid`).
 
-Decide: keep `lego_introductions` synced from the FK path, or retire it after verifying live usage. Component intros bind on `course_practice_phrases.presentation_audio_id`.
+They are two synced projections of one fact, not two sources: phase8's post-TTS write already upserts `lego_introductions` AND binds `course_legos.presentation_audio_id` in the same pass (`onConflict: course_code,lego_id` — see phase8-audio-v13 ~L3125 bulk, ~L3784 single-LEGO). **The new one-button Generate must reuse that same bind helper — nothing more.** Pre-TTS `pending/%` rows never enter `lego_introductions`, so the pending-row purge needs no reconciliation. Collapsing the redundancy (retiring one projection) is optional later tidying, not a gate. Component intros bind on `course_practice_phrases.presentation_audio_id`.
 
 ## Migration
 
@@ -79,5 +77,4 @@ Decide: keep `lego_introductions` synced from the FK path, or retire it after ve
 ## Open items
 
 - eng_for_X known-voice frame renderings: hand-verify the frozen frames per known language (one-off, ~19 languages).
-- `lego_introductions` reconciliation (above).
 - The sibling confusions logged on WORKLIST 2026-07-04 (schools rollup etc.) are separate lanes.
