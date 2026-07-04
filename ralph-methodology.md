@@ -56,6 +56,17 @@ Slightly stilted but tileable English is **correct** — it is the known-side mi
 
 **"Don't re-teach the known" (Principle 5) is a scalpel, not a cull.** Suppress a debut (`is_new:false`) *only* for a pure same-meaning re-statement — the identical intention and identical target, adding no new word, sense, idiom, or contrast. Everything else keeps its debut: **distinct words** (喝/买/准备 are not "components" of a chunk just because their characters appear inside it — that is the overlap mechanism working, not duplication), **idiomatic chunks** (准备好 ≠ 准备+好), **overlap-ladder rungs**, and **deliberate nuance re-debuts**. The lever is minor by design — in the zho audit, ~15 of ~1,100 rounds.
 
+### No Parentheses, Ever — Register by Natural Example (house law, 2026-07-04)
+
+**No parenthetical annotation of any kind may appear in learner-facing course text** — not `(formal)`, not `(measure word)`, not a trigger word bracketed onto a bare gloss like `(until they) are`. A parenthetical is a grammar label wearing a gloss's clothes; it costs the same cognitive action Conservative Suppression already bans, just with round brackets instead of a definition. This is a hard extension of the rule above, not a separate one: **zero-explanation methodology — meaning is carried by natural examples in context, never by annotation.**
+
+Two concrete techniques replace the parenthetical, chosen per case, not by taste:
+
+- **Register carried vocatively.** Formal-you (usted/vous/Lei/o senhor) is marked by a natural address term inside the sentence itself — `"you're doing something sir"` / `"...madam"` — never `"you're doing (formal)"`. This is not a new invention: it was already the dominant live style in `spa_for_eng` (siblings 642/646/651/652/653/655) before this law was written down; the law just makes it universal and forecloses the parenthetical variant that had crept in elsewhere (e.g. `S0653L01`'s own `components: [{known: "you (formal)", ...}]`).
+- **Register/trigger carried by natural glued prefix.** Where the annotation was a real English word standing in front of a bare form — `(until they) are`, `(before) we moved`, `(whenever) you feel` — drop the brackets and let the trigger word lead the phrase as ordinary running text: `"until they are"`, `"before we moved"`, `"whenever you feel"`. This is the family's own GLUED mechanism (F4 in the cue-library, `docs/course-optimization/cue-library-v1-spa.md`) applied one layer further down, to the component row, not a new device.
+
+If neither a natural vocative nor a natural glued prefix can carry the cue, that is a signal the underlying construction needs its own bundled M-LEGO (see The Pair-Contract) — not a parenthetical stopgap.
+
 ---
 
 ## The Pair-Contract

@@ -795,6 +795,48 @@ function checkMetadataGloss(legos) {
   return warnings;
 }
 
+// ─── No-parentheses house law (2026-07-04) ─────────────────────────────
+// NO parenthetical annotation of any kind in learner-facing text — not
+// "(formal)", not "(measure word)", not a trigger word bracketed onto a bare
+// gloss like "(until they) are". Zero-explanation methodology: meaning is
+// carried by natural examples in context, never by annotation. Two natural
+// replacements: register carried vocatively ("you're doing something sir",
+// not "you're doing (formal)"), or a trigger carried by natural glued prefix
+// ("until they are", not "(until they) are"). See ralph-methodology.md,
+// "No Parentheses, Ever — Register by Natural Example".
+// WARN, not reject: this gate is forward-looking (catches new submissions);
+// the existing corpus is swept separately via audit, not auto-edited.
+const HAS_PARENS = /[()]/;
+
+function checkNoParentheses(legos, phrases) {
+  const warnings = [];
+  for (const lego of legos || []) {
+    const known = lego.known || lego.known_text || '';
+    if (HAS_PARENS.test(known)) {
+      warnings.push({
+        code: 'parenthetical_gloss',
+        lego_index: lego.idx ?? lego.lego_index,
+        target: lego.target || lego.target_text,
+        known,
+        detail: `Debut gloss "${known}" uses a parenthetical annotation — banned by house law. Carry the cue vocatively ("...sir"/"...madam") or as a natural glued prefix ("until they are", not "(until they) are"), never in brackets.`,
+      });
+    }
+  }
+  for (const phrase of phrases || []) {
+    const known = phrase.known || phrase.known_text || '';
+    if (HAS_PARENS.test(known)) {
+      warnings.push({
+        code: 'parenthetical_gloss',
+        phrase_role: phrase.phrase_role || phrase.role,
+        target: phrase.target || phrase.target_text,
+        known,
+        detail: `Phrase "${known}" uses a parenthetical annotation — banned by house law. Carry the cue vocatively or as a natural glued prefix instead.`,
+      });
+    }
+  }
+  return warnings;
+}
+
 // ─── Known-side reconstructability (both-sides tiling — Principle 1 in full) ───
 // Pure + POSITION-AGNOSTIC: callers pass currentPos + a compiled ctx whose maps
 // use the SAME unit (round for the reorder CLI, seed for generation). A prompt
@@ -901,6 +943,7 @@ module.exports = {
   METHODOLOGY_HINTS,
   checkTiling,
   checkMetadataGloss,
+  checkNoParentheses,
   stemKnownGloss,
   tokenizeKnown,
   compileKnownContract,

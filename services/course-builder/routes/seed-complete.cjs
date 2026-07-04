@@ -20,6 +20,7 @@ const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
   checkLegoConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss,
+  checkNoParentheses,
   loadPairContract, checkKnownSide, compileKnownContract, stemKnownGloss, tokenizeKnown,
 } = require('../lib/validation.cjs');
 const { loadCourseVocab, addToCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cjs');
@@ -1332,6 +1333,20 @@ module.exports = function seedCompleteRoutes(ctx) {
         for (const w of metaWarnings) {
           warnings.push({ type: 'metadata_gloss', ...w });
           console.log(`⚠ ${seedId}L${String(w.lego_index).padStart(2, '0')}: metadata gloss "${w.known}"`);
+        }
+      }
+
+      // 3a-PARENS. NO-PARENTHESES HOUSE LAW (warn, 2026-07-04): zero-explanation
+      // methodology — no annotation of any kind, register/triggers carried by
+      // natural example (vocative or glued prefix). See ralph-methodology.md.
+      {
+        const parensPhrases = legos.flatMap(lego =>
+          usesBuildUseFormat(lego) ? [...(lego.build || []), ...(lego.use || [])] : (lego.phrases || [])
+        );
+        const parensWarnings = checkNoParentheses(legos, parensPhrases);
+        for (const w of parensWarnings) {
+          warnings.push({ type: 'parenthetical_gloss', ...w });
+          console.log(`⚠ ${seedId}: parenthetical gloss "${w.known}"`);
         }
       }
 
