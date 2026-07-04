@@ -1,0 +1,52 @@
+[
+  {
+    "action": "UPDATE_LEGO",
+    "id": "b7136f51-a8c4-413e-af20-ecabf47640bf",
+    "seed": 281,
+    "legoIndex": 4,
+    "before": {
+      "known": "you start",
+      "target": "empieces",
+      "components": null
+    },
+    "after": {
+      "known_text": "before you start",
+      "known_audio_id": null,
+      "target_text": "antes de que empieces",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "components": [
+        {
+          "known": "before",
+          "target": "antes de que"
+        },
+        {
+          "known": "before you start",
+          "target": "empieces"
+        }
+      ],
+      "presentation_audio_id": null
+    },
+    "reason": "owner ruling: bind bare 'you start'=empieces (no known-side subjunctive signal) to its single most-rehearsed trigger frame 'before you start' (matches existing build row B02), per the 506/542 no-parens component pattern"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "spa_for_eng:S0281L04B05",
+    "was": {
+      "known": "You start speaking",
+      "target": "Empieces a hablar"
+    },
+    "reason": "owner ruling: bare row leaks subjunctive form with no trigger in the known side — delete per vous-pass deletion precedent"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "spa_for_eng:S0281L04B06",
+    "was": {
+      "known": "You start now",
+      "target": "Empieces ahora"
+    },
+    "reason": "owner ruling: bare row leaks subjunctive form with no trigger in the known side — delete per vous-pass deletion precedent"
+  }
+]
