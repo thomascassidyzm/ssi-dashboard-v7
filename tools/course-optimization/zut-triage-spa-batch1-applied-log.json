@@ -1,0 +1,222 @@
+[
+  {
+    "action": "SKIP_ALREADY_GONE",
+    "id": "spa_for_eng:S0132L01C01"
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0106L01C01",
+    "seed": 106,
+    "known": "Do you know what?",
+    "target": "¿Sabes qué?",
+    "reason": "Seed 106 is \"we don't need to feel happy, we just need to work hard\" — no relation to 'do you know what'. The lego_index=1 slot's real content, 'to feel happy'->'sentirnos contentos', is already covered by the LEGO and multiple build/use rows."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0269L01C01",
+    "seed": 269,
+    "known": "You should",
+    "target": "Deberías",
+    "reason": "Seed 269 is \"Why don't you want to wait for your father?\" — nothing about 'you should'. The lego_index=1 slot's real content 'wait for your father'->'esperar a tu padre' is already covered by the LEGO and multiple build/use rows."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0245L02C01",
+    "seed": 245,
+    "known": "A bit more",
+    "target": "un poco más",
+    "reason": "Seed 245 is \"I'm happy with how much I've done in a short time\" — the lego_index=2 slot is really 'how much'->'lo mucho que', already covered by the LEGO and several build/use rows; 'a bit more' has no relation to this sentence."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0183L01C01",
+    "seed": 183,
+    "known": "I know where",
+    "target": "Sé dónde",
+    "reason": "Seed 183 is \"no I'm afraid I haven't seen them\" — no relation to 'I know where'. The lego_index=1 slot's real content, 'I'm afraid'->'me temo', is already covered by the LEGO and numerous build/use rows."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0265L01C01",
+    "seed": 265,
+    "known": "I should",
+    "target": "Debería",
+    "reason": "Seed 265 is just 'a friend' -> 'un amigo'; 'I should' has zero relation to it. The lego_index=1 slot's real content is already covered by the LEGO 'a friend'->'un amigo' and many build/use rows."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0277L01C01",
+    "seed": 277,
+    "known": "It might be",
+    "target": "Podría ser",
+    "reason": "Seed 277 is \"yes I've got an important meeting early next week\" — no relation to 'it might be'. The lego_index=1 slot's real content, 'a meeting'->'una reunión', is already covered by the LEGO and multiple build/use rows."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0052L01C01",
+    "seed": 52,
+    "known": "The last time",
+    "target": "La última vez",
+    "reason": "Seed 52 is \"he wanted to write a letter to his friend last week\" — the lego_index=1 slot's real content is 'to write'->'escribir', already covered by the LEGO and numerous build/use rows. 'The last time' has no relation to this sentence."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0270L01C01",
+    "seed": 270,
+    "known": "You shouldn't",
+    "target": "No deberías",
+    "reason": "Seed 270 is \"because I'm worried that I'm going to be late\" — the lego_index=1 slot's real content is 'I am worried'->'me preocupa', already covered by the LEGO and numerous build/use rows. 'You shouldn't' has no relation to this sentence."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0084L02C01",
+    "seed": 84,
+    "known": "Better than before",
+    "target": "Mejor que antes",
+    "reason": "Seed 84 is \"I don't agree with what he said about my friend\" — the lego_index=2 slot's real content is 'my friend'->'mi amigo', already covered by the LEGO and multiple build/use rows. 'Better than before' has no relation to this sentence."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0121L02C01",
+    "seed": 121,
+    "known": "This morning",
+    "target": "Esta mañana",
+    "reason": "Seed 121 is \"It's unusual that you don't like to use your car\" — the lego_index=2 slot's real content is 'that you don't like'->'que no te guste', already covered by the LEGO and multiple build/use rows. 'This morning' has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0126L01C01",
+    "seed": 126,
+    "known": "I'd had",
+    "target": "Había tenido",
+    "reason": "Seed 126 is \"this work is changing the shape of my brain\" — the lego_index=1 slot's real content is 'this work'->'este trabajo', already covered by the LEGO and multiple build/use rows. \"I'd had\" has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0116L04C03",
+    "seed": 116,
+    "known": "What could I make?",
+    "target": "¿Qué podría hacer?",
+    "reason": "Seed 116 is \"this isn't the best choice I could make\" (esta no es la mejor opción que podría hacer) — a statement, not a question. The lego_index=4 slot's meaning is already fully covered by the LEGO/build rows and by the two correctly-matching sibling components created in the same batch ('This isn't'->'Esta no es', 'The best choice'->'La mejor opción'); this third component is an extra, unrelated row from the same generation event."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0259L01C01",
+    "seed": 259,
+    "known": "Until now",
+    "target": "Hasta ahora",
+    "reason": "Seed 259 is just 'an idea'->'una idea'; 'until now' has no relation. The lego_index=1 slot is already covered by the LEGO and several build/use rows."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0119L01C01",
+    "seed": 119,
+    "known": "We used to",
+    "target": "Solíamos",
+    "reason": "Seed 119 is \"Can I ask you something before you leave?\" — the lego_index=1 slot's real content is 'you leave'->'te vayas', already covered by the LEGO and several build/use rows. 'We used to' has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0275L01C01",
+    "seed": 275,
+    "known": "It must be",
+    "target": "Debe ser",
+    "reason": "Seed 275 is just 'longer'->'más tiempo'; 'it must be' has no relation. The lego_index=1 slot is already covered by the LEGO and multiple build/use rows."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0176L01C01",
+    "seed": 176,
+    "known": "As far as I'm concerned",
+    "target": "En lo que a mí respecta",
+    "reason": "Seed 176 is \"I'll ask him if he'll be able to help next year\" — the lego_index=1 slot's real content is \"I'll ask him\"->'le preguntaré', already covered by the LEGO and several build/use rows. This idiomatic component has no relation to the seed."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0126L02C01",
+    "seed": 126,
+    "known": "A very interesting conversation",
+    "target": "Una conversación muy interesante",
+    "reason": "Seed 126 is \"this work is changing the shape of my brain\" — the lego_index=2 slot's real content is 'Work'->'trabajo', already covered by the LEGO and several build/use rows. 'A very interesting conversation' has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0128L02C01",
+    "seed": 128,
+    "known": "For about a week",
+    "target": "Durante más o menos una semana",
+    "reason": "Seed 128 is \"you're like someone I used to know\" — the lego_index=2 slot's real content is 'like'->'como', already covered by the LEGO and several build/use rows. 'For about a week' has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0142L02C01",
+    "seed": 142,
+    "known": "If we tried",
+    "target": "Si lo intentáramos",
+    "reason": "Seed 142 is \"that's very kind of you and I'm grateful to you for helping\" — the lego_index=2 slot's real content is \"I'm grateful\"->'agradezco', already covered by the LEGO and several build/use rows. 'If we tried' has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0053L01C01",
+    "seed": 53,
+    "known": "I've had enough",
+    "target": "Estoy harto",
+    "reason": "Seed 53 is \"She wanted to put his letter in her bag\" — the lego_index=1 slot's real content is 'to put'->'poner', already covered by the LEGO and several build/use rows. \"I've had enough\" has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0134L02C01",
+    "seed": 134,
+    "known": "Everything he hears",
+    "target": "Todo lo que escuche",
+    "reason": "Seed 134 is \"It's not a problem when you work at something difficult with them\" — the lego_index=2 slot's real content is 'at something difficult'->'en algo difícil', already covered by the LEGO and several build/use rows. 'Everything he hears' has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0143L01C01",
+    "seed": 143,
+    "known": "they could",
+    "target": "podrían",
+    "reason": "Seed 143 is \"It's the same thing as we were talking about earlier\" — the lego_index=1 slot's real content is 'the same thing'->'lo mismo', already covered by the LEGO and a build row. 'they could'->'podrían' has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0135L01C01",
+    "seed": 135,
+    "known": "She'll be able to",
+    "target": "Ella podrá",
+    "reason": "Seed 135 is \"I don't know why you think that it's so good\" — the lego_index=1 slot's real content is \"I don't know\"->'no sé', already covered by the LEGO and several build/use rows. \"She'll be able to\" has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0141L01C01",
+    "seed": 141,
+    "known": "She could",
+    "target": "Ella podría",
+    "reason": "Seed 141 is \"no problem. Everything is okay\" — the lego_index=1 slot's real content is 'problem'->'problema', already covered by the LEGO and several build/use rows. 'She could' has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0130L01C01",
+    "seed": 130,
+    "known": "I'd like to be able to",
+    "target": "Me gustaría poder",
+    "reason": "Seed 130 is \"that was a surprise, because he's my friend\" — the lego_index=1 slot's real content is 'surprise'->'sorpresa', already covered by the LEGO and several build/use rows. \"I'd like to be able to\" has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0136L01C01",
+    "seed": 136,
+    "known": "We'll be able to",
+    "target": "Podremos",
+    "reason": "Seed 136 is \"Of course you can ask her because she's my friend\" — the lego_index=1 slot's real content is 'of course'->'claro que', already covered by the LEGO and several use rows. \"We'll be able to\" has no relation."
+  },
+  {
+    "action": "DELETE_ORPHAN_COMPONENT",
+    "id": "spa_for_eng:S0128L01C01",
+    "seed": 128,
+    "known": "I haven't been able to",
+    "target": "No he podido",
+    "reason": "Seed 128 is \"you're like someone I used to know\" — the lego_index=1 slot's real content is 'you are'->'eres', already covered by the LEGO and several build/use rows. \"I haven't been able to\" has no relation."
+  }
+]

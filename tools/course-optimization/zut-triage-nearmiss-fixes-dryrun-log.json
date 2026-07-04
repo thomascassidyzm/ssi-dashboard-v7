@@ -1,0 +1,56 @@
+[
+  {
+    "action": "EDIT_NEAR_MISS_COMPONENT_PLANNED",
+    "id": "fra_for_eng:S0664L01C01",
+    "seed": 664,
+    "known": "are you ready",
+    "before": "êtes-vous prêt",
+    "after": "êtes-vous prêts",
+    "reason": "Number-agreement slip: seed is plural (\"are you all ready?\"->\"Êtes-vous tous prêts ?\"). Sibling LEGO/component already use plural \"prêts\"."
+  },
+  {
+    "action": "EDIT_NEAR_MISS_COMPONENT_PLANNED",
+    "id": "fra_for_eng:S0093L01C02",
+    "seed": 93,
+    "known": "time to",
+    "before": "temps de",
+    "after": "temps d'",
+    "reason": "Elision: seed is \"il est temps d'y aller maintenant\" (de+y -> d'y). Corrected form matches the seed's own text exactly."
+  },
+  {
+    "action": "EDIT_NEAR_MISS_COMPONENT_PLANNED",
+    "id": "fra_for_eng:S0440L02C01",
+    "seed": 440,
+    "known": "while",
+    "before": "pendant que",
+    "after": "pendant qu'",
+    "reason": "Elision: seed is \"...pendant qu'ils sont encore jeunes\" (que+ils -> qu'ils). Corrected form matches the seed's own text exactly."
+  },
+  {
+    "action": "EDIT_NEAR_MISS_COMPONENT_PLANNED",
+    "id": "spa_for_eng:S0419L02C01",
+    "seed": 419,
+    "known": "likes",
+    "before": "aprecia",
+    "after": "aprecie",
+    "reason": "Mood slip: seed is \"si quieren que la gente les aprecie\" (subjunctive, governed by \"quieren que\"). Sibling build row at the same lego_index already uses \"aprecie\"."
+  },
+  {
+    "action": "EDIT_NEAR_MISS_COMPONENT_PLANNED",
+    "id": "spa_for_eng:S0427L01C01",
+    "seed": 427,
+    "known": "you thought",
+    "before": "pensabas",
+    "after": "pensaras",
+    "reason": "Mood slip: seed is \"no les gustaría que pensaras que están aburridos\" (subjunctive). LEGO + sibling build row at the same lego_index already use \"pensaras\"."
+  },
+  {
+    "action": "EDIT_NEAR_MISS_COMPONENT_PLANNED",
+    "id": "spa_for_eng:S0426L04C01",
+    "seed": 426,
+    "known": "unhappy",
+    "before": "infeliz",
+    "after": "infelices",
+    "reason": "Number-agreement slip: seed requires plural (\"they're unhappy\" -> \"están infelices\"). Identical-known sibling LEGO/build already use plural \"infelices\"."
+  }
+]
