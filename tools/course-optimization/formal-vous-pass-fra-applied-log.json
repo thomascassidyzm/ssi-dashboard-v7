@@ -992,5 +992,110 @@
       "presentation_audio_id": null
     },
     "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "f902460e-c15a-43fe-87d2-2ca73a70dad6",
+    "seed": 654,
+    "before": {
+      "known": "to be able to help you",
+      "target": "de pouvoir vous aider"
+    },
+    "after": {
+      "known_text": "to be able to help you sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark, unique course-wide (646 lego precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0654L02B01",
+    "seed": 654,
+    "before": {
+      "known": "to be able to help you",
+      "target": "de pouvoir vous aider"
+    },
+    "after": {
+      "known_text": "to be able to help you sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0654L02B02",
+    "seed": 654,
+    "before": {
+      "known": "not sure to be able to help you",
+      "target": "pas sûr de pouvoir vous aider"
+    },
+    "after": {
+      "known_text": "not sure to be able to help you sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0654L02U02",
+    "seed": 654,
+    "before": {
+      "known": "I'm not sure I can help you",
+      "target": "je ne suis pas sûr de pouvoir vous aider"
+    },
+    "after": {
+      "known_text": "I'm not sure I can help you sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0654L02U03",
+    "seed": 654,
+    "before": {
+      "known": "yes I am sure I can help you",
+      "target": "oui je suis sûr de pouvoir vous aider"
+    },
+    "after": {
+      "known_text": "yes I am sure I can help you sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0654L02U04",
+    "seed": 654,
+    "before": {
+      "known": "he is not sure he can help you",
+      "target": "il n'est pas sûr de pouvoir vous aider"
+    },
+    "after": {
+      "known_text": "he is not sure he can help you sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0654L02U05",
+    "seed": 654,
+    "before": {
+      "known": "he is sure he can help you",
+      "target": "il est sûr de pouvoir vous aider"
+    },
+    "after": {
+      "known_text": "he is sure he can help you sir",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
   }
 ]
