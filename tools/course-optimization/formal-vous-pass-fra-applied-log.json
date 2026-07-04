@@ -247,5 +247,111 @@
       "presentation_audio_id": null
     },
     "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_LEGO",
+    "id": "86361899-159c-4bbf-aaaa-8226f02b6c70",
+    "seed": 645,
+    "before": {
+      "known": "I can help you",
+      "target": "je peux vous aider"
+    },
+    "after": {
+      "known_text": "I can help you madam",
+      "known_audio_id": null,
+      "target_text": "je peux vous aider madame",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null
+    },
+    "reason": "marked known collides with seed-own spoken USE variant under different target; realign lego to the seed's own spoken form (target audio staged for regen)"
+  },
+  {
+    "action": "DELETE_PHRASE",
+    "id": "fra_for_eng:S0645L01B01",
+    "seed": 645,
+    "was": {
+      "known": "I can help you",
+      "target": "je peux vous aider"
+    },
+    "duplicateOf": "fra_for_eng:S0645L01U01",
+    "reason": "bare build would duplicate marked row fra_for_eng:S0645L01U01 under a different target once marked — delete redundant bare precursor (646/spa precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0645L01B02",
+    "seed": 645,
+    "before": {
+      "known": "I can help you today",
+      "target": "je peux vous aider aujourd'hui"
+    },
+    "after": {
+      "known_text": "I can help you today madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0645L01B03",
+    "seed": 645,
+    "before": {
+      "known": "of course I can help you",
+      "target": "bien sûr je peux vous aider"
+    },
+    "after": {
+      "known_text": "of course I can help you madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare build, unique course-wide"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0645L01U03",
+    "seed": 645,
+    "before": {
+      "known": "yes I can help you",
+      "target": "oui je peux vous aider"
+    },
+    "after": {
+      "known_text": "yes I can help you madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0645L01U04",
+    "seed": 645,
+    "before": {
+      "known": "I can help you right now",
+      "target": "je peux vous aider maintenant"
+    },
+    "after": {
+      "known_text": "I can help you right now madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0645L01U05",
+    "seed": 645,
+    "before": {
+      "known": "I know I can help you",
+      "target": "je sais que je peux vous aider"
+    },
+    "after": {
+      "known_text": "I know I can help you madam",
+      "known_audio_id": null,
+      "presentation_audio_id": null
+    },
+    "reason": "known-only vocative mark on bare USE line, unique course-wide (646 U03/U05 precedent)"
   }
 ]
