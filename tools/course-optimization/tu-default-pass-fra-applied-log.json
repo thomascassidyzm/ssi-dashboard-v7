@@ -364,5 +364,41 @@
       "target1_audio_id": null,
       "target2_audio_id": null
     }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0165L01U04",
+    "seed": 165,
+    "before": {
+      "known": "do you think that's true?",
+      "target": "vous pensez que c'est vrai?"
+    },
+    "after": {
+      "target_text": "penses-tu que c'est vrai ?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
+  },
+  {
+    "action": "UPDATE_PHRASE",
+    "id": "fra_for_eng:S0165L01U07",
+    "seed": 165,
+    "before": {
+      "known": "Can you tell me if that's true?",
+      "target": "pouvez-vous me dire si c'est vrai?"
+    },
+    "after": {
+      "target_text": "peux-tu me dire si c'est vrai?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "target1_duration_ms": null,
+      "target2_duration_ms": null,
+      "presentation_audio_id": null,
+      "decomposition": null
+    }
   }
 ]
