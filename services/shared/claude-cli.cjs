@@ -12,18 +12,25 @@
 
 const { execFile } = require('child_process')
 
+// The installed `claude` CLI's own alias resolution for 'haiku' can lag
+// behind Anthropic's model retirements (seen 2026-07: CLI 2.0.8 resolved
+// 'haiku' -> retired 'claude-3-5-haiku-20241022', a 404). Pin an explicit,
+// verified-working model id instead of trusting the CLI's alias — one env
+// var to bump the next time Haiku is retired.
+const HAIKU_MODEL = process.env.CLAUDE_HAIKU_MODEL || 'claude-haiku-4-5-20251001'
+
 /**
  * Call Claude via CLI and return the text response.
  *
  * @param {string} prompt - The user message
  * @param {object} [options]
- * @param {string} [options.model='haiku'] - Model: 'haiku', 'sonnet', 'opus'
+ * @param {string} [options.model=HAIKU_MODEL] - Model: HAIKU_MODEL, 'sonnet', 'opus', or an explicit model id
  * @param {string} [options.system] - System prompt
  * @param {number} [options.timeout=120000] - Timeout in ms
  * @returns {Promise<string>} The response text
  */
 function claudeChat(prompt, options = {}) {
-  const { model = 'haiku', system, timeout = 120000 } = options
+  const { model = HAIKU_MODEL, system, timeout = 120000 } = options
 
   return new Promise((resolve, reject) => {
     const args = ['--print', '--model', model]
@@ -49,12 +56,14 @@ function claudeChat(prompt, options = {}) {
         // chunk of stdout (CLI may print partial JSON before dying) to
         // diagnose whether it's a timeout, a parse error, a rate-limit
         // response, or something else.
-        const parts = [`claude --print failed (code=${error.code}, signal=${error.signal || 'none'}, killed=${!!error.killed})`]
+        const parts = [`claude --print --model ${model} failed (code=${error.code}, signal=${error.signal || 'none'}, killed=${!!error.killed})`]
         const stderrTrim = (stderr || '').trim()
         if (stderrTrim) parts.push(`stderr: ${stderrTrim.slice(0, 800)}`)
         const stdoutTrim = (stdout || '').trim()
         if (stdoutTrim) parts.push(`stdout-head: ${stdoutTrim.slice(0, 400)}`)
-        reject(new Error(parts.join(' | ')))
+        const err = new Error(parts.join(' | '))
+        console.error(`[claude-cli] ${err.message}`)
+        reject(err)
         return
       }
       resolve(stdout.trim())
@@ -66,4 +75,4 @@ function claudeChat(prompt, options = {}) {
   })
 }
 
-module.exports = { claudeChat }
+module.exports = { claudeChat, HAIKU_MODEL }

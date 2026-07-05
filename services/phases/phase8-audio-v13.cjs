@@ -40,7 +40,7 @@ const audioProcessor = require('../audio-processor.cjs')
 const genderService = require('../gender-expansion-service.cjs')
 const genderHaikuService = require('../gender-haiku-service.cjs')
 
-const { claudeChat } = require('../shared/claude-cli.cjs')
+const { claudeChat, HAIKU_MODEL } = require('../shared/claude-cli.cjs')
 const { emitProgress } = require('../shared/emit-progress.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
@@ -179,7 +179,7 @@ Translate this pattern naturally into ${knownLangName}. Use appropriate punctuat
 Reply with ONLY the template string, nothing else.`
 
   logger.info(`Generating presentation template for ${knownLang} (${knownLangName}) via Haiku...`)
-  const template = await claudeChat(prompt, { model: 'haiku', timeout: 30000 })
+  const template = await claudeChat(prompt, { model: HAIKU_MODEL, timeout: 30000 })
 
   // Validate it contains all required placeholders
   if (!template.includes('{target_lang_name}') || !template.includes('{known}') || !template.includes('{seed}')) {

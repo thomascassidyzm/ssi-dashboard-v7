@@ -25,7 +25,7 @@
  *     atomised rows and be wasted work when the merge-and-regen happens.
  */
 
-const { claudeChat } = require('./shared/claude-cli.cjs')
+const { claudeChat, HAIKU_MODEL } = require('./shared/claude-cli.cjs')
 
 // =============================================================================
 // CONNECTOR LOCALISATION
@@ -446,7 +446,7 @@ async function generateForBatch({ courseCode, sentences }) {
   // legitimate slow generations complete instead of getting SIGTERM'd
   // with a useless 'Command failed' error.
   const raw = await claudeChat(prompt, {
-    model: process.env.EXPLAINER_MODEL || 'haiku',
+    model: process.env.EXPLAINER_MODEL || HAIKU_MODEL,
     timeout: 5 * 60 * 1000,
   })
   return parseBatchResponse(raw)
