@@ -117,32 +117,65 @@ async function fetchMissingEnglishSlots(course) {
   return { byRoleAndNormText, totalMissing }
 }
 
+const INSERT_BATCH = 200
+
+function ownedRow({ courseCode, text, language, role, voiceId, source }) {
+  return {
+    course_code: courseCode,
+    text,
+    text_normalized: normalizeForAudio(text),
+    language,
+    role,
+    voice_id: voiceId,
+    origin: 'tts',
+    s3_key: source.s3Key, // SHARED physical object — never a new copy
+    duration_ms: source.durationMs,
+    file_size_bytes: source.fileSizeBytes,
+    word_boundaries: source.wordBoundaries,
+    // text_stripped is a DB GENERATED ALWAYS column (derived from
+    // text_normalized) — Postgres rejects an explicit value for it.
+    lego_id: null,
+  }
+}
+
 /**
  * Insert-or-noop: never updates an existing row (immutability of ownership —
  * a destination course's row, once created, is not silently repointed by a
  * later run). decideCopy's SKIP_ALREADY_OWNED already prevents normal
  * re-processing; ignoreDuplicates is a second safety net against races.
  */
-async function insertOwnedRow({ courseCode, text, language, role, voiceId, source }) {
+async function insertOwnedRow(item) {
   const { error } = await supabase
     .from('course_audio')
-    .upsert({
-      course_code: courseCode,
-      text,
-      text_normalized: normalizeForAudio(text),
-      language,
-      role,
-      voice_id: voiceId,
-      origin: 'tts',
-      s3_key: source.s3Key, // SHARED physical object — never a new copy
-      duration_ms: source.durationMs,
-      file_size_bytes: source.fileSizeBytes,
-      word_boundaries: source.wordBoundaries,
-      // text_stripped is a DB GENERATED ALWAYS column (derived from
-      // text_normalized) — Postgres rejects an explicit value for it.
-      lego_id: null,
-    }, { onConflict: 'course_code,text_normalized,language,role,voice_id', ignoreDuplicates: true })
+    .upsert(ownedRow(item), { onConflict: 'course_code,text_normalized,language,role,voice_id', ignoreDuplicates: true })
   if (error) throw new Error(`insert owned row failed: ${error.message}`)
+}
+
+/**
+ * Batched upsert of many owned rows in one round trip — thousands of
+ * single-row inserts at ~1 course_audio write/request was the estate-wide
+ * apply pass's dominant cost. Falls back to per-row inserts (via
+ * insertOwnedRow) ONLY for a batch that errors, so a single bad row can't
+ * silently drop its batch-mates' successful writes and stays attributable.
+ * Returns the list of items that failed (with `.error` set on each).
+ */
+async function insertOwnedRowsBatch(items) {
+  const failed = []
+  for (let i = 0; i < items.length; i += INSERT_BATCH) {
+    const slice = items.slice(i, i + INSERT_BATCH)
+    const { error } = await supabase
+      .from('course_audio')
+      .upsert(slice.map(ownedRow), { onConflict: 'course_code,text_normalized,language,role,voice_id', ignoreDuplicates: true })
+    if (!error) continue
+    for (const item of slice) {
+      try {
+        await insertOwnedRow(item)
+      } catch (e) {
+        failed.push({ item, error: e.message })
+      }
+    }
+  }
+  return failed
 }
 
 async function run(courseCode, { apply, voiceId }) {
@@ -181,17 +214,20 @@ async function run(courseCode, { apply, voiceId }) {
   let copied = 0
   let linked = null
   if (apply) {
-    for (const d of decisions) {
-      if (d.action !== 'COPY') continue
-      try {
-        await insertOwnedRow({ courseCode, text: d.text, language: 'eng', role: d.role, voiceId, source: d.source })
-        d.applied = true
-        copied++
-      } catch (e) {
+    const toInsert = decisions.filter(d => d.action === 'COPY')
+    const items = toInsert.map(d => ({ courseCode, text: d.text, language: 'eng', role: d.role, voiceId, source: d.source }))
+    const failed = await insertOwnedRowsBatch(items)
+    const failedByKey = new Map(failed.map(f => [`${f.item.role}|${f.item.text}`, f.error]))
+    for (const d of toInsert) {
+      const failErr = failedByKey.get(`${d.role}|${d.text}`)
+      if (failErr) {
         d.action = 'ERROR'
-        d.error = e.message
+        d.error = failErr
         summary.COPY--
         summary.ERROR = (summary.ERROR || 0) + 1
+      } else {
+        d.applied = true
+        copied++
       }
     }
     if (copied > 0) {
