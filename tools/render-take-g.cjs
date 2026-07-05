@@ -3,13 +3,16 @@
  * render-take-g.cjs — render Take G: the gapped per-sentence TARGET take the
  * unified ladder slices every fusion chunk from.
  *
- * Take G = the sentence spoken by its turn's cast voice with a pause cue
- * (" … ") at every fine-unit seam — phase8's sentence-boundary cue trick
- * pushed one level down (Tom 2026-06-30 / 07-02). Any fusion window is then a
- * contiguous slice of this ONE take, internal gaps and all — chunks at every
- * rung come from ms spans, not thousands of per-chunk files. slice-take-g.cjs
- * detects the gaps afterwards and writes target_start_ms/target_end_ms into
- * atom_map_fine (code-gated: gap count must match the seam count exactly).
+ * Take G = the sentence spoken by its turn's cast voice with a PUNCTUATION-
+ * ENFORCED pause at every chunk seam (Tom 2026-07-05: the " … " cue was only
+ * honoured ~40% of the time and nondeterministically — real punctuation is
+ * what TTS voices reliably pause on). A seam that already ends with pause
+ * punctuation keeps it; a bare seam gains a comma (，for CJK). Any fusion
+ * window is then a contiguous slice of this ONE take, internal gaps and all —
+ * chunks at every rung come from ms spans, not thousands of per-chunk files.
+ * slice-take-g.cjs detects the gaps afterwards and writes
+ * target_start_ms/target_end_ms into atom_map_fine (code-gated: gap count
+ * must match the seam count exactly).
  *
  * The cued text is rebuilt by walking the ORIGINAL sentence text (unit
  * surfaces were punctuation-stripped at authoring): internal punctuation
@@ -41,8 +44,11 @@ if (!COURSE) { console.error('usage: render-take-g.cjs <course> [orders] [--dry|
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const ROLE = 'pod_take_g'
-const CUE = ' … '
 const SENTENCE_PUNCT = /[.!?…。！？]/
+// A seam whose left side already ends in pause punctuation needs nothing
+// added; a bare seam gains a comma — the pause every TTS voice honours.
+const PAUSE_PUNCT_END = /[,;:、，；：…—–]["”』」)]*$/
+const CJK_RE = /[぀-ヿ㐀-䶿一-鿿가-힯]/
 
 // ---- same grouping as the Lab / author-window-knowns ----
 function atomGroups(targetText, atoms) {
@@ -74,11 +80,13 @@ function glueGroups(rawGroups) {
 }
 
 /**
- * Rebuild the group's text with CUE at every unit seam, walking the original
- * turn text so punctuation survives. Each unit's slice runs from its own
- * match to just before the NEXT unit's match (so ", " after a unit stays with
- * it); the last unit keeps trailing text through its terminal mark.
- * Returns null when a unit can't be located (caller skips + reports).
+ * Rebuild the group's text with a punctuation-enforced pause at every chunk
+ * seam, walking the original turn text so existing punctuation survives.
+ * Each chunk's slice runs from its own match to just before the NEXT chunk's
+ * match (so ", " after a chunk stays with it); the last chunk keeps trailing
+ * text through its terminal mark. A seam already ending in pause punctuation
+ * is left alone; a bare seam gains a comma (，between CJK).
+ * Returns null when a chunk can't be located (caller skips + reports).
  */
 function cuedGroupText(turnText, group) {
   const lower = turnText.toLowerCase()
@@ -97,7 +105,14 @@ function cuedGroupText(turnText, group) {
     const stop = tail.search(/(?<=[.!?…。！？])/)
     return (stop === -1 ? tail : tail.slice(0, stop)).trim()
   })
-  return pieces.join(CUE)
+  let out = ''
+  pieces.forEach((piece, i) => {
+    if (i === 0) { out = piece; return }
+    const cjkSeam = CJK_RE.test(out[out.length - 1] || '') && CJK_RE.test(piece[0] || '')
+    if (PAUSE_PUNCT_END.test(out)) out += cjkSeam ? piece : ' ' + piece
+    else out += cjkSeam ? '，' + piece : ', ' + piece
+  })
+  return out
 }
 
 ;(async () => {

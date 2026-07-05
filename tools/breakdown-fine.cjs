@@ -43,18 +43,16 @@ function claude(prompt) {
   })
 }
 
-const RULES = `You author the FINE unit breakdown for ONE dialogue TURN — the seams where a slow, careful take of this speech will breathe for a learner.
-THE MODEL — units are natural PROSODIC units of meaning: the beats a teacher separates when saying the sentence SLOWLY to a learner. Sometimes a single word, typically 2–4 words (for Chinese/Japanese: typically 2–6 characters). This is deliberately FINER than intention-level chunking: a clause breaks into its natural speech beats.
-THE TEST for every seam: "would a careful speaker naturally pause HERE when saying this slowly?" If pausing there would sound wrong, do NOT split there. Never split inside a unit that is spoken as one breath (a fused expression, a verb and its bound particle, a measure word and its noun).
-SEAMS LOOK BOTH WAYS: the fragment on EACH side of a seam must itself be a natural beat. Never strand a bare word that merely completes the phrase before it — "početi govoriti | hrvatski" is WRONG ("hrvatski" leans back onto its verb phrase; "početi govoriti hrvatski" is ONE beat), while "s bilo kim" rightly stands because both neighbours are whole beats too. Before keeping any seam, say each side aloud alone: if either side sounds like a stub, merge it.
-DON'T SHRED — the failure mode to avoid is units too small to pause after:
-- a subject pronoun attaches to its verb phrase ("我教英语" is ONE beat, never "我 | 教英语"; "I teach English" is one beat, never "I | teach English")
-- bound particles attach to their host beat (Chinese 吗/呢/了 never stand alone; "thank you"/"谢谢你" is one beat)
-- a typical sentence yields 2–5 units; a short sentence may be a single unit. If a unit could not be glossed with a meaning a learner could USE, it is too small.
-- Punctuation breaks are MANDATORY seams; a unit NEVER spans any punctuation mark and NEVER crosses a sentence boundary (. ! ? 。 ！ ？).
-- Units must TILE each sentence IN ORDER — their surfaces, concatenated, reconstruct it exactly.
+const RULES = `You author the MOLECULAR chunk breakdown for ONE dialogue TURN — the seams where a slow, careful take of this speech will pause for a learner. A pause WILL BE SYNTHESIZED at every seam you place (the gapped TTS take inserts one), and each chunk becomes an audio slice paired with its translation — so every seam is a real, audible commitment.
+THE MODEL — chunks are MOLECULAR, not atomic (Tom 2026-07-05): breath-groups / clause-sized spans, typically 3–6 words (Chinese/Japanese: typically 4–10 characters) — "good morning Anna," | "what are you thinking" | "of doing today?" — NOT single words, NOT minimal grammar atoms. The learner should hear a chunk and feel a whole piece of the idea, while still seeing how the sentence is built from its parts.
+THE TEST for every seam: "would a careful speaker naturally pause HERE when saying this slowly — and would a comma there read naturally?" If a pause there would sound wrong, do NOT split there. Never split inside anything spoken as one breath (a fused expression, a verb and its bound particle, a measure word and its noun).
+SEAMS LOOK BOTH WAYS: the fragment on EACH side of a seam must itself be a natural beat. Never strand a bare word that merely completes or introduces a phrase — a conjunction ALWAYS attaches to the clause it introduces ("mais je ne peux pas parler" is ONE chunk, never "… mais | je ne peux pas"), a subject pronoun to its verb phrase, bound particles to their host. Before keeping any seam, say each side aloud alone: if either side sounds like a stub, merge it.
+CROSS-LANGUAGE 1:1 — each chunk's gloss must translate EXACTLY that chunk, no more and no less: no word of meaning may sit in the neighbouring chunk's gloss (if "but" is in this chunk's target, "but" belongs in THIS gloss). A learner will hear the chunk audio against exactly this gloss; any drift between them is a defect.
+- a typical sentence yields 1–3 chunks; a short sentence is ONE chunk (do not split what fits in one breath).
+- Punctuation breaks are MANDATORY seams; a chunk NEVER spans any punctuation mark and NEVER crosses a sentence boundary (. ! ? 。 ！ ？).
+- Chunks must TILE each sentence IN ORDER — their surfaces, concatenated, reconstruct it exactly.
 - Snap to the speaking-course LEGO seams below where they fit — they mark units this course's learners already own.
-- Each unit is glossed with its LITERAL/contextual meaning in natural known-language a learner instantly understands (the ACTUAL contextual sense, not a dictionary lump). Word-order of the gloss follows the TARGET's construction where that helps show how the target builds the idea.
+- Each chunk is glossed with its LITERAL/contextual meaning in natural known-language a learner instantly understands (the ACTUAL contextual sense, not a dictionary lump). Word-order of the gloss follows the TARGET's construction where that helps show how the target builds the idea.
 - Proper nouns / NAMES → source "name", gloss null.
 Output ONLY JSON: {"atoms":[{"target":"...","gloss":"... or null","source":"lego|llm|name"}]}`
 
