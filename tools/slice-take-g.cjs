@@ -41,6 +41,18 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 const NOISE = process.env.SLICE_NOISE || '-30dB'
 const MIN_SIL_S = Number(process.env.SLICE_MIN_SIL || 0.18)
 const MIN_GAP_MS = Number(process.env.SLICE_MIN_GAP_MS || 200)
+// Detection ladder (2026-07-05): xAI voices DO pause at punctuation seams —
+// but often only ~100-180ms, under the strict floor. Running only strict made
+// them look like refusers ("0 gaps") and burned re-render rolls for nothing.
+// Each group now tries strict → sensitive → last-resort before failing; env
+// overrides above pin a single tier when wanted.
+const TIERS = process.env.SLICE_NOISE
+  ? [{ noise: NOISE, minSil: MIN_SIL_S, minGap: MIN_GAP_MS }]
+  : [
+      { noise: '-30dB', minSil: 0.18, minGap: 200 },
+      { noise: '-25dB', minSil: 0.10, minGap: 110 },
+      { noise: '-22dB', minSil: 0.07, minGap: 85 },
+    ]
 const SENTENCE_PUNCT = /[.!?…。！？]/
 
 function atomGroups(targetText, atoms) {
@@ -120,9 +132,9 @@ function spansFromWordBoundaries(wb, group, durMs) {
   return paddedSpans(speech, durMs)
 }
 
-function ffSilences(file) {
+function ffSilences(file, noise = NOISE, minSil = MIN_SIL_S) {
   return new Promise((res, rej) => {
-    execFile('ffmpeg', ['-i', file, '-af', `silencedetect=noise=${NOISE}:d=${MIN_SIL_S}`, '-f', 'null', '-'],
+    execFile('ffmpeg', ['-i', file, '-af', `silencedetect=noise=${noise}:d=${minSil}`, '-f', 'null', '-'],
       { maxBuffer: 1 << 22 }, (err, _o, stderr) => {
         // ffmpeg exits 0 here; a real failure surfaces as no parseable output
         if (err && !/silencedetect/.test(stderr || '')) return rej(err)
@@ -195,22 +207,30 @@ function ffSilences(file) {
         if (!fs.existsSync(f)) await download(clip.s3_key, f)
       } catch (e) { console.log(`S${s.global_order} g${gi}: ✗ download — ${e.message.slice(0, 80)}`); failGroups++; continue }
 
-      let sil, durationMs
-      try { ({ sil, durationMs } = await ffSilences(f)) } catch (e) { console.log(`S${s.global_order} g${gi}: ✗ ffmpeg — ${e.message.slice(0, 80)}`); failGroups++; continue }
-      const dur = clip.duration_ms || durationMs
       const need = g.length - 1
-      // interior silences only (a lead-in or tail hush is not a seam)
-      const interior = sil.filter((x) => x.start > 150 && (!dur || x.end < dur - 150))
-      if (interior.length < need) {
-        console.log(`S${s.global_order} g${gi}: ✗ ${interior.length} gaps < ${need} seams (units ${g.length})`)
-        failGroups++; continue
+      // Walk the detection ladder: prefer the strict tier's confident gaps,
+      // fall to the sensitive tiers for voices that pause briefly (xAI).
+      let seams = null
+      let dur = clip.duration_ms
+      let lastInterior = 0
+      for (const tier of TIERS) {
+        let sil, durationMs
+        try { ({ sil, durationMs } = await ffSilences(f, tier.noise, tier.minSil)) } catch (e) { console.log(`S${s.global_order} g${gi}: ✗ ffmpeg — ${e.message.slice(0, 80)}`); break }
+        dur = clip.duration_ms || durationMs
+        // interior silences only (a lead-in or tail hush is not a seam)
+        const interior = sil.filter((x) => x.start > 150 && (!dur || x.end < dur - 150))
+        lastInterior = interior.length
+        if (interior.length < need) continue
+        const chosen = interior
+          .map((x) => ({ ...x, len: x.end - x.start }))
+          .sort((a, b) => b.len - a.len).slice(0, need)
+          .sort((a, b) => a.start - b.start)
+        if (chosen.some((x) => x.len < tier.minGap)) continue
+        seams = chosen
+        break
       }
-      const seams = interior
-        .map((x) => ({ ...x, len: x.end - x.start }))
-        .sort((a, b) => b.len - a.len).slice(0, need)
-        .sort((a, b) => a.start - b.start)
-      if (seams.some((x) => x.len < MIN_GAP_MS)) {
-        console.log(`S${s.global_order} g${gi}: ✗ chosen gap under ${MIN_GAP_MS}ms — not trusting the cut`)
+      if (!seams) {
+        console.log(`S${s.global_order} g${gi}: ✗ ${lastInterior} trustworthy gaps < ${need} seams at every tier (units ${g.length})`)
         failGroups++; continue
       }
       // speech stretches between seams → padded per-unit spans
