@@ -282,7 +282,7 @@
               </div>
             </div>
 
-            <!-- Generate Presentation Text Card -->
+            <!-- Introductions: authored automatically during Generate (no separate stage) -->
             <div class="bg-gradient-to-br from-surface/60 to-surface/30 border border-line/50 rounded-xl p-6">
               <div class="flex items-start justify-between mb-4">
                 <div class="flex items-center gap-3">
@@ -292,66 +292,34 @@
                     </svg>
                   </div>
                   <div>
-                    <h3 class="font-semibold text-ink">Presentation Text</h3>
-                    <p class="text-sm text-muted">Generate LEGO introduction scripts</p>
+                    <h3 class="font-semibold text-ink">Introductions</h3>
+                    <p class="text-sm text-muted">Authored automatically during Generate</p>
                   </div>
                 </div>
                 <span class="px-2 py-0.5 text-xs bg-purple-500/10 text-purple-400 rounded border border-purple-500/20">
-                  TEXT
+                  AUTO
                 </span>
               </div>
 
-              <p class="text-sm text-muted mb-4">
-                Generates introduction scripts for LEGOs that are missing presentation text. Pattern: "The Spanish for — 'I want' — as in — 'I want to speak Spanish' — is:" Context is drawn from a USE phrase or seed sentence (~15% get no context for variety).
+              <p class="text-sm text-muted mb-3">
+                Intro scripts are no longer a separate stage. When you press <strong>Generate Missing Audio</strong>,
+                each new LEGO's introduction is written from the course's frozen frame
+                ("The Spanish for — 'I want' — as in — 'I want to speak Spanish' — is:"), and an agent
+                decides per LEGO whether the "as in" context is needed to avoid ambiguity — fragments get
+                their seed sentence, self-sufficient chunks go bare.
               </p>
-
-              <!-- Action Buttons -->
-              <div class="flex gap-3">
-                <button
-                  @click="previewPresentations"
-                  :disabled="regeneratingPresentations"
-                  class="flex-1 px-4 py-2.5 bg-surface-2/50 hover:bg-surface-2 disabled:bg-surface disabled:text-faint text-ink rounded-lg transition-colors text-sm font-medium"
-                >
-                  Preview
-                </button>
-                <button
-                  @click="executePresentations"
-                  :disabled="regeneratingPresentations"
-                  class="flex-1 px-4 py-2.5 bg-purple-600 hover:bg-purple-500 disabled:bg-surface disabled:text-faint text-white rounded-lg transition-colors text-sm font-medium"
-                >
-                  {{ regeneratingPresentations ? 'Working...' : 'Generate Missing' }}
-                </button>
+              <p class="text-sm text-muted mb-2">
+                Intros are spoken by the course's known-language voice and end at "is —"; the LEGO's
+                existing target recordings play straight after.
+              </p>
+              <div v-if="progressStats.toAuthor > 0" class="mt-3 p-3 bg-canvas/50 rounded-lg border border-purple-500/20 text-sm">
+                <span class="font-semibold text-purple-400">{{ progressStats.toAuthor.toLocaleString() }}</span>
+                <span class="text-muted"> introduction(s) will be authored on the next Generate run.</span>
               </div>
-
-              <!-- Result -->
-              <div v-if="presentationsResult" class="mt-4 p-4 bg-canvas/50 rounded-lg border border-line/30">
-                <div class="flex justify-between items-center">
-                  <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 rounded-full" :class="presentationsResult.error ? 'bg-red-500' : presentationsResult.dryRun ? 'bg-purple-500' : 'bg-emerald-500'"></div>
-                    <span class="text-sm font-medium" :class="presentationsResult.error ? 'text-red-400' : presentationsResult.dryRun ? 'text-purple-400' : 'text-emerald-400'">
-                      {{ presentationsResult.error ? 'Error' : presentationsResult.dryRun ? 'Preview' : 'Complete' }}
-                    </span>
-                  </div>
-                  <div class="text-right">
-                    <span class="text-xl font-bold text-ink">{{ presentationsResult.count || presentationsResult.total || 0 }}</span>
-                    <span class="text-xs text-faint ml-1">LEGOs</span>
-                  </div>
-                </div>
-                <div v-if="presentationsResult.template" class="mt-2 text-xs text-muted">
-                  Template: <code class="text-purple-400 bg-surface px-1.5 py-0.5 rounded">{{ presentationsResult.template }}</code>
-                </div>
-                <div v-if="presentationsResult.sample" class="mt-3 space-y-1.5">
-                  <div v-for="(s, i) in presentationsResult.sample.slice(0, 2)" :key="i" class="text-xs bg-surface/50 p-2 rounded">
-                    <span class="text-amber-400">{{ s.known }}</span>
-                    <span class="text-faint mx-1">→</span>
-                    <span class="text-ink">{{ s.presentation_text }}</span>
-                  </div>
-                </div>
-                <div v-if="presentationsResult.error" class="mt-2 text-sm text-red-400">{{ presentationsResult.error }}</div>
-                <div v-if="presentationsResult.updated" class="mt-2 text-sm text-emerald-400">
-                  ✓ {{ presentationsResult.updated }} updated
-                </div>
-              </div>
+              <p class="text-xs text-faint mt-3">
+                The agent also flags suspected content errors (bad agreement, chunk/seed mismatch) —
+                flags land in content feedback and are listed after each run.
+              </p>
             </div>
           </div>
 
@@ -391,6 +359,7 @@
             :linkable="progressStats.linkable"
             :ready-for-generate="progressStats.readyForGenerate"
             :presentation-status="progressStats.presentationStatus"
+            :ledger="progressStats.ledger"
             :estimated-cost="estimatedCost"
             :estimated-time="estimatedTime"
             :loading="!statsLoaded"
@@ -470,6 +439,28 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
             </svg>
             <span class="text-teal-300 text-sm">Linked {{ linkResult.linked }} audio IDs to phrases, LEGOs and seeds</span>
+          </div>
+
+          <!-- Authoring summary: what the agent wrote + what it flagged -->
+          <div v-if="generateSummary && (generateSummary.authored > 0 || generateSummary.flags > 0)" class="mt-4 bg-gradient-to-br from-surface/80 to-surface/40 border border-purple-500/30 rounded-xl p-4">
+            <div class="flex items-center gap-3 mb-1">
+              <svg class="w-5 h-5 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <span class="text-sm text-ink">
+                <strong>{{ generateSummary.authored }}</strong> introduction(s) authored this run<span v-if="generateSummary.flags > 0"> — <strong class="text-amber-400">{{ generateSummary.flags }}</strong> content flag(s) raised</span>
+              </span>
+            </div>
+            <div v-if="generateSummary.samples?.length" class="mt-2 space-y-1.5">
+              <div v-for="(f, i) in generateSummary.samples" :key="i" class="text-xs bg-surface/50 p-2 rounded">
+                <span class="text-amber-400">{{ f.lego_id || `phrase ${f.phrase_id}` }}</span>
+                <span class="text-faint mx-1">·</span>
+                <span class="text-muted">'{{ f.chunk }}'</span>
+                <span class="text-faint mx-1">—</span>
+                <span class="text-ink">{{ f.issue }}</span>
+              </div>
+              <p class="text-[11px] text-faint">Flags are recorded in content feedback for review — the audio was still generated faithfully.</p>
+            </div>
           </div>
 
           <!-- Plan Results Display -->
@@ -601,8 +592,6 @@ const regenerating = ref(false)
 const regenerateResult = ref<any>(null)
 
 // Regenerate presentations state
-const regeneratingPresentations = ref(false)
-const presentationsResult = ref<any>(null)
 
 // Plan/dry run state (kept for plan panel compatibility)
 const planResult = ref<any>(null)
@@ -614,6 +603,7 @@ const statsLoaded = ref(false)  // Track if pipeline stats have loaded
 const startingGeneration = ref(false)
 const refreshingStats = ref(false)
 const linkResult = ref<{ linked: number } | null>(null)
+const generateSummary = ref<{ authored: number; flags: number; samples: Array<{ lego_id: string | null; phrase_id: string | null; chunk: string; issue: string }> } | null>(null)
 
 // Concurrency control (1-20, stored in localStorage, default 20 for paid Azure tier)
 const concurrency = ref(parseInt(localStorage.getItem('audio_concurrency') || '20', 10))
@@ -874,6 +864,13 @@ const startGeneration = async () => {
   try {
     // Always call generate - even with 0 missing, it links audio IDs to phrases
     const result = await productionStore.startGeneration(courseCode.value, { concurrency: concurrency.value })
+    if (result && (result.authored > 0 || result.authorFlags > 0)) {
+      generateSummary.value = {
+        authored: result.authored || 0,
+        flags: result.authorFlags || 0,
+        samples: result.authorFlagSamples || []
+      }
+    }
     if (result?.linked > 0) {
       linkResult.value = { linked: result.linked }
       setTimeout(() => { linkResult.value = null }, 10000)
@@ -1045,70 +1042,9 @@ const executeRegenerate = async () => {
   }
 }
 
-// Presentation text regeneration functions
-const previewPresentations = async () => {
-  regeneratingPresentations.value = true
-  presentationsResult.value = null
-
-  try {
-    const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-presentations/${courseCode.value}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({
-        dryRun: true
-      })
-    })
-
-    const data = await response.json()
-    if (!response.ok) {
-      presentationsResult.value = { error: data.error || 'Preview failed' }
-    } else {
-      presentationsResult.value = data
-    }
-  } catch (err: any) {
-    presentationsResult.value = { error: err.message }
-  } finally {
-    regeneratingPresentations.value = false
-  }
-}
-
-const executePresentations = async () => {
-  const confirmed = confirm(
-    `This will generate presentation text for LEGOs that are missing it in ${courseCode.value}.\n\n` +
-    `Continue?`
-  )
-  if (!confirmed) return
-
-  regeneratingPresentations.value = true
-  presentationsResult.value = null
-
-  try {
-    const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-presentations/${courseCode.value}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({
-        dryRun: false
-      })
-    })
-
-    const data = await response.json()
-    if (!response.ok) {
-      presentationsResult.value = { error: data.error || 'Update failed' }
-    } else {
-      presentationsResult.value = data
-    }
-  } catch (err: any) {
-    presentationsResult.value = { error: err.message }
-  } finally {
-    regeneratingPresentations.value = false
-  }
-}
+// The separate presentation-text stage is gone: /generate authors intro
+// scripts itself (frozen frame + context judgment) — see the Introductions
+// card above and docs/presentation-authoring-redesign.md.
 </script>
 
 <style scoped>

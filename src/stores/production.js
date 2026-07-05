@@ -193,7 +193,7 @@ export const useProductionStore = defineStore('production', () => {
       const generated = generationQueue.value.filter(item => item.status === 'complete').length
       const failed = generationQueue.value.filter(item => item.status === 'failed').length
       const pending = generationQueue.value.filter(item => item.status === 'queued').length
-      return { total, generated, failed, pending, linkable: 0, readyForGenerate: true }
+      return { total, generated, failed, pending, linkable: 0, readyForGenerate: true, ledger: null }
     }
 
     // Otherwise use database counts from audioCourseStats
@@ -209,6 +209,9 @@ export const useProductionStore = defineStore('production', () => {
       // Default to true if the field is missing (back-compat with older API responses)
       readyForGenerate: stats.readyForGenerate !== false,
       presentationStatus: stats.presentationStatus || null,
+      // Slot ledger (present once the backend redeploy lands; null = legacy view)
+      ledger: stats.ledger || null,
+      toAuthor: stats.toAuthor || 0,
       failed: 0  // Not tracked in simple stats
     }
   })

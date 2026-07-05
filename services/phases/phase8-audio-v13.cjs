@@ -41,6 +41,7 @@ const genderService = require('../gender-expansion-service.cjs')
 const genderHaikuService = require('../gender-haiku-service.cjs')
 
 const { claudeChat, HAIKU_MODEL } = require('../shared/claude-cli.cjs')
+const presentationAuthor = require('./presentation-author.cjs')
 const { emitProgress } = require('../shared/emit-progress.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
@@ -112,6 +113,10 @@ const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 // Uses Intl.DisplayNames (488 languages via CLDR) with language-code-service fallback.
 // No hardcoded maps — adding a new language Just Works.
 function getLocalisedLangName(targetLang, knownLang) {
+  // English known-side: use the house names from the CSV (e.g. "Bengali"),
+  // not CLDR's variants ("Bangla") — intros must match how the courses brand
+  // their languages.
+  if (knownLang === 'eng') return getLangEnglishName(targetLang)
   try {
     const target2 = databaseToManifest(targetLang) // 3-letter → 2-letter for Intl API
     const known2 = databaseToManifest(knownLang)
@@ -134,80 +139,10 @@ const normalizeText = normalizeForAudio
  * @param {string} knownLang - ISO 639-3 language code for the known language
  * @returns {Promise<string>} The presentation template string
  */
-async function getOrCreatePresentationTemplate(knownLang) {
-  // 1. Check DB for existing template
-  const { data: existing } = await supabase
-    .from('presentation_templates')
-    .select('template')
-    .eq('known_lang', knownLang)
-    .eq('is_active', true)
-    .order('priority', { ascending: false })
-    .limit(1)
-
-  if (existing?.[0]?.template) {
-    return existing[0].template
-  }
-
-  // 2. Load example templates to show Haiku the pattern
-  const { data: examples } = await supabase
-    .from('presentation_templates')
-    .select('known_lang, template')
-    .eq('is_active', true)
-    .order('known_lang')
-
-  const knownLangName = getLocalisedLangName(knownLang, 'eng')
-
-  const exampleBlock = (examples || [])
-    .map(e => `${e.known_lang}: ${e.template}`)
-    .join('\n')
-
-  const prompt = `You are a translation expert. Generate a presentation template for introducing language LEGOs (vocabulary items) to learners whose known language is ${knownLangName} (${knownLang}).
-
-The template MUST be written entirely in ${knownLangName}. It introduces a target language word/phrase to the learner.
-
-It must contain exactly these three placeholders (keep them as-is, do not translate them):
-- {target_lang_name} — will be replaced with the name of the target language in ${knownLangName}
-- {known} — will be replaced with the word/phrase in the learner's known language
-- {seed} — will be replaced with a context sentence in the learner's known language
-
-Here are working examples in other languages:
-${exampleBlock}
-
-The pattern is: "[target_lang_name] [for] — '{known}' — [as in] — '{seed}' — [is]:"
-Translate this pattern naturally into ${knownLangName}. Use appropriate punctuation for ${knownLangName}.
-
-Reply with ONLY the template string, nothing else.`
-
-  logger.info(`Generating presentation template for ${knownLang} (${knownLangName}) via Haiku...`)
-  const template = await claudeChat(prompt, { model: HAIKU_MODEL, timeout: 30000 })
-
-  // Validate it contains all required placeholders
-  if (!template.includes('{target_lang_name}') || !template.includes('{known}') || !template.includes('{seed}')) {
-    logger.error(`Generated template for ${knownLang} is missing placeholders: "${template}"`)
-    // Fall back to a simple universal pattern
-    const fallback = `{target_lang_name} — '{known}' — '{seed}' —:`
-    logger.warn(`Using minimal fallback template for ${knownLang}`)
-    return fallback
-  }
-
-  // 3. Cache in DB for future use
-  const { error: insertError } = await supabase
-    .from('presentation_templates')
-    .insert({
-      template: template.trim(),
-      known_lang: knownLang,
-      priority: 5, // Lower than hand-verified (10)
-      is_active: true
-    })
-
-  if (insertError) {
-    logger.warn(`Failed to cache template for ${knownLang}: ${insertError.message}`)
-  } else {
-    logger.info(`Cached new presentation template for ${knownLang}: "${template.trim()}"`)
-  }
-
-  return template.trim()
-}
+// Presentation template lookup/creation lives in presentation-author.cjs now
+// (shared with the one-button authoring path). Same behaviour, same cache.
+const getOrCreatePresentationTemplate = (knownLang) =>
+  presentationAuthor.getOrCreatePresentationTemplate(supabase, knownLang, getLocalisedLangName(knownLang, 'eng'))
 
 // Punctuation-only filter (single source of truth, shared with production-api)
 const { isPunctuationOnly } = require('../shared/text-classification.cjs')
@@ -565,7 +500,7 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
   // Also check presentation audio (uses lego_id, not text matching)
   let newLegosQuery = supabase
     .from('course_legos')
-    .select('lego_id, known_text, presentation_audio_id')
+    .select('lego_id, known_text, target_text, seed_number, presentation_audio_id')
     .eq('course_code', courseCode)
     .eq('is_new', true)
     .lte('seed_number', releaseTarget)
@@ -580,10 +515,81 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
   const legoIdsWithPresentation = new Set(
     (rawPresentations || []).filter(p => !p.s3_key || !p.s3_key.startsWith('pending/')).map(p => p.lego_id).filter(Boolean)
   )
+  // Intros needing NEW text (no FK, no real audio row, no pending text row):
+  // authored (frame judgment) inside /generate — no separate stage. Legos that
+  // still carry a pending/% text row are covered by Step 3 below until the
+  // pending-row purge; don't double-author them.
+  const legoIdsWithPendingPres = new Set(
+    (rawPresentations || []).filter(p => p.s3_key && p.s3_key.startsWith('pending/')).map(p => p.lego_id).filter(Boolean)
+  )
   let missingPresentation = 0
+  const toAuthor = []
   for (const lego of (newLegos || [])) {
     if (!lego.presentation_audio_id && !legoIdsWithPresentation.has(lego.lego_id)) {
       missingPresentation++
+      if (!legoIdsWithPendingPres.has(lego.lego_id) && !isPunctuationOnly(lego.known_text)) {
+        toAuthor.push({
+          lego_id: lego.lego_id,
+          chunk: lego.known_text,
+          form: lego.target_text,
+          seed_number: lego.seed_number
+        })
+      }
+    }
+  }
+  // Frame-B context = the parent seed sentence
+  const authorSeedNums = [...new Set(toAuthor.map(t => t.seed_number).filter(n => n != null))]
+  if (authorSeedNums.length) {
+    const seedTexts = new Map()
+    for (let i = 0; i < authorSeedNums.length; i += 200) {
+      const { data: seedRows } = await supabase
+        .from('course_seeds')
+        .select('seed_number, known_text')
+        .eq('course_code', courseCode)
+        .in('seed_number', authorSeedNums.slice(i, i + 200))
+      for (const r of (seedRows || [])) seedTexts.set(r.seed_number, r.known_text)
+    }
+    for (const t of toAuthor) t.seed = seedTexts.get(t.seed_number) || null
+  }
+
+  // Component intros (introduce:true only — particles are never introduced
+  // alone). Authored only when no pending component text rows exist; while
+  // they do (pre-purge transition), Step 3 already carries those texts.
+  let componentIntroSlots = 0
+  const pendingComponentRows = (rawPresentations || [])
+    .filter(p => p.s3_key && p.s3_key.startsWith('pending/') && !p.lego_id).length
+  if (pendingComponentRows === 0) {
+    let compQ = supabase
+      .from('course_practice_phrases')
+      .select('id, known_text, target_text, lego_id, seed_number')
+      .eq('course_code', courseCode)
+      .eq('phrase_role', 'component')
+      .eq('introduce', true)
+      .is('presentation_audio_id', null)
+      .lte('seed_number', releaseTarget)
+    if (scopeSeeds) compQ = compQ.in('seed_number', scopeSeeds)
+    const { data: compRows } = await compQ
+    componentIntroSlots = (compRows || []).length
+    const parentIds = [...new Set((compRows || []).map(c => c.lego_id).filter(Boolean))]
+    const parentKnown = new Map()
+    for (let i = 0; i < parentIds.length; i += 200) {
+      const { data: parents } = await supabase
+        .from('course_legos')
+        .select('lego_id, known_text')
+        .eq('course_code', courseCode)
+        .in('lego_id', parentIds.slice(i, i + 200))
+      for (const p of (parents || [])) parentKnown.set(p.lego_id, p.known_text)
+    }
+    for (const c of (compRows || [])) {
+      if (isPunctuationOnly(c.known_text)) continue
+      toAuthor.push({
+        phrase_id: c.id,
+        lego_id: null,
+        chunk: c.known_text,
+        form: c.target_text,
+        seed: parentKnown.get(c.lego_id) || null,
+        seed_number: c.seed_number
+      })
     }
   }
 
@@ -665,9 +671,37 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     ? { toGenerate: dedupedToGenerate, toCopy: [] }
     : await classifyEnglishCopyBucket(courseCode, course, dedupedToGenerate)
 
-  // Step 5: Check whether presentation text generation has been run.
-  // /generate will refuse to run if not ready (no on-the-fly text synthesis any more).
+  // Step 5: presentation readiness is informational only now — /generate
+  // authors missing intro text itself (frame judgment), so nothing gates on
+  // a separate text stage any more.
   const presentationStatus = await checkPresentationReadiness(courseCode, releaseTarget, scopeSeeds)
+
+  // Slot ledger — row counts in learner-noticeable units (slots), alongside
+  // the deduped work-item counts the Generate button acts on. One unit per
+  // number; the old Total/Generated/Pending mixed all three.
+  let contentSlotRows = 0
+  for (const slot of slotDefs) {
+    let cq = supabase
+      .from(slot.table)
+      .select('id', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .lte('seed_number', releaseTarget)
+    if (slot.statusFilter) cq = cq.eq('status', slot.statusFilter)
+    if (scopeSeeds) cq = cq.in('seed_number', scopeSeeds)
+    const { count } = await cq
+    contentSlotRows += (count || 0)
+  }
+  const introSlots = (newLegos || []).length + componentIntroSlots
+  const inScopeSlots = contentSlotRows + introSlots
+  const ledger = {
+    inScope: inScopeSlots,
+    linked: Math.max(0, inScopeSlots - unlinked.length - ungeneratable - missingPresentation - componentIntroSlots),
+    linkable: toLinkCount,
+    ttsJobs: uniqueToGenerate.length + toAuthor.length,
+    toAuthor: toAuthor.length,
+    copyJobs: toCopy.length,
+    ungeneratable
+  }
 
   const totalMissing = unlinked.length + missingPresentation
   const stats = {
@@ -677,8 +711,10 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     toLink: toLinkCount,
     toGenerate: uniqueToGenerate.length,
     toCopy: toCopy.length,
+    toAuthor: toAuthor.length,
     missingPresentation,
     ungeneratable,
+    ledger,
     breakdown: {
       known: unlinked.filter(u => u.role === 'known').length,
       target1: unlinked.filter(u => u.role === 'target1').length,
@@ -687,14 +723,16 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     }
   }
 
-  logger.info(`getAudioNeeds(${courseCode}): ${totalMissing} missing (${toLinkCount} to link, ${uniqueToGenerate.length} to generate, ${toCopy.length} to copy, ${ungeneratable} ungeneratable, presentations ready: ${presentationStatus.ready})`)
+  logger.info(`getAudioNeeds(${courseCode}): ${totalMissing} missing (${toLinkCount} to link, ${uniqueToGenerate.length} to generate, ${toAuthor.length} to author, ${toCopy.length} to copy, ${ungeneratable} ungeneratable)`)
 
   return {
     toLink: toLinkCount,
     toCopy,
     toGenerate: uniqueToGenerate,
+    toAuthor,
     stats,
-    readyForGenerate: presentationStatus.ready,
+    // The text stage is folded into /generate — never gate on it again.
+    readyForGenerate: true,
     presentationStatus
   }
 }
@@ -1277,6 +1315,7 @@ app.get('/needs/:courseCode', async (req, res) => {
       courseCode,
       releaseTarget,
       toGenerate: needs.toGenerate.length,
+      toAuthor: needs.toAuthor.length,
       toLink: needs.toLink,
       ungeneratable: needs.stats.ungeneratable,
       missingPresentation: needs.stats.missingPresentation,
@@ -1284,6 +1323,7 @@ app.get('/needs/:courseCode', async (req, res) => {
       existing: needs.stats.existing,
       missing: needs.stats.missing,
       breakdown: needs.stats.breakdown,
+      ledger: needs.stats.ledger,
       readyForGenerate: needs.readyForGenerate,
       presentationStatus: needs.presentationStatus
     })
@@ -1333,7 +1373,11 @@ async function planHandler(req, res) {
     const audioNeeds = await getAudioNeeds(courseCode, releaseTarget, course, false, scopeSeeds && scopeSeeds.length ? scopeSeeds : null)
 
     // Cost estimation — character count of what would actually be TTS'd.
-    const totalChars = audioNeeds.toGenerate.reduce((sum, n) => sum + (n.text || '').length, 0)
+    // toAuthor items have no rendered text yet (authored inside /generate);
+    // estimate frame overhead + chunk + optional seed context per item.
+    const authorChars = (audioNeeds.toAuthor || []).reduce(
+      (sum, n) => sum + 60 + (n.chunk || '').length + (n.seed || '').length, 0)
+    const totalChars = audioNeeds.toGenerate.reduce((sum, n) => sum + (n.text || '').length, 0) + authorChars
     const estimatedCost = (totalChars / 1000) * 0.016
 
     // Unique-text counts for display (counts unique known-side and target-side
@@ -1381,8 +1425,11 @@ async function planHandler(req, res) {
         targetLang: course.target_lang,
         voiceConfig: course.voice_config
       },
-      // Truth: missing = what /generate will TTS (= toGenerate.length)
-      missing: audioNeeds.toGenerate.length,
+      // Truth: missing = what /generate will TTS (existing texts + intros it
+      // will author itself in the same run)
+      missing: audioNeeds.toGenerate.length + (audioNeeds.toAuthor?.length || 0),
+      // Intros /generate will author (frame judgment) before TTS-ing them
+      toAuthor: audioNeeds.toAuthor?.length || 0,
       // Free: rows whose audio already exists, just need the audio_id binding
       linkable: audioNeeds.toLink,
       // Clone once, copy everywhere: known-side items /generate will S3-copy
@@ -1401,7 +1448,8 @@ async function planHandler(req, res) {
       ungeneratable: audioNeeds.stats.ungeneratable,
       readyForGenerate: audioNeeds.readyForGenerate,
       presentationStatus: audioNeeds.presentationStatus,
-      breakdown: audioNeeds.stats.breakdown
+      breakdown: audioNeeds.stats.breakdown,
+      ledger: audioNeeds.stats.ledger
     })
   } catch (error) {
     logger.error('Plan error:', error)
@@ -1505,19 +1553,32 @@ app.post('/generate/:courseCode', async (req, res) => {
     // Step B: Find what still needs generating (after linking)
     const audioNeeds = await getAudioNeeds(courseCode, releaseTarget, course, false, scopeSeeds)
 
-    // Step B0: Guard — refuse to run if presentation text isn't ready.
-    // Presentation text is created by /regenerate-presentations (the dashboard's
-    // "Generate Missing Presentation Text" button). /generate no longer invents
-    // presentation text on the fly — caller must run that step first.
-    if (!audioNeeds.readyForGenerate && !req.body?.skipPresentationGuard) {
-      const ps = audioNeeds.presentationStatus
-      logger.warn(`/generate refused: presentation text not ready (${ps.totalMissing} missing — ${ps.missingLegoPresentations} LEGO + ${ps.missingComponentPresentations} component)`)
-      return res.status(412).json({
-        error: 'Presentation text not ready',
-        needsPresentationStep: true,
-        message: `${ps.totalMissing} presentation text(s) missing. Run "Generate Missing Presentation Text" first.`,
-        ...ps
+    // Step B0: Author missing introduction text inline (frozen frame +
+    // context judgment via Sonnet on the CLI). This replaces the separate
+    // "Generate Missing Presentation Text" stage and its readiness gate —
+    // one button does author → TTS → bind. dryRun authors nothing (no CLI
+    // spend); it reports what WOULD be authored.
+    let authoredIntros = []
+    let authorFlags = []
+    if (!dryRun && audioNeeds.toAuthor?.length) {
+      const template = await getOrCreatePresentationTemplate(course.known_lang)
+      const targetLangName = getLocalisedLangName(course.target_lang, course.known_lang)
+      const knownLangName = getLocalisedLangName(course.known_lang, 'eng')
+      emitProgress(supabase, courseCode, `Authoring ${audioNeeds.toAuthor.length} introductions (frame judgment)…`, { phase: 'audio', action: 'author', total: audioNeeds.toAuthor.length })
+      const authored = await presentationAuthor.authorPresentations(supabase, course, audioNeeds.toAuthor, {
+        template,
+        targetLangName,
+        knownLangName,
+        onProgress: (done, total) => logger.info(`Authoring intros: ${done}/${total}`)
       })
+      authoredIntros = authored.authored
+      authorFlags = authored.flags
+      if (authorFlags.length) {
+        await presentationAuthor.recordAuthorFlags(supabase, courseCode, authorFlags)
+        emitProgress(supabase, courseCode, `Author flagged ${authorFlags.length} possible content issue(s) — see content feedback`, { phase: 'audio', action: 'author-flags', count: authorFlags.length })
+      }
+      const bCount = authoredIntros.filter(a => a.frame === 'B').length
+      emitProgress(supabase, courseCode, `Authored ${authoredIntros.length} introductions (${bCount} with context, ${authoredIntros.length - bCount} bare)`, { phase: 'audio', action: 'authored', total: authoredIntros.length })
     }
 
     // Step B2: If items are "linkable" but nothing actually linked (link step ran
@@ -1548,13 +1609,30 @@ app.post('/generate/:courseCode', async (req, res) => {
     // role determines the voice. Don't trust item.voice_id from pending rows;
     // some flows store it without the provider prefix (e.g. "pt-PT-RaquelNeural"
     // instead of "azure_pt-PT-RaquelNeural"), which breaks TTS dispatch.
+    // Presentations get the dedicated resolver: explicit config wins, then
+    // the English clone for eng-known courses, then the known-role voice —
+    // so courses without voices.presentation no longer fail those items.
+    const presentationVoiceId = presentationAuthor.resolvePresentationVoiceId(course)
     const needed = audioNeeds.toGenerate.map(item => ({
       ...item,
-      voiceId: getVoiceForRole(item.role),
+      voiceId: item.role === 'presentation' ? presentationVoiceId : getVoiceForRole(item.role),
       speed: getSpeedForRole(item.role)
     }))
 
-    logger.info(`Audio needs: ${audioNeeds.stats.missing} missing total, ${audioNeeds.toLink} linkable, ${audioNeeds.toGenerate.length} need TTS`)
+    // Freshly authored intros join the same TTS queue
+    for (const a of authoredIntros) {
+      needed.push({
+        text: a.text,
+        language: course.known_lang,
+        role: 'presentation',
+        lego_id: a.lego_id || null,
+        phrase_id: a.phrase_id || null,
+        voiceId: presentationVoiceId,
+        speed: getSpeedForRole('presentation')
+      })
+    }
+
+    logger.info(`Audio needs: ${audioNeeds.stats.missing} missing total, ${audioNeeds.toLink} linkable, ${audioNeeds.toGenerate.length} need TTS, ${authoredIntros.length} freshly authored`)
 
 
     // Filter by requested roles if specified (e.g. roles: ['known', 'presentation'])
@@ -1567,10 +1645,13 @@ app.post('/generate/:courseCode', async (req, res) => {
       needed.push(...filtered)
     }
 
-    // Deduplicate using normalizeText for consistent keys (matches existingSet logic)
+    // Deduplicate using normalizeText for consistent keys (matches existingSet logic).
+    // Presentation items keep their bind target in the key — two intros can
+    // render identical text for different LEGOs/components, and collapsing
+    // them would silently drop one of the FK binds.
     logger.info(`Before dedup: ${needed.length} items (known=${needed.filter(n=>n.role==='known').length}, target1=${needed.filter(n=>n.role==='target1').length}, target2=${needed.filter(n=>n.role==='target2').length}, presentation=${needed.filter(n=>n.role==='presentation').length})`)
     const uniqueNeeded = [...new Map(
-      needed.map(n => [`${normalizeText(n.text)}|${n.language}|${n.role}`, n])
+      needed.map(n => [`${normalizeText(n.text)}|${n.language}|${n.role}${n.role === 'presentation' ? `|${n.lego_id || n.phrase_id || ''}` : ''}`, n])
     ).values()].slice(0, limit)
     logger.info(`After dedup: ${uniqueNeeded.length} unique items`)
 
@@ -1584,9 +1665,11 @@ app.post('/generate/:courseCode', async (req, res) => {
     if (dryRun) {
       return res.json({
         dryRun: true,
-        wouldGenerate: uniqueNeeded.length,
+        wouldGenerate: uniqueNeeded.length + (audioNeeds.toAuthor?.length || 0),
+        wouldAuthor: audioNeeds.toAuthor?.length || 0,
         wouldCopy: audioNeeds.toCopy?.length || 0,
-        samples: uniqueNeeded.slice(0, 10)
+        samples: uniqueNeeded.slice(0, 10),
+        authorSamples: (audioNeeds.toAuthor || []).slice(0, 5)
       })
     }
 
@@ -1603,6 +1686,47 @@ app.post('/generate/:courseCode', async (req, res) => {
     logger.info(`Generating ${uniqueNeeded.length} audio files with concurrency=${concurrencyToUse}`)
 
     const results = { success: 0, failed: 0, errors: [] }
+
+    // Bind presentation audio to its consumers: the course_legos FK AND the
+    // lego_introductions projection (both read live by the learning app —
+    // cycles.ts reads the FK, useScriptCache reads lego_introductions), or
+    // the component phrase FK. One helper so the projections never diverge.
+    const bindPresentationAudio = async (item, audioRowId, durationMs) => {
+      if (item.lego_id) {
+        const legoMatch = item.lego_id.match(/S(\d+)L(\d+)/)
+        if (legoMatch) {
+          const { error: updateError } = await supabase
+            .from('course_legos')
+            .update({ presentation_audio_id: audioRowId })
+            .eq('course_code', courseCode)
+            .eq('seed_number', parseInt(legoMatch[1], 10))
+            .eq('lego_index', parseInt(legoMatch[2], 10))
+          if (updateError) {
+            logger.warn(`Could not update course_legos.presentation_audio_id for ${item.lego_id}: ${updateError.message}`)
+          }
+        }
+        const { error: introError } = await supabase
+          .from('lego_introductions')
+          .upsert({
+            course_code: courseCode,
+            lego_id: item.lego_id,
+            presentation_audio_id: audioRowId,
+            audio_uuid: audioRowId,
+            ...(durationMs ? { duration_ms: durationMs } : {})
+          }, { onConflict: 'course_code,lego_id', ignoreDuplicates: false })
+        if (introError) {
+          logger.warn(`Could not upsert lego_introductions for ${item.lego_id}: ${introError.message}`)
+        }
+      } else if (item.phrase_id) {
+        const { error: phraseError } = await supabase
+          .from('course_practice_phrases')
+          .update({ presentation_audio_id: audioRowId })
+          .eq('id', item.phrase_id)
+        if (phraseError) {
+          logger.warn(`Could not update phrase presentation_audio_id (${item.phrase_id}): ${phraseError.message}`)
+        }
+      }
+    }
 
     // Helper to generate a single audio item
     const generateItem = async (item) => {
@@ -1663,17 +1787,9 @@ app.post('/generate/:courseCode', async (req, res) => {
             .single()
 
           if (!insertError && insertedAudio) {
-            // Link presentation audio if needed
-            if (item.role === 'presentation' && item.lego_id && insertedAudio.id) {
-              const legoMatch = item.lego_id.match(/S(\d+)L(\d+)/)
-              if (legoMatch) {
-                await supabase
-                  .from('course_legos')
-                  .update({ presentation_audio_id: insertedAudio.id })
-                  .eq('course_code', courseCode)
-                  .eq('seed_number', parseInt(legoMatch[1], 10))
-                  .eq('lego_index', parseInt(legoMatch[2], 10))
-              }
+            // Link presentation audio if needed (FK + lego_introductions)
+            if (item.role === 'presentation' && insertedAudio.id) {
+              await bindPresentationAudio(item, insertedAudio.id, siblingAudio.duration_ms)
             }
             updateWork(item.text, true)
             logger.info(`Shared: ${item.role} - "${item.text.substring(0, 40)}..." (reused from sibling course)`)
@@ -1776,28 +1892,11 @@ app.post('/generate/:courseCode', async (req, res) => {
 
       if (insertError) throw insertError
 
-      // For presentation audio, immediately link to course_legos using the ID we just got
-      // NO separate query needed - use insertedAudio.id directly
-      if (item.role === 'presentation' && item.lego_id && insertedAudio?.id) {
-        // Parse lego_id (e.g., "S0001L03") to get seed_number and lego_index
-        const legoMatch = item.lego_id.match(/S(\d+)L(\d+)/)
-        if (legoMatch) {
-          const seedNumber = parseInt(legoMatch[1], 10)
-          const legoIndex = parseInt(legoMatch[2], 10)
-
-          const { error: updateError } = await supabase
-            .from('course_legos')
-            .update({ presentation_audio_id: insertedAudio.id })
-            .eq('course_code', courseCode)
-            .eq('seed_number', seedNumber)
-            .eq('lego_index', legoIndex)
-
-          if (updateError) {
-            logger.warn(`Could not update course_legos.presentation_audio_id for ${item.lego_id}: ${updateError.message}`)
-          } else {
-            logger.info(`Linked presentation audio ${insertedAudio.id} to ${item.lego_id}`)
-          }
-        }
+      // For presentation audio, immediately bind to its consumers using the
+      // ID we just got (course_legos FK + lego_introductions, or phrase FK)
+      if (item.role === 'presentation' && insertedAudio?.id) {
+        await bindPresentationAudio(item, insertedAudio.id, durationMs)
+        logger.info(`Bound presentation audio ${insertedAudio.id} to ${item.lego_id || `phrase ${item.phrase_id}`}`)
       }
 
       updateWork(item.text, true)
@@ -1899,7 +1998,15 @@ app.post('/generate/:courseCode', async (req, res) => {
       errors: results.errors.slice(0, 10),
       linked,
       copied: copyBucketResult.copied,
-      copyFailed: copyBucketResult.failed
+      copyFailed: copyBucketResult.failed,
+      authored: authoredIntros.length,
+      authorFlags: authorFlags.length,
+      authorFlagSamples: authorFlags.slice(0, 10).map(f => ({
+        lego_id: f.lego_id || null,
+        phrase_id: f.phrase_id || null,
+        chunk: f.chunk,
+        issue: f.issue
+      }))
     })
 
   } catch (error) {
