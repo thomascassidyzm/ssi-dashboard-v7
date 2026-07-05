@@ -45,9 +45,11 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 
 const ROLE = 'pod_take_g'
 const SENTENCE_PUNCT = /[.!?…。！？]/
-// A seam whose left side already ends in pause punctuation needs nothing
-// added; a bare seam gains a comma — the pause every TTS voice honours.
-const PAUSE_PUNCT_END = /[,;:、，；：…—–]["”』」)]*$/
+// A seam whose left side already ends in ANY pause-forcing punctuation
+// (comma-class or sentence-terminal — a glued interjection ends in ! or .)
+// needs nothing added; a bare seam gains a comma — the pause every TTS
+// voice honours.
+const PAUSE_PUNCT_END = /[,;:、，；：…—–.!?。！？]["”』」)]*$/
 const CJK_RE = /[぀-ヿ㐀-䶿一-鿿가-힯]/
 
 // ---- same grouping as the Lab / author-window-knowns ----
