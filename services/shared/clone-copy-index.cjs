@@ -21,7 +21,7 @@ const { computeAudioKey, isTrusted1xEngine } = require('./clone-copy-match.cjs')
 
 const PAGE = 2000
 const MAX_RETRIES = 3
-const TEXT_CHUNK = 200 // course_audio has no index on voice_id alone; chunking by an IN-list on text_normalized keeps every query on the (text_normalized, language) index regardless of table size (1.7M+ rows)
+const TEXT_CHUNK = 80 // course_audio has no index on voice_id alone; chunking by an IN-list on text_normalized keeps every query on the (text_normalized, language) index regardless of table size (1.7M+ rows). Kept small: some long-text chunks near 200 items triggered UND_ERR_HEADERS_OVERFLOW (the querystring gets echoed back in PostgREST's response on certain errors).
 
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)) }
 
@@ -41,13 +41,23 @@ async function getEngineForVoice(supabase, voiceId) {
   return data?.tts_engine || null
 }
 
-async function fetchRowsWithRetry(query) {
-  let data, error
+async function fetchRowsWithRetry(buildQuery) {
+  // buildQuery is a factory (fresh builder per attempt) not a builder — a
+  // Supabase PostgrestBuilder is a one-shot thenable, so re-awaiting the
+  // SAME instance on retry silently returns/repeats its first result rather
+  // than re-issuing the request. Also catches thrown network errors (e.g.
+  // 'fetch failed'), not just the { error } shape Postgrest returns.
+  let lastErrMessage
   for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
-    ;({ data, error } = await query)
-    if (!error) return data
-    if (attempt === MAX_RETRIES) throw new Error(`course_audio source index: ${error.message}`)
-    await sleep(500 * (attempt + 1)) // transient DB load (statement timeout) — backoff and retry
+    try {
+      const { data, error } = await buildQuery()
+      if (!error) return data
+      lastErrMessage = error.message
+    } catch (e) {
+      lastErrMessage = e.message
+    }
+    if (attempt === MAX_RETRIES) throw new Error(`course_audio source index: ${lastErrMessage}`)
+    await sleep(500 * (attempt + 1)) // transient DB/network failure — backoff and retry
   }
 }
 
@@ -108,7 +118,7 @@ async function buildSourceIndex(supabase, { voiceId, language, texts = null }) {
     rows = []
     for (const textChunk of chunk([...new Set(texts)], TEXT_CHUNK)) {
       if (!textChunk.length) continue
-      const data = await fetchRowsWithRetry(
+      const data = await fetchRowsWithRetry(() =>
         supabase.from('course_audio').select(SELECT_COLS)
           .eq('voice_id', voiceId).eq('language', language)
           .in('text_normalized', textChunk)
@@ -119,7 +129,7 @@ async function buildSourceIndex(supabase, { voiceId, language, texts = null }) {
     rows = []
     let offset = 0
     while (true) {
-      const data = await fetchRowsWithRetry(
+      const data = await fetchRowsWithRetry(() =>
         supabase.from('course_audio').select(SELECT_COLS)
           .eq('voice_id', voiceId).eq('language', language)
           .range(offset, offset + PAGE - 1)
