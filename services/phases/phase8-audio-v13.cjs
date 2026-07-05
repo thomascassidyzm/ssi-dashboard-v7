@@ -432,7 +432,8 @@ async function classifyEnglishCopyBucket(courseCode, course, uniqueToGenerate) {
     const voiceId = course.voice_config?.voices?.[role]?.voiceId
     if (!roleItems.length || !voiceId) continue
 
-    const { index: sourceIndex, trusted, engine } = await buildSourceIndex(supabase, { voiceId, language: 'eng' })
+    const texts = roleItems.map(i => normalizeText(i.text))
+    const { index: sourceIndex, trusted, engine } = await buildSourceIndex(supabase, { voiceId, language: 'eng', texts })
     if (!trusted) {
       logger.info(`classifyEnglishCopyBucket(${courseCode}): voice=${voiceId} (role=${role}) engine=${engine || 'unknown'} not verified speed-invariant at render — skipping copy bucket for this role`)
       continue

@@ -21,8 +21,15 @@ const { computeAudioKey, isTrusted1xEngine } = require('./clone-copy-match.cjs')
 
 const PAGE = 2000
 const MAX_RETRIES = 3
+const TEXT_CHUNK = 200 // course_audio has no index on voice_id alone; chunking by an IN-list on text_normalized keeps every query on the (text_normalized, language) index regardless of table size (1.7M+ rows)
 
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)) }
+
+function chunk(arr, size) {
+  const out = []
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size))
+  return out
+}
 
 /**
  * @param {object} supabase - Supabase client
@@ -34,46 +41,18 @@ async function getEngineForVoice(supabase, voiceId) {
   return data?.tts_engine || null
 }
 
-/**
- * Build the global index of every rendered course_audio row for (language,
- * voiceId) — ACROSS ALL ROLES (known, target1, target2, ...) and both course
- * families (X_for_eng known-side, eng_for_X target-side). One entry per
- * (course, text) pair, from ANY course.
- *
- * Refuses to build an index for a voice whose engine isn't verified
- * speed-invariant at render (see isTrusted1xEngine) — a legacy Azure clip may
- * have a non-1x rate physically baked into it, and course_audio has no
- * persisted per-row speed to check, so it cannot be trusted as a canonical
- * copy source. Callers get { index: empty Map, trusted: false } in that case
- * and should report/flag it rather than silently proceeding.
- */
-async function buildSourceIndex(supabase, { voiceId, language }) {
-  const engine = await getEngineForVoice(supabase, voiceId)
-  if (!isTrusted1xEngine(engine)) {
-    return { index: new Map(), trusted: false, engine }
+async function fetchRowsWithRetry(query) {
+  let data, error
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    ;({ data, error } = await query)
+    if (!error) return data
+    if (attempt === MAX_RETRIES) throw new Error(`course_audio source index: ${error.message}`)
+    await sleep(500 * (attempt + 1)) // transient DB load (statement timeout) — backoff and retry
   }
+}
 
-  const rows = []
-  let offset = 0
-  while (true) {
-    let data, error
-    for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
-      ;({ data, error } = await supabase
-        .from('course_audio')
-        .select('id, course_code, text, language, role, s3_key, created_at, duration_ms, file_size_bytes, word_boundaries, text_stripped')
-        .eq('voice_id', voiceId)
-        .eq('language', language)
-        .range(offset, offset + PAGE - 1))
-      if (!error) break
-      if (attempt === MAX_RETRIES) throw new Error(`course_audio source index: ${error.message}`)
-      await sleep(500 * (attempt + 1)) // transient DB load (statement timeout) — backoff and retry
-    }
-    rows.push(...data)
-    if (data.length < PAGE) break
-    offset += PAGE
-  }
+function rowsToIndex(rows, voiceId) {
   const real = rows.filter(r => r.s3_key && !r.s3_key.startsWith('pending/'))
-
   const index = new Map()
   for (const r of real) {
     const key = computeAudioKey({ text: r.text, language: r.language, voiceId })
@@ -92,7 +71,66 @@ async function buildSourceIndex(supabase, { voiceId, language }) {
     if (!index.has(key)) index.set(key, [])
     index.get(key).push(entry)
   }
-  return { index, trusted: true, engine }
+  return index
+}
+
+const SELECT_COLS = 'id, course_code, text, language, role, s3_key, created_at, duration_ms, file_size_bytes, word_boundaries, text_stripped'
+
+/**
+ * Build the index of rendered course_audio rows for (language, voiceId) that
+ * could match one of `texts` (normalized) — ACROSS ALL ROLES (known,
+ * target1, target2, ...) and both course families (X_for_eng known-side,
+ * eng_for_X target-side). One entry per (course, text) pair, from ANY course.
+ *
+ * `texts` (array of normalizeForAudio'd strings) is REQUIRED in practice:
+ * course_audio has no index on voice_id alone (only on
+ * (text_normalized, language) and (course_code, ...)), so a scan filtered by
+ * voice_id across this table's 1.7M+ rows reliably blows the statement
+ * timeout. Filtering by text_normalized IN (...) keeps every query on the
+ * indexed column and scales with the caller's need, not the table size.
+ * Pass texts=null only for small/legacy callers that truly need everything.
+ *
+ * Refuses to build an index for a voice whose engine isn't verified
+ * speed-invariant at render (see isTrusted1xEngine) — a legacy Azure clip may
+ * have a non-1x rate physically baked into it, and course_audio has no
+ * persisted per-row speed to check, so it cannot be trusted as a canonical
+ * copy source. Callers get { index: empty Map, trusted: false } in that case
+ * and should report/flag it rather than silently proceeding.
+ */
+async function buildSourceIndex(supabase, { voiceId, language, texts = null }) {
+  const engine = await getEngineForVoice(supabase, voiceId)
+  if (!isTrusted1xEngine(engine)) {
+    return { index: new Map(), trusted: false, engine }
+  }
+
+  let rows
+  if (texts) {
+    rows = []
+    for (const textChunk of chunk([...new Set(texts)], TEXT_CHUNK)) {
+      if (!textChunk.length) continue
+      const data = await fetchRowsWithRetry(
+        supabase.from('course_audio').select(SELECT_COLS)
+          .eq('voice_id', voiceId).eq('language', language)
+          .in('text_normalized', textChunk)
+      )
+      rows.push(...data)
+    }
+  } else {
+    rows = []
+    let offset = 0
+    while (true) {
+      const data = await fetchRowsWithRetry(
+        supabase.from('course_audio').select(SELECT_COLS)
+          .eq('voice_id', voiceId).eq('language', language)
+          .range(offset, offset + PAGE - 1)
+      )
+      rows.push(...data)
+      if (data.length < PAGE) break
+      offset += PAGE
+    }
+  }
+
+  return { index: rowsToIndex(rows, voiceId), trusted: true, engine }
 }
 
 module.exports = { getEngineForVoice, buildSourceIndex }

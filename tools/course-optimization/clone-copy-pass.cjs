@@ -158,7 +158,8 @@ async function run(courseCode, { apply, voiceId }) {
   // in practice (course_audio's source-index scan starved behind the
   // slot-table scan). Neither is large enough alone to need parallelism.
   const { byRoleAndNormText, totalMissing } = await fetchMissingEnglishSlots(course)
-  const { index: sourceIndex, trusted, engine } = await buildSourceIndex(supabase, { voiceId, language: 'eng' })
+  const texts = [...byRoleAndNormText.values()].map(g => normalizeForAudio(g.text))
+  const { index: sourceIndex, trusted, engine } = await buildSourceIndex(supabase, { voiceId, language: 'eng', texts })
   console.log(`[${courseCode}] family=${family} voice=${voiceId} engine=${engine || 'unknown'} trusted1x=${trusted}`)
   console.log(`[${courseCode}] ${totalMissing} missing English slots -> ${byRoleAndNormText.size} unique (role,text) groups`)
   if (!trusted) {
