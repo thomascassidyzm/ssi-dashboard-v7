@@ -138,7 +138,8 @@ async function insertOwnedRow({ courseCode, text, language, role, voiceId, sourc
       duration_ms: source.durationMs,
       file_size_bytes: source.fileSizeBytes,
       word_boundaries: source.wordBoundaries,
-      text_stripped: source.textStripped,
+      // text_stripped is a DB GENERATED ALWAYS column (derived from
+      // text_normalized) — Postgres rejects an explicit value for it.
       lego_id: null,
     }, { onConflict: 'course_code,text_normalized,language,role,voice_id', ignoreDuplicates: true })
   if (error) throw new Error(`insert owned row failed: ${error.message}`)
