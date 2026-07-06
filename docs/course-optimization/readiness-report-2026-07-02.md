@@ -37,3 +37,7 @@ Goal (Kai): all 9 for_eng courses ready for audio generation — scan-course iss
 
 ## Regen gate
 See `xai-regen-brief-2026-07-02.md`. Hard blocker: **XAI_API_KEY not loaded on ssi-machine prod-api** (Tom). TTS fires only on Kai's approval of the itemized plan.
+
+## Post-report pattern sweeps (07-03, Kai's three rules)
+- spa: 7 que-triggers fixed, 3 reflexive-agreement errors, 1 demonstrative fold — detectors 0/0/0 after. Follow-up noted: S0225L03 has 4 pre-existing known↔target drift rows.
+- ita: 22 flagged seeds under rework (che-class); fra S204/S210 di-class redone; por/fra/deu/kor/jpn/zho sweeps queued behind their writers.

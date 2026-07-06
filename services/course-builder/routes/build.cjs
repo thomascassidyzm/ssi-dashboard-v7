@@ -1223,8 +1223,9 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
     const terminal = req.query.terminal || 'iTerm2';
 
     try {
-      // Fetch brief
-      const briefUrl = `http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/backfill-phrases`;
+      // Fetch brief (forward query params like min_use / seeds to the brief generator)
+      const briefQuery = new URLSearchParams(req.query).toString();
+      const briefUrl = `http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/backfill-phrases${briefQuery ? '?' + briefQuery : ''}`;
       const brief = await fetchBrief(briefUrl);
 
       // Parse seed count from brief text ("in **N seeds**")
@@ -1265,7 +1266,8 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
-      let claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const bfModel = ['opus', 'sonnet', 'fable', 'haiku'].includes(req.query.model) ? req.query.model : 'sonnet';
+      let claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model ${bfModel} --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       claudeCmd = withJobDone(claudeCmd, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Backfill', courseCode);
 
