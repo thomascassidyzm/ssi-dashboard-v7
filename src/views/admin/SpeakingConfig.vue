@@ -92,7 +92,7 @@
       <section v-if="labCfg" class="config-row">
         <RowHeader
           :title="`Pause lab — ${labMode === 'normal_mode' ? 'Normal' : 'Turbo'} timing`"
-          desc="The learner 'say-it-yourself' gap. Tweak the knobs and watch the pause across sentence lengths (in syllables — a far better length proxy than words). pause = clamp(floor, ceiling, base + shaped(reference)), where the knee lets long sentences stop scaling at the full multiplier."
+          desc="The learner 'say-it-yourself' gap. pause = BOOT (fixed reaction, short phrases) + ASSEMBLY (piecing parts together — grows super-linearly with length). Two belt knobs split the taper: short-phrase gaps shrink hard as the learner climbs, long-phrase gaps shrink gently. Watch it across sentence lengths (in syllables) and belts below."
           :row="rowMap[labMode]"
           :dirty="isDirty(labMode)"
           :saving="savingKey === labMode"
@@ -122,7 +122,7 @@
         </div>
 
         <div class="knob-grid">
-          <div v-for="k in KNOBS" :key="k.key" class="knob">
+          <div v-for="k in KNOBS" :key="k.key" class="knob" :title="k.help || ''">
             <div class="knob-top">
               <label>{{ k.label }}</label>
               <span class="knob-val">{{ k.fmt(labCfg[k.key] ?? 0) }}</span>
@@ -150,7 +150,7 @@
             <label class="lab-rate">~ms / syllable
               <input type="number" min="50" step="10" v-model.number="msPerSyllable" />
             </label>
-            <span class="lab-rate-note">voices play at {{ effectiveSpeed }}× → actual length = clip ÷ {{ effectiveSpeed }}; pause sized off that</span>
+            <span class="lab-rate-note">voices play at {{ effectiveSpeed }}× audio; the gap is sized off the phrase's native length, then tapered at this belt — boot ×{{ beltTaper.boot.toFixed(2) }}, assembly ×{{ beltTaper.assembly.toFixed(2) }}</span>
           </div>
 
           <svg v-if="curve" class="lab-chart" :viewBox="`0 0 ${CHART.w} ${CHART.h}`" preserveAspectRatio="xMidYMid meet">
@@ -173,7 +173,7 @@
             <!-- knee -->
             <template v-if="curve.kneeX != null">
               <line class="chart-knee" :x1="curve.kneeX" :x2="curve.kneeX" :y1="CHART.padT" :y2="curve.baseY" />
-              <text :x="curve.kneeX" :y="CHART.padT + 8" text-anchor="middle" class="chart-mark-text knee">knee</text>
+              <text :x="curve.kneeX" :y="CHART.padT + 8" text-anchor="middle" class="chart-mark-text knee">{{ curve.kneeLabel }}</text>
             </template>
             <!-- the curve -->
             <polyline class="chart-curve" :points="curve.polyline" />
@@ -226,7 +226,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../../composables/useAuth'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './algorithmConfigShared'
-import { computePauseDuration, computePauseForBelt, BELTS, SYLLABLE_BUCKETS } from './pauseModel'
+import { computePauseDuration, computePauseForBelt, beltProgress, BELTS, SYLLABLE_BUCKETS } from './pauseModel'
 import CoursePicker from '../../components/CoursePicker.vue'
 import { getApiBaseUrl } from '../../services/api'
 
@@ -242,12 +242,25 @@ const {
 // that REPRODUCE the old linear behaviour (knee huge, tail = multiplier,
 // reference = 'sum'), so the runtime is untouched until an admin deliberately
 // tunes in the lab and saves.
+// The pause model moved to boot + assembly (2026-06-30). Rows saved before that
+// lack the new fields; backfill them to values that REPRODUCE the previous
+// White-belt curve (boot 1000 + 2.5×ref-past-1000ms ≡ the old floor-1000 /
+// knee-1600 / tail-2.0 curve for medium/long phrases), with a faithful belt
+// taper (short belt-independent, long shrinks ~20% by Green). The runtime is
+// untouched until an admin tunes in the lab and saves.
 function backfillPauseRow(key, d) {
   const c = d[key]
   if (!c) return
-  if (c.pause_reference == null) c.pause_reference = 'sum'
-  if (c.pause_knee_ms == null) c.pause_knee_ms = 99999
-  if (c.pause_tail_multiplier == null) c.pause_tail_multiplier = c.pause_multiplier ?? 0
+  if (c.pause_reference == null) c.pause_reference = 'avg'
+  const isTurbo = key === 'turbo_boost'
+  if (c.pause_boot_ms == null) c.pause_boot_ms = isTurbo ? 2000 : 1000
+  if (c.pause_assembly_threshold_ms == null) c.pause_assembly_threshold_ms = isTurbo ? 1111 : 1000
+  if (c.pause_assembly_lin == null) c.pause_assembly_lin = isTurbo ? 0.9 : 2.5
+  if (c.pause_assembly_quad == null) c.pause_assembly_quad = 0
+  if (c.pause_belt_boot == null) c.pause_belt_boot = 1.0
+  if (c.pause_belt_assembly == null) c.pause_belt_assembly = isTurbo ? 1.0 : 0.8
+  if (c.min_pause_ms == null) c.min_pause_ms = isTurbo ? 2000 : 700
+  if (c.max_pause_ms == null) c.max_pause_ms = isTurbo ? 12000 : 15000
 }
 function backfillPause(d) {
   backfillPauseRow('normal_mode', d)
@@ -287,24 +300,54 @@ const beltSpeedVal = computed(() => (BELTS.find(b => b.key === belt.value) || {}
 const isTurbo = computed(() => labMode.value === 'turbo_boost')
 const effectiveSpeed = computed(() => isTurbo.value ? Math.min(labCfg.value?.playback_speed || 1, 1.0) : beltSpeedVal.value)
 
+// Belt taper applied at the selected belt — boot/assembly multipliers the
+// boot+assembly model uses (White anchors at 1.0; Green = the configured
+// endpoint; between interpolated by belt speed position). Mirrors
+// beltProgress() in pauseModel.js.
+const beltTaper = computed(() => {
+  const cfg = labCfg.value || {}
+  const p = beltProgress(effectiveSpeed.value)
+  return {
+    boot: 1 + p * ((cfg.pause_belt_boot ?? 1) - 1),
+    assembly: 1 + p * ((cfg.pause_belt_assembly ?? 1) - 1),
+  }
+})
+
 // A sensible starting curve per mode — reference = average of both voices, a
 // real boot floor, and a knee so long sentences level off instead of scaling
 // at the full multiplier. Applied UNSAVED via the lab button; tweak then Save.
+// A sensible boot + assembly starting curve per mode. Normal: a real boot
+// floor, short phrases near pure-boot, assembly ramps with a touch of
+// super-linear lift for long sentences, and a belt taper that shortens short
+// gaps (boot) more than long ones (assembly) as the learner climbs. Applied
+// UNSAVED via the lab button; tweak then Save.
 const SUGGESTED = {
-  normal_mode: { pause_reference: 'avg', min_pause_ms: 2500, pause_base_ms: 800, pause_multiplier: 1.0, pause_knee_ms: 2200, pause_tail_multiplier: 0.4, max_pause_ms: 16000, playback_speed: 1.0 },
-  turbo_boost: { pause_reference: 'avg', min_pause_ms: 1800, pause_base_ms: 500, pause_multiplier: 0.8, pause_knee_ms: 2000, pause_tail_multiplier: 0.3, max_pause_ms: 12000 },
+  normal_mode: { pause_reference: 'avg', pause_boot_ms: 1000, pause_assembly_threshold_ms: 900, pause_assembly_lin: 2.4, pause_assembly_quad: 120, pause_belt_boot: 0.72, pause_belt_assembly: 0.92, min_pause_ms: 700, max_pause_ms: 16000, playback_speed: 1.0 },
+  turbo_boost: { pause_reference: 'avg', pause_boot_ms: 1500, pause_assembly_threshold_ms: 900, pause_assembly_lin: 1.3, pause_assembly_quad: 60, pause_belt_boot: 1.0, pause_belt_assembly: 1.0, min_pause_ms: 1500, max_pause_ms: 12000 },
 }
 function applySuggested() {
   if (labCfg.value) Object.assign(labCfg.value, SUGGESTED[labMode.value] || {})
 }
 
-// Slider specs — drag, don't type. Each binds to a labCfg field.
+// Slider specs — drag, don't type. Boot + assembly model: the gap is BOOT
+// (fixed reaction, short phrases) + ASSEMBLY (piecing parts together, grows
+// super-linearly with length). Two belt knobs split the taper so short phrases
+// shorten more than long ones as the learner climbs. See pauseModel.js.
 const KNOBS = [
-  { key: 'min_pause_ms', label: 'Floor (boot / reaction)', min: 0, max: 6000, step: 100, unit: 'ms', fmt: v => v + 'ms' },
-  { key: 'pause_base_ms', label: 'Base', min: 0, max: 4000, step: 100, unit: 'ms', fmt: v => v + 'ms' },
-  { key: 'pause_multiplier', label: 'Multiplier (short / med)', min: 0, max: 3, step: 0.05, unit: '×', fmt: v => Number(v).toFixed(2) + '×' },
-  { key: 'pause_knee_ms', label: 'Knee (where it bends)', min: 500, max: 8000, step: 100, unit: 'ms', fmt: v => v + 'ms' },
-  { key: 'pause_tail_multiplier', label: 'Tail multiplier (long)', min: 0, max: 2, step: 0.05, unit: '×', fmt: v => Number(v).toFixed(2) + '×' },
+  { key: 'pause_boot_ms', label: 'Boot (reaction)', min: 0, max: 4000, step: 50, unit: 'ms', fmt: v => v + 'ms',
+    help: 'Fixed spin-up before producing anything. Short phrases are almost all boot.' },
+  { key: 'pause_assembly_threshold_ms', label: 'Assembly start', min: 0, max: 4000, step: 50, unit: 'ms', fmt: v => v + 'ms',
+    help: 'Reference duration below which there is no assembly cost (pure boot).' },
+  { key: 'pause_assembly_lin', label: 'Assembly slope', min: 0, max: 5, step: 0.05, unit: '×', fmt: v => Number(v).toFixed(2) + '×',
+    help: 'Linear assembly time per ms of phrase length past the start.' },
+  { key: 'pause_assembly_quad', label: 'Assembly curve (long)', min: 0, max: 800, step: 25, unit: 'ms/s²', fmt: v => v + 'ms/s²',
+    help: 'Super-linear cost — lifts the long end without touching short phrases.' },
+  { key: 'pause_belt_boot', label: 'Belt: boot @ Green', min: 0.4, max: 1, step: 0.01, unit: '×', fmt: v => Number(v).toFixed(2) + '×',
+    help: 'Boot multiplier by Green (White = 1.0). Lower = short-phrase gaps shrink as the learner advances.' },
+  { key: 'pause_belt_assembly', label: 'Belt: assembly @ Green', min: 0.4, max: 1, step: 0.01, unit: '×', fmt: v => Number(v).toFixed(2) + '×',
+    help: 'Assembly multiplier by Green (White = 1.0). Keep nearer 1.0 so long phrases shorten less than short ones.' },
+  { key: 'min_pause_ms', label: 'Floor (hard min)', min: 0, max: 4000, step: 100, unit: 'ms', fmt: v => v + 'ms',
+    help: 'Absolute floor — the gap never drops below this even after belt taper.' },
   { key: 'max_pause_ms', label: 'Ceiling', min: 4000, max: 20000, step: 500, unit: 'ms', fmt: v => v + 'ms' },
 ]
 
@@ -330,9 +373,12 @@ const curve = computed(() => {
     const perVoice = s * rate            // raw clip ms for an s-syllable phrase
     pts.push(`${xOf(s).toFixed(1)},${yOf(computePauseForBelt(perVoice, perVoice, cfg, spd)).toFixed(1)}`)
   }
-  // ref = actual perVoice (raw/speed) for avg/target1 (t1=t2 here); ×2 for sum.
+  // Marker: where assembly kicks in (new model) or the knee bends (legacy).
+  // New model uses the NATIVE reference (no /speed); legacy rides ref/speed.
   const refMult = cfg.pause_reference === 'sum' ? 2 : 1
-  const kneeSyll = (cfg.pause_knee_ms ?? Infinity) * spd / (refMult * rate)
+  const isNew = cfg.pause_assembly_lin != null || cfg.pause_boot_ms != null
+  const markerMs = isNew ? (cfg.pause_assembly_threshold_ms ?? Infinity) : (cfg.pause_knee_ms ?? Infinity)
+  const kneeSyll = isNew ? markerMs / (refMult * rate) : markerMs * spd / (refMult * rate)
   const dots = sampleByBucket.value
     .filter(b => b.sentence)
     .map(b => ({ key: b.key, label: b.label, x: xOf(b.sentence.syll), y: yOf(computePauseFor(b.sentence)), s: b.sentence.syll, ms: computePauseFor(b.sentence) }))
@@ -350,6 +396,7 @@ const curve = computed(() => {
     ceilY: yOf(cfg.max_pause_ms || yTop),
     ceilInView: (cfg.max_pause_ms || yTop) <= yTop,
     kneeX: kneeSyll <= CHART.maxSyll && Number.isFinite(kneeSyll) ? xOf(kneeSyll) : null,
+    kneeLabel: isNew ? 'assembly' : 'knee',
     baseY: CHART.padT + plotH,
     xTicks, yTicks, dots,
   }

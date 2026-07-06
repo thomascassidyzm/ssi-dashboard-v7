@@ -67,6 +67,7 @@ AWS_REGION=eu-west-1
 S3_BUCKET=ssi-audio-stage
 AZURE_SPEECH_KEY=<get from Tom>
 AZURE_SPEECH_REGION=ukwest
+XAI_API_KEY=<get from Tom>   # known-side/English + explainer voices; without it xAI voice calls 500
 ```
 
 ### 3. Start Services

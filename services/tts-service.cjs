@@ -190,7 +190,7 @@ async function generateAzure(text, config) {
  * @param {string} text - Text to synthesize (may include expressive markup like [laugh], <whisper>)
  * @param {object} config - xAI configuration
  * @param {string} config.apiKey - xAI API key
- * @param {string} config.voiceId - Voice ID: 'eve' | 'ara' | 'leo' | 'rex' | 'sal' (case-insensitive)
+ * @param {string} config.voiceId - Preset voice id ('eve' | 'ara' | 'leo' | 'rex' | 'sal', case-insensitive) OR a custom cloned voice_id (e.g. Tom's clones 'gfzdpspr5fdp', 'bedd6226') — xAI accepts both, this is not a fixed enum
  * @param {string} config.language - BCP-47 language code (e.g., 'es', 'en', 'pt-BR', 'ar-EG', 'auto')
  * @param {number} config.speed - Speech speed multiplier (applied client-side via SSML-like wrapping if supported)
  * @param {string} config.codec - Output codec: 'mp3' (default) | 'wav' | 'pcm' | 'mulaw' | 'alaw'

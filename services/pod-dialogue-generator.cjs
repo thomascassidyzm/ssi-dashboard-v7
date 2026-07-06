@@ -19,7 +19,7 @@
 
 const crypto = require('crypto')
 const { createClient } = require('@supabase/supabase-js')
-const { claudeChat } = require('./shared/claude-cli.cjs')
+const { claudeChat, HAIKU_MODEL } = require('./shared/claude-cli.cjs')
 const { renderPrompt } = require('./pod-generation-prompt.cjs')
 const { getCultureNotes, languageName } = require('./pod-culture-notes.cjs')
 const { assignVoices, canonicalSpeakerName, extractGenderMarker, inferGenderFromName } = require('../tools/pod-sync.cjs')
@@ -177,7 +177,7 @@ Return ONLY the ledger.`
   // the CLI is under load. The scenes (sonnet) do the actual dialogue craft.
   for (let attempt = 1; attempt <= 2; attempt++) {
     try {
-      const out = await claudeChat(prompt, { model: process.env.POD_LEDGER_MODEL || 'haiku', timeout: SCENE_TIMEOUT_MS })
+      const out = await claudeChat(prompt, { model: process.env.POD_LEDGER_MODEL || HAIKU_MODEL, timeout: SCENE_TIMEOUT_MS })
       const t = (out || '').trim()
       if (t) return t
     } catch (e) {

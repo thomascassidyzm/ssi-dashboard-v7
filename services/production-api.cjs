@@ -3541,7 +3541,9 @@ async function getDirectAudioStats(courseCode) {
     throw new Error(`phase8 /needs failed (${phase8Resp.status}): ${JSON.stringify(phase8Resp.data)}`)
   }
   const phase8Needs = phase8Resp.data
-  const azureMissing = phase8Needs.toGenerate || 0
+  // Course TTS work = existing texts to render + intros /generate authors
+  // itself (frame judgment) in the same run
+  const azureMissing = (phase8Needs.toGenerate || 0) + (phase8Needs.toAuthor || 0)
   const azureSlots = phase8Needs.totalSlots || 0
   const azureExisting = phase8Needs.existing || 0
 
@@ -3575,6 +3577,8 @@ async function getDirectAudioStats(courseCode) {
     missing: totalMissing,
     // NEW: course-specific TTS work (the Generate button). Excludes shared.
     toGenerate: azureMissing,
+    toAuthor: phase8Needs.toAuthor || 0,
+    ledger: phase8Needs.ledger || null,
     toLink: phase8Needs.toLink || 0,
     azureSlots,
     azureExisting,
@@ -5844,25 +5848,27 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       sharedAudio,
       welcome: welcomeStatus,
 
-      // Summary by generation process
+      // Summary by generation process. Labels are provider-neutral: the
+      // actual voice per role comes from voice_config (presentations resolve
+      // to the English clone on eng-known courses), not a hardcoded engine.
       byProcess: {
         azure: {
-          label: 'Azure TTS (Phrases)',
+          label: 'Course TTS (Phrases)',
           missing: breakdown.known + breakdown.target1 + breakdown.target2,
           categories: ['known', 'target1', 'target2']
         },
         azureSeeds: {
-          label: 'Azure TTS (Seeds)',
+          label: 'Course TTS (Seeds)',
           missing: 0,  // Included in deduped counts
           categories: []
         },
         azureLegos: {
-          label: 'Azure TTS (LEGOs)',
+          label: 'Intros (LEGO debuts)',
           missing: breakdown.presentation,
           categories: ['presentation']
         },
         elevenLabs: {
-          label: 'ElevenLabs (UI Audio)',
+          label: 'UI Audio (shared)',
           missing: sharedMissing + welcomeMissing,
           categories: ['encouragements', 'instructions', 'welcome']
         }

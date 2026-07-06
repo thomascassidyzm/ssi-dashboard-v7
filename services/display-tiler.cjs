@@ -28,6 +28,7 @@
 const { spawn } = require('child_process')
 const fs = require('fs')
 const path = require('path')
+const { HAIKU_MODEL } = require('./shared/claude-cli.cjs')
 
 const stripWs = (s) => (s || '').replace(/\s+/g, '')
 
@@ -72,16 +73,22 @@ function runHaikuBatch(prompt) {
     const briefFile = path.join(tmp, `${id}.txt`)
     const outFile = path.join(tmp, `${id}.json`)
     fs.writeFileSync(briefFile, prompt, 'utf8')
-    const cmd = `unset CLAUDECODE && cat '${briefFile}' | claude --print --model haiku > '${outFile}' 2>&1`
+    const cmd = `unset CLAUDECODE && cat '${briefFile}' | claude --print --model ${HAIKU_MODEL} > '${outFile}' 2>&1`
     const env = { ...process.env }; delete env.CLAUDECODE
     const proc = spawn('bash', ['-c', cmd], { cwd: path.resolve(__dirname, '..'), stdio: 'pipe', env })
-    proc.on('close', () => {
+    proc.on('close', (code) => {
       let raw = ''
       try { raw = fs.readFileSync(outFile, 'utf8') } catch {}
       try { fs.unlinkSync(briefFile); fs.unlinkSync(outFile) } catch {}
+      if (code !== 0 || /^API Error/i.test(raw.trim())) {
+        console.error(`[display-tiler] claude --print --model ${HAIKU_MODEL} failed (exit ${code}): ${raw.slice(0, 300)}`)
+      }
       resolve(raw)
     })
-    proc.on('error', () => resolve(''))
+    proc.on('error', (e) => {
+      console.error(`[display-tiler] failed to spawn claude --model ${HAIKU_MODEL}: ${e.message}`)
+      resolve('')
+    })
   })
 }
 

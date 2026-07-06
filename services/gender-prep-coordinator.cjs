@@ -3,7 +3,7 @@
 /**
  * Gender Prep Coordinator
  *
- * Single process that spawns `claude --print --model haiku` child processes
+ * Single process that spawns `claude --print --model <HAIKU_MODEL>` child processes
  * with controlled concurrency to analyse gender agreement in course texts.
  *
  * Each Haiku call is pure linguistics — outputs JSON. This coordinator
@@ -19,6 +19,7 @@ const { spawn } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
 const fs = require('fs')
 const path = require('path')
+const { HAIKU_MODEL } = require('./shared/claude-cli.cjs')
 require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') })
 
 // Terminal spawning mode - set via env or default to headless
@@ -193,7 +194,7 @@ function runHaikuBatch(brief, batchNum, totalBatches) {
     // Build the command that Claude will run
     // Use stdin instead of command-line args to avoid length limits
     // Explicitly unset CLAUDECODE to allow nested Claude CLI calls
-    const claudeCmd = `unset CLAUDECODE ANTHROPIC_API_KEY && cat '${briefFile}' | claude --print --model haiku > '${outputFile}' 2>&1 && touch '${doneFile}'`
+    const claudeCmd = `unset CLAUDECODE ANTHROPIC_API_KEY && cat '${briefFile}' | claude --print --model ${HAIKU_MODEL} > '${outputFile}' 2>&1 && touch '${doneFile}'`
 
     if (TERMINAL_MODE === 'headless') {
       // Headless mode: direct spawn (original behavior)

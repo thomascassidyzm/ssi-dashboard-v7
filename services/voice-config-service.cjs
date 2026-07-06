@@ -111,6 +111,10 @@ const DEFAULT_VOICE_CONFIG = {
       enabled: true,
       apiKeyEnvVar: 'AZURE_SPEECH_KEY',
       regionEnvVar: 'AZURE_SPEECH_REGION'
+    },
+    xai: {
+      enabled: true,
+      apiKeyEnvVar: 'XAI_API_KEY'
     }
   },
 
@@ -187,6 +191,58 @@ async function ensureVoiceRegistered(voiceSettings) {
 
   const voiceId = voiceSettings.voiceId;
   const provider = voiceSettings.provider || 'azure';
+
+  // xAI voices — incl. custom cloned voice ids (e.g. 'gfzdpspr5fdp') that don't
+  // follow Azure's "xx-YY-Name" locale convention. Register so they're
+  // discoverable in voice pickers; language is taken from the config, not parsed
+  // from the id. Own insert path, then return (skips the Azure locale parsing).
+  if (provider === 'xai') {
+    try {
+      const { data: existing } = await supabase
+        .from('voices')
+        .select('voice_id')
+        .eq('voice_id', voiceId)
+        .single();
+      if (existing) return;
+
+      const lang = voiceSettings.language || '';
+      const xaiLocaleToLang = {
+        'en-GB': 'eng', 'en-US': 'eng', 'en': 'eng',
+        'es-ES': 'spa', 'es': 'spa',
+        'it-IT': 'ita', 'it': 'ita',
+        'fr-FR': 'fra', 'fr': 'fra',
+        'de-DE': 'deu', 'de': 'deu',
+        'pt-BR': 'por', 'pt': 'por',
+        'ar-EG': 'ara', 'ar': 'ara',
+        'ja-JP': 'jpn', 'ja': 'jpn',
+        'ko-KR': 'kor', 'ko': 'kor',
+        'zh-CN': 'zho', 'zh': 'zho'
+      };
+      const langCode = xaiLocaleToLang[lang] || lang.split('-')[0] || 'unknown';
+
+      const { error } = await supabase
+        .from('voices')
+        .insert({
+          voice_id: voiceId,
+          type: 'tts',
+          tts_engine: 'xai',
+          tts_voice_name: voiceSettings.name || voiceId,
+          tts_locale: lang || null,
+          languages: [langCode],
+          display_name: voiceSettings.name || voiceId,
+          is_active: true
+        });
+
+      if (error && error.code !== '23505') { // Ignore duplicate key errors
+        console.warn(`[VoiceConfig] Could not auto-register xAI voice ${voiceId}:`, error.message);
+      } else {
+        console.log(`[VoiceConfig] Auto-registered xAI voice: ${voiceId}`);
+      }
+    } catch (err) {
+      console.warn(`[VoiceConfig] xAI voice registration skipped for ${voiceId}:`, err.message);
+    }
+    return;
+  }
 
   // Only auto-register Azure voices (ElevenLabs should be manually added)
   if (provider !== 'azure') return;
@@ -401,6 +457,20 @@ function buildTTSConfig(voiceConfig, cadence, cadenceProfiles) {
     };
   }
 
+  if (provider === 'xai') {
+    // voiceId may be a preset ('eve'|'ara'|'leo'|'rex'|'sal') OR a custom
+    // cloned voice id (e.g. 'gfzdpspr5fdp') — generateXai passes it through
+    // verbatim. xAI has no speed param on /v1/tts; speed is applied downstream
+    // in masterAudio, so it's advisory here (kept for symmetry with other roles).
+    return {
+      provider: 'xai',
+      apiKey: process.env.XAI_API_KEY,
+      voiceId: voiceConfig.voiceId,
+      language: voiceConfig.language || 'auto',
+      speed: effectiveSpeed
+    };
+  }
+
   throw new Error(`Unknown provider: ${provider}`);
 }
 
@@ -412,15 +482,64 @@ function buildTTSConfig(voiceConfig, cadence, cadenceProfiles) {
  * @param {number} count - Number of samples to return
  * @returns {Promise<Array>} Array of sample phrases
  */
+const DEFAULT_SAMPLE_PHRASES = [
+  { text: 'Hello', known: 'Hello', source: 'default' },
+  { text: 'Good morning', known: 'Good morning', source: 'default' },
+  { text: 'How are you?', known: 'How are you?', source: 'default' },
+  { text: 'Thank you very much', known: 'Thank you very much', source: 'default' },
+  { text: 'See you later', known: 'See you later', source: 'default' }
+];
+
+/**
+ * Pick `count` rows spread across the full array (not just the first N),
+ * so a preview covers early, mid, and late course content.
+ */
+function pickSpread(rows, count) {
+  if (rows.length <= count) return rows;
+  const picks = [];
+  for (let i = 0; i < count; i++) {
+    const idx = Math.floor((i * (rows.length - 1)) / (count - 1 || 1));
+    picks.push(rows[idx]);
+  }
+  return picks;
+}
+
 async function getSamplePhrases(courseCode, count = 5) {
-  // Return generic samples - course-specific phrases would require additional DB queries
-  return [
-    { text: 'Hello', known: 'Hello', source: 'default' },
-    { text: 'Good morning', known: 'Good morning', source: 'default' },
-    { text: 'How are you?', known: 'How are you?', source: 'default' },
-    { text: 'Thank you very much', known: 'Thank you very much', source: 'default' },
-    { text: 'See you later', known: 'See you later', source: 'default' }
-  ].slice(0, count);
+  if (!supabase) return DEFAULT_SAMPLE_PHRASES.slice(0, count);
+
+  try {
+    const { data: seeds } = await supabase
+      .from('course_seeds')
+      .select('seed_number, known_text, target_text')
+      .eq('course_code', courseCode)
+      .eq('status', 'released')
+      .order('seed_number', { ascending: true });
+
+    let rows = (seeds || []).map(r => ({ ...r, source: 'course_seeds' }));
+
+    if (!rows.length) {
+      const { data: legos } = await supabase
+        .from('course_legos')
+        .select('seed_number, lego_index, known_text, target_text')
+        .eq('course_code', courseCode)
+        .order('seed_number', { ascending: true })
+        .order('lego_index', { ascending: true });
+
+      rows = (legos || []).map(r => ({ ...r, source: 'course_legos' }));
+    }
+
+    rows = rows.filter(r => r.target_text && r.known_text);
+
+    if (!rows.length) return DEFAULT_SAMPLE_PHRASES.slice(0, count);
+
+    return pickSpread(rows, count).map(r => ({
+      text: r.target_text,
+      known: r.known_text,
+      source: r.source
+    }));
+  } catch (err) {
+    return DEFAULT_SAMPLE_PHRASES.slice(0, count);
+  }
 }
 
 /**

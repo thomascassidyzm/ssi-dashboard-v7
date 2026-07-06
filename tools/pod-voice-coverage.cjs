@@ -42,25 +42,38 @@ function azureVoice(v) {
   return { provider: 'azure', voice_id: v.voice_id, name: v.name, gender: v.gender, locale: v.locale }
 }
 
+// ElevenLabs multilingual_v2 voices — the PREMIUM top-up (Tom 2026-06-30). xAI
+// (cheap) covers the Big 10 + ~20 langs and Azure fills native gaps; ElevenLabs
+// is APPENDED only for thin languages that opt in (`eleven: true`), and only
+// AFTER the cheaper voices — the colourer picks lowest-index first, so an
+// ElevenLabs voice is used solely when a scene runs out of cheaper colours.
+// (eleven_multilingual_v2 auto-detects language from the text.)
+const ELEVEN_F = [
+  { voice_id: 'EXAVITQu4vr4xnSDxMaL', name: 'Sarah', gender: 'f' },
+  { voice_id: 'FGY2WhTYpPnrIDTdsKH5', name: 'Laura', gender: 'f' },
+]
+const ELEVEN_M = [
+  { voice_id: 'JBFqnCBsd6RMkjVDRZzb', name: 'George',  gender: 'm' },
+  { voice_id: 'IKne3meq5aSn9XLyUdCD', name: 'Charlie', gender: 'm' },
+  { voice_id: 'CwhRBWXzGAHq8TQ4Fs17', name: 'Roger',   gender: 'm' },
+]
+function elevenVoice(v, locale) {
+  return { provider: 'elevenlabs', voice_id: v.voice_id, name: v.name, gender: v.gender, locale }
+}
+
 // -----------------------------------------------------------------------------
-// KNOWN (English) pool — British only. xAI first, en-GB Azure for colour headroom.
-// gfzdpspr5fdp (Tom) intentionally absent: reserved for the explainer narrator.
-// -----------------------------------------------------------------------------
+// KNOWN (English) pool — a SINGLE voice: Tom's xAI clone (Tom 2026-06-30).
+// The English track is a comprehension aid / translator, not the drama — the
+// target cast already carries "who's speaking", so per-character English voices
+// added complexity for no real value. One consistent coach voice for ALL English
+// (translations AND the "means …" breakdown glosses, which already use it).
+// Both gender slots point to the same voice — the known track is a translator,
+// not the character performing, so gender needn't track the speaker.
+const TOM_CLONE_KNOWN = { provider: 'xai', voice_id: 'gfzdpspr5fdp', name: 'Tom', gender: 'm', locale: 'en' }
 const KNOWN_POOL = {
-  locale: 'en-GB',
-  f: [
-    { provider: 'xai',   voice_id: 'bedd6226',           name: 'Olivia', gender: 'f', locale: 'en' },
-    { provider: 'azure', voice_id: 'en-GB-SoniaNeural',  name: 'Sonia',  gender: 'f', locale: 'en-GB' },
-    { provider: 'azure', voice_id: 'en-GB-LibbyNeural',  name: 'Libby',  gender: 'f', locale: 'en-GB' },
-    { provider: 'azure', voice_id: 'en-GB-HollieNeural', name: 'Hollie', gender: 'f', locale: 'en-GB' },
-    { provider: 'azure', voice_id: 'en-GB-MaisieNeural', name: 'Maisie', gender: 'f', locale: 'en-GB' },
-  ],
-  m: [
-    { provider: 'xai',   voice_id: 'leo',                name: 'Leo',    gender: 'm', locale: 'en' },
-    { provider: 'azure', voice_id: 'en-GB-RyanNeural',   name: 'Ryan',   gender: 'm', locale: 'en-GB' },
-    { provider: 'azure', voice_id: 'en-GB-ThomasNeural', name: 'Thomas', gender: 'm', locale: 'en-GB' },
-    { provider: 'azure', voice_id: 'en-GB-AlfieNeural',  name: 'Alfie',  gender: 'm', locale: 'en-GB' },
-  ],
+  locale: 'en',
+  f: [TOM_CLONE_KNOWN],
+  m: [TOM_CLONE_KNOWN],
 }
 
 // -----------------------------------------------------------------------------
@@ -115,7 +128,7 @@ const TARGET = {
   fas:    { azure: 'fa-IR' },
   gle:    { azure: 'ga-IE' },                           // Irish (Dublin-pitch language; pitch demo itself is Chinese=Tier1)
   heb:    { azure: 'he-IL' },
-  hrv:    { azure: 'hr-HR' },
+  hrv:    { azure: 'hr-HR', eleven: true },   // thin native catalogue (2 Azure) → ElevenLabs top-up for dialogue colours
   hun:    { azure: 'hu-HU' },
   hye:    { azure: 'hy-AM' },
   isl:    { azure: 'is-IS' },
@@ -164,12 +177,18 @@ function resolveTargetPool(targetLang) {
   }
   if (e.azure) {
     const pick = AZURE[e.azure] || { f: [], m: [] }
-    const f = (pick.f || []).map(azureVoice)
-    const m = (pick.m || []).map(azureVoice)
+    let f = (pick.f || []).map(azureVoice)
+    let m = (pick.m || []).map(azureVoice)
+    // Premium top-up: ElevenLabs voices AFTER the native Azure (cheaper-first),
+    // for thin languages that opt in — the colourer only reaches them when a
+    // scene needs more colours than the native pool provides.
+    if (e.eleven) {
+      f = f.concat(ELEVEN_F.map(v => elevenVoice(v, e.azure)))
+      m = m.concat(ELEVEN_M.map(v => elevenVoice(v, e.azure)))
+    }
     return { tier: 3, provider: 'azure', locale: e.azure, f, m,
              humanPreferred: !!e.humanPreferred,
-             note: e.humanPreferred ? `${targetLang}: Azure ${e.azure} (course audio is human; pods fall back to Azure)`
-                                    : `${targetLang}: Azure ${e.azure}` }
+             note: `${targetLang}: Azure ${e.azure}${e.eleven ? ' + ElevenLabs top-up' : ''}${e.humanPreferred ? ' (course audio is human; pods fall back to Azure)' : ''}` }
   }
   if (e.multi) {
     const f = MULTI_F.map(v => xaiVoice(v, e.locale))

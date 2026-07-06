@@ -2,7 +2,7 @@
  * Phrase scoring via Claude Haiku — shared by seed-complete and preflight routes.
  */
 
-const { claudeChat } = require('../../shared/claude-cli.cjs');
+const { claudeChat, HAIKU_MODEL } = require('../../shared/claude-cli.cjs');
 
 // ─── Thresholds ──────────────────────────────────────────────────────────────
 
@@ -63,7 +63,7 @@ Return ONLY a JSON array (no markdown, no explanation) with one object per phras
 Phrases to score:
 ${JSON.stringify(phraseList, null, 2)}`;
 
-  const text = (await claudeChat(prompt, { model: 'haiku' })).trim();
+  const text = (await claudeChat(prompt, { model: HAIKU_MODEL })).trim();
   const match = text.match(/\[[\s\S]*\]/);
   if (!match) throw new Error('No JSON array found in Haiku response');
   return JSON.parse(match[0]);

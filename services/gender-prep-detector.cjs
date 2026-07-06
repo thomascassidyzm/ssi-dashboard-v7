@@ -17,6 +17,7 @@ const path = require('path')
 const crypto = require('crypto')
 const { createClient } = require('@supabase/supabase-js')
 const voiceGender = require('./voice-gender-map.cjs')
+const { HAIKU_MODEL } = require('./shared/claude-cli.cjs')
 require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') })
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
@@ -24,7 +25,7 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 // Bump when the Haiku prompt changes meaningfully. Stored in check_notes so
 // future runs can identify stale determinations and selectively re-run.
 const PROMPT_VERSION = 'v1'
-const MODEL = 'haiku'
+const MODEL = HAIKU_MODEL
 
 // Content signature: hash of all first-person target_text in the course.
 // Stable across re-runs (sorted), so if any relevant phrase is added/edited,
@@ -93,12 +94,16 @@ function callHaiku(prompt) {
   return new Promise((resolve, reject) => {
     const env = { ...process.env, ANTHROPIC_API_KEY: '' }
     delete env.CLAUDECODE  // avoid nested-CLI confusion
-    const proc = spawn('claude', ['--print', '--model', 'haiku'], { env })
+    const proc = spawn('claude', ['--print', '--model', HAIKU_MODEL], { env })
     let stdout = '', stderr = ''
     proc.stdout.on('data', d => stdout += d.toString())
     proc.stderr.on('data', d => stderr += d.toString())
     proc.on('close', code => {
-      if (code !== 0) return reject(new Error(`haiku exit ${code}: ${stderr.slice(0, 200)}`))
+      if (code !== 0) {
+        const err = new Error(`claude --print --model ${HAIKU_MODEL} exit ${code}: ${stderr.slice(0, 200)}`)
+        console.error(`[gender-prep-detector] ${err.message}`)
+        return reject(err)
+      }
       resolve(stdout.trim())
     })
     proc.stdin.write(prompt)

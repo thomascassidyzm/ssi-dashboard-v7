@@ -231,7 +231,7 @@
 <script setup>
 import { ref, computed, onMounted, defineComponent, h } from 'vue'
 import { useAuth } from '../composables/useAuth'
-import { composeArc } from '../lib/podArcCompose'
+import { composeArc, normSurface } from '../lib/podArcCompose'
 import CoursePicker from '../components/CoursePicker.vue'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './admin/algorithmConfigShared'
 
@@ -400,7 +400,9 @@ async function loadCoursePreview(courseCode) {
     ])
     for (const l of (legoRes.data || [])) if (l.explainer_audio_id) stage0GlossMap.value.set(l.lego_key, l.explainer_audio_id)
     for (const a of (atomRes.data || [])) {
-      const surface = a.text.slice('[atom] '.length)
+      // Normalised key (case-insensitive, accent-preserving) so the composer's
+      // normSurface lookup resolves capitalised atoms to lowercase slices.
+      const surface = normSurface(a.text.slice('[atom] '.length))
       if (!stage0TargetClipMap.value.has(surface)) stage0TargetClipMap.value.set(surface, a.id)
     }
   } catch (e) {

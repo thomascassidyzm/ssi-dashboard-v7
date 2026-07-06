@@ -12,7 +12,7 @@
  * - "This make me happy" → "This makes me happy"
  */
 
-const { claudeChat } = require('./claude-cli.cjs');
+const { claudeChat, HAIKU_MODEL } = require('./claude-cli.cjs');
 
 /**
  * Validate English phrases for natural grammar
@@ -56,7 +56,7 @@ If ALL phrases are grammatically correct, respond with:
 ONLY output the JSON, nothing else.`;
 
   try {
-    const content = await claudeChat(prompt, { model: 'haiku' });
+    const content = await claudeChat(prompt, { model: HAIKU_MODEL });
 
     // Parse JSON response
     let result;
