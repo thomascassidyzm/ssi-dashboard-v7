@@ -53,7 +53,7 @@ const TIERS = process.env.SLICE_NOISE
       { noise: '-25dB', minSil: 0.10, minGap: 110 },
       { noise: '-22dB', minSil: 0.07, minGap: 85 },
     ]
-const SENTENCE_PUNCT = /[.!?…。！？]/
+const SENTENCE_PUNCT = /[.!?…。！？؟]/
 
 function atomGroups(targetText, atoms) {
   const text = targetText || ''

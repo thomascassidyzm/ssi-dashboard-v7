@@ -34,8 +34,8 @@ const dry = process.argv.includes('--dry')
 if (!COURSE) { console.error('usage: render-sentence-takes.cjs <course> [orders] [--dry]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
-const SENTENCE_PUNCT = /[.!?…。！？]/
-const SENTENCE_SPLIT = /(?<=[.!?…。！？])\s+/
+const SENTENCE_PUNCT = /[.!?…。！？؟]/
+const SENTENCE_SPLIT = /(?<=[.!?…。！？؟])\s+/
 
 // Raw (unglued) sentence partition of the fine units — same walk as the
 // Take G grouping, minus the interjection glue (sentence_audio_ids are
@@ -70,7 +70,7 @@ function sentenceTextsFromGroups(turnText, groups) {
     }
     // extend through trailing punctuation (the sentence's terminal mark)
     const tail = turnText.slice(end)
-    const stop = tail.search(/(?<=[.!?…。！？])/)
+    const stop = tail.search(/(?<=[.!?…。！？؟])/)
     spans.push({ start: first, end: stop === -1 ? turnText.length : end + stop })
     cursor = spans[spans.length - 1].end
   }

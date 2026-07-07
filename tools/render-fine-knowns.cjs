@@ -38,7 +38,7 @@ const ROLE = 'pod_fine_known'
 const TOM_CLONE = 'gfzdpspr5fdp'
 const XAI_OFFICIAL = new Set(['en', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'ru', 'zh', 'ja', 'ko', 'vi', 'hi', 'bn', 'ar', 'tr', 'pl'])
 const base = (l) => String(l || '').toLowerCase().split('-')[0]
-const SENTENCE_PUNCT = /[.!?…。！？]/
+const SENTENCE_PUNCT = /[.!?…。！？؟]/
 
 // same grouping + glue as the Lab, to map known_text sentences onto groups
 function atomGroups(targetText, atoms) {

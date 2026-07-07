@@ -34,7 +34,7 @@ const alnum = (s) => (s || '').toLowerCase().replace(/[^\p{L}\p{N}\p{M}]/gu, '')
 const bare = (s) => (s || '').toLowerCase().replace(/[.,!?;:¿¡"'’，。？！、]/g, '').replace(/\s+/g, ' ').trim()
 const slug = (s) => bare(s).replace(/\s+/g, '-').replace(/[^\p{L}\p{N}-]/gu, '').slice(0, 64)
 const cleanSurface = (s) => String(s || '').replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '').trim()
-const SENTENCE_PUNCT = /[.!?…。！？]/
+const SENTENCE_PUNCT = /[.!?…。！？؟]/
 
 function claude(prompt) {
   return new Promise((res, rej) => {

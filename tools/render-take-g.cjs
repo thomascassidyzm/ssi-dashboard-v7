@@ -44,12 +44,12 @@ if (!COURSE) { console.error('usage: render-take-g.cjs <course> [orders] [--dry|
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const ROLE = 'pod_take_g'
-const SENTENCE_PUNCT = /[.!?…。！？]/
+const SENTENCE_PUNCT = /[.!?…。！？؟]/
 // A seam whose left side already ends in ANY pause-forcing punctuation
 // (comma-class or sentence-terminal — a glued interjection ends in ! or .)
 // needs nothing added; a bare seam gains a comma — the pause every TTS
 // voice honours.
-const PAUSE_PUNCT_END = /[,;:、，；：…—–.!?。！？]["”』」)]*$/
+const PAUSE_PUNCT_END = /[,;:、，；：…—–.!?。！？؟،؛]["”』」)]*$/
 const CJK_RE = /[぀-ヿ㐀-䶿一-鿿가-힯]/
 
 // ---- same grouping as the Lab / author-window-knowns ----
@@ -104,7 +104,7 @@ function cuedGroupText(turnText, group) {
     if (i < marks.length - 1) return turnText.slice(m.start, marks[i + 1].start).trim()
     // last unit: keep trailing punctuation up to (and incl.) the terminal mark
     const tail = turnText.slice(m.start)
-    const stop = tail.search(/(?<=[.!?…。！？])/)
+    const stop = tail.search(/(?<=[.!?…。！？؟])/)
     return (stop === -1 ? tail : tail.slice(0, stop)).trim()
   })
   let out = ''

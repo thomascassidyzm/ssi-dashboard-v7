@@ -45,7 +45,7 @@ function claude(prompt) {
 }
 
 // ---- mirror PodLab.vue exactly: sentence grouping + glue + window spans ----
-const SENTENCE_PUNCT = /[.!?…。！？]/
+const SENTENCE_PUNCT = /[.!?…。！？؟]/
 
 function atomGroups(targetText, atoms) {
   const text = targetText || ''

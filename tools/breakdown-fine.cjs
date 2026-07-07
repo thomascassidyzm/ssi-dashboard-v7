@@ -49,7 +49,7 @@ THE TEST for every seam: "would a careful speaker naturally pause HERE when sayi
 SEAMS LOOK BOTH WAYS: the fragment on EACH side of a seam must itself be a natural beat. Never strand a bare word that merely completes or introduces a phrase — a conjunction ALWAYS attaches to the clause it introduces ("mais je ne peux pas parler" is ONE chunk, never "… mais | je ne peux pas"), a subject pronoun to its verb phrase, bound particles to their host. Before keeping any seam, say each side aloud alone: if either side sounds like a stub, merge it.
 CROSS-LANGUAGE 1:1 — each chunk's gloss must translate EXACTLY that chunk, no more and no less: no word of meaning may sit in the neighbouring chunk's gloss (if "but" is in this chunk's target, "but" belongs in THIS gloss). A learner will hear the chunk audio against exactly this gloss; any drift between them is a defect.
 - a typical sentence yields 1–3 chunks; a short sentence is ONE chunk (do not split what fits in one breath).
-- Punctuation breaks are MANDATORY seams; a chunk NEVER spans any punctuation mark and NEVER crosses a sentence boundary (. ! ? 。 ！ ？).
+- Punctuation breaks are MANDATORY seams; a chunk NEVER spans any punctuation mark and NEVER crosses a sentence boundary (. ! ? 。 ！ ？ ؟).
 - Chunks must TILE each sentence IN ORDER — their surfaces, concatenated, reconstruct it exactly.
 - Snap to the speaking-course LEGO seams below where they fit — they mark units this course's learners already own.
 - Each chunk is glossed with its LITERAL/contextual meaning in natural known-language a learner instantly understands (the ACTUAL contextual sense, not a dictionary lump). Word-order of the gloss follows the TARGET's construction where that helps show how the target builds the idea.
@@ -64,7 +64,7 @@ Output ONLY JSON: {"atoms":[{"target":"...","gloss":"... or null","source":"lego
 // nothing the model invented is ever stored. Returns snapped units, or null on mismatch.
 const cmp = (s) => String(s || '').normalize('NFC').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '')
 function tileAndSnap(units, targetText) {
-  const sents = String(targetText).split(/(?<=[.!?。！？…])/).map((raw) => {
+  const sents = String(targetText).split(/(?<=[.!?。！？…؟])/).map((raw) => {
     const nfc = raw.normalize('NFC')
     let keep = ''; const map = []
     for (let i = 0; i < nfc.length; i++) {

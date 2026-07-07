@@ -32,7 +32,7 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 const ROLE = 'pod_take_g'
 const CUE = ' … '
 const EL_BREAK = ' <break time="0.40s"/> '
-const SENTENCE_PUNCT = /[.!?…。！？]/
+const SENTENCE_PUNCT = /[.!?…。！？؟]/
 
 function atomGroups(targetText, atoms) {
   const text = targetText || ''
@@ -74,7 +74,7 @@ function cuedGroupText(turnText, group, cue) {
   const pieces = marks.map((m, i) => {
     if (i < marks.length - 1) return turnText.slice(m.start, marks[i + 1].start).trim()
     const tail = turnText.slice(m.start)
-    const stop = tail.search(/(?<=[.!?…。！？])/)
+    const stop = tail.search(/(?<=[.!?…。！？؟])/)
     return (stop === -1 ? tail : tail.slice(0, stop)).trim()
   })
   return pieces.join(cue)
