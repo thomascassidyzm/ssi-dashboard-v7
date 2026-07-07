@@ -57,18 +57,37 @@ CROSS-LANGUAGE 1:1 — each chunk's gloss must translate EXACTLY that chunk, no 
 Output ONLY JSON: {"atoms":[{"target":"...","gloss":"... or null","source":"lego|llm|name"}]}`
 
 // Tiling + boundary check: units must exactly tile EACH sentence in order.
-function tilesPerSentence(units, targetText) {
-  const sents = String(targetText).split(/(?<=[.!?。！？…])/).map(alnum).filter(Boolean)
+// Comparison is MARK-INSENSITIVE (NFC, then letters/digits only): models habitually strip
+// Arabic/Farsi combining diacritics (tanween etc.) from returned chunks — a normalisation
+// artefact, not a bad seam; base letters must still tile exactly. On success each unit's
+// surface is SNAPPED back to the verbatim source span, so dropped diacritics come back and
+// nothing the model invented is ever stored. Returns snapped units, or null on mismatch.
+const cmp = (s) => String(s || '').normalize('NFC').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '')
+function tileAndSnap(units, targetText) {
+  const sents = String(targetText).split(/(?<=[.!?。！？…])/).map((raw) => {
+    const nfc = raw.normalize('NFC')
+    let keep = ''; const map = []
+    for (let i = 0; i < nfc.length; i++) {
+      const c = cmp(nfc[i])
+      for (let k = 0; k < c.length; k++) { keep += c[k]; map.push(i) }
+    }
+    return { raw: nfc, keep, map }
+  }).filter((x) => x.keep)
   let si = 0, pos = 0
+  const out = []
   for (const u of units) {
-    const ua = alnum(u.target)
+    const ua = cmp(u.target)
     if (!ua) continue
-    if (si >= sents.length) return false
-    if (sents[si].slice(pos, pos + ua.length) !== ua) return false
+    if (si >= sents.length) return null
+    const s = sents[si]
+    if (s.keep.slice(pos, pos + ua.length) !== ua) return null
+    let end = s.map[pos + ua.length - 1] + 1
+    while (end < s.raw.length && /\p{M}/u.test(s.raw[end])) end++ // chunk-final combining marks ride along
+    out.push({ ...u, target: s.raw.slice(s.map[pos], end).trim() })
     pos += ua.length
-    if (pos === sents[si].length) { si++; pos = 0 }
+    if (pos === s.keep.length) { si++; pos = 0 }
   }
-  return si === sents.length && pos === 0
+  return si === sents.length && pos === 0 ? out : null
 }
 
 ;(async () => {
@@ -85,8 +104,9 @@ function tilesPerSentence(units, targetText) {
     const prompt = `${RULES}\n\nSPEAKING-COURSE LEGO UNITS present:\n${matches.join('\n') || '  (none)'}\n\nTURN (${COURSE}):\ntarget: ${s.target_text}\nknown:  ${s.known_text}\n\nJSON only:`
     let plan
     try { const o = await claude(prompt); plan = JSON.parse(o.slice(o.indexOf('{'), o.lastIndexOf('}') + 1)) } catch (e) { console.log(`S${s.global_order}: PARSE FAIL`); return }
-    const units = (plan.atoms || []).map(a => ({ ...a, target: cleanSurface(a.target) })).filter(a => alnum(a.target))
-    if (!tilesPerSentence(units, s.target_text)) {
+    let units = (plan.atoms || []).map(a => ({ ...a, target: cleanSurface(a.target) })).filter(a => alnum(a.target))
+    units = tileAndSnap(units, s.target_text)
+    if (!units) {
       console.log(`S${s.global_order}: ✗ TILING/BOUNDARY MISMATCH — skipped`)
       tilefail++; return
     }
