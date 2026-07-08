@@ -30,6 +30,8 @@ const MODEL = process.env.BD_MODEL || 'opus'
 if (!COURSE) { console.error('usage: audit-fine-seams.cjs <course> [orders] [--dry]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
+const KNOWN_NAMES = { eng: 'English', jpn: 'Japanese', zho: 'Chinese', spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian', por: 'Portuguese', ara: 'Arabic', gle: 'Irish', cym: 'Welsh', rus: 'Russian', nld: 'Dutch', kor: 'Korean', hin: 'Hindi' }
+const KNOWN = KNOWN_NAMES[(COURSE.split('_for_')[1] || 'eng').split('_')[0]] || 'the learner\'s language'
 const alnum = (s) => (s || '').toLowerCase().replace(/[^\p{L}\p{N}\p{M}]/gu, '')
 const bare = (s) => (s || '').toLowerCase().replace(/[.,!?;:¿¡"'’，。？！、]/g, '').replace(/\s+/g, ' ').trim()
 const slug = (s) => bare(s).replace(/\s+/g, '-').replace(/[^\p{L}\p{N}-]/gu, '').slice(0, 64)
@@ -76,7 +78,7 @@ const RULES = `You audit the seams of ONE dialogue turn's fine unit breakdown fo
 THE RULE — seams look BOTH ways: the fragment on EACH side of a seam must itself be a natural beat a speaker could pause after AND before. The failure you are hunting: a bare word stranded after the phrase it completes — "početi govoriti | hrvatski" is WRONG ("hrvatski" leans back onto its verb phrase; "početi govoriti hrvatski" is ONE beat). Say each side of every seam aloud alone: if either side sounds like a stub rather than a beat, MERGE across that seam.
 You may ONLY merge consecutive units within the same sentence — never re-split, never reorder, never cross sentence punctuation.
 BE CONSERVATIVE: most seams are fine; when unsure, KEEP the seam. A merge needs a clear "that stub is not a beat" judgement.
-For every merge, give the merged unit's natural translation (reuse the original units' wording where it stays natural).
+For every merge, give the merged unit's natural translation in ${KNOWN} — the learner's own language (reuse the original units' wording where it stays natural).
 Return ONLY JSON: {"merges":[{"s":<sentence#>,"from":<first unit#>,"to":<last unit#>,"gloss":"..."}]} — unit numbers are the [n] indices shown, per sentence; empty list if all seams pass.`
 
 ;(async () => {

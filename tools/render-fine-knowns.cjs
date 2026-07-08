@@ -58,7 +58,9 @@ function atomGroups(targetText, atoms) {
 function gluedKnownTexts(targetText, atoms, knownText) {
   const rawGroups = atomGroups(targetText, atoms)
   if (rawGroups.length < 2) return null
-  const sents = String(knownText || '').split(/(?<=[.!?…])\s+/).filter(Boolean)
+  // CJK terminals split space-optionally (X_for_jpn knowns have no space after 。);
+  // Latin marks keep requiring whitespace so decimals/abbreviations don't split.
+  const sents = String(knownText || '').split(/(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟])\s+(?=\S)/).filter(Boolean)
   if (sents.length !== rawGroups.length) return null
   const out = []
   let pushedAny = false
@@ -110,7 +112,7 @@ function gluedKnownTexts(targetText, atoms, knownText) {
           const k = normalizeForAudio(t)
           if (!texts.has(k)) { texts.set(k, t.trim()); sentenceTexts++ }
         }
-      } else if (String(s.known_text || '').split(/(?<=[.!?…])\s+/).filter(Boolean).length > 1) {
+      } else if (String(s.known_text || '').split(/(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟])\s+(?=\S)/).filter(Boolean).length > 1) {
         unalignedTurns++
       }
     }

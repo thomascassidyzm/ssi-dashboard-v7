@@ -85,11 +85,17 @@ function windowSpans(n) {
   return spans
 }
 
-const RULES = `You author the ENGLISH heard alongside fused chunks of ONE dialogue turn in a listening exercise.
-The learner has already heard each fine unit with its per-unit translation. Now units FUSE into windows (every contiguous run of units), and each window needs the English a translator-coach would say for exactly that stretch of speech — no more, no less.
-THE DEFAULT: the units' translations, joined in order, ARE the window's English — KEEP the join whenever it reads as natural spoken English. This continuity is the point: the learner should hear the small translations audibly fusing into bigger ones.
-REWRITE ONLY where the plain join goes wrong in English: connective tissue surfaces twice, agreement breaks, word order turns foreign, or the join reads as a word-list rather than a phrase. When you rewrite: minimal edit, reuse the units' own wording as far as possible, keep the meaning of exactly this span (never import meaning from outside the window, never complete the sentence for the learner), and keep any function-labels like [topic] as they are.
-A window is a FRAGMENT of a sentence and may stay a fragment in English ("but I can't" / "that we saw yesterday") — never round it up to a full sentence.
+// The learner's KNOWN language comes from the course code (X_for_KNOWN) — the
+// windows must be authored in it, not in English (wave 3: eng_for_X, X_for_jpn).
+const KNOWN_NAMES = { eng: 'English', jpn: 'Japanese', zho: 'Chinese', spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian', por: 'Portuguese', ara: 'Arabic', gle: 'Irish', cym: 'Welsh', rus: 'Russian', nld: 'Dutch', kor: 'Korean', hin: 'Hindi' }
+const KNOWN_CODE = (COURSE.split('_for_')[1] || 'eng').split('_')[0]
+const KNOWN = KNOWN_NAMES[KNOWN_CODE] || KNOWN_CODE.toUpperCase()
+
+const RULES = `You author the ${KNOWN.toUpperCase()} heard alongside fused chunks of ONE dialogue turn in a listening exercise. The learner's own language is ${KNOWN}; every "known" you write must be natural ${KNOWN}.
+The learner has already heard each fine unit with its per-unit translation. Now units FUSE into windows (every contiguous run of units), and each window needs the ${KNOWN} a translator-coach would say for exactly that stretch of speech — no more, no less.
+THE DEFAULT: the units' translations, joined in order, ARE the window's ${KNOWN} — KEEP the join whenever it reads as natural spoken ${KNOWN}. This continuity is the point: the learner should hear the small translations audibly fusing into bigger ones.
+REWRITE ONLY where the plain join goes wrong in ${KNOWN}: connective tissue surfaces twice, agreement breaks, word order turns foreign, or the join reads as a word-list rather than a phrase. When you rewrite: minimal edit, reuse the units' own wording as far as possible, keep the meaning of exactly this span (never import meaning from outside the window, never complete the sentence for the learner), and keep any function-labels like [topic] as they are.
+A window is a FRAGMENT of a sentence and may stay a fragment in ${KNOWN} — never round it up to a full sentence.
 Return ONLY JSON: {"windows":[{"s":<sentence#>,"start":<n>,"end":<n>,"known":"..."}]} — one entry for EVERY window listed, same s/start/end, in any order.`
 
 ;(async () => {
@@ -126,7 +132,7 @@ Return ONLY JSON: {"windows":[{"s":<sentence#>,"start":<n>,"end":<n>,"known":"..
       const join = g.slice(w.start, w.end + 1).map((a) => a.gloss).filter(Boolean).join(' ')
       return `s=${w.gi} start=${w.start} end=${w.end}  target: "${g.slice(w.start, w.end + 1).map((a) => a.target_surface).join(' ')}"  join: "${join}"`
     }).join('\n')
-    const prompt = `${RULES}\n\nTURN (${COURSE}):\ntarget: ${s.target_text}\nEnglish (whole turn): ${s.known_text}\n\n${sentBlock}\n\nWINDOWS (every one needs a "known"):\n${winBlock}\n\nJSON only:`
+    const prompt = `${RULES}\n\nTURN (${COURSE}):\ntarget: ${s.target_text}\n${KNOWN} (whole turn): ${s.known_text}\n\n${sentBlock}\n\nWINDOWS (every one needs a "known"):\n${winBlock}\n\nJSON only:`
 
     let plan
     try {

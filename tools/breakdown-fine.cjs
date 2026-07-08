@@ -43,6 +43,11 @@ function claude(prompt) {
   })
 }
 
+// The learner's KNOWN language from the course code (X_for_KNOWN) — glosses are
+// authored in it (wave 3: eng_for_X / X_for_jpn have non-English knowns).
+const KNOWN_NAMES = { eng: 'English', jpn: 'Japanese', zho: 'Chinese', spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian', por: 'Portuguese', ara: 'Arabic', gle: 'Irish', cym: 'Welsh', rus: 'Russian', nld: 'Dutch', kor: 'Korean', hin: 'Hindi' }
+const KNOWN = KNOWN_NAMES[(COURSE.split('_for_')[1] || 'eng').split('_')[0]] || 'the learner\'s language'
+
 const RULES = `You author the MOLECULAR chunk breakdown for ONE dialogue TURN — the seams where a slow, careful take of this speech will pause for a learner. A pause WILL BE SYNTHESIZED at every seam you place (the gapped TTS take inserts one), and each chunk becomes an audio slice paired with its translation — so every seam is a real, audible commitment.
 THE MODEL — chunks are MOLECULAR, not atomic (Tom 2026-07-05): breath-groups / clause-sized spans, typically 3–6 words (Chinese/Japanese: typically 4–10 characters) — "good morning Anna," | "what are you thinking" | "of doing today?" — NOT single words, NOT minimal grammar atoms. The learner should hear a chunk and feel a whole piece of the idea, while still seeing how the sentence is built from its parts.
 THE TEST for every seam: "would a careful speaker naturally pause HERE when saying this slowly — and would a comma there read naturally?" If a pause there would sound wrong, do NOT split there. Never split inside anything spoken as one breath (a fused expression, a verb and its bound particle, a measure word and its noun).
@@ -52,7 +57,7 @@ CROSS-LANGUAGE 1:1 — each chunk's gloss must translate EXACTLY that chunk, no 
 - Punctuation breaks are MANDATORY seams; a chunk NEVER spans any punctuation mark and NEVER crosses a sentence boundary (. ! ? 。 ！ ？ ؟).
 - Chunks must TILE each sentence IN ORDER — their surfaces, concatenated, reconstruct it exactly.
 - Snap to the speaking-course LEGO seams below where they fit — they mark units this course's learners already own.
-- Each chunk is glossed with its LITERAL/contextual meaning in natural known-language a learner instantly understands (the ACTUAL contextual sense, not a dictionary lump). Word-order of the gloss follows the TARGET's construction where that helps show how the target builds the idea.
+- Each chunk is glossed with its LITERAL/contextual meaning in natural ${KNOWN} a learner instantly understands (the ACTUAL contextual sense, not a dictionary lump) — the learner's own language is ${KNOWN}; never gloss in any other language. Word-order of the gloss follows the TARGET's construction where that helps show how the target builds the idea.
 - Proper nouns / NAMES → source "name", gloss null.
 Output ONLY JSON: {"atoms":[{"target":"...","gloss":"... or null","source":"lego|llm|name"}]}`
 

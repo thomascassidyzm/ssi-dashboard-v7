@@ -35,7 +35,10 @@ if (!COURSE) { console.error('usage: render-sentence-takes.cjs <course> [orders]
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const SENTENCE_PUNCT = /[.!?…。！？؟]/
-const SENTENCE_SPLIT = /(?<=[.!?…。！？؟])\s+/
+// CJK terminals (。！？) split with or without a following space — CJK text has none,
+// and a \s+ split saw multi-sentence Japanese/Chinese turns as ONE sentence. Latin
+// marks keep requiring whitespace so decimals ("3.5") and abbreviations don't split.
+const SENTENCE_SPLIT = /(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟])\s+(?=\S)/
 
 // Raw (unglued) sentence partition of the fine units — same walk as the
 // Take G grouping, minus the interjection glue (sentence_audio_ids are
