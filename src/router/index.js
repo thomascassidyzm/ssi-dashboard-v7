@@ -473,6 +473,15 @@ const routes = [
         meta: { title: 'Course Journey - Production Suite' }
       },
       {
+        // Synthesis Studio — drives the voice-engine's synthesize/status/
+        // cancel/coverage endpoints; sibling of journey/team/recording-optimizer.
+        path: 'synthesis',
+        name: 'SynthesisStudio',
+        component: () => import('../views/production/SynthesisStudio.vue'),
+        props: true,
+        meta: { title: 'Build the Audio - Production Suite' }
+      },
+      {
         path: 'seeds',
         name: 'SeedEditor',
         component: () => import('../views/production/SeedEditor.vue'),

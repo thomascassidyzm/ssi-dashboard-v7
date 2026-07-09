@@ -324,8 +324,10 @@ const steps = computed(() => {
     state: synthDone.value ? 'done' : (engineInstalled.value ? 'active' : 'pending'),
     statusText: engineInstalled.value
       ? (synthSummary.value || 'Ready')
-      : 'Coming soon — the stitching engine is being installed',
-    links: []
+      : 'Waiting for recordings',
+    links: [
+      { label: 'Open the stitching studio', to: `/production/${code}/synthesis`, primary: true }
+    ]
   }
 
   const qa = {
