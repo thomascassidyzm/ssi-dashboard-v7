@@ -316,6 +316,31 @@ export async function getAudioMetadata(courseCode) {
 }
 
 /**
+ * Recent human-voice course_audio rows for one (course, voice) — the
+ * Synthesis Studio's "listen to a few" sampler after a stitch job completes.
+ * Signed playback URLs still come from the production API; S3 auth stays
+ * server-side (this only reads the same public metadata columns getAudioMetadata does).
+ */
+export async function getRecentHumanAudio(courseCode, voiceId, limit = 5) {
+  if (!supabase) throw new Error('Supabase not configured')
+
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('id, text, created_at')
+    .eq('course_code', courseCode)
+    .eq('voice_id', voiceId)
+    .eq('origin', 'human')
+    .order('created_at', { ascending: false })
+    .limit(limit)
+
+  if (error) {
+    console.warn('[Supabase] getRecentHumanAudio error:', error.message)
+    return []
+  }
+  return data || []
+}
+
+/**
  * Get audio flags for a course
  * Replaces: /api/production/:code/audio-flags
  */

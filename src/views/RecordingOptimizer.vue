@@ -99,7 +99,7 @@
                 </p>
               </div>
               <router-link
-                :to="`/production/${courseCode}/recording-studio`"
+                :to="`/production/${courseCode}/recording`"
                 class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-medium
                        hover:bg-emerald-500 transition-colors flex items-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,120 +109,6 @@
                 Open Recording Studio
               </router-link>
             </div>
-          </section>
-
-          <!-- Audio stitching demo -->
-          <section class="rounded-xl border border-violet-500/30 bg-violet-500/5 overflow-hidden">
-            <div class="px-6 py-4 border-b border-violet-500/20">
-              <div class="flex items-center gap-3">
-                <span class="text-2xl">🧬</span>
-                <div>
-                  <h2 class="text-lg font-semibold text-violet-300 lt-violet-strong">How phrases get stitched</h2>
-                  <p class="text-sm text-muted">New phrases are built from pieces your voices already recorded</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-6 space-y-6">
-              <!-- Target phrase with audio -->
-              <div class="text-center">
-                <p class="text-xs text-faint uppercase tracking-wider mb-2">Stitched phrase</p>
-                <p class="text-xl text-ink font-medium">{{ currentExample.welsh }}</p>
-                <p class="text-sm text-muted mt-1">"{{ currentExample.english }}"</p>
-                <!-- Play button for target -->
-                <div class="mt-3 flex justify-center">
-                  <button v-if="demoAudio[currentExample.seed]"
-                          @click="playDemoAudio(currentExample.seed)"
-                          :class="[
-                            'flex items-center gap-2 px-4 py-2 text-ink lt-on-fill rounded-lg transition-colors',
-                            currentlyPlaying === currentExample.seed
-                              ? 'bg-violet-700 ring-2 ring-violet-400'
-                              : 'bg-violet-600 hover:bg-violet-500'
-                          ]">
-                    <svg v-if="currentlyPlaying !== currentExample.seed" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M6.3 3.3l10 6.7a1 1 0 010 1.6l-10 6.7A1 1 0 015 17V3a1 1 0 011.3-.7z"/>
-                    </svg>
-                    <svg v-else class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                      <rect x="5" y="4" width="3" height="12" rx="1"/>
-                      <rect x="12" y="4" width="3" height="12" rx="1"/>
-                    </svg>
-                    {{ currentlyPlaying === currentExample.seed ? 'Playing...' : 'Play the stitched result' }}
-                  </button>
-                  <span v-else class="text-sm text-faint italic">Loading audio...</span>
-                </div>
-              </div>
-
-              <!-- Build visualization -->
-              <div class="bg-canvas rounded-lg p-4 border border-line">
-                <p class="text-xs text-faint uppercase tracking-wider mb-4 text-center">Built from these recorded phrases:</p>
-
-                <div class="flex flex-wrap justify-center gap-2 mb-6">
-                  <span v-for="(word, idx) in currentExample.buildOrder" :key="idx"
-                        :class="[
-                          'px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all cursor-pointer hover:scale-105',
-                          word.sourceColor
-                        ]"
-                        @click="playDemoAudio(word.from)">
-                    {{ word.text }}
-                    <span class="text-xs opacity-60 ml-1">S{{ word.from }}</span>
-                  </span>
-                </div>
-
-                <!-- Source phrases with play buttons -->
-                <div class="space-y-3 mt-6">
-                  <div v-for="source in usedSources" :key="source.seed"
-                       :class="['p-3 rounded-lg border', source.borderClass]">
-                    <div class="flex items-center justify-between">
-                      <div class="flex-1 min-w-0">
-                        <div class="flex items-center gap-2">
-                          <span :class="['text-xs font-semibold uppercase tracking-wider', source.textClass]">
-                            Seed {{ source.seed }}
-                          </span>
-                          <!-- Play button -->
-                          <button v-if="demoAudio[source.seed]"
-                                  @click="playDemoAudio(source.seed)"
-                                  :class="[
-                                    'w-6 h-6 rounded-full flex items-center justify-center transition-colors',
-                                    currentlyPlaying === source.seed ? 'ring-2 ring-white/50' : '',
-                                    source.playBtnClass
-                                  ]">
-                            <svg class="w-3 h-3 text-ink lt-on-fill ml-0.5" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M6.3 3.3l10 6.7a1 1 0 010 1.6l-10 6.7A1 1 0 015 17V3a1 1 0 011.3-.7z"/>
-                            </svg>
-                          </button>
-                        </div>
-                        <p class="text-sm text-ink mt-1">{{ source.welsh }}</p>
-                        <p class="text-xs text-faint">"{{ source.english }}"</p>
-                      </div>
-                      <div class="flex flex-wrap gap-1 ml-4">
-                        <span v-for="lego in sourceProvides[source.seed]" :key="lego"
-                              :class="['text-xs px-2 py-0.5 rounded', source.badgeClass]">
-                          {{ lego }}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Key insight -->
-              <div class="bg-gradient-to-r from-violet-500/10 to-emerald-500/10 rounded-lg p-4 border border-violet-500/20">
-                <div class="flex items-start gap-3">
-                  <span class="text-xl">💡</span>
-                  <div>
-                    <p class="text-sm text-ink font-medium">The Magic</p>
-                    <p class="text-sm text-muted mt-1">
-                      By recording just <span class="text-accent-2 font-semibold">{{ totalRecordings }} phrases</span>,
-                      we can stitch together audio for all <span class="text-violet-400 font-semibold lt-violet-strong">{{ stats.totalPhrases.toLocaleString() }} phrases</span> in the course.
-                      That's a <span class="text-accent font-semibold">{{ stats.reductionPercent }}% reduction</span> in recording effort.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Hidden audio element for playback -->
-            <audio ref="demoAudioPlayer" @ended="currentlyPlaying = null"></audio>
           </section>
 
           <!-- Recording Script Preview -->
@@ -467,131 +353,6 @@ const totalCoverage = computed(() => stats.value.coveragePercent || 0)
 // Flagged phrases (to be fetged from flags system)
 const flaggedPhrases = ref([])
 
-// Styling constants for LEGO word sources
-const sourceStyles = {
-  1: { sourceColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300' },
-  6: { sourceColor: 'bg-amber-500/20 border-amber-500/50 text-amber-300' },
-  11: { sourceColor: 'bg-violet-500/20 border-violet-500/50 text-violet-300' }
-}
-
-// Synthesized example demonstrating LEGO audio splicing
-const synthesizedExample = {
-  seed: 60,
-  welsh: "dw i ddim isio siarad Cymraeg rŵan",
-  english: "I don't want to speak Welsh now",
-  buildOrder: [
-    { text: 'dw', from: 1 },
-    { text: 'i', from: 1 },
-    { text: 'ddim', from: 6 },
-    { text: 'isio', from: 1 },
-    { text: 'siarad', from: 1 },
-    { text: 'Cymraeg', from: 1 },
-    { text: 'rŵan', from: 11 }
-  ]
-}
-
-// Computed: synthesized example with styling applied
-const currentExample = computed(() => {
-  return {
-    ...synthesizedExample,
-    buildOrder: synthesizedExample.buildOrder.map(word => ({
-      ...word,
-      sourceColor: sourceStyles[word.from].sourceColor
-    }))
-  }
-})
-
-// Source phrases that provide the LEGOs
-const sourcePhrases = [
-  {
-    seed: 1,
-    welsh: "dw i isio siarad Cymraeg",
-    english: "I want to speak Welsh",
-    provides: ['dw', 'i', 'isio', 'siarad', 'Cymraeg'],
-    borderClass: 'border-emerald-500/30 bg-emerald-500/5',
-    textClass: 'text-emerald-400',
-    badgeClass: 'bg-emerald-500/20 text-emerald-300',
-    playBtnClass: 'bg-emerald-600 hover:bg-emerald-500'
-  },
-  {
-    seed: 6,
-    welsh: "fedra i ddim cofio sut i siarad Cymraeg",
-    english: "I can't remember how to speak Welsh",
-    provides: ['fedra', 'ddim', 'cofio', 'sut'],
-    borderClass: 'border-amber-500/30 bg-amber-500/5',
-    textClass: 'text-amber-400',
-    badgeClass: 'bg-amber-500/20 text-amber-300',
-    playBtnClass: 'bg-amber-600 hover:bg-amber-500'
-  },
-  {
-    seed: 11,
-    welsh: "ond well i mi ymarfer siarad Cymraeg rŵan",
-    english: "but I'd better practice speaking Welsh now",
-    provides: ['ond', 'well', 'mi', 'ymarfer', 'rŵan'],
-    borderClass: 'border-violet-500/30 bg-violet-500/5',
-    textClass: 'text-violet-400',
-    badgeClass: 'bg-violet-500/20 text-violet-300',
-    playBtnClass: 'bg-violet-600 hover:bg-violet-500'
-  }
-]
-
-// Computed: which sources are used by the current example
-const usedSources = computed(() => {
-  const usedSeeds = new Set(currentExample.value.buildOrder.map(w => w.from))
-  return sourcePhrases.filter(s => usedSeeds.has(s.seed))
-})
-
-// Computed: which LEGOs each source provides for the current example
-const sourceProvides = computed(() => {
-  const example = currentExample.value
-  const provides = {}
-  for (const source of sourcePhrases) {
-    provides[source.seed] = example.buildOrder
-      .filter(w => w.from === source.seed)
-      .map(w => w.text)
-  }
-  return provides
-})
-
-// Demo audio URLs (fetched from API)
-const demoAudio = ref({})
-const demoAudioPlayer = ref(null)
-const currentlyPlaying = ref(null)
-
-// Fetch demo audio URLs
-async function fetchDemoAudio() {
-  try {
-    const response = await fetch(`${API_BASE}/api/production/${courseCode.value}/frankenstein-demo`)
-    if (response.ok) {
-      const data = await response.json()
-      // Map by seed number for easy lookup
-      const audioMap = {}
-      for (const phrase of data.phrases) {
-        if (phrase.url) {
-          audioMap[phrase.seed] = phrase.url
-        }
-      }
-      demoAudio.value = audioMap
-    }
-  } catch (err) {
-    console.error('Failed to fetch demo audio:', err)
-  }
-}
-
-// Play demo audio for a specific seed
-function playDemoAudio(seedNumber) {
-  const url = demoAudio.value[seedNumber]
-  if (!url || !demoAudioPlayer.value) return
-
-  // Stop current playback
-  demoAudioPlayer.value.pause()
-
-  // Play new audio
-  demoAudioPlayer.value.src = url
-  demoAudioPlayer.value.play()
-  currentlyPlaying.value = seedNumber
-}
-
 // Fetch algorithm results from API
 async function runAlgorithm() {
   isCalculating.value = true
@@ -645,7 +406,6 @@ function exportPDF() {
 // Load data on mount
 onMounted(() => {
   runAlgorithm().then(fetchHonestCoverage)
-  fetchDemoAudio()
 })
 </script>
 
@@ -654,16 +414,7 @@ onMounted(() => {
    foreground text / pill labels. Dark mode is untouched — these only apply under
    [data-theme="light"]. Hues are preserved, darkened to pass WCAG AA on the light
    pastel (/5–/20) fills and white/canvas surfaces. */
-:root[data-theme="light"] :deep(.lt-violet-strong) { color: #6d28d9; }      /* violet-700, 7.1:1 on white */
 :root[data-theme="light"] :deep(.text-emerald-400) { color: #047857; }       /* emerald-700 */
-:root[data-theme="light"] :deep(.text-emerald-300) { color: #047857; }
 :root[data-theme="light"] :deep(.text-amber-400)   { color: #92400e; }        /* amber-800 */
-:root[data-theme="light"] :deep(.text-amber-300)   { color: #92400e; }
-:root[data-theme="light"] :deep(.text-violet-400)  { color: #6d28d9; }        /* violet-700 */
-:root[data-theme="light"] :deep(.text-violet-300)  { color: #6d28d9; }
 :root[data-theme="light"] :deep(.text-red-400)     { color: #b91c1c; }        /* red-700 */
-/* Solid saturated (violet/emerald/amber-600) fills carry text-ink, which is
-   near-black in light mode → weak. Force white label/icon on those fills in light
-   only; dark mode keeps its light text-ink. */
-:root[data-theme="light"] :deep(.lt-on-fill) { color: #ffffff; }
 </style>
