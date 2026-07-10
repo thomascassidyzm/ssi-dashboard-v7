@@ -208,6 +208,13 @@ async function generateXai(text, config) {
     throw new Error(`xAI TTS REST request limited to 15000 characters; got ${text.length}. Use streaming endpoint for longer content.`);
   }
 
+  if (!config.language || config.language === 'auto') {
+    // Course renders must always steer the language explicitly: the multilingual
+    // voices are English-dominant and under 'auto' read cross-language words with
+    // English phonology ('come stai' → English 'come'; ita pilot 2026-07-10).
+    console.warn(`[xAI TTS] language='auto' for voice ${voiceId} — pass an explicit BCP-47 language for course renders (text: "${String(text).slice(0, 40)}")`);
+  }
+
   // Note: xAI currently does not document a speed parameter on the /v1/tts endpoint.
   // Speed control is handled downstream via audio-processing (masterAudio stage).
   // Expressive markup ([laugh], [sigh], <whisper>, <emphasis>) passes through text as-is.

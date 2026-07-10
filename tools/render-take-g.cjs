@@ -26,6 +26,16 @@
  * 3 the best take is kept and the group is marked for sensitive-tier slicing
  * (slice-take-g's detection ladder picks it up; logged + reported).
  *
+ * PHONOLOGY GATE (xAI only, same retry loop): xAI's multilingual voices are
+ * English-dominant and STOCHASTICALLY read cross-language words with English
+ * phonology even with language:'it' sent ('Come stai' → English 'come';
+ * language-steering pilot 2026-07-10 — the param is necessary but not
+ * sufficient). Each take is whisper auto-detected; a take whose detected
+ * language is the course's KNOWN language (or English) instead of the target
+ * fails the attempt and re-rolls. Runs only when whisper-cli + model exist
+ * locally (else logged once and skipped); a phonology-failed take is never
+ * kept as "best" while a passing one exists.
+ *
  * The cued text is rebuilt by walking the ORIGINAL sentence text (unit
  * surfaces were punctuation-stripped at authoring): internal punctuation
  * stays with the unit it follows, the terminal mark stays on the last unit —
@@ -52,6 +62,7 @@ const fs = require('fs')
 const os = require('os')
 const path = require('path')
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
+const { toBcp47 } = require('../services/voice-discovery-service.cjs')
 
 const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
@@ -76,6 +87,11 @@ const FFMPEG = process.env.FFMPEG || 'ffmpeg'
 const GATE_ATTEMPTS = Number(process.env.TAKEG_GATE_ATTEMPTS || 3)
 const GATE_BIG_MS = 500   // a real seam gap
 const GATE_MID_MS = 200   // a spurious intra-chunk gap the strict slicer could mistake for a seam
+
+// ---- phonology gate (whisper language auto-detect, see header) ----
+const WHISPER = process.env.WHISPER || '/opt/homebrew/bin/whisper-cli'
+const WHISPER_MODEL = process.env.WHISPER_MODEL || '/tmp/whisper-models/ggml-small.bin'
+const PHONO_GATE = fs.existsSync(WHISPER) && fs.existsSync(WHISPER_MODEL)
 
 // ---- same grouping as the Lab / author-window-knowns ----
 function atomGroups(targetText, atoms) {
@@ -181,21 +197,47 @@ async function measureClip(audioId, tmp, attempt) {
   try {
     const res = await p8.s3.send(new GetObjectCommand({ Bucket: p8.S3_BUCKET, Key: clip.s3_key }))
     await fs.promises.writeFile(f, Buffer.from(await res.Body.transformToByteArray()))
-    return { ...(await ffGaps(f)), s3Key: clip.s3_key, durationMs: clip.duration_ms }
+    return { ...(await ffGaps(f)), s3Key: clip.s3_key, durationMs: clip.duration_ms, file: f }
   } catch (e) {
     console.log(`  gate measure ${audioId}: ✗ ${e.message.slice(0, 80)}`)
     return null
   }
 }
 
-// closest to the exact seam count wins; spurious mid gaps break ties
-const gateScore = (m, need) => -(Math.abs(m.big - need) * 10 + m.mid)
+/** Whisper auto-detect the clip's language. Null = detection unavailable
+ *  (whisper error / no match) — treated as unchecked, never as a fail. */
+function detectClipLang(mp3) {
+  return new Promise((res) => {
+    const wav = mp3.replace(/\.mp3$/, '.wav')
+    execFile(FFMPEG, ['-y', '-i', mp3, '-ar', '16000', '-ac', '1', wav], (err) => {
+      if (err) return res(null)
+      execFile(WHISPER, ['-m', WHISPER_MODEL, '-l', 'auto', '-nt', '-t', String(process.env.WHISPER_THREADS || 4), '-f', wav],
+        { encoding: 'utf8', maxBuffer: 1 << 22 }, (e, _o, stderr) => {
+          const m = /auto-detected language: (\w+)/.exec(stderr || '')
+          res(m ? m[1] : null)
+        })
+    })
+  })
+}
+
+// closest to the exact seam count wins; spurious mid gaps break ties; a
+// phonology fail loses to ANY gap outcome (a wrong-language take is unusable)
+const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - need) * 10 + m.mid)
 
 ;(async () => {
   const { data: pod } = await supabase.from('listening_pods').select('speakers').eq('id', `${COURSE}:pod-0`).single()
   if (!pod || !pod.speakers) { console.error(`ERR: no speakers cast on ${COURSE}:pod-0`); process.exit(1) }
   const { data: course } = await supabase.from('courses').select('voice_config').eq('course_code', COURSE).single()
   const targetLang = (((course || {}).voice_config || {}).voices || {}).target1?.language || COURSE.split('_')[0]
+
+  // Phonology gate: a take is suspect when whisper detects the course's KNOWN
+  // language (or English, the voices' dominant language) instead of the target.
+  const targetBase = toBcp47(targetLang).split('-')[0]
+  const knownBase = toBcp47(COURSE.split('_for_')[1] || 'eng').split('-')[0]
+  const SUSPECT_LANGS = new Set(['en', knownBase].filter((l) => l && l !== targetBase))
+  console.log(PHONO_GATE && SUSPECT_LANGS.size
+    ? `phonology gate ON: re-roll when whisper detects ${[...SUSPECT_LANGS].join('/')} instead of ${targetBase}`
+    : `phonology gate OFF (${SUSPECT_LANGS.size ? 'whisper-cli or model missing — takes unchecked for language drift' : 'target is the known language'})`)
 
   let q = supabase.from('listening_pod_sentences')
     .select('id, global_order, speaker, target_text, atom_map_fine, takeg_audio_ids')
@@ -206,7 +248,7 @@ const gateScore = (m, need) => -(Math.abs(m.big - need) * 10 + m.mid)
 
   const tmp = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'takeg-gate-'))
   let rendered = 0, reused = 0, singles = 0, failed = 0, turnsLinked = 0
-  let gatePassed = 0, gateSensitive = 0, gateUnmeasured = 0
+  let gatePassed = 0, gateSensitive = 0, gateUnmeasured = 0, phonoRerolls = 0
   const gateLog = []
 
   async function processTurn(s) {
@@ -246,11 +288,17 @@ const gateScore = (m, need) => -(Math.abs(m.big - need) * 10 + m.mid)
               gateLog.push({ turn: s.global_order, group: gi, id, units: g.length, verdict: 'unmeasured', attempts: attempt })
               break
             }
-            const cand = { ...m, attempt }
+            const detected = PHONO_GATE && SUSPECT_LANGS.size ? await detectClipLang(m.file) : null
+            const phonoFail = !!(detected && SUSPECT_LANGS.has(detected))
+            if (phonoFail) {
+              phonoRerolls++
+              console.log(`S${s.global_order} g${gi} attempt ${attempt}: phonology FAIL — whisper detected '${detected}' for "${cued.slice(0, 40)}" → re-roll`)
+            }
+            const cand = { ...m, attempt, phonoFail, detected }
             if (!best || gateScore(cand, need) > gateScore(best, need)) best = cand
-            if (m.big === need && m.mid === 0) {
+            if (m.big === need && m.mid === 0 && !phonoFail) {
               gatePassed++
-              gateLog.push({ turn: s.global_order, group: gi, id, units: g.length, verdict: 'pass', attempts: attempt, gaps: m.gaps })
+              gateLog.push({ turn: s.global_order, group: gi, id, units: g.length, verdict: 'pass', attempts: attempt, gaps: m.gaps, detected })
               break
             }
             if (attempt === GATE_ATTEMPTS) {
@@ -261,8 +309,8 @@ const gateScore = (m, need) => -(Math.abs(m.big - need) * 10 + m.mid)
                   .update({ s3_key: best.s3Key, duration_ms: best.durationMs }).eq('id', id)
                 if (rerr) console.log(`S${s.global_order} g${gi}: best-take restore failed — ${rerr.message}`)
               }
-              console.log(`S${s.global_order} g${gi}: gate FAIL after ${GATE_ATTEMPTS} takes — kept attempt ${best.attempt} (${best.big}/${need} seam gaps, ${best.mid} spurious) → sensitive-tier slicing`)
-              gateLog.push({ turn: s.global_order, group: gi, id, units: g.length, verdict: 'sensitive-tier', attempts: GATE_ATTEMPTS, kept: best.attempt, gaps: best.gaps })
+              console.log(`S${s.global_order} g${gi}: gate FAIL after ${GATE_ATTEMPTS} takes — kept attempt ${best.attempt} (${best.big}/${need} seam gaps, ${best.mid} spurious${best.phonoFail ? `, phonology '${best.detected}'` : ''}) → sensitive-tier slicing`)
+              gateLog.push({ turn: s.global_order, group: gi, id, units: g.length, verdict: best.phonoFail ? 'phonology-fail' : 'sensitive-tier', attempts: GATE_ATTEMPTS, kept: best.attempt, gaps: best.gaps, detected: best.detected })
             }
           }
         }
@@ -306,11 +354,11 @@ const gateScore = (m, need) => -(Math.abs(m.big - need) * 10 + m.mid)
   if (!dry && gateLog.length) {
     const logFile = path.join(__dirname, '..', 'scripts', `takeg-gate-${COURSE}.json`)
     fs.writeFileSync(logFile, JSON.stringify({
-      course: COURSE, gatePassed, gateSensitive, gateUnmeasured, rendered, reused, groups: gateLog,
+      course: COURSE, gatePassed, gateSensitive, gateUnmeasured, phonoRerolls, rendered, reused, groups: gateLog,
     }, null, 2))
     console.log(`gate log → ${logFile}`)
   }
   console.log(`\n${dry ? '[DRY] ' : ''}${COURSE}: ${rendered} rendered, ${reused} reused, ${singles} single-unit groups (no Take G), ${failed} failed; ` +
-    `gate: ${gatePassed} passed, ${gateSensitive} sensitive-tier, ${gateUnmeasured} unmeasured; ${turnsLinked} turns linked.`)
+    `gate: ${gatePassed} passed, ${gateSensitive} sensitive-tier, ${gateUnmeasured} unmeasured, ${phonoRerolls} phonology re-rolls; ${turnsLinked} turns linked.`)
   process.exit(failed ? 2 : 0)
 })().catch((e) => { console.error('ERR:', e.message); console.error(e.stack); process.exit(1) })
