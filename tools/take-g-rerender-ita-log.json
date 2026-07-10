@@ -1,0 +1,3786 @@
+{
+  "course": "ita_for_eng",
+  "run": "take-g re-render with [pause] seams + silencedetect gate (tool: a089f2b8)",
+  "resumed_from": "scripts/takeg-gate-ita_for_eng.json (prior worker run, 2026-07-10 15:56 local)",
+  "phases": {
+    "render": {
+      "status": "complete",
+      "note": "executed by prior worker 2026-07-10 ~15:45-15:56; 329 rendered + 5 reused, 163/163 groups gated: 99 pass, 64 sensitive-tier, 0 unmeasured. Verified against DB: 162 pod_take_g rows created today, 141 turns linked.",
+      "rendered": 329,
+      "reused": 5,
+      "gatePassed": 99,
+      "gateSensitive": 64,
+      "gateUnmeasured": 0
+    },
+    "slice": {
+      "status": "complete",
+      "strict": 139,
+      "sensitive": 24,
+      "fail": 0,
+      "db_groups_with_complete_spans": 163,
+      "incomplete_span_groups": [],
+      "note": "spans were written by prior worker slicer run (post-render, default ladder); tiers classified via read-only pinned-strict + full-ladder dry runs (--dry --force) on current clips"
+    },
+    "verify": {
+      "status": "complete",
+      "sample_turns": [
+        1,
+        49,
+        82,
+        121,
+        135,
+        136,
+        137
+      ],
+      "groups_checked": 12,
+      "strict_checked": 10,
+      "strict_clean": 10,
+      "sensitive_checked": 2,
+      "sensitive_clean": 1,
+      "sensitive_failed": [
+        "S135:g3"
+      ],
+      "artifacts": "scripts/takeg-verify-resume-phase3.{json,log} (gitignored workspace)",
+      "note": "10/10 strict-tier groups verified clean (S137:g1 adjudicated: whisper spelling artifact, seam proven correct by widened-slice + empty seam window). Sensitive tier 1/2: S121:g0 clean 4/4, S135:g3 genuine mis-seam. Two voice-level artifacts noted (S1 Sarah/Sara spelling; S136:g0 stia→sti also absent from full take)."
+    },
+    "flag": {
+      "status": "not-flipped",
+      "trustworthy_groups": 140,
+      "total_groups": 163,
+      "trustworthy_pct": 85.9,
+      "threshold_pct": 95,
+      "decision": "DO NOT FLIP — 85.9% < 95%. Even crediting all 24 sensitive groups at the sampled 50% pass rate gives 92.6%. DRILL_SLICE_PLAYBACK_ENABLED stays false."
+    }
+  },
+  "groups": {
+    "S6:g0": {
+      "turn": 6,
+      "group": 0,
+      "clip_id": "4b517128-b537-4f8c-b3fd-ff210b1741b2",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          770
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S1:g0": {
+      "turn": 1,
+      "group": 0,
+      "clip_id": "ae7be72a-6b88-4704-a231-b9e8300860e3",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          573
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": {
+        "method": "slice at stored spans + whisper-small transcribe (scripts/verify-takeg-slices.cjs)",
+        "raw_verdict": "voice-artifact",
+        "verdict": "voice-artifact",
+        "units": [
+          {
+            "surface": "Buongiorno",
+            "heard": "Buongiorno.",
+            "span": [
+              0,
+              1108
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "Sarah",
+            "heard": "Sara.",
+            "span": [
+              1381,
+              2160
+            ],
+            "verdict": "voice-artifact"
+          }
+        ],
+        "note": "voice-artifact = whisper spells \"Sarah\" as \"Sara\" — slice correct."
+      }
+    },
+    "S4:g0": {
+      "turn": 4,
+      "group": 0,
+      "clip_id": "76bd4b85-25e5-40a0-922c-43d9d47bb7c6",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          546
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S3:g0": {
+      "turn": 3,
+      "group": 0,
+      "clip_id": "b1e300f5-d189-4095-b665-561d15936035",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          837
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S2:g0": {
+      "turn": 2,
+      "group": 0,
+      "clip_id": "8947b0ad-0286-4eaf-8713-460aa33e8e18",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          963
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S7:g0": {
+      "turn": 7,
+      "group": 0,
+      "clip_id": "0b32d726-b616-407e-9285-da05cf1be362",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1181
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S6:g1": {
+      "turn": 6,
+      "group": 1,
+      "clip_id": "1b79e75d-b0f6-4af6-b5c1-12d9321de0f0",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          536,
+          85
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S10:g0": {
+      "turn": 10,
+      "group": 0,
+      "clip_id": "9befd170-f969-4e2b-bead-3e5b8807cc88",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          803
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S9:g0": {
+      "turn": 9,
+      "group": 0,
+      "clip_id": "b0d2aced-02d8-4d69-9f1d-e3e44ad41ee9",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          655
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S12:g0": {
+      "turn": 12,
+      "group": 0,
+      "clip_id": "ba116824-e949-4cec-b805-935c336b5506",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1024,
+          660
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S13:g0": {
+      "turn": 13,
+      "group": 0,
+      "clip_id": "899bf51a-740b-4dd4-8d1c-39634eb95fb0",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1152
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S5:g0": {
+      "turn": 5,
+      "group": 0,
+      "clip_id": "69a3a23c-c4d5-4c98-9a5b-07f5a20f34d5",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          434
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S17:g0": {
+      "turn": 17,
+      "group": 0,
+      "clip_id": "1497b867-34da-48f2-9757-0f3189b5143b",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          893
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S18:g0": {
+      "turn": 18,
+      "group": 0,
+      "clip_id": "d8d12940-8e8a-44b2-9878-d0755009fb52",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          700
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S15:g0": {
+      "turn": 15,
+      "group": 0,
+      "clip_id": "29958f0f-2144-44b8-a260-2617550b4755",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          921,
+          784
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S14:g0": {
+      "turn": 14,
+      "group": 0,
+      "clip_id": "8ea682b6-0a50-48b9-97c6-e8bc326509fe",
+      "units": 4,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          150,
+          1094,
+          655,
+          132,
+          523
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S11:g0": {
+      "turn": 11,
+      "group": 0,
+      "clip_id": "a8e53ef6-833b-4d48-9a30-7d28839cb9da",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          1005,
+          157
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S16:g0": {
+      "turn": 16,
+      "group": 0,
+      "clip_id": "6a1d93e5-097f-411c-ac64-ec8bc350ca88",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          257
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S8:g0": {
+      "turn": 8,
+      "group": 0,
+      "clip_id": "64399420-fd00-42e9-8f09-6bb5024f40b0",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          997,
+          308
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S19:g0": {
+      "turn": 19,
+      "group": 0,
+      "clip_id": "65ad551f-b9a5-426b-864e-40e2ead03bc4",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          855
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S23:g0": {
+      "turn": 23,
+      "group": 0,
+      "clip_id": "b4407855-a1ad-4ba1-978b-eed136f4205d",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1005
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S24:g0": {
+      "turn": 24,
+      "group": 0,
+      "clip_id": "03058956-f326-47d6-9490-b1d8727b7b3f",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          645,
+          99
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S21:g0": {
+      "turn": 21,
+      "group": 0,
+      "clip_id": "d1c6cede-fc2a-4d2c-9cbd-2d8b1ce5cabe",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          762
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S25:g0": {
+      "turn": 25,
+      "group": 0,
+      "clip_id": "6d0749cc-e1d1-4c66-a732-3856726cd91d",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          520
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S8:g1": {
+      "turn": 8,
+      "group": 1,
+      "clip_id": "8f00773f-5602-417e-a8e8-76472036b763",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          130,
+          133,
+          82,
+          105
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S20:g0": {
+      "turn": 20,
+      "group": 0,
+      "clip_id": "fe9a9382-d0e5-45b4-98f8-2668080ad25d",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          345,
+          187
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S22:g0": {
+      "turn": 22,
+      "group": 0,
+      "clip_id": "bf9794d5-b567-4f5f-87b4-a29e7ed9f035",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          482,
+          542
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S28:g0": {
+      "turn": 28,
+      "group": 0,
+      "clip_id": "b57ad17b-d35d-4e1e-a9ee-a26eb4d6a702",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1164
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S23:g2": {
+      "turn": 23,
+      "group": 2,
+      "clip_id": "56a69066-5ad0-46de-96a7-19de4e5ee264",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 3,
+        "gaps": [
+          848
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S31:g0": {
+      "turn": 31,
+      "group": 0,
+      "clip_id": "06b5ff04-6c70-4b76-9b5c-024f3a928d50",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          531
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S25:g2": {
+      "turn": 25,
+      "group": 2,
+      "clip_id": "b02595bd-1865-4493-aada-e0590b1f3cd8",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          720
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S26:g0": {
+      "turn": 26,
+      "group": 0,
+      "clip_id": "7aa94f4e-6286-4233-86f9-c9db0f95dd24",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          645,
+          178
+        ],
+        "kept": 3
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S27:g0": {
+      "turn": 27,
+      "group": 0,
+      "clip_id": "c756f214-64ca-47d5-a2b2-f2d3a46a6d82",
+      "units": 5,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          1122,
+          967,
+          839,
+          605
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S30:g0": {
+      "turn": 30,
+      "group": 0,
+      "clip_id": "11d3735b-f991-4fc1-8f31-863ec111d316",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          883
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S33:g0": {
+      "turn": 33,
+      "group": 0,
+      "clip_id": "fcce9a36-9cbf-49d2-a5cc-09a8980f4848",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          84,
+          102,
+          549
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S29:g0": {
+      "turn": 29,
+      "group": 0,
+      "clip_id": "961121a5-581f-4b92-8edf-c120e6ae6083",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 3,
+        "gaps": [
+          525
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S32:g0": {
+      "turn": 32,
+      "group": 0,
+      "clip_id": "d73886e6-6490-4490-8b49-04ad725b6db1",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          112,
+          1042,
+          95,
+          83
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S35:g0": {
+      "turn": 35,
+      "group": 0,
+      "clip_id": "dc4d947e-7039-4bda-82cb-71cc8f5ff225",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1130
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S31:g1": {
+      "turn": 31,
+      "group": 1,
+      "clip_id": "eb2d1d79-2605-440c-a7a5-3dba5bef4dee",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          100,
+          247
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S38:g0": {
+      "turn": 38,
+      "group": 0,
+      "clip_id": "0ebbb2e8-4b78-4687-be6a-3baf6460312f",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          555
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S39:g0": {
+      "turn": 39,
+      "group": 0,
+      "clip_id": "bc195447-a18b-499e-9d2f-f50089c2381e",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          82,
+          765
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S37:g0": {
+      "turn": 37,
+      "group": 0,
+      "clip_id": "c99f3050-a171-427a-9cd9-8141517127e7",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          657,
+          153
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S43:g0": {
+      "turn": 43,
+      "group": 0,
+      "clip_id": "0b32d726-b616-407e-9285-da05cf1be362",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          885
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S40:g0": {
+      "turn": 40,
+      "group": 0,
+      "clip_id": "94f7da91-0cdd-4012-a626-be15b767bd59",
+      "units": 4,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1776,
+          129,
+          805,
+          573
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S44:g0": {
+      "turn": 44,
+      "group": 0,
+      "clip_id": "9d77a8e0-d09b-4d8a-a787-90b0e8d365fe",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          501
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S36:g0": {
+      "turn": 36,
+      "group": 0,
+      "clip_id": "74f220e9-3820-4955-9e98-c1deda295643",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          982,
+          339,
+          112,
+          765
+        ],
+        "kept": 3
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S42:g0": {
+      "turn": 42,
+      "group": 0,
+      "clip_id": "106bc0bd-3295-45da-8377-19606a012c70",
+      "units": 5,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          824,
+          683,
+          590,
+          552
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S34:g0": {
+      "turn": 34,
+      "group": 0,
+      "clip_id": "b1463cf5-de40-4a73-8781-521c19dada05",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          718,
+          624,
+          96
+        ],
+        "kept": 3
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S45:g0": {
+      "turn": 45,
+      "group": 0,
+      "clip_id": "e4608586-d479-4ac4-86b0-f01c0426372e",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          142,
+          1479,
+          82,
+          860
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S47:g0": {
+      "turn": 47,
+      "group": 0,
+      "clip_id": "9989f421-5d9a-48c7-a04f-2c66af48c4b2",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1397
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S41:g0": {
+      "turn": 41,
+      "group": 0,
+      "clip_id": "20654be7-c59b-4433-88e2-2d7779a6676b",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          1483,
+          187
+        ],
+        "kept": 3
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S48:g0": {
+      "turn": 48,
+      "group": 0,
+      "clip_id": "50ecd67c-23ac-408d-b367-c8f65d78cc2b",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1256
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S46:g0": {
+      "turn": 46,
+      "group": 0,
+      "clip_id": "714d67ff-93fb-479d-9448-208b4a8af024",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          177,
+          461
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S48:g1": {
+      "turn": 48,
+      "group": 1,
+      "clip_id": "5e358de6-c50c-4b09-88d4-53fcd310219e",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1322
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S52:g0": {
+      "turn": 52,
+      "group": 0,
+      "clip_id": "502f4d85-c596-455f-9b08-cb5a3b13d345",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1213
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S55:g0": {
+      "turn": 55,
+      "group": 0,
+      "clip_id": "7f4ff341-360d-469c-8830-1629aa90539a",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          597
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S51:g0": {
+      "turn": 51,
+      "group": 0,
+      "clip_id": "9ed57c55-11b6-4ff7-a853-fe5904d1e15d",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          173,
+          97,
+          93,
+          131,
+          223
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S55:g2": {
+      "turn": 55,
+      "group": 2,
+      "clip_id": "d2fc8052-4aa3-4015-88c7-d148c3c87f9a",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          113,
+          131,
+          1069
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S54:g0": {
+      "turn": 54,
+      "group": 0,
+      "clip_id": "9befae8d-e4f3-4472-94ea-e2a652bffc3c",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          186
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S50:g0": {
+      "turn": 50,
+      "group": 0,
+      "clip_id": "ec6ac5df-e8af-43ca-84be-5a1ab6f15446",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          1261,
+          411
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S49:g0": {
+      "turn": 49,
+      "group": 0,
+      "clip_id": "225d4672-87a3-4dfc-8b13-b5b968417989",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          808,
+          638,
+          297,
+          97
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": {
+        "method": "slice at stored spans + whisper-small transcribe (scripts/verify-takeg-slices.cjs)",
+        "raw_verdict": "ok",
+        "verdict": "ok",
+        "units": [
+          {
+            "surface": "Abbiamo un rosso della casa",
+            "heard": "Abbiamo un rosso della casa.",
+            "span": [
+              0,
+              1949
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "un bianco della casa",
+            "heard": "un bianco della casa",
+            "span": [
+              2457,
+              4154
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "oppure potrebbe scegliere",
+            "heard": "oppure potrebbe scegliere",
+            "span": [
+              4493,
+              6158
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "una delle nostre bottiglie",
+            "heard": "una delle nostre bottiglie.",
+            "span": [
+              6257,
+              8016
+            ],
+            "verdict": "ok"
+          }
+        ]
+      }
+    },
+    "S57:g0": {
+      "turn": 57,
+      "group": 0,
+      "clip_id": "2f1908b9-9c6d-4671-9ed4-23ef206aa20b",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          906,
+          819
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S56:g0": {
+      "turn": 56,
+      "group": 0,
+      "clip_id": "1f262002-a48f-44a6-9f04-0bfaa431a62f",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          111,
+          838,
+          145,
+          425
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S60:g0": {
+      "turn": 60,
+      "group": 0,
+      "clip_id": "79a75ede-c7b9-4f2d-81fe-1e22f78c64c4",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          696,
+          604
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S63:g0": {
+      "turn": 63,
+      "group": 0,
+      "clip_id": "cf25a0a8-9bf2-490f-ad14-ab1aba65b2be",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          721
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S62:g0": {
+      "turn": 62,
+      "group": 0,
+      "clip_id": "99aab39f-5f09-499c-9af7-e9a349c55dbc",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          955,
+          503
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S58:g0": {
+      "turn": 58,
+      "group": 0,
+      "clip_id": "f9979b6a-fbf4-46e7-a167-e429c6d49d2e",
+      "units": 5,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          100,
+          508,
+          486,
+          185,
+          390,
+          526
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S59:g0": {
+      "turn": 59,
+      "group": 0,
+      "clip_id": "97ca89d3-0101-4ee0-a9ad-1ceb85e5b65e",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 3,
+        "gaps": [
+          930,
+          581
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S64:g0": {
+      "turn": 64,
+      "group": 0,
+      "clip_id": "120fef0e-047c-46c5-aeb3-5bc75c129c2e",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1642,
+          144,
+          730
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S67:g0": {
+      "turn": 67,
+      "group": 0,
+      "clip_id": "42455a71-05c5-4e49-bd5f-ba05d3c84678",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          843
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S69:g0": {
+      "turn": 69,
+      "group": 0,
+      "clip_id": "d88ffa0b-469f-478e-998f-9ce987a485d9",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          791,
+          83
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S61:g0": {
+      "turn": 61,
+      "group": 0,
+      "clip_id": "c4999e2c-8211-46bf-acf5-e5126a2aa96c",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          88,
+          541,
+          165,
+          207
+        ],
+        "kept": 3
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S68:g0": {
+      "turn": 68,
+      "group": 0,
+      "clip_id": "33567390-2993-43c5-9911-f9ab28e14920",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1131,
+          699
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S65:g0": {
+      "turn": 65,
+      "group": 0,
+      "clip_id": "dac1fec2-4465-45dd-b355-f9ba1fe590e4",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          102,
+          143
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S66:g0": {
+      "turn": 66,
+      "group": 0,
+      "clip_id": "71339e98-d007-4da6-a31c-6f2c75c205cc",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          1024,
+          92,
+          805
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S72:g0": {
+      "turn": 72,
+      "group": 0,
+      "clip_id": "cf19a46b-6d01-4f83-bdba-52a4db9b7ab8",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1235,
+          641
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S74:g0": {
+      "turn": 74,
+      "group": 0,
+      "clip_id": "915598a1-a6cb-4a69-adf9-17433d634c5e",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          555
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S75:g0": {
+      "turn": 75,
+      "group": 0,
+      "clip_id": "98c807b5-9d78-4dee-807e-a4517c6a18d6",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          531
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S71:g0": {
+      "turn": 71,
+      "group": 0,
+      "clip_id": "fecc0b78-0271-4858-84f5-5774de03fd73",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          557,
+          106
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S70:g0": {
+      "turn": 70,
+      "group": 0,
+      "clip_id": "207b902e-2b2b-4c69-a268-03784770e5c8",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          471
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S77:g0": {
+      "turn": 77,
+      "group": 0,
+      "clip_id": "91c3aea9-3f88-4c2b-a650-fa3eb20d10e0",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1241
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S79:g0": {
+      "turn": 79,
+      "group": 0,
+      "clip_id": "a2a01b68-4ac4-4e0e-8748-730aa86edcd8",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1106,
+          526
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S80:g0": {
+      "turn": 80,
+      "group": 0,
+      "clip_id": "3ecdae81-0036-40db-96db-78eb189d5e28",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          770,
+          638
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S73:g0": {
+      "turn": 73,
+      "group": 0,
+      "clip_id": "267d4360-a40f-46ce-b179-9f472188cdde",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 3,
+        "gaps": [
+          1381,
+          85,
+          957
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S76:g0": {
+      "turn": 76,
+      "group": 0,
+      "clip_id": "012f00db-ee51-4ff5-8706-32fe5f6261c1",
+      "units": 5,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          173,
+          639,
+          576,
+          470,
+          349
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S83:g0": {
+      "turn": 83,
+      "group": 0,
+      "clip_id": "20063d42-710f-40c4-b9a8-fa70c64f9d36",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          640
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S78:g0": {
+      "turn": 78,
+      "group": 0,
+      "clip_id": "8ca079bc-a340-4f14-b318-5e24b8aa5882",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          788,
+          496
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S84:g0": {
+      "turn": 84,
+      "group": 0,
+      "clip_id": "7fdf080b-c9d1-45a7-a24a-509ee8cc2ee0",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          910,
+          926
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S81:g0": {
+      "turn": 81,
+      "group": 0,
+      "clip_id": "442afaf1-692e-454d-a211-4b60ead69697",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          307,
+          199
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S82:g0": {
+      "turn": 82,
+      "group": 0,
+      "clip_id": "e0e2c8e1-f55e-46ed-a866-886beb05a13b",
+      "units": 4,
+      "render": {
+        "verdict": "pass",
+        "attempts": 3,
+        "gaps": [
+          571,
+          872,
+          555
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": {
+        "method": "slice at stored spans + whisper-small transcribe (scripts/verify-takeg-slices.cjs)",
+        "raw_verdict": "ok",
+        "verdict": "ok",
+        "units": [
+          {
+            "surface": "La crema solare è laggiù",
+            "heard": "La crema solare è laggiù.",
+            "span": [
+              0,
+              2008
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "sulla sua destra",
+            "heard": "sulla sua destra.",
+            "span": [
+              2278,
+              3666
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "e il dentifricio lo trova",
+            "heard": "e il dentifricio lo trova.",
+            "span": [
+              4239,
+              6163
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "appena dietro l'angolo",
+            "heard": "appena dietro l'angolo.",
+            "span": [
+              6418,
+              7944
+            ],
+            "verdict": "ok"
+          }
+        ]
+      }
+    },
+    "S89:g0": {
+      "turn": 89,
+      "group": 0,
+      "clip_id": "1b6bba22-1ed1-4f2c-af72-98834ba01d73",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          1141
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S88:g0": {
+      "turn": 88,
+      "group": 0,
+      "clip_id": "bb6efdf4-5140-4e10-9ed6-9f5898575bc8",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          617,
+          349,
+          139,
+          215,
+          148
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S86:g0": {
+      "turn": 86,
+      "group": 0,
+      "clip_id": "f9b9d5ce-702b-49cf-9e48-ab78d643de83",
+      "units": 5,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          526,
+          444,
+          139,
+          361,
+          355
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S87:g0": {
+      "turn": 87,
+      "group": 0,
+      "clip_id": "8dafd9f5-8b46-42a3-b561-901e835e9497",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          1153,
+          354
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S85:g0": {
+      "turn": 85,
+      "group": 0,
+      "clip_id": "f54c529b-2af2-4336-85af-1645d2f43908",
+      "units": 5,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          711,
+          262,
+          363,
+          245
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S93:g0": {
+      "turn": 93,
+      "group": 0,
+      "clip_id": "5d64297b-3a33-4dd3-ad36-0dc7a5df4727",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          697
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S92:g0": {
+      "turn": 92,
+      "group": 0,
+      "clip_id": "e3d7ae7e-7a71-4170-bb3a-1f8d893799dd",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 3,
+        "gaps": [
+          899
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S85:g1": {
+      "turn": 85,
+      "group": 1,
+      "clip_id": "db5717d5-44e1-4187-b606-a8a097e299f8",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          511
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S88:g1": {
+      "turn": 88,
+      "group": 1,
+      "clip_id": "d1997104-9a85-45f4-9770-b252b3746693",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          263
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S94:g0": {
+      "turn": 94,
+      "group": 0,
+      "clip_id": "3275b721-43eb-449f-97d5-aa14ad29b9f7",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          114,
+          179
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S90:g0": {
+      "turn": 90,
+      "group": 0,
+      "clip_id": "38c0a639-db6e-4eae-9887-8650e057348e",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          170,
+          804,
+          371,
+          107
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S95:g0": {
+      "turn": 95,
+      "group": 0,
+      "clip_id": "26a67555-9f4f-4bba-be44-54f623a33b8d",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          1139,
+          577
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S99:g0": {
+      "turn": 99,
+      "group": 0,
+      "clip_id": "cf8cfbe8-9a47-423f-bd80-517cc6fde11d",
+      "units": 5,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          922,
+          162,
+          671,
+          161,
+          542,
+          607
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S97:g0": {
+      "turn": 97,
+      "group": 0,
+      "clip_id": "abf75c79-0a6f-474d-b209-b0f5a80d169d",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          107
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S98:g0": {
+      "turn": 98,
+      "group": 0,
+      "clip_id": "6ba85970-49ab-4091-8f91-f13f77fe41cd",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          188
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S101:g0": {
+      "turn": 101,
+      "group": 0,
+      "clip_id": "b978c705-cd69-489d-bf83-a4442912ed86",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1513
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S94:g1": {
+      "turn": 94,
+      "group": 1,
+      "clip_id": "3c6f5796-21e8-4260-9899-dd5d1b3d35f8",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          152,
+          122,
+          305,
+          115
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S96:g0": {
+      "turn": 96,
+      "group": 0,
+      "clip_id": "ceca9c9f-d9f0-4f28-bbbe-a40f8959ed33",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          675,
+          782,
+          363
+        ],
+        "kept": 3
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S100:g0": {
+      "turn": 100,
+      "group": 0,
+      "clip_id": "00053c8f-1992-47a4-b1b3-cd26db223362",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          1242,
+          189,
+          362,
+          85
+        ],
+        "kept": 3
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S105:g0": {
+      "turn": 105,
+      "group": 0,
+      "clip_id": "49dd1559-d28e-45e6-a328-2f5d4c2ba90a",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          722
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S102:g0": {
+      "turn": 102,
+      "group": 0,
+      "clip_id": "387715fa-22cd-423c-8ebf-dd1cc26311dd",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 3,
+        "gaps": [
+          822,
+          730
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S106:g0": {
+      "turn": 106,
+      "group": 0,
+      "clip_id": "dbe52dc2-f1c5-47e8-bccd-5efe3ed6426e",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          375
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S104:g0": {
+      "turn": 104,
+      "group": 0,
+      "clip_id": "0bd0b855-40f8-4fa8-8e76-2f43b0aeffe3",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          89,
+          231,
+          106,
+          91
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S111:g0": {
+      "turn": 111,
+      "group": 0,
+      "clip_id": "0d3b1ee7-517a-4c3c-b308-f2407f2b62c2",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          987
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S103:g0": {
+      "turn": 103,
+      "group": 0,
+      "clip_id": "33dd7019-6584-433b-8cb0-1be0de4c5716",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          290,
+          681,
+          181
+        ],
+        "kept": 3
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S107:g0": {
+      "turn": 107,
+      "group": 0,
+      "clip_id": "62f1a974-f145-4423-b655-52b861892e6d",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          948,
+          286,
+          381
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S108:g0": {
+      "turn": 108,
+      "group": 0,
+      "clip_id": "fa7a722d-4024-4fde-bde7-457d558dd740",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          577,
+          184,
+          104,
+          95,
+          152
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S109:g0": {
+      "turn": 109,
+      "group": 0,
+      "clip_id": "e171c95b-a0cc-44f9-8d25-f944f5f9d884",
+      "units": 5,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          463,
+          89,
+          518,
+          363,
+          284
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S114:g0": {
+      "turn": 114,
+      "group": 0,
+      "clip_id": "d3bdd96b-242d-4a9a-8453-7a0bc553a18a",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          638
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S117:g0": {
+      "turn": 117,
+      "group": 0,
+      "clip_id": "1e44b1d3-a3e2-483d-9634-8108d11f7e7b",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          500,
+          535
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S110:g0": {
+      "turn": 110,
+      "group": 0,
+      "clip_id": "19e600d4-79b9-4299-b211-7ace7f6386bb",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          534,
+          210
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S113:g0": {
+      "turn": 113,
+      "group": 0,
+      "clip_id": "680d8e10-c39e-49f9-9abf-a847ab4c115a",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          563,
+          218
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S119:g0": {
+      "turn": 119,
+      "group": 0,
+      "clip_id": "bebd9b12-0f26-4249-a94b-0e8281d279b8",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          866
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S122:g0": {
+      "turn": 122,
+      "group": 0,
+      "clip_id": "94d6146d-4470-499a-8953-a2917f6fd2c8",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          706
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S123:g0": {
+      "turn": 123,
+      "group": 0,
+      "clip_id": "751e11df-ff08-4f76-9bed-50ce077f01f7",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          673
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S120:g0": {
+      "turn": 120,
+      "group": 0,
+      "clip_id": "887b45f3-c14f-4a68-be01-da4b9c53af73",
+      "units": 5,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          898,
+          526,
+          536,
+          550
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S116:g0": {
+      "turn": 116,
+      "group": 0,
+      "clip_id": "3be987f1-beeb-47a8-b31a-a34d716caf05",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          772,
+          550,
+          231
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S118:g0": {
+      "turn": 118,
+      "group": 0,
+      "clip_id": "0c05a45d-7519-491d-8535-5c4a4155d561",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          647,
+          529,
+          346
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S126:g0": {
+      "turn": 126,
+      "group": 0,
+      "clip_id": "9bbe768c-5690-4baa-97cd-5aa25a51fbd9",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          757,
+          571
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S121:g0": {
+      "turn": 121,
+      "group": 0,
+      "clip_id": "c56115d3-cd57-4ff2-9ac0-e568becc13f0",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          766,
+          91,
+          105,
+          123,
+          151
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": {
+        "method": "slice at stored spans + whisper-small transcribe (scripts/verify-takeg-slices.cjs)",
+        "raw_verdict": "ok",
+        "verdict": "ok",
+        "units": [
+          {
+            "surface": "Salve",
+            "heard": "Salve!",
+            "span": [
+              0,
+              742
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "Mi può portare",
+            "heard": "Mi può portare.",
+            "span": [
+              1226,
+              2576
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "alla stazione ferroviaria",
+            "heard": "alla stazione ferroviaria.",
+            "span": [
+              2627,
+              4336
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "per favore",
+            "heard": "Per favore.",
+            "span": [
+              4389,
+              5184
+            ],
+            "verdict": "ok"
+          }
+        ]
+      }
+    },
+    "S124:g0": {
+      "turn": 124,
+      "group": 0,
+      "clip_id": "c505687f-4487-47d5-99ea-61e913438abe",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          743,
+          810
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S127:g0": {
+      "turn": 127,
+      "group": 0,
+      "clip_id": "ee02476c-c774-4343-8e6a-5420cbb62ebb",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          883
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S128:g0": {
+      "turn": 128,
+      "group": 0,
+      "clip_id": "304a4a1d-1fe3-4c7b-8909-32b6b737cece",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          501,
+          89
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S129:g0": {
+      "turn": 129,
+      "group": 0,
+      "clip_id": "02c070d5-2df1-43ef-a876-b603c72d0863",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1084
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S122:g1": {
+      "turn": 122,
+      "group": 1,
+      "clip_id": "8b4b3991-bcbf-47a0-9eff-54a826b8956c",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          539,
+          687,
+          492
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S125:g0": {
+      "turn": 125,
+      "group": 0,
+      "clip_id": "25137421-351e-4bdf-a1d6-fb1507be5625",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          265,
+          100,
+          178
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S132:g0": {
+      "turn": 132,
+      "group": 0,
+      "clip_id": "bfaba817-9481-4e2b-a4d0-b9791962c1db",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          685
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S134:g0": {
+      "turn": 134,
+      "group": 0,
+      "clip_id": "c573098d-abbc-493d-9ce9-a2b8379fb75b",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          701
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S136:g0": {
+      "turn": 136,
+      "group": 0,
+      "clip_id": "33790175-5d9c-4d51-bf7c-86da443cb750",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          647
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": {
+        "method": "slice at stored spans + whisper-small transcribe (scripts/verify-takeg-slices.cjs)",
+        "raw_verdict": "voice-artifact",
+        "verdict": "voice-artifact",
+        "units": [
+          {
+            "surface": "Penso che stia andando",
+            "heard": "Penso che sti andando.",
+            "span": [
+              0,
+              1951
+            ],
+            "verdict": "voice-artifact"
+          },
+          {
+            "surface": "molto bene",
+            "heard": "Molto bene.",
+            "span": [
+              2298,
+              3360
+            ],
+            "verdict": "ok"
+          }
+        ],
+        "note": "voice-artifact: full take also transcribes \"sti\" for authored \"stia\" — possible voice mispronunciation in the render, not a slicing fault; flagging for awareness."
+      }
+    },
+    "S132:g1": {
+      "turn": 132,
+      "group": 1,
+      "clip_id": "22f4558b-0d1d-4901-8027-45e1814bcc3b",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          714
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S135:g0": {
+      "turn": 135,
+      "group": 0,
+      "clip_id": "61e0039e-0dec-4594-b3ab-6f35b1f3586c",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 3,
+        "gaps": [
+          551
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": {
+        "method": "slice at stored spans + whisper-small transcribe (scripts/verify-takeg-slices.cjs)",
+        "raw_verdict": "ok",
+        "verdict": "ok",
+        "units": [
+          {
+            "surface": "Sì",
+            "heard": "Sì.",
+            "span": [
+              0,
+              517
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "grazie",
+            "heard": "Grazie.",
+            "span": [
+              768,
+              1584
+            ],
+            "verdict": "ok"
+          }
+        ]
+      }
+    },
+    "S133:g0": {
+      "turn": 133,
+      "group": 0,
+      "clip_id": "170dee7e-b1de-4669-a53b-cc12575f610e",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          449
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S131:g0": {
+      "turn": 131,
+      "group": 0,
+      "clip_id": "c641f9fe-59ba-45f0-a027-5f2536c30e1f",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          817,
+          144,
+          202
+        ],
+        "kept": 3
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S130:g0": {
+      "turn": 130,
+      "group": 0,
+      "clip_id": "b366113d-0157-4a68-a4f4-cb582c728020",
+      "units": 5,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          683,
+          533,
+          393,
+          449
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S135:g1": {
+      "turn": 135,
+      "group": 1,
+      "clip_id": "9a5fb6be-ad4d-43ae-9896-05b6c3f5221e",
+      "units": 2,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          81,
+          773
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": {
+        "method": "slice at stored spans + whisper-small transcribe (scripts/verify-takeg-slices.cjs)",
+        "raw_verdict": "ok",
+        "verdict": "ok",
+        "units": [
+          {
+            "surface": "È più facile",
+            "heard": "è più facile.",
+            "span": [
+              0,
+              1126
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "parlare con una sola persona",
+            "heard": "parlare con una sola persona.",
+            "span": [
+              1598,
+              3456
+            ],
+            "verdict": "ok"
+          }
+        ]
+      }
+    },
+    "S136:g2": {
+      "turn": 136,
+      "group": 2,
+      "clip_id": "bc8af712-aae5-47b5-8b52-202a8d34bda2",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          702,
+          874
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": {
+        "method": "slice at stored spans + whisper-small transcribe (scripts/verify-takeg-slices.cjs)",
+        "raw_verdict": "ok",
+        "verdict": "ok",
+        "units": [
+          {
+            "surface": "Penso che sia pronto",
+            "heard": "Penso che sia pronto.",
+            "span": [
+              0,
+              1528
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "a iniziare a parlare italiano",
+            "heard": "a iniziare a parlare italiano.",
+            "span": [
+              1931,
+              4260
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "con chiunque parli italiano",
+            "heard": "con chiunque parli italiano.",
+            "span": [
+              4835,
+              6864
+            ],
+            "verdict": "ok"
+          }
+        ]
+      }
+    },
+    "S138:g0": {
+      "turn": 138,
+      "group": 0,
+      "clip_id": "5be9d8d4-efe2-46ec-9ca7-d5c171248ec5",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          1427,
+          1126
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S133:g1": {
+      "turn": 133,
+      "group": 1,
+      "clip_id": "2c2c17c6-8483-4dd2-b15b-d29a587e1416",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          194,
+          107,
+          320,
+          100,
+          90
+        ],
+        "kept": 3
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S135:g2": {
+      "turn": 135,
+      "group": 2,
+      "clip_id": "fee01b1c-1a2e-4b69-9f9b-a74f5099b504",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          807,
+          404
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": {
+        "method": "slice at stored spans + whisper-small transcribe (scripts/verify-takeg-slices.cjs)",
+        "raw_verdict": "ok",
+        "verdict": "ok",
+        "units": [
+          {
+            "surface": "È un po' difficile",
+            "heard": "è un po' difficile.",
+            "span": [
+              0,
+              1323
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "pensare a cosa dire",
+            "heard": "Pensare a cosa dire.",
+            "span": [
+              1830,
+              3324
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "però",
+            "heard": "però.",
+            "span": [
+              3458,
+              3984
+            ],
+            "verdict": "ok"
+          }
+        ]
+      }
+    },
+    "S139:g0": {
+      "turn": 139,
+      "group": 0,
+      "clip_id": "429ba317-d16d-4030-9675-e17a700b52c0",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          84,
+          82,
+          151
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S137:g0": {
+      "turn": 137,
+      "group": 0,
+      "clip_id": "f9b54066-fd34-4455-bc9e-7379456285d1",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          467,
+          106,
+          574,
+          319,
+          92
+        ],
+        "kept": 3
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": {
+        "method": "slice at stored spans + whisper-small transcribe (scripts/verify-takeg-slices.cjs)",
+        "raw_verdict": "ok",
+        "verdict": "ok",
+        "units": [
+          {
+            "surface": "È solo un po' frustrante",
+            "heard": "è solo un po' frustrante.",
+            "span": [
+              0,
+              1864
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "quando non riesco a pensare",
+            "heard": "quando non riesco a pensare.",
+            "span": [
+              2031,
+              3934
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "abbastanza velocemente",
+            "heard": "abbastanza velocemente",
+            "span": [
+              4208,
+              5999
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "per esprimermi bene",
+            "heard": "per esprimermi bene.",
+            "span": [
+              6107,
+              7584
+            ],
+            "verdict": "ok"
+          }
+        ]
+      }
+    },
+    "S138:g1": {
+      "turn": 138,
+      "group": 1,
+      "clip_id": "4a97f72a-4a28-4feb-9e77-45b672c8ef62",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          505,
+          819
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S131:g1": {
+      "turn": 131,
+      "group": 1,
+      "clip_id": "d53f4655-a9fd-44bc-941b-5c1d781197e6",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          343,
+          368,
+          210
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S139:g1": {
+      "turn": 139,
+      "group": 1,
+      "clip_id": "e1036500-64aa-403b-9f43-9642b9f64bc3",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          573,
+          92,
+          629
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S133:g2": {
+      "turn": 133,
+      "group": 2,
+      "clip_id": "e9ec382c-4268-4ebb-98c4-1a70469f2e0f",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 3,
+        "gaps": [
+          607,
+          87,
+          586,
+          97
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S141:g0": {
+      "turn": 141,
+      "group": 0,
+      "clip_id": "5d9f1018-d858-42b8-b836-7382899e7bb3",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 2,
+        "gaps": [
+          652,
+          519,
+          103
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S137:g1": {
+      "turn": 137,
+      "group": 1,
+      "clip_id": "600c3d55-bd08-4cc5-beef-366d8f66cad5",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          91,
+          1191,
+          83,
+          349,
+          298,
+          90
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": {
+        "method": "slice at stored spans + whisper-small transcribe (scripts/verify-takeg-slices.cjs)",
+        "raw_verdict": "bad-slice",
+        "verdict": "ok",
+        "units": [
+          {
+            "surface": "Ma so che",
+            "heard": "Masoke",
+            "span": [
+              0,
+              1179
+            ],
+            "verdict": "bad-slice"
+          },
+          {
+            "surface": "ho bisogno di continuare a praticare",
+            "heard": "Ho bisogno di continuare a praticare",
+            "span": [
+              2070,
+              4363
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "se voglio parlare",
+            "heard": "Se voglio parlare.",
+            "span": [
+              4480,
+              5679
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "con più sicurezza",
+            "heard": "con più sicurezza.",
+            "span": [
+              5779,
+              7056
+            ],
+            "verdict": "ok"
+          }
+        ],
+        "adjudication": "unit 0 \"Ma so che\" transcribed \"Masoke\" — phonetically identical (che=/ke/); widening slice to 2.0s gives same text and seam window 1179-2070ms holds no speech. Whisper spelling artifact on short slice, seam correct."
+      }
+    },
+    "S140:g0": {
+      "turn": 140,
+      "group": 0,
+      "clip_id": "b1496c0e-400e-4c1d-9896-57fec6a35cdc",
+      "units": 3,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          655,
+          297
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S135:g3": {
+      "turn": 135,
+      "group": 3,
+      "clip_id": "1aebd56a-e991-4fc5-b492-08a312267bc5",
+      "units": 5,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          578,
+          479,
+          83,
+          164
+        ],
+        "kept": 2
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": {
+        "method": "slice at stored spans + whisper-small transcribe (scripts/verify-takeg-slices.cjs)",
+        "raw_verdict": "bad-slice",
+        "verdict": "bad-slice",
+        "units": [
+          {
+            "surface": "Non sono sicuro",
+            "heard": "Non sono sicuro.",
+            "span": [
+              0,
+              1278
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "di cosa dire",
+            "heard": "di cosa dire.",
+            "span": [
+              1565,
+              2694
+            ],
+            "verdict": "ok"
+          },
+          {
+            "surface": "ma mi sembra",
+            "heard": "ma mi sembra di poter parlare abbastanza?",
+            "span": [
+              2895,
+              5832
+            ],
+            "verdict": "bad-slice"
+          },
+          {
+            "surface": "di poter parlare abbastanza",
+            "heard": "e",
+            "span": [
+              5884,
+              6056
+            ],
+            "verdict": "bad-slice"
+          },
+          {
+            "surface": "per iniziare ad avere conversazioni",
+            "heard": "per iniziare ad avere conversazioni.",
+            "span": [
+              6117,
+              8328
+            ],
+            "verdict": "ok"
+          }
+        ],
+        "note": "GENUINE mis-seam: slice 3 [2895-5832ms] contains units 3+4 (\"ma mi sembra di poter parlare abbastanza\"), slice 4 [5884-6056ms] is a 172ms fragment. Sensitive-ladder seam landed near end of speech, not at the chunk boundary."
+      }
+    },
+    "S140:g1": {
+      "turn": 140,
+      "group": 1,
+      "clip_id": "a320f7cb-3079-4159-a322-cae252913758",
+      "units": 3,
+      "render": {
+        "verdict": "pass",
+        "attempts": 1,
+        "gaps": [
+          918,
+          539
+        ],
+        "kept": null
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S142:g0": {
+      "turn": 142,
+      "group": 0,
+      "clip_id": "2a090ef1-db35-486e-84ce-f8a9b58a2070",
+      "units": 5,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          646,
+          495,
+          138,
+          376,
+          545
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S139:g3": {
+      "turn": 139,
+      "group": 3,
+      "clip_id": "e1a3d53a-841a-4534-9f56-4b1db04ea221",
+      "units": 4,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          95,
+          516,
+          316,
+          183
+        ],
+        "kept": 3
+      },
+      "slice": {
+        "tier": "sensitive",
+        "db_spans_complete": true
+      },
+      "verify": null
+    },
+    "S141:g1": {
+      "turn": 141,
+      "group": 1,
+      "clip_id": "34776dd7-2af4-4c13-bf12-5097678c84df",
+      "units": 2,
+      "render": {
+        "verdict": "sensitive-tier",
+        "attempts": 3,
+        "gaps": [
+          93,
+          450
+        ],
+        "kept": 1
+      },
+      "slice": {
+        "tier": "strict",
+        "db_spans_complete": true
+      },
+      "verify": null
+    }
+  },
+  "report": "PHASE 1 (render): COMPLETE — resumed from prior worker artifacts, no re-rendering needed or performed. All 163 multi-unit groups (290 seams) rendered with [pause] seams and silencedetect-gated at cap 3: 99/163 (60.7%) passed the render gate, 64 kept best-take for sensitive-tier slicing, 0 unmeasured. 329 xAI renders + 5 reuses. Slicing phase next. PHASE 2 (slice): COMPLETE — 163/163 groups slice on the detection ladder: 139 strict (85.3%), 24 sensitive-tier, 0 fail. DB spans complete for 163 groups (all). Verification phase next. PHASE 3 (verify): COMPLETE — 12 groups whisper-verified at stored spans across turns 1/49/82/121/135/136/137. Strict tier: 10/10 clean (one whisper spelling artifact adjudicated in slicing’s favour with evidence). Sensitive tier: 1/2 clean — S121:g0 perfect, S135:g3 has a genuine mis-seam (two chunks in one slice, 172ms orphan slice). PHASE 4 (gate): trustworthy = 139 strict + 1 verified-clean sensitive = 140/163 = 85.9% < 95% — flag NOT flipped; per-group quality-flag option surfaced for approval."
+}
