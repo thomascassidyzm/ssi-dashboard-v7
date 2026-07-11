@@ -155,3 +155,40 @@ build, document, and maintain.
 the story already existed and was already the load-bearing mechanism for editors/admins — the
 task re-levelled from "design a new model" to "verify the existing one, fix what it found")
 **Decided by:** Tom (ruled YES; agent chose verify-first over building new per doctrine)
+# Decision journal
+
+One entry per better×simpler×cheaper go decision. Newest first.
+
+## 2026-07-10 — xAI Italian phonology: whisper re-roll gate, not voice recasting alone
+
+**Context.** Tom caught xAI voices reading Italian cross-language words with English
+phonology ('come stai' with English 'come'; phase-3 verify flagged 'stia'→'sti').
+Investigation (language-steering pilot, 24 renders): every production render already
+sends `language:'it'` and the Italian cast are xAI *library native-it* voices, not
+English clones — yet the pilot reproduced English reads on the multilingual presets
+(eve/ara) **stochastically, even with `language:'it'` and even in the exact Take-G
+`[pause]` text shape**, and the 'stia'→'sti' artifact occurred on the native voice
+Enzo. The language param is necessary but not sufficient; the defect is per-render,
+not per-voice-config.
+
+**Decision.** Gate at render time: extend render-take-g's existing gate-and-retry
+loop with a whisper auto-detect check — a take whose audio detects as the course's
+known language (or English) instead of the target fails the attempt and re-rolls.
+Plus a choke-point warning in `tts-service.cjs` so no xAI course render can silently
+go out as `language:'auto'`.
+
+**Why all three legs.** Better: catches the actual observed failure (stochastic
+per-render drift) at the only point it's cheap to fix — before the take is linked
+and sliced; recasting voices alone would not have caught Enzo's 'stia'→'sti'.
+Simpler: reuses the proven gate-and-retry structure and the whisper tooling already
+on the machine for slice verification; no new services, ~40 lines. Cheaper: a
+re-roll costs one extra short render (pennies) only when drift is detected, versus
+mass re-render or human listening passes after the fact; the clip is already
+downloaded for gap measurement, so detection adds one local whisper call.
+
+**Rejected.** (a) "Add the language param" — already present everywhere on the pod
+paths; the two `'auto'` fallbacks found were latent, not live. (b) Recast presets to
+native voices as THE fix — helps (pilot: no English detections on Enzo) but doesn't
+close the stochastic hole; kept as an approval-gated proposal for the eve/ara estate.
+(c) SSML/inline language tags — xAI /v1/tts has no such surface (docs verified
+2026-07-10).
