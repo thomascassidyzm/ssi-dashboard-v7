@@ -235,6 +235,18 @@ async function run(courseCode, { apply, voiceId }) {
       const phase8 = require('../../services/phases/phase8-audio-v13.cjs')
       linked = await phase8.linkAudioIds(courseCode)
     }
+    // Standing policy: a pass that leaves un-sourceable slots ends by QUEUEING
+    // an audio-pass request (TTS itself stays approval-gated), so the residue
+    // can't silently accumulate as a missing-audio backlog.
+    if (summary.SKIP_NO_SOURCE > 0) {
+      const { queueAudioPass } = require('../../services/shared/audio-pass-queue.cjs')
+      await queueAudioPass(supabase, {
+        courseCode,
+        reason: 'clone-copy pass residue (no cross-course source — needs TTS)',
+        requestedBy: 'clone-copy-pass.cjs',
+        metadata: { skipNoSource: summary.SKIP_NO_SOURCE }
+      })
+    }
   }
 
   return { courseCode, family, apply, voiceId, engine, trusted, totalMissing, uniqueGroups: byRoleAndNormText.size, summary, copied, linked, decisions }

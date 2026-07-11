@@ -24,6 +24,7 @@ You are applying the SaySomethingin method — the thing every phrase a learner 
 
 ### Approval gates (cost / irreversibility)
 - **Never generate TTS audio** (costs money) without showing a plan and getting explicit approval.
+- **Content passes end by QUEUEING an audio-pass request** (`node tools/course-optimization/queue-audio-pass.cjs <course> --reason "<pass>"`, or `queueAudioPass` from `services/shared/audio-pass-queue.cjs`) — never by running TTS. Keeps text edits from silently accumulating as a missing-audio backlog; phase8 `/generate` fulfils the request when an approved pass completes.
 - **Never delete generated assets** (audio/video/MARs) without a deletion plan + approval.
 - **Never use the Anthropic SDK directly.** All LLM calls go through the Claude CLI (`claude --print`), never `@anthropic-ai/sdk`. The `ANTHROPIC_API_KEY` in `.env` is for the dashboard's env-switcher, not service code. (A past SDK module silently billed ~$38/day.) Pattern: `gender-prep-coordinator.cjs`; unset `CLAUDECODE` when spawning nested CLI calls.
 - **Otherwise act autonomously** when docs are clear, the action is reversible, and there's no cost surprise.

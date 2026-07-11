@@ -43,6 +43,7 @@ const genderHaikuService = require('../gender-haiku-service.cjs')
 const { claudeChat, HAIKU_MODEL } = require('../shared/claude-cli.cjs')
 const presentationAuthor = require('./presentation-author.cjs')
 const { emitProgress } = require('../shared/emit-progress.cjs')
+const { fulfillAudioPassRequests } = require('../shared/audio-pass-queue.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
 const { toIso3, getName: getLangEnglishName, databaseToManifest, getAzureLocale } = require('../language-code-service.cjs')
@@ -1982,6 +1983,14 @@ app.post('/generate/:courseCode', async (req, res) => {
       // auto-detects this freshly generated audio (the course_legos trigger
       // never fires on audio-only runs).
       await bumpCourseRevalidation(supabase, courseCode)
+    }
+
+    // A completed pass with no failures fulfils the course's pending
+    // audio-pass request (content passes queue these instead of running TTS —
+    // see services/shared/audio-pass-queue.cjs). Failures keep the request
+    // pending so the backlog stays visible.
+    if (!wasCancelled && results.failed === 0) {
+      await fulfillAudioPassRequests(supabase, courseCode)
     }
 
     // Emit completion
