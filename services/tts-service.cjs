@@ -13,6 +13,11 @@
 
 const fetch = require('node-fetch');
 const https = require('https');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const crypto = require('crypto');
+const { execFile } = require('child_process');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint } = require('./azure-tts-service.cjs');
 
@@ -330,12 +335,95 @@ function isRetriableTtsError(error) {
   return true;
 }
 
+// ---- xAI phonology gate (whisper language auto-detect) --------------------
+// xAI's multilingual voices are English-dominant and can render a non-English
+// text with English phonology even with an explicit `language` sent
+// ('Come stai' → English 'come'; ita pilot 2026-07-10). The gate re-rolls a
+// render whose detected spoken language is a suspect (English or an explicit
+// config.suspectLanguages entry) instead of the steered language, and fails
+// the item after the retry budget — a wrong-language clip must never be
+// written (zero-tolerance audio bar). Same measurement as
+// tools/render-take-g.cjs; wired here so EVERY xAI call site is covered.
+// Skipped when whisper-cli/model are absent (logged once), when the steered
+// language is English/auto (no cross-language risk to detect), or when
+// XAI_PHONO_GATE=0.
+const WHISPER_BIN = process.env.WHISPER || '/opt/homebrew/bin/whisper-cli';
+const WHISPER_MODEL = process.env.WHISPER_MODEL || '/tmp/whisper-models/ggml-small.bin';
+const FFMPEG_BIN = process.env.FFMPEG || (fs.existsSync('/opt/homebrew/bin/ffmpeg') ? '/opt/homebrew/bin/ffmpeg' : 'ffmpeg');
+const PHONO_GATE_ON = process.env.XAI_PHONO_GATE !== '0' && fs.existsSync(WHISPER_BIN) && fs.existsSync(WHISPER_MODEL);
+let phonoGateWarned = false;
+
+// Bounded whisper concurrency: each detection spawns a multi-threaded
+// process; an unbounded fan-out (TTS concurrency can be 20) would thrash the
+// box. Two at a time keeps detection off the critical path without stampeding.
+const PHONO_MAX_CONCURRENT = Number(process.env.XAI_PHONO_CONCURRENCY || 2);
+let phonoActive = 0;
+const phonoQueue = [];
+function phonoAcquire() {
+  if (phonoActive < PHONO_MAX_CONCURRENT) { phonoActive++; return Promise.resolve(); }
+  return new Promise(resolve => phonoQueue.push(resolve));
+}
+function phonoRelease() {
+  const next = phonoQueue.shift();
+  if (next) next(); else phonoActive--;
+}
+
+/**
+ * Detect the spoken language of an audio buffer via whisper-cli auto-detect.
+ * @returns {Promise<string|null>} ISO 639-1 code, or null when unmeasurable
+ *   (ffmpeg/whisper error) — null is treated as a pass, matching take-g's
+ *   'unmeasured' outcome: the gate only acts on positive suspect detections.
+ */
+async function detectSpokenLanguage(audioBuffer) {
+  await phonoAcquire();
+  const base = path.join(os.tmpdir(), `phono-gate-${crypto.randomUUID()}`);
+  const mp3 = `${base}.mp3`;
+  const wav = `${base}.wav`;
+  try {
+    fs.writeFileSync(mp3, audioBuffer);
+    return await new Promise(resolve => {
+      execFile(FFMPEG_BIN, ['-y', '-i', mp3, '-ar', '16000', '-ac', '1', wav], err => {
+        if (err) return resolve(null);
+        execFile(WHISPER_BIN, ['-m', WHISPER_MODEL, '-l', 'auto', '-nt', '-t', String(process.env.WHISPER_THREADS || 4), '-f', wav],
+          { encoding: 'utf8', maxBuffer: 1 << 22 }, (e, _o, stderr) => {
+            const m = /auto-detected language: (\w+)/.exec(stderr || '');
+            resolve(m ? m[1] : null);
+          });
+      });
+    });
+  } catch {
+    return null;
+  } finally {
+    for (const f of [mp3, wav]) { try { fs.unlinkSync(f); } catch {} }
+    phonoRelease();
+  }
+}
+
+/**
+ * The suspect-language set for a render, or null when the gate doesn't apply.
+ * Suspects = English (the voices' dominant language) + any explicit
+ * config.suspectLanguages, minus the steered language itself.
+ */
+function phonologySuspects(provider, config) {
+  if (provider !== 'xai' || config.phonologyGate === false) return null;
+  const steered = String(config.language || '').toLowerCase().split('-')[0];
+  if (!steered || steered === 'auto' || steered === 'en') return null;
+  const suspects = new Set(['en', ...(config.suspectLanguages || []).map(l => String(l).toLowerCase().split('-')[0])]);
+  suspects.delete(steered);
+  return suspects.size ? suspects : null;
+}
+
 /**
  * Generate speech with retry logic and exponential backoff + jitter.
  *
  * Backoff is exponential (base 1s, doubling) with full jitter, so a fan-out of
  * concurrent pod clips that all hit a transient xAI 5xx don't retry in lockstep
  * and re-stampede the API. Non-retriable (4xx) failures bail immediately.
+ *
+ * xAI renders steered to a non-English language additionally pass the
+ * phonology gate above: a take whose detected spoken language is suspect is
+ * re-rolled within the same retry budget, and the final failure throws so the
+ * caller never persists a wrong-language clip.
  *
  * @param {string} text - Text to synthesize
  * @param {string} provider - TTS provider
@@ -345,10 +433,22 @@ function isRetriableTtsError(error) {
  */
 async function generateWithRetry(text, provider, config, maxRetries = 3) {
   let lastError = null;
+  const suspects = phonologySuspects(provider, config);
+  if (suspects && !PHONO_GATE_ON && !phonoGateWarned) {
+    phonoGateWarned = true;
+    console.warn(`[TTS] xAI phonology gate unavailable (${process.env.XAI_PHONO_GATE === '0' ? 'XAI_PHONO_GATE=0' : 'whisper-cli or model missing'}) — non-English xAI renders unchecked for language drift`);
+  }
 
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
-      return await generate(text, provider, config);
+      const result = await generate(text, provider, config);
+      if (suspects && PHONO_GATE_ON) {
+        const detected = await detectSpokenLanguage(result.audioBuffer);
+        if (detected && suspects.has(detected)) {
+          throw new Error(`phonology gate: whisper detected '${detected}' instead of '${config.language}' for "${String(text).slice(0, 40)}"`);
+        }
+      }
+      return result;
     } catch (error) {
       lastError = error;
       const retriable = isRetriableTtsError(error);
@@ -413,5 +513,8 @@ module.exports = {
   generateAzure,
   generateXai,
   getCadenceSpeed,
-  getVoiceForRole
+  getVoiceForRole,
+  // phonology gate internals, exported for tests/tools
+  detectSpokenLanguage,
+  phonologySuspects
 };

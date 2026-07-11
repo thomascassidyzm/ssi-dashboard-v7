@@ -192,3 +192,30 @@ native voices as THE fix — helps (pilot: no English detections on Enzo) but do
 close the stochastic hole; kept as an approval-gated proposal for the eve/ara estate.
 (c) SSML/inline language tags — xAI /v1/tts has no such surface (docs verified
 2026-07-10).
+
+## 2026-07-11 — phonology gate wired into shared TTS retry path
+
+**Move:** ported the take-g whisper phonology gate (whisper-cli language auto-detect, re-roll
+suspect takes) from `tools/render-take-g.cjs` into `services/tts-service.cjs`'s
+`generateWithRetry`, so every xAI call site (phase8 course renders, regenerate routes, pods)
+re-rolls a render whose detected spoken language is English (or an explicit suspect) instead of
+the steered language, and fails the item after the retry budget rather than persisting a
+wrong-language clip.
+
+**Better:** the ita_for_eng backlog pass (~2,700 items on xAI ara/leo) would otherwise render
+ungated — the take-g header documents xAI slipping into English phonology *even with*
+`language:'it'` sent; zero-tolerance bar says such a clip must never be written.
+**Simpler:** one choke point instead of per-call-site gating — the measurement is the exact
+detectClipLang mechanic already proven on the 163-group ita take-g pass (0 phonology fails).
+**Cheaper (total):** ~60 lines reusing installed whisper-cli/ggml-small; re-rolls cost fractions
+of a cent; a bounded 2-way semaphore keeps detection off the render critical path. Skips cleanly
+(logged once) when whisper is absent; `XAI_PHONO_GATE=0` opts out.
+
+**Searched & rejected:**
+- Generate ungated + post-pass whisper audit — worse: bad audio links to learners immediately;
+  cleanup needs a deletion plan (approval-gated) per clip.
+- Gate per call site in phase8 only — simpler nowhere: misses regenerate-single/-phrase/-role
+  and pod paths the "all xAI renders" intent covers.
+**Search width:** visible-options
+**Decided by:** agent (executing Tom's approved backlog brief, which assumed the gate already
+covered all xAI renders — this makes that assumption true)
