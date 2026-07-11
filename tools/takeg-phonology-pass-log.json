@@ -1,0 +1,2405 @@
+{
+  "course": "ita_for_eng",
+  "report": {
+    "render": {
+      "status": "complete",
+      "thisRun": {
+        "rendered": 98,
+        "reused": 48,
+        "singles": 38,
+        "failed": 0,
+        "gatePassed": 28,
+        "gateSensitive": 38,
+        "gateUnmeasured": 0,
+        "phonoRerolls": 0,
+        "turnsLinked": 138
+      },
+      "verdictTotals": {
+        "pass": 104,
+        "sensitive-tier": 59
+      },
+      "rerenderedGroups": [
+        "S7:g0",
+        "S2:g0",
+        "S5:g0",
+        "S15:g0",
+        "S8:g0",
+        "S11:g0",
+        "S16:g0",
+        "S21:g0",
+        "S18:g0",
+        "S8:g1",
+        "S23:g2",
+        "S20:g0",
+        "S28:g0",
+        "S22:g0",
+        "S30:g0",
+        "S32:g0",
+        "S35:g0",
+        "S26:g0",
+        "S38:g0",
+        "S31:g1",
+        "S43:g0",
+        "S36:g0",
+        "S41:g0",
+        "S48:g0",
+        "S34:g0",
+        "S47:g0",
+        "S46:g0",
+        "S50:g0",
+        "S54:g0",
+        "S49:g0",
+        "S51:g0",
+        "S58:g0",
+        "S56:g0",
+        "S63:g0",
+        "S61:g0",
+        "S65:g0",
+        "S73:g0",
+        "S69:g0",
+        "S77:g0",
+        "S70:g0",
+        "S76:g0",
+        "S78:g0",
+        "S79:g0",
+        "S81:g0",
+        "S85:g0",
+        "S87:g0",
+        "S86:g0",
+        "S88:g0",
+        "S94:g0",
+        "S93:g0",
+        "S88:g1",
+        "S96:g0",
+        "S90:g0",
+        "S95:g0",
+        "S101:g0",
+        "S94:g1",
+        "S97:g0",
+        "S98:g0",
+        "S100:g0",
+        "S103:g0",
+        "S104:g0",
+        "S106:g0",
+        "S107:g0",
+        "S108:g0",
+        "S109:g0",
+        "S117:g0",
+        "S113:g0",
+        "S110:g0",
+        "S118:g0",
+        "S116:g0",
+        "S123:g0",
+        "S121:g0",
+        "S122:g1",
+        "S128:g0",
+        "S125:g0",
+        "S130:g0",
+        "S134:g0",
+        "S133:g0",
+        "S131:g0",
+        "S135:g2",
+        "S139:g0",
+        "S133:g1",
+        "S137:g0",
+        "S140:g0",
+        "S131:g1",
+        "S135:g3",
+        "S139:g3",
+        "S141:g1",
+        "S137:g1",
+        "S140:g1",
+        "S142:g0"
+      ]
+    },
+    "slice": {
+      "status": "complete",
+      "groupsSliced": 163,
+      "failedGate": 0,
+      "turnsWritten": 82,
+      "log": "scripts/takeg-slice-resume-run2.log"
+    },
+    "verify": {
+      "status": "complete",
+      "method": "download linked clip from S3, whisper auto-detect language, check atom_map_fine spans non-null",
+      "samples": [
+        {
+          "group": "S7:g0",
+          "audioId": "0b32d726-b616-407e-9285-da05cf1be362",
+          "idMatchesLedger": true,
+          "detected": "es",
+          "durationMs": 2712,
+          "spansAllPresent": true,
+          "transcript": "Buenas Hieras. ¿Cosa aprendo?"
+        },
+        {
+          "group": "S87:g0",
+          "audioId": "8dafd9f5-8b46-42a3-b561-901e835e9497",
+          "idMatchesLedger": true,
+          "detected": "it",
+          "durationMs": 4728,
+          "spansAllPresent": true,
+          "transcript": "Buonasera o una prenotazione a nome Jones"
+        },
+        {
+          "group": "S142:g0",
+          "audioId": "2a090ef1-db35-486e-84ce-f8a9b58a2070",
+          "idMatchesLedger": true,
+          "detected": "it",
+          "durationMs": 5856,
+          "spansAllPresent": true,
+          "transcript": "100.000, 60, 70, l'1, le 11."
+        }
+      ]
+    },
+    "cost": {
+      "basis": "xAI pod TTS ~$4.20/M chars (POD_CHARS_TO_COST, phase8)",
+      "freshRendersThisSession": 98,
+      "estThisSessionUSD": 0.03,
+      "note": "cumulative pass total well under the ~£2 ceiling — takes average ~60 chars, so even all 625 historical rows fresh-rendered would be ~$0.16"
+    },
+    "summary": {
+      "status": "COMPLETE",
+      "scope": "all 163 live multi-unit take-g groups on ita_for_eng:pod-0 (the 625 figure was course_audio pod_take_g ROW count incl. superseded dedup rows — live linked groups are the pass unit)",
+      "checked": 163,
+      "verdicts": {
+        "pass": 104,
+        "sensitive-tier": 59
+      },
+      "rerendered": 91,
+      "phonologyStillFailing": 0,
+      "sensitiveTier": 59,
+      "slice": "163/163 groups sliced, 0 failed the gate",
+      "verify": "3/3 re-rendered takes verified end-to-end (see report.verify; S7:g0 whisper it/es flip on 2.7s clip is known small-model Romance noise, not English phonology)",
+      "finishedAt": "2026-07-11T00:35:56.611Z"
+    }
+  },
+  "takes": {
+    "S3:g0": {
+      "verdict": "pass",
+      "id": "b1e300f5-d189-4095-b665-561d15936035",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        837
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:24:56.672Z"
+    },
+    "S4:g0": {
+      "verdict": "pass",
+      "id": "76bd4b85-25e5-40a0-922c-43d9d47bb7c6",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        546
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:24:56.702Z"
+    },
+    "S1:g0": {
+      "verdict": "pass",
+      "id": "ae7be72a-6b88-4704-a231-b9e8300860e3",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        573
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:24:56.708Z"
+    },
+    "S6:g0": {
+      "verdict": "pass",
+      "id": "4b517128-b537-4f8c-b3fd-ff210b1741b2",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        770
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:24:56.710Z"
+    },
+    "S6:g1": {
+      "verdict": "pass",
+      "id": "1b79e75d-b0f6-4af6-b5c1-12d9321de0f0",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        536,
+        85
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:24:58.591Z"
+    },
+    "S9:g0": {
+      "verdict": "pass",
+      "id": "b0d2aced-02d8-4d69-9f1d-e3e44ad41ee9",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        655
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:24:58.680Z"
+    },
+    "S7:g0": {
+      "verdict": "pass",
+      "id": "0b32d726-b616-407e-9285-da05cf1be362",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        850
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:00.424Z"
+    },
+    "S10:g0": {
+      "verdict": "pass",
+      "id": "9befd170-f969-4e2b-bead-3e5b8807cc88",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        803
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:00.553Z"
+    },
+    "S12:g0": {
+      "verdict": "pass",
+      "id": "ba116824-e949-4cec-b805-935c336b5506",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        1024,
+        660
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:02.997Z"
+    },
+    "S13:g0": {
+      "verdict": "pass",
+      "id": "899bf51a-740b-4dd4-8d1c-39634eb95fb0",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        1152
+      ],
+      "detected": "es",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:03.093Z"
+    },
+    "S2:g0": {
+      "verdict": "pass",
+      "id": "8947b0ad-0286-4eaf-8713-460aa33e8e18",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        1137
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:03.132Z"
+    },
+    "S5:g0": {
+      "verdict": "pass",
+      "id": "69a3a23c-c4d5-4c98-9a5b-07f5a20f34d5",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        710,
+        86
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:03.521Z"
+    },
+    "S17:g0": {
+      "verdict": "pass",
+      "id": "1497b867-34da-48f2-9757-0f3189b5143b",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        893
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:04.958Z"
+    },
+    "S14:g0": {
+      "verdict": "pass",
+      "id": "8ea682b6-0a50-48b9-97c6-e8bc326509fe",
+      "units": 4,
+      "attempts": 1,
+      "gaps": [
+        150,
+        1094,
+        655,
+        132,
+        523
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:05.052Z"
+    },
+    "S15:g0": {
+      "verdict": "pass",
+      "id": "29958f0f-2144-44b8-a260-2617550b4755",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        1083,
+        592
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:07.045Z"
+    },
+    "S19:g0": {
+      "verdict": "pass",
+      "id": "65ad551f-b9a5-426b-864e-40e2ead03bc4",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        855
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:07.623Z"
+    },
+    "S8:g0": {
+      "verdict": "sensitive-tier",
+      "id": "64399420-fd00-42e9-8f09-6bb5024f40b0",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        997,
+        308
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:07.662Z"
+    },
+    "S11:g0": {
+      "verdict": "sensitive-tier",
+      "id": "a8e53ef6-833b-4d48-9a30-7d28839cb9da",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        1005,
+        157
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:09.232Z"
+    },
+    "S16:g0": {
+      "verdict": "pass",
+      "id": "6a1d93e5-097f-411c-ac64-ec8bc350ca88",
+      "units": 2,
+      "attempts": 3,
+      "gaps": [
+        552
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:10.460Z"
+    },
+    "S21:g0": {
+      "verdict": "pass",
+      "id": "d1c6cede-fc2a-4d2c-9cbd-2d8b1ce5cabe",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        825
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:11.347Z"
+    },
+    "S23:g0": {
+      "verdict": "pass",
+      "id": "b4407855-a1ad-4ba1-978b-eed136f4205d",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        1005
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:12.481Z"
+    },
+    "S24:g0": {
+      "verdict": "pass",
+      "id": "03058956-f326-47d6-9490-b1d8727b7b3f",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        645,
+        99
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:13.327Z"
+    },
+    "S25:g0": {
+      "verdict": "pass",
+      "id": "6d0749cc-e1d1-4c66-a732-3856726cd91d",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        520
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:15.329Z"
+    },
+    "S18:g0": {
+      "verdict": "pass",
+      "id": "d8d12940-8e8a-44b2-9878-d0755009fb52",
+      "units": 2,
+      "attempts": 3,
+      "gaps": [
+        905
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:15.331Z"
+    },
+    "S8:g1": {
+      "verdict": "pass",
+      "id": "8f00773f-5602-417e-a8e8-76472036b763",
+      "units": 2,
+      "attempts": 3,
+      "gaps": [
+        181,
+        569,
+        119
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:16.650Z"
+    },
+    "S23:g2": {
+      "verdict": "pass",
+      "id": "56a69066-5ad0-46de-96a7-19de4e5ee264",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        972
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:16.825Z"
+    },
+    "S20:g0": {
+      "verdict": "sensitive-tier",
+      "id": "fe9a9382-d0e5-45b4-98f8-2668080ad25d",
+      "units": 3,
+      "attempts": 3,
+      "kept": 2,
+      "gaps": [
+        695,
+        329
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:17.451Z"
+    },
+    "S25:g2": {
+      "verdict": "pass",
+      "id": "b02595bd-1865-4493-aada-e0590b1f3cd8",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        720
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:17.766Z"
+    },
+    "S27:g0": {
+      "verdict": "pass",
+      "id": "c756f214-64ca-47d5-a2b2-f2d3a46a6d82",
+      "units": 5,
+      "attempts": 1,
+      "gaps": [
+        1122,
+        967,
+        839,
+        605
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:18.151Z"
+    },
+    "S29:g0": {
+      "verdict": "pass",
+      "id": "961121a5-581f-4b92-8edf-c120e6ae6083",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        525
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:18.803Z"
+    },
+    "S31:g0": {
+      "verdict": "pass",
+      "id": "06b5ff04-6c70-4b76-9b5c-024f3a928d50",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        531
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:19.562Z"
+    },
+    "S28:g0": {
+      "verdict": "pass",
+      "id": "b57ad17b-d35d-4e1e-a9ee-a26eb4d6a702",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        1177
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:19.855Z"
+    },
+    "S22:g0": {
+      "verdict": "sensitive-tier",
+      "id": "bf9794d5-b567-4f5f-87b4-a29e7ed9f035",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        482,
+        542
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:20.854Z"
+    },
+    "S30:g0": {
+      "verdict": "pass",
+      "id": "11d3735b-f991-4fc1-8f31-863ec111d316",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        537
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:21.305Z"
+    },
+    "S32:g0": {
+      "verdict": "pass",
+      "id": "d73886e6-6490-4490-8b49-04ad725b6db1",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        83,
+        986,
+        121,
+        81
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:22.341Z"
+    },
+    "S33:g0": {
+      "verdict": "pass",
+      "id": "fcce9a36-9cbf-49d2-a5cc-09a8980f4848",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        84,
+        102,
+        549
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:22.527Z"
+    },
+    "S37:g0": {
+      "verdict": "pass",
+      "id": "c99f3050-a171-427a-9cd9-8141517127e7",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        657,
+        153
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:23.975Z"
+    },
+    "S35:g0": {
+      "verdict": "pass",
+      "id": "dc4d947e-7039-4bda-82cb-71cc8f5ff225",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        1342
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:24.374Z"
+    },
+    "S26:g0": {
+      "verdict": "sensitive-tier",
+      "id": "7aa94f4e-6286-4233-86f9-c9db0f95dd24",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        645,
+        178
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:26.290Z"
+    },
+    "S39:g0": {
+      "verdict": "pass",
+      "id": "bc195447-a18b-499e-9d2f-f50089c2381e",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        82,
+        765
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:26.407Z"
+    },
+    "S38:g0": {
+      "verdict": "pass",
+      "id": "0ebbb2e8-4b78-4687-be6a-3baf6460312f",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        530
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:28.189Z"
+    },
+    "S31:g1": {
+      "verdict": "sensitive-tier",
+      "id": "eb2d1d79-2605-440c-a7a5-3dba5bef4dee",
+      "units": 2,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        100,
+        247
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:29.213Z"
+    },
+    "S40:g0": {
+      "verdict": "pass",
+      "id": "94f7da91-0cdd-4012-a626-be15b767bd59",
+      "units": 4,
+      "attempts": 1,
+      "gaps": [
+        1776,
+        129,
+        805,
+        573
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:29.550Z"
+    },
+    "S42:g0": {
+      "verdict": "pass",
+      "id": "106bc0bd-3295-45da-8377-19606a012c70",
+      "units": 5,
+      "attempts": 1,
+      "gaps": [
+        824,
+        683,
+        590,
+        552
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:29.659Z"
+    },
+    "S44:g0": {
+      "verdict": "pass",
+      "id": "9d77a8e0-d09b-4d8a-a787-90b0e8d365fe",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        501
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:31.490Z"
+    },
+    "S45:g0": {
+      "verdict": "pass",
+      "id": "e4608586-d479-4ac4-86b0-f01c0426372e",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        142,
+        1479,
+        82,
+        860
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:31.662Z"
+    },
+    "S43:g0": {
+      "verdict": "pass",
+      "id": "0b32d726-b616-407e-9285-da05cf1be362",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        1150
+      ],
+      "detected": "es",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:32.733Z"
+    },
+    "S36:g0": {
+      "verdict": "sensitive-tier",
+      "id": "74f220e9-3820-4955-9e98-c1deda295643",
+      "units": 4,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        982,
+        339,
+        112,
+        765
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:33.049Z"
+    },
+    "S41:g0": {
+      "verdict": "pass",
+      "id": "20654be7-c59b-4433-88e2-2d7779a6676b",
+      "units": 3,
+      "attempts": 2,
+      "gaps": [
+        1435,
+        640
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:33.133Z"
+    },
+    "S48:g0": {
+      "verdict": "pass",
+      "id": "50ecd67c-23ac-408d-b367-c8f65d78cc2b",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        761,
+        85
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:36.705Z"
+    },
+    "S34:g0": {
+      "verdict": "sensitive-tier",
+      "id": "b1463cf5-de40-4a73-8781-521c19dada05",
+      "units": 4,
+      "attempts": 3,
+      "kept": 2,
+      "gaps": [
+        751,
+        800,
+        443
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:36.796Z"
+    },
+    "S48:g1": {
+      "verdict": "pass",
+      "id": "5e358de6-c50c-4b09-88d4-53fcd310219e",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        1322
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:37.996Z"
+    },
+    "S47:g0": {
+      "verdict": "pass",
+      "id": "9989f421-5d9a-48c7-a04f-2c66af48c4b2",
+      "units": 2,
+      "attempts": 2,
+      "gaps": [
+        706
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:38.749Z"
+    },
+    "S52:g0": {
+      "verdict": "pass",
+      "id": "502f4d85-c596-455f-9b08-cb5a3b13d345",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        1213
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:39.969Z"
+    },
+    "S46:g0": {
+      "verdict": "sensitive-tier",
+      "id": "714d67ff-93fb-479d-9448-208b4a8af024",
+      "units": 2,
+      "attempts": 3,
+      "kept": 2,
+      "gaps": [
+        175,
+        185
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:40.405Z"
+    },
+    "S55:g0": {
+      "verdict": "pass",
+      "id": "7f4ff341-360d-469c-8830-1629aa90539a",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        597
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:42.010Z"
+    },
+    "S50:g0": {
+      "verdict": "sensitive-tier",
+      "id": "ec6ac5df-e8af-43ca-84be-5a1ab6f15446",
+      "units": 3,
+      "attempts": 3,
+      "kept": 3,
+      "gaps": [
+        1198,
+        182
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:42.576Z"
+    },
+    "S55:g2": {
+      "verdict": "pass",
+      "id": "d2fc8052-4aa3-4015-88c7-d148c3c87f9a",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        113,
+        131,
+        1069
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:43.527Z"
+    },
+    "S57:g0": {
+      "verdict": "pass",
+      "id": "2f1908b9-9c6d-4671-9ed4-23ef206aa20b",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        906,
+        819
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:44.712Z"
+    },
+    "S59:g0": {
+      "verdict": "pass",
+      "id": "97ca89d3-0101-4ee0-a9ad-1ceb85e5b65e",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        930,
+        581
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:47.294Z"
+    },
+    "S54:g0": {
+      "verdict": "sensitive-tier",
+      "id": "9befae8d-e4f3-4472-94ea-e2a652bffc3c",
+      "units": 2,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        186
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:47.627Z"
+    },
+    "S49:g0": {
+      "verdict": "sensitive-tier",
+      "id": "225d4672-87a3-4dfc-8b13-b5b968417989",
+      "units": 4,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        808,
+        638,
+        297,
+        97
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:47.777Z"
+    },
+    "S60:g0": {
+      "verdict": "pass",
+      "id": "79a75ede-c7b9-4f2d-81fe-1e22f78c64c4",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        696,
+        604
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:49.375Z"
+    },
+    "S51:g0": {
+      "verdict": "sensitive-tier",
+      "id": "9ed57c55-11b6-4ff7-a853-fe5904d1e15d",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        251,
+        104,
+        132,
+        211
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:49.641Z"
+    },
+    "S62:g0": {
+      "verdict": "pass",
+      "id": "99aab39f-5f09-499c-9af7-e9a349c55dbc",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        955,
+        503
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:49.858Z"
+    },
+    "S58:g0": {
+      "verdict": "pass",
+      "id": "f9979b6a-fbf4-46e7-a167-e429c6d49d2e",
+      "units": 5,
+      "attempts": 2,
+      "gaps": [
+        153,
+        866,
+        776,
+        199,
+        648,
+        623
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:50.141Z"
+    },
+    "S64:g0": {
+      "verdict": "pass",
+      "id": "120fef0e-047c-46c5-aeb3-5bc75c129c2e",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        1642,
+        144,
+        730
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:52.225Z"
+    },
+    "S56:g0": {
+      "verdict": "sensitive-tier",
+      "id": "1f262002-a48f-44a6-9f04-0bfaa431a62f",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        111,
+        838,
+        145,
+        425
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:52.266Z"
+    },
+    "S66:g0": {
+      "verdict": "pass",
+      "id": "71339e98-d007-4da6-a31c-6f2c75c205cc",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        1024,
+        92,
+        805
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:52.727Z"
+    },
+    "S63:g0": {
+      "verdict": "pass",
+      "id": "cf25a0a8-9bf2-490f-ad14-ab1aba65b2be",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        1352
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:53.480Z"
+    },
+    "S67:g0": {
+      "verdict": "pass",
+      "id": "42455a71-05c5-4e49-bd5f-ba05d3c84678",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        843
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:54.338Z"
+    },
+    "S68:g0": {
+      "verdict": "pass",
+      "id": "33567390-2993-43c5-9911-f9ab28e14920",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        1131,
+        699
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:54.341Z"
+    },
+    "S71:g0": {
+      "verdict": "pass",
+      "id": "fecc0b78-0271-4858-84f5-5774de03fd73",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        557,
+        106
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:56.902Z"
+    },
+    "S72:g0": {
+      "verdict": "pass",
+      "id": "cf19a46b-6d01-4f83-bdba-52a4db9b7ab8",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        1235,
+        641
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:57.432Z"
+    },
+    "S61:g0": {
+      "verdict": "pass",
+      "id": "c4999e2c-8211-46bf-acf5-e5126a2aa96c",
+      "units": 3,
+      "attempts": 2,
+      "gaps": [
+        1136,
+        575
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:25:58.115Z"
+    },
+    "S74:g0": {
+      "verdict": "pass",
+      "id": "915598a1-a6cb-4a69-adf9-17433d634c5e",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        555
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:58.859Z"
+    },
+    "S75:g0": {
+      "verdict": "pass",
+      "id": "98c807b5-9d78-4dee-807e-a4517c6a18d6",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        531
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:25:59.521Z"
+    },
+    "S65:g0": {
+      "verdict": "sensitive-tier",
+      "id": "dac1fec2-4465-45dd-b355-f9ba1fe590e4",
+      "units": 2,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        91,
+        163
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:01.326Z"
+    },
+    "S73:g0": {
+      "verdict": "pass",
+      "id": "267d4360-a40f-46ce-b179-9f472188cdde",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        87,
+        1058,
+        566
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:01.843Z"
+    },
+    "S69:g0": {
+      "verdict": "pass",
+      "id": "d88ffa0b-469f-478e-998f-9ce987a485d9",
+      "units": 2,
+      "attempts": 2,
+      "gaps": [
+        1059
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:01.995Z"
+    },
+    "S77:g0": {
+      "verdict": "pass",
+      "id": "91c3aea9-3f88-4c2b-a650-fa3eb20d10e0",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        512
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:02.887Z"
+    },
+    "S80:g0": {
+      "verdict": "pass",
+      "id": "3ecdae81-0036-40db-96db-78eb189d5e28",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        770,
+        638
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:26:03.409Z"
+    },
+    "S70:g0": {
+      "verdict": "pass",
+      "id": "207b902e-2b2b-4c69-a268-03784770e5c8",
+      "units": 2,
+      "attempts": 3,
+      "gaps": [
+        615
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:03.701Z"
+    },
+    "S83:g0": {
+      "verdict": "pass",
+      "id": "20063d42-710f-40c4-b9a8-fa70c64f9d36",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        640
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:26:06.283Z"
+    },
+    "S82:g0": {
+      "verdict": "pass",
+      "id": "e0e2c8e1-f55e-46ed-a866-886beb05a13b",
+      "units": 4,
+      "attempts": 1,
+      "gaps": [
+        571,
+        872,
+        555
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:26:06.641Z"
+    },
+    "S84:g0": {
+      "verdict": "pass",
+      "id": "7fdf080b-c9d1-45a7-a24a-509ee8cc2ee0",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        910,
+        926
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:26:07.802Z"
+    },
+    "S76:g0": {
+      "verdict": "sensitive-tier",
+      "id": "012f00db-ee51-4ff5-8706-32fe5f6261c1",
+      "units": 5,
+      "attempts": 3,
+      "kept": 2,
+      "gaps": [
+        135,
+        664,
+        584,
+        423,
+        515
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:09.751Z"
+    },
+    "S78:g0": {
+      "verdict": "sensitive-tier",
+      "id": "8ca079bc-a340-4f14-b318-5e24b8aa5882",
+      "units": 3,
+      "attempts": 3,
+      "kept": 3,
+      "gaps": [
+        677,
+        162
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:10.910Z"
+    },
+    "S79:g0": {
+      "verdict": "sensitive-tier",
+      "id": "a2a01b68-4ac4-4e0e-8748-730aa86edcd8",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        1141,
+        482
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:14.654Z"
+    },
+    "S81:g0": {
+      "verdict": "sensitive-tier",
+      "id": "442afaf1-692e-454d-a211-4b60ead69697",
+      "units": 3,
+      "attempts": 3,
+      "kept": 3,
+      "gaps": [
+        196,
+        546
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:15.272Z"
+    },
+    "S89:g0": {
+      "verdict": "pass",
+      "id": "1b6bba22-1ed1-4f2c-af72-98834ba01d73",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        1141
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:26:16.614Z"
+    },
+    "S92:g0": {
+      "verdict": "pass",
+      "id": "e3d7ae7e-7a71-4170-bb3a-1f8d893799dd",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        899
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:26:18.064Z"
+    },
+    "S85:g0": {
+      "verdict": "sensitive-tier",
+      "id": "f54c529b-2af2-4336-85af-1645d2f43908",
+      "units": 5,
+      "attempts": 3,
+      "kept": 3,
+      "gaps": [
+        651,
+        241,
+        502,
+        376,
+        80
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:18.162Z"
+    },
+    "S87:g0": {
+      "verdict": "pass",
+      "id": "8dafd9f5-8b46-42a3-b561-901e835e9497",
+      "units": 3,
+      "attempts": 3,
+      "gaps": [
+        1209,
+        521
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:18.851Z"
+    },
+    "S85:g1": {
+      "verdict": "pass",
+      "id": "db5717d5-44e1-4187-b606-a8a097e299f8",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        511
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:26:19.493Z"
+    },
+    "S86:g0": {
+      "verdict": "pass",
+      "id": "f9b9d5ce-702b-49cf-9e48-ab78d643de83",
+      "units": 5,
+      "attempts": 3,
+      "gaps": [
+        1001,
+        1010,
+        135,
+        535,
+        721
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:19.840Z"
+    },
+    "S88:g0": {
+      "verdict": "sensitive-tier",
+      "id": "bb6efdf4-5140-4e10-9ed6-9f5898575bc8",
+      "units": 4,
+      "attempts": 3,
+      "kept": 2,
+      "gaps": [
+        780,
+        303,
+        133,
+        173,
+        167
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:26:21.409Z"
+    },
+    "S94:g0": {
+      "verdict": "sensitive-tier",
+      "id": "3275b721-43eb-449f-97d5-aa14ad29b9f7",
+      "units": 2,
+      "attempts": 3,
+      "kept": 2,
+      "gaps": [
+        119,
+        191
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:14.190Z"
+    },
+    "S93:g0": {
+      "verdict": "sensitive-tier",
+      "id": "5d64297b-3a33-4dd3-ad36-0dc7a5df4727",
+      "units": 2,
+      "attempts": 3,
+      "kept": 2,
+      "gaps": [
+        115
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:16.432Z"
+    },
+    "S88:g1": {
+      "verdict": "sensitive-tier",
+      "id": "d1997104-9a85-45f4-9770-b252b3746693",
+      "units": 2,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        300
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:16.780Z"
+    },
+    "S96:g0": {
+      "verdict": "sensitive-tier",
+      "id": "ceca9c9f-d9f0-4f28-bbbe-a40f8959ed33",
+      "units": 4,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        675,
+        782,
+        363
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:17.130Z"
+    },
+    "S90:g0": {
+      "verdict": "sensitive-tier",
+      "id": "38c0a639-db6e-4eae-9887-8650e057348e",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        159,
+        830,
+        88,
+        318,
+        100
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:17.402Z"
+    },
+    "S99:g0": {
+      "verdict": "pass",
+      "id": "cf8cfbe8-9a47-423f-bd80-517cc6fde11d",
+      "units": 5,
+      "attempts": 1,
+      "gaps": [
+        922,
+        162,
+        671,
+        161,
+        542,
+        607
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:18.717Z"
+    },
+    "S95:g0": {
+      "verdict": "sensitive-tier",
+      "id": "26a67555-9f4f-4bba-be44-54f623a33b8d",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        1183,
+        103
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:18.951Z"
+    },
+    "S102:g0": {
+      "verdict": "pass",
+      "id": "387715fa-22cd-423c-8ebf-dd1cc26311dd",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        822,
+        730
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:20.433Z"
+    },
+    "S101:g0": {
+      "verdict": "pass",
+      "id": "b978c705-cd69-489d-bf83-a4442912ed86",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        683
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:22.421Z"
+    },
+    "S94:g1": {
+      "verdict": "sensitive-tier",
+      "id": "3c6f5796-21e8-4260-9899-dd5d1b3d35f8",
+      "units": 2,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        152,
+        122,
+        305,
+        115
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:24.945Z"
+    },
+    "S97:g0": {
+      "verdict": "sensitive-tier",
+      "id": "abf75c79-0a6f-474d-b209-b0f5a80d169d",
+      "units": 2,
+      "attempts": 3,
+      "kept": 3,
+      "gaps": [
+        80,
+        118
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:27.286Z"
+    },
+    "S98:g0": {
+      "verdict": "sensitive-tier",
+      "id": "6ba85970-49ab-4091-8f91-f13f77fe41cd",
+      "units": 2,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        188
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:27.569Z"
+    },
+    "S105:g0": {
+      "verdict": "pass",
+      "id": "49dd1559-d28e-45e6-a328-2f5d4c2ba90a",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        722
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:27.751Z"
+    },
+    "S100:g0": {
+      "verdict": "sensitive-tier",
+      "id": "00053c8f-1992-47a4-b1b3-cd26db223362",
+      "units": 4,
+      "attempts": 3,
+      "kept": 3,
+      "gaps": [
+        1230,
+        107,
+        87,
+        502,
+        81
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:30.961Z"
+    },
+    "S103:g0": {
+      "verdict": "sensitive-tier",
+      "id": "33dd7019-6584-433b-8cb0-1be0de4c5716",
+      "units": 4,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        290,
+        681,
+        181
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:33.729Z"
+    },
+    "S104:g0": {
+      "verdict": "sensitive-tier",
+      "id": "0bd0b855-40f8-4fa8-8e76-2f43b0aeffe3",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        82,
+        95,
+        341
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:33.954Z"
+    },
+    "S111:g0": {
+      "verdict": "pass",
+      "id": "0d3b1ee7-517a-4c3c-b308-f2407f2b62c2",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        987
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:35.558Z"
+    },
+    "S106:g0": {
+      "verdict": "sensitive-tier",
+      "id": "dbe52dc2-f1c5-47e8-bccd-5efe3ed6426e",
+      "units": 2,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        254
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:37.770Z"
+    },
+    "S107:g0": {
+      "verdict": "sensitive-tier",
+      "id": "62f1a974-f145-4423-b655-52b861892e6d",
+      "units": 4,
+      "attempts": 3,
+      "kept": 3,
+      "gaps": [
+        797,
+        539,
+        184
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:38.117Z"
+    },
+    "S108:g0": {
+      "verdict": "sensitive-tier",
+      "id": "fa7a722d-4024-4fde-bde7-457d558dd740",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        500,
+        153,
+        136,
+        95,
+        80,
+        169
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:38.713Z"
+    },
+    "S114:g0": {
+      "verdict": "pass",
+      "id": "d3bdd96b-242d-4a9a-8453-7a0bc553a18a",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        638
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:39.655Z"
+    },
+    "S109:g0": {
+      "verdict": "pass",
+      "id": "e171c95b-a0cc-44f9-8d25-f944f5f9d884",
+      "units": 5,
+      "attempts": 3,
+      "gaps": [
+        778,
+        94,
+        635,
+        518,
+        81,
+        657
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:40.779Z"
+    },
+    "S119:g0": {
+      "verdict": "pass",
+      "id": "bebd9b12-0f26-4249-a94b-0e8281d279b8",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        866
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:42.739Z"
+    },
+    "S117:g0": {
+      "verdict": "pass",
+      "id": "1e44b1d3-a3e2-483d-9634-8108d11f7e7b",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        1194,
+        95,
+        705
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:43.310Z"
+    },
+    "S120:g0": {
+      "verdict": "pass",
+      "id": "887b45f3-c14f-4a68-be01-da4b9c53af73",
+      "units": 5,
+      "attempts": 1,
+      "gaps": [
+        898,
+        526,
+        536,
+        550
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:44.335Z"
+    },
+    "S122:g0": {
+      "verdict": "pass",
+      "id": "94d6146d-4470-499a-8953-a2917f6fd2c8",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        706
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:45.767Z"
+    },
+    "S113:g0": {
+      "verdict": "sensitive-tier",
+      "id": "680d8e10-c39e-49f9-9abf-a847ab4c115a",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        563,
+        218
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:47.135Z"
+    },
+    "S110:g0": {
+      "verdict": "sensitive-tier",
+      "id": "19e600d4-79b9-4299-b211-7ace7f6386bb",
+      "units": 3,
+      "attempts": 3,
+      "kept": 2,
+      "gaps": [
+        610,
+        127
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:47.356Z"
+    },
+    "S124:g0": {
+      "verdict": "pass",
+      "id": "c505687f-4487-47d5-99ea-61e913438abe",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        743,
+        810
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:48.833Z"
+    },
+    "S118:g0": {
+      "verdict": "sensitive-tier",
+      "id": "0c05a45d-7519-491d-8535-5c4a4155d561",
+      "units": 4,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        647,
+        529,
+        346
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:50.050Z"
+    },
+    "S116:g0": {
+      "verdict": "sensitive-tier",
+      "id": "3be987f1-beeb-47a8-b31a-a34d716caf05",
+      "units": 4,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        772,
+        550,
+        231
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:50.052Z"
+    },
+    "S126:g0": {
+      "verdict": "pass",
+      "id": "9bbe768c-5690-4baa-97cd-5aa25a51fbd9",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        757,
+        571
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:52.455Z"
+    },
+    "S127:g0": {
+      "verdict": "pass",
+      "id": "ee02476c-c774-4343-8e6a-5420cbb62ebb",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        883
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:52.660Z"
+    },
+    "S129:g0": {
+      "verdict": "pass",
+      "id": "02c070d5-2df1-43ef-a876-b603c72d0863",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        1084
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:54.232Z"
+    },
+    "S123:g0": {
+      "verdict": "sensitive-tier",
+      "id": "751e11df-ff08-4f76-9bed-50ce077f01f7",
+      "units": 2,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        80,
+        368
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:57.450Z"
+    },
+    "S121:g0": {
+      "verdict": "sensitive-tier",
+      "id": "c56115d3-cd57-4ff2-9ac0-e568becc13f0",
+      "units": 4,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        679,
+        87,
+        102,
+        169,
+        194
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:57.761Z"
+    },
+    "S122:g1": {
+      "verdict": "sensitive-tier",
+      "id": "8b4b3991-bcbf-47a0-9eff-54a826b8956c",
+      "units": 4,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        539,
+        687,
+        492
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:32:58.375Z"
+    },
+    "S132:g0": {
+      "verdict": "pass",
+      "id": "bfaba817-9481-4e2b-a4d0-b9791962c1db",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        685
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:32:59.339Z"
+    },
+    "S132:g1": {
+      "verdict": "pass",
+      "id": "22f4558b-0d1d-4901-8027-45e1814bcc3b",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        714
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:33:00.827Z"
+    },
+    "S128:g0": {
+      "verdict": "pass",
+      "id": "304a4a1d-1fe3-4c7b-8909-32b6b737cece",
+      "units": 2,
+      "attempts": 3,
+      "gaps": [
+        531,
+        98
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:01.910Z"
+    },
+    "S125:g0": {
+      "verdict": "sensitive-tier",
+      "id": "25137421-351e-4bdf-a1d6-fb1507be5625",
+      "units": 4,
+      "attempts": 3,
+      "kept": 2,
+      "gaps": [
+        796,
+        288,
+        184,
+        258
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:02.177Z"
+    },
+    "S135:g0": {
+      "verdict": "pass",
+      "id": "61e0039e-0dec-4594-b3ab-6f35b1f3586c",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        551
+      ],
+      "detected": "pl",
+      "rerendered": false,
+      "at": "2026-07-11T00:33:03.372Z"
+    },
+    "S136:g0": {
+      "verdict": "pass",
+      "id": "33790175-5d9c-4d51-bf7c-86da443cb750",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        647
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:33:03.632Z"
+    },
+    "S130:g0": {
+      "verdict": "sensitive-tier",
+      "id": "b366113d-0157-4a68-a4f4-cb582c728020",
+      "units": 5,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        683,
+        533,
+        393,
+        449
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:04.721Z"
+    },
+    "S134:g0": {
+      "verdict": "pass",
+      "id": "c573098d-abbc-493d-9ce9-a2b8379fb75b",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        1127
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:05.067Z"
+    },
+    "S135:g1": {
+      "verdict": "pass",
+      "id": "9a5fb6be-ad4d-43ae-9896-05b6c3f5221e",
+      "units": 2,
+      "attempts": 1,
+      "gaps": [
+        81,
+        773
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:33:06.015Z"
+    },
+    "S136:g2": {
+      "verdict": "pass",
+      "id": "bc8af712-aae5-47b5-8b52-202a8d34bda2",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        702,
+        874
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:33:06.226Z"
+    },
+    "S133:g0": {
+      "verdict": "sensitive-tier",
+      "id": "170dee7e-b1de-4669-a53b-cc12575f610e",
+      "units": 2,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        449
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:07.524Z"
+    },
+    "S138:g0": {
+      "verdict": "pass",
+      "id": "5be9d8d4-efe2-46ec-9ca7-d5c171248ec5",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        1427,
+        1126
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:33:07.961Z"
+    },
+    "S138:g1": {
+      "verdict": "pass",
+      "id": "4a97f72a-4a28-4feb-9e77-45b672c8ef62",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        505,
+        819
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:33:09.567Z"
+    },
+    "S131:g0": {
+      "verdict": "sensitive-tier",
+      "id": "c641f9fe-59ba-45f0-a027-5f2536c30e1f",
+      "units": 4,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        372,
+        82,
+        139
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:11.595Z"
+    },
+    "S135:g2": {
+      "verdict": "sensitive-tier",
+      "id": "fee01b1c-1a2e-4b69-9f9b-a74f5099b504",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        807,
+        404
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:16.049Z"
+    },
+    "S139:g0": {
+      "verdict": "sensitive-tier",
+      "id": "429ba317-d16d-4030-9675-e17a700b52c0",
+      "units": 2,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        84,
+        82,
+        151
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:16.389Z"
+    },
+    "S139:g1": {
+      "verdict": "pass",
+      "id": "e1036500-64aa-403b-9f43-9642b9f64bc3",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        573,
+        92,
+        629
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:33:18.368Z"
+    },
+    "S133:g1": {
+      "verdict": "sensitive-tier",
+      "id": "2c2c17c6-8483-4dd2-b15b-d29a587e1416",
+      "units": 4,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        194,
+        107,
+        320,
+        100,
+        90
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:19.433Z"
+    },
+    "S137:g0": {
+      "verdict": "sensitive-tier",
+      "id": "f9b54066-fd34-4455-bc9e-7379456285d1",
+      "units": 4,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        467,
+        106,
+        574,
+        319,
+        92
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:20.078Z"
+    },
+    "S140:g0": {
+      "verdict": "sensitive-tier",
+      "id": "b1496c0e-400e-4c1d-9896-57fec6a35cdc",
+      "units": 3,
+      "attempts": 3,
+      "kept": 3,
+      "gaps": [
+        1293,
+        151
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:20.734Z"
+    },
+    "S133:g2": {
+      "verdict": "pass",
+      "id": "e9ec382c-4268-4ebb-98c4-1a70469f2e0f",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        607,
+        87,
+        586,
+        97
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:33:20.925Z"
+    },
+    "S141:g0": {
+      "verdict": "pass",
+      "id": "5d9f1018-d858-42b8-b836-7382899e7bb3",
+      "units": 3,
+      "attempts": 1,
+      "gaps": [
+        652,
+        519,
+        103
+      ],
+      "detected": "it",
+      "rerendered": false,
+      "at": "2026-07-11T00:33:22.355Z"
+    },
+    "S131:g1": {
+      "verdict": "sensitive-tier",
+      "id": "d53f4655-a9fd-44bc-941b-5c1d781197e6",
+      "units": 4,
+      "attempts": 3,
+      "kept": 3,
+      "gaps": [
+        700,
+        93,
+        473,
+        360
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:25.107Z"
+    },
+    "S135:g3": {
+      "verdict": "sensitive-tier",
+      "id": "1aebd56a-e991-4fc5-b492-08a312267bc5",
+      "units": 5,
+      "attempts": 3,
+      "kept": 3,
+      "gaps": [
+        884,
+        516,
+        162,
+        90,
+        318
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:28.864Z"
+    },
+    "S139:g3": {
+      "verdict": "sensitive-tier",
+      "id": "e1a3d53a-841a-4534-9f56-4b1db04ea221",
+      "units": 4,
+      "attempts": 3,
+      "kept": 3,
+      "gaps": [
+        89,
+        585,
+        500,
+        160
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:29.752Z"
+    },
+    "S141:g1": {
+      "verdict": "sensitive-tier",
+      "id": "34776dd7-2af4-4c13-bf12-5097678c84df",
+      "units": 2,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        93,
+        450
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:31.556Z"
+    },
+    "S137:g1": {
+      "verdict": "sensitive-tier",
+      "id": "600c3d55-bd08-4cc5-beef-366d8f66cad5",
+      "units": 4,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        91,
+        1191,
+        83,
+        349,
+        298,
+        90
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:31.788Z"
+    },
+    "S140:g1": {
+      "verdict": "sensitive-tier",
+      "id": "a320f7cb-3079-4159-a322-cae252913758",
+      "units": 3,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        964,
+        130
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:33.982Z"
+    },
+    "S142:g0": {
+      "verdict": "sensitive-tier",
+      "id": "2a090ef1-db35-486e-84ce-f8a9b58a2070",
+      "units": 5,
+      "attempts": 3,
+      "kept": 1,
+      "gaps": [
+        646,
+        495,
+        138,
+        376,
+        545
+      ],
+      "detected": "it",
+      "rerendered": true,
+      "at": "2026-07-11T00:33:34.373Z"
+    }
+  }
+}
