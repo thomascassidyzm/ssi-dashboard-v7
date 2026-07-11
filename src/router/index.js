@@ -632,7 +632,7 @@ router.beforeEach(async (to, from, next) => {
   // Public routes (login, auth verify) don't need auth
   if (to.meta.public) return next()
 
-  const { isAuthenticated, initAuth, isRecorder, learner, canAccessCourse } = useAuth()
+  const { isAuthenticated, initAuth, isRecorder, isAdmin, learner, canAccessCourse } = useAuth()
 
   // Initialize auth if not already done (first page load)
   await initAuth()
@@ -669,6 +669,18 @@ router.beforeEach(async (to, from, next) => {
     }
 
     return next()
+  }
+
+  // Single-course editors land straight in that course's guided journey
+  // instead of the Home hub — the console (ProductionOverview et al.) stays
+  // one tap away, this only changes the post-login default destination.
+  // Multi-course editors and admins keep the Home hub (they need the picker).
+  if (!isAdmin.value && to.name === 'Home') {
+    const courses = learner.value?.courses
+    const courseList = Array.isArray(courses) ? courses : []
+    if (courseList.length === 1) {
+      return next(`/production/${courseList[0]}/journey`)
+    }
   }
 
   // Course scoping: a course-scoped route needs membership of THAT course

@@ -763,11 +763,16 @@ app.get('/api/auth/invite-codes', async (req, res) => {
 
 // POST /api/auth/invite-codes/redeem — redeem an invite code (no admin required)
 app.post('/api/auth/invite-codes/redeem', async (req, res) => {
-  const { code: rawCode, email } = req.body
-  if (!rawCode || !email) {
+  const { code: rawCode, email: rawEmail } = req.body
+  if (!rawCode || !rawEmail) {
     return res.status(400).json({ error: 'code and email are required' })
   }
 
+  // Supabase Auth normalises auth.users.email to lowercase; dashboard_users.email
+  // is the join key verifySupabaseJWT uses (authGetUser(user.email), exact TEXT
+  // match). Storing whatever case the user typed here silently orphans a
+  // mixed-case redeemer — every later request resolves to "no dashboard access".
+  const email = rawEmail.trim().toLowerCase()
   const code = rawCode.toUpperCase().replace(/[^A-Z0-9]/g, '').trim()
 
   try {

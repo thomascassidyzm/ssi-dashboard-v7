@@ -46,3 +46,112 @@ touch) or adding a new HTTP route (against the brief's "no new backend engine ro
 
 **Search width:** visible-options (existing precedent already covered the whole need)
 **Decided by:** agent
+
+## 2026-07-11 — Single-course editor lands in the journey, not the console
+
+**Move:** router `beforeEach` now redirects a non-admin authenticated user landing on `Home`
+(`/`) straight to `/production/:courseCode/journey` when their `dashboard_users.courses` is an
+array of exactly one course. Multi-course editors, admins (courses = `'*'`), and recorders
+(already confined to `/record/...` by an earlier block in the same guard) are unaffected. The
+full console (`/`, `/courses`, `/production/:courseCode` overview) stays reachable — this only
+changes the post-login default destination, mirroring the existing recorder-confinement block
+immediately below it in the same function.
+
+**Better:** a single-course leader's first click after OTP is the guided journey they actually
+need, not a card-wall requiring an extra hop through `/courses` → click course → land on
+ProductionOverview.
+**Simpler:** four lines inside the existing `beforeEach`, same shape as the recorder block it
+sits next to (`Array.isArray(courses) && courses.length === 1`) — no new route, no new
+component, no state beyond what `useAuth()` already exposes.
+**Cheaper (total):** zero new surface to maintain; reuses `learner.value.courses` already fetched
+on every page load for `canAccessCourse`.
+
+**Searched & rejected:**
+- A `LeaderJourney.vue`-side redirect-on-mount — rejected: the Home hub would still render first
+  (flash of the card-wall), and it duplicates the courses-length check the router already needs
+  for the course-scope gate two blocks down.
+- Making `/` itself conditionally render `LeaderJourney` inline — rejected: two components behind
+  one path is harder to reason about than a redirect, and breaks the router's existing
+  `to.name === 'Home'` mental model used by the recorder block.
+
+**Search width:** visible-options (recorder block was the direct precedent)
+**Decided by:** Tom (ruled YES on the deferred fork; implementation detail is agent's)
+
+## 2026-07-11 — Deleted the three orphaned frankenstein-demo S3 objects
+
+**Move:** deleted `demo-splices/demo1.mp3`, `demo-splices/demo2.mp3`, `demo-splices/demo3.mp3`
+from `ssi-audio-stage` (the only bucket in use) via a one-off script using the repo's existing
+`aws-sdk` v2 client pattern (`services/s3-service.cjs`'s config). Confirmed all three existed
+(head-checked) before deleting, deleted via a single `deleteObjects` call, then head-checked again
+to confirm all three now 404. No other keys touched.
+
+**Better:** removes the last unreferenced bytes from the Welsh frankenstein-demo, whose code
+(the `/frankenstein-demo` endpoint and `RecordingOptimizer.vue`'s hardcoded fetch) was already
+deleted in commit `9a8a0604`.
+**Simpler:** three known, exact keys — no scan/glob, no heuristic "looks orphaned" logic.
+**Cheaper (total):** ~330KB of stage-bucket storage; zero ongoing cost either way, but leaving
+dead objects around is a future "what's this for?" tax on whoever audits the bucket next.
+
+**Searched & rejected:**
+- Writing a general "find orphaned S3 objects" sweep — rejected: Tom approved deletion of these
+  three specific known keys only; a sweep is a different, much riskier, unrequested task (real
+  `origin=human`/`course_audio` objects live in the same bucket).
+
+**Search width:** visible-options (keys were named exactly in the deleted code)
+**Decided by:** Tom (approved deletion; agent executed surgically)
+
+## 2026-07-11 — Recorder upload auth: verified and reused the existing OTP session, no new model
+
+**Move:** traced the full recorder path end-to-end instead of building a new auth mechanism.
+Findings: (1) `production-api.cjs`'s `app.param('courseCode', ...)` gate (commit `44cebf9c`,
+"item A, server") already covers `POST /api/production/:courseCode/recording/upload` — verified
+live against the running service (`curl` with a simulated non-loopback `X-Forwarded-For`: 401
+with no token, matching every other `:courseCode` route). (2) The client's global `window.fetch`
+wrapper (`src/services/authFetch.js`, commit `8844f2d6`, "item A, client") already attaches the
+Supabase session token to every `/api/...` call, including both live upload call sites
+(`useAudioUpload.ts`, `useAutocueState.js`) — neither sets its own `Authorization` header, so the
+wrapper's `!headers.has('Authorization')` check fires. (3) The self-serve invite/redeem path
+(`POST /api/auth/invite-codes/redeem`, used by `team-router.cjs`'s recorder invite) creates a
+**real Supabase Auth account** (`db.auth.admin.createUser`) — a redeemed recorder logs in via the
+exact same `supabase.auth.signInWithOtp`/`verifyOtp` flow as an editor or admin. There is no
+separate "OTP-only, no Supabase session" recorder tier; `resolvePoptyIdentity` already carries
+`role: 'recorder'` + `courses: [...]` through correctly (existing test coverage in
+`services/shared/popty-identity.test.js`). The M7 risk note in
+`docs/voice-engine/design/integration-map.md` ("verify at integration, not a code edit") is
+resolved: verified, not a gap.
+**Fix applied:** one real bug found during the trace — `POST /api/auth/invite-codes/redeem`
+stored `email` in whatever case the redeemer typed it, but `verifySupabaseJWT`'s later lookup
+(`authGetUser(user.email)`) uses the email Supabase itself returns (lowercase-normalised) against
+`dashboard_users.email` (a case-sensitive TEXT primary key). A mixed-case redemption would
+silently produce a recorder who can never resolve dashboard access again — the exact symptom
+"upload endpoint not gated for recorders" would have been diagnosed as. Fixed by lowercasing
+`email` once at the top of the redeem handler before every use (existing-user check, insert,
+redemption record).
+
+**Better:** a recorder authenticates with the exact flow they already use to log in — no second
+credential, no barbaric password/token dance for a volunteer helper, matching the "never favour
+security over the contributor's experience" design law.
+**Simpler:** zero new auth surface. Reused `resolveDashboardUser` (server) and `authFetch.js`
+(client) exactly as built for editors/admins; `userCanAccessCourse`'s array-membership check
+already scopes a recorder to only their assigned course(s) — no role-specific branch needed.
+**Cheaper (total):** one three-line fix (email casing) instead of a new recorder-token system to
+build, document, and maintain.
+
+**Searched & rejected:**
+- A dedicated recorder API-token/key issued at invite time — rejected: a second credential
+  contradicts "no barbaric auth flows"; the existing Supabase-session model already produces a
+  bearer token with zero extra steps for the recorder.
+- Reviving the legacy `dashboard_sessions`/login-code path (`authValidateSession`,
+  `authGenerateLoginCode`) for recorders specifically — rejected: dead code kept only for
+  backwards compat during the Supabase migration; giving one role a different session mechanism
+  from everyone else is the "barbaric" outcome, not the fix.
+- Full live positive-path test (mint a real invite, redeem with a disposable email, generate a
+  session via the Supabase admin API, hit the upload endpoint, clean up) — rejected for this pass:
+  touches live Supabase Auth state for a confidence gain the structural 401-proof + existing
+  identity-resolution unit tests + full code trace already deliver; the negative-path proof (gate
+  fires on this exact route for real network traffic) was the one previously-unverified claim.
+
+**Search width:** re-levelled (M7 was framed as "needs a session story"; tracing the code showed
+the story already existed and was already the load-bearing mechanism for editors/admins — the
+task re-levelled from "design a new model" to "verify the existing one, fix what it found")
+**Decided by:** Tom (ruled YES; agent chose verify-first over building new per doctrine)
