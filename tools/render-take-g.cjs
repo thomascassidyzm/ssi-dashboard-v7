@@ -93,6 +93,31 @@ const WHISPER = process.env.WHISPER || '/opt/homebrew/bin/whisper-cli'
 const WHISPER_MODEL = process.env.WHISPER_MODEL || '/tmp/whisper-models/ggml-small.bin'
 const PHONO_GATE = fs.existsSync(WHISPER) && fs.existsSync(WHISPER_MODEL)
 
+// ---- resume-safe ledger (TAKEG_LEDGER=<path>) ----
+// One entry per group keyed "S<order>:g<gi>", flushed synchronously after
+// every verdict so a killed run loses at most the in-flight group. On rerun,
+// groups with a FINAL verdict are skipped (links kept as-is); non-final
+// outcomes (errors) are retried. report.* is updated per phase.
+const LEDGER = process.env.TAKEG_LEDGER || null
+const FINAL_VERDICTS = new Set(['pass', 'sensitive-tier', 'phonology-fail', 'unmeasured', 'azure', 'single'])
+let ledger = null
+if (LEDGER) {
+  try { ledger = JSON.parse(fs.readFileSync(LEDGER, 'utf8')) } catch { ledger = null }
+  if (!ledger || ledger.course !== COURSE) ledger = { course: COURSE, report: {}, takes: {} }
+  ledger.takes = ledger.takes || {}
+  ledger.report = ledger.report || {}
+}
+function ledgerSet(key, entry) {
+  if (!ledger || dry) return
+  ledger.takes[key] = { ...entry, at: new Date().toISOString() }
+  fs.writeFileSync(LEDGER, JSON.stringify(ledger, null, 2))
+}
+function ledgerReport(patch) {
+  if (!ledger || dry) return
+  ledger.report = { ...ledger.report, ...patch }
+  fs.writeFileSync(LEDGER, JSON.stringify(ledger, null, 2))
+}
+
 // ---- same grouping as the Lab / author-window-knowns ----
 function atomGroups(targetText, atoms) {
   const text = targetText || ''
@@ -259,9 +284,16 @@ const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - nee
     if (!voice) { console.log(`S${s.global_order}: ✗ no target voice for speaker "${s.speaker}"`); failed++; return }
 
     const ids = []
+    const prev = s.takeg_audio_ids || []
+    const freshFlags = []
     for (let gi = 0; gi < groups.length; gi++) {
       const g = groups[gi]
+      freshFlags[gi] = false
+      const lkey = `S${s.global_order}:g${gi}`
       if (g.length < 2) { ids.push(null); singles++; continue }
+      // resume: a group with a final ledger verdict keeps its existing link untouched
+      const done = ledger && ledger.takes[lkey]
+      if (!dry && done && FINAL_VERDICTS.has(done.verdict)) { ids.push(prev[gi] || done.id || null); continue }
       const cued = cuedGroupText(s.target_text, g, voice.provider)
       if (!cued) { console.log(`S${s.global_order}: ✗ unit not found in turn text — group skipped`); failed++; ids.push(null); continue }
       if (dry) { console.log(`S${s.global_order} [${s.speaker}→${voice.voice_id}]: "${cued}"`); ids.push(null); continue }
@@ -273,7 +305,9 @@ const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - nee
           const force = forceAzure && voice.provider === 'azure'
           const res = await p8.generatePodAudio({ courseCode: COURSE, text: cued, language: targetLang, role: ROLE, voice, force })
           res.reused ? reused++ : rendered++
+          if (!res.reused) freshFlags[gi] = true
           id = res.id
+          ledgerSet(lkey, { verdict: 'azure', id, units: g.length, rerendered: freshFlags[gi] })
         } else {
           let best = null
           for (let attempt = 1; attempt <= GATE_ATTEMPTS; attempt++) {
@@ -281,11 +315,13 @@ const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - nee
             // reused clip is free; re-rolls force fresh synthesis on the same row.
             const res = await p8.generatePodAudio({ courseCode: COURSE, text: cued, language: targetLang, role: ROLE, voice, force: attempt > 1 })
             res.reused ? reused++ : rendered++
+            if (!res.reused) freshFlags[gi] = true
             id = res.id
             const m = await measureClip(id, tmp, attempt)
             if (!m) {
               gateUnmeasured++
               gateLog.push({ turn: s.global_order, group: gi, id, units: g.length, verdict: 'unmeasured', attempts: attempt })
+              ledgerSet(lkey, { verdict: 'unmeasured', id, units: g.length, attempts: attempt, rerendered: freshFlags[gi] })
               break
             }
             const detected = PHONO_GATE && SUSPECT_LANGS.size ? await detectClipLang(m.file) : null
@@ -299,6 +335,7 @@ const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - nee
             if (m.big === need && m.mid === 0 && !phonoFail) {
               gatePassed++
               gateLog.push({ turn: s.global_order, group: gi, id, units: g.length, verdict: 'pass', attempts: attempt, gaps: m.gaps, detected })
+              ledgerSet(lkey, { verdict: 'pass', id, units: g.length, attempts: attempt, gaps: m.gaps, detected, rerendered: freshFlags[gi] })
               break
             }
             if (attempt === GATE_ATTEMPTS) {
@@ -311,6 +348,7 @@ const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - nee
               }
               console.log(`S${s.global_order} g${gi}: gate FAIL after ${GATE_ATTEMPTS} takes — kept attempt ${best.attempt} (${best.big}/${need} seam gaps, ${best.mid} spurious${best.phonoFail ? `, phonology '${best.detected}'` : ''}) → sensitive-tier slicing`)
               gateLog.push({ turn: s.global_order, group: gi, id, units: g.length, verdict: best.phonoFail ? 'phonology-fail' : 'sensitive-tier', attempts: GATE_ATTEMPTS, kept: best.attempt, gaps: best.gaps, detected: best.detected })
+              ledgerSet(lkey, { verdict: best.phonoFail ? 'phonology-fail' : 'sensitive-tier', id, units: g.length, attempts: GATE_ATTEMPTS, kept: best.attempt, gaps: best.gaps, detected: best.detected, rerendered: freshFlags[gi] })
             }
           }
         }
@@ -318,14 +356,15 @@ const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - nee
       } catch (e) {
         console.log(`S${s.global_order} g${gi} [${voice.provider}/${voice.voice_id}] "${cued.slice(0, 50)}": ✗ ${e.message.slice(0, 140)}`)
         failed++; ids.push(null)
+        ledgerSet(lkey, { verdict: 'error', units: g.length, error: e.message.slice(0, 140) })
       }
     }
     if (!dry && ids.some(Boolean)) {
-      const prev = s.takeg_audio_ids || []
       const update = { takeg_audio_ids: ids }
-      // A group whose link moved to a NEW clip carries spans measured on the
-      // old audio — clear them so the slicer must re-earn every span.
-      const moved = groups.map((g, gi) => g.length >= 2 && ids[gi] && ids[gi] !== prev[gi])
+      // A group whose link moved to a NEW clip — or whose SAME row got fresh
+      // audio (re-rolls keep the row id) — carries spans measured on replaced
+      // audio: clear them so the slicer must re-earn every span.
+      const moved = groups.map((g, gi) => g.length >= 2 && ids[gi] && (ids[gi] !== prev[gi] || freshFlags[gi]))
       if (moved.some(Boolean)) {
         const map = s.atom_map_fine.slice()
         const mapIdx = []
@@ -358,6 +397,18 @@ const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - nee
     }, null, 2))
     console.log(`gate log → ${logFile}`)
   }
+  // report totals come from the LEDGER (cumulative across resumes), not this
+  // run's counters, which restart at zero on resume
+  const tally = {}
+  if (ledger) Object.values(ledger.takes).forEach((t) => { tally[t.verdict] = (tally[t.verdict] || 0) + 1 })
+  ledgerReport({
+    render: {
+      status: failed ? 'complete-with-failures' : 'complete',
+      thisRun: { rendered, reused, singles, failed, gatePassed, gateSensitive, gateUnmeasured, phonoRerolls, turnsLinked },
+      verdictTotals: tally,
+      rerenderedGroups: ledger ? Object.entries(ledger.takes).filter(([, t]) => t.rerendered).map(([k]) => k) : [],
+    },
+  })
   console.log(`\n${dry ? '[DRY] ' : ''}${COURSE}: ${rendered} rendered, ${reused} reused, ${singles} single-unit groups (no Take G), ${failed} failed; ` +
     `gate: ${gatePassed} passed, ${gateSensitive} sensitive-tier, ${gateUnmeasured} unmeasured, ${phonoRerolls} phonology re-rolls; ${turnsLinked} turns linked.`)
   process.exit(failed ? 2 : 0)
