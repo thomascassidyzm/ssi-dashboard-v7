@@ -108,7 +108,7 @@ cheap doubling of the ladder's rungs. Proposal:
 | 6 | The Dilemma — *Take the job or not?* | intermediate | Asking for and giving advice; weighing options aloud; hedging |
 | 7 | Do You Remember…? — *No, it was a Tuesday* | intermediate | Shared reminiscing with corrections and disputed details |
 | 8 | Crossed Wires — *I thought YOU booked it* | intermediate | A misunderstanding surfacing and being repaired — clarifying, paraphrasing, apologising |
-| 9 | The Organisers — *A surprise party in three weeks* | advanced | Task talk with interruptions: delegating, checking, talking over each other |
+| 9 | The Organisers — *A surprise party in three weeks* | advanced | Task talk with interruptions: delegating, checking, fast turn-latching (sequential cut-offs only — see the TTS rule below §5) |
 | 10 | Whose Round Is It? — *Playful injustice at the pub* | advanced | Banter as its own discourse: mock outrage, callbacks, keeping score |
 | 11 | Changing Someone's Mind — *Go on, one weekend* | advanced | Persuasion: making a case, conceding a point, holding a position |
 | 12 | Winding Each Other Up — *You've told this story before* | advanced | Teasing and irony between people who know each other well — the hardest register in the pod |
@@ -148,6 +148,13 @@ Written in the exact seedable master format (each pod's slate becomes its own
 samples, not showcase pieces: contractions throughout from pod-1; fillers, false starts
 and interruptions from pod-2; broadcast structure in pod-3. Interrupted lines end with a
 dash — the TTS treatment of cut-offs is an audio-phase question (§7).
+
+**TTS renderability rule (owner constraint, 2026-07-12): no overlapping speech, ever.**
+Every line renders as one voice at a time (xAI TTS). "Interruption" in these pods always
+means a *sequential* cut-off — a line ends mid-thought on a dash, the next speaker starts
+immediately — never two voices simultaneously. Liveliness comes from fast turn-latching
+and tight inter-line gaps at render time, not crosstalk. Anything in a slate or sample
+that reads as genuine talking-over must be re-authored as clean sequential turns.
 
 ### Pod 1 samples
 
