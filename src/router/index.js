@@ -142,14 +142,14 @@ const routes = [
         path: 'pod-thinking',
         name: 'PodThinkingIndex',
         component: () => import('../views/PodThinkingIndex.vue'),
-        meta: { title: 'Pod Thinking' }
+        meta: { title: 'Pod Thinking', public: true }
       },
       {
         path: 'pod-thinking/:slug',
         name: 'PodThinkingDoc',
         component: () => import('../views/PodThinkingDoc.vue'),
         props: true,
-        meta: { title: 'Pod Thinking' }
+        meta: { title: 'Pod Thinking', public: true }
       },
       {
         path: 'pipeline',
