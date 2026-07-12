@@ -139,6 +139,19 @@ const routes = [
         meta: { title: 'Listening Pods' }
       },
       {
+        path: 'pod-thinking',
+        name: 'PodThinkingIndex',
+        component: () => import('../views/PodThinkingIndex.vue'),
+        meta: { title: 'Pod Thinking' }
+      },
+      {
+        path: 'pod-thinking/:slug',
+        name: 'PodThinkingDoc',
+        component: () => import('../views/PodThinkingDoc.vue'),
+        props: true,
+        meta: { title: 'Pod Thinking' }
+      },
+      {
         path: 'pipeline',
         name: 'ProcessOverview',
         component: ProcessOverview,

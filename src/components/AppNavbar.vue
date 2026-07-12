@@ -342,6 +342,7 @@ const sectionTabs = computed(() => {
       { label: 'Seeds', to: '/docs/seeds', active: route.name === 'CanonicalSeeds' },
       { label: 'Content', to: '/docs/canonical', active: route.name === 'CanonicalContent' },
       { label: 'Pods', to: '/docs/pods', active: route.name === 'PodsDoc' },
+      { label: 'Pod Thinking', to: '/docs/pod-thinking', active: route.name === 'PodThinkingIndex' || route.name === 'PodThinkingDoc' },
       { label: 'Pipeline', to: '/docs/pipeline', active: route.name === 'ProcessOverview' },
       { label: 'Intelligence', to: '/docs/intelligence', active: route.name === 'PhaseIntelligence' }
     ]

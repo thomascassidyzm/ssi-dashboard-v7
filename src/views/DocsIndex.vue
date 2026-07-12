@@ -218,6 +218,35 @@
             </div>
           </router-link>
 
+          <!-- Pod Thinking -->
+          <router-link to="/docs/pod-thinking" class="doc-card card-pods">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                    <path d="M12 17h.01"/>
+                  </svg>
+                </div>
+                <div class="card-badge pods">
+                  <span class="badge-label">methodology</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title">Pod Thinking</h2>
+                <p class="card-description">Design proposals and methodology reasoning behind the listening pods - the pod-ladder and future pod thinking</p>
+              </div>
+              <div class="card-footer">
+                <span class="card-action">Read Proposals</span>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </router-link>
+
           <!-- Process Overview -->
           <router-link to="/docs/pipeline" class="doc-card card-architecture">
             <div class="card-glow"></div>
