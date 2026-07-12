@@ -29,7 +29,9 @@ validators/
 tests/
 
 # Documentation (root docs/, NOT public/docs/ which is used in build)
-/docs/
+# /docs/pods stays IN the upload: src/content/pod-thinking-docs.js imports from it at build time
+/docs/*
+!/docs/pods/
 
 # Archive
 archive/
