@@ -1993,6 +1993,15 @@ app.post('/generate/:courseCode', async (req, res) => {
       await fulfillAudioPassRequests(supabase, courseCode)
     }
 
+    // Keep model-voice envelope metadata (adaptation-v2 stage 2, see
+    // tools/audio-envelope-batch.cjs) fresh for any target1 clips this pass
+    // minted. Fire-and-forget: never blocks or fails the /generate response —
+    // the batch tool is idempotent, so a missed row here is just picked up by
+    // the next run (manual or the next /generate pass).
+    if (results.success > 0) {
+      require('../../tools/audio-envelope-batch.cjs').backfillCourseSafe(courseCode)
+    }
+
     // Emit completion
     const statusWord = wasCancelled ? 'Audio generation cancelled' : 'Audio generation complete'
     emitProgress(supabase, courseCode, `${statusWord}: ${results.success}/${uniqueNeeded.length} generated${results.failed > 0 ? `, ${results.failed} failed` : ''}${linked > 0 ? `, ${linked} audio IDs linked` : ''}`, { phase: 'audio', action: 'generate-complete', success: results.success, failed: results.failed, linked })
