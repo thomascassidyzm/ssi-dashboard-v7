@@ -45,6 +45,7 @@ const FEMALE_NAMES = new Set([
   // English / mixed European
   'sarah', 'anna', 'emma', 'olivia', 'sophie', 'jessica', 'rachel', 'hannah',
   'chloe', 'lucy', 'lily', 'amy', 'kate', 'katie', 'eve', 'mary', 'jane',
+  'ellie', 'grace', 'nadia', 'rosie', 'ruth',
   'nurse', 'receptionist', 'barista', 'greengrocer', 'florist', 'cashier',
   'shopkeeper', 'host', 'hostess', 'mum', 'mother', 'sister', 'daughter',
   'waitress',
@@ -100,6 +101,7 @@ const MALE_NAMES = new Set([
   'james', 'tom', 'thomas', 'jack', 'henry', 'oliver', 'william', 'george',
   'harry', 'charlie', 'daniel', 'liam', 'lucas', 'ethan', 'sam', 'mark',
   'paul', 'peter', 'john', 'alex', 'matt', 'ben', 'andrew', 'simon',
+  'adam', 'dan', 'josh', 'leo', 'owen', 'ryan', 'tim', 'will',
   'bartender', 'waiter', 'driver', 'pharmacist', 'vendor', 'local', 'guest',
   'neighbour', 'neighbor', 'friend', 'colleague', 'dad', 'father', 'brother', 'son',
   'taxi driver', 'shopkeeper male', 'tourist',
