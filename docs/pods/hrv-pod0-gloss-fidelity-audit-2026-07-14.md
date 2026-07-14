@@ -107,3 +107,67 @@ DRY_RUN by default, asserts each row's current `target_text` + `known_text`
 against expected before-state before writing, aborts on drift, logs to
 `scripts/hrv-pod0-gloss-fidelity-{dryrun,applied}-log.json`. Both dry-run and
 apply passes completed clean, 10/10 rows verified and updated.
+
+## Addendum (2026-07-14) — reported sentence-row duplication ("Hej!" / "Žao mi je...")
+
+Tom reported a screenshot showing, within one turn, an active card "Hej! Žao
+mi je, ali sad ne mogu razgovarati." and a separate dimmed row directly below
+it, "Žao mi je, ali sad ne mogu razgovarati." — the same content once fused
+with the leading interjection, once without.
+
+**Verdict: the `listening_pod_sentences` data is clean. This is an
+app-side (ssi-learning-app) rendering bug, not a popty/DB defect.**
+
+Checked, for all 142 `hrv_for_eng:pod-0` rows: recomputed the sentence-group
+partition from `atom_map_fine` + `target_text` (the same walk
+`render-sentence-takes.cjs` used to author the data), and diffed it against
+`sentence_audio_ids`/`sentence_known_audio_ids` array lengths and the
+known-side regex sentence split. **Zero anomalies** — no duplicate or
+overlapping group text, no duplicate ids within either audio-id array, no
+count mismatches, on any row. `window_known_map`'s overlapping n-gram entries
+(e.g. row SC04-S002 has windows `[0,1]` "Hey! I'm sorry," and `[1,2]` "I'm
+sorry, but I can't talk right now.") looked like duplication at first glance
+but are the deliberate, systemic sliding-window fusion-drill ladder
+(`tools/author-window-knowns.cjs`, consumed by `render-fine-knowns.cjs` and
+`ssi-learning-app/packages/core/src/pods/fusionDrill.ts`) — present the same
+way across every multi-unit turn in the pod, not a one-off glitch.
+
+**Root cause, traced into `ssi-learning-app` (not this repo, reported for
+Tom's awareness):**
+
+1. `fusionDrill.ts`'s `glueLeadingInterjection()` glues a turn's first
+   sentence onto its second whenever the first sentence is exactly ONE
+   `atom_map_fine` unit — a heuristic written 2026-07-04 when a genuine short
+   interjection ("Ciao!"/"Hej!") was the only thing likely to be a single
+   fine unit (breath-group-era authoring fragmented real sentences into
+   several units). This repo's 2026-07-14 independent-meaning rule (§9 of
+   `pod-ladder-proposal.md`, commit `6ed28bbf`) makes ONE-UNIT-PER-SENTENCE
+   the new NORM, not the interjection exception — so the heuristic now
+   over-fires on any turn whose first sentence is a genuine, complete,
+   independent clause (not just a bare interjection). Checked across
+   hrv_for_eng pod-0: **61 of 142 rows (43%) have a leading one-unit
+   sentence group** — the large majority (e.g. "Zovem se Anna" / My name is
+   Anna, "Ja sam James" / I'm James, "Janjetina je izvrsna" / The lamb is
+   excellent) are complete sentences, not interjections, so this glue rule
+   is now firing far more broadly than its own design intent, and will do so
+   on every other course re-authored under the new rule too — not a
+   Croatian-specific issue.
+2. `useListeningPods.ts` builds `fusionGroups` via `buildFusionGroups(...)`
+   (~line 235) without `{ splitGlued: true }`. That flag exists precisely to
+   stop this: its own code comment reads "the main-flow lap scheduler needs
+   this — its items are rows, so a spanning group would double-play
+   material." Without it, the anchored group's `targetText`/`knownText` is
+   the JOINED text of both rows (e.g. "Hej!" + "Žao mi je, ali sad ne mogu
+   razgovarati." → the fused card Tom saw as "active"), while the plain
+   per-row list still carries the second row on its own.
+3. `ListeningOverlay.vue` computes `fusionContinuation` correctly per phrase
+   (confirming the app **does** know row 2 is "already shown, fused, in row
+   1's card") but only respects it in one consumer (a practice-step builder,
+   `if (phrase.fusionContinuation) return []`, ~line 1236) — the visible
+   phrase-list builder that turns each chunk into a card (~lines 647–680)
+   pushes every chunk regardless of `fusionContinuation`, so the
+   already-fused continuation row still renders as its own dimmed card.
+
+No popty-side data change was made or needed for this finding — flagging
+for the ssi-learning-app session per Tom's steer ("will be handled in the
+other repo").
