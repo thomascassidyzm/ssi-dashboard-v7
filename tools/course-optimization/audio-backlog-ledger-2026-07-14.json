@@ -1,0 +1,105 @@
+{
+  "ledger_version": "2026-07-14-v1",
+  "purpose": "Real, DB-verified audio backlog ledger. Supersedes fabricated/never-created ledger paths tools/audio-campaign-2026-07-11.json and tools/course-optimization/tts-backlog-2026-07-11-ledger.json (neither ever existed on any branch, in either machine clone). See docs/course-optimization/audio-backlog-plan-2026-07-14.md for full narrative.",
+  "generated_by": "read-only DB queries against Supabase course_practice_phrases / course_legos / course_seeds, 2026-07-14",
+  "no_audio_generated": true,
+  "approval_status": "AWAITING TOM'S APPROVAL",
+  "census_baseline_doc": "docs/audio-census-2026-07-11.md",
+  "courses": [
+    {
+      "course_code": "kor_for_eng",
+      "status": "cleared",
+      "census_missing_phrases": 7606,
+      "live_missing_phrases": 0,
+      "live_missing_legos": 0,
+      "live_missing_seed_target1_audio": 0,
+      "remaining_est_cost_usd": 0
+    },
+    {
+      "course_code": "jpn_for_eng",
+      "status": "cleared",
+      "census_missing_phrases": 6979,
+      "live_missing_phrases": 0,
+      "live_missing_legos": 6,
+      "live_missing_seed_target1_audio": 0,
+      "remaining_est_cost_usd": 0.1
+    },
+    {
+      "course_code": "por_for_eng",
+      "status": "cleared",
+      "census_missing_phrases": 6954,
+      "live_missing_phrases": 0,
+      "live_missing_legos": 0,
+      "live_missing_seed_target1_audio": 0,
+      "remaining_est_cost_usd": 0
+    },
+    {
+      "course_code": "zho_for_eng",
+      "status": "cleared",
+      "census_missing_phrases": 5231,
+      "live_missing_phrases": 0,
+      "live_missing_legos": 0,
+      "live_missing_seed_target1_audio": 0,
+      "remaining_est_cost_usd": 0
+    },
+    {
+      "course_code": "spa_for_eng",
+      "status": "cleared",
+      "census_missing_phrases": 5905,
+      "live_missing_phrases": 0,
+      "live_missing_legos": 0,
+      "live_missing_seed_target1_audio": 0,
+      "remaining_est_cost_usd": 0,
+      "note": "most recent course_audio row 2026-07-14T06:17:39Z -- generation ran through today"
+    },
+    {
+      "course_code": "ita_for_eng",
+      "status": "cleared",
+      "census_missing_phrases": 966,
+      "live_missing_phrases": 0,
+      "live_missing_legos": 0,
+      "live_missing_seed_target1_audio": 0,
+      "remaining_est_cost_usd": 0,
+      "note": "most recent course_audio row 2026-07-11T05:39:24Z -- matches documented Take-G phonology pass (commits c1e26674/427434c9/f4c997d2), not a separate backlog campaign"
+    },
+    {
+      "course_code": "fra_for_eng",
+      "status": "cleared",
+      "census_missing_phrases": 220,
+      "live_missing_phrases": 0,
+      "live_missing_legos": 0,
+      "live_missing_seed_target1_audio": 0,
+      "remaining_est_cost_usd": 0
+    },
+    {
+      "course_code": "deu_for_eng",
+      "status": "partially_done",
+      "census_missing_phrases": 7749,
+      "live_missing_phrases": 921,
+      "live_missing_legos": 310,
+      "live_missing_seed_target1_audio": 22,
+      "remaining_est_cost_usd_low": 1,
+      "remaining_est_cost_usd_high": 2,
+      "queue_command": "node tools/course-optimization/queue-audio-pass.cjs deu_for_eng --reason \"backlog closure -- remaining 921 phrases/310 legos/22 seeds, 2026-07-14\""
+    },
+    {
+      "course_code": "ara_for_eng",
+      "status": "essentially_untouched",
+      "census_missing_phrases": 6672,
+      "live_missing_phrases": 6039,
+      "live_missing_legos": 738,
+      "live_missing_seed_target1_audio": 0,
+      "remaining_est_cost_usd_low": 9,
+      "remaining_est_cost_usd_high": 10,
+      "queue_command": "node tools/course-optimization/queue-audio-pass.cjs ara_for_eng --reason \"backlog closure -- remaining 6,039 phrases/738 legos, 2026-07-14\""
+    }
+  ],
+  "governance_finding": {
+    "summary": "audio_pass_requests (the approval-gate queue table, introduced 2026-07-11 same day as the campaign claim) has exactly 2 rows total in its history: one unrelated hrv_for_eng fix, and one spa_for_eng request from @claude-tts-backlog at 2026-07-11T02:47:12Z that was immediately dismissed as a 'repeat idempotency check' and never fulfilled. The generation that actually cleared kor/jpn/por/zho/spa/ita did not go through this queue. phase8-audio-v13.cjs has been running unattended since 2026-07-05 with an essentially empty logs/ directory -- no log trail exists to confirm what triggered the runs or under what approval.",
+    "recommendation": "flag to Tom directly as a process/audit-trail gap, separate from the remaining deu/ara backlog plan"
+  },
+  "second_clone_finding": {
+    "summary": "Two independent git clones of ssi-dashboard-v7-clean exist on this machine: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean (canonical) and /Users/tomcassidy/ssi-dashboard-v7-clean (where phase8-audio-v13 actually runs). Both clones agree the fabricated ledger files never existed in either. This dual-clone setup is itself flagged as a source of exactly this kind of confusion.",
+    "recommendation": "Tom to decide: consolidate to one clone, or document the second clone's role explicitly"
+  }
+}
