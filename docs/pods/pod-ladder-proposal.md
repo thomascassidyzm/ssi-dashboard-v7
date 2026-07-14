@@ -385,3 +385,47 @@ sport, the economy, travel, food: pick 8–12 frames, pour the domain in.
    (§3) visible rungs the learner chooses ("Pod 1 · faster"), or an invisible setting?
    Visible rungs make the ladder feel longer and progress feel cheaper to earn; my
    read is visible.
+
+## 9. Phrase segmentation principle — independent meaning (Tom + Aran, 2026-07-14)
+
+**Every pod phrase must have INDEPENDENT MEANING: a complete communicative unit,
+understandable entirely on its own.** Tom's examples, verbatim: it's never "good /
+morning / Sarah" — always "good morning, Sarah". It's "are you going to work?" — never
+"are you going / to work". Phrases should also be reasonably SHORT (Aran: short
+phrases self-combine naturally by the final double-repeat, so shortness doesn't need
+to be bought with fragmentation).
+
+**Rationale.** The audio's job is to carry the correct PROSODIC shape of the
+language — the pauses a speaker genuinely takes. The job of showing how a sentence is
+*built* from its parts (the within-sentence grammar) has moved to the app's own
+always-visible tiled breakdown, being built in parallel in `ssi-learning-app`. That
+frees pod audio from ever needing to fragment a sentence for teaching purposes — a
+fragment that only makes sense glued to its neighbour is now simply a defect, not a
+teaching device.
+
+**Where this is encoded (this repo, popty):**
+- **Authoring layer** — `tools/breakdown-fine.cjs`, the LLM prompt that drafts a pod
+  turn's `atom_map_fine` (the seams Take G's gapped take pauses at). Its model moved
+  from "molecular breath-groups, 3–6 words" to independent-meaning units: most 1–4
+  sentence pod turns are now ONE phrase, whole; a mid-sentence seam survives only
+  between two independent clauses joined by a coordinator, or a complete
+  turn-initial interjection ahead of the clause that follows. Also flags (does not
+  reject) phrases that come out longer than a natural independent clause allows.
+- **Validation/reject gate** — `tools/audit-fine-seams.cjs`, the existing post-hoc
+  merge-only pass (previously enforcing Tom's 2026-07-04 "hrvatski" bidirectional-beat
+  rule) had its bidirectional test tightened to the same independent-meaning standard:
+  it now merges not just a stranded bare word, but ANY split of a single independent
+  clause into sub-clause beats. Conservative by design — merge-only, no re-splits, no
+  gloss churn on untouched units; when unsure whether a side is genuinely independent,
+  it keeps the seam. Intended to run right after `breakdown-fine.cjs` on every course
+  it touches (and any time a violation queue needs sweeping).
+- Neither tool changes turn-level authoring (`services/pod-generation-prompt.txt`,
+  `services/pod-dialogue-generator.cjs`) — a dialogue TURN was already one row, never
+  chopped into fragments at that layer (rule 1, "SENTENCE LEVEL", in the generation
+  prompt). The new rule governs only the FINER seam this repo places *inside* a turn
+  for Take G's fusion ladder.
+- **Scope of this change:** governs NEW generation only. Existing `atom_map_fine`
+  content across the estate (breath-group-era) is not migrated by this change — an
+  estate-wide re-chunking sweep is a separate future decision, following the sweep
+  protocol (pilot ~40 items, read the distribution, then decide) rather than a blanket
+  regeneration.
