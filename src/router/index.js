@@ -77,6 +77,21 @@ const routes = [
     component: () => import('../views/Admin.vue'),
     meta: { title: 'Admin' }
   },
+  // Monthly board reports — admin-gated (default auth, same as every
+  // non-public route above). Interim: manual registry until the living
+  // auto-generated board report is built.
+  {
+    path: '/admin/board',
+    name: 'BoardReports',
+    component: () => import('../views/BoardReports.vue'),
+    meta: { title: 'Board Reports - Admin' }
+  },
+  {
+    path: '/admin/board/:slug',
+    name: 'BoardReportDetail',
+    component: () => import('../views/BoardReportDetail.vue'),
+    meta: { title: 'Board Report - Admin' }
+  },
   {
     path: '/maintenance',
     name: 'Maintenance',
