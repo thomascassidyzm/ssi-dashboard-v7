@@ -19,6 +19,15 @@ const DIALECT_NAMES = {
   'ara_eg': 'Egyptian Arabic',
   'ara_sy': 'Syrian Arabic',
   'ara_lb': 'Lebanese Arabic',
+  // Sinitic languages — distinct languages, NOT dialects of Mandarin (`zho`). Each
+  // has its own lexis/grammar/written form. Without these they'd fall through to the
+  // ISO code ("yue"/"hak"/"nan") and render as raw codes in seed text.
+  'yue': 'Cantonese',           // HK/Guangzhou, colloquial written Cantonese (Traditional Han)
+  'hak': 'Hakka',               // Taiwanese Sixian variety
+  'nan': 'Taiwanese Hokkien',   // Min Nan, Taiwanese variety (Han + Tâi-lô)
+  // Swiss German — Zürich (Züritüütsch), Dieth-lite spelling. See
+  // docs/course-optimization/swiss-german-convention.md. Distinct product from deu_at.
+  'deu_ch': 'Swiss German',
 };
 
 // Deprecated: callers should use languageCodeService.getName() directly.
@@ -121,7 +130,9 @@ function isChinese(courseCode) {
   const targetLang = parts[0] || '';
   // Korean (kor) uses spaces between words — treated as space-delimited, not CJK.
   // cmn (Mandarin) is character-based like zho.
-  const characterBasedLangs = ['zho', 'cmn', 'jpn', 'tha', 'mya', 'lao', 'khm'];
+  // yue (Cantonese) is written in Han characters like zho. hak/nan default to
+  // romanization-friendly handling for now — revisit if built Han-primary.
+  const characterBasedLangs = ['zho', 'cmn', 'yue', 'jpn', 'tha', 'mya', 'lao', 'khm'];
   return characterBasedLangs.includes(targetLang);
 }
 

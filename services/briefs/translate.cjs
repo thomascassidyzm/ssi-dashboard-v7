@@ -206,7 +206,12 @@ async function generateTranslateBrief(courseCode) {
     'tam', 'tel', 'kan', 'mal',
     // Other low-resource / script-heavy
     'hye', 'kat', 'amh', 'yor', 'eus', 'gle', 'gla', 'bre', 'mlt', 'aze',
-    'khm', 'lao', 'mya', 'kaz', 'uzb', 'div', 'tir'
+    'khm', 'lao', 'mya', 'kaz', 'uzb', 'div', 'tir',
+    // Sinitic non-Mandarin — LLMs default to 書面語/Mandarin; force Opus to hold
+    // colloquial register + correct script (see reference-examples/{yue,hak,nan}.json)
+    'yue', 'hak', 'nan',
+    // Swiss German — Dieth-lite dialect spelling needs Opus (see deu_ch.json)
+    'deu_ch'
   ]);
   const weakLang = WEAK_LLM_LANGS.has(produceLang);
   const recommendedModel = weakLang ? 'opus' : 'sonnet';
