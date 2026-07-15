@@ -1,0 +1,397 @@
+{
+  "campaign": "audio-campaign-2026-07-11",
+  "mandate": "completely fix the TTS side of things for ALL courses (Tom, 2026-07-11)",
+  "soft_ceiling_usd": 500,
+  "spend_to_date_usd": 22.42,
+  "report": "20:10 HANDOVER STATE (driver5, machine shutting down, travelling): jpn_for_eng residue-mop-up COMPLETE (7189/7189, 0 failed, SQL-verified 0 residue). zho_for_eng COMPLETE (31072 processed, 2 failed, known/target1/target2 100% linked; residual 10398 presentation_audio_id nulls on build/use rows are EXPECTED not real work \u2014 presentation audio only applies to phrase_role=lego). deu_for_eng POSTed, run FINISHED but hit the mass fetch-failed guard-query pattern (9768/27194 failed, precious-audio guard TypeError fetch failed) \u2014 SQL residue confirms REAL work remains: known_audio_id 0 null, target1_audio_id 935 null, target2_audio_id 7376 null. NEXT DRIVER: re-POST deu_for_eng once (this is the known transient-fetch-fail recovery, not a new job), poll to completion, re-verify by SQL. Then continue queue in order: ara_for_eng, eng_for_kor, eng_for_spa, eng_for_por, eng_for_fra, eng_for_deu, eng_for_ita, eus_for_eng, hye_for_eng, nep_for_eng, fas_for_eng, cym_n_for_eng, tur_for_eng, fra_for_zho, spa_mx_for_eng, kor_for_hin; then only if cumulative<$300: deu_at_for_eng, mlt_for_eng. NEVER touch ita_for_eng or spa_for_eng (sibling owns). Cumulative spend ~$22.42 of $500 ceiling (jpn/zho/deu costs estimated ~$4.23 zho + ~$9.51 deu vs earlier plan; exact deu actual cost not separately metered). Full per-course driver5 log: scripts/campaign-2026-07-11/generation-wave4-results.json. 17:52 STATE: driver 5 live. jpn_for_eng residue-mop-up (7,189 missing) POSTed and running foreground. spa_for_eng CONFIRMED 0 residue (1,719 timed-out items already cleared by driver 4, no action needed). Azure queue next up: zho_for_eng 15,574 missing ($4.23), deu_for_eng 23,313 missing ($11.56), ara_for_eng 20,960 missing ($12.20) \u2014 none yet started. Small-residue sweep found via /plan: eng_for_spa 92, eng_for_por 111, eng_for_fra 74, eng_for_deu 78, eng_for_kor 138, eng_for_ita 46, hye_for_eng 14, cym_n_for_eng 839, nep_for_eng 16, fas_for_eng 17, fra_for_zho 547, spa_mx_for_eng 3, eus_for_eng 386 \u2014 all cheap, queued after the big three Azure courses. Already-zero: eng_for_jpn, eng_for_zho, eng_for_ara, eng_for_kan, tur_for_eng, fra_for_eng, kor_for_eng, por_for_eng. 09:55 STATE: SEAM WAVE 100% COMPLETE (18/18 comma-era courses; 0 English contamination estate-wide; residues: kor 16 gp, zho 1 gp, ara_eg 2 + ara 1 gp persistent-English, nld 3 + dan 2 phrases). GENERATION driver 4 healthy: fra 0, eng_for_jpn 0, eng_for_zho 0, eng_for_kan 0, por_for_eng 0 (was 23,482! $11.21), kor_for_eng 0 (was 22,715! $6.83); jpn_for_eng in progress 9850/20576 0 failed; then zho, deu, ara, small residues. Cost so far ~$18-19, projection holds ~$50-60. OLDER: 06:30 STATE: SEAMS \u2014 batch 1 COMPLETE (ita/spa/zho/kor/jpn/por all gated+sliced, 0 English reads; kor 16 + zho 1 group residue = known resistance, needs-Tom line), nld FIXED 3/10->1/8, dan clean; seam C running beta 11 (fra in progress). GENERATION \u2014 driver 3 deadlocked on coordinator's flawed quiet-detection (0 courses); driver 4 dispatched 06:30 with corrected /status+residue-delta serialization; phase8 idle, sibling's spa job done (19188 ok / 1719 timed-out items to mop); eng_for_ara + fra done earlier. Approx $1-2 spent of ~$65-75 projection. OLDER NOTE: ALL COS BATCHES DISPATCHED (03:50): CoS approved batch1 seams (spa,zho,kor,jpn,por), batch2 Azure backlog (por,kor,jpn,zho then deu,ara), batch3 hrv Azure-half re-render, batch4 nld phonology corrective. RUNNING: seam A d3975573 (spa,zho,kor \u2014 spa in progress), seam B 6431e401 (jpn,por), corrective trio c66f8f36 (nld,dan,hrv), gen driver 1 1c59218b (xai queue: fra 652 items in progress, then eng_for_jpn/zho/kan; eng_for_ara DONE 71/71 $0.04), gen driver 2 961a5e56 (Azure backlog, starts when driver 1's records complete). Clone-copy wave: all 16 courses recorded, report pending. KNOWN DEFECT (post-campaign fix, no restart tonight): phase8 /generate has NO busy guard \u2014 concurrent jobs (ita/spa sibling + drivers) interleave and clobber /status; drivers instructed to trust SQL residue, not /status. EXCLUDED per CoS (final-report open questions): cym_n/cym_s human recordings; Take-G rollout to 28 no-take courses. VOICE-BLOCKED (needs Tom casting): mar, tel, gla, bre_for_fra, por_for_jpn, ita_for_cym, sbx, eng_template.",
+  "siblings": {
+    "census": "estate-wide audio census -> scripts/census-out/*.json + Desktop/audio-census.md (in progress)",
+    "ita_spa_backlog": "TTS backlog generation ita+spa + auto-queue wiring (skip ita/spa missing-audio here; spa seams still OURS)"
+  },
+  "priority_tiers": {
+    "T1_released_live_public": [
+      "kor_for_eng",
+      "jpn_for_eng",
+      "por_for_eng",
+      "zho_for_eng",
+      "fra_for_eng",
+      "cym_n_for_eng",
+      "cym_s_for_eng",
+      "hrv_for_eng"
+    ],
+    "T2_beta_visible": [
+      "deu_for_eng",
+      "ara_for_eng",
+      "eng_for_jpn",
+      "eng_for_zho",
+      "eng_for_ara",
+      "eng_for_kor",
+      "eng_for_spa",
+      "eng_for_por",
+      "eng_for_fra",
+      "eng_for_deu",
+      "eng_for_ita",
+      "gle_for_eng",
+      "nld_for_eng",
+      "zho_for_gle",
+      "eus_for_eng",
+      "hye_for_eng",
+      "nep_for_eng",
+      "fas_for_eng",
+      "spa_mx_for_eng",
+      "tur_for_eng",
+      "fra_for_zho",
+      "por_br_for_eng",
+      "fra_ca_for_eng",
+      "zho_for_jpn"
+    ],
+    "T3_draft_hidden_large_backlog": [
+      "mar_for_eng",
+      "tel_for_eng",
+      "deu_at_for_eng",
+      "mlt_for_eng",
+      "gla_for_eng",
+      "por_for_jpn",
+      "bre_for_fra",
+      "eng_template",
+      "ita_for_cym",
+      "sbx_for_eng",
+      "kor_for_hin",
+      "eng_for_kan"
+    ]
+  },
+  "baseline_missing_phrase_audio": {
+    "note": "build/use/lego phrase rows, pre-free-pass (2026-07-11 ~03:35). cols: total/known/t1/t2",
+    "mar_for_eng": [
+      13482,
+      12328,
+      13482,
+      13482
+    ],
+    "tel_for_eng": [
+      12448,
+      11274,
+      12448,
+      12448
+    ],
+    "deu_for_eng": [
+      12849,
+      7265,
+      7471,
+      7478
+    ],
+    "kor_for_eng": [
+      12409,
+      7042,
+      7249,
+      7256
+    ],
+    "por_for_eng": [
+      12631,
+      5981,
+      6372,
+      6378
+    ],
+    "jpn_for_eng": [
+      10583,
+      6105,
+      6248,
+      6248
+    ],
+    "por_for_jpn": [
+      6041,
+      6041,
+      6041,
+      6041
+    ],
+    "ara_for_eng": [
+      11317,
+      5830,
+      5966,
+      5966
+    ],
+    "spa_for_eng": [
+      15111,
+      4993,
+      5357,
+      5364
+    ],
+    "bre_for_fra": [
+      5016,
+      5016,
+      5016,
+      5016
+    ],
+    "deu_at_for_eng": [
+      5146,
+      4300,
+      5146,
+      5146
+    ],
+    "zho_for_eng": [
+      10398,
+      4510,
+      4612,
+      4620
+    ],
+    "mlt_for_eng": [
+      5344,
+      3669,
+      5344,
+      5344
+    ],
+    "eng_template": [
+      4583,
+      4403,
+      4583,
+      4583
+    ],
+    "gla_for_eng": [
+      4507,
+      3001,
+      4507,
+      4507
+    ],
+    "ita_for_eng": [
+      12236,
+      848,
+      881,
+      878
+    ],
+    "ita_for_cym": [
+      448,
+      448,
+      448,
+      448
+    ],
+    "sbx_for_eng": [
+      427,
+      249,
+      427,
+      427
+    ],
+    "eng_for_jpn": [
+      10108,
+      380,
+      0,
+      0
+    ],
+    "fra_for_eng": [
+      14089,
+      122,
+      195,
+      195
+    ],
+    "eus_for_eng": [
+      5688,
+      52,
+      148,
+      148
+    ],
+    "eng_for_zho": [
+      4392,
+      102,
+      0,
+      0
+    ],
+    "eng_for_ara": [
+      4975,
+      61,
+      0,
+      0
+    ],
+    "eng_for_spa": [
+      4898,
+      28,
+      26,
+      26
+    ],
+    "eng_for_por": [
+      5104,
+      17,
+      31,
+      31
+    ],
+    "eng_for_fra": [
+      5240,
+      20,
+      24,
+      24
+    ],
+    "eng_for_deu": [
+      4937,
+      19,
+      24,
+      24
+    ],
+    "eng_for_kor": [
+      4680,
+      24,
+      16,
+      16
+    ],
+    "kor_for_hin": [
+      19,
+      19,
+      19,
+      19
+    ],
+    "hye_for_eng": [
+      5378,
+      0,
+      17,
+      17
+    ],
+    "cym_n_for_eng": [
+      4997,
+      11,
+      0,
+      0
+    ],
+    "eng_for_ita": [
+      4982,
+      3,
+      8,
+      8
+    ],
+    "nep_for_eng": [
+      6824,
+      6,
+      0,
+      0
+    ],
+    "fas_for_eng": [
+      6395,
+      3,
+      2,
+      2
+    ],
+    "eng_for_kan": [
+      5833,
+      0,
+      1,
+      0
+    ],
+    "tur_for_eng": [
+      9046,
+      1,
+      0,
+      0
+    ],
+    "fra_for_zho": [
+      4967,
+      1,
+      0,
+      0
+    ],
+    "spa_mx_for_eng": [
+      6802,
+      0,
+      1,
+      1
+    ]
+  },
+  "courses": {},
+  "phases_per_course": [
+    "link",
+    "clone_copy",
+    "generate",
+    "seams"
+  ],
+  "workers": {
+    "clone-copy-wave": {
+      "id": "f2715f02",
+      "status": "DONE \u2014 0 copies possible estate-wide (SKIP_NO_SOURCE): clone-copy layer exhausted, all missing audio = real TTS",
+      "results": "scripts/campaign-2026-07-11/clone-copy-wave-results.json"
+    },
+    "generation-driver-1-xai": {
+      "id": "1c59218b",
+      "status": "DIED mid-queue (background-wait pattern); its fra job still draining inside phase8; eng_for_ara done 71/71 $0.04",
+      "results": "scripts/campaign-2026-07-11/generation-wave-results.json"
+    },
+    "generation-driver-2-azure": {
+      "id": "961a5e56",
+      "status": "DIED before starting (background-wait pattern)",
+      "results": null
+    },
+    "generation-driver-3": {
+      "id": "85c91bdc",
+      "status": "DEADLOCKED/dead \u2014 coordinator's quiet-detection design flawed (global course_audio silence never occurs while seam renders insert rows); 0 courses run",
+      "results": "scripts/campaign-2026-07-11/generation-wave3-results.json"
+    },
+    "generation-driver-4": {
+      "id": "63a6f197",
+      "status": "DIED ~09:30-17:00 in a transient network blip (same blip made phase8's Supabase guard fail closed mid-jpn: 7,227 safe skips). DELIVERED before death: fra 0, eng_for_jpn 0, eng_for_zho 0, eng_for_kan 0, por_for_eng 0 ($11.21), kor_for_eng 0 ($6.83)",
+      "results": "scripts/campaign-2026-07-11/generation-wave4-results.json"
+    },
+    "generation-driver-5": {
+      "id": "9d8ea551-ec5a-4dc0-a465-41c13a66c469",
+      "status": "running (this session) \u2014 jpn residue mop-up in progress, then zho/deu/ara Azure queue, then small residues",
+      "results": "scripts/campaign-2026-07-11/generation-wave4-results.json (continues)"
+    },
+    "stray-placeholder": {
+      "id": "e658042b",
+      "status": "coordinator mis-fire (placeholder prompt, broken parent) \u2014 inert, will no-op; ignore"
+    },
+    "seam-wave-A": {
+      "id": "d3975573",
+      "status": "DIED early in spa (background-wait pattern)",
+      "results": null
+    },
+    "seam-wave-A-resume": {
+      "id": "7c7483ce",
+      "status": "DONE \u2014 spa 159 groups residue 0; zho 165 groups residue 1 (S131:g1); kor 169 groups residue 16 bad-slice (sensitive-tier, known ko-resistance); 0 English across all; fixed verify-takeg-slices.cjs lang-code bug (spa->sp)",
+      "results": "scripts/campaign-2026-07-11/seam-wave-A-results.json"
+    },
+    "seam-wave-B": {
+      "id": "6431e401",
+      "status": "DIED (background-wait); jpn render orphaned ALIVE pid 35030",
+      "results": null
+    },
+    "seam-wave-B-resume": {
+      "id": "b5cd847f",
+      "status": "DONE \u2014 jpn 197/198 sliced 0 phonology-fail; por 175/175 sliced 0 fails. Whisper short-clip auto-detect quirk noted (force -l ja to confirm)",
+      "results": "scripts/campaign-2026-07-11/seam-wave-B-results.json"
+    },
+    "seam-wave-C": {
+      "id": "62e89c3e-aec6-46bd-ae6a-d0cd60d535c7",
+      "status": "running \u2014 beta 11: fra, ara_eg, ara, deu, hin, pol, por_br, spa_mx, swe, tha, tur",
+      "results": "scripts/campaign-2026-07-11/seam-wave-C-results.json"
+    },
+    "corrective-trio": {
+      "id": "c66f8f36",
+      "status": "DIED (background-wait); nld render orphaned ALIVE pid 70031",
+      "results": null
+    },
+    "corrective-trio-resume": {
+      "id": "5fc491e0",
+      "status": "DONE \u2014 nld FIXED (3/10->1/8 English; 3 deterministic-fail phrases S14/S15/S135 flagged), dan done no regression (2 stragglers S7/S13), hrv correctly STOPPED (recast = product-identity call)",
+      "results": "scripts/campaign-2026-07-11/corrective-trio-results.json"
+    }
+  },
+  "needs_tom": [
+    "hrv_for_eng recast: CoS approved 'Azure half re-render' but the mechanism = changing 3 of 5 speakers' actual voices (Sarah/Laura/George, ElevenLabs) in shipped content \u2014 product-identity call. Worker writeup in corrective-trio-results.json: options = spot-verify only / fix tooling gap (render code wrongly treats 11labs as word-boundary-exact) / full recast. Recommendation: verify + tooling fix now, recast = Tom's call",
+    "voice casting for 8 voice-blocked draft courses: mar_for_eng(27k clips), tel_for_eng(25k), gla_for_eng, bre_for_fra, por_for_jpn, ita_for_cym, sbx_for_eng, eng_template",
+    "cym_n/cym_s: human recording backlog (286/206 in-range seeds, no pod audio) \u2014 scheduling not TTS (CoS-excluded)",
+    "Take-G rollout to 28 no-take pod courses \u2014 product scope call (CoS-excluded)"
+  ],
+  "residue_flags": [
+    "nld S14/S15/S135 + dan S7/S13: phrases failing phonology gate deterministically across 6 attempts \u2014 need different xAI voice/seed; old clips remain live",
+    "tooling gap: render/slice path treats ElevenLabs takes as word-boundary-exact but 11labs clips carry NO word boundaries (hasWb:false) \u2014 mixed-cast courses ship unverified seams; fix alongside phase8 busy-guard"
+  ],
+  "ops_notes": [
+    "phase8 /generate has NO busy guard: concurrent jobs interleave, /status clobbered, 120s TTS timeouts under pileup \u2014 post-campaign fix: add 409 guard like /generate-components:4224",
+    "dispatched-worker death pattern: ending turn to 'wait for background notification' = worker done. All worker prompts must mandate foreground chunked execution",
+    "clone-copy finding 2026-07-11: zero copyable English clips for all 16 T1/T2 courses \u2014 free layer exhausted"
+  ],
+  "voice_blocked_needs_tom": [
+    "mar_for_eng",
+    "tel_for_eng",
+    "gla_for_eng",
+    "bre_for_fra",
+    "por_for_jpn",
+    "ita_for_cym",
+    "sbx_for_eng",
+    "eng_template"
+  ]
+}

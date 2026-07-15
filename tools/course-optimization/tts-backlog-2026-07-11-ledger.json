@@ -1,0 +1,104 @@
+{
+  "task": "TTS backlog generation ita_for_eng + spa_for_eng — free passes first, ledgered",
+  "approvedBy": "Tom (2026-07-08 diagnosis brief)",
+  "budgetCeilingUsd": 150,
+  "startedAt": "2026-07-11T03:30:00+01:00",
+  "report": {
+    "phase1_renorm_link_ita": {
+      "status": "done",
+      "staleRenormed": 5738,
+      "collisionsSkipped": 187,
+      "applyErrors": 0,
+      "linkRpc": {
+        "legos": {
+          "known": 42,
+          "target1": 40,
+          "target2": 40
+        },
+        "seeds": {
+          "known": 0,
+          "target1": 0,
+          "target2": 1
+        },
+        "phrases": {
+          "known": 929,
+          "target1": 958,
+          "target2": 949
+        }
+      },
+      "log": "scripts/repair-ita-audio-links-applied-log.json (ita run)"
+    },
+    "phase1b_renorm_link_spa": {
+      "status": "done",
+      "staleRenormed": 1159,
+      "collisionsSkipped": 220,
+      "applyErrors": 0,
+      "linkRpcNote": "RPC timed out via supabase-js; run via psql with statement_timeout=0",
+      "linkRpc": {
+        "legos": {
+          "known": 528,
+          "target1": 591,
+          "target2": 597
+        },
+        "seeds": {
+          "known": 49,
+          "target1": 331,
+          "target2": 332
+        },
+        "phrases": {
+          "known": 5376,
+          "target1": 5845,
+          "target2": 5862
+        }
+      },
+      "log": "scripts/repair-audio-links-spa_for_eng-applied-log.json"
+    },
+    "phase2_clone_copy": {
+      "status": "done",
+      "note": "Jul 5 estate pass had already applied 146 ita / 449 spa groups; fresh pass found the delta from the Jul 7 content passes",
+      "ita": {
+        "copied": 24,
+        "errors": 0
+      },
+      "spa": {
+        "copied": 4,
+        "errors": 0
+      },
+      "logs": [
+        "tools/course-optimization/clone-copy-pass-ita_for_eng-apply-log.json",
+        "tools/course-optimization/clone-copy-pass-spa_for_eng-apply-log.json"
+      ]
+    },
+    "phase3_phonology_gate": {
+      "status": "done",
+      "note": "gate existed only in tools/render-take-g.cjs; ported to services/tts-service.cjs generateWithRetry so all xAI renders are covered (fail closed, no wrong-language clip written)",
+      "commit": "c1e26674",
+      "shakedown": "1 live ita render via ara: gate ran, whisper detected 'it'"
+    },
+    "phase4_generate_ita": {
+      "status": "running",
+      "plan": {
+        "missing": 2697,
+        "toAuthor": 29,
+        "estimatedCost": "$1.25",
+        "estimatedChars": 77952
+      },
+      "note": "POST /generate/ita_for_eng started 02:41Z on gated code (verified: whisper detections active); shared phase8 instance also serving other sessions (eng_for_ara, fra_for_eng) — do not kill/cancel"
+    },
+    "phase5_generate_spa": {
+      "status": "pending",
+      "plan": {
+        "missing": 17404,
+        "toAuthor": 829,
+        "estimatedCost": "$7.60",
+        "estimatedChars": 475239
+      }
+    },
+    "phase6_autoqueue": {
+      "status": "done",
+      "commit": "f1d2dc31",
+      "note": "audio_pass_requests table + queueAudioPass/fulfill helper + CLI; clone-copy queues residue; phase8 /generate fulfils on clean pass; CLAUDE.md approval-gates updated; migration applied + PostgREST reloaded; smoke-tested insert/touch/list/dismiss"
+    }
+  },
+  "resumeNote": "Per-item resume safety is the pipeline's own: every generated clip is inserted into course_audio immediately, and POST /generate re-plans from getAudioNeeds, so a killed run resumes by re-invoking with only still-missing items. Per-item failures land in /status errors and are captured here per phase."
+}
