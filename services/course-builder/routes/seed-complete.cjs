@@ -1378,7 +1378,7 @@ module.exports = function seedCompleteRoutes(ctx) {
       }
 
       // 3b. PHRASE LENGTH RATIO VALIDATION
-      const LOGOGRAPHIC_LANGS = ['zho', 'cmn', 'jpn', 'kor', 'tha', 'mya', 'lao', 'khm'];
+      const LOGOGRAPHIC_LANGS = ['zho', 'cmn', 'yue', 'nan', 'hak', 'jpn', 'kor', 'tha', 'mya', 'lao', 'khm'];
       const isLogographic = LOGOGRAPHIC_LANGS.includes(targetLang) || LOGOGRAPHIC_LANGS.includes(knownLang);
       const LENGTH_RATIO_THRESHOLD = 2.5;
       const lengthMismatches = [];
