@@ -3,6 +3,7 @@
     <div class="page-header">
       <router-link to="/docs/pod-thinking" class="back-link">&larr; Pod Thinking</router-link>
       <template v-if="doc">
+        <span class="doc-badge" :class="badgeClass(doc.badge)">{{ doc.badge }}</span>
         <h1 class="page-title">{{ doc.title }}</h1>
         <p class="page-subtitle">{{ doc.status }} &middot; {{ doc.date }}</p>
       </template>
@@ -12,6 +13,7 @@
       <div v-if="!doc" class="bg-surface rounded-lg border border-line shadow-sm p-8">
         <p class="text-muted">No pod-thinking doc found for "{{ slug }}".</p>
       </div>
+      <pre v-else-if="doc.isText" class="raw-text-body bg-surface rounded-lg border border-line shadow-sm p-8">{{ rawText }}</pre>
       <div v-else class="markdown-body bg-surface rounded-lg border border-line shadow-sm p-8" v-html="html"></div>
     </main>
   </div>
@@ -27,11 +29,22 @@ const route = useRoute()
 const slug = route.params.slug
 const doc = podThinkingDocs.find(d => d.slug === slug)
 const html = ref('')
+const rawText = ref('')
+
+function badgeClass(badge) {
+  if (badge === 'LIVE') return 'badge-live'
+  if (badge === 'SUPERSEDED') return 'badge-superseded'
+  return 'badge-discussion'
+}
 
 watchEffect(async () => {
   if (!doc) return
-  const mod = await doc.loader()
-  html.value = renderMarkdown(mod.default)
+  const raw = await doc.loader()
+  if (doc.isText) {
+    rawText.value = raw
+  } else {
+    html.value = renderMarkdown(raw)
+  }
 })
 </script>
 
@@ -72,6 +85,42 @@ watchEffect(async () => {
 
 .content-area {
   max-width: 100%;
+}
+
+.doc-badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+
+.badge-live {
+  background: rgba(34, 197, 94, 0.15);
+  color: #16a34a;
+}
+
+.badge-discussion {
+  background: rgba(234, 179, 8, 0.15);
+  color: #b45309;
+}
+
+.badge-superseded {
+  background: rgba(148, 163, 184, 0.2);
+  color: #64748b;
+}
+
+.raw-text-body {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 90ch;
 }
 </style>
 
