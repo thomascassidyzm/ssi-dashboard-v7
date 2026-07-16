@@ -181,3 +181,25 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 11 | Priya | It was. All the more reason to enjoy this. |
 | 12 | Ben | Agreed. And your hair's different, isn't it? It really suits you. |
 | 13 | Priya | At last — someone noticed! You've made my week, Ben. |
+
+## 9. Go On, Come With Us — *You've talked me into it*
+
+*Difficulty: intermediate · 15 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Jess | We're going camping this weekend — you should come. |
+| 2 | Owen | Camping? In this weather? You're brave. |
+| 3 | Jess | Go on, come with us. It'll be fun, I promise. |
+| 4 | Owen | I don't know. I'm not really a tent person. |
+| 5 | Jess | You say that every time… and every time you end up loving it. |
+| 6 | Owen | That was one barbecue, years ago. |
+| 7 | Jess | Come on. Good food, a fire, no phones. What's not to like? |
+| 8 | Owen | The rain? Sleeping on the ground? Spiders? |
+| 9 | Jess | You can have the good airbed. And Rhys is bringing his guitar. |
+| 10 | Owen | Now you're making it worse. |
+| 11 | Jess | Go on. You can leave early on Sunday if you're tired. |
+| 12 | Owen | Hmm. Who else is going? |
+| 13 | Jess | Me and Rhys, Ana and her brother. You know everyone. |
+| 14 | Owen | All right, all right — you've talked me into it. |
+| 15 | Jess | Yes! You won't regret it. Well — you might, but only a little. |
