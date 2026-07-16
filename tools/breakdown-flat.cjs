@@ -16,9 +16,10 @@
  * KNOWN/English voice), and writes listening_pod_sentences.atom_map. Idempotent.
  * The composer (preview + runtime) splits per sentence + partitions per intention.
  *
- *   node tools/breakdown-flat.cjs <course> [orders] [--dry]
- *   node tools/breakdown-flat.cjs hrv_for_eng            # whole pod
+ *   node tools/breakdown-flat.cjs <course> [orders] [--dry] [--pod=pod-N]
+ *   node tools/breakdown-flat.cjs hrv_for_eng            # whole pod-0 (default)
  *   node tools/breakdown-flat.cjs ita_for_eng 1,8,12 --dry
+ *   node tools/breakdown-flat.cjs ita_for_eng --pod=pod-1
  *
  * Voices are read from courses.voice_config (target1 → atom, known → means), so
  * it self-configures per course (Azure / xAI, correct locale). --dry renders
@@ -33,13 +34,14 @@ const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
 const MEANS_ONLY = process.argv.includes('--means-only') // re-voice means from existing atom_maps (no LLM, no atom re-author)
+const POD = (process.argv.find((a) => a.startsWith('--pod=')) || '--pod=pod-0').slice('--pod='.length)
 const MODEL = process.env.BD_MODEL || 'opus'
 const ROLE = 'pod_explainer'
 // xAI officially supports these (per services/voice-discovery-service.cjs); use
 // xAI wherever the language is supported (known OR target), Azure only as fallback.
 const XAI_OFFICIAL = new Set(['en', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'ru', 'zh', 'ja', 'ko', 'vi', 'hi', 'bn', 'ar', 'tr', 'pl'])
 const TOM_CLONE = 'gfzdpspr5fdp' // Tom's cloned xAI voice — the teacher voice for the English "means" line
-if (!COURSE) { console.error('usage: breakdown-flat.cjs <course> [orders] [--dry]'); process.exit(1) }
+if (!COURSE) { console.error('usage: breakdown-flat.cjs <course> [orders] [--dry] [--pod=pod-N]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const norm = (s) => s.toLowerCase().replace(/\s+/g, ' ').trim()
@@ -122,7 +124,7 @@ async function ensureMeans(legoKey, target, gloss, order, force = false) {
   // and repoints pod_legos. Use to switch the means voice without churning the
   // verified breakdowns. Idempotent only with --force semantics (always renders).
   if (MEANS_ONLY) {
-    let q = supabase.from('listening_pod_sentences').select('global_order, atom_map').eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+    let q = supabase.from('listening_pod_sentences').select('global_order, atom_map').eq('pod_id', `${COURSE}:${POD}`).order('global_order')
     if (ORDERS.length) q = q.in('global_order', ORDERS)
     const { data: turns } = await q
     let n = 0
@@ -140,7 +142,7 @@ async function ensureMeans(legoKey, target, gloss, order, force = false) {
 
   const { data: legos } = await supabase.from('course_legos').select('target_text, known_text').eq('course_code', COURSE).limit(5000)
   const inv = (legos || []).filter(l => l.target_text && l.known_text).map(l => ({ t: l.target_text, k: l.known_text, b: bare(l.target_text) }))
-  let q = supabase.from('listening_pod_sentences').select('id, global_order, target_text, known_text').eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+  let q = supabase.from('listening_pod_sentences').select('id, global_order, target_text, known_text').eq('pod_id', `${COURSE}:${POD}`).order('global_order')
   if (ORDERS.length) q = q.in('global_order', ORDERS)
   const { data: sents } = await q
 

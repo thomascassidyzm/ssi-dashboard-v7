@@ -24,9 +24,10 @@
  * enforcement/repair gate for this rule is `tools/audit-fine-seams.cjs`,
  * intended to run right after this script on every course it touches.
  *
- *   node tools/breakdown-fine.cjs <course> [orders] [--dry]
- *   node tools/breakdown-fine.cjs zho_for_eng              # whole pod-0
+ *   node tools/breakdown-fine.cjs <course> [orders] [--dry] [--pod=pod-N]
+ *   node tools/breakdown-fine.cjs zho_for_eng              # whole pod-0 (default)
  *   node tools/breakdown-fine.cjs zho_for_eng 25,1,3 --dry # preview only
+ *   node tools/breakdown-fine.cjs zho_for_eng --pod=pod-1
  *
  * Same skeleton as breakdown-flat.cjs (claude CLI, tiling verification, worker
  * pool) minus every render step. Idempotent: re-running overwrites the draft.
@@ -39,7 +40,8 @@ const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
 const MODEL = process.env.BD_MODEL || 'opus'
-if (!COURSE) { console.error('usage: breakdown-fine.cjs <course> [orders] [--dry]'); process.exit(1) }
+const POD = (process.argv.find((a) => a.startsWith('--pod=')) || '--pod=pod-0').slice('--pod='.length)
+if (!COURSE) { console.error('usage: breakdown-fine.cjs <course> [orders] [--dry] [--pod=pod-N]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 const bare = (s) => (s || '').toLowerCase().replace(/[.,!?;:¿¡"'’，。？！、]/g, '').replace(/\s+/g, ' ').trim()
 const alnum = (s) => (s || '').toLowerCase().replace(/[^\p{L}\p{N}\p{M}]/gu, '')
@@ -111,7 +113,7 @@ function tileAndSnap(units, targetText) {
 ;(async () => {
   const { data: legos } = await supabase.from('course_legos').select('target_text, known_text').eq('course_code', COURSE).limit(5000)
   const inv = (legos || []).filter(l => l.target_text && l.known_text).map(l => ({ t: l.target_text, k: l.known_text, b: bare(l.target_text) }))
-  let q = supabase.from('listening_pod_sentences').select('id, global_order, target_text, known_text').eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+  let q = supabase.from('listening_pod_sentences').select('id, global_order, target_text, known_text').eq('pod_id', `${COURSE}:${POD}`).order('global_order')
   if (ORDERS.length) q = q.in('global_order', ORDERS)
   const { data: sents } = await q
 
@@ -126,7 +128,7 @@ function tileAndSnap(units, targetText) {
   // breathing mark in target_text — this word-count flag is a cheap proxy,
   // not the ceiling gate itself (no general-purpose cross-language syllable
   // counter exists here).
-  const CEILING_WORDS = 6 // this script only ever authors pod-0 (C=8 syllables → ~6 words, rough proxy)
+  const CEILING_WORDS = POD === 'pod-0' ? 6 : 9 // C=8 syllables → ~6 words for pod-0, C=12 → ~9 words for pod-1+ (rough proxy)
   const CJK_RE = /[぀-ヿ㐀-䶿一-鿿가-힯]/
   const isOverlong = (t) => CJK_RE.test(t) ? [...t].filter(c => /\p{L}/u.test(c)).length > CEILING_WORDS * 1.6 : t.trim().split(/\s+/).filter(Boolean).length > CEILING_WORDS
 

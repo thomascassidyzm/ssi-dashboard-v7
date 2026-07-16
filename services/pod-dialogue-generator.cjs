@@ -97,8 +97,14 @@ function validateScene(inputLines, outLines) {
 // scene generation
 // ---------------------------------------------------------------------------
 
+// Founder ruling (docs/pods/pod-ladder-proposal.md §9a, 2026-07-16): pod-0's
+// breathing ceiling is 8 syllables; pod-1 and every level after it is 12.
+function syllableCeilingForPod(podSlug) {
+  return podSlug === 'pod-0' ? 8 : 12
+}
+
 /** Generate one scene → [{global_order, target_text, known_text}] (+ warnings). Retries once on hard failure. */
-async function generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger }) {
+async function generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger, podSlug }) {
   // The ledger pins localised character names ("Sarah [S1] → Sophie") which the
   // dialogue text follows — the learner-visible speaker label must follow too.
   const nameMap = parseNameMap(ledger)
@@ -106,6 +112,7 @@ async function generateScene({ scene, targetLanguage, knownLanguage, cultureNote
     targetLanguage, knownLanguage, cultureNotes, ledger,
     sceneTitle: scene.title || scene.label || `Scene ${scene.number}`,
     lines: scene.lines,
+    syllableCeiling: syllableCeilingForPod(podSlug),
   })
   let lastErr = null
   for (let attempt = 1; attempt <= 2; attempt++) {
@@ -492,7 +499,7 @@ async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, 
     if (generatedNow >= maxScenes) break
     if (Date.now() - start >= deadlineMs && generatedNow > 0) break
     log(`  scene ${scene.number} [${scene.label}] ${scene.title} — generating (${scene.lines.length} lines)…`)
-    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger })
+    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger, podSlug })
     const n = await writeSceneSentences({ podId, scene, lines })
     hashes[scene.number] = sceneHash(scene)
     generatedNow++
@@ -578,7 +585,7 @@ async function syncPodToCanonical({ podId, courseCode, podSlug, course, targetVa
     if (did >= maxScenes) break
     if (Date.now() - start >= deadlineMs && did > 0) break
     log(`  scene ${scene.number} [${scene.label}] CHANGED — re-flexing (${scene.lines.length} lines)…`)
-    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger })
+    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger, podSlug })
     await deleteSceneSentences(podId, scene.number)
     await writeSceneSentences({ podId, scene, lines })
     finalHashes[scene.number] = sceneHash(scene)

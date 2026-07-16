@@ -21,9 +21,11 @@ const PROMPT = fs.readFileSync(path.join(__dirname, 'pod-generation-prompt.txt')
  * @param {string} a.cultureNotes    the per-target-culture notes blob
  * @param {string} a.sceneTitle      e.g. "Coffee Shop"
  * @param {Array<{global_order:number, speaker:string, english_text:string}>} a.lines
+ * @param {number} [a.syllableCeiling] per-pod-level breathing ceiling C (founder ruling,
+ *   docs/pods/pod-ladder-proposal.md §9a: pod-0 = 8, pod-1 and onward = 12)
  * @returns {string} the filled prompt to send to claude --print
  */
-function renderPrompt({ targetLanguage, knownLanguage, cultureNotes, sceneTitle, lines, ledger }) {
+function renderPrompt({ targetLanguage, knownLanguage, cultureNotes, sceneTitle, lines, ledger, syllableCeiling = 12 }) {
   // Canon v2 placeholder: "[target language]" → the language's English name
   // (deterministic; the model then renders it natively in target_text and the
   // ledger pins the one self-name). Local substitution only — never mutate the
@@ -38,6 +40,7 @@ function renderPrompt({ targetLanguage, knownLanguage, cultureNotes, sceneTitle,
     .replace(/\{\{SCENE_TITLE\}\}/g, sceneTitle)
     .replace(/\{\{LINES\}\}/g, linesBlock)
     .replace(/\{\{LEDGER\}\}/g, ledger || '(none for this pod)')
+    .replace(/\{\{SYLLABLE_CEILING\}\}/g, String(syllableCeiling))
 }
 
 module.exports = { PROMPT, renderPrompt }

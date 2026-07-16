@@ -24,7 +24,9 @@
  * fills them). Turns the audit changes are printed as a list for the re-run
  * pipeline (windows → Take G → knowns → slice).
  *
- *   node tools/audit-fine-seams.cjs <course> [orders] [--dry]
+ *   node tools/audit-fine-seams.cjs <course> [orders] [--dry] [--pod=pod-N]
+ *   node tools/audit-fine-seams.cjs zho_for_eng             # whole pod-0 (default)
+ *   node tools/audit-fine-seams.cjs zho_for_eng --pod=pod-1
  *
  * claude CLI only, no TTS, no cost gate.
  */
@@ -36,7 +38,8 @@ const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
 const MODEL = process.env.BD_MODEL || 'opus'
-if (!COURSE) { console.error('usage: audit-fine-seams.cjs <course> [orders] [--dry]'); process.exit(1) }
+const POD = (process.argv.find((a) => a.startsWith('--pod=')) || '--pod=pod-0').slice('--pod='.length)
+if (!COURSE) { console.error('usage: audit-fine-seams.cjs <course> [orders] [--dry] [--pod=pod-N]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const KNOWN_NAMES = { eng: 'English', jpn: 'Japanese', zho: 'Chinese', spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian', por: 'Portuguese', ara: 'Arabic', gle: 'Irish', cym: 'Welsh', rus: 'Russian', nld: 'Dutch', kor: 'Korean', hin: 'Hindi' }
@@ -96,7 +99,7 @@ Return ONLY JSON: {"merges":[{"s":<sentence#>,"from":<first unit#>,"to":<last un
 ;(async () => {
   let q = supabase.from('listening_pod_sentences')
     .select('id, global_order, target_text, known_text, atom_map_fine')
-    .eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+    .eq('pod_id', `${COURSE}:${POD}`).order('global_order')
   if (ORDERS.length) q = q.in('global_order', ORDERS)
   const { data: sents, error } = await q
   if (error) { console.error(error.message); process.exit(1) }
