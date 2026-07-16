@@ -419,9 +419,12 @@ function fuseSpans(spans, fusion) {
   return out
 }
 
-// Every fusion level for an n-unit stretch: units → … → the whole.
-function spanLadder(n, fusion) {
-  let spans = Array.from({ length: n }, (_, i) => ({ start: i, end: i }))
+// Every fusion level over a starting span list: initialSpans → … → the whole.
+// initialSpans is the FINEST the ladder ever gets — for sentence fusion this
+// is S-LEGO spans (never sub-S-LEGO atom cuts); for the turn-conjoin ladder
+// it's one span per sentence group.
+function spanLadder(initialSpans, fusion) {
+  let spans = initialSpans
   const levels = [spans]
   while (spans.length > 1) {
     spans = fuseSpans(spans, fusion)
@@ -441,22 +444,58 @@ function tktt(chunk, known) {
 }
 
 // Split the atom list into prosodic groups at sentence-terminal punctuation
-// (walked off target_text between consecutive atom surfaces) — sound-wave
-// grouping, no grammar.
-const SENTENCE_PUNCT = /[.!?…。！？]/
+// ONLY — '…' is NOT a sentence break, it's the canon S-LEGO seam mark (§9a/9b,
+// docs/pods/pod-ladder-proposal.md; founder ruling 2026-07-17: S-LEGO seams —
+// as marked by the ellipses in the canonical content — are THE definitive
+// break places, nothing finer). Boundaries walked once off target_text
+// between consecutive atom surfaces, classified 'sentence' | 'sLego' | null,
+// and reused both for sentence grouping and for the fusion ladder's rung-0
+// spans below — one seam source of truth, no separate hand-drafted map.
+const SENTENCE_PUNCT = /[.!?。！？]/
+const ELLIPSIS_RE = /…/
 
-function atomGroups(s, atoms) {
+function atomBoundaries(s, atoms) {
   const text = s.target_text || ''
   const lower = text.toLowerCase()
-  const groups = [[]]
+  const bounds = new Array(Math.max(atoms.length - 1, 0)).fill(null)
   let cursor = 0
   for (let i = 0; i < atoms.length; i++) {
     const idx = lower.indexOf(atoms[i].targetSurface.toLowerCase(), cursor)
-    if (i > 0 && idx !== -1 && SENTENCE_PUNCT.test(text.slice(cursor, idx))) groups.push([])
-    groups[groups.length - 1].push(atoms[i])
     if (idx !== -1) cursor = idx + atoms[i].targetSurface.length
+    if (i < atoms.length - 1) {
+      const nextIdx = lower.indexOf(atoms[i + 1].targetSurface.toLowerCase(), cursor)
+      const between = nextIdx !== -1 ? text.slice(cursor, nextIdx) : text.slice(cursor)
+      if (SENTENCE_PUNCT.test(between)) bounds[i] = 'sentence'
+      else if (ELLIPSIS_RE.test(between)) bounds[i] = 'sLego'
+    }
   }
+  return bounds
+}
+
+function atomGroups(atoms, bounds) {
+  const groups = [[]]
+  atoms.forEach((a, i) => {
+    groups[groups.length - 1].push(a)
+    if (bounds[i] === 'sentence') groups.push([])
+  })
   return groups.filter((g) => g.length)
+}
+
+// The S-LEGO spans (local atom-index ranges) inside one post-glue sentence
+// group, split ONLY at 'sLego' boundaries. A group with none of its own —
+// about 40 of 77 pod-0.5 sentences are single S-LEGOs — comes back as a
+// single span covering the whole group, so it never gets a fusion rung of
+// its own (rule 4: per-sentence rung depth follows seam count).
+function sLegoSpansFromBounds(bounds, gStart, gEnd) {
+  const ranges = []
+  let start = gStart
+  for (let i = gStart; i <= gEnd; i++) {
+    if (i === gEnd || bounds[i] === 'sLego') {
+      ranges.push({ start: start - gStart, end: i - gStart })
+      start = i + 1
+    }
+  }
+  return ranges
 }
 
 // Per-sentence takes when the re-split produced them (else null per group).
@@ -464,6 +503,45 @@ function groupTakes(s, groups) {
   return Array.isArray(s.sentence_audio_ids) && s.sentence_audio_ids.length === groups.length
     ? s.sentence_audio_ids
     : groups.map(() => null)
+}
+
+// ── AT-A-GLANCE PREVIEW — the line list shows canon seams + rung depth ─────
+// directly, before a line is ever selected, so the picture is visible while
+// scanning rather than only after opening the editor.
+
+// target_text split at every canon '…' — the seam marks themselves, ready to
+// render inline (no atoms/audio needed, cheap enough for every row in the list).
+function seamPreviewParts(text) {
+  const raw = String(text || '').split('…')
+  return raw.map((t, i) => ({ text: t, seam: i < raw.length - 1 }))
+}
+
+// Cheap rung-count estimate for a row's badge: same boundary + fusion math as
+// ladderRungs, over word-surfaces only (no gloss/audio resolution) — a sentence
+// with no '…' collapses to 1 fusion level, exactly like the real ladder.
+function lightAtomsFor(s) {
+  const map = Array.isArray(s.atom_map_fine) && s.atom_map_fine.length ? s.atom_map_fine : s.atom_map
+  if (!Array.isArray(map)) return []
+  return map
+    .filter((e) => e && (e.kind === 'atom' || e.kind === 'passthrough') && e.target_surface)
+    .map((e) => ({ targetSurface: e.target_surface }))
+}
+function sentenceRungDepth(s) {
+  const atoms = lightAtomsFor(s)
+  if (!atoms.length) return null
+  const bounds = atomBoundaries(s, atoms)
+  const groups = atomGroups(atoms, bounds)
+  if (!groups.length) return null
+  const offsets = []
+  let off = 0
+  for (const g of groups) { offsets.push(off); off += g.length }
+  const ladders = groups.map((g, gi) => spanLadder(sLegoSpansFromBounds(bounds, offsets[gi], offsets[gi] + g.length - 1), 'pairwise'))
+  let stageN = Math.max(...ladders.map((l) => l.length))
+  if (groups.length > 1) {
+    const groupSpans = groups.map((_, gi) => ({ start: gi, end: gi }))
+    stageN += spanLadder(groupSpans, 'pairwise').length - 1
+  }
+  return stageN + 7 // the locked speed cascade, engine Stages 2–8
 }
 
 // The whole unified climb for the selected turn, one entry per rung (= one
@@ -477,7 +555,8 @@ const ladderRungs = computed(() => {
 
   // Sentences, with a leading one-unit exclamation ("Ciao!") glued onto the
   // sentence that follows — the drill never strands a bare interjection.
-  const rawGroups = atomGroups(s, atoms)
+  const bounds = atomBoundaries(s, atoms)
+  const rawGroups = atomGroups(atoms, bounds)
   const rawTakes = groupTakes(s, rawGroups)
   const rawKnown =
     Array.isArray(s.sentence_known_audio_ids) && s.sentence_known_audio_ids.length === rawGroups.length
@@ -655,7 +734,11 @@ const ladderRungs = computed(() => {
   })
 
   const fusion = fusionMode.value
-  const ladders = groups.map((g) => spanLadder(g.length, fusion))
+  // Rung-0 spans are S-LEGO spans (canon '…' seams), never raw per-atom cuts
+  // — a sentence with no internal seam comes back as a single span and rides
+  // straight to its whole with no fusion rung of its own (rule 4).
+  const sLegoSpans = groups.map((g, gi) => sLegoSpansFromBounds(bounds, offsets[gi], offsets[gi] + g.length - 1))
+  const ladders = groups.map((g, gi) => spanLadder(sLegoSpans[gi], fusion))
   const maxDepth = Math.max(...ladders.map((l) => l.length))
   const rungs = []
 
@@ -675,7 +758,7 @@ const ladderRungs = computed(() => {
         last && single
           ? `Stage ${r} · the whole turn`
           : r === 0
-            ? 'Stage 0 · finest units'
+            ? 'Stage 0 · S-LEGO seams'
             : last
               ? `Stage ${r} · whole sentences`
               : `Stage ${r} · fusion`,
@@ -683,7 +766,7 @@ const ladderRungs = computed(() => {
         last && single
           ? 't·k·t·t at 1× — ≡ engine Stage 1'
           : r === 0
-            ? 'every unit t·k·t·t · 1×'
+            ? 'every S-LEGO t·k·t·t · 1×'
             : last
               ? 'real sentence takes + real translation takes'
               : fusion === 'chained'
@@ -697,7 +780,8 @@ const ladderRungs = computed(() => {
   // level IS the previous rung, so it is skipped)
   let stageN = maxDepth
   if (!single) {
-    for (const lvl of spanLadder(groups.length, fusion).slice(1)) {
+    const groupSpans = groups.map((_, gi) => ({ start: gi, end: gi }))
+    for (const lvl of spanLadder(groupSpans, fusion).slice(1)) {
       const isTurn = lvl.length === 1
       const steps = isTurn
         ? tktt(wholeTurnChunk(), wholeTurnKnown())
@@ -738,12 +822,20 @@ const playWholeClimb = () => playShapeSteps(ladderRungs.value.flatMap((r) => r.s
 
 const STEP_CLS = { chunk: 'r-target', gloss: 'r-known', whole: 'r-whole', group: 'r-explainer' }
 
-// ── SEAM EDITOR — drag the cuts of a draft fine map ─────────────────────────
-// Every token boundary is a clickable handle: click to cut, click to merge.
-// Punctuation seams are locked (mandatory — Take G always breathes there).
-// Saves ONLY atom_map_fine via /api/pod-fine-map (auth'd, tiling-verified).
+// ── SEAM EDITOR — review the canon S-LEGO seams, don't draft from scratch ───
+// One seam source of truth (founder ruling 2026-07-17): seams come from the
+// '…' marks already baked into target_text (§9a/9b of pod-ladder-proposal.md
+// — S-LEGO seams are the definitive break places, nothing finer). The editor
+// presents each canon seam for human ear review — accept (default) / remove
+// / move to another gap — it never drafts a blank fine map. atom_map_fine is
+// now an OVERRIDE layer at most: it records which gaps a human actually
+// confirmed, read back and reconciled against the current canon set on load.
+// Saves via /api/pod-fine-map (auth'd, tiling-verified) — same endpoint,
+// same column, same shape; only the authoring model above it has changed.
 const editorTokens = ref([])
-const editorSeams = ref(new Set())
+const canonSeams = ref(new Set()) // gap indices where target_text carries a canon '…'
+const removedCanon = ref(new Set()) // canon seams a human rejected on review
+const addedOverride = ref(new Set()) // non-canon gaps a human moved a rejected seam to
 const editorUnits = ref([])
 const seamDirty = ref(false)
 const seamSaving = ref(false)
@@ -756,7 +848,10 @@ const slugify = (t) =>
   alnumLocal(t) ? (t || '').toLowerCase().replace(/[.,!?;:¿¡"'’，。？！、]/g, '').trim().replace(/\s+/g, '-').replace(/[^\p{L}\p{N}-]/gu, '').slice(0, 64) : ''
 
 // Tokenize target_text into glossable tokens: each CJK char is one token, a
-// latin word-run is one token. punctAfter marks a locked seam after the token.
+// latin word-run is one token. punctAfter carries the actual punctuation
+// character after the token (or '') — '…' is the reviewable canon S-LEGO
+// seam; every other hard-punct mark (sentence ends, commas, …) is a locked,
+// non-negotiable structural seam, same as before.
 function tokenizeTarget(text) {
   const out = []
   let i = 0
@@ -764,15 +859,15 @@ function tokenizeTarget(text) {
   while (i < text.length) {
     const c = text[i]
     if (CJK_RE.test(c)) {
-      out.push({ text: c, punctAfter: false })
+      out.push({ text: c, punctAfter: '' })
       i++
     } else if (isWord(c)) {
       let j = i + 1
       while (j < text.length && isWord(text[j]) && !CJK_RE.test(text[j])) j++
-      out.push({ text: text.slice(i, j), punctAfter: false })
+      out.push({ text: text.slice(i, j), punctAfter: '' })
       i = j
     } else {
-      if (out.length && HARD_PUNCT.test(c)) out[out.length - 1].punctAfter = true
+      if (out.length && HARD_PUNCT.test(c)) out[out.length - 1].punctAfter = c
       i++
     }
   }
@@ -792,41 +887,66 @@ function joinTokens(tokens, start, end) {
   return out
 }
 
-function initSeamEditor() {
-  seamMsg.value = ''
-  seamDirty.value = false
-  editorTokens.value = []
-  editorSeams.value = new Set()
-  editorUnits.value = []
-  const s = selectedSentence.value
-  if (!s || !usingFine.value) return
-  const tokens = tokenizeTarget(s.target_text || '')
-  const units = []
+function isLockedTok(tokens, i) {
+  const p = tokens[i]?.punctAfter
+  return !!p && p !== '…'
+}
+
+// Read a saved override (atom_map_fine) back as the set of gap indices it
+// left "on" — walks its units' target_surface against the current tokens,
+// same tiling check as before. Returns null if it no longer walks/covers the
+// text (stale draft from a different content edit) — caller falls back to
+// pure canon.
+function seamsFromUnits(tokens, units) {
   const seams = new Set()
   let ti = 0
-  for (const u of s.atom_map_fine) {
+  for (const u of units) {
     const target = alnumLocal(u.target_surface)
     if (!target) continue
-    const start = ti
     let acc = ''
     while (ti < tokens.length && acc.length < target.length) {
       acc += alnumLocal(tokens[ti].text)
       ti++
     }
-    if (acc !== target) {
-      seamMsg.value = 'seam editor unavailable — stored units do not walk this text'
-      return
-    }
-    units.push({ start, end: ti - 1, surface: u.target_surface, gloss: u.gloss || '', kind: u.kind || 'atom' })
+    if (acc !== target) return null
     if (ti < tokens.length) seams.add(ti - 1)
   }
-  if (ti !== tokens.length) {
-    seamMsg.value = 'seam editor unavailable — stored units do not cover this text'
-    return
-  }
+  if (ti !== tokens.length) return null
+  return seams
+}
+
+function initSeamEditor() {
+  seamMsg.value = ''
+  seamDirty.value = false
+  editorTokens.value = []
+  canonSeams.value = new Set()
+  removedCanon.value = new Set()
+  addedOverride.value = new Set()
+  editorUnits.value = []
+  const s = selectedSentence.value
+  if (!s) return
+  const tokens = tokenizeTarget(s.target_text || '')
   editorTokens.value = tokens
-  editorSeams.value = seams
-  editorUnits.value = units
+  const canon = new Set()
+  tokens.forEach((t, i) => { if (t.punctAfter === '…') canon.add(i) })
+  canonSeams.value = canon
+
+  if (Array.isArray(s.atom_map_fine) && s.atom_map_fine.length) {
+    const savedOn = seamsFromUnits(tokens, s.atom_map_fine)
+    if (savedOn) {
+      removedCanon.value = new Set([...canon].filter((i) => !savedOn.has(i)))
+      addedOverride.value = new Set([...savedOn].filter((i) => !canon.has(i) && !isLockedTok(tokens, i)))
+    } else {
+      seamMsg.value = 'saved seam review no longer matches this text — showing canon seams'
+    }
+  }
+  editorUnits.value = deriveUnits(null)
+}
+
+function effectiveOn(i) {
+  if (isLockedTok(editorTokens.value, i)) return true
+  if (canonSeams.value.has(i)) return !removedCanon.value.has(i)
+  return addedOverride.value.has(i)
 }
 
 function deriveUnits(prevUnits) {
@@ -834,7 +954,7 @@ function deriveUnits(prevUnits) {
   const ranges = []
   let start = 0
   for (let i = 0; i < tokens.length; i++) {
-    if (i === tokens.length - 1 || tokens[i].punctAfter || editorSeams.value.has(i)) {
+    if (i === tokens.length - 1 || effectiveOn(i)) {
       ranges.push({ start, end: i })
       start = i + 1
     }
@@ -850,15 +970,53 @@ function deriveUnits(prevUnits) {
   })
 }
 
+// Canon seam: click removes it (frees one "move" slot); click again restores
+// it. Non-canon gap: click relocates a removed seam there — capped at the
+// number of currently-removed canon seams, so the total seam count can never
+// exceed canon (no sub-S-LEGO cuts, rule 3).
 function toggleSeam(i) {
-  if (editorTokens.value[i]?.punctAfter) return
-  const seams = new Set(editorSeams.value)
-  if (seams.has(i)) seams.delete(i)
-  else seams.add(i)
+  if (isLockedTok(editorTokens.value, i)) return
   const prev = editorUnits.value
-  editorSeams.value = seams
+  if (canonSeams.value.has(i)) {
+    const removed = new Set(removedCanon.value)
+    if (removed.has(i)) removed.delete(i)
+    else removed.add(i)
+    removedCanon.value = removed
+  } else {
+    const added = new Set(addedOverride.value)
+    if (added.has(i)) {
+      added.delete(i)
+    } else if (added.size < removedCanon.value.size) {
+      added.add(i)
+    } else {
+      seamMsg.value = 'move budget used — remove a canon seam first to relocate it here'
+      return
+    }
+    addedOverride.value = added
+  }
+  seamMsg.value = ''
   editorUnits.value = deriveUnits(prev)
   seamDirty.value = true
+}
+
+function seamState(i) {
+  if (isLockedTok(editorTokens.value, i)) return 'locked'
+  if (canonSeams.value.has(i)) return removedCanon.value.has(i) ? 'removed' : 'on'
+  return addedOverride.value.has(i) ? 'moved' : 'open'
+}
+function seamGlyph(i) {
+  const st = seamState(i)
+  if (st === 'locked') return '‖'
+  if (st === 'on' || st === 'moved') return '|'
+  return '·'
+}
+function seamTitle(i) {
+  const st = seamState(i)
+  if (st === 'locked') return 'punctuation — always a seam'
+  if (st === 'on') return 'canon S-LEGO seam — click to remove'
+  if (st === 'removed') return 'removed canon seam — click to restore'
+  if (st === 'moved') return 'moved seam (override) — click to remove'
+  return 'not a canon seam — click to relocate a removed seam here'
 }
 
 async function saveFineMap() {
@@ -890,7 +1048,7 @@ async function saveFineMap() {
     if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)
     s.atom_map_fine = map
     seamDirty.value = false
-    seamMsg.value = `Saved ✓ ${map.length} units`
+    seamMsg.value = `Saved ✓ ${map.length} units (${removedCanon.value.size} removed, ${addedOverride.value.size} moved)`
   } catch (e) {
     seamMsg.value = `Save failed: ${e.message}`
   } finally {
@@ -898,7 +1056,7 @@ async function saveFineMap() {
   }
 }
 
-watch([selectedIdx, unitsSource, sentences], initSeamEditor)
+watch([selectedIdx, sentences], initSeamEditor)
 
 async function playShapeSteps(steps) {
   stop()
@@ -964,52 +1122,56 @@ loadLiveConfig()
     <div v-if="sentences.length" class="cols">
       <!-- LEFT: line + config -->
       <section class="panel">
-        <label class="field">
-          <span class="lbl">Line</span>
-          <select v-model.number="selectedIdx" class="select">
-            <option v-for="(s, i) in sentences" :key="s.id || i" :value="i">
-              {{ s.global_order }}. {{ s.target_text }}
-            </option>
-          </select>
-        </label>
+        <div class="field">
+          <span class="lbl">Lines <span class="lbl small">— seams &amp; rung depth at a glance</span></span>
+          <div class="line-list">
+            <button
+              v-for="(s, i) in sentences"
+              :key="s.id || i"
+              class="line-row"
+              :class="{ on: i === selectedIdx }"
+              @click="selectedIdx = i"
+            >
+              <span class="row-n">{{ s.global_order }}</span>
+              <span v-if="sentenceRungDepth(s) != null" class="row-rungs" title="rung depth">{{ sentenceRungDepth(s) }}</span>
+              <span class="row-text">
+                <template v-for="(p, pi) in seamPreviewParts(s.target_text)" :key="pi"
+                  >{{ p.text }}<span v-if="p.seam" class="seam-mark">|</span></template
+                >
+              </span>
+            </button>
+          </div>
+        </div>
 
         <div v-if="selectedSentence" class="line-card">
-          <div class="tgt">{{ selectedSentence.target_text }}</div>
           <div class="knw">{{ selectedSentence.known_text }}</div>
           <div class="meta">
             {{ atomCount }} atom{{ atomCount === 1 ? '' : 's' }}
-            <span v-if="Array.isArray(selectedSentence.atom_map_fine)" class="muted">
-              · {{ selectedSentence.atom_map_fine.length }} draft fine units</span
-            >
             <span v-if="!selectedSentence.explainer_audio_id" class="muted"> · no explainer clip</span>
             <span v-if="selectedSentence.glue_to_next" class="muted"> · glues on</span>
           </div>
         </div>
 
-        <!-- SEAM EDITOR — reshape the draft cuts by hand -->
-        <div v-if="mode === 'shapes' && usingFine" class="seam-editor">
+        <!-- SEAM EDITOR — review the canon S-LEGO seams (the '…' marks baked
+             into target_text); accept / remove / relocate, never draft blank -->
+        <div v-if="mode === 'shapes' && selectedSentence" class="seam-editor">
           <div class="cfg-head">
-            <span class="lbl">Seam editor</span>
+            <span class="lbl">Review seams — <span class="on-hint">|</span> canon, click to remove or relocate</span>
             <button class="save-seams" :disabled="!seamDirty || seamSaving" @click="saveFineMap">
-              {{ seamSaving ? 'Saving…' : 'Save cuts' }}
+              {{ seamSaving ? 'Saving…' : 'Save review' }}
             </button>
           </div>
-          <p class="note">
-            Click a gap to cut or merge — <strong>·</strong> open, <strong>|</strong> seam,
-            <strong>‖</strong> punctuation (always a seam). Merges join their glosses; a split
-            starts blank — type the gloss. Saves the DRAFT map only.
-          </p>
           <div v-if="editorTokens.length" class="seam-line">
             <template v-for="(t, i) in editorTokens" :key="i">
               <span class="tok">{{ t.text }}</span>
               <button
                 v-if="i < editorTokens.length - 1"
                 class="seam"
-                :class="{ on: editorSeams.has(i) && !t.punctAfter, locked: t.punctAfter }"
-                :title="t.punctAfter ? 'punctuation — always a seam' : editorSeams.has(i) ? 'merge (remove seam)' : 'cut here'"
+                :class="seamState(i)"
+                :title="seamTitle(i)"
                 @click="toggleSeam(i)"
               >
-                {{ t.punctAfter ? '‖' : editorSeams.has(i) ? '|' : '·' }}
+                {{ seamGlyph(i) }}
               </button>
             </template>
           </div>
@@ -1024,7 +1186,7 @@ loadLiveConfig()
               />
             </div>
           </div>
-          <span v-if="seamMsg" class="chip" :class="{ err: seamMsg.startsWith('Save failed') || seamMsg.startsWith('seam editor unavailable') }">{{ seamMsg }}</span>
+          <span v-if="seamMsg" class="chip" :class="{ err: seamMsg.startsWith('Save failed') }">{{ seamMsg }}</span>
         </div>
 
         <div v-if="mode === 'arc'" class="config">
@@ -1121,34 +1283,29 @@ loadLiveConfig()
         <!-- THE UNIFIED LADDER — fusion rungs then the speed ramp, one row per stage -->
         <template v-else>
           <p class="shape-note">
-            One rung = one stage = one visit. Fusion climbs to the whole turn (≡ engine Stage 1),
-            then the locked speed cascade tops out at pure&nbsp;t@2× — immersion.
-            <template v-if="usingFine">
-              DRAFT fine units — judge the CUTS. Sub-sentence chunk audio arrives with Take&nbsp;G,
-              cut at exactly these seams; wholes already play the real takes.
-            </template>
-            <template v-else>
-              This course has no fine-unit draft yet — showing the LIVE atom_map (coarser,
-              intention-level cuts). Run <code>tools/breakdown-fine.cjs</code> to author fine units.
-            </template>
+            Rungs fuse canon S-LEGO seams up to the whole turn (≡ engine Stage 1), then the speed
+            cascade to pure&nbsp;t@2×. No internal seam → no fusion rung — straight to the whole.
           </p>
 
-          <div class="gloss-dial">
-            <template v-if="hasFine">
-              <span class="lbl small">Units:</span>
-              <button :class="{ on: unitsSource === 'fine' }" @click="unitsSource = 'fine'">
-                draft fine (Aran)
+          <details class="options">
+            <summary>Options</summary>
+            <div class="gloss-dial">
+              <template v-if="hasFine">
+                <span class="lbl small">Content units:</span>
+                <button :class="{ on: unitsSource === 'fine' }" @click="unitsSource = 'fine'">
+                  draft fine (Aran)
+                </button>
+                <button :class="{ on: unitsSource === 'live' }" @click="unitsSource = 'live'">live atoms</button>
+              </template>
+              <span class="lbl small">Fusion:</span>
+              <button :class="{ on: fusionMode === 'pairwise' }" @click="fusionMode = 'pairwise'">
+                pairwise (Aran)
               </button>
-              <button :class="{ on: unitsSource === 'live' }" @click="unitsSource = 'live'">live atoms</button>
-            </template>
-            <span class="lbl small">Fusion:</span>
-            <button :class="{ on: fusionMode === 'pairwise' }" @click="fusionMode = 'pairwise'">
-              pairwise (Aran)
-            </button>
-            <button :class="{ on: fusionMode === 'chained' }" @click="fusionMode = 'chained'">
-              chained overlap (Tom)
-            </button>
-          </div>
+              <button :class="{ on: fusionMode === 'chained' }" @click="fusionMode = 'chained'">
+                chained overlap (Tom)
+              </button>
+            </div>
+          </details>
 
           <div class="transport">
             <button class="play-all" :disabled="!ladderRungs.length" @click="playWholeClimb">
@@ -1317,15 +1474,81 @@ code {
   background: var(--surface-2);
   color: var(--ink);
 }
+.line-list {
+  max-height: 320px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+}
+.line-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 10px;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+}
+.line-row:last-child {
+  border-bottom: none;
+}
+.line-row:hover {
+  background: var(--surface);
+}
+.line-row.on {
+  background: rgba(52, 211, 153, 0.12);
+}
+.row-n {
+  flex: none;
+  width: 22px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.row-rungs {
+  flex: none;
+  min-width: 18px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent-2);
+  background: rgba(52, 211, 153, 0.14);
+  border-radius: 999px;
+  padding: 1px 5px;
+}
+.row-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.row-text .seam-mark {
+  color: var(--accent-2);
+  font-weight: 700;
+  margin: 0 1px;
+}
+.on-hint {
+  color: var(--accent-2);
+  font-weight: 700;
+}
+.options {
+  margin: 0 0 14px;
+}
+.options summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--muted);
+}
 .line-card {
   background: var(--surface-2);
   border-radius: 10px;
   padding: 12px 14px;
   margin-bottom: 16px;
-}
-.line-card .tgt {
-  font-size: 18px;
-  font-weight: 600;
 }
 .line-card .knw {
   color: var(--muted);
@@ -1659,6 +1882,17 @@ code {
 .seam.on {
   color: var(--accent-2);
   font-weight: 700;
+}
+.seam.moved {
+  color: #f472b6;
+  font-weight: 700;
+}
+.seam.removed {
+  color: var(--faint);
+  text-decoration: line-through;
+}
+.seam.open {
+  color: var(--faint);
 }
 .seam.locked {
   color: var(--muted);
