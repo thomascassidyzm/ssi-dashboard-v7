@@ -5175,20 +5175,26 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
 
           logger.log(`[Regenerate Role] Completed ${role} for ${courseCode}`)
 
-          // Clear flags for regenerated audio (now that the job has actually run)
+          // Clear flags for regenerated audio (now that the job has actually run).
+          // Chunked ≤100 UUIDs per .in(): a role's worth in one call overflows the
+          // URL limit and Cloudflare 520s, silently leaving every flag in place.
           if (flaggedOnly && uuids.length > 0) {
-            try {
-              const { error: delErr, count } = await supabaseClient.getClient()
-                .from('audio_flags')
-                .delete({ count: 'exact' })
-                .eq('course_code', courseCode)
-                .eq('status', 'flagged')
-                .in('audio_uuid', uuids)
-              if (delErr) logger.warn(`[Regenerate Role] Failed to clear flags: ${delErr.message}`)
-              else logger.log(`[Regenerate Role] Cleared ${count} flags for regenerated ${role} audio`)
-            } catch (e) {
-              logger.warn(`[Regenerate Role] Error clearing flags: ${e.message}`)
+            let cleared = 0
+            for (let i = 0; i < uuids.length; i += 100) {
+              try {
+                const { error: delErr, count } = await supabaseClient.getClient()
+                  .from('audio_flags')
+                  .delete({ count: 'exact' })
+                  .eq('course_code', courseCode)
+                  .eq('status', 'flagged')
+                  .in('audio_uuid', uuids.slice(i, i + 100))
+                if (delErr) logger.warn(`[Regenerate Role] Failed to clear flags (batch ${i}): ${delErr.message}`)
+                else cleared += count || 0
+              } catch (e) {
+                logger.warn(`[Regenerate Role] Error clearing flags (batch ${i}): ${e.message}`)
+              }
             }
+            logger.log(`[Regenerate Role] Cleared ${cleared} flags for regenerated ${role} audio`)
           }
 
           io.to(`course:${courseCode}`).emit('regeneration_completed', {
