@@ -311,3 +311,25 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 14 | Ryan | He's putting a brave face on it… but you know Danny. |
 | 15 | Katie | Tell him we're thinking of him, won't you? And that something better will come along. |
 | 16 | Ryan | I will. Funny old week — the best and worst news in one day. |
+
+## 15. What's the Word — *It'll come to me*
+
+*Difficulty: intermediate · 15 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Emma | I saw that actor yesterday — oh, what's his name… the one from the detective thing. |
+| 2 | Dan | The tall one? With the coat? |
+| 3 | Emma | Yes! Hang on, it'll come to me. |
+| 4 | Dan | Was it… no, I've lost it too. It begins with a B, I think. |
+| 5 | Emma | It's on the tip of my tongue. Anyway — him. He was in the café. |
+| 6 | Dan | The café by your work, you mean? The little one? |
+| 7 | Emma | That's it. Just sitting there with a… you know, one of those tiny dogs. |
+| 8 | Dan | A chihuahua? |
+| 9 | Emma | That's the word! A chihuahua, in a little coat. |
+| 10 | Dan | Hang on — the dog had a coat, or he did? |
+| 11 | Emma | Both, actually. Matching ones. |
+| 12 | Dan | Now I need to know who this is. Was it… Brandon? Brody? |
+| 13 | Emma | Bennett! That's it — Bennett. Oh, that's been bothering me all morning. |
+| 14 | Dan | There you go. It always comes back… usually at three in the morning. |
+| 15 | Emma | Well, today it came early. Bennett, and a small dog in a coat. |
