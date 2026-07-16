@@ -505,6 +505,45 @@ function groupTakes(s, groups) {
     : groups.map(() => null)
 }
 
+// ── AT-A-GLANCE PREVIEW — the line list shows canon seams + rung depth ─────
+// directly, before a line is ever selected, so the picture is visible while
+// scanning rather than only after opening the editor.
+
+// target_text split at every canon '…' — the seam marks themselves, ready to
+// render inline (no atoms/audio needed, cheap enough for every row in the list).
+function seamPreviewParts(text) {
+  const raw = String(text || '').split('…')
+  return raw.map((t, i) => ({ text: t, seam: i < raw.length - 1 }))
+}
+
+// Cheap rung-count estimate for a row's badge: same boundary + fusion math as
+// ladderRungs, over word-surfaces only (no gloss/audio resolution) — a sentence
+// with no '…' collapses to 1 fusion level, exactly like the real ladder.
+function lightAtomsFor(s) {
+  const map = Array.isArray(s.atom_map_fine) && s.atom_map_fine.length ? s.atom_map_fine : s.atom_map
+  if (!Array.isArray(map)) return []
+  return map
+    .filter((e) => e && (e.kind === 'atom' || e.kind === 'passthrough') && e.target_surface)
+    .map((e) => ({ targetSurface: e.target_surface }))
+}
+function sentenceRungDepth(s) {
+  const atoms = lightAtomsFor(s)
+  if (!atoms.length) return null
+  const bounds = atomBoundaries(s, atoms)
+  const groups = atomGroups(atoms, bounds)
+  if (!groups.length) return null
+  const offsets = []
+  let off = 0
+  for (const g of groups) { offsets.push(off); off += g.length }
+  const ladders = groups.map((g, gi) => spanLadder(sLegoSpansFromBounds(bounds, offsets[gi], offsets[gi] + g.length - 1), 'pairwise'))
+  let stageN = Math.max(...ladders.map((l) => l.length))
+  if (groups.length > 1) {
+    const groupSpans = groups.map((_, gi) => ({ start: gi, end: gi }))
+    stageN += spanLadder(groupSpans, 'pairwise').length - 1
+  }
+  return stageN + 7 // the locked speed cascade, engine Stages 2–8
+}
+
 // The whole unified climb for the selected turn, one entry per rung (= one
 // stage = one visit): fusion rungs from finest units to the whole turn, then
 // the locked speed cascade. Rung count varies with the turn's fusion depth —
@@ -1083,23 +1122,31 @@ loadLiveConfig()
     <div v-if="sentences.length" class="cols">
       <!-- LEFT: line + config -->
       <section class="panel">
-        <label class="field">
-          <span class="lbl">Line</span>
-          <select v-model.number="selectedIdx" class="select">
-            <option v-for="(s, i) in sentences" :key="s.id || i" :value="i">
-              {{ s.global_order }}. {{ s.target_text }}
-            </option>
-          </select>
-        </label>
+        <div class="field">
+          <span class="lbl">Lines <span class="lbl small">— seams &amp; rung depth at a glance</span></span>
+          <div class="line-list">
+            <button
+              v-for="(s, i) in sentences"
+              :key="s.id || i"
+              class="line-row"
+              :class="{ on: i === selectedIdx }"
+              @click="selectedIdx = i"
+            >
+              <span class="row-n">{{ s.global_order }}</span>
+              <span v-if="sentenceRungDepth(s) != null" class="row-rungs" title="rung depth">{{ sentenceRungDepth(s) }}</span>
+              <span class="row-text">
+                <template v-for="(p, pi) in seamPreviewParts(s.target_text)" :key="pi"
+                  >{{ p.text }}<span v-if="p.seam" class="seam-mark">|</span></template
+                >
+              </span>
+            </button>
+          </div>
+        </div>
 
         <div v-if="selectedSentence" class="line-card">
-          <div class="tgt">{{ selectedSentence.target_text }}</div>
           <div class="knw">{{ selectedSentence.known_text }}</div>
           <div class="meta">
             {{ atomCount }} atom{{ atomCount === 1 ? '' : 's' }}
-            <span v-if="Array.isArray(selectedSentence.atom_map_fine)" class="muted">
-              · {{ selectedSentence.atom_map_fine.length }} draft fine units</span
-            >
             <span v-if="!selectedSentence.explainer_audio_id" class="muted"> · no explainer clip</span>
             <span v-if="selectedSentence.glue_to_next" class="muted"> · glues on</span>
           </div>
@@ -1109,18 +1156,11 @@ loadLiveConfig()
              into target_text); accept / remove / relocate, never draft blank -->
         <div v-if="mode === 'shapes' && selectedSentence" class="seam-editor">
           <div class="cfg-head">
-            <span class="lbl">Seam editor — review canon S-LEGO seams</span>
+            <span class="lbl">Review seams — <span class="on-hint">|</span> canon, click to remove or relocate</span>
             <button class="save-seams" :disabled="!seamDirty || seamSaving" @click="saveFineMap">
               {{ seamSaving ? 'Saving…' : 'Save review' }}
             </button>
           </div>
-          <p class="note">
-            Seams default to the canon <strong>'…'</strong> marks already in this line's text —
-            <strong>|</strong> accepted seam, <strong>‖</strong> locked (sentence/hard punctuation,
-            always a seam), <strong>·</strong> not a seam. Click a canon seam to remove it; click any
-            other gap to relocate a removed seam there. No cuts below S-LEGO granularity are
-            possible — the move budget is capped at the number of seams removed.
-          </p>
           <div v-if="editorTokens.length" class="seam-line">
             <template v-for="(t, i) in editorTokens" :key="i">
               <span class="tok">{{ t.text }}</span>
@@ -1243,38 +1283,29 @@ loadLiveConfig()
         <!-- THE UNIFIED LADDER — fusion rungs then the speed ramp, one row per stage -->
         <template v-else>
           <p class="shape-note">
-            One rung = one stage = one visit. Rungs fuse canon S-LEGO seams up to the whole turn
-            (≡ engine Stage 1), then the locked speed cascade tops out at pure&nbsp;t@2× —
-            immersion. A sentence with no internal seam has no fusion rung of its own — it enters
-            straight at its whole.
-            <template v-if="usingFine">
-              DRAFT fine units — judge the GLOSSES below; the seams themselves come from canon,
-              reviewed in the seam editor. Sub-sentence chunk audio arrives with Take&nbsp;G, cut
-              at exactly the seams shown; wholes already play the real takes.
-            </template>
-            <template v-else>
-              This course has no fine-unit draft yet — showing the LIVE atom_map for chunk content
-              (coarser word units); seam positions still come from canon regardless. Run
-              <code>tools/breakdown-fine.cjs</code> to author finer content units.
-            </template>
+            Rungs fuse canon S-LEGO seams up to the whole turn (≡ engine Stage 1), then the speed
+            cascade to pure&nbsp;t@2×. No internal seam → no fusion rung — straight to the whole.
           </p>
 
-          <div class="gloss-dial">
-            <template v-if="hasFine">
-              <span class="lbl small">Units:</span>
-              <button :class="{ on: unitsSource === 'fine' }" @click="unitsSource = 'fine'">
-                draft fine (Aran)
+          <details class="options">
+            <summary>Options</summary>
+            <div class="gloss-dial">
+              <template v-if="hasFine">
+                <span class="lbl small">Content units:</span>
+                <button :class="{ on: unitsSource === 'fine' }" @click="unitsSource = 'fine'">
+                  draft fine (Aran)
+                </button>
+                <button :class="{ on: unitsSource === 'live' }" @click="unitsSource = 'live'">live atoms</button>
+              </template>
+              <span class="lbl small">Fusion:</span>
+              <button :class="{ on: fusionMode === 'pairwise' }" @click="fusionMode = 'pairwise'">
+                pairwise (Aran)
               </button>
-              <button :class="{ on: unitsSource === 'live' }" @click="unitsSource = 'live'">live atoms</button>
-            </template>
-            <span class="lbl small">Fusion:</span>
-            <button :class="{ on: fusionMode === 'pairwise' }" @click="fusionMode = 'pairwise'">
-              pairwise (Aran)
-            </button>
-            <button :class="{ on: fusionMode === 'chained' }" @click="fusionMode = 'chained'">
-              chained overlap (Tom)
-            </button>
-          </div>
+              <button :class="{ on: fusionMode === 'chained' }" @click="fusionMode = 'chained'">
+                chained overlap (Tom)
+              </button>
+            </div>
+          </details>
 
           <div class="transport">
             <button class="play-all" :disabled="!ladderRungs.length" @click="playWholeClimb">
@@ -1443,15 +1474,81 @@ code {
   background: var(--surface-2);
   color: var(--ink);
 }
+.line-list {
+  max-height: 320px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+}
+.line-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 10px;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+}
+.line-row:last-child {
+  border-bottom: none;
+}
+.line-row:hover {
+  background: var(--surface);
+}
+.line-row.on {
+  background: rgba(52, 211, 153, 0.12);
+}
+.row-n {
+  flex: none;
+  width: 22px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.row-rungs {
+  flex: none;
+  min-width: 18px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent-2);
+  background: rgba(52, 211, 153, 0.14);
+  border-radius: 999px;
+  padding: 1px 5px;
+}
+.row-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.row-text .seam-mark {
+  color: var(--accent-2);
+  font-weight: 700;
+  margin: 0 1px;
+}
+.on-hint {
+  color: var(--accent-2);
+  font-weight: 700;
+}
+.options {
+  margin: 0 0 14px;
+}
+.options summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--muted);
+}
 .line-card {
   background: var(--surface-2);
   border-radius: 10px;
   padding: 12px 14px;
   margin-bottom: 16px;
-}
-.line-card .tgt {
-  font-size: 18px;
-  font-weight: 600;
 }
 .line-card .knw {
   color: var(--muted);
