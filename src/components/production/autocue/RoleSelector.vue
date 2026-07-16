@@ -1,6 +1,7 @@
 <template>
   <div class="role-selector">
     <div class="role-setup-card">
+      <button class="back-to-modes" @click="emit('back')">← Back to modes</button>
       <h2 class="setup-title">Recording Session Setup</h2>
 
       <div class="course-info">
@@ -56,7 +57,7 @@ const props = defineProps({
   phraseCount: { type: Number, default: 287 }
 })
 
-const emit = defineEmits(['begin'])
+const emit = defineEmits(['begin', 'back'])
 
 const selectedRole = ref(null)
 
@@ -96,6 +97,22 @@ function beginSession() {
   border: 2px solid var(--color-graphite, var(--surface-3));
   border-radius: 16px;
   padding: 2.5rem;
+  position: relative;
+}
+
+.back-to-modes {
+  background: none;
+  border: none;
+  color: var(--color-paper-dim, var(--muted));
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.back-to-modes:hover {
+  color: var(--color-tungsten, var(--accent));
 }
 
 .setup-title {
