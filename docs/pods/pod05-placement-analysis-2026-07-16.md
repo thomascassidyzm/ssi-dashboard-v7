@@ -168,6 +168,32 @@ pod-0.5 needs the ladder/player to route pod-0 finishers to it (an extension wou
 existing delivery for free), and pod-0 graduates meet 12-syllable breath groups
 immediately — mitigated by the fact that Aran field-tested exactly this material with
 exactly this audience for 75 hours. On the founder's word: seed with
-`node tools/seed-canonical-pods.cjs --file=docs/pods/pod05-english-canonical-DRAFT.md --slug=pod-0.5 --execute`
+`node tools/seed-canonical-pods.cjs --file=docs/pods/pod05-english-canonical.md --slug=pod-0.5 --execute`
 — after the §3 variant-row parser widening + `variant_key` column, since all
 scenario-variant rows now ship.
+
+**EXECUTED 2026-07-16:** founder ruling landed — pod-0.5 seeded at C=12 as its own pod.
+DRAFT promoted to canon: `docs/pods/pod05-english-canonical.md`. Pipeline widened
+(`tools/seed-canonical-pods.cjs`, `tools/audit-canon-ellipsis.cjs` — `^\d+$` →
+`^(\d+)([a-z])?$`; `canonical_pod_scenarios` gained a nullable `variant_key` column,
+unique constraint moved to `(pod_slug, scene_number, sentence_number, variant_key)`).
+Verified: 27/27 rows seeded (7 scenes, 9 variant rows, 101 ellipses) — exact match to
+the file. Translations/audio NOT generated — pod-0.5 waits with pod-0 for the
+human-recording (Welsh) path and TTS decisions.
+
+---
+
+## 7. Fine seams flagged for human ear (review alongside pod-0's 22)
+
+The 7 below-clause-level seams from §1/§4 deviation 7 — each is a real cut but below
+finite-clause level, so worth Aran's/the founder's ear alongside pod-0's 22 flagged
+seams before treating the ellipsis placement as final. No changes made; listed here,
+not acted on.
+
+1. "so I always like to find… the easiest way" (Sc3)
+2. "I don't like learning… lists of vocabulary" (Sc3)
+3. "for me to be able to speak… a little of her language" (Sc2)
+4. "that I don't speak [target language]… well enough to joke" (Sc3)
+5. "either my husband or I… can get a raise" (Sc6)
+6. "you can put on… an extra sweater" (Sc6)
+7. "upper intermediate… with two others" (Sc3)
