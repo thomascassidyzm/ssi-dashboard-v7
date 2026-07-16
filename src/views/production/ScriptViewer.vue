@@ -132,6 +132,30 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
               </button>
+
+              <!-- Jump to round -->
+              <div class="flex items-center gap-1 ml-1 pl-2 border-l border-line">
+                <input
+                  v-model="jumpToRoundInput"
+                  type="number"
+                  min="1"
+                  :max="maxJourneyRoundNumber || undefined"
+                  placeholder="Round #"
+                  title="Jump to round"
+                  class="w-20 px-2 py-1 text-sm bg-surface-2 text-ink placeholder-muted rounded border border-line focus:border-emerald-500 focus:outline-none"
+                  @keydown.enter="jumpToRound()"
+                />
+                <button
+                  @click="jumpToRound()"
+                  :disabled="!jumpToRoundInput"
+                  class="px-2 py-1 text-sm rounded transition-colors"
+                  :class="!jumpToRoundInput
+                    ? 'text-faint cursor-not-allowed'
+                    : 'text-ink hover:text-ink hover:bg-surface-3'"
+                >
+                  Go
+                </button>
+              </div>
             </div>
           </template>
         </div>
@@ -998,6 +1022,50 @@ const nextPage = () => {
   }
 };
 
+// Jump-to-round: round numbers are 1:1 with the underlying LEGO ordinal
+// (journeyPageStart/End are already computed this way), so totalLegoCount
+// from the API doubles as the max round number for clamping.
+const jumpToRoundInput = ref('');
+const maxJourneyRoundNumber = computed(() => learningJourneyData.value?.totalLegoCount || 0);
+
+const jumpToRound = async (roundNumberArg?: number) => {
+  const raw = roundNumberArg ?? parseInt(jumpToRoundInput.value, 10);
+  if (!raw || Number.isNaN(raw) || raw < 1) return;
+  const max = maxJourneyRoundNumber.value;
+  const target = max > 0 ? Math.min(Math.max(1, raw), max) : Math.max(1, raw);
+  jumpToRoundInput.value = String(target);
+
+  // Deep-linkable: keep the URL shareable to this round.
+  updateRoundQueryParam(target);
+
+  // Search results aren't paginated by offset — if a search is active, just
+  // try to scroll within whatever's already loaded rather than fighting the
+  // search endpoint's own result set.
+  if (journeySearch.value.trim()) {
+    const found = await learningJourneyRef.value?.scrollToRound(target);
+    if (!found) {
+      // Round isn't among the search results — nothing sensible to jump to;
+      // degrade gracefully rather than breaking the search view.
+      console.warn(`Round ${target} not found in current search results`);
+    }
+    return;
+  }
+
+  const targetOffset = Math.floor((target - 1) / journeyPageSize) * journeyPageSize;
+  if (targetOffset !== journeyOffset.value) {
+    journeyOffset.value = targetOffset;
+    await loadLearningJourney();
+  }
+  await learningJourneyRef.value?.scrollToRound(target);
+};
+
+// Keep ?round= in sync so the current view is shareable/bookmarkable.
+const updateRoundQueryParam = (roundNumber: number) => {
+  const url = new URL(window.location.href);
+  url.searchParams.set('round', String(roundNumber));
+  window.history.replaceState(window.history.state, '', url);
+};
+
 // Collapse/Expand all methods for journey view
 const collapseAllJourney = () => {
   learningJourneyRef.value?.collapseAll();
@@ -1806,10 +1874,17 @@ onMounted(async () => {
   // mode was retired 2026-06-19 (authoring lives in Text Generation). All
   // legacy ?view=* links resolve to the journey.
   viewMode.value = 'journey';
-  loadLearningJourney();
+  const journeyLoaded = loadLearningJourney();
   window.addEventListener('keydown', handleKeydown);
   await initDefaultSeedRange();
   loadCourseData();
+
+  // Deep link: ?round=N jumps to (and highlights) that round once loaded.
+  const initialRound = parseInt(String(route.query.round || ''), 10);
+  if (initialRound > 0) {
+    await journeyLoaded;
+    await jumpToRound(initialRound);
+  }
 });
 
 onBeforeUnmount(() => {
