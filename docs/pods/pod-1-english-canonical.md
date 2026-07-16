@@ -96,3 +96,25 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 14 | Marta | Completely. It's the story we tell everyone now… more than the places we meant to visit. |
 | 15 | Leo | That's the best thing I've heard all week. Funny how the mistakes make the best stories. |
 | 16 | Marta | Every time. I wouldn't change a thing… not even the hour on the wrong bus. |
+
+## 5. Tell Me About It — *Awful out there, isn't it?*
+
+*Difficulty: beginner · 15 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Laura | Morning. Awful out there, isn't it? |
+| 2 | Mark | Tell me about it. I got soaked just walking from the station. |
+| 3 | Laura | Same here. And the buses were all over the place again. |
+| 4 | Mark | Don't. Twenty-five minutes I stood there this morning. |
+| 5 | Laura | I know exactly what you mean. It's every single winter… and every winter they act surprised. |
+| 6 | Mark | Exactly. And have you seen the price of coffee now? |
+| 7 | Laura | Tell me about it. Three fifty for a small one. |
+| 8 | Mark | It's the same everywhere, though. |
+| 9 | Laura | It really is. My sister says it's worse in London. |
+| 10 | Mark | Oh, I can imagine. My brother's down there. He pays a fortune for everything. |
+| 11 | Laura | Same story with my cousin. Honestly, I don't know how they do it. |
+| 12 | Mark | Me neither. Still — at least it's Friday tomorrow. |
+| 13 | Laura | Now that I can agree with. Best news I've heard all morning. |
+| 14 | Mark | Tell you what — first coffee tomorrow is on me. |
+| 15 | Laura | Deal. See — the rain brings out the best in you. |
