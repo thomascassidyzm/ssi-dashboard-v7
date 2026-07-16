@@ -4844,31 +4844,21 @@ app.post('/api/production/:courseCode/regeneration/trigger', async (req, res) =>
 
     logger.log(`Triggering regeneration for ${uuids.length} samples in ${courseCode}`)
 
-    // Update status to 'in_pipeline'
-    await supabaseClient.bulkUpdateFlagStatus(
-      uuids,
-      courseCode,
-      'in_pipeline',
-      'Regeneration triggered'
-    )
-
-    // Get sample details for regeneration
-    const samples = []
-    for (const uuid of uuids) {
-      const sample = await supabaseClient.getCourseAudio(uuid)
-      if (sample) {
-        samples.push(sample)
+    // Mark flags 'in_pipeline' in audio_flags (the current QA table — NOT the
+    // legacy sample_flags that bulkUpdateFlagStatus writes to). Chunked .in()
+    // to stay under the PostgREST URL length limit.
+    const setFlagStatus = async (targetUuids, status, reason) => {
+      const CHUNK = 100
+      for (let i = 0; i < targetUuids.length; i += CHUNK) {
+        const { error: updErr } = await supabaseClient.getClient()
+          .from('audio_flags')
+          .update({ status, reason })
+          .eq('course_code', courseCode)
+          .in('audio_uuid', targetUuids.slice(i, i + CHUNK))
+        if (updErr) logger.warn(`[Regeneration Trigger] Flag status update failed: ${updErr.message}`)
       }
     }
-
-    // Call Phase 8 to generate audio for these specific UUIDs
-    // Note: Phase 8's /generate endpoint generates MISSING audio, not regenerates
-    // For UUID-based regeneration, we need to use the direct TTS approach
-    // For now, proxy to generate endpoint with courseCode in path
-    const response = await proxyToPhase8('POST', `/generate/${courseCode}`, {
-      dryRun: false,
-      limit: uuids.length
-    })
+    await setFlagStatus(uuids, 'in_pipeline', 'Regeneration triggered')
 
     // Emit WebSocket event
     io.to(`course:${courseCode}`).emit('regeneration_started', {
@@ -4878,28 +4868,54 @@ app.post('/api/production/:courseCode/regeneration/trigger', async (req, res) =>
       timestamp: new Date().toISOString()
     })
 
-    // Update status based on Phase 8 response. Phase 8 now ENQUEUES the work and
-    // returns 202; the actual regeneration runs later in the serial queue. So we
-    // leave the flags at 'in_pipeline' (set above) rather than marking 'complete'
-    // prematurely — the user reviews and marks done after the queued job runs.
-    if (response.status === 202 || response.status === 200) {
-      res.status(202).json({
-        success: true,
-        queued: true,
-        count: uuids.length,
-        jobId: response.data.jobId,
-        position: response.data.position
-      })
-    } else {
-      // Phase 8 rejected the request — revert flags to flagged.
-      await supabaseClient.bulkUpdateFlagStatus(
-        uuids,
+    res.status(202).json({
+      success: true,
+      queued: true,
+      count: uuids.length
+    })
+
+    // Regenerate each clip via Phase 8's /regenerate-single, which re-voices an
+    // EXISTING clip in place (gender expansion included). Phase 8's /generate is
+    // missing-only and would skip every one of these, so it must not be used here.
+    // Sequential on purpose: this endpoint is for hand-picked selections; bulk
+    // flagged regeneration goes through /regeneration/trigger-all (role jobs).
+    ;(async () => {
+      let succeeded = 0
+      const failedUuids = []
+      for (const uuid of uuids) {
+        try {
+          const response = await proxyToPhase8('POST', `/regenerate-single/${courseCode}/${uuid}`)
+          if (response.status >= 200 && response.status < 300) {
+            succeeded++
+            await supabaseClient.getClient()
+              .from('audio_flags')
+              .delete()
+              .eq('course_code', courseCode)
+              .eq('audio_uuid', uuid)
+          } else {
+            failedUuids.push(uuid)
+            logger.warn(`[Regeneration Trigger] ${uuid} failed: ${response.data?.error || response.status}`)
+          }
+        } catch (e) {
+          failedUuids.push(uuid)
+          logger.warn(`[Regeneration Trigger] ${uuid} failed: ${e.message}`)
+        }
+      }
+
+      // Failed clips go back to 'flagged' so they reappear in the queue
+      if (failedUuids.length > 0) {
+        await setFlagStatus(failedUuids, 'flagged', 'Regeneration failed — retry')
+      }
+
+      logger.log(`[Regeneration Trigger] ${courseCode}: ${succeeded}/${uuids.length} regenerated, ${failedUuids.length} failed`)
+      io.to(`course:${courseCode}`).emit('regeneration_completed', {
         courseCode,
-        'flagged_regen_tts',
-        `Regeneration failed: ${response.data.error || 'Unknown error'}`
-      )
-      res.status(response.status).json(response.data)
-    }
+        total: uuids.length,
+        succeeded,
+        failed: failedUuids.length,
+        timestamp: new Date().toISOString()
+      })
+    })()
   } catch (error) {
     logger.error('Error triggering regeneration:', error)
     res.status(500).json({ error: error.message })
@@ -9949,7 +9965,9 @@ end tell`
 // generateGenderPrepBrief removed — brief generation now lives in gender-prep-coordinator.cjs
 
 // GET /api/production/:courseCode/gender-prep/flag-count
-// Count audio flags with reason 'gender-expansion-regen'
+// Count pending gender-expansion audio flags. The coordinator writes
+// reason 'gender-expansion' ('gender-expansion-regen' matched an older writer);
+// only status='flagged' counts — resolved/in_pipeline clips are done or in flight.
 app.get('/api/production/:courseCode/gender-prep/flag-count', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -9964,7 +9982,8 @@ app.get('/api/production/:courseCode/gender-prep/flag-count', async (req, res) =
       .from('audio_flags')
       .select('audio_uuid')
       .eq('course_code', courseCode)
-      .eq('reason', 'gender-expansion-regen')
+      .eq('status', 'flagged')
+      .in('reason', ['gender-expansion', 'gender-expansion-regen'])
 
     if (error) throw error
 
@@ -9974,9 +9993,10 @@ app.get('/api/production/:courseCode/gender-prep/flag-count', async (req, res) =
     let roleBreakdown = { target1: 0, target2: 0 }
     if (flaggedCount > 0) {
       const uuids = flags.map(f => f.audio_uuid)
-      // Query audio to get roles (in batches of 500)
-      for (let i = 0; i < uuids.length; i += 500) {
-        const batch = uuids.slice(i, i + 500)
+      // Batches of 100: UUIDs in .in() at 500/batch overflow the PostgREST URL
+      // limit and return silent nulls, undercounting the breakdown.
+      for (let i = 0; i < uuids.length; i += 100) {
+        const batch = uuids.slice(i, i + 100)
         const { data: audioRows } = await supabase
           .from('course_audio')
           .select('id, role')
