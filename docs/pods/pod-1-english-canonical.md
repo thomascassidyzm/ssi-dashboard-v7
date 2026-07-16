@@ -49,3 +49,27 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 12 | Joe | Slowly. Enough about me, though — how's your mum doing? |
 | 13 | Amy | Much better, thanks for asking. She's back in the garden already. |
 | 14 | Joe | That's really good to hear. Say hello from me, won't you? |
+
+## 3. Say That Again — *A noisy café*
+
+*Difficulty: intermediate · 17 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Sam | Shall we sit at the back? It's a bit quieter there. |
+| 2 | Ana | Sorry, I didn't catch that — it's so loud in here. |
+| 3 | Sam | I said, shall we sit at the back? |
+| 4 | Ana | Yes, let's. Did I tell you about Maya's party? |
+| 5 | Sam | Sorry — whose party? |
+| 6 | Ana | Maya's. You met her at the quiz night… the one with the red glasses. |
+| 7 | Sam | Oh, Maya! Of course. When is it? |
+| 8 | Ana | Saturday the twenty-third. Have you got a pen? I'll give you the address. |
+| 9 | Sam | Go on, then. |
+| 10 | Ana | Forty-two, Harbour Road. |
+| 11 | Sam | Could you say that again, a bit slower? I wrote fourteen. |
+| 12 | Ana | Of course. Forty-two… Harbour Road. |
+| 13 | Sam | Got it. Do you mean the road down by the water? |
+| 14 | Ana | That's the one. Oh — and she said it's a potluck. |
+| 15 | Sam | What does potluck mean? I don't know that word. |
+| 16 | Ana | Everyone brings one dish, and everyone shares. Sorry — I'm talking too fast today, aren't I? |
+| 17 | Sam | Don't be daft. I'd rather ask twice than get lost on Saturday. |
