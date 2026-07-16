@@ -266,3 +266,25 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 13 | Chloe | You're right, I know you're right. I just needed to hear someone say it. |
 | 14 | Ben | It's up to you, of course. But I think you already know what you want. |
 | 15 | Chloe | I do. Right — I'm ringing them in the morning. |
+
+## 13. To Be Honest — *Not really my thing*
+
+*Difficulty: intermediate · 15 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Rob | So — what did you think of it? |
+| 2 | Faye | Honestly? It wasn't really my thing. |
+| 3 | Rob | Thank goodness you said that. I thought it was just me. |
+| 4 | Faye | You too? Everyone at work keeps raving about it. |
+| 5 | Rob | It's not bad, exactly. I just expected more, to be honest. |
+| 6 | Faye | Same. I might be wrong… but I think it's a bit overrated. |
+| 7 | Rob | The desserts were lovely, mind you. I'll give them that. |
+| 8 | Faye | Oh, the desserts were the best bit. It's the prices I can't get past. |
+| 9 | Rob | To be honest, for that money… I'd rather have the pub by the bridge. |
+| 10 | Faye | Now you're talking. Their chips alone are worth the walk. |
+| 11 | Rob | Don't get me wrong — I'm glad we tried it. |
+| 12 | Faye | Oh, me too. It's just not somewhere I'd rush back to. |
+| 13 | Rob | Exactly how I feel. Shall we keep this to ourselves at work? |
+| 14 | Faye | Probably wise. If anyone asks… it was an experience. |
+| 15 | Rob | An experience. Perfect. That's exactly what I'll say. |
