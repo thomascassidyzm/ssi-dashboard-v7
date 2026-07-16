@@ -161,3 +161,23 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 13 | Ruth | Even better. Text me later and let me know how you're feeling. |
 | 14 | Adam | I will. Thanks for covering for me… I really appreciate it. |
 | 15 | Ruth | That's what friends are for. Now go home, you poor thing. |
+
+## 8. You Look Well — *Have you been away?*
+
+*Difficulty: beginner · 13 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Priya | Ben! You look really well. Have you been away? |
+| 2 | Ben | A week in Spain, back on Sunday. I clearly needed it. |
+| 3 | Priya | It suits you. You look ten years younger. |
+| 4 | Ben | Steady on. But thank you — that's kind of you to say. I love your jacket, by the way. Where's it from? |
+| 5 | Priya | This? I've had it for years, honestly. But thanks — it's my favourite. |
+| 6 | Ben | Well, it looks brand new. You always look smart, though. |
+| 7 | Priya | Now you're just fishing for another coffee. |
+| 8 | Ben | Worth a try. Seriously, though… Spain was exactly what I needed. |
+| 9 | Priya | I can tell. You seem more like yourself again. |
+| 10 | Ben | That's a lovely thing to say. It was a hard spring, wasn't it? |
+| 11 | Priya | It was. All the more reason to enjoy this. |
+| 12 | Ben | Agreed. And your hair's different, isn't it? It really suits you. |
+| 13 | Priya | At last — someone noticed! You've made my week, Ben. |
