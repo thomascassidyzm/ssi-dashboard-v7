@@ -19,22 +19,29 @@
  * per-chunk files. slice-take-g.cjs detects the gaps afterwards and writes
  * target_start_ms/target_end_ms into atom_map_fine.
  *
- * GATE-AND-RETRY (xAI only — pilot first-pass rate was ~52%): each render is
- * measured with ffmpeg silencedetect; it passes when the (units-1) seams all
- * gap >=500ms and NO spurious 200-499ms gap appears inside a chunk. On fail:
- * re-roll (force re-synthesis, same course_audio row), cap 3 attempts; after
- * 3 the best take is kept and the group is marked for sensitive-tier slicing
- * (slice-take-g's detection ladder picks it up; logged + reported).
+ * GATE-AND-RETRY (xAI + ElevenLabs — pilot first-pass rate was ~52% on xAI;
+ * extended to ElevenLabs 2026-07-14 after the hrv_for_eng census found its
+ * half of a mixed cast has NO word_boundaries — generateElevenLabs() always
+ * returns wordBoundaries:null, so the old "Azure & friends" no-gate path was
+ * silently shipping unverified seams for it): each render is measured with
+ * ffmpeg silencedetect; it passes when the (units-1) seams all gap >=500ms
+ * and NO spurious 200-499ms gap appears inside a chunk. On fail: re-roll
+ * (force re-synthesis, same course_audio row), cap 3 attempts; after 3 the
+ * best take is kept and the group is marked for sensitive-tier slicing
+ * (slice-take-g's detection ladder picks it up; logged + reported). Azure
+ * alone is exempt — its word_boundaries give the slicer exact spans, so no
+ * audible gap is needed and there is nothing for silencedetect to gate.
  *
- * PHONOLOGY GATE (xAI only, same retry loop): xAI's multilingual voices are
- * English-dominant and STOCHASTICALLY read cross-language words with English
- * phonology even with language:'it' sent ('Come stai' → English 'come';
- * language-steering pilot 2026-07-10 — the param is necessary but not
- * sufficient). Each take is whisper auto-detected; a take whose detected
- * language is the course's KNOWN language (or English) instead of the target
- * fails the attempt and re-rolls. Runs only when whisper-cli + model exist
- * locally (else logged once and skipped); a phonology-failed take is never
- * kept as "best" while a passing one exists.
+ * PHONOLOGY GATE (xAI + ElevenLabs, same retry loop): multilingual voices on
+ * both providers are English-dominant and can STOCHASTICALLY read
+ * cross-language words with English (or wrong-language) phonology even when
+ * steered (xAI: 'Come stai' → English 'come'; language-steering pilot
+ * 2026-07-10 — the param is necessary but not sufficient). Each take is
+ * whisper auto-detected; a take whose detected language is the course's KNOWN
+ * language (or English) instead of the target fails the attempt and re-rolls.
+ * Runs only when whisper-cli + model exist locally (else logged once and
+ * skipped); a phonology-failed take is never kept as "best" while a passing
+ * one exists.
  *
  * The cued text is rebuilt by walking the ORIGINAL sentence text (unit
  * surfaces were punctuation-stripped at authoring): internal punctuation
@@ -300,15 +307,17 @@ const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - nee
       const need = g.length - 1
       try {
         let id = null
-        if (voice.provider !== 'xai') {
-          // Azure & friends: word boundaries are the exactness guarantee — no gap gate.
-          const force = forceAzure && voice.provider === 'azure'
+        if (voice.provider === 'azure') {
+          // Azure: word boundaries are the exactness guarantee — no gap gate.
+          const force = forceAzure
           const res = await p8.generatePodAudio({ courseCode: COURSE, text: cued, language: targetLang, role: ROLE, voice, force })
           res.reused ? reused++ : rendered++
           if (!res.reused) freshFlags[gi] = true
           id = res.id
           ledgerSet(lkey, { verdict: 'azure', id, units: g.length, rerendered: freshFlags[gi] })
         } else {
+          // xai + elevenlabs: neither gives trustworthy word_boundaries, so both
+          // go through the same measured gate-and-retry ladder (see header).
           let best = null
           for (let attempt = 1; attempt <= GATE_ATTEMPTS; attempt++) {
             // attempt 1 may reuse an existing (already-gated) row — measuring a
