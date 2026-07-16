@@ -203,3 +203,22 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 13 | Jess | Me and Rhys, Ana and her brother. You know everyone. |
 | 14 | Owen | All right, all right — you've talked me into it. |
 | 15 | Jess | Yes! You won't regret it. Well — you might, but only a little. |
+
+## 10. I'd Love To, But — *Declining gracefully*
+
+*Difficulty: intermediate · 12 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Nia | We're going to the coast on Saturday. Come with us — it'll be fun. |
+| 2 | Dan | Oh, I'd love to, but I can't this Saturday. It's my dad's birthday. |
+| 3 | Nia | That's a shame. Sunday, then? The forecast's better anyway. |
+| 4 | Dan | I'd say yes… but I promised I'd help Ella move house. I'm sorry — it's a bad week. |
+| 5 | Nia | Don't worry. Can we do something another week instead? |
+| 6 | Dan | Definitely. I owe you a coffee at the very least. |
+| 7 | Nia | Actually… while you're here. You know the quiz on Thursday? |
+| 8 | Dan | Go on. |
+| 9 | Nia | I'm so sorry… but I'm going to have to cancel. Mum's coming down that evening. |
+| 10 | Dan | That's all right — these things happen. Give her my love. |
+| 11 | Nia | I will. Next Thursday instead? I won't cancel twice, I promise. |
+| 12 | Dan | It's a deal. See you next Thursday, then. |
