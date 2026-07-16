@@ -121,7 +121,7 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 
 ## 6. I See What You Mean, But — *Last night's film*
 
-*Difficulty: intermediate · 15 sentences*
+*Difficulty: intermediate · 14 sentences*
 
 | # | Speaker | English |
 |---|---------|---------|
@@ -129,14 +129,13 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 2 | Ellie | I did, last night. I loved it, actually. I nearly cried at the ending. |
 | 3 | Josh | Really? I thought it was just okay. |
 | 4 | Ellie | Just okay? Come on… the acting alone was incredible. |
-| 5 | Josh | I see what you mean… but I'm not sure I agree. The acting was good, I'll give you that. |
-| 6 | Josh | I just found the story a bit slow. |
-| 7 | Ellie | I didn't think so. I thought it built really nicely… right up to the end. |
-| 8 | Josh | Maybe I wasn't in the right mood for it, then. |
-| 9 | Ellie | Probably. What did you watch instead? |
-| 10 | Josh | Something much lighter — an old comedy. I needed a break after a long week. |
-| 11 | Ellie | Fair enough. We can't agree on everything. |
-| 12 | Josh | No, we clearly can't. Still, I'm glad you enjoyed it. |
-| 13 | Ellie | You should give it another chance, honestly. Maybe on a better day. |
-| 14 | Josh | Maybe I will. Though I still think you're wrong about the pacing. |
-| 15 | Ellie | We'll have to agree to disagree on this one. |
+| 5 | Josh | I see what you mean… but I'm not sure I agree. The acting was good, I'll give you that. I just found the story a bit slow. |
+| 6 | Ellie | I didn't think so. I thought it built really nicely… right up to the end. |
+| 7 | Josh | Maybe I wasn't in the right mood for it, then. |
+| 8 | Ellie | Probably. What did you watch instead? |
+| 9 | Josh | Something much lighter — an old comedy. I needed a break after a long week. |
+| 10 | Ellie | Fair enough. We can't agree on everything. |
+| 11 | Josh | No, we clearly can't. Still, I'm glad you enjoyed it. |
+| 12 | Ellie | You should give it another chance, honestly. Maybe on a better day. |
+| 13 | Josh | Maybe I will. Though I still think you're wrong about the pacing. |
+| 14 | Ellie | We'll have to agree to disagree on this one. |
