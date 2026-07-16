@@ -87,7 +87,57 @@ chunked audio rung in the main flow would be un-killing Stage 0.
 the review recommends the move-frame rewrite and calls the missing repair scene
 non-negotiable. Rule on frame BEFORE chunking pod-1, or the chunking pass is paid twice.
 
-## 5. Open questions carried from the estate (unchanged)
+## 5. PRIMARY PROPOSAL (supersedes §4 Decisions 1–2) — ellipses in the source text
+*(Founder steer, 2026-07-16: chunk monsters by inserting '…' at intention boundaries in the
+source text before recording — audio and visual matched by construction, no post-hoc slicing.
+Independent-meaning rule stays; ellipses mark breathing WITHIN a piece's sentence.)*
+
+**Empirical verification (3 renders, founder-approved; files in `scripts/ellipsis-test/`):**
+- **xAI (`leo`, lang=hr): '…' → natural pause, YES.** Two clean 330–410 ms pauses exactly at
+  the ellipsis points, no artefacts, no spoken "dot dot dot", duration delta matches the
+  pauses. Consistent with the stage-0 shared-known-store finding (~450 ms on `leo`).
+- **Azure (`hr-HR-GabrijelaNeural`): '…' → NO pause.** Frame-by-frame RMS shows no gap ≥50 ms
+  at either ellipsis point — Azure passes the character through with negligible effect.
+- **Resolution, not a blocker:** '…' stays the single canonical break mark in `target_text`;
+  the RENDER layer translates it per engine — xAI sends it literally (native pause); Azure
+  swaps each '…' for SSML `<break time="~400ms"/>` at synthesis (mechanical substitution;
+  `<break>` already proven mastering-clean on this exact cast voice in
+  `chunked-take-recipe.md` §1); human cast = "pause at the ellipsis" in the booth. Croatian
+  ships on Azure (tier-3), so the shim is required for the very course that motivated this.
+
+**Placement rule.** Only turns containing a piece over the ceiling get ellipses. Insert '…' at
+intention boundaries — finite-clause seams with the subordinator/coordinator attached to its
+clause ("Malo je frustrirajuće… kad ne mogu dovoljno brzo razmišljati… da bih se ispravno
+izrazio"), or comma-marked appositions — choosing the fewest marks that bring every piece to
+≤ ceiling. A single clause over the ceiling with no internal intention boundary (they exist:
+one 30-syl clause in pod-1) takes one '…' at the best prosodic point and is flagged for ear.
+LLM-assisted authoring + the audit-fine-seams-style gate, per the normal sweep protocol.
+
+**Carry-through (verified in code).** The app already treats '…' as sentence punctuation
+(`fusionDrill.ts:130`) — the Listening Drill's fusion ladder can never cross it. The fine-map
+tooling (`breakdown-fine.cjs`) already splits on '…'. One gap: `breakdown-flat.cjs` (authors
+the visual `atom_map`) lists boundaries as ". ! ?" — one-line addition. Tiles are per-atom so
+the seam aligns automatically; making the breath VISIBLE (gap/glyph between tile groups in
+`PodTurnDisplay.vue`) is a small optional app tweak.
+
+**Regen scope = the founder's one decision: the syllable ceiling.** Pod-0 (142 turns, live
+Azure audio; counts = turns owning a fine chunk over C, i.e. turns to ellipsis + re-record):
+
+| Ceiling C | Turns to re-record | Offending chunks |
+|---|---|---|
+| 8 | 64 (45%) | 95 |
+| **10 (recommended)** | **29 (20%)** | **34** |
+| 12 | 9 (6.3%) | 10 |
+| 14 | 3 (2.1%) | 3 |
+
+My read: **C = 10.** C = 8 re-records half the pod and fights the data (natural single
+intentions sit at 9–10 constantly); C = 12 leaves the 13- and 15-syl chunks of the cited
+monster line untouched in spirit elsewhere. Pod-1 is free — draft text, no audio yet: author
+ellipses into the canon (and into the pod-2/3 authoring prompts) before any recording.
+Audio cost: one re-render per affected turn on the existing cast voice (pod-0 hrv: 29 Azure
+calls at C=10), queued via the audio-pass gate as usual.
+
+## 6. Open questions carried from the estate (unchanged)
 
 Pod-ladder proposal §8 (humour ceiling, voices, recurring cast, narrator lines, topic spice,
 pod-3 length, bridge re-renders as surface) still await rulings; none block Decision 1–4.
