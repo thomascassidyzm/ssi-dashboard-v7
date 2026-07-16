@@ -429,3 +429,54 @@ teaching device.
   estate-wide re-chunking sweep is a separate future decision, following the sweep
   protocol (pilot ~40 items, read the distribution, then decide) rather than a blanket
   regeneration.
+
+### 9a. Chunk ceiling via '…' in the source text (founder ruling, 2026-07-16)
+
+Full rationale, empirical TTS verification, and the data behind this ruling:
+`docs/pods/chunk-granularity-state-of-play-2026-07-16.md` §5 — read that first.
+This section amends §9's model, it does not replace it: independent meaning is
+still the seam rule; this adds a syllable CEILING that forces a seam inside an
+otherwise-single-phrase turn when it would otherwise run too long to breathe.
+
+**The mark.** `'…'` (U+2026, not three ASCII dots) in `target_text` is the
+single canonical breathing mark. It is placed at intention/finite-clause
+boundaries — a subordinator or coordinator always stays attached to the clause
+it introduces, same rule as §9's seam test. It marks breathing WITHIN one
+independent-meaning phrase; it is never a substitute for a genuine phrase
+split.
+
+**The ceiling is founder-set per pod level, not a single global number:**
+
+| Pod level | Syllable ceiling C |
+|---|---|
+| pod-0 | **8** |
+| pod-1 and onward | **12** |
+
+Only a turn containing a piece over ITS level's ceiling gets an ellipsis.
+Insert the fewest '…' marks that bring every resulting piece to ≤ C, at
+finite-clause seams by preference. A single clause over the ceiling with no
+internal intention boundary takes one '…' at the best prosodic point and MUST
+be flagged for human ear — this is a forced mid-clause split, the one case
+the independent-meaning rule would otherwise forbid.
+
+**Render layer (per-provider, already implemented):** xAI receives '…'
+literally — it renders a natural ~330–410ms pause with no artefacts,
+verified. Azure voices pass '…' through with no audible gap, so every Azure
+SSML build substitutes each '…' for `<break time="400ms"/>` before
+synthesis — this is a TTS-input-only transform, never stored; see
+`services/shared/ellipsis-ssml.cjs` (used by both `services/tts-service.cjs`
+and `services/azure-tts-service.cjs`, the two Azure SSML builders in this
+repo). Human cast direction: "pause at the ellipsis."
+
+**Authoring/gate:** LLM-assisted authoring pass, run per the normal sweep
+protocol (`docs/pods/course-generation-manual.md` §7 pattern: dry-run first,
+per-row logs, re-audit after apply). The visual `atom_map` breakdown
+(`tools/breakdown-flat.cjs`) already treats '…' as a mandatory sentence-level
+seam alongside `. ! ?` so tile boundaries stay aligned; `atom_map_fine`
+tooling (`tools/breakdown-fine.cjs`) already splits its units on '…'.
+
+**Scope:** pod-0 is live-audio (Azure, Croatian) — turns touched need a
+re-render, queued through the normal audio-pass gate, never rendered without
+approval. Pod-1 is draft text with no audio yet — ellipses are authored
+straight into canon. Pod-2/3 authoring prompts bake in both ceilings from
+first generation, so this backfill is a one-time cost for pod-0/pod-1 only.

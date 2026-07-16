@@ -17,6 +17,8 @@
  * natural PROSODIC shape, so a seam exists only where a careful speaker would
  * genuinely pause AND both resulting pieces are independently meaningful.
  * Canonical statement + rationale: `docs/pods/pod-ladder-proposal.md` §9.
+ * Syllable ceiling (pod-0: C=8) is enforced separately, via '…' inserted
+ * into `target_text` itself — see §9a and `tools/insert-ellipsis-seams.cjs`.
  * These seams are where the future Take G (slow gapped take) will breathe.
  * Units tile each sentence; punctuation seams are mandatory. The mechanical
  * enforcement/repair gate for this rule is `tools/audit-fine-seams.cjs`,
@@ -118,8 +120,15 @@ function tileAndSnap(units, targetText) {
   // wordier than a natural independent clause is worth a human glance, even
   // though it isn't rejected outright (a genuinely long independent clause is
   // still valid — this is a flag, not a gate).
+  // FOUNDER CEILING (docs/pods/pod-ladder-proposal.md §9a, 2026-07-16): a unit
+  // over its pod level's syllable ceiling (pod-0: C=8, pod-1+: C=12) is where
+  // the '…' ellipsis-authoring pass (tools/insert-ellipsis-seams.cjs) forces a
+  // breathing mark in target_text — this word-count flag is a cheap proxy,
+  // not the ceiling gate itself (no general-purpose cross-language syllable
+  // counter exists here).
+  const CEILING_WORDS = 6 // this script only ever authors pod-0 (C=8 syllables → ~6 words, rough proxy)
   const CJK_RE = /[぀-ヿ㐀-䶿一-鿿가-힯]/
-  const isOverlong = (t) => CJK_RE.test(t) ? [...t].filter(c => /\p{L}/u.test(c)).length > 20 : t.trim().split(/\s+/).filter(Boolean).length > 14
+  const isOverlong = (t) => CJK_RE.test(t) ? [...t].filter(c => /\p{L}/u.test(c)).length > CEILING_WORDS * 1.6 : t.trim().split(/\s+/).filter(Boolean).length > CEILING_WORDS
 
   let ok = 0, tilefail = 0, overlong = 0
   async function processTurn(s) {

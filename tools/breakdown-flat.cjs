@@ -63,7 +63,7 @@ GRANULARITY — the reusable unit is FREQUENTLY MULTI-WORD; the chunk IS the con
 Each atom is glossed with its LITERAL/contextual meaning (ZUT — the ACTUAL contextual sense, not a dictionary lump). When you DO break, the parts get LITERAL glosses and the natural whole meaning lives on the sentence, not the atom.
 - Snap to the speaking-course LEGO seams below where they overlap — they signal the reusable units in THIS course.
 - Proper nouns / NAMES → source "name", gloss null (kept in the phrase, never explained on their own).
-Atoms must TILE the turn IN ORDER (their surfaces, concatenated, reconstruct it) and NEVER cross a sentence boundary (. ! ?).
+Atoms must TILE the turn IN ORDER (their surfaces, concatenated, reconstruct it) and NEVER cross a sentence boundary (. ! ? …) — '…' is a breathing mark inside a sentence, not part of any atom's surface.
 Output ONLY JSON: {"atoms":[{"target":"...","gloss":"... or null","source":"lego|llm|name"}]}`
 
 let ATOM_VOICE, MEANS_VOICE, ATOM_LANG, MEANS_LANG
