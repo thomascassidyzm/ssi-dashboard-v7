@@ -81,7 +81,9 @@
       <div
         v-for="round in rounds"
         :key="round.roundNumber"
-        class="round-card bg-surface border border-line rounded-lg overflow-hidden"
+        :id="`journey-round-${round.roundNumber}`"
+        class="round-card bg-surface border border-line rounded-lg overflow-hidden transition-shadow"
+        :class="{ 'ring-2 ring-emerald-400': highlightedRound === round.roundNumber }"
       >
         <!-- Round Header -->
         <div
@@ -679,10 +681,27 @@ const collapseAll = () => {
   expandedRounds.value.clear()
 }
 
+// Jump-to-round: expand + scroll + briefly highlight the target round card.
+const highlightedRound = ref<number | null>(null)
+let highlightTimer: ReturnType<typeof setTimeout> | null = null
+
+const scrollToRound = async (roundNumber: number) => {
+  expandedRounds.value.add(roundNumber)
+  await nextTick()
+  const el = document.getElementById(`journey-round-${roundNumber}`)
+  if (!el) return false
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  if (highlightTimer) clearTimeout(highlightTimer)
+  highlightedRound.value = roundNumber
+  highlightTimer = setTimeout(() => { highlightedRound.value = null }, 2000)
+  return true
+}
+
 // Expose methods + player for parent component
 defineExpose({
   expandAll,
   collapseAll,
+  scrollToRound,
   player
 })
 
