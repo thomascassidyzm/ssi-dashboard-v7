@@ -187,14 +187,24 @@ translation — English-side seams carry as guidance, not as literal positions.
 
 ## Pipeline readiness
 
-Full per-pair checklist: `pod1-pipeline-readiness.md`. Headline: the pod-1 production
-path (canonical → per-course translation via `services/pod-dialogue-generator.cjs` →
-voice assignment from `app_config.pod_voice_pools` → breakdown tools → TTS) is the
-same machinery that built the 64-course pod-0 estate; hrv_for_eng already has a draft
-pod-1 translation proving the path end-to-end. Azure-voiced pairs take the
-ellipsis-SSML shim (`services/shared/ellipsis-ssml.cjs`, wired and tested); xAI-voiced
-pairs render '…' natively. Per-pair green/blocked status and the hrv 180-vs-196 drift
-are in the checklist.
+Full per-pair checklist: `pod1-pipeline-readiness.md` (dry-run, 2026-07-16). Headline:
+
+- **Target estate**: the 64 pod-0 courses. Pilot `hrv_for_eng` has 180/196 rows drafted,
+  no audio — and the entire 16-row gap is ONE missing scene (14, *Catching Up*); scenes
+  1–13 match canon row-for-row. A resume-mode generation call backfills it cleanly.
+- **Voices**: 55/64 green (≥1 f + 1 m voice both sides). Blocked-on-voices: the two
+  Welsh courses (no Welsh target pool) and `eng_for_{ben,guj,pan,sin,tam,urd}` (no
+  known-side pool). 38/64 pairs pick Azure voices → the ellipsis-SSML shim path
+  (already wired and tested); the rest are xAI-native for '…'.
+- **Translation tooling**: `services/pod-dialogue-generator.cjs` via
+  `POST /api/admin/pods/generate` is the confirmed real entry point (it produced the
+  hrv draft) and degrades gracefully on missing voice pools.
+- **One real blocker, small**: the breakdown tools (`tools/breakdown-flat.cjs`,
+  `breakdown-fine.cjs`, `audit-fine-seams.cjs`) are hardcoded to `pod-0` — a
+  slug-parameterisation change is needed before they accept pod-1 rows. And
+  `tools/insert-ellipsis-seams.cjs` counts syllables Croatian-only — fine for the hrv
+  pilot, unsafe for other languages as-is. Neither blocks the frame ruling or the
+  translation fan-out; both are needed before pod-1 audio prep.
 
 ---
 
