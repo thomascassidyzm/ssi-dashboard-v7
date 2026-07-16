@@ -60,16 +60,21 @@ function parse(md) {
       // header row or separator → mark table start, skip
       if (/^#$/.test(cells[0]) || /^-+$/.test(cells[0])) { inTable = true; continue }
       if (!inTable) continue
-      if (!/^\d+$/.test(cells[0])) continue // not a numbered data row
+      // Numbered data row, or a menu-line scenario-variant row (`3a`/`3b`/…):
+      // rows sharing the digit part form one turn-group (founder ruling
+      // 2026-07-16, docs/pods/pod05-placement-analysis-2026-07-16.md §Menu-lines).
+      const numMatch = cells[0].match(/^(\d+)([a-z])?$/)
+      if (!numMatch) continue
       const speaker = cells[1] || null
       const english = cells[2] || ''
       if (!english) continue
       // Skip the trailing summary table (scene → count): a real dialogue line
       // is never a bare number, and its "speaker" cell is a scene title.
       if (/^\d+$/.test(english.trim())) continue
-      sentNum += 1; globalOrder += 1
+      sentNum = Number(numMatch[1]); const variantKey = numMatch[2] || null
+      globalOrder += 1
       rows.push({
-        id: `${POD_SLUG}:SC${pad(scene.number)}-S${pad(sentNum)}`,
+        id: `${POD_SLUG}:SC${pad(scene.number)}-S${pad(sentNum)}${variantKey || ''}`,
         pod_slug: POD_SLUG,
         scene_number: scene.number,
         scene_label: scene.label,
@@ -77,6 +82,7 @@ function parse(md) {
         scene_subtitle: scene.subtitle,
         difficulty: scene.difficulty,
         sentence_number: sentNum,
+        variant_key: variantKey,
         global_order: globalOrder,
         speaker,
         english_text: english,

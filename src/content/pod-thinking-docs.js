@@ -1,14 +1,34 @@
-// Registry of "Pod Thinking" methodology docs. Each entry renders at
-// /docs/pod-thinking/:slug. Add future pod-methodology write-ups here as new
-// entries — do not invent content, only register docs that actually exist.
-export const podThinkingDocs = [
-  {
-    slug: 'pod-ladder-proposal',
-    title: 'The Pod Ladder — Pods 0–3 to B2',
-    description: 'Design proposal: the discourse-type ramp from transactional pod-0 to native podcast comprehension — ramp model, scenario slates, sample scenes, and the TTS renderability rule.',
-    date: '2026-07-12',
-    status: 'Proposal — design only, nothing seeded',
-    // Vite raw import - bundles the markdown file as a string at build time.
-    loader: () => import('../../docs/pods/pod-ladder-proposal.md?raw')
-  }
-]
+// Auto-index of "Pod Thinking" methodology docs. Every markdown or text file in
+// docs/pods/ renders at /docs/pod-thinking/:slug automatically — no code change
+// needed to add a new doc. To give a doc a proper title/description/status
+// instead of the generated default, add an entry to pod-thinking-meta.js
+// keyed by its filename (without extension).
+import { podThinkingMeta } from './pod-thinking-meta'
+
+const modules = import.meta.glob('../../docs/pods/*.{md,txt}', { query: '?raw', import: 'default' })
+
+function titleFromSlug(slug) {
+  return slug
+    .replace(/-\d{4}-\d{2}-\d{2}$/, '')
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase())
+}
+
+export const podThinkingDocs = Object.entries(modules)
+  .map(([path, loader]) => {
+    const filename = path.split('/').pop()
+    const slug = filename.replace(/\.(md|txt)$/, '')
+    const isText = filename.endsWith('.txt')
+    const meta = podThinkingMeta[slug] || {}
+    return {
+      slug,
+      isText,
+      title: meta.title || titleFromSlug(slug),
+      description: meta.description || 'No description yet — add one to pod-thinking-meta.js.',
+      date: meta.date || null,
+      status: meta.status || 'Undocumented — needs a pod-thinking-meta.js entry',
+      badge: meta.badge || 'IN DISCUSSION',
+      loader
+    }
+  })
+  .sort((a, b) => (b.date || '').localeCompare(a.date || ''))

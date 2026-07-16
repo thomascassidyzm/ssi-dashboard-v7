@@ -42,7 +42,7 @@ for (const raw of lines) {
   if (line.startsWith('## ')) { scene = line.slice(3).trim(); continue }
   if (!line.startsWith('|')) continue
   const cells = line.split('|').slice(1, -1).map(c => c.trim())
-  if (cells.length < 3 || !/^\d+$/.test(cells[0])) continue // header/separator
+  if (cells.length < 3 || !/^\d+[a-z]?$/.test(cells[0])) continue // header/separator; digit[+letter] = row, incl. menu-line variants
   const [num, , text] = cells
   rows++
   const at = `${scene} line ${num}`

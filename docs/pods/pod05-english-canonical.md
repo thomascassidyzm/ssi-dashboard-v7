@@ -1,14 +1,18 @@
-# Pod 0.5 — The First Real Conversation (English canonical) — DRAFT
+# Pod 0.5 — The First Real Conversation (English canonical)
 
-*STATUS: DRAFT — pending founder placement ruling (pod-0 extension at C=8 vs pod-0.5 at
-C=12). Do NOT seed the canonical store from this file yet. Source: Aran's raw dialogue,
-`pod05-aran-raw-2026-07-16.txt` (field-tested, 75 hours of real conversations) — text
-preserved verbatim; every deviation is logged in
-`pod05-placement-analysis-2026-07-16.md` §Deviations. Ellipses baked at C=12 per §9a/§9b
-of `pod-ladder-proposal.md`; verify with
-`node tools/audit-canon-ellipsis.cjs docs/pods/pod05-english-canonical-DRAFT.md eng 12`
-(NOTE: the audit and `tools/seed-canonical-pods.cjs` currently SKIP the `3a`/`3b`
-variant rows — a real pipeline gap, see the analysis doc §Menu-lines).*
+*STATUS: CANONICAL — founder ruling 2026-07-16: pod-0.5 placed as its own pod at
+ceiling C=12 (not a pod-0 extension; C=8 rejected, see
+`pod05-placement-analysis-2026-07-16.md` §1/§6). Seeded into `canonical_pod_scenarios`
+as `pod-0.5`. Source: Aran's raw dialogue, `pod05-aran-raw-2026-07-16.txt`
+(field-tested, 75 hours of real conversations) — text preserved verbatim; every
+deviation is logged in `pod05-placement-analysis-2026-07-16.md` §Deviations. Ellipses
+baked at C=12 per §9a/§9b of `pod-ladder-proposal.md`; verify with
+`node tools/audit-canon-ellipsis.cjs docs/pods/pod05-english-canonical.md eng 12`.
+`tools/seed-canonical-pods.cjs` and the audit tool both now parse `3a`/`3b` menu-line
+variant rows natively (regex widened, `variant_key` column added 2026-07-16 — the
+pipeline gap noted below is closed).
+Translations/audio NOT generated yet — pod-0.5 waits with pod-0 for the human-recording
+(Welsh) path and TTS decisions.*
 
 *MENU-LINES (founder ruling 2026-07-16): rows numbered `Na`/`Nb`/`Nc` are
 SCENARIO-VARIANTS — sibling takes of the same conversational moment, all shipped and
