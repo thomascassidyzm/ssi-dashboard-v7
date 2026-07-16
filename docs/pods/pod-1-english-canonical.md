@@ -73,3 +73,26 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 15 | Sam | What does potluck mean? I don't know that word. |
 | 16 | Ana | Everyone brings one dish, and everyone shares. Sorry — I'm talking too fast today, aren't I? |
 | 17 | Sam | Don't be daft. I'd rather ask twice than get lost on Saturday. |
+
+## 4. You're Joking! — *The wrong bus*
+
+*Difficulty: intermediate · 16 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Leo | Tell me about the trip, then. Anything go wrong? |
+| 2 | Marta | One thing, actually… and it was completely my fault. |
+| 3 | Leo | Go on. |
+| 4 | Marta | We got on the wrong bus on the first day. |
+| 5 | Leo | Oh no. How did that happen? |
+| 6 | Marta | We were tired from the flight… and I just read the number wrong. |
+| 7 | Leo | You're joking. How far did you get? |
+| 8 | Marta | About an hour outside the city… before we even noticed. |
+| 9 | Leo | An hour! Wait — say that again. An hour, on the first day? |
+| 10 | Marta | A whole hour. We just laughed, honestly… once we'd got over the panic. |
+| 11 | Leo | I don't believe it. What else could you do? |
+| 12 | Marta | Well — guess where the bus stopped. This tiny little village… with the best coffee of the whole holiday. |
+| 13 | Leo | You're kidding! So the wrong bus won. |
+| 14 | Marta | Completely. It's the story we tell everyone now… more than the places we meant to visit. |
+| 15 | Leo | That's the best thing I've heard all week. Funny how the mistakes make the best stories. |
+| 16 | Marta | Every time. I wouldn't change a thing… not even the hour on the wrong bus. |
