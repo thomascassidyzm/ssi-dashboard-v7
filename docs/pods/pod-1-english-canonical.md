@@ -222,3 +222,25 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 10 | Dan | That's all right — these things happen. Give her my love. |
 | 11 | Nia | I will. Next Thursday instead? I won't cancel twice, I promise. |
 | 12 | Dan | It's a deal. See you next Thursday, then. |
+
+## 11. Shall We Say Half Past? — *By the river, then*
+
+*Difficulty: beginner · 15 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Priya | Are you doing anything on Saturday? |
+| 2 | Tom | Saturday… I'm taking my mum shopping in the morning. But I'm free after that. Why? |
+| 3 | Priya | A few of us are having lunch on Saturday… at that new place by the river. Do you want to come? |
+| 4 | Tom | The one with the green tables? I've been wanting to try it for ages. |
+| 5 | Priya | That's the one. We're thinking about one o'clock. |
+| 6 | Tom | One might be a bit tight for me. Could we say half past? |
+| 7 | Priya | Half past should be fine. I'll check with the others and let you know. |
+| 8 | Tom | Sorry — the river place… or the one by the market? |
+| 9 | Priya | The river one. The market one shut last month. |
+| 10 | Tom | Right, got it. And should I bring anything? |
+| 11 | Priya | Just yourself. Actually — hang on. Could we make it two o'clock? |
+| 12 | Tom | Two works too. What changed? |
+| 13 | Priya | Ella can only come later. She's working till one. |
+| 14 | Tom | Two it is, then. Saturday, two o'clock, by the river. |
+| 15 | Priya | Perfect. I'll text you if anything else changes. |
