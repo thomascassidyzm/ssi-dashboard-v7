@@ -480,3 +480,25 @@ re-render, queued through the normal audio-pass gate, never rendered without
 approval. Pod-1 is draft text with no audio yet — ellipses are authored
 straight into canon. Pod-2/3 authoring prompts bake in both ceilings from
 first generation, so this backfill is a one-time cost for pod-0/pod-1 only.
+
+### 9b. Terminology — TURN and S-LEGO (founder ruling, 2026-07-16)
+
+This is the canonical definition. Other pod docs should link here rather than
+restate it.
+
+- **TURN** — one speaker's contribution in a pod dialogue, of any length (one
+  word to five sentences). Purely structural: it names *who is speaking*, not
+  the size or shape of what they say.
+- **S-LEGO** (a new sibling to A-LEGO/M-LEGO — see §1 of
+  `ralph-methodology.md` for those) — the standalone unit of meaning inside a
+  turn: the cognitive audio unit, a re-usable intention. An S-LEGO sometimes
+  coincides exactly with an existing A-LEGO or M-LEGO (the tooling already
+  snaps to these where it can); more often it's slightly longer — a
+  comma-separated clause, or the natural break either side of a coordinator.
+  **Operational definition: an S-LEGO boundary is exactly a place where an
+  ellipsis ('…') can be inserted without causing a problem for meaning or for
+  the TTS engines.** In these terms: the §9 independent-meaning seam test
+  finds S-LEGO boundaries; the §9a syllable ceilings (C=8 pod-0, C=12 pod-1+)
+  are ceilings on S-LEGO size; the §9a ellipsis-insertion pass *is* S-LEGO
+  segmentation; and a §9a flagged forced split is a cut made where no
+  legitimate S-LEGO boundary was available.

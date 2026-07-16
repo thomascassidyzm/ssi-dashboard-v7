@@ -2,23 +2,24 @@
 /**
  * audit-fine-seams.cjs — surgical quality pass over existing atom_map_fine:
  * apply the INDEPENDENT-MEANING seam test (each side of every seam must itself
- * be a complete communicative unit) and MERGE the violations. Merge-only by
- * design — patch-repair over regeneration: no re-splits, no gloss churn on
- * untouched units, tiling can't break because merged surfaces are rebuilt from
- * the original text. This is the mechanical REJECT gate for the segmentation
- * rule authored in `tools/breakdown-fine.cjs` — run it right after that
- * script (or against any existing course) to catch/repair fragments it or an
- * earlier authoring pass let through.
+ * be a complete S-LEGO — the standalone cognitive-audio unit of meaning, full
+ * definition in `docs/pods/pod-ladder-proposal.md` §9b) and MERGE the
+ * violations. Merge-only by design — patch-repair over regeneration: no
+ * re-splits, no gloss churn on untouched units, tiling can't break because
+ * merged surfaces are rebuilt from the original text. This is the mechanical
+ * REJECT gate for the segmentation rule authored in `tools/breakdown-fine.cjs`
+ * — run it right after that script (or against any existing course) to
+ * catch/repair fragments it or an earlier authoring pass let through.
  *
  * The rule this enforces (Tom + Aran, 2026-07-14, generalising the earlier
  * 2026-07-04 "hrvatski" case): a fragment that only makes sense glued to its
  * neighbour must merge — a bare word stranded after the phrase it completes
  * ("početi govoriti | hrvatski") is exactly this failure ("hrvatski" leans
- * back onto its verb phrase; "početi govoriti hrvatski" is ONE unit), but so
+ * back onto its verb phrase; "početi govoriti hrvatski" is ONE S-LEGO), but so
  * is any split of a single independent clause into its beats ("what are you
- * thinking" | "of doing today?" must merge into one phrase). Canonical
- * statement: `docs/pods/pod-ladder-proposal.md` §9. Conservative contract in
- * the prompt: when unsure, KEEP the seam.
+ * thinking" | "of doing today?" must merge into one S-LEGO). Canonical
+ * statement: `docs/pods/pod-ladder-proposal.md` §9/§9b. Conservative contract
+ * in the prompt: when unsure, KEEP the seam.
  *
  * Merged units get a CLI-authored natural gloss and null ms spans (re-slice
  * fills them). Turns the audit changes are printed as a list for the re-run

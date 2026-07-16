@@ -7,20 +7,22 @@
  * Pod Lab before any audio money is spent.
  *
  * THE MODEL — INDEPENDENT MEANING (Tom + Aran, 2026-07-14, supersedes the
- * original breath-group model): units are natural, COMPLETE COMMUNICATIVE
- * UNITS — never a syntactic fragment that only makes sense glued to its
- * neighbour ("good morning, Sarah" is ONE unit, never "good"/"morning"/
- * "Sarah"; "are you going to work?" is ONE unit, never "are you going"/"to
- * work"). The within-sentence grammar-teaching job (showing how a sentence is
- * BUILT from its parts) now belongs to the app's own always-visible tiled
- * breakdown — this audio's only job is to carry the language's correct,
- * natural PROSODIC shape, so a seam exists only where a careful speaker would
- * genuinely pause AND both resulting pieces are independently meaningful.
- * Canonical statement + rationale: `docs/pods/pod-ladder-proposal.md` §9.
+ * original breath-group model): units are S-LEGOs — natural, COMPLETE
+ * COMMUNICATIVE UNITS (the standalone cognitive-audio unit of meaning; full
+ * definition in `docs/pods/pod-ladder-proposal.md` §9b) — never a syntactic
+ * fragment that only makes sense glued to its neighbour ("good morning,
+ * Sarah" is ONE S-LEGO, never "good"/"morning"/"Sarah"; "are you going to
+ * work?" is ONE S-LEGO, never "are you going"/"to work"). The within-sentence
+ * grammar-teaching job (showing how a sentence is BUILT from its parts) now
+ * belongs to the app's own always-visible tiled breakdown — this audio's only
+ * job is to carry the language's correct, natural PROSODIC shape, so a seam
+ * exists only where a careful speaker would genuinely pause AND both
+ * resulting S-LEGOs are independently meaningful.
+ * Canonical statement + rationale: `docs/pods/pod-ladder-proposal.md` §9/§9b.
  * Syllable ceiling (pod-0: C=8) is enforced separately, via '…' inserted
  * into `target_text` itself — see §9a and `tools/insert-ellipsis-seams.cjs`.
  * These seams are where the future Take G (slow gapped take) will breathe.
- * Units tile each sentence; punctuation seams are mandatory. The mechanical
+ * S-LEGOs tile each sentence; punctuation seams are mandatory. The mechanical
  * enforcement/repair gate for this rule is `tools/audit-fine-seams.cjs`,
  * intended to run right after this script on every course it touches.
  *

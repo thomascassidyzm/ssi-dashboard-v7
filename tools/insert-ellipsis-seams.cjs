@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 /**
- * insert-ellipsis-seams.cjs — ellipsis-authoring pass (founder ruling,
- * docs/pods/pod-ladder-proposal.md §9a, 2026-07-16). Inserts '…' (U+2026, the
- * single Unicode ellipsis character — never three ASCII dots) into
+ * insert-ellipsis-seams.cjs — S-LEGO segmentation pass (founder ruling,
+ * docs/pods/pod-ladder-proposal.md §9a/§9b, 2026-07-16). Inserts '…' (U+2026,
+ * the single Unicode ellipsis character — never three ASCII dots) into
  * listening_pod_sentences.target_text at intention/finite-clause boundaries,
- * so no resulting piece exceeds the pod level's syllable ceiling C
+ * so no resulting S-LEGO (the standalone cognitive-audio unit of meaning;
+ * see §9b for the full definition) exceeds the pod level's syllable ceiling C
  * (pod-0: C=8, pod-1 and onward: C=12). Amends §9's independent-meaning seam
  * model — it does not replace it: '…' marks BREATHING within one
  * independent-meaning phrase, never a substitute for a genuine phrase split.
@@ -117,11 +118,11 @@ RULES:
 Return ONLY the resulting text — no preamble, no quotes, no explanation, no markdown.`
 
 // Forced mechanical fallback (used only when the LLM's attempt fails the
-// fidelity check, or still leaves a piece over ceiling): insert '…' in the
+// fidelity check, or still leaves an S-LEGO over ceiling): insert '…' in the
 // single worst-offending piece at the closest-to-midpoint space, preferring a
 // point right after a comma or right before a coordinator/subordinator if one
 // exists nearby. Always flagged for founder review — this is the "forced
-// mid-clause split" case in §9a.
+// mid-clause split" case in §9a (no legitimate S-LEGO boundary available).
 const COORD_RE = (COORD_WORDS[LANG] || []).length
   ? new RegExp(`^(${COORD_WORDS[LANG].join('|')})$`, 'i')
   : /^$/
