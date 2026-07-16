@@ -13,9 +13,16 @@
  * re-render for touched pod-0 rows goes through the normal audio-pass queue
  * (queue-audio-pass.cjs), never run from here.
  *
+ * Syllable counting is per-TARGET-language, via the registry in
+ * tools/lib/syllable-counters.cjs (keyed by the course code's target ISO
+ * code, e.g. hrv_for_eng → hrv). FAILS LOUDLY (exits before touching the DB)
+ * for a course whose target language has no registered counter — add one
+ * there before running this tool against a new language.
+ *
  *   node tools/insert-ellipsis-seams.cjs <course> <pod-level> <ceiling C> [orders] [--dry]
  *   node tools/insert-ellipsis-seams.cjs hrv_for_eng 0 8 --dry
  *   node tools/insert-ellipsis-seams.cjs hrv_for_eng 1 12
+ *   node tools/insert-ellipsis-seams.cjs spa_for_eng 0 8 --dry
  *
  * Same skeleton as tools/breakdown-fine.cjs (dotenv, supabase client, claude
  * CLI via execFile with CLAUDECODE unset, --dry flag, concurrency worker pool).
@@ -25,6 +32,7 @@ const fs = require('fs')
 const path = require('path')
 const { createClient } = require('@supabase/supabase-js')
 const { execFile } = require('child_process')
+const { countSyllables, REGISTRY: SYLLABLE_COUNTERS } = require('./lib/syllable-counters.cjs')
 
 const COURSE = process.argv[2]
 const POD_LEVEL = process.argv[3]
@@ -39,6 +47,14 @@ if (!COURSE || POD_LEVEL === undefined || !CEILING) {
   process.exit(1)
 }
 const POD_ID = `${COURSE}:pod-${POD_LEVEL}`
+// Target-language code from the course code (X_for_KNOWN, X may carry a
+// locale suffix like "cym_n" or "deu_at" — the base ISO code is the part
+// before that).
+const LANG = (COURSE.split('_for_')[0] || '').split('_')[0]
+if (!SYLLABLE_COUNTERS[LANG]) {
+  console.error(`ERR: no syllable counter registered for language '${LANG}' (course ${COURSE}) — add one to tools/lib/syllable-counters.cjs before running this course`)
+  process.exit(1)
+}
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 function claude(prompt) {
@@ -49,31 +65,10 @@ function claude(prompt) {
   })
 }
 
-// Croatian syllable count (adapted from scripts/pod-hrv/analyze.cjs): vowels
-// a/e/i/o/u count as one nucleus each, plus syllabic r flanked by consonants
-// on both sides (or word boundary), e.g. "vrt", "trg", "krv". HRV-specific —
-// fine for now, since this backfill pass is hrv_for_eng-only (pod-0/pod-1).
-function countSyllables(text) {
-  const words = (text || '').toLowerCase()
-    .replace(/[.,!?;:„"“”'’()\-–—…]/g, ' ')
-    .split(/\s+/).filter(Boolean)
-  let total = 0
-  for (const w of words) {
-    const vowels = (w.match(/[aeiou]/g) || []).length
-    let syllabicR = 0
-    for (let i = 0; i < w.length; i++) {
-      if (w[i] !== 'r') continue
-      const prev = w[i - 1], next = w[i + 1]
-      const prevVowel = prev && 'aeiou'.includes(prev)
-      const nextVowel = next && 'aeiou'.includes(next)
-      if (!prevVowel && !nextVowel) syllabicR++
-    }
-    let count = vowels + syllabicR
-    if (count === 0) count = 1
-    total += count
-  }
-  return total
-}
+// Per-language syllable counting lives in tools/lib/syllable-counters.cjs —
+// FAILS LOUDLY (throws) for a language with no registered counter, so a new
+// course never silently gets another language's rules.
+const syllables = (text) => countSyllables(text, LANG)
 
 // Split on sentence-ending punctuation AND '…' (the seam this pass itself
 // creates) — mirrors the sentence-boundary split in tools/breakdown-fine.cjs.
@@ -90,11 +85,31 @@ const stripEllipsis = (s) => String(s || '').normalize('NFC').replace(/…/g, ''
 // is followed by exactly one space — some LLM outputs stray a space in front.
 const normalizeEllipsisSpacing = (s) => String(s || '').replace(/\s+…/g, '…').replace(/…\s+/g, '… ').trim()
 
-const RULES = (ceiling) => `You insert '…' (the single Unicode ellipsis character U+2026, NOT three ASCII dots) into a Croatian sentence/turn's TARGET text at intention/finite-clause boundaries, so that every resulting piece — split on '.', '!', '?', and '…' — has AT MOST ${ceiling} syllables.
+// Target-language display name for the LLM prompt, and a short list of that
+// language's coordinators/subordinators for the RULES example + the
+// mechanical fallback's split-point preference (forceSplit below). Falls
+// back to the bare code / an empty (never-matching) list for a registered
+// syllable-counter language this map hasn't been given examples for yet —
+// safe degrade (forceSplit just loses its coordinator preference, not
+// correctness).
+const TARGET_LANG_NAMES = { hrv: 'Croatian', spa: 'Spanish', ita: 'Italian', por: 'Portuguese', deu: 'German', fra: 'French', nld: 'Dutch', cym: 'Welsh' }
+const COORD_WORDS = {
+  hrv: ['i', 'ali', 'pa', 'ili', 'jer', 'da', 'kad', 'nego'],
+  spa: ['y', 'pero', 'o', 'porque', 'que', 'cuando', 'sino'],
+  ita: ['e', 'ma', 'o', 'perché', 'che', 'quando'],
+  por: ['e', 'mas', 'ou', 'porque', 'que', 'quando'],
+  deu: ['und', 'aber', 'oder', 'weil', 'dass', 'wenn', 'sondern'],
+  fra: ['et', 'mais', 'ou', 'parce', 'que', 'quand'],
+  nld: ['en', 'maar', 'of', 'omdat', 'dat', 'wanneer'],
+  cym: ['a', 'ond', 'neu', 'achos', 'bod', 'pan'],
+}
+const LANG_NAME = TARGET_LANG_NAMES[LANG] || LANG
+
+const RULES = (ceiling) => `You insert '…' (the single Unicode ellipsis character U+2026, NOT three ASCII dots) into a ${LANG_NAME} sentence/turn's TARGET text at intention/finite-clause boundaries, so that every resulting piece — split on '.', '!', '?', and '…' — has AT MOST ${ceiling} syllables.
 
 RULES:
 - Insert the FEWEST '…' marks that bring every piece to <= ${ceiling} syllables.
-- Only place '…' at a genuine finite-clause / intention boundary — a seam between two clauses that could each stand as their own thought. A coordinator or subordinator ("i", "ali", "pa", "jer", "da", "kad", "nego"...) ALWAYS stays attached to the clause it introduces — it never dangles alone before the '…'.
+- Only place '…' at a genuine finite-clause / intention boundary — a seam between two clauses that could each stand as their own thought. A coordinator or subordinator (${(COORD_WORDS[LANG] || []).map(w => `"${w}"`).join(', ') || 'e.g. "and", "but", "because"'}...) ALWAYS stays attached to the clause it introduces — it never dangles alone before the '…'.
 - NEVER change, add, or remove any word, letter, or existing punctuation. Your output must be EXACTLY the input text with only '…' marks inserted at chosen points.
 - If a single clause has NO internal intention boundary and still exceeds the ceiling even at its best split point, insert one '…' at the best available prosodic point anyway (e.g. before a trailing adverbial, or after the verb phrase) — do your best; a human will review this case.
 - If every piece is already <= ${ceiling} syllables, return the text completely unchanged (no '…' added).
@@ -107,12 +122,14 @@ Return ONLY the resulting text — no preamble, no quotes, no explanation, no ma
 // point right after a comma or right before a coordinator/subordinator if one
 // exists nearby. Always flagged for founder review — this is the "forced
 // mid-clause split" case in §9a.
-const COORD_RE = /^(i|ali|pa|ili|jer|da|kad|nego)$/i
+const COORD_RE = (COORD_WORDS[LANG] || []).length
+  ? new RegExp(`^(${COORD_WORDS[LANG].join('|')})$`, 'i')
+  : /^$/
 function forceSplit(text, ceiling) {
   const pieces = splitPieces(text)
   let rebuilt = ''
   for (const piece of pieces) {
-    if (countSyllables(piece) <= ceiling) { rebuilt += (rebuilt ? ' ' : '') + piece; continue }
+    if (syllables(piece) <= ceiling) { rebuilt += (rebuilt ? ' ' : '') + piece; continue }
     const m = piece.match(/^(.*?)([.!?…]*)$/s)
     const body = (m ? m[1] : piece).trim()
     const trail = m ? m[2] : ''
@@ -138,7 +155,7 @@ function forceSplit(text, ceiling) {
 
 async function processTurn(row, ceiling) {
   const pieces = splitPieces(row.target_text)
-  const overlong = pieces.filter(p => countSyllables(p) > ceiling)
+  const overlong = pieces.filter(p => syllables(p) > ceiling)
   if (!overlong.length) return null // already fits, untouched
 
   const prompt = `${RULES(ceiling)}\n\nKNOWN (context only, do not translate, do not output): ${row.known_text}\nTARGET: ${row.target_text}\n\nOutput:`
@@ -160,7 +177,7 @@ async function processTurn(row, ceiling) {
     flagged = true
     flagReason = 'LLM output failed text-fidelity check (changed more than \'…\' placement) — forced mechanical split applied instead'
   } else {
-    const stillOver = splitPieces(finalText).filter(p => countSyllables(p) > ceiling)
+    const stillOver = splitPieces(finalText).filter(p => syllables(p) > ceiling)
     if (stillOver.length) {
       finalText = forceSplit(finalText, ceiling)
       flagged = true
@@ -173,8 +190,8 @@ async function processTurn(row, ceiling) {
 
   return {
     finalText,
-    beforeSyll: pieces.map(countSyllables),
-    afterSyll: splitPieces(finalText).map(countSyllables),
+    beforeSyll: pieces.map(syllables),
+    afterSyll: splitPieces(finalText).map(syllables),
     flagged, flagReason,
   }
 }

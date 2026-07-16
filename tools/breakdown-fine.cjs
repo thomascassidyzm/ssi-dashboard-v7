@@ -40,7 +40,7 @@ const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
 const MODEL = process.env.BD_MODEL || 'opus'
-const POD = (process.argv.find((a) => a.startsWith('--pod=')) || '--pod=pod-0').slice('--pod='.length)
+const POD = require('./lib/pod-arg.cjs').parsePod(process.argv)
 if (!COURSE) { console.error('usage: breakdown-fine.cjs <course> [orders] [--dry] [--pod=pod-N]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 const bare = (s) => (s || '').toLowerCase().replace(/[.,!?;:¿¡"'’，。？！、]/g, '').replace(/\s+/g, ' ').trim()

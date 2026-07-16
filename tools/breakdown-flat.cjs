@@ -34,7 +34,7 @@ const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
 const MEANS_ONLY = process.argv.includes('--means-only') // re-voice means from existing atom_maps (no LLM, no atom re-author)
-const POD = (process.argv.find((a) => a.startsWith('--pod=')) || '--pod=pod-0').slice('--pod='.length)
+const POD = require('./lib/pod-arg.cjs').parsePod(process.argv)
 const MODEL = process.env.BD_MODEL || 'opus'
 const ROLE = 'pod_explainer'
 // xAI officially supports these (per services/voice-discovery-service.cjs); use
