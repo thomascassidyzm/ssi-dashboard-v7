@@ -6,16 +6,30 @@
  * pilot (Aran's model, 2026-07-01/02), so the CUTS can be judged by eye in the
  * Pod Lab before any audio money is spent.
  *
- * THE MODEL: units are natural PROSODIC units of meaning — the beats a careful
- * speaker separates when saying the sentence slowly for a learner. FINER than
- * the intention-level live atom_map (which keeps whole clauses as one atom):
- * each clause breaks into its speech beats. These seams are where the future
- * Take G (slow gapped take) will breathe, so every seam must be a natural
- * place to pause. Units tile each sentence; punctuation seams are mandatory.
+ * THE MODEL — INDEPENDENT MEANING (Tom + Aran, 2026-07-14, supersedes the
+ * original breath-group model): units are S-LEGOs — natural, COMPLETE
+ * COMMUNICATIVE UNITS (the standalone cognitive-audio unit of meaning; full
+ * definition in `docs/pods/pod-ladder-proposal.md` §9b) — never a syntactic
+ * fragment that only makes sense glued to its neighbour ("good morning,
+ * Sarah" is ONE S-LEGO, never "good"/"morning"/"Sarah"; "are you going to
+ * work?" is ONE S-LEGO, never "are you going"/"to work"). The within-sentence
+ * grammar-teaching job (showing how a sentence is BUILT from its parts) now
+ * belongs to the app's own always-visible tiled breakdown — this audio's only
+ * job is to carry the language's correct, natural PROSODIC shape, so a seam
+ * exists only where a careful speaker would genuinely pause AND both
+ * resulting S-LEGOs are independently meaningful.
+ * Canonical statement + rationale: `docs/pods/pod-ladder-proposal.md` §9/§9b.
+ * Syllable ceiling (pod-0: C=8) is enforced separately, via '…' inserted
+ * into `target_text` itself — see §9a and `tools/insert-ellipsis-seams.cjs`.
+ * These seams are where the future Take G (slow gapped take) will breathe.
+ * S-LEGOs tile each sentence; punctuation seams are mandatory. The mechanical
+ * enforcement/repair gate for this rule is `tools/audit-fine-seams.cjs`,
+ * intended to run right after this script on every course it touches.
  *
- *   node tools/breakdown-fine.cjs <course> [orders] [--dry]
- *   node tools/breakdown-fine.cjs zho_for_eng              # whole pod-0
+ *   node tools/breakdown-fine.cjs <course> [orders] [--dry] [--pod=pod-N]
+ *   node tools/breakdown-fine.cjs zho_for_eng              # whole pod-0 (default)
  *   node tools/breakdown-fine.cjs zho_for_eng 25,1,3 --dry # preview only
+ *   node tools/breakdown-fine.cjs zho_for_eng --pod=pod-1
  *
  * Same skeleton as breakdown-flat.cjs (claude CLI, tiling verification, worker
  * pool) minus every render step. Idempotent: re-running overwrites the draft.
@@ -28,7 +42,8 @@ const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
 const MODEL = process.env.BD_MODEL || 'opus'
-if (!COURSE) { console.error('usage: breakdown-fine.cjs <course> [orders] [--dry]'); process.exit(1) }
+const POD = require('./lib/pod-arg.cjs').parsePod(process.argv)
+if (!COURSE) { console.error('usage: breakdown-fine.cjs <course> [orders] [--dry] [--pod=pod-N]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 const bare = (s) => (s || '').toLowerCase().replace(/[.,!?;:¿¡"'’，。？！、]/g, '').replace(/\s+/g, ' ').trim()
 const alnum = (s) => (s || '').toLowerCase().replace(/[^\p{L}\p{N}\p{M}]/gu, '')
@@ -48,16 +63,18 @@ function claude(prompt) {
 const KNOWN_NAMES = { eng: 'English', jpn: 'Japanese', zho: 'Chinese', spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian', por: 'Portuguese', ara: 'Arabic', gle: 'Irish', cym: 'Welsh', rus: 'Russian', nld: 'Dutch', kor: 'Korean', hin: 'Hindi' }
 const KNOWN = KNOWN_NAMES[(COURSE.split('_for_')[1] || 'eng').split('_')[0]] || 'the learner\'s language'
 
-const RULES = `You author the MOLECULAR chunk breakdown for ONE dialogue TURN — the seams where a slow, careful take of this speech will pause for a learner. A pause WILL BE SYNTHESIZED at every seam you place (the gapped TTS take inserts one), and each chunk becomes an audio slice paired with its translation — so every seam is a real, audible commitment.
-THE MODEL — chunks are MOLECULAR, not atomic (Tom 2026-07-05): breath-groups / clause-sized spans, typically 3–6 words (Chinese/Japanese: typically 4–10 characters) — "good morning Anna," | "what are you thinking" | "of doing today?" — NOT single words, NOT minimal grammar atoms. The learner should hear a chunk and feel a whole piece of the idea, while still seeing how the sentence is built from its parts.
-THE TEST for every seam: "would a careful speaker naturally pause HERE when saying this slowly — and would a comma there read naturally?" If a pause there would sound wrong, do NOT split there. Never split inside anything spoken as one breath (a fused expression, a verb and its bound particle, a measure word and its noun).
-SEAMS LOOK BOTH WAYS: the fragment on EACH side of a seam must itself be a natural beat. Never strand a bare word that merely completes or introduces a phrase — a conjunction ALWAYS attaches to the clause it introduces ("mais je ne peux pas parler" is ONE chunk, never "… mais | je ne peux pas"), a subject pronoun to its verb phrase, bound particles to their host. Before keeping any seam, say each side aloud alone: if either side sounds like a stub, merge it.
-CROSS-LANGUAGE 1:1 — each chunk's gloss must translate EXACTLY that chunk, no more and no less: no word of meaning may sit in the neighbouring chunk's gloss (if "but" is in this chunk's target, "but" belongs in THIS gloss). A learner will hear the chunk audio against exactly this gloss; any drift between them is a defect.
-- a typical sentence yields 1–3 chunks; a short sentence is ONE chunk (do not split what fits in one breath).
-- Punctuation breaks are MANDATORY seams; a chunk NEVER spans any punctuation mark and NEVER crosses a sentence boundary (. ! ? 。 ！ ？ ؟).
-- Chunks must TILE each sentence IN ORDER — their surfaces, concatenated, reconstruct it exactly.
+const RULES = `You author the phrase breakdown for ONE dialogue TURN — the seams where this pod's audio will pause for a learner. A pause WILL BE SYNTHESIZED at every seam you place (the gapped TTS take inserts one), and each phrase becomes an audio slice paired with its translation — so every seam is a real, audible commitment.
+THE MODEL — INDEPENDENT MEANING (Tom + Aran, 2026-07-14): every phrase must be a COMPLETE COMMUNICATIVE UNIT, understandable entirely on its own — never a fragment that only makes sense glued to its neighbour. "good morning, Sarah" is ONE phrase, never "good" / "morning" / "Sarah". "are you going to work?" is ONE phrase, never "are you going" / "to work". The job of showing how a sentence is BUILT from its parts now belongs to the app's own always-visible tiled breakdown (a separate visual feature) — this audio's only job is to carry the language's correct, natural PROSODIC shape.
+THE TEST for every seam: could EACH side, heard alone with no other context, be understood as a complete thought a learner might actually say or hear? If either side needs its neighbour to make sense, do NOT split there.
+- Most short-to-medium sentences (pod turns run 1–4 sentences of roughly 3–12 words) are ONE phrase, whole — do not split a single clause into its beats.
+- The only legitimate split points: (a) a sentence boundary (always a seam); (b) between two INDEPENDENT clauses joined by a coordinator ("and", "but", "so") where each clause would stand alone as a complete statement; (c) a turn-initial interjection/vocative that is itself a complete utterance ("Morning!" / "Right,") ahead of the clause that follows.
+- Phrases should also be reasonably SHORT where the sentence genuinely allows it — but never invent a split just to shorten a phrase if neither resulting side would stand alone unaided.
+- Never split inside anything spoken as one breath (a fused expression, a verb and its bound particle, a measure word and its noun, a subordinate clause and the verb it depends on). A conjunction or subordinator ALWAYS attaches to the clause it introduces ("mais je ne peux pas parler" is ONE phrase, never "… mais | je ne peux pas").
+CROSS-LANGUAGE 1:1 — each phrase's gloss must translate EXACTLY that phrase, no more and no less: no word of meaning may sit in the neighbouring phrase's gloss (if "but" is in this phrase's target, "but" belongs in THIS gloss). A learner will hear the phrase audio against exactly this gloss; any drift between them is a defect.
+- Punctuation breaks are MANDATORY seams; a phrase NEVER spans any punctuation mark and NEVER crosses a sentence boundary (. ! ? 。 ！ ？ ؟).
+- Phrases must TILE each sentence IN ORDER — their surfaces, concatenated, reconstruct it exactly.
 - Snap to the speaking-course LEGO seams below where they fit — they mark units this course's learners already own.
-- Each chunk is glossed with its LITERAL/contextual meaning in natural ${KNOWN} a learner instantly understands (the ACTUAL contextual sense, not a dictionary lump) — the learner's own language is ${KNOWN}; never gloss in any other language. Word-order of the gloss follows the TARGET's construction where that helps show how the target builds the idea.
+- Each phrase is glossed with its LITERAL/contextual meaning in natural ${KNOWN} a learner instantly understands (the ACTUAL contextual sense, not a dictionary lump) — the learner's own language is ${KNOWN}; never gloss in any other language. Word-order of the gloss follows the TARGET's construction where that helps show how the target builds the idea.
 - Proper nouns / NAMES → source "name", gloss null.
 Output ONLY JSON: {"atoms":[{"target":"...","gloss":"... or null","source":"lego|llm|name"}]}`
 
@@ -98,11 +115,26 @@ function tileAndSnap(units, targetText) {
 ;(async () => {
   const { data: legos } = await supabase.from('course_legos').select('target_text, known_text').eq('course_code', COURSE).limit(5000)
   const inv = (legos || []).filter(l => l.target_text && l.known_text).map(l => ({ t: l.target_text, k: l.known_text, b: bare(l.target_text) }))
-  let q = supabase.from('listening_pod_sentences').select('id, global_order, target_text, known_text').eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+  let q = supabase.from('listening_pod_sentences').select('id, global_order, target_text, known_text').eq('pod_id', `${COURSE}:${POD}`).order('global_order')
   if (ORDERS.length) q = q.in('global_order', ORDERS)
   const { data: sents } = await q
 
-  let ok = 0, tilefail = 0
+  // "flag over-long phrases" (Aran, 2026-07-14): short phrases self-combine
+  // naturally by the final double-repeat, so a phrase this script authors
+  // wordier than a natural independent clause is worth a human glance, even
+  // though it isn't rejected outright (a genuinely long independent clause is
+  // still valid — this is a flag, not a gate).
+  // FOUNDER CEILING (docs/pods/pod-ladder-proposal.md §9a, 2026-07-16): a unit
+  // over its pod level's syllable ceiling (pod-0: C=8, pod-1+: C=12) is where
+  // the '…' ellipsis-authoring pass (tools/insert-ellipsis-seams.cjs) forces a
+  // breathing mark in target_text — this word-count flag is a cheap proxy,
+  // not the ceiling gate itself (no general-purpose cross-language syllable
+  // counter exists here).
+  const CEILING_WORDS = POD === 'pod-0' ? 6 : 9 // C=8 syllables → ~6 words for pod-0, C=12 → ~9 words for pod-1+ (rough proxy)
+  const CJK_RE = /[぀-ヿ㐀-䶿一-鿿가-힯]/
+  const isOverlong = (t) => CJK_RE.test(t) ? [...t].filter(c => /\p{L}/u.test(c)).length > CEILING_WORDS * 1.6 : t.trim().split(/\s+/).filter(Boolean).length > CEILING_WORDS
+
+  let ok = 0, tilefail = 0, overlong = 0
   async function processTurn(s) {
     const sb = ' ' + bare(s.target_text) + ' '
     const matches = inv.filter(l => l.b.length >= 2 && sb.includes(l.b)).sort((a, c) => c.b.length - a.b.length).slice(0, 24).map(l => `  "${l.t}" = ${l.k}`)
@@ -128,13 +160,15 @@ function tileAndSnap(units, targetText) {
       }
     })
     if (!dry) await supabase.from('listening_pod_sentences').update({ atom_map_fine: map }).eq('id', s.id)
-    console.log(`S${s.global_order}: ✓ ${map.length} units — ${units.map(a => a.gloss ? a.target : a.target + '(name)').join(' | ')}`)
+    const longFlags = units.filter(a => isOverlong(a.target))
+    if (longFlags.length) overlong++
+    console.log(`S${s.global_order}: ✓ ${map.length} units — ${units.map(a => a.gloss ? a.target : a.target + '(name)').join(' | ')}${longFlags.length ? `  ⚠ OVERLONG: ${longFlags.map(a => `"${a.target}"`).join(', ')}` : ''}`)
     ok++
   }
   const CONC = Number(process.env.BD_CONC || 20)
   let next = 0
   const worker = async () => { while (next < sents.length) await processTurn(sents[next++]) }
   await Promise.all(Array.from({ length: Math.min(CONC, sents.length) }, worker))
-  console.log(`\n${dry ? '[DRY] ' : ''}${COURSE}: ${ok} authored → atom_map_fine, ${tilefail} tiling-fail.`)
+  console.log(`\n${dry ? '[DRY] ' : ''}${COURSE}: ${ok} authored → atom_map_fine, ${tilefail} tiling-fail, ${overlong} turn(s) with an overlong phrase (flagged, not rejected).`)
   process.exit(0)
 })().catch(e => { console.error('ERR:', e.message); process.exit(1) })

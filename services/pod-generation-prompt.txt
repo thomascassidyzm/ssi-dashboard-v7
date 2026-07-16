@@ -36,6 +36,7 @@ If — and only if — a faithful rendering would be genuinely misleading, offen
 
 NON-NEGOTIABLE RULES
 1. SENTENCE LEVEL. Exactly one rendering per input line, whole and natural in rhythm — never chopped into fragments, never padded. EXCEPTION: a vocabulary-list line (a line that is only numbers / colours / days / times, e.g. "1. 2. 3. White. Black.") is rendered item-by-item, keeping the same list form and order, each item in its standard spoken form.
+1a. BREATHING CEILING. If target_text split on '.', '!', '?' still leaves a piece longer than {{SYLLABLE_CEILING}} syllables, insert '…' (U+2026, not three ASCII dots) inside that piece at a genuine intention/finite-clause boundary — a coordinator or subordinator always stays attached to the clause it introduces. Insert the fewest marks needed. Never use '…' as a substitute for a real sentence split, and never insert it into a piece already at or under the ceiling.
 2. ONE-TO-ONE, SAME ORDER. Exactly one output object per input line, same order, same global_order, same speaker. Same count as the input.
 3. SPEAKABLE OUTPUT. No speaker labels inside the text, no stage directions, no parentheticals, no emoji, no annotations like "(formal)". Numbers, currency, and times written as they are SPOKEN ALOUD in each language.
 4. CORRECT SCRIPT & ORTHOGRAPHY in target_text, per the culture notes. No romanisation unless the language is normally written in Latin script.

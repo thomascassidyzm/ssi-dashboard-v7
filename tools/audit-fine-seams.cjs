@@ -1,21 +1,33 @@
 #!/usr/bin/env node
 /**
  * audit-fine-seams.cjs — surgical quality pass over existing atom_map_fine:
- * apply the BIDIRECTIONAL seam test (each side of every seam must itself be a
- * natural beat) and MERGE the violations. Merge-only by design — patch-repair
- * over regeneration: no re-splits, no gloss churn on untouched units, tiling
- * can't break because merged surfaces are rebuilt from the original text.
+ * apply the INDEPENDENT-MEANING seam test (each side of every seam must itself
+ * be a complete S-LEGO — the standalone cognitive-audio unit of meaning, full
+ * definition in `docs/pods/pod-ladder-proposal.md` §9b) and MERGE the
+ * violations. Merge-only by design — patch-repair over regeneration: no
+ * re-splits, no gloss churn on untouched units, tiling can't break because
+ * merged surfaces are rebuilt from the original text. This is the mechanical
+ * REJECT gate for the segmentation rule authored in `tools/breakdown-fine.cjs`
+ * — run it right after that script (or against any existing course) to
+ * catch/repair fragments it or an earlier authoring pass let through.
  *
- * The rule this enforces (Tom 2026-07-04, the "hrvatski" case): a bare word
- * stranded after the phrase it completes ("početi govoriti | hrvatski") is a
- * shred — it leans back onto its verb phrase and must merge. Conservative
- * contract in the prompt: when unsure, KEEP the seam.
+ * The rule this enforces (Tom + Aran, 2026-07-14, generalising the earlier
+ * 2026-07-04 "hrvatski" case): a fragment that only makes sense glued to its
+ * neighbour must merge — a bare word stranded after the phrase it completes
+ * ("početi govoriti | hrvatski") is exactly this failure ("hrvatski" leans
+ * back onto its verb phrase; "početi govoriti hrvatski" is ONE S-LEGO), but so
+ * is any split of a single independent clause into its beats ("what are you
+ * thinking" | "of doing today?" must merge into one S-LEGO). Canonical
+ * statement: `docs/pods/pod-ladder-proposal.md` §9/§9b. Conservative contract
+ * in the prompt: when unsure, KEEP the seam.
  *
  * Merged units get a CLI-authored natural gloss and null ms spans (re-slice
  * fills them). Turns the audit changes are printed as a list for the re-run
  * pipeline (windows → Take G → knowns → slice).
  *
- *   node tools/audit-fine-seams.cjs <course> [orders] [--dry]
+ *   node tools/audit-fine-seams.cjs <course> [orders] [--dry] [--pod=pod-N]
+ *   node tools/audit-fine-seams.cjs zho_for_eng             # whole pod-0 (default)
+ *   node tools/audit-fine-seams.cjs zho_for_eng --pod=pod-1
  *
  * claude CLI only, no TTS, no cost gate.
  */
@@ -27,7 +39,8 @@ const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
 const MODEL = process.env.BD_MODEL || 'opus'
-if (!COURSE) { console.error('usage: audit-fine-seams.cjs <course> [orders] [--dry]'); process.exit(1) }
+const POD = require('./lib/pod-arg.cjs').parsePod(process.argv)
+if (!COURSE) { console.error('usage: audit-fine-seams.cjs <course> [orders] [--dry] [--pod=pod-N]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const KNOWN_NAMES = { eng: 'English', jpn: 'Japanese', zho: 'Chinese', spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian', por: 'Portuguese', ara: 'Arabic', gle: 'Irish', cym: 'Welsh', rus: 'Russian', nld: 'Dutch', kor: 'Korean', hin: 'Hindi' }
@@ -74,17 +87,20 @@ function markUnits(turnText, units) {
   return marks
 }
 
-const RULES = `You audit the seams of ONE dialogue turn's fine unit breakdown for a listening exercise. Units are the beats a careful teacher separates when saying the sentence SLOWLY.
-THE RULE — seams look BOTH ways: the fragment on EACH side of a seam must itself be a natural beat a speaker could pause after AND before. The failure you are hunting: a bare word stranded after the phrase it completes — "početi govoriti | hrvatski" is WRONG ("hrvatski" leans back onto its verb phrase; "početi govoriti hrvatski" is ONE beat). Say each side of every seam aloud alone: if either side sounds like a stub rather than a beat, MERGE across that seam.
+const RULES = `You audit the seams of ONE dialogue turn's fine unit breakdown for a listening exercise. Units are meant to be INDEPENDENT MEANING units: each one a complete communicative unit a learner could hear alone and understand, never a fragment that only makes sense glued to its neighbour.
+THE RULE — seams look BOTH ways: EACH side of every seam must itself stand alone as a complete thought. Two failure shapes to hunt for:
+  (1) a bare word or short tag stranded after the phrase it completes — "početi govoriti | hrvatski" is WRONG ("hrvatski" leans back onto its verb phrase; "početi govoriti hrvatski" is ONE unit);
+  (2) a single independent clause chopped into its beats even though every piece is a real word-group — "what are you thinking | of doing today?" is WRONG (neither half is a complete thought alone; "what are you thinking of doing today?" is ONE unit). The old "does this sound like a natural pause" test is NOT enough — the test now is "could this side stand alone, with no other context, as a thing a learner could say or hear and understand?" If either side needs its neighbour to make sense, MERGE across that seam.
+The only seams that legitimately survive mid-sentence are between two INDEPENDENT clauses joined by a coordinator ("and"/"but"/"so") where each clause would stand alone as a complete statement, or a turn-initial interjection/vocative that is itself complete ("Right," / "Morning!") ahead of the clause that follows.
 You may ONLY merge consecutive units within the same sentence — never re-split, never reorder, never cross sentence punctuation.
-BE CONSERVATIVE: most seams are fine; when unsure, KEEP the seam. A merge needs a clear "that stub is not a beat" judgement.
+BE CONSERVATIVE: when unsure whether a side is genuinely independent, KEEP the seam — but a fragment that plainly cannot stand alone must be merged even if it looks like a normal-sized chunk.
 For every merge, give the merged unit's natural translation in ${KNOWN} — the learner's own language (reuse the original units' wording where it stays natural).
 Return ONLY JSON: {"merges":[{"s":<sentence#>,"from":<first unit#>,"to":<last unit#>,"gloss":"..."}]} — unit numbers are the [n] indices shown, per sentence; empty list if all seams pass.`
 
 ;(async () => {
   let q = supabase.from('listening_pod_sentences')
     .select('id, global_order, target_text, known_text, atom_map_fine')
-    .eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+    .eq('pod_id', `${COURSE}:${POD}`).order('global_order')
   if (ORDERS.length) q = q.in('global_order', ORDERS)
   const { data: sents, error } = await q
   if (error) { console.error(error.message); process.exit(1) }

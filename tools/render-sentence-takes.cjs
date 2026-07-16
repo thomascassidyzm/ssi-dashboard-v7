@@ -20,9 +20,13 @@
  *
  *   PHASE8_NO_LISTEN=1 node tools/render-sentence-takes.cjs <course> [orders] [--dry]
  *
- * Idempotent: rows whose sentence_audio_ids are already fully linked are
- * skipped; generatePodAudio dedups by course+text+language+role+voice.
- * TTS costs money — run under an approved plan.
+ * Idempotent: target-side sentence_audio_ids that are already fully linked
+ * are never re-rendered. The known side is re-resolved through
+ * generatePodAudio's text+voice dedup on every run (a cheap DB lookup, no
+ * TTS call unless the text actually changed) so a known-text-only edit
+ * (target unchanged) still regenerates its stale fine-ladder clips instead
+ * of being skipped as "already linked" — TTS costs money — run under an
+ * approved plan.
  */
 require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') })
 const { createClient } = require('@supabase/supabase-js')
@@ -103,37 +107,46 @@ function sentenceTextsFromGroups(turnText, groups) {
       : (s.target_text || '').split(SENTENCE_SPLIT).map((x) => x.trim()).filter(Boolean)
     if (!tSents) { console.log(`S${s.global_order}: ✗ fine units don't walk the turn text`); failed++; return }
     if (tSents.length < 2) { singles++; return } // whole-turn take IS the sentence
-    if (Array.isArray(s.sentence_audio_ids) && s.sentence_audio_ids.filter(Boolean).length === tSents.length) { skipped++; return }
+
+    const kSents = (s.known_text || '').split(SENTENCE_SPLIT).map((x) => x.trim()).filter(Boolean)
+    const doKnown = kSents.length === tSents.length
+    const targetLinked = Array.isArray(s.sentence_audio_ids) && s.sentence_audio_ids.filter(Boolean).length === tSents.length
+    if (targetLinked && !doKnown) { skipped++; return } // nothing this run can do for a mismatched known side
 
     const tVoice = p8.resolvePodSpeakerVoice(pod.speakers, s.speaker, 'target')
     const kVoice = p8.resolvePodSpeakerVoice(pod.speakers, s.speaker, 'known')
-    if (!tVoice) { console.log(`S${s.global_order}: ✗ no target voice for "${s.speaker}"`); failed++; return }
-
-    const kSents = (s.known_text || '').split(SENTENCE_SPLIT).map((x) => x.trim()).filter(Boolean)
-    const doKnown = !!kVoice && kSents.length === tSents.length
+    if (!targetLinked && !tVoice) { console.log(`S${s.global_order}: ✗ no target voice for "${s.speaker}"`); failed++; return }
 
     if (dry) {
-      console.log(`S${s.global_order} [${s.speaker}]: ${tSents.length} sentences — ${tSents.join(' ‖ ')}${doKnown ? '' : '  (known side skipped)'}`)
+      console.log(`S${s.global_order} [${s.speaker}]: ${tSents.length} sentences${targetLinked ? ' (target linked)' : ''} — ${tSents.join(' ‖ ')}${doKnown ? '' : '  (known side skipped)'}`)
       return
     }
     try {
-      const tIds = []
-      for (const text of tSents) {
-        const res = await p8.generatePodAudio({ courseCode: COURSE, text, language: targetLang, role: 'target1', voice: tVoice })
-        res.reused ? reused++ : rendered++
-        tIds.push(res.id)
+      let tIds = s.sentence_audio_ids
+      if (!targetLinked) {
+        tIds = []
+        for (const text of tSents) {
+          const res = await p8.generatePodAudio({ courseCode: COURSE, text, language: targetLang, role: 'target1', voice: tVoice })
+          res.reused ? reused++ : rendered++
+          tIds.push(res.id)
+        }
       }
-      let kIds = null
-      if (doKnown) {
+      let kIds = null, kChanged = false
+      if (doKnown && kVoice) {
         kIds = []
         for (const text of kSents) {
           const res = await p8.generatePodAudio({ courseCode: COURSE, text, language: knownLang, role: 'known', voice: kVoice })
           res.reused ? reused++ : rendered++
           kIds.push(res.id)
         }
+        const prevKnown = Array.isArray(s.sentence_known_audio_ids) ? s.sentence_known_audio_ids : []
+        kChanged = prevKnown.length !== kIds.length || kIds.some((id, i) => id !== prevKnown[i])
       }
-      const update = { sentence_audio_ids: tIds }
-      if (kIds) update.sentence_known_audio_ids = kIds
+      if (targetLinked && !kChanged) { skipped++; return } // known side re-resolved to the same ids — no drift
+
+      const update = {}
+      if (!targetLinked) update.sentence_audio_ids = tIds
+      if (kIds && kChanged) update.sentence_known_audio_ids = kIds
       const { error: werr } = await supabase.from('listening_pod_sentences').update(update).eq('id', s.id)
       if (werr) { console.log(`S${s.global_order}: LINK FAIL ${werr.message}`); failed++; return }
       linked++

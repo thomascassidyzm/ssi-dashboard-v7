@@ -18,6 +18,7 @@ const os = require('os');
 const path = require('path');
 const crypto = require('crypto');
 const { execFile } = require('child_process');
+const { ellipsisToSSMLBreaks } = require('./shared/ellipsis-ssml.cjs');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint } = require('./azure-tts-service.cjs');
 
@@ -157,7 +158,7 @@ async function generateAzure(text, config) {
       <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
         <voice name="${voiceName}">
           <prosody rate="${rateString}">
-            ${escapeXml(ttsText)}
+            ${ellipsisToSSMLBreaks(ttsText)}
           </prosody>
         </voice>
       </speak>
@@ -254,17 +255,6 @@ async function generateXai(text, config) {
   return { audioBuffer: Buffer.from(arrayBuffer), wordBoundaries: null };
 }
 
-/**
- * Escape XML special characters for SSML
- */
-function escapeXml(text) {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
-}
 
 /**
  * Generate speech using specified TTS provider

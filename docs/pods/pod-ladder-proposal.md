@@ -385,3 +385,120 @@ sport, the economy, travel, food: pick 8–12 frames, pour the domain in.
    (§3) visible rungs the learner chooses ("Pod 1 · faster"), or an invisible setting?
    Visible rungs make the ladder feel longer and progress feel cheaper to earn; my
    read is visible.
+
+## 9. Phrase segmentation principle — independent meaning (Tom + Aran, 2026-07-14)
+
+**Every pod phrase must have INDEPENDENT MEANING: a complete communicative unit,
+understandable entirely on its own.** Tom's examples, verbatim: it's never "good /
+morning / Sarah" — always "good morning, Sarah". It's "are you going to work?" — never
+"are you going / to work". Phrases should also be reasonably SHORT (Aran: short
+phrases self-combine naturally by the final double-repeat, so shortness doesn't need
+to be bought with fragmentation).
+
+**Rationale.** The audio's job is to carry the correct PROSODIC shape of the
+language — the pauses a speaker genuinely takes. The job of showing how a sentence is
+*built* from its parts (the within-sentence grammar) has moved to the app's own
+always-visible tiled breakdown, being built in parallel in `ssi-learning-app`. That
+frees pod audio from ever needing to fragment a sentence for teaching purposes — a
+fragment that only makes sense glued to its neighbour is now simply a defect, not a
+teaching device.
+
+**Where this is encoded (this repo, popty):**
+- **Authoring layer** — `tools/breakdown-fine.cjs`, the LLM prompt that drafts a pod
+  turn's `atom_map_fine` (the seams Take G's gapped take pauses at). Its model moved
+  from "molecular breath-groups, 3–6 words" to independent-meaning units: most 1–4
+  sentence pod turns are now ONE phrase, whole; a mid-sentence seam survives only
+  between two independent clauses joined by a coordinator, or a complete
+  turn-initial interjection ahead of the clause that follows. Also flags (does not
+  reject) phrases that come out longer than a natural independent clause allows.
+- **Validation/reject gate** — `tools/audit-fine-seams.cjs`, the existing post-hoc
+  merge-only pass (previously enforcing Tom's 2026-07-04 "hrvatski" bidirectional-beat
+  rule) had its bidirectional test tightened to the same independent-meaning standard:
+  it now merges not just a stranded bare word, but ANY split of a single independent
+  clause into sub-clause beats. Conservative by design — merge-only, no re-splits, no
+  gloss churn on untouched units; when unsure whether a side is genuinely independent,
+  it keeps the seam. Intended to run right after `breakdown-fine.cjs` on every course
+  it touches (and any time a violation queue needs sweeping).
+- Neither tool changes turn-level authoring (`services/pod-generation-prompt.txt`,
+  `services/pod-dialogue-generator.cjs`) — a dialogue TURN was already one row, never
+  chopped into fragments at that layer (rule 1, "SENTENCE LEVEL", in the generation
+  prompt). The new rule governs only the FINER seam this repo places *inside* a turn
+  for Take G's fusion ladder.
+- **Scope of this change:** governs NEW generation only. Existing `atom_map_fine`
+  content across the estate (breath-group-era) is not migrated by this change — an
+  estate-wide re-chunking sweep is a separate future decision, following the sweep
+  protocol (pilot ~40 items, read the distribution, then decide) rather than a blanket
+  regeneration.
+
+### 9a. Chunk ceiling via '…' in the source text (founder ruling, 2026-07-16)
+
+Full rationale, empirical TTS verification, and the data behind this ruling:
+`docs/pods/chunk-granularity-state-of-play-2026-07-16.md` §5 — read that first.
+This section amends §9's model, it does not replace it: independent meaning is
+still the seam rule; this adds a syllable CEILING that forces a seam inside an
+otherwise-single-phrase turn when it would otherwise run too long to breathe.
+
+**The mark.** `'…'` (U+2026, not three ASCII dots) in `target_text` is the
+single canonical breathing mark. It is placed at intention/finite-clause
+boundaries — a subordinator or coordinator always stays attached to the clause
+it introduces, same rule as §9's seam test. It marks breathing WITHIN one
+independent-meaning phrase; it is never a substitute for a genuine phrase
+split.
+
+**The ceiling is founder-set per pod level, not a single global number:**
+
+| Pod level | Syllable ceiling C |
+|---|---|
+| pod-0 | **8** |
+| pod-1 and onward | **12** |
+
+Only a turn containing a piece over ITS level's ceiling gets an ellipsis.
+Insert the fewest '…' marks that bring every resulting piece to ≤ C, at
+finite-clause seams by preference. A single clause over the ceiling with no
+internal intention boundary takes one '…' at the best prosodic point and MUST
+be flagged for human ear — this is a forced mid-clause split, the one case
+the independent-meaning rule would otherwise forbid.
+
+**Render layer (per-provider, already implemented):** xAI receives '…'
+literally — it renders a natural ~330–410ms pause with no artefacts,
+verified. Azure voices pass '…' through with no audible gap, so every Azure
+SSML build substitutes each '…' for `<break time="400ms"/>` before
+synthesis — this is a TTS-input-only transform, never stored; see
+`services/shared/ellipsis-ssml.cjs` (used by both `services/tts-service.cjs`
+and `services/azure-tts-service.cjs`, the two Azure SSML builders in this
+repo). Human cast direction: "pause at the ellipsis."
+
+**Authoring/gate:** LLM-assisted authoring pass, run per the normal sweep
+protocol (`docs/pods/course-generation-manual.md` §7 pattern: dry-run first,
+per-row logs, re-audit after apply). The visual `atom_map` breakdown
+(`tools/breakdown-flat.cjs`) already treats '…' as a mandatory sentence-level
+seam alongside `. ! ?` so tile boundaries stay aligned; `atom_map_fine`
+tooling (`tools/breakdown-fine.cjs`) already splits its units on '…'.
+
+**Scope:** pod-0 is live-audio (Azure, Croatian) — turns touched need a
+re-render, queued through the normal audio-pass gate, never rendered without
+approval. Pod-1 is draft text with no audio yet — ellipses are authored
+straight into canon. Pod-2/3 authoring prompts bake in both ceilings from
+first generation, so this backfill is a one-time cost for pod-0/pod-1 only.
+
+### 9b. Terminology — TURN and S-LEGO (founder ruling, 2026-07-16)
+
+This is the canonical definition. Other pod docs should link here rather than
+restate it.
+
+- **TURN** — one speaker's contribution in a pod dialogue, of any length (one
+  word to five sentences). Purely structural: it names *who is speaking*, not
+  the size or shape of what they say.
+- **S-LEGO** (a new sibling to A-LEGO/M-LEGO — see §1 of
+  `ralph-methodology.md` for those) — the standalone unit of meaning inside a
+  turn: the cognitive audio unit, a re-usable intention. An S-LEGO sometimes
+  coincides exactly with an existing A-LEGO or M-LEGO (the tooling already
+  snaps to these where it can); more often it's slightly longer — a
+  comma-separated clause, or the natural break either side of a coordinator.
+  **Operational definition: an S-LEGO boundary is exactly a place where an
+  ellipsis ('…') can be inserted without causing a problem for meaning or for
+  the TTS engines.** In these terms: the §9 independent-meaning seam test
+  finds S-LEGO boundaries; the §9a syllable ceilings (C=8 pod-0, C=12 pod-1+)
+  are ceilings on S-LEGO size; the §9a ellipsis-insertion pass *is* S-LEGO
+  segmentation; and a §9a flagged forced split is a cut made where no
+  legitimate S-LEGO boundary was available.

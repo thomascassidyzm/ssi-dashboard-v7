@@ -9,6 +9,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const langService = require('./language-code-service.cjs');
+const { ellipsisToSSMLBreaks } = require('./shared/ellipsis-ssml.cjs');
 
 // Configuration from environment
 const AZURE_SPEECH_KEY = process.env.AZURE_SPEECH_KEY;
@@ -164,21 +165,9 @@ function buildSSML(text, voiceName, speed = 1.0) {
 
   return `<speak version='1.0' xml:lang='${xmlLang}' xmlns='http://www.w3.org/2001/10/synthesis'>
     <voice name='${voiceName}'>
-        <prosody rate='${speedStr}'>${escapeXML(text)}</prosody>
+        <prosody rate='${speedStr}'>${ellipsisToSSMLBreaks(text)}</prosody>
     </voice>
 </speak>`;
-}
-
-/**
- * Escape XML special characters
- */
-function escapeXML(text) {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
 }
 
 /**
