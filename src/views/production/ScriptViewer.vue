@@ -1051,7 +1051,9 @@ const jumpToRound = async (roundNumberArg?: number) => {
     return;
   }
 
-  const targetOffset = Math.floor((target - 1) / journeyPageSize) * journeyPageSize;
+  // Start the window AT the requested round (320 → 320-339), rather than
+  // snapping to the page-of-20 that contains it.
+  const targetOffset = target - 1;
   if (targetOffset !== journeyOffset.value) {
     journeyOffset.value = targetOffset;
     await loadLearningJourney();
