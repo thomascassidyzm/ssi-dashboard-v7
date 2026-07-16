@@ -244,3 +244,25 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 13 | Priya | Ella can only come later. She's working till one. |
 | 14 | Tom | Two it is, then. Saturday, two o'clock, by the river. |
 | 15 | Priya | Perfect. I'll text you if anything else changes. |
+
+## 12. If I Were You — *The flat with the garden*
+
+*Difficulty: intermediate · 15 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Chloe | Can I ask you something? I need some advice. |
+| 2 | Ben | Go on. I'm all ears. |
+| 3 | Chloe | You know the flat we saw on Tuesday… the one with the little garden? |
+| 4 | Ben | The one you haven't stopped talking about? That one? |
+| 5 | Chloe | That's the one. It's a bit more than we wanted to pay… and I can't decide. What would you do? |
+| 6 | Ben | Honestly? If I were you, I'd take it. |
+| 7 | Chloe | Just like that? |
+| 8 | Ben | You've wanted a garden for years. And you'd only regret losing it. |
+| 9 | Chloe | That's true. But the money worries me a bit. |
+| 10 | Ben | Then here's what I'd do… ask them if they'll come down a little. |
+| 11 | Chloe | Do you think they would? |
+| 12 | Ben | It can't hurt to ask. The worst they can say is no. |
+| 13 | Chloe | You're right, I know you're right. I just needed to hear someone say it. |
+| 14 | Ben | It's up to you, of course. But I think you already know what you want. |
+| 15 | Chloe | I do. Right — I'm ringing them in the morning. |
