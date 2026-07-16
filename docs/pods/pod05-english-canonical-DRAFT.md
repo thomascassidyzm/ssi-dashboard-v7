@@ -10,10 +10,13 @@ of `pod-ladder-proposal.md`; verify with
 (NOTE: the audit and `tools/seed-canonical-pods.cjs` currently SKIP the `3a`/`3b`
 variant rows — a real pipeline gap, see the analysis doc §Menu-lines).*
 
-*MENU-LINES: rows numbered `Na`/`Nb`/`Nc` are personalisation variants — side-by-side
-alternatives Aran authored deliberately ("Yes, I'm married." / "No, I'm not married.").
-Exactly ONE row per variant group is rendered in any one playthrough; they are never
-read in sequence. Representation proposal + pipeline gaps: analysis doc §Menu-lines.*
+*MENU-LINES (founder ruling 2026-07-16): rows numbered `Na`/`Nb`/`Nc` are
+SCENARIO-VARIANTS — sibling takes of the same conversational moment, all shipped and
+all drilled. Every learner learns every variation: they must produce their own answer
+AND understand everyone else's. Rows sharing a number form one turn-group; the player
+presents them as alternative takes of that moment, never as one sequential monologue.
+Each variant is a complete natural utterance and is analysed as its own turn.
+Representation + pipeline gaps: analysis doc §Menu-lines.*
 
 *PLACEHOLDERS: `[target language]` uses the existing canon-v2 machinery
 (`services/pod-generation-prompt.cjs`). `[home country]`, `[home city]`,

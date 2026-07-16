@@ -10,32 +10,32 @@ Ceilings and S-LEGO definitions: `pod-ladder-proposal.md` §9a/§9b. Counter =
 
 ## 1. Syllable / S-LEGO numbers — the placement evidence
 
-Raw text: **17 turns, 77 sentences**. Sentence-level pieces measured before any
-ellipsis insertion; "forced cut" = the sentence has NO comma/coordinator/subordinator
-seam that brings every resulting chunk under the ceiling — an ellipsis would have to
-land mid-clause (§9a's flag-for-human-ear case) or the sentence must be rewritten.
+Per the founder's menu-lines ruling (2026-07-16), each scenario-variant is analysed as
+its own turn: **27 turns (17 conversational moments + variants), 77 sentences**.
+Sentence-level pieces measured before ellipsis insertion; "no rescuing seam" = even
+using every available seam (comma, coordinator, subordinator, and the seams the C=12
+pass found) some chunk still exceeds the ceiling — an ellipsis would have to land
+mid-constituent (§9a's flag-for-human-ear case) or the sentence must be rewritten.
 
 | | **C=12 (pod-1+ ceiling)** | **C=8 (pod-0 ceiling)** |
 |---|---|---|
-| Sentences over ceiling | 42 / 77 (55%) | 57 / 77 (74%) |
-| Turns needing ellipses | 13 / 17 | 16 / 17 |
-| Sentences with NO rescuing clause seam (forced cuts) | 24 | **47 (61% of all sentences)** |
+| Sentences over ceiling | 43 / 77 (56%) | 57 / 77 (74%) |
+| Turns needing ellipses | 15 / 27 | 21 / 27 |
+| Sentences with NO rescuing seam | 0 (see below) | **40 (52% of all sentences)** |
 | Result of an actual §9a pass | **Done — draft passes** | Not attempted — see below |
 
 **The applied C=12 pass** (baked into the DRAFT): 101 '…' marks → **178 pieces, max
-piece exactly 12 syllables, zero over ceiling** (verified including the variant rows the
-shared audit can't see; `tools/audit-canon-ellipsis.cjs … eng 12` also passes on the 18
-rows it parses). Of the 24 mechanically-forced sentences, most resolved at legitimate
-S-LEGO boundaries the mechanical test doesn't model (adjunct edges, relative-clause
-edges, infinitival edges). **7 seams are genuinely below clause level** and are flagged
-for human ear (§4 list) — real but survivable.
+piece exactly 12 syllables, zero over ceiling** — verified including every variant row
+(the shared audit can't parse those yet; `tools/audit-canon-ellipsis.cjs … eng 12` also
+passes on the 18 rows it does parse). Every over-ceiling sentence found a seam, but
+**7 of the chosen seams are below finite-clause level** and are flagged for human ear
+(§4 list) — real but survivable.
 
 **Why C=8 was not baked:** even the fully C=12-segmented draft still has 69 of 178
-pieces over 8. Getting there would mean cutting mid-clause in 47 of 77 sentences —
+pieces over 8, and 40 of 77 sentences have no seam inventory at all that reaches C=8 —
 pieces like "with someone who doesn't speak it very well" (12 syl, no internal seam)
 would shatter into non-intentions. C=8 is unreachable for this text without rewriting
-most of it, which the preserve-Aran's-text rail forbids. Concretely: only 1 turn of 17
-fits C=8 as written.
+most of it, which the preserve-Aran's-text rail forbids.
 
 ---
 
@@ -58,40 +58,41 @@ exchanges and pod-1's move drills without displacing either.
 
 ---
 
-## 3. Menu-lines — the personalisation-variant shape (NEW)
+## 3. Menu-lines — scenario-variants (founder ruling 2026-07-16)
 
 Aran deliberately authored side-by-side alternatives in two turns (raw turns 9 and 14):
-married/not-married, children/no-children, partner/no-partner. Flattening them away
-loses the field-tested personalisation; reading them in sequence is contradictory
-nonsense. The DRAFT represents them as **variant rows**: `3a`/`3b`/`4a`… — rows sharing
-a number are one variant group; exactly one is rendered per playthrough.
+married/not-married, children/no-children, partner/no-partner. **Founder ruling: keep
+ALL of them, as scenario-variants — every learner learns every variation** (they must
+produce their own answer AND understand everyone else's). They are NOT pick-one
+personalisation slots. The DRAFT represents them as **variant rows**: `3a`/`3b`/`4a`… —
+rows sharing a number form one **turn-group**: sibling takes of the same conversational
+moment, all shipped, all drilled, each a complete natural utterance. The only thing the
+grouping exists to prevent is the player reading the takes as one contradictory
+monologue — it presents them as alternative takes of the moment.
 
-**Proposed pipeline representation** (follows the existing shapes, not new machinery):
+**Pipeline representation** (follows the existing shapes, not new machinery):
 - `canonical_pod_scenarios` gains one nullable text column `variant_key` (`a`/`b`/`c`;
-  null = ordinary row). Same `sentence_number` = same group. ID becomes
+  null = ordinary row). Same `sentence_number` = same turn-group. ID becomes
   `pod-0.5:SC04-S03a`.
 - `tools/seed-canonical-pods.cjs:63` — row regex `^\d+$` widens to `^(\d+)([a-z])?$`;
-  digits → `sentence_number`, letter → `variant_key`.
-- Downstream (generation prompt lines block, TTS render queue, player playback) filter
-  to **one row per group — the group's default** — until a personalisation feature
-  exists. That makes the change zero-risk for current playback: default path only.
+  digits → `sentence_number`, letter → `variant_key`. ALL rows seed; nothing filtered.
 - `tools/audit-canon-ellipsis.cjs:45` has the same `^\d+$` regex — widen identically
-  (today it silently skips variant rows; my analysis script covered them).
+  (today it silently skips variant rows; the analysis script covered them).
+- Generation + TTS: every variant row translates and renders like any other row (each
+  is a self-contained utterance, so no new prompt machinery). The ledger keeps the
+  group's shared vocabulary consistent across takes for free.
+- Player: the one real gap — playback must present a turn-group as alternative takes
+  of the same moment (however that's staged), not as consecutive lines of one speaker.
 
 **Two content facts the representation must respect (both flagged, no action taken):**
-1. **Variant leakage into common text.** Scene 6 row 5 (the Friend's long tail —
-   "either my husband or I…", "I'd really like the children to grow up…") is only
-   coherent under partner=3b and children=4b. So the default cannot be
-   "alphabetically first": defaults must be marked per group. Recommended defaults:
-   sc4 → 3a, 4a (tail is branch-neutral); sc6 → 3b, 4b (tail requires them).
+1. **Continuation coherence.** Scene 6 row 5 (the Friend's long tail — "either my
+   husband or I…", "I'd really like the children to grow up…") continues the 3b/4b
+   takes specifically. All takes still ship and drill; the presentation order should
+   just let the tail follow the take it coheres with.
 2. **Aran's raw ordering interleaved branches** (turn 9: "I have a daughter and a
    son. We don't have children. I don't have children. My son is fifteen…"). The
-   draft regroups continuation sentences with their branch — every sentence verbatim,
+   draft regroups continuation sentences with their take — every sentence verbatim,
    only adjacency changed (§4 deviation 3).
-
-If the founder prefers not to touch the pipeline yet: the DRAFT file is already clean —
-seed it with only the default rows (delete the non-default variant rows in a seeding
-copy) and keep the full file as the personalisation source of truth.
 
 ---
 
@@ -155,7 +156,7 @@ tokens follow the identical pattern:
 ## 6. Recommendation
 
 **Pod-0.5 at C=12.** C=8 is not a real option for this text: 74% of sentences break the
-ceiling and 61% have no legitimate seam that rescues them, so a pod-0 placement at C=8
+ceiling and 52% have no legitimate seam that rescues them, so a pod-0 placement at C=8
 means rewriting most of a field-tested script — exactly what the preserve-Aran's-text
 rail forbids — whereas the C=12 pass is done, passes clean, and cost only 7 flagged
 fine seams. The content is also cognitively post-pod-0: long biographical monologues,
@@ -168,4 +169,5 @@ existing delivery for free), and pod-0 graduates meet 12-syllable breath groups
 immediately — mitigated by the fact that Aran field-tested exactly this material with
 exactly this audience for 75 hours. On the founder's word: seed with
 `node tools/seed-canonical-pods.cjs --file=docs/pods/pod05-english-canonical-DRAFT.md --slug=pod-0.5 --execute`
-(after the §3 variant-row parser widening, or with a default-rows-only seeding copy).
+— after the §3 variant-row parser widening + `variant_key` column, since all
+scenario-variant rows now ship.
