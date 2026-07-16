@@ -83,5 +83,12 @@ export const podThinkingMeta = {
     date: '2026-07-16',
     status: 'Report — no changes made',
     badge: 'IN DISCUSSION'
+  },
+  'real-vs-authored-texture-analysis': {
+    title: 'Real vs Authored — a texture analysis of pod-0.5 against pod-1',
+    description: "Discussion instrument for the founder/co-founder conversation on pod-1's flesh: measured forensic comparison, the failure mode named (maximal typicality), a 12-check Realness Rubric, and the three sourcing options laid out as a clean fork.",
+    date: '2026-07-16',
+    status: 'Discussion instrument — founder/Aran conversation',
+    badge: 'IN DISCUSSION'
   }
 }

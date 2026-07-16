@@ -1,11 +1,14 @@
 // Auto-index of "Pod Thinking" methodology docs. Every markdown or text file in
-// docs/pods/ renders at /docs/pod-thinking/:slug automatically — no code change
-// needed to add a new doc. To give a doc a proper title/description/status
-// instead of the generated default, add an entry to pod-thinking-meta.js
-// keyed by its filename (without extension).
+// docs/pods/ or docs/adaptation/ renders at /docs/pod-thinking/:slug
+// automatically — no code change needed to add a new doc. To give a doc a
+// proper title/description/status instead of the generated default, add an
+// entry to pod-thinking-meta.js keyed by its filename (without extension).
 import { podThinkingMeta } from './pod-thinking-meta'
 
-const modules = import.meta.glob('../../docs/pods/*.{md,txt}', { query: '?raw', import: 'default' })
+const modules = {
+  ...import.meta.glob('../../docs/pods/*.{md,txt}', { query: '?raw', import: 'default' }),
+  ...import.meta.glob('../../docs/adaptation/*.{md,txt}', { query: '?raw', import: 'default' })
+}
 
 function titleFromSlug(slug) {
   return slug
