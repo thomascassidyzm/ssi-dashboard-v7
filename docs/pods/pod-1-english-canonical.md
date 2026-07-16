@@ -288,3 +288,26 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 13 | Rob | Exactly how I feel. Shall we keep this to ourselves at work? |
 | 14 | Faye | Probably wise. If anyone asks… it was an experience. |
 | 15 | Rob | An experience. Perfect. That's exactly what I'll say. |
+
+## 14. Guess What — *The best and worst news*
+
+*Difficulty: intermediate · 16 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Katie | Guess what — I've got some news. Are you sitting down? |
+| 2 | Ryan | That sounds serious. Go on, then. |
+| 3 | Katie | We got the house! The one by the park… the one we've been after for months. |
+| 4 | Ryan | You're joking! That's amazing, Katie — congratulations. |
+| 5 | Katie | I still can't quite believe it. We only found out an hour ago. |
+| 6 | Ryan | When do you move in? |
+| 7 | Katie | Not until September… but I've already started thinking about paint. |
+| 8 | Ryan | Of course you have. I'm really happy for you both. |
+| 9 | Katie | Thank you. And you? You said you had news too. |
+| 10 | Ryan | Mine's not as happy, I'm afraid. I've got some bad news about Danny. |
+| 11 | Katie | Oh no. What's happened? |
+| 12 | Ryan | He lost his job on Friday. The whole team went. |
+| 13 | Katie | Oh, I'm so sorry to hear that. How's he taking it? |
+| 14 | Ryan | He's putting a brave face on it… but you know Danny. |
+| 15 | Katie | Tell him we're thinking of him, won't you? And that something better will come along. |
+| 16 | Ryan | I will. Funny old week — the best and worst news in one day. |
