@@ -41,6 +41,45 @@ function countSyllablesHrv(text) {
   return total
 }
 
+// --- English (vowel groups + orthographic silent-ending rules) ---
+// English spelling is the least phonetic of the set, so this counter carries
+// more ending rules than the generic vowel-group heuristic: silent final -e
+// ("make") except consonant+le ("table"); silent -es after a non-sibilant
+// ("likes" vs "houses"), kept for the consonant+le plural ("tables" vs
+// "miles"); silent -ed except after t/d ("walked" vs "wanted"); y as a vowel
+// except word-initially ("very" vs "yes"); and n't adding a nucleus only
+// after a consonant ("didn't" vs "can't"). Same contract as the rest of the
+// registry: an approximation good enough to size a '…' breathing-seam pass,
+// not a phonetic parser.
+function countSyllablesEng(text) {
+  const words = (text || '').toLowerCase()
+    .replace(/’/g, "'")
+    .replace(/[^a-z'\s]/g, ' ')
+    .split(/\s+/).filter(Boolean)
+  let total = 0
+  for (let w of words) {
+    let extra = 0
+    if (w.endsWith("n't")) {
+      const base = w.slice(0, -3)
+      if (base && !'aeiou'.includes(base[base.length - 1])) extra = 1
+      w = base + 'nt'
+    }
+    w = w.replace(/'(s|ll|d|re|ve|m|em)$/, '').replace(/'/g, '')
+    let count = 0, inRun = false
+    for (let i = 0; i < w.length; i++) {
+      const isVowel = 'aeiou'.includes(w[i]) || (w[i] === 'y' && i > 0)
+      if (isVowel) { if (!inRun) count++; inRun = true } else inRun = false
+    }
+    if (count > 1) {
+      if (/[^aeiouy]e$/.test(w) && !/[^aeiouy]le$/.test(w)) count--
+      else if (/es$/.test(w) && !/[sxzcgh]es$/.test(w) && !/[^aeiouy]les$/.test(w)) count--
+      else if (/ed$/.test(w) && !/[td]ed$/.test(w)) count--
+    }
+    total += Math.max(count, 1) + extra
+  }
+  return total
+}
+
 // --- Generic vowel-group counter, shared by the Latin/Germanic counters ---
 // Splits each word into maximal runs of "vowel" characters (per the supplied
 // set). Any multi-char `digraphs` (e.g. Dutch "ij") are first collapsed to a
@@ -98,6 +137,7 @@ function makeVowelGroupCounter(vowels, { digraphs = [], hiatusVowels = '', frenc
 
 const REGISTRY = {
   hrv: countSyllablesHrv,
+  eng: countSyllablesEng,
   spa: makeVowelGroupCounter('aeiouáéíóúü', { hiatusVowels: 'íú' }),
   ita: makeVowelGroupCounter('aeiouàèéìíîòóù', { hiatusVowels: 'ìù' }),
   por: makeVowelGroupCounter('aeiouáàâãéêíóôõúü', { hiatusVowels: 'íú' }),

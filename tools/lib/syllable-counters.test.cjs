@@ -12,6 +12,20 @@ describe('countSyllables', () => {
     expect(countSyllables('Dobro jutro, kako si?', 'hrv')).toBe(7)
   })
 
+  it('eng — English, silent endings and contractions', () => {
+    expect(countSyllables("Sorry, I didn't catch that", 'eng')).toBe(7) // sor-ry i did-n't catch that
+    expect(countSyllables('Could you say that again, a bit slower?', 'eng')).toBe(10) // could you say that a-gain a bit slow-er
+    expect(countSyllables("Anyway, I'd better go", 'eng')).toBe(7) // an-y-way i'd bet-ter go
+    expect(countSyllables("We'll just have to agree to disagree", 'eng')).toBe(10) // we'll just have to a-gree to dis-a-gree
+    expect(countSyllables('houses', 'eng')).toBe(2) // hou-ses (sibilant keeps -es)
+    expect(countSyllables('likes', 'eng')).toBe(1) // silent -es
+    expect(countSyllables('walked', 'eng')).toBe(1) // silent -ed
+    expect(countSyllables('wanted', 'eng')).toBe(2) // -ed kept after t
+    expect(countSyllables('tables', 'eng')).toBe(2) // consonant+le keeps its nucleus
+    expect(countSyllables('miles', 'eng')).toBe(1) // vowel+les is silent
+    expect(countSyllables("can't", 'eng')).toBe(1) // n't after vowel adds nothing
+  })
+
   it('spa — Spanish, including accented-hiatus (días, país)', () => {
     expect(countSyllables('Buenos días, cómo estás', 'spa')).toBe(8) // bue-nos dí-as có-mo es-tás
     expect(countSyllables('país', 'spa')).toBe(2) // pa-ís
