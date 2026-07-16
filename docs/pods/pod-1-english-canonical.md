@@ -333,3 +333,24 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 13 | Emma | Bennett! That's it — Bennett. Oh, that's been bothering me all morning. |
 | 14 | Dan | There you go. It always comes back… usually at three in the morning. |
 | 15 | Emma | Well, today it came early. Bennett, and a small dog in a coat. |
+
+## 16. Anyway, I'd Better Go — *Let's do this properly soon*
+
+*Difficulty: beginner · 14 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Paul | Is that the time? I've been talking your ear off. |
+| 2 | Grace | You haven't at all. But I should make a move too, actually. |
+| 3 | Paul | Anyway — I'd better go. I'm already late for the school run. |
+| 4 | Grace | Go, go. Don't let me keep you. |
+| 5 | Paul | It's been so lovely to see you, though. Really. |
+| 6 | Grace | You too. Let's not leave it so long next time. |
+| 7 | Paul | Agreed. Let's do this properly soon — dinner, maybe. |
+| 8 | Grace | I'd love that. I'll text you some dates tonight. |
+| 9 | Paul | Perfect. Right — I'm really going now. |
+| 10 | Grace | Say hello to the kids from me, won't you? |
+| 11 | Paul | I will. And good luck for the first day! You'll be brilliant. |
+| 12 | Grace | Thank you. Go on then — you're late! |
+| 13 | Paul | I know, I know. Lovely to see you, Grace! |
+| 14 | Grace | Bye, Paul. See you at dinner! |
