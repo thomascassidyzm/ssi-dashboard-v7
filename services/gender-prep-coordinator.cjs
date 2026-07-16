@@ -36,7 +36,7 @@ const LANG_NAMES = {
   lav: 'Latvian', lit: 'Lithuanian',
   isl: 'Icelandic', hin: 'Hindi', nep: 'Nepali', ben: 'Bengali',
   guj: 'Gujarati', pan: 'Punjabi', urd: 'Urdu', mar: 'Marathi',
-  ara: 'Arabic', heb: 'Hebrew',
+  ara: 'Arabic', heb: 'Hebrew', tha: 'Thai',
 }
 
 // ─── Parse args ───────────────────────────────────────────────────────
@@ -127,6 +127,12 @@ function buildBrief(langName, langCode, texts) {
     genderRules = `- Icelandic predicate adjectives strongly agree with the speaker: ég er þreyttur (m) → ég er þreytt (f)
 - Past participles describing the speaker: farinn → farin
 - Do NOT change verbs themselves, articles, 3rd-person references`
+  } else if (langCode === 'tha') {
+    genderRules = `- Thai has NO adjective or verb gender agreement. Gender shows ONLY in the first-person pronoun (and, if present, polite sentence-final particles).
+- First-person "I": male ผม → female ฉัน. This course uses ผม (male) as the default, so expanded_m = original (ผม unchanged); expanded_f replaces the first-person ผม with ฉัน.
+- ⚠️ CRITICAL: ผม also means "hair". Only swap ผม when the English [means: "..."] shows it is the first-person subject "I" — NEVER when it means the noun "hair". Use the gloss.
+- Only the "I"-pronoun changes. Do NOT touch verbs, other nouns, classifiers, or 2nd/3rd-person pronouns.
+- Polite particles (only if they actually appear): male ครับ → female ค่ะ/คะ. (This course does not use them.)`
   } else {
     // Default: Romance + general
     genderRules = `- Adjectives/participles describing "I" (the speaker): stanco→stanca, content→contente, prêt→prête
@@ -138,7 +144,7 @@ function buildBrief(langName, langCode, texts) {
   }
 
   // Inline the texts directly in the brief (no file reading needed)
-  const textList = texts.map((t, i) => `${i + 1}. ${t}`).join('\n')
+  const textList = texts.map((p, i) => `${i + 1}. [means: "${p.known || '?'}"]  ${p.target}`).join('\n')
 
   return `You are a ${langName} linguistics expert.
 
@@ -149,6 +155,26 @@ Analyse each text below for first-person speaker gender agreement. Two TTS voice
 - target2 = male voice → adjectives/participles must agree masculine
 
 The original text is usually the masculine default.
+
+## THE ONE TEST THAT DECIDES EVERYTHING (read before every item)
+
+An adjective/participle varies by VOICE only if its subject is the FIRST-PERSON SPEAKER ("I" / yo / je / io / ich / …). If it describes ANYONE ELSE — he, she, they, "you", or a named person — it agrees with THAT person and MUST be byte-identical in both voices. Do not create a variant.
+
+Ask: "Whose trait is this word describing?" Only "the speaker (I)" → vary. Anyone else → leave it, in BOTH voices.
+
+**Every item below shows its English meaning in [means: "..."]. USE IT to find the subject** — the target-language ending alone is ambiguous (Spanish "estaba ocupada" could be "I was busy" OR "she was busy"; only the English tells you). If the English subject is he / she / they / you / a named person → the adjective is theirs → NO variant. Only if the English subject is "I" does it vary. Example: [means: "She was too busy so I didn't want to interrupt"] Estaba demasiado ocupada... → subject of *ocupada* is SHE → do NOT expand.
+
+TRAP EXAMPLES — NO variant (subject is 3rd/2nd person; BOTH voices say the ORIGINAL). See how the English [means: ...] gives away the subject:
+- [means: "He said he wanted to do it alone"]  quería hacerlo solo → *solo* = HE → keep "solo" in both voices, NOT "sola".
+- [means: "She was too busy so I didn't want to interrupt"]  Estaba demasiado ocupada así que no quería interrumpir → *ocupada* = SHE → keep "ocupada" in both, NOT "ocupado" (the "I" here is only the interrupter, not the subject of *ocupada*).
+- [means: "She is tired"]  ella está cansada → explicit 3rd person → never varies.
+- [means: "Are you ready?"]  ¿estás listo? → *listo* = YOU → never varies.
+
+VARY only when the English subject of the adjective is "I":
+- [means: "I did more than I expected and I am very happy"]  hice mucho más de lo que esperaba y estoy muy contento → f: "...estoy muy contenta" / m: "...estoy muy contento" ✓
+- bare fragment, implied "I": [means: "ready"]  listo → f: "lista" / m: "listo" ✓
+
+When you cannot tell whose trait it is, LEAVE IT UNCHANGED (skip). A false variant that flips a he/she adjective to the wrong gender is worse than a missed one.
 
 ## ${langName} Gender Rules
 
@@ -162,12 +188,13 @@ ${textList}
 
 Output ONLY a JSON array. No explanation, no markdown fences, ONLY the raw JSON array.
 
-Format: [{"original":"original text","expanded_f":"feminine form","expanded_m":"masculine form"}]
+Format: [{"original":"the target text VERBATIM (the part after [means: ...]; never the English, never the [means:] prefix)","expanded_f":"feminine form","expanded_m":"masculine form"}]
 
 If NO texts need variants, output: []
 
 Rules:
 - CRITICAL: Output ONLY valid JSON - no explanations, no questions, no commentary
+- "original" MUST be the target-language text exactly as given (drop the [means: "..."] gloss — it is context only, never part of any output field)
 - Only include texts where expanded_f OR expanded_m differs from original
 - If a text cannot be analyzed (single word, no speaker context), skip it - do NOT explain why
 - Most texts will NOT need changes. Be selective.
@@ -393,30 +420,36 @@ async function main() {
   // Signal actual startup — job was 'pending' until now
   await updateJob({ status: 'running', last_heartbeat: new Date().toISOString() })
 
-  // 2. Collect all unique target texts
-  const textSet = new Set()
-  const { data: phrases } = await supabase.from('course_practice_phrases').select('target_text').eq('course_code', courseCode)
-  if (phrases) phrases.forEach(p => { if (p.target_text) textSet.add(p.target_text) })
-  const { data: legos } = await supabase.from('course_legos').select('target_text').eq('course_code', courseCode)
-  if (legos) legos.forEach(l => { if (l.target_text) textSet.add(l.target_text) })
-  const { data: seeds } = await supabase.from('course_seeds').select('target_text').eq('course_code', courseCode)
-  if (seeds) seeds.forEach(s => { if (s.target_text) textSet.add(s.target_text) })
+  // 2. Collect unique target texts, EACH PAIRED with a representative English known.
+  //    The known disambiguates the subject (target endings alone are ambiguous:
+  //    "estaba ocupada" = "I was busy" OR "she was busy"). Prefer the longest known
+  //    for a given target — the fullest sentence gives the clearest subject.
+  const pairMap = new Map() // target -> best known
+  const addPair = (known, target) => {
+    if (!target) return
+    const cur = pairMap.get(target)
+    if (cur === undefined || (known || '').length > cur.length) pairMap.set(target, known || cur || '')
+  }
+  const { data: phrases } = await supabase.from('course_practice_phrases').select('known_text,target_text').eq('course_code', courseCode)
+  if (phrases) phrases.forEach(p => addPair(p.known_text, p.target_text))
+  const { data: legos } = await supabase.from('course_legos').select('known_text,target_text').eq('course_code', courseCode)
+  if (legos) legos.forEach(l => addPair(l.known_text, l.target_text))
+  const { data: seeds } = await supabase.from('course_seeds').select('known_text,target_text').eq('course_code', courseCode)
+  if (seeds) seeds.forEach(s => addPair(s.known_text, s.target_text))
 
-  // Filter out invalid texts before gender analysis
-  const allTexts = [...textSet]
-    .filter(text => {
+  // Filter out invalid targets before gender analysis
+  const allTexts = [...pairMap.entries()]
+    .map(([target, known]) => ({ target, known }))
+    .filter(({ target: text }) => {
       if (!text || text.trim().length === 0) return false
-      // Skip standalone punctuation
       if (/^[.,;:!?،؛؟\s]+$/.test(text)) return false
-      // Skip single characters
       if (text.trim().length < 2) return false
-      // Skip metadata artifacts
       if (text.includes('(perfect tense)') || text.includes('(imperfect)')) return false
       return true
     })
-    .sort()
+    .sort((a, b) => a.target.localeCompare(b.target))
 
-  console.log(`Total unique texts: ${allTexts.length} (filtered from ${textSet.size})`)
+  console.log(`Total unique texts: ${allTexts.length} (from ${pairMap.size} target/known pairs)`)
 
   if (allTexts.length === 0) {
     console.error('No valid target texts found')
@@ -506,8 +539,9 @@ async function main() {
   }
 
   // 8. Flag affected audio for regeneration
-  //    Find target1 + target2 audio matching the expanded texts and flag them
-  if (allResults.length > 0) {
+  //    Find target1 + target2 audio matching the expanded texts and flag them.
+  //    --text-only skips this (e.g. when a full regen is coming anyway).
+  if (allResults.length > 0 && !process.argv.includes('--text-only')) {
     console.log(`\nFlagging affected audio for regeneration...`)
     const expandedOriginals = allResults.map(r => r.original)
     let flagged = 0
@@ -543,7 +577,7 @@ async function main() {
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(0)
   console.log(`\n✓ Done in ${elapsed}s — ${allResults.length} gender expansions for ${courseCode}`)
   if (allResults.length > 0) {
-    console.log(`→ Use "Regenerate All Flagged" on the Audio page to regenerate affected audio`)
+    console.log(`→ Use "Regenerate N flagged" in the Gender Prep banner on the Audio Pipeline page to re-voice affected audio`)
   }
 
   // Mark job complete
