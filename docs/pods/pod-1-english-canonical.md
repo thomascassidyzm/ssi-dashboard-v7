@@ -139,3 +139,25 @@ Seed with `node tools/seed-canonical-pods.cjs --file=docs/pods/pod-1-english-can
 | 12 | Ellie | You should give it another chance, honestly. Maybe on a better day. |
 | 13 | Josh | Maybe I will. Though I still think you're wrong about the pacing. |
 | 14 | Ellie | We'll have to agree to disagree on this one. |
+
+## 7. Poor You — *You should be at home in bed*
+
+*Difficulty: beginner · 15 sentences*
+
+| # | Speaker | English |
+|---|---------|---------|
+| 1 | Ruth | You don't look great, Adam. Are you okay? |
+| 2 | Adam | Not really, if I'm honest. My throat's been killing me since yesterday. |
+| 3 | Ruth | Oh, poor you. You should be at home in bed. |
+| 4 | Adam | I've got that meeting at eleven, though. I don't want to let anyone down. |
+| 5 | Ruth | I can cover the meeting. It's really not a big deal. |
+| 6 | Adam | Are you sure? I feel bad asking. |
+| 7 | Ruth | You're not asking, I'm offering. Is there anything else I can take off your plate? |
+| 8 | Adam | No, the meeting's the big one. Thank you, honestly. |
+| 9 | Ruth | Have you taken anything for it? |
+| 10 | Adam | Just some paracetamol this morning. It hasn't really touched it. |
+| 11 | Ruth | Try honey and lemon when you get in. My mum swears by it. |
+| 12 | Adam | I might just go straight to bed, honestly. |
+| 13 | Ruth | Even better. Text me later and let me know how you're feeling. |
+| 14 | Adam | I will. Thanks for covering for me… I really appreciate it. |
+| 15 | Ruth | That's what friends are for. Now go home, you poor thing. |
