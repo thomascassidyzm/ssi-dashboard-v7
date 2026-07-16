@@ -92,6 +92,7 @@
       :target-language="state.targetLanguage"
       :phrase-count="totalPhrases || 12"
       @begin="onBeginSession"
+      @back="resetSession"
     />
 
     <!-- Phase: Recording -->
@@ -388,6 +389,12 @@ function handleKeydown(e) {
 
 onMounted(() => {
   document.addEventListener('keydown', handleKeydown)
+
+  // Autocue state is a module-level singleton (shared across mounts), so a
+  // mode/role picked in a previous visit otherwise leaks into this one and
+  // strands the learner on role-select/script-loaded with no way back to
+  // the chooser. Every fresh mount re-enters at the chooser.
+  resetSession()
 
   // Bind (or clear) the session's voice-slot identity on every mount so a
   // Record Room session never leaks into a production-console session.
