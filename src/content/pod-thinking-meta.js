@@ -77,6 +77,13 @@ export const podThinkingMeta = {
     status: 'Build summary',
     badge: 'LIVE'
   },
+  'seam-decay-naturalness-dial-2026-07-17': {
+    title: 'Seam decay — the naturalness dial',
+    description: 'Live founder discussion: the S-LEGO seam pause as a rendering knob decaying toward native prosody, the ladder as the decay mechanism (one ladder, two knobs), and the open forks — behavioural rung-advance, pairwise vs chained fusion, ceiling vs meaning.',
+    date: '2026-07-17',
+    status: 'Discussion capture — §3 ruled and live, §4 open',
+    badge: 'IN DISCUSSION'
+  },
   'chunk-granularity-state-of-play-2026-07-16': {
     title: 'Pod chunk granularity — state of play + monster-sentence proposal',
     description: 'Report on the pipeline as-built across four eras of granularity, plus a proposal for handling monster sentences. Read-only pass, no content or pipeline changes.',
