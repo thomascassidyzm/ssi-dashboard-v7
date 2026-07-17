@@ -210,9 +210,13 @@ function buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount = DEFA
  * @param {object} args.plan - buildRecordingPlan output
  * @param {Array}  args.sentences - the same rows the plan was built from (with *_audio_id columns)
  * @param {string} args.voiceId
+ * @param {Set<string>} [args.acceptVoiceIds] - voice ids whose takes count as
+ *   recorded (the queue's id plus its collapsed-away aliases); defaults to
+ *   just voiceId
  * @param {(ids:string[])=>Promise<Array<{id,origin,voice_id}>>} args.fetchAudioRows
  */
-async function finalizeRecordingPlan({ plan, sentences, voiceId, fetchAudioRows }) {
+async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds = null, fetchAudioRows }) {
+  const accept = acceptVoiceIds && acceptVoiceIds.size ? acceptVoiceIds : new Set([voiceId])
   const AUDIO_COL = { target: 'target_audio_id', known: 'known_audio_id', explainer: 'explainer_audio_id' }
   const rowById = new Map((sentences || []).map(r => [r.id, r]))
 
@@ -230,7 +234,7 @@ async function finalizeRecordingPlan({ plan, sentences, voiceId, fetchAudioRows 
     const row = rowById.get(it.sentenceId) || {}
     const audioId = row[AUDIO_COL[it.kind]] || null
     const a = audioId ? audioById.get(audioId) : null
-    const isRecorded = !!(a && a.origin === 'human' && a.voice_id === voiceId)
+    const isRecorded = !!(a && a.origin === 'human' && accept.has(a.voice_id))
     if (isRecorded) recorded++
     const isTarget = it.kind === 'target'
     const out = {

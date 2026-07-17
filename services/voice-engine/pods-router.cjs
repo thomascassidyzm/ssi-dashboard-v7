@@ -46,6 +46,8 @@ const {
   buildSentenceEditPatch,
   proposePeopleCast,
   provisionPlanFor,
+  collapseTwoVoiceCast,
+  mergeCastAliases,
 } = require('./pods-cast.cjs')
 const { buildRecordingPlan, finalizeRecordingPlan, DEFAULT_CUE_COUNT } = require('./pods-plan.cjs')
 
@@ -153,6 +155,29 @@ module.exports = function createPodsCastRouter({
       }))
   }
 
+  /** Recorded HUMAN takes per voice_id across these sentences' audio pointers. */
+  async function countHumanTakes(db, sentences) {
+    const ids = new Set()
+    for (const s of sentences) {
+      for (const col of ['target_audio_id', 'known_audio_id', 'explainer_audio_id']) {
+        if (s[col]) ids.add(s[col])
+      }
+    }
+    const counts = {}
+    const all = [...ids]
+    for (let i = 0; i < all.length; i += 200) {
+      const { data, error } = await db.from('course_audio')
+        .select('id, origin, voice_id').in('id', all.slice(i, i + 200))
+      if (error) throw new Error(error.message)
+      for (const row of data || []) {
+        if (row.origin === 'human' && row.voice_id) {
+          counts[row.voice_id] = (counts[row.voice_id] || 0) + 1
+        }
+      }
+    }
+    return counts
+  }
+
   // ── GET /cast ──────────────────────────────────────────────────────────────
   router.get('/cast', async (req, res) => {
     const { courseCode } = req.params
@@ -166,7 +191,36 @@ module.exports = function createPodsCastRouter({
 
       const sentences = await fetchAllSentences(db, pods.map(p => p.id))
       const inventory = speakerInventory({ pods, sentences })
-      const podCast = (voiceConfig && voiceConfig.podCast) || {}
+      let podCast = (voiceConfig && voiceConfig.podCast) || {}
+
+      // Two-voice rule migration (founder ruling 2026-07-17): a legacy cast
+      // holding 3+ identities collapses to one voice per gender on load, and
+      // the collapsed shape is written back so the DB stops accumulating
+      // v2/v3 identities. Dropped ids persist as podCastAliases — old record
+      // links resolve to their survivor and old takes still count.
+      const distinctVoices = new Set(Object.values(podCast).map(e => e && e.voiceId).filter(Boolean))
+      if (distinctVoices.size > 2) {
+        const takesByVoiceId = await countHumanTakes(db, sentences)
+        const collapse = collapseTwoVoiceCast({ podCast, speakers: inventory.speakers, takesByVoiceId })
+        if (collapse.changed) {
+          podCast = collapse.podCast
+          const migrated = {
+            ...(voiceConfig || {}),
+            podCast,
+            podCastAliases: mergeCastAliases(voiceConfig && voiceConfig.podCastAliases, collapse.aliases),
+          }
+          try {
+            const { error } = await db.from('courses')
+              .update({ voice_config: migrated }).eq('course_code', courseCode)
+            if (error) throw new Error(error.message)
+            logger.info(`[PodsCast] ${courseCode}: collapsed legacy cast ${[...distinctVoices].join(', ')} → ` +
+              `${Object.keys(collapse.aliases).join(', ')} (aliases kept${collapse.unresolved.length ? `; unresolved: ${collapse.unresolved.join(', ')}` : ''})`)
+          } catch (err) {
+            // Serve the collapsed view regardless — the next load retries.
+            logger.warn(`[PodsCast] ${courseCode}: cast collapse write-back failed: ${err.message}`)
+          }
+        }
+      }
 
       const body = {
         course_code: courseCode,
@@ -404,10 +458,19 @@ module.exports = function createPodsCastRouter({
       if (!found) return res.status(404).json({ error: `Course ${courseCode} not found` })
 
       const podCast = (voiceConfig && voiceConfig.podCast) || {}
+      // Alias resolution (two-voice collapse): a record link minted for a
+      // collapsed-away identity keeps working — it resolves to its survivor,
+      // and takes recorded under EITHER id count as recorded.
+      const aliases = (voiceConfig && voiceConfig.podCastAliases) || {}
+      let effectiveVoiceId = voiceId
+      for (const [survivor, list] of Object.entries(aliases)) {
+        if (Array.isArray(list) && list.includes(voiceId)) { effectiveVoiceId = survivor; break }
+      }
+      const acceptVoiceIds = new Set([effectiveVoiceId, ...(aliases[effectiveVoiceId] || [])])
       const sentences = await fetchAllSentences(db, pods.map(p => p.id))
-      const plan = buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount })
+      const plan = buildRecordingPlan({ pods, sentences, podCast, voiceId: effectiveVoiceId, cueCount })
       const final = await finalizeRecordingPlan({
-        plan, sentences, voiceId,
+        plan, sentences, voiceId: effectiveVoiceId, acceptVoiceIds,
         fetchAudioRows: async (ids) => {
           const out = []
           for (let i = 0; i < ids.length; i += 200) {
@@ -419,7 +482,7 @@ module.exports = function createPodsCastRouter({
           return out
         },
       })
-      const castEntry = Object.values(podCast).find(e => e && e.voiceId === voiceId)
+      const castEntry = Object.values(podCast).find(e => e && e.voiceId === effectiveVoiceId)
       res.json({
         course_code: courseCode,
         courseCode,
