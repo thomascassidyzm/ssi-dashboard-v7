@@ -1,0 +1,455 @@
+{
+  "pod_id": "spa_for_eng:travel-situations",
+  "course_code": "spa_for_eng",
+  "reason": "chunk-audio coverage audit 2026-07-17 — S-LEGO seam chunks with no playable audio at any fallback tier (founder ruling 2026-07-17, graceful-fallback fix)",
+  "status": "STAGED — not queued for render, awaiting approval",
+  "provider": "xai",
+  "provider_tier": 1,
+  "provider_note": "spa: xAI native es (no native F → F from multilingual), locale es-ES — xAI has no documented per-char rate in this repo; approve a rate before running, cost intentionally left null",
+  "cut_candidates": {
+    "note": "source audio already exists (whole-sentence/Take-G take); these already play via fallback — re-aligning would upgrade them to exact-slice at ZERO TTS cost",
+    "count": 0,
+    "items": []
+  },
+  "render_candidates": {
+    "action": "tts_render",
+    "count": 72,
+    "total_chars": 2380,
+    "cost_per_million_chars_usd": null,
+    "estimated_cost_usd": null,
+    "items": [
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S001",
+        "order": 1,
+        "text": "¿Tienes el pasaporte?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S002",
+        "order": 2,
+        "text": "Sí, aquí en el bolsillo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S003",
+        "order": 3,
+        "text": "¿Y el mío?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S004",
+        "order": 4,
+        "text": "¡Ay! A ver... sí, también.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S005",
+        "order": 5,
+        "text": "Menos mal. Me habías asustado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S006",
+        "order": 6,
+        "text": "¿Has cerrado la nevera?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S007",
+        "order": 7,
+        "text": "Sí, hombre. ¿Llevas los cargadores?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S008",
+        "order": 8,
+        "text": "Los cargadores, las llaves, el libro... creo que sí.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S009",
+        "order": 9,
+        "text": "Venga, que nos vamos sin prisa pero sin pausa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S010",
+        "order": 10,
+        "text": "¿Has pedido el taxi?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S011",
+        "order": 11,
+        "text": "Llegará en cinco minutos. Respira.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S012",
+        "order": 12,
+        "text": "Perfecto. Un último café para el camino.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S013",
+        "order": 13,
+        "text": "Buenos días. Al aeropuerto, Terminal 4.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S014",
+        "order": 14,
+        "text": "Muy bien. ¿A qué hora les sale el vuelo?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S015",
+        "order": 15,
+        "text": "A las diez. Vamos con tiempo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S016",
+        "order": 16,
+        "text": "Hombre, con el tráfico que hay, mejor.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S017",
+        "order": 17,
+        "text": "¿Hay mucho lío en la ciudad?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S018",
+        "order": 18,
+        "text": "Una manifestación en el centro, pero vamos por la autovía.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S019",
+        "order": 19,
+        "text": "¿De dónde es, si no le importa?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S020",
+        "order": 20,
+        "text": "De Galicia originalmente, pero llevo treinta años aquí.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S021",
+        "order": 21,
+        "text": "¿Y le gusta Madrid?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S022",
+        "order": 22,
+        "text": "¡Bueno! Como todo, tiene su cosa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S023",
+        "order": 23,
+        "text": "Ja, ja. Buena respuesta.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S024",
+        "order": 24,
+        "text": "Ya verán, son quince minutos como mucho.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S025",
+        "order": 25,
+        "text": "Madre mía, qué cola.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S026",
+        "order": 26,
+        "text": "Bueno, vamos bien de tiempo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S027",
+        "order": 27,
+        "text": "Mira ese grupo, llevan como ocho maletas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S028",
+        "order": 28,
+        "text": "Ja, ja. Pobres los de atrás.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S029",
+        "order": 29,
+        "text": "¿Llevas el billete en el móvil?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S030",
+        "order": 30,
+        "text": "Sí, lo tengo descargado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S031",
+        "order": 31,
+        "text": "Oye, ¿te has tomado el café al final?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S032",
+        "order": 32,
+        "text": "Solo medio. Me ponen nerviosa los aeropuertos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S033",
+        "order": 33,
+        "text": "A mí me encantan. Tienen algo especial, ¿no?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S034",
+        "order": 34,
+        "text": "¿Especial? ¡Es un caos!",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S035",
+        "order": 35,
+        "text": "Por eso. Caos pero con propósito.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S036",
+        "order": 36,
+        "text": "Tú estás mal de la cabeza.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S037",
+        "order": 37,
+        "text": "Buenos días. Pasaportes y billetes, por favor.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S038",
+        "order": 38,
+        "text": "Aquí los tiene.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S039",
+        "order": 39,
+        "text": "¿Tienen equipaje para facturar?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S040",
+        "order": 40,
+        "text": "Dos maletas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S041",
+        "order": 41,
+        "text": "Pónganlas aquí, por favor.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S042",
+        "order": 42,
+        "text": "¿Cuánto pesa esta? Creo que me he pasado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S043",
+        "order": 43,
+        "text": "Veintitrés kilos clavados. Por los pelos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S044",
+        "order": 44,
+        "text": "¡Uf! Menos mal.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S045",
+        "order": 45,
+        "text": "Su puerta es la B-14. Embarque a las nueve y media.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S046",
+        "order": 46,
+        "text": "¿Tenemos que ir a la T4-S?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S047",
+        "order": 47,
+        "text": "Sí, en tren lanzadera. Hay indicaciones por todas partes.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S048",
+        "order": 48,
+        "text": "Perfecto. Muchas gracias.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S049",
+        "order": 49,
+        "text": "Todo fuera de los bolsillos. Ordenadores en una bandeja aparte.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S050",
+        "order": 50,
+        "text": "¿El cinturón también?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S051",
+        "order": 51,
+        "text": "También.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S052",
+        "order": 52,
+        "text": "Ya lo he puesto todo. Creo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S053",
+        "order": 53,
+        "text": "(a Ana) ¿Llevas líquidos?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S054",
+        "order": 54,
+        "text": "Una botella de agua. Se me ha olvidado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S055",
+        "order": 55,
+        "text": "Te la van a quitar.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S056",
+        "order": 56,
+        "text": "Ya, ya. Qué tontería de normas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S057",
+        "order": 57,
+        "text": "(a otro pasajero) Señor, por aquí, por favor.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S058",
+        "order": 58,
+        "text": "Venga, que nos toca.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S059",
+        "order": 59,
+        "text": "(tras el escáner) Menudo alivio. ¿Todo bien?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S060",
+        "order": 60,
+        "text": "Todo bien. Hemos sobrevivido.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S061",
+        "order": 61,
+        "text": "Por fin. Siéntate, que voy a por los cafés.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S062",
+        "order": 62,
+        "text": "Uno solo, para mí. Y algo de comer, si no es mucho pedir.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S063",
+        "order": 63,
+        "text": "Un bocadillo, ¿no?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S064",
+        "order": 64,
+        "text": "De jamón, por favor.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S065",
+        "order": 65,
+        "text": "(vuelve) Aquí tienes. Hay cola hasta para eso.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S066",
+        "order": 66,
+        "text": "Gracias, cielo. Mira, ya están anunciando.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S067",
+        "order": 67,
+        "text": "Queda media hora. Tranquila.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S068",
+        "order": 68,
+        "text": "Me gusta esta parte. Todo ya hecho, solo esperar.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S069",
+        "order": 69,
+        "text": "¿Lo ves? Ahora sí, relajada.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S070",
+        "order": 70,
+        "text": "Es que desde casa vengo corriendo mentalmente.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S071",
+        "order": 71,
+        "text": "Ya, te pasa siempre.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:travel-situations:SC01-S072",
+        "order": 72,
+        "text": "Pues eso. Oye, ¿dónde dijiste que estaba la llave?",
+        "reason": "no atom_map, no whole-turn audio"
+      }
+    ]
+  }
+}

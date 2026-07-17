@@ -1,0 +1,684 @@
+{
+  "pod_id": "hrv_for_eng:pod-1",
+  "course_code": "hrv_for_eng",
+  "reason": "chunk-audio coverage audit 2026-07-17 — S-LEGO seam chunks with no playable audio at any fallback tier (founder ruling 2026-07-17, graceful-fallback fix)",
+  "status": "STAGED — not queued for render, awaiting approval",
+  "provider": "azure",
+  "provider_tier": 3,
+  "provider_note": "hrv: Azure hr-HR + ElevenLabs top-up",
+  "cut_candidates": {
+    "note": "source audio already exists (whole-sentence/Take-G take); these already play via fallback — re-aligning would upgrade them to exact-slice at ZERO TTS cost",
+    "count": 7,
+    "items": [
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S012",
+        "order": 12,
+        "text": "Isto vrijeme sutra",
+        "sourceId": "1e3e6d40-5c67-4843-bc1f-2a763e363be3"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S012",
+        "order": 12,
+        "text": "vjerojatno jednako mokro",
+        "sourceId": "1e3e6d40-5c67-4843-bc1f-2a763e363be3"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S005",
+        "order": 45,
+        "text": "A tko je ova druga",
+        "sourceId": "30c3dcac-b0ee-4514-94ab-6b642d47d9ca"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S005",
+        "order": 45,
+        "text": "u plavom džemperu",
+        "sourceId": "30c3dcac-b0ee-4514-94ab-6b642d47d9ca"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S013",
+        "order": 53,
+        "text": "Zvuči kao savršena obitelj",
+        "sourceId": "c94bc94b-b582-4a01-be75-8b0bfaedd142"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S013",
+        "order": 53,
+        "text": "iskreno",
+        "sourceId": "c94bc94b-b582-4a01-be75-8b0bfaedd142"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S012",
+        "order": 66,
+        "text": "da ću samo ići ravno u krevet",
+        "sourceId": "09c60495-0f6e-4467-8fba-0f4d58686038"
+      }
+    ]
+  },
+  "render_candidates": {
+    "action": "tts_render",
+    "count": 103,
+    "total_chars": 2095,
+    "cost_per_million_chars_usd": 4,
+    "estimated_cost_usd": 0.0084,
+    "items": [
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S002",
+        "order": 2,
+        "text": "Nemoj mi reći",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S002",
+        "order": 2,
+        "text": "Skroz sam se smočio",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S002",
+        "order": 2,
+        "text": "samo hodajući od stanice",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S004",
+        "order": 4,
+        "text": "Deset minuta",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S004",
+        "order": 4,
+        "text": "i nabijeno",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S004",
+        "order": 4,
+        "text": "kao sardine u konzervi",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S004",
+        "order": 4,
+        "text": "Navodno je bio problem sa signalom",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S005",
+        "order": 5,
+        "text": "Tipičan ponedjeljak",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S005",
+        "order": 5,
+        "text": "Ja sam ovaj put došla autom",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S005",
+        "order": 5,
+        "text": "i promet je bio noćna mora",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S008",
+        "order": 8,
+        "text": "Zakasnio sam",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S008",
+        "order": 8,
+        "text": "nekih trideset sekundi",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S008",
+        "order": 8,
+        "text": "Gledao sam kako odlazi i sve to",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S010",
+        "order": 10,
+        "text": "prije nego što napravim",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S010",
+        "order": 10,
+        "text": "bilo što drugo",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S013",
+        "order": 13,
+        "text": "Nemoj to govoriti",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S013",
+        "order": 13,
+        "text": "Ne mogu podnijeti",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC01-S013",
+        "order": 13,
+        "text": "dva dana ovakvog vremena",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S004",
+        "order": 17,
+        "text": "Prekrasno ujutro",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S004",
+        "order": 17,
+        "text": "Ali popodne je padala kisa",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S004",
+        "order": 17,
+        "text": "pa smo nasli mali kafic",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S004",
+        "order": 17,
+        "text": "i samo smo sjedili tamo dva sata",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S008",
+        "order": 21,
+        "text": "Jesu u nedjelju ujutro",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S008",
+        "order": 21,
+        "text": "Bilo je ledeno",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S008",
+        "order": 21,
+        "text": "ali svidjelo im se",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S008",
+        "order": 21,
+        "text": "A sto je s tobom",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S008",
+        "order": 21,
+        "text": "Jesi li nesto radila",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S009",
+        "order": 22,
+        "text": "Ne puno iskreno",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S009",
+        "order": 22,
+        "text": "Bila sam jako umorna",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S009",
+        "order": 22,
+        "text": "nakon proslog tjedna",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S009",
+        "order": 22,
+        "text": "pa sam ostala doma",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S009",
+        "order": 22,
+        "text": "i citala svoju knjigu",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S011",
+        "order": 24,
+        "text": "Onu o svjetioniku",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S011",
+        "order": 24,
+        "text": "pricala sam ti o njoj",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC02-S011",
+        "order": 24,
+        "text": "Zavrsila sam je sinoc",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S003",
+        "order": 30,
+        "text": "Nekoliko nas ide na ručak",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S003",
+        "order": 30,
+        "text": "u ono novo mjesto pored rijeke",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S003",
+        "order": 30,
+        "text": "Želiš li doći",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S007",
+        "order": 34,
+        "text": "Pola dva bi trebalo biti u redu",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S007",
+        "order": 34,
+        "text": "Provjerit ću s ostalima",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S007",
+        "order": 34,
+        "text": "i javit ću ti",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S009",
+        "order": 36,
+        "text": "Dobra ideja",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S009",
+        "order": 36,
+        "text": "Bit će nas petero",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S009",
+        "order": 36,
+        "text": "šestero ako dođe Katie",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S010",
+        "order": 37,
+        "text": "Rezervirat ću za šestero",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S010",
+        "order": 37,
+        "text": "za svaki slučaj",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S010",
+        "order": 37,
+        "text": "Što Katie radi ovih dana",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S010",
+        "order": 37,
+        "text": "Nisam je vidio od ljeta",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S011",
+        "order": 38,
+        "text": "Bila je jako zauzeta",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S011",
+        "order": 38,
+        "text": "počela je novi posao",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S011",
+        "order": 38,
+        "text": "prošli mjesec",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S011",
+        "order": 38,
+        "text": "Sve će ti ispričati u subotu",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S013",
+        "order": 40,
+        "text": "Poslat ću ti poruku",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC03-S013",
+        "order": 40,
+        "text": "kad razgovaram s ostalima",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S004",
+        "order": 44,
+        "text": "Samo dvije godine",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S004",
+        "order": 44,
+        "text": "Nekad smo se svađale ko pas i mačka",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S004",
+        "order": 44,
+        "text": "ali sad smo stvarno bliske",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S006",
+        "order": 46,
+        "text": "To je moja najmlađa sestra, Millie",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S006",
+        "order": 46,
+        "text": "Ima dvanaest godina",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S006",
+        "order": 46,
+        "text": "znači puno je mlađa od nas",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S008",
+        "order": 48,
+        "text": "Više je slična Grace zapravo",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S008",
+        "order": 48,
+        "text": "tiha je i stvarno dobra u školi",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S008",
+        "order": 48,
+        "text": "Ja sam uvijek bila ona glasna",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S010",
+        "order": 50,
+        "text": "To je Biscuit",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S010",
+        "order": 50,
+        "text": "On je tehnički Gracein",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S010",
+        "order": 50,
+        "text": "ali pola života provede",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S010",
+        "order": 50,
+        "text": "kod mene",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S014",
+        "order": 54,
+        "text": "Većinu vremena",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S014",
+        "order": 54,
+        "text": "Millie je sad ona teška",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC04-S014",
+        "order": 54,
+        "text": "ne ja što mi djeluje kao pravda",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S004",
+        "order": 58,
+        "text": "Ali imam onaj sastanak",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S004",
+        "order": 58,
+        "text": "u jedanaest",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S004",
+        "order": 58,
+        "text": "Ne želim nikoga iznevjeriti",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S007",
+        "order": 61,
+        "text": "Ti ne pitaš ja nudim",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S007",
+        "order": 61,
+        "text": "Idi kući",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S007",
+        "order": 61,
+        "text": "odmori se popij nešto toplo",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S013",
+        "order": 67,
+        "text": "Dobra ideja",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S013",
+        "order": 67,
+        "text": "Pošalji mi poruku kasnije",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S013",
+        "order": 67,
+        "text": "i javi mi kako se osjećaš",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S014",
+        "order": 68,
+        "text": "Hoću",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S014",
+        "order": 68,
+        "text": "Hvala ti što me pokrivaš",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC05-S014",
+        "order": 68,
+        "text": "stvarno cijenim to",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S002",
+        "order": 70,
+        "text": "Šest tjedana zapravo",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S002",
+        "order": 70,
+        "text": "I iskreno",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S002",
+        "order": 70,
+        "text": "puno bolje nego na starom mjestu",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S004",
+        "order": 72,
+        "text": "Ljudi uglavnom",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S004",
+        "order": 72,
+        "text": "Svi su prijateljski nastrojeni",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S004",
+        "order": 72,
+        "text": "a moj šef stvarno sluša",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S004",
+        "order": 72,
+        "text": "kad kažem da nešto ne funkcionira",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S006",
+        "order": 74,
+        "text": "Stvarno je bio",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S006",
+        "order": 74,
+        "text": "Nekad sam se bojala ponedjeljka",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S006",
+        "order": 74,
+        "text": "ujutro tamo",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S007",
+        "order": 75,
+        "text": "A sam posao",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S007",
+        "order": 75,
+        "text": "Je li onakav",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S007",
+        "order": 75,
+        "text": "kakav si očekivala",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S008",
+        "order": 76,
+        "text": "Manje-više",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S008",
+        "order": 76,
+        "text": "Ima više posla",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S008",
+        "order": 76,
+        "text": "nego što sam mislila",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S008",
+        "order": 76,
+        "text": "ali dobra vrsta zauzetosti",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S008",
+        "order": 76,
+        "text": "ako to ima smisla",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S009",
+        "order": 77,
+        "text": "Ima smisla",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S009",
+        "order": 77,
+        "text": "Radiš li još uvijek",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-1:SC06-S009",
+        "order": 77,
+        "text": "isto radno vrijeme",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      }
+    ]
+  }
+}

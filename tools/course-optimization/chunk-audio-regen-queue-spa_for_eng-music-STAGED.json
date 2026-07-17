@@ -1,0 +1,4517 @@
+{
+  "pod_id": "spa_for_eng:music",
+  "course_code": "spa_for_eng",
+  "reason": "chunk-audio coverage audit 2026-07-17 — S-LEGO seam chunks with no playable audio at any fallback tier (founder ruling 2026-07-17, graceful-fallback fix)",
+  "status": "STAGED — not queued for render, awaiting approval",
+  "provider": "xai",
+  "provider_tier": 1,
+  "provider_note": "spa: xAI native es (no native F → F from multilingual), locale es-ES — xAI has no documented per-char rate in this repo; approve a rate before running, cost intentionally left null",
+  "cut_candidates": {
+    "note": "source audio already exists (whole-sentence/Take-G take); these already play via fallback — re-aligning would upgrade them to exact-slice at ZERO TTS cost",
+    "count": 0,
+    "items": []
+  },
+  "render_candidates": {
+    "action": "tts_render",
+    "count": 749,
+    "total_chars": 44168,
+    "cost_per_million_chars_usd": null,
+    "estimated_cost_usd": null,
+    "items": [
+      {
+        "id": "spa_for_eng:music:SC01-S001",
+        "order": 1,
+        "text": "Bueno, bienvenidos. Hoy abrimos un tema que no se nos va a acabar nunca: la música.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S002",
+        "order": 2,
+        "text": "Imposible. Podríamos estar diez temporadas hablando solo de esto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S003",
+        "order": 3,
+        "text": "Empecemos por lo obvio, ¿no? La música que te marcó de pequeño.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S004",
+        "order": 4,
+        "text": "La primera que te entró en la cabeza y no salió.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S005",
+        "order": 5,
+        "text": "Yo crecí con Joaquín Sabina sonando en el coche. Mi madre lo ponía sin parar.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S006",
+        "order": 6,
+        "text": "Buf, Sabina. La banda sonora de media España.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S007",
+        "order": 7,
+        "text": "Y yo de niña no entendía nada. \"Y nos dieron las diez...\" Sin tener ni idea de qué hablaba el hombre.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S008",
+        "order": 8,
+        "text": "Ja, ja. Cantas algo veinte años antes de entenderlo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S009",
+        "order": 9,
+        "text": "Y luego, cuando lo entiendes, es como redescubrir la canción.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S010",
+        "order": 10,
+        "text": "Exacto. Es una segunda vida para ella.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S011",
+        "order": 11,
+        "text": "¿Y tú? ¿Qué te marcó?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S012",
+        "order": 12,
+        "text": "Pues... me da un poco de vergüenza decirlo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S013",
+        "order": 13,
+        "text": "Venga, hombre.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S014",
+        "order": 14,
+        "text": "La Macarena.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S015",
+        "order": 15,
+        "text": "¡¿La Macarena?!",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S016",
+        "order": 16,
+        "text": "Ja, ja, sí. Tendría cuatro años. Se bailaba en todos los cumpleaños.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S017",
+        "order": 17,
+        "text": "Es que eso es otro fenómeno — la música que te obliga la cultura.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S018",
+        "order": 18,
+        "text": "Claro. No la eliges tú, te la imponen. Por ósmosis.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S019",
+        "order": 19,
+        "text": "Y la cantas en familia, y de repente es tuya también.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S020",
+        "order": 20,
+        "text": "Eso es. Ya ni te acuerdas de cuándo la aprendiste.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S021",
+        "order": 21,
+        "text": "Pero luego, ¿cuándo fue la primera música que elegiste tú misma?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S022",
+        "order": 22,
+        "text": "Con catorce años. Un primo mayor me puso Héroes del Silencio.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S023",
+        "order": 23,
+        "text": "Uf, Bunbury es Bunbury. Eterno.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S024",
+        "order": 24,
+        "text": "Y a partir de ahí me metí en el rock en español como un poseso.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S025",
+        "order": 25,
+        "text": "A mí ese salto me vino más tarde, con los indies de los 2000 — Love of Lesbian, Vetusta Morla.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S026",
+        "order": 26,
+        "text": "Qué bonitos años. Un poco mitificados, pero bonitos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S027",
+        "order": 27,
+        "text": "Y lo interesante es que la música que nos marca no siempre es la que mejor nos parece hoy.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S028",
+        "order": 28,
+        "text": "Claro, claro. No tiene nada que ver con la calidad. Tiene que ver con el momento.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S029",
+        "order": 29,
+        "text": "Con quién estabas, con qué sentías.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S030",
+        "order": 30,
+        "text": "Una canción se te queda enganchada a un recuerdo y ya no se despega nunca.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S031",
+        "order": 31,
+        "text": "Yo tengo una canción que solo escucho cuando me quiero poner triste. Y es ridículo porque la canción en sí no es triste.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S032",
+        "order": 32,
+        "text": "Pero te la asociaste con un momento.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S033",
+        "order": 33,
+        "text": "Exacto. Un verano en Asturias, yo tendría quince años, me acababa de enamorar por primera vez.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S034",
+        "order": 34,
+        "text": "Ja, ja. Típico. Canción de verano y corazón roto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S035",
+        "order": 35,
+        "text": "A mí me pasa con canciones que no son nada mías. \"Mediterráneo\" de Serrat, por ejemplo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S036",
+        "order": 36,
+        "text": "Ay, Serrat.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S037",
+        "order": 37,
+        "text": "La escuchaba mi padre en el coche. Yo no entendía por qué le gustaba tanto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S038",
+        "order": 38,
+        "text": "Y ahora la pones tú.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S039",
+        "order": 39,
+        "text": "Y ahora la pongo yo. Y hay algo raro, como si me hablara directamente.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S040",
+        "order": 40,
+        "text": "Es que la música hace eso — te persigue.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S041",
+        "order": 41,
+        "text": "Bueno, y luego está la cuestión de las canciones que no eliges tú pero que definen a toda tu generación.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S042",
+        "order": 42,
+        "text": "Sí, eso es otra capa. No tu historia, la historia colectiva.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S043",
+        "order": 43,
+        "text": "Como si fuera una banda sonora de una época entera.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC01-S044",
+        "order": 44,
+        "text": "Eso vamos a comentarlo justo ahora. Pasamos al siguiente bloque.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S001",
+        "order": 45,
+        "text": "Entonces, ¿cuál es la canción que define a tu generación?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S002",
+        "order": 46,
+        "text": "Esa es la pregunta que no sabes contestar bien hasta que pasan veinte años.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S003",
+        "order": 47,
+        "text": "Claro, porque vives en ella. No la ves desde fuera.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S004",
+        "order": 48,
+        "text": "Exacto. Y cuando ya la ves, es porque tus hijos se están riendo de ella.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S005",
+        "order": 49,
+        "text": "Ja, ja. Qué cruel.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S006",
+        "order": 50,
+        "text": "Empecemos por los ochenta. La Movida.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S007",
+        "order": 51,
+        "text": "Yo no la viví, pero la Movida Madrileña me la contaron mil veces.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S008",
+        "order": 52,
+        "text": "A ver, la Movida es casi mítica. Hay una mezcla de verdad y de leyenda urbana.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S009",
+        "order": 53,
+        "text": "Totalmente. Pero lo interesante es que fue un estallido cultural después de cuarenta años de dictadura.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S010",
+        "order": 54,
+        "text": "Claro, imagínate. De repente todo el mundo podía decir, cantar, pintar lo que le diera la gana.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S011",
+        "order": 55,
+        "text": "Y salieron Alaska y los Pegamoides, Mecano, Radio Futura, Loquillo, Nacha Pop...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S012",
+        "order": 56,
+        "text": "A mí Alaska siempre me pareció un personaje más que una cantante. Pero qué fenómeno.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S013",
+        "order": 57,
+        "text": "\"A quién le importa\" es himno generacional. Y sigue siendo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S014",
+        "order": 58,
+        "text": "Mecano es otra historia. Yo crecí con \"Hijo de la luna\" puesta en bucle.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S015",
+        "order": 59,
+        "text": "Era imposible no crecer con Mecano. Estaban en todas las bodas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S016",
+        "order": 60,
+        "text": "Ana Torroja tiene una voz... no sé, muy identificable.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S017",
+        "order": 61,
+        "text": "Y Nacho Cano escribía canciones como si fueran cartas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S018",
+        "order": 62,
+        "text": "Es que la Movida fue también una generación de letristas. No eran tontos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S019",
+        "order": 63,
+        "text": "Y luego vinieron los 90, que es la década de la que yo me acuerdo conscientemente.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S020",
+        "order": 64,
+        "text": "La década del rock en español y de Estopa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S021",
+        "order": 65,
+        "text": "Ja, ja. Eso es muy injusto pero tampoco muy inexacto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S022",
+        "order": 66,
+        "text": "Oye, que Estopa son nuestros. Los hermanos Muñoz.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S023",
+        "order": 67,
+        "text": "Pero por otro lado tenías a Héroes del Silencio haciendo rock oscuro y enorme.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S024",
+        "order": 68,
+        "text": "Eternos. Bunbury es un poeta, digas lo que digas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S025",
+        "order": 69,
+        "text": "Y Extremoduro, que era otra cosa. Más crudo, más visceral.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S026",
+        "order": 70,
+        "text": "A mí Extremoduro me llegó tarde. Me daba un poco de respeto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S027",
+        "order": 71,
+        "text": "Lo entiendo. Robe no canta, ladra.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S028",
+        "order": 72,
+        "text": "Ja, ja. Ladra con mucho sentido.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S029",
+        "order": 73,
+        "text": "Y también estaba todo el tema latino — Maná, Shakira antes de ser Shakira-pop.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S030",
+        "order": 74,
+        "text": "Ay, \"Estoy aquí\" llorada en mi habitación con quince años.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S031",
+        "order": 75,
+        "text": "Los 2000 ya los viví yo con otra cabeza. Empecé la universidad y me metí en el indie.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S032",
+        "order": 76,
+        "text": "Ah, tú eres de los indies, yo lo sabía.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S033",
+        "order": 77,
+        "text": "¿Qué quieres decir con \"de los indies\"?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S034",
+        "order": 78,
+        "text": "Ja, ja, nada. Solo que hay algo muy reconocible.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S035",
+        "order": 79,
+        "text": "Vetusta Morla, Love of Lesbian, Los Planetas, Triángulo de Amor Bizarro, Lori Meyers...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S036",
+        "order": 80,
+        "text": "Los Planetas es otro nivel. Yo los descubrí más tarde pero ahora los defiendo a muerte.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S037",
+        "order": 81,
+        "text": "Jota escribe cosas que te tienen que pillar en un cierto momento.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S038",
+        "order": 82,
+        "text": "Totalmente. Si te pillan bien, te destroza. Si te pillan mal, te parece que no entiendes nada.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S039",
+        "order": 83,
+        "text": "Love of Lesbian me marcó a mí en particular. \"1999\" es una obra maestra.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S040",
+        "order": 84,
+        "text": "A Santi Balmes le sigue saliendo todo. Cómo escribe ese hombre.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S041",
+        "order": 85,
+        "text": "Y Vetusta Morla es el grupo que te descubre quien no sabe nada de indie.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S042",
+        "order": 86,
+        "text": "\"Copenhague\" en cada mochila de instituto. Es un fenómeno sociológico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S043",
+        "order": 87,
+        "text": "Pues exacto. Hay música que te define no porque sea rara, sino porque todo el mundo la tiene.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S044",
+        "order": 88,
+        "text": "Bueno, y luego todo eso estalló.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S045",
+        "order": 89,
+        "text": "¿Qué estalló? Cuéntame tu teoría.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S046",
+        "order": 90,
+        "text": "Pues que llegó la crisis del 2008 y cambió todo. La música también.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S047",
+        "order": 91,
+        "text": "¿En qué sentido?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S048",
+        "order": 92,
+        "text": "Dejó de ser aspiracional. Empezó a ser cruda, digital, hecha en casa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S049",
+        "order": 93,
+        "text": "Eso tiene sentido. Y ahí aparecen los primeros trapperos — Yung Beef, Pxxr Gvng...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S050",
+        "order": 94,
+        "text": "Y por otro lado Rosalía, que venía de otro sitio completamente pero capturó el mismo momento.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S051",
+        "order": 95,
+        "text": "Rosalía es un terremoto. Merece su propia conversación entera — que la tendremos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S052",
+        "order": 96,
+        "text": "C. Tangana también. \"El Madrileño\" es lo mejor que he escuchado en años.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S053",
+        "order": 97,
+        "text": "Es un disco que mezcla flamenco, bolero, salsa, rap... y queda coherente.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S054",
+        "order": 98,
+        "text": "Porque él sabe lo que hace. No es un copia-pega, es una síntesis.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S055",
+        "order": 99,
+        "text": "Y luego Amaia, que ganó OT y se convirtió en una artista súper personal.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S056",
+        "order": 100,
+        "text": "Ay, Amaia. \"Pero no pasa nada\" me la pongo cuando estoy mal.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S057",
+        "order": 101,
+        "text": "Y Rigoberta Bandini es otro fenómeno. \"Ay mamá\" es un manifiesto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S058",
+        "order": 102,
+        "text": "Todo Eurovisión estuvo hablando de eso. Lo merecía.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S059",
+        "order": 103,
+        "text": "Es que últimamente España está dando artistas mujeres potentísimas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S060",
+        "order": 104,
+        "text": "Alba Reche, María José Llergo, Zahara, Bely Basarte...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S061",
+        "order": 105,
+        "text": "Pero todo esto convive con la explosión total del urbano.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S062",
+        "order": 106,
+        "text": "Sí, en paralelo, y yo creo que durante mucho tiempo se ignoraron entre sí.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S063",
+        "order": 107,
+        "text": "¿Cómo que se ignoraron?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S064",
+        "order": 108,
+        "text": "Pues que los indies no escuchaban reggaetón y los reggaetoneros no escuchaban indie. Cero cruces.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S065",
+        "order": 109,
+        "text": "Bueno, eso pasa menos ahora.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S066",
+        "order": 110,
+        "text": "Menos, pero todavía hay algo de eso. Las tribus musicales existen.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S067",
+        "order": 111,
+        "text": "¿Tú cuándo te diste cuenta de que el urbano era ya cultura mainstream española?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S068",
+        "order": 112,
+        "text": "Cuando Leiva colaboró con Quevedo. O sea, cuando los límites se rompieron.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S069",
+        "order": 113,
+        "text": "Sí, o Alejandro Sanz con Rauw Alejandro. Son gestos simbólicos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S070",
+        "order": 114,
+        "text": "Y Bizarrap, que es argentino pero ha hecho que todo el mundo escuche canciones de siete minutos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S071",
+        "order": 115,
+        "text": "Las sesiones. Las sesiones son un formato nuevo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S072",
+        "order": 116,
+        "text": "Un formato nuevo que además han creado un lenguaje común.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S073",
+        "order": 117,
+        "text": "Rosalía en la Bizarrap Session 26 fue otro momento histórico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S074",
+        "order": 118,
+        "text": "Y Shakira en la 53... eso es otra historia.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S075",
+        "order": 119,
+        "text": "Esa la escucharemos de nuevo dentro de veinte años y diremos \"aquí pasó algo\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S076",
+        "order": 120,
+        "text": "Oye, ¿tu madre entiende lo que escuchas?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S077",
+        "order": 121,
+        "text": "Ja, ja. Mi madre se ha adaptado. Pero mi padre... mi padre es otro tema.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S078",
+        "order": 122,
+        "text": "Los padres siempre son otro tema con la música.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S079",
+        "order": 123,
+        "text": "Mi padre me dice \"esto no es música, son ruidos\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S080",
+        "order": 124,
+        "text": "Ja, ja. Se han dicho esas palabras en cada generación.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S081",
+        "order": 125,
+        "text": "Exacto. Le recordé que sus padres le decían lo mismo de Los Chichos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S082",
+        "order": 126,
+        "text": "Exactamente. Y Los Chichos son ya patrimonio.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S083",
+        "order": 127,
+        "text": "Todo acaba siendo patrimonio si aguanta treinta años.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S084",
+        "order": 128,
+        "text": "Lo que no entiendo de los mayores es cuando desprecian sin haber escuchado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S085",
+        "order": 129,
+        "text": "Eso es lo que me duele. Escucha primero, opina después.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S086",
+        "order": 130,
+        "text": "Pero creo que pasa también al revés. Los jóvenes también desprecian la música antigua.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S087",
+        "order": 131,
+        "text": "Sí, sí. Igual de mal está. Hay que ser curioso.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S088",
+        "order": 132,
+        "text": "La curiosidad es lo que salva a los melómanos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S089",
+        "order": 133,
+        "text": "Y además, si te abres, descubres que Serrat es increíble.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S090",
+        "order": 134,
+        "text": "Ya. Si te abres, descubres que Bad Bunny también.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S091",
+        "order": 135,
+        "text": "Bueno, llegados a este punto, tenemos que hablar del elefante en la habitación.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S092",
+        "order": 136,
+        "text": "A ver.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S093",
+        "order": 137,
+        "text": "Flamenco. Y específicamente, Rosalía.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S094",
+        "order": 138,
+        "text": "Ay, Rosalía. Es que no hay forma de no hablar de Rosalía.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S095",
+        "order": 139,
+        "text": "Es la conversación más polarizada de la música española de los últimos diez años.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S096",
+        "order": 140,
+        "text": "¿Es flamenco o no es flamenco? Esa es la pregunta.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S097",
+        "order": 141,
+        "text": "Y los puristas tienen sus argumentos, que son fuertes.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S098",
+        "order": 142,
+        "text": "Y los renovadores tienen los suyos, que también.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S099",
+        "order": 143,
+        "text": "Venga, vamos a entrar en ese lío.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC02-S100",
+        "order": 144,
+        "text": "Nos tocará contenernos, pero es una conversación importantísima.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S001",
+        "order": 145,
+        "text": "Entonces, antes de meternos en la polémica, la pregunta básica: ¿qué es flamenco?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S002",
+        "order": 146,
+        "text": "Para un andaluz, es sangre. Para un turista, es una postal. Para todos los demás, es un lío.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S003",
+        "order": 147,
+        "text": "Ja, ja. Empecemos por lo técnico. Hay palos distintos — bulerías, soleares, alegrías...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S004",
+        "order": 148,
+        "text": "Seguiriyas, fandangos, tangos — cada uno con su compás, su historia, su carga emocional.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S005",
+        "order": 149,
+        "text": "Y el compás de doce — que es un compás que no existe en casi ninguna otra música del mundo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S006",
+        "order": 150,
+        "text": "Eso es lo que hace que cuando un guitarrista marca el doce, tú sabes que eso no es blues ni jazz ni nada.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S007",
+        "order": 151,
+        "text": "Luego está el cante jondo — el más antiguo, el más profundo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S008",
+        "order": 152,
+        "text": "El que te atraviesa sin entenderlo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S009",
+        "order": 153,
+        "text": "Y el duende, que es esa palabra que todo el mundo usa y nadie sabe explicar.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S010",
+        "order": 154,
+        "text": "Lorca intentó explicarlo y lo dejó en poesía, que es lo único que se puede hacer.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S011",
+        "order": 155,
+        "text": "Hablemos de Camarón.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S012",
+        "order": 156,
+        "text": "¿Por dónde empiezas con Camarón?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S013",
+        "order": 157,
+        "text": "Pues por su voz. Una voz que no tenía técnica clásica pero que era pura alma.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S014",
+        "order": 158,
+        "text": "Camarón rompió algo. Cantaba como si estuviera contándote un secreto doloroso.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S015",
+        "order": 159,
+        "text": "Y luego su relación con Paco de Lucía, que es una de las grandes colaboraciones de la música del siglo XX.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S016",
+        "order": 160,
+        "text": "Paco es otro planeta. Un guitarrista que amplió el flamenco sin traicionarlo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S017",
+        "order": 161,
+        "text": "¿Cómo lo hizo, según tú?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S018",
+        "order": 162,
+        "text": "Porque metió instrumentos nuevos — el cajón, el bajo, los coros — pero manteniendo el compás y el alma.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S019",
+        "order": 163,
+        "text": "Claro. No estaba haciendo otra cosa. Estaba haciendo flamenco expandido.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S020",
+        "order": 164,
+        "text": "Y luego Enrique Morente, que ya fue el más vanguardista de todos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S021",
+        "order": 165,
+        "text": "Colaboró con Sonic Youth. Eso en los 90 era impensable.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S022",
+        "order": 166,
+        "text": "Morente abrió puertas que nadie más habría abierto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S023",
+        "order": 167,
+        "text": "Y entonces llegamos a Rosalía.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S024",
+        "order": 168,
+        "text": "Rosalía es el huracán.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S025",
+        "order": 169,
+        "text": "Empezó con \"Los Ángeles\", un disco absolutamente flamenco.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S026",
+        "order": 170,
+        "text": "Producido por Raül Refree, un disco que si lo pones a cualquier flamenco de verdad, dice \"esto está bien hecho\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S027",
+        "order": 171,
+        "text": "Ahí nadie la discutía. Rosalía era una chica catalana que cantaba flamenco con respeto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S028",
+        "order": 172,
+        "text": "Y entonces sacó \"El mal querer\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S029",
+        "order": 173,
+        "text": "Que ya empezó a tener polémica.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S030",
+        "order": 174,
+        "text": "\"El mal querer\" es un disco conceptual, basado en una novela del siglo XIII.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S031",
+        "order": 175,
+        "text": "\"Flamenca\". Una historia medieval reinterpretada con beats electrónicos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S032",
+        "order": 176,
+        "text": "Y cuando salió, media España dijo \"esto es una genialidad\" y la otra media dijo \"esto no es flamenco\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S033",
+        "order": 177,
+        "text": "Y desde entonces es una discusión que no se cierra.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S034",
+        "order": 178,
+        "text": "Claro, porque luego sacó \"Motomami\" que ya no pretende ser flamenco.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S035",
+        "order": 179,
+        "text": "\"Motomami\" es pop experimental, reggaetón, bolero, R&B...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S036",
+        "order": 180,
+        "text": "Y ahí los puristas flamencos dijeron \"¿veis? Se fue, como sabíamos\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S037",
+        "order": 181,
+        "text": "Pero los que defienden a Rosalía dicen que ella nunca se presentó como cantaora flamenca pura.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S038",
+        "order": 182,
+        "text": "Y eso es verdad. Ella siempre dijo \"yo hago mi música\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S039",
+        "order": 183,
+        "text": "El problema es que para mucha gente, ella se apropió del flamenco cuando le convenía.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S040",
+        "order": 184,
+        "text": "Y ese es el argumento purista, que tiene peso.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S041",
+        "order": 185,
+        "text": "Bueno, vamos a sostener el argumento purista con seriedad. Porque es importante.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S042",
+        "order": 186,
+        "text": "Vale. Yo lo intento desde fuera, que no soy puro de nada.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S043",
+        "order": 187,
+        "text": "El flamenco no es un sonido cualquiera. Es una música que viene del pueblo gitano, de siglos de marginación, de sufrimiento.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S044",
+        "order": 188,
+        "text": "Y por lo tanto no es un sonido que cualquiera pueda coger y usar a placer.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S045",
+        "order": 189,
+        "text": "Claro. Es un patrimonio con historia política y social.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S046",
+        "order": 190,
+        "text": "Y cuando una cantante no gitana y no andaluza se lleva los focos mundiales...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S047",
+        "order": 191,
+        "text": "...hay algo que chirría. Sobre todo si los flamencos de toda la vida siguen sin llenar salas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S048",
+        "order": 192,
+        "text": "Exacto. Hay gente como Israel Fernández, Estrella Morente ahora, la Niña de los Peines si hablamos del pasado...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S049",
+        "order": 193,
+        "text": "Estrella ha criticado abiertamente a Rosalía, por cierto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S050",
+        "order": 194,
+        "text": "Lo sé. Y tiene su argumento.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S051",
+        "order": 195,
+        "text": "El argumento es: hay flamencos puros trabajando toda su vida que no tienen ni la décima parte del éxito.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S052",
+        "order": 196,
+        "text": "Y una cantante que usa el flamenco de decoración se lleva los Grammys.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S053",
+        "order": 197,
+        "text": "No es solo envidia. Es también una cuestión de representación.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S054",
+        "order": 198,
+        "text": "Claro. El flamenco gitano tiene una historia de marginalidad y nadie lo escucha.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S055",
+        "order": 199,
+        "text": "Pero cuando lo envuelves en producción catalana y estética de Instagram, entonces sí.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S056",
+        "order": 200,
+        "text": "Oye, pero Rosalía no es la primera no-andaluza que hace flamenco.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S057",
+        "order": 201,
+        "text": "No, para nada. Mayte Martín es de Barcelona. Y Duquende también tiene origen catalán.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S058",
+        "order": 202,
+        "text": "Y Miguel Poveda es catalán y es uno de los grandes cantaores actuales.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S059",
+        "order": 203,
+        "text": "Eso es cierto. Nadie le discute a Miguel Poveda que sea flamenco.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S060",
+        "order": 204,
+        "text": "¿Por qué no, si en principio no es andaluz?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S061",
+        "order": 205,
+        "text": "Porque aprendió con los puros, cantó en las peñas, hizo el camino por dentro.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S062",
+        "order": 206,
+        "text": "Claro. No solo viene de Cataluña, viene desde el respeto más profundo a la tradición.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S063",
+        "order": 207,
+        "text": "Y Rosalía no hizo ese camino. Hizo su camino.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S064",
+        "order": 208,
+        "text": "Eso no significa que sea mala. Pero significa que hace otra cosa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S065",
+        "order": 209,
+        "text": "¿Entonces dónde está la línea?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S066",
+        "order": 210,
+        "text": "Pues la línea creo yo que está en si pagas el respeto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S067",
+        "order": 211,
+        "text": "Explícame.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S068",
+        "order": 212,
+        "text": "Si usas el flamenco como un condimento, usando sus códigos sin haber vivido en ellos, entonces es un sampling cultural.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S069",
+        "order": 213,
+        "text": "Pero si vienes y te formas, lo estudias, convives con los puros, te guste o no ya eres flamenco.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S070",
+        "order": 214,
+        "text": "Algo así. Y esa es la parte subjetiva.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S071",
+        "order": 215,
+        "text": "Déjame proponer otra pregunta. ¿El flamenco tiene que evolucionar para sobrevivir?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S072",
+        "order": 216,
+        "text": "Sí y no.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S073",
+        "order": 217,
+        "text": "Empezamos bien.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S074",
+        "order": 218,
+        "text": "Ja, ja. A ver. Lo que ha hecho Rosalía es darle al flamenco una visibilidad que hace veinte años no tenía.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S075",
+        "order": 219,
+        "text": "Eso es innegable.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S076",
+        "order": 220,
+        "text": "Entonces, aunque a los puristas no les guste, el flamenco hoy se escucha en Nueva York, en Tokio, en Buenos Aires gracias en parte a Rosalía.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S077",
+        "order": 221,
+        "text": "Pero ¿es el flamenco que escuchan en Nueva York el flamenco de verdad, o una versión pop?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S078",
+        "order": 222,
+        "text": "Y ahí es donde ya no sé qué contestar.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S079",
+        "order": 223,
+        "text": "Porque si la puerta de entrada al flamenco es Rosalía, a lo mejor algunos la cruzan y luego van a Camarón.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S080",
+        "order": 224,
+        "text": "Ojalá. Ese sería el mejor resultado posible.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S081",
+        "order": 225,
+        "text": "Pero a lo mejor otros se quedan en la puerta y creen que eso es flamenco.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S082",
+        "order": 226,
+        "text": "Y ese es el peligro.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S083",
+        "order": 227,
+        "text": "Pues esa es la tensión central de todo esto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S084",
+        "order": 228,
+        "text": "Que la apertura puede ser difusión o puede ser dilución.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S085",
+        "order": 229,
+        "text": "Y no siempre sabes cuál de las dos acaba ganando.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S086",
+        "order": 230,
+        "text": "Bueno, habiendo dicho todo esto, yo quiero hacer mi confesión.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S087",
+        "order": 231,
+        "text": "Venga.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S088",
+        "order": 232,
+        "text": "A mí Rosalía me gusta.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S089",
+        "order": 233,
+        "text": "A mí también.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S090",
+        "order": 234,
+        "text": "Ja, ja. Vale, entonces ya está, no hay caso.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S091",
+        "order": 235,
+        "text": "A ver, que me guste no significa que no entienda los argumentos del otro lado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S092",
+        "order": 236,
+        "text": "Eso es lo interesante. Poder sostener a la vez dos ideas que se pelean.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S093",
+        "order": 237,
+        "text": "Pues exactamente. \"Me gusta Rosalía\" y \"entiendo a los que dicen que no es flamenco\" conviven en mi cabeza.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S094",
+        "order": 238,
+        "text": "Y yo creo que mucha gente siente exactamente eso.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S095",
+        "order": 239,
+        "text": "Por más que te guste un artista, no tienes que defender todas sus decisiones.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S096",
+        "order": 240,
+        "text": "Exacto. Y por más que critiques a un artista, puedes reconocer su talento.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S097",
+        "order": 241,
+        "text": "Es que el fanatismo lo embrutece todo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S098",
+        "order": 242,
+        "text": "La música merece matices. Merece que la pensemos con calma.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S099",
+        "order": 243,
+        "text": "Y esta conversación que hemos tenido es justamente eso — intentar pensarla con calma.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S100",
+        "order": 244,
+        "text": "Aunque sigamos sin ponernos de acuerdo del todo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S101",
+        "order": 245,
+        "text": "Y ya que estamos con las conversaciones difíciles, vamos con la que probablemente es aún más polarizada.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S102",
+        "order": 246,
+        "text": "Reggaetón.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S103",
+        "order": 247,
+        "text": "Ay, el reggaetón.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S104",
+        "order": 248,
+        "text": "El género musical con más enemigos y más oyentes al mismo tiempo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S105",
+        "order": 249,
+        "text": "La gente que dice que no escucha reggaetón, y luego se sabe toda la letra de Bad Bunny.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S106",
+        "order": 250,
+        "text": "Ja, ja. Exacto. Hipócritas todos, incluida yo a veces.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S107",
+        "order": 251,
+        "text": "A mí el reggaetón me hace bailar aunque mi cerebro a veces se queje.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S108",
+        "order": 252,
+        "text": "Y ahí tenemos la discusión servida.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S109",
+        "order": 253,
+        "text": "Venga, siguiente bloque.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC03-S110",
+        "order": 254,
+        "text": "Vamos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S001",
+        "order": 255,
+        "text": "Vamos a empezar por el origen, porque el reggaetón tiene una historia que la mayoría de oyentes no conoce.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S002",
+        "order": 256,
+        "text": "Bien, porque la gente piensa que el reggaetón sale de la nada en los 2000.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S003",
+        "order": 257,
+        "text": "Y no es así para nada. El reggaetón nace en Puerto Rico a finales de los 80, principios de los 90.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S004",
+        "order": 258,
+        "text": "Con el dembow, que es un ritmo que viene del dancehall jamaicano.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S005",
+        "order": 259,
+        "text": "Exacto. El dembow original era una canción de Shabba Ranks que llegó a Panamá y a Puerto Rico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S006",
+        "order": 260,
+        "text": "Y de ahí los DJs puertorriqueños empezaron a usar el patrón de la batería para producir canciones en español.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S007",
+        "order": 261,
+        "text": "Lo llamaban \"under\" al principio. Música underground.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S008",
+        "order": 262,
+        "text": "Se hacía en cintas, se pasaba de mano en mano, era completamente clandestino.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S009",
+        "order": 263,
+        "text": "Y era perseguido. En los 90 la policía de Puerto Rico confiscaba casetes de reggaetón.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S010",
+        "order": 264,
+        "text": "¿En serio?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S011",
+        "order": 265,
+        "text": "Sí. Lo consideraban música peligrosa, sucia, corruptora.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S012",
+        "order": 266,
+        "text": "Lo mismo que decían del rock and roll, del punk, del hip-hop, de todo lo que asusta al poder.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S013",
+        "order": 267,
+        "text": "Exacto. Y ese es un patrón histórico — la música que sale de los márgenes siempre asusta.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S014",
+        "order": 268,
+        "text": "Hasta que se vuelve mainstream. Y entonces la absorben y la comercializan.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S015",
+        "order": 269,
+        "text": "Y así llegamos a los 2000, cuando el reggaetón sale del underground.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S016",
+        "order": 270,
+        "text": "En España el reggaetón llegó fuerte en 2005, 2006.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S017",
+        "order": 271,
+        "text": "\"Gasolina\" de Daddy Yankee fue el punto de inflexión mundial, no solo español.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S018",
+        "order": 272,
+        "text": "Esa canción estaba en todos los bares, en todas las bodas, en todas las discotecas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S019",
+        "order": 273,
+        "text": "Y Don Omar con \"Dale don dale\", Wisin y Yandel con \"Rakata\", Tego Calderón...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S020",
+        "order": 274,
+        "text": "Ivy Queen con \"Quiero bailar\"... sonaba todo en todas partes.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S021",
+        "order": 275,
+        "text": "Y curiosamente en España al principio lo aceptaba la gente joven más popular, no la gente de clase media.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S022",
+        "order": 276,
+        "text": "Claro. Tenía un componente de clase muy fuerte.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S023",
+        "order": 277,
+        "text": "La gente que iba al indie, a los festivales, decía \"el reggaetón es música de macarras\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S024",
+        "order": 278,
+        "text": "Esa frase la he oído mil veces. \"Música de macarras\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S025",
+        "order": 279,
+        "text": "Y lo decían con la superioridad moral de quien escucha Arctic Monkeys.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S026",
+        "order": 280,
+        "text": "Que ahí está la ironía. Porque Arctic Monkeys es, al fin y al cabo, la misma posición — música popular joven.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S027",
+        "order": 281,
+        "text": "Pero se escucha en inglés, entonces tiene prestigio.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S028",
+        "order": 282,
+        "text": "Y ahí hay un tema colonial muy fuerte. La música en inglés es arte, la música latina es mala.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S029",
+        "order": 283,
+        "text": "Hablemos del fenómeno Bad Bunny, que cambió completamente el panorama.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S030",
+        "order": 284,
+        "text": "Bad Bunny es un caso único.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S031",
+        "order": 285,
+        "text": "¿Por qué único?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S032",
+        "order": 286,
+        "text": "Porque es el primer artista no anglosajón que lidera Spotify mundial.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S033",
+        "order": 287,
+        "text": "Sí, durante tres años seguidos — 2020, 2021, 2022.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S034",
+        "order": 288,
+        "text": "Cantando en español. Sin versiones en inglés. Sin adaptarse.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S035",
+        "order": 289,
+        "text": "Eso en sí es un hito histórico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S036",
+        "order": 290,
+        "text": "Nunca había pasado. Los artistas latinos que triunfaban fuera traducían o colaboraban con anglos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S037",
+        "order": 291,
+        "text": "Pienso en Shakira, que hizo el salto al inglés. Pienso en Luis Fonsi con \"Despacito\" pero con Justin Bieber.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S038",
+        "order": 292,
+        "text": "Bad Bunny no. Bad Bunny hizo el camino inverso. Él forzó al mundo a escucharle en español.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S039",
+        "order": 293,
+        "text": "Y esa decisión política, aunque él no siempre la articule así, es enorme.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S040",
+        "order": 294,
+        "text": "Por eso es más grande de lo que parece.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S041",
+        "order": 295,
+        "text": "Sus discos son variadísimos — \"YHLQMDLG\", \"El último tour del mundo\", \"Un verano sin ti\"...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S042",
+        "order": 296,
+        "text": "\"Un verano sin ti\" es una obra maestra. Lo digo en serio.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S043",
+        "order": 297,
+        "text": "Tiene bolero, cumbia, dembow, rock, merengue... todo en un disco coherente.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S044",
+        "order": 298,
+        "text": "Y letras que a veces son ligeras y a veces son muy profundas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S045",
+        "order": 299,
+        "text": "\"Andrea\" es una canción feminista.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S046",
+        "order": 300,
+        "text": "\"El apagón\" habla del colonialismo en Puerto Rico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S047",
+        "order": 301,
+        "text": "Y aun así la gente que lo desprecia dice \"es un reggaetonero tonto\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S048",
+        "order": 302,
+        "text": "Porque no se han molestado en escuchar.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S049",
+        "order": 303,
+        "text": "Pero vamos al elefante de esta habitación también: las letras del reggaetón.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S050",
+        "order": 304,
+        "text": "Misóginas, sexistas, cosificantes. Es el argumento más repetido.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S051",
+        "order": 305,
+        "text": "¿Y qué piensas tú?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S052",
+        "order": 306,
+        "text": "Yo pienso que hay de todo. Hay canciones que son insostenibles y hay canciones que son totalmente OK.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S053",
+        "order": 307,
+        "text": "Dame ejemplos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S054",
+        "order": 308,
+        "text": "\"Chulin culin chunfly\" es insostenible. \"Andrea\" de Bad Bunny es otra cosa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S055",
+        "order": 309,
+        "text": "Entre el reggaetón antiguo y el actual hay una evolución, ¿no?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S056",
+        "order": 310,
+        "text": "Hay una evolución enorme. Los textos están cambiando porque el público está cambiando.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S057",
+        "order": 311,
+        "text": "Hay más mujeres oyentes, más mujeres cantantes, y eso obliga.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S058",
+        "order": 312,
+        "text": "Karol G ha cambiado el género con \"Tusa\", con \"Bichota\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S059",
+        "order": 313,
+        "text": "Y Rosalía también, con \"Despechá\", aunque ella no se llame reggaetonera.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S060",
+        "order": 314,
+        "text": "Pero las letras de Daddy Yankee de 2005 son objetivamente problemáticas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S061",
+        "order": 315,
+        "text": "Objetivamente. Es hora de admitirlo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S062",
+        "order": 316,
+        "text": "Aunque lo bailemos igual.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S063",
+        "order": 317,
+        "text": "Aunque lo bailemos igual, sí. Y ahí hay una tensión también.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S064",
+        "order": 318,
+        "text": "¿Puedes disfrutar de algo que cuestionas?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S065",
+        "order": 319,
+        "text": "Pues creo que sí. Pero entendiendo lo que haces.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S066",
+        "order": 320,
+        "text": "Hablamos de Karol G. Merece más espacio.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S067",
+        "order": 321,
+        "text": "Karol G es la reggaetonera más grande del mundo ahora mismo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S068",
+        "order": 322,
+        "text": "Y su historia es interesante. Empezó hace diez años sin tener éxito.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S069",
+        "order": 323,
+        "text": "Luchó muchísimo por un hueco en un género hipermasculino.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S070",
+        "order": 324,
+        "text": "Y ahora llena estadios.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S071",
+        "order": 325,
+        "text": "Su disco \"Mañana será bonito\" es un fenómeno generacional.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S072",
+        "order": 326,
+        "text": "Para muchas chicas latinas, ella es un referente que no había antes.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S073",
+        "order": 327,
+        "text": "Luego tenemos a Nathy Peluso, que es argentina pero hace todo — reggaetón, hip-hop, salsa...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S074",
+        "order": 328,
+        "text": "Nathy es un monstruo. Canta como si se inventara el idioma.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S075",
+        "order": 329,
+        "text": "Y Young Miko, de Puerto Rico, que es lesbiana y abierta sobre ello.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S076",
+        "order": 330,
+        "text": "Eso también es nuevo. Y es grande.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S077",
+        "order": 331,
+        "text": "La Ivi, Lola Índigo, Bad Gyal aquí en España...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S078",
+        "order": 332,
+        "text": "Bad Gyal ha hecho el mayor acercamiento España-Caribe en reggaetón.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S079",
+        "order": 333,
+        "text": "Y Becky G, aunque es americana, llegó a España antes que a Estados Unidos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S080",
+        "order": 334,
+        "text": "Todas ellas cambian la letra del género. No imitan a los hombres, cambian el tono.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S081",
+        "order": 335,
+        "text": "Pero hay gente que lo odia, y creo que merece entenderse por qué.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S082",
+        "order": 336,
+        "text": "A ver, el odio al reggaetón tiene varias capas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S083",
+        "order": 337,
+        "text": "Desglosa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S084",
+        "order": 338,
+        "text": "Una capa es legítima — las letras antiguas eran problemáticas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S085",
+        "order": 339,
+        "text": "Vale.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S086",
+        "order": 340,
+        "text": "Otra capa es estética — el ritmo es repetitivo y a muchos oídos les cansa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S087",
+        "order": 341,
+        "text": "Eso es gusto, no es un juicio moral.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S088",
+        "order": 342,
+        "text": "Pero otra capa es clasista — \"es música de barrio, es música barata\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S089",
+        "order": 343,
+        "text": "Y esa capa no es defendible.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S090",
+        "order": 344,
+        "text": "Y hay una última capa que es racial, aunque no se admita.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S091",
+        "order": 345,
+        "text": "Es que el desprecio al reggaetón muchas veces es desprecio a lo afro-caribeño y a lo latino.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S092",
+        "order": 346,
+        "text": "Tal cual. Aunque la gente no lo formule así.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S093",
+        "order": 347,
+        "text": "Cuando mi padre dice \"esto es música de negros\", mi padre está diciendo algo que no es sobre música.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S094",
+        "order": 348,
+        "text": "Exacto. Y cuando la gente dice \"música de macarras\", tampoco es sobre música.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S095",
+        "order": 349,
+        "text": "Es sobre quién tiene el derecho a ser escuchado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S096",
+        "order": 350,
+        "text": "Última pregunta — ¿el reggaetón es música \"menor\"?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S097",
+        "order": 351,
+        "text": "Esta pregunta ya parte mal.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S098",
+        "order": 352,
+        "text": "Explica.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S099",
+        "order": 353,
+        "text": "Porque asume que hay una escala de música \"mayor\" y \"menor\", y esa escala la inventamos los que tenemos el poder cultural.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S100",
+        "order": 354,
+        "text": "Claro. La música clásica es \"mayor\" porque los que decidieron eran europeos y blancos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S101",
+        "order": 355,
+        "text": "Y todo lo demás quedó como \"menor\" hasta que tuvo suficiente peso para imponerse.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S102",
+        "order": 356,
+        "text": "Pues lo mismo pasa con el reggaetón. Es \"menor\" para quien lo mira desde fuera.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S103",
+        "order": 357,
+        "text": "Pero si se escucha con atención, hay producción sofisticada, letras complejas, estructura musical pensada.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S104",
+        "order": 358,
+        "text": "Y lo más importante — mueve cuerpos y mueve generaciones.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S105",
+        "order": 359,
+        "text": "La música que mueve generaciones no es menor.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S106",
+        "order": 360,
+        "text": "Bueno, cambiamos de tema pero nos lo llevamos con nosotras.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S107",
+        "order": 361,
+        "text": "Porque al final todo esto del reggaetón no habría pasado sin streaming.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S108",
+        "order": 362,
+        "text": "Buena pivot.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S109",
+        "order": 363,
+        "text": "Sin Spotify, sin YouTube, sin TikTok, el reggaetón no habría salido del gueto del Caribe.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC04-S110",
+        "order": 364,
+        "text": "Así que siguiente tema — la revolución del streaming.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S001",
+        "order": 365,
+        "text": "Vamos a hablar de algo que me da un poco de nostalgia — cómo descubríamos música antes de internet.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S002",
+        "order": 366,
+        "text": "Uy, yo apenas lo viví, porque nací ya con internet.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S003",
+        "order": 367,
+        "text": "Pero lo viste en tus primos mayores, supongo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S004",
+        "order": 368,
+        "text": "Sí. Yo me acuerdo de los casetes grabados de la radio.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S005",
+        "order": 369,
+        "text": "Ah, el casete grabado. Eso es un objeto casi mitológico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S006",
+        "order": 370,
+        "text": "Lo hacía mi primo. Grababa Los 40 Principales en bucle y luego lo editaba con la pausa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S007",
+        "order": 371,
+        "text": "Claro. Y siempre te quedaban trozos del DJ hablando por encima.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S008",
+        "order": 372,
+        "text": "Siempre. Nunca te quedaba la canción entera y limpia.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S009",
+        "order": 373,
+        "text": "Yo tenía un tío que me hacía compilaciones en CD. Era un arte.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S010",
+        "order": 374,
+        "text": "Las mixtapes. Esa era una forma de declaración de amor, por cierto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S011",
+        "order": 375,
+        "text": "Ja, ja. Total. Si alguien te hacía una cinta, era más grande que un regalo cualquiera.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S012",
+        "order": 376,
+        "text": "Había que elegir con cuidado cada canción, el orden, incluso el título que le ponías.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S013",
+        "order": 377,
+        "text": "Y luego la tienda de discos, que era otro templo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S014",
+        "order": 378,
+        "text": "Yo eso ya lo pillo por las últimas. Recuerdo FNAC y ya está.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S015",
+        "order": 379,
+        "text": "Es que entre mi generación y la tuya, se murió todo eso en muy poco tiempo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S016",
+        "order": 380,
+        "text": "Y entre medias pasó una cosa que lo cambió todo — Napster.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S017",
+        "order": 381,
+        "text": "El momento en que la gente se dio cuenta de que la música podía ser gratis.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S018",
+        "order": 382,
+        "text": "Napster fue 1999. Y de repente, bajar canciones era algo que hacía cualquiera.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S019",
+        "order": 383,
+        "text": "Y luego fue eMule, luego Ares, luego The Pirate Bay para lo bestia.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S020",
+        "order": 384,
+        "text": "Y Metallica demandó a Napster, que fue un momento icónico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S021",
+        "order": 385,
+        "text": "Los artistas decían que se estaban muriendo de hambre.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S022",
+        "order": 386,
+        "text": "Y hasta cierto punto era verdad. Las ventas de discos cayeron en picado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S023",
+        "order": 387,
+        "text": "Aunque también los grandes sellos se habían hecho millonarios a costa de los artistas toda la vida.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S024",
+        "order": 388,
+        "text": "Sí, eso también es verdad. El mito del artista-víctima es más complicado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S025",
+        "order": 389,
+        "text": "Y luego llegó iTunes, que intentó vender las canciones de una en una.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S026",
+        "order": 390,
+        "text": "99 céntimos la canción. Eso cambió la forma de pensar el álbum.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S027",
+        "order": 391,
+        "text": "Porque de repente podías comprar solo la buena y dejar las demás.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S028",
+        "order": 392,
+        "text": "Y ahí empezó la fragmentación que luego Spotify llevaría al extremo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S029",
+        "order": 393,
+        "text": "Spotify llegó en 2006 pero en España pilló fuerza a partir de 2010.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S030",
+        "order": 394,
+        "text": "Yo me acuerdo cuando pasé de las cuentas de iTunes a Spotify Premium y pensé \"esto lo cambia todo\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S031",
+        "order": 395,
+        "text": "Por 9.99 al mes tenías todas las canciones del mundo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S032",
+        "order": 396,
+        "text": "Todas. Era inconcebible antes.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S033",
+        "order": 397,
+        "text": "Pero con un coste grande — los artistas cobran centésimas de céntimo por escucha.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S034",
+        "order": 398,
+        "text": "Daniel Ek, el fundador, siempre dice que es el modelo más sostenible para los artistas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S035",
+        "order": 399,
+        "text": "Y muchos artistas dicen que es una estafa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S036",
+        "order": 400,
+        "text": "Bueno, la verdad es que hay un grupo de artistas enormes que ganan millones y otro grupo inmenso que gana casi nada.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S037",
+        "order": 401,
+        "text": "Es el clásico long tail invertido. Los pocos ganan mucho, los muchos no ganan.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S038",
+        "order": 402,
+        "text": "Pero lo que Spotify sí hizo fue democratizar el acceso.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S039",
+        "order": 403,
+        "text": "Como oyente, de repente tienes todo disponible.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S040",
+        "order": 404,
+        "text": "Música que antes era imposible de encontrar — jazz de los 50, rock argentino de los 80, música folk tradicional...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S041",
+        "order": 405,
+        "text": "En mi biblioteca tengo cosas que hace veinte años habrían tardado meses en encontrarse.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S042",
+        "order": 406,
+        "text": "Y eso para un melómano es un regalo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S043",
+        "order": 407,
+        "text": "Aunque el melómano también tenga una cierta culpa. Si la música es gratis, la tratas como gratis.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S044",
+        "order": 408,
+        "text": "Exacto. El problema del consumo infinito es que todo se vuelve descartable.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S045",
+        "order": 409,
+        "text": "No te sientas con un álbum. Lo pones, te gusta un poco, pasas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S046",
+        "order": 410,
+        "text": "Y todo esto va unido al algoritmo, que es la gran revolución silenciosa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S047",
+        "order": 411,
+        "text": "El Discover Weekly, los Daily Mix, las playlists curadas...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S048",
+        "order": 412,
+        "text": "La pregunta es — ¿quién elige nuestra música ahora?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S049",
+        "order": 413,
+        "text": "Porque ya no somos nosotros, no del todo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S050",
+        "order": 414,
+        "text": "Antes elegías tú, o elegía un amigo, o un programa de radio con nombre.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S051",
+        "order": 415,
+        "text": "Ahora elige una máquina que aprende de tus comportamientos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S052",
+        "order": 416,
+        "text": "Y que te empuja hacia lo similar a lo que ya escuchas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S053",
+        "order": 417,
+        "text": "La cámara de eco. La burbuja musical.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S054",
+        "order": 418,
+        "text": "Yo he descubierto cosas buenísimas gracias al algoritmo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S055",
+        "order": 419,
+        "text": "Yo también. No es todo malo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S056",
+        "order": 420,
+        "text": "Pero también he tenido la sensación de que me lleva hacia una forma de conformismo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S057",
+        "order": 421,
+        "text": "Porque el algoritmo prioriza lo que te va a gustar seguro, no lo que te va a sorprender.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S058",
+        "order": 422,
+        "text": "Y la música, para mí al menos, tiene que sorprenderte a veces.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S059",
+        "order": 423,
+        "text": "Tiene que incomodarte, tiene que hacerte parar.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S060",
+        "order": 424,
+        "text": "Y eso el algoritmo no sabe hacerlo porque no quiere perderte.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S061",
+        "order": 425,
+        "text": "Y luego llegó TikTok, que ha redefinido la música otra vez.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S062",
+        "order": 426,
+        "text": "TikTok es la nueva MTV, pero más rápida.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S063",
+        "order": 427,
+        "text": "Y con menos calidad, en cierto modo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S064",
+        "order": 428,
+        "text": "¿Qué quieres decir?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S065",
+        "order": 429,
+        "text": "Que una canción ya no necesita ser buena entera. Necesita un fragmento de diez segundos pegadizo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S066",
+        "order": 430,
+        "text": "Y los artistas ahora escriben para eso.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S067",
+        "order": 431,
+        "text": "Escriben pensando \"qué parte va a viralizarse\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S068",
+        "order": 432,
+        "text": "Eso es una manera nueva de componer.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S069",
+        "order": 433,
+        "text": "Lil Nas X es un caso — \"Old Town Road\" se construyó explícitamente para TikTok.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S070",
+        "order": 434,
+        "text": "Y en España, Quevedo explotó gracias a TikTok con la sesión de Bizarrap.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S071",
+        "order": 435,
+        "text": "Y Tainy, C. Tangana, Bad Gyal — todos han usado TikTok estratégicamente.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S072",
+        "order": 436,
+        "text": "El problema es que queda una música desechable. Pegadiza pero olvidable.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S073",
+        "order": 437,
+        "text": "A veces. Otras veces no. Pero sí, hay mucho ruido.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S074",
+        "order": 438,
+        "text": "Y aquí llegamos a la pregunta dolorosa — ¿el álbum está muerto?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S075",
+        "order": 439,
+        "text": "Muchos artistas todavía hacen álbumes pensados, con coherencia, con arco.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S076",
+        "order": 440,
+        "text": "Pero los datos dicen que la mayoría de gente no los escucha enteros.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S077",
+        "order": 441,
+        "text": "Spotify lo mide. La gente escucha tres canciones y se va.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S078",
+        "order": 442,
+        "text": "Y Bad Bunny, Taylor Swift, siguen haciendo álbumes masivos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S079",
+        "order": 443,
+        "text": "Porque son de los pocos que pueden forzar que la gente los escuche como experiencia.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S080",
+        "order": 444,
+        "text": "Un artista pequeño no puede hacer un álbum de 14 canciones y esperar que lo escuchen de principio a fin.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S081",
+        "order": 445,
+        "text": "Tiene que pensar en singles, en piezas sueltas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S082",
+        "order": 446,
+        "text": "Y eso cambia la forma de crear.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S083",
+        "order": 447,
+        "text": "Adele se resiste. Sigue haciendo álbumes para escuchar enteros.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S084",
+        "order": 448,
+        "text": "Y Radiohead. Pero son estrellas enormes.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S085",
+        "order": 449,
+        "text": "Para los demás, es un dilema comercial.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S086",
+        "order": 450,
+        "text": "Aunque yo creo que el álbum volverá. No como producto masivo, pero como gesto artístico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S087",
+        "order": 451,
+        "text": "Como las novelas. Pocos las leen, pero siguen escribiéndose.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S088",
+        "order": 452,
+        "text": "Exacto. Hay algo irreductible en crear una obra larga.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S089",
+        "order": 453,
+        "text": "Hay artistas que se resisten al modelo streaming.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S090",
+        "order": 454,
+        "text": "Neil Young retiró sus canciones de Spotify cuando lo de Joe Rogan.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S091",
+        "order": 455,
+        "text": "Fue un gesto político, pero también una declaración de principios.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S092",
+        "order": 456,
+        "text": "Y Taylor Swift regrabó sus discos para recuperar los derechos — las famosas \"Taylor's Versions\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S093",
+        "order": 457,
+        "text": "Esa fue una lección magistral sobre cómo funciona la industria.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S094",
+        "order": 458,
+        "text": "Y luego hay artistas que no están en streaming — Tool, por ejemplo, estuvo fuera mucho tiempo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S095",
+        "order": 459,
+        "text": "Y el problema es que estar fuera te hace invisible para la mayoría.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S096",
+        "order": 460,
+        "text": "Pero aunque todo esto del streaming ha cambiado el panorama, hay algo que no se puede reemplazar.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S097",
+        "order": 461,
+        "text": "El directo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S098",
+        "order": 462,
+        "text": "La experiencia en vivo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S099",
+        "order": 463,
+        "text": "Vamos a eso, que es mi parte favorita.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC05-S100",
+        "order": 464,
+        "text": "La música en directo, en el siguiente bloque.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S001",
+        "order": 465,
+        "text": "Vale, el directo. ¿Cuál fue tu primer concierto grande, uno que recuerdes?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S002",
+        "order": 466,
+        "text": "Estopa en la Caja Mágica, con dieciséis años. Fui con mi hermana.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S003",
+        "order": 467,
+        "text": "¡No me digas! Un clásico total.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S004",
+        "order": 468,
+        "text": "Lloré. No te miento, lloré como una tonta.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S005",
+        "order": 469,
+        "text": "¿Por qué?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S006",
+        "order": 470,
+        "text": "Por la cantidad de gente cantando al unísono. Es una experiencia física.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S007",
+        "order": 471,
+        "text": "Eso es lo que no te explican hasta que lo vives.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S008",
+        "order": 472,
+        "text": "Estás en un cuerpo gigante que canta tu canción contigo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S009",
+        "order": 473,
+        "text": "Mi primer concierto grande fue Los Planetas en la Sala Riviera. Tendría veinte años.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S010",
+        "order": 474,
+        "text": "¿Y qué recuerdas?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S011",
+        "order": 475,
+        "text": "Que salí empapada. De sudor, de alcohol derramado, de la lluvia de la calle al final.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S012",
+        "order": 476,
+        "text": "Ja, ja. Una noche completa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S013",
+        "order": 477,
+        "text": "Hablemos de festivales. España tiene una cultura de festivales buenísima.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S014",
+        "order": 478,
+        "text": "El Primavera Sound, el FIB, el Mad Cool, el Sónar, el BBK...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S015",
+        "order": 479,
+        "text": "Y Paredes de Coura, y el Viña Rock, y el SanSan...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S016",
+        "order": 480,
+        "text": "Hay festival para cada gusto. Eso no pasa en todos los países.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S017",
+        "order": 481,
+        "text": "El Primavera Sound es probablemente el más prestigioso.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S018",
+        "order": 482,
+        "text": "Porque el cartel es de curadores, no solo de ventas. Ponen bandas de nicho.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S019",
+        "order": 483,
+        "text": "Y te mezcla indies con trap con hip-hop con dub reggae.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S020",
+        "order": 484,
+        "text": "El FIB es otra cosa — más festivo, más playa, más juventud extranjera.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S021",
+        "order": 485,
+        "text": "En Benicasim, con los jóvenes británicos que vienen por la cerveza barata.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S022",
+        "order": 486,
+        "text": "Ja, ja. La leyenda del FIB en el mundo anglosajón es muy grande.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S023",
+        "order": 487,
+        "text": "El Mad Cool es madrileño y es más nuevo, pero se ha hecho un sitio.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S024",
+        "order": 488,
+        "text": "Y el Sónar es de música electrónica y arte. Otro universo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S025",
+        "order": 489,
+        "text": "Si te gusta el ambient, el techno, la experimentación, el Sónar es tu casa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S026",
+        "order": 490,
+        "text": "El BBK en Bilbao es más de rock clásico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S027",
+        "order": 491,
+        "text": "Cada festival tiene su identidad. Eso es riqueza.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S028",
+        "order": 492,
+        "text": "Y además los festivales españoles suelen estar bien organizados, con menos caos que los ingleses.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S029",
+        "order": 493,
+        "text": "Pero para mí, la experiencia más pura es la sala pequeña.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S030",
+        "order": 494,
+        "text": "Ay, las salas. La Riviera, Moby Dick, El Sol, Apolo en Barcelona...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S031",
+        "order": 495,
+        "text": "La Sala Apolo es la catedral.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S032",
+        "order": 496,
+        "text": "Todo el que pasa por Barcelona con una banda indie toca en Apolo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S033",
+        "order": 497,
+        "text": "Y en una sala de 500 personas, la experiencia es completamente distinta.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S034",
+        "order": 498,
+        "text": "Ves al artista sudar. Ves los gestos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S035",
+        "order": 499,
+        "text": "Y la canción suena cerca, íntima. No como un estadio, que es distante.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S036",
+        "order": 500,
+        "text": "Yo en una sala pequeña he visto cosas que me han marcado para siempre.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S037",
+        "order": 501,
+        "text": "Cuéntame una.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S038",
+        "order": 502,
+        "text": "Vi a Anni B Sweet en una sala pequeña. Era una acústica. Nos miraba uno a uno.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S039",
+        "order": 503,
+        "text": "Esas son las que no se olvidan.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S040",
+        "order": 504,
+        "text": "Y la vi con sesenta personas. Ahora llena salas grandes, pero aquel día fue mágico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S041",
+        "order": 505,
+        "text": "Ese es el regalo de las salas pequeñas. Pillas al artista antes de que explote.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S042",
+        "order": 506,
+        "text": "Y cuando explota, tú puedes decir \"yo estaba\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S043",
+        "order": 507,
+        "text": "Dime — ¿el público español es diferente?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S044",
+        "order": 508,
+        "text": "Cantamos más alto, creo yo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S045",
+        "order": 509,
+        "text": "Los artistas extranjeros lo dicen cuando vienen. Que España es de los mejores públicos del mundo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S046",
+        "order": 510,
+        "text": "Porque nos sabemos las letras de todo, incluso en inglés.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S047",
+        "order": 511,
+        "text": "\"Don't Look Back in Anger\" cantada a pleno pulmón en un estadio español es otro nivel.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S048",
+        "order": 512,
+        "text": "Y los artistas se emocionan.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S049",
+        "order": 513,
+        "text": "Bruce Springsteen siempre dice que España es de sus públicos favoritos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S050",
+        "order": 514,
+        "text": "Y The Cure. Y Radiohead. Y Metallica.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S051",
+        "order": 515,
+        "text": "Porque aquí hay una cultura del directo que involucra mucho al público.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S052",
+        "order": 516,
+        "text": "También cantamos cuando no deberíamos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S053",
+        "order": 517,
+        "text": "Ja, ja. Nos pasamos con las baladas calladas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S054",
+        "order": 518,
+        "text": "\"Fix You\" de Coldplay en un estadio español es un coro enorme cuando debería ser un susurro.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S055",
+        "order": 519,
+        "text": "Pero también es una forma de decir \"te queremos\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S056",
+        "order": 520,
+        "text": "Cambio de tema — los conciertos son cada vez más caros.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S057",
+        "order": 521,
+        "text": "Escandalosamente caros.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S058",
+        "order": 522,
+        "text": "Ver a Taylor Swift cuesta 300 euros si estás lejos, 1000 si estás cerca.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S059",
+        "order": 523,
+        "text": "Y eso es excluyente. Es música para ricos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S060",
+        "order": 524,
+        "text": "Lo preocupante es que incluso los conciertos medianos han subido muchísimo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S061",
+        "order": 525,
+        "text": "Una entrada para una sala grande antes te costaba 30 euros, ahora 60.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S062",
+        "order": 526,
+        "text": "¿Por qué está pasando?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S063",
+        "order": 527,
+        "text": "Porque los artistas ya no viven de los discos, viven de las giras.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S064",
+        "order": 528,
+        "text": "Y entonces ordeñan la gira.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S065",
+        "order": 529,
+        "text": "Claro. Y a esto le añades la especulación, las reventas, la plataforma que se lleva comisión...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S066",
+        "order": 530,
+        "text": "El resultado es que mucha gente joven ya no puede ir a conciertos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S067",
+        "order": 531,
+        "text": "Y eso es un problema. La música en vivo era una experiencia de todos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S068",
+        "order": 532,
+        "text": "Está dejando de serlo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S069",
+        "order": 533,
+        "text": "Y luego está el efecto pandemia.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S070",
+        "order": 534,
+        "text": "Dos años sin conciertos, y cuando volvieron, volvieron con hambre.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S071",
+        "order": 535,
+        "text": "Yo me acuerdo del primer concierto post-pandemia. Fue casi una catarsis colectiva.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S072",
+        "order": 536,
+        "text": "Yo también. Lloré otra vez, porque no había llorado en un concierto en años.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S073",
+        "order": 537,
+        "text": "Había algo distinto. Sabíamos lo que nos habían quitado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S074",
+        "order": 538,
+        "text": "La gente bailaba con más intensidad, cantaba más alto, se abrazaba más.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S075",
+        "order": 539,
+        "text": "Y eso duró un año, un año y medio.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S076",
+        "order": 540,
+        "text": "Luego volvió la normalidad. Pero durante esos meses fue distinto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S077",
+        "order": 541,
+        "text": "Fue una recordación de lo importante que es.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S078",
+        "order": 542,
+        "text": "Y también fue el momento en que los artistas pequeños sufrieron más.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S079",
+        "order": 543,
+        "text": "Muchos no aguantaron económicamente. Esa es la parte oscura.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S080",
+        "order": 544,
+        "text": "Hay gente que dejó la música durante la pandemia y nunca volvió.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S081",
+        "order": 545,
+        "text": "Déjame contarte un momento mágico que tuve en un directo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S082",
+        "order": 546,
+        "text": "Venga.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S083",
+        "order": 547,
+        "text": "Vi a Jorge Drexler en los Teatros del Canal. Muy pequeño, muy íntimo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S084",
+        "order": 548,
+        "text": "Drexler en pequeño debe ser impresionante.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S085",
+        "order": 549,
+        "text": "Hizo una canción que nunca había grabado. Era solo él con la guitarra.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S086",
+        "order": 550,
+        "text": "Y sabes que la estás escuchando por primera vez y probablemente la última.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S087",
+        "order": 551,
+        "text": "Exacto. Esa canción nunca saldrá en ningún disco. Existe solo en la memoria de los que estuvimos allí.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S088",
+        "order": 552,
+        "text": "Eso es lo que hace único al directo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S089",
+        "order": 553,
+        "text": "Es música que ocurre una vez. Igual que el teatro.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S090",
+        "order": 554,
+        "text": "Y aunque la grabes con el móvil, no es lo mismo. Se pierde.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S091",
+        "order": 555,
+        "text": "Se pierde porque la experiencia no está solo en el sonido. Está en estar.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S092",
+        "order": 556,
+        "text": "Y eso es irreemplazable.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S093",
+        "order": 557,
+        "text": "Pues hablando de directo, hablemos de artistas que llevan el directo a otro nivel — los grandes letristas, los cantautores.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S094",
+        "order": 558,
+        "text": "Los poetas, en realidad.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC06-S095",
+        "order": 559,
+        "text": "Siguiente bloque.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S001",
+        "order": 560,
+        "text": "Vamos a hablar de cantautores, que es el lado poético de la música en español.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S002",
+        "order": 561,
+        "text": "Qué tema más grande. Por dónde empezamos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S003",
+        "order": 562,
+        "text": "¿Qué hace grande a un cantautor?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S004",
+        "order": 563,
+        "text": "Que te cuenta algo que no sabías que sabías.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S005",
+        "order": 564,
+        "text": "Bonito.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S006",
+        "order": 565,
+        "text": "Una canción de Sabina te puede pillar en un momento raro y decirte lo que estás sintiendo con palabras que tú nunca habrías encontrado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S007",
+        "order": 566,
+        "text": "Y una canción de Drexler te hace pensar.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S008",
+        "order": 567,
+        "text": "Exacto. Cada uno de estos grandes tiene una función emocional distinta.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S009",
+        "order": 568,
+        "text": "Son poetas con guitarra, al fin y al cabo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S010",
+        "order": 569,
+        "text": "Y el español tiene una tradición enorme en eso.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S011",
+        "order": 570,
+        "text": "Desde el cancionero popular hasta los trovadores modernos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S012",
+        "order": 571,
+        "text": "Empecemos por los grandes.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S013",
+        "order": 572,
+        "text": "Sabina es Sabina.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S014",
+        "order": 573,
+        "text": "El irreverente con licenciatura en literatura.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S015",
+        "order": 574,
+        "text": "Y el personaje, además del artista.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S016",
+        "order": 575,
+        "text": "Es imposible separarlos. Sabina se ha hecho a sí mismo como un Sabina constante.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S017",
+        "order": 576,
+        "text": "Con el sombrero, la voz rota, el verso ingenioso, la referencia culta metida en mitad de la canción.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S018",
+        "order": 577,
+        "text": "\"Y nos dieron las diez\", \"19 días y 500 noches\", \"Calle Melancolía\", \"Peces de ciudad\"...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S019",
+        "order": 578,
+        "text": "\"19 días y 500 noches\" es una de las grandes canciones del español contemporáneo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S020",
+        "order": 579,
+        "text": "Absolutamente. Es una canción perfecta sobre el desamor.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S021",
+        "order": 580,
+        "text": "Y tiene líneas que se quedan grabadas. \"Yo que tanto me creía\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S022",
+        "order": 581,
+        "text": "\"Y que odiaba, como a enemigos mortales, a los cursis\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S023",
+        "order": 582,
+        "text": "\"Y acabé cursi yo, cursi yo\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S024",
+        "order": 583,
+        "text": "Es poesía pura.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S025",
+        "order": 584,
+        "text": "Pero también es alguien polémico. Sus letras a veces están en la frontera.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S026",
+        "order": 585,
+        "text": "Sí, Sabina tiene canciones que hoy escribirían de otra forma.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S027",
+        "order": 586,
+        "text": "Eso es un tema con muchos grandes artistas — envejecer y mantener la obra.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S028",
+        "order": 587,
+        "text": "Pero tiene obra inmortal también, eso lo reconoce todo el mundo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S029",
+        "order": 588,
+        "text": "Serrat es otra cosa. Serrat es el poeta.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S030",
+        "order": 589,
+        "text": "Y la tradición catalana y castellana a la vez.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S031",
+        "order": 590,
+        "text": "Cantó en catalán cuando estaba prohibido. Eso es importante recordarlo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S032",
+        "order": 591,
+        "text": "Y cantó en castellano cuando mucha gente en Cataluña lo criticó por hacerlo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S033",
+        "order": 592,
+        "text": "Se movió entre dos culturas con una elegancia enorme.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S034",
+        "order": 593,
+        "text": "\"Mediterráneo\", \"Penélope\", \"Lucía\", \"Fiesta\"...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S035",
+        "order": 594,
+        "text": "\"Mediterráneo\" es una de las canciones más hermosas escritas nunca en español.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S036",
+        "order": 595,
+        "text": "\"Quizás porque mi niñez sigue jugando en tu playa\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S037",
+        "order": 596,
+        "text": "Y es un canto a todo un mar, a una forma de vida, a una infancia.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S038",
+        "order": 597,
+        "text": "Y a Miguel Hernández. Serrat puso a Miguel Hernández en la boca del pueblo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S039",
+        "order": 598,
+        "text": "\"Para la libertad\". Esa canción hizo que los adolescentes españoles se aprendieran a un poeta de los años 30.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S040",
+        "order": 599,
+        "text": "Eso es lo que hacen los grandes — expandir la cultura.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S041",
+        "order": 600,
+        "text": "Serrat es también el tío mayor que te enseña cosas sin decirlo abiertamente.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S042",
+        "order": 601,
+        "text": "Y eso que él siempre ha sido un artista muy político, pero sutil.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S043",
+        "order": 602,
+        "text": "Nunca panfletario. Nunca bajando el nivel.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S044",
+        "order": 603,
+        "text": "Se retiró ya, pero su legado es gigante.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S045",
+        "order": 604,
+        "text": "Jorge Drexler es uruguayo pero el español de toda la hispanofonía lo considera suyo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S046",
+        "order": 605,
+        "text": "Porque él escribe en un idioma muy particular — culto sin ser pedante.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S047",
+        "order": 606,
+        "text": "Y es también un investigador de los ritmos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S048",
+        "order": 607,
+        "text": "La milonga, el candombe, el bolero, incluso el reggaetón ha probado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S049",
+        "order": 608,
+        "text": "Pero lo que lo define es la introspección.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S050",
+        "order": 609,
+        "text": "\"Al otro lado del río\", \"La trama y el desenlace\", \"Movimiento\", \"Tocarte\"...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S051",
+        "order": 610,
+        "text": "\"Al otro lado del río\" ganó un Oscar. Él es el único latinoamericano que ha ganado un Oscar de canción.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S052",
+        "order": 611,
+        "text": "Y cuando lo recibió, se puso a cantar en vez de hacer un discurso.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S053",
+        "order": 612,
+        "text": "Porque le habían prohibido cantar allí, si te acuerdas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S054",
+        "order": 613,
+        "text": "Se ha convertido en uno de los músicos más prestigiados del mundo hispano.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S055",
+        "order": 614,
+        "text": "Y \"Movimiento\" es una canción preciosa sobre la migración, sobre la fluidez.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S056",
+        "order": 615,
+        "text": "\"Apenas nos pusimos en dos pies / comenzamos a migrar por la sabana\".",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S057",
+        "order": 616,
+        "text": "Son letras pensadas. Son ensayos con melodía.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S058",
+        "order": 617,
+        "text": "Y además, su guitarra, su voz — todo es contenido y profundo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S059",
+        "order": 618,
+        "text": "Hablemos de Silvio Rodríguez.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S060",
+        "order": 619,
+        "text": "La Nueva Trova cubana.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S061",
+        "order": 620,
+        "text": "Un artista político, declaradamente comunista.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S062",
+        "order": 621,
+        "text": "Y con una obra que trasciende su política, si se lo permite uno.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S063",
+        "order": 622,
+        "text": "\"Ojalá\", \"Unicornio\", \"El necio\"...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S064",
+        "order": 623,
+        "text": "\"Ojalá\" es una canción que va más allá de cualquier ideología.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S065",
+        "order": 624,
+        "text": "Es una canción sobre el amor perdido y la esperanza de ver al otro.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S066",
+        "order": 625,
+        "text": "Y sin embargo, cuando la canta él, le añade un peso histórico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S067",
+        "order": 626,
+        "text": "Hay gente que no puede separar a Silvio de su posición política y no lo escucha.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S068",
+        "order": 627,
+        "text": "Y es una pena, porque se pierden a un poeta enorme.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S069",
+        "order": 628,
+        "text": "Yo sí puedo escucharlo aunque no esté de acuerdo con todo lo que piensa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S070",
+        "order": 629,
+        "text": "Eso es una madurez que no todo el mundo tiene.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S071",
+        "order": 630,
+        "text": "Porque el arte grande trasciende al artista.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S072",
+        "order": 631,
+        "text": "Aunque no siempre, y esa es otra discusión.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S073",
+        "order": 632,
+        "text": "Hablemos de Mercedes Sosa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S074",
+        "order": 633,
+        "text": "La Negra. La voz de América Latina.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S075",
+        "order": 634,
+        "text": "Una mujer con una voz que parecía salida de la tierra.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S076",
+        "order": 635,
+        "text": "Cantó poemas, canciones populares, himnos de toda América.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S077",
+        "order": 636,
+        "text": "\"Gracias a la vida\" en su voz es irrepetible.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S078",
+        "order": 637,
+        "text": "Aunque la compuso Violeta Parra, la hizo suya.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S079",
+        "order": 638,
+        "text": "Porque Mercedes tenía esa capacidad de apropiarse sin traicionar.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S080",
+        "order": 639,
+        "text": "Y fue exiliada de Argentina en la dictadura.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S081",
+        "order": 640,
+        "text": "Como Silvio y muchos otros. La Nueva Canción latinoamericana tiene una historia política dolorosa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S082",
+        "order": 641,
+        "text": "\"Si se calla el cantor\" es una canción que lo resume todo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S083",
+        "order": 642,
+        "text": "Y cuando volvió a Argentina después del exilio, fue un momento histórico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S084",
+        "order": 643,
+        "text": "El Teatro Ópera lleno, la gente llorando.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S085",
+        "order": 644,
+        "text": "Porque Mercedes era la patria cantando.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S086",
+        "order": 645,
+        "text": "Eso es lo que hacen algunos artistas — encarnan a un pueblo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S087",
+        "order": 646,
+        "text": "Y cuando murió, Argentina declaró luto nacional.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S088",
+        "order": 647,
+        "text": "Bien merecido. Cantó para todos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S089",
+        "order": 648,
+        "text": "Vamos a la nueva generación de cantautoras.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S090",
+        "order": 649,
+        "text": "Rozalén es una de las grandes.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S091",
+        "order": 650,
+        "text": "Cantautora manchega, canta en español y en lengua de signos a la vez.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S092",
+        "order": 651,
+        "text": "Su concierto incluye a Beatriz Romero, que interpreta en lengua de signos mientras ella canta.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S093",
+        "order": 652,
+        "text": "Eso es un acto político y artístico al mismo tiempo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S094",
+        "order": 653,
+        "text": "\"La puerta violeta\" es un himno feminista.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S095",
+        "order": 654,
+        "text": "Y sus letras hablan de la memoria histórica, del exilio republicano, de los olvidados.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S096",
+        "order": 655,
+        "text": "Vanesa Martín es otra — más desde lo emocional, el desamor, la intimidad femenina.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S097",
+        "order": 656,
+        "text": "\"Polvo de mariposas\" llegó a muchas mujeres que no tenían artista propia.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S098",
+        "order": 657,
+        "text": "Y está Leiva también, que empezó con Pereza y luego fue solista.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S099",
+        "order": 658,
+        "text": "Y Andrés Calamaro, que es un puente entre Sabina y lo que viene.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S100",
+        "order": 659,
+        "text": "Hay toda una generación de cantautores jóvenes haciendo trabajo potente.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S101",
+        "order": 660,
+        "text": "Y para cerrar este bloque, una reflexión.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S102",
+        "order": 661,
+        "text": "Dime.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S103",
+        "order": 662,
+        "text": "Yo aprendí español sin darme cuenta gracias a estos artistas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S104",
+        "order": 663,
+        "text": "Eso es muy verdad. Nadie me enseñó \"cursi\" en un libro, me lo enseñó Sabina.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S105",
+        "order": 664,
+        "text": "Y \"duende\" me lo enseñó Lorca vía flamenco.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S106",
+        "order": 665,
+        "text": "Y \"morriña\" Serrat.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S107",
+        "order": 666,
+        "text": "Los cantautores son una forma de enseñanza del idioma que no se reconoce oficialmente.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S108",
+        "order": 667,
+        "text": "Pero que ha formado a millones de hablantes.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S109",
+        "order": 668,
+        "text": "Quien quiera aprender español de verdad, con sus matices, tiene que escuchar a estos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC07-S110",
+        "order": 669,
+        "text": "Venga, pues vamos al último bloque.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S001",
+        "order": 670,
+        "text": "Bueno, cerramos un episodio largo. ¿Qué te llevas de todo esto?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S002",
+        "order": 671,
+        "text": "Me llevo la sensación de que hablar de música es hablar de tantas cosas...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S003",
+        "order": 672,
+        "text": "De generaciones, de clase, de nacionalidad, de lo que somos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S004",
+        "order": 673,
+        "text": "Y de que no hay música mala, hay música que te llega y música que no.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S005",
+        "order": 674,
+        "text": "Aunque sigamos teniendo opiniones fuertes.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S006",
+        "order": 675,
+        "text": "Ja, ja. Claro que sí. Que nadie se confunda.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S007",
+        "order": 676,
+        "text": "Yo me llevo también que hemos tocado muy poco comparado con todo lo que hay.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S008",
+        "order": 677,
+        "text": "Una hora para la música en español no es nada.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S009",
+        "order": 678,
+        "text": "Habrá que hacer más episodios. Todo un episodio sobre Rosalía. Uno sobre Camarón.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S010",
+        "order": 679,
+        "text": "Y uno sobre la música latinoamericana, que apenas hemos tocado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S011",
+        "order": 680,
+        "text": "Vale, vamos con las recomendaciones. ¿Tres canciones tuyas?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S012",
+        "order": 681,
+        "text": "Una reciente, un clásico, y un descubrimiento personal.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S013",
+        "order": 682,
+        "text": "Venga.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S014",
+        "order": 683,
+        "text": "La reciente — \"Tirana\" de Bad Gyal.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S015",
+        "order": 684,
+        "text": "Descríbela.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S016",
+        "order": 685,
+        "text": "Es perreo a la española. Producción brutal, actitud.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S017",
+        "order": 686,
+        "text": "¿Para qué momento la pones?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S018",
+        "order": 687,
+        "text": "Cuando estás sola en casa y necesitas bailar sin pudor.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S019",
+        "order": 688,
+        "text": "Anotado. El clásico.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S020",
+        "order": 689,
+        "text": "\"Mediterráneo\" de Serrat. Tal cual.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S021",
+        "order": 690,
+        "text": "Sin sorpresas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S022",
+        "order": 691,
+        "text": "Sin sorpresas. Es el clásico por una razón.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S023",
+        "order": 692,
+        "text": "¿Y el descubrimiento?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S024",
+        "order": 693,
+        "text": "Un tipo que se llama Javi Santos, indie pop suave.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S025",
+        "order": 694,
+        "text": "No lo conozco.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S026",
+        "order": 695,
+        "text": "Nadie lo conoce. Por eso lo recomiendo. \"Casa\" se llama la canción.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S027",
+        "order": 696,
+        "text": "Se apunta.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S028",
+        "order": 697,
+        "text": "Es de esas canciones que si la descubres, la pones diez veces seguidas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S029",
+        "order": 698,
+        "text": "Esas son las mejores.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S030",
+        "order": 699,
+        "text": "Y eso es lo que quiero para el oyente — que descubra algo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S031",
+        "order": 700,
+        "text": "Ahora voy yo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S032",
+        "order": 701,
+        "text": "Venga.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S033",
+        "order": 702,
+        "text": "La reciente — \"Hola, mi amor\" de Alba Reche.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S034",
+        "order": 703,
+        "text": "Alba Reche. Una voz increíble.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S035",
+        "order": 704,
+        "text": "Es una balada pero con electrónica. Muy de hoy.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S036",
+        "order": 705,
+        "text": "¿Qué hace esa canción que te gusta tanto?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S037",
+        "order": 706,
+        "text": "Tiene un momento como de confesión, como si te hablara al oído.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S038",
+        "order": 707,
+        "text": "La intimidad en una canción pop. Difícil.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S039",
+        "order": 708,
+        "text": "El clásico mío — \"La camisa negra\" de Juanes.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S040",
+        "order": 709,
+        "text": "Ja, ja. Mi madre también. Gran canción.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S041",
+        "order": 710,
+        "text": "Es que es una canción tan bien hecha, tan redonda...",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S042",
+        "order": 711,
+        "text": "Y con una letra que parece ligera y no lo es.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S043",
+        "order": 712,
+        "text": "Exacto. \"La camisa negra\" va de desengaño amoroso disfrazado de fiesta.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S044",
+        "order": 713,
+        "text": "Y el descubrimiento.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S045",
+        "order": 714,
+        "text": "María José Llergo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S046",
+        "order": 715,
+        "text": "Ah, María José.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S047",
+        "order": 716,
+        "text": "Granadina, canta algo entre el flamenco y el pop, con letras profundas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S048",
+        "order": 717,
+        "text": "Su disco \"Sanación\" es otra cosa.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S049",
+        "order": 718,
+        "text": "Lo es. Si tengo que recomendar un artista joven que nadie conoce lo suficiente, es ella.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S050",
+        "order": 719,
+        "text": "Pues apuntado. Tres más para la lista.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S051",
+        "order": 720,
+        "text": "Y ahora la pregunta para el oyente.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S052",
+        "order": 721,
+        "text": "¿Cuál es la canción que te hizo querer aprender español?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S053",
+        "order": 722,
+        "text": "O si hablas español, ¿cuál es la canción que te cambió?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S054",
+        "order": 723,
+        "text": "La que pusiste en bucle, la que cantaste en el coche, la que te ayudó a pasar una época.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S055",
+        "order": 724,
+        "text": "Todo el mundo tiene una. O varias.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S056",
+        "order": 725,
+        "text": "Y compartirla es abrir una puerta.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S057",
+        "order": 726,
+        "text": "Escribidnos, o mandadnos un audio, o simplemente decídoslo a vosotros mismos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S058",
+        "order": 727,
+        "text": "Porque a veces basta con pensar en ello.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S059",
+        "order": 728,
+        "text": "La música es memoria.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S060",
+        "order": 729,
+        "text": "Y la memoria musical es de las más fuertes que tenemos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S061",
+        "order": 730,
+        "text": "Y además es una memoria que se reactiva. Pones una canción y vuelves a los diecisiete.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S062",
+        "order": 731,
+        "text": "O a los cinco, como La Macarena para mí.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S063",
+        "order": 732,
+        "text": "Ja, ja. Exacto.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S064",
+        "order": 733,
+        "text": "La música es una máquina del tiempo, básicamente.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S065",
+        "order": 734,
+        "text": "Una máquina del tiempo con melodía.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S066",
+        "order": 735,
+        "text": "Bueno, hemos llegado al final.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S067",
+        "order": 736,
+        "text": "Se nos ha pasado rapidísimo, la verdad.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S068",
+        "order": 737,
+        "text": "Señal de que lo hemos disfrutado.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S069",
+        "order": 738,
+        "text": "Gracias a todos los que nos habéis escuchado hasta aquí.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S070",
+        "order": 739,
+        "text": "De verdad. Es mucho tiempo, y sabemos que hay muchas cosas que podrías estar haciendo.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S071",
+        "order": 740,
+        "text": "Habéis elegido estar con nosotros.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S072",
+        "order": 741,
+        "text": "Y eso no se nos olvida.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S073",
+        "order": 742,
+        "text": "Nos volveremos a encontrar en el siguiente episodio, hablando de otro tema grande.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S074",
+        "order": 743,
+        "text": "Si tenéis sugerencias, ya sabéis dónde encontrarnos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S075",
+        "order": 744,
+        "text": "Educación, tecnología, sociedad, identidad... hay muchos temas esperando.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S076",
+        "order": 745,
+        "text": "Y cada uno va a dar para horas.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S077",
+        "order": 746,
+        "text": "Mientras tanto, hasta la próxima.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S078",
+        "order": 747,
+        "text": "Cuidaos.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S079",
+        "order": 748,
+        "text": "Y escuchad música.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "spa_for_eng:music:SC08-S080",
+        "order": 749,
+        "text": "Mucha música.",
+        "reason": "no atom_map, no whole-turn audio"
+      }
+    ]
+  }
+}

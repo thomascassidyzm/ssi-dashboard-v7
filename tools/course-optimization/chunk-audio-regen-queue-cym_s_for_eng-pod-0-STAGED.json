@@ -1,0 +1,875 @@
+{
+  "pod_id": "cym_s_for_eng:pod-0",
+  "course_code": "cym_s_for_eng",
+  "reason": "chunk-audio coverage audit 2026-07-17 — S-LEGO seam chunks with no playable audio at any fallback tier (founder ruling 2026-07-17, graceful-fallback fix)",
+  "status": "STAGED — not queued for render, awaiting approval",
+  "provider": "azure",
+  "provider_tier": 3,
+  "provider_note": "cym_s: Azure cy-GB (course audio is human; pods fall back to Azure)",
+  "cut_candidates": {
+    "note": "source audio already exists (whole-sentence/Take-G take); these already play via fallback — re-aligning would upgrade them to exact-slice at ZERO TTS cost",
+    "count": 0,
+    "items": []
+  },
+  "render_candidates": {
+    "action": "tts_render",
+    "count": 142,
+    "total_chars": 8875,
+    "cost_per_million_chars_usd": 4,
+    "estimated_cost_usd": 0.0355,
+    "items": [
+      {
+        "id": "cym_s_for_eng:pod-0:SC01-S001",
+        "order": 1,
+        "text": "Bore da, Sarah!",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC01-S002",
+        "order": 2,
+        "text": "Bore da. Sut wyt ti?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC01-S003",
+        "order": 3,
+        "text": "Dw i'n dda iawn, diolch. Ti'n mynd i'r gwaith?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC01-S004",
+        "order": 4,
+        "text": "Ydw, mae diwrnod prysur 'da fi heddiw. Gobeithio cei di ddiwrnod da. Wela i di wedyn.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC02-S001",
+        "order": 5,
+        "text": "Esgusodwch fi, ydy'r sedd yma wedi'i chymryd?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC02-S002",
+        "order": 6,
+        "text": "Nac ydy, mae hi'n rhydd. Croeso i chi eistedd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC03-S001",
+        "order": 7,
+        "text": "Prynhawn da. Beth alla i gael i chi?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC03-S002",
+        "order": 8,
+        "text": "Prynhawn da. Licen i goffi, os gwelwch yn dda. Gyda llaeth ond heb siwgr. I fynd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC03-S003",
+        "order": 9,
+        "text": "Diolch yn fawr iawn. Hwyl.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC04-S001",
+        "order": 10,
+        "text": "Helo, noswaith dda!",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC04-S002",
+        "order": 11,
+        "text": "Helo! Mae'n ddrwg 'da fi ond alla i ddim siarad ar hyn o bryd. Ma rhaid i fi fynd adre nawr. Allwn ni siarad fory?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC04-S003",
+        "order": 12,
+        "text": "Na, mae'n ddrwg 'da fi, dw i'n brysur fory. Ond gad i ni siarad ddydd Sadwrn. Wela i di bryd hynny.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC05-S001",
+        "order": 13,
+        "text": "Noswaith dda, Sarah. Gest ti ddiwrnod hir?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC05-S002",
+        "order": 14,
+        "text": "Do, hir iawn. Dw i wedi blino'n lân nawr. Nos da. Wela i di fory.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S001",
+        "order": 15,
+        "text": "Esgusodwch fi. Helo. Beth yw eich enw chi?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S002",
+        "order": 16,
+        "text": "Anna yw fy enw i. A chi?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S003",
+        "order": 17,
+        "text": "James dw i. Neis cwrdd â chi.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S004",
+        "order": 18,
+        "text": "Neis cwrdd â chi 'fyd. O ble dych chi'n dod?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S005",
+        "order": 19,
+        "text": "Dw i'n dod o Fanceinion, ond dw i'n byw yn Llundain nawr. A chi?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S006",
+        "order": 20,
+        "text": "Dw i'n dod o Ffrainc. Dw i 'di bod 'ma ers dwy flynedd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S007",
+        "order": 21,
+        "text": "Mae hon yn ddinas hyfryd. Beth dych chi'n neud?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S008",
+        "order": 22,
+        "text": "Nyrs dw i, yn yr ysbyty jyst rownd y gornel. A chi?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S009",
+        "order": 23,
+        "text": "Mae'n ddrwg 'da fi, wnes i ddim deall. Dw i'n dysgu Cymraeg. Allwch chi weud 'na 'to, yn arafach?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S010",
+        "order": 24,
+        "text": "Galla, wrth gwrs. Nyrs dw i. Dw i'n gweithio yn yr ysbyty. Mae e'n agos 'ma. A beth dych chi'n neud?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S011",
+        "order": 25,
+        "text": "Dw i'n dysgu Saesneg, ond ddim mewn ysgol. Dw i'n gweithio gydag oedolion. Dw i ar wyliau 'ma gyda fy ngwraig a'r plant. Ry'n ni'n cael amser hyfryd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S012",
+        "order": 26,
+        "text": "Am ddiddorol. Wel, neis cwrdd â chi.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC06-S013",
+        "order": 27,
+        "text": "Un. Dau. Tri. Gwyn. Du.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S001",
+        "order": 28,
+        "text": "Bore da. Beth alla i gael i chi?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S002",
+        "order": 29,
+        "text": "Licen i goffi du, os gwelwch yn dda.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S003",
+        "order": 30,
+        "text": "Ydych chi moyn un arferol neu un mawr?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S004",
+        "order": 31,
+        "text": "Licen i un mawr, os gwelwch yn dda. Gyda llaeth ceirch os yw e 'da chi.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S005",
+        "order": 32,
+        "text": "Wrth gwrs. Ydych chi moyn eistedd i mewn neu fynd â fe mas?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S006",
+        "order": 33,
+        "text": "Licen i fynd â fe mas, os gwelwch yn dda.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S007",
+        "order": 34,
+        "text": "Gallen i gael dau goffi gwyn a dau goffi du ac un o rheina, os gwelwch yn dda?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S008",
+        "order": 35,
+        "text": "Ar unwaith. Ydych chi moyn rhywbeth arall?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S009",
+        "order": 36,
+        "text": "Ydw, alla i gael gwydraid o ddŵr hefyd, os gwelwch yn dda.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S010",
+        "order": 37,
+        "text": "Wyth punt pedwar deg i gyd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S011",
+        "order": 38,
+        "text": "Alla i dalu gyda cherdyn? Oes contactless 'da chi?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S012",
+        "order": 39,
+        "text": "Wrth gwrs. Dyma'r peiriant.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S013",
+        "order": 40,
+        "text": "Bore da. Dau Americano a chwpaned o de, os gwelwch yn dda.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S014",
+        "order": 41,
+        "text": "Ydych chi moyn eistedd i mewn? Ma'r bwrdd wrth y ffenest yn rhydd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC07-S015",
+        "order": 42,
+        "text": "Pump. Deg. Un deg pump. Coch. Gwyrdd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S001",
+        "order": 43,
+        "text": "Noswaith dda. Beth alla i gael i chi?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S002",
+        "order": 44,
+        "text": "Licen i beint, os gwelwch yn dda. Pa gwrw casgen sy 'da chi ar y pwmp?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S003",
+        "order": 45,
+        "text": "Ma 'da ni gwrw chwerw a stout, a ma'r ddau yn lleol.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S004",
+        "order": 46,
+        "text": "Licen i beint o'r cwrw chwerw, os gwelwch yn dda.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S005",
+        "order": 47,
+        "text": "Alla i gael hanner o seidr?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S006",
+        "order": 48,
+        "text": "Alla i weld y rhestr win? Dw i moyn gwydraid o win.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S007",
+        "order": 49,
+        "text": "Ma 'da ni win coch y tŷ a gwin gwyn y tŷ, neu allech chi gael un o'n poteli ni.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S008",
+        "order": 50,
+        "text": "Licen i wydraid mawr o win gwyn, os gwelwch yn dda.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S009",
+        "order": 51,
+        "text": "Alla i gael gwydraid bach o win coch?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S010",
+        "order": 52,
+        "text": "Licen i ddau wydraid arall o gwrw.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S011",
+        "order": 53,
+        "text": "Ydych chi'n byta heno?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S012",
+        "order": 54,
+        "text": "Dw i ddim yn siŵr os dw i'n llwglyd. Oes bwydlen 'da chi?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S013",
+        "order": 55,
+        "text": "Oes, wrth gwrs. Dyma hi. Ma'r pysgod a sglodion yn dda iawn.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S014",
+        "order": 56,
+        "text": "Allwn ni gael tipyn o fara? A phowlen o sglodion i'r bwrdd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S015",
+        "order": 57,
+        "text": "Oes brechdanau 'da chi? Licen i frechdan gaws, os gwelwch yn dda.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC08-S016",
+        "order": 58,
+        "text": "Pedwar. Chwech. Wyth. Glas. Melyn.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S001",
+        "order": 59,
+        "text": "Noswaith dda. Ma bwcin gyda ni i ddau, o dan yr enw Davies.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S002",
+        "order": 60,
+        "text": "Croeso. Dewch gyda fi, os gwelwch yn dda. Dyma'r bwydlenni.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S003",
+        "order": 61,
+        "text": "Licech chi ddŵr llonydd neu ddŵr pefriog i ddechrau?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S004",
+        "order": 62,
+        "text": "Licen ni un botel o ddŵr pefriog ac un botel o ddŵr llonydd, os gwelwch yn dda.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S005",
+        "order": 63,
+        "text": "Esgusodwch fi — oes gyda chi rywbeth heb glwten? Neu i lysieuwyr?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S006",
+        "order": 64,
+        "text": "Oes, ma'r eog a'r risotto yn rhydd o glwten. Ma gyda ni rai saladau hefyd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S007",
+        "order": 65,
+        "text": "A beth fyddech chi'n ei argymell heno?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S008",
+        "order": 66,
+        "text": "Ma'r oen yn ardderchog. Ma fe 'di cael ei goginio'n araf, gyda rhosmari.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S009",
+        "order": 67,
+        "text": "Cymra i'r oen, os gwelwch yn dda. Gyda llysiau gwyrdd ar yr ochr.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S010",
+        "order": 68,
+        "text": "A'r risotto i fi. Gyda salad gwyrdd bach i ddechrau.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S011",
+        "order": 69,
+        "text": "Wrth gwrs. A beth licech chi i'w yfed?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S012",
+        "order": 70,
+        "text": "Allen ni weld y rhestr win?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S013",
+        "order": 71,
+        "text": "Byddai potel o win coch y tŷ yn hyfryd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S014",
+        "order": 72,
+        "text": "Dewis ardderchog. Do i ag e draw nawr.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S015",
+        "order": 73,
+        "text": "Ydy popeth yn iawn? Oes lle gyda chi i bwdin?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S016",
+        "order": 74,
+        "text": "Dim ond dau goffi, os gwelwch yn dda. Coffi di-gaffein i fi.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S017",
+        "order": 75,
+        "text": "A'r bil, pan fyddwch chi'n barod. Allen ni rannu fe?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC09-S018",
+        "order": 76,
+        "text": "Saith. Naw. Un deg un. Oren. Porffor.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC10-S001",
+        "order": 77,
+        "text": "Esgusodwch fi. Oes gyda chi unrhyw dabledi lladd poen?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC10-S002",
+        "order": 78,
+        "text": "Oes, ma nhw lawr yr eil yna, ar y chwith.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC10-S003",
+        "order": 79,
+        "text": "Diolch. A oes gyda chi unrhyw dabledi lladd poen i blant?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC10-S004",
+        "order": 80,
+        "text": "Dw i'n meddwl bod rhai 'da ni, ond bydd rhaid i chi edrych i fod yn siŵr.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC10-S005",
+        "order": 81,
+        "text": "Ma ishe i fi gael rhywfaint o eli haul a phast dannedd hefyd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC10-S006",
+        "order": 82,
+        "text": "Ma'r eli haul lawr fan'na ar y dde, a gewch chi hyd i'r past dannedd jyst rownd y gornel.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC10-S007",
+        "order": 83,
+        "text": "Diolch, dych chi wedi bod yn help mawr. Dw i'n ddiolchgar iawn.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC10-S008",
+        "order": 84,
+        "text": "Croeso. Ydych chi yma ar wyliau? Dych chi'n siarad Cymraeg da iawn.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC10-S009",
+        "order": 85,
+        "text": "Dych chi'n garedig iawn! Ydw, dw i ar wyliau, ac ma ishe i fi ymarfer mwy i siarad Cymraeg yn well. Diolch yn fawr iawn, a hwyl.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC10-S010",
+        "order": 86,
+        "text": "Un deg dau. Un deg tri. Un deg pedwar. Pinc. Llwyd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S001",
+        "order": 87,
+        "text": "Prynhawn da. Ma bwcin 'da fi dan yr enw Jones.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S002",
+        "order": 88,
+        "text": "Croeso. Oes, ma 'da chi stafell ddwbl am dair noson. Ga i weld rhyw fath o ID, os gwelwch yn dda?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S003",
+        "order": 89,
+        "text": "Wrth gwrs. Dyma fy mhasbort i.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S004",
+        "order": 90,
+        "text": "Bendigedig. Ma'r stafell ar y trydydd llawr, stafell saith cant a naw.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S005",
+        "order": 91,
+        "text": "Oes golygfa 'da'r stafell?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S006",
+        "order": 92,
+        "text": "Oes, ma hi'n edrych dros yr ardd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S007",
+        "order": 93,
+        "text": "Am faint o'r gloch ma brecwast yn ca'l ei weini?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S008",
+        "order": 94,
+        "text": "O hanner awr wedi saith tan ddeg o'r gloch. Ma 'da ni ffrwythau a grawnfwyd neu frecwast wedi'i goginio.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S009",
+        "order": 95,
+        "text": "Gwych. Ydy hi'n bosib i ni ga'l check-out hwyr?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S010",
+        "order": 96,
+        "text": "Ydy, gallwch chi aros tan ganol dydd, dim tâl ychwanegol.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S011",
+        "order": 97,
+        "text": "A beth yw cyfrinair y wifi?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S012",
+        "order": 98,
+        "text": "Ma fe ar y cerdyn croeso yn eich stafell chi. Mwynhewch eich arhosiad.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC11-S013",
+        "order": 99,
+        "text": "Un deg chwech. Un deg saith. Un deg wyth. Dydd Llun. Dydd Mawrth.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC12-S001",
+        "order": 100,
+        "text": "Bore da. Dw i ddim yn teimlo'n dda iawn — allwch chi argymell rhywbeth?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC12-S002",
+        "order": 101,
+        "text": "Wrth gwrs. Beth yw eich symptomau chi?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC12-S003",
+        "order": 102,
+        "text": "Dw i 'di bod â phen tost a gwddw tost ers ddoe.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC12-S004",
+        "order": 103,
+        "text": "Triwch barasetamol ar gyfer y pen tost, a'r losin 'ma ar gyfer y gwddw.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC12-S005",
+        "order": 104,
+        "text": "Pa mor aml ddylwn i gymryd y parasetamol?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC12-S006",
+        "order": 105,
+        "text": "Un bob pedair i chwe awr, dim mwy nag wyth mewn diwrnod.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC12-S007",
+        "order": 106,
+        "text": "Ydy hi'n iawn eu cymryd nhw gyda bwyd?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC12-S008",
+        "order": 107,
+        "text": "Ydy, gyda bwyd neu ar ôl bwyd sydd orau.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC12-S009",
+        "order": 108,
+        "text": "Diolch. Alla i gael pecyn o blasters hefyd?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC12-S010",
+        "order": 109,
+        "text": "Un deg naw. Dau ddeg. Dau ddeg un. Dydd Mercher. Dydd Iau.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC13-S001",
+        "order": 110,
+        "text": "Esgusodwch fi, ydych chi'n gwybod sut i gyrraedd yr archfarchnad agosaf?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC13-S002",
+        "order": 111,
+        "text": "Ydw, mae hi tua deg munud o waith cerdded. Cerwch yn syth ar hyd y ffordd 'ma.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC13-S003",
+        "order": 112,
+        "text": "Heibio i'r eglwys yna?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC13-S004",
+        "order": 113,
+        "text": "Ie, heibio i'r eglwys a'r swyddfa bost.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC13-S005",
+        "order": 114,
+        "text": "Wrth yr ail gylchfan, cymerwch yr allanfa gyntaf.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC13-S006",
+        "order": 115,
+        "text": "A wedyn?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC13-S007",
+        "order": 116,
+        "text": "Fe welwch chi'r archfarchnad ar eich ochr chwith, jyst gyferbyn â'r safle bws.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC13-S008",
+        "order": 117,
+        "text": "Gwych. Ac oes 'na beiriant arian gerllaw?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC13-S009",
+        "order": 118,
+        "text": "Oes, mae un ar y stryd fawr, wrth ymyl y becws.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC13-S010",
+        "order": 119,
+        "text": "Diolch yn fawr iawn. Dych chi wedi bod yn help mawr.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC13-S011",
+        "order": 120,
+        "text": "Tri deg. Pedwar deg. Pum deg. Dydd Gwener. Dydd Sadwrn.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC14-S001",
+        "order": 121,
+        "text": "Helo. Allwch chi fynd â fi i'r orsaf drên, os gwelwch yn dda?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC14-S002",
+        "order": 122,
+        "text": "Galla, wrth gwrs. Falle bydd hi'n cymryd tipyn o amser — ma lot o draffig ar hyn o bryd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC14-S003",
+        "order": 123,
+        "text": "Faint o amser ydych chi'n meddwl bydd hi'n gymryd, fwy neu lai?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC14-S004",
+        "order": 124,
+        "text": "Falle tua ugain munud, os byddwn ni ddim yn anlwcus gyda'r goleuadau traffig.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC14-S005",
+        "order": 125,
+        "text": "Ydych chi'n gwbod ble alla i gael tocyn yn yr orsaf?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC14-S006",
+        "order": 126,
+        "text": "Ydw, bydda i'n eich gollwng chi reit wrth y swyddfa docynnau.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC14-S007",
+        "order": 127,
+        "text": "Dyma ni. Deuddeg punt a hanner yw hi.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC14-S008",
+        "order": 128,
+        "text": "Alla i dalu gyda cherdyn?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC14-S009",
+        "order": 129,
+        "text": "Gallwch, wrth gwrs. Ma'r peiriant reit fan hyn.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC14-S010",
+        "order": 130,
+        "text": "Cant. Dau gant. Mil. Dydd Sul. Deuddeg o'r gloch.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC15-S001",
+        "order": 131,
+        "text": "Fyddet ti'n meindio taswn i'n trio ymarfer siarad Cymraeg gyda ti? Dw i ddim wedi bod yn dysgu am amser hir iawn, a dw i'n dal i deimlo ychydig bach yn nerfus am siarad gyda phobl eraill.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC15-S002",
+        "order": 132,
+        "text": "Wrth gwrs, dim problem. Ti i'w weld yn siarad yn dda iawn. Dw i'n gallu dy ddeall di'n hawdd.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC15-S003",
+        "order": 133,
+        "text": "Diolch, mae'n braf gwybod hynny. Mae angen i fi ddysgu mwy o eiriau, ac mae angen i fi ymarfer gwrando. Dw i ddim yn deall pobl yn dda iawn pan nad ydyn nhw'n siarad yn araf.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC15-S004",
+        "order": 134,
+        "text": "Ydw i'n siarad yn ddigon araf i ti nawr?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC15-S005",
+        "order": 135,
+        "text": "Wyt, diolch. Mae'n haws siarad gydag un person yn unig. Mae'n ychydig bach yn anodd meddwl am rywbeth i'w ddweud, cofia. Dw i ddim yn siŵr beth i'w ddweud, ond dw i'n teimlo fel alla i siarad digon i ddechrau cael sgyrsiau.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC15-S006",
+        "order": 136,
+        "text": "Dw i'n meddwl dy fod ti'n gwneud yn dda iawn. Ti wedi creu argraff fawr arna i. Dw i'n meddwl dy fod ti'n barod i ddechrau siarad Cymraeg gydag unrhyw un sy'n siarad Cymraeg.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC15-S007",
+        "order": 137,
+        "text": "Mae'n ychydig bach yn rhwystredig pan alla i ddim meddwl yn ddigon cyflym i fynegi fy hun yn iawn. Ond dw i'n gwybod bod angen i fi barhau i ymarfer os dw i moyn siarad yn fwy hyderus.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC15-S008",
+        "order": 138,
+        "text": "Dylet ti fod yn hyderus yn barod. Dw i'n meddwl dy fod ti'n gwneud yn llawer gwell nag wyt ti'n sylweddoli. Dw i'n teimlo'n gyfforddus yn siarad gyda ti, a dw i ddim yn siarad yn araf iawn.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC15-S009",
+        "order": 139,
+        "text": "Dyma'r union fath o ymarfer sydd angen arna i. Dw i'n meddwl galla i deimlo fe'n newid fy ymennydd i tra bo ni'n siarad! Dw i'n gwerthfawrogi dy help di'n fawr iawn. Ond mae'n syndod pa mor flinedig dw i'n mynd pan dw i'n siarad mewn iaith dw i ddim yn ei siarad yn dda iawn.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC15-S010",
+        "order": 140,
+        "text": "Dw i'n meddwl bod hynny'n normal. Mae dysgu iaith newydd yn anodd. Ond mae'n gymaint o hwyl pan wyt ti'n dechrau cael sgyrsiau, on'd yw e?",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC15-S011",
+        "order": 141,
+        "text": "Ydy, wir. Dw i'n hapus iawn fy mod i'n gallu cael cymaint â hyn o sgwrs. A dw i'n gobeithio y byddwn ni'n gallu cael mwy o sgyrsiau yn y dyfodol wrth i fi barhau i wella.",
+        "reason": "no atom_map, no whole-turn audio"
+      },
+      {
+        "id": "cym_s_for_eng:pod-0:SC15-S012",
+        "order": 142,
+        "text": "Can mil. Chwe deg. Saith deg. Un o'r gloch. Un ar ddeg o'r gloch.",
+        "reason": "no atom_map, no whole-turn audio"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "pod_id": "zho_for_jpn:pod-0",
+  "course_code": "zho_for_jpn",
+  "reason": "chunk-audio coverage audit 2026-07-17 — S-LEGO seam chunks with no playable audio at any fallback tier (founder ruling 2026-07-17, graceful-fallback fix)",
+  "status": "STAGED — not queued for render, awaiting approval",
+  "provider": "xai",
+  "provider_tier": 1,
+  "provider_note": "zho: xAI native zh-CN, locale zh — xAI has no documented per-char rate in this repo; approve a rate before running, cost intentionally left null",
+  "cut_candidates": {
+    "note": "source audio already exists (whole-sentence/Take-G take); these already play via fallback — re-aligning would upgrade them to exact-slice at ZERO TTS cost",
+    "count": 0,
+    "items": []
+  },
+  "render_candidates": {
+    "action": "tts_render",
+    "count": 1,
+    "total_chars": 8,
+    "cost_per_million_chars_usd": null,
+    "estimated_cost_usd": null,
+    "items": [
+      {
+        "id": "zho_for_jpn:pod-0:SC11-S001",
+        "order": 87,
+        "text": "我有预订 姓琼斯",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      }
+    ]
+  }
+}

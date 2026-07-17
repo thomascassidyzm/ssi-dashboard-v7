@@ -1,0 +1,1092 @@
+{
+  "pod_id": "hrv_for_eng:pod-0",
+  "course_code": "hrv_for_eng",
+  "reason": "chunk-audio coverage audit 2026-07-17 — S-LEGO seam chunks with no playable audio at any fallback tier (founder ruling 2026-07-17, graceful-fallback fix)",
+  "status": "STAGED — not queued for render, awaiting approval",
+  "provider": "azure",
+  "provider_tier": 3,
+  "provider_note": "hrv: Azure hr-HR + ElevenLabs top-up",
+  "cut_candidates": {
+    "note": "source audio already exists (whole-sentence/Take-G take); these already play via fallback — re-aligning would upgrade them to exact-slice at ZERO TTS cost",
+    "count": 165,
+    "items": [
+      {
+        "id": "hrv_for_eng:pod-0:SC01-S003",
+        "order": 3,
+        "text": "Ideš na posao",
+        "sourceId": "52a0b082-4458-4741-ba14-3a41ad8d1795"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC01-S004",
+        "order": 4,
+        "text": "Vidimo se kasnije",
+        "sourceId": "3fecf1b1-b8db-4d7c-a417-64d15657f87d"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC03-S002",
+        "order": 8,
+        "text": "ali bez šećera",
+        "sourceId": "160643f8-8791-4751-8b0f-3a4e437d298e"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC04-S002",
+        "order": 11,
+        "text": "ali sad ne mogu razgovarati",
+        "sourceId": "754503f6-e7c9-432a-9dd9-28c368805a13"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC04-S002",
+        "order": 11,
+        "text": "Moram ići kući",
+        "sourceId": "01bc47b5-4178-4323-bfce-2aff16eaa4dd"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC04-S003",
+        "order": 12,
+        "text": "Ali razgovarajmo u subotu",
+        "sourceId": "177039bf-66ef-4649-a62e-765ba9f8d5cc"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC04-S003",
+        "order": 12,
+        "text": "Vidimo se tada",
+        "sourceId": "6fce8194-beea-483e-83e6-ae11786c93e0"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC05-S002",
+        "order": 14,
+        "text": "Sad sam jako umorna",
+        "sourceId": "102ec96d-1598-4e19-8c13-1d59e4aef256"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC05-S002",
+        "order": 14,
+        "text": "Vidimo se sutra",
+        "sourceId": "4e0a63b6-f05e-458a-a738-359cf5992067"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC06-S005",
+        "order": 19,
+        "text": "ali sad živim u Londonu",
+        "sourceId": "73a71af1-6874-4fca-87eb-4537459ab7a8"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC06-S006",
+        "order": 20,
+        "text": "Ovdje sam već dvije godine",
+        "sourceId": "1360b154-a501-4520-a21c-232392d28699"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC06-S008",
+        "order": 22,
+        "text": "u bolnici tu iza ugla",
+        "sourceId": "475e5774-3d33-4eb6-967f-fd4d1a4efd42"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC06-S009",
+        "order": 23,
+        "text": "Učim hrvatski",
+        "sourceId": "844793ad-77a4-4023-9723-377a83032e01"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC06-S010",
+        "order": 24,
+        "text": "Ja sam medicinska sestra",
+        "sourceId": "ea8d1350-ea80-4fc0-8d53-af38fe5b1b92"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC06-S010",
+        "order": 24,
+        "text": "Radim u bolnici",
+        "sourceId": "4d74c900-c53b-4b31-9c7c-60582d2c0871"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC06-S010",
+        "order": 24,
+        "text": "To je blizu odavde",
+        "sourceId": "df225f36-a89d-4186-9c80-90f0d8c57e34"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC06-S010",
+        "order": 24,
+        "text": "A čime se ti baviš",
+        "sourceId": "31e49533-16d6-40ea-97a4-ddd6630c64fe"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC06-S011",
+        "order": 25,
+        "text": "Radim s odraslima",
+        "sourceId": "1b677b8f-bcb9-4714-b859-e250298d6a81"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC06-S011",
+        "order": 25,
+        "text": "sa suprugom i djecom",
+        "sourceId": "0010ddd3-fa23-4881-ab67-c23189b0a24e"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC07-S005",
+        "order": 32,
+        "text": "Želiš li ostati",
+        "sourceId": "dc3c428c-1aaa-474b-8460-d1fdd37cc287"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC07-S005",
+        "order": 32,
+        "text": "ili ponijeti",
+        "sourceId": "dc3c428c-1aaa-474b-8460-d1fdd37cc287"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC07-S008",
+        "order": 35,
+        "text": "Želite li još nešto",
+        "sourceId": "18a0074c-02f7-43da-8e37-c30f919f767e"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC07-S011",
+        "order": 38,
+        "text": "Imate li beskontaktno",
+        "sourceId": "4042aa3b-0442-4652-b258-72aafb9fa043"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC07-S012",
+        "order": 39,
+        "text": "tu je uređaj",
+        "sourceId": "6526777a-c8b4-4928-9eef-2654d16726ff"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC07-S013",
+        "order": 40,
+        "text": "i jednu šalicu čaja",
+        "sourceId": "2a23e1ac-eefe-437c-a21f-22597f10af64"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC07-S014",
+        "order": 41,
+        "text": "Stol kraj prozora",
+        "sourceId": "4d105d3b-c4ea-4995-9ac9-5b841054f48f"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S002",
+        "order": 44,
+        "text": "Kakva piva imate",
+        "sourceId": "8a99950d-b582-43a0-b3c6-a8e35c527a89"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S005",
+        "order": 47,
+        "text": "Mogu malo jabukovače",
+        "sourceId": "eb240fc7-bbfd-4166-b64f-ae31462638c3"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S006",
+        "order": 48,
+        "text": "Želim čašu vina",
+        "sourceId": "3cc461dd-70dd-485b-ae11-695dc02aee63"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S007",
+        "order": 49,
+        "text": "Imamo kućno crno",
+        "sourceId": "0d4cede7-4ad4-45d4-9318-8c2999f746ee"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S007",
+        "order": 49,
+        "text": "ili možete uzeti",
+        "sourceId": "0d4cede7-4ad4-45d4-9318-8c2999f746ee"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S007",
+        "order": 49,
+        "text": "jedno od naših vina",
+        "sourceId": "0d4cede7-4ad4-45d4-9318-8c2999f746ee"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S009",
+        "order": 51,
+        "text": "Mogu malu čašu crnog vina",
+        "sourceId": "3e138fe4-1e31-4f09-a3b4-5e329d1fd3f8"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S011",
+        "order": 53,
+        "text": "Jedete li večeras",
+        "sourceId": "913cfec1-abc9-42a4-9b2d-779c63bc846a"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S012",
+        "order": 54,
+        "text": "Imate li jelovnik",
+        "sourceId": "e8cf4839-fdd7-4865-857b-b57bf5855efb"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S014",
+        "order": 56,
+        "text": "I zdjelicu pomfrita za stol",
+        "sourceId": "611d4b2c-0376-4968-8df4-85ab2ef97f2f"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S015",
+        "order": 57,
+        "text": "Željela bih sendvič sa sirom",
+        "sourceId": "c7bc5d8e-f4e9-4486-ad3f-2df9feab228a"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S001",
+        "order": 59,
+        "text": "Imamo rezervaciju",
+        "sourceId": "0b111cb4-eed0-4ded-97f7-c85a7c524a68"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S001",
+        "order": 59,
+        "text": "na ime Davies",
+        "sourceId": "0b111cb4-eed0-4ded-97f7-c85a7c524a68"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S002",
+        "order": 60,
+        "text": "Evo jelovnika",
+        "sourceId": "794b331b-ed0b-4f37-ab44-4015072f9489"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S003",
+        "order": 61,
+        "text": "ili gaziranu vodu",
+        "sourceId": "dd5b73e6-e514-4e1a-b6fd-f955321e3d79"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S004",
+        "order": 62,
+        "text": "Željeli bismo jednu",
+        "sourceId": "44bc606e-c4aa-4c4f-aa41-f2159e9a6c8b"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S004",
+        "order": 62,
+        "text": "bocu gazirane vode",
+        "sourceId": "44bc606e-c4aa-4c4f-aa41-f2159e9a6c8b"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S005",
+        "order": 63,
+        "text": "imate li nešto bez glutena",
+        "sourceId": "b1e02990-de07-4e8a-b7de-31dd17326df2"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S006",
+        "order": 64,
+        "text": "i nekoliko salata",
+        "sourceId": "cc99f571-db92-49e7-bee1-e058a418a1ce"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S007",
+        "order": 65,
+        "text": "A što biste",
+        "sourceId": "b336aecf-15b5-4ec1-93e6-0c3de7155873"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S007",
+        "order": 65,
+        "text": "preporučili večeras",
+        "sourceId": "b336aecf-15b5-4ec1-93e6-0c3de7155873"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S008",
+        "order": 66,
+        "text": "Janjetina je izvrsna",
+        "sourceId": "ea91ffda-f9db-4506-85d1-046f90d68ffb"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S008",
+        "order": 66,
+        "text": "Polako se pekla",
+        "sourceId": "43e23083-50fc-44ca-8b2c-194f09bb9db4"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S009",
+        "order": 67,
+        "text": "Uzet ću janjetinu",
+        "sourceId": "db4dce85-e46e-4863-a870-edddcbf8bd48"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S010",
+        "order": 68,
+        "text": "A za mene rižoto",
+        "sourceId": "9dfbab42-1b3a-4139-9679-0ad81452a983"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S010",
+        "order": 68,
+        "text": "zelenom salatom",
+        "sourceId": "33c194af-bf70-4e0f-bfc4-8103b87311eb"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S011",
+        "order": 69,
+        "text": "A što biste željeli",
+        "sourceId": "417df890-1f64-49cb-8d90-414ed169640d"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S012",
+        "order": 70,
+        "text": "Možemo li vidjeti",
+        "sourceId": "eefceb38-f555-441c-8dd5-a3308fe4e577"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S013",
+        "order": 71,
+        "text": "Jedna boca kućnog",
+        "sourceId": "cfcd959c-fdbe-4102-b128-b8d36d436faa"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S013",
+        "order": 71,
+        "text": "crvenog bila bi divna",
+        "sourceId": "cfcd959c-fdbe-4102-b128-b8d36d436faa"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S014",
+        "order": 72,
+        "text": "Odmah ću donijeti",
+        "sourceId": "38ae1934-1c7e-419b-bbba-df36c7773a0c"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S016",
+        "order": 74,
+        "text": "Za mene bez kofeina",
+        "sourceId": "ff3131f4-a798-4c92-adcf-f730dfde1a56"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S017",
+        "order": 75,
+        "text": "I račun",
+        "sourceId": "c4fc4dd4-fba1-4c09-a042-ed49e85200df"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S017",
+        "order": 75,
+        "text": "Možemo li platiti",
+        "sourceId": "44a6ca9e-f2d0-4b9b-a5f3-1a5c95d625d4"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S003",
+        "order": 79,
+        "text": "A imate li",
+        "sourceId": "18564e47-f3b3-42fd-918a-d99242e6bbc5"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S004",
+        "order": 80,
+        "text": "Mislim da da",
+        "sourceId": "4b2ae912-edbc-43b3-a5d9-5bd2ebcfdf75"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S004",
+        "order": 80,
+        "text": "ali morat ćete",
+        "sourceId": "4b2ae912-edbc-43b3-a5d9-5bd2ebcfdf75"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S005",
+        "order": 81,
+        "text": "Također trebam kupiti",
+        "sourceId": "27553df8-aa9a-41a9-9150-de83d34f05f0"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S006",
+        "order": 82,
+        "text": "Krema za sunčanje je",
+        "sourceId": "9c9d44c6-3ed4-485c-91c3-df6e8457c5bc"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S006",
+        "order": 82,
+        "text": "tamo s vaše",
+        "sourceId": "9c9d44c6-3ed4-485c-91c3-df6e8457c5bc"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S006",
+        "order": 82,
+        "text": "desne strane",
+        "sourceId": "9c9d44c6-3ed4-485c-91c3-df6e8457c5bc"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S006",
+        "order": 82,
+        "text": "a pastu za zube ćete",
+        "sourceId": "9c9d44c6-3ed4-485c-91c3-df6e8457c5bc"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S006",
+        "order": 82,
+        "text": "naći odmah iza ugla",
+        "sourceId": "9c9d44c6-3ed4-485c-91c3-df6e8457c5bc"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S008",
+        "order": 84,
+        "text": "Jeste li ovdje",
+        "sourceId": "8b8804d2-e6e9-44e6-9caf-4d93a673a3ff"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S008",
+        "order": 84,
+        "text": "govorite hrvatski",
+        "sourceId": "cad02429-3cf7-4fb4-beb1-ca68d7b467d0"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S009",
+        "order": 85,
+        "text": "To je od vas",
+        "sourceId": "645c0506-07b0-4fef-b48f-2225cd310896"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S009",
+        "order": 85,
+        "text": "jako lijepo",
+        "sourceId": "645c0506-07b0-4fef-b48f-2225cd310896"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S009",
+        "order": 85,
+        "text": "i trebam više vježbati",
+        "sourceId": "592cc8a0-2ded-4ca4-b909-2a46eb7031ac"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S009",
+        "order": 85,
+        "text": "i doviđenja",
+        "sourceId": "794c65da-d1ac-482f-bce4-91678d14982b"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S001",
+        "order": 87,
+        "text": "Imam rezervaciju",
+        "sourceId": "c2a290d0-5fa0-4b9a-a55f-63ef49cdf16d"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S001",
+        "order": 87,
+        "text": "na ime Jones",
+        "sourceId": "c2a290d0-5fa0-4b9a-a55f-63ef49cdf16d"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S002",
+        "order": 88,
+        "text": "sobu na tri noći",
+        "sourceId": "5f4258f2-ba9d-4db1-b5fc-ad4c6a4dc549"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S002",
+        "order": 88,
+        "text": "Mogu li vidjeti",
+        "sourceId": "b201b3d7-e16e-4783-8d18-8269a221ec41"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S003",
+        "order": 89,
+        "text": "Evo moje putovnice",
+        "sourceId": "fa4e1793-f641-4540-b3a6-b255b1a8c8b0"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S004",
+        "order": 90,
+        "text": "Soba se nalazi",
+        "sourceId": "ede221e5-a175-47ed-9911-fc0170a93119"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S004",
+        "order": 90,
+        "text": "soba sedam nula devet",
+        "sourceId": "ede221e5-a175-47ed-9911-fc0170a93119"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S005",
+        "order": 91,
+        "text": "Ima li soba pogled",
+        "sourceId": "60f2e895-2a2f-46be-b765-6c9138e6eab4"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S007",
+        "order": 93,
+        "text": "se poslužuje doručak",
+        "sourceId": "15f57ed2-49be-4de6-a9ed-219977705450"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S008",
+        "order": 94,
+        "text": "Imamo voće",
+        "sourceId": "da1a58fe-2bd9-4e03-821f-89a17c41b661"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S008",
+        "order": 94,
+        "text": "ili topli doručak",
+        "sourceId": "da1a58fe-2bd9-4e03-821f-89a17c41b661"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S010",
+        "order": 96,
+        "text": "bez dodatnih troškova",
+        "sourceId": "14922836-d286-40a1-b434-a3a024a2fc8d"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S011",
+        "order": 97,
+        "text": "A koja je lozinka",
+        "sourceId": "9fe706f9-7be6-4689-aa1c-02ad1657e5d2"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S011",
+        "order": 97,
+        "text": "za wifi",
+        "sourceId": "9fe706f9-7be6-4689-aa1c-02ad1657e5d2"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC11-S012",
+        "order": 98,
+        "text": "Nalazi se na kartici",
+        "sourceId": "10f6672a-4add-4329-acd6-053a5a8a4701"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S001",
+        "order": 100,
+        "text": "Ne osjećam se baš dobro",
+        "sourceId": "fc641120-0215-4b84-b403-0921e532fcbf"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S001",
+        "order": 100,
+        "text": "možete li mi nešto",
+        "sourceId": "fc641120-0215-4b84-b403-0921e532fcbf"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S002",
+        "order": 101,
+        "text": "Koji su vaši simptomi",
+        "sourceId": "954239f8-b55b-4fdf-b217-a426d7036e59"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S003",
+        "order": 102,
+        "text": "Imam glavobolju",
+        "sourceId": "4b1dbac1-b5b5-4816-839e-abea2f15cd82"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S004",
+        "order": 103,
+        "text": "za glavobolju",
+        "sourceId": "e31dffc6-72ce-4b99-b530-7775b6bec8bc"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S004",
+        "order": 103,
+        "text": "a ove pastile",
+        "sourceId": "e31dffc6-72ce-4b99-b530-7775b6bec8bc"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S005",
+        "order": 104,
+        "text": "trebam uzimati",
+        "sourceId": "ac3920c7-843e-4ca9-92ea-17f7efc19b81"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S006",
+        "order": 105,
+        "text": "Jednu tabletu svakih",
+        "sourceId": "90dadfe3-c391-474e-8eba-0f4444cd072c"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S006",
+        "order": 105,
+        "text": "ne više od osam na dan",
+        "sourceId": "90dadfe3-c391-474e-8eba-0f4444cd072c"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S007",
+        "order": 106,
+        "text": "Mogu li ih uzimati",
+        "sourceId": "d6c9437f-d7f1-437f-8cf1-f99722140f2b"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S008",
+        "order": 107,
+        "text": "ili nakon jela",
+        "sourceId": "fbc6d2ae-928b-4048-b26e-03dce8904556"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S009",
+        "order": 108,
+        "text": "i pakiranje flastera",
+        "sourceId": "3c69ecf4-c1fd-4790-b717-7d6b7ea8e5a9"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC12-S010",
+        "order": 109,
+        "text": "Dvadeset i jedan",
+        "sourceId": "965fda4b-668c-41b8-a136-f33ed2fb5f13"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC13-S001",
+        "order": 110,
+        "text": "kako doći do najbližeg",
+        "sourceId": "6eaf13ab-9957-4ac1-8574-355114fa4a01"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC13-S002",
+        "order": 111,
+        "text": "desetak minuta hoda",
+        "sourceId": "7cec06cd-4935-4b01-a0a8-6630f3fe5546"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC13-S002",
+        "order": 111,
+        "text": "Idite ravno",
+        "sourceId": "4862e944-1fea-456e-86e7-1b40bd145319"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC13-S003",
+        "order": 112,
+        "text": "Pored one crkve",
+        "sourceId": "378a2acd-0560-4639-9449-2e34d412b0cb"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC13-S005",
+        "order": 114,
+        "text": "skrenite prvim izlazom",
+        "sourceId": "60b12a95-8b64-4b42-abd5-a19a2f582595"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC13-S007",
+        "order": 116,
+        "text": "Vidjet ćete supermarket",
+        "sourceId": "a995987a-95e0-4ffe-a8b8-25a843422ceb"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC13-S007",
+        "order": 116,
+        "text": "nasuprot autobusnog",
+        "sourceId": "a995987a-95e0-4ffe-a8b8-25a843422ceb"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC13-S007",
+        "order": 116,
+        "text": "stajališta",
+        "sourceId": "a995987a-95e0-4ffe-a8b8-25a843422ceb"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC13-S008",
+        "order": 117,
+        "text": "A ima li tu",
+        "sourceId": "f1c98aa7-69a3-4f13-a2c9-72ffe2945144"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC13-S008",
+        "order": 117,
+        "text": "negdje bankomat",
+        "sourceId": "f1c98aa7-69a3-4f13-a2c9-72ffe2945144"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S001",
+        "order": 121,
+        "text": "Možete li me odvesti",
+        "sourceId": "27051085-d71e-4b59-bfd4-71414e9121cc"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S002",
+        "order": 122,
+        "text": "Možda će potrajati",
+        "sourceId": "ad576608-e8d2-4297-83d7-12c47cba6020"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S002",
+        "order": 122,
+        "text": "ima puno prometa",
+        "sourceId": "ad576608-e8d2-4297-83d7-12c47cba6020"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S003",
+        "order": 123,
+        "text": "koliko dugo mislite",
+        "sourceId": "2eaa3588-8fda-4fbc-9acb-b2897ec1cf61"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S004",
+        "order": 124,
+        "text": "oko dvadeset minuta",
+        "sourceId": "77f238b1-75a7-4efd-9251-d1eb14cfd372"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S004",
+        "order": 124,
+        "text": "ako ne budemo",
+        "sourceId": "77f238b1-75a7-4efd-9251-d1eb14cfd372"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S004",
+        "order": 124,
+        "text": "imali smole",
+        "sourceId": "77f238b1-75a7-4efd-9251-d1eb14cfd372"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S005",
+        "order": 125,
+        "text": "gdje mogu kupiti kartu",
+        "sourceId": "9cfe19cc-3cba-45f5-9c6d-7ae40b2120d9"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S006",
+        "order": 126,
+        "text": "točno kod blagajne",
+        "sourceId": "1240a752-4495-4dbf-ab48-e45e691ba0c5"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S007",
+        "order": 127,
+        "text": "To je dvanaest eura",
+        "sourceId": "d8fd9d94-1489-4c70-8a71-fd577cad9206"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S008",
+        "order": 128,
+        "text": "Mogu karticu",
+        "sourceId": "2d682458-8dc7-4a16-9f83-e2e78a8d2761"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S009",
+        "order": 129,
+        "text": "Uređaj je ovdje",
+        "sourceId": "43ce0cdc-71fd-4cfa-859c-d64acfe11a2a"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC14-S010",
+        "order": 130,
+        "text": "Dvanaest sati",
+        "sourceId": "4c34d695-5a1b-4b9e-b1ed-69218a31467b"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S001",
+        "order": 131,
+        "text": "da pokušam vježbati",
+        "sourceId": "2475ef64-e9f8-48ee-a7fc-ddc0b1be12da"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S001",
+        "order": 131,
+        "text": "Ne učim ga jako dugo",
+        "sourceId": "529249d0-a052-4d67-a100-660417d9642a"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S001",
+        "order": 131,
+        "text": "i još se uvijek",
+        "sourceId": "529249d0-a052-4d67-a100-660417d9642a"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S001",
+        "order": 131,
+        "text": "osjećam malo nervozan",
+        "sourceId": "529249d0-a052-4d67-a100-660417d9642a"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S001",
+        "order": 131,
+        "text": "što se tiče govora",
+        "sourceId": "529249d0-a052-4d67-a100-660417d9642a"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S002",
+        "order": 132,
+        "text": "Čini se da to govoriš",
+        "sourceId": "bb5ec78b-a992-4d76-add1-74adb531e416"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S002",
+        "order": 132,
+        "text": "Lako te razumijem",
+        "sourceId": "8850f78b-92d4-44e7-9d99-abcf0ea7a84a"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S003",
+        "order": 133,
+        "text": "Moram naučiti",
+        "sourceId": "7628d80f-76cb-412d-bf83-0689e14f99ef"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S003",
+        "order": 133,
+        "text": "više riječi",
+        "sourceId": "7628d80f-76cb-412d-bf83-0689e14f99ef"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S003",
+        "order": 133,
+        "text": "i moram vježbati",
+        "sourceId": "7628d80f-76cb-412d-bf83-0689e14f99ef"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S003",
+        "order": 133,
+        "text": "Ne razumijem ljude",
+        "sourceId": "50a7f334-e926-4972-bc12-5fb6158f0b3f"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S003",
+        "order": 133,
+        "text": "kada ne govore",
+        "sourceId": "50a7f334-e926-4972-bc12-5fb6158f0b3f"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S004",
+        "order": 134,
+        "text": "Govorim li ti dovoljno",
+        "sourceId": "84ee69cf-a47b-44ce-9a1d-cfc076dde749"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S004",
+        "order": 134,
+        "text": "polako sada",
+        "sourceId": "84ee69cf-a47b-44ce-9a1d-cfc076dde749"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S005",
+        "order": 135,
+        "text": "Malo je teško smisliti",
+        "sourceId": "8005fe91-c9e5-4c03-958f-6ff208031829"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S005",
+        "order": 135,
+        "text": "kao da mogu",
+        "sourceId": "86f27d73-8446-440e-834b-4e611b3cc44f"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S005",
+        "order": 135,
+        "text": "govoriti dovoljno",
+        "sourceId": "86f27d73-8446-440e-834b-4e611b3cc44f"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S006",
+        "order": 136,
+        "text": "da se odlično snalaziš",
+        "sourceId": "606a7dbf-0418-4fa2-84e9-e7428816b9c5"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S006",
+        "order": 136,
+        "text": "da si spreman početi",
+        "sourceId": "ad2441f1-7716-4289-86f7-18e087b7964b"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S008",
+        "order": 138,
+        "text": "puno bolje nego što misliš",
+        "sourceId": "aae04fa8-339b-4b80-9f3f-1d5b3832b4b7"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S009",
+        "order": 139,
+        "text": "Ovo je točno",
+        "sourceId": "c9365bc5-8451-4984-90f9-8e906448e087"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S009",
+        "order": 139,
+        "text": "onakva vrsta vježbe",
+        "sourceId": "c9365bc5-8451-4984-90f9-8e906448e087"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S009",
+        "order": 139,
+        "text": "da to mogu osjetiti",
+        "sourceId": "f43a70f3-5c2d-425b-a540-3084bc4ca4a5"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S009",
+        "order": 139,
+        "text": "kako mijenja moj mozak",
+        "sourceId": "f43a70f3-5c2d-425b-a540-3084bc4ca4a5"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S009",
+        "order": 139,
+        "text": "Stvarno cijenim",
+        "sourceId": "04fe04e7-efdd-455a-b1dd-9d82bf0407b9"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S009",
+        "order": 139,
+        "text": "Ali iznenađujuće",
+        "sourceId": "2d070854-3eb9-48b9-ba2f-7b8c7e4d1bdb"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S009",
+        "order": 139,
+        "text": "je kako se umorim",
+        "sourceId": "2d070854-3eb9-48b9-ba2f-7b8c7e4d1bdb"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S009",
+        "order": 139,
+        "text": "kad govorim na jeziku",
+        "sourceId": "2d070854-3eb9-48b9-ba2f-7b8c7e4d1bdb"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S010",
+        "order": 140,
+        "text": "Učenje novog jezika",
+        "sourceId": "597949c4-aae6-4feb-a18b-32cdbf559c1d"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S010",
+        "order": 140,
+        "text": "je teško",
+        "sourceId": "597949c4-aae6-4feb-a18b-32cdbf559c1d"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S010",
+        "order": 140,
+        "text": "Ali toliko",
+        "sourceId": "41c34ac7-53bd-4c1e-bb8e-7f3fa8978ce2"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S010",
+        "order": 140,
+        "text": "je zabavno",
+        "sourceId": "41c34ac7-53bd-4c1e-bb8e-7f3fa8978ce2"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S011",
+        "order": 141,
+        "text": "Stvarno sam sretan",
+        "sourceId": "7aa46212-69df-412a-b365-ebeef53f69a5"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S011",
+        "order": 141,
+        "text": "što mogu imati",
+        "sourceId": "7aa46212-69df-412a-b365-ebeef53f69a5"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S011",
+        "order": 141,
+        "text": "ovoliko razgovora",
+        "sourceId": "7aa46212-69df-412a-b365-ebeef53f69a5"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S011",
+        "order": 141,
+        "text": "I nadam se",
+        "sourceId": "3ce969c3-c1ce-453b-a198-de6017369512"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S011",
+        "order": 141,
+        "text": "da ćemo moći imati",
+        "sourceId": "3ce969c3-c1ce-453b-a198-de6017369512"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S012",
+        "order": 142,
+        "text": "Jedan sat",
+        "sourceId": "bd53cb4e-f24c-4c26-a377-a14f92f66e03"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S012",
+        "order": 142,
+        "text": "Jedanaest sati",
+        "sourceId": "5e63f446-5d2f-4512-9b08-69cf1637d14b"
+      }
+    ]
+  },
+  "render_candidates": {
+    "action": "tts_render",
+    "count": 13,
+    "total_chars": 263,
+    "cost_per_million_chars_usd": 4,
+    "estimated_cost_usd": 0.0011,
+    "items": [
+      {
+        "id": "hrv_for_eng:pod-0:SC02-S001",
+        "order": 5,
+        "text": "je li ovo mjesto zauzeto",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC04-S002",
+        "order": 11,
+        "text": "Možemo li razgovarati sutra",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC07-S010",
+        "order": 37,
+        "text": "je osam eura četrdeset",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S008",
+        "order": 50,
+        "text": "veliku čašu",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC08-S008",
+        "order": 50,
+        "text": "bijelog vina",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC09-S005",
+        "order": 63,
+        "text": "Ili za vegetarijance",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC10-S007",
+        "order": 83,
+        "text": "Jako sam zahvalan",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S007",
+        "order": 137,
+        "text": "Ali znam",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S007",
+        "order": 137,
+        "text": "da moram nastaviti vježbati",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S007",
+        "order": 137,
+        "text": "ako želim govoriti samopouzdanije",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S008",
+        "order": 138,
+        "text": "Osjećam se ugodno",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S008",
+        "order": 138,
+        "text": "razgovarajući s tobom",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      },
+      {
+        "id": "hrv_for_eng:pod-0:SC15-S008",
+        "order": 138,
+        "text": "i ne govorim jako polako",
+        "reason": "no slice, no atom clip, no whole-sentence/turn take"
+      }
+    ]
+  }
+}
