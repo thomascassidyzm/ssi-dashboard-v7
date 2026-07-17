@@ -1,8 +1,16 @@
 # DB cleanup inventory — schools/groups — 2026-07-17
 
-Phase 1 inventory only. **No deletions have been run.** This is read-only analysis of the shared
-dev/staging/prod Supabase database (`schools`, `groups`, `classes`, `class_sessions`,
-`entitlement_grants`, `invite_codes`, `govt_admins`, `demo_orgs`, `user_tags`).
+**This is a shopping list, not an execution plan.** No deletions have been run and none will be run
+by an agent — deletion now happens through the admin UI's own delete buttons (fixed + hardened in
+`ssi-learning-app` PR [#4](https://github.com/thomascassidyzm/ssi-learning-app/pull/4), on the
+Schools Setup admin view). This doc tells Tom which rows to click delete on; it is read-only
+analysis of the shared dev/staging/prod Supabase database (`schools`, `groups`, `classes`,
+`class_sessions`, `entitlement_grants`, `invite_codes`, `govt_admins`, `demo_orgs`, `user_tags`).
+
+Where to delete: the admin Schools Setup view (`/admin/schools-setup` in `ssi-learning-app`,
+`SchoolsSetup.vue`) — each school/group row has a delete action that now shows an impact preview
+(classes/learners/teachers affected) before confirming, and requires typing the exact name for any
+row with real recorded activity.
 
 Snapshot: 23 rows in `schools`, 10 rows in `groups`, 0 rows in `entitlement_grants` anywhere in the
 DB (so no billing/entitlement records are at risk from any of the candidates below).
@@ -93,11 +101,14 @@ be a genuine friend/beta tester. Recommended **KEEP** pending your confirmation 
 - **10 groups total** → 2 KEEP (demo-lifecycle) / 8 recommended DELETE
 - **0 entitlement_grants** anywhere in the DB — no billing records at risk from any candidate
 
-## What Phase 2 will need to touch (dependency order, no cascades on these FKs)
+## How to actually delete these
 
-`schools.invite_code_id` and `govt_admins.invite_code_id` both reference `invite_codes` with no
-`ON DELETE` behaviour, and `invite_codes.grants_school_id` / `grants_group_id` reference back to
-`schools`/`groups` the same way — so the delete script must null/delete `invite_codes` and
-`govt_admins` rows for the approved ids **before** deleting the schools/groups themselves. Deleting
-a school does cascade to its `classes`, `class_sessions`, and `entitlement_grants` automatically
-(those FKs are `ON DELETE CASCADE`). See `docs/db-cleanup-2026-07-17.sql`.
+Through the admin Schools Setup UI (`ssi-learning-app`, `SchoolsSetup.vue`), once
+[PR #4](https://github.com/thomascassidyzm/ssi-learning-app/pull/4) lands. The delete buttons there
+were previously broken for real schools — `schools.invite_code_id` and `govt_admins.invite_code_id`
+both reference `invite_codes` with no `ON DELETE` behaviour, and `invite_codes.grants_school_id` /
+`grants_group_id` reference back to `schools`/`groups` the same way, so a bare `schools.delete()`
+500s on essentially every school (every school gets 2 `invite_codes` rows at creation). The PR fixes
+the cleanup order server-side, adds an impact preview before confirming, and requires typing the
+exact name for any row with real recorded activity. No manual SQL needed — click delete on each
+DELETE-recommended row above once the fix is deployed.
