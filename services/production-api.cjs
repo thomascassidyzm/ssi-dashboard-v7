@@ -1560,6 +1560,7 @@ app.get('/api/courses/:courseCode/seed-phrases-preview', async (req, res) => {
 // provider: 'azure' (default) | 'elevenlabs' | 'xai'
 // language: BCP-47 code for xAI (e.g. 'es', 'pt-BR'). Derived from voiceId for Azure.
 app.post('/api/voices/preview', async (req, res) => {
+  if (!await requireDashboardUser(req, res)) return
   const { voiceId, text, speed, provider = 'azure', language } = req.body
 
   if (!voiceId) return res.status(400).json({ success: false, error: 'voiceId is required' })
@@ -5520,6 +5521,7 @@ app.get('/api/production/:courseCode/audio-pipeline/plan', async (req, res) => {
 // POST /api/production/:courseCode/audio-pipeline/start
 // Start audio generation
 app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) => {
+  if (!await requireDashboardUser(req, res)) return
   const { courseCode } = req.params
   const { options } = req.body
   try {
@@ -5601,6 +5603,7 @@ app.get('/api/production/:courseCode/audio-pipeline/status', async (req, res) =>
 // POST /api/production/:courseCode/audio-pipeline/cancel
 // Cancel generation (POST to match frontend expectation)
 app.post('/api/production/:courseCode/audio-pipeline/cancel', async (req, res) => {
+  if (!await requireDashboardUser(req, res)) return
   const { courseCode } = req.params
   try {
     const response = await axios.delete(`${PHASE8_URL}/cancel/${courseCode}`)
@@ -5617,6 +5620,7 @@ app.post('/api/production/:courseCode/audio-pipeline/cancel', async (req, res) =
 // POST /api/production/:courseCode/audio-pipeline/retry
 // Retry failed audio generation
 app.post('/api/production/:courseCode/audio-pipeline/retry', async (req, res) => {
+  if (!await requireDashboardUser(req, res)) return
   const { courseCode } = req.params
   const { options } = req.body
   try {
@@ -9032,6 +9036,7 @@ app.get('/api/production/:courseCode/gender-prep/status', async (req, res) => {
 // POST /api/production/:courseCode/gender-prep/start
 // Spawn a single coordinator in one iTerm window that runs parallel Haiku --print calls
 app.post('/api/production/:courseCode/gender-prep/start', async (req, res) => {
+  if (!await requireDashboardUser(req, res)) return
   try {
     const { courseCode } = req.params
     const { spawn: spawnProc } = require('child_process')
