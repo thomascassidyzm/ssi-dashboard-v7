@@ -171,6 +171,7 @@ Produce these sections (concise labelled prose, no preamble):
 3. TARGET-LANGUAGE NAME — the script mentions ${targetLanguage} by name (e.g. "I'm learning ${targetLanguage}"). Pin the ONE standard everyday word ${targetLanguage} speakers use for their own language, used identically in every scene.
 4. RECURRING LINES — list every canonical sentence or formula that appears in MORE THAN ONE scene (greetings, "What can I get you?", "Could I pay by card?", etc.) and pin ONE ${targetLanguage} rendering for each, reused verbatim wherever it recurs.
 5. REGISTER — pin the unmarked polite second-person / honorific level for each relationship type in the pod (customer–staff, strangers, friends), so every scene makes the same T/V choice.
+6. SPEAKER GENDER — ONLY if ${targetLanguage} marks the SPEAKER'S OWN gender in ordinary speech (e.g. Thai politeness particles ครับ/ค่ะ, gendered first-person pronouns, gendered verb/adjective forms for "I"). Assign EVERY distinct speaker label ONE gender and pin it, so each scene renders that speaker's gendered forms consistently AND downstream voice casting gives them a matching voice. A man must never be scripted with female forms, or vice versa. Key EXACTLY as: "<speaker label> = male" or "<speaker label> = female". Cover every speaker label in the script. If ${targetLanguage} does NOT mark speaker gender this way, write "SPEAKER GENDER: not marked in ${targetLanguage} — skip."
 
 CULTURE NOTES:
 ${cultureNotes}
