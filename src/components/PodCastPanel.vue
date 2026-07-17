@@ -3,10 +3,11 @@
     <!-- Header -->
     <div class="flex items-center justify-between gap-4 flex-wrap mb-1">
       <div>
-        <h2 class="text-sm font-semibold text-ink">Cast — who can record voices?</h2>
+        <h2 class="text-sm font-semibold text-ink">Cast — the two voices</h2>
         <p class="text-xs text-muted mt-0.5">
-          List the real people who can record, then let us work out the parts. One person can play
-          several characters — we just make sure two characters in the same conversation never share a voice.
+          Every pod is recorded with exactly two voices — one male, one female. Between them they
+          play every character in every scenario; when a scene has two characters of the same
+          gender, that voice just plays both.
         </p>
       </div>
       <div class="flex items-center gap-2 flex-shrink-0">
@@ -49,9 +50,9 @@
             <select
               v-model="person.gender"
               class="bg-canvas border border-line rounded px-2 py-1.5 text-xs text-ink"
-              title="Only a preference — it never blocks the casting"
+              title="Every pod needs exactly one male voice and one female voice"
             >
-              <option value="">Voice: no preference</option>
+              <option value="" disabled>Choose voice…</option>
               <option value="f">Female voice</option>
               <option value="m">Male voice</option>
             </select>
@@ -77,31 +78,32 @@
         </div>
         <div class="flex items-center gap-3 mt-2">
           <button
+            v-if="people.length < 2"
             @click="addPerson"
             class="text-[11px] px-2.5 py-1 rounded border border-line text-ink hover:border-emerald-500"
-          >+ Add a person</button>
+          >+ Add the {{ people.length === 0 ? 'first' : 'second' }} voice</button>
           <span class="text-[11px] text-faint">
-            The bilingual guide reads the English lines. If nobody's marked, we'll suggest whoever has the lightest load
-            — a guide can also play a character, though a separate voice is nicer.
+            The bilingual guide reads the English lines — it's one of these same two people. If
+            nobody's marked, we'll suggest whoever has the lightest load.
           </span>
         </div>
       </div>
 
       <!-- Generation-side colouring: demoted to a default suggestion -->
       <div v-if="generationColouring" class="text-[11px] text-faint mt-3">
-        This course came with a ready-made 5-voice plan from generation — a handy default when you have
-        5 people. Your list above always wins.
+        This course came with a ready-made voice plan from generation — a handy default. Your two
+        voices above always win.
       </div>
 
-      <!-- Warnings from the solve -->
-      <div v-if="proposal && proposal.warnings?.length" class="mt-4 grid gap-1.5">
+      <!-- Warnings from the solve. 'need-more-people' is suppressed here: every
+           pod is two voices by design (founder ruling 2026-07-17), so a
+           character sharing a voice with someone it talks to is the expected
+           outcome, not a shortfall to grow the cast out of. -->
+      <div v-if="visibleWarnings.length" class="mt-4 grid gap-1.5">
         <div
-          v-for="(w, i) in proposal.warnings"
+          v-for="(w, i) in visibleWarnings"
           :key="i"
-          class="text-xs rounded px-3 py-2 border"
-          :class="w.type === 'need-more-people'
-            ? 'cast-warn bg-amber-900/30 border-amber-700 text-amber-200'
-            : 'cast-row bg-canvas/60 border-line text-ink'"
+          class="text-xs rounded px-3 py-2 border cast-row bg-canvas/60 border-line text-ink"
         >{{ w.message }}</div>
       </div>
 
@@ -246,7 +248,10 @@ function blankPerson() {
   return { name: '', gender: '', email: '', guide: false }
 }
 
+// Every pod is cast with exactly two voices (founder ruling 2026-07-17) — cap
+// the roster at two rows so the panel can't drift back into an N-voice cast.
 function addPerson() {
+  if (people.value.length >= 2) return
   people.value = [...people.value, blankPerson()]
 }
 
@@ -259,8 +264,18 @@ function setGuide(i) {
   people.value = people.value.map((p, idx) => ({ ...p, guide: idx === i }))
 }
 
-const canSolve = computed(() =>
-  people.value.some(p => (p.name && p.name.trim()) || (p.email && p.email.trim())))
+// Two named/emailed people, each with a gender chosen, one male one female.
+const canSolve = computed(() => {
+  if (people.value.length !== 2) return false
+  const named = people.value.every(p => (p.name && p.name.trim()) || (p.email && p.email.trim()))
+  const genders = people.value.map(p => p.gender).sort()
+  return named && genders[0] === 'f' && genders[1] === 'm'
+})
+
+// 'need-more-people' is expected under the two-voice rule, not a real warning
+// — see the template note above it.
+const visibleWarnings = computed(() =>
+  (proposal.value?.warnings || []).filter(w => w.type !== 'need-more-people'))
 
 const speakerCount = computed(() => speakers.value.length)
 
@@ -282,11 +297,13 @@ function prefillPeople() {
     }
   }
   if (seen.size) {
-    people.value = [...seen.values()]
+    // Legacy courses may carry more than two saved voices (pre-ruling casts)
+    // — the panel only ever shows the two that carry forward.
+    people.value = [...seen.values()].slice(0, 2)
     return
   }
   if (rosterVoices.value.length) {
-    people.value = rosterVoices.value.map(v => ({
+    people.value = rosterVoices.value.slice(0, 2).map(v => ({
       name: v.name || '', gender: '', email: v.email || '', guide: false,
     }))
     return

@@ -7201,15 +7201,20 @@ app.get('/api/production/:courseCode/recording-optimizer', async (req, res) => {
 app.get('/api/production/:courseCode/recording-script', async (req, res) => {
   try {
     const { courseCode } = req.params
+    // Default: skip anything already spliceable from existing HUMAN
+    // recordings, so a course with real recording history (e.g. cym) shows
+    // only the actual gap, not the same from-scratch script every time.
+    // ?full=true opts back into the original unfiltered script.
+    const excludeRecorded = req.query.full !== 'true'
 
-    logger.log(`[Recording Script] Generating interleaved script for ${courseCode}`)
+    logger.log(`[Recording Script] Generating interleaved script for ${courseCode}${excludeRecorded ? ' (gap only)' : ' (full)'}`)
 
     // Run the optimizer (suppress console output)
     const originalLog = console.log
     const logs = []
     console.log = (...args) => logs.push(args.join(' '))
 
-    const result = await generateRecordingScript(courseCode, { verbose: false })
+    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded })
 
     console.log = originalLog
 

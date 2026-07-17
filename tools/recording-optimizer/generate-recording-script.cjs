@@ -331,12 +331,38 @@ async function getAllSeeds(courseCode) {
   return data || [];
 }
 
+/**
+ * Existing HUMAN target1 recordings for a course — the "already in the can"
+ * pool. Minority-language courses like cym build up thousands of these over
+ * real recording sessions; the optimizer originally ran as if starting from
+ * zero every time, which re-asked for phrases already recorded. Used to prune
+ * the LEGO universe before greedy set cover runs, so the output is a GAP
+ * list (what's actually still missing), not a from-scratch script.
+ */
+async function getExistingHumanAudioTexts(courseCode) {
+  const PAGE = 1000;
+  const texts = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await supabase
+      .from('course_audio')
+      .select('text')
+      .eq('course_code', courseCode)
+      .eq('role', 'target1')
+      .eq('origin', 'human')
+      .range(from, from + PAGE - 1);
+    if (error) throw error;
+    texts.push(...(data || []).map(r => r.text));
+    if (!data || data.length < PAGE) break;
+  }
+  return texts;
+}
+
 // =============================================================================
 // MAIN ALGORITHM
 // =============================================================================
 
 async function generateRecordingScript(courseCode, options = {}) {
-  const { verbose = false } = options;
+  const { verbose = false, excludeRecorded = false } = options;
 
   console.log(`\n🎙️  Recording Script Generator`);
   console.log(`   Course: ${courseCode}`);
@@ -464,11 +490,31 @@ async function generateRecordingScript(courseCode, options = {}) {
 
   console.log(`🎯 Viable candidates (cover at least 1 LEGO): ${candidates.length}`);
 
-  // 5. Run greedy set cover
+  // 4b. Already-recorded pruning: LEGOs already reachable by splicing an
+  // EXISTING human recording need no new phrase. Only the residual (the real
+  // gap) goes through greedy set cover.
+  let coverUniverse = universeKeys;
+  let alreadyCoveredCount = 0;
+  if (excludeRecorded) {
+    if (verbose) console.log('\n🎧 Checking existing human recordings...');
+    const existingTexts = await getExistingHumanAudioTexts(courseCode);
+    const alreadyCovered = new Set();
+    for (const text of existingTexts) {
+      const words = tokenize(text);
+      for (const subseq of getAllSubsequences(words)) {
+        if (universeKeys.has(subseq)) alreadyCovered.add(subseq);
+      }
+    }
+    alreadyCoveredCount = alreadyCovered.size;
+    console.log(`🎙️  Already coverable by existing human recordings: ${alreadyCoveredCount}/${universeKeys.size} LEGOs`);
+    coverUniverse = new Set([...universeKeys].filter(k => !alreadyCovered.has(k)));
+  }
+
+  // 5. Run greedy set cover (over the residual/gap universe)
   if (verbose) console.log('\n⚙️  Running GuaranteedCoverage algorithm...');
 
   const startTime = Date.now();
-  const result = greedySetCover(universeKeys, candidates);
+  const result = greedySetCover(coverUniverse, candidates);
   const elapsed = Date.now() - startTime;
 
   console.log(`✅ Algorithm complete in ${elapsed}ms`);
@@ -487,11 +533,14 @@ async function generateRecordingScript(courseCode, options = {}) {
     });
   }
 
-  // 7. Calculate statistics
+  // 7. Calculate statistics. When excludeRecorded is on, "coverage"/"reduction"
+  // describe the residual gap (coverUniverse), not the whole course, so a
+  // near-finished course correctly reports near-100% already covered.
   const totalRecordings = result.selected.length + directRecord.length;
   const totalLegos = universe.size;
-  const coverage = ((totalLegos - result.uncovered.size) / totalLegos * 100).toFixed(1);
-  const reduction = ((1 - totalRecordings / totalLegos) * 100).toFixed(1);
+  const gapLegos = coverUniverse.size;
+  const coverage = gapLegos === 0 ? '100.0' : ((gapLegos - result.uncovered.size) / gapLegos * 100).toFixed(1);
+  const reduction = gapLegos === 0 ? '100.0' : ((1 - totalRecordings / gapLegos) * 100).toFixed(1);
 
   // Estimated time (rough)
   const phraseTime = result.selected.length * CONFIG.SECONDS_PER_PHRASE;
@@ -513,6 +562,8 @@ async function generateRecordingScript(courseCode, options = {}) {
       reductionPercent: parseFloat(reduction),
       estimatedMinutes,
       algorithmIterations: result.iterations,
+      excludeRecorded,
+      alreadyCoveredByExistingRecordings: alreadyCoveredCount,
     },
 
     recordingScript: {
@@ -617,23 +668,28 @@ Usage:
 Options:
   --output <file>   Write JSON output to file
   --verbose         Show detailed progress
+  --gap             Exclude LEGOs already coverable by existing HUMAN
+                    recordings — output is the residual gap list, not a
+                    from-scratch script
   --help            Show this help
 
 Examples:
   node generate-recording-script.cjs spa_for_eng
   node generate-recording-script.cjs cym_for_eng --output recording-script.json
   node generate-recording-script.cjs bre_for_eng --verbose
+  node generate-recording-script.cjs cym_n_for_eng --gap --output gap.json
 `);
     process.exit(0);
   }
 
   const courseCode = args[0];
   const verbose = args.includes('--verbose');
+  const excludeRecorded = args.includes('--gap');
   const outputIdx = args.indexOf('--output');
   const outputFile = outputIdx !== -1 ? args[outputIdx + 1] : null;
 
   try {
-    const result = await generateRecordingScript(courseCode, { verbose });
+    const result = await generateRecordingScript(courseCode, { verbose, excludeRecorded });
 
     if (result && outputFile) {
       const outputPath = path.resolve(outputFile);
@@ -654,4 +710,4 @@ if (require.main === module) {
 }
 
 // Export for API use
-module.exports = { generateRecordingScript };
+module.exports = { generateRecordingScript, getExistingHumanAudioTexts };
