@@ -511,6 +511,159 @@ function proposePeopleCast({
 }
 
 // ---------------------------------------------------------------------------
+// LEGACY-CAST COLLAPSE (two-voice rule, founder ruling 2026-07-17). Casts
+// saved before the rule split the SAME two humans across version-suffixed
+// identities ("Aran"/"Aranv2"/"Aranv3"). Collapse them into one voice per
+// gender so the panel shows exactly two people and the DB stops accumulating
+// versions. Dropped ids come back as ALIASES of their survivor so old record
+// links keep resolving and already-recorded takes still count as recorded.
+// ---------------------------------------------------------------------------
+
+/** "Aranv2" / "aran_v3" → "aran" — the version-suffix stem of a display name. */
+function nameVersionStem(name) {
+  return String(name || '').toLowerCase().replace(/[\s_-]*v\d+$/, '').trim()
+}
+
+/**
+ * Collapse a legacy multi-identity podCast into one voice per gender.
+ * Pure — no DB, no I/O. No-op ({ changed: false }) when the cast already
+ * holds two or fewer distinct voiceIds.
+ *
+ * Gender per voiceId: any entry's explicit f/m wins; else the lineCount-
+ * weighted majority gender of the characters it plays; else the gender of a
+ * resolved voiceId whose name shares its version stem (Aranv3 → Aran).
+ * Survivor per gender: most recorded human takes (takesByVoiceId), then most
+ * lines, then has-email, then first seen — the link people are actually
+ * using is the one that survives.
+ * VoiceIds whose gender cannot be resolved are left untouched and reported
+ * in `unresolved` — never guess a voice onto the wrong person.
+ *
+ * @param {object} args
+ * @param {object} args.podCast - voice_config.podCast (speaker → entry)
+ * @param {Array}  [args.speakers] - speakerInventory().speakers (gender + lineCount)
+ * @param {Object<string, number>} [args.takesByVoiceId] - recorded human takes per voiceId
+ * @returns {{ changed:boolean, podCast:object, aliases:Object<string,string[]>,
+ *             dropped:string[], unresolved:string[] }}
+ */
+function collapseTwoVoiceCast({ podCast, speakers = [], takesByVoiceId = {} }) {
+  const cast = podCast && typeof podCast === 'object' ? podCast : {}
+  const bySpeaker = new Map(speakers.map(s => [s.speaker, s]))
+
+  // Gather the distinct voice identities and what each plays.
+  const voices = new Map() // voiceId → { entry, speakers:[], lines, f, m }
+  for (const [speaker, entry] of Object.entries(cast)) {
+    if (!entry || !entry.voiceId) continue
+    if (!voices.has(entry.voiceId)) {
+      voices.set(entry.voiceId, { entry, speakers: [], lines: 0, f: 0, m: 0 })
+    }
+    const v = voices.get(entry.voiceId)
+    // The identity's face keeps the first entry's name; email/gender fill in
+    // from whichever entry carries them.
+    if (entry.email && !v.entry.email) v.entry = { ...v.entry, email: entry.email }
+    if (entry.gender && !v.entry.gender) v.entry = { ...v.entry, gender: entry.gender }
+    v.speakers.push(speaker)
+    if (speaker === EXPLAINER_SPEAKER) continue // guide lines carry no character gender
+    const sp = bySpeaker.get(speaker)
+    const weight = (sp && sp.lineCount) || 1
+    v.lines += weight
+    if (sp && sp.gender === 'f') v.f += weight
+    if (sp && sp.gender === 'm') v.m += weight
+  }
+  if (voices.size <= 2) {
+    return { changed: false, podCast: cast, aliases: {}, dropped: [], unresolved: [] }
+  }
+
+  // Resolve a gender for each identity.
+  const genderOf = new Map()
+  for (const [voiceId, v] of voices) {
+    const explicit = String(v.entry.gender || '').toLowerCase()
+    if (explicit === 'f' || explicit === 'm') genderOf.set(voiceId, explicit)
+    else if (v.f !== v.m) genderOf.set(voiceId, v.f > v.m ? 'f' : 'm')
+  }
+  // Version-stem fallback: adopt the gender of a resolved same-stem sibling.
+  for (const [voiceId, v] of voices) {
+    if (genderOf.has(voiceId)) continue
+    const stem = nameVersionStem(v.entry.name || voiceId)
+    if (!stem) continue
+    for (const [otherId, other] of voices) {
+      if (otherId === voiceId || !genderOf.has(otherId)) continue
+      if (nameVersionStem(other.entry.name || otherId) === stem) {
+        genderOf.set(voiceId, genderOf.get(otherId))
+        break
+      }
+    }
+  }
+
+  // Pick one survivor per gender.
+  const survivorOf = {} // gender → voiceId
+  for (const gender of ['f', 'm']) {
+    const bucket = [...voices.keys()].filter(id => genderOf.get(id) === gender)
+    if (!bucket.length) continue
+    bucket.sort((a, b) =>
+      (takesByVoiceId[b] || 0) - (takesByVoiceId[a] || 0) ||
+      voices.get(b).lines - voices.get(a).lines ||
+      (voices.get(b).entry.email ? 1 : 0) - (voices.get(a).entry.email ? 1 : 0))
+    survivorOf[gender] = bucket[0]
+  }
+
+  // Rewrite every speaker in a resolved bucket to its survivor's identity.
+  const newCast = {}
+  const aliases = {}
+  const dropped = []
+  const unresolved = []
+  for (const [voiceId, v] of voices) {
+    const gender = genderOf.get(voiceId)
+    const survivorId = gender && survivorOf[gender]
+    if (!survivorId) {
+      unresolved.push(voiceId)
+      for (const speaker of v.speakers) newCast[speaker] = cast[speaker]
+      continue
+    }
+    const sv = voices.get(survivorId)
+    // The survivor keeps its own name; email falls back to any in the bucket.
+    const email = sv.entry.email ||
+      [...voices.keys()].filter(id => genderOf.get(id) === gender)
+        .map(id => voices.get(id).entry.email).find(Boolean) || null
+    for (const speaker of v.speakers) {
+      newCast[speaker] = {
+        voiceId: survivorId,
+        name: sv.entry.name || survivorId,
+        ...(email ? { email } : {}),
+        gender,
+      }
+    }
+    if (voiceId !== survivorId) {
+      dropped.push(voiceId)
+      ;(aliases[survivorId] = aliases[survivorId] || []).push(voiceId)
+    }
+  }
+
+  return { changed: dropped.length > 0, podCast: newCast, aliases, dropped, unresolved }
+}
+
+/**
+ * Fold a fresh collapse's aliases into any previously-saved ones. An old
+ * survivor that has now itself been dropped hands its alias list on to the
+ * new survivor, so every historic record link stays one hop from a live id.
+ */
+function mergeCastAliases(oldAliases, newAliases) {
+  const merged = {}
+  const ownerOf = {}
+  for (const [survivor, list] of Object.entries(newAliases || {})) {
+    merged[survivor] = [...list]
+    for (const id of list) ownerOf[id] = survivor
+  }
+  for (const [survivor, list] of Object.entries(oldAliases || {})) {
+    const target = ownerOf[survivor] || survivor
+    merged[target] = merged[target] || []
+    for (const id of list || []) {
+      if (id !== target && !merged[target].includes(id)) merged[target].push(id)
+    }
+  }
+  return merged
+}
+
+// ---------------------------------------------------------------------------
 // AUTO-PROVISIONING decision (pure): what PUT /cast should do for a cast
 // entry that carries an email. The row shape for 'create' mirrors the
 // invite-redeem endpoint exactly (production-api.cjs
@@ -558,4 +711,6 @@ module.exports = {
   mintPeopleVoiceIds,
   proposePeopleCast,
   provisionPlanFor,
+  collapseTwoVoiceCast,
+  mergeCastAliases,
 }
