@@ -48,13 +48,13 @@
       <span class="mode-icon">🎭</span>
       <h2 class="mode-title">Mode 3: Listening Pods</h2>
       <p class="mode-description">
-        Record the dialogue listening exercises with real voices. Cast each
-        character to a speaker, then everyone reads their own lines with the
-        conversation shown for context.
+        Record the dialogue listening exercises with real voices. Every pod is
+        cast with exactly two voices — one male, one female — who between them
+        read every character in the scenario.
       </p>
       <ul class="mode-features">
-        <li>Cast up to 5 voices + a bilingual guide</li>
-        <li>One link per speaker — read all your lines in one sitting</li>
+        <li>Two voices: one male, one female, every pod</li>
+        <li>One link per voice — read all your lines in one sitting</li>
         <li>Cue lines show what was just said</li>
         <li>Works on a phone</li>
         <li>Starts at the cast panel (Listening Pods page)</li>

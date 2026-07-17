@@ -11,14 +11,17 @@ out in full in case some time has passed.
 **Pod-0 — the everyday conversations (coffee shop, taxi, pharmacy, hotel, meeting someone
 new, etc.).** This is what's ready and waiting:
 
-- **Northern Welsh (`cym_n_for_eng`)** — 114 of 142 lines still need a voice. You've already
-  covered two of the five characters; the other three (and the rest of your two) are open.
-- **Southern Welsh (`cym_s_for_eng`)** — all 142 lines are still open, nobody's started.
+- **Northern Welsh (`cym_n_for_eng`)** — still needs lines recorded.
+- **Southern Welsh (`cym_s_for_eng`)** — still needs lines recorded.
 
-Between the two, there's a full cast of five voices needed per dialect (roughly: two women,
-one more woman for a smaller role, and two men — the app will show you exactly who's
-missing when you log in). If you've got Catrin or others lined up, any of you can pick up
-any open voice slot.
+**The rule for every pod, from now on: exactly two voices — one male, one female.** However
+many characters a scene has, the two of you cover all of them between you — when a scene has
+two characters of the same gender, one of you just plays both. That's Aran (male) and Catrin
+(female) for both dialects. Whoever's free, log in and the app shows you your own lines only
+— you never need to work out who's playing who, that's already decided.
+
+One of you should also be the **bilingual guide** — reads the English lines that explain
+things — same two people, whoever's got the lighter dialogue load.
 
 **Pod-1 (longer social conversations) is NOT ready yet — please don't record it.** The
 English content itself is still being decided (a genuine content question, not a Welsh one)
@@ -89,6 +92,16 @@ being saved regardless.
 
 If anything looks or sounds wrong once it's in, or you're not sure whether a line landed,
 just ask — we can check the database directly and confirm.
+
+---
+
+## 6. One more thing — a single sentence the main course still needs
+
+Separately from the pods, the North Welsh **course** (not a pod — the regular lesson
+sentences) is missing a recording of one sentence needed to complete it. It's `docs/pods/welsh-seeds-gap-list.md`
+if you want the detail, but the short version: open `cym_n_for_eng` in the dashboard,
+Mode 1: New Course, and it'll be the only thing left in that queue — read it natural, then
+slow, same as everything else. South Welsh needs nothing there — it's already complete.
 
 ---
 
