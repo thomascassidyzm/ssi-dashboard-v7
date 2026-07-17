@@ -72,6 +72,13 @@
         <span class="lt-count">{{ readThisSession }} / {{ toRecordCount }}</span>
       </div>
 
+      <!-- Silent/near-silent take: immediate, dismissible, re-recordable right here -->
+      <div v-if="dropNotice" class="drop-toast" role="status">
+        <span class="drop-toast-text">That take was silent — recorded again?</span>
+        <button class="drop-toast-action" @click="redoDrop(dropNotice.index)">Redo now</button>
+        <button class="drop-toast-dismiss" @click="dropNotice = null" aria-label="Dismiss">✕</button>
+      </div>
+
       <!-- the script as a calm scrolling autocue -->
       <div class="autocue" ref="autocueEl">
         <template v-for="(it, i) in items" :key="it.sentenceId || i">
@@ -81,14 +88,21 @@
             :data-idx="i"
             :class="{
               current: i === currentIndex,
-              done: isDone(it) && i !== currentIndex,
-              future: i > currentIndex && !isDone(it)
+              done: isDone(it) && i !== currentIndex && !droppedIndices.has(i),
+              future: i > currentIndex && !isDone(it),
+              dropped: droppedIndices.has(i) && i !== currentIndex
             }"
           >
             <span v-if="it.speaker && it.kind === 'target'" class="cue-speaker" :style="{ color: speakerColor(it.speaker) }">{{ it.speaker }}</span>
             <span class="cue-text">{{ it.lineText }}</span>
             <span v-if="it.lineGloss" class="cue-gloss">{{ it.lineGloss }}</span>
-            <span v-if="isDone(it) && i !== currentIndex" class="cue-tick" aria-hidden="true">✓</span>
+            <button
+              v-if="droppedIndices.has(i) && i !== currentIndex"
+              class="cue-drop-marker"
+              :disabled="advancing"
+              @click="redoDrop(i)"
+            >⚠ silent — redo</button>
+            <span v-else-if="isDone(it) && i !== currentIndex" class="cue-tick" aria-hidden="true">✓</span>
           </div>
         </template>
       </div>
@@ -112,7 +126,19 @@
         <div class="sum-stat" v-if="uploadQueue.failedIndices.size > 0"><span class="sum-value failed">{{ uploadQueue.failedIndices.size }}</span><span class="sum-label">Failed</span></div>
       </div>
       <p v-if="uploadQueue.pendingCount.value > 0" class="resume-note">Keep this page open until everything has saved.</p>
-      <p v-if="skippedEmpty > 0" class="resume-note">{{ skippedEmpty }} empty/very-short take(s) were skipped (nothing captured).</p>
+      <p v-if="micError" class="mic-error">{{ micError }}</p>
+
+      <!-- Specific lines that came out silent — named, not just counted, with a way back in -->
+      <div v-if="droppedIndices.size > 0" class="dropped-list">
+        <h3 class="dropped-list-title">{{ droppedIndices.size }} line{{ droppedIndices.size === 1 ? '' : 's' }} came out silent — need a re-take</h3>
+        <ul>
+          <li v-for="idx in sortedDroppedIndices" :key="idx" class="dropped-item">
+            <span class="dropped-text">{{ items[idx]?.lineText }}</span>
+            <button class="dropped-redo-btn" @click="recordMissingLine(idx)">Record this line</button>
+          </li>
+        </ul>
+      </div>
+
       <div class="summary-actions">
         <button class="btn-ghost" @click="reloadAfterSession">Back to my lines</button>
       </div>
@@ -174,9 +200,15 @@ const currentIndex = ref(0)
 const sessionRecorded = ref(new Set())
 const committedCount = ref(0)
 const readThisSession = ref(0)
-const skippedEmpty = ref(0)
 const advancing = ref(false)        // guards the async tap handlers
 let sessionId = null
+
+// Silent/near-silent takes: which item indices are currently missing a real
+// take, and the most recent one to surface as an immediate toast.
+const droppedIndices = ref(new Set())
+const dropNotice = ref(null) // { index } | null
+let dropNoticeTimer = null
+const sortedDroppedIndices = computed(() => Array.from(droppedIndices.value).sort((a, b) => a - b))
 
 const autocueEl = ref(null)
 
@@ -227,7 +259,8 @@ async function beginSession() {
   }
   recorder.listDevices()
   sessionId = `pod_longtake_${Date.now()}`
-  committedCount.value = 0; readThisSession.value = 0; skippedEmpty.value = 0
+  committedCount.value = 0; readThisSession.value = 0
+  droppedIndices.value = new Set(); dropNotice.value = null
   currentIndex.value = startIndex.value
   phase.value = 'recording'
   scrollToCurrent()
@@ -255,7 +288,19 @@ function debounced() {
 function commitLine(index, blob) {
   const item = items.value[index]
   if (!item) return
-  if (!blob || blob.size < 1200) { skippedEmpty.value++; return } // empty/near-empty: never save silence
+  if (!blob || blob.size < 1200) { // empty/near-empty: never save silence
+    droppedIndices.value.add(index)
+    droppedIndices.value = new Set(droppedIndices.value)
+    dropNotice.value = { index }
+    if (dropNoticeTimer) clearTimeout(dropNoticeTimer)
+    dropNoticeTimer = setTimeout(() => { dropNotice.value = null }, 6000)
+    return
+  }
+  if (droppedIndices.value.has(index)) {
+    droppedIndices.value.delete(index)
+    droppedIndices.value = new Set(droppedIndices.value)
+  }
+  if (dropNotice.value && dropNotice.value.index === index) dropNotice.value = null
   uploadQueue.queueUpload({
     blob,
     courseCode: props.courseCode,
@@ -324,6 +369,42 @@ async function finishAfterLine() {
   phase.value = 'done'
 }
 
+// Jump straight back to a silently-dropped line, mid-session, and re-arm the
+// mic for it — discards whatever the current (not-yet-tapped) line has
+// captured so far, same as "Again".
+async function redoDrop(index) {
+  if (phase.value !== 'recording' || advancing.value) return
+  dropNotice.value = null
+  if (index === currentIndex.value) return
+  advancing.value = true
+  try {
+    await recorder.discardLine()
+    currentIndex.value = index
+    scrollToCurrent()
+    recorder.beginLine()
+  } finally {
+    advancing.value = false
+  }
+}
+
+// From the done screen: re-open the mic just to pick up one silently-dropped
+// line (the session mic was already released when the session finished).
+async function recordMissingLine(index) {
+  if (phase.value !== 'done') return
+  micError.value = null
+  try {
+    await recorder.start(selectedDeviceId.value || null)
+  } catch (err) {
+    micError.value = friendlyMicError(err)
+    return
+  }
+  sessionId = `pod_longtake_${Date.now()}`
+  currentIndex.value = index
+  phase.value = 'recording'
+  scrollToCurrent()
+  recorder.beginLine()
+}
+
 // ── Autocue scroll ───────────────────────────────────────────────────────────
 function scrollToCurrent() {
   nextTick(() => {
@@ -371,6 +452,8 @@ async function loadPlan() {
 
 async function reloadAfterSession() {
   sessionRecorded.value = new Set()
+  droppedIndices.value = new Set()
+  dropNotice.value = null
   await loadPlan()
 }
 
@@ -386,10 +469,13 @@ onBeforeUnmount(() => {
 
 watch(() => [props.courseCode, props.voiceId], () => {
   sessionRecorded.value = new Set()
+  droppedIndices.value = new Set()
+  dropNotice.value = null
   loadPlan()
 }, { immediate: true })
 
 onUnmounted(() => {
+  if (dropNoticeTimer) clearTimeout(dropNoticeTimer)
   if (recorder.isRecording.value) recorder.stop()
   if (uploadQueue.pendingCount.value === 0) uploadQueue.resetQueue()
 })
@@ -473,8 +559,41 @@ kbd {
 .resume-note.all-done { color: var(--color-emerald, #06ffa5); }
 .mic-error { color: var(--color-film-red, #e63946); font-size: 0.85rem; margin-top: 0.75rem; }
 
+.dropped-list { text-align: left; margin: 1.25rem 0; }
+.dropped-list-title { font-size: 0.85rem; color: var(--color-tungsten, #ffa630); margin: 0 0 0.5rem; }
+.dropped-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.dropped-item {
+  display: flex; align-items: center; gap: 0.75rem; justify-content: space-between;
+  background: var(--color-void, #0f172a); border: 1px solid var(--color-graphite, #475569);
+  border-radius: 8px; padding: 0.6rem 0.8rem;
+}
+.dropped-text { font-size: 0.9rem; color: var(--color-paper, #f7f7f2); }
+.dropped-redo-btn {
+  flex-shrink: 0; font-family: 'Josefin Sans', sans-serif; font-size: 0.8rem; font-weight: 600;
+  color: var(--color-void, #0f172a); background: var(--color-tungsten, #ffa630);
+  border: none; border-radius: 6px; padding: 0.45rem 0.8rem; cursor: pointer; min-height: 36px;
+}
+
 /* Recording stage */
 .recording-stage { display: flex; flex-direction: column; gap: 0.85rem; }
+
+/* Silent-take toast: immediate, non-blocking, redo right there */
+.drop-toast {
+  display: flex; align-items: center; gap: 0.6rem;
+  background: var(--color-shadow, #1e293b);
+  border: 1px solid var(--color-tungsten, #ffa630);
+  border-radius: 10px; padding: 0.7rem 0.9rem;
+}
+.drop-toast-text { flex: 1; font-size: 0.85rem; color: var(--color-paper, #f7f7f2); }
+.drop-toast-action {
+  font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem; font-weight: 600;
+  color: var(--color-void, #0f172a); background: var(--color-tungsten, #ffa630);
+  border: none; border-radius: 6px; padding: 0.5rem 0.9rem; cursor: pointer; min-height: 36px;
+}
+.drop-toast-dismiss {
+  font-size: 0.9rem; color: var(--color-paper-dim, #c1c1bb); background: transparent;
+  border: none; cursor: pointer; padding: 0.3rem 0.5rem; min-height: 36px;
+}
 
 .lt-topbar { display: flex; align-items: center; gap: 0.75rem; }
 .meter {
@@ -505,9 +624,17 @@ kbd {
 .cue-text { font-size: 1.05rem; line-height: 1.5; color: var(--color-paper-dim, #c1c1bb); }
 .cue-gloss { display: block; font-size: 0.8rem; color: var(--color-paper-dim, #c1c1bb); opacity: 0.7; margin-top: 0.15rem; font-style: italic; }
 .cue-tick { color: var(--color-emerald, #06ffa5); margin-left: 0.4rem; }
+.cue-drop-marker {
+  display: block; margin-top: 0.3rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+  color: var(--color-tungsten, #ffa630); background: transparent;
+  border: 1px solid var(--color-tungsten, #ffa630); border-radius: 6px;
+  padding: 0.2rem 0.5rem; cursor: pointer;
+}
 
 .cue-line.future .cue-text { opacity: 0.55; }
 .cue-line.done { opacity: 0.45; }
+.cue-line.dropped { opacity: 1; box-shadow: inset 0 0 0 1px var(--color-tungsten, #ffa630); }
+.cue-line.dropped .cue-text { opacity: 1; }
 .cue-line.current {
   background: var(--color-shadow, #1e293b);
   box-shadow: inset 0 0 0 2px var(--color-emerald, #06ffa5);
@@ -561,7 +688,8 @@ kbd {
 :root[data-theme="light"] .meter,
 :root[data-theme="light"] .btn-ghost,
 :root[data-theme="light"] .btn-finish,
-:root[data-theme="light"] .ctl-again {
+:root[data-theme="light"] .ctl-again,
+:root[data-theme="light"] .dropped-item {
   border-color: var(--line);
 }
 :root[data-theme="light"] .scene-head {
