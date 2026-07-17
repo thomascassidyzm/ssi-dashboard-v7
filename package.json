@@ -16,7 +16,8 @@
     "course-builder": "NODE_OPTIONS=\"--max-old-space-size=8192\" node services/course-builder-api.cjs",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "test:e2e:pod-recording": "playwright test --config=e2e/pod-recording/playwright.config.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.67.0",
@@ -46,6 +47,7 @@
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.1",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitest/ui": "^4.0.7",
     "autoprefixer": "^10.4.21",
