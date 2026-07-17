@@ -29,17 +29,24 @@ export const podThinkingMeta = {
     badge: 'IN DISCUSSION'
   },
   'pod05-english-canonical': {
-    title: 'Pod 0.5 — The First Real Conversation (English canonical) — DRAFT',
-    description: "DRAFT canon built from Aran's raw dialogue, pending founder placement ruling (pod-0 extension at C=8 vs pod-0.5 at C=12). Do not seed from this file yet.",
+    title: 'Pod 0.5 — The First Real Conversation (English canonical)',
+    description: "Canonical pod-0.5, built verbatim from Aran's raw dialogue. Founder ruling 2026-07-16: placed as its own pod at C=12 and seeded (27 rows, 7 scenes). Translations/audio not yet generated.",
     date: '2026-07-16',
-    status: 'DRAFT — pending founder placement ruling',
-    badge: 'IN DISCUSSION'
+    status: 'CANONICAL — seeded 2026-07-16',
+    badge: 'LIVE'
   },
   'pod05-placement-analysis-2026-07-16': {
     title: 'Pod 0.5 — placement analysis (C=8 vs C=12)',
-    description: 'Evidence pack for the founder’s placement ruling on Aran’s "first real conversation" dialogue — overlaps, menu-lines, placeholders.',
+    description: 'Evidence pack for the founder’s placement ruling on Aran’s "first real conversation" dialogue — overlaps, menu-lines, placeholders. Ruling landed 2026-07-16: pod-0.5 at C=12, seeded.',
     date: '2026-07-16',
-    status: 'Evidence pack — awaiting ruling',
+    status: 'Executed — ruling landed, pod-0.5 seeded',
+    badge: 'LIVE'
+  },
+  'pod05-texture-scorecard-2026-07-17': {
+    title: 'Pod 0.5 — texture scorecard (the rubric applied to itself)',
+    description: 'The Realness Rubric run on pod-0.5 scene by scene: 11 clean passes + 1 conditional, where canonicalisation sanded texture, and the runnable acceptance gate proposed for future pod generation.',
+    date: '2026-07-17',
+    status: 'Proposed acceptance gate — for the pod-1 re-sourcing discussion',
     badge: 'IN DISCUSSION'
   },
   'pod05-aran-raw-2026-07-16': {
