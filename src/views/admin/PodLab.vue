@@ -614,24 +614,49 @@ const ladderRungs = computed(() => {
   const winKnown = new Map()
   for (const w of s.window_known_map || []) winKnown.set(`${w.start}-${w.end}`, w.known)
 
+  // ── graceful audio fallback (founder ruling 2026-07-17) ──────────────────
+  // A missing render at one seam granularity must never leave a dead play
+  // control anywhere in the ladder. Resolution order per chunk, most-exact
+  // first: (a) an exact seam-span SLICE of the group's whole-sentence take,
+  // when the take exists and every atom in the span carries ms timings;
+  // (b) butted per-atom clips, when at least one exists; (c) the group's
+  // whole-sentence take/Take-G played in full — audibly coarser than the
+  // requested span, but never silently nothing. A step with NOTHING
+  // playable at any tier gets hasAudio:false so the UI disables its control
+  // instead of rendering a button that does nothing.
+  const resolveChunkClips = (us, takeg, wholeClip) => {
+    const sliced = takeg && us.every((a) => a.target_start_ms != null && a.target_end_ms != null)
+    if (sliced) {
+      return {
+        clips: [{ id: takeg, startMs: us[0].target_start_ms, endMs: us[us.length - 1].target_end_ms }],
+        approx: false,
+      }
+    }
+    const atomClips = us.map((a) => a.targetClipId)
+    if (atomClips.some(Boolean)) return { clips: atomClips, approx: us.length > 1 }
+    if (wholeClip) return { clips: [wholeClip], approx: true }
+    return { clips: [], approx: false }
+  }
   // sub-sentence chunk: a contiguous ms SLICE of the group's Take G render
-  // (gaps preserved); butted unit clips only where Take G is missing
+  // (gaps preserved); butted unit clips, then the whole sentence, when finer
+  // audio doesn't exist yet at this seam
   const chunkStep = (g, span, gi) => {
     const us = g.slice(span.start, span.end + 1)
     const takeg = takegIds[gi]
-    const sliced = takeg && us.every((a) => a.target_start_ms != null && a.target_end_ms != null)
+    const wholeClip = takeg || takes[gi] || (single ? s.target_audio_id : null)
+    const { clips, approx } = resolveChunkClips(us, takeg, wholeClip)
     return {
       kind: 'chunk',
       text: us.map((a) => a.targetSurface).join(' '),
-      clips: sliced
-        ? [{ id: takeg, startMs: us[0].target_start_ms, endMs: us[us.length - 1].target_end_ms }]
-        : us.map((a) => a.targetClipId),
-      approx: !sliced && us.length > 1,
+      clips,
+      approx,
+      hasAudio: clips.some(Boolean),
       rate: 1,
     }
   }
   // chunk's known: the REAL fine-known clip for the unit gloss / authored
-  // window translation; legacy "means X" butt only where it's missing
+  // window translation; legacy "means X" butt, then the whole sentence known,
+  // when neither is missing
   const knownStep = (g, span, gi) => {
     const us = g.slice(span.start, span.end + 1)
     const text =
@@ -640,11 +665,15 @@ const ladderRungs = computed(() => {
         : winKnown.get(`${offsets[gi] + span.start}-${offsets[gi] + span.end}`) ||
           us.map((a) => a.gloss).filter(Boolean).join(' ')
     const real = fineKnownMap.value.get(normForAudio(text))
+    const wholeKnown = knownTakes[gi] || (single ? s.known_audio_id : null)
+    const atomClips = us.map((a) => a.meansGlossClipId)
+    const clips = real ? [real] : atomClips.some(Boolean) ? atomClips : wholeKnown ? [wholeKnown] : []
     return {
       kind: 'gloss',
       text,
-      clips: real ? [real] : us.map((a) => a.meansGlossClipId),
+      clips,
       approx: !real,
+      hasAudio: clips.some(Boolean),
       rate: 1,
     }
   }
@@ -655,12 +684,14 @@ const ladderRungs = computed(() => {
     const take = takes[gi] || (single ? s.target_audio_id : null)
     // no natural take (the glue-merged turns): the group's full Take G is the
     // real, correctly-voiced render of exactly this sentence — gaps and all
-    const clips = take ? clipList(take) : takegIds[gi] ? [takegIds[gi]] : g.map((a) => a.targetClipId)
+    const atomClips = g.map((a) => a.targetClipId)
+    const clips = take ? clipList(take) : takegIds[gi] ? [takegIds[gi]] : atomClips
     return {
       kind: 'group',
       text: g.map((a) => a.targetSurface).join(' '),
       clips,
       approx: !take && !takegIds[gi],
+      hasAudio: clips.some(Boolean),
       rate: 1,
     }
   }
@@ -679,6 +710,7 @@ const ladderRungs = computed(() => {
       text: sentText || joinText,
       clips,
       approx: !sentReal && !take && !joinReal,
+      hasAudio: clips.some(Boolean),
       rate: 1,
     }
   }
@@ -691,11 +723,13 @@ const ladderRungs = computed(() => {
       const t = tks[i] || takegIds[span.start + i]
       return t ? clipList(t) : g.map((a) => a.targetClipId)
     })
+    const clips = perGroup.flat()
     return {
       kind: 'group',
       text: gs.map((g) => g.map((a) => a.targetSurface).join(' ')).join(' '),
-      clips: perGroup.flat(),
+      clips,
       approx: true, // butted takes until a conjoined render exists — by design
+      hasAudio: clips.some(Boolean),
       rate: 1,
     }
   }
@@ -710,11 +744,13 @@ const ladderRungs = computed(() => {
       const real = fineKnownMap.value.get(normForAudio(g.map((a) => a.gloss).filter(Boolean).join(' ')))
       return real ? [real] : g.map((a) => a.meansGlossClipId)
     })
+    const clips = perGroup.flat()
     return {
       kind: 'gloss',
       text: gs.map((g, i) => knownTexts[span.start + i] || g.map((a) => a.gloss).filter(Boolean).join(' ')).join(' '),
-      clips: perGroup.flat(),
+      clips,
       approx: true,
+      hasAudio: clips.some(Boolean),
       rate: 1,
     }
   }
@@ -723,6 +759,7 @@ const ladderRungs = computed(() => {
     text: s.target_text,
     clips: [s.target_audio_id],
     approx: false,
+    hasAudio: !!s.target_audio_id,
     rate,
   })
   const wholeTurnKnown = () => ({
@@ -730,6 +767,7 @@ const ladderRungs = computed(() => {
     text: s.known_text || '',
     clips: [s.known_audio_id],
     approx: !s.known_audio_id,
+    hasAudio: !!s.known_audio_id,
     rate: 1,
   })
 
@@ -1333,16 +1371,19 @@ loadLiveConfig()
                   STEP_CLS[st.kind],
                   {
                     now: playingStepKey === st.key,
-                    approx: st.approx,
-                    missing: !usingFine && !st.clips.some(Boolean),
+                    approx: st.approx && st.hasAudio,
+                    missing: !st.hasAudio,
                   },
                 ]"
+                :disabled="!st.hasAudio"
                 :title="
-                  st.kind +
-                  (st.rate === 2 ? ' · 2×' : '') +
-                  (st.approx ? ' (approximated: concatenated clips)' : '') +
-                  ' — ' +
-                  st.text
+                  !st.hasAudio
+                    ? 'no audio yet at this granularity — ' + st.text
+                    : st.kind +
+                      (st.rate === 2 ? ' · 2×' : '') +
+                      (st.approx ? ' (fallback: coarser/concatenated clips)' : '') +
+                      ' — ' +
+                      st.text
                 "
                 @click="playShapeSteps([st])"
               >
@@ -1820,6 +1861,7 @@ code {
 .shapechip.missing {
   opacity: 0.35;
   text-decoration: line-through;
+  cursor: not-allowed;
 }
 .shapechip .x2 {
   font-size: 10px;
