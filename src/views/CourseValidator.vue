@@ -684,6 +684,11 @@ async function runLUTCheck() {
       { method: 'POST' }
     )
 
+    if (!response.ok) {
+      const error = await response.json()
+      throw new Error(error.error || `HTTP ${response.status}`)
+    }
+
     const result = await response.json()
     console.log('[LUT Check] Result:', result)
     lutCheckResult.value = result
