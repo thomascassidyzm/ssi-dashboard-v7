@@ -24,6 +24,10 @@ const {
   canonicalSpeakerName, extractGenderMarker, inferGenderFromName,
 } = require('./pod-sync.cjs')
 const { parseNameMap } = require('../services/pod-dialogue-generator.cjs')
+// Ground-truth gender check: read the gendered speech in a speaker's own lines
+// (Thai ครับ/ค่ะ, gendered pronouns/verbs) so the voice matches what it utters.
+// Shared with tools/audio-gender-lint.cjs so both judge gender identically.
+const { detectGenderFromTexts } = require('./gendered-speech.cjs')
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
@@ -53,19 +57,22 @@ function countCollisions(adj, voiceOf) {
 async function recolourPod(pod, targetPool, knownPool, opts) {
   const { data: sentences, error } = await supabase
     .from('listening_pod_sentences')
-    .select('id, scene_number, global_order, speaker, target_audio_id, known_audio_id')
+    .select('id, scene_number, global_order, speaker, target_text, target_audio_id, known_audio_id')
     .eq('pod_id', pod.id).order('global_order')
   if (error) throw new Error(`load sentences ${pod.id}: ${error.message}`)
   if (!sentences.length) return { pod_id: pod.id, skipped: 'no sentences' }
 
   // Group raw speakers by canonical name; build scenes as canonical-speaker lists.
   const variantsByCanon = new Map()
+  const linesByCanon = new Map()  // canon → [target_text,...] (for gender detection)
   const scenesMap = new Map()  // scene_number → [canon,...]
   for (const s of sentences) {
     const canon = canonicalSpeakerName(s.speaker)
     if (!canon) continue
     if (!variantsByCanon.has(canon)) variantsByCanon.set(canon, new Set())
     variantsByCanon.get(canon).add(s.speaker)
+    if (!linesByCanon.has(canon)) linesByCanon.set(canon, [])
+    linesByCanon.get(canon).push(s.target_text || '')
     const sc = s.scene_number == null ? 0 : s.scene_number
     if (!scenesMap.has(sc)) scenesMap.set(sc, [])
     scenesMap.get(sc).push(canon)
@@ -80,9 +87,20 @@ async function recolourPod(pod, targetPool, knownPool, opts) {
   // local one — fall back through the pod's name map to the source name.
   const nameMap = parseNameMap(pod.metadata && pod.metadata.consistency_ledger)
   const sourceOfLocal = new Map(nameMap.map(e => [e.local.toLowerCase(), e.source]))
+  // Resolve a speaker's gender, most-authoritative signal first:
+  //   1. an explicit (F)/(M)/(N) marker on any variant (authorial intent),
+  //   2. the gendered speech in the speaker's OWN lines — ground truth of what
+  //      the voice will actually utter; this is what stops a male voice landing
+  //      on Thai ค่ะ lines even when the label ("Waiter") gives no clue,
+  //   3. the name heuristic (canonical, then the ledger's source name).
+  const langCode = (opts && opts.targetLang) || null
   const genderOf = (canon) => {
-    const g = genderForCanon([...(variantsByCanon.get(canon) || [canon])])
-    if (g !== 'n') return g
+    const variants = [...(variantsByCanon.get(canon) || [canon])]
+    for (const v of variants) { const m = extractGenderMarker(v); if (m) return m }
+    const textG = detectGenderFromTexts(linesByCanon.get(canon) || [], langCode)
+    if (textG) return textG
+    const byName = inferGenderFromName(canonicalSpeakerName(canon))
+    if (byName) return byName
     const source = sourceOfLocal.get(canon.toLowerCase())
     return (source && inferGenderFromName(canonicalSpeakerName(source))) || 'n'
   }
@@ -205,7 +223,7 @@ async function main() {
 
   let totBefore = 0, totAfter = 0, totReassign = 0
   for (const pod of pods) {
-    const r = await recolourPod(pod, targetPool, knownPool, { verbose })
+    const r = await recolourPod(pod, targetPool, knownPool, { verbose, targetLang })
     if (r.skipped) { console.log(`\n   ${pod.id}: skipped (${r.skipped})`); continue }
     totBefore += r.before.target + r.before.known
     totAfter += r.after.target + r.after.known
