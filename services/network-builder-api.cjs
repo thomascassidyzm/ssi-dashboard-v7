@@ -4,13 +4,16 @@
  * Supports multiple networks via ?network=<id> query param
  */
 
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { NetworkBuilder } = require('@ssi/core/network');
+const { requireDashboardUserMiddleware } = require('./shared/dashboard-auth.cjs');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use('/api/network-builder', requireDashboardUserMiddleware);
 
 // Multiple networks keyed by networkId
 const networks = {};
