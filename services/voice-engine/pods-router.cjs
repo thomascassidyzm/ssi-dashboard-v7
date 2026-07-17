@@ -219,6 +219,17 @@ module.exports = function createPodsCastRouter({
     if (!Array.isArray(people) || people.length === 0) {
       return res.status(400).json({ error: 'Body must be { people: [{ name, gender?, email?, guide? }] } with at least one person' })
     }
+    // Founder ruling (Tom + Aran, 2026-07-17): every pod is cast with exactly
+    // two human voices — one male, one female — regardless of how many
+    // characters a scenario has. Forced same-voice reuse across characters is
+    // the intended outcome, not a shortfall to grow the cast out of.
+    if (people.length !== 2) {
+      return res.status(400).json({ error: 'Pods are cast with exactly two voices — one male, one female. Send exactly two people.' })
+    }
+    const genders = people.map(p => String((p && p.gender) || '').trim().toLowerCase())
+    if (!genders.includes('f') || !genders.includes('m')) {
+      return res.status(400).json({ error: 'Both voices need a gender — one male, one female — so every character has a clear voice.' })
+    }
     try {
       const db = getDb()
       const [{ found, voiceConfig }, pods] = await Promise.all([
