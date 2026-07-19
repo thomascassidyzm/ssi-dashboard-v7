@@ -11,6 +11,7 @@ const { Router } = require('express');
 const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { claudeConfigExport } = require('../../shared/claude-config.cjs');
 const { getGoldenSeedCount, getLanguageName } = require('../lib/language-config.cjs');
 const { spawnParallelQAAgent } = require('../lib/agent-spawner.cjs');
 const { advancePipeline, setPipelineStage } = require('../lib/pipeline.cjs');
@@ -406,7 +407,7 @@ module.exports = function qaRoutes(ctx) {
       fs.writeFileSync(tmpFile, prompt);
 
       const projectDir = ctx.PROJECT_DIR;
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && ${claudeConfigExport()} && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       console.log(`[QA-STRICT] Spawning parallel golden QA coordinator for ${courseCode} seeds 11-50 (8 sub-agents) in ${effectiveTerminal}`);
@@ -631,7 +632,7 @@ return "spawned"`;
       fs.writeFileSync(tmpFile, prompt);
 
       const projectDir = ctx.PROJECT_DIR;
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && ${claudeConfigExport()} && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
 
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 

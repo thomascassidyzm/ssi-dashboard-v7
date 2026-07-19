@@ -58,6 +58,7 @@ require('dotenv').config({ path: path.join(__dirname, '..', '.env') })
 const fs = require('fs')
 const { spawn } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
+const { CLAUDE_CONFIG_DIR } = require('./shared/claude-config.cjs')
 const { shouldSkipCourse, parseCourseCode, getConnectorForLearnerLang } = require('./pod-explainer-generator.cjs')
 const { resolveExplainerLanguage } = require('../tools/pod-voice-coverage.cjs')
 
@@ -258,7 +259,7 @@ function runProcess(cmd, args, { course, stage }) {
   return new Promise((resolve, reject) => {
     const child = spawn(cmd, args, {
       cwd: REPO_ROOT,
-      env: { ...process.env, CLAUDECODE: '' },
+      env: { ...process.env, CLAUDECODE: '', CLAUDE_CONFIG_DIR },  // pin claude@ account for nested CLI
       stdio: ['ignore', 'pipe', 'pipe'],
     })
     const pipe = (stream, isErr) => {

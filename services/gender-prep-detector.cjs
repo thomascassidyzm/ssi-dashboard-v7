@@ -18,6 +18,7 @@ const crypto = require('crypto')
 const { createClient } = require('@supabase/supabase-js')
 const voiceGender = require('./voice-gender-map.cjs')
 const { HAIKU_MODEL } = require('./shared/claude-cli.cjs')
+const { claudeEnv } = require('./shared/claude-config.cjs')
 require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') })
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
@@ -92,7 +93,7 @@ If you genuinely cannot tell from the samples (e.g. no first-person phrases, or 
 
 function callHaiku(prompt) {
   return new Promise((resolve, reject) => {
-    const env = { ...process.env, ANTHROPIC_API_KEY: '' }
+    const env = claudeEnv({ ...process.env, ANTHROPIC_API_KEY: '' })
     delete env.CLAUDECODE  // avoid nested-CLI confusion
     const proc = spawn('claude', ['--print', '--model', HAIKU_MODEL], { env })
     let stdout = '', stderr = ''

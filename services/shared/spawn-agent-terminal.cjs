@@ -15,6 +15,7 @@ const path = require('path');
 const { spawn, exec } = require('child_process');
 const { promisify } = require('util');
 const execAsync = promisify(exec);
+const { claudeConfigExport } = require('./claude-config.cjs');
 
 const DEFAULTS = {
   model: 'sonnet',
@@ -57,7 +58,7 @@ async function spawnClaudeTerminalAgent(prompt, agentId = 1, options = {}) {
     `"$(cat ${tmpPromptFile})"`
   ].filter(Boolean).join(' ');
 
-  const claudeCmd = `cd "${workingDir}" && claude ${claudeArgs}`;
+  const claudeCmd = `cd "${workingDir}" && ${claudeConfigExport()} && claude ${claudeArgs}`;
 
   // AppleScript to open Terminal.app and run claude
   const appleScript = `

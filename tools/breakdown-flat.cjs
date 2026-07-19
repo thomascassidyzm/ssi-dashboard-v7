@@ -52,7 +52,7 @@ const cleanSurface = (s) => String(s || '').replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N
 
 function claude(prompt) {
   return new Promise((res, rej) => {
-    const e = { ...process.env }; delete e.CLAUDECODE
+    const e = require('../services/shared/claude-config.cjs').claudeEnv(process.env); delete e.CLAUDECODE
     execFile(process.env.HOME + '/.local/bin/claude', ['--print', '--model', MODEL, prompt], { env: e, maxBuffer: 1 << 22 },
       (err, o) => err ? rej(err) : res(o.trim()))
   })

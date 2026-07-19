@@ -29,6 +29,7 @@ const { spawn } = require('child_process')
 const fs = require('fs')
 const path = require('path')
 const { HAIKU_MODEL } = require('./shared/claude-cli.cjs')
+const { claudeEnv } = require('./shared/claude-config.cjs')
 
 const stripWs = (s) => (s || '').replace(/\s+/g, '')
 
@@ -74,7 +75,7 @@ function runHaikuBatch(prompt) {
     const outFile = path.join(tmp, `${id}.json`)
     fs.writeFileSync(briefFile, prompt, 'utf8')
     const cmd = `unset CLAUDECODE && cat '${briefFile}' | claude --print --model ${HAIKU_MODEL} > '${outFile}' 2>&1`
-    const env = { ...process.env }; delete env.CLAUDECODE
+    const env = claudeEnv(process.env); delete env.CLAUDECODE
     const proc = spawn('bash', ['-c', cmd], { cwd: path.resolve(__dirname, '..'), stdio: 'pipe', env })
     proc.on('close', (code) => {
       let raw = ''

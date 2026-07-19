@@ -11,6 +11,7 @@
  */
 
 const { execFile } = require('child_process')
+const { CLAUDE_CONFIG_DIR } = require('./claude-config.cjs')
 
 // The installed `claude` CLI's own alias resolution for 'haiku' can lag
 // behind Anthropic's model retirements (seen 2026-07: CLI 2.0.8 resolved
@@ -47,7 +48,8 @@ function claudeChat(prompt, options = {}) {
       // thinking tokens (~90s/call) before a ~450-token answer — a 15×
       // tax for zero quality gain on these deterministic tasks. With it:
       // ~8s/call, identical output. (Measured 2026-06-08: 122s → 8s.)
-      env: { ...process.env, CLAUDECODE: '', MAX_THINKING_TOKENS: '0' }
+      // CLAUDE_CONFIG_DIR pins the claude@ account (see claude-config.cjs).
+      env: { ...process.env, CLAUDE_CONFIG_DIR, CLAUDECODE: '', MAX_THINKING_TOKENS: '0' }
     }, (error, stdout, stderr) => {
       if (error) {
         // Surface the actual failure shape — execFile's error.message is

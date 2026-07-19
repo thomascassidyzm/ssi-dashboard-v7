@@ -9,6 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const { getLanguageName, getGoldenSeedCount, getLangFamily, PREPOSITIONS } = require('./language-config.cjs');
 const { classifySeedPattern, formatDecompositionPatterns } = require('./validation.cjs');
+const { claudeConfigExport } = require('../../shared/claude-config.cjs');
 
 const MAX_CONCURRENT_AGENTS = parseInt(process.env.MAX_CONCURRENT_AGENTS) || 12;
 
@@ -22,6 +23,10 @@ function spawnInTerminal(ctx, cmd, label, courseCode, terminal) {
   if (running >= MAX_CONCURRENT_AGENTS) {
     throw new Error(`Agent cap reached: ${running}/${MAX_CONCURRENT_AGENTS} agents running. Not spawning "${label}" for ${courseCode}.`);
   }
+  // Pin the claude@ account for every spawned CLI. Injected into the command
+  // string (not just env) because iTerm/Terminal write-text launches a fresh
+  // login shell that does not inherit this process's env.
+  cmd = `${claudeConfigExport()} && ${cmd}`;
   const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : (terminal || ctx.SPAWN_MODE || 'iTerm2');
 
   if (effectiveTerminal === 'headless') {

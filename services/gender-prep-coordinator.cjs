@@ -20,6 +20,7 @@ const { createClient } = require('@supabase/supabase-js')
 const fs = require('fs')
 const path = require('path')
 const { HAIKU_MODEL } = require('./shared/claude-cli.cjs')
+const { claudeEnv, claudeConfigExport } = require('./shared/claude-config.cjs')
 require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') })
 
 // Terminal spawning mode - set via env or default to headless
@@ -187,12 +188,14 @@ function runHaikuBatch(brief, batchNum, totalBatches) {
     // Build the command that Claude will run
     // Use stdin instead of command-line args to avoid length limits
     // Explicitly unset CLAUDECODE to allow nested Claude CLI calls
-    const claudeCmd = `unset CLAUDECODE ANTHROPIC_API_KEY && cat '${briefFile}' | claude --print --model ${HAIKU_MODEL} > '${outputFile}' 2>&1 && touch '${doneFile}'`
+    // Pin the claude@ account (osascript/iTerm path runs in a fresh login
+    // shell, so the export must live inside the command string, not just env).
+    const claudeCmd = `${claudeConfigExport()} && unset CLAUDECODE ANTHROPIC_API_KEY && cat '${briefFile}' | claude --print --model ${HAIKU_MODEL} > '${outputFile}' 2>&1 && touch '${doneFile}'`
 
     if (TERMINAL_MODE === 'headless') {
       // Headless mode: direct spawn (original behavior)
       // Unset CLAUDECODE to allow nested Claude CLI calls
-      const env = { ...process.env, HOME: process.env.HOME }
+      const env = claudeEnv({ ...process.env, HOME: process.env.HOME })
       delete env.CLAUDECODE
       delete env.ANTHROPIC_API_KEY
 

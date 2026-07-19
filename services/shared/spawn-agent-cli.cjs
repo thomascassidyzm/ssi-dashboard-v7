@@ -23,6 +23,7 @@ const path = require('path');
 const { spawn, exec } = require('child_process');
 const { promisify } = require('util');
 const execAsync = promisify(exec);
+const { claudeConfigExport } = require('./claude-config.cjs');
 
 // Default configuration
 const DEFAULTS = {
@@ -79,7 +80,9 @@ async function spawnClaudeCliAgent(prompt, agentId = 1, options = {}) {
     `"$(cat ${tmpPromptFile})"`
   ].filter(Boolean).join(' ');
 
-  const claudeCmd = `cd "${workingDir}" && claude ${claudeArgs}`;
+  // Pin the claude@ account inside the command string — iTerm/Terminal
+  // write-text runs a fresh login shell that won't inherit our env.
+  const claudeCmd = `cd "${workingDir}" && ${claudeConfigExport()} && claude ${claudeArgs}`;
 
   // AppleScript to open iTerm2 and run claude
   const appleScript = `

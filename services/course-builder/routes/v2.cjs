@@ -12,6 +12,7 @@ const { Router } = require('express');
 const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { claudeConfigExport } = require('../../shared/claude-config.cjs');
 
 const { isChinese, getGoldenSeedCount } = require('../lib/language-config.cjs');
 const { normalizeForZUT, normalizeForStorage, normalizeForContainment, extractVocab } = require('../lib/text-normalization.cjs');
@@ -1100,7 +1101,7 @@ module.exports = function(ctx) {
       fs.writeFileSync(tmpFile, brief);
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && ${claudeConfigExport()} && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.config.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       if (effectiveTerminal === 'headless') {
@@ -1164,7 +1165,7 @@ module.exports = function(ctx) {
       fs.writeFileSync(tmpFile, brief);
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && ${claudeConfigExport()} && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.config.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       if (effectiveTerminal === 'headless') {
@@ -1320,7 +1321,7 @@ module.exports = function(ctx) {
       fs.writeFileSync(tmpFile, brief);
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
-      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const claudeCmd = `cd "${projectDir}" && unset CLAUDECODE && ${claudeConfigExport()} && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       const effectiveTerminal = ctx.config.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
       if (effectiveTerminal === 'headless') {
