@@ -45,11 +45,12 @@ function saveProgress(course, progress) {
 }
 
 // ---------- data ----------
-async function fetchAll(table, columns, order) {
+async function fetchAll(table, columns, order, filter) {
   const rows = [];
   const PAGE = 1000;
   for (let from = 0; ; from += PAGE) {
     let q = supabase.from(table).select(columns).eq('course_code', COURSE).range(from, from + PAGE - 1);
+    if (filter) q = filter(q);
     for (const [col, opts] of order) q = q.order(col, opts);
     const { data, error } = await q;
     if (error) throw new Error(`${table}: ${error.message}`);
@@ -67,7 +68,7 @@ async function loadCourse(force) {
     fetchAll('course_legos', 'seed_number, lego_index, known_text, target_text', [['seed_number', {}], ['lego_index', {}]]),
     fetchAll('course_practice_phrases', 'id, seed_number, lego_index, position, known_text, target_text, phrase_role', [
       ['seed_number', {}], ['lego_index', {}], ['position', {}],
-    ]),
+    ], (q) => q.neq('phrase_role', 'component')),
   ]);
   cache = { course: COURSE, seeds, legos, phrases };
   return cache;
