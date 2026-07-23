@@ -291,6 +291,68 @@ async function measureIntegratedLoudness(inputPath, preFilter) {
   return parseFloat(match.match(/(-?[\d.]+)/)[1]);
 }
 
+/**
+ * Detect an isolated click/thump transient in a clip's tail — a short burst of
+ * energy that arrives AFTER the speech has decayed (mouth click, breath pop
+ * baked into the raw TTS render). The boundary ANTI_CLICK_FADE cannot touch
+ * these: they sit tens of ms inside the file, not at the last sample
+ * (ita_for_eng "Come stai?" 2026-07-23: −9dBFS burst 70ms before EOF, speech
+ * already down at −35dBFS — audibly a click, file still ends at exact zero).
+ *
+ * Rule, on 2ms peak windows over the last tailMs, thresholds relative to the
+ * clip's own peak: the LAST run of windows above −20dB-rel-peak is a click iff
+ * it is short (≤ maxClickMs) AND separated from the audio before it by a gap
+ * of ≥ minGapMs below threshold. A genuine speech ending is long and/or
+ * contiguous with the phrase body, so it never matches.
+ *
+ * @returns {Promise<{click: boolean, trimSec?: number, peakDb?: number}>}
+ *   trimSec = safe cut point (start of the pre-click gap), for repair tools.
+ */
+async function detectTailClick(audioPath, options = {}) {
+  const { tailMs = 300, maxClickMs = 50, minGapMs = 20 } = options;
+  const { stdout } = await execAsync(
+    `ffmpeg -hide_banner -loglevel error -i "${audioPath}" -f s16le -ac 1 -ar 48000 -`,
+    { encoding: 'buffer', maxBuffer: 1 << 26 }
+  );
+  const n = Math.floor(stdout.length / 2);
+  if (n === 0) return { click: false };
+  const sample = i => stdout.readInt16LE(i * 2);
+  let peak = 0;
+  for (let i = 0; i < n; i++) { const a = Math.abs(sample(i)); if (a > peak) peak = a; }
+  if (peak === 0) return { click: false };
+
+  const winSamples = Math.round(48000 * 0.002); // 2ms windows
+  const wins = [];
+  for (let o = 0; o + winSamples <= n; o += winSamples) {
+    let m = 0;
+    for (let i = o; i < o + winSamples; i++) { const a = Math.abs(sample(i)); if (a > m) m = a; }
+    wins.push(m);
+  }
+  const loud = peak * 0.1; // −20dB rel clip peak
+  const tailWins = Math.min(wins.length, Math.round(tailMs / 2));
+  const first = wins.length - tailWins;
+
+  // Last above-threshold run in the tail, and the quiet gap before it.
+  let runEnd = -1;
+  for (let i = wins.length - 1; i >= first; i--) { if (wins[i] > loud) { runEnd = i; break; } }
+  if (runEnd === -1) return { click: false };
+  let runStart = runEnd;
+  while (runStart > 0 && wins[runStart - 1] > loud) runStart--;
+  if (runStart <= first) return { click: false }; // run reaches beyond the analysed tail = speech body
+  let gapStart = runStart;
+  while (gapStart > 0 && wins[gapStart - 1] <= loud) gapStart--;
+
+  const runMs = (runEnd - runStart + 1) * 2;
+  const gapMs = (runStart - gapStart) * 2;
+  if (runMs > maxClickMs || gapMs < minGapMs) return { click: false };
+  const clickPeak = Math.max(...wins.slice(runStart, runEnd + 1));
+  return {
+    click: true,
+    trimSec: (gapStart * winSamples) / 48000,
+    peakDb: Math.round(20 * Math.log10(clickPeak / peak) * 10) / 10
+  };
+}
+
 async function normalizeAudio(inputPath, outputPath, targetLUFS = -16.0) {
   try {
     const measured = await measureIntegratedLoudness(inputPath, PRE_COMPRESS);
@@ -692,6 +754,8 @@ module.exports = {
   checkFfmpegInstalled,
   checkLameInstalled,
   ffmpegFilterToLameMp3,
+  ANTI_CLICK_FADE,
+  detectTailClick,
   checkSoxInstalled,
   getAudioDuration,
   checkMp3Format,

@@ -4818,10 +4818,12 @@ async function spliceAudio(parentAudioBuffer, startMs, endMs, paddingMs = 20) {
     // Trim with atrim (sample-accurate) and no loudnorm: component words can be
     // shorter than loudnorm's ~400ms minimum, and the slice must keep the
     // parent's level so it matches how the word sounds inside its phrase.
+    // ANTI_CLICK_FADE: both cut points land mid-waveform in the parent, so
+    // without the 8ms boundary fades every splice starts/ends on a step.
     const startSec = actualStart / 1000
     const endSec = (actualStart + durationMs) / 1000
     await audioProcessor.ffmpegFilterToLameMp3(parentPath, splicedPath, {
-      filterChain: `atrim=start=${startSec}:end=${endSec},asetpts=PTS-STARTPTS`
+      filterChain: `atrim=start=${startSec}:end=${endSec},asetpts=PTS-STARTPTS,${audioProcessor.ANTI_CLICK_FADE}`
     })
 
     // Get actual duration from the spliced file

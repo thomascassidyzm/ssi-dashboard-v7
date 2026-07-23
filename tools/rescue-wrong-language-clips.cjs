@@ -41,6 +41,7 @@ const path = require('path')
 const { execFile } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
+const audioProcessor = require('../services/audio-processor.cjs')
 
 const COURSE = process.argv[2]
 const flagsIdx = process.argv.indexOf('--flags')
@@ -208,10 +209,20 @@ function sentenceTexts(row) {
         })
         newId = res.id
         restoreOnFail = null // a fresh row exists — never resurrect the old one past here
-        if (!PHONO_GATE) break
         const { data: rowNow } = await supabase.from('course_audio').select('s3_key').eq('id', newId).single()
         const mp3 = path.join(tmpDir, `${newId}-${attempt}.mp3`)
         await download(S3_BASE + rowNow.s3_key, mp3)
+        // Tail-click gate: a mouth-click/pop baked into the raw render after
+        // the speech decays (2026-07-23 first run shipped one on 'Come stai?'
+        // — −9dBFS burst 70ms before EOF). The mastering boundary fade can't
+        // reach it; a re-roll is the only clean fix.
+        const tail = await audioProcessor.detectTailClick(mp3).catch(() => ({ click: false }))
+        if (tail.click) {
+          verdict = 'tail-click-fail'
+          console.log(`S${j.row.global_order} ${j.slot}: attempt ${attempt} tail click (${tail.peakDb}dB rel peak) → re-roll`)
+          continue
+        }
+        if (!PHONO_GATE) { verdict = 'unchecked'; break }
         detected = await detectClipLang(mp3)
         if (detected == null) { verdict = 'unchecked'; break }
         if (!SUSPECT.has(detected)) { verdict = 'pass'; break }
@@ -232,7 +243,7 @@ function sentenceTexts(row) {
         if (upErr) throw new Error(`relink sentence[${j.slot}]: ${upErr.message}`)
         j.row.sentence_audio_ids = sids // later jobs on the same row build on this
       }
-      if (verdict === 'phonology-fail') {
+      if (verdict === 'phonology-fail' || verdict === 'tail-click-fail') {
         gateFailed++
         console.log(`S${j.row.global_order} ${j.slot}: GATE FAIL after ${GATE_ATTEMPTS} takes (last '${detected}') — linked anyway (best effort), FLAG FOR EARS: "${j.text}" → ${newId}`)
       } else {
@@ -243,7 +254,9 @@ function sentenceTexts(row) {
       failed++
       console.log(`S${j.row.global_order} ${j.slot}: ✗ ${e.message.slice(0, 160)}`)
       if (restoreOnFail) {
-        const { error: resErr } = await supabase.from('course_audio').insert(restoreOnFail)
+        const restoreRow = { ...restoreOnFail }
+        delete restoreRow.text_stripped // GENERATED ALWAYS — insert rejects an explicit value
+        const { error: resErr } = await supabase.from('course_audio').insert(restoreRow)
         console.log(resErr
           ? `S${j.row.global_order} ${j.slot}: RESTORE FAILED for ${j.badId} — DANGLING LINK, fix by hand: ${resErr.message}`
           : `S${j.row.global_order} ${j.slot}: old row ${j.badId} restored (S3 object untouched)`)
