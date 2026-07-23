@@ -219,3 +219,30 @@ of a cent; a bounded 2-way semaphore keeps detection off the render critical pat
 **Search width:** visible-options
 **Decided by:** agent (executing Tom's approved backlog brief, which assumed the gate already
 covered all xAI renders — this makes that assumption true)
+
+## 2026-07-23 — declick by DSP repair, not TTS re-roll
+
+**Move:** the regenerated ita_for_eng "Come stai?" clip's end click (a −9dBFS mouth-click
+transient baked into the raw xAI render, 70ms before EOF — the 8ms boundary fade was applied
+and can't reach it) was fixed by re-processing the STORED mastered clip: trim just before the
+click, re-fade, pad, re-encode, new id + S3 key, relink (`tools/declick-tail.cjs`). Future
+renders are protected by a tail-click gate (`detectTailClick` in audio-processor) beside the
+rescue tool's phonology gate, and the last unfaded cut path (phase8 `spliceAudio`) got the
+boundary fade.
+
+**Better:** learner hears clean audio now, verified numerically (tail RMS →10→0, detector
+clean), and the defect class is gated for every future rescue render.
+**Simpler:** one detector function shared by the gate and the repair tool; repair reuses the
+existing ffmpeg→lame pipe and the rescue tool's new-id/relink doctrine.
+**Cheaper (total):** zero TTS spend (a re-roll costs money and needs an approved plan; DSP is
+free) and no approval round-trip for the live fix.
+
+**Searched & rejected:**
+- TTS re-roll of the clip through the rescue tool — cheaper leg fails: paid render + approval
+  gate for a defect that sits entirely in 70ms of tail the DSP can cut losslessly.
+- Longer end fade (e.g. 100ms) in ANTI_CLICK_FADE — better leg fails: eats real speech decay
+  on tight clips and still misses clicks deeper than the fade window.
+- Universal trailing silenceremove in mastering — better leg fails: deletes word-final stop
+  releases (closure silence + short burst pattern-matches a click).
+**Search width:** visible-options
+**Decided by:** agent
