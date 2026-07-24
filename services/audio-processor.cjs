@@ -299,17 +299,55 @@ async function measureIntegratedLoudness(inputPath, preFilter) {
  * (ita_for_eng "Come stai?" 2026-07-23: −9dBFS burst 70ms before EOF, speech
  * already down at −35dBFS — audibly a click, file still ends at exact zero).
  *
- * Rule, on 2ms peak windows over the last tailMs, thresholds relative to the
- * clip's own peak: the LAST run of windows above −20dB-rel-peak is a click iff
- * it is short (≤ maxClickMs) AND separated from the audio before it by a gap
- * of ≥ minGapMs below threshold. A genuine speech ending is long and/or
- * contiguous with the phrase body, so it never matches.
+ * TWO rules, on 2ms peak windows over the last tailMs, thresholds relative to
+ * the clip's own peak:
  *
- * @returns {Promise<{click: boolean, trimSec?: number, peakDb?: number}>}
- *   trimSec = safe cut point (start of the pre-click gap), for repair tools.
+ * 1. "burst" — the LAST run of windows above −20dB-rel-peak is a click iff it
+ *    is short (≤ maxClickMs) AND separated from the audio before it by a gap
+ *    of ≥ minGapMs below threshold. A genuine speech ending is long and/or
+ *    contiguous with the phrase body, so it never matches.
+ *
+ * 2. "resurgence" — once the tail envelope has decayed below −34dB-rel-peak
+ *    for ≥ minGapMs, ANY later window above −26dB-rel-peak is a defect,
+ *    whatever its length. This catches the xAI-clone exhale/noise burst
+ *    (ita_for_eng "Could I see the wine list?" 2026-07-24: speech decays to
+ *    −46dBFS, then a −15dBFS broadband burst lasting ~110ms rides the last
+ *    170ms — rule 1 passed it because the burst is both longer than
+ *    maxClickMs and ragged around the −20dB threshold, so the "last run" was
+ *    a 6ms blip with a 4ms gap).
+ *
+ * 3. "rise" — after the last strong-speech window (> −12dB-rel-peak), on a
+ *    smoothed 10ms envelope, a later rise of ≥ riseDb above the running
+ *    minimum that stays BELOW −9dB-rel-peak is a defect (real speech resuming
+ *    comes back near clip peak; a breath/exhale burst does not). Catches the
+ *    louder clone exhale that never lets the envelope reach the rule-2 arm
+ *    level (ita_for_eng "I'm not sure if I'm hungry" 1bc798f1: speech ends
+ *    −8dBFS, dips only to −23dBFS, then a broadband exhale rises back to
+ *    −13dBFS for ~250ms).
+ *
+ * MODES (2026-07-24 calibration): rules 2 and 3 assume a SINGLE-UTTERANCE
+ * clip — on long-form audio with scripted internal silences ([pause] markers,
+ * ellipses) a soft resumed speech segment in the tail is indistinguishable
+ * from an exhale burst by level/shape alone (61/139 false positives on the
+ * eve [pause] era). Callers that know the clip text MUST pass
+ * mode:'longform' for such texts (see isLongformText helper); longform runs
+ * rule 1 only. All rules ignore content above −5dB-rel-peak: resumed real
+ * speech returns near clip peak, while every measured defect sat at
+ * −11…−19dB rel peak.
+ *
+ * @returns {Promise<{click: boolean, kind?: string, trimSec?: number, peakDb?: number}>}
+ *   trimSec = safe cut point (start of the pre-click quiet gap), for repair
+ *   tools. kind = 'burst' | 'resurgence'.
  */
+// True when a clip's text implies scripted internal silences (long-form pod
+// takes, explainers) — the tail can legitimately contain silence-then-speech,
+// so only rule 1 of detectTailClick is safe. Keep in sync with the doc above.
+function isLongformText(text) {
+  return /\[pause\]|…|\.\.\./.test(text || '');
+}
+
 async function detectTailClick(audioPath, options = {}) {
-  const { tailMs = 300, maxClickMs = 50, minGapMs = 20 } = options;
+  const { tailMs = 400, maxClickMs = 50, minGapMs = 20, riseDb = 8, mode = 'phrase' } = options;
   const { stdout } = await execAsync(
     `ffmpeg -hide_banner -loglevel error -i "${audioPath}" -f s16le -ac 1 -ar 48000 -`,
     { encoding: 'buffer', maxBuffer: 1 << 26 }
@@ -329,10 +367,79 @@ async function detectTailClick(audioPath, options = {}) {
     wins.push(m);
   }
   const loud = peak * 0.1; // −20dB rel clip peak
+  const quiet = peak * 0.02; // −34dB rel clip peak (resurgence arm level)
+  const resurge = peak * 0.05; // −26dB rel clip peak (resurgence fire level)
+  const speechLevel = peak * 0.5; // −6dB rel clip peak: content this loud is real speech, never a tail defect
   const tailWins = Math.min(wins.length, Math.round(tailMs / 2));
   const first = wins.length - tailWins;
 
-  // Last above-threshold run in the tail, and the quiet gap before it.
+  // Rule 2 — resurgence. Walk the tail in order: arm after a quiet run of
+  // ≥ minGapMs; once armed, the first window back above the fire level is the
+  // defect — unless it reaches speech level (resumed speech: disarm).
+  // Trim point = start of the quiet run that armed us.
+  if (mode !== 'longform') {
+    let quietRunStart = -1;
+    let armedAt = -1;
+    for (let i = first; i >= 0 && i < wins.length; i++) {
+      if (wins[i] <= quiet) {
+        if (quietRunStart === -1) quietRunStart = i;
+        if ((i - quietRunStart + 1) * 2 >= minGapMs) armedAt = quietRunStart;
+      } else if (wins[i] > speechLevel) {
+        quietRunStart = -1; armedAt = -1; // real speech resumed — start over
+      } else {
+        if (armedAt !== -1 && wins[i] > resurge) {
+          let clickPeak = 0;
+          for (let j = i; j < wins.length; j++) { if (wins[j] > clickPeak) clickPeak = wins[j]; }
+          return {
+            click: true,
+            kind: 'resurgence',
+            trimSec: (armedAt * winSamples) / 48000,
+            peakDb: Math.round(20 * Math.log10(clickPeak / peak) * 10) / 10
+          };
+        }
+        if (wins[i] > resurge) { quietRunStart = -1; } // still speech — reset the quiet run
+        else if (quietRunStart !== -1 && wins[i] > quiet) { quietRunStart = -1; } // mid-level wobble breaks the run but not the arm
+      }
+    }
+  }
+
+  // Rule 3 — post-speech rise. Smoothed 10ms envelope (5-window max) over the
+  // tail; after the last strong-speech point, a ≥ riseDb climb off the running
+  // minimum that stays below speech level is exhale/noise, not speech.
+  if (mode !== 'longform') {
+    const env = [];
+    for (let i = first; i < wins.length; i++) {
+      let m = 0;
+      for (let j = Math.max(0, i - 2); j <= Math.min(wins.length - 1, i + 2); j++) { if (wins[j] > m) m = wins[j]; }
+      env.push(m);
+    }
+    let lastStrong = 0; // speech ended before the tail window: scan the whole tail
+    for (let i = 0; i < env.length; i++) { if (env[i] > speechLevel) lastStrong = i; }
+    if (lastStrong < env.length - 1) {
+      let runMin = env[lastStrong];
+      let runMinAt = lastStrong;
+      for (let i = lastStrong + 1; i < env.length; i++) {
+        if (env[i] > speechLevel) { runMin = env[i]; runMinAt = i; continue; } // resumed speech — re-anchor
+        if (env[i] < runMin) { runMin = env[i]; runMinAt = i; }
+        else if (
+          runMin > 0 &&
+          env[i] / runMin >= Math.pow(10, riseDb / 20) &&
+          env[i] > peak * 0.02 // must be audible (−34dB rel peak)
+        ) {
+          let clickPeak = 0;
+          for (let j = i; j < env.length; j++) { if (env[j] > clickPeak) clickPeak = env[j]; }
+          return {
+            click: true,
+            kind: 'rise',
+            trimSec: ((first + runMinAt) * winSamples) / 48000,
+            peakDb: Math.round(20 * Math.log10(clickPeak / peak) * 10) / 10
+          };
+        }
+      }
+    }
+  }
+
+  // Rule 1 — short isolated burst.
   let runEnd = -1;
   for (let i = wins.length - 1; i >= first; i--) { if (wins[i] > loud) { runEnd = i; break; } }
   if (runEnd === -1) return { click: false };
@@ -348,9 +455,122 @@ async function detectTailClick(audioPath, options = {}) {
   const clickPeak = Math.max(...wins.slice(runStart, runEnd + 1));
   return {
     click: true,
+    kind: 'burst',
     trimSec: (gapStart * winSamples) / 48000,
     peakDb: Math.round(20 * Math.log10(clickPeak / peak) * 10) / 10
   };
+}
+
+/**
+ * verifyTrimKeepsText — transcription safety gate for tail-defect repairs.
+ *
+ * The resurgence/rise rules cannot distinguish a breath/grunt burst from real
+ * speech resuming after an unusually long intra-phrase pause (measured on the
+ * 2026-07-24 sweep: 3 of 154 flagged clips were pausey renders — "Come stai?"
+ * with 400ms before "stai", "…here, good" with the closing word detached —
+ * where the DSP trim would have amputated a word). Whisper adjudicates: the
+ * kept region [0, trimSec] must transcribe every word of the intended text,
+ * OR the cut region [trimSec, end] must transcribe as silence/noise. Both
+ * conditions failing together is the amputation signature. (Either alone is
+ * whisper variance: homophones/plurals on the kept side, hallucinated words
+ * on breath sounds on the cut side — both observed, both harmless.)
+ *
+ * Best-effort: returns null when whisper-cli or the model file is missing —
+ * callers decide whether to proceed unverified (measured FP rate without this
+ * gate: ~2% of flagged clips) or reject.
+ *
+ * @returns {Promise<null | {ok: boolean, kept: string, cut: string, missing: string[]}>}
+ */
+const WHISPER_MODEL = process.env.WHISPER_MODEL
+  || '/Users/tomcassidy/SSi/whisper-models/ggml-small.bin';
+let _whisperReady = null;
+async function whisperAvailable() {
+  if (_whisperReady === null) {
+    try {
+      await execAsync('command -v whisper-cli');
+      _whisperReady = await fs.pathExists(WHISPER_MODEL);
+    } catch { _whisperReady = false; }
+  }
+  return _whisperReady;
+}
+
+async function verifyTrimKeepsText(audioPath, trimSec, text, language) {
+  if (!text || !(await whisperAvailable())) return null;
+  const tmpDir = await fs.mkdtemp(path.join(require('os').tmpdir(), 'trimverify-'));
+  try {
+    const keepWav = path.join(tmpDir, 'keep.wav');
+    const cutWav = path.join(tmpDir, 'cut.wav');
+    await execAsync(`ffmpeg -y -hide_banner -loglevel error -i "${audioPath}" -t ${trimSec} -ar 16000 -ac 1 "${keepWav}"`);
+    await execAsync(`ffmpeg -y -hide_banner -loglevel error -i "${audioPath}" -ss ${trimSec} -ar 16000 -ac 1 "${cutWav}"`);
+    const lang = language ? language.slice(0, 2) : 'auto';
+    const run = async (wav) => {
+      const { stdout } = await execAsync(`whisper-cli -m "${WHISPER_MODEL}" -l ${lang} -nt -f "${wav}" 2>/dev/null`);
+      return stdout.trim().replace(/\s+/g, ' ');
+    };
+    const kept = await run(keepWav);
+    const cut = await run(cutWav);
+    const norm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+    const keptWords = new Set(norm(kept).split(' ').filter(Boolean));
+    const missing = norm(text).split(' ').filter(Boolean).filter((w) => !keptWords.has(w));
+    const cutSpeaks = !!norm(cut.replace(/\[[^\]]*\]|\([^)]*\)/g, ''));
+    return { ok: !(missing.length && cutSpeaks), kept, cut, missing };
+  } catch (e) {
+    return null; // whisper hiccup = unverified, not unsafe
+  } finally {
+    await fs.remove(tmpDir).catch(() => {});
+  }
+}
+
+/**
+ * repairTailDefect — detect + iteratively DSP-repair a tail defect, with the
+ * whisper amputation guard at every cut. The one implementation behind both
+ * the generation gate (phase8 masterAudio) and the stored-clip sweep tool
+ * (tools/declick-tail.cjs) — they must never drift apart on this logic.
+ *
+ * Semantics (all measured on the 2026-07-24 sweep, 154 flagged clips):
+ * - no defect → {defect: null}
+ * - first detection sits on resumed SPEECH (pausey render, "Come stai?"):
+ *   input is fine as-is → {action: 'held'} — caller ships/keeps the original.
+ * - repaired clean → {action: 'repaired', outPath}
+ * - a re-flag on the repaired clip that whisper says is soft trailing speech
+ *   (a detached "please"/"yes") is accepted — the real burst is already gone
+ *   → {action: 'repaired', residualSpeechFlag}
+ * - stacked defects trim deeper, up to 3 passes; still dirty after 3 → throws.
+ * - minKeepSec: a trim point earlier than this means the clip is substantially
+ *   defective → throws (generation gate uses 0.2; sweeps use 0).
+ *
+ * @returns {Promise<{defect: null} | {defect: object, action: 'held'|'repaired', outPath?: string, passes?: number, verify?: object, residualSpeechFlag?: object}>}
+ */
+async function repairTailDefect(inputPath, workDir, { text, language, mode, minKeepSec = 0 } = {}) {
+  const tailMode = mode || (isLongformText(text) ? 'longform' : 'phrase');
+  const det = await detectTailClick(inputPath, { mode: tailMode });
+  if (!det.click) return { defect: null };
+  if (det.trimSec < minKeepSec) {
+    throw new Error(`tail defect (${det.kind} ${det.peakDb}dB) with trim point at ${det.trimSec}s — clip is substantially defective`);
+  }
+  const v0 = await verifyTrimKeepsText(inputPath, det.trimSec, text, language);
+  if (v0 && !v0.ok) return { defect: det, action: 'held', verify: v0 };
+  let fixed = inputPath;
+  let cutAt = det.trimSec;
+  for (let pass = 0; pass < 3; pass++) {
+    const next = path.join(workDir, `declick-pass${pass}.mp3`);
+    await ffmpegFilterToLameMp3(fixed, next, {
+      filterChain: `atrim=end=${cutAt},asetpts=PTS-STARTPTS,`
+        + 'areverse,afade=t=in:st=0:d=0.008,areverse,apad=pad_dur=0.1',
+    });
+    fixed = next;
+    const recheck = await detectTailClick(fixed, { mode: tailMode });
+    if (!recheck.click) return { defect: det, action: 'repaired', outPath: fixed, passes: pass + 1 };
+    const rv = await verifyTrimKeepsText(fixed, recheck.trimSec, text, language);
+    if (rv && !rv.ok) {
+      return { defect: det, action: 'repaired', outPath: fixed, passes: pass + 1, residualSpeechFlag: recheck };
+    }
+    if (pass === 2) {
+      throw new Error(`tail defect (${det.kind} ${det.peakDb}dB) still detected (${recheck.kind} ${recheck.peakDb}dB) after 3 repair passes — refusing to ship`);
+    }
+    cutAt = recheck.trimSec;
+  }
 }
 
 async function normalizeAudio(inputPath, outputPath, targetLUFS = -16.0) {
@@ -756,6 +976,9 @@ module.exports = {
   ffmpegFilterToLameMp3,
   ANTI_CLICK_FADE,
   detectTailClick,
+  isLongformText,
+  verifyTrimKeepsText,
+  repairTailDefect,
   checkSoxInstalled,
   getAudioDuration,
   checkMp3Format,

@@ -60,7 +60,7 @@ async function download(url, dest) {
 
 ;(async () => {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'declick-'))
-  let repaired = 0, clean = 0, failed = 0
+  let repaired = 0, clean = 0, failed = 0, held = 0
   for (const id of ids) {
     try {
       const { data: row, error } = await supabase
@@ -69,29 +69,49 @@ async function download(url, dest) {
 
       const src = path.join(tmpDir, `${id}.mp3`)
       await download(S3_BASE + row.s3_key, src)
-      const det = await audioProcessor.detectTailClick(src)
-      if (!det.click) { console.log(`${id}: no tail click — untouched ("${row.text}")`); clean++; continue }
-      console.log(`${id}: tail click ${det.peakDb}dB rel peak, trim at ${det.trimSec}s ("${row.text}")`)
+      // Shared detect + iterative repair + whisper amputation guard — the
+      // same implementation as the phase8 generation gate (see
+      // audioProcessor.repairTailDefect for the full semantics).
+      const workDir = fs.mkdtempSync(path.join(tmpDir, `${id}-`))
+      const tail = await audioProcessor.repairTailDefect(src, workDir, {
+        text: row.text, language: row.language,
+      })
+      if (!tail.defect) { console.log(`${id}: no tail click — untouched ("${row.text}")`); clean++; continue }
+      console.log(`${id}: tail ${tail.defect.kind} ${tail.defect.peakDb}dB rel peak, trim at ${tail.defect.trimSec}s ("${row.text}")`)
+      if (tail.action === 'held') {
+        console.log(`${id}: HELD — trim would cut speech (kept: "${tail.verify.kept}" / cut: "${tail.verify.cut}")`)
+        held++
+        continue
+      }
+      if (tail.residualSpeechFlag) console.log(`${id}: soft trailing speech retained after ${tail.passes} pass(es)`)
       if (!apply) continue
 
-      // Repair: cut before the click, fade the fresh end, restore a short
-      // silent tail so the clip doesn't stop dead on the fade.
-      const fixed = path.join(tmpDir, `${id}-fixed.mp3`)
-      await audioProcessor.ffmpegFilterToLameMp3(src, fixed, {
-        filterChain: `atrim=end=${det.trimSec},asetpts=PTS-STARTPTS,`
-          + 'areverse,afade=t=in:st=0:d=0.008,areverse,apad=pad_dur=0.1',
-      })
-      const recheck = await audioProcessor.detectTailClick(fixed)
-      if (recheck.click) throw new Error(`repair still clicks (${recheck.peakDb}dB) — not shipping it`)
+      const fixed = tail.outPath
       const meta = await audioProcessor.getAudioMetadata(fixed)
 
-      // Capture pod links BEFORE the delete — the target_audio_id FK is ON
-      // DELETE SET NULL, so reading afterwards would miss take-slot links.
+      // Capture ALL links BEFORE the delete — audio-id FKs are ON DELETE SET
+      // NULL, so reading afterwards would miss them. Known-side and take-slot
+      // columns included (2026-07-24: the clone tail-burst sweep repairs
+      // known clips, which the original target-only relink missed).
       const { data: podRows, error: podErr } = await supabase
         .from('listening_pod_sentences')
-        .select('id, target_audio_id, sentence_audio_ids')
-        .eq('pod_id', `${COURSE}:pod-0`)
+        .select('id, target_audio_id, known_audio_id, explainer_audio_id, note_audio_id, sentence_audio_ids, sentence_known_audio_ids, takeg_audio_ids')
+        .like('pod_id', `${COURSE}:%`)
       if (podErr) throw new Error(`pod rows: ${podErr.message}`)
+      const CORE_TABLES = {
+        course_practice_phrases: ['known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id'],
+        course_seeds: ['known_audio_id', 'target1_audio_id', 'target2_audio_id'],
+        course_legos: ['known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id'],
+      }
+      const coreLinks = []
+      for (const [table, cols] of Object.entries(CORE_TABLES)) {
+        for (const col of cols) {
+          const { data: rows, error: coreErr } = await supabase
+            .from(table).select('id').eq('course_code', COURSE).eq(col, id)
+          if (coreErr) throw new Error(`${table}.${col}: ${coreErr.message}`)
+          for (const r of rows || []) coreLinks.push({ table, col, rowId: r.id })
+        }
+      }
 
       // Old row dies first (dedup key course_code,text_normalized,language,
       // role,voice_id must free), repaired copy minted under a fresh id.
@@ -112,12 +132,14 @@ async function download(url, dest) {
         if (insErr) throw new Error(`insert: ${insErr.message}`)
         restoreOnFail = null
 
-        // Relink every pod row that pointed at the old id (captured pre-delete).
+        // Relink every row that pointed at the old id (captured pre-delete).
         for (const p of podRows || []) {
           const patch = {}
-          if (p.target_audio_id === id) patch.target_audio_id = inserted.id
-          if ((p.sentence_audio_ids || []).includes(id)) {
-            patch.sentence_audio_ids = p.sentence_audio_ids.map((x) => (x === id ? inserted.id : x))
+          for (const col of ['target_audio_id', 'known_audio_id', 'explainer_audio_id', 'note_audio_id']) {
+            if (p[col] === id) patch[col] = inserted.id
+          }
+          for (const col of ['sentence_audio_ids', 'sentence_known_audio_ids', 'takeg_audio_ids']) {
+            if ((p[col] || []).includes(id)) patch[col] = p[col].map((x) => (x === id ? inserted.id : x))
           }
           if (Object.keys(patch).length) {
             const { error: upErr } = await supabase
@@ -125,6 +147,12 @@ async function download(url, dest) {
             if (upErr) throw new Error(`relink ${p.id}: ${upErr.message}`)
             console.log(`${id}: relinked ${p.id} → ${inserted.id}`)
           }
+        }
+        for (const c of coreLinks) {
+          const { error: upErr } = await supabase
+            .from(c.table).update({ [c.col]: inserted.id }).eq('id', c.rowId)
+          if (upErr) throw new Error(`relink ${c.table}.${c.col} ${c.rowId}: ${upErr.message}`)
+          console.log(`${id}: relinked ${c.table}.${c.col} ${c.rowId} → ${inserted.id}`)
         }
         console.log(`${id}: repaired → ${inserted.id} (${newKey}, ${copy.duration_ms}ms)`)
         repaired++
@@ -136,13 +164,24 @@ async function download(url, dest) {
           console.log(resErr
             ? `${id}: RESTORE FAILED — DANGLING LINK, fix by hand: ${resErr.message}`
             : `${id}: old row restored (S3 object untouched)`)
-          // take-slot links were FK-nulled by the delete; put them back.
+          // Every link was FK-nulled by the delete; put them all back from
+          // the pre-delete capture (scalar pod columns, array slots, core
+          // table columns — the old target-only restore left the rest null).
           if (!resErr) {
             for (const p of podRows || []) {
-              if (p.target_audio_id === id) {
-                await supabase.from('listening_pod_sentences')
-                  .update({ target_audio_id: id }).eq('id', p.id)
+              const patch = {}
+              for (const col of ['target_audio_id', 'known_audio_id', 'explainer_audio_id', 'note_audio_id']) {
+                if (p[col] === id) patch[col] = id
               }
+              for (const col of ['sentence_audio_ids', 'sentence_known_audio_ids', 'takeg_audio_ids']) {
+                if ((p[col] || []).includes(id)) patch[col] = p[col]
+              }
+              if (Object.keys(patch).length) {
+                await supabase.from('listening_pod_sentences').update(patch).eq('id', p.id)
+              }
+            }
+            for (const c of coreLinks) {
+              await supabase.from(c.table).update({ [c.col]: id }).eq('id', c.rowId)
             }
           }
         }
@@ -153,6 +192,6 @@ async function download(url, dest) {
       console.log(`${id}: ✗ ${e.message.slice(0, 200)}`)
     }
   }
-  console.log(`\n${apply ? '' : '[DRY] '}${repaired} repaired, ${clean} already clean, ${failed} failed, of ${ids.length} ids.`)
+  console.log(`\n${apply ? '' : '[DRY] '}${repaired} repaired, ${clean} already clean, ${held} held (would cut speech), ${failed} failed, of ${ids.length} ids.`)
   process.exit(failed ? 2 : 0)
 })().catch((e) => { console.error('ERR:', e.message); process.exit(1) })

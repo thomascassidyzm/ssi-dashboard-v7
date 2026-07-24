@@ -782,9 +782,13 @@ async function processInParallel(items, processor, concurrency = CONCURRENCY) {
  * Master audio: normalize loudness and extract duration
  *
  * @param {Buffer} audioBuffer - Raw audio from TTS
+ * @param {string} [ttsText] - The text that was synthesised. Needed by the
+ *   tail-defect gate to pick the detector mode: texts with scripted internal
+ *   silences ([pause], ellipses — pod takes) legitimately go quiet-then-loud
+ *   in the tail, so only the burst rule is safe on them.
  * @returns {Promise<{buffer: Buffer, durationMs: number}>} Mastered audio and duration
  */
-async function masterAudio(audioBuffer) {
+async function masterAudio(audioBuffer, ttsText) {
   const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'audio-master-'))
   const rawPath = path.join(tempDir, 'raw.mp3')
   const masteredPath = path.join(tempDir, 'mastered.mp3')
@@ -795,6 +799,23 @@ async function masterAudio(audioBuffer) {
 
     // Normalize to -16 LUFS (broadcast standard)
     await audioProcessor.normalizeAudio(rawPath, masteredPath, -16.0)
+
+    // Tail-defect gate + free repair (2026-07-24): TTS renders — the xAI clone
+    // especially — sometimes append a click/grunt/exhale burst after the
+    // speech decays (see detectTailClick's three rules). Repair is pure DSP
+    // (trim before the defect, re-fade, pad) so it runs here at the mastering
+    // chokepoint rather than rejecting the render: every future clip ships
+    // clean with zero TTS re-spend. repairTailDefect carries the whisper
+    // amputation guard — a pausey render whose "defect" is resumed speech
+    // ships untouched ('held'), and a soft detached closing word is never
+    // trimmed away. Only a clip still dirty after 3 passes hard-errors.
+    const tail = await audioProcessor.repairTailDefect(masteredPath, tempDir, { text: ttsText, minKeepSec: 0.2 })
+    if (tail.defect && tail.action === 'held') {
+      logger.warn(`masterAudio: tail flag (${tail.defect.kind} ${tail.defect.peakDb}dB at ${tail.defect.trimSec}s) is resumed speech — pausey render shipped untouched`)
+    } else if (tail.defect) {
+      logger.info(`masterAudio: tail ${tail.defect.kind} ${tail.defect.peakDb}dB repaired in ${tail.passes} pass(es) at ${tail.defect.trimSec}s${tail.residualSpeechFlag ? ' (soft trailing speech retained)' : ''}`)
+      await fs.move(tail.outPath, masteredPath, { overwrite: true })
+    }
 
     // Extract duration
     const metadata = await audioProcessor.getAudioMetadata(masteredPath)
@@ -1854,7 +1875,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       // Note: xAI does not expose an API-level speed parameter, so xAI audio
       // is always generated at natural speed. Downstream cadence playback speed
       // adjustments are applied in the player, not at TTS time.
-      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
 
       // Generate UUID for S3 key (UPPERCASE to match existing S3 convention)
       const audioId = uuidv4().toUpperCase()
@@ -2295,7 +2316,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       }
 
       // Master audio: normalize loudness and extract duration
-      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
 
       // Generate new UUID for S3 key (UPPERCASE to match existing S3 convention)
       const audioId = uuidv4().toUpperCase()
@@ -3637,7 +3658,7 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     }
 
     // 6. Master audio
-    const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+    const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
 
     // 7. Upload to S3
     const newAudioId = uuidv4().toUpperCase()
@@ -3845,7 +3866,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     }
 
     // 6. Master audio (−16 LUFS, duration)
-    const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+    const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, presentationText)
 
     // 7. Upload mastered audio to S3 (fresh UUID, UPPERCASE to match convention)
     const newAudioId = uuidv4().toUpperCase()
@@ -4146,7 +4167,7 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
       }
 
       // Master audio (−16 LUFS, duration).
-      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
 
       // Upload mastered audio to S3 (fresh UUID, UPPERCASE per convention).
       const newAudioId = uuidv4().toUpperCase()
@@ -4537,7 +4558,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         throw new Error(`Unknown TTS provider: ${provider}`)
       }
 
-      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer)
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
 
       const audioId = uuidv4().toUpperCase()
       const s3Key = `mastered/${audioId}.mp3`
@@ -5378,7 +5399,7 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
   voice = activeVoice  // course_audio row records the voice that actually produced the clip
   let masteredBuffer, durationMs
   try {
-    ;({ buffer: masteredBuffer, durationMs } = await masterAudio(audioBuffer))
+    ;({ buffer: masteredBuffer, durationMs } = await masterAudio(audioBuffer, ttsText))
   } catch (e) {
     // Empty/corrupt TTS buffer (buflen=0) usually means a cross-language voice
     // mismatch (e.g. an English voice handed non-English text) — keep prov/voice
