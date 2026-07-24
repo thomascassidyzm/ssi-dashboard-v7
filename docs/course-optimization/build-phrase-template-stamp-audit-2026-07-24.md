@@ -117,3 +117,29 @@ defects.
 
 Artifacts: `scripts/build-audit/classify-builds.cjs`, per-course `*-builds.json`,
 `estate-scan.txt` (gitignored workspace).
+
+## Fix — IMPLEMENTED 2026-07-24 (owner-approved), branch `fix/build-template-stamp`
+
+1. **Server-side vocab injection** — every `/seed/complete` round-trip (success,
+   rejection, draft, canonical-mismatch) carries `introduced_vocab`: the course's
+   introduced-LEGO list, injected server-side per call
+   (`vocab-cache.cjs: loadIntroducedLegoPairs + buildVocabInjection`). Full list ≤300
+   legos; above that, recent-200 + 100 evenly sampled from the earlier estate
+   (bounded response size; the recent window is what recombination needs most).
+2. **Anti-template gate** — `validation.cjs: classifyBuildPhrase +
+   checkBuildRecombination`, wired into `/seed/complete`: non-debut bare-LEGO repeats,
+   comma-tag and use-stem+tag stamps reject; ramp-aware floor (≥2 from seed 4+) of
+   BUILD rows whose non-LEGO material draws on previously-introduced chunks. Lockstep
+   with the audit classifier; unit tests in `build-recombination.test.cjs` include the
+   tester's exact spa S0543 basket.
+3. **3-strike Opus escalation** — builder model stays Sonnet; on the 3rd consecutive
+   gate rejection of the same lego, the server regenerates just that BUILD basket via
+   Claude CLI Opus (`build-escalation.cjs`), re-validates through the same gates, and
+   proceeds if clean. No blanket model switch.
+4. **Regeneration sweep** — `tools/course-optimization/regenerate-stamped-builds.cjs`:
+   stamped BUILD rows only, updated in place (same id/position; seeds/LEGOs/USE/audio
+   untouched), Sonnet×3→Opus×2 per lego, same validation stack, before-state drift
+   guard, per-course `scripts/build-audit/regen-logs/*.json`. Courses with applied
+   rows queue an audio-pass request (approval-gated). eng_for_kan audio held: no
+   pending audio_pass_request existed pre-sweep; its request is queued only after its
+   rows regenerate.
