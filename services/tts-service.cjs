@@ -35,6 +35,28 @@ const ttsKeepAliveAgent = new https.Agent({
   maxFreeSockets: 8,
 });
 
+// Child voices are NEVER allowed (Tom 2026-07-24: no kids' voices, ever — a
+// child voice reached staging on alcohol phrases via a stale pod cast). Voice
+// params come from DB state (pod casts, voice_config) that can outlive pool
+// fixes, so the block lives here, at the one chokepoint every provider path
+// passes through. The "(403)" makes isRetriableTtsError treat it as a client
+// error — fail fast, never retry.
+const CHILD_VOICE_IDS = new Set([
+  'en-GB-MaisieNeural',
+  'en-US-AnaNeural',
+  'de-DE-GiselaNeural',
+  'fr-FR-EloiseNeural',
+  'zh-CN-XiaoshuangNeural',
+  'zh-CN-XiaoyouNeural',
+]);
+
+function assertNotChildVoice(config) {
+  const requested = String(config?.voiceName || config?.voiceId || '').replace(/^azure_/, '');
+  if (CHILD_VOICE_IDS.has(requested)) {
+    throw new Error(`Child voice blocked (403): ${requested} — kids' voices are never allowed. Fix the caller's voice params (pod cast / voice_config).`);
+  }
+}
+
 /**
  * Generate speech using ElevenLabs API
  * @param {string} text - Text to synthesize
@@ -267,6 +289,8 @@ async function generate(text, provider, config) {
   if (!text || text.trim() === '') {
     throw new Error('Text cannot be empty');
   }
+
+  assertNotChildVoice(config);
 
   switch (provider) {
     case 'elevenlabs':
@@ -506,5 +530,6 @@ module.exports = {
   getVoiceForRole,
   // phonology gate internals, exported for tests/tools
   detectSpokenLanguage,
-  phonologySuspects
+  phonologySuspects,
+  CHILD_VOICE_IDS
 };
