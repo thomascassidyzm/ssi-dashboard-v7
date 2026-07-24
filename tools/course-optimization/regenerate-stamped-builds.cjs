@@ -32,6 +32,11 @@ const path = require('path');
 
 const REPO = path.resolve(__dirname, '../..');
 require('dotenv').config({ path: path.join(REPO, '.env') });
+// The .env ANTHROPIC_API_KEY is the dashboard env-switcher's, NOT valid CLI
+// auth — if it leaks into the CLI's env it overrides the claude.ai login and
+// every generation call 401s (see CLAUDE.md hard rules).
+delete process.env.ANTHROPIC_API_KEY;
+delete process.env.CLAUDECODE;
 
 const { createClient } = require('@supabase/supabase-js');
 const {
@@ -237,7 +242,7 @@ async function regenLego(courseCode, key, stampedRows, ctx) {
 
   if (accepted.length === 0) {
     stats.failed += stampedRows.length;
-    stats.unresolved_legos.push({ lego: key, target: lego.target, stamped: stampedRows.length });
+    stats.unresolved_legos.push({ lego: key, target: lego.target, stamped: stampedRows.length, rejected_tail: rejectedHistory.slice(-10) });
     console.log(`  ✗ S${String(seedNumber).padStart(4, '0')}L${String(lego.idx).padStart(2, '0')} "${lego.target}": no valid replacements after ${ATTEMPTS.length} attempts — rows left untouched`);
     return;
   }
