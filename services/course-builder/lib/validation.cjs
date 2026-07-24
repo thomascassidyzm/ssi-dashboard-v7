@@ -5,7 +5,7 @@
  */
 
 const { isChinese, getTargetLang, getCharThresholds, getGoldenSeedCount, CHARS_PER_SYLLABLE, PREPOSITIONS } = require('./language-config.cjs');
-const { extractVocab, normalizeForZUT, normalizeForStorage, normalizeForContainment } = require('./text-normalization.cjs');
+const { extractVocab, normalizeForZUT, normalizeForStorage, normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
 
 // ─── Methodology command hints (guide agents on rejection) ─────────────
 
@@ -897,6 +897,111 @@ function loadPairContract(courseCode) {
   return contract;
 }
 
+// ─── BUILD anti-template gate (template-stamp audit 2026-07-24) ────────
+//
+// Compaction-degenerate builders emit one template per LEGO: the bare LEGO
+// plus a tacked-on filler tag (", sí" / ", bien" / ", again") or one of the
+// lego's own USE phrases with the same tag. Fillers are known vocab, so every
+// pre-existing gate passes. This gate promotes the audit classifier
+// (docs/course-optimization/build-phrase-template-stamp-audit-2026-07-24.md)
+// into the submit path. Kept in lockstep with scripts/build-audit/classify-builds.cjs.
+
+// Trailing ", <short tag>" — the stamp signature (classifier's regex).
+const FILLER_TAG_RE = /,\s*¿?[^,]{1,18}$/;
+
+/**
+ * Classify a single BUILD phrase against its lego + the lego's own USE stems
+ * + previously-introduced chunks. Mirrors the audit classifier's classes.
+ *
+ * @param {string} target - the BUILD phrase target text
+ * @param {string} legoTarget - the lego's target text
+ * @param {Set<string>} useStemNorms - normalized targets of this lego's USE phrases
+ * @param {boolean} isFirstRow - first build row may be the bare LEGO (debut convention)
+ * @returns {{cls: string, detail?: string}} cls ∈ debut-row|bare-repeat|comma-tag|use-stem+tag|ok
+ */
+function classifyBuildPhrase(target, legoTarget, useStemNorms, isFirstRow) {
+  const nT = normalizeForContainment(target);
+  const nL = normalizeForContainment(legoTarget);
+  if (nT === nL) return { cls: isFirstRow ? 'debut-row' : 'bare-repeat' };
+  if (FILLER_TAG_RE.test((target || '').trim())) {
+    const stem = normalizeForContainment((target || '').trim().replace(/,[^,]*$/, ''));
+    if (stem === nL) return { cls: 'comma-tag', detail: (target || '').replace(/^.*,/, ',') };
+    if (useStemNorms && useStemNorms.has(stem)) return { cls: 'use-stem+tag', detail: (target || '').replace(/^.*,/, ',') };
+  }
+  return { cls: 'ok' };
+}
+
+/**
+ * Anti-template + recombination gate for one lego's BUILD basket.
+ *
+ * Rejects (hard):
+ *   - bare-repeat: bare LEGO in a non-debut row
+ *   - comma-tag / use-stem+tag: LEGO-or-own-USE-stem + trailing short tag
+ *   - insufficient recombination: too few BUILD rows whose non-LEGO material
+ *     draws on previously-introduced chunks (per introduction order)
+ *
+ * @param {object} lego - {idx, target, build[], use[]}
+ * @param {string} courseCode
+ * @param {number} seedNumber
+ * @param {Set<string>} priorVocab - chunk targets introduced BEFORE this lego
+ *   (prior seeds + earlier legos of this seed; NOT this lego's own vocab)
+ * @returns {{valid: boolean, rejects: Array, recombining: number, required: number}}
+ */
+function checkBuildRecombination(lego, courseCode, seedNumber, priorVocab) {
+  const chinese = isChinese(courseCode);
+  const build = lego.build || [];
+  const legoTarget = lego.target || '';
+  const nL = normalizeForContainment(legoTarget);
+  const useStemNorms = new Set((lego.use || []).map(p => normalizeForContainment(p.target || '')));
+
+  // Word set of previously-introduced chunks (chars for char-based languages)
+  const priorWords = new Set();
+  for (const chunk of priorVocab || []) {
+    if (chinese) for (const ch of chunk) priorWords.add(ch);
+    else for (const w of normalizeForContainment(chunk).split(' ')) if (w) priorWords.add(w);
+  }
+
+  // Ramp-aware recombination floor (matches checkBuildUsePhrases' minBuild ramp)
+  let minBuild = 3;
+  if (seedNumber === 1 && lego.idx === 1) minBuild = 0;
+  else if (seedNumber <= 3) minBuild = 1;
+  const required = priorWords.size > 0 ? Math.min(2, minBuild) : 0;
+
+  const rejects = [];
+  let recombining = 0;
+  build.forEach((p, i) => {
+    const target = p.target || '';
+    const nT = normalizeForContainment(target);
+    // Component rows (don't contain the lego) are filtered elsewhere — skip.
+    if (!chinese ? !checkWordContainment(legoTarget, target) : !nT.includes(nL)) return;
+    const { cls, detail } = classifyBuildPhrase(target, legoTarget, useStemNorms, i === 0);
+    if (cls === 'bare-repeat' || cls === 'comma-tag' || cls === 'use-stem+tag') {
+      rejects.push({ target, known: p.known, class: cls, detail });
+      return;
+    }
+    if (cls === 'debut-row') return;
+    // Recombination: leftover after removing the LEGO's words must touch prior chunks
+    let leftover;
+    if (chinese) leftover = nT.replace(nL, '').split('').filter(Boolean);
+    else {
+      const legoCounts = {};
+      for (const w of nL.split(' ')) if (w) legoCounts[w] = (legoCounts[w] || 0) + 1;
+      leftover = nT.split(' ').filter(w => {
+        if (w && legoCounts[w] > 0) { legoCounts[w]--; return false; }
+        return !!w;
+      });
+    }
+    if (leftover.length > 0 && leftover.some(w => priorWords.has(w))) recombining++;
+  });
+
+  return {
+    valid: rejects.length === 0 && recombining >= required,
+    rejects,
+    recombining,
+    required,
+  };
+}
+
 module.exports = {
   METHODOLOGY_HINTS,
   checkTiling,
@@ -916,4 +1021,6 @@ module.exports = {
   checkBasketFrameCoverage,
   classifySeedPattern,
   formatDecompositionPatterns,
+  classifyBuildPhrase,
+  checkBuildRecombination,
 };
