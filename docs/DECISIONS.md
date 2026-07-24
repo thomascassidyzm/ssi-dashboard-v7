@@ -246,3 +246,37 @@ free) and no approval round-trip for the live fix.
   releases (closure silence + short burst pattern-matches a click).
 **Search width:** visible-options
 **Decided by:** agent
+
+## 2026-07-24 — child voices: block at the synthesis chokepoint, heal the stored casts
+
+**Move:** Tom heard a CHILD's voice on ita_for_eng wine phrases (staging). Root cause: the
+pre-2026-06-30 KNOWN colour pool included en-GB-MaisieNeural (Azure's child voice); 86dc1617
+collapsed the pool to Tom's clone but the per-pod casts persisted in
+`listening_pods.speakers` were never re-coloured, so regen paths kept faithfully re-selecting
+Maisie (tha_for_eng regenerated child clips 2026-07-16, two weeks after the pool fix). Fix in
+two layers: (1) `CHILD_VOICE_IDS` hard block inside `tts-service.generate()` — the one
+chokepoint every provider path passes through — throwing non-retriable (403); (2)
+`tools/rescue-child-voice-clips.cjs` purges child voices from every stored cast (→ Tom's
+clone, per the single-known-voice ruling) and regenerates all reachable child-voice clips
+delete-first (new id per device-cache doctrine) through the tail-click + phonology gates.
+
+**Better:** the policy ("no kids' voices, ever") is now enforced where voice params actually
+arrive, so no stored state — casts, voice_config, future tools — can resurrect a child voice;
+every learner-reachable child clip re-rendered and re-gated.
+**Simpler:** one Set + one assert at one chokepoint, instead of auditing every caller; the
+rescue reuses the proven rescue-wrong-language doctrine wholesale.
+**Cheaper (total):** ~250 short English clips of TTS (pennies) under Tom's explicit order;
+the blocklist costs nothing at runtime and kills the whole defect class.
+
+**Searched & rejected:**
+- Fixing only the reported clips — better leg fails: 38 courses carried the same cast debris
+  and tha_for_eng proved live regen paths still selected Maisie.
+- Full pod recolour (`pod-recolour --apply` fleet-wide) — cheaper leg fails NOW: it would
+  null/regen every non-Tom known clip across 54 courses (thousands of renders) to fix a
+  defect that lives in one voice id; left as a flagged decision for Tom (casts still carry
+  legacy adult colour voices — Sonia/Libby/Hollie/Ryan — which violate the single-known-voice
+  ruling but harm nobody while linked audio plays).
+- Deleting the ~600 unreachable child-voice orphan rows — deletion of generated assets needs
+  its own plan + approval; left in place, counted in the sweep log.
+**Search width:** visible-options
+**Decided by:** agent (executing Tom's urgent-defect brief, verbatim policy: "NO kids voices ever")
