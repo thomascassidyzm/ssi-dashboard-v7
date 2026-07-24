@@ -44,6 +44,22 @@ Common thread: short, idiomatic yes/no/discourse-marker cues ("no", "yes", "that
 
 Not queued (0 rows applied, all failed): `cym_n_for_eng`, `kor_for_eng`, `kor_for_tam`.
 
+### Approval + fulfilment run (2026-07-24, owner-approved)
+
+Tom approved the audio passes for this sweep's queue. Approval is recorded on the
+queue rows themselves (`audio_pass_requests.metadata.approval`) by
+`tools/course-optimization/run-approved-audio-passes.cjs --approve`; the same tool's
+`--run` fulfils them sequentially through phase8 `/generate` (gated path:
+`tts-service.cjs` — pinned voices, child-voice blocklist, tail-click detector v2,
+phonology gate). 57 requests approved: the 55 in this doc's count plus `hrv_for_eng`
+(pre-existing pending request the sweep touched) — the log's exact split is 56
+`Queued` + 1 `Touched`. Run log: `logs/build-audio-pass-2026-07-24.log`.
+
+⚠️ Operational note: the long-lived pm2 `phase8-audio` process predated the 07-23/24
+gate commits (child-voice hard block, tail-click v2) and was serving stale code — it
+was restarted on current `main` before any clip was minted (verified 0 rows written
+in the stale window). If a gate file changes mid-backlog, restart `phase8-audio`.
+
 ## Files
 
 - `logs/build-regen-sweep-2026-07-24.log` — full run log
