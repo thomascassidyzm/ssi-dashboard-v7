@@ -1323,7 +1323,7 @@ module.exports = function seedCompleteRoutes(ctx) {
               const rejectedNorms = new Set(f.gate.rejects.map(r => normalizeForContainment(r.target)));
               const keptBuild = (f.lego.build || []).filter(p => !rejectedNorms.has(normalizeForContainment(p.target || '')));
               const need = Math.max(f.gate.rejects.length, (f.gate.required || 0) - (f.gate.recombining || 0), 1);
-              const fresh = await escalateBuildPhrases({
+              let fresh = await escalateBuildPhrases({
                 courseCode: course_code,
                 lego: { known: f.lego.known, target: f.lego.target },
                 usePhrases: f.lego.use || [],
@@ -1331,6 +1331,10 @@ module.exports = function seedCompleteRoutes(ctx) {
                 need: Math.min(need, 6),
                 rejected: f.gate.rejects,
               });
+              // Containment ran in section 3 before escalation — enforce it on fresh rows here.
+              fresh = (fresh || []).filter(p => chinese
+                ? normalizeForContainment(p.target).includes(normalizeForContainment(f.lego.target))
+                : checkWordContainment(f.lego.target, p.target));
               if (fresh && fresh.length > 0) {
                 const candidate = { ...f.lego, build: [...keptBuild, ...fresh] };
                 const regate = checkBuildRecombination(candidate, course_code, seed_number, f.priorVocab);
