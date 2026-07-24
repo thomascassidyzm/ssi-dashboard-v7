@@ -21,8 +21,10 @@ const {
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
   checkLegoConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss,
   loadPairContract, checkKnownSide, compileKnownContract, stemKnownGloss, tokenizeKnown,
+  checkBuildRecombination,
 } = require('../lib/validation.cjs');
-const { loadCourseVocab, addToCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cjs');
+const { loadCourseVocab, addToCourseVocab, loadTranslationVocab, loadIntroducedLegoPairs, buildVocabInjection } = require('../lib/vocab-cache.cjs');
+const { escalateBuildPhrases } = require('../lib/build-escalation.cjs');
 
 // Build a SEED-indexed known-side context (mirror of the round-indexed CLI ctx):
 // gloss-stems & construction/unit carriers keyed by debut SEED, from prior-seed
@@ -369,6 +371,21 @@ async function initializeCourseSeeds(ctx, courseCode) {
   const mode = modeParts.join(', ');
   console.log(`Initialized ${courseCode} with ${courseSeeds.length} seeds [${mode}]`);
   return { initialized: true, count: courseSeeds.length, mode, targetLangName, knownTranslations: knownTranslations.size, targetTranslations: targetTranslations.size };
+}
+
+/**
+ * Server-side vocab injection (template-stamp fix 2026-07-24): every
+ * /seed/complete round-trip — success, rejection, draft, canonical-mismatch —
+ * carries the introduced-LEGO vocab list, so a compacted builder session can
+ * never be without it. Failure to build the block never blocks the response.
+ */
+async function vocabInjectionFor(ctx, courseCode, seedNumber) {
+  try {
+    return buildVocabInjection(await loadIntroducedLegoPairs(ctx, courseCode, seedNumber));
+  } catch (e) {
+    console.log(`[vocab-injection] ${courseCode}: ${e.message}`);
+    return undefined;
+  }
 }
 
 // ─── Route factory ────────────────────────────────────────────────────
@@ -1085,6 +1102,7 @@ module.exports = function seedCompleteRoutes(ctx) {
             action_required: `GET /api/resume/${course_code} to get the correct next seed and context`,
             skills: ['/course-resume'],
             hint: 'After context compaction, ALWAYS call /api/resume first. Do NOT guess seed text. Review /course-resume for recovery guidance.',
+            introduced_vocab: await vocabInjectionFor(ctx, course_code, seed_number),
           });
         }
       }
@@ -1191,10 +1209,22 @@ module.exports = function seedCompleteRoutes(ctx) {
       // prevents forward references (L2 phrase using L3's vocab)
       legos.sort((a, b) => a.idx - b.idx);
       const vocabViolations = [];
+      const buildGateFailures = [];   // anti-template gate (template-stamp fix 2026-07-24)
       const chinese = isChinese(course_code);
       for (const lego of legos) {
         const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
         const isDuplicate = duplicateLegos.some(d => d.lego_id === legoId);
+
+        // BUILD anti-template gate — runs against vocab introduced BEFORE this
+        // lego (prior seeds + earlier legos of this seed), so snapshot now,
+        // before this lego's own vocab is added below.
+        if (!isDuplicate && !SKIP_VALIDATION && usesBuildUseFormat(lego)) {
+          const priorVocab = new Set(vocabSet);
+          const gate = checkBuildRecombination(lego, course_code, seed_number, priorVocab);
+          if (!gate.valid) {
+            buildGateFailures.push({ lego, legoId, gate, priorVocab });
+          }
+        }
 
         // Add this LEGO's vocab
         if (isDraft) {
@@ -1263,6 +1293,97 @@ module.exports = function seedCompleteRoutes(ctx) {
                 console.log(`✗ ${legoId}: CONTAINMENT (${mode}) - ${containmentFails.length} phrases missing LEGO target "${lego.target}"`);
               }
             }
+          }
+        }
+      }
+
+      // 3a-BUILD. ANTI-TEMPLATE GATE + 3-STRIKE OPUS ESCALATION.
+      // A gate failure rejects and re-rolls (builder stays Sonnet). On the 3rd
+      // consecutive rejection of the same lego, the server escalates JUST that
+      // generation call to Opus via the Claude CLI, re-validates the output
+      // through the same gates, and proceeds if clean. No blanket model switch.
+      if (buildGateFailures.length > 0) {
+        if (!ctx.buildGateStrikes) ctx.buildGateStrikes = new Map();
+        if (!ctx.buildEscalationStats) ctx.buildEscalationStats = { attempts: 0, successes: 0, failures: 0 };
+
+        for (const f of buildGateFailures) {
+          const strikeKey = `${course_code}:${f.legoId}`;
+          f.strikes = (ctx.buildGateStrikes.get(strikeKey) || 0) + 1;
+          ctx.buildGateStrikes.set(strikeKey, f.strikes);
+          let escalated = false;
+
+          if (f.strikes >= 3) {
+            ctx.buildEscalationStats.attempts++;
+            console.log(`⚡ ${f.legoId}: BUILD gate strike ${f.strikes} — escalating generation to Opus`);
+            try {
+              const priorPairs = [
+                ...await loadIntroducedLegoPairs(ctx, course_code, seed_number - 1),
+                ...legos.filter(l => l.idx < f.lego.idx).map(l => ({ known: l.known, target: l.target })),
+              ];
+              const rejectedNorms = new Set(f.gate.rejects.map(r => normalizeForContainment(r.target)));
+              const keptBuild = (f.lego.build || []).filter(p => !rejectedNorms.has(normalizeForContainment(p.target || '')));
+              const need = Math.max(f.gate.rejects.length, (f.gate.required || 0) - (f.gate.recombining || 0), 1);
+              let fresh = await escalateBuildPhrases({
+                courseCode: course_code,
+                lego: { known: f.lego.known, target: f.lego.target },
+                usePhrases: f.lego.use || [],
+                priorPairs,
+                need: Math.min(need, 6),
+                rejected: f.gate.rejects,
+              });
+              // Containment ran in section 3 before escalation — enforce it on fresh rows here.
+              fresh = (fresh || []).filter(p => chinese
+                ? normalizeForContainment(p.target).includes(normalizeForContainment(f.lego.target))
+                : checkWordContainment(f.lego.target, p.target));
+              if (fresh && fresh.length > 0) {
+                const candidate = { ...f.lego, build: [...keptBuild, ...fresh] };
+                const regate = checkBuildRecombination(candidate, course_code, seed_number, f.priorVocab);
+                const withLego = new Set(f.priorVocab);
+                extractVocab(f.lego.target, chinese).forEach(v => withLego.add(v));
+                if (f.lego.type === 'M' && f.lego.components) {
+                  for (const comp of f.lego.components) extractVocab(comp.target, chinese).forEach(v => withLego.add(v));
+                }
+                const freshViolations = checkVocabViolations(fresh, withLego, course_code);
+                if (regate.valid && freshViolations.length === 0) {
+                  f.lego.build = candidate.build;
+                  escalated = true;
+                  ctx.buildEscalationStats.successes++;
+                  ctx.buildGateStrikes.delete(strikeKey);
+                  warnings.push({
+                    type: 'build_escalated',
+                    lego_id: f.legoId,
+                    message: `BUILD basket regenerated by Opus after ${f.strikes} gate rejections (${f.gate.rejects.length} template-stamp row(s) replaced).`,
+                    replaced: f.gate.rejects.map(r => r.target),
+                    added: fresh.map(p => p.target),
+                  });
+                  console.log(`⚡ ${f.legoId}: Opus escalation SUCCEEDED — ${fresh.length} replacement BUILD phrase(s)`);
+                } else {
+                  ctx.buildEscalationStats.failures++;
+                  console.log(`⚡ ${f.legoId}: Opus escalation output failed re-validation (gate=${regate.valid}, vocab violations=${freshViolations.length})`);
+                }
+              } else {
+                ctx.buildEscalationStats.failures++;
+                console.log(`⚡ ${f.legoId}: Opus escalation returned no usable phrases`);
+              }
+            } catch (e) {
+              ctx.buildEscalationStats.failures++;
+              console.log(`⚡ ${f.legoId}: Opus escalation error — ${e.message}`);
+            }
+          }
+
+          if (!escalated) {
+            errors.push({
+              type: 'build_template',
+              message: `${f.legoId}: BUILD anti-template gate — ${f.gate.rejects.length} template-stamp row(s), ${f.gate.recombining}/${f.gate.required} recombining BUILD phrase(s)`,
+              lego_id: f.legoId,
+              lego_target: f.lego.target,
+              rejects: f.gate.rejects.slice(0, 6),
+              recombining: f.gate.recombining,
+              required: f.gate.required,
+              strikes: f.strikes,
+              hint: 'BUILD phrases must show the new LEGO plugging into previously-introduced LEGOs (see introduced_vocab in this response). Bare-LEGO repeats and "<stem>, <short tag>" filler stamps are rejected. Re-roll using the injected vocab list.',
+            });
+            console.log(`✗ ${f.legoId}: BUILD TEMPLATE — ${f.gate.rejects.map(r => `${r.class} "${r.target}"`).join('; ') || `recombining ${f.gate.recombining}/${f.gate.required}`} (strike ${f.strikes})`);
           }
         }
       }
@@ -1565,6 +1686,7 @@ module.exports = function seedCompleteRoutes(ctx) {
           warnings,
           skills: ['ralph-methodology.md'],
           hint: 'Fix all errors and resubmit. Nothing was inserted. Review ralph-methodology.md for methodology guidance.',
+          introduced_vocab: await vocabInjectionFor(ctx, course_code, seed_number),
         });
       }
 
@@ -1611,6 +1733,7 @@ module.exports = function seedCompleteRoutes(ctx) {
           phrases: legos.reduce((sum, l) => sum + (l.build?.length || 0) + (l.use?.length || 0) + (l.phrases?.length || 0), 0),
           warnings: warnings.length > 0 ? { note: 'Warnings for next seed', items: warnings } : undefined,
           hint: 'Draft saved. Run POST /api/course/:code/finalize when all seeds are drafted.',
+          introduced_vocab: await vocabInjectionFor(ctx, course_code, seed_number),
         });
       }
 
@@ -2051,6 +2174,8 @@ module.exports = function seedCompleteRoutes(ctx) {
         } : {
           instruction: 'ALL SEEDS COMPLETE - say BATCH COMPLETE and exit',
         },
+
+        introduced_vocab: await vocabInjectionFor(ctx, course_code, seed_number),
       });
 
       // Fire-and-forget: when seed 5 lands and the course hasn't yet been

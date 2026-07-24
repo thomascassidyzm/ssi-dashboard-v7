@@ -134,6 +134,58 @@ async function loadTranslationVocab(ctx, courseCode, upToSeedNumber) {
 }
 
 /**
+ * Load the introduced-LEGO list (known → target pairs, introduction order)
+ * for server-side vocab injection. Paginated — course_legos can exceed the
+ * supabase 1000-row default.
+ */
+async function loadIntroducedLegoPairs(ctx, courseCode, upToSeedNumber) {
+  const pairs = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await ctx.supabase
+      .from('course_legos')
+      .select('seed_number, lego_index, known_text, target_text')
+      .eq('course_code', courseCode)
+      .lte('seed_number', upToSeedNumber)
+      .order('seed_number')
+      .order('lego_index')
+      .range(from, from + 999);
+    if (error) throw new Error(error.message);
+    pairs.push(...(data || []));
+    if (!data || data.length < 1000) break;
+  }
+  return pairs.map(l => ({ seed: l.seed_number, idx: l.lego_index, known: l.known_text, target: l.target_text }));
+}
+
+/**
+ * Server-side vocab injection block for /seed/complete round-trips
+ * (template-stamp fix 2026-07-24): the builder can never be without its
+ * prior-LEGO vocab list regardless of context compaction. Full list when
+ * small; recent window + even sample of the earlier estate when large.
+ */
+function buildVocabInjection(pairs) {
+  const fmt = p => `${p.known} → ${p.target}`;
+  let legos;
+  let coverage = 'complete';
+  if (pairs.length <= 300) {
+    legos = pairs.map(fmt);
+  } else {
+    coverage = 'recent-200-plus-sampled-100';
+    const recent = pairs.slice(-200);
+    const earlier = pairs.slice(0, -200);
+    const step = earlier.length / 100;
+    const sampled = [];
+    for (let i = 0; i < 100; i++) sampled.push(earlier[Math.floor(i * step)]);
+    legos = [...sampled.map(fmt), ...recent.map(fmt)];
+  }
+  return {
+    note: 'SERVER-INJECTED introduced-LEGO vocabulary (introduction order). This survives your context compaction — recombine BUILD phrases from THIS list. Never pad with filler tags (", yes/here/again"): the anti-template gate rejects them.',
+    total_legos: pairs.length,
+    coverage,
+    legos,
+  };
+}
+
+/**
  * Invalidate cache for a course (e.g., after rebuild).
  */
 function invalidateVocabCache(ctx, courseCode) {
@@ -146,5 +198,7 @@ module.exports = {
   loadCourseVocab,
   addToCourseVocab,
   loadTranslationVocab,
+  loadIntroducedLegoPairs,
+  buildVocabInjection,
   invalidateVocabCache,
 };
