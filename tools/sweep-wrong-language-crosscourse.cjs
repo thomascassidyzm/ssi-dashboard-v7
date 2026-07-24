@@ -242,6 +242,12 @@ async function sweepCourse(course, rows, tmpDir) {
   const pending = jobs.filter((j) => !ledger.clips[j.id])
   console.log(`${course}: ${jobs.length} clips (${jobs.filter((j) => j.homograph).length} homograph-bearing), ${pending.length} to score, target=${target}`)
 
+  // Detector-blindness circuit breaker: whisper (small AND medium) is
+  // near-blind on some targets (empirically: a clean Irish clip → en/en/en
+  // p=0.80). When ≥75% of the first 40 scored clips flag, the instrument
+  // can't hear this language — stop paying for the per-flag ladder, record
+  // auto-detect only, and report the course as needing a different method.
+  let scored = 0, flagged = 0
   let n = 0
   for (const j of pending) {
     const rec = { text: j.text, rowId: j.rowId, slot: j.slot, homograph: j.homograph, preGate: j.preGate, durationMs: j.durationMs }
@@ -254,6 +260,8 @@ async function sweepCourse(course, rows, tmpDir) {
         rec.detected = d.lang; rec.p = d.p; rec.transcript = d.text
         if (d.lang === target) {
           rec.verdict = 'ok'
+        } else if (ledger.detectorBlind) {
+          rec.verdict = 'undetectable-language'
         } else {
           // cheap verification ladder (see header)
           const buf = fs.readFileSync(mp3)
@@ -283,6 +291,12 @@ async function sweepCourse(course, rows, tmpDir) {
       }
     }
     ledger.clips[j.id] = rec
+    scored++
+    if (rec.verdict?.startsWith('flag') || rec.verdict === 'undetectable-language') flagged++
+    if (!ledger.detectorBlind && scored === 40 && flagged / scored >= 0.75) {
+      ledger.detectorBlind = true
+      console.log(`  ${course}: DETECTOR-BLIND (${flagged}/${scored} early flags) — auto-detect only from here; course needs a different verification method`)
+    }
     n++
     if (n % 20 === 0) {
       fs.writeFileSync(ledgerPath, JSON.stringify(ledger, null, 1))
