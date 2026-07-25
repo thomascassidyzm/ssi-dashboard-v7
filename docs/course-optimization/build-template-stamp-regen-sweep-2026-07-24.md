@@ -64,3 +64,16 @@ in the stale window). If a gate file changes mid-backlog, restart `phase8-audio`
 
 - `logs/build-regen-sweep-2026-07-24.log` — full run log
 - `scripts/build-audit/regen-logs/*-applied-log.json` — per-course before/after row diffs
+
+## cym_s_for_eng — human recording needed (Tom ruling 2026-07-25)
+
+The Welsh courses are human-voiced only (no TTS ever). The 6 re-texted BUILD rows below were KEPT by Tom's ruling — they need **human recordings** of the new target phrases; until recorded, these rows have no matching audio:
+
+| row | new English | new Welsh |
+|---|---|---|
+| S0054L01B01 | thank you very much but I still need to practise speaking | diolch yn fawr ond dw i dal angen ymarfer siarad |
+| S0164L01B07 | so I'd better speak Welsh now | felly well i fi siarad Cymraeg nawr |
+| S0131L01B02 | it's possible that you started a week ago | mae'n bosib wnest ti ddechrau wythnos yn ôl |
+| S0131L01B03 | it's possible I've forgotten something | mae'n bosib dw i wedi anghofio rhywbeth |
+| S0286L03B03 | he wants whatever | ma fe'n moyn ta beth |
+| S0286L03B05 | whatever they say | ta beth maen nhw'n dweud |
