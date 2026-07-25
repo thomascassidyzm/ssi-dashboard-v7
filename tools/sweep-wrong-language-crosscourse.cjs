@@ -42,6 +42,7 @@ const os = require('os')
 const path = require('path')
 const { execFile } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
+const { isHumanVoiceCourse } = require('../services/shared/human-voice-courses.cjs')
 
 const supabase = createClient(
   (process.env.SUPABASE_URL || '').trim(),
@@ -342,6 +343,10 @@ async function sweepCourse(course, rows, tmpDir) {
     ;(byCourse[c] ??= []).push(r)
   }
   let courses = Object.keys(byCourse).filter((c) => !SKIP.has(c))
+  // Human-voice-only courses (Welsh cym_*) are never synthesised (Tom 2026-07-25).
+  const humanVoice = courses.filter((c) => isHumanVoiceCourse(c))
+  if (humanVoice.length) console.log(`Skipping ${humanVoice.length} human-voice-only course(s) — no TTS ever (Tom 2026-07-25): ${humanVoice.join(', ')}`)
+  courses = courses.filter((c) => !isHumanVoiceCourse(c))
   if (ONLY) courses = courses.filter((c) => ONLY.has(c))
 
   // Course order: highest homograph share first (real defects cluster there).

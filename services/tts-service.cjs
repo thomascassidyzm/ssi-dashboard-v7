@@ -19,6 +19,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { execFile } = require('child_process');
 const { ellipsisToSSMLBreaks } = require('./shared/ellipsis-ssml.cjs');
+const { isHumanVoiceCourse } = require('./shared/human-voice-courses.cjs');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint } = require('./azure-tts-service.cjs');
 
@@ -54,6 +55,21 @@ function assertNotChildVoice(config) {
   const requested = String(config?.voiceName || config?.voiceId || '').replace(/^azure_/, '');
   if (CHILD_VOICE_IDS.has(requested)) {
     throw new Error(`Child voice blocked (403): ${requested} — kids' voices are never allowed. Fix the caller's voice params (pod cast / voice_config).`);
+  }
+}
+
+// Human-voiced courses are NEVER synthesised (Tom 2026-07-25: the Welsh courses
+// cym_n_for_eng / cym_s_for_eng are human-recorded only — a synthesised Welsh
+// clip reaching a learner is a defect). Same defence pattern as the child-voice
+// block: the guard lives here at the one chokepoint every provider path passes
+// through, and the "(403)" makes isRetriableTtsError treat it as a client error
+// (fail fast, never retry). Callers thread the course code via config.courseCode
+// (see services/shared/human-voice-courses.cjs); pipeline entry points skip
+// these courses up front, so this is defence-in-depth, not the first line.
+function assertNotHumanVoiceCourse(config) {
+  const courseCode = config?.courseCode;
+  if (courseCode && isHumanVoiceCourse(courseCode)) {
+    throw new Error(`Human-voice course blocked (403): ${courseCode} is human-voiced only — no TTS may ever be generated (Tom's ruling 2026-07-25). Skip this course at the pipeline entry point.`);
   }
 }
 
@@ -291,6 +307,7 @@ async function generate(text, provider, config) {
   }
 
   assertNotChildVoice(config);
+  assertNotHumanVoiceCourse(config);
 
   switch (provider) {
     case 'elevenlabs':
@@ -531,5 +548,6 @@ module.exports = {
   // phonology gate internals, exported for tests/tools
   detectSpokenLanguage,
   phonologySuspects,
-  CHILD_VOICE_IDS
+  CHILD_VOICE_IDS,
+  assertNotHumanVoiceCourse
 };

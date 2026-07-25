@@ -44,6 +44,7 @@ const { claudeChat, HAIKU_MODEL } = require('../shared/claude-cli.cjs')
 const presentationAuthor = require('./presentation-author.cjs')
 const { emitProgress } = require('../shared/emit-progress.cjs')
 const { fulfillAudioPassRequests } = require('../shared/audio-pass-queue.cjs')
+const { isHumanVoiceCourse } = require('../shared/human-voice-courses.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
 const { toIso3, getName: getLangEnglishName, databaseToManifest, getAzureLocale } = require('../language-code-service.cjs')
@@ -1509,6 +1510,15 @@ app.get('/inventory/:courseCode', async (req, res) => {
 app.post('/generate/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
+
+    // Human-voice-only courses are never synthesised (Tom 2026-07-25: Welsh
+    // cym_* courses are human-recorded). Skip up front with a logged notice
+    // rather than letting the render loop error downstream per-clip.
+    if (isHumanVoiceCourse(courseCode)) {
+      logger.info(`[/generate] SKIP ${courseCode}: human-voice-only course — no TTS generated (Tom's ruling 2026-07-25)`)
+      return res.json({ skipped: true, reason: 'human-voice-only-course', courseCode, generated: 0 })
+    }
+
     const { dryRun = false, limit = 50000, concurrency: requestedConcurrency, roles: requestedRoles, seeds: requestedSeeds } = req.body  // High default for bulk generation
     // Optional incremental scope: restrict generation to specific seed numbers.
     const scopeSeeds = Array.isArray(requestedSeeds) && requestedSeeds.length
@@ -2061,6 +2071,10 @@ app.post('/generate/:courseCode', async (req, res) => {
 app.post('/regenerate-role/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
+    if (isHumanVoiceCourse(courseCode)) {
+      logger.info(`[/regenerate-role] SKIP ${courseCode}: human-voice-only course — no TTS (Tom's ruling 2026-07-25)`)
+      return res.json({ skipped: true, reason: 'human-voice-only-course', courseCode })
+    }
     const { role, dryRun = false, limit, flaggedOnly = false } = req.body
 
     if (!role) {
@@ -2681,6 +2695,10 @@ app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
 app.post('/regenerate-presentations/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
+    if (isHumanVoiceCourse(courseCode)) {
+      logger.info(`[/regenerate-presentations] SKIP ${courseCode}: human-voice-only course — no TTS (Tom's ruling 2026-07-25)`)
+      return res.json({ skipped: true, reason: 'human-voice-only-course', courseCode })
+    }
     const { dryRun = true, regenerateAudio = false, regenerateAll = false } = req.body
 
     logger.info(`Regenerating presentations for ${courseCode} (dryRun=${dryRun}, regenerateAll=${regenerateAll})`)
@@ -3550,6 +3568,11 @@ app.post('/link-presentation-audio/:courseCode', async (req, res) => {
 app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
   try {
     const { courseCode, audioUuid } = req.params
+
+    if (isHumanVoiceCourse(courseCode)) {
+      logger.info(`[/regenerate-single] SKIP ${courseCode}: human-voice-only course — no TTS (Tom's ruling 2026-07-25)`)
+      return res.json({ skipped: true, reason: 'human-voice-only-course', courseCode })
+    }
 
     // 1. Lookup the course_audio record
     const { data: audioRecord, error: audioError } = await supabase
@@ -5287,8 +5310,11 @@ function resolvePodSpeakerVoice(podSpeakers, speaker, track) {
 /**
  * Build the TTS config for a single audio generation call.
  */
-function buildPodTTSConfig(voice, language) {
-  const base = { voiceId: voice.voice_id, speed: 1.0 }
+function buildPodTTSConfig(voice, language, courseCode) {
+  // courseCode is carried into the TTS config so tts-service's chokepoint can
+  // refuse human-voice-only courses (assertNotHumanVoiceCourse) — defence in
+  // depth behind the entry-point guards.
+  const base = { voiceId: voice.voice_id, speed: 1.0, courseCode }
   if (voice.provider === 'xai') {
     base.apiKey = process.env.XAI_API_KEY
     // Prefer the coverage-map locale carried on the voice (pt-PT, es-MX, ar-EG,
@@ -5372,7 +5398,7 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
   let activeVoice = voice
   let audioBuffer, wordBoundaries
   try {
-    const ttsConfig = buildPodTTSConfig(activeVoice, language)
+    const ttsConfig = buildPodTTSConfig(activeVoice, language, courseCode)
     ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, provider, ttsConfig))
   } catch (primaryErr) {
     // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
@@ -5391,7 +5417,7 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
     logger.info(`[Pods] fallback xAI→Azure for ${sentenceId || '?'} ${kind} voice=${azureVoice.voice_id} (${primaryErr.message})`)
     provider = 'azure'
     activeVoice = azureVoice
-    const azureConfig = buildPodTTSConfig(activeVoice, language)
+    const azureConfig = buildPodTTSConfig(activeVoice, language, courseCode)
     try {
       ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, 'azure', azureConfig))
     } catch (e) { e.message = `[STAGE=tts:azure-fallback,xai-also-failed] ${e.message}`; throw e }

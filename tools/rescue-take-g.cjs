@@ -23,10 +23,15 @@
 require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') })
 const { createClient } = require('@supabase/supabase-js')
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
+const { isHumanVoiceCourse } = require('../services/shared/human-voice-courses.cjs')
 
 const COURSE = process.argv[2]
 const dry = process.argv.includes('--dry')
 if (!COURSE) { console.error('usage: rescue-take-g.cjs <course> [--dry]'); process.exit(1) }
+if (isHumanVoiceCourse(COURSE)) {
+  console.log(`${COURSE} is human-voiced only — no TTS ever (Tom 2026-07-25). Nothing to do.`)
+  process.exit(0)
+}
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const ROLE = 'pod_take_g'

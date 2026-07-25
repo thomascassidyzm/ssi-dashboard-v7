@@ -42,6 +42,7 @@ const { execFile } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const audioProcessor = require('../services/audio-processor.cjs')
+const { isHumanVoiceCourse } = require('../services/shared/human-voice-courses.cjs')
 
 const COURSE = process.argv[2]
 const flagsIdx = process.argv.indexOf('--flags')
@@ -50,6 +51,10 @@ const dry = process.argv.includes('--dry')
 if (!COURSE || !FLAGS_PATH) {
   console.error('usage: rescue-wrong-language-clips.cjs <course> --flags <ids.json> [--dry]')
   process.exit(1)
+}
+if (isHumanVoiceCourse(COURSE)) {
+  console.log(`${COURSE} is human-voiced only — no TTS ever (Tom 2026-07-25). Nothing to do.`)
+  process.exit(0)
 }
 
 const supabase = createClient(

@@ -26,6 +26,7 @@
 require('dotenv').config()
 const http = require('http')
 const { createClient } = require('@supabase/supabase-js')
+const { isHumanVoiceCourse } = require('../../services/shared/human-voice-courses.cjs')
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } })
 const PHASE8 = process.env.PHASE8_URL || 'http://localhost:3465'
@@ -116,8 +117,13 @@ async function run() {
   }
 
   const rows = await pendingRequests()
-  const approved = rows.filter(r => r.metadata?.approval?.approved === true)
-  const unapproved = rows.filter(r => !r.metadata?.approval?.approved)
+  // Human-voice-only courses (Welsh cym_*) are never synthesised (Tom 2026-07-25).
+  // /generate skips them anyway, but drop them here so they never count as work.
+  const humanVoice = rows.filter(r => isHumanVoiceCourse(r.course_code))
+  if (humanVoice.length) console.log(`Skipping ${humanVoice.length} human-voice-only request(s) — no TTS ever (Tom 2026-07-25): ${humanVoice.map(r => r.course_code).join(', ')}`)
+  const eligible = rows.filter(r => !isHumanVoiceCourse(r.course_code))
+  const approved = eligible.filter(r => r.metadata?.approval?.approved === true)
+  const unapproved = eligible.filter(r => !r.metadata?.approval?.approved)
   if (unapproved.length) console.log(`Skipping ${unapproved.length} matching-but-UNAPPROVED request(s): ${unapproved.map(r => r.course_code).join(', ')}`)
   console.log(`[${ts()}] ${approved.length} approved pending request(s) to fulfil, sequentially.\n`)
 

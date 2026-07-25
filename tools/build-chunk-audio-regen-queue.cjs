@@ -23,6 +23,7 @@
 const fs = require('fs')
 const path = require('path')
 const { resolveTargetPool, KNOWN_POOL } = require('./pod-voice-coverage.cjs')
+const { isHumanVoiceCourse } = require('../services/shared/human-voice-courses.cjs')
 
 const AZURE_COST_PER_MILLION_CHARS_USD = 4.0 // services/audio-generation-planner.cjs s0 tier
 
@@ -59,6 +60,9 @@ fs.mkdirSync(outDir, { recursive: true })
 const summary = []
 for (const r of results) {
   if (courseFilter && !r.courseCode.includes(courseFilter)) continue
+  // Human-voice-only courses (Welsh cym_*) are never synthesised (Tom 2026-07-25):
+  // never stage a TTS regen queue for them.
+  if (isHumanVoiceCourse(r.courseCode)) { console.log(`${r.courseCode}: human-voice-only — no TTS queue staged (Tom 2026-07-25)`); continue }
   // Stage a file only where there's an actual GAP (nothing playable) — the
   // cut-candidate opportunity (source exists, already plays via fallback) is
   // real but zero-cost and non-urgent; it's summarised course-wide below

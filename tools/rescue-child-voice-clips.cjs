@@ -45,6 +45,7 @@ const { createClient } = require('@supabase/supabase-js')
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const audioProcessor = require('../services/audio-processor.cjs')
 const { CHILD_VOICE_IDS } = require('../services/tts-service.cjs')
+const { isHumanVoiceCourse } = require('../services/shared/human-voice-courses.cjs')
 
 const argCourse = process.argv[2]
 const dry = process.argv.includes('--dry')
@@ -311,6 +312,10 @@ async function rescueCourse(course, log) {
   } else {
     courses = [argCourse]
   }
+  // Human-voice-only courses (Welsh cym_*) are never synthesised (Tom 2026-07-25).
+  const humanVoice = courses.filter((c) => isHumanVoiceCourse(c))
+  if (humanVoice.length) console.log(`Skipping ${humanVoice.length} human-voice-only course(s) — no TTS ever (Tom 2026-07-25): ${humanVoice.join(', ')}`)
+  courses = courses.filter((c) => !isHumanVoiceCourse(c))
   console.log(`${courses.length} course(s): ${courses.join(', ')}`)
   console.log(PHONO_GATE ? 'phonology gate ON' : 'phonology gate OFF — whisper-cli/model missing; renders land UNCHECKED')
 

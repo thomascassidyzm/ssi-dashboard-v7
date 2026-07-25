@@ -131,6 +131,37 @@ Each phrase may have multiple audio variants:
 
 ---
 
+## 2b. TTS Exclusions — courses that must never be synthesised
+
+Two categories of content are hard-blocked from TTS. Both use the same defence
+pattern: a **chokepoint** assertion inside `services/tts-service.cjs` `generate()`
+(the single point every provider path passes through) that fails **non-retriably**
+(`(403)` → `isRetriableTtsError` treats it as a client error), plus **entry-point
+guards** so pipeline drivers skip the work up front with a logged notice.
+
+| Exclusion | Chokepoint | Source of truth |
+|-----------|-----------|-----------------|
+| **Child voices** — never allowed on any course | `assertNotChildVoice(config)` (keys off `config.voiceName`/`voiceId`) | `CHILD_VOICE_IDS` in `tts-service.cjs` |
+| **Human-voice-only courses** — Welsh `cym_*` are human-recorded; TTS is a defect | `assertNotHumanVoiceCourse(config)` (keys off `config.courseCode`) | `services/shared/human-voice-courses.cjs` |
+
+**Human-voice-only courses (Tom's ruling, 2026-07-25):** `cym_n_for_eng` and
+`cym_s_for_eng` — and every `cym_*` course by prefix — are HUMAN-VOICED ONLY. No
+TTS may ever be generated for them; their pending `audio_pass_requests` were
+dismissed on the ruling date. Entry points that skip them up front:
+`phase8 /generate` (and `/regenerate-role`, `/regenerate-presentations`,
+`/regenerate-single`), `tools/course-optimization/run-approved-audio-passes.cjs`,
+`tools/rescue-child-voice-clips.cjs`, `tools/rescue-wrong-language-clips.cjs`,
+`tools/rescue-take-g.cjs`, `tools/sweep-wrong-language-crosscourse.cjs`,
+`tools/course-optimization/regenerate-stamped-builds.cjs`,
+`tools/build-chunk-audio-regen-queue.cjs`. Adding a new Welsh course needs no
+code change — the `cym_*` prefix rule covers it.
+
+> Historical note: 110 TTS-origin `cym_*` clips exist from **2026-07-05** (62 in
+> `cym_n_for_eng`, 48 in `cym_s_for_eng`, xAI voice `gfzdpspr5fdp`), predating the
+> ruling. Per repo policy generated assets are never deleted without a separate
+> deletion plan + approval; these are recorded here, not removed. No `cym_*` TTS
+> was minted by any sweep on/after 2026-07-20.
+
 ## 3. Phase 8: Audio Generation
 
 ```

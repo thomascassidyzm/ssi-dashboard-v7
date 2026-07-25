@@ -46,6 +46,7 @@ const { normalizeForContainment, normalizeForZUT, checkWordContainment, extractV
 const { isChinese } = require(path.join(REPO, 'services/course-builder/lib/language-config.cjs'));
 const { escalateBuildPhrases } = require(path.join(REPO, 'services/course-builder/lib/build-escalation.cjs'));
 const { queueAudioPass } = require(path.join(REPO, 'services/shared/audio-pass-queue.cjs'));
+const { isHumanVoiceCourse } = require(path.join(REPO, 'services/shared/human-voice-courses.cjs'));
 
 // ── args ──
 const args = process.argv.slice(2);
@@ -72,6 +73,12 @@ fs.mkdirSync(LOG_DIR, { recursive: true });
 
 // ── per-course sweep ──
 async function sweepCourse(courseCode) {
+  // Human-voice-only courses (Welsh cym_*) are never synthesised (Tom 2026-07-25):
+  // don't even queue an audio-pass request the runner would only skip.
+  if (isHumanVoiceCourse(courseCode)) {
+    console.log(`\n═══ ${courseCode}: human-voice-only — SKIP (no TTS ever, Tom 2026-07-25)`);
+    return { course: courseCode, skipped: 'human-voice-only', stamped_before: 0, applied: 0, failed: 0 };
+  }
   const chinese = isChinese(courseCode);
   const stats = {
     course: courseCode, dry_run: DRY_RUN, stamped_before: 0, applied: 0, failed: 0, skipped_max: 0,
