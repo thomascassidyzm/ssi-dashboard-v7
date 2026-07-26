@@ -77,3 +77,29 @@ The Welsh courses are human-voiced only (no TTS ever). The 6 re-texted BUILD row
 | S0131L01B03 | it's possible I've forgotten something | mae'n bosib dw i wedi anghofio rhywbeth |
 | S0286L03B03 | he wants whatever | ma fe'n moyn ta beth |
 | S0286L03B05 | whatever they say | ta beth maen nhw'n dweud |
+
+## cym_n / cym_s — human recording needed: unlinked Welsh-TTS rows (Tom ruling 2026-07-26)
+
+Owner ruling (Tom, 2026-07-26), **option B**: the 32 reachable Welsh-target legacy TTS clips (Jan 2026 `legacy_import`, `origin=tts`, `language=cym`) were **unlinked now** (`target1_audio_id`/`target2_audio_id` nulled on the 17 content rows below — 5 legos + 12 phrases across the two courses) so the rows go silent, and the phrases are queued here for **human recording**. Welsh courses are human-voiced only; no TTS. The clip assets themselves were left in place (repo no-delete rule); only the references were cut. Each row had **no human-voiced alternative** for the same target text — verified before unlinking, so nothing learner-facing was lost that a human recording won't restore. Before-state (for reversibility): `docs/course-optimization/welsh-tts-unlink-2026-07-26-before-state.json`.
+
+| row | English | Welsh | table | db id |
+|---|---|---|---|---|
+| S0043L01 | did you start? | wnest ti ddechrau? | course_legos | cym_n_for_eng / ab81afcd-e392-405a-87bc-61a79e6e9df0 |
+| S0094L03 | did you have? | gest ti? | course_legos | cym_n_for_eng / 2dd6aaa6-d3c9-4ad3-bab5-a77c3c207c84 |
+| S0194L01 | did you have? | gest ti? | course_legos | cym_n_for_eng / c4a8244e-95e1-45e3-87eb-6802adda92aa |
+| S0043L01B04 | did you start a month ago? | wnest ti ddechrau mis yn ôl? | course_practice_phrases | cym_n_for_eng:S0043L01B04 |
+| S0043L01B06 | did you start to practice a week ago? | wnest ti ddechrau ymarfer wythnos yn ôl? | course_practice_phrases | cym_n_for_eng:S0043L01B06 |
+| S0043L01B07 | did you start to practice? | wnest ti ddechrau ymarfer? | course_practice_phrases | cym_n_for_eng:S0043L01B07 |
+| S0197L01B01 | what did you think? | beth oeddat ti’n meddwl? | course_practice_phrases | cym_n_for_eng:S0197L01B01 |
+| S0210L01B02 | did you say that you wanted a cup of tea or coffee? | ddudest ti bo’ ti isio panad o de neu goffi? | course_practice_phrases | cym_n_for_eng:S0210L01B02 |
+| S0235L01B03 | did you say that you wanted to get up early in the morning? | ddudoch chi bo’ chi isio codi yn gynnar yn y bore? | course_practice_phrases | cym_n_for_eng:S0235L01B03 |
+| S0040L01 | did you start? | wnest ti ddechrau? | course_legos | cym_s_for_eng / ac6d6e64-5523-4c82-a3ac-dda38270aaaa |
+| S0092L01 | did you get? | gest ti? | course_legos | cym_s_for_eng / 2fb944d5-a863-45d0-8d0a-79a2330d99cf |
+| S0040L01B05 | did you start a month ago? | wnest ti ddechrau mis yn ôl? | course_practice_phrases | cym_s_for_eng:S0040L01B05 |
+| S0040L01B06 | did you start to practice a week ago? | wnest ti ddechrau ymarfer wythnos yn ôl? | course_practice_phrases | cym_s_for_eng:S0040L01B06 |
+| S0040L01B07 | did you start to practice? | wnest ti ddechrau ymarfer? | course_practice_phrases | cym_s_for_eng:S0040L01B07 |
+| S0204L01B01 | what did you think? | beth o’t ti’n meddwl? | course_practice_phrases | cym_s_for_eng:S0204L01B01 |
+| S0218L03B03 | did you say that you wanted a cup of tea or coffee? | ddwedest ti bo’ ti’n moyn dishgled o de neu goffi? | course_practice_phrases | cym_s_for_eng:S0218L03B03 |
+| S0248L01B02 | did you say that you wanted to get up early in the morning? | ddwedoch chi bo’ chi’n moyn codi yn gynnar yn y bore? | course_practice_phrases | cym_s_for_eng:S0248L01B02 |
+
+Graceful-degradation check (learner app): both playback paths funnel through `packages/player-vue/src/providers/generateLearningScript.ts`, which filters out any lego/phrase lacking all three audio ids (`phraseHasFullAudio`; lego filter — rows dropped with a `console.warn`, never rendered as a cycle). `api/courses/[code]/cycles.ts` omits null audio keys ("frontend treats absence as no audio for this role"). The throwing guard in `useCyclePlayback.ts` never receives these rows because they're filtered upstream. Silence = skip, not crash. `content_stamp` bumped on both courses by the `touch_course_content_stamp` trigger (fires on every update), so learner devices re-fetch.
