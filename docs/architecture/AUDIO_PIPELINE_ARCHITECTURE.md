@@ -144,10 +144,14 @@ guards** so pipeline drivers skip the work up front with a logged notice.
 | **Child voices** — never allowed on any course | `assertNotChildVoice(config)` (keys off `config.voiceName`/`voiceId`) | `CHILD_VOICE_IDS` in `tts-service.cjs` |
 | **Human-voice-only courses** — Welsh `cym_*` are human-recorded; TTS is a defect | `assertNotHumanVoiceCourse(config)` (keys off `config.courseCode`) | `services/shared/human-voice-courses.cjs` |
 
-**Human-voice-only courses (Tom's ruling, 2026-07-25):** `cym_n_for_eng` and
-`cym_s_for_eng` — and every `cym_*` course by prefix — are HUMAN-VOICED ONLY. No
-TTS may ever be generated for them; their pending `audio_pass_requests` were
-dismissed on the ruling date. Entry points that skip them up front:
+**Human-voice-only courses (Tom's ruling, 2026-07-25; extended 2026-07-27):**
+`cym_n_for_eng` and `cym_s_for_eng` — and every `cym_*` course by prefix — are
+HUMAN-VOICED ONLY. `bre_for_fra` (Breton) joined the set on 2026-07-27 (Azure
+has no Breton voice; same policy). No TTS may ever be generated for these
+courses; their pending `audio_pass_requests` were dismissed on the respective
+ruling dates. 97 pre-ruling TTS clips exist for `bre_for_fra` (ElevenLabs
+origin) — recorded here, not unlinked, per the same generated-asset policy as
+the historical `cym_*` clips below. Entry points that skip them up front:
 `phase8 /generate` (and `/regenerate-role`, `/regenerate-presentations`,
 `/regenerate-single`), `tools/course-optimization/run-approved-audio-passes.cjs`,
 `tools/rescue-child-voice-clips.cjs`, `tools/rescue-wrong-language-clips.cjs`,

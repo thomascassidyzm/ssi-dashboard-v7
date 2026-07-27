@@ -19,11 +19,16 @@
  * is human-recorded, so the prefix rule is the safe default and new Welsh
  * courses are covered without a code change. The explicit set documents the two
  * courses the ruling named.
+ *
+ * OWNER RULING (Tom 2026-07-27): bre_for_fra (Breton) is also HUMAN-VOICED
+ * ONLY — Azure has no Breton voice, same policy as the cym_* courses. Its
+ * pending audio_pass_request was dismissed the same day.
  */
 
 const HUMAN_VOICE_COURSES = new Set([
   'cym_n_for_eng',
   'cym_s_for_eng',
+  'bre_for_fra',
 ]);
 
 /**

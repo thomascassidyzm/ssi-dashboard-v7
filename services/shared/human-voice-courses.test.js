@@ -13,6 +13,11 @@ describe('isHumanVoiceCourse', () => {
     expect(HUMAN_VOICE_COURSES.has('cym_s_for_eng')).toBe(true)
   })
 
+  it('flags bre_for_fra (Breton, 2026-07-27 ruling)', () => {
+    expect(isHumanVoiceCourse('bre_for_fra')).toBe(true)
+    expect(HUMAN_VOICE_COURSES.has('bre_for_fra')).toBe(true)
+  })
+
   it('flags any cym_* course by prefix (future Welsh courses covered)', () => {
     expect(isHumanVoiceCourse('cym_for_spa')).toBe(true)
     expect(isHumanVoiceCourse('cym_mid_for_eng')).toBe(true)
