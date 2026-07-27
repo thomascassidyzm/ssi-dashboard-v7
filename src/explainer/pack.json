@@ -1,0 +1,720 @@
+{
+  "version": "980828bc2a68",
+  "generatedAt": "2026-07-27",
+  "truth": {
+    "navTabs": {
+      "primary": [
+        {
+          "label": "Courses",
+          "to": "/courses"
+        },
+        {
+          "label": "Docs",
+          "to": "/docs"
+        },
+        {
+          "label": "Admin",
+          "to": "/admin"
+        }
+      ],
+      "admin": [
+        {
+          "label": "Admin",
+          "to": "/admin"
+        },
+        {
+          "label": "Configs",
+          "to": "/admin/configs"
+        },
+        {
+          "label": "Insights",
+          "to": "/insights"
+        },
+        {
+          "label": "Activity",
+          "to": "/jobs"
+        },
+        {
+          "label": "Maintenance",
+          "to": "/maintenance"
+        },
+        {
+          "label": "Users",
+          "to": "/users"
+        }
+      ],
+      "production": [
+        {
+          "label": "Overview",
+          "to": "/production/${code}"
+        }
+      ],
+      "docs": [
+        {
+          "label": "Overview",
+          "to": "/docs"
+        },
+        {
+          "label": "APML",
+          "to": "/docs/apml"
+        },
+        {
+          "label": "Pedagogy",
+          "to": "/docs/pedagogy"
+        },
+        {
+          "label": "Glossary",
+          "to": "/docs/terminology"
+        },
+        {
+          "label": "Seeds",
+          "to": "/docs/seeds"
+        },
+        {
+          "label": "Content",
+          "to": "/docs/canonical"
+        },
+        {
+          "label": "Pods",
+          "to": "/docs/pods"
+        },
+        {
+          "label": "Pod Thinking",
+          "to": "/docs/pod-thinking"
+        },
+        {
+          "label": "Pipeline",
+          "to": "/docs/pipeline"
+        },
+        {
+          "label": "Intelligence",
+          "to": "/docs/intelligence"
+        }
+      ]
+    },
+    "roles": [
+      "admin",
+      "editor",
+      "recorder"
+    ],
+    "activeWorkflow": "Phase 1 → 3 → 8 → 9",
+    "phasePorts": [
+      {
+        "port": "3456",
+        "phase": "-",
+        "name": "Orchestrator",
+        "status": "✅ Active"
+      },
+      {
+        "port": "3457",
+        "phase": "1",
+        "name": "Translation + LEGO Extraction",
+        "status": "✅ Active"
+      },
+      {
+        "port": "3458",
+        "phase": "2",
+        "name": "Conflict Resolution",
+        "status": "✅ Active"
+      },
+      {
+        "port": "3459",
+        "phase": "3",
+        "name": "Basket Generation",
+        "status": "✅ Active"
+      },
+      {
+        "port": "3464",
+        "phase": "-",
+        "name": "Legacy Manifest (deprecated)",
+        "status": "⚠️ Deprecated"
+      },
+      {
+        "port": "3465",
+        "phase": "8",
+        "name": "Audio Generator (Supabase)",
+        "status": "✅ Active"
+      },
+      {
+        "port": "3466",
+        "phase": "9",
+        "name": "Manifest Compiler (Supabase)",
+        "status": "✅ Active"
+      },
+      {
+        "port": "3470",
+        "phase": "-",
+        "name": "Production API (QA + WebSocket)",
+        "status": "✅ Active"
+      }
+    ],
+    "gates": {
+      "functions": [
+        "checkTiling",
+        "checkMetadataGloss",
+        "checkKnownSide",
+        "isKnownVocabBreach",
+        "checkPhraseComplexity",
+        "checkVocabViolations",
+        "checkPhraseBalance",
+        "checkLegoConflict",
+        "checkLegoOverlap",
+        "checkPhraseZUT",
+        "checkBasketFrameCoverage",
+        "classifySeedPattern",
+        "classifyBuildPhrase",
+        "checkBuildRecombination"
+      ],
+      "maxLegoSyllables": 8,
+      "knownVocabGateBlocking": true,
+      "pairContracts": [
+        "eng_for_ben.contract.cjs",
+        "eng_for_guj.contract.cjs",
+        "eng_for_hin.contract.cjs",
+        "eng_for_pan.contract.cjs",
+        "eng_for_sin.contract.cjs",
+        "eng_for_tam.contract.cjs",
+        "eng_for_urd.contract.cjs",
+        "fra_for_eng.contract.cjs",
+        "zho_for_eng.contract.cjs"
+      ]
+    },
+    "voicePolicy": {
+      "humanVoiceCourses": [
+        "cym_n_for_eng",
+        "cym_s_for_eng",
+        "bre_for_fra"
+      ],
+      "cymPrefixRule": true,
+      "contentPassesQueueAudio": true
+    },
+    "agentEndpoints": [
+      {
+        "method": "POST",
+        "path": "/api/lego"
+      },
+      {
+        "method": "POST",
+        "path": "/api/batch"
+      },
+      {
+        "method": "POST",
+        "path": "/api/seed/complete"
+      }
+    ]
+  },
+  "explanations": {
+    "admin": {
+      "home": "Popty is where courses get made — everything a learner ever hears starts here and flows\nthrough Supabase to the learning app. Three doors at the top: **Courses** is the library and\nevery working surface inside a course, **Docs** is the methodology reference, and **Admin** is\nthe platform room — the whole estate at a glance.",
+      "courses": "Each course card opens on its Overview hub — one door per course, with every working surface\nas a card inside: text generation, audio, recording, QA. Course content lives in the database,\nnot in files; what you see here is what learners get. Text edits never mint audio by\nthemselves — a content pass ends by queueing an audio-pass request, and audio is only ever\ngenerated after an approved pass, because every minted clip costs real money.",
+      "admin": "The Admin section is the platform-wide view. **Configs** holds per-course voice and listening\nsetup — a course without voice config cannot make audio. **Insights** is the measurement room.\n**Activity** shows the builds and jobs actually running right now; a course that should be\nmoving and isn't shows up here first. **Maintenance** is the health sweep — the badge counts\ndays since the last audit, so a growing number is the system telling you it hasn't been\nchecked. **Users** is where access lives: admins see everything, editors are scoped to their\ngranted courses, recorders only ever see the Record Room.",
+      "docs": "Docs is the written methodology — the why behind the gates. The pages there are hand-written\nreference; the facts that can rot, like gate lists and pipeline shape, are compiled from the\ncode itself and live in this pack instead."
+    },
+    "editor": {
+      "home": "Popty is where your courses get made. Two doors matter for you: **Courses** — your library,\nscoped to the courses you've been granted — and **Docs**, the methodology reference. Everything\nyou edit here is live content: what the database holds is exactly what learners hear.",
+      "courses": "A course opens on its **Overview** hub — one door per course, every working surface a card\ninside it: text, audio, recording, QA. The method under all of it: one known prompt maps to\nexactly one target form, course-wide, and the known side is a controlled language too — the\ngates hold you to both when you submit, and a rejection is the method protecting the learner,\nnot the tool being difficult. Text edits never mint audio directly; a finished content pass\nqueues an audio-pass request, and audio happens after approval, because minted clips cost real\nmoney and some courses are human-voiced and never synthesised at all.",
+      "checking": "Checking a course is reading it the way a learner meets it: does each prompt force exactly one\nanswer, does every phrase use only what's been taught, does it read naturally in the known\nlanguage? The known-vocab flags this pack carries per course are the compiled starting point —\nbegin where the flags are earliest, because everything downstream builds on those seeds.",
+      "docs": "The Docs section is the reference shelf: **Overview** orients, **APML** is the system spec,\n**Pedagogy** the teaching model, **Glossary** the shared terms, **Seeds** and **Content** the\ncanonical material, **Pods** and **Pod Thinking** the listening stream, **Pipeline** and\n**Intelligence** the build process. Read Pedagogy before authoring anything — the method is\nthe product."
+    },
+    "recorder": {
+      "record-room": "The Record Room is your whole studio. The queue you see is real work waiting: lines the course\nneeds in a human voice, in order. Read each line as it's written, at an easy natural pace —\nrecordings ship at one speed and the app adjusts playback, so never rush a take. Some courses\nare human-voiced only — no synthetic voice is ever allowed to stand in for you there — which is\nwhy a line waiting in your queue can't be filled by anyone but a person. A take you're not\nhappy with is worth redoing: whatever you record is exactly what a learner will hear, thousands\nof times."
+    }
+  },
+  "rules": [],
+  "snapshot": {
+    "vocabGate": {
+      "afr_for_eng": {
+        "knownBreaches": 1079,
+        "targetBreaches": 12,
+        "phrases": 3877
+      },
+      "ara_eg_for_eng": {
+        "knownBreaches": 1988,
+        "targetBreaches": 673,
+        "phrases": 10739
+      },
+      "ara_for_eng": {
+        "knownBreaches": 865,
+        "targetBreaches": 5449,
+        "phrases": 11323
+      },
+      "ara_lb_for_eng": {
+        "knownBreaches": 2020,
+        "targetBreaches": 592,
+        "phrases": 11394
+      },
+      "ben_for_eng": {
+        "knownBreaches": 284,
+        "targetBreaches": 1,
+        "phrases": 5628
+      },
+      "bre_for_fra": {
+        "knownBreaches": 0,
+        "targetBreaches": 0,
+        "phrases": 5016
+      },
+      "bul_for_eng": {
+        "knownBreaches": 569,
+        "targetBreaches": 21,
+        "phrases": 4580
+      },
+      "cat_for_eng": {
+        "knownBreaches": 521,
+        "targetBreaches": 16,
+        "phrases": 5041
+      },
+      "cat_for_spa": {
+        "knownBreaches": 0,
+        "targetBreaches": 25,
+        "phrases": 6039
+      },
+      "ces_for_eng": {
+        "knownBreaches": 316,
+        "targetBreaches": 87,
+        "phrases": 5278
+      },
+      "cym_anthem_for_jpn": {
+        "knownBreaches": 0,
+        "targetBreaches": 34,
+        "phrases": 147
+      },
+      "cym_n_for_eng": {
+        "knownBreaches": 683,
+        "targetBreaches": 1343,
+        "phrases": 4997
+      },
+      "cym_s_for_eng": {
+        "knownBreaches": 836,
+        "targetBreaches": 1618,
+        "phrases": 5365
+      },
+      "dan_for_eng": {
+        "knownBreaches": 469,
+        "targetBreaches": 0,
+        "phrases": 4499
+      },
+      "deu_at_for_eng": {
+        "knownBreaches": 1076,
+        "targetBreaches": 0,
+        "phrases": 11251
+      },
+      "deu_ch_for_eng": {
+        "knownBreaches": 1267,
+        "targetBreaches": 0,
+        "phrases": 11551
+      },
+      "deu_for_eng": {
+        "knownBreaches": 1524,
+        "targetBreaches": 163,
+        "phrases": 12849
+      },
+      "deu_for_jpn": {
+        "knownBreaches": 0,
+        "targetBreaches": 28,
+        "phrases": 4927
+      },
+      "deu_for_zho": {
+        "knownBreaches": 0,
+        "targetBreaches": 13,
+        "phrases": 5204
+      },
+      "ell_for_eng": {
+        "knownBreaches": 806,
+        "targetBreaches": 91,
+        "phrases": 7374
+      },
+      "eng_for_ara": {
+        "knownBreaches": 0,
+        "targetBreaches": 24,
+        "phrases": 4975
+      },
+      "eng_for_ben": {
+        "knownBreaches": 0,
+        "targetBreaches": 22,
+        "phrases": 10602
+      },
+      "eng_for_deu": {
+        "knownBreaches": 0,
+        "targetBreaches": 37,
+        "phrases": 4937
+      },
+      "eng_for_fra": {
+        "knownBreaches": 0,
+        "targetBreaches": 22,
+        "phrases": 5240
+      },
+      "eng_for_guj": {
+        "knownBreaches": 0,
+        "targetBreaches": 14,
+        "phrases": 11553
+      },
+      "eng_for_hin": {
+        "knownBreaches": 0,
+        "targetBreaches": 40,
+        "phrases": 10507
+      },
+      "eng_for_ita": {
+        "knownBreaches": 0,
+        "targetBreaches": 15,
+        "phrases": 4982
+      },
+      "eng_for_jpn": {
+        "knownBreaches": 0,
+        "targetBreaches": 828,
+        "phrases": 10108
+      },
+      "eng_for_kan": {
+        "knownBreaches": 0,
+        "targetBreaches": 213,
+        "phrases": 12032
+      },
+      "eng_for_kor": {
+        "knownBreaches": 0,
+        "targetBreaches": 28,
+        "phrases": 4680
+      },
+      "eng_for_mar": {
+        "knownBreaches": 0,
+        "targetBreaches": 24,
+        "phrases": 11636
+      },
+      "eng_for_pan": {
+        "knownBreaches": 0,
+        "targetBreaches": 35,
+        "phrases": 10578
+      },
+      "eng_for_por": {
+        "knownBreaches": 0,
+        "targetBreaches": 19,
+        "phrases": 5104
+      },
+      "eng_for_sin": {
+        "knownBreaches": 0,
+        "targetBreaches": 7,
+        "phrases": 10851
+      },
+      "eng_for_spa": {
+        "knownBreaches": 0,
+        "targetBreaches": 34,
+        "phrases": 4898
+      },
+      "eng_for_tam": {
+        "knownBreaches": 0,
+        "targetBreaches": 90,
+        "phrases": 11250
+      },
+      "eng_for_tel": {
+        "knownBreaches": 0,
+        "targetBreaches": 221,
+        "phrases": 11519
+      },
+      "eng_for_urd": {
+        "knownBreaches": 0,
+        "targetBreaches": 34,
+        "phrases": 9664
+      },
+      "eng_for_zho": {
+        "knownBreaches": 0,
+        "targetBreaches": 84,
+        "phrases": 4392
+      },
+      "eng_template": {
+        "knownBreaches": 0,
+        "targetBreaches": 1,
+        "phrases": 4583
+      },
+      "est_for_eng": {
+        "knownBreaches": 412,
+        "targetBreaches": 25,
+        "phrases": 4839
+      },
+      "eus_for_eng": {
+        "knownBreaches": 925,
+        "targetBreaches": 139,
+        "phrases": 5688
+      },
+      "eus_for_spa": {
+        "knownBreaches": 0,
+        "targetBreaches": 42,
+        "phrases": 4888
+      },
+      "fas_for_eng": {
+        "knownBreaches": 507,
+        "targetBreaches": 435,
+        "phrases": 6395
+      },
+      "fin_for_eng": {
+        "knownBreaches": 490,
+        "targetBreaches": 27,
+        "phrases": 12253
+      },
+      "fra_ca_for_eng": {
+        "knownBreaches": 574,
+        "targetBreaches": 0,
+        "phrases": 11008
+      },
+      "fra_for_eng": {
+        "knownBreaches": 776,
+        "targetBreaches": 93,
+        "phrases": 14089
+      },
+      "fra_for_jpn": {
+        "knownBreaches": 0,
+        "targetBreaches": 2,
+        "phrases": 5481
+      },
+      "fra_for_zho": {
+        "knownBreaches": 0,
+        "targetBreaches": 9,
+        "phrases": 4967
+      },
+      "gla_for_eng": {
+        "knownBreaches": 871,
+        "targetBreaches": 813,
+        "phrases": 4507
+      },
+      "gle_for_eng": {
+        "knownBreaches": 1728,
+        "targetBreaches": 637,
+        "phrases": 5431
+      },
+      "glg_for_eng": {
+        "knownBreaches": 252,
+        "targetBreaches": 0,
+        "phrases": 4475
+      },
+      "hak_for_eng": {
+        "knownBreaches": 3515,
+        "targetBreaches": 107,
+        "phrases": 20329
+      },
+      "heb_for_eng": {
+        "knownBreaches": 467,
+        "targetBreaches": 3,
+        "phrases": 4701
+      },
+      "hin_for_eng": {
+        "knownBreaches": 934,
+        "targetBreaches": 13,
+        "phrases": 5760
+      },
+      "hrv_for_eng": {
+        "knownBreaches": 489,
+        "targetBreaches": 105,
+        "phrases": 5449
+      },
+      "hun_for_eng": {
+        "knownBreaches": 550,
+        "targetBreaches": 21,
+        "phrases": 4843
+      },
+      "hye_for_eng": {
+        "knownBreaches": 893,
+        "targetBreaches": 1585,
+        "phrases": 5378
+      },
+      "isl_for_eng": {
+        "knownBreaches": 459,
+        "targetBreaches": 18,
+        "phrases": 4785
+      },
+      "ita_for_cym": {
+        "knownBreaches": 0,
+        "targetBreaches": 0,
+        "phrases": 448
+      },
+      "ita_for_eng": {
+        "knownBreaches": 627,
+        "targetBreaches": 79,
+        "phrases": 12236
+      },
+      "ita_for_jpn": {
+        "knownBreaches": 0,
+        "targetBreaches": 11,
+        "phrases": 4870
+      },
+      "ita_for_zho": {
+        "knownBreaches": 0,
+        "targetBreaches": 14,
+        "phrases": 4874
+      },
+      "jpn_for_eng": {
+        "knownBreaches": 2127,
+        "targetBreaches": 1264,
+        "phrases": 10583
+      },
+      "kor_for_eng": {
+        "knownBreaches": 1271,
+        "targetBreaches": 579,
+        "phrases": 12409
+      },
+      "kor_for_hin": {
+        "knownBreaches": 0,
+        "targetBreaches": 9,
+        "phrases": 236
+      },
+      "kor_for_tam": {
+        "knownBreaches": 0,
+        "targetBreaches": 6,
+        "phrases": 2490
+      },
+      "lav_for_eng": {
+        "knownBreaches": 645,
+        "targetBreaches": 71,
+        "phrases": 4920
+      },
+      "lit_for_eng": {
+        "knownBreaches": 431,
+        "targetBreaches": 25,
+        "phrases": 5188
+      },
+      "mar_for_eng": {
+        "knownBreaches": 505,
+        "targetBreaches": 0,
+        "phrases": 13482
+      },
+      "mlt_for_eng": {
+        "knownBreaches": 685,
+        "targetBreaches": 3,
+        "phrases": 5344
+      },
+      "nan_for_eng": {
+        "knownBreaches": 1538,
+        "targetBreaches": 587,
+        "phrases": 5758
+      },
+      "nep_for_eng": {
+        "knownBreaches": 813,
+        "targetBreaches": 50,
+        "phrases": 6824
+      },
+      "nld_for_eng": {
+        "knownBreaches": 729,
+        "targetBreaches": 25,
+        "phrases": 4368
+      },
+      "nor_for_eng": {
+        "knownBreaches": 820,
+        "targetBreaches": 1,
+        "phrases": 4439
+      },
+      "pol_for_eng": {
+        "knownBreaches": 283,
+        "targetBreaches": 31,
+        "phrases": 5049
+      },
+      "por_br_for_eng": {
+        "knownBreaches": 652,
+        "targetBreaches": 138,
+        "phrases": 12056
+      },
+      "por_for_eng": {
+        "knownBreaches": 708,
+        "targetBreaches": 123,
+        "phrases": 12631
+      },
+      "por_for_jpn": {
+        "knownBreaches": 0,
+        "targetBreaches": 5,
+        "phrases": 6041
+      },
+      "ron_for_eng": {
+        "knownBreaches": 569,
+        "targetBreaches": 12,
+        "phrases": 5166
+      },
+      "rus_for_eng": {
+        "knownBreaches": 560,
+        "targetBreaches": 40,
+        "phrases": 6071
+      },
+      "sbx_for_eng": {
+        "knownBreaches": 21,
+        "targetBreaches": 5,
+        "phrases": 427
+      },
+      "spa_for_eng": {
+        "knownBreaches": 2143,
+        "targetBreaches": 248,
+        "phrases": 15230
+      },
+      "spa_for_jpn": {
+        "knownBreaches": 0,
+        "targetBreaches": 0,
+        "phrases": 7267
+      },
+      "spa_for_zho": {
+        "knownBreaches": 0,
+        "targetBreaches": 45,
+        "phrases": 4446
+      },
+      "spa_mx_for_eng": {
+        "knownBreaches": 1110,
+        "targetBreaches": 5,
+        "phrases": 11966
+      },
+      "srp_for_eng": {
+        "knownBreaches": 456,
+        "targetBreaches": 66,
+        "phrases": 4922
+      },
+      "swa_for_eng": {
+        "knownBreaches": 519,
+        "targetBreaches": 73,
+        "phrases": 5846
+      },
+      "swe_for_eng": {
+        "knownBreaches": 683,
+        "targetBreaches": 16,
+        "phrases": 5178
+      },
+      "tel_for_eng": {
+        "knownBreaches": 812,
+        "targetBreaches": 0,
+        "phrases": 12448
+      },
+      "tha_for_eng": {
+        "knownBreaches": 1250,
+        "targetBreaches": 0,
+        "phrases": 4535
+      },
+      "tur_for_eng": {
+        "knownBreaches": 771,
+        "targetBreaches": 0,
+        "phrases": 9046
+      },
+      "ukr_for_eng": {
+        "knownBreaches": 599,
+        "targetBreaches": 3,
+        "phrases": 4755
+      },
+      "yue_for_eng": {
+        "knownBreaches": 1917,
+        "targetBreaches": 108,
+        "phrases": 8142
+      },
+      "zho_for_eng": {
+        "knownBreaches": 2917,
+        "targetBreaches": 1001,
+        "phrases": 10398
+      },
+      "zho_for_gle": {
+        "knownBreaches": 0,
+        "targetBreaches": 68,
+        "phrases": 117
+      },
+      "zho_for_hin": {
+        "knownBreaches": 0,
+        "targetBreaches": 2216,
+        "phrases": 3320
+      },
+      "zho_for_jpn": {
+        "knownBreaches": 0,
+        "targetBreaches": 1816,
+        "phrases": 3890
+      }
+    },
+    "note": null,
+    "generatedAt": "2026-07-27"
+  }
+}
