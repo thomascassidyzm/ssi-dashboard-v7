@@ -67,3 +67,55 @@ describe('resolvePoptyIdentity authority order', () => {
     expect(resolvePoptyIdentity({ email: 'x@y.z' })).toBe(null)
   })
 })
+
+describe('hasAdminRole — the one admin gate', () => {
+  const { hasAdminRole } = require('./popty-identity.cjs')
+
+  it('admits only role admin, from either authority', () => {
+    expect(hasAdminRole(resolvePoptyIdentity({
+      email: 'a@b.c',
+      dashboardRow: { name: 'A', email: 'a@b.c', role: 'admin', courses: '*', voice_id: null },
+    }))).toBe(true)
+    expect(hasAdminRole(resolvePoptyIdentity({ email: 'tom@ssi.com', learnerRow: ADMIN_LEARNER }))).toBe(true)
+  })
+
+  it('refuses every non-admin identity a JWT can resolve', () => {
+    for (const role of ['editor', 'checker', 'recorder', 'user']) {
+      expect(hasAdminRole(resolvePoptyIdentity({
+        email: 'x@y.z',
+        dashboardRow: { name: 'X', email: 'x@y.z', role, courses: '*', voice_id: null },
+      }))).toBe(false)
+    }
+    // learners popty_user fallback resolves to role 'user' — refused
+    expect(hasAdminRole(resolvePoptyIdentity({
+      email: 'p@x.y',
+      learnerRow: { id: 'L2', display_name: 'p', platform_role: 'popty_user', educational_role: null, dashboard_courses: ['*'] },
+    }))).toBe(false)
+  })
+
+  it('refuses null / undefined / roleless identities', () => {
+    expect(hasAdminRole(null)).toBe(false)
+    expect(hasAdminRole(undefined)).toBe(false)
+    expect(hasAdminRole({})).toBe(false)
+  })
+})
+
+describe('requireAdmin wiring (drift gate on production-api source)', () => {
+  // The 2026-07 hole: the Supabase-JWT branch returned its resolved user with
+  // no role check, so every requireAdmin endpoint admitted any dashboard user.
+  // Assert the middleware funnels through hasAdminRole and has no ungated
+  // early return of a resolved identity.
+  const fs = require('fs')
+  const path = require('path')
+  const src = fs.readFileSync(path.join(__dirname, '..', 'production-api.cjs'), 'utf8')
+  const fnMatch = src.match(/async function requireAdmin\(req, res\) \{([\s\S]*?)\n\}/)
+
+  it('requireAdmin exists and applies hasAdminRole', () => {
+    expect(fnMatch).not.toBe(null)
+    expect(fnMatch[1]).toContain('hasAdminRole(user)')
+  })
+
+  it('requireAdmin never returns a JWT-resolved user without the gate', () => {
+    expect(fnMatch[1]).not.toMatch(/if \(supabaseUser\) return supabaseUser/)
+  })
+})

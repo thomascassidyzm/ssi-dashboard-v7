@@ -70,4 +70,12 @@ function resolvePoptyIdentity({ email, dashboardRow = null, learnerRow = null })
   return null
 }
 
-module.exports = { resolvePoptyIdentity }
+// The ONE admin gate. Every admin-only surface must apply this to the
+// resolved identity regardless of which auth path produced it — a
+// JWT-resolved editor/recorder/user must be refused exactly like a
+// legacy-session one.
+function hasAdminRole(identity) {
+  return !!identity && identity.role === 'admin'
+}
+
+module.exports = { resolvePoptyIdentity, hasAdminRole }

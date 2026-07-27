@@ -28,7 +28,7 @@ const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext } = require('./recording-upload-helpers.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
-const { resolvePoptyIdentity } = require('./shared/popty-identity.cjs')
+const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -267,13 +267,11 @@ async function requireAdmin(req, res) {
   const token = req.headers.authorization?.replace('Bearer ', '')
   if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
 
-  // Try Supabase JWT first (new auth)
-  const supabaseUser = await verifySupabaseJWT(token)
-  if (supabaseUser) return supabaseUser
-
-  // Fall back to old session-based auth (for backwards compat during transition)
-  const user = await authValidateSession(token)
-  if (!user || user.role !== 'admin') { res.status(403).json({ error: 'Admin access required' }); return null }
+  // Resolve via Supabase JWT first, then legacy dashboard sessions — but both
+  // paths funnel through the ONE role gate. Any non-admin identity (editor,
+  // checker, recorder, popty_user) is refused here, whichever path resolved it.
+  const user = (await verifySupabaseJWT(token)) || (await authValidateSession(token))
+  if (!hasAdminRole(user)) { res.status(403).json({ error: 'Admin access required' }); return null }
   return user
 }
 
@@ -1313,9 +1311,6 @@ let explainerRefreshInFlight = false
 app.post('/api/explainer/refresh', async (req, res) => {
   const user = await requireAdmin(req, res)
   if (!user) return
-  // requireAdmin's Supabase-JWT path resolves any dashboard user — enforce the
-  // admin role explicitly here.
-  if (user.role !== 'admin') return res.status(403).json({ error: 'Admin access required' })
   if (explainerRefreshInFlight) return res.status(409).json({ error: 'A docs refresh is already running' })
   explainerRefreshInFlight = true
   const { execFile } = require('child_process')
