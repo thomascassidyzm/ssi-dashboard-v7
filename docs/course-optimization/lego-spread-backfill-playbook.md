@@ -74,6 +74,13 @@ fin_for_eng 2026-07 (~500 phrases over three agent runs, validated).
   need partitive-licensing contexts: negation / yrittää / "on vaikeaa + INF".
 - kuinka only with quantifier/adverb (kuinka paljon/kauan/nopeesti); bare "how" = miten.
 - Reflexive possessives: bare -nsa ("laukkuunsa"), not "oma…", unless English says "own".
+- **Future tense**: "will/'ll" → Finnish present, never aikoa. "going to" → aikoa ONLY for
+  intention; predictions/ability stay present ("mä myöhästyn", "sille käy hyvin", pystyä).
+  **Stative predicates** (olla + adj/location, pystyä bare): future English needs a licensor
+  (time word / when-if-clause / hope-afraid-sure embed) — bare stative pairs gloss as present
+  ("I'm ready → mä oon valmis", "I can't be → mä en pysty olemaan"). Dynamic verbs may pair
+  bare future English with present Finnish ("I'll call you → mä soitan sulle") — natural in both.
+- Destination "here/there" with motion verbs = tänne/sinne (illative), not täällä/siellä.
 
 Write an equivalent addendum per course before spawning (register rules, known
 translation-choice conventions, script quirks). Sources: the course's build patterns
