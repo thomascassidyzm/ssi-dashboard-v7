@@ -36,6 +36,30 @@ const ttsKeepAliveAgent = new https.Agent({
   maxFreeSockets: 8,
 });
 
+// Hard abort for REST TTS fetches. A caller-side Promise.race timeout (phase8's
+// 120s withTimeout) abandons the promise but the fetch keeps running — during
+// the eng_for_guj passes of 2026-07-25/26, hours of mass 120s timeouts (plus
+// their retries) accumulated zombie in-flight xAI requests until the machine
+// kernel-panicked (watchdogd starvation, 3 panics, each mid-guj). AbortSignal
+// actually tears the request down and frees the socket and buffers.
+const TTS_FETCH_TIMEOUT_MS = Number(process.env.TTS_FETCH_TIMEOUT_MS || 90_000);
+
+// Bounded xAI concurrency: phase8 fans out at up to 20 clips, which xAI's
+// /v1/tts answers by queueing until requests blow the timeout (the guj passes
+// ran at ~50%+ "Timed out after 120s"). A few at a time keeps each request
+// inside the timeout instead of timing out en masse and re-stampeding.
+const XAI_MAX_CONCURRENT = Number(process.env.XAI_TTS_CONCURRENCY || 4);
+let xaiActive = 0;
+const xaiQueue = [];
+function xaiAcquire() {
+  if (xaiActive < XAI_MAX_CONCURRENT) { xaiActive++; return Promise.resolve(); }
+  return new Promise(resolve => xaiQueue.push(resolve));
+}
+function xaiRelease() {
+  const next = xaiQueue.shift();
+  if (next) next(); else xaiActive--;
+}
+
 // Child voices are NEVER allowed (Tom 2026-07-24: no kids' voices, ever — a
 // child voice reached staging on alcohol phrases via a stale pod cast). Voice
 // params come from DB state (pod casts, voice_config) that can outlive pool
@@ -106,6 +130,7 @@ async function generateElevenLabs(text, config) {
   const response = await fetch(url, {
     method: 'POST',
     agent: ttsKeepAliveAgent,
+    signal: AbortSignal.timeout(TTS_FETCH_TIMEOUT_MS),
     headers: {
       'Accept': 'audio/mpeg',
       'Content-Type': 'application/json',
@@ -274,23 +299,29 @@ async function generateXai(text, config) {
     }
   };
 
-  const response = await fetch('https://api.x.ai/v1/tts', {
-    method: 'POST',
-    agent: ttsKeepAliveAgent,
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  });
+  await xaiAcquire();
+  try {
+    const response = await fetch('https://api.x.ai/v1/tts', {
+      method: 'POST',
+      agent: ttsKeepAliveAgent,
+      signal: AbortSignal.timeout(TTS_FETCH_TIMEOUT_MS),
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`xAI TTS API error (${response.status}): ${errorText}`);
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`xAI TTS API error (${response.status}): ${errorText}`);
+    }
+
+    const arrayBuffer = await response.arrayBuffer();
+    return { audioBuffer: Buffer.from(arrayBuffer), wordBoundaries: null };
+  } finally {
+    xaiRelease();
   }
-
-  const arrayBuffer = await response.arrayBuffer();
-  return { audioBuffer: Buffer.from(arrayBuffer), wordBoundaries: null };
 }
 
 

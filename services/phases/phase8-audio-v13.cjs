@@ -426,7 +426,8 @@ async function executeCopyBucket(courseCode, knownLang, toCopy) {
           duration_ms: item.copySource.durationMs,
           file_size_bytes: item.copySource.fileSizeBytes,
           word_boundaries: item.copySource.wordBoundaries,
-          text_stripped: item.copySource.textStripped,
+          // text_stripped is a GENERATED column — writing it fails every copy
+          // ("cannot insert a non-DEFAULT value"); the DB derives it from text.
           lego_id: null,
         }, { onConflict: 'course_code,text_normalized,language,role,voice_id', ignoreDuplicates: true })
       if (error) throw new Error(error.message)
@@ -1543,9 +1544,14 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     const voiceConfig = course.voice_config || {}
     const voices = voiceConfig.voices || voiceConfig  // Support both nested and flat structure
-    if (!voices.known || !voices.target1) {
+    // Require real voiceIds, not just role objects: deu_at_for_eng had a known
+    // voice of empty strings, which sailed past the object check and then
+    // failed all 11,606 known items with "voiceId.split is not a function".
+    const missingVoiceRoles = ['known', 'target1'].filter(r => !voices[r] || !voices[r].voiceId)
+    if (missingVoiceRoles.length) {
       return res.status(400).json({
         error: 'Course missing voice configuration',
+        missingRoles: missingVoiceRoles,
         voiceConfig
       })
     }
@@ -1567,8 +1573,9 @@ app.post('/generate/:courseCode', async (req, res) => {
     const getVoiceForRole = (role) => {
       const v = voices[role]
       if (!v) return null
+      if (typeof v === 'string') return v
       if (v.provider && v.voiceId) return `${v.provider}_${v.voiceId}`
-      return v.voiceId || v
+      return v.voiceId || null // empty voiceId → null, never the config object
     }
     const getSpeedForRole = (role) => voices[role]?.settings?.speed || 1.0
 
@@ -1834,6 +1841,9 @@ app.post('/generate/:courseCode', async (req, res) => {
 
       // Determine TTS provider from voice config
       // Voice format: azure_es-ES-ElviraNeural or elevenlabs_voiceId
+      if (typeof item.voiceId !== 'string' || !item.voiceId) {
+        throw new Error(`No voice configured for role ${item.role} — fill in the course voice_config`)
+      }
       const [provider, voiceName] = item.voiceId.split('_', 2)
 
       // Use speed from voice config (everything is a parameter!)
@@ -4294,16 +4304,18 @@ app.post('/generate-components/:courseCode', async (req, res) => {
 
     const voiceConfig = course.voice_config || {}
     const voices = voiceConfig.voices || voiceConfig
-    if (!voices.known || !voices.target1) {
-      return res.status(400).json({ error: 'Course missing voice configuration', voiceConfig })
+    const missingVoiceRoles = ['known', 'target1'].filter(r => !voices[r] || !voices[r].voiceId)
+    if (missingVoiceRoles.length) {
+      return res.status(400).json({ error: 'Course missing voice configuration', missingRoles: missingVoiceRoles, voiceConfig })
     }
 
     const getVoiceForRole = (role) => {
       const v = voices[role]
       if (!v) return null
+      if (typeof v === 'string') return v
       const provider = v.provider || 'azure'
       if (v.voiceId) return `${provider}_${v.voiceId}`
-      return v
+      return null // empty voiceId → null, never the config object
     }
     const getSpeedForRole = (role) => voices[role]?.settings?.speed || 1.0
 
@@ -4545,6 +4557,9 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       }
 
       // TTS generation
+      if (typeof item.voiceId !== 'string' || !item.voiceId) {
+        throw new Error(`No voice configured for role ${item.role} — fill in the course voice_config`)
+      }
       const [provider, voiceName] = item.voiceId.split('_', 2)
       const speed = item.speed || 1.0
 

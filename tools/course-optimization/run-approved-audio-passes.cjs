@@ -49,8 +49,15 @@ async function pendingRequests() {
 }
 
 // Plain http (not fetch): a big course's /generate can hold the response open
-// for well over undici's 300s headers timeout. No client timeout at all —
-// completion is however long TTS takes.
+// for well over undici's 300s headers timeout. No wall-clock timeout — big
+// courses legitimately run for hours — but an ACTIVITY watchdog: while the
+// request is open, poll phase8 /status once a minute; if the progress
+// fingerprint (operation/current/success/failed) stops changing for
+// STALL_MS, phase8 is wedged or was restarted under us — destroy the
+// request, leave the queue row pending, and let the loop move on. This is
+// what jammed the 2026-07-24/25/26 batches: eng_for_guj held the response
+// open with no guard, so the whole sequential queue sat behind it.
+const STALL_MS = Number(process.env.AUDIO_PASS_STALL_MS || 30 * 60 * 1000)
 function post(path, body) {
   return new Promise((resolve, reject) => {
     const req = http.request(`${PHASE8}${path}`, {
@@ -60,11 +67,29 @@ function post(path, body) {
       let buf = ''
       res.on('data', c => { buf += c })
       res.on('end', () => {
+        clearInterval(watchdog)
         try { resolve({ status: res.statusCode, body: JSON.parse(buf) }) }
         catch { resolve({ status: res.statusCode, body: { raw: buf.slice(0, 500) } }) }
       })
     })
-    req.on('error', reject)
+    let lastFingerprint = null
+    let lastChange = Date.now()
+    const watchdog = setInterval(async () => {
+      const s = await get('/status').catch(() => null)
+      const fingerprint = s
+        ? `${s.operation}|${s.courseCode}|${s.current}|${s.success}|${s.failed}`
+        : 'unreachable'
+      if (fingerprint !== lastFingerprint) {
+        lastFingerprint = fingerprint
+        lastChange = Date.now()
+        return
+      }
+      if (Date.now() - lastChange > STALL_MS) {
+        clearInterval(watchdog)
+        req.destroy(new Error(`no phase8 progress for ${Math.round(STALL_MS / 60000)} min (status: ${fingerprint})`))
+      }
+    }, 60_000)
+    req.on('error', e => { clearInterval(watchdog); reject(e) })
     req.end(JSON.stringify(body || {}))
   })
 }
@@ -140,6 +165,7 @@ async function run() {
     }
     const b = result.body || {}
     console.log(`[${ts()}] ${r.course_code} → HTTP ${result.status} status=${b.status} generated=${b.success ?? '?'}/${b.total ?? '?'} failed=${b.failed ?? '?'} linked=${b.linked ?? 0} copied=${b.copied ?? 0}${b.errors?.length ? ` firstError="${JSON.stringify(b.errors[0]).slice(0, 200)}"` : ''}`)
+    if (result.status !== 200) console.log(`[${ts()}] ${r.course_code} non-200 body: ${JSON.stringify(b).slice(0, 400)}`)
 
     const { data: after } = await supabase
       .from('audio_pass_requests')
