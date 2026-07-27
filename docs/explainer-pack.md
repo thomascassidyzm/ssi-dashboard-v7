@@ -1,6 +1,6 @@
 # Popty explanation pack — compiled render
 
-**Version `980828bc2a68` · generated 2026-07-27 by `tools/explainer/compile.mjs`. DO NOT EDIT — edit the rulings/rules and recompile.**
+**Version `c51fa2875bab` · generated 2026-07-27 by `tools/explainer/compile.mjs`. DO NOT EDIT — edit the rulings/rules and recompile.**
 
 Truth: roles admin/editor/recorder · workflow "Phase 1 → 3 → 8 → 9" · 14 gates · max LEGO syllables 8 · human-voice: cym_n_for_eng, cym_s_for_eng, bre_for_fra + cym_* prefix · 9 pair contracts · snapshot: 98 courses.
 
@@ -84,3 +84,7 @@ of times.
 
 ## Noticing rules
 
+- **known-vocab-flags** (perChild, snapshot, mount home, admin/editor): "{name} has {knownBreaches} known-side vocabulary flags from the last gate run — worth a look before the next build session." → /course/{code}
+- **recorder-pending-recording** (node, payload, mount record-room, recorder): "About {recordingScript.estimatedMinutes} minutes of reading left in your script — pick up whenever suits." → self
+- **qa-open-error-flags** (countWhere, payload, mount qa, editor/admin): "{count} open QA flags are marked as errors — these are the ones worth clearing first." → self
+- **qa-open-warning-flags** (countWhere, payload, mount qa, editor/admin): "{count} warning-level QA flags have built up on this course." → self

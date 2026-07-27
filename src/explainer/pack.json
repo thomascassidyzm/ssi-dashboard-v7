@@ -1,5 +1,5 @@
 {
-  "version": "980828bc2a68",
+  "version": "c51fa2875bab",
   "generatedAt": "2026-07-27",
   "truth": {
     "navTabs": {
@@ -220,7 +220,104 @@
       "record-room": "The Record Room is your whole studio. The queue you see is real work waiting: lines the course\nneeds in a human voice, in order. Read each line as it's written, at an easy natural pace —\nrecordings ship at one speed and the app adjusts playback, so never rush a take. Some courses\nare human-voiced only — no synthetic voice is ever allowed to stand in for you there — which is\nwhy a line waiting in your queue can't be filled by anyone but a person. A take you're not\nhappy with is worth redoing: whatever you record is exactly what a learner will hear, thousands\nof times."
     }
   },
-  "rules": [],
+  "rules": [
+    {
+      "id": "known-vocab-flags",
+      "shape": "perChild",
+      "arrayPath": "courses",
+      "mount": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "source": "snapshot",
+      "itemWhen": [
+        {
+          "path": "knownBreaches",
+          "op": "gt",
+          "value": 0
+        }
+      ],
+      "invitation": "{name} has {knownBreaches} known-side vocabulary flags from the last gate run — worth a look before the next build session.",
+      "cta": {
+        "label": "Open {name}",
+        "target": "/course/{code}"
+      }
+    },
+    {
+      "id": "recorder-pending-recording",
+      "shape": "node",
+      "mount": "record-room",
+      "personas": [
+        "recorder"
+      ],
+      "source": "payload",
+      "when": [
+        {
+          "path": "courseFlags.isHumanVoiceCourse",
+          "op": "truthy"
+        },
+        {
+          "path": "recordingScript.totalItems",
+          "op": "gt",
+          "value": 0
+        }
+      ],
+      "invitation": "About {recordingScript.estimatedMinutes} minutes of reading left in your script — pick up whenever suits.",
+      "cta": {
+        "label": null,
+        "target": "self"
+      }
+    },
+    {
+      "id": "qa-open-error-flags",
+      "shape": "countWhere",
+      "arrayPath": "flags",
+      "mount": "qa",
+      "personas": [
+        "editor",
+        "admin"
+      ],
+      "source": "payload",
+      "itemWhen": [
+        {
+          "path": "severity",
+          "op": "eq",
+          "value": "error"
+        }
+      ],
+      "min": 1,
+      "invitation": "{count} open QA flags are marked as errors — these are the ones worth clearing first.",
+      "cta": {
+        "label": null,
+        "target": "self"
+      }
+    },
+    {
+      "id": "qa-open-warning-flags",
+      "shape": "countWhere",
+      "arrayPath": "flags",
+      "mount": "qa",
+      "personas": [
+        "editor",
+        "admin"
+      ],
+      "source": "payload",
+      "itemWhen": [
+        {
+          "path": "severity",
+          "op": "eq",
+          "value": "warning"
+        }
+      ],
+      "min": 3,
+      "invitation": "{count} warning-level QA flags have built up on this course.",
+      "cta": {
+        "label": null,
+        "target": "self"
+      }
+    }
+  ],
   "snapshot": {
     "vocabGate": {
       "afr_for_eng": {

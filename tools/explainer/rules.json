@@ -1,0 +1,60 @@
+{
+  "comment": "Noticing rules — pure data (the DECISIONS side), evaluated client-side by src/explainer/evaluateRules.js. Same shapes/ops as the first proof (ssi-learning-app/tools/explainer/rules.json): node | perChild | countWhere; ops eq/gt/lt/gte/lte/truthy/falsy/daysSinceGt. `source` distinguishes compile-time pack.snapshot data from runtime page payloads. Invitations, not missions — see docs/self-explaining-popty.md §5.",
+  "joinConvention": "For a perChild rule with source:'snapshot', the evaluator resolves each array item's snapshot slice by the item's own identifying field before testing itemWhen — e.g. rule 'known-vocab-flags' below evaluates itemWhen against { ...item, ...pack.snapshot.vocabGate[item.code] }. This is a plain per-item join, not a new op. For a node rule needing a course-set membership test (rule 'recorder-pending-recording'), the mount resolves one boolean (`courseFlags.isHumanVoiceCourse = pack.truth.voicePolicy.humanVoiceCourses.includes(route.courseCode)`) once, before invoking the rule engine — again no new op, just a field the mount adds to its own evaluation context. Both conventions are documented here rather than silently assumed; see the report for why an 'in' op was deliberately NOT added.",
+  "rules": [
+    {
+      "id": "known-vocab-flags",
+      "shape": "perChild",
+      "arrayPath": "courses",
+      "mount": "home",
+      "personas": ["admin", "editor"],
+      "source": "snapshot",
+      "itemWhen": [
+        { "path": "knownBreaches", "op": "gt", "value": 0 }
+      ],
+      "invitation": "{name} has {knownBreaches} known-side vocabulary flags from the last gate run — worth a look before the next build session.",
+      "cta": { "label": "Open {name}", "target": "/course/{code}" }
+    },
+    {
+      "id": "recorder-pending-recording",
+      "shape": "node",
+      "mount": "record-room",
+      "personas": ["recorder"],
+      "source": "payload",
+      "when": [
+        { "path": "courseFlags.isHumanVoiceCourse", "op": "truthy" },
+        { "path": "recordingScript.totalItems", "op": "gt", "value": 0 }
+      ],
+      "invitation": "About {recordingScript.estimatedMinutes} minutes of reading left in your script — pick up whenever suits.",
+      "cta": { "label": null, "target": "self" }
+    },
+    {
+      "id": "qa-open-error-flags",
+      "shape": "countWhere",
+      "arrayPath": "flags",
+      "mount": "qa",
+      "personas": ["editor", "admin"],
+      "source": "payload",
+      "itemWhen": [
+        { "path": "severity", "op": "eq", "value": "error" }
+      ],
+      "min": 1,
+      "invitation": "{count} open QA flags are marked as errors — these are the ones worth clearing first.",
+      "cta": { "label": null, "target": "self" }
+    },
+    {
+      "id": "qa-open-warning-flags",
+      "shape": "countWhere",
+      "arrayPath": "flags",
+      "mount": "qa",
+      "personas": ["editor", "admin"],
+      "source": "payload",
+      "itemWhen": [
+        { "path": "severity", "op": "eq", "value": "warning" }
+      ],
+      "min": 3,
+      "invitation": "{count} warning-level QA flags have built up on this course.",
+      "cta": { "label": null, "target": "self" }
+    }
+  ]
+}

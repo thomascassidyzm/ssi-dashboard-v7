@@ -171,14 +171,28 @@ for (const persona of APP_PERSONAS) {
 // carries; payload rules must read fields the mapped fetch source still
 // mentions (tools/explainer/payload-map.json names the source file per
 // mount). Targets must be real router paths.
-const SNAPSHOT_FIELDS = ['knownBreaches', 'targetBreaches', 'phrases']
+// Snapshot fields = what the compiler itself bakes (1g), plus the item-join
+// fields a perChild snapshot rule reads off the page's own array items
+// (rules.json `joinConvention`). Mount-resolved fields are pack-truth lookups
+// the mount computes before invoking the evaluator — validated against the
+// truth they read, not against a payload.
+const SNAPSHOT_FIELDS = ['knownBreaches', 'targetBreaches', 'phrases', 'code', 'name', 'courses']
+const MOUNT_RESOLVED = { 'courseFlags.isHumanVoiceCourse': () => humanVoiceCourses.length > 0 }
 const rulesPath = join(HERE, 'rules.json')
 let rules = []
 if (existsSync(rulesPath)) {
   rules = JSON.parse(readFileSync(rulesPath, 'utf8')).rules
-  let payloadMap = {}
+  // payload-map.json (see its header): per-page trace of what each mount
+  // already fetches, incl. the server files that emit the fields.
   const pmPath = join(HERE, 'payload-map.json')
-  if (existsSync(pmPath)) payloadMap = JSON.parse(readFileSync(pmPath, 'utf8'))
+  const payloadMap = existsSync(pmPath) ? JSON.parse(readFileSync(pmPath, 'utf8')) : { pages: {} }
+  const mountEntries = Object.values(payloadMap.pages || {})
+  // Every source file a map entry cites (Vue page + server emitters) — a rule
+  // field must still appear in at least one of them.
+  const entryFiles = (entry) => {
+    const cited = JSON.stringify(entry).matchAll(/(src\/[\w/.-]+\.(?:vue|js)|services\/[\w/.-]+\.cjs)/g)
+    return [...new Set([entry.path, ...[...cited].map((m) => m[1])])].filter(Boolean)
+  }
   for (const rule of rules) {
     if (!['snapshot', 'payload'].includes(rule.source)) failures.push(`RULES: rule "${rule.id}" has unknown source "${rule.source}"`)
     if (!['node', 'perChild', 'countWhere'].includes(rule.shape)) failures.push(`RULES: rule "${rule.id}" has unknown shape "${rule.shape}"`)
@@ -188,28 +202,36 @@ if (existsSync(rulesPath)) {
     const paths = [
       ...(rule.when ?? []).map((c) => c.path),
       ...(rule.itemWhen ?? []).map((c) => c.path),
-      ...[...rule.invitation.matchAll(/\{([\w.]+)\}/g)].map((m) => m[1]).filter((p) => !['count', 'course', 'name'].includes(p)),
+      ...[...rule.invitation.matchAll(/\{([\w.]+)\}/g)].map((m) => m[1]).filter((p) => p !== 'count'),
       ...(rule.arrayPath ? [rule.arrayPath] : []),
+      ...[...(rule.cta?.target ?? '').matchAll(/\{([\w.]+)\}/g)].map((m) => m[1]),
     ]
     for (const p of paths) {
+      if (MOUNT_RESOLVED[p]) {
+        if (!MOUNT_RESOLVED[p]()) failures.push(`DRIFT: rule "${rule.id}" reads mount-resolved "${p}" but its truth source is empty`)
+        continue
+      }
       const leaf = p.split('.').pop()
       if (rule.source === 'snapshot') {
-        if (!SNAPSHOT_FIELDS.includes(leaf) && !p.startsWith('vocabGate')) {
-          failures.push(`DRIFT: snapshot rule "${rule.id}" reads "${p}" but the snapshot only carries ${SNAPSHOT_FIELDS.join('/')}`)
+        if (!SNAPSHOT_FIELDS.includes(leaf)) {
+          failures.push(`DRIFT: snapshot rule "${rule.id}" reads "${p}" but the snapshot/join only carries ${SNAPSHOT_FIELDS.join('/')}`)
         }
       } else {
-        const entry = payloadMap[rule.mount]
+        const entry = mountEntries.find((e) => e.mount === rule.mount && (e.noticingFieldsPresent || e.clientFieldsAssigned))
         if (!entry) { failures.push(`RULES: payload rule "${rule.id}" has mount "${rule.mount}" with no payload-map entry`); continue }
-        const srcFile = read(entry.sourceFile)
-        for (const seg of p.split('.')) {
-          if (!/^\d+$/.test(seg) && !srcFile.includes(seg)) {
-            failures.push(`DRIFT: rule "${rule.id}" reads "${p}" but ${entry.sourceFile} no longer mentions "${seg}"`)
-          }
+        if (!JSON.stringify(entry).includes(leaf)) {
+          failures.push(`DRIFT: rule "${rule.id}" reads "${p}" but the ${rule.mount} payload-map entry never declares "${leaf}" — retrace the fetch`)
+        }
+        if (!entryFiles(entry).some((f) => { try { return read(f).includes(leaf) } catch { return false } })) {
+          failures.push(`DRIFT: rule "${rule.id}" reads "${p}" but no source file cited for mount "${rule.mount}" still mentions "${leaf}"`)
         }
       }
     }
+    // CTA target: 'self' (the invitation stands on the page that holds the
+    // data) or a real router path, {param} tolerated.
     const target = rule.cta?.target
-    if (!target || !routerSrc.includes(`'${target.replace(/\/:.*$/, '')}`)) {
+    const targetBase = (target || '').replace(/\{[\w.]+\}.*$/, '').replace(/\/$/, '')
+    if (target !== 'self' && (!targetBase.startsWith('/') || !routerSrc.includes(`'${targetBase}`))) {
       failures.push(`DRIFT: rule "${rule.id}" links "${target}" but src/router/index.js has no such path`)
     }
   }

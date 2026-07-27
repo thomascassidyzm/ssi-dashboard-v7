@@ -1,0 +1,85 @@
+{
+  "comment": "Real fetch paths traced 2026-07-27 for the 4 pages named in the noticing brief. Zero new endpoints/queries — rules.json only reads fields already present in these payloads (or the compile-time snapshot).",
+  "pages": {
+    "Home.vue": {
+      "path": "src/views/Home.vue",
+      "mount": "home",
+      "dataSource": "src/composables/useCourses.js -> loadCourses()",
+      "endpoint": {
+        "supabaseMode": "getAllCourses() (services/supabase.js), direct table read of `courses`",
+        "fallbackMode": "GET {api}/api/courses"
+      },
+      "payloadShape": {
+        "courses": "Array<{ code, name, new_app_status, legacy_app_status, content_status, pricing_tier, export_ready, seed_count, created_at, updated_at, stats: { seeds, completedSeeds, legos, phrases, audio } }>"
+      },
+      "noticingFieldsPresent": ["courses[].code", "courses[].name", "courses[].stats"],
+      "noticingFieldsAbsent": [
+        "no known-vocab breach field anywhere in this payload -> R1 must be snapshot-sourced, joined by courses[].code",
+        "no voice_config / audio_pass_requests field -> cannot support an admin voice-config/audio-pass rule from this payload"
+      ]
+    },
+    "CourseManager.vue": {
+      "path": "src/views/CourseManager.vue",
+      "mount": "course-manager (not a rule mount point named in the contract; not used below)",
+      "endpointsCalled": [
+        "GET {builderApi}/api/build/pipeline/:code",
+        "GET {builderApi}/api/build/seed-grid/:code",
+        "GET {builderApi}/api/stats/:code (services/production-api.cjs:1059) -> { total_seeds, completed_seeds, seeds_with_legos, legos, legos_total, phrases, ratio, avg_phrase_score, scored_phrases }",
+        "GET {api}/api/courses/:code/progress",
+        "GET {builderApi}/api/golden/review-queue/:code"
+      ],
+      "noticingFieldsAbsent": [
+        "no known-vocab, voice-config, or audio_pass_requests field in any call -> confirmed not a source for rules (b)/(c)"
+      ]
+    },
+    "RecordRoom.vue": {
+      "path": "src/views/RecordRoom.vue",
+      "mount": "record-room",
+      "endpointsCalled": [
+        "GET {api}/api/production/:code/info -> data.course (targetLang/knownLang, displayName)",
+        "GET {api}/api/courses/:code/voice-config -> data.config.voices.{target1,target2,known,presentation}.{voiceId,assignedEmail}, data.config.podCast",
+        "GET {api}/api/production/:code/recording-script (services/production-api.cjs:7205) -> { courseCode, totalItems, totalPhrases, totalDirect, estimatedMinutes, items }. `excludeRecorded` defaults true, so totalItems is already the real remaining GAP for this recorder's course, not a from-scratch count."
+      ],
+      "noticingFieldsPresent": ["recordingScript.totalItems", "recordingScript.estimatedMinutes", "voiceConfig.voices.<slot>.voiceId"],
+      "note": "Single-course page (courseCode is a route prop) -> rules here are 'node' shape over the one course in view, never perChild. No cross-course list is fetched, so a cross-course 'all pending recorder work' rule is not supportable without a new query."
+    },
+    "QAReview.vue": {
+      "path": "src/views/production/QAReview.vue",
+      "mount": "qa",
+      "endpointsCalled": [
+        "GET {builderApi}/api/qa/flags/:code?status=open (services/course-builder/routes/qa.cjs:1269) -> { course_code, total, by_severity:{error,warning,info}, by_type, flags: Array<{severity, check_type, ...}> }",
+        "GET {builderApi}/api/qa/summary/:code -> { phrases:{total,checked,unchecked,progress_percent}, flags:{total,open,errors,warnings} } (Supabase branch instead calls getQAFlags/getQASummary directly)"
+      ],
+      "clientFieldsAssigned": {
+        "summary.errors": "data.by_severity?.error || 0",
+        "summary.warnings": "data.by_severity?.warning || 0",
+        "flags": "data.flags || []  (array of raw course_qa_flags rows, each carries .severity)"
+      },
+      "noticingFieldsPresent": ["summary.errors", "summary.warnings", "flags[].severity"]
+    },
+    "PhraseQA.vue": {
+      "path": "src/views/production/PhraseQA.vue",
+      "mount": "qa (alternate/legacy QA surface; not used for a rule below — QAReview.vue already covers the qa mount with real per-severity data)",
+      "endpointsCalled": [
+        "POST {api}/api/qa/spawn-monitor/:code",
+        "POST {api}/api/qa/spawn-fixer/:code",
+        "POST {api}/api/qa/spawn-polisher/:code",
+        "PATCH/DELETE {api}/api/qa/flag/:id, {api}/api/qa/phrase/:id"
+      ],
+      "note": "action-trigger page (spawns agents), does not GET a summary/list payload of its own on mount worth reading -> not used as a rule source."
+    }
+  },
+  "snapshotSources": {
+    "vocabGate": {
+      "file": "scripts/vocab-gate/audit-results.json",
+      "shape": "{ courses: { <course_code>: { phrases, known_breaches, target_breaches, top_known_tokens } } }",
+      "verifiedExample": "afr_for_eng: known_breaches=1079, target_breaches=12 (read directly from the file, 2026-07-27)",
+      "bakedAs": "pack.snapshot.vocabGate.<course_code> = { knownBreaches, targetBreaches }"
+    },
+    "humanVoiceCourses": {
+      "file": "services/shared/human-voice-courses.cjs",
+      "shape": "Set of exact codes {cym_n_for_eng, cym_s_for_eng, bre_for_fra} + prefix rule /^cym_/",
+      "bakedAs": "pack.truth.voicePolicy.humanVoiceCourses (already specified in docs/self-explaining-popty.md §2, not new)"
+    }
+  }
+}
