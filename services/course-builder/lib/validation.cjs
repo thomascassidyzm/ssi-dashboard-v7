@@ -867,8 +867,12 @@ function checkKnownSide(known, currentPos, ctx) {
     if (DO_AUX.has(raw)) continue;
     if (ctx.neg.has(raw) || ctx.neg.has(s)) {
       const cp = ctx.consPos['negation'];
-      if (cp == null || currentPos < cp) probs.push(`negation "${raw}" not licensed until ${cp === Infinity ? '∞' : cp}`);
-      continue;
+      if (cp != null) {
+        if (currentPos < cp) probs.push(`negation "${raw}" not licensed until ${cp === Infinity ? '∞' : cp}`);
+        continue;
+      }
+      // Contract defines no negation construction (e.g. the _default_eng fallback):
+      // fall through and require the negation word itself to be an introduced gloss.
     }
     if (ctx.npi.has(s)) { if (negated) continue; probs.push(`NPI token "${raw}" without negation`); continue; }
     if (ctx.grammar[raw] || ctx.grammar[s]) {
@@ -884,7 +888,10 @@ function checkKnownSide(known, currentPos, ctx) {
   return probs;
 }
 
-// Load a pair-contract by course_code; null if none. Cached.
+// Load a pair-contract by course_code; falls back to the shared _default_eng scaffold
+// for any English-known course without its own contract (vocab-gate fix 2026-07-27 —
+// the silent skip on contract-less courses is how "yes I want to speak" reached
+// glg_for_eng). Null only for non-English-known pairs with no contract. Cached.
 const _contractCache = new Map();
 function loadPairContract(courseCode) {
   if (_contractCache.has(courseCode)) return _contractCache.get(courseCode);
@@ -893,8 +900,19 @@ function loadPairContract(courseCode) {
   // pair's contract. The full course_code stays the DB partition key elsewhere.
   const contractCode = courseCode.replace(/_v\d+$/, '');
   try { contract = require(`../../../docs/pair-contracts/${contractCode}.contract.cjs`); } catch (_) { contract = null; }
+  if (!contract && /_for_eng$/.test(contractCode)) {
+    try { contract = require('../../../docs/pair-contracts/_default_eng.contract.cjs'); } catch (_) { contract = null; }
+  }
   _contractCache.set(courseCode, contract);
   return contract;
+}
+
+// Which known-side problems are hard vocab breaches (block the submit) vs
+// construction/licensing advisories (warn — contract maturity dependent).
+// "unknown gloss" / "not introduced until" = the learner is prompted with a word
+// they were never given ("yes" in glg_for_eng seed 1) — never acceptable.
+function isKnownVocabBreach(problem) {
+  return /^unknown gloss/.test(problem) || /not introduced until/.test(problem);
 }
 
 // ─── BUILD anti-template gate (template-stamp audit 2026-07-24) ────────
@@ -1010,6 +1028,7 @@ module.exports = {
   tokenizeKnown,
   compileKnownContract,
   checkKnownSide,
+  isKnownVocabBreach,
   loadPairContract,
   checkPhraseComplexity,
   checkVocabViolations,

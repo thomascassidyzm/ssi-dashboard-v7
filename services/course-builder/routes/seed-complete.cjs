@@ -20,7 +20,7 @@ const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
   checkLegoConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss,
-  loadPairContract, checkKnownSide, compileKnownContract, stemKnownGloss, tokenizeKnown,
+  loadPairContract, checkKnownSide, isKnownVocabBreach, compileKnownContract, stemKnownGloss, tokenizeKnown,
   checkBuildRecombination,
 } = require('../lib/validation.cjs');
 const { loadCourseVocab, addToCourseVocab, loadTranslationVocab, loadIntroducedLegoPairs, buildVocabInjection } = require('../lib/vocab-cache.cjs');
@@ -1489,9 +1489,28 @@ module.exports = function seedCompleteRoutes(ctx) {
             for (const phrase of basket) {
               if (!phrase.known) continue;
               const probs = checkKnownSide(phrase.known, seed_number, knownCtx);
-              if (probs.length) {
-                warnings.push({ type: 'known_side', lego_id: legoId, known: phrase.known, target: phrase.target, problems: probs.slice(0, 4) });
-                console.log(`⚠ ${legoId}: known-side "${phrase.known}" — ${probs[0]}`);
+              if (!probs.length) continue;
+              // Vocab breaches BLOCK (2026-07-27 "yes I want to speak" fix): a prompt
+              // using a known-language word never introduced at this position forks
+              // production exactly like a target-side vocab violation. Construction /
+              // licensing advisories stay warnings (contracts are mostly unratified).
+              const breaches = probs.filter(isKnownVocabBreach);
+              const advisories = probs.filter(p => !isKnownVocabBreach(p));
+              if (breaches.length) {
+                errors.push({
+                  type: 'known_vocab',
+                  message: `${legoId}: known-side prompt "${phrase.known}" uses vocabulary not yet introduced`,
+                  lego_id: legoId,
+                  known: phrase.known,
+                  target: phrase.target,
+                  problems: breaches.slice(0, 4),
+                  hint: 'The KNOWN side is a controlled language too — every word of the English prompt must already be introduced as a LEGO/component gloss (exact form) or belong to the free glue class. Rewrite the prompt from introduced vocabulary.',
+                });
+                console.log(`✗ ${legoId}: KNOWN-VOCAB "${phrase.known}" — ${breaches[0]}`);
+              }
+              if (advisories.length) {
+                warnings.push({ type: 'known_side', lego_id: legoId, known: phrase.known, target: phrase.target, problems: advisories.slice(0, 4) });
+                console.log(`⚠ ${legoId}: known-side "${phrase.known}" — ${advisories[0]}`);
               }
             }
           }
