@@ -1,5 +1,5 @@
 {
-  "version": "c51fa2875bab",
+  "version": "14eaa1fa233d",
   "generatedAt": "2026-07-27",
   "truth": {
     "navTabs": {
@@ -85,10 +85,6 @@
         {
           "label": "Pipeline",
           "to": "/docs/pipeline"
-        },
-        {
-          "label": "Intelligence",
-          "to": "/docs/intelligence"
         }
       ]
     },
@@ -201,20 +197,326 @@
         "method": "POST",
         "path": "/api/seed/complete"
       }
+    ],
+    "supabaseTables": [
+      {
+        "table": "algorithm_config",
+        "refs": 1
+      },
+      {
+        "table": "audio_flags",
+        "refs": 5
+      },
+      {
+        "table": "audio_pass_requests",
+        "refs": 1
+      },
+      {
+        "table": "audio_registry",
+        "refs": 1
+      },
+      {
+        "table": "build_jobs",
+        "refs": 10
+      },
+      {
+        "table": "build_lessons",
+        "refs": 1
+      },
+      {
+        "table": "canonical_pod_scenarios",
+        "refs": 2
+      },
+      {
+        "table": "canonical_seed_translations",
+        "refs": 2
+      },
+      {
+        "table": "canonical_seeds",
+        "refs": 5
+      },
+      {
+        "table": "content_audit_log",
+        "refs": 1
+      },
+      {
+        "table": "content_feedback",
+        "refs": 3
+      },
+      {
+        "table": "course_audio",
+        "refs": 20
+      },
+      {
+        "table": "course_checkpoint_config",
+        "refs": 2
+      },
+      {
+        "table": "course_checkpoint_results",
+        "refs": 1
+      },
+      {
+        "table": "course_enrollments",
+        "refs": 1
+      },
+      {
+        "table": "course_export_states",
+        "refs": 1
+      },
+      {
+        "table": "course_gender_expansions",
+        "refs": 5
+      },
+      {
+        "table": "course_legos",
+        "refs": 42
+      },
+      {
+        "table": "course_practice_phrases",
+        "refs": 38
+      },
+      {
+        "table": "course_qa_flags",
+        "refs": 6
+      },
+      {
+        "table": "course_seed_drafts",
+        "refs": 7
+      },
+      {
+        "table": "course_seeds",
+        "refs": 42
+      },
+      {
+        "table": "courses",
+        "refs": 64
+      },
+      {
+        "table": "dashboard_invite_codes",
+        "refs": 2
+      },
+      {
+        "table": "dashboard_login_codes",
+        "refs": 1
+      },
+      {
+        "table": "dashboard_sessions",
+        "refs": 2
+      },
+      {
+        "table": "dashboard_users",
+        "refs": 5
+      },
+      {
+        "table": "documentation_content",
+        "refs": 1
+      },
+      {
+        "table": "documentation_sections",
+        "refs": 1
+      },
+      {
+        "table": "language_briefs",
+        "refs": 1
+      },
+      {
+        "table": "language_pair_briefs",
+        "refs": 1
+      },
+      {
+        "table": "learners",
+        "refs": 2
+      },
+      {
+        "table": "lego_introductions",
+        "refs": 4
+      },
+      {
+        "table": "listening_pod_sentences",
+        "refs": 12
+      },
+      {
+        "table": "listening_pods",
+        "refs": 8
+      },
+      {
+        "table": "orchestrator_messages",
+        "refs": 6
+      },
+      {
+        "table": "phase_prompts",
+        "refs": 1
+      },
+      {
+        "table": "pod_legos",
+        "refs": 3
+      },
+      {
+        "table": "presentation_templates",
+        "refs": 1
+      },
+      {
+        "table": "raw_seed_uploads",
+        "refs": 2
+      },
+      {
+        "table": "recording_provenance",
+        "refs": 2
+      },
+      {
+        "table": "sample_flags",
+        "refs": 1
+      },
+      {
+        "table": "shared_audio",
+        "refs": 4
+      },
+      {
+        "table": "target_legos",
+        "refs": 1
+      },
+      {
+        "table": "target_phrases",
+        "refs": 1
+      },
+      {
+        "table": "target_seed_texts",
+        "refs": 1
+      },
+      {
+        "table": "voices",
+        "refs": 2
+      }
     ]
+  },
+  "docs": {
+    "surface": {
+      "compiled": [
+        "Overview",
+        "APML",
+        "Glossary",
+        "Pipeline"
+      ],
+      "rulings": [
+        "Pedagogy",
+        "Pod Thinking"
+      ],
+      "data": [
+        "Seeds",
+        "Content",
+        "Pods"
+      ]
+    },
+    "glossary": [
+      {
+        "term": "seed",
+        "meta": {
+          "livesIn": "course_seeds"
+        },
+        "body": "One canonical known-language sentence and its chosen target translation. The seed is the atomic\nunit of submission: one seed, one API call, all-or-nothing. The known text must match the\ncanonical seed exactly or the submission is rejected as a canonical mismatch. Seeds are not\nfirst-class citizens — a seed is a **vehicle for delivering LEGOs**; \"what LEGOs does this seed\nlet me teach?\" is the decomposition question. Reference format: `S0001`, `S0042` — S plus a\n4-digit number."
+      },
+      {
+        "term": "LEGO",
+        "meta": {
+          "livesIn": "course_legos",
+          "enforcedBy": "MAX_LEGO_SYLLABLES"
+        },
+        "body": "The unit of communication and of learning: a pedagogically-sound chunk that removes learner\nuncertainty. The test is simple — hear the known-language prompt, produce the target with zero\nguessing. Two jobs: remove uncertainty (that's ZUT), and maximise patterns with minimum\nvocabulary (overlapping chunks let each LEGO recombine into many sentences). LEGOs are capped by\na **target-syllable limit**, not a word count — the live value is on the Pipeline page. Overlap\nis allowed and encouraged; it is how recombination happens. Reference format: `S0041L02` — seed\nnumber plus LEGO index."
+      },
+      {
+        "term": "A-LEGO and M-LEGO",
+        "meta": {
+          "livesIn": "course_legos"
+        },
+        "body": "The only two LEGO types, **declared by the author, never computed** — the validator checks the\nletter, it does not count words. **A (atomic)** is a single meaningful word: no components, no\nbuild-up ladder. **M (molecular)** is a multi-word chunk that bundles structure the learner\ncannot yet recombine — idiomatic glue, reversed word order, anything uninferable — and it must\ndeclare its word-level **components**. The deciding question is inferability: given what the\nlearner already knows, can they assemble this themselves? Yes → no new LEGO, let existing\npieces tile it. No → an M-LEGO, introduced components-first."
+      },
+      {
+        "term": "component",
+        "meta": {
+          "livesIn": "course_practice_phrases"
+        },
+        "body": "A word-level piece of an M-LEGO, shown with a **literal translation** at the LEGO's debut so the\nlearner sees the pattern arrive through meaning — no grammar lecture, ever. Component rows are\nper-sentence literal tiling glosses, not atomised intentions: their known side is exempt from\nZUT, but their target text must be part of their own seed's target sentence. Components still\ncount as available vocabulary, and some (single-letter prepositions, particles) are marked\n`introduce:false` because they only make sense attached."
+      },
+      {
+        "term": "practice phrases — build and use",
+        "meta": {
+          "livesIn": "course_practice_phrases"
+        },
+        "body": "Every LEGO carries practice phrases in exactly one of three roles: component, **build**, or\n**use**. BUILD phrases are short pattern-locking phrases — fragments are fine so long as they\nextend naturally — combining the new LEGO with already-introduced vocabulary only; they play in\nthe debut round and never return. USE phrases are complete, natural sentences — the kind of\nthing a learner actually wants to say — and they are **eternal**: the only role that comes back\nthrough spaced repetition and consolidation. Fragments are never acceptable as USE. Phrase\nfloors are hard rules — fewer phrases is a fail; variety never substitutes for volume. The\nvalidator's live gate list is on the Pipeline page."
+      },
+      {
+        "term": "ZUT — Zero Uncertainty Test",
+        "meta": {
+          "enforcedBy": [
+            "checkPhraseZUT",
+            "checkLegoConflict"
+          ]
+        },
+        "body": "Same known text → exactly **one** target form, course-wide, production direction only. If one\nknown prompt points at two different targets the learner has to guess, and guessing is the one\nthing SSi refuses to ask of them. The reverse direction — many known phrasings converging on one\ntarget — is reception, harmless, even a teaching asset. ZUT outranks naturalness: \"a native\nwould more likely say X\" is never grounds to change a ZUT-clean mapping. Enforcement is\ntwo-level: a LEGO-level collision rejects the whole seed; a phrase-level collision holds out\nonly the offending phrase, with a hint to consolidate to the existing target or differentiate\nthe known-language prompt."
+      },
+      {
+        "term": "the known side is a controlled language",
+        "meta": {
+          "enforcedBy": "checkKnownSide",
+          "code": "docs/pair-contracts/_TEMPLATE.contract.cjs"
+        },
+        "body": "The known-language prompts are not free English. They compose only from the known-glosses of\nintroduced LEGOs, a small free class (glue, inflection, NPI-under-negation, do-support), and\nconstructions licensed by a debuted carrier. Slightly stilted but tileable prompts are correct.\nPer-pair rules live in the pair-contract; the free class is known-language specific. Vocabulary\nis always **known / target / seed** — never \"source\"."
+      },
+      {
+        "term": "tiling and the vocabulary constraint",
+        "meta": {
+          "enforcedBy": [
+            "checkTiling",
+            "checkVocabViolations"
+          ]
+        },
+        "body": "Tiling is the sanity check that a seed's target sentence can be fully rebuilt from its LEGO\ntargets, M-LEGO components, and vocabulary from earlier seeds — coverage, not a unique\ndecomposition; overlapping tilings are fine by design. The vocabulary constraint is stricter: a\npractice phrase may only be assembled from **whole chunks the learner has already met** — never\nre-split, re-conjugated or forward-referenced. Together they are the heart of \"zero unknowns\nexcept the new LEGO\"."
+      },
+      {
+        "term": "spaced repetition and the round",
+        "meta": {},
+        "body": "Runtime structure, owned by the learning app: a LEGO's round runs intro → debut → practice →\nreview → consolidate. Only USE phrases ever enter spaced repetition, revisited at\nFibonacci-style offsets back through the course; build and component phrases are heard once, in\nthe round that introduces their LEGO, and never return. Position in a course is always **the\nhighest LEGO played** — \"seed position\" does not exist."
+      },
+      {
+        "term": "deterministic phrase ID",
+        "meta": {
+          "code": "services/course-builder/routes/seed-complete.cjs"
+        },
+        "body": "Every phrase gets a stable, self-describing ID assigned by the API — agents never set IDs.\nFormat: `{course}:S{NNNN}L{NN}{R}{NN}` where R is C, B or U — so `fra_for_eng:S0042L03U05` is\nthe fifth use phrase of LEGO 3 in seed 42. Same phrase, same ID, forever — which is what keeps\naudio and learner progress stable across rebuilds."
+      },
+      {
+        "term": "Voice 1 and Voice 2",
+        "meta": {
+          "livesIn": "course_audio"
+        },
+        "body": "Every course is taught in two target voices, referred to everywhere as **Voice 1** and\n**Voice 2**. They are peers, distinguished only by index — never by gender and never by a\nprimary/secondary ranking; a voice's gender is an attribute of the specific TTS or human voice\nassigned to the slot, not part of the slot's name. Data and API use the role names `target1`\nand `target2`; the learner's own language is the separate `known` voice."
+      },
+      {
+        "term": "retired terminology",
+        "meta": {},
+        "body": "Words that no longer describe the system — recognise them, then let them go. **BASE /\nCOMPOSITE** and the **B, C, F type codes** → A and M. **FEEDER** → componentization replaced\nit. **LUT** → ZUT. **BASKET** → phrases live in `course_practice_phrases` with explicit roles\nand the runtime assembles a **round**. **Amino acids**, **D-phrases / E-phrases** → gone. The\nJSON files (`seed_pairs.json`, `lego_pairs.json`, `lego_baskets.json`, `audio_index.json`) are\nlegacy artefacts, never sources of truth — content lives in Supabase, and the manifest is\noutput, not input. The deprecated tables `audio_samples`, `texts` and `audio_files` must never\nbe written; audio belongs in `course_audio`."
+      }
+    ],
+    "apml": {
+      "what APML is": "APML — Adaptive Pedagogy Markup Language — is the name for the system's declarative approach to\ncourse production: the course is data plus gates, not code plus opinions. A course build is a\nsequence of validated submissions against a specification, so the same methodology produces the\nsame course shape in any language pair, and every constraint the method cares about is enforced\nby a machine gate rather than by a reviewer's memory.",
+      "the directions": "The architectural principles the system is built to honour. Everything is a parameter — no\nmagic numbers. Each component does one thing. Source data is never mutated, only extended. The\nsame operation twice gives the same result. Store the raw truth, compute the derived. Explicit\nbeats implicit — relationships and dependencies stay visible. Errors carry reasons, not just\nstatus. Everything can be queried and inspected. Build complex behaviour from simple composable\nparts. These are fitness functions, not slogans: a change that fights one of them needs a\nbetter story than \"it works\".",
+      "validate-then-insert": "Every gate runs first and accumulates **all** errors into one list; only if that list is empty\ndoes anything get written. \"Atomic\" here means validate-everything-then-insert-everything, or\ninsert nothing — there is no partial save, and the submitting agent sees every problem at once.\nA rejection is the method protecting the learner, not the tool being difficult. The live gate\nlist, in execution order, is compiled from the validator itself on the Pipeline page.",
+      "why hold-out, not rejection, for phrase-level ZUT": "A LEGO-level ZUT collision is the seed's core wiring gone wrong, so the whole seed is rejected.\nA phrase-level collision is one phrase's problem, so only the transgressor is withheld while\nthe seed and every conforming phrase land — ZUT is never a reason to lose a whole seed of work.\nThe held-out phrase comes back with a hint: consolidate to the existing target, or\ndifferentiate the known-language prompt so it naturally carries the distinction — with context\nwords, never with parentheses, because the course explains nothing and demonstrates everything.",
+      "audio ownership": "Courses own their audio — simple is better. Audio rows carry their text, role and origin\nexplicitly (`tts` is regenerable; `human` is precious and never regenerable), and shared\ncontent like encouragements lives apart from course content. Two standing consequences: TTS\ncosts real money, so audio is only ever minted after an approved audio pass — a content pass\nends by queueing the request, never by running TTS — and some courses are human-voiced by\nruling and never synthesised at all."
+    }
   },
   "explanations": {
     "admin": {
       "home": "Popty is where courses get made — everything a learner ever hears starts here and flows\nthrough Supabase to the learning app. Three doors at the top: **Courses** is the library and\nevery working surface inside a course, **Docs** is the methodology reference, and **Admin** is\nthe platform room — the whole estate at a glance.",
       "courses": "Each course card opens on its Overview hub — one door per course, with every working surface\nas a card inside: text generation, audio, recording, QA. Course content lives in the database,\nnot in files; what you see here is what learners get. Text edits never mint audio by\nthemselves — a content pass ends by queueing an audio-pass request, and audio is only ever\ngenerated after an approved pass, because every minted clip costs real money.",
       "admin": "The Admin section is the platform-wide view. **Configs** holds per-course voice and listening\nsetup — a course without voice config cannot make audio. **Insights** is the measurement room.\n**Activity** shows the builds and jobs actually running right now; a course that should be\nmoving and isn't shows up here first. **Maintenance** is the health sweep — the badge counts\ndays since the last audit, so a growing number is the system telling you it hasn't been\nchecked. **Users** is where access lives: admins see everything, editors are scoped to their\ngranted courses, recorders only ever see the Record Room.",
-      "docs": "Docs is the written methodology — the why behind the gates. The pages there are hand-written\nreference; the facts that can rot, like gate lists and pipeline shape, are compiled from the\ncode itself and live in this pack instead."
+      "docs": "Docs is one surface with two kinds of truth. The facts that can rot — gate lists, pipeline\nshape, schema, endpoints — are compiled from the code and rendered directly, so they cannot go\nstale; the founder-written methodology pages stay hand-maintained because no code can derive\nthem. The **Update docs** button on those pages re-reads live state — course list, audio-pass\nqueue, database counts — from the production machine on demand; facts derived from code refresh\nwhen a commit deploys."
     },
     "editor": {
       "home": "Popty is where your courses get made. Two doors matter for you: **Courses** — your library,\nscoped to the courses you've been granted — and **Docs**, the methodology reference. Everything\nyou edit here is live content: what the database holds is exactly what learners hear.",
       "courses": "A course opens on its **Overview** hub — one door per course, every working surface a card\ninside it: text, audio, recording, QA. The method under all of it: one known prompt maps to\nexactly one target form, course-wide, and the known side is a controlled language too — the\ngates hold you to both when you submit, and a rejection is the method protecting the learner,\nnot the tool being difficult. Text edits never mint audio directly; a finished content pass\nqueues an audio-pass request, and audio happens after approval, because minted clips cost real\nmoney and some courses are human-voiced and never synthesised at all.",
       "checking": "Checking a course is reading it the way a learner meets it: does each prompt force exactly one\nanswer, does every phrase use only what's been taught, does it read naturally in the known\nlanguage? The known-vocab flags this pack carries per course are the compiled starting point —\nbegin where the flags are earliest, because everything downstream builds on those seeds.",
-      "docs": "The Docs section is the reference shelf: **Overview** orients, **APML** is the system spec,\n**Pedagogy** the teaching model, **Glossary** the shared terms, **Seeds** and **Content** the\ncanonical material, **Pods** and **Pod Thinking** the listening stream, **Pipeline** and\n**Intelligence** the build process. Read Pedagogy before authoring anything — the method is\nthe product."
+      "docs": "The Docs section is the reference shelf, and it carries two kinds of truth. Compiled pages —\n**Overview**, **APML**, **Glossary**, **Pipeline** — are rendered from the code itself and\ncannot go stale. Rulings pages — **Pedagogy** and **Pod Thinking** — are founder-written\nmethodology, kept by hand because no code can derive them. **Seeds**, **Content** and **Pods**\nbrowse the canonical material in the database. Read Pedagogy before authoring anything — the\nmethod is the product."
     },
     "recorder": {
       "record-room": "The Record Room is your whole studio. The queue you see is real work waiting: lines the course\nneeds in a human voice, in order. Read each line as it's written, at an easy natural pace —\nrecordings ship at one speed and the app adjusts playback, so never rush a take. Some courses\nare human-voiced only — no synthetic voice is ever allowed to stand in for you there — which is\nwhy a line waiting in your queue can't be filled by anyone but a person. A take you're not\nhappy with is worth redoing: whatever you record is exactly what a learner will hear, thousands\nof times."

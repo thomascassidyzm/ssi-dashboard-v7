@@ -18,7 +18,7 @@
  *   node tools/explainer/compile.mjs           # write pack + renders
  *   node tools/explainer/compile.mjs --check   # validate only (CI), no writes
  */
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, statSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -26,6 +26,14 @@ import { fileURLToPath } from 'node:url'
 const HERE = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(HERE, '..', '..')
 const CHECK_ONLY = process.argv.includes('--check')
+// --live: also query Supabase for live-state derivables (course list, audio-pass
+// queue, content-table row counts) and stamp them into the pack. Still zero LLM.
+// --out <path>: write the pack to <path> ONLY (no src/explainer write, no md
+// renders) — the shape the on-demand "Update docs" endpoint uses so a live
+// refresh never dirties the git checkout.
+const LIVE = process.argv.includes('--live')
+const outIdx = process.argv.indexOf('--out')
+const OUT_PATH = outIdx > -1 ? process.argv[outIdx + 1] : null
 
 const read = (rel) => readFileSync(join(ROOT, rel), 'utf8')
 const failures = []
@@ -130,6 +138,58 @@ if (existsSync(auditPath)) {
   warnings.push(snapshotNote)
 }
 
+// 1h. Supabase tables the code actually touches — the schema truth the Docs
+// surface renders. Derived by scanning services/ + src/ for .from('table')
+// calls, so a renamed or retired table drops out of the docs on the next
+// compile instead of rotting in hand-written prose. (supabase/schema.sql is a
+// per-machine snapshot, not in git — code references are the CI-safe truth.)
+const tableRefs = new Map() // table → Set of referencing files
+const scanForTables = (dir) => {
+  for (const name of readdirSync(join(ROOT, dir))) {
+    if (name === 'node_modules' || name === 'archive' || name.startsWith('.')) continue
+    const rel = `${dir}/${name}`
+    const st = statSync(join(ROOT, rel))
+    if (st.isDirectory()) { scanForTables(rel); continue }
+    if (!/\.(cjs|js|mjs|ts|vue)$/.test(name) || name.endsWith('.test.cjs') || name.endsWith('.test.js')) continue
+    const src = readFileSync(join(ROOT, rel), 'utf8')
+    for (const m of src.matchAll(/\.from\(\s*['"]([a-z][a-z0-9_]+)['"]\s*\)/g)) {
+      if (!tableRefs.has(m[1])) tableRefs.set(m[1], new Set())
+      tableRefs.get(m[1]).add(rel)
+    }
+  }
+}
+scanForTables('services')
+scanForTables('src')
+const CORE_TABLES = ['courses', 'course_seeds', 'course_legos', 'course_practice_phrases', 'course_audio']
+for (const t of CORE_TABLES) {
+  if (!tableRefs.has(t)) failures.push(`DERIVE: core table "${t}" is no longer referenced anywhere in services/ or src/ — schema truth is stale`)
+}
+const DEPRECATED_TABLES = ['audio_samples', 'texts', 'audio_files'] // ruling: CLAUDE.md deprecated set
+const supabaseTables = [...tableRefs.keys()].sort().map((t) => ({
+  table: t,
+  refs: tableRefs.get(t).size,
+  deprecated: DEPRECATED_TABLES.includes(t) || undefined,
+}))
+
+// 1i. Docs-surface classification — every Docs tab must be declared either a
+// COMPILED render (derived, never stale) or a RULINGS/DATA page (founder-
+// authored prose or DB-browsing views). A new docs tab that nobody classifies
+// fails the compile, so the hub can't silently grow un-governed pages again.
+const DOCS_SURFACE = {
+  compiled: ['Overview', 'APML', 'Glossary', 'Pipeline'],
+  rulings: ['Pedagogy', 'Pod Thinking'],
+  data: ['Seeds', 'Content', 'Pods'],
+}
+{
+  const classified = Object.values(DOCS_SURFACE).flat()
+  for (const t of docsTabs) {
+    if (!classified.includes(t.label)) failures.push(`DERIVE: docs tab "${t.label}" is not classified compiled/rulings/data in DOCS_SURFACE — rule on it before it ships`)
+  }
+  for (const label of classified) {
+    if (!docsTabs.some((t) => t.label === label)) warnings.push(`DOCS_SURFACE classifies "${label}" but no such docs tab exists in AppNavbar.vue`)
+  }
+}
+
 // ─── 2. RULINGS — the hand-written persona voices ───────────────────────────
 
 const APP_PERSONAS = ['admin', 'editor', 'recorder']
@@ -144,6 +204,41 @@ for (const persona of [...APP_PERSONAS, ...FILE_PERSONAS]) {
   }
   if (!Object.keys(explanations[persona]).length) failures.push(`RULINGS: ${persona}.md has no "## <section>" sections`)
 }
+
+// 2b. Docs rulings — the founder-authored prose the Docs surface presents
+// (rulings/docs/*.md). Glossary terms carry pointer lines the drift gate
+// verifies against the code, so a term can't quietly outlive the thing it
+// names:  "> lives in: `table`"  ·  "> enforced by: `symbol`"  ·
+// "> code: `path`". APML sections are pure prose (the why, not the state).
+const parseSections = (src) => {
+  const out = {}
+  const body = src.replace(/<!--[\s\S]*?-->/g, '')
+  for (const m of body.matchAll(/^## ([^\n]+)\n([\s\S]*?)(?=^## |\s*$(?![\s\S]))/gm)) out[m[1].trim()] = m[2].trim()
+  return out
+}
+const enforcementSrc = validationSrc + langConfigSrc + seedCompleteSrc
+const glossarySrc = readFileSync(join(HERE, 'rulings', 'docs', 'glossary.md'), 'utf8')
+const glossary = Object.entries(parseSections(glossarySrc)).map(([term, raw]) => {
+  const meta = {}
+  for (const m of raw.matchAll(/^> (lives in|enforced by|code): `([^`]+)`\s*$/gm)) {
+    const key = { 'lives in': 'livesIn', 'enforced by': 'enforcedBy', code: 'code' }[m[1]]
+    meta[key] = meta[key] ? [...[].concat(meta[key]), m[2]] : m[2]
+  }
+  for (const t of [].concat(meta.livesIn ?? [])) {
+    if (!tableRefs.has(t)) failures.push(`DRIFT: glossary term "${term}" says it lives in "${t}" but no code references that table`)
+  }
+  for (const s of [].concat(meta.enforcedBy ?? [])) {
+    if (!enforcementSrc.includes(s)) failures.push(`DRIFT: glossary term "${term}" cites enforcement "${s}" which no longer exists in the course-builder source`)
+  }
+  for (const p of [].concat(meta.code ?? [])) {
+    if (!existsSync(join(ROOT, p))) failures.push(`DRIFT: glossary term "${term}" points at "${p}" which does not exist`)
+  }
+  const body = raw.replace(/^> (lives in|enforced by|code): `[^`]+`\s*$/gm, '').trim()
+  return { term, meta, body }
+})
+if (glossary.length < 8) failures.push(`RULINGS: docs/glossary.md parsed only ${glossary.length} terms`)
+const apmlDoc = parseSections(readFileSync(join(HERE, 'rulings', 'docs', 'apml.md'), 'utf8'))
+if (!Object.keys(apmlDoc).length) failures.push('RULINGS: docs/apml.md has no sections')
 
 // ─── 3. VALIDATE — the drift gate ───────────────────────────────────────────
 
@@ -285,21 +380,69 @@ const truth = {
   },
   voicePolicy: { humanVoiceCourses, cymPrefixRule, contentPassesQueueAudio: true },
   agentEndpoints,
+  supabaseTables,
+}
+// The Docs surface: compiled current-state + founder rulings prose, one pack.
+const docs = {
+  surface: DOCS_SURFACE,
+  glossary,
+  apml: apmlDoc,
 }
 const appExplanations = Object.fromEntries(APP_PERSONAS.map((p) => [p, explanations[p]]))
 const snapshot = { vocabGate, note: snapshotNote, generatedAt: new Date().toISOString().slice(0, 10) }
-const content = JSON.stringify({ truth, appExplanations, rules, vocabGate })
+
+// --live: the on-demand refresh path. Queries Supabase for the LIVE-STATE
+// derivables only (course list, pending audio-pass queue, content row counts).
+// Code-derived facts above already re-read THIS checkout; what commit+CI
+// covers is the Vercel bundle, and the pack states its own provenance.
+if (LIVE) {
+  const { createRequire } = await import('node:module')
+  const requireCjs = createRequire(join(ROOT, 'package.json'))
+  requireCjs('dotenv').config({ path: join(ROOT, '.env') }) // CLI runs lack the service env
+  const supa = requireCjs('./services/supabase-client.cjs').getClient()
+  if (!supa) { console.error('[explainer] --live failed: Supabase client not initialised (missing env)'); process.exit(1) }
+  const count = async (table, filter) => {
+    let q = supa.from(table).select('*', { count: 'exact', head: true })
+    if (filter) q = filter(q)
+    const { count: n, error } = await q
+    if (error) throw new Error(`${table}: ${error.message}`)
+    return n
+  }
+  const { data: courseRows, error: cErr } = await supa.from('courses').select('course_code, display_name').order('course_code')
+  if (cErr) { console.error(`[explainer] --live failed: courses: ${cErr.message}`); process.exit(1) }
+  snapshot.live = {
+    generatedAt: new Date().toISOString(),
+    courses: courseRows.map((c) => ({ code: c.course_code, name: c.display_name })),
+    audioPassPending: await count('audio_pass_requests', (q) => q.eq('status', 'pending')),
+    rowCounts: Object.fromEntries(await Promise.all(
+      ['course_seeds', 'course_legos', 'course_practice_phrases', 'course_audio'].map(async (t) => [t, await count(t)])
+    )),
+  }
+}
+
+const content = JSON.stringify({ truth, docs, appExplanations, rules, vocabGate })
 const pack = {
   version: createHash('sha256').update(content).digest('hex').slice(0, 12),
   generatedAt: new Date().toISOString().slice(0, 10),
   truth,
+  docs,
   explanations: appExplanations,
   rules,
   snapshot,
 }
 
 if (CHECK_ONLY) {
-  console.log(`[explainer] check OK — pack version would be ${pack.version} (${Object.keys(mustName).length} personas · ${gateFns.length} gates · ${rules.length} rules · ${Object.keys(vocabGate).length} snapshot courses)`)
+  console.log(`[explainer] check OK — pack version would be ${pack.version} (${Object.keys(mustName).length} personas · ${gateFns.length} gates · ${rules.length} rules · ${glossary.length} glossary terms · ${supabaseTables.length} tables · ${Object.keys(vocabGate).length} snapshot courses)`)
+  process.exit(0)
+}
+
+if (OUT_PATH) {
+  // Live-refresh output: the pack only, wherever the caller asked (usually
+  // scripts/explainer/pack-live.json — gitignored workspace). No renders, no
+  // src/explainer write: an on-demand refresh must never dirty the checkout.
+  mkdirSync(dirname(join(ROOT, OUT_PATH)), { recursive: true })
+  writeFileSync(join(ROOT, OUT_PATH), JSON.stringify(pack, null, 2) + '\n')
+  console.log(`[explainer] pack ${pack.version} written → ${OUT_PATH}${LIVE ? ` (live: ${snapshot.live.courses.length} courses · ${snapshot.live.audioPassPending} pending audio passes)` : ''}`)
   process.exit(0)
 }
 

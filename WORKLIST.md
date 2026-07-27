@@ -56,6 +56,8 @@ item; if it needs detail, **link a doc** (the plans under `docs/`, e.g. `docs/co
 - [~] @claude-tts-backlog 07-11 **TTS backlog generation ita_for_eng + spa_for_eng — free passes first (renorm/link/clone-copy done), then approval-gated audio pass; hard ceiling $150** → ledger `tools/course-optimization/tts-backlog-2026-07-11-ledger.json`
 - [x] @claude-self-explaining 07-27 **Popty self-explaining v1 — compiled explainer (second proof of 'apps ship with explanatory power'; first = ssi-learning-app 2026-07-27). Compiler + drift gate + persona packs (admin/editor/recorder + dev/agent file renders) + noticing rules.** → `docs/self-explaining-popty.md`
 
+- [x] @claude-explainer-v15 07-27 **Popty explainer v1.5 — Docs hub folded into compiled renders (PhaseIntelligence/ProcessOverview/TerminologyGlossary/APMLSpec deleted → pack-rendered pages; glossary+APML rulings sources drift-gated) + admin 'Update docs' button (production-api `/api/explainer/refresh|pack`, live Supabase snapshot) + CI drift-gate workflow.** → `docs/self-explaining-popty.md` §6–7
+
 ## 🤔 Areas to think through   (open design — link the think-piece)
 
 - [ ] **Big-10 semi-builds** — `X_for_eng` + `eng_for_X` for the top combinations, parallelised across agents (more tokens, not more days). What's the right fan-out + cost ceiling? → `docs/course-optimization/WORKLIST.md`

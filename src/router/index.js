@@ -1,16 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MissionControlHub from '../views/MissionControl.vue'
-import ProcessOverview from '../views/ProcessOverview.vue'
 import CanonicalSeeds from '../views/CanonicalSeeds.vue'
 import CanonicalContent from '../views/CanonicalContent.vue'
-import APMLSpec from '../views/APMLSpec.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
 import CourseCompilation from '../views/CourseCompilation.vue'
-import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
-import PhaseIntelligence from '../views/PhaseIntelligence.vue'
+// Compiled Docs renders — served from the explanation pack (tools/explainer),
+// replacing the old hand-written APMLSpec/TerminologyGlossary/ProcessOverview/
+// PhaseIntelligence estate (deleted 2026-07-27; prose lives on in git).
+import DocsApml from '../views/docs/DocsApml.vue'
+import DocsGlossary from '../views/docs/DocsGlossary.vue'
+import DocsPipeline from '../views/docs/DocsPipeline.vue'
 
 // Documentation Layout (v14 nested navigation)
 import DocsLayout from '../views/docs/DocsLayout.vue'
@@ -119,8 +121,8 @@ const routes = [
       },
       {
         path: 'apml',
-        name: 'APMLSpec',
-        component: APMLSpec,
+        name: 'DocsApml',
+        component: DocsApml,
         meta: { title: 'APML Specification' }
       },
       {
@@ -131,8 +133,8 @@ const routes = [
       },
       {
         path: 'terminology',
-        name: 'TerminologyGlossary',
-        component: TerminologyGlossary,
+        name: 'DocsGlossary',
+        component: DocsGlossary,
         meta: { title: 'Terminology Glossary' }
       },
       {
@@ -168,15 +170,14 @@ const routes = [
       },
       {
         path: 'pipeline',
-        name: 'ProcessOverview',
-        component: ProcessOverview,
-        meta: { title: 'Pipeline Overview' }
+        name: 'DocsPipeline',
+        component: DocsPipeline,
+        meta: { title: 'Pipeline' }
       },
+      // Phase Intelligence folded into the compiled Pipeline render (2026-07-27)
       {
         path: 'intelligence',
-        name: 'PhaseIntelligence',
-        component: PhaseIntelligence,
-        meta: { title: 'Phase Intelligence' }
+        redirect: '/docs/pipeline'
       }
     ]
   },

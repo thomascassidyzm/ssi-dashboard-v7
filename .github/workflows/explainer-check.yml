@@ -1,0 +1,21 @@
+# The explainer drift gate, authoritative in CI (founder ruling 2026-07-27).
+# The compiler is dependency-free node — no npm install needed. If a surface,
+# gate, role, docs tab or glossary pointer changes without the pack/rulings
+# following, this fails the push.
+name: Explainer drift gate
+
+on:
+  push:
+    branches: [main, 'claude/**']
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Drift gate (--check)
+        run: node tools/explainer/compile.mjs --check

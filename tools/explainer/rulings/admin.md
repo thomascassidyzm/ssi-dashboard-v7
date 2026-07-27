@@ -28,6 +28,9 @@ granted courses, recorders only ever see the Record Room.
 
 ## docs
 
-Docs is the written methodology — the why behind the gates. The pages there are hand-written
-reference; the facts that can rot, like gate lists and pipeline shape, are compiled from the
-code itself and live in this pack instead.
+Docs is one surface with two kinds of truth. The facts that can rot — gate lists, pipeline
+shape, schema, endpoints — are compiled from the code and rendered directly, so they cannot go
+stale; the founder-written methodology pages stay hand-maintained because no code can derive
+them. The **Update docs** button on those pages re-reads live state — course list, audio-pass
+queue, database counts — from the production machine on demand; facts derived from code refresh
+when a commit deploys.

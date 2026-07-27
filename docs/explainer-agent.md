@@ -1,6 +1,6 @@
 # Popty for course-builder agents — compiled
 
-**Version `c51fa2875bab` · generated 2026-07-27. DO NOT EDIT — this file is derived from the course-builder's own source; edit tools/explainer/rulings/agent.md for the voice, or the code for the facts, then recompile.**
+**Version `14eaa1fa233d` · generated 2026-07-27. DO NOT EDIT — this file is derived from the course-builder's own source; edit tools/explainer/rulings/agent.md for the voice, or the code for the facts, then recompile.**
 
 ### contract
 

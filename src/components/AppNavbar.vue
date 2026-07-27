@@ -336,15 +336,14 @@ const sectionTabs = computed(() => {
   if (isDocs.value) {
     return [
       { label: 'Overview', to: '/docs', active: route.name === 'DocsIndex' },
-      { label: 'APML', to: '/docs/apml', active: route.name === 'APMLSpec' },
+      { label: 'APML', to: '/docs/apml', active: route.name === 'DocsApml' },
       { label: 'Pedagogy', to: '/docs/pedagogy', active: route.name === 'Pedagogy' },
-      { label: 'Glossary', to: '/docs/terminology', active: route.name === 'TerminologyGlossary' },
+      { label: 'Glossary', to: '/docs/terminology', active: route.name === 'DocsGlossary' },
       { label: 'Seeds', to: '/docs/seeds', active: route.name === 'CanonicalSeeds' },
       { label: 'Content', to: '/docs/canonical', active: route.name === 'CanonicalContent' },
       { label: 'Pods', to: '/docs/pods', active: route.name === 'PodsDoc' },
       { label: 'Pod Thinking', to: '/docs/pod-thinking', active: route.name === 'PodThinkingIndex' || route.name === 'PodThinkingDoc' },
-      { label: 'Pipeline', to: '/docs/pipeline', active: route.name === 'ProcessOverview' },
-      { label: 'Intelligence', to: '/docs/intelligence', active: route.name === 'PhaseIntelligence' }
+      { label: 'Pipeline', to: '/docs/pipeline', active: route.name === 'DocsPipeline' }
     ]
   }
 

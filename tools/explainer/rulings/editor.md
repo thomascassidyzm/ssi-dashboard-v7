@@ -28,8 +28,9 @@ begin where the flags are earliest, because everything downstream builds on thos
 
 ## docs
 
-The Docs section is the reference shelf: **Overview** orients, **APML** is the system spec,
-**Pedagogy** the teaching model, **Glossary** the shared terms, **Seeds** and **Content** the
-canonical material, **Pods** and **Pod Thinking** the listening stream, **Pipeline** and
-**Intelligence** the build process. Read Pedagogy before authoring anything — the method is
-the product.
+The Docs section is the reference shelf, and it carries two kinds of truth. Compiled pages —
+**Overview**, **APML**, **Glossary**, **Pipeline** — are rendered from the code itself and
+cannot go stale. Rulings pages — **Pedagogy** and **Pod Thinking** — are founder-written
+methodology, kept by hand because no code can derive them. **Seeds**, **Content** and **Pods**
+browse the canonical material in the database. Read Pedagogy before authoring anything — the
+method is the product.

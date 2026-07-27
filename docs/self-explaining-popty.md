@@ -97,18 +97,60 @@ baked into the pack) or `"payload"` (page-fetched data). v1 rules (data verified
 - recorder: pending human-recording queue for human-voice courses (cym_*, bre_for_fra).
 - ssi-admin: stalled pending `audio_pass_requests`; courses missing voice config.
 
-## 6. Superseded docs (report, not delete)
+## 6. The Docs hub fold-in (v1.5, founder ruling 2026-07-27)
 
-Where a published docs page duplicates what the compiler derives, the compiled pack supersedes
-it. The v1 build reports which of `/docs` pages (`ProcessOverview`, `PhaseIntelligence`,
-`TerminologyGlossary`, …) are now derivable. Hand-written docs stay.
+The dashboard's Docs tab is one coherent surface: **compiled renders + rulings**, drift-gated,
+never stale. Decisions-vs-derivables applied to the old hand-written estate:
 
-## 7. Cut lines (v1)
+**Died as hand-written artifacts** (deleted 2026-07-27; prose lives on in git):
+- `PhaseIntelligence.vue` — called itself "the single source of truth for agent instructions"
+  while carrying a manually-added warning box about an architecture change it had to be told
+  about. `/docs/intelligence` now redirects to the compiled Pipeline page.
+- `ProcessOverview.vue` → `src/views/docs/DocsPipeline.vue`, rendering pack truth: active
+  workflow, phase-port table, agent endpoints, gate list + limits, voice policy, the Supabase
+  tables the code actually references (derived by scanning `services/` + `src/` for
+  `.from('…')` calls), and — when the production machine is reachable — live state.
+- `TerminologyGlossary.vue` → `src/views/docs/DocsGlossary.vue`. Definitions are rulings
+  (`tools/explainer/rulings/docs/glossary.md`); every term's pointer lines (`lives in` /
+  `enforced by` / `code`) are VERIFIED by the drift gate, so a term cannot outlive its referent.
+- `APMLSpec.vue` → `src/views/docs/DocsApml.vue`. The why (directions, hold-out doctrine, audio
+  ownership) is rulings prose (`rulings/docs/apml.md`); every current-state claim (endpoints,
+  ports, versions, schema) is a compiled block.
+- `DocsIndex.vue` rewritten to render `pack.docs.surface` — the compiled/rulings/data
+  classification itself. A new docs tab nobody classifies **fails the compile** (`DOCS_SURFACE`
+  gate in the compiler).
+
+**Lives as rulings**: Pedagogy, Pod Thinking (founder-authored Vue prose pages, unchanged),
+plus the new docs rulings sources under `tools/explainer/rulings/docs/`. Seeds / Content / Pods
+are data browsers, classified as such.
+
+## 7. The "Update docs" button (v1.5 — supersedes the v1 "no refresh button" cut line)
+
+Founder-requested, same verb pattern as the learning app's "Refresh demo activity". Honest
+deployment shape: the frontend is Vercel-built from main, but the Camberley machine runs the
+repo + pm2 services — so the button lives on the existing production-api (3470):
+
+- `POST /api/explainer/refresh` (admin-gated; explicit `role === 'admin'` check) runs
+  `node tools/explainer/compile.mjs --live --out scripts/explainer/pack-live.json` — the same
+  deterministic zero-LLM compiler, plus a live Supabase snapshot (course list, pending
+  `audio_pass_requests`, content-table row counts). Output is gitignored workspace; a refresh
+  never dirties the checkout.
+- `GET /api/explainer/pack` serves the live pack if one exists, else the committed one.
+- `src/explainer/usePack.js`: docs views render the bundled pack immediately and adopt the live
+  pack when the API answers; unreachable machine = bundled fallback, never a blank page.
+- **Honest scope, stated in the button's own UI copy**: the button refreshes live-state
+  derivables; code-derived facts refresh when a commit deploys. (A live refresh does re-read
+  the Camberley checkout's code, which may be ahead of the deployed bundle — the pack states
+  its provenance either way.)
+
+Drift gate stays authoritative in CI: `.github/workflows/explainer-check.yml` runs `--check`
+on every push.
+
+## 8. Cut lines
 
 - No board/checker runtime personas (no such roles — see §1).
-- No pack-refresh button; the CLI is the regenerate path.
 - No LLM stage in the compiler; the drift gate + an agent re-authoring rulings on failure IS the
   compile-time token spend.
 - Learner level: nothing, ever (founder ruling; learners never see Popty anyway).
 
-*Last updated: 2026-07-27*
+*Last updated: 2026-07-27 (v1.5)*

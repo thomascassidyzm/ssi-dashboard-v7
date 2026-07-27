@@ -1286,6 +1286,62 @@ app.get('/health', (req, res) => {
   })
 })
 
+// =============================================================================
+// EXPLAINER PACK — the Docs surface's live path (founder ruling 2026-07-27).
+// The compiler (tools/explainer/compile.mjs) is deterministic node, zero LLM,
+// so re-running it on demand is cheap. GET serves the freshest pack this
+// machine has (live refresh if one exists, else the committed bundle); POST
+// re-runs the compiler with --live (Supabase course list, audio-pass queue,
+// row counts) into scripts/explainer/ — gitignored, so a refresh never
+// dirties the checkout. Code-derived facts refresh via commit+CI; the button
+// only covers live-state derivables, and its UI copy says so.
+// =============================================================================
+const LIVE_PACK_REL = 'scripts/explainer/pack-live.json'
+
+app.get('/api/explainer/pack', (req, res) => {
+  try {
+    const livePath = path.join(__dirname, '..', LIVE_PACK_REL)
+    const committedPath = path.join(__dirname, '..', 'src', 'explainer', 'pack.json')
+    const servePath = fs.existsSync(livePath) ? livePath : committedPath
+    res.json(JSON.parse(fs.readFileSync(servePath, 'utf8')))
+  } catch (err) {
+    res.status(500).json({ error: `explainer pack unavailable: ${err.message}` })
+  }
+})
+
+let explainerRefreshInFlight = false
+app.post('/api/explainer/refresh', async (req, res) => {
+  const user = await requireAdmin(req, res)
+  if (!user) return
+  // requireAdmin's Supabase-JWT path resolves any dashboard user — enforce the
+  // admin role explicitly here.
+  if (user.role !== 'admin') return res.status(403).json({ error: 'Admin access required' })
+  if (explainerRefreshInFlight) return res.status(409).json({ error: 'A docs refresh is already running' })
+  explainerRefreshInFlight = true
+  const { execFile } = require('child_process')
+  execFile(
+    process.execPath,
+    ['tools/explainer/compile.mjs', '--live', '--out', LIVE_PACK_REL],
+    { cwd: path.join(__dirname, '..'), timeout: 60_000 },
+    (err, stdout, stderr) => {
+      explainerRefreshInFlight = false
+      if (err) {
+        logger.error('[Explainer] refresh failed:', stderr || err.message)
+        // A drift-gate failure here is signal, not noise: the checkout's code
+        // and rulings disagree — surface the compiler's own message.
+        return res.status(500).json({ error: 'Compile failed', details: (stderr || stdout || err.message).slice(-2000) })
+      }
+      try {
+        const pack = JSON.parse(fs.readFileSync(path.join(__dirname, '..', LIVE_PACK_REL), 'utf8'))
+        logger.info(`[Explainer] pack refreshed by ${user.email} → ${pack.version}`)
+        res.json({ ok: true, version: pack.version, generatedAt: pack.snapshot?.live?.generatedAt })
+      } catch (readErr) {
+        res.status(500).json({ error: `Compile succeeded but pack unreadable: ${readErr.message}` })
+      }
+    }
+  )
+})
+
 // Languages endpoint - ISO 639 language codes from CSV
 // Query params:
 //   ?tts=true - Only languages with TTS configured (Azure, ElevenLabs, or Google)
