@@ -14,9 +14,12 @@
           <p class="page-subtitle">Course production, documentation, and platform admin — one place.</p>
         </div>
       </div>
+      <HowThisWorks section="home" />
     </header>
 
     <main class="hub-main">
+      <NoticingInvitations mount="home" :payload="{ courses }" />
+
       <section class="hub-section">
         <div class="section-header">
           <span class="section-label">MAIN AREAS</span>
@@ -117,6 +120,8 @@
 <script setup>
 import { computed } from 'vue'
 import { useCourses } from '../composables/useCourses'
+import HowThisWorks from '../components/explainer/HowThisWorks.vue'
+import NoticingInvitations from '../components/explainer/NoticingInvitations.vue'
 
 const { courses } = useCourses()
 const courseCount = computed(() => courses.value?.length || 0)
@@ -128,4 +133,7 @@ const courseCount = computed(() => courses.value?.length || 0)
 .card-courses { --hub-accent: #10b981; --hub-glow: rgba(16, 185, 129, 0.15); }
 .card-docs    { --hub-accent: #3b82f6; --hub-glow: rgba(59, 130, 246, 0.15); }
 .card-admin   { --hub-accent: #a855f7; --hub-glow: rgba(168, 85, 247, 0.15); }
+
+.hub-header :deep(.htw) { margin-top: 0.75rem; }
+.hub-main :deep(.noticing) { margin-bottom: 1.5rem; }
 </style>

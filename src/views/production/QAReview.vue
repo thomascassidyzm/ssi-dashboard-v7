@@ -20,6 +20,15 @@
       </div>
     </div>
 
+    <!--
+      QA mount for the self-explaining pack (docs/self-explaining-popty.md §4).
+      This is a modest, easily re-homed slot — QAReview.vue is one of two live
+      QA surfaces (the other, PhraseQA.vue, triggers agents rather than
+      fetching a summary/list payload — see tools/explainer/payload-map.json).
+    -->
+    <HowThisWorks section="checking" class="mb-3" />
+    <NoticingInvitations mount="qa" :subject-key="courseCode" :payload="{ flags }" class="mb-6" />
+
     <!-- Phrase check progress -->
     <div class="mb-4">
       <div class="flex items-center justify-between text-xs text-faint mb-1">
@@ -139,6 +148,8 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { getApiUrl } from '@/services/api'
 import { isConfigured as isSupabaseConfigured, getQAFlags, getQASummary } from '@/services/supabase'
+import HowThisWorks from '@/components/explainer/HowThisWorks.vue'
+import NoticingInvitations from '@/components/explainer/NoticingInvitations.vue'
 
 const props = defineProps({
   courseCode: { type: String, required: true }

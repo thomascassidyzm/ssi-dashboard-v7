@@ -250,6 +250,17 @@ for (const rule of rules) {
   }
 }
 
+// 3d. LOCKSTEP — the runtime evaluator must speak the same rule language the
+// compiler validates (shapes, ops, source kinds, the 'self' CTA semantics).
+try {
+  const evalSrc = read('src/explainer/evaluateRules.js')
+  for (const needle of ['perChild', 'countWhere', 'daysSinceGt', 'snapshot', 'payload']) {
+    if (!evalSrc.includes(needle)) failures.push(`LOCKSTEP: evaluateRules.js no longer handles '${needle}'`)
+  }
+} catch {
+  warnings.push('LOCKSTEP: src/explainer/evaluateRules.js not found yet (first compile before the runtime exists)')
+}
+
 // ─── Report ─────────────────────────────────────────────────────────────────
 for (const w of warnings) console.log(`  ⚠ ${w}`)
 if (failures.length) {

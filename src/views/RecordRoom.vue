@@ -7,10 +7,19 @@
         <p v-if="courseCode" class="room-course">{{ courseDisplayName }}</p>
       </div>
       <div class="room-user">
+        <HowThisWorks section="record-room" />
         <span class="user-name">{{ userName }}</span>
         <button class="btn-signout" @click="handleSignOut">Sign out</button>
       </div>
     </header>
+
+    <NoticingInvitations
+      v-if="courseCode"
+      mount="record-room"
+      :subject-key="courseCode"
+      :payload="{ courseFlags: { isHumanVoiceCourse }, recordingScript: { totalItems: scriptTotal, estimatedMinutes: scriptMinutes } }"
+      class="room-notices"
+    />
 
     <!-- Several rooms (recording for more than one course) — pick one -->
     <section v-if="!courseCode && myRooms.length > 1" class="room-card">
@@ -171,6 +180,9 @@ import { useCourses } from '@/composables/useCourses'
 import { useAutocueState } from '@/composables/useAutocueState'
 import { useUploadQueue } from '@/composables/useAudioUpload'
 import { getApiUrl } from '@/services/api'
+import pack from '@/explainer/pack.json'
+import HowThisWorks from '@/components/explainer/HowThisWorks.vue'
+import NoticingInvitations from '@/components/explainer/NoticingInvitations.vue'
 import AutocueStudio from '@/components/production/autocue/AutocueStudio.vue'
 // Dialogue mode uses the long-take recorder: one continuous lossless take,
 // tap-to-advance autocue, sliced per line into the proven upload pipeline.
@@ -197,6 +209,16 @@ const scriptMinutes = ref(null)
 const scriptError = ref(null)
 
 const userName = computed(() => learner.value?.name || learner.value?.email || '')
+
+// pack.truth.voicePolicy.humanVoiceCourses — compiled from
+// services/shared/human-voice-courses.cjs (docs/self-explaining-popty.md §2).
+const isHumanVoiceCourse = computed(() => {
+  const code = props.courseCode
+  const policy = pack.truth?.voicePolicy
+  if (!code || !policy) return false
+  if (policy.humanVoiceCourses?.includes(code)) return true
+  return Boolean(policy.cymPrefixRule) && code.startsWith('cym_')
+})
 
 // Rooms this person records in: their explicit course list (admins/editors
 // hold '*' which isn't enumerable — they arrive via per-course links anyway).
@@ -403,6 +425,8 @@ onMounted(loadRoom)
   align-items: center;
   gap: 1rem;
 }
+
+.room-notices { margin: -0.75rem 0 1.5rem; }
 
 .user-name {
   font-size: 0.875rem;
