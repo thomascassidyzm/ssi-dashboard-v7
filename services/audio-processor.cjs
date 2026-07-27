@@ -9,7 +9,7 @@
  * Uses ffmpeg for audio processing.
  */
 
-const { exec, spawn } = require('child_process');
+const { exec, execFile, spawn } = require('child_process');
 const { promisify } = require('util');
 const fs = require('fs-extra');
 const path = require('path');
@@ -483,6 +483,42 @@ async function detectTailClick(audioPath, options = {}) {
  */
 const WHISPER_MODEL = process.env.WHISPER_MODEL
   || '/Users/tomcassidy/SSi/whisper-models/ggml-small.bin';
+
+// Bounded whisper concurrency: each whisper-cli process holds ~600MB of model
+// weights, and repairTailDefect runs at the caller's batch concurrency — the
+// 2026-07-27 BUILD batch stampeded 61 simultaneous processes on an 8GB machine
+// (13.5GB swap, two kernel panics). Same semaphore shape as the xAI phonology
+// gate in tts-service.cjs (XAI_PHONO_CONCURRENCY).
+const WHISPER_MAX_CONCURRENT = Number(process.env.WHISPER_VERIFY_CONCURRENCY || 2);
+let whisperActive = 0;
+const whisperQueue = [];
+function whisperAcquire() {
+  if (whisperActive < WHISPER_MAX_CONCURRENT) { whisperActive++; return Promise.resolve(); }
+  return new Promise((resolve) => whisperQueue.push(resolve));
+}
+function whisperRelease() {
+  const next = whisperQueue.shift();
+  if (next) next(); else whisperActive--;
+}
+
+// Stale trimverify-* temp dirs survive a crash/kill (the finally-cleanup never
+// runs); sweep ones older than an hour once per process so they can't pile up.
+let _staleSwept = false;
+async function sweepStaleTrimDirs() {
+  if (_staleSwept) return;
+  _staleSwept = true;
+  try {
+    const tmp = require('os').tmpdir();
+    const cutoff = Date.now() - 60 * 60 * 1000;
+    for (const name of await fs.readdir(tmp)) {
+      if (!name.startsWith('trimverify-')) continue;
+      const dir = path.join(tmp, name);
+      const st = await fs.stat(dir).catch(() => null);
+      if (st && st.mtimeMs < cutoff) await fs.remove(dir).catch(() => {});
+    }
+  } catch { /* best-effort */ }
+}
+
 let _whisperReady = null;
 async function whisperAvailable() {
   if (_whisperReady === null) {
@@ -496,16 +532,30 @@ async function whisperAvailable() {
 
 async function verifyTrimKeepsText(audioPath, trimSec, text, language) {
   if (!text || !(await whisperAvailable())) return null;
+  await sweepStaleTrimDirs();
   const tmpDir = await fs.mkdtemp(path.join(require('os').tmpdir(), 'trimverify-'));
   try {
     const keepWav = path.join(tmpDir, 'keep.wav');
     const cutWav = path.join(tmpDir, 'cut.wav');
-    await execAsync(`ffmpeg -y -hide_banner -loglevel error -i "${audioPath}" -t ${trimSec} -ar 16000 -ac 1 "${keepWav}"`);
-    await execAsync(`ffmpeg -y -hide_banner -loglevel error -i "${audioPath}" -ss ${trimSec} -ar 16000 -ac 1 "${cutWav}"`);
+    const EXEC_OPTS = { timeout: 60000, killSignal: 'SIGKILL' };
+    await execAsync(`ffmpeg -y -hide_banner -loglevel error -i "${audioPath}" -t ${trimSec} -ar 16000 -ac 1 "${keepWav}"`, EXEC_OPTS);
+    await execAsync(`ffmpeg -y -hide_banner -loglevel error -i "${audioPath}" -ss ${trimSec} -ar 16000 -ac 1 "${cutWav}"`, EXEC_OPTS);
     const lang = language ? language.slice(0, 2) : 'auto';
     const run = async (wav) => {
-      const { stdout } = await execAsync(`whisper-cli -m "${WHISPER_MODEL}" -l ${lang} -nt -f "${wav}" 2>/dev/null`);
-      return stdout.trim().replace(/\s+/g, ' ');
+      await whisperAcquire();
+      try {
+        // execFile (no shell) + timeout/SIGKILL: whisper-cli itself is the
+        // child, so a hung or abandoned run is reaped, never orphaned.
+        const stdout = await new Promise((resolve, reject) => {
+          execFile('whisper-cli',
+            ['-m', WHISPER_MODEL, '-l', lang, '-nt', '-t', String(process.env.WHISPER_THREADS || 4), '-f', wav],
+            { encoding: 'utf8', maxBuffer: 1 << 22, timeout: 120000, killSignal: 'SIGKILL' },
+            (err, out) => (err ? reject(err) : resolve(out)));
+        });
+        return stdout.trim().replace(/\s+/g, ' ');
+      } finally {
+        whisperRelease();
+      }
     };
     const kept = await run(keepWav);
     const cut = await run(cutWav);
