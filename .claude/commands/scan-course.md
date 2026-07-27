@@ -615,6 +615,26 @@ for (const l of legos) {
 Report: count grouped by severity — "empty" (0 build AND 0 use), "no builds", "few uses". Sample 10 of each.
 Action: Either generate more phrases via course builder, or accept the LEGO is intentionally sparse (rare — usually a builder bug).
 
+#### Check 17: Under-spread LEGOs (orphans)
+
+New LEGOs whose target chunk never (or rarely) appears in practice phrases outside their own
+seed. Orphaned chunks get no long-range spaced recall — the hand-crafted Welsh originals sit
+at 6–9% orphans; machine-built courses left unchecked sit at 20–55% (fleet scan 2026-07-27).
+
+Run the committed analyzer (don't reimplement — it handles Unicode and unspaced scripts):
+
+```bash
+node tools/backfill-spread/analyze.cjs {courseCode} --max-uses 1
+# add --cjk for unspaced scripts (jpn/zho/yue/hak/nan/tha…) or the numbers are inflated artifacts
+```
+
+Report: the outside-use distribution line plus orphan percentage of new LEGOs.
+Thresholds: **<10% good · 10–25% flag as improvement backlog · >25% recommend a spread-backfill
+pass** (method + agent brief template: `docs/course-optimization/lego-spread-backfill-playbook.md`;
+validate submissions with `tools/backfill-spread/validate.cjs`).
+This check is informational for scan purposes — it never blocks a build, and fixing it is a
+separate agent-run project, not a scan-time edit.
+
 ### Step 4: Language spot-check with Haiku
 
 **Default: full coverage — every phrase, no sampling.** A 1-per-seed sample misses 90%+ of phrase-level corruption: builder failures often hit specific phrases within a seed (e.g. 8 of 12 USE phrases corrupt, seed-level K fine). Sampling found 17 mixed-script phrases in `eng_for_hin` where full scanning found 174 — same family, 10× larger. Run full.
@@ -840,6 +860,8 @@ After the scan, the user will decide what to fix. Here's how to handle each issu
 12. Delete unpronounceable phrases
 13. Delete Cat A vocab ordering violations (word-level, then chunk-level)
 14. Backfill underpopulated LEGOs (or accept)
+15. Report under-spread LEGO percentage (Check 17 — informational; a >25% result recommends a
+    separate spread-backfill project, never a scan-time fix)
 
 **Why this order matters:**
 - Strip-then-rescan: parens/slashes hide ZUT conflicts — strip before resolving.
