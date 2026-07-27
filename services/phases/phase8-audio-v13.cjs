@@ -1608,7 +1608,17 @@ app.post('/generate/:courseCode', async (req, res) => {
         template,
         targetLangName,
         knownLangName,
-        onProgress: (done, total) => logger.info(`Authoring intros: ${done}/${total}`)
+        onProgress: (done, total) => {
+          logger.info(`Authoring intros: ${done}/${total}`)
+          // Surface authoring in /status: the batch runner's stall guard reads
+          // the progress fingerprint, and authoring can legitimately run for
+          // an hour-plus (per-batch CLI timeouts) with no TTS item progress.
+          currentWork.active = true
+          currentWork.operation = 'author'
+          currentWork.courseCode = courseCode
+          currentWork.current = done
+          currentWork.total = total
+        }
       })
       authoredIntros = authored.authored
       authorFlags = authored.flags
