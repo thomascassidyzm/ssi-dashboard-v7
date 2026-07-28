@@ -500,6 +500,12 @@ const routes = [
     component: () => import('../views/admin/PodLab.vue'),
     meta: { title: 'Pod Lab - Admin' }
   },
+  {
+    path: '/admin/configs/vad',
+    name: 'VadLab',
+    component: () => import('../views/admin/VadLab.vue'),
+    meta: { title: 'VAD Lab - Admin' }
+  },
   // Legacy path — the old single Listening page lived here. Redirect bookmarks.
   { path: '/admin/listening', redirect: '/admin/configs/listening' },
   // (Stage 0 Tuner retired 2026-06-24 — absorbed into the Listening config,
