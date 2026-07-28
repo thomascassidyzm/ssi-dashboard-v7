@@ -173,7 +173,7 @@ function loadCSV() {
     const fallback = {
       'en': 'English', 'es': 'Spanish', 'it': 'Italian', 'de': 'German',
       'fr': 'French', 'pt': 'Portuguese', 'ja': 'Japanese', 'ko': 'Korean',
-      'zh': 'Chinese', 'cmn': 'Chinese', 'ar': 'Arabic', 'hi': 'Hindi',
+      'zh': 'Chinese', 'cmn': 'Chinese', 'ar': 'Modern Standard Arabic', 'hi': 'Hindi',
       'ru': 'Russian', 'nl': 'Dutch', 'pl': 'Polish', 'tr': 'Turkish'
     };
     Object.assign(codeToName, fallback);

@@ -77,14 +77,20 @@ const LANG_MAP = {
   'ain': 'Ainu', 'ceb': 'Cebuano',
 };
 
-// Regional variant names (keyed by target part before _for_)
+// Regional variant names (keyed by target part before _for_).
+// NOTE: `getLanguageName` (target side) checks this map BEFORE LANG_MAP, while
+// `getKnownLanguageName` reads only LANG_MAP. So `'ara'` here makes the plain
+// Arabic course produce "Modern Standard Arabic" as the TARGET, while the known
+// side of `_for_ara` courses stays the natural "Arabic" (for Arabic speakers).
 const DIALECT_NAMES = {
   'por_br': 'Brazilian Portuguese',
   'spa_mx': 'Mexican Spanish',
   'fra_ca': 'Quebec French',
   'deu_at': 'Austrian German',
+  'ara': 'Modern Standard Arabic',
   'ara_eg': 'Egyptian Arabic',
   'ara_sy': 'Syrian Arabic',
+  'ara_lb': 'Lebanese Arabic',
   'cym_n': 'North Welsh',
   'cym_s': 'South Welsh',
 };

@@ -8,11 +8,12 @@
  * Uses POST /api/build/backfill-submit/:courseCode to add phrases to existing LEGOs.
  */
 
-const { getSupabase, getLanguageName, buildGrammarChecklist, loadCondensedMethodology } = require('./shared.cjs');
+const { getSupabase, getLanguageName, getKnownLanguageName, buildGrammarChecklist, loadCondensedMethodology } = require('./shared.cjs');
 
 async function generateBackfillPhrasesBrief(courseCode, query = {}) {
   const supabase = getSupabase();
-  const langName = getLanguageName(courseCode);
+  const langName = getLanguageName(courseCode);       // TARGET side (what the learner is learning)
+  const knownName = getKnownLanguageName(courseCode);  // KNOWN side (learner's native prompt)
 
   const { data: courseInfo } = await supabase
     .from('courses')
@@ -27,7 +28,7 @@ async function generateBackfillPhrasesBrief(courseCode, query = {}) {
   const grammarRules = courseInfo?.quality_rules?.grammar_rules || null;
 
   // Find under-threshold LEGOs
-  const minUse = 4;
+  const minUse = query.min_use ? parseInt(query.min_use, 10) : 4;
 
   // Get all new LEGOs
   const { data: legos } = await supabase
@@ -118,12 +119,17 @@ curl -s "http://localhost:3471/api/vocab/${courseCode}?seed=$N"
 \`\`\`
 
 ### Step 3: Write USE phrases
+
+**DIRECTION — read carefully, this is critical:**
+- \`target_text\` = **${langName}** (the language the learner is learning). It MUST contain the exact LEGO target text verbatim.
+- \`known_text\` = **${knownName}** (the learner's own language — the prompt they see). This is a natural ${knownName} translation of the ${langName} target_text.
+- The two sides are in DIFFERENT languages. They must NEVER be identical. If ${knownName} ≠ ${langName}, writing the same string on both sides is a hard error.
+
 For each under-threshold LEGO, write the needed USE phrases. Each phrase MUST:
-- Contain the exact LEGO target text
+- \`target_text\`: contain the exact LEGO target text, be a natural complete sentence, grammatically correct in ${langName}
+- \`known_text\`: the ${knownName} translation of that target_text, grammatically correct in ${knownName}
 - Use only vocabulary introduced up to this seed
-- Be a natural, complete sentence a learner would say
-- Be grammatically correct in ${langName}
-- Have no capitalisation, no trailing periods
+- No capitalisation, no trailing periods
 
 ### Step 4: Submit via the backfill endpoint
 \`\`\`bash
@@ -135,7 +141,7 @@ curl -X POST "http://localhost:3471/api/build/backfill-submit/${courseCode}" \\
         "seed_number": N,
         "lego_index": L,
         "use": [
-          { "known_text": "english phrase", "target_text": "${langName.toLowerCase()} phrase", "target_score": 7 }
+          { "known_text": "${knownName.toLowerCase()} phrase (in ${knownName})", "target_text": "${langName.toLowerCase()} phrase (in ${langName}, contains the LEGO target)", "target_score": 7 }
         ]
       }
     ]
@@ -151,6 +157,43 @@ curl -X POST "http://localhost:3471/api/build/backfill-submit/${courseCode}" \\
 - Score 5-9 (how useful/natural the phrase is)
 - **No capitalisation, no trailing periods**
 - Don't duplicate existing phrases — check Step 1 output first
+
+## USE Phrase VARIETY — Critical (ralph-methodology Principle 7)
+
+A USE basket exists to make the NEW LEGO's contribution salient, and every USE phrase enters the eternal spaced-repetition pool — a basket of near-identical phrases teaches nothing and pollutes review forever.
+
+**Genuine structural recombination must carry the basket.** The main source of variety should be:
+- turn it into a question
+- negate it
+- swap the object/complement for a different already-taught one
+- change to a different already-taught subject (especially where that changes the verb)
+- add a taught temporal/conditional clause
+
+Adverb / time-word / discourse-marker variations (now / here / today / often / well / actually) are **fine in moderation** — a couple in a basket is natural and welcome. What is NOT ok is a basket where those are the *only* axis of variation: one frozen base sentence with swapped adverbs, or an adverb/marker salad front-loaded onto the same phrase.
+
+❌ BAD (adverbs are the only variation — same base every time):
+- i'm trying to learn something
+- i'm trying to learn something now
+- i'm trying to learn something with you
+- i'm trying to learn something often
+- i'm trying to learn something as often as possible
+
+✓ GOOD (recombination carries it; an adverb variant or two is fine):
+- i'm trying to learn something
+- what are you trying to learn?
+- i'm not trying to learn that yet
+- she's trying to learn how to say it today
+- are you still trying to learn it?
+
+**Long-chunk escape hatch (READ THIS — it's the #1 failure).** When the LEGO target is a long phrase that every USE phrase must contain verbatim, the lazy move is to keep the whole phrase frozen and only swap a trailing adverb. DON'T. Your structural variety comes from *wrapping and transforming* the chunk, not appending to it:
+- make it a question: "do you...?", "are you...?", "why do you...?"
+- negate it: "i don't...", "i'm not going to...", "i wouldn't..."
+- embed it in a different clause: "when i..., i...", "i think that...", "she said she..."
+- change to a different already-taught subject where the verb allows it
+
+Aim for **at least 2 of every 5** phrases to be a question, negation, or clause-embedding — not the base with a different ending.
+
+Every phrase must still contain the exact LEGO target text and use only vocabulary introduced up to this seed.
 
 ${translationDoctrine ? `## Translation Doctrine for ${langName}\n\n${translationDoctrine}\n` : ''}
 ${buildGrammarChecklist(langName, grammarRules)}
