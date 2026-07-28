@@ -300,32 +300,48 @@ async function getCourseInfo(courseCode) {
   return data;
 }
 
-async function getAllLegos(courseCode) {
-  const { data, error } = await supabase
-    .from('course_legos')
-    .select('target_text, known_text, type, is_new, seed_number, lego_index')
-    .eq('course_code', courseCode)
-    .eq('is_new', true);
+// Optional seed-range scope: inclusive [seedMin, seedMax]; either may be null.
+function applySeedRange(query, { seedMin, seedMax } = {}) {
+  if (seedMin != null) query = query.gte('seed_number', seedMin);
+  if (seedMax != null) query = query.lte('seed_number', seedMax);
+  return query;
+}
+
+async function getAllLegos(courseCode, range = {}) {
+  const { data, error } = await applySeedRange(
+    supabase
+      .from('course_legos')
+      .select('target_text, known_text, type, is_new, seed_number, lego_index')
+      .eq('course_code', courseCode)
+      .eq('is_new', true),
+    range
+  );
 
   if (error) throw error;
   return data || [];
 }
 
-async function getAllPracticePhrases(courseCode) {
-  const { data, error } = await supabase
-    .from('course_practice_phrases')
-    .select('target_text, known_text, seed_number, lego_index, position')
-    .eq('course_code', courseCode);
+async function getAllPracticePhrases(courseCode, range = {}) {
+  const { data, error } = await applySeedRange(
+    supabase
+      .from('course_practice_phrases')
+      .select('target_text, known_text, seed_number, lego_index, position')
+      .eq('course_code', courseCode),
+    range
+  );
 
   if (error) throw error;
   return data || [];
 }
 
-async function getAllSeeds(courseCode) {
-  const { data, error } = await supabase
-    .from('course_seeds')
-    .select('target_text, known_text, seed_number')
-    .eq('course_code', courseCode);
+async function getAllSeeds(courseCode, range = {}) {
+  const { data, error } = await applySeedRange(
+    supabase
+      .from('course_seeds')
+      .select('target_text, known_text, seed_number')
+      .eq('course_code', courseCode),
+    range
+  );
 
   if (error) throw error;
   return data || [];
@@ -362,10 +378,16 @@ async function getExistingHumanAudioTexts(courseCode) {
 // =============================================================================
 
 async function generateRecordingScript(courseCode, options = {}) {
-  const { verbose = false, excludeRecorded = false } = options;
+  const { verbose = false, excludeRecorded = false, seedMin = null, seedMax = null, sequential = false } = options;
+  const range = { seedMin, seedMax };
 
   console.log(`\n🎙️  Recording Script Generator`);
   console.log(`   Course: ${courseCode}`);
+  if (seedMin != null || seedMax != null) {
+    console.log(`   Seed range: ${seedMin ?? 1}–${seedMax ?? '∞'}${sequential ? ' (sequential)' : ''}`);
+  } else if (sequential) {
+    console.log(`   Order: sequential by seed`);
+  }
   console.log(`${'─'.repeat(50)}\n`);
 
   // 1. Get course info
@@ -373,7 +395,7 @@ async function generateRecordingScript(courseCode, options = {}) {
   const course = await getCourseInfo(courseCode);
 
   // 2. Get all NEW LEGOs (the universe to cover)
-  const legos = await getAllLegos(courseCode);
+  const legos = await getAllLegos(courseCode, range);
   if (legos.length === 0) {
     console.log('❌ No LEGOs found for course. Run Phase 1 & 2 first.');
     return null;
@@ -400,8 +422,8 @@ async function generateRecordingScript(courseCode, options = {}) {
   console.log(`📊 LEGOs to cover: ${universe.size}`);
 
   // 3. Get candidate phrases (practice phrases + seeds)
-  const practicePhrases = await getAllPracticePhrases(courseCode);
-  const seeds = await getAllSeeds(courseCode);
+  const practicePhrases = await getAllPracticePhrases(courseCode, range);
+  const seeds = await getAllSeeds(courseCode, range);
 
   // Deduplicate and build candidate list
   const phraseMap = new Map(); // normalized → { original, source }
@@ -531,6 +553,13 @@ async function generateRecordingScript(courseCode, options = {}) {
       legoId: legoInfo.legoId,
       reason: 'Not contained in any practice phrase',
     });
+  }
+
+  // Sequential mode: order takes by seed (then phrase / legoId) instead of greedy
+  // coverage order, so a recorder can work through the course from the start.
+  if (sequential) {
+    result.selected.sort((a, b) => (a.seedNumber ?? 0) - (b.seedNumber ?? 0) || String(a.phrase).localeCompare(String(b.phrase)));
+    directRecord.sort((a, b) => String(a.legoId).localeCompare(String(b.legoId)));
   }
 
   // 7. Calculate statistics. When excludeRecorded is on, "coverage"/"reduction"
