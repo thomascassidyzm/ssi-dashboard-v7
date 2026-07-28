@@ -21,7 +21,7 @@ const crypto = require('crypto')
 const { createClient } = require('@supabase/supabase-js')
 const { claudeChat, HAIKU_MODEL } = require('./shared/claude-cli.cjs')
 const { renderPrompt } = require('./pod-generation-prompt.cjs')
-const { getCultureNotes, languageName } = require('./pod-culture-notes.cjs')
+const { getCultureNotes, languageName, variantAvoidLists, stripCliArtifacts } = require('./pod-culture-notes.cjs')
 const { assignVoices, canonicalSpeakerName, extractGenderMarker, inferGenderFromName } = require('../tools/pod-sync.cjs')
 
 const supabase = createClient(
@@ -55,11 +55,21 @@ function parseLines(raw) {
   return { lines: obj.lines, deviations }
 }
 
+/** Whole-token matcher with Unicode letter boundaries — JS \b is ASCII-only and
+ *  silently misses next to ä/ö/ü/ß, which is exactly where dialect forms live. */
+function tokenRe(word) {
+  const esc = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return new RegExp(`(?<!\\p{L})${esc}(?!\\p{L})`, 'iu')
+}
+
 /**
  * Hard checks (block → retry) + soft checks (warnings, non-blocking).
  * Mirrors the validation_rules from the prompt-design synthesis.
+ * `avoid` carries the variant brief's machine-checkable banned forms:
+ * hard = forms wrong in EVERY register (reject + retry); soft = forms that are
+ * usually drift but can be legitimate in a formal scene (warn only).
  */
-function validateScene(inputLines, outLines) {
+function validateScene(inputLines, outLines, avoid = { hard: [], soft: [] }) {
   const errors = [], warnings = []
   if (!Array.isArray(outLines)) { errors.push('output is not an array'); return { errors, warnings } }
   if (outLines.length !== inputLines.length) {
@@ -89,6 +99,12 @@ function validateScene(inputLines, outLines) {
     if (/مائة|مائتين|ثلاثمائة|أربعمائة|خمسمائة|ثمانين|ثلاثين/.test(t)) {
       warnings.push(`line ${inp.global_order}: MSA numeral spelling in target (use colloquial — ميه/ميتين/تمانين/تلاتين)`)
     }
+    for (const w of avoid.hard || []) {
+      if (tokenRe(w).test(t)) errors.push(`line ${inp.global_order}: banned form "${w}" in target — the course brief forbids it in every register; use the form the brief/examples license`)
+    }
+    for (const w of avoid.soft || []) {
+      if (tokenRe(w).test(t)) warnings.push(`line ${inp.global_order}: "${w}" in target — standard-language drift unless this is a deliberately formal line`)
+    }
   }
   return { errors, warnings }
 }
@@ -98,7 +114,7 @@ function validateScene(inputLines, outLines) {
 // ---------------------------------------------------------------------------
 
 /** Generate one scene → [{global_order, target_text, known_text}] (+ warnings). Retries once on hard failure. */
-async function generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger }) {
+async function generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger, avoid }) {
   // The ledger pins localised character names ("Sarah [S1] → Sophie") which the
   // dialogue text follows — the learner-visible speaker label must follow too.
   const nameMap = parseNameMap(ledger)
@@ -111,13 +127,18 @@ async function generateScene({ scene, targetLanguage, knownLanguage, cultureNote
   for (let attempt = 1; attempt <= 2; attempt++) {
     let out, deviations
     try {
-      const raw = await claudeChat(prompt, { model: GEN_MODEL, timeout: SCENE_TIMEOUT_MS })
+      // A blind retry mostly reproduces the same defect — tell the model what
+      // was rejected so the second attempt actually fixes it.
+      const retryNote = attempt > 1 && lastErr
+        ? `\n\nYOUR PREVIOUS ATTEMPT WAS REJECTED FOR THESE ERRORS:\n${lastErr}\nFix ONLY these problems, keep everything else identical, and return the full corrected JSON.`
+        : ''
+      const raw = await claudeChat(prompt + retryNote, { model: GEN_MODEL, timeout: SCENE_TIMEOUT_MS })
       ;({ lines: out, deviations } = parseLines(raw))
     } catch (e) {
       lastErr = `attempt ${attempt}: ${e.message}`
       continue
     }
-    const { errors, warnings } = validateScene(scene.lines, out)
+    const { errors, warnings } = validateScene(scene.lines, out, avoid)
     for (const d of deviations) warnings.push(`scene ${scene.number} DEVIATION (break clause): ${d}`)
     if (errors.length === 0) {
       // map by global_order to be safe about ordering
@@ -179,7 +200,7 @@ Return ONLY the ledger.`
   for (let attempt = 1; attempt <= 2; attempt++) {
     try {
       const out = await claudeChat(prompt, { model: process.env.POD_LEDGER_MODEL || HAIKU_MODEL, timeout: SCENE_TIMEOUT_MS })
-      const t = (out || '').trim()
+      const t = stripCliArtifacts(out)
       if (t) return t
     } catch (e) {
       if (attempt === 2) console.warn(`[podGlossary] failed after 2 attempts: ${e.message}`)
@@ -240,6 +261,34 @@ function localiseSpeakerForVoices(raw, sceneNumber, nameMap) {
 // ---------------------------------------------------------------------------
 // DB helpers
 // ---------------------------------------------------------------------------
+
+/** Sample the course's own seed translations as a BINDING register anchor: the
+ *  pod must speak the way the COURSE speaks, and the seeds are the richest
+ *  native-checked source of that voice. Even spread start-to-end covers every
+ *  phase; a denser sample of the final 10% catches any formal-register /
+ *  plural-address tail the course teaches late. Returns '' when the course has
+ *  no usable seeds (pods for such a course have no anchor to inherit). */
+async function courseRegisterSample(courseCode, { size = 32, tailSize = 8 } = {}) {
+  const { data, error } = await supabase.from('course_seeds')
+    .select('seed_number, known_text, target_text')
+    .eq('course_code', courseCode)
+    .not('target_text', 'is', null).neq('target_text', '')
+    .order('seed_number')
+  if (error || !data || data.length < 10) return ''
+  const tailStart = Math.floor(data.length * 0.9)
+  const body = data.slice(0, tailStart), tail = data.slice(tailStart)
+  const every = (arr, n) => {
+    const step = Math.max(1, Math.floor(arr.length / n))
+    return arr.filter((_, i) => i % step === 0).slice(0, n)
+  }
+  const picked = [...every(body, size), ...every(tail, tailSize)]
+  const lines = picked.map(r => `- ${r.known_text}  →  ${r.target_text}`).join('\n')
+  return `
+
+HOW THIS COURSE ACTUALLY SPEAKS (BINDING register anchor — ${picked.length} of the course's own ${data.length} seed translations, sampled start to end).
+The learner has heard and produced every one of these. Match their register, vocabulary, spelling conventions and dialect depth EXACTLY — including for anything not covered above (greetings, numbers, formulas): stay at the SAME depth as these lines, never heavier and never more standard. The lines sampled from near the end of the course show how it renders formal/polite address — use that same treatment wherever a scene needs formal address.
+${lines}`
+}
 
 async function loadCourse(courseCode) {
   const { data, error } = await supabase
@@ -466,7 +515,9 @@ async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, 
   if (mode === 'full') await deleteAllSentences(podId)
 
   const done = mode === 'full' ? new Set() : await generatedSceneNumbers(podId)
-  const { notes: cultureNotes, source: cultureSource } = await getCultureNotes(targetVariant)
+  const { notes: baseNotes, source: cultureSource } = await getCultureNotes(targetVariant)
+  const cultureNotes = baseNotes + await courseRegisterSample(courseCode)
+  const avoid = variantAvoidLists(targetVariant)
 
   // Cross-scene consistency ledger: build once per pod, persist in metadata,
   // reuse on resume so every scene (and every resumed endpoint call) pins the
@@ -493,7 +544,7 @@ async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, 
     if (generatedNow >= maxScenes) break
     if (Date.now() - start >= deadlineMs && generatedNow > 0) break
     log(`  scene ${scene.number} [${scene.label}] ${scene.title} — generating (${scene.lines.length} lines)…`)
-    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger })
+    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger, avoid })
     const n = await writeSceneSentences({ podId, scene, lines })
     hashes[scene.number] = sceneHash(scene)
     generatedNow++
@@ -543,7 +594,9 @@ async function syncPodToCanonical({ podId, courseCode, podSlug, course, targetVa
 
   const storedHashes = (pod.metadata && pod.metadata.scene_hashes) || null
   const existingByScene = await loadExistingByScene(podId)
-  const { notes: cultureNotes, source: cultureSource } = await getCultureNotes(targetVariant)
+  const { notes: baseNotes, source: cultureSource } = await getCultureNotes(targetVariant)
+  const cultureNotes = baseNotes + await courseRegisterSample(courseCode)
+  const avoid = variantAvoidLists(targetVariant)
   let ledger = (pod.metadata && pod.metadata.consistency_ledger) || ''
   if (!ledger) ledger = await buildPodGlossary({ targetLanguage, cultureNotes, canonicalScenes })
 
@@ -579,7 +632,7 @@ async function syncPodToCanonical({ podId, courseCode, podSlug, course, targetVa
     if (did >= maxScenes) break
     if (Date.now() - start >= deadlineMs && did > 0) break
     log(`  scene ${scene.number} [${scene.label}] CHANGED — re-flexing (${scene.lines.length} lines)…`)
-    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger })
+    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger, avoid })
     await deleteSceneSentences(podId, scene.number)
     await writeSceneSentences({ podId, scene, lines })
     finalHashes[scene.number] = sceneHash(scene)
@@ -647,7 +700,7 @@ module.exports = { generatePodBatch, generateScene, validateScene, parseLines, l
 //              speaker labels (no re-flex, no audio touched)
 if (require.main === module) {
   require('dotenv').config()
-  const courseCode = process.argv.find(a => !a.startsWith('--') && a.includes('_'))
+  const courseCode = process.argv.slice(2).find(a => !a.startsWith('--') && a.includes('_'))
   const force = process.argv.includes('--force')
   const mode = process.argv.includes('--sync') ? 'sync' : undefined
   const maxArg = process.argv.find(a => a.startsWith('--max='))
