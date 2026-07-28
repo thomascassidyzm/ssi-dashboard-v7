@@ -211,7 +211,13 @@ async function generateTranslateBrief(courseCode) {
     // colloquial register + correct script (see reference-examples/{yue,hak,nan}.json)
     'yue', 'hak', 'nan',
     // Swiss German — Dieth-lite dialect spelling needs Opus (see deu_ch.json)
-    'deu_ch'
+    'deu_ch',
+    // Quebec French — colloquial Québécois; LLMs default to standard France French,
+    // so force Opus to hold the register (see fra_ca.json)
+    'fra_ca',
+    // Austrian — full colloquial Viennese; LLMs default to standard German or a
+    // half-dialect mix, so force Opus to hold the register (see deu_at.json)
+    'deu_at'
   ]);
   const weakLang = WEAK_LLM_LANGS.has(produceLang);
   const recommendedModel = weakLang ? 'opus' : 'sonnet';

@@ -442,6 +442,8 @@ module.exports = function (ctx) {
     try {
       const { courseCode } = req.params;
       const terminal = req.query.terminal || 'iTerm2';
+      // Optional model override (default opus). Whitelist to safe values.
+      const model = ['opus', 'sonnet', 'haiku', 'fable'].includes(String(req.query.model)) ? req.query.model : 'opus';
 
       // Initialize course seeds from canonical before spawning agent
       // (GET translate endpoint calls initializeCourseSeeds as side effect)
@@ -473,7 +475,7 @@ module.exports = function (ctx) {
         console.warn('[Translate] build_jobs insert failed (Supabase unreachable?) — spawning anyway:', e.message);
       }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model ${model} --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Translate', courseCode, effectiveTerminal);
 
       try {

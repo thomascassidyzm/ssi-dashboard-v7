@@ -11,6 +11,13 @@ const languageCodeService = require('../../language-code-service.cjs');
 const DIALECT_NAMES = {
   'por_br': 'Brazilian Portuguese',
   'spa_mx': 'Mexican Spanish',
+  // Quebec French — colloquial spoken Québécois (chu/m'as/-tu questions/char/frette),
+  // NOT standard France French. See reference-examples/fra_ca.json. Without this it
+  // fell through to getName('fra')="French" and built as standard French.
+  'fra_ca': 'Quebec French',
+  // Austrian — FULL colloquial spoken Austrian/Viennese (i/möcht/denk/mi/ned/a),
+  // not standard German, not a half-dialect mix. See reference-examples/deu_at.json.
+  'deu_at': 'Austrian German',
   'cym_n': 'North Welsh',
   'cym_s': 'South Welsh',
   // Arabic dialects — keep these distinct from plain `ara` (Modern Standard
@@ -130,9 +137,9 @@ function isChinese(courseCode) {
   const targetLang = parts[0] || '';
   // Korean (kor) uses spaces between words — treated as space-delimited, not CJK.
   // cmn (Mandarin) is character-based like zho.
-  // yue (Cantonese) is written in Han characters like zho. hak/nan default to
-  // romanization-friendly handling for now — revisit if built Han-primary.
-  const characterBasedLangs = ['zho', 'cmn', 'yue', 'jpn', 'tha', 'mya', 'lao', 'khm'];
+  // yue (Cantonese), hak (Hakka), and nan (Taiwanese Hokkien) are all built
+  // Han-primary (no spaces between words) — same character-based handling as zho.
+  const characterBasedLangs = ['zho', 'cmn', 'yue', 'hak', 'nan', 'jpn', 'tha', 'mya', 'lao', 'khm'];
   return characterBasedLangs.includes(targetLang);
 }
 
@@ -203,6 +210,7 @@ function getGoldenSeedCount(courseInfo) {
 }
 
 module.exports = {
+  DIALECT_NAMES,
   LANG_MAP,
   KNOWN_LANG_MAP,
   LANG_FAMILY_MAP,

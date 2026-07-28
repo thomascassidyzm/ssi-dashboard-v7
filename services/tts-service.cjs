@@ -251,6 +251,60 @@ async function generateXai(text, config) {
 }
 
 /**
+ * Generate speech using Narakeet TTS (short-content streaming API)
+ *
+ * Uses the streaming MP3 endpoint (body ≤ 1KB, returns the audio as a binary
+ * stream) so the result feeds straight into masterAudio like every other
+ * provider. Narakeet picks the language from the voice, so no language param.
+ *
+ * @param {string} text - Text to synthesize
+ * @param {object} config - Narakeet configuration
+ * @param {string} config.apiKey - Narakeet API key (sent as x-api-key header)
+ * @param {string} config.voiceId - Narakeet voice name (e.g. 'fritzi')
+ * @param {number} [config.speed] - Reading speed multiplier (voice-speed query param)
+ * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: null}>} Audio data. Word boundaries are null — Narakeet does not provide them.
+ */
+async function generateNarakeet(text, config) {
+  const { apiKey, voiceId, speed } = config;
+
+  if (!apiKey) {
+    throw new Error('Narakeet API key is required');
+  }
+  if (!voiceId) {
+    throw new Error('Narakeet voiceId is required');
+  }
+
+  // Short-content streaming API caps the request body at 1KB. Course clips are
+  // short single utterances; anything larger must use the long-content polling API.
+  const byteLen = Buffer.byteLength(text, 'utf8');
+  if (byteLen > 1024) {
+    throw new Error(`Narakeet streaming API limited to 1KB; got ${byteLen} bytes. Use the long-content polling API for longer text.`);
+  }
+
+  const params = new URLSearchParams({ voice: voiceId });
+  if (speed) params.set('voice-speed', String(speed));
+
+  const response = await fetch(`https://api.narakeet.com/text-to-speech/mp3?${params.toString()}`, {
+    method: 'POST',
+    agent: ttsKeepAliveAgent,
+    headers: {
+      'x-api-key': apiKey,
+      'Content-Type': 'text/plain',
+      'accept': 'application/octet-stream'
+    },
+    body: Buffer.from(text, 'utf8')
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Narakeet TTS API error (${response.status}): ${errorText}`);
+  }
+
+  const arrayBuffer = await response.arrayBuffer();
+  return { audioBuffer: Buffer.from(arrayBuffer), wordBoundaries: null };
+}
+
+/**
  * Escape XML special characters for SSML
  */
 function escapeXml(text) {
@@ -283,6 +337,9 @@ async function generate(text, provider, config) {
 
     case 'xai':
       return await generateXai(text, config);
+
+    case 'narakeet':
+      return await generateNarakeet(text, config);
 
     default:
       throw new Error(`Unknown TTS provider: ${provider}`);
@@ -413,6 +470,7 @@ module.exports = {
   generateElevenLabs,
   generateAzure,
   generateXai,
+  generateNarakeet,
   getCadenceSpeed,
   getVoiceForRole
 };
