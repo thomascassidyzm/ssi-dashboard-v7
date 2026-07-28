@@ -209,18 +209,31 @@ async function getExistingAudioSet(courseCode) {
 // Returns the human row if one occupies the key, else null.
 // =============================================================================
 async function humanRowAtAudioKey(courseCode, textNormalized, language, role, voiceId) {
-  const { data, error } = await supabase
-    .from('course_audio')
-    .select('*')
-    .eq('course_code', courseCode)
-    .eq('text_normalized', textNormalized)
-    .eq('language', language)
-    .eq('role', role)
-    .eq('voice_id', voiceId)
-    .eq('origin', 'human')
-    .maybeSingle()
-  if (error) throw new Error(`precious-audio guard query failed: ${error.message}`)
-  return data || null
+  // Transient undici "TypeError: fetch failed" blips during 8-hour batch runs
+  // were failing ~0.04% of clips AFTER the TTS money was already spent
+  // (2026-07-28 batch audit). Retry the read a few times before failing the
+  // clip; a persistent error still throws (fail-closed, never clobber).
+  let lastError
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const { data, error } = await supabase
+        .from('course_audio')
+        .select('*')
+        .eq('course_code', courseCode)
+        .eq('text_normalized', textNormalized)
+        .eq('language', language)
+        .eq('role', role)
+        .eq('voice_id', voiceId)
+        .eq('origin', 'human')
+        .maybeSingle()
+      if (error) throw new Error(error.message)
+      return data || null
+    } catch (e) {
+      lastError = e
+      if (attempt < 3) await new Promise(r => setTimeout(r, attempt * 500))
+    }
+  }
+  throw new Error(`precious-audio guard query failed: ${lastError.message}`)
 }
 
 /**
