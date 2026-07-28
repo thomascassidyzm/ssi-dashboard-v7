@@ -30,8 +30,19 @@ nohup bash tools/prosody-lab/run-study.sh > temp/prosody-lab/run.log 2>&1 &
 ```
 
 `report.json` includes per-category distance distributions, per-dimension
-voice-sensitivity scores, and extreme example pairs **with local mp3 paths**
-so the verdict can be reached by ear.
+voice-sensitivity scores, a `combined_score` block (the phrase-identity score
+over the dims that survived the voice test, with AUCs), and extreme example
+pairs **with local mp3 paths** so the verdict can be reached by ear.
+
+Re-running is safe at every step: `extract` skips cached features, `compare`
+skips pair_ids already in `results.jsonl`, downloads skip clips on disk. To
+force a re-compare after changing `compare_pair`, move `results.jsonl` aside
+first — resume is keyed on pair_id, not on the field set.
+
+**Results: see `docs/course-optimization/prosody-lab-poc.md` (2026-07-28 run).**
+Headline: energy-contour DTW + duration + syllable count track phrase identity
+through a voice change (combined AUC 0.813); raw F0, F0 range, register gap and
+voiced fraction are voice-dominated (AUC < 0.5) and must not be scored.
 
 Data lives in `temp/prosody-lab/` (gitignored). Requires `.env` (S3),
 `.env.psql` (DB), ffmpeg, python3 with numpy/scipy/soundfile.

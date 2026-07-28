@@ -28,6 +28,7 @@ Usage: python3 tools/prosody-lab/prosody.py extract|compare|report
 Data dir: temp/prosody-lab/ (manifest produced by sample-pairs.cjs)
 """
 
+import hashlib
 import json
 import math
 import os
@@ -237,13 +238,31 @@ def load_feat(clip_id):
         return json.load(f)
 
 
-def compare_pair(pair):
+def file_md5(path):
+    if not os.path.exists(path):
+        return None
+    h = hashlib.md5()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 16), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def compare_pair(pair, clips=None):
     fa, fb = load_feat(pair["a"]["id"]), load_feat(pair["b"]["id"])
     if not fa or not fb:
         return None
+    # A "re-render" whose two files are byte-identical is the same render filed
+    # under two s3_keys, not an independent re-synthesis: it scores a trivial
+    # zero and would deflate the near-control baseline. Flagged, not dropped.
+    same_bytes = None
+    if clips:
+        ma = file_md5(clips[pair["a"]["id"]]["local_path"])
+        mb = file_md5(clips[pair["b"]["id"]]["local_path"])
+        same_bytes = bool(ma and mb and ma == mb)
     r = {
         "pair_id": pair["pair_id"], "category": pair["category"], "language": pair["language"],
-        "text": pair["text_a"],
+        "text": pair["text_a"], "text_b": pair["text_b"], "same_bytes": same_bytes,
         "a_id": fa["id"], "b_id": fb["id"],
         "a_voice": pair["a"]["voice_id"], "b_voice": pair["b"]["voice_id"],
         "a_origin": pair["a"]["origin"], "b_origin": pair["b"]["origin"],
@@ -272,6 +291,10 @@ DIMS = ["f0_dtw", "energy_dtw", "dur_log_ratio", "syl_rate_diff",
         "f0_range_diff_st", "voiced_frac_diff", "syl_count_diff", "pause_diff",
         "f0_register_gap_st"]
 
+# The dims that passed the voice test in the PoC run (same_vs_diff_auc > 0.7,
+# voice_sensitivity < 0.6) — combined into one phrase-identity score.
+COMBINED_DIMS = ["energy_dtw", "dur_log_ratio", "syl_count_diff"]
+
 
 def pct(v, q):
     return round(float(np.percentile(v, q)), 4) if len(v) else None
@@ -296,10 +319,16 @@ def cmd_report(manifest):
 
     # discrimination score per dim: does same-phrase-cross-voice sit closer to
     # rerender (good) or to diffphrase (dim is not phrase-shaped)?
+    # Byte-identical "re-renders" are the same file under two keys — a trivial
+    # zero. Excluded from the near control so the baseline is real re-synthesis.
+    rerender_all = by_cat.get("rerender", [])
+    rerender_real = [r for r in rerender_all if not r.get("same_bytes")]
+    n_dup = len(rerender_all) - len(rerender_real)
+
     disc = {}
     for d in DIMS:
         far = np.array([r[d] for r in by_cat.get("diffphrase", []) if r.get(d) is not None], dtype=float)
-        near = np.array([r[d] for r in by_cat.get("rerender", []) if r.get(d) is not None], dtype=float)
+        near = np.array([r[d] for r in rerender_real if r.get(d) is not None], dtype=float)
         cross = np.array([r[d] for r in by_cat.get("crossvoice", []) + by_cat.get("crossprovider", [])
                           if r.get(d) is not None], dtype=float)
         if min(len(far), len(near), len(cross)) < 5:
@@ -315,20 +344,64 @@ def cmd_report(manifest):
             "same_vs_diff_auc": round(float(np.mean(cross[:, None] < far[None, :])), 3),
         }
 
-    # example pairs the founder can LISTEN to: extremes per category on f0_dtw/energy_dtw
+    # Combined phrase-identity score over the dims that survived the voice test,
+    # each divided by its median over the cross+far pool so no dim dominates by
+    # unit. This is the number that answers "does the contour approach work?".
+    pool = by_cat.get("crossvoice", []) + by_cat.get("crossprovider", []) + by_cat.get("diffphrase", [])
+    scale = {}
+    for d in COMBINED_DIMS:
+        v = np.array([r[d] for r in pool if r.get(d) is not None], dtype=float)
+        med = float(np.median(v)) if len(v) else 0.0
+        scale[d] = med if med > 1e-9 else 1.0
+
+    def combined(r):
+        v = [r[d] / scale[d] for d in COMBINED_DIMS if r.get(d) is not None]
+        return sum(v) / len(v) if v else None
+
+    def auc(a, b):
+        """P(a < b), ties half — separability of distribution a from b."""
+        a, b = np.asarray(a, dtype=float), np.asarray(b, dtype=float)
+        if not len(a) or not len(b):
+            return None
+        return round(float(np.mean(a[:, None] < b[None, :]) + 0.5 * np.mean(a[:, None] == b[None, :])), 3)
+
+    combo_by_cat = {}
+    for cat, rs in by_cat.items():
+        vals = [combined(r) for r in rs]
+        combo_by_cat[cat] = [v for v in vals if v is not None]
+    near_c = [v for v in (combined(r) for r in rerender_real) if v is not None]
+    cross_c = combo_by_cat.get("crossvoice", []) + combo_by_cat.get("crossprovider", [])
+    far_c = combo_by_cat.get("diffphrase", [])
+    combined_score = {
+        "dims": COMBINED_DIMS,
+        "median_scale": {d: round(scale[d], 4) for d in COMBINED_DIMS},
+        "p50_by_category": {c: (round(float(np.median(v)), 3) if v else None)
+                            for c, v in sorted(combo_by_cat.items())},
+        "p50_rerender_deduped": round(float(np.median(near_c)), 3) if near_c else None,
+        "auc_same_phrase_cross_voice_vs_diff_phrase": auc(cross_c, far_c),
+        "auc_rerender_vs_diff_phrase": auc(near_c, far_c),
+        "auc_rerender_vs_cross_voice": auc(near_c, cross_c),
+        "n_rerender_dropped_byte_identical": n_dup,
+    }
+
+    # Example pairs the founder can LISTEN to: extremes per category, ranked on
+    # energy_dtw — the dimension that actually tracks phrase identity. (Ranking
+    # on f0_dtw sorts by voice, which is precisely what we found it measures.)
     examples = {}
     for cat, rs in by_cat.items():
-        key = "f0_dtw" if any(r.get("f0_dtw") is not None for r in rs) else "energy_dtw"
-        scored = [r for r in rs if r.get(key) is not None]
-        scored.sort(key=lambda r: r[key])
+        scored = [r for r in rs if r.get("energy_dtw") is not None]
+        scored.sort(key=lambda r: r["energy_dtw"])
         pick = scored[:3] + scored[-3:]
         examples[cat] = [{
-            "pair_id": r["pair_id"], key: r[key], "energy_dtw": r["energy_dtw"],
-            "text": r["text"], "a_voice": r["a_voice"], "b_voice": r["b_voice"],
+            "pair_id": r["pair_id"], "energy_dtw": r["energy_dtw"], "f0_dtw": r.get("f0_dtw"),
+            "combined": (round(combined(r), 3) if combined(r) is not None else None),
+            "text_a": r["text"], "text_b": r.get("text_b", r["text"]),
+            "a_voice": r["a_voice"], "b_voice": r["b_voice"],
             "a_path": clips[r["a_id"]]["local_path"], "b_path": clips[r["b_id"]]["local_path"],
         } for r in pick]
 
-    out = {"stats_by_category": stats, "dimension_discrimination": disc, "examples": examples}
+    out = {"stats_by_category": stats, "dimension_discrimination": disc,
+           "combined_score": combined_score, "examples": examples}
     with open(REPORT, "w") as f:
         json.dump(out, f, indent=1)
     print(json.dumps({"stats_by_category": stats, "dimension_discrimination": disc}, indent=1))
@@ -363,10 +436,11 @@ def main():
             with open(RESULTS) as f:
                 done = {json.loads(l)["pair_id"] for l in f}
         todo = [p for p in manifest["pairs"] if p["pair_id"] not in done]
+        clips = {c["id"]: c for c in manifest["clips"]}
         print(f"{len(done)} done, {len(todo)} to go")
         with open(RESULTS, "a") as out:
             for i, p in enumerate(todo):
-                r = compare_pair(p)
+                r = compare_pair(p, clips)
                 if r:
                     out.write(json.dumps(r) + "\n")
                 if (i + 1) % 50 == 0:
