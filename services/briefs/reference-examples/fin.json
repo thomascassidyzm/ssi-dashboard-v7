@@ -1,0 +1,2056 @@
+{
+ "language_code": "fin",
+ "language_name": "Finnish",
+ "source": "course-configs en-fi.json (original SSi Finnish course) — node-level English/Finnish sentence pairs",
+ "note": "Original human-curated SSi Finnish. Follow these CONVENTIONS exactly: colloquial SPOKEN Finnish register (mä/sä/sun not minä/sinä/sinun; haluun, tosi hyvin, nopeesti), question clitic -ko/-kö, partitive objects (suomea). HOUSE STYLE: do NOT end with a trailing full stop (these examples have already had it removed); keep ? and !. This is a DIFFERENT (older, 512-seed) seed set than the new 668 canonical you are translating, so use it as the STYLE/REGISTER/VOCAB anchor; where a new seed's English matches one here, reuse that Finnish verbatim.",
+ "examples": [
+  {
+   "english": "I want to speak Finnish with you now.",
+   "finnish": "Mä haluun puhua suomea sun kanssa nyt"
+  },
+  {
+   "english": "I speak Finnish now.",
+   "finnish": "Mä puhun suomea nyt"
+  },
+  {
+   "english": "If I speak Finnish now.",
+   "finnish": "Jos mä puhun suomea nyt"
+  },
+  {
+   "english": "I'd like to be able to speak Finnish.",
+   "finnish": "Mä haluaisin osata puhua suomea"
+  },
+  {
+   "english": "You speak Finnish really well.",
+   "finnish": "Sä puhut suomea tosi hyvin"
+  },
+  {
+   "english": "Do you speak Finnish?",
+   "finnish": "Puhutko sä suomea?"
+  },
+  {
+   "english": "And I want that you speak Finnish with me.",
+   "finnish": "Ja mä haluun, että sä puhut suomea mun kanssa"
+  },
+  {
+   "english": "But I don't want to stop speaking.",
+   "finnish": "Mutta mä en haluu lopettaa puhumista"
+  },
+  {
+   "english": "You want to learn Finnish.",
+   "finnish": "Sä haluut oppia suomea"
+  },
+  {
+   "english": "You learn Finnish quickly.",
+   "finnish": "Sä opit suomea nopeesti"
+  },
+  {
+   "english": "I'm trying learn to speak Finnish.",
+   "finnish": "Mä yritän oppia puhumaan suomea"
+  },
+  {
+   "english": "I'm going to learn more soon.",
+   "finnish": "Mä aion oppia lisää pian"
+  },
+  {
+   "english": "You will remember easily.",
+   "finnish": "Sä tuut muistamaan helposti"
+  },
+  {
+   "english": "I wanted ask you something.",
+   "finnish": "Mä halusin kysyä sulta jotain"
+  },
+  {
+   "english": "You wanted to speak with me.",
+   "finnish": "Sä halusit puhua mun kanssa"
+  },
+  {
+   "english": "Did you want to ask me something?",
+   "finnish": "Halusitko sä kysyä multa jotain?"
+  },
+  {
+   "english": "How long have you studied Finnish?",
+   "finnish": "Kuinka kauan sä oot opiskellut suomea?"
+  },
+  {
+   "english": "I started studying last month.",
+   "finnish": "Mä aloitin opiskelun viime kuussa"
+  },
+  {
+   "english": "I have studied about a week.",
+   "finnish": "Mä oon opiskellut noin viikon"
+  },
+  {
+   "english": "But I'm little tired.",
+   "finnish": "Mutta mä oon vähän väsynyt"
+  },
+  {
+   "english": "How do you feel at this moment?",
+   "finnish": "Miltä susta tuntuu tällä hetkellä?"
+  },
+  {
+   "english": "I'm quite ok.",
+   "finnish": "Mä oon ihan ok"
+  },
+  {
+   "english": "Or if I must improve.",
+   "finnish": "Tai jos mun pitää kehittyä"
+  },
+  {
+   "english": "But I don't need worry about making mistakes.",
+   "finnish": "Mutta mun ei tarvi huolestua virheiden tekemisestä"
+  },
+  {
+   "english": "Because in my opinion making mistakes is a good thing.",
+   "finnish": "Koska mun mielestä virheiden tekeminen on hyvä juttu"
+  },
+  {
+   "english": "I don't care about making mistakes.",
+   "finnish": "Mä en välitä virheiden tekemisestä"
+  },
+  {
+   "english": "I'm trying to learn to speak Finnish.",
+   "finnish": "Mä yritän oppia puhumaan suomea"
+  },
+  {
+   "english": "I'm trying to practice speaking more.",
+   "finnish": "Mä yritän harjoitella puhumista enemmän"
+  },
+  {
+   "english": "So I can remember how to say a few words.",
+   "finnish": "Niin mä voin muistaa miten sanoa muutama sana"
+  },
+  {
+   "english": "I don't remember how say what I wanted say.",
+   "finnish": "Mä en muista miten sanoa mitä mä halusin sanoa"
+  },
+  {
+   "english": "Enough words.",
+   "finnish": "Tarpeeksi sanoja"
+  },
+  {
+   "english": "I'm not yet able to say enough different words.",
+   "finnish": "Mä en vielä osaa sanoa tarpeeksi erilaisia sanoja"
+  },
+  {
+   "english": "Could you say that again little more slowly?",
+   "finnish": "Voisitko sä sanoa sen uudestaan vähän hitaammin?"
+  },
+  {
+   "english": "I'm not sure if I can help you.",
+   "finnish": "Mä en oo varma voinko mä auttaa sua"
+  },
+  {
+   "english": "Finnish learning isn't easy but it is fun.",
+   "finnish": "Suomen oppiminen ei oo helppoa mutta se on hauskaa"
+  },
+  {
+   "english": "It's important take time for learning.",
+   "finnish": "On tärkeää ottaa aikaa oppimiseen"
+  },
+  {
+   "english": "It's not difficult to find what you're looking for.",
+   "finnish": "Ei oo vaikeaa löytää mitä sä etsit"
+  },
+  {
+   "english": "In my opinion you're doing really well.",
+   "finnish": "Mun mielestä sä pärjäät tosi hyvin"
+  },
+  {
+   "english": "You speak it really well.",
+   "finnish": "Sä puhut sitä tosi hyvin"
+  },
+  {
+   "english": "Thank you very much, but I have still more to learn.",
+   "finnish": "Kiitos paljon, mutta mulla on vielä opittavaa"
+  },
+  {
+   "english": "Do you have still more to learn?",
+   "finnish": "Onko sulla vielä opittavaa?"
+  },
+  {
+   "english": "I'm really satisfied with how much I have already learned.",
+   "finnish": "Mä oon tosi tyytyväinen siihen, kuinka paljon mä oon jo oppinut"
+  },
+  {
+   "english": "I don't know those people.",
+   "finnish": "Mä en tunne noita ihmisiä"
+  },
+  {
+   "english": "They are people, who I don't know.",
+   "finnish": "Ne on ihmisiä, joita mä en tunne"
+  },
+  {
+   "english": "I'm not yet ready to speak to people, who I don't know.",
+   "finnish": "Mä en oo vielä valmis puhumaan ihmisille, joita mä en tunne"
+  },
+  {
+   "english": "In my opinion I have done much in a short time.",
+   "finnish": "Mun mielestä mä oon tehnyt paljon lyhyessä ajassa"
+  },
+  {
+   "english": "Sorry, but I didn't understand what you said.",
+   "finnish": "Sori, mutta mä en ymmärtänyt mitä sä sanoit"
+  },
+  {
+   "english": "If you could speak more slowly, that would be nice.",
+   "finnish": "Jos sä voisit puhua hitaammin, se olisi kiva"
+  },
+  {
+   "english": "Do you want a cup of coffee or tea?",
+   "finnish": "Haluutko sä kupin kahvia vai teetä?"
+  },
+  {
+   "english": "Yes thanks, that would be nice.",
+   "finnish": "Joo kiitos, se olisi kiva"
+  },
+  {
+   "english": "Do you want something to drink?",
+   "finnish": "Haluutko sä jotain juotavaa?"
+  },
+  {
+   "english": "No thanks, I don't have thirst.",
+   "finnish": "Ei kiitos, mulla ei oo jano"
+  },
+  {
+   "english": "Your coffee is ready.",
+   "finnish": "Sun kahvi on valmis"
+  },
+  {
+   "english": "Do you like tea?",
+   "finnish": "Tykkäätkö sä teestä?"
+  },
+  {
+   "english": "I like it with milk but without sugar.",
+   "finnish": "Mä tykkään siitä maidon kanssa mutta ilman sokeria"
+  },
+  {
+   "english": "Can I get something to drink, please?",
+   "finnish": "Saisinko mä jotain juotavaa, kiitos?"
+  },
+  {
+   "english": "What would you like?",
+   "finnish": "Mitä sä haluaisit?"
+  },
+  {
+   "english": "A glass of water.",
+   "finnish": "Lasin vettä"
+  },
+  {
+   "english": "A big glass of water would be good.",
+   "finnish": "Iso lasi vettä olisi hyvä"
+  },
+  {
+   "english": "I'd like one of those.",
+   "finnish": "Mä haluaisin yhden noista"
+  },
+  {
+   "english": "That is Aino's bag.",
+   "finnish": "Toi on Ainon laukku"
+  },
+  {
+   "english": "That is probably Aino's bag.",
+   "finnish": "Toi on kai Ainon laukku"
+  },
+  {
+   "english": "Where is her bag?",
+   "finnish": "Missä sen laukku on?"
+  },
+  {
+   "english": "I'm trying think.",
+   "finnish": "Mä yritän miettiä"
+  },
+  {
+   "english": "With you, sir",
+   "finnish": "Teidän kanssanne, herra"
+  },
+  {
+   "english": "It's the red one.",
+   "finnish": "Se on se punainen"
+  },
+  {
+   "english": "It's probably the red one on that chair.",
+   "finnish": "Se on kai se punainen tuolla tuolilla"
+  },
+  {
+   "english": "How do you feel, madam?",
+   "finnish": "Miltä teistä tuntuu, rouva?"
+  },
+  {
+   "english": "It's difficult to think quickly enough to answer in time.",
+   "finnish": "On vaikeeta miettiä tarpeeksi nopeesti vastatakseen ajoissa"
+  },
+  {
+   "english": "I'd like to continue this a little longer.",
+   "finnish": "Mä haluaisin jatkaa tätä vielä hetken"
+  },
+  {
+   "english": "Do you want, sir",
+   "finnish": "Haluatteko te, herra"
+  },
+  {
+   "english": "Now it's time to leave.",
+   "finnish": "Nyt on aika lähteä"
+  },
+  {
+   "english": "Are you ready to leave?",
+   "finnish": "Ootko sä valmis lähtemään?"
+  },
+  {
+   "english": "Could you say it, sir?",
+   "finnish": "Voisitteko te sanoa sen, herra?"
+  },
+  {
+   "english": "No, I'm not yet ready.",
+   "finnish": "En, mä en oo vielä valmis"
+  },
+  {
+   "english": "Yes I'm ready to leave as soon as you want.",
+   "finnish": "Joo, mä oon valmis lähtemään heti kun sä haluut"
+  },
+  {
+   "english": "I can help you, madam",
+   "finnish": "Voin auttaa teitä, rouva"
+  },
+  {
+   "english": "Where do you want to meet on Saturday night?",
+   "finnish": "Missä sä haluut tavata lauantai-iltana?"
+  },
+  {
+   "english": "I don't mind waiting a few minutes.",
+   "finnish": "Mua ei haittaa odottaa muutamaa minuuttia"
+  },
+  {
+   "english": "You're doing something, sir.",
+   "finnish": "Te teette jotain, herra"
+  },
+  {
+   "english": "Do you want to go to a restaurant tonight?",
+   "finnish": "Haluutko sä mennä ravintolaan tänä iltana?"
+  },
+  {
+   "english": "Let's talk about something else.",
+   "finnish": "Puhutaan jostain muusta"
+  },
+  {
+   "english": "You speak it, madam",
+   "finnish": "Te puhutte sitä, rouva"
+  },
+  {
+   "english": "How is this word said in Finnish?",
+   "finnish": "Miten tää sana sanotaan Suomeksi?"
+  },
+  {
+   "english": "Can you give me that book on Sunday morning?",
+   "finnish": "Voitko sä antaa mulle sen kirjan sunnuntaiaamuna?"
+  },
+  {
+   "english": "What you said, madam",
+   "finnish": "Mitä te sanoitte, rouva"
+  },
+  {
+   "english": "What is your opinion of it?",
+   "finnish": "Mitä mieltä sä oot siitä?"
+  },
+  {
+   "english": "In my opinion it is interesting.",
+   "finnish": "Mun mielestä se on kiinnostavaa"
+  },
+  {
+   "english": "Are you ready, sir?",
+   "finnish": "Oletteko te valmis, herra?"
+  },
+  {
+   "english": "Interesting book",
+   "finnish": "Kiinnostava kirja"
+  },
+  {
+   "english": "But I'm not sure if it's true.",
+   "finnish": "Mutta mä en oo varma onko se totta"
+  },
+  {
+   "english": "Do you want to leave, madam?",
+   "finnish": "Haluatteko te lähteä, rouva?"
+  },
+  {
+   "english": "What must you do tomorrow?",
+   "finnish": "Mitä sun pitää tehdä huomenna?"
+  },
+  {
+   "english": "I must meet a friend in the morning.",
+   "finnish": "Mun pitää tavata kaveri aamulla"
+  },
+  {
+   "english": "What's your opinion, madam?",
+   "finnish": "Mitä mieltä te olette, rouva?"
+  },
+  {
+   "english": "And then I'm able to come help later.",
+   "finnish": "Ja sitten mä pystyn tulemaan auttamaan myöhemmin"
+  },
+  {
+   "english": "What you want that I do?",
+   "finnish": "Mitä sä haluut että mä teen?"
+  },
+  {
+   "english": "What you need, sir?",
+   "finnish": "Mitä te tarvitsette, herra?"
+  },
+  {
+   "english": "I'd like that you tell me what you need.",
+   "finnish": "Mä haluaisin, että sä kerrot mulle mitä sä tarvitset"
+  },
+  {
+   "english": "Do you want that I help you search for it?",
+   "finnish": "Haluutko sä, että mä autan sua etsimään sitä?"
+  },
+  {
+   "english": "Do you mind, madam?",
+   "finnish": "Haittaako teitä, rouva?"
+  },
+  {
+   "english": "Yes that would be really helpful.",
+   "finnish": "Joo, se olisi tosi avuliasta"
+  },
+  {
+   "english": "No thanks I'll manage myself.",
+   "finnish": "Ei kiitos, mä pärjään itse"
+  },
+  {
+   "english": "I'm not sure if I can help you, sir.",
+   "finnish": "En ole varma voinko auttaa teitä, herra"
+  },
+  {
+   "english": "Do understand what I say?",
+   "finnish": "Ymmärrätkö sä mitä mä sanon?"
+  },
+  {
+   "english": "What do you want to do on Sunday morning?",
+   "finnish": "Mitä sä haluut tehdä sunnuntaiaamuna?"
+  },
+  {
+   "english": "I'll ask her if she can help.",
+   "finnish": "Mä kysyn siltä, pystyykö se auttamaan"
+  },
+  {
+   "english": "I'll ask him where he wants to go.",
+   "finnish": "Mä kysyn siltä, minne se haluaa mennä"
+  },
+  {
+   "english": "I didn't have time, although I wanted to see you.",
+   "finnish": "Mulla ei ollut aikaa, vaikka mä halusin nähdä sut"
+  },
+  {
+   "english": "In my opinion you're managing really well, madam.",
+   "finnish": "Mielestäni te pärjäätte oikein hyvin, rouva"
+  },
+  {
+   "english": "I'd like to read my book for a moment.",
+   "finnish": "Mä haluaisin lukea mun kirjaa hetken"
+  },
+  {
+   "english": "But I have to take my mother to the doctor.",
+   "finnish": "Mutta mun pitää viedä mun äiti lääkäriin"
+  },
+  {
+   "english": "Have you seen my keys anywhere?",
+   "finnish": "Ootko sä nähnyt mun avaimia missään?"
+  },
+  {
+   "english": "No, I'm afraid I haven't seen them.",
+   "finnish": "En, mä en valitettavasti oo nähnyt niitä"
+  },
+  {
+   "english": "Yes, I saw them in the office a little while ago.",
+   "finnish": "Joo, mä näin ne toimistossa vähän aikaa sitten"
+  },
+  {
+   "english": "You probably left them at work.",
+   "finnish": "Sä kai jätit ne töihin"
+  },
+  {
+   "english": "Do you want to talk about something different next week?",
+   "finnish": "Haluutko sä puhua jostain muusta ensi viikolla?"
+  },
+  {
+   "english": "I'm satisfied so far.",
+   "finnish": "Mä oon tyytyväinen tähän asti"
+  },
+  {
+   "english": "So I don't need to change anything.",
+   "finnish": "Joten mun ei tarvi muuttaa mitään"
+  },
+  {
+   "english": "Yes, that's a good idea.",
+   "finnish": "Joo, se on hyvä idea"
+  },
+  {
+   "english": "Do you mind if I ask you a few questions?",
+   "finnish": "Haittaako sua jos mä kysyn sulta muutaman kysymyksen?"
+  },
+  {
+   "english": "No, it doesn't mind at all.",
+   "finnish": "Ei haittaa yhtään"
+  },
+  {
+   "english": "I'm busy.",
+   "finnish": "Mä oon kiireinen"
+  },
+  {
+   "english": "Sorry, but I'm too busy today.",
+   "finnish": "Sori, mutta mä oon liian kiireinen tänään"
+  },
+  {
+   "english": "What are you looking for?",
+   "finnish": "Mitä sä etsit?"
+  },
+  {
+   "english": "I'm trying to find the money I left on the table.",
+   "finnish": "Mä yritän löytää rahat, jotka mä jätin pöydälle"
+  },
+  {
+   "english": "When will you be ready to start?",
+   "finnish": "Milloin sä oot valmis aloittamaan?"
+  },
+  {
+   "english": "I should be ready in a few minutes.",
+   "finnish": "Mun pitäis olla valmis muutamassa minuutissa"
+  },
+  {
+   "english": "I've been ready since morning.",
+   "finnish": "Mä oon ollut valmis aamusta asti"
+  },
+  {
+   "english": "When do you believe you'll be ready to leave?",
+   "finnish": "Milloin sä uskot olevasi valmis lähtemään?"
+  },
+  {
+   "english": "I'll probably be ready in less than an hour.",
+   "finnish": "Mä oon varmaan valmis alle tunnissa"
+  },
+  {
+   "english": "I like that blue thing.",
+   "finnish": "Mä tykkään tosta sinisestä jutusta"
+  },
+  {
+   "english": "What's that blue thing over there?",
+   "finnish": "Mikä toi sininen juttu on tuolla?"
+  },
+  {
+   "english": "Idea.",
+   "finnish": "Idea"
+  },
+  {
+   "english": "I don't have even the grayest of notions.",
+   "finnish": "Mulla ei oo harmaintakaan aavistusta"
+  },
+  {
+   "english": "It might be something important.",
+   "finnish": "Se saattaa olla jotain tärkeää"
+  },
+  {
+   "english": "Who was that man you spoke to yesterday?",
+   "finnish": "Kuka oli se mies, jolle sä puhuit eilen?"
+  },
+  {
+   "english": "I don't know who you mean.",
+   "finnish": "Mä en tiedä ketä sä tarkoitat"
+  },
+  {
+   "english": "Old man.",
+   "finnish": "Vanha mies"
+  },
+  {
+   "english": "Friend.",
+   "finnish": "Kaveri"
+  },
+  {
+   "english": "It was my father's old friend.",
+   "finnish": "Se oli mun isän vanha kaveri"
+  },
+  {
+   "english": "Have you heard from your friend?",
+   "finnish": "Ootko sä kuullut sun kaverista?"
+  },
+  {
+   "english": "Yes, he sent me two emails last week.",
+   "finnish": "Joo, se lähetti mulle kaks sähköpostia viime viikolla"
+  },
+  {
+   "english": "Why don't you want to wait for your father?",
+   "finnish": "Miksi sä et haluu odottaa sun isää?"
+  },
+  {
+   "english": "Because I'm worried that I'm going to be late.",
+   "finnish": "Koska mä oon huolissani, että mä myöhästyn"
+  },
+  {
+   "english": "Would you like to come with us next month?",
+   "finnish": "Haluaisitko sä tulla meidän mukaan ensi kuussa?"
+  },
+  {
+   "english": "Yes, that sounds like a good idea.",
+   "finnish": "Joo, se kuulostaa hyvältä idealta"
+  },
+  {
+   "english": "No, unfortunately I have too much work.",
+   "finnish": "En, valitettavasti mulla on liikaa töitä"
+  },
+  {
+   "english": "Do you have to leave in a few days?",
+   "finnish": "Pitääkö sun lähteä muutaman päivän päästä?"
+  },
+  {
+   "english": "Longer.",
+   "finnish": "Pidempään"
+  },
+  {
+   "english": "No, I can stay here a little longer.",
+   "finnish": "Ei, mä voin jäädä tänne vähän pidempään"
+  },
+  {
+   "english": "Yes, I have an important meeting early next week.",
+   "finnish": "Joo, mulla on tärkeä kokous ensi viikon alussa"
+  },
+  {
+   "english": "Did you have to get everything ready last night?",
+   "finnish": "Pitikö sun saada kaikki valmiiksi viime yönä?"
+  },
+  {
+   "english": "Yes, because there wasn't much time left.",
+   "finnish": "Joo, koska aikaa ei ollut paljon jäljellä"
+  },
+  {
+   "english": "No, I only had to do the most important job.",
+   "finnish": "Ei, mun piti tehdä vain tärkein homma"
+  },
+  {
+   "english": "Do you mind if I drink my coffee before you start?",
+   "finnish": "Haittaako sua jos mä juon mun kahvin loppuun ennen kuin sä aloitat?"
+  },
+  {
+   "english": "No, that's not a problem.",
+   "finnish": "Ei, se ei oo ongelma"
+  },
+  {
+   "english": "Which of your friends speak Finnish?",
+   "finnish": "Ketkä sun kavereista puhuu suomea?"
+  },
+  {
+   "english": "Do you know my sister's friend?",
+   "finnish": "Tunnetko sä mun siskon kaverin?"
+  },
+  {
+   "english": "She speaks Finnish.",
+   "finnish": "Se puhuu suomea"
+  },
+  {
+   "english": "People who like to speak Finnish.",
+   "finnish": "Ihmiset, jotka tykkää puhua suomea"
+  },
+  {
+   "english": "How many people do you know who like to watch television?",
+   "finnish": "Kuinka monta ihmistä sä tunnet, jotka tykkää katsoa telkkaria?"
+  },
+  {
+   "english": "Most people like to watch television.",
+   "finnish": "Useimmat ihmiset tykkää katsoa telkkaria"
+  },
+  {
+   "english": "Most people I know like to watch television.",
+   "finnish": "Useimmat ihmiset, jotka mä tunnen, tykkää katsoa telkkaria"
+  },
+  {
+   "english": "I wonder if she's going to be there this afternoon.",
+   "finnish": "Onkohan se siellä tänä iltapäivänä"
+  },
+  {
+   "english": "I wonder if he knows the answer.",
+   "finnish": "Tietääköhän se vastauksen"
+  },
+  {
+   "english": "I hope I'll be able to speak better soon.",
+   "finnish": "Mä toivon, että mä pystyn puhumaan paremmin pian"
+  },
+  {
+   "english": "I hope you'll be able to come to the party.",
+   "finnish": "Mä toivon, että sä pystyt tulemaan juhliin"
+  },
+  {
+   "english": "I have to find out where she's going to meet me.",
+   "finnish": "Mun pitää selvittää, missä se aikoo tavata mut"
+  },
+  {
+   "english": "I don't have enough time to call you tonight.",
+   "finnish": "Mulla ei oo tarpeeksi aikaa soittaa sulle tänä iltana"
+  },
+  {
+   "english": "I didn't say that I wanted to get it ready in a day.",
+   "finnish": "Mä en sanonut, että mä halusin saada sen valmiiksi päivässä"
+  },
+  {
+   "english": "I said that I needed a little more time.",
+   "finnish": "Mä sanoin, että mä tarvitsin vähän lisää aikaa"
+  },
+  {
+   "english": "I don't know many people who speak Finnish.",
+   "finnish": "Mä en tunne monia ihmisiä, jotka puhuu suomea"
+  },
+  {
+   "english": "I have nothing left to say.",
+   "finnish": "Mulla ei oo enää mitään sanottavaa"
+  },
+  {
+   "english": "He wants to pay half.",
+   "finnish": "Se haluaa maksaa puolet"
+  },
+  {
+   "english": "She doesn't want to seem unfriendly.",
+   "finnish": "Se ei halua vaikuttaa epäystävälliseltä"
+  },
+  {
+   "english": "He said that he wants to show you something.",
+   "finnish": "Se sanoi, että se haluaa näyttää sulle jotain"
+  },
+  {
+   "english": "She said that she doesn't want to live in the city.",
+   "finnish": "Se sanoi, että se ei halua asua kaupungissa"
+  },
+  {
+   "english": "He probably wants to sit down.",
+   "finnish": "Se varmaan haluaa istua alas"
+  },
+  {
+   "english": "She probably doesn't want to work from home.",
+   "finnish": "Se ei varmaan halua tehdä töitä kotoa käsin"
+  },
+  {
+   "english": "Woman.",
+   "finnish": "Nainen"
+  },
+  {
+   "english": "I know that young woman who your friend is speaking with.",
+   "finnish": "Mä tunnen ton nuoren naisen, joka puhuu sun kaverin kanssa"
+  },
+  {
+   "english": "I know that young man who's sitting over there.",
+   "finnish": "Mä tunnen ton nuoren miehen, joka istuu tuolla"
+  },
+  {
+   "english": "Do you know that old woman who studies Finnish?",
+   "finnish": "Tunnetko sä ton vanhan naisen, joka opiskelee suomea?"
+  },
+  {
+   "english": "Yes, she's my mother's friend.",
+   "finnish": "Joo, se on mun äidin kaveri"
+  },
+  {
+   "english": "No, I have never seen her before.",
+   "finnish": "En, mä en oo koskaan nähnyt sitä aiemmin"
+  },
+  {
+   "english": "She could write a story about that man.",
+   "finnish": "Se vois kirjoittaa tarinan siitä miehestä"
+  },
+  {
+   "english": "He couldn't believe the three most important facts.",
+   "finnish": "Se ei voinut uskoa kolmea tärkeintä faktaa"
+  },
+  {
+   "english": "She said that she could use the other room tomorrow night.",
+   "finnish": "Se sanoi, että se vois käyttää toista huonetta huomenna illalla"
+  },
+  {
+   "english": "He said that he couldn't watch all five games.",
+   "finnish": "Se sanoi, että se ei voinut katsoa kaikkia viittä peliä"
+  },
+  {
+   "english": "She could probably put it on the table.",
+   "finnish": "Se vois varmaan laittaa sen pöydälle"
+  },
+  {
+   "english": "He probably didn't have enough money for the car that he wanted.",
+   "finnish": "Sillä ei varmaan ollut varaa autoon, jonka se halusi"
+  },
+  {
+   "english": "Could she bring her brother on Monday?",
+   "finnish": "Voisiko se tuoda veljensä maanantaina?"
+  },
+  {
+   "english": "Yes, she probably could if she wanted to.",
+   "finnish": "Joo, se varmaan vois jos se haluais"
+  },
+  {
+   "english": "No, I don't believe he could this time.",
+   "finnish": "Ei, mä en usko että se vois tällä kertaa"
+  },
+  {
+   "english": "He has to move to a different country.",
+   "finnish": "Sen pitää muuttaa toiseen maahan"
+  },
+  {
+   "english": "She doesn't need to buy another television this year.",
+   "finnish": "Sen ei tarvi ostaa toista telkkaria tänä vuonna"
+  },
+  {
+   "english": "Book.",
+   "finnish": "Kirja"
+  },
+  {
+   "english": "He said that he has to read the same book.",
+   "finnish": "Se sanoi, että sen pitää lukea sama kirja"
+  },
+  {
+   "english": "She said that she doesn't need to walk to school.",
+   "finnish": "Se sanoi, että sen ei tarvi kävellä kouluun"
+  },
+  {
+   "english": "That student has both his hands up.",
+   "finnish": "Tolla opiskelijalla on molemmat kädet ylhäällä"
+  },
+  {
+   "english": "In my opinion she has to think about ten possible problems.",
+   "finnish": "Mun mielestä sen pitää miettiä kymmentä mahdollista ongelmaa"
+  },
+  {
+   "english": "I don't believe that he needs to sell the company.",
+   "finnish": "Mä en usko, että sen tarvii myydä yritystä"
+  },
+  {
+   "english": "I wonder if she has to offer another way?",
+   "finnish": "Pitääköhän sen tarjota toista tapaa?"
+  },
+  {
+   "english": "Yes, in my opinion she should.",
+   "finnish": "Joo, mun mielestä sen pitäis"
+  },
+  {
+   "english": "It's important.",
+   "finnish": "Se on tärkeää"
+  },
+  {
+   "english": "No, in my opinion it's not very important.",
+   "finnish": "Ei, mun mielestä se ei oo kovin tärkeää"
+  },
+  {
+   "english": "He can't give all the answers.",
+   "finnish": "Se ei voi antaa kaikkia vastauksia"
+  },
+  {
+   "english": "She can build a new life for her sister.",
+   "finnish": "Se voi rakentaa uuden elämän siskolleen"
+  },
+  {
+   "english": "He said that he can't spend much time with the group.",
+   "finnish": "Se sanoi, että se ei voi viettää paljon aikaa ryhmän kanssa"
+  },
+  {
+   "english": "She said that she can let you hold the kitten.",
+   "finnish": "Se sanoi, että se voi antaa sun pitää kissanpentua sylissä"
+  },
+  {
+   "english": "In my opinion he can add some valuable ideas.",
+   "finnish": "Mun mielestä se voi lisätä joitain arvokkaita ideoita"
+  },
+  {
+   "english": "I don't believe that she can open the door.",
+   "finnish": "Mä en usko, että se voi avata ovea"
+  },
+  {
+   "english": "Can he in your opinion continue to play?",
+   "finnish": "Voiko se sun mielestä jatkaa pelaamista?"
+  },
+  {
+   "english": "Badly.",
+   "finnish": "Pahasti"
+  },
+  {
+   "english": "No, I believe he has hurt himself quite badly.",
+   "finnish": "Ei, mä uskon että se on loukannut itsensä aika pahasti"
+  },
+  {
+   "english": "Yes, I'm sure she's going to be okay.",
+   "finnish": "Joo, mä oon varma että se tulee olemaan kunnossa"
+  },
+  {
+   "english": "I met someone a few days ago.",
+   "finnish": "Mä tapasin jonkun muutama päivä sitten"
+  },
+  {
+   "english": "I met someone who said something.",
+   "finnish": "Mä tapasin jonkun, joka sanoi jotain"
+  },
+  {
+   "english": "Who said that he's worried about the economy.",
+   "finnish": "Joka sanoi, että se on huolissaan taloudesta"
+  },
+  {
+   "english": "Who said that she's happy to help you.",
+   "finnish": "Joka sanoi, että se on iloinen voidessaan auttaa sua"
+  },
+  {
+   "english": "Who said that he's not ready to leave yet.",
+   "finnish": "Joka sanoi, että se ei oo vielä valmis lähtemään"
+  },
+  {
+   "english": "I wanted her to know that I liked her book.",
+   "finnish": "Mä halusin sen tietävän, että mä tykkäsin sen kirjasta"
+  },
+  {
+   "english": "He wanted to know what was happening a week ago.",
+   "finnish": "Se halusi tietää, mitä tapahtui viikko sitten"
+  },
+  {
+   "english": "She didn't want to know what was going to happen.",
+   "finnish": "Se ei halunnut tietää, mitä oli tapahtumassa"
+  },
+  {
+   "english": "Did he want to go out on Friday night?",
+   "finnish": "Halusiko se lähteä ulos perjantai-iltana?"
+  },
+  {
+   "english": "Yes, he wanted to see some old friends.",
+   "finnish": "Joo, se halusi nähdä joitain vanhoja kavereita"
+  },
+  {
+   "english": "No, she didn't want to leave me on my own.",
+   "finnish": "Ei, se ei halunnut jättää mua yksin"
+  },
+  {
+   "english": "Even if he wanted to, he wouldn't be able to.",
+   "finnish": "Vaikka se haluaisikin, se ei pystyisi"
+  },
+  {
+   "english": "He had to run around the field.",
+   "finnish": "Sen piti juosta kentän ympäri"
+  },
+  {
+   "english": "She didn't need to appear angry.",
+   "finnish": "Sen ei tarvinnut näyttää vihaiselta"
+  },
+  {
+   "english": "Did he have to talk to that woman you know?",
+   "finnish": "Pitikö sen puhua sille naiselle, jonka sä tunnet?"
+  },
+  {
+   "english": "Yes, they had something important to discuss.",
+   "finnish": "Joo, niillä oli jotain tärkeää keskusteltavaa"
+  },
+  {
+   "english": "No, she just wanted to send her a message.",
+   "finnish": "Ei, se halusi vaan lähettää sille viestin"
+  },
+  {
+   "english": "Your friend said that he couldn't reach the top.",
+   "finnish": "Sun kaveri sanoi, että se ei yltänyt huipulle"
+  },
+  {
+   "english": "Your friend said that she can turn left.",
+   "finnish": "Sun kaveri sanoi, että se voi kääntyä vasemmalle"
+  },
+  {
+   "english": "Did your friend say anything else?",
+   "finnish": "Sanoiko sun kaveri mitään muuta?"
+  },
+  {
+   "english": "He was quiet.",
+   "finnish": "Se oli hiljaa"
+  },
+  {
+   "english": "No, she was rather quiet after you left.",
+   "finnish": "Ei, se oli aika hiljaa sen jälkeen kun sä lähdit"
+  },
+  {
+   "english": "Yes, he felt like talking a lot.",
+   "finnish": "Joo, sen teki mieli puhua paljon"
+  },
+  {
+   "english": "I heard that she didn't like that place.",
+   "finnish": "Mä kuulin, että se ei tykännyt siitä paikasta"
+  },
+  {
+   "english": "I didn't hear what he said to her.",
+   "finnish": "Mä en kuullut mitä se sanoi sille"
+  },
+  {
+   "english": "Did you hear what she wanted to grow?",
+   "finnish": "Kuulitko sä mitä se halusi kasvattaa?"
+  },
+  {
+   "english": "No, nobody told me.",
+   "finnish": "En, kukaan ei kertonut mulle"
+  },
+  {
+   "english": "Yes, I heard that he wanted to grow tomatoes.",
+   "finnish": "Joo, mä kuulin että se halusi kasvattaa tomaatteja"
+  },
+  {
+   "english": "I saw several horses on the road.",
+   "finnish": "Mä näin useita hevosia tiellä"
+  },
+  {
+   "english": "I didn't see anyone that I would know.",
+   "finnish": "Mä en nähnyt ketään, jota mä tuntisin"
+  },
+  {
+   "english": "I went to see a film on Wednesday.",
+   "finnish": "Mä menin kattomaan leffaa keskiviikkona"
+  },
+  {
+   "english": "Did you see what she was trying to create?",
+   "finnish": "Näitkö sä mitä se yritti luoda?"
+  },
+  {
+   "english": "It was beautiful.",
+   "finnish": "Se oli kaunis"
+  },
+  {
+   "english": "Yes, I thought it was very beautiful.",
+   "finnish": "Joo, mun mielestä se oli tosi kaunis"
+  },
+  {
+   "english": "No, I didn't know what he was doing.",
+   "finnish": "En, mä en tiennyt mitä se oli tekemässä"
+  },
+  {
+   "english": "I didn't go anywhere last month.",
+   "finnish": "Mä en mennyt mihinkään viime kuussa"
+  },
+  {
+   "english": "Did you go anywhere in the world last year?",
+   "finnish": "Menitkö sä mihinkään maailmassa viime vuonna?"
+  },
+  {
+   "english": "No, I didn't have enough money for holidays.",
+   "finnish": "En, mulla ei ollut tarpeeksi rahaa lomiin"
+  },
+  {
+   "english": "Yes, I was lucky enough to travel to Africa.",
+   "finnish": "Joo, mä olin tarpeeksi onnekas matkustaakseni Afrikkaan"
+  },
+  {
+   "english": "I asked what he wanted to include.",
+   "finnish": "Mä kysyin mitä se halusi sisällyttää"
+  },
+  {
+   "english": "I didn't ask if she wanted to follow us.",
+   "finnish": "Mä en kysynyt halusiko se seurata meitä"
+  },
+  {
+   "english": "Did you ask where he wanted to put it?",
+   "finnish": "Kysyitkö sä mihin se halusi laittaa sen?"
+  },
+  {
+   "english": "Yes, she said she wanted to put it in the garden.",
+   "finnish": "Joo, se sanoi että se halusi laittaa sen puutarhaan"
+  },
+  {
+   "english": "I couldn't agree with what he said a moment ago.",
+   "finnish": "Mä en voinut olla samaa mieltä siitä mitä se sanoi hetki sitten"
+  },
+  {
+   "english": "Did you agree with her?",
+   "finnish": "Olitko sä samaa mieltä sen kanssa?"
+  },
+  {
+   "english": "Yes, I agreed with her.",
+   "finnish": "Joo, mä olin samaa mieltä sen kanssa"
+  },
+  {
+   "english": "No, in my opinion she wasn't right.",
+   "finnish": "En, mun mielestä se ei ollut oikeassa"
+  },
+  {
+   "english": "That person with whom you work.",
+   "finnish": "Se henkilö, jonka kanssa sä työskentelet"
+  },
+  {
+   "english": "That person over there.",
+   "finnish": "Toi henkilö tuolla"
+  },
+  {
+   "english": "The one who stands near the entrance.",
+   "finnish": "Se, joka seisoo sisäänkäynnin lähellä"
+  },
+  {
+   "english": "The one who walks towards the bus.",
+   "finnish": "Se, joka kävelee bussia kohti"
+  },
+  {
+   "english": "That child with black hair opposite the post office.",
+   "finnish": "Toi mustatukkainen lapsi postia vastapäätä"
+  },
+  {
+   "english": "That boy with the green shirt.",
+   "finnish": "Toi poika, jolla on vihreä paita"
+  },
+  {
+   "english": "That girl with the yellow dress.",
+   "finnish": "Toi tyttö, jolla on keltainen mekko"
+  },
+  {
+   "english": "We have to turn left at the next corner.",
+   "finnish": "Meidän pitää kääntyä vasemmalle seuraavassa kulmassa"
+  },
+  {
+   "english": "We don't need to stand until everybody else is ready.",
+   "finnish": "Meidän ei tarvi seistä ennen kuin kaikki muut on valmiita"
+  },
+  {
+   "english": "Do we have to get ready soon?",
+   "finnish": "Pitääkö meidän valmistautua pian?"
+  },
+  {
+   "english": "We want to become more patient with our children.",
+   "finnish": "Me halutaan tulla kärsivällisemmiksi lastemme kanssa"
+  },
+  {
+   "english": "We don't want to lose hope.",
+   "finnish": "Me ei haluta menettää toivoa"
+  },
+  {
+   "english": "Do we want to eat something later?",
+   "finnish": "Halutaanko me syödä jotain myöhemmin?"
+  },
+  {
+   "english": "No, it would be better to go straight home.",
+   "finnish": "Ei, olisi parempi mennä suoraan kotiin"
+  },
+  {
+   "english": "Yes, it would be nice to stop somewhere for food.",
+   "finnish": "Joo, olisi kiva pysähtyä jossain syömään"
+  },
+  {
+   "english": "We should stay quiet for as long as possible.",
+   "finnish": "Meidän pitäis pysyä hiljaa niin pitkään kuin mahdollista"
+  },
+  {
+   "english": "We shouldn't expect to get ready before Thursday.",
+   "finnish": "Meidän ei pitäis odottaa saavamme valmiiksi ennen torstaita"
+  },
+  {
+   "english": "Should we ask if we have to book?",
+   "finnish": "Pitäiskö meidän kysyä, pitääkö meidän varata?"
+  },
+  {
+   "english": "No, I'm sure it will be okay.",
+   "finnish": "Ei, mä oon varma että se onnistuu"
+  },
+  {
+   "english": "Shouldn't we try to set a good example?",
+   "finnish": "Eikö meidän pitäis yrittää näyttää hyvää esimerkkiä?"
+  },
+  {
+   "english": "Yes, that's the best way to make a happy family.",
+   "finnish": "Joo, se on paras tapa tehdä onnellinen perhe"
+  },
+  {
+   "english": "No, it doesn't matter what we do.",
+   "finnish": "Ei, sillä ei oo väliä mitä me tehdään"
+  },
+  {
+   "english": "They still fight with each other.",
+   "finnish": "Ne tappelee silti keskenään"
+  },
+  {
+   "english": "We would like to reserve a table for four tonight.",
+   "finnish": "Me haluttais varata pöytä neljälle täksi illaksi"
+  },
+  {
+   "english": "We couldn't let them win everything.",
+   "finnish": "Me ei voitu antaa niiden voittaa kaikkea"
+  },
+  {
+   "english": "We could fall if we go too close to the edge.",
+   "finnish": "Me voidaan kaatua jos mennään liian lähelle reunaa"
+  },
+  {
+   "english": "Could we get a bottle of red wine please?",
+   "finnish": "Voisimmeko saada pullon punaviiniä, kiitos?"
+  },
+  {
+   "english": "That wouldn't be a problem if you ask me.",
+   "finnish": "Se ei olisi ongelma, jos multa kysytään"
+  },
+  {
+   "english": "They want to lead the way next year.",
+   "finnish": "Ne haluaa johtaa tietä ensi vuonna"
+  },
+  {
+   "english": "Do they want to kill those ants?",
+   "finnish": "Haluaako ne tappaa noi muurahaiset?"
+  },
+  {
+   "english": "They have to serve the community.",
+   "finnish": "Niiden pitää palvella yhteisöä"
+  },
+  {
+   "english": "If they want people to like them.",
+   "finnish": "Jos ne haluaa ihmisten tykkäävän niistä"
+  },
+  {
+   "english": "They don't need to ask how old it is.",
+   "finnish": "Niiden ei tarvi kysyä kuinka vanha se on"
+  },
+  {
+   "english": "Because they already know it's getting weak.",
+   "finnish": "Koska ne tietää jo että se on heikkenemässä"
+  },
+  {
+   "english": "Question.",
+   "finnish": "Kysymys"
+  },
+  {
+   "english": "Do they have to ask such an obvious question?",
+   "finnish": "Pitääkö niiden kysyä niin ilmiselvää kysymystä?"
+  },
+  {
+   "english": "No, they're wasting everybody's time.",
+   "finnish": "Ei, ne tuhlaa kaikkien aikaa"
+  },
+  {
+   "english": "Yes, they have to make sure they understand.",
+   "finnish": "Joo, niiden pitää varmistaa että ne ymmärtää"
+  },
+  {
+   "english": "They would like to love each other but they're unhappy.",
+   "finnish": "Ne haluais rakastaa toisiaan mutta ne on onnettomia"
+  },
+  {
+   "english": "They wouldn't want you to believe that they're bored.",
+   "finnish": "Ne ei haluis että sä uskot että niillä on tylsää"
+  },
+  {
+   "english": "Would they like to visit us on Tuesday?",
+   "finnish": "Haluaisiko ne käydä meillä tiistaina?"
+  },
+  {
+   "english": "Yes, that would be perfect for them.",
+   "finnish": "Joo, se olisi niille täydellinen"
+  },
+  {
+   "english": "No, that wouldn't be possible.",
+   "finnish": "Ei, se ei olisi mahdollista"
+  },
+  {
+   "english": "They're not ready yet but they'll be ready soon.",
+   "finnish": "Ne ei oo vielä valmiita mutta ne on valmiita pian"
+  },
+  {
+   "english": "They could mean that they want you to ask.",
+   "finnish": "Ne vois tarkoittaa että ne haluaa, että sä kysyt"
+  },
+  {
+   "english": "They couldn't find out when the film started.",
+   "finnish": "Ne ei voinut selvittää milloin leffa alkoi"
+  },
+  {
+   "english": "Could they cut the number of students they take?",
+   "finnish": "Voisiko ne vähentää opiskelijoiden määrää, jonka ne ottaa?"
+  },
+  {
+   "english": "Yes, they could if they wanted to.",
+   "finnish": "Joo, ne vois jos ne haluais"
+  },
+  {
+   "english": "No, there's a minimum number they need.",
+   "finnish": "Ei, niillä on vähimmäismäärä, jonka ne tarvii"
+  },
+  {
+   "english": "They wanted to raise as much as possible for charity.",
+   "finnish": "Ne halusi kerätä niin paljon kuin mahdollista hyväntekeväisyyteen"
+  },
+  {
+   "english": "They didn't want to decide what he should do.",
+   "finnish": "Ne ei halunnut päättää mitä sen pitäis tehdä"
+  },
+  {
+   "english": "They don't want to die while they're still young.",
+   "finnish": "Ne ei halua kuolla kun ne on vielä nuoria"
+  },
+  {
+   "english": "Approach.",
+   "finnish": "Lähestymistapa"
+  },
+  {
+   "english": "Did they want to develop a new approach?",
+   "finnish": "Halusiko ne kehittää uuden lähestymistavan?"
+  },
+  {
+   "english": "No, they wanted to keep doing it the same way.",
+   "finnish": "Ei, ne halusi jatkaa sen tekemistä samalla tavalla"
+  },
+  {
+   "english": "Yes, they thought it could be done more efficiently.",
+   "finnish": "Joo, ne ajatteli että se voitais tehdä tehokkaammin"
+  },
+  {
+   "english": "They'll be able to carry that suitcase.",
+   "finnish": "Ne pystyy kantamaan ton matkalaukun"
+  },
+  {
+   "english": "They won't be able to break that window.",
+   "finnish": "Ne ei pysty rikkomaan tota ikkunaa"
+  },
+  {
+   "english": "Will they be able to drive us home after the meal?",
+   "finnish": "Pystyykö ne ajamaan meidät kotiin ruoan jälkeen?"
+  },
+  {
+   "english": "Yes, they'll be happy to help.",
+   "finnish": "Joo, ne on iloisia voidessaan auttaa"
+  },
+  {
+   "english": "They said that they were almost ready.",
+   "finnish": "Ne sanoi että ne oli melkein valmiita"
+  },
+  {
+   "english": "No, they have to catch the train themselves.",
+   "finnish": "Ei, niiden pitää itse ehtiä junaan"
+  },
+  {
+   "english": "They said what they wanted to do.",
+   "finnish": "Ne sanoi mitä ne halusi tehdä"
+  },
+  {
+   "english": "They didn't say what they wanted to do.",
+   "finnish": "Ne ei sanonut mitä ne halusi tehdä"
+  },
+  {
+   "english": "Did they say who they saw last night?",
+   "finnish": "Sanoiko ne kenet ne näki viime yönä?"
+  },
+  {
+   "english": "Our friends came round at about six o'clock.",
+   "finnish": "Meidän kaverit tuli käymään noin kuudelta"
+  },
+  {
+   "english": "with you all",
+   "finnish": "teidän kaikkien kanssa"
+  },
+  {
+   "english": "We had to leave because the children were tired.",
+   "finnish": "Meidän piti lähteä koska lapset oli väsyneitä"
+  },
+  {
+   "english": "It might be there but it's not very likely.",
+   "finnish": "Se saattaa olla siellä mutta se ei oo kovin todennäköistä"
+  },
+  {
+   "english": "How do you all feel?",
+   "finnish": "miltä teistä kaikista tuntuu?"
+  },
+  {
+   "english": "Part of the problem is the number of different areas.",
+   "finnish": "Osa ongelmaa on eri alueiden määrä"
+  },
+  {
+   "english": "It was all much easier in the past.",
+   "finnish": "Kaikki oli paljon helpompaa ennen vanhaan"
+  },
+  {
+   "english": "Do you all want?",
+   "finnish": "Haluatteko te kaikki?"
+  },
+  {
+   "english": "It wasn't in front of the blue sign.",
+   "finnish": "Se ei ollut sinisen kyltin edessä"
+  },
+  {
+   "english": "I want to find a shop near the hotel.",
+   "finnish": "Mä haluun löytää kaupan läheltä hotellia"
+  },
+  {
+   "english": "Could you all say that",
+   "finnish": "Voisitteko te kaikki sanoa sen"
+  },
+  {
+   "english": "A shop where I can buy some postcards.",
+   "finnish": "Kauppa, josta mä voin ostaa postikortteja"
+  },
+  {
+   "english": "My grandfather fought in Italy during the war.",
+   "finnish": "Mun isoisä taisteli Italiassa sodan aikana"
+  },
+  {
+   "english": "I can help you all",
+   "finnish": "Mä voin auttaa teitä kaikkia"
+  },
+  {
+   "english": "My room number.",
+   "finnish": "Mun huonenumero"
+  },
+  {
+   "english": "I told him my room number once but he forgot it",
+   "finnish": "Mä kerroin sille mun huonenumeron kerran mutta se unohti sen"
+  },
+  {
+   "english": "you're all doing something",
+   "finnish": "te kaikki teette jotain"
+  },
+  {
+   "english": "Next time I will ask her what her name is.",
+   "finnish": "Seuraavalla kerralla mä kysyn siltä mikä sen nimi on"
+  },
+  {
+   "english": "Let me throw it over the wall.",
+   "finnish": "Anna mun heittää se muurin yli"
+  },
+  {
+   "english": "You all speak it",
+   "finnish": "Te kaikki puhutte sitä"
+  },
+  {
+   "english": "It's next to the car park.",
+   "finnish": "Se on parkkipaikan vieressä"
+  },
+  {
+   "english": "It's a big world.",
+   "finnish": "Se on iso maailma"
+  },
+  {
+   "english": "what you all said",
+   "finnish": "mitä te kaikki sanoitte"
+  },
+  {
+   "english": "But that doesn't mean we can't change it.",
+   "finnish": "Mutta se ei tarkoita, ettei me voida muuttaa sitä"
+  },
+  {
+   "english": "How high do you want to climb before we stop?",
+   "finnish": "Kuinka korkealle sä haluut kiivetä ennen kuin me pysähdytään?"
+  },
+  {
+   "english": "Are you all ready?",
+   "finnish": "Oletteko te kaikki valmiita?"
+  },
+  {
+   "english": "Do you want to stop for a rest?",
+   "finnish": "Haluutko sä pysähtyä lepäämään?"
+  },
+  {
+   "english": "Part of the problem is that we don't know the facts.",
+   "finnish": "Osa ongelmasta on se, että me ei tiedetä faktoja"
+  },
+  {
+   "english": "Do you all want to go?",
+   "finnish": "Haluatteko te kaikki mennä?"
+  },
+  {
+   "english": "I don't want it.",
+   "finnish": "Mä en haluu sitä"
+  },
+  {
+   "english": "I don't even want it as a free offer.",
+   "finnish": "Mä en haluu sitä edes ilmaisena tarjouksena"
+  },
+  {
+   "english": "What's your opinion, everyone?",
+   "finnish": "Mitä mieltä te kaikki olette?"
+  },
+  {
+   "english": "There are many reasons to consider waiting.",
+   "finnish": "On monta syytä harkita odottamista"
+  },
+  {
+   "english": "I'm waiting for the end of the second half.",
+   "finnish": "Mä odotan toisen puoliajan loppua"
+  },
+  {
+   "english": "Does it bother you all?",
+   "finnish": "Haittaako teitä kaikkia?"
+  },
+  {
+   "english": "He's been sick since the second day of the holidays.",
+   "finnish": "Se on ollut kipeä loman toisesta päivästä lähtien"
+  },
+  {
+   "english": "She has such a kind heart.",
+   "finnish": "Sillä on niin kiltti sydän"
+  },
+  {
+   "english": "I hope you'll all be able to go",
+   "finnish": "Toivon, että te kaikki pystytte menemään"
+  },
+  {
+   "english": "It's the least I could do.",
+   "finnish": "Se on vähintä mitä mä voin tehdä"
+  },
+  {
+   "english": "Whatever he says, it's not far ahead now.",
+   "finnish": "Mitä se sanookin, se ei oo enää kaukana edessä"
+  },
+  {
+   "english": "It's the only real hope we have left.",
+   "finnish": "Se on ainoa todellinen toivo mikä meillä on jäljellä"
+  },
+  {
+   "english": "The only real hope is that they're not serious.",
+   "finnish": "Ainoa todellinen toivo on, että ne ei oo tosissaan"
+  },
+  {
+   "english": "Life isn't easy, but it's not meant to be easy.",
+   "finnish": "Elämä ei oo helppoa, mutta sen ei oo tarkoituskaan olla helppoa"
+  },
+  {
+   "english": "It's meant to be a challenge.",
+   "finnish": "Sen on tarkoitus olla haaste"
+  },
+  {
+   "english": "Nothing would make me happier than to get away.",
+   "finnish": "Mikään ei tekis mua onnellisemmaksi kuin päästä pois"
+  },
+  {
+   "english": "In my opinion your eyes are beautiful.",
+   "finnish": "Mun mielestä sun silmät on kauniit"
+  },
+  {
+   "english": "It's under the bridge.",
+   "finnish": "Se on sillan alla"
+  },
+  {
+   "english": "It's on the other side of that yellow line.",
+   "finnish": "Se on ton keltaisen viivan toisella puolella"
+  },
+  {
+   "english": "If you don't make me a strong cup of coffee right now.",
+   "finnish": "Jos sä et tee mulle vahvaa kuppia kahvia just nyt"
+  },
+  {
+   "english": "Then I will never trust anyone ever again.",
+   "finnish": "Niin mä en tuu koskaan enää luottamaan kehenkään"
+  },
+  {
+   "english": "I love the way in which you try to help.",
+   "finnish": "Mä rakastan tapaa, jolla sä yrität auttaa"
+  },
+  {
+   "english": "Which of those places is in your opinion the most interesting?",
+   "finnish": "Mikä noista paikoista on sun mielestä kiinnostavin?"
+  },
+  {
+   "english": "What's going to come next?",
+   "finnish": "Mitä tulee seuraavaksi?"
+  },
+  {
+   "english": "What happens after the first part of the show?",
+   "finnish": "Mitä tapahtuu esityksen ensimmäisen osan jälkeen?"
+  },
+  {
+   "english": "When it matters.",
+   "finnish": "Kun sillä on väliä"
+  },
+  {
+   "english": "I'm not planning to lose when it really matters.",
+   "finnish": "Mä en aio hävitä kun sillä on oikeesti väliä"
+  },
+  {
+   "english": "That sounds as though you need to get some sleep.",
+   "finnish": "Toi kuulostaa siltä, että sun pitäis saada vähän unta"
+  },
+  {
+   "english": "He's standing alone over there inside the entrance.",
+   "finnish": "Se seisoo yksin tuolla sisäänkäynnin sisäpuolella"
+  },
+  {
+   "english": "Maybe we should open the door and close the window.",
+   "finnish": "Ehkä meidän pitäis avata ovi ja sulkea ikkuna"
+  },
+  {
+   "english": "Why don't you want to sit between two girls?",
+   "finnish": "Miksi sä et haluu istua kahden tytön välissä?"
+  },
+  {
+   "english": "If only I could trust, that you play together without arguing.",
+   "finnish": "Kunpa mä voisin luottaa siihen, että te leikitte yhdessä riitelemättä"
+  },
+  {
+   "english": "He almost got lost because he turned left instead of right.",
+   "finnish": "Se melkein eksy, koska se kääntyi vasemmalle oikean sijaan"
+  },
+  {
+   "english": "I hate to make trouble, but that one's mine.",
+   "finnish": "Mä vihaan aiheuttaa ongelmia, mutta toi on mun"
+  },
+  {
+   "english": "I'm going to run across the grass.",
+   "finnish": "Mä aion juosta ruohon poikki"
+  },
+  {
+   "english": "So that I don't get left behind.",
+   "finnish": "Niin että mä en jää jälkeen"
+  },
+  {
+   "english": "I used to live around here years ago before we moved.",
+   "finnish": "Mä asuin täällä päin vuosia sitten ennen kuin me muutettiin"
+  },
+  {
+   "english": "We moved to the city.",
+   "finnish": "Me muutettiin kaupunkiin"
+  },
+  {
+   "english": "There's no point worrying about how you're going to pay.",
+   "finnish": "Ei oo mitään järkeä huolestua siitä, miten sä aiot maksaa"
+  },
+  {
+   "english": "I heard that you're going to pay for the new bed.",
+   "finnish": "Mä kuulin, että sä aiot maksaa uudesta sängystä"
+  },
+  {
+   "english": "He's gone to search for somewhere safe to park the car.",
+   "finnish": "Se on mennyt etsimään turvallista paikkaa parkkeerata auto"
+  },
+  {
+   "english": "The news took several hours to reach everyone in the office.",
+   "finnish": "Uutisilla kesti useita tunteja tavoittaa kaikki toimistossa"
+  },
+  {
+   "english": "Can you hold the door open while I fetch the keys?",
+   "finnish": "Voitko sä pitää ovea auki kun mä haen avaimet?"
+  },
+  {
+   "english": "It hurts most when I move my head up and down.",
+   "finnish": "Se sattuu eniten kun mä liikutan päätäni ylös ja alas"
+  },
+  {
+   "english": "I found the perfect house on the first day.",
+   "finnish": "Mä löysin täydellisen talon ekana päivänä"
+  },
+  {
+   "english": "On the year's first day.",
+   "finnish": "Uuden vuoden ekana päivänä"
+  },
+  {
+   "english": "They both came on their own.",
+   "finnish": "Ne molemmat tuli yksin"
+  },
+  {
+   "english": "But they left with each other.",
+   "finnish": "Mutta ne lähti yhdessä"
+  },
+  {
+   "english": "I couldn't imagine myself having exactly the same problem.",
+   "finnish": "Mä en voinut kuvitella itselläni olevan täsmälleen sama ongelma"
+  },
+  {
+   "english": "I haven't seen their new baby yet.",
+   "finnish": "Mä en oo vielä nähnyt niiden uutta vauvaa"
+  },
+  {
+   "english": "I wasn't thinking about what might have happened.",
+   "finnish": "Mä en miettinyt mitä olisi voinut tapahtua"
+  },
+  {
+   "english": "It might have happened to the whole family.",
+   "finnish": "Se olisi voinut tapahtua koko perheelle"
+  },
+  {
+   "english": "I'm afraid that you'll forget why we have to stay here.",
+   "finnish": "Mä pelkään, että sä unohdat miksi meidän piti jäädä tänne"
+  },
+  {
+   "english": "Let's agree that it was stupid to tell the truth.",
+   "finnish": "Sovitaan, että oli tyhmää kertoa totuus"
+  },
+  {
+   "english": "Instead of giving an excuse.",
+   "finnish": "Sen sijaan että olisi antanut tekosyyn"
+  },
+  {
+   "english": "I'll call you back in three or four minutes.",
+   "finnish": "Mä soitan sulle takaisin kolmen tai neljän minuutin päästä"
+  },
+  {
+   "english": "To check if you're ready to go.",
+   "finnish": "Tarkistaakseni ootko sä valmis lähtemään"
+  },
+  {
+   "english": "I'm finding it hard to believe that you can't guess.",
+   "finnish": "Mun on vaikea uskoa, että sä et voi arvata"
+  },
+  {
+   "english": "Guess who told me that funny story.",
+   "finnish": "Arvaa kuka kerto mulle sen hauskan jutun"
+  },
+  {
+   "english": "I'm probably supposed to keep those things in another room.",
+   "finnish": "Mun pitäis varmaan pitää ne jutut toisessa huoneessa"
+  },
+  {
+   "english": "Can you all put your hands up?",
+   "finnish": "Voitteko te kaikki nostaa kätenne?"
+  },
+  {
+   "english": "So that I can count them",
+   "finnish": "Niin että mä voin laskea ne"
+  },
+  {
+   "english": "It isn't true that anyone can win the game.",
+   "finnish": "Ei oo totta, että kuka tahansa voi voittaa pelin"
+  },
+  {
+   "english": "Unless they're lucky.",
+   "finnish": "Ellei ne oo onnekkaita"
+  },
+  {
+   "english": "She won't listen to every word you say.",
+   "finnish": "Se ei kuuntele jokaista sanaa mitä sä sanot"
+  },
+  {
+   "english": "Let's not go outside in this dreadful weather.",
+   "finnish": "Ei mennä ulos tässä kamalassa säässä"
+  },
+  {
+   "english": "He made a promise that he wouldn't choose the wrong job.",
+   "finnish": "Se lupasi, että se ei valitsisi väärää työtä"
+  },
+  {
+   "english": "I used to believe that being crazy was a bad thing.",
+   "finnish": "Mä uskoin ennen, että hulluus oli paha juttu"
+  },
+  {
+   "english": "But I was wrong.",
+   "finnish": "Mutta mä olin väärässä"
+  },
+  {
+   "english": "I don't want to seem as though I don't care.",
+   "finnish": "Mä en haluu vaikuttaa siltä, että mua ei kiinnosta"
+  },
+  {
+   "english": "But it's getting late.",
+   "finnish": "Mutta kello on jo paljon"
+  },
+  {
+   "english": "I don't mind if you want to leave without the car.",
+   "finnish": "Mulle sopii jos sä haluut lähteä ilman autoa"
+  },
+  {
+   "english": "It's a good idea to try and breathe slowly.",
+   "finnish": "On hyvä idea yrittää hengittää hitaasti"
+  },
+  {
+   "english": "Whenever you feel you're being angry.",
+   "finnish": "Aina kun sä tunnet olevasi vihainen"
+  },
+  {
+   "english": "He was right.",
+   "finnish": "Se oli oikeassa"
+  },
+  {
+   "english": "Whoever said it would be difficult was absolutely right.",
+   "finnish": "Kuka ikinä sanoikin että se olisi vaikeaa, oli täysin oikeassa"
+  },
+  {
+   "english": "It's your turn to take the clean clothes upstairs.",
+   "finnish": "On sun vuoro viedä puhtaat vaatteet yläkertaan"
+  },
+  {
+   "english": "The dog is dirty and wet.",
+   "finnish": "Koira on likainen ja märkä"
+  },
+  {
+   "english": "Because it has been playing in the mud.",
+   "finnish": "Koska se on leikkinyt mudassa"
+  },
+  {
+   "english": "I'm feeling sad at the moment.",
+   "finnish": "Mua masentaa tällä hetkellä"
+  },
+  {
+   "english": "Because I have to be quiet.",
+   "finnish": "Koska mun pitää olla hiljaa"
+  },
+  {
+   "english": "End of the village.",
+   "finnish": "Kylän pää"
+  },
+  {
+   "english": "The church is ugly.",
+   "finnish": "Kirkko on ruma"
+  },
+  {
+   "english": "The church at the other end of the village is ugly.",
+   "finnish": "Kirkko kylän toisessa päässä on ruma"
+  },
+  {
+   "english": "In my opinion the small church is very ugly.",
+   "finnish": "Mun mielestä pieni kirkko on tosi ruma"
+  },
+  {
+   "english": "This towel isn't dry.",
+   "finnish": "Tää pyyhe ei oo kuiva"
+  },
+  {
+   "english": "And I'm too tired to fetch a new one.",
+   "finnish": "Ja mä oon liian väsynyt hakeakseni uuden"
+  },
+  {
+   "english": "They play music late at night.",
+   "finnish": "Ne soittaa musiikkia myöhään yöllä"
+  },
+  {
+   "english": "I wish they wouldn't play such loud music.",
+   "finnish": "Kunpa ne ei soittais niin kovaa musiikkia"
+  },
+  {
+   "english": "It's so late at night.",
+   "finnish": "On niin myöhä yöllä"
+  },
+  {
+   "english": "Have you found the path through the wood?",
+   "finnish": "Ootko sä löytänyt polun metsän läpi?"
+  },
+  {
+   "english": "It goes down to the beach",
+   "finnish": "Se menee alas rannalle"
+  },
+  {
+   "english": "I don't care if it's a fast car.",
+   "finnish": "Mua ei kiinnosta vaikka se olisikin nopea auto"
+  },
+  {
+   "english": "I just want to get there safely.",
+   "finnish": "Mä haluun vaan päästä sinne turvallisesti"
+  },
+  {
+   "english": "I wouldn't have been able to keep going any longer.",
+   "finnish": "Mä en olisi pystynyt jatkamaan yhtään pidempään"
+  },
+  {
+   "english": "I wouldn't have been able to without your help.",
+   "finnish": "Mä en olisi pystynyt siihen ilman sun apua"
+  },
+  {
+   "english": "I'd have thought about it more carefully.",
+   "finnish": "Mä olisin miettinyt sitä tarkemmin"
+  },
+  {
+   "english": "I'd have thought more if it had been my choice.",
+   "finnish": "Mä olisin miettinyt enemmän jos se olisi ollut mun valinta"
+  },
+  {
+   "english": "It's been lovely to spend time outdoors watching children play.",
+   "finnish": "On ollut ihanaa viettää aikaa ulkona katsellen lasten leikkiä"
+  },
+  {
+   "english": "I'm expecting to see improvement next time we meet.",
+   "finnish": "Mä odotan näkeväni parannusta seuraavalla kerralla kun me tavataan"
+  },
+  {
+   "english": "Have you decided how much you are willing to pay?",
+   "finnish": "Ootko sä päättänyt paljonko sä oot valmis maksamaan?"
+  },
+  {
+   "english": "How much are you willing to pay for your ticket?",
+   "finnish": "Paljonko sä oot valmis maksamaan sun lipusta?"
+  },
+  {
+   "english": "I'm not convinced that would be a very good idea.",
+   "finnish": "Mä en oo vakuuttunut, että se olisi kovin hyvä idea"
+  },
+  {
+   "english": "Have you forgotten what happened last time they visited us?",
+   "finnish": "Ootko sä unohtanut mitä tapahtui viime kerralla kun ne vieraili meillä?"
+  },
+  {
+   "english": "It's the kind of thing that makes holidays very special.",
+   "finnish": "Se on sellainen juttu, joka tekee lomista tosi erityisiä"
+  },
+  {
+   "english": "Holidays are very special for everyone.",
+   "finnish": "Lomat on tosi erityisiä kaikille"
+  },
+  {
+   "english": "It's been upsetting.",
+   "finnish": "Se on ollut järkyttävää"
+  },
+  {
+   "english": "It has been very upsetting waiting.",
+   "finnish": "Odottaminen on ollut tosi järkyttävää"
+  },
+  {
+   "english": "We have been waiting for news from the hospital.",
+   "finnish": "Me ollaan odotettu uutisia sairaalasta"
+  },
+  {
+   "english": "Somewhere warmer.",
+   "finnish": "Jonnekin lämpimämpään"
+  },
+  {
+   "english": "We have often tried.",
+   "finnish": "Me ollaan usein yritetty"
+  },
+  {
+   "english": "We have often wanted to take the children somewhere a little warmer.",
+   "finnish": "Me ollaan usein haluttu viedä lapset jonnekin vähän lämpimämpään"
+  },
+  {
+   "english": "She would like to know a little more about what it's like.",
+   "finnish": "Se haluais tietää vähän enemmän siitä millaista se on"
+  },
+  {
+   "english": "What's it like to grow up here?",
+   "finnish": "Millaista on kasvaa täällä?"
+  },
+  {
+   "english": "What's it like in this part of the world?",
+   "finnish": "Millaista on tässä osassa maailmaa?"
+  },
+  {
+   "english": "What's it like to wake up every morning and see mountains?",
+   "finnish": "Millaista on herätä joka aamu ja nähdä vuoret?"
+  },
+  {
+   "english": "I can see mountains out of my bedroom window.",
+   "finnish": "Mä nään vuoret mun makuuhuoneen ikkunasta"
+  },
+  {
+   "english": "I want twenty boiled eggs.",
+   "finnish": "Mä haluun kaksikymmentä keitettyä kananmunaa"
+  },
+  {
+   "english": "He used to insist that we had eggs for supper.",
+   "finnish": "Se tapasi vaatia, että me syödään kananmunia illalliseksi"
+  },
+  {
+   "english": "So I wanted to grow up and leave home.",
+   "finnish": "Joten mä halusin kasvaa aikuiseksi ja lähteä kotoa"
+  },
+  {
+   "english": "He told me he had just seen the last bus.",
+   "finnish": "Se kerto mulle, että se oli just nähnyt viimeisen bussin"
+  },
+  {
+   "english": "I saw the last bus leaving the station.",
+   "finnish": "Mä näin viimeisen bussin lähtevän asemalta"
+  },
+  {
+   "english": "She followed me down to the shops.",
+   "finnish": "Se seurasi mua alas kauppoihin"
+  },
+  {
+   "english": "And along the main road.",
+   "finnish": "Ja pitkin pääkatua"
+  },
+  {
+   "english": "However much I argued, I still had to share.",
+   "finnish": "Vaikka kuinka väittelin, mun piti silti jakaa"
+  },
+  {
+   "english": "I had to share my toys with my sister.",
+   "finnish": "Mun piti jakaa mun lelut mun siskon kanssa"
+  },
+  {
+   "english": "I have to lie down in the garden.",
+   "finnish": "Mun pitää käydä makaamaan puutarhaan"
+  },
+  {
+   "english": "And I have to close my eyes for a while.",
+   "finnish": "Ja mun pitää sulkea silmäni hetkeksi"
+  },
+  {
+   "english": "I suspect that he's heard a hundred stories about it.",
+   "finnish": "Mä epäilen, että se on kuullut sata tarinaa siitä"
+  },
+  {
+   "english": "She's heard a thousand stories about what they were doing.",
+   "finnish": "Se on kuullut tuhat tarinaa siitä, mitä ne oli tekemässä"
+  },
+  {
+   "english": "I'd have been happy to drive if you'd told me.",
+   "finnish": "Mä olisin ollut iloinen ajamaan jos sä olisit kertonut mulle"
+  },
+  {
+   "english": "I'd have driven if you'd told me how tired you were.",
+   "finnish": "Mä olisin ajanut jos sä olisit kertonut mulle kuinka väsynyt sä olit"
+  },
+  {
+   "english": "We were talking about how it all started.",
+   "finnish": "Me puhuttiin siitä miten kaikki alkoi"
+  },
+  {
+   "english": "How it started in the first place.",
+   "finnish": "Miten se alun perin alkoi"
+  },
+  {
+   "english": "We didn't have anywhere to live at the time.",
+   "finnish": "Meillä ei ollut mitään paikkaa asua siihen aikaan"
+  },
+  {
+   "english": "He offered to let us stay with him.",
+   "finnish": "Se tarjoutui antamaan meidän jäädä sen luokse"
+  },
+  {
+   "english": "Because we needed help.",
+   "finnish": "Koska me tarvittiin apua"
+  },
+  {
+   "english": "If I'd known then what I know now, I'd have waited.",
+   "finnish": "Jos mä olisin tiennyt silloin sen mitä mä tiedän nyt, mä olisin odottanut"
+  },
+  {
+   "english": "If I'd known, I'd have done things differently.",
+   "finnish": "Jos mä olisin tiennyt, mä olisin tehnyt asiat eri tavalla"
+  },
+  {
+   "english": "It would have been the sensible thing to do.",
+   "finnish": "Se olisi ollut järkevä asia tehdä"
+  },
+  {
+   "english": "The sensible thing to do would have been to ask.",
+   "finnish": "Järkevä asia tehdä olisi ollut kysyä"
+  },
+  {
+   "english": "He has to look for work.",
+   "finnish": "Sen pitää etsiä töitä"
+  },
+  {
+   "english": "I would have been ready to search somewhere else.",
+   "finnish": "Mä olisin ollut valmis etsimään jostain muualta"
+  },
+  {
+   "english": "We would have bought something.",
+   "finnish": "Me oltais ostettu jotain"
+  },
+  {
+   "english": "We probably would have bought a house there.",
+   "finnish": "Me oltais varmaan ostettu talo sieltä"
+  },
+  {
+   "english": "It's near where your family lives.",
+   "finnish": "Se on lähellä sitä missä sun perhe asuu"
+  },
+  {
+   "english": "I thought you were very brave to say that.",
+   "finnish": "Mun mielestä sä olit tosi rohkea kun sanoit noin"
+  },
+  {
+   "english": "You were very brave to say you thought that.",
+   "finnish": "Sä olit tosi rohkea kun sanoit, että sä ajattelit niin"
+  },
+  {
+   "english": "You thought that it was a mistake.",
+   "finnish": "Sä ajattelit, että se oli virhe"
+  },
+  {
+   "english": "It doesn't feel like a long time.",
+   "finnish": "Se ei tunnu pitkältä ajalta"
+  },
+  {
+   "english": "It's a long time since we saw each other.",
+   "finnish": "On pitkä aika siitä kun me nähtiin toisemme"
+  },
+  {
+   "english": "It's a very long time since we last saw each other.",
+   "finnish": "On tosi pitkä aika siitä kun me viimeksi nähtiin toisemme"
+  },
+  {
+   "english": "I wouldn't have dared to tell her that it was broken.",
+   "finnish": "Mä en olisi uskaltanut kertoa sille, että se oli rikki"
+  },
+  {
+   "english": "I knew that the children had broken it.",
+   "finnish": "Mä tiesin, että lapset oli rikkonu sen"
+  }
+ ]
+}

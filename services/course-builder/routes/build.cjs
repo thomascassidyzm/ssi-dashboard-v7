@@ -239,7 +239,10 @@ module.exports = function (ctx) {
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
-      const claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      // Opus (not sonnet): Indic/Sinhala scripts degrade under Sonnet (sonnet-indic-script-degradation).
+      // unset ANTHROPIC_API_KEY + CLAUDECODE so the spawned agent uses the Max subscription
+      // instead of hitting "Credit balance too low" and hanging (matches every other build route).
+      const claudeCmd = `cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       spawnInTerminal(ctx, claudeCmd, 'Redo', courseCode);
 
       // Post status to chat
@@ -439,6 +442,8 @@ module.exports = function (ctx) {
     try {
       const { courseCode } = req.params;
       const terminal = req.query.terminal || 'iTerm2';
+      // Optional model override (default opus). Whitelist to safe values.
+      const model = ['opus', 'sonnet', 'haiku', 'fable'].includes(String(req.query.model)) ? req.query.model : 'opus';
 
       // Initialize course seeds from canonical before spawning agent
       // (GET translate endpoint calls initializeCourseSeeds as side effect)
@@ -470,7 +475,7 @@ module.exports = function (ctx) {
         console.warn('[Translate] build_jobs insert failed (Supabase unreachable?) — spawning anyway:', e.message);
       }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model ${model} --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Translate', courseCode, effectiveTerminal);
 
       try {
@@ -522,7 +527,7 @@ module.exports = function (ctx) {
         console.warn('[Decompose] build_jobs insert failed:', e.message);
       }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Decompose', courseCode, effectiveTerminal);
 
       res.json({ ok: true, course_code: courseCode, job_id: jobId, message: `Decompose agent spawned` });
@@ -537,12 +542,39 @@ module.exports = function (ctx) {
       const { courseCode } = req.params;
       const terminal = req.body?.terminal || req.query.terminal || 'iTerm2';
 
+      // Resolve the build target.
+      // Priority: body.targetSeeds (the user's selection on the page) →
+      // current courses.seed_count → 300.
+      // If the body explicitly asked for a new size, persist it to courses.seed_count
+      // so every downstream consumer (stats, briefs, phase8) stays in sync.
+      const requestedTarget = Number.isFinite(Number(req.body?.targetSeeds))
+        ? parseInt(req.body.targetSeeds, 10)
+        : null;
 
+      const { data: courseRow } = await ctx.supabase
+        .from('courses')
+        .select('seed_count')
+        .eq('course_code', courseCode)
+        .single();
+      const currentSeedCount = courseRow?.seed_count || 300;
+
+      const effectiveTargetSeeds = requestedTarget || currentSeedCount;
+
+      if (requestedTarget && requestedTarget !== currentSeedCount) {
+        const { error: updateErr } = await ctx.supabase
+          .from('courses')
+          .update({ seed_count: requestedTarget })
+          .eq('course_code', courseCode);
+        if (updateErr) {
+          console.warn(`[BuildTeam] Failed to update courses.seed_count for ${courseCode}: ${updateErr.message}`);
+        }
+      }
 
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
-      const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/build-team-orchestrator?terminal=${effectiveTerminal}`);
+      const briefUrl = `http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/build-team-orchestrator?terminal=${effectiveTerminal}&target=${effectiveTargetSeeds}`;
+      const brief = await fetchBrief(briefUrl);
 
       const tmpFile = `/tmp/build-team_${courseCode}_${Date.now()}.md`;
       fs.writeFileSync(tmpFile, brief);
@@ -553,7 +585,7 @@ module.exports = function (ctx) {
           .from('build_jobs')
           .insert({
             course_code: courseCode, pass: 'build-team', status: 'running',
-            current_seed: 0, seeds_completed: 0, total_seeds: 300,
+            current_seed: 0, seeds_completed: 0, total_seeds: effectiveTargetSeeds,
             started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
             requested_by: 'dashboard', terminal: effectiveTerminal,
             agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'build-team'
@@ -564,20 +596,32 @@ module.exports = function (ctx) {
         console.warn('[BuildTeam] build_jobs insert failed:', e.message);
       }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
-      spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode, effectiveTerminal);
+      const dryRun = req.body?.dryRun === true;
 
-      try {
-        await ctx.supabase.from('orchestrator_messages').insert({
-          course_code: courseCode,
-          direction: 'agent_to_human',
-          message: `Build team spawned — building seeds`,
-          status: 'pending',
-          metadata: { action: 'build_team_spawned' }
-        });
-      } catch (e) { /* non-critical */ }
+      if (!dryRun) {
+        const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+        spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode, effectiveTerminal);
 
-      res.json({ ok: true, course_code: courseCode, job_id: jobId, message: `Build Team agent spawned` });
+        try {
+          await ctx.supabase.from('orchestrator_messages').insert({
+            course_code: courseCode,
+            direction: 'agent_to_human',
+            message: `Build team spawned — building seeds`,
+            status: 'pending',
+            metadata: { action: 'build_team_spawned' }
+          });
+        } catch (e) { /* non-critical */ }
+      }
+
+      res.json({
+        ok: true,
+        course_code: courseCode,
+        job_id: jobId,
+        message: dryRun ? `Build Team dry-run — agent NOT spawned` : `Build Team agent spawned`,
+        target_seeds: effectiveTargetSeeds,
+        brief_file: tmpFile,
+        dry_run: dryRun
+      });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
@@ -625,7 +669,7 @@ module.exports = function (ctx) {
         console.warn('[FinalPass] build_jobs insert failed:', e.message);
       }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Final Pass', courseCode, effectiveTerminal);
 
       try {
@@ -691,7 +735,7 @@ module.exports = function (ctx) {
         console.warn('[CategoryLLM] build_jobs insert failed:', e.message);
       }
 
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Category LLM', courseCode, effectiveTerminal);
 
       try {
@@ -751,7 +795,7 @@ module.exports = function (ctx) {
       }
 
       // Opus agent — single thread, reads course sequentially, produces report.
-      const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+      const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Learner Simulation', courseCode, effectiveTerminal);
 
       try {
@@ -1181,8 +1225,9 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
     const terminal = req.query.terminal || 'iTerm2';
 
     try {
-      // Fetch brief
-      const briefUrl = `http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/backfill-phrases`;
+      // Fetch brief (forward query params like min_use / seeds to the brief generator)
+      const briefQuery = new URLSearchParams(req.query).toString();
+      const briefUrl = `http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/backfill-phrases${briefQuery ? '?' + briefQuery : ''}`;
       const brief = await fetchBrief(briefUrl);
 
       // Parse seed count from brief text ("in **N seeds**")
@@ -1223,7 +1268,8 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
       const projectDir = path.resolve(__dirname, '..', '..', '..');
       const effectiveTerminal = ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal;
 
-      let claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model sonnet --dangerously-skip-permissions "$(cat ${tmpFile})"`;
+      const bfModel = ['opus', 'sonnet', 'fable', 'haiku'].includes(req.query.model) ? req.query.model : 'sonnet';
+      let claudeCmd = `cd "${projectDir}" && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model ${bfModel} --dangerously-skip-permissions "$(cat ${tmpFile})"`;
       claudeCmd = withJobDone(claudeCmd, jobId);
       spawnInTerminal(ctx, claudeCmd, 'Backfill', courseCode);
 

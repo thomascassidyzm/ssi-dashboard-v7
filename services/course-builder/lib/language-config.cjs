@@ -11,8 +11,30 @@ const languageCodeService = require('../../language-code-service.cjs');
 const DIALECT_NAMES = {
   'por_br': 'Brazilian Portuguese',
   'spa_mx': 'Mexican Spanish',
+  // Quebec French — colloquial spoken Québécois (chu/m'as/-tu questions/char/frette),
+  // NOT standard France French. See reference-examples/fra_ca.json. Without this it
+  // fell through to getName('fra')="French" and built as standard French.
+  'fra_ca': 'Quebec French',
+  // Austrian — FULL colloquial spoken Austrian/Viennese (i/möcht/denk/mi/ned/a),
+  // not standard German, not a half-dialect mix. See reference-examples/deu_at.json.
+  'deu_at': 'Austrian German',
   'cym_n': 'North Welsh',
   'cym_s': 'South Welsh',
+  // Arabic dialects — keep these distinct from plain `ara` (Modern Standard
+  // Arabic, resolved via the CSV). Without these, ara_eg/sy/lb would fall
+  // through to getName('ara') and be mislabelled "Modern Standard Arabic".
+  'ara_eg': 'Egyptian Arabic',
+  'ara_sy': 'Syrian Arabic',
+  'ara_lb': 'Lebanese Arabic',
+  // Sinitic languages — distinct languages, NOT dialects of Mandarin (`zho`). Each
+  // has its own lexis/grammar/written form. Without these they'd fall through to the
+  // ISO code ("yue"/"hak"/"nan") and render as raw codes in seed text.
+  'yue': 'Cantonese',           // HK/Guangzhou, colloquial written Cantonese (Traditional Han)
+  'hak': 'Hakka',               // Taiwanese Sixian variety
+  'nan': 'Taiwanese Hokkien',   // Min Nan, Taiwanese variety (Han + Tâi-lô)
+  // Swiss German — Zürich (Züritüütsch), Dieth-lite spelling. See
+  // docs/course-optimization/swiss-german-convention.md. Distinct product from deu_at.
+  'deu_ch': 'Swiss German',
 };
 
 // Deprecated: callers should use languageCodeService.getName() directly.
@@ -107,12 +129,17 @@ function getLangFamily(courseCode) {
 }
 
 /**
- * Detect if course uses character-level vocab (Chinese, Japanese, Korean target)
+ * Detect if course uses character-level vocab (Chinese, Japanese, Thai, etc.)
+ * Korean is excluded: it uses spaces between words, so word-level validation applies.
  */
 function isChinese(courseCode) {
   const parts = courseCode.split('_for_');
   const targetLang = parts[0] || '';
-  const characterBasedLangs = ['zho', 'cmn', 'jpn', 'kor', 'tha', 'mya', 'lao', 'khm'];
+  // Korean (kor) uses spaces between words — treated as space-delimited, not CJK.
+  // cmn (Mandarin) is character-based like zho.
+  // yue (Cantonese), hak (Hakka), and nan (Taiwanese Hokkien) are all built
+  // Han-primary (no spaces between words) — same character-based handling as zho.
+  const characterBasedLangs = ['zho', 'cmn', 'yue', 'hak', 'nan', 'jpn', 'tha', 'mya', 'lao', 'khm'];
   return characterBasedLangs.includes(targetLang);
 }
 
@@ -183,6 +210,7 @@ function getGoldenSeedCount(courseInfo) {
 }
 
 module.exports = {
+  DIALECT_NAMES,
   LANG_MAP,
   KNOWN_LANG_MAP,
   LANG_FAMILY_MAP,
