@@ -16,6 +16,19 @@ const path = require('path');
 
 const execAsync = promisify(exec);
 
+// ffmpeg is invoked bare (PATH lookup) throughout this module. A `pm2 restart
+// --update-env` from a shell with a minimal PATH pushes that PATH into the
+// service, ffmpeg silently disappears, and EVERY clip fails loudness
+// normalisation AFTER its TTS render is already paid for — 719 wasted renders
+// on 2026-07-28 before it was caught. The failure mode is expensive and
+// invisible (the ebur128 probe runs under `|| true`), so pin the usual install
+// locations onto PATH here rather than relying on whoever last restarted pm2.
+for (const dir of ['/opt/homebrew/bin', '/usr/local/bin']) {
+  if (!(process.env.PATH || '').split(':').includes(dir)) {
+    process.env.PATH = `${process.env.PATH || ''}:${dir}`;
+  }
+}
+
 /**
  * Check if ffmpeg is installed
  *
