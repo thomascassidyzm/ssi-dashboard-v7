@@ -49,6 +49,15 @@ const runningDeployPlans = new Map()
 // Maps courseCode -> { startedAt, type, progress: { phase, deployed, total, ... } }
 const runningDeploys = new Map()
 
+// Track active apidev stage deploys (one per course at a time).
+// Maps courseCode -> { jobId, courseConfigsId, sshProc, startedAt, state, sawChecksPassed, ... }
+const stageDeployJobs = new Map()
+
+// Track active stage-server restart jobs (one per course at a time).
+// Restarts run independently of deploys — they're triggered by the user
+// after a successful deploy via a separate button.
+const stageRestartJobs = new Map()
+
 async function getCachedManifest(courseCode) {
   const cached = manifestCache.get(courseCode)
   if (cached && (Date.now() - cached.timestamp) < MANIFEST_CACHE_TTL_MS) {
@@ -8026,6 +8035,423 @@ app.post('/api/production/course-configs/push', async (req, res) => {
     res.status(500).json({ error: error.message })
   }
 })
+
+// POST /api/production/:courseCode/stage-deploy
+// Step 3 (sub-step): Run apidev `./check -e stage deploy` for this course.
+// Pipes services/stage-deploy.py over SSH; the pexpect script drives the
+// 4-prompt interaction and emits __SD__:... events on stderr.
+//
+// Body: { deleteProgress?: boolean, skipChecks?: boolean }
+//   deleteProgress (default true)  — answer to "Delete progress entries?"
+//   skipChecks (default false)     — answer "n" to "Run checks?" (retry path
+//                                    after a mid-cp crash that's already had
+//                                    a successful checks pass)
+app.post('/api/production/:courseCode/stage-deploy', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const { deleteProgress = true, skipChecks = false } = req.body || {}
+
+    // Only block on a job that's actually still running. Cancelled/failed/
+    // succeeded jobs linger in the map for 60s (see the close handler) so the
+    // cancel endpoint can still find them — but that linger shouldn't prevent
+    // a fresh retry. Use job.state, not .has().
+    const existing = stageDeployJobs.get(courseCode)
+    if (existing && existing.state === 'running') {
+      return res.status(409).json({
+        error: 'Stage deploy already running for this course',
+        jobId: existing.jobId
+      })
+    }
+    // Clear any terminal (cancelled/failed/success/identical) entry now so the
+    // setTimeout cleanup doesn't race with the new job we're about to insert.
+    if (existing) stageDeployJobs.delete(courseCode)
+
+    // Block if course-configs has unpushed commits — same guard Step 3→4 uses
+    // for advancing the wizard. If we deploy with unpushed commits, apidev's
+    // `./check` reads a stale en-XX.json and the live manifest diverges from
+    // what we just published locally.
+    try {
+      const repoStatus = publishManifestService.getRepoStatus()
+      if (repoStatus.success && repoStatus.commitsAhead > 0) {
+        return res.status(412).json({
+          error: 'course-configs has unpushed commits — push first',
+          commitsAhead: repoStatus.commitsAhead,
+          needsPush: true
+        })
+      }
+    } catch (err) {
+      // Non-fatal: if the status check itself errors, let the deploy proceed
+      // rather than blocking on a transient repo-read issue.
+      logger.warn(`[StageDeploy] could not read course-configs status: ${err.message}`)
+    }
+
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    // Derive the courseConfigsId (e.g. fra_ca_for_eng -> en-fr-ca)
+    const course = await supabaseClient.getCourse(courseCode)
+    if (!course) return res.status(404).json({ error: `Course ${courseCode} not found` })
+
+    const knownCode = languageCodeService.legacyToStandard(course.known_lang)
+    const targetCode = languageCodeService.legacyToStandard(course.target_lang)
+    const courseConfigsId = buildCourseConfigsId(
+      courseCode, course.known_lang, course.target_lang, knownCode, targetCode
+    )
+
+    // Strict whitelist — interpolated into the SSH-relayed command
+    if (!/^[a-z0-9-]+$/.test(courseConfigsId)) {
+      return res.status(400).json({ error: `Refusing to deploy with unsafe courseConfigsId: ${courseConfigsId}` })
+    }
+
+    const scriptPath = path.join(__dirname, 'stage-deploy.py')
+    if (!fs.existsSync(scriptPath)) {
+      return res.status(500).json({ error: `stage-deploy.py not found at ${scriptPath}` })
+    }
+
+    const jobId = `stage_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`
+    const startedAt = new Date().toISOString()
+
+    // Build remote command. courseConfigsId is whitelisted; flags are constants.
+    const flags = []
+    if (deleteProgress) flags.push('--delete-progress')
+    if (skipChecks) flags.push('--skip-checks')
+    const remoteCmd = `python3 - ${courseConfigsId}${flags.length ? ' ' + flags.join(' ') : ''}`
+
+    logger.info(`[StageDeploy] ${courseCode} (${courseConfigsId}) jobId=${jobId} remote: ${remoteCmd}`)
+
+    // Pipe the script via stdin: `cat scriptPath | ssh ... "remoteCmd"`
+    const { spawn: spawnProc } = require('child_process')
+    const cat = spawnProc('cat', [scriptPath])
+    const ssh = spawnProc('ssh', [
+      '-o', 'BatchMode=yes',
+      '-o', 'ServerAliveInterval=15',
+      '-o', 'ServerAliveCountMax=4',
+      'ssi@apidev',
+      remoteCmd
+    ])
+    cat.stdout.pipe(ssh.stdin)
+    cat.on('error', (err) => logger.error(`[StageDeploy] cat error: ${err.message}`))
+
+    const job = {
+      jobId, courseCode, courseConfigsId,
+      sshProc: ssh, catProc: cat,
+      startedAt, state: 'running',
+      sawChecksPassed: false, sawNewCourse: false,
+      skipChecks, deleteProgress
+    }
+    stageDeployJobs.set(courseCode, job)
+
+    io.emit('stageDeploy:started', {
+      jobId, courseCode, courseConfigsId, startedAt, skipChecks, deleteProgress
+    })
+
+    // Line-buffered stderr parser for __SD__: events
+    // Split on \r, \n, and \r\n so in-place progress updates (./check's S3
+    // check writes "Checking N/total..\r..\r..") flush as they happen.
+    let stderrBuf = ''
+    ssh.stderr.on('data', (chunk) => {
+      stderrBuf += chunk.toString()
+      const lines = stderrBuf.split(/\r\n|\n|\r/)
+      stderrBuf = lines.pop()
+      for (const line of lines) handleStderrLine(job, line)
+    })
+
+    // Line-buffered stdout — forward to UI as log
+    let stdoutBuf = ''
+    ssh.stdout.on('data', (chunk) => {
+      stdoutBuf += chunk.toString()
+      const lines = stdoutBuf.split(/\r\n|\n|\r/)
+      stdoutBuf = lines.pop()
+      for (const line of lines) {
+        if (line === '') continue // collapse runs of separators
+        io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stdout', line })
+      }
+    })
+
+    ssh.on('error', (err) => {
+      logger.error(`[StageDeploy] ssh spawn error: ${err.message}`)
+    })
+
+    ssh.on('close', (code, signal) => {
+      // Flush partial buffers
+      if (stdoutBuf) io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stdout', line: stdoutBuf })
+      if (stderrBuf) handleStderrLine(job, stderrBuf)
+
+      // If no terminal event was seen, derive state from exit code
+      if (job.state === 'running') {
+        job.state = (code === 0) ? 'success' : 'failed'
+      }
+
+      io.emit('stageDeploy:closed', {
+        jobId, courseCode,
+        exitCode: code, signal,
+        finalState: job.state,
+        sawChecksPassed: job.sawChecksPassed,
+        sawNewCourse: job.sawNewCourse
+      })
+
+      logger.info(`[StageDeploy] ${courseCode} closed exit=${code} signal=${signal} state=${job.state}`)
+
+      // Keep the job entry around briefly so the cancel endpoint can find it
+      setTimeout(() => stageDeployJobs.delete(courseCode), 60 * 1000)
+    })
+
+    res.json({
+      success: true,
+      jobId, courseCode, courseConfigsId, startedAt,
+      skipChecks, deleteProgress
+    })
+  } catch (error) {
+    logger.error('[StageDeploy] error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Parse a single line from stage-deploy.py's stderr stream. __SD__:events
+// drive websocket state updates; other lines are forwarded as log noise.
+function handleStderrLine(job, line) {
+  if (!line) return
+  const { jobId, courseCode } = job
+  if (line.startsWith('__SD__:')) {
+    const m = line.match(/^__SD__:(\w+)(?:\s+(.+))?$/)
+    if (!m) return
+    const event = m[1]
+    let payload = {}
+    if (m[2]) {
+      try { payload = JSON.parse(m[2]) } catch (e) { /* malformed, ignore */ }
+    }
+    switch (event) {
+      case 'start':       io.emit('stageDeploy:start', { jobId, courseCode, ...payload }); break
+      case 'newCourse':   job.sawNewCourse = true
+                          io.emit('stageDeploy:newCourse', { jobId, courseCode, ...payload }); break
+      case 'identical':   io.emit('stageDeploy:identical', { jobId, courseCode }); break
+      case 'checksPassed':job.sawChecksPassed = true
+                          io.emit('stageDeploy:checksPassed', { jobId, courseCode }); break
+      case 'deployed':    io.emit('stageDeploy:deployed', { jobId, courseCode }); break
+      case 'done':        // Don't overwrite if 'identical' already set this state
+                          if (job.state !== 'success') job.state = 'success'
+                          io.emit('stageDeploy:done', { jobId, courseCode }); break
+      case 'failed':      job.state = 'failed'
+                          io.emit('stageDeploy:failed', { jobId, courseCode }); break
+      case 'exit':        /* informational; close event carries final state */ break
+      default:            logger.warn(`[StageDeploy] unknown event: ${event}`)
+    }
+  } else {
+    // Unstructured stderr (warnings, SSH messages) — forward as log
+    io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stderr', line })
+  }
+}
+
+// POST /api/production/:courseCode/stage-deploy/cancel
+// Best-effort cancel. SIGTERMs the local SSH process; also fires a remote pkill
+// so any orphaned python3/check process on apidev gets cleaned up.
+app.post('/api/production/:courseCode/stage-deploy/cancel', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const job = stageDeployJobs.get(courseCode)
+    if (!job) return res.status(404).json({ error: 'No active stage deploy for this course' })
+
+    job.state = 'cancelled'
+    try { job.sshProc.kill('SIGTERM') } catch (e) {
+      logger.warn(`[StageDeploy] SIGTERM ssh failed: ${e.message}`)
+    }
+
+    // Remote cleanup — process group might survive the SSH disconnect
+    const { spawn: spawnProc } = require('child_process')
+    const pkill = spawnProc('ssh', [
+      '-o', 'BatchMode=yes',
+      'ssi@apidev',
+      `pkill -TERM -f "python3 -.*${job.courseConfigsId}" || true`
+    ])
+    pkill.on('error', () => {})
+    pkill.unref()
+
+    io.emit('stageDeploy:cancelled', { jobId: job.jobId, courseCode })
+
+    // Drop the entry from the map immediately so a retry isn't blocked by the
+    // 60s close-handler cleanup. (The duplicate guard in POST stage-deploy
+    // already accepts terminal-state entries, but removing it here means the
+    // GET /status endpoint also stops claiming `active: true` straight away.)
+    stageDeployJobs.delete(courseCode)
+    res.json({ success: true, jobId: job.jobId })
+  } catch (error) {
+    logger.error('[StageDeploy] cancel error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// GET /api/production/:courseCode/stage-deploy/status
+// Lightweight peek so a refreshing UI can re-attach mid-run.
+app.get('/api/production/:courseCode/stage-deploy/status', (req, res) => {
+  const { courseCode } = req.params
+  const job = stageDeployJobs.get(courseCode)
+  if (!job) return res.json({ active: false })
+  res.json({
+    active: true,
+    jobId: job.jobId,
+    courseConfigsId: job.courseConfigsId,
+    startedAt: job.startedAt,
+    state: job.state,
+    sawChecksPassed: job.sawChecksPassed,
+    sawNewCourse: job.sawNewCourse,
+    skipChecks: job.skipChecks,
+    deleteProgress: job.deleteProgress
+  })
+})
+
+// POST /api/production/:courseCode/stage-restart
+// Run ~/api/stage/restart.sh on apidev and watch for the "Server started"
+// notice. Independent of stage-deploy — meant to be invoked by a button
+// after a successful deploy (or as a recovery action).
+app.post('/api/production/:courseCode/stage-restart', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+
+    if (stageRestartJobs.has(courseCode)) {
+      return res.status(409).json({
+        error: 'Stage restart already running for this course',
+        jobId: stageRestartJobs.get(courseCode).jobId
+      })
+    }
+
+    const scriptPath = path.join(__dirname, 'stage-restart.py')
+    if (!fs.existsSync(scriptPath)) {
+      return res.status(500).json({ error: `stage-restart.py not found at ${scriptPath}` })
+    }
+
+    const jobId = `restart_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`
+    const startedAt = new Date().toISOString()
+
+    logger.info(`[StageRestart] ${courseCode} jobId=${jobId}`)
+
+    const { spawn: spawnProc } = require('child_process')
+    const cat = spawnProc('cat', [scriptPath])
+    // jobId doubles as a sentinel in the remote argv list. stage-restart.py
+    // ignores extra argv, but the token shows up in `ps` so the cancel
+    // handler's pkill can scope to THIS restart only — not a concurrent
+    // stage-deploy.py also piped through `python3 -`.
+    const ssh = spawnProc('ssh', [
+      '-o', 'BatchMode=yes',
+      '-o', 'ServerAliveInterval=15',
+      '-o', 'ServerAliveCountMax=4',
+      'ssi@apidev',
+      `python3 - ${jobId}`
+    ])
+    cat.stdout.pipe(ssh.stdin)
+    cat.on('error', (err) => logger.error(`[StageRestart] cat error: ${err.message}`))
+
+    const job = {
+      jobId, courseCode,
+      sshProc: ssh, catProc: cat,
+      startedAt, phase: 'running' // 'running' | 'succeeded' | 'failed' | 'cancelled'
+    }
+    stageRestartJobs.set(courseCode, job)
+
+    io.emit('stageDeploy:restartStarted', { jobId, courseCode, startedAt })
+
+    let stderrBuf = ''
+    ssh.stderr.on('data', (chunk) => {
+      stderrBuf += chunk.toString()
+      const lines = stderrBuf.split(/\r\n|\n|\r/)
+      stderrBuf = lines.pop()
+      for (const line of lines) handleRestartStderrLine(job, line)
+    })
+
+    let stdoutBuf = ''
+    ssh.stdout.on('data', (chunk) => {
+      stdoutBuf += chunk.toString()
+      const lines = stdoutBuf.split(/\r\n|\n|\r/)
+      stdoutBuf = lines.pop()
+      for (const line of lines) {
+        if (line === '') continue
+        io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stdout', line })
+      }
+    })
+
+    ssh.on('error', (err) => logger.error(`[StageRestart] ssh spawn error: ${err.message}`))
+
+    ssh.on('close', (code, signal) => {
+      if (stdoutBuf) io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stdout', line: stdoutBuf })
+      if (stderrBuf) handleRestartStderrLine(job, stderrBuf)
+
+      // If phase still running, derive from exit code
+      if (job.phase === 'running') {
+        job.phase = (code === 0) ? 'succeeded' : 'failed'
+        if (job.phase === 'succeeded') {
+          io.emit('stageDeploy:restartSucceeded', { jobId, courseCode })
+        } else {
+          io.emit('stageDeploy:restartFailed', { jobId, courseCode, reason: `ssh exited ${code}` })
+        }
+      }
+
+      logger.info(`[StageRestart] ${courseCode} closed exit=${code} signal=${signal} phase=${job.phase}`)
+      setTimeout(() => stageRestartJobs.delete(courseCode), 60 * 1000)
+    })
+
+    res.json({ success: true, jobId, courseCode, startedAt })
+  } catch (error) {
+    logger.error('[StageRestart] error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+function handleRestartStderrLine(job, line) {
+  if (!line) return
+  const { jobId, courseCode } = job
+  if (line.startsWith('__SD__:')) {
+    const m = line.match(/^__SD__:(\w+)(?:\s+(.+))?$/)
+    if (!m) return
+    const event = m[1]
+    let payload = {}
+    if (m[2]) {
+      try { payload = JSON.parse(m[2]) } catch (e) { /* ignore */ }
+    }
+    switch (event) {
+      case 'start':            io.emit('stageDeploy:restartStarted', { jobId, courseCode, ...payload }); break
+      case 'restartSucceeded': job.phase = 'succeeded'
+                               io.emit('stageDeploy:restartSucceeded', { jobId, courseCode }); break
+      case 'restartFailed':    job.phase = 'failed'
+                               io.emit('stageDeploy:restartFailed', { jobId, courseCode, ...payload }); break
+      case 'exit':             break
+      default:                 logger.warn(`[StageRestart] unknown event: ${event}`)
+    }
+  } else {
+    io.emit('stageDeploy:log', { jobId, courseCode, stream: 'stderr', line })
+  }
+}
+
+// POST /api/production/:courseCode/stage-restart/cancel
+app.post('/api/production/:courseCode/stage-restart/cancel', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const job = stageRestartJobs.get(courseCode)
+    if (!job) return res.status(404).json({ error: 'No active stage restart for this course' })
+
+    job.phase = 'cancelled'
+    try { job.sshProc.kill('SIGTERM') } catch (e) {
+      logger.warn(`[StageRestart] SIGTERM ssh failed: ${e.message}`)
+    }
+    // Defensive remote cleanup — scoped to THIS job's jobId sentinel so a
+    // concurrent stage-deploy.py (also piped through `python3 -`) isn't
+    // collateral damage.
+    const { spawn: spawnProc } = require('child_process')
+    const pkill = spawnProc('ssh', [
+      '-o', 'BatchMode=yes',
+      'ssi@apidev',
+      `pkill -TERM -f "python3 -.*${job.jobId}" || true`
+    ])
+    pkill.on('error', () => {})
+    pkill.unref()
+
+    io.emit('stageDeploy:restartFailed', { jobId: job.jobId, courseCode, reason: 'cancelled' })
+    res.json({ success: true, jobId: job.jobId })
+  } catch (error) {
+    logger.error('[StageRestart] cancel error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 
 // POST /api/production/:courseCode/verify-s3
 // Step 2: Verify stage audio exists and durations match manifest
