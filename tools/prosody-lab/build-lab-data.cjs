@@ -4,8 +4,8 @@
  * JSON the VAD Lab surface (/admin/configs/vad) fetches at runtime.
  *
  * Reads temp/prosody-lab/ (gitignored study output — re-runnable via
- * tools/prosody-lab/run-study.sh) and writes public/vad-lab/lab-data.json
- * (committed, so the deployed dashboard has it). Audio itself is NOT copied:
+ * tools/prosody-lab/run-study.sh) and writes public/vad-lab/ (committed, so
+ * the deployed dashboard has it). Audio itself is NOT copied:
  * every study clip is a course_audio row, so the deployed learning-app proxy
  * (https://saysomethingin.app/api/audio/:id) serves it already.
  *
@@ -22,7 +22,11 @@ const path = require('path')
 const ROOT = path.resolve(__dirname, '../..')
 const SRC = path.join(ROOT, 'temp/prosody-lab')
 const OUT_DIR = path.join(ROOT, 'public/vad-lab')
-const OUT = path.join(OUT_DIR, 'lab-data.json')
+// The payload ships as ~30KB part-files + a manifest, reassembled by the app.
+// Not an optimisation: some networks (Tom's, 2026-07-28) corrupt any HTTPS
+// upload over ~50KB, so a single 900KB JSON could never be pushed or deployed
+// from them. Small parts keep every git/API POST under that ceiling.
+const PART_BYTES = 30 * 1024
 
 const results = fs
   .readFileSync(path.join(SRC, 'results.jsonl'), 'utf8')
@@ -106,9 +110,20 @@ const out = {
 }
 
 fs.mkdirSync(OUT_DIR, { recursive: true })
-fs.writeFileSync(OUT, JSON.stringify(out))
+for (const f of fs.readdirSync(OUT_DIR)) fs.unlinkSync(path.join(OUT_DIR, f))
+const payload = Buffer.from(JSON.stringify(out))
+const parts = []
+for (let off = 0; off < payload.length; off += PART_BYTES) {
+  const name = `lab-data.part-${String(parts.length).padStart(2, '0')}`
+  fs.writeFileSync(path.join(OUT_DIR, name), payload.subarray(off, off + PART_BYTES))
+  parts.push(name)
+}
+fs.writeFileSync(
+  path.join(OUT_DIR, 'manifest.json'),
+  JSON.stringify({ parts, bytes: payload.length, generated: out.generated })
+)
 console.log(
-  `wrote ${OUT} — ${pairs.length} pairs, ${Object.keys(contours).length} contours` +
+  `wrote ${OUT_DIR} — ${pairs.length} pairs, ${Object.keys(contours).length} contours` +
     (missing ? `, ${missing} clips missing features` : '') +
-    `, ${(fs.statSync(OUT).size / 1024).toFixed(0)} KB`
+    `, ${(payload.length / 1024).toFixed(0)} KB in ${parts.length} parts`
 )

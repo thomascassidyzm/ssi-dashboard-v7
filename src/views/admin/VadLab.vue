@@ -25,10 +25,28 @@ const loadError = ref('')
 const lab = ref(null) // lab-data.json payload
 
 onMounted(async () => {
+  // The payload is committed as ~30KB part-files (see build-lab-data.cjs for
+  // why) — fetch the manifest, pull all parts, reassemble bytes, parse once.
   try {
-    const res = await fetch(`${import.meta.env.BASE_URL}vad-lab/lab-data.json`)
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    lab.value = await res.json()
+    const base = `${import.meta.env.BASE_URL}vad-lab/`
+    const man = await fetch(`${base}manifest.json`)
+    if (!man.ok) throw new Error(`manifest HTTP ${man.status}`)
+    const { parts } = await man.json()
+    const bufs = await Promise.all(
+      parts.map(async (name) => {
+        const res = await fetch(`${base}${name}`)
+        if (!res.ok) throw new Error(`${name} HTTP ${res.status}`)
+        return new Uint8Array(await res.arrayBuffer())
+      })
+    )
+    const total = bufs.reduce((n, b) => n + b.length, 0)
+    const bytes = new Uint8Array(total)
+    let off = 0
+    for (const b of bufs) {
+      bytes.set(b, off)
+      off += b.length
+    }
+    lab.value = JSON.parse(new TextDecoder().decode(bytes))
   } catch (e) {
     loadError.value = `Could not load lab data: ${e.message}`
   } finally {
