@@ -53,8 +53,10 @@ function databaseUrl() {
   return m[1].trim()
 }
 
-// Two random distinct renditions per text-group, deterministic order.
-function groupPairQuery({ where, providersDistinct, limit }) {
+// One representative rendition per (text-group, distinctCol); JS then pairs the
+// first two rows of each group that differ on distinctCol. distinctCol ∈
+// {'voice_id','provider','origin'}; havingCol is what must have ≥2 distinct values.
+function groupPairQuery({ where, distinctCol, limit }) {
   return `
     with base as (
       select id::text, language, text, text_stripped, voice_id, origin, s3_key, duration_ms,
@@ -69,19 +71,18 @@ function groupPairQuery({ where, providersDistinct, limit }) {
       select language, text_stripped
       from base
       group by 1, 2
-      having count(distinct s3_key) >= 2
-         ${providersDistinct ? 'and count(distinct provider) >= 2' : ''}
+      having count(distinct ${distinctCol}) >= 2 and count(distinct s3_key) >= 2
       order by md5(language || text_stripped)
       limit ${limit}
     ),
     ranked as (
       select b.*, row_number() over (
-        partition by b.language, b.text_stripped
-        ${providersDistinct ? 'order by b.provider, md5(b.id)' : 'order by md5(b.id)'}
+        partition by b.language, b.text_stripped, b.${distinctCol}
+        order by md5(b.id)
       ) as rn
       from base b join grp g using (language, text_stripped)
     )
-    select * from ranked where rn <= 2 order by language, text_stripped, rn`
+    select * from ranked where rn = 1 order by language, text_stripped, ${distinctCol}`
 }
 
 async function main() {
@@ -120,11 +121,9 @@ async function main() {
   {
     const q = groupPairQuery({
       where: `origin='tts' and language in ('fra','spa') and (${PROVIDER_SQL}) = 'azure'`,
-      providersDistinct: false, limit: limitPerCat,
+      distinctCol: 'voice_id', limit: limitPerCat,
     })
-    // need distinct voice_id within group: filter after
-    const rows = (await client.query(q)).rows
-    categories.crossvoice = pairsFromRows(rows, r => `${r.language}|${r.text_stripped}`)
+    categories.crossvoice = pairsFromRows((await client.query(q)).rows, r => `${r.language}|${r.text_stripped}`)
       .filter(p => p.a.voice_id !== p.b.voice_id)
   }
 
@@ -132,7 +131,7 @@ async function main() {
   {
     const q = groupPairQuery({
       where: `origin='tts' and language in ('eng','fra')`,
-      providersDistinct: true, limit: limitPerCat,
+      distinctCol: 'provider', limit: limitPerCat,
     })
     categories.crossprovider = pairsFromRows((await client.query(q)).rows, r => `${r.language}|${r.text_stripped}`)
       .filter(p => p.a.provider !== p.b.provider)
@@ -140,15 +139,14 @@ async function main() {
 
   // -- human vs TTS, English
   {
-    const q = groupPairQuery({ where: `language = 'eng'`, providersDistinct: true, limit: limitPerCat * 3 })
+    const q = groupPairQuery({ where: `language = 'eng'`, distinctCol: 'origin', limit: limitPerCat })
     categories.human_tts_eng = pairsFromRows((await client.query(q)).rows, r => `${r.language}|${r.text_stripped}`)
       .filter(p => (p.a.origin === 'human') !== (p.b.origin === 'human'))
-      .slice(0, limitPerCat)
   }
 
   // -- human vs TTS, Welsh (take everything there is)
   {
-    const q = groupPairQuery({ where: `language like 'cym%'`, providersDistinct: true, limit: 1000 })
+    const q = groupPairQuery({ where: `language like 'cym%'`, distinctCol: 'origin', limit: 1000 })
     categories.human_tts_cym = pairsFromRows((await client.query(q)).rows, r => `${r.language}|${r.text_stripped}`)
       .filter(p => (p.a.origin === 'human') !== (p.b.origin === 'human'))
   }
