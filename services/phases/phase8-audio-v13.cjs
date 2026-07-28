@@ -5363,7 +5363,13 @@ app.post('/splice-components/:courseCode', async (req, res) => {
 // with no known assignment. Those fall through to ctx.knownVoice for known
 // audio — preserves existing audio on previously-shipped pods.
 
-const POD_CHARS_TO_COST = 4.20 / 1_000_000  // xAI pricing; near-identical to Azure scale, rough estimate
+// xAI's published rate, docs.x.ai/docs/pricing (checked 2026-07-28): Text to
+// Speech $15.00 / 1M chars. The old value here was $4.20/1M — the figure from
+// launch press coverage, never a billed rate — which under-estimated every xAI
+// cost projection in the repo by 3.6x. Azure S0 is $4/1M by comparison
+// (services/audio-generation-planner.cjs), so xAI is ~3.75x Azure, NOT
+// "near-identical" as the old comment claimed.
+const POD_CHARS_TO_COST = 15.00 / 1_000_000
 
 // Safe ceiling for concurrent xAI TTS calls during pod generation. xAI's
 // /v1/tts throws intermittent 500 "Timeout expired" / ECONNRESET under heavy

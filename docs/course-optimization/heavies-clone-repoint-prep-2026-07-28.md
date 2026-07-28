@@ -8,7 +8,7 @@ Prep-only. No execution, no writes, no TTS. Companion: `audio-batch-fill-vs-rege
 - The repoint is a **1-field JSON edit per course** (`voice_config.voices.known`), applied via the existing `saveVoiceConfig`/`updateVoiceRole` API — no DB migration, no schema change.
 - It **does not touch any existing audio row or FK link** — only new (`NULL` FK) generation resolves the new voice. Existing Azure-voiced clips (~24k across the 3 courses) stay exactly as they are; this creates a **mixed-voice course** (old English clips in Sonia/Bella, new fills in the clone) until/unless a separate harmonisation pass is commissioned — that's a distinct, larger, explicitly-approved spend decision, not a side-effect of this prep.
 - My read of the audit's "~46k" figure: it's the sum across all 5 courses' English-bearing slots (not just the 3 that need repointing). My own count today is **49,906** (close, same method, natural drift from a live queue) — see §3. The number that actually matters for the repoint decision is smaller: **25,458** slots (the 3 Azure-known courses only).
-- **xAI TTS pricing could not be determined** — see §5. The one number in the repo (`$4.20/1M chars`) is explicitly commented as a rough estimate, not a billed rate.
+- **xAI TTS pricing: FOUND — $15.00 / 1M chars** (xAI's own published rate, `docs.x.ai/docs/pricing`, checked 2026-07-28). See §5 addendum: the repo's `$4.20/1M` was launch-press coverage, never a billed rate, and under-estimated every xAI projection by 3.6x. Now corrected in code.
 
 ---
 
@@ -116,3 +116,26 @@ Checked, in order:
 - Did not check xAI's own billing dashboard or docs site — no account access/URL was provided for this prep pass, and the instruction is not to guess or estimate a number.
 
 **Open item**: get the actual xAI per-character or per-request TTS rate from the xAI account/console and record it in the repo (e.g. replace the `POD_CHARS_TO_COST` comment with a sourced figure) — needed before any cost projection involving `bedd6226`/`gfzdpspr5fdp` clips can be trusted.
+
+---
+
+## §5 addendum — xAI TTS pricing RESOLVED (2026-07-28)
+
+**$15.00 / 1M characters.** Source: xAI's own published pricing, `https://docs.x.ai/docs/pricing`
+(confirmed independently against `https://docs.x.ai/docs/models`), checked 2026-07-28.
+
+For completeness, the rest of xAI's audio line: Speech to Text $0.10/hr (REST) and $0.20/hr
+(streaming); Realtime voice $0.05/min ($3.00/hr).
+
+**The repo was wrong by 3.6x.** `POD_CHARS_TO_COST = 4.20 / 1_000_000` traced to launch press
+coverage, not a billed rate, and its comment claimed xAI was "near-identical to Azure scale".
+It is not: Azure S0 is $4/1M chars, so **xAI is ~3.75x Azure**. Corrected in
+`services/phases/phase8-audio-v13.cjs`. Not hot-loaded — phase8 was deliberately not bounced
+to avoid killing the running light-course batch; it affects pod cost *estimates* only, never
+generation behaviour, so it takes effect at the next natural restart.
+
+**What this changes:** every cost line in the repo citing "xai rates" (including
+`docs/audio-census-2026-07-11.md`) is understated by 3.6x for the xAI-voiced share. This
+matters most for the English side of `eng_for_X` courses, which is xAI-voiced throughout — and
+it strengthens the case for the clone repoint on the three Azure-known heavies, since clone
+copy-bucket reuses are free against a $15/1M alternative, not a $4.20/1M one.
