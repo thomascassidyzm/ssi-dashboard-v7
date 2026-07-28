@@ -59,6 +59,17 @@
           <span v-if="genderPrepRunning" class="text-sm text-purple-400 animate-pulse flex-shrink-0">
             {{ genderPrepStatus.totalExpansions || 0 }} expansions...
           </span>
+          <button
+            v-if="genderPrepStatus.processed && genderPrepFlagCount > 0 && !genderRegenRunning"
+            @click="regenerateFlagged"
+            :disabled="regenerating || otherCourseJobActive"
+            class="px-4 py-2 bg-amber-600/20 border border-amber-500/50 text-amber-300 hover:border-amber-400/70 hover:text-amber-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium rounded-lg transition-all flex-shrink-0"
+          >
+            Regenerate {{ genderPrepFlagCount }} flagged
+          </button>
+          <span v-if="genderRegenRunning" class="text-sm text-amber-400 animate-pulse flex-shrink-0">
+            Queueing regen...
+          </span>
         </div>
 
         <!-- OTHER COURSE JOB BANNER (when audio job is active for a different course) -->
@@ -235,6 +246,10 @@
                   <option value="known">Known language</option>
                   <option value="presentation">Presentation (Introductions)</option>
                 </select>
+                <label class="flex items-center gap-2 text-sm text-muted cursor-pointer select-none">
+                  <input type="checkbox" v-model="regenerateFlaggedOnly" class="accent-amber-500" />
+                  Flagged only<template v-if="genderPrepFlagCount > 0"> ({{ genderPrepFlagCount }} flagged)</template>
+                </label>
               </div>
 
               <!-- Action Buttons -->
@@ -588,8 +603,10 @@ const voiceConfig = ref<any>(null)
 
 // Regenerate by role state
 const regenerateRole = ref('')
+const regenerateFlaggedOnly = ref(false)
 const regenerating = ref(false)
 const regenerateResult = ref<any>(null)
+const genderRegenRunning = ref(false)
 
 // Regenerate presentations state
 
@@ -958,6 +975,7 @@ const previewRegenerate = async () => {
       },
       body: JSON.stringify({
         role: regenerateRole.value,
+        flaggedOnly: regenerateFlaggedOnly.value,
         dryRun: true
       })
     })
@@ -985,8 +1003,9 @@ const executeRegenerate = async () => {
   if (!regenerateRole.value) return
 
   const count = regenerateResult.value?.count || 'unknown number of'
+  const scope = regenerateFlaggedOnly.value ? 'FLAGGED' : 'ALL'
   const confirmed = confirm(
-    `This will regenerate ${count} ${regenerateRole.value} audio files for ${courseCode.value}.\n\n` +
+    `This will regenerate ${count} ${scope} ${regenerateRole.value} audio files for ${courseCode.value}.\n\n` +
     `Existing audio files will be replaced.\n\n` +
     `Continue?`
   )
@@ -1004,6 +1023,7 @@ const executeRegenerate = async () => {
       },
       body: JSON.stringify({
         role: regenerateRole.value,
+        flaggedOnly: regenerateFlaggedOnly.value,
         dryRun: false
       })
     })
@@ -1039,6 +1059,45 @@ const executeRegenerate = async () => {
     regenerateResult.value = { error: err.message }
   } finally {
     regenerating.value = false
+  }
+}
+
+// Regenerate all gender-flagged clips: one flaggedOnly regenerate-role job per
+// target voice. Voice 1 gets expanded_f, Voice 2 gets expanded_m — the gendered
+// text substitution happens in Phase 8 via the pre-computed gender map, and
+// production-api clears each clip's flag once its job completes.
+const regenerateFlagged = async () => {
+  const confirmed = confirm(
+    `This will re-voice ${genderPrepFlagCount.value} flagged clips for ${courseCode.value} ` +
+    `using the gendered text (Voice 1 = feminine forms, Voice 2 = masculine forms).\n\n` +
+    `This costs TTS. Continue?`
+  )
+  if (!confirmed) return
+
+  genderRegenRunning.value = true
+  genderPrepResult.value = null
+  try {
+    for (const role of ['target1', 'target2']) {
+      const response = await fetch(`${apiBaseUrl}/api/audio/regenerate-role/${courseCode.value}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true'
+        },
+        body: JSON.stringify({ role, flaggedOnly: true, dryRun: false })
+      })
+      const data = await response.json()
+      if (!response.ok && response.status !== 202) {
+        genderPrepResult.value = { ok: false, text: `${role}: ${data.error || 'failed to queue regeneration'}` }
+        return
+      }
+    }
+    genderPrepResult.value = { ok: true, text: 'Queued flagged regeneration for both voices — flags clear as each job completes' }
+    startProgressPolling()
+  } catch (err: any) {
+    genderPrepResult.value = { ok: false, text: err.message }
+  } finally {
+    genderRegenRunning.value = false
   }
 }
 

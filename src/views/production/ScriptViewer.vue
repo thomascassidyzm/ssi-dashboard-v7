@@ -1567,9 +1567,12 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     if (data.regen_flags.target2 && phraseToEdit.value.target2_audio_uuid) roles.push('target2');
 
     // No roles selected → text-only save, no TTS cost. Done.
+    // applyLocalText() already updated the live journey row (sourceItem) in
+    // place, so we deliberately do NOT reloadLearningJourney() here — a full
+    // reload rebuilds the rounds list and snaps the user's scroll back to the
+    // top, away from where they were editing.
     if (roles.length === 0) {
       phraseEditModalRef.value?.onSaveComplete(true);
-      if (viewMode.value === 'journey') reloadLearningJourney();
       return;
     }
 
@@ -1629,8 +1632,9 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
     console.log(`Regenerated phrase ${phraseId} roles [${roles.join(', ')}] → fresh audio`);
 
-    // Refresh the journey so rows pick up the rebound audio on next load.
-    if (viewMode.value === 'journey') reloadLearningJourney();
+    // The live journey row (sourceItem) already had its text and audio pointers
+    // rebound in place above, so we deliberately skip reloadLearningJourney()
+    // here — reloading would rebuild the list and lose the user's scroll spot.
   } catch (err) {
     console.error('Error saving phrase:', err);
     phraseEditModalRef.value?.onSaveComplete(false, err instanceof Error ? err.message : 'Save failed');
