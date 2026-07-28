@@ -122,6 +122,29 @@
             </span>
           </div>
 
+          <!-- Learner progress preservation -->
+          <div
+            v-if="manifestDiff.progressPreservation"
+            class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs pt-1 border-t border-slate-700/50"
+            :title="`Estimates how many learners keep their position. Counts seed and LEGO UUIDs that match the previously-published manifest.`"
+          >
+            <span class="text-slate-400">Learner progress preserved:</span>
+            <span
+              class="font-semibold"
+              :class="{
+                'text-emerald-400': manifestDiff.progressPreservation.overallPercent >= 95,
+                'text-amber-400':   manifestDiff.progressPreservation.overallPercent >= 50 && manifestDiff.progressPreservation.overallPercent < 95,
+                'text-red-400':     manifestDiff.progressPreservation.overallPercent < 50
+              }"
+            >
+              {{ manifestDiff.progressPreservation.overallPercent }}%
+            </span>
+            <span class="text-slate-500">
+              ({{ manifestDiff.progressPreservation.seedsPreserved }}/{{ manifestDiff.progressPreservation.seedsPublished }} seeds,
+              {{ manifestDiff.progressPreservation.legosPreserved }}/{{ manifestDiff.progressPreservation.legosPublished }} LEGOs)
+            </span>
+          </div>
+
           <!-- Collapsible details -->
           <button
             @click="showDiffDetails = !showDiffDetails"
