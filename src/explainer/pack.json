@@ -1,6 +1,6 @@
 {
-  "version": "14eaa1fa233d",
-  "generatedAt": "2026-07-27",
+  "version": "5a0e1b430bd7",
+  "generatedAt": "2026-07-28",
   "truth": {
     "navTabs": {
       "primary": [
@@ -9,8 +9,8 @@
           "to": "/courses"
         },
         {
-          "label": "Docs",
-          "to": "/docs"
+          "label": "How & Why",
+          "to": "/how"
         },
         {
           "label": "Admin",
@@ -41,6 +41,10 @@
         {
           "label": "Users",
           "to": "/users"
+        },
+        {
+          "label": "Stock-take",
+          "to": "/stocktake"
         }
       ],
       "production": [
@@ -49,42 +53,54 @@
           "to": "/production/${code}"
         }
       ],
-      "docs": [
+      "courses": [
         {
-          "label": "Overview",
-          "to": "/docs"
-        },
-        {
-          "label": "APML",
-          "to": "/docs/apml"
-        },
-        {
-          "label": "Pedagogy",
-          "to": "/docs/pedagogy"
-        },
-        {
-          "label": "Glossary",
-          "to": "/docs/terminology"
+          "label": "Library",
+          "to": "/courses"
         },
         {
           "label": "Seeds",
-          "to": "/docs/seeds"
+          "to": "/canonical/seeds"
         },
         {
           "label": "Content",
-          "to": "/docs/canonical"
+          "to": "/canonical/content"
         },
         {
           "label": "Pods",
-          "to": "/docs/pods"
+          "to": "/canonical/pods"
+        }
+      ],
+      "how": [
+        {
+          "label": "How & Why",
+          "to": "/how"
+        },
+        {
+          "label": "Pedagogy",
+          "to": "/how/pedagogy"
         },
         {
           "label": "Pod Thinking",
-          "to": "/docs/pod-thinking"
+          "to": "/how/pod-thinking"
+        }
+      ],
+      "stocktake": [
+        {
+          "label": "Stock-take",
+          "to": "/stocktake"
         },
         {
           "label": "Pipeline",
-          "to": "/docs/pipeline"
+          "to": "/stocktake/pipeline"
+        },
+        {
+          "label": "Glossary",
+          "to": "/stocktake/glossary"
+        },
+        {
+          "label": "APML",
+          "to": "/stocktake/apml"
         }
       ]
     },
@@ -392,12 +408,13 @@
   "docs": {
     "surface": {
       "compiled": [
-        "Overview",
-        "APML",
+        "Stock-take",
+        "Pipeline",
         "Glossary",
-        "Pipeline"
+        "APML"
       ],
       "rulings": [
+        "How & Why",
         "Pedagogy",
         "Pod Thinking"
       ],
@@ -507,16 +524,17 @@
   },
   "explanations": {
     "admin": {
-      "home": "Popty is where courses get made — everything a learner ever hears starts here and flows\nthrough Supabase to the learning app. Three doors at the top: **Courses** is the library and\nevery working surface inside a course, **Docs** is the methodology reference, and **Admin** is\nthe platform room — the whole estate at a glance.",
+      "home": "Popty is where courses get made — everything a learner ever hears starts here and flows\nthrough Supabase to the learning app. Three doors at the top: **Courses** is the library, the\ncanonical browsers (**Seeds**, **Content**, **Pods**) and every working surface inside a\ncourse; **How & Why** is the app explaining itself — the how-to for what you do here plus the\nfounder's rulings; and **Admin** is the platform room — the whole estate at a glance.",
       "courses": "Each course card opens on its Overview hub — one door per course, with every working surface\nas a card inside: text generation, audio, recording, QA. Course content lives in the database,\nnot in files; what you see here is what learners get. Text edits never mint audio by\nthemselves — a content pass ends by queueing an audio-pass request, and audio is only ever\ngenerated after an approved pass, because every minted clip costs real money.",
-      "admin": "The Admin section is the platform-wide view. **Configs** holds per-course voice and listening\nsetup — a course without voice config cannot make audio. **Insights** is the measurement room.\n**Activity** shows the builds and jobs actually running right now; a course that should be\nmoving and isn't shows up here first. **Maintenance** is the health sweep — the badge counts\ndays since the last audit, so a growing number is the system telling you it hasn't been\nchecked. **Users** is where access lives: admins see everything, editors are scoped to their\ngranted courses, recorders only ever see the Record Room.",
-      "docs": "Docs is one surface with two kinds of truth. The facts that can rot — gate lists, pipeline\nshape, schema, endpoints — are compiled from the code and rendered directly, so they cannot go\nstale; the founder-written methodology pages stay hand-maintained because no code can derive\nthem. The **Update docs** button on those pages re-reads live state — course list, audio-pass\nqueue, database counts — from the production machine on demand; facts derived from code refresh\nwhen a commit deploys."
+      "admin": "The Admin section is the platform-wide view. **Configs** holds per-course voice and listening\nsetup — a course without voice config cannot make audio. **Insights** is the measurement room.\n**Activity** shows the builds and jobs actually running right now; a course that should be\nmoving and isn't shows up here first. **Maintenance** is the health sweep — the badge counts\ndays since the last audit, so a growing number is the system telling you it hasn't been\nchecked. **Users** is where access lives: admins see everything, editors are scoped to their\ngranted courses, recorders only ever see the Record Room. **Stock-take** is the compiled\nreference — step in when you want to take stock of the system's current state.",
+      "how": "The app teaches itself — that replaced the old docs-and-manuals shelf. **How & Why** is one\nsurface: the how-to, written for what the signed-in person actually does, and the founder's\nrulings — **Pedagogy**, **Pod Thinking**, the why of APML. Nothing there restates system\nstate, so it doesn't rot.",
+      "stocktake": "The **Stock-take** room is where the facts that can rot live as compiled renders: the\n**Pipeline** shape, the **Glossary** of shared terms, the **APML** current state. They are\nderived from the code and drift-gated, so they cannot go stale. The **Update docs** button\nre-reads live state — course list, audio-pass queue, database counts — from the production\nmachine on demand; facts derived from code refresh when a commit deploys."
     },
     "editor": {
-      "home": "Popty is where your courses get made. Two doors matter for you: **Courses** — your library,\nscoped to the courses you've been granted — and **Docs**, the methodology reference. Everything\nyou edit here is live content: what the database holds is exactly what learners hear.",
-      "courses": "A course opens on its **Overview** hub — one door per course, every working surface a card\ninside it: text, audio, recording, QA. The method under all of it: one known prompt maps to\nexactly one target form, course-wide, and the known side is a controlled language too — the\ngates hold you to both when you submit, and a rejection is the method protecting the learner,\nnot the tool being difficult. Text edits never mint audio directly; a finished content pass\nqueues an audio-pass request, and audio happens after approval, because minted clips cost real\nmoney and some courses are human-voiced and never synthesised at all.",
+      "home": "Popty is where your courses get made. Two doors matter for you: **Courses** — your library,\nscoped to the courses you've been granted — and **How & Why**, where the app explains itself.\nEverything you edit here is live content: what the database holds is exactly what learners\nhear.",
+      "courses": "The **Library** lists your courses, and next to it sit the canonical browsers — **Seeds**,\n**Content** and **Pods** — windows onto the canonical material in the database. A course\nopens on its **Overview** hub — one door per course, every working surface a card\ninside it: text, audio, recording, QA. The method under all of it: one known prompt maps to\nexactly one target form, course-wide, and the known side is a controlled language too — the\ngates hold you to both when you submit, and a rejection is the method protecting the learner,\nnot the tool being difficult. Text edits never mint audio directly; a finished content pass\nqueues an audio-pass request, and audio happens after approval, because minted clips cost real\nmoney and some courses are human-voiced and never synthesised at all.",
       "checking": "Checking a course is reading it the way a learner meets it: does each prompt force exactly one\nanswer, does every phrase use only what's been taught, does it read naturally in the known\nlanguage? The known-vocab flags this pack carries per course are the compiled starting point —\nbegin where the flags are earliest, because everything downstream builds on those seeds.",
-      "docs": "The Docs section is the reference shelf, and it carries two kinds of truth. Compiled pages —\n**Overview**, **APML**, **Glossary**, **Pipeline** — are rendered from the code itself and\ncannot go stale. Rulings pages — **Pedagogy** and **Pod Thinking** — are founder-written\nmethodology, kept by hand because no code can derive them. **Seeds**, **Content** and **Pods**\nbrowse the canonical material in the database. Read Pedagogy before authoring anything — the\nmethod is the product."
+      "how": "**How & Why** is one surface with the two things worth reading: the how-to, written for what\nyou actually do here and compiled against the running system so it cannot drift from the app —\nand the rulings, the founder's own thinking: **Pedagogy**, **Pod Thinking**, and the why of\nAPML. Read Pedagogy before authoring anything — the method is the product."
     },
     "recorder": {
       "record-room": "The Record Room is your whole studio. The queue you see is real work waiting: lines the course\nneeds in a human voice, in order. Read each line as it's written, at an easy natural pace —\nrecordings ship at one speed and the app adjusts playback, so never rush a take. Some courses\nare human-voiced only — no synthetic voice is ever allowed to stand in for you there — which is\nwhy a line waiting in your queue can't be filled by anyone but a person. A take you're not\nhappy with is worth redoing: whatever you record is exactly what a learner will hear, thousands\nof times."
@@ -1114,6 +1132,6 @@
       }
     },
     "note": null,
-    "generatedAt": "2026-07-27"
+    "generatedAt": "2026-07-28"
   }
 }

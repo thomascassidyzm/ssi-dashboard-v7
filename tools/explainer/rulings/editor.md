@@ -6,12 +6,15 @@ checking section below until auth grows one. -->
 ## home
 
 Popty is where your courses get made. Two doors matter for you: **Courses** — your library,
-scoped to the courses you've been granted — and **Docs**, the methodology reference. Everything
-you edit here is live content: what the database holds is exactly what learners hear.
+scoped to the courses you've been granted — and **How & Why**, where the app explains itself.
+Everything you edit here is live content: what the database holds is exactly what learners
+hear.
 
 ## courses
 
-A course opens on its **Overview** hub — one door per course, every working surface a card
+The **Library** lists your courses, and next to it sit the canonical browsers — **Seeds**,
+**Content** and **Pods** — windows onto the canonical material in the database. A course
+opens on its **Overview** hub — one door per course, every working surface a card
 inside it: text, audio, recording, QA. The method under all of it: one known prompt maps to
 exactly one target form, course-wide, and the known side is a controlled language too — the
 gates hold you to both when you submit, and a rejection is the method protecting the learner,
@@ -26,11 +29,9 @@ answer, does every phrase use only what's been taught, does it read naturally in
 language? The known-vocab flags this pack carries per course are the compiled starting point —
 begin where the flags are earliest, because everything downstream builds on those seeds.
 
-## docs
+## how
 
-The Docs section is the reference shelf, and it carries two kinds of truth. Compiled pages —
-**Overview**, **APML**, **Glossary**, **Pipeline** — are rendered from the code itself and
-cannot go stale. Rulings pages — **Pedagogy** and **Pod Thinking** — are founder-written
-methodology, kept by hand because no code can derive them. **Seeds**, **Content** and **Pods**
-browse the canonical material in the database. Read Pedagogy before authoring anything — the
-method is the product.
+**How & Why** is one surface with the two things worth reading: the how-to, written for what
+you actually do here and compiled against the running system so it cannot drift from the app —
+and the rulings, the founder's own thinking: **Pedagogy**, **Pod Thinking**, and the why of
+APML. Read Pedagogy before authoring anything — the method is the product.

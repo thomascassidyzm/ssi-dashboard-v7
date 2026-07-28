@@ -56,8 +56,8 @@
             </div>
           </router-link>
 
-          <!-- Docs -->
-          <router-link to="/docs" class="hub-card card-docs">
+          <!-- How & Why — the founder's "Rulings + How-to" surface -->
+          <router-link to="/how" class="hub-card card-docs">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">
@@ -68,15 +68,15 @@
                   </svg>
                 </div>
                 <div class="card-badge docs">
-                  <span class="badge-label">reference</span>
+                  <span class="badge-label">rulings + how-to</span>
                 </div>
               </div>
               <div class="card-body">
-                <h2 class="card-title">Docs</h2>
-                <p class="card-description">APML spec, pedagogy, glossary, canonical seeds and content, pods, and the pipeline.</p>
+                <h2 class="card-title">How &amp; Why</h2>
+                <p class="card-description">How this place works, written for what you do here — and the rulings behind it: pedagogy, pod thinking, the why of APML.</p>
               </div>
               <div class="card-footer">
-                <span class="card-action">Browse Docs</span>
+                <span class="card-action">Open How &amp; Why</span>
                 <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>

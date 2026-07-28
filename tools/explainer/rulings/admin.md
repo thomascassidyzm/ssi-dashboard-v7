@@ -4,9 +4,10 @@ requires every surface an admin can stand on to be named here. -->
 ## home
 
 Popty is where courses get made — everything a learner ever hears starts here and flows
-through Supabase to the learning app. Three doors at the top: **Courses** is the library and
-every working surface inside a course, **Docs** is the methodology reference, and **Admin** is
-the platform room — the whole estate at a glance.
+through Supabase to the learning app. Three doors at the top: **Courses** is the library, the
+canonical browsers (**Seeds**, **Content**, **Pods**) and every working surface inside a
+course; **How & Why** is the app explaining itself — the how-to for what you do here plus the
+founder's rulings; and **Admin** is the platform room — the whole estate at a glance.
 
 ## courses
 
@@ -24,13 +25,20 @@ setup — a course without voice config cannot make audio. **Insights** is the m
 moving and isn't shows up here first. **Maintenance** is the health sweep — the badge counts
 days since the last audit, so a growing number is the system telling you it hasn't been
 checked. **Users** is where access lives: admins see everything, editors are scoped to their
-granted courses, recorders only ever see the Record Room.
+granted courses, recorders only ever see the Record Room. **Stock-take** is the compiled
+reference — step in when you want to take stock of the system's current state.
 
-## docs
+## how
 
-Docs is one surface with two kinds of truth. The facts that can rot — gate lists, pipeline
-shape, schema, endpoints — are compiled from the code and rendered directly, so they cannot go
-stale; the founder-written methodology pages stay hand-maintained because no code can derive
-them. The **Update docs** button on those pages re-reads live state — course list, audio-pass
-queue, database counts — from the production machine on demand; facts derived from code refresh
-when a commit deploys.
+The app teaches itself — that replaced the old docs-and-manuals shelf. **How & Why** is one
+surface: the how-to, written for what the signed-in person actually does, and the founder's
+rulings — **Pedagogy**, **Pod Thinking**, the why of APML. Nothing there restates system
+state, so it doesn't rot.
+
+## stocktake
+
+The **Stock-take** room is where the facts that can rot live as compiled renders: the
+**Pipeline** shape, the **Glossary** of shared terms, the **APML** current state. They are
+derived from the code and drift-gated, so they cannot go stale. The **Update docs** button
+re-reads live state — course list, audio-pass queue, database counts — from the production
+machine on demand; facts derived from code refresh when a commit deploys.

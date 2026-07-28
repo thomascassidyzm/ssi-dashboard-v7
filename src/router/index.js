@@ -107,53 +107,26 @@ const routes = [
     meta: { title: 'Insights' }
   },
   // ============================================
-  // Documentation Section (nested routes with shared layout)
+  // How & Why — the founder's "Rulings + How-to" surface (ruling 2026-07-28).
+  // The app teaches itself: ONE surface holding the persona-scoped how-to
+  // (compiled pack explanations) and the founder-authored rulings prose
+  // (Pedagogy, Pod Thinking, the why-of-APML). This replaced the Docs hub.
   // ============================================
   {
-    path: '/docs',
+    path: '/how',
     component: DocsLayout,
     children: [
       {
         path: '',
-        name: 'DocsIndex',
-        component: () => import('../views/DocsIndex.vue'),
-        meta: { title: 'Documentation' }
-      },
-      {
-        path: 'apml',
-        name: 'DocsApml',
-        component: DocsApml,
-        meta: { title: 'APML Specification' }
+        name: 'HowAndWhy',
+        component: () => import('../views/HowAndWhy.vue'),
+        meta: { title: 'How & Why' }
       },
       {
         path: 'pedagogy',
         name: 'Pedagogy',
         component: Pedagogy,
         meta: { title: 'Pedagogical Model' }
-      },
-      {
-        path: 'terminology',
-        name: 'DocsGlossary',
-        component: DocsGlossary,
-        meta: { title: 'Terminology Glossary' }
-      },
-      {
-        path: 'seeds',
-        name: 'CanonicalSeeds',
-        component: CanonicalSeeds,
-        meta: { title: 'Canonical Seeds' }
-      },
-      {
-        path: 'canonical',
-        name: 'CanonicalContent',
-        component: CanonicalContent,
-        meta: { title: 'Canonical Content' }
-      },
-      {
-        path: 'pods',
-        name: 'PodsDoc',
-        component: () => import('../views/PodsDoc.vue'),
-        meta: { title: 'Listening Pods' }
       },
       {
         path: 'pod-thinking',
@@ -167,20 +140,83 @@ const routes = [
         component: () => import('../views/PodThinkingDoc.vue'),
         props: true,
         meta: { title: 'Pod Thinking', public: true }
+      }
+    ]
+  },
+
+  // ============================================
+  // Stock-take — the compiled reference, demoted to admin-on-demand
+  // (ruling 2026-07-28). Pipeline / Glossary / APML current-state + the
+  // "Update docs" button. All the compiler/drift-gate/refresh machinery
+  // lives on underneath; only the navigation prominence changed.
+  // ============================================
+  {
+    path: '/stocktake',
+    component: DocsLayout,
+    children: [
+      {
+        path: '',
+        name: 'StocktakeIndex',
+        component: () => import('../views/docs/StocktakeIndex.vue'),
+        meta: { title: 'Stock-take' }
       },
       {
         path: 'pipeline',
         name: 'DocsPipeline',
         component: DocsPipeline,
-        meta: { title: 'Pipeline' }
+        meta: { title: 'Pipeline - Stock-take' }
       },
-      // Phase Intelligence folded into the compiled Pipeline render (2026-07-27)
       {
-        path: 'intelligence',
-        redirect: '/docs/pipeline'
+        path: 'glossary',
+        name: 'DocsGlossary',
+        component: DocsGlossary,
+        meta: { title: 'Terminology Glossary - Stock-take' }
+      },
+      {
+        path: 'apml',
+        name: 'DocsApml',
+        component: DocsApml,
+        meta: { title: 'APML Specification - Stock-take' }
       }
     ]
   },
+
+  // ============================================
+  // Canonical data browsers — tools, not docs (ruling 2026-07-28). They live
+  // with the course estate under the Courses section. NOT under /courses/*
+  // because /courses/:courseCode would swallow the paths as a course code.
+  // ============================================
+  {
+    path: '/canonical/seeds',
+    name: 'CanonicalSeeds',
+    component: CanonicalSeeds,
+    meta: { title: 'Canonical Seeds' }
+  },
+  {
+    path: '/canonical/content',
+    name: 'CanonicalContent',
+    component: CanonicalContent,
+    meta: { title: 'Canonical Content' }
+  },
+  {
+    path: '/canonical/pods',
+    name: 'PodsDoc',
+    component: () => import('../views/PodsDoc.vue'),
+    meta: { title: 'Listening Pods' }
+  },
+
+  // The old /docs/* estate — every route redirects so nothing 404s.
+  { path: '/docs', redirect: '/how' },
+  { path: '/docs/pedagogy', redirect: '/how/pedagogy' },
+  { path: '/docs/pod-thinking', redirect: '/how/pod-thinking' },
+  { path: '/docs/pod-thinking/:slug', redirect: to => `/how/pod-thinking/${to.params.slug}` },
+  { path: '/docs/apml', redirect: '/stocktake/apml' },
+  { path: '/docs/terminology', redirect: '/stocktake/glossary' },
+  { path: '/docs/pipeline', redirect: '/stocktake/pipeline' },
+  { path: '/docs/intelligence', redirect: '/stocktake/pipeline' },
+  { path: '/docs/seeds', redirect: '/canonical/seeds' },
+  { path: '/docs/canonical', redirect: '/canonical/content' },
+  { path: '/docs/pods', redirect: '/canonical/pods' },
 
   // ============================================
   // Course Management
@@ -353,14 +389,14 @@ const routes = [
     component: UserManagement,
     meta: { title: 'User Management', requiresAuth: true }
   },
-  // Legacy redirects for /reference/* routes → /docs/*
-  { path: '/reference/overview', redirect: '/docs/pipeline' },
-  { path: '/reference/seeds', redirect: '/docs/seeds' },
-  { path: '/reference/canonical', redirect: '/docs/canonical' },
-  { path: '/reference/apml', redirect: '/docs/apml' },
-  { path: '/reference/terminology', redirect: '/docs/terminology' },
-  { path: '/reference/pedagogy', redirect: '/docs/pedagogy' },
-  { path: '/intelligence', redirect: '/docs/intelligence' },
+  // Legacy redirects for /reference/* routes — retargeted at the new homes
+  { path: '/reference/overview', redirect: '/stocktake/pipeline' },
+  { path: '/reference/seeds', redirect: '/canonical/seeds' },
+  { path: '/reference/canonical', redirect: '/canonical/content' },
+  { path: '/reference/apml', redirect: '/stocktake/apml' },
+  { path: '/reference/terminology', redirect: '/stocktake/glossary' },
+  { path: '/reference/pedagogy', redirect: '/how/pedagogy' },
+  { path: '/intelligence', redirect: '/stocktake/pipeline' },
   // DEPRECATED: Skills route - feature not in use
   // {
   //   path: '/skills',

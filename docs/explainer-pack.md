@@ -1,6 +1,6 @@
 # Popty explanation pack — compiled render
 
-**Version `14eaa1fa233d` · generated 2026-07-27 by `tools/explainer/compile.mjs`. DO NOT EDIT — edit the rulings/rules and recompile.**
+**Version `5a0e1b430bd7` · generated 2026-07-28 by `tools/explainer/compile.mjs`. DO NOT EDIT — edit the rulings/rules and recompile.**
 
 Truth: roles admin/editor/recorder · workflow "Phase 1 → 3 → 8 → 9" · 14 gates · max LEGO syllables 8 · human-voice: cym_n_for_eng, cym_s_for_eng, bre_for_fra + cym_* prefix · 9 pair contracts · snapshot: 98 courses.
 
@@ -9,9 +9,10 @@ Truth: roles admin/editor/recorder · workflow "Phase 1 → 3 → 8 → 9" · 14
 ### home
 
 Popty is where courses get made — everything a learner ever hears starts here and flows
-through Supabase to the learning app. Three doors at the top: **Courses** is the library and
-every working surface inside a course, **Docs** is the methodology reference, and **Admin** is
-the platform room — the whole estate at a glance.
+through Supabase to the learning app. Three doors at the top: **Courses** is the library, the
+canonical browsers (**Seeds**, **Content**, **Pods**) and every working surface inside a
+course; **How & Why** is the app explaining itself — the how-to for what you do here plus the
+founder's rulings; and **Admin** is the platform room — the whole estate at a glance.
 
 ### courses
 
@@ -29,28 +30,38 @@ setup — a course without voice config cannot make audio. **Insights** is the m
 moving and isn't shows up here first. **Maintenance** is the health sweep — the badge counts
 days since the last audit, so a growing number is the system telling you it hasn't been
 checked. **Users** is where access lives: admins see everything, editors are scoped to their
-granted courses, recorders only ever see the Record Room.
+granted courses, recorders only ever see the Record Room. **Stock-take** is the compiled
+reference — step in when you want to take stock of the system's current state.
 
-### docs
+### how
 
-Docs is one surface with two kinds of truth. The facts that can rot — gate lists, pipeline
-shape, schema, endpoints — are compiled from the code and rendered directly, so they cannot go
-stale; the founder-written methodology pages stay hand-maintained because no code can derive
-them. The **Update docs** button on those pages re-reads live state — course list, audio-pass
-queue, database counts — from the production machine on demand; facts derived from code refresh
-when a commit deploys.
+The app teaches itself — that replaced the old docs-and-manuals shelf. **How & Why** is one
+surface: the how-to, written for what the signed-in person actually does, and the founder's
+rulings — **Pedagogy**, **Pod Thinking**, the why of APML. Nothing there restates system
+state, so it doesn't rot.
+
+### stocktake
+
+The **Stock-take** room is where the facts that can rot live as compiled renders: the
+**Pipeline** shape, the **Glossary** of shared terms, the **APML** current state. They are
+derived from the code and drift-gated, so they cannot go stale. The **Update docs** button
+re-reads live state — course list, audio-pass queue, database counts — from the production
+machine on demand; facts derived from code refresh when a commit deploys.
 
 ## editor
 
 ### home
 
 Popty is where your courses get made. Two doors matter for you: **Courses** — your library,
-scoped to the courses you've been granted — and **Docs**, the methodology reference. Everything
-you edit here is live content: what the database holds is exactly what learners hear.
+scoped to the courses you've been granted — and **How & Why**, where the app explains itself.
+Everything you edit here is live content: what the database holds is exactly what learners
+hear.
 
 ### courses
 
-A course opens on its **Overview** hub — one door per course, every working surface a card
+The **Library** lists your courses, and next to it sit the canonical browsers — **Seeds**,
+**Content** and **Pods** — windows onto the canonical material in the database. A course
+opens on its **Overview** hub — one door per course, every working surface a card
 inside it: text, audio, recording, QA. The method under all of it: one known prompt maps to
 exactly one target form, course-wide, and the known side is a controlled language too — the
 gates hold you to both when you submit, and a rejection is the method protecting the learner,
@@ -65,14 +76,12 @@ answer, does every phrase use only what's been taught, does it read naturally in
 language? The known-vocab flags this pack carries per course are the compiled starting point —
 begin where the flags are earliest, because everything downstream builds on those seeds.
 
-### docs
+### how
 
-The Docs section is the reference shelf, and it carries two kinds of truth. Compiled pages —
-**Overview**, **APML**, **Glossary**, **Pipeline** — are rendered from the code itself and
-cannot go stale. Rulings pages — **Pedagogy** and **Pod Thinking** — are founder-written
-methodology, kept by hand because no code can derive them. **Seeds**, **Content** and **Pods**
-browse the canonical material in the database. Read Pedagogy before authoring anything — the
-method is the product.
+**How & Why** is one surface with the two things worth reading: the how-to, written for what
+you actually do here and compiled against the running system so it cannot drift from the app —
+and the rulings, the founder's own thinking: **Pedagogy**, **Pod Thinking**, and the why of
+APML. Read Pedagogy before authoring anything — the method is the product.
 
 ## recorder
 

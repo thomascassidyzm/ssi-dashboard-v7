@@ -57,12 +57,19 @@ const sliceBetween = (src, startRe, endRe) => {
 }
 const primaryTabs = parseTabs(sliceBetween(navSrc, /const primaryTabs/, /const sectionTabs/))
 const sectionSrc = sliceBetween(navSrc, /const sectionTabs/, /onMounted/)
+// Section order in the computed (IA of 2026-07-28, "Rulings + How-to"):
+// stocktake row → admin row → production → create → courses/canonical → how.
+const stocktakeTabs = parseTabs(sliceBetween(sectionSrc, /isStocktake\.value/, /isAdminSection\.value/))
 const adminTabs = parseTabs(sliceBetween(sectionSrc, /isAdminSection\.value/, /isProduction\.value/))
 const productionTabs = parseTabs(sliceBetween(sectionSrc, /isProduction\.value/, /if \(isCreateMode\.value\)/))
-const docsTabs = parseTabs(sliceBetween(sectionSrc, /isDocs\.value/, /return \[\]/))
+const coursesTabs = parseTabs(sliceBetween(sectionSrc, /isCoursesBoard\.value \|\| isCanonical\.value/, /isHow\.value/))
+const howTabs = parseTabs(sliceBetween(sectionSrc, /isHow\.value/, /return \[\]/))
 if (primaryTabs.length < 3) failures.push(`DERIVE: only ${primaryTabs.length} primary tabs parsed from AppNavbar.vue`)
+if (!primaryTabs.some((t) => t.label === 'How & Why')) failures.push('DERIVE: primary "How & Why" tab (the Rulings + How-to surface) not found in AppNavbar.vue')
 if (adminTabs.length < 4) failures.push(`DERIVE: only ${adminTabs.length} admin section tabs parsed from AppNavbar.vue`)
-if (docsTabs.length < 6) failures.push(`DERIVE: only ${docsTabs.length} docs tabs parsed from AppNavbar.vue`)
+if (stocktakeTabs.length < 4) failures.push(`DERIVE: only ${stocktakeTabs.length} stock-take tabs parsed from AppNavbar.vue`)
+if (howTabs.length < 3) failures.push(`DERIVE: only ${howTabs.length} How & Why tabs parsed from AppNavbar.vue`)
+if (coursesTabs.length < 4) failures.push(`DERIVE: only ${coursesTabs.length} courses-section tabs parsed from AppNavbar.vue`)
 if (!productionTabs.some((t) => t.label === 'Overview')) failures.push('DERIVE: production "Overview" tab not found in AppNavbar.vue')
 
 // 1b. Role model — the truth persona rendering hangs off. Roles come from the
@@ -171,22 +178,31 @@ const supabaseTables = [...tableRefs.keys()].sort().map((t) => ({
   deprecated: DEPRECATED_TABLES.includes(t) || undefined,
 }))
 
-// 1i. Docs-surface classification — every Docs tab must be declared either a
-// COMPILED render (derived, never stale) or a RULINGS/DATA page (founder-
-// authored prose or DB-browsing views). A new docs tab that nobody classifies
-// fails the compile, so the hub can't silently grow un-governed pages again.
+// 1i. Explaining-surface classification (adapted to the 2026-07-28 IA:
+// "Rulings + How-to"). Every tab of the three explaining homes must be
+// declared: COMPILED (the Stock-take pages — derived, never stale), RULINGS
+// (the How & Why surface — founder-authored prose), or DATA (the canonical
+// browsers under Courses). A new tab on any of these rows that nobody
+// classifies fails the compile, so the estate can't silently grow
+// un-governed pages again. 'Library' is the course library itself, not an
+// explaining surface — exempt.
 const DOCS_SURFACE = {
-  compiled: ['Overview', 'APML', 'Glossary', 'Pipeline'],
-  rulings: ['Pedagogy', 'Pod Thinking'],
+  compiled: ['Stock-take', 'Pipeline', 'Glossary', 'APML'],
+  rulings: ['How & Why', 'Pedagogy', 'Pod Thinking'],
   data: ['Seeds', 'Content', 'Pods'],
 }
 {
   const classified = Object.values(DOCS_SURFACE).flat()
-  for (const t of docsTabs) {
-    if (!classified.includes(t.label)) failures.push(`DERIVE: docs tab "${t.label}" is not classified compiled/rulings/data in DOCS_SURFACE — rule on it before it ships`)
+  const governed = [
+    ...stocktakeTabs,
+    ...howTabs,
+    ...coursesTabs.filter((t) => t.label !== 'Library'),
+  ]
+  for (const t of governed) {
+    if (!classified.includes(t.label)) failures.push(`DERIVE: explaining-surface tab "${t.label}" is not classified compiled/rulings/data in DOCS_SURFACE — rule on it before it ships`)
   }
   for (const label of classified) {
-    if (!docsTabs.some((t) => t.label === label)) warnings.push(`DOCS_SURFACE classifies "${label}" but no such docs tab exists in AppNavbar.vue`)
+    if (!governed.some((t) => t.label === label)) warnings.push(`DOCS_SURFACE classifies "${label}" but no such tab exists on the stock-take/how/courses rows in AppNavbar.vue`)
   }
 }
 
@@ -247,11 +263,12 @@ if (!Object.keys(apmlDoc).length) failures.push('RULINGS: docs/apml.md has no se
 // rotted. Visibility is the app's own: admins get the admin console; editors
 // get Courses/Docs/production Overview; recorders get the Record Room shell.
 const mustName = {
-  admin: [...primaryTabs, ...adminTabs].map((t) => t.label),
+  admin: [...primaryTabs, ...adminTabs, ...stocktakeTabs].map((t) => t.label),
   editor: [
     ...primaryTabs.filter((t) => t.label !== 'Admin'),
     ...productionTabs,
-    ...docsTabs,
+    ...coursesTabs,
+    ...howTabs,
   ].map((t) => t.label),
   recorder: ['Record Room'],
 }
@@ -368,7 +385,7 @@ if (failures.length) {
 // ─── 4. ASSEMBLE ────────────────────────────────────────────────────────────
 
 const truth = {
-  navTabs: { primary: primaryTabs, admin: adminTabs, production: productionTabs, docs: docsTabs },
+  navTabs: { primary: primaryTabs, admin: adminTabs, production: productionTabs, courses: coursesTabs, how: howTabs, stocktake: stocktakeTabs },
   roles: [...roles].sort(),
   activeWorkflow: wfMatch?.[1]?.trim() ?? null,
   phasePorts,
@@ -499,7 +516,7 @@ writeFileSync(join(ROOT, 'docs/explainer-dev.md'), [
   `- Active workflow (SYSTEM.md): ${truth.activeWorkflow}`,
   `- Phase servers: ${phasePorts.map((p) => `${p.name} :${p.port}${p.phase !== '-' ? ` (phase ${p.phase})` : ''}`).join(' · ')}`,
   `- Roles (dashboard_users.role): ${truth.roles.join(', ')} — persona rendering hangs off exactly these.`,
-  `- Nav surfaces: ${primaryTabs.map((t) => t.label).join(' / ')}; admin section: ${adminTabs.map((t) => t.label).join(', ')}; docs: ${docsTabs.map((t) => t.label).join(', ')}.`,
+  `- Nav surfaces: ${primaryTabs.map((t) => t.label).join(' / ')}; admin section: ${adminTabs.map((t) => t.label).join(', ')}; How & Why: ${howTabs.map((t) => t.label).join(', ')}; stock-take: ${stocktakeTabs.map((t) => t.label).join(', ')}; courses: ${coursesTabs.map((t) => t.label).join(', ')}.`,
   ``,
 ].join('\n'))
 

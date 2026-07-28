@@ -1,11 +1,11 @@
 <script setup>
-// DocsIndex — the Docs hub, folded into the self-explaining paradigm
-// (founder ruling 2026-07-27). ONE coherent surface: COMPILED renders
-// (derived from the code, drift-gated, never stale) + founder RULINGS
-// (hand-authored methodology prose) + course DATA browsers. The grouping
-// below is not decoration — it renders pack.docs.surface, the same
-// classification the compiler enforces: a new docs page that nobody
-// classifies fails the build.
+// StocktakeIndex — the compiled reference, demoted to admin-on-demand
+// (founder ruling 2026-07-28: the app teaches itself; the primary surface is
+// How & Why at /how). This is where dev/ssi-admin/agents come to TAKE STOCK:
+// the compiled state pages + the "Update docs" button. The grouping below is
+// not decoration — it renders pack.docs.surface, the same classification the
+// compiler enforces: a new explaining surface nobody classifies fails the
+// build. Rulings and data entries link out to their real homes.
 import { computed } from 'vue'
 import { usePack } from '@/explainer/usePack'
 import UpdateDocsButton from '@/components/explainer/UpdateDocsButton.vue'
@@ -15,15 +15,16 @@ const { pack } = usePack()
 // Presentation for each classified page label (route + one-liner). The set of
 // labels itself comes from the pack.
 const CARD_META = {
-  Overview: null, // this page
-  APML: { to: '/docs/apml', desc: 'The design doctrine, with the current state compiled from the code' },
-  Glossary: { to: '/docs/terminology', desc: 'The shared terms — every storage and enforcement pointer verified at compile time' },
-  Pipeline: { to: '/docs/pipeline', desc: 'Phase servers, gates, voice policy, schema and live state — straight from the code' },
-  Pedagogy: { to: '/docs/pedagogy', desc: 'The teaching model and the method — read this before authoring anything' },
-  'Pod Thinking': { to: '/docs/pod-thinking', desc: 'Design thinking for the listening stream' },
-  Seeds: { to: '/docs/seeds', desc: 'The canonical seed library' },
-  Content: { to: '/docs/canonical', desc: 'Reference translations and validated content' },
-  Pods: { to: '/docs/pods', desc: 'Listening pods — browsing the pod estate' },
+  'Stock-take': null, // this page
+  'How & Why': null, // the primary surface — reachable from the top nav
+  APML: { to: '/stocktake/apml', desc: 'The design doctrine, with the current state compiled from the code' },
+  Glossary: { to: '/stocktake/glossary', desc: 'The shared terms — every storage and enforcement pointer verified at compile time' },
+  Pipeline: { to: '/stocktake/pipeline', desc: 'Phase servers, gates, voice policy, schema and live state — straight from the code' },
+  Pedagogy: { to: '/how/pedagogy', desc: 'The teaching model and the method — read this before authoring anything' },
+  'Pod Thinking': { to: '/how/pod-thinking', desc: 'Design thinking for the listening stream' },
+  Seeds: { to: '/canonical/seeds', desc: 'The canonical seed library' },
+  Content: { to: '/canonical/content', desc: 'Reference translations and validated content' },
+  Pods: { to: '/canonical/pods', desc: 'Listening pods — browsing the pod estate' },
 }
 
 const groups = computed(() => {
@@ -39,14 +40,14 @@ const groups = computed(() => {
     },
     {
       key: 'rulings',
-      title: 'Rulings — founder-authored',
-      note: 'The why: methodology and design thinking. Hand-maintained on purpose; not derivable from any code.',
+      title: 'Rulings — founder-authored (live on How & Why)',
+      note: 'The why: methodology and design thinking. Hand-maintained on purpose; their home is the How & Why surface.',
       cards: build(surface.rulings),
     },
     {
       key: 'data',
-      title: 'Course data',
-      note: 'Browsers over the live course estate in the database.',
+      title: 'Course data (live under Courses)',
+      note: 'Browsers over the live course estate in the database — tools, not docs.',
       cards: build(surface.data),
     },
   ].filter((g) => g.cards.length)
@@ -56,10 +57,11 @@ const groups = computed(() => {
 <template>
   <div class="docs-hub">
     <header class="docs-header">
-      <h1 class="page-title">Documentation</h1>
+      <h1 class="page-title">Stock-take</h1>
       <p class="page-subtitle">
-        One surface, two kinds of truth: facts compiled from the running system, and rulings
-        written by hand because no code can derive them.
+        The compiled reference — the system's current state, derived from the code and drift-gated
+        so it cannot go stale. Day-to-day guidance lives on
+        <router-link to="/how">How &amp; Why</router-link>; this room is for taking stock.
       </p>
       <UpdateDocsButton class="mt-3" />
     </header>

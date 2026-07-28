@@ -52,7 +52,7 @@ const sections = computed(() =>
         <ul class="facts">
           <li>Content submission: <code v-for="e in truth.agentEndpoints" :key="e.path">{{ e.method }} {{ e.path }}</code></li>
           <li>Phase servers: <span class="mono">{{ truth.phasePorts.map(p => `${p.name} :${p.port}`).join(' · ') }}</span></li>
-          <li>Validation gates live right now: <strong>{{ truth.gates.functions.length }}</strong> — the full list, with limits, is on the <router-link to="/docs/pipeline">Pipeline</router-link> page</li>
+          <li>Validation gates live right now: <strong>{{ truth.gates.functions.length }}</strong> — the full list, with limits, is on the <router-link to="/stocktake/pipeline">Pipeline</router-link> page</li>
           <li>Roles: <span class="mono">{{ truth.roles.join(', ') }}</span></li>
         </ul>
         <p class="note">

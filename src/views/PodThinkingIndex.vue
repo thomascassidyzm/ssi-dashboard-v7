@@ -4,7 +4,7 @@
       <h1 class="page-title">Pod Thinking</h1>
       <p class="page-subtitle">
         Methodology and design thinking behind the listening pods - proposals, ramps, and the reasoning
-        behind them, separate from the live pipeline reference in <router-link to="/docs/pods">Listening Pods</router-link>.
+        behind them, separate from the live pipeline reference in <router-link to="/canonical/pods">Listening Pods</router-link>.
       </p>
     </div>
 
@@ -13,7 +13,7 @@
         <router-link
           v-for="doc in liveDocs"
           :key="doc.slug"
-          :to="`/docs/pod-thinking/${doc.slug}`"
+          :to="`/how/pod-thinking/${doc.slug}`"
           class="doc-entry"
         >
           <div class="doc-entry-main">
@@ -35,7 +35,7 @@
           <router-link
             v-for="doc in discussionDocs"
             :key="doc.slug"
-            :to="`/docs/pod-thinking/${doc.slug}`"
+            :to="`/how/pod-thinking/${doc.slug}`"
             class="doc-entry"
           >
             <div class="doc-entry-main">

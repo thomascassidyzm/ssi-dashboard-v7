@@ -1,7 +1,7 @@
 <template>
   <div class="pod-thinking-doc-view">
     <div class="page-header">
-      <router-link to="/docs/pod-thinking" class="back-link">&larr; Pod Thinking</router-link>
+      <router-link to="/how/pod-thinking" class="back-link">&larr; Pod Thinking</router-link>
       <template v-if="doc">
         <span class="doc-badge" :class="badgeClass(doc.badge)">{{ doc.badge }}</span>
         <h1 class="page-title">{{ doc.title }}</h1>

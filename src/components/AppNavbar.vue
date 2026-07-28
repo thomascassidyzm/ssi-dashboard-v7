@@ -243,7 +243,12 @@ const isHidden = computed(() => route.meta.public === true || isRecorder.value)
 const courseCode = computed(() => route.params.courseCode || null)
 const isCreateMode = computed(() => courseCode.value === 'new')
 const isCoursesBoard = computed(() => route.path === '/courses')
-const isDocs = computed(() => route.path.startsWith('/docs'))
+// How & Why — the founder's "Rulings + How-to" surface (replaced Docs, 2026-07-28)
+const isHow = computed(() => route.path.startsWith('/how'))
+// Stock-take — the compiled reference, admin-on-demand
+const isStocktake = computed(() => route.path.startsWith('/stocktake'))
+// Canonical data browsers (Seeds/Content/Pods) — tools under the Courses section
+const isCanonical = computed(() => route.path.startsWith('/canonical/'))
 const isUsers = computed(() => route.path === '/users')
 const isJobs = computed(() => route.path === '/jobs')
 const isMaintenance = computed(() => route.path === '/maintenance')
@@ -251,17 +256,18 @@ const isInsights = computed(() => route.path === '/insights')
 const isAdminHub = computed(() => route.path === '/admin')
 const isProduction = computed(() => route.path.startsWith('/production/') && route.params.courseCode)
 
-// "Courses" owns the whole course pipeline: the library, a course overview,
-// and every working surface under /production/:code.
+// "Courses" owns the whole course pipeline: the library, the canonical data
+// browsers, a course overview, and every working surface under /production/:code.
 const isCourseSection = computed(() =>
   route.path.startsWith('/courses') ||
   route.path.startsWith('/course/') ||
+  isCanonical.value ||
   (route.path.startsWith('/production/') && !!courseCode.value)
 )
 
 // The Admin section groups platform-wide tooling under one tab row.
 const isAdminSection = computed(() =>
-  route.path.startsWith('/admin') || isJobs.value || isMaintenance.value || isInsights.value || isUsers.value
+  route.path.startsWith('/admin') || isStocktake.value || isJobs.value || isMaintenance.value || isInsights.value || isUsers.value
 )
 
 // Show the course-count chip only on the Courses library.
@@ -279,13 +285,24 @@ const courseCrumb = computed(() => {
 // with an active-state highlight driven by the current section.
 const primaryTabs = computed(() => [
   { label: 'Courses', to: '/courses', active: isCourseSection.value },
-  { label: 'Docs', to: '/docs', active: isDocs.value },
+  { label: 'How & Why', to: '/how', active: isHow.value },
   { label: 'Admin', to: '/admin', active: isAdminSection.value }
 ])
 
 // SECTION sub-tabs — contextual nav rendered as a second row under the
-// primary bar (the per-section tooling: admin tools, docs pages, course view).
+// primary bar (the per-section tooling: admin tools, course view, How & Why).
 const sectionTabs = computed(() => {
+  // Stock-take — the compiled reference pages, one row while you're in them.
+  // Checked before the admin section so the stock-take pages get their own row.
+  if (isStocktake.value) {
+    return [
+      { label: 'Stock-take', to: '/stocktake', active: route.name === 'StocktakeIndex' },
+      { label: 'Pipeline', to: '/stocktake/pipeline', active: route.name === 'DocsPipeline' },
+      { label: 'Glossary', to: '/stocktake/glossary', active: route.name === 'DocsGlossary' },
+      { label: 'APML', to: '/stocktake/apml', active: route.name === 'DocsApml' }
+    ]
+  }
+
   // Admin section — platform-wide tooling under one tab row.
   if (isAdminSection.value) {
     return [
@@ -308,7 +325,8 @@ const sectionTabs = computed(() => {
         active: isMaintenance.value,
         badge: auditStaleDays.value ? `${auditStaleDays.value}d` : null
       },
-      { label: 'Users', to: '/users', active: isUsers.value }
+      { label: 'Users', to: '/users', active: isUsers.value },
+      { label: 'Stock-take', to: '/stocktake', active: false }
     ]
   }
 
@@ -333,17 +351,21 @@ const sectionTabs = computed(() => {
     ]
   }
 
-  if (isDocs.value) {
+  // Courses library + the canonical data browsers, one row.
+  if (isCoursesBoard.value || isCanonical.value) {
     return [
-      { label: 'Overview', to: '/docs', active: route.name === 'DocsIndex' },
-      { label: 'APML', to: '/docs/apml', active: route.name === 'DocsApml' },
-      { label: 'Pedagogy', to: '/docs/pedagogy', active: route.name === 'Pedagogy' },
-      { label: 'Glossary', to: '/docs/terminology', active: route.name === 'DocsGlossary' },
-      { label: 'Seeds', to: '/docs/seeds', active: route.name === 'CanonicalSeeds' },
-      { label: 'Content', to: '/docs/canonical', active: route.name === 'CanonicalContent' },
-      { label: 'Pods', to: '/docs/pods', active: route.name === 'PodsDoc' },
-      { label: 'Pod Thinking', to: '/docs/pod-thinking', active: route.name === 'PodThinkingIndex' || route.name === 'PodThinkingDoc' },
-      { label: 'Pipeline', to: '/docs/pipeline', active: route.name === 'DocsPipeline' }
+      { label: 'Library', to: '/courses', active: isCoursesBoard.value },
+      { label: 'Seeds', to: '/canonical/seeds', active: route.name === 'CanonicalSeeds' },
+      { label: 'Content', to: '/canonical/content', active: route.name === 'CanonicalContent' },
+      { label: 'Pods', to: '/canonical/pods', active: route.name === 'PodsDoc' }
+    ]
+  }
+
+  if (isHow.value) {
+    return [
+      { label: 'How & Why', to: '/how', active: route.name === 'HowAndWhy' },
+      { label: 'Pedagogy', to: '/how/pedagogy', active: route.name === 'Pedagogy' },
+      { label: 'Pod Thinking', to: '/how/pod-thinking', active: route.name === 'PodThinkingIndex' || route.name === 'PodThinkingDoc' }
     ]
   }
 
