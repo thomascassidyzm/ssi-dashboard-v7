@@ -102,7 +102,7 @@
               </div>
 
               <!-- Step 3: Publish Manifest -->
-              <div v-show="activeStep === 3" class="step-panel">
+              <div v-show="activeStep === 3" class="step-panel space-y-4">
                 <Step3Publish
                   :state="workflow.state.value"
                   :version-info="workflow.versionInfo.value"
@@ -116,6 +116,13 @@
                   @load-version-info="handleLoadVersionInfo"
                   @download-manifest="handleDownloadManifest"
                   @push-to-remote="handlePushToRemote"
+                />
+                <!-- Apidev stage deploy — appears once the manifest is committed
+                     to course-configs (push to remote is the user's responsibility
+                     before this; apidev will git pull on its own). -->
+                <StageDeployPanel
+                  v-if="workflow.state.value.manifestPublished"
+                  :workflow="workflow"
                 />
               </div>
 
@@ -218,6 +225,7 @@ import Step1Generate from './export/Step1Generate.vue'
 import Step2Verify from './export/Step2Verify.vue'
 import Step3Publish from './export/Step3Publish.vue'
 import Step4Deploy from './export/Step4Deploy.vue'
+import StageDeployPanel from './export/StageDeployPanel.vue'
 
 // Props
 const props = defineProps<{
@@ -506,23 +514,17 @@ onMounted(() => {
     loadInitialState()
   }
 
-  // Auto-transition from Step 1 to Step 2 after manifest generation completes
-  const socket = workflow.getSocket()
-  if (socket) {
-    socket.on('legacyAudio:completed', (data: { jobId: string; courseCode?: string }) => {
-      // Only auto-advance if user is still on Step 1
-      if (activeStep.value === 1) {
-        // Small delay for UX smoothness (let user see completion message)
-        setTimeout(() => {
-          // Move to Step 2
-          activeStep.value = 2
-
-          // Automatically start S3 verification
-          handleVerify()
-        }, 1000)
-      }
-    })
-  }
+  // Auto-transition Step 1 → Step 2 after manifest generation completes.
+  // The composable owns the socket listener and re-attaches across reconnects;
+  // it only invokes this callback for our own audioJobId.
+  workflow.onLegacyAudioCompleted(() => {
+    if (activeStep.value !== 1) return
+    console.log('Manifest generation complete - auto-starting S3 verification')
+    setTimeout(() => {
+      activeStep.value = 2
+      handleVerify()
+    }, 1000)
+  })
 })
 
 onUnmounted(() => {
