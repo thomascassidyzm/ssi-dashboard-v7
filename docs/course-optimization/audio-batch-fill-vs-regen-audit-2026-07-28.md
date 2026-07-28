@@ -111,3 +111,76 @@ normalized-text match):
   (~1,428 repair rows ≈ 4,300 clips): ≈ $1–1.5 — the delta remains the backfill estate, not waste.
 - Blocked trio (no voice_config): 118,569 slots ≈ 2.35M chars ≈ $10–30 depending on voice
   choices — still a separate spend decision.
+
+---
+
+## Addendum 2 — verifying the 67% copy-miss: real gaps or matching artifact? (2026-07-28)
+
+Founder challenge before any heavy rendering starts: *"Most of these we MUST already have audio
+for — so it's a copy job almost certainly."* Checked directly against live Supabase (all 25,458
+NULL-`known_audio_id` slots across fra_ca/por_br/spa_mx_for_eng — full population, not a sample;
+an initial 210-item spot sample was run first but used a biased shuffle and is superseded below).
+
+### Verdict
+
+**Mostly real, not an artifact — but the miss bucket has one previously-uncounted sub-slice.**
+Of the 25,458 slots:
+
+| bucket | slots | % | what it means |
+|---|---|---|---|
+| clone-voice audio already exists (bare `gfzdpspr5fdp` key) | 6,583 | 25.9% | true copy-bucket hit |
+| clone-voice audio exists, stored under `xai_gfzdpspr5fdp` (same voice, prefixed key) | 1,937 | 7.6% | **also** a true hit — see matching-key note below |
+| **clone-hit combined** | **8,520** | **33.5%** | matches the addendum's reported 8,507 (33%) almost exactly (drift = batch still running) |
+| audio exists for the exact text, but under a *different* voice (mostly Azure `en-GB-Sonia/Bella/Ryan/Mia`, the courses' own current known-side voice) | 2,249 | 8.8% | real duplicate content, just not reachable by today's copy-match trust rules |
+| no audio anywhere, any voice, for that exact normalized text | 14,689 | 57.7% | genuinely new phrase text — the backfill estate |
+
+Per-course split (clone-hit bare-key only / other-voice / nowhere / total):
+fra_ca 3,019 / 2,190 / 6,723 / 11,932 — por_br 2,168 / 1,086 / 4,589 / 7,843 — spa_mx 1,396 / 910 /
+3,377 / 5,683.
+
+### Matching-key diagnosis (asked for, found one real artifact — on the hit side, not the miss side)
+
+`voices` registers the clone as bare `gfzdpspr5fdp` (display name "Tom"); `clone-copy-match.cjs`'s
+`computeAudioKey` requires an exact string match against that bare id. But a chunk of
+`course_audio` rows store the *same clone voice's* renders under the engine-prefixed string
+`xai_gfzdpspr5fdp` instead — same audio, different key. Naively matching only the bare key (as a
+first pass here did) undercounts real clone-hits by 7.6 points (25.9% → 33.5%). **This artifact
+already existed in the original 33% figure** — it reconciles almost exactly with the combined
+(bare+prefixed) count, so the addendum's headline number was already correct; it just wasn't
+decomposed. The founder's "we must already have this" instinct is right for that combined 33.5%,
+already counted — it does not extend further into the 66.5% miss.
+
+Checked and ruled out as a source of *additional* hidden hits: punctuation/quote-normalization
+differences (curly vs straight quotes, trailing punctuation variants) were not fully reconcilable
+within this session's time budget (a same-text loose-normalization sweep over the 14,689
+"nowhere" slots was started but the DB round-trip cost — 20,499 unique texts, ~1-3s/chunk — made
+it impractical to finish live). Manual read of 20 "nowhere" sample texts (e.g. "Can you hold the
+door open while I fetch the keys?", "did they want to develop a new approach?") shows genuinely
+novel sentences, not near-duplicates of existing rows — corroborating, not proof, that the 57.7%
+figure is real rather than a normalization gap.
+
+### Re-cost under the corrected reuse picture
+
+Using the addendum's own char totals (590,535 chars / 25,458 slots) and this session's slot-level
+hit-rate (hit slots are shorter than average, so the 33.5% slot-hit-rate implies ~23% of chars —
+consistent with the addendum's own $6.82 repoint figure, which already implies ~135,868 hit chars
+/ ~454,667 render chars):
+
+- **Copy bucket (bare+prefixed clone key), zero cost: 8,520 slots ≈ 135,868 chars.** No change to
+  the addendum's existing $6.82 (repoint) / $2.36 (stay-Azure) render-cost lines — those already
+  reflect the correct combined hit-rate.
+- **Of the remaining ~454,667 render chars, an estimated ~60,000 chars (2,249 slots, other-voice
+  hit, proportional estimate) are NOT new content** — they exist today as Azure clips in the
+  courses' own current known voice. Repointing to the clone would still pay full xAI render cost
+  for this slice (≈$0.91) because Azure clips are untrusted as copy sources (speed not verified
+  1x, per `isTrusted1xEngine`). **This is a separate, real opportunity**: if Tom is willing to
+  trust those specific Azure clips as 1x (or re-verify a sample), this slice becomes a free relink
+  regardless of the repoint decision — independent taste/engineering call, not assumed here.
+  - The remaining ≈$5.91 xAI (≈394,287 chars, 14,689 slots) is genuinely new text with no
+    audio anywhere — real backfill estate either way, matching the addendum's framing.
+- **Bottom line: the 67% miss is ~86% genuinely new content and ~14% an untapped
+  Azure-source-trust opportunity — not a copy-matching bug inflating the miss count.** The
+  repoint-vs-stay-on-Azure economics in Addendum 1 stand as costed.
+
+No rendering, batch resume, or repoint decision was executed — numbers only, per the verification
+brief.
