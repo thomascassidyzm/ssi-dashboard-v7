@@ -30,7 +30,8 @@ constraint. Available at scale (role ∈ known/target1/target2, text > 2 chars):
 |---|---|
 | Same text, 2+ voices (any) | ~119k English texts, 20–34k per major target language |
 | Same text, cross-provider (azure × xai × elevenlabs) | ~51k eng, ~15k fra texts |
-| Same text, human vs TTS | 1,282 eng texts (human eng recordings exist), 12 cym texts |
+| Same text, human vs TTS | 1,282 eng texts (human eng recordings exist) |
+| Same text, cross-human (Welsh) | 12 cym texts — all Welsh audio in the estate is human-recorded, multiple voices; no Welsh TTS exists |
 | Same text, same voice, distinct files (re-renders) | ~69k groups |
 
 ## Study design
@@ -46,7 +47,12 @@ Six categories, sampled deterministically (`order by md5(...)`), ~400 pairs:
 - **crossvoice** — same text, two azure voices (fra/spa; typically male/female).
 - **crossprovider** — same text, azure vs xai/other (eng/fra).
 - **human_tts_eng** — same English text, human recording vs TTS.
-- **human_tts_cym** — same Welsh text, human vs TTS (all 12 that exist).
+- **human_tts_cym** — same Welsh text, two different human voices (all 12 that
+  exist). Every Welsh clip in the estate is human-recorded — there is no
+  Welsh TTS — so despite the category's data-pipeline name this is
+  cross-human, not human-vs-TTS. Useful in its own right as a preview of
+  human-to-human distance, which is closer to the eventual learner-vs-model
+  comparison than a human-vs-TTS pair is.
 
 Per clip (methods documented in `prosody.py` header): F0 contour via
 normalised autocorrelation (60–400 Hz, 10 ms hop, clarity-gated voicing,
@@ -134,7 +140,7 @@ cross+far pool so no dimension dominates by unit):
 | rerender (deduped) | 0.56 |
 | crossvoice | 0.83 |
 | crossprovider | 1.06 |
-| human_tts_cym | 1.53 |
+| human_tts_cym (cross-human, Welsh) | 1.53 |
 | diffphrase (far anchor) | 2.19 |
 | human_tts_eng | 2.37 |
 
@@ -143,9 +149,11 @@ cross+far pool so no dimension dominates by unit):
 - AUC re-render vs cross-voice = 0.771 (the metric still *notices* the voice
   change — it is not blind, it is just not dominated)
 
-The ordering is monotonic and matches the physical story end to end: same
-render < new voice, same provider < new provider < human vs TTS < different
-phrase. **A contour metric built on energy shape + timing separates "said the
+The ordering is largely monotonic and matches the physical story: same
+render < new voice, same provider < new provider < cross-human (Welsh) <
+different phrase < human vs TTS (English) — that last flip is discussed in
+sanity check 4 below; it is a tempo artefact of the English pairing, not a
+Welsh result. **A contour metric built on energy shape + timing separates "said the
 right phrase" from "said a different phrase" at AUC ≈ 0.81 across a speaker
 change**, using zero timbre information. That is the discrimination the
 learner-vs-model-voice design depends on, and it holds at PoC scale.
@@ -170,22 +178,36 @@ that residual voice sensitivity reaching the learner as a penalty.
    0.104) — swapping vendor moves prosody more than swapping voice within
    Azure, which is what you'd expect and a useful independent confirmation the
    metric is tracking something real.
-4. **Human vs TTS sits in between — partially** ⚠️. Welsh lands where predicted
-   (1.53, between cross-provider 1.06 and different-phrase 2.19). **English does
-   not** (2.37 — at or beyond the different-phrase anchor), driven by duration:
-   human/TTS `dur_log_ratio` median 0.476 vs 0.251 for different phrases. Human
-   speakers simply do not use the same pace as the TTS, and the 99 English
-   pairs pit a legacy human recording against Azure/xAI renders of the same
-   text. Read straight, this says **duration ratio will punish a learner for
-   speaking at a human tempo** — it needs per-phrase normalisation or a wide
-   tolerance band before it goes anywhere near learner scoring.
+4. **Human vs TTS sits in between — partially, and only the English half is a
+   real human-vs-TTS read** ⚠️. The Welsh figure (1.53, between cross-provider
+   1.06 and different-phrase 2.19) is **not** a human-vs-TTS comparison at all
+   — every Welsh clip in the estate is human-recorded (there is no Welsh TTS),
+   so `human_tts_cym` is actually two human voices, cross-human. It lands
+   where predicted, which is a useful data point in its own right (human-to-
+   human distance previews the eventual learner-vs-model comparison), but it
+   says nothing about TTS. **English does not** sit where predicted (2.37 — at
+   or beyond the different-phrase anchor), driven by duration: human/TTS
+   `dur_log_ratio` median 0.476 vs 0.251 for different phrases. The 99 English
+   pairs pit a genuine human recording (`origin='human'`, confirmed in the lab
+   data) against Azure/xAI renders of the same text, so this IS a real
+   human-vs-TTS tempo gap. Human speakers simply do not use the same pace as
+   the TTS. Read straight, this says **duration ratio will punish a learner
+   for speaking at a human tempo** — it needs per-phrase normalisation or a
+   wide tolerance band before it goes anywhere near learner scoring. **No
+   speed/duration claim in this doc rests on Welsh data** — the Welsh
+   recordings come from a very old course and are noticeably slower than
+   modern TTS, a pacing artefact of that course's era, not a human-vs-TTS
+   signal; every duration/tempo claim here is anchored on the English pair
+   only.
 
-**Do not trust the Welsh number as a human-vs-TTS read.** All 12 cym pairs are
-the human recording of a declarative against the TTS render of the *question*
-form of the same words (grouping is on punctuation-stripped text, and in every
-one of the 12 the TTS side ends in `?`). So that comparison contains a real
-intonation difference on top of the origin difference. n=12 and confounded —
-listed for completeness, load-bearing on nothing.
+**Do not trust the Welsh number as a human-vs-TTS read — it isn't one.** All
+12 cym pairs are two human voices, not human vs TTS (see above). On top of
+that, the pairing itself is confounded: one voice recorded a declarative
+against the other voice's rendition of the *question* form of the same words
+(grouping is on punctuation-stripped text, and in every one of the 12 the
+second side ends in `?`). So that comparison contains a real
+intonation difference on top of the cross-voice difference. n=12 and
+confounded — listed for completeness, load-bearing on nothing.
 
 ### Listenable example pairs
 
@@ -234,13 +256,30 @@ Pair it with a content check; do not ask it to do word recognition.
    Register-normalisation is insufficient; on this evidence they grade the
    learner's larynx.
 3. **Duration needs a tolerance band before learner use** — the human-vs-TTS
-   English result shows a natural human tempo scoring as far as a wrong phrase.
+   English result shows a natural human tempo scoring as far as a wrong
+   phrase. (English only — see sanity check 4; the Welsh pairs are cross-human
+   and, separately, noticeably slower-paced than modern TTS because they come
+   from a deliberately slow-paced old course, so they carry no tempo evidence
+   either way.)
 4. **Model-voice selection** now has a measurable handle: of the renditions of
    a phrase, prefer the one whose energy contour is most central across voices
    — that is the most copyable reading, and it is the doctrine ("maximally
    copyable by a beginner") made operational.
 5. Next scale-up, if wanted: more human-vs-TTS pairs without the punctuation
    confound, and a cross-voice *different-phrase* anchor to bound the easy case.
+6. **Founder direction for VAD Lab v2** (logged, not built now): more detailed
+   comparisons than this PoC's six categories — Tom wants deeper coverage
+   before the surface is treated as more than a first pass.
+
+### Voice-sourcing policy (context for the human/TTS categories above)
+
+All future course voices are TTS, except where quality demands otherwise:
+**Welsh** (deliberately picky about quality — human-voiced, no Welsh TTS),
+**Breton** (no TTS exists for it), and any language where Azure — the most
+comprehensive TTS provider available; if Azure doesn't have a suitable voice,
+one likely doesn't exist — has no suitable voice. This is why `human_tts_cym`
+is cross-human rather than human-vs-TTS: it isn't a gap to close, it's the
+policy working as intended.
 
 ## Honest limitations
 
@@ -255,14 +294,21 @@ Pair it with a content check; do not ask it to do word recognition.
   cross-voice different-phrase need — that comparison is strictly easier).
 - Human recordings are studio-mastered like the TTS, so human-vs-TTS gaps here
   are a *floor* for what real learner-mic audio will show.
+- All Welsh audio in the estate is human-recorded (multiple voices; there is
+  no Welsh TTS) and comes from a very old, deliberately slow-paced course —
+  noticeably slower than modern TTS. `human_tts_cym` is therefore cross-human,
+  not human-vs-TTS, and carries no valid speed/duration evidence for either
+  reading; every duration/tempo claim in this doc is anchored on the English
+  pair only.
 - The near anchor is TTS re-renders, which are near-deterministic — it bounds
   decoder noise, not the variability of a human saying the same thing twice.
   8 of 40 sampled "re-renders" were the same file under two s3_keys and are
   excluded (`same_bytes`); the estate contains such duplicates.
-- The 12 human-vs-TTS Welsh pairs are confounded: grouping is on
-  punctuation-stripped text and in all 12 the human side is declarative while
-  the TTS side is the question form, so an intonation difference rides along
-  with the origin difference. n=12; treat as anecdote.
+- The 12 `human_tts_cym` pairs are cross-human (see above), and independently
+  confounded on top of that: grouping is on punctuation-stripped text and in
+  all 12 one voice is declarative while the other is the question form, so an
+  intonation difference rides along with the cross-voice difference. n=12;
+  treat as anecdote.
 - `pause_diff` is degenerate at this phrase length (0.0 at every anchor) — it
   is uninformative here, not invariant.
 - Anchor medians are 12–100 pairs per category; the direction of every result

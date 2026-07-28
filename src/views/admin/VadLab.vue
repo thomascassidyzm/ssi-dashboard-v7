@@ -70,12 +70,16 @@ const CATEGORY_META = {
   crossprovider: { label: 'Same phrase, new provider', short: 'NEW PROVIDER' },
   diffphrase: { label: 'Different phrases', short: 'DIFF PHRASE' },
   human_tts_eng: { label: 'Human vs TTS · English', short: 'HUMAN v TTS' },
-  human_tts_cym: { label: 'Human vs TTS · Welsh', short: 'HUMAN v TTS' },
+  human_tts_cym: { label: 'Cross-human, same phrase · Welsh', short: 'CROSS-HUMAN' },
 }
 const catMeta = (c) => CATEGORY_META[c] || { label: c, short: c }
 
 function voiceLabel(side) {
   if (side.origin === 'human') return 'Human recording'
+  // Welsh estate is 100% human-recorded — the DB's 'tts' origin tag on some
+  // legacy Welsh rows is a labelling artefact, not a synthetic voice. Any
+  // 'legacy_import' voice id is a human recording regardless of that tag.
+  if (side.voice === 'legacy_import') return 'Human recording (different voice)'
   const v = side.voice || ''
   const az = v.match(/^azure_([a-z]{2}-[A-Z]{2})-(.+?)(Neural)?$/)
   if (az) return `Azure · ${az[2]} (${az[1]})`
@@ -240,11 +244,11 @@ const TOUR = [
   },
   {
     pair_id: 'human_tts_cym:89ee6e14:2db912f9',
-    title: '5 · Human Welsh vs TTS Welsh',
+    title: '5 · Two human Welsh voices, same phrase',
     teaches:
-      'A human SSi recording against the TTS render of the same Welsh words. The contours land closer than different phrases would — evidence the core survives the human-to-synthetic gap.',
+      'Two different human SSi voices recording the same Welsh words — not human vs TTS. Every Welsh clip in the estate is human-recorded (Welsh voice quality is deliberately picky, so there is no Welsh TTS to compare against). The contours land closer than different phrases would — a useful preview of human-to-human distance, which is closer to the eventual learner-vs-model comparison than a human-vs-TTS pair would be.',
     footnote:
-      'Honest footnote: in all 12 Welsh pairs the human side is the declarative and the TTS side the question form of the same words, so a real intonation difference rides along with the human-versus-TTS difference. Twelve pairs, confounded — listed as anecdote, load-bearing on nothing.',
+      'Honest footnote: in all 12 Welsh pairs one voice is the declarative and the other the question form of the same words, so a real intonation difference rides along with the cross-voice difference. Twelve pairs, confounded — listed as anecdote, load-bearing on nothing. Also: the Welsh recordings are from a very old, deliberately slow-paced course, so no speed/duration conclusion should ever be drawn from them — that comparison is anchored on the English pair (card 6) only.',
   },
   {
     pair_id: 'human_tts_eng:4f4a89a8:5cce06c8',
@@ -542,8 +546,10 @@ const aucTable = computed(() => {
           Recognise that the <em>same phrase</em> was said, through a change of speaker, using no
           timbre information at all. Energy-contour shape alone separates same-phrase-new-voice
           from different-phrase at AUC 0.845; combined with duration and syllable count, 0.813.
-          The category ordering is monotonic and matches the physical story end to end: same
-          render &lt; new voice &lt; new provider &lt; human vs TTS &lt; different phrase.
+          The category ordering largely matches the physical story: same render &lt; new voice
+          &lt; new provider &lt; cross-human (Welsh) &lt; different phrase &lt; human vs TTS
+          (English) — that last flip is a tempo artefact of the English pairing, not a Welsh
+          result; see the tour and findings doc for the detail.
         </p>
       </section>
       <section class="prove-card cannot">
@@ -561,11 +567,24 @@ const aucTable = computed(() => {
         <h2>What comes next</h2>
         <p>
           A residual voice-sensitivity remains — a learner scored raw would pay a small penalty
-          just for not being the model voice, and the human-tempo example shows duration scoring
-          a natural pace as far as a wrong phrase. So the next step is the CEFR calibration
+          just for not being the model voice, and the human-tempo example (English) shows duration
+          scoring a natural pace as far as a wrong phrase. So the next step is the CEFR calibration
           cohort: recordings of real speakers at known levels set variance bands per level, so
           the score reads “within the band for your stage”, not “identical to the machine”.
-          Calibration is not polish; it is what makes the residual honest.
+          Calibration is not polish; it is what makes the residual honest. Logged direction, not
+          built yet: the founder wants more detailed comparisons than this PoC's six categories
+          for VAD Lab v2.
+        </p>
+      </section>
+      <section class="prove-card policy">
+        <h2>Voice-sourcing policy</h2>
+        <p>
+          Context for the human/TTS categories above: all future course voices are TTS, except
+          where quality demands otherwise — Welsh (deliberately picky about quality, human-voiced),
+          Breton (no TTS exists for it), and any language where Azure — the most comprehensive TTS
+          provider available; if Azure doesn't have a suitable voice, one likely doesn't exist —
+          has no suitable voice. That's why the Welsh category above is cross-human rather than
+          human-vs-TTS: it isn't a gap to close, it's the policy working as intended.
         </p>
       </section>
       <p class="prove-src">
