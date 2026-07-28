@@ -89,6 +89,14 @@ memory/docs, `courses.quality_rules`, and recent final-pass docs.
 ## Operational gotchas (learned the expensive way)
 
 - **One writer per course.** See step 3.
+- **targets.json `lego_index` can be OFFSET from the DB** (eng_for_hin 2026-07-27: "on Monday"
+  is DB 316/4 but targets.json said 316/1). Always take the HOST basket's lego_index from
+  `all-phrases.tsv` (or the DB), never from targets.json. The submit endpoint's containment
+  check catches most mislabels — read its errors.
+- **Apostrophes get SILENTLY stripped when submitting via `curl -d '...'` single-quote
+  wrapping** ("don't"→"dont"). Always submit from a JSON *file* (`--data-binary @file.json`
+  or a small python helper). After any run, sweep new rows for
+  `\b(dont|cant|im|wont|didnt|youre|thats…)\b` before calling it clean.
 - **Resume after crash/limit**: submissions are already saved (incremental) — validate them,
   regenerate targets (counts changed) and dumps (scratchpads get wiped between sessions),
   then message the same agent to resume; it reconciles its frontier from the fresh counts.

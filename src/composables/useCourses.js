@@ -31,6 +31,9 @@ const fallbackNames = {
   'fas': 'Persian', 'kur': 'Kurdish', 'amh': 'Amharic', 'hau': 'Hausa',
   'yor': 'Yoruba', 'zul': 'Zulu', 'kat': 'Georgian', 'hye': 'Armenian',
   'bre': 'Breton', 'cor': 'Cornish',
+  'nap': 'Neapolitan', 'scn': 'Sicilian', 'fur': 'Friulian', 'lmo': 'Lombard',
+  'vec': 'Venetian', 'rgn': 'Romagnol', 'pdc': 'Pennsylvania Dutch',
+  'roh': 'Romansh', 'sme': 'Northern Sámi', 'yid': 'Yiddish',
   // Dialect variants
   'cym_n': 'Welsh (North)', 'cym_s': 'Welsh (South)',
   'por_br': 'Portuguese (Brazil)', 'spa_mx': 'Spanish (Mexico)',
