@@ -184,3 +184,54 @@ consistent with the addendum's own $6.82 repoint figure, which already implies ~
 
 No rendering, batch resume, or repoint decision was executed — numbers only, per the verification
 brief.
+
+---
+
+## Addendum 3 — dialect-vs-parent English diff: the founder's sharpened test (2026-07-28)
+
+Founder's sharpened prior: English prompts never name the dialect ("I want to speak Spanish", not
+"Mexican Spanish"), so each dialect course's English side should be **near-identical** to its
+parent (spa_mx vs spa, por_br vs por, fra_ca vs fra) — true misses expected ≤5%. If the measured
+33% hit-rate holds against that bar, the matching key is the prime suspect.
+
+**Direct diff, run against live Supabase (full population, both courses' entire known-side text
+inventories, not just the unlinked slots):**
+
+| dialect | parent | dialect slots | parent slots | whole-course English identical | miss-only: % of copy-misses that exist verbatim in parent |
+|---|---|---|---|---|---|
+| spa_mx_for_eng | spa_for_eng | 14,728 | 18,479 | **32.2%** | **21.0%** (79.0% truly new vs parent) |
+| por_br_for_eng | por_for_eng | 16,417 | 16,232 | **42.2%** | **24.9%** (75.1% truly new vs parent) |
+| fra_ca_for_eng | fra_for_eng | 14,922 | 18,186 | **34.1%** | **17.8%** (82.2% truly new vs parent) |
+
+(Loose-normalization pass — stripping all punctuation/quotes, not just the strict trailing-mark
+rule — added at most 0.3-0.5 points on top of the strict-match figures above; it is not where the
+gap lives.)
+
+### Verdict: the founder's ≤5% prior is refuted — but not by a matching-key bug
+
+**This is not a matching-key artifact.** Two pieces of direct evidence:
+
+1. **No lineage exists between these courses.** `courses` has no `parent_course`/`derived_from`/
+   template field, and each dialect's `created_at` postdates its parent by weeks-to-months
+   (spa_for_eng 2026-01-04 → spa_mx_for_eng 2026-02-27; por_for_eng 2026-01-16 → por_br_for_eng
+   2026-02-27; fra_for_eng 2026-01-11 → fra_ca_for_eng 2026-04-15). There is no "copy parent, patch
+   the dialect differences" build path in this system to have gone wrong.
+2. **Total slot counts differ course-to-course** (spa 18,479 vs spa_mx 14,728; fra 18,186 vs
+   fra_ca 14,922) — a shared-template model would produce near-identical counts. These are
+   independently authored courses (per `ralph-methodology.md`: each pair gets its own seed
+   selection, decomposition, and translation-choice pass — `synonym-choice-architecture.md`),
+   which only *happen* to target a common macro-language. The ~33-42% overlap is the naturally
+   recurring stock of short, high-frequency English pedagogical phrases ("I don't think that",
+   "he couldn't", "to talk about") that independent authors converge on by the methodology's own
+   frequency/cliff-front-loading logic (§1.3 "Cliff front-loading" in the manual) — not a shared
+   source being under-matched.
+
+**So the founder's mental model — one English scaffold, three dialect skins — does not match how
+these three course-pairs were actually built.** The 33% clone-copy hit-rate (Addendum 2) is
+consistent with "two independently authored courses share about a third of their common stock
+phrases," not with "one course's English, mostly re-used, mostly missed by the matcher." Getting
+to the founder's ≤5%-miss bar would require *making* the courses share an English scaffold — a
+content/authoring decision (retrofitting fra_ca/por_br/spa_mx onto their parents' English side),
+not an audio-pipeline fix. That is a real, sizeable lever if wanted (it would also mean rebuilding
+or re-authoring the dialect target-language sides to match parent seed selection) — flagged here as
+a decision for Tom, not assumed or started.
