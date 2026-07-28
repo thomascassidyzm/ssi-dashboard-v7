@@ -14,6 +14,14 @@
  *   node tools/course-optimization/run-approved-audio-passes.cjs \
  *     --run --reason-prefix "BUILD template-stamp regeneration"
  *
+ * Course scoping (--only-courses / --exclude-courses, comma-separated) narrows
+ * a --run to part of the approved queue. Approval is per-request and coarse
+ * (a whole queue of courses gets approved at once), but a spend decision is
+ * often per-course: 2026-07-28 the founder approved resuming ~30 LIGHT courses
+ * while HOLDING five heavy X_for_eng courses until their English known side is
+ * repointed to the clone voice. Without scoping, honouring that meant editing
+ * queue rows; with it, the queue stays intact and the run is the narrow thing.
+ *
  * --run is SEQUENTIAL (phase8 has one work slot and no busy-lock on
  * /generate) and RESUME-SAFE: phase8 marks a request fulfilled only on a
  * zero-failure pass, and /generate itself only voices missing/unlinked audio,
@@ -35,6 +43,10 @@ const args = process.argv.slice(2)
 const flag = name => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : null }
 const reasonPrefix = flag('--reason-prefix')
 const ts = () => new Date().toISOString()
+
+const courseList = name => (flag(name) || '').split(',').map(s => s.trim()).filter(Boolean)
+const onlyCourses = courseList('--only-courses')
+const excludeCourses = courseList('--exclude-courses')
 
 async function pendingRequests() {
   let q = supabase
@@ -141,7 +153,30 @@ async function run() {
     process.exit(1)
   }
 
-  const rows = await pendingRequests()
+  let rows = await pendingRequests()
+
+  // Course scoping. A typo in --exclude-courses would silently spend money on
+  // the very course being held back, so an unmatched name is a hard abort, not
+  // a warning: if a course has already fulfilled, drop it from the list.
+  const queued = new Set(rows.map(r => r.course_code))
+  const unmatched = [...onlyCourses, ...excludeCourses].filter(c => !queued.has(c))
+  if (unmatched.length) {
+    console.error(`--only/--exclude names not in the pending queue: ${unmatched.join(', ')} — aborting before any TTS (typo, or already fulfilled: drop it from the list)`)
+    process.exit(1)
+  }
+  if (onlyCourses.length) {
+    rows = rows.filter(r => onlyCourses.includes(r.course_code))
+    console.log(`Scoped to --only-courses (${onlyCourses.length}): ${onlyCourses.join(', ')}`)
+  }
+  if (excludeCourses.length) {
+    rows = rows.filter(r => !excludeCourses.includes(r.course_code))
+    console.log(`Excluded by --exclude-courses (${excludeCourses.length}): ${excludeCourses.join(', ')}`)
+  }
+  if (!rows.length) {
+    console.error('No pending requests left after scoping — nothing to do')
+    process.exit(1)
+  }
+
   // Human-voice-only courses (Welsh cym_*) are never synthesised (Tom 2026-07-25).
   // /generate skips them anyway, but drop them here so they never count as work.
   const humanVoice = rows.filter(r => isHumanVoiceCourse(r.course_code))
@@ -183,7 +218,7 @@ async function run() {
 async function main() {
   if (args.includes('--approve')) return approve()
   if (args.includes('--run')) return run()
-  console.error('Usage: run-approved-audio-passes.cjs (--approve --reason-prefix "<p>" --by "<who>") | (--run --reason-prefix "<p>")')
+  console.error('Usage: run-approved-audio-passes.cjs (--approve --reason-prefix "<p>" --by "<who>") | (--run --reason-prefix "<p>" [--only-courses a,b] [--exclude-courses c,d])')
   process.exit(1)
 }
 
