@@ -64,3 +64,50 @@ The (a)−(b) delta is NOT waste — it is the unvoiced backfill estate (real le
 3. **deu_ch_for_eng / fin_for_eng / por_for_jpn need voice_config before anything happens** — separate task; their queue rows will keep 400ing until then.
 4. Re-run failed clips (~1,000 across guj/kan/pan/tam, mostly tail-defect refusals + transient fetch) via normal resume — the runner is already resume-safe.
 5. Open loose end: exact xAI per-char/per-clip pricing isn't in the repo — worth pinning down once, since bedd6226 voices every eng_for_X target1.
+
+---
+
+## Addendum — real-rate re-cost + measured copy hit-rates (2026-07-28, third-dispatch verification)
+
+All numbers below are live Supabase measurements (char sums per `voice_id`, batch window
+`2026-07-27T09:33Z → 2026-07-28T18:00Z`), priced at the now-verified rates: **xAI $15/1M chars**
+(`docs.x.ai/docs/pricing`, commit `6b5e3bed`), Azure S0 $4/1M. Copy-bucket inserts are separable
+in the data: bare `voice_id` (`gfzdpspr5fdp`/`bedd6226`) = free copy, `xai_`/`azure_`-prefixed =
+paid render — the bare counts reconcile with the log's `copied=` figures exactly (kan 1,956 ✓,
+tam 1,298 ✓, pan 1,209≈1,222).
+
+### What the batch has actually cost so far
+
+| engine | rendered chars | rate | cost |
+|---|---|---|---|
+| xAI (English t1+t2 of guj/kan/pan/tam) | 1,134,910 | $15/1M | **$17.02** |
+| Azure (Indic known sides + tel partial + small courses) | ~891,000 | $4/1M | **$3.56** |
+| ffmpeg-incident wasted renders (719 clips, xAI, no rows) | ~19,000 | $15/1M | ~$0.29 |
+| **Total spend, resume4 + incident** | | | **≈ $21** |
+
+Copy bucket saved 6,874 renders (~124k chars ≈ $1.9 at xAI rates). The regeneration upper
+bound (≈4.6% of clips) is worth ≈ $1 of the $21 — the "are we regenerating?" answer is
+unchanged, only the denominators are now real.
+
+### Heavies projection at real rates — the repoint economics FLIP
+
+Measured today (unlinked slots, chars, and copy hit-rate against existing clone/Olivia audio,
+normalized-text match):
+
+| bucket | slots | chars | copy hits | render cost |
+|---|---|---|---|---|
+| fra_ca/por_br/spa_mx target sides (Azure, French/Port./Spanish) | 54,002 | 1,351,172 | ~0 | $5.40 Azure |
+| tel/urd known sides (Azure, Telugu/Urdu) | 13,003 | 339,544 | 0 | $1.36 Azure |
+| tel/urd English t1+t2 (xAI, already-trusted) | 24,448 | 602,051 | 9,676 (40%) | ≈$5.49 xAI |
+| fra_ca/por_br/spa_mx English known — **if kept on Azure** | 25,458 | 590,535 | n/a (azure refused) | **$2.36 Azure** |
+| fra_ca/por_br/spa_mx English known — **if repointed to clone** | 25,458 | 590,535 | 8,507 (33%) | **$6.82 xAI** |
+
+- **Total heavies, current scope, no repoint: ≈ $14.6.** With repoint: ≈ $19.1.
+- **The repoint is no longer a cost win.** At the corrected $15/1M, rendering the ~67%
+  copy-misses on the clone costs ~3× what Azure charges for all 100%. The repoint now buys
+  voice consistency (Tom-clone English matching the eng_for_X estate) for **+$4.50** — a taste
+  call, not a savings, reversing this doc's line 63 rationale and the heavies-prep §5 framing.
+- Lights batch (running): 5,059 slots ≈ 120k chars ≈ $1–2. Corrected-scope-only alternative
+  (~1,428 repair rows ≈ 4,300 clips): ≈ $1–1.5 — the delta remains the backfill estate, not waste.
+- Blocked trio (no voice_config): 118,569 slots ≈ 2.35M chars ≈ $10–30 depending on voice
+  choices — still a separate spend decision.
