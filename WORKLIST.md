@@ -57,6 +57,7 @@ item; if it needs detail, **link a doc** (the plans under `docs/`, e.g. `docs/co
 - [x] @claude-self-explaining 07-27 **Popty self-explaining v1 — compiled explainer (second proof of 'apps ship with explanatory power'; first = ssi-learning-app 2026-07-27). Compiler + drift gate + persona packs (admin/editor/recorder + dev/agent file renders) + noticing rules.** → `docs/self-explaining-popty.md`
 
 - [x] @claude-explainer-v15 07-27 **Popty explainer v1.5 — Docs hub folded into compiled renders (PhaseIntelligence/ProcessOverview/TerminologyGlossary/APMLSpec deleted → pack-rendered pages; glossary+APML rulings sources drift-gated) + admin 'Update docs' button (production-api `/api/explainer/refresh|pack`, live Supabase snapshot) + CI drift-gate workflow.** → `docs/self-explaining-popty.md` §6–7
+- [x] @claude-rulings-howto 07-28 **Docs section dies → 'Rulings + How-to' IA (founder ruling 07-28): primary nav Courses / How & Why / Admin; /how = one surface (persona how-to + rulings incl. why-of-APML); compiled reference demotes to admin /stocktake; Seeds/Content/Pods re-home at /canonical/* under Courses; full /docs/* redirects; DOCS_SURFACE gate adapted in lockstep.** → `docs/self-explaining-popty.md` §9
 
 ## 🤔 Areas to think through   (open design — link the think-piece)
 
