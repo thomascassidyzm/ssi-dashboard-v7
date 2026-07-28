@@ -1,7 +1,7 @@
 // Unit tests for the ellipsis → SSML <break> shim (Azure only; xAI/ElevenLabs
 // get '…' literally, unchanged). Run: npx vitest run services/shared/ellipsis-ssml.test.js
 import { describe, it, expect } from 'vitest'
-import { ellipsisToSSMLBreaks, ELLIPSIS_BREAK_MS } from './ellipsis-ssml.cjs'
+import { ellipsisToSSMLBreaks, buildAzureSSMLBody, ELLIPSIS_BREAK_MS } from './ellipsis-ssml.cjs'
 
 describe('ellipsisToSSMLBreaks', () => {
   it('passes text with no ellipsis through unchanged (still XML-escaped)', () => {
@@ -43,5 +43,30 @@ describe('ellipsisToSSMLBreaks', () => {
 
   it('a bare "..." (three dots, not the single-glyph ellipsis) is left untouched — only U+2026 is the canonical mark', () => {
     expect(ellipsisToSSMLBreaks('wait...')).toBe('wait...')
+  })
+})
+
+describe('buildAzureSSMLBody (inline-SSML passthrough, kai-stage port 2026-07-28)', () => {
+  it('escapes plain text exactly as before (delegates to ellipsisToSSMLBreaks)', () => {
+    expect(buildAzureSSMLBody('Tom & Jerry')).toBe('Tom &amp; Jerry')
+  })
+
+  it('passes inline <phoneme> markup through raw, unescaped', () => {
+    const text = 'I <phoneme alphabet="ipa" ph="æm">am</phoneme> here'
+    expect(buildAzureSSMLBody(text)).toBe(text)
+  })
+
+  it('passes inline <sub> markup through raw', () => {
+    const text = '<sub alias="ay">a</sub>'
+    expect(buildAzureSSMLBody(text)).toBe(text)
+  })
+
+  it('still substitutes ellipsis for <break> in inline-SSML texts', () => {
+    const out = buildAzureSSMLBody('<sub alias="ay">a</sub>… slowly')
+    expect(out).toBe('<sub alias="ay">a</sub><break time="400ms"/> slowly')
+  })
+
+  it('does not treat a stray < comparison as inline SSML', () => {
+    expect(buildAzureSSMLBody('5 < 6')).toBe('5 &lt; 6')
   })
 })

@@ -39,17 +39,27 @@ function claudeChat(prompt, options = {}) {
       args.push('--system', system)
     }
 
+    // Strip ANTHROPIC_API_KEY so the CLI authenticates via the Max Plan
+    // login, not the API key from .env (which would bill per-token and
+    // fail with "Credit balance is too low"). CLAUDECODE is deleted, not
+    // set to '', so nested CLI calls work.
+    const env = { ...process.env }
+    delete env.ANTHROPIC_API_KEY
+    delete env.CLAUDECODE
+    // CLAUDE_CONFIG_DIR pins the claude@ account (see claude-config.cjs).
+    env.CLAUDE_CONFIG_DIR = CLAUDE_CONFIG_DIR
+    // MAX_THINKING_TOKENS=0 disables extended thinking. Without it, the
+    // global effortLevel:high setting flows into every headless `claude
+    // --print` call, so a simple translation-flex spends ~11K hidden
+    // thinking tokens (~90s/call) before a ~450-token answer — a 15×
+    // tax for zero quality gain on these deterministic tasks. With it:
+    // ~8s/call, identical output. (Measured 2026-06-08: 122s → 8s.)
+    env.MAX_THINKING_TOKENS = '0'
+
     const child = execFile('claude', args, {
       timeout,
       maxBuffer: 10 * 1024 * 1024, // 10MB
-      // MAX_THINKING_TOKENS=0 disables extended thinking. Without it, the
-      // global effortLevel:high setting flows into every headless `claude
-      // --print` call, so a simple translation-flex spends ~11K hidden
-      // thinking tokens (~90s/call) before a ~450-token answer — a 15×
-      // tax for zero quality gain on these deterministic tasks. With it:
-      // ~8s/call, identical output. (Measured 2026-06-08: 122s → 8s.)
-      // CLAUDE_CONFIG_DIR pins the claude@ account (see claude-config.cjs).
-      env: { ...process.env, CLAUDE_CONFIG_DIR, CLAUDECODE: '', MAX_THINKING_TOKENS: '0' }
+      env
     }, (error, stdout, stderr) => {
       if (error) {
         // Surface the actual failure shape — execFile's error.message is
