@@ -6,6 +6,12 @@
  * final pass deleted bad ones.
  *
  * Uses POST /api/build/backfill-submit/:courseCode to add phrases to existing LEGOs.
+ *
+ * Sibling deepening pass: LEGOs that meet the USE floor but are never reused
+ * outside their own seed ("under-spread" orphans) are found by scan-course
+ * Check 17 / tools/backfill-spread/analyze.cjs and fixed via the agent method
+ * in docs/course-optimization/lego-spread-backfill-playbook.md — a separate
+ * pass with its own targets, not part of this floor-gap brief.
  */
 
 const { getSupabase, getLanguageName, getKnownLanguageName, buildGrammarChecklist, loadCondensedMethodology } = require('./shared.cjs');
