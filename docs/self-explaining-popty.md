@@ -153,4 +153,33 @@ on every push.
   compile-time token spend.
 - Learner level: nothing, ever (founder ruling; learners never see Popty anyway).
 
-*Last updated: 2026-07-27 (v1.5)*
+## 9. The Docs section dies — "Rulings + How-to" (v2, founder ruling 2026-07-28)
+
+The founder's ruling: **the app-as-self-teaching philosophy replaces app-plus-docs-plus-manuals**,
+and the nav restructures accordingly. His name for the new surface is **"Rulings + How-to"**;
+the rendered label is **How & Why** (cleanest two-word rendering; his phrase stays here as the
+concept's true name). Information-architecture change only — every piece of v1/v1.5 machinery
+(compiler, drift gate, pack, live-refresh endpoint, Update-docs button) lives on underneath.
+
+- **Primary nav: Courses / How & Why / Admin.** The Docs tab is gone.
+- **`/how` — How & Why** is ONE surface: (a) the how-to layer — the persona-scoped pack
+  explanations, rendered in full and organised around what the signed-in person actually does
+  ("Finding your way around", "Working on a course", "Checking a course"…), not around system
+  components; (b) the rulings layer — Pedagogy and Pod Thinking as sub-pages, the why-of-APML
+  rulings prose rendered inline from the pack. Admins get a quiet footer link to the stock-take.
+- **`/stocktake` — the compiled reference demotes, not dies.** Pipeline, Glossary, APML
+  current-state and the Update-docs button become the admin-on-demand stock-take room, reached
+  from the Admin section row (and by URL for dev/agents), absent from primary navigation.
+  `DocsIndex` → `StocktakeIndex`, still rendering `pack.docs.surface`.
+- **Seeds / Content / Pods are tools, not docs** — re-homed at `/canonical/*` on the Courses
+  section row (Library · Seeds · Content · Pods). Not under `/courses/*` because
+  `/courses/:courseCode` would swallow the paths as a course code.
+- **Nothing 404s**: every `/docs/*` route redirects to its new home; `/reference/*` legacy
+  redirects retargeted directly.
+- **The `DOCS_SURFACE` gate adapts rather than dies**: it now governs the union of the
+  stock-take, How & Why, and courses-section rows (Library exempt — it's the library itself).
+  An unclassified new tab on any of those rows still fails the compile. `mustName` follows the
+  new surfaces: admin must speak to the stock-take row, editor to the courses + How & Why rows.
+  Persona ruling section `docs` renamed `how` (admin also gained `stocktake`).
+
+*Last updated: 2026-07-28 (v2 — Rulings + How-to)*
