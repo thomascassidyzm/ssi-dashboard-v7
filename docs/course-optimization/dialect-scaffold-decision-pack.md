@@ -1,5 +1,7 @@
 # Dialect courses vs parent scaffold — decision pack for Kai (2026-07-28)
 
+> **FOUNDER RULINGS (Tom, 2026-07-29):** (1) fra_ca's colloquial Québécois register is **deliberate and intended** — protect as-designed; no re-authoring toward standard register. (2) Authoring is **target-language-centric**: dialect nuance in the known-language side is permitted where the target structure wants it; known-language REUSE is harvested at the asset layer (content-addressing), not forced by an authoring gate — the scaffold drift gate should REPORT divergence for review, not fail the build. Read Option C through this lens.
+
 Founder-commissioned. Question: the three dialect courses (`spa_mx_for_eng`, `por_br_for_eng`,
 `fra_ca_for_eng`) were found to share only ~33% of their English side with their parents
 (`spa_for_eng`, `por_for_eng`, `fra_for_eng`) — but the design model is ONE shared known-language
