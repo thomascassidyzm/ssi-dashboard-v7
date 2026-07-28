@@ -177,7 +177,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useAuth } from '@/composables/useAuth'
 import { useCourses } from '@/composables/useCourses'
-import { useAutocueState } from '@/composables/useAutocueState'
+import { useAutocueState, recordingScopeQuery } from '@/composables/useAutocueState'
 import { useUploadQueue } from '@/composables/useAudioUpload'
 import { getApiUrl } from '@/services/api'
 import pack from '@/explainer/pack.json'
@@ -366,7 +366,7 @@ async function loadRoom() {
 
   // Reading script totals (slower — loads after the room renders)
   try {
-    const res = await fetch(`${base}/api/production/${props.courseCode}/recording-script`, { headers: FETCH_HEADERS })
+    const res = await fetch(`${base}/api/production/${props.courseCode}/recording-script${recordingScopeQuery()}`, { headers: FETCH_HEADERS })
     if (res.ok) {
       const data = await res.json()
       scriptTotal.value = data.totalItems ?? null

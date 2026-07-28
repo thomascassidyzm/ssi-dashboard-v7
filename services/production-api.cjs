@@ -7262,14 +7262,25 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     // ?full=true opts back into the original unfiltered script.
     const excludeRecorded = req.query.full !== 'true'
 
-    logger.log(`[Recording Script] Generating interleaved script for ${courseCode}${excludeRecorded ? ' (gap only)' : ' (full)'}`)
+    // Optional scope: ?seedMin=&seedMax= (inclusive) + ?sequential=1 to order by
+    // seed instead of greedy LEGO-coverage — lets a recorder work a seed range in order.
+    const seedMin = req.query.seedMin != null ? parseInt(req.query.seedMin, 10) : null
+    const seedMax = req.query.seedMax != null ? parseInt(req.query.seedMax, 10) : null
+    const sequential = req.query.sequential === '1' || req.query.sequential === 'true'
+    const scopeOpts = {
+      seedMin: Number.isFinite(seedMin) ? seedMin : null,
+      seedMax: Number.isFinite(seedMax) ? seedMax : null,
+      sequential,
+    }
+
+    logger.log(`[Recording Script] Generating interleaved script for ${courseCode}${excludeRecorded ? ' (gap only)' : ' (full)'}${(scopeOpts.seedMin != null || scopeOpts.seedMax != null) ? ` seeds ${scopeOpts.seedMin ?? 1}-${scopeOpts.seedMax ?? '∞'}` : ''}${scopeOpts.sequential ? ' sequential' : ''}`)
 
     // Run the optimizer (suppress console output)
     const originalLog = console.log
     const logs = []
     console.log = (...args) => logs.push(args.join(' '))
 
-    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded })
+    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded, ...scopeOpts })
 
     console.log = originalLog
 

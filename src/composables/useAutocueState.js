@@ -13,6 +13,17 @@ import { useCourses } from '@/composables/useCourses'
 
 const { getCourseName } = useCourses()
 
+// Build a `?seedMin=&seedMax=&sequential=1` suffix from the current page URL so a
+// recorder can be handed a link scoped to a seed range (in order). Empty if none set.
+export function recordingScopeQuery() {
+  if (typeof window === 'undefined') return ''
+  const sp = new URLSearchParams(window.location.search)
+  const parts = ['seedMin', 'seedMax', 'sequential']
+    .filter(k => sp.get(k) != null && sp.get(k) !== '')
+    .map(k => `${k}=${encodeURIComponent(sp.get(k))}`)
+  return parts.length ? `?${parts.join('&')}` : ''
+}
+
 // Singleton state for the entire autocue session
 const state = reactive({
   // Session phase
@@ -573,9 +584,13 @@ export function useAutocueState() {
     try {
       const baseUrl = localStorage.getItem('api_base_url') || getApiUrl()
 
+      // Optional recording scope from the page URL (?seedMin=&seedMax=&sequential=1)
+      // so a recorder can be handed a link scoped to e.g. the first 5 seeds, in order.
+      const scopeQs = recordingScopeQuery()
+
       // Fetch interleaved script from optimizer endpoint
       const res = await fetch(
-        `${baseUrl}/api/production/${courseCode}/recording-script`,
+        `${baseUrl}/api/production/${courseCode}/recording-script${scopeQs}`,
         { headers: { 'ngrok-skip-browser-warning': 'true' } }
       )
 
