@@ -11,9 +11,12 @@
  *
  * Contents: per-pair scores from results.jsonl + clip metadata from
  * pairs.json + the report's dimension/AUC tables + per-clip 150-point energy
- * contours (the phrase-carrying dimension) for the overlay visualisation.
- * F0 contours are deliberately NOT shipped — the study's finding is that
- * melody is voice, not phrase; the lab must not invite scoring it.
+ * contours (the phrase-carrying dimension) for the overlay visualisation,
+ * plus syllable-peak times for the axis ticks.
+ * F0 contours (semitones re the clip's own median — register-normalised) ARE
+ * shipped as of v2, by founder direction, strictly as an EXPERIMENTAL display
+ * track: the study's finding stands that melody is voice-dominated (AUC
+ * 0.464), so F0 is never folded into any score — the surface labels it so.
  */
 
 const fs = require('fs')
@@ -93,6 +96,9 @@ for (const id of neededClips) {
     e: (feat.energy_contour_z || []).map((v) => round(v, 2)),
     dur: round(feat.duration_s, 2),
     syl: feat.syllable_peaks,
+    sylT: feat.syllable_peak_t || [],
+    // experimental pitch-shape display track — register-normalised, never scored
+    f0: feat.f0_contour_st ? feat.f0_contour_st.map((v) => round(v, 1)) : null,
   }
 }
 

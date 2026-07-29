@@ -59,7 +59,7 @@ VOICING_CLARITY = 0.60
 SILENCE_DB = -40.0     # rel. clip peak, for trim + pause detection
 PAUSE_MIN_S = 0.15
 CONTOUR_LEN = 150      # DTW resample length
-EXTRACTOR_VERSION = "prosody-lab-poc-1"
+EXTRACTOR_VERSION = "prosody-lab-poc-2"  # v2: + syllable_peak_t (peak times, fraction of trimmed dur)
 WORKERS = 4            # hard cap — machine shared with the audio batch
 
 
@@ -119,7 +119,12 @@ def extract_one(job):
     clip_id, path = job
     out = os.path.join(FEAT_DIR, clip_id + ".json")
     if os.path.exists(out):
-        return "cached"
+        try:
+            with open(out) as f:
+                if json.load(f).get("extractor_version") == EXTRACTOR_VERSION:
+                    return "cached"
+        except Exception:
+            pass  # unreadable cache → re-extract
     try:
         x = decode(path)
     except Exception as e:
@@ -191,6 +196,7 @@ def extract_one(job):
         "f0_median_hz": None if f0_median_hz is None else round(f0_median_hz, 1),
         "f0_range_st": None if f0_range is None else round(f0_range, 2),
         "syllable_peaks": int(len(peaks)),
+        "syllable_peak_t": [round(float(p) * HOP_S / dur_s, 4) for p in peaks] if dur_s > 0 else [],
         "syllable_rate": round(len(peaks) / dur_s, 3) if dur_s > 0 else None,
         "pause_count": pauses,
         "f0_contour_st": None if f0_contour is None else [round(v, 3) for v in resample(f0_contour, CONTOUR_LEN)],
