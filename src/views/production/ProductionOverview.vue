@@ -72,6 +72,9 @@
       </div>
     </header>
 
+    <!-- The explanation lives where the doing is (founder ruling 2026-07-29) -->
+    <HowThisWorks section="course-overview" class="overview-htw" />
+
     <!-- Language-Pair Learnings (collapsible) -->
     <section v-if="learnings.length > 0" class="learnings-section">
       <button class="learnings-header" @click="showLearnings = !showLearnings">
@@ -237,6 +240,7 @@ import { getApiUrl } from '@/services/api'
 import { isConfigured as isSupabaseConfigured, getCourseProgress, getQASummary } from '@/services/supabase'
 import { useProductionStore } from '@/stores/production'
 import LegacyExportDialog from '@/components/production/LegacyExportDialog.vue'
+import HowThisWorks from '@/components/explainer/HowThisWorks.vue'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
@@ -503,6 +507,8 @@ watch(() => props.courseCode, () => {
 .mini-stat.good .mini-value { color: var(--accent-2); }
 .mini-stat.ok .mini-value { color: #fbbf24; }
 .mini-stat.low .mini-value { color: #f87171; }
+
+.overview-htw { margin-bottom: 1rem; }
 
 /* Language-Pair Learnings */
 .learnings-section {

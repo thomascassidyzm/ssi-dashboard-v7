@@ -17,6 +17,32 @@ not in files; what you see here is what learners get. Text edits never mint audi
 themselves — a content pass ends by queueing an audio-pass request, and audio is only ever
 generated after an approved pass, because every minted clip costs real money.
 
+## course-overview
+
+A course's **Overview** is the single door into it, and the card grid is the pipeline in order:
+**Text** — **Seed Editor**, **Text Generation**, **Listening Pods** on their own track — then
+**Audio**, then **Review & QA**. The status and pricing pills set what the course *is*; the counts
+beside them read the content as it stands right now. Overview never runs anything itself — it is
+the map, and every card is a working surface underneath it.
+
+## audio
+
+**Audio Generation** mints the course's clips, and it is the surface where money actually gets
+spent. Generate fills only what is missing — plan first, read the count, then run — and the same
+run links already-minted clips to their phrases even when there is nothing new to synthesise, so
+it is safe to press with zero missing. Introductions are authored inside that run rather than as a
+stage of their own. Regenerating by role replaces clips that exist already, which is the expensive
+direction; gendered courses need gender prep run before the result is right. Courses on the
+human-voice list are never synthesised — their audio comes from the **Record Room**.
+
+## script
+
+**Script View** is the course in the order the learner meets it: every round, every prompt and
+answer, with its audio. It is where checking happens, and it edits in place — fix the phrase,
+regenerate that one clip, stay on the page. Search spans text, seed and LEGO, so one suspect form
+can be chased across the whole course at once. It reads the same content the learning app plays,
+straight from the database.
+
 ## admin
 
 The Admin section is the platform-wide view. **Configs** holds per-course voice and listening
@@ -32,8 +58,10 @@ reference — step in when you want to take stock of the system's current state.
 
 The app teaches itself — that replaced the old docs-and-manuals shelf. **How & Why** is one
 surface: the how-to, written for what the signed-in person actually does, and the founder's
-rulings — **Pedagogy**, **Pod Thinking**, schema truth, the APML lineage. Nothing there
-restates system state, so it doesn't rot.
+rulings — **Pedagogy**, **Pod Thinking**, schema truth, the APML lineage. The how-to for a
+working surface now sits on that surface, behind its own **How this works**; **How & Why** keeps
+the rulings and an index of where each explanation lives. Nothing there restates system state, so
+it doesn't rot.
 
 ## stocktake
 

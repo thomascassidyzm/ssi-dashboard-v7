@@ -1,5 +1,5 @@
 {
-  "version": "fbeec472e9be",
+  "version": "ea0dac680d3c",
   "generatedAt": "2026-07-29",
   "truth": {
     "navTabs": {
@@ -403,6 +403,50 @@
         "table": "voices",
         "refs": 2
       }
+    ],
+    "inlineExplainers": [
+      {
+        "section": "home",
+        "label": "Home",
+        "to": "/",
+        "where": "the hub",
+        "mountedIn": "src/views/Home.vue"
+      },
+      {
+        "section": "course-overview",
+        "label": "Course Overview",
+        "to": "/courses",
+        "where": "on a course’s Overview",
+        "mountedIn": "src/views/production/ProductionOverview.vue"
+      },
+      {
+        "section": "audio",
+        "label": "Audio Generation",
+        "to": "/courses",
+        "where": "on a course’s Audio Generation",
+        "mountedIn": "src/views/production/AudioPipeline.vue"
+      },
+      {
+        "section": "script",
+        "label": "Script View",
+        "to": "/courses",
+        "where": "on a course’s Script View",
+        "mountedIn": "src/views/production/ScriptViewer.vue"
+      },
+      {
+        "section": "checking",
+        "label": "QA Review",
+        "to": "/courses",
+        "where": "on a course’s QA Review",
+        "mountedIn": "src/views/production/QAReview.vue"
+      },
+      {
+        "section": "record-room",
+        "label": "Record Room",
+        "to": "/record",
+        "where": "in the Record Room",
+        "mountedIn": "src/views/RecordRoom.vue"
+      }
     ]
   },
   "docs": {
@@ -529,15 +573,21 @@
     "admin": {
       "home": "Popty is where courses get made — everything a learner ever hears starts here and flows\nthrough Supabase to the learning app. Three doors at the top: **Courses** is the library, the\ncanonical browsers (**Seeds**, **Content**, **Pods**) and every working surface inside a\ncourse; **How & Why** is the app explaining itself — the how-to for what you do here plus the\nfounder's rulings; and **Admin** is the platform room — the whole estate at a glance.",
       "courses": "Each course card opens on its Overview hub — one door per course, with every working surface\nas a card inside: text generation, audio, recording, QA. Course content lives in the database,\nnot in files; what you see here is what learners get. Text edits never mint audio by\nthemselves — a content pass ends by queueing an audio-pass request, and audio is only ever\ngenerated after an approved pass, because every minted clip costs real money.",
+      "course-overview": "A course's **Overview** is the single door into it, and the card grid is the pipeline in order:\n**Text** — **Seed Editor**, **Text Generation**, **Listening Pods** on their own track — then\n**Audio**, then **Review & QA**. The status and pricing pills set what the course *is*; the counts\nbeside them read the content as it stands right now. Overview never runs anything itself — it is\nthe map, and every card is a working surface underneath it.",
+      "audio": "**Audio Generation** mints the course's clips, and it is the surface where money actually gets\nspent. Generate fills only what is missing — plan first, read the count, then run — and the same\nrun links already-minted clips to their phrases even when there is nothing new to synthesise, so\nit is safe to press with zero missing. Introductions are authored inside that run rather than as a\nstage of their own. Regenerating by role replaces clips that exist already, which is the expensive\ndirection; gendered courses need gender prep run before the result is right. Courses on the\nhuman-voice list are never synthesised — their audio comes from the **Record Room**.",
+      "script": "**Script View** is the course in the order the learner meets it: every round, every prompt and\nanswer, with its audio. It is where checking happens, and it edits in place — fix the phrase,\nregenerate that one clip, stay on the page. Search spans text, seed and LEGO, so one suspect form\ncan be chased across the whole course at once. It reads the same content the learning app plays,\nstraight from the database.",
       "admin": "The Admin section is the platform-wide view. **Configs** holds per-course voice and listening\nsetup — a course without voice config cannot make audio. **Insights** is the measurement room.\n**Activity** shows the builds and jobs actually running right now; a course that should be\nmoving and isn't shows up here first. **Maintenance** is the health sweep — the badge counts\ndays since the last audit, so a growing number is the system telling you it hasn't been\nchecked. **Users** is where access lives: admins see everything, editors are scoped to their\ngranted courses, recorders only ever see the Record Room. **Stock-take** is the compiled\nreference — step in when you want to take stock of the system's current state.",
-      "how": "The app teaches itself — that replaced the old docs-and-manuals shelf. **How & Why** is one\nsurface: the how-to, written for what the signed-in person actually does, and the founder's\nrulings — **Pedagogy**, **Pod Thinking**, schema truth, the APML lineage. Nothing there\nrestates system state, so it doesn't rot.",
+      "how": "The app teaches itself — that replaced the old docs-and-manuals shelf. **How & Why** is one\nsurface: the how-to, written for what the signed-in person actually does, and the founder's\nrulings — **Pedagogy**, **Pod Thinking**, schema truth, the APML lineage. The how-to for a\nworking surface now sits on that surface, behind its own **How this works**; **How & Why** keeps\nthe rulings and an index of where each explanation lives. Nothing there restates system state, so\nit doesn't rot.",
       "stocktake": "The **Stock-take** room is where the facts that can rot live as compiled renders: the\n**Pipeline** shape, the **Glossary** of shared terms, the **APML** current state. They are\nderived from the code and drift-gated, so they cannot go stale. Schema is the one fact even\nthe code can't vouch for — current schema is truth, migrations lie — so the Pipeline page\nrenders it from a live dump of the running database. The **Update docs** button re-reads live\nstate — course list, audio-pass queue, database counts, the schema dump — from the production\nmachine on demand; facts derived from code refresh when a commit deploys."
     },
     "editor": {
       "home": "Popty is where your courses get made. Two doors matter for you: **Courses** — your library,\nscoped to the courses you've been granted — and **How & Why**, where the app explains itself.\nEverything you edit here is live content: what the database holds is exactly what learners\nhear.",
       "courses": "The **Library** lists your courses, and next to it sit the canonical browsers — **Seeds**,\n**Content** and **Pods** — windows onto the canonical material in the database. A course\nopens on its **Overview** hub — one door per course, every working surface a card\ninside it: text, audio, recording, QA. The method under all of it: one known prompt maps to\nexactly one target form, course-wide, and the known side is a controlled language too — the\ngates hold you to both when you submit, and a rejection is the method protecting the learner,\nnot the tool being difficult. Text edits never mint audio directly; a finished content pass\nqueues an audio-pass request, and audio happens after approval, because minted clips cost real\nmoney and some courses are human-voiced and never synthesised at all.",
+      "course-overview": "A course's **Overview** is the one door into it — the working surfaces laid out in the order the\ncourse actually goes through: **Text** first — the **Seed Editor** for approving translations,\n**Text Generation** for seeds, LEGOs and phrases, **Listening Pods** on their own separate track\n— then **Audio**, then **Review & QA**. The status and pricing pills at the top set what the\ncourse *is*, not what it contains; the counts beside them are the current state of the content\nitself. Nothing here generates anything: Overview is the map, and the work happens on the card\nyou open.",
+      "audio": "**Audio Generation** is where a course's clips get minted, and it is the one surface that spends\nreal money. Generate only ever fills what is *missing* — you plan first, see the count, then run\nit, and the same run links existing clips to phrases even when there is nothing new to synthesise.\nIntroductions are authored inside that run, not as a stage of their own. Regenerating by role\nreplaces clips that already exist, so it is the expensive direction — reach for it when a voice or\na text change has actually invalidated them. Gendered courses need their gender prep run before\nthe audio is right. Human-voiced pairs are never synthesised at all; their clips come from the\nRecord Room instead.",
+      "script": "**Script View** is the course as the learner meets it, in order — round by round, every prompt and\nevery answer, with the audio attached. It is the reading surface where checking actually happens,\nand it is editable in place: fix a phrase and regenerate just that clip without leaving the page.\nSearch runs over text, seed and LEGO, so a suspect word can be chased across the whole course in\none go. What you see here is what the learning app plays.",
       "checking": "Checking a course is reading it the way a learner meets it: does each prompt force exactly one\nanswer, does every phrase use only what's been taught, does it read naturally in the known\nlanguage? The known-vocab flags this pack carries per course are the compiled starting point —\nbegin where the flags are earliest, because everything downstream builds on those seeds.",
-      "how": "**How & Why** is one surface with the two things worth reading: the how-to, written for what\nyou actually do here and compiled against the running system so it cannot drift from the app —\nand the rulings, the founder's own thinking: **Pedagogy**, **Pod Thinking**, and the why of\nAPML. Read Pedagogy before authoring anything — the method is the product."
+      "how": "**How & Why** is one surface with the two things worth reading: the how-to, written for what\nyou actually do here and compiled against the running system so it cannot drift from the app —\nand the rulings, the founder's own thinking: **Pedagogy**, **Pod Thinking**, schema truth and the\nAPML lineage. Read Pedagogy before authoring anything — the method is the product. The how-to for\na surface you are standing on lives on that surface, behind its own **How this works** — this page\nkeeps the index of where each one is, and the thinking that no code can derive."
     },
     "recorder": {
       "record-room": "The Record Room is your whole studio. The queue you see is real work waiting: lines the course\nneeds in a human voice, in order. Read each line as it's written, at an easy natural pace —\nrecordings ship at one speed and the app adjusts playback, so never rush a take. Some courses\nare human-voiced only — no synthetic voice is ever allowed to stand in for you there — which is\nwhy a line waiting in your queue can't be filled by anyone but a person. A take you're not\nhappy with is worth redoing: whatever you record is exactly what a learner will hear, thousands\nof times."

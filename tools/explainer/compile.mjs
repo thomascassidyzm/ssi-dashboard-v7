@@ -385,6 +385,55 @@ try {
   warnings.push('LOCKSTEP: src/explainer/evaluateRules.js not found yet (first compile before the runtime exists)')
 }
 
+// 3e. INLINE EXPLAINERS — where each how-to actually lives (founder ruling
+// 2026-07-29, layout option A: the explanation belongs where the doing is).
+// A section mounted behind a working surface's own "How this works" stops
+// being prose on /how; /how carries an index row pointing at it instead. The
+// index is COMPILED from the real mounts, both directions gated: a toggle
+// nobody can find an index row for fails the build, and an index row whose
+// toggle was deleted fails too. /how keeps the prose for the sections that
+// have no doing-surface of their own.
+const EXPLAINER_HOMES = {
+  home: { label: 'Home', to: '/', where: 'the hub' },
+  'course-overview': { label: 'Course Overview', to: '/courses', where: 'on a course’s Overview' },
+  audio: { label: 'Audio Generation', to: '/courses', where: 'on a course’s Audio Generation' },
+  script: { label: 'Script View', to: '/courses', where: 'on a course’s Script View' },
+  checking: { label: 'QA Review', to: '/courses', where: 'on a course’s QA Review' },
+  'record-room': { label: 'Record Room', to: '/record', where: 'in the Record Room' },
+}
+const explainerMounts = new Map() // section → the view that mounts the toggle
+const scanForMounts = (dir) => {
+  for (const name of readdirSync(join(ROOT, dir))) {
+    if (name === 'node_modules' || name.startsWith('.')) continue
+    const rel = `${dir}/${name}`
+    if (statSync(join(ROOT, rel)).isDirectory()) { scanForMounts(rel); continue }
+    if (!name.endsWith('.vue')) continue
+    for (const m of readFileSync(join(ROOT, rel), 'utf8').matchAll(/<HowThisWorks\b[^>]*\bsection="([\w-]+)"/g)) {
+      if (!explainerMounts.has(m[1])) explainerMounts.set(m[1], rel)
+    }
+  }
+}
+scanForMounts('src')
+for (const [section, file] of explainerMounts) {
+  if (!EXPLAINER_HOMES[section]) {
+    failures.push(`DRIFT: ${file} mounts an inline "How this works" for "${section}" but no index entry names its home — /how could not point anyone at it`)
+  }
+}
+for (const [section, home] of Object.entries(EXPLAINER_HOMES)) {
+  if (!explainerMounts.has(section)) {
+    failures.push(`DRIFT: the /how index says "${section}" is explained on ${home.label}, but no view mounts <HowThisWorks section="${section}">`)
+  }
+  if (!routerSrc.includes(`'${home.to}`)) {
+    failures.push(`DRIFT: the /how index links "${section}" to "${home.to}" but src/router/index.js has no such path`)
+  }
+  if (!APP_PERSONAS.some((p) => explanations[p]?.[section])) {
+    failures.push(`DRIFT: "${section}" is mounted on ${home.label} but no persona ruling writes it — the toggle would never open`)
+  }
+}
+const inlineExplainers = Object.entries(EXPLAINER_HOMES).map(([section, home]) => ({
+  section, ...home, mountedIn: explainerMounts.get(section) ?? null,
+}))
+
 // ─── Report ─────────────────────────────────────────────────────────────────
 for (const w of warnings) console.log(`  ⚠ ${w}`)
 if (failures.length) {
@@ -410,6 +459,7 @@ const truth = {
   voicePolicy: { humanVoiceCourses, cymPrefixRule, contentPassesQueueAudio: true },
   agentEndpoints,
   supabaseTables,
+  inlineExplainers,
 }
 // The Docs surface: compiled current-state + founder rulings prose, one pack.
 const docs = {

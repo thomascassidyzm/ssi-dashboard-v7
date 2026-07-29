@@ -309,3 +309,36 @@ standing cost of hand-reconciling migrations against reality.
   table (the `family_members` proof) is invisible to it; kept as cross-check only.
 **Search width:** visible-options
 **Decided by:** Tom (ruling 2026-07-29); implementation shape by agent
+
+## 2026-07-29 — explanation moves to where the doing is; /how becomes the rulings room + a compiled index
+
+**Move:** implemented Tom's layout option A. Spread the inline "How this works" toggle to the
+remaining doing-surfaces — Course Overview, Audio Generation, Script View (new `course-overview`
+/ `audio` / `script` sections in the admin + editor rulings) — and shrank `/how` to the rulings
+layer (Pedagogy + Pod Thinking cards → Schema truth → APML-as-lineage) followed by an INDEX of
+where each inline explanation lives, with prose left only for the sections that have no
+doing-surface of their own. The index is not hand-kept: `compile.mjs` §3e scans `src/**/*.vue`
+for `<HowThisWorks section="…">`, joins it to `EXPLAINER_HOMES`, and emits
+`truth.inlineExplainers`, which `/how` renders.
+
+**Better:** the explanation now sits where the question actually gets asked, one tap from the
+control it describes, instead of on a shelf someone has to remember to visit; and `/how` reads
+as what Tom called it — the rulings room.
+**Simpler:** one section list, one component, no new endpoint or runtime call; a section
+migrates from `/how` prose to `/how` index automatically the moment someone mounts a toggle for
+it, so the two surfaces can never disagree.
+**Cheaper (total):** zero runtime tokens (unchanged); removes the standing maintenance cost of
+a hand-kept "what's explained where" list — the drift gate bites in both directions (a mount
+with no index entry, an index entry whose mount was deleted, a mounted section no persona
+ruling writes, a home whose route left the router all fail the compile).
+**Searched & rejected:**
+- Hand-written index table in `HowAndWhy.vue` — cheaper leg fails: a static list of mounts is
+  exactly the fact that rots, and this repo's whole explainer premise is that such facts get
+  compiled, not typed.
+- Leaving full prose on `/how` as well as inline — better leg fails: two copies of the same
+  explanation is the docs-shelf problem the founder ruling exists to kill.
+- Adding NoticingInvitations to the three new surfaces at the same time — better leg unproven:
+  a new invitation needs a payload-map entry and real data behind it, so it belongs to its own
+  evidence-first pass rather than riding along untested.
+**Search width:** visible-options
+**Decided by:** Tom (option A, 2026-07-29); index-is-compiled shape by agent

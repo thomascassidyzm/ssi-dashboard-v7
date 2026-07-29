@@ -160,6 +160,9 @@
           </template>
         </div>
       </div>
+
+      <!-- The explanation lives where the doing is (founder ruling 2026-07-29) -->
+      <HowThisWorks section="script" class="mt-3" />
     </div>
 
     <!-- Main Content Area -->
@@ -740,6 +743,7 @@ import PhraseEditModal from './components/PhraseEditModal.vue';
 import LearningJourneyView from './components/LearningJourneyView.vue';
 import { getApiUrl } from '@/services/api';
 import { useAuth } from '@/composables/useAuth.js';
+import HowThisWorks from '@/components/explainer/HowThisWorks.vue';
 // CyclePlayer removed - not useful for QA workflow
 import type {
   SeedRowData,

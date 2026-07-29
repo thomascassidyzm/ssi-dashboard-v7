@@ -18,6 +18,9 @@
       <!-- Pipeline View -->
       <div v-else class="space-y-8">
 
+        <!-- The explanation lives where the doing is (founder ruling 2026-07-29) -->
+        <HowThisWorks section="audio" />
+
         <!-- GENDER PREP BANNER -->
         <div v-if="genderPrepStatus.isGendered" class="rounded-xl p-4 flex items-center gap-4"
           :class="genderPrepStatus.processed
@@ -582,6 +585,7 @@ import PipelineProgress from './components/PipelineProgress.vue'
 import MissingAudio from './components/MissingAudio.vue'
 import SharedAudio from './components/SharedAudio.vue'
 import VoiceConfiguration from '@/components/VoiceConfiguration.vue'
+import HowThisWorks from '@/components/explainer/HowThisWorks.vue'
 
 const route = useRoute()
 const productionStore = useProductionStore()

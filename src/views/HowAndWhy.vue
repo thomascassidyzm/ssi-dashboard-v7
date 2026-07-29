@@ -1,11 +1,14 @@
 <script setup>
-// How & Why — the founder's "Rulings + How-to" surface (ruling 2026-07-28).
-// The app-as-self-teaching philosophy replaces app-plus-docs-plus-manuals:
-// ONE surface holding (a) the how-to layer — the persona-scoped explanations
-// from the compiled pack, organised around what the signed-in person actually
-// DOES — and (b) the rulings layer — founder-authored philosophy (Pedagogy,
-// Pod Thinking, the schema-truth ruling, the APML lineage), presented as
-// living thinking, not reference.
+// How & Why — the founder's rulings room (rulings 2026-07-28, 2026-07-29).
+// The app-as-self-teaching philosophy replaces app-plus-docs-plus-manuals,
+// and layout option A puts each how-to WHERE THE DOING IS: a working surface
+// carries its own "How this works". So this page is (a) the rulings layer —
+// founder-authored thinking (Pedagogy, Pod Thinking, the schema-truth ruling,
+// the APML lineage) — plus (b) an INDEX of those inline explanations, and
+// (c) prose only for the sections that have no doing-surface of their own.
+// The index is not hand-kept: truth.inlineExplainers is compiled from the
+// real <HowThisWorks> mounts, gated both ways, so it cannot point at a
+// toggle that isn't there or miss one that is.
 // Zero runtime model calls; everything renders from the explanation pack.
 import { computed } from 'vue'
 import { useAuth } from '@/composables/useAuth'
@@ -26,22 +29,43 @@ const persona = computed(() => {
 const SECTION_TITLES = {
   home: 'Finding your way around',
   courses: 'Working on a course',
+  'course-overview': 'A course, end to end',
+  audio: 'Making the audio',
+  script: 'Reading the course as a learner meets it',
   checking: 'Checking a course',
   admin: 'Running the platform',
+  stocktake: 'Taking stock',
   'record-room': 'Recording',
   how: 'How this page stays true',
 }
-const SECTION_ORDER = ['home', 'courses', 'checking', 'record-room', 'admin', 'how']
+const SECTION_ORDER = [
+  'home', 'courses', 'course-overview', 'audio', 'script', 'checking',
+  'record-room', 'admin', 'stocktake', 'how',
+]
+const byOrder = ([a], [b]) => {
+  const ia = SECTION_ORDER.indexOf(a); const ib = SECTION_ORDER.indexOf(b)
+  return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib)
+}
 
-const howto = computed(() => {
-  const sections = pack.value.explanations?.[persona.value] ?? {}
-  return Object.entries(sections)
-    .sort(([a], [b]) => {
-      const ia = SECTION_ORDER.indexOf(a); const ib = SECTION_ORDER.indexOf(b)
-      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib)
-    })
+// Sections this persona has prose for, split by whether the explanation now
+// lives inline on a working surface. Compiled index → index row; everything
+// else → prose here, because there is nowhere else for it to be.
+const mySections = computed(() =>
+  Object.entries(pack.value.explanations?.[persona.value] ?? {}).sort(byOrder)
+)
+const homes = computed(() => pack.value.truth?.inlineExplainers ?? [])
+
+const index = computed(() =>
+  homes.value
+    .filter((h) => mySections.value.some(([key]) => key === h.section))
+    .map((h) => ({ ...h, title: SECTION_TITLES[h.section] ?? h.section }))
+)
+
+const howto = computed(() =>
+  mySections.value
+    .filter(([key]) => !homes.value.some((h) => h.section === key))
     .map(([key, text]) => ({ key, title: SECTION_TITLES[key] ?? key, html: mdlite(text) }))
-})
+)
 
 // Rulings prose straight from the pack: the schema-truth ruling
 // (rulings/docs/schema.md, founder 2026-07-29) and the APML lineage
@@ -64,27 +88,13 @@ const rulingCards = [
     <header class="how-header">
       <h1 class="page-title">How &amp; Why</h1>
       <p class="page-subtitle">
-        Popty explains itself. The <em>how</em> below is written for what you actually do here,
-        and it is compiled against the running system — if the app changes and these words don't,
-        the build fails. The <em>why</em> is the founder's thinking, kept by hand because no code
-        can derive it.
+        This is the <em>why</em> — the founder's thinking, kept by hand because no code can
+        derive it. The <em>how</em> now lives where the doing is: every working surface carries
+        its own <em>How this works</em>, compiled against the running system, so if the app
+        changes and those words don't, the build fails. Below the rulings is the index of where
+        each one sits.
       </p>
     </header>
-
-    <!-- The how-to layer: persona-scoped, from the compiled pack -->
-    <section v-if="howto.length" class="how-section">
-      <div class="section-header">
-        <span class="section-label">How this works — for you</span>
-        <div class="section-line"></div>
-      </div>
-      <div class="howto-list">
-        <article v-for="s in howto" :key="s.key" class="howto-card">
-          <h2 class="howto-title">{{ s.title }}</h2>
-          <!-- eslint-disable-next-line vue/no-v-html — pack content is compiled repo data, escaped above -->
-          <div class="howto-body" v-html="s.html"></div>
-        </article>
-      </div>
-    </section>
 
     <!-- The rulings layer: founder-authored philosophy -->
     <section class="how-section">
@@ -113,6 +123,40 @@ const rulingCards = [
         <h2 class="apml-heading">APML — the lineage</h2>
         <article v-for="s in apmlWhy" :key="s.title" class="apml-section">
           <h3 class="apml-title">{{ s.title }}</h3>
+          <!-- eslint-disable-next-line vue/no-v-html — pack content is compiled repo data, escaped above -->
+          <div class="howto-body" v-html="s.html"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- The index: where each inline "How this works" lives, compiled from
+         the real mounts (truth.inlineExplainers) — never hand-kept. -->
+    <section v-if="index.length" class="how-section">
+      <div class="section-header">
+        <span class="section-label">How this works — where to find it</span>
+        <div class="section-line"></div>
+      </div>
+      <p class="index-note">
+        Each of these is explained on the surface itself, behind a quiet
+        <em>How this works</em> — open the page and tap it.
+      </p>
+      <ul class="index-list">
+        <li v-for="i in index" :key="i.section" class="index-row">
+          <router-link :to="i.to" class="index-link">{{ i.title }}</router-link>
+          <span class="index-where">{{ i.where }}</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Prose for the sections with no doing-surface of their own -->
+    <section v-if="howto.length" class="how-section">
+      <div class="section-header">
+        <span class="section-label">The rest, in one place</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="howto-list">
+        <article v-for="s in howto" :key="s.key" class="howto-card">
+          <h2 class="howto-title">{{ s.title }}</h2>
           <!-- eslint-disable-next-line vue/no-v-html — pack content is compiled repo data, escaped above -->
           <div class="howto-body" v-html="s.html"></div>
         </article>
@@ -153,6 +197,18 @@ const rulingCards = [
 .howto-body :deep(p) { margin: 0 0 10px; }
 .howto-body :deep(p:last-child) { margin-bottom: 0; }
 .howto-body :deep(strong) { color: var(--ink); font-weight: 600; }
+
+.index-note { font-size: 0.8125rem; color: var(--faint); margin: 0 0 0.75rem; line-height: 1.5; }
+.index-note em { font-style: normal; color: var(--muted); }
+.index-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.index-row {
+  display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap;
+  padding: 0.55rem 0; border-bottom: 1px solid var(--line);
+}
+.index-row:last-child { border-bottom: none; }
+.index-link { font-size: 0.9375rem; color: var(--accent-2); text-decoration: none; }
+.index-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.index-where { font-size: 0.8125rem; color: var(--faint); }
 
 .rulings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
 .ruling-card {

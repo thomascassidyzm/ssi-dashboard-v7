@@ -78,8 +78,8 @@ must map onto real roles; `--check` for CI.
 ## 4. Runtime surfaces (zero new endpoints, zero model calls)
 
 - `src/components/explainer/HowThisWorks.vue` — one quiet "How this works" link; inline card
-  with the persona-scoped section for where the user stands. Mounted on `Home.vue` (admin +
-  editor) and `RecordRoom.vue` (recorder).
+  with the persona-scoped section for where the user stands. The live set of mounts is not
+  listed here — it is compiled into `truth.inlineExplainers` and gated (§10).
 - `src/components/explainer/NoticingInvitations.vue` — dismissible one-line invitations with a
   deep link, evaluated by `src/explainer/evaluateRules.js` over (a) the pack's compile-time
   snapshot and (b) payloads the page has already fetched. Never modal, max 3, dismissal per
@@ -182,4 +182,26 @@ concept's true name). Information-architecture change only — every piece of v1
   new surfaces: admin must speak to the stock-take row, editor to the courses + How & Why rows.
   Persona ruling section `docs` renamed `how` (admin also gained `stocktake`).
 
-*Last updated: 2026-07-28 (v2 — Rulings + How-to)*
+## 10. Explanation where the doing is (v2.1, founder ruling 2026-07-29 — layout option A)
+
+The how-to layer stops being a shelf. Each working surface carries its OWN quiet
+"How this works"; `/how` becomes the rulings room plus an **index** of where those inline
+explanations live.
+
+- **Spread**: `HowThisWorks` now mounts on Home, Record Room, QA Review (v2) plus **Course
+  Overview** (`course-overview`), **Audio Generation** (`audio`) and **Script View** (`script`)
+  — new sections in `rulings/admin.md` and `rulings/editor.md`.
+- **`/how` shrinks** to: the rulings layer in founder order (Pedagogy + Pod Thinking cards →
+  Schema truth → APML-as-lineage), then the index, then prose for the sections that have no
+  doing-surface of their own (`courses`, `admin`, `stocktake`, `how`). A section MIGRATES from
+  prose to index the moment someone mounts a toggle for it — nothing to hand-maintain.
+- **The index is compiled, gated both ways** (`compile.mjs` §3e → `truth.inlineExplainers`):
+  `EXPLAINER_HOMES` maps section → label/route/where, and the compiler scans `src/**/*.vue` for
+  `<HowThisWorks section="…">`. A mount with no index entry fails the build; an index entry
+  whose mount was deleted fails; a mounted section no persona ruling writes fails (the toggle
+  would never open); a home whose route left the router fails. So `/how` cannot point at an
+  explanation that isn't there, and an explanation cannot hide from `/how`.
+- **Noticing invitations stay where they are** (home / record-room / qa). New rules need
+  payload-map entries and real data behind them — a separate, evidence-first pass.
+
+*Last updated: 2026-07-29 (v2.1 — explanation where the doing is)*
