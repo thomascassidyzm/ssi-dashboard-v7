@@ -1,4 +1,9 @@
 import { test, expect } from '@playwright/test'
+import { stubAuth } from './helpers.js'
+
+test.beforeEach(async ({ page }) => {
+  await stubAuth(page)
+})
 
 // VAD Lab v2 smoke — tour contours render, lab browser works, and the
 // record-yourself flow produces scores end-to-end with Chromium's fake mic.
