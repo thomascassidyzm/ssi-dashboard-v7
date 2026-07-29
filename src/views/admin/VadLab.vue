@@ -97,6 +97,19 @@ const CATEGORY_META = {
 }
 const catMeta = (c) => CATEGORY_META[c] || { label: c, short: c }
 
+const LANG_NAMES = {
+  spa: 'Spanish',
+  fra: 'French',
+  ita: 'Italian',
+  zho: 'Chinese',
+  por: 'Portuguese',
+  kor: 'Korean',
+  eus: 'Basque',
+  cym: 'Welsh',
+  eng: 'English',
+}
+const langName = (l) => LANG_NAMES[l] || l
+
 function voiceLabel(side) {
   if (side.origin === 'human') return 'Human recording'
   // Welsh estate is 100% human-recorded — the DB's 'tts' origin tag on some
@@ -294,21 +307,45 @@ const TOUR = [
       'Azure’s Henri against xAI’s eve on “entendre la vérité” — different companies, different synthesis stacks, energy distance 0.062. Swapping vendor moves prosody more than swapping voice within one vendor, but the phrase still reads through.',
   },
   {
+    pair_id: 'crossvoice:16c9db02:132a3395',
+    title: '3 · Italian — a whole sentence survives the speaker swap',
+    teaches:
+      'Azure’s Elsa and Benigno — a female and a male Italian voice — both saying “Ha detto che è la stessa cosa”. Energy distance 0.079, durations within one percent of each other, identical syllable count. He said it’s the same thing, and the metric agrees: the phrase carrier works sentence-long, and it works in Italian.',
+  },
+  {
+    pair_id: 'crossvoice:6f4c2db1:0504a166',
+    title: '4 · Mandarin — a tone language doesn’t change the rules',
+    teaches:
+      'Xiaoxiao and Yunyi, Azure’s two Mandarin voices, saying “没有人在另一头”. Mandarin makes pitch carry word meaning, so you might expect melody to become the phrase — but what survives the voice change is still the energy shape (0.071, close to the re-render floor). What moves is pacing: these two multilingual voices pace Mandarin differently enough to pull the combined score into the borderline band, the same duration fragility the last card in this tour teaches. The pitch track stays display-only even here.',
+  },
+  {
+    pair_id: 'crossvoice:32ee8384:7783cd73',
+    title: '5 · Korean — new script, same physics',
+    teaches:
+      'Azure’s GookMin and YuJin saying “그녀는 더 많이 기억해요” — she remembers more. Energy distance 0.095 and a combined score inside the same-phrase range. Korean’s rhythm and sound system are nothing like the Romance pairs above, and the phrase core still reads straight through a change of speaker.',
+  },
+  {
+    pair_id: 'crossprovider:0cb2e9b9:2bcc4791',
+    title: '6 · Different company, same Italian phrase — zero duration gap',
+    teaches:
+      'Azure’s Benigno against xAI’s ara clone on “può lasciarti tenere qualcosa per un po’” — ten-plus syllables, two entirely different synthesis stacks, and they land the phrase with an identical overall duration and a combined score of 0.28, deep inside same-phrase territory. Cross-provider agreement like this is what lets the audio estate be used as a controlled lab at all.',
+  },
+  {
     pair_id: 'diffphrase:476f55ba:9606cf67',
-    title: '3 · The deceptive pair — the metric hears HOW, not WHAT',
+    title: '7 · The deceptive pair — the metric hears HOW, not WHAT',
     teaches:
       'Two completely different phrases — “eres joven todavía” and “cambia nuestro cerebro” — with near-identical length and rhythm. Energy distance is a low 0.125 and the combined score sits in the same-phrase range. A contour metric confirms how something was said; it cannot confirm what was said. It must always be paired with a content check, never asked to do word recognition.',
     caution: true,
   },
   {
     pair_id: 'diffphrase:4fbfa1b9:4c22377b',
-    title: '4 · Genuinely different phrases — the far anchor',
+    title: '8 · Genuinely different phrases — the far anchor',
     teaches:
       'A two-word phrase against a nine-word sentence, same voice. Every dimension is far apart and the combined score is over 6 — this is what “said a different phrase” looks like, and the reference the same-phrase pairs are judged against.',
   },
   {
     pair_id: 'human_tts_cym:89ee6e14:2db912f9',
-    title: '5 · Two human Welsh voices, same phrase',
+    title: '9 · Two human Welsh voices, same phrase',
     teaches:
       'Two different human SSi voices recording the same Welsh words — not human vs TTS. Every Welsh clip in the estate is human-recorded (Welsh voice quality is deliberately picky, so there is no Welsh TTS to compare against). The contours land closer than different phrases would — a useful preview of human-to-human distance, which is closer to the eventual learner-vs-model comparison than a human-vs-TTS pair would be.',
     footnote:
@@ -316,7 +353,7 @@ const TOUR = [
   },
   {
     pair_id: 'human_tts_eng:4f4a89a8:5cce06c8',
-    title: '6 · Duration is the fragile dimension — why calibration bands are load-bearing',
+    title: '10 · Duration is the fragile dimension — why calibration bands are load-bearing',
     teaches:
       'A recording of “I was trying” from the old English course against a TTS render of the same words. Energy shape and syllable count still agree it is the same phrase, but the pacing gap is so large that duration alone scores it as far as a wrong phrase would be. The old recordings pace themselves very differently from modern TTS — a recording-era difference, nothing more. The lesson is about the dimension: read straight, duration punishes any natural pacing difference, which is exactly why the design calibrates variance bands per level before any dimension reaches a learner as a score.',
     caution: true,
@@ -328,23 +365,33 @@ const tourPairs = computed(() =>
 
 // ── the lab browser ─────────────────────────────────────────────────────────
 const catFilter = ref('all')
+const langFilter = ref('all')
 const search = ref('')
 const selectedPairId = ref('')
 const alignedView = ref(true)
 
 const CATEGORY_ORDER = ['crossvoice', 'crossprovider', 'human_tts_eng', 'human_tts_cym', 'rerender', 'diffphrase']
+const labLanguages = computed(() => {
+  if (!lab.value) return []
+  const counts = new Map()
+  for (const p of lab.value.pairs) counts.set(p.language, (counts.get(p.language) || 0) + 1)
+  return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([lang, n]) => ({ lang, n }))
+})
 const filteredPairs = computed(() => {
   if (!lab.value) return []
   const q = search.value.trim().toLowerCase()
   return lab.value.pairs
     .filter((p) => catFilter.value === 'all' || p.category === catFilter.value)
+    .filter((p) => langFilter.value === 'all' || p.language === langFilter.value)
     .filter(
       (p) =>
         !q ||
         p.text_a.toLowerCase().includes(q) ||
         (p.text_b || '').toLowerCase().includes(q) ||
         (p.a.voice || '').toLowerCase().includes(q) ||
-        (p.b.voice || '').toLowerCase().includes(q)
+        (p.b.voice || '').toLowerCase().includes(q) ||
+        p.language.toLowerCase().includes(q) ||
+        langName(p.language).toLowerCase().includes(q)
     )
     .sort(
       (x, y) =>
@@ -368,6 +415,17 @@ const aucTable = computed(() => {
 // are extracted by vadProsody.js — the SAME extractor, so no python/JS bias.
 const recSearch = ref('')
 const recModelId = ref('')
+// Founder ruling 2026-07-29: the default face of this tab is widely-known
+// languages the testing team can actually judge — Spanish, French, Italian,
+// Chinese. Everything else (incl. Basque) stays reachable via the pills and
+// search; typing a search spans ALL languages, ignoring the pill filter.
+const FEATURED_LANGS = ['spa', 'fra', 'ita', 'zho']
+const recLangFilter = ref('featured') // 'featured' | 'all' | <lang code>
+const recLanguages = computed(() => {
+  const counts = new Map()
+  for (const c of clipIndex.value) counts.set(c.language, (counts.get(c.language) || 0) + 1)
+  return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([lang]) => lang)
+})
 const clipIndex = computed(() => {
   const m = new Map()
   if (lab.value)
@@ -384,15 +442,24 @@ const clipIndex = computed(() => {
 })
 const recClipList = computed(() => {
   const q = recSearch.value.trim().toLowerCase()
-  return clipIndex.value
-    .filter(
+  let list = clipIndex.value
+  if (q) {
+    // search spans every language — it clears the pill filter
+    list = list.filter(
       (c) =>
-        !q ||
         c.text.toLowerCase().includes(q) ||
         (c.side.voice || '').toLowerCase().includes(q) ||
-        c.language.toLowerCase().includes(q)
+        c.language.toLowerCase().includes(q) ||
+        langName(c.language).toLowerCase().includes(q)
     )
-    .slice(0, 60)
+  } else if (recLangFilter.value === 'featured') {
+    list = list
+      .filter((c) => FEATURED_LANGS.includes(c.language))
+      .sort((a, b) => FEATURED_LANGS.indexOf(a.language) - FEATURED_LANGS.indexOf(b.language))
+  } else if (recLangFilter.value !== 'all') {
+    list = list.filter((c) => c.language === recLangFilter.value)
+  }
+  return list.slice(0, 60)
 })
 const recModel = computed(() => clipIndex.value.find((c) => c.id === recModelId.value) || null)
 
@@ -702,7 +769,8 @@ function openRecordTab() {
     <header class="lab-head">
       <h1>VAD Lab — prosody made audible</h1>
       <p class="sub">
-        The invariance study, by ear: 774 clips, 388 pairs from the live audio estate. Across
+        The invariance study, by ear: over 1,000 clips, 509 pairs across nine languages from the
+        live audio estate (the 2026-07-28 study plus the 2026-07-29 language-breadth round). Across
         voices saying the <em>same</em> phrase, energy-contour shape, duration and syllable count
         stay put while melody, register and range move with the speaker — so the first three are
         the measurable core of a phrase, and the rest is the voice, which is never scored.
@@ -722,7 +790,8 @@ function openRecordTab() {
     <!-- ═══════════ LISTENING TOUR ═══════════ -->
     <main v-else-if="tab === 'tour'" class="tour">
       <p class="tour-intro">
-        Six pairs chosen to be heard in order. Each teaches one thing the numbers alone can’t.
+        Ten pairs chosen to be heard in order, across seven languages. Each teaches one thing
+        the numbers alone can’t.
         Tap a phrase to hear it — the playhead sweeps the chart underneath, which is the
         loudness-shape of each clip: the stress rhythm a learner actually copies. Small ticks on
         the axis are the detected syllable beats.
@@ -809,7 +878,18 @@ function openRecordTab() {
         >
           {{ catMeta(c).label }} ({{ lab.pairs.filter((p) => p.category === c).length }})
         </button>
-        <input v-model="search" class="search" type="search" placeholder="search text or voice…" />
+        <input v-model="search" class="search" type="search" placeholder="search text, voice or language…" />
+      </div>
+      <div class="filters lang-filters">
+        <button :class="{ on: langFilter === 'all' }" @click="langFilter = 'all'">All languages</button>
+        <button
+          v-for="l in labLanguages"
+          :key="l.lang"
+          :class="{ on: langFilter === l.lang }"
+          @click="langFilter = l.lang"
+        >
+          {{ langName(l.lang) }} ({{ l.n }})
+        </button>
       </div>
 
       <div class="lab-split">
@@ -949,11 +1029,35 @@ function openRecordTab() {
 
       <div class="rec-split">
         <div class="rec-pick">
+          <div class="filters rec-lang-filters">
+            <button :class="{ on: recLangFilter === 'featured' && !recSearch.trim() }" @click="recLangFilter = 'featured'; recSearch = ''">
+              Featured
+            </button>
+            <button
+              v-for="l in FEATURED_LANGS.filter((f) => recLanguages.includes(f))"
+              :key="l"
+              :class="{ on: recLangFilter === l && !recSearch.trim() }"
+              @click="recLangFilter = l; recSearch = ''"
+            >
+              {{ langName(l) }}
+            </button>
+            <button
+              v-for="l in recLanguages.filter((x) => !FEATURED_LANGS.includes(x))"
+              :key="l"
+              :class="{ on: recLangFilter === l && !recSearch.trim() }"
+              @click="recLangFilter = l; recSearch = ''"
+            >
+              {{ langName(l) }}
+            </button>
+            <button :class="{ on: recLangFilter === 'all' && !recSearch.trim() }" @click="recLangFilter = 'all'; recSearch = ''">
+              All
+            </button>
+          </div>
           <input
             v-model="recSearch"
             class="search rec-search"
             type="search"
-            placeholder="search model clips — text, voice or language…"
+            placeholder="search all model clips — text, voice or language…"
           />
           <div class="pair-list rec-list">
             <button
@@ -1164,7 +1268,9 @@ function openRecordTab() {
         </p>
       </section>
       <p class="prove-src">
-        Study: 774 clips, 388 pairs, 2026-07-28 · methods and full results in
+        Study: 774 clips, 388 pairs, 2026-07-28; language-breadth extension to 509 pairs /
+        1,016 clips across nine languages, 2026-07-29 (anchors unchanged — new pairs score on
+        the study’s fixed scale) · methods and full results in
         <code>docs/course-optimization/prosody-lab-poc.md</code> · re-runnable via
         <code>tools/prosody-lab/run-study.sh</code> · theory:
         <code>ssi-learning-app/docs/vad-feedback-design.md</code>.
@@ -1285,6 +1391,8 @@ code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-
 
 /* ── record yourself ── */
 .rec-split { display: grid; grid-template-columns: minmax(260px, 360px) 1fr; gap: 18px; align-items: start; }
+.rec-lang-filters { margin-bottom: 8px; }
+.lang-filters { margin-top: -6px; }
 @media (max-width: 900px) { .rec-split { grid-template-columns: 1fr; } }
 .rec-search { width: 100%; margin-bottom: 10px; box-sizing: border-box; }
 .rec-list { max-height: 560px; }
