@@ -109,10 +109,14 @@ const playFrac = ref(0) // 0..1 through the playing clip
 let audioEl = null
 let rafId = 0
 function tickPlayhead() {
-  if (audioEl && !audioEl.paused && audioEl.duration > 0) {
+  // Keep looping for as long as a clip is nominally playing — duration is NaN
+  // for the first frames after src is set, so gating survival on it killed the
+  // loop before metadata ever arrived. Only the UPDATE needs valid data.
+  if (!playingId.value) return
+  if (audioEl && audioEl.duration > 0) {
     playFrac.value = audioEl.currentTime / audioEl.duration
-    rafId = requestAnimationFrame(tickPlayhead)
   }
+  rafId = requestAnimationFrame(tickPlayhead)
 }
 function play(clipId, src) {
   if (playingId.value === clipId) {
@@ -126,7 +130,9 @@ function play(clipId, src) {
     audioEl.addEventListener('error', () => (playingId.value = ''))
   }
   audioEl.src = src || `${AUDIO_BASE}/${clipId}`
-  audioEl.play()
+  audioEl.play().catch(() => {
+    if (playingId.value === clipId) playingId.value = ''
+  })
   playingId.value = clipId
   playFrac.value = 0
   cancelAnimationFrame(rafId)
