@@ -10,9 +10,9 @@ afr_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -24,9 +24,9 @@ ara_eg_for_eng:
   basecamp:    Content-check
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -38,9 +38,9 @@ ara_eg_for_jpn:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -52,9 +52,9 @@ ara_eg_for_zho:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -66,9 +66,9 @@ ara_for_cym:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -80,9 +80,9 @@ ara_for_eng:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -94,9 +94,9 @@ ara_for_jpn:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -108,9 +108,9 @@ ara_for_zho:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -122,9 +122,9 @@ ara_lb_for_eng:
   basecamp:    Content-check
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -136,9 +136,9 @@ ara_sy_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -150,9 +150,9 @@ ara_sy_for_jpn:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -164,9 +164,9 @@ ara_sy_for_zho:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -178,9 +178,9 @@ ben_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -192,9 +192,9 @@ bre_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -206,9 +206,9 @@ bre_for_fra:
   basecamp:    Triage
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -220,9 +220,9 @@ bul_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -234,9 +234,9 @@ cat_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -248,9 +248,9 @@ cat_for_spa:
   basecamp:    Triage
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -262,9 +262,9 @@ ces_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -276,9 +276,9 @@ cor_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -290,9 +290,9 @@ cym_anthem_for_jpn:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -304,9 +304,9 @@ cym_for_yor:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -318,9 +318,9 @@ cym_n_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -332,9 +332,9 @@ cym_s_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -346,9 +346,9 @@ dan_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -360,9 +360,9 @@ deu_at_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -374,9 +374,9 @@ deu_at_for_jpn:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -388,9 +388,9 @@ deu_at_for_zho:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -402,9 +402,9 @@ deu_ch_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -416,9 +416,9 @@ deu_for_cym:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -430,9 +430,9 @@ deu_for_eng:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -444,9 +444,9 @@ deu_for_jpn:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -458,9 +458,9 @@ deu_for_zho:
   basecamp:    Ready-stage
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -472,9 +472,9 @@ ell_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -486,9 +486,9 @@ eng_for_ara:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -500,9 +500,9 @@ eng_for_ben:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -514,9 +514,9 @@ eng_for_deu:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -528,9 +528,9 @@ eng_for_fra:
   basecamp:    Ready-stage
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -542,9 +542,9 @@ eng_for_guj:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -556,9 +556,9 @@ eng_for_hin:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -570,9 +570,9 @@ eng_for_ita:
   basecamp:    Content-check
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -584,9 +584,9 @@ eng_for_jpn:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -598,9 +598,9 @@ eng_for_kan:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -612,9 +612,9 @@ eng_for_kor:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -626,9 +626,9 @@ eng_for_mar:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -640,9 +640,9 @@ eng_for_pan:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -654,9 +654,9 @@ eng_for_por:
   basecamp:    Content-check
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -668,9 +668,9 @@ eng_for_sin:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -682,9 +682,9 @@ eng_for_spa:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -696,9 +696,9 @@ eng_for_tam:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -710,9 +710,9 @@ eng_for_tel:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -724,9 +724,9 @@ eng_for_urd:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -738,9 +738,9 @@ eng_for_zho:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -752,9 +752,9 @@ eng_template:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -766,9 +766,9 @@ est_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -780,9 +780,9 @@ eus_for_eng:
   basecamp:    Content-check
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -794,9 +794,9 @@ eus_for_spa:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -808,9 +808,9 @@ fas_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -822,9 +822,9 @@ fin_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -836,9 +836,9 @@ fra_ca_for_eng:
   basecamp:    Ready-live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -850,9 +850,9 @@ fra_for_cym:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -864,9 +864,9 @@ fra_for_eng:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -878,9 +878,9 @@ fra_for_jpn:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -892,9 +892,9 @@ fra_for_zho:
   basecamp:    Ready-stage
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -906,9 +906,9 @@ fur_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -920,9 +920,9 @@ gla_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -934,9 +934,9 @@ gle_for_eng:
   basecamp:    Triage
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -948,9 +948,9 @@ glg_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -962,9 +962,9 @@ hak_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -976,9 +976,9 @@ heb_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -990,9 +990,9 @@ hin_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1004,9 +1004,9 @@ hrv_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1018,9 +1018,9 @@ hun_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1032,9 +1032,9 @@ hye_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1046,9 +1046,9 @@ isl_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1060,9 +1060,9 @@ ita_for_cym:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1074,9 +1074,9 @@ ita_for_eng:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1088,9 +1088,9 @@ ita_for_jpn:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1102,9 +1102,9 @@ ita_for_zho:
   basecamp:    Ready-stage
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1116,9 +1116,9 @@ jpn_for_cym:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1130,9 +1130,9 @@ jpn_for_eng:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1144,9 +1144,9 @@ jpn_for_zho:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1158,9 +1158,9 @@ kan_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1172,9 +1172,9 @@ kor_for_cym:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1186,9 +1186,9 @@ kor_for_eng:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1200,9 +1200,9 @@ kor_for_hin:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1214,9 +1214,9 @@ kor_for_jpn:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1228,9 +1228,9 @@ kor_for_tam:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1242,9 +1242,9 @@ kor_for_zho:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1256,9 +1256,9 @@ lav_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1270,9 +1270,9 @@ lit_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1284,9 +1284,9 @@ lmo_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1298,9 +1298,9 @@ mar_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1312,9 +1312,9 @@ mkd_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1326,9 +1326,9 @@ mlt_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1340,9 +1340,9 @@ nan_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1354,9 +1354,9 @@ nap_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1368,9 +1368,9 @@ nep_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1382,9 +1382,9 @@ nld_for_eng:
   basecamp:    Content-check
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1396,9 +1396,9 @@ nor_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1410,9 +1410,9 @@ pdc_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1424,9 +1424,9 @@ pol_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1438,9 +1438,9 @@ por_br_for_eng:
   basecamp:    Ready-live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1452,9 +1452,9 @@ por_br_for_jpn:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1466,9 +1466,9 @@ por_br_for_zho:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1480,9 +1480,9 @@ por_for_aze:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1494,9 +1494,9 @@ por_for_cym:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1508,9 +1508,9 @@ por_for_eng:
   basecamp:    Ready-live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1522,9 +1522,9 @@ por_for_jpn:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1536,9 +1536,9 @@ por_for_lit:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1550,9 +1550,9 @@ por_for_zho:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1564,9 +1564,9 @@ rgn_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1578,9 +1578,9 @@ roh_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1592,9 +1592,9 @@ ron_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1606,9 +1606,9 @@ rus_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1620,9 +1620,9 @@ sbx_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1634,9 +1634,9 @@ scn_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1648,9 +1648,9 @@ sme_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1662,9 +1662,9 @@ spa_for_cym:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1676,9 +1676,9 @@ spa_for_eng:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1690,9 +1690,9 @@ spa_for_jpn:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1704,9 +1704,9 @@ spa_for_zho:
   basecamp:    Ready-stage
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: outdated, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1718,9 +1718,9 @@ spa_mx_for_eng:
   basecamp:    On-stage
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1732,9 +1732,9 @@ spa_mx_for_jpn:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1746,9 +1746,9 @@ spa_mx_for_zho:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1760,9 +1760,9 @@ srp_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1774,9 +1774,9 @@ swa_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1788,9 +1788,9 @@ swe_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1802,9 +1802,9 @@ tel_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1816,9 +1816,9 @@ tha_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1830,9 +1830,9 @@ tur_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1844,9 +1844,9 @@ ukr_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1858,9 +1858,9 @@ vec_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1872,9 +1872,9 @@ yid_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1886,9 +1886,9 @@ yor_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1900,9 +1900,9 @@ yue_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1914,9 +1914,9 @@ zho_for_cym:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1928,9 +1928,9 @@ zho_for_eng:
   basecamp:    Live
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1942,9 +1942,9 @@ zho_for_gle:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1956,9 +1956,9 @@ zho_for_hin:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1970,9 +1970,9 @@ zho_for_jpn:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: current, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1984,9 +1984,9 @@ zho_for_tam:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
@@ -1998,9 +1998,9 @@ zzz_test_for_eng:
   basecamp:    null
   checkpoints:
     encouragements: { state: tbd, date: null }
-    welcomes:       { state: tbd, date: null }
+    welcomes:       { state: not_done, date: null }
     audio:          { state: tbd, date: null }
-    scan_course:    { state: tbd, date: null }
+    scan_course:    { state: not_done, date: null }
     deborah_check:  { needed: tbd, state: tbd, date: null }
   version_intent: null
   notes: []
