@@ -29,6 +29,14 @@ if ! ssh -o BatchMode=yes -o ConnectTimeout=6 ssi@apidev true 2>/dev/null; then
 fi
 ssh -o BatchMode=yes -o ConnectTimeout=6 ssi@apidev true 2>/dev/null && LEGACY_OK=1 || { LEGACY_OK=0; log "VPN still down — legacy checks will be skipped by the gatherers"; }
 
+# --- Basecamp token expiry reminder (warn while STILL valid so the reminder can post) ---
+EXPH="$(basecamp auth status --json 2>/dev/null | grep -oE '"expires_in":"[0-9]+h' | grep -oE '[0-9]+' | head -1)"
+if [ -n "$EXPH" ] && [ "$EXPH" -lt 72 ]; then
+  log "Basecamp token expires in ${EXPH}h — reminding to re-auth"
+  osascript -e 'display notification "Basecamp token expiring soon — run: basecamp auth login" with title "Course Monitor — re-auth needed"' 2>/dev/null || true
+  basecamp message --project 43553001 "🔑 Basecamp token expiring (~${EXPH}h)" "The course-monitor's Basecamp login expires in ~${EXPH} hours. Run 'basecamp auth login' on the dashboard host to keep the daily routine posting." 2>/dev/null || true
+fi
+
 # --- STAGE 1: deterministic gather (no LLM) ---
 log "gather.cjs"; node tools/course-monitor/gather.cjs >"$SNAP" 2>>"$LOG" || log "gather.cjs FAILED (see log)"
 log "check-encouragements.cjs"; { echo; echo "## Encouragements currency"; node tools/course-monitor/check-encouragements.cjs 2>>"$LOG"; } >>"$SNAP" || log "encouragements check FAILED"
