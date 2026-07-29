@@ -580,6 +580,16 @@ async function saveRecording() {
   }
 }
 
+async function deleteSaved(r) {
+  if (!window.confirm(`Delete the ${r.language} “${r.model_text}” take (${r.proficiency})? This removes it from the calibration corpus.`)) return
+  try {
+    await postJson({ action: 'delete', id: r.id })
+    savedList.value = savedList.value.filter((x) => x.id !== r.id)
+  } catch (e) {
+    window.alert(`Delete failed: ${e.message}`)
+  }
+}
+
 async function loadSaved() {
   try {
     const res = await fetch(`${REC_API}?action=list`)
@@ -985,7 +995,7 @@ function openRecordTab() {
         <h3>Calibration corpus — {{ savedList.length }} recording{{ savedList.length === 1 ? '' : 's' }}</h3>
         <table class="auc-table">
           <thead>
-            <tr><th></th><th>When</th><th>Phrase</th><th>Lang</th><th>Proficiency</th><th>energy</th><th>dur</th><th>sylΔ</th><th>combined</th><th>Note</th></tr>
+            <tr><th></th><th>When</th><th>Phrase</th><th>Lang</th><th>Proficiency</th><th>energy</th><th>dur</th><th>sylΔ</th><th>combined</th><th>Note</th><th></th></tr>
           </thead>
           <tbody>
             <tr v-for="r in savedList" :key="r.id">
@@ -1003,6 +1013,7 @@ function openRecordTab() {
               <td>{{ fmt(r.scores?.syl_count_diff) }}</td>
               <td>{{ fmt(r.scores?.combined, 2) }}</td>
               <td class="rec-saved-text">{{ r.note || '' }}</td>
+              <td><button class="align-toggle" title="delete this take" @click="deleteSaved(r)">✕</button></td>
             </tr>
           </tbody>
         </table>

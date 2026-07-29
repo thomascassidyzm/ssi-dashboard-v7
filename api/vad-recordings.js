@@ -16,6 +16,7 @@
  *
  * POST {action:'chunk', id, index, data}        — data = base64 of that chunk's bytes
  * POST {action:'finalize', id, parts, mime, meta} — writes meta.json after verifying parts
+ * POST {action:'delete', id}                     — prune one recording (bad takes happen)
  * GET  ?action=list                              — all meta.json payloads, newest first
  * GET  ?action=audio&id=<id>                     — reassembled audio stream
  */
@@ -25,6 +26,7 @@ import {
   GetObjectCommand,
   PutObjectCommand,
   ListObjectsV2Command,
+  DeleteObjectsCommand,
 } from '@aws-sdk/client-s3';
 
 const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
@@ -180,6 +182,20 @@ export default async function handler(req, res) {
           })
         );
         return res.status(200).json({ ok: true, id });
+      }
+
+      if (action === 'delete') {
+        // scoped strictly to one recording's own prefix under vad-lab/
+        const listed = await s3.send(
+          new ListObjectsV2Command({ Bucket: S3_BUCKET, Prefix: `${PREFIX}${id}/` })
+        );
+        const objects = (listed.Contents || []).map((o) => ({ Key: o.Key }));
+        if (objects.length) {
+          await s3.send(
+            new DeleteObjectsCommand({ Bucket: S3_BUCKET, Delete: { Objects: objects } })
+          );
+        }
+        return res.status(200).json({ ok: true, deleted: objects.length });
       }
 
       return res.status(400).json({ error: 'unknown action' });
