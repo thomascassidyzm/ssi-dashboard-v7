@@ -46,3 +46,17 @@ voiced fraction are voice-dominated (AUC < 0.5) and must not be scored.
 
 Data lives in `temp/prosody-lab/` (gitignored). Requires `.env` (S3),
 `.env.psql` (DB), ffmpeg, python3 with numpy/scipy/soundfile.
+
+## Credential-free tools (2026-07-29 breadth round)
+
+Two tools added for the founder's language-breadth + clean-xAI rulings that
+run WITHOUT `.env.psql`/S3/numpy (see docs/DECISIONS.md 2026-07-29):
+
+- `extend-lab-breadth.mjs` — extends the baked lab data with new-language
+  pairs via Supabase REST (anon key) + the public audio proxy + the JS
+  extractor (`src/views/admin/vadProsody.js`, parity-verified mirror of
+  prosody.py). Study anchors stay fixed; new pairs score on the same scale.
+- `remaster-vad-lab-clean.cjs` — re-renders the lab's xAI/clone clip sides
+  and masters them WITHOUT the compressor stage (the hiss source), into
+  `public/vad-lab-clean/` only. Needs `XAI_API_KEY` + ffmpeg + lame — run it
+  where the vault is reachable (Camberley), dry-run by default.

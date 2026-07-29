@@ -8,9 +8,10 @@ test.beforeEach(async ({ page }) => {
 // VAD Lab v2 smoke — tour contours render, lab browser works, and the
 // record-yourself flow produces scores end-to-end with Chromium's fake mic.
 
-test('listening tour renders six cards with contour overlays and syllable ticks', async ({ page }) => {
+test('listening tour renders ten cards with contour overlays and syllable ticks', async ({ page }) => {
   await page.goto('/admin/configs/vad')
-  await expect(page.locator('.tour-card')).toHaveCount(6)
+  // 10 cards since the 2026-07-29 language-breadth round (was 6)
+  await expect(page.locator('.tour-card')).toHaveCount(10)
   // every card overlays two energy polylines
   expect(await page.locator('.tour-card .vc > svg polyline').count()).toBeGreaterThanOrEqual(12)
   // syllable ticks shipped in lab-data v2

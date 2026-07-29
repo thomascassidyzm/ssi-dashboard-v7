@@ -341,3 +341,55 @@ clearly commented).
 **Search width:** visible-options
 **Decided by:** agent (environment + optionality decided by Tom, 2026-07-29 verbatim in the
 commission)
+
+## 2026-07-29 — VAD Lab breadth pipeline runs credential-free (REST + proxy + JS extractor)
+
+**Move:** the language-breadth re-sample (founder ruling: more languages in tour/browse/record)
+was built as `tools/prosody-lab/extend-lab-breadth.mjs` — course_audio read via Supabase REST
+(anon key), clips fetched through the public `saysomethingin.app/api/audio/:id` proxy, features
+extracted by the parity-verified JS extractor (`vadProsody.js`) under Node with ffmpeg decode.
+The 2026-07-28 study anchors (AUC tables, `median_scale`) are deliberately NOT recomputed:
+new pairs score on the study's fixed scale, exactly as the record-yourself flow already does.
+
+**Better:** runs on any machine — watson-1 has no `.env.psql`, no S3 creds, no numpy, and the
+canonical pipeline (pg + S3 + prosody.py) is unrunnable there; this reached the same estate
+through the two public read paths and shipped 122 new pairs (ita/zho/por/kor/eus + spa/fra).
+**Simpler:** no new credentials provisioned, no sudo-gated python deps; one extractor (the JS
+mirror) instead of keeping two in lockstep for this run.
+**Cheaper (total):** zero secret-distribution and zero infra; the proxy and REST reads are
+already public surface.
+
+**Searched & rejected:**
+- Provisioning `.env.psql`/S3 to watson-1 — fails Simpler/Cheaper (secret distribution for a
+  read-only job the public paths already serve) and needs Tom's scp.
+- Full Node port of prosody.py's report stage (recompute anchors over the merged set) — fails
+  Better: the anchors are the study's published finding; churning them with a different (though
+  parity-verified) extractor weakens the honesty story for zero learner-facing gain.
+**Search width:** visible-options
+**Decided by:** agent (breadth itself ruled by Tom 2026-07-29)
+
+## 2026-07-29 — clean-mastered VAD Lab xAI clips live as committed static files
+
+**Move:** clean copies (no PRE_COMPRESS, no make-up gain; true-peak limit + anti-click fades
+kept) go to `public/vad-lab-clean/<clip_id>.mp3` + manifest in THIS repo, served statically by
+the dashboard; the VAD Lab A/B affordance appears automatically when the manifest exists.
+Rendering script `tools/prosody-lab/remaster-vad-lab-clean.cjs` (186 xAI/clone sides, 14
+voices) is dry-run-gated and pending a run on a machine with `XAI_API_KEY` (watson-1 has no
+vault access). `normalizeAudioClean()` is additive — Kai's default chain is bit-identical.
+
+**Better:** honest separation — production `course_audio`/S3 untouched, clip set clearly
+VAD-Lab-only, before/after listenable in place.
+**Simpler:** no new S3 prefix, no new serving route in the learning-app (Kai's domain), no
+auth: the dashboard already ships static lab data the same way.
+**Cheaper (total):** ~186 small mp3s (~5-8MB) of repo weight vs new bucket policy + proxy route
++ cross-repo deploy; zero moving parts at runtime.
+
+**Searched & rejected:**
+- `vad-lab-clean/` S3 prefix behind the existing audio route — the route serves by course_audio
+  id from the private bucket; a prefix needs a new serving path in ssi-learning-app (cross-repo,
+  Kai-owned) — fails Simpler.
+- Re-mastering from raw pre-masters instead of re-rendering — no raws are retained anywhere;
+  physical floor, so clean copies are fresh takes and the UI says so ("listen for the noise
+  floor, not the exact delivery").
+**Search width:** visible-options
+**Decided by:** agent (clean-mastering itself ruled by Tom 2026-07-29)
