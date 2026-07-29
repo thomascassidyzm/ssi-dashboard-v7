@@ -19,6 +19,22 @@ a bad teacher. Consequences for measurement:
   candidate **understandability core** — the thing worth measuring a learner
   against. Whatever varies freely across voices on the same phrase is the
   identity/naturalness axis — the thing we must NOT grade a learner on.
+- **The scoring unit is the UTTERANCE, never the phoneme** (founder ruling,
+  2026-07-29). Understandability is a property of enough contiguous signal —
+  roughly 10 syllables — for the listener's predictive reconstruction to
+  lock on; a phoneme-level score measures articulation, which is neither what
+  the listener uses nor what the method teaches. Every feature, comparison
+  and calibration downstream of this doc inherits this constraint: whole-clip
+  contours, whole-clip scalars, no sub-utterance grading.
+- **"Human v TTS speed is not a thing"** (founder ruling, 2026-07-29). No
+  duration/tempo difference in this study may be framed as a property of
+  humanness vs synthesis. The estate's human recordings are old-course
+  recordings whose pacing is an era/production artefact; what the human-vs-TTS
+  English category actually evidences is only that *those recordings* pace
+  differently from modern TTS renders of the same text. The load-bearing
+  lesson survives without the frame: duration reads ANY natural pacing
+  difference as distance, so it needs calibrated variance bands before it
+  ever reaches a learner as a score.
 
 ## The lab
 
@@ -152,8 +168,8 @@ cross+far pool so no dimension dominates by unit):
 The ordering is largely monotonic and matches the physical story: same
 render < new voice, same provider < new provider < cross-human (Welsh) <
 different phrase < human vs TTS (English) — that last flip is discussed in
-sanity check 4 below; it is a tempo artefact of the English pairing, not a
-Welsh result. **A contour metric built on energy shape + timing separates "said the
+sanity check 4 below; it is a pacing artefact of the old English recordings'
+era, not a Welsh result and not a humanness property. **A contour metric built on energy shape + timing separates "said the
 right phrase" from "said a different phrase" at AUC ≈ 0.81 across a speaker
 change**, using zero timbre information. That is the discrimination the
 learner-vs-model-voice design depends on, and it holds at PoC scale.
@@ -189,16 +205,17 @@ that residual voice sensitivity reaching the learner as a penalty.
    or beyond the different-phrase anchor), driven by duration: human/TTS
    `dur_log_ratio` median 0.476 vs 0.251 for different phrases. The 99 English
    pairs pit a genuine human recording (`origin='human'`, confirmed in the lab
-   data) against Azure/xAI renders of the same text, so this IS a real
-   human-vs-TTS tempo gap. Human speakers simply do not use the same pace as
-   the TTS. Read straight, this says **duration ratio will punish a learner
-   for speaking at a human tempo** — it needs per-phrase normalisation or a
-   wide tolerance band before it goes anywhere near learner scoring. **No
-   speed/duration claim in this doc rests on Welsh data** — the Welsh
-   recordings come from a very old course and are noticeably slower than
-   modern TTS, a pacing artefact of that course's era, not a human-vs-TTS
-   signal; every duration/tempo claim here is anchored on the English pair
-   only.
+   data) against Azure/xAI renders of the same text — but per the founder
+   ruling in the doctrine section, this is **not** evidence of a human-vs-TTS
+   tempo property: the human English clips are old-course recordings, and
+   their pacing is an era/production artefact exactly as the Welsh estate's
+   is. What the pairs evidence is narrower and still load-bearing: **two
+   legitimate renditions of the same phrase can differ in pace enough for the
+   duration dimension alone to score them as far apart as different phrases**.
+   Duration therefore needs per-phrase normalisation or a wide tolerance band
+   before it goes anywhere near learner scoring. No speed/duration claim in
+   this doc rests on Welsh data (n=12, cross-human, same-era artefact), and
+   none is framed as humanness anywhere.
 
 **Do not trust the Welsh number as a human-vs-TTS read — it isn't one.** All
 12 cym pairs are two human voices, not human vs TTS (see above). On top of
@@ -255,21 +272,79 @@ Pair it with a content check; do not ask it to do word recognition.
 2. **Do not score raw F0 contour, F0 range, register or voiced fraction.**
    Register-normalisation is insufficient; on this evidence they grade the
    learner's larynx.
-3. **Duration needs a tolerance band before learner use** — the human-vs-TTS
-   English result shows a natural human tempo scoring as far as a wrong
-   phrase. (English only — see sanity check 4; the Welsh pairs are cross-human
-   and, separately, noticeably slower-paced than modern TTS because they come
-   from a deliberately slow-paced old course, so they carry no tempo evidence
-   either way.)
+3. **Duration needs a tolerance band before learner use** — the English
+   category shows two legitimate renditions of the same phrase scoring as far
+   apart on duration alone as different phrases (see sanity check 4 and the
+   doctrine ruling: this is a pacing gap between recording eras, never a
+   human-vs-TTS property; the Welsh pairs carry no tempo evidence either way).
 4. **Model-voice selection** now has a measurable handle: of the renditions of
    a phrase, prefer the one whose energy contour is most central across voices
    — that is the most copyable reading, and it is the doctrine ("maximally
    copyable by a beginner") made operational.
 5. Next scale-up, if wanted: more human-vs-TTS pairs without the punctuation
    confound, and a cross-voice *different-phrase* anchor to bound the easy case.
-6. **Founder direction for VAD Lab v2** (logged, not built now): more detailed
-   comparisons than this PoC's six categories — Tom wants deeper coverage
-   before the surface is treated as more than a first pass.
+6. **Founder direction for VAD Lab v2**: more detailed comparisons than this
+   PoC's six categories — deeper coverage before the surface is treated as
+   more than a first pass. Partially delivered by the v2 surface below
+   (record-yourself, live contours); the beyond-pair comparison *modes* are
+   an open question (see Open questions).
+
+## VAD Lab v2 (shipped 2026-07-29, founder-commissioned)
+
+The surface (`/admin/configs/vad`, `src/views/admin/VadLab.vue`) grew four
+things; the study above is unchanged.
+
+1. **Live contour view** (`VadContour.vue`): every pair draws both energy
+   envelopes — the actual feature the DTW score compares — with a moving
+   playhead synced to playback and syllable-peak ticks on the axis. In the
+   DTW-aligned view the playhead and clip-B ticks are routed through the warp
+   path (`bmap`), so the eye sees where the alignment put each moment of
+   audio. "Trust the number" becomes "watch what the number sees".
+2. **Record-yourself flow**: record an attempt against any model clip (browser
+   `MediaRecorder`, Safari/iOS included), get the overlay + the three
+   phrase-carrying scores immediately. Both sides are extracted by the SAME
+   code (`src/views/admin/vadProsody.js`, a line-for-line JS mirror of
+   `prosody.py` v2) so there is no python/JS extractor bias inside a
+   comparison. Recordings save with language + self-rated proficiency +
+   optional note to `s3://ssi-audio-stage/vad-lab/recordings/` via
+   `/api/vad-recordings` (chunked ≤32KB POSTs — the founder's network
+   corrupts larger HTTPS uploads), each with its features, scores and model
+   features baked into `meta.json`. One voice at varying self-rated
+   proficiency = the controlled calibration corpus the variance-band decision
+   needs. Private admin tool — no learner exposure.
+3. **Experimental pitch-shape track**: the contour view can show each clip's
+   F0 shape in semitones relative to its own median (register-normalised).
+   Display only, clearly labelled experimental, and NEVER folded into any
+   score — the study's own finding (melody is voice-dominated, AUC 0.464)
+   is printed on the label. This reverses the v1 decision not to ship F0
+   contours in lab-data at all (founder direction); the ban that stands is on
+   *scoring* melody, not on *seeing* it. Deeper per-syllable shape
+   normalisation (segment F0 by syllable peaks, normalise each syllable's
+   shape) is sketched but not built — the whole-utterance register-normalised
+   shape is the prototype.
+4. **Tempo reframing** per the doctrine ruling: no surface copy frames any
+   duration gap as human-vs-TTS.
+
+Extractor v2 (`prosody-lab-poc-2`) adds `syllable_peak_t` (peak times as
+fractions of trimmed duration) for the axis ticks; lab-data now ships
+`sylT` + `f0` per clip alongside the energy contour.
+
+## Open questions (founder explicitly unsure — design notes, not commitments)
+
+- **Beyond-pair comparison modes.** One-vs-many (a clip against every other
+  rendition of its phrase), distribution views (where does this pair sit in
+  its category's spread), model-voice centrality ranking at scale. The
+  founder wants richer comparison than pairs eventually but is explicitly
+  not sure what the right modes are — nothing here should be built until
+  the record-yourself corpus has been listened to and the useful questions
+  are known.
+- **Calibrating the learner-vs-model difference engine into feedback.** How
+  do raw distances become helpful thresholds — per-CEFR variance bands, and
+  what counts as "within band" per dimension? The founder's own graded
+  recordings (Spanish/Italian/French strong, Chinese decent, one voice at
+  varying proficiency) are the intended input to that decision; the
+  record-yourself corpus exists precisely so this question is answered from
+  data, not guessed.
 
 ### Voice-sourcing policy (context for the human/TTS categories above)
 
