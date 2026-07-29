@@ -120,7 +120,7 @@ async function main() {
   // -- crossvoice: same text, two different azure voices (same provider)
   {
     const q = groupPairQuery({
-      where: `origin='tts' and language in ('fra','spa') and (${PROVIDER_SQL}) = 'azure'`,
+      where: `origin='tts' and language in ('fra','spa','ita','zho','por','kor','eus') and (${PROVIDER_SQL}) = 'azure'`,
       distinctCol: 'voice_id', limit: limitPerCat,
     })
     categories.crossvoice = pairsFromRows((await client.query(q)).rows, r => `${r.language}|${r.text_stripped}`)
@@ -130,7 +130,7 @@ async function main() {
   // -- crossprovider: same text, distinct providers (tts only)
   {
     const q = groupPairQuery({
-      where: `origin='tts' and language in ('eng','fra')`,
+      where: `origin='tts' and language in ('eng','fra','ita','zho')`,
       distinctCol: 'provider', limit: limitPerCat,
     })
     categories.crossprovider = pairsFromRows((await client.query(q)).rows, r => `${r.language}|${r.text_stripped}`)
