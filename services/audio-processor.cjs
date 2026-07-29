@@ -649,6 +649,33 @@ async function normalizeAudio(inputPath, outputPath, targetLUFS = -16.0) {
 }
 
 /**
+ * Clean-mastering variant (founder ruling 2026-07-29, VAD Lab clips): the
+ * PRE_COMPRESS stage above (8:1 below -24dB) plus its make-up gain drags the
+ * noise floor of peaky xAI voice clones into audibility — "that hissy
+ * mastering stuff". This variant drops the compressor and the +1dB make-up
+ * trick entirely: plain gain to target, true-peak limit as the safety net,
+ * and the anti-click fades (which must never be dropped). Known consequence,
+ * accepted for VAD Lab: without the crest-taming compressor, xAI clones stall
+ * at roughly -20 to -22 LUFS instead of -16 — scores and contours are
+ * level-invariant and the lab loudness-matches for A/B listening. ADDITIVE:
+ * nothing in the default normalizeAudio() chain changes for existing callers.
+ * Returns the measured input LUFS and the resulting output LUFS.
+ */
+async function normalizeAudioClean(inputPath, outputPath, targetLUFS = -16.0) {
+  try {
+    const measured = await measureIntegratedLoudness(inputPath, 'anull');
+    const gain = (targetLUFS - measured).toFixed(2);
+    await ffmpegFilterToLameMp3(inputPath, outputPath, {
+      filterChain: `volume=${gain}dB,${TRUE_PEAK_LIMIT},${ANTI_CLICK_FADE}`
+    });
+    const resultLUFS = await measureIntegratedLoudness(outputPath, 'anull');
+    return { inputLUFS: measured, outputLUFS: resultLUFS };
+  } catch (error) {
+    throw new Error(`Failed to clean-normalize audio: ${error.message}`);
+  }
+}
+
+/**
  * Process audio file (time-stretch and/or normalize)
  *
  * @param {string} inputPath - Input audio file path
@@ -1047,6 +1074,7 @@ module.exports = {
   checkMp3Format,
   timeStretchAudio,
   normalizeAudio,
+  normalizeAudioClean,
   processAudio,
   processBatch,
   concatenateAudio,
