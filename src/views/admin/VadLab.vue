@@ -32,6 +32,7 @@ import VadContour from './VadContour.vue'
 import {
   dtwWarp,
   extractFeatures,
+  trimWindow,
   decodeTo16kMono,
   comparePhraseDims,
   activeSpeechDb,
@@ -112,7 +113,8 @@ function voiceLabel(side) {
 
 // ── audio playback (one shared element; tap toggles; playhead via rAF) ─────
 const playingId = ref('')
-const playFrac = ref(0) // 0..1 through the playing clip
+const playFrac = ref(0) // 0..1 through the playing clip (FULL untrimmed timeline)
+const playTime = ref(0) // seconds into the playing clip
 let audioEl = null
 let rafId = 0
 function tickPlayhead() {
@@ -122,6 +124,7 @@ function tickPlayhead() {
   if (!playingId.value) return
   if (audioEl && audioEl.duration > 0) {
     playFrac.value = audioEl.currentTime / audioEl.duration
+    playTime.value = audioEl.currentTime
   }
   rafId = requestAnimationFrame(tickPlayhead)
 }
@@ -142,9 +145,51 @@ function play(clipId, src) {
   })
   playingId.value = clipId
   playFrac.value = 0
+  playTime.value = 0
+  if (!src) ensureTrim(clipId) // study clip — resolve its trim window
   cancelAnimationFrame(rafId)
   rafId = requestAnimationFrame(tickPlayhead)
 }
+
+// ── playhead honesty: map clip time onto the contour's trimmed window ──────
+// The contours (baked AND live) span only the silence-trimmed speech, but the
+// audio element plays the FULL clip — so currentTime/duration lies whenever a
+// clip carries lead/tail silence. Each clip's trim window is computed in the
+// browser by the extractor's own silence gate (trimWindow) and cached; the
+// playhead then runs (t − trimStart)/durS, parked at 0 before speech starts
+// and at 1 after it ends — which IS the honest position. Until a window
+// resolves (first play of a clip, sub-second decode) the raw fraction stands.
+const trims = ref({}) // clipId → { trimStartS, durS } | null (unusable → raw)
+const trimPending = new Set()
+async function ensureTrim(clipId) {
+  if (clipId in trims.value || trimPending.has(clipId)) return
+  trimPending.add(clipId)
+  try {
+    const cached = modelFeatCache.get(clipId)
+    const tw = cached
+      ? { trimStartS: cached.feat.trim_start_s, durS: cached.feat.duration_s }
+      : await (async () => {
+          const res = await fetch(`${AUDIO_BASE}/${clipId}`)
+          if (!res.ok) throw new Error(`HTTP ${res.status}`)
+          return trimWindow(await decodeTo16kMono(await res.arrayBuffer()))
+        })()
+    trims.value = { ...trims.value, [clipId]: tw }
+  } catch {
+    trims.value = { ...trims.value, [clipId]: null }
+  } finally {
+    trimPending.delete(clipId)
+  }
+}
+const mappedPlayFrac = computed(() => {
+  const id = playingId.value
+  if (!id) return 0
+  const tw =
+    id === 'self-recording'
+      ? recFeat.value && { trimStartS: recFeat.value.trim_start_s, durS: recFeat.value.duration_s }
+      : trims.value[id]
+  if (!tw || !(tw.durS > 0)) return playFrac.value
+  return Math.min(1, Math.max(0, (playTime.value - tw.trimStartS) / tw.durS))
+})
 function playSideFor(pair) {
   if (playingId.value === pair.a.id) return 'a'
   if (playingId.value === pair.b.id) return 'b'
@@ -712,7 +757,7 @@ function openRecordTab() {
           <VadContour
             v-bind="contourPair(t.pair, true)"
             :play-side="playSideFor(t.pair)"
-            :play-frac="playFrac"
+            :play-frac="mappedPlayFrac"
             :show-pitch="showPitch"
           />
           <div class="legend">
@@ -809,7 +854,7 @@ function openRecordTab() {
             <VadContour
               v-bind="contourPair(selectedPair, alignedView)"
               :play-side="playSideFor(selectedPair)"
-              :play-frac="playFrac"
+              :play-frac="mappedPlayFrac"
               :show-pitch="showPitch"
             />
             <div class="legend">
@@ -976,7 +1021,7 @@ function openRecordTab() {
                 <VadContour
                   v-bind="recOverlay"
                   :play-side="recPlaySide()"
-                  :play-frac="playFrac"
+                  :play-frac="mappedPlayFrac"
                   :show-pitch="showPitch"
                 />
                 <div class="legend">

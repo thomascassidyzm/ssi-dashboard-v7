@@ -18,7 +18,9 @@ const props = defineProps({
   sylTB: { type: Array, default: () => [] },
   f0A: { type: Array, default: null }, // semitones re own median (experimental)
   f0B: { type: Array, default: null },
-  // playhead: which side is playing ('a' | 'b' | ''), fraction 0..1 of that clip
+  // playhead: which side is playing ('a' | 'b' | ''), fraction 0..1 through
+  // that clip's CONTOUR window (the caller maps clip time through the silence
+  // trim — the contour spans only trimmed speech, never the full file)
   playSide: { type: String, default: '' },
   playFrac: { type: Number, default: 0 },
   // when the b-series is DTW-warped onto a's axis, bmap[j] = a-index for b-index j
@@ -64,6 +66,12 @@ const playX = computed(() => {
 const ticksA = computed(() => props.sylTA.map((f) => PAD + f * (W - 2 * PAD)))
 const ticksB = computed(() => props.sylTB.map((f) => PAD + bFracToX(f) * (W - 2 * PAD)))
 const hasPitch = computed(() => props.showPitch && (props.f0A || props.f0B))
+
+// progressive paint: the played portion of the PLAYING clip's polyline is a
+// bright copy clipped at the playhead's mapped x (never raw play time — with
+// trim/warp mapping, headX IS the definition of "played so far" on this
+// axis); the unplayed remainder shows as the dimmed base line underneath.
+const clipId = `vc-played-${Math.random().toString(36).slice(2, 8)}`
 </script>
 
 <template>
@@ -73,8 +81,15 @@ const hasPitch = computed(() => props.showPitch && (props.f0A || props.f0B))
       <!-- syllable-peak ticks on the axis -->
       <line v-for="(x, i) in ticksA" :key="'ta' + i" :x1="x" :y1="H - 10" :x2="x" :y2="H - 2" class="vc-tick vc-tick-a" />
       <line v-for="(x, i) in ticksB" :key="'tb' + i" :x1="x" :y1="H - 10" :x2="x" :y2="H - 2" class="vc-tick vc-tick-b" />
-      <polyline :points="polyA" class="vc-a" />
-      <polyline v-if="polyB" :points="polyB" class="vc-b" />
+      <defs v-if="playX != null">
+        <clipPath :id="clipId"><rect x="0" y="0" :width="playX" :height="H" /></clipPath>
+      </defs>
+      <polyline :points="polyA" class="vc-a" :class="{ 'vc-unplayed': playSide === 'a' }" />
+      <polyline v-if="polyB" :points="polyB" class="vc-b" :class="{ 'vc-unplayed': playSide === 'b' }" />
+      <g v-if="playX != null" :clip-path="`url(#${clipId})`">
+        <polyline v-if="playSide === 'a'" :points="polyA" class="vc-a vc-played" />
+        <polyline v-else-if="playSide === 'b' && polyB" :points="polyB" class="vc-b vc-played" />
+      </g>
       <line v-if="playX != null" :x1="playX" :y1="2" :x2="playX" :y2="H - 2" class="vc-play" :class="'vc-play-' + playSide" />
     </svg>
     <div v-if="hasPitch" class="vc-pitch">
@@ -106,6 +121,8 @@ const hasPitch = computed(() => props.showPitch && (props.f0A || props.f0B))
 .vc-a { fill: none; stroke: #3987e5; stroke-width: 2; stroke-linejoin: round; }
 .vc-b { fill: none; stroke: #d95926; stroke-width: 2; stroke-linejoin: round; }
 .vc-thin { stroke-width: 1.5; opacity: 0.9; }
+.vc-unplayed { opacity: 0.3; }
+.vc-played { stroke-width: 2.75; opacity: 1; }
 [data-theme='light'] .vc-a { stroke: #2a78d6; }
 [data-theme='light'] .vc-b { stroke: #eb6834; }
 .vc-tick { stroke-width: 1.5; opacity: 0.8; }

@@ -194,13 +194,12 @@ export function dtwWarp(a, b) {
  * Extract prosodic features from a mono Float32Array at 16 kHz.
  * Returns null if the clip is unusable (too short / silent).
  */
-export function extractFeatures(x) {
-  if (x.length < SR / 10) return null
-
-  // RMS frames → dB rel clip max
+// RMS frames → dB rel clip max (the extractor's first stage, shared with
+// trimWindow so playback mapping and features always agree on the grid)
+function rmsDbFrames(x) {
   const nFrames = 1 + Math.max(0, Math.floor((x.length - RMS_WIN) / HOP))
   if (nFrames < 2) return null
-  let db = new Array(nFrames)
+  const db = new Array(nFrames)
   let maxRms = 0
   const rms = new Array(nFrames)
   for (let f = 0; f < nFrames; f++) {
@@ -211,17 +210,52 @@ export function extractFeatures(x) {
     if (rms[f] > maxRms) maxRms = rms[f]
   }
   for (let f = 0; f < nFrames; f++) db[f] = 20 * Math.log10(rms[f] / maxRms)
+  return db
+}
 
-  // trim lead/tail silence
+function silenceTrimBounds(db) {
   let lo = -1
   let hi = -1
-  for (let f = 0; f < nFrames; f++) {
+  for (let f = 0; f < db.length; f++) {
     if (db[f] > SILENCE_DB) {
       if (lo < 0) lo = f
       hi = f + 1
     }
   }
-  if (lo < 0) return null
+  return lo < 0 ? null : { lo, hi }
+}
+
+/**
+ * The contour's time window within the FULL clip, in seconds. The extractor
+ * trims lead/tail silence before resampling, so the contour's x-axis spans
+ * [trimStartS, trimStartS + durS] of the audio element's timeline — the
+ * playhead must map through this window or it lies during lead silence.
+ * durS mirrors extractFeatures exactly (n = min(pitch frames, trimmed dB
+ * frames), 10 ms hop). Returns null for silent/too-short input.
+ */
+export function trimWindow(x) {
+  if (x.length < SR / 10) return null
+  const db = rmsDbFrames(x)
+  if (!db) return null
+  const b = silenceTrimBounds(db)
+  if (!b) return null
+  const xtLen = (b.hi - 1) * HOP + RMS_WIN - b.lo * HOP
+  if (xtLen < F0_WIN) return null
+  const nPf = 1 + Math.max(0, Math.floor((xtLen - F0_WIN) / HOP))
+  const n = Math.min(nPf, b.hi - b.lo)
+  return { trimStartS: (b.lo * HOP) / SR, durS: n * (HOP / SR) }
+}
+
+export function extractFeatures(x) {
+  if (x.length < SR / 10) return null
+
+  let db = rmsDbFrames(x)
+  if (!db) return null
+
+  // trim lead/tail silence
+  const bounds = silenceTrimBounds(db)
+  if (!bounds) return null
+  const { lo, hi } = bounds
   db = db.slice(lo, hi)
   const xt = x.subarray(lo * HOP, (hi - 1) * HOP + RMS_WIN)
   if (xt.length < F0_WIN) return null
@@ -324,6 +358,8 @@ export function extractFeatures(x) {
 
   return {
     duration_s: durS,
+    trim_start_s: (lo * HOP) / SR, // contour t=0 in the FULL clip's timeline
+
     voiced_frac: voicedCount / n,
     f0_median_hz: f0MedianHz,
     f0_range_st: f0RangeSt,
