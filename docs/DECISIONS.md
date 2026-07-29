@@ -309,3 +309,35 @@ standing cost of hand-reconciling migrations against reality.
   table (the `family_members` proof) is invisible to it; kept as cross-check only.
 **Search width:** visible-options
 **Decided by:** Tom (ruling 2026-07-29); implementation shape by agent
+
+## 2026-07-29 — watson-1 optional parallel Popty environment
+
+**Move:** stood up the Popty backend (pm2: `orchestrator` :3456 + `production-api` :3470,
+Camberley's exact process set) on watson-1 and added an optional "Watson VM" entry to the
+popty.app environment switcher pointing at `https://watson-1.tail4968cb.ts.net:8443`
+(Tailscale Funnel → :3470). Camberley untouched and still the default.
+
+**Better:** a second, always-on Linux environment Deborah/Aran can opt into with one dropdown
+pick — no Tailscale account or client needed (Funnel serves a public HTTPS URL).
+**Simpler:** identical process set and pm2 convention as Camberley; shared Supabase/S3 means
+identical data by construction; one additive switcher entry, defaults untouched.
+**Cheaper (total):** the VM already runs 24/7 for the command surface; no ngrok subscription
+(funnel is free); no new frontend deploys beyond the entry.
+
+**Searched & rejected:**
+- ngrok fallback on the VM — no authtoken provisioned on this box; would also add a paid/second
+  tunnel where the tailnet already provides one. Kept only as the honest fallback if Tom
+  declines to enable Funnel.
+- Funnel on :443 — already carries the tailnet-only serve → :4317 command surface; clobbering
+  it fails Simpler. :8443 coexists.
+- cloudflared quick tunnel — URL is ephemeral per restart; a switcher entry needs a stable URL.
+
+**Deliberately NOT running on watson-1:** nightly audit-log archive (`AUDIT_ARCHIVE_CRON`
+unset = disabled by default), `insight-discovery --write` cron (never installed), no TTS/
+generation triggered. Supabase writes are additionally RLS-blocked until the real
+`SUPABASE_SERVICE_KEY` is provisioned (current `.env` uses the public anon key as a stand-in,
+clearly commented).
+
+**Search width:** visible-options
+**Decided by:** agent (environment + optionality decided by Tom, 2026-07-29 verbatim in the
+commission)
