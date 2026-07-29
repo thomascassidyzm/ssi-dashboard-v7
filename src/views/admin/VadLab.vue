@@ -8,6 +8,18 @@
  * findings doc: docs/course-optimization/prosody-lab-poc.md; parent theory:
  * ssi-learning-app/docs/vad-feedback-design.md.
  *
+ * v2 (founder-commissioned, 2026-07-29):
+ *  - live contour view: energy envelope + moving playhead + syllable ticks
+ *    (VadContour.vue) — watch what the number sees, not just trust it
+ *  - record-yourself flow: record against any model clip, scored by the SAME
+ *    extractor on both sides (vadProsody.js mirrors prosody.py); recordings
+ *    tagged language + self-rated proficiency → /api/vad-recordings (S3) as
+ *    the calibration corpus. Private admin tool — no learner exposure.
+ *  - experimental pitch-shape track (register-normalised semitones), display
+ *    only, NEVER folded into a score — melody is voice-dominated (AUC 0.464)
+ *  - founder ruling applied: "human v TTS speed is not a thing" — no tempo
+ *    claim is framed as human-vs-TTS anywhere on this surface
+ *
  * Honest-science surface, not a marketing toy: the voice-dominated dimensions
  * are shown AS failures, the deceptive pair is curated on purpose, and the
  * confounded Welsh comparison carries its confound in the copy.
@@ -16,8 +28,11 @@
  * every study clip is a course_audio row, so nothing is copied anywhere.
  */
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import VadContour from './VadContour.vue'
+import { dtwWarp, extractFeatures, decodeTo16kMono, comparePhraseDims } from './vadProsody.js'
 
 const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
+const REC_API = '/api/vad-recordings'
 
 // ── data ────────────────────────────────────────────────────────────────────
 const loading = ref(true)
@@ -61,7 +76,7 @@ const pairById = computed(() => {
 })
 
 // ── tabs ────────────────────────────────────────────────────────────────────
-const tab = ref('tour') // tour | lab | proves
+const tab = ref('tour') // tour | lab | record | proves
 
 // ── labels ──────────────────────────────────────────────────────────────────
 const CATEGORY_META = {
@@ -69,7 +84,7 @@ const CATEGORY_META = {
   crossvoice: { label: 'Same phrase, new voice', short: 'NEW VOICE' },
   crossprovider: { label: 'Same phrase, new provider', short: 'NEW PROVIDER' },
   diffphrase: { label: 'Different phrases', short: 'DIFF PHRASE' },
-  human_tts_eng: { label: 'Human vs TTS · English', short: 'HUMAN v TTS' },
+  human_tts_eng: { label: 'Human recording vs TTS · English', short: 'HUMAN v TTS' },
   human_tts_cym: { label: 'Cross-human, same phrase · Welsh', short: 'CROSS-HUMAN' },
 }
 const catMeta = (c) => CATEGORY_META[c] || { label: c, short: c }
@@ -88,10 +103,18 @@ function voiceLabel(side) {
   return v || side.provider || 'TTS'
 }
 
-// ── audio playback (one shared element; tap toggles) ───────────────────────
+// ── audio playback (one shared element; tap toggles; playhead via rAF) ─────
 const playingId = ref('')
+const playFrac = ref(0) // 0..1 through the playing clip
 let audioEl = null
-function play(clipId) {
+let rafId = 0
+function tickPlayhead() {
+  if (audioEl && !audioEl.paused && audioEl.duration > 0) {
+    playFrac.value = audioEl.currentTime / audioEl.duration
+    rafId = requestAnimationFrame(tickPlayhead)
+  }
+}
+function play(clipId, src) {
   if (playingId.value === clipId) {
     audioEl?.pause()
     playingId.value = ''
@@ -102,75 +125,58 @@ function play(clipId) {
     audioEl.addEventListener('ended', () => (playingId.value = ''))
     audioEl.addEventListener('error', () => (playingId.value = ''))
   }
-  audioEl.src = `${AUDIO_BASE}/${clipId}`
+  audioEl.src = src || `${AUDIO_BASE}/${clipId}`
   audioEl.play()
   playingId.value = clipId
+  playFrac.value = 0
+  cancelAnimationFrame(rafId)
+  rafId = requestAnimationFrame(tickPlayhead)
 }
-onBeforeUnmount(() => audioEl?.pause())
+function playSideFor(pair) {
+  if (playingId.value === pair.a.id) return 'a'
+  if (playingId.value === pair.b.id) return 'b'
+  return ''
+}
+onBeforeUnmount(() => {
+  audioEl?.pause()
+  cancelAnimationFrame(rafId)
+  stopStream()
+  if (recUrl.value) URL.revokeObjectURL(recUrl.value)
+})
 
 // ── contour overlay ─────────────────────────────────────────────────────────
 // Energy contours are z-scored, 150 points. DTW alignment (same cost as the
 // study: mean |a-b| along the optimal path) is cheap at 150×150, computed on
-// demand and cached per pair.
+// demand and cached per pair. The warp also yields bmap — b-index → a-index —
+// so the playhead and clip-b's syllable ticks land where the alignment put
+// that moment of audio.
 const dtwCache = new Map()
-function dtwWarp(a, b) {
-  const n = a.length
-  const m = b.length
-  const INF = Infinity
-  const cost = new Float64Array((n + 1) * (m + 1)).fill(INF)
-  cost[0] = 0
-  const idx = (i, j) => i * (m + 1) + j
-  for (let i = 1; i <= n; i++) {
-    for (let j = 1; j <= m; j++) {
-      const d = Math.abs(a[i - 1] - b[j - 1])
-      cost[idx(i, j)] =
-        d + Math.min(cost[idx(i - 1, j)], cost[idx(i, j - 1)], cost[idx(i - 1, j - 1)])
-    }
-  }
-  // backtrack: for each a-index collect matched b values
-  const matched = Array.from({ length: n }, () => [])
-  let i = n
-  let j = m
-  while (i > 0 && j > 0) {
-    matched[i - 1].push(b[j - 1])
-    const diag = cost[idx(i - 1, j - 1)]
-    const up = cost[idx(i - 1, j)]
-    const left = cost[idx(i, j - 1)]
-    if (diag <= up && diag <= left) {
-      i--
-      j--
-    } else if (up <= left) i--
-    else j--
-  }
-  return matched.map((vals, k) => (vals.length ? vals.reduce((x, y) => x + y, 0) / vals.length : a[k]))
-}
 function contourPair(pair, aligned) {
   const ca = lab.value?.contours?.[pair.a.id]
   const cb = lab.value?.contours?.[pair.b.id]
   if (!ca?.e?.length || !cb?.e?.length) return null
   let bSeries = cb.e
+  let bmap = null
   if (aligned) {
     const key = pair.pair_id
     if (!dtwCache.has(key)) dtwCache.set(key, dtwWarp(ca.e, cb.e))
-    bSeries = dtwCache.get(key)
+    const w = dtwCache.get(key)
+    bSeries = w.warped
+    bmap = w.bmap
   }
-  return { a: ca.e, b: bSeries, durA: ca.dur, durB: cb.dur }
+  return {
+    a: ca.e,
+    b: bSeries,
+    bmap,
+    durA: ca.dur,
+    durB: cb.dur,
+    sylTA: ca.sylT || [],
+    sylTB: cb.sylT || [],
+    f0A: ca.f0 || null,
+    f0B: cb.f0 || null,
+  }
 }
-const W = 640
-const H = 150
-const PAD = 8
-function polyPoints(series) {
-  const lo = -2.6
-  const hi = 2.6
-  return series
-    .map((v, i) => {
-      const x = PAD + (i / (series.length - 1)) * (W - 2 * PAD)
-      const clamped = Math.max(lo, Math.min(hi, v))
-      const y = H - PAD - ((clamped - lo) / (hi - lo)) * (H - 2 * PAD)
-      return `${x.toFixed(1)},${y.toFixed(1)}`
-    })
-    .join(' ')
-}
+const showPitch = ref(true)
 
 // ── score display ───────────────────────────────────────────────────────────
 // Each dimension is shown as a dot on a track anchored by the study's own
@@ -248,13 +254,13 @@ const TOUR = [
     teaches:
       'Two different human SSi voices recording the same Welsh words — not human vs TTS. Every Welsh clip in the estate is human-recorded (Welsh voice quality is deliberately picky, so there is no Welsh TTS to compare against). The contours land closer than different phrases would — a useful preview of human-to-human distance, which is closer to the eventual learner-vs-model comparison than a human-vs-TTS pair would be.',
     footnote:
-      'Honest footnote: in all 12 Welsh pairs one voice is the declarative and the other the question form of the same words, so a real intonation difference rides along with the cross-voice difference. Twelve pairs, confounded — listed as anecdote, load-bearing on nothing. Also: the Welsh recordings are from a very old, deliberately slow-paced course, so no speed/duration conclusion should ever be drawn from them — that comparison is anchored on the English pair (card 6) only.',
+      'Honest footnote: in all 12 Welsh pairs one voice is the declarative and the other the question form of the same words, so a real intonation difference rides along with the cross-voice difference. Twelve pairs, confounded — listed as anecdote, load-bearing on nothing.',
   },
   {
     pair_id: 'human_tts_eng:4f4a89a8:5cce06c8',
-    title: '6 · Human tempo vs TTS tempo — why calibration bands are load-bearing',
+    title: '6 · Duration is the fragile dimension — why calibration bands are load-bearing',
     teaches:
-      'A human recording of “I was trying” against the TTS render. Same words, but the human pace is so different that the duration ratio scores as far as a wrong phrase would. Read straight, duration would punish a learner for speaking at a human tempo — which is exactly why the design calibrates variance bands per CEFR level before any dimension reaches a learner as a score.',
+      'A recording of “I was trying” from the old English course against a TTS render of the same words. Energy shape and syllable count still agree it is the same phrase, but the pacing gap is so large that duration alone scores it as far as a wrong phrase would be. The old recordings pace themselves very differently from modern TTS — a recording-era difference, nothing more. The lesson is about the dimension: read straight, duration punishes any natural pacing difference, which is exactly why the design calibrates variance bands per level before any dimension reaches a learner as a score.',
     caution: true,
   },
 ]
@@ -297,6 +303,296 @@ const aucTable = computed(() => {
     .map(([dim, s]) => ({ dim, ...s }))
     .sort((a, b) => (b.same_vs_diff_auc ?? -1) - (a.same_vs_diff_auc ?? -1))
 })
+
+// ── record yourself ─────────────────────────────────────────────────────────
+// The founder records graded attempts against model clips (one voice at
+// varying self-rated proficiency = controlled calibration corpus). Both sides
+// are extracted by vadProsody.js — the SAME extractor, so no python/JS bias.
+const recSearch = ref('')
+const recModelId = ref('')
+const clipIndex = computed(() => {
+  const m = new Map()
+  if (lab.value)
+    for (const p of lab.value.pairs) {
+      for (const [side, text] of [
+        [p.a, p.text_a],
+        [p.b, p.text_b || p.text_a],
+      ]) {
+        if (!m.has(side.id) && lab.value.contours?.[side.id])
+          m.set(side.id, { id: side.id, text, language: p.language, side })
+      }
+    }
+  return [...m.values()]
+})
+const recClipList = computed(() => {
+  const q = recSearch.value.trim().toLowerCase()
+  return clipIndex.value
+    .filter(
+      (c) =>
+        !q ||
+        c.text.toLowerCase().includes(q) ||
+        (c.side.voice || '').toLowerCase().includes(q) ||
+        c.language.toLowerCase().includes(q)
+    )
+    .slice(0, 60)
+})
+const recModel = computed(() => clipIndex.value.find((c) => c.id === recModelId.value) || null)
+
+const recState = ref('idle') // idle | recording | processing | done | error
+const recError = ref('')
+const recBlob = ref(null)
+const recUrl = ref('')
+const recMime = ref('')
+const recFeat = ref(null)
+const modelFeat = ref(null)
+const modelFeatCache = new Map()
+const recScores = ref(null)
+const recAligned = ref(true)
+const recWarp = ref(null)
+const recElapsed = ref(0)
+let mediaRecorder = null
+let mediaStream = null
+let recTimer = 0
+
+const canRecord = typeof navigator !== 'undefined' && !!navigator.mediaDevices?.getUserMedia
+
+function stopStream() {
+  mediaStream?.getTracks().forEach((t) => t.stop())
+  mediaStream = null
+}
+
+function pickMime() {
+  // Safari/iOS records audio/mp4 (AAC); Chrome/Firefox webm/opus
+  for (const c of ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm']) {
+    if (window.MediaRecorder?.isTypeSupported?.(c)) return c
+  }
+  return ''
+}
+
+async function startRecording() {
+  if (!recModel.value) return
+  recError.value = ''
+  try {
+    // processing off where honoured: AGC/denoise reshape the energy envelope
+    mediaStream = await navigator.mediaDevices.getUserMedia({
+      audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false },
+    })
+  } catch (e) {
+    recError.value = `Microphone unavailable: ${e.message}`
+    recState.value = 'error'
+    return
+  }
+  const mime = pickMime()
+  recMime.value = mime || 'audio/mp4'
+  mediaRecorder = mime
+    ? new MediaRecorder(mediaStream, { mimeType: mime })
+    : new MediaRecorder(mediaStream)
+  const chunks = []
+  mediaRecorder.addEventListener('dataavailable', (e) => e.data.size && chunks.push(e.data))
+  mediaRecorder.addEventListener('stop', () => {
+    stopStream()
+    clearInterval(recTimer)
+    const blob = new Blob(chunks, { type: recMime.value })
+    processRecording(blob)
+  })
+  mediaRecorder.start()
+  recState.value = 'recording'
+  recElapsed.value = 0
+  recTimer = setInterval(() => (recElapsed.value += 0.1), 100)
+}
+
+function stopRecording() {
+  if (mediaRecorder?.state === 'recording') mediaRecorder.stop()
+}
+
+async function ensureModelFeatures(clipId) {
+  if (modelFeatCache.has(clipId)) return modelFeatCache.get(clipId)
+  const res = await fetch(`${AUDIO_BASE}/${clipId}`)
+  if (!res.ok) throw new Error(`model clip HTTP ${res.status}`)
+  const feat = extractFeatures(await decodeTo16kMono(await res.arrayBuffer()))
+  if (!feat) throw new Error('model clip failed feature extraction')
+  modelFeatCache.set(clipId, feat)
+  return feat
+}
+
+async function processRecording(blob) {
+  recState.value = 'processing'
+  try {
+    recBlob.value = blob
+    if (recUrl.value) URL.revokeObjectURL(recUrl.value)
+    recUrl.value = URL.createObjectURL(blob)
+    const mine = extractFeatures(await decodeTo16kMono(await blob.arrayBuffer()))
+    if (!mine) throw new Error('recording too short or silent — try again, a little louder')
+    const model = await ensureModelFeatures(recModel.value.id)
+    recFeat.value = mine
+    modelFeat.value = model
+    recWarp.value = dtwWarp(model.energy_contour_z, mine.energy_contour_z)
+    const dims = comparePhraseDims(model, mine)
+    const scale = lab.value.combined_score.median_scale
+    const parts = PHRASE_DIMS.map((d) => dims[d] / (scale[d] || 1))
+    recScores.value = { dims, combined: parts.reduce((a, b) => a + b, 0) / parts.length }
+    recState.value = 'done'
+    saveState.value = ''
+  } catch (e) {
+    recError.value = e.message
+    recState.value = 'error'
+  }
+}
+
+function discardRecording() {
+  recState.value = 'idle'
+  recFeat.value = null
+  recScores.value = null
+  recWarp.value = null
+  recError.value = ''
+  saveState.value = ''
+}
+
+function pickModel(id) {
+  if (recModelId.value !== id) discardRecording()
+  recModelId.value = id
+}
+
+const recOverlay = computed(() => {
+  if (!modelFeat.value || !recFeat.value) return null
+  let b = recFeat.value.energy_contour_z
+  let bmap = null
+  if (recAligned.value && recWarp.value) {
+    b = recWarp.value.warped
+    bmap = recWarp.value.bmap
+  }
+  return {
+    a: modelFeat.value.energy_contour_z,
+    b,
+    bmap,
+    durA: modelFeat.value.duration_s,
+    durB: recFeat.value.duration_s,
+    sylTA: modelFeat.value.syllable_peak_t,
+    sylTB: recFeat.value.syllable_peak_t,
+    f0A: modelFeat.value.f0_contour_st,
+    f0B: recFeat.value.f0_contour_st,
+  }
+})
+function recPlaySide() {
+  if (playingId.value === recModelId.value) return 'a'
+  if (playingId.value === 'self-recording') return 'b'
+  return ''
+}
+const recPseudoPair = computed(() =>
+  recScores.value ? { dims: recScores.value.dims, combined: recScores.value.combined } : null
+)
+
+// ── saving to the calibration corpus ───────────────────────────────────────
+const recProficiency = ref('')
+const recNote = ref('')
+const saveState = ref('') // '' | saving | saved | error
+const saveError = ref('')
+const savedList = ref(null)
+const PROFICIENCIES = ['native', 'C2', 'C1', 'B2', 'B1', 'A2', 'A1', 'A0/none']
+
+const roundArr = (v, dp) => (v ? v.map((x) => Math.round(x * 10 ** dp) / 10 ** dp) : null)
+
+function compactFeatures(f) {
+  return {
+    duration_s: Math.round(f.duration_s * 1000) / 1000,
+    voiced_frac: Math.round(f.voiced_frac * 1000) / 1000,
+    syllable_peaks: f.syllable_peaks,
+    syllable_peak_t: roundArr(f.syllable_peak_t, 4),
+    energy_contour_z: roundArr(f.energy_contour_z, 2),
+    f0_contour_st: roundArr(f.f0_contour_st, 1),
+    f0_median_hz: f.f0_median_hz ? Math.round(f.f0_median_hz * 10) / 10 : null,
+    f0_range_st: f.f0_range_st ? Math.round(f.f0_range_st * 100) / 100 : null,
+  }
+}
+
+async function postJson(body) {
+  const res = await fetch(REC_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+  const j = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(j.error || `HTTP ${res.status}`)
+  return j
+}
+
+function b64(bytes) {
+  let s = ''
+  for (let i = 0; i < bytes.length; i += 0x8000)
+    s += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000))
+  return btoa(s)
+}
+
+async function saveRecording() {
+  if (!recBlob.value || !recProficiency.value) return
+  saveState.value = 'saving'
+  saveError.value = ''
+  try {
+    const rand = Array.from(crypto.getRandomValues(new Uint8Array(4)))
+      .map((x) => x.toString(16).padStart(2, '0'))
+      .join('')
+    const id = `r-${Date.now().toString(36)}-${rand}`
+    const bytes = new Uint8Array(await recBlob.value.arrayBuffer())
+    // ≤24KB raw per chunk → ~32KB base64 POST bodies, under the ~50KB HTTPS
+    // upload ceiling documented for the founder's network (build-lab-data.cjs)
+    const CHUNK = 24 * 1024
+    const nParts = Math.ceil(bytes.length / CHUNK)
+    for (let i = 0; i < nParts; i++) {
+      const data = b64(bytes.subarray(i * CHUNK, (i + 1) * CHUNK))
+      let attempt = 0
+      for (;;) {
+        try {
+          await postJson({ action: 'chunk', id, index: i, data })
+          break
+        } catch (e) {
+          if (++attempt >= 3) throw e
+        }
+      }
+    }
+    await postJson({
+      action: 'finalize',
+      id,
+      parts: nParts,
+      mime: recMime.value,
+      meta: {
+        model_clip_id: recModel.value.id,
+        model_text: recModel.value.text,
+        model_voice: recModel.value.side.voice || null,
+        language: recModel.value.language,
+        proficiency: recProficiency.value,
+        note: recNote.value.trim() || null,
+        bytes: bytes.length,
+        scores: {
+          energy_dtw: Math.round(recScores.value.dims.energy_dtw * 1000) / 1000,
+          dur_log_ratio: Math.round(recScores.value.dims.dur_log_ratio * 1000) / 1000,
+          syl_count_diff: recScores.value.dims.syl_count_diff,
+          combined: Math.round(recScores.value.combined * 1000) / 1000,
+        },
+        features: compactFeatures(recFeat.value),
+        model_features: compactFeatures(modelFeat.value),
+      },
+    })
+    saveState.value = 'saved'
+    loadSaved()
+  } catch (e) {
+    saveError.value = e.message
+    saveState.value = 'error'
+  }
+}
+
+async function loadSaved() {
+  try {
+    const res = await fetch(`${REC_API}?action=list`)
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    savedList.value = (await res.json()).recordings || []
+  } catch {
+    savedList.value = null // list quietly unavailable (e.g. local dev without api)
+  }
+}
+function openRecordTab() {
+  tab.value = 'record'
+  if (savedList.value === null) loadSaved()
+}
 </script>
 
 <template>
@@ -320,6 +616,7 @@ const aucTable = computed(() => {
       <div class="tabs">
         <button :class="{ on: tab === 'tour' }" @click="tab = 'tour'">Listening tour</button>
         <button :class="{ on: tab === 'lab' }" @click="tab = 'lab'">Browse the lab</button>
+        <button :class="{ on: tab === 'record' }" @click="openRecordTab">Record yourself</button>
         <button :class="{ on: tab === 'proves' }" @click="tab = 'proves'">What this proves</button>
       </div>
     </header>
@@ -331,8 +628,9 @@ const aucTable = computed(() => {
     <main v-else-if="tab === 'tour'" class="tour">
       <p class="tour-intro">
         Six pairs chosen to be heard in order. Each teaches one thing the numbers alone can’t.
-        Tap a phrase to hear it; the chart underneath is the loudness-shape of each clip — the
-        stress rhythm a learner actually copies.
+        Tap a phrase to hear it — the playhead sweeps the chart underneath, which is the
+        loudness-shape of each clip: the stress rhythm a learner actually copies. Small ticks on
+        the axis are the detected syllable beats.
       </p>
 
       <section v-for="t in tourPairs" :key="t.pair_id" class="tour-card" :class="{ caution: t.caution }">
@@ -361,16 +659,16 @@ const aucTable = computed(() => {
         </div>
 
         <div v-if="contourPair(t.pair, true)" class="contour">
-          <svg :viewBox="`0 0 ${W} ${H}`" preserveAspectRatio="none" role="img"
-            :aria-label="`Energy contour overlay for ${t.pair.text_a}`">
-            <line :x1="PAD" :y1="H / 2" :x2="W - PAD" :y2="H / 2" class="midline" />
-            <polyline :points="polyPoints(contourPair(t.pair, true).a)" class="line-a" />
-            <polyline :points="polyPoints(contourPair(t.pair, true).b)" class="line-b" />
-          </svg>
+          <VadContour
+            v-bind="contourPair(t.pair, true)"
+            :play-side="playSideFor(t.pair)"
+            :play-frac="playFrac"
+            :show-pitch="showPitch"
+          />
           <div class="legend">
-            <span><i class="sw sw-a"></i>{{ voiceLabel(t.pair.a) }} · {{ contourPair(t.pair, true).durA }}s</span>
-            <span><i class="sw sw-b"></i>{{ voiceLabel(t.pair.b) }} · {{ contourPair(t.pair, true).durB }}s</span>
-            <span class="legend-note">energy shape, time-aligned</span>
+            <span><i class="sw sw-a"></i>{{ voiceLabel(t.pair.a) }} · {{ fmt(contourPair(t.pair, true).durA, 2) }}s</span>
+            <span><i class="sw sw-b"></i>{{ voiceLabel(t.pair.b) }} · {{ fmt(contourPair(t.pair, true).durB, 2) }}s</span>
+            <span class="legend-note">energy shape, time-aligned · ticks = syllable beats</span>
           </div>
         </div>
 
@@ -458,14 +756,18 @@ const aucTable = computed(() => {
           </div>
 
           <div v-if="contourPair(selectedPair, alignedView)" class="contour">
-            <svg :viewBox="`0 0 ${W} ${H}`" preserveAspectRatio="none" role="img" aria-label="Energy contour overlay">
-              <line :x1="PAD" :y1="H / 2" :x2="W - PAD" :y2="H / 2" class="midline" />
-              <polyline :points="polyPoints(contourPair(selectedPair, alignedView).a)" class="line-a" />
-              <polyline :points="polyPoints(contourPair(selectedPair, alignedView).b)" class="line-b" />
-            </svg>
+            <VadContour
+              v-bind="contourPair(selectedPair, alignedView)"
+              :play-side="playSideFor(selectedPair)"
+              :play-frac="playFrac"
+              :show-pitch="showPitch"
+            />
             <div class="legend">
-              <span><i class="sw sw-a"></i>{{ voiceLabel(selectedPair.a) }} · {{ contourPair(selectedPair, alignedView).durA }}s</span>
-              <span><i class="sw sw-b"></i>{{ voiceLabel(selectedPair.b) }} · {{ contourPair(selectedPair, alignedView).durB }}s</span>
+              <span><i class="sw sw-a"></i>{{ voiceLabel(selectedPair.a) }} · {{ fmt(contourPair(selectedPair, alignedView).durA, 2) }}s</span>
+              <span><i class="sw sw-b"></i>{{ voiceLabel(selectedPair.b) }} · {{ fmt(contourPair(selectedPair, alignedView).durB, 2) }}s</span>
+              <button class="align-toggle" @click="showPitch = !showPitch">
+                {{ showPitch ? 'hide' : 'show' }} pitch track
+              </button>
               <button class="align-toggle" @click="alignedView = !alignedView">
                 {{ alignedView ? 'time-aligned (DTW) — show raw' : 'raw shape — show aligned' }}
               </button>
@@ -538,6 +840,175 @@ const aucTable = computed(() => {
       </section>
     </main>
 
+    <!-- ═══════════ RECORD YOURSELF ═══════════ -->
+    <main v-else-if="tab === 'record'" class="recmain">
+      <p class="tour-intro">
+        Record an attempt against any model clip. Both sides go through the <em>same</em>
+        extractor, in this browser, and you get the overlay plus the three phrase-carrying
+        scores immediately. Save recordings with a language + self-rated proficiency tag —
+        they become the calibration corpus for the variance-band work. Private admin tool.
+      </p>
+      <p v-if="!canRecord" class="notice err">
+        This browser exposes no microphone API — recording needs HTTPS and mic permission.
+      </p>
+
+      <div class="rec-split">
+        <div class="rec-pick">
+          <input
+            v-model="recSearch"
+            class="search rec-search"
+            type="search"
+            placeholder="search model clips — text, voice or language…"
+          />
+          <div class="pair-list rec-list">
+            <button
+              v-for="c in recClipList"
+              :key="c.id"
+              class="pair-row"
+              :class="{ sel: c.id === recModelId }"
+              @click="pickModel(c.id)"
+            >
+              <span class="pr-cat">{{ c.language }}</span>
+              <span class="pr-text">“{{ c.text }}”</span>
+              <span class="pr-score">{{ voiceLabel(c.side) }}</span>
+            </button>
+            <p v-if="!recClipList.length" class="notice">No clips match.</p>
+          </div>
+        </div>
+
+        <div class="pair-detail rec-detail">
+          <template v-if="recModel">
+            <h3>“{{ recModel.text }}” <span class="lang">· {{ recModel.language }} · {{ voiceLabel(recModel.side) }}</span></h3>
+
+            <div class="players">
+              <button class="clip" :class="{ playing: playingId === recModel.id }" @click="play(recModel.id)">
+                <span class="clip-icon">{{ playingId === recModel.id ? '■' : '▶' }}</span>
+                <span class="clip-text">Model clip</span>
+                <span class="clip-voice">{{ voiceLabel(recModel.side) }}</span>
+              </button>
+              <button
+                v-if="recUrl && (recState === 'done' || recState === 'processing')"
+                class="clip clip-b"
+                :class="{ playing: playingId === 'self-recording' }"
+                @click="play('self-recording', recUrl)"
+              >
+                <span class="clip-icon">{{ playingId === 'self-recording' ? '■' : '▶' }}</span>
+                <span class="clip-text">Your attempt</span>
+                <span class="clip-voice">{{ recFeat ? fmt(recFeat.duration_s, 2) + 's' : '' }}</span>
+              </button>
+            </div>
+
+            <div class="rec-controls">
+              <button
+                v-if="recState === 'idle' || recState === 'error' || recState === 'done'"
+                class="rec-btn"
+                :disabled="!canRecord"
+                @click="startRecording"
+              >
+                ● {{ recState === 'done' ? 'Record again' : 'Record your attempt' }}
+              </button>
+              <button v-if="recState === 'recording'" class="rec-btn recording" @click="stopRecording">
+                ■ Stop ({{ recElapsed.toFixed(1) }}s)
+              </button>
+              <span v-if="recState === 'processing'" class="notice">Extracting features…</span>
+              <span v-if="recState === 'error'" class="notice err">{{ recError }}</span>
+            </div>
+
+            <template v-if="recState === 'done' && recOverlay">
+              <div class="contour">
+                <VadContour
+                  v-bind="recOverlay"
+                  :play-side="recPlaySide()"
+                  :play-frac="playFrac"
+                  :show-pitch="showPitch"
+                />
+                <div class="legend">
+                  <span><i class="sw sw-a"></i>model · {{ fmt(recOverlay.durA, 2) }}s</span>
+                  <span><i class="sw sw-b"></i>you · {{ fmt(recOverlay.durB, 2) }}s</span>
+                  <button class="align-toggle" @click="showPitch = !showPitch">
+                    {{ showPitch ? 'hide' : 'show' }} pitch track
+                  </button>
+                  <button class="align-toggle" @click="recAligned = !recAligned">
+                    {{ recAligned ? 'time-aligned (DTW) — show raw' : 'raw shape — show aligned' }}
+                  </button>
+                </div>
+              </div>
+
+              <div class="scores">
+                <div v-for="dim in PHRASE_DIMS" :key="dim" class="score-row">
+                  <span class="score-label" :title="DIM_META[dim].hint">{{ DIM_META[dim].label }}</span>
+                  <span class="score-val">{{ fmt(recPseudoPair.dims[dim]) }}</span>
+                  <div class="track" v-if="trackPos(dim, recPseudoPair.dims[dim])">
+                    <div class="tick tick-near" :style="{ left: trackPos(dim, recPseudoPair.dims[dim]).near + '%' }"></div>
+                    <div class="tick tick-far" :style="{ left: trackPos(dim, recPseudoPair.dims[dim]).far + '%' }"></div>
+                    <div class="dot" :style="{ left: trackPos(dim, recPseudoPair.dims[dim]).v + '%' }"></div>
+                  </div>
+                </div>
+                <div class="score-row combined-row">
+                  <span class="score-label">Combined phrase-identity score</span>
+                  <span class="score-val">{{ fmt(recPseudoPair.combined, 2) }}</span>
+                  <span class="verdict" :class="combinedVerdict(recPseudoPair).cls">{{ combinedVerdict(recPseudoPair).text }}</span>
+                </div>
+              </div>
+              <p class="rec-band-note">
+                Raw distances against uncalibrated anchors — the study says a residual
+                not-being-the-model-voice cost is baked in, and duration reads any pacing
+                difference as distance. That is what this corpus exists to calibrate out.
+              </p>
+
+              <div class="rec-save">
+                <label>
+                  Self-rated proficiency
+                  <select v-model="recProficiency">
+                    <option value="" disabled>choose…</option>
+                    <option v-for="p in PROFICIENCIES" :key="p" :value="p">{{ p }}</option>
+                  </select>
+                </label>
+                <input v-model="recNote" class="search" type="text" placeholder="note (optional)" />
+                <button
+                  class="rec-btn save"
+                  :disabled="!recProficiency || saveState === 'saving' || saveState === 'saved'"
+                  @click="saveRecording"
+                >
+                  {{ saveState === 'saving' ? 'Saving…' : saveState === 'saved' ? 'Saved ✓' : 'Save to calibration corpus' }}
+                </button>
+                <button class="align-toggle" @click="discardRecording">discard</button>
+              </div>
+              <p v-if="saveState === 'error'" class="notice err">Save failed: {{ saveError }} — the recording is still here; try again.</p>
+            </template>
+          </template>
+          <p v-else class="notice">Pick a model clip on the left, listen to it, then record your attempt.</p>
+        </div>
+      </div>
+
+      <section v-if="savedList && savedList.length" class="rec-saved">
+        <h3>Calibration corpus — {{ savedList.length }} recording{{ savedList.length === 1 ? '' : 's' }}</h3>
+        <table class="auc-table">
+          <thead>
+            <tr><th></th><th>When</th><th>Phrase</th><th>Lang</th><th>Proficiency</th><th>energy</th><th>dur</th><th>sylΔ</th><th>combined</th><th>Note</th></tr>
+          </thead>
+          <tbody>
+            <tr v-for="r in savedList" :key="r.id">
+              <td>
+                <button class="align-toggle" @click="play('saved:' + r.id, `${REC_API}?action=audio&id=${r.id}`)">
+                  {{ playingId === 'saved:' + r.id ? '■' : '▶' }}
+                </button>
+              </td>
+              <td>{{ (r.created || '').slice(0, 16).replace('T', ' ') }}</td>
+              <td class="rec-saved-text">“{{ r.model_text }}”</td>
+              <td>{{ r.language }}</td>
+              <td>{{ r.proficiency }}</td>
+              <td>{{ fmt(r.scores?.energy_dtw) }}</td>
+              <td>{{ fmt(r.scores?.dur_log_ratio) }}</td>
+              <td>{{ fmt(r.scores?.syl_count_diff) }}</td>
+              <td>{{ fmt(r.scores?.combined, 2) }}</td>
+              <td class="rec-saved-text">{{ r.note || '' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
     <!-- ═══════════ WHAT THIS PROVES ═══════════ -->
     <main v-else class="proves">
       <section class="prove-card can">
@@ -547,9 +1018,9 @@ const aucTable = computed(() => {
           timbre information at all. Energy-contour shape alone separates same-phrase-new-voice
           from different-phrase at AUC 0.845; combined with duration and syllable count, 0.813.
           The category ordering largely matches the physical story: same render &lt; new voice
-          &lt; new provider &lt; cross-human (Welsh) &lt; different phrase &lt; human vs TTS
-          (English) — that last flip is a tempo artefact of the English pairing, not a Welsh
-          result; see the tour and findings doc for the detail.
+          &lt; new provider &lt; cross-human (Welsh) &lt; different phrase &lt; the old-course
+          English recordings vs TTS — that last flip is a pacing artefact of those recordings'
+          era, not a fact about humans versus TTS; see the tour and findings doc.
         </p>
       </section>
       <section class="prove-card cannot">
@@ -560,20 +1031,22 @@ const aucTable = computed(() => {
           check. And it must not score <em>melody</em>: even with the speaker’s register
           normalised out, the residual F0 shape still tracks the voice, not the phrase — AUC
           0.464, chance. On this evidence, scoring a learner’s pitch contour is scoring their
-          larynx. Melody is voice; voice is identity; identity is never graded.
+          larynx. Melody is voice; voice is identity; identity is never graded. (The pitch track
+          in the contour view is a display-only experiment for exactly this reason.)
         </p>
       </section>
       <section class="prove-card next">
         <h2>What comes next</h2>
         <p>
           A residual voice-sensitivity remains — a learner scored raw would pay a small penalty
-          just for not being the model voice, and the human-tempo example (English) shows duration
-          scoring a natural pace as far as a wrong phrase. So the next step is the CEFR calibration
-          cohort: recordings of real speakers at known levels set variance bands per level, so
-          the score reads “within the band for your stage”, not “identical to the machine”.
-          Calibration is not polish; it is what makes the residual honest. Logged direction, not
-          built yet: the founder wants more detailed comparisons than this PoC's six categories
-          for VAD Lab v2.
+          just for not being the model voice — and duration reads <em>any</em> natural pacing
+          difference as distance (tour card 6). So the next step is calibration: recordings of
+          real speakers at known levels set variance bands per level, so the score reads
+          “within the band for your stage”, not “identical to the machine”. The Record-yourself
+          tab exists to build exactly that corpus. Calibration is not polish; it is what makes
+          the residual honest. The scoring unit is the <em>utterance</em>, never the phoneme —
+          understandability needs enough contiguous signal (~10 syllables) for the listener's
+          predictive reconstruction (founder ruling, in the findings doc).
         </p>
       </section>
       <section class="prove-card policy">
@@ -613,7 +1086,7 @@ const aucTable = computed(() => {
 .lab-head .sub { margin: 0 0 14px; max-width: 820px; color: var(--muted); font-size: 0.875rem; line-height: 1.5; }
 code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; font-family: var(--font-mono, ui-monospace, Menlo, monospace); }
 
-.tabs { display: flex; gap: 8px; margin-bottom: 18px; }
+.tabs { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
 .tabs button {
   background: var(--surface-2); color: var(--muted); border: 1px solid var(--surface-3);
   border-radius: 8px; padding: 7px 14px; font-size: 0.875rem; cursor: pointer;
@@ -653,19 +1126,14 @@ code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-
 
 /* contour chart */
 .contour { margin: 4px 0 12px; }
-.contour svg { width: 100%; height: 150px; display: block; background: var(--surface-1, rgba(255, 255, 255, 0.02)); border: 1px solid var(--surface-3); border-radius: 8px; }
-.midline { stroke: var(--surface-3); stroke-width: 1; stroke-dasharray: 3 4; }
-.line-a { fill: none; stroke: #3987e5; stroke-width: 2; stroke-linejoin: round; }
-.line-b { fill: none; stroke: #d95926; stroke-width: 2; stroke-linejoin: round; }
-[data-theme='light'] .line-a { stroke: #2a78d6; }
-[data-theme='light'] .line-b { stroke: #eb6834; }
 .legend { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
 .sw { display: inline-block; width: 14px; height: 3px; border-radius: 2px; margin-right: 5px; vertical-align: middle; }
 .sw-a { background: #3987e5; }
 .sw-b { background: #d95926; }
 .legend-note { margin-left: auto; font-style: italic; }
-.align-toggle { margin-left: auto; background: none; border: 1px solid var(--surface-3); border-radius: 6px; color: var(--muted); font-size: 0.75rem; padding: 3px 8px; cursor: pointer; }
+.align-toggle { background: none; border: 1px solid var(--surface-3); border-radius: 6px; color: var(--muted); font-size: 0.75rem; padding: 3px 8px; cursor: pointer; }
 .align-toggle:hover { border-color: #3987e5; color: inherit; }
+.legend .align-toggle:first-of-type { margin-left: auto; }
 
 /* score rows */
 .scores { display: flex; flex-direction: column; gap: 7px; max-width: 780px; }
@@ -692,7 +1160,8 @@ code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-
 .filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
 .filters button { background: var(--surface-2); color: var(--muted); border: 1px solid var(--surface-3); border-radius: 999px; padding: 5px 12px; font-size: 0.8125rem; cursor: pointer; }
 .filters button.on { background: rgba(59, 130, 246, 0.15); border-color: #3b82f6; color: var(--color-paper, var(--ink)); }
-.search { margin-left: auto; background: var(--surface-2); border: 1px solid var(--surface-3); border-radius: 8px; padding: 6px 10px; font-size: 0.8125rem; color: inherit; min-width: 200px; }
+.search { background: var(--surface-2); border: 1px solid var(--surface-3); border-radius: 8px; padding: 6px 10px; font-size: 0.8125rem; color: inherit; min-width: 200px; }
+.filters .search { margin-left: auto; }
 .lab-split { display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: 18px; align-items: start; }
 @media (max-width: 900px) { .lab-split { grid-template-columns: 1fr; } }
 .pair-list { max-height: 640px; overflow-y: auto; border: 1px solid var(--surface-3); border-radius: 10px; }
@@ -710,6 +1179,30 @@ code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-
 .h4-note { color: var(--muted); font-weight: normal; }
 .muted-scores .score-row { grid-template-columns: 200px 64px 1fr; opacity: 0.75; }
 .dim-hint { font-size: 0.75rem; color: var(--muted); font-style: italic; }
+
+/* ── record yourself ── */
+.rec-split { display: grid; grid-template-columns: minmax(260px, 360px) 1fr; gap: 18px; align-items: start; }
+@media (max-width: 900px) { .rec-split { grid-template-columns: 1fr; } }
+.rec-search { width: 100%; margin-bottom: 10px; box-sizing: border-box; }
+.rec-list { max-height: 560px; }
+.rec-list .pair-row { grid-template-columns: 34px 1fr auto; }
+.rec-list .pr-score { font-family: inherit; color: var(--muted); }
+.rec-controls { display: flex; gap: 12px; align-items: center; margin: 6px 0 14px; flex-wrap: wrap; }
+.rec-btn {
+  background: rgba(217, 89, 38, 0.12); color: inherit; border: 1px solid #d95926;
+  border-radius: 10px; padding: 10px 18px; font-size: 0.9rem; cursor: pointer; min-height: 48px;
+}
+.rec-btn:disabled { opacity: 0.5; cursor: default; }
+.rec-btn.recording { background: rgba(248, 113, 113, 0.2); border-color: #f87171; animation: recpulse 1.2s infinite; }
+.rec-btn.save { background: rgba(110, 231, 183, 0.12); border-color: #6ee7b7; }
+@keyframes recpulse { 50% { opacity: 0.6; } }
+.rec-band-note { max-width: 780px; font-size: 0.8125rem; color: var(--muted); font-style: italic; line-height: 1.5; }
+.rec-save { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+.rec-save label { display: flex; gap: 8px; align-items: center; font-size: 0.8125rem; color: var(--muted); }
+.rec-save select { background: var(--surface-2); border: 1px solid var(--surface-3); border-radius: 8px; padding: 6px 10px; color: inherit; font-size: 0.8125rem; }
+.rec-saved { margin-top: 26px; }
+.rec-saved h3 { font-size: 1rem; margin: 0 0 10px; }
+.rec-saved-text { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* AUC table */
 .auc-section { margin-top: 26px; }
