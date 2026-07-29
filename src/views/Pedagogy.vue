@@ -623,7 +623,7 @@ USE    (eternal - re-reviewed forever, each scored 5-9)
             For technical implementation details, see
             <router-link to="/stocktake/glossary" class="text-emerald-400 hover:text-emerald-300">Terminology Glossary</router-link>
             and
-            <router-link to="/stocktake/apml" class="text-emerald-400 hover:text-emerald-300">APML Specification</router-link>.
+            <router-link to="/stocktake/apml" class="text-emerald-400 hover:text-emerald-300">APML</router-link>.
           </p>
         </div>
       </template>
