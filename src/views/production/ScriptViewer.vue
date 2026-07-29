@@ -733,7 +733,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 import AudioPlayer from './components/AudioPlayer.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
@@ -1274,9 +1274,11 @@ const loadCourseData = async (seedStart?: string, seedEnd?: string) => {
   }
 };
 
-// Load learning journey data (server-side pagination, 50 LEGOs per page)
-const loadLearningJourney = async () => {
-  isLoadingJourney.value = true;
+// Load learning journey data (server-side pagination, 50 LEGOs per page).
+// silent: refresh the data without flipping isLoadingJourney — the spinner
+// swap unmounts the rounds list, which is what snapped the scroll to the top.
+const loadLearningJourney = async (opts: { silent?: boolean } = {}) => {
+  if (!opts.silent) isLoadingJourney.value = true;
   journeyError.value = null;
 
   try {
@@ -1312,6 +1314,18 @@ const loadLearningJourney = async () => {
 // Reload learning journey
 const reloadLearningJourney = () => {
   loadLearningJourney();
+};
+
+// Silent in-place refresh after a phrase edit. The rounds list and allItems are
+// separate objects client-side, so rebinding the edited row alone leaves the
+// 4-phase player (allItems) and review copies in other rounds stale — a full
+// re-fetch is the only way to true everything up. Done silently (list stays
+// mounted) with the scroll position restored, so the editor keeps their spot.
+const refreshJourneyInPlace = async () => {
+  const scrollTop = scriptContentRef.value?.scrollTop ?? 0;
+  await loadLearningJourney({ silent: true });
+  await nextTick();
+  if (scriptContentRef.value) scriptContentRef.value.scrollTop = scrollTop;
 };
 
 // Transform new /script-view endpoint data into SeedRowData format
@@ -1567,12 +1581,11 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     if (data.regen_flags.target2 && phraseToEdit.value.target2_audio_uuid) roles.push('target2');
 
     // No roles selected → text-only save, no TTS cost. Done.
-    // applyLocalText() already updated the live journey row (sourceItem) in
-    // place, so we deliberately do NOT reloadLearningJourney() here — a full
-    // reload rebuilds the rounds list and snaps the user's scroll back to the
-    // top, away from where they were editing.
+    // applyLocalText() updated the edited row instantly; the silent refresh
+    // trues up review copies in other rounds (scroll preserved).
     if (roles.length === 0) {
       phraseEditModalRef.value?.onSaveComplete(true);
+      if (viewMode.value === 'journey') refreshJourneyInPlace();
       return;
     }
 
@@ -1632,9 +1645,11 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
     console.log(`Regenerated phrase ${phraseId} roles [${roles.join(', ')}] → fresh audio`);
 
-    // The live journey row (sourceItem) already had its text and audio pointers
-    // rebound in place above, so we deliberately skip reloadLearningJourney()
-    // here — reloading would rebuild the list and lose the user's scroll spot.
+    // The edited row was rebound in place above for instant feedback, but the
+    // 4-phase player reads allItems (separate objects) and review copies of
+    // this phrase live in other rounds — silent refresh trues those up without
+    // losing the editor's scroll spot.
+    if (viewMode.value === 'journey') refreshJourneyInPlace();
   } catch (err) {
     console.error('Error saving phrase:', err);
     phraseEditModalRef.value?.onSaveComplete(false, err instanceof Error ? err.message : 'Save failed');
