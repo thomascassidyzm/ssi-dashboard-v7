@@ -1,0 +1,2006 @@
+# Course tracker — our authoritative, dated record of each course's goal + state.
+# Observable fields (built/legacy_live/basecamp) seeded 2026-07-29; DECISION fields = tbd (fill together).
+# state values: not_done | current | outdated  (outdated = was done, now stale e.g. new encouragements shipped)
+# goal.legacy: yes | no | when-ready   goal.new_app: urgent | normal
+# Git history is the decision log; add dated one-liners under notes.
+afr_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ara_eg_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Content-check
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ara_eg_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ara_eg_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ara_for_cym:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ara_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: "3.1.3", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ara_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ara_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ara_lb_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Content-check
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ara_sy_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ara_sy_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ara_sy_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ben_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+bre_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+bre_for_fra:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Triage
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+bul_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+cat_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+cat_for_spa:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Triage
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ces_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+cor_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+cym_anthem_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 7, date: tbd }
+  legacy_live: { version: "3.0.1", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+cym_for_yor:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+cym_n_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+cym_s_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+dan_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+deu_at_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+deu_at_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+deu_at_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+deu_ch_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+deu_for_cym:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+deu_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: "7.2.3", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+deu_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: "1.1.2", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+deu_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Ready-stage
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ell_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_ara:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: "3.0.2", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_ben:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_deu:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_fra:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Ready-stage
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_guj:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_hin:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_ita:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: "2.0.2", as_of: 2026-07-29 }
+  basecamp:    Content-check
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_kan:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_kor:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: "2.2.2", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_mar:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_pan:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_por:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: "2.0.0", as_of: 2026-07-29 }
+  basecamp:    Content-check
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_sin:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_spa:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: "3.0.0", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_tam:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_tel:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_urd:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: "3.0.1", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eng_template:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+est_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eus_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Content-check
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+eus_for_spa:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+fas_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+fin_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: "1.3.5", as_of: 2026-07-29 }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+fra_ca_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Ready-live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+fra_for_cym:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+fra_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: "3.3.4", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+fra_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: "1.2.1", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+fra_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Ready-stage
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+fur_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+gla_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+gle_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: "1.3.4", as_of: 2026-07-29 }
+  basecamp:    Triage
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+glg_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+hak_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+heb_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+hin_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+hrv_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+hun_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+hye_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+isl_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ita_for_cym:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ita_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: "5.1.3", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ita_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: "1.1.3", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ita_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Ready-stage
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+jpn_for_cym:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+jpn_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: "4.2.1", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+jpn_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+kan_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+kor_for_cym:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+kor_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: "3.1.2", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+kor_for_hin:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+kor_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+kor_for_tam:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+kor_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+lav_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+lit_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+lmo_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+mar_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+mkd_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+mlt_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+nan_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+nap_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+nep_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+nld_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Content-check
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+nor_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+pdc_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+pol_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+por_br_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Ready-live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+por_br_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+por_br_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+por_for_aze:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+por_for_cym:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+por_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: "5.2.6", as_of: 2026-07-29 }
+  basecamp:    Ready-live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+por_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+por_for_lit:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+por_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+rgn_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+roh_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ron_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+rus_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+sbx_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+scn_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+sme_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+spa_for_cym:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+spa_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: "10.0.3", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+spa_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: "1.1.2", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+spa_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    Ready-stage
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+spa_mx_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    On-stage
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+spa_mx_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+spa_mx_for_zho:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+srp_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+swa_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+swe_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+tel_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+tha_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+tur_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+ukr_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+vec_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+yid_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+yor_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 305, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+yue_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+zho_for_cym:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+zho_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: "5.0.4", as_of: 2026-07-29 }
+  basecamp:    Live
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+zho_for_gle:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 5, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+zho_for_hin:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+zho_for_jpn:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 300, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+zho_for_tam:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: 668, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
+
+zzz_test_for_eng:
+  goal:        { legacy: tbd, new_app: tbd }
+  built:       { to: null, date: tbd }
+  legacy_live: { version: null, as_of: null }
+  basecamp:    null
+  checkpoints:
+    encouragements: { state: tbd, date: null }
+    welcomes:       { state: tbd, date: null }
+    audio:          { state: tbd, date: null }
+    scan_course:    { state: tbd, date: null }
+    deborah_check:  { needed: tbd, state: tbd, date: null }
+  version_intent: null
+  notes: []
