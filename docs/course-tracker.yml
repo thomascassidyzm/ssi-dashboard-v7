@@ -4,7 +4,7 @@
 # goal.legacy: yes | no | when-ready   goal.new_app: urgent | normal
 # Git history is the decision log; add dated one-liners under notes.
 afr_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -18,7 +18,7 @@ afr_for_eng:
   notes: []
 
 ara_eg_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: high, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Content-check
@@ -32,7 +32,7 @@ ara_eg_for_eng:
   notes: []
 
 ara_eg_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -46,7 +46,7 @@ ara_eg_for_jpn:
   notes: []
 
 ara_eg_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -60,7 +60,7 @@ ara_eg_for_zho:
   notes: []
 
 ara_for_cym:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -74,7 +74,7 @@ ara_for_cym:
   notes: []
 
 ara_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: "3.1.3", as_of: 2026-07-29 }
   basecamp:    Live
@@ -88,7 +88,7 @@ ara_for_eng:
   notes: []
 
 ara_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -102,7 +102,7 @@ ara_for_jpn:
   notes: []
 
 ara_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -116,7 +116,7 @@ ara_for_zho:
   notes: []
 
 ara_lb_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: high, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Content-check
@@ -130,7 +130,7 @@ ara_lb_for_eng:
   notes: []
 
 ara_sy_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: high, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -144,7 +144,7 @@ ara_sy_for_eng:
   notes: []
 
 ara_sy_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -158,7 +158,7 @@ ara_sy_for_jpn:
   notes: []
 
 ara_sy_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -172,7 +172,7 @@ ara_sy_for_zho:
   notes: []
 
 ben_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -186,7 +186,7 @@ ben_for_eng:
   notes: []
 
 bre_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -200,7 +200,7 @@ bre_for_eng:
   notes: []
 
 bre_for_fra:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Triage
@@ -214,7 +214,7 @@ bre_for_fra:
   notes: []
 
 bul_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -228,7 +228,7 @@ bul_for_eng:
   notes: []
 
 cat_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -242,7 +242,7 @@ cat_for_eng:
   notes: []
 
 cat_for_spa:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Triage
@@ -256,7 +256,7 @@ cat_for_spa:
   notes: []
 
 ces_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -270,7 +270,7 @@ ces_for_eng:
   notes: []
 
 cor_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -284,7 +284,7 @@ cor_for_eng:
   notes: []
 
 cym_anthem_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 7, date: tbd }
   legacy_live: { version: "3.0.1", as_of: 2026-07-29 }
   basecamp:    Live
@@ -298,7 +298,7 @@ cym_anthem_for_jpn:
   notes: []
 
 cym_for_yor:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -312,7 +312,7 @@ cym_for_yor:
   notes: []
 
 cym_n_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -326,7 +326,7 @@ cym_n_for_eng:
   notes: []
 
 cym_s_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -340,7 +340,7 @@ cym_s_for_eng:
   notes: []
 
 dan_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -354,7 +354,7 @@ dan_for_eng:
   notes: []
 
 deu_at_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: high, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -368,7 +368,7 @@ deu_at_for_eng:
   notes: []
 
 deu_at_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: high, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -382,7 +382,7 @@ deu_at_for_jpn:
   notes: []
 
 deu_at_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -396,7 +396,7 @@ deu_at_for_zho:
   notes: []
 
 deu_ch_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: high, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -410,7 +410,7 @@ deu_ch_for_eng:
   notes: []
 
 deu_for_cym:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -424,7 +424,7 @@ deu_for_cym:
   notes: []
 
 deu_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: "7.2.3", as_of: 2026-07-29 }
   basecamp:    Live
@@ -438,7 +438,7 @@ deu_for_eng:
   notes: []
 
 deu_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: "1.1.2", as_of: 2026-07-29 }
   basecamp:    Live
@@ -452,7 +452,7 @@ deu_for_jpn:
   notes: []
 
 deu_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Ready-stage
@@ -466,7 +466,7 @@ deu_for_zho:
   notes: []
 
 ell_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -480,7 +480,7 @@ ell_for_eng:
   notes: []
 
 eng_for_ara:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: "3.0.2", as_of: 2026-07-29 }
   basecamp:    Live
@@ -494,7 +494,7 @@ eng_for_ara:
   notes: []
 
 eng_for_ben:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -508,7 +508,7 @@ eng_for_ben:
   notes: []
 
 eng_for_deu:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Live
@@ -522,7 +522,7 @@ eng_for_deu:
   notes: []
 
 eng_for_fra:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Ready-stage
@@ -536,7 +536,7 @@ eng_for_fra:
   notes: []
 
 eng_for_guj:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -550,7 +550,7 @@ eng_for_guj:
   notes: []
 
 eng_for_hin:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -564,7 +564,7 @@ eng_for_hin:
   notes: []
 
 eng_for_ita:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: "2.0.2", as_of: 2026-07-29 }
   basecamp:    Content-check
@@ -578,7 +578,7 @@ eng_for_ita:
   notes: []
 
 eng_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Live
@@ -592,7 +592,7 @@ eng_for_jpn:
   notes: []
 
 eng_for_kan:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -606,7 +606,7 @@ eng_for_kan:
   notes: []
 
 eng_for_kor:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: "2.2.2", as_of: 2026-07-29 }
   basecamp:    Live
@@ -620,7 +620,7 @@ eng_for_kor:
   notes: []
 
 eng_for_mar:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -634,7 +634,7 @@ eng_for_mar:
   notes: []
 
 eng_for_pan:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -648,7 +648,7 @@ eng_for_pan:
   notes: []
 
 eng_for_por:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: "2.0.0", as_of: 2026-07-29 }
   basecamp:    Content-check
@@ -662,7 +662,7 @@ eng_for_por:
   notes: []
 
 eng_for_sin:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -676,7 +676,7 @@ eng_for_sin:
   notes: []
 
 eng_for_spa:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: "3.0.0", as_of: 2026-07-29 }
   basecamp:    Live
@@ -690,7 +690,7 @@ eng_for_spa:
   notes: []
 
 eng_for_tam:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -704,7 +704,7 @@ eng_for_tam:
   notes: []
 
 eng_for_tel:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -718,7 +718,7 @@ eng_for_tel:
   notes: []
 
 eng_for_urd:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: asap, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -732,7 +732,7 @@ eng_for_urd:
   notes: []
 
 eng_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: "3.0.1", as_of: 2026-07-29 }
   basecamp:    Live
@@ -746,7 +746,7 @@ eng_for_zho:
   notes: []
 
 eng_template:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: no, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -760,7 +760,7 @@ eng_template:
   notes: []
 
 est_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -774,7 +774,7 @@ est_for_eng:
   notes: []
 
 eus_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Content-check
@@ -788,7 +788,7 @@ eus_for_eng:
   notes: []
 
 eus_for_spa:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -802,7 +802,7 @@ eus_for_spa:
   notes: []
 
 fas_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -816,7 +816,7 @@ fas_for_eng:
   notes: []
 
 fin_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: "1.3.5", as_of: 2026-07-29 }
   basecamp:    null
@@ -830,7 +830,7 @@ fin_for_eng:
   notes: []
 
 fra_ca_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: high, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Ready-live
@@ -844,7 +844,7 @@ fra_ca_for_eng:
   notes: []
 
 fra_for_cym:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -858,7 +858,7 @@ fra_for_cym:
   notes: []
 
 fra_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: "3.3.4", as_of: 2026-07-29 }
   basecamp:    Live
@@ -872,7 +872,7 @@ fra_for_eng:
   notes: []
 
 fra_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: "1.2.1", as_of: 2026-07-29 }
   basecamp:    Live
@@ -886,7 +886,7 @@ fra_for_jpn:
   notes: []
 
 fra_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Ready-stage
@@ -900,7 +900,7 @@ fra_for_zho:
   notes: []
 
 fur_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -914,7 +914,7 @@ fur_for_eng:
   notes: []
 
 gla_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -928,7 +928,7 @@ gla_for_eng:
   notes: []
 
 gle_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: "1.3.4", as_of: 2026-07-29 }
   basecamp:    Triage
@@ -942,7 +942,7 @@ gle_for_eng:
   notes: []
 
 glg_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -956,7 +956,7 @@ glg_for_eng:
   notes: []
 
 hak_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -970,7 +970,7 @@ hak_for_eng:
   notes: []
 
 heb_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -984,7 +984,7 @@ heb_for_eng:
   notes: []
 
 hin_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -998,7 +998,7 @@ hin_for_eng:
   notes: []
 
 hrv_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1012,7 +1012,7 @@ hrv_for_eng:
   notes: []
 
 hun_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1026,7 +1026,7 @@ hun_for_eng:
   notes: []
 
 hye_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1040,7 +1040,7 @@ hye_for_eng:
   notes: []
 
 isl_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1054,7 +1054,7 @@ isl_for_eng:
   notes: []
 
 ita_for_cym:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1068,7 +1068,7 @@ ita_for_cym:
   notes: []
 
 ita_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: "5.1.3", as_of: 2026-07-29 }
   basecamp:    Live
@@ -1082,7 +1082,7 @@ ita_for_eng:
   notes: []
 
 ita_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: "1.1.3", as_of: 2026-07-29 }
   basecamp:    Live
@@ -1096,7 +1096,7 @@ ita_for_jpn:
   notes: []
 
 ita_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Ready-stage
@@ -1110,7 +1110,7 @@ ita_for_zho:
   notes: []
 
 jpn_for_cym:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1124,7 +1124,7 @@ jpn_for_cym:
   notes: []
 
 jpn_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: "4.2.1", as_of: 2026-07-29 }
   basecamp:    Live
@@ -1138,7 +1138,7 @@ jpn_for_eng:
   notes: []
 
 jpn_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1152,7 +1152,7 @@ jpn_for_zho:
   notes: []
 
 kan_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1166,7 +1166,7 @@ kan_for_eng:
   notes: []
 
 kor_for_cym:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1180,7 +1180,7 @@ kor_for_cym:
   notes: []
 
 kor_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: "3.1.2", as_of: 2026-07-29 }
   basecamp:    Live
@@ -1194,7 +1194,7 @@ kor_for_eng:
   notes: []
 
 kor_for_hin:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1208,7 +1208,7 @@ kor_for_hin:
   notes: []
 
 kor_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1222,7 +1222,7 @@ kor_for_jpn:
   notes: []
 
 kor_for_tam:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1236,7 +1236,7 @@ kor_for_tam:
   notes: []
 
 kor_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1250,7 +1250,7 @@ kor_for_zho:
   notes: []
 
 lav_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1264,7 +1264,7 @@ lav_for_eng:
   notes: []
 
 lit_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1278,7 +1278,7 @@ lit_for_eng:
   notes: []
 
 lmo_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1292,7 +1292,7 @@ lmo_for_eng:
   notes: []
 
 mar_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1306,7 +1306,7 @@ mar_for_eng:
   notes: []
 
 mkd_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1320,7 +1320,7 @@ mkd_for_eng:
   notes: []
 
 mlt_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1334,7 +1334,7 @@ mlt_for_eng:
   notes: []
 
 nan_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1348,7 +1348,7 @@ nan_for_eng:
   notes: []
 
 nap_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1362,7 +1362,7 @@ nap_for_eng:
   notes: []
 
 nep_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1376,7 +1376,7 @@ nep_for_eng:
   notes: []
 
 nld_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Content-check
@@ -1390,7 +1390,7 @@ nld_for_eng:
   notes: []
 
 nor_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1404,7 +1404,7 @@ nor_for_eng:
   notes: []
 
 pdc_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1418,7 +1418,7 @@ pdc_for_eng:
   notes: []
 
 pol_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1432,7 +1432,7 @@ pol_for_eng:
   notes: []
 
 por_br_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: high, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Ready-live
@@ -1446,7 +1446,7 @@ por_br_for_eng:
   notes: []
 
 por_br_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1460,7 +1460,7 @@ por_br_for_jpn:
   notes: []
 
 por_br_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1474,7 +1474,7 @@ por_br_for_zho:
   notes: []
 
 por_for_aze:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1488,7 +1488,7 @@ por_for_aze:
   notes: []
 
 por_for_cym:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1502,7 +1502,7 @@ por_for_cym:
   notes: []
 
 por_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: "5.2.6", as_of: 2026-07-29 }
   basecamp:    Ready-live
@@ -1516,7 +1516,7 @@ por_for_eng:
   notes: []
 
 por_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1530,7 +1530,7 @@ por_for_jpn:
   notes: []
 
 por_for_lit:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1544,7 +1544,7 @@ por_for_lit:
   notes: []
 
 por_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1558,7 +1558,7 @@ por_for_zho:
   notes: []
 
 rgn_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1572,7 +1572,7 @@ rgn_for_eng:
   notes: []
 
 roh_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1586,7 +1586,7 @@ roh_for_eng:
   notes: []
 
 ron_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1600,7 +1600,7 @@ ron_for_eng:
   notes: []
 
 rus_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1614,7 +1614,7 @@ rus_for_eng:
   notes: []
 
 sbx_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1628,7 +1628,7 @@ sbx_for_eng:
   notes: []
 
 scn_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1642,7 +1642,7 @@ scn_for_eng:
   notes: []
 
 sme_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1656,7 +1656,7 @@ sme_for_eng:
   notes: []
 
 spa_for_cym:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1670,7 +1670,7 @@ spa_for_cym:
   notes: []
 
 spa_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: "10.0.3", as_of: 2026-07-29 }
   basecamp:    Live
@@ -1684,7 +1684,7 @@ spa_for_eng:
   notes: []
 
 spa_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: "1.1.2", as_of: 2026-07-29 }
   basecamp:    Live
@@ -1698,7 +1698,7 @@ spa_for_jpn:
   notes: []
 
 spa_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    Ready-stage
@@ -1712,7 +1712,7 @@ spa_for_zho:
   notes: []
 
 spa_mx_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: high, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    On-stage
@@ -1726,7 +1726,7 @@ spa_mx_for_eng:
   notes: []
 
 spa_mx_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: high, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1740,7 +1740,7 @@ spa_mx_for_jpn:
   notes: []
 
 spa_mx_for_zho:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1754,7 +1754,7 @@ spa_mx_for_zho:
   notes: []
 
 srp_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1768,7 +1768,7 @@ srp_for_eng:
   notes: []
 
 swa_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1782,7 +1782,7 @@ swa_for_eng:
   notes: []
 
 swe_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1796,7 +1796,7 @@ swe_for_eng:
   notes: []
 
 tel_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1810,7 +1810,7 @@ tel_for_eng:
   notes: []
 
 tha_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1824,7 +1824,7 @@ tha_for_eng:
   notes: []
 
 tur_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1838,7 +1838,7 @@ tur_for_eng:
   notes: []
 
 ukr_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1852,7 +1852,7 @@ ukr_for_eng:
   notes: []
 
 vec_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1866,7 +1866,7 @@ vec_for_eng:
   notes: []
 
 yid_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1880,7 +1880,7 @@ yid_for_eng:
   notes: []
 
 yor_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 305, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1894,7 +1894,7 @@ yor_for_eng:
   notes: []
 
 yue_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1908,7 +1908,7 @@ yue_for_eng:
   notes: []
 
 zho_for_cym:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1922,7 +1922,7 @@ zho_for_cym:
   notes: []
 
 zho_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: live, new_app: normal }
   built:       { to: 668, date: tbd }
   legacy_live: { version: "5.0.4", as_of: 2026-07-29 }
   basecamp:    Live
@@ -1936,7 +1936,7 @@ zho_for_eng:
   notes: []
 
 zho_for_gle:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 5, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1950,7 +1950,7 @@ zho_for_gle:
   notes: []
 
 zho_for_hin:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1964,7 +1964,7 @@ zho_for_hin:
   notes: []
 
 zho_for_jpn:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: normal }
   built:       { to: 300, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1978,7 +1978,7 @@ zho_for_jpn:
   notes: []
 
 zho_for_tam:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: eventual, new_app: urgent }
   built:       { to: 668, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
@@ -1992,7 +1992,7 @@ zho_for_tam:
   notes: []
 
 zzz_test_for_eng:
-  goal:        { legacy: tbd, new_app: tbd }
+  goal:        { legacy: no, new_app: normal }
   built:       { to: null, date: tbd }
   legacy_live: { version: null, as_of: null }
   basecamp:    null
