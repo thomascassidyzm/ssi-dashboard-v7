@@ -59,8 +59,19 @@ SSi has proven its methodology with Welsh (largest online Welsh learning communi
 
 ## Pricing Model
 
-| Tier | Price | What's Included |
+> **Updated 2026-07-29 (founder ruling — supersedes any earlier tier table):** two products, nothing else.
+
+| Plan | Price | What's Included |
 |------|-------|----------------|
+| **Learner** | £15/mo | One learner — ALL languages, all premium courses |
+| **Family** | £25/mo | Up to 6 learners (group model, one payer/admin) — ALL languages, all premium courses |
+
+- A family is a GROUP (tutor/freelance shape): the payer is group admin, sees members' access; each member is a full learner identity.
+- Positioning: **"Bring the language home"** — intergenerational language transmission.
+- Free tier: community courses, 300 seeds (deliberate boundary).
+- There is no per-language pricing and no Standard/Polyglot/Complete tier — any doc or code referring to those is stale.
+
+------|-------|----------------|
 | **Free** | £0 | Community courses (Welsh, endangered languages) |
 | **Standard** | £9.99/mo | One Big 10 language (250 seeds) |
 | **Premium Language** | £14.99/mo | One Big 10 language (668 seeds) |
