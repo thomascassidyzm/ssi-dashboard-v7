@@ -280,6 +280,14 @@ const ANTI_CLICK_FADE = 'afade=t=in:st=0:d=0.008,areverse,afade=t=in:st=0:d=0.00
 const PRE_COMPRESS = 'acompressor=threshold=-24dB:ratio=8:attack=5:release=80:knee=8';
 const TRUE_PEAK_LIMIT = 'aresample=176400,alimiter=limit=0.841:attack=1:release=50:level=false';
 
+// xAI renders carry a steady ~-60dBFS broadband noise bed ("tape hiss") that
+// Azure/ElevenLabs don't (their between-word floor sits near -105dB). A single
+// mild FFT denoise removes it; nf=-25 flattens the gap bed to ~-115dB while
+// moving speech level <0.5dB (measured on eve, 2026-07-29). It MUST run before
+// PRE_COMPRESS — the compressor + make-up gain would otherwise re-lift the
+// residual floor. Applied only for provider==='xai' (see normalizeAudio opts).
+const PRE_DENOISE = 'afftdn=nf=-25:nt=w';
+
 async function measureIntegratedLoudness(inputPath, preFilter) {
   const { stdout, stderr } = await execAsync(
     `ffmpeg -i "${inputPath}" -af "${preFilter},ebur128=framelog=quiet" -f null - 2>&1 || true`,
@@ -623,12 +631,15 @@ async function repairTailDefect(inputPath, workDir, { text, language, mode, minK
   }
 }
 
-async function normalizeAudio(inputPath, outputPath, targetLUFS = -16.0) {
+async function normalizeAudio(inputPath, outputPath, targetLUFS = -16.0, opts = {}) {
   try {
+    // De-hiss xAI renders before compression (see PRE_DENOISE). No-op for other
+    // providers, whose noise floor is already inaudible.
+    const denoisePrefix = opts.denoise ? `${PRE_DENOISE},` : '';
     const measured = await measureIntegratedLoudness(inputPath, PRE_COMPRESS);
     const gain = (targetLUFS + 1.0 - measured).toFixed(2);
     await ffmpegFilterToLameMp3(inputPath, outputPath, {
-      filterChain: `${PRE_COMPRESS},volume=${gain}dB,${TRUE_PEAK_LIMIT},${ANTI_CLICK_FADE}`
+      filterChain: `${denoisePrefix}${PRE_COMPRESS},volume=${gain}dB,${TRUE_PEAK_LIMIT},${ANTI_CLICK_FADE}`
     });
   } catch (error) {
     throw new Error(`Failed to normalize audio: ${error.message}`);
