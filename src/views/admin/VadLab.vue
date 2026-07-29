@@ -29,7 +29,14 @@
  */
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import VadContour from './VadContour.vue'
-import { dtwWarp, extractFeatures, decodeTo16kMono, comparePhraseDims } from './vadProsody.js'
+import {
+  dtwWarp,
+  extractFeatures,
+  decodeTo16kMono,
+  comparePhraseDims,
+  activeSpeechDb,
+  renderLoudnessMatchedWav,
+} from './vadProsody.js'
 
 const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
 const REC_API = '/api/vad-recordings'
@@ -355,6 +362,7 @@ const modelFeatCache = new Map()
 const recScores = ref(null)
 const recAligned = ref(true)
 const recWarp = ref(null)
+const recGain = ref(null) // { requestedDb, appliedDb, limited } — auto loudness match applied to playback
 const recElapsed = ref(0)
 let mediaRecorder = null
 let mediaStream = null
@@ -415,21 +423,46 @@ async function ensureModelFeatures(clipId) {
   if (modelFeatCache.has(clipId)) return modelFeatCache.get(clipId)
   const res = await fetch(`${AUDIO_BASE}/${clipId}`)
   if (!res.ok) throw new Error(`model clip HTTP ${res.status}`)
-  const feat = extractFeatures(await decodeTo16kMono(await res.arrayBuffer()))
+  const mono = await decodeTo16kMono(await res.arrayBuffer())
+  const feat = extractFeatures(mono)
   if (!feat) throw new Error('model clip failed feature extraction')
-  modelFeatCache.set(clipId, feat)
-  return feat
+  const entry = { feat, loudnessDb: activeSpeechDb(mono) }
+  modelFeatCache.set(clipId, entry)
+  return entry
 }
 
 async function processRecording(blob) {
   recState.value = 'processing'
   try {
-    recBlob.value = blob
+    recBlob.value = blob // raw capture — the calibration corpus saves THIS, never the gained copy
     if (recUrl.value) URL.revokeObjectURL(recUrl.value)
     recUrl.value = URL.createObjectURL(blob)
-    const mine = extractFeatures(await decodeTo16kMono(await blob.arrayBuffer()))
+    recGain.value = null
+    const rawBuf = await blob.arrayBuffer()
+    const mono = await decodeTo16kMono(rawBuf)
+    const mine = extractFeatures(mono)
     if (!mine) throw new Error('recording too short or silent — try again, a little louder')
-    const model = await ensureModelFeatures(recModel.value.id)
+    const { feat: model, loudnessDb: targetDb } = await ensureModelFeatures(recModel.value.id)
+    // Loudness-match the playback copy to the model clip so A/B listening is
+    // fair — a raw mic take plays much quieter than a mastered reference.
+    // Auto only; a manual trim control is the fallback if the founder's ear
+    // says auto isn't enough. Score/contour are level-invariant so only the
+    // playback URL changes. On any failure the raw-blob URL above stands.
+    const recDb = activeSpeechDb(mono)
+    if (targetDb != null && recDb != null) {
+      try {
+        const norm = await renderLoudnessMatchedWav(rawBuf, targetDb - recDb)
+        URL.revokeObjectURL(recUrl.value)
+        recUrl.value = URL.createObjectURL(norm.blob)
+        recGain.value = {
+          requestedDb: targetDb - recDb,
+          appliedDb: norm.appliedDb,
+          limited: norm.limited,
+        }
+      } catch {
+        /* raw playback fallback stands */
+      }
+    }
     recFeat.value = mine
     modelFeat.value = model
     recWarp.value = dtwWarp(model.energy_contour_z, mine.energy_contour_z)
@@ -450,6 +483,7 @@ function discardRecording() {
   recFeat.value = null
   recScores.value = null
   recWarp.value = null
+  recGain.value = null
   recError.value = ''
   saveState.value = ''
 }
@@ -910,7 +944,14 @@ function openRecordTab() {
               >
                 <span class="clip-icon">{{ playingId === 'self-recording' ? '■' : '▶' }}</span>
                 <span class="clip-text">Your attempt</span>
-                <span class="clip-voice">{{ recFeat ? fmt(recFeat.duration_s, 2) + 's' : '' }}</span>
+                <span class="clip-voice">
+                  {{ recFeat ? fmt(recFeat.duration_s, 2) + 's' : '' }}
+                  <template v-if="recGain">
+                    · level {{ recGain.appliedDb >= 0 ? '+' : '' }}{{ fmt(recGain.appliedDb, 1) }} dB{{
+                      recGain.limited ? ' (peak-limited)' : ''
+                    }}
+                  </template>
+                </span>
               </button>
             </div>
 

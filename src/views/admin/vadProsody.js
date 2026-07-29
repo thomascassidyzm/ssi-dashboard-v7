@@ -334,6 +334,120 @@ export function extractFeatures(x) {
   }
 }
 
+// ── loudness matching (playback fairness) ───────────────────────────────────
+// The score and contour are level-invariant (dB rel clip max, then z-scored),
+// but the EAR isn't: a raw mic capture plays far quieter than a mastered
+// reference, which biases A/B listening. These helpers loudness-match the
+// recording's PLAYBACK copy to the model clip. Energy-based integrated
+// loudness, not full ITU-R BS.1770 K-weighting — both sides of a comparison
+// go through the same function, so only the difference matters and a full
+// 1770 implementation is disproportionate for one speech clip.
+
+/**
+ * Integrated active-speech loudness in dBFS: framewise energy on the same
+ * 25 ms / 10 ms grid as the extractor, gated to frames within 40 dB of the
+ * clip's max (the extractor's silence gate), then energy-averaged. Gating
+ * matters: recordings carry more lead/tail silence than mastered clips, and
+ * an ungated mean would under-read them. Returns null for silent/short input.
+ */
+export function activeSpeechDb(x) {
+  const nFrames = 1 + Math.max(0, Math.floor((x.length - RMS_WIN) / HOP))
+  if (nFrames < 2) return null
+  const e = new Array(nFrames)
+  let maxE = 0
+  for (let f = 0; f < nFrames; f++) {
+    let s = 0
+    const off = f * HOP
+    for (let k = 0; k < RMS_WIN; k++) s += x[off + k] * x[off + k]
+    e[f] = s / RMS_WIN
+    if (e[f] > maxE) maxE = e[f]
+  }
+  if (maxE <= 0) return null
+  const gate = maxE * 10 ** (SILENCE_DB / 10)
+  let sum = 0
+  let cnt = 0
+  for (const v of e)
+    if (v > gate) {
+      sum += v
+      cnt++
+    }
+  if (!cnt) return null
+  return 10 * Math.log10(sum / cnt)
+}
+
+/**
+ * Pure gain stage with a peak guard: scale by gainDb, capped so no sample
+ * exceeds PEAK_CEIL — a clean quieter-than-target match beats a clipped
+ * exact one. Returns { out, appliedDb, limited }.
+ */
+export function applyGainLimited(x, gainDb) {
+  const PEAK_CEIL = 0.985
+  let peak = 0
+  for (let i = 0; i < x.length; i++) {
+    const a = Math.abs(x[i])
+    if (a > peak) peak = a
+  }
+  let g = 10 ** (gainDb / 20)
+  let limited = false
+  if (peak * g > PEAK_CEIL) {
+    g = peak > 0 ? PEAK_CEIL / peak : 1
+    limited = true
+  }
+  const out = new Float32Array(x.length)
+  for (let i = 0; i < x.length; i++) out[i] = x[i] * g
+  return { out, appliedDb: 20 * Math.log10(g), limited }
+}
+
+/** Encode mono Float32 samples as a 16-bit PCM WAV Blob. */
+export function encodeWavMono(x, sampleRate) {
+  const n = x.length
+  const buf = new ArrayBuffer(44 + n * 2)
+  const dv = new DataView(buf)
+  const wstr = (off, s) => {
+    for (let i = 0; i < s.length; i++) dv.setUint8(off + i, s.charCodeAt(i))
+  }
+  wstr(0, 'RIFF')
+  dv.setUint32(4, 36 + n * 2, true)
+  wstr(8, 'WAVE')
+  wstr(12, 'fmt ')
+  dv.setUint32(16, 16, true)
+  dv.setUint16(20, 1, true)
+  dv.setUint16(22, 1, true)
+  dv.setUint32(24, sampleRate, true)
+  dv.setUint32(28, sampleRate * 2, true)
+  dv.setUint16(32, 2, true)
+  dv.setUint16(34, 16, true)
+  wstr(36, 'data')
+  dv.setUint32(40, n * 2, true)
+  for (let i = 0; i < n; i++) {
+    const s = Math.max(-1, Math.min(1, x[i]))
+    dv.setInt16(44 + i * 2, s < 0 ? s * 0x8000 : s * 0x7fff, true)
+  }
+  return new Blob([buf], { type: 'audio/wav' })
+}
+
+/**
+ * Decode a recorded clip at its NATIVE sample rate (mono downmix), apply
+ * gainDb through the peak guard, and return a WAV blob for playback.
+ * (The 16 kHz decode is for features only — playback keeps full bandwidth.)
+ */
+export async function renderLoudnessMatchedWav(arrayBuffer, gainDb) {
+  const AC = window.AudioContext || window.webkitAudioContext
+  const ac = new AC()
+  try {
+    const buf = await ac.decodeAudioData(arrayBuffer.slice(0))
+    const mono = new Float32Array(buf.length)
+    for (let ch = 0; ch < buf.numberOfChannels; ch++) {
+      const d = buf.getChannelData(ch)
+      for (let i = 0; i < buf.length; i++) mono[i] += d[i] / buf.numberOfChannels
+    }
+    const { out, appliedDb, limited } = applyGainLimited(mono, gainDb)
+    return { blob: encodeWavMono(out, buf.sampleRate), appliedDb, limited }
+  } finally {
+    ac.close?.()
+  }
+}
+
 // ── audio plumbing ──────────────────────────────────────────────────────────
 
 /** Decode an encoded audio blob/ArrayBuffer to mono Float32 @ 16 kHz. */
