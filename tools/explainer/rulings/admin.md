@@ -32,13 +32,15 @@ reference — step in when you want to take stock of the system's current state.
 
 The app teaches itself — that replaced the old docs-and-manuals shelf. **How & Why** is one
 surface: the how-to, written for what the signed-in person actually does, and the founder's
-rulings — **Pedagogy**, **Pod Thinking**, the why of APML. Nothing there restates system
-state, so it doesn't rot.
+rulings — **Pedagogy**, **Pod Thinking**, schema truth, the APML lineage. Nothing there
+restates system state, so it doesn't rot.
 
 ## stocktake
 
 The **Stock-take** room is where the facts that can rot live as compiled renders: the
 **Pipeline** shape, the **Glossary** of shared terms, the **APML** current state. They are
-derived from the code and drift-gated, so they cannot go stale. The **Update docs** button
-re-reads live state — course list, audio-pass queue, database counts — from the production
+derived from the code and drift-gated, so they cannot go stale. Schema is the one fact even
+the code can't vouch for — current schema is truth, migrations lie — so the Pipeline page
+renders it from a live dump of the running database. The **Update docs** button re-reads live
+state — course list, audio-pass queue, database counts, the schema dump — from the production
 machine on demand; facts derived from code refresh when a commit deploys.

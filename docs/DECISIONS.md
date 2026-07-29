@@ -280,3 +280,32 @@ the blocklist costs nothing at runtime and kills the whole defect class.
   its own plan + approval; left in place, counted in the sweep log.
 **Search width:** visible-options
 **Decided by:** agent (executing Tom's urgent-defect brief, verbatim policy: "NO kids voices ever")
+
+## 2026-07-29 — schema truth renders from a live dump
+
+**Move:** implemented the founder's schema-snapshot doctrine ("current schema is truth,
+migrations lie") in the explainer machinery: the `--live` refresh now dumps the public schema
+(tables + matviews) from `information_schema` over the `.env.psql` direct connection and stamps
+it into the pack; the Pipeline page renders that dump as "Live schema", demoting the
+code-reference scan to an explicitly-labelled cross-check; the ruling itself ships as
+founder-framed prose (`tools/explainer/rulings/docs/schema.md`) in the Rulings layer of
+How & Why. Same commit: APML renamed to its real expansion (AI Projects Markup Language /
+Agent Protocol Markup Language) and re-framed everywhere as architectural lineage superseded
+by the rate of model improvement, not live core architecture.
+
+**Better:** schema on the docs surface can no longer lie by omission — `family_members` (live
+since 07-10, no migration ever committed) is exactly the class of table the dump catches and
+the migrations pile misses; unreferenced-but-live tables are surfaced as their own list.
+**Simpler:** rides the existing `--live`/Update-docs path and the existing `.env.psql` +
+`pg` pattern (`tools/refresh-round-index.cjs`); no new endpoint, no new secret, honest
+degradation to a "no dump yet" note where `.env.psql` is absent.
+**Cheaper (total):** two `information_schema` queries per Update-docs press; kills the
+standing cost of hand-reconciling migrations against reality.
+**Searched & rejected:**
+- Rendering from `supabase/schema.sql` pg_dump snapshots — simpler leg fails: per-machine,
+  not in git, needs PG17 pg_dump provisioned everywhere; the pooler query needs nothing new.
+- Deriving schema from migration files — the ruling names this the lie.
+- Keeping code-references as the headline truth — better leg fails: a live unreferenced
+  table (the `family_members` proof) is invisible to it; kept as cross-check only.
+**Search width:** visible-options
+**Decided by:** Tom (ruling 2026-07-29); implementation shape by agent

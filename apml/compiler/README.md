@@ -1,6 +1,6 @@
 # APML to Vue 3 Compiler
 
-A basic compiler that transforms APML (AI Project Markup Language) specifications into Vue 3 Single File Components (SFCs).
+A basic compiler that transforms APML (AI Projects Markup Language) specifications into Vue 3 Single File Components (SFCs).
 
 ## Status
 

@@ -15,6 +15,14 @@ const truth = computed(() => pack.value.truth)
 const live = computed(() => pack.value.snapshot?.live ?? null)
 const activeTables = computed(() => truth.value.supabaseTables?.filter((t) => !t.deprecated) ?? [])
 const deprecatedTables = computed(() => truth.value.supabaseTables?.filter((t) => t.deprecated) ?? [])
+
+// Schema truth (ruling 2026-07-29: current schema is truth, migrations lie) —
+// the live dump when this pack carries one, never migration history.
+const liveSchema = computed(() => live.value?.schema ?? null)
+const codeReferenced = computed(() => new Set((truth.value.supabaseTables ?? []).map((t) => t.table)))
+const unreferencedLiveTables = computed(() =>
+  (liveSchema.value?.tables ?? []).filter((t) => !codeReferenced.value.has(t))
+)
 </script>
 
 <template>
@@ -87,11 +95,37 @@ const deprecatedTables = computed(() => truth.value.supabaseTables?.filter((t) =
         </ul>
       </section>
 
-      <section class="panel">
-        <h2>Supabase tables the code touches <span class="badge">{{ activeTables.length }}</span></h2>
+      <section v-if="liveSchema" class="panel panel-live">
+        <h2>Live schema <span class="badge badge-live">dumped {{ new Date(liveSchema.dumpedAt).toLocaleString() }}</span></h2>
         <p class="note">
-          Derived by scanning services/ and src/ for actual table references — a renamed or
-          retired table drops out on the next compile.
+          Current schema is truth; migrations lie. This list is dumped from the running
+          database — never derived from migration history, which is a lossy changelog.
+        </p>
+        <div class="chips">
+          <code v-for="t in liveSchema.tables" :key="t" class="chip">{{ t }}</code>
+        </div>
+        <p v-if="liveSchema.matviews?.length" class="note">
+          Materialised views: <code v-for="m in liveSchema.matviews" :key="m" class="chip">{{ m }}</code>
+        </p>
+        <p v-if="unreferencedLiveTables.length" class="note">
+          Live but unreferenced by this repo's code:
+          <code v-for="t in unreferencedLiveTables" :key="t" class="chip">{{ t }}</code>
+        </p>
+      </section>
+      <section v-else class="panel">
+        <h2>Live schema</h2>
+        <p class="note">
+          Current schema is truth; migrations lie — schema renders from a live dump of the
+          running database, never from migration files. This bundle carries no dump yet: an
+          admin can press <em>Update docs</em> above on the production machine to add one.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Tables the code touches <span class="badge">{{ activeTables.length }}</span></h2>
+        <p class="note">
+          The cross-check, not the truth — derived by scanning services/ and src/ for actual
+          table references. A table can be real and unreferenced; the live dump above decides.
         </p>
         <div class="chips">
           <code v-for="t in activeTables" :key="t.table" class="chip">{{ t.table }}</code>

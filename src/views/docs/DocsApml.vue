@@ -34,8 +34,9 @@ const sections = computed(() =>
     <div class="page-header">
       <h1 class="page-title">APML</h1>
       <p class="page-subtitle">
-        The design doctrine is founder-authored; the current state below it is compiled from the
-        code and cannot go stale
+        AI Projects Markup Language — the original intent-as-code concept, kept as architectural
+        lineage; the prose is founder-authored, and the current state below it is compiled from
+        the code and cannot go stale
       </p>
       <UpdateDocsButton class="mt-3" />
     </div>
