@@ -176,8 +176,18 @@ const hasPm2 = computed(() => (health.value?.pm2?.length ?? 0) > 0)
 const showRestartAll = computed(() => isMac.value || hasPm2.value)
 
 // Readiness rows come from the backend's platform-specific checks (PM2
-// launchd + dump on macOS; systemd user unit + lingering on Linux).
-const readinessChecks = computed(() => health.value?.reboot_readiness?.checks ?? [])
+// launchd + dump on macOS; systemd user unit + lingering on Linux). A host
+// still running the pre-checks[] API falls back to the legacy two rows, so
+// the panel never goes blank while a machine catches up.
+const readinessChecks = computed(() => {
+  const r = health.value?.reboot_readiness
+  if (!r) return []
+  if (r.checks) return r.checks
+  return [
+    { key: 'pm2_launch_agent', label: 'PM2 launch agent', ok: !!r.pm2_launch_agent?.exists, detail: r.pm2_launch_agent?.exists ? 'installed' : 'missing' },
+    { key: 'pm2_dump', label: 'PM2 saved state', ok: !!r.pm2_dump?.exists, detail: r.pm2_dump?.exists ? null : 'missing', age_seconds: r.pm2_dump?.exists ? r.pm2_dump.age_seconds : null }
+  ]
+})
 
 // Reboot needs both: services must come back, and this host must actually be
 // rebootable from here (Linux needs passwordless sudo; macOS uses osascript).
