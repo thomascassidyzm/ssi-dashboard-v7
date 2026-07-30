@@ -10192,8 +10192,17 @@ app.post('/api/admin/git-pull', async (req, res) => {
 
 // POST /api/admin/kill-apps — kill non-essential GUI apps to free RAM
 // Kills: Google Chrome, iTerm2, Safari, Finder (optional), Xcode, etc.
+// macOS-only: on a headless Linux host there are no GUI apps to kill, and
+// `killall "Google Chrome"` would just be a no-op the caller can't distinguish
+// from success. Refuse honestly instead.
 app.post('/api/admin/kill-apps', async (req, res) => {
   if (!await requireAdmin(req, res)) return
+  if (require('os').platform() !== 'darwin') {
+    return res.status(400).json({
+      ok: false,
+      error: 'kill-apps is macOS-only — this host has no GUI apps to kill.'
+    })
+  }
   const targets = req.body?.apps || ['Google Chrome', 'iTerm2']
   const results = {}
   for (const app of targets) {
@@ -10273,10 +10282,29 @@ async function getDiskStats() {
   }
 }
 
-// Check reboot readiness — whether PM2 will auto-resurrect after reboot.
-// Readable without sudo; all paths are in the current user's space or are
-// root-owned files whose *existence* is the only bit we need.
+// Check reboot readiness — whether services will come back after a reboot.
+// What "comes back" MEANS is platform-specific: on macOS it's PM2's launchd
+// agent + saved dump; on Linux this API runs as a systemd USER unit, so it's
+// the unit being enabled plus user lingering (without linger, user units die
+// with the last session and never start at boot).
+//
+// Two independent questions, deliberately kept apart:
+//   ready   — will things restart afterwards?
+//   reboot  — can this host be rebooted from here at all?
+// The old code conflated them, so a host that simply lacks passwordless sudo
+// was told "PM2 would not auto-resurrect", which was not true.
+//
+// Every probe is readable without sudo.
 async function checkRebootReadiness() {
+  const os = require('os')
+  const platform = os.platform()
+  return platform === 'linux'
+    ? await linuxRebootReadiness()
+    : await darwinRebootReadiness()
+}
+
+// macOS path — unchanged semantics and unchanged field names (Camberley).
+async function darwinRebootReadiness() {
   const os = require('os')
   const home = os.homedir()
   const user = os.userInfo().username
@@ -10284,6 +10312,7 @@ async function checkRebootReadiness() {
   const dumpPath = `${home}/.pm2/dump.pm2`
 
   const out = {
+    platform: os.platform(),
     pm2_launch_agent: { exists: false, path: plistPath },
     pm2_dump: { exists: false, path: dumpPath, mtime: null, age_seconds: null },
     ready: false,
@@ -10307,6 +10336,97 @@ async function checkRebootReadiness() {
   } else if (!out.pm2_dump.exists) {
     out.fix_command = 'pm2 save'
   }
+
+  // Same two rows the panel has always shown, now as generic checks so the
+  // UI has one render path across platforms.
+  out.checks = [
+    {
+      key: 'pm2_launch_agent',
+      label: 'PM2 launch agent',
+      ok: out.pm2_launch_agent.exists,
+      detail: out.pm2_launch_agent.exists ? 'installed' : 'missing'
+    },
+    {
+      key: 'pm2_dump',
+      label: 'PM2 saved state',
+      ok: out.pm2_dump.exists,
+      detail: out.pm2_dump.exists ? null : 'missing',
+      age_seconds: out.pm2_dump.age_seconds
+    }
+  ]
+  // osascript restart needs no sudo and always exists on macOS.
+  out.reboot = { capable: true, reason: null }
+  return out
+}
+
+// Linux path — systemd user unit + lingering.
+async function linuxRebootReadiness() {
+  const os = require('os')
+  const user = os.userInfo().username
+  const unit = process.env.POPTY_SYSTEMD_UNIT || 'popty-production-api'
+
+  // When this process IS the user unit, XDG_RUNTIME_DIR is already set; keep a
+  // fallback so an interactive/ssh invocation probes the same user bus.
+  const env = {
+    ...process.env,
+    XDG_RUNTIME_DIR: process.env.XDG_RUNTIME_DIR || `/run/user/${os.userInfo().uid}`
+  }
+  const probe = async (cmd, args) => {
+    try {
+      const { stdout } = await execFileAsync(cmd, args, { env })
+      return stdout.trim()
+    } catch (e) {
+      // systemctl exits non-zero for "disabled"/"static" but still prints it.
+      return (e.stdout || '').trim() || null
+    }
+  }
+
+  const enabledState = await probe('systemctl', ['--user', 'is-enabled', unit])
+  const lingerRaw = await probe('loginctl', ['show-user', user, '--property=Linger'])
+  const linger = lingerRaw === 'Linger=yes'
+  const enabled = enabledState === 'enabled' || enabledState === 'enabled-runtime'
+
+  const out = {
+    platform: 'linux',
+    systemd_unit: { name: unit, enabled, state: enabledState },
+    linger: { enabled: linger, user },
+    ready: enabled && linger,
+    fix_command: null,
+    checks: [
+      {
+        key: 'systemd_unit',
+        label: `Service ${unit}`,
+        ok: enabled,
+        detail: enabledState || 'not found'
+      },
+      {
+        key: 'linger',
+        label: 'User lingering',
+        ok: linger,
+        detail: linger ? 'on' : 'off'
+      }
+    ]
+  }
+  if (!out.ready) {
+    const fixes = []
+    if (!enabled) fixes.push(`systemctl --user enable ${unit}`)
+    if (!linger) fixes.push(`sudo loginctl enable-linger ${user}`)
+    out.fix_command = fixes.join(' && ')
+  }
+
+  // Rebooting a Linux host from here needs passwordless sudo. If we don't have
+  // it, say so plainly rather than blaming auto-resurrect.
+  let capable = false
+  try {
+    await execFileAsync('sudo', ['-n', 'true'])
+    capable = true
+  } catch {}
+  out.reboot = capable
+    ? { capable: true, reason: null }
+    : {
+        capable: false,
+        reason: `No passwordless sudo for ${user} on this host — reboot it from the VM console/host instead.`
+      }
   return out
 }
 
@@ -10356,16 +10476,24 @@ app.post('/api/admin/restart-machine', async (req, res) => {
   const force = req.query.force === '1' || req.body?.force === true
 
   // Resurrect must be wired up, otherwise nothing comes back on boot.
-  if (!force) {
-    const readiness = await checkRebootReadiness()
-    if (!readiness.ready) {
-      return res.status(412).json({
-        ok: false,
-        error: 'Reboot blocked: PM2 auto-resurrect is not configured.',
-        readiness,
-        hint: 'Run the fix_command on the target machine, or pass ?force=1 to reboot anyway.'
-      })
-    }
+  const readiness = await checkRebootReadiness()
+  if (!force && !readiness.ready) {
+    return res.status(412).json({
+      ok: false,
+      error: readiness.platform === 'linux'
+        ? 'Reboot blocked: services are not configured to start at boot.'
+        : 'Reboot blocked: PM2 auto-resurrect is not configured.',
+      readiness,
+      hint: 'Run the fix_command on the target machine, or pass ?force=1 to reboot anyway.'
+    })
+  }
+  // No amount of ?force=1 conjures sudo we don't have — fail before pretending.
+  if (readiness.reboot && readiness.reboot.capable === false) {
+    return res.status(412).json({
+      ok: false,
+      error: `Reboot unavailable: ${readiness.reboot.reason}`,
+      readiness
+    })
   }
 
   // Save the current pm2 state ONLY if every process is online. If anything
@@ -10377,14 +10505,15 @@ app.post('/api/admin/restart-machine', async (req, res) => {
   res.json({ ok: true, save, saveResult, message: 'Rebooting in 5 seconds...' })
 
   // Detached so it survives if production-api gets killed for any reason.
-  // Primary reboot path is osascript — goes through macOS GUI restart flow,
-  // doesn't need sudo, asks apps to quit gracefully. sudo reboot is a
-  // fallback only; it requires NOPASSWD which isn't configured here.
-  spawn('bash', ['-c',
-    'sleep 5; ' +
-    'killall iTerm2 2>/dev/null; killall "Google Chrome" 2>/dev/null; ' +
-    'osascript -e \'tell application "System Events" to restart\' || sudo -n /sbin/reboot'
-  ], { detached: true, stdio: 'ignore' }).unref()
+  // macOS: osascript goes through the GUI restart flow, needs no sudo, and asks
+  // apps to quit gracefully. Linux is headless — there are no GUI apps to quit
+  // and no osascript; systemctl reboot (via the sudo we just verified) is it.
+  const rebootScript = readiness.platform === 'linux'
+    ? 'sleep 5; sudo -n systemctl reboot || sudo -n /sbin/reboot'
+    : 'sleep 5; ' +
+      'killall iTerm2 2>/dev/null; killall "Google Chrome" 2>/dev/null; ' +
+      'osascript -e \'tell application "System Events" to restart\' || sudo -n /sbin/reboot'
+  spawn('bash', ['-c', rebootScript], { detached: true, stdio: 'ignore' }).unref()
 })
 
 // ============================================================================
