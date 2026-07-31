@@ -180,9 +180,22 @@ async function insertOwnedRowsBatch(items) {
 
 async function run(courseCode, { apply, voiceId }) {
   const { data: course, error: courseErr } = await supabase
-    .from('courses').select('course_code, known_lang, target_lang').eq('course_code', courseCode).maybeSingle()
+    .from('courses').select('course_code, known_lang, target_lang, voice_config').eq('course_code', courseCode).maybeSingle()
   if (courseErr) throw courseErr
   if (!course) throw new Error(`Course not found: ${courseCode}`)
+
+  // ROLE-VOICE GUARD (2026-07-31, after the eng_for_kan/tel voice-1 duplication):
+  // this tool fills EVERY slot role with the single pass voice. That is only
+  // correct when each filled role's configured voice IS the pass voice — an
+  // eng_for_X course's target1 (female) slots must never be filled with the
+  // male clone. Refuse the mismatched roles up front; see
+  // docs/course-optimization/voice1-duplication-audit-eng-for-x-2026-07-31.md.
+  const configuredVoices = (course.voice_config && course.voice_config.voices) || {}
+  const rolesToFill = course.known_lang === 'eng' ? ['known'] : ['target1', 'target2']
+  const mismatchedRoles = rolesToFill.filter(r => (configuredVoices[r] && configuredVoices[r].voiceId) && configuredVoices[r].voiceId !== voiceId)
+  if (mismatchedRoles.length) {
+    throw new Error(`${courseCode}: configured voice for role(s) ${mismatchedRoles.map(r => `${r}=${configuredVoices[r].voiceId}`).join(', ')} differs from pass voice ${voiceId} — a single-voice pass would write the wrong voice into those roles. Run per-role via phase8's copy bucket instead, or pass --voice matching a single-role subset.`)
+  }
 
   const family = course.known_lang === 'eng' ? 'X_for_eng (known-side)' : course.target_lang === 'eng' ? 'eng_for_X (target-side)' : null
   if (!family) throw new Error(`${courseCode}: neither known_lang nor target_lang is 'eng' — nothing to copy`)

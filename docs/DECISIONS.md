@@ -393,3 +393,34 @@ auth: the dashboard already ships static lab data the same way.
   floor, not the exact delivery").
 **Search width:** visible-options
 **Decided by:** agent (clean-mastering itself ruled by Tom 2026-07-29)
+
+## 2026-07-31 — eng_for_X voice-1 duplication: zero-TTS remap, apply blocked on writer machine
+
+**Move:** Diagnosed Tom's "my voice for BOTH voices" report on eng_for_kan to a 2026-07-05T00:29Z
+`clone-copy-pass.cjs --apply` run that filled female target1 slots with the male clone (the tool
+applies ONE voice to every role and never reads voice_config); eng_for_tel hit by the same event.
+Built `tools/course-optimization/voice1-remap-eng-for-x.cjs` (copy existing family female clips
+in, repoint FKs, delete nothing) and a role-voice guard in clone-copy-pass that refuses the
+mismatched run outright. Apply is staged, dry-run-verified (kan 2,636 rows/4,697 FKs, tel
+1,945/3,040, 100% female coverage, 0 misses) — but BLOCKED: watson-1 is deliberately read-only
+(anon-key stand-in, the one-writer safety net) and the Camberley Mac is behind check-mode
+Tailscale SSH only Tom can approve. The floor is the deliverable.
+
+**Better:** voice 1 becomes the female clips learners were always meant to hear, using audio that
+already exists — and the defect class is dead at the tool layer, not just patched in data.
+**Simpler:** two mechanisms already proven in this repo — the shared-s3_key copy convention and
+WHERE-clause before-state repoints; no new render path, no schema change.
+**Cheaper (total):** $0 TTS (Tom's "we MUST have all the content already" verified: 4,581/4,581
+texts covered by the family female pool); the guard is ~12 lines.
+
+**Searched & rejected:**
+- Regenerate female renders for the wrong slots — cheaper leg fails ($ for clips that exist) and
+  violates the no-TTS-without-approval gate.
+- Repoint FKs to same-course female rows only — kan/tel own ZERO female rows for these texts;
+  verified empty set.
+- Apply from watson-1 via production-api endpoints — no endpoint repoints non-null FKs; the RLS
+  block is the machine's designed safety net, not a bug to route around.
+- Deleting the 4,581 orphaned male target1 rows in the same pass — approval-gated; listed for
+  Tom instead.
+**Search width:** re-levelled (data fix → tool-layer prevention; apply re-homed to the writer machine)
+**Decided by:** agent (apply itself lands on Tom's machine — one command per course, staged cold)
