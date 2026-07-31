@@ -83,6 +83,24 @@ sibling course. `tools/course-optimization/voice1-remap-eng-for-x.cjs` (DRY_RUN 
 
 Per-run logs: `docs/audio-sweeps/voice1-remap-<course>-{dryrun,applied}-<stamp>.json`.
 
+**Apply status (2026-07-31): staged, dry-run-verified, BLOCKED on machine access.** This
+investigation ran on watson-1, which is deliberately read-only against Supabase (the `.env`
+service key is the anon-key stand-in — the one-writer safety net). The kan `--apply` failed
+cleanly on the first insert batch (`permission denied for table course_audio`, zero rows
+written, FKs untouched). The apply must run on the Camberley Mac (the one production writer):
+
+```bash
+git fetch origin && git checkout fix/eng-for-x-voice1-remap   # or main after merge
+node tools/course-optimization/voice1-remap-eng-for-x.cjs eng_for_kan --apply
+node tools/course-optimization/voice1-remap-eng-for-x.cjs eng_for_tel --apply
+```
+
+Each run re-derives everything from the live DB (no stale state), asserts before-states row by
+row, writes an applied log, and is idempotent (re-running finds nothing left to repoint).
+Verification after apply: `node tools/course-optimization/audit-voice1-gender-eng-for-x.cjs`
+on any machine (read-only) — kan/tel FK columns must resolve 100% female, and the male target1
+rows must show 0 FK links.
+
 The six Azure-course residues (64 FK-linked slots) are NOT remapped in this pass: their female
 voice is Sonia (Azure), and Azure clips are untrusted as cross-course copy sources (speed baked
 into the render — `clone-copy-match.cjs isTrusted1xEngine`). Only ~13 of the 64 texts have a
