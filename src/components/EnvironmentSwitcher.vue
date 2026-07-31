@@ -10,7 +10,7 @@
         <option value="tom">Tom's Machine</option>
         <option value="kai">Kai's Machine</option>
         <option value="ssi">SSi Machine</option>
-        <option value="watson">Watson VM</option>
+        <option value="watson">SSi Machine (Cloud)</option>
         <option value="api">API Server</option>
       </select>
       <div class="select-arrow">
@@ -59,7 +59,7 @@ const ENVIRONMENTS = {
     machineProfile: 'kai'  // Similar specs to Kai's machine (8GB RAM)
   },
   watson: {
-    name: 'Watson VM',
+    name: 'SSi Machine (Cloud)',
     url: 'https://watson-1.tail4968cb.ts.net:8443',  // Tailscale Funnel → production-api :3470 on watson-1
     machineProfile: 'default'  // watson-1 has 15GB RAM — matches the 16GB 'default' profile
   },

@@ -393,3 +393,33 @@ auth: the dashboard already ships static lab data the same way.
   floor, not the exact delivery").
 **Search width:** visible-options
 **Decided by:** agent (clean-mastering itself ruled by Tom 2026-07-29)
+
+---
+
+## 2026-07-31 — Popty phase-2 parallel-run door: Funnel + real service key + dropdown entry
+
+watson-1's production-api (:3470) is now a real, selectable popty.app environment:
+Tailscale Funnel `https://watson-1.tail4968cb.ts.net:8443` (public internet), real
+`SUPABASE_SERVICE_KEY` (sb_secret format, from the sentinel credential already on the VM)
+so writes work, and the EnvironmentSwitcher entry renamed "Watson VM" → "SSi Machine
+(Cloud)". Camberley entry and default untouched — nothing changes for anyone who doesn't
+pick the new entry. One-writer guard: the scheduler belt (`AUDIT_ARCHIVE_CRON=off` pinned
+in the systemd unit) stays on; only the credential belt is deliberately removed, which is
+what "selectable environment with working writes" means. Write path verified with a
+metadata write+revert on a stopped February `build_jobs` row.
+
+**Better:** Aran gets a working cloud environment today; user-triggered writes work while
+background jobs stay Camberley-only.
+**Simpler:** Funnel was already enabled (no ngrok, no new tunnel identity); the service key
+already existed on the VM (`~/.ssi-sentinel.env`) — zero new secrets moved between machines.
+**Cheaper (total):** €0 marginal, no ngrok dependency for the VM door, one label edit on
+the frontend.
+
+**Searched & rejected:**
+- ngrok-on-VM fallback — unnecessary (Funnel already live) and the reserved domain
+  `ssi-machine.ngrok.app` is held by Camberley; starting it on the VM would steal the
+  domain and cut everyone over — the opposite of parallel-run.
+- Vault pull via `.env.psql` — no `.env.psql` on watson-1; the sentinel key is the same
+  secret with zero provisioning steps.
+**Search width:** visible-options
+**Decided by:** agent (phase-2 step founder-approved)

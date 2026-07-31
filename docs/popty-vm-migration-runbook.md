@@ -87,10 +87,12 @@ Known from repo + phase-1 doc; all need probe confirmation:
   automatically — no "stale localStorage" support burden, as long as we change the URL *of
   the environment they already have selected* (or the popty.app default at
   `src/services/api.js:41`).
-- A "Watson VM" option already exists in the switcher →
-  `https://watson-1.tail4968cb.ts.net:8443` (Tailscale Funnel → :3470; **Funnel not yet
-  enabled** — two one-time Tom actions, documented in `docs/watson-1-environment.md`
-  §Public exposure).
+- An "SSi Machine (Cloud)" option (formerly "Watson VM") exists in the switcher →
+  `https://watson-1.tail4968cb.ts.net:8443` (Tailscale Funnel → :3470; **Funnel is LIVE**
+  as of 2026-07-31 — the two one-time Tom actions in `docs/watson-1-environment.md`
+  §Public exposure are done, and the real `SUPABASE_SERVICE_KEY` is provisioned on
+  watson-1, so writes work through this door. Parallel-run: the scheduler belt
+  (`AUDIT_ARCHIVE_CRON=off`) stays on; Camberley remains the sole background writer).
 
 ### 1.4 The audio pipeline and the content-addressed clip store
 
