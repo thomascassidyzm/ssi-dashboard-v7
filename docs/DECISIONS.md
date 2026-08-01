@@ -423,3 +423,21 @@ the frontend.
   secret with zero provisioning steps.
 **Search width:** visible-options
 **Decided by:** agent (phase-2 step founder-approved)
+
+---
+
+## 2026-08-01 — Org/workplace pricing line added to canonical PRICING.md
+
+**Move:** added the new orgs/workplaces product line — £15/seat/month or £150/seat/year,
+standard pricing with no volume scaling, card upfront via Paddle, seats reset monthly,
+cancel anytime, 30-day free trial covering all languages, seat model the same as for
+teachers in schools, in-place trial upgrade available at any time — to `docs/PRICING.md`,
+which stays the single canonical price list (founder ruling, 2026-07-29).
+**Better:** the new product line is documented where every other price already lives, so
+billing/product code has one place to trace prices back to.
+**Simpler:** extended the existing table + added one section in the existing doc's own
+style, no new file.
+**Cheaper (total):** zero — pure documentation, no new source of truth to maintain.
+**Searched & rejected:** n/a — founder-specced figures, documentation-only task.
+**Search width:** visible-options
+**Decided by:** Tom (founder ruling, 2026-08-01)
