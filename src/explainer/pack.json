@@ -1,6 +1,6 @@
 {
-  "version": "fbeec472e9be",
-  "generatedAt": "2026-07-29",
+  "version": "f222c9ee9159",
+  "generatedAt": "2026-08-03",
   "truth": {
     "navTabs": {
       "primary": [
@@ -515,7 +515,7 @@
       }
     ],
     "apml": {
-      "what APML is": "APML — AI Projects Markup Language, also read as Agent Protocol Markup Language — was the\noriginal concept behind this system: capture INTENT as code, in YAML, so that what a project\nmeans to do is written down as precisely as what its code happens to do. It was a great idea,\nand its value has been largely superseded by the rate of model improvement — models now read\nintent straight out of prose, code and conversation, so a formal intent language is no longer\nthe load-bearing layer it was designed to be. The APML files in this repo are kept as\narchitectural lineage, not as a live requirement: they record where the system's thinking came\nfrom. What survives of APML is not the syntax but the stance, and that stance is now enforced\nby the machine gates below — the course is data plus gates, not code plus opinions, and every\nconstraint the method cares about is held by a gate rather than by a reviewer's memory.",
+      "what APML is": "APML — AI Projects Markup Language: a way for agents to stay locked in to intent. It was\noriginally compiled into working JavaScript; that's been largely superseded now that stronger\nmodels can just write code directly from APML in YAML form — but it's still a good way to\ncapture intent (founder's own words, 2026-08-03). The APML files in this repo are kept as\narchitectural lineage, not as a live requirement: they record where the system's thinking came\nfrom.",
       "the directions": "The architectural principles the system was built to honour — born in the APML era, still the\nfitness functions today. Everything is a parameter — no magic numbers. Each component does one\nthing. Source data is never mutated, only extended. The same operation twice gives the same\nresult. Store the raw truth, compute the derived. Explicit beats implicit — relationships and\ndependencies stay visible. Errors carry reasons, not just status. Everything can be queried\nand inspected. Build complex behaviour from simple composable parts. These are fitness\nfunctions, not slogans: a change that fights one of them needs a better story than \"it works\".",
       "validate-then-insert": "Every gate runs first and accumulates **all** errors into one list; only if that list is empty\ndoes anything get written. \"Atomic\" here means validate-everything-then-insert-everything, or\ninsert nothing — there is no partial save, and the submitting agent sees every problem at once.\nA rejection is the method protecting the learner, not the tool being difficult. The live gate\nlist, in execution order, is compiled from the validator itself on the Pipeline page.",
       "why hold-out, not rejection, for phrase-level ZUT": "A LEGO-level ZUT collision is the seed's core wiring gone wrong, so the whole seed is rejected.\nA phrase-level collision is one phrase's problem, so only the transgressor is withheld while\nthe seed and every conforming phrase land — ZUT is never a reason to lose a whole seed of work.\nThe held-out phrase comes back with a hint: consolidate to the existing target, or\ndifferentiate the known-language prompt so it naturally carries the distinction — with context\nwords, never with parentheses, because the course explains nothing and demonstrates everything.",
@@ -1135,6 +1135,6 @@
       }
     },
     "note": "scripts/vocab-gate/audit-results.json absent on this machine — snapshot carried over from the previous pack (98 courses)",
-    "generatedAt": "2026-07-29"
+    "generatedAt": "2026-08-03"
   }
 }
