@@ -47,18 +47,32 @@ body: JSON.stringify({ name: `THE-MODEL demo ${ts}`, shape: 'school',
                        course_code: 'spa_for_eng_v2' }),   // :184
 ```
 
-- Committed `4ff94db1` (2026-07-18, *"test(the-model): deployed-dev verification harness — 25/25"*),
-  on top of `8b959ea6` (the delete-family FK fix). Timestamps match the enrolments to the minute.
+- The literal entered at `8b959ea6` (2026-07-18 05:37 +0100, the delete-family FK fix) in **two**
+  live call sites of the harness; `4ff94db1` (05:42, *"deployed-dev verification harness — 25/25
+  against 8b959ea"*) then changed the second one to `ben_for_eng`, which is itself evidence the
+  harness was run live between the two commits. Timestamps match the enrolments.
 - The base36 `Date.now()` suffix explains the `mrpvawk0` / `mrpvnobx` / `mrpvpfws` names —
-  three separate harness runs at 04:29, 04:39, 04:40.
-- The harness POSTs `/api/groups/:id/demo-mint`, which mints school → class → class-learner →
-  `course_enrollments`. `spa_for_eng_v2` was **never a real course code** — it is a literal
-  invented by that test file. There is no `courses` row and never was.
+  three separate harness runs at 04:29, 04:39, 04:40 UTC.
+- Both call sites reach `course_enrollments`:
+  - `:184` → `POST /api/groups/:id/demo-mint` → `api/_utils/demoLeaf.ts:ensureDemoLeafClass` →
+    `ensureClassLearnerEntity` (`api/_utils/classLearnerEntity.ts:53-58`) → upsert.
+  - `:241` → `POST /api/onboarding/provision` (`track:'tutor'`) → `provision.ts:256-269` →
+    same `ensureClassLearnerEntity` upsert.
+  Each flow mints a **fresh** `learners` row (`user_id: 'class-learner:${classId}'`) before the
+  upsert, so repeat runs produce distinct learner_ids rather than collapsing on conflict —
+  exactly the 3 distinct learner_ids observed.
 - Step 5 of the harness deletes the minted subtree; that cleanup left residue behind
   (3 enrolments, 1 `classes` row, 1 `schools` row).
 
+**On the `_v2` suffix:** no code anywhere in either repo *constructs* a `_vN` suffix dynamically.
+`_vN` is a real hand-authored naming convention — `services/course-builder/lib/validation.cjs:899`
+strips a trailing `_vN` so a versioned course inherits the base vocab — but **no `_vN` course code
+exists in production** (`SELECT course_code FROM courses WHERE course_code ~ '_v[0-9]+$'` → 0 rows).
+So `spa_for_eng_v2` is a plausible-looking code hand-typed into a test file, never a real course.
+
 **Root cause:** `api/groups/[id]/demo-mint.ts:188` validates only that `course_code` is
 *present*, never that it *exists* in `courses`. Any string mints a live school/class/enrolment.
+`onboarding/provision` has the same gap.
 
 **Also worth Tom's eye:** the harness is labelled "deployed-dev" but its writes landed in the
 production database.
