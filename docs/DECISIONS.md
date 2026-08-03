@@ -441,3 +441,25 @@ style, no new file.
 **Searched & rejected:** n/a — founder-specced figures, documentation-only task.
 **Search width:** visible-options
 **Decided by:** Tom (founder ruling, 2026-08-01)
+
+## 2026-08-03 — APML definition corrected: no "Adaptive Pedagogy", no fabricated gate philosophy
+
+**Move:** the 2026-07-29 rename (`5de3cb55`) got the acronym half right (AI Projects Markup
+Language) but invented an alt-reading ("Agent Protocol Markup Language") and a philosophy
+paragraph ("the course is data plus gates, not code plus opinions…") that Tom never said.
+Separately, `ssi-learning-app/apml/{design,core,schools}/*.apml` carried a wholly different
+fabrication ("Adaptive Pedagogy Markup Language") in their header comments. Replaced the "what
+APML is" section in `tools/explainer/rulings/docs/apml.md` (source of the compiled
+`/stocktake/apml` and How & Why "APML — the lineage" pages) with Tom's own 2026-08-03 words:
+AI Projects Markup Language, a way for agents to stay locked in to intent, originally compiled
+to JavaScript, now largely superseded by models writing code directly from APML/YAML, still
+good for capturing intent. Recompiled `src/explainer/pack.json` from the corrected source.
+Fixed the three ssi-learning-app header comments to match.
+**Better:** the dashboard states the founder's actual definition instead of a worker's
+invention; no more fabricated claims about "machine gates" enforcing course shape.
+**Simpler:** single-paragraph correction at the one hand-maintained source file; the compiled
+pack and rendered pages follow automatically via the existing compile step.
+**Cheaper (total):** zero new surface — same drift-gated compile pipeline, corrected input.
+**Searched & rejected:** n/a — factual correction of founder-flagged fabrication.
+**Search width:** visible-options
+**Decided by:** Tom (founder correction, 2026-08-03)

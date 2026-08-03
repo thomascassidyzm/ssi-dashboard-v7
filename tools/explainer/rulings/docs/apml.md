@@ -8,16 +8,12 @@ ruling 2026-07-29: APML is architectural lineage, not a live requirement. -->
 
 ## what APML is
 
-APML — AI Projects Markup Language, also read as Agent Protocol Markup Language — was the
-original concept behind this system: capture INTENT as code, in YAML, so that what a project
-means to do is written down as precisely as what its code happens to do. It was a great idea,
-and its value has been largely superseded by the rate of model improvement — models now read
-intent straight out of prose, code and conversation, so a formal intent language is no longer
-the load-bearing layer it was designed to be. The APML files in this repo are kept as
+APML — AI Projects Markup Language: a way for agents to stay locked in to intent. It was
+originally compiled into working JavaScript; that's been largely superseded now that stronger
+models can just write code directly from APML in YAML form — but it's still a good way to
+capture intent (founder's own words, 2026-08-03). The APML files in this repo are kept as
 architectural lineage, not as a live requirement: they record where the system's thinking came
-from. What survives of APML is not the syntax but the stance, and that stance is now enforced
-by the machine gates below — the course is data plus gates, not code plus opinions, and every
-constraint the method cares about is held by a gate rather than by a reviewer's memory.
+from.
 
 ## the directions
 

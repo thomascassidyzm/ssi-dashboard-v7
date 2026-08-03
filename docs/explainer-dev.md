@@ -1,6 +1,6 @@
 # Popty for developers — compiled
 
-**Version `fbeec472e9be` · generated 2026-07-29. DO NOT EDIT — derived; edit tools/explainer/rulings/dev.md or the code, then recompile.**
+**Version `f222c9ee9159` · generated 2026-08-03. DO NOT EDIT — derived; edit tools/explainer/rulings/dev.md or the code, then recompile.**
 
 ### orientation
 
