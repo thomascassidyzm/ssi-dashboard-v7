@@ -233,6 +233,31 @@ restore-s230-v2.cjs` (strips generated id columns `lego_id`/`target_lego_id`/`ta
 row re-insert fails on those; DB recomputes them from seed+lego_index). Backup: `scripts/deepening/kor/
 pilot-backup/`. S230-236 all verified intact.
 
-**STATUS: redecomposition PAUSED** pending (i) tooling hardening — transport fix + bulletproof rollback, and
-(ii) a methodology ruling on bound relative morphemes. Diagnosis + plan stand. The 647-phrase deepening is
-untouched and GO-for-TTS.
+**RESOLUTION (2026-08-03) — blockers cleared, pilot RESUMED:**
+1. Transport → use SHORT keys (`idx`/`known`/`target`, components `{known,target}`, phrases `{known,target}`).
+2. Rollback-empties-seed → **Kai OK'd** (a failed apply mid-redecompose is fine; backup restores). Not a blocker.
+3. BUILD required → author ≥3 recombining BUILD + ≥5 varied USE per lego (the real per-lego cost; endpoint
+   injects `introduced_vocab` to build from). Deviation logged: bare `친구가` NOT tileable → use `제 친구가 있어요`.
+4. Bound morpheme `싶어하는` → USE frame `[verb]고 싶어하는 제 친구가 있어요` ("I have a friend who wants to [verb]").
+
+**PILOT OUTCOME (2026-08-03) — concept PROVEN, but ad-hoc agent execution is error-prone; family reverted.**
+S230 was re-cut cleanly + verified (below): filler-stack → varied recombination, machinery legos spreading —
+the approach WORKS. BUT execution via spawned agents was rocky: (i) edit-cascade rollback bug emptied S230
+twice (recovered), (ii) a TWO-WRITER RACE on S231-236 — team-lead spawned a 2nd writer while the 1st was
+still running (violated never-two-writers-per-course), producing contested/possibly-forward-ref versions.
+All recovered via backup discipline: **entire S230-236 restored to EXACT pre-pilot state (all original, audio
+intact, zero live impact).** Proof captured: verified before/after data + `scratchpad/s230.json` payload.
+**LESSON: released-course redecomposition needs a DISCIPLINED SINGLE-WRITER HARNESS** (one seed at a time,
+collision pre-check [dry-run doesn't run the phrase-ZUT held-out check], attestation guard, NO concurrency,
+per-seed verify) — NOT ad-hoc spawned agents. Build that harness before Band A. Restore tooling:
+`scripts/deepening/kor/restore-seeds.cjs <seeds...>` (strips generated id cols). Also learned: edit-cascade
+dry-run (/v2/validate) skips the phrase-ZUT held-out check → silently passes phrases /seed/complete then
+holds out (can drop BUILD below the 3-floor); freshly-applied cross-seed legos have a ~1min vocab visibility lag.
+
+**S230 verified proof (before reverting):** mega-lego → 4 recombinable legos (같이 일하고 / 싶어하는 / 젊은 남자를 /
+알아요), 37 phrases null-audio, filler-stack REPLACED with varied practice (알아요 already reaching `답을 알아요`
+"I know the answer" — machinery spreading), zero validation failures, zero TTS, zero NEW downstream breakage.
+Old audio orphaned-but-recoverable; new phrases need a TTS pass (Kai's click). **Family S231-236 IN PROGRESS**
+(reuse S230-minted machinery as is_new:false; each adds only 2-3 new legos). Backup: `scripts/deepening/kor/
+pilot-backup/` (all of 230-236); restore: `restore-s230-v2.cjs` pattern (strip generated id cols). Then re-run
+lego-flex-diagnostic on the family + Opus review → show Kai before/after → decide Band A. Deepening 647 untouched.
