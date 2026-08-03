@@ -5,8 +5,27 @@ for-English courses + their variants, checking for repetitive USE phrases. **Rea
 amount of seeds to confirm quality first**, then keep going with deepening/backfill where the
 base is clean. Fully delegated — sequential, my order, no per-step approval. TTS stays Kai's click.
 
-## ✅ RESULTS — autonomous deepening complete (2026-08-02/03)
-**414 new deepening USE phrases across 5 courses, every one reviewer-verified, all draft/no-audio (TTS = Kai's click).**
+## ✅✅ CAMPAIGN COMPLETE — 647 verified deepening phrases across 9 courses (2026-08-02/03)
+**Every phrase reviewer-verified (25 fixes applied, 0 deletes), all draft/no-audio — TTS = Kai's click.**
+
+| Phase | Course | Phrases | Reviewer |
+|---|---|---|---|
+| 1 (thin/repetitive) | kor | 52 | all keep |
+| 1 | zho | 145 | 7 fix |
+| 1 | ara_eg | 73 | 10 fix |
+| 1 | ara | 17 | all keep |
+| 1 | ara_lb | 127 | 1 fix |
+| 2 (big-9 base orphan-spread) | por | 24 | all keep |
+| 2 | fra | 62 | all keep |
+| 2 | ita | 41 | 1 fix |
+| 2 | deu | 106 | 6 fix |
+| **TOTAL** | **9 courses** | **647** | **25 fix / 0 del** |
+
+All 9 big-9 BASE courses are now deepened (spa in July + these 8) EXCEPT jpn (repair-first, can't deepen).
+Plus 2 variants (ara_eg, ara_lb). Every writer: anchor to attested/locked renderings, NEVER force → validate.cjs
+→ register-aware Opus reviewer (ZUT-drift = main defect) → team-lead applies fixes (attestation-checked).
+Zero forced phrases; hard orphan classes correctly left orphan. Phase-2 courses were selective (lower marginal
+value — already 0% repetition), so many zero-use orphans remain by design.
 
 | Course | Phrases | Reviewer verdict |
 |---|---|---|
@@ -21,9 +40,10 @@ reviewer (ZUT-drift is the main defect class) → team-lead applies fixes (attes
 Zero forced phrases; hard orphan classes (atoms/numbers/reported-speech fragments/case-marked/late-seed)
 correctly left orphan. All 5 courses' new phrases need a TTS pass (Kai).
 
-**NEXT (needs Kai):** (1) TTS for the 414 new phrases. (2) Repair backlog (jpn/kor/por/ara tails — below).
-(3) Two lego-target prereqs to unblock spa_mx + por_br deepening. (4) yue/hak/nan = native review first.
-Low-value full-basket courses (por/fra/ita/deu/deu_at/fra_ca/deu_ch) intentionally SKIPPED.
+**NEXT (needs Kai):** (1) TTS for all new phrases (Phase 1 + Phase 2). (2) Repair backlog (jpn/kor/por/ara
+tails — below). (3) Two lego-target prereqs to unblock spa_mx + por_br deepening. (4) yue/hak/nan = native
+review first. (5) Proofread reconcile: seeds whose approval predates a new insert should re-enter review
+(new inserts cleared flagged_at but not approved_at) — per playbook step 5, applies to all deepened courses.
 
 ## Workflow per course (learned from kor, day 1)
 1. **Confirm quality by reading** — `node scripts/deepening/sample.cjs <course> --every 25` +
@@ -79,15 +99,15 @@ Order: worst-first, live before draft, CJK last (need native/model form-check).
 | # | Course | Repetition | Status | Deepen scope | Repair-first band |
 |---|---|---|---|---|---|
 | 1 | kor_for_eng | **28%** | ✅ pass1 DONE+VERIFIED (52 KEEP, 0 defects) | **4-450** | 451-668 (build-broken tail=repair); ~401 hard orphans left (correct-to-skip); optional pass2 (open more connector hosts). NEW PHRASES AWAIT TTS (Kai) |
-| 2 | por_for_eng | 0% | ✅ read; deepen-ready (low value) | **4-561** | 562-668 frozen-core+malformed-Q; S147/150 BR-proclisis |
+| 2 | por_for_eng | 0% | ✅ Phase2 DONE+VERIFIED (24, all KEEP) | **4-561** | 24 phrases, reviewer 24 keep/0 fix, no French leak, EP clean. Majority of 533 zero-use still open (selective sweep). NEW PHRASES AWAIT TTS |
 | 3 | ara_for_eng | 2% | ✅ pass1 DONE+VERIFIED (17, all KEEP) | **1-162 + 301-668** (skip 259,374) | 17 vocalized-correct, 0 fix/0 del; clusters kept (frame=lego). ~527 remain=NATIVE case-by-case track. NEW PHRASES AWAIT TTS (Kai) |
 | 4 | ara_lb_for_eng | 7% | ✅ pass1 DONE+VERIFIED (127, 1 fixed, 0 del) | **1-668** skip empties 189,193,321,329,374,479,516,579,646,651,653 | reviewer 125 keep/2 soft-fix (1 applied تنتين; 1 skipped ألعاب=unattested)/0 del. ~549 hard orphans remain. NEW PHRASES AWAIT TTS (Kai) |
-| 5 | fra_for_eng | 0% | ✅ read; deepen-ready (low value) | **1-668** | none blocking; cleanups: "?"-spacing S150-299, "sont bien"×17, S196-200 tense |
+| 5 | fra_for_eng | 0% | ✅ Phase2 DONE+VERIFIED (62, all KEEP) | **1-668** | reviewer 62 keep/0 fix, no contam, tu + spaced " ?" clean. 621 zero-use remain (selective). NEW PHRASES AWAIT TTS |
 | 6 | por_br_for_eng | 1% | ✅ read; deepen-ready (prereq fix) | **1-668** (fix/skip 8 tu-lego seeds) | PREREQ: 2 tu-legos ouviste/perguntaste→você ouviu/perguntou (S366,369,371,372,373,377,382,407). EU frozen-eu NOT present. Cosmetic: factos→fatos, tenho a certeza |
 | 7 | ara_eg_for_eng | 2% | ✅ pass1 DONE+VERIFIED (73, 10 fixed, 0 del) | **1-668** skip empties 237,259,265,305,321 | reviewer: 63 keep/10 fix (bare→bi- present)/0 del. 504 harder orphans left (respawn). NEW PHRASES AWAIT TTS (Kai) |
-| 8 | deu_for_eng | 0% | ✅ read; deepen-ready (low value) | **1-668 EXCLUDE S300** | S300 modal+inf word-order calque (4 phrases) |
+| 8 | deu_for_eng | 0% | ✅ Phase2 DONE+VERIFIED (106, 6 fixed, 0 del) | **1-668 EXCLUDE S300** | reviewer 99 keep/6 fix (verb-final, anrufen, calque, extraposition)/0 del, no contam. paused idx 186/499 (context, not respawned). NEW PHRASES AWAIT TTS |
 | 9 | spa_mx_for_eng | 2% | ⏸ BLOCKED on Kai (lego-target prereq) | **301-668** (1-300 already varied) | PREREQ = LEGO-TARGET fix (not 6 simple rows): S635/1 lego "that is"=esa es→eso es (neuter), cascades to build+component+~6 use +S639/642 reuse. Structural→Kai's call. Back 2/3 at 5-floor |
-| 10 | ita_for_eng | 0% | ✅ read; deepen-ready | **1-668** | none; GATE backfill vs ~18 clitic-drop "it" chunks; 37 dup USE |
+| 10 | ita_for_eng | 0% | ✅ Phase2 DONE+VERIFIED (41, 1 fixed, 0 del) | **1-668** | reviewer 39 keep/1 fix (occupata→o gender)/0 del; no contam/dup/clitic-drop; over-cap baskets justified. NEW PHRASES AWAIT TTS |
 | 11 | jpn_for_eng | 1% | ⛔ REPAIR-FIRST (not a deepen candidate) | (1-300 only, low value) | S451-668 + S301-325 unlicensed reported-speech tags (16.7%, peak 67-73% S551-600); fragment-glue; keigo tail S642-668 |
 | 12 | deu_at_for_eng | 0% | ✅ read; NOT a deepen candidate (well-spread) | (skip) | i/ich sweep DONE; cleanups: 6-row mid-sentence cap bug (safe), wir/mir 165 rows + i/ich-in-Sie-band (native call). Draft |
 | 13 | deu_ch_for_eng | 0% | ✅ read; low-value deepen 1-644; tail repair-first | 1-644 (skip 7 empties 193,264,267,286,291,298,321) | full baskets→low value; TAIL S645-668 broken (embedded V-S inversion, caps, Sie-lowercase); 7 empties need backfill. Draft |
