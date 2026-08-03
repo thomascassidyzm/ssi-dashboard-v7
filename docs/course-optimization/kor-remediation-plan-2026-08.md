@@ -203,3 +203,36 @@ recombination, and fixes the era-2 broken phrases learners currently hear.
 
 **One writer per band at a time** (backfill U-numbering collides across concurrent writers); Opus for all
 content authoring; reviewer pass per band before any audio queue.
+
+---
+
+## 7. PILOT ATTEMPT 2026-08-03 — PAUSED; 4 blockers found (execution path not yet ready)
+
+Attempted the S230 pilot re-cut. Proved the diagnosis (S230 already fails validation live; course has 252
+failing seeds S230-668) but hit four blockers that must be resolved before ANY redecomposition touches
+released content:
+
+1. **Transport bug** — `edit-cascade` forwards long keys (`lego_index`/`known_text`/`target_text`), but
+   `/seed/complete` reads SHORT keys (`idx`/`known`/`target`) → `p.target` undefined → crash. Dry-run masks it
+   (its validator accepts both shapes). FIX: translate long→short before forwarding.
+2. **⛔ Unreliable rollback (SAFETY)** — on a gate rejection, `edit-cascade`'s `restore()` left S230 **empty
+   (0 legos/0 phrases) on the live released course, TWICE**. A re-cut tool must NEVER be able to empty a
+   released seed. Must be made bulletproof (verify restore succeeded; abort loudly if not) before any apply.
+3. **BUILD phrases are NOT auto-generated** — `/seed/complete` REQUIRES 3+ authored recombining BUILD phrases
+   per lego (anti-template gate). The plan/brief assumed auto-gen. This ~DOUBLES per-lego authoring across all
+   ~97 Band-A seeds — revise the cost estimate upward.
+4. **8-syllable cap vs bound relative morphemes (methodology knot)** — `싶어하는` ("who wants to") must attach
+   to its head noun. Clean cut `싶어하는 젊은 남자를` = 9-11 syl (over cap); cap-fitting standalone `싶어하는`
+   can't get clean USE (NO case-marked person-noun 남자를/여자를/사람을 attested before S230, verified 0 rows).
+   Needs a RULING: cap exception for bound relative morphemes / accept coarser legos for relative-clause
+   sentences / scaffolded USE. Recurs across the whole S230-236 family + much of Band A.
+
+**Incidents fully recovered.** S230 emptied twice, restored both times to exact pre-incident state (content +
+all 16 audio pointers + round-index consistent, zero TTS). Recovery tooling: `scripts/deepening/kor/
+restore-s230-v2.cjs` (strips generated id columns `lego_id`/`target_lego_id`/`target_phrase_id` — the naive
+row re-insert fails on those; DB recomputes them from seed+lego_index). Backup: `scripts/deepening/kor/
+pilot-backup/`. S230-236 all verified intact.
+
+**STATUS: redecomposition PAUSED** pending (i) tooling hardening — transport fix + bulletproof rollback, and
+(ii) a methodology ruling on bound relative morphemes. Diagnosis + plan stand. The 647-phrase deepening is
+untouched and GO-for-TTS.
