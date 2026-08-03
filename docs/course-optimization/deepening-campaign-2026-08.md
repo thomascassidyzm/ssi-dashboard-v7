@@ -45,6 +45,80 @@ tails — below). (3) Two lego-target prereqs to unblock spa_mx + por_br deepeni
 review first. (5) Proofread reconcile: seeds whose approval predates a new insert should re-enter review
 (new inserts cleared flagged_at but not approved_at) — per playbook step 5, applies to all deepened courses.
 
+## Lego decomposition diagnostic (idea 2 — Kai 2026-08-03, Fable analysts)
+**Premise (Kai):** a lego that can't recombine is often a BADLY-CUT lego. Bidirectional — over-fused long
+chunks (split down) AND over-atomized bare bound forms (fuse UP with a licensor, e.g. Finnish `puhumaan`
+→ `valmis puhumaan`). Recombinability = lego quality. Tooling: `scripts/deepening/lego-flex-diagnostic.cjs`
+→ per-course `unspreadable.tsv`. Rebuild-shaped (audio cost) → Kai's call; this is analysis only.
+
+**Raw signal (unspreadable ≥4-English-word "suspects"):** kor 228/429 (53%!), ara_lb 128, ara_eg 67, zho 30
+(well-cut). Length alone overstates it (esp. Arabic clitic-fusion) — the Fable reads corrected for that.
+
+**ara_lb — TRACTABLE, worth considering.** ~55-60% of suspects genuinely badly-cut (~70 legos); **69%
+concentrated in seeds 200-299** (a single builder-drift band that cut whole clauses as legos). Several
+proposed sub-legos ALREADY EXIST elsewhere (superset-flagged = free spreading wins, direct proof of
+redundant over-fusion, e.g. `رح أتأخر` fused inside `لأنو قلقان إنو رح أتأخر`). A targeted redecomposition
+of the 200-299 band would improve recombination + phrase variety. NOT a course-wide rebuild.
+Patterns: whole-sentence legos; glued `كان بدو`+complement; `إنو`+full-clause; over-fused verb chains
+(`رح تكون جاهز تبدأ/تمشي` — same frame twice = would spread if cut).
+
+**ara_eg — WEAKER case.** Only ~40% badly-cut; the dominant cause is Egyptian **clitic fusion** (English
+4-6 words → 1 fused Arabic verb: `حاستناك`/`أساعدكم`), which is a CORRECT SSi unit — no redecomposition
+fixes it (nor should). Highest-value slice is small: ~25-30 legos (clause-sized ≥4-Arabic-word + baked
+subject-pronoun `أنا مش حابب`→`مش حابب`; vocative `يا فندم` fused in). Scattered, no drift band.
+
+**Spotted defects (pre-existing, flag for Kai — NOT deepening phrases):** ara_lb S668L1 target `تفدروا` looks
+like a typo for `تقدروا` (ف/ق). ara_eg S117L3 target `اتكلمنا فيها لبعض` carries extra `فيها` ("about it") not in
+the English gloss.
+
+**Cheap next step (flex-ara's suggestion):** a script counting, per proposed sub-lego, how many existing
+phrases course-wide contain it — turns "would spread" into hard counts. Ran a partial ara_lb check:
+كان لازم 13 seeds, تساعدني 11, شي جديد 7, ما بدك 6, وقت أكتر 6 (would spread) vs several singletons (wouldn't).
+
+**kor — the BIG decomposition story (flex-kor).** Not "some bad legos" — a structural gap:
+- Legos/seed: 1-100 = 2.27 (healthy, median 3w); **201-300 = 1.04 — 97/100 seeds are ONE lego = the whole
+  sentence** (median 8w, no decomposition, pure sentence-memorization); 301-450 = over-atomized (median 2w).
+- Core machinery (`싶지 않아요`, `다고 했어요`, `것 같아요`, `면 좋겠어요`, `는 사람`) NEVER exists as a standalone lego —
+  baked inside mega-legos, so there are no small anchors to recombine → nothing spreads.
+- **Confirms the repetition link (worst case):** mega-lego seeds (S289 etc.) → every USE phrase is the SAME
+  sentence + a front-bolted discourse filler (네/아니요/정말…) = the eng_for_mar filler-stack disease, polluting
+  the eternal pool. So kor's 28% repetition and its unspreadability are the SAME root cause.
+- Era-2 (S300-450) SECOND disease: dishonest/grammar-label glosses (`죽고`="die and", `한다고`="reported speech",
+  `마리를`="animal counter") — violates honest-gloss + controlled-known rails. ~60-80 rows, mostly text-fixable.
+- ~85% of 228 suspects badly-cut. Fix = band redecomposition of S150-300 (never decomposed) + mint the missing
+  machinery legos; fold into ONE kor remediation campaign with existing open kor rebuilds (싶다, 549-668 broken).
+- **kor FUSE-UP (flex-kor, puhumaan lens):** ~65-70 of 140 short unspreadable legos are bound-form fuse-up
+  candidates — bare obligation stems (`타야`→`타야 해요`), dangling -고 connectives (`죽고`="die and"),
+  bare quotative -다고 (`도와주겠다고`→`도와주겠다고 했어요`), attributive fragments (`넘어질`→`넘어질 거예요`).
+  **ELEGANT UNIFIER: both poles converge on the SAME 2-4 word conjugated grain** (V-야 해요, V-지 않아요, V-ㄹ 거예요,
+  X-다고 했어요). Era-1 mega-legos split DOWN to it; era-2 fragments fuse UP to it — **and the fuse-up targets
+  ARE the machinery legos era-1 never debuted.** One re-cut vocabulary serves both → one campaign, not two.
+  Whole-picture: **~65-70% of kor's 429 unspreadable legos genuinely badly-cut (~285-300)**, ~30% legit-underused.
+- ⚠️ **kor degradation starts EARLIER than recorded (~S400, not S460):** era-2 USE phrases broken at S407-450
+  (bare `수 있어요`, tense mismatch `하지 않아요`, S450 `직접`="themselves"→reads "directly" whole-basket mismatch,
+  S413 has NO finite-verb lego). Repair-first boundary → ~S400. **kor deepening is SAFE: all 52 phrases hosted
+  ≤S307 (verified), well clear of the degraded zone.** But scan S380-460 before any future work there.
+
+**FUSE-UP finding (flex-ara, puhumaan lens) — bigger than split-down for Arabic.** Bare-subjunctive verbs
+(imperfective w/o b-/حا/رح/عم prefix) are BOUND forms — occur only under a licensor (عايز/بدي/لازم/ممكن/قبل ما/
+علشان). ~90-110 per course, glossed with English INDICATIVE (also a dishonest gloss). Fix = fuse UP with the
+seed's own matrix (`نغيرها`→`عايزين نغيرها`), OR cheaper honest-gloss-only (regloss as bound "to change it",
+known-side text). +F2 agreement-bound adjectives/nominalizations (~25/course), +F3 person-agreed frame-openers.
+Revised: ara_eg ~30% improvable (fuse-up > split-down), ara_lb ~35% (both diseases). **Shared seed content →
+one cut-policy fixes both courses at once.**
+
+**NEW cross-cutting issues the diagnostic surfaced (beyond spreadability):**
+- **Dishonest glosses** violating honest-gloss rail: kor era-2 grammar-labels; Arabic bare-subjunctive indicatives.
+- **English known-side REGISTER DRIFT** (ara_eg + ara_lb, seeds ~500-668): "yall/noggin/yonder/glum/splendid/
+  azure/primed/heeds" — a builder dodging ZUT collisions with thesaurus English; violates the controlled-known
+  rail independently. Worth a known-side sweep.
+- **Corruptions spotted:** ara_lb S510 `تپارك` (Persian پ, not Arabic), S144L3 gloss "th", S455 "seeing"→لأن;
+  ara_eg S273 `لسف`(→للأسف?), S294 `معيش`; ara_lb S668 `تفدروا`(→تقدروا); ara_eg S117 extra `فيها`.
+
+**Verdict: all rebuild-shaped (audio cost) → Kai's call.** Cheapest wins = corruption fixes + kor era-2
+re-gloss + Arabic honest-gloss (mostly known-side text). Biggest structural = kor S150-300 redecomposition
+(fixes repetition + unspreadability together). Redecomp mechanics = DELETE phrases→reindex→INSERT (established path).
+
 ## Workflow per course (learned from kor, day 1)
 1. **Confirm quality by reading** — `node scripts/deepening/sample.cjs <course> --every 25` +
    targeted reads. Identify: (a) build-broken / HELD regions, (b) systemic phrase-level defect
