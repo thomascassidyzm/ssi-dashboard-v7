@@ -1461,7 +1461,7 @@
       "surface": "src/views/CanonicalContent.vue",
       "verb": "Read the canonical content bank.",
       "steps": 1,
-      "notes": "read-only view, no actions in the template"
+      "notes": "read-only display; editing not built yet"
     },
     {
       "id": "configure-a-course-build",
@@ -1950,21 +1950,10 @@
         "admin",
         "editor"
       ],
-      "surface": "src/views/CourseEditor.vue",
+      "surface": "src/views/CourseValidator.vue",
       "verb": "Check the course for look-up-table breaches.",
-      "steps": 1
-    },
-    {
-      "id": "run-the-infinitive-check",
-      "title": "Run the infinitive check",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/views/CourseEditor.vue",
-      "verb": "Check the course for infinitive-form breaches.",
-      "steps": 1
+      "steps": 1,
+      "notes": "the CourseEditor copy is unreachable (showValidationPanel never set true); this is the live one"
     },
     {
       "id": "run-the-basket-gap-analysis",
@@ -1974,7 +1963,7 @@
         "admin",
         "editor"
       ],
-      "surface": "src/views/CourseEditor.vue",
+      "surface": "src/views/CourseValidator.vue",
       "verb": "See which baskets are short of phrases.",
       "steps": 1,
       "next": "regenerate-the-baskets"
@@ -1987,7 +1976,7 @@
         "admin",
         "editor"
       ],
-      "surface": "src/views/CourseEditor.vue",
+      "surface": "src/views/CourseValidator.vue",
       "verb": "Rebuild the baskets the gap analysis flagged.",
       "steps": 2,
       "notes": "show-and-point only"
@@ -2310,18 +2299,6 @@
       "steps": 3
     },
     {
-      "id": "refresh-the-quality-data",
-      "title": "Refresh the quality picture",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/QualityDashboard.vue",
-      "verb": "Reload the quality scores for this course.",
-      "steps": 1
-    },
-    {
       "id": "filter-by-quality-score",
       "title": "Filter by score",
       "section": "checking",
@@ -2372,31 +2349,6 @@
       "next": "compare-generation-attempts"
     },
     {
-      "id": "act-on-many-seeds-at-once",
-      "title": "Act on a batch of seeds",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/QualityDashboard.vue",
-      "verb": "Apply one decision across every selected seed.",
-      "steps": 2,
-      "notes": "bulk write — show-and-point only"
-    },
-    {
-      "id": "export-a-quality-report",
-      "title": "Export the quality report",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/QualityDashboard.vue",
-      "verb": "Take the quality picture out as a file.",
-      "steps": 1
-    },
-    {
       "id": "compare-generation-attempts",
       "title": "Compare the attempts",
       "section": "checking",
@@ -2406,59 +2358,7 @@
       ],
       "surface": "src/components/quality/SeedQualityReview.vue",
       "verb": "Step through the generations of this seed side by side.",
-      "steps": 1,
-      "next": "accept-an-attempt"
-    },
-    {
-      "id": "accept-an-attempt",
-      "title": "Accept an attempt",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/SeedQualityReview.vue",
-      "verb": "Pick the generation that is right and keep it.",
-      "steps": 1,
-      "notes": "approval — show-and-point only"
-    },
-    {
-      "id": "reject-an-attempt",
-      "title": "Reject an attempt",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/SeedQualityReview.vue",
-      "verb": "Turn down a generation that is not good enough.",
       "steps": 1
-    },
-    {
-      "id": "rerun-a-seed-generation",
-      "title": "Have the seed done again",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/SeedQualityReview.vue",
-      "verb": "Send the seed back to be regenerated.",
-      "steps": 1,
-      "notes": "spends model time — show-and-point only"
-    },
-    {
-      "id": "remove-a-seed-from-the-corpus",
-      "title": "Take a seed out of the corpus",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/SeedQualityReview.vue",
-      "verb": "Drop a seed out of the learning corpus entirely.",
-      "steps": 2,
-      "notes": "destructive — show-and-point only"
     },
     {
       "id": "read-the-generating-prompt",
@@ -2482,8 +2382,7 @@
       ],
       "surface": "src/components/quality/PromptEvolutionView.vue",
       "verb": "Look at how the prompt has changed over time.",
-      "steps": 1,
-      "next": "roll-back-a-prompt-version"
+      "steps": 1
     },
     {
       "id": "filter-the-learned-rules",
@@ -2495,117 +2394,6 @@
       ],
       "surface": "src/components/quality/PromptEvolutionView.vue",
       "verb": "Narrow the rule list to the state you care about.",
-      "steps": 1,
-      "next": "promote-a-learned-rule"
-    },
-    {
-      "id": "read-a-rule-in-detail",
-      "title": "Read one learned rule",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/PromptEvolutionView.vue",
-      "verb": "Open a rule and see the examples behind it.",
-      "steps": 2
-    },
-    {
-      "id": "promote-a-learned-rule",
-      "title": "Promote a rule",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/PromptEvolutionView.vue",
-      "verb": "Make a learned rule part of the standing prompt.",
-      "steps": 1,
-      "notes": "promotion — show-and-point only"
-    },
-    {
-      "id": "reject-a-learned-rule",
-      "title": "Reject a rule",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/PromptEvolutionView.vue",
-      "verb": "Turn down a rule the system proposed.",
-      "steps": 1
-    },
-    {
-      "id": "extend-a-rule-test",
-      "title": "Give a rule longer",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/PromptEvolutionView.vue",
-      "verb": "Keep a rule on test rather than deciding now.",
-      "steps": 1
-    },
-    {
-      "id": "enable-a-learned-rule",
-      "title": "Turn a rule on",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/PromptEvolutionView.vue",
-      "verb": "Switch an existing rule back on.",
-      "steps": 1
-    },
-    {
-      "id": "disable-a-learned-rule",
-      "title": "Turn a rule off",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/PromptEvolutionView.vue",
-      "verb": "Switch a rule off without deleting it.",
-      "steps": 1
-    },
-    {
-      "id": "write-a-manual-rule",
-      "title": "Write your own rule",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/PromptEvolutionView.vue",
-      "verb": "Add a rule by hand rather than waiting for one to be learned.",
-      "steps": 3
-    },
-    {
-      "id": "roll-back-a-prompt-version",
-      "title": "Roll the prompt back",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/PromptEvolutionView.vue",
-      "verb": "Return the prompt to an earlier version.",
-      "steps": 2,
-      "notes": "show-and-point only"
-    },
-    {
-      "id": "export-the-prompt-history",
-      "title": "Export the prompt history",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/PromptEvolutionView.vue",
-      "verb": "Take the prompt lineage out as a file.",
       "steps": 1
     },
     {
@@ -2618,44 +2406,8 @@
       ],
       "surface": "src/components/quality/LearnedRulesView.vue",
       "verb": "See what the system has learned about this course.",
-      "steps": 1
-    },
-    {
-      "id": "apply-a-health-recommendation",
-      "title": "Act on a health recommendation",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/CourseHealthReport.vue",
-      "verb": "Apply what the health report suggests fixing.",
-      "steps": 2,
-      "notes": "show-and-point only"
-    },
-    {
-      "id": "export-the-health-report",
-      "title": "Export the health report",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/CourseHealthReport.vue",
-      "verb": "Take the health report out as a file.",
-      "steps": 1
-    },
-    {
-      "id": "schedule-the-health-report",
-      "title": "Schedule the health report",
-      "section": "checking",
-      "personas": [
-        "admin",
-        "editor"
-      ],
-      "surface": "src/components/quality/CourseHealthReport.vue",
-      "verb": "Have the health report run on its own from now on.",
-      "steps": 2
+      "steps": 1,
+      "notes": "read-only view; the promote/demote UI its copy implies does not exist"
     },
     {
       "id": "start-a-fine-tuning-run",
@@ -3281,6 +3033,241 @@
       "verb": "Find the ruling that explains a decision, then check it against the stock-take.",
       "steps": 2,
       "notes": "composite journey over How & Why into the stock-take; authored walk"
+    },
+    {
+      "id": "read-the-course-health",
+      "title": "Read the course health report",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/CourseHealthReport.vue",
+      "verb": "Read where this course is weakest.",
+      "steps": 1,
+      "notes": "read-only; its Apply/Export/Schedule buttons are unbuilt stubs"
+    },
+    {
+      "id": "undo-a-qa-dismissal",
+      "title": "Undo a dismissal",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/QAReview.vue",
+      "verb": "Put a flag back that you dismissed by mistake, before you approve.",
+      "steps": 1
+    },
+    {
+      "id": "filter-phrase-flags-by-severity",
+      "title": "Filter by severity",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/PhraseQA.vue",
+      "verb": "Show only the phrase flags at the severity you are working.",
+      "steps": 1,
+      "next": "spawn-a-phrase-monitor"
+    },
+    {
+      "id": "edit-a-phrase-in-the-script",
+      "title": "Edit a phrase in the script",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ScriptViewer.vue",
+      "verb": "Correct the wording of a phrase where you find it in the script.",
+      "steps": 2
+    },
+    {
+      "id": "edit-a-canonical-dialogue-line",
+      "title": "Edit a canonical dialogue line",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CanonicalPodView.vue",
+      "verb": "Correct a canonical scenario line; it saves as you leave the field.",
+      "steps": 2
+    },
+    {
+      "id": "cycle-a-course-platform-status",
+      "title": "Cycle a course's platform status",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/MissionControl.vue",
+      "verb": "Click the badge to move a course through not-available, testing, beta and live.",
+      "steps": 1,
+      "notes": "makes a course learner-visible — show-and-point only"
+    },
+    {
+      "id": "generate-the-release-notes",
+      "title": "Draft the release notes",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/components/ReleaseNotesTrigger.vue",
+      "verb": "Draft learner-facing release notes from what changed since the last release.",
+      "steps": 1,
+      "next": "publish-the-release-notes"
+    },
+    {
+      "id": "publish-the-release-notes",
+      "title": "Publish the release notes",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/components/ReleaseNotesTrigger.vue",
+      "verb": "Put the release notes live where learners will read them.",
+      "steps": 1,
+      "notes": "outward-facing and immediate — show-and-point only"
+    },
+    {
+      "id": "set-the-audit-retention-window",
+      "title": "Set the audit retention",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Maintenance.vue",
+      "verb": "Choose how many days of audit history Popty keeps.",
+      "steps": 1,
+      "next": "run-a-cleanup"
+    },
+    {
+      "id": "preview-the-archive-run",
+      "title": "Preview the archive run",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Maintenance.vue",
+      "verb": "Dry-run the S3 archive to see what it would move before it moves it.",
+      "steps": 1,
+      "next": "archive-old-rows"
+    },
+    {
+      "id": "search-the-change-feed",
+      "title": "Search the change feed",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Maintenance.vue",
+      "verb": "Find a change by table, operation, time window or free text.",
+      "steps": 1,
+      "next": "read-one-change-diff"
+    },
+    {
+      "id": "read-one-change-diff",
+      "title": "Read one change",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Maintenance.vue",
+      "verb": "Expand a row to see exactly what changed.",
+      "steps": 1,
+      "next": "restore-from-the-archive"
+    },
+    {
+      "id": "set-the-audio-concurrency",
+      "title": "Set the audio concurrency",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/AudioPipeline.vue",
+      "verb": "Choose how many audio jobs run at once.",
+      "steps": 1
+    },
+    {
+      "id": "backfill-the-missing-phrases",
+      "title": "Backfill the missing phrases",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Fill in the phrases the build left short.",
+      "steps": 1,
+      "notes": "spends model time — show-and-point only"
+    },
+    {
+      "id": "redo-the-flagged-seeds",
+      "title": "Send the flagged seeds back",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Have every seed you flagged generated again.",
+      "steps": 1,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "choose-how-a-rebuild-runs",
+      "title": "Choose how the rebuild runs",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/SeedEditor.vue",
+      "verb": "Pick auto or hand-authored, and whether the rebuild touches audio.",
+      "steps": 3,
+      "next": "cascade-an-edit-through-a-course"
+    },
+    {
+      "id": "add-a-lego-to-the-network",
+      "title": "Add a LEGO to the network",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/NetworkBuilder.vue",
+      "verb": "Add a node and link it into the network.",
+      "steps": 2,
+      "next": "inspect-a-lego-in-the-network"
+    },
+    {
+      "id": "retry-loading-a-course",
+      "title": "Retry loading a course",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionLayout.vue",
+      "verb": "Try again when the course data fails to load.",
+      "steps": 1
+    },
+    {
+      "id": "rate-a-vad-recording",
+      "title": "Rate a VAD take",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/VadLab.vue",
+      "verb": "Score your take's proficiency and leave a note before saving it.",
+      "steps": 2,
+      "next": "save-a-vad-recording"
     }
   ]
 }
