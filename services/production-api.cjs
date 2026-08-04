@@ -4439,11 +4439,23 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       }
     )
 
-    if (audioMeta.processed) {
-      logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
-    } else {
-      logger.warn(`[Upload] Audio processing skipped: ${audioMeta.reason}`)
+    // REFUSE unprocessed audio. processRecordingBuffer falls back to returning
+    // the ORIGINAL buffer when ffmpeg/lame are missing or the encode fails —
+    // storing that would put raw WebM/Opus bytes at a mastered/*.mp3 key,
+    // un-normalised and un-trimmed, while the recorder got a 200 and moved on.
+    // That is the silent-corruption case: a whole session can be lost before
+    // anyone notices. Fail BEFORE the S3 PUT (same principle as the uuid
+    // lookup above — a bad take must never orphan bytes) so the client's
+    // upload queue marks it failed and the take stays visible as missing.
+    if (!audioMeta.processed) {
+      logger.error(`[Upload] REFUSED unprocessed audio for ${audioId}: ${audioMeta.reason}`)
+      return res.status(500).json({
+        error: `Audio processing failed on the server, so this take was not saved: ${audioMeta.reason || 'unknown reason'}`,
+        processed: false,
+      })
     }
+
+    logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
 
     // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
     // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
@@ -7297,15 +7309,20 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     // listenable from the start. No param = whole course (existing behaviour).
     const rawMaxSeed = parseInt(req.query.maxSeed, 10)
     const maxSeed = Number.isInteger(rawMaxSeed) && rawMaxSeed > 0 ? rawMaxSeed : null
+    // Which voice slot this script is FOR. Only matters when excludeRecorded is
+    // on: the "already recorded" pool must be that slot's own takes, since each
+    // target voice needs its own complete set. Unknown/absent → target1, the
+    // historical behaviour.
+    const role = ['target1', 'target2'].includes(req.query.role) ? req.query.role : 'target1'
 
-    logger.log(`[Recording Script] Generating interleaved script for ${courseCode}${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''}`)
+    logger.log(`[Recording Script] Generating interleaved script for ${courseCode} [${role}]${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''}`)
 
     // Run the optimizer (suppress console output)
     const originalLog = console.log
     const logs = []
     console.log = (...args) => logs.push(args.join(' '))
 
-    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded, maxSeed })
+    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded, maxSeed, role })
 
     console.log = originalLog
 
@@ -7399,6 +7416,7 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     res.json({
       courseCode,
       maxSeed,
+      role,
       totalItems: items.length,
       totalPhrases: phrases.length,
       totalDirect: directItems.length,

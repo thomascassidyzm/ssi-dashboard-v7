@@ -601,8 +601,13 @@ export function useAutocueState() {
       const baseUrl = localStorage.getItem('api_base_url') || getApiUrl()
 
       // Fetch interleaved script from optimizer endpoint, capped to seeds
-      // 1..maxSeed when the recorder link carried ?maxSeed=N.
-      const query = state.maxSeed ? `?maxSeed=${state.maxSeed}` : ''
+      // 1..maxSeed when the recorder link carried ?maxSeed=N. `role` scopes the
+      // already-recorded pruning to THIS voice slot — without it a target2
+      // recorder gets a script shortened by target1's takes.
+      const params = new URLSearchParams()
+      if (state.maxSeed) params.set('maxSeed', String(state.maxSeed))
+      if (state.selectedRole) params.set('role', state.selectedRole)
+      const query = params.toString() ? `?${params}` : ''
       const res = await fetch(
         `${baseUrl}/api/production/${courseCode}/recording-script${query}`,
         { headers: { 'ngrok-skip-browser-warning': 'true' } }

@@ -344,14 +344,21 @@ async function getAllSeeds(courseCode, maxSeed) {
 }
 
 /**
- * Existing HUMAN target1 recordings for a course — the "already in the can"
- * pool. Minority-language courses like cym build up thousands of these over
- * real recording sessions; the optimizer originally ran as if starting from
- * zero every time, which re-asked for phrases already recorded. Used to prune
- * the LEGO universe before greedy set cover runs, so the output is a GAP
- * list (what's actually still missing), not a from-scratch script.
+ * Existing HUMAN recordings for a course IN ONE VOICE SLOT — the "already in
+ * the can" pool. Minority-language courses like cym build up thousands of
+ * these over real recording sessions; the optimizer originally ran as if
+ * starting from zero every time, which re-asked for phrases already recorded.
+ * Used to prune the LEGO universe before greedy set cover runs, so the output
+ * is a GAP list (what's actually still missing), not a from-scratch script.
+ *
+ * `role` MUST scope the query. Each target voice needs its OWN complete set of
+ * recordings — they are different people and are not interchangeable for
+ * splicing. Pruning target2's script by target1's takes would hand the second
+ * recorder a short script and leave that voice permanently incomplete. This
+ * defaulted to 'target1' for every caller, which was correct only ever for the
+ * first voice.
  */
-async function getExistingHumanAudioTexts(courseCode) {
+async function getExistingHumanAudioTexts(courseCode, role = 'target1') {
   const PAGE = 1000;
   const texts = [];
   for (let from = 0; ; from += PAGE) {
@@ -359,7 +366,7 @@ async function getExistingHumanAudioTexts(courseCode) {
       .from('course_audio')
       .select('text')
       .eq('course_code', courseCode)
-      .eq('role', 'target1')
+      .eq('role', role)
       .eq('origin', 'human')
       .range(from, from + PAGE - 1);
     if (error) throw error;
@@ -374,7 +381,7 @@ async function getExistingHumanAudioTexts(courseCode) {
 // =============================================================================
 
 async function generateRecordingScript(courseCode, options = {}) {
-  const { verbose = false, excludeRecorded = false, maxSeed = null } = options;
+  const { verbose = false, excludeRecorded = false, maxSeed = null, role = 'target1' } = options;
 
   console.log(`\n🎙️  Recording Script Generator`);
   console.log(`   Course: ${courseCode}`);
@@ -511,8 +518,8 @@ async function generateRecordingScript(courseCode, options = {}) {
   let coverUniverse = universeKeys;
   let alreadyCoveredCount = 0;
   if (excludeRecorded) {
-    if (verbose) console.log('\n🎧 Checking existing human recordings...');
-    const existingTexts = await getExistingHumanAudioTexts(courseCode);
+    if (verbose) console.log(`\n🎧 Checking existing human recordings for ${role}...`);
+    const existingTexts = await getExistingHumanAudioTexts(courseCode, role);
     const alreadyCovered = new Set();
     for (const text of existingTexts) {
       const words = tokenize(text);
@@ -568,6 +575,7 @@ async function generateRecordingScript(courseCode, options = {}) {
     courseCode,
     generatedAt: new Date().toISOString(),
     maxSeed,
+    role,
 
     statistics: {
       totalLegos,
@@ -705,9 +713,11 @@ Examples:
   const outputFile = outputIdx !== -1 ? args[outputIdx + 1] : null;
   const maxSeedIdx = args.indexOf('--max-seed');
   const maxSeed = maxSeedIdx !== -1 ? parseInt(args[maxSeedIdx + 1], 10) : null;
+  const roleIdx = args.indexOf('--role');
+  const role = roleIdx !== -1 ? args[roleIdx + 1] : 'target1';
 
   try {
-    const result = await generateRecordingScript(courseCode, { verbose, excludeRecorded, maxSeed });
+    const result = await generateRecordingScript(courseCode, { verbose, excludeRecorded, maxSeed, role });
 
     if (result && outputFile) {
       const outputPath = path.resolve(outputFile);
