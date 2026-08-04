@@ -8,12 +8,29 @@ Type=simple
 WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
 Environment=NODE_OPTIONS=--max-old-space-size=4096
 Environment=COURSE_BUILDER_PORT=3471
+# watson-1 is LINUX. Every agent-spawn route defaults to
+# `ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal` with terminal
+# defaulting to 'iTerm2' (services/course-builder/lib/agent-spawner.cjs:30),
+# which shells out to `osascript` — a macOS binary that does not exist here.
+# Without this, EVERY dashboard-triggered agent dies instantly with
+# "spawn osascript ENOENT" and the Terminal.app fallback fails the same way.
+# That is what actually stopped the 2026-08-04 nld_for_eng component backfill.
+Environment=SPAWN_MODE=headless
 ExecStart=/usr/bin/node services/course-builder-api.cjs
 Restart=always
 RestartSec=5
 # See the note in popty-production-api.service — prefer killing a restartable
 # service over the user manager that supervises it.
 OOMScoreAdjust=500
+# THIS is the service that spawns production/backfill agents
+# (services/course-builder/lib/agent-spawner.cjs:40, services/course-builder/routes/v2.cjs).
+# Those spawns already use detached:true + unref(), which gives them their own
+# PROCESS GROUP — but that does NOT get them out of this unit's CGROUP, and
+# systemd's default KillMode=control-group kills the whole cgroup on stop or
+# restart. Result: restarting this unit murders every in-flight agent, which is
+# exactly what happened to the nld_for_eng backfill on 2026-08-04.
+# KillMode=process kills only the main node process and leaves agents running.
+KillMode=process
 StandardOutput=append:/home/tomcassidy/.local/log/popty-course-builder-api.log
 StandardError=append:/home/tomcassidy/.local/log/popty-course-builder-api.log
 

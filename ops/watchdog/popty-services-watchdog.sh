@@ -56,3 +56,6 @@ check() {
 
 check popty-production-api 3470
 check popty-course-builder-api 3471
+# 3465 is not optional: /api/production/:course/audio-stats calls phase 8's
+# /needs and 500s outright when it is down. See the 2026-08-04 incident doc.
+check popty-phase8-audio 3465

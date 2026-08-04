@@ -487,3 +487,30 @@ watchdog (dies with the manager, so it cannot cover the actual failure); PM2 (a 
 to keep alive, no better against OOM).
 **Search width:** visible-options
 **Decided by:** agent (reversible ops change, no spend)
+
+---
+
+## 2026-08-04 (follow-up) — supervise phase 8, and make Linux agent spawning actually work
+
+**Move:** added `ops/systemd/popty-phase8-audio.service` (port 3465), extended the watchdog to
+cover it, set `KillMode=process` on all three units, set `SPAWN_MODE=headless` on course-builder,
+and replaced an empty `{"error":""}` with a named error. Detail in
+`docs/incident-popty-api-outage-2026-08-04.md`.
+**Better:** `/audio-stats` 500'd because it hard-depends on phase 8's `/needs` and phase 8 was
+never running on watson-1 — supervising it fixes the endpoint rather than papering over the
+symptom. Separately, `SPAWN_MODE` being unset meant every dashboard-triggered agent on this Linux
+box died instantly with `spawn osascript ENOENT` (a macOS-only path); one env line restores the
+whole spawn surface, not just the backfill that surfaced it.
+**Simpler:** one more unit file in the shape of the existing two, one extra `check` line in the
+watchdog, one `Environment=` line. No new abstraction and no code change to the spawn logic.
+**Cheaper (total):** one extra health curl per 2 minutes. Against that: agents that silently
+never start, and a 500 whose error body was the empty string, both cost far more in diagnosis time
+than they look like they should.
+**Searched & rejected:** making `getDirectAudioStats` degrade gracefully when phase 8 is down
+(rejected — the pending count would silently disagree with what `/generate` actually processes,
+which is the exact drift the `/needs` call was introduced to remove; a loud 500 naming the dead
+dependency is more honest); patching `agent-spawner.cjs` to detect Linux and force headless
+(rejected for now — the env var is the existing, intended switch, and changing shared spawn logic
+under a live dashboard is a bigger blast radius than a unit-file line).
+**Search width:** visible-options
+**Decided by:** agent (reversible ops change, no spend)

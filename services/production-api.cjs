@@ -3513,9 +3513,17 @@ app.get('/api/production/:courseCode/audio-metadata', async (req, res) => {
 })
 
 // =============================================================================
-// Shared helper: Calculate audio stats directly from Supabase (no Phase 8 needed)
+// Shared helper: Calculate audio stats from Supabase PLUS phase 8's /needs.
 // Used by /audio-stats, /audio-pipeline/plan, and /audio-pipeline/missing
 // Cached in-memory for 60s per course — invalidated on audio generation events
+//
+// HARD DEPENDENCY on phase 8 (port 3465): the pending count comes from phase 8's
+// /needs so the dashboard number matches exactly what /generate would process.
+// If 3465 is down this throws ECONNREFUSED and every caller 500s — that was the
+// 2026-08-04 audio-stats outage. 3465 is supervised by
+// ops/systemd/popty-phase8-audio.service and health-checked by the watchdog.
+// (The comment here used to claim "no Phase 8 needed"; that stopped being true
+// when the /needs call was introduced as the single source of truth.)
 // =============================================================================
 const _audioStatsCache = new Map() // courseCode → { data, expiry }
 const AUDIO_STATS_CACHE_TTL = 5_000 // 5 seconds — short because Phase 8 linking can change counts between requests
@@ -3569,7 +3577,20 @@ async function getDirectAudioStats(courseCode) {
   // Single source of truth: phase 8's /needs endpoint, which uses getAudioNeeds().
   // This is the same function /generate uses to decide what to TTS, so the
   // dashboard's "Pending" number now matches what Generate will process exactly.
-  const phase8Resp = await proxyToPhase8('GET', `/needs/${courseCode}`)
+  // A bare ECONNREFUSED here surfaces as AggregateError with an EMPTY .message,
+  // so the endpoint used to answer {"error":""} — true but useless. Name the
+  // dependency instead; that is the whole diagnosis.
+  let phase8Resp
+  try {
+    phase8Resp = await proxyToPhase8('GET', `/needs/${courseCode}`)
+  } catch (err) {
+    const reason = err?.code || err?.errors?.[0]?.code || err?.message || 'unknown error'
+    throw new Error(
+      `phase 8 audio service (localhost:3465) is unreachable (${reason}) — ` +
+      `audio stats cannot be computed without it. ` +
+      `Check: systemctl --user status popty-phase8-audio`
+    )
+  }
   if (phase8Resp.status >= 400) {
     throw new Error(`phase8 /needs failed (${phase8Resp.status}): ${JSON.stringify(phase8Resp.data)}`)
   }

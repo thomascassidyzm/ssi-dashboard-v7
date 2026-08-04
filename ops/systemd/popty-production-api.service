@@ -19,6 +19,12 @@ RestartSec=5
 # API stayed down. Make these services the preferred OOM victim over the
 # manager: they come back on their own, the manager does not.
 OOMScoreAdjust=500
+# Agents are spawned by course-builder (3471), not here, but this service does
+# shell out (services/production-api.cjs:10537). Don't let a restart kill
+# long-running children — see the fuller note in
+# popty-course-builder-api.service: detached:true is NOT enough on its own,
+# because a detached child stays inside this unit's cgroup.
+KillMode=process
 StandardOutput=append:/home/tomcassidy/.local/log/popty-production-api.log
 StandardError=append:/home/tomcassidy/.local/log/popty-production-api.log
 

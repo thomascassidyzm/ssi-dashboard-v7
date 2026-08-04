@@ -1,0 +1,24 @@
+[Unit]
+Description=Popty Phase 8 Audio Generator (watson-1)
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
+Environment=NODE_OPTIONS=--max-old-space-size=4096
+Environment=PHASE8_PORT=3465
+ExecStart=/usr/bin/node services/phases/phase8-audio-v13.cjs
+Restart=always
+RestartSec=5
+# See popty-production-api.service — prefer killing a restartable service over
+# the user manager that supervises it.
+OOMScoreAdjust=500
+# Phase 8 shells out to long-running TTS/generation work. Do not let a restart
+# of this unit kill in-flight children.
+KillMode=process
+StandardOutput=append:/home/tomcassidy/.local/log/popty-phase8-audio.log
+StandardError=append:/home/tomcassidy/.local/log/popty-phase8-audio.log
+
+[Install]
+WantedBy=default.target
