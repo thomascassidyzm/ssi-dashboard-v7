@@ -61,6 +61,13 @@ have found either.
 
 ## What is still broken
 
+> Items 1 and 3 below are **superseded by `FOLLOWUP.md`** (2026-08-04). Both
+> premises were wrong: the presentation clip is an unlinked orphan whose *text*
+> is defective, and the Croatian voice ids are alive — the repair tool was
+> mis-routing them to xAI. Read FOLLOWUP.md before acting on either. It also
+> carries the finding that outranks both: **4,739 live presentation clips play
+> an intro with an empty example sentence.**
+
 - **1 `presentation`-role clip** (eng_for_tel) is unrepaired and that is
   correct. `repair-silent-clips.cjs` refuses the role on purpose:
   `lego_introductions.presentation_audio_id` is CASCADE, so minting a new id
