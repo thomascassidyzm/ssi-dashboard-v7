@@ -1,0 +1,34 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+SKIPPING 45 pod clip(s): pod links live in listening_pod_sentences — that is tools/rescue-wrong-language-clips.cjs's job, not this one.
+
+repair-silent-clips — hrv_for_eng
+6 clips to repair (--only all, --limit 6)
+   suspect: 6
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[Phase8-Audio-v13] masterAudio: tail rise -6.3dB repaired in 1 pass(es) at 1.398s
+[2/6] known "I work at the hospital.": FAILED — tail defect (rise -6.9dB) still detected (burst -0.7dB) after 3 repair passes — refusing to ship
+[1/6] known "I've been here for two years.": 336ms -> 1498ms (-16.4dB), 0 links -> 5AD1D26C-D067-4CFE-A0D6-FB0C8AC0ED3E
+[3/6] known "Here it is.": 312ms -> 888ms (-17.2dB), 0 links -> 7174203A-5C9D-4A67-AA4F-B40533C12E69
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 2 pass(es) at 1.364s
+[Phase8-Audio-v13] masterAudio: tail resurgence -7.9dB repaired in 2 pass(es) at 0.748s
+[4/6] known "And what would you like to drink?": 288ms -> 1344ms (-16.6dB), 0 links -> 4513393E-9703-4280-AF6A-939629687F88
+[Phase8-Audio-v13] masterAudio: tail rise -9.8dB repaired in 2 pass(es) at 2.15s
+[5/6] known "Twelve o'clock.": 264ms -> 744ms (-16.5dB), 0 links -> 4846DBCD-2C9C-4CAE-9612-0DB47E7334F4
+[6/6] known "I think you're doing much better than you: 312ms -> 1976ms (-16.4dB), 0 links -> BD0A52F1-DC42-4707-B3FC-36441DC51974
+[Version] hrv_for_eng: 0.568.231 → 0.568.232 (patch)
+[Version] hrv_for_eng: integer version 64 → 65 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+5 repaired, 0 left alone (probe says healthy), 1 failed, of 6.
+5 renders, 138 characters of TTS.
+xAI health this run: 6 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-hrv_for_eng-6.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

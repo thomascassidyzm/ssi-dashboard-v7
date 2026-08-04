@@ -1,0 +1,86 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+SKIPPING 45 pod clip(s): pod links live in listening_pod_sentences — that is tools/rescue-wrong-language-clips.cjs's job, not this one.
+
+repair-silent-clips — hrv_for_eng
+35 clips to repair (--only all)
+   suspect: 35
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[1/35] known "I've been here for two years.": gone (already repaired?) — skip
+[3/35] known "Here it is.": gone (already repaired?) — skip
+[4/35] known "And what would you like to drink?": gone (already repaired?) — skip
+[5/35] known "Twelve o'clock.": gone (already repaired?) — skip
+[6/35] known "I think you're doing much better than you: gone (already repaired?) — skip
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.3dB repaired in 1 pass(es) at 0.938s
+[Phase8-Audio-v13] masterAudio: tail resurgence -6.2dB repaired in 2 pass(es) at 0.486s
+[Phase8-Audio-v13] masterAudio: tail resurgence -19.4dB repaired in 1 pass(es) at 1.598s
+[7/35] known "I really appreciate your help.": 312ms -> 1698ms (-16.1dB), 0 links -> B8D8E7F4-0536-4D09-A97B-604A526229C4
+[2/35] known "I work at the hospital.": 360ms -> 1038ms (-16dB), 0 links -> 37E09B60-EF98-4C3D-AF39-F293021D0B8E
+[8/35] known "Black.": 288ms -> 510ms (-17.9dB), 0 links -> 620AF6A4-21B9-4644-A9C4-847061695269
+[Phase8-Audio-v13] masterAudio: tail rise -12.2dB repaired in 1 pass(es) at 1.444s
+[11/35] target1 "I'd like a coffee, please.": healthy (1368ms vs fresh 1440ms) — left alone
+[10/35] target1 "I hope you have a good day.": healthy (1416ms vs fresh 1544ms) — left alone
+[9/35] known "Orange.": 312ms -> 744ms (-16.4dB), 0 links -> A08A34F6-5A3C-4D81-9D71-2896081AF896
+[Phase8-Audio-v13] masterAudio: tail rise -6.4dB repaired in 1 pass(es) at 1.434s
+[13/35] target1 "But let's talk on Saturday.": healthy (1440ms vs fresh 1534ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail burst -19.9dB repaired in 1 pass(es) at 1.956s
+[12/35] target1 "I'm sorry, but I can't talk right now.": healthy (2184ms vs fresh 2056ms) — left alone
+[14/35] target1 "Did you have a long day?": healthy (1272ms vs fresh 1392ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail rise -6.2dB repaired in 1 pass(es) at 0.796s
+[15/35] target1 "Pleased to meet you.": healthy (1008ms vs fresh 896ms) — left alone
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[18/35] target1 "Kako zanimljivo. Pa, drago mi je što smo : FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[Phase8-Audio-v13] masterAudio: tail rise -22.8dB repaired in 2 pass(es) at 2.31s
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'FGY2WhTYpPnrIDTdsKH5' not found"}
+[19/35] target1 "Mogu li dobiti dvije bijele kave i dvije : FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'FGY2WhTYpPnrIDTdsKH5' not found"}
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[20/35] target1 "Otprilike koliko dugo mislite da će treba: FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[21/35] target1 "Možemo li vidjeti vinsku kartu?": FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[17/35] known "It may take a little while, there's a lot: FAILED — tail defect (resurgence -4.9dB) still detected (resurgence -1.5dB) after 3 repair passes — refusing to ship
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[22/35] target1 "Pa, drago mi je što smo se upoznali.": FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[16/35] known "I teach English, but not in a school.": 1344ms -> 2156ms (-16.4dB), 0 links -> 9B36A783-CE91-4A80-A679-6E8784C2F873
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[24/35] target1 "Mogu li vidjeti osobnu iskaznicu ili puto: FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[25/35] target1 "Soba se nalazi na trećem katu, soba sedam: FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[26/35] target1 "Ne osjećam se baš dobro — možete li mi ne: FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[27/35] target1 "Možete li me odvesti do kolodvora, molim?: FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'FGY2WhTYpPnrIDTdsKH5' not found"}
+[23/35] target1 "Jeste li ovdje na odmoru?": FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'FGY2WhTYpPnrIDTdsKH5' not found"}
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[28/35] target1 "Ali znam da moram nastaviti vježbati ako : FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[29/35] target1 "Nisam siguran što da kažem, ali osjećam k: FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[Phase8-Audio-v13] masterAudio: tail rise -18.2dB repaired in 1 pass(es) at 2.174s
+[Phase8-Audio-v13] masterAudio: tail rise -10.6dB repaired in 1 pass(es) at 2.554s
+[Phase8-Audio-v13] masterAudio: tail rise -6.8dB repaired in 2 pass(es) at 1.832s
+[30/35] known "I'm sorry, but I can't talk right now.": healthy (1560ms vs fresh 1894ms) — left alone
+[31/35] known "I teach English, but not in a school.": 1248ms -> 2274ms (-16.3dB), 0 links -> 80011930-7349-43D7-A928-FA81400DF6A5
+[32/35] known "I'm not feeling great — could you recomme: 1656ms -> 2654ms (-16.2dB), 0 links -> DC133C3A-8560-47F8-8B86-79246F5B02F2
+[TTS] Attempt 1/3 failed (fatal): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[35/35] target1 "Ne učim ga jako dugo, i još se uvijek osj: FAILED — TTS generation failed (non-retriable): xAI TTS API error (404): {"error":"TTS synthesis failed: Voice 'EXAVITQu4vr4xnSDxMaL' not found"}
+[Phase8-Audio-v13] masterAudio: tail resurgence -4.2dB repaired in 2 pass(es) at 1.184s
+[33/35] known "You've been very helpful.": 408ms -> 1236ms (-16.3dB), 0 links -> 22BDE66F-D2A3-4C54-9F72-1B8B9E056EF1
+[Phase8-Audio-v13] masterAudio: tail rise -7.9dB repaired in 2 pass(es) at 2.8s
+[34/35] known "I think I can feel it changing my brain w: healthy (2064ms vs fresh 2642ms) — left alone
+[Version] hrv_for_eng: 0.568.232 → 0.568.233 (patch)
+[Version] hrv_for_eng: integer version 65 → 66 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+8 repaired, 8 left alone (probe says healthy), 14 failed, of 35.
+16 renders, 479 characters of TTS.
+xAI health this run: 17 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-hrv_for_eng-35.json
+
+[Azure TTS] Closing connection pool (0 total connections)...
