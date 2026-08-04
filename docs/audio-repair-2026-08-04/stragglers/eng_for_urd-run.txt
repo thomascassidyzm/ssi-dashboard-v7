@@ -1,0 +1,27 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+
+repair-silent-clips — eng_for_urd
+2 clips to repair (--only all)
+   confirmed: 2
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[Phase8-Audio-v13] masterAudio: tail flag (burst -0.2dB at 0.342s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.3dB repaired in 2 pass(es) at 0.474s
+[1/2] target2 "black": 288ms -> 506ms (-18.3dB), 1 link -> 810859F0-9E76-4241-A7C7-22F71364B579
+[2/2] target1 "bought": 192ms -> 528ms (-16.4dB), 2 links -> 5956B376-ABA2-4E6D-BE5B-CFDDD2BDB5A8
+[Version] eng_for_urd: 0.765.6 → 0.765.7 (patch)
+[Version] eng_for_urd: integer version 1295 → 1296 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+2 repaired, 0 left alone (probe says healthy), 0 failed, of 2.
+2 renders, 11 characters of TTS.
+xAI health this run: 2 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-eng_for_urd-2.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

@@ -1,0 +1,25 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+
+repair-silent-clips — eng_for_pan
+1 clip to repair (--only all)
+   confirmed: 1
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -5.1dB at 0.412s) is resumed speech — pausey render shipped untouched
+[1/1] target2 "black": 288ms -> 672ms (-18.6dB), 1 link -> 2077584C-302B-4126-80CD-DA405CB888FA
+[Version] eng_for_pan: 0.891.6 → 0.891.7 (patch)
+[Version] eng_for_pan: integer version 1529 → 1530 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+1 repaired, 0 left alone (probe says healthy), 0 failed, of 1.
+1 render, 5 characters of TTS.
+xAI health this run: 1 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-eng_for_pan-1.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

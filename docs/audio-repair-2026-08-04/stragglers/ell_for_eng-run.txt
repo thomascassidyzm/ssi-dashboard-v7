@@ -1,0 +1,25 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+
+repair-silent-clips — ell_for_eng
+1 clip to repair (--only all)
+   confirmed: 1
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[Phase8-Audio-v13] masterAudio: tail rise -10.4dB repaired in 1 pass(es) at 0.61s
+[1/1] known "Here it is.": 336ms -> 710ms (-15.9dB), 0 links -> 232C3BB2-BC88-45C3-8FE7-8857A3C3DA0E
+[Version] ell_for_eng: 0.407.638 → 0.407.639 (patch)
+[Version] ell_for_eng: integer version 960 → 961 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+1 repaired, 0 left alone (probe says healthy), 0 failed, of 1.
+1 render, 11 characters of TTS.
+xAI health this run: 1 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-ell_for_eng-1.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

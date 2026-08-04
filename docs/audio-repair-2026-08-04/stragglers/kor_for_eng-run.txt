@@ -1,0 +1,26 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+
+repair-silent-clips — kor_for_eng
+1 clip to repair (--only all)
+   confirmed: 1
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[Phase8-Audio-v13] masterAudio: tail rise -23.5dB repaired in 1 pass(es) at 4.28s
+[1/1] target1 "지금 아내와 아이들과 함께 여기에서 휴가를 보내고 있어요.": 336ms -> 4380ms (-16.3dB), 0 links -> 23AC718A-8970-4005-8FF1-7153263DFC6B
+[Version] kor_for_eng: 0.534.0 → 0.534.1 (patch)
+[Version] kor_for_eng: integer version 2584 → 2585 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+1 repaired, 0 left alone (probe says healthy), 0 failed, of 1.
+1 render, 32 characters of TTS.
+xAI health this run: 1 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-kor_for_eng-1.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

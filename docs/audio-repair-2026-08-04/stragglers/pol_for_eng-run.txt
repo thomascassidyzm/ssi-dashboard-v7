@@ -1,0 +1,26 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+
+repair-silent-clips — pol_for_eng
+2 clips to repair (--only all)
+   confirmed: 2
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[2/2] known "I need to go home now.": 384ms -> 1392ms (-15.5dB), 0 links -> 99976AA9-1706-4B52-9CF5-747E8A8B8A6D
+[1/2] target1 "Proszę bardzo.": 384ms -> 888ms (-17.2dB), 0 links -> F1773E6A-3853-4CE3-A157-E1DD8DA7B27F
+[Version] pol_for_eng: 0.1698.33 → 0.1698.34 (patch)
+[Version] pol_for_eng: integer version 54 → 55 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+2 repaired, 0 left alone (probe says healthy), 0 failed, of 2.
+2 renders, 36 characters of TTS.
+xAI health this run: 2 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-pol_for_eng-2.json
+
+[Azure TTS] Closing connection pool (0 total connections)...
