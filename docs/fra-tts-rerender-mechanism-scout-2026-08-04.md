@@ -315,3 +315,52 @@ PATH. So non-English xAI renders here are unchecked for language drift (it logs 
 - **567/75 vs measured 468/72**: discrepancy reported, not reconciled.
 - **S3 object bytes** not fetched (would confirm the 2,016-byte signature per row);
   `file_size_bytes` is NULL for all 542 rows so the DB cannot answer it.
+
+---
+
+## 8. Addendum — two independent worker traces (2026-08-04)
+
+Two read-only workers verified §4/§5 independently. Both agree with this memo. Deltas:
+
+**Line-number basis.** The provider-path worker read `services/tts-service.cjs` at **HEAD**
+(`generateWithRetry:499`, `generateXai:265`, `isRetriableTtsError:376`, xAI semaphore `:51`),
+whereas §5 above cites the **working tree** (+145 uncommitted lines, so everything below the gate
+shifts by ~124: `generateWithRetry:650`, `generateXai:407`). Both are correct for their base.
+The `+124` offset is itself the evidence that the guard is unlanded.
+
+**Confirmations.**
+- Six non-pod xAI dispatch sites in `phase8-audio-v13.cjs` — `:2047, :2495, :3846, :4054, :4355,
+  :4752` — each inside an `if/else if/else throw` provider dispatch with **no surrounding
+  try/catch that re-dispatches**. An xAI failure propagates up; it cannot become an Azure render.
+- `generatePodAudio:5586-5607` is the sole runtime provider fallback, and it is reachable from
+  exactly three callers, all pod-shaped: `phase8-audio-v13.cjs:5841`,
+  `services/run-pod-explainer-batch.cjs:417`, and
+  `services/production-api.cjs:3969-3985` (whose own comment advertises the inherited fallback).
+  Disabling the one catch block removes it everywhere.
+- `tools/breakdown-flat.cjs:41,115-117` assigns Azure **at build time** for languages xAI doesn't
+  officially cover. Not failure-triggered, not on this path — a policy site, not a fallback.
+- xAI sends **no `model` field** (`generateXai` body); auth is `XAI_API_KEY` only; the response is
+  consumed as raw bytes with no inspection at HEAD.
+
+**New facts.**
+- `services/voice-config-service.cjs:435` `buildTTSConfig` passes the **bare** `voiceId`
+  (`'leo'`, `'eve'`) to the provider — confirming §3c's diagnosis from the other end: nothing in
+  the config layer ever produces the `xai_` prefix. Only `/generate`'s local helper
+  (`phase8-audio-v13.cjs:1710`) composes it, which is why the two paths disagree.
+  `ensureVoiceRegistered:189-245` likewise registers the bare id.
+- `courses.fra_for_eng`: `version = 2310`, `content_version = 0.754.13`,
+  `content_stamp = 2026-08-04T10:19:19Z`, `updated_at = 2026-08-04T10:19:27Z`, `status = released`,
+  `new_app_status = beta`, `seed_count = 668`.
+- `role=known` carries **six** distinct voice_ids historically — `xai_eve` (13,060), `eve` (117),
+  `leo` (115: 65 `en-GB` + 50 `eng`), `bedd6226` (17), `gfzdpspr5fdp` (5), `f15c6a6a` (1).
+  The 115 `leo` known-role rows are unexplained legacy; none of them is a stub, so they are out
+  of scope for this re-render, but they are why the "known was rendered by leo" premise arose.
+- `known` language column splits `eng` (13,183) / `en-GB` (132). **All 72 stubs are `eng`.**
+
+**Tested prediction — the bare-voice_id rewrite fails silently, not loudly.** Simulated the
+`/regenerate-role` UPDATE against the live table: rewriting each of the 514 target2+known stub
+rows' `voice_id` to the bare config value produces **zero** `unique_course_audio_per_voice`
+collisions. So the run would not error. It would simply leave target2 split
+13,173 `xai_leo` / 468 `leo`, and known split 13,060 → 12,988 `xai_eve` / 72 `eve` — silent
+identity drift that only shows up later, in the sharing lookup (`:1963`) and the human-key guard
+(`:211`). This is the argument for fixing the voice_id composition **before** the run, not after.
