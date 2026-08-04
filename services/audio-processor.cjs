@@ -605,6 +605,40 @@ async function verifyTrimKeepsText(audioPath, trimSec, text, language) {
  *
  * @returns {Promise<{defect: null} | {defect: object, action: 'held'|'repaired', outPath?: string, passes?: number, verify?: object, residualSpeechFlag?: object}>}
  */
+/** Mean level of a file via ffmpeg volumedetect. null = unmeasurable. */
+async function meanLevelDb(filePath) {
+  const { stdout, stderr } = await execAsync(
+    `ffmpeg -hide_banner -nostats -i "${filePath}" -af volumedetect -f null - 2>&1 || true`,
+    { shell: '/bin/bash' }
+  ).catch(e => ({ stdout: e.stdout || '', stderr: e.stderr || '' }));
+  const m = /mean_volume:\s*(-?[\d.]+) dB/.exec(`${stdout}${stderr}`);
+  return m ? parseFloat(m[1]) : null;
+}
+
+/**
+ * AMPUTATION GUARD — pure DSP, no whisper.
+ *
+ * verifyTrimKeepsText is the designed guard against a trim that eats speech, but
+ * it is whisper-based and returns null when whisper-cli or its model is absent,
+ * and a null is treated as "proceed". On a host without whisper the guard is
+ * therefore silently OFF, and the tail repair will happily amputate.
+ *
+ * Measured 2026-08-04 on a Linux box with no whisper: the word "weak" rendered
+ * healthily by xAI (648 ms, -16 dB after normalisation) came out of
+ * repairTailDefect as 100 ms of -91 dB SILENCE. The 'rise' rule fires on a
+ * single short word, and each repair pass walks the cut point further back until
+ * the whole word is gone and only the 0.1 s pad remains. That is the mastering
+ * chain MANUFACTURING a silent clip from a good render — the same artefact class
+ * as the 2026-08-03 batch, arriving by a completely different route.
+ *
+ * These two checks need no model and no network: a repair may not throw away
+ * most of the clip, and it may not leave silence behind. Either way we HOLD —
+ * shipping a clip with an audible tail click is a small defect; shipping silence
+ * is a total one.
+ */
+const AMPUTATION_MIN_KEEP_FRACTION = Number(process.env.TAIL_REPAIR_MIN_KEEP || 0.5);
+const AMPUTATION_SILENCE_DB = Number(process.env.TAIL_REPAIR_SILENCE_DB || -60);
+
 async function repairTailDefect(inputPath, workDir, { text, language, mode, minKeepSec = 0 } = {}) {
   const tailMode = mode || (isLongformText(text) ? 'longform' : 'phrase');
   const det = await detectTailClick(inputPath, { mode: tailMode });
@@ -614,6 +648,16 @@ async function repairTailDefect(inputPath, workDir, { text, language, mode, minK
   }
   const v0 = await verifyTrimKeepsText(inputPath, det.trimSec, text, language);
   if (v0 && !v0.ok) return { defect: det, action: 'held', verify: v0 };
+
+  // How much of the clip a cut would keep — the model-free half of the guard.
+  const inputMeta = await getAudioMetadata(inputPath).catch(() => null);
+  const inputDuration = inputMeta && inputMeta.duration ? inputMeta.duration : null;
+  const wouldAmputate = (cut) =>
+    inputDuration ? cut < AMPUTATION_MIN_KEEP_FRACTION * inputDuration : false;
+  if (wouldAmputate(det.trimSec)) {
+    return { defect: det, action: 'held', amputationGuard: { cutSec: det.trimSec, durationSec: inputDuration } };
+  }
+
   let fixed = inputPath;
   let cutAt = det.trimSec;
   for (let pass = 0; pass < 3; pass++) {
@@ -623,8 +667,18 @@ async function repairTailDefect(inputPath, workDir, { text, language, mode, minK
         + 'areverse,afade=t=in:st=0:d=0.008,areverse,apad=pad_dur=0.1',
     });
     fixed = next;
+
+    // Never ship a "repair" that left silence behind (see AMPUTATION GUARD).
+    const level = await meanLevelDb(fixed);
+    if (level !== null && level < AMPUTATION_SILENCE_DB) {
+      return { defect: det, action: 'held', amputationGuard: { meanDb: level, passes: pass + 1 } };
+    }
+
     const recheck = await detectTailClick(fixed, { mode: tailMode });
     if (!recheck.click) return { defect: det, action: 'repaired', outPath: fixed, passes: pass + 1 };
+    if (wouldAmputate(recheck.trimSec)) {
+      return { defect: det, action: 'held', amputationGuard: { cutSec: recheck.trimSec, durationSec: inputDuration, passes: pass + 1 } };
+    }
     const rv = await verifyTrimKeepsText(fixed, recheck.trimSec, text, language);
     if (rv && !rv.ok) {
       return { defect: det, action: 'repaired', outPath: fixed, passes: pass + 1, residualSpeechFlag: recheck };

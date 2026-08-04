@@ -70,6 +70,7 @@ const { createClient } = require('@supabase/supabase-js')
 const ttsService = require('../services/tts-service.cjs')
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const { toBcp47 } = require('../services/voice-discovery-service.cjs')
+const { bumpCourseVersion, bumpCourseRevalidation } = require('../services/shared/course-version.cjs')
 const { isHumanVoiceCourse } = require('../services/shared/human-voice-courses.cjs')
 
 const argv = process.argv.slice(2)
@@ -296,6 +297,18 @@ async function restoreLinks(links, newId, durationMs) {
     }
   }
   try { fs.rmSync(tmpDir, { recursive: true, force: true }) } catch {}
+
+  // Every repaired clip has a NEW id, so any client holding a cached script
+  // still points at ids that no longer exist — which would turn silence into a
+  // 404, a strictly worse outcome. Bumping the integer revalidation key is what
+  // makes the learning app refetch its metadata and pick up the new ids; the
+  // same pair of calls closes /generate and /regenerate-role
+  // (phase8-audio-v13.cjs:2186-2192, :2685-2691).
+  if (repaired > 0) {
+    await bumpCourseVersion(supabase, COURSE, 'patch')
+    await bumpCourseRevalidation(supabase, COURSE)
+    console.log(`course version + revalidation key bumped — clients will refetch the new audio ids.`)
+  }
 
   const logPath = `/tmp/repair-${COURSE}-${jobs.length}.json`
   fs.writeFileSync(logPath, JSON.stringify(log, null, 2))
