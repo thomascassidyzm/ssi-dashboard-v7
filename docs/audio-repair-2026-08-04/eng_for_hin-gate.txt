@@ -1,0 +1,50 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+
+audio batch gate — eng_for_hin
+51279 clips in scope
+
+[1] duration screen (free): 113 flagged
+      floor  108
+      ratio  5
+      fingerprint: 144ms x76, 168ms x22, 384ms x4
+
+[2] speech-rate screen (free): 108 suspect
+      pod_explainer/leo            71
+      known/eve                    13
+      target1/xai_bedd6226         12
+      target2/xai_gfzdpspr5fdp     11
+      target1/bedd6226             1
+
+[3] loudness check: measuring 221 clips (the screened ones)
+  measured: 100/221  measured: 200/221      100 silent, 0 unmeasurable (treated as pass)
+
+RESULT: 100 confirmed + 121 suspect, of 51279 clips (0.43%)
+
+  CONFIRMED (silent — replace): 100
+     known/eve                    99
+     target1/xai_bedd6226         1
+        144 ms  floor   "एक"                                           144 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "वाक्य"                                        144 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "अच्छी"                                        144 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "बोलते"                                        144 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "क्या आप"                                      144 ms < 400 ms; mean -91 dB, peak -91 dB
+        168 ms  floor   "चाहता"                                        168 ms < 400 ms; mean -91 dB, peak -84.3 dB
+
+  SUSPECT (audible — probe before replacing): 121
+     pod_explainer/leo            71
+     known/eve                    21
+     target1/xai_bedd6226         12
+     target2/xai_gfzdpspr5fdp     11
+     target2/gfzdpspr5fdp         5
+     target1/bedd6226             1
+        288 ms  floor   "अपने आप को"                                   288 ms < 400 ms
+        384 ms  floor   "आपने"                                         384 ms < 400 ms
+        384 ms  floor   "करते"                                         384 ms < 400 ms
+        360 ms  floor   "अपनी"                                         360 ms < 400 ms
+        720 ms  ratio   "perfect"                                      720 ms vs target1 1656 ms
+       1368 ms  ratio   "to work as a teacher"                         1368 ms vs target1 2784 ms
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/eng_for_hin-gate.json
+

@@ -1,0 +1,46 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  override existing env vars with { override: true }
+
+audio batch gate — zho_for_hin
+39461 clips in scope
+
+[1] duration screen (free): 143 flagged
+      floor  135
+      ratio  8
+      fingerprint: 144ms x85, 168ms x32, 192ms x15
+
+[2] speech-rate screen (free): 68 suspect
+      known/xai_eve                38
+      target2/xai_leo              27
+      target1/xai_ara              3
+
+[3] loudness check: measuring 211 clips (the screened ones)
+  measured: 100/211  measured: 200/211      135 silent, 0 unmeasurable (treated as pass)
+
+RESULT: 135 confirmed + 76 suspect, of 39461 clips (0.53%)
+
+  CONFIRMED (silent — replace): 135
+     known/xai_eve                94
+     target2/xai_leo              26
+     target1/xai_ara              15
+        168 ms  floor   "कल क्या"                                      168 ms < 400 ms; mean -91 dB, peak -91 dB
+        168 ms  floor   "आप क्यों"                                     168 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "आपसे कुछ"                                     144 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "क्या कुछ"                                     144 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "रोकना"                                        144 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "हफ़्ता"                                       144 ms < 400 ms; mean -91 dB, peak -91 dB
+
+  SUSPECT (audible — probe before replacing): 76
+     known/xai_eve                38
+     target2/xai_leo              35
+     target1/xai_ara              3
+        816 ms  ratio   "我们现在该走了"                                      816 ms vs target1 1656 ms
+        720 ms  ratio   "这现在不行。"                                       720 ms vs target1 1488 ms
+        528 ms  ratio   "忘了词"                                          528 ms vs target1 1080 ms
+        552 ms  ratio   "他能继续"                                         552 ms vs target1 1176 ms
+        720 ms  ratio   "我觉得她够不到"                                      720 ms vs target1 1488 ms
+        552 ms  ratio   "他还站着"                                         552 ms vs target1 1128 ms
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/zho_for_hin-gate.json
+

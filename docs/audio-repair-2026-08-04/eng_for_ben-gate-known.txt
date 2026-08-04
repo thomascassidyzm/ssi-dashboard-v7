@@ -1,0 +1,40 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ✅ audit secrets and track compliance: https://dotenvx.com/ops
+
+audio batch gate — eng_for_ben roles=known
+12254 clips in scope
+
+[1] duration screen (free): 160 flagged
+      floor  160
+      fingerprint: 144ms x109, 168ms x39, 360ms x4
+
+[2] speech-rate screen (free): 36 suspect
+      known/eve                    36
+
+[3] loudness check: measuring 196 clips (the screened ones)
+  measured: 100/196      149 silent, 0 unmeasurable (treated as pass)
+
+RESULT: 149 confirmed + 47 suspect, of 12254 clips (1.60%)
+
+  CONFIRMED (silent — replace): 149
+     known/eve                    148
+     known/xai_eve                1
+        168 ms  floor   "সাথে"                                         168 ms < 400 ms; mean -91 dB, peak -84.3 dB
+        144 ms  floor   "চাই"                                          144 ms < 400 ms; mean -91 dB, peak -91 dB
+        168 ms  floor   "শেখা চাই।"                                    168 ms < 400 ms; mean -91 dB, peak -84.3 dB
+        168 ms  floor   "বলতে চাই"                                     168 ms < 400 ms; mean -91 dB, peak -84.3 dB
+        168 ms  floor   "যতটা"                                         168 ms < 400 ms; mean -91 dB, peak -90.3 dB
+        144 ms  floor   "আজ"                                           144 ms < 400 ms; mean -91 dB, peak -91 dB
+
+  SUSPECT (audible — probe before replacing): 47
+     known/eve                    47
+        360 ms  floor   "করছি"                                         360 ms < 400 ms
+        384 ms  floor   "কী বলছি"                                      384 ms < 400 ms
+        336 ms  floor   "কখন তুমি চাও"                                 336 ms < 400 ms
+        384 ms  floor   "কাজ করা"                                      384 ms < 400 ms
+        360 ms  floor   "কাজ করছে না"                                  360 ms < 400 ms
+        360 ms  floor   "ঠিক আছে"                                      360 ms < 400 ms
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/eng_for_ben-gate-known.json
+
