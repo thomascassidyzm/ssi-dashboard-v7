@@ -943,7 +943,11 @@ async function masterAudio(audioBuffer, ttsText, opts = {}) {
     // amputation guard — a pausey render whose "defect" is resumed speech
     // ships untouched ('held'), and a soft detached closing word is never
     // trimmed away. Only a clip still dirty after 3 passes hard-errors.
-    const tail = await audioProcessor.repairTailDefect(masteredPath, tempDir, { text: ttsText, minKeepSec: 0.2 })
+    // eve's breathy tail trips the soft resurgence/rise rules inaudibly (Kai
+    // confirmed by listening 2026-08-04) — keep the hard burst rule, drop the
+    // soft ones for exempt voices so benign eve renders aren't refused.
+    const burstOnly = audioProcessor.isSoftTailExemptVoice(opts.voiceId)
+    const tail = await audioProcessor.repairTailDefect(masteredPath, tempDir, { text: ttsText, minKeepSec: 0.2, burstOnly })
     if (tail.defect && tail.action === 'held') {
       logger.warn(`masterAudio: tail flag (${tail.defect.kind} ${tail.defect.peakDb}dB at ${tail.defect.trimSec}s) is resumed speech — pausey render shipped untouched`)
     } else if (tail.defect) {
@@ -2058,7 +2062,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       // Note: xAI does not expose an API-level speed parameter, so xAI audio
       // is always generated at natural speed. Downstream cadence playback speed
       // adjustments are applied in the player, not at TTS time.
-      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, { provider: provider })
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, { provider: provider, voiceId: item.voiceId })
 
       // Generate UUID for S3 key (UPPERCASE to match existing S3 convention)
       const audioId = uuidv4().toUpperCase()
@@ -2503,7 +2507,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       }
 
       // Master audio: normalize loudness and extract duration
-      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, { provider: voiceProvider })
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, { provider: voiceProvider, voiceId })
 
       // Generate new UUID for S3 key (UPPERCASE to match existing S3 convention)
       const audioId = uuidv4().toUpperCase()
@@ -3854,7 +3858,7 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     }
 
     // 6. Master audio
-    const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, { provider: voiceProvider })
+    const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, { provider: voiceProvider, voiceId })
 
     // 7. Upload to S3
     const newAudioId = uuidv4().toUpperCase()
@@ -4062,7 +4066,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     }
 
     // 6. Master audio (−16 LUFS, duration)
-    const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, presentationText, { provider: voiceProvider })
+    const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, presentationText, { provider: voiceProvider, voiceId })
 
     // 7. Upload mastered audio to S3 (fresh UUID, UPPERCASE to match convention)
     const newAudioId = uuidv4().toUpperCase()
@@ -4363,7 +4367,7 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
       }
 
       // Master audio (−16 LUFS, duration).
-      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, { provider: voiceProvider })
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, { provider: voiceProvider, voiceId })
 
       // Upload mastered audio to S3 (fresh UUID, UPPERCASE per convention).
       const newAudioId = uuidv4().toUpperCase()
@@ -4759,7 +4763,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         throw new Error(`Unknown TTS provider: ${provider}`)
       }
 
-      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, { provider: provider })
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, { provider: provider, voiceId: item.voiceId })
 
       const audioId = uuidv4().toUpperCase()
       const s3Key = `mastered/${audioId}.mp3`
@@ -5609,7 +5613,7 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
   voice = activeVoice  // course_audio row records the voice that actually produced the clip
   let masteredBuffer, durationMs
   try {
-    ;({ buffer: masteredBuffer, durationMs } = await masterAudio(audioBuffer, ttsText, { provider: provider }))
+    ;({ buffer: masteredBuffer, durationMs } = await masterAudio(audioBuffer, ttsText, { provider: provider, voiceId: voice.voice_id }))
   } catch (e) {
     // Empty/corrupt TTS buffer (buflen=0) usually means a cross-language voice
     // mismatch (e.g. an English voice handed non-English text) — keep prov/voice

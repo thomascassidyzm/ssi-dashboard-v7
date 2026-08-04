@@ -367,8 +367,25 @@ function isLongformText(text) {
   return /\[pause\]|…|\.\.\./.test(text || '');
 }
 
+// Voices whose natural tail decay (breath/exhale) trips the soft resurgence/
+// rise rules of detectTailClick inaudibly. Kai listened to a spread of eve
+// clips flagged by those rules (2026-08-04) and confirmed there is no audible
+// click — the detector over-fires on eve's breathy decay (eve ~22%/xai_eve
+// ~15% vs ara/leo ~0.5-1%). For these voices we keep the hard "burst" rule
+// (real isolated clicks) but suppress the two soft rules. TEMP kai-stage
+// unblock — Tom owns the canonical gate; reconcile when his fix lands on main.
+const SOFT_TAIL_EXEMPT_VOICES = [/eve/i];
+function isSoftTailExemptVoice(voiceId) {
+  const v = String(voiceId || '').replace(/^(xai_|azure_|elevenlabs_)/, '');
+  return SOFT_TAIL_EXEMPT_VOICES.some(re => re.test(v));
+}
+
 async function detectTailClick(audioPath, options = {}) {
-  const { tailMs = 400, maxClickMs = 50, minGapMs = 20, riseDb = 8, mode = 'phrase' } = options;
+  const { tailMs = 400, maxClickMs = 50, minGapMs = 20, riseDb = 8, mode = 'phrase', burstOnly = false } = options;
+  // burstOnly (or longform mode) suppresses the soft resurgence/rise rules,
+  // which cannot tell a breath/exhale from a real click. Used for voices whose
+  // natural tail decay trips those rules inaudibly (see SOFT_TAIL_EXEMPT_VOICES).
+  const softRules = mode !== 'longform' && !burstOnly;
   const { stdout } = await execAsync(
     `ffmpeg -hide_banner -loglevel error -i "${audioPath}" -f s16le -ac 1 -ar 48000 -`,
     { encoding: 'buffer', maxBuffer: 1 << 26 }
@@ -398,7 +415,7 @@ async function detectTailClick(audioPath, options = {}) {
   // ≥ minGapMs; once armed, the first window back above the fire level is the
   // defect — unless it reaches speech level (resumed speech: disarm).
   // Trim point = start of the quiet run that armed us.
-  if (mode !== 'longform') {
+  if (softRules) {
     let quietRunStart = -1;
     let armedAt = -1;
     for (let i = first; i >= 0 && i < wins.length; i++) {
@@ -427,7 +444,7 @@ async function detectTailClick(audioPath, options = {}) {
   // Rule 3 — post-speech rise. Smoothed 10ms envelope (5-window max) over the
   // tail; after the last strong-speech point, a ≥ riseDb climb off the running
   // minimum that stays below speech level is exhale/noise, not speech.
-  if (mode !== 'longform') {
+  if (softRules) {
     const env = [];
     for (let i = first; i < wins.length; i++) {
       let m = 0;
@@ -613,9 +630,9 @@ async function verifyTrimKeepsText(audioPath, trimSec, text, language) {
  *
  * @returns {Promise<{defect: null} | {defect: object, action: 'held'|'repaired', outPath?: string, passes?: number, verify?: object, residualSpeechFlag?: object}>}
  */
-async function repairTailDefect(inputPath, workDir, { text, language, mode, minKeepSec = 0 } = {}) {
+async function repairTailDefect(inputPath, workDir, { text, language, mode, minKeepSec = 0, burstOnly = false } = {}) {
   const tailMode = mode || (isLongformText(text) ? 'longform' : 'phrase');
-  const det = await detectTailClick(inputPath, { mode: tailMode });
+  const det = await detectTailClick(inputPath, { mode: tailMode, burstOnly });
   if (!det.click) return { defect: null };
   if (det.trimSec < minKeepSec) {
     throw new Error(`tail defect (${det.kind} ${det.peakDb}dB) with trim point at ${det.trimSec}s — clip is substantially defective`);
@@ -631,7 +648,7 @@ async function repairTailDefect(inputPath, workDir, { text, language, mode, minK
         + 'areverse,afade=t=in:st=0:d=0.008,areverse,apad=pad_dur=0.1',
     });
     fixed = next;
-    const recheck = await detectTailClick(fixed, { mode: tailMode });
+    const recheck = await detectTailClick(fixed, { mode: tailMode, burstOnly });
     if (!recheck.click) return { defect: det, action: 'repaired', outPath: fixed, passes: pass + 1 };
     const rv = await verifyTrimKeepsText(fixed, recheck.trimSec, text, language);
     if (rv && !rv.ok) {
@@ -1077,6 +1094,7 @@ module.exports = {
   ffmpegFilterToLameMp3,
   ANTI_CLICK_FADE,
   detectTailClick,
+  isSoftTailExemptVoice,
   isLongformText,
   verifyTrimKeepsText,
   repairTailDefect,
