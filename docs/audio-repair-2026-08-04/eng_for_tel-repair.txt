@@ -1,0 +1,47 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+REFUSING 1 role=presentation clip(s): deleting one CASCADEs into lego_introductions and destroys authored content.
+
+repair-silent-clips — eng_for_tel
+12 clips to repair (--only all)
+   confirmed: 9, suspect: 3
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[Phase8-Audio-v13] masterAudio: tail flag (rise -6.9dB at 0.378s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (rise -6.6dB at 0.268s) is resumed speech — pausey render shipped untouched
+[1/12] target1 "yes": 144ms -> 624ms (-17dB), 3 links -> 9CA26E89-C6BC-40A5-910C-DA66350802DB
+[3/12] target1 "with": 168ms -> 480ms (-16.3dB), 8 links -> 5B392A6A-1B9D-4FE1-A1E9-09519FAD706D
+[2/12] target1 "what": 192ms -> 504ms (-16dB), 10 links -> C3F795DF-1F48-4172-9BE3-13AA36CC016A
+[Phase8-Audio-v13] masterAudio: tail rise -7dB repaired in 1 pass(es) at 0.344s
+[5/12] target1 "well": 144ms -> 528ms (-15.9dB), 1 link -> 41F104D4-B26D-4BDB-A15B-9FE39EA1935E
+[6/12] target1 "what's": 144ms -> 600ms (-16.3dB), 2 links -> 343A4AF4-FAC8-4397-8A97-1247691A44EA
+[4/12] target1 "else": 192ms -> 444ms (-16.3dB), 4 links -> E7F97D91-F989-4A4D-AA8D-CC7557D9572F
+[Phase8-Audio-v13] masterAudio: tail rise -13.8dB repaired in 1 pass(es) at 0.832s
+[9/12] target2 "would you like": healthy (744ms vs fresh 932ms) — left alone
+[TTS] Attempt 1/3 failed (retriable): Azure subscription key is required
+[TTS] Attempt 2/3 failed (retriable): Azure subscription key is required
+[8/12] target2 "black": 288ms -> 672ms (-17.9dB), 1 link -> 5F662EEE-DDE0-4EDB-9923-A7F37ADD7641
+[TTS] Attempt 1/3 failed (retriable): Azure subscription key is required
+[TTS] Attempt 2/3 failed (retriable): Azure subscription key is required
+[7/12] target1 "this": 144ms -> 600ms (-16.4dB), 5 links -> 262AF523-9B0E-4A1C-9255-CFCD7EE7CCF7
+[TTS] Attempt 3/3 failed (retriable): Azure subscription key is required
+[10/12] known "ఇంక": FAILED — TTS generation failed after 3 attempts: Azure subscription key is required
+[TTS] Attempt 3/3 failed (retriable): Azure subscription key is required
+[11/12] known "ప్రతి": FAILED — TTS generation failed after 3 attempts: Azure subscription key is required
+[Phase8-Audio-v13] masterAudio: tail burst 0dB repaired in 1 pass(es) at 0.842s
+[12/12] target1 "i would have done it": 648ms -> 942ms (-16.1dB), 3 links -> 7B0BD10F-AB64-4C7B-9A80-FD547C2FFCCB
+[Version] eng_for_tel: 0.671.3 → 0.671.4 (patch)
+[Version] eng_for_tel: integer version 1660 → 1661 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+9 repaired, 1 left alone (probe says healthy), 2 failed, of 12.
+10 renders, 68 characters of TTS.
+xAI health this run: 10 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-eng_for_tel-12.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

@@ -1,0 +1,39 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+
+repair-silent-clips — eng_for_kan
+25 clips to repair (--only all)
+   confirmed: 19, suspect: 6
+
+  [DRY] confirmed target1    144ms  "this"
+  [DRY] confirmed target1    144ms  "not"
+  [DRY] confirmed target1    144ms  "just"
+  [DRY] confirmed target1    168ms  "with them"
+  [DRY] confirmed target1    144ms  "of course"
+  [DRY] confirmed target1    144ms  "that"
+  [DRY] confirmed target1    168ms  "his"
+  [DRY] confirmed target1    168ms  "with"
+  [DRY] confirmed target1    192ms  "else"
+  [DRY] confirmed target1    144ms  "think"
+  [DRY] confirmed target1    144ms  "less"
+  [DRY] confirmed target1    144ms  "that's"
+  [DRY] confirmed target1    168ms  "choice"
+  [DRY] suspect   target1    384ms  "an"
+  [DRY] confirmed target1    168ms  "likes"
+  [DRY] confirmed target1    144ms  "out"
+  [DRY] confirmed target1    144ms  "watched"
+  [DRY] confirmed target1    144ms  "I'll"
+  [DRY] confirmed target1    144ms  "give"
+  [DRY] confirmed target1    168ms  "left"
+  [DRY] suspect   target2    840ms  "I went"
+  [DRY] suspect   target2    288ms  "black"
+  [DRY] suspect   target1    744ms  "I want a good approach"
+  [DRY] suspect   target2   1128ms  "because I'd have thought about it"
+  [DRY] suspect   target1    864ms  "I know that would be great"
+
+Dry run — nothing rendered, nothing written.
+
+[Azure TTS] Closing connection pool (0 total connections)...

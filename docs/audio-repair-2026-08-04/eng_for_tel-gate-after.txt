@@ -1,0 +1,33 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+
+audio batch gate — eng_for_tel
+40952 clips in scope
+
+[1] duration screen (free): 3 flagged
+      ratio  1
+      floor  2
+      fingerprint: 744ms x1, 144ms x1, 168ms x1
+
+[2] speech-rate screen (free): 1 suspect
+      presentation/azure_te-IN-ShrutiNeural 1
+
+[3] loudness check: measuring 4 clips (the screened ones)
+      2 silent, 0 unmeasurable (treated as pass)
+
+RESULT: 2 confirmed + 2 suspect, of 40952 clips (0.01%)
+
+  CONFIRMED (silent — replace): 2
+     known/azure_te-IN-ShrutiNeural 2
+        144 ms  floor   "ఇంక"                                          144 ms < 400 ms; mean -91 dB, peak -91 dB
+        168 ms  floor   "ప్రతి"                                        168 ms < 400 ms; mean -91 dB, peak -90.3 dB
+
+  SUSPECT (audible — probe before replacing): 2
+     target2/gfzdpspr5fdp         1
+     presentation/azure_te-IN-ShrutiNeural 1
+        744 ms  ratio   "would you like"                               744 ms vs target1 1848 ms
+        984 ms  rate    "ఇంగ్లీష్ — 'తాతయ్య' — '' —:"                  36.4 ms/char, under 37.2 for presentation
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/eng_for_tel-gate-after.json
+

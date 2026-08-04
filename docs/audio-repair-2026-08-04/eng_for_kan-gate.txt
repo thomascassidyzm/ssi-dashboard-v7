@@ -1,0 +1,44 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+
+audio batch gate — eng_for_kan
+44689 clips in scope
+
+[1] duration screen (free): 22 flagged
+      floor  21
+      ratio  1
+      fingerprint: 144ms x12, 168ms x6, 192ms x1
+
+[2] speech-rate screen (free): 3 suspect
+      target1/xai_bedd6226         2
+      target2/xai_gfzdpspr5fdp     1
+
+[3] loudness check: measuring 25 clips (the screened ones)
+      19 silent, 0 unmeasurable (treated as pass)
+
+RESULT: 19 confirmed + 6 suspect, of 44689 clips (0.06%)
+
+  CONFIRMED (silent — replace): 19
+     target1/bedd6226             19
+        144 ms  floor   "this"                                         144 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "not"                                          144 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "just"                                         144 ms < 400 ms; mean -91 dB, peak -91 dB
+        168 ms  floor   "with them"                                    168 ms < 400 ms; mean -91 dB, peak -90.3 dB
+        144 ms  floor   "of course"                                    144 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "that"                                         144 ms < 400 ms; mean -91 dB, peak -91 dB
+
+  SUSPECT (audible — probe before replacing): 6
+     target2/gfzdpspr5fdp         2
+     target1/xai_bedd6226         2
+     target1/bedd6226             1
+     target2/xai_gfzdpspr5fdp     1
+        384 ms  floor   "an"                                           384 ms < 400 ms
+        840 ms  ratio   "I went"                                       840 ms vs target1 1704 ms
+        288 ms  floor   "black"                                        288 ms < 400 ms
+        744 ms  rate    "I want a good approach"                       33.8 ms/char, under 34.4 for target1
+       1128 ms  rate    "because I'd have thought about it"            34.2 ms/char, under 36.0 for target2
+        864 ms  rate    "I know that would be great"                   33.2 ms/char, under 34.4 for target1
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/eng_for_kan-gate.json
+

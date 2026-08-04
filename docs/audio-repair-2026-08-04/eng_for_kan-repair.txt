@@ -1,0 +1,63 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+
+repair-silent-clips — eng_for_kan
+25 clips to repair (--only all)
+   confirmed: 19, suspect: 6
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.3dB at 0.418s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail rise -24.7dB repaired in 3 pass(es) at 0.574s
+[3/25] target1 "just": 144ms -> 452ms (-18.4dB), 3 links -> 2C74961C-31D5-4C91-8B30-0697BBE7C191
+[1/25] target1 "this": 144ms -> 696ms (-17.2dB), 8 links -> BC13425E-2796-48D2-B3D1-AF66685457F9
+[2/25] target1 "not": 144ms -> 600ms (-15.4dB), 7 links -> 72A37CB7-CCEC-4B49-ACF2-9A080A18959D
+[Phase8-Audio-v13] masterAudio: tail rise -6.8dB repaired in 2 pass(es) at 0.564s
+[4/25] target1 "with them": 168ms -> 696ms (-15.4dB), 2 links -> 5ABC91F6-A19B-4984-B3E4-9B6D6EF51D94
+[5/25] target1 "of course": 144ms -> 620ms (-16.4dB), 1 link -> 5A5CE5C6-C4D1-4847-A422-46AFFB9BA81F
+[Phase8-Audio-v13] masterAudio: tail rise -14.2dB repaired in 1 pass(es) at 0.382s
+[7/25] target1 "his": 168ms -> 480ms (-16.5dB), 3 links -> 32DF4D5C-3B37-4F47-9257-9805C920EAFE
+[Phase8-Audio-v13] masterAudio: tail flag (rise -6.9dB at 0.33s) is resumed speech — pausey render shipped untouched
+[8/25] target1 "with": 168ms -> 482ms (-16dB), 13 links -> 1BFE3AAB-B6D9-43D7-892B-E9D51C48995F
+[9/25] target1 "else": 192ms -> 576ms (-17.6dB), 5 links -> D5BE2C0D-C431-469C-96EE-2C1C0A9D3BA4
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.1dB repaired in 1 pass(es) at 0.406s
+[Phase8-Audio-v13] masterAudio: tail flag (rise -7.7dB at 0.378s) is resumed speech — pausey render shipped untouched
+[10/25] target1 "think": 144ms -> 506ms (-16.9dB), 5 links -> BF44ABAC-29D8-421D-A3B0-AEF33B2B1C2E
+[11/25] target1 "less": 144ms -> 648ms (-17.2dB), 2 links -> 01EE4C90-680C-4148-B87B-C72C50BECC61
+[Phase8-Audio-v13] masterAudio: tail rise -10.8dB repaired in 1 pass(es) at 0.404s
+[Phase8-Audio-v13] masterAudio: tail rise -6.1dB repaired in 1 pass(es) at 0.382s
+[6/25] target1 "that": 144ms -> 648ms (-17.9dB), 95 links -> 10E4BA58-77D5-4A9F-99DB-5333E6CD2ECB
+[13/25] target1 "choice": 168ms -> 482ms (-17.1dB), 1 link -> E7702525-F447-49CA-9993-2A8C1894F936
+[12/25] target1 "that's": 144ms -> 504ms (-16.7dB), 4 links -> 268DF6A9-9F39-44FC-93E7-868593E2D24D
+[14/25] target1 "an": healthy (384ms vs fresh 504ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail flag (rise -6.4dB at 0.43s) is resumed speech — pausey render shipped untouched
+[16/25] target1 "out": 144ms -> 552ms (-18.5dB), 2 links -> 368B72C2-B329-4C78-BE84-4DCB70C8F001
+[15/25] target1 "likes": 168ms -> 672ms (-16.5dB), 1 link -> EB5FDE7D-8A7D-4B95-B340-CC2C0A062681
+[17/25] target1 "watched": 144ms -> 720ms (-16.7dB), 1 link -> B981BBB3-BA0B-4F9F-999C-E1E2C2BF52C6
+[Phase8-Audio-v13] masterAudio: tail rise -16dB repaired in 1 pass(es) at 0.402s
+[Phase8-Audio-v13] masterAudio: tail flag (rise -10.5dB at 0.302s) is resumed speech — pausey render shipped untouched
+[19/25] target1 "give": 144ms -> 528ms (-16.9dB), 1 link -> B0C6FCBE-779B-4704-A9FD-10B767D19043
+[18/25] target1 "I'll": 144ms -> 502ms (-16.9dB), 3 links -> 034F3745-859F-4E40-B4BB-55FCFA50BC80
+[20/25] target1 "left": 168ms -> 528ms (-16.5dB), 6 links -> 96A070B5-CF6E-496B-9B82-B0990119CF49
+[Phase8-Audio-v13] masterAudio: tail rise -7.6dB repaired in 1 pass(es) at 0.668s
+[21/25] target2 "I went": healthy (840ms vs fresh 768ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail resurgence -5.2dB repaired in 2 pass(es) at 1.174s
+[22/25] target2 "black": 288ms -> 648ms (-18dB), 1 link -> F3D6C24D-AF64-4711-97E3-F7984016F79A
+[24/25] target2 "because I'd have thought about it": healthy (1128ms vs fresh 1440ms) — left alone
+[23/25] target1 "I want a good approach": 744ms -> 1254ms (-16.4dB), 1 link -> 88A651C8-ADEB-42D8-BF20-588186250F7A
+[Phase8-Audio-v13] masterAudio: tail resurgence -2dB repaired in 1 pass(es) at 1.226s
+[25/25] target1 "I know that would be great": 864ms -> 1326ms (-15.7dB), 1 link -> 014F4427-0C7F-47BC-84A3-B63542BE3DBD
+[Version] eng_for_kan: 0.668.5 → 0.668.6 (patch)
+[Version] eng_for_kan: integer version 1634 → 1635 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+22 repaired, 3 left alone (probe says healthy), 0 failed, of 25.
+25 renders, 186 characters of TTS.
+xAI health this run: 25 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-eng_for_kan-25.json
+
+[Azure TTS] Closing connection pool (0 total connections)...
