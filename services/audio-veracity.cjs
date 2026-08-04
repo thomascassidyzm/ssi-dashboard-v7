@@ -469,6 +469,86 @@ function recordVerdict (stats, verdict) {
   if (verdict.pass) stats.passed++; else stats.failed++
 }
 
+// ---------------------------------------------------------------------------
+// The gate itself — render, check, re-render, quarantine
+// ---------------------------------------------------------------------------
+
+/**
+ * DEFAULT: the first render plus 2 more attempts, then quarantine.
+ * A default, not a ruling. Two re-rolls is what tools/repair-silent-clips.cjs
+ * uses for the same class of transient provider damage.
+ */
+const DEFAULT_ATTEMPTS = Number(process.env.AUDIO_VERACITY_ATTEMPTS || 3)
+
+/**
+ * Render a clip and refuse to hand it back unless it passes the gate.
+ *
+ * THE ONE PLACE the publish decision is made. Callers get either audio that is
+ * safe to publish, or `published: false` and a clip that has already been
+ * quarantined — they never get a failing buffer with a warning attached,
+ * because a warning next to a returned buffer is a buffer that gets published.
+ *
+ * @param {object} o
+ * @param {() => Promise<{buffer:Buffer, durationMs:number, wordBoundaries?:any}>} o.render
+ *        renders AND masters one attempt. Called up to `attempts` times.
+ *        Must return the buffer that would ACTUALLY be published — mastering
+ *        is part of what can damage a clip, so the gate checks its output.
+ * @param {string} o.expectedText  the text sent to TTS, POST gender expansion.
+ *        Using the pre-expansion text false-alarms on every gendered clip.
+ * @param {string} o.language      course_audio.language
+ * @param {object} [o.meta]        recorded on the quarantine entry
+ * @param {object} [o.stats]       a newStats() object to fold counts into
+ * @returns {Promise<{published:boolean, buffer?:Buffer, durationMs?:number,
+ *                    wordBoundaries?:any, verdict:object, attempts:number,
+ *                    verdicts:object[], quarantine?:object}>}
+ */
+async function renderChecked (o) {
+  const { render, expectedText, language, meta = {}, stats, logger = console } = o
+  const attempts = Number(o.attempts || DEFAULT_ATTEMPTS)
+  // Test seam only. Production callers never pass this.
+  const check = o.check || checkAudioVeracity
+  const warn = (m) => (logger.warn || logger.log || console.warn).call(logger, m)
+  const err = (m) => (logger.error || logger.log || console.error).call(logger, m)
+  const label = `${meta.role || '?'} "${String(expectedText).slice(0, 40)}"`
+
+  const verdicts = []
+  let last = null
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    last = await render(attempt)
+    const verdict = await check(last.buffer, expectedText, language, { meta })
+    verdicts.push({ attempt, ...verdict, decode: verdict.decode })
+
+    if (!verdict.checked) {
+      // NOT a pass — an admission. Publish (the alternative is halting the
+      // estate on a missing binary) but never let it count as verified.
+      recordVerdict(stats, verdict)
+      return { published: true, ...last, verdict, attempts: attempt, verdicts }
+    }
+    if (verdict.pass) {
+      recordVerdict(stats, verdict)
+      if (attempt > 1 && stats) stats.rerendered++
+      if (attempt > 1) {
+        warn(`[audio-veracity] ${label}: passed on attempt ${attempt}/${attempts} (CER ${verdict.cer}) — first render was defective and was NOT published`)
+      }
+      return { published: true, ...last, verdict, attempts: attempt, verdicts }
+    }
+    warn(`[audio-veracity] ${label}: FAILED attempt ${attempt}/${attempts} — ${verdict.reason}, CER ${verdict.cer}, heard ${JSON.stringify(String(verdict.decode).slice(0, 60))}${attempt < attempts ? ' — re-rendering' : ''}`)
+  }
+
+  // Every attempt failed. Nothing is uploaded, nothing is inserted, nothing is
+  // bound — and the clip is parked with its audio so it can be listened to.
+  if (stats) { stats.checked++; stats.failed++; stats.quarantined++ }
+  const q = quarantine({
+    ...meta,
+    text: expectedText,
+    language,
+    attempts,
+    verdicts: verdicts.map(v => ({ attempt: v.attempt, reason: v.reason, cer: v.cer, decode: v.decode })),
+  }, last?.buffer, logger)
+  err(`[audio-veracity] ${label}: QUARANTINED after ${attempts} attempts — NOT published.${q?.audioPath ? ` Audio kept at ${q.audioPath}` : ''}`)
+  return { published: false, verdict: verdicts[verdicts.length - 1], attempts, verdicts, quarantine: q }
+}
+
 /** One line for a log or a completion message. */
 function formatStats (stats) {
   if (!stats) return 'veracity: no data'
@@ -484,6 +564,8 @@ function formatStats (stats) {
 }
 
 module.exports = {
+  renderChecked,
+  DEFAULT_ATTEMPTS,
   checkAudioVeracity,
   verdictFromDecode,
   characterErrorRate,

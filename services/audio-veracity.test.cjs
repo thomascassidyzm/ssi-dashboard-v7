@@ -252,3 +252,82 @@ describe('quarantine', () => {
     expect(() => V.quarantine({ courseCode: '../../etc' }, null, { error: () => {} })).not.toThrow()
   })
 })
+
+describe('renderChecked — the publish decision', () => {
+  const buf = (s) => Buffer.from(s)
+  const passing = async () => ({ pass: true, checked: true, reason: 'ok', cer: 0.02, decode: 'hallo' })
+  const failing = async () => ({ pass: false, checked: true, reason: 'cer_above_threshold', cer: 0.8, decode: 'ha' })
+  const quiet = { info: () => {}, warn: () => {}, error: () => {}, log: () => {} }
+
+  it('publishes a clip that passes first time, with one render', async () => {
+    let renders = 0
+    const stats = V.newStats()
+    const r = await V.renderChecked({
+      render: async () => { renders++; return { buffer: buf('a'), durationMs: 900 } },
+      expectedText: 'hallo', language: 'deu', check: passing, stats, logger: quiet,
+    })
+    expect(r.published).toBe(true)
+    expect(r.durationMs).toBe(900)
+    expect(renders).toBe(1)
+    expect(stats).toMatchObject({ checked: 1, passed: 1, failed: 0, rerendered: 0, quarantined: 0 })
+  })
+
+  it('re-renders a failing clip and publishes the attempt that passes', async () => {
+    let renders = 0
+    const stats = V.newStats()
+    const r = await V.renderChecked({
+      render: async () => { renders++; return { buffer: buf(`a${renders}`), durationMs: 900 } },
+      expectedText: 'hallo', language: 'deu', stats, logger: quiet,
+      check: async (b) => (String(b) === 'a1' ? failing() : passing()),
+    })
+    expect(r.published).toBe(true)
+    expect(String(r.buffer)).toBe('a2')
+    expect(renders).toBe(2)
+    expect(stats.rerendered).toBe(1)
+    expect(stats.quarantined).toBe(0)
+  })
+
+  it('quarantines after the attempt budget and refuses to hand back a buffer', async () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'veracity-rc-'))
+    let renders = 0
+    const stats = V.newStats()
+    const r = await V.renderChecked({
+      render: async () => { renders++; return { buffer: buf('bad'), durationMs: 200 } },
+      expectedText: 'hallo', language: 'deu', check: failing, stats, logger: quiet,
+      meta: { courseCode: 'tst_for_eng', role: 'target1' },
+    })
+    expect(r.published).toBe(false)
+    expect(r.buffer).toBeUndefined()          // nothing publishable comes back
+    expect(renders).toBe(V.DEFAULT_ATTEMPTS)  // 1 render + 2 retries by default
+    expect(stats.quarantined).toBe(1)
+    expect(stats.failed).toBe(1)
+    expect(r.verdicts).toHaveLength(V.DEFAULT_ATTEMPTS)
+    try { fs.rmSync(dir, { recursive: true, force: true }) } catch {}
+  })
+
+  it('honours a custom attempt budget', async () => {
+    let renders = 0
+    const r = await V.renderChecked({
+      render: async () => { renders++; return { buffer: buf('bad'), durationMs: 200 } },
+      expectedText: 'hallo', language: 'deu', check: failing, attempts: 1, logger: quiet,
+      meta: { courseCode: 'tst_for_eng' },
+    })
+    expect(r.published).toBe(false)
+    expect(renders).toBe(1)
+  })
+
+  it('publishes when it could not check — but counts it as UNCHECKED, never as a pass', async () => {
+    let renders = 0
+    const stats = V.newStats()
+    const r = await V.renderChecked({
+      render: async () => { renders++; return { buffer: buf('a'), durationMs: 900 } },
+      expectedText: 'hallo', language: 'deu', stats, logger: quiet,
+      check: async () => ({ pass: null, checked: false, reason: 'unchecked_no_whisper', cer: null, decode: null }),
+    })
+    expect(r.published).toBe(true)
+    expect(renders).toBe(1)                   // no pointless re-render when blind
+    expect(stats.unchecked).toBe(1)
+    expect(stats.passed).toBe(0)
+    expect(stats.checked).toBe(0)
+  })
+})
