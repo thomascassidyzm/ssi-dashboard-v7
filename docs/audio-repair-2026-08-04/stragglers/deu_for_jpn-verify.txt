@@ -1,0 +1,54 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+
+audio batch gate — deu_for_jpn
+18374 clips in scope
+
+[1] duration screen (free): 0 flagged
+
+[2] speech-rate screen (free): 265 suspect
+      target1/sal                  43
+      known/ara                    37
+      target1/3a7889066fa2         35
+      target1/41321eb41295         33
+      target1/ara                  28
+      known/leo                    14
+
+[3] loudness check: measuring 265 clips (the screened ones)
+  measured: 100/265  measured: 200/265      0 silent, 1 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 265 suspect, of 18374 clips (1.44%)
+        0 silent, 1 near-silent, 264 duration/rate-only
+
+  NEAR-SILENT (level failure — probe, then replace) [reported as suspect; --strict-level to fail on these]: 1
+     target1/40f31906b23d         1
+        864 ms  rate    "Und gibt es in der Nähe einen Geldautomaten   19.6 ms/char, under 64.4 for target1; NEAR-SILENT mean -54.3 dB, peak -21.2 dB (healthy peak p05 ≈ -6.5 dB)
+
+  SUSPECT (audible at normal level — probe before replacing): 264
+     target1/sal                  43
+     known/ara                    37
+     target1/3a7889066fa2         35
+     target1/41321eb41295         33
+     target1/ara                  28
+     known/leo                    14
+     known/eve                    13
+     known/b1a7441b97a1           12
+     target1/eve                  10
+     known/rex                    10
+     known/d0cb9ff07d95           9
+     target1/458705c07139         7
+     known/bedd6226               6
+     target1/40f31906b23d         3
+     known/azure_ja-JP-ShioriNeural 2
+     known/en-GB-RyanNeural       1
+     pod_explainer/comp:leo       1
+       2808 ms  rate    "die ich treffen könnte"                       127.6 ms/char, under 143.0 for known
+       3408 ms  rate    "miteinander geredet haben"                    136.3 ms/char, under 143.0 for known
+       1104 ms  rate    "Guten Morgen, Anna!"                          58.1 ms/char, under 64.4 for target1
+       3888 ms  rate    "Ursprünglich aus Hamburg, aber ich wohne je   59.8 ms/char, under 64.4 for target1
+       2784 ms  rate    "Ich komme aus Köln. Ich bin seit zwei Jahre   55.7 ms/char, under 64.4 for target1
+       2544 ms  rate    "Ich bin Englischlehrer, vor allem für Erwac   51.9 ms/char, under 64.4 for target1
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/stragglers/deu_for_jpn-verify.json
+

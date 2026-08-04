@@ -1,0 +1,47 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops
+
+audio batch gate — por_br_for_eng
+47733 clips in scope
+
+[1] duration screen (free): 0 flagged
+
+[2] speech-rate screen (free): 155 suspect
+      target1/ara                  76
+      known/xai_gfzdpspr5fdp       31
+      target1/eve                  22
+      target1/leo                  9
+      target1/abfbdf26f115         7
+      target1/rex                  4
+
+[3] loudness check: measuring 155 clips (the screened ones)
+  measured: 100/155      0 silent, 1 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 155 suspect, of 47733 clips (0.32%)
+        0 silent, 1 near-silent, 154 duration/rate-only
+
+  NEAR-SILENT (level failure — probe, then replace) [reported as suspect; --strict-level to fail on these]: 1
+     target1/6da5baee46d0         1
+        408 ms  rate    "Domingo."                                     51.0 ms/char, under 67.2 for target1; NEAR-SILENT mean -56 dB, peak -28.2 dB (healthy peak p05 ≈ -6.5 dB)
+
+  SUSPECT (audible at normal level — probe before replacing): 154
+     target1/ara                  76
+     known/xai_gfzdpspr5fdp       31
+     target1/eve                  22
+     target1/leo                  9
+     target1/abfbdf26f115         7
+     target1/rex                  4
+     pod_explainer/comp:leo       2
+     target1/pt-PT-DuarteNeural   1
+     target1/6da5baee46d0         1
+     target1/3d030bc92a87         1
+       3864 ms  rate    "Sou de Belo Horizonte, mas moro em São Paul   65.5 ms/char, under 67.2 for target1
+       2952 ms  rate    "Eu dou aula de inglês, principalmente para    57.9 ms/char, under 67.2 for target1
+       1584 ms  rate    "Um cafezinho, por favor."                     66.0 ms/char, under 67.2 for target1
+       1488 ms  rate    "Para viagem, por favor."                      64.7 ms/char, under 67.2 for target1
+       1920 ms  rate    "Para tomar aqui ou para viagem?"              61.9 ms/char, under 67.2 for target1
+       2760 ms  rate    "Posso pedir um pingado e um pão de queijo?"   65.7 ms/char, under 67.2 for target1
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/stragglers/por_br_for_eng-verify.json
+

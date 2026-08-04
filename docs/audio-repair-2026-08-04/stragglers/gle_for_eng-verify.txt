@@ -1,0 +1,33 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+
+audio batch gate — gle_for_eng
+25291 clips in scope
+
+[1] duration screen (free): 10 flagged
+      floor  10
+      fingerprint: 384ms x6, 360ms x2, 336ms x1
+
+[2] speech-rate screen (free): 5 suspect
+      pod_explainer/comp:leo       4
+      target1/ga-IE-ColmNeural     1
+
+[3] loudness check: measuring 15 clips (the screened ones)
+      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 15 suspect, of 25291 clips (0.06%)
+        0 silent, 0 near-silent, 15 duration/rate-only
+
+  SUSPECT (audible at normal level — probe before replacing): 15
+     pod_explainer/comp:leo       14
+     target1/ga-IE-ColmNeural     1
+        384 ms  floor   "[atom] seo"                                   384 ms < 400 ms
+        360 ms  floor   "[atom] agat"                                  360 ms < 400 ms
+        384 ms  floor   "[atom] Sea"                                   384 ms < 400 ms
+        360 ms  floor   "[atom] leath"                                 360 ms < 400 ms
+        384 ms  floor   "[atom] eile"                                  384 ms < 400 ms
+        384 ms  floor   "[atom] anocht"                                384 ms < 400 ms
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/stragglers/gle_for_eng-verify.json
+

@@ -1,0 +1,37 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+
+audio batch gate — eng_for_urd
+47140 clips in scope
+
+[1] duration screen (free): 7 flagged
+      ratio  7
+      fingerprint: 672ms x1, 600ms x1, 1344ms x1
+
+[2] speech-rate screen (free): 42 suspect
+      target2/xai_gfzdpspr5fdp     23
+      target1/xai_bedd6226         11
+      pod_explainer/leo            7
+      target2/gfzdpspr5fdp         1
+
+[3] loudness check: measuring 49 clips (the screened ones)
+      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 49 suspect, of 47140 clips (0.10%)
+        0 silent, 0 near-silent, 49 duration/rate-only
+
+  SUSPECT (audible at normal level — probe before replacing): 49
+     target2/xai_gfzdpspr5fdp     23
+     target1/xai_bedd6226         11
+     target2/gfzdpspr5fdp         8
+     pod_explainer/leo            7
+        672 ms  ratio   "quickly"                                      672 ms vs target1 1416 ms
+        600 ms  ratio   "trying"                                       600 ms vs target1 1440 ms
+       1344 ms  ratio   "what I could make"                            1344 ms vs target1 3000 ms
+        792 ms  ratio   "would"                                        792 ms vs target1 1896 ms
+        840 ms  ratio   "you need"                                     840 ms vs target1 2184 ms
+        984 ms  ratio   "needed to"                                    984 ms vs target1 2232 ms
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/stragglers/eng_for_urd-verify.json
+

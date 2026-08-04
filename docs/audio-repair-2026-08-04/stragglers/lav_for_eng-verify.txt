@@ -1,0 +1,17 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+
+audio batch gate — lav_for_eng
+20198 clips in scope
+
+[1] duration screen (free): 0 flagged
+
+[2] speech-rate screen (free): 0 suspect
+
+[3] loudness check: measuring 0 clips (the screened ones)
+      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 0 suspect, of 20198 clips (0.00%)
+        0 silent, 0 near-silent, 0 duration/rate-only
+
+repair list -> docs/audio-repair-2026-08-04/stragglers/lav_for_eng-verify.json
+

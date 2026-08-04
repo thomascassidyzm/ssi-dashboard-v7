@@ -1,0 +1,38 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+
+audio batch gate — eng_for_tam
+55618 clips in scope
+
+[1] duration screen (free): 7 flagged
+      ratio  6
+      floor  1
+      fingerprint: 912ms x1, 1152ms x1, 744ms x1
+
+[2] speech-rate screen (free): 21 suspect
+      target2/xai_gfzdpspr5fdp     11
+      target1/xai_bedd6226         6
+      presentation/azure_ta-LK-KumarNeural 4
+
+[3] loudness check: measuring 28 clips (the screened ones)
+      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 28 suspect, of 55618 clips (0.05%)
+        0 silent, 0 near-silent, 28 duration/rate-only
+
+  SUSPECT (audible at normal level — probe before replacing): 28
+     target2/xai_gfzdpspr5fdp     11
+     target2/gfzdpspr5fdp         6
+     target1/xai_bedd6226         6
+     presentation/azure_ta-LK-KumarNeural 4
+     target1/bedd6226             1
+        912 ms  ratio   "as soon as"                                   912 ms vs target1 1896 ms
+       1152 ms  ratio   "council now"                                  1152 ms vs target1 2472 ms
+        744 ms  ratio   "I should"                                     744 ms vs target1 1704 ms
+        840 ms  ratio   "I went"                                       840 ms vs target1 1704 ms
+       1368 ms  ratio   "I'm already happy"                            1368 ms vs target1 2808 ms
+        384 ms  floor   "it"                                           384 ms < 400 ms
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/stragglers/eng_for_tam-verify.json
+

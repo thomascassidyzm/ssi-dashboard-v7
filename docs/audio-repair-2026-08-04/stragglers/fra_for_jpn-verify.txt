@@ -1,0 +1,55 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+
+audio batch gate — fra_for_jpn
+22432 clips in scope
+
+[1] duration screen (free): 2 flagged
+      floor  2
+      fingerprint: 360ms x1, 384ms x1
+
+[2] speech-rate screen (free): 294 suspect
+      target1/ara                  92
+      target1/sal                  48
+      target1/0p0rt7o1             45
+      target1/eve                  25
+      pod_explainer/comp:leo       17
+      target1/69smp8rm             13
+
+[3] loudness check: measuring 296 clips (the screened ones)
+  measured: 100/296  measured: 200/296      0 silent, 1 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 296 suspect, of 22432 clips (1.32%)
+        0 silent, 1 near-silent, 295 duration/rate-only
+
+  NEAR-SILENT (level failure — probe, then replace) [reported as suspect; --strict-level to fail on these]: 1
+     target1/69smp8rm             1
+        504 ms  rate    "Oui, très."                                   50.4 ms/char, under 57.5 for target1; NEAR-SILENT mean -19.6 dB, peak -9.9 dB (healthy peak p05 ≈ -6.5 dB)
+
+  SUSPECT (audible at normal level — probe before replacing): 295
+     target1/ara                  92
+     target1/sal                  48
+     target1/0p0rt7o1             45
+     target1/eve                  25
+     pod_explainer/comp:leo       19
+     known/b1a7441b97a1           13
+     target1/69smp8rm             12
+     target1/hbxkrnwm             11
+     known/ara                    9
+     known/leo                    4
+     known/bedd6226               4
+     known/eve                    4
+     known/d0cb9ff07d95           4
+     known/rex                    3
+     target1/leo                  1
+     known/en-GB-RyanNeural       1
+        360 ms  floor   "[atom] en tout"                               360 ms < 400 ms
+        384 ms  floor   "[atom] est libre"                             384 ms < 400 ms
+       3024 ms  rate    "Oui, journée chargée aujourd'hui. Bonne jou   55.0 ms/char, under 57.5 for target1
+       3168 ms  rate    "Salut ! Je rentre à la maison. Tu es libre    56.6 ms/char, under 57.5 for target1
+       2808 ms  rate    "Je suis de Bordeaux. Je suis ici depuis deu   57.3 ms/char, under 57.5 for target1
+       2400 ms  rate    "J'enseigne le français, surtout aux adultes   54.5 ms/char, under 57.5 for target1
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/stragglers/fra_for_jpn-verify.json
+

@@ -1,0 +1,38 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+
+audio batch gate — eng_for_pan
+51248 clips in scope
+
+[1] duration screen (free): 5 flagged
+      ratio  4
+      floor  1
+      fingerprint: 1152ms x1, 744ms x1, 1608ms x1
+
+[2] speech-rate screen (free): 37 suspect
+      pod_explainer/leo            27
+      target1/xai_bedd6226         5
+      target2/xai_gfzdpspr5fdp     5
+
+[3] loudness check: measuring 42 clips (the screened ones)
+      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 42 suspect, of 51248 clips (0.08%)
+        0 silent, 0 near-silent, 42 duration/rate-only
+
+  SUSPECT (audible at normal level — probe before replacing): 42
+     pod_explainer/leo            27
+     target1/xai_bedd6226         5
+     target2/xai_gfzdpspr5fdp     5
+     target2/gfzdpspr5fdp         4
+     target1/bedd6226             1
+       1152 ms  ratio   "don't need to"                                1152 ms vs target1 2496 ms
+        744 ms  ratio   "great"                                        744 ms vs target1 1632 ms
+       1608 ms  ratio   "what's going to happen tomorrow"              1608 ms vs target1 3240 ms
+        384 ms  floor   "you're"                                       384 ms < 400 ms
+        984 ms  ratio   "needed to"                                    984 ms vs target1 2232 ms
+       1176 ms  rate    "[atom] See you tomorrow"                      73.5 ms/char, under 74.4 for pod_explainer
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/stragglers/eng_for_pan-verify.json
+

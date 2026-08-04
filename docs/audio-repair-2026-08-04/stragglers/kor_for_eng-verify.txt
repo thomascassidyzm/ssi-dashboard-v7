@@ -1,0 +1,42 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+
+audio batch gate — kor_for_eng
+58407 clips in scope
+
+[1] duration screen (free): 7 flagged
+      floor  7
+      fingerprint: 312ms x2, 192ms x1, 336ms x1
+
+[2] speech-rate screen (free): 163 suspect
+      target1/23be42535a45         45
+      target1/a0401c9101f8         35
+      target1/bf9fe5b5f981         30
+      target1/ara                  26
+      target1/b5ae17439907         11
+      target1/eve                  10
+
+[3] loudness check: measuring 170 clips (the screened ones)
+  measured: 100/170      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 170 suspect, of 58407 clips (0.29%)
+        0 silent, 0 near-silent, 170 duration/rate-only
+
+  SUSPECT (audible at normal level — probe before replacing): 170
+     target1/23be42535a45         45
+     target1/a0401c9101f8         37
+     target1/bf9fe5b5f981         30
+     target1/ara                  26
+     pod_explainer/comp:leo       11
+     target1/b5ae17439907         11
+     target1/eve                  10
+        192 ms  floor   "[atom] 바쁜"                                    192 ms < 400 ms
+        336 ms  floor   "[atom] 봐요"                                    336 ms < 400 ms
+        264 ms  floor   "[atom] 각자"                                    264 ms < 400 ms
+        360 ms  floor   "[atom] 직접"                                    360 ms < 400 ms
+        240 ms  floor   "[atom] 쉽게"                                    240 ms < 400 ms
+        312 ms  floor   "육."                                           312 ms < 400 ms
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/stragglers/kor_for_eng-verify.json
+

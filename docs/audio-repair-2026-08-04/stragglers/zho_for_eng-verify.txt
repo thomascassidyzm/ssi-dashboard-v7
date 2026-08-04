@@ -1,0 +1,53 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+
+audio batch gate — zho_for_eng
+40956 clips in scope
+
+[1] duration screen (free): 23 flagged
+      ratio  21
+      floor  2
+      fingerprint: 744ms x8, 720ms x3, 864ms x2
+
+[2] speech-rate screen (free): 121 suspect
+      pod_explainer/gfzdpspr5fdp   49
+      target1/ara                  36
+      target1/jpi39icg             13
+      target1/eve                  6
+      pod_explainer/comp:leo       6
+      pod_take_g/ara               4
+
+[3] loudness check: measuring 144 clips (the screened ones)
+  measured: 100/144      0 silent, 1 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 144 suspect, of 40956 clips (0.35%)
+        0 silent, 1 near-silent, 143 duration/rate-only
+
+  NEAR-SILENT (level failure — probe, then replace) [reported as suspect; --strict-level to fail on these]: 1
+     target1/jpi39icg             1
+        624 ms  rate    "窗边那张桌子空着。"                                    69.3 ms/char, under 194.2 for target1; NEAR-SILENT mean -47.2 dB, peak -28.2 dB (healthy peak p05 ≈ -6.5 dB)
+
+  SUSPECT (audible at normal level — probe before replacing): 143
+     pod_explainer/gfzdpspr5fdp   49
+     target1/ara                  36
+     target2/azure_zh-CN-YunyiMultilingualNeural 21
+     target1/jpi39icg             12
+     pod_explainer/comp:leo       8
+     target1/eve                  6
+     pod_take_g/ara               4
+     known/gfzdpspr5fdp           2
+     target1/azure_zh-CN-XiaoxiaoMultilingualNeural 1
+     target1/6997b0ec             1
+     target1/zh-CN-YunyiMultilingualNeural 1
+     known/leo                    1
+     target1/33g9t0jl             1
+        720 ms  ratio   "词"                                            720 ms vs target1 1536 ms
+        792 ms  ratio   "久"                                            792 ms vs target1 1608 ms
+        864 ms  ratio   "明年"                                           864 ms vs target1 1824 ms
+        744 ms  ratio   "记"                                            744 ms vs target1 1512 ms
+        744 ms  ratio   "几"                                            744 ms vs target1 1584 ms
+        744 ms  ratio   "醒"                                            744 ms vs target1 1584 ms
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/stragglers/zho_for_eng-verify.json
+

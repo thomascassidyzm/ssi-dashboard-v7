@@ -1,0 +1,44 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+
+audio batch gate — tha_for_eng
+18788 clips in scope
+
+[1] duration screen (free): 1 flagged
+      floor  1
+      fingerprint: 288ms x1
+
+[2] speech-rate screen (free): 28 suspect
+      target1/ara                  10
+      target1/908c4626660f         5
+      target1/rex                  4
+      target1/sal                  3
+      target1/eve                  2
+      target1/4ff93971bfdc         2
+
+[3] loudness check: measuring 29 clips (the screened ones)
+      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 29 suspect, of 18788 clips (0.15%)
+        0 silent, 0 near-silent, 29 duration/rate-only
+
+  SUSPECT (audible at normal level — probe before replacing): 29
+     target1/ara                  10
+     target1/908c4626660f         5
+     target1/rex                  4
+     target1/sal                  3
+     target1/eve                  2
+     target1/4ff93971bfdc         2
+     known/bedd6226               1
+     target1/0463086e             1
+     known/leo                    1
+        288 ms  floor   "6."                                           288 ms < 400 ms
+       1752 ms  rate    "สวัสดีครับ คุณชื่ออะไรครับ?"                  64.9 ms/char, under 66.7 for target1
+       3288 ms  rate    "เดิมจากเชียงใหม่ครับ แต่ตอนนี้อยู่กรุงเทพ ค   62.0 ms/char, under 66.7 for target1
+       1176 ms  rate    "รับอะไรเพิ่มไหมคะ?"                           65.3 ms/char, under 66.7 for target1
+       2976 ms  rate    "จะเห็นพิพิธภัณฑ์อยู่ทางซ้าย ตรงข้ามป้ายรถเม   62.0 ms/char, under 66.7 for target1
+       4464 ms  rate    "มีปลาทอดกับมันฝรั่ง กุ้งผัดซอส ข้าวหมูแฟรนช   65.6 ms/char, under 66.7 for target1
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/stragglers/tha_for_eng-verify.json
+

@@ -1,0 +1,26 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+
+audio batch gate — fas_for_eng
+26192 clips in scope
+
+[1] duration screen (free): 0 flagged
+
+[2] speech-rate screen (free): 3 suspect
+      known/leo                    3
+
+[3] loudness check: measuring 3 clips (the screened ones)
+      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 3 suspect, of 26192 clips (0.01%)
+        0 silent, 0 near-silent, 3 duration/rate-only
+
+  SUSPECT (audible at normal level — probe before replacing): 3
+     known/leo                    3
+       2184 ms  rate    "About twenty minutes, depending on the ligh   47.5 ms/char, under 47.8 for known
+       3504 ms  rate    "Perhaps about twenty minutes, if we're not    46.7 ms/char, under 47.8 for known
+       1440 ms  rate    "And what would you like to drink?"            43.6 ms/char, under 47.8 for known
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/stragglers/fas_for_eng-verify.json
+
