@@ -1,0 +1,29 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+
+repair-silent-clips — nld_for_eng
+4 clips to repair (--only all)
+   confirmed: 4
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[Phase8-Audio-v13] masterAudio: tail rise -10.5dB repaired in 1 pass(es) at 0.848s
+[1/4] target1 "Nou, leuk je te hebben leren kennen.": 408ms -> 2064ms (-15.1dB), 0 links -> 2F3666CF-5FF4-4799-9923-D53821D592CA
+[3/4] target1 "Twaalf uur.": 984ms -> 948ms (-16.4dB), 0 links -> DE7B39E3-C0B6-41CF-A96E-AA1C7BD3E32F
+[2/4] target1 "Voor mij cafeïnevrij.": 720ms -> 1464ms (-16dB), 0 links -> A394E763-96D0-490E-9EE8-CC1A43158649
+[4/4] target1 "Elf uur.": 1728ms -> 840ms (-15.7dB), 0 links -> 4761704A-B415-4D80-AF81-3236840D96D9
+[Version] nld_for_eng: 0.110.3 → 0.110.4 (patch)
+[Version] nld_for_eng: integer version 297 → 298 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+4 repaired, 0 left alone (probe says healthy), 0 failed, of 4.
+4 renders, 76 characters of TTS.
+xAI health this run: 4 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-nld_for_eng-4.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

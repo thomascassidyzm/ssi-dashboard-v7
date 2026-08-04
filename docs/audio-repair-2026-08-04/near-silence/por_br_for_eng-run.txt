@@ -1,0 +1,27 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+
+repair-silent-clips — por_br_for_eng
+2 clips to repair (--only all)
+   confirmed: 2
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[Phase8-Audio-v13] masterAudio: tail rise -15.4dB repaired in 1 pass(es) at 0.556s
+[2/2] known "Excuse me.": 912ms -> 936ms (-16.2dB), 0 links -> 1702A1C6-B56C-4F20-94D0-3BCA26E7AC0C
+[1/2] target1 "Domingo.": 408ms -> 656ms (-16.1dB), 0 links -> C86C864F-963D-4614-AEB3-1C7F80FECC61
+[Version] por_br_for_eng: 0.2130.3 → 0.2130.4 (patch)
+[Version] por_br_for_eng: integer version 952 → 953 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+2 repaired, 0 left alone (probe says healthy), 0 failed, of 2.
+2 renders, 18 characters of TTS.
+xAI health this run: 2 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-por_br_for_eng-2.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

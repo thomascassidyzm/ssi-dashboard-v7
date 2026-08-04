@@ -1,0 +1,33 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+
+repair-silent-clips — pol_for_eng
+5 clips to repair (--only all)
+   confirmed: 5
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[Phase8-Audio-v13] masterAudio: tail rise -8.8dB repaired in 1 pass(es) at 0.534s
+[Phase8-Audio-v13] masterAudio: tail rise -6.6dB repaired in 2 pass(es) at 1.27s
+[Phase8-Audio-v13] masterAudio: tail resurgence -1dB repaired in 2 pass(es) at 1.208s
+[1/5] target1 "Miło mi cię poznać.": 1680ms -> 1230ms (-16.8dB), 0 links -> 6BA6B12C-EEA2-426D-9E64-591FCA6ACF7F
+[3/5] target1 "Sześć.": 912ms -> 634ms (-19.4dB), 0 links -> 55D4EC3F-6203-4D25-BF75-E178BB6996AC
+[2/5] target1 "Jest blisko stąd.": 552ms -> 1284ms (-16.8dB), 0 links -> 98ED4EEF-84AD-4102-B94A-060DDF197A6A
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 0.624s
+[4/5] target1 "Dwunasta.": 648ms -> 984ms (-16.1dB), 0 links -> 85361936-34F7-4C75-8B4B-144F07F1AE16
+[5/5] target1 "Jedenasta.": 480ms -> 724ms (-15.4dB), 0 links -> 2ECA4A45-A3CC-4A15-B3F1-04B42E56EE30
+[Version] pol_for_eng: 0.1698.34 → 0.1698.35 (patch)
+[Version] pol_for_eng: integer version 55 → 56 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+5 repaired, 0 left alone (probe says healthy), 0 failed, of 5.
+5 renders, 61 characters of TTS.
+xAI health this run: 5 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-pol_for_eng-5.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

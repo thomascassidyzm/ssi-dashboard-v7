@@ -1,0 +1,37 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+
+repair-silent-clips — deu_for_jpn
+9 clips to repair (--only all)
+   confirmed: 9
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[Phase8-Audio-v13] masterAudio: tail rise -10.2dB repaired in 1 pass(es) at 0.386s
+[3/9] target1 "Eins.": 1104ms -> 486ms (-15dB), 0 links -> B0347F8F-C93D-45DF-99CA-660F7A87DD11
+[1/9] target1 "Vielen Dank.": 1152ms -> 936ms (-15.9dB), 0 links -> A3C12E37-83DF-4E72-8ED8-0D416022076E
+[2/9] target1 "Hallo!": 960ms -> 696ms (-16.2dB), 0 links -> D985738D-6737-40D4-BED8-5129CE02E0C5
+[Phase8-Audio-v13] masterAudio: tail rise -8.3dB repaired in 1 pass(es) at 0.466s
+[5/9] target1 "Sieben.": 912ms -> 792ms (-16.2dB), 0 links -> 31272D20-7AAB-4A97-99A9-6C27A8E097DD
+[6/9] target1 "Zwölf.": 1056ms -> 744ms (-17.1dB), 0 links -> 31EF0F8D-02E8-4925-9DE5-DE6FD5CF7184
+[4/9] target1 "Fünf.": 720ms -> 566ms (-16.4dB), 0 links -> 43B1ACD8-E9A0-47F6-B210-C71C8ACCFC22
+[Phase8-Audio-v13] masterAudio: tail rise -10.2dB repaired in 1 pass(es) at 0.81s
+[8/9] target1 "Neunzehn.": 1248ms -> 960ms (-14.9dB), 0 links -> E1F35371-A471-4841-B7C4-DAE3BEDAE9FD
+[7/9] target1 "sechzehn.": 1272ms -> 910ms (-16.8dB), 0 links -> C8039462-C2D0-4C80-B7DB-4D238942BA29
+[Phase8-Audio-v13] masterAudio: tail resurgence -3dB repaired in 1 pass(es) at 2.346s
+[9/9] target1 "Und gibt es in der Nähe einen Geldautomat: 864ms -> 2446ms (-15.9dB), 0 links -> BBF1F607-83F1-415F-8C37-C373B76396DD
+[Version] deu_for_jpn: 0.626.20 → 0.626.21 (patch)
+[Version] deu_for_jpn: integer version 69 → 70 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+9 repaired, 0 left alone (probe says healthy), 0 failed, of 9.
+9 renders, 103 characters of TTS.
+xAI health this run: 9 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-deu_for_jpn-9.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

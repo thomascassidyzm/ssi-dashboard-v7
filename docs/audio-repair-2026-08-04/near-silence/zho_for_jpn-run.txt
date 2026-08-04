@@ -1,0 +1,25 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+
+repair-silent-clips — zho_for_jpn
+1 clip to repair (--only all)
+   confirmed: 1
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[1/1] target1 "黑色。": 744ms -> 816ms (-17.2dB), 0 links -> BD67AC5E-C1F3-495F-B558-AAB5F0B87081
+[Version] zho_for_jpn: 0.478.9 → 0.478.10 (patch)
+[Version] zho_for_jpn: integer version 178 → 179 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+1 repaired, 0 left alone (probe says healthy), 0 failed, of 1.
+1 render, 3 characters of TTS.
+xAI health this run: 1 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-zho_for_jpn-1.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

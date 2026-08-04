@@ -1,0 +1,28 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+
+repair-silent-clips — spa_mx_for_eng
+2 clips to repair (--only all)
+   confirmed: 2
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[Phase8-Audio-v13] masterAudio: tail rise -8dB repaired in 1 pass(es) at 0.63s
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.7dB repaired in 2 pass(es) at 1.952s
+[2/2] known "Excuse me.": 888ms -> 730ms (-16.7dB), 0 links -> C7E471A4-4049-4464-B672-BB42BA0A1251
+[1/2] target1 "Sí, hoy tengo un día muy ocupado.": 624ms -> 1880ms (-15.8dB), 0 links -> 3B8391EF-E905-4CBA-808B-05F21E9F434C
+[Version] spa_mx_for_eng: 0.1292.2 → 0.1292.3 (patch)
+[Version] spa_mx_for_eng: integer version 750 → 751 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+2 repaired, 0 left alone (probe says healthy), 0 failed, of 2.
+2 renders, 43 characters of TTS.
+xAI health this run: 2 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-spa_mx_for_eng-2.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

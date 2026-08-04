@@ -1,0 +1,34 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+
+repair-silent-clips — zho_for_eng
+6 clips to repair (--only all)
+   confirmed: 6
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[Phase8-Audio-v13] masterAudio: tail burst -18.7dB repaired in 1 pass(es) at 0.452s
+[Phase8-Audio-v13] masterAudio: tail flag (rise -7.6dB at 0.468s) is resumed speech — pausey render shipped untouched
+[1/6] known "Of course.": 984ms -> 816ms (-17.1dB), 0 links -> DC5CBE62-87F0-4163-9C3D-566B012A7C60
+[3/6] target1 "五。": 744ms -> 552ms (-15.9dB), 0 links -> 47723808-7D65-486A-A3A9-33E79A46A8E8
+[2/6] target1 "窗边那张桌子空着。": 624ms -> 1944ms (-16.1dB), 0 links -> E96F4F52-DF6F-4CE9-9C4E-75B431EC160A
+[Phase8-Audio-v13] masterAudio: tail resurgence -8.7dB repaired in 1 pass(es) at 0.426s
+[Phase8-Audio-v13] masterAudio: tail burst -19.8dB repaired in 1 pass(es) at 0.8s
+[5/6] target1 "粉红色。": 768ms -> 936ms (-16.2dB), 0 links -> 0DADE7C7-09CB-4820-BD8C-95568B569624
+[4/6] target1 "好的。": 840ms -> 526ms (-17.7dB), 1 link -> E93B6E27-AA2C-4943-B53C-E0C45298E041
+[6/6] target1 "星期二。": 864ms -> 900ms (-17.2dB), 0 links -> 7044C1FF-0854-4A7F-8BF5-1390B0B44E93
+[Version] zho_for_eng: 0.412.9 → 0.412.10 (patch)
+[Version] zho_for_eng: integer version 1985 → 1986 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+6 repaired, 0 left alone (probe says healthy), 0 failed, of 6.
+6 renders, 32 characters of TTS.
+xAI health this run: 6 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-zho_for_eng-6.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

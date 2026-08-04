@@ -1,0 +1,35 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  override existing env vars with { override: true }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+
+repair-silent-clips — swe_for_eng
+6 clips to repair (--only all)
+   confirmed: 6
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[Phase8-Audio-v13] masterAudio: tail rise -26.1dB repaired in 1 pass(es) at 0.832s
+[Phase8-Audio-v13] masterAudio: tail resurgence -4.9dB repaired in 1 pass(es) at 0.618s
+[1/6] target1 "Godmorgon.": 1392ms -> 932ms (-16.3dB), 0 links -> 26A9F42D-7279-4B17-A82B-F4A909AA93B7
+[2/6] target1 "Vi ses då.": 1320ms -> 888ms (-17.7dB), 0 links -> 45963200-629F-4910-9CAC-05928341DE9A
+[3/6] target1 "Genast.": 1104ms -> 718ms (-17.4dB), 0 links -> E22F54D0-244C-436A-8EF2-88B7F5ED18AC
+[Phase8-Audio-v13] masterAudio: tail rise -9.5dB repaired in 1 pass(es) at 0.598s
+[Phase8-Audio-v13] masterAudio: tail rise -8.6dB repaired in 1 pass(es) at 0.754s
+[Phase8-Audio-v13] masterAudio: tail resurgence -13dB repaired in 1 pass(es) at 1.236s
+[4/6] target1 "Här är den.": 504ms -> 698ms (-17.3dB), 0 links -> 328EC3B4-5FDF-4759-836C-CAECED5D5FE8
+[6/6] target1 "Jag är imponerad.": 600ms -> 1336ms (-16dB), 0 links -> 857D01A7-32D4-42ED-9107-7A66D84F5282
+[5/6] target1 "Utmärkt val.": 1296ms -> 854ms (-16.6dB), 0 links -> 1F7C8956-E1F7-4F56-90CF-71C2B20490C2
+[Version] swe_for_eng: 0.566.9 → 0.566.10 (patch)
+[Version] swe_for_eng: integer version 50 → 51 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+6 repaired, 0 left alone (probe says healthy), 0 failed, of 6.
+6 renders, 67 characters of TTS.
+xAI health this run: 6 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-swe_for_eng-6.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

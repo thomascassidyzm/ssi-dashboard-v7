@@ -1,0 +1,25 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+
+repair-silent-clips — lit_for_eng
+1 clip to repair (--only all)
+   confirmed: 1
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[Phase8-Audio-v13] masterAudio: tail rise -10.8dB repaired in 1 pass(es) at 0.536s
+[1/1] known "Five.": 408ms -> 636ms (-17dB), 0 links -> 74BCD1B8-95B3-4B27-85B7-6C610D010ACD
+[Version] lit_for_eng: 0.718.10 → 0.718.11 (patch)
+[Version] lit_for_eng: integer version 54 → 55 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+1 repaired, 0 left alone (probe says healthy), 0 failed, of 1.
+1 render, 5 characters of TTS.
+xAI health this run: 1 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-lit_for_eng-1.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

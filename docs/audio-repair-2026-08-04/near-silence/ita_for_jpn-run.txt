@@ -1,0 +1,26 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+
+repair-silent-clips — ita_for_jpn
+2 clips to repair (--only all)
+   confirmed: 2
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[1/2] known "三。": 696ms -> 624ms (-17.4dB), 0 links -> 3551BF3D-8A98-4250-BE0E-D52F0811B481
+[2/2] known "もちろんです。": 1200ms -> 1080ms (-17dB), 0 links -> DD84AFBA-CE0E-428F-A8BB-A1E4690AE2A9
+[Version] ita_for_jpn: 0.408.15 → 0.408.16 (patch)
+[Version] ita_for_jpn: integer version 59 → 60 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+2 repaired, 0 left alone (probe says healthy), 0 failed, of 2.
+2 renders, 9 characters of TTS.
+xAI health this run: 2 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-ita_for_jpn-2.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

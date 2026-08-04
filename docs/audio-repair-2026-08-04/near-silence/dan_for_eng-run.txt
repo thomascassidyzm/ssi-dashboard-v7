@@ -1,0 +1,29 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  override existing env vars with { override: true }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+
+repair-silent-clips — dan_for_eng
+4 clips to repair (--only all)
+   confirmed: 4
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[Phase8-Audio-v13] masterAudio: tail rise -13.1dB repaired in 1 pass(es) at 1.18s
+[3/4] target1 "Mange tak.": 1056ms -> 792ms (-18.2dB), 0 links -> 5B9FEE1A-D75A-4AB9-8138-4E3E0024426B
+[2/4] target1 "Lyserød.": 480ms -> 792ms (-15.9dB), 0 links -> 9E10689C-28AE-4AF9-9C9D-9A7DFE679CA0
+[1/4] target1 "Har du haft en lang dag?": 1536ms -> 1280ms (-16dB), 0 links -> F8328FF7-0D33-484D-96ED-871B029C40A1
+[4/4] target1 "Jeg tror, du er klar til at begynde at ta: FAILED — tail defect (resurgence -11.7dB) still detected (resurgence -5.4dB) after 3 repair passes — refusing to ship
+[Version] dan_for_eng: 0.509.9 → 0.509.10 (patch)
+[Version] dan_for_eng: integer version 45 → 46 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+3 repaired, 0 left alone (probe says healthy), 1 failed, of 4.
+3 renders, 42 characters of TTS.
+xAI health this run: 4 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-dan_for_eng-4.json
+
+[Azure TTS] Closing connection pool (0 total connections)...
