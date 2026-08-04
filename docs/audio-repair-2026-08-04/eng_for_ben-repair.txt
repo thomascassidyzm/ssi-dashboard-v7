@@ -1,0 +1,373 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+
+repair-silent-clips — eng_for_ben
+200 clips to repair (--only all)
+   confirmed: 149, suspect: 51
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[3/200] known "করছি": 360ms -> 696ms (-16.2dB), 4 links -> E7AD46BD-569B-4EAA-9315-35FB76817D3F
+[2/200] known "চাই": 144ms -> 576ms (-17.3dB), 5 links -> 53DC7B72-9162-4B11-95B0-D3C305EF0CC6
+[1/200] known "সাথে": 168ms -> 768ms (-17.1dB), 13 links -> 325BB038-3B10-4C53-B9E1-9699BAB85059
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 0.45s
+[4/200] known "শেখা চাই।": 168ms -> 912ms (-16.6dB), 1 link -> 4365DC5B-8E33-4D96-B00D-209E42AF6B07
+[5/200] known "বলতে চাই": 168ms -> 936ms (-15.9dB), 1 link -> 57313DAF-B272-4D73-BD99-986549CFD476
+[6/200] known "যতটা": 168ms -> 550ms (-16.9dB), 1 link -> 3B7C4C13-E5BC-4201-A0BD-97D6C91C26CA
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.7dB at 0.392s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail rise -31.3dB repaired in 1 pass(es) at 1.58s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.32s) is resumed speech — pausey render shipped untouched
+[8/200] known "রাখা": 144ms -> 792ms (-16.7dB), 4 links -> 971F6F4E-7B3E-49C4-890E-38A4151B4074
+[7/200] known "আজ": 144ms -> 1680ms (-16.1dB), 4 links -> FE557203-706E-4832-9856-44A5B65E9271
+[9/200] known "করতাম": 168ms -> 720ms (-16.1dB), 3 links -> 248CEF3E-3A73-4A7F-A2C2-485C5E33CC56
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.25s) is resumed speech — pausey render shipped untouched
+[10/200] known "দেখা": 144ms -> 672ms (-17dB), 4 links -> 433520CA-EF3F-4800-BF53-20809859E522
+[11/200] known "থাকা": 144ms -> 624ms (-17dB), 5 links -> 70A54F45-EE9B-4613-A104-E450D2B1EE6D
+[12/200] known "তার": 144ms -> 576ms (-16.6dB), 8 links -> AC0FAB85-721A-42C5-9EAE-F561ACBA556A
+[Phase8-Audio-v13] masterAudio: tail flag (rise -10.4dB at 0.344s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (rise -8.9dB at 0.494s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail rise -9.7dB repaired in 1 pass(es) at 0.538s
+[13/200] known "ওর": 168ms -> 576ms (-16.3dB), 1 link -> 09387E5F-C429-44A2-83BB-CCEAD7E5C487
+[14/200] known "উত্তর": 144ms -> 696ms (-16.8dB), 2 links -> F47BC900-E2ED-4047-9FB3-B2082F1D145F
+[15/200] known "যত": 168ms -> 638ms (-17dB), 3 links -> E322E0D9-591C-43B5-8DF8-CA64BC0F5674
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -12.6dB at 0.272s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.1dB at 0.538s) is resumed speech — pausey render shipped untouched
+[16/200] known "আছি": 144ms -> 696ms (-17dB), 2 links -> 603A41BB-1828-4914-AD6B-11D383AF51B5
+[17/200] known "চুপ": 144ms -> 528ms (-16.8dB), 5 links -> E1316532-E94C-4DFC-9F1E-EA9B46DA908E
+[18/200] known "চুপ থাকা": 144ms -> 840ms (-16dB), 2 links -> 4D600F50-7345-4E14-922E-6F6A2A03FA16
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.1dB at 0.488s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.344s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.3dB at 0.344s) is resumed speech — pausey render shipped untouched
+[19/200] known "ব্যাপারটা": 144ms -> 888ms (-15.9dB), 1 link -> DB89E03A-0907-4C4C-8DF4-FE18946BCB1D
+[20/200] known "দরকার": 168ms -> 744ms (-16.2dB), 7 links -> C53ED6F9-9307-4076-A580-A1765721B3DF
+[21/200] known "এরকম": 144ms -> 744ms (-15.2dB), 4 links -> EC0EDC12-6B64-4A8A-8DD7-11823DFD84B4
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.7dB at 0.296s) is resumed speech — pausey render shipped untouched
+[22/200] known "কী বলছি": 384ms -> 888ms (-16.2dB), 1 link -> 31E159C9-F7B4-4078-900F-A310AD5A4A7F
+[23/200] known "লেখা": 144ms -> 696ms (-16.2dB), 2 links -> 7201236C-186E-4FE0-B468-40C2F4C39EB0
+[24/200] known "কয়েকটা": 168ms -> 792ms (-16.1dB), 2 links -> EA482BD5-2824-4A76-A12F-2F02BDD77003
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.5dB at 0.566s) is resumed speech — pausey render shipped untouched
+[25/200] known "একই": 144ms -> 624ms (-16.9dB), 6 links -> EFBE9940-F632-4BD9-9E82-16A767A8C8E9
+[26/200] known "খুঁজ": 168ms -> 648ms (-16.9dB), 2 links -> E21F4A60-D623-400C-A9D9-3E55ED8AC904
+[27/200] known "ছোট কুকুর": 144ms -> 960ms (-15.9dB), 1 link -> 6962A126-2BF0-4ED5-B338-7F03C599997D
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.4dB at 0.608s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail rise -23.5dB repaired in 1 pass(es) at 0.46s
+[28/200] known "একটা কুকুর": 144ms -> 1008ms (-16.2dB), 1 link -> BC1F026C-CDB6-4715-9BFA-B3B21479191F
+[29/200] known "কুকুর": 144ms -> 560ms (-15.7dB), 2 links -> FA9F8909-C5C5-4073-A22B-8D768659917D
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.272s) is resumed speech — pausey render shipped untouched
+[30/200] known "সত্য": 144ms -> 720ms (-16.7dB), 3 links -> 1B01B2F5-21D5-4CDA-9139-3AAB5A7A589F
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1dB at 0.546s) is resumed speech — pausey render shipped untouched
+[31/200] known "দিতে": 144ms -> 600ms (-15.7dB), 6 links -> 5013E4E5-163C-4821-A500-785CC9999414
+[32/200] known "তুমি করছো": 144ms -> 912ms (-15.4dB), 2 links -> C7D3CFCB-4394-48CD-82B4-E81F93563A46
+[33/200] known "আছে": 144ms -> 648ms (-17.1dB), 5 links -> 4ABE9A8A-F0D2-4A4B-B32B-20901ADF6B06
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.424s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -4.2dB repaired in 1 pass(es) at 0.494s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.6dB at 0.56s) is resumed speech — pausey render shipped untouched
+[34/200] known "বুঝতে": 144ms -> 768ms (-16dB), 2 links -> 48BD45C2-0716-4DD3-9371-5E062EB33A62
+[35/200] known "কতটুকু": 144ms -> 594ms (-15.5dB), 2 links -> 468A2D04-8F61-4ED0-8250-D84096F5D012
+[36/200] known "অবাক হচ্ছি": 168ms -> 960ms (-16.2dB), 2 links -> 1FE12154-7AA4-4558-B55A-831602CC70D7
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.368s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 0.818s
+[37/200] known "হচ্ছি": 144ms -> 768ms (-17.5dB), 1 link -> E806BC8A-8E0B-45FF-9173-62C38C66B8AE
+[38/200] known "কখন তুমি চাও": 336ms -> 918ms (-16dB), 1 link -> 0FD9A122-AD65-49B5-83C6-9E716242E05C
+[39/200] known "অপেক্ষা": 144ms -> 744ms (-16.2dB), 3 links -> FACE9522-F970-451D-8E87-D71584364BD2
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -6.3dB at 0.52s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.2dB at 0.406s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -6.5dB at 0.402s) is resumed speech — pausey render shipped untouched
+[40/200] known "একমত": 144ms -> 792ms (-16.3dB), 2 links -> 26E3880A-7AF9-47C4-8C23-6FABE814620E
+[41/200] known "কাজ করা": 384ms -> 768ms (-16.5dB), 2 links -> BF316FFB-09AE-4A52-974F-E30A6CBE183B
+[42/200] known "উচিত": 144ms -> 696ms (-16.9dB), 5 links -> 3100A05C-9356-4BA2-ADE1-4923016BDF72
+[Phase8-Audio-v13] masterAudio: tail resurgence -3.5dB repaired in 1 pass(es) at 0.522s
+[43/200] known "কাজ করছে না": 360ms -> 1080ms (-16.3dB), 1 link -> CB1F8D50-AEE3-471C-9BA5-73667DC0AF16
+[Phase8-Audio-v13] masterAudio: tail flag (rise -13dB at 0.822s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.308s) is resumed speech — pausey render shipped untouched
+[44/200] known "একই রকম": 168ms -> 622ms (-16.2dB), 2 links -> D83732C7-17C8-4F49-B13D-0B21C44802F6
+[45/200] known "বের করছি": 168ms -> 1032ms (-15.9dB), 1 link -> 720447FE-FB97-4C2F-815E-4CEF0CDDEFBE
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.8dB at 0.32s) is resumed speech — pausey render shipped untouched
+[46/200] known "উঠতে": 168ms -> 672ms (-16.2dB), 2 links -> 73A98414-FAE4-4FCD-889B-7D95891B322F
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.32s) is resumed speech — pausey render shipped untouched
+[47/200] known "রাতের": 144ms -> 720ms (-15.7dB), 1 link -> A4A61611-9247-4D52-A6F4-125A97AA6FB6
+[48/200] known "হচ্ছে": 168ms -> 768ms (-17.1dB), 3 links -> 88EE2907-2AD0-4280-8EA8-D1012CAE6658
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.2dB at 0.24s) is resumed speech — pausey render shipped untouched
+[49/200] known "পারতাম": 144ms -> 720ms (-15.7dB), 2 links -> A43F54C3-626C-4EB6-9406-058E49BB6FE8
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -19.8dB at 0.29s) is resumed speech — pausey render shipped untouched
+[50/200] known "কথা": 144ms -> 624ms (-16.5dB), 2 links -> F5D2F092-7042-428F-A617-C3AAE84F6E6C
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.416s) is resumed speech — pausey render shipped untouched
+[51/200] known "পাব": 144ms -> 552ms (-16.7dB), 1 link -> 4ADCC503-3667-4367-B9EE-8E48544FF5BB
+[Phase8-Audio-v13] masterAudio: tail rise -15.9dB repaired in 1 pass(es) at 0.44s
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 0.372s
+[52/200] known "দেখতে": 144ms -> 816ms (-16.4dB), 7 links -> 8B5249D9-4C2E-4502-953B-0609979984B3
+[53/200] known "এমন": 144ms -> 540ms (-15.7dB), 1 link -> 9A7C3DDC-8BBC-44FB-B9C5-CEC57489B45C
+[54/200] known "চিনতে": 144ms -> 472ms (-14.9dB), 1 link -> 2214EBAE-6DDB-4869-A7F4-84D4A6F30DCF
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.584s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -3dB repaired in 1 pass(es) at 0.442s
+[55/200] known "এত তাড়াতাড়ি": 168ms -> 984ms (-16dB), 1 link -> 1C4EF207-6053-4239-81AD-99FA9B4F4710
+[56/200] known "দুঃখিত": 144ms -> 840ms (-15.6dB), 3 links -> 51BA56AC-FBB7-4586-BCE5-CE1C8EA90FAC
+[57/200] known "ঠিক আছে": 360ms -> 542ms (-15.8dB), 1 link -> 883086F2-7EF0-4CC6-9578-68EE0278E16B
+[Phase8-Audio-v13] masterAudio: tail rise -19.7dB repaired in 1 pass(es) at 0.376s
+[Phase8-Audio-v13] masterAudio: tail rise -7.7dB repaired in 1 pass(es) at 0.462s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.4dB at 0.296s) is resumed speech — pausey render shipped untouched
+[58/200] known "আর": 168ms -> 476ms (-16.1dB), 3 links -> 59DB90FB-BD96-4946-B0DB-0C9D4FBE8679
+[60/200] known "পারছ": 168ms -> 696ms (-17.4dB), 1 link -> 948A7E0C-2F87-4C19-B5AC-79A223FEA277
+[59/200] known "ঠিক": 144ms -> 562ms (-16.7dB), 4 links -> A019FE0B-558F-450B-84BF-BAAC79E969B1
+[Phase8-Audio-v13] masterAudio: tail rise -14.3dB repaired in 1 pass(es) at 0.504s
+[Phase8-Audio-v13] masterAudio: tail resurgence -1.8dB repaired in 1 pass(es) at 0.452s
+[Phase8-Audio-v13] masterAudio: tail resurgence -7.8dB repaired in 2 pass(es) at 0.764s
+[61/200] known "পড়তে": 144ms -> 604ms (-15.6dB), 2 links -> 6688BFF9-E212-4658-93F5-4B079767B023
+[63/200] known "দেখেছ": 144ms -> 552ms (-16.3dB), 1 link -> B4EEBEB9-EAB9-444C-B6B8-FCDCF2E136D4
+[62/200] known "পড়তে চাই": 144ms -> 564ms (-16.3dB), 2 links -> 7171533F-8C14-499E-A203-BF05DFAD2832
+[Phase8-Audio-v13] masterAudio: tail rise -16.6dB repaired in 1 pass(es) at 0.53s
+[64/200] known "দেখি": 144ms -> 648ms (-15.8dB), 1 link -> BF2A237D-6431-4FFA-BB1A-C5513D6BF15E
+[65/200] known "একটুও": 144ms -> 630ms (-16.3dB), 1 link -> 57FB6E0A-355B-4980-9F93-2C688684F0A9
+[66/200] known "রাতে": 168ms -> 720ms (-16.7dB), 3 links -> 66354F2C-94FA-44B6-ACC2-4BCBE3732F1C
+[Phase8-Audio-v13] masterAudio: tail flag (rise -13.2dB at 0.634s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.9dB at 0.342s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -3.1dB at 0.232s) is resumed speech — pausey render shipped untouched
+[67/200] known "গেছি": 144ms -> 744ms (-15.9dB), 1 link -> D0A28791-2C32-4172-963D-0E15574453E2
+[68/200] known "করেছ": 168ms -> 720ms (-15.9dB), 2 links -> DAB049A1-8454-4990-9669-DEC17F1E2937
+[69/200] known "েছ": 144ms -> 552ms (-16.9dB), 1 link -> E2725898-207D-470B-A19C-EE0E6ADB822B
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.8dB at 0.608s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -1.1dB repaired in 1 pass(es) at 0.8s
+[70/200] known "আলোচনা করা": 168ms -> 1008ms (-15.7dB), 3 links -> 5087C941-47B8-4286-A8E1-77B859711C89
+[71/200] known "দিত": 144ms -> 696ms (-16.6dB), 2 links -> 1FE7D7A9-6800-4FC7-B18E-07D673C8B235
+[72/200] known "লোকটা": 168ms -> 900ms (-15.2dB), 2 links -> C0FD91C4-825D-44E8-B8BA-AA3F91602DF5
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.288s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -4dB repaired in 1 pass(es) at 0.538s
+[74/200] known "অল্প": 144ms -> 672ms (-15.8dB), 1 link -> 7B5FD093-29B0-4969-9AD8-B84A4DF789C9
+[73/200] known "অনেক কিছু": 168ms -> 638ms (-14.9dB), 1 link -> BA1047DF-DBF2-4997-8CC2-CEA39EA175A7
+[75/200] known "মধ্যে": 144ms -> 768ms (-15.2dB), 2 links -> 1E8EF34C-182B-44A3-B61F-B5589B13FADB
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.308s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail rise -7.2dB repaired in 1 pass(es) at 0.646s
+[Phase8-Audio-v13] masterAudio: tail rise -14.1dB repaired in 1 pass(es) at 0.702s
+[77/200] known "দুটো": 144ms -> 696ms (-16.5dB), 1 link -> 88DBBA37-A1A8-43E0-9906-EF59BA285E3B
+[76/200] known "একজন": 144ms -> 746ms (-16.4dB), 1 link -> 6EE36B1F-F575-41A2-9B3B-460DFB0A2494
+[78/200] known "কাছ থেকে": 144ms -> 802ms (-16.8dB), 1 link -> 442AFE8D-D25D-44B6-970B-46D583612F63
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1dB at 0.344s) is resumed speech — pausey render shipped untouched
+[79/200] known "মিটিং": 144ms -> 672ms (-15.8dB), 1 link -> F135A7C6-3986-42F0-B339-FB3E9B883B27
+[80/200] known "সবচেয়ে": 144ms -> 744ms (-16.3dB), 3 links -> 255440D9-BFE6-42FD-8D5C-9929BC67D0D7
+[81/200] known "ভাবছি": 144ms -> 840ms (-16.3dB), 1 link -> D39011BF-6A12-42A3-8A95-CD98A013CA5B
+[Phase8-Audio-v13] masterAudio: tail rise -8.1dB repaired in 1 pass(es) at 0.668s
+[Phase8-Audio-v13] masterAudio: tail resurgence -5.6dB repaired in 1 pass(es) at 0.526s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.1dB at 0.296s) is resumed speech — pausey render shipped untouched
+[82/200] known "আমি করি": 168ms -> 768ms (-16.1dB), 1 link -> 76A29B51-A83B-4436-A576-EF856A98FB86
+[83/200] known "অর্ধেক": 144ms -> 626ms (-15.4dB), 1 link -> 0646F0AF-CCF4-4F61-A040-B301A19D3960
+[84/200] known "মাথা": 144ms -> 696ms (-16.2dB), 2 links -> AE9E3200-DBE3-43BF-9AED-BFFB39C35061
+[Phase8-Audio-v13] masterAudio: tail rise -7.4dB repaired in 1 pass(es) at 0.632s
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.6dB repaired in 1 pass(es) at 0.366s
+[85/200] known "একসাথে": 144ms -> 840ms (-17.1dB), 2 links -> 1E3C4735-ABD3-41CF-8185-5E1A8FBCCFF9
+[86/200] known "চমৎকার": 168ms -> 732ms (-15.8dB), 1 link -> A6054BBE-A123-4FE4-9108-6FBB79A8C936
+[87/200] known "বলছি": 144ms -> 466ms (-15.3dB), 1 link -> 87F0BF4F-E856-4B3D-996E-CAAEE3F21E47
+[88/200] known "ডাক্তার": 144ms -> 840ms (-15.9dB), 1 link -> BD8A8F3E-D628-4EB4-B4B5-C5140111D379
+[Phase8-Audio-v13] masterAudio: tail flag (rise -11.9dB at 0.63s) is resumed speech — pausey render shipped untouched
+[89/200] known "কাল": 168ms -> 576ms (-16.8dB), 1 link -> 22BCB99A-DBB2-40FF-8366-6B458CC48104
+[90/200] known "ঠিকঠাক": 360ms -> 768ms (-17.1dB), 1 link -> ACD31135-E154-4E7F-A83E-D793DB26902E
+[91/200] known "কোথাও": 144ms -> 696ms (-16.2dB), 4 links -> 2FD22DCD-C5CA-4FD8-95A3-794CD9C24DC5
+[92/200] known "সে চাইত": 144ms -> 984ms (-16.6dB), 1 link -> 860E4EB4-88B1-4BF1-B916-7500FEAA4D69
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.394s) is resumed speech — pausey render shipped untouched
+[93/200] known "আরেকটা": 168ms -> 768ms (-16dB), 1 link -> 0B6B9673-62AE-4D8C-AF60-7D8C9D5AF824
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.392s) is resumed speech — pausey render shipped untouched
+[94/200] known "কাটাতে": 336ms -> 696ms (-17.1dB), 1 link -> 323A4C50-DEA2-4DAF-803C-DAD90FBF23AA
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.7dB at 0.44s) is resumed speech — pausey render shipped untouched
+[95/200] known "ধরতে": 144ms -> 792ms (-15.1dB), 2 links -> C62CF833-52EF-4FF1-8891-F454732B5986
+[96/200] known "খুলতে পারে": 168ms -> 840ms (-15.9dB), 2 links -> 65442918-1092-4F70-9F26-022C4EE7C3FA
+[97/200] known "যোগ করতে": 168ms -> 1032ms (-15.7dB), 1 link -> E36F89FB-F0A0-44BD-BC9A-449812AD2465
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -4.8dB at 0.35s) is resumed speech — pausey render shipped untouched
+[98/200] known "বেশ": 144ms -> 720ms (-17dB), 2 links -> 2ED049F3-332C-4012-AC05-6CEA99D74F02
+[99/200] known "করেছে": 144ms -> 744ms (-15.9dB), 1 link -> 56934DBA-AE6F-4205-B471-FB30B4E23794
+[100/200] known "বার্তা": 144ms -> 744ms (-16.2dB), 1 link -> C15EF33B-C8C3-4248-8C0A-9D5A64201815
+[101/200] known "যাকে": 168ms -> 648ms (-16.7dB), 1 link -> 8CBB1D0F-4F7B-48E8-AB7A-4975E3EB17B7
+[Phase8-Audio-v13] masterAudio: tail flag (rise -6.4dB at 0.466s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (rise -10.1dB at 0.49s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 3.834s
+[103/200] known "কাছে": 144ms -> 672ms (-16.9dB), 1 link -> 28627530-F0CB-4B64-BC0C-DAE9C58BA8E9
+[104/200] known "বুক": 144ms -> 696ms (-16.5dB), 1 link -> 4F24E68C-12DD-4B2C-8052-33BF9ACB079C
+[Phase8-Audio-v13] masterAudio: tail rise -19.9dB repaired in 1 pass(es) at 0.378s
+[102/200] known "পৃথিবীতে": 144ms -> 3934ms (-15.5dB), 2 links -> A00EAF46-43BA-4DF0-9834-F6B82C49BCCB
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.5dB at 0.58s) is resumed speech — pausey render shipped untouched
+[105/200] known "চার": 144ms -> 478ms (-16.9dB), 2 links -> F2431091-72F4-4604-94C5-8576388CDF72
+[106/200] known "আমি চাইছি": 144ms -> 960ms (-15.6dB), 1 link -> BB0269ED-94B0-40D6-A31E-D539098AF62B
+[107/200] known "এর": 144ms -> 552ms (-16.1dB), 2 links -> 725590B5-DA07-44E9-9D12-27913ED887FB
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.614s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.22s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.7dB at 0.522s) is resumed speech — pausey render shipped untouched
+[108/200] known "অনেক পিঁপড়ে": 144ms -> 1008ms (-15dB), 1 link -> BEB3728E-8BDC-49B1-8CA1-1CADCDD9CF26
+[109/200] known "কত": 144ms -> 600ms (-16.1dB), 1 link -> FF1F00C7-F924-4D8B-8354-42AFB4AE29A5
+[110/200] known "স্পষ্ট": 144ms -> 840ms (-18.1dB), 2 links -> 723ED4B6-C354-4399-9CCB-ECE844B0B71B
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.6dB at 0.632s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.1dB at 0.488s) is resumed speech — pausey render shipped untouched
+[111/200] known "এটা কমাতে": 192ms -> 936ms (-16dB), 1 link -> 33B148D6-7160-404A-A34D-9A981FED1ECD
+[112/200] known "ছটার পরে": 144ms -> 888ms (-16.5dB), 1 link -> 5CE92EF6-2D31-4D00-8D19-A7F14973D8F0
+[113/200] known "অতীতে": 144ms -> 648ms (-15.7dB), 1 link -> 26A5D2E5-E6E8-46DF-8C5D-51A91F61276A
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.8dB at 0.47s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -5.8dB at 0.344s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 0.374s
+[114/200] known "ইতালিতে": 144ms -> 816ms (-15.7dB), 2 links -> 0089E1D6-3E79-4CB2-BC0E-A53AE6491BB4
+[115/200] known "পার্ক": 144ms -> 624ms (-17dB), 3 links -> AF15533A-62FF-4E6B-9439-F6D484D934B7
+[116/200] known "উঁচুতে": 144ms -> 474ms (-16.1dB), 1 link -> DF58FA9A-4EDD-43C5-A57B-C239BE3108C9
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.8dB at 0.318s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.29s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -8.1dB at 0.248s) is resumed speech — pausey render shipped untouched
+[117/200] known "চোখ": 168ms -> 624ms (-16.8dB), 3 links -> FAAE5D3A-61F7-4F46-8B40-7A5337BA6F23
+[118/200] known "নিচে": 144ms -> 672ms (-16.1dB), 1 link -> 67616896-D59B-4826-BA98-E070471A448F
+[119/200] known "এক": 144ms -> 576ms (-17.9dB), 2 links -> 9246B075-7BFA-45BA-B65D-EDF1B9D21C85
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -6.1dB at 0.27s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.2dB at 0.56s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.296s) is resumed speech — pausey render shipped untouched
+[120/200] known "কাপ": 144ms -> 600ms (-16.8dB), 1 link -> 8C3270E6-FD8D-4427-8DFB-E4FE225A46DE
+[121/200] known "পরিকল্পনা": 144ms -> 960ms (-15.3dB), 1 link -> C7B61BFA-71DF-43F6-A1F6-2AB1785639AB
+[122/200] known "পারতে": 144ms -> 696ms (-16.7dB), 2 links -> 79D4CE88-5871-4D86-A3B2-7F4613AAD69B
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.1dB at 0.298s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -2.8dB repaired in 1 pass(es) at 0.334s
+[123/200] known "ওটা": 144ms -> 576ms (-16.7dB), 2 links -> E004BDCC-BA9B-4146-B8D4-15D3306BB8D5
+[125/200] known "গেছে": 144ms -> 696ms (-16.9dB), 2 links -> 8FC07D9D-8D0B-413E-A5DF-2ADDB25B3FB0
+[124/200] known "যাতে": 144ms -> 434ms (-17.2dB), 2 links -> 82598A3F-D4A3-4260-8E9B-C7726F73F01F
+[Phase8-Audio-v13] masterAudio: tail resurgence -6.1dB repaired in 1 pass(es) at 0.426s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.322s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.608s) is resumed speech — pausey render shipped untouched
+[126/200] known "নিচ": 144ms -> 526ms (-15dB), 1 link -> 0C4A1641-BD9E-4E56-BF30-C6AC50EA89B4
+[128/200] known "জেতে": 144ms -> 696ms (-16.6dB), 1 link -> 0D3B34BF-59A1-400E-BDDA-ACE97A3B4AD1
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.4dB at 0.296s) is resumed speech — pausey render shipped untouched
+[127/200] known "জিততে পারে": 144ms -> 1008ms (-15.8dB), 1 link -> 7F44D546-2870-4C56-A4DF-C48B702BC6B2
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.464s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -13dB at 0.542s) is resumed speech — pausey render shipped untouched
+[129/200] known "কাপড়": 144ms -> 696ms (-16.5dB), 1 link -> BF770E68-0189-45CA-A3EF-F906BE789E95
+[130/200] known "কুকুরটা": 144ms -> 864ms (-15.9dB), 2 links -> DF4B3C9C-7CB4-445F-8F05-23EFAAC255D6
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.376s) is resumed speech — pausey render shipped untouched
+[131/200] known "কুৎসিত": 144ms -> 792ms (-17.1dB), 2 links -> 899B01FF-DFE4-45D1-9C9A-4559EDE2F3B3
+[Phase8-Audio-v13] masterAudio: tail rise -7.6dB repaired in 1 pass(es) at 0.578s
+[132/200] known "প্রান্ত": 144ms -> 720ms (-16.1dB), 2 links -> E0C6D80D-8F90-4477-A9DD-173C79B8D3B3
+[133/200] known "রাত": 144ms -> 678ms (-17.1dB), 1 link -> 3E28BD22-84C1-4FB8-837A-1F73BF7481C6
+[134/200] known "এই পথটা": 144ms -> 912ms (-15.1dB), 1 link -> 12C0398E-16F7-4094-B0A5-5A52F04EF0A6
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.9dB at 0.612s) is resumed speech — pausey render shipped untouched
+[135/200] known "দেখার": 144ms -> 744ms (-16.8dB), 1 link -> CD605501-385D-4384-B8A5-3144548480F9
+[137/200] known "টিকেট": 336ms -> 672ms (-17.2dB), 1 link -> BFDAE86F-8F49-4702-A298-F53519EDA2CB
+[136/200] known "ঠিক করেছ": 144ms -> 984ms (-16.2dB), 2 links -> D737C967-A6A4-427B-9DA4-46FF30ABCB8D
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.6dB at 0.344s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.8dB at 0.37s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.4dB at 0.53s) is resumed speech — pausey render shipped untouched
+[138/200] known "হয়েছে": 144ms -> 744ms (-16.1dB), 1 link -> 623D99FD-E29B-42D9-937D-DF46A014E18F
+[140/200] known "চেয়েছি": 168ms -> 768ms (-16.7dB), 1 link -> 444AAFA7-9199-4891-BDEC-DA1140C3BF66
+[139/200] known "হাসপাতাল": 168ms -> 912ms (-16.8dB), 2 links -> E5637E77-E5E4-447A-AED1-2717908829ED
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 0.488s
+[Phase8-Audio-v13] masterAudio: tail rise -7.3dB repaired in 1 pass(es) at 0.608s
+[141/200] known "পাই": 144ms -> 528ms (-16.7dB), 1 link -> 672CBD5B-28B6-4B67-92CB-E6B2DC86DD6A
+[143/200] known "কুড়িটি": 144ms -> 708ms (-16.2dB), 1 link -> AAB89B85-C9A6-4885-8138-4C3381290567
+[142/200] known "দেখতে পাই": 144ms -> 588ms (-16dB), 2 links -> AA9C3358-6067-4793-B64A-28F537842AE1
+[144/200] known "শতটা": 144ms -> 792ms (-16.6dB), 1 link -> BD8EF273-EE76-4A87-A425-2CE77E8DF524
+[Phase8-Audio-v13] masterAudio: tail rise -19.2dB repaired in 1 pass(es) at 0.832s
+[145/200] known "থাকার": 144ms -> 672ms (-16.7dB), 1 link -> A780A3AB-BD19-45CB-A604-C5FB4A95D657
+[146/200] known "থাকতে দিতে": 384ms -> 932ms (-16.3dB), 1 link -> E6298600-D347-4C2B-818A-0CC556FDD855
+[147/200] known "হত": 144ms -> 648ms (-16dB), 1 link -> E081A171-E016-4479-94B0-2DBE3C8AB0DD
+[Phase8-Audio-v13] masterAudio: tail resurgence -2dB repaired in 1 pass(es) at 0.508s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.342s) is resumed speech — pausey render shipped untouched
+[148/200] known "তার কাছে": 384ms -> 608ms (-16dB), 1 link -> 16ED8B7F-26CF-4822-967A-150371257001
+[149/200] known "এক কাপ চা": 168ms -> 1104ms (-16.8dB), 1 link -> 811E815D-8FF7-4D9D-9779-2F705DF66BF3
+[Phase8-Audio-v13] masterAudio: tail rise -12.2dB repaired in 1 pass(es) at 0.616s
+[150/200] known "নিতে": 144ms -> 720ms (-15.5dB), 2 links -> FE1716E9-2F65-437C-A34C-211ADC0C1787
+[Phase8-Audio-v13] masterAudio: tail flag (rise -10dB at 0.528s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 0.43s
+[152/200] known "করছ": 144ms -> 720ms (-16.1dB), 1 link -> 09D9DE6D-AC38-49D1-BDB3-CAF01F19169A
+[151/200] known "আপনি": 144ms -> 716ms (-16.4dB), 9 links -> 85A4FFCD-AB01-4E53-B89B-BD7982B6FC06
+[153/200] known "বলতে পার": 168ms -> 530ms (-16.9dB), 1 link -> DC726D34-1A7A-4D4A-92EB-CBBD04401B2E
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -5.9dB at 0.732s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.248s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -4.3dB at 0.368s) is resumed speech — pausey render shipped untouched
+[154/200] known "পোস্টকার্ড": 168ms -> 888ms (-16dB), 1 link -> 0D33194F-0B18-4C4C-BB15-7E5424444465
+[155/200] known "পিঁপড়ে": 144ms -> 648ms (-15.6dB), 1 link -> C32B44D0-56A1-4E08-9BC1-DF8978BA1A7B
+[156/200] known "চাইছি": 168ms -> 768ms (-17.1dB), 1 link -> 7BDF51AB-5665-4E6E-ABD2-43DD3F81374F
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.632s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -3.7dB repaired in 1 pass(es) at 0.608s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.6dB at 0.322s) is resumed speech — pausey render shipped untouched
+[157/200] known "থাকতে থাকতে": 168ms -> 1032ms (-16.2dB), 1 link -> 78566189-731E-414A-8F72-B712AA6B623F
+[158/200] known "পৌঁছে দিতে": 144ms -> 708ms (-15.3dB), 1 link -> C1D1F48A-F366-4BFF-B546-E666B7885679
+[159/200] known "এলাকা": 168ms -> 648ms (-15.9dB), 1 link -> 220DBE3C-4DDC-4F56-AAD7-6E87041F375E
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.3dB repaired in 1 pass(es) at 0.536s
+[Phase8-Audio-v13] masterAudio: tail resurgence -2.5dB repaired in 1 pass(es) at 0.944s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.5dB at 1.396s) is resumed speech — pausey render shipped untouched
+[160/200] known "আর তারপর?": 144ms -> 636ms (-16.9dB), 0 links -> E054B29C-4E36-42D3-B615-49C4AF0626F7
+[161/200] known "কিছু শিখতে যাচ্ছি": 696ms -> 1044ms (-15.9dB), 1 link -> 841B80BF-98D5-4211-A13F-187ECC9A4A53
+[162/200] known "অন্য কারো সাথে শিখতে চাই।": 984ms -> 1752ms (-15.5dB), 1 link -> 862C9FA5-66CF-407C-8C97-8D11B1807736
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.3dB at 1.066s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.4dB at 1.41s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.3dB repaired in 1 pass(es) at 0.896s
+[163/200] known "তুমি কেন দ্রুত শিখতে চাও?": 984ms -> 1776ms (-15.2dB), 1 link -> 374A45A8-CD38-401B-A623-0BF0521BB828
+[164/200] known "আজ রাতে দেখাতে চাই।": 672ms -> 1440ms (-15.7dB), 1 link -> 9FE660F4-4AE2-4514-9953-2AECA917C35B
+[165/200] known "তুমি কি পড়তে চাও?": 576ms -> 996ms (-15.4dB), 1 link -> A636180F-3611-4C30-B1C9-884E02D8051A
+[Phase8-Audio-v13] masterAudio: tail resurgence -1.8dB repaired in 1 pass(es) at 0.88s
+[166/200] known "তুমি কি লিখতে চাও?": 432ms -> 1296ms (-15.4dB), 1 link -> 113F2E62-AC0D-41D3-9798-4DEE9BC145D9
+[167/200] known "তুমি কি রাখতে চাও?": 456ms -> 980ms (-15.4dB), 1 link -> 511D3A5D-FA36-41B7-81EB-AB6826FD249E
+[168/200] known "তুমি কি নিজে পরীক্ষা করো?": 912ms -> 1752ms (-15.1dB), 1 link -> 562AFE9C-9343-43D1-B6E5-E0F118EE27C9
+[Phase8-Audio-v13] masterAudio: tail resurgence -2dB repaired in 2 pass(es) at 1.4s
+[169/200] known "তুমি কি মজার কিছু খুঁজছো?": healthy (984ms vs fresh 1254ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.8dB repaired in 2 pass(es) at 1.206s
+[Phase8-Audio-v13] masterAudio: tail resurgence -3.3dB repaired in 1 pass(es) at 0.966s
+[Phase8-Audio-v13] masterAudio: tail resurgence -2.1dB repaired in 1 pass(es) at 0.896s
+[170/200] known "তুমি ভালো কিছু করছো": 768ms -> 1070ms (-15.5dB), 1 link -> 5EDAE80B-E15B-471D-B909-CCCE26FED503
+[171/200] known "অনেক কিছু করেছি": 528ms -> 1066ms (-15.2dB), 1 link -> 94A3A01C-975C-4E64-BF2C-1C236DBB7603
+[172/200] known "তুমি কি দেখতে চাও?": 480ms -> 996ms (-15.4dB), 1 link -> E237EB80-9187-405C-8FE6-7F174740AE69
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.924s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 0.8s
+[173/200] known "আমি তাকে চিনতাম": 600ms -> 1272ms (-15.4dB), 1 link -> A70C270E-3BFB-497B-B9B8-060AFC48B34B
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 1.064s) is resumed speech — pausey render shipped untouched
+[174/200] known "তুমি কী খুঁজছ?": 456ms -> 900ms (-15dB), 2 links -> 30EA18A6-964C-401E-9E68-0F5447A8BABE
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.992s) is resumed speech — pausey render shipped untouched
+[175/200] known "তুমি কি টাকা খুঁজছ?": 648ms -> 1464ms (-15.4dB), 1 link -> E4446A16-3844-4743-9ACA-AA7A6DA8FC09
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.1dB at 1.04s) is resumed speech — pausey render shipped untouched
+[176/200] known "নিশ্চিত করতে চায়": 672ms -> 1344ms (-15.3dB), 1 link -> 1DF1F30E-928B-4303-ABAA-EF8127A7F37B
+[177/200] known "তোমার আপত্তি আছে?": 648ms -> 1440ms (-15.3dB), 1 link -> 9A7858C5-1C64-4514-B2B9-85B44D959CAD
+[178/200] known "কেন তুমি চাও?": 504ms -> 1056ms (-15.9dB), 1 link -> 9AD57415-7A90-45A4-9396-1CD87D95161A
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 1.04s
+[Phase8-Audio-v13] masterAudio: tail resurgence -3dB repaired in 2 pass(es) at 1.152s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.2dB at 1.232s) is resumed speech — pausey render shipped untouched
+[180/200] known "আমি নিশ্চিত তার উচিত।": healthy (720ms vs fresh 952ms) — left alone
+[179/200] known "কিছু যোগ করতে পারে": 720ms -> 1140ms (-15.7dB), 1 link -> 6E656F01-FA9A-4441-8B78-2F6A707B5F2E
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.2dB repaired in 1 pass(es) at 0.92s
+[181/200] known "আমি বাগানটা দেখতে চাই": 840ms -> 1632ms (-15.3dB), 1 link -> CA8C4B36-D93E-4460-9B8F-F9444E3BF77D
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.7dB repaired in 1 pass(es) at 1.28s
+[182/200] known "তাদের থাকা উচিত": 576ms -> 1020ms (-15.6dB), 1 link -> 2AEE0977-0028-4868-B627-1268BA79546B
+[183/200] known "আমি তাই প্রত্যাশা করি": 744ms -> 1380ms (-15.5dB), 1 link -> DEE5EC77-CC32-4D9D-85CA-D83855C2FD21
+[Phase8-Audio-v13] masterAudio: tail resurgence -4.6dB repaired in 1 pass(es) at 1.032s
+[184/200] known "তারা মেরে ফেলতে চায়": 792ms -> 1132ms (-15.4dB), 1 link -> 1603239B-4910-4645-96D6-E8AD6EBA3F8B
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.7dB repaired in 1 pass(es) at 1.448s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.2dB at 0.992s) is resumed speech — pausey render shipped untouched
+[185/200] known "এখানে অনেক পিঁপড়ে আছে": 888ms -> 1548ms (-15.3dB), 1 link -> CFA52DFA-8825-4D80-AE68-636DE6370F79
+[186/200] known "তারা বুঝতে পারছে": 648ms -> 1392ms (-16.2dB), 2 links -> 3B903B96-6A8A-4495-8892-7214E16B3C1F
+[Phase8-Audio-v13] masterAudio: tail resurgence -3dB repaired in 3 pass(es) at 1.118s
+[187/200] known "তারা কি বুঝতে পারছে?": healthy (816ms vs fresh 876ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 0.8s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.3dB at 1.048s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -3.1dB repaired in 2 pass(es) at 1.666s
+[190/200] known "আমরা শ্বাস নেওয়ার চেষ্টা করছি।": healthy (1224ms vs fresh 1582ms) — left alone
+[188/200] known "তারা কমাতে পারে": 528ms -> 900ms (-15.3dB), 1 link -> 0B87E628-09FC-4912-A13A-BA45EBD55988
+[189/200] known "আমি এখানে থাকতাম।": 528ms -> 1416ms (-15dB), 1 link -> 5720D3A0-5FB0-4730-918A-A09DF3F3BBA1
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.8dB at 0.92s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.4dB at 0.728s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.1dB at 1.094s) is resumed speech — pausey render shipped untouched
+[192/200] known "আজ দেখতে পাই": 432ms -> 1128ms (-15.4dB), 1 link -> C9764E75-FE7E-435E-884A-5EED698F1444
+[191/200] known "উন্নতি দেখতে চাই": 528ms -> 1320ms (-15.1dB), 1 link -> DF747E68-D64A-4D35-A3B7-5CDE28CD5F83
+[193/200] known "আমি গাড়ি চালাতে চাই।": 792ms -> 1464ms (-15.7dB), 1 link -> 0EF9F2A1-A096-4D78-BD98-5F6A8B3494FD
+[Phase8-Audio-v13] masterAudio: tail rise -16.1dB repaired in 1 pass(es) at 1.06s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -3.5dB at 0.9s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 2 pass(es) at 0.92s
+[194/200] known "আমরা থাকতে চাই।": 528ms -> 1160ms (-15.4dB), 1 link -> 934E0834-9BD5-4DC8-A893-6E4542B32C65
+[195/200] known "আমি এটা নিতে চাই।": 600ms -> 1296ms (-15.8dB), 1 link -> 0C1639B5-B004-4F39-B30E-F4F50567D415
+[196/200] known "আমরা এটা নিতে চাই।": 600ms -> 882ms (-15.7dB), 1 link -> 764ACF98-44FE-4FD2-80E9-B7AFE6B3259E
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 1.808s
+[197/200] target1 "he said that he couldn't watch the footba: healthy (1704ms vs fresh 1908ms) — left alone
+[200/200] target2 "I don't think that it's very important": FAILED — tail defect (resurgence -1.4dB) still detected (resurgence -0.5dB) after 3 repair passes — refusing to ship
+[199/200] target2 "black": 288ms -> 576ms (-17.5dB), 1 link -> 3FA6F66F-6006-4BC2-B635-48CA4F459A4C
+[198/200] target2 "it": 384ms -> 600ms (-18.8dB), 8 links -> 6FBB3C69-D883-4E10-87DD-DBE3D158EFF2
+[Version] eng_for_ben: 0.730.5 → 0.730.6 (patch)
+[Version] eng_for_ben: integer version 1632 → 1633 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+194 repaired, 5 left alone (probe says healthy), 1 failed, of 200.
+199 renders, 1,621 characters of TTS.
+xAI health this run: 200 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-eng_for_ben-200.json
+
+[Azure TTS] Closing connection pool (0 total connections)...

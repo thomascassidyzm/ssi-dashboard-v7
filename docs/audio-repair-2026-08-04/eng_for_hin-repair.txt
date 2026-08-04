@@ -1,0 +1,276 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+SKIPPING 71 pod clip(s): pod links live in listening_pod_sentences — that is tools/rescue-wrong-language-clips.cjs's job, not this one.
+
+repair-silent-clips — eng_for_hin
+150 clips to repair (--only all)
+   confirmed: 100, suspect: 50
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders unchecked for language drift
+[3/150] known "अच्छी": 144ms -> 696ms (-17.9dB), 1 link -> 586AF233-0D1D-4783-832D-C6483A389573
+[2/150] known "वाक्य": 144ms -> 744ms (-16.5dB), 1 link -> 319CBFE5-5FE1-4DFC-90D8-8F0C6A3CE1F2
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.34s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -18.2dB repaired in 1 pass(es) at 0.55s
+[1/150] known "एक": 144ms -> 600ms (-16.6dB), 17 links -> 81AB076A-3181-4A68-99DD-81575F4DC400
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.1dB at 0.274s) is resumed speech — pausey render shipped untouched
+[4/150] known "बोलते": 144ms -> 696ms (-16dB), 1 link -> B38D2E82-7CC2-4FAC-A177-A15CD5FBD8A2
+[5/150] known "क्या आप": 144ms -> 650ms (-16dB), 6 links -> 4A0FBBD0-7112-46DD-A690-8F9C33670B2D
+[6/150] known "चाहता": 168ms -> 624ms (-16.5dB), 2 links -> 63D9E305-1782-4308-ACDC-F73CF16FC18A
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.274s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.9dB at 0.548s) is resumed speech — pausey render shipped untouched
+[7/150] known "लेकिन": 168ms -> 720ms (-15.7dB), 3 links -> ACC662A4-2D2D-4A71-B3B9-B10BD228012B
+[8/150] known "उसका": 144ms -> 672ms (-17dB), 2 links -> 5D8B8246-D5D1-4267-A46F-A6AB818270E2
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.9dB at 0.256s) is resumed speech — pausey render shipped untouched
+[9/150] known "मैं चाहता": 168ms -> 936ms (-15.4dB), 1 link -> 6039BF9D-0806-4C0E-AD62-CEF790D69509
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.6dB at 0.344s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.3dB at 0.3s) is resumed speech — pausey render shipped untouched
+[10/150] known "उसकी": 144ms -> 624ms (-16.5dB), 2 links -> 4CA688F0-A7B9-4A30-BCF2-EF52235BC463
+[11/150] known "बातें": 144ms -> 744ms (-15.6dB), 1 link -> 26A6C148-024D-45D6-B4C1-01389377F40D
+[12/150] known "चाहते": 144ms -> 648ms (-16.6dB), 2 links -> ACF95F6D-CAA8-4673-905E-AA6957467E8C
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -13.4dB at 0.244s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail rise -25.1dB repaired in 1 pass(es) at 0.394s
+[13/150] known "चाहते थे": 144ms -> 936ms (-15.6dB), 7 links -> 72B6AD71-B7A3-405E-8D96-4A01D7FF96A7
+[14/150] known "चुप": 144ms -> 480ms (-16.3dB), 4 links -> 14293A9D-90D8-49BF-BC06-AF6F182A789A
+[15/150] known "जब": 168ms -> 494ms (-16.7dB), 5 links -> 6713560F-24A6-416D-A6D0-786F2A21200C
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.9dB at 0.266s) is resumed speech — pausey render shipped untouched
+[16/150] known "बाधा": 168ms -> 720ms (-16.2dB), 1 link -> D282573B-BBD2-4313-8B0F-AF5A1607CC53
+[Phase8-Audio-v13] masterAudio: tail rise -26.6dB repaired in 1 pass(es) at 0.462s
+[17/150] known "इसके": 144ms -> 648ms (-16.3dB), 1 link -> 162EF905-B0F8-49D1-9B36-D831CEA8B356
+[Phase8-Audio-v13] masterAudio: tail rise -17.2dB repaired in 1 pass(es) at 0.602s
+[19/150] known "चिंता": 144ms -> 672ms (-16.6dB), 2 links -> F6FEC92F-9C28-42A4-9625-CA345674BCBA
+[18/150] known "कुछ": 144ms -> 562ms (-17.3dB), 13 links -> 885D64DA-6552-41DF-813E-2DBA61238E53
+[20/150] known "चिट्ठी": 168ms -> 702ms (-16.8dB), 1 link -> 7EA6A7AC-5DAA-4743-8023-5808CC3CF499
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.9dB at 0.458s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -3.4dB at 0.656s) is resumed speech — pausey render shipped untouched
+[22/150] known "रात को": 168ms -> 768ms (-15.6dB), 2 links -> 3A638175-7BC3-407C-BB54-625106E28CFA
+[21/150] known "चाहती थी": 144ms -> 840ms (-16.3dB), 2 links -> B2B1C5F0-C8F7-4B42-96E4-32CEDF125C66
+[23/150] known "दिलचस्प है": 144ms -> 1056ms (-15.6dB), 2 links -> 5EB81828-D693-41F9-8FD2-F32EF5125EFD
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.8dB at 0.368s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -3.8dB repaired in 1 pass(es) at 0.656s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1dB at 0.326s) is resumed speech — pausey render shipped untouched
+[25/150] known "मुश्किल": 168ms -> 768ms (-16.2dB), 1 link -> E132DBF2-0441-40A4-BC2D-4B9E32739EFF
+[24/150] known "अपने आप को": 288ms -> 756ms (-15.7dB), 2 links -> BD1AFE37-4778-43FA-8FC3-1C9C55D0D596
+[26/150] known "सच": 144ms -> 672ms (-19.4dB), 1 link -> 2BCCD523-F45C-4DF0-9D82-615F5AE20A0E
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.2dB at 0.512s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail rise -10.9dB repaired in 1 pass(es) at 0.314s
+[27/150] known "बहुत अच्छा": 168ms -> 912ms (-15.7dB), 3 links -> 04755607-9523-491F-AFF3-6EAECF1E5BA1
+[28/150] known "आपने": 384ms -> 720ms (-15.7dB), 4 links -> E6410051-3D0E-4F6D-AAA1-D2D7CDBE20F0
+[29/150] known "कब": 144ms -> 414ms (-16.3dB), 3 links -> A7AF15CE-A4C7-4A96-BEEF-663A7CFDF34E
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.272s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.8dB at 0.248s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.7dB at 0.344s) is resumed speech — pausey render shipped untouched
+[30/150] known "करते": 384ms -> 672ms (-16.5dB), 3 links -> 17A5A485-0F91-44CE-AFA7-D0059769DB75
+[31/150] known "कुछ और": 144ms -> 744ms (-16dB), 3 links -> DE26C355-2FEE-43B6-843F-99279F3214F9
+[32/150] known "आपको": 144ms -> 648ms (-15.8dB), 8 links -> 2B9083C8-6AC1-47F4-9987-EE6C6B6A1CF8
+[Phase8-Audio-v13] masterAudio: tail flag (rise -10.3dB at 0.322s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.7dB repaired in 1 pass(es) at 0.464s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -13dB at 0.452s) is resumed speech — pausey render shipped untouched
+[33/150] known "बस": 144ms -> 648ms (-16.9dB), 3 links -> CDAB6850-0300-4860-97B5-20CB639279E9
+[34/150] known "वह किताब": 144ms -> 564ms (-15.5dB), 1 link -> 3C8024EB-3466-4F3A-A289-B7EAA0846B55
+[35/150] known "किताब": 144ms -> 672ms (-16.7dB), 7 links -> DA453725-5328-416F-860D-7756D4135C5A
+[36/150] known "उसके": 144ms -> 672ms (-16.4dB), 1 link -> 99716ACE-0D27-4530-B46B-3203263C1051
+[37/150] known "फिर": 144ms -> 528ms (-16dB), 2 links -> B9C83932-A251-41B4-AF62-DA26952C34B9
+[38/150] known "अपनी": 360ms -> 600ms (-16dB), 1 link -> DF0B1B1B-2C1D-41F3-9CB0-A744C81C2848
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 0.44s
+[Phase8-Audio-v13] masterAudio: tail burst -19.8dB repaired in 1 pass(es) at 0.528s
+[39/150] known "मेज़ पर": 168ms -> 540ms (-14.7dB), 2 links -> A23278D3-0CCC-453E-8769-FB6BBF66FA8C
+[40/150] known "बेटा": 144ms -> 628ms (-16.9dB), 1 link -> CEBAB12C-E752-4D03-8855-9891FBF7F6A2
+[41/150] known "बेटी": 168ms -> 816ms (-15.7dB), 1 link -> A6D40D22-C95D-4AC5-B4AE-19B804AA4813
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.344s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.4dB at 0.56s) is resumed speech — pausey render shipped untouched
+[42/150] known "मौका": 144ms -> 744ms (-15.3dB), 3 links -> BF11BD7C-C29F-40B2-A57C-BBB21429AB56
+[43/150] known "क्या आपने": 144ms -> 960ms (-15.2dB), 4 links -> 79DAABFD-0630-456A-9BA6-07C1BDEB0970
+[44/150] known "देखी": 144ms -> 744ms (-15.8dB), 1 link -> 7B3B885F-59ED-4785-B6F4-B8002B46C050
+[Phase8-Audio-v13] masterAudio: tail resurgence -8dB repaired in 1 pass(es) at 0.434s
+[45/150] known "देता": 144ms -> 720ms (-15.6dB), 1 link -> 2BD28DE4-4FF5-4ACE-BDFE-39ACA37D1A6D
+[47/150] known "मेरे पिता": 168ms -> 912ms (-15dB), 1 link -> 0A4F92D6-60A8-4362-ADA3-ADBED2363C52
+[46/150] known "औरत": 144ms -> 534ms (-16.1dB), 4 links -> E9C7F1B3-E067-4DBC-87E2-87552419894D
+[Phase8-Audio-v13] masterAudio: tail resurgence -15.9dB repaired in 1 pass(es) at 0.604s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.8dB at 0.524s) is resumed speech — pausey render shipped untouched
+[48/150] known "मीटिंग": 144ms -> 704ms (-15.8dB), 1 link -> 15517092-394D-4F32-9D7F-580B89243F6C
+[50/150] known "बचा": 144ms -> 600ms (-16.7dB), 1 link -> 964B16DF-20BE-4543-84A5-819E9C333A4F
+[49/150] known "एक पार्टी": 168ms -> 912ms (-15.2dB), 1 link -> 3E4F8EFC-FD5F-4F8F-B7AB-DDD8982A3A84
+[Phase8-Audio-v13] masterAudio: tail flag (rise -6.6dB at 0.432s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail rise -18.4dB repaired in 1 pass(es) at 0.46s
+[51/150] known "रुकना": 144ms -> 768ms (-16dB), 2 links -> 5E5870AC-DF9C-4ACF-9D0C-C6037070A04A
+[52/150] known "अमित्र": 144ms -> 720ms (-15.4dB), 1 link -> 37021700-015F-4994-916E-84BD0C47D73B
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.9dB at 0.204s) is resumed speech — pausey render shipped untouched
+[53/150] known "पार्टी": 144ms -> 560ms (-16.4dB), 1 link -> FD70D093-6441-4630-942B-81AE07BAF058
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.2s) is resumed speech — pausey render shipped untouched
+[54/150] known "कितने": 144ms -> 600ms (-16dB), 1 link -> 42BE15B7-114C-4424-8C62-F0BDF4FAD79C
+[Phase8-Audio-v13] masterAudio: tail rise -15.7dB repaired in 1 pass(es) at 0.674s
+[56/150] target2 "perfect": healthy (720ms vs fresh 774ms) — left alone
+[55/150] known "पिता": 144ms -> 600ms (-16.5dB), 1 link -> 33071A14-B8FC-4545-971D-18E5F9F8694F
+[Phase8-Audio-v13] masterAudio: tail rise -10.5dB repaired in 1 pass(es) at 1.21s
+[Phase8-Audio-v13] masterAudio: tail rise -8.5dB repaired in 1 pass(es) at 0.882s
+[58/150] target2 "want to try": healthy (912ms vs fresh 982ms) — left alone
+[57/150] target2 "to work as a teacher": healthy (1368ms vs fresh 1310ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail rise -6.3dB repaired in 1 pass(es) at 0.674s
+[59/150] target2 "needed to": healthy (984ms vs fresh 774ms) — left alone
+[60/150] target2 "would you like": healthy (744ms vs fresh 936ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.9dB at 0.518s) is resumed speech — pausey render shipped untouched
+[61/150] known "तथ्यों पर": 144ms -> 888ms (-16.8dB), 2 links -> 71CF50C0-8083-4AB4-A8EF-2EB326DF7FAB
+[63/150] known "रख": 144ms -> 600ms (-16.2dB), 1 link -> CF47E116-CE72-455C-B9BC-25FE8F29569D
+[62/150] known "इस्तेमाल": 144ms -> 816ms (-16.4dB), 1 link -> 1C5FFEDD-3B22-4734-BCEA-2F6DE117ABF7
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.1dB at 0.282s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (rise -8.6dB at 0.754s) is resumed speech — pausey render shipped untouched
+[64/150] known "पाँचों": 144ms -> 648ms (-16.2dB), 1 link -> F3C90FC8-C99F-4D90-81F0-B8F073402FD9
+[65/150] known "एक और": 168ms -> 840ms (-15.7dB), 1 link -> FE4A1537-75D8-498C-ACBB-7780CE8EC886
+[66/150] known "एक किताब": 336ms -> 912ms (-15.6dB), 2 links -> 3EB38AF5-0780-4B1C-B97C-05D40EAD0709
+[Phase8-Audio-v13] masterAudio: tail burst -3dB repaired in 1 pass(es) at 0.514s
+[67/150] known "उस छात्र": 144ms -> 888ms (-16.4dB), 2 links -> 8095AA39-0DD0-44AA-BAA6-31FD78699F90
+[68/150] known "छात्र": 144ms -> 614ms (-16.7dB), 1 link -> B70C4C9D-C914-40D4-BDF6-3BC3CC5478C5
+[69/150] known "बिता": 144ms -> 696ms (-16.7dB), 1 link -> D6936AA6-CC32-470A-AA2C-F0A5D7B2934A
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.4dB at 0.33s) is resumed speech — pausey render shipped untouched
+[70/150] known "ऊपर तक": 144ms -> 840ms (-16dB), 2 links -> C45C57A7-FC3A-40F8-9AE7-D9A0DB55C57F
+[71/150] known "पहुँच": 144ms -> 624ms (-16.3dB), 1 link -> 6150ED53-A68A-409E-95A7-739553E8E529
+[72/150] known "सकता था": 144ms -> 960ms (-16.8dB), 1 link -> D3ECD160-B0D5-4B9C-BC5C-FEE07744D709
+[Phase8-Audio-v13] masterAudio: tail resurgence -1.6dB repaired in 1 pass(es) at 0.372s
+[73/150] known "पूछा": 384ms -> 672ms (-16.4dB), 3 links -> 9C72BAED-3723-4080-8DCD-1C20B3EC9327
+[74/150] known "कहा कि": 144ms -> 472ms (-17.2dB), 2 links -> 37D4F799-4A46-4259-BCEF-ABB51F4F8E6D
+[75/150] known "बच्चा": 144ms -> 792ms (-16.2dB), 2 links -> FD7942EF-48AE-4C58-8D92-0DD73326C3CC
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.7dB at 0.306s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -1.9dB repaired in 1 pass(es) at 0.632s
+[76/150] known "लड़की": 144ms -> 672ms (-15.7dB), 1 link -> 5113F909-18AD-44CA-821E-E41404A94BED
+[77/150] known "उतना": 144ms -> 672ms (-16dB), 1 link -> 480DB4AD-AF91-4840-8D34-D743B0442C72
+[78/150] known "आज जीतना": 240ms -> 732ms (-16.3dB), 1 link -> CCCE860B-0012-4472-AD62-A114E6080122
+[Phase8-Audio-v13] masterAudio: tail rise -14.1dB repaired in 1 pass(es) at 0.754s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.296s) is resumed speech — pausey render shipped untouched
+[79/150] known "एक बोतल": 144ms -> 854ms (-15.7dB), 1 link -> 8CC0034C-6813-4CF4-A494-7A8894FC247E
+[80/150] known "स्पष्ट": 144ms -> 768ms (-18.2dB), 1 link -> 2C0E7068-2E88-4BA9-AADE-9F50A674799F
+[81/150] known "ऊपर": 144ms -> 696ms (-16.3dB), 2 links -> 79F3BDA5-186C-4F20-959D-D9DDC0501DD4
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -7.6dB at 0.302s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -10.9dB repaired in 1 pass(es) at 0.352s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.392s) is resumed speech — pausey render shipped untouched
+[82/150] known "लिख": 144ms -> 600ms (-15.5dB), 1 link -> DC32472D-004A-4EDF-B8B7-14DA3DCF7D48
+[83/150] known "ग्रुप": 168ms -> 452ms (-15.2dB), 1 link -> 9B60A9E6-5F2F-43D9-B815-7A54D7E7BB30
+[84/150] known "सबका": 168ms -> 792ms (-17.5dB), 1 link -> 544ECBA9-51D1-469F-801B-C834ED9422EB
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -6.6dB at 0.31s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -3dB repaired in 1 pass(es) at 0.536s
+[85/150] known "वक्त": 144ms -> 672ms (-16.4dB), 1 link -> 5695B2E4-9B48-4159-88AC-3D84D39BF975
+[86/150] known "एक तरीका": 144ms -> 888ms (-15.9dB), 2 links -> E56F9432-5F98-4D55-8F2E-71989737B9A4
+[87/150] known "कई तथ्य": 144ms -> 636ms (-15.2dB), 1 link -> E051DFD9-A364-4B78-ADF8-069C57830F27
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 0.512s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.3dB at 0.56s) is resumed speech — pausey render shipped untouched
+[88/150] known "सबसे": 144ms -> 720ms (-17.9dB), 1 link -> CA6941CF-9A75-46C3-B650-07347F230117
+[89/150] known "पुल के पार": 144ms -> 612ms (-15.8dB), 1 link -> 408ADF52-C0B8-445E-B3E4-185757346C8E
+[90/150] known "एक बिस्तर": 144ms -> 960ms (-15.4dB), 1 link -> C10927C8-C661-454D-B163-322278E7AAB9
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.268s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail rise -11.4dB repaired in 1 pass(es) at 0.576s
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.224s) is resumed speech — pausey render shipped untouched
+[91/150] known "उनका": 144ms -> 648ms (-15.8dB), 1 link -> 77B00308-8932-4F45-81EF-F13C303B0783
+[92/150] known "विश्वास": 168ms -> 676ms (-16.4dB), 1 link -> 648C33C9-6C0D-4358-A146-694F676106AC
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.9dB at 0.322s) is resumed speech — pausey render shipped untouched
+[93/150] known "कपड़े": 384ms -> 624ms (-16.3dB), 2 links -> E0B86900-F68E-43C2-88F9-83B413B14EEC
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.6dB at 0.55s) is resumed speech — pausey render shipped untouched
+[94/150] known "सोचा": 168ms -> 672ms (-17.5dB), 2 links -> C63967DE-B057-4166-8706-081E351BBE29
+[Phase8-Audio-v13] masterAudio: tail rise -7.2dB repaired in 1 pass(es) at 0.924s
+[95/150] known "बच्चों को": 144ms -> 888ms (-16.4dB), 1 link -> 4D34BEFB-F07C-4AF2-B02C-9A5AB580AD6D
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.32s) is resumed speech — pausey render shipped untouched
+[96/150] known "पेशकश की": 168ms -> 1024ms (-17dB), 1 link -> 98A8BCE5-2889-4F12-9AEE-4F2D16451789
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.2dB at 0.334s) is resumed speech — pausey render shipped untouched
+[97/150] known "होता": 144ms -> 720ms (-16.4dB), 1 link -> C879B0AB-D777-4291-B01F-8F43A2954BB0
+[98/150] known "गलती": 144ms -> 720ms (-15.8dB), 1 link -> 60F2517E-360E-4B8A-8299-5A3875A73A1D
+[Phase8-Audio-v13] masterAudio: tail flag (rise -7.1dB at 0.314s) is resumed speech — pausey render shipped untouched
+[100/150] known "हर": 144ms -> 528ms (-16.5dB), 1 link -> D95D24E1-AF2F-44B8-B36B-977A3B7D6EEC
+[99/150] target1 "bought": 192ms -> 624ms (-16.4dB), 1 link -> 41884CBA-3406-4BF4-89BB-D2934D1E68D4
+[101/150] known "दस": 168ms -> 696ms (-17.4dB), 1 link -> F9163BA6-D277-4EB6-BE5E-787120FCC3BF
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.374s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -7.3dB at 0.524s) is resumed speech — pausey render shipped untouched
+[102/150] known "लाते": 168ms -> 744ms (-15.5dB), 1 link -> 95F42832-506B-4B33-8C3F-5D89E558151F
+[104/150] known "खुद को": 144ms -> 720ms (-16.7dB), 1 link -> 63C2C60C-0426-46C4-A033-75EF6F0108EE
+[103/150] known "दुखद": 144ms -> 744ms (-16.7dB), 1 link -> 9385914D-2CCD-43DA-8C71-0DCEE2936843
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.1dB at 0.296s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.602s) is resumed speech — pausey render shipped untouched
+[105/150] known "कंपनी": 144ms -> 696ms (-16dB), 1 link -> 17FD64DB-4DCB-4AD0-8318-4EB546965D67
+[106/150] known "बच्चे": 144ms -> 696ms (-16.4dB), 1 link -> CD09F528-3ECC-415B-9F2B-E6186666A31D
+[107/150] known "कितना ऊँचा": 360ms -> 984ms (-16.4dB), 1 link -> 23094483-4421-4516-AA21-906BC5C35998
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -6.6dB at 0.37s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.3dB at 0.398s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -7.8dB at 0.434s) is resumed speech — pausey render shipped untouched
+[108/150] known "खुद": 168ms -> 576ms (-16.7dB), 1 link -> 283C3071-7AB4-4645-91DE-6E696929D237
+[109/150] known "टमाटर": 144ms -> 768ms (-16.3dB), 1 link -> D9680747-C998-46F1-96DB-4C25C1C16A39
+[110/150] known "अतीत": 144ms -> 696ms (-16.5dB), 1 link -> 500522FD-3FC1-4F01-93A9-D442E25530DF
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -7.9dB at 0.362s) is resumed speech — pausey render shipped untouched
+[112/150] known "नीचे": 144ms -> 768ms (-15.8dB), 1 link -> 26BA8EF9-FCB3-4591-B5AF-82535196524C
+[111/150] known "चर्च": 144ms -> 696ms (-17.3dB), 1 link -> 5D664C0B-5259-4CE1-9EF7-2A765DCEF900
+[113/150] known "एक तरीका।": 144ms -> 960ms (-15.8dB), 1 link -> 369F68AA-82D9-4BED-9901-F02E63C4EFFB
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -6.1dB at 0.804s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.3dB repaired in 1 pass(es) at 0.93s
+[115/150] known "बिल्कुल निश्चित रूप से": 864ms -> 1584ms (-15.9dB), 1 link -> 0E898CF1-02B7-45F7-99D8-12CC181E0E7B
+[114/150] known "नहीं चाहती थी": 528ms -> 1152ms (-15.5dB), 1 link -> CAE4BA7A-69DA-4CA5-9323-6A8D58093460
+[116/150] known "मुझे पता होता": 528ms -> 1030ms (-15.5dB), 1 link -> 4238302A-31A4-4668-8C7D-03F96E269DE8
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.6dB at 0.84s) is resumed speech — pausey render shipped untouched
+[117/150] known "किसी रेस्टोरेंट में": 744ms -> 1296ms (-15.4dB), 2 links -> 2E4A66DE-36DB-4897-AF8D-210963BA3E3A
+[118/150] known "बहुत कुछ सीखना": 504ms -> 1224ms (-15.8dB), 1 link -> FBCD17EE-E546-44CF-BB29-6C2CACF2DCCC
+[119/150] known "वह बहुत अमित्र है।": 672ms -> 1440ms (-15.5dB), 1 link -> F997F40C-CF78-474B-A270-D0A36367F714
+[Phase8-Audio-v13] masterAudio: tail resurgence -1.3dB repaired in 1 pass(es) at 1.228s
+[120/150] target1 "what do you think about this book": healthy (1296ms vs fresh 1328ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence 0dB at 0.812s) is resumed speech — pausey render shipped untouched
+[121/150] known "वह लिख सकती है": 528ms -> 1224ms (-15.7dB), 2 links -> 157E89C8-06E4-465D-A19D-AF3C1C025B6F
+[122/150] known "नहीं चाहता था": 528ms -> 1200ms (-15.2dB), 1 link -> DD7D8965-746C-4D90-BFBC-F5CA290E4FF9
+[123/150] known "वह नहीं पहुँच सकी": 696ms -> 1416ms (-15.6dB), 1 link -> 58255854-BDDA-4784-B629-BD05BF9DC15F
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.4dB at 0.976s) is resumed speech — pausey render shipped untouched
+[Phase8-Audio-v13] masterAudio: tail resurgence 0dB repaired in 1 pass(es) at 0.662s
+[125/150] known "क्या चाहते थे": 432ms -> 762ms (-15.7dB), 1 link -> 48ED2986-28FF-454D-9CCE-E1366A4E50D3
+[124/150] known "कोई फर्क नहीं पड़ता": 648ms -> 1296ms (-15.4dB), 1 link -> 69A4C6EA-569E-49F3-8CB3-6251025573A1
+[126/150] known "क्या वे चाहते थे": 528ms -> 1200ms (-15.5dB), 2 links -> FE5390B7-1D40-4A59-A9EF-7456BB1AC526
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.8dB repaired in 1 pass(es) at 0.824s
+[Phase8-Audio-v13] masterAudio: tail resurgence -1.1dB repaired in 1 pass(es) at 1.704s
+[128/150] target1 "he said that he couldn't watch the footba: healthy (1704ms vs fresh 1804ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail rise -6.7dB repaired in 2 pass(es) at 1.166s
+[129/150] target1 "they want to love each other": healthy (1008ms vs fresh 1070ms) — left alone
+[127/150] known "क्या आप कर पाए": 408ms -> 924ms (-16.7dB), 1 link -> A85798C1-8D13-4A02-AA15-4CC181C68C66
+[Phase8-Audio-v13] masterAudio: tail resurgence -1.8dB repaired in 2 pass(es) at 1.056s
+[130/150] target1 "they want an approach": healthy (792ms vs fresh 890ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail rise -22.7dB repaired in 1 pass(es) at 1.342s
+[Phase8-Audio-v13] masterAudio: tail burst -3.8dB repaired in 1 pass(es) at 1.472s
+[Phase8-Audio-v13] masterAudio: tail resurgence -6.1dB repaired in 1 pass(es) at 1.358s
+[133/150] target1 "there's someone under the bridge": healthy (1272ms vs fresh 1458ms) — left alone
+[131/150] target1 "it's the least you could do": 1056ms -> 1442ms (-16.3dB), 1 link -> F0B67AC4-56BA-47AB-B17A-B19D9FD09A7C
+[132/150] target1 "I think it's under the bridge": 1152ms -> 1572ms (-16.6dB), 1 link -> 276AB4FC-B2FE-4479-9941-6B8EBFB44A9B
+[Phase8-Audio-v13] masterAudio: tail rise -18.9dB repaired in 1 pass(es) at 1.652s
+[Phase8-Audio-v13] masterAudio: tail resurgence -2.7dB repaired in 1 pass(es) at 1.368s
+[Phase8-Audio-v13] masterAudio: tail resurgence -7.2dB repaired in 1 pass(es) at 2.734s
+[136/150] target1 "I don't know how much you are willing to : healthy (2376ms vs fresh 2834ms) — left alone
+[134/150] target1 "it's somewhere under the bridge": 1224ms -> 1752ms (-16.4dB), 1 link -> 5F78502A-454E-412C-9C31-073E69885188
+[135/150] target1 "can you go across the bridge?": 1056ms -> 1468ms (-15.7dB), 1 link -> 0027BB24-4A8F-45C9-AC89-20448E65A17E
+[Phase8-Audio-v13] masterAudio: tail rise -6.6dB repaired in 1 pass(es) at 1.03s
+[138/150] target1 "I think it would have been the sensible t: healthy (1824ms vs fresh 2064ms) — left alone
+[139/150] target1 "she would have bought something": healthy (1224ms vs fresh 1560ms) — left alone
+[137/150] target1 "it's from the hospital": 840ms -> 1130ms (-16.2dB), 1 link -> E34DB891-6E46-4070-A7C7-49853C40522C
+[Phase8-Audio-v13] masterAudio: tail rise -12.9dB repaired in 1 pass(es) at 1.496s
+[141/150] target2 "they want to speak with each other": healthy (1320ms vs fresh 1596ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail resurgence -5.9dB repaired in 3 pass(es) at 1.86s
+[140/150] target2 "I don't think that it's very important": healthy (1536ms vs fresh 1704ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail rise -18.5dB repaired in 2 pass(es) at 2.04s
+[142/150] target2 "they want to spend more time with each ot: healthy (1776ms vs fresh 1890ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail rise -7.5dB repaired in 1 pass(es) at 0.832s
+[143/150] target2 "could we have something?": healthy (984ms vs fresh 932ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail rise -8.5dB repaired in 2 pass(es) at 1.226s
+[144/150] target2 "would like to love each other": healthy (1176ms vs fresh 1078ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail rise -12.7dB repaired in 1 pass(es) at 1.792s
+[145/150] target2 "they want to learn to love each other": healthy (1512ms vs fresh 1892ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail resurgence -6.8dB repaired in 2 pass(es) at 1.63s
+[146/150] target2 "it's on the other side of the entrance": healthy (1488ms vs fresh 1600ms) — left alone
+[147/150] target2 "I don't know how much you are willing to : healthy (2352ms vs fresh 2928ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail resurgence -11.1dB repaired in 1 pass(es) at 1.14s
+[149/150] target2 "what would you like to drink?": healthy (1200ms vs fresh 1240ms) — left alone
+[148/150] target2 "she was there at the time": 1008ms -> 1584ms (-16.6dB), 1 link -> 4781A3BD-6348-4EF0-BC30-BF75D49A660B
+[150/150] target2 "what was happening?": 768ms -> 1080ms (-17.3dB), 0 links -> AD7A9AED-7974-40A4-A194-78E5793E8071
+[Version] eng_for_hin: 0.940.9 → 0.940.10 (patch)
+[Version] eng_for_hin: integer version 1685 → 1686 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+128 repaired, 22 left alone (probe says healthy), 0 failed, of 150.
+150 renders, 1,654 characters of TTS.
+xAI health this run: 150 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-eng_for_hin-150.json
+
+[Azure TTS] Closing connection pool (0 total connections)...
