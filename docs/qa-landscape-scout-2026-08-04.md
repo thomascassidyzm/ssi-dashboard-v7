@@ -36,9 +36,10 @@ Counts, by what each check actually does:
 | Checks that are **wired to nothing** (dead code / unmounted / commented out) | **9** | Built, never reachable |
 | Checks that are **installed but silently switched OFF in production** | **1** (the xAI wrong-language phonology gate) | Believed on; provably off |
 
-So of roughly **26 identifiable quality capabilities, exactly one family enforces** —
-and that one family only enforces on *new content submitted through the course-builder
-API*. It has never run over the existing estate. Every course built or edited by any
+The table in §2 has **40 rows**. Counting the submit gate's ~12 internal checks as the
+one family they are, that is **29 distinct capabilities — and exactly one family
+enforces.** That one family only enforces on *new content submitted through the
+course-builder API*. It has never run over the existing estate. Every course built or edited by any
 other path — direct DB insert, batch regeneration, the audio pipeline, the QA fixer
 agents — is entirely ungated.
 
