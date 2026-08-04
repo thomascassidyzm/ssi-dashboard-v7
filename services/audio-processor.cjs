@@ -494,8 +494,10 @@ async function detectTailClick(audioPath, options = {}) {
  *
  * @returns {Promise<null | {ok: boolean, kept: string, cut: string, missing: string[]}>}
  */
+const WHISPER_BIN = process.env.WHISPER
+  || (fs.existsSync('/opt/homebrew/bin/whisper-cli') ? '/opt/homebrew/bin/whisper-cli' : 'whisper-cli');
 const WHISPER_MODEL = process.env.WHISPER_MODEL
-  || '/Users/tomcassidy/SSi/whisper-models/ggml-small.bin';
+  || path.join(require('os').homedir(), '.local/share/whisper-models/ggml-small.bin');
 
 // Bounded whisper concurrency: each whisper-cli process holds ~600MB of model
 // weights, and repairTailDefect runs at the caller's batch concurrency — the
@@ -536,7 +538,12 @@ let _whisperReady = null;
 async function whisperAvailable() {
   if (_whisperReady === null) {
     try {
-      await execAsync('command -v whisper-cli');
+      // WHISPER_BIN may be a bare command (PATH lookup) or an absolute path.
+      if (path.isAbsolute(WHISPER_BIN)) {
+        if (!(await fs.pathExists(WHISPER_BIN))) throw new Error('whisper-cli not found');
+      } else {
+        await execAsync(`command -v ${WHISPER_BIN}`);
+      }
       _whisperReady = await fs.pathExists(WHISPER_MODEL);
     } catch { _whisperReady = false; }
   }
@@ -560,7 +567,7 @@ async function verifyTrimKeepsText(audioPath, trimSec, text, language) {
         // execFile (no shell) + timeout/SIGKILL: whisper-cli itself is the
         // child, so a hung or abandoned run is reaped, never orphaned.
         const stdout = await new Promise((resolve, reject) => {
-          execFile('whisper-cli',
+          execFile(WHISPER_BIN,
             ['-m', WHISPER_MODEL, '-l', lang, '-nt', '-t', String(process.env.WHISPER_THREADS || 4), '-f', wav],
             { encoding: 'utf8', maxBuffer: 1 << 22, timeout: 120000, killSignal: 'SIGKILL' },
             (err, out) => (err ? reject(err) : resolve(out)));

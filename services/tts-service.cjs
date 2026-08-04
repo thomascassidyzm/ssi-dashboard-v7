@@ -563,8 +563,10 @@ function isRetriableTtsError(error) {
 // Skipped when whisper-cli/model are absent (logged once), when the steered
 // language is English/auto (no cross-language risk to detect), or when
 // XAI_PHONO_GATE=0.
-const WHISPER_BIN = process.env.WHISPER || '/opt/homebrew/bin/whisper-cli';
-const WHISPER_MODEL = process.env.WHISPER_MODEL || '/tmp/whisper-models/ggml-small.bin';
+const WHISPER_BIN = process.env.WHISPER
+  || (fs.existsSync('/opt/homebrew/bin/whisper-cli') ? '/opt/homebrew/bin/whisper-cli' : 'whisper-cli');
+const WHISPER_MODEL = process.env.WHISPER_MODEL
+  || path.join(require('os').homedir(), '.local/share/whisper-models/ggml-small.bin');
 const FFMPEG_BIN = process.env.FFMPEG || (fs.existsSync('/opt/homebrew/bin/ffmpeg') ? '/opt/homebrew/bin/ffmpeg' : 'ffmpeg');
 const PHONO_GATE_ON = process.env.XAI_PHONO_GATE !== '0' && fs.existsSync(WHISPER_BIN) && fs.existsSync(WHISPER_MODEL);
 let phonoGateWarned = false;
