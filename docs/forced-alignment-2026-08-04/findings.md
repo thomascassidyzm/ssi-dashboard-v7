@@ -296,11 +296,19 @@ Measured on this VM. 8 cores, no GPU.
 | model | clips | concurrency × threads | wall clock | s/clip | **10,000 clips** |
 |---|---:|---|---:|---:|---:|
 | `ggml-small` (488 MB) | 165 | 4 × 2 | 282 s | **1.71** | **4.75 h** |
-| `ggml-medium` (1.5 GB) | 165 | 4 × 2 | _see §6a_ | | |
+| `ggml-medium` (1.5 GB) | — | — | **not measured** | — | — |
 
 At `small`, a full course sweep is an overnight job on one box, or well under an hour on eight.
-It is free — local CPU, no metered API. The download of `ggml-medium.bin` was the only network
-cost and it is local disk only.
+It is free — local CPU, no metered API.
+
+**`ggml-medium` was not measured — explicit gap.** The model was downloaded and the run was
+started twice; both times the process was killed by session teardown partway through (78/165 on
+the first attempt). It is a nice-to-have row, not a load-bearing one: the brief authorised
+escalating to `medium` *only if `small` failed to separate*, and `small` separates at 98.8%
+recall / 1.2% false alarm. Escalating would raise cost roughly 3× for headroom the result does
+not need. Re-run with `node scripts/fa-exp/score.cjs --model medium` if the question ever
+becomes live — the model is on disk at
+`/home/tomcassidy/.local/share/whisper-models/ggml-medium.bin`.
 
 ---
 
