@@ -8,6 +8,7 @@ import { ref, computed } from 'vue'
 import { useAuth } from '@/composables/useAuth'
 import pack from '@/explainer/pack.json'
 import { evaluateRules } from '@/explainer/evaluateRules'
+import { startWalk } from '@/walkthrough/useWalkthrough'
 
 const props = defineProps({
   mount: { type: String, required: true }, // 'home' | 'record-room' | 'qa'
@@ -56,7 +57,14 @@ const invitations = computed(() => {
     <div v-for="inv in invitations" :key="inv.key" class="notice-card">
       <span class="notice-text">{{ inv.text }}</span>
       <span class="notice-actions">
-        <router-link v-if="inv.to" :to="inv.to" class="notice-cta">{{ inv.ctaLabel }}</router-link>
+        <!-- A walk: CTA offers a clip rather than navigating. The tap is the
+             only way a clip ever starts — the compiler forbids any other
+             call site (gateNoAutoPlay). -->
+        <button
+          v-if="inv.walk" type="button" class="notice-cta notice-cta-btn"
+          @click="startWalk(inv.walk)"
+        >{{ inv.ctaLabel || 'Show me' }}</button>
+        <router-link v-else-if="inv.to" :to="inv.to" class="notice-cta">{{ inv.ctaLabel }}</router-link>
         <button type="button" class="notice-dismiss" aria-label="Dismiss" @click="dismiss(inv.key)">×</button>
       </span>
     </div>
@@ -78,6 +86,7 @@ const invitations = computed(() => {
   text-decoration: none; white-space: nowrap;
 }
 .notice-cta:hover { text-decoration: underline; text-underline-offset: 3px; }
+.notice-cta-btn { background: none; border: none; padding: 0; cursor: pointer; font-family: inherit; }
 .notice-dismiss {
   background: none; border: none; cursor: pointer; padding: 0 4px; line-height: 1;
   font-size: 15px; color: var(--faint);

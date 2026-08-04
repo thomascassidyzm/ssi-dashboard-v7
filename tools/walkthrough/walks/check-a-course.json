@@ -1,0 +1,28 @@
+{
+  "id": "check-a-course",
+  "title": "Clearing QA flags",
+  "status": "authored",
+  "personas": ["admin", "editor"],
+  "place": { "section": "checking" },
+  "steps": [
+    {
+      "anchor": "qa-filters",
+      "choice": "setting",
+      "say": "Narrow the list to one kind of problem at a time — errors first, so the breakages get seen before the nitpicks.",
+      "advance": { "on": "click" }
+    },
+    {
+      "anchor": "qa-dismiss-flag",
+      "choice": "click",
+      "say": "Dismiss says the CHECKER was wrong, not the content — the phrase stays exactly as it is. Use it whenever the flag is a false positive.",
+      "advance": { "on": "next" }
+    },
+    {
+      "anchor": "qa-approve-all",
+      "choice": "click",
+      "say": "Approving deletes every flag you did NOT dismiss, so dismiss first and approve last. Nothing goes until you tap this.",
+      "advance": { "on": "next" },
+      "terminal": "Dismiss the false positives, then approve once. This clip changed nothing — only your own taps do."
+    }
+  ]
+}

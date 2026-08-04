@@ -1,6 +1,6 @@
 {
-  "version": "f222c9ee9159",
-  "generatedAt": "2026-08-03",
+  "version": "47bddf445043",
+  "generatedAt": "2026-08-04",
   "truth": {
     "navTabs": {
       "primary": [
@@ -612,8 +612,8 @@
       "min": 1,
       "invitation": "{count} open QA flags are marked as errors — these are the ones worth clearing first.",
       "cta": {
-        "label": null,
-        "target": "self"
+        "label": "Show me",
+        "target": "walk:check-a-course"
       }
     },
     {
@@ -1135,6 +1135,6 @@
       }
     },
     "note": "scripts/vocab-gate/audit-results.json absent on this machine — snapshot carried over from the previous pack (98 courses)",
-    "generatedAt": "2026-08-03"
+    "generatedAt": "2026-08-04"
   }
 }

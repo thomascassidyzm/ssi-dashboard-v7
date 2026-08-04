@@ -65,6 +65,19 @@ function resolveTarget(target, scope, count) {
   return interpolate(target, scope, count)
 }
 
+/**
+ * A 'walk:<id>' CTA offers a "how this works" clip instead of navigating: the
+ * invitation carries a `walk` field, NoticingInvitations renders it as a
+ * "Show me" button, and the tap calls startWalk. Lockstep-checked by
+ * tools/walkthrough/lib.mjs (gateOffers), which fails the build if this
+ * prefix handling ever leaves the evaluator or names a clip that does not
+ * exist — or one still marked skeleton.
+ */
+function resolveWalk(target) {
+  if (!target || !target.startsWith('walk:')) return null
+  return target.slice(5) || null
+}
+
 const MAX_PER_RULE = 3
 
 /**
@@ -93,6 +106,7 @@ export function evaluateRules(rules, data, persona, mount) {
         text: interpolate(rule.invitation, scope),
         ctaLabel: interpolate(rule.cta?.label, scope),
         to: resolveTarget(rule.cta?.target, scope),
+        walk: resolveWalk(rule.cta?.target),
       })
       continue
     }
@@ -115,6 +129,7 @@ export function evaluateRules(rules, data, persona, mount) {
           text: interpolate(rule.invitation, payload, matches.length),
           ctaLabel: interpolate(rule.cta?.label, payload, matches.length),
           to: resolveTarget(rule.cta?.target, payload, matches.length),
+          walk: resolveWalk(rule.cta?.target),
         })
       }
     } else if (rule.shape === 'perChild') {
@@ -125,6 +140,7 @@ export function evaluateRules(rules, data, persona, mount) {
           text: interpolate(rule.invitation, item),
           ctaLabel: interpolate(rule.cta?.label, item),
           to: resolveTarget(rule.cta?.target, item),
+          walk: resolveWalk(rule.cta?.target),
         })
       }
     }

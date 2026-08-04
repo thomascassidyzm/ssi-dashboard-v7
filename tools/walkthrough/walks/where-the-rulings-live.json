@@ -1,0 +1,22 @@
+{
+  "id": "where-the-rulings-live",
+  "title": "Finding the ruling behind a decision",
+  "status": "authored",
+  "personas": ["admin"],
+  "place": { "section": "how" },
+  "steps": [
+    {
+      "anchor": "how-ruling-card",
+      "choice": "click",
+      "say": "Rulings are the decisions the whole app obeys — read one when you want to know WHY something behaves the way it does, rather than how to work it.",
+      "advance": { "on": "next" }
+    },
+    {
+      "anchor": "how-stocktake-link",
+      "choice": "click",
+      "say": "Stock-take is the same truth as numbers — what actually exists in the database right now, so you can check a ruling against reality instead of trusting it.",
+      "advance": { "on": "next" },
+      "terminal": "Ruling first, stock-take second: the decision, then the evidence it is still being kept."
+    }
+  ]
+}

@@ -2,6 +2,11 @@
   <AppNavbar />
   <router-view />
 
+  <!-- The ONE "how this works clip" overlay (docs/walkthrough-clips.md).
+       Mounted once; renders whichever clip useWalkthrough holds. Never
+       auto-plays — the compiler forbids startWalk outside an @click. -->
+  <WalkOverlay />
+
   <!-- Theme toggle now lives in the account menu (AppNavbar) — see ThemeToggle item there. -->
   <div class="build-label">
     {{ gitCommit }}
@@ -10,6 +15,7 @@
 
 <script setup>
 import AppNavbar from './components/AppNavbar.vue'
+import WalkOverlay from './components/explainer/WalkOverlay.vue'
 
 const gitCommit = __GIT_COMMIT__
 </script>

@@ -40,7 +40,7 @@
       ],
       "min": 1,
       "invitation": "{count} open QA flags are marked as errors — these are the ones worth clearing first.",
-      "cta": { "label": null, "target": "self" }
+      "cta": { "label": "Show me", "target": "walk:check-a-course" }
     },
     {
       "id": "qa-open-warning-flags",

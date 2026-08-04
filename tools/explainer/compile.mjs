@@ -352,11 +352,24 @@ if (existsSync(rulesPath)) {
       }
     }
     // CTA target: 'self' (the invitation stands on the page that holds the
-    // data) or a real router path, {param} tolerated.
+    // data), 'walk:<id>' (offer a "how this works" clip instead of
+    // navigating), or a real router path, {param} tolerated.
     const target = rule.cta?.target
-    const targetBase = (target || '').replace(/\{[\w.]+\}.*$/, '').replace(/\/$/, '')
-    if (target !== 'self' && (!targetBase.startsWith('/') || !routerSrc.includes(`'${targetBase}`))) {
-      failures.push(`DRIFT: rule "${rule.id}" links "${target}" but src/router/index.js has no such path`)
+    if (target?.startsWith('walk:')) {
+      // Lockstep with the clips pack: the clip must exist as an authored
+      // source file. (tools/walkthrough/compile.mjs owns the deeper check —
+      // that it is authored rather than skeleton, and that its anchors and
+      // personas hold. This is the cheap half, so a bad offer fails here too.)
+      const id = target.slice(5)
+      const walkFile = join(HERE, '..', 'walkthrough', 'walks', `${id}.json`)
+      if (!existsSync(walkFile)) {
+        failures.push(`DRIFT: rule "${rule.id}" offers "${target}" but tools/walkthrough/walks/${id}.json does not exist`)
+      }
+    } else {
+      const targetBase = (target || '').replace(/\{[\w.]+\}.*$/, '').replace(/\/$/, '')
+      if (target !== 'self' && (!targetBase.startsWith('/') || !routerSrc.includes(`'${targetBase}`))) {
+        failures.push(`DRIFT: rule "${rule.id}" links "${target}" but src/router/index.js has no such path`)
+      }
     }
   }
 } else {

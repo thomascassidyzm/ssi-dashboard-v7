@@ -58,11 +58,13 @@
         <div v-if="dialogueAvailable && assignedSlot" class="room-mode-switch">
           <button
             class="mode-tab"
+            data-walk="record-mode-script" data-persona="all"
             :class="{ active: roomMode === 'script' }"
             @click="modeOverride = 'script'"
           >Reading script</button>
           <button
             class="mode-tab"
+            data-walk="record-mode-dialogue" data-persona="all"
             :class="{ active: roomMode === 'dialogue' }"
             @click="modeOverride = 'dialogue'"
           >Dialogue lines</button>

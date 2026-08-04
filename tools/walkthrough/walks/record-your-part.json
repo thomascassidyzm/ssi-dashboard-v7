@@ -1,0 +1,22 @@
+{
+  "id": "record-your-part",
+  "title": "Your two kinds of recording",
+  "status": "authored",
+  "personas": ["admin", "editor", "recorder"],
+  "place": { "section": "record-room" },
+  "steps": [
+    {
+      "anchor": "record-mode-script",
+      "choice": "toggle",
+      "say": "Reading script is the long list of phrases in your own voice part — stop and pick it up whenever you like, because what you have already read is skipped.",
+      "advance": { "on": "click" }
+    },
+    {
+      "anchor": "record-mode-dialogue",
+      "choice": "toggle",
+      "say": "Dialogue lines are recorded as one continuous take and sliced up afterwards, so you can act the conversation instead of stopping between every line.",
+      "advance": { "on": "click" },
+      "terminal": "Whichever you pick, everything is saved under your voice part — so two people can never be mistaken for each other."
+    }
+  ]
+}

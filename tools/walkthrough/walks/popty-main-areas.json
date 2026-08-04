@@ -1,0 +1,28 @@
+{
+  "id": "popty-main-areas",
+  "title": "Where everything lives",
+  "status": "authored",
+  "personas": ["admin", "editor"],
+  "place": { "section": "home" },
+  "steps": [
+    {
+      "anchor": "home-courses",
+      "choice": "click",
+      "say": "Courses is where the work happens — every course you can touch, at whatever stage it is in. Start here when you have something to build, translate, record or ship.",
+      "advance": { "on": "next" }
+    },
+    {
+      "anchor": "home-how",
+      "choice": "click",
+      "say": "**How & Why** is the app explaining itself — what to do here, and the rulings behind it. It is compiled from the code, so it cannot drift out of date the way a manual would.",
+      "advance": { "on": "next" }
+    },
+    {
+      "anchor": "home-admin",
+      "choice": "click",
+      "say": "Admin is the settings that apply across every course at once — who has access, and how the algorithms behave. Change something here and it changes everywhere.",
+      "advance": { "on": "next" },
+      "terminal": "Three doors, and that is the whole hub. Nothing you tapped during this changed anything."
+    }
+  ]
+}

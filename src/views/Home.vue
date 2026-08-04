@@ -28,7 +28,7 @@
 
         <div class="hub-grid">
           <!-- Courses -->
-          <router-link to="/courses" class="hub-card card-courses">
+          <router-link to="/courses" class="hub-card card-courses" data-walk="home-courses" data-persona="all">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">
@@ -57,7 +57,7 @@
           </router-link>
 
           <!-- How & Why — the founder's "Rulings + How-to" surface -->
-          <router-link to="/how" class="hub-card card-docs">
+          <router-link to="/how" class="hub-card card-docs" data-walk="home-how" data-persona="all">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">
@@ -85,7 +85,7 @@
           </router-link>
 
           <!-- Admin -->
-          <router-link to="/admin" class="hub-card card-admin">
+          <router-link to="/admin" class="hub-card card-admin" data-walk="home-admin" data-persona="all">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">

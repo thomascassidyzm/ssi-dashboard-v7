@@ -1,0 +1,53 @@
+{
+  "comment": "The LEDGER of what popty.app can DO (founder ruling 2026-08-04: 'anything that popty.app can DO, can/must be broken down into a clip'). Every clip in tools/walkthrough/walks/ must be a capability here \u2014 gateInventory fails the build otherwise \u2014 and the compile prints coverage on every run. Hand-authored; see docs/walkthrough-clips.md.",
+  "capabilities": [
+    {
+      "id": "popty-main-areas",
+      "title": "Where everything lives",
+      "section": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/Home.vue",
+      "verb": "choose which of the three main areas to work in",
+      "steps": 3
+    },
+    {
+      "id": "check-a-course",
+      "title": "Clearing QA flags",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/QAReview.vue",
+      "verb": "filter, dismiss false positives, approve the rest",
+      "steps": 3
+    },
+    {
+      "id": "record-your-part",
+      "title": "Your two kinds of recording",
+      "section": "record-room",
+      "personas": [
+        "admin",
+        "editor",
+        "recorder"
+      ],
+      "surface": "src/views/RecordRoom.vue",
+      "verb": "switch between reading the script and recording dialogue lines",
+      "steps": 2
+    },
+    {
+      "id": "where-the-rulings-live",
+      "title": "Finding the ruling behind a decision",
+      "section": "how",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/HowAndWhy.vue",
+      "verb": "read a ruling, then check it against the stock-take",
+      "steps": 2
+    }
+  ]
+}

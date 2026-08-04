@@ -43,7 +43,7 @@
     </div>
 
     <!-- Filter tabs -->
-    <div class="flex gap-1.5 mb-6">
+    <div class="flex gap-1.5 mb-6" data-walk="qa-filters" data-persona="admin editor">
       <button
         v-for="tab in filterTabs"
         :key="tab.key"
@@ -111,6 +111,7 @@
         <!-- Dismiss button -->
         <button
           v-if="!dismissed.has(flag.id)"
+          data-walk="qa-dismiss-flag" data-persona="admin editor"
           @click="toggleDismiss(flag.id)"
           class="shrink-0 px-2.5 py-1 text-xs bg-surface-2 border border-line text-muted rounded hover:bg-surface-3 hover:text-ink transition-colors"
         >
@@ -134,6 +135,7 @@
         <span class="text-danger font-mono">{{ flags.length - dismissed.size }}</span> to delete
       </div>
       <button
+        data-walk="qa-approve-all" data-persona="admin editor"
         @click="approveAll"
         :disabled="approving"
         class="qa-approve px-6 py-2.5 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 rounded-lg hover:bg-emerald-600/30 transition-colors font-medium text-sm disabled:opacity-50"

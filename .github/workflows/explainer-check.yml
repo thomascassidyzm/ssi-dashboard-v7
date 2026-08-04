@@ -2,6 +2,11 @@
 # The compiler is dependency-free node — no npm install needed. If a surface,
 # gate, role, docs tab or glossary pointer changes without the pack/rulings
 # following, this fails the push.
+#
+# The "how this works clips" drift gate rides along here (2026-08-04). The
+# learning app smuggles its walkthrough gate into vitest because its CI runs a
+# test suite; Popty's CI runs none, so the gate goes where the teeth already
+# are. Both are dependency-free node — still no install step.
 name: Explainer drift gate
 
 on:
@@ -19,3 +24,7 @@ jobs:
           node-version: 22
       - name: Drift gate (--check)
         run: node tools/explainer/compile.mjs --check
+      - name: Clips drift gate (--check)
+        run: node tools/walkthrough/compile.mjs --check
+      - name: Clips gate tests
+        run: node --test tools/walkthrough/lib.test.mjs

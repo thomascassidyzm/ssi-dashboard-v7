@@ -93,7 +93,7 @@ const rulingCards = [
         <div class="section-line"></div>
       </div>
       <div class="rulings-grid">
-        <router-link v-for="c in rulingCards" :key="c.label" :to="c.to" class="ruling-card">
+        <router-link v-for="c in rulingCards" :key="c.label" :to="c.to" class="ruling-card" data-walk="how-ruling-card" data-persona="all">
           <h2 class="card-title">{{ c.label }}</h2>
           <p class="card-description">{{ c.desc }}</p>
           <span class="card-action">Read →</span>
@@ -121,7 +121,7 @@ const rulingCards = [
 
     <!-- Quiet door to the compiled reference, for those who take stock -->
     <footer v-if="isAdmin" class="how-footer">
-      <router-link to="/stocktake" class="stocktake-link">
+      <router-link to="/stocktake" class="stocktake-link" data-walk="how-stocktake-link" data-persona="admin">
         Need the compiled reference — pipeline, glossary, APML current state? Take stock →
       </router-link>
     </footer>

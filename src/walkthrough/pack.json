@@ -1,0 +1,146 @@
+{
+  "version": "1b858366ba44",
+  "generatedAt": "2026-08-04",
+  "walks": [
+    {
+      "id": "check-a-course",
+      "title": "Clearing QA flags",
+      "status": "authored",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "place": {
+        "section": "checking"
+      },
+      "steps": [
+        {
+          "anchor": "qa-filters",
+          "choice": "setting",
+          "say": "Narrow the list to one kind of problem at a time — errors first, so the breakages get seen before the nitpicks.",
+          "advance": {
+            "on": "click"
+          }
+        },
+        {
+          "anchor": "qa-dismiss-flag",
+          "choice": "click",
+          "say": "Dismiss says the CHECKER was wrong, not the content — the phrase stays exactly as it is. Use it whenever the flag is a false positive.",
+          "advance": {
+            "on": "next"
+          }
+        },
+        {
+          "anchor": "qa-approve-all",
+          "choice": "click",
+          "say": "Approving deletes every flag you did NOT dismiss, so dismiss first and approve last. Nothing goes until you tap this.",
+          "advance": {
+            "on": "next"
+          },
+          "terminal": "Dismiss the false positives, then approve once. This clip changed nothing — only your own taps do."
+        }
+      ]
+    },
+    {
+      "id": "popty-main-areas",
+      "title": "Where everything lives",
+      "status": "authored",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "place": {
+        "section": "home"
+      },
+      "steps": [
+        {
+          "anchor": "home-courses",
+          "choice": "click",
+          "say": "Courses is where the work happens — every course you can touch, at whatever stage it is in. Start here when you have something to build, translate, record or ship.",
+          "advance": {
+            "on": "next"
+          }
+        },
+        {
+          "anchor": "home-how",
+          "choice": "click",
+          "say": "**How & Why** is the app explaining itself — what to do here, and the rulings behind it. It is compiled from the code, so it cannot drift out of date the way a manual would.",
+          "advance": {
+            "on": "next"
+          }
+        },
+        {
+          "anchor": "home-admin",
+          "choice": "click",
+          "say": "Admin is the settings that apply across every course at once — who has access, and how the algorithms behave. Change something here and it changes everywhere.",
+          "advance": {
+            "on": "next"
+          },
+          "terminal": "Three doors, and that is the whole hub. Nothing you tapped during this changed anything."
+        }
+      ]
+    },
+    {
+      "id": "record-your-part",
+      "title": "Your two kinds of recording",
+      "status": "authored",
+      "personas": [
+        "admin",
+        "editor",
+        "recorder"
+      ],
+      "place": {
+        "section": "record-room"
+      },
+      "steps": [
+        {
+          "anchor": "record-mode-script",
+          "choice": "toggle",
+          "say": "Reading script is the long list of phrases in your own voice part — stop and pick it up whenever you like, because what you have already read is skipped.",
+          "advance": {
+            "on": "click"
+          }
+        },
+        {
+          "anchor": "record-mode-dialogue",
+          "choice": "toggle",
+          "say": "Dialogue lines are recorded as one continuous take and sliced up afterwards, so you can act the conversation instead of stopping between every line.",
+          "advance": {
+            "on": "click"
+          },
+          "terminal": "Whichever you pick, everything is saved under your voice part — so two people can never be mistaken for each other."
+        }
+      ]
+    },
+    {
+      "id": "where-the-rulings-live",
+      "title": "Finding the ruling behind a decision",
+      "status": "authored",
+      "personas": [
+        "admin"
+      ],
+      "place": {
+        "section": "how"
+      },
+      "steps": [
+        {
+          "anchor": "how-ruling-card",
+          "choice": "click",
+          "say": "Rulings are the decisions the whole app obeys — read one when you want to know WHY something behaves the way it does, rather than how to work it.",
+          "advance": {
+            "on": "next"
+          }
+        },
+        {
+          "anchor": "how-stocktake-link",
+          "choice": "click",
+          "say": "Stock-take is the same truth as numbers — what actually exists in the database right now, so you can check a ruling against reality instead of trusting it.",
+          "advance": {
+            "on": "next"
+          },
+          "terminal": "Ruling first, stock-take second: the decision, then the evidence it is still being kept."
+        }
+      ]
+    }
+  ]
+}
