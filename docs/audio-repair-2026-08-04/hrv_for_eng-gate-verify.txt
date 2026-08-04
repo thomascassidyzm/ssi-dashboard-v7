@@ -1,0 +1,45 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+
+audio batch gate — hrv_for_eng
+28079 clips in scope
+
+[1] duration screen (free): 3 flagged
+      floor  3
+      fingerprint: 384ms x3
+
+[2] speech-rate screen (free): 66 suspect
+      pod_take_g/EXAVITQu4vr4xnSDxMaL 29
+      target1/EXAVITQu4vr4xnSDxMaL 11
+      pod_take_g/FGY2WhTYpPnrIDTdsKH5 8
+      known/gfzdpspr5fdp           4
+      target1/bedd6226             3
+      target1/leo                  3
+
+[3] loudness check: measuring 69 clips (the screened ones)
+      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 69 suspect, of 28079 clips (0.25%)
+        0 silent, 0 near-silent, 69 duration/rate-only
+
+  SUSPECT (audible at normal level — probe before replacing): 69
+     pod_take_g/EXAVITQu4vr4xnSDxMaL 29
+     target1/EXAVITQu4vr4xnSDxMaL 11
+     pod_take_g/FGY2WhTYpPnrIDTdsKH5 8
+     pod_explainer/comp:leo       5
+     known/gfzdpspr5fdp           4
+     target1/bedd6226             3
+     target1/leo                  3
+     pod_take_g/JBFqnCBsd6RMkjVDRZzb 3
+     target1/FGY2WhTYpPnrIDTdsKH5 2
+     known/leo                    1
+        384 ms  floor   "[atom] ili"                                   384 ms < 400 ms
+        384 ms  floor   "[atom] Evo"                                   384 ms < 400 ms
+        384 ms  floor   "[atom] Koji"                                  384 ms < 400 ms
+       2088 ms  rate    "means, when I can't think quickly enough"     52.2 ms/char, under 52.8 for pod_explainer
+       1392 ms  rate    "means, we'll be able to have"                 49.7 ms/char, under 52.8 for pod_explainer
+       1416 ms  rate    "I hope you have a good day."                  52.4 ms/char, under 58.7 for target1
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/hrv_for_eng-gate-verify.json
+

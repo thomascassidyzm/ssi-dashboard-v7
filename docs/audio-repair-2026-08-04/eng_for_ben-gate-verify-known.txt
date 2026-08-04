@@ -1,0 +1,27 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+
+audio batch gate — eng_for_ben roles=known
+12254 clips in scope
+
+[1] duration screen (free): 0 flagged
+
+[2] speech-rate screen (free): 4 suspect
+      known/eve                    4
+
+[3] loudness check: measuring 4 clips (the screened ones)
+      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 4 suspect, of 12254 clips (0.03%)
+        0 silent, 0 near-silent, 4 duration/rate-only
+
+  SUSPECT (audible at normal level — probe before replacing): 4
+     known/eve                    4
+        984 ms  rate    "তুমি কি মজার কিছু খুঁজছো?"                    39.4 ms/char, under 41.1 for known
+        720 ms  rate    "আমি নিশ্চিত তার উচিত।"                        34.3 ms/char, under 41.1 for known
+        816 ms  rate    "তারা কি বুঝতে পারছে?"                         40.8 ms/char, under 41.1 for known
+       1224 ms  rate    "আমরা শ্বাস নেওয়ার চেষ্টা করছি।"              39.5 ms/char, under 41.1 for known
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/eng_for_ben-gate-verify-known.json
+

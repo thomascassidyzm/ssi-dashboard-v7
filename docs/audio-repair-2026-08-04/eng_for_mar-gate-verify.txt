@@ -1,0 +1,36 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+
+audio batch gate — eng_for_mar
+39373 clips in scope
+
+[1] duration screen (free): 7 flagged
+      floor  1
+      ratio  6
+      fingerprint: 2016ms x2, 288ms x1, 984ms x1
+
+[2] speech-rate screen (free): 7 suspect
+      target1/xai_bedd6226         4
+      target2/xai_gfzdpspr5fdp     3
+
+[3] loudness check: measuring 14 clips (the screened ones)
+      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 14 suspect, of 39373 clips (0.04%)
+        0 silent, 0 near-silent, 14 duration/rate-only
+
+  SUSPECT (audible at normal level — probe before replacing): 14
+     target2/xai_gfzdpspr5fdp     8
+     target1/xai_bedd6226         4
+     target1/bedd6226             1
+     target2/gfzdpspr5fdp         1
+        288 ms  floor   "the"                                          288 ms < 400 ms
+        984 ms  ratio   "needed to"                                    984 ms vs target1 2232 ms
+       2016 ms  ratio   "such [introduce:false]"                       2016 ms vs target1 6648 ms
+       1824 ms  ratio   "to forget [introduce:false]"                  1824 ms vs target1 6840 ms
+       2016 ms  ratio   "flat [introduce:false]"                       2016 ms vs target1 6552 ms
+       1992 ms  ratio   "to hear [introduce:false]"                    1992 ms vs target1 11640 ms
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/eng_for_mar-gate-verify.json
+

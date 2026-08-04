@@ -1,0 +1,32 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+
+audio batch gate — eng_for_kan
+44689 clips in scope
+
+[1] duration screen (free): 3 flagged
+      floor  2
+      ratio  1
+      fingerprint: 384ms x2, 840ms x1
+
+[2] speech-rate screen (free): 1 suspect
+      target2/xai_gfzdpspr5fdp     1
+
+[3] loudness check: measuring 4 clips (the screened ones)
+      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 4 suspect, of 44689 clips (0.01%)
+        0 silent, 0 near-silent, 4 duration/rate-only
+
+  SUSPECT (audible at normal level — probe before replacing): 4
+     target1/bedd6226             2
+     target2/gfzdpspr5fdp         1
+     target2/xai_gfzdpspr5fdp     1
+        384 ms  floor   "it"                                           384 ms < 400 ms
+        384 ms  floor   "an"                                           384 ms < 400 ms
+        840 ms  ratio   "I went"                                       840 ms vs target1 1704 ms
+       1128 ms  rate    "because I'd have thought about it"            34.2 ms/char, under 36.0 for target2
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/eng_for_kan-gate-verify.json
+

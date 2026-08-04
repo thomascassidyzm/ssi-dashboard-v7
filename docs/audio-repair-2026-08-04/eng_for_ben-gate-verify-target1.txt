@@ -1,0 +1,24 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops
+
+audio batch gate — eng_for_ben roles=target1
+17003 clips in scope
+
+[1] duration screen (free): 0 flagged
+
+[2] speech-rate screen (free): 1 suspect
+      target1/xai_bedd6226         1
+
+[3] loudness check: measuring 1 clip (the screened ones)
+      0 silent, 0 near-silent (peak < -9 dB), 0 unmeasurable (treated as pass)
+
+RESULT: 0 confirmed + 1 suspect, of 17003 clips (0.01%)
+        0 silent, 0 near-silent, 1 duration/rate-only
+
+  SUSPECT (audible at normal level — probe before replacing): 1
+     target1/xai_bedd6226         1
+       1704 ms  rate    "he said that he couldn't watch the football   39.6 ms/char, under 40.0 for target1
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/eng_for_ben-gate-verify-target1.json
+
