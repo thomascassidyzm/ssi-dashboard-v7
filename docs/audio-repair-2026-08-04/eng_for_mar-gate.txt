@@ -1,0 +1,44 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+
+audio batch gate — eng_for_mar
+39373 clips in scope
+
+[1] duration screen (free): 22 flagged
+      ratio  10
+      floor  12
+      fingerprint: 144ms x6, 192ms x4, 168ms x2
+
+[2] speech-rate screen (free): 106 suspect
+      target1/xai_bedd6226         57
+      target2/xai_gfzdpspr5fdp     49
+
+[3] loudness check: measuring 128 clips (the screened ones)
+  measured: 100/128      12 silent, 0 unmeasurable (treated as pass)
+
+RESULT: 12 confirmed + 116 suspect, of 39373 clips (0.33%)
+
+  CONFIRMED (silent — replace): 12
+     target1/xai_bedd6226         9
+     target2/xai_gfzdpspr5fdp     3
+        192 ms  floor   "cut this"                                     192 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "could be"                                     144 ms < 400 ms; mean -91 dB, peak -91 dB
+        168 ms  floor   "break this"                                   168 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "I could do it"                                144 ms < 400 ms; mean -91 dB, peak -91 dB
+        144 ms  floor   "what's it"                                    144 ms < 400 ms; mean -91 dB, peak -91 dB
+        192 ms  floor   "won't stay"                                   192 ms < 400 ms; mean -91 dB, peak -91 dB
+
+  SUSPECT (audible — probe before replacing): 116
+     target2/xai_gfzdpspr5fdp     58
+     target1/xai_bedd6226         57
+     target2/gfzdpspr5fdp         1
+        984 ms  ratio   "needed to"                                    984 ms vs target1 2232 ms
+        672 ms  ratio   "I liked that story"                           672 ms vs target1 1392 ms
+        648 ms  ratio   "please speak with her"                        648 ms vs target1 1368 ms
+        648 ms  ratio   "a new approach here"                          648 ms vs target1 1344 ms
+       2016 ms  ratio   "such [introduce:false]"                       2016 ms vs target1 6648 ms
+       1824 ms  ratio   "to forget [introduce:false]"                  1824 ms vs target1 6840 ms
+
+These are FLAGGED FOR RE-RENDER, not deleted — the row still records which text needs a voice.
+
+repair list -> docs/audio-repair-2026-08-04/eng_for_mar-gate.json
+

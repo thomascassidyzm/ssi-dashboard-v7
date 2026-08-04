@@ -1,0 +1,55 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+
+repair-silent-clips — eng_for_mar
+128 clips to repair (--only all)
+   suspect: 116, confirmed: 12
+
+  [DRY] suspect   target2    984ms  "needed to"
+  [DRY] confirmed target1    192ms  "cut this"
+  [DRY] confirmed target1    144ms  "could be"
+  [DRY] confirmed target1    168ms  "break this"
+  [DRY] confirmed target1    144ms  "I could do it"
+  [DRY] confirmed target1    144ms  "what's it"
+  [DRY] confirmed target1    192ms  "won't stay"
+  [DRY] confirmed target1    144ms  "elsewhere"
+  [DRY] confirmed target1    144ms  "it's ugly"
+  [DRY] confirmed target1    192ms  "bought"
+  [DRY] suspect   target2    672ms  "I liked that story"
+  [DRY] suspect   target2    648ms  "please speak with her"
+  [DRY] confirmed target2    144ms  "cut this"
+  [DRY] suspect   target2    648ms  "a new approach here"
+  [DRY] confirmed target2    192ms  "I will stop"
+  [DRY] suspect   target2   2016ms  "such [introduce:false]"
+  [DRY] suspect   target2   1824ms  "to forget [introduce:false]"
+  [DRY] suspect   target2   1440ms  "down [introduce:false]"
+  [DRY] suspect   target2   2016ms  "flat [introduce:false]"
+  [DRY] suspect   target2   1992ms  "to hear [introduce:false]"
+  [DRY] confirmed target2    168ms  "had told"
+  [DRY] suspect   target2    600ms  "do you want to tell her?"
+  [DRY] suspect   target1    624ms  "I thought that was better"
+  [DRY] suspect   target1    816ms  "I'm sure that she's grateful"
+  [DRY] suspect   target1    672ms  "did you have at the weekend?"
+  [DRY] suspect   target1   1200ms  "because I'm not sure for your father"
+  [DRY] suspect   target1   1248ms  "she's going to be there at the weekend"
+  [DRY] suspect   target1   1224ms  "I met someone else who said something"
+  [DRY] suspect   target1    864ms  "did you go to school today?"
+  [DRY] suspect   target1    792ms  "do we want to eat something?"
+  [DRY] suspect   target1    840ms  "I think it would be better"
+  [DRY] suspect   target1    864ms  "should we ask her about it?"
+  [DRY] suspect   target1    720ms  "do we have to book something?"
+  [DRY] suspect   target1   1080ms  "shouldn't we try to eat something"
+  [DRY] suspect   target1    696ms  "do you like what we do?"
+  [DRY] suspect   target1    744ms  "we would like to speak with her"
+  [DRY] suspect   target1    624ms  "do you fight with each other?"
+  [DRY] suspect   target1   1008ms  "could we have something to eat?"
+  [DRY] suspect   target1    744ms  "that wouldn't be the best way"
+  [DRY] suspect   target1    600ms  "they need to speak with her"
+  ... and 88 more
+
+Dry run — nothing rendered, nothing written.
+
+[Azure TTS] Closing connection pool (0 total connections)...

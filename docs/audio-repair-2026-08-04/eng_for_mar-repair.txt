@@ -1,0 +1,213 @@
+[dotenv@17.2.3] injecting env (21) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+
+repair-silent-clips — eng_for_mar
+128 clips to repair (--only all)
+   suspect: 116, confirmed: 12
+
+[Phase8-Audio-v13] Phase 8 Audio Service (v13) running on port 3465
+[Phase8-Audio-v13] Supabase: configured
+[Phase8-Audio-v13] S3 Bucket: ssi-audio-stage
+[Phase8-Audio-v13] masterAudio: tail flag (rise -9.1dB at 0.716s) is resumed speech — pausey render shipped untouched
+[1/128] target2 "needed to": healthy (984ms vs fresh 912ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail flag (burst -19.3dB at 0.876s) is resumed speech — pausey render shipped untouched
+[2/128] target1 "cut this": 192ms -> 864ms (-17.3dB), 1 link -> AD4B82AF-02AF-4D65-8618-80E6E0B19E9F
+[3/128] target1 "could be": 144ms -> 672ms (-17.1dB), 1 link -> 640CE6C0-29FF-4E09-BD9F-9E73EE181723
+[Phase8-Audio-v13] masterAudio: tail burst -5.3dB repaired in 1 pass(es) at 0.742s
+[4/128] target1 "break this": 168ms -> 960ms (-16.6dB), 1 link -> 2F77E8A0-D2F7-4CF7-AC01-F5086A503CD4
+[6/128] target1 "what's it": 144ms -> 720ms (-16.6dB), 1 link -> 3EF65348-9AC3-4E14-92BA-29D16ABB4A3D
+[5/128] target1 "I could do it": 144ms -> 842ms (-16dB), 1 link -> 0413FD71-8A96-47AB-971D-54B708CB3EAF
+[7/128] target1 "won't stay": 192ms -> 912ms (-16.2dB), 1 link -> 03FA418A-AE04-4DCF-8C45-71CA3784C84A
+[8/128] target1 "elsewhere": 144ms -> 696ms (-16.5dB), 1 link -> 6E112A11-9C38-417E-A742-276449B3E435
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -5.1dB at 0.406s) is resumed speech — pausey render shipped untouched
+[9/128] target1 "it's ugly": 144ms -> 864ms (-16.4dB), 1 link -> 03104104-E454-4C11-9313-BF57B345574B
+[Phase8-Audio-v13] masterAudio: tail rise -8.3dB repaired in 1 pass(es) at 1.16s
+[10/128] target1 "bought": 192ms -> 600ms (-16.3dB), 1 link -> 96524EC6-E130-4170-A362-819DC7FD14CD
+[11/128] target2 "I liked that story": 672ms -> 1260ms (-16.9dB), 1 link -> 341E7765-6D9F-48BF-8439-DE0B9804D704
+[12/128] target2 "please speak with her": 648ms -> 1320ms (-16.6dB), 1 link -> 83CD5138-1187-45C6-A0F5-B343149886F8
+[13/128] target2 "cut this": 144ms -> 768ms (-18dB), 1 link -> 7740BF56-66F6-459E-BAB4-7826061DD028
+[Phase8-Audio-v13] masterAudio: tail resurgence -17.1dB repaired in 1 pass(es) at 0.85s
+[14/128] target2 "a new approach here": 648ms -> 1320ms (-15.8dB), 1 link -> 5EF29394-5122-45EA-9F6B-611138D09407
+[Phase8-Audio-v13] masterAudio: tail rise -7.9dB repaired in 1 pass(es) at 1.584s
+[16/128] target2 "such [introduce:false]": healthy (2016ms vs fresh 1684ms) — left alone
+[15/128] target2 "I will stop": 192ms -> 950ms (-17.2dB), 1 link -> C8467DC7-E4B2-44E8-865F-32218A6DB79D
+[17/128] target2 "to forget [introduce:false]": healthy (1824ms vs fresh 2160ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail rise -20.7dB repaired in 1 pass(es) at 2.294s
+[19/128] target2 "flat [introduce:false]": healthy (2016ms vs fresh 2394ms) — left alone
+[20/128] target2 "to hear [introduce:false]": healthy (1992ms vs fresh 2544ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail resurgence -8.3dB repaired in 1 pass(es) at 0.656s
+[18/128] target2 "down [introduce:false]": 1440ms -> 2688ms (-17.7dB), 1 link -> DC0BBC6D-61EB-4844-9C41-3D2ED07FB1B5
+[Phase8-Audio-v13] masterAudio: tail rise -8.3dB repaired in 1 pass(es) at 0.868s
+[21/128] target2 "had told": 168ms -> 756ms (-17.8dB), 1 link -> 6A6924F6-8E34-47ED-8DC8-3D2CA9D689CF
+[22/128] target2 "do you want to tell her?": 600ms -> 968ms (-15.8dB), 1 link -> CA663DDD-54CC-4414-BB39-5FA477BFE9C3
+[23/128] target1 "I thought that was better": 624ms -> 1200ms (-15.8dB), 1 link -> 0E42BB7A-E51C-437A-9EDC-F70CBC79F79E
+[Phase8-Audio-v13] masterAudio: tail rise -9dB repaired in 1 pass(es) at 1.784s
+[24/128] target1 "I'm sure that she's grateful": 816ms -> 1560ms (-16.3dB), 1 link -> 7F326AD7-C046-462D-9232-4F64F5FABFE2
+[25/128] target1 "did you have at the weekend?": 672ms -> 1440ms (-15.7dB), 1 link -> 63A0AD48-007B-4379-AA1E-BEA106C7F303
+[26/128] target1 "because I'm not sure for your father": 1200ms -> 1884ms (-15.9dB), 1 link -> 150A6875-E7B0-4D03-B1A5-C260DC6337D3
+[Phase8-Audio-v13] masterAudio: tail rise -8.7dB repaired in 1 pass(es) at 1.92s
+[27/128] target1 "she's going to be there at the weekend": 1248ms -> 1896ms (-15.7dB), 1 link -> 605DD1A3-B057-4F6A-8529-AF6007728028
+[29/128] target1 "did you go to school today?": 864ms -> 1488ms (-15.8dB), 1 link -> DA19B7EF-7F21-4D59-BD97-B6B766316B11
+[28/128] target1 "I met someone else who said something": 1224ms -> 2020ms (-15.6dB), 1 link -> 2CB16535-BC7B-4073-8758-8ED83B8949B9
+[30/128] target1 "do we want to eat something?": 792ms -> 1512ms (-15.3dB), 1 link -> 4654727F-93E5-4FC4-A13E-50E1AC3DEA36
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.9dB repaired in 1 pass(es) at 1.152s
+[31/128] target1 "I think it would be better": 840ms -> 1296ms (-16dB), 1 link -> D48442EA-3153-4806-BBEB-69A8315664C5
+[32/128] target1 "should we ask her about it?": 864ms -> 1252ms (-16.3dB), 1 link -> 365800A6-20EE-4563-8E24-4CABACB48C85
+[33/128] target1 "do we have to book something?": 720ms -> 1440ms (-15.3dB), 1 link -> ED4359CD-1E28-48E4-AA77-2536ED4E26AB
+[Phase8-Audio-v13] masterAudio: tail resurgence -1dB repaired in 2 pass(es) at 1.414s
+[34/128] target1 "shouldn't we try to eat something": healthy (1080ms vs fresh 1230ms) — left alone
+[35/128] target1 "do you like what we do?": 696ms -> 1296ms (-15.4dB), 1 link -> 08610F16-81FB-4E8B-840F-D6CD93380A69
+[36/128] target1 "we would like to speak with her": 744ms -> 1584ms (-15.2dB), 1 link -> 437688E6-F20B-4895-9FE8-75E4F64D80C4
+[37/128] target1 "do you fight with each other?": 624ms -> 1440ms (-15.5dB), 1 link -> AF9489CB-1DC2-4472-9DC0-56697617C391
+[Phase8-Audio-v13] masterAudio: tail resurgence -7.7dB repaired in 1 pass(es) at 1.29s
+[38/128] target1 "could we have something to eat?": 1008ms -> 1390ms (-15.9dB), 1 link -> 8EB18C34-C12F-4751-97A1-9F2E77750DD0
+[39/128] target1 "that wouldn't be the best way": 744ms -> 1560ms (-15.7dB), 1 link -> 7225B4B7-4AF2-4B22-B0C8-A88E8FD12014
+[40/128] target1 "they need to speak with her": 600ms -> 1344ms (-15.5dB), 1 link -> 4A75B98A-A1AC-4340-9931-29F36E2E98CA
+[Phase8-Audio-v13] masterAudio: tail burst -19.1dB repaired in 1 pass(es) at 1.428s
+[Phase8-Audio-v13] masterAudio: tail resurgence -4dB repaired in 1 pass(es) at 1.122s
+[41/128] target1 "they don't need to ask her": 768ms -> 1528ms (-16.1dB), 1 link -> A7920217-3D92-4CFE-8DFD-3E5A22DF5CC3
+[42/128] target1 "they don't need to get ready": 888ms -> 1440ms (-15.6dB), 1 link -> 2E5A130F-A44C-49B4-9954-33A0B2B17982
+[43/128] target1 "would they like to do it?": 720ms -> 1222ms (-16.1dB), 1 link -> E721F962-AAEB-4775-9C3A-39A6BA83BB97
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.1dB repaired in 2 pass(es) at 1.284s
+[44/128] target1 "could they cut it?": 576ms -> 960ms (-17dB), 1 link -> 7595B7F6-377D-4D67-8B05-461C0C070CA9
+[Phase8-Audio-v13] masterAudio: tail rise -10.4dB repaired in 1 pass(es) at 1.066s
+[45/128] target1 "the children are part of this": 912ms -> 1336ms (-16.4dB), 1 link -> F9F0C936-6FC7-4042-9F41-181E7E9A26BE
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.1dB repaired in 2 pass(es) at 1s
+[47/128] target1 "do you want to speak?": healthy (648ms vs fresh 838ms) — left alone
+[46/128] target1 "let me speak a little": 696ms -> 1166ms (-15.9dB), 1 link -> 20B6042A-B997-4838-822B-8C7D72927E19
+[Phase8-Audio-v13] masterAudio: tail rise -29.9dB repaired in 1 pass(es) at 1.966s
+[49/128] target1 "I want to trust you": 600ms -> 1272ms (-15.7dB), 1 link -> 7EBC58B9-E991-45A8-AA6A-EE1AF12F5B7D
+[48/128] target1 "he's been here since the second day": 1152ms -> 2066ms (-15.7dB), 1 link -> B250D9DB-ECAB-4C70-B57D-9C9D301F14A1
+[50/128] target1 "something is going to come": 792ms -> 1536ms (-15.5dB), 1 link -> 44D47F9D-8888-49F7-BE36-083B174A467E
+[Phase8-Audio-v13] masterAudio: tail resurgence -9dB repaired in 1 pass(es) at 1.096s
+[52/128] target1 "they came home with each other": 984ms -> 1488ms (-15.6dB), 1 link -> 4D76FC7A-3341-4723-9977-4F7383870599
+[53/128] target1 "it might have happened this time": 888ms -> 1608ms (-15dB), 1 link -> E9170647-EC16-48A0-921B-81BFBF4B8411
+[51/128] target1 "that sounds difficult": 696ms -> 1196ms (-15.8dB), 1 link -> DB72E181-C52E-41D9-B225-010D15C39286
+[54/128] target1 "you'll forget this today": 792ms -> 1344ms (-15.3dB), 1 link -> 87EDA7E5-1028-41CD-AB41-864F4A35AB2C
+[55/128] target1 "you'll forget this quickly": 720ms -> 1320ms (-15.6dB), 1 link -> C4B975F8-0C37-4D1C-A90A-30AE5D6E8641
+[56/128] target1 "I'll call you back quickly": 744ms -> 1416ms (-15.7dB), 1 link -> 1607C7B5-00C6-4FAE-87D5-E4C8FE1ACD61
+[Phase8-Audio-v13] masterAudio: tail resurgence -8.9dB repaired in 2 pass(es) at 1.51s
+[Phase8-Audio-v13] masterAudio: tail resurgence -9dB repaired in 2 pass(es) at 2.036s
+[57/128] target1 "whoever said it would be good": 888ms -> 1584ms (-15.2dB), 1 link -> 548BA65B-1F04-49E1-A429-9C11AD6F0B85
+[58/128] target1 "I don't think it would be difficult": 936ms -> 1564ms (-16.1dB), 1 link -> 46288843-32B2-4E10-935F-1CD5D06D1A19
+[59/128] target1 "do you know it's your turn to take it?": 1248ms -> 2114ms (-15.9dB), 1 link -> 6E1B15DB-374F-46C8-B833-5EB052C4F29C
+[Phase8-Audio-v13] masterAudio: tail burst -1.2dB repaired in 1 pass(es) at 1.034s
+[62/128] target1 "do you know what happened?": healthy (864ms vs fresh 1134ms) — left alone
+[60/128] target1 "I work late at night": 600ms -> 1536ms (-15.5dB), 1 link -> CCB18F55-D603-4767-B375-2F3F6EC864E9
+[61/128] target1 "have you found the path today?": 888ms -> 1632ms (-15.3dB), 1 link -> F13F1615-FE2F-40BC-8A07-70F85D642AE3
+[Phase8-Audio-v13] masterAudio: tail resurgence -6.6dB repaired in 1 pass(es) at 1.154s
+[63/128] target1 "it would have been difficult": 600ms -> 1254ms (-16dB), 1 link -> B081B1ED-F3CD-4C31-BC3A-3FC522435B4B
+[64/128] target1 "he needs to speak with you": 624ms -> 1560ms (-15.4dB), 1 link -> B9C340E8-20F0-4A89-8AC0-9C849227D314
+[65/128] target1 "would you like to look?": 744ms -> 1152ms (-16.1dB), 1 link -> C2CA4BE0-66A2-4901-914C-ED16810F3190
+[66/128] target1 "I need to look more": 600ms -> 1272ms (-15.3dB), 1 link -> BF852620-C328-4A54-BD04-B8337809F2A6
+[68/128] target1 "you thought that then": 696ms -> 1032ms (-15.2dB), 1 link -> 8352A018-4C23-49F2-9F66-8A9AF2F95327
+[67/128] target1 "we would have bought then": 720ms -> 1368ms (-14.9dB), 1 link -> 625E3B38-D50A-4CB6-B5F8-36E7FC6AB8E0
+[Phase8-Audio-v13] masterAudio: tail resurgence -0.4dB repaired in 1 pass(es) at 0.872s
+[69/128] target1 "you said you thought that": healthy (792ms vs fresh 972ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail resurgence -2.9dB repaired in 2 pass(es) at 1.162s
+[71/128] target1 "I know that would be great": 864ms -> 1344ms (-15.5dB), 1 link -> 73C9C745-E056-4BA1-8E38-416A077C8C4D
+[70/128] target1 "I wouldn't have dared then": 864ms -> 1184ms (-16.3dB), 1 link -> 2D75A44F-226C-4FC7-920B-742F8FBCDE3B
+[72/128] target1 "is your coffee ready?": 600ms -> 1200ms (-16dB), 1 link -> 025407BD-21B6-4BAB-9AF0-AF9D286ADEBE
+[Phase8-Audio-v13] masterAudio: tail resurgence -3.4dB repaired in 1 pass(es) at 1.272s
+[Phase8-Audio-v13] masterAudio: tail resurgence -5dB repaired in 1 pass(es) at 0.92s
+[73/128] target1 "what would you like to drink?": 864ms -> 1372ms (-15.9dB), 1 link -> 35F567AB-33BB-4EAE-A4C2-B98A8BF20855
+[74/128] target1 "I know what you said now": 720ms -> 1020ms (-15.7dB), 1 link -> 980B00C8-7DE9-4230-AB43-5F0F9AFF3844
+[75/128] target1 "I want to say something with you all": 1080ms -> 2016ms (-15dB), 1 link -> 2C802A9A-CAB5-4E36-901F-0C2279BF0EAC
+[Phase8-Audio-v13] masterAudio: tail rise -6.3dB repaired in 1 pass(es) at 1.28s
+[Phase8-Audio-v13] masterAudio: tail rise -8.3dB repaired in 1 pass(es) at 1.07s
+[76/128] target1 "what do you all think right now?": 840ms -> 1380ms (-15.5dB), 1 link -> F7633BB8-979A-4E18-A675-A5F85ACC8962
+[77/128] target1 "what do you all think today?": 912ms -> 1536ms (-15.4dB), 1 link -> 70CA3AB0-027D-42D8-A00C-DF955DB78E70
+[78/128] target2 "I thought that was better": 840ms -> 1170ms (-16.7dB), 1 link -> 3D55701C-27CB-4FD4-AB9F-43192412EA8E
+[Phase8-Audio-v13] masterAudio: tail resurgence -5dB repaired in 2 pass(es) at 1.236s
+[Phase8-Audio-v13] masterAudio: tail rise -13.1dB repaired in 1 pass(es) at 1.486s
+[79/128] target2 "do you want to go tonight?": 888ms -> 1238ms (-16.9dB), 2 links -> 63A1130F-DDBF-461B-9D0F-1ED0E4FED442
+[80/128] target2 "where do you want to meet again?": 1056ms -> 1632ms (-15.8dB), 1 link -> 7D536CF1-A06F-4CCD-8634-FD399BFE236E
+[81/128] target2 "what do you want to do tomorrow?": 1032ms -> 1586ms (-16.1dB), 1 link -> B6B9ED9B-2DB0-4D2E-B5DB-D326BA1B8F9F
+[82/128] target2 "did you have a good time?": 840ms -> 1344ms (-15.3dB), 1 link -> 4842BABA-9E06-498C-85FD-5227B61641F2
+[83/128] target2 "I think that's something important": 1008ms -> 2016ms (-16.2dB), 1 link -> 7A9A0327-8324-41B3-B137-289352840C6B
+[84/128] target2 "he said that he could bring it": 1008ms -> 1608ms (-16.4dB), 1 link -> BE83ACB1-7B95-4A0D-A09B-5900CC732ECE
+[Phase8-Audio-v13] masterAudio: tail rise -9.7dB repaired in 1 pass(es) at 1.586s
+[85/128] target2 "he felt like talking with you": 840ms -> 1686ms (-16.9dB), 1 link -> 01111D51-6ABC-47E3-BA27-CBF72225FE8E
+[86/128] target2 "did you want to speak with her?": 912ms -> 1584ms (-16.7dB), 1 link -> 1410DA15-7114-439B-94A2-8B0ED58A9F77
+[87/128] target2 "we don't want to eat now": 792ms -> 1632ms (-16.3dB), 1 link -> 72EEC42B-B0EE-4271-BA2F-3238A412D2AB
+[Phase8-Audio-v13] masterAudio: tail rise -7.6dB repaired in 1 pass(es) at 1.164s
+[Phase8-Audio-v13] masterAudio: tail rise -7.6dB repaired in 1 pass(es) at 1.404s
+[89/128] target2 "do you know what we do here?": 888ms -> 1264ms (-15.7dB), 1 link -> B504FC41-B6BF-419A-AB1C-ECC943DE5C68
+[88/128] target2 "do we want to eat something with them?": 1032ms -> 1504ms (-15.9dB), 1 link -> 5B3BBF53-A362-40C1-8E61-7B056E9537F9
+[90/128] target2 "do you fight with each other?": 936ms -> 1440ms (-15.6dB), 1 link -> 45DFC165-69D8-4C56-955A-BEAF5DD15466
+[Phase8-Audio-v13] masterAudio: tail rise -7.2dB repaired in 1 pass(es) at 1.364s
+[Phase8-Audio-v13] masterAudio: tail rise -12.1dB repaired in 2 pass(es) at 1.468s
+[92/128] target2 "we should not fight with each other": healthy (1128ms vs fresh 1364ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail resurgence -14.8dB repaired in 2 pass(es) at 1.564s
+[91/128] target2 "why do they fight with each other?": 1032ms -> 1464ms (-16.7dB), 1 link -> C310C682-55BA-4AB4-B1F7-78245F2DAE7D
+[93/128] target2 "we couldn't allow them to speak": 1032ms -> 1464ms (-16.6dB), 1 link -> B87BBCFA-704C-4BAF-8A7C-430CCDE810FC
+[Phase8-Audio-v13] masterAudio: tail rise -13.2dB repaired in 1 pass(es) at 1.39s
+[Phase8-Audio-v13] masterAudio: tail rise -15.6dB repaired in 1 pass(es) at 0.95s
+[94/128] target2 "I still want to speak with him": 840ms -> 1490ms (-16.8dB), 1 link -> E0E15612-D3DE-4006-9A1A-42FFC9B8BD23
+[Phase8-Audio-v13] masterAudio: tail rise -6.3dB repaired in 1 pass(es) at 0.998s
+[95/128] target2 "could we have a table?": 744ms -> 1050ms (-16.8dB), 1 link -> 7A68EDFC-C4C3-451E-9A70-53B2C90DBE6E
+[96/128] target2 "that would be a problem": 696ms -> 1098ms (-16.6dB), 1 link -> 65FD143E-3921-4627-86A9-B45F17DCAB1F
+[97/128] target2 "do they want to kill her?": 792ms -> 1440ms (-16.1dB), 1 link -> 51964011-F1E8-4BF9-BF4C-A46E8428D8E1
+[Phase8-Audio-v13] masterAudio: tail rise -6.5dB repaired in 1 pass(es) at 1.23s
+[98/128] target2 "to think about this": 648ms -> 1320ms (-16.9dB), 1 link -> 3F890D78-511F-4913-A697-CD585BD73BE7
+[99/128] target2 "would they like to eat something?": 816ms -> 1330ms (-16.7dB), 1 link -> 74A2602B-9378-4D93-B6EA-CD960096EC66
+[Phase8-Audio-v13] masterAudio: tail resurgence -5.6dB repaired in 2 pass(es) at 1.524s
+[100/128] target2 "do you know what he should do?": 840ms -> 1608ms (-15.8dB), 1 link -> 536DE334-06AB-428E-A637-88FB8D5AFF87
+[Phase8-Audio-v13] masterAudio: tail resurgence -10.2dB repaired in 1 pass(es) at 1.544s
+[101/128] target2 "will they be able to catch it?": 984ms -> 1534ms (-16.1dB), 1 link -> D9531E6A-C972-4050-96EF-085D9E41EDF7
+[102/128] target2 "I'm sorry that we had to stop": 912ms -> 1644ms (-17.2dB), 1 link -> 92208C2F-998F-4B71-9F5D-C8652EAFB52B
+[103/128] target2 "the children are part of this": 960ms -> 1800ms (-16.4dB), 1 link -> F9E40FF9-974F-4E4C-9526-109FF74D5BD0
+[104/128] target2 "do you want to speak?": 648ms -> 1200ms (-17dB), 1 link -> 6B886C87-9E8F-46F1-948C-F5E6A0CABA74
+[Phase8-Audio-v13] masterAudio: tail rise -7.4dB repaired in 2 pass(es) at 1.5s
+[Phase8-Audio-v13] masterAudio: tail rise -7.8dB repaired in 1 pass(es) at 1.162s
+[105/128] target2 "that sounds as though it's interesting": 1176ms -> 1572ms (-17.3dB), 1 link -> 97FD1E06-B0F9-453C-8D38-3BD923192D28
+[106/128] target2 "do you think it's beautiful?": 912ms -> 1392ms (-16.2dB), 1 link -> 62235D34-32DD-4B25-B138-4949E532621A
+[107/128] target2 "you'll forget this quickly": 768ms -> 1262ms (-16.6dB), 1 link -> 8782E222-691B-4308-B0E9-AABE04356298
+[Phase8-Audio-v13] masterAudio: tail rise -7dB repaired in 2 pass(es) at 1.292s
+[108/128] target2 "have you forgotten what happened?": healthy (1056ms vs fresh 1306ms) — left alone
+[Phase8-Audio-v13] masterAudio: tail rise -24.2dB repaired in 1 pass(es) at 1.574s
+[Phase8-Audio-v13] masterAudio: tail rise -6.4dB repaired in 1 pass(es) at 1.514s
+[Phase8-Audio-v13] masterAudio: tail resurgence -10.7dB repaired in 1 pass(es) at 0.966s
+[109/128] target2 "it's been lovely with the children": 1008ms -> 1674ms (-16.3dB), 1 link -> F5BABDBE-77DF-481B-B235-F4CC9C17F0F4
+[110/128] target2 "I had to share it with the children": 1128ms -> 1614ms (-16.8dB), 1 link -> FB195F2E-741C-4138-B2B6-585CDAE32DE2
+[111/128] target2 "would you like to look?": 720ms -> 1066ms (-16.4dB), 1 link -> CB626F82-23E9-41F4-9DE2-3D3A5BB7A4AB
+[Phase8-Audio-v13] masterAudio: tail rise -18.2dB repaired in 1 pass(es) at 1.286s
+[112/128] target2 "we would have bought here": 672ms -> 1320ms (-15.7dB), 1 link -> F5ED4D4E-CE6B-4D39-9DD5-6E4026D6F837
+[114/128] target2 "that would be great for you": 816ms -> 1440ms (-16.1dB), 1 link -> 1DB58F26-29B4-493C-A5D1-30381255CDBA
+[113/128] target2 "I didn't know it was broken": 912ms -> 1386ms (-16.1dB), 1 link -> 3BAD06C8-3B0B-4188-BF9C-A320F13136C0
+[Phase8-Audio-v13] masterAudio: tail rise -16dB repaired in 3 pass(es) at 1.29s
+[Phase8-Audio-v13] masterAudio: tail resurgence -7.4dB repaired in 1 pass(es) at 1.17s
+[115/128] target2 "what would you like to drink?": 888ms -> 1256ms (-16.5dB), 1 link -> A29B2354-CACA-410D-AB6F-F99FBAE58535
+[117/128] target2 "would you like a glass of water?": 1032ms -> 1584ms (-16dB), 1 link -> E8035F32-5AAB-4313-AB90-1BBD6A57BD5D
+[116/128] target2 "what else would you like?": 816ms -> 1270ms (-16.8dB), 1 link -> A3791F3C-BEFB-488F-80C3-5AA8E8B6779F
+[Phase8-Audio-v13] masterAudio: tail resurgence -10.4dB repaired in 1 pass(es) at 1.444s
+[Phase8-Audio-v13] masterAudio: tail rise -18dB repaired in 1 pass(es) at 1.216s
+[118/128] target2 "I can help you with the group": 768ms -> 1544ms (-16.7dB), 1 link -> 58714AC6-1BA3-42FF-833B-A8BB414CA357
+[119/128] target2 "you're doing something with me": 984ms -> 1560ms (-16.3dB), 1 link -> B28D5DF7-246F-4CD0-9B57-59311774FE19
+[120/128] target2 "are you ready today?": 672ms -> 1316ms (-16.6dB), 1 link -> EF280BB9-59CB-469B-B34E-91F77DE5ABBC
+[Phase8-Audio-v13] masterAudio: tail rise -17.5dB repaired in 1 pass(es) at 1.47s
+[Phase8-Audio-v13] masterAudio: tail rise -33.8dB repaired in 1 pass(es) at 1.666s
+[122/128] target2 "could you all say that once more?": 1008ms -> 1656ms (-16.3dB), 1 link -> 81F532D3-3253-4453-8BE3-642F68A6E24D
+[121/128] target2 "what do you think right now?": 912ms -> 1570ms (-16.5dB), 1 link -> 1DE45DFE-8402-44F9-91D3-2F49D186E7A9
+[123/128] target2 "could you all say that this morning?": 1200ms -> 1766ms (-16.4dB), 1 link -> 1995EFDE-3DFC-4D9E-886E-E7942D044BB1
+[Phase8-Audio-v13] masterAudio: tail rise -7.1dB repaired in 1 pass(es) at 1.53s
+[Phase8-Audio-v13] masterAudio: tail rise -17.9dB repaired in 1 pass(es) at 1.448s
+[125/128] target2 "did they want to eat something?": 1056ms -> 1548ms (-16.3dB), 1 link -> C9AC5253-82F8-4247-9D96-C118369863A6
+[124/128] target2 "shouldn't we try to eat something": 912ms -> 1630ms (-16.4dB), 1 link -> DFEFB599-B435-461A-BB70-177CF4AD13F1
+[126/128] target1 "they need to get ready at the weekend": 1200ms -> 1968ms (-15.3dB), 1 link -> 0F652169-0688-4EC2-B4BE-3AC8FB984C9A
+[Phase8-Audio-v13] masterAudio: tail rise -6.5dB repaired in 2 pass(es) at 1.55s
+[128/128] target2 "would they like to ask a question?": healthy (1128ms vs fresh 1350ms) — left alone
+[127/128] target1 "I still want to speak with her": 888ms -> 1656ms (-15.8dB), 1 link -> FB0A1D55-CE3E-4019-98EF-3BEC9D10D13E
+[Version] eng_for_mar: 0.816.6 → 0.816.7 (patch)
+[Version] eng_for_mar: integer version 1486 → 1487 (revalidation key — audio generated)
+course version + revalidation key bumped — clients will refetch the new audio ids.
+
+116 repaired, 12 left alone (probe says healthy), 0 failed, of 128.
+128 renders, 3,321 characters of TTS.
+xAI health this run: 128 responses, 0 empty (0.00%), 0 cooldowns.
+log -> /tmp/repair-eng_for_mar-128.json
+
+[Azure TTS] Closing connection pool (0 total connections)...
