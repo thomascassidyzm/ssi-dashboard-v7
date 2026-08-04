@@ -61,7 +61,12 @@ module.exports = function createContext(supabase) {
       HEARTBEAT_TIMEOUT_MS: 3 * 60 * 1000,            // 3 minutes = agent dead
       STALL_WATCHER_INTERVAL_MS: 60000,                // Check every 60 seconds
       MAX_AUTO_RESPAWNS: 5,                            // Max respawns before giving up
-      BUILD_CHECK_INTERVAL_MS: 30000,                  // Check progress every 30s
+      BUILD_CHECK_INTERVAL_MS: 30000,                  // Heartbeat tick every 30s
+      // Progress-count backoff (build-manager). The tick above stays 30s so
+      // last_heartbeat keeps satisfying the >5min stall checks; the seed-count
+      // query itself starts at 60s and doubles to 15min while nothing changes.
+      BUILD_PROGRESS_MIN_INTERVAL_MS: parseInt(process.env.BUILD_PROGRESS_MIN_INTERVAL_MS) || 60000,
+      BUILD_PROGRESS_MAX_INTERVAL_MS: parseInt(process.env.BUILD_PROGRESS_MAX_INTERVAL_MS) || 900000,
       MAX_RESPAWNS: 3,                                 // Max auto-respawns (build)
       STALL_THRESHOLD_MS_EXTENDED: 10 * 60 * 1000,    // 10 minutes for auto-respawn
       DB_HEARTBEAT_INTERVAL_MS: 30 * 1000,             // DB heartbeat interval
