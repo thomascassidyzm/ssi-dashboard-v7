@@ -30,16 +30,34 @@ Counts, by what each check actually does:
 
 | Class | Count | What it means |
 |---|---:|---|
-| Checks that **BLOCK** something | **1 family** (the `/api/seed/complete` gate, ~12 distinct checks inside it) | Real enforcement — a 400 and nothing is written |
+| Checks that **BLOCK** something | **3 families** — the `/api/seed/complete` gate (~12 checks inside it), the **tail-defect gate at the audio mastering chokepoint**, and the **voice-engine splice/align guards** | Real enforcement — a 400, or a thrown error that aborts the clip |
 | Checks that run **automatically but only report** | **1** (`audio-batch-gate.cjs` via phase8) | Fires on its own; by explicit design cannot stop anything |
 | Checks that exist and are **manually-run CLI only** | **~14** | Someone must know to type the command |
 | Checks that are **wired to nothing** (dead code / unmounted / commented out) | **9** | Built, never reachable |
 | Checks that are **installed but silently switched OFF in production** | **1** (the xAI wrong-language phonology gate) | Believed on; provably off |
 
 The table in §2 has **40 rows**. Counting the submit gate's ~12 internal checks as the
-one family they are, that is **29 distinct capabilities — and exactly one family
-enforces.** That one family only enforces on *new content submitted through the
-course-builder API*. It has never run over the existing estate. Every course built or edited by any
+one family they are, that is **29 distinct capabilities — and three of them enforce.**
+
+> **Correction, made after a sub-agent challenged my first count and turned out to be
+> right.** I originally wrote "exactly one family enforces". That was wrong, and the
+> correction matters because it is the report's central claim. The two I missed:
+>
+> - **The tail-defect gate.** `audio-processor.cjs:687` throws
+>   *"still detected after 3 repair passes — refusing to ship"*, called from
+>   `repairTailDefect` at the mastering chokepoint (`phase8-audio-v13.cjs:945`).
+>   `masterAudio` is `try`/`finally` with **no catch**, so the throw propagates to all
+>   **7** render call sites. A clip still dirty after 3 DSP passes is genuinely aborted and
+>   never written. This is real, automatic, per-clip enforcement on every render path.
+> - **The voice-engine guards** — `splicer.cjs:275` (splice-length floor, ≥95% of summed
+>   inputs) and `align.cjs` (chunk-count alignment). Both throw. Both cover **only the
+>   human-recording pipeline**, not TTS.
+
+**But the shape of the finding is unchanged, and in one way sharpened.** All three
+enforcement points are *upstream, per-item, at creation time*: they gate an incoming seed
+or an individual clip. **Nothing whatsoever gates a course-level verdict** — no publish, no
+status promotion, no phase transition, no export. The `/api/seed/complete` family has
+never run over the existing estate; the tail gate only ever sees clips as they are minted. Every course built or edited by any
 other path — direct DB insert, batch regeneration, the audio pipeline, the QA fixer
 agents — is entirely ungated.
 
@@ -128,7 +146,10 @@ Legend for **Enforces**: `BLOCKS` = failing it prevents a write/publish/transiti
 | A4 | **Wrong-language sweep, cross-course** | `tools/sweep-wrong-language-crosscourse.cjs`, `tools/rescue-wrong-language-clips.cjs` | CLI (zero code callers) | REPORTS | course / estate | Prior run artefacts in `tools/audio-sweeps/`. |
 | A5 | **Gender lint** — voice↔text gender mismatch | `tools/audio-gender-lint.cjs` | CLI (zero code callers; only doc cross-refs from `pod-recolour.cjs:29`, `gendered-speech.cjs:4`) | REPORTS | course | — |
 | A6 | **Envelope / loudness** | `services/audio-envelope.cjs` (+ `.test.cjs`), `tools/audio-envelope-batch.cjs` | CLI / library | REPORTS | batch | Has unit tests. |
-| A7 | **Tail click / de-click** | `tools/declick-tail.cjs`; mastering rules in `phase8-audio-v13.cjs` (`masterAudio` tail burst/resurgence) | AUTO within mastering | Mutates (repairs), does not block | per clip | **Known over-rejection**: the soft resurgence/rise rules over-reject breathy voices — 3 clips hard-error after 3 passes (issue #18). `docs/tail-click-listening-test.html` is the manual ear-check artefact for exactly this. |
+| A7 | **Tail click / amputation guard** | `services/audio-processor.cjs` `repairTailDefect` (throws at `:647`, `:687`); called `phase8-audio-v13.cjs:945` inside `masterAudio`. Also `tools/declick-tail.cjs` for sweeps | **AUTO on every render** (7 `masterAudio` call sites) | **BLOCKS.** Repairs by DSP for up to 3 passes; still dirty → **throws, clip never ships**. `masterAudio` is `try`/`finally` with no catch, so it propagates. | per clip | **Known over-rejection**: the soft resurgence/rise rules over-reject breathy voices — 3 clips hard-error after 3 passes (issue #18); the repair README says *do not force them*. Its whisper-based amputation guard **silently no-ops without `whisper-cli`** — see §1.2, that is true on this box now. `docs/tail-click-listening-test.html` is the manual ear-check artefact for exactly this. |
+| A13 | **Splice length floor** (human recordings) | `services/voice-engine/splicer.cjs:275` | AUTO in the recording pipeline | **BLOCKS** — throws on a truncated splice | per splice | Human-recording path only; does not cover TTS. |
+| A14 | **Chunk-count alignment** (human recordings) | `services/voice-engine/align.cjs` | AUTO in the recording pipeline | **BLOCKS** — throws | per take pair | Human-recording path only. |
+| A15 | **Two parallel human-flag systems** | `audio_flags` vs the older `flags`, both in `production-api.cjs` | — | REPORTS | — | Coexist **unreconciled**. Only bites if a flag goes missing where you expect it — worth a look, not urgent. |
 | A8 | **Chunk-audio coverage** | `tools/audit-chunk-audio-coverage.cjs` | CLI | REPORTS (feeds `build-chunk-audio-regen-queue.cjs`) | course/pod | Queue artefacts exist as `*-STAGED.json`. |
 | A9 | **Pod voice coverage** | `tools/pod-voice-coverage.cjs` | CLI (6 cross-refs) | REPORTS | pod | — |
 | A10 | **Legacy/stranded voice ids** | `tools/revoice-clips.cjs`, `tools/rescue-child-voice-clips.cjs` | CLI | Mutates on demand | list-driven | 14 hrv rows still carry ElevenLabs ids that 404 on xAI — unresolved, needs a voice-mapping ruling. |
@@ -213,6 +234,28 @@ and this map would be dishonest without carrying it forward.
    a pass.
 
 7. **A3 wrong-language gate** — currently off (§1.2), and fail-open even when on.
+
+8. **`suspect` / `near-silent` verdicts read alone.** Both screens deliberately flag the
+   healthy tail too. In the two applied repairs, **17–26 "suspects" per course probed
+   healthy** and were correctly left alone. A suspect count is a *probe list*, not a
+   defect count — treating it as the latter will manufacture work and, worse, invite
+   forcing repairs on clips that are fine.
+
+9. **Near-silence is not confined to short clips.** Near-silent clips were found at up to
+   **1,080 ms** — well past the 400 ms duration floor. This compounds §2D.1: the floor is
+   not merely blind to a rare long defect, it is blind to a documented band of them.
+
+10. **Anything whisper-dependent, on this box, right now.** That is both the tail gate's
+    amputation guard (A7) and `rescue-wrong-language-clips.cjs`'s phonology gate. They
+    **silently no-op** without `whisper-cli` — confirmed true here (§1.2). So the one
+    genuinely enforcing audio gate is currently running with its safety catch disabled:
+    it can still trim, but the guard that stops it amputating resumed speech is off.
+
+11. **`audio-duration-service.cjs` and the deploy-verify dashboard buttons** verify the
+    **legacy JSON manifest**, which per CLAUDE.md is explicitly *not* what the learner app
+    reads — the player reads Supabase directly. **A clean pass there says nothing about
+    what a learner hears.** This is the §2C/S4 "manifest is off the learner path" problem
+    showing up as a green tick someone might believe.
 
 ### 2E. Two numbers Tom asked for, measured
 
@@ -589,10 +632,19 @@ Things I could not check, or checked only partially. Reported as gaps rather tha
    the same Production API with matching timestamps). If renders run anywhere else, that
    box needs the same check.
 
-9. **Sub-agent reports — and one worker claim I had to correct.** Three read-only workers
-   were dispatched. Two landed (learner-app engine; journey-page + live-page + export-wizard
-   trace); the **audio QA inventory worker had not reported when this was finalised**, so
-   §2B is entirely my own reading and may be less exhaustive than a dedicated pass would be.
+9. **Sub-agent reports — one worker claim corrected, one of mine corrected by a worker.**
+   All three read-only workers landed (learner-app engine; journey-page + live-page +
+   export-wizard trace; audio QA inventory). Nothing is still in flight.
+
+   **The audio worker corrected me, and it was the report's central claim.** I had written
+   that exactly one family enforces. It found the tail-defect gate
+   (`audio-processor.cjs:687` → `phase8-audio-v13.cjs:945`) and the voice-engine
+   splice/align guards. I verified all three throw sites and confirmed `masterAudio` has no
+   catch, so the throw genuinely propagates. §1 and §2B/A7 are corrected accordingly. Its
+   independent sweep also found **11 more capabilities than my seed list**, and confirmed
+   **11 of 22 audio capabilities have zero callers** — a dead-code fraction close to half,
+   covering whole defect classes (gender mismatch, child voices, wrong-language phonology,
+   cross-course sweeps) that now depend entirely on someone remembering a CLI.
 
    The learner-engine worker asserted that `generateLearningScript.ts` is QA-tool-only,
    reachable only via `useFullCourseScript.ts` → `CourseExplorer.vue`, and therefore that
@@ -604,7 +656,9 @@ Things I could not check, or checked only partially. Reported as gaps rather tha
 
    **Everything in this document is stated on evidence I verified myself, except §2C-bis
    (the export/publish wizard audit), which is the worker's trace, spot-checked but not
-   re-verified line by line, and is labelled as such in place.**
+   re-verified line by line, and is labelled as such in place.** The audio worker's
+   dead-code counts (11 of 22) are its own exhaustive grep; I verified the enforcement
+   claims and a sample of the zero-caller findings, not every one.
 
 10. **Not attempted, deliberately:** no TTS generation (costs money, requires Tom's
     approval), no asset deletion, no code changes, no refactors. The `--deep` audio gate
