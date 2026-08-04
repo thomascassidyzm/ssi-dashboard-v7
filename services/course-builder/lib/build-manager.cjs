@@ -6,6 +6,27 @@
 let buildManagerInterval = null;
 
 /**
+ * Per-job backoff for the PROGRESS COUNT query (Step 1 below).
+ *
+ * The tick stays at BUILD_CHECK_INTERVAL_MS because `last_heartbeat` is a
+ * liveness signal downstream (production-api's stall check + the detective
+ * brief both call a job stalled at >5 min without a heartbeat) — widening the
+ * tick would fake stalls. What gets widened is the expensive part: the
+ * count-seeds query. A job whose count is unchanged is re-counted at
+ * 2x the previous delay, capped; any change resets it to the base delay.
+ *
+ * Why: jobs are never auto-killed here (see Step 3), so `running` rows
+ * accumulate and get counted forever — live 2026-08-04 there were 10 running
+ * jobs, the oldest started 2026-05-18 and 3 of them `final-pass`, so the
+ * approved-seed count ran every 30s for weeks against an answer that had not
+ * moved in a month. That poll is ~988k calls of the measured DB load.
+ */
+const progressBackoff = new Map(); // job.id -> { nextCheckAt, delayMs }
+
+/** Passes whose progress comes from a DB count (i.e. the ones worth backing off). */
+const COUNTING_PASSES = new Set(['translate', 'build-team', 'decompose', 'final-pass']);
+
+/**
  * Check if a claude agent process is still running for a given course.
  * Looks for 'claude --model' processes whose command line includes the course code.
  */
@@ -83,6 +104,12 @@ async function checkBuilds(ctx) {
     return;
   }
 
+  // Drop backoff state for jobs that are no longer running.
+  const runningIds = new Set(runningJobs.map((j) => j.id));
+  for (const id of progressBackoff.keys()) {
+    if (!runningIds.has(id)) progressBackoff.delete(id);
+  }
+
   if (runningJobs.length === 0) return;
 
   for (const job of runningJobs) {
@@ -94,6 +121,17 @@ async function checkBuilds(ctx) {
       // --- Step 1: Get current DB progress for this course ---
       let currentProgress = 0;
       let target = job.total_seeds || 300;
+
+      // Backed-off jobs skip the count entirely: heartbeat only, no
+      // progress/completion write (writing a stale count would be a lie).
+      const backoff = progressBackoff.get(job.id);
+      if (COUNTING_PASSES.has(job.pass) && backoff && now.getTime() < backoff.nextCheckAt) {
+        await ctx.supabase
+          .from('build_jobs')
+          .update({ last_heartbeat: now.toISOString() })
+          .eq('id', job.id);
+        continue;
+      }
 
       if (job.pass === 'translate') {
         const { count } = await ctx.supabase
@@ -122,6 +160,14 @@ async function checkBuilds(ctx) {
 
       // --- Step 2: Update heartbeat + progress in DB ---
       const progressChanged = currentProgress !== (job.seeds_completed || 0);
+
+      if (COUNTING_PASSES.has(job.pass)) {
+        const baseMs = ctx.config.BUILD_PROGRESS_MIN_INTERVAL_MS || 60000;
+        const maxMs = ctx.config.BUILD_PROGRESS_MAX_INTERVAL_MS || 900000;
+        const prevDelay = progressBackoff.get(job.id)?.delayMs || 0;
+        const delayMs = progressChanged ? baseMs : Math.min(Math.max(prevDelay * 2, baseMs), maxMs);
+        progressBackoff.set(job.id, { delayMs, nextCheckAt: now.getTime() + delayMs });
+      }
       const updates = {
         current_seed: currentProgress,
         seeds_completed: currentProgress,
@@ -162,6 +208,7 @@ function stopBuildManager() {
   if (buildManagerInterval) {
     clearInterval(buildManagerInterval);
     buildManagerInterval = null;
+    progressBackoff.clear();
     console.log('[BUILD] Build manager stopped');
   }
 }
