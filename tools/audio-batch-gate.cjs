@@ -48,6 +48,18 @@
  *      stubs measure about -91 dB mean, which is unmissable. Run over every
  *      flagged clip by default (to confirm before anyone re-renders), and over
  *      an arbitrary scope with --deep.
+ *      This check reports TWO levels. Silence (-91 dB) is the 08-03 artefact.
+ *      NEAR-SILENCE is a third artefact found 2026-08-04 on the 2026-06-16
+ *      render: audible, full byte-size, but 10-30 dB under the healthy floor —
+ *      a whole Korean sentence stored as 336 ms at -43 dB. It passed the old
+ *      -60/-45 dB thresholds, and because a passing clip recorded no dB at all,
+ *      it was invisible in the output too. Both are now recorded on the clip.
+ *
+ * WHAT THIS TOOL STILL CANNOT DO. Checks 1 and 2 are free because they only
+ * read metadata, and a duration floor cannot see a defect that is longer than
+ * the floor. Near-silent clips at 504-1080 ms were found in the 06-16 batch, so
+ * a course reporting zero flags here is only clean with respect to short clips
+ * unless --deep was passed. Do not read a clean report as a clean course.
  *
  * VERDICTS. `confirmed` = proven defective by measurement (silent). `suspect` =
  * duration/rate anomaly, audible — a repair tool should probe-render these and
@@ -68,7 +80,13 @@
  *                      (how the batch path scopes the gate to its own run)
  *   --roles <a,b>      restrict to these roles (default: all)
  *   --deep             measure loudness on EVERY clip in scope, not just the
- *                      ones the duration screen flagged
+ *                      ones the duration screen flagged. This is the ONLY way
+ *                      to find a near-silent clip that is longer than the
+ *                      duration floor — and those exist: the 06-16 sweep found
+ *                      them at 504-1080 ms.
+ *   --strict-level     treat near-silence as CONFIRMED rather than SUSPECT.
+ *                      Off by default so a repair job's before/after gate runs
+ *                      stay comparable across this tool's own change.
  *   --out <path>       write the repair list (JSON array of audio ids + text)
  *   --concurrency <n>  parallel downloads/measurements (default 8)
  *
@@ -94,6 +112,19 @@ const SILENCE_MEAN_DB = Number(process.env.AUDIO_GATE_SILENCE_DB || -60)
 /** A clip whose PEAK never gets above this has no speech in it either, however
  *  long it is — this is the full-length-but-empty case. */
 const SILENCE_PEAK_DB = Number(process.env.AUDIO_GATE_PEAK_DB || -45)
+/** NEAR-SILENCE: audible, but far below any level a healthy clip reaches.
+ *  Found 2026-08-04 on the 2026-06-16 cross-estate render, which produced a
+ *  third artefact distinct from both the empty stub and the truncation: files
+ *  of full byte-size for their duration that carry a signal 10-30 dB under the
+ *  healthy floor. The proof it is a defect and not a quiet short word is
+ *  kor_for_eng "지금 아내와 아이들과 함께 여기에서 휴가를 보내고 있어요." — a whole
+ *  sentence stored as 336 ms at -43.3 dB mean / -29.1 dB peak.
+ *  Calibrated against 104 healthy clips drawn from that same batch window:
+ *  peak median -2.2 dB, p05 -6.5 dB, min -28.2 dB (and that min is itself a
+ *  defect). -9 dB sits below the healthy p05 and above every clip measured in
+ *  the defect band. Evidence and per-clip data:
+ *  docs/audio-repair-2026-08-04/stub-forensics-22/FINDINGS.md */
+const NEAR_SILENT_PEAK_DB = Number(process.env.AUDIO_GATE_NEAR_SILENT_PEAK_DB || -9)
 /** Speech-rate suspicion: this fraction of the role's own healthy median
  *  ms-per-character. Calibrated on fra_for_eng — healthy target2 runs a median
  *  of 50.8 ms/char and a p01 of 31.0, while the confirmed truncations run a
@@ -117,6 +148,7 @@ const SINCE = arg('--since')
 const ROLES = (arg('--roles') || '').split(',').map(r => r.trim()).filter(Boolean)
 const OUT = arg('--out')
 const DEEP = argv.includes('--deep')
+const STRICT_LEVEL = argv.includes('--strict-level')
 const CONCURRENCY = Number(arg('--concurrency', 8))
 
 // Only a direct CLI invocation needs a course — phase8 requires this file as a
@@ -180,7 +212,15 @@ async function loadClips() {
       .from('course_audio')
       .select('id, text, text_normalized, role, voice_id, language, duration_ms, s3_key, created_at, origin')
       .eq('course_code', COURSE)
+      // Tie-break on id. created_at is NOT unique (batch renders stamp many
+      // clips in the same second), and a non-total sort gives Postgres no
+      // stable order across separate LIMIT/OFFSET pages — so rows silently
+      // duplicate and DROP at page boundaries. The row count stays right,
+      // which is what hid this: two runs of the same course returned 21 and
+      // 22 rate flags off a constant 55,618 clips (eng_for_tam, 2026-08-04).
+      // A dropped row is a clip the gate never checked and reported clean.
       .order('created_at')
+      .order('id')
       .range(from, from + PAGE - 1)
     if (SINCE) q = q.gte('created_at', SINCE)
     if (ROLES.length) q = q.in('role', ROLES)
@@ -282,6 +322,15 @@ function isSilent(level) {
   return level.meanDb < SILENCE_MEAN_DB || level.peakDb < SILENCE_PEAK_DB
 }
 
+/** Audible but far under the healthy floor — see NEAR_SILENT_PEAK_DB. Reported
+ *  separately from silence because the two want different handling: silence is
+ *  provably dead and can be re-rendered blind, whereas a near-silent clip is a
+ *  level failure that a probe render should confirm first. */
+function isNearSilent(level) {
+  if (!level || level.error || !Number.isFinite(level.peakDb)) return false
+  return !isSilent(level) && level.peakDb < NEAR_SILENT_PEAK_DB
+}
+
 async function run() {
   const rows = await loadClips()
   const scope = `${COURSE}${SINCE ? ` since ${SINCE}` : ''}${ROLES.length ? ` roles=${ROLES.join('/')}` : ''}`
@@ -318,14 +367,31 @@ async function run() {
   try { fs.rmSync(tmpDir, { recursive: true, force: true }) } catch {}
 
   const silent = measured.filter(m => isSilent(m.level))
+  const nearSilent = measured.filter(m => isNearSilent(m.level))
   const unmeasurable = measured.filter(m => !m.level || m.level.error)
-  console.log(`      ${silent.length} silent, ${unmeasurable.length} unmeasurable (treated as pass)`)
+  console.log(`      ${silent.length} silent, ${nearSilent.length} near-silent (peak < ${NEAR_SILENT_PEAK_DB} dB), ${unmeasurable.length} unmeasurable (treated as pass)`)
 
   // Build the verdict per clip. Measured silence is CONFIRMED — nothing else
   // is, because every other signal here flags the healthy tail of a continuous
   // distribution as well as the defects.
   const byId = new Map()
   for (const f of [...durationFlags, ...rateFlags]) byId.set(f.id, { ...f, verdict: 'suspect', level: null })
+  // Near-silence stays SUSPECT by default so that verdicts remain comparable
+  // across runs made before and after this check existed — a repair job doing
+  // before/after gate runs must not see its own baseline move. What changes
+  // unconditionally is visibility: the measured level is now recorded on the
+  // clip, which is what made this artefact invisible before (a passing clip
+  // reported no dB at all). --strict-level promotes it to CONFIRMED.
+  for (const m of nearSilent) {
+    const prev = byId.get(m.row.id)
+    byId.set(m.row.id, {
+      ...(prev || m.row),
+      reason: prev ? prev.reason : 'near-silent',
+      verdict: STRICT_LEVEL ? 'confirmed' : 'suspect',
+      detail: `${prev ? prev.detail + '; ' : ''}NEAR-SILENT mean ${m.level.meanDb} dB, peak ${m.level.peakDb} dB (healthy peak p05 ≈ -6.5 dB)`,
+      level: m.level,
+    })
+  }
   for (const m of silent) {
     const prev = byId.get(m.row.id)
     byId.set(m.row.id, {
@@ -340,8 +406,19 @@ async function run() {
   const confirmed = defective.filter(d => d.verdict === 'confirmed')
   const suspect = defective.filter(d => d.verdict === 'suspect')
 
+  // Display buckets are cut by MEASUREMENT, not by verdict, so the near-silent
+  // band stays visible whether or not --strict-level promoted it.
+  const silentSet = defective.filter(d => isSilent(d.level))
+  const nearSet = defective.filter(d => isNearSilent(d.level))
+  const unmeasuredSuspect = defective.filter(d => !isSilent(d.level) && !isNearSilent(d.level))
+
   console.log(`\nRESULT: ${confirmed.length} confirmed + ${suspect.length} suspect, of ${rows.length} clips (${((100 * defective.length) / rows.length).toFixed(2)}%)`)
-  for (const [label, set] of [['CONFIRMED (silent — replace)', confirmed], ['SUSPECT (audible — probe before replacing)', suspect]]) {
+  console.log(`        ${silentSet.length} silent, ${nearSet.length} near-silent, ${unmeasuredSuspect.length} duration/rate-only`)
+  for (const [label, set] of [
+    ['CONFIRMED (silent — replace)', silentSet],
+    [`NEAR-SILENT (level failure — probe, then replace)${STRICT_LEVEL ? '' : ' [reported as suspect; --strict-level to fail on these]'}`, nearSet],
+    ['SUSPECT (audible at normal level — probe before replacing)', unmeasuredSuspect],
+  ]) {
     if (!set.length) continue
     console.log(`\n  ${label}: ${set.length}`)
     const byRole = set.reduce((a, d) => ((a[`${d.role}/${d.voice_id}`] = (a[`${d.role}/${d.voice_id}`] || 0) + 1), a), {})
@@ -387,9 +464,12 @@ async function gateBatchSafe(courseCode, since, logger = console) {
     const measured = await measureClips(screened, tmpDir, 'gate')
     try { fs.rmSync(tmpDir, { recursive: true, force: true }) } catch {}
     const silent = measured.filter(m => isSilent(m.level))
-    const result = { confirmed: silent.length, suspect: screened.length - silent.length, scanned: rows.length }
-    const line = `[audio-gate] ${courseCode}: ${rows.length} new clips — ${result.confirmed} SILENT, ${result.suspect} suspect (short/fast). Re-render list: node tools/audio-batch-gate.cjs ${courseCode} --since ${since} --out /tmp/${courseCode}-repair.json`
-    if (result.confirmed) (logger.error || logger.log).call(logger, line)
+    const nearSilent = measured.filter(m => isNearSilent(m.level))
+    // `confirmed` keeps meaning SILENT here, so existing callers and their
+    // thresholds are untouched; near-silence is reported alongside it.
+    const result = { confirmed: silent.length, nearSilent: nearSilent.length, suspect: screened.length - silent.length, scanned: rows.length }
+    const line = `[audio-gate] ${courseCode}: ${rows.length} new clips — ${result.confirmed} SILENT, ${result.nearSilent} NEAR-SILENT, ${result.suspect} suspect (short/fast). Re-render list: node tools/audio-batch-gate.cjs ${courseCode} --since ${since} --out /tmp/${courseCode}-repair.json`
+    if (result.confirmed || result.nearSilent) (logger.error || logger.log).call(logger, line)
     else (logger.warn || logger.log).call(logger, line)
     return result
   } catch (e) {
@@ -407,7 +487,15 @@ async function loadClipsFor(courseCode, since) {
       .from('course_audio')
       .select('id, text, text_normalized, role, voice_id, language, duration_ms, s3_key, created_at, origin')
       .eq('course_code', courseCode)
+      // Tie-break on id. created_at is NOT unique (batch renders stamp many
+      // clips in the same second), and a non-total sort gives Postgres no
+      // stable order across separate LIMIT/OFFSET pages — so rows silently
+      // duplicate and DROP at page boundaries. The row count stays right,
+      // which is what hid this: two runs of the same course returned 21 and
+      // 22 rate flags off a constant 55,618 clips (eng_for_tam, 2026-08-04).
+      // A dropped row is a clip the gate never checked and reported clean.
       .order('created_at')
+      .order('id')
       .range(from, from + PAGE - 1)
     if (since) q = q.gte('created_at', since)
     const { data, error } = await q
