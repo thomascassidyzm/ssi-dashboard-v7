@@ -51,13 +51,137 @@ const TTS_FETCH_TIMEOUT_MS = Number(process.env.TTS_FETCH_TIMEOUT_MS || 90_000);
 const XAI_MAX_CONCURRENT = Number(process.env.XAI_TTS_CONCURRENCY || 4);
 let xaiActive = 0;
 const xaiQueue = [];
-function xaiAcquire() {
+function xaiSlotAcquire() {
   if (xaiActive < XAI_MAX_CONCURRENT) { xaiActive++; return Promise.resolve(); }
   return new Promise(resolve => xaiQueue.push(resolve));
 }
 function xaiRelease() {
   const next = xaiQueue.shift();
   if (next) next(); else xaiActive--;
+}
+
+// ---- Empty-response gate ---------------------------------------------------
+// The 2026-08-03 French batch wrote 567 target2 + ~75 known clips that are
+// 2,016-byte MP3 stubs of pure silence (144/168/192 ms = 6/7/8 MP3 frames, the
+// encoder's minimum output). Cause: on a long, high-volume xAI run the provider
+// degrades and starts answering with empty-or-near-empty HTTP 200 bodies —
+// measured stub rate inside that one run climbed 0.11% → 5.26% and fell back to
+// 0.00% as the run tailed off, while Azure days of 20k+ clips are spotless.
+//
+// `response.ok` was the ONLY gate, so an empty 200 sailed through; the mastering
+// chain (denoise → compress → limit → fade + silence pad) then LAUNDERED it into
+// a well-formed playable MP3, and duration_ms was computed from that file, so the
+// DB row and the object agreed perfectly and every consistency check passed.
+// Nothing in the pipeline had ever asked "is there speech in this clip".
+//
+// This gate asks the cheapest possible version of that question at the one place
+// it costs nothing: the response boundary, before mastering can launder it.
+//
+// The floor is expressed in MILLISECONDS of audio, not bytes, because the
+// providers use very different bitrates (xAI 128 kbps = 16,000 B/s; Azure's
+// Audio16Khz32KBitRateMonoMp3 = 4,000 B/s). One byte number would be either
+// useless on xAI or lethal to legitimate short Azure clips.
+//
+// 250 ms is picked from measurement, not taste. Real xAI/leo French renders of
+// the shortest words in the course: "tout" 7,296 B (456 ms), "ma" 7,680 B
+// (480 ms), "oui" 9,216 B (576 ms). The live DB agrees — across fra/deu the
+// legitimate duration distribution starts around 480 ms with nothing between the
+// stub band (≤192 ms) and it. So 250 ms sits comfortably above every known stub
+// and comfortably below every legitimate clip: on xAI that is a 4,000-byte floor
+// versus a 2,016-byte artefact and a 7,296-byte real clip.
+const TTS_MIN_AUDIO_MS = Number(process.env.TTS_MIN_AUDIO_MS || 250);
+
+/**
+ * Reject a TTS response too small to contain speech.
+ *
+ * Throws with a "(503)" marker so isRetriableTtsError classifies it as a
+ * transient server-side failure: generateWithRetry then re-rolls it inside the
+ * existing retry budget, exactly like the phonology gate, and the final failure
+ * throws so the caller never persists a silent clip.
+ *
+ * @param {Buffer} buffer - the raw provider response
+ * @param {object} meta - { provider, bytesPerSecond, text, voiceId }
+ */
+function assertAudibleResponse(buffer, { provider, bytesPerSecond, text, voiceId }) {
+  const bytes = buffer ? buffer.length : 0;
+  const floorBytes = Math.round((TTS_MIN_AUDIO_MS / 1000) * bytesPerSecond);
+  if (bytes >= floorBytes) return;
+  throw new Error(
+    `TTS empty-response gate (503): ${provider} returned ${bytes} bytes, ` +
+    `below the ${floorBytes}-byte floor (${TTS_MIN_AUDIO_MS} ms at ${bytesPerSecond} B/s) ` +
+    `for voice=${voiceId || '?'} text="${String(text || '').slice(0, 40)}" — ` +
+    `provider returned silence, not a render`
+  );
+}
+
+// ---- xAI adaptive pacing ---------------------------------------------------
+// The concurrency cap above bounds INSTANTANEOUS load. The 08-03 signature was
+// different: degradation climbing with SUSTAINED run length and recovering when
+// the run tailed off. A concurrency cap alone cannot see that, so we watch the
+// gate's own failure rate and slow down exactly when the provider is misbehaving
+// — free on a healthy run, and the only signal we have, since we cannot see
+// xAI's side.
+//
+// We stay on xAI deliberately (Tom 2026-08-04: the cost and the voices are worth
+// it). The job of this code is to make xAI's bad minutes survivable, NEVER to
+// route around xAI.
+const XAI_STUB_WINDOW = Number(process.env.XAI_STUB_WINDOW || 50);
+const XAI_STUB_RATE_LIMIT = Number(process.env.XAI_STUB_RATE_LIMIT || 0.04);
+const XAI_COOLDOWN_MS = Number(process.env.XAI_COOLDOWN_MS || 60_000);
+const XAI_MIN_GAP_MS = Number(process.env.XAI_MIN_GAP_MS || 0);
+
+const xaiOutcomes = [];          // rolling window of booleans: true = audible
+let xaiCooldownUntil = 0;
+let xaiNextSlotAt = 0;
+const xaiHealth = { requests: 0, stubs: 0, cooldowns: 0 };
+
+/** Record one xAI response outcome and trip a cooldown if the stub rate spikes. */
+function recordXaiOutcome(audible) {
+  xaiHealth.requests++;
+  if (!audible) xaiHealth.stubs++;
+  xaiOutcomes.push(!!audible);
+  if (xaiOutcomes.length > XAI_STUB_WINDOW) xaiOutcomes.shift();
+  if (xaiOutcomes.length < XAI_STUB_WINDOW) return;
+
+  const stubs = xaiOutcomes.filter(ok => !ok).length;
+  const rate = stubs / xaiOutcomes.length;
+  if (rate < XAI_STUB_RATE_LIMIT || Date.now() < xaiCooldownUntil) return;
+
+  xaiCooldownUntil = Date.now() + XAI_COOLDOWN_MS;
+  xaiHealth.cooldowns++;
+  // Clear the window so the same spike can't re-trip the cooldown immediately —
+  // the next window is measured on post-cooldown behaviour.
+  xaiOutcomes.length = 0;
+  console.warn(
+    `[xAI TTS] stub rate ${(rate * 100).toFixed(1)}% over the last ${XAI_STUB_WINDOW} responses ` +
+    `— provider is degrading. Pausing xAI renders for ${Math.round(XAI_COOLDOWN_MS / 1000)}s.`
+  );
+}
+
+/** Health counters for a batch report. */
+function getXaiHealth() {
+  return { ...xaiHealth, stubRate: xaiHealth.requests ? xaiHealth.stubs / xaiHealth.requests : 0 };
+}
+
+/**
+ * Acquire an xAI request slot, honouring the concurrency cap, the optional
+ * inter-request gap, and any active degradation cooldown.
+ *
+ * The waits happen while HOLDING the slot, which is the point: during a cooldown
+ * every slot sleeps, so the whole run pauses rather than queueing more load onto
+ * a provider that is already failing.
+ */
+async function xaiAcquire() {
+  await xaiSlotAcquire();
+  for (;;) {
+    const now = Date.now();
+    const waitUntil = Math.max(xaiCooldownUntil, XAI_MIN_GAP_MS ? xaiNextSlotAt : 0);
+    if (waitUntil <= now) {
+      if (XAI_MIN_GAP_MS) xaiNextSlotAt = now + XAI_MIN_GAP_MS;
+      return;
+    }
+    await new Promise(resolve => setTimeout(resolve, waitUntil - now));
+  }
 }
 
 // Child voices are NEVER allowed (Tom 2026-07-24: no kids' voices, ever — a
@@ -154,7 +278,12 @@ async function generateElevenLabs(text, config) {
   }
 
   const arrayBuffer = await response.arrayBuffer();
-  return { audioBuffer: Buffer.from(arrayBuffer), wordBoundaries: null };
+  const audioBuffer = Buffer.from(arrayBuffer);
+  // eleven_multilingual_v2 default output is 128 kbps MP3 → 16,000 B/s.
+  assertAudibleResponse(audioBuffer, {
+    provider: 'elevenlabs', bytesPerSecond: 16000, text, voiceId,
+  });
+  return { audioBuffer, wordBoundaries: null };
 }
 
 /**
@@ -236,7 +365,20 @@ async function generateAzure(text, config) {
         synthesizer.close();
 
         if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
-          resolve({ audioBuffer: Buffer.from(result.audioData), wordBoundaries });
+          const audioBuffer = Buffer.from(result.audioData);
+          // Azure has never produced the empty-200 stub (its 20k-clip days are
+          // spotless) and the SDK's own reason check is a real gate — but a
+          // "completed" synthesis carrying no audio would launder exactly the
+          // same way through mastering, so it gets the same floor.
+          // Audio16Khz32KBitRateMonoMp3 → 4,000 B/s.
+          try {
+            assertAudibleResponse(audioBuffer, {
+              provider: 'azure', bytesPerSecond: 4000, text: ttsText, voiceId: voiceName,
+            });
+          } catch (gateErr) {
+            return reject(gateErr);
+          }
+          resolve({ audioBuffer, wordBoundaries });
         } else {
           reject(new Error(`Azure TTS failed: ${result.errorDetails}`));
         }
@@ -321,7 +463,16 @@ async function generateXai(text, config) {
     }
 
     const arrayBuffer = await response.arrayBuffer();
-    return { audioBuffer: Buffer.from(arrayBuffer), wordBoundaries: null };
+    const audioBuffer = Buffer.from(arrayBuffer);
+    // Bit rate is ours to set (default 128 kbps), so the floor tracks it rather
+    // than assuming a constant.
+    const bytesPerSecond = Math.max(1, Math.round(bitRate / 8));
+    const audible = audioBuffer.length >= Math.round((TTS_MIN_AUDIO_MS / 1000) * bytesPerSecond);
+    recordXaiOutcome(audible);
+    assertAudibleResponse(audioBuffer, {
+      provider: 'xai', bytesPerSecond, text, voiceId,
+    });
+    return { audioBuffer, wordBoundaries: null };
   } finally {
     xaiRelease();
   }
@@ -485,6 +636,12 @@ function phonologySuspects(provider, config) {
  * concurrent pod clips that all hit a transient xAI 5xx don't retry in lockstep
  * and re-stampede the API. Non-retriable (4xx) failures bail immediately.
  *
+ * Every provider path additionally passes the empty-response gate
+ * (assertAudibleResponse): a body too small to hold speech is thrown as a
+ * transient "(503)" failure, so it is re-rolled inside this same retry budget
+ * and, if every attempt comes back silent, throws — the caller never persists a
+ * stub. This is the fix for the 2026-08-03 French batch.
+ *
  * xAI renders steered to a non-English language additionally pass the
  * phonology gate above: a take whose detected spoken language is suspect is
  * re-rolled within the same retry budget, and the final failure throws so the
@@ -582,6 +739,11 @@ module.exports = {
   // phonology gate internals, exported for tests/tools
   detectSpokenLanguage,
   phonologySuspects,
+  // empty-response gate + xAI pacing internals, exported for tests/tools
+  assertAudibleResponse,
+  recordXaiOutcome,
+  getXaiHealth,
+  TTS_MIN_AUDIO_MS,
   CHILD_VOICE_IDS,
   assertNotHumanVoiceCourse
 };
