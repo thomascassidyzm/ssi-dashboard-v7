@@ -110,6 +110,24 @@ const FLOOR_MS = 400
 const TRUNCATION_RATIO = 0.75
 /** Below this mean level the clip is silence, not speech (stubs read -91 dB). */
 const SILENCE_MEAN_DB = -60
+/**
+ * ...and below this PEAK the clip is near-silence: a full-size file carrying a
+ * real signal 10-30 dB under any healthy render. Measured 2026-08-04 on the
+ * 2026-06-16 cross-estate batch — 56 such clips across 22 courses, meanDb
+ * median -29.9 (range -64 to -19.6), peakDb median -12.9 (range -29.1 to -9.3).
+ *
+ * This constant exists because the two tests above are BLIND to that class:
+ * 55 of those 56 clips have meanDb >= -60 AND duration >= 400 ms, so
+ * renderVerified would have accepted a fresh render that was just as broken as
+ * the one it replaced — and reported the repair a success. Repairing
+ * near-silence without this check risks re-introducing the defect and
+ * certifying it clean.
+ *
+ * -9 dB is the gate's threshold (tools/audio-batch-gate.cjs), calibrated on 104
+ * healthy clips from that same batch window: peak median -2.2, p05 -6.5. Keep
+ * the two in step.
+ */
+const NEAR_SILENCE_PEAK_DB = Number(process.env.REPAIR_NEAR_SILENCE_PEAK_DB || -9)
 
 /** Tables/columns that point at a course_audio id, all ON DELETE SET NULL. */
 const LINK_TABLES = [
@@ -132,10 +150,27 @@ function measureLevel(file) {
   })
 }
 
-/** The provider + bare voice id behind a stored voice_id like 'xai_leo'. */
+/**
+ * The provider + bare voice id behind a stored voice_id like 'xai_leo'.
+ *
+ * The provider prefix was only ever applied inconsistently — /generate writes
+ * 'xai_leo', /regenerate-role writes bare 'leo' — so an unprefixed value cannot
+ * simply be assumed to be xAI. Azure neural voices are stored bare across the
+ * estate too ('hy-AM-HaykNeural', 'de-DE-ConradNeural', 'en-GB-SoniaNeural'),
+ * and defaulting those to xAI sends them to a provider that has never heard of
+ * them: measured 2026-08-04, hye_for_eng's one near-silent clip failed with
+ * xAI 404 "Voice 'hy-AM-HaykNeural' not found".
+ *
+ * Every Azure neural voice name ends in 'Neural', which is the discriminator
+ * used here. xAI voices are short words ('leo', 'eve', 'ara') and ElevenLabs
+ * ids are 20-character alphanumeric blobs, so neither collides with it.
+ */
 function decodeVoiceId(storedVoiceId) {
-  const m = /^(xai|azure|elevenlabs)_(.+)$/.exec(String(storedVoiceId || ''))
-  return m ? { provider: m[1], voiceId: m[2] } : { provider: 'xai', voiceId: String(storedVoiceId || '') }
+  const raw = String(storedVoiceId || '')
+  const m = /^(xai|azure|elevenlabs)_(.+)$/.exec(raw)
+  if (m) return { provider: m[1], voiceId: m[2] }
+  if (/Neural$/.test(raw)) return { provider: 'azure', voiceId: raw }
+  return { provider: 'xai', voiceId: raw }
 }
 
 /**
@@ -189,14 +224,19 @@ async function renderVerified(row, tmpDir, expectedMs) {
     try { fs.unlinkSync(probe) } catch {}
 
     const silent = level && level.meanDb < SILENCE_MEAN_DB
+    const nearSilent = level && level.peakDb < NEAR_SILENCE_PEAK_DB
     const short = durationMs < FLOOR_MS
     const truncated = expectedMs ? durationMs < TRUNCATION_RATIO * expectedMs : false
-    last = { buffer, durationMs, level, silent, short, truncated }
-    if (!silent && !short && !truncated) return last
+    last = { buffer, durationMs, level, silent, nearSilent, short, truncated }
+    if (!silent && !nearSilent && !short && !truncated) return last
 
-    console.log(`      attempt ${attempt}: ${silent ? 'SILENT' : short ? `${durationMs}ms < floor` : `${durationMs}ms vs expected ${expectedMs}ms`} — re-roll`)
+    const why = silent ? 'SILENT'
+      : nearSilent ? `NEAR-SILENT (peak ${level.peakDb}dB < ${NEAR_SILENCE_PEAK_DB}dB)`
+      : short ? `${durationMs}ms < floor`
+      : `${durationMs}ms vs expected ${expectedMs}ms`
+    console.log(`      attempt ${attempt}: ${why} — re-roll`)
   }
-  throw new Error(`no attempt produced speech (last: ${last.durationMs}ms, mean ${last.level ? last.level.meanDb : '?'}dB)`)
+  throw new Error(`no attempt produced speech (last: ${last.durationMs}ms, mean ${last.level ? last.level.meanDb : '?'}dB, peak ${last.level ? last.level.peakDb : '?'}dB)`)
 }
 
 /** Every link to `audioId`, captured before the delete nulls them. */
