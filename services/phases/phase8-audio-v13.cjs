@@ -1653,6 +1653,10 @@ app.post('/generate/:courseCode', async (req, res) => {
       return res.json({ skipped: true, reason: 'human-voice-only-course', courseCode, generated: 0 })
     }
 
+    // Stamped before any render so the post-run audio gate can scope itself to
+    // exactly the clips THIS pass minted (see the gate call at completion).
+    const runStartedAt = new Date().toISOString()
+
     const { dryRun = false, limit = 50000, concurrency: requestedConcurrency, roles: requestedRoles, seeds: requestedSeeds } = req.body  // High default for bulk generation
     // Optional incremental scope: restrict generation to specific seed numbers.
     const scopeSeeds = Array.isArray(requestedSeeds) && requestedSeeds.length
@@ -2203,6 +2207,20 @@ app.post('/generate/:courseCode', async (req, res) => {
     // the next run (manual or the next /generate pass).
     if (results.success > 0) {
       require('../../tools/audio-envelope-batch.cjs').backfillCourseSafe(courseCode)
+    }
+
+    // Post-batch audio gate: ask the one question this pipeline never asked —
+    // "is there actually speech in these clips?" On 2026-08-03 a degrading xAI
+    // run answered 539 French requests with empty HTTP 200 bodies; the mastering
+    // chain laundered them into well-formed MP3s and duration_ms was computed
+    // from those files, so every consistency check in the estate passed and the
+    // pass reported success. tts-service.cjs now refuses an empty response at
+    // the boundary; this is the independent second net on the OUTPUT, scoped to
+    // the clips this run minted. Fire-and-forget and never throws — a gate that
+    // can break a completed render pass is worse than no gate. It REPORTS; it
+    // never deletes or mutates a row.
+    if (results.success > 0) {
+      require('../../tools/audio-batch-gate.cjs').gateBatchSafe(courseCode, runStartedAt, logger)
     }
 
     // Emit completion
