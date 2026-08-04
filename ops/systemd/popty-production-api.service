@@ -1,0 +1,26 @@
+[Unit]
+Description=Popty Production API (watson-1)
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
+Environment=NODE_OPTIONS=--max-old-space-size=4096
+Environment=PRODUCTION_API_PORT=3470
+# ONE-WRITER GUARD — Camberley Mac is the live production writer.
+# Leave this off on watson-1 until real cutover. See docs/watson-1-environment.md
+Environment=AUDIT_ARCHIVE_CRON=off
+ExecStart=/usr/bin/node services/production-api.cjs
+Restart=always
+RestartSec=5
+# 2026-08-04: a machine-wide OOM event killed this service AND SIGKILLed the
+# systemd user manager supervising it, so Restart=always never fired and the
+# API stayed down. Make these services the preferred OOM victim over the
+# manager: they come back on their own, the manager does not.
+OOMScoreAdjust=500
+StandardOutput=append:/home/tomcassidy/.local/log/popty-production-api.log
+StandardError=append:/home/tomcassidy/.local/log/popty-production-api.log
+
+[Install]
+WantedBy=default.target

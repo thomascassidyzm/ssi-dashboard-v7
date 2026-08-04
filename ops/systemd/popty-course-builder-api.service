@@ -1,0 +1,21 @@
+[Unit]
+Description=Popty Course Builder API (watson-1)
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
+Environment=NODE_OPTIONS=--max-old-space-size=4096
+Environment=COURSE_BUILDER_PORT=3471
+ExecStart=/usr/bin/node services/course-builder-api.cjs
+Restart=always
+RestartSec=5
+# See the note in popty-production-api.service — prefer killing a restartable
+# service over the user manager that supervises it.
+OOMScoreAdjust=500
+StandardOutput=append:/home/tomcassidy/.local/log/popty-course-builder-api.log
+StandardError=append:/home/tomcassidy/.local/log/popty-course-builder-api.log
+
+[Install]
+WantedBy=default.target

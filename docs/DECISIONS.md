@@ -463,3 +463,27 @@ pack and rendered pages follow automatically via the existing compile step.
 **Searched & rejected:** n/a — factual correction of founder-flagged fabrication.
 **Search width:** visible-options
 **Decided by:** Tom (founder correction, 2026-08-03)
+
+---
+
+## 2026-08-04 — Popty API supervision: systemd units + a cron watchdog that outlives the supervisor
+
+**Move:** committed both service units to `ops/systemd/` (`popty-production-api`, and a new
+`popty-course-builder-api` — 3471 had no unit at all), added `OOMScoreAdjust=500` to both, and
+installed `ops/watchdog/popty-services-watchdog.sh` on the user crontab every 2 minutes. Full
+incident write-up: `docs/incident-popty-api-outage-2026-08-04.md`.
+**Better:** the 2026-08-04 outage was not an unsupervised process — 3470 already had
+`Restart=always`. A machine-wide OOM killed the API *and then the systemd user manager itself*,
+so the restart policy had nobody to execute it. More systemd alone would not have caught this;
+the watchdog runs under `crond`, outside the failure domain that died, and resurrects the manager
+via a `loginctl` linger toggle.
+**Simpler:** two declarative unit files plus one 50-line POSIX shell script, in the same shape as
+the `command-surface` watchdog already on this box. No new daemon, no PM2, no supervisor stack.
+**Cheaper (total):** one curl per service per 2 minutes; zero running cost; and it deletes the
+ad-hoc `nohup` habit that made "who started this?" unanswerable.
+**Searched & rejected:** system units with `User=tomcassidy` (the cleaner fix — command-surface
+already does this — but needs `sudo`, refused for this account); a systemd user timer as the
+watchdog (dies with the manager, so it cannot cover the actual failure); PM2 (a second supervisor
+to keep alive, no better against OOM).
+**Search width:** visible-options
+**Decided by:** agent (reversible ops change, no spend)
