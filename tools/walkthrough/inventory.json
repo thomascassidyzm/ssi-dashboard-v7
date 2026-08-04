@@ -1,6 +1,3235 @@
 {
-  "comment": "The LEDGER of what popty.app can DO (founder ruling 2026-08-04: 'anything that popty.app can DO, can/must be broken down into a clip'). Every clip in tools/walkthrough/walks/ must be a capability here \u2014 gateInventory fails the build otherwise \u2014 and the compile prints coverage on every run. Hand-authored; see docs/walkthrough-clips.md.",
+  "generatedBy": "hand-authored — the ledger of what popty.app can DO",
   "capabilities": [
+    {
+      "id": "open-courses-library",
+      "title": "Open the course library",
+      "section": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/Home.vue",
+      "verb": "Click the Courses card on the hub to reach every course.",
+      "steps": 1,
+      "next": "open-a-course-console"
+    },
+    {
+      "id": "open-how-and-why",
+      "title": "Open How & Why",
+      "section": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/Home.vue",
+      "verb": "Click the How & Why card to read how the place works for your role.",
+      "steps": 1
+    },
+    {
+      "id": "open-admin-hub",
+      "title": "Open the admin hub",
+      "section": "home",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Home.vue",
+      "verb": "Click the Admin card to reach the platform-wide tooling.",
+      "steps": 1
+    },
+    {
+      "id": "switch-active-course",
+      "title": "Switch course",
+      "section": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/CourseSwitcherDropdown.vue",
+      "verb": "Open the course switcher in the navbar and jump to another course.",
+      "steps": 2
+    },
+    {
+      "id": "start-a-new-course",
+      "title": "Start a new course",
+      "section": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/CourseSwitcherDropdown.vue",
+      "verb": "Choose New course in the switcher to open the text-generation door.",
+      "steps": 2,
+      "next": "create-the-course-record"
+    },
+    {
+      "id": "switch-machine-environment",
+      "title": "Point the dashboard at a machine",
+      "section": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/EnvironmentSwitcher.vue",
+      "verb": "Pick which backend machine the dashboard talks to.",
+      "steps": 1,
+      "notes": "setting; the status dot reports the connection"
+    },
+    {
+      "id": "deploy-to-remote-machine",
+      "title": "Deploy to a remote machine",
+      "section": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/EnvironmentSwitcher.vue",
+      "verb": "Pull the latest code and restart services on the selected remote machine.",
+      "steps": 2,
+      "notes": "irreversible-ish: restarts live services. Show-and-point only."
+    },
+    {
+      "id": "open-remote-control-panel",
+      "title": "Open remote control",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/components/RemoteControl.vue",
+      "verb": "Open the machine-health popover from the navbar.",
+      "steps": 1,
+      "next": "restart-a-backend-service"
+    },
+    {
+      "id": "restart-a-backend-service",
+      "title": "Restart one backend service",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/components/RemoteControl.vue",
+      "verb": "Restart a single named phase service from the health list.",
+      "steps": 2
+    },
+    {
+      "id": "restart-all-services",
+      "title": "Restart every service",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/components/RemoteControl.vue",
+      "verb": "Restart the whole service fleet on the target machine.",
+      "steps": 2,
+      "notes": "destructive: interrupts running jobs"
+    },
+    {
+      "id": "reboot-the-machine",
+      "title": "Reboot the machine",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/components/RemoteControl.vue",
+      "verb": "Reboot the whole production machine.",
+      "steps": 2,
+      "notes": "destructive; show-and-point only"
+    },
+    {
+      "id": "toggle-dark-light-theme",
+      "title": "Switch light or dark",
+      "section": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/AppNavbar.vue",
+      "verb": "Flip the dashboard between dark and light from the avatar menu.",
+      "steps": 2
+    },
+    {
+      "id": "set-dashboard-password",
+      "title": "Set or change your password",
+      "section": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/AppNavbar.vue",
+      "verb": "Give yourself a password so you can sign in without an emailed code.",
+      "steps": 4
+    },
+    {
+      "id": "sign-out-of-popty",
+      "title": "Sign out",
+      "section": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/AppNavbar.vue",
+      "verb": "End your dashboard session from the avatar menu.",
+      "steps": 2
+    },
+    {
+      "id": "open-how-this-works-panel",
+      "title": "Read the panel for this page",
+      "section": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/explainer/HowThisWorks.vue",
+      "verb": "Open the How this works panel on the page you are standing on.",
+      "steps": 1
+    },
+    {
+      "id": "dismiss-a-noticing-invitation",
+      "title": "Dismiss a nudge",
+      "section": "home",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/explainer/NoticingInvitations.vue",
+      "verb": "Clear a noticing invitation you have dealt with.",
+      "steps": 1
+    },
+    {
+      "id": "open-pedagogy-rulings",
+      "title": "Read the pedagogy ruling",
+      "section": "how",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/HowAndWhy.vue",
+      "verb": "Open the Pedagogy card to read the teaching model behind the method.",
+      "steps": 1
+    },
+    {
+      "id": "open-pod-thinking",
+      "title": "Read Pod Thinking",
+      "section": "how",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/HowAndWhy.vue",
+      "verb": "Open Pod Thinking to see why the listening stream carries what the course leaves out.",
+      "steps": 1,
+      "next": "read-a-pod-thinking-doc"
+    },
+    {
+      "id": "read-a-pod-thinking-doc",
+      "title": "Open one Pod Thinking piece",
+      "section": "how",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/PodThinkingIndex.vue",
+      "verb": "Pick one piece from the Pod Thinking index and read it.",
+      "steps": 1
+    },
+    {
+      "id": "open-stocktake",
+      "title": "Open the stock-take",
+      "section": "how",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/HowAndWhy.vue",
+      "verb": "Leave the rulings and go to the compiled current-state room.",
+      "steps": 1,
+      "next": "read-pipeline-stocktake"
+    },
+    {
+      "id": "read-pipeline-stocktake",
+      "title": "Check the pipeline stock-take",
+      "section": "how",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/docs/StocktakeIndex.vue",
+      "verb": "Open the Pipeline page to see which phase services are live right now.",
+      "steps": 1
+    },
+    {
+      "id": "read-glossary-stocktake",
+      "title": "Look a term up",
+      "section": "how",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/docs/StocktakeIndex.vue",
+      "verb": "Open the Glossary to check what a term means in this system.",
+      "steps": 1
+    },
+    {
+      "id": "read-apml-stocktake",
+      "title": "Check the APML spec",
+      "section": "how",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/docs/StocktakeIndex.vue",
+      "verb": "Open the APML page to see the compiled specification state.",
+      "steps": 1
+    },
+    {
+      "id": "refresh-the-compiled-docs",
+      "title": "Update the docs",
+      "section": "how",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/components/explainer/UpdateDocsButton.vue",
+      "verb": "Recompile the explanation pack against the running system.",
+      "steps": 1,
+      "notes": "admin-only (v-if=\"isAdmin\"); needs the production machine reachable"
+    },
+    {
+      "id": "pick-your-recording-room",
+      "title": "Pick your recording room",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/views/RecordRoom.vue",
+      "verb": "Choose which course you are recording for when you record for more than one.",
+      "steps": 1,
+      "next": "start-a-reading-session"
+    },
+    {
+      "id": "switch-recording-mode",
+      "title": "Switch reading or dialogue",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/views/RecordRoom.vue",
+      "verb": "Flip between the reading script and your dialogue lines.",
+      "steps": 1
+    },
+    {
+      "id": "open-recording-help",
+      "title": "Read the recording panel",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/views/RecordRoom.vue",
+      "verb": "Open the How this works panel inside the Record Room.",
+      "steps": 1
+    },
+    {
+      "id": "start-a-reading-session",
+      "title": "Start a reading session",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/ModeSelector.vue",
+      "verb": "Choose what you are recording and begin the autocue session.",
+      "steps": 3,
+      "next": "record-a-phrase-on-the-autocue",
+      "notes": "mode select then role select then Begin"
+    },
+    {
+      "id": "record-a-phrase-on-the-autocue",
+      "title": "Record a phrase",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/recording/RecordingControls.vue",
+      "verb": "Start the take, read the line, and move to the next one.",
+      "steps": 2
+    },
+    {
+      "id": "adjust-autocue-speed",
+      "title": "Set the autocue speed",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/recording/RecordingControls.vue",
+      "verb": "Slow the autocue down or speed it up before you record.",
+      "steps": 1
+    },
+    {
+      "id": "step-back-in-a-take",
+      "title": "Go back a line mid-take",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/recording/RecordingControls.vue",
+      "verb": "Pause or step back to the previous line without ending the session.",
+      "steps": 1
+    },
+    {
+      "id": "review-your-recorded-segments",
+      "title": "Review what you recorded",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/AutocueStudio.vue",
+      "verb": "Open the review screen and play back the takes from this session.",
+      "steps": 2,
+      "next": "redo-a-weak-segment"
+    },
+    {
+      "id": "redo-a-weak-segment",
+      "title": "Redo one take",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/review/SegmentCard.vue",
+      "verb": "Re-record a single segment you are not happy with.",
+      "steps": 1
+    },
+    {
+      "id": "approve-a-recorded-segment",
+      "title": "Approve one take",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/review/SegmentCard.vue",
+      "verb": "Mark a single segment good enough to keep.",
+      "steps": 1,
+      "notes": "approval — show-and-point only"
+    },
+    {
+      "id": "filter-review-by-confidence",
+      "title": "Filter takes by confidence",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/review/SessionReview.vue",
+      "verb": "Narrow the review list to the takes the system is least sure about.",
+      "steps": 1
+    },
+    {
+      "id": "approve-all-strong-takes",
+      "title": "Approve all the strong takes",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/review/SessionReview.vue",
+      "verb": "Accept every high-confidence take in one go.",
+      "steps": 1,
+      "notes": "bulk approval — show-and-point only"
+    },
+    {
+      "id": "finalise-a-recording-session",
+      "title": "Finish and save the session",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/review/SessionReview.vue",
+      "verb": "Commit the approved takes and close the session.",
+      "steps": 2,
+      "notes": "irreversible upload — show-and-point only"
+    },
+    {
+      "id": "start-a-dialogue-long-take",
+      "title": "Start your dialogue lines",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/PodLongTakeStudio.vue",
+      "verb": "Begin the one continuous take that carries all your dialogue lines.",
+      "steps": 2,
+      "next": "advance-a-dialogue-line"
+    },
+    {
+      "id": "advance-a-dialogue-line",
+      "title": "Move through the dialogue",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/PodLongTakeStudio.vue",
+      "verb": "Tap Again to redo the line you just said, or Next to move on.",
+      "steps": 1
+    },
+    {
+      "id": "finish-a-dialogue-take",
+      "title": "Finish and save the dialogue",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/PodLongTakeStudio.vue",
+      "verb": "End the long take and save every line under your voice.",
+      "steps": 1,
+      "notes": "irreversible upload — show-and-point only"
+    },
+    {
+      "id": "re-record-a-dropped-line",
+      "title": "Rescue a dropped line",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/components/production/autocue/PodLongTakeStudio.vue",
+      "verb": "Record again any line the slicer could not save.",
+      "steps": 2
+    },
+    {
+      "id": "sign-out-of-the-record-room",
+      "title": "Sign out of the room",
+      "section": "record-room",
+      "personas": [
+        "recorder",
+        "editor",
+        "admin"
+      ],
+      "surface": "src/views/RecordRoom.vue",
+      "verb": "End your session from the Record Room header.",
+      "steps": 1
+    },
+    {
+      "id": "find-a-course",
+      "title": "Find a course",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseBrowser.vue",
+      "verb": "Type into the search box to narrow the course list.",
+      "steps": 1
+    },
+    {
+      "id": "filter-the-course-list",
+      "title": "Filter the course list",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseBrowser.vue",
+      "verb": "Narrow the library by status, pricing tier or language pair.",
+      "steps": 1,
+      "next": "open-a-course-console"
+    },
+    {
+      "id": "sort-the-course-list",
+      "title": "Sort the course list",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseBrowser.vue",
+      "verb": "Order the table by code, name, language, pricing or stage.",
+      "steps": 1
+    },
+    {
+      "id": "clear-the-course-filters",
+      "title": "Clear the filters",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseBrowser.vue",
+      "verb": "Reset the library back to every course.",
+      "steps": 1
+    },
+    {
+      "id": "open-a-course-console",
+      "title": "Open a course",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseBrowser.vue",
+      "verb": "Click a course row to land in its production console.",
+      "steps": 1,
+      "next": "read-the-course-overview"
+    },
+    {
+      "id": "select-many-courses",
+      "title": "Select several courses",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseBrowser.vue",
+      "verb": "Tick the courses you want to act on together.",
+      "steps": 1,
+      "next": "change-status-for-many-courses"
+    },
+    {
+      "id": "change-status-for-many-courses",
+      "title": "Change status in bulk",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseBrowser.vue",
+      "verb": "Move every selected course to a new production status.",
+      "steps": 3,
+      "notes": "confirm modal; writes to many courses at once"
+    },
+    {
+      "id": "change-pricing-for-many-courses",
+      "title": "Change pricing in bulk",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseBrowser.vue",
+      "verb": "Set the pricing tier on every selected course at once.",
+      "steps": 3,
+      "notes": "confirm modal"
+    },
+    {
+      "id": "read-the-course-overview",
+      "title": "Read the course console",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Open the one door per course and see every working surface as a card.",
+      "steps": 1,
+      "next": "open-the-guided-journey"
+    },
+    {
+      "id": "set-a-course-status",
+      "title": "Set the course status",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Move this course between testing, beta and live.",
+      "steps": 1
+    },
+    {
+      "id": "set-a-course-pricing-tier",
+      "title": "Set the pricing tier",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Mark the course free, premium or community.",
+      "steps": 1
+    },
+    {
+      "id": "read-the-build-learnings",
+      "title": "Read the build learnings",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Open the lessons the build recorded about this course.",
+      "steps": 1
+    },
+    {
+      "id": "open-the-guided-journey",
+      "title": "Open the guided journey",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Step into the plain-language walk-through of the whole course build.",
+      "steps": 1,
+      "next": "follow-the-guided-journey"
+    },
+    {
+      "id": "follow-the-guided-journey",
+      "title": "Take the next journey step",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/LeaderJourney.vue",
+      "verb": "Take the next step the journey offers you.",
+      "steps": 1
+    },
+    {
+      "id": "open-the-seed-editor",
+      "title": "Open the seed editor",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Go to the seeds — the sentences the course is built from.",
+      "steps": 1,
+      "next": "edit-a-seed"
+    },
+    {
+      "id": "open-text-generation",
+      "title": "Open text generation",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Go to the surface where the course text gets written.",
+      "steps": 1
+    },
+    {
+      "id": "open-the-listening-pods",
+      "title": "Open the listening pods",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Go to the listening stream for this course.",
+      "steps": 1
+    },
+    {
+      "id": "open-the-audio-pipeline",
+      "title": "Open the audio pipeline",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Go to where the course audio is made and checked.",
+      "steps": 1
+    },
+    {
+      "id": "open-the-recording-studio",
+      "title": "Open the recording studio",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Go to the recorder for this course.",
+      "steps": 1
+    },
+    {
+      "id": "preview-the-course-in-the-app",
+      "title": "Preview it as a learner",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Launch the learning app on this course to see what a learner sees.",
+      "steps": 1
+    },
+    {
+      "id": "run-a-course-audit",
+      "title": "Run a QA audit",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Kick off the quality audit across the whole course.",
+      "steps": 1
+    },
+    {
+      "id": "export-a-course",
+      "title": "Export the course",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Take a legacy export of this course out of Popty.",
+      "steps": 2
+    },
+    {
+      "id": "open-the-recording-optimizer",
+      "title": "Open the recording optimiser",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ProductionOverview.vue",
+      "verb": "Go to the tool that orders the recording session.",
+      "steps": 1,
+      "next": "optimise-the-recording-order"
+    },
+    {
+      "id": "create-the-course-record",
+      "title": "Create the course",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Name the language pair and create the course record.",
+      "steps": 3,
+      "next": "start-the-translation"
+    },
+    {
+      "id": "set-how-many-seeds",
+      "title": "Choose the course size",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Pick how many seeds this course will carry.",
+      "steps": 1,
+      "next": "start-the-translation"
+    },
+    {
+      "id": "start-the-translation",
+      "title": "Start the translation",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Send the seeds off to be translated into the target language.",
+      "steps": 2,
+      "next": "start-the-build-team",
+      "notes": "spends model time; show-and-point only"
+    },
+    {
+      "id": "start-the-build-team",
+      "title": "Put the build team to work",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Launch the agents that decompose seeds into LEGOs and phrases.",
+      "steps": 2,
+      "notes": "agents submit through POST /api/seed/complete — services/course-builder/routes/seed-complete.cjs"
+    },
+    {
+      "id": "ask-the-build-chat",
+      "title": "Ask the build a question",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Talk to the build in the chat panel while it works.",
+      "steps": 2
+    },
+    {
+      "id": "clear-the-build-chat",
+      "title": "Clear the chat",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Wipe the build conversation and start fresh.",
+      "steps": 1
+    },
+    {
+      "id": "prepare-the-gender-variants",
+      "title": "Prepare the gender variants",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Expand the course into its gendered forms before audio.",
+      "steps": 2
+    },
+    {
+      "id": "inspect-one-seed",
+      "title": "Look inside one seed",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Open a seed from the grid and read its phrases.",
+      "steps": 2
+    },
+    {
+      "id": "reset-the-translations",
+      "title": "Reset the translations",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Throw away the translations and start that stage again.",
+      "steps": 2,
+      "notes": "destructive — show-and-point only"
+    },
+    {
+      "id": "edit-a-seed",
+      "title": "Edit a seed",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/SeedEditor.vue",
+      "verb": "Change the wording of one seed sentence.",
+      "steps": 3,
+      "next": "cascade-an-edit-through-a-course"
+    },
+    {
+      "id": "page-through-the-seeds",
+      "title": "Page through the seeds",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/SeedEditor.vue",
+      "verb": "Move to the next or previous page of seeds.",
+      "steps": 1
+    },
+    {
+      "id": "cascade-an-edit-through-a-course",
+      "title": "Cascade an edit",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/SeedEditor.vue",
+      "verb": "Push one seed change through everything built on top of it.",
+      "steps": 2,
+      "notes": "destructive — orphans audio; show-and-point only"
+    },
+    {
+      "id": "check-the-audio-coverage",
+      "title": "Check the coverage first",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/SynthesisStudio.vue",
+      "verb": "See what audio already exists before you build any more.",
+      "steps": 1,
+      "next": "build-the-course-audio"
+    },
+    {
+      "id": "build-the-course-audio",
+      "title": "Build the audio",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/SynthesisStudio.vue",
+      "verb": "Stitch the course audio from the recorded and synthesised parts.",
+      "steps": 2,
+      "notes": "spends money — show-and-point only"
+    },
+    {
+      "id": "cancel-a-synthesis-run",
+      "title": "Cancel a synthesis run",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/SynthesisStudio.vue",
+      "verb": "Stop an audio build that is part-way through.",
+      "steps": 1
+    },
+    {
+      "id": "listen-to-a-synthesis-sample",
+      "title": "Listen to a sample",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/SynthesisStudio.vue",
+      "verb": "Play back a sample of what the synthesis produced.",
+      "steps": 2
+    },
+    {
+      "id": "see-what-audio-is-missing",
+      "title": "See what audio is missing",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/AudioPipeline.vue",
+      "verb": "Refresh the audio stats to see the gaps.",
+      "steps": 1,
+      "next": "generate-the-missing-audio"
+    },
+    {
+      "id": "set-the-course-voices",
+      "title": "Set the course voices",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/AudioPipeline.vue",
+      "verb": "Choose which voice speaks each part of this course.",
+      "steps": 2
+    },
+    {
+      "id": "generate-the-missing-audio",
+      "title": "Generate the missing audio",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/AudioPipeline.vue",
+      "verb": "Fill the audio gaps for this course.",
+      "steps": 1,
+      "notes": "spends TTS money, no confirm dialog — show-and-point only"
+    },
+    {
+      "id": "preview-a-regeneration-plan",
+      "title": "Preview a regeneration",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/AudioPipeline.vue",
+      "verb": "See exactly what a regeneration would touch before it runs.",
+      "steps": 2,
+      "next": "regenerate-the-planned-audio"
+    },
+    {
+      "id": "regenerate-the-planned-audio",
+      "title": "Run the regeneration",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/AudioPipeline.vue",
+      "verb": "Regenerate the audio the plan listed.",
+      "steps": 2,
+      "notes": "spends money — show-and-point only"
+    },
+    {
+      "id": "regenerate-the-flagged-audio",
+      "title": "Regenerate only what was flagged",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/AudioPipeline.vue",
+      "verb": "Redo just the audio QA marked as bad.",
+      "steps": 1,
+      "notes": "spends money — show-and-point only"
+    },
+    {
+      "id": "retry-the-failed-audio-jobs",
+      "title": "Retry the failures",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/AudioPipeline.vue",
+      "verb": "Send the audio jobs that errored back round again.",
+      "steps": 1
+    },
+    {
+      "id": "cancel-an-audio-run",
+      "title": "Cancel an audio run",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/AudioPipeline.vue",
+      "verb": "Stop an audio generation that is still going.",
+      "steps": 1
+    },
+    {
+      "id": "read-the-course-script",
+      "title": "Read the course script",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ScriptViewer.vue",
+      "verb": "Read the whole course as the learner will hear it.",
+      "steps": 1,
+      "next": "jump-to-a-round"
+    },
+    {
+      "id": "jump-to-a-round",
+      "title": "Jump to a round",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ScriptViewer.vue",
+      "verb": "Go straight to the round you care about.",
+      "steps": 1
+    },
+    {
+      "id": "search-the-learning-journey",
+      "title": "Search the journey",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ScriptViewer.vue",
+      "verb": "Find a phrase anywhere in the learning journey.",
+      "steps": 1
+    },
+    {
+      "id": "play-the-journey-audio",
+      "title": "Play the journey",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ScriptViewer.vue",
+      "verb": "Listen through the journey and skip, pause or stop as you go.",
+      "steps": 2
+    },
+    {
+      "id": "export-the-learner-script",
+      "title": "Export the learner script",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ScriptViewer.vue",
+      "verb": "Take the script out as a file.",
+      "steps": 1
+    },
+    {
+      "id": "change-the-presentation-template",
+      "title": "Change the presentation",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/ScriptViewer.vue",
+      "verb": "Switch the presentation template and rebuild what it affects.",
+      "steps": 3,
+      "notes": "triggers regeneration — show-and-point only"
+    },
+    {
+      "id": "invite-someone-to-the-course",
+      "title": "Invite someone to the course",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TeamRoster.vue",
+      "verb": "Make an invite for a new voice helper or editor.",
+      "steps": 2,
+      "next": "share-the-invite-link"
+    },
+    {
+      "id": "share-the-invite-link",
+      "title": "Share the invite",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TeamRoster.vue",
+      "verb": "Copy the invite link to send to them.",
+      "steps": 1
+    },
+    {
+      "id": "assign-a-voice-part",
+      "title": "Give someone a voice part",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TeamRoster.vue",
+      "verb": "Assign a team member the voice they will record.",
+      "steps": 2
+    },
+    {
+      "id": "unassign-a-voice-part",
+      "title": "Take a voice part back",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TeamRoster.vue",
+      "verb": "Free a voice part up again.",
+      "steps": 1
+    },
+    {
+      "id": "remove-someone-from-the-course",
+      "title": "Remove someone from the course",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TeamRoster.vue",
+      "verb": "Take a person off this course's team.",
+      "steps": 2,
+      "notes": "destructive — show-and-point only"
+    },
+    {
+      "id": "optimise-the-recording-order",
+      "title": "Order the recording session",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/RecordingOptimizer.vue",
+      "verb": "Run the optimiser so the recorder reads in the least tiring order.",
+      "steps": 2,
+      "next": "export-the-recording-plan"
+    },
+    {
+      "id": "export-the-recording-plan",
+      "title": "Export the recording plan",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/RecordingOptimizer.vue",
+      "verb": "Take the ordered plan out as a PDF for the session.",
+      "steps": 1
+    },
+    {
+      "id": "generate-a-listening-pod",
+      "title": "Generate a listening pod",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/PodsView.vue",
+      "verb": "Build a new pod for the listening stream.",
+      "steps": 2,
+      "notes": "spends money — show-and-point only"
+    },
+    {
+      "id": "regenerate-a-listening-pod",
+      "title": "Regenerate a pod",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/PodsView.vue",
+      "verb": "Rebuild a pod from scratch, dropping its sentences and audio.",
+      "steps": 2,
+      "notes": "destructive, confirmed — show-and-point only"
+    },
+    {
+      "id": "read-a-pod-in-detail",
+      "title": "Open one pod",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/PodsView.vue",
+      "verb": "Open a pod to read its lines.",
+      "steps": 1,
+      "next": "edit-a-pod-sentence"
+    },
+    {
+      "id": "edit-a-pod-sentence",
+      "title": "Edit a pod line",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/PodDetailView.vue",
+      "verb": "Change the wording of a single pod sentence.",
+      "steps": 3
+    },
+    {
+      "id": "write-the-pod-explainers",
+      "title": "Write the pod explainers",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/PodDetailView.vue",
+      "verb": "Generate the explainer text that sits over the pod.",
+      "steps": 1,
+      "next": "generate-the-pod-explainer-audio"
+    },
+    {
+      "id": "generate-the-pod-explainer-audio",
+      "title": "Voice the pod explainers",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/PodDetailView.vue",
+      "verb": "Make the audio for the pod explainers.",
+      "steps": 1,
+      "notes": "spends TTS money, no confirm dialog — show-and-point only"
+    },
+    {
+      "id": "regenerate-a-pod-line-audio",
+      "title": "Redo a pod line's audio",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/PodDetailView.vue",
+      "verb": "Regenerate the audio for one pod line.",
+      "steps": 1,
+      "notes": "spends money — show-and-point only"
+    },
+    {
+      "id": "listen-to-a-pod-line",
+      "title": "Listen to a pod line",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/PodDetailView.vue",
+      "verb": "Play a line, or a known-target pair, back.",
+      "steps": 1
+    },
+    {
+      "id": "browse-the-canonical-scenarios",
+      "title": "Browse the canonical scenarios",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CanonicalPodView.vue",
+      "verb": "Read the canonical pod scenarios every course draws on.",
+      "steps": 1
+    },
+    {
+      "id": "read-the-pods-explainer",
+      "title": "Read what pods are for",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/PodsDoc.vue",
+      "verb": "Read the standing explanation of the listening pods.",
+      "steps": 1,
+      "notes": "read-only page, no actions"
+    },
+    {
+      "id": "browse-the-canonical-seeds",
+      "title": "Browse the canonical seeds",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CanonicalSeeds.vue",
+      "verb": "Read the seed bank every course is built from.",
+      "steps": 1,
+      "next": "edit-the-canonical-seeds"
+    },
+    {
+      "id": "page-through-the-canonical-seeds",
+      "title": "Page through the seed bank",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CanonicalSeeds.vue",
+      "verb": "Move through the canonical seeds a page at a time.",
+      "steps": 1
+    },
+    {
+      "id": "edit-the-canonical-seeds",
+      "title": "Edit the canonical seeds",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CanonicalSeeds.vue",
+      "verb": "Change the shared seed text every course inherits.",
+      "steps": 3,
+      "notes": "affects every course — show-and-point only"
+    },
+    {
+      "id": "browse-the-canonical-content",
+      "title": "Browse the canonical content",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CanonicalContent.vue",
+      "verb": "Read the canonical content bank.",
+      "steps": 1,
+      "notes": "read-only view, no actions in the template"
+    },
+    {
+      "id": "configure-a-course-build",
+      "title": "Configure the build",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseManager.vue",
+      "verb": "Choose the agent engine, the build mode and the machine before you start.",
+      "steps": 3,
+      "next": "start-the-course-build"
+    },
+    {
+      "id": "create-a-course-from-the-manager",
+      "title": "Create a course here",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseManager.vue",
+      "verb": "Create the course record from the build console.",
+      "steps": 2,
+      "next": "configure-a-course-build"
+    },
+    {
+      "id": "start-the-course-build",
+      "title": "Start the build",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseManager.vue",
+      "verb": "Set the course builder running.",
+      "steps": 1,
+      "notes": "spends money — show-and-point only"
+    },
+    {
+      "id": "start-one-pipeline-phase",
+      "title": "Run one phase",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseManager.vue",
+      "verb": "Run a single pipeline phase rather than the whole thing.",
+      "steps": 2,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "start-the-whole-pipeline",
+      "title": "Run the whole pipeline",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseManager.vue",
+      "verb": "Set every phase running end to end.",
+      "steps": 1,
+      "notes": "spends money — show-and-point only"
+    },
+    {
+      "id": "stop-a-running-job",
+      "title": "Stop a job",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseManager.vue",
+      "verb": "Ask a running job to stop.",
+      "steps": 1
+    },
+    {
+      "id": "force-kill-a-stuck-job",
+      "title": "Force-kill a stuck job",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseManager.vue",
+      "verb": "Kill a job that will not stop on its own.",
+      "steps": 2,
+      "notes": "destructive — show-and-point only"
+    },
+    {
+      "id": "clear-a-stale-job",
+      "title": "Clear a stale job",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseManager.vue",
+      "verb": "Clear a job record that is no longer running.",
+      "steps": 1
+    },
+    {
+      "id": "preview-a-rebuild",
+      "title": "Preview a rebuild",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseManager.vue",
+      "verb": "See what a rebuild would change before committing to it.",
+      "steps": 2,
+      "next": "rebuild-a-course"
+    },
+    {
+      "id": "rebuild-a-course",
+      "title": "Rebuild the course",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseManager.vue",
+      "verb": "Rebuild the course content from its seeds.",
+      "steps": 3,
+      "notes": "destructive, two-step confirm — show-and-point only"
+    },
+    {
+      "id": "wipe-a-course",
+      "title": "Wipe the course",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseManager.vue",
+      "verb": "Delete the course's built content entirely.",
+      "steps": 3,
+      "notes": "destructive, two-step confirm — show-and-point only"
+    },
+    {
+      "id": "read-the-build-log",
+      "title": "Read the build log",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseManager.vue",
+      "verb": "Open the log to see what the build actually did.",
+      "steps": 1
+    },
+    {
+      "id": "compile-the-course-json",
+      "title": "Compile the course",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseCompilation.vue",
+      "verb": "Compile the course into the JSON the app ships.",
+      "steps": 1,
+      "next": "check-the-audio-is-complete"
+    },
+    {
+      "id": "check-the-audio-is-complete",
+      "title": "Check the audio is complete",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseCompilation.vue",
+      "verb": "Confirm nothing is missing before you ship.",
+      "steps": 1,
+      "next": "see-which-audio-is-missing"
+    },
+    {
+      "id": "see-which-audio-is-missing",
+      "title": "See exactly what is missing",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseCompilation.vue",
+      "verb": "Open the detail of which audio files are absent.",
+      "steps": 2
+    },
+    {
+      "id": "generate-audio-before-shipping",
+      "title": "Fill the gaps before shipping",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseCompilation.vue",
+      "verb": "Generate the audio the compilation says is missing.",
+      "steps": 1,
+      "notes": "spends TTS money — show-and-point only"
+    },
+    {
+      "id": "download-the-course-json",
+      "title": "Download the course file",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseCompilation.vue",
+      "verb": "Take the compiled course out as a file.",
+      "steps": 1
+    },
+    {
+      "id": "deploy-a-course-to-production",
+      "title": "Deploy the course",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseCompilation.vue",
+      "verb": "Push the compiled course out to production.",
+      "steps": 2,
+      "notes": "irreversible, outward-facing — show-and-point only"
+    },
+    {
+      "id": "check-a-course-progress",
+      "title": "Check the build progress",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseProgress.vue",
+      "verb": "See how far through the build this course is.",
+      "steps": 1
+    },
+    {
+      "id": "watch-the-agents-working",
+      "title": "Watch the agents",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/AgentMonitor.vue",
+      "verb": "Watch the build agents working in their swimlanes, live.",
+      "steps": 1
+    },
+    {
+      "id": "build-a-lego-network",
+      "title": "Build a LEGO network",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/NetworkBuilder.vue",
+      "verb": "Construct the LEGO network for a course.",
+      "steps": 2,
+      "next": "inspect-a-lego-in-the-network"
+    },
+    {
+      "id": "switch-between-networks",
+      "title": "Switch network",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/NetworkBuilder.vue",
+      "verb": "Move between the networks you have built.",
+      "steps": 1
+    },
+    {
+      "id": "inspect-a-lego-in-the-network",
+      "title": "Inspect one LEGO",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/NetworkBuilder.vue",
+      "verb": "Click a LEGO to see how it connects.",
+      "steps": 1
+    },
+    {
+      "id": "reset-a-lego-network",
+      "title": "Reset the network",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/NetworkBuilder.vue",
+      "verb": "Throw the network away and start again.",
+      "steps": 2,
+      "notes": "destructive, confirmed — show-and-point only. Route /network-builder has NO course-membership guard."
+    },
+    {
+      "id": "edit-a-lego-introduction",
+      "title": "Edit an introduction",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/IntroductionsViewer.vue",
+      "verb": "Change how a LEGO is introduced to the learner.",
+      "steps": 3,
+      "next": "save-the-introduction-edits"
+    },
+    {
+      "id": "save-the-introduction-edits",
+      "title": "Save the introductions",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/IntroductionsViewer.vue",
+      "verb": "Commit every introduction edit you have made.",
+      "steps": 2,
+      "notes": "show-and-point only. Route /edit/introductions has NO course-membership guard; course picker is hardcoded to spa_for_eng/cmn_for_eng."
+    },
+    {
+      "id": "discard-the-introduction-edits",
+      "title": "Discard the edits",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/IntroductionsViewer.vue",
+      "verb": "Throw away the introduction changes you have not saved.",
+      "steps": 2
+    },
+    {
+      "id": "recompile-the-manifest",
+      "title": "Recompile the manifest",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/IntroductionsViewer.vue",
+      "verb": "Trigger the backend to rebuild the manifest.",
+      "steps": 1,
+      "notes": "starts a build job — show-and-point only"
+    },
+    {
+      "id": "import-a-course-file",
+      "title": "Import a course",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/MissionControl.vue",
+      "verb": "Open the importer and choose the course file to bring in.",
+      "steps": 2,
+      "next": "validate-an-imported-course"
+    },
+    {
+      "id": "validate-an-imported-course",
+      "title": "Validate the import",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/ImportCourseModal.vue",
+      "verb": "Check the file passes before anything is written.",
+      "steps": 1,
+      "next": "finish-a-course-import"
+    },
+    {
+      "id": "finish-a-course-import",
+      "title": "Finish the import",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/ImportCourseModal.vue",
+      "verb": "Write the validated course into Popty.",
+      "steps": 2,
+      "notes": "writes a whole course — show-and-point only"
+    },
+    {
+      "id": "move-between-editor-tabs",
+      "title": "Move around the course editor",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseEditor.vue",
+      "verb": "Switch between the editor's tabs for this course.",
+      "steps": 1
+    },
+    {
+      "id": "edit-an-introduction-in-the-editor",
+      "title": "Edit an introduction here",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseEditor.vue",
+      "verb": "Rewrite a LEGO introduction from inside the course editor.",
+      "steps": 3
+    },
+    {
+      "id": "generate-audio-from-the-editor",
+      "title": "Generate audio from the editor",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseEditor.vue",
+      "verb": "Start audio generation without leaving the course editor.",
+      "steps": 1,
+      "notes": "spends TTS money — show-and-point only"
+    },
+    {
+      "id": "cancel-a-basket-regeneration",
+      "title": "Cancel a basket regeneration",
+      "section": "courses",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseEditor.vue",
+      "verb": "Stop a basket rebuild that is running.",
+      "steps": 1
+    },
+    {
+      "id": "flag-a-seed",
+      "title": "Flag a seed",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseEditor.vue",
+      "verb": "Mark a seed as wrong and say what is wrong with it.",
+      "steps": 3,
+      "next": "resolve-a-flag"
+    },
+    {
+      "id": "flag-a-lego",
+      "title": "Flag a LEGO",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseEditor.vue",
+      "verb": "Mark a single LEGO as wrong and say why.",
+      "steps": 3
+    },
+    {
+      "id": "resolve-a-flag",
+      "title": "Resolve a flag",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseEditor.vue",
+      "verb": "Close a flag once the content behind it is fixed.",
+      "steps": 2
+    },
+    {
+      "id": "run-the-lut-check",
+      "title": "Run the LUT check",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseEditor.vue",
+      "verb": "Check the course for look-up-table breaches.",
+      "steps": 1
+    },
+    {
+      "id": "run-the-infinitive-check",
+      "title": "Run the infinitive check",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseEditor.vue",
+      "verb": "Check the course for infinitive-form breaches.",
+      "steps": 1
+    },
+    {
+      "id": "run-the-basket-gap-analysis",
+      "title": "Find the basket gaps",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseEditor.vue",
+      "verb": "See which baskets are short of phrases.",
+      "steps": 1,
+      "next": "regenerate-the-baskets"
+    },
+    {
+      "id": "regenerate-the-baskets",
+      "title": "Regenerate the baskets",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseEditor.vue",
+      "verb": "Rebuild the baskets the gap analysis flagged.",
+      "steps": 2,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "check-for-component-gaps",
+      "title": "Check for component gaps",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "See which LEGO components were never introduced.",
+      "steps": 1,
+      "next": "backfill-the-missing-components"
+    },
+    {
+      "id": "backfill-the-missing-components",
+      "title": "Backfill the components",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Add the component rows the gap check found missing.",
+      "steps": 1,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "check-for-zut-collisions",
+      "title": "Check for ZUT collisions",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Find where one known prompt maps to two target forms.",
+      "steps": 1,
+      "next": "resolve-the-zut-collisions"
+    },
+    {
+      "id": "resolve-the-zut-collisions",
+      "title": "Resolve the ZUT collisions",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Send the collisions off to be consolidated or differentiated.",
+      "steps": 1,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "approve-a-seed",
+      "title": "Approve a seed",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Accept a seed's decomposition as good.",
+      "steps": 1,
+      "notes": "approval — show-and-point only"
+    },
+    {
+      "id": "redo-a-seed",
+      "title": "Send a seed back",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Reject a seed's decomposition and have it done again.",
+      "steps": 1
+    },
+    {
+      "id": "run-the-final-pass",
+      "title": "Run the final pass",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/TextGeneration.vue",
+      "verb": "Work through the last approval pass on the course text.",
+      "steps": 2,
+      "notes": "approval — show-and-point only"
+    },
+    {
+      "id": "approve-a-batch-of-seeds",
+      "title": "Approve a batch of seeds",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/SeedEditor.vue",
+      "verb": "Accept several seeds at once from the seed editor.",
+      "steps": 1,
+      "notes": "bulk approval — show-and-point only"
+    },
+    {
+      "id": "pick-a-course-to-validate",
+      "title": "Pick a course to validate",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseValidator.vue",
+      "verb": "Choose which course the validator should look at.",
+      "steps": 1,
+      "next": "run-a-deep-validation"
+    },
+    {
+      "id": "run-a-deep-validation",
+      "title": "Run a deep validation",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseValidator.vue",
+      "verb": "Run the full validation sweep over the course.",
+      "steps": 2
+    },
+    {
+      "id": "trigger-a-phase-from-the-validator",
+      "title": "Fix it from the validator",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/CourseValidator.vue",
+      "verb": "Re-run the phase that would repair what validation found.",
+      "steps": 2,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "filter-the-qa-flags",
+      "title": "Filter the QA flags",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/QAReview.vue",
+      "verb": "Narrow the flag list to the kind you are working through.",
+      "steps": 1,
+      "next": "dismiss-a-qa-flag"
+    },
+    {
+      "id": "dismiss-a-qa-flag",
+      "title": "Dismiss a flag",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/QAReview.vue",
+      "verb": "Clear a flag that turned out to be fine.",
+      "steps": 1
+    },
+    {
+      "id": "approve-all-the-qa-flags",
+      "title": "Approve the whole list",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/QAReview.vue",
+      "verb": "Accept every flag showing in one go.",
+      "steps": 1,
+      "notes": "bulk approval — show-and-point only"
+    },
+    {
+      "id": "spawn-a-phrase-monitor",
+      "title": "Put a monitor on the phrases",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/PhraseQA.vue",
+      "verb": "Send an agent to check the phrase quality.",
+      "steps": 1,
+      "next": "spawn-a-phrase-fixer"
+    },
+    {
+      "id": "spawn-a-phrase-fixer",
+      "title": "Send in a fixer",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/PhraseQA.vue",
+      "verb": "Send an agent to correct the phrases that failed.",
+      "steps": 1
+    },
+    {
+      "id": "spawn-a-phrase-polisher",
+      "title": "Send in a polisher",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/PhraseQA.vue",
+      "verb": "Send an agent to smooth the phrases that read clunky.",
+      "steps": 1
+    },
+    {
+      "id": "dismiss-a-phrase-flag",
+      "title": "Dismiss a phrase flag",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/PhraseQA.vue",
+      "verb": "Clear a phrase flag you have judged fine.",
+      "steps": 1
+    },
+    {
+      "id": "delete-a-bad-phrase",
+      "title": "Cut a bad phrase",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/PhraseQA.vue",
+      "verb": "Remove a phrase that should never have shipped.",
+      "steps": 2,
+      "notes": "destructive — show-and-point only"
+    },
+    {
+      "id": "page-through-flagged-phrases",
+      "title": "Page through the flags",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/PhraseQA.vue",
+      "verb": "Move through the flagged phrases a page at a time.",
+      "steps": 1
+    },
+    {
+      "id": "review-a-calibration-seed",
+      "title": "Review a calibration seed",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/CalibrationReview.vue",
+      "verb": "Open a golden seed and judge its decomposition.",
+      "steps": 2,
+      "next": "submit-a-calibration-review"
+    },
+    {
+      "id": "submit-a-calibration-review",
+      "title": "Submit your calibration verdict",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/CalibrationReview.vue",
+      "verb": "Record your judgement on the calibration seed.",
+      "steps": 2,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "read-the-learner-issues",
+      "title": "Read what learners reported",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/UserFeedback.vue",
+      "verb": "Load the issues learners have raised on this course.",
+      "steps": 1,
+      "next": "listen-to-the-reported-audio"
+    },
+    {
+      "id": "listen-to-the-reported-audio",
+      "title": "Listen to what they reported",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/UserFeedback.vue",
+      "verb": "Play the audio a learner complained about.",
+      "steps": 1,
+      "next": "resolve-a-learner-issue"
+    },
+    {
+      "id": "resolve-a-learner-issue",
+      "title": "Resolve a learner issue",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/production/UserFeedback.vue",
+      "verb": "Close a reported issue and say what you did about it.",
+      "steps": 3
+    },
+    {
+      "id": "refresh-the-quality-data",
+      "title": "Refresh the quality picture",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/QualityDashboard.vue",
+      "verb": "Reload the quality scores for this course.",
+      "steps": 1
+    },
+    {
+      "id": "filter-by-quality-score",
+      "title": "Filter by score",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/QualityDashboard.vue",
+      "verb": "Show only the seeds inside a quality band.",
+      "steps": 1,
+      "next": "open-one-seed-quality-detail"
+    },
+    {
+      "id": "sort-the-quality-list",
+      "title": "Sort the quality list",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/QualityDashboard.vue",
+      "verb": "Order the seeds by the measure you care about.",
+      "steps": 1
+    },
+    {
+      "id": "clear-the-quality-filters",
+      "title": "Clear the quality filters",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/QualityDashboard.vue",
+      "verb": "Go back to the full quality list.",
+      "steps": 1
+    },
+    {
+      "id": "open-one-seed-quality-detail",
+      "title": "Open one seed's quality",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/QualityDashboard.vue",
+      "verb": "Look at a single seed's quality in detail.",
+      "steps": 1,
+      "next": "compare-generation-attempts"
+    },
+    {
+      "id": "act-on-many-seeds-at-once",
+      "title": "Act on a batch of seeds",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/QualityDashboard.vue",
+      "verb": "Apply one decision across every selected seed.",
+      "steps": 2,
+      "notes": "bulk write — show-and-point only"
+    },
+    {
+      "id": "export-a-quality-report",
+      "title": "Export the quality report",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/QualityDashboard.vue",
+      "verb": "Take the quality picture out as a file.",
+      "steps": 1
+    },
+    {
+      "id": "compare-generation-attempts",
+      "title": "Compare the attempts",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/SeedQualityReview.vue",
+      "verb": "Step through the generations of this seed side by side.",
+      "steps": 1,
+      "next": "accept-an-attempt"
+    },
+    {
+      "id": "accept-an-attempt",
+      "title": "Accept an attempt",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/SeedQualityReview.vue",
+      "verb": "Pick the generation that is right and keep it.",
+      "steps": 1,
+      "notes": "approval — show-and-point only"
+    },
+    {
+      "id": "reject-an-attempt",
+      "title": "Reject an attempt",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/SeedQualityReview.vue",
+      "verb": "Turn down a generation that is not good enough.",
+      "steps": 1
+    },
+    {
+      "id": "rerun-a-seed-generation",
+      "title": "Have the seed done again",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/SeedQualityReview.vue",
+      "verb": "Send the seed back to be regenerated.",
+      "steps": 1,
+      "notes": "spends model time — show-and-point only"
+    },
+    {
+      "id": "remove-a-seed-from-the-corpus",
+      "title": "Take a seed out of the corpus",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/SeedQualityReview.vue",
+      "verb": "Drop a seed out of the learning corpus entirely.",
+      "steps": 2,
+      "notes": "destructive — show-and-point only"
+    },
+    {
+      "id": "read-the-generating-prompt",
+      "title": "Read the prompt behind it",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/SeedQualityReview.vue",
+      "verb": "See the prompt that produced this generation.",
+      "steps": 1
+    },
+    {
+      "id": "compare-prompt-versions",
+      "title": "Compare prompt versions",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/PromptEvolutionView.vue",
+      "verb": "Look at how the prompt has changed over time.",
+      "steps": 1,
+      "next": "roll-back-a-prompt-version"
+    },
+    {
+      "id": "filter-the-learned-rules",
+      "title": "Filter the learned rules",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/PromptEvolutionView.vue",
+      "verb": "Narrow the rule list to the state you care about.",
+      "steps": 1,
+      "next": "promote-a-learned-rule"
+    },
+    {
+      "id": "read-a-rule-in-detail",
+      "title": "Read one learned rule",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/PromptEvolutionView.vue",
+      "verb": "Open a rule and see the examples behind it.",
+      "steps": 2
+    },
+    {
+      "id": "promote-a-learned-rule",
+      "title": "Promote a rule",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/PromptEvolutionView.vue",
+      "verb": "Make a learned rule part of the standing prompt.",
+      "steps": 1,
+      "notes": "promotion — show-and-point only"
+    },
+    {
+      "id": "reject-a-learned-rule",
+      "title": "Reject a rule",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/PromptEvolutionView.vue",
+      "verb": "Turn down a rule the system proposed.",
+      "steps": 1
+    },
+    {
+      "id": "extend-a-rule-test",
+      "title": "Give a rule longer",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/PromptEvolutionView.vue",
+      "verb": "Keep a rule on test rather than deciding now.",
+      "steps": 1
+    },
+    {
+      "id": "enable-a-learned-rule",
+      "title": "Turn a rule on",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/PromptEvolutionView.vue",
+      "verb": "Switch an existing rule back on.",
+      "steps": 1
+    },
+    {
+      "id": "disable-a-learned-rule",
+      "title": "Turn a rule off",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/PromptEvolutionView.vue",
+      "verb": "Switch a rule off without deleting it.",
+      "steps": 1
+    },
+    {
+      "id": "write-a-manual-rule",
+      "title": "Write your own rule",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/PromptEvolutionView.vue",
+      "verb": "Add a rule by hand rather than waiting for one to be learned.",
+      "steps": 3
+    },
+    {
+      "id": "roll-back-a-prompt-version",
+      "title": "Roll the prompt back",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/PromptEvolutionView.vue",
+      "verb": "Return the prompt to an earlier version.",
+      "steps": 2,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "export-the-prompt-history",
+      "title": "Export the prompt history",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/PromptEvolutionView.vue",
+      "verb": "Take the prompt lineage out as a file.",
+      "steps": 1
+    },
+    {
+      "id": "read-the-learned-rules",
+      "title": "Read the learned rules",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/LearnedRulesView.vue",
+      "verb": "See what the system has learned about this course.",
+      "steps": 1
+    },
+    {
+      "id": "apply-a-health-recommendation",
+      "title": "Act on a health recommendation",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/CourseHealthReport.vue",
+      "verb": "Apply what the health report suggests fixing.",
+      "steps": 2,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "export-the-health-report",
+      "title": "Export the health report",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/CourseHealthReport.vue",
+      "verb": "Take the health report out as a file.",
+      "steps": 1
+    },
+    {
+      "id": "schedule-the-health-report",
+      "title": "Schedule the health report",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/components/quality/CourseHealthReport.vue",
+      "verb": "Have the health report run on its own from now on.",
+      "steps": 2
+    },
+    {
+      "id": "start-a-fine-tuning-run",
+      "title": "Start a fine-tuning run",
+      "section": "checking",
+      "personas": [
+        "admin",
+        "editor"
+      ],
+      "surface": "src/views/RecursiveUpregulation.vue",
+      "verb": "Set the recursive up-regulation running on this course.",
+      "steps": 2,
+      "notes": "spends money — show-and-point only"
+    },
+    {
+      "id": "open-the-configs-hub",
+      "title": "Open the configs",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Admin.vue",
+      "verb": "Go to the platform-wide algorithm configs.",
+      "steps": 1,
+      "next": "tune-the-speaking-mode"
+    },
+    {
+      "id": "tune-the-speaking-mode",
+      "title": "Switch normal or turbo",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/SpeakingConfig.vue",
+      "verb": "Flip the speaking algorithm between normal and turbo.",
+      "steps": 1,
+      "next": "set-the-pause-reference"
+    },
+    {
+      "id": "set-the-pause-reference",
+      "title": "Set the pause reference",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/SpeakingConfig.vue",
+      "verb": "Choose what the pause length is measured against.",
+      "steps": 1
+    },
+    {
+      "id": "apply-the-suggested-speaking-values",
+      "title": "Take the suggested values",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/SpeakingConfig.vue",
+      "verb": "Accept the values the lab suggests for this belt.",
+      "steps": 2,
+      "notes": "writes algorithm_config — show-and-point only"
+    },
+    {
+      "id": "preview-a-speaking-pause",
+      "title": "Hear the pause",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/SpeakingConfig.vue",
+      "verb": "Play a phrase with the pause you have set.",
+      "steps": 2
+    },
+    {
+      "id": "toggle-a-fibonacci-belt",
+      "title": "Switch a belt on or off",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/SpeakingConfig.vue",
+      "verb": "Include or drop a Fibonacci review belt.",
+      "steps": 1
+    },
+    {
+      "id": "add-a-stage-0-tier",
+      "title": "Add a Stage 0 tier",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/ListeningConfig.vue",
+      "verb": "Add a tier to the opening listening stage.",
+      "steps": 2,
+      "next": "reorder-the-stage-0-tiers"
+    },
+    {
+      "id": "reorder-the-stage-0-tiers",
+      "title": "Reorder the Stage 0 tiers",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/ListeningConfig.vue",
+      "verb": "Move a tier up or down the opening stage.",
+      "steps": 1
+    },
+    {
+      "id": "remove-a-stage-0-tier",
+      "title": "Remove a Stage 0 tier",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/ListeningConfig.vue",
+      "verb": "Take a tier out of the opening stage.",
+      "steps": 1
+    },
+    {
+      "id": "add-a-listening-stage",
+      "title": "Add a listening stage",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/ListeningConfig.vue",
+      "verb": "Insert a new stage into the listening arc.",
+      "steps": 2
+    },
+    {
+      "id": "remove-a-listening-stage",
+      "title": "Remove a listening stage",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/ListeningConfig.vue",
+      "verb": "Take a stage out of the listening arc.",
+      "steps": 1
+    },
+    {
+      "id": "play-the-listening-arc",
+      "title": "Hear the whole arc",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/ListeningConfig.vue",
+      "verb": "Play the listening arc as configured.",
+      "steps": 1
+    },
+    {
+      "id": "audition-a-pod-stage",
+      "title": "Audition one stage",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/ListeningConfig.vue",
+      "verb": "Listen to a single pod stage on its own.",
+      "steps": 2
+    },
+    {
+      "id": "apply-a-pod-preset",
+      "title": "Apply a pod preset",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/PodLab.vue",
+      "verb": "Load a known-good set of pod lab settings.",
+      "steps": 1,
+      "next": "save-the-pod-fine-map"
+    },
+    {
+      "id": "switch-pod-lab-mode",
+      "title": "Switch shapes or arc",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/PodLab.vue",
+      "verb": "Move the lab between shape work and arc work.",
+      "steps": 1
+    },
+    {
+      "id": "set-the-pod-units-source",
+      "title": "Choose the units source",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/PodLab.vue",
+      "verb": "Work from the fine map or from live units.",
+      "steps": 1
+    },
+    {
+      "id": "set-the-pod-fusion-mode",
+      "title": "Set the fusion mode",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/PodLab.vue",
+      "verb": "Fuse pod units pairwise or chained.",
+      "steps": 1
+    },
+    {
+      "id": "toggle-a-pod-seam",
+      "title": "Toggle a seam",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/PodLab.vue",
+      "verb": "Open or close a seam between pod units.",
+      "steps": 1
+    },
+    {
+      "id": "play-the-whole-pod-arc",
+      "title": "Play the whole arc",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/PodLab.vue",
+      "verb": "Listen to the arc end to end.",
+      "steps": 1
+    },
+    {
+      "id": "play-one-pod-group",
+      "title": "Play one group",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/PodLab.vue",
+      "verb": "Listen to a single group or step.",
+      "steps": 2
+    },
+    {
+      "id": "save-the-pod-fine-map",
+      "title": "Save the fine map",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/PodLab.vue",
+      "verb": "Commit the pod timing map you have tuned.",
+      "steps": 2,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "export-the-pod-lab-json",
+      "title": "Export the lab settings",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/PodLab.vue",
+      "verb": "Take the lab configuration out as JSON.",
+      "steps": 1
+    },
+    {
+      "id": "switch-vad-lab-tabs",
+      "title": "Move around the VAD lab",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/VadLab.vue",
+      "verb": "Switch between the tour, the lab and the proofs.",
+      "steps": 1
+    },
+    {
+      "id": "pick-a-vad-model",
+      "title": "Pick a VAD model",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/VadLab.vue",
+      "verb": "Choose which voice-activity model the lab runs.",
+      "steps": 1
+    },
+    {
+      "id": "filter-the-vad-corpus",
+      "title": "Filter the corpus",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/VadLab.vue",
+      "verb": "Narrow the sample list by language or category.",
+      "steps": 1,
+      "next": "play-a-vad-pair"
+    },
+    {
+      "id": "play-a-vad-pair",
+      "title": "Listen to a sample pair",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/VadLab.vue",
+      "verb": "Play a corpus pair and hear where the boundaries fall.",
+      "steps": 1
+    },
+    {
+      "id": "show-the-pitch-contour",
+      "title": "Show the pitch contour",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/VadLab.vue",
+      "verb": "Overlay the pitch contour on the waveform.",
+      "steps": 1
+    },
+    {
+      "id": "record-a-vad-sample",
+      "title": "Record a new sample",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/VadLab.vue",
+      "verb": "Record your own sample into the VAD lab.",
+      "steps": 2,
+      "next": "save-a-vad-recording"
+    },
+    {
+      "id": "save-a-vad-recording",
+      "title": "Save the recording",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/VadLab.vue",
+      "verb": "Keep the sample you just recorded.",
+      "steps": 2
+    },
+    {
+      "id": "discard-a-vad-recording",
+      "title": "Discard the recording",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/VadLab.vue",
+      "verb": "Throw away the take you just made.",
+      "steps": 1
+    },
+    {
+      "id": "delete-a-saved-vad-sample",
+      "title": "Delete a saved sample",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/admin/VadLab.vue",
+      "verb": "Remove a sample from the saved corpus.",
+      "steps": 2,
+      "notes": "destructive — show-and-point only"
+    },
+    {
+      "id": "run-an-insight-query",
+      "title": "Run the insights",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Insights.vue",
+      "verb": "Run the platform insight pass over the real data.",
+      "steps": 2,
+      "next": "refresh-the-insights"
+    },
+    {
+      "id": "refresh-the-insights",
+      "title": "Refresh the insights",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Insights.vue",
+      "verb": "Reload the latest insight run.",
+      "steps": 1
+    },
+    {
+      "id": "watch-the-active-jobs",
+      "title": "Watch what is running",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/JobsMonitor.vue",
+      "verb": "See every job running across the services right now.",
+      "steps": 1,
+      "next": "open-a-job-course"
+    },
+    {
+      "id": "open-a-job-course",
+      "title": "Jump to a running job's course",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/JobsMonitor.vue",
+      "verb": "Go from a running job straight to the course it belongs to.",
+      "steps": 1
+    },
+    {
+      "id": "run-a-cleanup",
+      "title": "Run a cleanup",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Maintenance.vue",
+      "verb": "Clear out the rows the cleanup pass identifies.",
+      "steps": 2,
+      "notes": "destructive, confirmed — show-and-point only"
+    },
+    {
+      "id": "archive-old-rows",
+      "title": "Archive the old rows",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Maintenance.vue",
+      "verb": "Move stale audit rows into the archive.",
+      "steps": 2,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "prune-the-archive",
+      "title": "Prune the archive",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Maintenance.vue",
+      "verb": "Delete archived rows for good.",
+      "steps": 2,
+      "notes": "destructive, confirmed — show-and-point only"
+    },
+    {
+      "id": "restore-from-the-archive",
+      "title": "Restore from the archive",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Maintenance.vue",
+      "verb": "Bring archived rows back.",
+      "steps": 3,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "run-a-decomposition-dry-run",
+      "title": "Dry-run a decomposition backfill",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Maintenance.vue",
+      "verb": "See what a decomposition backfill would change first.",
+      "steps": 1,
+      "next": "backfill-the-decompositions"
+    },
+    {
+      "id": "backfill-the-decompositions",
+      "title": "Backfill the decompositions",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Maintenance.vue",
+      "verb": "Write the decompositions the dry run listed.",
+      "steps": 2,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "audit-the-decompositions",
+      "title": "Audit the decompositions",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Maintenance.vue",
+      "verb": "Load the decomposition audit to see what is off.",
+      "steps": 1
+    },
+    {
+      "id": "page-through-maintenance-rows",
+      "title": "Page through the rows",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/Maintenance.vue",
+      "verb": "Move through the maintenance list a page at a time.",
+      "steps": 1
+    },
+    {
+      "id": "invite-a-user",
+      "title": "Invite someone to Popty",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/UserManagement.vue",
+      "verb": "Create a dashboard account for a new person.",
+      "steps": 3,
+      "next": "give-a-user-a-course"
+    },
+    {
+      "id": "set-a-user-role",
+      "title": "Set someone's role",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/UserManagement.vue",
+      "verb": "Make a person an admin, an editor or a recorder.",
+      "steps": 3,
+      "notes": "show-and-point only"
+    },
+    {
+      "id": "give-a-user-a-course",
+      "title": "Give someone a course",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/UserManagement.vue",
+      "verb": "Add a course to the list a person can reach.",
+      "steps": 2
+    },
+    {
+      "id": "delete-a-user",
+      "title": "Delete a user",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/UserManagement.vue",
+      "verb": "Remove someone's access to Popty entirely.",
+      "steps": 2,
+      "notes": "destructive — show-and-point only"
+    },
+    {
+      "id": "read-the-board-reports",
+      "title": "Read the board reports",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/BoardReports.vue",
+      "verb": "Open the monthly board report registry.",
+      "steps": 1,
+      "next": "open-one-board-report"
+    },
+    {
+      "id": "open-one-board-report",
+      "title": "Open one board report",
+      "section": "admin",
+      "personas": [
+        "admin"
+      ],
+      "surface": "src/views/BoardReports.vue",
+      "verb": "Read a single month's board report.",
+      "steps": 1
+    },
     {
       "id": "popty-main-areas",
       "title": "Where everything lives",
@@ -10,8 +3239,9 @@
         "editor"
       ],
       "surface": "src/views/Home.vue",
-      "verb": "choose which of the three main areas to work in",
-      "steps": 3
+      "verb": "Learn the three doors on the hub and what lives behind each.",
+      "steps": 3,
+      "notes": "composite orientation journey over the Home cards; authored walk"
     },
     {
       "id": "check-a-course",
@@ -22,8 +3252,9 @@
         "editor"
       ],
       "surface": "src/views/production/QAReview.vue",
-      "verb": "filter, dismiss false positives, approve the rest",
-      "steps": 3
+      "verb": "Work a course's QA flags down to nothing, dismissing before approving.",
+      "steps": 3,
+      "notes": "composite journey over the QA Review filters/dismiss/approve; authored walk"
     },
     {
       "id": "record-your-part",
@@ -35,8 +3266,9 @@
         "recorder"
       ],
       "surface": "src/views/RecordRoom.vue",
-      "verb": "switch between reading the script and recording dialogue lines",
-      "steps": 2
+      "verb": "Tell the reading script and the dialogue lines apart, and pick the right one.",
+      "steps": 2,
+      "notes": "composite journey over the Record Room mode switch; authored walk"
     },
     {
       "id": "where-the-rulings-live",
@@ -46,8 +3278,9 @@
         "admin"
       ],
       "surface": "src/views/HowAndWhy.vue",
-      "verb": "read a ruling, then check it against the stock-take",
-      "steps": 2
+      "verb": "Find the ruling that explains a decision, then check it against the stock-take.",
+      "steps": 2,
+      "notes": "composite journey over How & Why into the stock-take; authored walk"
     }
   ]
 }
