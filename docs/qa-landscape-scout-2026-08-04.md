@@ -147,6 +147,32 @@ Legend for **Enforces**: `BLOCKS` = failing it prevents a write/publish/transiti
 | S6 | **Preflight check service** | `services/preflight-check-service.cjs` | **NOWHERE** — zero callers | n/a | — | Dead. |
 | S7 | **Frame diversity / fine seams / canon ellipsis audits** | `tools/audit-frame-diversity.cjs`, `audit-fine-seams.cjs`, `audit-canon-ellipsis.cjs` | CLI (0–1 callers each) | REPORTS | course/pod | — |
 
+### 2C-bis. The publish / export path — where enforcement should live, and does not
+
+From a sub-agent audit of `ProductionOverview.vue` and the export wizard. **Attributed:
+these are the worker's traces, spot-checked but not line-by-line re-verified by me.**
+Flagged as such because it is the one block in this document I did not personally confirm
+end to end.
+
+| Affordance | What a user reasonably assumes | What it actually does |
+|---|---|---|
+| **"Publish Manifest"** | Publishing is gated on QA / audio completeness | Server-side (`production-api.cjs:7843`) blocks on **`duration === 0` only** (never-recorded samples). No check of `course_export_states.s3_verified`, no QA checkpoint score, no course status. The wizard's "Publishing Blocked" panel and its **"I understand the risks" override are client-only UI with no server-side gate to bypass.** |
+| **"Skip verification" checkbox (Step 2)** | Turns off a verification gate | **Does nothing** — never sent to any API. Moot anyway, since the server was not enforcing verification. |
+| **"Run QA Audit"** (`ProductionOverview.vue:216`) | Runs an audit and tells you the result | Spawns a Sonnet CLI agent on a remote host via AppleScript/iTerm2 and **responds success before the spawn resolves**. If that machine is not logged in with iTerm2 open, **the UI still says success.** |
+| **Testing / Beta / Live and Free / Premium / Community pills** | Promotion implies readiness | Flips a DB column directly. **No audio-completeness or QA check — a course can go "Live" with zero seeds built.** |
+| **"Regenerate" (Step 1)** | Appends / refreshes | Calls `resetState()`, wiping the export workflow's server record. Closer to "start over". |
+| **Push-to-remote gating** | Consistent | Three separate checks, two dismissable. **Step 4's production audio deploy reads the manifest off local disk and never checks push status** — an unpushed commit has zero effect on whether audio ships. |
+
+Working roughly as labelled: Step 2 "Verify" (real S3 + `sox` duration + MP3 format checks
+with background auto-fix), version-bump diffing (`manifestDiffService`), "Download Manifest".
+
+**This is the sharpest capability-vs-enforcement finding in the report after the checkpoint
+one.** The publish path is where a "publish-ready" verdict would naturally bite, and today
+**none of its safety UI is backed by server-side enforcement.** Anyone can publish, or flip
+a course Live, regardless of QA or audio state. Tom's v1 item (a) — one button, pass/fail —
+has an obvious home here, and wiring its verdict into `production-api.cjs:7843` is what
+would turn the whole exercise from reporting into enforcement.
+
 ### 2D. Checks whose passing you should NOT trust
 
 Named explicitly, because the repo's own audio-repair doc is a what-not-to-trust document
@@ -316,10 +342,91 @@ Assessed per Tom's list, using the 2026-06-10 audit plus today's drift check:
 | **L1 listening** | Removed from the dashboard's main-round projection to match the learner's 2026-05-19 removal | Listening MODE content is not reviewable here |
 | **INF PLAY tail + cold-start bootstrap window** | Not modelled on the dashboard | Two real learner code paths the QA page never exercises |
 
+### Correction: the learner side is a three-generator hybrid, and the 2026-06-10 report is now stale on it
+
+A sub-agent trace of `ssi-learning-app` (folded in, and **re-verified by me before relaying**,
+because its headline claim was too consequential to pass on unchecked) established that
+there are **three** distinct sequencing implementations, not two:
+
+| # | Implementation | Role today |
+|---|---|---|
+| (a) | `@ssi/core`'s own `packages/core/src/script/generateScript.ts` | Exported and imported widely, but mostly for `GENERATOR_VERSION` cache-busting, not round construction |
+| (b) | `packages/player-vue/src/providers/generateLearningScript.ts` | The full spaced-rep engine — Fibonacci offsets `[1…2584]` at `:103`. **This** is what the dashboard mirrors |
+| (c) | `useInstantPlayback.ts` → `GET /api/courses/:code/round-map` + `/cycles` → `backendCyclesToRounds.ts` | The **bootstrap and steady-state queue** |
+
+**The worker claimed (b) is QA-tool-only, reached solely via `useFullCourseScript.ts` →
+`CourseExplorer.vue`. That is wrong, and I checked:** `LearningPlayer.vue:55` imports
+`generateLearningScript as generateSimpleScript` **directly**, and `runFullScriptHandoff`
+(`:12500`) calls it on idle after the first cycle plays. The worker only traced
+`useFullCourseScript.ts`'s callers and missed the direct import.
+
+**But the 2026-06-10 divergence report is also now stale here.** It states the handoff
+generates the steady-state session. Since the July refactor (`41ca9d6d` 2026-07-01,
+`4120e1b3` 2026-07-30) the code says the opposite, in terms
+(`LearningPlayer.vue:12492-12498`):
+
+> *"The walk's output is used for the audio-aware boundary (`liveMainLoopRoundCount` —
+> INF-PLAY entry needs it), for the warm-start cache, and for the stale-matview resume
+> repair. It **does NOT blanket-replace the live queue**."* `replaceQueueFromCurrent`
+> fires only when the resume repair needs it (`:12563`).
+
+### ⚠️ An open question I could not resolve, and it is the biggest one in this report
+
+**Where does cross-LEGO spaced repetition enter the live learner queue?**
+
+What I verified myself:
+- The `cycles` endpoint does not emit it. Its own comment says so — `cycles.ts:30`:
+  *"Cross-LEGO spaced-rep is NOT included here; the frontend constructs those from the round-map."*
+- `backendCyclesToRounds.ts` and `useInstantPlayback.ts` contain **no** `spacedRep` /
+  `spacedRepOffsets` / `calculateSpacedRep` / `reviewOf` symbols. Grepped both; zero hits.
+- The `round-map` materialised view is one row per **fresh-introduction** LEGO
+  (`is_new = true`, `schema.sql:6326-6331`) — no review rows by construction.
+- Tier-3 prefetch supplies **authored tiling**, not reviews.
+- And (b), which *does* own the Fibonacci engine, explicitly does not replace the queue.
+
+So `cycles.ts:30` points at a frontend reconstruction that neither the worker nor I could
+locate. **Either it lives somewhere I did not find, or the live steady-state queue has no
+cross-LEGO spaced repetition in it** — which would mean the core teaching mechanism is
+absent from the path real learners are on. I am **not asserting the second reading.** I am
+saying the evidence does not settle it, and it is the single most important thing to
+settle before the publish-ready tool is designed, because **it determines whether the
+journey page's SR timeline resembles anything a learner experiences at all.**
+
+This deserves one focused read of the player by someone who knows the intended design —
+it is a question about intent, not just about code.
+
 ### The answer to "would the QA page surface a defect the learner would hear?"
 
-**For a bad audio clip: yes, reliably** — same audio UUIDs, same S3 objects, same
-mastered files. Flag/regen on the journey page targets exactly what the learner hears.
+**For a bad audio clip: the bytes are there to be heard, but nothing tells you.** Same
+audio UUIDs, same S3 objects, same mastered files — so a human listening to the journey
+page hears exactly what a learner hears, and flag/regen targets the right row. **But no
+code on either side detects the defect.** Both sides gate on **ID presence only, never
+duration or validity**:
+
+- Dashboard: `hasAudio: !!(known_audio_uuid && target1_audio_uuid)`
+  (`learning-script-generator.cjs:775`). `useScriptPlayer.js` has no duration awareness —
+  it sets `.src` and calls `.play()` (`:171-178`). A missing clip calls `onAudioEnded()`
+  and auto-advances with a console log and **no visible UI error** (`:50-53`, `:108-166`).
+- Learner: `toPlayerCycle()` drops a cycle only when an audio **ID** is absent
+  (`backendCyclesToRounds.ts:214-227`), and does so **silently — no warning, no
+  telemetry**. (The legacy path at least `console.warn`s the same class of defect,
+  `toSimpleRounds.ts:255`.) A zero-duration clip with a valid ID sails straight through.
+
+**So the near-silence / truncation defect class you have just spent a week repairing is
+invisible to both the QA page and the player.** It is only ever caught by
+`audio-batch-gate.cjs` — the one check that, by design, blocks nothing (§2B/A1).
+
+There is a second-order consequence worth naming: the learner's inter-cycle pause is
+computed from the **DB-stored** `duration_ms` via `computePauseDuration`
+(`backendCyclesToRounds.ts:264-271`, algorithm in `packages/core/src/script/computePauseDuration.ts:104-159`,
+clamped to 700–15000 ms). A stale or wrong stored duration desyncs pacing from the actual
+clip and is invisible to that layer — which is precisely the second symptom the repair
+tool had to fix by updating `target1_duration_ms` / `target2_duration_ms`.
+
+The learner does have a genuine last line of defence, but only for a *hard* failure:
+`SimplePlayer.ts:244-259` catches the `<audio>` `error` event, retries once silently
+(`handleAudioFailure`, `:358-376`), then trips a tap-to-retry UI. A silent-but-decodable
+clip never triggers it.
 
 **For a sequencing, pacing or cycle-shape defect: no.** Timing is not modelled, cycle
 shape has drifted, and two learner code paths (INF PLAY, cold-start bootstrap) are absent.
@@ -482,13 +589,22 @@ Things I could not check, or checked only partially. Reported as gaps rather tha
    the same Production API with matching timestamps). If renders run anywhere else, that
    box needs the same check.
 
-9. **Sub-agent reports.** Three read-only workers were dispatched (learner-app engine read;
-   audio QA inventory; journey-page + live-page trace). Their findings are folded in where
-   they arrived; **anything in this document is stated on evidence I verified myself unless
-   attributed.** Where a worker's report had not landed before this document was finalised,
-   I completed the section from my own reading rather than leaving it thin — §3 in
-   particular is my own trace plus the repo's own 2026-06-10 divergence audit, not a
-   worker's summary.
+9. **Sub-agent reports — and one worker claim I had to correct.** Three read-only workers
+   were dispatched. Two landed (learner-app engine; journey-page + live-page + export-wizard
+   trace); the **audio QA inventory worker had not reported when this was finalised**, so
+   §2B is entirely my own reading and may be less exhaustive than a dedicated pass would be.
+
+   The learner-engine worker asserted that `generateLearningScript.ts` is QA-tool-only,
+   reachable only via `useFullCourseScript.ts` → `CourseExplorer.vue`, and therefore that
+   the live player has no spaced repetition. **I checked before relaying it and it is
+   wrong** — `LearningPlayer.vue:55` imports it directly and `runFullScriptHandoff` calls
+   it. The worker had traced only one of its two call paths. Its *underlying* observation
+   (that the steady-state queue comes from the cycles path, and that no SR construction is
+   findable there) survived verification and became the open question in §3.
+
+   **Everything in this document is stated on evidence I verified myself, except §2C-bis
+   (the export/publish wizard audit), which is the worker's trace, spot-checked but not
+   re-verified line by line, and is labelled as such in place.**
 
 10. **Not attempted, deliberately:** no TTS generation (costs money, requires Tom's
     approval), no asset deletion, no code changes, no refactors. The `--deep` audio gate
