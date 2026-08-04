@@ -81,6 +81,10 @@ const ONLY = arg('--only', 'all')            // confirmed | suspect | all
 const LIMIT = Number(arg('--limit', 0)) || 0
 const DRY = argv.includes('--dry')
 const ATTEMPTS = Number(arg('--attempts', 3))
+// Deliberately low. The bottleneck is local (ffmpeg/lame mastering), not xAI,
+// and the whole point of this exercise is not to re-create the sustained load
+// pattern that produced the damage — the original batch ran 20 phase8 workers.
+const CONCURRENCY = Number(arg('--concurrency', 3))
 
 if (!COURSE || !FLAGS) {
   console.error('usage: repair-silent-clips.cjs <course> --flags <repair.json> [--only confirmed|suspect|all] [--limit N] [--attempts N] [--dry]')
@@ -231,14 +235,15 @@ async function restoreLinks(links, newId, durationMs) {
   let repaired = 0, skippedHealthy = 0, failed = 0, chars = 0, renders = 0
   const log = []
 
-  for (const [i, job] of jobs.entries()) {
+  /** Repair one clip. Self-contained: every mutation it makes, it can undo. */
+  const repairOne = async (job, i) => {
     const prefix = `[${i + 1}/${jobs.length}] ${job.role} ${JSON.stringify(job.text).slice(0, 42)}`
     let restore = null
     try {
       const { data: row, error: readErr } = await supabase
         .from('course_audio').select('*').eq('id', job.id).single()
-      if (readErr || !row) { console.log(`${prefix}: gone (already repaired?) — skip`); continue }
-      if (row.origin === 'human') { console.log(`${prefix}: origin=human — REFUSED`); continue }
+      if (readErr || !row) { console.log(`${prefix}: gone (already repaired?) — skip`); return }
+      if (row.origin === 'human') { console.log(`${prefix}: origin=human — REFUSED`); return }
 
       // A suspect clip is audible; only a probe render can say whether it is
       // truncated or simply a fast one. The probe IS the candidate render, so a
@@ -252,7 +257,7 @@ async function restoreLinks(links, newId, durationMs) {
         console.log(`${prefix}: healthy (${row.duration_ms}ms vs fresh ${rendered.durationMs}ms) — left alone`)
         log.push({ id: job.id, action: 'kept', storedMs: row.duration_ms, freshMs: rendered.durationMs })
         skippedHealthy++
-        continue
+        return
       }
 
       // Verified good. Only now do we touch anything.
@@ -296,6 +301,17 @@ async function restoreLinks(links, newId, durationMs) {
       }
     }
   }
+
+  // Bounded pool over a shared cursor. Each job is independent — distinct rows,
+  // distinct S3 objects — so there is nothing to serialise between them.
+  let cursor = 0
+  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, jobs.length) }, async () => {
+    for (;;) {
+      const i = cursor++
+      if (i >= jobs.length) return
+      await repairOne(jobs[i], i)
+    }
+  }))
   try { fs.rmSync(tmpDir, { recursive: true, force: true }) } catch {}
 
   // Every repaired clip has a NEW id, so any client holding a cached script
