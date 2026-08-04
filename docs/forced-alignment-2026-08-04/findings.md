@@ -267,9 +267,25 @@ problem statement. There the evidence is present but wrong, the language model h
 work with, and a free decode can absolutely launder a mispronounced word into the expected one.
 **I have no ground-truth mispronunciation set and did not test that class — see §7.** For
 mispronunciation the per-word acoustic posterior of a real CTC forced aligner is the right
-instrument, and whisper.cpp cannot supply it. The paper assessment of those aligners is in
-[`aligner-landscape.md`](./aligner-landscape.md); its recommendation is torchaudio's
-`forced_align` with the `MMS_FA` bundle, with a genuine open question on the CC-BY-NC licence.
+instrument, and whisper.cpp cannot supply it.
+
+The paper assessment of those aligners is in [`aligner-landscape.md`](./aligner-landscape.md).
+Its recommendation, in short: **torchaudio `forced_align` + the `MMS_FA` bundle** as the backbone
+— one ~1.2 GB model, no language model in the scoring path, and coverage of all 44 SSi languages
+including Welsh, Basque, Armenian and the Indic tail. Two things from it belong here because they
+bear directly on the numbers in §6:
+
+- **`MMS_FA` weights are CC-BY-NC 4.0.** Fine for internal factory tooling that ships nothing;
+  a genuine open question if it ever ends up in a shipped path. Worth resolving before building,
+  not after.
+- **BFA (Bournemouth Forced Aligner, Sept 2025) is the one candidate that could change the
+  economics.** Its contextless phoneme encoder is architecturally *stronger* on Tom's guessing
+  worry than wav2vec2, it is a 50 MB model, and it is the only candidate with a published CPU
+  figure: RTF 0.05–0.1×, which would put a 10,000-clip sweep at roughly **ten minutes** against
+  the 4.75 hours measured below. It is disqualified as the backbone because it does not support
+  `zho`, `vie`, `tha`, `jpn` or `kor` — five live SSi languages, one of them an active build —
+  but for the other 39 that is an order of magnitude off the running cost. Worth a head-to-head
+  pilot on real SSi clips before committing to a design.
 
 ---
 
@@ -309,30 +325,31 @@ cost and it is local disk only.
 
 ---
 
-## 8. Side-observation — an existing QA check is dead on this host
+## 8. Side-observation — an existing QA check was dead on this host, and has since been fixed
 
-Not part of this experiment; reporting it because it is live and load-bearing.
+Not part of this experiment. **Fixed by another session while this experiment was running** —
+recorded here because the historical fact still matters for what shipped today.
 
-`services/tts-service.cjs:566-567` defaults the xAI phonology gate to macOS paths:
+The xAI phonology gate in `services/tts-service.cjs` defaulted to macOS paths
+(`/opt/homebrew/bin/whisper-cli`, `/tmp/whisper-models/ggml-small.bin`). Neither exists on this
+Linux VM, so `PHONO_GATE_ON` evaluated false and the gate silently disabled itself. Every repair
+run log in `docs/audio-repair-2026-08-04/` carries the line `[TTS] xAI phonology gate unavailable
+(whisper-cli or model missing) — non-English xAI renders unchecked for language drift`.
 
-```js
-const WHISPER_BIN = process.env.WHISPER || '/opt/homebrew/bin/whisper-cli'
-const WHISPER_MODEL = process.env.WHISPER_MODEL || '/tmp/whisper-models/ggml-small.bin'
-```
+**That still stands as a fact about what shipped: every non-English xAI render made on this box
+today, including the 1,082 German repairs, went out unchecked for language drift.** The clips are
+in the courses now. Nothing has re-checked them.
 
-Neither exists on this Linux VM, so `PHONO_GATE_ON` is false and the gate silently disables
-itself. Every repair run log in `docs/audio-repair-2026-08-04/` carries the line
-`[TTS] xAI phonology gate unavailable (whisper-cli or model missing) — non-English xAI renders
-unchecked for language drift`. **Every non-English xAI render made on this box today, including
-the 1,082 German repairs, went out unchecked for language drift.**
+The code hole is closed. Commit `428844e3` (2026-08-04 15:07 UTC, a parallel session) resolves
+`WHISPER_BIN`/`WHISPER_MODEL` from env with a cross-platform fallback, and does the same for
+`audio-processor.cjs`'s tail-defect amputation guard, which was silently no-opping for the same
+reason. That session verified the gate live.
 
-whisper-cli and a model *are* on this host, at `/home/tomcassidy/.local/bin/whisper-cli` and
-`/home/tomcassidy/.local/share/whisper-models/ggml-small.bin`. The fix is two env vars.
-
-**I have deliberately not applied it.** Setting them would switch the gate on for every render
-made by the repair jobs currently running on this box from other sessions — adding a whisper call
-per render, slowing them and potentially failing renders mid-run. That is someone else's job to
-land safely, not a side-effect of a read-only experiment. Flagging it for Tom.
+I had written this section as an open finding and staged a deliberate no-fix, on the grounds that
+switching the gate on mid-run would have slowed or failed other sessions' repair jobs. That
+reasoning is now moot — someone else landed it properly. **The remaining question for Tom is not
+the code, it is the backlog: the renders made while the gate was off were never checked, and a
+language-drift sweep over them is a separate job nobody has claimed.**
 
 ---
 
