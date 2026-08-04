@@ -94,13 +94,26 @@ const LIMIT = Number(arg('--limit', 0)) || 0
 const DRY = argv.includes('--dry')
 const ATTEMPTS = Number(arg('--attempts', 3))
 const ROLES = (arg('--roles', '') || '').split(',').filter(Boolean)
+/**
+ * Extra voice ids to treat as needing a re-voice, beyond the Azure/ElevenLabs
+ * ones isLegacyVoice() recognises. Required because a clip can be on the WRONG
+ * house voice — deu_for_eng had 80 English `known` clips narrated by `leo`, the
+ * German target2 voice, because the pod builder inherited the known voice from
+ * whichever character voice the target line used instead of taking it from
+ * voice_config. `leo` is a perfectly legitimate voice, so no heuristic can tell
+ * those from correct rows; only "not the configured voice for this role" can,
+ * and that rule alone would also sweep up deliberate multi-speaker pod casting
+ * (one deu pod legitimately runs six target voices keyed to its `speaker`
+ * column). So the caller names the voices explicitly and the tool never guesses.
+ */
+const FROM_VOICES = (arg('--from', '') || '').split(',').map(v => v.trim()).filter(Boolean)
 /** Deliberately low: sustained xAI load is the root cause of the whole incident. */
 const CONCURRENCY = Number(arg('--concurrency', 3))
 /** 'bare' (eve/ara/leo) or 'prefixed' (xai_eve). deu is overwhelmingly bare. */
 const SPELLING = arg('--spelling', 'bare')
 
 if (!COURSE) {
-  console.error('usage: revoice-clips.cjs <course> [--roles a,b] [--limit N] [--concurrency N] [--spelling bare|prefixed] [--attempts N] [--dry]')
+  console.error('usage: revoice-clips.cjs <course> [--roles a,b] [--from v1,v2] [--limit N] [--concurrency N] [--spelling bare|prefixed] [--attempts N] [--dry]')
   process.exit(1)
 }
 if (isHumanVoiceCourse(COURSE)) {
@@ -151,7 +164,7 @@ const ARRAY_LINK_COLS = [
  *  Azure voice NAME ('en-GB-SoniaNeural') — the prefix was applied unevenly. */
 function isLegacyVoice(voiceId) {
   const v = String(voiceId || '')
-  return /^(azure|elevenlabs)_/.test(v) || /Neural$/.test(v)
+  return /^(azure|elevenlabs)_/.test(v) || /Neural$/.test(v) || FROM_VOICES.includes(v)
 }
 
 /** Peak/mean level of a file via ffmpeg volumedetect. null = unmeasurable. */
@@ -252,15 +265,35 @@ async function captureLinks(audioId) {
   return links
 }
 
-/** Refuse a clip that is referenced from an unconstrained array column. */
+/**
+ * Every unconstrained-array reference to `audioId`, with the array's current
+ * contents so it can be rewritten element-for-element.
+ *
+ * These columns carry NO foreign key, so a delete leaves a dangling uuid with no
+ * error. The original tool could only REFUSE such a clip. That is too blunt for
+ * a re-voice: 8 of deu_for_eng's 58 mis-narrated `known` clips live in
+ * sentence_known_audio_ids, and refusing them would leave a learner hearing the
+ * German voice read English in exactly those 8 places. The arrays are ORDERED
+ * (they index the sentence's segments), so the safe operation is a positional
+ * swap of the old id for the new one — never an append, never a dedupe.
+ */
 async function arrayReferences(audioId) {
   const hits = []
   for (const { table, col } of ARRAY_LINK_COLS) {
-    const { data, error } = await supabase.from(table).select('id').contains(col, [audioId])
+    const { data, error } = await supabase.from(table).select(`id, ${col}`).contains(col, [audioId])
     if (error) continue          // column absent on this deployment — nothing to strand
-    for (const r of data || []) hits.push(`${table}.${col}#${r.id}`)
+    for (const r of data || []) hits.push({ table, col, rowId: r.id, arr: r[col] || [] })
   }
   return hits
+}
+
+/** Swap `oldId` for `newId` in place, preserving position and multiplicity. */
+async function relinkArrays(refs, oldId, newId) {
+  for (const ref of refs) {
+    const next = ref.arr.map(v => (v === oldId ? newId : v))
+    const { error } = await supabase.from(ref.table).update({ [ref.col]: next }).eq('id', ref.rowId)
+    if (error) throw new Error(`relink array ${ref.table}.${ref.col}#${ref.rowId}: ${error.message}`)
+  }
 }
 
 /** Point captured links at `newId`, refreshing the denormalised duration. */
@@ -299,6 +332,22 @@ async function relink(links, newId, durationMs) {
   }
   let jobs = all.filter(r => isLegacyVoice(r.voice_id))
   if (ROLES.length) jobs = jobs.filter(r => ROLES.includes(r.role))
+
+  // --from names a voice, not a (role, voice) pair, and the SAME voice is
+  // correct for one role and wrong for another — `leo` is the configured
+  // target2 and also the bug on `known`. Re-voicing a row that is already on its
+  // configured voice would render leo->leo and die on the unique key, so drop
+  // those here rather than discovering it one failed render at a time.
+  const alreadyRight = jobs.filter(r => {
+    const slot = ROLE_SLOT[r.role]
+    if (!slot || !voices[slot]) return false
+    const bare = voices[slot].voiceId
+    return r.voice_id === bare || r.voice_id === `xai_${bare}`
+  })
+  if (alreadyRight.length) {
+    console.log(`SKIPPING ${alreadyRight.length} clip(s) already on their configured voice (named by --from but correct for their role).`)
+    jobs = jobs.filter(r => !alreadyRight.includes(r))
+  }
 
   // Human-recorded audio is never re-synthesised.
   const human = jobs.filter(r => r.origin === 'human')
@@ -377,22 +426,18 @@ async function relink(links, newId, durationMs) {
       if (readErr || !row) { console.log(`${prefix}: gone — skip`); return }
       if (!isLegacyVoice(row.voice_id)) { console.log(`${prefix}: already on ${row.voice_id} — skip`); return }
 
-      const stranded = await arrayReferences(row.id)
-      if (stranded.length) {
-        console.log(`${prefix}: REFUSED — referenced from unconstrained array column(s): ${stranded.join(', ')}`)
-        log.push({ id: row.id, action: 'refused-array-ref', refs: stranded }); failed++; return
-      }
-
+      const arrayRefs = await arrayReferences(row.id)
       const links = await captureLinks(row.id)
 
       // ── Merge: the configured-voice clip already exists. Move links, drop dup.
       if (job._merge) {
         await relink(links, job._merge.id, job._merge.duration_ms)
+        await relinkArrays(arrayRefs, row.id, job._merge.id)
         const { error: delErr } = await supabase.from('course_audio').delete().eq('id', row.id)
         if (delErr) throw new Error(`delete after merge: ${delErr.message}`)
         merged++
-        console.log(`${prefix}: merged into existing ${job._merge.voice_id} clip ${job._merge.id}, ${links.length} link(s) moved`)
-        log.push({ id: row.id, action: 'merged', into: job._merge.id, links: links.length })
+        console.log(`${prefix}: merged into existing ${job._merge.voice_id} clip ${job._merge.id}, ${links.length} link(s) + ${arrayRefs.length} array ref(s) moved`)
+        log.push({ id: row.id, action: 'merged', into: job._merge.id, links: links.length, arrayRefs: arrayRefs.length })
         return
       }
 
@@ -421,6 +466,7 @@ async function relink(links, newId, durationMs) {
 
       try {
         await relink(links, newId, rendered.durationMs)
+        await relinkArrays(arrayRefs, row.id, newId)
       } catch (e) {
         await supabase.from('course_audio').delete().eq('id', newId)   // roll back
         throw e
@@ -432,7 +478,7 @@ async function relink(links, newId, durationMs) {
       }
 
       revoiced++
-      console.log(`${prefix}: ${row.voice_id} ${row.duration_ms}ms -> ${job._targetVoiceId} ${rendered.durationMs}ms (${rendered.level.meanDb}dB), ${links.length} link(s) -> ${newId}`)
+      console.log(`${prefix}: ${row.voice_id} ${row.duration_ms}ms -> ${job._targetVoiceId} ${rendered.durationMs}ms (${rendered.level.meanDb}dB), ${links.length} link(s) + ${arrayRefs.length} array ref(s) -> ${newId}`)
       log.push({ id: row.id, newId, action: 'revoiced', from: row.voice_id, to: job._targetVoiceId,
         wasMs: row.duration_ms, nowMs: rendered.durationMs, meanDb: rendered.level.meanDb, links: links.length })
     } catch (e) {
