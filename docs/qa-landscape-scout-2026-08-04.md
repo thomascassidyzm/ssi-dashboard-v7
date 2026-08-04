@@ -238,16 +238,266 @@ a structural defect no running check reports.
 
 ## 3. The journey-script page — does it use the learner's engine?
 
-*(Section pending sub-agent reports on both sides; see §5 for status.)*
+Tom's parenthetical was *"it's not the ACTUAL learning player, but it does use the same
+engine (or does it...)"*.
+
+### Verdict
+
+**Genuinely separate implementations, hand-synced, currently drifted.**
+
+Not "same engine". Not "shared engine with divergences". Two parallel codebases that
+implement the same design and are kept in step by hand, with **no shared code and no
+automated parity check**. The dashboard file says so itself, in its own header:
+
+> `services/learning-script-generator.cjs:1-6` — *"Learning Script Generator v5.0 —
+> dashboard mirror of the learner app. **Parallel implementation** of
+> `generateLearningScript.ts` in ssi-learning-app (**no shared code** — keep the two in
+> sync by hand; see `docs/voice-engine/script-divergence-report.md`)."*
+
+The path is: `ScriptViewer.vue` journey view → `GET /api/production/:courseCode/learning-journey`
+(`services/production-api.cjs:6676`) → `services/learning-script-generator.cjs`. One file
+backs the journey view, and it lives in **this** repo.
+
+**Why the "@ssi/core" appearance is misleading.** This repo *does* declare
+`"@ssi/core": "file:../ssi-learning-app/packages/core"` and `node_modules/@ssi/core` is a
+symlink into the learner repo. But that dependency is used for **pods and the network
+builder only** (`services/network-builder-api.cjs:10`). The pod engine files under
+`src/lib/podEngine/` are **verbatim vendored copies**, not imports — their own banners say
+so (`src/lib/podEngine/index.ts:3-5`). **The journey script generator imports nothing from
+`@ssi/core`.** So the shared-engine story is true for pods and false for the journey view.
+
+### The sync history, and the drift as of today
+
+A full line-by-line audit was done on 2026-06-10
+(`docs/voice-engine/script-divergence-report.md`) and found 5 review-misleading
+divergences. A convergence patch landed the same day (§6 of that report) and fixed D1
+(phantom component cycles), D2 (hard-coded SR offsets → live `algorithm_config`), D4
+(phantom L1 listening), and made D3 a toggle. That work was real and it holds.
+
+**But the report's own recommended lock — a golden-fixture parity test diffing the two
+generators' `(type, known, target, audioIds)` stream in CI — was never built.** I checked:
+`services/learning-script-generator.test.cjs` has 13 tests including audio-completeness
+parity assertions, but **no cross-repo fixture diff** (`grep parity|fixture|golden` → one
+descriptive test name, no fixture).
+
+Predictably, they have drifted again. Commit dates on the two generators:
+
+| Side | Last change to the generator |
+|---|---|
+| Dashboard `learning-script-generator.cjs` | **2026-06-30** (`5a92d789`) |
+| Learner `generateLearningScript.ts` | **2026-07-30** (`4120e1b3`); before that 2026-07-14 (`76fac0ff`) |
+
+**Named, concrete, currently-live divergence** — `76fac0ff` (2026-07-14, a founders'
+decision by Tom and Aran): in speaking mode, a **drained-seed production review** now
+plays a fixed **target → known → target → target sandwich, all @1×**, emitted as four
+single-audio sub-cycles (`emitSeedSandwich`, `Cycle.singleAudio`), replacing the standard
+prompt/pause/voice1/voice2 cycle. Verified counts: `emitSeedSandwich|singleAudio` appears
+**4 times** in the learner generator and **0 times** in the dashboard one. The dashboard
+*does* implement the seed-phase review itself (`SEED_PHASE_START_OFFSET = 144`,
+`reviewItemIsSeed:81`) — it just still renders those reviews in the **old cycle shape**.
+
+So: on the journey page today, every seed-phase review (skip offset ≥144, i.e. the entire
+back half of a mature course) is displayed with the wrong cycle structure and the wrong
+play-speed profile.
+
+### What can diverge in ways that matter for QA
+
+Assessed per Tom's list, using the 2026-06-10 audit plus today's drift check:
+
+| Dimension | Status | QA consequence |
+|---|---|---|
+| **Sequencing / round construction** | Core algorithm **aligned** (intro → debut → BUILD ≤7 → SR ≤12 → consolidate ×2 → dedup), and SR offsets now read live from `algorithm_config.script_shape` on both sides | Trustworthy for main-loop content order |
+| **Cycle shape within a review** | **DIVERGED** since 2026-07-14 (the sandwich) | Seed-phase reviews shown wrong |
+| **Gap / pause timing and play-speeds** | **Not modelled** by the dashboard at all | A pacing defect is invisible on the QA page |
+| **Which audio variant / voice is chosen** | **ALIGNED — and this is the strong point.** Journey rows play `presentation_audio.id` / `known_audio_uuid` / `target1/2_audio_uuid` (`LearningJourneyView.vue:509-535`) via `/api/production/:course/audio/:uuid/url`; the learner plays the **same FK columns** → **same S3 `mastered/{uuid}.mp3`** | **A bad clip WILL be audible on the QA page.** This is the single most important QA fact in this section. |
+| **How missing audio is handled** | **Deliberately different, and correctly so.** Default journey view keeps rows the learner drops, flagged `hasAudio:false`. The learner drops LEGOs missing *any* of known/target1/target2 *before* the walk, so round numbers compress. A `?learnerView=1` toggle ports the learner's gates | The QA page by default shows **more** than the learner gets — so it will not *hide* a defect, but round numbering/SR pairings in the default view are not the learner's |
+| **Pods (L2)** | Dashboard emits none — deliberately dropped, not converged. Live pods are per-learner runtime-scheduled on a ratchet (`usePodLapScheduler.ts`) | Pod content is **out of scope** for the journey page; PodsView owns it |
+| **L1 listening** | Removed from the dashboard's main-round projection to match the learner's 2026-05-19 removal | Listening MODE content is not reviewable here |
+| **INF PLAY tail + cold-start bootstrap window** | Not modelled on the dashboard | Two real learner code paths the QA page never exercises |
+
+### The answer to "would the QA page surface a defect the learner would hear?"
+
+**For a bad audio clip: yes, reliably** — same audio UUIDs, same S3 objects, same
+mastered files. Flag/regen on the journey page targets exactly what the learner hears.
+
+**For a sequencing, pacing or cycle-shape defect: no.** Timing is not modelled, cycle
+shape has drifted, and two learner code paths (INF PLAY, cold-start bootstrap) are absent.
+
+**And the asymmetric risk is a defect the learner hears that the QA page cannot show:**
+the learner's cold-start path bootstraps from `GET /api/courses/:code/cycles` before the
+full-script handoff, and INF PLAY is served by `infplay-cycles.ts`. Neither is projected
+by the dashboard generator at all.
+
+> **Design implication for the sample tool, and it is the sharp one:** Watson's point that
+> a sample must play through *the same player the learner gets* is **correct but for a
+> narrower reason than assumed**. The audio *bytes* are already identical, so the journey
+> page is a sound instrument for catching bad clips. What it cannot catch is anything
+> about *when and how* those clips are played. If sample mode is built on the dashboard
+> generator, it inherits every divergence in the table above. Building it against the
+> learner's own player — or at minimum landing the golden-fixture parity test the
+> 2026-06-10 report already specified and nobody built — is what converts this from
+> "probably in sync" to "checked".
 
 ---
 
 ## 4. Publish-ready tool — ADD versus WIRE UP
 
-*(Section pending; drafted after §3 lands.)*
+Mapped against Watson's three layers and Tom's three v1 scope items. The finding Watson
+wanted: **layer 1 is mostly plumbing.** Most of the checks exist and work; they are simply
+not reachable from one place, and nothing blocks on them.
+
+### Layer 1 — code-based sweep over 100% of the course (Tom's v1 item (a): "one button, pass/fail report")
+
+**WIRE UP (exists, works, just not reachable as one action):**
+
+| Item | Effort | Note |
+|---|---|---|
+| `tools/audio-batch-gate.cjs` whole-course run | plumbing | Already has a CLI and a callable `gateBatchSafe()`. **Must run with `--deep`** — default is structurally blind above the duration floor (§2D.1). |
+| Turn the **wrong-language phonology gate back on** | **two lines of `.env`** | Set `WHISPER=/home/tomcassidy/.local/bin/whisper-cli` and a Linux `WHISPER_MODEL` path. Highest value-per-effort item in this map. |
+| `tools/audio-gender-lint.cjs`, `sweep-wrong-language-crosscourse.cjs`, `audit-chunk-audio-coverage.cjs`, `pod-voice-coverage.cjs`, `audit-frame-diversity.cjs` | plumbing | All CLI-only today. Each needs a callable export and a row in the report. |
+| `tools/known-side-gate.cjs` | plumbing | Already a thin wrapper over the validated `checkKnownSide`. Zero callers. **Requires a pair contract per course or it silently passes** — count contracts and report coverage honestly. |
+| `tools/refresh-round-index.cjs` | plumbing | Add a *staleness check* (LEGO count vs index count per course) as a report row, then offer the refresh. Currently nothing detects the drift measured in §2C/S1. |
+| `/api/qa/*` router | already live | 25 working routes for flags, summary, mark-checked. This is the spine for item (b). |
+
+**ADD (does not exist in any form):**
+
+| Item | Why it must be built |
+|---|---|
+| **A course-wide re-run of the text gates over existing content** | This is the big one. Every check in §2A/T1–T10 is real and trusted — but they only ever run *inside `/api/seed/complete`*, one seed at a time, at submission. There is **no way to run them over a finished course**. The functions in `lib/validation.cjs` are pure and exported, so this is a harness over existing logic, not new checking logic — but the harness genuinely does not exist. |
+| **Phrase-floor check against Tom's ≥4 BUILD / ≥5 USE** | The shipped gate enforces the validator ramp (3/5), not Tom's floor. §2E shows 194/493 `eng_for_zho` LEGOs and 1,138/1,641 `fra_for_eng` LEGOs below Tom's floor, plus 117 `fra_for_eng` LEGOs with **zero** phrases. Nothing reports this. |
+| **A single pass/fail report object** | Every check today prints ad-hoc text or JSON in its own shape. There is no common result schema. |
+| **Any blocking semantics at all** | Nothing in the estate currently refuses anything on quality grounds outside the submit gate. "Publish-ready = false" is a new concept. |
+
+**Rough split for layer 1: about 70% wire-up, 30% add** — and the 30% is dominated by one
+item (the course-wide text-gate harness).
+
+### Layer 2 — deep manual sign-off, seeds 1–50 (Tom's v1 item (b))
+
+Measured scope: **137–143 LEGOs** for a typical course (§2E) — Tom's 120–150 estimate is
+right. `cym_s_for_eng` at 82 shows the workload is not constant.
+
+**WIRE UP:**
+- `course_practice_phrases.qa_checked` (timestamptz) **already exists and is already used** — 75,671 phrases estate-wide carry it.
+- `/api/qa/mark-checked`, `/qa/bulk-mark-checked`, `/qa/flag`, `/qa/flags/:course/pending`, `/qa/summary/:course` are **live and answering right now**.
+- `docs/tail-click-listening-test.html` is an existing manual-listening artefact and is the right shape to fold in as the audio half of a per-LEGO checklist.
+
+**ADD:**
+- A **per-LEGO** sign-off unit. Everything today is per-*phrase*; Tom asked for per-LEGO (text checked + audio checked, as one item). The `qa_checked` column is on the phrase table only — a LEGO-level sign-off record does not exist.
+- **Revive the human-approval queue**, or replace it. `routes/golden.cjs` implements `human-approve`, `human-approve-all`, and `review-queue` — the exact primitives — and is **unmounted**, with the frontend already calling it and getting a 404 (§1.3). Mounting it is one line; whether its model fits per-LEGO sign-off needs a look before reviving.
+
+### Layer 3 — stratified sampling from seed 51 (Tom's v1 item (c))
+
+**WIRE UP:**
+- `GET /api/qa/sample/:courseCode?limit&seed_min&seed_max` **exists and works** (LIVE-verified, returns 100 phrases).
+
+**ADD — and the existing endpoint is the wrong shape, exactly as the settled decision anticipated:**
+
+| Gap | Detail |
+|---|---|
+| **It is purely random** | `qa.cjs:786` — `data.sort(() => Math.random() - 0.5)`. The decision is *stratified*: every voice, every seed-decade. Needs rewriting, not extending. (Minor, but note the shuffle idiom itself is biased.) |
+| **It samples phrases, not rounds** | Tom asked for "a sample of X ROUNDS". Rounds come from the journey generator, which the QA sample endpoint does not touch. |
+| **It is text-only** | No audio, no voice dimension, no `course_audio` join — so it cannot stratify by voice, which is half the stated requirement. |
+| **Nothing weights toward found failure modes** | The decision says weight toward what the first-50 pass found. No mechanism exists. |
+
+**A constraint the sample design must respect, from the repair evidence:** `hrv_for_eng`
+had **zero** silent clips and 9 real defects, **all role `known`**; `eng_for_ben`'s 149
+confirmed defects were **all `known`** too. *"No amount of ear-checking target audio would
+have found either."* **Stratification must cover `role` (known / target1 / target2 /
+presentation) as a first-class dimension**, or the sample will systematically miss the
+defect class the estate has actually been suffering from.
+
+### Summary answer to the question Watson asked
+
+**Most of layer 1 already exists as unwired capability — so the tool is mostly plumbing,
+and that does change the design.** The v1 build is better understood as:
+
+1. a **result schema** and a **runner** that calls ~10 existing functions and collects them;
+2. **one genuinely new check harness** (course-wide text gates over existing content, reusing the pure functions in `lib/validation.cjs`);
+3. a **sign-off record at LEGO granularity** on top of the live `/api/qa/*` spine;
+4. a **rewritten sampler** that is stratified, round-based, and role-aware;
+5. plus **two config fixes and one router mount** that cost minutes and recover real enforcement (`WHISPER` env; mounting `golden.cjs`; deciding what to do about the never-called checkpoint machinery).
+
+The expensive-looking part — writing quality checks — is largely already paid for.
 
 ---
 
 ## 5. Explicit gaps
 
-*(Section pending.)*
+Things I could not check, or checked only partially. Reported as gaps rather than papered over.
+
+1. **The live pages were checked at HTTP level only, not driven in a browser.**
+   `https://popty.app/production/eng_for_zho` and `.../script?view=journey` both return
+   **HTTP 200**, but `vercel.json` rewrites `/((?!vfs).*)` to `/index.html` — so popty.app
+   is a **pure static SPA with no backend**, and both URLs return an identical 669-byte
+   shell. **I did not drive a browser, so I did not visually confirm which QA buttons are
+   on those pages.** The affordance list in this report is read from component code and
+   from LIVE API probes, not from the rendered page. A sub-agent was dispatched to attempt
+   the same; see item 9.
+
+2. **I could not exercise any authenticated API route as a real user.** Via the real
+   backend (`https://ssi-machine.ngrok.app`, which `src/services/api.js:40-42` hard-codes
+   for popty.app), `/api/qa/*` and `/api/golden/*` return **401 Authentication required**.
+   I probed the underlying course-builder API directly on `localhost:3491` instead, which
+   answers unauthenticated. **So "what the button does when pressed" is traced through
+   code plus unauthenticated backend probes — not by pressing it.**
+
+3. **A live/code disagreement I could not fully resolve.** `production-api.cjs:9757`
+   registers a `/api/checkpoint` proxy to the course-builder API, but a live GET to
+   `/api/checkpoint/status/eng_for_zho` through ngrok returned Express's default 404 rather
+   than the proxy's 503. I did not chase why (possible ordering issue with an earlier
+   handler, or the ngrok host fronting a different process). **It does not change the
+   conclusion** — the downstream route genuinely 404s on `:3491` too, because
+   `routes/checkpoint.cjs` is unmounted — but the proxy behaviour itself is unexplained.
+
+4. **The course-builder API's port is not what the proxy expects.**
+   `course-builder-api.cjs:64` defaults to `3471`; the running process listens on **3491**
+   (`COURSE_BUILDER_PORT` override). `production-api.cjs:9754` defaults its proxy target to
+   `http://localhost:3471`. Whether `COURSE_BUILDER_API_URL` is set in the live process's
+   environment I could not determine from outside it. **If it is not, every proxied QA
+   route is returning 503 in production.** Worth one check by someone who can read that
+   process's env.
+
+5. **Trustworthiness history is thin for the text checks.** I have strong, documented
+   false-positive history for the ZUT component-row audit (the 2026-07-04 rescope, ~93%
+   noise) and for the audio gate (§2D). For T7–T12 I found unit tests but **no record of
+   false-positive or false-negative incidents**, so those trust ratings are inference from
+   code quality, not evidence. Stated as "medium" rather than dressed up.
+
+6. **The 117 `fra_for_eng` LEGOs with zero phrases are a raw count, not a verified
+   work-list.** Per this repo's own rubric, a violation count is not a work count, and my
+   first version of that query was wrong (§2E caveat). Someone should pilot ~40 of them
+   against the seeds before anyone acts.
+
+7. **Two stale documents found, both worth correcting.** `CLAUDE.md` states
+   `course_round_index` is "refreshed on lego mutations by the dashboard pipeline"; the
+   refresh tool's own header says there is no trigger or RPC, and the measured drift
+   (§2C/S1) proves the tool is right. And the distilled sweep protocol cites
+   `tools/course-optimization/audit-phrase-zut.cjs` as the canonical audit entry point —
+   **that file does not exist in the tree.** I did not fix either; flagging both.
+
+8. **I did not verify the `.env` `WHISPER_MODEL` situation on any machine other than this
+   one.** The finding that `PHONO_GATE_ON = false` is proven *here*, on the box that serves
+   `ssi-machine.ngrok.app` (confirmed: local `:3470/health` and the ngrok `/health` return
+   the same Production API with matching timestamps). If renders run anywhere else, that
+   box needs the same check.
+
+9. **Sub-agent reports.** Three read-only workers were dispatched (learner-app engine read;
+   audio QA inventory; journey-page + live-page trace). Their findings are folded in where
+   they arrived; **anything in this document is stated on evidence I verified myself unless
+   attributed.** Where a worker's report had not landed before this document was finalised,
+   I completed the section from my own reading rather than leaving it thin — §3 in
+   particular is my own trace plus the repo's own 2026-06-10 divergence audit, not a
+   worker's summary.
+
+10. **Not attempted, deliberately:** no TTS generation (costs money, requires Tom's
+    approval), no asset deletion, no code changes, no refactors. The `--deep` audio gate
+    was **not** run over any course — it is I/O-heavy and this was a scouting pass.
+
+### One open call flagged rather than blocked on
+
+**MVP (300 seeds) vs Full (668) for the text sweep.** Tom has not made this call. I mapped
+both (§2E) and took the default that the **automated floor should always be Full**, because
+its marginal cost is near zero and a 300-seed floor cannot support "acceptable risk from
+seed 51" on a 668-seed course. The MVP/Full distinction should govern *human* effort — the
+deep-pass and sample budgets — not the code sweep. Note that `eng_for_zho`, the course Tom
+pointed at, **stops at seed 300**, so for it the question is currently moot.
