@@ -6,7 +6,7 @@
 
       <div class="course-info">
         <span class="course-label">Course:</span>
-        <span class="course-name">{{ courseName }}</span>
+        <span class="course-name">{{ courseNameDisplay }}</span>
       </div>
 
       <div class="role-selection">
@@ -29,7 +29,7 @@
 
       <div class="session-summary">
         <div class="summary-line">
-          This session: <strong>{{ phraseCount }} {{ targetLanguage }} phrases</strong>
+          This session: <strong>{{ phraseCount }} {{ targetLabel }}phrases</strong>
         </div>
         <div class="summary-line">
           Estimated time: <strong>~{{ estimatedTime }} minutes</strong>
@@ -50,21 +50,29 @@
 <script setup>
 import { ref, computed } from 'vue'
 
+// No language defaults here — this component is course-agnostic, and a
+// hardcoded fallback (it used to say Welsh) mislabels every other course.
+// The parent supplies real values once /info resolves; until then we show
+// neutral placeholders rather than a confident wrong answer.
 const props = defineProps({
-  courseName: { type: String, default: 'Welsh for English Speakers' },
-  knownLanguage: { type: String, default: 'English' },
-  targetLanguage: { type: String, default: 'Welsh' },
-  phraseCount: { type: Number, default: 287 }
+  courseName: { type: String, default: '' },
+  knownLanguage: { type: String, default: '' },
+  targetLanguage: { type: String, default: '' },
+  phraseCount: { type: Number, default: 0 }
 })
 
 const emit = defineEmits(['begin', 'back'])
 
+const courseNameDisplay = computed(() => props.courseName || 'This course')
+// "12 phrases" reads fine; "12 Welsh phrases" does not when it isn't Welsh.
+const targetLabel = computed(() => props.targetLanguage ? `${props.targetLanguage} ` : '')
+
 const selectedRole = ref(null)
 
 const roles = computed(() => [
-  { id: 'known', type: 'Known', language: props.knownLanguage },
-  { id: 'target1', type: 'Target 1', language: props.targetLanguage },
-  { id: 'target2', type: 'Target 2', language: props.targetLanguage }
+  { id: 'known', type: 'Known', language: props.knownLanguage || 'Known language' },
+  { id: 'target1', type: 'Target 1', language: props.targetLanguage || 'Target language' },
+  { id: 'target2', type: 'Target 2', language: props.targetLanguage || 'Target language' }
 ])
 
 const estimatedTime = computed(() => {

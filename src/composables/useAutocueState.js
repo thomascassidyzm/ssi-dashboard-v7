@@ -34,16 +34,20 @@ const state = reactive({
   scriptMode: false,
 
   // Script metadata (optimizer mode only)
-  scriptInfo: null, // { totalItems, totalPhrases, totalDirect, estimatedMinutes }
+  scriptInfo: null, // { totalItems, totalPhrases, totalDirect, estimatedMinutes, maxSeed }
+
+  // Cap the script to seeds 1..N (from ?maxSeed=N on the recorder link).
+  // null = whole course.
+  maxSeed: null,
 
   // Session ID for grouping recordings
   scriptSessionId: null,
 
   // Course data
   courseCode: null,
-  courseName: 'Welsh for English Speakers',
-  knownLanguage: 'English',
-  targetLanguage: 'Welsh',
+  courseName: '',
+  knownLanguage: '',
+  targetLanguage: '',
 
   // Recording state
   currentPass: 1, // 1 = Natural Speed, 2 = Slow with Gaps
@@ -133,6 +137,13 @@ export function useAutocueState() {
     state.voiceId = voiceId
   }
 
+  // Cap this session's script to seeds 1..N (from ?maxSeed=N on the recorder
+  // link). Anything not a positive integer means "whole course".
+  function setMaxSeed(value) {
+    const n = parseInt(value, 10)
+    state.maxSeed = Number.isInteger(n) && n > 0 ? n : null
+  }
+
   function selectMode(mode) {
     state.selectedMode = mode
     if (mode === 'new-course') {
@@ -141,6 +152,18 @@ export function useAutocueState() {
       // Record FOR the assigned voice slot; explicit target1 default when
       // entered without one (the editor/admin production console path).
       state.selectedRole = state.recordingSlot || 'target1'
+      // Without a course the fetch would go to /api/production/null/... and
+      // 404 with a misleading "no LEGOs" message — say what's actually wrong.
+      if (!state.courseCode) {
+        state.error = 'No course selected — open the Record Room from a course link.'
+        state.scriptMode = false
+        return
+      }
+      // Clear any previous failure and move OFF mode-select before the await,
+      // so the loading spinner is actually rendered while the optimizer runs
+      // (it can take tens of seconds on a large course).
+      state.error = null
+      state.currentPhase = 'loading'
       loadOptimizedScript(state.courseCode)
     } else {
       state.scriptMode = false
@@ -539,6 +562,10 @@ export function useAutocueState() {
     state.scriptMode = false
     state.scriptInfo = null
     state.scriptSessionId = null
+    // Singleton state: a stale cap or a previous mount's error banner would
+    // otherwise follow the user into a fresh session.
+    state.maxSeed = null
+    state.error = null
     state.currentPass = 1
     state.currentPhraseIndex = 0
     state.isRecording = false
@@ -573,9 +600,11 @@ export function useAutocueState() {
     try {
       const baseUrl = localStorage.getItem('api_base_url') || getApiUrl()
 
-      // Fetch interleaved script from optimizer endpoint
+      // Fetch interleaved script from optimizer endpoint, capped to seeds
+      // 1..maxSeed when the recorder link carried ?maxSeed=N.
+      const query = state.maxSeed ? `?maxSeed=${state.maxSeed}` : ''
       const res = await fetch(
-        `${baseUrl}/api/production/${courseCode}/recording-script`,
+        `${baseUrl}/api/production/${courseCode}/recording-script${query}`,
         { headers: { 'ngrok-skip-browser-warning': 'true' } }
       )
 
@@ -591,7 +620,8 @@ export function useAutocueState() {
         totalItems: data.totalItems,
         totalPhrases: data.totalPhrases,
         totalDirect: data.totalDirect,
-        estimatedMinutes: data.estimatedMinutes
+        estimatedMinutes: data.estimatedMinutes,
+        maxSeed: data.maxSeed ?? null
       }
 
       // Transform items to autocue phrase format
@@ -740,6 +770,7 @@ export function useAutocueState() {
     // Actions
     setPhase,
     setRecordingIdentity,
+    setMaxSeed,
     selectMode,
     selectRole,
     beginSession,

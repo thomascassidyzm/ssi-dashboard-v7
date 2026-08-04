@@ -7291,20 +7291,30 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     // only the actual gap, not the same from-scratch script every time.
     // ?full=true opts back into the original unfiltered script.
     const excludeRecorded = req.query.full !== 'true'
+    // ?maxSeed=N caps the script to seeds 1..N. The optimizer orders by LEGO
+    // coverage, so an uncapped 668-seed course opens somewhere in the 300s —
+    // fine for a full campaign, wrong for a test session that wants something
+    // listenable from the start. No param = whole course (existing behaviour).
+    const rawMaxSeed = parseInt(req.query.maxSeed, 10)
+    const maxSeed = Number.isInteger(rawMaxSeed) && rawMaxSeed > 0 ? rawMaxSeed : null
 
-    logger.log(`[Recording Script] Generating interleaved script for ${courseCode}${excludeRecorded ? ' (gap only)' : ' (full)'}`)
+    logger.log(`[Recording Script] Generating interleaved script for ${courseCode}${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''}`)
 
     // Run the optimizer (suppress console output)
     const originalLog = console.log
     const logs = []
     console.log = (...args) => logs.push(args.join(' '))
 
-    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded })
+    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded, maxSeed })
 
     console.log = originalLog
 
     if (!result) {
-      return res.status(404).json({ error: 'No LEGOs found for course. Run Course Builder first.' })
+      return res.status(404).json({
+        error: maxSeed
+          ? `No LEGOs found in seeds 1-${maxSeed} for ${courseCode}.`
+          : 'No LEGOs found for course. Run Course Builder first.'
+      })
     }
 
     const phrases = result.recordingScript.phrases
@@ -7388,6 +7398,7 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
 
     res.json({
       courseCode,
+      maxSeed,
       totalItems: items.length,
       totalPhrases: phrases.length,
       totalDirect: directItems.length,
