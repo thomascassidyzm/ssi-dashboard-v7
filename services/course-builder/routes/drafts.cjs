@@ -228,7 +228,7 @@ module.exports = function(ctx) {
 
             // Fetch available vocab for this seed so the coordinator doesn't need to
             const vocabSet = await loadTranslationVocab(ctx, courseCode, seedNum);
-            const vocabStr = [...vocabSet].sort().join(chinese ? '' : ', ');
+            const vocabStr = [...vocabSet].sort().join(chinese ? ' | ' : ', ');
 
             const collisionNotes = seedCollisions.map(c =>
               `- LEGO L${c.lego_idx} "${c.lego_known}" \u2192 "${c.lego_target}" COLLIDES with seed ${c.conflicts_with.seed_number} which already has "${c.lego_known}" \u2192 "${c.conflicts_with.target_text}"\n  FIX: Merge L${c.lego_idx} with an adjacent LEGO to create a bigger M-LEGO whose English known text is different.`

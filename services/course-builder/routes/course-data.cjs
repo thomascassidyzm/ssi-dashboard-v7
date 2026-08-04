@@ -890,7 +890,7 @@ USE:
       mode: chinese ? 'character' : 'word',
       source: seedNumber ? 'translations' : 'legos',
       vocab_size: vocabSet.size,
-      vocab: [...vocabSet].sort().join(chinese ? '' : ', ')
+      vocab: [...vocabSet].sort().join(chinese ? ' | ' : ', ')
     });
   });
 

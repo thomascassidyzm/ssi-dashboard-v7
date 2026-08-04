@@ -65,6 +65,19 @@ fin_for_eng 2026-07 (~500 phrases over three agent runs, validated).
 - Final output: per-LEGO summary (`SPREAD n: hosts…` / `SKIPPED — reason`) — and if running
   under a team lead, send it via the SendMessage tool (plain output is invisible).
 
+## SOV-known / English-target courses (eng_for_hin/urd/pan/… family) — proven veins
+
+Containment is TARGET-side (English) only. English SVO **end-attachment** — host clause +
+adverbial / PP / temporal / embedded-Q **tail** — keeps both chunks contiguous, while the
+SOV known side (Hindi/Urdu/Punjabi…) is free-form, so adverbials sit in natural pre-verbal
+position. This makes clause/PP/manner/temporal TAILS the highest-yield, lowest-risk vein
+(validated eng_for_pan 2026-07-28: 60/60 through both form validation and ZUT-drift review).
+Object-noun appends: only onto imperfective/future/progressive hosts (agreement-neutral) —
+perfective/stative hosts can force unattested verb-agreement forms on the known side.
+Complementizer particles (Hindi/Urdu/Punjabi ਕਿ/कि/کہ): usage varies BY MATRIX VERB in these
+courses — mirror the attested pattern per chunk, never blanket-insert.
+Duplicate-lego baskets: backfill-submit refuses is_new:false baskets — re-host, don't fight it.
+
 ## Per-language addendum — example (fin_for_eng)
 
 - English signals Finnish structure: dummy-it = "it's / it's not"; referential = "it is /
@@ -92,7 +105,12 @@ memory/docs, `courses.quality_rules`, and recent final-pass docs.
 - **targets.json `lego_index` can be OFFSET from the DB** (eng_for_hin 2026-07-27: "on Monday"
   is DB 316/4 but targets.json said 316/1). Always take the HOST basket's lego_index from
   `all-phrases.tsv` (or the DB), never from targets.json. The submit endpoint's containment
-  check catches most mislabels — read its errors.
+  check catches most mislabels — read its errors. The TSV-derived legomap can drift too
+  (eng_for_urd 2026-07-28: S325 host at L2, map said L1): **on any containment failure,
+  re-query `course_legos` for that basket's real lego_index and resubmit** — a containment
+  PASS is always safe (the phrase provably contains that basket's real LEGO + the spread string),
+  a failure just means wrong index, never lost work. Enforce host_seed > spread_seed in a
+  pre-submit audit (one forward-leak slipped through before this gate existed).
 - **Apostrophes get SILENTLY stripped when submitting via `curl -d '...'` single-quote
   wrapping** ("don't"→"dont"). Always submit from a JSON *file* (`--data-binary @file.json`
   or a small python helper). After any run, sweep new rows for
@@ -109,3 +127,20 @@ memory/docs, `courses.quality_rules`, and recent final-pass docs.
   for unspaced scripts, and accept that CJK form-checking then needs a model/native pass.
 - The proofread tool (`tools/proofread/`) shows new phrases as pending dots; approvals whose
   timestamp predates an insert must be re-earned (step 5).
+- **`validate.cjs --since` compares created_at LEXICOGRAPHICALLY** — rows whose fractional
+  timestamp shares the cutoff second get silently excluded ("." < "Z"), under-reporting the
+  validated set. Always pass a cutoff a full minute BEFORE your run start.
+- **all-phrases.tsv build strings can be CORRUPTED on template-junk courses** (eng_for_mar
+  2026-07-29: TSV dumped "something different already again" where the DB lego is clean
+  "something different"). On any containment failure, trust GET /api/legos/<course>?seed=N
+  or the DB over the TSV build column. On courses with known recombination-junk classes,
+  also pre-filter the HOST pool against the junk-class row lists before spreading.
+- **analyze.cjs's all-legos dump can mislabel `is_new`** (eng_for_sin 2026-07-28: the dump's
+  "is_new" field actually carried the DB `type` column A/M). backfill-submit rejects
+  is_new:false host baskets, so gate host selection on the AUTHORITATIVE `is_new` bool
+  pulled straight from `course_legos` — never the dump's field.
+- Late-seed infinitival legos ("to get away") fail bare-verb matrices — use "to X"-preserving
+  frames (hoped to / trying to / want to) or full-clause wraps. Non-contiguous legos
+  ("haven't seen yet") reject any insertion ("haven't seen it yet") — re-host on failure.
+  One containment failure drops ALL phrases sharing that (seed,lego) submission entry —
+  batch each phrase under its own entry to avoid collateral drops.
