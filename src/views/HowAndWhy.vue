@@ -4,7 +4,8 @@
 // ONE surface holding (a) the how-to layer — the persona-scoped explanations
 // from the compiled pack, organised around what the signed-in person actually
 // DOES — and (b) the rulings layer — founder-authored philosophy (Pedagogy,
-// Pod Thinking, the why-of-APML), presented as living thinking, not reference.
+// Pod Thinking, the schema-truth ruling, the APML lineage), presented as
+// living thinking, not reference.
 // Zero runtime model calls; everything renders from the explanation pack.
 import { computed } from 'vue'
 import { useAuth } from '@/composables/useAuth'
@@ -42,7 +43,12 @@ const howto = computed(() => {
     .map(([key, text]) => ({ key, title: SECTION_TITLES[key] ?? key, html: mdlite(text) }))
 })
 
-// The why-of-APML rulings prose, straight from the pack (rulings/docs/apml.md).
+// Rulings prose straight from the pack: the schema-truth ruling
+// (rulings/docs/schema.md, founder 2026-07-29) and the APML lineage
+// (rulings/docs/apml.md — architectural lineage, not a live requirement).
+const schemaRuling = computed(() =>
+  Object.entries(pack.value.docs?.schema ?? {}).map(([title, text]) => ({ title, html: mdlite(text) }))
+)
 const apmlWhy = computed(() =>
   Object.entries(pack.value.docs?.apml ?? {}).map(([title, text]) => ({ title, html: mdlite(text) }))
 )
@@ -94,8 +100,17 @@ const rulingCards = [
         </router-link>
       </div>
 
+      <div v-if="schemaRuling.length" class="apml-why">
+        <h2 class="apml-heading">Schema truth</h2>
+        <article v-for="s in schemaRuling" :key="s.title" class="apml-section">
+          <h3 class="apml-title">{{ s.title }}</h3>
+          <!-- eslint-disable-next-line vue/no-v-html — pack content is compiled repo data, escaped above -->
+          <div class="howto-body" v-html="s.html"></div>
+        </article>
+      </div>
+
       <div v-if="apmlWhy.length" class="apml-why">
-        <h2 class="apml-heading">Why APML</h2>
+        <h2 class="apml-heading">APML — the lineage</h2>
         <article v-for="s in apmlWhy" :key="s.title" class="apml-section">
           <h3 class="apml-title">{{ s.title }}</h3>
           <!-- eslint-disable-next-line vue/no-v-html — pack content is compiled repo data, escaped above -->

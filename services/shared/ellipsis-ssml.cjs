@@ -39,4 +39,24 @@ function ellipsisToSSMLBreaks(text, breakMs = ELLIPSIS_BREAK_MS) {
     .join(`<break time="${breakMs}ms"/>`)
 }
 
-module.exports = { ellipsisToSSMLBreaks, ELLIPSIS_BREAK_MS }
+/**
+ * Build the full Azure SSML body for a text that may carry inline SSML markup.
+ *
+ * Texts with targeted pronunciation tags (<phoneme>, <sub>, <emphasis>,
+ * <say-as>, <break>) must reach Azure unescaped or the tags render as literal
+ * characters — so for those, only the ellipsis→<break> substitution runs and
+ * the per-segment XML escape is skipped. Plain text (the overwhelming
+ * majority) keeps the full escape+break path.
+ *
+ * @param {string} text - source text, may contain '…' and/or inline SSML tags
+ * @param {number} breakMs - pause duration in ms (default 400)
+ * @returns {string} SSML body ready to embed inside <prosody>
+ */
+function buildAzureSSMLBody(text, breakMs = ELLIPSIS_BREAK_MS) {
+  const hasInlineSsml = /<(phoneme|sub|emphasis|say-as|break)\b/i.test(String(text || ''))
+  return hasInlineSsml
+    ? String(text).split('…').join(`<break time="${breakMs}ms"/>`)
+    : ellipsisToSSMLBreaks(text, breakMs)
+}
+
+module.exports = { ellipsisToSSMLBreaks, buildAzureSSMLBody, ELLIPSIS_BREAK_MS }

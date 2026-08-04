@@ -209,18 +209,31 @@ async function getExistingAudioSet(courseCode) {
 // Returns the human row if one occupies the key, else null.
 // =============================================================================
 async function humanRowAtAudioKey(courseCode, textNormalized, language, role, voiceId) {
-  const { data, error } = await supabase
-    .from('course_audio')
-    .select('*')
-    .eq('course_code', courseCode)
-    .eq('text_normalized', textNormalized)
-    .eq('language', language)
-    .eq('role', role)
-    .eq('voice_id', voiceId)
-    .eq('origin', 'human')
-    .maybeSingle()
-  if (error) throw new Error(`precious-audio guard query failed: ${error.message}`)
-  return data || null
+  // Transient undici "TypeError: fetch failed" blips during 8-hour batch runs
+  // were failing ~0.04% of clips AFTER the TTS money was already spent
+  // (2026-07-28 batch audit). Retry the read a few times before failing the
+  // clip; a persistent error still throws (fail-closed, never clobber).
+  let lastError
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const { data, error } = await supabase
+        .from('course_audio')
+        .select('*')
+        .eq('course_code', courseCode)
+        .eq('text_normalized', textNormalized)
+        .eq('language', language)
+        .eq('role', role)
+        .eq('voice_id', voiceId)
+        .eq('origin', 'human')
+        .maybeSingle()
+      if (error) throw new Error(error.message)
+      return data || null
+    } catch (e) {
+      lastError = e
+      if (attempt < 3) await new Promise(r => setTimeout(r, attempt * 500))
+    }
+  }
+  throw new Error(`precious-audio guard query failed: ${lastError.message}`)
 }
 
 /**
@@ -646,7 +659,123 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
       })
     : pendingPresRowsRaw
 
-  for (const pres of (pendingPresRows || [])) {
+  // STALENESS GUARD (2026-07-20): pending rows carry text frozen at authoring
+  // time. If known_text was edited after the row was created (gloss cleanup,
+  // register sweep), TTSing the stored text silently resurrects the old gloss
+  // — seen on deu_at as ~25 intros re-tagged "what (interrogative pronoun)"-
+  // style after /generate filled "missing" audio. A pending row is fresh only
+  // if its quoted {known} slot still matches the CURRENT known_text. Stale
+  // rows are dropped from TTS here, returned in stalePendingIds for /generate
+  // to purge, and their LEGO is re-authored from live data in the same run.
+  const stalePendingIds = []
+  let freshPendingRows = pendingPresRows || []
+  if (freshPendingRows.length) {
+    try {
+      const template = await getOrCreatePresentationTemplate(course.known_lang)
+      const kIdx = template.indexOf('{known}')
+      if (kIdx !== -1) {
+        // The chars flanking {known} in the template are its quote marks
+        // ('…', 「…」, "…" — language-dependent). Probing for quote+chunk+quote
+        // distinguishes "what" from "what (interrogative pronoun)".
+        const preQ = kIdx > 0 ? template[kIdx - 1] : ''
+        const postQ = template[kIdx + '{known}'.length] || ''
+        const quotedProbe = (chunk) => `${preQ}${chunk}${postQ}`
+
+        // Current lego data for pending LEGO rows (always course-scoped —
+        // lego_id is NOT unique across courses)
+        const pendingLegoIds = [...new Set(freshPendingRows.map(r => r.lego_id).filter(Boolean))]
+        const legoById = new Map()
+        for (let i = 0; i < pendingLegoIds.length; i += 100) {
+          const { data: rows } = await supabase
+            .from('course_legos')
+            .select('lego_id, known_text, target_text, seed_number')
+            .eq('course_code', courseCode)
+            .in('lego_id', pendingLegoIds.slice(i, i + 100))
+          for (const l of (rows || [])) legoById.set(l.lego_id, l)
+        }
+
+        // Component rows have no FK — a row is fresh if ANY current
+        // introduce:true component known_text appears quoted in its text.
+        let compProbes = []
+        if (freshPendingRows.some(r => !r.lego_id)) {
+          let compQ2 = supabase
+            .from('course_practice_phrases')
+            .select('known_text')
+            .eq('course_code', courseCode)
+            .eq('phrase_role', 'component')
+            .eq('introduce', true)
+            .lte('seed_number', releaseTarget)
+          if (scopeSeeds) compQ2 = compQ2.in('seed_number', scopeSeeds)
+          const { data: compTexts } = await compQ2
+          compProbes = [...new Set((compTexts || []).map(c => c.known_text).filter(Boolean))].map(quotedProbe)
+        }
+
+        const isFreshPending = (r) => {
+          const text = r.text || ''
+          if (r.lego_id) {
+            const lego = legoById.get(r.lego_id)
+            if (!lego || !lego.known_text) return false  // orphaned pending row — lego gone
+            const variants = [lego.known_text]
+            if (lego.known_text.includes(' / ')) {
+              // Slash-compounds render only their first option into {known}
+              variants.push(lego.known_text.split(' / ')[0].trim())
+            }
+            return variants.some(v => v && text.includes(quotedProbe(v)))
+          }
+          return compProbes.some(p => text.includes(p))
+        }
+
+        const fresh = []
+        const freshLegoIds = new Set()
+        const staleLegoIds = new Set()
+        for (const r of freshPendingRows) {
+          if (isFreshPending(r)) {
+            fresh.push(r)
+            if (r.lego_id) freshLegoIds.add(r.lego_id)
+          } else {
+            stalePendingIds.push(r.id)
+            if (r.lego_id) staleLegoIds.add(r.lego_id)
+          }
+        }
+
+        // Re-author stale LEGOs from live data — unless a fresh pending row or
+        // a real audio row already covers them. Stale COMPONENT rows just get
+        // purged; the existing component-author gate (pendingComponentRows===0)
+        // picks their phrases up once the purge lands.
+        const toReauthor = [...staleLegoIds].filter(id =>
+          !freshLegoIds.has(id) && !legoIdsWithPresentation.has(id) && legoById.has(id)
+        )
+        if (toReauthor.length) {
+          const items = toReauthor
+            .map(id => legoById.get(id))
+            .filter(l => !isPunctuationOnly(l.known_text))
+            .map(l => ({ lego_id: l.lego_id, chunk: l.known_text, form: l.target_text, seed_number: l.seed_number }))
+          const seedNums = [...new Set(items.map(t => t.seed_number).filter(n => n != null))]
+          const staleSeedTexts = new Map()
+          for (let i = 0; i < seedNums.length; i += 200) {
+            const { data: seedRows } = await supabase
+              .from('course_seeds')
+              .select('seed_number, known_text')
+              .eq('course_code', courseCode)
+              .in('seed_number', seedNums.slice(i, i + 200))
+            for (const s of (seedRows || [])) staleSeedTexts.set(s.seed_number, s.known_text)
+          }
+          for (const t of items) t.seed = staleSeedTexts.get(t.seed_number) || null
+          toAuthor.push(...items)
+        }
+        if (stalePendingIds.length) {
+          logger.warn(`getAudioNeeds(${courseCode}): ${stalePendingIds.length} stale pending presentation row(s) — text no longer matches current known_text; dropped from TTS, ${toReauthor.length} LEGO(s) queued for re-authoring`)
+        }
+
+        freshPendingRows = fresh
+      }
+    } catch (staleErr) {
+      // Fail open: the staleness check must never block audio status/generation.
+      logger.warn(`Pending-presentation staleness check failed (${staleErr.message}) — proceeding with stored texts`)
+    }
+  }
+
+  for (const pres of freshPendingRows) {
     if (isPunctuationOnly(pres.text)) {
       ungeneratable++
       continue
@@ -716,6 +845,7 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     toCopy: toCopy.length,
     toAuthor: toAuthor.length,
     missingPresentation,
+    stalePending: stalePendingIds.length,
     ungeneratable,
     ledger,
     breakdown: {
@@ -733,6 +863,7 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     toCopy,
     toGenerate: uniqueToGenerate,
     toAuthor,
+    stalePendingIds,
     stats,
     // The text stage is folded into /generate — never gate on it again.
     readyForGenerate: true,
@@ -1041,10 +1172,12 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
   const PAGE_SIZE = 1000
   const BATCH = 200
 
-  // Load audio map: "text_normalized|language|role" → preferred course_audio row
+  // Load audio map keyed by normalizeForAudio(raw text) — which PRESERVES ?/! — so
+  // question/exclamation intonation is significant (a "...?" phrase won't link to a
+  // "..." recording). origin + created_at let pickPreferredAudioRow favour human > newest.
   let audioQuery = supabase
     .from('course_audio')
-    .select('id, text_normalized, language, role, s3_key, origin, created_at')
+    .select('id, text, language, role, s3_key, origin, created_at')
     .eq('course_code', courseCode)
     .not('s3_key', 'like', 'pending/%')
     .limit(100000)
@@ -1056,8 +1189,11 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
 
   const audioMap = new Map()
   for (const a of (audioRows || [])) {
-    if (!a.text_normalized) continue
-    const key = `${a.text_normalized}|${a.language}|${a.role}`
+    // Key on normalizeForAudio(raw text) so ?/! are preserved; pickPreferredAudioRow
+    // resolves collisions (human > newest). Map value is the chosen ROW.
+    const norm = normalizeForAudio(a.text)
+    if (!norm) continue
+    const key = `${norm}|${a.language}|${a.role}`
     audioMap.set(key, pickPreferredAudioRow(audioMap.get(key), a))
   }
   logger.info(`linkAudioIdsBatch${humanOnly ? ' (human-only)' : ''}: loaded ${audioMap.size} audio entries for ${courseCode}`)
@@ -1083,13 +1219,10 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
       for (const row of rows) {
         const norm = normalizeForAudio(row[textCol])
         if (!norm) continue
-        const key = `${norm}|${lang}|${role}`
-        let audioRow = audioMap.get(key)
-        // DB text_normalized may strip ?! while JS normalizeForAudio preserves them — try stripped form
-        if (!audioRow) {
-          const stripped = norm.replace(/[!?！？]+$/, '')
-          if (stripped !== norm) audioRow = audioMap.get(`${stripped}|${lang}|${role}`)
-        }
+        // Key preserves ?/! — a "...?" phrase only matches a "...?" recording; if none
+        // exists it stays unlinked → regenerated with correct question intonation. No
+        // ?-stripping fallback (it would relink question phrases to flat statement audio).
+        const audioRow = audioMap.get(`${norm}|${lang}|${role}`)
         if (audioRow) updates.push({ id: row[idCol], audioId: audioRow.id })
       }
 
@@ -1593,6 +1726,24 @@ app.post('/generate/:courseCode', async (req, res) => {
     // Step B: Find what still needs generating (after linking)
     const audioNeeds = await getAudioNeeds(courseCode, releaseTarget, course, false, scopeSeeds)
 
+    // Step B-1: Purge stale pending presentation rows (text frozen before a
+    // known_text edit). getAudioNeeds already dropped them from TTS and queued
+    // their LEGOs for re-authoring; leaving the rows behind would resurrect
+    // the old gloss on the next run. Pending rows are text placeholders only
+    // (s3_key 'pending/…', no S3 asset), so this deletes no generated audio.
+    if (!dryRun && audioNeeds.stalePendingIds?.length) {
+      const staleIds = audioNeeds.stalePendingIds
+      for (let i = 0; i < staleIds.length; i += 100) {
+        const { error: purgeError } = await supabase
+          .from('course_audio')
+          .delete()
+          .in('id', staleIds.slice(i, i + 100))
+        if (purgeError) logger.warn(`Stale pending purge batch failed: ${purgeError.message}`)
+      }
+      logger.info(`Purged ${staleIds.length} stale pending presentation row(s) for ${courseCode}`)
+      emitProgress(supabase, courseCode, `Purged ${staleIds.length} stale presentation placeholder(s) (text predates known_text edits) — re-authoring from current text`, { phase: 'audio', action: 'purge-stale-presentations', count: staleIds.length })
+    }
+
     // Step B0: Author missing introduction text inline (frozen frame +
     // context judgment via Sonnet on the CLI). This replaces the separate
     // "Generate Missing Presentation Text" stage and its readiness gate —
@@ -1718,6 +1869,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         wouldGenerate: uniqueNeeded.length + (audioNeeds.toAuthor?.length || 0),
         wouldAuthor: audioNeeds.toAuthor?.length || 0,
         wouldCopy: audioNeeds.toCopy?.length || 0,
+        wouldPurgeStalePresentations: audioNeeds.stalePendingIds?.length || 0,
         samples: uniqueNeeded.slice(0, 10),
         authorSamples: (audioNeeds.toAuthor || []).slice(0, 5)
       })
@@ -5212,7 +5364,13 @@ app.post('/splice-components/:courseCode', async (req, res) => {
 // with no known assignment. Those fall through to ctx.knownVoice for known
 // audio — preserves existing audio on previously-shipped pods.
 
-const POD_CHARS_TO_COST = 4.20 / 1_000_000  // xAI pricing; near-identical to Azure scale, rough estimate
+// xAI's published rate, docs.x.ai/docs/pricing (checked 2026-07-28): Text to
+// Speech $15.00 / 1M chars. The old value here was $4.20/1M — the figure from
+// launch press coverage, never a billed rate — which under-estimated every xAI
+// cost projection in the repo by 3.6x. Azure S0 is $4/1M by comparison
+// (services/audio-generation-planner.cjs), so xAI is ~3.75x Azure, NOT
+// "near-identical" as the old comment claimed.
+const POD_CHARS_TO_COST = 15.00 / 1_000_000
 
 // Safe ceiling for concurrent xAI TTS calls during pod generation. xAI's
 // /v1/tts throws intermittent 500 "Timeout expired" / ECONNRESET under heavy

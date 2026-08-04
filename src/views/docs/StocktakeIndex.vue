@@ -17,7 +17,7 @@ const { pack } = usePack()
 const CARD_META = {
   'Stock-take': null, // this page
   'How & Why': null, // the primary surface — reachable from the top nav
-  APML: { to: '/stocktake/apml', desc: 'The design doctrine, with the current state compiled from the code' },
+  APML: { to: '/stocktake/apml', desc: 'The intent-as-code lineage the system grew from, with the current state compiled from the code' },
   Glossary: { to: '/stocktake/glossary', desc: 'The shared terms — every storage and enforcement pointer verified at compile time' },
   Pipeline: { to: '/stocktake/pipeline', desc: 'Phase servers, gates, voice policy, schema and live state — straight from the code' },
   Pedagogy: { to: '/how/pedagogy', desc: 'The teaching model and the method — read this before authoring anything' },

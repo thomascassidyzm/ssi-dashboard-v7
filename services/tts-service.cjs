@@ -18,7 +18,7 @@ const os = require('os');
 const path = require('path');
 const crypto = require('crypto');
 const { execFile } = require('child_process');
-const { ellipsisToSSMLBreaks } = require('./shared/ellipsis-ssml.cjs');
+const { buildAzureSSMLBody } = require('./shared/ellipsis-ssml.cjs');
 const { isHumanVoiceCourse } = require('./shared/human-voice-courses.cjs');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint } = require('./azure-tts-service.cjs');
@@ -217,11 +217,14 @@ async function generateAzure(text, config) {
     const speedPercent = Math.round((speed - 1) * 100);
     const rateString = speedPercent >= 0 ? `+${speedPercent}%` : `${speedPercent}%`;
 
+    // Inline-SSML passthrough + ellipsis→<break>: see buildAzureSSMLBody.
+    const ssmlBody = buildAzureSSMLBody(ttsText);
+
     const ssml = `
       <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
         <voice name="${voiceName}">
           <prosody rate="${rateString}">
-            ${ellipsisToSSMLBreaks(ttsText)}
+            ${ssmlBody}
           </prosody>
         </voice>
       </speak>

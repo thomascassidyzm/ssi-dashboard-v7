@@ -280,3 +280,186 @@ the blocklist costs nothing at runtime and kills the whole defect class.
   its own plan + approval; left in place, counted in the sweep log.
 **Search width:** visible-options
 **Decided by:** agent (executing Tom's urgent-defect brief, verbatim policy: "NO kids voices ever")
+
+## 2026-07-29 — schema truth renders from a live dump
+
+**Move:** implemented the founder's schema-snapshot doctrine ("current schema is truth,
+migrations lie") in the explainer machinery: the `--live` refresh now dumps the public schema
+(tables + matviews) from `information_schema` over the `.env.psql` direct connection and stamps
+it into the pack; the Pipeline page renders that dump as "Live schema", demoting the
+code-reference scan to an explicitly-labelled cross-check; the ruling itself ships as
+founder-framed prose (`tools/explainer/rulings/docs/schema.md`) in the Rulings layer of
+How & Why. Same commit: APML renamed to its real expansion (AI Projects Markup Language /
+Agent Protocol Markup Language) and re-framed everywhere as architectural lineage superseded
+by the rate of model improvement, not live core architecture.
+
+**Better:** schema on the docs surface can no longer lie by omission — `family_members` (live
+since 07-10, no migration ever committed) is exactly the class of table the dump catches and
+the migrations pile misses; unreferenced-but-live tables are surfaced as their own list.
+**Simpler:** rides the existing `--live`/Update-docs path and the existing `.env.psql` +
+`pg` pattern (`tools/refresh-round-index.cjs`); no new endpoint, no new secret, honest
+degradation to a "no dump yet" note where `.env.psql` is absent.
+**Cheaper (total):** two `information_schema` queries per Update-docs press; kills the
+standing cost of hand-reconciling migrations against reality.
+**Searched & rejected:**
+- Rendering from `supabase/schema.sql` pg_dump snapshots — simpler leg fails: per-machine,
+  not in git, needs PG17 pg_dump provisioned everywhere; the pooler query needs nothing new.
+- Deriving schema from migration files — the ruling names this the lie.
+- Keeping code-references as the headline truth — better leg fails: a live unreferenced
+  table (the `family_members` proof) is invisible to it; kept as cross-check only.
+**Search width:** visible-options
+**Decided by:** Tom (ruling 2026-07-29); implementation shape by agent
+
+## 2026-07-29 — watson-1 optional parallel Popty environment
+
+**Move:** stood up the Popty backend (pm2: `orchestrator` :3456 + `production-api` :3470,
+Camberley's exact process set) on watson-1 and added an optional "Watson VM" entry to the
+popty.app environment switcher pointing at `https://watson-1.tail4968cb.ts.net:8443`
+(Tailscale Funnel → :3470). Camberley untouched and still the default.
+
+**Better:** a second, always-on Linux environment Deborah/Aran can opt into with one dropdown
+pick — no Tailscale account or client needed (Funnel serves a public HTTPS URL).
+**Simpler:** identical process set and pm2 convention as Camberley; shared Supabase/S3 means
+identical data by construction; one additive switcher entry, defaults untouched.
+**Cheaper (total):** the VM already runs 24/7 for the command surface; no ngrok subscription
+(funnel is free); no new frontend deploys beyond the entry.
+
+**Searched & rejected:**
+- ngrok fallback on the VM — no authtoken provisioned on this box; would also add a paid/second
+  tunnel where the tailnet already provides one. Kept only as the honest fallback if Tom
+  declines to enable Funnel.
+- Funnel on :443 — already carries the tailnet-only serve → :4317 command surface; clobbering
+  it fails Simpler. :8443 coexists.
+- cloudflared quick tunnel — URL is ephemeral per restart; a switcher entry needs a stable URL.
+
+**Deliberately NOT running on watson-1:** nightly audit-log archive (`AUDIT_ARCHIVE_CRON`
+unset = disabled by default), `insight-discovery --write` cron (never installed), no TTS/
+generation triggered. Supabase writes are additionally RLS-blocked until the real
+`SUPABASE_SERVICE_KEY` is provisioned (current `.env` uses the public anon key as a stand-in,
+clearly commented).
+
+**Search width:** visible-options
+**Decided by:** agent (environment + optionality decided by Tom, 2026-07-29 verbatim in the
+commission)
+
+## 2026-07-29 — VAD Lab breadth pipeline runs credential-free (REST + proxy + JS extractor)
+
+**Move:** the language-breadth re-sample (founder ruling: more languages in tour/browse/record)
+was built as `tools/prosody-lab/extend-lab-breadth.mjs` — course_audio read via Supabase REST
+(anon key), clips fetched through the public `saysomethingin.app/api/audio/:id` proxy, features
+extracted by the parity-verified JS extractor (`vadProsody.js`) under Node with ffmpeg decode.
+The 2026-07-28 study anchors (AUC tables, `median_scale`) are deliberately NOT recomputed:
+new pairs score on the study's fixed scale, exactly as the record-yourself flow already does.
+
+**Better:** runs on any machine — watson-1 has no `.env.psql`, no S3 creds, no numpy, and the
+canonical pipeline (pg + S3 + prosody.py) is unrunnable there; this reached the same estate
+through the two public read paths and shipped 122 new pairs (ita/zho/por/kor/eus + spa/fra).
+**Simpler:** no new credentials provisioned, no sudo-gated python deps; one extractor (the JS
+mirror) instead of keeping two in lockstep for this run.
+**Cheaper (total):** zero secret-distribution and zero infra; the proxy and REST reads are
+already public surface.
+
+**Searched & rejected:**
+- Provisioning `.env.psql`/S3 to watson-1 — fails Simpler/Cheaper (secret distribution for a
+  read-only job the public paths already serve) and needs Tom's scp.
+- Full Node port of prosody.py's report stage (recompute anchors over the merged set) — fails
+  Better: the anchors are the study's published finding; churning them with a different (though
+  parity-verified) extractor weakens the honesty story for zero learner-facing gain.
+**Search width:** visible-options
+**Decided by:** agent (breadth itself ruled by Tom 2026-07-29)
+
+## 2026-07-29 — clean-mastered VAD Lab xAI clips live as committed static files
+
+**Move:** clean copies (no PRE_COMPRESS, no make-up gain; true-peak limit + anti-click fades
+kept) go to `public/vad-lab-clean/<clip_id>.mp3` + manifest in THIS repo, served statically by
+the dashboard; the VAD Lab A/B affordance appears automatically when the manifest exists.
+Rendering script `tools/prosody-lab/remaster-vad-lab-clean.cjs` (186 xAI/clone sides, 14
+voices) is dry-run-gated and pending a run on a machine with `XAI_API_KEY` (watson-1 has no
+vault access). `normalizeAudioClean()` is additive — Kai's default chain is bit-identical.
+
+**Better:** honest separation — production `course_audio`/S3 untouched, clip set clearly
+VAD-Lab-only, before/after listenable in place.
+**Simpler:** no new S3 prefix, no new serving route in the learning-app (Kai's domain), no
+auth: the dashboard already ships static lab data the same way.
+**Cheaper (total):** ~186 small mp3s (~5-8MB) of repo weight vs new bucket policy + proxy route
++ cross-repo deploy; zero moving parts at runtime.
+
+**Searched & rejected:**
+- `vad-lab-clean/` S3 prefix behind the existing audio route — the route serves by course_audio
+  id from the private bucket; a prefix needs a new serving path in ssi-learning-app (cross-repo,
+  Kai-owned) — fails Simpler.
+- Re-mastering from raw pre-masters instead of re-rendering — no raws are retained anywhere;
+  physical floor, so clean copies are fresh takes and the UI says so ("listen for the noise
+  floor, not the exact delivery").
+**Search width:** visible-options
+**Decided by:** agent (clean-mastering itself ruled by Tom 2026-07-29)
+
+---
+
+## 2026-07-31 — Popty phase-2 parallel-run door: Funnel + real service key + dropdown entry
+
+watson-1's production-api (:3470) is now a real, selectable popty.app environment:
+Tailscale Funnel `https://watson-1.tail4968cb.ts.net:8443` (public internet), real
+`SUPABASE_SERVICE_KEY` (sb_secret format, from the sentinel credential already on the VM)
+so writes work, and the EnvironmentSwitcher entry renamed "Watson VM" → "SSi Machine
+(Cloud)". Camberley entry and default untouched — nothing changes for anyone who doesn't
+pick the new entry. One-writer guard: the scheduler belt (`AUDIT_ARCHIVE_CRON=off` pinned
+in the systemd unit) stays on; only the credential belt is deliberately removed, which is
+what "selectable environment with working writes" means. Write path verified with a
+metadata write+revert on a stopped February `build_jobs` row.
+
+**Better:** Aran gets a working cloud environment today; user-triggered writes work while
+background jobs stay Camberley-only.
+**Simpler:** Funnel was already enabled (no ngrok, no new tunnel identity); the service key
+already existed on the VM (`~/.ssi-sentinel.env`) — zero new secrets moved between machines.
+**Cheaper (total):** €0 marginal, no ngrok dependency for the VM door, one label edit on
+the frontend.
+
+**Searched & rejected:**
+- ngrok-on-VM fallback — unnecessary (Funnel already live) and the reserved domain
+  `ssi-machine.ngrok.app` is held by Camberley; starting it on the VM would steal the
+  domain and cut everyone over — the opposite of parallel-run.
+- Vault pull via `.env.psql` — no `.env.psql` on watson-1; the sentinel key is the same
+  secret with zero provisioning steps.
+**Search width:** visible-options
+**Decided by:** agent (phase-2 step founder-approved)
+
+---
+
+## 2026-08-01 — Org/workplace pricing line added to canonical PRICING.md
+
+**Move:** added the new orgs/workplaces product line — £15/seat/month or £150/seat/year,
+standard pricing with no volume scaling, card upfront via Paddle, seats reset monthly,
+cancel anytime, 30-day free trial covering all languages, seat model the same as for
+teachers in schools, in-place trial upgrade available at any time — to `docs/PRICING.md`,
+which stays the single canonical price list (founder ruling, 2026-07-29).
+**Better:** the new product line is documented where every other price already lives, so
+billing/product code has one place to trace prices back to.
+**Simpler:** extended the existing table + added one section in the existing doc's own
+style, no new file.
+**Cheaper (total):** zero — pure documentation, no new source of truth to maintain.
+**Searched & rejected:** n/a — founder-specced figures, documentation-only task.
+**Search width:** visible-options
+**Decided by:** Tom (founder ruling, 2026-08-01)
+
+## 2026-08-03 — APML definition corrected: no "Adaptive Pedagogy", no fabricated gate philosophy
+
+**Move:** the 2026-07-29 rename (`5de3cb55`) got the acronym half right (AI Projects Markup
+Language) but invented an alt-reading ("Agent Protocol Markup Language") and a philosophy
+paragraph ("the course is data plus gates, not code plus opinions…") that Tom never said.
+Separately, `ssi-learning-app/apml/{design,core,schools}/*.apml` carried a wholly different
+fabrication ("Adaptive Pedagogy Markup Language") in their header comments. Replaced the "what
+APML is" section in `tools/explainer/rulings/docs/apml.md` (source of the compiled
+`/stocktake/apml` and How & Why "APML — the lineage" pages) with Tom's own 2026-08-03 words:
+AI Projects Markup Language, a way for agents to stay locked in to intent, originally compiled
+to JavaScript, now largely superseded by models writing code directly from APML/YAML, still
+good for capturing intent. Recompiled `src/explainer/pack.json` from the corrected source.
+Fixed the three ssi-learning-app header comments to match.
+**Better:** the dashboard states the founder's actual definition instead of a worker's
+invention; no more fabricated claims about "machine gates" enforcing course shape.
+**Simpler:** single-paragraph correction at the one hand-maintained source file; the compiled
+pack and rendered pages follow automatically via the existing compile step.
+**Cheaper (total):** zero new surface — same drift-gated compile pipeline, corrected input.
+**Searched & rejected:** n/a — factual correction of founder-flagged fabrication.
+**Search width:** visible-options
+**Decided by:** Tom (founder correction, 2026-08-03)

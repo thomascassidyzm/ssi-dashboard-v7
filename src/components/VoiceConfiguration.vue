@@ -99,8 +99,14 @@
             <button @click="expandedRole = null" class="close-btn">x</button>
           </div>
 
-          <!-- Provider Toggle -->
+          <!-- Provider Toggle (xAI first — preferred default for supported languages) -->
           <div class="provider-toggle">
+            <button
+              :class="['provider-btn', { active: selectedProvider === 'xai' }]"
+              @click="selectedProvider = 'xai'; discoverVoices(role.id, 'xai')"
+            >
+              xAI
+            </button>
             <button
               :class="['provider-btn', { active: selectedProvider === 'azure' }]"
               @click="selectedProvider = 'azure'; discoverVoices(role.id, 'azure')"
@@ -112,12 +118,6 @@
               @click="selectedProvider = 'elevenlabs'"
             >
               ElevenLabs
-            </button>
-            <button
-              :class="['provider-btn', { active: selectedProvider === 'xai' }]"
-              @click="selectedProvider = 'xai'; discoverVoices(role.id, 'xai')"
-            >
-              xAI
             </button>
           </div>
 
@@ -383,8 +383,9 @@ const config = ref(null)
 const expandedRole = ref(null)
 const saveStatus = ref(null)
 
-// Voice browser state
-const selectedProvider = ref('azure')
+// Voice browser state. Default to xAI (set per-role on expand via
+// defaultProviderForRole — xAI for the languages it officially supports).
+const selectedProvider = ref('xai')
 const discovering = ref(false)
 const discoveredVoices = ref([])
 const genderFilter = ref('all')
@@ -701,6 +702,15 @@ function getLanguageForRole(roleId) {
   return role.lang === 'target' ? target : parts[1]
 }
 
+// xAI's 5 voices are multilingual and are the preferred default for the
+// languages xAI officially supports. 3-letter codes mapped from xAI's BCP-47
+// official list (en, es, fr, de, it, pt, nl, ru, zh, ja, ko, vi, hi, bn, ar,
+// tr, pl). For unsupported languages we fall back to Azure as the default.
+const XAI_SUPPORTED_LANGS = new Set(['eng','spa','fra','deu','ita','por','nld','rus','zho','cmn','jpn','kor','vie','hin','ben','ara','tur','pol'])
+function defaultProviderForRole(roleId) {
+  return XAI_SUPPORTED_LANGS.has(getLanguageForRole(roleId)) ? 'xai' : 'azure'
+}
+
 function getPhrasesForRole(roleId) {
   const role = roles.find(r => r.id === roleId)
   const side = role?.lang === 'target' ? 'target' : 'known'
@@ -767,8 +777,11 @@ function expandRole(roleId) {
   localeFilter.value = 'all'
   searchQuery.value = ''
   discoveredVoices.value = []
-  if (selectedProvider.value === 'azure') {
-    discoverVoices(roleId)
+  // Default to xAI for languages it supports (Tom's new default), else Azure,
+  // and auto-load that provider's voices so they're the first ones shown.
+  selectedProvider.value = defaultProviderForRole(roleId)
+  if (selectedProvider.value !== 'elevenlabs') {
+    discoverVoices(roleId, selectedProvider.value)
   }
 }
 

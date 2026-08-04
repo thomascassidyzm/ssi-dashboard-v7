@@ -73,7 +73,7 @@
               </div>
               <div class="card-body">
                 <h2 class="card-title">How &amp; Why</h2>
-                <p class="card-description">How this place works, written for what you do here — and the rulings behind it: pedagogy, pod thinking, the why of APML.</p>
+                <p class="card-description">How this place works, written for what you do here — and the rulings behind it: pedagogy, pod thinking, schema truth, the APML lineage.</p>
               </div>
               <div class="card-footer">
                 <span class="card-action">Open How &amp; Why</span>

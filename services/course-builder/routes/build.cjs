@@ -599,7 +599,7 @@ module.exports = function (ctx) {
       const dryRun = req.body?.dryRun === true;
 
       if (!dryRun) {
-        const claudeCmd = withJobDone(`cd "${projectDir}" && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
+        const claudeCmd = withJobDone(`cd "${projectDir}" && unset ANTHROPIC_API_KEY && unset CLAUDECODE && CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 claude --model opus --dangerously-skip-permissions "$(cat ${tmpFile})"`, jobId);
         spawnInTerminal(ctx, claudeCmd, 'Build Team', courseCode, effectiveTerminal);
 
         try {

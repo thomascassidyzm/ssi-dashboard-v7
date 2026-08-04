@@ -100,6 +100,16 @@ const cards = [
     glow: 'rgba(16, 185, 129, 0.15)',
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="13" y2="13"/></svg>',
   },
+  {
+    title: 'VAD Lab',
+    to: '/admin/configs/vad',
+    badge: 'prosody',
+    description: 'The prosody invariance study made audible — a curated listening tour, every pair browsable with energy-contour overlays, and the honest read on what the metric can and cannot do.',
+    action: 'Open VAD Lab',
+    accent: '#f59e0b',
+    glow: 'rgba(245, 158, 11, 0.15)',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h3l2-7 4 14 3-10 2 3h6"/></svg>',
+  },
 ]
 </script>
 

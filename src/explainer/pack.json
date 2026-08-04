@@ -1,6 +1,6 @@
 {
-  "version": "5a0e1b430bd7",
-  "generatedAt": "2026-07-28",
+  "version": "f222c9ee9159",
+  "generatedAt": "2026-08-03",
   "truth": {
     "navTabs": {
       "primary": [
@@ -301,7 +301,7 @@
       },
       {
         "table": "course_seeds",
-        "refs": 42
+        "refs": 43
       },
       {
         "table": "courses",
@@ -515,11 +515,14 @@
       }
     ],
     "apml": {
-      "what APML is": "APML — Adaptive Pedagogy Markup Language — is the name for the system's declarative approach to\ncourse production: the course is data plus gates, not code plus opinions. A course build is a\nsequence of validated submissions against a specification, so the same methodology produces the\nsame course shape in any language pair, and every constraint the method cares about is enforced\nby a machine gate rather than by a reviewer's memory.",
-      "the directions": "The architectural principles the system is built to honour. Everything is a parameter — no\nmagic numbers. Each component does one thing. Source data is never mutated, only extended. The\nsame operation twice gives the same result. Store the raw truth, compute the derived. Explicit\nbeats implicit — relationships and dependencies stay visible. Errors carry reasons, not just\nstatus. Everything can be queried and inspected. Build complex behaviour from simple composable\nparts. These are fitness functions, not slogans: a change that fights one of them needs a\nbetter story than \"it works\".",
+      "what APML is": "APML — AI Projects Markup Language: a way for agents to stay locked in to intent. It was\noriginally compiled into working JavaScript; that's been largely superseded now that stronger\nmodels can just write code directly from APML in YAML form — but it's still a good way to\ncapture intent (founder's own words, 2026-08-03). The APML files in this repo are kept as\narchitectural lineage, not as a live requirement: they record where the system's thinking came\nfrom.",
+      "the directions": "The architectural principles the system was built to honour — born in the APML era, still the\nfitness functions today. Everything is a parameter — no magic numbers. Each component does one\nthing. Source data is never mutated, only extended. The same operation twice gives the same\nresult. Store the raw truth, compute the derived. Explicit beats implicit — relationships and\ndependencies stay visible. Errors carry reasons, not just status. Everything can be queried\nand inspected. Build complex behaviour from simple composable parts. These are fitness\nfunctions, not slogans: a change that fights one of them needs a better story than \"it works\".",
       "validate-then-insert": "Every gate runs first and accumulates **all** errors into one list; only if that list is empty\ndoes anything get written. \"Atomic\" here means validate-everything-then-insert-everything, or\ninsert nothing — there is no partial save, and the submitting agent sees every problem at once.\nA rejection is the method protecting the learner, not the tool being difficult. The live gate\nlist, in execution order, is compiled from the validator itself on the Pipeline page.",
       "why hold-out, not rejection, for phrase-level ZUT": "A LEGO-level ZUT collision is the seed's core wiring gone wrong, so the whole seed is rejected.\nA phrase-level collision is one phrase's problem, so only the transgressor is withheld while\nthe seed and every conforming phrase land — ZUT is never a reason to lose a whole seed of work.\nThe held-out phrase comes back with a hint: consolidate to the existing target, or\ndifferentiate the known-language prompt so it naturally carries the distinction — with context\nwords, never with parentheses, because the course explains nothing and demonstrates everything.",
       "audio ownership": "Courses own their audio — simple is better. Audio rows carry their text, role and origin\nexplicitly (`tts` is regenerable; `human` is precious and never regenerable), and shared\ncontent like encouragements lives apart from course content. Two standing consequences: TTS\ncosts real money, so audio is only ever minted after an approved audio pass — a content pass\nends by queueing the request, never by running TTS — and some courses are human-voiced by\nruling and never synthesised at all."
+    },
+    "schema": {
+      "current schema is truth, migrations lie": "The live schema snapshot is the single source of truth about the database; migration history\nis a lossy changelog. Proof from this system's own life: `family_members` was live in the\ndatabase from 2026-07-10 with no migration file ever committed — anyone reading the migrations\npile would have sworn the table didn't exist. This is the database twin of the ruling that\nhand-written docs are stale caches: a pile of past intentions is not a description of the\npresent, and the only honest way to describe the present is to dump it. So wherever Popty\nshows schema, it renders from a live dump of the running database — never from migration\nfiles, and never from prose that remembers what the schema used to be. The code-reference scan\n(the tables the code actually touches) rides alongside as a cross-check, not as the truth: a\ntable can be real and unreferenced, exactly as `family_members` was."
     }
   },
   "explanations": {
@@ -527,8 +530,8 @@
       "home": "Popty is where courses get made — everything a learner ever hears starts here and flows\nthrough Supabase to the learning app. Three doors at the top: **Courses** is the library, the\ncanonical browsers (**Seeds**, **Content**, **Pods**) and every working surface inside a\ncourse; **How & Why** is the app explaining itself — the how-to for what you do here plus the\nfounder's rulings; and **Admin** is the platform room — the whole estate at a glance.",
       "courses": "Each course card opens on its Overview hub — one door per course, with every working surface\nas a card inside: text generation, audio, recording, QA. Course content lives in the database,\nnot in files; what you see here is what learners get. Text edits never mint audio by\nthemselves — a content pass ends by queueing an audio-pass request, and audio is only ever\ngenerated after an approved pass, because every minted clip costs real money.",
       "admin": "The Admin section is the platform-wide view. **Configs** holds per-course voice and listening\nsetup — a course without voice config cannot make audio. **Insights** is the measurement room.\n**Activity** shows the builds and jobs actually running right now; a course that should be\nmoving and isn't shows up here first. **Maintenance** is the health sweep — the badge counts\ndays since the last audit, so a growing number is the system telling you it hasn't been\nchecked. **Users** is where access lives: admins see everything, editors are scoped to their\ngranted courses, recorders only ever see the Record Room. **Stock-take** is the compiled\nreference — step in when you want to take stock of the system's current state.",
-      "how": "The app teaches itself — that replaced the old docs-and-manuals shelf. **How & Why** is one\nsurface: the how-to, written for what the signed-in person actually does, and the founder's\nrulings — **Pedagogy**, **Pod Thinking**, the why of APML. Nothing there restates system\nstate, so it doesn't rot.",
-      "stocktake": "The **Stock-take** room is where the facts that can rot live as compiled renders: the\n**Pipeline** shape, the **Glossary** of shared terms, the **APML** current state. They are\nderived from the code and drift-gated, so they cannot go stale. The **Update docs** button\nre-reads live state — course list, audio-pass queue, database counts — from the production\nmachine on demand; facts derived from code refresh when a commit deploys."
+      "how": "The app teaches itself — that replaced the old docs-and-manuals shelf. **How & Why** is one\nsurface: the how-to, written for what the signed-in person actually does, and the founder's\nrulings — **Pedagogy**, **Pod Thinking**, schema truth, the APML lineage. Nothing there\nrestates system state, so it doesn't rot.",
+      "stocktake": "The **Stock-take** room is where the facts that can rot live as compiled renders: the\n**Pipeline** shape, the **Glossary** of shared terms, the **APML** current state. They are\nderived from the code and drift-gated, so they cannot go stale. Schema is the one fact even\nthe code can't vouch for — current schema is truth, migrations lie — so the Pipeline page\nrenders it from a live dump of the running database. The **Update docs** button re-reads live\nstate — course list, audio-pass queue, database counts, the schema dump — from the production\nmachine on demand; facts derived from code refresh when a commit deploys."
     },
     "editor": {
       "home": "Popty is where your courses get made. Two doors matter for you: **Courses** — your library,\nscoped to the courses you've been granted — and **How & Why**, where the app explains itself.\nEverything you edit here is live content: what the database holds is exactly what learners\nhear.",
@@ -1131,7 +1134,7 @@
         "phrases": 3890
       }
     },
-    "note": null,
-    "generatedAt": "2026-07-28"
+    "note": "scripts/vocab-gate/audit-results.json absent on this machine — snapshot carried over from the previous pack (98 courses)",
+    "generatedAt": "2026-08-03"
   }
 }

@@ -1,6 +1,6 @@
 # Popty explanation pack — compiled render
 
-**Version `5a0e1b430bd7` · generated 2026-07-28 by `tools/explainer/compile.mjs`. DO NOT EDIT — edit the rulings/rules and recompile.**
+**Version `f222c9ee9159` · generated 2026-08-03 by `tools/explainer/compile.mjs`. DO NOT EDIT — edit the rulings/rules and recompile.**
 
 Truth: roles admin/editor/recorder · workflow "Phase 1 → 3 → 8 → 9" · 14 gates · max LEGO syllables 8 · human-voice: cym_n_for_eng, cym_s_for_eng, bre_for_fra + cym_* prefix · 9 pair contracts · snapshot: 98 courses.
 
@@ -37,15 +37,17 @@ reference — step in when you want to take stock of the system's current state.
 
 The app teaches itself — that replaced the old docs-and-manuals shelf. **How & Why** is one
 surface: the how-to, written for what the signed-in person actually does, and the founder's
-rulings — **Pedagogy**, **Pod Thinking**, the why of APML. Nothing there restates system
-state, so it doesn't rot.
+rulings — **Pedagogy**, **Pod Thinking**, schema truth, the APML lineage. Nothing there
+restates system state, so it doesn't rot.
 
 ### stocktake
 
 The **Stock-take** room is where the facts that can rot live as compiled renders: the
 **Pipeline** shape, the **Glossary** of shared terms, the **APML** current state. They are
-derived from the code and drift-gated, so they cannot go stale. The **Update docs** button
-re-reads live state — course list, audio-pass queue, database counts — from the production
+derived from the code and drift-gated, so they cannot go stale. Schema is the one fact even
+the code can't vouch for — current schema is truth, migrations lie — so the Pipeline page
+renders it from a live dump of the running database. The **Update docs** button re-reads live
+state — course list, audio-pass queue, database counts, the schema dump — from the production
 machine on demand; facts derived from code refresh when a commit deploys.
 
 ## editor

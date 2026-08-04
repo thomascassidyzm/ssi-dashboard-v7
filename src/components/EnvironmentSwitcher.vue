@@ -10,6 +10,7 @@
         <option value="tom">Tom's Machine</option>
         <option value="kai">Kai's Machine</option>
         <option value="ssi">SSi Machine</option>
+        <option value="watson">SSi Machine (Cloud)</option>
         <option value="api">API Server</option>
       </select>
       <div class="select-arrow">
@@ -56,6 +57,11 @@ const ENVIRONMENTS = {
     name: "SSi Machine",
     url: 'https://ssi-machine.ngrok.app',
     machineProfile: 'kai'  // Similar specs to Kai's machine (8GB RAM)
+  },
+  watson: {
+    name: 'SSi Machine (Cloud)',
+    url: 'https://watson-1.tail4968cb.ts.net:8443',  // Tailscale Funnel → production-api :3470 on watson-1
+    machineProfile: 'default'  // watson-1 has 15GB RAM — matches the 16GB 'default' profile
   },
   api: {
     name: 'API Server',

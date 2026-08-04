@@ -58,6 +58,9 @@ item; if it needs detail, **link a doc** (the plans under `docs/`, e.g. `docs/co
 
 - [x] @claude-explainer-v15 07-27 **Popty explainer v1.5 — Docs hub folded into compiled renders (PhaseIntelligence/ProcessOverview/TerminologyGlossary/APMLSpec deleted → pack-rendered pages; glossary+APML rulings sources drift-gated) + admin 'Update docs' button (production-api `/api/explainer/refresh|pack`, live Supabase snapshot) + CI drift-gate workflow.** → `docs/self-explaining-popty.md` §6–7
 - [x] @claude-rulings-howto 07-28 **Docs section dies → 'Rulings + How-to' IA (founder ruling 07-28): primary nav Courses / How & Why / Admin; /how = one surface (persona how-to + rulings incl. why-of-APML); compiled reference demotes to admin /stocktake; Seeds/Content/Pods re-home at /canonical/* under Courses; full /docs/* redirects; DOCS_SURFACE gate adapted in lockstep.** → `docs/self-explaining-popty.md` §9
+- [x] @claude-vadlab-v2 07-29 **VAD Lab v2 (founder-commissioned): live contour view w/ playhead + syllable ticks; record-yourself flow (Safari/iOS) w/ tagged calibration corpus (S3 via /api/vad-recordings, chunked); experimental normalised pitch-shape track; remove human-v-TTS tempo framing (founder ruling); utterance-unit constraint into the doc. JS/python extractor parity verified; e2e chromium 3/3 (fake-mic record flow) + webkit 2/2.** → `docs/course-optimization/prosody-lab-poc.md`
+
+- [~] @claude-vadlab-breadth 07-29 **VAD Lab breadth + clean xAI clips (four founder rulings 07-29): language search/filter in Browse; tour broadened across languages; Record Yourself featured langs = spa/fra/ita/zho (Basque stays available, not default face); lab data re-sampled for real spa/fra/ita/zho breadth; xAI VAD-Lab clips re-mastered without the acompressor hiss (additive clean variant, Kai's pipeline untouched).** → `docs/course-optimization/prosody-lab-poc.md`
 
 ## 🤔 Areas to think through   (open design — link the think-piece)
 

@@ -9,7 +9,7 @@
         </div>
         <h2>Agent Monitor Deprecated</h2>
         <p class="deprecated-message">
-          This feature has been replaced by the <strong>Course Builder</strong> workflow in APML v14.
+          This feature has been replaced by the <strong>Course Builder</strong> workflow.
         </p>
 
         <div class="info-box">

@@ -141,15 +141,22 @@ if (existsSync(auditPath)) {
   }
   if (!Object.keys(vocabGate).length) failures.push('DERIVE: audit-results.json parsed to zero courses')
 } else {
-  snapshotNote = 'scripts/vocab-gate/audit-results.json absent on this machine — snapshot carried over is empty'
+  // Absent on this machine (gitignored workspace) — carry the previous pack's
+  // snapshot forward rather than shipping an empty one over real data.
+  try {
+    vocabGate = JSON.parse(readFileSync(join(ROOT, 'src/explainer/pack.json'), 'utf8')).snapshot?.vocabGate ?? {}
+  } catch { /* first compile — nothing to carry */ }
+  snapshotNote = `scripts/vocab-gate/audit-results.json absent on this machine — snapshot carried over from the previous pack (${Object.keys(vocabGate).length} courses)`
   warnings.push(snapshotNote)
 }
 
-// 1h. Supabase tables the code actually touches — the schema truth the Docs
-// surface renders. Derived by scanning services/ + src/ for .from('table')
-// calls, so a renamed or retired table drops out of the docs on the next
-// compile instead of rotting in hand-written prose. (supabase/schema.sql is a
-// per-machine snapshot, not in git — code references are the CI-safe truth.)
+// 1h. Supabase tables the code actually touches — the CROSS-CHECK, not the
+// schema truth. Ruling (founder, 2026-07-29): current schema is truth,
+// migrations lie — schema renders from a live dump of the running database
+// (the --live path below), never from migration history. This scan of
+// services/ + src/ for .from('table') calls rides alongside it: a renamed or
+// retired table drops out on the next compile, and a live table nothing
+// references (family_members, 2026-07-10) shows up as exactly that.
 const tableRefs = new Map() // table → Set of referencing files
 const scanForTables = (dir) => {
   for (const name of readdirSync(join(ROOT, dir))) {
@@ -255,6 +262,11 @@ const glossary = Object.entries(parseSections(glossarySrc)).map(([term, raw]) =>
 if (glossary.length < 8) failures.push(`RULINGS: docs/glossary.md parsed only ${glossary.length} terms`)
 const apmlDoc = parseSections(readFileSync(join(HERE, 'rulings', 'docs', 'apml.md'), 'utf8'))
 if (!Object.keys(apmlDoc).length) failures.push('RULINGS: docs/apml.md has no sections')
+// The schema-truth ruling (founder, 2026-07-29): "current schema is truth,
+// migrations lie." Rendered in the Rulings layer and quoted wherever schema
+// shows on the Stock-take surface.
+const schemaDoc = parseSections(readFileSync(join(HERE, 'rulings', 'docs', 'schema.md'), 'utf8'))
+if (!Object.keys(schemaDoc).length) failures.push('RULINGS: docs/schema.md has no sections')
 
 // ─── 3. VALIDATE — the drift gate ───────────────────────────────────────────
 
@@ -404,6 +416,7 @@ const docs = {
   surface: DOCS_SURFACE,
   glossary,
   apml: apmlDoc,
+  schema: schemaDoc,
 }
 const appExplanations = Object.fromEntries(APP_PERSONAS.map((p) => [p, explanations[p]]))
 const snapshot = { vocabGate, note: snapshotNote, generatedAt: new Date().toISOString().slice(0, 10) }
@@ -434,6 +447,35 @@ if (LIVE) {
     rowCounts: Object.fromEntries(await Promise.all(
       ['course_seeds', 'course_legos', 'course_practice_phrases', 'course_audio'].map(async (t) => [t, await count(t)])
     )),
+  }
+
+  // Live schema dump — the schema truth itself (ruling 2026-07-29: current
+  // schema is truth, migrations lie). Straight from information_schema over
+  // the direct connection (.env.psql, secret zero), because PostgREST can't
+  // see it. Absence of .env.psql degrades honestly: the pack says the dump
+  // is missing rather than substituting code references for the truth.
+  try {
+    const psqlEnv = readFileSync(join(ROOT, '.env.psql'), 'utf8')
+    const dbUrl = (psqlEnv.match(/postgresql:\/\/[^\s"']+/) || [])[0]
+    if (!dbUrl) throw new Error('no DATABASE_URL in .env.psql')
+    const { Client } = requireCjs('pg')
+    const pgc = new Client({ connectionString: dbUrl })
+    await pgc.connect()
+    try {
+      const tables = (await pgc.query(
+        `SELECT table_name FROM information_schema.tables
+         WHERE table_schema = 'public' AND table_type = 'BASE TABLE' ORDER BY table_name`
+      )).rows.map((r) => r.table_name)
+      const matviews = (await pgc.query(
+        `SELECT matviewname FROM pg_matviews WHERE schemaname = 'public' ORDER BY matviewname`
+      )).rows.map((r) => r.matviewname)
+      snapshot.live.schema = { tables, matviews, dumpedAt: new Date().toISOString() }
+    } finally {
+      await pgc.end()
+    }
+  } catch (e) {
+    snapshot.live.schemaNote = `live schema dump unavailable (${e.message}) — schema truth needs .env.psql on this machine`
+    console.log(`  ⚠ ${snapshot.live.schemaNote}`)
   }
 }
 

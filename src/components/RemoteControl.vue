@@ -78,32 +78,32 @@
         </ul>
       </div>
 
-      <div class="rc-section">
+      <div v-if="health" class="rc-section">
+        <!-- GUI-app killing only means something on a desktop Mac. -->
         <button
+          v-if="isMac"
           class="rc-btn-wide"
           :disabled="busy.__killapps"
           @click="killApps"
           title="Kill Chrome + iTerm2 to free RAM on the remote machine"
         >{{ busy.__killapps ? 'Killing…' : 'Free RAM (kill Chrome + iTerm)' }}</button>
         <button
-          class="rc-btn-wide rc-btn-restart-all"
+          v-if="showRestartAll"
+          class="rc-btn-wide"
+          :class="{ 'rc-btn-restart-all': isMac }"
           :disabled="busy.__restartall"
           @click="restartAll"
           title="pm2 restart all — restarts every PM2 process on the remote machine"
         >{{ busy.__restartall ? 'Restarting all…' : 'Restart all PM2 services' }}</button>
+        <div v-else class="rc-note">PM2 isn't running on this host — services are managed by systemd.</div>
       </div>
 
-      <div v-if="health?.reboot_readiness" class="rc-section rc-readiness">
+      <div v-if="readinessChecks.length" class="rc-section rc-readiness">
         <div class="rc-section-head"><span>Boot readiness</span></div>
-        <div class="rc-row">
-          <span class="rc-readiness-dot" :class="{ ok: health.reboot_readiness.pm2_launch_agent.exists }"></span>
-          <span class="rc-readiness-label">PM2 launch agent</span>
-          <span class="rc-meta">{{ health.reboot_readiness.pm2_launch_agent.exists ? 'installed' : 'missing' }}</span>
-        </div>
-        <div class="rc-row">
-          <span class="rc-readiness-dot" :class="{ ok: health.reboot_readiness.pm2_dump.exists }"></span>
-          <span class="rc-readiness-label">PM2 saved state</span>
-          <span class="rc-meta">{{ health.reboot_readiness.pm2_dump.exists ? formatAge(health.reboot_readiness.pm2_dump.age_seconds) : 'missing' }}</span>
+        <div v-for="c in readinessChecks" :key="c.key" class="rc-row">
+          <span class="rc-readiness-dot" :class="{ ok: c.ok }"></span>
+          <span class="rc-readiness-label">{{ c.label }}</span>
+          <span class="rc-meta">{{ c.age_seconds != null ? formatAge(c.age_seconds) : c.detail }}</span>
         </div>
         <div v-if="!health.reboot_readiness.ready" class="rc-fix">
           <div class="rc-fix-label">One-time fix, run on target machine:</div>
@@ -116,9 +116,10 @@
           class="rc-btn rc-btn-danger"
           :disabled="busy.__reboot || !canReboot"
           @click="rebootMachine"
-          :title="canReboot ? 'Reboot the whole machine' : 'Blocked: PM2 would not auto-resurrect after reboot'"
+          :title="canReboot ? 'Reboot the whole machine' : rebootBlockedReason"
         >{{ busy.__reboot ? 'Rebooting…' : (canReboot ? 'Reboot machine' : 'Reboot blocked') }}</button>
       </div>
+      <div v-if="health && !canReboot" class="rc-note rc-note-reason">{{ rebootBlockedReason }}</div>
 
       <div v-if="lastMessage" class="rc-message" :class="{ error: lastIsError }">
         {{ lastMessage }}
@@ -166,7 +167,42 @@ const sortedProcs = computed(() => {
   return [...health.value.pm2].sort((a, b) => (b.mem_bytes || 0) - (a.mem_bytes || 0))
 })
 
-const canReboot = computed(() => health.value?.reboot_readiness?.ready === true)
+// Platform awareness. The health endpoint has always reported os.platform();
+// the panel used to ignore it and render Mac-only affordances everywhere.
+const isMac = computed(() => health.value?.platform === 'darwin')
+const hasPm2 = computed(() => (health.value?.pm2?.length ?? 0) > 0)
+// Camberley keeps the restart-all button unconditionally; a Linux host with no
+// PM2 at all gets an honest note instead of a button that can only fail.
+const showRestartAll = computed(() => isMac.value || hasPm2.value)
+
+// Readiness rows come from the backend's platform-specific checks (PM2
+// launchd + dump on macOS; systemd user unit + lingering on Linux). A host
+// still running the pre-checks[] API falls back to the legacy two rows, so
+// the panel never goes blank while a machine catches up.
+const readinessChecks = computed(() => {
+  const r = health.value?.reboot_readiness
+  if (!r) return []
+  if (r.checks) return r.checks
+  return [
+    { key: 'pm2_launch_agent', label: 'PM2 launch agent', ok: !!r.pm2_launch_agent?.exists, detail: r.pm2_launch_agent?.exists ? 'installed' : 'missing' },
+    { key: 'pm2_dump', label: 'PM2 saved state', ok: !!r.pm2_dump?.exists, detail: r.pm2_dump?.exists ? null : 'missing', age_seconds: r.pm2_dump?.exists ? r.pm2_dump.age_seconds : null }
+  ]
+})
+
+// Reboot needs both: services must come back, and this host must actually be
+// rebootable from here (Linux needs passwordless sudo; macOS uses osascript).
+const rebootCapable = computed(() => health.value?.reboot_readiness?.reboot?.capable !== false)
+const canReboot = computed(() =>
+  health.value?.reboot_readiness?.ready === true && rebootCapable.value
+)
+const rebootBlockedReason = computed(() => {
+  const r = health.value?.reboot_readiness
+  if (!r) return 'Reboot unavailable'
+  if (r.reboot?.capable === false) return r.reboot.reason
+  return isMac.value
+    ? 'Blocked: PM2 would not auto-resurrect after reboot'
+    : 'Blocked: services are not configured to start at boot'
+})
 
 function apiBase() {
   return localStorage.getItem('api_base_url') || 'http://localhost:3470'
@@ -440,6 +476,9 @@ onBeforeUnmount(() => {
 .rc-fix { margin-top: 0.4rem; padding: 0.4rem 0.5rem; background: var(--canvas); border-radius: 4px; }
 .rc-fix-label { font-size: 0.65rem; color: var(--muted); margin-bottom: 0.2rem; }
 .rc-fix-cmd { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.65rem; color: #fbbf24; word-break: break-all; user-select: all; }
+
+.rc-note { font-size: 0.7rem; color: var(--muted); line-height: 1.35; }
+.rc-note-reason { margin-top: 0.35rem; }
 
 .rc-loading, .rc-error { font-size: 0.75rem; color: var(--muted); padding: 0.5rem 0; }
 .rc-error { color: #fca5a5; }
