@@ -147,15 +147,40 @@ function decodeVoiceId(storedVoiceId) {
  * the MASTERED artefact, which is what actually lands, and it is the only layer
  * that can see truncation (the boundary has no idea how long the clip should be).
  */
+/**
+ * The options generateWithRetry expects for a given provider. These are NOT
+ * interchangeable: azure wants subscriptionKey + region + voiceName, while
+ * xai/elevenlabs want apiKey + voiceId (see the same branching in
+ * services/phases/phase8-audio-v13.cjs:2037-2055, which is the shape the
+ * pipeline itself uses).
+ *
+ * This tool previously sent the xai shape to every provider — apiKey:
+ * XAI_API_KEY, voiceId, language — so an azure-voiced row died with "Azure
+ * subscription key is required" no matter how well the environment was
+ * provisioned. That misdiagnosed itself as a missing secret: measured
+ * 2026-08-04, AZURE_SPEECH_KEY and AZURE_TTS_KEY were both present and
+ * populated while two eng_for_tel clips on azure_te-IN-ShrutiNeural failed
+ * anyway. It was never an env gap; the key was simply never passed.
+ */
+function ttsOptionsFor(provider, voiceId, language) {
+  if (provider === 'azure') return {
+    subscriptionKey: process.env.AZURE_SPEECH_KEY,
+    region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+    voiceName: voiceId,
+  }
+  if (provider === 'elevenlabs') return {
+    apiKey: process.env.ELEVENLABS_API_KEY,
+    voiceId,
+  }
+  return { apiKey: process.env.XAI_API_KEY, voiceId, language: toBcp47(language) }
+}
+
 async function renderVerified(row, tmpDir, expectedMs) {
   const { provider, voiceId } = decodeVoiceId(row.voice_id)
   let last = null
   for (let attempt = 1; attempt <= ATTEMPTS; attempt++) {
-    const { audioBuffer } = await ttsService.generateWithRetry(row.text, provider, {
-      apiKey: process.env.XAI_API_KEY,
-      voiceId,
-      language: toBcp47(row.language),
-    })
+    const { audioBuffer } = await ttsService.generateWithRetry(
+      row.text, provider, ttsOptionsFor(provider, voiceId, row.language))
     const { buffer, durationMs } = await p8.masterAudio(audioBuffer, row.text)
 
     const probe = path.join(tmpDir, `verify-${row.id}-${attempt}.mp3`)
