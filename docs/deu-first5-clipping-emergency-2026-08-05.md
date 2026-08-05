@@ -91,14 +91,39 @@ masterAudio: tail flag (burst -3.4dB at 1.826s) is resumed speech — pausey ren
 masterAudio: tail flag (resurgence -2.5dB at 3.058s) is resumed speech — pausey render shipped untouched
 ```
 
-**218 of 383 clips (57 %) in the first five seeds carry the exact 100 ms pad fingerprint**, so the
-repair ran on more than half of them. It only destroys a word when the trim point lands before one,
-which is why the damage rate is ~18 % of multi-word clips rather than 57 %.
+**Correction, 2026-08-05, after a second measurement — do not use the 100 ms fingerprint as a
+per-clip damage test.** I originally wrote that 218 of 383 clips carry the exact 100 ms pad
+signature "so the repair ran on more than half of them". The count is right and the spike is real —
+the trailing-room histogram is sharply peaked at 100 ms (136 clips, against 45 at 95 ms, 37 at
+105 ms and 11 at 90 ms), so it is a genuine artefact of a pad step and not a smooth distribution.
+But it does **not** identify which clips lost words. Final-word-missing rate on texts of three words
+or more: **19.7 % inside the fingerprint (n=122) vs 17.2 % outside it (n=93)** — no useful
+discrimination. The fingerprint tells you a clip went through the pad; it does not tell you the trim
+ate anything. Every damaged clip in this report was identified by ASR word retention and confirmed
+by re-render, never by the fingerprint.
 
 The existing guards do not stop it. `AMPUTATION_MIN_KEEP_FRACTION` (0.5) only blocks a trim that
 throws away more than half the clip; eating the final word of a six-word phrase keeps well over
 half. The silence guard only fires if the result is silent. `verifyTrimKeepsText` is the check that
 would catch it, and it returns `null` → proceed whenever whisper is unavailable.
+
+**And whisper WAS unavailable, for a mundane reason — this is why the last guard was dead.**
+`whisper-cli` lives in `~/.local/bin` on this box, which was not on the PATH the render process
+inherited. So the trim-safety check returned `null` = "could not verify", and the code treated that
+as permission to proceed. Proven two ways by the root-cause investigation: the 2026-08-04 German
+repair run says *"whisper-cli or model missing"* in its own log, and an A/B of the pre-fix code on a
+single clip returns `null` without `~/.local/bin` on PATH and `{ok:false}` — i.e. it *would* have
+held the clip — with it. **That run trimmed 449 German clips**, 20 of which are still linked into
+seeds 1–5. It is the same failure class as the ffmpeg and lame PATH bugs already documented at the
+top of `audio-processor.cjs`: the binary was present and working, and the process simply could not
+see it.
+
+Production stopped doing this at **2026-08-05 15:40:03 Z**, when the render service restarted with
+`TAIL_REPAIR_MODE=flag`. Everything Tom heard was rendered before that.
+
+**The capability has since been deleted outright** (Tom's escalation, 2026-08-05 21:06 Z, commit
+`8415f2d9`): `repairTailDefect`, `verifyTrimKeepsText`, the `TAIL_REPAIR_MODE` switch and
+`tools/declick-tail.cjs` are gone, replaced by a read-only `flagTailDefect`. See §8.
 
 ## 5. Why unchecked audio reached production
 
@@ -204,12 +229,21 @@ already exist and nothing populates them. Once a clip carries its own verdict, "
 unchecked?" becomes a query instead of an archaeology exercise, and no future audit has to infer
 status from age.
 
-**The default.** `TAIL_REPAIR_MODE` still defaults to `repair`. The systemd units override it, so
-production is safe, but anything run outside those units — a tool, a script, a fresh checkout — gets
-the damaging behaviour. The memo `docs/audio-tail-gate-decision-memo-2026-08-04.md` measured the
-detector's precision by ear at 7/76 = 9 %. On that number the trim is doing far more harm than good
-and `flag` should be the default in code, not just in the unit files. That is Tom's call and it is
-still open.
+**The default — RESOLVED, and then superseded.** Flipping the code default to `flag` landed as
+`c6703b2d`. Tom then escalated (21:06 Z): *"DELETE the tail-repair service's ability to modify audio
+entirely, do not just change its default."* Done in `8415f2d9` — `repairTailDefect`,
+`verifyTrimKeepsText`, the `TAIL_REPAIR_MODE` switch and `tools/declick-tail.cjs` are removed;
+detection survives only as read-only `flagTailDefect`, which carries its 9 % precision in every
+result. `tools/verify-tail-repair-mode.cjs` is now a regression guard that sets
+`TAIL_REPAIR_MODE=repair` deliberately and fails if anything still honours it.
+
+**Why a default flip was not enough.** Six copies of `audio-processor.cjs` exist on this host, and
+**two carried the mutation path with no switch at all** — `~/ssi-worktrees/audio-followup-2026-08-04`
+(an *audio* worktree) and `~/SSi/wt-walkthrough`. Anything run from those amputates unconditionally,
+which is the most likely mechanism for the recurrence. An env var that must be set correctly in
+every unit file, tool, cron and checkout is a default waiting to leak. Those are other agents'
+branches; they inherit the deletion when they rebase on `main`, and until then they are live
+landmines — reported here rather than silently left.
 
 ---
 
