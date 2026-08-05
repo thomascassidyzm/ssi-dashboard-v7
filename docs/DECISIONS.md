@@ -560,3 +560,56 @@ in so it still repairs. Flag mode returns `action:'held'`, which every call site
 "shipped untouched".
 **Search width:** visible-options
 **Decided by:** agent (reversible, no spend; overrulable in one sentence — revert the default)
+
+---
+
+## 2026-08-05 — pad-first tail mode: the pad is a PROBE, not a repair
+
+**Move:** added `TAIL_REPAIR_MODE=pad` as an opt-in third mode in
+`services/audio-processor.cjs` (`padTailProbe`), alongside `flag` (still the default) and
+`repair`. On a detector flag, pad mode writes a padded COPY of the clip into the caller's work dir
+— `apad=pad_dur=0.3` — re-runs `detectTailClick` on it, and reports `padProbe:{padMs, cleared,
+recheck}`. `cleared:true` means the flag was trailing room, not a click. The clip itself is never
+touched: not trimmed, and not extended either. Phase 8's `masterAudio` log now names the verdict,
+and `/health` carries `tail_pad_ms` (null outside pad mode). Nothing changes for anyone who does
+not set the variable.
+
+**Better:** it is the 2026-08-04 memo's proposal 2 ("pad before detecting") built as a mode.
+Appending digital silence cannot create or remove a real click — it only changes how much room
+sits inside `detectTailClick`'s 400 ms analysis window — so a flag that vanishes under padding was
+never about a click. Re-measured tonight with the shipped code over the memo's own 104-clip
+corpus (`/tmp/tailclick-keep2`): 76 flagged bare, **63 cleared by the probe (83%)** — rise 23/24,
+burst 19/24, resurgence 21/28 — zero probe errors, zero clips mutated, zero temp files left. That
+reproduces the memo's table exactly. Against the memo's blind-listening precision of 7/76 = 9%,
+the surviving 13 are the queue worth a human's ears.
+
+**Simpler:** one function and one branch in `repairTailDefect`. It reuses `action:'held'`, which
+every caller already treats as "shipped untouched", so no call site changes and no caller can
+accidentally move a padded file over a good clip — pad mode returns no `outPath` at all.
+
+**Cheaper (total):** one ffmpeg pass per FLAGGED clip (~12% of renders, ~0.2 s each), and only when
+the mode is on. No TTS spend, no re-render, no storage change, and — because the pad stays a probe
+— no duration inflation and no per-clip pacing inconsistency in the player.
+
+**The correction to the brief:** "pad instead of cut" as a *repair* does not exist. Padding fixes
+the DETECTOR, not the clip: it removes no click and restores no clipped word, so shipping the
+padded copy would buy nothing audible while adding 300 ms of trailing silence to the ~12% of clips
+that flag and to no others. Verified on a synthetic clip carrying a real isolated blip: the flag
+SURVIVES the pad (`resurgence -18.5dB`), which is the discrimination we want and also the proof
+that padding does not launder a genuine defect. The real fix for a confirmed click remains a
+re-render (memo proposal 3), never a DSP edit.
+
+**Searched & rejected:** shipping the padded copy when the probe clears (rejected — see above:
+cost with no audible benefit, and inconsistent pacing across a course); padding ≥ 400 ms (rejected
+— the analysis window would be entirely silence and every flag would "vanish" for free, measuring
+nothing; `TAIL_PAD_MS` is clamped to 350); making pad the default (rejected — not asked for, and
+`flag` already guarantees no mutation; pad only sharpens the report); a fourth "pad and ship" knob
+(rejected — a knob nobody has asked for, and the memo's own paired padding test changed 0 of 48
+listening verdicts).
+
+**Explicit gap:** the memo's per-clip blind-listening verdicts lived in browser localStorage and
+were never persisted, so the 9% → 38% precision improvement could NOT be re-derived here. The 83%
+clearance is re-measured first-hand; the precision figure is quoted from the memo, not reverified.
+
+**Search width:** visible-options
+**Decided by:** agent (additive, opt-in, no default change, no spend)
