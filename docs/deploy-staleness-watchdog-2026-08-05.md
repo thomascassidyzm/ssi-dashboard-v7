@@ -87,6 +87,36 @@ assumption outside the Linux branch, and sets a PATH covering Homebrew and
   `age_seconds` — because a "current" verdict from six hours ago means the
   watchdog itself stopped running, which is its own alarm.
 
+## Finding: watson-1 runs services out of TWO checkouts
+
+The brief for this job said the live services run from
+`~/SSi/ssi-dashboard-v7-clean`. The installed systemd units say otherwise:
+
+| Service | Port | Installed `WorkingDirectory` |
+|---|---|---|
+| popty-production-api | 3470 | `ssi-dashboard-v7-clean-**prod**` (clean, on `main`) |
+| popty-phase8-audio | 3465 | `ssi-dashboard-v7-clean-**prod**` (clean, on `main`) |
+| popty-course-builder-api | 3471 | `ssi-dashboard-v7-clean` (the **dev** checkout, dirty, on a feature branch) |
+
+Two consequences shaped the design:
+
+1. `build.root` is part of the health payload and the watchdog **skips any
+   service loaded from a different tree than the one it guards.** Without this,
+   a watchdog installed in `-prod` would see course-builder sitting on
+   `fix/audio-…` and either alert forever or try to restart a service it has no
+   business restarting. State files are keyed by checkout for the same reason.
+2. **Install this watchdog in `-prod`.** That is where the deployable services
+   live.
+
+**For Tom — course-builder-api runs from the dev checkout.** That means the live
+3471 service is running whatever half-finished branch happens to be checked out
+for agent work, which is a deploy-correctness question well beyond this
+watchdog's remit. Not changed here: repointing a live service's working
+directory is a real deploy change, not a watchdog's call. Also noted: the
+committed unit files in `ops/systemd/` say `ssi-dashboard-v7-clean` for
+production-api, while the *installed* unit says `-prod` — the repo copies have
+drifted from what is running.
+
 ## Two taste-safe defaults chosen here, not ruled on by Tom
 
 1. **Dirty tree ⇒ alert only, never stash.** The existing

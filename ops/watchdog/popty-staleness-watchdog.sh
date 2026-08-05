@@ -21,17 +21,24 @@ PATH="/usr/local/bin:/opt/homebrew/bin:$HOME/.npm-global/bin:$HOME/.local/bin:/u
 export PATH
 
 LOG=${POPTY_WATCHDOG_LOG:-/tmp/popty-watchdog.log}
-STATE_FILE=${POPTY_STALENESS_STATE:-/tmp/popty-staleness.json}
-ATTEMPT_FILE=/tmp/popty-staleness-attempt
 BRANCH_EXPECTED=${POPTY_DEPLOY_BRANCH:-main}
 
 # Repo root = two levels up from this script, so the checkout can move.
 REPO=$(cd "$(dirname "$0")/../.." && pwd)
 
+# State is keyed by CHECKOUT, because watson-1 runs services out of more than
+# one clone and two watchdogs must not stamp on each other's verdict. The
+# service side derives the same path from its own repo root
+# (services/shared/build-identity.cjs), so they meet without configuration.
+REPO_KEY=$(basename "$REPO")
+STATE_FILE=${POPTY_STALENESS_STATE:-/tmp/popty-staleness-$REPO_KEY.json}
+ATTEMPT_FILE=/tmp/popty-staleness-attempt-$REPO_KEY
+
 log() { echo "$(date) popty-staleness: $*" >> "$LOG"; }
 
-# Services that report a build sha on /health. All three run from this one
-# checkout, so any of them being behind means the checkout is behind.
+# Every Popty service that reports a build sha on /health. Which of these
+# actually belong to THIS checkout is decided below, from what they report —
+# not assumed here.
 SERVICES="popty-production-api:3470 popty-course-builder-api:3471 popty-phase8-audio:3465"
 
 # ── Supervisor detection ─────────────────────────────────────────────────────
@@ -50,8 +57,8 @@ fi
 restart_services() {
   case "$SUPERVISOR" in
     systemd)
-      for entry in $SERVICES; do
-        unit=${entry%%:*}
+      # MY_UNITS only — the units actually loaded from THIS checkout.
+      for unit in $MY_UNITS; do
         systemctl --user restart "$unit" >>"$LOG" 2>&1
       done
       ;;
@@ -83,6 +90,7 @@ write_state() {
     echo "  \"working_tree\": \"$TREE_STATE\","
     echo "  \"supervisor\": \"$SUPERVISOR\","
     echo "  \"running\": {$RUNNING_JSON},"
+    echo "  \"repo\": \"$REPO\","
     echo "  \"host\": \"$(hostname)\","
     echo "  \"checked_at\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\""
     echo '}'
@@ -104,7 +112,12 @@ fi
 REMOTE_SHA=$(git rev-parse "origin/$BRANCH_EXPECTED" 2>/dev/null)
 LOCAL_SHA=$(git rev-parse HEAD 2>/dev/null)
 LOCAL_BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-if [ -n "$(git status --porcelain)" ]; then TREE_STATE=dirty; else TREE_STATE=clean; fi
+# -uno on purpose: only TRACKED modifications block a pull. The production
+# checkout carries an untracked node_modules/, and counting that as "dirty"
+# would disable the auto-restart half of this watchdog permanently, silently —
+# the exact failure shape it exists to prevent. A fast-forward cannot clobber
+# untracked files; if it would collide, git refuses loudly and we alert.
+if [ -n "$(git status --porcelain -uno)" ]; then TREE_STATE=dirty; else TREE_STATE=clean; fi
 
 # ── What are the live processes actually running? ────────────────────────────
 # NOT what is on disk. The disk can be new while the loaded process is old, and
@@ -113,11 +126,25 @@ if [ -n "$(git status --porcelain)" ]; then TREE_STATE=dirty; else TREE_STATE=cl
 RUNNING_JSON=""
 STALE_SERVICES=""
 UNREPORTED=""
+MY_UNITS=""
 for entry in $SERVICES; do
   unit=${entry%%:*}
   port=${entry##*:}
-  sha=$(curl -s --max-time 10 "http://localhost:$port/health" 2>/dev/null \
-        | sed -n 's/.*"commit"[[:space:]]*:[[:space:]]*"\([0-9a-f]*\)".*/\1/p')
+  health=$(curl -s --max-time 10 "http://localhost:$port/health" 2>/dev/null)
+  sha=$(printf '%s' "$health" | sed -n 's/.*"commit"[[:space:]]*:[[:space:]]*"\([0-9a-f]*\)".*/\1/p')
+  root=$(printf '%s' "$health" | sed -n 's/.*"root"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
+
+  # watson-1 runs services out of TWO clones of this repo (production-api and
+  # phase8 from the -prod checkout, course-builder from the dev one). A
+  # watchdog guarding one tree must not judge — or restart — a service loaded
+  # from the other, or it would report permanent false staleness against
+  # whatever branch the dev checkout happens to be sitting on.
+  if [ -n "$root" ] && [ "$root" != "$REPO" ]; then
+    log "skipping $unit — loaded from $root, not $REPO"
+    continue
+  fi
+
+  MY_UNITS="$MY_UNITS $unit"
   [ -n "$RUNNING_JSON" ] && RUNNING_JSON="$RUNNING_JSON, "
   RUNNING_JSON="$RUNNING_JSON\"$unit\": \"$sha\""
   if [ -z "$sha" ]; then

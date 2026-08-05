@@ -1310,7 +1310,12 @@ app.get('/health', (req, res) => {
 // Staleness state, as last written by ops/watchdog/popty-staleness-watchdog.sh.
 // Read-only and cheap by design: this serves a cached file the cron job wrote,
 // it never shells out to git inside a request handler.
-const STALENESS_STATE_FILE = process.env.POPTY_STALENESS_STATE || '/tmp/popty-staleness.json'
+// Keyed by checkout basename — the watchdog script derives the identical path
+// from its own repo root, so the two meet with no shared config. watson-1 runs
+// services from more than one clone; a single fixed path would let one
+// checkout's verdict be served as another's.
+const STALENESS_STATE_FILE = process.env.POPTY_STALENESS_STATE ||
+  `/tmp/popty-staleness-${path.basename(require('./shared/build-identity.cjs').REPO_ROOT)}.json`
 
 app.get('/api/ops/staleness', (req, res) => {
   try {

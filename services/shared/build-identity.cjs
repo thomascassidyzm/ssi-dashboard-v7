@@ -49,6 +49,11 @@ const dirtyAtStart = process.env.POPTY_BUILD_SHA
 const startedAt = new Date().toISOString()
 
 const IDENTITY = Object.freeze({
+  // Which CHECKOUT this process was loaded from. watson-1 runs services out of
+  // more than one clone of this repo, so "is it behind main?" is only
+  // answerable per-checkout — the watchdog uses this to ignore services that
+  // belong to a different tree than the one it is guarding.
+  root: REPO_ROOT,
   commit,
   commitShort: commit ? commit.slice(0, 8) : null,
   branch,
