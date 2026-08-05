@@ -151,3 +151,41 @@ asserted it against `/proc/<pid>/environ` of the process actually doing the work
   fingerprint **failed** as a predictor (45.8% vs 44.0%, p = 1.00), so there is no cheap query for
   it — only acoustic decode. Since nothing can currently repair these roles, measuring them was not
   the best use of a saturated box tonight. Stated as a gap, not an answer.
+
+---
+
+## 6. Addendum, 2026-08-05 03:00 — the French current-state column (worker `ae401eb8`)
+
+Tom's question had a second half this document did not yet answer: not only *is* each type covered,
+but *what state is it in*. Measured live for `fra_for_eng`. German is the sibling worker's column
+and is recorded in `docs/overnight-audio-2026-08-05/deu-status.md`.
+
+The suspect count is the free ms-per-char predictor calibrated in
+`docs/overnight-audio-2026-08-05/fra-audio-repair-record.md` §3 — **high precision, poor recall**.
+A 0 in that column is a good sign, never a clearance.
+
+| audio type | fra clips | truncation-suspect (ms/char < 40) | repairable tonight? | state |
+|---|---:|---:|---|---|
+| `target2` | 13,729 | 1,178 | yes | swept tonight |
+| `known` | 13,486 | 433 | yes | swept tonight; 138 also moved off the wrong voice |
+| `target1` | 15,145 | 45 | yes | swept tonight |
+| `presentation` | 2,173 | **0** | re-voice only, never repair | 10 moved off a character voice onto `eve`; 0 suspects |
+| `pod_explainer` | 1,539 | **169** | **no — refused by every tool** | ⛔ unrepairable, unmeasured |
+| `pod_fine_known` | 2,147 | 0 | no | ⛔ ungated at publish |
+| `pod_take_g` | 807 | 0 | no | ⛔ ungated at publish |
+| `bookend_listen_*` | 2 | 0 | yes | both moved off legacy Azure onto `eve` |
+| `instruction` / `encouragement` / `welcome` | 75 | n/a | n/a | `origin='human'` — never TTS, never at risk |
+
+Two corrections to §5 above, both in French's favour:
+
+1. **`presentation` is not repair-less in every sense.** It cannot be *repaired*
+   (`repair-silent-clips.cjs` deletes first, and that CASCADEs into `lego_introductions`), but it
+   CAN be *re-voiced*, because `revoice-clips.cjs` inverts the order — insert, relink, then delete —
+   and by then the cascade has nothing to cascade to. 10 French presentations were moved tonight on
+   exactly that path. What is still missing is same-voice replace-in-place, and that is a build.
+2. **French introductions in the opening stretch are complete**: seeds 1–30 carry 94 legos, all 94
+   with a `lego_introductions` row and real presentation audio, 0 null durations.
+
+The one number worth Tom's attention: **`pod_explainer`, 169 French truncation suspects that no
+tool is permitted to touch.** Pods are also the one path that bypasses the pre-publish gate. That is
+the largest remaining French hole and closing it is a build, not a sweep — reported, not actioned.
