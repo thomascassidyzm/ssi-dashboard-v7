@@ -33,6 +33,11 @@
  *                       able to show: plays / truncated / MISSING. See
  *                       audio-preview-missing.cjs for why it exists and why the
  *                       column list is the whole point.
+ *   GET /missing-clips → every phrase/LEGO in the COURSE with no audio, in one
+ *                       list, deduplicated to the row a repair would touch.
+ *                       Script Viewer's missing-audio filter only sees the 20
+ *                       LEGOs it has loaded; this sees all of them. See
+ *                       audio-preview-course-gaps.cjs.
  *
  * ── The honesty problem this router has to carry ─────────────────────────────
  * There is NO per-clip veracity verdict anywhere in the database. Verified
@@ -65,6 +70,8 @@ const {
   collectReferencedAudioIds,
   computeMissingSlots,
 } = require('./audio-preview-missing.cjs')
+const { computeCourseGaps } = require('./audio-preview-course-gaps.cjs')
+const learningScriptGenerator = require('./learning-script-generator.cjs')
 
 // Columns the page actually renders. `text` is the thing being checked against
 // the audio, so it leads; the rest is provenance.
@@ -91,6 +98,56 @@ const SENTENCE_COLUMNS = [
 // stop. So page explicitly rather than trusting one request to return the lot.
 const PAGE_ROWS = 1000
 const ID_LOOKUP_BATCH = 200
+
+// Whole-course journey generation is ~7.5s for fra_for_eng (1,529 rounds,
+// 33,368 items, measured on watson-1 2026-08-05), so the missing-clip list is
+// cached briefly per course. Short enough that a fresh render shows up on the
+// next reload, long enough that opening the page twice does not pay twice.
+const COURSE_GAPS_CACHE_TTL = 60_000
+const courseGapsCache = new Map()
+
+/**
+ * Rows with no audio that the journey never plays — so they cannot appear in
+ * the list above, and the list's total must not be mistaken for "every row in
+ * the database with a gap".
+ *
+ * Two causes, both legitimate: a phrase past the per-round BUILD cap is simply
+ * never selected (35 build + 1 use in fra_for_eng on 2026-08-05), and a LEGO
+ * that never gets its own round (is_new false) contributes no intro or debut
+ * (124 in fra_for_eng). Component rows are excluded entirely — the learner
+ * never plays them, so a component with no audio is not a gap.
+ *
+ * Counted, never listed: a person acts on what the learner hears. But the
+ * number is printed, because a difference nobody prints is a difference
+ * somebody later discovers and stops trusting the page over.
+ */
+async function countGapsOutsideJourney (db, courseCode, allItems, rounds) {
+  const playedPhraseIds = new Set(allItems.map(i => i.phrase_id).filter(Boolean))
+  const journeyLegoIds = new Set(rounds.map(r => r.legoId))
+
+  const phraseRows = await fetchAllPages((from, to) => db
+    .from('course_practice_phrases')
+    .select('id')
+    .eq('course_code', courseCode)
+    .in('phrase_role', ['build', 'use'])
+    .or('known_audio_id.is.null,target1_audio_id.is.null')
+    .range(from, to))
+  const phrases = phraseRows.filter(r => !playedPhraseIds.has(r.id)).length
+
+  const legoRows = await fetchAllPages((from, to) => db
+    .from('course_legos')
+    .select('lego_id')
+    .eq('course_code', courseCode)
+    .or('presentation_audio_id.is.null,known_audio_id.is.null,target1_audio_id.is.null')
+    .range(from, to))
+  const legos = legoRows.filter(r => !journeyLegoIds.has(r.lego_id)).length
+
+  return {
+    phrases,
+    legos,
+    note: 'Rows with an audio gap that the learner journey never plays: phrases past the per-round BUILD cap, and LEGOs that never get their own round. Counted here so the list total is not mistaken for a database-wide count; not listed, because there is nothing for a learner to hear.',
+  }
+}
 
 async function fetchAllPages (queryFor) {
   const rows = []
@@ -354,6 +411,61 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
       })
     } catch (err) {
       logger.error(`[AudioPreview] missing: ${err.message}`)
+      res.status(500).json({ error: err.message })
+    }
+  })
+
+  // ── GET /missing-clips ────────────────────────────────────────────────────
+  // Every phrase/LEGO in the course with no audio, in ONE list.
+  //
+  // The Script Viewer's "Missing audio only" toggle can only filter the rounds
+  // currently loaded in its window (20 LEGOs per page), so finding every gap in
+  // a 1,529-round course means paging through it a block at a time. This runs
+  // the SAME test — learning-script-generator's `hasAudio` — over the whole
+  // journey at once, and returns rows deduplicated to the thing a repair would
+  // touch. Read-only like the rest of this router: it generates the journey in
+  // memory from SELECTs and writes nothing.
+  //
+  // No cap: a silently truncated list reads as "there are only N gaps" when
+  // there are more, which is the exact failure this endpoint exists to end.
+  // fra_for_eng returns ~1,600 rows / ~500KB — big for a payload, small for a
+  // number a person is trying to trust.
+  router.get('/missing-clips', async (req, res) => {
+    try {
+      const db = getDb()
+      if (!db) return res.status(503).json({ error: 'Supabase not initialized' })
+
+      const { courseCode } = req.params
+      const cached = courseGapsCache.get(courseCode)
+      if (cached && Date.now() < cached.expiry) return res.json(cached.payload)
+
+      const startedAt = Date.now()
+      // 9999 = the whole course, the same "load all" the journey search
+      // endpoint uses (production-api.cjs learning-journey/search).
+      const { rounds, allItems } = await learningScriptGenerator.generateLearningScript(
+        db, courseCode, 9999, 0
+      )
+      const { totals, groups } = computeCourseGaps({
+        allItems,
+        roundCount: rounds.length,
+      })
+      const outsideJourney = await countGapsOutsideJourney(db, courseCode, allItems, rounds)
+
+      const payload = {
+        courseCode,
+        totals,
+        groups,
+        outsideJourney,
+        computedInMs: Date.now() - startedAt,
+        capped: false,
+        note: 'Same gap test as Script Viewer\'s "Missing audio only" (learning-script-generator hasAudio: presentation+target1 for intros, known+target1 otherwise), run over the whole course instead of one 20-LEGO page. Rows are deduplicated to what a repair would touch; occurrences counts the playback slots each row blocks, review replays included.',
+      }
+      courseGapsCache.set(courseCode, { payload, expiry: Date.now() + COURSE_GAPS_CACHE_TTL })
+
+      logger.info(`[AudioPreview] missing-clips ${courseCode}: ${totals.rows} rows (${totals.blocking} blocking) across ${totals.roundsAffected}/${totals.roundsTotal} rounds in ${payload.computedInMs}ms`)
+      res.json(payload)
+    } catch (err) {
+      logger.error(`[AudioPreview] missing-clips: ${err.message}`)
       res.status(500).json({ error: err.message })
     }
   })

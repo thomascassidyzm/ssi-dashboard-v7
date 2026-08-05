@@ -94,6 +94,18 @@
          the only place a person can ever see them. Sits with the quarantine
          block because both answer the same question: what is wrong that the
          list structurally cannot show me? -->
+    <!-- Every missing clip in the COURSE, in one place. Sits directly above the
+         pod-slot scan because both answer "what is wrong that the clip list
+         structurally cannot show me?" — this one for the learner journey, that
+         one for the pods. Script Viewer can only ever filter the 20 LEGOs it
+         has loaded, so this is the only surface that can state a course-wide
+         total. -->
+    <AudioPreviewCourseGaps
+      :gaps="courseGaps"
+      :loading="courseGapsLoading"
+      :error="courseGapsError"
+    />
+
     <p
       v-if="missingError"
       data-walk="audio-preview-missing-error"
@@ -184,6 +196,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import AudioPreviewClip from './components/AudioPreviewClip.vue'
 import AudioPreviewMissing from './components/AudioPreviewMissing.vue'
+import AudioPreviewCourseGaps from './components/AudioPreviewCourseGaps.vue'
 
 const props = defineProps({
   courseCode: { type: String, default: '' },
@@ -212,6 +225,9 @@ const quarantine = ref([])
 const showQuarantine = ref(false)
 const missing = ref(null)
 const missingError = ref('')
+const courseGaps = ref(null)
+const courseGapsLoading = ref(false)
+const courseGapsError = ref('')
 
 const loading = ref(false)
 const loadingMore = ref(false)
@@ -324,6 +340,37 @@ async function fetchMissing () {
   }
 }
 
+/**
+ * The course-wide missing-clip list. Its own fetch for the same reason the pod
+ * scan is: it is a different question (which phrases/LEGOs have no audio at
+ * all) over a different unit (the learner journey), and it is slow enough
+ * — whole-course journey generation, ~7.5s uncached for fra_for_eng — that
+ * blocking the clip list on it would make the page feel broken.
+ *
+ * As with the pod scan, a failure is shown in the block's own place. A page
+ * that prints nothing because the scan died looks exactly like a course with no
+ * gaps, and "there are no gaps" is precisely the false statement this list
+ * exists to stop being made.
+ */
+async function fetchCourseGaps () {
+  courseGaps.value = null
+  courseGapsError.value = ''
+  if (!activeCourse.value) return
+  courseGapsLoading.value = true
+  try {
+    const resp = await fetch(
+      `${apiUrl}/api/production/${activeCourse.value}/audio-preview/missing-clips`,
+      { headers: apiHeaders() })
+    if (!resp.ok) throw new Error(`missing-clips ${resp.status}`)
+    courseGaps.value = await resp.json()
+  } catch (err) {
+    courseGapsError.value = err.message
+    console.error('[AudioPreview] course-wide missing-clip scan failed', err)
+  } finally {
+    courseGapsLoading.value = false
+  }
+}
+
 async function fetchQuarantine () {
   quarantine.value = []
   if (!activeCourse.value) return
@@ -433,6 +480,7 @@ watch(activeCourse, (code) => {
   fetchClips()
   fetchQuarantine()
   fetchMissing()
+  fetchCourseGaps()
 })
 
 watch(() => props.courseCode, (code) => {
@@ -457,6 +505,7 @@ onMounted(async () => {
     fetchClips()
     fetchQuarantine()
     fetchMissing()
+    fetchCourseGaps()
   }
 })
 </script>
