@@ -197,6 +197,15 @@
           <span class="card-arrow">&rarr;</span>
         </router-link>
 
+        <router-link :to="`/production/${courseCode}/audio-preview`" class="workflow-card">
+          <div class="card-icon audio">P</div>
+          <div class="card-content">
+            <h3>Audio Preview</h3>
+            <p>Listen to rendered clips &mdash; spot-check a random sample</p>
+          </div>
+          <span class="card-arrow">&rarr;</span>
+        </router-link>
+
         <button @click="launchLearningApp" class="workflow-card action">
           <div class="card-icon launch">L</div>
           <div class="card-content">

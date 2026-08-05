@@ -521,6 +521,15 @@ const routes = [
     path: '/production/courses',
     redirect: '/'
   },
+  {
+    // Courseless entry to the listening pass: "a sample of ANY course's audio"
+    // shouldn't require already being inside a course. Renders the course
+    // picker, or jumps straight to the remembered course.
+    path: '/audio-preview',
+    name: 'AudioPreviewEntry',
+    component: () => import('../views/production/AudioPreview.vue'),
+    meta: { title: 'Audio Preview' }
+  },
   // Nested routes under ProductionLayout - keeps layout mounted while switching tabs
   {
     path: '/production/:courseCode',
@@ -645,6 +654,16 @@ const routes = [
         component: () => import('../views/production/QAReview.vue'),
         props: true,
         meta: { title: 'QA Review - Production Suite' }
+      },
+      {
+        // The human listening pass over rendered clips. Read-only; the
+        // courseless entry point is /audio-preview (below), which remembers
+        // the last course and routes on here.
+        path: 'audio-preview',
+        name: 'AudioPreview',
+        component: () => import('../views/production/AudioPreview.vue'),
+        props: true,
+        meta: { title: 'Audio Preview - Production Suite' }
       },
       {
         path: 'pods',
