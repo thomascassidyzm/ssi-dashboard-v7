@@ -23,8 +23,13 @@ const execAsync = promisify(exec);
 // on 2026-07-28 before it was caught. The failure mode is expensive and
 // invisible (the ebur128 probe runs under `|| true`), so pin the usual install
 // locations onto PATH here rather than relying on whoever last restarted pm2.
-for (const dir of ['/opt/homebrew/bin', '/usr/local/bin']) {
-  if (!(process.env.PATH || '').split(':').includes(dir)) {
+// ~/.local/bin is in this list because watson-1 has no usable sudo: ops/install-lame.sh
+// builds lame there, and whisper-cli lives there too. On 2026-08-04 both binaries were
+// present and working while the bare spawns still died with ENOENT, because that
+// directory was not on the PATH the render process inherited — same failure class as
+// the ffmpeg one above, same fix.
+for (const dir of [`${process.env.HOME || ''}/.local/bin`, '/opt/homebrew/bin', '/usr/local/bin']) {
+  if (dir && !(process.env.PATH || '').split(':').includes(dir)) {
     process.env.PATH = `${process.env.PATH || ''}:${dir}`;
   }
 }
@@ -49,9 +54,19 @@ async function checkFfmpegInstalled() {
  * decode (ID3v2 prefix + bogus LAME-extension enc_padding). The real lame binary
  * writes a clean Xing+LAME header CoreAudio trusts.
  */
+// LAME_BIN — mirrors WHISPER_BIN below. ops/install-lame.sh builds lame into
+// ~/.local/bin because watson-1 has no usable sudo, but that directory is not on
+// PATH for every process that renders audio: on 2026-08-04 the binary was present
+// and working while `spawn('lame')` still died with ENOENT, taking the whole
+// render with it. Resolving through one constant means a working install can be
+// pointed at explicitly instead of depending on the caller's environment.
+const LAME_BIN = process.env.LAME_BIN
+  || (fs.existsSync(`${process.env.HOME || ''}/.local/bin/lame`) ? `${process.env.HOME}/.local/bin/lame` : null)
+  || (fs.existsSync('/opt/homebrew/bin/lame') ? '/opt/homebrew/bin/lame' : 'lame');
+
 async function checkLameInstalled() {
   try {
-    await execAsync('lame --version');
+    await execAsync(`"${LAME_BIN}" --version`);
     return true;
   } catch (error) {
     return false;
@@ -106,7 +121,7 @@ async function ffmpegFilterToLameMp3(inputPath, outputPath, opts = {}) {
 
   return new Promise((resolve, reject) => {
     const ff = spawn('ffmpeg', ffArgs);
-    const lame = spawn('lame', lameArgs);
+    const lame = spawn(LAME_BIN, lameArgs);
 
     let ffErr = '';
     let lameErr = '';
@@ -646,10 +661,36 @@ async function meanLevelDb(filePath) {
 const AMPUTATION_MIN_KEEP_FRACTION = Number(process.env.TAIL_REPAIR_MIN_KEEP || 0.5);
 const AMPUTATION_SILENCE_DB = Number(process.env.TAIL_REPAIR_SILENCE_DB || -60);
 
+/**
+ * TAIL_REPAIR_MODE — 'repair' (default, unchanged behaviour) | 'flag'.
+ *
+ * In 'flag' mode the detector still runs and still reports, but the audio is
+ * never modified and the function never throws: the clip ships as rendered.
+ * It reuses action:'held', which every caller already treats as "shipped
+ * untouched", so no call site needs to change.
+ *
+ * Why this exists (measured 2026-08-04, docs/audio-tail-gate-decision-memo-2026-08-04.md):
+ * the detector's precision by ear is 7/76 = 9%; 83% of its flags vanish if you
+ * merely append 300 ms of silence, which cannot remove a real click; and 16 of 20
+ * FRESH TTS renders trip it. Meanwhile whisper word-retention over shipped clips
+ * shows the repair removes trailing words — final-word retention 0.52 for clips
+ * bearing the repair's 100 ms pad fingerprint vs 0.93 for the rest (p=0.00001),
+ * e.g. "Ich will heute nicht üben" shipping as "Ich will heute…".
+ *
+ * DEFAULT IS UNCHANGED. Set TAIL_REPAIR_MODE=flag to re-render without feeding
+ * fresh audio back through the repair that damaged it. Whether 'flag' becomes the
+ * default is Tom's decision, still open at time of writing.
+ */
+const TAIL_REPAIR_MODE = process.env.TAIL_REPAIR_MODE || 'repair';
+
 async function repairTailDefect(inputPath, workDir, { text, language, mode, minKeepSec = 0 } = {}) {
   const tailMode = mode || (isLongformText(text) ? 'longform' : 'phrase');
   const det = await detectTailClick(inputPath, { mode: tailMode });
   if (!det.click) return { defect: null };
+
+  if (TAIL_REPAIR_MODE === 'flag') {
+    return { defect: det, action: 'held', flagOnly: true };
+  }
   if (det.trimSec < minKeepSec) {
     throw new Error(`tail defect (${det.kind} ${det.peakDb}dB) with trim point at ${det.trimSec}s — clip is substantially defective`);
   }
