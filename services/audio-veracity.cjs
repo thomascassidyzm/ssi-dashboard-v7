@@ -123,6 +123,42 @@ const WHISPER_ISO1 = {
 const CER_UNVALIDATED_LANGUAGES = new Set(['zh', 'yue', 'ja', 'th', 'lo', 'my', 'km'])
 const CER_THRESHOLD_UNVALIDATED = Number(process.env.AUDIO_VERACITY_CER_THRESHOLD_UNVALIDATED || 1.0)
 
+/**
+ * A CER threshold ALONE is not enough, and the estate proved it on the first
+ * real run of this module.
+ *
+ * CER is a ratio. On a two-character text the denominator is two, so any ASR
+ * near-miss is a catastrophic-looking score. Measured 2026-08-04 on the first
+ * 12 deu_for_eng clips this tool ever checked, all of them healthy:
+ *
+ *     "mir"       -> "Mia."       CER 0.33   (1 character out)
+ *     "er"        -> "Ja."        CER 1.00   (2 characters out)
+ *     "sie"       -> "Z."         CER 1.00   (3 characters out)
+ *     "Fehler"    -> "Fila."      CER 0.67   (3 characters out)
+ *     "verändert" -> "verinnern." CER 0.33   (3 characters out)
+ *
+ * Whisper cannot reliably transcribe a two-letter word with no context, and
+ * single-LEGO clips are everywhere in this estate. Left alone, CER 0.3 would
+ * have filled every repair queue with healthy short clips.
+ *
+ * So a clip must ALSO be wrong by an absolute number of characters. Replaying
+ * the 165 labelled clips at floors 0/2/3/4/5/6, recall is FLAT at 97.6%
+ * throughout — no real defect in the set is a near-miss — and at 6 the last
+ * genuine false alarm ("etwas stecken" -> "Etwas schm...", 5 characters out)
+ * goes too, taking the false-alarm rate to 0/81. Every genuinely bad SHORT clip
+ * in the set is caught by the non-speech rule instead, which is unaffected by
+ * this floor.
+ *
+ * The independent argument, which is why this is not curve-fitting: a clip that
+ * differs from its script by five characters is not a learner-facing audio
+ * defect worth spending a re-render on. Silence and truncation — the two things
+ * this gate is validated against — are never five-character events.
+ *
+ * DEFAULT, not a ruling. Derived 2026-08-04 from the replay, not from the
+ * original findings memo.
+ */
+const MIN_EDIT_DISTANCE = Number(process.env.AUDIO_VERACITY_MIN_EDITS || 6)
+
 // ---------------------------------------------------------------------------
 // Binaries — same env conventions as services/tts-service.cjs's phonology gate,
 // which was itself broken for weeks by hard-coded macOS paths (commit 428844e3).
@@ -286,21 +322,31 @@ function isNonSpeechDecode (decode) {
  * @returns {{pass:boolean, reason:string, cer:number, threshold:number}}
  */
 function verdictFromDecode (decode, expected, iso1) {
-  const cer = characterErrorRate(expected, decode)
+  const e = normalise(expected)
+  const d = normalise(decode)
+  const edits = e.length ? levenshtein(e, d) : (d.length ? 1 : 0)
+  const cer = e.length ? edits / e.length : (d.length ? 1 : 0)
+
+  // Rule 1, language-independent: nothing was transcribed at all.
   if (isNonSpeechDecode(decode)) {
-    return { pass: false, reason: 'non_speech_decode', cer, threshold: 0 }
+    return { pass: false, reason: 'non_speech_decode', cer, edits, threshold: 0 }
   }
+
+  // Rule 2: wrong by a large FRACTION of the script AND by an absolute number
+  // of characters. Both, always — see MIN_EDIT_DISTANCE for why the ratio
+  // alone flags healthy one-word clips.
   const unfitted = CER_UNVALIDATED_LANGUAGES.has(String(iso1 || ''))
   const threshold = unfitted ? CER_THRESHOLD_UNVALIDATED : CER_THRESHOLD
-  if (cer >= threshold) {
+  if (cer >= threshold && edits >= MIN_EDIT_DISTANCE) {
     return {
       pass: false,
       reason: unfitted ? 'cer_above_unvalidated_language_threshold' : 'cer_above_threshold',
       cer,
+      edits,
       threshold,
     }
   }
-  return { pass: true, reason: 'ok', cer, threshold }
+  return { pass: true, reason: 'ok', cer, edits, threshold }
 }
 
 // ---------------------------------------------------------------------------
@@ -399,6 +445,7 @@ async function checkAudioVeracity (input, expectedText, language, opts = {}) {
     checked: true,
     reason: v.reason,
     cer: +v.cer.toFixed(4),
+    edits: v.edits,
     threshold: v.threshold,
     decode,
     expected: String(expectedText),
@@ -582,6 +629,7 @@ module.exports = {
   CER_THRESHOLD,
   CER_UNVALIDATED_LANGUAGES,
   CER_THRESHOLD_UNVALIDATED,
+  MIN_EDIT_DISTANCE,
   WHISPER_ISO1,
   QUARANTINE_DIR,
   _resetAnnouncement,

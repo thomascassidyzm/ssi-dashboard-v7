@@ -72,6 +72,7 @@ const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const { toBcp47 } = require('../services/voice-discovery-service.cjs')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../services/shared/course-version.cjs')
 const { isHumanVoiceCourse } = require('../services/shared/human-voice-courses.cjs')
+const veracity = require('../services/audio-veracity.cjs')
 
 const argv = process.argv.slice(2)
 const arg = (f, d = null) => { const i = argv.indexOf(f); return i !== -1 && argv[i + 1] ? argv[i + 1] : d }
@@ -227,16 +228,33 @@ async function renderVerified(row, tmpDir, expectedMs) {
     const nearSilent = level && level.peakDb < NEAR_SILENCE_PEAK_DB
     const short = durationMs < FLOOR_MS
     const truncated = expectedMs ? durationMs < TRUNCATION_RATIO * expectedMs : false
-    last = { buffer, durationMs, level, silent, nearSilent, short, truncated }
-    if (!silent && !nearSilent && !short && !truncated) return last
+
+    // ACOUSTIC CHECK on the replacement (services/audio-veracity.cjs).
+    //
+    // Every test above is a check on LEVEL and LENGTH, and none of them can see
+    // a clip of plausible length and normal loudness that simply does not
+    // contain the words. That is not hypothetical: the 2026-08-04 truncated set
+    // measures -16.8 dB median, i.e. perfectly normal
+    // (docs/forced-alignment-2026-08-04/findings.md §1). Without this, a
+    // reproducible provider truncation gets re-rendered, passes the level and
+    // floor tests, and is certified as a successful repair.
+    //
+    // `row.text` is the right expectation here because row.text is exactly what
+    // was sent to generateWithRetry above — this tool does not gender-expand.
+    const veracityVerdict = await veracity.checkAudioVeracity(buffer, row.text, row.language)
+    const wrongWords = veracityVerdict.checked === true && veracityVerdict.pass === false
+
+    last = { buffer, durationMs, level, silent, nearSilent, short, truncated, veracity: veracityVerdict }
+    if (!silent && !nearSilent && !short && !truncated && !wrongWords) return last
 
     const why = silent ? 'SILENT'
       : nearSilent ? `NEAR-SILENT (peak ${level.peakDb}dB < ${NEAR_SILENCE_PEAK_DB}dB)`
       : short ? `${durationMs}ms < floor`
-      : `${durationMs}ms vs expected ${expectedMs}ms`
+      : truncated ? `${durationMs}ms vs expected ${expectedMs}ms`
+      : `WORDS MISSING (${veracityVerdict.reason}, CER ${veracityVerdict.cer}, heard ${JSON.stringify(String(veracityVerdict.decode).slice(0, 50))})`
     console.log(`      attempt ${attempt}: ${why} — re-roll`)
   }
-  throw new Error(`no attempt produced speech (last: ${last.durationMs}ms, mean ${last.level ? last.level.meanDb : '?'}dB, peak ${last.level ? last.level.peakDb : '?'}dB)`)
+  throw new Error(`no attempt produced speech (last: ${last.durationMs}ms, mean ${last.level ? last.level.meanDb : '?'}dB, peak ${last.level ? last.level.peakDb : '?'}dB, veracity ${last.veracity ? `${last.veracity.reason}/CER ${last.veracity.cer}` : 'unchecked'})`)
 }
 
 /** Every link to `audioId`, captured before the delete nulls them. */
@@ -283,6 +301,8 @@ async function restoreLinks(links, newId, durationMs) {
   if (LIMIT) jobs = jobs.slice(0, LIMIT)
 
   console.log(`\nrepair-silent-clips — ${COURSE}`)
+  // One loud line saying whether the acoustic check on replacements is live.
+  veracity.announceStatus(console)
   console.log(`${jobs.length} clip${jobs.length === 1 ? '' : 's'} to repair (--only ${ONLY}${LIMIT ? `, --limit ${LIMIT}` : ''})`)
   const byVerdict = jobs.reduce((a, j) => ((a[j.verdict] = (a[j.verdict] || 0) + 1), a), {})
   console.log(`   ${Object.entries(byVerdict).map(([k, v]) => `${k}: ${v}`).join(', ')}\n`)

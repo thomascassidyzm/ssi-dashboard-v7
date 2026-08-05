@@ -87,18 +87,46 @@ describe('verdictFromDecode — the operating point', () => {
   })
 
   it('fails at exactly the threshold — the findings say CER >= 0.3', () => {
-    // "abcdefghij" vs "abcdefg" = 3 deletions over 10 chars = exactly 0.3.
-    const v = V.verdictFromDecode('abcdefg', 'abcdefghij', 'de')
+    // 6 deletions over 20 chars = exactly 0.3, and 6 clears the edit floor.
+    const v = V.verdictFromDecode('abcdefghijklmn', 'abcdefghijklmnopqrst', 'de')
     expect(v.cer).toBeCloseTo(0.3, 10)
+    expect(v.edits).toBe(6)
     expect(v.pass).toBe(false)
     expect(v.reason).toBe('cer_above_threshold')
   })
 
   it('passes just below the threshold', () => {
-    // 2 deletions over 10 chars = 0.2.
-    const v = V.verdictFromDecode('abcdefgh', 'abcdefghij', 'de')
+    // 5 deletions over 20 chars = 0.25.
+    const v = V.verdictFromDecode('abcdefghijklmno', 'abcdefghijklmnopqrst', 'de')
     expect(v.pass).toBe(true)
     expect(v.reason).toBe('ok')
+  })
+
+  describe('the absolute edit floor — CER is a ratio and short texts break it', () => {
+    it('does not flag a healthy one-word clip whose ratio looks catastrophic', () => {
+      // All five measured live on deu_for_eng 2026-08-04; all healthy.
+      for (const [expected, heard] of [
+        ['mir', 'Mia.'], ['er', 'Ja.'], ['sie', 'Z.'],
+        ['Fehler', 'Fila.'], ['verändert', 'verinnern.'],
+      ]) {
+        const v = V.verdictFromDecode(heard, expected, 'de')
+        expect(v.cer, `${expected} -> ${heard}`).toBeGreaterThanOrEqual(V.CER_THRESHOLD)
+        expect(v.pass, `${expected} -> ${heard}`).toBe(true)   // saved by the edit floor
+        expect(v.edits).toBeLessThan(V.MIN_EDIT_DISTANCE)
+      }
+    })
+
+    it('still flags a short clip that produced no speech at all', () => {
+      // The floor must never weaken the rule that catches silent stubs.
+      expect(V.verdictFromDecode('[BLANK_AUDIO]', 'black', 'en').pass).toBe(false)
+      expect(V.verdictFromDecode('', 'er', 'de').pass).toBe(false)
+    })
+
+    it('still flags a real truncation, which is never a near-miss', () => {
+      const v = V.verdictFromDecode('Can you?', 'can you check the weather?', 'en')
+      expect(v.edits).toBeGreaterThanOrEqual(V.MIN_EDIT_DISTANCE)
+      expect(v.pass).toBe(false)
+    })
   })
 
   it('passes a healthy clip', () => {
