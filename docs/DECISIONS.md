@@ -743,3 +743,55 @@ repairs themselves were the expense.
 **Decided by:** Tom — 2026-08-05 21:06Z escalation, verbatim: "DELETE the tail-repair service's
 ability to modify audio entirely, do not just change its default", after the clipping recurred a
 third time and reached learners in the first 10 minutes of the live German course.
+
+## 2026-08-05 — reviewers get full course access via popty_user
+
+**Move:** set `learners.platform_role='popty_user'` on the 7 real Popty reviewer/editor/admin
+accounts that had a learner row, so the `trg_auto_entitle_popty_user` trigger writes each a
+non-expiring `full` entitlement and the whole course opens on the deep link instead of walling
+them at seed 19 (round 64 of 1,395). Torbyrne has no learner row yet — no auth-app sign-in — so
+theirs cannot be granted until they open the app once. Data change only: no code, no migration,
+no deploy.
+
+**Better:** it is the mechanism already designed for this need. `packages/core/src/pricing/access.ts`
+returns `canAccess: true` unconditionally for a non-expiring `full` entitlement, so every course
+and every round opens, not just the one being reviewed. Re-proved first-hand on production with a
+synthetic internal learner: `GET /api/courses/deu_for_eng/cycles?from=S0100L01` returned **403
+`preview_only` before the role, 200 after** — synthetic account deleted afterwards.
+
+**Simpler:** one column on seven rows. The trigger writes the entitlement, and it is idempotent —
+it skips anyone already holding a live `full` row, which is why beunollyn and catrinlliar (who had
+been granted `full` by hand on 04-08 and 01-08) gained no duplicate. Entitlement count moved 67 →
+72, exactly the five who needed one.
+
+**Cheaper (total):** nothing to build, nothing to run, nothing to maintain. The alternative paths
+all add permanent surface.
+
+**Correction to the prior investigation:** "popty_user appears in zero other privilege gates" is
+not quite right, and the difference is worth recording. It appears in two Popty-side identity
+paths: `services/shared/popty-identity.cjs` (legacy fallback — courses from
+`learners.dashboard_courses`) and `api/lib/auth.js:173`. Neither downgrades anyone here: the live
+API resolves through `resolvePoptyIdentity`, where a `dashboard_users` row is the authority and
+wins over the learner fallback, and the Popty frontend reads `dashboard_users` directly. The only
+real delta is on the Vercel `api/` path, where `verifySupabaseJWT` now resolves these 8 as role
+`user` (courses `[]`) instead of null — admin-only routes still refuse them exactly as before,
+while `pod-fine-map` and `algorithm-config`, which only require a non-null identity, become
+reachable. All eight are already trusted dashboard editors/admin, so that sits inside their remit;
+recorded here because it was not true that the role was inert.
+
+**Searched & rejected:**
+- access token minted into the launcher URL — Tom ruled it out; a live credential in a shared,
+  logged, history-kept URL is a security regression to save one sign-in
+- shared auth cookie across popty.app and saysomethingin.app — impossible, different registrable domains
+- `ssi_admin` for reviewers — badly over-grants: admin console, user management, codes
+- per-course `courses` entitlements — has to be reissued every time a review touches a new course
+- building the admin-screen control in this pass — the invite path that already sets `popty_user`
+  (`POST /api/auth/invite-dashboard`) is not the one these 8 came in through; they arrived via the
+  `dashboard_users` invite, which never touches the learner row. Closing that is an auth-path
+  change, not a trivial one — left as a future item so the next editor added doesn't hit this wall.
+
+**Still required per person:** the role opens the content; it does not carry identity across
+origins. Each of the 8 must sign in once on saysomethingin.app with their Popty email.
+
+**Search width:** visible-options
+**Decided by:** Tom (2026-08-05, directly — grants paid content to 8 real people)
