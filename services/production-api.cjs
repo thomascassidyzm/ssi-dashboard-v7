@@ -5654,6 +5654,20 @@ app.post('/api/production/:courseCode/audio-pipeline/start', async (req, res) =>
   }
 })
 
+// GET /api/audio/health — proxy phase 8's own /health, which carries
+// tail_repair_mode. Without this, the only way to learn whether a machine's
+// render service still mutates audio is a shell on that machine — which is
+// exactly what we do not have for the Camberley Mac. Port 3470 is the single
+// public door, so the answer has to come through it.
+app.get('/api/audio/health', async (req, res) => {
+  try {
+    const response = await axios.get(`${PHASE8_URL}/health`, { timeout: 8000 })
+    res.json(response.data)
+  } catch (e) {
+    res.status(503).json({ status: 'unreachable', service: 'phase8-audio-v13', error: e.message })
+  }
+})
+
 // GET /api/production/:courseCode/audio-pipeline/status
 // Get generation status
 app.get('/api/production/:courseCode/audio-pipeline/status', async (req, res) => {
