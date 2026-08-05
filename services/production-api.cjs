@@ -5470,6 +5470,16 @@ app.post('/api/audio/link-presentation-audio/:courseCode', async (req, res) => {
 })
 
 // =============================================================================
+// NON-DESTRUCTIVE AUDIO REPAIR — /api/audio/repair/*
+// =============================================================================
+// propose / preview / accept / reject, uniform across every clip kind
+// including role='presentation'. Accept is a SAME-ID in-place swap, so no row
+// is deleted and no CASCADE can fire — which is why introductions have a
+// repair path at all now. Read services/audio-repair-core.cjs for the design.
+// Mounted rather than inlined: this file is large and edited concurrently.
+require('./api/audio-repair-routes.cjs').mount(app, { requireAdmin, requireDashboardUser, logger })
+
+// =============================================================================
 // VOICE MANAGEMENT ENDPOINTS
 // =============================================================================
 

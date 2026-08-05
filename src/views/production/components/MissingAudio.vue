@@ -374,12 +374,19 @@
         </div>
       </div>
     </div>
+
+    <!-- Non-destructive repair of audio that EXISTS but sounds wrong.
+         Machines flag, only humans pass — the accept lives in there. -->
+    <div class="border-t border-line p-4">
+      <AudioRepairPanel :course-code="courseCode" :refresh-trigger="refreshTrigger" />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
 import { getApiUrl } from '@/services/api'
+import AudioRepairPanel from './AudioRepairPanel.vue'
 
 function getApiBaseUrl() {
   return getApiUrl()
