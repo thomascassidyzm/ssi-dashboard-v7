@@ -98,6 +98,16 @@ function mount (app, deps) {
     } catch (err) { fail(res, err, `cycles ${req.params.legoId}`) }
   })
 
+  // ── Every clip in one round, so a flag can name which one was wrong ──────
+  app.get('/api/qa-gate/:courseCode/rounds/:legoId/clips', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      res.json(await gate.roundClips({
+        courseCode: req.params.courseCode, legoId: req.params.legoId,
+      }))
+    } catch (err) { fail(res, err, `clips ${req.params.legoId}`) }
+  })
+
   // ── The human pass on a round ────────────────────────────────────────────
   app.post('/api/qa-gate/:courseCode/rounds/:roundIndex/signoff', async (req, res) => {
     const user = await requireDashboardUser(req, res)

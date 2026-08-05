@@ -207,6 +207,46 @@ function createGate (deps) {
   }
 
   /**
+   * Every clip in one round, with its text and derived status.
+   *
+   * This is what the flag dialog needs: to flag a round usefully a human has
+   * to be able to say WHICH clip was wrong, and a flag is only actionable in
+   * the repair flow if it carries an audio_id.
+   */
+  async function roundClips ({ courseCode, legoId }) {
+    const clips = orThrow(await db()
+      .from('course_qa_cycle_clips')
+      .select('cycle_key, cycle_type, cycle_ordinal, audio_id, audio_role')
+      .eq('course_code', courseCode).eq('lego_id', legoId)
+      .order('cycle_type').order('cycle_ordinal').order('audio_role'),
+    'read round clips') || []
+    if (clips.length === 0) return { courseCode, legoId, clips: [] }
+
+    const ids = [...new Set(clips.map(c => c.audio_id))]
+    const [audio, statuses] = await Promise.all([
+      db().from('course_audio').select('id, text, role, duration_ms, audio_revision')
+        .in('id', ids).then(r => orThrow(r, 'read clip text')),
+      db().from('course_qa_clip_status').select('audio_id, status, signed_off_by, open_flags')
+        .in('audio_id', ids).then(r => orThrow(r, 'read clip status')),
+    ])
+    const byId = new Map((audio || []).map(a => [a.id, a]))
+    const stById = new Map((statuses || []).map(s => [s.audio_id, s]))
+
+    return {
+      courseCode,
+      legoId,
+      clips: clips.map(c => ({
+        ...c,
+        text: byId.get(c.audio_id)?.text ?? null,
+        duration_ms: byId.get(c.audio_id)?.duration_ms ?? null,
+        audio_revision: byId.get(c.audio_id)?.audio_revision ?? null,
+        status: stById.get(c.audio_id)?.status ?? 'unverified',
+        signed_off_by: stById.get(c.audio_id)?.signed_off_by ?? null,
+      })),
+    }
+  }
+
+  /**
    * Record a human's verdict on a round they have just played through in the
    * REAL learning app.
    *
@@ -263,6 +303,36 @@ function createGate (deps) {
       audio_fingerprint: round.audio_fingerprint,
     }, { onConflict: 'course_code,round_index' }).select('id').single(), 'write signoff')
 
+    // A PASSED round means a human just heard every clip in it, in the real
+    // player, at these exact revisions. That IS a clip-level human pass, so
+    // record it — which is what makes course_qa_cycle_status light up from
+    // the play-through rather than needing a second human action per cycle.
+    // Upsert on (audio_id, audio_revision): re-signing the same bytes is not
+    // an error, it just refreshes who last heard them.
+    let passedClips = 0
+    if (verdict === 'passed') {
+      const clips = orThrow(await db()
+        .from('course_qa_cycle_clips').select('audio_id')
+        .eq('course_code', courseCode).eq('lego_id', round.lego_id),
+      'read round clips') || []
+      const ids = [...new Set(clips.map(c => c.audio_id))]
+      if (ids.length) {
+        const revs = orThrow(await db()
+          .from('course_audio').select('id, audio_revision').in('id', ids),
+        'read clip revisions') || []
+        orThrow(await db().from('audio_clip_signoffs').upsert(
+          revs.map(r => ({
+            audio_id: r.id,
+            course_code: courseCode,
+            audio_revision: r.audio_revision,
+            signed_off_by: actor,
+            signed_off_at: new Date().toISOString(),
+            context: 'playthrough',
+          })), { onConflict: 'audio_id,audio_revision' }).select('id'), 'sign off clips')
+        passedClips = revs.length
+      }
+    }
+
     // Turn a flag into work, not a note.
     let raisedFlags = 0
     if (verdict === 'flagged' && flaggedAudioIds.length > 0) {
@@ -290,7 +360,7 @@ function createGate (deps) {
       (raisedFlags ? ` (+${raisedFlags} clip flags)` : ''))
 
     const gate = await evaluateGate(courseCode, { actor })
-    return { courseCode, roundIndex: idx, verdict, raisedFlags, gate }
+    return { courseCode, roundIndex: idx, verdict, passedClips, raisedFlags, gate }
   }
 
   // ── Flags: what a human must still deal with ─────────────────────────────
@@ -524,7 +594,7 @@ function createGate (deps) {
 
   return {
     ensureGate, evaluateGate, setRequiredRounds,
-    rounds, cycles, signOffRound,
+    rounds, cycles, roundClips, signOffRound,
     openFlags, clearFlag,
     assignRounds, releaseAssignment, assignments,
     checkPublishAllowed, overrideGate, clearOverride,
