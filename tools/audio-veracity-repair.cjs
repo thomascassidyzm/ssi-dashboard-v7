@@ -322,13 +322,19 @@ function saveCache (cache) {
   }
 
   // ---- apply ---------------------------------------------------------------
+  // A limit at or above the list length caps nothing, so the sliced file is never
+  // written — flagsPath must then stay on OUT. Pointing it at a `.apply` that was
+  // never created aborted a whole batch with ENOENT after the gate had already run.
   let applyList = list
+  let flagsPath = OUT
   if (APPLY_LIMIT && applyList.length > APPLY_LIMIT) {
     console.log(`\n--apply-limit ${APPLY_LIMIT}: re-rendering the first ${APPLY_LIMIT} of ${list.length}. The remaining ${list.length - APPLY_LIMIT} are LEFT BROKEN and stay in ${OUT}.`)
     applyList = applyList.slice(0, APPLY_LIMIT)
-    fs.writeFileSync(OUT + '.apply', JSON.stringify(applyList, null, 2))
+    flagsPath = OUT + '.apply'
+    fs.writeFileSync(flagsPath, JSON.stringify(applyList, null, 2))
+  } else if (APPLY_LIMIT) {
+    console.log(`\n--apply-limit ${APPLY_LIMIT}: the list holds ${list.length}, so the limit caps nothing — all of them are being repaired.`)
   }
-  const flagsPath = APPLY_LIMIT ? OUT + '.apply' : OUT
 
   console.log(`\nAPPLYING — handing ${applyList.length} confirmed clip(s) to tools/repair-silent-clips.cjs.`)
   console.log(`Each replacement mints a NEW audio id (the player caches blobs by id under an`)
