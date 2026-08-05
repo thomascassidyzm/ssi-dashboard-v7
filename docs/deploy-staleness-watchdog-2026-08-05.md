@@ -164,8 +164,25 @@ state and log tail so you can see it work.
 
 ## Camberley — EXPLICIT GAP
 
-Camberley is SSH-blocked from watson-1, so **nothing here is installed or tested
-on the Mac.** What is untested there: pm2 detection, the pm2 restart path, BSD
+> **Correction, 2026-08-05.** "SSH-blocked" below is about *shell* access from
+> watson-1, and it must not be read as "Camberley is unreachable" or "Camberley
+> can only be updated by someone sitting at the Mac". Both of those are FALSE.
+> Camberley is remotely reachable and remotely controllable **right now**, over
+> HTTPS, with no shell and nobody at the keyboard: `https://ssi-machine.ngrok.app`
+> fronts its production-api, and the dashboard's Remote panel drives it —
+> `/api/admin/system-health` (RAM/disk/load/pm2/reboot-readiness),
+> `/api/services` and `/api/services/:name/restart` (every pm2 process),
+> `/api/services/:name/logs`, and `/api/deploy` (the blue Deploy button: git
+> pull + restart all pm2 services except orchestrator/ngrok/keep-awake). All
+> verified live by curl on 2026-08-05. popty.app has no privileged "default"
+> machine either — the Environment Switcher points the whole dashboard at
+> whichever machine you pick.
+>
+> What IS genuinely missing is a **shell**, and that is the only reason the
+> watchdog install below is untested there: installing a crontab entry is not
+> something any of those endpoints can do.
+
+What is untested there: pm2 detection, the pm2 restart path, BSD
 `sed`/`date`/`grep` behaviour, and cron's Full Disk Access on modern macOS
 (cron may need to be granted it in System Settings → Privacy & Security → Full
 Disk Access before a crontab entry can touch the repo).
