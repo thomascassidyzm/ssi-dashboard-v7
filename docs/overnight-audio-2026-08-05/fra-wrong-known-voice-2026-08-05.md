@@ -107,7 +107,20 @@ The flag branch was proven again on live renders during the pilot — six occurr
 That is the fix working on real spend: the tail detector fired and the clip shipped **untouched**
 instead of being cut.
 
-Remainder (140 clips): see `logs/fra-revoice-rest.txt` and the run summary in the morning report.
+**Complete, 03:03Z: 150 of 150 — 142 re-voiced, 8 merged, 0 failed.** 5,721 characters of TTS
+across four runs (10 pilot · 140 · 3 array pilot · 62 array remainder). xAI health across all of
+them: 142 responses, 0 empty, 0 cooldowns.
+
+Verified after the fact, live:
+
+| check | result |
+|---|---|
+| any `known`/`presentation`/bookend clip still off the configured voice | **0** — the selection query now returns an empty set |
+| dangling pod array slots | 118, **unchanged** from before the run — nothing was stranded |
+| `listening_pod_sentences` with a `known_audio_id` | 68, **unchanged** — no link was nulled |
+
+Course version bumped on each run; the revalidation key moved `2315 → 2319`, so clients refetch
+rather than 404 on ids that no longer exist.
 
 ## The French opening stretch is structurally complete
 
