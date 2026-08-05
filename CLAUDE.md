@@ -31,6 +31,7 @@ You are applying the SaySomethingin method — the thing every phrase a learner 
 - **Otherwise act autonomously** when docs are clear, the action is reversible, and there's no cost surprise.
 
 ### Branch hygiene
+- **Everything on Popty goes to `main`. Branches are transient** (Tom's ruling, 2026-08-05). Finishing a piece of work means landing it on `main` and pushing — merging your own branch is part of the job, not a decision to escalate. Don't leave work parked on a branch and report it as a gap. This is also what makes deployment work at all: the machines' Deploy button runs `git pull` on their checkout, so anything not on `main` reaches no machine.
 - `claude/*` branches **auto-merge wholesale to `main`** (`.github/workflows/auto-merge-claude.yml`). **Never** commit your work onto someone else's `claude/*` branch — it sweeps their whole branch to main. Stage your work on your own `docs/…`/`fix/…`/`feat/…` or `claude/*` branch.
 - **Multiple checkouts/sessions run concurrently and the branch can move under you.** Verify `git rev-parse --abbrev-ref HEAD` in the *same* step as commit/push; stage explicit paths (never `git add -A`); if your commit lands on the wrong branch, push the *commit hash* to its intended branch (`git push origin <sha>:<branch>`) rather than force-pushing.
 
