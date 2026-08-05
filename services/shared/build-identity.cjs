@@ -44,7 +44,10 @@ const branch = process.env.POPTY_BUILD_BRANCH || git(['rev-parse', '--abbrev-ref
 // exists on no commit anywhere, so a sha comparison alone can't vouch for it.
 const dirtyAtStart = process.env.POPTY_BUILD_SHA
   ? null
-  : (git(['status', '--porcelain']) ? true : false)
+  // -uno to match the watchdog: only TRACKED modifications mean the running
+  // code differs from its commit. An untracked node_modules/ is not code drift,
+  // and reporting it as such would make every prod process look dirty forever.
+  : (git(['status', '--porcelain', '-uno']) ? true : false)
 
 const startedAt = new Date().toISOString()
 
