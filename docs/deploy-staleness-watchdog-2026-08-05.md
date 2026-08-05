@@ -61,6 +61,7 @@ When behind, it acts:
 | Checkout on a branch other than `main` | Alert only |
 | Not a fast-forward | Alert only |
 | Restart already tried for this sha and still stale | Alert once, back off |
+| Checkout has **diverged** from main (commits main lacks) | Alert — it can never be auto-updated |
 
 **Why a sibling script rather than a second section of
 `popty-services-watchdog.sh`:** different question, different cadence, different
@@ -130,6 +131,25 @@ drifted from what is running.
    but building a receiver, an auth story, and a retry policy turns this into a
    project, and the brief said keep it small. Left out deliberately. If Camberley
    staleness needs to be visible from watson-1, that is a follow-on.
+
+## Verified live on watson-1 (2026-08-05)
+
+- **The frozen-sha property, proven the hard way.** A process was started, the
+  commit on disk was then advanced (`c051a509` → `fa2378d8`) **without** a
+  restart, and `/health` still reported `c051a509`. Had it reported the new sha,
+  the whole watchdog would be decorative.
+- **Auto-deploy end to end, twice.** Commits landed on `main`; the watchdog
+  fetched, saw the running sha behind, pulled `--ff-only`, restarted via
+  `systemctl --user`, and all three services came back healthy on the new sha.
+- **Level ⇒ no action.** Re-run returned `current`, no restart.
+- **Dirty tree ⇒ refused.** In a throwaway clone, behind main with a modified
+  tracked file: alert only, no pull, the dirty edit untouched.
+- **Back-off.** With the attempt file already stamped for the target sha, it
+  alerted "NEEDS A HUMAN" and did not restart again.
+- **Diverged ⇒ alert**, not a false `current`.
+- **Cross-checkout attribution.** The `-prod` watchdog correctly skips
+  course-builder-api: *"skipping popty-course-builder-api — loaded from
+  …/ssi-dashboard-v7-clean, not …-prod"*.
 
 ## Install
 

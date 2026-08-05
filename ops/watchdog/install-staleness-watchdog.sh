@@ -10,6 +10,8 @@
 
 set -e
 
+# Never abort the install because a diagnostic print failed.
+
 REPO=$(cd "$(dirname "$0")/../.." && pwd)
 SCRIPT="$REPO/ops/watchdog/popty-staleness-watchdog.sh"
 MARKER="# popty-staleness-watchdog"
@@ -36,7 +38,7 @@ echo "installed: every 10 minutes -> $SCRIPT"
 echo "running once now to prove it works..."
 /bin/sh "$SCRIPT"
 echo "--- state ---"
-cat "${POPTY_STALENESS_STATE:-/tmp/popty-staleness.json}"
+cat "${POPTY_STALENESS_STATE:-/tmp/popty-staleness-$(basename "$REPO").json}"
 echo
 echo "--- log tail ---"
 tail -5 "${POPTY_WATCHDOG_LOG:-/tmp/popty-watchdog.log}" 2>/dev/null || true
