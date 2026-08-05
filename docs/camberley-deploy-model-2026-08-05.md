@@ -87,3 +87,24 @@ Proposal, needs Tom's ruling: give `/api/deploy` a `repair` mode that resets the
 checkout to `origin/main` after stashing, so this class of failure is
 recoverable from the app instead of from the keyboard. It is a hard reset on a
 production box, so it is not being added unasked.
+
+## Two things found on watson-1 while doing this
+
+**1. Its whole Popty backend was down, and now isn't.** `popty-production-api`,
+`popty-course-builder-api` and `popty-phase8-audio` were all crash-looping
+(restart counter 22) on `Cannot find module 'dotenv'` — the deployed checkout
+`~/SSi/ssi-dashboard-v7-clean-prod` had **no `node_modules` at all**, so the
+Tailscale funnel for "SSi Machine (Cloud)" was returning 502. Fixed by running
+`npm install` in that checkout and restarting the three units. Verified live:
+all three `active`, and `localhost:3470/health` now reports
+`build.commit fb996ae9`, `branch main`, `dirtyAtStart false`.
+
+**2. The Cloud machine's Deploy button points at the wrong checkout.** The
+orchestrator on watson-1:3456 — which `/api/deploy` proxies to, and which
+resolves its project dir as `path.resolve(__dirname, '..', '..')` — is running
+out of `~/SSi/ssi-dashboard-v7-clean`, Tom's **live working checkout**, on a
+feature branch with 36 modified files. Pressing Deploy for "SSi Machine (Cloud)"
+would therefore `git pull` and (with force) `git stash` in the tree someone is
+actively working in, and restart services from it. Not touched; flagged. The
+services themselves correctly run from the `-prod` checkout — it is only the
+orchestrator that is loose, and it has no systemd unit.
