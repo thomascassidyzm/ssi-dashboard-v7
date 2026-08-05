@@ -434,6 +434,15 @@ app.use('/api/production/:courseCode/pods',
     logger,
   }))
 
+// Audio preview: the human listening pass over rendered clips (READ-ONLY —
+// pure SELECTs plus the veracity quarantine ledger; no writes, no TTS).
+// Same app.param course-scope gate coverage as the mounts above.
+app.use('/api/production/:courseCode/audio-preview',
+  require('./audio-preview-router.cjs')({
+    getDb: () => supabaseClient.getClient(),
+    logger,
+  }))
+
 // POST /api/auth/login — login with email + code
 app.post('/api/auth/login', async (req, res) => {
   const { email, code } = req.body
