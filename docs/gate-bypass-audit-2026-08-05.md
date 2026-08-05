@@ -97,7 +97,16 @@ it means the timestamp can be false even for a clip that did take the gated path
 2. **Done — retro-verification run.** `tools/audio-veracity-repair.cjs <course> --since
    2026-08-04T23:00:00Z` (detection only; no `--apply`, no TTS, no writes) over both courses, to
    convert the label from an assumption into a measurement. Results in §6.
-3. **Not done — the real fix.** Persist the verdict: `veracity_pass` / `veracity_checked_at` /
+3. **DONE 2026-08-05 — the real fix.** See
+   [`per-clip-gate-verdicts-2026-08-05.md`](./per-clip-gate-verdicts-2026-08-05.md). The columns
+   below now exist and are written at all three `renderChecked` sites and at
+   `repair-silent-clips.cjs`; the filter is a verdict lookup and correctly reports the
+   missing-whisper case as *unchecked*. One thing this audit could not see, found while building
+   it: **the gate had never been merged to `main`** — the deployed service had no
+   `audio-veracity.cjs` on disk at all, which is the deeper reason no render had been through it.
+   That is merged too. Original wording follows.
+
+   Persist the verdict: `veracity_pass` / `veracity_checked_at` /
    `veracity_reason` on `course_audio`, written at the three `renderChecked` sites **and** at
    `repair-silent-clips.cjs:244`, which already computes the verdict and throws it away. The filter
    then becomes a verdict lookup, true by construction, and correctly reports the missing-whisper
