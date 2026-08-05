@@ -528,10 +528,14 @@ final-word retention 0.52 for clips bearing its fingerprint vs 0.93 for the rest
 defect it chases is ~42x rarer than the one it causes. When the evidence says a behaviour is
 wrong, the wrong behaviour should not be what you get by doing nothing. Concretely: `d5ad9f2c`
 shipped flag mode default-off, activated by an environment variable set on the render service.
-watson-1's phase8 had `TAIL_REPAIR_MODE=flag` in its process environment and nowhere else — not in
-`ops/systemd/popty-phase8-audio.service`, not in any pm2 config, not in any committed file. The
-Camberley Mac, which also renders and publishes production audio, did not have it. So the fix
-protected exactly one machine, by hand, invisibly.
+watson-1's phase8 had `TAIL_REPAIR_MODE=flag`, but only in live host config that no artifact
+records: a hand-edited systemd *user* unit at `~/.config/systemd/user/popty-phase8-audio.service`
+plus a drop-in `…service.d/tail-repair-mode.conf`. It is in no committed file — the repo's own
+`ops/systemd/popty-phase8-audio.service` carries neither the variable nor, as it turns out, the
+right `WorkingDirectory` (repo says `ssi-dashboard-v7-clean`; the live unit runs the service from
+`ssi-dashboard-v7-clean-prod`). The Camberley Mac, which also renders and publishes production
+audio, had none of it. So the fix protected exactly one machine, by hand, invisibly, via config
+that had already drifted from the version-controlled copy.
 **Simpler:** one constant instead of per-machine environment archaeology on every host that ever
 renders audio. Reading `/proc/<pid>/environ` to find out whether a render service is mutating
 audio is not a thing anyone should have to do; the startup log line replaces it.
