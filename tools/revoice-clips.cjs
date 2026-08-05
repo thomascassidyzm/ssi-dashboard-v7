@@ -404,7 +404,11 @@ async function relink(links, newId, durationMs) {
       const { data: row, error: readErr } = await supabase
         .from('course_audio').select('*').eq('id', job.id).single()
       if (readErr || !row) { console.log(`${prefix}: gone — skip`); return }
-      if (!isLegacyVoice(row.voice_id)) { console.log(`${prefix}: already on ${row.voice_id} — skip`); return }
+      // The re-read guard against a concurrent run. It asks the same question the
+      // selection asked: with --ids that is "is it already on the configured
+      // voice?", because an --ids job is by definition NOT a legacy-provider job.
+      const done = IDS_FILE ? row.voice_id === job._targetVoiceId : !isLegacyVoice(row.voice_id)
+      if (done) { console.log(`${prefix}: already on ${row.voice_id} — skip`); return }
 
       const stranded = await arrayReferences(row.id)
       if (stranded.length) {
