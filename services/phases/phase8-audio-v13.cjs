@@ -944,7 +944,17 @@ async function masterAudio(audioBuffer, ttsText) {
     // trimmed away. Only a clip still dirty after 3 passes hard-errors.
     const tail = await audioProcessor.repairTailDefect(masteredPath, tempDir, { text: ttsText, minKeepSec: 0.2 })
     if (tail.defect && tail.action === 'held') {
-      logger.warn(`masterAudio: tail flag (${tail.defect.kind} ${tail.defect.peakDb}dB at ${tail.defect.trimSec}s) is resumed speech — pausey render shipped untouched`)
+      // In 'pad' mode the padded re-check says whether the flag is a real
+      // candidate or just a tight tail — the whole point of the mode is that
+      // this verdict reaches the log, not just the flag.
+      const verdict = tail.padProbe
+        ? (tail.padProbe.error
+            ? `pad probe FAILED (${tail.padProbe.error}) — treat as unresolved`
+            : tail.padProbe.cleared
+              ? `cleared by ${tail.padProbe.padMs}ms pad probe — trailing room, not a click`
+              : `SURVIVES ${tail.padProbe.padMs}ms pad probe — real click candidate, re-render if confirmed`)
+        : 'audio not mutated'
+      logger.warn(`masterAudio: tail flag (${tail.defect.kind} ${tail.defect.peakDb}dB at ${tail.defect.trimSec}s) — ${verdict}; shipped untouched`)
     } else if (tail.defect) {
       logger.info(`masterAudio: tail ${tail.defect.kind} ${tail.defect.peakDb}dB repaired in ${tail.passes} pass(es) at ${tail.defect.trimSec}s${tail.residualSpeechFlag ? ' (soft trailing speech retained)' : ''}`)
       await fs.move(tail.outPath, masteredPath, { overwrite: true })
@@ -1046,7 +1056,10 @@ app.get('/health', (req, res) => {
     status: 'healthy',
     service: 'phase8-audio-v13',
     port: PORT,
-    tail_repair_mode: audioProcessor.TAIL_REPAIR_MODE
+    tail_repair_mode: audioProcessor.TAIL_REPAIR_MODE,
+    // Only meaningful in 'pad' mode; null elsewhere so the door never implies
+    // a padded re-check is running when it is not.
+    tail_pad_ms: audioProcessor.TAIL_REPAIR_MODE === 'pad' ? audioProcessor.TAIL_PAD_MS : null
   })
 })
 

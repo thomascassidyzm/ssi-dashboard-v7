@@ -71,3 +71,5 @@ Flow: Dashboard → Supabase/S3 → Learning App → Learner.
 - [ ] Files going to the right place (not root; `scripts/` gitignored)
 
 *When in doubt: read the code, check recent commits (`git log --oneline -10`), and verify before you trust.*
+
+Secrets: ~/.secrets/ssi-dashboard.env

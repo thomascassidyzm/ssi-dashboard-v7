@@ -662,7 +662,7 @@ const AMPUTATION_MIN_KEEP_FRACTION = Number(process.env.TAIL_REPAIR_MIN_KEEP || 
 const AMPUTATION_SILENCE_DB = Number(process.env.TAIL_REPAIR_SILENCE_DB || -60);
 
 /**
- * TAIL_REPAIR_MODE — 'flag' (default) | 'repair'.
+ * TAIL_REPAIR_MODE — 'flag' (default) | 'pad' | 'repair'.
  *
  * In 'flag' mode the detector still runs and still reports, but the audio is
  * never modified and the function never throws: the clip ships as rendered.
@@ -685,13 +685,67 @@ const AMPUTATION_SILENCE_DB = Number(process.env.TAIL_REPAIR_SILENCE_DB || -60);
  * default that travels with the code needs nothing set and cannot be forgotten.
  *
  * Set TAIL_REPAIR_MODE=repair to opt back in to the mutating behaviour.
+ *
+ * 'pad' (2026-08-05) is the memo's proposal 2 — "pad before detecting" — as a
+ * third, opt-in mode. It is flag mode with the trailing-room false positives
+ * removed: on a flag, a padded COPY is made in the work dir and re-detected,
+ * and the flag is only reported as confirmed if it survives the padding.
+ * The clip itself is never touched — not trimmed, and not extended either
+ * (see padTailProbe for why the pad stays a probe rather than the output).
  */
 const TAIL_REPAIR_MODE = process.env.TAIL_REPAIR_MODE || 'flag';
+
+// Silence appended to the PROBE copy. 300 ms is the memo's measured value; it
+// must stay below detectTailClick's 400 ms analysis window, or the window is
+// entirely silence and every flag "vanishes" for free, which measures nothing.
+const TAIL_PAD_MS = Math.min(Number(process.env.TAIL_PAD_MS || 300), 350);
 
 // Announce the mode once at load. Without this the only way to tell which
 // behaviour a running render service has is to read its /proc environment —
 // which is exactly the archaeology the default flip exists to end.
-console.log(`[audio-processor] TAIL_REPAIR_MODE=${TAIL_REPAIR_MODE}${TAIL_REPAIR_MODE === 'flag' ? ' (detect + report only; audio is never mutated)' : ' (MUTATING — repairs trim trailing audio)'}`);
+const TAIL_MODE_NOTE = {
+  flag: ' (detect + report only; audio is never mutated)',
+  pad: ` (detect + ${TAIL_PAD_MS}ms padded re-check; audio is never mutated)`,
+}[TAIL_REPAIR_MODE] || ' (MUTATING — repairs trim trailing audio)';
+console.log(`[audio-processor] TAIL_REPAIR_MODE=${TAIL_REPAIR_MODE}${TAIL_MODE_NOTE}`);
+
+/**
+ * padTailProbe — the pad-first test, as a probe rather than a repair.
+ *
+ * Appending digital silence to a clip cannot create or remove a real click. All
+ * it changes is how much room sits inside detectTailClick's 400 ms analysis
+ * window. So a flag that VANISHES when the clip is padded was never about a
+ * click: it was the rules reading natural speech decay in a tight tail. Measured
+ * 2026-08-04 over 76 flagged clips: 83% of flags vanish under padding (rise 96%,
+ * burst 79%, resurgence 75%), zero new flags appear, and blind listening puts
+ * bare-flag precision at 7/76 = 9%. Padding is therefore the cheapest available
+ * precision filter on this detector.
+ *
+ * Why the padded copy is a PROBE and not the shipped audio: padding fixes the
+ * DETECTOR, not the clip. It removes no click and restores no clipped word, so
+ * shipping it would buy nothing audible while adding TAIL_PAD_MS of trailing
+ * silence — and it would add it to the ~12% of clips that flag and to no others,
+ * making clip pacing inconsistent across a course. The real fix for a click that
+ * survives the probe is a re-render, never a DSP edit (memo proposal 3).
+ *
+ * @returns {Promise<{padMs: number, cleared: boolean, recheck: object|null, error?: string}>}
+ *   cleared:true  = trailing-room artefact; the flag is not a real defect.
+ *   cleared:false = the flag survives padding; a genuine candidate for review.
+ */
+async function padTailProbe(inputPath, workDir, { mode = 'phrase', padMs = TAIL_PAD_MS } = {}) {
+  const padded = path.join(workDir, `tailpad-${Date.now()}-${Math.round(Math.random() * 1e6)}.mp3`);
+  try {
+    await ffmpegFilterToLameMp3(inputPath, padded, { filterChain: `apad=pad_dur=${padMs / 1000}` });
+    const recheck = await detectTailClick(padded, { mode });
+    return { padMs, cleared: !recheck.click, recheck: recheck.click ? recheck : null };
+  } catch (e) {
+    // A probe that could not run must never upgrade or downgrade a flag: report
+    // it unresolved (cleared:false = still a review candidate) and say why.
+    return { padMs, cleared: false, recheck: null, error: e.message };
+  } finally {
+    await fs.remove(padded).catch(() => {});
+  }
+}
 
 async function repairTailDefect(inputPath, workDir, { text, language, mode, minKeepSec = 0 } = {}) {
   const tailMode = mode || (isLongformText(text) ? 'longform' : 'phrase');
@@ -700,6 +754,10 @@ async function repairTailDefect(inputPath, workDir, { text, language, mode, minK
 
   if (TAIL_REPAIR_MODE === 'flag') {
     return { defect: det, action: 'held', flagOnly: true };
+  }
+  if (TAIL_REPAIR_MODE === 'pad') {
+    const padProbe = await padTailProbe(inputPath, workDir, { mode: tailMode });
+    return { defect: det, action: 'held', flagOnly: true, padProbe };
   }
   if (det.trimSec < minKeepSec) {
     throw new Error(`tail defect (${det.kind} ${det.peakDb}dB) with trim point at ${det.trimSec}s — clip is substantially defective`);
@@ -1181,7 +1239,9 @@ module.exports = {
   isLongformText,
   verifyTrimKeepsText,
   repairTailDefect,
+  padTailProbe,
   TAIL_REPAIR_MODE,
+  TAIL_PAD_MS,
   checkSoxInstalled,
   getAudioDuration,
   checkMp3Format,
