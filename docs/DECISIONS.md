@@ -590,3 +590,36 @@ endpoint already runs whole-course, and no new database objects. ~8s cold per co
 
 **Search width:** visible-options
 **Decided by:** agent (taste call on placement, per the brief's "take that call yourself")
+
+---
+
+## 2026-08-05 — "Recently rendered" becomes a real window; the listening page opens on the gate
+
+**Decision:** make the audio-preview `recent` filter an actual 7-day predicate, default the page
+to "Rendered under the gate", and print how much of a mixed filter predates the gate.
+
+**Why:** Tom reported the gate as working ("rendered under the gate in the French course is
+basically excellent") but "when I played recently rendered I got a whole load of bad ones".
+The cause was in `applyFilter`: `recent` applied NO predicate at all, so "Recently rendered" was
+byte-identical to "All". Newest-first paging hides that; `/sample` does not — it draws uniformly
+over the filtered set, and 47,876 of fra_for_eng's 49,098 clips (97.5%) predate the gate. The
+label promised the newest renders and the button served the entire pre-gate history.
+
+**Better:** the page can no longer make a claim the query does not back, and the first thing a
+listener hears is the set the gate actually covers.
+**Simpler:** one predicate added, one default flipped — the per-clip pre-gate badge already
+existed, so nothing new had to be invented to mark provenance.
+**Cheaper (total):** one extra head-count per request, only on the mixed filters; no schema
+change, no re-render, no TTS.
+
+**Searched & rejected:**
+- Delete the `recent` tab (two tabs: gated / all) — rejected on better: "what did we just
+  render" is a real question Tom asks, and newest-first over the whole course is not an answer.
+- Persist a per-clip veracity verdict so `gated` becomes a verdict lookup rather than a time
+  window — genuinely better, and NOT rejected: it is the real fix for the residual dishonesty
+  that a gate-era clip may have been *unchecked*, and for render paths that write `course_audio`
+  without passing through the gate at all. Out of scope for a UI honesty fix; carried as the
+  next move.
+
+**Search width:** visible-options
+**Decided by:** agent

@@ -89,6 +89,27 @@
       published, so they cannot appear below.
     </p>
 
+    <!-- The mixed-provenance warning. "Recently rendered" and "All" both contain
+         clips made long before the gate existed, and on a course whose history
+         dwarfs its gate-era output a random sample of either is overwhelmingly
+         pre-gate audio. Said in the filter's own place, with the real count, so
+         nobody judges the gate by clips it never saw. -->
+    <p
+      v-if="filter !== 'gated' && preGateTotal"
+      data-walk="audio-preview-pre-gate-warning"
+      class="mb-4 border border-line rounded-lg bg-surface px-4 py-2.5 text-xs text-muted leading-relaxed"
+    >
+      <strong class="text-ink">{{ preGateTotal.toLocaleString() }} of the {{ (total ?? preGateTotal).toLocaleString() }} clips
+      in this filter predate the gate</strong> — rendered before {{ gateLiveFromLabel }} and never machine-checked.
+      <template v-if="filter === 'recent'">
+        “Recently rendered” means the last {{ gate.recentWindowDays }} days, which is a recency
+        window and not a quality one.
+      </template>
+      A random sample here is drawn uniformly across the whole filter, so most of what it plays
+      will be pre-gate. Every clip below carries its own <em>pre-gate</em> / <em>rendered under the
+      gate</em> badge; to judge the gate itself, use the first tab.
+    </p>
+
     <!-- The third state. Slots pointing at audio that no longer exists cannot
          appear in the clip list below — there is nothing to list — so this is
          the only place a person can ever see them. Sits with the quarantine
@@ -148,6 +169,7 @@
     <div v-else class="space-y-2">
       <p v-if="sampleMode" class="text-xs text-faint">
         Random sample of {{ clips.length }} from {{ filterLabel }} — playing back to back.
+        <span v-if="sampledPreGate" class="text-ink">{{ sampledPreGate }} of them predate the gate.</span>
       </p>
       <p v-else-if="total != null" class="text-xs text-faint">
         {{ clips.length }} of {{ total }} — newest first
@@ -208,17 +230,22 @@ const apiUrl = getApiUrl()
 const LAST_COURSE_KEY = 'audioPreview.lastCourse'
 const PAGE_SIZE = 50
 
+// Gate-first by default. "Recently rendered" is a recency window, not a
+// quality one: it legitimately contains pre-gate clips, and defaulting to it
+// meant the first thing anyone heard on this page was a mixed bag they had no
+// reason to think was mixed.
 const filterTabs = [
-  { key: 'recent', label: 'Recently rendered' },
   { key: 'gated', label: 'Rendered under the gate' },
+  { key: 'recent', label: 'Recently rendered' },
   { key: 'all', label: 'All' },
 ]
 
 const courses = ref([])
 const activeCourse = ref(props.courseCode || localStorage.getItem(LAST_COURSE_KEY) || '')
-const filter = ref('recent')
+const filter = ref('gated')
 const clips = ref([])
 const total = ref(null)
+const preGateTotal = ref(null)
 const hasMore = ref(false)
 const gate = ref(null)
 const quarantine = ref([])
@@ -242,6 +269,11 @@ const urlCache = new Map()
 
 const filterLabel = computed(() =>
   filterTabs.find(t => t.key === filter.value)?.label.toLowerCase() || filter.value)
+
+// How much of what is actually loaded was never machine-checked. The badges say
+// it per clip; this says it for the batch a listener is about to judge.
+const sampledPreGate = computed(() =>
+  clips.value.filter(c => c.gateState !== 'gate-era').length)
 
 const gateLiveFromLabel = computed(() => {
   if (!gate.value?.liveFrom) return ''
@@ -300,6 +332,7 @@ async function fetchClips ({ append = false } = {}) {
     const data = await resp.json()
     clips.value = append ? [...clips.value, ...data.clips] : data.clips
     total.value = data.total
+    preGateTotal.value = data.preGateTotal ?? null
     hasMore.value = data.hasMore
     gate.value = data.gate
     if (!append) primeVisible()
@@ -434,6 +467,7 @@ async function playRandomSample () {
     if (!data.clips.length) return
     clipRefs.value = []
     clips.value = data.clips
+    preGateTotal.value = data.preGateTotal ?? null
     gate.value = data.gate
     sampleMode.value = true
     await nextTick()

@@ -18,7 +18,13 @@
  * mutation; adding a write endpoint here would break the contract the page is
  * built on):
  *   GET /clips        ?filter=recent|gated|all &limit &offset &role
- *                     → { clips, hasMore, total, gate }
+ *                     → { clips, hasMore, total, preGateTotal, gate }
+ *                       Each filter is a REAL predicate: `recent` is the last
+ *                       RECENT_WINDOW_DAYS, `gated` is the gate-era window,
+ *                       `all` is everything. `recent` used to apply no
+ *                       predicate at all — identical to `all` — which is how a
+ *                       tab labelled "recently rendered" came to serve clips
+ *                       rendered months before the gate existed.
  *   GET /sample       ?filter=… &n=20
  *                     → { clips } — a UNIFORM random sample of the filter,
  *                       drawn by random offsets over the filtered count rather
@@ -80,6 +86,15 @@ const CLIP_COLUMNS = 'id, course_code, text, role, voice_id, origin, s3_key, dur
 // Start of the first render batch that ran under the veracity gate. See the
 // header — this is a render-time boundary, NOT evidence of a per-clip verdict.
 const GATE_LIVE_FROM = '2026-08-04T23:00:00.000Z'
+
+// How far back "recently rendered" reaches. It has to be a real window: the
+// filter previously applied NO predicate at all, which made it byte-identical
+// to "all" — harmless-looking in the newest-first list, and actively misleading
+// through /sample, which then drew uniformly over the whole course history
+// (97.5% of fra_for_eng audio predates the gate). A week is the honest unit of
+// "what did we just render": long enough to hold a multi-day render batch,
+// short enough that it can never quietly become the entire course.
+const RECENT_WINDOW_DAYS = 7
 
 const DEFAULT_LIMIT = 50
 const MAX_LIMIT = 200
@@ -201,10 +216,15 @@ function parseFilter (raw) {
  * One place that turns a filter name into a PostgREST query, so /clips and
  * /sample can never drift apart on what "the current filter" means.
  */
-function applyFilter (query, filter, role) {
+function applyFilter (query, filter, role, now = Date.now()) {
   if (filter === 'gated') query = query.gte('created_at', GATE_LIVE_FROM)
+  if (filter === 'recent') query = query.gte('created_at', recentCutoff(now))
   if (role) query = query.eq('role', role)
   return query
+}
+
+function recentCutoff (now = Date.now()) {
+  return new Date(now - RECENT_WINDOW_DAYS * 24 * 60 * 60 * 1000).toISOString()
 }
 
 /**
@@ -220,7 +240,27 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
     // Said in the payload so a future consumer cannot mistake the filter for a
     // verdict lookup either.
     perClipVerdictsPersisted: false,
+    recentWindowDays: RECENT_WINDOW_DAYS,
     note: 'No per-clip veracity verdict is stored. "gate-era" means rendered while the gate was live (checked-and-passed OR unchecked), not proven passed.',
+  }
+
+  /**
+   * How many clips in the CURRENT filtered set predate the gate. Without this
+   * the page can only badge the rows it happens to have fetched, and a listener
+   * paging or sampling through a mixed set has no way to know what proportion
+   * of it was never machine-checked. Skipped for the gated filter, where the
+   * answer is zero by construction.
+   */
+  async function countPreGate (db, courseCode, filter, role) {
+    if (filter === 'gated') return 0
+    let q = db.from('course_audio')
+      .select('id', { count: 'exact', head: true })
+      .eq('course_code', courseCode)
+      .lt('created_at', GATE_LIVE_FROM)
+    q = applyFilter(q, filter, role)
+    const { count, error } = await q
+    if (error) throw new Error(error.message)
+    return count || 0
   }
 
   // ── GET /clips ────────────────────────────────────────────────────────────
@@ -250,6 +290,7 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
       res.json({
         clips,
         total: count ?? null,
+        preGateTotal: await countPreGate(db, courseCode, filter, role),
         hasMore: count != null ? offset + clips.length < count : clips.length === limit,
         filter,
         gate: gateMeta,
@@ -304,6 +345,7 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
       res.json({
         clips: rows.filter(Boolean).map(normaliseClip),
         total,
+        preGateTotal: await countPreGate(db, courseCode, filter, role),
         filter,
         gate: gateMeta,
       })
@@ -474,4 +516,8 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
 }
 
 module.exports.GATE_LIVE_FROM = GATE_LIVE_FROM
+module.exports.RECENT_WINDOW_DAYS = RECENT_WINDOW_DAYS
 module.exports.gateStateFor = gateStateFor
+module.exports.applyFilter = applyFilter
+module.exports.recentCutoff = recentCutoff
+module.exports.parseFilter = parseFilter
