@@ -1039,7 +1039,15 @@ function endWork() {
 // =============================================================================
 
 app.get('/health', (req, res) => {
-  res.json({ status: 'healthy', service: 'phase8-audio-v13', port: PORT })
+  // tail_repair_mode is here so "is this render service still mutating audio?"
+  // is answerable with one curl from anywhere, rather than by reading the
+  // process environment on the box. 'flag' = detect and report only.
+  res.json({
+    status: 'healthy',
+    service: 'phase8-audio-v13',
+    port: PORT,
+    tail_repair_mode: audioProcessor.TAIL_REPAIR_MODE
+  })
 })
 
 // =============================================================================

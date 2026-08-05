@@ -1181,6 +1181,7 @@ module.exports = {
   isLongformText,
   verifyTrimKeepsText,
   repairTailDefect,
+  TAIL_REPAIR_MODE,
   checkSoxInstalled,
   getAudioDuration,
   checkMp3Format,
