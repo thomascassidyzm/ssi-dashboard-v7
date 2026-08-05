@@ -94,3 +94,74 @@ a deadline defect.
 > **Delete the 27 Azure-Sonia German introduction rows?** They are on the wrong voice, have no
 > duration, are referenced by nothing at all, and every one already has a correct `xai_eve` sibling
 > — so the delete is provably lossless and the S3 audio would be kept. **Recommendation: yes.**
+
+---
+
+## EXECUTED — 2026-08-05
+
+**Scope actually approved and run: 15 of the 27, not all 27.** Tom's answer to Watson
+("yes delete") was to a narrower framing than this document's "27" recommendation — Watson had
+asked specifically about the 15 rows "that each have a correct replacement sitting right next to
+them" (i.e. whose sibling is the row actually wired into `lego_introductions`), and told Tom the
+other 12 were being investigated separately, read-only, out of this scope. This execution honours
+that narrower approval. The remaining 12 (the ones with a same-text sibling but where that sibling
+is NOT the wired row) were left completely untouched.
+
+**Deriving the 15, deterministically.** Query: among the 27 `en-GB-SoniaNeural` `deu_for_eng`
+`presentation` rows with `duration_ms IS NULL`, find every same-`text_normalized` sibling
+`presentation` row, and keep the Sonia row only if one of its siblings is referenced by
+`lego_introductions.presentation_audio_id` or `lego_introductions.audio_uuid`. This produced
+**exactly 15 rows** — matching Tom's approval count, so the run proceeded.
+
+**Pre-delete verification (Tom's condition).** Before deleting anything, each of the 15 replacement
+siblings was fetched from S3 by its real `s3_key` and decoded with the repo's whisper-based
+veracity check (`services/audio-veracity.cjs`, reused unmodified) — not just a non-null
+`duration_ms` check. **15/15 passed** (`pass: true`, CER range 0–0.18, all well under threshold).
+Full results: `scripts/deu-sonia-deletion/verification-results.json`.
+
+**Snapshot.** All 15 full rows (every column, including `s3_key`) were written to
+`docs/overnight-audio-2026-08-05/deleted-deu-sonia-presentation-2026-08-05.json` and committed
+*before* the delete ran.
+
+**Delete.** DRY_RUN pass first (`scripts/deu-sonia-deletion/02-snapshot-and-delete.cjs`), then live.
+Immediately before each delete the row was re-asserted to still have `duration_ms IS NULL`,
+`voice_id = 'en-GB-SoniaNeural'`, and zero references across all fourteen linking columns
+(`tools/repair-silent-clips.cjs:37-43` enumeration). No drift found. **15/15 `course_audio` rows
+deleted. Zero skipped.** S3 objects were never touched — no S3 delete call was made anywhere in
+this run.
+
+**Post-delete verification.**
+- `role='presentation' AND duration_ms IS NULL` residue: **12** — exactly the untouched orphans, as
+  expected.
+- References to the 15 deleted ids across all fourteen linking columns: **0**.
+- The 15 deleted ids in `course_audio`: **0** (confirmed gone).
+- The 15 wired sibling rows: all **15 still present**, all `voice_id='xai_eve'`, all
+  `duration_ms > 0`, all **still wired** into `lego_introductions` — the learner path is
+  unaffected and was re-confirmed live in Supabase.
+
+**Genuine gap found, reported honestly, not papered over.** Re-checking the 15 deleted rows' own
+`s3_key`s afterwards (as a "did we actually keep the audio" sanity check) found that **none of them
+resolve** — `GetObjectCommand` returns `NoSuchKey` (404) for all 15, at their `pending/<uuid>.mp3`
+keys. This was checked for a permissions artefact first: the identical credentials successfully
+fetched and decoded a `mastered/` sibling object in the verification step above, so this is a real
+absence, not an access problem. **This is not something this run caused** — no S3 delete was ever
+issued, and the objects were checked read-only before any DB delete happened. The `pending/` prefix
+(versus the `mastered/` prefix the healthy siblings use) suggests these 15 rows were themselves
+stubs from a batch job whose TTS render/upload never completed — consistent with `duration_ms` being
+NULL on them from creation. Net effect: the DB rows are gone and nothing pointed at them, so nothing
+learner-facing changes either way, but the "audio is kept in S3 for reversibility" premise did not
+actually hold for these rows because there was no audio in S3 to keep. Flagging for Tom rather than
+treating the plan's stated safety net as verified when it wasn't.
+
+**Not touched, not re-opened:** the other 12 Sonia rows (siblings not wired into
+`lego_introductions`). Investigation of those is out of this job's scope per Tom's explicit
+instruction.
+
+**One paragraph for Tom on the 12, marked as a question, not an action taken:** this plan document's
+own live re-run found all 27 unreferenced and all 27 backed by a correct-voice sibling — the 15/12
+split is only about which sibling happens to be wired into `lego_introductions`, not about whether
+the Sonia row itself is safe to delete. If the other investigation converges on the same "no FK,
+healthy sibling exists" conclusion for the 12, the case for deleting them looks structurally
+identical to the 15 just done. That is an observation, not a recommendation to act — it's Tom's call
+whether "sibling wired into lego_introductions" was the intended safety bar or just the visible
+proxy for it.
