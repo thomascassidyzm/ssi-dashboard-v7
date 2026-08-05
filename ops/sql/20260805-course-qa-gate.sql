@@ -532,10 +532,18 @@ LEFT JOIN LATERAL (
   WHERE so.course_code = c.course_code
     AND so.round_index <= g.required_rounds
 ) r ON true
+-- Flags that still bite. A flag raised against bytes that have since been
+-- replaced by an accepted repair is about audio no longer on the learner
+-- path, so it must not count here — services/audio-repair-core.cjs bumps
+-- course_audio.audio_revision on every accept, which is what makes this
+-- comparison the whole test. course_qa_clip_status applies the same rule.
 LEFT JOIN LATERAL (
   SELECT count(DISTINCT f.audio_id) AS open_flag_clips
   FROM audio_clip_flags f
-  WHERE f.course_code = c.course_code AND f.resolution IS NULL
+  JOIN course_audio a ON a.id = f.audio_id
+  WHERE f.course_code = c.course_code
+    AND f.resolution IS NULL
+    AND f.audio_revision >= a.audio_revision
 ) fl ON true;
 
 COMMENT ON VIEW course_qa_estate IS
