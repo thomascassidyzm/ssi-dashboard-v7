@@ -3,22 +3,42 @@
 -- Follow-up to 20260805_course_audio_veracity_verdict.sql, forced by the live
 -- run rather than predicted: the audio-preview page 500'd with "canceling
 -- statement due to statement timeout" the moment it asked for its verdict
--- split.
+-- split on fra_for_eng (49,098 clips).
 --
--- The first migration indexed veracity_checked_at, which answers "which clips
--- have a verdict". The page's actual question is "how many passed, how many
--- failed" — a count over veracity_pass — and on a 1.2M-row course with no
--- index for it that is an exact count over a sequential scan.
+-- Two lessons are baked into the shape below, both measured on the live table.
 --
--- Partial on `veracity_pass IS NOT NULL`, so it covers only rows that carry a
--- verdict at all. That is a few thousand rows today against 2.5M, and it never
--- grows to cover the unchecked backlog: the router does NOT count the
--- unchecked population, it subtracts (total - passed - failed), because the
--- one number that cannot be indexed cheaply is also the one already implied by
--- the other three.
+-- 1. THE WORST CASE IS "NONE". The page's list query filters on the verdict and
+--    orders by created_at DESC. With no matching row — the state EVERY course
+--    is in the day this ships — the planner walks the created_at index over the
+--    whole course and finds nothing, having read all of it. The index therefore
+--    carries created_at, so "none" is answered from the index in microseconds
+--    instead of by reading the course to prove a negative.
+--
+-- 2. THE PREDICATE MUST MATCH THE QUERY EXACTLY. A single partial index on
+--    `WHERE veracity_pass IS NOT NULL` was measurably NOT used for
+--    `veracity_pass IS TRUE` — the planner fell back to a bitmap heap scan over
+--    50,918 rows. Two indexes whose predicates are the two queries verbatim are
+--    both chosen, and both answer in ~0.03 ms.
+--
+-- Neither index covers the unchecked population, and neither ever will: that
+-- predicate matches nearly all 2.5M rows, and the router states it as
+-- total - passed - failed rather than counting it. Both indexes are 8 KB today
+-- and grow only with clips that carry a verdict.
+--
+-- Requires ANALYZE afterwards — the columns were added minutes earlier and the
+-- planner had no statistics for them, which is half of why the first plan was
+-- so bad.
 --
 -- Applied to production 2026-08-05.
 
-CREATE INDEX IF NOT EXISTS idx_course_audio_veracity_pass
-  ON course_audio (course_code, veracity_pass)
-  WHERE veracity_pass IS NOT NULL;
+DROP INDEX IF EXISTS idx_course_audio_veracity_pass;  -- the IS NOT NULL attempt
+
+CREATE INDEX IF NOT EXISTS idx_course_audio_veracity_passed
+  ON course_audio (course_code, created_at DESC)
+  WHERE veracity_pass IS TRUE;
+
+CREATE INDEX IF NOT EXISTS idx_course_audio_veracity_failed
+  ON course_audio (course_code, created_at DESC)
+  WHERE veracity_pass IS FALSE;
+
+ANALYZE course_audio;
