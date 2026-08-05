@@ -708,21 +708,23 @@ Stated explicitly rather than papered over.
 ## 8. Source index — and where each file physically lives
 
 > 🚨 **Read this column before you go looking.** **None of the primary sources are on `main`.**
-> The three most-cited documents and **all four listening-test HTMLs are untracked working-tree
-> files** — they exist only in the `ssi-dashboard-v7-clean` checkout on this machine, in no commit,
-> on no branch, on no remote. If that working tree is cleaned or the machine is lost, **the evidence
-> behind most of the numbers in this handover is gone.** Verified 2026-08-05 with
-> `git log --all -- <path>` returning nothing for each.
+> The three most-cited documents and **all four listening-test HTMLs were untracked working-tree
+> files** — they existed only in the `ssi-dashboard-v7-clean` checkout on this machine, in no commit,
+> on no branch, on no remote. **Update 2026-08-05:** all seven are now committed on this branch
+> (`docs/audio-defect-findings-handover-2026-08-05`) and pushed to origin, so they are no longer at
+> risk from a `git clean` on that one machine — but this branch itself remains unmerged to `main`.
+> Verified 2026-08-05 with `git log --all -- <path>` returning nothing for each, before the commit
+> below.
 
 | file | what it carries | where it lives |
 |---|---|---|
-| `docs/audio-tail-gate-decision-memo-2026-08-04.md` | the 7,209-clip base rates, padding experiment, decay/rate markers, what was NOT claimed | **UNTRACKED — working tree only** |
-| `docs/proving-run-2026-08-04.md` | 20-clip re-render, per-clip table, evidence tiers, the withdrawn positive | **UNTRACKED — working tree only** |
-| `docs/adversarial-verification-2026-08-05.md` | independent COULD-NOT-VERIFY verdicts on four headline claims | **UNTRACKED — working tree only** |
-| `docs/tail-click-listening-test.html` (2.4 MB) | blind click test, 104 clips — holds the 7 confirmed-click IDs | **UNTRACKED — working tree only** |
-| `docs/cutoff-listening-test.html` (2.2 MB) | paired padding test | **UNTRACKED — working tree only** |
-| `docs/english-cutoff-test.html` (1.5 MB) | English-only cut-off test, 22/49 | **UNTRACKED — working tree only** |
-| `docs/proving-run-listening-test.html` (706 KB) | 12-pair blind A/B, arms shuffled | **UNTRACKED — working tree only** |
+| `docs/audio-tail-gate-decision-memo-2026-08-04.md` | the 7,209-clip base rates, padding experiment, decay/rate markers, what was NOT claimed | committed on this branch (was UNTRACKED) |
+| `docs/proving-run-2026-08-04.md` | 20-clip re-render, per-clip table, evidence tiers, the withdrawn positive | committed on this branch (was UNTRACKED) |
+| `docs/adversarial-verification-2026-08-05.md` | independent COULD-NOT-VERIFY verdicts on four headline claims | committed on this branch (was UNTRACKED) |
+| `docs/tail-click-listening-test.html` (2.4 MB) | blind click test, 104 clips — holds the 7 confirmed-click IDs | committed on this branch (was UNTRACKED) |
+| `docs/cutoff-listening-test.html` (2.2 MB) | paired padding test | committed on this branch (was UNTRACKED) |
+| `docs/english-cutoff-test.html` (1.5 MB) | English-only cut-off test, 22/49 | committed on this branch (was UNTRACKED) |
+| `docs/proving-run-listening-test.html` (706 KB) | 12-pair blind A/B, arms shuffled | committed on this branch (was UNTRACKED) |
 | `docs/exception-lego-leak-sweep-2026-08-04.md` | the 733/425/20 funnel and the ASCII `\b`/`\w` trap | committed, **local branch only — not pushed to origin** |
 | `docs/deu-audio-repair-plan-2026-08-04.md` | German repair scope and the amputation claim | committed, **local branch only — not pushed** |
 | `docs/audio-veracity-gate-2026-08-04.md` | gate design, 97.6%/0%, edit floor, whisper traps, dose-response | `origin/docs/audio-veracity-estate-sweep-2026-08-05`, `origin/docs/fra-audio-repair-2026-08-05` |
