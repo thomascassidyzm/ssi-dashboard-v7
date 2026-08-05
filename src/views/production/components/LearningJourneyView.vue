@@ -285,7 +285,7 @@
                 <!-- Open this cycle in the real learning app — leaves Popty -->
                 <button
                   class="open-cycle-btn w-6 h-6 flex items-center justify-center rounded text-muted hover:text-ink hover:bg-surface-3 transition-colors text-base leading-none"
-                  title="Open this round in the learning app"
+                  title="Open the learning app from here"
                   @click.stop="openRoundInLearningApp(round, idx + 1)"
                 >&nearr;</button>
               </div>
