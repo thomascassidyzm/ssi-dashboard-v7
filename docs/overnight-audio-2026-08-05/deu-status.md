@@ -66,7 +66,7 @@ the truncation being gone. Examples:
 
 `"sie ist durch gegangen"` was decoding as `"ZIIS."` before — that is what a learner was hearing.
 
-Applied log: `logs/deu-batch1-remainder-applied.json`.
+Applied log: `deu-batch1-remainder-applied.json`.
 
 ---
 
