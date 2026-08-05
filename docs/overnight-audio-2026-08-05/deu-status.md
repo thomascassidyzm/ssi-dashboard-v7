@@ -70,15 +70,38 @@ Applied log: `logs/deu-batch1-remainder-applied.json`.
 
 ---
 
-## Batch 2 — the opening stretch, seeds 1–30 — IN FLIGHT
+## Batch 2 — the opening stretch, seeds 1–30 — COMPLETE (177/177), VERIFIED
 
 This is the stretch Beuno actually hears. Detection is read-only and costs nothing; only the repair
 list that comes out of it costs money.
 
-| sub-batch | clips | status |
-|---|---:|---|
-| seeds 1–10 | 694 | detection running (`/tmp/deu-s1-10-detect.log`) |
-| seeds 11–30 | 1,843 | queued behind it |
+| stage | result | when |
+|---|---|---|
+| detection | **2,665 clips checked, 178 failed** | finished 11:30 |
+| repair (`--apply`) | **177 re-rendered, 0 failed** (43 in the 10:00 hour, 134 in the 11:00 hour) | finished 11:28 |
+| independent re-check of the 177 replacements | **177/177 checked, 0 failing** | 12:01, log `logs/deu-s1-30-verify.txt` |
+
+Roles repaired: `target2` 77, `known` 60, `target1` 40. Cost was the dry run's estimate — 4,178
+characters, ≈$0.017 at the Azure S0 rate; xAI per-character rates are not recorded in this repo, so
+treat that as a lower bound rather than a quote.
+
+**Link integrity after the repair, measured not assumed:** all **916** phrases in seeds 1–30 have
+`known_audio_id`, `target1_audio_id` and `target2_audio_id` non-null and pointing at a row that
+exists. Zero null, zero dangling.
+
+**One loose end, not learner-facing.** 3 of the 177 new rows (`zurückkommen`,
+`I'd like to be able to speak after you finish`, `aber ich will nicht aufhören zu sprechen`) are not
+referenced by any phrase — orphan duplicates from repairing the same text twice. The phrases
+themselves are correctly linked to live audio, so nothing a learner hears is affected; these are
+three unreferenced rows worth a fraction of a cent. Logged, not deleted — deleting audio rows needs
+a deletion plan and approval.
+
+**Provenance note.** The `--apply` run above was executed by the previous worker on this job
+(`a6eb8519`) between 10:45 and 11:28; that worker died without reporting, which is why the repair
+looked outstanding. This session established from the DB — 191 of the original 2,665 ids no longer
+exist, = 177 batch-2 replacements + the 14 batch-1 ones — that the spend had already happened, and
+so re-ran detection rather than re-rendering. The re-run cost nothing: `2,474 checked, 0 failed,
+0 re-rendered` entirely from the resume cache.
 
 Clip selection is by **authoritative linkage**, not text matching: the
 `known_audio_id` / `target1_audio_id` / `target2_audio_id` columns on `course_practice_phrases`,
