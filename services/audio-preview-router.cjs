@@ -320,10 +320,21 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
    * is "nearly all of this is unchecked" — a page that could not say so would
    * be back to implying quality it has not measured.
    *
-   * Three head-only counts, so this costs three index probes, not a scan of the
-   * rows.
+   * Only the two verdict-bearing populations are COUNTED, and `unchecked` is
+   * the remainder. That is not a shortcut, it is the difference between the
+   * page working and the page 500-ing: `veracity_pass IS NULL` matches nearly
+   * every one of the 2.5M rows in this table, and an exact count of it is a
+   * sequential scan that hits the statement timeout — measured live on
+   * fra_for_eng, 2026-08-05, which is how this shape was arrived at. Passed and
+   * failed ride a partial index over the few thousand rows that carry a
+   * verdict, so this costs two small probes on top of the count the caller
+   * already has.
+   *
+   * @param {number|null} total  the size of the same filtered set, which the
+   *   caller has already counted. Null means we cannot state a remainder, and
+   *   the page must not invent one.
    */
-  async function verdictTotals (db, courseCode, filter, role) {
+  async function verdictTotals (db, courseCode, filter, role, total) {
     const count = async (apply) => {
       let q = db.from('course_audio')
         .select('id', { count: 'exact', head: true })
@@ -333,12 +344,15 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
       if (error) throw new Error(error.message)
       return n || 0
     }
-    const [passed, failed, unchecked] = await Promise.all([
+    const [passed, failed] = await Promise.all([
       count(q => q.is('veracity_pass', true)),
       count(q => q.is('veracity_pass', false)),
-      count(q => q.is('veracity_pass', null)),
     ])
-    return { passed, failed, unchecked }
+    return {
+      passed,
+      failed,
+      unchecked: total == null ? null : Math.max(0, total - passed - failed),
+    }
   }
 
   // ── GET /clips ────────────────────────────────────────────────────────────

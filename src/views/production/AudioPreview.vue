@@ -311,7 +311,10 @@ const sampledUnchecked = computed(() =>
 const filterTotal = computed(() => {
   if (total.value != null) return total.value
   const v = verdictTotals.value
-  return v ? v.passed + v.failed + v.unchecked : 0
+  // `unchecked` is a remainder the API can only state when it knows the total,
+  // so it is null when it doesn't. Adding null in would print a number that is
+  // simply wrong; better to fall back to the verdicts we did count.
+  return v ? v.passed + v.failed + (v.unchecked ?? 0) : 0
 })
 
 function apiHeaders () {
