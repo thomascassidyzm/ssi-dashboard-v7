@@ -50,7 +50,7 @@
     <div v-else-if="state.currentPhase === 'loading' || state.isLoading" class="loading-phase">
       <div class="loading-spinner"></div>
       <p class="loading-text">
-        Building recording script<span v-if="state.maxSeed"> for seeds 1–{{ state.maxSeed }}</span>…
+        Building recording script<span v-if="state.maxSeed"> for a quick sample of the course</span>…
       </p>
     </div>
 
@@ -58,8 +58,10 @@
     <div v-else-if="state.currentPhase === 'script-loaded'" class="script-loaded-phase">
       <div class="script-summary">
         <h2>Recording Script Ready</h2>
+        <!-- Deliberately vague about WHICH seeds: the optimizer picks by LEGO
+             coverage under the cap, so naming a range would be a lie. -->
         <p v-if="state.scriptInfo?.maxSeed" class="script-cap-note">
-          Limited to seeds 1–{{ state.scriptInfo.maxSeed }} of the course.
+          Limited to a quick sample from the early part of the course.
         </p>
         <div class="script-stats">
           <div class="script-stat">
@@ -87,6 +89,29 @@
         <div class="script-actions">
           <button class="btn-begin" @click="onBeginContinuous">Begin Recording</button>
           <button class="btn-cancel" @click="resetSession">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase: Nothing left to record. The optimizer prunes already-recorded
+         items, so a second press of the test-batch button after that sample is
+         done returns a valid script with zero items. Without its own phase that
+         landed in script-loaded showing "0 / 0" behind a live Begin Recording
+         button. -->
+    <div v-else-if="state.currentPhase === 'script-empty'" class="script-loaded-phase">
+      <div class="script-summary">
+        <h2>Nothing left to record</h2>
+        <p class="script-instructions">
+          <template v-if="state.scriptInfo?.maxSeed">
+            Every item in this quick sample has already been recorded for this
+            voice. Start the full run to carry on with the rest of the course.
+          </template>
+          <template v-else>
+            Every item in this course has already been recorded for this voice.
+          </template>
+        </p>
+        <div class="script-actions">
+          <button class="btn-cancel" @click="resetSession">Back</button>
         </div>
       </div>
     </div>
@@ -328,9 +353,14 @@ function onModeSelect(mode, opts = {}) {
   // Re-establish the cap on every choice rather than relying on the value set
   // at mount: resetSession() clears it (singleton hygiene), so a recorder who
   // backs out of a session and picks again would otherwise silently lose the
-  // link's ?maxSeed and start an uncapped run. An explicit opts.maxSeed (the
-  // test-batch button) wins over the link.
-  setMaxSeed(opts.maxSeed ?? route.query.maxSeed)
+  // link's ?maxSeed and start an uncapped run. Where both an explicit
+  // opts.maxSeed (the test-batch button) and a link cap exist, the NARROWER one
+  // wins — a recorder handed ?maxSeed=3 who presses "test batch" must not be
+  // silently widened to 5.
+  const caps = [opts.maxSeed, route.query.maxSeed]
+    .map(v => parseInt(v, 10))
+    .filter(n => Number.isInteger(n) && n > 0)
+  setMaxSeed(caps.length ? Math.min(...caps) : null)
   selectMode(mode)
 }
 

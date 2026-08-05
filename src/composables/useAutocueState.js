@@ -16,7 +16,7 @@ const { getCourseName } = useCourses()
 // Singleton state for the entire autocue session
 const state = reactive({
   // Session phase
-  currentPhase: 'mode-select', // mode-select, role-select, script-loaded, recording, summary, review
+  currentPhase: 'mode-select', // mode-select, role-select, script-loaded, script-empty, recording, summary, review
 
   // Mode selection
   selectedMode: null, // 'new-course' or 'regeneration'
@@ -670,8 +670,15 @@ export function useAutocueState() {
         state.targetLanguage = course.target_lang || 'Unknown'
       }
 
-      // Go to script-loaded confirmation
-      state.currentPhase = 'script-loaded'
+      // An empty script is a real, expected outcome, not a loaded one: the
+      // endpoint prunes items already recorded for this role, so re-running a
+      // capped test batch that is finished returns 200 with zero items. Landing
+      // that in script-loaded showed "0 / 0" behind a live Begin Recording
+      // button. Give it its own phase so the UI can say what actually happened.
+      const isEmpty = state.phrases.length === 0 &&
+        !(data.totalPhrases > 0) && !(data.totalDirect > 0)
+
+      state.currentPhase = isEmpty ? 'script-empty' : 'script-loaded'
 
     } catch (err) {
       console.error('[Autocue] Failed to load optimizer script:', err)
