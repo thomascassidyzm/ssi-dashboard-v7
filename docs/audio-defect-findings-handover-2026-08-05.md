@@ -11,7 +11,13 @@ duration-based detection blind, and a **defect class no acoustic detector will e
 Every number below names the file it came from. Where a number is unverified, it says so — see
 §7 GAPS, and note up front that `docs/adversarial-verification-2026-08-05.md` independently marks
 several headline numbers **COULD-NOT-VERIFY** because the production database was unreachable from
-that workspace (DNS `EAI_AGAIN` on `aws-1-eu-west-1.pooler.supabase.com`).
+that workspace (DNS `EAI_AGAIN` on `aws-1-eu-west-1.pooler.supabase.com`). §4.2 explains why that
+verdict means different things for different claims.
+
+**If you read only three things:** the terminal-RMS trap in §3.3 (a naive last-50 ms RMS check reads
+the repair's own silence pad and scores damaged clips clean), the base rates in §2.2 (the click
+being hunted is ~42× rarer than the cut-off it caused), and the ear-confirmation warning at the top
+of §1 (there is no human-verdict ground-truth file in this repo — do not go looking for one).
 
 ---
 
@@ -44,6 +50,23 @@ Unicode-unsafe regex, applicable to any filename/text/ID matching Tom's tool doe
 
 Tom's detector should find these before its output is trusted. They are split by evidence strength;
 do not merge the tiers.
+
+> 🚨 **Read this before using the word "confirmed".** In this repo **essentially nothing is
+> confirmed by a human ear at clip-ID granularity.** Every individually-named clip below is
+> confirmed by an **ASR round-trip** (whisper `small` + `medium`), a **physics check** (implied
+> words-per-second above what a voice can articulate), or a **before/after duration delta** — never
+> by a person listening to that clip and recording a verdict against its ID.
+>
+> Two blind-listening pages *were* judged by ear, and their **aggregate** tallies are quoted in the
+> tail-gate memo — but **the per-clip verdicts were never persisted**; they live in browser
+> `localStorage` only. A third page (`proving-run-listening-test.html`) was built and rendered in
+> headless Chromium to prove it *functions*, but was **never actually listened to** — headless runs
+> muted (`docs/proving-run-2026-08-04.md:239-246`).
+>
+> This does not weaken the clips in §1.1 as a calibration set — two independent ASR models plus a
+> physics check is strong evidence of *word loss*. It means the brief's phrase "confirmed by ear"
+> does not describe anything that exists in this repo at clip granularity, and Tom should not expect
+> to find a human-verdict ground-truth file. There isn't one.
 
 ### 1.1 Tier A — amputation confirmed by two independent ASR models (8 clips)
 
@@ -112,8 +135,19 @@ Source: `docs/audio-tail-gate-decision-memo-2026-08-04.md:52-62`, harness
 0/28 is a genuine specificity result and is the closest thing in this investigation to the "~20
 confirmed by ear" the brief expected.
 
-**The individual clip IDs for these 7 are not stated in the committed markdown** — they are inside
-`docs/tail-click-listening-test.html` (2.4 MB). See GAPS.
+**Which 7 clips they were is not recoverable.** The *populations* are — the clip lists are embedded
+in the listening-test HTML as an XOR-obfuscated metadata blob and can be decoded programmatically
+(done during this handover for `tail-click`, `cutoff` and `english-cutoff`). But **which clip
+received which verdict was never persisted anywhere**: verdicts lived in browser `localStorage`, and
+only the bucket-level tallies above were written down. A clip-level table cannot honestly be
+reconstructed from a bucket-level count, so none is offered here.
+
+Two further ear-judged aggregates, same caveat:
+
+| test | n | result | source |
+|---|---:|---|---|
+| paired padding test (`cutoff-listening-test.html`) | 96 clips = 48 pairs | padding changed **0 of 48** paired verdicts | memo `:126-127` |
+| English-only cut-off (`english-cutoff-test.html`) | 50 rendered, **49 scored** | **45% "ends abruptly" (22/49)** | memo `:86-87` |
 
 ### 1.5 One confirmed truncation, hand-adjudicated (fra pilot)
 
@@ -122,11 +156,25 @@ confirmed by ear" the brief expected.
 | | result |
 |---|---|
 | raw agreement between the automated gate and the manual harness | **247/250 (98.8%)** |
-| the one confirmed truncation — `"I'd like to guess"` → `"I'd like"` | **both flag it** (CER 0.53, 9 characters out) |
+| the one confirmed truncation — **`0e698b7f-ad1a-4a11-bf43-b42b7147f291`**, `fra_for_eng` known/eng, `"I'd like to guess"` → `"I'd like"` in 0.55 s | **both flag it** (CER 0.53, 9 characters out; implied **7.25 w/s** against a healthy max of 5.27) |
 | the three flagged then adjudicated NOT defects — `"ce"`, `"vas"`, `"te"` | gate clears all three (1–3 characters out) |
 | clips the gate flags that the humans cleared | **0** |
 
-Against human-adjudicated ground truth: one real defect caught, zero false alarms.
+Against hand-adjudicated ground truth: one real defect caught, zero false alarms. The adjudication
+was of *ASR decodes*, not of audio — the pilot doc states plainly that **"no human has listened to
+any of these 250 clips"** (`docs/fra-render-pilot-gate-2026-08-04.md:144`, on branch
+`docs/fra-render-pilot-gate-2026-08-04`).
+
+### 1.6 Further detector-flagged populations that were NEVER acoustically checked
+
+Listed so Tom does not mistake them for verified defects — each says so in its own source:
+
+| population | n | flagged by | check performed |
+|---|---:|---|---|
+| `deu_for_eng` probe-kept clips | 13 | implied 6.01–7.94 w/s (healthy max 5.27) + whisper prefix-only | **none** — "I have not listened to these clips" (`docs/forced-alignment-2026-08-04/findings.md:151`) |
+| amputation-probe signature clips | 7 | speech-span ratio + ASR word retention, p = 0.00001 | ASR only (`docs/amputation-tts-probe-2026-08-04.md:90-105`) |
+| `pod_explainer` French clips | 169 | free ms/char < 40 predictor, "high precision, poor recall" | **zero acoustic or ear check** (`docs/introductions-audio-coverage-2026-08-05.md:173, 189-191`) |
+| `deu_for_eng` "truly silent" | 905 | dB threshold / duration | not ear, not content |
 
 ---
 
@@ -163,10 +211,18 @@ Source: `docs/audio-tail-gate-decision-memo-2026-08-04.md:22-30`, across `deu_fo
 | | count | share |
 |---|---:|---:|
 | clips the tail gate flags | 835 | 11.6% |
+| — of which `resurgence` / `rise` / `burst` | 447 / 366 / 22 | (sums to 835) |
+| clean | 6,374 | 88.4% |
 | clips that **audibly click** | ~77 | **1.1%** |
 | clips that **audibly sound cut off** | ~3,244 | **45%** |
 
 > "The defect being chased is **~42× rarer** than the defect being caused." — `:30`
+
+The per-rule split is decoded from the `scanStats` blob embedded in
+`docs/tail-click-listening-test.html` (`scanned: 7209, resurgence: 447, rise: 366, burst: 22,
+clean: 6374`) and reconciles exactly with the memo's 835. Note **`rise` alone is 366 of the 835 —
+44% of the whole queue — and scored 0/24 audible clicks** in blind listening (§1.4), consistent with
+§2.3's finding that it is a trailing-room detector.
 
 **This is the single most important calibration fact in the document.** A tail/click detector run
 naively over this estate has a ~9% precision floor and is chasing a 1.1% base rate, while a 45%
@@ -246,15 +302,34 @@ clip's length.** A duration check therefore sees nothing.
 atrim=end=cutAt, areverse, afade=t=in:st=0:d=0.008, areverse, apad=pad_dur=0.1
 ```
 
-Read that chain left to right: `atrim` **cuts audio off at `cutAt`**, an 8 ms fade is applied to the
-new ending, and then `apad` **adds 100 ms of silence back on**.
+Verified live in the working tree at `services/audio-processor.cjs:714-715`. Read left to right:
+`atrim=end=cutAt` **discards every sample after `cutAt`**; the `areverse/afade/areverse` sandwich
+puts an 8 ms fade-out on the new ending; `apad=pad_dur=0.1` **appends 100 ms of digital silence**.
 
 > "A cut landing near the end **barely changes total length, so duration checks see nothing** — but
 > the audio after `cutAt` is gone." — `:55-56`
 
-So the mechanism is confirmed **from the filter chain itself**, not inferred: trim-then-pad is
-length-preserving by construction. It is not that clicks were silenced in place — it is that speech
-was **removed and backfilled with silence**, which is the same blindness with a worse outcome.
+**Precisely how near-null the duration signal is.** The length change is:
+
+```
+Δ = 0.100 s − (originalDuration − cutAt)
+```
+
+The detector's analysis window is `tailMs = 400` (`audio-processor.cjs:378`), and the `rise` and
+`resurgence` rules both derive `trimSec` from an index at or after
+`first = wins.length - tailWins` (`:401-402`) — i.e. **within the last 400 ms of the file**. So for
+those two rules **Δ is bounded to (−300 ms, +100 ms]**, and a cut landing ~100 ms from the end gives
+**Δ ≈ 0**. Only rule 1 (`burst`) can set `trimSec` from an earlier `gapStart` and cut deeper; the
+surviving German run log shows cut points of **min 0.28 s, median 0.544 s, max 2.074 s** over 355
+single-pass repairs.
+
+So the correct statement is **not** that the repair is exactly length-preserving — it is that
+**the pad is roughly the size of the cut, so duration is a near-null and unreliably-signed signal**,
+with no threshold that separates repaired from clean. It is not that clicks were silenced in place:
+speech was **removed and backfilled with silence**, which is the same blindness with a worse outcome.
+
+In `repair` mode this runs up to **3 passes**, each cutting deeper (`cutAt = recheck.trimSec`), and
+throws if the clip is still dirty after 3.
 
 ### 3.2 The three independent signatures that survived the length-blindness
 
@@ -279,12 +354,22 @@ needs no listening (`:70-71`). German median 0.68, n=7, is directional only.
 
 | signal | sees a repaired clip? | why |
 |---|---|---|
-| duration / total length | **NO** | trim-then-pad is length-preserving by construction (§3.1) |
-| file size | **NO** | same reason; padded silence compresses but length is restored |
+| duration / total length | **NO** | Δ bounded to (−300, +100] ms and ≈0 for a cut near the end (§3.1) |
+| length-diff vs a fresh re-render | **worse than NO** | fresh renders are longer and slower anyway — "any measure correlated with duration will favour them for free" (`proving-run-2026-08-04.md:219-220`) |
+| **file size** | **NO** | the encoder is **constant bit rate** — `'-b', String(bitrate), '--cbr'` at `audio-processor.cjs:114-115`, `bitrate = 96` mono (`:95`). File size is a linear function of duration and carries **zero independent information.** |
+| **trailing room / silence-at-end** | **INVERTED — actively misleading** | the 100 ms pad means a *repaired* clip scores **better**: shipped median 100 ms vs fresh 90 ms. Gating on ≥120 ms trailing room **failed 47 of 60** fresh candidates — the gate was measuring the defect as if it were a virtue (`proving-run-2026-08-04.md:114-117, 127`) |
+| a `repaired` DB column or a log line | **NO** | "a log line records that a code branch executed, not that the resulting file is bad" (`docs/finish-the-job-2026-08-05/deu-376-accounting.md:72-77`) |
 | word-presence ASR (the veracity gate) | **only above ~800 ms of loss** | see the dose-response below |
-| terminal RMS vs body RMS | **YES** | `tools/physical-tail-probe.cjs` |
-| decay steepness | **YES** | 30 ms vs 80 ms, p = 0.0037 |
+| terminal RMS vs body RMS | **YES — with a trap, see below** | `tools/physical-tail-probe.cjs` |
+| decay steepness | **YES — the tightest signal** | 30 ms vs 80 ms, p = 0.0037; the steepest observed is 10 ms, which *is* the 8 ms `afade` |
 | speech rate (chars/sec) | **YES** | 21.1 vs 16.1, p = 0.0032 |
+| zero-run detection | finds the pad exactly, but **fails as a per-clip predictor** | 45.8% vs 44.0%, p = 1.00 (§3.5) |
+
+> 🪤 **The terminal-RMS trap — the single most actionable design note in this document.**
+> The 100 ms pad sits **after** the cut. So a naive "measure RMS over the final 50 ms" reads
+> **the pad**, finds digital silence, and scores a *repaired* clip as a clean natural decay. To see
+> the damage the probe must measure the 50 ms **immediately before the trailing silence**, not the
+> last 50 ms of the file. This applies to `tools/physical-tail-probe.cjs` as written (§3.4).
 
 **The dose-response curve** — synthetic tail amputation on 12 healthy clips, read-only on copies via
 `scripts/veracity-validate/tail-probe.cjs` (`audio-veracity-gate-2026-08-04.md:192-204`):
@@ -354,8 +439,8 @@ The mode determines whether the length-preserving damage above was still happeni
 
 | commit | change |
 |---|---|
-| `d5ad9f2c` | `TAIL_REPAIR_MODE=flag` — stop `repairTailDefect` mutating audio |
-| `4c5bbf90` | default changed to `flag`, "so the fix travels with the code" |
+| `d5ad9f2c` | introduces `TAIL_REPAIR_MODE`, **default `'repair'` — i.e. default-OFF**, protecting only a machine where someone had set the env var (watson-1 had it; the Camberley Mac, which also renders production audio, did not) |
+| `4c5bbf90` | default changed to `'flag'`, "so the fix travels with the code" |
 | `30e59aa1` | `TAIL_REPAIR_MODE=pad` — padded re-check before shipping a tail flag untouched |
 | `c5370bc6` | decision record: "the pad is a **probe**, not a repair" |
 | `b4831755` | prove which `repairTailDefect` branch is live, before spending |
@@ -378,11 +463,38 @@ It also notes the unexplained remainder **1,107 − 449 − 282 = 376**. A later
 claims to close that 376 ("351 renders the detector never fired on, plus 25 never re-rendered") —
 **that closure is itself unverified against a run log.**
 
-⚠️ **Version-state warning for anyone reading the code:** `services/audio-processor.cjs` has
-**uncommitted working-tree modifications** on branch `fix/audio-finish-the-job-2026-08-05` as of
-2026-08-05. The adversarial verifier read a state where the default was `repair`; commit `4c5bbf90`
-sets it to `flag`. **Check `git status` and read `/api/audio/health` (`03f4ccd6`) before trusting any
-statement about which branch is live on watson-1.**
+**The three modes.** `repair` mutates as in §3.1. `flag` (`audio-processor.cjs` on `main`, `:701`)
+returns `{ defect, action: 'held', flagOnly: true }` — the detector runs and reports, audio is never
+touched and the function never throws. `pad` (`30e59aa1`, not on `main`) makes a **padded copy in the
+work dir**, re-runs the detector on it, and deletes the copy in a `finally` — *the padded file never
+ships*, because "padding fixes the DETECTOR, not the clip." The pad is capped at
+`min(TAIL_PAD_MS, 350)` ms, deliberately below the detector's 400 ms window, or the window would be
+entirely silence and every flag would "vanish" for free, measuring nothing.
+
+### 3.7 ⚠️ The code exists in three divergent states right now — grep one and you get the wrong answer
+
+| state | `TAIL_REPAIR_MODE` | effect |
+|---|---|---|
+| **`main`** | `process.env.TAIL_REPAIR_MODE \|\| 'flag'` (`:689`) | **never mutates** |
+| **HEAD of `fix/audio-finish-the-job-2026-08-05`** | **absent entirely** — `grep -c TAIL_REPAIR_MODE` returns **0** | **always mutates on a flag** |
+| **working tree** (uncommitted) | re-adds the block with `\|\| 'repair'` | mutates unless the env says otherwise |
+
+That branch predates `d5ad9f2c`/`4c5bbf90`; the uncommitted edit re-introduces an *older* revision of
+the block on top of it. All three verified 2026-08-05 by `git show <ref>:services/audio-processor.cjs`.
+
+**Live on watson-1 the mode is `flag` — measured, not inferred**, through both doors
+(`db3335fd` added the field to phase8 `/health`, `03f4ccd6` proxied it to the public port):
+
+```
+$ curl -s localhost:3465/health
+{"status":"healthy","service":"phase8-audio-v13","port":"3465","tail_repair_mode":"flag"}
+$ curl -s localhost:3470/api/audio/health
+{"status":"healthy","service":"phase8-audio-v13","port":"3465","tail_repair_mode":"flag"}
+```
+
+So **nothing is mutating audio in production today.** But a render run from a checkout of the `fix/`
+branch, or from the current working tree, would mutate. Read `/api/audio/health` rather than the
+source before trusting any statement about live behaviour.
 
 ---
 
@@ -438,9 +550,18 @@ across four runs. xAI health: 142 responses, 0 empty, 0 cooldowns. Verified live
 | dangling pod array slots | **118, unchanged** — nothing was stranded |
 | `listening_pod_sentences` with a `known_audio_id` | 68, unchanged — no link nulled |
 
-⚠️ `docs/adversarial-verification-2026-08-05.md:11-27` marks the 150/142/0 claim **COULD-NOT-VERIFY**
-— the verifier could not reach the database to re-run the voice-selection query. The claim rests on
-the run's own record.
+⚠️ **Two readings, both worth having.** `docs/adversarial-verification-2026-08-05.md:11-27` marks the
+150/142/0 claim **COULD-NOT-VERIFY**. But read carefully, that document reports **its own access
+failure** at 10:40Z (DNS `EAI_AGAIN`, no `psql`) — it is not a refutation. Primary evidence for this
+claim does exist in-repo: live-DB selection queries run **before and after** the change, timestamped
+02:48–03:03Z, including the post-fix "selection query now returns an empty set" and the unchanged
+118 / 68 control counts.
+
+The honest status is therefore **"verified by the party that made the change, not independently
+re-verified"** — weaker than independently confirmed, stronger than unverified. The same reading
+applies to the 5 contraction fixes and the 118/80 dangling-slot counts. It does **not** rescue the
+449/1,107 amputation counts (§3.6), where the adversarial pass searched for a retained run log and
+found none — that one is a genuine evidentiary hole, not an access failure.
 
 ### 4.3 How this class is actually detected
 
@@ -522,7 +643,7 @@ checklist, which just re-measures what whisper already measured. Judge by ear fi
 | audible click | **1.1%** of 7,209 | yes, but 9% precision bare | burst/resurgence rules, padded control |
 | ends abruptly (≤300 ms) | **~45%** of 7,209 (one listener, 49 clips) | yes | decay steepness + chars/sec, 79% precision |
 | lost final word (≥800 ms) | 9 of 20 on a selected list, 1 withdrawn | **no** — needs ASR | word-presence gate, 97.6% recall |
-| repaired/amputated clip | **unquantified** — no per-clip repair record | **duration: NO**; tail RMS: yes | `tools/physical-tail-probe.cjs` |
+| repaired/amputated clip | **unquantified** — no per-clip repair record | **duration/file-size/trailing-room: NO** (trailing room is inverted); decay steepness: yes | fast+steep marker; tail RMS **measured before the pad**, not at the last sample |
 | wrong voice | 129 deu + 150 fra | **NEVER** | DB join on `voice_config` |
 | MISSING (dangling ref) | 118 fra pod slots | **NEVER** | referential-integrity check |
 
@@ -550,9 +671,12 @@ Stated explicitly rather than papered over.
 5. **`docs/adversarial-verification-2026-08-05.md` could not verify four headline claims** — the 150
    French re-voices, the 26 re-rendered French clips + the 10.5% truncation rate, the 449/1,107
    amputations, and the 5 contraction fixes — because `aws-1-eu-west-1.pooler.supabase.com` failed DNS
-   (`EAI_AGAIN`) and `psql` was absent. I have **carried those verdicts forward rather than
-   overriding them**. I did not re-attempt a live database read: this handover was scoped read-only
-   and DB access was not part of it.
+   (`EAI_AGAIN`) and `psql` was absent. **Distinguish two cases** (§4.2): for the re-voices, the
+   contraction fixes and the dangling-slot counts, primary before/after live-DB evidence *does* exist
+   in-repo at 02:48–03:03Z, so the verdict reflects a failed independent re-check, not absent
+   evidence. For the 449/1,107 amputations the verifier searched for a retained run log and **found
+   none** — that is a real evidentiary hole. I did not re-attempt a live database read: this handover
+   was scoped read-only and DB access was not part of it.
 6. **The 10.5% French base rate is cited in commit `7192c5c6`** ("the control sample nobody ran —
    French base rate is 10.5%, not 'clean'") but the adversarial verifier could neither reproduce it
    nor reconcile it with the earlier "4 clips" figure — *"I could not establish that they used the
@@ -563,10 +687,21 @@ Stated explicitly rather than papered over.
 8. **I did not verify any of this against live audio or the live database** — no clip was fetched, no
    S3 object decoded, no query run. This is a synthesis of committed evidence, and its reliability is
    bounded by the reliability of that evidence, which §7.4–7.6 partly limits.
-9. **Fan-out failure, disclosed:** I dispatched three worker sessions (`audio-known-positives`,
-   `audio-declick-gotcha`, `audio-voice-and-preview`) via the command-surface API at 11:31Z. All three
-   returned job IDs but **never registered as jobs** and produced no reports. I compiled the whole
-   document first-hand instead. Nothing in it comes from a worker.
+9. **Fan-out, disclosed:** three workers were dispatched at 11:31Z. They did not appear in the job
+   list while the first version of this document was written, so v1 was compiled entirely first-hand
+   and wrongly recorded them as having produced nothing. Two later returned and their findings are
+   folded into this revision — the Δ bound and burst-rule exception (§3.1), the CBR file-size
+   argument and inverted trailing-room signal (§3.3), the terminal-RMS-reads-the-pad trap (§3.3), the
+   three divergent code states and the measured live `flag` mode (§3.7), the corrected `d5ad9f2c`
+   default, the `localStorage`-only verdict finding (§1), the `0e698b7f…` UUID (§1.5), the
+   never-checked populations (§1.6), and the fairer reading of the COULD-NOT-VERIFY verdicts (§4.2).
+   Every load-bearing correction was re-verified against the code or git before being written in.
+   The third worker (`audio-voice-and-preview`) **failed with an API 529** and returned nothing — §4
+   and §5 are first-hand and are not missing anything as a result.
+10. **The listening-test clip populations are recoverable but were not enumerated here.** The XOR
+   metadata blobs in the three listening HTMLs decode to full clip lists; a worker decoded them to
+   `/tmp` during this handover, which is not durable storage. If those populations matter for
+   calibration, they must be re-decoded and committed properly.
 
 ---
 
@@ -597,3 +732,8 @@ Stated explicitly rather than papered over.
 | `docs/fra-contraction-fixes-2026-08-05.md` | restates the 733/425/20 funnel | same two branches |
 | `tools/physical-tail-probe.cjs` | working tail-shape probe: RMS(final 50 ms) vs body RMS, `CUT_DB` −6 | **`fix/audio-finish-the-job-2026-08-05` only — not on `main`** |
 | `services/audio-preview-router.cjs`, `src/views/production/AudioPreview.vue` | the read-only listening harness | **on `main`** (`d1cf2e1b`) |
+| `docs/fra-render-pilot-gate-2026-08-04.md` | the 250-clip pilot, `0e698b7f…`, "no human has listened to any of these 250 clips" | `origin/docs/fra-render-pilot-gate-2026-08-04` |
+| `docs/finish-the-job-2026-08-05/deu-376-accounting.md` | the 376 remainder; "a log line records that a code branch executed, not that the file is bad" | tracked |
+| `docs/forced-alignment-2026-08-04/findings.md` | the 13 probe-kept `deu` clips, w/s physics check | tracked |
+| `docs/overnight-audio-2026-08-05/fra-audio-repair-record.md` | French repair record | tracked |
+| `docs/amputation-tts-probe-2026-08-04.md` | 7 signature clips, speech-span ratio, p = 0.00001 | **UNTRACKED — working tree only** |
