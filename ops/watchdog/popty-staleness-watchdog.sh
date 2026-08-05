@@ -180,9 +180,24 @@ if [ -n "$LOCAL_SHA" ] && [ "$LOCAL_SHA" != "$REMOTE_SHA" ] \
   STALE_SERVICES="$STALE_SERVICES checkout"
 fi
 
+# Diverged: this checkout has commits main does not AND is not level with it.
+# Not staleness — but it means this machine can NEVER be auto-updated, which is
+# the same silence in slower motion. Say so out loud rather than reporting
+# "current" because no ancestor test happened to match.
+DIVERGED=no
+if [ -n "$LOCAL_SHA" ] && [ "$LOCAL_SHA" != "$REMOTE_SHA" ] \
+   && ! git merge-base --is-ancestor "$LOCAL_SHA" "$REMOTE_SHA" 2>/dev/null; then
+  DIVERGED=yes
+fi
+
 # ── Level? Clear the loop guard and go home. ─────────────────────────────────
 if [ -z "$STALE_SERVICES" ]; then
   rm -f "$ATTEMPT_FILE"
+  if [ "$DIVERGED" = yes ]; then
+    log "ALERT: checkout '$LOCAL_BRANCH' has diverged from origin/$BRANCH_EXPECTED — it can never be auto-updated. Needs a human."
+    write_state diverged none "checkout has commits not on origin/$BRANCH_EXPECTED; cannot be auto-updated"
+    exit 0
+  fi
   if [ -n "$UNREPORTED" ]; then
     log "ALERT: no build sha from:$UNREPORTED (down, or running a pre-watchdog build) — staleness unverifiable for them"
     write_state unverifiable none "no build sha reported by:$UNREPORTED"
