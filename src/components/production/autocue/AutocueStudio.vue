@@ -324,7 +324,13 @@ continuousRecorder.onSegmentCaptured((segment) => {
 })
 
 // Event handlers
-function onModeSelect(mode) {
+function onModeSelect(mode, opts = {}) {
+  // Re-establish the cap on every choice rather than relying on the value set
+  // at mount: resetSession() clears it (singleton hygiene), so a recorder who
+  // backs out of a session and picks again would otherwise silently lose the
+  // link's ?maxSeed and start an uncapped run. An explicit opts.maxSeed (the
+  // test-batch button) wins over the link.
+  setMaxSeed(opts.maxSeed ?? route.query.maxSeed)
   selectMode(mode)
 }
 
