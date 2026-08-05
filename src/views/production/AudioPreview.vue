@@ -67,6 +67,17 @@
       </div>
     </div>
 
+    <!-- What this page is for, in the three states a listener is judging
+         between. Said before the controls, because it is what the controls are
+         for. -->
+    <p class="text-xs text-faint mb-2 leading-relaxed">
+      Three outcomes to listen for: it <strong class="text-ink">plays</strong> as written,
+      it plays but is <strong class="text-ink">truncated</strong>, or the slot is
+      <strong class="text-danger">missing</strong> — it points at audio that no longer
+      exists and cannot play at all. Truncation is still an ear judgement: nothing in the
+      database records it per clip, so this page cannot flag it for you yet.
+    </p>
+
     <!-- What the data can and cannot prove. Said once, plainly, where it is
          being relied on — not buried in a tooltip. -->
     <p v-if="gate" class="text-xs text-faint mb-4 leading-relaxed">
@@ -77,6 +88,18 @@
       or unchecked — never <em>proven passed</em>. Clips the gate failed were withheld and never
       published, so they cannot appear below.
     </p>
+
+    <!-- The third state. Slots pointing at audio that no longer exists cannot
+         appear in the clip list below — there is nothing to list — so this is
+         the only place a person can ever see them. Sits with the quarantine
+         block because both answer the same question: what is wrong that the
+         list structurally cannot show me? -->
+    <p
+      v-if="missingError"
+      data-walk="audio-preview-missing-error"
+      class="mb-4 border border-danger/40 rounded-lg bg-surface px-4 py-2.5 text-xs text-danger"
+    >{{ missingError }}</p>
+    <AudioPreviewMissing v-else :missing="missing" />
 
     <!-- Gate failures, which by construction are absent from the list above. -->
     <div
@@ -160,6 +183,7 @@ import { ref, computed, watch, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import AudioPreviewClip from './components/AudioPreviewClip.vue'
+import AudioPreviewMissing from './components/AudioPreviewMissing.vue'
 
 const props = defineProps({
   courseCode: { type: String, default: '' },
@@ -186,6 +210,8 @@ const hasMore = ref(false)
 const gate = ref(null)
 const quarantine = ref([])
 const showQuarantine = ref(false)
+const missing = ref(null)
+const missingError = ref('')
 
 const loading = ref(false)
 const loadingMore = ref(false)
@@ -267,6 +293,34 @@ async function fetchClips ({ append = false } = {}) {
   } finally {
     loading.value = false
     loadingMore.value = false
+  }
+}
+
+/**
+ * The missing-audio scan. Deliberately its own fetch and its own endpoint: the
+ * missing set is a different shape from a clip list (it is addressed by pod
+ * slot, not by clip id), and folding it into /clips would put rows with no
+ * playable audio into the sample logic.
+ *
+ * A failure here must not blank the flag silently — a page that shows nothing
+ * because the scan died looks exactly like a page that found nothing wrong,
+ * which is the shape of the bug this block exists to surface. So the failure is
+ * shown in the block's own place on the page, and it does not take the clip
+ * list down with it.
+ */
+async function fetchMissing () {
+  missing.value = null
+  missingError.value = ''
+  if (!activeCourse.value) return
+  try {
+    const resp = await fetch(
+      `${apiUrl}/api/production/${activeCourse.value}/audio-preview/missing`,
+      { headers: apiHeaders() })
+    if (!resp.ok) throw new Error(`missing ${resp.status}`)
+    missing.value = await resp.json()
+  } catch (err) {
+    missingError.value = `Could not check for missing audio: ${err.message} — this page cannot tell you whether any slots are dead.`
+    console.error('[AudioPreview] missing scan failed', err)
   }
 }
 
@@ -378,6 +432,7 @@ watch(activeCourse, (code) => {
   }
   fetchClips()
   fetchQuarantine()
+  fetchMissing()
 })
 
 watch(() => props.courseCode, (code) => {
@@ -401,6 +456,7 @@ onMounted(async () => {
   if (activeCourse.value && props.courseCode) {
     fetchClips()
     fetchQuarantine()
+    fetchMissing()
   }
 })
 </script>

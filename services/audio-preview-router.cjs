@@ -28,6 +28,11 @@
  *                       quarantine JSONL. These clips are NOT in course_audio
  *                       by construction — they never published — so they can
  *                       only be surfaced from the ledger.
+ *   GET /missing      → pod slots whose audio id does not resolve to a live
+ *                       course_audio row. The third state the page has to be
+ *                       able to show: plays / truncated / MISSING. See
+ *                       audio-preview-missing.cjs for why it exists and why the
+ *                       column list is the whole point.
  *
  * ── The honesty problem this router has to carry ─────────────────────────────
  * There is NO per-clip veracity verdict anywhere in the database. Verified
@@ -54,6 +59,12 @@
 const express = require('express')
 const fs = require('fs')
 const path = require('path')
+const {
+  POD_ARRAY_AUDIO_COLUMNS,
+  POD_SCALAR_AUDIO_COLUMNS,
+  collectReferencedAudioIds,
+  computeMissingSlots,
+} = require('./audio-preview-missing.cjs')
 
 // Columns the page actually renders. `text` is the thing being checked against
 // the audio, so it leads; the rest is provenance.
@@ -66,6 +77,30 @@ const GATE_LIVE_FROM = '2026-08-04T23:00:00.000Z'
 const DEFAULT_LIMIT = 50
 const MAX_LIMIT = 200
 const MAX_SAMPLE = 50
+
+// Pod sentence columns the missing-audio scan reads: the address of a slot,
+// the dialogue line itself, and every audio-id column on the table.
+const SENTENCE_COLUMNS = [
+  'id', 'pod_id', 'global_order', 'scene_number', 'sentence_number',
+  'speaker', 'target_text', 'known_text',
+  ...POD_ARRAY_AUDIO_COLUMNS, ...POD_SCALAR_AUDIO_COLUMNS,
+].join(', ')
+
+// PostgREST caps a response at 1000 rows by default, and a silent truncation
+// here would under-report the damage — exactly the failure this page exists to
+// stop. So page explicitly rather than trusting one request to return the lot.
+const PAGE_ROWS = 1000
+const ID_LOOKUP_BATCH = 200
+
+async function fetchAllPages (queryFor) {
+  const rows = []
+  for (let from = 0; ; from += PAGE_ROWS) {
+    const { data, error } = await queryFor(from, from + PAGE_ROWS - 1)
+    if (error) throw new Error(error.message)
+    rows.push(...(data || []))
+    if (!data || data.length < PAGE_ROWS) return rows
+  }
+}
 
 const QUARANTINE_DIR = process.env.AUDIO_VERACITY_QUARANTINE_DIR
   || path.join(__dirname, '..', 'scripts', 'audio-veracity-quarantine')
@@ -258,6 +293,67 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
       res.json({ entries, ledgerPresent: true, unparsedLines })
     } catch (err) {
       logger.error(`[AudioPreview] quarantine: ${err.message}`)
+      res.status(500).json({ error: err.message })
+    }
+  })
+
+  // ── GET /missing ──────────────────────────────────────────────────────────
+  // Pod slots pointing at audio that no longer exists. Read-only like the rest
+  // of this router: three SELECTs and a set difference, no writes of any kind.
+  //
+  // Approach: fetch this course's pod rows, then resolve the ids they reference
+  // against course_audio in batched `.in()` lookups, and do the unnest/diff in
+  // JavaScript. PostgREST cannot express `unnest(...) WITH ORDINALITY LEFT JOIN`,
+  // and the array INDEX is exactly what a repair needs, so a raw-SQL RPC would
+  // be the only alternative — a new database object for a read this small. Pod
+  // tables are hundreds of rows per course, not millions; clarity wins.
+  router.get('/missing', async (req, res) => {
+    try {
+      const db = getDb()
+      if (!db) return res.status(503).json({ error: 'Supabase not initialized' })
+
+      const { courseCode } = req.params
+
+      const { data: podRows, error: podError } = await db
+        .from('listening_pods')
+        .select('id, course_code, title, pod_order')
+        .eq('course_code', courseCode)
+      if (podError) throw new Error(podError.message)
+
+      const podsById = new Map((podRows || []).map(p => [p.id, p]))
+      if (podsById.size === 0) {
+        const empty = computeMissingSlots({ sentences: [], podsById, liveAudioIds: new Set() })
+        return res.json({ courseCode, podsScanned: 0, ...empty })
+      }
+
+      const sentences = await fetchAllPages((from, to) => db
+        .from('listening_pod_sentences')
+        .select(SENTENCE_COLUMNS)
+        .in('pod_id', [...podsById.keys()])
+        .order('pod_id', { ascending: true })
+        .order('global_order', { ascending: true })
+        .range(from, to))
+
+      // Which referenced ids are actually live. Batched because a course's pods
+      // can reference more ids than one `.in()` filter should carry in a URL.
+      const referenced = collectReferencedAudioIds(sentences)
+      const liveAudioIds = new Set()
+      for (let i = 0; i < referenced.length; i += ID_LOOKUP_BATCH) {
+        const batch = referenced.slice(i, i + ID_LOOKUP_BATCH)
+        const { data, error } = await db.from('course_audio').select('id').in('id', batch)
+        if (error) throw new Error(error.message)
+        for (const row of data || []) liveAudioIds.add(row.id)
+      }
+
+      const result = computeMissingSlots({ sentences, podsById, liveAudioIds })
+      res.json({
+        courseCode,
+        podsScanned: podsById.size,
+        columnsScanned: [...POD_ARRAY_AUDIO_COLUMNS, ...POD_SCALAR_AUDIO_COLUMNS],
+        ...result,
+      })
+    } catch (err) {
+      logger.error(`[AudioPreview] missing: ${err.message}`)
       res.status(500).json({ error: err.message })
     }
   })

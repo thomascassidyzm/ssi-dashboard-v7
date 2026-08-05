@@ -50,6 +50,71 @@ const CLIPS = [
   },
 ]
 
+// Shaped like the live /audio-preview/missing payload. Two dangling array
+// slots and one dangling scalar, with one array column clean — the clean column
+// has to keep reporting, because an unprinted zero and an unscanned column look
+// identical to a reader.
+const MISSING = {
+  courseCode: 'fra_for_eng',
+  podsScanned: 4,
+  slots: [
+    {
+      courseCode: 'fra_for_eng',
+      podId: 'fra_for_eng:pod-1',
+      podTitle: 'At the market',
+      podOrder: 1,
+      sentenceId: 'fra_for_eng:pod-1:7',
+      globalOrder: 7,
+      sceneNumber: 2,
+      sentenceNumber: 3,
+      speaker: 'Marie',
+      targetText: 'je voudrais deux baguettes',
+      knownText: "I'd like two baguettes",
+      column: 'sentence_known_audio_ids',
+      kind: 'array',
+      index: 1,
+      audioId: 'dead-uuid-1',
+    },
+    {
+      courseCode: 'fra_for_eng',
+      podId: 'fra_for_eng:pod-1',
+      podTitle: 'At the market',
+      podOrder: 1,
+      sentenceId: 'fra_for_eng:pod-1:9',
+      globalOrder: 9,
+      sceneNumber: 2,
+      sentenceNumber: 5,
+      speaker: 'Luc',
+      targetText: 'et une tarte aux pommes',
+      knownText: 'and an apple tart',
+      column: 'sentence_audio_ids',
+      kind: 'array',
+      index: 0,
+      audioId: 'dead-uuid-2',
+    },
+  ],
+  byColumn: [
+    { column: 'sentence_known_audio_ids', kind: 'array', referenced: 104, missing: 1, sentencesAffected: 1, unassignedSentences: 50, unassignedSlots: 0 },
+    { column: 'sentence_audio_ids', kind: 'array', referenced: 40, missing: 1, sentencesAffected: 1, unassignedSentences: 50, unassignedSlots: 0 },
+    { column: 'takeg_audio_ids', kind: 'array', referenced: 12, missing: 0, sentencesAffected: 0, unassignedSentences: 0, unassignedSlots: 0 },
+    { column: 'target_audio_id', kind: 'scalar', referenced: 142, missing: 0, sentencesAffected: 0, unassignedSentences: 0, unassignedSlots: 0 },
+    { column: 'known_audio_id', kind: 'scalar', referenced: 68, missing: 0, sentencesAffected: 0, unassignedSentences: 74, unassignedSlots: 0 },
+    { column: 'explainer_audio_id', kind: 'scalar', referenced: 0, missing: 0, sentencesAffected: 0, unassignedSentences: 142, unassignedSlots: 0 },
+    { column: 'note_audio_id', kind: 'scalar', referenced: 0, missing: 0, sentencesAffected: 0, unassignedSentences: 142, unassignedSlots: 0 },
+  ],
+  totals: { sentencesScanned: 142, slotsReferenced: 366, missing: 2, sentencesAffected: 2, columnsScanned: 7 },
+  note: 'The id in this slot does not match any live course_audio row.',
+}
+
+const MISSING_CLEAN = {
+  courseCode: 'deu_for_eng',
+  podsScanned: 4,
+  slots: [],
+  byColumn: MISSING.byColumn.map(c => ({ ...c, missing: 0, sentencesAffected: 0 })),
+  totals: { sentencesScanned: 142, slotsReferenced: 366, missing: 0, sentencesAffected: 0, columnsScanned: 7 },
+  note: 'The id in this slot does not match any live course_audio row.',
+}
+
 const GATE = {
   liveFrom: '2026-08-04T23:00:00.000Z',
   perClipVerdictsPersisted: false,
@@ -60,7 +125,10 @@ function jsonResponse (body) {
   return Promise.resolve({ ok: true, json: () => Promise.resolve(body) })
 }
 
+let missingPayload = MISSING
+
 beforeEach(() => {
+  missingPayload = MISSING
   push.mockClear()
   replace.mockClear()
   localStorage.clear()
@@ -74,6 +142,11 @@ beforeEach(() => {
     }
     if (url.includes('/audio-preview/sample')) {
       return jsonResponse({ clips: CLIPS, total: 252, filter: 'recent', gate: GATE })
+    }
+    if (url.includes('/audio-preview/missing')) {
+      return missingPayload === null
+        ? Promise.resolve({ ok: false, status: 500, json: () => Promise.resolve({}) })
+        : jsonResponse(missingPayload)
     }
     if (url.includes('/audio-preview/quarantine')) {
       return jsonResponse({ entries: [], ledgerPresent: true, unparsedLines: 0 })
@@ -151,11 +224,94 @@ describe('AudioPreview', () => {
     expect(text).not.toMatch(/\bverified clean\b/)
   })
 
+  it('names all three states it is asking a person to judge between', async () => {
+    const wrapper = await mountPage()
+    const text = wrapper.text().toLowerCase()
+    for (const state of ['plays', 'truncated', 'missing']) expect(text).toContain(state)
+  })
+
   it('carries the walkthrough anchors a future walk points at', async () => {
     const wrapper = await mountPage()
     for (const id of ['audio-preview-course-picker', 'audio-preview-filter',
       'audio-preview-play-first', 'audio-preview-random-sample']) {
       expect(wrapper.find(`[data-walk="${id}"]`).exists()).toBe(true)
     }
+  })
+})
+
+// The state the page could not show at all before: a slot holding a uuid with
+// no clip behind it. There is nothing to list in course_audio, so if this block
+// does not render it, nobody ever learns the line is dead.
+describe('AudioPreview — missing audio', () => {
+  it('banners the count before anyone scrolls or expands anything', async () => {
+    const wrapper = await mountPage()
+    const text = wrapper.text()
+    expect(text).toContain('2 slots point at audio that no longer exists')
+    expect(text).toContain('2 dialogue lines the pod cannot play')
+  })
+
+  it('shows each missing slot with course, pod, position and the dead line', async () => {
+    const wrapper = await mountPage()
+    await wrapper.find('[data-walk="audio-preview-missing-toggle"]').trigger('click')
+
+    const slots = wrapper.findAll('[data-missing-slot]')
+    expect(slots).toHaveLength(2)
+
+    const first = slots[0].text()
+    expect(first).toContain('fra_for_eng')
+    expect(first).toContain('fra_for_eng:pod-1')
+    expect(first).toContain('line 7')
+    expect(first).toContain('Marie')
+    expect(first).toContain('je voudrais deux baguettes')
+    expect(first).toContain("I'd like two baguettes")
+    // The address a repair needs: which column, which index, which dead id.
+    expect(first).toContain('sentence_known_audio_ids[1]')
+    expect(first).toContain('dead-uuid-1')
+  })
+
+  it('accounts for all seven audio-id columns, zeros included', async () => {
+    const wrapper = await mountPage()
+    await wrapper.find('[data-walk="audio-preview-missing-toggle"]').trigger('click')
+
+    const rows = wrapper.findAll('[data-missing-column]')
+    expect(rows).toHaveLength(7)
+    const columns = rows.map(r => r.attributes('data-missing-column'))
+    // Three arrays, not two. The uncounted column IS the bug.
+    expect(columns).toContain('sentence_known_audio_ids')
+    expect(columns).toContain('sentence_audio_ids')
+    expect(columns).toContain('takeg_audio_ids')
+    expect(columns).toContain('note_audio_id')
+    // takeg is clean here, and still prints its zero.
+    const takeg = rows[columns.indexOf('takeg_audio_ids')]
+    expect(takeg.text()).toContain('0')
+  })
+
+  it('keeps "no clip assigned" out of the missing count', async () => {
+    const wrapper = await mountPage()
+    await wrapper.find('[data-walk="audio-preview-missing-toggle"]').trigger('click')
+    const text = wrapper.text()
+    // 74 French lines have no known-side clip assigned; that is not damage and
+    // must never be added to the 2.
+    expect(text).toContain('no clip assigned')
+    expect(text).toContain('74')
+    expect(text).toContain('2 slots point at audio that no longer exists')
+  })
+
+  it('raises no false alarm on a course with nothing missing', async () => {
+    missingPayload = MISSING_CLEAN
+    const wrapper = await mountPage()
+    const text = wrapper.text()
+    expect(text).not.toContain('point at audio that no longer exists')
+    expect(text).toContain('No pod slot points at missing audio')
+    expect(wrapper.findAll('[data-missing-slot]')).toHaveLength(0)
+  })
+
+  it('says so when the scan itself failed, rather than showing silence', async () => {
+    missingPayload = null
+    const wrapper = await mountPage()
+    expect(wrapper.find('[data-walk="audio-preview-missing-error"]').exists()).toBe(true)
+    expect(wrapper.text()).toContain('cannot tell you whether any slots are dead')
+    // A dead scan must not take the clip list down with it.
+    expect(wrapper.findAll('audio')).toHaveLength(2)
   })
 })
