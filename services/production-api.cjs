@@ -3679,6 +3679,14 @@ async function getDirectAudioStats(courseCode) {
     azureSlots,
     azureExisting,
     breakdown: phase8Needs.breakdown || { known: 0, target1: 0, target2: 0, presentation: 0 },
+    // "missing" vs "unlinked" — a slot whose audio exists (and whose object is
+    // in the bucket) was never missing, it was just unbound. Kept as separate
+    // counts so the dashboard stops calling one the other.
+    unlinkedBreakdown: phase8Needs.unlinkedBreakdown || { known: 0, target1: 0, target2: 0, presentation: 0 },
+    missingBreakdown: phase8Needs.missingBreakdown || phase8Needs.breakdown || { known: 0, target1: 0, target2: 0, presentation: 0 },
+    toCopy: phase8Needs.toCopy || 0,
+    storageBroken: phase8Needs.storageBroken || 0,
+    storageBrokenBreakdown: phase8Needs.storageBrokenBreakdown || { known: 0, target1: 0, target2: 0 },
     existingByRole: {},
     totalPhrases: 0, // not in /needs response; consumers use /audio-pipeline/missing for breakdowns
     totalLegos: 0,
@@ -5834,8 +5842,14 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     // =========================================================================
     const stats = await getDirectAudioStats(courseCode)
     const breakdown = stats.breakdown
-    // Use breakdown totals (Azure-only), NOT stats.missing which now includes shared+welcome
-    const azureMissing = (breakdown.known || 0) + (breakdown.target1 || 0) + (breakdown.target2 || 0) + (breakdown.presentation || 0)
+    // "Missing" now means no audio exists. Slots whose audio is already
+    // rendered and storage-verified — they were simply never bound — are
+    // reported as `unlinked`, their own count with its own fix (link, no TTS).
+    const unlinkedCounts = stats.unlinkedBreakdown || { known: 0, target1: 0, target2: 0, presentation: 0 }
+    const trulyMissingCounts = stats.missingBreakdown || breakdown
+    const sumRoles = (b) => (b.known || 0) + (b.target1 || 0) + (b.target2 || 0) + (b.presentation || 0)
+    const azureMissing = sumRoles(trulyMissingCounts)
+    const azureUnlinked = sumRoles(unlinkedCounts)
 
     const supabase = supabaseClient.getClient()
     const knownLang = stats.course?.known_lang || 'eng'
@@ -5953,7 +5967,13 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
 
       // Breakdown for Azure (UI reads counts via byProcess)
       missing: missingByRole,
-      missingCounts: breakdown,  // Direct counts for UI
+      missingCounts: trulyMissingCounts,  // no audio anywhere — needs TTS
+      unlinkedCounts,                     // audio exists in storage, slot unbound
+      totalUnlinked: azureUnlinked,
+      unboundCounts: breakdown,           // unlinked + missing, the old meaning
+      copyable: stats.toCopy || 0,        // exists in another course, right voice
+      storageBroken: stats.storageBroken || 0,
+      storageBrokenBreakdown: stats.storageBrokenBreakdown || { known: 0, target1: 0, target2: 0 },
       samples: samplesByRole,
 
       // Seeds/LEGOs included in deduped counts (no separate tracking needed)
@@ -5970,17 +5990,20 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       byProcess: {
         azure: {
           label: 'Course TTS (Phrases)',
-          missing: breakdown.known + breakdown.target1 + breakdown.target2,
+          missing: trulyMissingCounts.known + trulyMissingCounts.target1 + trulyMissingCounts.target2,
+          unlinked: unlinkedCounts.known + unlinkedCounts.target1 + unlinkedCounts.target2,
           categories: ['known', 'target1', 'target2']
         },
         azureSeeds: {
           label: 'Course TTS (Seeds)',
           missing: 0,  // Included in deduped counts
+          unlinked: 0,
           categories: []
         },
         azureLegos: {
           label: 'Intros (LEGO debuts)',
-          missing: breakdown.presentation,
+          missing: trulyMissingCounts.presentation,
+          unlinked: unlinkedCounts.presentation || 0,
           categories: ['presentation']
         },
         elevenLabs: {
