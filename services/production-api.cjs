@@ -444,6 +444,24 @@ app.use('/api/production/:courseCode/audio-preview',
     logger,
   }))
 
+// Course QA / approval gate: per-round human play-through sign-off, derived
+// per-cycle verification status, and the publish block that stops a course
+// reaching learners unsigned. Mounted on its own top-level /api/qa-gate/*
+// prefix rather than under /api/production/:courseCode so the estate view
+// (every course at once) has somewhere to live.
+// Schema + why: ops/sql/20260805-course-qa-gate.sql.
+require('./api/course-qa-gate-routes.cjs').mount(app, {
+  requireAdmin,
+  requireDashboardUser,
+  getDb: () => supabaseClient.getClient(),
+  logger,
+})
+
+/** The gate, for the publish path below. Lazy: see the mount note above. */
+let _qaGate = null
+const qaGate = () => (_qaGate || (_qaGate = require('./course-qa-gate.cjs')
+  .createGate({ getDb: () => supabaseClient.getClient(), logger })))
+
 // POST /api/auth/login — login with email + code
 app.post('/api/auth/login', async (req, res) => {
   const { email, code } = req.body
@@ -2175,6 +2193,51 @@ app.post('/api/production/:courseCode/status', async (req, res) => {
       'released': 'live'
     }
     const newAppStatus = appStatusMap[dbStatus]
+
+    // ── THE APPROVAL GATE ───────────────────────────────────────────────────
+    // "No course should EVER go out to learners unless it has passed a manual
+    // approval gate." (Tom, 2026-08-05.) new_app_status IN ('live','beta') is
+    // what actually makes a course learner-visible — that is the predicate
+    // ssi-learning-app/api/courses/available.ts selects on — so that is where
+    // this bites.
+    //
+    // It bites on PROMOTION only. Demotion is always allowed (you must always
+    // be able to pull a course back), and re-saving a course at the status it
+    // already holds is a no-op: 78 courses were already learner-visible when
+    // this gate was built and Tom's ruling explicitly accepts that they
+    // cannot be pulled back in. Blocking an unrelated re-save of one of them
+    // would be the gate punishing the wrong thing.
+    let gateDecision = null
+    try {
+      const { data: currentRow } = await supabaseClient.getClient()
+        .from('courses').select('new_app_status').eq('course_code', courseCode).maybeSingle()
+      gateDecision = await qaGate().checkPublishAllowed({
+        courseCode,
+        targetAppStatus: newAppStatus,
+        currentAppStatus: currentRow?.new_app_status || 'not_available',
+      })
+    } catch (gateErr) {
+      // A gate that cannot be read must not silently wave a course through.
+      logger.error(`[qa-gate] publish check failed for ${courseCode}:`, gateErr)
+      return res.status(503).json({
+        error: 'QA approval gate could not be evaluated, so publication is refused',
+        code: 'gate_unavailable',
+        detail: gateErr.message,
+      })
+    }
+
+    if (!gateDecision.allowed) {
+      logger.warn(`[qa-gate] BLOCKED promotion of ${courseCode} to ${newAppStatus}: ${gateDecision.reason}`)
+      return res.status(409).json({
+        error: gateDecision.message,
+        code: 'qa_gate_unpassed',
+        gate: gateDecision.gate,
+      })
+    }
+    if (gateDecision.reason === 'overridden') {
+      logger.warn(`[qa-gate] ${courseCode} promoted to ${newAppStatus} under an OVERRIDE by ` +
+        `${gateDecision.gate?.override_by}: ${gateDecision.gate?.override_reason}`)
+    }
 
     const updatedCourse = await supabaseClient.updateCourseStatus(courseCode, dbStatus, newAppStatus)
     logger.info(`Updated ${courseCode} status to ${dbStatus} (new_app_status: ${newAppStatus})`)
