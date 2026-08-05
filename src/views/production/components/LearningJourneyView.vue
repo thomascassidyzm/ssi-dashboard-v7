@@ -146,6 +146,13 @@
               {{ round.itemCount }} items
             </div>
 
+            <!-- Open this round in the real learning app — leaves Popty -->
+            <button
+              class="open-round-btn w-6 h-6 flex items-center justify-center rounded text-muted hover:text-ink hover:bg-surface-3 transition-colors text-base leading-none"
+              title="Open this round in the learning app"
+              @click.stop="openRoundInLearningApp(round)"
+            >&nearr;</button>
+
             <svg
               class="w-5 h-5 text-muted transition-transform"
               :class="{ 'rotate-180': expandedRounds.has(round.roundNumber) }"
@@ -275,6 +282,12 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                   </svg>
                 </button>
+                <!-- Open this cycle in the real learning app — leaves Popty -->
+                <button
+                  class="open-cycle-btn w-6 h-6 flex items-center justify-center rounded text-muted hover:text-ink hover:bg-surface-3 transition-colors text-base leading-none"
+                  title="Open this round in the learning app"
+                  @click.stop="openRoundInLearningApp(round, idx + 1)"
+                >&nearr;</button>
               </div>
 
               <!-- Phase indicator when this item is playing -->
@@ -338,6 +351,7 @@
 import { ref, computed, watch, nextTick } from 'vue'
 import { useScriptPlayer } from '@/composables/useScriptPlayer'
 import { getApiUrl } from '@/services/api'
+import { buildLearningAppUrl } from '@/utils/learningAppUrl'
 
 // Mirrors the learner session's cycle types: the generator emits ONLY
 // intro/debut/build/review/consolidate. Component priming, listening clusters
@@ -669,6 +683,19 @@ const toggleRound = (roundNumber: number) => {
   } else {
     expandedRounds.value.add(roundNumber)
   }
+}
+
+// Leaves Popty for the real learning app, anchored on this round's LEGO.
+// The preview player here is a proofing instrument; real playback fidelity
+// lives in the learning app.
+const openRoundInLearningApp = (round: RoundData, cycle?: number) => {
+  const url = buildLearningAppUrl({
+    courseCode: props.courseCode,
+    round: round.roundNumber,
+    legoId: round.legoId,
+    cycle
+  })
+  window.open(url, '_blank')
 }
 
 const expandAll = () => {

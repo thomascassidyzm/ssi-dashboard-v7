@@ -243,6 +243,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
+import { buildLearningAppUrl } from '@/utils/learningAppUrl'
 import { isConfigured as isSupabaseConfigured, getCourseProgress, getQASummary } from '@/services/supabase'
 import { useProductionStore } from '@/stores/production'
 import LegacyExportDialog from '@/components/production/LegacyExportDialog.vue'
@@ -397,8 +398,7 @@ async function setPricingTier(tier) {
 }
 
 function launchLearningApp() {
-  const url = import.meta.env.VITE_LEARNING_APP_URL || 'https://saysomethingin.app'
-  window.open(`${url}/?course=${props.courseCode}`, '_blank')
+  window.open(buildLearningAppUrl({ courseCode: props.courseCode }), '_blank')
 }
 
 async function runAudit() {
