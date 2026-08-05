@@ -147,10 +147,12 @@ generator. The damaged clips predate all of today's work by five months.
   Not attempted here; it is a different mutation shape and this was an emergency fix.
 - **134 of 384 clips are still being audited.** The sweep runs at roughly 1.7 s/clip and was paused
   to give the repair the CPU. The 35 flagged are from the 250 audited so far; expect a handful more.
-- **20 dangling audio references** in seeds 1–5: `course_practice_phrases.presentation_audio_id`
-  values pointing at `course_audio` rows that no longer exist, in pairs per LEGO with fragment texts
-  (`I` / `Want`, `With` / `You`, `To speak` / `Practise`). Whether the player ever reads them —
-  and therefore whether this is silence in a learner's ear or dead data — is not yet established.
+- ~~20 dangling audio references~~ **CLOSED — dead data, not a learner-facing defect.** The 20
+  `course_practice_phrases.presentation_audio_id` values pointing at deleted `course_audio` rows are
+  all on `phrase_role='component'` rows. `presentation_audio_id` is only ever read off `course_legos`
+  / `lego_introductions`, never off a practice-phrase row, on any live path
+  (`generateLearningScript.ts:1107`, `bundle.ts:529`, `cycles.ts:418`, `backendCyclesToRounds.ts:181`;
+  `round-map.ts` doesn't select the column at all). They cannot produce silence or a fetch error.
 - **Nothing beyond the first five seeds has been measured.** The rest of deu_for_eng, and every
   other course, is unassessed. The exposure population is 2.54 M clips rendered before the flag.
 - **No human has listened.** Every verdict here is instrument-based. The instruments agree with each
@@ -163,6 +165,18 @@ Read back from S3 after the repair, decoded fresh with whisper:
 - 26 of 26 re-minted clips return **HTTP 200** and **contain their final word**.
 - Every replacement is 25–45 % longer than the clip it replaced.
 - 0 stale links to replaced rows.
+
+And read back a second time **through the live production app**, not storage — 26 of 26 return
+HTTP 200 with real audio bytes from `https://saysomethingin.app/api/audio/<new-id>`. That is the
+exact URL a learner's player builds (`backendCyclesToRounds.ts:37`), so this is the learner path,
+not a proxy for it. Production bucket confirmed as `ssi-audio-stage`, the only bucket
+(`services/s3-service.cjs:6-8`).
+
+The relink is also confirmed sufficient on its own: `cycles.ts` and `bundle.ts` read the audio-id
+columns live from Postgres per request (`private, max-age=60`), so the next fetch hands the learner
+the new id. `course_round_index` carries no audio ids, so **no materialised-view refresh is needed**
+for this repair shape. The old IndexedDB blob is keyed by the old id (`AudioCache.ts:128`) and is
+simply orphaned — never served again.
 - The repair bumped `deu_for_eng` to version `0.1766.44` and incremented the integer revalidation
   key `4093 → 4094`, so clients refetch.
 
