@@ -490,264 +490,63 @@ async function detectTailClick(audioPath, options = {}) {
 }
 
 /**
- * verifyTrimKeepsText — transcription safety gate for tail-defect repairs.
+ * THE TAIL-REPAIR MUTATION PATH IS DELETED. DO NOT REINTRODUCE IT.
  *
- * The resurgence/rise rules cannot distinguish a breath/grunt burst from real
- * speech resuming after an unusually long intra-phrase pause (measured on the
- * 2026-07-24 sweep: 3 of 154 flagged clips were pausey renders — "Come stai?"
- * with 400ms before "stai", "…here, good" with the closing word detached —
- * where the DSP trim would have amputated a word). Whisper adjudicates: the
- * kept region [0, trimSec] must transcribe every word of the intended text,
- * OR the cut region [trimSec, end] must transcribe as silence/noise. Both
- * conditions failing together is the amputation signature. (Either alone is
- * whisper variance: homophones/plurals on the kept side, hallucinated words
- * on breath sounds on the cut side — both observed, both harmless.)
+ * Tom's ruling, 2026-08-05, after the third recurrence: "DELETE the tail-repair
+ * service's ability to modify audio entirely, do not just change its default."
  *
- * Best-effort: returns null when whisper-cli or the model file is missing —
- * callers decide whether to proceed unverified (measured FP rate without this
- * gate: ~2% of flagged clips) or reject.
+ * What used to live here: `repairTailDefect`, which trimmed a clip at the point
+ * `detectTailClick` reported, re-padded 100 ms (`apad=pad_dur=0.1`) and re-faded.
+ * It shipped a live course with taught words missing. deu_for_eng seeds 1-5 were
+ * serving "Ich will jetzt mit dir Deutsch sprechen" WITHOUT "sprechen", and the
+ * "how to speak" intro as "I'm trying to learn how to" — 27 clips in the first
+ * five seeds alone (docs/deu-first5-clipping-emergency-2026-08-05.md).
  *
- * @returns {Promise<null | {ok: boolean, kept: string, cut: string, missing: string[]}>}
+ * The mechanism, stated so nobody rebuilds it believing it can be made safe:
+ * `detectTailClick` CANNOT distinguish a tail click from a natural mid-sentence
+ * pause. German word order makes a pause before the final verb routine; the
+ * resumed speech after it reads as tail energy; the trim deletes every word
+ * after the pause. The 100 ms pad and the anti-click fade then leave a textbook
+ * clean decay, so every physical probe reports the clip healthy and the damage
+ * is invisible to everything except an ASR word-retention check.
+ *
+ * Its guards did not work and could not: AMPUTATION_MIN_KEEP_FRACTION only
+ * blocked a trim discarding >50 % of a clip (eating one final word keeps far
+ * more), the silence guard only fired on a silent result, and the whisper
+ * `verifyTrimKeepsText` check returned null → proceed whenever whisper was
+ * absent. Measured precision by ear was 7/76 = 9 %
+ * (docs/audio-tail-gate-decision-memo-2026-08-04.md).
+ *
+ * A TAIL_REPAIR_MODE switch was tried first and is also gone. An env var that
+ * has to be set correctly in every unit file, tool, cron and fresh checkout is
+ * a default waiting to leak — which is exactly what kept happening. There is
+ * now no code path in this module that can trim or rewrite course audio, so
+ * there is nothing left for an environment to get wrong.
+ *
+ * Detection SURVIVES, read-only, below. It may report suspects for human ears
+ * in the manual approval gate. It must NEVER gate, mutate or auto-act.
  */
-const WHISPER_BIN = process.env.WHISPER
-  || (fs.existsSync('/opt/homebrew/bin/whisper-cli') ? '/opt/homebrew/bin/whisper-cli' : 'whisper-cli');
-const WHISPER_MODEL = process.env.WHISPER_MODEL
-  || path.join(require('os').homedir(), '.local/share/whisper-models/ggml-small.bin');
-
-// Bounded whisper concurrency: each whisper-cli process holds ~600MB of model
-// weights, and repairTailDefect runs at the caller's batch concurrency — the
-// 2026-07-27 BUILD batch stampeded 61 simultaneous processes on an 8GB machine
-// (13.5GB swap, two kernel panics). Same semaphore shape as the xAI phonology
-// gate in tts-service.cjs (XAI_PHONO_CONCURRENCY).
-const WHISPER_MAX_CONCURRENT = Number(process.env.WHISPER_VERIFY_CONCURRENCY || 2);
-let whisperActive = 0;
-const whisperQueue = [];
-function whisperAcquire() {
-  if (whisperActive < WHISPER_MAX_CONCURRENT) { whisperActive++; return Promise.resolve(); }
-  return new Promise((resolve) => whisperQueue.push(resolve));
-}
-function whisperRelease() {
-  const next = whisperQueue.shift();
-  if (next) next(); else whisperActive--;
-}
-
-// Stale trimverify-* temp dirs survive a crash/kill (the finally-cleanup never
-// runs); sweep ones older than an hour once per process so they can't pile up.
-let _staleSwept = false;
-async function sweepStaleTrimDirs() {
-  if (_staleSwept) return;
-  _staleSwept = true;
-  try {
-    const tmp = require('os').tmpdir();
-    const cutoff = Date.now() - 60 * 60 * 1000;
-    for (const name of await fs.readdir(tmp)) {
-      if (!name.startsWith('trimverify-')) continue;
-      const dir = path.join(tmp, name);
-      const st = await fs.stat(dir).catch(() => null);
-      if (st && st.mtimeMs < cutoff) await fs.remove(dir).catch(() => {});
-    }
-  } catch { /* best-effort */ }
-}
-
-let _whisperReady = null;
-async function whisperAvailable() {
-  if (_whisperReady === null) {
-    try {
-      // WHISPER_BIN may be a bare command (PATH lookup) or an absolute path.
-      if (path.isAbsolute(WHISPER_BIN)) {
-        if (!(await fs.pathExists(WHISPER_BIN))) throw new Error('whisper-cli not found');
-      } else {
-        await execAsync(`command -v ${WHISPER_BIN}`);
-      }
-      _whisperReady = await fs.pathExists(WHISPER_MODEL);
-    } catch { _whisperReady = false; }
-  }
-  return _whisperReady;
-}
-
-async function verifyTrimKeepsText(audioPath, trimSec, text, language) {
-  if (!text || !(await whisperAvailable())) return null;
-  await sweepStaleTrimDirs();
-  const tmpDir = await fs.mkdtemp(path.join(require('os').tmpdir(), 'trimverify-'));
-  try {
-    const keepWav = path.join(tmpDir, 'keep.wav');
-    const cutWav = path.join(tmpDir, 'cut.wav');
-    const EXEC_OPTS = { timeout: 60000, killSignal: 'SIGKILL' };
-    await execAsync(`ffmpeg -y -hide_banner -loglevel error -i "${audioPath}" -t ${trimSec} -ar 16000 -ac 1 "${keepWav}"`, EXEC_OPTS);
-    await execAsync(`ffmpeg -y -hide_banner -loglevel error -i "${audioPath}" -ss ${trimSec} -ar 16000 -ac 1 "${cutWav}"`, EXEC_OPTS);
-    const lang = language ? language.slice(0, 2) : 'auto';
-    const run = async (wav) => {
-      await whisperAcquire();
-      try {
-        // execFile (no shell) + timeout/SIGKILL: whisper-cli itself is the
-        // child, so a hung or abandoned run is reaped, never orphaned.
-        const stdout = await new Promise((resolve, reject) => {
-          execFile(WHISPER_BIN,
-            ['-m', WHISPER_MODEL, '-l', lang, '-nt', '-t', String(process.env.WHISPER_THREADS || 4), '-f', wav],
-            { encoding: 'utf8', maxBuffer: 1 << 22, timeout: 120000, killSignal: 'SIGKILL' },
-            (err, out) => (err ? reject(err) : resolve(out)));
-        });
-        return stdout.trim().replace(/\s+/g, ' ');
-      } finally {
-        whisperRelease();
-      }
-    };
-    const kept = await run(keepWav);
-    const cut = await run(cutWav);
-    const norm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
-      .replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
-    const keptWords = new Set(norm(kept).split(' ').filter(Boolean));
-    const missing = norm(text).split(' ').filter(Boolean).filter((w) => !keptWords.has(w));
-    const cutSpeaks = !!norm(cut.replace(/\[[^\]]*\]|\([^)]*\)/g, ''));
-    return { ok: !(missing.length && cutSpeaks), kept, cut, missing };
-  } catch (e) {
-    return null; // whisper hiccup = unverified, not unsafe
-  } finally {
-    await fs.remove(tmpDir).catch(() => {});
-  }
-}
 
 /**
- * repairTailDefect — detect + iteratively DSP-repair a tail defect, with the
- * whisper amputation guard at every cut. The one implementation behind both
- * the generation gate (phase8 masterAudio) and the stored-clip sweep tool
- * (tools/declick-tail.cjs) — they must never drift apart on this logic.
+ * flagTailDefect — READ-ONLY. Reports whether `detectTailClick` sees a tail
+ * defect. Writes nothing, modifies nothing, throws nothing.
  *
- * Semantics (all measured on the 2026-07-24 sweep, 154 flagged clips):
- * - no defect → {defect: null}
- * - first detection sits on resumed SPEECH (pausey render, "Come stai?"):
- *   input is fine as-is → {action: 'held'} — caller ships/keeps the original.
- * - repaired clean → {action: 'repaired', outPath}
- * - a re-flag on the repaired clip that whisper says is soft trailing speech
- *   (a detached "please"/"yes") is accepted — the real burst is already gone
- *   → {action: 'repaired', residualSpeechFlag}
- * - stacked defects trim deeper, up to 3 passes; still dirty after 3 → throws.
- * - minKeepSec: a trim point earlier than this means the clip is substantially
- *   defective → throws (generation gate uses 0.2; sweeps use 0).
+ * ⚠️ 9 % PRECISION. Nine out of ten flags are not defects — measured by ear on
+ * 76 flagged clips, 2026-08-04. 83 % of its flags vanish if you merely append
+ * 300 ms of silence, which cannot remove a real click, and 16 of 20 FRESH TTS
+ * renders trip it. Treat output as "a human might want to listen", never as
+ * evidence a clip is bad. Anything surfacing this MUST state the 9 % alongside.
  *
- * @returns {Promise<{defect: null} | {defect: object, action: 'held'|'repaired', outPath?: string, passes?: number, verify?: object, residualSpeechFlag?: object}>}
+ * @returns {Promise<{defect: object|null, action: 'flagged'|'none', precision: string}>}
  */
-/** Mean level of a file via ffmpeg volumedetect. null = unmeasurable. */
-async function meanLevelDb(filePath) {
-  const { stdout, stderr } = await execAsync(
-    `ffmpeg -hide_banner -nostats -i "${filePath}" -af volumedetect -f null - 2>&1 || true`,
-    { shell: '/bin/bash' }
-  ).catch(e => ({ stdout: e.stdout || '', stderr: e.stderr || '' }));
-  const m = /mean_volume:\s*(-?[\d.]+) dB/.exec(`${stdout}${stderr}`);
-  return m ? parseFloat(m[1]) : null;
-}
-
-/**
- * AMPUTATION GUARD — pure DSP, no whisper.
- *
- * verifyTrimKeepsText is the designed guard against a trim that eats speech, but
- * it is whisper-based and returns null when whisper-cli or its model is absent,
- * and a null is treated as "proceed". On a host without whisper the guard is
- * therefore silently OFF, and the tail repair will happily amputate.
- *
- * Measured 2026-08-04 on a Linux box with no whisper: the word "weak" rendered
- * healthily by xAI (648 ms, -16 dB after normalisation) came out of
- * repairTailDefect as 100 ms of -91 dB SILENCE. The 'rise' rule fires on a
- * single short word, and each repair pass walks the cut point further back until
- * the whole word is gone and only the 0.1 s pad remains. That is the mastering
- * chain MANUFACTURING a silent clip from a good render — the same artefact class
- * as the 2026-08-03 batch, arriving by a completely different route.
- *
- * These two checks need no model and no network: a repair may not throw away
- * most of the clip, and it may not leave silence behind. Either way we HOLD —
- * shipping a clip with an audible tail click is a small defect; shipping silence
- * is a total one.
- */
-const AMPUTATION_MIN_KEEP_FRACTION = Number(process.env.TAIL_REPAIR_MIN_KEEP || 0.5);
-const AMPUTATION_SILENCE_DB = Number(process.env.TAIL_REPAIR_SILENCE_DB || -60);
-
-/**
- * TAIL_REPAIR_MODE — 'flag' (DEFAULT since 2026-08-05) | 'repair' (the old, damaging behaviour).
- *
- * In 'flag' mode the detector still runs and still reports, but the audio is
- * never modified and the function never throws: the clip ships as rendered.
- * It reuses action:'held', which every caller already treats as "shipped
- * untouched", so no call site needs to change.
- *
- * Why (measured 2026-08-04, docs/audio-tail-gate-decision-memo-2026-08-04.md):
- * the detector's precision by ear is 7/76 = 9%; 83% of its flags vanish if you
- * merely append 300 ms of silence, which cannot remove a real click; and 16 of 20
- * FRESH TTS renders trip it. Meanwhile whisper word-retention over shipped clips
- * shows the repair removes trailing words — final-word retention 0.52 for clips
- * bearing the repair's 100 ms pad fingerprint vs 0.93 for the rest (p=0.00001),
- * e.g. "Ich will heute nicht üben" shipping as "Ich will heute…".
- *
- * WHY THE DEFAULT FLIPPED (Tom's ruling, 2026-08-05). The old default shipped a
- * live course with words missing: deu_for_eng seeds 1-5 were serving
- * "Ich will jetzt mit dir Deutsch sprechen" WITHOUT "sprechen", among 26 others
- * (docs/deu-first5-clipping-emergency-2026-08-05.md). The mechanism is that
- * detectTailClick cannot tell a tail click from a natural mid-sentence pause —
- * German word order makes a pause before the final verb routine, the resumed
- * speech reads as tail energy, and the trim deletes every word after it. The
- * 100 ms apad and the anti-click fade then leave a textbook clean decay, so
- * every physical probe reports the clip healthy.
- *
- * A behaviour with 9% precision that silently deletes taught vocabulary must not
- * be anyone's default. ops/systemd/* already pin TAIL_REPAIR_MODE=flag, so
- * production was covered; this closes the gap for every tool, script and fresh
- * checkout that runs outside those unit files. Set TAIL_REPAIR_MODE=repair to
- * restore the old behaviour deliberately — nothing sets it implicitly any more.
- */
-const TAIL_REPAIR_MODE = process.env.TAIL_REPAIR_MODE || 'flag';
-
-async function repairTailDefect(inputPath, workDir, { text, language, mode, minKeepSec = 0 } = {}) {
+async function flagTailDefect(inputPath, { text, mode } = {}) {
   const tailMode = mode || (isLongformText(text) ? 'longform' : 'phrase');
-  const det = await detectTailClick(inputPath, { mode: tailMode });
-  if (!det.click) return { defect: null };
-
-  if (TAIL_REPAIR_MODE === 'flag') {
-    return { defect: det, action: 'held', flagOnly: true };
-  }
-  if (det.trimSec < minKeepSec) {
-    throw new Error(`tail defect (${det.kind} ${det.peakDb}dB) with trim point at ${det.trimSec}s — clip is substantially defective`);
-  }
-  const v0 = await verifyTrimKeepsText(inputPath, det.trimSec, text, language);
-  if (v0 && !v0.ok) return { defect: det, action: 'held', verify: v0 };
-
-  // How much of the clip a cut would keep — the model-free half of the guard.
-  const inputMeta = await getAudioMetadata(inputPath).catch(() => null);
-  const inputDuration = inputMeta && inputMeta.duration ? inputMeta.duration : null;
-  const wouldAmputate = (cut) =>
-    inputDuration ? cut < AMPUTATION_MIN_KEEP_FRACTION * inputDuration : false;
-  if (wouldAmputate(det.trimSec)) {
-    return { defect: det, action: 'held', amputationGuard: { cutSec: det.trimSec, durationSec: inputDuration } };
-  }
-
-  let fixed = inputPath;
-  let cutAt = det.trimSec;
-  for (let pass = 0; pass < 3; pass++) {
-    const next = path.join(workDir, `declick-pass${pass}.mp3`);
-    await ffmpegFilterToLameMp3(fixed, next, {
-      filterChain: `atrim=end=${cutAt},asetpts=PTS-STARTPTS,`
-        + 'areverse,afade=t=in:st=0:d=0.008,areverse,apad=pad_dur=0.1',
-    });
-    fixed = next;
-
-    // Never ship a "repair" that left silence behind (see AMPUTATION GUARD).
-    const level = await meanLevelDb(fixed);
-    if (level !== null && level < AMPUTATION_SILENCE_DB) {
-      return { defect: det, action: 'held', amputationGuard: { meanDb: level, passes: pass + 1 } };
-    }
-
-    const recheck = await detectTailClick(fixed, { mode: tailMode });
-    if (!recheck.click) return { defect: det, action: 'repaired', outPath: fixed, passes: pass + 1 };
-    if (wouldAmputate(recheck.trimSec)) {
-      return { defect: det, action: 'held', amputationGuard: { cutSec: recheck.trimSec, durationSec: inputDuration, passes: pass + 1 } };
-    }
-    const rv = await verifyTrimKeepsText(fixed, recheck.trimSec, text, language);
-    if (rv && !rv.ok) {
-      return { defect: det, action: 'repaired', outPath: fixed, passes: pass + 1, residualSpeechFlag: recheck };
-    }
-    if (pass === 2) {
-      throw new Error(`tail defect (${det.kind} ${det.peakDb}dB) still detected (${recheck.kind} ${recheck.peakDb}dB) after 3 repair passes — refusing to ship`);
-    }
-    cutAt = recheck.trimSec;
-  }
+  const det = await detectTailClick(inputPath, { mode: tailMode }).catch(() => ({ click: false }));
+  return {
+    defect: det && det.click ? det : null,
+    action: det && det.click ? 'flagged' : 'none',
+    precision: '9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip',
+  };
 }
 
 async function normalizeAudio(inputPath, outputPath, targetLUFS = -16.0) {
@@ -1181,8 +980,10 @@ module.exports = {
   ANTI_CLICK_FADE,
   detectTailClick,
   isLongformText,
-  verifyTrimKeepsText,
-  repairTailDefect,
+  // repairTailDefect and verifyTrimKeepsText are DELETED, not renamed — see the
+  // block above detectTailClick. A stale caller must fail loudly on an undefined
+  // function, never silently fall back to something that looks like it worked.
+  flagTailDefect,
   checkSoxInstalled,
   getAudioDuration,
   checkMp3Format,

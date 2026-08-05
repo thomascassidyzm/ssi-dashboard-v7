@@ -1005,21 +1005,21 @@ async function masterAudio(audioBuffer, ttsText) {
     // Normalize to -16 LUFS (broadcast standard)
     await audioProcessor.normalizeAudio(rawPath, masteredPath, -16.0)
 
-    // Tail-defect gate + free repair (2026-07-24): TTS renders — the xAI clone
-    // especially — sometimes append a click/grunt/exhale burst after the
-    // speech decays (see detectTailClick's three rules). Repair is pure DSP
-    // (trim before the defect, re-fade, pad) so it runs here at the mastering
-    // chokepoint rather than rejecting the render: every future clip ships
-    // clean with zero TTS re-spend. repairTailDefect carries the whisper
-    // amputation guard — a pausey render whose "defect" is resumed speech
-    // ships untouched ('held'), and a soft detached closing word is never
-    // trimmed away. Only a clip still dirty after 3 passes hard-errors.
-    const tail = await audioProcessor.repairTailDefect(masteredPath, tempDir, { text: ttsText, minKeepSec: 0.2 })
-    if (tail.defect && tail.action === 'held') {
-      logger.warn(`masterAudio: tail flag (${tail.defect.kind} ${tail.defect.peakDb}dB at ${tail.defect.trimSec}s) is resumed speech — pausey render shipped untouched`)
-    } else if (tail.defect) {
-      logger.info(`masterAudio: tail ${tail.defect.kind} ${tail.defect.peakDb}dB repaired in ${tail.passes} pass(es) at ${tail.defect.trimSec}s${tail.residualSpeechFlag ? ' (soft trailing speech retained)' : ''}`)
-      await fs.move(tail.outPath, masteredPath, { overwrite: true })
+    // Tail-defect FLAG — read-only, never a repair (Tom's ruling 2026-08-05).
+    //
+    // This used to call audioProcessor.repairTailDefect, which trimmed the clip
+    // at the detector's timestamp and re-padded it. At this exact line, that is
+    // how deu_for_eng shipped "Ich will jetzt mit dir Deutsch sprechen" without
+    // "sprechen" — the detector cannot tell a tail click from a natural
+    // mid-sentence pause, and the trim ate every word after the pause. The
+    // mutation path is deleted from audio-processor.cjs; this now observes and
+    // reports only. The clip ships exactly as rendered, always.
+    //
+    // The flag is 9% precise by ear, so it is logged for a human and is NOT a
+    // gate: it must never reject a render or alter a byte.
+    const tail = await audioProcessor.flagTailDefect(masteredPath, { text: ttsText })
+    if (tail.defect) {
+      logger.warn(`masterAudio: tail flag (${tail.defect.kind} ${tail.defect.peakDb}dB at ${tail.defect.trimSec}s) — SUSPECT ONLY, ${tail.precision}. Clip shipped exactly as rendered.`)
     }
 
     // Extract duration
