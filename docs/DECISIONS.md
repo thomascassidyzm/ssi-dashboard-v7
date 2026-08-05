@@ -560,3 +560,33 @@ in so it still repairs. Flag mode returns `action:'held'`, which every call site
 "shipped untouched".
 **Search width:** visible-options
 **Decided by:** agent (reversible, no spend; overrulable in one sentence — revert the default)
+
+## 2026-08-05 — course-wide missing clips live on the audio-preview page
+
+**Move:** the whole course's missing clips are now one server-computed list
+(`GET /api/production/:course/audio-preview/missing-clips`) rendered on the audio-preview page,
+next to the pod-slot MISSING scan — rather than a dedicated view, and rather than a smarter
+Script Viewer filter. Tom's ask was to stop having to "wade through the script view"; Script
+Viewer's "Missing audio only" toggle can only ever filter the 20 LEGOs it has loaded
+(`ScriptViewer.vue` `journeyPageSize = 20`, confirmed against the code and the live API).
+
+**Better:** one number a person can act on — fra_for_eng: 1,459 clips the learner cannot hear
+across 963 of 1,529 rounds — instead of a per-page filter that can never state a course total.
+**Simpler:** one audio-health surface, not a new destination to remember; and the gap test is
+the SAME `hasAudio` the Script Viewer filter uses (learning-script-generator), so the two
+surfaces cannot disagree.
+**Cheaper (total):** no new data path — it reuses the journey generator the journey-search
+endpoint already runs whole-course, and no new database objects. ~8s cold per course, cached
+60s, on a page that is opened deliberately.
+
+**Searched & rejected:**
+- Dedicated "missing audio" view — rejected on simpler: a second place to look for the same
+  question the audio-preview page already answers for pods.
+- Paginate the Script Viewer filter server-side — rejected on better: it fixes the paging and
+  still never produces a total, which is the thing Tom asked for.
+- Direct SQL count of `course_practice_phrases` with null audio — rejected on better: counts
+  rows the learner never plays and misses LEGO intro/debut gaps entirely; kept instead as the
+  independent CROSS-CHECK, and the delta is printed on the page rather than hidden.
+
+**Search width:** visible-options
+**Decided by:** agent (taste call on placement, per the brief's "take that call yourself")
