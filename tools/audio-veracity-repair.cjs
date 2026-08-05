@@ -48,6 +48,9 @@
  *   node tools/audio-veracity-repair.cjs <course> --apply             # RE-RENDERS. costs money.
  *
  *   --since <iso>     only clips created at/after this timestamp
+ *   --ids <path>      JSON array of course_audio ids; check ONLY these. For
+ *                     targeted sweeps (e.g. every clip a past repair run left
+ *                     alone via probe-and-keep) instead of a whole course.
  *   --roles a,b       restrict to these roles (default: all but presentation/pod_*)
  *   --limit <n>       check at most n clips (a pilot; ALWAYS pilot before a sweep)
  *   --concurrency <n> parallel decodes (default 4; measured 1.71 s/clip on 8 cores)
@@ -72,6 +75,7 @@ const argv = process.argv.slice(2)
 const arg = (f, d = null) => { const i = argv.indexOf(f); return i !== -1 && argv[i + 1] ? argv[i + 1] : d }
 const COURSE = argv[0] && !argv[0].startsWith('--') ? argv[0] : null
 const SINCE = arg('--since')
+const IDS = arg('--ids') ? new Set(JSON.parse(fs.readFileSync(arg('--ids'), 'utf8'))) : null
 const ROLES = arg('--roles') ? arg('--roles').split(',').map(s => s.trim()).filter(Boolean) : null
 const LIMIT = Number(arg('--limit', 0)) || 0
 const CONCURRENCY = Number(arg('--concurrency', 4))
@@ -117,10 +121,29 @@ const run = (cmd, args) => new Promise((resolve, reject) => {
 /** Every TTS clip in scope. Paged, with a total sort — see audio-batch-gate's
  *  note: created_at alone is not unique, and a non-total sort silently drops
  *  rows at page boundaries, which reads as "checked and clean". */
+const SELECT = 'id, text, role, voice_id, language, duration_ms, s3_key, created_at, origin'
+
+/** --ids: fetch exactly those rows, in chunks small enough for a PostgREST
+ *  `in.()` URL. Paging the whole course and filtering client-side times the
+ *  statement out on the 30k+ row courses, which is where this is most needed. */
+async function loadClipsByIds () {
+  const ids = [...IDS]
+  const rows = []
+  for (let i = 0; i < ids.length; i += 200) {
+    const { data, error } = await supabase
+      .from('course_audio').select(SELECT)
+      .eq('course_code', COURSE).in('id', ids.slice(i, i + 200))
+    if (error) throw new Error(`load clips by id: ${error.message}`)
+    rows.push(...(data || []))
+  }
+  return rows
+}
+
 async function loadClips () {
   const rows = []
   const PAGE = 1000
-  for (let from = 0; ; from += PAGE) {
+  if (IDS) rows.push(...await loadClipsByIds())
+  else for (let from = 0; ; from += PAGE) {
     let q = supabase
       .from('course_audio')
       .select('id, text, role, voice_id, language, duration_ms, s3_key, created_at, origin')
