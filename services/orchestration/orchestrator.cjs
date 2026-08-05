@@ -10998,6 +10998,39 @@ app.get('/api/services/:name/logs', async (req, res) => {
   }
 });
 
+const deployRepair = require('../deploy-repair.cjs');
+
+/**
+ * Collects the pm2 services a deploy/repair should restart, and schedules the
+ * restart AFTER the response has been sent — production-api is proxying the
+ * request, so restarting it before responding causes 503/CORS errors.
+ */
+function collectRestartTargets() {
+  const pm2Output = execSync('pm2 jlist', { encoding: 'utf-8', timeout: 5000 });
+  return JSON.parse(pm2Output)
+    .map(p => p.name)
+    .filter(n => n !== 'orchestrator' && n !== 'ngrok' && n !== 'keep-awake');
+}
+
+function scheduleRestarts(serviceNames, tag = 'Deploy') {
+  setTimeout(() => {
+    for (const name of serviceNames) {
+      try {
+        execSync(`pm2 restart ${name}`, { encoding: 'utf-8', timeout: 10000 });
+        console.log(`[${tag}] Restarted: ${name}`);
+      } catch (restartErr) {
+        console.error(`[${tag}] Failed to restart ${name}: ${restartErr.message}`);
+      }
+    }
+    // Restart orchestrator last
+    console.log(`[${tag}] Restarting orchestrator...`);
+    spawn('pm2', ['restart', 'orchestrator'], {
+      detached: true,
+      stdio: 'ignore'
+    }).unref();
+  }, 1000);
+}
+
 /**
  * POST /api/deploy
  *
@@ -11006,6 +11039,10 @@ app.get('/api/services/:name/logs', async (req, res) => {
  *
  * Steps: git pull → npm install (if package.json changed) → pm2 restart all
  * Returns immediately with status, streams progress via WebSocket events.
+ *
+ * On failure it issues a single-use `repair_token`: the Deploy UI then offers the
+ * Repair fallback (POST /api/deploy/repair), which force-resets this checkout to
+ * origin/main after snapshotting whatever it is about to discard.
  */
 /**
  * Which checkout is this machine deploying, and where does it stand?
@@ -11088,14 +11125,20 @@ app.post('/api/deploy', async (req, res) => {
     }
 
     // 4. Collect services to restart (don't restart yet — response must be sent first)
-    const pm2Output = execSync('pm2 jlist', { encoding: 'utf-8', timeout: 5000 });
-    const pm2Processes = JSON.parse(pm2Output);
-    const serviceNames = pm2Processes
-      .map(p => p.name)
-      .filter(n => n !== 'orchestrator' && n !== 'ngrok' && n !== 'keep-awake');
+    const serviceNames = collectRestartTargets();
 
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
     addLog(`Deploy complete in ${elapsed}s — restarting ${serviceNames.length} services in background`);
+
+    deployRepair.logDeployEvent(projectDir, {
+      action: 'deploy',
+      outcome: 'success',
+      already_up_to_date: alreadyUpToDate,
+      npm_installed: npmInstalled,
+      head: (() => { try { return execSync('git rev-parse HEAD', { cwd: projectDir, encoding: 'utf-8', timeout: 10000 }).trim(); } catch { return null; } })(),
+      services_restarted: serviceNames,
+      elapsed_seconds: parseFloat(elapsed)
+    });
 
     // Send response BEFORE restarting anything — production-api is proxying
     // this request, so restarting it before responding causes 503/CORS errors
@@ -11113,22 +11156,7 @@ app.post('/api/deploy', async (req, res) => {
     });
 
     // 5. Restart all services after response is sent
-    setTimeout(() => {
-      for (const name of serviceNames) {
-        try {
-          execSync(`pm2 restart ${name}`, { encoding: 'utf-8', timeout: 10000 });
-          console.log(`[Deploy] Restarted: ${name}`);
-        } catch (restartErr) {
-          console.error(`[Deploy] Failed to restart ${name}: ${restartErr.message}`);
-        }
-      }
-      // Restart orchestrator last
-      console.log('[Deploy] Restarting orchestrator...');
-      spawn('pm2', ['restart', 'orchestrator'], {
-        detached: true,
-        stdio: 'ignore'
-      }).unref();
-    }, 1000);
+    scheduleRestarts(serviceNames, 'Deploy');
 
   } catch (err) {
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
@@ -11146,6 +11174,17 @@ app.post('/api/deploy', async (req, res) => {
     }
     addLog(`Deploy FAILED: ${err.message}`);
     console.error('[Deploy] Error:', err.message, gitOutput ? `\n${gitOutput}` : '');
+
+    // Guardrail (1): Repair exists only as a fallback to a deploy that just failed.
+    const repairToken = deployRepair.issueRepairToken(err.message);
+    deployRepair.logDeployEvent(projectDir, {
+      action: 'deploy',
+      outcome: 'failed',
+      error: err.message,
+      elapsed_seconds: parseFloat(elapsed),
+      repair_offered: true
+    });
+
     res.status(500).json({
       success: false,
       error: err.message,
@@ -11155,9 +11194,162 @@ app.post('/api/deploy', async (req, res) => {
       checkout: describeCheckout(projectDir),
       elapsed_seconds: parseFloat(elapsed),
       log,
+      repair_available: true,
+      repair_token: repairToken,
+      repair_hint: 'Repair force-resets this checkout to origin/main, discarding local changes after snapshotting them.',
       machine: process.env.MACHINE_NAME || os.hostname(),
       timestamp: new Date().toISOString()
     });
+  }
+});
+
+/**
+ * POST /api/deploy/repair
+ *
+ * The fallback when Deploy's `git pull` jams on a machine (local mess, stashes,
+ * a diverged branch). Force-resets this checkout to exactly match origin/<branch>
+ * and then restarts services exactly as a normal deploy does.
+ *
+ * Body: { repair_token, confirm: true, branch?: 'main' }
+ *   - repair_token: issued by the failed deploy — single use, 30 min TTL (guardrail 1)
+ *   - confirm: must be literally true; the UI collects it behind an explicit
+ *     "local changes will be discarded" step (guardrail 2)
+ * A safety snapshot (ref + bundle + untracked tarball + manifest) is taken and
+ * verified BEFORE anything is reset (guardrail 3), and both the attempt and the
+ * outcome go to the deploy history (guardrail 4).
+ */
+app.post('/api/deploy/repair', async (req, res) => {
+  const projectDir = path.resolve(__dirname, '..', '..');
+  const startTime = Date.now();
+  const log = [];
+
+  function addLog(msg) {
+    log.push(`[${new Date().toISOString()}] ${msg}`);
+    console.log(`[Repair] ${msg}`);
+  }
+
+  const branch = (req.body?.branch || 'main').replace(/[^A-Za-z0-9._\/-]/g, '');
+  const confirm = req.body?.confirm === true;
+  const token = req.body?.repair_token;
+
+  if (!confirm) {
+    return res.status(400).json({
+      success: false,
+      error: 'Repair requires explicit confirmation — local changes on this machine will be discarded.',
+      machine: process.env.MACHINE_NAME || os.hostname()
+    });
+  }
+
+  const tokenCheck = deployRepair.consumeRepairToken(token);
+  if (!tokenCheck.ok) {
+    deployRepair.logDeployEvent(projectDir, { action: 'repair', outcome: 'refused', error: tokenCheck.error });
+    return res.status(409).json({
+      success: false,
+      error: tokenCheck.error,
+      machine: process.env.MACHINE_NAME || os.hostname()
+    });
+  }
+
+  let snapshot = null;
+  try {
+    addLog(`Repair requested after failed deploy: ${tokenCheck.reason}`);
+
+    // Make-before-break: snapshot first, and only proceed if it is verified on disk.
+    addLog('Capturing safety snapshot of local state...');
+    snapshot = deployRepair.captureSafetySnapshot(projectDir, { addLog });
+
+    const reset = deployRepair.forceResetToOrigin(projectDir, { branch, addLog });
+
+    // npm install if dependencies moved in the reset
+    let npmInstalled = false;
+    try {
+      const changed = execSync('git diff HEAD@{1} HEAD --name-only', { cwd: projectDir, encoding: 'utf-8', timeout: 10000 });
+      if (changed.includes('package.json') || changed.includes('package-lock.json')) {
+        addLog('package.json changed — running npm install...');
+        execSync('npm install --production 2>&1', { cwd: projectDir, encoding: 'utf-8', timeout: 180000 });
+        npmInstalled = true;
+        addLog('npm install complete');
+      }
+    } catch (diffErr) {
+      addLog(`Skipping npm check: ${diffErr.message}`);
+    }
+
+    const serviceNames = collectRestartTargets();
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+    addLog(`Repair complete in ${elapsed}s — restarting ${serviceNames.length} services in background`);
+
+    deployRepair.logDeployEvent(projectDir, {
+      action: 'repair',
+      outcome: 'success',
+      branch: reset.branch,
+      head: reset.head,
+      npm_installed: npmInstalled,
+      discarded_files: snapshot.dirty_files,
+      discarded_untracked: snapshot.untracked_count,
+      snapshot_id: snapshot.id,
+      snapshot_ref: snapshot.snapshot_ref,
+      snapshot_bundle: snapshot.bundle,
+      services_restarted: serviceNames,
+      elapsed_seconds: parseFloat(elapsed)
+    });
+
+    res.json({
+      success: true,
+      repaired: true,
+      branch: reset.branch,
+      head: reset.head,
+      // Post-reset, pre-restart: the commit the restarted services will load.
+      checkout: describeCheckout(projectDir),
+      npm_installed: npmInstalled,
+      snapshot,
+      services_restarted: serviceNames,
+      elapsed_seconds: parseFloat(elapsed),
+      log,
+      machine: process.env.MACHINE_NAME || os.hostname(),
+      timestamp: new Date().toISOString()
+    });
+
+    scheduleRestarts(serviceNames, 'Repair');
+
+  } catch (err) {
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+    addLog(`Repair FAILED: ${err.message}`);
+    console.error('[Repair] Error:', err.message);
+    deployRepair.logDeployEvent(projectDir, {
+      action: 'repair',
+      outcome: 'failed',
+      error: err.message,
+      snapshot_id: snapshot?.id || null,
+      snapshot_ref: snapshot?.snapshot_ref || null,
+      elapsed_seconds: parseFloat(elapsed)
+    });
+    res.status(500).json({
+      success: false,
+      error: err.message,
+      snapshot,
+      elapsed_seconds: parseFloat(elapsed),
+      log,
+      machine: process.env.MACHINE_NAME || os.hostname(),
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+/**
+ * GET /api/deploy/history?limit=50 — the deploy/repair audit trail for this machine.
+ */
+app.get('/api/deploy/history', (req, res) => {
+  const projectDir = path.resolve(__dirname, '..', '..');
+  try {
+    const limit = Math.min(parseInt(req.query.limit, 10) || 50, 500);
+    res.json({
+      success: true,
+      machine: process.env.MACHINE_NAME || os.hostname(),
+      repair_available: deployRepair.hasLiveRepairToken(),
+      history: deployRepair.readDeployHistory(projectDir, limit)
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
   }
 });
 

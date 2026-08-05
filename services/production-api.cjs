@@ -2024,6 +2024,9 @@ app.get('/api/services', proxyOrchestrator)
 app.post('/api/services/:name/restart', proxyOrchestrator)
 app.get('/api/services/:name/logs', proxyOrchestrator)
 app.post('/api/deploy', proxyOrchestrator)
+// Repair fallback — only offered after a deploy has failed on the target machine
+app.post('/api/deploy/repair', proxyOrchestrator)
+app.get('/api/deploy/history', proxyOrchestrator)
 
 // Get content stats for all courses (seeds, legos, baskets counts)
 // Used by dashboard course listings to show real counts

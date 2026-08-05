@@ -30,12 +30,47 @@
     <button
       v-if="isRemote && connectionStatus.connected"
       @click="deploy"
-      :disabled="deploying"
+      :disabled="deploying || repairing"
       class="deploy-btn"
       :title="deployMessage || 'Pull latest code and restart services'"
     >
       {{ deploying ? 'Deploying...' : 'Deploy' }}
     </button>
+
+    <!-- Repair fallback: only ever appears AFTER a deploy has failed on this machine -->
+    <button
+      v-if="repairToken && !repairing"
+      @click="showRepairConfirm = !showRepairConfirm"
+      class="repair-btn"
+      title="Deploy failed — force-reset this machine's checkout to match origin/main"
+    >
+      Repair
+    </button>
+    <span v-if="repairing" class="repair-progress">Repairing…</span>
+
+    <!-- Explicit confirm step: a hard reset on a production machine is never accidental -->
+    <div v-if="showRepairConfirm && repairToken" class="repair-confirm">
+      <p class="repair-title">Repair {{ ENVIRONMENTS[selectedEnv]?.name }}?</p>
+      <p>
+        Deploy failed on this machine. Repair force-resets its checkout to exactly match
+        <code>origin/{{ repairBranch }}</code>.
+      </p>
+      <p class="repair-warn">
+        Any local changes on that machine — edits, untracked files, a diverged branch — will be
+        discarded.
+      </p>
+      <p>
+        Before resetting, everything being discarded is snapshotted on that machine
+        (<code>logs/repair-snapshots/</code> plus a <code>refs/repair-snapshots/…</code> git ref),
+        so it stays recoverable. The repair is written to the deploy history.
+      </p>
+      <div class="repair-actions">
+        <button class="repair-cancel" @click="showRepairConfirm = false">Cancel</button>
+        <button class="repair-go" @click="runRepair">Discard local changes and repair</button>
+      </div>
+    </div>
+
+    <span v-if="deployMessage" class="deploy-message" :class="{ error: deployFailed }">{{ deployMessage }}</span>
   </div>
 </template>
 
@@ -95,6 +130,13 @@ const connectionStatus = ref({ connected: false, message: 'Checking...' })
 const showDebug = ref(false)
 const deploying = ref(false)
 const deployMessage = ref('')
+const deployFailed = ref(false)
+// Repair is a fallback, not a first option: the token only exists once a deploy has
+// failed on the target machine, and the server refuses a repair without it.
+const repairToken = ref('')
+const repairBranch = ref('main')
+const repairing = ref(false)
+const showRepairConfirm = ref(false)
 
 const isRemote = computed(() => {
   const url = ENVIRONMENTS[selectedEnv.value]?.url || ''
@@ -184,19 +226,26 @@ async function checkConnection() {
 }
 
 async function deploy() {
-  if (deploying.value) return
+  if (deploying.value || repairing.value) return
   deploying.value = true
   deployMessage.value = ''
+  deployFailed.value = false
+  repairToken.value = ''
+  showRepairConfirm.value = false
 
   try {
     const url = currentApiUrl.value
     const response = await fetch(`${url}/api/deploy`, {
       method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'ngrok-skip-browser-warning': 'true', 'Content-Type': 'application/json' },
+      body: JSON.stringify({}),
       signal: AbortSignal.timeout(120000)
     })
 
     const data = await response.json()
+    if (data.repair_available && data.repair_token) {
+      repairToken.value = data.repair_token
+    }
     if (data.success) {
       const parts = []
       if (data.already_up_to_date) parts.push('Already up to date')
@@ -209,12 +258,56 @@ async function deploy() {
       // Brief delay then re-check connection (services are restarting)
       setTimeout(() => checkConnection(), 3000)
     } else {
+      deployFailed.value = true
       deployMessage.value = `Deploy failed: ${data.error}`
     }
   } catch (err) {
+    deployFailed.value = true
     deployMessage.value = `Deploy error: ${err.message}`
   } finally {
     deploying.value = false
+  }
+}
+
+async function runRepair() {
+  if (repairing.value || !repairToken.value) return
+  repairing.value = true
+  showRepairConfirm.value = false
+  deployMessage.value = 'Repairing: snapshotting local state, then resetting to origin…'
+  deployFailed.value = false
+
+  const token = repairToken.value
+  repairToken.value = '' // single use — a fresh failure is needed for another repair
+
+  try {
+    const url = currentApiUrl.value
+    const response = await fetch(`${url}/api/deploy/repair`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ repair_token: token, confirm: true, branch: repairBranch.value }),
+      signal: AbortSignal.timeout(300000)
+    })
+
+    const data = await response.json()
+    if (data.success) {
+      const parts = [`Repaired to ${data.branch} @ ${(data.head || '').slice(0, 8)}`]
+      if (data.snapshot) {
+        parts.push(`snapshot ${data.snapshot.id} (${data.snapshot.dirty_files} changed, ${data.snapshot.untracked_count} untracked)`)
+      }
+      if (data.npm_installed) parts.push('npm installed')
+      parts.push(`${data.services_restarted?.length || 0} services restarted`)
+      parts.push(`${data.elapsed_seconds}s`)
+      deployMessage.value = parts.join(' | ')
+      setTimeout(() => checkConnection(), 5000)
+    } else {
+      deployFailed.value = true
+      deployMessage.value = `Repair failed: ${data.error}`
+    }
+  } catch (err) {
+    deployFailed.value = true
+    deployMessage.value = `Repair error: ${err.message}`
+  } finally {
+    repairing.value = false
   }
 }
 
@@ -300,5 +393,112 @@ defineExpose({
 .deploy-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.env-switcher-inline {
+  position: relative;
+}
+
+.repair-btn {
+  margin-left: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #451a03;
+  background: #f59e0b;
+  border: 1px solid #d97706;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.repair-btn:hover {
+  background: #fbbf24;
+}
+
+.repair-progress {
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  color: #f59e0b;
+}
+
+.repair-confirm {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 50;
+  width: 22rem;
+  padding: 0.875rem;
+  background: var(--surface-2, #1f2937);
+  border: 1px solid #d97706;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted, #d1d5db);
+}
+
+.repair-confirm p {
+  margin: 0 0 0.5rem;
+}
+
+.repair-confirm code {
+  font-size: 0.7rem;
+}
+
+.repair-title {
+  font-weight: 700;
+  color: var(--fg, #f9fafb);
+}
+
+.repair-warn {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.repair-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}
+
+.repair-cancel,
+.repair-go {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.repair-cancel {
+  background: transparent;
+  border: 1px solid var(--line, #4b5563);
+  color: var(--muted, #d1d5db);
+}
+
+.repair-go {
+  background: #b45309;
+  border: 1px solid #d97706;
+  color: #fff;
+  font-weight: 600;
+}
+
+.repair-go:hover {
+  background: #d97706;
+}
+
+.deploy-message {
+  margin-left: 0.5rem;
+  font-size: 0.7rem;
+  color: var(--muted, #9ca3af);
+  max-width: 26rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deploy-message.error {
+  color: #f87171;
 }
 </style>
