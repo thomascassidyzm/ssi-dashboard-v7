@@ -59,14 +59,21 @@ and unsafe to repair in `repair-silent-clips.cjs`. But its selector, `isLegacyVo
 recognises a legacy **provider** (`azure_`/`elevenlabs_`/`…Neural`). A course's own xAI voice on the
 wrong side is invisible to it. A `--dry` run on French proposed **2** clips. The real number is 150.
 
-Two commits close that:
+Three commits close that:
 
 - `3d578580` — `--ids <path>`, so an explicitly-selected list can be carried in, with the policy
   staying in the caller's query. Everything downstream is unchanged: human/stub refusal, twin merge,
-  unconstrained-array refusal, the runtime-calibrated truncation gate.
+  the runtime-calibrated truncation gate.
 - `9b767581` — the per-clip re-read guard asked `isLegacyVoice()` too, so the first pilot skipped
   all 10 clips as "already on leo" while they sat on exactly the wrong voice. Under `--ids` it now
   asks whether the clip is already on the configured voice for its slot.
+- `92ae5595` — the first full run then **refused 65 of 140** because they were referenced from
+  `listening_pod_sentences`' unconstrained ARRAY columns, and refusing them meant leaving English
+  pod lines in the French male voice, i.e. refusing exactly the job. The tool now swaps those slots
+  **positionally** — never appended, never deduped, re-read and asserted against the expected old id
+  before writing, and all array writes serialised through one chain because several clips share a
+  pod row. The German document of 2026-08-04 had already ruled that these need re-linking rather
+  than refusal; the code had not caught up.
 
 ## The plan, as run
 
