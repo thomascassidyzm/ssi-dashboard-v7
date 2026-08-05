@@ -1746,7 +1746,8 @@ app.post('/generate/:courseCode', async (req, res) => {
     // exactly the clips THIS pass minted (see the gate call at completion).
     const runStartedAt = new Date().toISOString()
 
-    const { dryRun = false, limit = 50000, concurrency: requestedConcurrency, roles: requestedRoles, seeds: requestedSeeds } = req.body  // High default for bulk generation
+    const { dryRun = false, limit = 50000, concurrency: requestedConcurrency, roles: requestedRoles, seeds: requestedSeeds, authorScope: requestedAuthorScope } = req.body  // High default for bulk generation
+    const authorScope = ['all', 'lego', 'none'].includes(requestedAuthorScope) ? requestedAuthorScope : 'all'
     // Optional incremental scope: restrict generation to specific seed numbers.
     const scopeSeeds = Array.isArray(requestedSeeds) && requestedSeeds.length
       ? requestedSeeds.map(n => parseInt(n, 10)).filter(n => !isNaN(n))
@@ -1843,6 +1844,20 @@ app.post('/generate/:courseCode', async (req, res) => {
     // spend); it reports what WOULD be authored.
     let authoredIntros = []
     let authorFlags = []
+    // authorScope narrows which intros may be authored, so a spend approval
+    // can be expressed at the call instead of by editing content. 'all'
+    // (default) is today's behaviour; 'lego' authors LEGO intros only and
+    // leaves component intros untouched; 'none' authors nothing and renders
+    // only text that already exists. Used 2026-08-05 to finish the fra
+    // re-voice under an approval covering deleted LEGO intros but not the
+    // never-authored component-intro backlog.
+    if (authorScope !== 'all' && audioNeeds.toAuthor?.length) {
+      const before = audioNeeds.toAuthor.length
+      audioNeeds.toAuthor = authorScope === 'none'
+        ? []
+        : audioNeeds.toAuthor.filter(a => a.lego_id)
+      logger.info(`authorScope=${authorScope}: ${before} → ${audioNeeds.toAuthor.length} intro(s) eligible for authoring`)
+    }
     if (!dryRun && audioNeeds.toAuthor?.length) {
       const template = await getOrCreatePresentationTemplate(course.known_lang)
       const targetLangName = getLocalisedLangName(course.target_lang, course.known_lang)

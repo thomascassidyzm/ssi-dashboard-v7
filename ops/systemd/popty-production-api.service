@@ -11,6 +11,9 @@ Environment=PRODUCTION_API_PORT=3470
 # ONE-WRITER GUARD — Camberley Mac is the live production writer.
 # Leave this off on watson-1 until real cutover. See docs/watson-1-environment.md
 Environment=AUDIT_ARCHIVE_CRON=off
+# Tail-repair gate — see the fuller note in popty-phase8-audio.service. Mirrors the
+# installed unit on watson-1, whose repo copy had drifted without this line.
+Environment=TAIL_REPAIR_MODE=flag
 ExecStart=/usr/bin/node services/production-api.cjs
 Restart=always
 RestartSec=5

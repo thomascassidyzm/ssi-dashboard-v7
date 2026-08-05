@@ -8,6 +8,12 @@ Type=simple
 WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
 Environment=NODE_OPTIONS=--max-old-space-size=4096
 Environment=PHASE8_PORT=3465
+# Tail-repair gate: detect-and-flag, never mutate the audio. services/audio-processor.cjs
+# defaults to 'repair', the branch measured to amputate final words (final-word
+# retention 0.52 vs 0.93, p=0.00001 — docs/audio-tail-gate-decision-memo-2026-08-04.md).
+# The installed unit on watson-1 has carried this since 2026-08-04; the repo copy had
+# drifted without it, so any machine provisioned from git would silently render damaged.
+Environment=TAIL_REPAIR_MODE=flag
 ExecStart=/usr/bin/node services/phases/phase8-audio-v13.cjs
 Restart=always
 RestartSec=5

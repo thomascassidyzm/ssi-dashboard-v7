@@ -427,6 +427,54 @@ code change — the `cym_*` prefix rule covers it.
 
 ---
 
+## 6b. Make-Before-Break — the ordering rule for any voice swap or clip replacement
+
+**Rule (Tom, 2026-08-05): generate the replacement first, verify it, THEN break the old link —
+never the reverse.** "why would we unlink all and then regenerate? that makes no sense — surely
+we would generate first and replace once we have the new voices???"
+
+**The incident that forced this into doctrine.** On 2026-08-03T14:18:55Z, 31,310
+`fra_for_eng` `course_audio` rows in discontinued Azure voices were bulk-deleted (`changed_by_uid`
+NULL — a direct service-role SQL statement, not one of the tools below) *before* replacement
+audio existed. The re-render that followed covered most of them but left **4,434 clips never
+replaced**, silencing ~2,000 course slots for two days before it was caught. Full forensics:
+`docs/fra-audio-1608-forensics-2026-08-05.md`, `docs/fra-missing-audio-unlinked-vs-absent-2026-08-05.md`.
+The deleted Azure objects are still in S3 (orphaned, not destroyed) — but the row that pointed a
+learner at them was gone on 08-03 and the replacement didn't land until 08-04/05.
+
+**The four steps, in order, every time:**
+1. **Generate** the new clip (TTS render, or the human-recorded replacement).
+2. **Verify** it — alive (passes the render's silence/truncation checks), correct-voiced, correct
+   text. A failed verification costs nothing and touches nothing that existed before.
+3. **Swap links atomically** — repoint every referencing row (`course_legos`,
+   `course_practice_phrases`, `course_seeds`, `listening_pod_sentences`, `lego_introductions`,
+   `course_audio_envelope`, and the unconstrained array columns) to the new clip.
+4. **Only then delete the old clip** — and only after step 3 has actually landed. If a table's
+   unique key forces the old row to be deleted before the new one can be inserted (see below),
+   render and verify *first* so the only irreversible step left is the smallest possible one.
+
+**Two tools already implement this correctly — use them as the reference pattern, not as
+precedent to copy blindly (the constraint differs between them):**
+- `tools/revoice-clips.cjs` — a voice swap changes `voice_id`, which is part of
+  `course_audio`'s unique key, so the new row **never collides** with the old one. It inserts the
+  new row first, repoints every link (including the array-column ones) while both rows coexist,
+  and deletes the old row last — by which point nothing references it, so
+  `lego_introductions.presentation_audio_id`'s `ON DELETE CASCADE` has nothing to cascade to.
+- `tools/repair-silent-clips.cjs` — a same-voice re-render keeps `voice_id` unchanged, so the new
+  row **would** collide with the old one on that same unique key, forcing the delete before the
+  insert can land. It still renders and verifies the replacement first — "Verified good. Only now
+  do we touch anything." — and if the insert fails after the delete, it restores the deleted row
+  from memory before returning. That restore-on-failure is the minimum viable make-before-break
+  when a schema constraint genuinely forces delete-then-insert; it is not a licence to delete
+  before rendering.
+
+**When writing or reviewing any script that touches `course_audio`:** if you see a `DELETE`
+that isn't immediately preceded by a verified render/insert of its replacement (or isn't guarded
+by a restore-on-failure path like `repair-silent-clips.cjs`'s), treat it as a make-before-break
+violation and stop before running it.
+
+---
+
 ## 7. Voice Management
 
 ```
