@@ -98,9 +98,26 @@ const ROLES = (arg('--roles', '') || '').split(',').filter(Boolean)
 const CONCURRENCY = Number(arg('--concurrency', 3))
 /** 'bare' (eve/ara/leo) or 'prefixed' (xai_eve). deu is overwhelmingly bare. */
 const SPELLING = arg('--spelling', 'bare')
+/**
+ * --ids <path>: an explicit JSON array of course_audio ids to re-voice, INSTEAD
+ * of the isLegacyVoice() scan.
+ *
+ * WHY (2026-08-05, fra_for_eng). isLegacyVoice() only recognises a legacy
+ * PROVIDER — azure_/elevenlabs_/…Neural. It is blind to the defect Kai actually
+ * heard in deu_for_eng: an English `known` clip narrated by one of the course's
+ * own xAI TARGET voices, because the pod builder inherited the known-side voice
+ * from the target line's character voice instead of from voice_config
+ * (docs/audio-repair-2026-08-04/deu_for_eng-revoice-complete.md). fra_for_eng
+ * still carries 138 of those. A blanket "voice_id != configured voice" selector
+ * would be wrong here — pod TARGET voices are deliberate multi-speaker casting
+ * and must not be collapsed — so the policy stays in the caller's query and this
+ * flag just carries the resulting list. Everything downstream (stub/human
+ * refusal, twin merge, array-link refusal, truncation gate) is unchanged.
+ */
+const IDS_FILE = arg('--ids', null)
 
 if (!COURSE) {
-  console.error('usage: revoice-clips.cjs <course> [--roles a,b] [--limit N] [--concurrency N] [--spelling bare|prefixed] [--attempts N] [--dry]')
+  console.error('usage: revoice-clips.cjs <course> [--ids path.json] [--roles a,b] [--limit N] [--concurrency N] [--spelling bare|prefixed] [--attempts N] [--dry]')
   process.exit(1)
 }
 if (isHumanVoiceCourse(COURSE)) {
@@ -297,7 +314,19 @@ async function relink(links, newId, durationMs) {
     if (data.length < 1000) break
     from += 1000
   }
-  let jobs = all.filter(r => isLegacyVoice(r.voice_id))
+  let jobs
+  if (IDS_FILE) {
+    const wanted = JSON.parse(fs.readFileSync(IDS_FILE, 'utf8'))
+    if (!Array.isArray(wanted) || !wanted.length) { console.error(`--ids ${IDS_FILE}: expected a non-empty JSON array of course_audio ids`); process.exit(1) }
+    const byId = new Map(all.map(r => [r.id, r]))
+    const missing = wanted.filter(id => !byId.has(id))
+    jobs = wanted.map(id => byId.get(id)).filter(Boolean)
+    console.log(`--ids ${IDS_FILE}: ${wanted.length} requested, ${jobs.length} found in ${COURSE}${missing.length ? `, ${missing.length} not in this course (skipped)` : ''}`)
+    const already = jobs.filter(r => ROLE_SLOT[r.role] && voices[ROLE_SLOT[r.role]] && r.voice_id === storedVoiceId(voices[ROLE_SLOT[r.role]].voiceId))
+    if (already.length) { console.log(`SKIPPING ${already.length} clip(s) already on the configured voice — re-run safe.`); jobs = jobs.filter(r => !already.includes(r)) }
+  } else {
+    jobs = all.filter(r => isLegacyVoice(r.voice_id))
+  }
   if (ROLES.length) jobs = jobs.filter(r => ROLES.includes(r.role))
 
   // Human-recorded audio is never re-synthesised.
