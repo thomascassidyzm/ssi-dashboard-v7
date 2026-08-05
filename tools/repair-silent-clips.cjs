@@ -244,7 +244,7 @@ async function renderVerified(row, tmpDir, expectedMs) {
     const veracityVerdict = await veracity.checkAudioVeracity(buffer, row.text, row.language)
     const wrongWords = veracityVerdict.checked === true && veracityVerdict.pass === false
 
-    last = { buffer, durationMs, level, silent, nearSilent, short, truncated, veracity: veracityVerdict }
+    last = { buffer, durationMs, level, silent, nearSilent, short, truncated, veracity: veracityVerdict, attempts: attempt }
     if (!silent && !nearSilent && !short && !truncated && !wrongWords) return last
 
     const why = silent ? 'SILENT'
@@ -357,7 +357,25 @@ async function restoreLinks(links, newId, durationMs) {
       if (delErr) throw new Error(`delete: ${delErr.message}`)
       restore = { row, links }
 
-      const fresh = { ...row, id: newId, s3_key: s3Key, duration_ms: rendered.durationMs, origin: 'tts' }
+      // The replacement carries the verdict renderVerified just measured on it.
+      // Two reasons this is not optional. First, `...row` copies the OLD row's
+      // veracity columns, and a verdict about bytes we have just deleted is a
+      // lie with a timestamp on it. Second, this tool has always computed a
+      // genuine acoustic verdict and thrown it away — 1,020 clips repaired on
+      // 2026-08-05 were whisper-checked to the gate's own standard and left no
+      // record of it, so the preview page could only call them unchecked
+      // (docs/gate-bypass-audit-2026-08-05.md §2).
+      const fresh = {
+        ...row,
+        id: newId,
+        s3_key: s3Key,
+        duration_ms: rendered.durationMs,
+        origin: 'tts',
+        ...veracity.verdictColumns(rendered.veracity, {
+          checker: 'repair-silent-clips',
+          attempts: rendered.attempts,
+        }),
+      }
       delete fresh.text_stripped     // GENERATED ALWAYS — an explicit value is rejected
       delete fresh.created_at
       delete fresh.updated_at

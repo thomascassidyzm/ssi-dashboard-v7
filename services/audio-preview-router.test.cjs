@@ -1,24 +1,32 @@
 /**
- * audio-preview-router.test.cjs — the filter predicates, which are the whole
- * honesty claim of the listening page.
+ * audio-preview-router.test.cjs — the filter predicates and the verdict
+ * mapping, which together are the whole honesty claim of the listening page.
  *
  * Run: npx vitest run services/audio-preview-router
  *
- * The bug these tests exist to keep dead: `recent` applied NO predicate, so
- * "Recently rendered" was byte-identical to "All". In the newest-first list
- * that looks fine; through /sample — a uniform draw over the filtered set — it
- * served a course's entire pre-gate history under a label promising the
- * opposite. A filter that silently matches everything is not a filter.
+ * Two bugs these tests exist to keep dead:
+ *
+ * 1. `recent` applied NO predicate, so "Recently rendered" was byte-identical
+ *    to "All". In the newest-first list that looks fine; through /sample — a
+ *    uniform draw over the filtered set — it served a course's entire history
+ *    under a label promising the opposite. A filter that silently matches
+ *    everything is not a filter.
+ *
+ * 2. The page decided whether a clip had been quality-checked by comparing its
+ *    created_at to the date the gate shipped. docs/gate-bypass-audit-2026-08-05.md
+ *    measured that inference as false for 100% of the 1,413 rows it selected.
+ *    Quality is now a stored verdict, and the tests below pin the one rule that
+ *    makes a stored verdict safe: "could not check" NEVER reads as a pass.
  */
 import { describe, it, expect } from 'vitest'
 
 const {
-  GATE_LIVE_FROM,
   RECENT_WINDOW_DAYS,
+  FILTERS,
   applyFilter,
   recentCutoff,
   parseFilter,
-  gateStateFor,
+  verdictFor,
 } = require('./audio-preview-router.cjs')
 
 // Minimal PostgREST query double: records the predicates applied to it.
@@ -29,6 +37,8 @@ function fakeQuery () {
     gte: (col, val) => { calls.push(['gte', col, val]); return q },
     lt: (col, val) => { calls.push(['lt', col, val]); return q },
     eq: (col, val) => { calls.push(['eq', col, val]); return q },
+    is: (col, val) => { calls.push(['is', col, val]); return q },
+    or: (expr) => { calls.push(['or', expr]); return q },
   }
   return q
 }
@@ -41,9 +51,33 @@ describe('applyFilter', () => {
     expect(q.calls).toEqual([['gte', 'created_at', '2026-07-29T12:00:00.000Z']])
   })
 
-  it('constrains "gated" to the gate-era window', () => {
-    const q = applyFilter(fakeQuery(), 'gated', null, NOW)
-    expect(q.calls).toEqual([['gte', 'created_at', GATE_LIVE_FROM]])
+  it('makes "checked" a verdict lookup, not a date window', () => {
+    const q = applyFilter(fakeQuery(), 'checked', null, NOW)
+    expect(q.calls).toEqual([['is', 'veracity_pass', true]])
+    // The bug this replaces: quality asserted from created_at.
+    expect(JSON.stringify(q.calls)).not.toContain('created_at')
+  })
+
+  /**
+   * The three-valued-logic trap. `veracity_pass` is NULL for every clip
+   * rendered before 2026-08-05 and for every could-not-check admission, and in
+   * SQL `pass <> true` is NULL — not TRUE — for those rows. Written as a
+   * not-equals, this filter would return NOTHING on a course of entirely
+   * unchecked audio, and the page would report that course as having nothing
+   * to worry about.
+   */
+  it('makes "unchecked" catch NULLs — the population it exists for', () => {
+    const q = applyFilter(fakeQuery(), 'unchecked', null, NOW)
+    expect(q.calls).toEqual([['or', 'veracity_pass.is.null,veracity_pass.is.false']])
+    expect(q.calls[0][1]).toContain('is.null')
+    expect(q.calls[0][1]).not.toContain('not.eq')
+  })
+
+  it('puts checked-and-failed in "unchecked" so a failure cannot hide', () => {
+    // Defined as "not confirmed passed", so the two filters partition the set:
+    // nothing is in both, and nothing is in neither.
+    const q = applyFilter(fakeQuery(), 'unchecked', null, NOW)
+    expect(q.calls[0][1]).toContain('is.false')
   })
 
   it('leaves "all" unconstrained — the one filter allowed to match everything', () => {
@@ -67,40 +101,82 @@ describe('recentCutoff', () => {
     const cutoff = Date.parse(recentCutoff(NOW))
     expect(NOW - cutoff).toBe(RECENT_WINDOW_DAYS * 24 * 60 * 60 * 1000)
   })
-
-  it('is well after the gate went live, so "recent" is never a superset of "gated"', () => {
-    expect(Date.parse(recentCutoff(NOW))).toBeGreaterThan(Date.parse('2026-07-01T00:00:00Z'))
-  })
 })
 
 describe('parseFilter', () => {
-  it('accepts the three real filters', () => {
-    expect(['recent', 'gated', 'all'].map(parseFilter)).toEqual(['recent', 'gated', 'all'])
+  it('accepts every real filter', () => {
+    expect(FILTERS.map(parseFilter)).toEqual(FILTERS)
   })
 
   it('falls back to "recent" — a bounded window — for anything unrecognised', () => {
     expect(parseFilter('nonsense')).toBe('recent')
     expect(parseFilter(undefined)).toBe('recent')
+    // The old date-window filter. It no longer exists; it must degrade to a
+    // bounded window, never be silently reinterpreted as a quality claim.
+    expect(parseFilter('gated')).toBe('recent')
   })
 })
 
-describe('gateStateFor', () => {
-  it('never returns "passed" — no per-clip verdict is persisted', () => {
-    expect(gateStateFor('2026-08-05T00:00:00Z')).toBe('gate-era')
-    expect(gateStateFor('2026-08-01T00:00:00Z')).toBe('pre-gate')
-    expect(gateStateFor(null)).toBe('pre-gate')
+describe('verdictFor', () => {
+  it('reports a stored pass as passed, with its evidence', () => {
+    const v = verdictFor({
+      veracity_checked_at: '2026-08-05T14:00:00Z',
+      veracity_pass: true,
+      veracity_reason: 'ok',
+      veracity_cer: 0.02,
+      veracity_attempts: 1,
+      veracity_checker: 'phase8-generate',
+    })
+    expect(v.state).toBe('passed')
+    expect(v.cer).toBe(0.02)
+    expect(v.checker).toBe('phase8-generate')
   })
 
-  // The cutoff was originally set BEFORE the gate's own commit so that the
-  // fra_for_eng pilot batch (23:02…23:46) would fall inside the window. That
-  // made the filter select 251 clips the gate had never seen and call them
-  // gate-covered. The cutoff must never drift back before the gate exists.
-  it('excludes the fra_for_eng pilot batch, which predates the gate module', () => {
-    expect(gateStateFor('2026-08-04T23:30:26Z')).toBe('pre-gate')
-    expect(gateStateFor('2026-08-04T23:46:05Z')).toBe('pre-gate')
+  /**
+   * THE rule. `checked: false` means the gate ran and could not look — missing
+   * whisper, a decode error, the gate switched off. It writes a checked_at (it
+   * did run) and leaves pass NULL (it reached no verdict). If that ever renders
+   * as a pass, the page is back to asserting quality it has not measured, which
+   * is the entire defect this column set was added to end.
+   */
+  it('never reads a could-not-check admission as a pass', () => {
+    const v = verdictFor({
+      veracity_checked_at: '2026-08-05T14:00:00Z',
+      veracity_pass: null,
+      veracity_reason: 'unchecked_no_whisper',
+    })
+    expect(v.state).toBe('unchecked')
+    expect(v.state).not.toBe('passed')
+    expect(v.reasonText).toMatch(/not installed/)
   })
 
-  it('sits at or after the commit that wired the gate into phase8', () => {
-    expect(Date.parse(GATE_LIVE_FROM)).toBeGreaterThanOrEqual(Date.parse('2026-08-04T23:59:33Z'))
+  it('reads a clip nothing ever checked as unchecked, and says so in words', () => {
+    const v = verdictFor({ created_at: '2026-03-01T00:00:00Z' })
+    expect(v.state).toBe('unchecked')
+    expect(v.checkedAt).toBeNull()
+    expect(v.reasonText).toMatch(/has ever run/)
+  })
+
+  it('surfaces checked-and-failed rather than folding it into unchecked', () => {
+    const v = verdictFor({
+      veracity_checked_at: '2026-08-05T14:00:00Z',
+      veracity_pass: false,
+      veracity_reason: 'non_speech_decode',
+    })
+    expect(v.state).toBe('failed')
+    expect(v.reasonText).toMatch(/no speech/)
+  })
+
+  it('turns every reason code into prose — the page never prints a bare code', () => {
+    const codes = [
+      'ok', 'non_speech_decode', 'cer_above_threshold',
+      'cer_above_unvalidated_language_threshold', 'unchecked_no_whisper',
+      'unchecked_disabled', 'unchecked_decode_error', 'unchecked_no_text',
+    ]
+    for (const reason of codes) {
+      const v = verdictFor({ veracity_checked_at: '2026-08-05T14:00:00Z', veracity_reason: reason })
+      expect(v.reasonText).not.toBe(reason)
+      expect(v.reasonText.length).toBeGreaterThan(reason.length / 2)
+    }
   })
 })

@@ -78,38 +78,48 @@
       database records it per clip, so this page cannot flag it for you yet.
     </p>
 
-    <!-- What the data can and cannot prove. Said once, plainly, where it is
-         being relied on — not buried in a tooltip. -->
-    <p v-if="gate" class="text-xs text-faint mb-4 leading-relaxed">
-      <template v-if="filter === 'gated'">
-        Clips rendered from {{ gateLiveFromLabel }}, when the pre-publish veracity gate was wired in.
-      </template>
-      No per-clip verdict is stored anywhere, so this is a <em>render time</em>, never a verdict.
-      <strong v-if="gate.verifiedByGate === false" class="text-ink">And as of the 2026-08-05 audit,
-      no production render has gone through the gate at all</strong> — every clip here was written by
-      a path that bypasses it, and the gate's quarantine ledger holds test fixtures only. Treat this
-      filter as “rendered recently enough to have been repaired”, not as “checked”.
-    </p>
-
-    <!-- The mixed-provenance warning. "Recently rendered" and "All" both contain
-         clips made long before the gate existed, and on a course whose history
-         dwarfs its gate-era output a random sample of either is overwhelmingly
-         pre-gate audio. Said in the filter's own place, with the real count, so
-         nobody judges the gate by clips it never saw. -->
+    <!-- The verdict split of the WHOLE filter, not just the rows on screen.
+         This page used to compare created_at against the date the gate shipped
+         and label the result "rendered under the gate"; the 2026-08-05 audit
+         measured that inference as false for every one of the 1,413 clips it
+         selected. Each clip now carries a verdict its renderer recorded, and
+         this line is the honest headline over the set. -->
     <p
-      v-if="filter !== 'gated' && preGateTotal"
-      data-walk="audio-preview-pre-gate-warning"
+      v-if="verdictTotals"
+      data-walk="audio-preview-verdict-summary"
       class="mb-4 border border-line rounded-lg bg-surface px-4 py-2.5 text-xs text-muted leading-relaxed"
     >
-      <strong class="text-ink">{{ preGateTotal.toLocaleString() }} of the {{ (total ?? preGateTotal).toLocaleString() }} clips
-      in this filter predate the gate</strong> — rendered before {{ gateLiveFromLabel }} and never machine-checked.
-      <template v-if="filter === 'recent'">
+      <template v-if="verdictTotals.passed">
+        <strong class="text-ink">{{ verdictTotals.passed.toLocaleString() }} of the
+        {{ filterTotal.toLocaleString() }} clips in this filter were checked and
+        passed</strong> — a machine transcribed each one and the words matched the script.
+      </template>
+      <template v-else>
+        <strong class="text-ink">Nothing in this filter carries a passing verdict.</strong>
+      </template>
+      <template v-if="verdictTotals.unchecked">
+        {{ verdictTotals.unchecked.toLocaleString() }} {{ verdictTotals.passed ? 'are' : 'of them are' }}
+        <strong class="text-ink">unchecked</strong> — no quality check ever ran on them, or the
+        checker ran and could not examine them. Unchecked is not a pass.
+      </template>
+      <strong v-if="verdictTotals.failed" class="text-danger">
+        {{ verdictTotals.failed.toLocaleString() }} were checked and FAILED yet are published —
+        that should be impossible; investigate.
+      </strong>
+      <template v-if="filter === 'recent' && gate">
         “Recently rendered” means the last {{ gate.recentWindowDays }} days, which is a recency
         window and not a quality one.
       </template>
-      A random sample here is drawn uniformly across the whole filter, so most of what it plays
-      will be pre-gate. Every clip below carries its own <em>before the gate</em> / <em>after the
-      gate shipped</em> badge.
+      A random sample is drawn uniformly across the whole filter, so it plays the mix above.
+      Every clip below carries its own badge.
+    </p>
+
+    <!-- What a pass does and does not cover. Said once, plainly, where it is
+         being relied on — not buried in a tooltip. -->
+    <p class="text-xs text-faint mb-4 leading-relaxed">
+      A pass means an unprimed transcription of the clip contained the words that were asked for.
+      It is validated on <strong class="text-ink">silence and truncation only</strong> and says
+      nothing about pronunciation, so your ears remain the check for how it sounds.
     </p>
 
     <!-- The third state. Slots pointing at audio that no longer exists cannot
@@ -163,15 +173,27 @@
     <!-- States -->
     <div v-if="loading" class="text-center py-12 text-faint">Loading clips…</div>
     <div v-else-if="error" class="text-center py-12 text-danger text-sm">{{ error }}</div>
+    <!-- An empty "checked and passed" is a real answer, not a broken page: it
+         means nothing in this course has been through the gate yet. Say that,
+         and hand over a tap to the audio that exists anyway — an empty list
+         with no explanation reads as a fault and gets the page distrusted. -->
     <div v-else-if="!clips.length" class="text-center py-12">
       <div class="text-muted mb-1">No clips</div>
-      <div class="text-sm text-faint">Nothing in {{ activeCourse }} matches this filter.</div>
+      <div v-if="filter === 'checked'" class="text-sm text-faint max-w-md mx-auto leading-relaxed">
+        No clip in {{ activeCourse }} carries a passing verdict yet. Verdicts are recorded from the
+        render that produces them, so this fills up as audio is generated — it does not backfill.
+        <button
+          @click="setFilter('unchecked')"
+          class="mt-3 block mx-auto px-3 py-1.5 rounded text-xs font-medium bg-surface border border-line text-muted hover:text-ink"
+        >Listen to what is here anyway</button>
+      </div>
+      <div v-else class="text-sm text-faint">Nothing in {{ activeCourse }} matches this filter.</div>
     </div>
 
     <div v-else class="space-y-2">
       <p v-if="sampleMode" class="text-xs text-faint">
         Random sample of {{ clips.length }} from {{ filterLabel }} — playing back to back.
-        <span v-if="sampledPreGate" class="text-ink">{{ sampledPreGate }} of them predate the gate.</span>
+        <span v-if="sampledUnchecked" class="text-ink">{{ sampledUnchecked }} of them carry no passing verdict.</span>
       </p>
       <p v-else-if="total != null" class="text-xs text-faint">
         {{ clips.length }} of {{ total }} — newest first
@@ -210,10 +232,13 @@
  * the header carries a batch-actions area. Adding approve/reject should not
  * require moving anything here.
  *
- * Honesty note that governs every label on this page: no per-clip veracity
- * verdict is persisted anywhere (verified against the live schema
- * 2026-08-05). The "rendered under the gate" filter is a render-time window,
- * never a verdict lookup, and nothing on the page claims a clip "passed".
+ * Honesty note that governs every label on this page: a clip is described by
+ * the verdict its renderer STORED on it, never by when it was rendered. The
+ * page used to infer "rendered under the gate" from created_at, and
+ * docs/gate-bypass-audit-2026-08-05.md measured that inference as false for
+ * 100% of the rows it selected. "unchecked" is a first-class state here and is
+ * never folded into "passed" — a clip nothing looked at and a clip that passed
+ * must never look alike.
  */
 import { ref, computed, watch, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -232,22 +257,24 @@ const apiUrl = getApiUrl()
 const LAST_COURSE_KEY = 'audioPreview.lastCourse'
 const PAGE_SIZE = 50
 
-// Gate-first by default. "Recently rendered" is a recency window, not a
-// quality one: it legitimately contains pre-gate clips, and defaulting to it
-// meant the first thing anyone heard on this page was a mixed bag they had no
-// reason to think was mixed.
+// Verdict-first. The first two tabs are the two halves of the question this
+// page exists to answer — what has been checked, and what has not — and each
+// is a lookup of a stored verdict rather than a date window. "Not confirmed
+// passed" is deliberately defined as everything that is NOT a pass, so a
+// checked-and-failed clip cannot hide in a tab nobody opens.
 const filterTabs = [
-  { key: 'gated', label: 'Rendered since the gate shipped' },
+  { key: 'checked', label: 'Checked and passed' },
+  { key: 'unchecked', label: 'Not confirmed passed' },
   { key: 'recent', label: 'Recently rendered' },
   { key: 'all', label: 'All' },
 ]
 
 const courses = ref([])
 const activeCourse = ref(props.courseCode || localStorage.getItem(LAST_COURSE_KEY) || '')
-const filter = ref('gated')
+const filter = ref('checked')
 const clips = ref([])
 const total = ref(null)
-const preGateTotal = ref(null)
+const verdictTotals = ref(null)
 const hasMore = ref(false)
 const gate = ref(null)
 const quarantine = ref([])
@@ -272,16 +299,19 @@ const urlCache = new Map()
 const filterLabel = computed(() =>
   filterTabs.find(t => t.key === filter.value)?.label.toLowerCase() || filter.value)
 
-// How much of what is actually loaded was never machine-checked. The badges say
-// it per clip; this says it for the batch a listener is about to judge.
-const sampledPreGate = computed(() =>
-  clips.value.filter(c => c.gateState !== 'gate-era').length)
+// How much of what is actually LOADED carries no passing verdict. The badges
+// say it per clip; this says it for the batch a listener is about to judge —
+// which matters most in sample mode, where the rows on screen are the whole
+// thing being judged.
+const sampledUnchecked = computed(() =>
+  clips.value.filter(c => c.verdict?.state !== 'passed').length)
 
-const gateLiveFromLabel = computed(() => {
-  if (!gate.value?.liveFrom) return ''
-  return new Date(gate.value.liveFrom).toLocaleString('en-GB', {
-    day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit',
-  })
+// The size of the filtered set. /clips reports it exactly; /sample does not, so
+// fall back to the verdict counts, which are counts over the same predicate.
+const filterTotal = computed(() => {
+  if (total.value != null) return total.value
+  const v = verdictTotals.value
+  return v ? v.passed + v.failed + v.unchecked : 0
 })
 
 function apiHeaders () {
@@ -334,7 +364,7 @@ async function fetchClips ({ append = false } = {}) {
     const data = await resp.json()
     clips.value = append ? [...clips.value, ...data.clips] : data.clips
     total.value = data.total
-    preGateTotal.value = data.preGateTotal ?? null
+    verdictTotals.value = data.verdictTotals ?? null
     hasMore.value = data.hasMore
     gate.value = data.gate
     if (!append) primeVisible()
@@ -469,7 +499,7 @@ async function playRandomSample () {
     if (!data.clips.length) return
     clipRefs.value = []
     clips.value = data.clips
-    preGateTotal.value = data.preGateTotal ?? null
+    verdictTotals.value = data.verdictTotals ?? null
     gate.value = data.gate
     sampleMode.value = true
     await nextTick()

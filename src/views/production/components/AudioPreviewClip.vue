@@ -38,13 +38,21 @@
 
     <div class="mt-2 flex items-center gap-2.5 flex-wrap text-xs text-faint">
       <span class="px-1.5 py-0.5 rounded border border-line uppercase tracking-wide">{{ clip.role || 'no role' }}</span>
+      <!--
+        The measured verdict this clip carries, not an inference from when it
+        was rendered. See services/audio-preview-router.cjs for why that
+        distinction is the whole point of this badge.
+      -->
       <span
         class="px-1.5 py-0.5 rounded border"
-        :class="clip.gateState === 'gate-era'
-          ? 'border-accent-2/40 text-accent-2'
-          : 'border-line text-faint'"
-        :title="gateTitle"
-      >{{ clip.gateState === 'gate-era' ? 'after the gate shipped' : 'before the gate' }}</span>
+        :class="verdictClass"
+        :title="verdictTitle"
+      >{{ verdictLabel }}</span>
+      <span
+        v-if="clip.verdict?.attempts > 1"
+        class="px-1.5 py-0.5 rounded border border-line"
+        title="The first render was defective and was never published. This is the attempt that passed."
+      >re-rendered ×{{ clip.verdict.attempts }}</span>
       <span v-if="clip.voiceId" class="font-mono">{{ clip.voiceId }}</span>
       <span v-if="clip.durationMs != null" class="font-mono">{{ (clip.durationMs / 1000).toFixed(2) }}s</span>
       <span class="font-mono">{{ renderedAt }}</span>
@@ -77,13 +85,41 @@ const renderedAt = computed(() => {
   })
 })
 
-// Deliberately weaker wording than "rendered under the gate", which this badge
-// used to claim. Audited 2026-08-05: no production clip has been through the
-// gate at all, so the only thing a timestamp can honestly assert is which side
-// of the gate's ship time the render fell on.
-const gateTitle = computed(() => props.clip.gateState === 'gate-era'
-  ? 'Rendered after the veracity gate shipped. No per-clip verdict is stored and no production render has yet gone through the gate, so this is NOT a claim that the clip was checked.'
-  : 'Rendered before the veracity gate existed. Could not have been machine-checked.')
+// The badge reads the verdict the renderer stored on the clip. It used to read
+// a timestamp — "after the gate shipped" — and the 2026-08-05 audit measured
+// that inference as false for 100% of the rows it selected. Three states,
+// because "we could not check this" is not a pass and must never render as one.
+const verdictState = computed(() => props.clip.verdict?.state || 'unchecked')
+
+const verdictLabel = computed(() => ({
+  passed: 'checked · passed',
+  failed: 'checked · FAILED',
+  unchecked: 'unchecked',
+}[verdictState.value]))
+
+const verdictClass = computed(() => ({
+  passed: 'border-accent-2/40 text-accent-2',
+  failed: 'border-danger/50 text-danger font-semibold',
+  unchecked: 'border-line text-faint',
+}[verdictState.value]))
+
+const verdictTitle = computed(() => {
+  const v = props.clip.verdict || {}
+  const detail = [
+    v.reasonText,
+    v.cer != null ? `character error rate ${Number(v.cer).toFixed(3)}` : null,
+    v.checker ? `recorded by ${v.checker}` : null,
+    v.checkedAt ? `checked ${new Date(v.checkedAt).toLocaleString('en-GB')}` : null,
+  ].filter(Boolean).join(' · ')
+
+  const head = {
+    passed: 'The pre-publish veracity gate transcribed this clip with an unprimed whisper decode and the words matched the script. Validated on silence and truncation only — it says nothing about pronunciation.',
+    failed: 'This clip was checked, it FAILED, and the row exists anyway. That should be impossible on the gated path — worth investigating.',
+    unchecked: 'No passing verdict is stored for this clip. Either no check has ever run on it, or the gate ran and could not examine it. This is NOT a pass.',
+  }[verdictState.value]
+
+  return detail ? `${head}\n\n${detail}` : head
+})
 
 /**
  * Signed URLs expire in an hour, so nothing is fetched until a clip is

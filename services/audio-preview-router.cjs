@@ -17,14 +17,15 @@
  * Endpoints (every one a pure SELECT / file read — no writes, no TTS, no S3
  * mutation; adding a write endpoint here would break the contract the page is
  * built on):
- *   GET /clips        ?filter=recent|gated|all &limit &offset &role
- *                     → { clips, hasMore, total, preGateTotal, gate }
+ *   GET /clips        ?filter=recent|checked|unchecked|all &limit &offset &role
+ *                     → { clips, hasMore, total, verdictTotals, gate }
  *                       Each filter is a REAL predicate: `recent` is the last
- *                       RECENT_WINDOW_DAYS, `gated` is the gate-era window,
- *                       `all` is everything. `recent` used to apply no
- *                       predicate at all — identical to `all` — which is how a
- *                       tab labelled "recently rendered" came to serve clips
- *                       rendered months before the gate existed.
+ *                       RECENT_WINDOW_DAYS, `checked` is a stored PASS verdict,
+ *                       `unchecked` is the absence of one, `all` is everything.
+ *                       `recent` used to apply no predicate at all — identical
+ *                       to `all` — which is how a tab labelled "recently
+ *                       rendered" came to serve clips rendered months before
+ *                       the gate existed.
  *   GET /sample       ?filter=… &n=20
  *                     → { clips } — a UNIFORM random sample of the filter,
  *                       drawn by random offsets over the filtered count rather
@@ -45,43 +46,44 @@
  *                       LEGOs it has loaded; this sees all of them. See
  *                       audio-preview-course-gaps.cjs.
  *
- * ── The honesty problem this router has to carry ─────────────────────────────
- * There is NO per-clip veracity verdict anywhere in the database. Verified
- * against the live schema on 2026-08-05: course_audio has no verdict/cer/
- * checked_at column, and the gate persists nothing per clip on the pass path —
- * it keeps per-RUN counters, and writes a row to the quarantine ledger only
- * when a clip FAILS and is withheld. Since a failing clip never reaches S3 or
- * course_audio, everything in course_audio rendered since the gate went live is
- * by construction "passed OR was never checked", and those two are not the same
- * thing — the gate carries an explicit `unchecked` state precisely so it can
- * never silently pass what it could not examine.
+ * ── This page used to infer quality from a date. It now reads a verdict. ─────
+ * Until 2026-08-05 there was no per-clip veracity verdict in the database, so
+ * the only thing this router could do was compare `created_at` against the
+ * moment the gate shipped and label the result. docs/gate-bypass-audit-2026-08-05.md
+ * measured what that label was worth: of the 1,413 clips it selected, ZERO had
+ * been through `veracity.renderChecked`. The inference was false for 100% of
+ * its own rows — and the cutoff had been chosen, in good faith, to make a
+ * particular batch auditionable, which inverted the filter's meaning.
  *
- * So the `gated` filter here is a TIME WINDOW, not a verdict lookup, and it is
- * named for what it is everywhere it surfaces — never "passed".
+ * A date can never fix that, because two different things share one timestamp:
+ * a clip the gate checked and passed, and a clip the gate could not check and
+ * published anyway. services/audio-veracity.cjs carries an explicit `unchecked`
+ * state precisely because those are not the same claim.
  *
- * ── Corrected 2026-08-05, and the correction is the point ────────────────────
- * This constant used to be 2026-08-04T23:00:00Z, chosen DELIBERATELY to sit
- * before the gate module's own commit (23:55:59Z) so that the fra_for_eng pilot
- * batch — rendered 23:02…23:46 — would fall inside the window and be
- * auditionable. That reasoning inverted the meaning of the filter: those clips
- * rendered BEFORE the gate existed, so a filter labelled "rendered under the
- * gate" was selecting, first and foremost, 251 clips the gate had never seen.
- * The pilot doc's own §5 records one truncated clip live in production out of
- * that batch — exactly what the gate would have withheld.
+ * So the verdict is now stored on the clip, by the code that rendered it
+ * (`veracity.verdictColumns`, database/migrations/20260805_course_audio_veracity_verdict.sql),
+ * and every filter and badge here is a LOOKUP of that verdict. Three states,
+ * never two:
  *
- * The cutoff is now the commit that wired the gate into phase8 (85bd2a34,
- * 2026-08-04T23:59:33Z). A clip on the wrong side of it demonstrably could not
- * have been checked.
+ *   passed     veracity_pass = true            — checked, and it passed
+ *   failed     veracity_pass = false           — checked, and it failed, and the
+ *                                                row exists anyway. Impossible
+ *                                                on the gated path; surfaced
+ *                                                loudly rather than hidden.
+ *   unchecked  everything else                 — no check ever ran (every clip
+ *                                                rendered before 2026-08-05,
+ *                                                and every path that still
+ *                                                bypasses the gate), or the
+ *                                                gate ran and could not check.
+ *                                                NEVER folded into passed.
  *
- * Being on the RIGHT side of it still does not mean checked. Audited
- * 2026-08-05 (docs/gate-bypass-audit-2026-08-05.md): `veracity.renderChecked`
- * has three call sites, all in phase8's bulk paths, and NO production render
- * has gone through them yet — the quarantine ledger contains test fixtures
- * only. Everything currently in the window was written by a path that bypasses
- * the gate. So the honest claim this filter can make is "rendered after the
- * gate shipped", and the payload says `verifiedByGate: false` until per-clip
- * verdicts are persisted. Do not restore the stronger wording without the
- * column to back it.
+ * Clips the gate checked and WITHHELD are not in course_audio at all — that is
+ * what withholding means — so they are served from the quarantine ledger by
+ * GET /quarantine, and the page shows both together. A surface that could only
+ * show what published would report "no failures" by construction.
+ *
+ * The old date constant is deliberately gone. If you find yourself reaching for
+ * a timestamp to decide whether a clip was checked, the answer is a column.
  */
 
 'use strict'
@@ -100,12 +102,8 @@ const learningScriptGenerator = require('./learning-script-generator.cjs')
 
 // Columns the page actually renders. `text` is the thing being checked against
 // the audio, so it leads; the rest is provenance.
-const CLIP_COLUMNS = 'id, course_code, text, role, voice_id, origin, s3_key, duration_ms, created_at, lego_id'
-
-// The commit that wired the veracity gate into phase8 (85bd2a34). A clip
-// rendered before this could not have been checked. A clip rendered after it
-// still may not have been — see the header. NOT evidence of a per-clip verdict.
-const GATE_LIVE_FROM = '2026-08-04T23:59:33.000Z'
+const CLIP_COLUMNS = 'id, course_code, text, role, voice_id, origin, s3_key, duration_ms, created_at, lego_id, '
+  + 'veracity_checked_at, veracity_pass, veracity_reason, veracity_cer, veracity_attempts, veracity_checker'
 
 // How far back "recently rendered" reaches. It has to be a real window: the
 // filter previously applied NO predicate at all, which made it byte-identical
@@ -198,16 +196,48 @@ const QUARANTINE_DIR = process.env.AUDIO_VERACITY_QUARANTINE_DIR
   || path.join(__dirname, '..', 'scripts', 'audio-veracity-quarantine')
 
 /**
- * The gate state we can HONESTLY assert for a published clip.
- * 'gate-era'  → rendered at/after GATE_LIVE_FROM: the gate was live, so it was
- *               checked-and-passed OR explicitly unchecked. We cannot tell which.
- * 'pre-gate'  → rendered before the gate existed. Never checked.
- * There is deliberately no 'passed' value. If per-clip verdicts are persisted
- * later, this is the single place that becomes a real lookup.
+ * Human wording for a stored verdict reason. The page must never print a bare
+ * code like `cer_above_threshold` at a person, and it must never print a
+ * confident phrase for an admission — `unchecked_no_whisper` means the machine
+ * could not look, which is a different thing from looking and approving.
  */
-function gateStateFor (createdAt) {
-  if (!createdAt) return 'pre-gate'
-  return new Date(createdAt) >= new Date(GATE_LIVE_FROM) ? 'gate-era' : 'pre-gate'
+const REASON_TEXT = {
+  ok: 'the words we asked for are in the clip',
+  non_speech_decode: 'nothing was transcribed — silence or noise, no speech',
+  cer_above_threshold: 'what was heard differs too much from the script',
+  cer_above_unvalidated_language_threshold: 'what was heard is essentially unrelated to the script',
+  unchecked_no_whisper: 'the checker was not installed on the rendering machine',
+  unchecked_disabled: 'the gate was switched off for this render',
+  unchecked_decode_error: 'the checker errored on this clip',
+  unchecked_no_text: 'there was no expected text to compare against',
+}
+
+/**
+ * The verdict a clip carries, read from its own row. Three states, and the
+ * third is the whole point — see the header.
+ *
+ * `checkedAt` with `pass === null` is the gate admitting it could not look.
+ * That is `unchecked`, not `passed`, and no amount of "but it was rendered
+ * recently" changes it.
+ */
+function verdictFor (row) {
+  const checkedAt = row.veracity_checked_at || null
+  const pass = row.veracity_pass
+  const state = !checkedAt || pass == null ? 'unchecked' : (pass ? 'passed' : 'failed')
+  return {
+    state,
+    checkedAt,
+    checker: row.veracity_checker || null,
+    reason: row.veracity_reason || null,
+    // The prose the page shows. For a clip nothing ever looked at there is no
+    // reason code at all, so say the true thing rather than leaving a blank
+    // that reads as "fine".
+    reasonText: row.veracity_reason
+      ? (REASON_TEXT[row.veracity_reason] || row.veracity_reason)
+      : (checkedAt ? null : 'no quality check has ever run on this clip'),
+    cer: row.veracity_cer ?? null,
+    attempts: row.veracity_attempts ?? null,
+  }
 }
 
 function normaliseClip (row) {
@@ -221,7 +251,7 @@ function normaliseClip (row) {
     legoId: row.lego_id || null,
     durationMs: row.duration_ms ?? null,
     createdAt: row.created_at,
-    gateState: gateStateFor(row.created_at),
+    verdict: verdictFor(row),
     // The page fetches signed URLs lazily (they expire in an hour), so the row
     // carries only the path it would fetch, never a pre-signed URL.
     audioUrlPath: `/api/production/${encodeURIComponent(row.course_code)}/audio/${encodeURIComponent(row.id)}/url`,
@@ -229,16 +259,31 @@ function normaliseClip (row) {
 }
 
 function parseFilter (raw) {
-  return ['recent', 'gated', 'all'].includes(raw) ? raw : 'recent'
+  return FILTERS.includes(raw) ? raw : 'recent'
 }
+
+const FILTERS = ['recent', 'checked', 'unchecked', 'all']
 
 /**
  * One place that turns a filter name into a PostgREST query, so /clips and
  * /sample can never drift apart on what "the current filter" means.
+ *
+ * `unchecked` is everything NOT confirmed passed — `veracity_pass IS DISTINCT
+ * FROM TRUE`. It deliberately catches three populations at once: rows nothing
+ * ever checked (NULL), the gate's own could-not-check admissions (also NULL,
+ * but carrying a checked_at), and the should-be-impossible checked-and-failed
+ * rows (FALSE). Defining it as "not a pass" rather than "no verdict" is what
+ * makes it impossible for a failure to hide in a tab nobody opens; each clip
+ * still carries its own verdict badge saying which of the three it is.
+ *
+ * It must NOT be written as `not.eq.true`: SQL's three-valued logic would drop
+ * every NULL, and a course of entirely unchecked audio would report as having
+ * nothing to worry about.
  */
 function applyFilter (query, filter, role, now = Date.now()) {
-  if (filter === 'gated') query = query.gte('created_at', GATE_LIVE_FROM)
   if (filter === 'recent') query = query.gte('created_at', recentCutoff(now))
+  if (filter === 'checked') query = query.is('veracity_pass', true)
+  if (filter === 'unchecked') query = query.or('veracity_pass.is.null,veracity_pass.is.false')
   if (role) query = query.eq('role', role)
   return query
 }
@@ -256,35 +301,44 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
   const router = express.Router({ mergeParams: true })
 
   const gateMeta = {
-    liveFrom: GATE_LIVE_FROM,
-    // Said in the payload so a future consumer cannot mistake the filter for a
-    // verdict lookup either.
-    perClipVerdictsPersisted: false,
+    // The claim the page is now entitled to make: every badge is a stored
+    // verdict, written by the code that rendered the clip, not an inference
+    // from created_at. Do not flip this back without removing the columns.
+    perClipVerdictsPersisted: true,
     recentWindowDays: RECENT_WINDOW_DAYS,
-    // Audited 2026-08-05: renderChecked has never run on a production clip, so
-    // every row in the window was written by a path that bypasses the gate.
-    // Flipping this to true requires a persisted per-clip verdict, not a date.
-    verifiedByGate: false,
-    note: 'No per-clip veracity verdict is stored, and as of 2026-08-05 no production render has gone through the gate at all. "gate-era" means rendered AFTER the gate shipped — not checked, and certainly not passed.',
+    note: 'Every clip carries the verdict the renderer recorded on it. "unchecked" covers both clips no check ever ran on (everything rendered before 2026-08-05, and any path still bypassing the gate) and clips the gate ran on but could not examine — never a pass. Clips the gate checked and withheld are not in course_audio at all; they are in /quarantine.',
   }
 
   /**
-   * How many clips in the CURRENT filtered set predate the gate. Without this
-   * the page can only badge the rows it happens to have fetched, and a listener
+   * The verdict split of the WHOLE filtered set, not just the page of rows that
+   * happened to be fetched.
+   *
+   * Without it the page can only badge what it is showing, and a listener
    * paging or sampling through a mixed set has no way to know what proportion
-   * of it was never machine-checked. Skipped for the gated filter, where the
-   * answer is zero by construction.
+   * of the course carries a verdict at all. With 2.5M clips in the estate and
+   * the gate live from 2026-08-05, the honest headline for most courses today
+   * is "nearly all of this is unchecked" — a page that could not say so would
+   * be back to implying quality it has not measured.
+   *
+   * Three head-only counts, so this costs three index probes, not a scan of the
+   * rows.
    */
-  async function countPreGate (db, courseCode, filter, role) {
-    if (filter === 'gated') return 0
-    let q = db.from('course_audio')
-      .select('id', { count: 'exact', head: true })
-      .eq('course_code', courseCode)
-      .lt('created_at', GATE_LIVE_FROM)
-    q = applyFilter(q, filter, role)
-    const { count, error } = await q
-    if (error) throw new Error(error.message)
-    return count || 0
+  async function verdictTotals (db, courseCode, filter, role) {
+    const count = async (apply) => {
+      let q = db.from('course_audio')
+        .select('id', { count: 'exact', head: true })
+        .eq('course_code', courseCode)
+      q = applyFilter(q, filter, role)
+      const { count: n, error } = await apply(q)
+      if (error) throw new Error(error.message)
+      return n || 0
+    }
+    const [passed, failed, unchecked] = await Promise.all([
+      count(q => q.is('veracity_pass', true)),
+      count(q => q.is('veracity_pass', false)),
+      count(q => q.is('veracity_pass', null)),
+    ])
+    return { passed, failed, unchecked }
   }
 
   // ── GET /clips ────────────────────────────────────────────────────────────
@@ -314,7 +368,7 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
       res.json({
         clips,
         total: count ?? null,
-        preGateTotal: await countPreGate(db, courseCode, filter, role),
+        verdictTotals: await verdictTotals(db, courseCode, filter, role),
         hasMore: count != null ? offset + clips.length < count : clips.length === limit,
         filter,
         gate: gateMeta,
@@ -369,7 +423,7 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
       res.json({
         clips: rows.filter(Boolean).map(normaliseClip),
         total,
-        preGateTotal: await countPreGate(db, courseCode, filter, role),
+        verdictTotals: await verdictTotals(db, courseCode, filter, role),
         filter,
         gate: gateMeta,
       })
@@ -539,9 +593,11 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
   return router
 }
 
-module.exports.GATE_LIVE_FROM = GATE_LIVE_FROM
 module.exports.RECENT_WINDOW_DAYS = RECENT_WINDOW_DAYS
-module.exports.gateStateFor = gateStateFor
+module.exports.FILTERS = FILTERS
+module.exports.REASON_TEXT = REASON_TEXT
+module.exports.verdictFor = verdictFor
+module.exports.normaliseClip = normaliseClip
 module.exports.applyFilter = applyFilter
 module.exports.recentCutoff = recentCutoff
 module.exports.parseFilter = parseFilter

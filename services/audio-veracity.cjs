@@ -517,6 +517,59 @@ function recordVerdict (stats, verdict) {
 }
 
 // ---------------------------------------------------------------------------
+// Persisting the verdict — the difference between a claim and a measurement
+// ---------------------------------------------------------------------------
+
+/**
+ * Turn a verdict into the `course_audio` columns that record it, so a clip
+ * carries its own quality evidence instead of the surface inferring one from
+ * created_at.
+ *
+ * This exists because of docs/gate-bypass-audit-2026-08-05.md: the audio
+ * preview page labelled 1,413 clips "rendered under the gate" on a timestamp
+ * comparison, and every one of them had been written by a path that bypassed
+ * the gate. A date cannot tell checked-and-passed from published-unchecked,
+ * and this module carries an explicit `unchecked` state precisely because
+ * those are not the same thing. So the verdict goes in the row.
+ *
+ * THE ONE RULE: an unchecked verdict still writes `veracity_checked_at` — the
+ * gate ran and produced an admission — but leaves `veracity_pass` NULL. NULL
+ * is never a pass anywhere downstream. A row with no `veracity_checked_at` at
+ * all is one no check has ever touched (everything rendered before
+ * 2026-08-05, and every path still bypassing the gate), and reads as
+ * "unchecked" too, just for a different reason.
+ *
+ * Spread straight into an insert/upsert payload:
+ *   .upsert({ ...row, ...veracity.verdictColumns(gated.verdict, {
+ *     checker: 'phase8-generate', attempts: gated.attempts }) })
+ *
+ * Callers that did NOT run a check must pass nothing rather than a fabricated
+ * verdict — `verdictColumns(null)` returns `{}`, leaving the row honestly
+ * blank.
+ *
+ * @param {object|null} verdict  a checkAudioVeracity() result
+ * @param {object} [o]
+ * @param {string} [o.checker]   which code path ran the check
+ * @param {number} [o.attempts]  render attempts it took to get this verdict
+ * @returns {object} columns to merge into a course_audio write
+ */
+function verdictColumns (verdict, o = {}) {
+  if (!verdict) return {}
+  const checked = verdict.checked === true
+  return {
+    veracity_checked_at: new Date().toISOString(),
+    // Only a genuine check yields a pass/fail. `checked: false` is an
+    // admission, and an admission stored as `false` would read as "we looked
+    // and it was bad" — the opposite of what happened.
+    veracity_pass: checked ? verdict.pass === true : null,
+    veracity_reason: verdict.reason || null,
+    veracity_cer: checked && typeof verdict.cer === 'number' ? verdict.cer : null,
+    veracity_attempts: o.attempts != null ? Number(o.attempts) : null,
+    veracity_checker: o.checker || null,
+  }
+}
+
+// ---------------------------------------------------------------------------
 // The gate itself — render, check, re-render, quarantine
 // ---------------------------------------------------------------------------
 
@@ -626,6 +679,7 @@ module.exports = {
   newStats,
   recordVerdict,
   formatStats,
+  verdictColumns,
   CER_THRESHOLD,
   CER_UNVALIDATED_LANGUAGES,
   CER_THRESHOLD_UNVALIDATED,

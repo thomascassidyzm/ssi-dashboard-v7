@@ -359,3 +359,65 @@ describe('renderChecked — the publish decision', () => {
     expect(stats.checked).toBe(0)
   })
 })
+
+/**
+ * The verdict a clip carries into the database.
+ *
+ * These exist because the audio-preview page used to infer "this clip was
+ * checked" from created_at, and docs/gate-bypass-audit-2026-08-05.md measured
+ * that inference as false for 100% of the 1,413 rows it selected. The columns
+ * are only worth anything if they cannot repeat the same lie in a new place —
+ * so the rule under test is that an admission never becomes an approval.
+ */
+describe('verdictColumns', () => {
+  it('records a pass with its evidence', () => {
+    const c = V.verdictColumns(
+      { checked: true, pass: true, reason: 'ok', cer: 0.0125 },
+      { checker: 'phase8-generate', attempts: 1 })
+    expect(c.veracity_pass).toBe(true)
+    expect(c.veracity_reason).toBe('ok')
+    expect(c.veracity_cer).toBe(0.0125)
+    expect(c.veracity_attempts).toBe(1)
+    expect(c.veracity_checker).toBe('phase8-generate')
+    expect(Date.parse(c.veracity_checked_at)).not.toBeNaN()
+  })
+
+  it('records a failure as a failure', () => {
+    const c = V.verdictColumns({ checked: true, pass: false, reason: 'non_speech_decode', cer: 1 })
+    expect(c.veracity_pass).toBe(false)
+  })
+
+  /**
+   * THE rule. `checked: false` is the gate saying it could not look. Stored as
+   * `false` it would read as "we looked and it was bad"; stored as `true` it
+   * would be a fabricated pass. It is NULL, and the checked_at still lands so
+   * the admission itself is on the record with its reason.
+   */
+  it('stores a could-not-check as NULL — never true, never false', () => {
+    const c = V.verdictColumns({ checked: false, pass: null, reason: 'unchecked_no_whisper' })
+    expect(c.veracity_pass).toBeNull()
+    expect(c.veracity_reason).toBe('unchecked_no_whisper')
+    expect(c.veracity_checked_at).toBeTruthy()
+    expect(c.veracity_cer).toBeNull()
+  })
+
+  it('writes nothing at all when no check was run', () => {
+    // A caller that did not check must leave the row honestly blank rather
+    // than stamping it with a verdict it never obtained.
+    expect(V.verdictColumns(null)).toEqual({})
+    expect(V.verdictColumns(undefined)).toEqual({})
+  })
+
+  it('overwrites every verdict column, so a stale pass cannot survive a re-render', () => {
+    // The re-render paths spread this over a copy of the OLD row. Any column
+    // it failed to set would keep the previous clip's verdict next to new
+    // audio — a lie with a fresh timestamp on it.
+    const stale = {
+      veracity_checked_at: 'old', veracity_pass: true, veracity_reason: 'ok',
+      veracity_cer: 0.01, veracity_attempts: 1, veracity_checker: 'old-tool',
+    }
+    const merged = { ...stale, ...V.verdictColumns({ checked: false, pass: null, reason: 'unchecked_disabled' }) }
+    for (const k of Object.keys(stale)) expect(merged[k]).not.toBe(stale[k])
+    expect(merged.veracity_pass).toBeNull()
+  })
+})

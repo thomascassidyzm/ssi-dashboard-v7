@@ -2143,7 +2143,16 @@ app.post('/generate/:courseCode', async (req, res) => {
           s3_key: s3Key,
           duration_ms: durationMs,
           lego_id: item.lego_id || null,
-          word_boundaries: wordBoundaries || null
+          word_boundaries: wordBoundaries || null,
+          // The gate's verdict travels WITH the clip. Without this the only
+          // record of a check is a per-run counter in a log, and the listening
+          // surface is left inferring quality from created_at — the inference
+          // docs/gate-bypass-audit-2026-08-05.md found false for every row it
+          // selected. See veracity.verdictColumns for the three-state rule.
+          ...veracity.verdictColumns(gated.verdict, {
+            checker: 'phase8-generate',
+            attempts: gated.attempts,
+          })
         }, {
           onConflict: 'course_code,text_normalized,language,role,voice_id'
         })
@@ -2629,7 +2638,16 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           origin: 'tts',
           s3_key: s3Key,
           duration_ms: durationMs,
-          word_boundaries: wordBoundaries || null
+          word_boundaries: wordBoundaries || null,
+          // This path REPLACES the bytes an existing row points at, so the old
+          // row's verdict — if it had one — is now about audio that no longer
+          // exists. Overwriting it is not optional bookkeeping: a stale pass
+          // next to fresh audio is exactly the false claim this column set was
+          // added to end.
+          ...veracity.verdictColumns(gated.verdict, {
+            checker: 'phase8-regenerate-role',
+            attempts: gated.attempts,
+          })
         })
         .eq('id', item.id)
 
@@ -4912,7 +4930,11 @@ app.post('/generate-components/:courseCode', async (req, res) => {
           origin: 'tts',
           s3_key: s3Key,
           duration_ms: durationMs,
-          word_boundaries: wordBoundaries || null
+          word_boundaries: wordBoundaries || null,
+          ...veracity.verdictColumns(gated.verdict, {
+            checker: 'phase8-generate-components',
+            attempts: gated.attempts,
+          })
         }, {
           onConflict: 'course_code,text_normalized,language,role,voice_id'
         })

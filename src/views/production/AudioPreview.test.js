@@ -3,9 +3,10 @@
 // clip audible. Mounted against fixtures shaped like the live
 // /audio-preview/clips payload (captured from fra_for_eng on 2026-08-05).
 //
-// The label assertions are not cosmetic: no per-clip veracity verdict is
-// persisted, so a build that starts claiming a clip "passed" is a correctness
-// regression, not a copy change. That is what the last test guards.
+// The label assertions are not cosmetic. Each clip now carries a verdict its
+// renderer stored on it, and the page's job is to show that verdict and no
+// more: a build that renders an unchecked clip as a pass is a correctness
+// regression, not a copy change. That is what the verdict tests guard.
 //
 // @vitest-environment jsdom
 import { describe, it, expect, beforeEach, vi } from 'vitest'
@@ -32,7 +33,10 @@ const CLIPS = [
     legoId: null,
     durationMs: 2160,
     createdAt: '2026-08-04T23:46:05.802792+00:00',
-    gateState: 'gate-era',
+    verdict: {
+      state: 'passed', checkedAt: '2026-08-05T14:02:11.000Z', checker: 'phase8-generate',
+      reason: 'ok', reasonText: 'the words we asked for are in the clip', cer: 0.0125, attempts: 1,
+    },
     audioUrlPath: '/api/production/fra_for_eng/audio/clip-a/url',
   },
   {
@@ -45,7 +49,11 @@ const CLIPS = [
     legoId: null,
     durationMs: 1080,
     createdAt: '2026-08-03T15:38:51.663001+00:00',
-    gateState: 'pre-gate',
+    // Rendered long before the gate existed: no check ever ran on it.
+    verdict: {
+      state: 'unchecked', checkedAt: null, checker: null, reason: null,
+      reasonText: 'no quality check has ever run on this clip', cer: null, attempts: null,
+    },
     audioUrlPath: '/api/production/fra_for_eng/audio/clip-b/url',
   },
 ]
@@ -116,10 +124,13 @@ const MISSING_CLEAN = {
 }
 
 const GATE = {
-  liveFrom: '2026-08-04T23:00:00.000Z',
-  perClipVerdictsPersisted: false,
-  note: 'No per-clip veracity verdict is stored.',
+  perClipVerdictsPersisted: true,
+  recentWindowDays: 7,
+  note: 'Every clip carries the verdict the renderer recorded on it.',
 }
+
+// One passed, one never checked, nothing failed — the ordinary shape today.
+const VERDICT_TOTALS = { passed: 1, failed: 0, unchecked: 251 }
 
 function jsonResponse (body) {
   return Promise.resolve({ ok: true, json: () => Promise.resolve(body) })
@@ -138,10 +149,10 @@ beforeEach(() => {
 
   global.fetch = vi.fn((url) => {
     if (url.includes('/audio-preview/clips')) {
-      return jsonResponse({ clips: CLIPS, total: 252, hasMore: true, filter: 'recent', gate: GATE })
+      return jsonResponse({ clips: CLIPS, total: 252, hasMore: true, filter: 'checked', gate: GATE, verdictTotals: VERDICT_TOTALS })
     }
     if (url.includes('/audio-preview/sample')) {
-      return jsonResponse({ clips: CLIPS, total: 252, filter: 'recent', gate: GATE })
+      return jsonResponse({ clips: CLIPS, total: 252, filter: 'checked', gate: GATE, verdictTotals: VERDICT_TOTALS })
     }
     if (url.includes('/audio-preview/missing')) {
       return missingPayload === null
@@ -207,7 +218,7 @@ describe('AudioPreview', () => {
     await flushPromises()
 
     expect(global.fetch).toHaveBeenCalledWith(
-      expect.stringContaining('/audio-preview/sample?filter=recent&n=20'),
+      expect.stringContaining('/audio-preview/sample?filter=checked&n=20'),
       expect.anything()
     )
     expect(wrapper.vm.sampleMode).toBe(true)
@@ -215,13 +226,33 @@ describe('AudioPreview', () => {
     expect(wrapper.text()).toContain('Stop')
   })
 
-  it('never claims a clip passed the veracity gate', async () => {
+  // The defect this page was rebuilt to end: a clip nothing ever checked and a
+  // clip that passed must not look alike. The badge is per-clip and measured,
+  // so the fixture's two clips must render two different words.
+  it('shows each clip its own stored verdict, and never dresses unchecked as passed', async () => {
     const wrapper = await mountPage()
     const text = wrapper.text().toLowerCase()
-    expect(text).toContain('rendered under the gate')
-    expect(text).toContain('never')
-    expect(text).not.toMatch(/passed the (veracity )?gate/)
+    expect(text).toContain('checked \u00b7 passed')
+    expect(text).toContain('unchecked')
+    // No inference from render time survives anywhere on the page.
+    expect(text).not.toContain('after the gate shipped')
+    expect(text).not.toContain('before the gate')
     expect(text).not.toMatch(/\bverified clean\b/)
+  })
+
+  it('states the verdict split of the whole filter, not just the rows on screen', async () => {
+    const wrapper = await mountPage()
+    const summary = wrapper.find('[data-walk="audio-preview-verdict-summary"]').text()
+    // 251 unchecked out of 252 is the honest headline; a page that only badged
+    // its 2 loaded rows would let a listener assume the rest was fine.
+    expect(summary).toContain('251')
+    expect(summary).toContain('unchecked')
+    expect(summary.toLowerCase()).toContain('not a pass')
+  })
+
+  it('says a pass covers silence and truncation only, never pronunciation', async () => {
+    const wrapper = await mountPage()
+    expect(wrapper.text().toLowerCase()).toContain('silence and truncation only')
   })
 
   it('names all three states it is asking a person to judge between', async () => {
