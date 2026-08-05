@@ -139,6 +139,15 @@ for entry in $SERVICES; do
   # watchdog guarding one tree must not judge — or restart — a service loaded
   # from the other, or it would report permanent false staleness against
   # whatever branch the dev checkout happens to be sitting on.
+  # Fallback attribution for a service too old to report `root` (or down):
+  # ask the supervisor which directory the unit runs from. Without this, the
+  # first run after a deploy would judge — and restart — services belonging to
+  # another clone, purely because they had not yet been restarted into a build
+  # that reports its own root.
+  if [ -z "$root" ] && [ "$SUPERVISOR" = systemd ]; then
+    root=$(systemctl --user show -p WorkingDirectory --value "$unit" 2>/dev/null)
+  fi
+
   if [ -n "$root" ] && [ "$root" != "$REPO" ]; then
     log "skipping $unit — loaded from $root, not $REPO"
     continue
