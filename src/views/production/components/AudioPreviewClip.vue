@@ -44,7 +44,7 @@
           ? 'border-accent-2/40 text-accent-2'
           : 'border-line text-faint'"
         :title="gateTitle"
-      >{{ clip.gateState === 'gate-era' ? 'rendered under the gate' : 'pre-gate' }}</span>
+      >{{ clip.gateState === 'gate-era' ? 'after the gate shipped' : 'before the gate' }}</span>
       <span v-if="clip.voiceId" class="font-mono">{{ clip.voiceId }}</span>
       <span v-if="clip.durationMs != null" class="font-mono">{{ (clip.durationMs / 1000).toFixed(2) }}s</span>
       <span class="font-mono">{{ renderedAt }}</span>
@@ -77,9 +77,13 @@ const renderedAt = computed(() => {
   })
 })
 
+// Deliberately weaker wording than "rendered under the gate", which this badge
+// used to claim. Audited 2026-08-05: no production clip has been through the
+// gate at all, so the only thing a timestamp can honestly assert is which side
+// of the gate's ship time the render fell on.
 const gateTitle = computed(() => props.clip.gateState === 'gate-era'
-  ? 'Rendered while the veracity gate was live. No per-clip verdict is stored, so this means checked-and-passed OR unchecked — not proven passed.'
-  : 'Rendered before the veracity gate existed. Never machine-checked.')
+  ? 'Rendered after the veracity gate shipped. No per-clip verdict is stored and no production render has yet gone through the gate, so this is NOT a claim that the clip was checked.'
+  : 'Rendered before the veracity gate existed. Could not have been machine-checked.')
 
 /**
  * Signed URLs expire in an hour, so nothing is fetched until a clip is

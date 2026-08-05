@@ -57,12 +57,31 @@
  * never silently pass what it could not examine.
  *
  * So the `gated` filter here is a TIME WINDOW, not a verdict lookup, and it is
- * named for what it is everywhere it surfaces: "rendered under the gate", never
- * "passed". GATE_LIVE_FROM is the start of the first render batch that ran
- * under the gate (the fra_for_eng pilot, whose 250 clips span
- * 2026-08-04T23:30:26Z … 23:46:05Z); the gate module itself was committed at
- * 23:55:59Z, AFTER that run, so a commit-timestamp cutoff would wrongly exclude
- * the very batch this page was built to audition.
+ * named for what it is everywhere it surfaces — never "passed".
+ *
+ * ── Corrected 2026-08-05, and the correction is the point ────────────────────
+ * This constant used to be 2026-08-04T23:00:00Z, chosen DELIBERATELY to sit
+ * before the gate module's own commit (23:55:59Z) so that the fra_for_eng pilot
+ * batch — rendered 23:02…23:46 — would fall inside the window and be
+ * auditionable. That reasoning inverted the meaning of the filter: those clips
+ * rendered BEFORE the gate existed, so a filter labelled "rendered under the
+ * gate" was selecting, first and foremost, 251 clips the gate had never seen.
+ * The pilot doc's own §5 records one truncated clip live in production out of
+ * that batch — exactly what the gate would have withheld.
+ *
+ * The cutoff is now the commit that wired the gate into phase8 (85bd2a34,
+ * 2026-08-04T23:59:33Z). A clip on the wrong side of it demonstrably could not
+ * have been checked.
+ *
+ * Being on the RIGHT side of it still does not mean checked. Audited
+ * 2026-08-05 (docs/gate-bypass-audit-2026-08-05.md): `veracity.renderChecked`
+ * has three call sites, all in phase8's bulk paths, and NO production render
+ * has gone through them yet — the quarantine ledger contains test fixtures
+ * only. Everything currently in the window was written by a path that bypasses
+ * the gate. So the honest claim this filter can make is "rendered after the
+ * gate shipped", and the payload says `verifiedByGate: false` until per-clip
+ * verdicts are persisted. Do not restore the stronger wording without the
+ * column to back it.
  */
 
 'use strict'
@@ -83,9 +102,10 @@ const learningScriptGenerator = require('./learning-script-generator.cjs')
 // the audio, so it leads; the rest is provenance.
 const CLIP_COLUMNS = 'id, course_code, text, role, voice_id, origin, s3_key, duration_ms, created_at, lego_id'
 
-// Start of the first render batch that ran under the veracity gate. See the
-// header — this is a render-time boundary, NOT evidence of a per-clip verdict.
-const GATE_LIVE_FROM = '2026-08-04T23:00:00.000Z'
+// The commit that wired the veracity gate into phase8 (85bd2a34). A clip
+// rendered before this could not have been checked. A clip rendered after it
+// still may not have been — see the header. NOT evidence of a per-clip verdict.
+const GATE_LIVE_FROM = '2026-08-04T23:59:33.000Z'
 
 // How far back "recently rendered" reaches. It has to be a real window: the
 // filter previously applied NO predicate at all, which made it byte-identical
@@ -241,7 +261,11 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
     // verdict lookup either.
     perClipVerdictsPersisted: false,
     recentWindowDays: RECENT_WINDOW_DAYS,
-    note: 'No per-clip veracity verdict is stored. "gate-era" means rendered while the gate was live (checked-and-passed OR unchecked), not proven passed.',
+    // Audited 2026-08-05: renderChecked has never run on a production clip, so
+    // every row in the window was written by a path that bypasses the gate.
+    // Flipping this to true requires a persisted per-clip verdict, not a date.
+    verifiedByGate: false,
+    note: 'No per-clip veracity verdict is stored, and as of 2026-08-05 no production render has gone through the gate at all. "gate-era" means rendered AFTER the gate shipped — not checked, and certainly not passed.',
   }
 
   /**

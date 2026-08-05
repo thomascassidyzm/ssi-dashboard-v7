@@ -82,11 +82,13 @@
          being relied on — not buried in a tooltip. -->
     <p v-if="gate" class="text-xs text-faint mb-4 leading-relaxed">
       <template v-if="filter === 'gated'">
-        Clips rendered from {{ gateLiveFromLabel }}, when the pre-publish veracity gate went live.
+        Clips rendered from {{ gateLiveFromLabel }}, when the pre-publish veracity gate was wired in.
       </template>
-      No per-clip verdict is stored, so this is <em>rendered under the gate</em> — checked-and-passed
-      or unchecked — never <em>proven passed</em>. Clips the gate failed were withheld and never
-      published, so they cannot appear below.
+      No per-clip verdict is stored anywhere, so this is a <em>render time</em>, never a verdict.
+      <strong v-if="gate.verifiedByGate === false" class="text-ink">And as of the 2026-08-05 audit,
+      no production render has gone through the gate at all</strong> — every clip here was written by
+      a path that bypasses it, and the gate's quarantine ledger holds test fixtures only. Treat this
+      filter as “rendered recently enough to have been repaired”, not as “checked”.
     </p>
 
     <!-- The mixed-provenance warning. "Recently rendered" and "All" both contain
@@ -106,8 +108,8 @@
         window and not a quality one.
       </template>
       A random sample here is drawn uniformly across the whole filter, so most of what it plays
-      will be pre-gate. Every clip below carries its own <em>pre-gate</em> / <em>rendered under the
-      gate</em> badge; to judge the gate itself, use the first tab.
+      will be pre-gate. Every clip below carries its own <em>before the gate</em> / <em>after the
+      gate shipped</em> badge.
     </p>
 
     <!-- The third state. Slots pointing at audio that no longer exists cannot
@@ -235,7 +237,7 @@ const PAGE_SIZE = 50
 // meant the first thing anyone heard on this page was a mixed bag they had no
 // reason to think was mixed.
 const filterTabs = [
-  { key: 'gated', label: 'Rendered under the gate' },
+  { key: 'gated', label: 'Rendered since the gate shipped' },
   { key: 'recent', label: 'Recently rendered' },
   { key: 'all', label: 'All' },
 ]

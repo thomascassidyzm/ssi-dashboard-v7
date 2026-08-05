@@ -90,4 +90,17 @@ describe('gateStateFor', () => {
     expect(gateStateFor('2026-08-01T00:00:00Z')).toBe('pre-gate')
     expect(gateStateFor(null)).toBe('pre-gate')
   })
+
+  // The cutoff was originally set BEFORE the gate's own commit so that the
+  // fra_for_eng pilot batch (23:02…23:46) would fall inside the window. That
+  // made the filter select 251 clips the gate had never seen and call them
+  // gate-covered. The cutoff must never drift back before the gate exists.
+  it('excludes the fra_for_eng pilot batch, which predates the gate module', () => {
+    expect(gateStateFor('2026-08-04T23:30:26Z')).toBe('pre-gate')
+    expect(gateStateFor('2026-08-04T23:46:05Z')).toBe('pre-gate')
+  })
+
+  it('sits at or after the commit that wired the gate into phase8', () => {
+    expect(Date.parse(GATE_LIVE_FROM)).toBeGreaterThanOrEqual(Date.parse('2026-08-04T23:59:33Z'))
+  })
 })
