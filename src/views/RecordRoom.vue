@@ -364,9 +364,21 @@ async function loadRoom() {
 
   loading.value = false
 
-  // Reading script totals (slower — loads after the room renders)
+  // Reading script totals (slower — loads after the room renders).
+  // Must carry the same ?maxSeed cap the autocue session will use, or the room
+  // advertises the WHOLE course ("0 of 1000 read", "about 100 minutes") while
+  // the capped session is a few minutes long — and pays for an uncapped
+  // optimizer run just to print a number the recorder will never reach.
+  // `role` keeps the count honest too: already-recorded pruning is per voice
+  // slot, so asking without it would price this person's session off another
+  // voice's takes. voiceConfig is loaded above, so assignedSlot is settled.
+  const cap = parseInt(route.query.maxSeed, 10)
+  const params = new URLSearchParams()
+  if (Number.isInteger(cap) && cap > 0) params.set('maxSeed', String(cap))
+  if (assignedSlot.value) params.set('role', assignedSlot.value)
+  const capQuery = params.toString() ? `?${params}` : ''
   try {
-    const res = await fetch(`${base}/api/production/${props.courseCode}/recording-script`, { headers: FETCH_HEADERS })
+    const res = await fetch(`${base}/api/production/${props.courseCode}/recording-script${capQuery}`, { headers: FETCH_HEADERS })
     if (res.ok) {
       const data = await res.json()
       scriptTotal.value = data.totalItems ?? null

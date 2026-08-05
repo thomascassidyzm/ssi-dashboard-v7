@@ -300,46 +300,65 @@ async function getCourseInfo(courseCode) {
   return data;
 }
 
-async function getAllLegos(courseCode) {
-  const { data, error } = await supabase
+/**
+ * Optional `maxSeed` caps every fetch to seeds 1..N. The optimizer orders by
+ * LEGO coverage, not by seed, so an uncapped script for a 668-seed course opens
+ * somewhere in the 300s — fine for a full recording campaign, useless for a
+ * test session where you want something listenable from the start of the
+ * course. Capping at the query keeps the greedy set cover honest: the universe
+ * it tries to cover is only the LEGOs that exist within the cap.
+ */
+function applySeedCap(query, maxSeed) {
+  return maxSeed ? query.lte('seed_number', maxSeed) : query;
+}
+
+async function getAllLegos(courseCode, maxSeed) {
+  const { data, error } = await applySeedCap(supabase
     .from('course_legos')
     .select('target_text, known_text, type, is_new, seed_number, lego_index')
     .eq('course_code', courseCode)
-    .eq('is_new', true);
+    .eq('is_new', true), maxSeed);
 
   if (error) throw error;
   return data || [];
 }
 
-async function getAllPracticePhrases(courseCode) {
-  const { data, error } = await supabase
+async function getAllPracticePhrases(courseCode, maxSeed) {
+  const { data, error } = await applySeedCap(supabase
     .from('course_practice_phrases')
     .select('target_text, known_text, seed_number, lego_index, position')
-    .eq('course_code', courseCode);
+    .eq('course_code', courseCode), maxSeed);
 
   if (error) throw error;
   return data || [];
 }
 
-async function getAllSeeds(courseCode) {
-  const { data, error } = await supabase
+async function getAllSeeds(courseCode, maxSeed) {
+  const { data, error } = await applySeedCap(supabase
     .from('course_seeds')
     .select('target_text, known_text, seed_number')
-    .eq('course_code', courseCode);
+    .eq('course_code', courseCode), maxSeed);
 
   if (error) throw error;
   return data || [];
 }
 
 /**
- * Existing HUMAN target1 recordings for a course — the "already in the can"
- * pool. Minority-language courses like cym build up thousands of these over
- * real recording sessions; the optimizer originally ran as if starting from
- * zero every time, which re-asked for phrases already recorded. Used to prune
- * the LEGO universe before greedy set cover runs, so the output is a GAP
- * list (what's actually still missing), not a from-scratch script.
+ * Existing HUMAN recordings for a course IN ONE VOICE SLOT — the "already in
+ * the can" pool. Minority-language courses like cym build up thousands of
+ * these over real recording sessions; the optimizer originally ran as if
+ * starting from zero every time, which re-asked for phrases already recorded.
+ * Used to prune the LEGO universe before greedy set cover runs, so the output
+ * is a GAP list (what's actually still missing), not a from-scratch script.
+ *
+ * `role` MUST scope the query. Each target voice needs its OWN complete set of
+ * recordings — they are different people and are not interchangeable for
+ * splicing. Pruning target2's script by target1's takes would hand the second
+ * recorder a short script and leave that voice permanently incomplete. This
+ * defaulted to 'target1' for every caller, which was correct only ever for the
+ * first voice.
  */
-async function getExistingHumanAudioTexts(courseCode) {
+async function getExistingHumanAudioTexts(courseCode, role = 'target1') {
   const PAGE = 1000;
   const texts = [];
   for (let from = 0; ; from += PAGE) {
@@ -347,7 +366,7 @@ async function getExistingHumanAudioTexts(courseCode) {
       .from('course_audio')
       .select('text')
       .eq('course_code', courseCode)
-      .eq('role', 'target1')
+      .eq('role', role)
       .eq('origin', 'human')
       .range(from, from + PAGE - 1);
     if (error) throw error;
@@ -362,10 +381,11 @@ async function getExistingHumanAudioTexts(courseCode) {
 // =============================================================================
 
 async function generateRecordingScript(courseCode, options = {}) {
-  const { verbose = false, excludeRecorded = false } = options;
+  const { verbose = false, excludeRecorded = false, maxSeed = null, role = 'target1' } = options;
 
   console.log(`\n🎙️  Recording Script Generator`);
   console.log(`   Course: ${courseCode}`);
+  if (maxSeed) console.log(`   Capped to seeds 1-${maxSeed}`);
   console.log(`${'─'.repeat(50)}\n`);
 
   // 1. Get course info
@@ -373,9 +393,11 @@ async function generateRecordingScript(courseCode, options = {}) {
   const course = await getCourseInfo(courseCode);
 
   // 2. Get all NEW LEGOs (the universe to cover)
-  const legos = await getAllLegos(courseCode);
+  const legos = await getAllLegos(courseCode, maxSeed);
   if (legos.length === 0) {
-    console.log('❌ No LEGOs found for course. Run Phase 1 & 2 first.');
+    console.log(maxSeed
+      ? `❌ No LEGOs found in seeds 1-${maxSeed} for ${courseCode}.`
+      : '❌ No LEGOs found for course. Run Phase 1 & 2 first.');
     return null;
   }
 
@@ -400,8 +422,8 @@ async function generateRecordingScript(courseCode, options = {}) {
   console.log(`📊 LEGOs to cover: ${universe.size}`);
 
   // 3. Get candidate phrases (practice phrases + seeds)
-  const practicePhrases = await getAllPracticePhrases(courseCode);
-  const seeds = await getAllSeeds(courseCode);
+  const practicePhrases = await getAllPracticePhrases(courseCode, maxSeed);
+  const seeds = await getAllSeeds(courseCode, maxSeed);
 
   // Deduplicate and build candidate list
   const phraseMap = new Map(); // normalized → { original, source }
@@ -496,8 +518,8 @@ async function generateRecordingScript(courseCode, options = {}) {
   let coverUniverse = universeKeys;
   let alreadyCoveredCount = 0;
   if (excludeRecorded) {
-    if (verbose) console.log('\n🎧 Checking existing human recordings...');
-    const existingTexts = await getExistingHumanAudioTexts(courseCode);
+    if (verbose) console.log(`\n🎧 Checking existing human recordings for ${role}...`);
+    const existingTexts = await getExistingHumanAudioTexts(courseCode, role);
     const alreadyCovered = new Set();
     for (const text of existingTexts) {
       const words = tokenize(text);
@@ -552,6 +574,8 @@ async function generateRecordingScript(courseCode, options = {}) {
   const output = {
     courseCode,
     generatedAt: new Date().toISOString(),
+    maxSeed,
+    role,
 
     statistics: {
       totalLegos,
@@ -687,9 +711,13 @@ Examples:
   const excludeRecorded = args.includes('--gap');
   const outputIdx = args.indexOf('--output');
   const outputFile = outputIdx !== -1 ? args[outputIdx + 1] : null;
+  const maxSeedIdx = args.indexOf('--max-seed');
+  const maxSeed = maxSeedIdx !== -1 ? parseInt(args[maxSeedIdx + 1], 10) : null;
+  const roleIdx = args.indexOf('--role');
+  const role = roleIdx !== -1 ? args[roleIdx + 1] : 'target1';
 
   try {
-    const result = await generateRecordingScript(courseCode, { verbose, excludeRecorded });
+    const result = await generateRecordingScript(courseCode, { verbose, excludeRecorded, maxSeed, role });
 
     if (result && outputFile) {
       const outputPath = path.resolve(outputFile);

@@ -18,6 +18,14 @@
         <li>AI-powered segmentation</li>
         <li>Batch review and approval</li>
       </ul>
+
+      <!-- Short warm-up run so a new recorder (and whoever is reviewing them)
+           can hear real audio back within a couple of minutes, instead of
+           committing to the whole course before anyone has checked the mic,
+           the room or the accent. -->
+      <button class="test-batch-btn" @click.stop="startTestBatch">
+        Test batch first — seeds 1–{{ TEST_BATCH_SEEDS }} (~1 min)
+      </button>
     </div>
 
     <div
@@ -73,9 +81,20 @@ const route = useRoute()
 const router = useRouter()
 const courseCode = route.params.courseCode || null
 
+// Seeds covered by the warm-up run. Small on purpose: the point is to hear
+// something back quickly, not to make a dent in the course.
+const TEST_BATCH_SEEDS = 5
+
 function selectMode(mode) {
   selectedMode.value = mode
   emit('select', mode)
+}
+
+// Same flow as Mode 1, capped. @click.stop keeps the card's own handler from
+// also firing and starting the uncapped run.
+function startTestBatch() {
+  selectedMode.value = 'new-course'
+  emit('select', 'new-course', { maxSeed: TEST_BATCH_SEEDS })
 }
 
 // Dialogue recording is cast-first: the pods page's Cast panel hands out the
@@ -191,6 +210,29 @@ function goToPods() {
   left: 0;
   color: var(--color-tungsten, var(--accent));
   font-weight: bold;
+}
+
+/* Secondary to the card itself — this is the cautious path, not the headline
+   action, so it reads as an outline button rather than competing with the card. */
+.test-batch-btn {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.625rem 1rem;
+  background: transparent;
+  border: 1px solid var(--color-tungsten, var(--accent));
+  border-radius: 8px;
+  color: var(--color-tungsten, var(--accent));
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.test-batch-btn:hover {
+  background: var(--color-tungsten, var(--accent));
+  color: var(--color-void, var(--canvas));
 }
 
 @media (max-width: 768px) {

@@ -124,6 +124,19 @@ function ttsOptionsFor (provider, voiceId, language) {
   return { apiKey: process.env.XAI_API_KEY, voiceId, language: toBcp47(language) }
 }
 
+/**
+ * How many reference renders to take before judging a clip short.
+ *
+ * ONE IS NOT ENOUGH, measured 2026-08-05. A single reference can itself come
+ * back short, which inflates the shipped/reference ratio and hides real damage:
+ * on the deu_for_eng intro narration, single-reference scored S1L4 at 0.90 and
+ * S1L5 at 0.88 — both "healthy" — while max-of-two scored them 0.863 and 0.825,
+ * and Tom could hear the final word missing on exactly those clips. Truncation
+ * only ever SHORTENS, so the longest of N renders is the best estimate of the
+ * true utterance length.
+ */
+const N_REFERENCE = Number(arg('--references') || 2)
+
 /** Render through the pipeline's own chain and prove the result carries speech. */
 async function renderVerified (row, tmpDir) {
   const { provider, voiceId } = decodeVoiceId(row.voice_id)
@@ -184,9 +197,15 @@ async function renderVerified (row, tmpDir) {
         .select('id, lego_id').eq('presentation_audio_id', id)
       const introCountBefore = (intros || []).length
 
-      // 1. Probe render. Nothing is mutated if this throws.
-      const rendered = await renderVerified(row, tmpDir)
+      // 1. Probe render(s). Nothing is mutated if this throws. The LONGEST
+      //    reference wins — see N_REFERENCE for why one is not enough.
+      let rendered = await renderVerified(row, tmpDir)
       chars += String(row.text || '').length
+      for (let k = 1; k < N_REFERENCE; k++) {
+        const again = await renderVerified(row, tmpDir)
+        chars += String(row.text || '').length
+        if (again.durationMs > rendered.durationMs) rendered = again
+      }
       const ratio = row.duration_ms / rendered.durationMs
 
       if (ratio >= RATIO) {
@@ -260,8 +279,14 @@ async function renderVerified (row, tmpDir) {
       //    course_legos column carries no FK but is what cycles.ts reads.
       stage = 'repoint'
       for (const r of intros || []) {
+        // audio_uuid is the LEGACY pointer and must move with presentation_audio_id.
+        // generateLearningScript.ts:796 reads `presentation_audio_id || audio_uuid`,
+        // so a stale audio_uuid is not learner-facing today — but leaving it
+        // pointing at a row this tool is about to delete is a dangling reference
+        // waiting for the day that fallback fires. Missed on the first run
+        // (2026-08-05, S0003L02) and repaired by hand; fixed here so it cannot recur.
         const { error: e } = await supabase.from('lego_introductions')
-          .update({ presentation_audio_id: newId }).eq('id', r.id)
+          .update({ presentation_audio_id: newId, audio_uuid: newId }).eq('id', r.id)
         if (e) throw new Error(`repoint lego_introductions#${r.id}: ${e.message}`)
         relinked.push({ table: 'lego_introductions', rowId: r.id })
       }
@@ -311,7 +336,9 @@ async function renderVerified (row, tmpDir) {
       // Unwind in reverse. Every step is individually reversible up to the delete.
       try {
         for (const r of relinked) {
-          await supabase.from(r.table).update({ presentation_audio_id: old.id }).eq('id', r.rowId)
+          const back = { presentation_audio_id: old.id }
+          if (r.table === 'lego_introductions') back.audio_uuid = old.id
+          await supabase.from(r.table).update(back).eq('id', r.rowId)
         }
         if (inserted) await supabase.from('course_audio').delete().eq('id', newId)
         if (tombstoned) await supabase.from('course_audio')
