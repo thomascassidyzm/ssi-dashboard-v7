@@ -108,6 +108,25 @@ async function getEffectiveReleaseTarget(courseCode, courseSeedCount) {
 }
 const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 
+/**
+ * Is the object really in the bucket? A course_audio row is a claim about
+ * audio; only storage settles it. Returns true/false, and `null` when the
+ * bucket could not be asked at all (network/permissions) — callers must not
+ * read a failed question as a missing file.
+ */
+async function s3ObjectExists(s3Key) {
+  if (!s3Key || s3Key.startsWith('pending/')) return false
+  try {
+    await s3.send(new HeadObjectCommand({ Bucket: S3_BUCKET, Key: s3Key }))
+    return true
+  } catch (e) {
+    const status = e?.$metadata?.httpStatusCode
+    if (status === 404 || e?.name === 'NotFound' || e?.name === 'NoSuchKey') return false
+    logger.warn(`s3ObjectExists(${s3Key}): could not verify (${e?.name || e?.message}) — not treated as missing`)
+    return null
+  }
+}
+
 // =============================================================================
 // LANGUAGE NAMES (for presentation templates)
 // =============================================================================
@@ -185,14 +204,19 @@ async function getExistingAudioSet(courseCode) {
   // Exact matching only. "emin misin?" and "emin misin" are DIFFERENT audio files
   // because ? changes TTS intonation (question vs statement).
   // normalizeForAudio no longer strips trailing ? — so keys are exact.
-  const innerSet = new Set()
+  // key -> s3_key of the row that satisfies it. Kept alongside the membership
+  // set so a caller can ask storage whether that object is actually there —
+  // a DB row is a claim about audio, not proof of it.
+  const innerSet = new Map()
   for (const a of (data || [])) {
     const norm = normalizeText(a.text)
-    innerSet.add(`${norm}|${a.language}|${a.role}`)
+    const key = `${norm}|${a.language}|${a.role}`
+    if (!innerSet.has(key)) innerSet.set(key, a.s3_key)
   }
 
   const existingSet = {
     has(key) { return innerSet.has(key) },
+    s3KeyFor(key) { return innerSet.get(key) || null },
     get size() { return innerSet.size }
   }
   logger.info(`getExistingAudioSet(${courseCode}): ${data?.length || 0} rows, ${innerSet.size} unique keys`)
@@ -613,18 +637,50 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
   // Step 2: Check which unlinked items have existing audio (can be linked without TTS)
   // If forceGenerate is true, skip this check — treat everything as needing TTS.
   // Used when link step ran but linked 0 (normalization mismatch prevents linking).
-  const existingSet = forceGenerate ? { has: () => false, get size() { return 0 } } : await getExistingAudioSet(courseCode)
+  const existingSet = forceGenerate
+    ? { has: () => false, s3KeyFor: () => null, get size() { return 0 } }
+    : await getExistingAudioSet(courseCode)
 
-  let toLinkCount = 0
+  // A slot whose text already has a row is UNLINKED, not missing — but only if
+  // the object that row names is really in storage. Storage is asked here, on
+  // the linkable set only (bounded, usually tens), so "missing" on the
+  // dashboard means "no audio exists", never "the row was never bound".
+  const linkable = []      // { text, lang, role, key, s3Key }
   const toGenerate = []
-
   for (const item of unlinked) {
     const key = `${normalizeText(item.text)}|${item.lang}|${item.role}`
     if (existingSet.has(key)) {
-      toLinkCount++
+      linkable.push({ ...item, key, s3Key: existingSet.s3KeyFor(key) })
     } else {
       toGenerate.push({ text: item.text, language: item.lang, role: item.role })
     }
+  }
+
+  // HEAD once per distinct object, not once per slot.
+  const storageVerdicts = new Map()
+  const distinctKeys = [...new Set(linkable.map(l => l.s3Key).filter(Boolean))]
+  await processInParallel(distinctKeys, async (s3Key) => {
+    storageVerdicts.set(s3Key, await s3ObjectExists(s3Key))
+  }, 20)
+
+  let toLinkCount = 0
+  let storageBroken = 0
+  const brokenBreakdown = { known: 0, target1: 0, target2: 0 }
+  const linkableBreakdown = { known: 0, target1: 0, target2: 0 }
+  for (const item of linkable) {
+    if (item.s3Key && storageVerdicts.get(item.s3Key) === false) {
+      // The row claims audio the bucket doesn't have. Truly missing, and worse
+      // than an unbound slot — say so instead of promising a free link.
+      storageBroken++
+      if (brokenBreakdown[item.role] !== undefined) brokenBreakdown[item.role]++
+      toGenerate.push({ text: item.text, language: item.lang, role: item.role })
+      continue
+    }
+    toLinkCount++
+    if (linkableBreakdown[item.role] !== undefined) linkableBreakdown[item.role]++
+  }
+  if (storageBroken) {
+    logger.warn(`getAudioNeeds(${courseCode}): ${storageBroken} linkable slot(s) point at a course_audio row whose S3 object is gone — counted as missing, not linkable`)
   }
 
   if (forceGenerate) {
@@ -849,15 +905,30 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     stalePending: stalePendingIds.length,
     ungeneratable,
     ledger,
+    // breakdown = every unbound slot, unchanged (existing consumers).
+    // unlinkedBreakdown = the subset whose audio exists AND is in storage.
+    // missingBreakdown = breakdown minus that — audio that genuinely isn't
+    // anywhere, which is the only number that should be called "missing".
     breakdown: {
       known: unlinked.filter(u => u.role === 'known').length,
       target1: unlinked.filter(u => u.role === 'target1').length,
       target2: unlinked.filter(u => u.role === 'target2').length,
       presentation: missingPresentation,
-    }
+    },
+    unlinkedBreakdown: { ...linkableBreakdown, presentation: 0 },
+    missingBreakdown: {
+      known: unlinked.filter(u => u.role === 'known').length - linkableBreakdown.known,
+      target1: unlinked.filter(u => u.role === 'target1').length - linkableBreakdown.target1,
+      target2: unlinked.filter(u => u.role === 'target2').length - linkableBreakdown.target2,
+      presentation: missingPresentation,
+    },
+    // Slots whose row named an object the bucket does not have. Counted as
+    // missing above; broken out because it is a different failure.
+    storageBroken,
+    storageBrokenBreakdown: brokenBreakdown,
   }
 
-  logger.info(`getAudioNeeds(${courseCode}): ${totalMissing} missing (${toLinkCount} to link, ${uniqueToGenerate.length} to generate, ${toAuthor.length} to author, ${toCopy.length} to copy, ${ungeneratable} ungeneratable)`)
+  logger.info(`getAudioNeeds(${courseCode}): ${totalMissing} missing (${toLinkCount} to link, ${uniqueToGenerate.length} to generate, ${toAuthor.length} to author, ${toCopy.length} to copy, ${storageBroken} storage-broken, ${ungeneratable} ungeneratable)`)
 
   return {
     toLink: toLinkCount,
@@ -1481,6 +1552,11 @@ app.get('/needs/:courseCode', async (req, res) => {
       existing: needs.stats.existing,
       missing: needs.stats.missing,
       breakdown: needs.stats.breakdown,
+      unlinkedBreakdown: needs.stats.unlinkedBreakdown,
+      missingBreakdown: needs.stats.missingBreakdown,
+      toCopy: needs.toCopy.length,
+      storageBroken: needs.stats.storageBroken,
+      storageBrokenBreakdown: needs.stats.storageBrokenBreakdown,
       ledger: needs.stats.ledger,
       readyForGenerate: needs.readyForGenerate,
       presentationStatus: needs.presentationStatus
@@ -1658,7 +1734,8 @@ app.post('/generate/:courseCode', async (req, res) => {
     // exactly the clips THIS pass minted (see the gate call at completion).
     const runStartedAt = new Date().toISOString()
 
-    const { dryRun = false, limit = 50000, concurrency: requestedConcurrency, roles: requestedRoles, seeds: requestedSeeds } = req.body  // High default for bulk generation
+    const { dryRun = false, limit = 50000, concurrency: requestedConcurrency, roles: requestedRoles, seeds: requestedSeeds, authorScope: requestedAuthorScope } = req.body  // High default for bulk generation
+    const authorScope = ['all', 'lego', 'none'].includes(requestedAuthorScope) ? requestedAuthorScope : 'all'
     // Optional incremental scope: restrict generation to specific seed numbers.
     const scopeSeeds = Array.isArray(requestedSeeds) && requestedSeeds.length
       ? requestedSeeds.map(n => parseInt(n, 10)).filter(n => !isNaN(n))
@@ -1755,6 +1832,20 @@ app.post('/generate/:courseCode', async (req, res) => {
     // spend); it reports what WOULD be authored.
     let authoredIntros = []
     let authorFlags = []
+    // authorScope narrows which intros may be authored, so a spend approval
+    // can be expressed at the call instead of by editing content. 'all'
+    // (default) is today's behaviour; 'lego' authors LEGO intros only and
+    // leaves component intros untouched; 'none' authors nothing and renders
+    // only text that already exists. Used 2026-08-05 to finish the fra
+    // re-voice under an approval covering deleted LEGO intros but not the
+    // never-authored component-intro backlog.
+    if (authorScope !== 'all' && audioNeeds.toAuthor?.length) {
+      const before = audioNeeds.toAuthor.length
+      audioNeeds.toAuthor = authorScope === 'none'
+        ? []
+        : audioNeeds.toAuthor.filter(a => a.lego_id)
+      logger.info(`authorScope=${authorScope}: ${before} → ${audioNeeds.toAuthor.length} intro(s) eligible for authoring`)
+    }
     if (!dryRun && audioNeeds.toAuthor?.length) {
       const template = await getOrCreatePresentationTemplate(course.known_lang)
       const targetLangName = getLocalisedLangName(course.target_lang, course.known_lang)
