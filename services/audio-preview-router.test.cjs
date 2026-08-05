@@ -180,3 +180,74 @@ describe('verdictFor', () => {
     }
   })
 })
+
+/**
+ * The payload contract, exercised through the real router with a fake database.
+ *
+ * These exist because of a live miss: `unchecked` is a REMAINDER the route has
+ * to hand the counter (total - passed - failed), and when the route forgot to
+ * pass the total, every response carried `unchecked: null`. Nothing threw. The
+ * page simply stopped saying how much of the course had never been checked —
+ * the single number this whole feature exists to publish — and the unit tests
+ * on the pure functions all stayed green, because the defect lived in the wiring
+ * between them.
+ */
+describe('GET /clips payload', () => {
+  // Minimal PostgREST double. `head: true` requests are the counters; the rest
+  // is the row page. Counts are derived from the predicates actually applied,
+  // so a route that forgets one gets a wrong number rather than a lucky pass.
+  function fakeDb ({ rows, counts }) {
+    return {
+      from () {
+        const state = { head: false, preds: [] }
+        const q = {
+          select: (_cols, opts) => { state.head = !!(opts && opts.head); return q },
+          eq: (c, v) => { state.preds.push(`eq:${c}=${v}`); return q },
+          gte: (c, v) => { state.preds.push(`gte:${c}`); return q },
+          is: (c, v) => { state.preds.push(`is:${c}=${v}`); return q },
+          or: (e) => { state.preds.push(`or:${e}`); return q },
+          order: () => q,
+          range: () => Promise.resolve({ data: rows, count: counts.total, error: null }),
+          then: (resolve) => {
+            const passed = state.preds.includes('is:veracity_pass=true')
+            const failed = state.preds.includes('is:veracity_pass=false')
+            resolve({
+              count: passed ? counts.passed : failed ? counts.failed : counts.total,
+              error: null,
+            })
+          },
+        }
+        return q
+      },
+    }
+  }
+
+  async function callClips (db) {
+    const router = require('./audio-preview-router.cjs')({ getDb: () => db, logger: { error () {}, info () {} } })
+    const layer = router.stack.find(l => l.route && l.route.path === '/clips')
+    let body = null
+    await layer.route.stack[0].handle(
+      { params: { courseCode: 'fra_for_eng' }, query: {} },
+      { json: (b) => { body = b }, status: () => ({ json: (b) => { body = b } }) },
+    )
+    return body
+  }
+
+  it('states unchecked as a NUMBER, never null, when the total is known', async () => {
+    const body = await callClips(fakeDb({
+      rows: [{ id: 'a', course_code: 'fra_for_eng', text: 'bonjour', role: 'target1', created_at: '2026-08-05T00:00:00Z' }],
+      counts: { total: 49098, passed: 12, failed: 0 },
+    }))
+    expect(body.error).toBeUndefined()
+    expect(body.verdictTotals.unchecked).toBe(49098 - 12)
+    expect(body.verdictTotals.unchecked).not.toBeNull()
+  })
+
+  it('gives every clip a verdict, so no row can render as blank', async () => {
+    const body = await callClips(fakeDb({
+      rows: [{ id: 'a', course_code: 'fra_for_eng', text: 'bonjour', role: 'target1', created_at: '2026-08-05T00:00:00Z' }],
+      counts: { total: 1, passed: 0, failed: 0 },
+    }))
+    expect(body.clips[0].verdict.state).toBe('unchecked')
+  })
+})

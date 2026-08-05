@@ -382,7 +382,7 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
       res.json({
         clips,
         total: count ?? null,
-        verdictTotals: await verdictTotals(db, courseCode, filter, role),
+        verdictTotals: await verdictTotals(db, courseCode, filter, role, count ?? null),
         hasMore: count != null ? offset + clips.length < count : clips.length === limit,
         filter,
         gate: gateMeta,
@@ -437,7 +437,7 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
       res.json({
         clips: rows.filter(Boolean).map(normaliseClip),
         total,
-        verdictTotals: await verdictTotals(db, courseCode, filter, role),
+        verdictTotals: await verdictTotals(db, courseCode, filter, role, total),
         filter,
         gate: gateMeta,
       })
