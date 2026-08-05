@@ -161,6 +161,16 @@ for entry in $SERVICES; do
   fi
 done
 
+# The CHECKOUT itself being behind is staleness too, independent of what any
+# service reports. It covers the cases /health cannot: a service that is down,
+# and — the bootstrap case — a service running a build that predates this
+# feature and so reports no sha at all. Without this the watchdog could never
+# deploy its own first version.
+if [ -n "$LOCAL_SHA" ] && [ "$LOCAL_SHA" != "$REMOTE_SHA" ] \
+   && git merge-base --is-ancestor "$LOCAL_SHA" "$REMOTE_SHA" 2>/dev/null; then
+  STALE_SERVICES="$STALE_SERVICES checkout"
+fi
+
 # ── Level? Clear the loop guard and go home. ─────────────────────────────────
 if [ -z "$STALE_SERVICES" ]; then
   rm -f "$ATTEMPT_FILE"
