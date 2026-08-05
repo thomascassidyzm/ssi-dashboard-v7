@@ -514,3 +514,26 @@ dependency is more honest); patching `agent-spawner.cjs` to detect Linux and for
 under a live dashboard is a bigger blast radius than a unit-file line).
 **Search width:** visible-options
 **Decided by:** agent (reversible ops change, no spend)
+
+## 2026-08-05 — Make-before-break written into audio operations doctrine
+
+**Move:** added an explicit ordering rule — generate the replacement, verify it, swap links
+atomically, only then delete the old clip — to `CLAUDE.md`'s approval gates and as a new §6b in
+`docs/architecture/AUDIO_PIPELINE_ARCHITECTURE.md`, naming the 2026-08-03 fra_for_eng Azure-voice
+purge (31,310 rows deleted before replacements existed, ~2,000 slots silent for two days) as the
+incident that forced it. Audited both tracked tools that mutate `course_audio`
+(`tools/revoice-clips.cjs`, `tools/repair-silent-clips.cjs`) — both already generate/verify before
+deleting (one inserts-then-deletes because a voice change doesn't collide on the unique key; the
+other must delete-then-insert because a same-voice re-render does collide, but renders and
+verifies first and restores the deleted row on a failed insert). The 08-03 purge itself was a
+direct service-role SQL statement, not a repo script, so there was nothing to patch there —
+recorded as a gap.
+**Better:** the rule Tom stated in one sentence is now load-bearing text at the two places anyone
+touching audio deletion is likely to read (project rules, pipeline architecture), not tribal
+knowledge in a chat log.
+**Simpler:** two doc edits, no new file, no code change — the two existing tools already do the
+right thing and needed no fix.
+**Cheaper (total):** zero — documentation only.
+**Searched & rejected:** n/a — founder ruling, documentation-only task.
+**Search width:** visible-options
+**Decided by:** Tom (founder ruling, 2026-08-05)
