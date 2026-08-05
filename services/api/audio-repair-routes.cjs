@@ -150,6 +150,24 @@ function mount (app, deps) {
     } catch (err) { fail(res, err, `accept ${audioId}`) }
   })
 
+  // ── POST revert — put the clip back on the object it served before ───────
+  // The safety net that makes accept safe to press: the superseded object was
+  // never deleted, so undoing is data-only, costs nothing and renders nothing.
+  app.post('/api/audio/repair/:courseCode/:audioId/revert', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    const { courseCode, audioId } = req.params
+    const { toRevision = null, reason } = req.body || {}
+    try {
+      const out = await repair.revert({
+        courseCode, audioId, toRevision: toRevision ? Number(toRevision) : null,
+        actor: who(user), reason,
+      })
+      logger.log?.(`[audio-repair] ${who(user)} REVERTED ${audioId} to ${out.restoredS3Key} (rev ${out.revision})`)
+      res.json(out)
+    } catch (err) { fail(res, err, `revert ${audioId}`) }
+  })
+
   // ── POST reject — discard a candidate; production is untouched ────────────
   app.post('/api/audio/repair/:courseCode/:audioId/reject', async (req, res) => {
     const user = await requireDashboardUser(req, res)

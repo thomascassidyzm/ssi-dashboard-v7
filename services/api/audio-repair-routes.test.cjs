@@ -62,6 +62,7 @@ function makeApp ({ admin = null, user = null, core = {} } = {}) {
     preview: spy('preview', () => ({ current: { id: 'a1' }, candidates: [{ candidateId: 'c1' }], detector: { name: 'd', precision: null } })),
     accept: spy('accept', () => ({ ok: true, audioId: 'a1', revision: 2 })),
     reject: spy('reject', () => ({ ok: true })),
+    revert: spy('revert', () => ({ ok: true, audioId: 'a1', revision: 3, restoredS3Key: 'mastered/OLD.mp3' })),
     candidateBytes: spy('candidateBytes', () => ({ buffer: Buffer.from('mp3'), contentType: 'audio/mpeg' })),
     currentBytes: spy('currentBytes', () => ({ buffer: Buffer.from('mp3'), contentType: 'audio/mpeg' })),
   }, core)
@@ -110,6 +111,11 @@ describe('audio repair routes — auth posture', () => {
     const { app } = makeApp({ user: PRODUCER })
     const r = await request(app).post('/api/audio/repair/deu_for_eng/a1/reject').send({ candidateId: 'c1' })
     expect(r.status).toBe(200)
+  })
+
+  it('revert is admin-only — it moves what learners hear, same as accept', async () => {
+    const { app } = makeApp({ user: PRODUCER })
+    expect((await request(app).post('/api/audio/repair/deu_for_eng/a1/revert').send({})).status).toBe(403)
   })
 
   it('reads require a dashboard user', async () => {
