@@ -127,3 +127,39 @@ Free checks the acoustic gate does not perform, seeds 1–30:
   taste call I did not make: I applied the German ruling, which was that the known side is the
   narrator's and the target side is the cast's. If Tom disagrees, the 150 old ids are in
   `scripts/overnight-fra/fra-wrong-known-voice-detail.json`.
+
+---
+
+## Second finding: 118 French pod slots point at audio that no longer exists
+
+Found while verifying that tonight's array swaps had not stranded anything. They had not — **0 of
+the dangling entries below is attributable to any run tonight**, checked by intersecting the live
+dangling set against every id my three runs touched. These are pre-existing.
+
+`listening_pod_sentences` carries three uuid ARRAY columns with **no foreign key**, so a delete
+anywhere else in the estate strands the uuid silently — no error, no cascade, no null.
+
+| column | fra_for_eng dangling slots | rows affected | deu_for_eng |
+|---|---:|---:|---:|
+| `sentence_known_audio_ids` | 104 | 47 | 42 |
+| `sentence_audio_ids` | 14 | 13 | 38 |
+| `takeg_audio_ids` | 0 | 0 | — |
+| **total** | **118** | | **80** |
+
+**These are learner-facing.** `packages/player-vue/src/composables/podSentenceSplit.ts` reads both
+arrays directly — "the UNIT the learner hears" — and `usePodLapScheduler.ts` schedules from them.
+A slot holding a dead uuid is a sentence the pod cannot play.
+
+**Not fixed tonight, and not because it is hard to decide — because it is a build.** Healing one of
+these means *rendering a clip that does not exist* and inserting it at an exact array index. Every
+existing tool starts from a live row: `revoice-clips.cjs` moves one, `repair-silent-clips.cjs`
+re-renders one. Neither can mint the missing one. And `pod_*` roles are refused by every repair tool
+by design. So this is a new small tool, not a flag, and it belongs to a morning with Tom awake
+rather than to a night of unattended spend.
+
+**Recommendation, one line:** *build a pod-slot backfill that re-renders the missing per-sentence
+clips from the pod's own text and swaps them into the dangling slots — 118 French, 80 German.*
+
+Also noted, unexplained: 74 of the 142 French pod sentences have `known_audio_id IS NULL` while all
+142 have `target_audio_id`. Whether that is by design (a turn with no known-side narration) or a
+third gap, I did not establish. Stated as a gap.
