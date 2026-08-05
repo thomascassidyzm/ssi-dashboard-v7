@@ -537,3 +537,37 @@ right thing and needed no fix.
 **Searched & rejected:** n/a — founder ruling, documentation-only task.
 **Search width:** visible-options
 **Decided by:** Tom (founder ruling, 2026-08-05)
+
+## 2026-08-05 — delete tail-repair, keep read-only flagging
+
+**Move:** removed `repairTailDefect`, `verifyTrimKeepsText`, the `TAIL_REPAIR_MODE` switch and
+`tools/declick-tail.cjs` outright, so no code path in the estate can automatically trim or rewrite
+course audio. Detection survives as read-only `flagTailDefect`, carrying its own 9%-precision caveat
+in every result, for the coming manual approval gate.
+
+**Better:** the capability that deleted taught words from a live course no longer exists, so it
+cannot recur — versus a default that had already been flipped once and still leaked. The estate
+audit found six copies of `audio-processor.cjs` on this host, two with the mutation path and **no
+switch at all**, which is exactly how "a rogue default keeps sneaking through" happens.
+**Simpler:** one read-only function replaces a 3-pass repair loop, two guards, a whisper trim-check
+and an env switch — 506 lines deleted for 162 added, and there is no longer an environment variable
+anyone can get wrong. **Cheaper (total):** removes the whisper subprocess pair per flagged clip from
+the render path; removes a per-checkout, per-unit-file configuration burden that was already being
+paid incorrectly; and removes the recurring cost of repair passes that were 9% precise — the
+repairs themselves were the expense.
+
+**Searched & rejected:**
+- Flip the default to `flag` (done earlier today, `c6703b2d`) — failed *better*: leaves the
+  capability and the switch, and two checkouts have no switch to set.
+- Keep the repair behind the whisper amputation guard — failed *better*: the guard returns
+  `null → proceed` whenever whisper is absent, which is true on this box, and it cannot see a trim
+  that eats one final word of six.
+- Raise the detector's threshold — failed *better*: 9% precision is a discrimination failure, not a
+  threshold failure; the detector cannot distinguish a tail click from a natural mid-sentence pause.
+- Keep `declick-tail.cjs` as a read-only reporter — failed *simpler*: duplicates `flagTailDefect`
+  for no added value.
+
+**Search width:** component-redesign
+**Decided by:** Tom — 2026-08-05 21:06Z escalation, verbatim: "DELETE the tail-repair service's
+ability to modify audio entirely, do not just change its default", after the clipping recurred a
+third time and reached learners in the first 10 minutes of the live German course.
