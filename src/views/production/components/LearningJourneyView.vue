@@ -735,12 +735,17 @@ const toggleRound = (roundNumber: number) => {
 // Leaves Popty for the real learning app, anchored on this round's LEGO.
 // The preview player here is a proofing instrument; real playback fidelity
 // lives in the learning app.
+// `cycleText` is what actually anchors a per-cycle launch: this view's round
+// list and the player's disagree on both membership and order, so the ordinal
+// alone opens the wrong row. See learningAppUrl.ts.
 const openRoundInLearningApp = (round: RoundData, cycle?: number) => {
+  const cycleText = typeof cycle === 'number' ? round.items?.[cycle - 1]?.known_text : undefined
   const url = buildLearningAppUrl({
     courseCode: props.courseCode,
     round: round.roundNumber,
     legoId: round.legoId,
-    cycle
+    cycle,
+    cycleText
   })
   window.open(url, '_blank')
 }

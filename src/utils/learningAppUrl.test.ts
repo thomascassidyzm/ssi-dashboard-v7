@@ -93,4 +93,31 @@ describe('buildLearningAppUrl', () => {
     console.log('DEEPLINK:', url)
     expect(url).toBe('https://saysomethingin.app/?course=deu_for_eng&round=7&lego=S0002L02')
   })
+
+  describe('cycleText — the identity anchor for a per-cycle launch', () => {
+    it('appends the clicked row text after the cycle ordinal', () => {
+      expect(buildLearningAppUrl({
+        courseCode: 'deu_for_eng', round: 11, legoId: 'S0003L03',
+        cycle: 13, cycleText: 'I want to speak German'
+      })).toBe(`${DEFAULT_BASE}/?course=deu_for_eng&round=11&lego=S0003L03&cycle=13&cycleText=I%20want%20to%20speak%20German`)
+    })
+
+    it('omits cycleText when there is no cycle to qualify', () => {
+      expect(buildLearningAppUrl({
+        courseCode: 'deu_for_eng', round: 11, cycleText: 'I want to speak German'
+      })).toBe(`${DEFAULT_BASE}/?course=deu_for_eng&round=11`)
+    })
+
+    it('omits empty or whitespace-only text rather than emitting a bare param', () => {
+      expect(buildLearningAppUrl({ courseCode: 'deu_for_eng', cycle: 3, cycleText: '   ' }))
+        .toBe(`${DEFAULT_BASE}/?course=deu_for_eng&cycle=3`)
+      expect(buildLearningAppUrl({ courseCode: 'deu_for_eng', cycle: 3, cycleText: null }))
+        .toBe(`${DEFAULT_BASE}/?course=deu_for_eng&cycle=3`)
+    })
+
+    it('URL-encodes text carrying punctuation an apostrophe or an ampersand', () => {
+      expect(buildLearningAppUrl({ courseCode: 'deu_for_eng', cycle: 2, cycleText: "I'm trying & waiting?" }))
+        .toBe(`${DEFAULT_BASE}/?course=deu_for_eng&cycle=2&cycleText=I'm%20trying%20%26%20waiting%3F`)
+    })
+  })
 })
