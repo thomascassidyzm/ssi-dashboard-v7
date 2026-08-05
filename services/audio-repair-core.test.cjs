@@ -412,6 +412,64 @@ describe('accept', () => {
   })
 })
 
+// ── REVERT: history is only real if you can get the old clip back ──────────
+
+describe('revert', () => {
+  let db, core
+  beforeEach(async () => { db = seedDb(); ({ core } = makeCore(db)) })
+
+  it('puts the clip back on the object it was serving before', async () => {
+    const candidateId = await proposeOne(core)
+    await core.accept({ courseCode: 'deu_for_eng', audioId: CLIP.id, candidateId, actor: 'tom' })
+    const r = await core.revert({ courseCode: 'deu_for_eng', audioId: CLIP.id, actor: 'tom', reason: 'worse than the original' })
+    const [row] = db.snapshot().course_audio
+    expect(row.s3_key).toBe('mastered/OLD.mp3')
+    expect(row.duration_ms).toBe(3200)
+    expect(r.restoredS3Key).toBe('mastered/OLD.mp3')
+  })
+
+  it('goes FORWARD in revision, never backwards — a device that cached the bad bytes must still be told to refetch', async () => {
+    const candidateId = await proposeOne(core)
+    await core.accept({ courseCode: 'deu_for_eng', audioId: CLIP.id, candidateId, actor: 'tom' })
+    const r = await core.revert({ courseCode: 'deu_for_eng', audioId: CLIP.id, actor: 'tom' })
+    expect(r.revision).toBe(3)
+    expect(db.snapshot().course_audio[0].audio_revision).toBe(3)
+  })
+
+  it('records the revert as its own history entry', async () => {
+    const candidateId = await proposeOne(core)
+    await core.accept({ courseCode: 'deu_for_eng', audioId: CLIP.id, candidateId, actor: 'tom' })
+    await core.revert({ courseCode: 'deu_for_eng', audioId: CLIP.id, actor: 'tom' })
+    const hist = db.snapshot().course_audio_revisions
+    expect(hist).toHaveLength(2)
+    expect(hist[1].source).toBe('revert')
+    expect(hist[1].new_s3_key).toBe('mastered/OLD.mp3')
+  })
+
+  it('restores the denormalised duration too', async () => {
+    const candidateId = await proposeOne(core)
+    await core.accept({ courseCode: 'deu_for_eng', audioId: CLIP.id, candidateId, actor: 'tom' })
+    expect(db.snapshot().lego_introductions[0].duration_ms).toBe(4100)
+    await core.revert({ courseCode: 'deu_for_eng', audioId: CLIP.id, actor: 'tom' })
+    expect(db.snapshot().lego_introductions[0].duration_ms).toBe(3200)
+  })
+
+  it('refuses on a clip that has never been replaced', async () => {
+    await expect(core.revert({ courseCode: 'deu_for_eng', audioId: CLIP.id, actor: 'tom' }))
+      .rejects.toThrow(/never been replaced/)
+  })
+
+  it('refuses, rather than half-reverting, if the superseded object has gone from the bucket', async () => {
+    const candidateId = await proposeOne(core)
+    await core.accept({ courseCode: 'deu_for_eng', audioId: CLIP.id, candidateId, actor: 'tom' })
+    const before = db.snapshot()
+    const { core: gone } = makeCore(db, { objectMissing: true })
+    await expect(gone.revert({ courseCode: 'deu_for_eng', audioId: CLIP.id, actor: 'tom' }))
+      .rejects.toThrow(/no longer in the bucket/)
+    expect(db.snapshot()).toEqual(before)
+  })
+})
+
 // ── REJECT ─────────────────────────────────────────────────────────────────
 
 describe('reject', () => {

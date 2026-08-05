@@ -594,6 +594,116 @@ function createRepairCore (deps) {
     }
   }
 
+  // ── REVERT ───────────────────────────────────────────────────────────────
+
+  /**
+   * Put a clip back on the object it was serving before a given revision.
+   *
+   * This is what makes "the old audio is retained as history" a fact rather
+   * than a promise: the superseded S3 object was never deleted, and
+   * course_audio_revisions remembers its key, so undoing an accepted swap is a
+   * data-only operation with no render and no spend.
+   *
+   * A revert is itself a forward revision — the number never goes backwards,
+   * because the number's only job is to invalidate caches, and a device that
+   * cached the bad bytes at revision 2 must not be told "you're at 1, you're
+   * fine". So reverting revision 2 produces revision 3 pointing at revision
+   * 1's object.
+   */
+  async function revert ({ courseCode, audioId, toRevision = null, actor = 'unknown', reason = null }) {
+    const row = await loadClip(courseCode, audioId)
+    const current = row.audio_revision ?? 1
+
+    const { data: hist, error } = await supabase.from('course_audio_revisions')
+      .select('*').eq('audio_id', audioId).order('revision', { ascending: false })
+    if (error) throw new RepairError(`reading history: ${error.message}`, 'db_error', 500)
+    if (!hist || !hist.length) {
+      throw new RepairError(`clip ${audioId} has never been replaced — nothing to revert to`, 'no_history', 400)
+    }
+
+    // Which historical object are we going back to? By default, whatever was
+    // there immediately before the current revision.
+    const entry = toRevision
+      ? hist.find(h => h.previous_revision === toRevision)
+      : hist.find(h => h.revision === current)
+    if (!entry) {
+      throw new RepairError(
+        `no history entry taking clip ${audioId} away from revision ${toRevision ?? current}`,
+        'no_history', 400)
+    }
+
+    const head = await storage.head(entry.previous_s3_key)
+    if (!head || !head.exists) {
+      throw new RepairError(
+        `the superseded object ${entry.previous_s3_key} is no longer in the bucket — cannot revert`,
+        'previous_object_missing', 409)
+    }
+
+    const before = await linkCensus(audioId)
+    const revision = current + 1
+    const snapshot = {
+      s3_key: row.s3_key, duration_ms: row.duration_ms,
+      file_size_bytes: row.file_size_bytes, audio_revision: current,
+    }
+
+    let historyId = null
+    let swapped = false
+    try {
+      const { data: h, error: hErr } = await supabase.from('course_audio_revisions').insert({
+        audio_id: audioId,
+        course_code: row.course_code,
+        revision,
+        previous_revision: current,
+        previous_s3_key: row.s3_key,
+        new_s3_key: entry.previous_s3_key,
+        previous_duration_ms: row.duration_ms,
+        new_duration_ms: entry.previous_duration_ms,
+        source: 'revert',
+        accepted_by: actor,
+        reason: reason || `revert to revision ${entry.previous_revision}`,
+      }).select('id').single()
+      if (hErr) throw new RepairError(`writing history: ${hErr.message}`, 'db_error', 500)
+      historyId = h.id
+
+      const { error: upErr } = await supabase.from('course_audio').update({
+        s3_key: entry.previous_s3_key,
+        duration_ms: entry.previous_duration_ms,
+        file_size_bytes: head.bytes ?? null,
+        audio_revision: revision,
+        word_boundaries: null,
+      }).eq('id', audioId)
+      if (upErr) throw new RepairError(`reverting clip: ${upErr.message}`, 'db_error', 500)
+      swapped = true
+
+      const after = await loadClip(courseCode, audioId)
+      if (after.s3_key !== entry.previous_s3_key) throw new RepairError('revert did not take', 'assert_s3_key')
+      const afterCensus = await linkCensus(audioId)
+      if (!censusEqual(before, afterCensus)) {
+        throw new RepairError(`link census moved during revert`, 'assert_links')
+      }
+
+      await syncDenormalisedDurations(audioId, entry.previous_duration_ms).catch(e =>
+        logger.warn?.(`[repair] duration denormalisation: ${e.message}`))
+      await supabase.from('course_audio_envelope').delete().eq('audio_id', audioId)
+
+      return {
+        ok: true, audioId, revision, previousRevision: current,
+        restoredS3Key: entry.previous_s3_key, supersededS3Key: snapshot.s3_key,
+        durationMs: { before: snapshot.duration_ms, after: entry.previous_duration_ms },
+        historyId,
+      }
+    } catch (err) {
+      if (swapped) {
+        const { error: rbErr } = await supabase.from('course_audio').update(snapshot).eq('id', audioId)
+        err.rollback = rbErr ? 'failed' : 'restored'
+      } else {
+        err.rollback = 'not-needed'
+      }
+      if (historyId) await supabase.from('course_audio_revisions').delete().eq('id', historyId)
+      throw err
+    }
+  }
+
   // ── REJECT ───────────────────────────────────────────────────────────────
 
   /** Discard a candidate. Touches nothing on the learner path, by construction. */
@@ -686,7 +796,7 @@ function createRepairCore (deps) {
   }
 
   return {
-    propose, preview, accept, reject, queue,
+    propose, preview, accept, reject, revert, queue,
     candidateBytes, currentBytes,
     loadClip, linkCensus, detectorVerdict,
     DETECTOR, RepairError,

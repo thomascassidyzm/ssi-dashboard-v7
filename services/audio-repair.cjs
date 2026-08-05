@@ -157,6 +157,7 @@ module.exports = {
   preview: (...a) => core().preview(...a),
   accept: (...a) => core().accept(...a),
   reject: (...a) => core().reject(...a),
+  revert: (...a) => core().revert(...a),
   queue: (...a) => core().queue(...a),
   candidateBytes: (...a) => core().candidateBytes(...a),
   currentBytes: (...a) => core().currentBytes(...a),
