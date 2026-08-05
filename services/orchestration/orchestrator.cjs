@@ -11007,6 +11007,38 @@ app.get('/api/services/:name/logs', async (req, res) => {
  * Steps: git pull → npm install (if package.json changed) → pm2 restart all
  * Returns immediately with status, streams progress via WebSocket events.
  */
+/**
+ * Which checkout is this machine deploying, and where does it stand?
+ *
+ * Answers the three questions a failed deploy always raises — which branch,
+ * which commit, and is it diverged from its upstream — without needing a
+ * shell on the box. Every field is best-effort: a machine with no git in
+ * PATH reports nulls rather than failing the deploy response.
+ */
+function describeCheckout (projectDir) {
+  const git = (args) => {
+    try {
+      return execSync(`git ${args}`, { cwd: projectDir, encoding: 'utf-8', timeout: 5000, stdio: ['ignore', 'pipe', 'ignore'] }).trim() || null;
+    } catch {
+      return null;
+    }
+  };
+  const upstream = git('rev-parse --abbrev-ref --symbolic-full-name @{u}');
+  // "3\t7" — commits ahead of, then behind, the upstream. Local commits on a
+  // deploy box are the classic cause of a --ff-only refusal.
+  const counts = upstream ? git(`rev-list --left-right --count ${upstream}...HEAD`) : null;
+  const [behind, ahead] = counts ? counts.split(/\s+/) : [null, null];
+  return {
+    root: projectDir,
+    branch: git('rev-parse --abbrev-ref HEAD'),
+    commit: git('rev-parse --short=8 HEAD'),
+    upstream,
+    ahead: ahead === null ? null : Number(ahead),
+    behind: behind === null ? null : Number(behind),
+    dirty_tracked_files: (git('status --porcelain -uno') || '').split('\n').filter(Boolean).length
+  };
+}
+
 app.post('/api/deploy', async (req, res) => {
   const projectDir = path.resolve(__dirname, '..', '..');
   const startTime = Date.now();
@@ -11071,6 +11103,8 @@ app.post('/api/deploy', async (req, res) => {
       success: true,
       already_up_to_date: alreadyUpToDate,
       npm_installed: npmInstalled,
+      // Post-pull, pre-restart: the commit the restarted services will load.
+      checkout: describeCheckout(projectDir),
       services_restarted: serviceNames,
       elapsed_seconds: parseFloat(elapsed),
       log,
@@ -11098,11 +11132,27 @@ app.post('/api/deploy', async (req, res) => {
 
   } catch (err) {
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+    // git's own words, not just "Command failed". 2026-08-05: a remote deploy
+    // to camberley failed five times running and the operator could not tell
+    // whether the cause was a dirty tree, a diverged branch or a credential
+    // prompt, because this handler reported only err.message. The failure
+    // output is the whole diagnosis — send it.
+    const gitOutput = [err.stdout, err.stderr]
+      .map(s => (s ? s.toString().trim() : ''))
+      .filter(Boolean)
+      .join('\n');
+    if (gitOutput) {
+      for (const line of gitOutput.split('\n')) addLog(`git: ${line}`);
+    }
     addLog(`Deploy FAILED: ${err.message}`);
-    console.error('[Deploy] Error:', err.message);
+    console.error('[Deploy] Error:', err.message, gitOutput ? `\n${gitOutput}` : '');
     res.status(500).json({
       success: false,
       error: err.message,
+      git_output: gitOutput || null,
+      // Where the failure happened, so "fix the checkout" is actionable from
+      // the response alone rather than needing a shell on the box.
+      checkout: describeCheckout(projectDir),
       elapsed_seconds: parseFloat(elapsed),
       log,
       machine: process.env.MACHINE_NAME || os.hostname(),
