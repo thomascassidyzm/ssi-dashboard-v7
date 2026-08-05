@@ -34,6 +34,7 @@ const { pickPreferredAudioRow } = require('../shared/audio-link-preference.cjs')
 const { decideCopy } = require('../shared/clone-copy-match.cjs')
 const { buildSourceIndex } = require('../shared/clone-copy-index.cjs')
 const createLogger = require('../shared/logger.cjs')
+const { identity: buildIdentity } = require('../shared/build-identity.cjs')
 const ttsService = require('../tts-service.cjs')
 const { toBcp47 } = require('../voice-discovery-service.cjs')
 const audioProcessor = require('../audio-processor.cjs')
@@ -1046,7 +1047,10 @@ app.get('/health', (req, res) => {
     status: 'healthy',
     service: 'phase8-audio-v13',
     port: PORT,
-    tail_repair_mode: audioProcessor.TAIL_REPAIR_MODE
+    tail_repair_mode: audioProcessor.TAIL_REPAIR_MODE,
+    // Which commit is THIS PROCESS running? Frozen at require time — see
+    // services/shared/build-identity.cjs. The staleness watchdog reads it.
+    build: buildIdentity()
   })
 })
 

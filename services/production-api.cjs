@@ -9,6 +9,7 @@ const { Server } = require('socket.io')
 const createLogger = require('./shared/logger.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
 const { isPunctuationOnly } = require('./shared/text-classification.cjs')
+const { identity: buildIdentity } = require('./shared/build-identity.cjs')
 
 const logger = createLogger('ProductionAPI')
 
@@ -1298,8 +1299,35 @@ app.get('/health', (req, res) => {
     service: 'Production API',
     port: PORT || 3470,
     timestamp: new Date().toISOString(),
-    supabase: supabaseClient.isInitialized() ? 'connected' : 'not initialized'
+    supabase: supabaseClient.isInitialized() ? 'connected' : 'not initialized',
+    // Which commit is THIS PROCESS running? Frozen at start, never re-read —
+    // see services/shared/build-identity.cjs. This is what the staleness
+    // watchdog compares against origin/main.
+    build: buildIdentity()
   })
+})
+
+// Staleness state, as last written by ops/watchdog/popty-staleness-watchdog.sh.
+// Read-only and cheap by design: this serves a cached file the cron job wrote,
+// it never shells out to git inside a request handler.
+const STALENESS_STATE_FILE = process.env.POPTY_STALENESS_STATE || '/tmp/popty-staleness.json'
+
+app.get('/api/ops/staleness', (req, res) => {
+  try {
+    const raw = fs.readFileSync(STALENESS_STATE_FILE, 'utf8')
+    const state = JSON.parse(raw)
+    // Age matters as much as content: a "fresh" verdict from six hours ago
+    // means the watchdog itself stopped running, which is its own alarm.
+    const checkedAt = state.checked_at ? Date.parse(state.checked_at) : NaN
+    const ageSeconds = Number.isNaN(checkedAt) ? null : Math.round((Date.now() - checkedAt) / 1000)
+    res.json({ ...state, age_seconds: ageSeconds, build: buildIdentity() })
+  } catch (err) {
+    res.json({
+      status: 'unknown',
+      reason: `no staleness state at ${STALENESS_STATE_FILE} (${err.code || err.message})`,
+      build: buildIdentity()
+    })
+  }
 })
 
 // =============================================================================

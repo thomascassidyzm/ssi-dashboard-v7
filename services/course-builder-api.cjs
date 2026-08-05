@@ -57,7 +57,11 @@ app.use('/api/brief', require('./briefs/index.cjs'));
 
 // ─── Health check ─────────────────────────────────────────────────────
 
-app.get('/health', (req, res) => res.json({ ok: true }));
+// `build` is the commit this process STARTED from, frozen at require time —
+// see services/shared/build-identity.cjs. The staleness watchdog reads it.
+const { identity: buildIdentity } = require('./shared/build-identity.cjs');
+
+app.get('/health', (req, res) => res.json({ ok: true, build: buildIdentity() }));
 
 // ─── Start server ─────────────────────────────────────────────────────
 
