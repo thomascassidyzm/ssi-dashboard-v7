@@ -669,6 +669,47 @@ it needs a shell on the jammed machine, which is exactly what was missing; (c) a
 failure — removes the human, and a hard reset on a production machine must never be automatic.
 **Search width:** visible-options
 **Decided by:** Tom (sign-off, 2026-08-05: "Yes. Build the repair option.")
+
+## 2026-08-05 — No course reaches learners without a human play-through
+
+**Decision:** a manual approval gate, per course, blocking promotion to learner-visible
+(`new_app_status IN ('live','beta')`) until a human has played through the first **X rounds**
+in the REAL learning app and signed each one off. X is stored per course, seeded 100 for paid
+and 20 for free/community. Sampling remains fine for the body of a course; the first X rounds
+are not sampleable. All 143 existing courses start honestly **unpassed** — nothing
+grandfathered, nothing backfilled, no live course's status touched.
+**Move:** `ops/sql/20260805-course-qa-gate.sql` (five tables, five derived views, applied live),
+`services/course-qa-gate.cjs`, `services/api/course-qa-gate-routes.cjs`, the block in
+`POST /api/production/:courseCode/status`, plus `CourseQAGate.vue` (the play-through worklist),
+`QAGateEstate.vue` (the retrofit's priority list) and status badges in Production Overview and
+Script View.
+**Better:** Tom played ten minutes of live `deu_for_eng` and found it "an unmitigated disaster".
+Two failures caused it and both are now structurally impossible rather than merely discouraged.
+(1) An agent overruled six real detector flags as "transcription artifacts";
+`audio_clip_flags.resolution` now has exactly two values — `cleared_by_human` and `replaced` —
+so there is no column an automated re-judgement can write to. (2) Nobody had ever listened.
+The gate makes "a human played it and signed it off" a first-class, queryable fact.
+**Simpler:** cycle and round verification status are VIEWS, never stored, so they cannot drift
+from the clips they describe. Invalidation is arithmetic, not a hook: clip sign-off keys on
+`(audio_id, audio_revision)` and round sign-off stores an md5 over every `(audio_id, revision)`
+in the round, so accepting an audio repair moves the fingerprint and the sign-off goes stale on
+its own. Nothing was added to `audio-repair-core.cjs` — a coupling that has to fire is one that
+can fail to fire. A round is a LEGO and cycle keys are byte-identical to the ids the learner API
+emits, so no new vocabulary was invented and no "seed position" is named.
+**Cheaper (total):** no running cost. One 40ms query decides a course's gate; the estate view
+covers 143 courses / 86,733 rounds in well under a second (the exact per-round view timed out at
+that width, so the estate uses a conservative course-level staleness test that under-reports and
+never over-reports). The real cost is human listening time, and Part 3 exists to divide it — a
+partial gist exclusion constraint makes two people being handed the same rounds impossible.
+**Searched & rejected:** (a) check every clip — Tom explicitly ruled sampling acceptable for the
+body of a course, and it would make the gate undeliverable; (b) trust an automated audio check —
+no check here has a measured miss rate against human-labelled ground truth, so ordering the
+queue for human ears is the only job one may legitimately hold; (c) grandfather the 78 live
+courses as passed — it would make the gate a lie on the day it shipped; (d) hook invalidation
+into the repair flow's accept path — more code, more coupling, and it can silently not fire.
+**Search width:** visible-options
+**Decided by:** Tom (ruling, 2026-08-05: "No course should EVER go out to learners unless it has
+passed a manual approval gate" / "we MUST manually play through the first X ROUNDS").
 ## 2026-08-05 — delete tail-repair, keep read-only flagging
 
 **Move:** removed `repairTailDefect`, `verifyTrimKeepsText`, the `TAIL_REPAIR_MODE` switch and

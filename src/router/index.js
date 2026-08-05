@@ -530,6 +530,15 @@ const routes = [
     component: () => import('../views/production/AudioPreview.vue'),
     meta: { title: 'Audio Preview' }
   },
+  {
+    // The approval gate across the whole estate (Part 4). Not per-course, so
+    // it sits outside ProductionLayout: this is the view the retrofit of the
+    // already-published courses is prioritised from.
+    path: '/qa-gate',
+    name: 'QAGateEstate',
+    component: () => import('../views/production/QAGateEstate.vue'),
+    meta: { title: 'Approval Gate - Estate' }
+  },
   // Nested routes under ProductionLayout - keeps layout mounted while switching tabs
   {
     path: '/production/:courseCode',
@@ -574,6 +583,15 @@ const routes = [
         component: () => import('../views/production/TextGeneration.vue'),
         props: true,
         meta: { title: 'Text Generation - Production Suite' }
+      },
+      {
+        // The manual approval gate for this course: the round-by-round
+        // play-through worklist, sign-off, and who is listening to what.
+        path: 'qa-gate',
+        name: 'CourseQAGate',
+        component: () => import('../views/production/CourseQAGate.vue'),
+        props: true,
+        meta: { title: 'Approval Gate - Production Suite' }
       },
       {
         path: 'phrase-qa',
