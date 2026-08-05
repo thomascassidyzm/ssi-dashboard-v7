@@ -21,7 +21,9 @@
 
 import { describe, it, expect, beforeEach } from 'vitest'
 
-const { createRepairCore } = require('./audio-repair-core.cjs')
+const {
+  createRepairCore, tailShape, tailVerdict, TAIL_DETECTOR,
+} = require('./audio-repair-core.cjs')
 
 // ── a minimal, honest supabase double ──────────────────────────────────────
 
@@ -30,7 +32,11 @@ function makeDb (seed) {
   let failOn = null // { table, op } -> throws, to drive the rollback path
 
   function match (rows, filters) {
-    return rows.filter(r => filters.every(([col, val]) => r[col] === val))
+    return rows.filter(r => filters.every(([col, val, op]) => {
+      if (op === 'in') return val.includes(r[col])
+      if (op === 'lte') return r[col] <= val
+      return r[col] === val
+    }))
   }
 
   function from (table) {
@@ -51,6 +57,8 @@ function makeDb (seed) {
         return api
       },
       eq (col, val) { filters.push([col, val]); return api },
+      in (col, vals) { filters.push([col, vals, 'in']); return api },
+      lte (col, val) { filters.push([col, val, 'lte']); return api },
       order () { return api },
       limit () { return api },
       insert (rows) { mode = 'insert'; payload = Array.isArray(rows) ? rows : [rows]; return api },
@@ -88,7 +96,8 @@ function makeDb (seed) {
         return { data: rows.map(clone), error: null, count: rows.length }
       }
       if (mode === 'delete') {
-        const keep = tables[table].filter(r => !filters.every(([c, v]) => r[c] === v))
+        const gone = new Set(match(tables[table], filters))
+      const keep = tables[table].filter(r => !gone.has(r))
         const removed = tables[table].length - keep.length
         tables[table] = keep
         return { data: null, error: null, count: removed }
@@ -167,6 +176,7 @@ function makeCore (db, opts = {}) {
       verify: {
         measure: async () => opts.level ?? { meanDb: -21, peakDb: -1.5 },
         veracity: async () => opts.verdict ?? { checked: true, pass: true, reason: null, cer: 0.03 },
+        frameDb: opts.frameDb,
       },
       newId: () => `cand-${++ids}`,
       now: () => '2026-08-05T22:00:00.000Z',
@@ -572,5 +582,164 @@ describe('queue', () => {
     const q = await core.queue({ courseCode: 'deu_for_eng' })
     expect('precision' in q.detector).toBe(true)
     expect(q.detector.precisionNote).toMatch(/never passes audio/i)
+  })
+})
+
+// ── the tail-integrity detector ────────────────────────────────────────────
+//
+// The defect it exists for is a SOFT amputation: the final consonant of the
+// last word is gone, there is no click, and the clip is only ~100ms short — so
+// duration-vs-expected calls it healthy. What separates the two is the shape of
+// the ending, and these tests are written in that shape directly.
+
+/** A frame envelope: `speechFrames` at speech level, then a decay to silence. */
+function envelope ({ speechFrames = 200, decayFrames, peakDb = -12, tailSilenceFrames = 24 }) {
+  const db = new Array(speechFrames).fill(peakDb)
+  for (let i = 1; i <= decayFrames; i++) db.push(peakDb - (60 * i) / decayFrames)
+  return db.concat(new Array(tailSilenceFrames).fill(-180))
+}
+
+describe('tailShape', () => {
+  it('measures the release as the fall from speech level to gone', () => {
+    // 12 decay frames at 5ms = 60ms to fall 60dB, i.e. 5dB per frame; the last
+    // frame above peak-10 to the first at or below peak-50 is 9 of them.
+    const s = tailShape(envelope({ decayFrames: 12 }))
+    expect(s.releaseMs).toBe(45)
+    expect(s.peakDb).toBe(-12)
+  })
+
+  it('reports a cut ending as a near-instant release', () => {
+    expect(tailShape(envelope({ decayFrames: 2 })).releaseMs).toBeLessThanOrEqual(10)
+  })
+
+  it('returns null rather than a number when there is nothing audible to measure', () => {
+    expect(tailShape(new Array(50).fill(-180))).toBe(null)
+    expect(tailShape([])).toBe(null)
+    expect(tailShape(null)).toBe(null)
+  })
+
+  it('is blind to trailing silence — padding a clip cannot change its release', () => {
+    const short = tailShape(envelope({ decayFrames: 12, tailSilenceFrames: 4 }))
+    const padded = tailShape(envelope({ decayFrames: 12, tailSilenceFrames: 200 }))
+    expect(padded.releaseMs).toBe(short.releaseMs)
+    // This is the failure that sank the old tail-click gate: 96% of its `rise`
+    // flags vanished when the clip was padded. Whatever this check is worth, it
+    // is not measuring trailing room.
+  })
+})
+
+describe('tailVerdict', () => {
+  it('flags a clip that stops at full speech level', () => {
+    const v = tailVerdict(envelope({ decayFrames: 2 }), { textChars: 24 })
+    expect(v.flagged).toBe(true)
+    expect(v.steep).toBe(true)
+    expect(v.reason).toMatch(/ends abruptly/)
+  })
+
+  it('passes a clip whose final phoneme is allowed to decay', () => {
+    const v = tailVerdict(envelope({ decayFrames: 30 }), { textChars: 24 })
+    expect(v.flagged).toBe(false)
+    expect(v.reason).toMatch(/allowed to finish/)
+  })
+
+  it('flags on steepness ALONE — the rate leg goes blind on long clips', () => {
+    // A 4s introduction that lost one short word reads as a normal speaking
+    // rate; requiring both legs would miss it. deu_for_eng S0001L04 is exactly
+    // this clip: its spoken "is:" is gone and its rate is unremarkable.
+    const v = tailVerdict(envelope({ speechFrames: 780, decayFrames: 4 }), {
+      textChars: 62, baselineCps: 17.4,
+    })
+    expect(v.flagged).toBe(true)
+    expect(v.fast).toBe(false)
+  })
+
+  it('sorts a corroborated flag ahead of a bare one at the same steepness', () => {
+    const bare = tailVerdict(envelope({ speechFrames: 200, decayFrames: 4 }), { textChars: 10, baselineCps: 18 })
+    const both = tailVerdict(envelope({ speechFrames: 200, decayFrames: 4 }), { textChars: 40, baselineCps: 18 })
+    expect(both.fast).toBe(true)
+    expect(both.score).toBeLessThan(bare.score)
+  })
+
+  it('says it cannot judge a silent clip rather than flagging it', () => {
+    const v = tailVerdict(new Array(50).fill(-180))
+    expect(v.flagged).toBe(null)
+    expect(v.reason).toMatch(/no audible content/)
+  })
+
+  it('ships its precision claim, and claims no precision', () => {
+    expect(TAIL_DETECTOR.precision).toBe(null)
+    expect(TAIL_DETECTOR.precisionNote).toMatch(/never passes audio/i)
+    expect(TAIL_DETECTOR.precisionNote).toMatch(/three clips/i)
+  })
+})
+
+describe('queue — tail integrity', () => {
+  const audio = (over) => ({
+    course_code: 'deu_for_eng', text: 'Ich will jetzt Deutsch lernen', role: 'phrase_target',
+    voice_id: 'xai_eve', language: 'deu', duration_ms: 2100, s3_key: 'mastered/X.mp3',
+    audio_revision: 1, lego_id: null, veracity_pass: true, veracity_reason: null, veracity_cer: 0.01,
+    ...over,
+  })
+
+  it('surfaces a clip the duration check calls healthy', async () => {
+    const db = makeDb({
+      course_audio: [audio({ id: 'cut' }), audio({ id: 'clean' })],
+      audio_repair_candidates: [],
+    })
+    // Distinct envelopes per clip, in the order the queue reads them.
+    const envelopes = [envelope({ decayFrames: 2 }), envelope({ decayFrames: 30 })]
+    let n = 0
+    const { core } = makeCore(db, {})
+    const { core: core2 } = makeCore(db, { frameDb: async () => envelopes[n++] })
+    const plain = await core.queue({ courseCode: 'deu_for_eng' })
+    expect(plain.items).toEqual([]) // duration-vs-expected sees nothing wrong
+
+    const withTails = await core2.queue({ courseCode: 'deu_for_eng', tails: true })
+    expect(withTails.items.map(i => i.audioId)).toEqual(['cut'])
+    expect(withTails.flaggedByTail).toBe(1)
+    expect(withTails.tailDetector.name).toBe('tail-integrity')
+  })
+
+  it('names how many clips it could not measure instead of quietly dropping them', async () => {
+    const db = makeDb({ course_audio: [audio({ id: 'a' })], audio_repair_candidates: [] })
+    const { core } = makeCore(db, { frameDb: async () => { throw new Error('decode failed') } })
+    const q = await core.queue({ courseCode: 'deu_for_eng', tails: true })
+    expect(q.tailMeasureFailures).toBe(1)
+    expect(q.measured).toBe(0)
+  })
+
+  it('refuses the tail check rather than silently skipping it when it cannot run', async () => {
+    const db = makeDb({ course_audio: [audio({ id: 'a' })], audio_repair_candidates: [] })
+    const { core } = makeCore(db, {})
+    await expect(core.queue({ courseCode: 'deu_for_eng', tails: true }))
+      .rejects.toThrow(/verify.frameDb/)
+  })
+
+  it('leaves the tail detector off, and says so, unless it was asked for', async () => {
+    const db = makeDb({ course_audio: [audio({ id: 'a', duration_ms: 300 })], audio_repair_candidates: [] })
+    const { core } = makeCore(db, {})
+    expect((await core.queue({ courseCode: 'deu_for_eng' })).tailDetector).toBe(null)
+  })
+})
+
+describe('seedScopedAudioIds', () => {
+  it('gathers every clip reachable from the first N seeds, across all four holders', async () => {
+    const db = makeDb({
+      course_seeds: [{ course_code: 'deu_for_eng', seed_number: 1, known_audio_id: 'sk', target1_audio_id: 'st1', target2_audio_id: 'st2' }],
+      course_legos: [
+        { course_code: 'deu_for_eng', seed_number: 1, lego_id: 'S0001L01', known_audio_id: 'lk', target1_audio_id: 'lt1', target2_audio_id: null, presentation_audio_id: null },
+        { course_code: 'deu_for_eng', seed_number: 9, lego_id: 'S0009L01', known_audio_id: 'far', target1_audio_id: null, target2_audio_id: null, presentation_audio_id: null },
+      ],
+      course_practice_phrases: [{ course_code: 'deu_for_eng', seed_number: 1, known_audio_id: 'pk', target1_audio_id: 'pt1', target2_audio_id: 'pt2' }],
+      lego_introductions: [
+        { course_code: 'deu_for_eng', lego_id: 'S0001L01', presentation_audio_id: 'intro1' },
+        { course_code: 'deu_for_eng', lego_id: 'S0009L01', presentation_audio_id: 'intro9' },
+      ],
+    })
+    const { core } = makeCore(db, {})
+    const ids = await core.seedScopedAudioIds({ courseCode: 'deu_for_eng', maxSeedNumber: 5 })
+    expect(ids.sort()).toEqual(['intro1', 'lk', 'lt1', 'pk', 'pt1', 'pt2', 'sk', 'st1', 'st2'])
+    expect(ids).not.toContain('far')
+    expect(ids).not.toContain('intro9')
   })
 })
