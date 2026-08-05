@@ -514,3 +514,45 @@ dependency is more honest); patching `agent-spawner.cjs` to detect Linux and for
 under a live dashboard is a bigger blast radius than a unit-file line).
 **Search width:** visible-options
 **Decided by:** agent (reversible ops change, no spend)
+
+## 2026-08-05 — tail-repair flag mode becomes the DEFAULT, not an env var somebody has to remember
+
+**Move:** flipped `TAIL_REPAIR_MODE`'s default in `services/audio-processor.cjs` from `'repair'`
+to `'flag'`, added a load-time log line naming the active mode, and made `tools/declick-tail.cjs`
+opt itself back into `'repair'` before it loads the module. `TAIL_REPAIR_MODE=repair` remains the
+explicit opt-back-in.
+**Better:** the measured case against repair-mode is settled (`d5ad9f2c`, and the memo it cites):
+detector precision by ear 9%, 83% of flags vanish under a padding test that cannot remove a real
+click, 16/20 fresh TTS renders trip it, and the repair itself removes trailing words — whisper
+final-word retention 0.52 for clips bearing its fingerprint vs 0.93 for the rest, p=0.00001. The
+defect it chases is ~42x rarer than the one it causes. When the evidence says a behaviour is
+wrong, the wrong behaviour should not be what you get by doing nothing. Concretely: `d5ad9f2c`
+shipped flag mode default-off, activated by an environment variable set on the render service.
+watson-1's phase8 had `TAIL_REPAIR_MODE=flag` in its process environment and nowhere else — not in
+`ops/systemd/popty-phase8-audio.service`, not in any pm2 config, not in any committed file. The
+Camberley Mac, which also renders and publishes production audio, did not have it. So the fix
+protected exactly one machine, by hand, invisibly.
+**Simpler:** one constant instead of per-machine environment archaeology on every host that ever
+renders audio. Reading `/proc/<pid>/environ` to find out whether a render service is mutating
+audio is not a thing anyone should have to do; the startup log line replaces it.
+**Cheaper (total):** nothing to set, nothing to forget, and no second failure mode where the code
+deployed but the variable did not. That failure mode was live: Camberley's `*/15` deploy cron
+pulls `main` and restarts, so it would have taken the flag-mode CODE and carried on rendering in
+repair mode indefinitely, because a cron cannot carry a hand-set environment variable. With the
+default flipped, that same cron completes the fix with no action from anyone.
+**Searched & rejected:** committing `Environment=TAIL_REPAIR_MODE=flag` into the systemd unit and
+whatever pm2 config Camberley uses (rejected — it fixes the two hosts we currently know about and
+leaves the next one to be discovered the same expensive way; it also needs `pm2 restart all
+--update-env`, and the dashboard's own `/api/admin/git-pull` restarts *without* `--update-env`, so
+the deploy path we have would land the config and not apply it). Reaching Camberley over SSH to
+set it live (rejected by Tom — the deploy path is the route, and a live setting no artifact
+records is the problem, not the solution). Removing `repairTailDefect` outright (rejected — the
+detector's *reporting* is still wanted, `declick-tail.cjs` is a legitimate targeted repair tool,
+and deleting the code would throw away the escape hatch along with the bug).
+**Blast radius checked:** `repairTailDefect` has exactly two callers — `phase8-audio-v13.cjs:945`
+(the automatic gate, which is precisely what should stop mutating) and `tools/declick-tail.cjs`
+(human-invoked, dry-by-default, explicit id list, whisper + amputation guards), which now opts back
+in so it still repairs. Flag mode returns `action:'held'`, which every call site already treats as
+"shipped untouched".
+**Search width:** visible-options
+**Decided by:** agent (reversible, no spend; overrulable in one sentence — revert the default)

@@ -29,6 +29,12 @@ const os = require('os')
 const path = require('path')
 const { createClient } = require('@supabase/supabase-js')
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3')
+// TAIL_REPAIR_MODE defaults to 'flag' (2026-08-05) so no automatic render path
+// mutates audio. THIS tool is the deliberate escape hatch: dry by default, run by
+// a human against an explicit id list, guarded by the whisper + amputation checks.
+// Opt it back in before audio-processor is loaded (the constant is read at module
+// load), or `--apply` would silently hold every clip and repair nothing.
+process.env.TAIL_REPAIR_MODE = process.env.TAIL_REPAIR_MODE || 'repair'
 const audioProcessor = require('../services/audio-processor.cjs')
 
 const COURSE = process.argv[2]

@@ -662,7 +662,7 @@ const AMPUTATION_MIN_KEEP_FRACTION = Number(process.env.TAIL_REPAIR_MIN_KEEP || 
 const AMPUTATION_SILENCE_DB = Number(process.env.TAIL_REPAIR_SILENCE_DB || -60);
 
 /**
- * TAIL_REPAIR_MODE — 'repair' (default, unchanged behaviour) | 'flag'.
+ * TAIL_REPAIR_MODE — 'flag' (default) | 'repair'.
  *
  * In 'flag' mode the detector still runs and still reports, but the audio is
  * never modified and the function never throws: the clip ships as rendered.
@@ -677,11 +677,21 @@ const AMPUTATION_SILENCE_DB = Number(process.env.TAIL_REPAIR_SILENCE_DB || -60);
  * bearing the repair's 100 ms pad fingerprint vs 0.93 for the rest (p=0.00001),
  * e.g. "Ich will heute nicht üben" shipping as "Ich will heute…".
  *
- * DEFAULT IS UNCHANGED. Set TAIL_REPAIR_MODE=flag to re-render without feeding
- * fresh audio back through the repair that damaged it. Whether 'flag' becomes the
- * default is Tom's decision, still open at time of writing.
+ * 'flag' IS NOW THE DEFAULT (2026-08-05). It was introduced default-off, activated
+ * by setting TAIL_REPAIR_MODE=flag on the render service — which meant the fix only
+ * ever protected a machine somebody had remembered to set the variable on. watson-1
+ * had it; the Camberley Mac, which also renders and publishes production audio, did
+ * not, and no deploy path could carry a live environment variable across to it. A
+ * default that travels with the code needs nothing set and cannot be forgotten.
+ *
+ * Set TAIL_REPAIR_MODE=repair to opt back in to the mutating behaviour.
  */
-const TAIL_REPAIR_MODE = process.env.TAIL_REPAIR_MODE || 'repair';
+const TAIL_REPAIR_MODE = process.env.TAIL_REPAIR_MODE || 'flag';
+
+// Announce the mode once at load. Without this the only way to tell which
+// behaviour a running render service has is to read its /proc environment —
+// which is exactly the archaeology the default flip exists to end.
+console.log(`[audio-processor] TAIL_REPAIR_MODE=${TAIL_REPAIR_MODE}${TAIL_REPAIR_MODE === 'flag' ? ' (detect + report only; audio is never mutated)' : ' (MUTATING — repairs trim trailing audio)'}`);
 
 async function repairTailDefect(inputPath, workDir, { text, language, mode, minKeepSec = 0 } = {}) {
   const tailMode = mode || (isLongformText(text) ? 'longform' : 'phrase');
