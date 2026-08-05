@@ -645,3 +645,27 @@ right thing and needed no fix.
 **Searched & rejected:** n/a — founder ruling, documentation-only task.
 **Search width:** visible-options
 **Decided by:** Tom (founder ruling, 2026-08-05)
+
+## 2026-08-05 — Deploy gets a Repair fallback for jammed checkouts
+
+**Decision:** when a machine's normal Deploy fails, the Deploy UI offers **Repair**, which
+force-resets that machine's checkout to `origin/main` and restarts services — behind four
+guardrails: fallback-only (single-use token issued by the failed deploy; no token → 409),
+explicit confirm (`confirm:true` or 400), a verified safety snapshot before anything is
+touched (abort if it can't be made), and a deploy-history audit trail.
+**Move:** `services/deploy-repair.cjs` + 9 tests, `POST /api/deploy/repair` and
+`GET /api/deploy/history` in the orchestrator (proxied by production-api), Repair button +
+confirm panel in `EnvironmentSwitcher.vue`. Written up in `docs/deploy-repair-2026-08-05.md`.
+**Better:** Camberley's Deploy failed five times today with nobody at the Mac; the repair path
+existed only as a shell command on a machine no one could reach. Now the app can do it.
+**Simpler:** one module, one endpoint, one button — reusing the existing deploy restart path
+rather than a second deploy mechanism. No new service, no scripts to remember.
+**Cheaper (total):** no running cost; it removes the "someone has to go to the Mac" trip, which
+is the expensive part. Snapshots are bounded (a ref, a bundle, a tarball per repair) and the
+history log self-trims at 500 rows.
+**Searched & rejected:** (a) always force-reset on deploy — cheaper to build, but silently
+destroys local work and makes every deploy a loaded gun; (b) an ops script + docs — no cost, but
+it needs a shell on the jammed machine, which is exactly what was missing; (c) auto-repair on
+failure — removes the human, and a hard reset on a production machine must never be automatic.
+**Search width:** visible-options
+**Decided by:** Tom (sign-off, 2026-08-05: "Yes. Build the repair option.")
