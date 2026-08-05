@@ -532,3 +532,45 @@ describe('preview', () => {
     expect(p.comparison).toBe(null)
   })
 })
+
+// ── QUEUE: an ordering, and only an ordering ────────────────────────────────
+
+describe('queue', () => {
+  const withRows = (rows) => makeDb({
+    course_audio: rows, lego_introductions: [], course_legos: [],
+    course_practice_phrases: [], audio_repair_candidates: [], course_audio_revisions: [],
+    course_audio_envelope: [],
+  })
+
+  const clip = (over) => ({
+    id: 'x', course_code: 'deu_for_eng', text: 'a'.repeat(140), role: 'target1',
+    voice_id: 'xai_eve', language: 'deu', duration_ms: 10000, s3_key: 'mastered/X.mp3',
+    audio_revision: 1, lego_id: null, veracity_pass: true, veracity_reason: null, veracity_cer: 0.01,
+    ...over,
+  })
+
+  it('excludes unrendered slots — missing audio is a different problem, and buries the damaged clips', async () => {
+    const db = withRows([
+      clip({ id: 'rendered-short', duration_ms: 3000 }),
+      clip({ id: 'never-rendered', duration_ms: null, s3_key: null }),
+    ])
+    const { core } = makeCore(db)
+    const q = await core.queue({ courseCode: 'deu_for_eng' })
+    expect(q.items.map(i => i.audioId)).toEqual(['rendered-short'])
+    expect(q.excludedUnrendered).toBe(1)
+  })
+
+  it('says how many it excluded rather than silently truncating', async () => {
+    const db = withRows([clip({ id: 'n1', duration_ms: null, s3_key: null })])
+    const { core } = makeCore(db)
+    expect((await core.queue({ courseCode: 'deu_for_eng' })).excludedUnrendered).toBe(1)
+    expect((await core.queue({ courseCode: 'deu_for_eng', includeUnrendered: true })).excludedUnrendered).toBe(0)
+  })
+
+  it('carries the detector and its precision on every response', async () => {
+    const { core } = makeCore(withRows([clip({ duration_ms: 3000 })]))
+    const q = await core.queue({ courseCode: 'deu_for_eng' })
+    expect('precision' in q.detector).toBe(true)
+    expect(q.detector.precisionNote).toMatch(/never passes audio/i)
+  })
+})

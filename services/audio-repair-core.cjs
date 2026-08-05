@@ -737,9 +737,9 @@ function createRepairCore (deps) {
    * pending candidate (someone already thought so); a suspiciously short clip
    * for its text length.
    */
-  async function queue ({ courseCode, limit = 50, role = null }) {
+  async function queue ({ courseCode, limit = 50, role = null, includeUnrendered = false }) {
     let q = supabase.from('course_audio')
-      .select('id, text, role, voice_id, language, duration_ms, audio_revision, lego_id, veracity_pass, veracity_reason, veracity_cer')
+      .select('id, text, role, voice_id, language, duration_ms, s3_key, audio_revision, lego_id, veracity_pass, veracity_reason, veracity_cer')
       .eq('course_code', courseCode)
     if (role) q = q.eq('role', role)
     const { data, error } = await q.limit(5000)
@@ -750,7 +750,14 @@ function createRepairCore (deps) {
       .eq('course_code', courseCode).eq('status', 'pending')
     const pendingBy = new Map((pend || []).map(c => [c.audio_id, c]))
 
-    const scored = (data || []).map(r => {
+    // A row with no duration is almost always an UNRENDERED slot, not a
+    // damaged clip — a different problem, owned by the missing-audio backlog.
+    // Left in, they dominate the ordering (612 of them in deu_for_eng alone)
+    // and bury the clips that actually need ears. This queue is for repair.
+    const unrendered = (data || []).filter(r => !r.duration_ms || !r.s3_key)
+    const rendered = includeUnrendered ? (data || []) : (data || []).filter(r => r.duration_ms && r.s3_key)
+
+    const scored = rendered.map(r => {
       const chars = String(r.text || '').length
       // ~14 chars/second is a slow speaking rate in any of the course
       // languages; a clip well under that for its text has lost something.
@@ -776,6 +783,9 @@ function createRepairCore (deps) {
       courseCode,
       detector: DETECTOR,
       total: scored.length,
+      // Named, not silently dropped: a queue that quietly excluded rows would
+      // read as "nothing else to look at" when there is.
+      excludedUnrendered: includeUnrendered ? 0 : unrendered.length,
       items: scored.slice(0, limit),
     }
   }
