@@ -4,6 +4,8 @@
 
 > The store design settled *where a clip lives*. This settles *how it gets made, how we know it is
 > good, and where the choices that shape it are allowed to live.*
+>
+> **Every generation job starts with a small sample. Not as a precaution — as step one.**
 
 Companion to `AUDIO_PIPELINE_CONTENT_ADDRESSED_DESIGN-2026-08-06.md` and its appendix. Read that
 first: it establishes that a clip is addressed by the hash of its own bytes and identified by
@@ -104,6 +106,68 @@ back from xAI to Azure is a human decision today, taken by editing a voice confi
 — an automatic silent fallback would mean a course side quietly acquiring a second voice, which is
 precisely the drift §4 is cleaning up — but it should be *stated* as the policy rather than left as
 an accident of the code.
+
+### Small-sample-first — step one of every run, not a special event
+
+**Standing ruling, 2026-08-06: TTS spend is unblocked, and every generation job begins with a cheap
+sample pass before any bulk run.** Sampling is not a precaution taken when someone is nervous. It is
+the first stage of the pipeline, it runs every time, and a bulk run that has not been preceded by a
+passing sample is not a thing the pipeline can express.
+
+This is the same move the store design made with the hash. The old rule was "be careful before you
+render a lot" — a discipline someone has to remember. The new rule is structural: **the bulk stage
+takes a passing sample verdict as an input, and there is no other way to start it.**
+
+**The pipeline's step 3 becomes three steps.**
+
+| | | |
+|---|---|---|
+| **3a · Sample** | Render a small stratified set on the declared voice | tens of clips |
+| **3b · Judge** | Full §2 gate stack, plus an ear pass in the lab | minutes |
+| **3c · Bulk** | Only on a pass. The sample's verdict is the entry token | thousands of clips |
+
+**What goes in the sample.** Not the first N rows — that is a sample of the easiest material. Stratify
+deliberately, on the axes that actually break TTS:
+
+- **The shortest texts**, where the intercept dominates and where truncation hides. Seed-1 fragments
+  are where every German defect this week was found.
+- **The longest**, where prosody drifts and where a voice runs out of breath.
+- **The phonologically awkward** for the language in play — German final devoicing and `ch`, French
+  liaison and nasal vowels, whatever the language's known trouble is.
+- **A few from the middle**, so the sample can calibrate as well as catch.
+
+**How big.** There is a hard floor and it comes from the tooling, not from taste: `audio-pace-gate.cjs`
+refuses to calibrate on fewer than **12 reference clips** and says so rather than guessing. A sample
+below that cannot be engine-judged at all. **Proposed default: 24 clips, and never fewer than 12** —
+above the calibration floor with margin, small enough to listen to in a couple of minutes.
+
+**Why this costs nothing extra — and this is the part that makes it easy to accept.** Under content
+addressing, the sample clips are not a throwaway pilot. They are ordinary gated objects at ordinary
+addresses. When the bulk run comes through, those 24 identities already resolve and are never
+re-rendered. **The sample is not overhead; it is the first 24 clips of the job, done first and looked
+at.** The only true cost is the case where the sample fails — and that is the case where you have just
+saved yourself the other 16,642.
+
+**And the reason it is worth more than its cost: the sample creates the calibration set.** The pace
+gate works by fitting a reference generation and measuring against it. Today it borrows a reference
+after the fact, which is why it is an audit tool rather than a gate — you cannot judge a run against
+a generation that does not exist until the run is over. **Render 24 clips first, pass them, and the
+bulk run now has its own reference generation to be gated against in real time.** That is the missing
+piece that turns the pace gate from a post-hoc census into an admission check, and small-sample-first
+is what supplies it. It is the strongest argument for the ruling, and it is a structural one rather
+than a prudential one.
+
+**What a failing sample does.** It stops the run — that is the whole point — and it hands back a
+specific verdict rather than "something was wrong": which tier failed, on which texts, with the clips
+kept and playable. The response is to change the voice, change the parameters, or change the text,
+and re-sample. **Nothing about a failed sample is wasted either**: the failed clips sit in quarantine
+with their verdicts and are exactly the material a lab needs to work out what went wrong.
+
+**Where it lives in the labs.** VOICELAB's Experiment 0 below is not a special procedure — **it is the
+sample stage, run against a voice that has no verdict yet.** That convergence is worth noticing,
+because it means there is one mechanism and two uses of it: sample a new voice to find out whether it
+can do the job at all, and sample every run to find out whether today's renders are behaving. Same
+stratified set, same gates, same ear pass, same frozen verdict. Build it once.
 
 ### Staff clones — the destination, and what the estate already shows
 
@@ -447,17 +511,19 @@ French is `eve`. Those sides hold **28,037** and **14,706** clips. So for any co
 incumbent take already exists and is free to play. The bench lines them up side by side on identical
 text. Half of every A/B is already paid for.
 
-**Phase C · The actual test — and this needs Tom's approval on a shown plan, because it renders.**
+**Phase C · The actual test — unblocked, and it is simply the sample stage pointed at a new voice.**
 The smallest render that answers the question: **the clone speaking whole German and French course
-sentences as a course voice**, which has never happened. Proposed shape — and this is a proposal, not
-a plan being executed:
+sentences as a course voice**, which has never happened. Under the standing ruling this no longer
+waits on a shown plan; it waits only on phases A and B, which are free and which might make it
+unnecessary:
 
 - **Sentence set: 40 per language.** Drawn from real `deu_for_eng` and `fra_for_eng` seeds, stratified
   deliberately — short fragments where TTS is worst, long sentences where prosody shows, and the
   phonologically awkward ones each language has (German final devoicing and `ch`, French liaison and
   nasal vowels). Not a demo reel: the material the learner actually hears, chosen to be hard.
-- **80 clips total.** Both languages. Against 28,037 existing German clips this is a rounding error,
-  and it is the smallest set that can carry a verdict.
+- **80 clips total** — two runs of the standard 24-clip sample, widened to 40 because this voice has
+  no track record at all in these languages and the stratification has more axes to cover. Against
+  28,037 existing German clips it is a rounding error.
 - **Every clip passes the full §2 gate stack**, so the experiment produces measurements and not just
   impressions — phonology pass rate, speaking rate, pitch consistency against the clone's own English.
 - **Then the blind A/B** against `ara`, `leo` and `eve` on the identical sentences, with the incumbent
@@ -466,8 +532,12 @@ a plan being executed:
   hold, with the four numbers and the sentences behind it. That verdict is what a course side's voice
   declaration then cites.
 
-**The cost is 80 clips and it renders nothing until Tom says go.** Standing rule respected: this
-document designs the experiment and does not run it.
+**And if it passes, the 80 clips are kept.** They are gated objects at real addresses in the languages
+concerned, so if the clone goes on to voice German they are the first 80 clips of that job and the
+seed of its reference generation. If it fails, they are the evidence of *how* it fails, which is the
+thing nobody has ever had.
+
+*This document designs the experiment; it has not been run here.*
 
 **Why the design generalises.** Nothing in phases A–C is specific to Tom or to German. Swap the voice
 id and the language and it is the capability test for any staff clone in any language — which is what
@@ -482,10 +552,13 @@ the candidate list, `services/voice-discovery-service.cjs` for enumeration. It i
 `ConfigsIndex.vue` and a fifth route beside the four in `src/router/index.js:478-511`.
 
 **The one hard constraint: VOICELAB auditions cost money.** Every candidate voice on every sentence is
-TTS spend. So VOICELAB **auditions from the store first** — under content addressing, a
+TTS spend. Spend is no longer gated, but that is not a reason to be wasteful, and one design rule
+does the work: **VOICELAB auditions from the store first.** Under content addressing a
 `(language, text, voice)` that already exists is free to audition, and the estate has 2.5 million of
-them. It renders only what is genuinely new, it shows the cost before it spends, and it stays behind
-the same approval gate as everything else. A lab that can quietly spend is not shippable.
+them — so most of any comparison is already paid for, as phase B below demonstrates. It renders only
+what is genuinely new, and it renders it as a **sample**, never as a bulk run: a lab is by definition
+where you try 24 clips, not 16,000. The lab's natural unit and the pipeline's mandatory first stage
+are the same unit, which is why the two fit together without any special-casing.
 
 ### Listening and speaking as labs — honestly
 
@@ -676,9 +749,13 @@ voice report from §2, and building it here is what makes it exist.
 the same role. For each, the declared voice from step 0 says which row wins; the loser is **left in
 place, unlinked**. Nothing is deleted.
 
-**Step 4 · Generate only what is genuinely missing** — and only with Tom's approval on a shown plan,
-with the count and the cost stated. On today's numbers that is at most 122 German clips plus whatever
-step 2's gates fail. Render, gate, hash, admit.
+**Step 4 · Sample, then generate what is genuinely missing.** On today's numbers the German target
+work is at most 122 off-voice clips, plus whatever step 2's gates fail — and step 2's known-side
+number is expected to run to thousands, so this is a real run and not a touch-up. **It therefore
+starts where every run now starts: 24 stratified clips on the declared voice, engine-gated and
+listened to, and only then the rest.** The sample doubles as the run's reference generation, so the
+bulk stage is gated against its own generation in real time rather than audited a week later. Render,
+gate, hash, admit.
 
 **Step 5 · Relink atomically, and prove it on served bytes.** Repoint the course rows, then ask the
 live app for each slot and compare the bytes it hands back against the bytes we meant. This is exactly
@@ -716,11 +793,15 @@ German is where the diagnosis was earned, and running the two together means a m
    a recommendation on which languages xAI is genuinely good at, because I have no data.** VOICELAB
    job 2 is the instrument that would produce it, and until it exists, xAI-first outside German,
    French, English and Italian is an assumption rather than a finding.
-6a. **Experiment 0, phase C — 80 clips, awaiting approval.** The clone has never spoken a monolingual
-   non-English course sentence, so the capability question cannot be answered from existing audio.
-   **Recommendation: approve it, but only after phase A.** Phases A and B cost nothing and can refute
-   the whole thing on material we already own; spending 80 clips before listening to the 1,126 we have
-   is spending money to learn something that might be free.
+6a. **Experiment 0, phase C — 80 clips, now unblocked.** No longer a decision about money.
+   **Recommendation: still run phase A first**, not to save the spend but to save the *time* — the
+   1,126 clips we already own can refute the clone's German in ten minutes of listening, and there is
+   no sense gating a render on a question that existing audio might already answer. If phase A is
+   ambiguous or encouraging, go straight to C.
+7a. **Sample size — 24 clips, and never fewer than 12.** The floor is not taste: the pace gate refuses
+   to calibrate below 12 reference clips. **Recommendation: 24 as the default**, widened for a voice
+   with no track record. Worth Tom's ear on the first few real samples to say whether 24 is enough to
+   hear a voice by; that is a taste call and the number is one edit to change.
 7. **`XAI_OFFICIAL` (17) versus the catalogue (20).** **Recommendation: read the catalogue.** One
    list, and it is the one that carries the voice ids.
 
