@@ -224,6 +224,10 @@ function buildSentenceEditPatch(body = {}) {
   if (typeof body.target_text === 'string') {
     patch.target_text = body.target_text.trim()
     patch.target_audio_id = null
+    // A human editing the target line IS the proofread a draft was waiting for,
+    // so the DRAFT marker comes off in the same update (Tom 2026-08-06: "opus
+    // drafts, Aran proofreads" — this is the gate closing).
+    patch.target_text_draft = false
   }
   if (typeof body.known_text === 'string') {
     patch.known_text = body.known_text.trim()

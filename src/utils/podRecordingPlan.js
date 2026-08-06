@@ -19,10 +19,11 @@
 //   kind: 'target' | 'known' | 'explainer',
 //   role: 'target1' | 'known' | 'pod_explainer',   // course_audio role, recon §1
 //   speaker, sceneNumber, sceneTitle,               // sceneTitle only on boundaries
-//   cues: [{ speaker, targetText, knownText }],     // preceding dialogue lines
+//   cues: [{ speaker, targetText, knownText, draft }],  // preceding dialogue lines
 //   lineText,                                       // what the human READS
 //   lineGloss,                                      // known-language gloss (may be null)
 //   glueSentenceIds: [..] | null,                   // glued rows covered by this ONE item
+//   draft: boolean,                                 // target words are an unproofread machine draft
 //   recorded: boolean,                              // already points at a human row for this voice
 //   audioId: uuid | null
 // }
@@ -55,11 +56,12 @@ function pick(obj, ...keys) {
 
 function normalizeCue(raw) {
   if (raw == null) return null
-  if (typeof raw === 'string') return { speaker: null, targetText: raw, knownText: null }
+  if (typeof raw === 'string') return { speaker: null, targetText: raw, knownText: null, draft: false }
   return {
     speaker: pick(raw, 'speaker', 'speaker_name', 'speakerName') ?? null,
     targetText: pick(raw, 'targetText', 'target_text', 'text', 'line') ?? '',
-    knownText: pick(raw, 'knownText', 'known_text', 'gloss') ?? null
+    knownText: pick(raw, 'knownText', 'known_text', 'gloss') ?? null,
+    draft: Boolean(pick(raw, 'draft', 'target_text_draft') ?? false)
   }
 }
 
@@ -106,6 +108,10 @@ function normalizeItem(raw, podCtx = {}) {
     lineText,
     lineGloss,
     glueSentenceIds: Array.isArray(glue) && glue.length > 0 ? glue : null,
+    // true = the target words on screen are a machine-written DRAFT awaiting a
+    // human proofread, not the course's finished text. The studio badges it so a
+    // recorder can never read one believing it is final.
+    draft: Boolean(pick(raw, 'draft', 'targetTextDraft', 'target_text_draft') ?? false),
     recorded: Boolean(pick(raw, 'recorded', 'isRecorded', 'is_recorded', 'hasHumanAudio', 'has_human_audio') ?? false),
     audioId: pick(raw, 'audioId', 'audio_id', 'audioUuid', 'audio_uuid') ?? null
   }

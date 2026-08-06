@@ -117,7 +117,7 @@ describe('normalizeRecordingPlan — canonical keystone shape', () => {
     expect(it1.kind).toBe('target')
     expect(it1.role).toBe('target1')
     expect(it1.cues).toHaveLength(2)
-    expect(it1.cues[1]).toEqual({ speaker: 'Elin', targetText: 'Da iawn, diolch.', knownText: 'Very well, thanks.' })
+    expect(it1.cues[1]).toEqual({ speaker: 'Elin', targetText: 'Da iawn, diolch.', knownText: 'Very well, thanks.', draft: false })
     expect(it1.lineText).toBe('Dw i eisiau coffi.')
     expect(it1.lineGloss).toBe('I want a coffee.')
   })

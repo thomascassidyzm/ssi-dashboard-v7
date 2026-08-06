@@ -158,7 +158,7 @@ describe('buildSentenceEditPatch (community script editing)', () => {
 
   it('clears exactly the audio pointers of the edited fields', () => {
     expect(buildSentenceEditPatch({ target_text: ' Bore da! ' })).toEqual({
-      target_text: 'Bore da!', target_audio_id: null,
+      target_text: 'Bore da!', target_audio_id: null, target_text_draft: false,
     })
     expect(buildSentenceEditPatch({ known_text: 'Hi', explainer_text: 'Note the mutation' })).toEqual({
       known_text: 'Hi', known_audio_id: null,
@@ -170,6 +170,17 @@ describe('buildSentenceEditPatch (community script editing)', () => {
     expect(buildSentenceEditPatch({ explainer_text: '' })).toEqual({
       explainer_text: '', explainer_audio_id: null,
     })
+  })
+
+  // Tom 2026-08-06, "opus drafts, Aran proofreads": the human editing the target
+  // line IS the proofread, so the DRAFT marker comes off in the same update.
+  it('editing target_text clears the DRAFT marker', () => {
+    expect(buildSentenceEditPatch({ target_text: 'Faint yw hwnna?' }).target_text_draft).toBe(false)
+  })
+
+  it('editing only known/explainer leaves the DRAFT marker alone', () => {
+    expect('target_text_draft' in buildSentenceEditPatch({ known_text: 'How much is that?' })).toBe(false)
+    expect('target_text_draft' in buildSentenceEditPatch({ explainer_text: 'x' })).toBe(false)
   })
 
   it('nothing editable → null (router 400s)', () => {

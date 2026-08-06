@@ -90,10 +90,14 @@
               current: i === currentIndex,
               done: isDone(it) && i !== currentIndex && !droppedIndices.has(i),
               future: i > currentIndex && !isDone(it),
-              dropped: droppedIndices.has(i) && i !== currentIndex
+              dropped: droppedIndices.has(i) && i !== currentIndex,
+              draft: it.draft
             }"
           >
             <span v-if="it.speaker && it.kind === 'target'" class="cue-speaker" :style="{ color: speakerColor(it.speaker) }">{{ it.speaker }}</span>
+            <!-- These words are a machine draft nobody has proofread yet. Say so
+                 loudly: a recorder must never read one believing it is final. -->
+            <span v-if="it.draft" class="cue-draft-badge">DRAFT — AWAITING ARAN</span>
             <span class="cue-text">{{ it.lineText }}</span>
             <span v-if="it.lineGloss" class="cue-gloss">{{ it.lineGloss }}</span>
             <button
@@ -624,6 +628,23 @@ kbd {
 .cue-text { font-size: 1.05rem; line-height: 1.5; color: var(--color-paper-dim, #c1c1bb); }
 .cue-gloss { display: block; font-size: 0.8rem; color: var(--color-paper-dim, #c1c1bb); opacity: 0.7; margin-top: 0.15rem; font-style: italic; }
 .cue-tick { color: var(--color-emerald, #06ffa5); margin-left: 0.4rem; }
+/* DRAFT — unproofread machine-written target text. Deliberately the loudest thing
+   on the line: reading a draft as if it were finished course text is the one
+   failure this marker exists to prevent. */
+.cue-draft-badge {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  background: var(--color-tungsten, #ffa630);
+  color: #1a1a17;
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.cue-line.draft { box-shadow: inset 0 0 0 1px var(--color-tungsten, #ffa630); }
+.cue-line.draft.current .cue-text { color: var(--color-tungsten, #ffa630); }
 .cue-drop-marker {
   display: block; margin-top: 0.3rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
   color: var(--color-tungsten, #ffa630); background: transparent;
