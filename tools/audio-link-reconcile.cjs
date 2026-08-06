@@ -438,6 +438,13 @@ async function main() {
       console.log(`\n━━ ESTATE TOTAL over ${results.length} course(s)`)
       console.log(`  (a) LINKED               ${g.linked}`)
       console.log(`  (b) UNLINKED-BUT-PRESENT ${g.strict + g.loose}   (${g.strict} strict + ${g.loose} loose)  ← free`)
+      // The gap between (b) and what this pass will actually write is entirely
+      // the report-only slots (phrase presentation) plus loose matches held
+      // back. Say so, rather than letting a big (b) imply a big free win.
+      const reportOnly = (g.strict + g.loose) - items.length - (INCLUDE_LOOSE ? 0 : looseCount)
+      console.log(`      of which this pass would write ${items.length}`
+        + (reportOnly > 0 ? `; ${reportOnly} are report-only (${[...HEAL_EXCLUDE].join(', ')})` : '')
+        + (!INCLUDE_LOOSE && looseCount ? `; ${looseCount} loose held back (pass --include-loose)` : ''))
       console.log(`  (c) TRULY ABSENT         ${g.absent}   ← TTS spend; queue-audio-pass, never render here`)
       console.log(`  (d) DANGLING             ${g.dangling}   (${g.dangling_healable} healable)`)
       console.log(`\n  mode: ${APPLY ? 'APPLIED' : 'DRY RUN (default) — pass --apply to write'}`)
@@ -449,4 +456,10 @@ async function main() {
   }
 }
 
-main().catch((e) => { console.error(e.stack || e.message); process.exit(1) })
+// Exported for the unit tests; the DB work only runs when this is the entry
+// point, so requiring the module never touches the estate.
+module.exports = { strictKey, looseKey, resolveSlot, SLOTS, HEAL_EXCLUDE }
+
+if (require.main === module) {
+  main().catch((e) => { console.error(e.stack || e.message); process.exit(1) })
+}
