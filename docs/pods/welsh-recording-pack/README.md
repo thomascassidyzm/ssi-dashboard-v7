@@ -1,91 +1,96 @@
-# Welsh weekend recording pack — Aran + Catrin, 2026-07-18/19
+# Welsh pod-0 recording pack — built against Aran's 2026-08-06 canonical
 
-The definitive "sit down Saturday and just read" pack for recording **all missing Welsh
-pod audio** (both dialects, pod-0) plus the one remaining course sentence. Everything
-below was verified directly against the database and the live S3 assets on 2026-07-17 —
-not against manifests.
+**Built 2026-08-06. Any earlier pack is superseded** — the previous one is parked at
+`docs/pods/welsh-recording-pack-SUPERSEDED-2026-07/` and must not be recorded from.
+It was written against the old 142-sentence pod-0 English, which is dead as a source
+of truth.
 
-## What's missing, verified
+Four scripts, one per (course, voice):
 
-| Course | Pod-0 dialogue lines | English guide lines | Already recorded | Still to record |
-|---|---|---|---|---|
-| `cym_n_for_eng` (North) | 142 | 142 | 28 dialogue + 26 English (Aran, 15 June) | 53 dialogue (Aran) + 61 dialogue (Catrin) + 116 English (Aran) |
-| `cym_s_for_eng` (South) | 142 | 142 | 0 | 81 dialogue (Aran) + 61 dialogue (Catrin) + 142 English (Catrin) |
-
-All 54 existing takes were HEAD-checked in S3 — every one is a real playable asset, so
-the ✅ marks in the scripts are trustworthy and the recording tool will skip those lines.
-
-**Plus one ordinary course sentence** (not a pod): North Welsh seed 172 —
-*"maen nhw isio i ni dreulio llai o amser yn gweithio adre"* — the only sentence left
-across BOTH Welsh courses to make every seed and practice phrase assemble from human
-audio (re-verified live with `generate-recording-script.cjs --gap`: North = 1, South = 0;
-detail in `../welsh-seeds-gap-list.md`). Aran records it in **Mode 1: New Course** for
-`cym_n_for_eng` — it's the only item in that queue.
-
-## The four scripts (per voice, per dialect)
-
-Numbered in the exact order the recording tool serves them; scene headers included;
-already-recorded lines struck through so on-screen and on-paper numbering match.
-
-| Script | Who | Takes remaining | Est. time @ ~6s/take |
+| File | Course | Voice | Lines to record |
 |---|---|---|---|
-| `cym_n_for_eng-aran.md` | Aran — North dialogue + North English guide | 169 | ~17 min |
-| `cym_s_for_eng-aran.md` | Aran — South dialogue | 81 | ~8 min |
-| `cym_n_for_eng-catrin.md` | Catrin — North dialogue | 61 | ~6 min |
-| `cym_s_for_eng-catrin.md` | Catrin — South dialogue + South English guide | 203 | ~20 min |
+| `cym_n_for_eng-aran.md` | Northern Welsh | Aran | 248 of 297 (49 already done) |
+| `cym_n_for_eng-catrin.md` | Northern Welsh | Catrin | 56 |
+| `cym_s_for_eng-aran.md` | Southern Welsh | Aran | 72 |
+| `cym_s_for_eng-catrin.md` | Southern Welsh | Catrin | 286 |
 
-**Totals: Aran 250 takes (~25 min of tape), Catrin 264 takes (~26 min of tape)** — plus
-the one course sentence. Real-world sitting time with breaths and the autocue's pacing
-will be roughly 2-3× tape time; comfortably one sitting each per dialect.
+Each sheet is in the exact order the recording room serves it, so the on-screen queue
+and the paper agree line for line. The room is
+`/record/<course>?podVoice=<voiceId>` — the link is printed at the top of each sheet.
 
-Recording rooms (the scripts repeat these):
-- Aran N: `/record/cym_n_for_eng?podVoice=human_aran_cym_n` · Aran S: `/record/cym_s_for_eng?podVoice=human_aran_cym_s`
-- Catrin N: `/record/cym_n_for_eng?podVoice=human_catrinlliar_cym_n` · Catrin S: `/record/cym_s_for_eng?podVoice=human_catrinlliar_cym_s`
+Regenerate after any content change:
 
-How-to (mic, auto-advance, live text editing, pacing): `../aran-recording-instructions.md`.
-
-## What was set up to make this work (2026-07-17)
-
-- **South cast created.** `cym_s_for_eng` had no pod cast at all; the North cast
-  (22 characters → Aran/Catrin by gender) was mirrored with south-minted voice ids, and
-  both recorders' logins now hold the South course.
-- **Bilingual guide split by load** (the rule in the instructions doc — guide = whoever
-  has the lighter dialogue): North guide = **Aran** (as already begun in June),
-  South guide = **Catrin**. This also balances the weekend almost exactly (250 vs 264).
-- **S-LEGO seams inserted** (`tools/insert-ellipsis-seams.cjs`, pod-0 ceiling C=8, the
-  ruled ellipsis-test segmentation): `…` breathing marks are now in the dialogue text
-  for both dialects, so this weekend's takes are sliceable to S-LEGO granularity later.
-  For the readers: `…` = take a natural breath and carry on, nothing more.
-- **Aran's earlier takes counted correctly**: his June recordings sit under two voice
-  ids (`human_aran_cym_n` / `human_aran_cym_n_2`); the alias config merges them, so
-  nothing already recorded reappears in his queue.
-- English glosses are dialect-specific on 22 of 142 lines (they gloss the actual
-  dialect phrasing), so each course records its own English guide track — sharing the
-  120 identical lines across courses would save only ~12 min of tape and was rejected
-  as not worth the cross-course linking machinery.
-
-## Not recordable this weekend (deliberate, don't go looking)
-
-- **Pod-1** — English canon still being decided; no Welsh translation exists.
-- **Pod-0.5** — English canonical only; not seeded for any course yet.
-
-## Founder questions (short — answer cold, or ignore and we default sensibly)
-
-1. **Forced mid-clause breath marks.** A handful of long lines had no clean
-   intention-boundary under the 8-syllable ceiling, so the seam pass placed a `…` at
-   the best prosodic point and flagged it (list in `seam-flags.md`). Default: the
-   readers are native speakers — they breathe where it's natural and can edit the line
-   live; no pre-approval needed. Say the word only if you want the flagged lines
-   reviewed BEFORE Saturday.
-2. **North/South English guide voices differ** (Aran voices North's English, Catrin
-   South's). Fine, or do you want one consistent English guide voice across both
-   dialects? Default: as cast — it balances the weekend.
-
-Nothing else is ambiguous: no digits, no parentheses, no ASCII `...` anywhere in the
-Welsh dialogue text (swept), and pronunciation is the readers' native call.
-
-## Regenerating this pack
-
-```bash
-node tools/build-welsh-recording-pack.cjs   # rewrites the four scripts from live DB
 ```
+node tools/build-welsh-recording-pack.cjs
+```
+
+## The voicing ruling — Aran, 2026-08-06, verbatim
+
+> "Did some interleaving in the first few scenes and then beyond that it seemed faster
+> to do them as chunks, without scene-based to and fro for everything, they'll work
+> fine like that (also kind of fits with what I've been saying about not needing
+> multiple voices)."
+
+And Tom's gloss on it, verbatim:
+
+> "so we can do this in a minimum of 2 voices if we need to (especially for less
+> well-served TTS langs)"
+
+What that means concretely, and what the canonical data now says:
+
+- **Scenes 1–14 and 22 are interleaved dialogue** with real characters. Each sheet
+  marks these `*Dialogue — <characters>*`.
+- **Scenes 15–21 are single-voice chunks**, `Learner` throughout apart from `Narrator`
+  drill tails. Each sheet marks these `*Single-voice chunk — no scene-based to and
+  fro. Read straight through.*` Do not restore a second speaker into these scenes.
+- Eleven lines that had been inferred as an alternating `Friend` were changed to
+  `Learner` on the strength of this ruling when the canonical was rebuilt.
+
+The sheets read the dialogue/chunk shape back off the data rather than assuming it, so
+if the canonical changes the shape, the sheets follow.
+
+## The Welsh that has not been written yet
+
+Aran's canonical grew pod-0 from 142 sentences to 231. Welsh exists only for the lines
+whose English is unchanged; it was never invented for the rest, and never edited.
+
+| Course | Canonical lines | Welsh written | Welsh not written yet |
+|---|---|---|---|
+| `cym_n_for_eng` | 231 | 122 | 109 |
+| `cym_s_for_eng` | 231 | 127 | 104 |
+
+Those lines are **not in the Welsh recording queue at all** — the sheet says so per
+scene. Nobody should improvise Welsh at the microphone. Writing them is a translation
+job that blocks the recording job, and it is Aran's or Kai's call, not an agent's.
+
+The English guide line for a new sentence *is* recordable now, and does appear in the
+queue, because the bilingual guide reads the English too.
+
+A separate, smaller list needs a human's eye rather than a fresh translation: lines
+whose English was reworded, where Welsh already exists but was written against the old
+wording. That list — old English, new English, existing Welsh, side by side — is
+`docs/pods/pod0-welsh-translation-worklist-2026-08-06.md`.
+
+## What was done to the data, and what was deliberately not done
+
+- The two Welsh pod-0 queues were realigned to the canonical 231 lines by
+  `tools/pods/align-welsh-pod0-to-canonical.cjs`. English, speaker and ordering come
+  from `canonical_pod_scenarios`; Welsh was carried forward only onto slots whose
+  English is unchanged.
+- **No audio was deleted or regenerated.** Where a line's English changed, the slot's
+  pointer to the old take was dropped so the recorder is not told "already done" about
+  a line that now reads differently — the `course_audio` row itself is untouched and
+  every dropped pointer is listed in
+  `docs/pods/pod0-welsh-prealign-archive-2026-08-06/`.
+- **No row was deleted.** One row per course that the new canonical has no slot for is
+  blanked and parked out of the queue rather than removed.
+- The full pre-alignment state of both pods is archived, and
+  `align-welsh-pod0-to-canonical.cjs --restore-from-archive` puts it back verbatim.
+
+## One open decision
+
+Aran's canonical writes the literal token `[target language]` on five lines. The pack
+substitutes **"Welsh"** on both courses, which matches what the Southern rows already
+said; the Northern rows previously said "Northern Welsh", which is not what a learner
+would actually say out loud. If Aran wants a different word, rerun with
+`--language-name="…"`.
