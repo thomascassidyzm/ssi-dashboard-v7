@@ -623,3 +623,59 @@ have a system that plays Azure until better voices are available in lieu of noth
 don't want the player to screw up a course just because some audio is missing — it should ALWAYS
 PLAY WHAT IT HAS". Not escalated: monotone by construction (only fills NULL links, never overwrites
 a live one, never deletes), and a rollback file is committed alongside.
+
+## 2026-08-06 — Two pod voices by default, three or four as opt-in
+
+**Move:** made two human voices — one male, one female — the DEFAULT pod cast in both the UI and
+the underlying model, with three-to-five as a quiet opt-in upgrade for courses that genuinely have
+extra recorders. `POST /cast/propose` no longer hard-rejects anything but exactly two; `GET /cast`
+serves a two-voice `castDefaults` so a leader who configures nothing still lands on the right
+shape; `PUT /cast` records `podCastVoices` so a deliberate opt-in survives the legacy collapse.
+Separately, fixed the two surfaces that were *rendering* generation-side speaker colouring as if it
+were a cast — `PodDetailView`'s always-open 22-row "Speaker voice mapping" grid and `PodsView`'s
+"22 speakers" pod card.
+
+Tom's ruling, voice note 2026-08-06, verbatim:
+
+> "the whole point of doing this in this way was that we could get by with just two different
+> voices, a male voice and a female voice […] probably do it for two voices as the default. And
+> then if you want to try it with three or four voices because you do have additional human voice
+> recorders, then fantastic, we can do that. But think about that. If we are making it a lot more
+> complicated to even get the recordings done, it's going to be harder for people to do community
+> courses, isn't it? And Welsh is a great example of that. Every single audio that's in the Welsh
+> course was recorded by Aran and Katchin themselves. Those are for the seeds, for the LEGOs and
+> for the phrases. So we don't want to make it unnecessarily complicated by having 56 different
+> cast members."
+
+**Better:** a two-person community course — the Welsh case, and the common case — can record a
+whole course without ever meeting an N-voice concept, while courses with more recorders lose
+nothing. The diagnosis also corrected a real category error in the UI: characters (a writing fact,
+as many as a scene likes) were being displayed as voices (a casting fact, which is two).
+**Simpler:** one rule at every size (2–5, at least one male and one female) replaces a hard
+"exactly two" wall plus a two-row UI cap; the character list moves behind one click instead of
+being the first thing on the pod page.
+**Cheaper (total):** no data migration and no TTS — the cast data was already correct in both
+Welsh courses, so nothing was rewritten and no audio was regenerated. The change is one pure
+validator, one additive `voice_config` key, and three template edits.
+
+**Searched & rejected:**
+- Rewrite the generation-side colouring in `listening_pods.speakers` down to two voices — failed
+  *cheaper* and *better*: it is a destructive write to generation data that the human recording
+  path never reads anyway (`buildRecordingPlan` reads `voice_config.podCast` alone), so it would
+  have been risk with no effect on the recorder.
+- Re-solve and re-save the Welsh casts to "fix" them — failed *better*: both courses already hold
+  exactly Aran + Catrin, and Aran holds 27 recorded takes on `cym_n_for_eng`. A re-solve
+  load-balances characters differently between the two voices for no gain, against the
+  make-before-break rule.
+- Keep the hard two-voice wall and just fix the UI — failed *better*: it satisfies the complaint
+  but contradicts the explicit half of the ruling ("if you want to try it with three or four
+  voices […] fantastic, we can do that").
+- A voices-count setting or mode switch on the cast panel — failed *simpler*: it puts a decision
+  in front of every leader to serve the minority case, which is the exact complexity the governing
+  principle forbids.
+
+**Search width:** component-redesign
+**Decided by:** Tom, voice note 2026-08-06. Governing principle in his framing: anything that makes
+recording more complicated makes community courses harder — "If we are making it a lot more
+complicated to even get the recordings done, it's going to be harder for people to do community
+courses, isn't it?"
