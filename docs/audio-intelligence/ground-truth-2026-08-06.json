@@ -1,11 +1,11 @@
 {
  "generated": "2026-08-06",
  "provenance": "assembled from docs/audio-repair-2026-08-05/ session artefacts; every DAMAGED row carries a verdict Tom gave by ear",
- "caveat": "DAMAGED rows are ear-labelled and authoritative. UNLABELLED-* rows are NOT ear-labelled: they are presumed good because no checker flagged them and nobody listened. Do not report a flag on an UNLABELLED row as a false positive - it is an open question for Tom's ear.",
+ "caveat": "DAMAGED and CLEAN-FLAGGED rows are ear-labelled by Tom and authoritative. UNLABELLED-CLEAN rows are NOT ear-labelled: they are presumed good because no checker flagged them and nobody listened. Do not report a flag on an UNLABELLED row as a false positive - it is an open question for Tom ear.",
  "counts": {
-  "damaged": 9,
-  "unlabelled_clean": 148,
-  "unlabelled_flagged": 11
+  "damaged": 16,
+  "clean_flagged": 4,
+  "unlabelled_clean": 148
  },
  "clips": [
   {
@@ -347,8 +347,8 @@
    "language": "eng",
    "role": "known",
    "script": "how to say something in German",
-   "tom_verdict": "UNLABELLED-FLAGGED",
-   "verdict_evidence": "nobody has listened; the terminal-fall detector flags it - needs Tom's ear",
+   "tom_verdict": "CLEAN-FLAGGED",
+   "verdict_evidence": "Tom ear-confirmed FINE 2026-08-06, same listening pass — flagged by the edge-shape detector, sounds undamaged. Trimmed but harmlessly: no duration deficit against its own fresh render.",
    "url_as_heard": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/65B8A730-F879-4B1F-92C9-9F8449A73975.mp3",
    "fresh_render_url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/naked-2026-08-05/416a500e-0177-4b3e-8130-1bceb0b9e3d2.mp3",
    "measurements": {
@@ -1163,8 +1163,8 @@
    "language": "eng",
    "role": "known",
    "script": "something",
-   "tom_verdict": "UNLABELLED-FLAGGED",
-   "verdict_evidence": "nobody has listened; the terminal-fall detector flags it - needs Tom's ear",
+   "tom_verdict": "DAMAGED",
+   "verdict_evidence": "Tom ear-confirmed clipped 2026-08-06, listening pass over the 11 detector-flagged clips",
    "url_as_heard": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/162A1CB5-ACDF-49A8-B0E5-C3F4D18BD343.mp3",
    "fresh_render_url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/naked-2026-08-05/25dd4d5f-d5fd-44d8-bc40-bcf00050a96d.mp3",
    "measurements": {
@@ -1259,8 +1259,8 @@
    "language": "eng",
    "role": "known",
    "script": "to say",
-   "tom_verdict": "UNLABELLED-FLAGGED",
-   "verdict_evidence": "nobody has listened; the terminal-fall detector flags it - needs Tom's ear",
+   "tom_verdict": "DAMAGED",
+   "verdict_evidence": "Tom ear-confirmed clipped 2026-08-06, listening pass over the 11 detector-flagged clips",
    "url_as_heard": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/98859628-4908-4A59-893A-B976488CB151.mp3",
    "fresh_render_url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/naked-2026-08-05/8bed617d-f834-4862-901c-c5dfea315d0e.mp3",
    "measurements": {
@@ -1427,8 +1427,8 @@
    "language": "deu",
    "role": "target1",
    "script": "üben",
-   "tom_verdict": "UNLABELLED-FLAGGED",
-   "verdict_evidence": "nobody has listened; the terminal-fall detector flags it - needs Tom's ear",
+   "tom_verdict": "CLEAN-FLAGGED",
+   "verdict_evidence": "Tom ear-confirmed FINE 2026-08-06, same listening pass — flagged by the edge-shape detector, sounds undamaged. Trimmed but harmlessly: no duration deficit against its own fresh render.",
    "url_as_heard": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/CD99B040-BF0D-4EF2-99B9-39B7D5E3A6B6.mp3",
    "fresh_render_url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/naked-2026-08-05/ac0fdd70-8877-432c-b6e9-493d4dea991f.mp3",
    "measurements": {
@@ -1739,8 +1739,8 @@
    "language": "deu",
    "role": "target1",
    "script": "ich will sprechen",
-   "tom_verdict": "UNLABELLED-FLAGGED",
-   "verdict_evidence": "nobody has listened; the terminal-fall detector flags it - needs Tom's ear",
+   "tom_verdict": "CLEAN-FLAGGED",
+   "verdict_evidence": "Tom ear-confirmed FINE 2026-08-06, same listening pass — flagged by the edge-shape detector, sounds undamaged. Trimmed but harmlessly: no duration deficit against its own fresh render.",
    "url_as_heard": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/1C7CC706-AAE5-4A66-9F8D-7E7AB4BE09F8.mp3",
    "fresh_render_url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/naked-2026-08-05/d3d12aa8-c4ad-49d7-9fad-c234972c24c4.mp3",
    "measurements": {
@@ -2123,8 +2123,8 @@
    "language": "eng",
    "role": "known",
    "script": "with",
-   "tom_verdict": "UNLABELLED-FLAGGED",
-   "verdict_evidence": "nobody has listened; the terminal-fall detector flags it - needs Tom's ear",
+   "tom_verdict": "DAMAGED",
+   "verdict_evidence": "Tom ear-confirmed clipped 2026-08-06, listening pass over the 11 detector-flagged clips",
    "url_as_heard": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/3FBAC965-D7E7-46A5-AAFF-60868BF2ACAA.mp3",
    "fresh_render_url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/naked-2026-08-05/18961e2b-6e8c-4aba-b83f-0cdaa06e3cea.mp3",
    "measurements": {
@@ -2363,8 +2363,8 @@
    "language": "eng",
    "role": "known",
    "script": "I want to learn German",
-   "tom_verdict": "UNLABELLED-FLAGGED",
-   "verdict_evidence": "nobody has listened; the terminal-fall detector flags it - needs Tom's ear",
+   "tom_verdict": "DAMAGED",
+   "verdict_evidence": "Tom ear-confirmed clipped 2026-08-06, listening pass over the 11 detector-flagged clips",
    "url_as_heard": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/853A948E-77E3-465A-A16E-C0FACAE39BB3.mp3",
    "fresh_render_url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/naked-2026-08-05/09d02aef-8ca0-4587-85ca-e2d077433c53.mp3",
    "measurements": {
@@ -3371,8 +3371,8 @@
    "language": "eng",
    "role": "known",
    "script": "I want to speak in German",
-   "tom_verdict": "UNLABELLED-FLAGGED",
-   "verdict_evidence": "nobody has listened; the terminal-fall detector flags it - needs Tom's ear",
+   "tom_verdict": "CLEAN-FLAGGED",
+   "verdict_evidence": "Tom ear-confirmed FINE 2026-08-06, same listening pass — flagged by the edge-shape detector, sounds undamaged. Trimmed but harmlessly: no duration deficit against its own fresh render.",
    "url_as_heard": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/F5C1AF9C-F38A-4215-BB13-A2EABFFADB53.mp3",
    "fresh_render_url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/naked-2026-08-05/2a956da6-fd40-4c0f-9eae-9b26a9d8e009.mp3",
    "measurements": {
@@ -3491,8 +3491,8 @@
    "language": "deu",
    "role": "target2",
    "script": "Ich versuche zu lernen, wie man etwas auf Deutsch sagt",
-   "tom_verdict": "UNLABELLED-FLAGGED",
-   "verdict_evidence": "nobody has listened; the terminal-fall detector flags it - needs Tom's ear",
+   "tom_verdict": "DAMAGED",
+   "verdict_evidence": "Tom ear-confirmed clipped 2026-08-06, listening pass over the 11 detector-flagged clips",
    "url_as_heard": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/DE554F48-50C8-4769-B910-6C67EC30AB42.mp3",
    "fresh_render_url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/naked-2026-08-05/68f9e00a-6ed0-47a0-abbb-298ff9b6794e.mp3",
    "measurements": {
@@ -3635,8 +3635,8 @@
    "language": "deu",
    "role": "target2",
    "script": "Ich versuche so oft wie möglich zu üben",
-   "tom_verdict": "UNLABELLED-FLAGGED",
-   "verdict_evidence": "nobody has listened; the terminal-fall detector flags it - needs Tom's ear",
+   "tom_verdict": "DAMAGED",
+   "verdict_evidence": "Tom ear-confirmed clipped 2026-08-06, listening pass over the 11 detector-flagged clips",
    "url_as_heard": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/6CA4D779-9676-4FD4-98EB-366691A90C6E.mp3",
    "fresh_render_url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/naked-2026-08-05/032a8292-7cac-4e44-a45d-e190e920ade1.mp3",
    "measurements": {
@@ -3707,8 +3707,8 @@
    "language": "deu",
    "role": "target2",
    "script": "Ich werde jetzt lernen",
-   "tom_verdict": "UNLABELLED-FLAGGED",
-   "verdict_evidence": "nobody has listened; the terminal-fall detector flags it - needs Tom's ear",
+   "tom_verdict": "DAMAGED",
+   "verdict_evidence": "Tom ear-confirmed clipped 2026-08-06, listening pass over the 11 detector-flagged clips",
    "url_as_heard": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/77328A7D-1FA7-4542-9B22-F6D1FA3B4B55.mp3",
    "fresh_render_url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/naked-2026-08-05/4cdcb830-ee2c-46a1-9933-b6772d3198a1.mp3",
    "measurements": {
@@ -4083,5 +4083,6 @@
     "duration_detector_flagged": false
    }
   }
- ]
+ ],
+ "updated": "2026-08-06 — Tom listened to all 11 detector-flagged clips; 7 damaged, 4 clean. See docs/audio-intelligence/edge-detector-tuning-2026-08-06.md"
 }
