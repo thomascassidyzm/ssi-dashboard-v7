@@ -283,6 +283,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
+import { getLanguageName } from '@/composables/useCourses.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -298,19 +299,16 @@ const LANG_FLAGS = {
   ara: '🇸🇦', ara_sy: '🇸🇾',
   gle: '🇮🇪', nld: '🇳🇱', hrv: '🇭🇷',
 }
-const LANG_NAMES = {
-  eng: 'English', cym: 'Welsh', gae: 'Scottish Gaelic',
-  spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian',
-  por: 'Portuguese', por_br: 'Brazilian Portuguese',
-  zho: 'Chinese', jpn: 'Japanese', kor: 'Korean',
-  ara: 'Arabic', ara_sy: 'Syrian Arabic',
-  gle: 'Irish', nld: 'Dutch', hrv: 'Croatian',
-}
 const [targetLang, knownLang] = String(courseCode).split('_for_')
-const targetFlag = LANG_FLAGS[targetLang] || '🌐'
-const knownFlag = LANG_FLAGS[knownLang] || '🌐'
-const targetName = LANG_NAMES[targetLang] || targetLang || 'target'
-const knownName = LANG_NAMES[knownLang] || knownLang || 'known'
+// Dialect codes fall back to their base language for the flag: cym_n flies the
+// same Welsh flag as cym. Names come from the shared course table, which knows
+// the dialects by name ("Welsh (North)") — a private copy here once left the
+// drafts panel counting "109 cym_n lines".
+const flagFor = (code) => LANG_FLAGS[code] || LANG_FLAGS[String(code || '').split('_')[0]] || '🌐'
+const targetFlag = flagFor(targetLang)
+const knownFlag = flagFor(knownLang)
+const targetName = computed(() => getLanguageName(targetLang, 'target'))
+const knownName = computed(() => getLanguageName(knownLang, 'known'))
 
 const pod = ref(null)
 const sentences = ref([])

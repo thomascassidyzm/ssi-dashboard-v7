@@ -85,6 +85,18 @@ function getCourseName(code) {
   return `${targetName} for ${knownName} Speakers`
 }
 
+// One language's own English name, dialect code first then base code, so
+// cym_n → "Welsh (North)" and a plain cym → "Welsh". Views that print a
+// language into a sentence use this rather than keeping their own table —
+// the drafts strip said "machine-written cym" while a private table went
+// unmaintained.
+export function getLanguageName(code, fallback = '') {
+  void nameVersion.value
+  if (!code) return fallback
+  const base = String(code).split('_')[0]
+  return languageNames[code] || languageNames[base] || fallback || code
+}
+
 // Module-level singleton state — shared across all consumers
 const courses = ref([])
 const loading = ref(false)

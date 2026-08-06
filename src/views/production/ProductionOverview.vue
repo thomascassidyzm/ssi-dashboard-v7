@@ -283,6 +283,7 @@ import { buildLearningAppUrl } from '@/utils/learningAppUrl'
 import { isConfigured as isSupabaseConfigured, getCourseProgress, getQASummary } from '@/services/supabase'
 import { useProductionStore } from '@/stores/production'
 import { useAuth } from '@/composables/useAuth'
+import { getLanguageName } from '@/composables/useCourses'
 import LegacyExportDialog from '@/components/production/LegacyExportDialog.vue'
 import { qaGate, GATE_STATUS_LABEL } from '@/services/qaGate'
 
@@ -490,9 +491,14 @@ const podDraftLink = computed(() => {
     ? { path: `/production/${props.courseCode}/pods/${first.podSlug}`, query: { drafts: '1' } }
     : { path: `/production/${props.courseCode}/pods` }
 })
-const targetLanguageName = computed(() =>
-  store.courseInfo?.targetLang || store.courseInfo?.target_lang || 'target-language'
-)
+// The course's target language by name, not by ISO code — this goes into a
+// sentence a human reads ("machine-written Welsh"), and the code is derived
+// from the course code so it works before courseInfo has loaded.
+const targetLanguageName = computed(() => {
+  const code = String(props.courseCode || '').split('_for_')[0]
+    || store.courseInfo?.targetLang || store.courseInfo?.target_lang
+  return getLanguageName(code, 'target-language')
+})
 
 async function loadPodDrafts() {
   podDrafts.value = { total: 0, items: [] }
