@@ -79,6 +79,15 @@ const DO_LOUDNESS = argv.includes('--loudness')
 const LOUDNESS_SAMPLE = Number(flag('loudness-sample', 300))
 const APP_HOST = String(flag('host', 'saysomethingin.app'))
 const ALL_FOR_ENG = argv.includes('--all-for-eng')
+const REFERENCE_COURSE = flag('reference-course', null)
+// Estate mode. Most courses have no rebuilt generation AND do not share deu's
+// English voice — the known side across the estate is a patchwork of Azure,
+// ElevenLabs and xai voices, so there is no single yardstick to borrow. What is
+// still comparable is a clip against ITS OWN COURSE's central pace: a clipped
+// take stands out from its neighbours whoever voiced them. That is what
+// --self-reference measures, and it is a weaker claim — it cannot see a course
+// that is uniformly rushed, only clips rushed relative to their own siblings.
+const SELF_REFERENCE = argv.includes('--self-reference')
 
 if (!positional.length && !ALL_FOR_ENG) {
   console.error('usage: audio-pace-gate <course> [--side known|target] [--since YYYY-MM-DD]')
@@ -126,7 +135,7 @@ const percentile = (xs, p) => {
 
 async function pageAll (build) {
   const out = []
-  const PAGE = 1000
+  const PAGE = 500
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await build().range(from, from + PAGE - 1)
     if (error) throw new Error(error.message)
@@ -190,6 +199,17 @@ async function mapLimit (items, n, fn) {
 
 // ── the gate ────────────────────────────────────────────────────────────────
 
+/** Cross-course mode. Most courses have no rebuilt clips of their own, so they
+ *  cannot self-calibrate. When the known side is the same English voice, the
+ *  reference course's current generation is a valid yardstick — the gate checks
+ *  the voice matches before borrowing it, and says so in the result. */
+let BORROWED = null
+async function loadReference (refCourse) {
+  const { clips, revs } = await loadCourse(refCourse)
+  const { ids, since } = referenceIds(revs, SINCE)
+  return { course: refCourse, clips: clips.filter(c => ids.has(c.id) && c.duration_ms && c.text && !c.text.includes('::')), since }
+}
+
 async function gate (course) {
   const { clips, revs } = await loadCourse(course)
   // Retired takes carry a `::superseded-regen` suffix in their text. They are
@@ -197,7 +217,26 @@ async function gate (course) {
   // bend the fit — so they are out of scope for a gate that measures what plays.
   const usable = clips.filter(c => c.duration_ms && c.text && !c.text.includes('::'))
   const { ids: refIds, since } = referenceIds(revs, SINCE)
-  const ref = usable.filter(c => refIds.has(c.id))
+  let ref = usable.filter(c => refIds.has(c.id))
+  let borrowedFrom = null
+
+  if (ref.length < 12 && SELF_REFERENCE) {
+    ref = usable
+    borrowedFrom = 'self (whole course, no rebuilt generation exists)'
+  }
+
+  if (ref.length < 12 && BORROWED) {
+    const voices = new Set(usable.map(c => c.voice_id))
+    const refVoices = new Set(BORROWED.clips.map(c => c.voice_id))
+    const shared = [...voices].filter(v => refVoices.has(v))
+    if (!shared.length) {
+      return { course, side: SIDE, total: usable.length,
+        error: `no current-generation clips of its own, and no voice in common with ${BORROWED.course} ` +
+               `(this course: ${[...voices].join(',')}) — cannot calibrate` }
+    }
+    ref = BORROWED.clips
+    borrowedFrom = BORROWED.course
+  }
 
   if (ref.length < 12) {
     return { course, side: SIDE, error: `only ${ref.length} reference clips since ${since} — cannot calibrate`,
@@ -237,7 +276,7 @@ async function gate (course) {
                          .sort((x, y) => x.residual - y.residual)
 
   const result = {
-    course, side: SIDE, referenceSince: since,
+    course, side: SIDE, referenceSince: since, borrowedReferenceFrom: borrowedFrom,
     model: Object.fromEntries(Object.entries({ ...fits, _fallback: fallback })
       .map(([r, f]) => [r, { intercept: Math.round(f.a), msPerChar: Number(f.b.toFixed(2)) }])),
     referenceClips: ref.length,
@@ -279,13 +318,20 @@ async function gate (course) {
     courses = (data || []).map(r => r.course_code).sort()
   }
 
+  if (REFERENCE_COURSE) {
+    BORROWED = await loadReference(String(REFERENCE_COURSE))
+    console.log(`reference: ${BORROWED.course} — ${BORROWED.clips.length} current-generation clip(s) since ${BORROWED.since}\n`)
+  }
+
   const results = []
   for (const c of courses) {
-    const r = await gate(c)
+    let r
+    try { r = await gate(c) } catch (e) { r = { course: c, side: SIDE, error: e.message } }
     results.push(r)
     if (r.error) { console.log(`${c.padEnd(22)} ${r.error}`); continue }
     console.log(`${c.padEnd(22)} clips ${String(r.total).padStart(6)}  current-gen ${String(r.currentGeneration).padStart(6)}` +
-      `  FAILED ${String(r.failed).padStart(6)}  (ref ${r.referenceClips}, p2 ${r.referenceP2}, thr ${r.threshold})`)
+      `  FAILED ${String(r.failed).padStart(6)}  ${String(Math.round(100*r.failed/Math.max(1,r.total))).padStart(3)}%` +
+      `  ${r.borrowedReferenceFrom ? 'ref<-' + r.borrowedReferenceFrom : 'self-calibrated'}`)
   }
 
   if (OUT) {
