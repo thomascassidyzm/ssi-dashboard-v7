@@ -4,6 +4,22 @@
 
 ---
 
+## Your mechanism, checked against the database
+
+You diagnosed it as: components miscategorised as **missing LEGOs**, new introductions generated for them as if they were LEGOs, and because they are really components they have zero practice phrases — so they show up as bare LEGOs.
+
+**The symptom you describe is exactly right. The promotion never happened in the data.** I swept for it directly:
+
+- LEGO rows that are `is_new`, carry an introduction, and have zero BUILD/USE/practice phrases: **533** across 16 courses — but **none created in the last 7 days**, and none in French or German seed 1. They are old (Dec 2025 – Jul 2026), and 399 of them are one course, `gle_for_eng`.
+- LEGO rows whose target text *also* exists as a component row in the same seed, `is_new`, with an introduction and zero phrases — the precise promotion signature: **0 rows, estate-wide.**
+- French seed 1 has the same 5 LEGO rows it has had since 2026-02-10. The four things added at 18:01Z today were written as `phrase_role='component'` rows, never as LEGOs.
+
+The 533 bare LEGOs are a different defect — a phrase-floor failure. I checked a sample of the `gle_for_eng` ones (`last week`, `she wanted`, `to put`, `in her`, `bag`): those are genuine intention-units, real LEGOs that never got their phrases, not components wearing a LEGO's clothes. Per your instruction, out of scope for this job, untouched, and flagged here.
+
+**What produces your signature without any promotion:** a `component_intro` cycle plays as an introduction card and is then followed by nothing, because a component has no practice phrases of its own. In the player that is indistinguishable from "a new LEGO was introduced and never practised" — a bare LEGO. Your observation and your inference about what it means are both correct; the mechanism sits one layer up, in cycle emission rather than in categorisation.
+
+**The bypass you named is real, and it is cross-repo.** You said the rule is already in the code — it is, at `services/learning-script-generator.cjs:758`, which states components are never played, and the legacy client script generator obeys it. The path that went around it is the **cycles API in ssi-learning-app**, which reimplemented script assembly from scratch on 2026-08-04 and simply didn't carry the rule across. That is the bypass, and closing it is the fix. Separately, today's French rows got their narration bindings by a script writing **straight to the database**, under every code guard — which is why I also put the refusal in the database itself (below).
+
 ## What he was hearing
 
 He was hearing **cycles, not new audio**.
@@ -34,7 +50,11 @@ The split that matters: component rows as **visual ghost tiles** on the intro/de
 
 `introduce: true` is explicitly not a licence. A test asserts no surviving query in phase8 pairs `phrase_role='component'` with `introduce=true` in order to narrate it.
 
-**No data touched.** No row updated, no clip deleted, no audio generated.
+**Closed the direct-write bypass (database trigger).** A code guard cannot stop the next script that writes straight to Postgres, which is how today's French bindings arrived. `components_never_introduced` on `course_practice_phrases` refuses to bind a narration clip to a `phrase_role='component'` row, and names the ruling in the error. Clearing one to NULL is always allowed, so the approved cleanup can still happen later without dropping the trigger; existing bindings are untouched. Migration and its rollback are both in `database/migrations/`. Applied and tested live: refuses a new binding, permits an unlink, test transaction rolled back.
+
+**Components stay allowed vocabulary.** Nothing here narrows what a later phrase may use. `checkTiling` in `services/course-builder/lib/validation.cjs` adds every M-LEGO's `components[]` targets to the available-vocabulary set, and I did not touch it — so "you are trying to speak" still works off the components of "I am trying to learn". Nothing was demoted, so no vocabulary was lost.
+
+**No data touched.** No row updated, no clip deleted, no audio generated. 84,626 component rows and 56,671 bindings, before and after.
 
 ## Verified live
 
@@ -68,6 +88,10 @@ The brief's default was to **unlink** presentation audio from component rows. I 
 That would have been a 56,671-row mutation across 96 courses to fix something that no longer has any effect — nothing plays those clips now the emission is gone. That is exactly the large blast radius the brief said to stop and report rather than sweep. The clips and bindings sit inert. Unlinking or deleting them is a separate, approval-gated decision, and there is no rush: the learner-facing symptom is already fixed.
 
 ---
+
+## The old-style standalone component introductions
+
+You asked for their scope. That is the 56,671 figure: component rows carrying their own narration clip, authored Feb–Jul 2026 under the old pathway, across 96 courses. Under the new model they are all obsolete. They are also all silent now — nothing emits them. I have not removed any, and I would not without a plan you have seen; the trigger above means the pile cannot grow while that decision waits.
 
 ## One decision for Tom
 
