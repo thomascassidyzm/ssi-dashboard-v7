@@ -582,6 +582,9 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
       const { totals, groups } = computeCourseGaps({
         allItems,
         roundCount: rounds.length,
+        // Rounds carry the player-delivery verdict: which of them the live
+        // player drops outright because their LEGO is short a voice.
+        rounds,
       })
       const outsideJourney = await countGapsOutsideJourney(db, courseCode, allItems, rounds)
 

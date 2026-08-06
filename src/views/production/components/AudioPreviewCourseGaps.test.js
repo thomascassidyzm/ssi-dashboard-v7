@@ -113,3 +113,62 @@ describe('AudioPreviewCourseGaps', () => {
     expect(w.text()).not.toContain('No missing clips anywhere')
   })
 })
+
+// ---------------------------------------------------------------------------
+// The player-delivery line. The block already answers "what is there to
+// record"; this answers "what does a learner get today", which is the number a
+// sign-off turns on. ara_lb_for_eng shows 1,414 rounds here and plays 638.
+// ---------------------------------------------------------------------------
+
+const withDelivery = (playerDelivery) => ({
+  ...GAPS,
+  totals: { ...GAPS.totals, playerDelivery },
+})
+
+describe('AudioPreviewCourseGaps — what the live player delivers', () => {
+  it('leads with the rounds a learner never reaches', () => {
+    const wrapper = mount(AudioPreviewCourseGaps, {
+      props: { gaps: withDelivery({
+        roundsTotal: 1414, roundsDropped: 776, roundsPlayed: 638,
+        rowsUndeliverable: 4210, slotsUndeliverable: 17550,
+        byReason: { 'lego-audio': 17500, 'reviewed-lego-dropped': 50 },
+      }) },
+    })
+    const line = wrapper.find('[data-gaps-player-delivery]')
+    expect(line.exists()).toBe(true)
+    expect(wrapper.find('[data-player-rounds-played]').text()).toBe('638')
+    expect(wrapper.find('[data-player-rounds-dropped]').text()).toBe('776')
+    expect(line.text()).toContain('of 1414 rounds')
+    expect(line.text()).toContain('17550 playback slots')
+  })
+
+  it('distinguishes rows skipped inside a round from rounds lost outright', () => {
+    const wrapper = mount(AudioPreviewCourseGaps, {
+      props: { gaps: withDelivery({
+        roundsTotal: 1529, roundsDropped: 0, roundsPlayed: 1529,
+        rowsUndeliverable: 12, slotsUndeliverable: 31,
+        byReason: { 'phrase-audio': 31 },
+      }) },
+    })
+    const line = wrapper.find('[data-gaps-player-delivery]')
+    expect(line.text()).toContain('Every round reaches a learner')
+    expect(wrapper.find('[data-player-slots]').text()).toBe('31')
+  })
+
+  it('says so plainly when the player delivers the whole course', () => {
+    const wrapper = mount(AudioPreviewCourseGaps, {
+      props: { gaps: withDelivery({
+        roundsTotal: 1570, roundsDropped: 0, roundsPlayed: 1570,
+        rowsUndeliverable: 0, slotsUndeliverable: 0, byReason: {},
+      }) },
+    })
+    expect(wrapper.find('[data-gaps-player-delivery]').text())
+      .toContain('delivers all 1570 rounds')
+  })
+
+  it('stays silent on an older payload that never measured delivery', () => {
+    const wrapper = mount(AudioPreviewCourseGaps, { props: { gaps: GAPS } })
+    // A zero it did not measure would read as "the player delivers everything".
+    expect(wrapper.find('[data-gaps-player-delivery]').exists()).toBe(false)
+  })
+})

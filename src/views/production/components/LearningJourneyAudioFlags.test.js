@@ -122,7 +122,7 @@ describe('LearningJourneyView — player-delivery flags', () => {
     expect(renumber[0].text()).toBe('player: R47')
   })
 
-  it('flags each undeliverable row without removing it', async () => {
+  it('keeps every undeliverable row on screen', async () => {
     const wrapper = mountView()
     await expandAll(wrapper)
 
@@ -130,22 +130,26 @@ describe('LearningJourneyView — player-delivery flags', () => {
     expect(wrapper.findAll('.item-row')).toHaveLength(5)
     expect(wrapper.text()).toContain('the unvoiced one')
     expect(wrapper.text()).toContain('a review that never fires')
-
-    const flags = wrapper.findAll('.item-undeliverable-badge')
-    expect(flags).toHaveLength(4)   // 2 in the dropped round + 2 in R48
-    expect(flags.filter(f => f.text().includes('audio missing'))).toHaveLength(3)
-    expect(flags.filter(f => f.text().includes('review unreachable'))).toHaveLength(1)
   })
 
-  it('explains each flag in plain English on hover', async () => {
+  it('does not repeat what the row already shows — a chip ONLY where nothing else says it', async () => {
     const wrapper = mountView()
     await expandAll(wrapper)
-    const titles = wrapper.findAll('.item-undeliverable-badge').map(f => f.attributes('title'))
 
-    expect(titles[0]).toContain('drops this whole round')
-    expect(titles[0]).toContain('voice 2')
-    expect(titles[2]).toContain('No prompt + voice 2 audio for this phrase')
-    expect(titles[3]).toContain('never introduces the LEGO being reviewed')
+    // Missing audio already reads as a dropped play button + amber triangle;
+    // the one chip is the review that looks healthy and never fires.
+    const flags = wrapper.findAll('.item-undeliverable-badge')
+    expect(flags).toHaveLength(1)
+    expect(flags[0].text()).toContain('review unreachable')
+    expect(flags[0].attributes('title')).toContain('never introduces the LEGO being reviewed')
+
+    // The audio gaps are still visible — via the existing indicator, on all
+    // four rows the player will not play.
+    expect(wrapper.findAll('.audio-missing-icon').length).toBe(4)
+    const phraseGap = wrapper.findAll('.audio-missing-icon')
+      .map(i => i.attributes('title'))
+      .find(t => t.includes('for this phrase'))
+    expect(phraseGap).toContain('No prompt + voice 2 audio')
   })
 
   it('leaves deliverable rows unflagged', async () => {

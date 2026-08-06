@@ -88,6 +88,18 @@
               >
                 {{ missingAudioOnly ? 'Missing audio only ✓' : 'Missing audio only' }}
               </button>
+              <!-- Whole-course sweep. "Missing audio only" above can only filter
+                   the 20 rounds this page has loaded, so a 1,400-round course
+                   takes 70 pages to audit. This runs the same check over every
+                   round at once, server-side (audio-preview/missing-clips). -->
+              <button
+                @click="toggleCourseGaps"
+                :class="courseGapsOpen ? 'bg-amber-700 text-amber-50 hover:bg-amber-600' : 'text-ink hover:text-ink bg-surface-2 hover:bg-surface-3'"
+                class="px-3 py-1.5 text-sm rounded transition-colors"
+                title="Every missing clip in the WHOLE course in one report — the same check as Missing audio only, run across every round instead of the 20 on this page. Takes a few seconds the first time."
+              >
+                {{ courseGapsOpen ? 'Whole-course audio report ✓' : 'Whole-course audio report' }}
+              </button>
               <button
                 @click="exportLearnerScript"
                 :disabled="!learningJourneyData"
@@ -194,6 +206,16 @@
 
       <!-- Learning Journey View Mode -->
       <template v-else>
+        <!-- Whole-course missing-audio report — every round at once, not just
+             the 20 loaded here. Same component the Audio Preview page uses, so
+             the two surfaces can never quote different numbers. -->
+        <AudioPreviewCourseGaps
+          v-if="courseGapsOpen"
+          :gaps="courseGaps"
+          :loading="courseGapsLoading"
+          :error="courseGapsError"
+        />
+
         <!-- Loading Journey -->
         <div v-if="isLoadingJourney" class="loading-state flex items-center justify-center h-64">
           <div class="text-center">
@@ -738,6 +760,7 @@ import { useRoute } from 'vue-router';
 import AudioPlayer from './components/AudioPlayer.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
 import LearningJourneyView from './components/LearningJourneyView.vue';
+import AudioPreviewCourseGaps from './components/AudioPreviewCourseGaps.vue';
 import { getApiUrl } from '@/services/api';
 import { useAuth } from '@/composables/useAuth.js';
 // CyclePlayer removed - not useful for QA workflow
@@ -1115,6 +1138,52 @@ const toggleMissingAudioOnly = () => {
     loadLearningJourney();
   }
 };
+
+// ── Whole-course missing-audio report ─────────────────────────────────────
+// "Missing audio only" above can only filter the rounds this page has loaded —
+// 20 at a time — so auditing a 1,400-round course by hand means 70 pages. The
+// server already runs the same check over the whole journey for the Audio
+// Preview page (audio-preview/missing-clips, ~7.5s uncached, cached 60s); this
+// just brings that report to the surface where a reviewer is already reading
+// the script. Read-only, and it never touches what the rounds view shows.
+const courseGapsOpen = ref(false);
+const courseGaps = ref(null);
+const courseGapsLoading = ref(false);
+const courseGapsError = ref('');
+
+const fetchCourseGaps = async () => {
+  if (!courseCode.value) return;
+  courseGapsLoading.value = true;
+  courseGapsError.value = '';
+  try {
+    const resp = await authedFetch(
+      `/api/production/${courseCode.value}/audio-preview/missing-clips`
+    );
+    if (!resp.ok) throw new Error(`missing-clips ${resp.status}`);
+    courseGaps.value = await resp.json();
+  } catch (err) {
+    // Shown in the block's own place: a report that silently renders nothing
+    // is indistinguishable from a course with no gaps.
+    courseGapsError.value = err.message;
+    console.error('[ScriptViewer] whole-course missing-clip scan failed', err);
+  } finally {
+    courseGapsLoading.value = false;
+  }
+};
+
+const toggleCourseGaps = () => {
+  courseGapsOpen.value = !courseGapsOpen.value;
+  if (courseGapsOpen.value && !courseGaps.value && !courseGapsLoading.value) {
+    fetchCourseGaps();
+  }
+};
+
+// A different course is a different report.
+watch(courseCode, () => {
+  courseGaps.value = null;
+  courseGapsError.value = '';
+  if (courseGapsOpen.value) fetchCourseGaps();
+});
 
 // Keep only items awaiting audio; intros are INCLUDED here (unlike the default
 // amber/stats view which exempts them, since intro audio has a fallback).

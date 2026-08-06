@@ -71,13 +71,62 @@ function kindFor (item) {
 }
 
 /**
+ * What the LIVE PLAYER does with these gaps — PURE.
+ *
+ * The gap list above answers "what is there to record?". This answers the
+ * different question a reviewer signing a course off is actually asking: "what
+ * does a learner get today?" They are not the same number, and the difference
+ * is not a rounding error. The player drops a LEGO short of ANY of its three
+ * audio IDs BEFORE it walks the course (generateLearningScript.ts:764), so the
+ * WHOLE round vanishes and every later round renumbers. `ara_lb_for_eng` shows
+ * 1,414 rounds here and plays 638.
+ *
+ * That is why "missing only target2 is not blocking" — true of a practice
+ * phrase, which the player simply skips — is dangerously false of a LEGO,
+ * whose target2 gap costs the entire round. Both numbers are printed; neither
+ * is folded into the other.
+ *
+ * Annotation comes from learning-script-generator's annotatePlayerDelivery,
+ * already on every item and round, so this costs one more pass over data that
+ * is already in memory.
+ */
+function computePlayerDelivery (allItems, rounds) {
+  const roundsTotal = rounds.length
+  const roundsDropped = rounds.filter(r => r.playerDelivers === false).length
+  const bySeverity = {}
+  const undeliverableRows = new Set()
+  let slots = 0
+
+  for (const item of allItems) {
+    if (item.playerCanDeliver !== false) continue
+    slots += 1
+    const reason = item.playerDropReason || 'unknown'
+    bySeverity[reason] = (bySeverity[reason] || 0) + 1
+    undeliverableRows.add(rowKeyFor(item))
+  }
+
+  return {
+    roundsTotal,
+    roundsDropped,
+    roundsPlayed: roundsTotal - roundsDropped,
+    // Distinct rows, deduplicated the same way the gap list is.
+    rowsUndeliverable: undeliverableRows.size,
+    // Playback slots lost, review replays included.
+    slotsUndeliverable: slots,
+    byReason: bySeverity,
+  }
+}
+
+/**
  * Fold a whole-course journey into the missing-clip list.
  *
  * @param {object[]} allItems  every journey item, in round order
  * @param {number}   roundCount total rounds in the journey (for the denominator)
+ * @param {object[]} rounds     the rounds themselves, for the player-delivery
+ *                              verdict (optional; omit and it is not reported)
  * @returns {{ totals, groups }}
  */
-function computeCourseGaps ({ allItems = [], roundCount = 0 } = {}) {
+function computeCourseGaps ({ allItems = [], roundCount = 0, rounds = null } = {}) {
   const rows = new Map()
 
   for (const item of allItems) {
@@ -101,6 +150,11 @@ function computeCourseGaps ({ allItems = [], roundCount = 0 } = {}) {
       // A row that only lacks target2 is a gap, but not one that stops the
       // learner hearing the item — the two are never merged into one number.
       blocking: item.hasAudio === false,
+      // Whether the LIVE PLAYER can deliver the row, which is a stricter test
+      // than `blocking` — a LEGO missing only target2 plays fine in Popty's
+      // preview and costs the learner its entire round.
+      playerCanDeliver: item.playerCanDeliver !== false,
+      playerDropReason: item.playerDropReason || null,
       missing: gaps,
       roundNumber: item.roundNumber,
       legoId: item.legoId,
@@ -166,9 +220,12 @@ function computeCourseGaps ({ allItems = [], roundCount = 0 } = {}) {
       roundsAffected: groups.length,
       roundsTotal: roundCount,
       itemsScanned: allItems.length,
+      // What the live player does with all of the above. Only present when the
+      // caller hands in the rounds — never a silent zero.
+      ...(rounds ? { playerDelivery: computePlayerDelivery(allItems, rounds) } : {}),
     },
     groups,
   }
 }
 
-module.exports = { computeCourseGaps, missingRolesFor, rowKeyFor, ROLES }
+module.exports = { computeCourseGaps, computePlayerDelivery, missingRolesFor, rowKeyFor, ROLES }

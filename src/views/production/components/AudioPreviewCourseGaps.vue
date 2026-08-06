@@ -33,6 +33,40 @@
         <span class="text-faint shrink-0">{{ open ? 'hide' : 'show' }}</span>
       </button>
 
+      <!-- What the LIVE PLAYER does with those gaps. A separate question from
+           "what is there to record", and the one a sign-off actually turns on:
+           a LEGO short of any one voice costs its whole round, not its cycle. -->
+      <p
+        v-if="playerDelivery && playerDelivery.roundsDropped > 0"
+        data-gaps-player-delivery
+        class="text-xs text-amber-400 mt-1.5 leading-relaxed"
+      >
+        The live player currently delivers
+        <span class="font-bold" data-player-rounds-played>{{ playerDelivery.roundsPlayed }}</span>
+        of {{ playerDelivery.roundsTotal }} rounds —
+        <span class="font-bold" data-player-rounds-dropped>{{ playerDelivery.roundsDropped }}</span>
+        round{{ playerDelivery.roundsDropped === 1 ? '' : 's' }} never reach a learner, because the LEGO
+        that opens {{ playerDelivery.roundsDropped === 1 ? 'it is' : 'them is' }} short at least one of its
+        three voices. {{ playerDelivery.slotsUndeliverable }} playback slot{{ playerDelivery.slotsUndeliverable === 1 ? '' : 's' }}
+        {{ playerDelivery.slotsUndeliverable === 1 ? 'is' : 'are' }} lost in total.
+      </p>
+      <p
+        v-else-if="playerDelivery && playerDelivery.slotsUndeliverable > 0"
+        data-gaps-player-delivery
+        class="text-xs text-amber-400 mt-1.5 leading-relaxed"
+      >
+        Every round reaches a learner, but the player skips
+        <span class="font-bold" data-player-slots>{{ playerDelivery.slotsUndeliverable }}</span>
+        individual row{{ playerDelivery.slotsUndeliverable === 1 ? '' : 's' }} inside them.
+      </p>
+      <p
+        v-else-if="playerDelivery"
+        data-gaps-player-delivery
+        class="text-xs text-muted mt-1.5"
+      >
+        The live player delivers all {{ playerDelivery.roundsTotal }} rounds of this course.
+      </p>
+
       <div v-if="open" class="mt-3 space-y-4">
         <!-- The accounting, per role, so a gap class nobody looked at cannot
              hide inside a single total. -->
@@ -65,8 +99,10 @@
             these {{ totals.rows }} row{{ totals.rows === 1 ? '' : 's' }} block
             {{ totals.occurrences }} slot{{ totals.occurrences === 1 ? '' : 's' }} across the journey,
             because review rounds replay the same phrase.
-            <em>target2</em> is not part of the playback gate, so a row missing only target2 is counted
-            but is not one of the {{ totals.blocking }}.
+            <em>target2</em> is not part of Popty's playback gate, so a row missing only target2 is counted
+            but is not one of the {{ totals.blocking }}. It is not harmless, though: the LIVE PLAYER
+            requires all three voices, and on a LEGO a target2 gap costs the learner that LEGO's entire
+            round — which is what the delivery line above counts.
           </p>
         </div>
 
@@ -165,6 +201,9 @@ const totals = computed(() => props.gaps?.totals || {
   byRole: {}, byKind: {}, roundsAffected: 0, roundsTotal: 0, itemsScanned: 0,
 })
 const hasGaps = computed(() => totals.value.rows > 0)
+// Absent on an older payload — the block then says nothing about delivery
+// rather than printing a zero it did not measure.
+const playerDelivery = computed(() => totals.value.playerDelivery || null)
 const outsideJourney = computed(() => props.gaps?.outsideJourney || null)
 const visibleGroups = computed(() => (props.gaps?.groups || []).slice(0, shown.value))
 const roleRows = computed(() =>

@@ -263,10 +263,14 @@
                 </div>
               </div>
 
-              <!-- Player-delivery flag — the row stays; this says the live
-                   player cannot currently play it (usually missing audio). -->
+              <!-- Player-delivery flag, only where nothing else on the row says
+                   it. Missing audio already shows as a dropped play button and
+                   an amber triangle, so a chip repeating it would be noise; a
+                   review of a LEGO the player never introduces has FULL audio
+                   and looks perfectly healthy, so it needs saying. The round
+                   header carries the whole-round drop. -->
               <span
-                v-if="item.playerCanDeliver === false"
+                v-if="item.playerDropReason === 'reviewed-lego-dropped'"
                 class="item-undeliverable-badge flex-shrink-0 text-xs px-2 py-0.5 rounded border border-amber-700 bg-amber-900/30 text-amber-300 whitespace-nowrap"
                 :title="itemFlagTitle(item)"
               >⚠ {{ itemFlagLabel(item) }}</span>
@@ -512,11 +516,8 @@ const ROLE_LABELS: Record<string, string> = {
 const rolesPhrase = (roles?: string[]) =>
   (roles || []).map(r => ROLE_LABELS[r] || r).join(' + ')
 
-const itemFlagLabel = (item: ScriptItem): string => {
-  if (item.playerCanDeliver !== false) return ''
-  if (item.playerDropReason === 'reviewed-lego-dropped') return 'review unreachable'
-  return 'audio missing'
-}
+const itemFlagLabel = (item: ScriptItem): string =>
+  item.playerDropReason === 'reviewed-lego-dropped' ? 'review unreachable' : 'audio missing'
 
 const itemFlagTitle = (item: ScriptItem): string => {
   switch (item.playerDropReason) {
