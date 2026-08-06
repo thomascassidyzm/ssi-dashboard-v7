@@ -150,22 +150,96 @@ No TTS was run. 1,041 clips now need generating and that spend is sitting waitin
 
 ### English as the target language
 
-**eng_for_mar: 34 phrases rewritten.** The database says exactly 34 rows changed today. This is the
-one that bears directly on your ruling about English quality.
+**First, a correction to my own method.** I originally counted "what changed today" from row
+timestamps. That's the weak way, because an audio relink bumps a timestamp exactly like a rewrite
+does. There is a proper provenance trail — `content_audit_log` keeps the whole previous row — so you
+can compare the actual old text to the actual current text and a timestamp bump can't fool you. Run
+that way, across every English-as-target course:
 
-The triage is the lesson here. A sweep produced 568 flagged rows. That was cut to about 209 — because
-the biggest bucket, phrases containing the words "in English", **wasn't a defect at all**. It is the
-drill format. The check was reading the course's own instruction wrapper as broken English.
+| Course | rows audited today | English text actually changed |
+|---|---|---|
+| eng_for_mar | 38 | **38** |
+| eng_for_por | 932 | **28** |
+| eng_for_ita | 678 | **0** |
+| eng_for_ara / deu / fra / guj / jpn / kor / spa / tam / zho … | 104–1,135 each | **0** |
 
-And after the repair, a follow-up said plainly that **the repaired seeds still aren't clean**. Two
-further commits then de-duplicated a row and adopted three better-grounded alternatives from an
-independent cross-check. So: fix, then have someone else check the fix, then accept that you were
-beaten on three of them.
+I re-ran this myself rather than take it on trust. It confirms **eng_for_ita was not content-edited**
+— its 678 rows all changed at one timestamp, are all component rows, and only their audio link moved.
+And it turned up a course I had missed entirely.
 
-**On eng_for_ita — your memory was close but not exact.** 678 eng_for_ita rows were touched today,
-which is why it feels like it was worked on. But the rows I sampled are all component rows and the
-change was to audio links, not to text. The English-as-target *content* fixing today was eng_for_mar.
-I'd rather tell you that than let a number stand in for a fix.
+**eng_for_por — the second English-as-target course fixed today, 28 rows.** If what you remember is a
+Romance course, this is probably it. It came from Deborah's report, and it's a textbook sweep: the
+flag was one phrase, and the fix went across the whole family.
+
+| Before | After |
+|---|---|
+| as soon as you can | as soon as possible |
+| to answer as soon as you can | to answer as soon as possible |
+| I want to meet as soon as you can | I want to meet as soon as possible |
+| I'm going to try to answer as soon as you can | I'm going to try to answer as soon as possible |
+| you can *(the component)* | possible |
+
+Note what got changed: the component, the LEGO, every build and every use — not just the row that was
+reported. That's the ladder working. Leaving the component saying "you can" while the sentences said
+"as soon as possible" would have been the classic half-fix.
+
+**eng_for_mar: 34 phrases rewritten.** This is the one that bears directly on your ruling about
+English quality.
+
+Every one of the 34 originals failed your hard grammatical constraint. A sample:
+
+| Before | After | What was wrong |
+|---|---|---|
+| I think that's very well | I think that's a very good idea | adverb where a noun phrase belongs |
+| he's going to already | I think that he's going to ask you | the verb had been eaten |
+| why don't you want? | why don't you want to wait? | no complement |
+| on the table very well | it's on the table | a tag glued to a bare fragment |
+| very difficult | **isn't** very difficult | **the negation had been dropped** |
+
+The dropped-negation class is the worst thing in the set: the Marathi says *not difficult*, the
+English said *difficult*. Four rows were teaching the opposite of the truth.
+
+The dominant cause is one generator bolting a stock tag — *very well, not sure, yet, already,
+tonight* — onto whatever was in front of it with no grammatical check. 26 of the 34 are that.
+
+**The triage lesson.** A sweep produced 568 flagged rows, cut to about 209 — because the biggest
+bucket, phrases containing "in English", **wasn't a defect at all**. It's the drill format: a
+generated slot meaning *"…now say it in English"*, attached to a bare fragment **by design**. There
+are 720 of them live across 270 seeds, in fixed template positions. `happy with how much in English`
+reads as broken English and is ordinary course content. Rewriting them would have silenced 720
+working slots. The classifier could read English shape but had no model of the course's own template
+vocabulary.
+
+**Then it got cut again, and this is the sharper lesson.** The first triage was done **English-only,
+without Marathi**. Once Marathi was authorised, **20 more rows in the same eleven seeds** turned out
+to carry the identical defect — and several are invisible from the English side. `so I hope you'll
+finish soon` is perfectly good English; the Marathi says *soon* twice. `he's going to in English` has
+no verb in it at all.
+
+> **A one-sided audit certifies one side only.** 568 → ~209 → **139**, and the last cut only came from
+> reading the other language.
+
+**The independent cross-check — the best verification practice I found today.** Three authors worked
+the same 35 phrases from the same brief, **blind to the first author's drafts**, and a fourth
+re-verified after the repair landed.
+
+- They **converged on byte-identical Marathi** for several rows, arrived at independently. Without a
+  speaker on hand, that's the strongest evidence available.
+- They **independently left the false positive alone** — agreeing *not* to act is as informative as
+  agreeing to act.
+- **Three of their versions were adopted over the original fixer's**, and the reason is the bit worth
+  copying. Not "more correct" — **less dependent on a judgement nobody could verify**. `felt better
+  today` was withdrawn for `felt okay`, because *ठीक* is invariant and sidesteps an agreement call.
+  `I left it on the table` became `it's on the table` to sidestep a *put* vs *leave* distinction. The
+  count of items resting on an unverifiable call dropped from six to three.
+- **The check caught the repair introducing a brand-new defect.** One rewrite landed on English that
+  already existed elsewhere in the course **carrying different Marathi** — a ZUT collision created by
+  the fix itself. The consistency checker had only ever looked for duplicates *within* a LEGO, never
+  course-wide. And the cross-check's proposed replacement was **also** a duplicate, which was caught
+  too; a third version was finally written.
+
+So: fix, have someone else attack it blind, accept being beaten on three, and then discover your
+checker had a hole that let your own fix create the defect it was meant to remove.
 
 ### Greek — a diagnosis, not a fix
 
@@ -253,6 +327,13 @@ anything. The Greek tag count was corroborated two independent ways.
 I hit this myself while writing this: I ran an estate-wide ID check that returned 93,193 "problems",
 and they were all my own mistake — LEGO ids simply aren't prefixed. An uncalibrated count is a rumour.
 
+**7b. Ask what changed, not what was touched.** A row's timestamp moves when its audio link changes,
+exactly as it does when someone rewrites the words. I made this mistake first time through and it
+nearly cost me a wrong answer about which courses were fixed today.
+*Check:* use `content_audit_log` — it keeps the whole previous row, so you compare old text to current
+text and a timestamp bump can't fool you. This is how eng_for_ita was settled: 678 rows touched,
+**zero** words changed.
+
 **8. Code counts. Only you can judge meaning.**
 *From:* "I want talking more" passed the vocabulary gate, because every word in it had been properly
 introduced. A frame-coverage check returned zero problems across 9,846 items — a clean bill of health
@@ -287,6 +368,27 @@ verifier that confirmed two fixes and then found the sweep had **missed three mo
 cross-check whose three alternatives were adopted over the original fixer's.
 *Check:* did an independent pass run, and did anything change because of it? If nothing changed, the
 check probably wasn't adversarial.
+
+**11b. Your fix can create the very defect you're removing — check course-wide, not locally.**
+*From:* an eng_for_mar rewrite that landed on English already used elsewhere in the course with
+different Marathi. The consistency checker only looked inside the LEGO, so it passed. The
+independently proposed replacement was a duplicate too.
+*Check:* before writing any new text, search the **whole course** for that exact known-side wording.
+Never add a second rendering of a phrasing that already has one. Run the duplicate check course-wide
+after the write, not just on the tile.
+
+**11c. A one-sided audit certifies one side only.**
+*From:* eng_for_mar. The English-only triage cleared seeds that were still broken in Marathi — `so I
+hope you'll finish soon` is perfect English over a Marathi sentence that says "soon" twice. The count
+fell 568 → 209 → 139, and the last cut came only from reading the other language.
+*Check:* say which side you actually read. If you read one, your verdict covers one, and the report
+must say so rather than implying the row is clean.
+
+**11d. Prefer the fix that rests on the fewest unverifiable judgements.**
+*From:* three cross-check alternatives adopted over the original fixer's — `felt okay` over `felt
+better today` because the word is invariant and dodges an agreement call nobody present could settle.
+*Check:* when two candidate fixes are both correct, pick the one needing less knowledge you can't
+confirm. Count how many of your fixes rest on a call you couldn't check, and drive that number down.
 
 **12. Stop rather than force the last rows.**
 *From:* Spanish stopping at 332 of 367 when the pass rate flattened, rather than shipping Spanish a
@@ -371,11 +473,15 @@ Honest gaps:
    right now. I have not applied anything.
 
 4. **Verification depth is uneven, and here is the honest map.** Finnish I verified row by row against
-   the live database. The Greek "nothing was changed" claim and the eng_for_mar row count I checked
-   myself. The Spanish account has now been independently re-derived from the live database and the
-   fix scripts by a second session, which is where the band-and-role numbers above come from — but I
-   have not personally re-run those. Greek and English-as-target are still with two other sessions and
-   anything they correct will land after this document.
+   the live database. The English-as-target counts I re-ran myself through the audit log, including
+   the Portuguese rewrites quoted above and the zero for eng_for_ita. The Spanish account was
+   independently re-derived from the live database and the fix scripts by a second session — the
+   band-and-role numbers are theirs and I have not personally re-run them. The Greek reconstruction is
+   still with a third session; anything it corrects will land after this document.
+
+   Worth saying plainly: **my first pass got the "what changed today" question wrong**, by counting
+   timestamps instead of comparing text. It would have let me tell you eng_for_ita was fixed when not
+   one word of it was. That's rule 7b, and I earned it the same way everything else here was earned.
 
 5. **One thing I found that nobody has reported, offered as a finding rather than a fix.** In the Greek
    course, 7,771 of 8,065 practice phrases have an id beginning `el_for_eng:` while the course itself
