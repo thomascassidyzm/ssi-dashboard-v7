@@ -1,0 +1,178 @@
+[
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0547L02U05",
+  "col": "target_text",
+  "was": "ela disse que o cão está sujo Porque esteve a brincar na lama",
+  "now": "ela disse que o cão está sujo porque esteve a brincar na lama",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0549L02U01",
+  "col": "target_text",
+  "was": "ela disse que foi Porque tenho de ficar calado",
+  "now": "ela disse que foi porque tenho de ficar calado",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0549L02U02",
+  "col": "target_text",
+  "was": "ele disse que foi Porque tenho de ficar calado",
+  "now": "ele disse que foi porque tenho de ficar calado",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0549L02U03",
+  "col": "target_text",
+  "was": "disseram que foi Porque tenho de ficar calado",
+  "now": "disseram que foi porque tenho de ficar calado",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0549L02U04",
+  "col": "target_text",
+  "was": "ela disse que estou triste Porque tenho de ficar calado",
+  "now": "ela disse que estou triste porque tenho de ficar calado",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0558L01U01",
+  "col": "target_text",
+  "was": "ela disse que É tão tarde à noite",
+  "now": "ela disse que é tão tarde à noite",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0558L01U02",
+  "col": "target_text",
+  "was": "ele disse que É tão tarde à noite",
+  "now": "ele disse que é tão tarde à noite",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0558L01U03",
+  "col": "target_text",
+  "was": "disseram que É tão tarde à noite",
+  "now": "disseram que é tão tarde à noite",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0558L01U04",
+  "col": "target_text",
+  "was": "ela disse que É tão tarde à noite todos os dias",
+  "now": "ela disse que é tão tarde à noite todos os dias",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0573L03U02",
+  "col": "target_text",
+  "was": "ela disse que É o tipo de coisa que torna as férias muito especiais",
+  "now": "ela disse que é o tipo de coisa que torna as férias muito especiais",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0573L03U03",
+  "col": "target_text",
+  "was": "ele disse que É o tipo de coisa que torna as férias muito especiais",
+  "now": "ele disse que é o tipo de coisa que torna as férias muito especiais",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0573L03U04",
+  "col": "target_text",
+  "was": "disseram que É o tipo de coisa que torna as férias muito especiais",
+  "now": "disseram que é o tipo de coisa que torna as férias muito especiais",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "A",
+  "id": "por_for_eng:S0573L03U05",
+  "col": "target_text",
+  "was": "ela disse que É o tipo de coisa que torna as férias muito especiais hoje",
+  "now": "ela disse que é o tipo de coisa que torna as férias muito especiais hoje",
+  "unlinked": [],
+  "applied": true
+ },
+ {
+  "cls": "B",
+  "id": "por_for_eng:S0520L01U01",
+  "col": "target_text",
+  "was": "ela disse que acontecido",
+  "now": "ela disse que tinha acontecido",
+  "unlinked": [
+   "target1_audio_id",
+   "target2_audio_id"
+  ],
+  "applied": true
+ },
+ {
+  "cls": "B",
+  "id": "por_for_eng:S0520L01U02",
+  "col": "target_text",
+  "was": "ele disse que acontecido",
+  "now": "ele disse que tinha acontecido",
+  "unlinked": [
+   "target1_audio_id",
+   "target2_audio_id"
+  ],
+  "applied": true
+ },
+ {
+  "cls": "B",
+  "id": "por_for_eng:S0520L01U03",
+  "col": "target_text",
+  "was": "disseram que acontecido",
+  "now": "disseram que tinha acontecido",
+  "unlinked": [
+   "target1_audio_id",
+   "target2_audio_id"
+  ],
+  "applied": true
+ },
+ {
+  "cls": "C",
+  "id": "por_for_eng:S0130L01B03",
+  "col": "target_text",
+  "was": "este é uma surpresa",
+  "now": "esta é uma surpresa",
+  "unlinked": [
+   "target1_audio_id",
+   "target2_audio_id"
+  ],
+  "applied": true
+ },
+ {
+  "cls": "D",
+  "id": "seed:S0130",
+  "col": "known_text",
+  "was": "that was a surrpise, because he's my friend",
+  "now": "that was a surprise, because he's my friend",
+  "unlinked": [
+   "known_audio_id"
+  ],
+  "applied": true
+ }
+]
