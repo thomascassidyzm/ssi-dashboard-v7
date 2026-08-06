@@ -13,9 +13,10 @@
           <h1>Speaking config</h1>
           <p class="sub">
             The speaking practice script + playback timing — per-round phrase
-            counts, the Fibonacci spaced-rep schedule, and the Turbo / Normal
-            playback modes. Global: every course, every learner. Changes
-            propagate to new sessions within ~5 min (cache TTL).
+            counts, the Fibonacci spaced-rep schedule, and the Easy / Fast
+            playback modes. Script shape is global: every course, every learner.
+            Each mode can override it. Changes propagate to new sessions within
+            ~5 min (cache TTL).
           </p>
         </div>
       </div>
@@ -55,43 +56,61 @@
         </div>
       </section>
 
-      <!-- ==================== TURBO (script-side culling) ==================== -->
-      <section v-if="drafts.turbo_boost" class="config-row">
+      <!-- ==================== PER-MODE ROUND SHAPE ==================== -->
+      <section v-if="labCfg" class="config-row">
         <RowHeader
-          title="Turbo boost — script culling"
-          desc="What Turbo drops on the script side. fibKeep gates which fib-offset spaced-rep cycles survive; BUILD/USE keep cap phrases per LEGO. (Turbo's pause timing lives in the Pause lab below.)"
-          :row="rowMap.turbo_boost"
-          :dirty="isDirty('turbo_boost')"
-          :saving="savingKey === 'turbo_boost'"
-          :error="rowErrors.turbo_boost"
-          @save="save('turbo_boost')"
-          @reset="reset('turbo_boost')"
+          :title="`Round shape — ${modeLabel} overrides`"
+          desc="How THIS mode reshapes the global script shape above. Blank = inherit the global value. Easy is seeded at roughly double Fast's repetitions; Fast inherits everything, which is what makes it identical to the old Normal mode."
+          :row="rowMap[labMode]"
+          :dirty="isDirty(labMode)"
+          :saving="savingKey === labMode"
+          :error="rowErrors[labMode]"
+          @save="save(labMode)"
+          @reset="reset(labMode)"
         />
 
-        <div class="field-block" v-if="scriptShapeOffsets.length">
-          <label>Fib offsets Turbo keeps <span class="hint">tap to toggle</span></label>
-          <div class="fib-row">
-            <button
-              v-for="(off, idx) in scriptShapeOffsets" :key="idx"
-              class="fib-pill"
-              :class="{ on: (drafts.turbo_boost.fibKeep || []).includes(idx) }"
-              @click="toggleFib(idx)"
-            >N-{{ off }}</button>
+        <div class="lab-modeswitch-row">
+          <div class="lab-modeswitch">
+            <button :class="{ on: labMode === 'easy_mode' }" @click="labMode = 'easy_mode'">Easy</button>
+            <button :class="{ on: labMode === 'fast_mode' }" @click="labMode = 'fast_mode'">Fast</button>
           </div>
         </div>
 
         <div class="field-grid">
-          <NumField v-model="drafts.turbo_boost.buildKeep" label="BUILD keep" suffix="phrases"
-            help="Turbo plays the first N BUILD phrases per LEGO; the rest get tagged for skip." />
-          <NumField v-model="drafts.turbo_boost.useKeep" label="USE keep" suffix="phrases"
-            help="Turbo plays the first N USE phrases per LEGO." />
+          <NumField v-model="modeShape.n1PhraseCount" label="N-1 phrase count" suffix="reps"
+            :help="inheritHelp('n1PhraseCount', 'Phrases at the N-1 review (1st-back).')" />
+          <NumField v-model="modeShape.maxBuildPhrases" label="Max BUILD phrases" suffix="per round"
+            :help="inheritHelp('maxBuildPhrases', 'Repetitions of each new item per round.')" />
+          <NumField v-model="modeShape.useConsolidationCount" label="USE consolidation count" suffix="per LEGO"
+            :help="inheritHelp('useConsolidationCount', 'Reserved USE phrases at the end of a round.')" />
+          <NumField v-model="modeShape.maxSpacedRepPhrases" label="Max spaced-rep phrases" suffix="per round"
+            :help="inheritHelp('maxSpacedRepPhrases', 'Ceiling on the review block.')" />
+        </div>
+
+        <div class="field-block">
+          <label>Spaced-rep offsets for this mode <span class="hint">blank = inherit the global schedule</span></label>
+          <NumListField :modelValue="modeShape.spacedRepOffsets" @update:modelValue="modeShape.spacedRepOffsets = $event" />
+        </div>
+
+        <div class="field-block">
+          <label>Phrase length preference <span class="hint">which end survives the cap</span></label>
+          <div class="seg-row">
+            <button class="seg-pill" :class="{ on: phrasePref === 'shortest' }" @click="labCfg.phraseLengthPreference = 'shortest'">Shortest first</button>
+            <button class="seg-pill" :class="{ on: phrasePref === 'longest' }" @click="labCfg.phraseLengthPreference = 'longest'">Longest first</button>
+          </div>
+          <p class="field-note">
+            Phrases are sorted by syllable count and then cut at the caps above, so
+            this decides which ones survive. <strong>Longest first</strong> is Easy's
+            "longest possible phrase"; <strong>shortest first</strong> is the historic
+            behaviour and what Fast uses.
+          </p>
         </div>
       </section>
 
       <!-- ==================== PAUSE LAB ==================== -->
       <section v-if="labCfg" class="config-row">
         <RowHeader
-          :title="`Pause lab — ${labMode === 'normal_mode' ? 'Normal' : 'Turbo'} timing`"
+          :title="`Pause lab — ${modeLabel} timing`"
           desc="The learner 'say-it-yourself' gap. pause = BOOT (fixed reaction, short phrases) + ASSEMBLY (piecing parts together — grows super-linearly with length). Two belt knobs split the taper: short-phrase gaps shrink hard as the learner climbs, long-phrase gaps shrink gently. Watch it across sentence lengths (in syllables) and belts below."
           :row="rowMap[labMode]"
           :dirty="isDirty(labMode)"
@@ -103,8 +122,8 @@
 
         <div class="lab-modeswitch-row">
           <div class="lab-modeswitch">
-            <button :class="{ on: labMode === 'normal_mode' }" @click="labMode = 'normal_mode'">Normal</button>
-            <button :class="{ on: labMode === 'turbo_boost' }" @click="labMode = 'turbo_boost'">Turbo</button>
+            <button :class="{ on: labMode === 'easy_mode' }" @click="labMode = 'easy_mode'">Easy</button>
+            <button :class="{ on: labMode === 'fast_mode' }" @click="labMode = 'fast_mode'">Fast</button>
           </div>
           <button class="lab-suggest" @click="applySuggested" title="Drop a sensible starting curve into the knobs (unsaved — tweak, then Save)">
             ✨ Load suggested
@@ -139,14 +158,13 @@
         <!-- Live preview across syllable buckets -->
         <div class="lab-preview">
           <div class="lab-preview-head">
-            <span class="lab-preview-title">Live preview · {{ labMode === 'normal_mode' ? 'Normal' : 'Turbo' }}</span>
-            <div v-if="!isTurbo" class="lab-belt">
+            <span class="lab-preview-title">Live preview · {{ modeLabel }}</span>
+            <div class="lab-belt">
               <span class="lab-belt-label">Belt</span>
               <button v-for="b in BELTS" :key="b.key" class="belt-pill" :class="['belt-' + b.key, { on: belt === b.key }]" @click="belt = b.key">
                 {{ b.label }} <span class="belt-spd">{{ b.speed }}×</span>
               </button>
             </div>
-            <span v-else class="lab-belt-label">Turbo · 1.0× (no belt ramp, never faster than native)</span>
             <label class="lab-rate">~ms / syllable
               <input type="number" min="50" step="10" v-model.number="msPerSyllable" />
             </label>
@@ -248,35 +266,31 @@ const {
 // knee-1600 / tail-2.0 curve for medium/long phrases), with a faithful belt
 // taper (short belt-independent, long shrinks ~20% by Green). The runtime is
 // untouched until an admin tunes in the lab and saves.
+// Easy is the gentler mode, so where a row predates a knob its backfill is the
+// slower value; Fast keeps the values Normal used to carry (2026-08-06 mode
+// restructure). Both rows are seeded on creation, so this only fires for a row
+// hand-edited to drop a key.
 function backfillPauseRow(key, d) {
   const c = d[key]
   if (!c) return
   if (c.pause_reference == null) c.pause_reference = 'avg'
-  const isTurbo = key === 'turbo_boost'
-  if (c.pause_boot_ms == null) c.pause_boot_ms = isTurbo ? 2000 : 1000
-  if (c.pause_assembly_threshold_ms == null) c.pause_assembly_threshold_ms = isTurbo ? 1111 : 1000
-  if (c.pause_assembly_lin == null) c.pause_assembly_lin = isTurbo ? 0.9 : 2.5
+  const isEasy = key === 'easy_mode'
+  if (c.pause_boot_ms == null) c.pause_boot_ms = isEasy ? 2000 : 1000
+  if (c.pause_assembly_threshold_ms == null) c.pause_assembly_threshold_ms = 1000
+  if (c.pause_assembly_lin == null) c.pause_assembly_lin = 2.5
   if (c.pause_assembly_quad == null) c.pause_assembly_quad = 0
   if (c.pause_belt_boot == null) c.pause_belt_boot = 1.0
-  if (c.pause_belt_assembly == null) c.pause_belt_assembly = isTurbo ? 1.0 : 0.8
-  if (c.min_pause_ms == null) c.min_pause_ms = isTurbo ? 2000 : 700
-  if (c.max_pause_ms == null) c.max_pause_ms = isTurbo ? 12000 : 15000
+  if (c.pause_belt_assembly == null) c.pause_belt_assembly = 0.8
+  if (c.min_pause_ms == null) c.min_pause_ms = isEasy ? 1400 : 700
+  if (c.max_pause_ms == null) c.max_pause_ms = 15000
+  // The two fields the mode restructure added. Absent = inherit the global
+  // script shape / use the historic sort — never a silent reshape.
+  if (c.scriptShape == null) c.scriptShape = {}
+  if (c.phraseLengthPreference == null) c.phraseLengthPreference = isEasy ? 'longest' : 'shortest'
 }
 function backfillPause(d) {
-  backfillPauseRow('normal_mode', d)
-  backfillPauseRow('turbo_boost', d)
-}
-
-// Turbo's fibKeep is an index list into the script-shape offsets, so the pills
-// read their labels off the live script_shape draft (same endpoint, same load).
-const scriptShapeOffsets = computed(() => drafts.script_shape?.spacedRepOffsets || [])
-function toggleFib(idx) {
-  const tb = drafts.turbo_boost
-  if (!tb) return
-  const set = new Set(tb.fibKeep || [])
-  if (set.has(idx)) set.delete(idx)
-  else set.add(idx)
-  tb.fibKeep = [...set].sort((a, b) => a - b)
+  backfillPauseRow('easy_mode', d)
+  backfillPauseRow('fast_mode', d)
 }
 
 // ============================================================================
@@ -285,20 +299,40 @@ function toggleFib(idx) {
 // estimated per-voice audio duration (preview only; the runtime uses real clip
 // durations). Default ~280ms/syll for slow SSi learner audio — tunable.
 // ============================================================================
-const labMode = ref('normal_mode')
+// Exactly two modes (Aran's ruling relayed by Tom, 2026-08-06). Fast is what
+// Normal was; Easy is new. The switch drives both the round-shape overrides and
+// the pause knobs, so one selection tunes the whole mode.
+const labMode = ref('fast_mode')
 const msPerSyllable = ref(280)
 const labCfg = computed(() => drafts[labMode.value] || null)
+const modeLabel = computed(() => (labMode.value === 'easy_mode' ? 'Easy' : 'Fast'))
+
+// The mode's scriptShape override block, created lazily so an untouched mode
+// never writes an override it does not have. Blank field = inherit the global.
+const modeShape = computed(() => {
+  const cfg = labCfg.value
+  if (!cfg) return {}
+  if (!cfg.scriptShape) cfg.scriptShape = {}
+  return cfg.scriptShape
+})
+const phrasePref = computed(() => labCfg.value?.phraseLengthPreference || 'shortest')
+
+// Help text that names the global value a blank field inherits, so the admin
+// can see what "inherit" actually means without leaving the page.
+function inheritHelp(key, desc) {
+  const g = drafts.script_shape?.[key]
+  return g === undefined ? desc : `${desc} Global is ${g}; blank inherits it.`
+}
 
 // Belt selection — early belts slow the voice, lengthening actual play time and
 // thus the pause. Default White: the pause matters most at the beginning.
 const belt = ref('white')
 const beltSpeedVal = computed(() => (BELTS.find(b => b.key === belt.value) || {}).speed || 1)
 
-// Effective playback speed driving actual-time pause + audio: Normal follows
-// the belt ramp; Turbo plays at native 1.0× — drops the belt ramp but is capped
-// at 1.0× (never speeds the voice up). Mirrors getPlaybackSpeedMultiplier.
-const isTurbo = computed(() => labMode.value === 'turbo_boost')
-const effectiveSpeed = computed(() => isTurbo.value ? Math.min(labCfg.value?.playback_speed || 1, 1.0) : beltSpeedVal.value)
+// Effective playback speed driving actual-time pause + audio. Both modes follow
+// the belt ramp — Turbo's native-1.0× override went with Turbo, and Fast keeps
+// Normal's behaviour exactly. Mirrors getPlaybackSpeedMultiplier.
+const effectiveSpeed = computed(() => beltSpeedVal.value)
 
 // Belt taper applied at the selected belt — boot/assembly multipliers the
 // boot+assembly model uses (White anchors at 1.0; Green = the configured
@@ -313,17 +347,15 @@ const beltTaper = computed(() => {
   }
 })
 
-// A sensible starting curve per mode — reference = average of both voices, a
-// real boot floor, and a knee so long sentences level off instead of scaling
-// at the full multiplier. Applied UNSAVED via the lab button; tweak then Save.
-// A sensible boot + assembly starting curve per mode. Normal: a real boot
-// floor, short phrases near pure-boot, assembly ramps with a touch of
-// super-linear lift for long sentences, and a belt taper that shortens short
-// gaps (boot) more than long ones (assembly) as the learner climbs. Applied
-// UNSAVED via the lab button; tweak then Save.
+// A sensible boot + assembly starting curve per mode: a real boot floor, short
+// phrases near pure-boot, assembly ramping with a touch of super-linear lift
+// for long sentences, and a belt taper that shortens short gaps (boot) more
+// than long ones (assembly) as the learner climbs. Easy is the same curve with
+// roughly double the boot and floor — the "doubling time" feel. Applied UNSAVED
+// via the lab button; tweak then Save.
 const SUGGESTED = {
-  normal_mode: { pause_reference: 'avg', pause_boot_ms: 1000, pause_assembly_threshold_ms: 900, pause_assembly_lin: 2.4, pause_assembly_quad: 120, pause_belt_boot: 0.72, pause_belt_assembly: 0.92, min_pause_ms: 700, max_pause_ms: 16000, playback_speed: 1.0 },
-  turbo_boost: { pause_reference: 'avg', pause_boot_ms: 1500, pause_assembly_threshold_ms: 900, pause_assembly_lin: 1.3, pause_assembly_quad: 60, pause_belt_boot: 1.0, pause_belt_assembly: 1.0, min_pause_ms: 1500, max_pause_ms: 12000 },
+  fast_mode: { pause_reference: 'avg', pause_boot_ms: 1000, pause_assembly_threshold_ms: 900, pause_assembly_lin: 2.4, pause_assembly_quad: 120, pause_belt_boot: 0.72, pause_belt_assembly: 0.92, min_pause_ms: 700, max_pause_ms: 16000, playback_speed: 1.0 },
+  easy_mode: { pause_reference: 'avg', pause_boot_ms: 2000, pause_assembly_threshold_ms: 900, pause_assembly_lin: 2.4, pause_assembly_quad: 120, pause_belt_boot: 0.72, pause_belt_assembly: 0.92, min_pause_ms: 1400, max_pause_ms: 16000, playback_speed: 1.0 },
 }
 function applySuggested() {
   if (labCfg.value) Object.assign(labCfg.value, SUGGESTED[labMode.value] || {})
@@ -660,6 +692,13 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0.75rem 1rem;
+}
+.field-note {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--color-paper-dim, var(--muted));
+  max-width: 620px;
 }
 
 /* NumField */

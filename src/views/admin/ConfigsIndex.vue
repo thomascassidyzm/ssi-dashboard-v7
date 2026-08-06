@@ -84,7 +84,7 @@ const cards = [
     title: 'Speaking',
     to: '/admin/configs/speaking',
     badge: 'speaking',
-    description: 'The speaking practice script + playback timing — phrase counts, the Fibonacci spaced-rep schedule, and the Turbo / Normal modes.',
+    description: 'The speaking practice script + playback timing — phrase counts, the Fibonacci spaced-rep schedule, and the Easy / Fast modes.',
     action: 'Open Speaking',
     accent: '#3b82f6',
     glow: 'rgba(59, 130, 246, 0.15)',

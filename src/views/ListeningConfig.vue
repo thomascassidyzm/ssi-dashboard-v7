@@ -237,7 +237,7 @@ import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './admin/a
 
 const { isAdmin, learner: currentUser } = useAuth()
 
-// The script/playback rows (script_shape, turbo_boost, normal_mode) live on a
+// The script/playback rows (script_shape, easy_mode, fast_mode) live on a
 // SEPARATE page now (/admin/configs/speaking) — they govern the speaking
 // practice script, not listening. This page still LOADS them (the preview's
 // listening/speaking ratio reads script_shape) but renders no editor for them.
