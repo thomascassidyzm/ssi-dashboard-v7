@@ -16,6 +16,7 @@ require('dotenv').config();
 const fs = require('fs-extra');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
+const { tryCanonicalVoiceId } = require('../services/shared/clip-identity.cjs');
 
 // Initialize Supabase client
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -76,6 +77,18 @@ async function importWelcomes(welcomesPath) {
       continue;
     }
 
+    // The welcomes JSON carries the voice as whatever the recording session
+    // wrote — sometimes already canonical ('elevenlabs_FVdz…'), sometimes a
+    // bare provider name with no voice in it at all. Only a canonicalisable
+    // value is imported; the rest are named and skipped, because a welcome
+    // filed under an unresolvable voice is a row no reader can match.
+    const voiceId = tryCanonicalVoiceId(welcome.voice);
+    if (!voiceId) {
+      console.log(`⚠ Skipping ${courseCode}: voice ${JSON.stringify(welcome.voice)} is not a canonicalisable voice id`);
+      skipped++;
+      continue;
+    }
+
     const s3Key = `mastered/${welcome.id}.mp3`;
     const durationMs = welcome.duration ? Math.round(welcome.duration * 1000) : null;
 
@@ -106,7 +119,7 @@ async function importWelcomes(welcomesPath) {
           .update({
             text: welcome.text,
             text_normalized: normalizeText(welcome.text),
-            voice_id: welcome.voice,
+            voice_id: voiceId,
             s3_key: s3Key,
             duration_ms: durationMs
           })
@@ -124,7 +137,7 @@ async function importWelcomes(welcomesPath) {
             text_normalized: normalizeText(welcome.text),
             language: 'eng', // Welcomes are in English (known language)
             role: 'welcome',
-            voice_id: welcome.voice,
+            voice_id: voiceId,
             origin: 'human', // These are human recordings
             s3_key: s3Key,
             duration_ms: durationMs

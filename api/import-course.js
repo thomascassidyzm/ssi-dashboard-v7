@@ -17,6 +17,12 @@
  */
 
 import { createClient } from '@supabase/supabase-js';
+// Voice-id canonicalisation only. `canonicalLanguage` is deliberately NOT used
+// in this file: it resolves through tools/sync/reference/language_codes.csv,
+// and .vercelignore excludes tools/ from the deployed function bundle, so a
+// manifest code like 'cy' would fail here and only here. canonicalVoiceId
+// reads no reference file, so it is safe in a Vercel function.
+import { canonicalVoiceId, tryCanonicalVoiceId, NON_VOICE_SENTINELS } from '../services/shared/clip-identity.cjs';
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
@@ -54,6 +60,64 @@ function normalizeText(text) {
 
 function resolveCourseCode(legacyId) {
   return COURSE_ALIASES[legacyId] || legacyId;
+}
+
+/**
+ * The voice id for a clip whose legacy manifest names no voice.
+ *
+ * `'legacy'` was one of four placeholders the importers wrote into the voice
+ * column; none of them is a voice, so a clip filed under one can never dedup
+ * against the same recording imported under another. The `voices` registry's
+ * convention for a recording with no TTS voice is `human_<course>_<role>`, and
+ * that is what these get. Kept identical to `legacyHumanVoiceId` in
+ * database/lib/import-legacy-course-core.cjs — the two importers must spell the
+ * same clip the same way.
+ */
+export function legacyHumanVoiceId(courseCode, role) {
+  if (!courseCode || !role) return null;
+  return canonicalVoiceId(`human_${courseCode}_${role}`);
+}
+
+/**
+ * The known side's database_code, taken from the course code itself
+ * ('cym_s_for_eng' -> 'eng'). Course codes are BUILT from database_codes, so
+ * this is canonical by construction and needs no reference file — which is what
+ * makes it usable inside a Vercel function (see the import note above).
+ */
+export function knownDbCode(courseCode) {
+  const parts = String(courseCode || '').split('_for_');
+  return parts.length === 2 && parts[1] ? parts[1] : null;
+}
+
+/**
+ * The same scheme for `shared_audio`, which has no course: encouragements and
+ * instructions are recorded once per KNOWN language and reused by every course,
+ * so the language and the audio type stand in for the course and the role.
+ * Returns null when the known language cannot be derived — the caller then
+ * leaves the old value rather than minting a fifth spelling.
+ */
+export function sharedHumanVoiceId(courseCode, audioType) {
+  const lang = knownDbCode(courseCode);
+  if (!lang || !audioType) return null;
+  return canonicalVoiceId(`human_shared_${lang}_${audioType}`);
+}
+
+/**
+ * The voice a `shared_audio` row gets when it is copied into `course_audio`.
+ * Copying it verbatim is how drift crosses tables. A row still carrying a
+ * non-voice placeholder resolves to the shared human scheme — what the same row
+ * would be written as today. A value that resolves to neither is carried
+ * across UNCHANGED and reported: this copier must not lose a clip, and a
+ * guessed voice is worse than a stale one.
+ */
+export function copiedVoiceId(sharedRow, courseCode) {
+  const raw = String(sharedRow.voice_id == null ? '' : sharedRow.voice_id).trim();
+  const resolved = NON_VOICE_SENTINELS.has(raw.toLowerCase())
+    ? sharedHumanVoiceId(courseCode, sharedRow.audio_type)
+    : tryCanonicalVoiceId(raw);
+  if (resolved) return resolved;
+  console.warn(`[import-course] shared_audio voice_id ${JSON.stringify(sharedRow.voice_id)} not canonicalisable — copied unchanged`);
+  return sharedRow.voice_id;
 }
 
 // =============================================================================
@@ -127,6 +191,13 @@ async function importAudioSamples(supabase, manifest, courseCode) {
       const role = ROLE_MAPPING[sample.role] || sample.role;
       const language = (role === 'known' || role === 'instruction') ? knownLang : targetLang;
       const cadence = sample.cadence || (language === knownLang ? 'natural' : 'slow');
+      // A named voice is canonicalised (and throws if it cannot be — an
+      // unresolvable voice must be fixed, never written through). An unnamed
+      // one takes the registry's human_<course>_<role> scheme. `'legacy'`
+      // survives only when neither course nor role is available to compose one.
+      const voiceId = sample.voice_id
+        ? canonicalVoiceId(sample.voice_id)
+        : (legacyHumanVoiceId(courseCode, role) || 'legacy');
 
       audioRecords.push({
         course_code: courseCode,
@@ -135,7 +206,7 @@ async function importAudioSamples(supabase, manifest, courseCode) {
         language: language,
         role: role,
         cadence: cadence,
-        voice_id: sample.voice_id || 'legacy',
+        voice_id: voiceId,
         origin: 'tts',
         s3_uuid: sample.id.toUpperCase(),
         duration_ms: Math.round((sample.duration || 0) * 1000)
@@ -200,7 +271,9 @@ async function importSharedAudio(supabase, manifest, courseCode) {
         order_index: i,
         s3_uuid: sample.id.toUpperCase(),
         duration_ms: Math.round((sample.duration || 0) * 1000),
-        voice_id: sample.voice_id || 'legacy',
+        voice_id: sample.voice_id
+          ? canonicalVoiceId(sample.voice_id)
+          : (sharedHumanVoiceId(courseCode, 'instruction') || 'legacy'),
         origin: 'human'
       });
     }
@@ -221,7 +294,9 @@ async function importSharedAudio(supabase, manifest, courseCode) {
         order_index: null,
         s3_uuid: sample.id.toUpperCase(),
         duration_ms: Math.round((sample.duration || 0) * 1000),
-        voice_id: sample.voice_id || 'legacy',
+        voice_id: sample.voice_id
+          ? canonicalVoiceId(sample.voice_id)
+          : (sharedHumanVoiceId(courseCode, 'encouragement') || 'legacy'),
         origin: 'human'
       });
     }
@@ -248,6 +323,11 @@ async function copySharedToCourse(supabase, manifest, courseCode) {
   if (fetchError) throw fetchError;
   if (!shared || shared.length === 0) return { count: 0 };
 
+  // Canonicalise the voice on the way across — copying it verbatim is how drift
+  // crosses tables. A shared row written before this scheme carries a non-voice
+  // placeholder; those resolve to the shared human scheme, i.e. what the same
+  // row would be written as today. `language` is left alone here: canonicalising
+  // it needs the reference CSV that .vercelignore keeps out of this bundle.
   const courseAudioRecords = shared.map(s => ({
     course_code: courseCode,
     text: s.text,
@@ -255,7 +335,7 @@ async function copySharedToCourse(supabase, manifest, courseCode) {
     language: s.language,
     role: s.audio_type === 'instruction' ? 'instruction' : 'encouragement',
     cadence: 'natural',
-    voice_id: s.voice_id,
+    voice_id: copiedVoiceId(s, courseCode),
     origin: s.origin,
     s3_uuid: s.s3_uuid,
     duration_ms: s.duration_ms

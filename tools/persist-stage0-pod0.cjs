@@ -40,11 +40,15 @@ const { v4: uuidv4 } = require('uuid')
 const { createClient } = require('@supabase/supabase-js')
 const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
 const { normalizeForAudio } = require('../services/shared/text-normalize.cjs')
+const { canonicalLanguage, canonicalVoiceId } = require('../services/shared/clip-identity.cjs')
 const { AUDIO_CACHE_CONTROL } = require('../services/shared/audio-cache-control.cjs')
 
 // Course-parameterized (default spa so the original spa path is intact):
 //   COURSE=hrv_for_eng node tools/persist-stage0-pod0.cjs
 const COURSE_CODE = (process.env.COURSE || 'spa_for_eng').trim()
+// `language` is canonicalised below, so the ISO-639-1 spellings here and the
+// ISO-3 the fallback derives from the course code no longer produce two shapes
+// from the same tool.
 const COURSE_META = {
   spa_for_eng: { language: 'es', srcDir: 'stage0-spa-pod0' },
   hrv_for_eng: { language: 'hr', srcDir: 'stage0-hrv-pod0' },
@@ -53,8 +57,19 @@ const META = COURSE_META[COURSE_CODE] || { language: COURSE_CODE.split('_')[0], 
 const POD_SLUG = 'pod-0'
 const POD_ID = `${COURSE_CODE}:${POD_SLUG}`
 const ROLE = 'pod_explainer'
-const LANGUAGE = META.language
-const VOICE_ID = 'comp:leo'
+// Canonical identity (services/shared/clip-identity.cjs), computed not spelt.
+const LANGUAGE = canonicalLanguage(META.language)
+const VOICE_ID = canonicalVoiceId('comp:leo')        // 'comp:xai_leo'
+/**
+ * TEMPORARY. Rows written before canonicalisation still carry the pre-canonical
+ * spelling, so the idempotency lookups below accept both — matching only the new
+ * spelling would find nothing and re-render clips that already exist, which is
+ * real TTS spend. Delete this (and turn the `.in()`s back into `.eq()`) once the
+ * approved back-fill has rewritten those rows.
+ */
+const LEGACY_VOICE_IDS = ['comp:leo']
+const VOICE_ID_READ = [VOICE_ID, ...LEGACY_VOICE_IDS]
+const LANGUAGE_READ = [...new Set([LANGUAGE, META.language])]
 const ORIGIN = 'tts'
 const SRC_DIR = path.join(process.env.HOME || require('os').homedir(), 'Desktop', META.srcDir)
 
@@ -65,7 +80,9 @@ const SRC_DIR = path.join(process.env.HOME || require('os').homedir(), 'Desktop'
 // shared store (no per-course means upload) and only the TARGET atoms are
 // per-language. Set POD_KNOWN_LOCAL=1 to fall back to the legacy per-course means.
 const SHARED_KNOWN_COURSE = 'pod_known_en'
-const SHARED_KNOWN_LANG = 'en'
+const SHARED_KNOWN_LANG = canonicalLanguage('en')     // 'eng'
+/** Same temporary dual-spelling read as above — see LEGACY_VOICE_IDS. */
+const SHARED_KNOWN_LANG_READ = [SHARED_KNOWN_LANG, 'en']
 const USE_SHARED_KNOWN = process.env.POD_KNOWN_LOCAL !== '1'
 
 const DRY_RUN = process.argv.includes('--dry-run')
@@ -116,9 +133,9 @@ async function ensureAudio({ text, mp3File, durationMs }) {
     .select('id, s3_key')
     .eq('course_code', COURSE_CODE)
     .in('text_normalized', lookupNorms)
-    .eq('language', LANGUAGE)
+    .in('language', LANGUAGE_READ)
     .eq('role', ROLE)
-    .eq('voice_id', VOICE_ID)
+    .in('voice_id', VOICE_ID_READ)
     .limit(1)
   if (selErr) throw new Error(`course_audio select "${text}": ${selErr.message}`)
   const existing = existingRows && existingRows[0]
@@ -169,9 +186,9 @@ async function resolveSharedMeans(meansText) {
     .select('id, s3_key')
     .eq('course_code', SHARED_KNOWN_COURSE)
     .in('text_normalized', lookupNorms)
-    .eq('language', SHARED_KNOWN_LANG)
+    .in('language', SHARED_KNOWN_LANG_READ)
     .eq('role', ROLE)
-    .eq('voice_id', VOICE_ID)
+    .in('voice_id', VOICE_ID_READ)
     .limit(1)
   if (error) throw new Error(`shared means lookup "${meansText}": ${error.message}`)
   const row = data && data[0]

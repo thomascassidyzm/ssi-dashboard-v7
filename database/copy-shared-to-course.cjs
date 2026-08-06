@@ -16,6 +16,9 @@
 
 require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
+// One canonicalising mapper, shared with the other shared->course copier
+// (api/import-course.js has its own, bundle-constrained, twin).
+const { canonicalSharedIdentity } = require('./lib/import-legacy-course-core.cjs');
 
 // =============================================================================
 // CONFIG
@@ -110,6 +113,7 @@ async function copySharedToCourse(courseCode, dryRun = false) {
 
   // Build records to insert (skip existing)
   const recordsToInsert = [];
+  const unresolved = [];
 
   for (const shared of sharedAudio) {
     const role = TYPE_TO_ROLE[shared.audio_type] || shared.audio_type;
@@ -119,17 +123,36 @@ async function copySharedToCourse(courseCode, dryRun = false) {
       continue; // Already exists
     }
 
+    // Canonicalise the identity on the way across. Copying language and
+    // voice_id verbatim is how drift propagates from shared_audio into
+    // course_audio; a row whose identity cannot be resolved is skipped and
+    // listed rather than copied under a value we cannot vouch for.
+    const identity = canonicalSharedIdentity(shared);
+    if (!identity) {
+      unresolved.push(shared);
+      continue;
+    }
+
     recordsToInsert.push({
       course_code: courseCode,
       text: shared.text,
       text_normalized: shared.text_normalized,
-      language: shared.language,
+      language: identity.language,
       role: role,
-      voice_id: shared.voice_id,
+      voice_id: identity.voice_id,
       origin: shared.origin,
       s3_key: shared.s3_key,
       duration_ms: shared.duration_ms
     });
+  }
+
+  if (unresolved.length) {
+    console.log(`⚠️  Skipped ${unresolved.length} shared row(s) whose identity cannot be canonicalised:`);
+    for (const u of unresolved.slice(0, 10)) {
+      console.log(`    language=${JSON.stringify(u.language)} voice_id=${JSON.stringify(u.voice_id)} audio_type=${JSON.stringify(u.audio_type)} text="${String(u.text).slice(0, 40)}"`);
+    }
+    if (unresolved.length > 10) console.log(`    … and ${unresolved.length - 10} more`);
+    console.log();
   }
 
   console.log(`New records to copy: ${recordsToInsert.length}`);

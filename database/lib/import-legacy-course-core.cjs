@@ -17,6 +17,13 @@
 
 const { createClient } = require('@supabase/supabase-js');
 const langService = require('../../services/language-code-service.cjs');
+const {
+  canonicalLanguage,
+  canonicalVoiceId,
+  tryCanonicalLanguage,
+  tryCanonicalVoiceId,
+  NON_VOICE_SENTINELS,
+} = require('../../services/shared/clip-identity.cjs');
 
 // =============================================================================
 // COURSE ALIASES - Single Source of Truth
@@ -55,6 +62,75 @@ function resolveCourseCode(legacyId) {
 function resolveLangCode(code) {
   // Use language-code-service: convert manifest codes (ja, cy, en) to database codes (jpn, cym, eng)
   return langService.standardToLegacy(code) || code;
+}
+
+/**
+ * The voice id for a clip a legacy manifest carries no voice for.
+ *
+ * A legacy manifest names no voice, so these importers used to write a
+ * placeholder — `'legacy_import'`, `'human_recording'`, `'legacy'`. None of
+ * those is a voice, so none of them can be canonicalised
+ * (services/shared/clip-identity.cjs rejects all three as non-voice
+ * sentinels), and a clip filed under a placeholder can never dedup against
+ * the same recording imported under another one.
+ *
+ * The `voices` registry already has a convention for exactly this case — a
+ * recording with no TTS voice behind it is `human_<course>_<role>`
+ * ('human_spa_for_eng_target1', 'human_cym_s_for_eng_presentation'). These
+ * clips ARE recordings, so that is what they get. `canonicalVoiceId` checks
+ * the composed form rather than trusting the template.
+ *
+ * @param {string} courseCode resolved course code, e.g. 'cym_s_for_eng'
+ * @param {string} role       v13 role, e.g. 'known', 'target1', 'presentation'
+ */
+function legacyHumanVoiceId(courseCode, role) {
+  if (!courseCode || !role) {
+    throw new Error(`cannot compose a legacy voice id: courseCode=${JSON.stringify(courseCode)} role=${JSON.stringify(role)}`);
+  }
+  return canonicalVoiceId(`human_${courseCode}_${role}`);
+}
+
+/**
+ * The same scheme for `shared_audio`, which has no course — encouragements and
+ * instructions are recorded once per KNOWN language and reused by every course,
+ * so the language and the audio type stand in for the course and the role:
+ * 'human_shared_eng_encouragement'.
+ *
+ * @param {string} language   known language, canonicalised here
+ * @param {string} audioType  'instruction' | 'encouragement'
+ */
+function sharedHumanVoiceId(language, audioType) {
+  if (!audioType) throw new Error(`cannot compose a shared voice id: audioType=${JSON.stringify(audioType)}`);
+  return canonicalVoiceId(`human_shared_${canonicalLanguage(language)}_${audioType}`);
+}
+
+/**
+ * The canonical (language, voice_id) for a `shared_audio` row being copied into
+ * `course_audio`. Copying the two columns verbatim is how drift crosses tables,
+ * so every copier goes through here.
+ *
+ * A shared row written before this scheme carries a non-voice placeholder
+ * ('human_recording', 'legacy'), which cannot be canonicalised — those resolve
+ * to the shared human scheme, i.e. exactly what the same row would be written
+ * as today. Anything else that will not canonicalise returns null so the caller
+ * SKIPS and REPORTS the row rather than copying a value it cannot vouch for.
+ *
+ * @returns {{language: string, voice_id: string}|null}
+ */
+function canonicalSharedIdentity(sharedRow) {
+  const language = tryCanonicalLanguage(sharedRow.language);
+  if (!language) return null;
+  const raw = String(sharedRow.voice_id == null ? '' : sharedRow.voice_id).trim();
+  let voice_id;
+  try {
+    voice_id = NON_VOICE_SENTINELS.has(raw.toLowerCase())
+      ? sharedHumanVoiceId(sharedRow.language, sharedRow.audio_type)
+      : tryCanonicalVoiceId(raw);
+  } catch {
+    voice_id = null;
+  }
+  if (!voice_id) return null;
+  return { language, voice_id };
 }
 
 function extractLanguages(manifest) {
@@ -173,7 +249,7 @@ async function importAudioSamples(supabase, manifest, courseCode, knownLang, tar
       if (role === 'encouragement' || role === 'instruction') continue;
 
       // Determine language based on role
-      const language = (audio.role === 'source' || role === 'known') ? knownLang : targetLang;
+      const language = canonicalLanguage((audio.role === 'source' || role === 'known') ? knownLang : targetLang);
 
       audioRecords.push({
         course_code: courseCode,
@@ -181,7 +257,7 @@ async function importAudioSamples(supabase, manifest, courseCode, knownLang, tar
         text_normalized: normalizeText(text),
         language: language,
         role: role,
-        voice_id: 'legacy_import',
+        voice_id: legacyHumanVoiceId(courseCode, role),
         origin: 'tts',
         s3_key: audio.id.includes('/') ? audio.id : `mastered/${audio.id}.mp3`,
         duration_ms: audio.duration ? Math.round(audio.duration * 1000) : null
@@ -196,9 +272,9 @@ async function importAudioSamples(supabase, manifest, courseCode, knownLang, tar
       course_code: courseCode,
       text: '[Course Introduction]',
       text_normalized: '[course introduction]',
-      language: knownLang,
+      language: canonicalLanguage(knownLang),
       role: 'presentation',
-      voice_id: 'human_recording',
+      voice_id: legacyHumanVoiceId(courseCode, 'presentation'),
       origin: 'human',
       s3_key: intro.id.includes('/') ? intro.id : `mastered/${intro.id}.mp3`,
       duration_ms: intro.duration ? Math.round(intro.duration * 1000) : null
@@ -286,9 +362,9 @@ async function importSharedAudio(supabase, manifest, knownLang, onProgress) {
     sharedRecords.push({
       text: enc.text,
       text_normalized: normalizeText(enc.text),
-      language: knownLang,
+      language: canonicalLanguage(knownLang),
       audio_type: 'instruction',
-      voice_id: 'human_recording',
+      voice_id: sharedHumanVoiceId(knownLang, 'instruction'),
       origin: 'human',
       s3_key: (enc.id || audioInfo?.id || '').includes('/')
         ? (enc.id || audioInfo?.id)
@@ -304,9 +380,9 @@ async function importSharedAudio(supabase, manifest, knownLang, onProgress) {
     sharedRecords.push({
       text: enc.text,
       text_normalized: normalizeText(enc.text),
-      language: knownLang,
+      language: canonicalLanguage(knownLang),
       audio_type: 'encouragement',
-      voice_id: 'human_recording',
+      voice_id: sharedHumanVoiceId(knownLang, 'encouragement'),
       origin: 'human',
       s3_key: (enc.id || audioInfo?.id || '').includes('/')
         ? (enc.id || audioInfo?.id)
@@ -359,18 +435,32 @@ async function copySharedToCourse(supabase, courseCode, knownLang, onProgress) {
     return { count: 0, reason: 'No shared audio to copy' };
   }
 
-  // Map shared_audio to course_audio format
-  const courseAudioRecords = sharedAudio.map(sa => ({
-    course_code: courseCode,
-    text: sa.text,
-    text_normalized: sa.text_normalized,
-    language: sa.language,
-    role: sa.audio_type, // 'instruction' or 'encouragement'
-    voice_id: sa.voice_id,
-    origin: sa.origin,
-    s3_key: sa.s3_key,
-    duration_ms: sa.duration_ms
-  }));
+  // Map shared_audio to course_audio format, canonicalising the identity on the
+  // way across — a verbatim copy propagates whatever drift the shared row holds.
+  const courseAudioRecords = [];
+  const unresolved = [];
+  for (const sa of sharedAudio) {
+    const identity = canonicalSharedIdentity(sa);
+    if (!identity) {
+      unresolved.push({ text_normalized: sa.text_normalized, language: sa.language, voice_id: sa.voice_id });
+      continue;
+    }
+    courseAudioRecords.push({
+      course_code: courseCode,
+      text: sa.text,
+      text_normalized: sa.text_normalized,
+      language: identity.language,
+      role: sa.audio_type, // 'instruction' or 'encouragement'
+      voice_id: identity.voice_id,
+      origin: sa.origin,
+      s3_key: sa.s3_key,
+      duration_ms: sa.duration_ms
+    });
+  }
+  if (unresolved.length) {
+    onProgress?.({ step: 4, message: `Skipped ${unresolved.length} shared row(s) whose language/voice cannot be canonicalised` });
+    console.warn(`[copySharedToCourse] SKIPPED ${unresolved.length} shared row(s) — identity not canonicalisable:`, unresolved.slice(0, 5));
+  }
 
   // Batch insert
   const BATCH_SIZE = 50;
@@ -391,7 +481,7 @@ async function copySharedToCourse(supabase, courseCode, knownLang, onProgress) {
     }
   }
 
-  return { count: imported };
+  return { count: imported, skippedUncanonicalisable: unresolved.length };
 }
 
 /**
@@ -938,6 +1028,9 @@ module.exports = {
   normalizeText,
   resolveCourseCode,
   resolveLangCode,
+  legacyHumanVoiceId,
+  sharedHumanVoiceId,
+  canonicalSharedIdentity,
   extractLanguages,
   generateDisplayName,
   createSupabaseClient,
