@@ -77,6 +77,17 @@ export default async function handler(req, res) {
         // and nodes (the practice phrases)
 
         // First: the introduction/presentation itself
+        // LEGO COMPLETENESS (Tom, 2026-08-06): a LEGO plays only with ALL THREE
+        // of intro + target voice 1 + target voice 2. Missing any one drops the
+        // LEGO, drops its whole round, and breaks every later LEGO contingent on
+        // it — course-breaking, not cosmetic. The known-side clip is not in the
+        // triple, and `source || target1` (the old gate) passed a LEGO carrying
+        // neither an intro nor a second voice.
+        const introLegoTarget = intro.node?.target?.text || '';
+        const legoComplete = !!(findAudioId(intro.presentation, 'presentation')
+          && findAudioId(introLegoTarget, 'target1')
+          && findAudioId(introLegoTarget, 'target2'));
+
         if (intro.presentation) {
           cycleNum++;
           const presentationAudioId = findAudioId(intro.presentation, 'presentation');
@@ -92,7 +103,8 @@ export default async function handler(req, res) {
             sourceId: presentationAudioId, // Presentation plays in source slot
             target1Id: findAudioId(intro.node?.target?.text, 'target1'),
             target2Id: findAudioId(intro.node?.target?.text, 'target2'),
-            hasAudio: !!presentationAudioId
+            hasAudio: !!presentationAudioId,
+            legoComplete
           });
         }
 
@@ -113,7 +125,9 @@ export default async function handler(req, res) {
             sourceId: findAudioId(knownText, 'source'),
             target1Id: findAudioId(targetText, 'target1'),
             target2Id: findAudioId(targetText, 'target2'),
-            hasAudio: !!(findAudioId(knownText, 'source') || findAudioId(targetText, 'target1'))
+            // Both voices, not source-or-voice-1: a voice-2-only gap kills the round.
+            hasAudio: !!(findAudioId(targetText, 'target1') && findAudioId(targetText, 'target2')),
+            legoComplete
           });
         }
 

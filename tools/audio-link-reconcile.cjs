@@ -13,6 +13,13 @@
  * WHOLE COURSE, always. The Script Viewer's missing-audio filter only sees the
  * current batch of 20 rounds; this walks every seed, lego and phrase.
  *
+ * COMPLETENESS IS PER-ROLE, NOT PER-CLIP (Tom, 2026-08-06). A LEGO needs ALL
+ * THREE of intro + target voice 1 + target voice 2. Short of that the player
+ * drops the LEGO, which drops its whole round, and every later LEGO that was
+ * contingent on it breaks downstream — so a LEGO gap is COURSE-BREAKING and a
+ * practice-phrase gap is cosmetic. The report leads with the LEGO verdict and
+ * the re-link pass writes LEGOs before cycles. See `legoVerdict()`.
+ *
  * THE FOUR BUCKETS, per slot (a slot = one content row × one audio role):
  *   (a) LINKED             — link set and the course_audio row is alive
  *   (b) UNLINKED-BUT-PRESENT — link NULL but a matching alive row exists.
@@ -153,6 +160,43 @@ const CONTENT_COLS = {
   course_practice_phrases: 'id, seed_number, id::text AS ref, known_text, target_text, lego_id, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms',
 }
 
+// ── LEGO COMPLETENESS — the ruling that outranks slot counting ──────────────
+// Tom, 2026-08-06: "completeness is per-ROLE, not per-clip". A LEGO is only
+// playable when ALL THREE of its clips are present:
+//
+//     INTRO (the presentation of the LEGO) + target VOICE 1 + target VOICE 2
+//
+// Missing ANY of the three is COURSE-BREAKING, not cosmetic: the player drops
+// the LEGO, which drops its whole round, and because the methodology makes
+// every later LEGO contingent on the ones already introduced, the break
+// propagates downstream. A gap in a cycle/practice phrase is minor by
+// comparison — the round still plays.
+//
+// Corollary, and the reason this is coded as its own function: any verdict
+// built on `hasAudio = prompt + voice 1` is WRONG for a LEGO and flatters the
+// course. The KNOWN-side clip is not part of the triple; a voice-2-only gap is
+// blocking on its own.
+const LEGO_TRIPLE = { presentation: 'intro', target1: 'voice1', target2: 'voice2' }
+const TRIPLE_PARTS = ['intro', 'voice1', 'voice2']
+
+/**
+ * legoVerdict — classify one LEGO from its triple of slot statuses.
+ *   complete       all three already linked and alive → plays today
+ *   free_strict    every gap has a strict-key clip waiting → free to fix, now
+ *   free_loose     ditto but at least one gap needs a loose match (opt-in)
+ *   broken         at least one clip does not exist → COURSE-BREAKING, TTS
+ * `missing` names which of intro/voice1/voice2 are not yet linked.
+ */
+function legoVerdict(state) {
+  const st = (p) => state[p] || 'absent'
+  const missing = TRIPLE_PARTS.filter((p) => st(p) !== 'linked')
+  if (!missing.length) return { verdict: 'complete', missing }
+  const kinds = missing.map(st)
+  if (kinds.every((k) => k === 'strict')) return { verdict: 'free_strict', missing }
+  if (kinds.every((k) => k === 'strict' || k === 'loose')) return { verdict: 'free_loose', missing }
+  return { verdict: 'broken', missing }
+}
+
 // ── the swappable choice function ───────────────────────────────────────────
 /**
  * resolveSlot — the ONLY place a link choice is made. Implements the fallback
@@ -203,6 +247,8 @@ async function reconcileCourse(client, course) {
   const relinkable = []
   const danglingRows = []
   const linkedIdsSeen = new Set()
+  // Per-LEGO state for the completeness triple (see legoVerdict below).
+  const legoStates = new Map()
 
   for (const table of Object.keys(CONTENT_COLS)) {
     const rows = (await client.query(
@@ -220,7 +266,15 @@ async function reconcileCourse(client, course) {
           strictCands = c || null
         } else {
           const t = row[slot.text]
-          if (!t || !String(t).trim()) { b.skipped++; continue }
+          if (!t || !String(t).trim()) {
+            b.skipped++
+            if (table === 'course_legos' && LEGO_TRIPLE[slot.role]) {
+              let st = legoStates.get(row.id)
+              if (!st) legoStates.set(row.id, st = { ref: row.ref, seed_number: row.seed_number })
+              st[LEGO_TRIPLE[slot.role]] = 'no-text'
+            }
+            continue
+          }
           // Prefer candidates whose language matches the expected track; fall
           // back to any candidate for the role (the DB trigger ignores
           // language entirely) and let the caller see it in the log.
@@ -234,6 +288,11 @@ async function reconcileCourse(client, course) {
         }
 
         const res = resolveSlot({ currentId, aliveIds, strictCands, looseCands })
+        if (table === 'course_legos' && LEGO_TRIPLE[slot.role]) {
+          let st = legoStates.get(row.id)
+          if (!st) legoStates.set(row.id, st = { ref: row.ref, seed_number: row.seed_number })
+          st[LEGO_TRIPLE[slot.role]] = res.status
+        }
         if (res.status === 'linked') { b.linked++; continue }
         if (res.status === 'absent') { b.absent++; continue }
         if (res.status === 'dangling') { b.dangling++; danglingRows.push({ course_code, table, row_id: row.id, ref: row.ref, column: slot.col, dangling_id: currentId, healable: false }); continue }
@@ -267,7 +326,31 @@ async function reconcileCourse(client, course) {
   }
   for (const d of danglingRows) d.cross_course = crossCourse.has(d.dangling_id)
 
-  return { course_code, known_lang, target_lang, audio_rows: audio.length, buckets, relinkable, dangling: danglingRows }
+  // LEGO rollup — the course-breaking verdict, computed on the triple.
+  const legos = { total: legoStates.size, complete: 0, free_strict: 0, free_loose: 0, broken: 0,
+                  missing_intro: 0, missing_voice1: 0, missing_voice2: 0,
+                  // A LEGO whose voices are both live and which is blocked ONLY
+                  // by a missing intro is the cheapest possible round rescue —
+                  // one clip (and its authored text) buys back a whole round.
+                  broken_intro_only: 0, broken_voices_only: 0, broken_refs: [] }
+  for (const st of legoStates.values()) {
+    const v = legoVerdict(st)
+    legos[v.verdict]++
+    if (v.verdict !== 'complete') {
+      if (v.missing.includes('intro')) legos.missing_intro++
+      if (v.missing.includes('voice1')) legos.missing_voice1++
+      if (v.missing.includes('voice2')) legos.missing_voice2++
+    }
+    if (v.verdict === 'broken') {
+      if (v.missing.length === 1 && v.missing[0] === 'intro') legos.broken_intro_only++
+      else if (!v.missing.includes('intro')) legos.broken_voices_only++
+    }
+    if (v.verdict === 'broken' && legos.broken_refs.length < 50) {
+      legos.broken_refs.push({ lego: st.ref, seed: st.seed_number, missing: v.missing })
+    }
+  }
+
+  return { course_code, known_lang, target_lang, audio_rows: audio.length, buckets, legos, relinkable, dangling: danglingRows }
 }
 
 // ── the re-link pass ────────────────────────────────────────────────────────
@@ -303,6 +386,17 @@ function printCourse(result) {
   const free = t.strict + t.loose
   console.log(`\n━━ ${result.course_code}  (${result.known_lang} → ${result.target_lang}, ${result.audio_rows} audio rows)`)
   const pad = (s, n) => String(s).padStart(n)
+  // LEGOs lead. A broken LEGO drops its whole round and everything downstream
+  // that depends on it; a phrase gap is cosmetic by comparison.
+  const L = result.legos
+  console.log(`  LEGOs (intro + voice1 + voice2 — all three or the round dies)`)
+  console.log(`    complete ${L.complete}/${L.total}`
+    + `   free to fix ${L.free_strict}${L.free_loose ? ` (+${L.free_loose} loose)` : ''}`
+    + `   COURSE-BREAKING ${L.broken}`)
+  if (L.broken) {
+    console.log(`    missing by part — intro ${L.missing_intro}  voice1 ${L.missing_voice1}  voice2 ${L.missing_voice2}`)
+    console.log(`    blocked ONLY on the intro: ${L.broken_intro_only}   (cheapest round rescue in the course)`)
+  }
   console.log('  slot                                  linked   strict    loose   absent  dangling')
   for (const s of SLOTS) {
     const b = result.buckets[slotKey(s)]
@@ -361,7 +455,12 @@ async function main() {
       if (!JSON_OUT) printCourse(r)
     }
 
+    // LEGOs before cycles, always (Tom 2026-08-06). If a pass ever aborts on
+    // drift part-way, the writes that already landed are the ones that unblock
+    // rounds, not the ones that polish practice phrases.
+    const PRIORITY = { course_legos: 0, course_seeds: 1, course_practice_phrases: 2 }
     let items = results.flatMap((r) => r.relinkable)
+      .sort((a, b) => (PRIORITY[a.table] - PRIORITY[b.table]) || (a.seed_number - b.seed_number))
     const looseCount = items.filter((i) => i.match === 'loose').length
     if (!INCLUDE_LOOSE) items = items.filter((i) => i.match === 'strict')
 
@@ -435,7 +534,14 @@ async function main() {
       console.log(JSON.stringify({ mode, results: results.map((r) => ({ ...r, relinkable: undefined, dangling: r.dangling.length })), recoverable: items.length, log: logPath, reconcile }, null, 1))
     } else {
       const g = results.map(totals).reduce((a, b) => { for (const k of Object.keys(a)) a[k] += b[k]; return a }, { linked: 0, strict: 0, loose: 0, absent: 0, dangling: 0, dangling_healable: 0, skipped: 0 })
+      const GL = results.reduce((a, r) => { for (const k of Object.keys(a)) a[k] += r.legos[k]; return a },
+        { total: 0, complete: 0, free_strict: 0, free_loose: 0, broken: 0, missing_intro: 0, missing_voice1: 0, missing_voice2: 0, broken_intro_only: 0, broken_voices_only: 0 })
       console.log(`\n━━ ESTATE TOTAL over ${results.length} course(s)`)
+      console.log(`  LEGO COMPLETENESS (intro + voice1 + voice2) — course-breaking when short`)
+      console.log(`    complete ${GL.complete}/${GL.total}   free to fix ${GL.free_strict} (+${GL.free_loose} loose)   BROKEN ${GL.broken}`)
+      console.log(`    of the incomplete: missing intro ${GL.missing_intro}  voice1 ${GL.missing_voice1}  voice2 ${GL.missing_voice2}`)
+      console.log(`    blocked ONLY on the intro: ${GL.broken_intro_only}   |   blocked only on voices: ${GL.broken_voices_only}`)
+      console.log(`  ── slot counts below; phrase/cycle gaps are cosmetic beside the line above ──`)
       console.log(`  (a) LINKED               ${g.linked}`)
       console.log(`  (b) UNLINKED-BUT-PRESENT ${g.strict + g.loose}   (${g.strict} strict + ${g.loose} loose)  ← free`)
       // The gap between (b) and what this pass will actually write is entirely
@@ -458,7 +564,7 @@ async function main() {
 
 // Exported for the unit tests; the DB work only runs when this is the entry
 // point, so requiring the module never touches the estate.
-module.exports = { strictKey, looseKey, resolveSlot, SLOTS, HEAL_EXCLUDE }
+module.exports = { strictKey, looseKey, resolveSlot, legoVerdict, LEGO_TRIPLE, TRIPLE_PARTS, SLOTS, HEAL_EXCLUDE }
 
 if (require.main === module) {
   main().catch((e) => { console.error(e.stack || e.message); process.exit(1) })

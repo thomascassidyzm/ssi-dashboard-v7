@@ -3,7 +3,7 @@
 // worth pinning: it decides what gets written to a live course.
 // Run: npx vitest run tools/audio-link-reconcile.test.js
 import { describe, it, expect } from 'vitest'
-import { strictKey, looseKey, resolveSlot, SLOTS, HEAL_EXCLUDE } from './audio-link-reconcile.cjs'
+import { strictKey, looseKey, resolveSlot, legoVerdict, LEGO_TRIPLE, SLOTS, HEAL_EXCLUDE } from './audio-link-reconcile.cjs'
 
 const audio = (id, origin = 'tts', created_at = '2026-01-01') => ({ id, origin, created_at })
 
@@ -69,6 +69,57 @@ describe('resolveSlot', () => {
     expect(r.status).toBe('dangling-healable-strict')
     // The apply pass only ever writes where the column IS NULL, so this status
     // is a report, not an instruction.
+  })
+})
+
+// Tom, 2026-08-06: completeness is per-ROLE, not per-clip. A LEGO needs intro
+// + voice1 + voice2; short of that its whole round dies and everything
+// contingent on it breaks downstream.
+describe('legoVerdict — the course-breaking rule', () => {
+  const all = (s) => ({ intro: s, voice1: s, voice2: s })
+
+  it('the triple is intro + target voice 1 + target voice 2 — the known clip is NOT in it', () => {
+    expect(LEGO_TRIPLE).toEqual({ presentation: 'intro', target1: 'voice1', target2: 'voice2' })
+    expect(Object.values(LEGO_TRIPLE)).not.toContain('known')
+  })
+
+  it('all three linked = complete', () => {
+    expect(legoVerdict(all('linked'))).toEqual({ verdict: 'complete', missing: [] })
+  })
+
+  it('a voice-2-only gap is COURSE-BREAKING on its own', () => {
+    const v = legoVerdict({ intro: 'linked', voice1: 'linked', voice2: 'absent' })
+    expect(v.verdict).toBe('broken')
+    expect(v.missing).toEqual(['voice2'])
+  })
+
+  it('a missing intro alone is COURSE-BREAKING — voices present is not enough', () => {
+    const v = legoVerdict({ intro: 'absent', voice1: 'linked', voice2: 'linked' })
+    expect(v.verdict).toBe('broken')
+    expect(v.missing).toEqual(['intro'])
+  })
+
+  it('prompt + voice 1 present does NOT make a LEGO complete (the flattering gate)', () => {
+    // The verdict this rule exists to overturn: known-side audio is irrelevant
+    // to the triple, and voice2 alone still kills the round.
+    expect(legoVerdict({ intro: 'linked', voice1: 'linked' }).verdict).toBe('broken')
+  })
+
+  it('gaps that all have a strict clip waiting are free to fix, not broken', () => {
+    expect(legoVerdict({ intro: 'strict', voice1: 'linked', voice2: 'strict' }).verdict).toBe('free_strict')
+  })
+
+  it('a gap needing a loose match is held separately (opt-in), still not broken', () => {
+    expect(legoVerdict({ intro: 'strict', voice1: 'loose', voice2: 'linked' }).verdict).toBe('free_loose')
+  })
+
+  it('one unrecoverable gap makes the whole LEGO broken even if the others are free', () => {
+    expect(legoVerdict({ intro: 'strict', voice1: 'linked', voice2: 'dangling' }).verdict).toBe('broken')
+  })
+
+  it('an unseen part counts as absent, never as present', () => {
+    expect(legoVerdict({}).verdict).toBe('broken')
+    expect(legoVerdict({}).missing).toEqual(['intro', 'voice1', 'voice2'])
   })
 })
 
