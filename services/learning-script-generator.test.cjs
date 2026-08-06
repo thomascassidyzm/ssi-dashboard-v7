@@ -263,3 +263,329 @@ describe('applyLearnerAudioGate + numberRounds — gap-compression renumbering',
     expect(buildMap.get('S0002L01')).toHaveLength(1)
   })
 })
+
+// ---------------------------------------------------------------------------
+// Seed-phase review for GRADUATED seeds (parity with the learner app,
+// generateLearningScript.ts:1251 / :1439).
+//
+// A graduated seed drops out of USE-PHRASE spaced rep but stays eligible for
+// SEED-PHASE production review (skip offset >= SEED_PHASE_START_OFFSET, where
+// the review item is the full parent seed sentence). Popty used to skip a
+// graduated seed from spaced rep ENTIRELY, losing every seed-phase review.
+// This fixture pins BOTH halves: the >=144 seed review is emitted, the <144
+// use-phrase review of a graduated seed is still suppressed.
+// ---------------------------------------------------------------------------
+
+const { generateLearningScript } = require('./learning-script-generator.cjs')
+
+const COURSE = 'tst_for_eng'
+const LEGO_COUNT = 200          // one LEGO per seed → round N reviews seed N-offset
+const GRAD_OFFSET = 30          // listening.offset: seeds graduate 30 LEGOs after their last
+
+const legoId = (n) => 'S' + String(n).padStart(4, '0') + 'L01'
+
+function makeFixture() {
+  const legoRows = []
+  const phraseRows = []
+  const seedRows = []
+  for (let s = 1; s <= LEGO_COUNT; s++) {
+    legoRows.push({
+      lego_id: legoId(s),
+      seed_number: s,
+      lego_index: 1,
+      type: 'A',
+      is_new: true,
+      known_text: `lego ${s}`,
+      target_text: `zielwort ${s}`,
+      known_audio_id: `k-${s}`,
+      target1_audio_id: `t1-${s}`,
+      target2_audio_id: `t2-${s}`,
+      presentation_audio_id: `p-${s}`,
+    })
+    seedRows.push({
+      seed_number: s,
+      known_text: `seed sentence ${s}`,
+      target_text: `saatzsatz ${s}`,
+      known_audio_id: `sk-${s}`,
+      target1_audio_id: `st1-${s}`,
+      target2_audio_id: `st2-${s}`,
+    })
+    phraseRows.push({
+      id: `b-${s}`, course_code: COURSE, seed_number: s, lego_index: 1, position: 1,
+      phrase_role: 'build', known_text: `build ${s}`, target_text: `bauen ${s}`,
+      known_audio_id: `bk-${s}`, target1_audio_id: `bt1-${s}`, target2_audio_id: `bt2-${s}`,
+    })
+    for (let u = 1; u <= 2; u++) {
+      phraseRows.push({
+        id: `u-${s}-${u}`, course_code: COURSE, seed_number: s, lego_index: 1, position: 1 + u,
+        phrase_role: 'use', known_text: `use ${s}.${u}`, target_text: `nutzen ${s}.${u}`,
+        known_audio_id: `uk-${s}-${u}`, target1_audio_id: `ut1-${s}-${u}`, target2_audio_id: `ut2-${s}-${u}`,
+      })
+    }
+  }
+  return { legoRows, phraseRows, seedRows }
+}
+
+// Minimal chainable Supabase stub: every filter/order is a no-op that returns
+// `this`; awaiting the builder resolves the rows for that table (sliced by
+// .range() so the practice-phrase pager terminates).
+function makeFakeSupabase({ legoRows, phraseRows, seedRows }) {
+  return {
+    from(table) {
+      const builder = {
+        _table: table,
+        _select: '',
+        _range: null,
+        select(cols) { this._select = cols || ''; return this },
+        eq() { return this },
+        in() { return this },
+        gte() { return this },
+        not() { return this },
+        order() { return this },
+        limit() { return this },
+        range(from, to) { this._range = [from, to]; return this },
+        _rows() {
+          switch (this._table) {
+            case 'algorithm_config':
+              return [
+                { key: 'script_shape', config: { spacedRepOffsets: FIBONACCI } },
+                { key: 'listening', config: { enabled: true, offset: GRAD_OFFSET } },
+              ]
+            case 'course_legos':
+              return legoRows
+            case 'course_practice_phrases':
+              return phraseRows
+            case 'course_seeds':
+              return seedRows
+            default:
+              return []
+          }
+        },
+        then(resolve, reject) {
+          let data = this._rows()
+          if (this._range) data = data.slice(this._range[0], this._range[1] + 1)
+          return Promise.resolve({ data, error: null }).then(resolve, reject)
+        },
+      }
+      return builder
+    },
+  }
+}
+
+describe('generateLearningScript — graduated seeds keep their seed-phase reviews', () => {
+  const fixture = makeFixture()
+  const supabase = makeFakeSupabase(fixture)
+
+  // Window around round 145: offset 144 reaches back to round 1, whose seed
+  // graduated long ago (LEGO ordinal 1 vs current 145, graduation offset 30).
+  const run = () => generateLearningScript(supabase, COURSE, 20, 140)
+
+  it('emits the >=144 review as the graduated seed\'s full sentence', async () => {
+    const { rounds } = await run()
+    const round145 = rounds.find(r => r.roundNumber === 145)
+    expect(round145).toBeTruthy()
+
+    const seedReview = round145.items.find(i => i.type === 'review' && i.reviewOffset === 144)
+    expect(seedReview).toBeTruthy()
+    expect(seedReview.legoId).toBe(legoId(1))
+    expect(seedReview.reviewItemKind).toBe('seed')
+    // The item is the parent SEED sentence, not a use-phrase.
+    expect(seedReview.known_text).toBe('seed sentence 1')
+    expect(seedReview.target_text).toBe('saatzsatz 1')
+  })
+
+  it('still suppresses a graduated seed\'s sub-144 use-phrase review', async () => {
+    const { rounds, stats } = await run()
+    expect(stats.graduatedSeeds).toBeGreaterThan(0)
+    const round145 = rounds.find(r => r.roundNumber === 145)
+
+    // Offset 34 → round 111; that seed graduated (ordinal 111 vs 144 at the
+    // last graduation check, gap 33 >= 30) so no use-phrase review is due.
+    for (const offset of [34, 55, 89]) {
+      const review = round145.items.find(i => i.type === 'review' && i.legoIndex === 145 - offset)
+      expect(review, `offset ${offset} must stay suppressed`).toBeUndefined()
+    }
+
+    // Offset 21 → round 124, NOT yet graduated: ordinary use-phrase review.
+    const live = round145.items.find(i => i.type === 'review' && i.legoIndex === 124)
+    expect(live).toBeTruthy()
+    expect(live.reviewItemKind).not.toBe('seed')
+    expect(live.target_text).toMatch(/^nutzen 124\./)
+  })
+})
+
+// ---------------------------------------------------------------------------
+// Player-delivery annotation (Script Viewer: always show intent, annotate
+// reality). Nothing is filtered — rows the live player cannot deliver stay
+// visible and carry playerCanDeliver:false + a reason + the missing roles.
+// ---------------------------------------------------------------------------
+
+const { annotatePlayerDelivery, missingAudioRoles } = require('./learning-script-generator.cjs')
+
+const mkItem = (type, extra = {}) => ({
+  type,
+  legoId: 'S0001L01',
+  known_text: `known ${type}`,
+  target_text: `target ${type}`,
+  known_audio_uuid: 'k',
+  target1_audio_uuid: 't1',
+  target2_audio_uuid: 't2',
+  ...extra,
+})
+
+describe('missingAudioRoles — which of the three voices are absent', () => {
+  it('names every absent role, in known/target1/target2 order', () => {
+    expect(missingAudioRoles(mkItem('build'))).toEqual([])
+    expect(missingAudioRoles(mkItem('build', { target2_audio_uuid: null }))).toEqual(['target2'])
+    expect(missingAudioRoles(mkItem('build', { known_audio_uuid: null, target2_audio_uuid: null })))
+      .toEqual(['known', 'target2'])
+    expect(missingAudioRoles(null)).toEqual(['known', 'target1', 'target2'])
+  })
+
+  it('honours a restricted role list (seed reviews need only target1)', () => {
+    expect(missingAudioRoles(mkItem('review', { known_audio_uuid: null }), ['target1'])).toEqual([])
+    expect(missingAudioRoles(mkItem('review', { target1_audio_uuid: null }), ['target1'])).toEqual(['target1'])
+  })
+})
+
+describe('annotatePlayerDelivery — per-row flags', () => {
+  const fullLego = mkLego('S0001L01', 1).lego
+
+  it('marks every row deliverable when the LEGO and phrases are fully voiced', () => {
+    const out = annotatePlayerDelivery(
+      [mkItem('intro'), mkItem('debut'), mkItem('build'), mkItem('review'), mkItem('consolidate')],
+      { lego: fullLego }
+    )
+    expect(out.every(i => i.playerCanDeliver === true)).toBe(true)
+    expect(out.every(i => i.playerDropReason === undefined)).toBe(true)
+  })
+
+  it('flags the WHOLE round when the LEGO is short one voice (player drops the round)', () => {
+    const out = annotatePlayerDelivery(
+      [mkItem('intro'), mkItem('debut'), mkItem('build')],
+      { lego: { ...fullLego, target2_audio_uuid: null } }
+    )
+    expect(out.map(i => i.playerCanDeliver)).toEqual([false, false, false])
+    expect(out.every(i => i.playerDropReason === 'lego-audio')).toBe(true)
+    expect(out[0].missingAudioRoles).toEqual(['target2'])
+  })
+
+  it('flags only the offending phrase row when the LEGO itself is fine', () => {
+    const out = annotatePlayerDelivery(
+      [mkItem('debut'), mkItem('build', { target2_audio_uuid: null }), mkItem('consolidate')],
+      { lego: fullLego }
+    )
+    expect(out.map(i => i.playerCanDeliver)).toEqual([true, false, true])
+    expect(out[1].playerDropReason).toBe('phrase-audio')
+    expect(out[1].missingAudioRoles).toEqual(['target2'])
+  })
+
+  it('needs only target1 for a seed-sentence review, and says so when it is absent', () => {
+    const ok = annotatePlayerDelivery(
+      [mkItem('review', { reviewItemKind: 'seed', known_audio_uuid: null, target2_audio_uuid: null })],
+      { lego: fullLego }
+    )
+    expect(ok[0].playerCanDeliver).toBe(true)
+
+    const bad = annotatePlayerDelivery(
+      [mkItem('review', { reviewItemKind: 'seed', target1_audio_uuid: null })],
+      { lego: fullLego }
+    )
+    expect(bad[0].playerCanDeliver).toBe(false)
+    expect(bad[0].playerDropReason).toBe('seed-audio')
+  })
+
+  it('flags a review of a LEGO the player never introduces', () => {
+    const out = annotatePlayerDelivery(
+      [mkItem('review', { legoId: 'S0009L01' })],
+      { lego: fullLego, droppedLegoIds: new Set(['S0009L01']) }
+    )
+    expect(out[0].playerCanDeliver).toBe(false)
+    expect(out[0].playerDropReason).toBe('reviewed-lego-dropped')
+  })
+
+  it('never mutates the items it is given', () => {
+    const items = [mkItem('build', { target1_audio_uuid: null })]
+    annotatePlayerDelivery(items, { lego: fullLego })
+    expect(items[0].playerCanDeliver).toBeUndefined()
+  })
+})
+
+describe('generateLearningScript — a real audio hole is shown AND annotated', () => {
+  // Round 5's LEGO is short its second target voice (the fra_for_eng S0015L01
+  // shape from the 2026-08-06 diff); LEGO 7's BUILD phrase is short one voice.
+  const holed = () => {
+    const fixture = makeFixture()
+    fixture.legoRows.find(l => l.lego_id === legoId(5)).target2_audio_id = null
+    fixture.phraseRows.find(p => p.id === 'b-7').target2_audio_id = null
+    return makeFakeSupabase(fixture)
+  }
+  const run = () => generateLearningScript(holed(), COURSE, 12, 0)
+
+  it('still SHOWS the round the player drops (intent is never hidden)', async () => {
+    const { rounds } = await run()
+    const round5 = rounds.find(r => r.roundNumber === 5)
+    expect(round5).toBeTruthy()
+    expect(round5.legoId).toBe(legoId(5))
+    expect(round5.items.length).toBeGreaterThan(0)
+  })
+
+  it('annotates that round as undeliverable, naming the missing voice', async () => {
+    const { rounds } = await run()
+    const round5 = rounds.find(r => r.roundNumber === 5)
+    expect(round5.playerDelivers).toBe(false)
+    expect(round5.playerDropReason).toBe('lego-audio')
+    expect(round5.missingAudioRoles).toEqual(['target2'])
+    expect(round5.playerRoundNumber).toBeNull()
+    expect(round5.undeliverableItemCount).toBe(round5.items.length)
+    expect(round5.items.every(i => i.playerCanDeliver === false)).toBe(true)
+  })
+
+  it('leaves neighbouring rounds deliverable and shows the learner renumbering', async () => {
+    const { rounds } = await run()
+    expect(rounds.find(r => r.roundNumber === 4).playerDelivers).toBe(true)
+    expect(rounds.find(r => r.roundNumber === 4).playerRoundNumber).toBe(4)
+    // Everything after the hole slides down by one in the live player.
+    expect(rounds.find(r => r.roundNumber === 6).playerRoundNumber).toBe(5)
+    expect(rounds.find(r => r.roundNumber === 10).playerRoundNumber).toBe(9)
+  })
+
+  it('flags the single unvoiced phrase without condemning its round', async () => {
+    const { rounds } = await run()
+    const round7 = rounds.find(r => r.roundNumber === 7)
+    expect(round7.playerDelivers).toBe(true)
+    const bad = round7.items.filter(i => i.playerDropReason === 'phrase-audio')
+    expect(bad).toHaveLength(1)
+    expect(bad[0].known_text).toBe('build 7')
+    expect(bad[0].missingAudioRoles).toEqual(['target2'])
+    // Its own BUILD/DEBUT neighbours are untouched.
+    expect(round7.items.find(i => i.type === 'debut').playerCanDeliver).toBe(true)
+  })
+
+  it('flags later reviews of the dropped LEGO', async () => {
+    const { rounds } = await run()
+    const reviewsOfFive = rounds
+      .flatMap(r => r.items)
+      .filter(i => i.type === 'review' && i.legoId === legoId(5))
+    expect(reviewsOfFive.length).toBeGreaterThan(0)
+    expect(reviewsOfFive.every(i => i.playerCanDeliver === false)).toBe(true)
+    expect(reviewsOfFive.every(i => i.playerDropReason === 'reviewed-lego-dropped')).toBe(true)
+  })
+
+  it('totals the gaps in stats', async () => {
+    const { rounds, stats } = await run()
+    expect(stats.roundsPlayerDrops).toBe(1)
+    expect(stats.itemsPlayerCannotDeliver).toBe(
+      rounds.reduce((sum, r) => sum + r.items.filter(i => i.playerCanDeliver === false).length, 0)
+    )
+    expect(stats.itemsPlayerCannotDeliver).toBeGreaterThan(0)
+  })
+
+  it('a fully-voiced course flags nothing', async () => {
+    const { rounds, stats } = await generateLearningScript(makeFakeSupabase(makeFixture()), COURSE, 12, 0)
+    expect(stats.roundsPlayerDrops).toBe(0)
+    expect(stats.itemsPlayerCannotDeliver).toBe(0)
+    expect(rounds.every(r => r.playerDelivers === true)).toBe(true)
+    expect(rounds.map(r => r.playerRoundNumber)).toEqual(rounds.map(r => r.roundNumber))
+  })
+})

@@ -27,6 +27,10 @@
  *   learner's do (generateLearningScript.ts:816-823 / :726-768). Default
  *   (production view) keeps every row, flagged hasAudio:false — that is the
  *   review tool's job.
+ * - ALWAYS-ON player-delivery annotation (annotatePlayerDelivery, below): every
+ *   row and every round carries playerCanDeliver / playerDropReason /
+ *   missingAudioRoles, and each round carries the round number the learner
+ *   would actually see. Intent is never hidden; reality is annotated on top.
  *
  * ROUND structure (verified line-by-line against the learner):
  * 1. INTRO  - presentation audio ("The Japanese for X is...")
@@ -263,6 +267,75 @@ function applyLearnerAudioGate(legoRecords, buildMap, useMap) {
     buildMap: gateMap(buildMap),
     useMap: gateMap(useMap),
   }
+}
+
+/**
+ * ---------------------------------------------------------------------------
+ * Player-delivery annotation — PURE, unit tested.
+ * ---------------------------------------------------------------------------
+ * The Script Viewer always shows the FULL intended course. These helpers say,
+ * per row and per round, whether the live player can actually deliver it today,
+ * so a reviewer sees the gap without the row disappearing.
+ *
+ * Mirrors the learner's four gates (generateLearningScript.ts):
+ * - :764  LEGOs missing any of known/target1/target2 are filtered out BEFORE
+ *         the walk → the WHOLE round vanishes and later rounds renumber.
+ * - :706  phrases missing any of the three never enter the BUILD/USE pools →
+ *         build / consolidate / use-phrase review rows vanish.
+ * - :1277 a seed-phase review needs the seed's target1 audio, else the player
+ *         falls back to a use-phrase — the seed row shown here never plays.
+ * - a review of a LEGO the player dropped can never fire: that LEGO never
+ *   entered its legoState.
+ */
+const AUDIO_ROLE_FIELDS = { known: 'known_audio_uuid', target1: 'target1_audio_uuid', target2: 'target2_audio_uuid' }
+const ALL_AUDIO_ROLES = ['known', 'target1', 'target2']
+
+function missingAudioRoles(record, roles = ALL_AUDIO_ROLES) {
+  if (!record) return [...roles]
+  return roles.filter(role => !record[AUDIO_ROLE_FIELDS[role]])
+}
+
+/**
+ * Annotate one round's items — PURE. Returns NEW item objects; never mutates.
+ *
+ * @param {Array}  items
+ * @param {object} ctx
+ * @param {object} ctx.lego            the round's own LEGO record (audio uuids)
+ * @param {Set}    ctx.droppedLegoIds  LEGO ids the player never introduces
+ */
+function annotatePlayerDelivery(items, ctx = {}) {
+  const droppedLegoIds = ctx.droppedLegoIds || new Set()
+  const legoMissing = missingAudioRoles(ctx.lego)
+  const roundIsDropped = legoMissing.length > 0
+
+  return (items || []).map(item => {
+    // The round's LEGO is unvoiced → the player emits no round at all, so
+    // every row in it is undeliverable regardless of its own audio.
+    if (roundIsDropped) {
+      return { ...item, playerCanDeliver: false, playerDropReason: 'lego-audio', missingAudioRoles: legoMissing }
+    }
+
+    if (item.type === 'intro' || item.type === 'debut') {
+      return { ...item, playerCanDeliver: true }
+    }
+
+    if (item.type === 'review' && droppedLegoIds.has(item.legoId)) {
+      return { ...item, playerCanDeliver: false, playerDropReason: 'reviewed-lego-dropped', missingAudioRoles: [] }
+    }
+
+    // Seed-sentence reviews need only the seed's target1; without it the
+    // player silently substitutes a use-phrase, so this row never plays.
+    const roles = (item.type === 'review' && item.reviewItemKind === 'seed') ? ['target1'] : ALL_AUDIO_ROLES
+    const missing = missingAudioRoles(item, roles)
+    if (missing.length === 0) return { ...item, playerCanDeliver: true }
+
+    return {
+      ...item,
+      playerCanDeliver: false,
+      playerDropReason: (item.type === 'review' && item.reviewItemKind === 'seed') ? 'seed-audio' : 'phrase-audio',
+      missingAudioRoles: missing,
+    }
+  })
 }
 
 /**
@@ -617,6 +690,20 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     return { rounds: [], allItems: [], stats: { legosLoaded: 0 } }
   }
 
+  // Player-delivery annotation basis — computed course-wide BEFORE any gating,
+  // so it is identical in both views and costs no extra query.
+  //  - droppedLegoIds: LEGOs the live player never introduces (missing audio),
+  //    which also kills every review of them.
+  //  - playerRoundNumbers: the round number the LEARNER would see, after the
+  //    player's dropped-LEGO renumbering (null for a LEGO it never plays).
+  const droppedLegoIds = new Set(
+    allLegoRecords.filter(rec => !legoHasFullAudio(rec.lego)).map(rec => rec.lego.id)
+  )
+  const playerRoundNumbers = new Map()
+  for (const { record, roundNumber } of numberRounds(allLegoRecords.filter(rec => legoHasFullAudio(rec.lego)))) {
+    playerRoundNumbers.set(record.lego.id, roundNumber)
+  }
+
   let { buildMap, useMap } = await loadAllPracticePhrasesGrouped(supabase, courseCode)
 
   let legosDroppedForAudio = 0
@@ -843,8 +930,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
 
       if (!reviewLegoState) continue
-      // Graduated seeds have dropped out of spaced rep (learner :1340)
-      if (graduatedSeeds.has(reviewLegoState.lego.seed.seed_number)) continue
+      const reviewOffset = n - review.legoIndex
+      // Graduated seeds drop out of USE-PHRASE review but stay eligible for
+      // SEED-PHASE production review (offset >= SEED_PHASE_START_OFFSET) —
+      // nothing truly retires (generateLearningScript.ts:1251,1439).
+      if (graduatedSeeds.has(reviewLegoState.lego.seed.seed_number) && !reviewItemIsSeed(reviewOffset)) continue
       if (seenReviewLegos.has(reviewLegoState.legoId)) continue
       seenReviewLegos.add(reviewLegoState.legoId)
 
@@ -854,7 +944,6 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       // LEGOs crossing the threshold => same seed a few rounds running) is
       // DESIRED — no de-clustering/dedup here. Falls back to the use-phrase path
       // if the seed record is missing (never render an empty seed card).
-      const reviewOffset = n - review.legoIndex
       if (reviewItemIsSeed(reviewOffset)) {
         const seed = seedSentenceFor(reviewLegoState.legoId, seedSentenceMap)
         if (seed) {
@@ -1000,6 +1089,13 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
     // Only emit rounds past the lookback range (i.e. at the requested offset)
     if (n > offset) {
+      // Annotate reality on top of intent — never filters, only labels.
+      const annotatedItems = annotatePlayerDelivery(dedupedItems, {
+        lego: currentLego.lego,
+        droppedLegoIds,
+      })
+      const legoMissing = missingAudioRoles(currentLego.lego)
+
       rounds.push({
         roundNumber: n,
         legoId: currentLego.lego.id,
@@ -1007,12 +1103,18 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         seedId: currentLego.seed.seed_id,
         legoType: currentLego.lego.type,
         isNew: currentLego.lego.new,
-        items: dedupedItems,
+        items: annotatedItems,
         spacedRepReviews: reviewIndices,
-        itemCount: dedupedItems.length,
+        itemCount: annotatedItems.length,
+        playerDelivers: legoMissing.length === 0,
+        ...(legoMissing.length > 0
+          ? { playerDropReason: 'lego-audio', missingAudioRoles: legoMissing }
+          : {}),
+        playerRoundNumber: playerRoundNumbers.get(currentLego.lego.id) ?? null,
+        undeliverableItemCount: annotatedItems.filter(i => i.playerCanDeliver === false).length,
       })
 
-      allItems.push(...dedupedItems)
+      allItems.push(...annotatedItems)
     }
   }
 
@@ -1032,6 +1134,9 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     },
     itemsWithAudio: allItems.filter(i => i.hasAudio).length,
     itemsMissingAudio: allItems.filter(i => !i.hasAudio && i.type !== 'intro').length,
+    // Player-delivery annotation totals (always on, both views).
+    itemsPlayerCannotDeliver: allItems.filter(i => i.playerCanDeliver === false).length,
+    roundsPlayerDrops: rounds.filter(r => r.playerDelivers === false).length,
     graduatedSeeds: graduatedSeeds.size,
     spacedRepOffsets: SPACED_REP_OFFSETS,
     scriptShapeSource,
@@ -1056,6 +1161,8 @@ module.exports = {
   legoHasFullAudio,
   phraseHasFullAudio,
   applyLearnerAudioGate,
+  annotatePlayerDelivery,
+  missingAudioRoles,
   numberRounds,
   FIBONACCI,
   SEED_PHASE_START_OFFSET,
