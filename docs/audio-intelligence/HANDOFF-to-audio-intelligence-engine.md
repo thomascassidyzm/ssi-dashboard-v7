@@ -141,3 +141,54 @@ running at ~4 min/clip on this box tonight (load 22), which is why the tier-3 ro
 
 **Standing constraint from Tom's brief, which I assume binds you too: detection-method validation
 only. No repairs, no TTS, no DB writes.**
+
+---
+
+## ADDENDUM 2026-08-06 08:30 — a defect class no tier currently measures: the MID-VOICE click
+
+Tom listened to the 15-clip morning spot-check page
+(`docs/audio-qc-2026-08-06/deu-spot-check-morning-2026-08-06.html`) and passed the batch:
+*broadly excellent, all clearly audible.* One qualification, in his words:
+
+> a couple carry a tiny residual click **DURING** the voice (not after it), less noticeable
+> than before — accepted as-is.
+
+That is a **fifth defect class**, and none of tiers 1-4 as specified can see it:
+
+- **tier 1 (duration)** — a click costs no duration at all.
+- **tier 2 (edge shape)** — measures the *ending*. Tom is explicit that this artefact sits inside
+  the speech, before the tail. Tier 2 scored every one of these clips CLEAN, and it was right to.
+- **tier 3 (VAD)** — a few-ms transient does not move a voiced/unvoiced boundary.
+- **tier 4 (Whisper align)** — survived it: veracity passed at CER 0 on all 270 candidates in this
+  batch. ASR is robust to exactly this and will keep saying the clip is fine.
+
+**The population to probe.** The 15 clips Tom actually heard, all `deu_for_eng`, all now live at
+their accepted revision, all measured clean by tier 2 at 08:15Z:
+
+```
+055f6617-dd48-4e1b-ae6b-f82aeaf2441a  22a57857-6683-4482-bc21-ae03e5e13c8b
+19fdaafe-5dc0-489a-96ab-f92dc434a9dc  24612161-261e-42dc-8e58-7adf328221d4
+41478dcb-abc4-4912-b81f-bf75e284a0e4  41c7c5a7-12e2-43fc-a2a8-ae646845f5e0
+5537704e-b6fb-4fc1-a2cd-ab0a47186390  599dd764-26a9-4acf-812d-00142b31ca35
+6a45568e-8c4c-4aaa-a018-87d447f219e4  6bc3ed4b-ae43-4881-b59f-67f022329b03
+72f34da6-db04-46b0-98d9-99c085160af5  7bed81e2-5426-45de-81a9-1b2c92c78c86
+ad182d4b-213c-4694-964a-a5ca7e34d692  c50e625a-b578-497f-864b-bd57991f6469
+d3bc509f-f59d-4c39-9f70-5dfb933c5a37
+```
+
+Fetch them as learners do: `https://staging.saysomethingin.app/api/audio/<id>.v<revision>`.
+
+**What is and is not known.** Tom said "a couple" — he did not name which two, and nobody has
+asked him to. So this is an unlabelled population of 15 containing ~2 positives: enough to make a
+candidate detector falsifiable (a detector that flags 8 of 15 is wrong; one that flags 2-3 is worth
+taking back to his ear), not enough to calibrate a threshold on. **If you build a candidate
+detector, the deliverable is a 15-clip page with your flags marked, for one ear pass — not a
+tuned number.**
+
+His phrase "less noticeable than before" says the artefact is **not created by the repair**: it was
+present in the shipped clips too, and the fresh render attenuated it. That points at the mastering
+chain rather than the provider, and it means the **384 never-trimmed fresh renders** (population 3
+above) are the right specificity control here as well.
+
+**This is a future engine check, not today's job.** It is logged, not scheduled. Nothing about it
+blocks or qualifies the 2026-08-06 accept — Tom passed those clips knowing about it.
