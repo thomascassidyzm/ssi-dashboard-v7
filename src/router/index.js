@@ -501,6 +501,12 @@ const routes = [
     meta: { title: 'Pod Lab - Admin' }
   },
   {
+    path: '/admin/configs/voice',
+    name: 'VoiceLab',
+    component: () => import('../views/admin/VoiceLab.vue'),
+    meta: { title: 'VOICELAB - Admin' }
+  },
+  {
     path: '/admin/configs/vad',
     name: 'VadLab',
     component: () => import('../views/admin/VadLab.vue'),
