@@ -1,13 +1,25 @@
 # Pod 0 canonical — Aran's new text is live (2026-08-06)
 
-**231 sentences across 22 scenes**, replacing the previous 142 across 15. Aran's paste is
-the source of truth — all 231 lines are character-identical to it once three mechanical
-fixes are applied. **Nothing has propagated to learners.** No audio was generated, no
-per-course pod dialogue was regenerated, nothing was deleted.
+**231 sentences across 22 scenes**, replacing the previous 142 across 15. Built from Aran's
+own file — all 231 lines are character-identical to it once three mechanical fixes are
+applied. **Nothing has propagated to learners.** No audio was generated, no per-course pod
+dialogue was regenerated, nothing was deleted.
+
+## Source and provenance
+
+Aran's original, `pod0-aran-original-2026-08-06.txt`, is archived byte-identical — UTF-8 BOM
+and CRLF line endings and all — and is what the build reads.
+
+The canonical was first built from a copy recovered out of the conversation transcript,
+before the original was on disk. **The two were diffed and are identical on every non-blank
+line**, trailing spaces included; the original differs only in BOM, CRLF and extra blank
+lines between scenes. Rebuilding from the original reproduced all 231 lines byte-for-byte and
+produced exactly the same three corrections. The transcript recovery was faithful — no
+content discrepancy to report. Both copies are kept.
 
 ## Scene-by-scene count
 
-| Scene | Title | In Aran's paste | Seeded | Was |
+| Scene | Title | In Aran's file | Seeded | Was |
 |---|---|---|---|---|
 | 1 | A Day of Greetings (i) - 8 am - Morning to night | 4 | 4 ✓ | 4 |
 | 2 | A Day of Greetings (ii) - a seat - Morning to night | 5 | 5 ✓ | 2 |
@@ -34,8 +46,8 @@ per-course pod dialogue was regenerated, nothing was deleted.
 | | **Total** | **231** | **231** | **142** |
 
 Every row matches. Verified after seeding: 231 rows stored, `global_order` contiguous 1-231,
-per-scene `sentence_number` contiguous, and every stored `english_text`/`speaker`/`author_notes`
-identical to the committed markdown.
+per-scene `sentence_number` contiguous across all 22 scenes, and every stored
+`english_text`/`speaker`/`author_notes` identical to the committed markdown.
 
 ## What changed in the shape
 
@@ -47,6 +59,28 @@ identical to the committed markdown.
   tail that used to end First conversation (`100,000. 60. 70. 1 o'clock. 11 o'clock.`) has moved
   to the end of the new scene 15 — that is the only line that changed scene.
 
+## Voicing — Aran's ruling, recorded in the canonical doc
+
+Aran, verbatim: *"Did some interleaving in the first few scenes and then beyond that it
+seemed faster to do them as chunks, without scene-based to and fro for everything, they'll
+work fine like that (also kind of fits with what I've been saying about not needing multiple
+voices)."* Tom adds: **a minimum of two voices where needed, especially for less-well-served
+TTS languages.**
+
+This is now in the STATUS header of the canonical doc, so the future audio pass inherits it
+rather than re-deriving it. What it changed here:
+
+- **Scenes 1-14 and 22 stay genuinely interleaved dialogue** with their own characters
+  (Sarah/Neighbour, Barista/Customer 1-3, Waiter, Guest/Receptionist, Learner/Friend). Two
+  voices is the floor, not the target — distinct voices per character where the TTS supports it.
+- **Scenes 15-21 are chunks, and no to-and-fro has been forced onto them.** I had inferred an
+  alternating `Friend` on **11 lines** that read as a second party's reply — `No, we only take
+  cash.`, `It's down there on the left.`, `Would you like to order some drinks?` and eight more.
+  **Those 11 are now all `Learner`.** Every line in scenes 15-21 is `Learner`, except the drill
+  tails. If a future pass wants a second voice there it is a free choice, not something the
+  data dictates.
+- **Drill tails remain `Narrator`**, as under canon v2.
+
 ## Corrections made to the source
 
 Three, all mechanical, all itemised in the corrections doc:
@@ -55,7 +89,10 @@ Three, all mechanical, all itemised in the corrections doc:
    Renumbered to `10.`; text untouched. The only numbering anomaly in the file.
 2. **Curly apostrophes -> straight** — the source mixes 112 straight against 12 curly, across 8
    lines. Normalised to straight ASCII. **A default taken, reversible on one word.**
-3. **Trailing whitespace stripped** — 14 lines. Raw archive keeps it, canonical does not.
+3. **Trailing whitespace stripped** — 14 lines. The archive keeps it, the canonical does not.
+
+The BOM and CRLF line endings are file format, not content — stripped on read, not counted as
+corrections, preserved in the archive.
 
 ## Left alone deliberately — questions for Tom or Aran
 
@@ -69,9 +106,9 @@ Three, all mechanical, all itemised in the corrections doc:
 ## Speakers: 142 carried across, 89 inferred
 
 Every one of the 142 old rows was consumed exactly once, so all their speakers carried over.
-The 89 inferred are the new lines. No new speaker names were invented — all three names used
-(`Learner`, `Friend`, `Narrator`) already exist in pod-0/pod-0.5. **These are the ones for Aran
-to correct in the dashboard if any are wrong:**
+The 89 inferred are the new lines. No new speaker names were invented — all names used
+already exist in pod-0/pod-0.5. **These are the ones for Aran to correct in the dashboard if
+any are wrong:**
 
 | Scene.line | Speaker | Line |
 |---|---|---|
@@ -103,18 +140,18 @@ to correct in the dashboard if any are wrong:**
 | 16.6 | Learner | Do you have anything to eat? |
 | 16.7 | Learner | Can we pay? |
 | 16.8 | Learner | Can we pay by card? |
-| 16.9 | Friend | No, we only take cash. |
+| 16.9 | Learner | No, we only take cash. |
 | 16.10 | Learner | I'm sorry, I don't have any cash. |
 | 16.11 | Narrator | A million. 80. 90. 2 o'clock. 10 o'clock. |
 | 17.1 | Learner | Is there a cash machine near here? |
-| 17.2 | Friend | Do you want to pay by cash or card or put it on the room? |
+| 17.2 | Learner | Do you want to pay by cash or card or put it on the room? |
 | 17.3 | Learner | Can we put it on the room, please? |
-| 17.4 | Friend | Would you like to pay by cash or card or on the room? |
-| 17.5 | Friend | Did you want to pay by cash or card? |
+| 17.4 | Learner | Would you like to pay by cash or card or on the room? |
+| 17.5 | Learner | Did you want to pay by cash or card? |
 | 17.6 | Learner | We'll pay by card again, please. |
 | 17.7 | Learner | It's hot today, again. |
 | 17.8 | Learner | Is the water warm? |
-| 17.9 | Friend | No, it's a little cold today. |
+| 17.9 | Learner | No, it's a little cold today. |
 | 17.10 | Learner | It's not bad. |
 | 17.11 | Narrator | 3 o'clock. 9 o'clock. January. February. |
 | 18.1 | Learner | That's a bad idea. |
@@ -154,22 +191,21 @@ to correct in the dashboard if any are wrong:**
 | 21.2 | Learner | It sounds as though you want us not to do that. |
 | 21.3 | Learner | Is there a toilet here? |
 | 21.4 | Learner | Can you tell me where the toilet is? |
-| 21.5 | Friend | It's down there on the left. |
-| 21.6 | Friend | It's down there on the right. |
+| 21.5 | Learner | It's down there on the left. |
+| 21.6 | Learner | It's down there on the right. |
 | 21.7 | Learner | Can you say that again? |
-| 21.8 | Friend | Yes, I said it's over there. |
+| 21.8 | Learner | Yes, I said it's over there. |
 | 21.9 | Learner | What is that? |
 | 21.10 | Learner | What is that over there? |
-| 21.11 | Friend | Would you like to order some drinks? |
-| 21.12 | Friend | Do you want to order some drinks first? |
-| 21.13 | Friend | Did you want something to drink first? |
+| 21.11 | Learner | Would you like to order some drinks? |
+| 21.12 | Learner | Do you want to order some drinks first? |
+| 21.13 | Learner | Did you want something to drink first? |
 | 21.14 | Narrator | October. November. December. |
 
-Convention used: in the day-of-greetings scenes 2 and 3 the existing characters continue
-(`Sarah`, `Passenger`, `Barista`). In the Extra-phrases scenes the learner-voiced lines are
-`Learner` and the replies are `Friend`, following pod-0.5. Drill tails are `Narrator`, which is
-what pod-0 already used, and they carry the same canon-v2 `vocab coda` author-note — 16 rows
-now, up from 10, because there are seven more drill tails.
+Scenes 2 and 3 are early interleaved dialogue, so the existing characters continue there
+(`Sarah`, `Passenger`, `Barista`). Scenes 15-21 are chunks: all `Learner`, per Aran's ruling
+above. Drill tails are `Narrator`, which pod-0 already used, and they carry the same canon-v2
+`vocab coda` author-note — 16 rows now, up from 10, because there are seven more drill tails.
 
 ## What is now stale — nothing has propagated
 
@@ -181,7 +217,7 @@ behind. Most already have full audio (142 of 142 clips); the exceptions are `cym
 A future approved propagation pass would therefore have to cover **66 courses × 89 new sentences
 ≈ 5,900 new dialogue lines**, plus their audio. It is not purely additive either: First
 conversation moves from scene 15 to scene 22, so any regen has to remap scene numbers rather
-than append.
+than append. Aran's chunk ruling should cut the voice-casting cost of that pass.
 
 **I have not run any of it.** No `pod-bulk-migrate regen`, no `pod-sync`, no TTS, no deletions.
 Queueing audio-pass requests for the affected courses would record the backlog properly — say
@@ -190,8 +226,8 @@ the word and I will, but I have queued nothing unasked.
 ## Recoverability
 
 The seed tool DELETEs the slug before inserting, so the previous 142 rows were snapshotted to
-`docs/pods/pod0-live-snapshot-2026-08-06.json` and committed **before** the execute. Restoring the
-old canonical is a re-insert of that file.
+`docs/pods/pod0-live-snapshot-2026-08-06.json` and committed **before** the first execute.
+Restoring the old canonical is a re-insert of that file.
 
 One tool change came with this: `seed-canonical-pods.cjs` now reads an optional 4th `Notes`
 column into `author_notes`. Without it, a re-seed silently dropped the canon-v2 vocab-coda notes

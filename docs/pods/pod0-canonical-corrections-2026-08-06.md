@@ -1,12 +1,26 @@
 # Pod 0 canonical — corrections to Aran's source (2026-08-06)
 
-Aran's paste (`pod0-aran-raw-2026-08-06.txt`, 22 scenes, 231 sentences) is the source of truth.
-The raw archive is byte-identical to what he sent. This file lists **every** change made
-downstream of it in `pod0-english-canonical.md`. Nothing else was touched — no wording,
-no register, no British-English spellings, no lines dropped or merged from the old text.
+Aran's own file (`pod0-aran-original-2026-08-06.txt`, 22 scenes, 231 sentences) is the source
+of truth. It is archived byte-identical to what he sent, UTF-8 BOM and CRLF line endings and
+all. This file lists **every** change made downstream of it in `pod0-english-canonical.md`.
+Nothing else was touched — no wording, no register, no British-English spellings, no lines
+dropped or merged from the old text.
 
 Verified independently: all 231 lines are character-identical to the source once these
 three fixes are applied.
+
+## Provenance — two copies, proven to agree
+
+The canonical was first built from a copy recovered out of Tom's conversation transcript
+(`pod0-aran-raw-2026-08-06.txt`) before Aran's original file was on disk. Both are kept.
+They were diffed: **identical on every non-blank line**, trailing spaces included. The
+original differs only in file format — a UTF-8 BOM, CRLF line endings, and more blank lines
+between scenes. Rebuilding the canonical from the original reproduced all 231 lines
+byte-for-byte, and produced exactly the same three corrections below. The transcript
+recovery was faithful; the original is now what the build reads.
+
+The BOM and the CRs are file format, not content, so they are stripped on read and are not
+counted as corrections. The archive keeps them.
 
 ## 1. Scene 3 numbering — one line renumbered
 
