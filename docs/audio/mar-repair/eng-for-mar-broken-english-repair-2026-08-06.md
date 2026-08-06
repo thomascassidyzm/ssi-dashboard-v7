@@ -58,10 +58,10 @@ each is in `docs/audio/mar-repair/proposal-main.json` with its evidence and a co
 
 | before | after |
 |---|---|
-| felt here | felt better today |
+| felt here | felt okay |
 | were in here | we were in the pub yesterday |
 | we were in here today | I felt better when we were in the pub |
-| we were in here in English | we were in the pub with my friends |
+| we were in here in English | we were in the pub last week |
 
 ### S0149 — the dropped negation
 
@@ -83,7 +83,7 @@ The Marathi `फारसं अवघड नाही` contains `नाही`,
 | S0248 | I thought the film was complete rubbish very well | I thought that the film was complete rubbish |
 | S0248 | and I want my money back very well | I want my money back today |
 | S0245 | I've done tonight | I've done a lot in a short time |
-| S0195 | on the table very well | I left it on the table |
+| S0195 | on the table very well | it's on the table |
 | S0195 | the money I left on the table yet | the money I left yesterday |
 | S0114 | today than yesterday yet | worse today than yesterday |
 | S0114 | I'm not sure yet I feel as if I'm doing worse | I'm not sure, but I feel as if I'm doing worse |
@@ -101,9 +101,10 @@ broken. So the method was:
 > text first, then a LEGO card introduced at or before that seed — and change word order only
 > where a well-formed course sentence shows the same order.
 
-**28 of 34 are HIGH confidence, and 24 of those are near-verbatim recombinations of the seed's own
-Marathi.** Six are MEDIUM, every one of them for the same narrow reason — adverb placement — and
-each is labelled in the JSON as an explicit gap.
+**31 of 34 are HIGH confidence, and most of those are near-verbatim recombinations of the seed's
+own Marathi.** Three are MEDIUM, every one of them for the same narrow reason — adverb placement —
+and each is labelled in the JSON as an explicit gap. (It was six until the cross-check below
+replaced three of them with better-grounded alternatives.)
 
 Two judgements are worth your eye because they are the ones that shaped the work:
 
@@ -118,13 +119,45 @@ That is not a legal split, and no phrase-level repair fixes it. I repaired the f
 into well-formed Marathi anyway, but **the S0269 cards remain wrong and that seed needs
 re-decomposition, not phrase repair.**
 
+### The independent cross-check — three other authors, same 35 phrases
+
+I did not want my own Marathi to be the only judgement on this, so three separate authors worked
+the same list from the same brief, blind to my drafts. That gave a real check rather than a
+self-review.
+
+**They converged with me on eight items — several with byte-identical Marathi arrived at
+independently**, including `मला वाटतं ती चांगली गोष्ट आहे`, `ते फारसं अवघड नाही`,
+`तो आज रात्री तुम्हाला विचारणार आहे`, `मला वाट पाहायची नाही` and `तुमच्या वडिलांची वाट पाहायला`.
+Independent convergence on the exact string is the strongest evidence available without a speaker,
+and it raises my confidence on those specifically.
+
+**They independently reached the same verdict on the false positive** — `happy with how much in
+English` was left untouched by both of us, for the same reason.
+
+**Three of their choices were better than mine and I took theirs.** Each removed a judgement I had
+had to label as a gap, at no extra clip cost:
+
+| | mine (withdrawn) | adopted | why theirs is better |
+|---|---|---|---|
+| S0118 | felt better today | **felt okay** | `ठीक` is invariant — no agreement, no adverb-placement judgement |
+| S0118 | we were in the pub with my friends | **we were in the pub last week** | S52 attests `गेल्या आठवड्यात` in exactly this slot; mine rested on comitative vs locative order |
+| S0195 | I left it on the table | **it's on the table** | avoids the `ठेवणे` = "put" vs English "leave" mismatch entirely |
+
+Where we differed elsewhere I kept mine, and the reasons are on the record — mostly that their
+alternative drifted from the seed's own meaning (`better` where the seed is about doing *worse*),
+changed person without cause (`we thought`, `she's going to`), duplicated a phrase already present
+on the same LEGO, or was rated MEDIUM by its own author where mine was HIGH.
+
+One genuine toss-up, unresolved and not worth blocking on: on S0149 they preferred *"not very
+difficult"* where I wrote *"isn't very difficult"*. Both restore the negation, which was the actual
+defect. I kept mine because the seed itself and the five sibling USE phrases all say "isn't".
+
 ### Explicit gaps
 
 1. **No Marathi speaker has read any of this.** Every judgement is mine, grounded in in-course
    attestation. "Good, unverified" is exactly what this is.
-2. **Six MEDIUM items are adverb-placement judgements** from in-course word order, not from an
-   external grammar reference. They are: S0114L01B03, S0118L01B03, S0118L02U04, S0123L01U05,
-   S0195L01B03, S0195L02B02.
+2. **Three MEDIUM items are adverb-placement judgements** from in-course word order, not from an
+   external grammar reference: S0114L01B03, S0123L01U05, S0195L02B02.
 3. **I found six LEGO cards that are themselves mis-glossed** and did *not* fix them, because a
    card fix is a decomposition call:
    - S0223 L1 `तो विचारणार` glossed "he's going to" — it already contains the verb *ask*.
@@ -227,6 +260,8 @@ It restores the original text *and* the original audio ids for all 34 rows from
 
 - `docs/audio/mar-repair/proposal-main.json` — 30 repairs with per-item evidence, confidence and gaps
 - `docs/audio/mar-repair/proposal-D-s0149.json` — the 4 dropped-negation repairs
+- `docs/audio/mar-repair/proposal-E-adopted.json` — the 3 alternatives adopted from the cross-check
+- `docs/audio/mar-repair/proposal-A.json` / `-B` / `-C` — the three independent authors' full proposals
 - `docs/audio/mar-repair/applied-log.json` — **the rollback record**: before-text and before-audio-ids for all 34
 - `docs/audio/mar-repair/dryrun-log.json` — the pre-flight run
 - `scripts/mar/revert.cjs` — the revert
