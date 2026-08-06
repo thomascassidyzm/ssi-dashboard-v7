@@ -31,8 +31,7 @@ needs a fresh take. So the genuinely reworded count is 19 and 15.
 109 (North) and 108 (South) surviving lines moved position in the renumbering. Moving
 is not re-recording — those takes are still good; the ordering was simply re-pointed.
 
-Line by line, scene by scene: **[Welsh pod-0 — what changed under the recording](#)**
-(`docs/pods/pod0-welsh-recording-diff-2026-08-06.md`, published alongside this).
+Line by line, scene by scene: **[Welsh pod-0 — what changed under the recording](https://watson-1.tail4968cb.ts.net/d/8e01c02b)**.
 
 ## What blocks the recording, and whose call it is
 
@@ -49,7 +48,7 @@ too, so an English rewording creates recording work even where the Welsh is unto
 A smaller list needs an eye rather than a fresh translation: 20 (North) and 15 (South)
 lines where Welsh exists but the English it was written for has changed. Old English,
 new English and the existing Welsh are set side by side in
-`docs/pods/pod0-welsh-translation-worklist-2026-08-06.md`. Several will turn out to be
+[the translation worklist](https://watson-1.tail4968cb.ts.net/d/18ace96b). Several will turn out to be
 fine as they stand — "I'm learning Northern Welsh" became "I'm learning Welsh", and the
 Welsh says "Dw i'n dysgu Cymraeg" either way — but that is a human's call, so they are
 all held rather than quietly kept.
