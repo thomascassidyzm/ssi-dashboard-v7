@@ -85,8 +85,12 @@ function main () {
       previousRevision: r.previousRevision,
       beforeMs: r.durationMs?.before ?? null,
       afterMs: r.durationMs?.after ?? null,
-      fallRate: s.tail?.shape?.fallRate ?? null,
-      reason: s.tail?.reason || null,
+      // Two shapes are accepted: the full queue output (tail.shape.fallRate) and the
+      // trimmed flagged-only artefact that gets committed (fallRate at the top level).
+      // The trimmed one is what survives in the repo, so reading only the full shape
+      // would make this tool work exactly once and then quietly emit blank numbers.
+      fallRate: s.tail?.shape?.fallRate ?? s.fallRate ?? null,
+      reason: s.tail?.reason || s.reason || null,
     }
   })
   const sample = pickSample(rows, SAMPLE)
