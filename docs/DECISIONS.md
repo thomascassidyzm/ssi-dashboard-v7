@@ -679,3 +679,32 @@ validator, one additive `voice_config` key, and three template edits.
 recording more complicated makes community courses harder — "If we are making it a lot more
 complicated to even get the recordings done, it's going to be harder for people to do community
 courses, isn't it?"
+
+## 2026-08-06 — TTS spend: small sample run first, always
+
+**Move:** the standing "never generate TTS without a plan and explicit approval" gate is replaced,
+for sample-scale work, by a standing doctrine in Tom's own words: *"we can spend TTS money with
+impunity these days - the whole new approach should always do small sample runs first as part of
+the new process"*. Every generation job now opens with a small sample run, judged, before any bulk
+render. First application: VOICELAB 01 (`docs/audio/voicelab-01-tom-clone-multilingual-2026-08-06.md`),
+21 clips for $0.036.
+
+**Better:** the sample is where the ear test happens, so a bad voice, a wrong-language drift or a
+broken construction is caught on twenty clips instead of twenty thousand — the fra Azure-purge
+class of accident becomes structurally cheaper to avoid. **Simpler:** one rule replaces a
+per-job approval negotiation; the agent acts, and Tom's attention goes to the clips rather than to
+the request. **Cheaper (total):** xAI at $15/1M characters makes a 2,000-character probe cost under
+four cents, against re-rendering a whole course side at ~$7.50 — the sample is rounding error
+against the cost of being wrong, and it removes a round-trip of Tom's time from every job.
+
+**Searched & rejected:**
+- Keep the blanket approval gate — failed *simpler* and *cheaper*: it spends Tom's scarcest
+  resource on decisions whose money is now negligible, and it delayed jobs that a four-cent probe
+  would have settled.
+- Drop the gate entirely — failed *better*: bulk renders are still irreversible-ish work against a
+  live estate, and make-before-break still needs a judged artifact before the swap.
+- Approve by budget ceiling instead of by sample — failed *better*: a ceiling authorises spend but
+  authorises nothing about quality, which is the thing that actually goes wrong.
+
+**Search width:** re-levelled
+**Decided by:** Tom, 2026-08-06, ruling the VOICELAB 01 spend.
