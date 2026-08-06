@@ -51,7 +51,11 @@ const LEGO_REQUIRED_ROLES = Object.freeze(['presentation', 'target1', 'target2']
 const SEVERITY = Object.freeze({
   COURSE_BREAKING: 'course-breaking',
   MINOR: 'minor',
-  NONE: 'none'
+  NONE: 'none',
+  // A caller that forgot to say what kind of slot this is must NOT be told
+  // "minor" — that is the flattering answer, and a roll-up counting
+  // course-breaking gaps would silently report zero. Unknown stays unknown.
+  UNKNOWN: 'unknown'
 })
 
 /** Repair/gap-fill order. Lower sorts first: LEGOs before cycles, always. */
@@ -114,10 +118,12 @@ function legoVerdict(lego) {
  * @param {string} role
  */
 function slotSeverity(slotKind, role) {
-  if (slotKind === 'lego' && LEGO_REQUIRED_ROLES.includes(role)) {
-    return SEVERITY.COURSE_BREAKING
+  if (slotKind === 'lego') {
+    return LEGO_REQUIRED_ROLES.includes(role) ? SEVERITY.COURSE_BREAKING : SEVERITY.MINOR
   }
-  return SEVERITY.MINOR
+  if (slotKind === 'seed' || slotKind === 'phrase') return SEVERITY.MINOR
+  // Deliberately not MINOR — see SEVERITY.UNKNOWN.
+  return SEVERITY.UNKNOWN
 }
 
 /**

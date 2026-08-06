@@ -101,3 +101,17 @@ describe('fight hardest, and repair LEGOs before cycles', () => {
     expect(q[0].introOnly).toBe(true)
   })
 })
+
+describe('an unspecified slotKind must not be flattered into "minor"', () => {
+  it('returns unknown, not minor, so a roll-up cannot silently report zero breakage', () => {
+    expect(slotSeverity(undefined, 'target1')).toBe(SEVERITY.UNKNOWN)
+    expect(slotSeverity(null, 'presentation')).toBe(SEVERITY.UNKNOWN)
+    expect(slotSeverity('cycle', 'target2')).toBe(SEVERITY.UNKNOWN)
+  })
+  it('and does not claim to be course-breaking either', () => {
+    expect(slotSeverity(undefined, 'target1')).not.toBe(SEVERITY.COURSE_BREAKING)
+  })
+  it('shouldFightHardest stays false for an unknown kind', () => {
+    expect(shouldFightHardest(undefined, 'target1')).toBe(false)
+  })
+})
