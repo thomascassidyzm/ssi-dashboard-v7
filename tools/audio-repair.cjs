@@ -27,8 +27,19 @@
  * ── MACHINES MAY FLAG AUDIO, ONLY HUMANS MAY PASS IT ────────────────────────
  * `propose` renders and verifies a candidate; it puts nothing on the learner
  * path. `accept` is the only thing that does, it is never implied by any other
- * verb, and it demands --i-have-listened and --actor. A CLI accept is still a
- * human accept.
+ * verb, and it demands --actor plus one of two attestations that mean DIFFERENT
+ * things:
+ *
+ *   --i-have-listened   a human heard both clips. A CLI accept is still a human
+ *                       accept. No machine may ever type this.
+ *   --machine-verified  nobody listened; every automated check passed, including
+ *                       tier 2 on the candidate itself. Requires --authorised-by
+ *                       naming the person whose standing decision this discharges,
+ *                       refuses any candidate whose tail was not MEASURED clean,
+ *                       and stamps the history row so it can never be misread as an
+ *                       ear pass. It exists because a course-wide authorisation
+ *                       cannot be discharged one click at a time, and because the
+ *                       alternative in practice is a machine typing the human flag.
  *
  * ── TTS COSTS MONEY ─────────────────────────────────────────────────────────
  * `propose` will NOT render unless you pass --spend. Without it you get a
@@ -67,14 +78,19 @@ audio-repair — non-destructive course audio repair (propose / preview / accept
   propose  <course> (--id <audioId> | --targets FILE) [--role R] [--only V] [--limit N]
                     [--spend] [--actor NAME] [--text "..."] [--voice V]
   accept   <course> (--from LOG | --id <audioId> --candidate <candidateId>)
-                    --i-have-listened --actor NAME [--reason "..."] [--dry]
+                    (--i-have-listened | --machine-verified --authorised-by "...")
+                    --actor NAME [--reason "..."] [--dry]
   reject   <course> --candidate <candidateId> --actor NAME [--reason "..."]
 
   --tails            also run the tail-integrity check (fetches + decodes every clip)
   --max-seed N       restrict to clips reachable from seeds 1..N
   --spend            propose renders for real. WITHOUT IT NOTHING IS BILLED.
+  --i-have-listened  accept: a HUMAN heard both clips. Machines must never type this.
+  --machine-verified accept: nobody listened; every automated check passed. Needs
+                     --authorised-by "<who authorised this, and to do what>", refuses
+                     any candidate whose tail was not MEASURED clean, and stamps the
+                     history row so it can never read as an ear pass.
   --concurrency N    queue --tails: clips measured at once (default 8)
-  --i-have-listened  required by accept. There is no way to accept without it.
 `
 
 function die (msg, code = 1) { console.error(msg); process.exit(code) }
@@ -265,8 +281,38 @@ async function cmdAccept () {
   const actor = str(flags.actor)
   const reason = str(flags.reason)
 
-  if (!DRY && flags['i-have-listened'] !== true) {
-    die(`accept refuses without --i-have-listened.\n\nMachines may flag audio; only humans may pass it. Hear the live clip and the\ncandidate first:\n  node tools/audio-repair.cjs preview ${COURSE} --id <audioId>\n  node tools/audio-repair.cjs bytes ${COURSE} --id <audioId> --out /tmp/live.mp3\n  node tools/audio-repair.cjs bytes ${COURSE} --candidate <cid> --out /tmp/cand.mp3`)
+  // ── The two doors, and why the second one exists ──────────────────────────
+  // --i-have-listened is a HUMAN attestation: someone heard both clips. It stays
+  // exactly as it was, and no machine may ever type it.
+  //
+  // --machine-verified is a second, narrower door, and it attests something
+  // different and smaller: nobody has heard this clip, and every check the estate
+  // owns has passed it. It exists because a standing authorisation to repair a
+  // whole course cannot be discharged one click at a time — deu_for_eng seeds
+  // 1-300 is 18,163 clips — and because the alternative in practice is a machine
+  // typing --i-have-listened, which would poison the one field in this system
+  // that means a person was there.
+  //
+  // It is deliberately more expensive to satisfy than the human door:
+  //   - --authorised-by must name the person and what they authorised; it goes
+  //     into the history row verbatim, so the audit trail says who decided.
+  //   - the candidate must have been MEASURED CLEAN by tier 2 in the propose log.
+  //     Not "not flagged" — measured. A candidate whose tail could not be measured
+  //     is refused here, because unmeasured is not clean.
+  //   - the reason recorded is stamped with the fact that no human heard it, so
+  //     nobody reading the history later mistakes this for an ear-passed clip.
+  // Revert stays one command away and costs nothing: the superseded object is
+  // never deleted.
+  const MACHINE = flags['machine-verified'] === true
+  const authorisedBy = str(flags['authorised-by'])
+  if (!DRY && flags['i-have-listened'] !== true && !MACHINE) {
+    die(`accept refuses without --i-have-listened.\n\nMachines may flag audio; only humans may pass it. Hear the live clip and the\ncandidate first:\n  node tools/audio-repair.cjs preview ${COURSE} --id <audioId>\n  node tools/audio-repair.cjs bytes ${COURSE} --id <audioId> --out /tmp/live.mp3\n  node tools/audio-repair.cjs bytes ${COURSE} --candidate <cid> --out /tmp/cand.mp3\n\nIf you are a machine acting on a standing authorisation, that is a DIFFERENT\nclaim and it has its own door — it records that nobody listened:\n  --machine-verified --authorised-by "<who authorised this, and to do what>"`)
+  }
+  if (MACHINE && flags['i-have-listened'] === true) {
+    die('--machine-verified and --i-have-listened claim different things. Pick the true one.')
+  }
+  if (!DRY && MACHINE && !authorisedBy) {
+    die('--machine-verified refuses without --authorised-by "<who authorised this, and to do what>".\nThe history row has to say whose decision this was.')
   }
   if (!DRY && (!actor || actor === 'unknown')) {
     die('accept refuses without --actor <name>. The history row records who passed it.')
@@ -277,7 +323,12 @@ async function cmdAccept () {
   if (flags.from) {
     const log = JSON.parse(fs.readFileSync(str(flags.from), 'utf8'))
     items = log.filter(r => r.action === 'proposed' && r.candidateId)
-      .map(r => ({ audioId: r.audioId, candidateId: r.candidateId, expect: r.expect || null }))
+      .map(r => ({
+        audioId: r.audioId, candidateId: r.candidateId, expect: r.expect || null,
+        // Carried through so the machine door can check it. A human who listened
+        // does not need it; a machine that did not has nothing else to stand on.
+        tail: r.candidate ? r.candidate.tail : undefined,
+      }))
     if (!items.length) die(`no proposed candidates in ${str(flags.from)} — did you run propose with --spend?`)
     const only = str(flags.only)
     if (only) items = items.filter(i => i.audioId === only || i.candidateId === only)
@@ -288,7 +339,12 @@ async function cmdAccept () {
   }
 
   console.log(`\naudio-repair accept — ${COURSE}${DRY ? '  [DRY RUN]' : ''}`)
-  console.log(`${items.length} clip(s); actor=${actor || '(dry)'}\n`)
+  console.log(`${items.length} clip(s); actor=${actor || '(dry)'}`)
+  if (MACHINE) {
+    console.log(`MACHINE-VERIFIED: nobody has listened to these clips. Authorised by: ${authorisedBy}`)
+    console.log('Every candidate must have been measured clean by the tail detector; unmeasured is refused.')
+  }
+  console.log('')
 
   const rows = []
   let ok = 0, aborted = 0, failed = 0
@@ -305,6 +361,18 @@ async function cmdAccept () {
       if (!cand) throw new Error(`candidate ${item.candidateId} is not attached to this clip`)
       if (cand.status !== 'pending') throw new Error(`candidate is already ${cand.status}`)
 
+      // The machine door's whole basis. `undefined` = an older propose log that
+      // never measured; `null`/`flagged:null` = measured attempted and failed.
+      // Neither is clean, and neither may pass without ears.
+      if (MACHINE) {
+        if (item.tail === undefined) {
+          throw new Error('this propose log predates the candidate tail check — no machine basis to accept on; use ears')
+        }
+        if (!item.tail || item.tail.flagged !== false) {
+          throw new Error(`candidate tail is ${item.tail && item.tail.flagged === null ? 'UNMEASURED' : 'FLAGGED'} — unmeasured is not clean; use ears`)
+        }
+      }
+
       if (DRY) {
         console.log(`${prefix}  [DRY] would swap in place: rev ${p.current.revision} -> ${p.current.revision + 1}, ${p.current.durationMs}ms -> ${cand.durationMs}ms`)
         console.log(`         id unchanged, ${p.current.role} links unchanged, old object ${p.current.s3Key} retained`)
@@ -314,7 +382,14 @@ async function cmdAccept () {
       }
 
       const res = await core().accept({
-        courseCode: COURSE, audioId: item.audioId, candidateId: item.candidateId, actor, reason,
+        courseCode: COURSE, audioId: item.audioId, candidateId: item.candidateId, actor,
+        // Stamped, not appended as a courtesy: whoever reads this history row later
+        // must not be able to mistake a machine pass for an ear pass.
+        reason: MACHINE
+          ? `[machine-verified, NOBODY LISTENED] authorised by ${authorisedBy}` +
+            `; candidate measured clean by ${require('../services/audio-intelligence/tiers/tier2-edge-shape.cjs').DETECTOR.name}` +
+            ` at ${item.tail.shape ? item.tail.shape.fallRate : '?'} dB/ms${reason ? `; ${reason}` : ''}`
+          : reason,
       })
       console.log(`${prefix}  ACCEPTED rev ${res.previousRevision} -> ${res.revision}, ${res.durationMs.before}ms -> ${res.durationMs.after}ms`)
       console.log(`         links after swap: ${JSON.stringify(res.links)}`)
