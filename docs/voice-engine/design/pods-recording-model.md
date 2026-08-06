@@ -68,6 +68,8 @@ shape** and **5-slot cast sheets** (markdown packs landing in
   line-level colouring. Cast sheets in the packs are the human-readable mirror;
   the DB is the machine interface.
 - 5 slots confirmed as the design centre.
+  **SUPERSEDED 2026-08-06** — the design centre is now TWO voices; see the
+  ruling below. Five survives only as the ceiling of an opt-in.
 
 **SOFTENED 2026-06-11 (people-first casting, Tom's decision):** the
 consume-verbatim rule above yields to the leader's declared PEOPLE. When a
@@ -77,9 +79,71 @@ colouring — even when `listening_pods.speakers` carries generation-side slot
 colouring. Generation colouring is demoted to a default suggestion for the
 5-person case; it never blocks or overrides a people-first solve.
 
+## RULING 2026-08-06 — two voices is the DEFAULT (supersedes the 5-slot centre)
+
+Tom, voice note after looking at the Welsh pods in Popty. His words:
+
+> "the whole point of doing this in this way was that we could get by with just
+> two different voices, a male voice and a female voice […] probably do it for
+> two voices as the default. And then if you want to try it with three or four
+> voices because you do have additional human voice recorders, then fantastic,
+> we can do that. But think about that. If we are making it a lot more
+> complicated to even get the recordings done, it's going to be harder for
+> people to do community courses, isn't it? And Welsh is a great example of
+> that. Every single audio that's in the Welsh course was recorded by Aran and
+> Katchin themselves. Those are for the seeds, for the LEGOs and for the
+> phrases. So we don't want to make it unnecessarily complicated by having 56
+> different cast members."
+
+("Katchin" is the transcription of Catrin.)
+
+**The governing principle, which outranks any local design preference here:**
+anything that makes recording more complicated makes community courses harder.
+A cast structure demanding 56 cast members is a barrier to community courses,
+not a feature of them. Given two implementations, take the one that asks a
+community leader to do less.
+
+What this changes:
+- **"5 slots confirmed as the design centre" (addendum above) is superseded.**
+  The design centre is TWO — one male voice, one female voice. Five is now only
+  the ceiling of the opt-in, not a target.
+- Two voices is what a course gets with **nobody configuring anything**
+  (`castDefaults` on `GET /cast`, `defaultCastPeople()`). A leader who does
+  nothing never meets an N-voice concept.
+- Three or four voices is an **opt-in upgrade** for courses that genuinely have
+  extra recorders — never a requirement, never a prerequisite for recording.
+  `POST /cast/propose` accepts 2–5 (`validateCastPeople`); it used to hard-reject
+  anything but exactly two.
+- Every size still needs one male and one female voice. Not ceremony: with only
+  these voices covering every character, a cast missing a gender leaves
+  characters with nobody to read them.
+- `PUT /cast` records `voice_config.podCastVoices`, so a deliberate three- or
+  four-voice cast survives the legacy two-voice collapse on the next load.
+  Casts without that key still collapse exactly as they always did.
+
+**CHARACTERS vs VOICES — the distinction the UI kept losing.** The number of
+characters in a pod script is a *writing* fact, and a scene may have as many as
+it likes. The number of humans recording them is a *casting* fact, and that is
+two. Tom's "56 different cast members" was a complaint about the second, not the
+first. Characters sharing a voice is the intended outcome, not a shortfall.
+
+Where the overkill actually came from (live DB, 2026-08-06): **not** the cast
+data. Both Welsh courses already held exactly two human voices. It was
+generation-side colouring being *rendered* as a cast — `PodDetailView`'s
+always-open "Speaker voice mapping" grid of 22 characters against raw generation
+ids (`HUMAN_F1/F2/F3/M1/M2`), and `PodsView`'s "22 speakers" on the pod card.
+Both now speak in characters, and lead with the two people who record.
+
+The human recording path has always read `voice_config.podCast` alone
+(`pods-plan.cjs#buildRecordingPlan`) — generation colouring never reached the
+recorder's queue. Generation data is not rewritten by this ruling; the human
+cast simply wins on the recording path, and the addendum above is read in that
+light.
+
 ## Welsh run-steps (after the tool lands — with Tom/Aran, not auto-run)
 1. Generate cym pod scripts from canon (existing pod-dialogue-generator; Welsh
-   text QA'd by Aran in PodDetailView). 2. Cast: Aran, Catrin + 2–3 more.
+   text QA'd by Aran in PodDetailView). 2. Cast: Aran (male) and Catrin (female)
+   — two voices, which is what Welsh has always had.
 3. Record via dialogue autocue. 4. Listen in the learning app.
 
 ## Territory rules
