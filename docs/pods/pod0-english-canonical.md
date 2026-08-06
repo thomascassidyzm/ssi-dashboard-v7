@@ -1,7 +1,8 @@
 # Pod 0 — The First Day (English canonical)
 
 *STATUS: CANONICAL — replaces the previous pod-0 canonical text in full (brief 2026-08-06).
-Source: Aran's raw paste, `pod0-aran-raw-2026-08-06.txt` — field-tested against his
+Source: Aran's own file, `pod0-aran-original-2026-08-06.txt` (verbatim, UTF-8 BOM + CRLF) —
+field-tested against his
 Croatian 75-day experiment and the holiday that followed. Text preserved VERBATIM: the
 only changes are three mechanical fixes, every one of them logged in
 `pod0-canonical-corrections-2026-08-06.md` — Scene 3's repeated `6.` renumbered to `10.`,
@@ -9,8 +10,28 @@ curly apostrophes normalised to straight ASCII, trailing whitespace stripped. Ar
 wording, register and British English are untouched. Seeded into `canonical_pod_scenarios`
 as `pod-0` via `node tools/seed-canonical-pods.cjs --file=docs/pods/pod0-english-canonical.md --slug=pod-0 --execute`;
 the previous rows are snapshotted at `pod0-live-snapshot-2026-08-06.json`.
+`pod0-aran-raw-2026-08-06.txt` is a transcript-recovered copy of the same text, kept for
+provenance — it is identical to Aran's file on every non-blank line.
 Translations/audio NOT regenerated — propagation to per-course pod dialogue is a separate
 approved pass.*
+
+*VOICING — Aran, 2026-08-06, verbatim: "Did some interleaving in the first few scenes and
+then beyond that it seemed faster to do them as chunks, without scene-based to and fro for
+everything, they'll work fine like that (also kind of fits with what I've been saying about
+not needing multiple voices)." Tom adds: **a minimum of two voices where needed, especially
+for less-well-served TTS languages.**
+
+What that means for the audio pass, and for the `speaker` column it reads:
+- **Scenes 1-14 and 22 are genuinely interleaved dialogue.** They keep their own characters
+  (`Sarah`/`Neighbour`, `Barista`/`Customer 1-3`, `Waiter`, `Guest`/`Receptionist`,
+  `Learner`/`Friend` …) and want the to-and-fro. Two voices is the floor, not the target —
+  distinct voices per character are better where the language's TTS supports it.
+- **Scenes 15-21, the Extra phrases, are CHUNKS.** They are a run of useful phrases, not a
+  conversation, and no to-and-fro is needed. Every line is attributed to `Learner`. Some read
+  as a second party's reply ("No, we only take cash.", "It's down there on the left.") — those
+  are phrases in the chunk, and no alternating speaker has been forced onto them. If a future
+  pass does want a second voice here, that is a free choice, not something the data dictates.
+- **Drill tails are `Narrator`** and were already voiced separately under canon v2.*
 
 *DRILL TAILS: the last line of scenes 6-21 (`1. 2. 3. White. Black.`, `7 o'clock. May. June.`)
 is deliberate content — the numbers/colours/times/months drip. Speaker `Narrator`,
@@ -289,7 +310,7 @@ uses the existing canon-v2 machinery, `services/pod-generation-prompt.cjs`. Pres
 | 6 | Learner | Do you have anything to eat? |  |
 | 7 | Learner | Can we pay? |  |
 | 8 | Learner | Can we pay by card? |  |
-| 9 | Friend | No, we only take cash. |  |
+| 9 | Learner | No, we only take cash. |  |
 | 10 | Learner | I'm sorry, I don't have any cash. |  |
 | 11 | Narrator | A million. 80. 90. 2 o'clock. 10 o'clock. | vocab coda — numbers/colours/days drip (canon v2, Aran 2026-06-10) |
 
@@ -300,14 +321,14 @@ uses the existing canon-v2 machinery, `services/pod-generation-prompt.cjs`. Pres
 | # | Speaker | English | Notes |
 |---|---------|---------|-------|
 | 1 | Learner | Is there a cash machine near here? |  |
-| 2 | Friend | Do you want to pay by cash or card or put it on the room? |  |
+| 2 | Learner | Do you want to pay by cash or card or put it on the room? |  |
 | 3 | Learner | Can we put it on the room, please? |  |
-| 4 | Friend | Would you like to pay by cash or card or on the room? |  |
-| 5 | Friend | Did you want to pay by cash or card? |  |
+| 4 | Learner | Would you like to pay by cash or card or on the room? |  |
+| 5 | Learner | Did you want to pay by cash or card? |  |
 | 6 | Learner | We'll pay by card again, please. |  |
 | 7 | Learner | It's hot today, again. |  |
 | 8 | Learner | Is the water warm? |  |
-| 9 | Friend | No, it's a little cold today. |  |
+| 9 | Learner | No, it's a little cold today. |  |
 | 10 | Learner | It's not bad. |  |
 | 11 | Narrator | 3 o'clock. 9 o'clock. January. February. | vocab coda — numbers/colours/days drip (canon v2, Aran 2026-06-10) |
 
@@ -375,15 +396,15 @@ uses the existing canon-v2 machinery, `services/pod-generation-prompt.cjs`. Pres
 | 2 | Learner | It sounds as though you want us not to do that. |  |
 | 3 | Learner | Is there a toilet here? |  |
 | 4 | Learner | Can you tell me where the toilet is? |  |
-| 5 | Friend | It's down there on the left. |  |
-| 6 | Friend | It's down there on the right. |  |
+| 5 | Learner | It's down there on the left. |  |
+| 6 | Learner | It's down there on the right. |  |
 | 7 | Learner | Can you say that again? |  |
-| 8 | Friend | Yes, I said it's over there. |  |
+| 8 | Learner | Yes, I said it's over there. |  |
 | 9 | Learner | What is that? |  |
 | 10 | Learner | What is that over there? |  |
-| 11 | Friend | Would you like to order some drinks? |  |
-| 12 | Friend | Do you want to order some drinks first? |  |
-| 13 | Friend | Did you want something to drink first? |  |
+| 11 | Learner | Would you like to order some drinks? |  |
+| 12 | Learner | Do you want to order some drinks first? |  |
+| 13 | Learner | Did you want something to drink first? |  |
 | 14 | Narrator | October. November. December. | vocab coda — numbers/colours/days drip (canon v2, Aran 2026-06-10) |
 
 ## 16 · First conversation
