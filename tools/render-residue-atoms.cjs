@@ -22,8 +22,9 @@ const dry = process.argv.includes('--dry')
 if (!COURSE) { console.error('usage: render-residue-atoms.cjs <course> [--dry]'); process.exit(1) }
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
+const { XAI_OFFICIAL } = require('../services/shared/xai-catalogue.cjs')
+
 const ROLE = 'pod_explainer'
-const XAI_OFFICIAL = new Set(['en', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'ru', 'zh', 'ja', 'ko', 'vi', 'hi', 'bn', 'ar', 'tr', 'pl'])
 const base = (l) => String(l || '').toLowerCase().split('-')[0]
 const SENTENCE_PUNCT = /[.!?…。！？]/
 
