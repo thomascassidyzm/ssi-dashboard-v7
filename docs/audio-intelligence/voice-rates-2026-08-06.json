@@ -1,0 +1,41 @@
+{
+ "generated": "2026-08-06",
+ "corpus": "384 fresh provider renders, deu_for_eng seeds 1-5, 2026-08-05 naked pass (never trimmed, presumed-good by construction)",
+ "syllableMethod": "vowel-group counting, per-language vowel sets (German adds aou-umlaut); every word counts at least 1",
+ "model": "speechMs = intercept + msPerSyllable * syllables, fitted per voice. A flat syllables/sec was fitted first and is kept for reference; the linear model is used because a clip carries fixed onset+release overhead, so a flat rate reads every short clip as slow and every long clip as fast.",
+ "voices": {
+  "eve": {
+   "language": "eng",
+   "n": 132,
+   "intercept_ms": -102,
+   "ms_per_syllable": 221,
+   "r2": 0.909,
+   "relative_residual_sd": 0.237,
+   "flat_median_sps": 4.88,
+   "flat_min_sps": 3.21,
+   "flat_max_sps": 6.85
+  },
+  "ara": {
+   "language": "deu",
+   "n": 114,
+   "intercept_ms": 166,
+   "ms_per_syllable": 178,
+   "r2": 0.927,
+   "relative_residual_sd": 0.126,
+   "flat_median_sps": 4.96,
+   "flat_min_sps": 3.39,
+   "flat_max_sps": 6.64
+  },
+  "leo": {
+   "language": "deu",
+   "n": 114,
+   "intercept_ms": 144,
+   "ms_per_syllable": 191,
+   "r2": 0.914,
+   "relative_residual_sd": 0.151,
+   "flat_median_sps": 4.8,
+   "flat_min_sps": 2.94,
+   "flat_max_sps": 6.82
+  }
+ }
+}
