@@ -239,6 +239,37 @@ describe('propose', () => {
     expect(d2.snapshot()).toEqual(before)
   })
 
+  it('refuses a replacement that carries the very defect it is replacing', async () => {
+    // The damage this path exists for was written AT RENDER. A fresh candidate is
+    // therefore exactly the thing that must be re-measured — a repair that returns a
+    // clip with the same amputated tail costs a render, burns a revision, and reports
+    // success. propose re-rolls, then refuses rather than handing it on.
+    const d2 = seedDb()
+    const before = d2.snapshot()
+    const { core: c2 } = makeCore(d2, { pcm: async () => pcmClip({ decayMs: 0 }) })
+    await expect(c2.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test' }))
+      .rejects.toThrow(/tail truncated/i)
+    expect(d2.snapshot()).toEqual(before)
+  })
+
+  it('records on the candidate that the replacement was re-measured for that defect', async () => {
+    const d2 = seedDb()
+    const { core: c2 } = makeCore(d2, { pcm: async () => pcmClip({ decayMs: 250, noisyPad: true }) })
+    const r = await c2.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test' })
+    expect(r.candidate.tail.flagged).toBe(false)
+    expect(r.candidate.tail.shape.fallRate).toBeLessThan(0.7)
+  })
+
+  it('proposes without a tail check rather than blocking when there is no decoder', async () => {
+    // No verify.pcm means no way to ask. That is stated on the candidate as "not
+    // measured", never rounded up to clean, and it does not stop a human being handed
+    // the candidate they asked for.
+    const d2 = seedDb()
+    const { core: c2 } = makeCore(d2, {})
+    const r = await c2.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test' })
+    expect(r.candidate.tail).toBe(null)
+  })
+
   it('a silent candidate is refused', async () => {
     const d2 = seedDb()
     const { core: c2 } = makeCore(d2, { level: { meanDb: -70, peakDb: -60 } })

@@ -306,13 +306,14 @@ function createRepairCore (deps) {
         })
         const level = await verify.measure(out.buffer)
         const verdict = await verify.veracity(out.buffer, useText, row.language)
-        const fault = faultOf(out.durationMs, level, verdict)
-        attemptLog.push({ attempt, durationMs: out.durationMs, level, fault })
-        last = { ...out, level, verdict }
+        const tail = await tailOf(out.buffer)
+        const fault = faultOf(out.durationMs, level, verdict, tail)
+        attemptLog.push({ attempt, durationMs: out.durationMs, level, tail, fault })
+        last = { ...out, level, verdict, tail }
         if (!fault) break
         logger.log?.(`[repair] ${audioId} attempt ${attempt}: ${fault} — re-roll`)
       }
-      const fault = faultOf(last.durationMs, last.level, last.verdict)
+      const fault = faultOf(last.durationMs, last.level, last.verdict, last.tail)
       if (fault) {
         throw new RepairError(
           `no attempt produced a clean candidate (${fault}, last ${last.durationMs}ms)`,
@@ -326,14 +327,15 @@ function createRepairCore (deps) {
     // check standing between a mis-recorded file and a human's ears.
     const level = await verify.measure(candidateBuffer)
     const verdict = await verify.veracity(candidateBuffer, useText, row.language)
-    const fault = faultOf(durationMs, level, verdict)
+    const tail = await tailOf(candidateBuffer)
+    const fault = faultOf(durationMs, level, verdict, tail)
     if (fault) {
       throw new RepairError(`candidate rejected: ${fault} (${durationMs}ms)`,
         'candidate_failed_verification')
     }
 
     if (dryRun) {
-      return { dryRun: true, audioId, source, durationMs, level, verdict, current: currentFacts(row) }
+      return { dryRun: true, audioId, source, durationMs, level, verdict, tail, current: currentFacts(row) }
     }
 
     const candidateId = newId()
@@ -372,6 +374,9 @@ function createRepairCore (deps) {
         durationMs,
         source,
         veracity: { pass: verdict.pass, reason: verdict.reason, cer: verdict.cer },
+        // Carried out to the caller so a repair log records that the replacement was
+        // re-measured for the very defect it replaces, rather than leaving it implied.
+        tail: tail ? { flagged: tail.flagged, reason: tail.reason, shape: tail.shape } : null,
         level,
         s3Key,
       },
@@ -379,14 +384,36 @@ function createRepairCore (deps) {
     }
   }
 
-  function faultOf (durationMs, level, verdict) {
+  /**
+   * @param {object} [tail]  the candidate's own tier-2 verdict, when it was measured.
+   *   A repair that hands back a clip with the SAME defect it was repairing is worse
+   *   than no repair: it costs a render, burns the revision, and reports success. The
+   *   damage this whole path exists for was written at render time, so the fresh
+   *   candidate is exactly the thing that has to be re-measured — not assumed clean
+   *   because it is new.
+   */
+  function faultOf (durationMs, level, verdict, tail) {
     if (!durationMs || durationMs < T.floorMs) return 'too short'
     if (level && level.meanDb < T.silenceMeanDb) return 'silent'
     if (level && level.peakDb < T.nearSilencePeakDb) return 'near-silent'
     if (verdict && verdict.checked === true && verdict.pass === false) {
       return `words missing (${verdict.reason || 'veracity fail'})`
     }
+    if (tail && tail.flagged === true) return `tail truncated (${tail.reason})`
     return null
+  }
+
+  /** The candidate's tier-2 verdict, or null when there is no decoder to ask. */
+  async function tailOf (buffer) {
+    if (!verify || typeof verify.pcm !== 'function') return null
+    try {
+      return tailVerdict(await verify.pcm(buffer))
+    } catch (err) {
+      // A decode failure is not a pass. It is reported as unmeasured and the
+      // candidate goes to a human with that said out loud.
+      logger.warn?.(`[repair] could not measure candidate tail: ${err.message}`)
+      return { flagged: null, reason: `tail not measured: ${err.message}`, score: null }
+    }
   }
 
   function currentFacts (row) {
