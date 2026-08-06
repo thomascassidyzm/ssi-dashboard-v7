@@ -9,6 +9,14 @@ Tom, 2026-08-05, and this is the commission:
 We found out. There are three mechanisms, all now fixed, and one of them was destroying human
 recordings rather than merely unlinking them.
 
+**One expectation did not survive measurement, and it is the honest headline.** The hope behind this
+job was that a lot of "missing audio" is really unlinked audio. Estate-wide it is not: of 515,677
+unlinked slots, only **618 (0.12%)** have a clip sitting in the same course ready to bind for free.
+**515,059 (99.88%) are genuinely absent** — no audio, any voice, anywhere in that course, under
+either normaliser. `ara_lb_for_eng`'s 1,324 were real and were recovered, but that pool is now
+essentially drained. The remaining backlog is a **generation** backlog, not a linking bug. Full
+per-course table: `docs/audio-unlink-forensics-2026-08-06.md`.
+
 ---
 
 ## The answer in one paragraph, for a non-engineer
@@ -75,7 +83,21 @@ So: the relink trigger, comparing `lower(trim(text))` against a column with the 
 **could never match any phrase ending in `.`, `?` or `!`**. 69,055 known-side and 56,104 target-side
 phrase rows end in such punctuation. For those, autolink was dead code.
 
-## Mechanism 3 — deletion destroying authored content, and pointers with no integrity at all
+> **Measured correction** (forensics §1): as a cause of *unrecovered* audio the normaliser split is
+> real but **small** — across all 99 courses, loose matching recovers only **12 slots** more than
+> strict, all in `jpn_for_eng`. Autolink being dead for punctuation-ending text mattered because it
+> removed the only relink path, not because a large pool of clips is hiding behind the `?`. The
+> split's serious consequence is the guard blindness below, which is about *destruction*, not
+> recovery — and there the exposure is 5,090 human recordings.
+
+## Mechanism 3 — deletion *able* to destroy authored content, and pointers with no integrity
+
+> **Measured correction** (`docs/audio-unlink-forensics-2026-08-06.md` §5): the cascade below was a
+> live **hazard, not observed damage**. A census found no legos that lost an introduction to it and
+> zero dangling rows in `lego_introductions`; the column that actually carries presentation linkage
+> is `course_legos.presentation_audio_id`, which is intact (9 dangling estate-wide). The FK change
+> is **prevention**, and must not be reported as a repair. The 17,480 dangling pointers below ARE
+> real and measured.
 
 `course_audio` is referenced by content in three different postures, and only one of them was right:
 
@@ -166,6 +188,39 @@ is now found where `.eq(normalizeForAudio(...))` returned null.
 new fallback resolver.
 
 ---
+
+## The biggest thing still unexplained — an undocumented mass-unlink, 2026-07-11
+
+Forensics §3a. Nine courses each have **one single `updated_at` instant shared by every row of
+`course_seeds`, `course_legos` AND `course_practice_phrases`** — not "many rows that day", one exact
+timestamp per course, stepping forward every 10–20 seconds:
+
+| course | instant (UTC) | rows sharing it |
+|---|---|---|
+| bre_for_fra | 02:34:01.561 | 5,918 (100% of course) |
+| eng_template | 02:34:45.476 | 6,105 (100%) |
+| gla_for_eng | 02:34:59.316 | 5,376 (100%) |
+| ita_for_cym | 02:35:10.828 | 465 (100%) |
+| mar_for_eng | 02:35:30.783 | 13,874 (100%) |
+| mlt_for_eng | 02:35:42.901 | 5,811 (100%) |
+| por_for_jpn | 02:36:02.941 | 6,786 (~93%) |
+| sbx_for_eng | 02:36:11.220 | 473 (100%) |
+| tel_for_eng | 02:36:17.382 | 12,562 (100%) |
+
+These were **not** cold courses: `course_audio` already existed for every one of them before
+2026-07-11 (`mar_for_eng` audio spans straight through the event; `gla_for_eng`, `bre_for_fra`,
+`por_for_jpn` back to March–May). So they had working linked audio, and in a 2m16s window every
+content row was rewritten with every audio-link column blanked. The signature is one script looping a
+fixed course list, one bulk `UPDATE … SET *_audio_id = NULL` per course.
+
+**~90,000 rows — roughly triple the documented 2026-08-03 Azure purge (31,310) — and the script that
+did it has not been identified.** It is not the Azure purge, nor the 2026-03-11 or 2026-05-23
+windows. A second unexplained event sits on the dangling-pointer column: 2026-06-02 blew out 9,667
+`presentation_audio_id` pointers in a single day, 55% of the 17,480 total, also untraced.
+
+Note what this means for the fixes above: the write-path repair stops *future* text-edit unlinking,
+but it cannot stop a script that issues a direct bulk `UPDATE`. Nothing in the estate currently
+alarms when a course's link count collapses.
 
 ## Still open
 
