@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seed 1 — listen</title>
+<style>
+  :root {
+    --bg: #f6f5f2; --card: #ffffff; --ink: #1d1d1f; --muted: #8a8a8e;
+    --line: #e4e2dd; --good: #2e9e5b; --cut: #d64545; --accent: #3b6fe0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17171a; --card: #212126; --ink: #ececf0; --muted: #8f8f96;
+      --line: #313138; --good: #3fb56e; --cut: #e05c5c; --accent: #6c96f0;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { max-width: 100%; overflow-x: hidden; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  header {
+    position: sticky; top: 0; z-index: 5;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    padding: 10px 12px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .counts { font-size: 14px; font-weight: 600; }
+  .counts .g { color: var(--good); }
+  .counts .c { color: var(--cut); }
+  .counts .u { color: var(--muted); }
+  .filters { display: flex; gap: 8px; }
+  .filters button {
+    flex: 1; min-height: 44px; font: inherit; font-size: 14px;
+    color: var(--ink); background: var(--card);
+    border: 1px solid var(--line); border-radius: 10px; cursor: pointer;
+  }
+  .filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+  main { padding: 10px 12px 40px; display: flex; flex-direction: column; gap: 10px; }
+  .row {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 12px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .meta {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    font-size: 11px; color: var(--muted); letter-spacing: .03em;
+  }
+  .meta .role { text-transform: uppercase; font-weight: 700; }
+  .meta .rank { margin-left: auto; opacity: .55; font-variant-numeric: tabular-nums; }
+  .voiced {
+    font-size: 19px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere;
+  }
+  .other {
+    font-size: 13px; color: var(--muted); line-height: 1.4; overflow-wrap: anywhere;
+  }
+  .other .lang { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; opacity: .8; }
+
+  .btns { display: flex; gap: 8px; }
+  .btns button {
+    min-height: 48px; font: inherit; font-size: 15px; font-weight: 600;
+    color: var(--ink); background: transparent;
+    border: 1px solid var(--line); border-radius: 12px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .btns .play { flex: 1.3; }
+  .btns .play.playing { border-color: var(--accent); color: var(--accent); }
+  .btns .mark { flex: 1; }
+  .btns .mark.good[aria-pressed="true"] { background: var(--good); border-color: var(--good); color: #fff; }
+  .btns .mark.cut[aria-pressed="true"] { background: var(--cut); border-color: var(--cut); color: #fff; }
+
+  .row.marked-good { border-left: 4px solid var(--good); }
+  .row.marked-cut  { border-left: 4px solid var(--cut); }
+
+  .empty { text-align: center; color: var(--muted); padding: 40px 0; font-size: 14px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="counts" id="counts">loading…</div>
+  <div class="filters">
+    <button id="f-all" aria-pressed="true">All</button>
+    <button id="f-unmarked" aria-pressed="false">Unmarked only</button>
+  </div>
+</header>
+<main id="list"><div class="empty">loading…</div></main>
+
+<script>
+const state = { clips: [], marks: {}, filter: 'all', playing: null };
+const audio = new Audio();
+audio.addEventListener('ended', () => setPlaying(null));
+audio.addEventListener('pause', () => { if (audio.currentTime === 0) setPlaying(null); });
+
+function setPlaying(id) {
+  state.playing = id;
+  document.querySelectorAll('.play').forEach((b) => b.classList.toggle('playing', b.dataset.id === id));
+}
+
+function play(id) {
+  if (state.playing === id) { audio.pause(); audio.currentTime = 0; setPlaying(null); return; }
+  audio.pause();
+  audio.src = '/api/audio/' + id;
+  audio.currentTime = 0;
+  audio.play().then(() => setPlaying(id)).catch(() => setPlaying(null));
+}
+
+async function mark(id, status) {
+  const current = state.marks[id]?.status;
+  const next = current === status ? null : status;   // tapping the same mark clears it
+  const res = await fetch('/api/mark', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id, status: next }),
+  });
+  const body = await res.json();
+  if (body.marks) { state.marks = body.marks; render(); }
+}
+
+function counts() {
+  let g = 0, c = 0;
+  for (const clip of state.clips) {
+    const s = state.marks[clip.id]?.status;
+    if (s === 'good') g++; else if (s === 'cut') c++;
+  }
+  return { g, c, u: state.clips.length - g - c };
+}
+
+function esc(s) {
+  return String(s ?? '').replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+}
+
+function render() {
+  const { g, c, u } = counts();
+  document.getElementById('counts').innerHTML =
+    `<span class="g">good ${g}</span> · <span class="c">cut ${c}</span> · <span class="u">unmarked ${u}</span>`;
+
+  const list = document.getElementById('list');
+  const shown = state.filter === 'unmarked'
+    ? state.clips.filter((x) => !state.marks[x.id])
+    : state.clips;
+
+  if (!shown.length) { list.innerHTML = '<div class="empty">nothing left here</div>'; return; }
+
+  list.innerHTML = shown.map((clip) => {
+    const st = state.marks[clip.id]?.status || null;
+    // The clip voices one side of the row; show the other side small, for context.
+    const other = clip.voiced === 'known' ? clip.target_text : clip.known_text;
+    const otherLang = clip.voiced === 'known' ? 'FR' : 'EN';
+    const s = clip.suspicion;
+    const rank = s && s.rank != null
+      ? `<span class="rank">#${esc(s.rank)}${s.score != null ? ' · ' + esc(s.score) : ''}</span>`
+      : '';
+    return `
+      <div class="row ${st ? 'marked-' + st : ''}">
+        <div class="meta">
+          <span class="role">${esc(clip.role)}</span>
+          <span>${esc(clip.voice_id || '')}</span>
+          <span>${clip.duration_ms != null ? (clip.duration_ms / 1000).toFixed(2) + 's' : ''}</span>
+          ${rank}
+        </div>
+        <div class="voiced">${esc(clip.text)}</div>
+        <div class="other"><span class="lang">${otherLang}</span> ${esc(other)}</div>
+        <div class="btns">
+          <button class="play" data-id="${clip.id}" data-act="play">▶ Play</button>
+          <button class="mark good" data-id="${clip.id}" data-act="good" aria-pressed="${st === 'good'}">Good</button>
+          <button class="mark cut" data-id="${clip.id}" data-act="cut" aria-pressed="${st === 'cut'}">Cut</button>
+        </div>
+      </div>`;
+  }).join('');
+  setPlaying(state.playing);
+}
+
+document.getElementById('list').addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.act === 'play') play(b.dataset.id);
+  else mark(b.dataset.id, b.dataset.act);
+});
+
+function setFilter(f) {
+  state.filter = f;
+  document.getElementById('f-all').setAttribute('aria-pressed', String(f === 'all'));
+  document.getElementById('f-unmarked').setAttribute('aria-pressed', String(f === 'unmarked'));
+  render();
+}
+document.getElementById('f-all').onclick = () => setFilter('all');
+document.getElementById('f-unmarked').onclick = () => setFilter('unmarked');
+
+fetch('/api/clips').then((r) => r.json()).then((d) => {
+  state.clips = d.clips; state.marks = d.marks || {};
+  document.title = `Seed 1 — ${d.course}`;
+  render();
+});
+</script>
+</body>
+</html>
