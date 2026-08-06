@@ -182,8 +182,16 @@ const CONTENT_COLS = {
 // built on `hasAudio = prompt + voice 1` is WRONG for a LEGO and flatters the
 // course. The KNOWN-side clip is not part of the triple; a voice-2-only gap is
 // blocking on its own.
-const LEGO_TRIPLE = { presentation: 'intro', target1: 'voice1', target2: 'voice2' }
-const TRIPLE_PARTS = ['intro', 'voice1', 'voice2']
+// The triple itself is defined ONCE, in services/shared/audio-completeness.cjs,
+// so this tool, the fallback resolver and the Script Viewer cannot drift apart
+// on what "a complete LEGO" means. Only the *verdict* below is local to this
+// tool, because it answers a different question: not "is it present" but "is
+// the gap free to fix, or does it need TTS".
+const {
+  LEGO_TRIPLE,
+  LEGO_REQUIRED_ROLES
+} = require('../services/shared/audio-completeness.cjs')
+const TRIPLE_PARTS = LEGO_REQUIRED_ROLES.map((role) => LEGO_TRIPLE[role])
 
 /**
  * legoVerdict — classify one LEGO from its triple of slot statuses.
