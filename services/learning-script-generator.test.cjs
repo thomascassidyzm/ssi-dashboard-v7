@@ -17,9 +17,10 @@ const {
   calculateSpacedRepReviews,
   seedSentenceFor,
   reviewItemIsSeed,
-  legoHasFullAudio,
+  legoIntroIsPlayable,
+  legoDebutIsPlayable,
   phraseHasFullAudio,
-  applyLearnerAudioGate,
+  applyLearnerPhraseAudioGate,
   numberRounds,
   FIBONACCI,
   SEED_PHASE_START_OFFSET,
@@ -181,12 +182,23 @@ const mkPhrase = (id, { known = 'k', t1 = 't1', t2 = 't2' } = {}) => ({
   target2_audio_uuid: t2,
 })
 
-describe('audio-completeness gates (learner parity: all THREE audio IDs)', () => {
-  it('legoHasFullAudio requires known + target1 + target2', () => {
-    expect(legoHasFullAudio(mkLego('S0001L01', 1).lego)).toBe(true)
-    expect(legoHasFullAudio(mkLego('S0001L01', 1, { known: null }).lego)).toBe(false)
-    expect(legoHasFullAudio(mkLego('S0001L01', 1, { t1: null }).lego)).toBe(false)
-    expect(legoHasFullAudio(mkLego('S0001L01', 1, { t2: null }).lego)).toBe(false)
+describe('per-item audio gates (learner parity, 2026-08-06)', () => {
+  it('an INTRO needs a prompt clip plus target1 — target2 is not required', () => {
+    const lego = mkLego('S0001L01', 1).lego
+    expect(legoIntroIsPlayable(lego, 'pres')).toBe(true)
+    // No presentation audio: known audio is the documented prompt fallback.
+    expect(legoIntroIsPlayable(lego, null)).toBe(true)
+    expect(legoIntroIsPlayable({ ...lego, target2_audio_uuid: null }, null)).toBe(true)
+    expect(legoIntroIsPlayable({ ...lego, known_audio_uuid: null }, 'pres')).toBe(true)
+    expect(legoIntroIsPlayable({ ...lego, known_audio_uuid: null }, null)).toBe(false)
+    expect(legoIntroIsPlayable({ ...lego, target1_audio_uuid: null }, 'pres')).toBe(false)
+  })
+
+  it('a DEBUT needs all three voices (the learner must produce)', () => {
+    expect(legoDebutIsPlayable(mkLego('S0001L01', 1).lego)).toBe(true)
+    expect(legoDebutIsPlayable(mkLego('S0001L01', 1, { known: null }).lego)).toBe(false)
+    expect(legoDebutIsPlayable(mkLego('S0001L01', 1, { t1: null }).lego)).toBe(false)
+    expect(legoDebutIsPlayable(mkLego('S0001L01', 1, { t2: null }).lego)).toBe(false)
   })
 
   it('phraseHasFullAudio requires known + target1 + target2', () => {
@@ -195,35 +207,27 @@ describe('audio-completeness gates (learner parity: all THREE audio IDs)', () =>
   })
 })
 
-describe('applyLearnerAudioGate + numberRounds — gap-compression renumbering', () => {
-  it('drops no-audio LEGOs and renumbers survivors consecutively (no gaps)', () => {
+describe('numberRounds — an audio gap never costs a round NUMBER', () => {
+  // THE staleness guard. Popty's preview used to gate the walk by audio, so a
+  // LEGO short of one clip vanished and every later round slid down by one.
+  // The player stopped doing that on 2026-08-06 (ssi-learning-app 269d2d19):
+  // every is_new LEGO keeps its round number whatever its clips.
+  it('numbers unvoiced LEGOs in place — no compression, in either view', () => {
     const legos = [
       mkLego('S0001L01', 1),
-      mkLego('S0001L02', 1, { t2: null }),   // awaiting audio → learner never sees it
+      mkLego('S0001L02', 1, { t2: null }),    // awaiting audio — still a round
       mkLego('S0002L01', 2),
-      mkLego('S0002L02', 2, { known: null }), // awaiting audio
+      mkLego('S0002L02', 2, { known: null }), // awaiting audio — still a round
       mkLego('S0003L01', 3),
     ]
-    const { legos: gated } = applyLearnerAudioGate(legos, new Map(), new Map())
-    expect(gated.map(l => l.lego.id)).toEqual(['S0001L01', 'S0002L01', 'S0003L01'])
-
-    const numbered = numberRounds(gated)
+    const numbered = numberRounds(legos)
     expect(numbered.map(n => ({ id: n.record.lego.id, round: n.roundNumber }))).toEqual([
       { id: 'S0001L01', round: 1 },
-      { id: 'S0002L01', round: 2 },  // S0001L02 left NO gap — compressed
-      { id: 'S0003L01', round: 3 },
+      { id: 'S0001L02', round: 2 },
+      { id: 'S0002L01', round: 3 },
+      { id: 'S0002L02', round: 4 },
+      { id: 'S0003L01', round: 5 },
     ])
-  })
-
-  it('production view (no gate) keeps the original numbering for the same input', () => {
-    const legos = [
-      mkLego('S0001L01', 1),
-      mkLego('S0001L02', 1, { t2: null }),
-      mkLego('S0002L01', 2),
-    ]
-    const numbered = numberRounds(legos)
-    expect(numbered.map(n => n.roundNumber)).toEqual([1, 2, 3])
-    expect(numbered[2].record.lego.id).toBe('S0002L01')
   })
 
   it('respects startRound for paginated/lookback windows', () => {
@@ -253,7 +257,7 @@ describe('applyLearnerAudioGate + numberRounds — gap-compression renumbering',
     const useMap = new Map([
       ['S0001L01', [mkPhrase('u1'), mkPhrase('u2')]],
     ])
-    const { buildMap: gatedBuild, useMap: gatedUse } = applyLearnerAudioGate([], buildMap, useMap)
+    const { buildMap: gatedBuild, useMap: gatedUse } = applyLearnerPhraseAudioGate(buildMap, useMap)
 
     expect(gatedBuild.get('S0001L01').map(p => p.id)).toEqual(['b1'])
     expect(gatedBuild.has('S0002L01')).toBe(false)  // emptied → removed
@@ -460,14 +464,45 @@ describe('annotatePlayerDelivery — per-row flags', () => {
     expect(out.every(i => i.playerDropReason === undefined)).toBe(true)
   })
 
-  it('flags the WHOLE round when the LEGO is short one voice (player drops the round)', () => {
+  it('costs only the DEBUT when the LEGO is short its second voice', () => {
+    // The whole-round condemnation this replaces is exactly the staleness:
+    // the intro still plays (prompt + target1) and so does every phrase row.
     const out = annotatePlayerDelivery(
       [mkItem('intro'), mkItem('debut'), mkItem('build')],
-      { lego: { ...fullLego, target2_audio_uuid: null } }
+      { lego: { ...fullLego, target2_audio_uuid: null }, presentationAudioId: 'p' }
     )
-    expect(out.map(i => i.playerCanDeliver)).toEqual([false, false, false])
-    expect(out.every(i => i.playerDropReason === 'lego-audio')).toBe(true)
-    expect(out[0].missingAudioRoles).toEqual(['target2'])
+    expect(out.map(i => i.playerCanDeliver)).toEqual([true, false, true])
+    expect(out[1].playerDropReason).toBe('debut-audio')
+    expect(out[1].missingAudioRoles).toEqual(['target2'])
+  })
+
+  it('costs the INTRO alone when there is no prompt clip at all', () => {
+    const out = annotatePlayerDelivery(
+      [mkItem('intro'), mkItem('debut'), mkItem('build')],
+      { lego: { ...fullLego, known_audio_uuid: null }, presentationAudioId: null }
+    )
+    expect(out.map(i => i.playerCanDeliver)).toEqual([false, false, true])
+    expect(out[0].playerDropReason).toBe('intro-audio')
+    expect(out[0].missingAudioRoles).toEqual(['known'])
+    // The debut needs all three, so it goes too — but on its OWN reason.
+    expect(out[1].playerDropReason).toBe('debut-audio')
+  })
+
+  it('keeps the intro playable when presentation audio covers a missing known clip', () => {
+    const out = annotatePlayerDelivery(
+      [mkItem('intro')],
+      { lego: { ...fullLego, known_audio_uuid: null }, presentationAudioId: 'pres-1' }
+    )
+    expect(out[0].playerCanDeliver).toBe(true)
+  })
+
+  it('costs everything in the round only when target1 is gone', () => {
+    const out = annotatePlayerDelivery(
+      [mkItem('intro'), mkItem('debut')],
+      { lego: { ...fullLego, target1_audio_uuid: null }, presentationAudioId: 'p' }
+    )
+    expect(out.map(i => i.playerCanDeliver)).toEqual([false, false])
+    expect(out[0].missingAudioRoles).toEqual(['target1'])
   })
 
   it('flags only the offending phrase row when the LEGO itself is fine', () => {
@@ -495,13 +530,13 @@ describe('annotatePlayerDelivery — per-row flags', () => {
     expect(bad[0].playerDropReason).toBe('seed-audio')
   })
 
-  it('flags a review of a LEGO the player never introduces', () => {
+  it('delivers a review of a LEGO whose own debut was skipped (it still entered legoState)', () => {
     const out = annotatePlayerDelivery(
       [mkItem('review', { legoId: 'S0009L01' })],
-      { lego: fullLego, droppedLegoIds: new Set(['S0009L01']) }
+      { lego: fullLego }
     )
-    expect(out[0].playerCanDeliver).toBe(false)
-    expect(out[0].playerDropReason).toBe('reviewed-lego-dropped')
+    expect(out[0].playerCanDeliver).toBe(true)
+    expect(out[0].playerDropReason).toBeUndefined()
   })
 
   it('never mutates the items it is given', () => {
@@ -511,7 +546,7 @@ describe('annotatePlayerDelivery — per-row flags', () => {
   })
 })
 
-describe('generateLearningScript — a real audio hole is shown AND annotated', () => {
+describe('generateLearningScript — a real audio hole costs its cycle, not its round', () => {
   // Round 5's LEGO is short its second target voice (the fra_for_eng S0015L01
   // shape from the 2026-08-06 diff); LEGO 7's BUILD phrase is short one voice.
   const holed = () => {
@@ -522,7 +557,7 @@ describe('generateLearningScript — a real audio hole is shown AND annotated', 
   }
   const run = () => generateLearningScript(holed(), COURSE, 12, 0)
 
-  it('still SHOWS the round the player drops (intent is never hidden)', async () => {
+  it('still SHOWS the round the player partly skips (intent is never hidden)', async () => {
     const { rounds } = await run()
     const round5 = rounds.find(r => r.roundNumber === 5)
     expect(round5).toBeTruthy()
@@ -530,24 +565,33 @@ describe('generateLearningScript — a real audio hole is shown AND annotated', 
     expect(round5.items.length).toBeGreaterThan(0)
   })
 
-  it('annotates that round as undeliverable, naming the missing voice', async () => {
+  it('annotates the DEBUT alone as undeliverable, naming the missing voice', async () => {
     const { rounds } = await run()
     const round5 = rounds.find(r => r.roundNumber === 5)
-    expect(round5.playerDelivers).toBe(false)
-    expect(round5.playerDropReason).toBe('lego-audio')
-    expect(round5.missingAudioRoles).toEqual(['target2'])
-    expect(round5.playerRoundNumber).toBeNull()
-    expect(round5.undeliverableItemCount).toBe(round5.items.length)
-    expect(round5.items.every(i => i.playerCanDeliver === false)).toBe(true)
+    // The round still plays — this is the whole point of the 2026-08-06 fix.
+    expect(round5.playerDelivers).toBe(true)
+    expect(round5.playerDropReason).toBeUndefined()
+    expect(round5.undeliverableItemCount).toBe(1)
+    const bad = round5.items.filter(i => i.playerCanDeliver === false)
+    expect(bad).toHaveLength(1)
+    expect(bad[0].type).toBe('debut')
+    expect(bad[0].playerDropReason).toBe('debut-audio')
+    expect(bad[0].missingAudioRoles).toEqual(['target2'])
+    // Its intro and its build/review/consolidate neighbours are untouched.
+    expect(round5.items.find(i => i.type === 'intro').playerCanDeliver).toBe(true)
   })
 
-  it('leaves neighbouring rounds deliverable and shows the learner renumbering', async () => {
+  it('THE STALENESS GUARD: an audio hole renumbers nothing, here or in the player', async () => {
     const { rounds } = await run()
-    expect(rounds.find(r => r.roundNumber === 4).playerDelivers).toBe(true)
-    expect(rounds.find(r => r.roundNumber === 4).playerRoundNumber).toBe(4)
-    // Everything after the hole slides down by one in the live player.
-    expect(rounds.find(r => r.roundNumber === 6).playerRoundNumber).toBe(5)
-    expect(rounds.find(r => r.roundNumber === 10).playerRoundNumber).toBe(9)
+    // Every round keeps its own number in both directions — no slide of one.
+    for (const r of rounds) {
+      expect(r.playerRoundNumber, `round ${r.roundNumber} must not renumber`).toBe(r.roundNumber)
+    }
+    expect(rounds.find(r => r.roundNumber === 6).playerRoundNumber).toBe(6)
+    expect(rounds.find(r => r.roundNumber === 10).playerRoundNumber).toBe(10)
+    // And the LEGO at each round is the intended one, not the next one up.
+    expect(rounds.find(r => r.roundNumber === 6).legoId).toBe(legoId(6))
+    expect(rounds.find(r => r.roundNumber === 10).legoId).toBe(legoId(10))
   })
 
   it('flags the single unvoiced phrase without condemning its round', async () => {
@@ -562,19 +606,18 @@ describe('generateLearningScript — a real audio hole is shown AND annotated', 
     expect(round7.items.find(i => i.type === 'debut').playerCanDeliver).toBe(true)
   })
 
-  it('flags later reviews of the dropped LEGO', async () => {
+  it('keeps later reviews of the half-voiced LEGO — they play on their own audio', async () => {
     const { rounds } = await run()
     const reviewsOfFive = rounds
       .flatMap(r => r.items)
       .filter(i => i.type === 'review' && i.legoId === legoId(5))
     expect(reviewsOfFive.length).toBeGreaterThan(0)
-    expect(reviewsOfFive.every(i => i.playerCanDeliver === false)).toBe(true)
-    expect(reviewsOfFive.every(i => i.playerDropReason === 'reviewed-lego-dropped')).toBe(true)
+    expect(reviewsOfFive.every(i => i.playerCanDeliver === true)).toBe(true)
   })
 
-  it('totals the gaps in stats', async () => {
+  it('totals the gaps in stats — no round is dropped for a single missing clip', async () => {
     const { rounds, stats } = await run()
-    expect(stats.roundsPlayerDrops).toBe(1)
+    expect(stats.roundsPlayerDrops).toBe(0)
     expect(stats.itemsPlayerCannotDeliver).toBe(
       rounds.reduce((sum, r) => sum + r.items.filter(i => i.playerCanDeliver === false).length, 0)
     )
@@ -587,5 +630,134 @@ describe('generateLearningScript — a real audio hole is shown AND annotated', 
     expect(stats.itemsPlayerCannotDeliver).toBe(0)
     expect(rounds.every(r => r.playerDelivers === true)).toBe(true)
     expect(rounds.map(r => r.playerRoundNumber)).toEqual(rounds.map(r => r.roundNumber))
+  })
+})
+
+// ---------------------------------------------------------------------------
+// LEARNER VIEW (?learnerView=1) — the preview a reviewer reads as "what the
+// learner actually gets". It must agree with the player item for item.
+//
+// This block is the regression the stale gate would have failed: before
+// 2026-08-06 parity, one unvoiced LEGO removed a whole round from this preview
+// and slid every later round number down by one, so the preview disagreed with
+// the live player for every course with an audio gap.
+// ---------------------------------------------------------------------------
+
+describe('generateLearningScript learnerView — per-item degradation parity', () => {
+  // LEGO 5: no target2 → debut unplayable, intro fine.
+  // LEGO 8: no known audio AND no presentation → intro unplayable too.
+  // LEGO 11: no target1 → nothing of its own plays.
+  const gappy = () => {
+    const fixture = makeFixture()
+    fixture.legoRows.find(l => l.lego_id === legoId(5)).target2_audio_id = null
+    const eight = fixture.legoRows.find(l => l.lego_id === legoId(8))
+    eight.known_audio_id = null
+    eight.presentation_audio_id = null
+    fixture.legoRows.find(l => l.lego_id === legoId(11)).target1_audio_id = null
+    return makeFakeSupabase(fixture)
+  }
+  const runLearner = () => generateLearningScript(gappy(), COURSE, 14, 0, { learnerView: true })
+
+  it('keeps every round and every round NUMBER despite the gaps', async () => {
+    const { rounds } = await runLearner()
+    expect(rounds.map(r => r.roundNumber)).toEqual([1,2,3,4,5,6,7,8,9,10,11,12,13,14])
+    expect(rounds.map(r => r.legoId)).toEqual(
+      [1,2,3,4,5,6,7,8,9,10,11,12,13,14].map(legoId)
+    )
+  })
+
+  it('skips only the unplayable cycle, keeping the rest of its round', async () => {
+    const { rounds } = await runLearner()
+    const round5 = rounds.find(r => r.roundNumber === 5)
+    expect(round5.items.find(i => i.type === 'intro')).toBeTruthy()
+    expect(round5.items.find(i => i.type === 'debut')).toBeUndefined()
+    expect(round5.items.filter(i => i.type === 'build').length).toBeGreaterThan(0)
+
+    const round8 = rounds.find(r => r.roundNumber === 8)
+    expect(round8.items.find(i => i.type === 'intro')).toBeUndefined()
+    expect(round8.items.find(i => i.type === 'debut')).toBeUndefined()
+    // Builds, reviews and consolidates survive an intro/debut with no audio.
+    expect(round8.items.filter(i => i.type === 'build').length).toBeGreaterThan(0)
+    expect(round8.items.filter(i => i.type === 'consolidate').length).toBeGreaterThan(0)
+  })
+
+  it('still reviews a LEGO whose own debut was skipped', async () => {
+    const { rounds } = await runLearner()
+    const reviewsOfEight = rounds
+      .flatMap(r => r.items)
+      .filter(i => i.type === 'review' && i.legoId === legoId(8))
+    expect(reviewsOfEight.length).toBeGreaterThan(0)
+  })
+
+  it('nothing is dropped for audio in the LEGO pool — only phrases are', async () => {
+    const { stats } = await runLearner()
+    expect(stats.learnerView).toBe(true)
+    expect(stats.legosDroppedForAudio).toBeUndefined()
+    expect(stats.phrasesDroppedForAudio).toBe(0)
+  })
+
+  it('drops a seed review the player cannot voice, rather than showing a silent one', async () => {
+    // Learner parity (generateLearningScript.ts:1316): without the seed's
+    // first target voice the player falls back to the use-phrase path.
+    const fixture = makeFixture()
+    fixture.seedRows.find(r => r.seed_number === 1).target1_audio_id = null
+    const supabase = makeFakeSupabase(fixture)
+
+    const { rounds: production } = await generateLearningScript(supabase, COURSE, 6, 140)
+    const prodSeedReview = production
+      .find(r => r.roundNumber === 145).items
+      .find(i => i.reviewItemKind === 'seed' && i.legoId === legoId(1))
+    expect(prodSeedReview).toBeTruthy()   // intent view still shows it, flagged
+    expect(prodSeedReview.playerCanDeliver).toBe(false)
+    expect(prodSeedReview.playerDropReason).toBe('seed-audio')
+
+    const { rounds: learner } = await generateLearningScript(supabase, COURSE, 6, 140, { learnerView: true })
+    const learnerRound = learner.find(r => r.roundNumber === 145)
+    expect(learnerRound.items.find(i => i.reviewItemKind === 'seed' && i.legoId === legoId(1))).toBeUndefined()
+    // It fell back to that LEGO's use-phrase, exactly as the player does.
+    expect(learnerRound.items.find(i => i.type === 'review' && i.legoId === legoId(1))).toBeTruthy()
+  })
+
+  it('dedupes consecutive duplicates ACROSS rounds, as the player does', async () => {
+    // The player dedupes over the whole item stream, so the same sentence
+    // repeated across a round boundary is dropped — and a round left with only
+    // that duplicate never plays. Two adjacent LEGOs sharing one USE phrase
+    // makes that collision.
+    // Find what round 2 actually ends on, then make round 3's first BUILD the
+    // same sentence — the boundary collision the per-round scope cannot see.
+    const { rounds: baseline } = await generateLearningScript(makeFakeSupabase(makeFixture()), COURSE, 6, 0)
+    const round2Items = baseline.find(r => r.roundNumber === 2).items
+    const tail = round2Items[round2Items.length - 1]
+
+    const fixture = makeFixture()
+    const dup = fixture.phraseRows.find(p => p.id === 'b-3')
+    dup.known_text = tail.known_text
+    dup.target_text = tail.target_text
+    const supabase = makeFakeSupabase(fixture)
+
+    const firstOf = (rounds, n) => rounds.find(r => r.roundNumber === n).items
+      .filter(i => i.type !== 'intro' && i.type !== 'debut')[0]
+
+    const { rounds: production } = await generateLearningScript(supabase, COURSE, 6, 0)
+    const { rounds: learner } = await generateLearningScript(supabase, COURSE, 6, 0, { learnerView: true })
+    // Production view keeps it (its scope is the round); learner view drops it,
+    // because the player's stream-wide dedup does.
+    expect(firstOf(production, 3).known_text).toBe(tail.known_text)
+    expect(firstOf(learner, 3).known_text).not.toBe(tail.known_text)
+  })
+
+  it('learner view and production view agree on round numbering, item for item', async () => {
+    const { rounds: learner } = await runLearner()
+    const { rounds: production } = await generateLearningScript(gappy(), COURSE, 14, 0)
+    expect(learner.map(r => r.roundNumber)).toEqual(production.map(r => r.roundNumber))
+    expect(learner.map(r => r.legoId)).toEqual(production.map(r => r.legoId))
+    // The only difference is that the learner view omits the cycles the
+    // production view shows-and-flags.
+    for (const p of production) {
+      const l = learner.find(r => r.roundNumber === p.roundNumber)
+      // Learner view drops the undeliverable cycles, and may additionally
+      // collapse a duplicate carried over from the previous round.
+      expect(l.items.length).toBeLessThanOrEqual(p.items.length - p.undeliverableItemCount)
+    }
   })
 })

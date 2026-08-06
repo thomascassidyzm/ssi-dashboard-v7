@@ -28,14 +28,14 @@
             :title="`${stats.itemsPlayerCannotDeliver} rows in this window are flagged: the live player skips them today. They are still shown.`"
           >{{ stats.itemsPlayerCannotDeliver }}</span>
           <span v-if="(stats.roundsPlayerDrops || 0) > 0" class="text-amber-400 text-sm ml-2">
-            in {{ stats.roundsPlayerDrops }} dropped round{{ stats.roundsPlayerDrops === 1 ? '' : 's' }}
+            and {{ stats.roundsPlayerDrops }} round{{ stats.roundsPlayerDrops === 1 ? ' has' : 's have' }} nothing playable
           </span>
         </div>
         <!-- Learner view: how much content is hidden because audio is missing -->
         <div v-if="stats.learnerView" class="stat-item">
           <span class="stat-label-audio text-emerald-400 text-sm">Learner view</span>
           <span class="stat-val-audio text-emerald-300 text-sm ml-2">
-            {{ (stats.legosDroppedForAudio || 0) }} LEGOs + {{ (stats.phrasesDroppedForAudio || 0) }} phrases awaiting audio hidden, rounds renumbered
+            {{ (stats.phrasesDroppedForAudio || 0) }} phrases awaiting audio skipped — every round keeps its number
           </span>
         </div>
         <div class="stat-item ml-auto">
@@ -131,18 +131,19 @@
               <span class="lego-id-text text-emerald-400 font-mono text-sm">{{ round.legoId }}</span>
             </div>
 
-            <!-- Player-delivery flag: the intended round is still shown, this
-                 says the live player cannot currently deliver it. -->
+            <!-- Player-delivery flag: only when the round has NOTHING the
+                 player can play. An audio gap costs the cycle, not the round —
+                 the round keeps its number and plays what it has. -->
             <span
               v-if="round.playerDelivers === false"
               class="round-undeliverable-badge text-xs px-2 py-0.5 rounded border border-amber-700 bg-amber-900/30 text-amber-300 whitespace-nowrap"
               :title="roundFlagTitle(round)"
-            >⚠ player skips this round — {{ rolesPhrase(round.missingAudioRoles) }} audio missing</span>
+            >⚠ nothing playable in this round yet</span>
             <span
-              v-else-if="roundHasRenumbering(round)"
-              class="round-renumber-badge text-xs px-2 py-0.5 rounded border border-line text-muted font-mono whitespace-nowrap"
-              :title="roundNumberTitle(round)"
-            >player: R{{ round.playerRoundNumber }}</span>
+              v-else-if="(round.undeliverableItemCount || 0) > 0"
+              class="round-partial-badge text-xs px-2 py-0.5 rounded border border-line text-muted whitespace-nowrap"
+              :title="roundPartialTitle(round)"
+            >{{ round.undeliverableItemCount }} cycle{{ round.undeliverableItemCount === 1 ? '' : 's' }} skipped for audio</span>
             <!-- LEGO Text: known = target -->
             <div class="lego-text text-ink text-sm">
               <span class="text-muted">{{ getLegoKnownText(round) }}</span>
@@ -264,13 +265,12 @@
               </div>
 
               <!-- Player-delivery flag, only where nothing else on the row says
-                   it. Missing audio already shows as a dropped play button and
-                   an amber triangle, so a chip repeating it would be noise; a
-                   review of a LEGO the player never introduces has FULL audio
-                   and looks perfectly healthy, so it needs saying. The round
-                   header carries the whole-round drop. -->
+                   it. Missing phrase audio already shows as a dropped play
+                   button and an amber triangle, so a chip repeating it would be
+                   noise; an intro whose narration is missing looks healthy on
+                   the row, so it needs saying. -->
               <span
-                v-if="item.playerDropReason === 'reviewed-lego-dropped'"
+                v-if="item.playerDropReason === 'intro-audio'"
                 class="item-undeliverable-badge flex-shrink-0 text-xs px-2 py-0.5 rounded border border-amber-700 bg-amber-900/30 text-amber-300 whitespace-nowrap"
                 :title="itemFlagTitle(item)"
               >⚠ {{ itemFlagLabel(item) }}</span>
@@ -438,7 +438,7 @@ interface ScriptItem {
   // Player-delivery annotation (learning-script-generator annotatePlayerDelivery).
   // The row is ALWAYS shown; these only say whether the live player can play it.
   playerCanDeliver?: boolean
-  playerDropReason?: 'lego-audio' | 'phrase-audio' | 'seed-audio' | 'reviewed-lego-dropped'
+  playerDropReason?: 'intro-audio' | 'debut-audio' | 'phrase-audio' | 'seed-audio'
   missingAudioRoles?: string[]
 }
 
@@ -470,7 +470,6 @@ interface Stats {
   graduatedSeeds?: number
   // Audio-gap toggle ("As the learner hears it") — set by the generator
   learnerView?: boolean
-  legosDroppedForAudio?: number
   phrasesDroppedForAudio?: number
 }
 
@@ -517,40 +516,37 @@ const rolesPhrase = (roles?: string[]) =>
   (roles || []).map(r => ROLE_LABELS[r] || r).join(' + ')
 
 const itemFlagLabel = (item: ScriptItem): string =>
-  item.playerDropReason === 'reviewed-lego-dropped' ? 'review unreachable' : 'audio missing'
+  item.playerDropReason === 'intro-audio' ? 'intro skipped' : 'audio missing'
 
 const itemFlagTitle = (item: ScriptItem): string => {
   switch (item.playerDropReason) {
-    case 'lego-audio':
-      return `The player drops this whole round — its LEGO has no ${rolesPhrase(item.missingAudioRoles)} audio, so this row never plays.`
+    case 'intro-audio':
+      return `No ${rolesPhrase(item.missingAudioRoles)} audio for this intro — the player skips the intro cycle only; the rest of the round plays.`
+    case 'debut-audio':
+      return `No ${rolesPhrase(item.missingAudioRoles)} audio for this LEGO — the player skips the debut cycle only; the rest of the round plays.`
     case 'seed-audio':
       return 'The player needs voice 1 on this seed sentence; without it it substitutes a use phrase, so this row never plays.'
-    case 'reviewed-lego-dropped':
-      return 'The player never introduces the LEGO being reviewed here (its audio is missing), so this review never fires.'
     case 'phrase-audio':
     default:
       return `No ${rolesPhrase(item.missingAudioRoles)} audio for this phrase — the player skips this row.`
   }
 }
 
+// Only fires when the round has nothing playable at all — a missing clip costs
+// its own cycle, never the round (learner app, 2026-08-06).
 const roundFlagTitle = (round: RoundData): string =>
-  `The live player drops this entire round: its LEGO has no ${rolesPhrase(round.missingAudioRoles)} audio. `
-  + 'The round is still shown here because it is part of the intended course.'
+  'Every cycle in this round is still awaiting audio, so the live player has nothing to play here. '
+  + 'The round is still shown because it is part of the intended course, and its number is unaffected.'
 
-// The number the learner actually sees — dropped rounds renumber everything
-// after them, so R47 here can be R46 in the player.
+const roundPartialTitle = (round: RoundData): string =>
+  `The player plays this round as R${round.roundNumber} and skips ${round.undeliverableItemCount} cycle`
+  + `${round.undeliverableItemCount === 1 ? '' : 's'} that are awaiting audio.`
+
+// Round numbers no longer move: an audio gap costs the cycle, not the number.
 const roundNumberTitle = (round: RoundData): string => {
-  if (round.playerDelivers === false) return 'The live player does not play this round at all'
-  if (round.playerRoundNumber && round.playerRoundNumber !== round.roundNumber) {
-    return `Round ${round.roundNumber} of the intended course — the player currently numbers it R${round.playerRoundNumber}, because earlier rounds are missing audio`
-  }
+  if (round.playerDelivers === false) return 'Nothing in this round is playable yet — the player skips straight past it'
   return `Round ${round.roundNumber}`
 }
-
-const roundHasRenumbering = (round: RoundData) =>
-  round.playerDelivers !== false
-  && !!round.playerRoundNumber
-  && round.playerRoundNumber !== round.roundNumber
 
 // ── Approval-gate standing per round ──────────────────────────────────────
 // Read-only and non-blocking: Script View is a proofing tool and must not

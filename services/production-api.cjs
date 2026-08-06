@@ -7137,9 +7137,10 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
   // Parse query params
   const maxLegosNum = maxLegos ? parseInt(maxLegos, 10) : 50
   const offsetNum = offset ? parseInt(offset, 10) : 0
-  // learnerView=1 applies the learner app's audio gates: LEGOs/phrases missing
-  // any audio ID are dropped and round numbers compress, exactly as the
-  // learner's script does. Default (production view) keeps + flags the gaps.
+  // learnerView=1 applies the learner app's audio gates PER ITEM: an unvoiced
+  // intro/debut cycle or phrase is skipped on its own while its round keeps its
+  // number and everything else it has, exactly as the player does since
+  // 2026-08-06. Default (production view) keeps + flags the gaps.
   const learnerViewFlag = learnerView === '1' || learnerView === 'true'
 
   try {

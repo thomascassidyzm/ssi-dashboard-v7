@@ -22,11 +22,14 @@
  *   (course_enrollments.completed_pod_rounds) — a course-level projection
  *   cannot model them. PodsView owns pods.
  * - Optional learner audio view (options.learnerView): applies the learner's
- *   audio gates — LEGOs/phrases missing any of known/target1/target2 audio are
- *   dropped BEFORE the walk, so round numbers compress exactly as the
- *   learner's do (generateLearningScript.ts:816-823 / :726-768). Default
- *   (production view) keeps every row, flagged hasAudio:false — that is the
- *   review tool's job.
+ *   audio gates PER ITEM — a missing clip costs that item, never its round.
+ *   An unvoiced intro or debut is skipped on its own; the round keeps its
+ *   number and everything else it has (builds, reviews, consolidates), and
+ *   only a round left with nothing playable disappears. Unvoiced phrases never
+ *   enter the BUILD/USE pools. Default (production view) keeps every row,
+ *   flagged hasAudio:false — that is the review tool's job.
+ *   Learner parity: ssi-learning-app 269d2d19 (2026-08-06), "a missing clip
+ *   costs that item, never the round or the course".
  * - ALWAYS-ON player-delivery annotation (annotatePlayerDelivery, below): every
  *   row and every round carries playerCanDeliver / playerDropReason /
  *   missingAudioRoles, and each round carries the round number the learner
@@ -231,11 +234,25 @@ function seedSentenceFor(legoId, seedSentenceMap) {
 
 /**
  * Learner audio-completeness gates — PURE, unit tested.
- * Mirrors ssi-learning-app generateLearningScript.ts:
- * - LEGOs: "a cycle must never present without all three audio IDs" (:820-822)
- * - Phrases: phraseHasFullAudio (:726-727)
+ *
+ * The invariant is unchanged from day one: never SCHEDULE an unplayable cycle.
+ * What changed on 2026-08-06 (ssi-learning-app 269d2d19, Tom's ruling "always
+ * play what it HAS") is the GRANULARITY — these are now per-ITEM tests, not a
+ * whole-LEGO filter. A LEGO short of one clip keeps its round and its round
+ * NUMBER; only the specific unplayable cycle is skipped.
+ *
+ * - INTRO plays prompt → target1 → target2 with no pause, so it needs a prompt
+ *   clip (presentation audio, or known audio as the documented fallback) and
+ *   the first target voice. A missing second voice is a phase the player skips
+ *   gracefully (generateLearningScript.ts:1139).
+ * - DEBUT asks the learner to produce, so it needs all three (:1140).
+ * - Phrases still need all three to enter the BUILD/USE pools (:670-671).
  */
-function legoHasFullAudio(lego) {
+function legoIntroIsPlayable(lego, presentationAudioId) {
+  return !!((presentationAudioId || lego.known_audio_uuid) && lego.target1_audio_uuid)
+}
+
+function legoDebutIsPlayable(lego) {
   return !!(lego.known_audio_uuid && lego.target1_audio_uuid && lego.target2_audio_uuid)
 }
 
@@ -244,15 +261,18 @@ function phraseHasFullAudio(phrase) {
 }
 
 /**
- * Apply the learner's audio gates to the loaded course content — PURE.
- * LEGOs missing any of known/target1/target2 audio are dropped BEFORE the
- * round walk (so survivors take consecutive round numbers — the learner's
- * round compression, generateLearningScript.ts:816-823). BUILD/USE pools are
- * filtered to fully-voiced phrases (:761-764). Original maps are not mutated.
+ * Apply the learner's PHRASE audio gate to the loaded pools — PURE.
+ * Phrases missing any of known/target1/target2 never enter the BUILD/USE pools
+ * (generateLearningScript.ts:706-711), so they consume no build slot and no
+ * review round-robin turn. Original maps are not mutated.
+ *
+ * There is deliberately no LEGO half any more: the whole-LEGO pre-filter that
+ * used to live here dropped a round BEFORE round numbers were assigned, so one
+ * audio gap slid every later round down by one and re-paired the entire
+ * Fibonacci review schedule. Intro/debut playability is now decided per item at
+ * emit time (legoIntroIsPlayable / legoDebutIsPlayable).
  */
-function applyLearnerAudioGate(legoRecords, buildMap, useMap) {
-  const legos = legoRecords.filter(rec => legoHasFullAudio(rec.lego))
-
+function applyLearnerPhraseAudioGate(buildMap, useMap) {
   const gateMap = (map) => {
     const out = new Map()
     for (const [key, phrases] of map.entries()) {
@@ -263,7 +283,6 @@ function applyLearnerAudioGate(legoRecords, buildMap, useMap) {
   }
 
   return {
-    legos,
     buildMap: gateMap(buildMap),
     useMap: gateMap(useMap),
   }
@@ -277,15 +296,20 @@ function applyLearnerAudioGate(legoRecords, buildMap, useMap) {
  * per row and per round, whether the live player can actually deliver it today,
  * so a reviewer sees the gap without the row disappearing.
  *
- * Mirrors the learner's four gates (generateLearningScript.ts):
- * - :764  LEGOs missing any of known/target1/target2 are filtered out BEFORE
- *         the walk → the WHOLE round vanishes and later rounds renumber.
+ * Mirrors the learner's per-ITEM gates (generateLearningScript.ts, as of
+ * 269d2d19 2026-08-06):
+ * - :1139 an INTRO needs a prompt clip (presentation, or known as the
+ *         documented fallback) plus target1, else that intro alone is skipped.
+ * - :1140 a DEBUT needs all three voices, else that debut alone is skipped.
  * - :706  phrases missing any of the three never enter the BUILD/USE pools →
  *         build / consolidate / use-phrase review rows vanish.
  * - :1277 a seed-phase review needs the seed's target1 audio, else the player
  *         falls back to a use-phrase — the seed row shown here never plays.
- * - a review of a LEGO the player dropped can never fire: that LEGO never
- *   entered its legoState.
+ *
+ * NOTE what is deliberately absent: there is no whole-round drop and no
+ * "reviewed LEGO was dropped" case. Every is_new LEGO now keeps its round, its
+ * round NUMBER and its place in legoState, so its later reviews still fire on
+ * their own audio.
  */
 const AUDIO_ROLE_FIELDS = { known: 'known_audio_uuid', target1: 'target1_audio_uuid', target2: 'target2_audio_uuid' }
 const ALL_AUDIO_ROLES = ['known', 'target1', 'target2']
@@ -296,31 +320,42 @@ function missingAudioRoles(record, roles = ALL_AUDIO_ROLES) {
 }
 
 /**
+ * Which voices an INTRO is missing — PURE. The prompt clip is presentation
+ * audio with known audio as the documented fallback, so 'known' is only
+ * reported absent when BOTH are; target2 is not required (the player skips
+ * that phase gracefully).
+ */
+function missingIntroAudioRoles(lego, presentationAudioId) {
+  const missing = []
+  if (!(presentationAudioId || (lego && lego.known_audio_uuid))) missing.push('known')
+  if (!(lego && lego.target1_audio_uuid)) missing.push('target1')
+  return missing
+}
+
+/**
  * Annotate one round's items — PURE. Returns NEW item objects; never mutates.
  *
  * @param {Array}  items
  * @param {object} ctx
- * @param {object} ctx.lego            the round's own LEGO record (audio uuids)
- * @param {Set}    ctx.droppedLegoIds  LEGO ids the player never introduces
+ * @param {object} ctx.lego                 the round's own LEGO record (audio uuids)
+ * @param {string} ctx.presentationAudioId  the intro's prompt clip, if any
  */
 function annotatePlayerDelivery(items, ctx = {}) {
-  const droppedLegoIds = ctx.droppedLegoIds || new Set()
-  const legoMissing = missingAudioRoles(ctx.lego)
-  const roundIsDropped = legoMissing.length > 0
+  const lego = ctx.lego
+  const introMissing = missingIntroAudioRoles(lego, ctx.presentationAudioId)
+  const debutMissing = missingAudioRoles(lego)
 
   return (items || []).map(item => {
-    // The round's LEGO is unvoiced → the player emits no round at all, so
-    // every row in it is undeliverable regardless of its own audio.
-    if (roundIsDropped) {
-      return { ...item, playerCanDeliver: false, playerDropReason: 'lego-audio', missingAudioRoles: legoMissing }
+    // Intro and debut each stand or fall on their own clips — a gap in one
+    // costs that cycle only, never the round.
+    if (item.type === 'intro') {
+      if (introMissing.length === 0) return { ...item, playerCanDeliver: true }
+      return { ...item, playerCanDeliver: false, playerDropReason: 'intro-audio', missingAudioRoles: introMissing }
     }
 
-    if (item.type === 'intro' || item.type === 'debut') {
-      return { ...item, playerCanDeliver: true }
-    }
-
-    if (item.type === 'review' && droppedLegoIds.has(item.legoId)) {
-      return { ...item, playerCanDeliver: false, playerDropReason: 'reviewed-lego-dropped', missingAudioRoles: [] }
+    if (item.type === 'debut') {
+      if (debutMissing.length === 0) return { ...item, playerCanDeliver: true }
+      return { ...item, playerCanDeliver: false, playerDropReason: 'debut-audio', missingAudioRoles: debutMissing }
     }
 
     // Seed-sentence reviews need only the seed's target1; without it the
@@ -342,8 +377,9 @@ function annotatePlayerDelivery(items, ctx = {}) {
  * Assign round numbers to a LEGO walk — PURE, unit tested.
  * Mirrors the generator walk's numbering: every is_new LEGO takes the next
  * consecutive round; non-new LEGOs are skipped without consuming a number.
- * Run AFTER applyLearnerAudioGate and the numbering compresses exactly the
- * way the learner's does (dropped LEGOs leave no gap).
+ * Audio never enters this: a LEGO short of a clip still takes its number, in
+ * both views, exactly as the player does since 2026-08-06. Never pre-filter
+ * the walk by audio again — that is what slid every later round down by one.
  */
 function numberRounds(legoRecords, startRound = 0) {
   let n = startRound
@@ -654,9 +690,11 @@ async function loadSeedSentences(supabase, courseCode) {
  * - No component priming / listening clusters / pod laps (see header)
  *
  * @param {object} options
- * @param {boolean} options.learnerView  Apply the learner's audio gates: drop
- *   LEGOs/phrases missing any audio ID and compress round numbers the way the
- *   learner does. Default false = production view (gaps shown, flagged).
+ * @param {boolean} options.learnerView  Apply the learner's audio gates PER
+ *   ITEM: skip the specific unplayable intro/debut cycle and any unvoiced
+ *   phrase, keeping every round's number and everything else it has — exactly
+ *   what the player does since 2026-08-06. Default false = production view
+ *   (gaps shown, flagged).
  */
 async function generateLearningScript(supabase, courseCode, maxLegos = 50, offset = 0, options = {}) {
   if (!supabase) {
@@ -682,44 +720,35 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   const lookbackCount = offset - lookbackStart  // how many extra LEGOs to pre-process
   const totalToLoad = lookbackCount + maxLegos
 
-  // Load the FULL unique-LEGO list, then window AFTER the (optional) audio
-  // gate — gating must happen course-wide so learner-view round numbers match
-  // the learner's full-course compressed numbering.
-  let allLegoRecords = await loadAllUniqueLegos(supabase, courseCode, Number.MAX_SAFE_INTEGER, 0)
+  // Load the FULL unique-LEGO list, then window it. The list is never gated by
+  // audio: every is_new LEGO takes a round and a round NUMBER whatever its
+  // clips, in both views, exactly as the player now does.
+  const allLegoRecords = await loadAllUniqueLegos(supabase, courseCode, Number.MAX_SAFE_INTEGER, 0)
   if (allLegoRecords.length === 0) {
     return { rounds: [], allItems: [], stats: { legosLoaded: 0 } }
   }
 
-  // Player-delivery annotation basis — computed course-wide BEFORE any gating,
-  // so it is identical in both views and costs no extra query.
-  //  - droppedLegoIds: LEGOs the live player never introduces (missing audio),
-  //    which also kills every review of them.
-  //  - playerRoundNumbers: the round number the LEARNER would see, after the
-  //    player's dropped-LEGO renumbering (null for a LEGO it never plays).
-  const droppedLegoIds = new Set(
-    allLegoRecords.filter(rec => !legoHasFullAudio(rec.lego)).map(rec => rec.lego.id)
-  )
+  // The round number the LEARNER sees. Since 2026-08-06 an audio gap costs no
+  // round number, so this is simply the course-wide walk — kept as an explicit
+  // course-wide computation (rather than reusing the windowed `n`) so it stays
+  // correct for paginated windows and so any future divergence has one home.
   const playerRoundNumbers = new Map()
-  for (const { record, roundNumber } of numberRounds(allLegoRecords.filter(rec => legoHasFullAudio(rec.lego)))) {
+  for (const { record, roundNumber } of numberRounds(allLegoRecords)) {
     playerRoundNumbers.set(record.lego.id, roundNumber)
   }
 
   let { buildMap, useMap } = await loadAllPracticePhrasesGrouped(supabase, courseCode)
 
-  let legosDroppedForAudio = 0
   let phrasesDroppedForAudio = 0
   if (learnerView) {
-    const legosBefore = allLegoRecords.length
     const countPhrases = (m) => { let c = 0; for (const arr of m.values()) c += arr.length; return c }
     const phrasesBefore = countPhrases(buildMap) + countPhrases(useMap)
-    const gated = applyLearnerAudioGate(allLegoRecords, buildMap, useMap)
-    allLegoRecords = gated.legos
+    const gated = applyLearnerPhraseAudioGate(buildMap, useMap)
     buildMap = gated.buildMap
     useMap = gated.useMap
-    legosDroppedForAudio = legosBefore - allLegoRecords.length
     phrasesDroppedForAudio = phrasesBefore - (countPhrases(buildMap) + countPhrases(useMap))
-    if (legosDroppedForAudio > 0 || phrasesDroppedForAudio > 0) {
-      logger.info(`Learner view: dropped ${legosDroppedForAudio} LEGOs + ${phrasesDroppedForAudio} phrases awaiting audio (rounds renumbered)`)
+    if (phrasesDroppedForAudio > 0) {
+      logger.info(`Learner view: skipped ${phrasesDroppedForAudio} phrases awaiting audio (their rounds still play)`)
     }
   }
 
@@ -779,6 +808,10 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   // numberRounds is the pure helper that owns the compression behaviour.
   const numbered = numberRounds(legos, lookbackStart)
 
+  // Carries the last deduped row ACROSS rounds — learner view only (see the
+  // dedup block below for why the two views differ here).
+  let lastDedupItem = null
+
   for (const { record: currentLego, roundNumber: n, sourceIndex } of numbered) {
     const currentBuildPhrases = buildMap.get(currentLego.lego.id) || []
     const currentUsePhrases = useMap.get(currentLego.lego.id) || []
@@ -805,28 +838,40 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     const effectiveIntroAudio = (learnerView && !introAudio && currentLego.lego.known_audio_uuid)
       ? { id: currentLego.lego.known_audio_uuid, s3_key: null }
       : introAudio
-    roundItems.push({
-      ...baseItem,
-      type: 'intro',
-      known_text: currentLego.lego.known_text,
-      target_text: currentLego.lego.target_text,
-      presentation_audio: effectiveIntroAudio,
-      target1_audio_uuid: currentLego.lego.target1_audio_uuid,
-      target2_audio_uuid: currentLego.lego.target2_audio_uuid,
-      hasAudio: !!(effectiveIntroAudio && currentLego.lego.target1_audio_uuid),
-    })
+
+    // Per-ITEM audio gate in learner view: an unplayable intro or debut is
+    // skipped ON ITS OWN. The round keeps its number and its other cycles.
+    const introPlayable = legoIntroIsPlayable(currentLego.lego, introAudio && introAudio.id)
+    const debutPlayable = legoDebutIsPlayable(currentLego.lego)
+
+    if (!learnerView || introPlayable) {
+      roundItems.push({
+        ...baseItem,
+        type: 'intro',
+        known_text: currentLego.lego.known_text,
+        target_text: currentLego.lego.target_text,
+        presentation_audio: effectiveIntroAudio,
+        target1_audio_uuid: currentLego.lego.target1_audio_uuid,
+        target2_audio_uuid: currentLego.lego.target2_audio_uuid,
+        hasAudio: !!(effectiveIntroAudio && currentLego.lego.target1_audio_uuid),
+      })
+    }
 
     // Phase 2: DEBUT
-    roundItems.push({
-      ...baseItem,
-      type: 'debut',
-      known_text: currentLego.lego.known_text,
-      target_text: currentLego.lego.target_text,
-      known_audio_uuid: currentLego.lego.known_audio_uuid,
-      target1_audio_uuid: currentLego.lego.target1_audio_uuid,
-      target2_audio_uuid: currentLego.lego.target2_audio_uuid,
-      hasAudio: !!(currentLego.lego.known_audio_uuid && currentLego.lego.target1_audio_uuid),
-    })
+    if (!learnerView || debutPlayable) {
+      roundItems.push({
+        ...baseItem,
+        type: 'debut',
+        known_text: currentLego.lego.known_text,
+        target_text: currentLego.lego.target_text,
+        known_audio_uuid: currentLego.lego.known_audio_uuid,
+        target1_audio_uuid: currentLego.lego.target1_audio_uuid,
+        target2_audio_uuid: currentLego.lego.target2_audio_uuid,
+        hasAudio: !!(currentLego.lego.known_audio_uuid && currentLego.lego.target1_audio_uuid),
+      })
+    }
+    // The debut IS the bare LEGO — claim it whether or not it was emitted, so
+    // no later phase replays it (learner parity, :1191).
     usedPhrasesInRound.add(getPhraseId(currentLego.lego.known_text, currentLego.lego.target_text))
 
     // Phase 3: BUILD — BUILD phrases first, sorted by syllable count
@@ -944,9 +989,15 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       // LEGOs crossing the threshold => same seed a few rounds running) is
       // DESIRED — no de-clustering/dedup here. Falls back to the use-phrase path
       // if the seed record is missing (never render an empty seed card).
+      //
+      // Learner view also honours the player's seed-audio gate
+      // (generateLearningScript.ts:1316): without the seed's first target voice
+      // the player falls back to a use-phrase, so the preview must too — else
+      // it shows a review cycle the learner never hears, and counts a round as
+      // playable that the player finds empty.
       if (reviewItemIsSeed(reviewOffset)) {
         const seed = seedSentenceFor(reviewLegoState.legoId, seedSentenceMap)
-        if (seed) {
+        if (seed && (!learnerView || seed.target1_audio_uuid)) {
           const seedPhraseId = getPhraseId(seed.known_text, seed.target_text)
           reviewIndices.push(review.legoIndex)
           if (!usedPhrasesInRound.has(seedPhraseId)) {
@@ -974,7 +1025,9 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
           }
           continue
         }
-        logger.warn(`Seed-phase review (offset ${reviewOffset}) for ${reviewLegoState.legoId} has no parent seed sentence (${reviewLegoState.legoId.slice(0, 5)}) — falling back to use-phrase.`)
+        if (!seed) {
+          logger.warn(`Seed-phase review (offset ${reviewOffset}) for ${reviewLegoState.legoId} has no parent seed sentence (${reviewLegoState.legoId.slice(0, 5)}) — falling back to use-phrase.`)
+        }
       }
 
       if (reviewLegoState.usePhrases.length === 0) continue
@@ -1067,9 +1120,19 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       }
     }
 
-    // Remove consecutive duplicates
+    // Remove consecutive duplicates.
+    //
+    // SCOPE differs by view, deliberately. The learner's dedup runs over the
+    // WHOLE item stream (generateLearningScript.ts:1642-1660), so a sentence
+    // repeated across a round boundary — a seed-phase review of the same seed
+    // in successive rounds, which the clustering rule makes common — is
+    // dropped, and a round left with only that duplicate never plays. Learner
+    // view carries lastItem across rounds to match exactly. The production
+    // view keeps the per-round scope: it shows the intended course, and a row
+    // a reviewer may need to edit must not vanish because the previous round
+    // happened to end with the same sentence.
     const dedupedItems = []
-    let lastItem = null
+    let lastItem = learnerView ? lastDedupItem : null
 
     for (const item of roundItems) {
       if (item.type === 'intro' || item.type === 'debut') {
@@ -1086,15 +1149,24 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
       dedupedItems.push(item)
       lastItem = item
     }
+    lastDedupItem = lastItem
 
     // Only emit rounds past the lookback range (i.e. at the requested offset)
     if (n > offset) {
       // Annotate reality on top of intent — never filters, only labels.
       const annotatedItems = annotatePlayerDelivery(dedupedItems, {
         lego: currentLego.lego,
-        droppedLegoIds,
+        presentationAudioId: introAudio && introAudio.id,
       })
-      const legoMissing = missingAudioRoles(currentLego.lego)
+      const undeliverableItemCount = annotatedItems.filter(i => i.playerCanDeliver === false).length
+      // The player emits this round unless it has nothing playable at all — the
+      // learner's `cycles.length === 0` guard in toSimpleRounds. A round with
+      // SOME gaps still plays, keeping its number.
+      const playerDelivers = annotatedItems.length > undeliverableItemCount
+
+      // Learner view mirrors that guard literally: a round with nothing
+      // playable is not shown, and its absence renumbers nothing.
+      if (learnerView && annotatedItems.length === 0) continue
 
       rounds.push({
         roundNumber: n,
@@ -1106,12 +1178,10 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         items: annotatedItems,
         spacedRepReviews: reviewIndices,
         itemCount: annotatedItems.length,
-        playerDelivers: legoMissing.length === 0,
-        ...(legoMissing.length > 0
-          ? { playerDropReason: 'lego-audio', missingAudioRoles: legoMissing }
-          : {}),
+        playerDelivers,
+        ...(playerDelivers ? {} : { playerDropReason: 'round-empty', missingAudioRoles: missingAudioRoles(currentLego.lego) }),
         playerRoundNumber: playerRoundNumbers.get(currentLego.lego.id) ?? null,
-        undeliverableItemCount: annotatedItems.filter(i => i.playerCanDeliver === false).length,
+        undeliverableItemCount,
       })
 
       allItems.push(...annotatedItems)
@@ -1135,13 +1205,15 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     itemsWithAudio: allItems.filter(i => i.hasAudio).length,
     itemsMissingAudio: allItems.filter(i => !i.hasAudio && i.type !== 'intro').length,
     // Player-delivery annotation totals (always on, both views).
+    // roundsPlayerDrops now counts only rounds with NOTHING playable — a round
+    // with an audio gap still plays, so it is not a dropped round.
     itemsPlayerCannotDeliver: allItems.filter(i => i.playerCanDeliver === false).length,
     roundsPlayerDrops: rounds.filter(r => r.playerDelivers === false).length,
     graduatedSeeds: graduatedSeeds.size,
     spacedRepOffsets: SPACED_REP_OFFSETS,
     scriptShapeSource,
     learnerView,
-    ...(learnerView ? { legosDroppedForAudio, phrasesDroppedForAudio } : {}),
+    ...(learnerView ? { phrasesDroppedForAudio } : {}),
     generationTimeMs: elapsed,
   }
 
@@ -1158,11 +1230,13 @@ module.exports = {
   calculateSpacedRepReviews,
   seedSentenceFor,
   reviewItemIsSeed,
-  legoHasFullAudio,
+  legoIntroIsPlayable,
+  legoDebutIsPlayable,
   phraseHasFullAudio,
-  applyLearnerAudioGate,
+  applyLearnerPhraseAudioGate,
   annotatePlayerDelivery,
   missingAudioRoles,
+  missingIntroAudioRoles,
   numberRounds,
   FIBONACCI,
   SEED_PHASE_START_OFFSET,

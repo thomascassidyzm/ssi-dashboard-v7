@@ -76,15 +76,15 @@ function kindFor (item) {
  * The gap list above answers "what is there to record?". This answers the
  * different question a reviewer signing a course off is actually asking: "what
  * does a learner get today?" They are not the same number, and the difference
- * is not a rounding error. The player drops a LEGO short of ANY of its three
- * audio IDs BEFORE it walks the course (generateLearningScript.ts:764), so the
- * WHOLE round vanishes and every later round renumbers. `ara_lb_for_eng` shows
- * 1,414 rounds here and plays 638.
+ * is not a rounding error — but since 2026-08-06 the difference is per CYCLE,
+ * not per round: a missing clip costs its own intro/debut/phrase cycle, while
+ * the round keeps its number and everything else it has. Only a round with
+ * nothing playable at all counts as dropped (`ara_lb_for_eng`: 1,414 rounds,
+ * 86 of them with nothing playable, 1,328 reachable).
  *
- * That is why "missing only target2 is not blocking" — true of a practice
- * phrase, which the player simply skips — is dangerously false of a LEGO,
- * whose target2 gap costs the entire round. Both numbers are printed; neither
- * is folded into the other.
+ * So slotsUndeliverable — playback slots lost — is the number that moves with
+ * an audio gap, and roundsDropped is now the rare, severe case. Both are
+ * printed; neither is folded into the other.
  *
  * Annotation comes from learning-script-generator's annotatePlayerDelivery,
  * already on every item and round, so this costs one more pass over data that
