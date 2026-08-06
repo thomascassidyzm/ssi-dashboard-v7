@@ -1,0 +1,72 @@
+{
+ "mode": "applied",
+ "courses": [
+  "spa_mx_for_eng"
+ ],
+ "include_loose": false,
+ "heal_phrase_presentation": true,
+ "loose_held_back": 0,
+ "count": 3,
+ "storage_broken_dropped": 0,
+ "aborted": null,
+ "rows": [
+  {
+   "course_code": "spa_mx_for_eng",
+   "table": "course_legos",
+   "row_id": "7acfedaa-21bf-467a-b1b2-77e5cae10d28",
+   "ref": "S0106L02",
+   "seed_number": 106,
+   "column": "presentation_audio_id",
+   "role": "presentation",
+   "match": "strict",
+   "candidates": 1,
+   "key": "lego:S0106L02",
+   "audio_id": "c4bc892e-661d-4599-9612-1a35ce10c270",
+   "audio_origin": "tts",
+   "s3_key": "mastered/7AEF5663-547E-41DE-9905-DA1DCD76860E.mp3",
+   "audio_language": "eng",
+   "expected_language": "eng",
+   "duration_col": null,
+   "duration_ms": 5328
+  },
+  {
+   "course_code": "spa_mx_for_eng",
+   "table": "course_legos",
+   "row_id": "56bd3cf1-49f9-4df3-83ed-c525e04c6273",
+   "ref": "S0207L01",
+   "seed_number": 207,
+   "column": "presentation_audio_id",
+   "role": "presentation",
+   "match": "strict",
+   "candidates": 1,
+   "key": "lego:S0207L01",
+   "audio_id": "5c7c8f76-6ca1-4abc-98ef-8918da52d5c4",
+   "audio_origin": "tts",
+   "s3_key": "mastered/29002ACD-8650-40EE-8067-2CEB0803F1A6.mp3",
+   "audio_language": "eng",
+   "expected_language": "eng",
+   "duration_col": null,
+   "duration_ms": 5904
+  },
+  {
+   "course_code": "spa_mx_for_eng",
+   "table": "course_legos",
+   "row_id": "e8b27005-79c2-4b60-9a38-db0c1a625758",
+   "ref": "S0283L02",
+   "seed_number": 283,
+   "column": "presentation_audio_id",
+   "role": "presentation",
+   "match": "strict",
+   "candidates": 1,
+   "key": "lego:S0283L02",
+   "audio_id": "0511102f-6bc7-4946-946e-e6dc4dfc8a95",
+   "audio_origin": "tts",
+   "s3_key": "mastered/9370EE04-BB75-4A39-95F9-46832E50D940.mp3",
+   "audio_language": "eng",
+   "expected_language": "eng",
+   "duration_col": null,
+   "duration_ms": 2808
+  }
+ ],
+ "ambiguous": []
+}

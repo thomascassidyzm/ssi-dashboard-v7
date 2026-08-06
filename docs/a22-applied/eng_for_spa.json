@@ -1,0 +1,34 @@
+{
+ "mode": "applied",
+ "courses": [
+  "eng_for_spa"
+ ],
+ "include_loose": false,
+ "heal_phrase_presentation": true,
+ "loose_held_back": 0,
+ "count": 1,
+ "storage_broken_dropped": 0,
+ "aborted": null,
+ "rows": [
+  {
+   "course_code": "eng_for_spa",
+   "table": "course_legos",
+   "row_id": "2d6d766a-3f33-4d0a-ae10-e4bb2c3ef930",
+   "ref": "S0207L01",
+   "seed_number": 207,
+   "column": "presentation_audio_id",
+   "role": "presentation",
+   "match": "strict",
+   "candidates": 1,
+   "key": "lego:S0207L01",
+   "audio_id": "97866ba4-de17-41aa-84a7-2ca06a732cbc",
+   "audio_origin": "tts",
+   "s3_key": "mastered/3E2DF710-0410-48AB-A165-336A4E3D0711.mp3",
+   "audio_language": "spa",
+   "expected_language": "spa",
+   "duration_col": null,
+   "duration_ms": 6072
+  }
+ ],
+ "ambiguous": []
+}

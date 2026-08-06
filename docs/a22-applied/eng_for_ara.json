@@ -1,0 +1,34 @@
+{
+ "mode": "applied",
+ "courses": [
+  "eng_for_ara"
+ ],
+ "include_loose": false,
+ "heal_phrase_presentation": true,
+ "loose_held_back": 0,
+ "count": 1,
+ "storage_broken_dropped": 0,
+ "aborted": null,
+ "rows": [
+  {
+   "course_code": "eng_for_ara",
+   "table": "course_legos",
+   "row_id": "d86bed38-0260-40c1-b98b-fe0e217870b0",
+   "ref": "S0207L01",
+   "seed_number": 207,
+   "column": "presentation_audio_id",
+   "role": "presentation",
+   "match": "strict",
+   "candidates": 1,
+   "key": "lego:S0207L01",
+   "audio_id": "384cccfa-4c49-4df2-8921-e6ad974be2cc",
+   "audio_origin": "tts",
+   "s3_key": "mastered/02787EEB-ECE1-4BC8-B1F8-36AE0F7ED5F3.mp3",
+   "audio_language": "ara",
+   "expected_language": "ara",
+   "duration_col": null,
+   "duration_ms": 5760
+  }
+ ],
+ "ambiguous": []
+}

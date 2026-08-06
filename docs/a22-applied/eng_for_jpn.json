@@ -1,0 +1,34 @@
+{
+ "mode": "applied",
+ "courses": [
+  "eng_for_jpn"
+ ],
+ "include_loose": false,
+ "heal_phrase_presentation": true,
+ "loose_held_back": 0,
+ "count": 1,
+ "storage_broken_dropped": 0,
+ "aborted": null,
+ "rows": [
+  {
+   "course_code": "eng_for_jpn",
+   "table": "course_legos",
+   "row_id": "fd5593c4-f847-41f7-8aae-b1cc3a2c355a",
+   "ref": "S0207L01",
+   "seed_number": 207,
+   "column": "presentation_audio_id",
+   "role": "presentation",
+   "match": "strict",
+   "candidates": 1,
+   "key": "lego:S0207L01",
+   "audio_id": "a2d819da-0e3e-4fbf-a8ca-9c9625817ac4",
+   "audio_origin": "tts",
+   "s3_key": "mastered/A119B148-F9B1-4743-9A61-01E6E8C841D7.mp3",
+   "audio_language": "jpn",
+   "expected_language": "jpn",
+   "duration_col": null,
+   "duration_ms": 3840
+  }
+ ],
+ "ambiguous": []
+}

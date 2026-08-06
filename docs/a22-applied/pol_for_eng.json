@@ -1,0 +1,53 @@
+{
+ "mode": "applied",
+ "courses": [
+  "pol_for_eng"
+ ],
+ "include_loose": false,
+ "heal_phrase_presentation": true,
+ "loose_held_back": 0,
+ "count": 2,
+ "storage_broken_dropped": 0,
+ "aborted": null,
+ "rows": [
+  {
+   "course_code": "pol_for_eng",
+   "table": "course_legos",
+   "row_id": "6fe997f1-0d18-41bf-b2b2-04c28a348c56",
+   "ref": "S0207L01",
+   "seed_number": 207,
+   "column": "presentation_audio_id",
+   "role": "presentation",
+   "match": "strict",
+   "candidates": 1,
+   "key": "lego:S0207L01",
+   "audio_id": "386cc379-619b-48e3-84bf-ebd5abdb8d62",
+   "audio_origin": "tts",
+   "s3_key": "mastered/9FD1949D-2F97-43AF-BC5A-A8713E7632AC.mp3",
+   "audio_language": "eng",
+   "expected_language": "eng",
+   "duration_col": null,
+   "duration_ms": 5544
+  },
+  {
+   "course_code": "pol_for_eng",
+   "table": "course_practice_phrases",
+   "row_id": "pol_for_eng:S0253L01C02",
+   "ref": "pol_for_eng:S0253L01C02",
+   "seed_number": 253,
+   "column": "presentation_audio_id",
+   "role": "presentation",
+   "match": "strict",
+   "candidates": 1,
+   "key": "comp:the polish for: 'to be', as in — 'i should be ready', is:",
+   "audio_id": "9aab1aa8-d0ea-43a4-aa40-cca1197878ca",
+   "audio_origin": "tts",
+   "s3_key": "mastered/F5521C1E-EFBA-426E-B3DD-ADAFF9491660.mp3",
+   "audio_language": "eng",
+   "expected_language": "eng",
+   "duration_col": null,
+   "duration_ms": 4416
+  }
+ ],
+ "ambiguous": []
+}

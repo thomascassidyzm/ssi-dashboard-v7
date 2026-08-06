@@ -1,0 +1,34 @@
+{
+ "mode": "applied",
+ "courses": [
+  "hrv_for_eng"
+ ],
+ "include_loose": false,
+ "heal_phrase_presentation": true,
+ "loose_held_back": 0,
+ "count": 1,
+ "storage_broken_dropped": 0,
+ "aborted": null,
+ "rows": [
+  {
+   "course_code": "hrv_for_eng",
+   "table": "course_legos",
+   "row_id": "7c5c0972-7d38-4de5-ad72-bb97ca0a10ca",
+   "ref": "S0207L01",
+   "seed_number": 207,
+   "column": "presentation_audio_id",
+   "role": "presentation",
+   "match": "strict",
+   "candidates": 1,
+   "key": "lego:S0207L01",
+   "audio_id": "d82cdd0a-2911-4329-816e-f04be9612583",
+   "audio_origin": "tts",
+   "s3_key": "mastered/6746E20C-456D-4875-B5C1-ACF3E1D231AC.mp3",
+   "audio_language": "eng",
+   "expected_language": "eng",
+   "duration_col": null,
+   "duration_ms": 4848
+  }
+ ],
+ "ambiguous": []
+}
