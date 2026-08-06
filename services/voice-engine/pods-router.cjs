@@ -43,6 +43,10 @@ const express = require('express')
 const { proposeHumanCast } = require('../../tools/pod-voice-colour-n.cjs')
 const {
   EXPLAINER_SPEAKER,
+  DEFAULT_POD_VOICES,
+  MAX_POD_VOICES,
+  defaultCastPeople,
+  validateCastPeople,
   castVoiceFor,
   mergePodCast,
   speakerInventory,
@@ -203,7 +207,13 @@ module.exports = function createPodsCastRouter({
       // v2/v3 identities. Dropped ids persist as podCastAliases — old record
       // links resolve to their survivor and old takes still count.
       const distinctVoices = new Set(Object.values(podCast).map(e => e && e.voiceId).filter(Boolean))
-      if (distinctVoices.size > 2) {
+      // How many voices this course DECLARED (written by PUT /cast). Absent =
+      // legacy cast that predates the opt-in, so it defaults to two and
+      // collapses exactly as it always did. A leader who deliberately opted in
+      // to three or four voices (Tom 2026-08-06) is left alone — collapsing
+      // their cast back to two on every load would silently undo the upgrade.
+      const declaredVoices = Number(voiceConfig && voiceConfig.podCastVoices) || DEFAULT_POD_VOICES
+      if (distinctVoices.size > DEFAULT_POD_VOICES && declaredVoices <= DEFAULT_POD_VOICES) {
         const takesByVoiceId = await countHumanTakes(db, sentences)
         const collapse = collapseTwoVoiceCast({ podCast, speakers: inventory.speakers, takesByVoiceId })
         if (collapse.changed) {
@@ -235,6 +245,15 @@ module.exports = function createPodsCastRouter({
         // verbatim; the solver below is only a fallback proposal.
         generationColouring: hasGenerationColouring(pods),
         rosterVoices: await fetchRosterVoices(db, courseCode),
+      }
+      // What a course gets with nobody configuring anything: two voices, one
+      // male one female (Tom 2026-08-06). The panel prefills from this, so the
+      // default path never presents an N-voice concept; `max` is the quiet
+      // opt-in ceiling for courses that do have extra recorders.
+      body.castDefaults = {
+        voices: DEFAULT_POD_VOICES,
+        max: MAX_POD_VOICES,
+        people: defaultCastPeople({ rosterVoices: body.rosterVoices }),
       }
 
       // Solver proposal on request: ?voices=N (4-5 is the design centre).
@@ -277,17 +296,15 @@ module.exports = function createPodsCastRouter({
     if (!Array.isArray(people) || people.length === 0) {
       return res.status(400).json({ error: 'Body must be { people: [{ name, gender?, email?, guide? }] } with at least one person' })
     }
-    // Founder ruling (Tom + Aran, 2026-07-17): every pod is cast with exactly
-    // two human voices — one male, one female — regardless of how many
-    // characters a scenario has. Forced same-voice reuse across characters is
-    // the intended outcome, not a shortfall to grow the cast out of.
-    if (people.length !== 2) {
-      return res.status(400).json({ error: 'Pods are cast with exactly two voices — one male, one female. Send exactly two people.' })
-    }
-    const genders = people.map(p => String((p && p.gender) || '').trim().toLowerCase())
-    if (!genders.includes('f') || !genders.includes('m')) {
-      return res.status(400).json({ error: 'Both voices need a gender — one male, one female — so every character has a clear voice.' })
-    }
+    // Two voices — one male, one female — is the DEFAULT (Tom, voice note
+    // 2026-08-06: "probably do it for two voices as the default. And then if
+    // you want to try it with three or four voices because you do have
+    // additional human voice recorders, then fantastic, we can do that").
+    // Three to five is an opt-in upgrade, never a requirement: forced
+    // same-voice reuse across characters is the intended outcome at two, not a
+    // shortfall to grow the cast out of.
+    const castCheck = validateCastPeople(people)
+    if (!castCheck.ok) return res.status(400).json({ error: castCheck.error })
     try {
       const db = getDb()
       const [{ found, voiceConfig }, pods] = await Promise.all([
@@ -421,6 +438,13 @@ module.exports = function createPodsCastRouter({
       } catch (err) {
         return res.status(400).json({ error: err.message })
       }
+
+      // Record how many voices this cast declares, so a deliberate three- or
+      // four-voice opt-in survives the legacy two-voice collapse on the next
+      // GET /cast. Additive key; TTS serving never reads it.
+      merged.podCastVoices =
+        new Set(Object.values(merged.podCast || {}).map(e => e && e.voiceId).filter(Boolean)).size ||
+        DEFAULT_POD_VOICES
 
       const { error } = await db
         .from('courses')

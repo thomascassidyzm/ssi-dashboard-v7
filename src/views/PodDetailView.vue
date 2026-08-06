@@ -83,14 +83,42 @@
           </details>
         </div>
 
-        <!-- Speaker → voice mapping -->
+        <!-- Who records this pod.
+             Two facts that used to be confused here (Tom 2026-08-06): the
+             number of CHARACTERS in the script is a writing fact, and a scene
+             can have as many as it likes; the number of human VOICES recording
+             them is a casting fact, and that is two. This panel used to render
+             all 22 characters against raw generation voice ids, open by
+             default — which read as a 22-strong cast and is exactly the
+             "massive overkill" the ruling removes. The recording cast leads;
+             the character list is one click away. -->
         <div class="mb-6 bg-surface border border-line rounded-lg p-4 text-sm card-sep">
-          <details open>
-            <summary class="cursor-pointer text-ink font-semibold">Speaker voice mapping</summary>
-            <div class="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2">
-              <div v-for="(v, spk) in pod.speakers" :key="spk" class="flex justify-between px-2 py-1 bg-surface-2 border border-line rounded">
-                <span :class="spk === '_default' ? 'text-faint italic' : 'text-ink'">{{ spk }}</span>
-                <span class="text-emerald font-mono text-xs">{{ v.voice_id }} <span class="text-faint">({{ v.provider }})</span></span>
+          <div class="text-ink font-semibold mb-2">Who records this</div>
+          <div v-if="castVoices.length" class="grid gap-2 sm:grid-cols-2">
+            <div v-for="v in castVoices" :key="v.voiceId" class="px-3 py-2 bg-surface-2 border border-line rounded">
+              <div class="text-ink font-medium">
+                {{ v.name }}
+                <span v-if="v.gender" class="text-[10px] text-muted border border-line rounded-full px-1.5 py-0.5 ml-1 align-middle">
+                  {{ v.gender === 'f' ? 'female voice' : 'male voice' }}
+                </span>
+              </div>
+              <div class="text-xs text-muted mt-0.5">
+                Plays {{ v.characters.length }} character{{ v.characters.length === 1 ? '' : 's' }} in this pod
+              </div>
+            </div>
+          </div>
+          <div v-else class="text-xs text-faint">
+            No cast yet — set the two voices on the course's pods page, and the record links go live.
+          </div>
+
+          <details class="mt-3">
+            <summary class="cursor-pointer text-xs text-faint hover:text-ink">
+              {{ characterNames.length }} characters in this script
+            </summary>
+            <div class="mt-2 grid grid-cols-2 md:grid-cols-3 gap-2">
+              <div v-for="spk in characterNames" :key="spk" class="flex justify-between gap-2 px-2 py-1 bg-surface-2 border border-line rounded">
+                <span class="text-ink truncate">{{ spk }}</span>
+                <span class="text-muted text-xs flex-shrink-0">{{ castNameFor(spk) || '—' }}</span>
               </div>
             </div>
           </details>
@@ -480,6 +508,50 @@ async function loadPod() {
   }
 }
 
+// --- The recording cast (who actually reads these lines) ---
+// courses.voice_config.podCast maps CHARACTER → human voice. Two voices is the
+// default (Tom 2026-08-06), so this resolves 22 characters down to the two
+// people who record them. Generation-side colouring in pod.speakers is a
+// generation-time default and never drives the human recording path — the
+// recording plan reads podCast alone (pods-plan.cjs#buildRecordingPlan).
+const podCast = ref({})
+
+async function loadCast() {
+  try {
+    const res = await authedFetch(`/api/production/${courseCode}/pods/cast`)
+    if (!res.ok) return // read-only nicety; the page works without it
+    const body = await res.json()
+    podCast.value = body.podCast || {}
+  } catch { /* cast is decoration here — never block the pod view on it */ }
+}
+
+/** Canonical character names in this pod's script (never '_default'). */
+const characterNames = computed(() =>
+  Object.keys(pod.value?.speakers || {}).filter(k => k !== '_default'))
+
+/** The human voices recording this pod, each with the characters it plays. */
+const castVoices = computed(() => {
+  const byVoice = new Map()
+  for (const spk of characterNames.value) {
+    const entry = podCast.value[spk]
+    if (!entry?.voiceId) continue
+    if (!byVoice.has(entry.voiceId)) {
+      byVoice.set(entry.voiceId, {
+        voiceId: entry.voiceId,
+        name: entry.name || entry.voiceId,
+        gender: entry.gender === 'f' || entry.gender === 'm' ? entry.gender : null,
+        characters: [],
+      })
+    }
+    byVoice.get(entry.voiceId).characters.push(spk)
+  }
+  return [...byVoice.values()].sort((a, b) => b.characters.length - a.characters.length)
+})
+
+function castNameFor(speaker) {
+  return podCast.value[speaker]?.name || null
+}
+
 // Admin-gated helper for the explainer endpoint. Mirrors the pattern in
 // RemoteControl / Maintenance — fetch a fresh access token, attach Bearer.
 const { getAccessToken } = useAuth()
@@ -703,7 +775,7 @@ function recChip(sent) {
   return { text: '—', cls: 'bg-surface text-faint border border-line', title }
 }
 
-onMounted(async () => { await loadPod(); loadDrafts(); loadRecordingStatus() })
+onMounted(async () => { await loadPod(); loadDrafts(); loadRecordingStatus(); loadCast() })
 
 onUnmounted(() => {
   if (audioEl.value) { audioEl.value.pause(); audioEl.value.src = '' }

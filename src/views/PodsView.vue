@@ -103,8 +103,13 @@
                 <span v-if="pod.metadata?.hosts?.length">
                   · hosts: {{ pod.metadata.hosts.map(h => h.name).join(', ') }}
                 </span>
+                <!-- CHARACTERS, not voices. A scene can have as many characters
+                     as it likes; the cast that records them is two people (Tom
+                     2026-08-06). Saying "22 speakers" on the card read as a
+                     22-strong cast, which is the overkill impression this
+                     ruling exists to remove. -->
                 <span v-else-if="Object.keys(pod.speakers || {}).filter(k => k !== '_default').length">
-                  · {{ Object.keys(pod.speakers).filter(k => k !== '_default').length }} speakers
+                  · {{ Object.keys(pod.speakers).filter(k => k !== '_default').length }} characters
                 </span>
               </div>
               <!-- Lines whose target text is an unproofread machine draft.

@@ -28,6 +28,89 @@ const { emailLocalPart, targetLangFromCourseCode } = require('./voice-slots.cjs'
 /** Reserved cast key for the explainer voice (keystone §1). */
 const EXPLAINER_SPEAKER = '__explainer__'
 
+/**
+ * How many human voices a pod cast holds (Tom, voice note 2026-08-06):
+ *
+ *   "the whole point of doing this in this way was that we could get by with
+ *    just two different voices, a male voice and a female voice […] probably
+ *    do it for two voices as the default. And then if you want to try it with
+ *    three or four voices because you do have additional human voice
+ *    recorders, then fantastic, we can do that."
+ *
+ * So two is the DEFAULT — what a course gets without anyone configuring
+ * anything — and three or four is an OPT-IN UPGRADE for courses that genuinely
+ * have extra recorders. It is never a requirement and never a prerequisite for
+ * recording. Ceiling is five: the solver already handles it and the extra room
+ * costs nothing, but nothing here enforces ceremony to reach it.
+ *
+ * The governing principle behind the numbers, same voice note: "If we are
+ * making it a lot more complicated to even get the recordings done, it's going
+ * to be harder for people to do community courses, isn't it?"
+ */
+const DEFAULT_POD_VOICES = 2
+const MAX_POD_VOICES = 5
+
+/**
+ * The cast rows a course starts from when nobody has configured anything:
+ * two voices, one female and one male, genders pre-set so the default path
+ * never asks a community leader how many voices a pod needs. Roster humans
+ * already holding the course prefill the names/emails when they exist.
+ *
+ * @param {{rosterVoices?: Array<{name?:string, email?:string}>}} [args]
+ * @returns {Array<{name:string, email:string, gender:'f'|'m', guide:boolean}>}
+ */
+function defaultCastPeople({ rosterVoices = [] } = {}) {
+  const rows = [
+    { name: '', email: '', gender: 'f', guide: false },
+    { name: '', email: '', gender: 'm', guide: false },
+  ]
+  ;(rosterVoices || []).slice(0, DEFAULT_POD_VOICES).forEach((v, i) => {
+    if (!v) return
+    rows[i].name = v.name || ''
+    rows[i].email = v.email || ''
+  })
+  return rows
+}
+
+/**
+ * Is this a castable set of people? Two is the default; three to five is the
+ * opt-in upgrade. Every size needs at least one female and one male voice —
+ * with only those voices covering every character, a cast missing a gender
+ * leaves characters with nobody to read them.
+ *
+ * Returns leader-facing language, not engineer language: community leaders
+ * read these messages.
+ *
+ * @param {Array} people - raw rows from the panel
+ * @returns {{ok:true}|{ok:false, error:string}}
+ */
+function validateCastPeople(people) {
+  if (!Array.isArray(people) || people.length === 0) {
+    return { ok: false, error: 'Send at least two people — one male voice and one female voice.' }
+  }
+  if (people.length < DEFAULT_POD_VOICES) {
+    return {
+      ok: false,
+      error: 'Pods are cast with two voices — one male, one female. Send both.',
+    }
+  }
+  if (people.length > MAX_POD_VOICES) {
+    return {
+      ok: false,
+      error: `Two voices is the default and ${MAX_POD_VOICES} is as many as a pod cast holds — ` +
+        `you sent ${people.length}.`,
+    }
+  }
+  const genders = people.map(p => String((p && p.gender) || '').trim().toLowerCase())
+  if (!genders.includes('f') || !genders.includes('m')) {
+    return {
+      ok: false,
+      error: 'Every cast needs a male voice and a female voice, so every character has someone to read it.',
+    }
+  }
+  return { ok: true }
+}
+
 /** Deep-clone helper (voice_config objects are plain JSON). */
 function clone(obj) {
   return obj == null ? obj : JSON.parse(JSON.stringify(obj))
@@ -704,6 +787,10 @@ function provisionPlanFor(existingRow, courseCode) {
 
 module.exports = {
   EXPLAINER_SPEAKER,
+  DEFAULT_POD_VOICES,
+  MAX_POD_VOICES,
+  defaultCastPeople,
+  validateCastPeople,
   mergePodCast,
   castVoiceFor,
   speakerInventory,
