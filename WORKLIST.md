@@ -71,6 +71,7 @@ item; if it needs detail, **link a doc** (the plans under `docs/`, e.g. `docs/co
 - [ ] **Pair-contract derivation for non-`eng` known languages** — the gate only runs when course-known === contract `known_lang`; each new known language needs its own free-class / NPI / negation machinery. → `docs/pair-contracts/_TEMPLATE.contract.cjs`
 - [ ] **了 / aspect-cue determinism** — construction features (了 present vs absent) need a deterministic English cue so the learner always knows when it's there. → `ralph-methodology.md`
 - [ ] **Learner migration on reorder** — frontier resume rule (max over completed seeds, monotone), content-hashed order snapshots, `learner_course_state`. → memory `project_ssi_learner_migration_plan`
+- [ ] **deu_for_eng seeds 1–5: diagnose the quiet click artefact on the six rebuilt clips** (low priority — Tom heard it, accepted it for now, wants to know later whether it's the voices or our processing). → `docs/deu-seed1-5-click-artefact-flag-2026-08-06.md`
 
 ## 🚧 In flight / don't collide
 
