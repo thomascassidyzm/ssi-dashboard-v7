@@ -54,11 +54,22 @@ turning a healthy 648 ms render of "weak" into 100 ms of −91 dB silence.
 | 2026-08-03 09:00–11:59 | **Re-link event**, 162,322 `course_audio` rows: `s3_key` changed, duration/voice/text **unchanged** — no audio characteristics altered | `content_audit_log` |
 | **2026-08-03 17:00–23:59** | **Re-voice run**, 42,256 rows: `s3_key`, `duration_ms` and `voice_id` all changed — legacy Azure voices → house voices. This is the run that produced Tom's ear-confirmed clips | `content_audit_log` + S3 LastModified |
 | 2026-08-04 11:50 | Partial fix — hold rather than trim when a cut eats >half the clip or leaves silence | `f8c380bd` |
-| 2026-08-05 01:24 | `TAIL_REPAIR_MODE` default flipped from repair → flag | `d5ad9f2c` |
+| **2026-08-04 23:29:49** | **watson-1 protected in practice** — systemd drop-in `tail-repair-mode.conf` sets `TAIL_REPAIR_MODE=flag` on the phase8 unit | drop-in file birth time |
+| 2026-08-05 01:24 | `TAIL_REPAIR_MODE` default flipped from repair → flag in code | `d5ad9f2c` |
 | **2026-08-05 21:22** | Mutation path **deleted entirely**; merged to `main` | `8415f2d9` |
 | 2026-08-06 00:06–00:10 | Tom's 93 accepted deu repairs swapped in | `course_audio_revisions` |
 
-**Exposure window: 2026-07-24 03:02 → 2026-08-05 01:25**, fully closed 2026-08-05 21:22.
+**Exposure window: 2026-07-24 03:02 → 2026-08-04 23:29:49** on watson-1 (the drop-in beat
+the code default by two hours); → 2026-08-05 01:25 on any host running the code default.
+Fully closed everywhere by the deletion at 2026-08-05 21:22.
+
+**No runtime record survives for the 08-03 run.** The `popty-phase8-audio.service` journal
+and its `~/.local/log/` file both begin **2026-08-04 16:49 UTC**, and no systemd timer, cron
+entry or `at` job on this box runs anything audio-related. So `content_audit_log` is the only
+surviving witness to what happened on 08-03 — which is why the audit log, not file mtimes,
+carried this investigation. Within the log that does exist, every `TAIL_REPAIR_MODE=` line
+reads `flag` (20/20) and no `repair`-mode line appears anywhere — consistent with the window
+having already closed before that log begins.
 
 ### Worked example — one ear-confirmed clip
 
