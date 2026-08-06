@@ -48,6 +48,10 @@
 
 const createLogger = require('./shared/logger.cjs')
 const logger = createLogger('LearningScriptGenerator')
+const {
+  MODE_KEYS, MODE_FALLBACKS, DEFAULT_MODE, DEFAULT_PHRASE_LENGTH_PREFERENCE,
+  resolveScriptShape, resolvePhraseLengthPreference, phraseLengthComparator,
+} = require('./learning-modes.cjs')
 
 // FALLBACK spaced-rep offsets — used ONLY when algorithm_config.script_shape
 // is missing. The live config row (which the learner app reads) is the truth;
@@ -113,20 +117,27 @@ const DEFAULT_LISTENING = {
  * (useAlgorithmConfig.ts). Field-level merge over defaults, same as the
  * learner. Falls back to the built-in constants ONLY when the row is missing.
  */
-async function loadAlgorithmConfig(supabase) {
+async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
   let scriptShape = { ...DEFAULT_SCRIPT_SHAPE }
   let listening = { ...DEFAULT_LISTENING }
   let scriptShapeSource = 'fallback'
+  let phraseLengthPreference = DEFAULT_PHRASE_LENGTH_PREFERENCE
+
+  // Mode rows are fetched alongside the global shape so the per-mode override
+  // layers in one round-trip. The fallback chain lets fast_mode degrade to
+  // normal_mode while the learner app is mid-promotion.
+  const modeKey = MODE_KEYS[mode] || MODE_KEYS[DEFAULT_MODE]
+  const fallbackChain = MODE_FALLBACKS[modeKey] || [modeKey]
 
   try {
     const { data, error } = await supabase
       .from('algorithm_config')
       .select('key, config')
-      .in('key', ['script_shape', 'listening'])
+      .in('key', ['script_shape', 'listening', ...fallbackChain])
 
     if (error) {
       logger.warn(`algorithm_config fetch failed (${error.message}) — using built-in fallback shape [${FIBONACCI.join(',')}]. Script View may diverge from the learner.`)
-      return { scriptShape, listening, scriptShapeSource }
+      return { scriptShape, listening, scriptShapeSource, phraseLengthPreference, mode }
     }
 
     const byKey = new Map((data || []).map(r => [r.key, r.config || {}]))
@@ -141,11 +152,25 @@ async function loadAlgorithmConfig(supabase) {
     if (byKey.has('listening')) {
       listening = { ...DEFAULT_LISTENING, ...byKey.get('listening') }
     }
+
+    // Layer the mode's scriptShape override on the global row, then read its
+    // phrase-length preference. First key in the chain that exists wins.
+    const resolvedKey = fallbackChain.find(k => byKey.has(k))
+    if (resolvedKey) {
+      const modeConfig = byKey.get(resolvedKey)
+      scriptShape = resolveScriptShape(scriptShape, modeConfig)
+      phraseLengthPreference = resolvePhraseLengthPreference(modeConfig)
+      if (resolvedKey !== modeKey) {
+        logger.warn(`algorithm_config.${modeKey} row MISSING — fell back to ${resolvedKey}. Expected during the learning-app promotion window; fix the row once it ships.`)
+      }
+    } else {
+      logger.warn(`No mode row found for '${mode}' (tried ${fallbackChain.join(', ')}) — using the global script shape unmodified.`)
+    }
   } catch (err) {
     logger.warn(`algorithm_config fetch threw (${err.message}) — using built-in fallback shape.`)
   }
 
-  return { scriptShape, listening, scriptShapeSource }
+  return { scriptShape, listening, scriptShapeSource, phraseLengthPreference, mode }
 }
 
 /**
@@ -705,13 +730,21 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   const learnerView = !!options.learnerView
   const startTime = Date.now()
 
-  // Live round shape — same table/key the learner app reads.
-  const { scriptShape, listening, scriptShapeSource } = await loadAlgorithmConfig(supabase)
+  // Live round shape — same table/key the learner app reads. `mode` selects
+  // which mode row layers its scriptShape override on top of the global one;
+  // defaults to fast, which is the old normal_mode behaviour unchanged.
+  const mode = options.mode || DEFAULT_MODE
+  const { scriptShape, listening, scriptShapeSource, phraseLengthPreference } =
+    await loadAlgorithmConfig(supabase, mode)
   const SPACED_REP_OFFSETS = scriptShape.spacedRepOffsets
   const MAX_BUILD_PHRASES = scriptShape.maxBuildPhrases
   const CONSOLIDATE_COUNT = scriptShape.useConsolidationCount
   const MAX_SPACED_REP_PHRASES = scriptShape.maxSpacedRepPhrases
   const N1_PHRASE_COUNT = scriptShape.n1PhraseCount
+  const byPhraseLength = phraseLengthComparator(
+    phraseLengthPreference,
+    p => p.target_syllable_count || countTargetSyllables(p.target_text)
+  )
 
   // Pre-load extra LEGOs before offset for spaced-rep lookback
   // (max offset = 89 with the live config, 55 with the fallback)
@@ -882,10 +915,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     // Croatian clitic inversion: LEGO "sličan si" vs phrase "...si sličan..."), so they were
     // invisible/uneditable in Script View though the learner plays them. Do NOT re-add this
     // filter to "match the app" — the app has no such gate; removing it IS the parity fix.
-    const sortedBuildPhrases = [...currentBuildPhrases].sort((a, b) =>
-      (a.target_syllable_count || countTargetSyllables(a.target_text)) -
-      (b.target_syllable_count || countTargetSyllables(b.target_text))
-    )
+    // Sort direction is the mode's phrase-length preference. The list is
+    // truncated at MAX_BUILD_PHRASES, so the direction decides which end
+    // survives: 'shortest' (historic, Fast) keeps the short ones, 'longest'
+    // (Easy) keeps the long ones — that IS the "longest possible phrase" knob.
+    const sortedBuildPhrases = [...currentBuildPhrases].sort(byPhraseLength)
 
     let practiceCount = 0
 
@@ -913,10 +947,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     // Step 2: Reserve USE phrases for consolidation BEFORE using them for BUILD padding
     const sortedUsePhrases = [...currentUsePhrases]
       // No phraseContainsLegoChars gate — learner-app parity (see BUILD note above).
-      .sort((a, b) =>
-        (a.target_syllable_count || countTargetSyllables(a.target_text)) -
-        (b.target_syllable_count || countTargetSyllables(b.target_text))
-      )
+      .sort(byPhraseLength)
 
     // Step 3: Fill remaining BUILD slots with USE phrases (BUILD priority > CONSOLIDATE)
     // CONSOLIDATE can repeat BUILD phrases if needed — filling the BUILD quota is non-negotiable

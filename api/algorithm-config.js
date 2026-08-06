@@ -150,19 +150,24 @@ export default async function handler(req, res) {
       return res.json({ draft: { key, config_hash: configHash, config } })
     }
 
+    // Upsert, not update: a bare .update().eq('key') returned 404 for a key that
+    // did not exist yet, which made "add a mode" an engineering ticket (a manual
+    // SQL insert) rather than an admin action. Creating easy_mode via this
+    // endpoint is exactly that case. onConflict:'key' keeps an existing row's
+    // identity and overwrites its config, so the update path is unchanged.
     const { data, error } = await supabase
       .from('algorithm_config')
-      .update({
+      .upsert({
+        key,
         config,
         updated_at: new Date().toISOString(),
         updated_by: actor,
-      })
-      .eq('key', key)
+      }, { onConflict: 'key' })
       .select()
       .single()
 
     if (error) return res.status(500).json({ error: error.message })
-    if (!data) return res.status(404).json({ error: `No row for key=${key}` })
+    if (!data) return res.status(500).json({ error: `Upsert returned no row for key=${key}` })
     return res.json({ row: data, config_hash: configHash })
   }
 
