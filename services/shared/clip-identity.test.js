@@ -147,3 +147,37 @@ describe('is*Canonical — what an audit asks of a stored row', () => {
     expect(isCanonicalVoiceId('legacy_import')).toBe(false)
   })
 })
+
+describe('the database copy is generated from this module, not written twice', () => {
+  const fs = require('fs')
+  const path = require('path')
+  const { rows, sql } = require('../../tools/generate-language-canonical-sql.cjs')
+  const MIGRATION = path.join(
+    __dirname, '..', '..', 'database', 'migrations',
+    '20260806_clip_identity_canonical_functions.sql'
+  )
+
+  it('every generated row is what canonicalLanguage would say', () => {
+    for (const [raw, canonical] of rows()) {
+      expect(canonicalLanguage(raw), `language_canonical row for ${raw}`).toBe(canonical)
+    }
+  })
+
+  it('covers the codes the estate actually stores', () => {
+    const map = new Map(rows())
+    // one from each family the live column holds
+    for (const [raw, want] of [['eng','eng'],['en','eng'],['zho','zho'],['zh','zho'],['ell','ell'],['el','ell']]) {
+      expect(map.get(raw), `language_canonical is missing ${raw}`).toBe(want)
+    }
+  })
+
+  it('the committed migration holds the current generated output', () => {
+    // If this fails the CSV changed and the migration was not regenerated:
+    //   node tools/generate-language-canonical-sql.cjs /tmp/rows.sql
+    // then splice /tmp/rows.sql back into the migration.
+    const committed = fs.readFileSync(MIGRATION, 'utf8')
+    for (const line of sql().split('\n')) {
+      if (line.startsWith("  ('")) expect(committed).toContain(line.replace(/,$/, ''))
+    }
+  })
+})

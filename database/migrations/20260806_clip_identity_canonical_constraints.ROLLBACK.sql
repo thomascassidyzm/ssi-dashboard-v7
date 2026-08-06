@@ -1,6 +1,5 @@
--- Rollback for 20260806_clip_identity_canonical_shape.sql
--- Drops the two shape guards. Touches no data (the forward migration did not
--- write any either).
+-- Rollback for 20260806_clip_identity_canonical_constraints.sql
+-- Drops the two shape guards. Touches no data.
 
 BEGIN;
 
