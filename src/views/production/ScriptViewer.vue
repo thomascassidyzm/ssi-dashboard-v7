@@ -1118,7 +1118,11 @@ const toggleMissingAudioOnly = () => {
 
 // Keep only items awaiting audio; intros are INCLUDED here (unlike the default
 // amber/stats view which exempts them, since intro audio has a fallback).
-const keepMissingAudio = (items) => (items || []).filter((it) => !it.hasAudio);
+// Prefer the generator's player-delivery annotation when present: hasAudio only
+// checks known+target1, so a row missing its SECOND target voice looks fine
+// here yet is dropped by the live player.
+const keepMissingAudio = (items) =>
+  (items || []).filter((it) => (it.playerCanDeliver !== undefined ? !it.playerCanDeliver : !it.hasAudio));
 
 // Export learner script as markdown download
 const exportLearnerScript = () => {

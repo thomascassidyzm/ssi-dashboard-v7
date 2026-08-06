@@ -19,6 +19,18 @@
           <span class="stat-label-missing text-amber-400 text-sm">Missing Audio</span>
           <span class="stat-val-missing text-amber-300 font-bold text-lg ml-2">{{ stats.itemsMissingAudio }}</span>
         </div>
+        <!-- What the live player cannot deliver from the intended script.
+             Everything stays visible; this is the count of flagged rows. -->
+        <div v-if="(stats.itemsPlayerCannotDeliver || 0) > 0" class="stat-item">
+          <span class="stat-label-undeliverable text-amber-400 text-sm">Player can't deliver</span>
+          <span
+            class="stat-val-undeliverable text-amber-300 font-bold text-lg ml-2"
+            :title="`${stats.itemsPlayerCannotDeliver} rows in this window are flagged: the live player skips them today. They are still shown.`"
+          >{{ stats.itemsPlayerCannotDeliver }}</span>
+          <span v-if="(stats.roundsPlayerDrops || 0) > 0" class="text-amber-400 text-sm ml-2">
+            in {{ stats.roundsPlayerDrops }} dropped round{{ stats.roundsPlayerDrops === 1 ? '' : 's' }}
+          </span>
+        </div>
         <!-- Learner view: how much content is hidden because audio is missing -->
         <div v-if="stats.learnerView" class="stat-item">
           <span class="stat-label-audio text-emerald-400 text-sm">Learner view</span>
@@ -109,12 +121,28 @@
               </svg>
             </button>
 
-            <div class="round-number bg-surface-3 text-ink px-3 py-1 rounded-full text-sm font-mono">
+            <div
+              class="round-number bg-surface-3 text-ink px-3 py-1 rounded-full text-sm font-mono"
+              :title="roundNumberTitle(round)"
+            >
               R{{ round.roundNumber }}
             </div>
             <div class="lego-info">
               <span class="lego-id-text text-emerald-400 font-mono text-sm">{{ round.legoId }}</span>
             </div>
+
+            <!-- Player-delivery flag: the intended round is still shown, this
+                 says the live player cannot currently deliver it. -->
+            <span
+              v-if="round.playerDelivers === false"
+              class="round-undeliverable-badge text-xs px-2 py-0.5 rounded border border-amber-700 bg-amber-900/30 text-amber-300 whitespace-nowrap"
+              :title="roundFlagTitle(round)"
+            >⚠ player skips this round — {{ rolesPhrase(round.missingAudioRoles) }} audio missing</span>
+            <span
+              v-else-if="roundHasRenumbering(round)"
+              class="round-renumber-badge text-xs px-2 py-0.5 rounded border border-line text-muted font-mono whitespace-nowrap"
+              :title="roundNumberTitle(round)"
+            >player: R{{ round.playerRoundNumber }}</span>
             <!-- LEGO Text: known = target -->
             <div class="lego-text text-ink text-sm">
               <span class="text-muted">{{ getLegoKnownText(round) }}</span>
@@ -185,7 +213,8 @@
               class="item-row flex items-center gap-3 p-3 rounded-lg transition-all"
               :class="[
                 getItemBgClass(item),
-                isItemPlaying(round.roundNumber, idx) ? 'ring-2 ring-emerald-400 bg-emerald-900 bg-opacity-20' : 'hover:bg-surface-2'
+                isItemPlaying(round.roundNumber, idx) ? 'ring-2 ring-emerald-400 bg-emerald-900 bg-opacity-20' : 'hover:bg-surface-2',
+                item.playerCanDeliver === false ? 'border-l-2 border-amber-600' : ''
               ]"
             >
               <!-- Play Item Button -->
@@ -233,6 +262,14 @@
                   <span class="text-ink truncate flex-1">{{ item.target_text }}</span>
                 </div>
               </div>
+
+              <!-- Player-delivery flag — the row stays; this says the live
+                   player cannot currently play it (usually missing audio). -->
+              <span
+                v-if="item.playerCanDeliver === false"
+                class="item-undeliverable-badge flex-shrink-0 text-xs px-2 py-0.5 rounded border border-amber-700 bg-amber-900/30 text-amber-300 whitespace-nowrap"
+                :title="itemFlagTitle(item)"
+              >⚠ {{ itemFlagLabel(item) }}</span>
 
               <!-- Edit & Flag Buttons -->
               <div class="edit-flags flex items-center gap-1 flex-shrink-0">
@@ -311,12 +348,16 @@
                 ></span>
               </div>
 
-              <!-- Audio Status (only show when NOT playing this item) -->
+              <!-- Audio Status (only show when NOT playing this item).
+                   Green means the LIVE PLAYER can deliver the row, not merely
+                   that Popty's preview has something to play — a row whose
+                   second target voice is missing previews fine here and is
+                   dropped by the player, so playerCanDeliver decides. -->
               <div v-else class="audio-status flex gap-2">
                 <span
-                  v-if="item.hasAudio"
+                  v-if="item.playerCanDeliver !== undefined ? item.playerCanDeliver : item.hasAudio"
                   class="audio-ok-icon text-emerald-400"
-                  title="Audio available"
+                  title="Audio available — the player delivers this row"
                 >
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
@@ -325,7 +366,7 @@
                 <span
                   v-else
                   class="audio-missing-icon text-amber-400"
-                  title="Audio missing"
+                  :title="item.playerCanDeliver === false ? itemFlagTitle(item) : 'Audio missing'"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
@@ -390,6 +431,11 @@ interface ScriptItem {
   known_duration_ms?: number
   target1_duration_ms?: number
   target2_duration_ms?: number
+  // Player-delivery annotation (learning-script-generator annotatePlayerDelivery).
+  // The row is ALWAYS shown; these only say whether the live player can play it.
+  playerCanDeliver?: boolean
+  playerDropReason?: 'lego-audio' | 'phrase-audio' | 'seed-audio' | 'reviewed-lego-dropped'
+  missingAudioRoles?: string[]
 }
 
 interface RoundData {
@@ -402,6 +448,11 @@ interface RoundData {
   items: ScriptItem[]
   spacedRepReviews: number[]
   itemCount: number
+  playerDelivers?: boolean
+  playerDropReason?: string
+  missingAudioRoles?: string[]
+  playerRoundNumber?: number | null
+  undeliverableItemCount?: number
 }
 
 interface Stats {
@@ -409,6 +460,8 @@ interface Stats {
   totalItems: number
   itemsWithAudio: number
   itemsMissingAudio: number
+  itemsPlayerCannotDeliver?: number
+  roundsPlayerDrops?: number
   generationTimeMs: number
   graduatedSeeds?: number
   // Audio-gap toggle ("As the learner hears it") — set by the generator
@@ -445,6 +498,58 @@ const emit = defineEmits<{
 // Default empty sets for optional props
 const emptySet = new Set<string>()
 const flaggedPhraseIds = computed(() => props.flaggedPhraseIds || emptySet)
+
+// ── Player-delivery annotation ────────────────────────────────────────────
+// The Script Viewer always shows the FULL intended course. These helpers turn
+// the generator's per-row / per-round annotation into a plain-English flag, so
+// a reviewer can see at a glance what the live player cannot deliver today.
+// Display only — nothing here filters, gates or publishes anything.
+const ROLE_LABELS: Record<string, string> = {
+  known: 'prompt',
+  target1: 'voice 1',
+  target2: 'voice 2',
+}
+const rolesPhrase = (roles?: string[]) =>
+  (roles || []).map(r => ROLE_LABELS[r] || r).join(' + ')
+
+const itemFlagLabel = (item: ScriptItem): string => {
+  if (item.playerCanDeliver !== false) return ''
+  if (item.playerDropReason === 'reviewed-lego-dropped') return 'review unreachable'
+  return 'audio missing'
+}
+
+const itemFlagTitle = (item: ScriptItem): string => {
+  switch (item.playerDropReason) {
+    case 'lego-audio':
+      return `The player drops this whole round — its LEGO has no ${rolesPhrase(item.missingAudioRoles)} audio, so this row never plays.`
+    case 'seed-audio':
+      return 'The player needs voice 1 on this seed sentence; without it it substitutes a use phrase, so this row never plays.'
+    case 'reviewed-lego-dropped':
+      return 'The player never introduces the LEGO being reviewed here (its audio is missing), so this review never fires.'
+    case 'phrase-audio':
+    default:
+      return `No ${rolesPhrase(item.missingAudioRoles)} audio for this phrase — the player skips this row.`
+  }
+}
+
+const roundFlagTitle = (round: RoundData): string =>
+  `The live player drops this entire round: its LEGO has no ${rolesPhrase(round.missingAudioRoles)} audio. `
+  + 'The round is still shown here because it is part of the intended course.'
+
+// The number the learner actually sees — dropped rounds renumber everything
+// after them, so R47 here can be R46 in the player.
+const roundNumberTitle = (round: RoundData): string => {
+  if (round.playerDelivers === false) return 'The live player does not play this round at all'
+  if (round.playerRoundNumber && round.playerRoundNumber !== round.roundNumber) {
+    return `Round ${round.roundNumber} of the intended course — the player currently numbers it R${round.playerRoundNumber}, because earlier rounds are missing audio`
+  }
+  return `Round ${round.roundNumber}`
+}
+
+const roundHasRenumbering = (round: RoundData) =>
+  round.playerDelivers !== false
+  && !!round.playerRoundNumber
+  && round.playerRoundNumber !== round.roundNumber
 
 // ── Approval-gate standing per round ──────────────────────────────────────
 // Read-only and non-blocking: Script View is a proofing tool and must not
