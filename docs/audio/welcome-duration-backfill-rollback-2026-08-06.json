@@ -1,0 +1,48 @@
+{
+  "captured_at_utc": "2026-08-06T17:45:39.038Z",
+  "note": "Prior state of course_audio welcome rows before duration_ms backfill. Revert with the UPDATE statements in revert_sql.",
+  "rows_before": [
+    {
+      "id": "356931e8-4e99-4197-a38e-f15d81d71cf9",
+      "course_code": "kor_for_hin",
+      "role": "welcome",
+      "s3_key": "mastered/86EBBF2F-0A47-4548-A235-2DFE04F122F0.mp3",
+      "duration_ms": null,
+      "voice_id": "elevenlabs",
+      "text": "welcome"
+    },
+    {
+      "id": "86e86327-8cd7-4358-989d-ba5bf424fe5a",
+      "course_code": "zho_for_tam",
+      "role": "welcome",
+      "s3_key": "mastered/DF624A51-7BD7-41F5-B77B-53C2364F7E09.mp3",
+      "duration_ms": 61280,
+      "voice_id": "elevenlabs",
+      "text": "welcome"
+    },
+    {
+      "id": "affe56a1-1f8d-40a2-b9cc-074ea1cd0a42",
+      "course_code": "kor_for_tam",
+      "role": "welcome",
+      "s3_key": "mastered/2F0A8615-2838-4A0A-8CB1-47B9A1943267.mp3",
+      "duration_ms": null,
+      "voice_id": "elevenlabs",
+      "text": "welcome"
+    },
+    {
+      "id": "dca6f548-04df-4da3-a755-108c429211d3",
+      "course_code": "zho_for_hin",
+      "role": "welcome",
+      "s3_key": "mastered/065DD2DD-5717-428A-823B-BF0D9DEF3848.mp3",
+      "duration_ms": 51760,
+      "voice_id": "elevenlabs",
+      "text": "welcome"
+    }
+  ],
+  "revert_sql": [
+    "UPDATE course_audio SET duration_ms = NULL WHERE id = '356931e8-4e99-4197-a38e-f15d81d71cf9'; -- kor_for_hin",
+    "UPDATE course_audio SET duration_ms = 61280 WHERE id = '86e86327-8cd7-4358-989d-ba5bf424fe5a'; -- zho_for_tam",
+    "UPDATE course_audio SET duration_ms = NULL WHERE id = 'affe56a1-1f8d-40a2-b9cc-074ea1cd0a42'; -- kor_for_tam",
+    "UPDATE course_audio SET duration_ms = 51760 WHERE id = 'dca6f548-04df-4da3-a755-108c429211d3'; -- zho_for_hin"
+  ]
+}
