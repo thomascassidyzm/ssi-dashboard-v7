@@ -15,6 +15,9 @@ const COURSES = [
   { code: 'cym_s_for_eng', label: 'Southern Welsh' },
 ]
 const SECONDS_PER_TAKE = 6
+const CANONICAL_STAMP = '2026-08-06'
+const CANONICAL_LINES = 231
+const BUILT_STAMP = new Date().toISOString().slice(0, 10)
 
 async function buildFor(course) {
   const { data: courseRow } = await db.from('courses').select('voice_config').eq('course_code', course.code).single()
@@ -43,9 +46,38 @@ async function buildFor(course) {
         return data || []
       },
     })
-    results.push({ course, voice: v, plan, final })
+    results.push({ course, voice: v, plan, final, sentences })
   }
   return results
+}
+
+// Aran's ruling on voicing, 2026-08-06, in his own words:
+//   "Did some interleaving in the first few scenes and then beyond that it seemed
+//    faster to do them as chunks, without scene-based to and fro for everything,
+//    they'll work fine like that (also kind of fits with what I've been saying
+//    about not needing multiple voices)."
+// Applied in the canonical: scenes 1-14 and 22 are interleaved dialogue with real
+// characters; scenes 15-21 are single-voice chunks. The sheet must not cast a chunk
+// scene as a to-and-fro, so the mode is read back off the data rather than assumed.
+const CHUNK_SPEAKERS = new Set(['Learner', 'Narrator'])
+function sceneShape(sentences) {
+  const byScene = new Map()
+  for (const r of sentences) {
+    if (r.global_order >= 90000) continue   // retired/parked rows are in no queue
+    if (!byScene.has(r.scene_number)) byScene.set(r.scene_number, [])
+    byScene.get(r.scene_number).push(r)
+  }
+  const out = new Map()
+  for (const [n, rows] of byScene) {
+    const speakers = [...new Set(rows.map(r => r.speaker))]
+    out.set(n, {
+      lines: rows.length,
+      awaitingTarget: rows.filter(r => !String(r.target_text || '').trim()).length,
+      speakers,
+      mode: speakers.every(sp => CHUNK_SPEAKERS.has(sp)) ? 'chunk' : 'dialogue',
+    })
+  }
+  return out
 }
 
 function fmtTime(nTakes) {
@@ -53,7 +85,9 @@ function fmtTime(nTakes) {
   return `~${min} min`
 }
 
-function renderScript({ course, voice, plan, final }) {
+function renderScript({ course, voice, plan, final, sentences }) {
+  const shape = sceneShape(sentences)
+  const awaitingTotal = [...shape.values()].reduce((a, s) => a + s.awaitingTarget, 0)
   const isExplainer = plan.isExplainer
   const remaining = final.items.filter(i => !i.recorded)
   const L = []
@@ -65,6 +99,12 @@ function renderScript({ course, voice, plan, final }) {
   L.push('')
   L.push(`**${remaining.length} lines still to record** (${final.totals.recorded} already done, ${final.totals.items} total). Estimated ${fmtTime(remaining.length)} at ~${SECONDS_PER_TAKE}s a take.`)
   L.push('')
+  L.push(`Built ${BUILT_STAMP} against **Aran's ${CANONICAL_STAMP} pod-0 canonical** (${CANONICAL_LINES} sentences, 22 scenes). Any earlier pack is superseded — see \`docs/pods/welsh-recording-pack-SUPERSEDED-2026-07/\`.`)
+  L.push('')
+  if (awaitingTotal) {
+    L.push(`**${awaitingTotal} of the ${CANONICAL_LINES} canonical lines have no Welsh written yet.** Their Welsh takes are not in this queue — every Welsh line printed below has been written already. Writing the missing Welsh is a translation job, not a recording job: nobody is expected to improvise it at the microphone.`)
+    L.push('')
+  }
   L.push(`Lines already recorded are marked ✅ and struck through — the recording tool will skip you straight past them; they are kept here so the numbering matches what you see on screen. A \`…\` mid-line is a **breathing point**: take a natural breath there and carry on in the same sentence.`)
   L.push('')
   let n = 0
@@ -77,6 +117,17 @@ function renderScript({ course, voice, plan, final }) {
       L.push('')
       L.push(`## Scene ${it.sceneNumber}${it.sceneTitle ? ` — ${it.sceneTitle}` : ''}`)
       L.push('')
+      const sh = shape.get(it.sceneNumber)
+      if (sh) {
+        L.push(sh.mode === 'chunk'
+          ? `*Single-voice chunk — no scene-based to and fro. Read straight through.*`
+          : `*Dialogue — ${sh.speakers.join(', ')}.*`)
+        if (sh.awaitingTarget) {
+          L.push('')
+          L.push(`*${sh.awaitingTarget} of this scene's ${sh.lines} canonical lines have no Welsh written yet — their Welsh take is not in this queue. Where you see an English guide line with no Welsh beside it, that is why.*`)
+        }
+        L.push('')
+      }
     }
     const who = it.kind === 'target' ? it.speaker : (it.kind === 'known' ? `English (guide) — for ${it.speaker}'s line` : 'Explainer')
     const read = it.kind === 'target' ? it.line.targetText : it.line.knownText
