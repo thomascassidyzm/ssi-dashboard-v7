@@ -308,15 +308,15 @@ async function main () {
   const log = []
   let done = 0, failed = 0, chars = 0
 
-  for (const [i, item] of queue.entries()) {
+  const processItem = async (item, i) => {
     const prefix = `[${i + 1}/${queue.length}] ${item.label}`
     let stage = 'read'
     let old = null, newId = null, tombstoned = false, inserted = false
     const relinked = []
     try {
       const { data: row, error } = await supabase.from('course_audio').select('*').eq('id', item.id).single()
-      if (error || !row) { console.log(`${prefix}: row gone — skip`); continue }
-      if (row.origin === 'human') { console.log(`${prefix}: origin=human — REFUSED`); continue }
+      if (error || !row) { console.log(`${prefix}: row gone — skip`); return }
+      if (row.origin === 'human') { console.log(`${prefix}: origin=human — REFUSED`); return }
       old = row
       console.log(`${prefix} ${row.role}: ${JSON.stringify(row.text).slice(0, 60)} (rev${row.audio_revision}, ${row.s3_key})`)
 
@@ -334,11 +334,11 @@ async function main () {
           .eq('text', cleanText).eq('voice_id', row.voice_id).eq('role', row.role)
           .order('audio_revision', { ascending: false }).limit(1)
         const repl = live && live[0]
-        if (!repl) { console.log('      SUPERSEDED but no live replacement found — skipped, inspect by hand'); log.push({ clip: item.label, role: row.role, action: 'skipped-superseded-orphan', oldId: row.id }); continue }
+        if (!repl) { console.log('      SUPERSEDED but no live replacement found — skipped, inspect by hand'); log.push({ clip: item.label, role: row.role, action: 'skipped-superseded-orphan', oldId: row.id }); return }
         if (DRY) {
           console.log(`      [PLAN] superseded — would relink ${item.holders.length} holder(s) to live ${repl.id} (free, no TTS)`)
           log.push({ clip: item.label, role: row.role, action: 'would-relink-to-live', oldId: row.id, liveId: repl.id, chars: 0, holders: item.holders.map(h => `${h.table}.${h.column}#${h.rowId}`) })
-          continue
+          return
         }
         for (const h of item.holders) {
           const patch = { [h.column]: repl.id }
@@ -350,7 +350,7 @@ async function main () {
         console.log(`      RELINKED ${item.holders.length} holder(s) to live ${repl.id} → ${repl.s3_key} (no TTS)`)
         done++
         log.push({ clip: item.label, role: row.role, action: 'relinked-to-live', oldId: row.id, liveId: repl.id, newKey: repl.s3_key, holders: item.holders.map(h => `${h.table}.${h.column}#${h.rowId}`) })
-        continue
+        return
       }
 
       // Free plan: everything that can be known without spending money.
@@ -359,7 +359,7 @@ async function main () {
         chars += c
         console.log(`      [PLAN] ${c} chars, shipped ${row.duration_ms}ms, held by ${item.holders.map(h => `${h.table}.${h.column}`).join(', ')}`)
         log.push({ clip: item.label, role: row.role, action: 'would-replace', oldId: row.id, oldKey: row.s3_key, oldRev: row.audio_revision, shippedMs: row.duration_ms, holders: item.holders.map(h => `${h.table}.${h.column}#${h.rowId}`), text: row.text, chars: c, voice: row.voice_id })
-        continue
+        return
       }
 
       // 1. Render. Nothing is mutated if this throws.
@@ -370,7 +370,7 @@ async function main () {
       if (DRY) {
         console.log(`      [DRY] would replace — shipped ${row.duration_ms}ms, fresh ${rendered.durationMs}ms, veracity ${rendered.verdict.checked ? (rendered.verdict.pass ? 'PASS' : 'FAIL') : 'unchecked'}`)
         log.push({ clip: item.label, role: row.role, action: 'would-replace', oldId: row.id, oldKey: row.s3_key, oldRev: row.audio_revision, shippedMs: row.duration_ms, freshMs: rendered.durationMs, holders: item.holders.map(h => `${h.table}.${h.column}#${h.rowId}`), text: row.text, chars: String(row.text || '').length })
-        continue
+        return
       }
 
       // 2. Upload the new object first — an S3 write nobody points at is inert.
@@ -509,6 +509,26 @@ async function main () {
       log.push({ clip: item.label, action: 'failed', stage, error: err.message, oldId: item.id })
     }
   }
+
+  // Concurrency. The ceiling is not ours to pick freely: services/tts-service.cjs
+  // caps xAI at XAI_TTS_CONCURRENCY (default 4) because a 20-wide fan-out is
+  // measured to make /v1/tts queue past the timeout (~50% timeouts on the
+  // 2026-07-25 guj passes), and sustained wide runs degrade into silent stub
+  // responses (567 French clips, 2026-08-03) — the exact damage this tool
+  // exists to undo. So the pool is deliberately WIDER than the TTS cap: the
+  // extra workers sit in S3, whisper and Postgres while the TTS governor holds
+  // the provider at its safe width, which is where the real speed-up is.
+  const pool = Math.max(1, Number(arg('--concurrency') || 8))
+  console.log(`running ${pool} workers (xAI held at ${process.env.XAI_TTS_CONCURRENCY || 4} concurrent by the TTS governor)\n`)
+  let cursor = 0
+  const runner = async () => {
+    for (;;) {
+      const i = cursor++
+      if (i >= queue.length) return
+      await processItem(queue[i], i)
+    }
+  }
+  await Promise.all(Array.from({ length: pool }, runner))
 
   const scope = TARGETS ? `targets-${path.basename(TARGETS).replace(/\.json$/, '')}` : `seeds${SEED_FROM}-${SEED_TO}`
   const outPath = OUT || path.join(__dirname, '..', 'docs', 'audio-repair-2026-08-06',
