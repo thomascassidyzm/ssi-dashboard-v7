@@ -31,6 +31,7 @@ const path = require('path')
 const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
+const { localisedLangName } = require('../shared/presentation-key.cjs')
 const { pickPreferredAudioRow } = require('../shared/audio-link-preference.cjs')
 const { decideCopy } = require('../shared/clone-copy-match.cjs')
 const { buildSourceIndex } = require('../shared/clone-copy-index.cjs')
@@ -134,23 +135,15 @@ async function s3ObjectExists(s3Key) {
 // =============================================================================
 
 // Get the target language name localised into the known language.
-// Uses Intl.DisplayNames (488 languages via CLDR) with language-code-service fallback.
-// No hardcoded maps — adding a new language Just Works.
-function getLocalisedLangName(targetLang, knownLang) {
-  // English known-side: use the house names from the CSV (e.g. "Bengali"),
-  // not CLDR's variants ("Bangla") — intros must match how the courses brand
-  // their languages.
-  if (knownLang === 'eng') return getLangEnglishName(targetLang)
-  try {
-    const target2 = databaseToManifest(targetLang) // 3-letter → 2-letter for Intl API
-    const known2 = databaseToManifest(knownLang)
-    const dn = new Intl.DisplayNames([known2], { type: 'language' })
-    const name = dn.of(target2)
-    if (name && name !== target2) return name
-  } catch (_) { /* fall through */ }
-  // Fallback: English name from CSV
-  return getLangEnglishName(targetLang)
-}
+// Uses Intl.DisplayNames (488 languages via CLDR) with language-code-service
+// fallback. No hardcoded maps — adding a new language Just Works.
+//
+// The body lives in services/shared/presentation-key.cjs, because
+// tools/audio-link-reconcile.cjs has to rebuild the exact narration string this
+// file mints in order to re-link a component's presentation clip. Two copies of
+// this function would silently un-link courses the moment they disagreed about
+// what a language is called, so there is only one.
+const getLocalisedLangName = localisedLangName
 
 // Canonical text normalization — see services/shared/text-normalize.cjs
 const normalizeText = normalizeForAudio

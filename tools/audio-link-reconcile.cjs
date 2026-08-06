@@ -51,8 +51,53 @@
  *   loose  = strict, plus trailing ? ？ ¿ ¡ stripped  (punctuation-insensitive)
  *
  * PRESENTATION is keyed differently: presentation clips carry `lego_id` and
- * their text is English boilerplate ("The Arabic for: 'next', is:"), so they are
- * matched on (course_code, role='presentation', lego_id), never on text.
+ * their text is known-language boilerplate ("The Arabic for: 'next', is:"), so a
+ * LEGO's own intro is matched on (course_code, role='presentation', lego_id),
+ * never on text.
+ *
+ * COMPONENT PRESENTATION — the key this tool used to say it did not have.
+ * `course_practice_phrases.presentation_audio_id` was reported and never healed,
+ * because a component has no text of its own to match and (on every course that
+ * matters) a NULL `lego_id`. Both halves of that are now solved, and the rule is
+ * worth stating because a wrong link here plays the WRONG NARRATION to a
+ * learner, which is worse than the fallback they get from a NULL:
+ *
+ *   1. THE KEY IS THE GENERATOR'S OWN OUTPUT. phase8's
+ *      `linkComponentPresentationAudio` does not discover these clips, it MINTS
+ *      them: template(known_lang) with {target_lang_name}, {known} = the
+ *      component's known_text, {seed} = the parent M-LEGO's known_text. Rebuild
+ *      that string and you have the clip's name. The rebuild lives in
+ *      services/shared/presentation-key.cjs, which phase8 now shares, so the two
+ *      cannot drift.
+ *
+ *   2. IT IS LANGUAGE-AWARE BY NOT KNOWING ANY LANGUAGE. The template comes from
+ *      the estate's `presentation_templates` table, one row per KNOWN language.
+ *      Nothing here parses narration, which is the only reason it works: the
+ *      wrappers have no shared shape to parse — French uses — em-dashes —,
+ *      Chinese uses 「」, and Japanese ("もうすぐ をフランス語で言うと：") uses no
+ *      delimiters at all. A template-matching or extract-the-quoted-bit matcher
+ *      scores an honest zero on Japanese; this one scores 999/1002 on
+ *      fra_for_jpn. No known language is hard-coded anywhere.
+ *
+ *   3. THE CARRIER IS IN THE KEY, AND THAT IS WHAT KILLS THE AMBIGUITY. Keying
+ *      on the component's chunk alone collides badly — 445 of deu_for_eng's 926
+ *      components share a chunk with another component, differing only in their
+ *      "as in" carrier sentence, which the learner HEARS. Putting {seed} in the
+ *      key means two clips that match are the same words in the same order, so
+ *      no learner can tell them apart and either is safe; clips with different
+ *      carriers cannot collide in the first place. 445 ambiguities → 0.
+ *
+ *   4. `lego_id` IS AN INDEPENDENT SECOND AXIS, USED ONLY TO REFUSE. A content
+ *      row's LEGO (`S0001L05`, derived from its own seed/lego numbering) is
+ *      compared against any candidate that carries a `lego_id`. Agreement buys
+ *      nothing — the text key already decided. DISAGREEMENT is a structural
+ *      conflict, and the row is left NULL and counted `ambiguous` rather than
+ *      resolved by preference. Ambiguity is asymmetric here: a NULL costs the
+ *      learner nothing they are not already living with, because
+ *      `presentation_id || known_id` now falls through to a clip that plays.
+ *
+ * Healing this slot is still OPT-IN (`--heal-phrase-presentation`), so nothing
+ * that ran this tool before starts writing a new column by surprise.
  *
  * RE-LINK PASS (--apply). Make-before-break, per
  * docs/architecture/AUDIO_PIPELINE_ARCHITECTURE.md §6b:
@@ -85,6 +130,9 @@
  *   --include-loose heal loose-key (trailing-?) matches too — OFF by default
  *   --verify-storage  HEAD every candidate object in S3 before promising a free
  *                     link (always on under --apply)
+ *   --heal-phrase-presentation
+ *                   also heal course_practice_phrases.presentation_audio_id,
+ *                   using the component key documented above. OFF by default.
  *   --census        survey the WHOLE ESTATE: every course ranked by rounds lost,
  *                   with clean-cut (ara_lb-shaped amputation) detection. Implies --all.
  *   --log <path>    override the log file path
@@ -96,6 +144,7 @@ const path = require('path')
 const { Client } = require('pg')
 const { pickPreferredAudioRow } = require('../services/shared/audio-link-preference.cjs')
 const { normalizeForAudio } = require('../services/shared/text-normalize.cjs')
+const { localisedLangName, componentPresentationKey, legoRefFor } = require('../services/shared/presentation-key.cjs')
 
 const ROOT = path.join(__dirname, '..')
 require('dotenv').config({ path: path.join(ROOT, '.env'), quiet: true })
@@ -149,12 +198,15 @@ const SLOTS = [
   { table: 'course_practice_phrases', role: 'known', col: 'known_audio_id', text: 'known_text', lang: 'known' },
   { table: 'course_practice_phrases', role: 'target1', col: 'target1_audio_id', text: 'target_text', lang: 'target', dur: 'target1_duration_ms' },
   { table: 'course_practice_phrases', role: 'target2', col: 'target2_audio_id', text: 'target_text', lang: 'target', dur: 'target2_duration_ms' },
-  // Reported, never healed. A phrase's presentation_audio_id has no established
-  // provenance (in ara_lb all 305 of them dangle) and no text key of its own, so
-  // this tool will not invent one. HEAL_EXCLUDE below enforces that.
-  { table: 'course_practice_phrases', role: 'presentation', col: 'presentation_audio_id', text: null, lang: 'known' },
+  // Keyed by `comp` — the rebuilt component narration (see the header). Healed
+  // only under --heal-phrase-presentation; HEAL_EXCLUDE is the default policy.
+  { table: 'course_practice_phrases', role: 'presentation', col: 'presentation_audio_id', text: null, key: 'comp', lang: 'known' },
 ]
 const HEAL_EXCLUDE = new Set(['course_practice_phrases:presentation'])
+// The effective exclusion set for a run. Opting in removes the phrase slot and
+// nothing else, so a caller can never widen the write surface by accident.
+const healExcludeFor = ({ healPhrasePresentation = false } = {}) =>
+  healPhrasePresentation ? new Set() : HEAL_EXCLUDE
 const slotKey = (s) => `${s.table}:${s.role}`
 
 const CONTENT_COLS = {
@@ -163,7 +215,11 @@ const CONTENT_COLS = {
   // exactly the count of is_new LEGOs (verified: ara_lb 1,546 legos / 1,414
   // rounds, matching docs/audio/ara-lb-missing-audio-scope-2026-08-06.md).
   course_legos: 'id, seed_number, lego_id AS ref, known_text, target_text, lego_id, is_new, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms',
-  course_practice_phrases: 'id, seed_number, id::text AS ref, known_text, target_text, lego_id, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms',
+  // phrase_role + lego_index carry the component presentation key: only
+  // components get an intro clip, and (seed_number, lego_index) names both the
+  // parent M-LEGO that supplies the "as in" carrier and the LEGO ref used to
+  // refuse a structurally-wrong candidate.
+  course_practice_phrases: 'id, seed_number, lego_index, phrase_role, id::text AS ref, known_text, target_text, lego_id, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms',
 }
 
 // ── LEGO COMPLETENESS — the ruling that outranks slot counting ──────────────
@@ -231,22 +287,52 @@ function resolveSlot({ currentId, aliveIds, strictCands, looseCands }) {
 }
 
 // ── per-course reconciliation ───────────────────────────────────────────────
-async function reconcileCourse(client, course) {
+async function reconcileCourse(client, course, opts = {}) {
   const { course_code, known_lang, target_lang } = course
   const langFor = { known: known_lang, target: target_lang }
+  const HEAL_SKIP = healExcludeFor(opts)
 
   const audio = (await client.query(
     `SELECT id, text, language, role, origin, created_at, duration_ms, lego_id, s3_key
        FROM course_audio WHERE course_code = $1`, [course_code])).rows
+
+  // ── the component-presentation key (see header) ───────────────────────────
+  // Read-only: a known language with no active template yields no key at all,
+  // and every component on the course is reported `no_key`. Authoring one is a
+  // content decision and belongs to presentation-author.cjs, never to a
+  // reconciliation pass.
+  const template = (await client.query(
+    `SELECT template FROM presentation_templates
+      WHERE known_lang = $1 AND is_active = true
+      ORDER BY priority DESC LIMIT 1`, [known_lang])).rows[0]?.template || null
+  const targetLangName = localisedLangName(target_lang, known_lang)
+  // The "as in" carrier comes from the parent M-LEGO at the component's own
+  // (seed_number, lego_index) — exactly the lookup phase8 does when it mints.
+  const carrierFor = new Map()
+  for (const l of (await client.query(
+    `SELECT seed_number, lego_index, known_text FROM course_legos
+      WHERE course_code = $1 AND type = 'M'`, [course_code])).rows) {
+    carrierFor.set(`${l.seed_number}:${l.lego_index}`, l.known_text)
+  }
 
   const aliveIds = new Set(audio.map((r) => r.id))
   // role → key → rows
   const strictIdx = new Map()
   const looseIdx = new Map()
   const presIdx = new Map() // lego_id → rows
+  const compPresIdx = new Map() // rebuilt-narration key → rows
   for (const r of audio) {
     if (r.role === 'presentation') {
       if (r.lego_id) (presIdx.get(r.lego_id) || presIdx.set(r.lego_id, []).get(r.lego_id)).push(r)
+      // A component intro is narrated in the KNOWN language; anything else on
+      // this role belongs to a different track and must not be a candidate.
+      // Keyed off the RAW text, never the stored text_normalized, for the same
+      // reason as every other key here (see NORMALISERS above).
+      if (r.text && r.language === known_lang) {
+        const k = normalizeForAudio(r.text)
+        if (!compPresIdx.has(k)) compPresIdx.set(k, [])
+        compPresIdx.get(k).push(r)
+      }
       continue
     }
     if (!r.text) continue
@@ -260,6 +346,7 @@ async function reconcileCourse(client, course) {
   const buckets = {}
   const relinkable = []
   const danglingRows = []
+  const ambiguousRows = []
   const linkedIdsSeen = new Set()
   // Per-LEGO state for the completeness triple (see legoVerdict below).
   const legoStates = new Map()
@@ -269,13 +356,44 @@ async function reconcileCourse(client, course) {
       `SELECT ${CONTENT_COLS[table]} FROM ${table} WHERE course_code = $1`, [course_code])).rows
     const tableSlots = SLOTS.filter((s) => s.table === table)
     for (const slot of tableSlots) {
-      const b = buckets[slotKey(slot)] = { linked: 0, strict: 0, loose: 0, absent: 0, dangling: 0, dangling_healable: 0, skipped: 0 }
+      const b = buckets[slotKey(slot)] = { linked: 0, strict: 0, loose: 0, absent: 0, dangling: 0, dangling_healable: 0, skipped: 0, ambiguous: 0, no_key: 0 }
       for (const row of rows) {
         const currentId = row[slot.col]
         if (currentId) linkedIdsSeen.add(currentId)
 
         let strictCands = null, looseCands = null
-        if (slot.text === null) {
+        if (slot.key === 'comp') {
+          // Only components are ever given an intro clip; a build/use phrase
+          // having none is the design, not a gap, so it must not land in
+          // `absent` and inflate the TTS ledger.
+          if (row.phrase_role !== 'component') { b.skipped++; continue }
+          const key = componentPresentationKey({
+            template, targetLangName,
+            knownText: row.known_text,
+            carrierText: carrierFor.get(`${row.seed_number}:${row.lego_index}`),
+          })
+          // No template for this known language, or no parent M-LEGO to supply
+          // the carrier: there is no key, so there is no defensible link. Left
+          // NULL and counted, never guessed.
+          if (!key) { if (currentId && aliveIds.has(currentId)) b.linked++; else b.no_key++; continue }
+          const cands = compPresIdx.get(key) || []
+          // The independent second axis. Every candidate here already carries
+          // identical narration, so they are interchangeable BY CONSTRUCTION —
+          // the only remaining way to be wrong is structural, and that is a
+          // refusal, not a tie to be broken by preference.
+          const legoRef = legoRefFor(row.seed_number, row.lego_index)
+          const conflict = cands.filter((a) => a.lego_id && legoRef && a.lego_id !== legoRef)
+          if (conflict.length && !(currentId && aliveIds.has(currentId))) {
+            b.ambiguous++
+            ambiguousRows.push({
+              course_code, row_id: row.id, ref: row.ref, lego_ref: legoRef,
+              reason: 'candidate lego_id disagrees with the row lego',
+              candidates: cands.map((a) => ({ id: a.id, lego_id: a.lego_id })),
+            })
+            continue
+          }
+          strictCands = cands
+        } else if (slot.text === null) {
           const c = row.lego_id ? presIdx.get(row.lego_id) : null
           strictCands = c || null
         } else {
@@ -316,7 +434,7 @@ async function reconcileCourse(client, course) {
           continue // never overwrite an existing value in this pass — report only
         }
         b[res.status]++
-        if (!HEAL_EXCLUDE.has(slotKey(slot))) {
+        if (!HEAL_SKIP.has(slotKey(slot))) {
           relinkable.push({
             course_code, table, row_id: row.id, ref: row.ref, seed_number: row.seed_number,
             column: slot.col, role: slot.role, match: res.status, candidates: res.candidates,
@@ -397,7 +515,9 @@ async function reconcileCourse(client, course) {
       + (buckets['course_practice_phrases:target2']?.absent || 0),
   }
 
-  return { course_code, known_lang, target_lang, audio_rows: audio.length, buckets, legos, census, relinkable, dangling: danglingRows }
+  return { course_code, known_lang, target_lang, audio_rows: audio.length,
+           has_presentation_template: !!template,
+           buckets, legos, census, relinkable, dangling: danglingRows, ambiguous: ambiguousRows }
 }
 
 // ── the re-link pass ────────────────────────────────────────────────────────
@@ -423,12 +543,12 @@ async function applyRelink(client, items) {
 
 // ── reporting ───────────────────────────────────────────────────────────────
 function totals(result) {
-  const t = { linked: 0, strict: 0, loose: 0, absent: 0, dangling: 0, dangling_healable: 0, skipped: 0 }
+  const t = { linked: 0, strict: 0, loose: 0, absent: 0, dangling: 0, dangling_healable: 0, skipped: 0, ambiguous: 0, no_key: 0 }
   for (const b of Object.values(result.buckets)) for (const k of Object.keys(t)) t[k] += b[k]
   return t
 }
 
-function printCourse(result) {
+function printCourse(result, healSkip = HEAL_EXCLUDE) {
   const t = totals(result)
   const free = t.strict + t.loose
   console.log(`\n━━ ${result.course_code}  (${result.known_lang} → ${result.target_lang}, ${result.audio_rows} audio rows)`)
@@ -444,18 +564,24 @@ function printCourse(result) {
     console.log(`    missing by part — intro ${L.missing_intro}  voice1 ${L.missing_voice1}  voice2 ${L.missing_voice2}`)
     console.log(`    blocked ONLY on the intro: ${L.broken_intro_only}   (cheapest round rescue in the course)`)
   }
-  console.log('  slot                                  linked   strict    loose   absent  dangling')
+  console.log('  slot                                  linked   strict    loose   absent  dangling    ambig')
   for (const s of SLOTS) {
     const b = result.buckets[slotKey(s)]
     if (!b) continue
-    const heal = HEAL_EXCLUDE.has(slotKey(s)) ? '  (report only)' : ''
-    console.log(`  ${slotKey(s).padEnd(36)}${pad(b.linked, 7)}${pad(b.strict, 9)}${pad(b.loose, 9)}${pad(b.absent, 9)}${pad(b.dangling, 10)}${heal}`)
+    const heal = healSkip.has(slotKey(s)) ? '  (report only)' : ''
+    console.log(`  ${slotKey(s).padEnd(36)}${pad(b.linked, 7)}${pad(b.strict, 9)}${pad(b.loose, 9)}${pad(b.absent, 9)}${pad(b.dangling, 10)}${pad(b.ambiguous, 9)}${heal}`)
   }
-  console.log(`  ${'TOTAL'.padEnd(36)}${pad(t.linked, 7)}${pad(t.strict, 9)}${pad(t.loose, 9)}${pad(t.absent, 9)}${pad(t.dangling, 10)}`)
+  console.log(`  ${'TOTAL'.padEnd(36)}${pad(t.linked, 7)}${pad(t.strict, 9)}${pad(t.loose, 9)}${pad(t.absent, 9)}${pad(t.dangling, 10)}${pad(t.ambiguous, 9)}`)
   console.log(`  (b) UNLINKED-BUT-PRESENT = ${free} slots recoverable for free  (${t.strict} strict + ${t.loose} loose)`)
   console.log(`  (c) TRULY ABSENT         = ${t.absent} slots — needs TTS; queue, never spend here`)
   console.log(`  (d) DANGLING             = ${t.dangling} links to a dead course_audio row (${t.dangling_healable} have a findable replacement)`)
-  if (t.skipped) console.log(`      ${t.skipped} slots skipped (content text empty)`)
+  // Left NULL on purpose. A NULL costs the learner nothing — the player falls
+  // through to the known clip — whereas a wrong link plays the wrong narration
+  // with no signal that anything is off. This bucket is a result, not a shortfall.
+  if (t.ambiguous) console.log(`      AMBIGUOUS                ${t.ambiguous} left NULL — candidates disagree structurally; never guessed`)
+  if (t.no_key) console.log(`      NO KEY                   ${t.no_key} components with no presentation template or no parent M-LEGO`
+    + (result.has_presentation_template ? '' : ` (${result.known_lang} has NO active presentation template)`))
+  if (t.skipped) console.log(`      ${t.skipped} slots skipped (content text empty, or a phrase that never gets an intro)`)
 }
 
 // ── census ──────────────────────────────────────────────────────────────────
@@ -515,11 +641,17 @@ async function main() {
   // would never displace it. Free recovery must not quietly become a downgrade.
   const INCLUDE_LOOSE = flag('--include-loose')
   const VERIFY_STORAGE = flag('--verify-storage')
+  // Healing course_practice_phrases.presentation_audio_id is opt-in so that
+  // every existing caller of this tool keeps writing exactly the columns it
+  // wrote yesterday. The key itself is always computed, so the slot is reported
+  // either way and you can see the recovery before you authorise it.
+  const HEAL_PHRASE_PRES = flag('--heal-phrase-presentation')
+  const opts = { healPhrasePresentation: HEAL_PHRASE_PRES }
   const logOverride = argv.includes('--log') ? argv[argv.indexOf('--log') + 1] : null
   const courseArg = argv.find((a) => !a.startsWith('--') && a !== logOverride)
 
   if (!ALL && !courseArg) {
-    console.error('usage: node tools/audio-link-reconcile.cjs <course_code> [--json] [--apply] [--include-loose] [--verify-storage] [--log <path>]')
+    console.error('usage: node tools/audio-link-reconcile.cjs <course_code> [--json] [--apply] [--include-loose] [--verify-storage] [--heal-phrase-presentation] [--log <path>]')
     console.error('       node tools/audio-link-reconcile.cjs --all [--json]')
     process.exit(1)
   }
@@ -539,11 +671,11 @@ async function main() {
 
     const results = []
     for (const c of courses) {
-      const r = await reconcileCourse(client, c)
+      const r = await reconcileCourse(client, c, opts)
       results.push(r)
       if (!JSON_OUT) {
         if (CENSUS) console.error(`  … ${results.length}/${courses.length} ${c.course_code}`)
-        else printCourse(r)
+        else printCourse(r, healExcludeFor(opts))
       }
     }
 
@@ -602,17 +734,23 @@ async function main() {
     fs.mkdirSync(path.dirname(logPath), { recursive: true })
     fs.writeFileSync(logPath, JSON.stringify({
       mode, courses: courses.map((c) => c.course_code), include_loose: INCLUDE_LOOSE,
+      heal_phrase_presentation: HEAL_PHRASE_PRES,
       loose_held_back: INCLUDE_LOOSE ? 0 : looseCount,
       count: logged.length, storage_broken_dropped: storageBroken,
       aborted: abortError ? abortError.message : null, rows: logged,
+      // The refusals travel with the writes, so the log answers "what did you
+      // decline to do, and why" as well as "what did you do".
+      ambiguous: results.flatMap((r) => r.ambiguous),
     }, null, 1))
 
     // EXACT RECONCILE — re-run the report and prove the residue equals the log.
     let reconcile = null
     if (APPLY) {
       const after = []
-      for (const c of courses) after.push(await reconcileCourse(client, c))
-      const sum = (rs) => rs.map(totals).reduce((a, b) => { for (const k of Object.keys(a)) a[k] += b[k]; return a }, { linked: 0, strict: 0, loose: 0, absent: 0, dangling: 0, dangling_healable: 0, skipped: 0 })
+      // Same opts as the before-pass, or the two are not comparable and the
+      // "EXACT" verdict below would be measuring a different set of slots.
+      for (const c of courses) after.push(await reconcileCourse(client, c, opts))
+      const sum = (rs) => rs.map(totals).reduce((a, b) => { for (const k of Object.keys(a)) a[k] += b[k]; return a }, { linked: 0, strict: 0, loose: 0, absent: 0, dangling: 0, dangling_healable: 0, skipped: 0, ambiguous: 0, no_key: 0 })
       const b4 = sum(results), af = sum(after)
       reconcile = {
         linked_before: b4.linked, linked_after: af.linked, linked_delta: af.linked - b4.linked,
@@ -638,7 +776,7 @@ async function main() {
     if (JSON_OUT) {
       console.log(JSON.stringify({ mode, results: results.map((r) => ({ ...r, relinkable: undefined, dangling: r.dangling.length })), recoverable: items.length, log: logPath, reconcile }, null, 1))
     } else {
-      const g = results.map(totals).reduce((a, b) => { for (const k of Object.keys(a)) a[k] += b[k]; return a }, { linked: 0, strict: 0, loose: 0, absent: 0, dangling: 0, dangling_healable: 0, skipped: 0 })
+      const g = results.map(totals).reduce((a, b) => { for (const k of Object.keys(a)) a[k] += b[k]; return a }, { linked: 0, strict: 0, loose: 0, absent: 0, dangling: 0, dangling_healable: 0, skipped: 0, ambiguous: 0, no_key: 0 })
       const GL = results.reduce((a, r) => { for (const k of Object.keys(a)) a[k] += r.legos[k]; return a },
         { total: 0, complete: 0, free_strict: 0, free_loose: 0, broken: 0, missing_intro: 0, missing_voice1: 0, missing_voice2: 0, broken_intro_only: 0, broken_voices_only: 0 })
       console.log(`\n━━ ESTATE TOTAL over ${results.length} course(s)`)
@@ -654,10 +792,12 @@ async function main() {
       // back. Say so, rather than letting a big (b) imply a big free win.
       const reportOnly = (g.strict + g.loose) - items.length - (INCLUDE_LOOSE ? 0 : looseCount)
       console.log(`      of which this pass would write ${items.length}`
-        + (reportOnly > 0 ? `; ${reportOnly} are report-only (${[...HEAL_EXCLUDE].join(', ')})` : '')
+        + (reportOnly > 0 ? `; ${reportOnly} are report-only (${[...healExcludeFor(opts)].join(', ')})` : '')
         + (!INCLUDE_LOOSE && looseCount ? `; ${looseCount} loose held back (pass --include-loose)` : ''))
       console.log(`  (c) TRULY ABSENT         ${g.absent}   ← TTS spend; queue-audio-pass, never render here`)
       console.log(`  (d) DANGLING             ${g.dangling}   (${g.dangling_healable} healable)`)
+      if (g.ambiguous) console.log(`      AMBIGUOUS            ${g.ambiguous}   ← left NULL on purpose; a wrong intro is worse than the fallback`)
+      if (g.no_key) console.log(`      NO KEY               ${g.no_key}   ← no presentation template, or no parent M-LEGO to build the key from`)
       console.log(`\n  mode: ${APPLY ? 'APPLIED' : 'DRY RUN (default) — pass --apply to write'}`)
       console.log(`  log:  ${logPath}  (${logged.length} rows)`)
     }
@@ -669,7 +809,7 @@ async function main() {
 
 // Exported for the unit tests; the DB work only runs when this is the entry
 // point, so requiring the module never touches the estate.
-module.exports = { strictKey, looseKey, resolveSlot, legoVerdict, LEGO_TRIPLE, TRIPLE_PARTS, SLOTS, HEAL_EXCLUDE }
+module.exports = { strictKey, looseKey, resolveSlot, legoVerdict, LEGO_TRIPLE, TRIPLE_PARTS, SLOTS, HEAL_EXCLUDE, healExcludeFor }
 
 if (require.main === module) {
   main().catch((e) => { console.error(e.stack || e.message); process.exit(1) })
