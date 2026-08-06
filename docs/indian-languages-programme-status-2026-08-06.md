@@ -118,6 +118,16 @@ Six of the seven `pending` rows describe *completed* work. The queue is over-rep
 
 The four non-English courses have **zero** orphans — they were generated once and never revoiced. The seven English courses above 22% are the ones that went through the July text-fix and voice-flip campaigns. Any cleanup needs a deletion plan and approval per the audio doctrine; I have not touched them.
 
+*Precision note:* the orphan count moves with the definition of "referenced". A second independent count that also consulted `lego_introductions` landed on ~104,000 rather than 97,259. Treat the figure as **97k–104k**, i.e. roughly a quarter of the English courses' clip rows. The shape of the finding — heavy in the revoiced English courses, zero in the four non-English ones — is identical under both definitions.
+
+**Duplicate clip rows: structurally zero.** A unique constraint (`unique_course_audio_per_voice`) on (course_code, text_normalized, role, voice_id) makes duplicates impossible to insert. This is guaranteed-clean rather than measured-clean, which is worth distinguishing.
+
+**Stray voices — checked and explained, no live defect.** A scan for voice IDs outside each course's `voice_config` turns up mostly naming-convention noise (config stores `eve`/`bedd6226`; `course_audio` stores provider-prefixed `xai_eve`/`azure_…` from different pipeline eras). Two apparent anomalies resolve on inspection:
+- `leo`, ~461 rows in each of seven English courses, is **not** cross-course contamination — 3,227 of its 3,228 rows are `role='pod_explainer'`, the listening-pod narrator, present exactly where pods exist.
+- The genuinely odd rows are 8 clips in `eng_for_sin` (7 `sal`, 1 `leo`) carrying dialogue text like *"A large Sauvignon Blanc, please."* in `target1`. **All 8 are orphaned, none is linked**, so nothing live speaks in the wrong voice.
+
+The only live voice defects in the programme are the two named under "Two learner-facing defects" above.
+
 ---
 
 ## Content depth — no course is behind its siblings
@@ -143,7 +153,11 @@ I checked for the "one course quietly half-built" pattern and did not find it. E
 
 `zho_for_tam` and `eng_for_urd` are the thinnest (10,800 and 11,257 phrases against `eng_for_kan`'s 14,230) but at 1.73–1.74 new LEGOs/seed and ~9.5 phrases each they are within normal variation for a language pair, not evidence of an incomplete build.
 
-**Delivery index (`course_round_index`) is fresh for all 14** — its row count equals each course's new-LEGO count exactly (e.g. `eng_for_kan` 1,443/1,443, `kor_for_tam` 1,503/1,503). No course has the stale-view "one seed then INF PLAY" failure.
+**Delivery index (`course_round_index`) is fresh for all 14** — its row count equals each course's **new**-LEGO count exactly, in all fourteen cases: ben 1,280 · guj 1,424 · hin 1,274 · kan 1,443 · mar 1,389 · pan 1,263 · sin 1,240 · tam 1,358 · tel 1,428 · urd 1,158 · kor_hin 1,500 · kor_tam 1,503 · zho_hin 1,353 · zho_tam 1,161. No course has the stale-view "one seed then INF PLAY" failure.
+
+> Worth stating because it is an easy false alarm: comparing the view against the **total** LEGO count makes all 14 look stale by 2–111 rows. It isn't — a round is the introduction of a *new* LEGO, so the view indexes `is_new` LEGOs only. Against the right denominator the match is exact, 14 for 14.
+
+Two further delivery facts, from reading the serving code: `round-map.ts` returns a 503 (not a 404) if the view has no rows for a course, and `_utils/courseBoundary.ts` can truncate a course to `MVP_MAX_SEED=300` — but only for course codes hardcoded in `COURSE_MAX_SEED`, currently just `ara_lb_for_eng`/`ara_eg_for_eng`. **None of the 14 is truncated**; each serves its full authored length. `course_export_states` has 0 rows for all 14, consistent with the export/manifest path being legacy and off the learner path.
 
 ---
 
@@ -171,11 +185,12 @@ Two findings that this discipline caught, and which a naive read would have got 
 Reported honestly rather than papered over.
 
 1. **No clip has been machine-verified against its text.** `course_audio.veracity_checked_at` is NULL for **all 641,973 clips across all 14 courses** — 0.0% checked, so the 0 failures is a vacuous zero, not a pass. This is not neglect: the veracity checker appears newly built and has so far been run on one course only (`deu_for_eng`, 980 clips, checked today 2026-08-06). So **"100% audio" here means every slot has a real, non-zero-length clip attached — it does not mean the clip says the right words.** Nothing in the DB can currently tell you that for these 14.
-2. **`course_qa_gate` says `unpassed` for all 14 — I am reporting this as meaningless, not as a blocker.** The table reads `unpassed` for all **143** courses in the DB including released flagships (`fra_for_eng`, `spa_for_eng`); `course_round_signoffs` is **completely empty (0 rows)**; and `grep` finds **no reference to either table anywhere** in this repo or in `ssi-learning-app`. It is a dormant schema, not a live gate. Its `required_rounds = 100` should not be read as outstanding work.
-3. **I did not verify S3 objects physically exist.** I verified every linked clip has a non-null, non-`pending/` `s3_key` and a non-zero `duration_ms` in the DB. I did not HEAD the bucket. A row whose object was deleted out from under it would not show up in my counts.
-4. **No listening-by-ear check.** Everything here is structural. Whether `eng_for_mar`'s Manohar voice, or the Azure-vs-eve split, sounds right is a judgement only Kai or a native speaker can make.
-5. **`export_ready` is `false` for all 14** and `released_at` is NULL for all 14, including the three `live` courses. I could not find the code that sets either field, so I cannot say whether they are live gates or, like `course_qa_gate`, vestigial. Flagged rather than interpreted.
-6. **Phrase-level `qa_checked` is 0 for all 14** — but this field was last written in **March 2026** and only for an older cohort (`eng_for_jpn`, `spa_for_eng` etc.). It looks superseded, so I am not counting it as a gap in these courses' QA.
+2. **No human has signed off a playthrough of any of these courses.** `audio_clip_signoffs` has **0 rows** for all 14; `audio_clip_flags` has **0 rows in the entire table**, for every course in the DB — that pipeline stage has never been used. `audio_repair_candidates` is also empty for all 14. The legacy `audio_flags` table has rows for 9 of the 14 and **every one is `resolved`** (`eng_for_kan` 2,636, `eng_for_tel` 1,940, `eng_for_sin` 480, the rest 22–56) — but `eng_for_mar` and all four non-English courses have **zero rows**, meaning they never went through that pass at all rather than passing it. Combined with gap 1, the honest summary is: **no clip in these 14 has been verified as correct by machine or by ear.**
+3. **`course_qa_gate` says `unpassed` for all 14 — I am reporting this as meaningless, not as a blocker.** The table reads `unpassed` for all **143** courses in the DB including released flagships (`fra_for_eng`, `spa_for_eng`); `course_round_signoffs` is **completely empty (0 rows)**; and `grep` finds **no reference to either table anywhere** in this repo or in `ssi-learning-app`. It is a dormant schema, not a live gate. Its `required_rounds = 100` should not be read as outstanding work.
+4. **I did not verify S3 objects physically exist.** I verified every linked clip has a non-null, non-`pending/` `s3_key` and a non-zero `duration_ms` in the DB. I did not HEAD the bucket. A row whose object was deleted out from under it would not show up in my counts.
+5. **No listening-by-ear check.** Everything here is structural. Whether `eng_for_mar`'s Manohar voice, or the Azure-vs-eve split, sounds right is a judgement only Kai or a native speaker can make.
+6. **`export_ready` is `false` for all 14** and `released_at` is NULL for all 14, including the three `live` courses. I could not find the code that sets either field, so I cannot say whether they are live gates or, like `course_qa_gate`, vestigial. Flagged rather than interpreted.
+7. **Phrase-level `qa_checked` is 0 for all 14** — but this field was last written in **March 2026** and only for an older cohort (`eng_for_jpn`, `spa_for_eng` etc.). It looks superseded, so I am not counting it as a gap in these courses' QA.
 
 ---
 
