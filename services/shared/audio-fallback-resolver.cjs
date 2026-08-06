@@ -42,7 +42,18 @@
  *   key — it is the last thing before silence, not a matching strategy. The
  *   phase8 LINK pass deliberately refuses this fallback (linking a question to
  *   flat audio would suppress regeneration forever); callers that want the same
- *   strictness pass { allowLooseMatch: false }.
+ *   strictness pass { allowLooseMatch: false } — EXCEPT for LEGO slots, see next.
+ *
+ * SEVERITY IS PER-ROLE (Tom, 2026-08-06). A LEGO is complete only with all three
+ * of INTRO + target VOICE 1 + target VOICE 2 (the prompt clip is NOT in the
+ * triple). Missing any one drops the LEGO, drops its round, and breaks every
+ * later LEGO contingent on it — course-breaking. A cycle/practice-phrase gap is
+ * minor: that item is skipped and the round plays on. So pass `slotKind` and the
+ * resolver will FIGHT HARDEST for LEGOs: the loose tier is forced on for them and
+ * `allowLooseMatch: false` is ignored, because there the alternative to an
+ * off-config Azure clip is a dropped round, not a slightly-wrong intonation.
+ * Every result carries `severity` when it resolves to nothing, so callers can
+ * order repair LEGOs-first. The rule itself lives in audio-completeness.cjs.
  *
  * PURE — no I/O, no DB, no network. Candidate rows are passed in, mirroring
  * audio-link-preference.cjs. Never throws on missing data: a hopeless slot
@@ -51,6 +62,7 @@
 
 const { normalizeForAudio } = require('./text-normalize.cjs')
 const { pickPreferredAudioRow } = require('./audio-link-preference.cjs')
+const { slotSeverity, shouldFightHardest, SEVERITY } = require('./audio-completeness.cjs')
 
 // Terminal punctuation the two normalisers disagree about, plus whitespace.
 // Matches the DB rtrim set: . ? ! ¿ ¡ 。 ？ ！
@@ -133,10 +145,24 @@ function result(tier, row, reason) {
  * @param {string} [opts.language]       expected clip language (skips the check if omitted)
  * @param {string} [opts.role]           'known' | 'target1' | 'target2' | 'presentation'
  * @param {string} [opts.courseCode]     optional extra guard
- * @param {boolean} [opts.allowLooseMatch=true]  set false for link-pass strictness
+ * @param {'lego'|'seed'|'phrase'} [opts.slotKind]  what this slot belongs to. Drives
+ *                                       severity and, for LEGOs, makes the resolver
+ *                                       FIGHT HARDEST (see below).
+ * @param {boolean} [opts.allowLooseMatch]  set false for link-pass strictness.
+ *                                       Defaults true; for a LEGO slot in the triple
+ *                                       it is FORCED true — see below.
  * @returns {{audioId: string|null, s3Key: string|null, row: object|null,
- *            tier: 'linked'|'preferred-match'|'loose-match'|'none', reason: string}}
+ *            tier: 'linked'|'preferred-match'|'loose-match'|'none', reason: string,
+ *            severity: 'course-breaking'|'minor'|'none'}}
  *          Never throws. tier 'none' means: SKIP THIS ITEM, play the rest.
+ *
+ * FIGHT HARDEST FOR LEGOs (Tom, 2026-08-06). Severity is per-ROLE. A LEGO needs
+ * all three of intro + voice1 + voice2; missing any one drops the LEGO, drops its
+ * round, and breaks every later LEGO contingent on it. A practice-phrase gap just
+ * skips a phrase. So for a LEGO slot in the triple the loose tier is always
+ * allowed — an off-config or older Azure voice beats a dropped round — and a
+ * caller cannot switch it off by passing allowLooseMatch:false. Link-pass
+ * strictness still applies everywhere else, which is where it was earning its keep.
  */
 function resolveAudio(opts = {}) {
   const {
@@ -146,12 +172,20 @@ function resolveAudio(opts = {}) {
     language = null,
     role = null,
     courseCode = null,
-    allowLooseMatch = true
+    slotKind = null
   } = opts || {}
+
+  const severity = slotSeverity(slotKind, role)
+  const fightHardest = shouldFightHardest(slotKind, role)
+  // A LEGO gap is course-breaking, so it never declines a usable clip.
+  const allowLooseMatch = fightHardest
+    ? true
+    : (opts.allowLooseMatch === undefined ? true : opts.allowLooseMatch)
+  const tag = (r) => ({ ...r, severity: r.tier === 'none' ? severity : SEVERITY.NONE })
 
   // TIER 1 — the link, if it is actually playable.
   if (isAlive(linkedRow)) {
-    return result('linked', linkedRow, 'linked clip is alive')
+    return tag(result('linked', linkedRow, 'linked clip is alive'))
   }
   const linkedNote = linkedRow ? 'linked clip has no live s3_key' : 'no linked clip'
 
@@ -160,7 +194,7 @@ function resolveAudio(opts = {}) {
   const wantLoose = looseKey(text)
 
   if (!wantExact && !wantLoose) {
-    return result('none', null, `${linkedNote}; slot has no text to match on`)
+    return tag(result('none', null, `${linkedNote}; slot has no text to match on`))
   }
 
   // TIER 2 / 3 — scan once, collect both buckets. Ties broken by
@@ -181,16 +215,16 @@ function resolveAudio(opts = {}) {
   }
 
   if (exactWinner) {
-    return result('preferred-match', exactWinner,
-      `${linkedNote}; matched exact key on ${JSON.stringify(wantExact)}`)
+    return tag(result('preferred-match', exactWinner,
+      `${linkedNote}; matched exact key on ${JSON.stringify(wantExact)}`))
   }
   if (looseWinner) {
-    return result('loose-match', looseWinner,
-      `${linkedNote}; matched loose key on ${JSON.stringify(wantLoose)} (normaliser disagreement tier)`)
+    return tag(result('loose-match', looseWinner,
+      `${linkedNote}; matched loose key on ${JSON.stringify(wantLoose)} (normaliser disagreement tier)`))
   }
 
-  return result('none', null,
-    `${linkedNote}; no live candidate for ${JSON.stringify(wantExact || wantLoose)} — skip this item only`)
+  return tag(result('none', null,
+    `${linkedNote}; no live candidate for ${JSON.stringify(wantExact || wantLoose)} — skip this item only`))
 }
 
 /**

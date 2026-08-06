@@ -181,3 +181,55 @@ describe('resolveAudio — tier 4: none means SKIP THIS ITEM ONLY', () => {
     expect(playable.map(r => r.audioId)).toEqual(['LINK1', 'C3', 'C4'])
   })
 })
+
+// ---------------------------------------------------------------------------
+// Tom's ruling, 2026-08-06: severity is per-ROLE, and the resolver must FIGHT
+// HARDEST for LEGOs — silence there is course-breaking, not cosmetic.
+// ---------------------------------------------------------------------------
+describe('fight hardest for LEGOs', () => {
+  const azureLoose = {
+    id: 'az1', s3_key: 'mastered/az1.mp3', text: 'are you sure',
+    language: 'fra', role: 'target1', origin: 'tts', created_at: '2026-01-01'
+  }
+
+  it('a LEGO target slot takes the loose tier even when the caller forbids it', () => {
+    const r = resolveAudio({
+      linkedRow: null, candidates: [azureLoose], text: 'are you sure?',
+      language: 'fra', role: 'target1', slotKind: 'lego', allowLooseMatch: false
+    })
+    expect(r.tier).toBe('loose-match')
+    expect(r.audioId).toBe('az1')
+  })
+
+  it('a practice phrase still honours link-pass strictness', () => {
+    const r = resolveAudio({
+      linkedRow: null, candidates: [azureLoose], text: 'are you sure?',
+      language: 'fra', role: 'target1', slotKind: 'phrase', allowLooseMatch: false
+    })
+    expect(r.tier).toBe('none')
+  })
+
+  it('an unresolved LEGO voice-2 slot is reported course-breaking', () => {
+    const r = resolveAudio({
+      linkedRow: null, candidates: [], text: 'nothing here',
+      language: 'fra', role: 'target2', slotKind: 'lego'
+    })
+    expect(r.tier).toBe('none')
+    expect(r.severity).toBe('course-breaking')
+  })
+
+  it('an unresolved practice-phrase slot is only minor', () => {
+    const r = resolveAudio({
+      linkedRow: null, candidates: [], text: 'nothing here',
+      language: 'fra', role: 'target1', slotKind: 'phrase'
+    })
+    expect(r.severity).toBe('minor')
+  })
+
+  it('a resolved slot carries no severity — nothing is broken', () => {
+    const live = { id: 'x', s3_key: 'mastered/x.mp3' }
+    const r = resolveAudio({ linkedRow: live, text: 'x', slotKind: 'lego', role: 'target1' })
+    expect(r.tier).toBe('linked')
+    expect(r.severity).toBe('none')
+  })
+})
