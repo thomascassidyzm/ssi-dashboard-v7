@@ -15,10 +15,12 @@ const {
   MODE_KEYS,
   MODE_FALLBACKS,
   DEFAULT_MODE,
-  DEFAULT_PHRASE_LENGTH_PREFERENCE,
+  DEFAULT_MAX_PHRASE_LENGTH_FRACTION,
   resolveScriptShape,
-  resolvePhraseLengthPreference,
-  phraseLengthComparator,
+  resolveMaxPhraseLengthFraction,
+  phraseLengthOf,
+  courseMaxPhraseLength,
+  applyPhraseLengthCap,
 } = require('./learning-modes.cjs')
 
 // The live algorithm_config.script_shape row, read 2026-08-06.
@@ -31,9 +33,9 @@ const GLOBAL_SHAPE = {
 }
 
 // The seeded rows, as created by scripts/learning-modes/create-mode-rows.cjs.
-const FAST_CONFIG = { scriptShape: {}, phraseLengthPreference: 'shortest' }
+const FAST_CONFIG = { scriptShape: {}, maxPhraseLengthFraction: 1.0 }
 const EASY_CONFIG = {
-  phraseLengthPreference: 'longest',
+  maxPhraseLengthFraction: 0.5,
   scriptShape: {
     n1PhraseCount: 6,
     maxBuildPhrases: 14,
@@ -104,40 +106,83 @@ describe('resolveScriptShape — global base, mode override on top', () => {
   })
 })
 
-describe('resolvePhraseLengthPreference', () => {
-  it('reads the mode value', () => {
-    expect(resolvePhraseLengthPreference(EASY_CONFIG)).toBe('longest')
-    expect(resolvePhraseLengthPreference(FAST_CONFIG)).toBe('shortest')
+describe('resolveMaxPhraseLengthFraction', () => {
+  it('reads the mode value — Easy halves, Fast is uncapped', () => {
+    expect(resolveMaxPhraseLengthFraction(EASY_CONFIG)).toBe(0.5)
+    expect(resolveMaxPhraseLengthFraction(FAST_CONFIG)).toBe(1.0)
   })
 
-  it('degrades a missing or bad value to the historic behaviour', () => {
-    // A bad hand-edit should give today's script, not break the round.
-    expect(resolvePhraseLengthPreference({})).toBe(DEFAULT_PHRASE_LENGTH_PREFERENCE)
-    expect(resolvePhraseLengthPreference(undefined)).toBe('shortest')
-    expect(resolvePhraseLengthPreference({ phraseLengthPreference: 'medium' })).toBe('shortest')
+  it('degrades anything missing or invalid to UNCAPPED, never to a cap', () => {
+    // A bad hand-edit must give today's full-length script. Falling back to a
+    // cap would silently shorten every phrase in the course.
+    for (const bad of [undefined, {}, { maxPhraseLengthFraction: 0 },
+                       { maxPhraseLengthFraction: -0.5 }, { maxPhraseLengthFraction: 2 },
+                       { maxPhraseLengthFraction: 'half' }, { maxPhraseLengthFraction: NaN }]) {
+      expect(resolveMaxPhraseLengthFraction(bad)).toBe(DEFAULT_MAX_PHRASE_LENGTH_FRACTION)
+      expect(resolveMaxPhraseLengthFraction(bad)).toBe(1.0)
+    }
   })
 })
 
-describe('phraseLengthComparator — which end survives truncation at the cap', () => {
-  const phrases = [{ s: 9 }, { s: 2 }, { s: 5 }]
-  const syl = p => p.s
-
-  it('shortest-first reproduces the historic sort exactly', () => {
-    const sorted = [...phrases].sort(phraseLengthComparator('shortest', syl))
-    expect(sorted.map(syl)).toEqual([2, 5, 9])
-    // The historic comparator, verbatim, for direct comparison.
-    const historic = [...phrases].sort((a, b) => syl(a) - syl(b))
-    expect(sorted).toEqual(historic)
+describe('phrase length measurement', () => {
+  it('measures target text length, NOT syllables', () => {
+    // course_practice_phrases.target_syllable_count is NULL for every row on
+    // real courses, and the countTargetSyllables fallback is a Latin
+    // vowel-cluster heuristic that returns 1 for all Arabic — a syllable-based
+    // ceiling computed to 0.5 and the cap silently did nothing.
+    expect(phraseLengthOf({ target_text: 'hello there' })).toBe(11)
+    expect(phraseLengthOf({ target_text: 'مرحبا' })).toBe(5)
+    expect(phraseLengthOf({})).toBe(0)
+    expect(phraseLengthOf(undefined)).toBe(0)
   })
 
-  it('longest-first reverses it, so a cap of 2 keeps the long phrases', () => {
-    const sorted = [...phrases].sort(phraseLengthComparator('longest', syl))
-    expect(sorted.map(syl)).toEqual([9, 5, 2])
-    expect(sorted.slice(0, 2).map(syl)).toEqual([9, 5])
+  it('courseMaxPhraseLength spans every list it is given', () => {
+    const build = [{ target_text: 'ab' }, { target_text: 'abcd' }]
+    const use = [{ target_text: 'abcdefgh' }]
+    expect(courseMaxPhraseLength([build, use])).toBe(8)
+    expect(courseMaxPhraseLength([])).toBe(0)
+    expect(courseMaxPhraseLength([null, build])).toBe(4)
+  })
+})
+
+describe('applyPhraseLengthCap — Easy halves the longest possible phrase', () => {
+  const len = p => p.n
+  const pool = [{ n: 2 }, { n: 4 }, { n: 6 }, { n: 8 }, { n: 10 }]
+
+  it('is the identity when uncapped — Fast is untouched', () => {
+    expect(applyPhraseLengthCap(pool, Infinity, len, 3)).toBe(pool)
+    expect(applyPhraseLengthCap(pool, 0, len, 3)).toBe(pool)
   })
 
-  it('an unknown preference falls back to shortest-first', () => {
-    const sorted = [...phrases].sort(phraseLengthComparator('nonsense', syl))
-    expect(sorted.map(syl)).toEqual([2, 5, 9])
+  it('keeps only phrases within the absolute ceiling', () => {
+    expect(applyPhraseLengthCap(pool, 5, len, 1).map(len)).toEqual([2, 4])
+  })
+
+  it('the ceiling is absolute, so the same phrase is judged the same everywhere', () => {
+    // Same limit, a pool whose neighbours are all long: the short one still wins.
+    const longNeighbours = [{ n: 4 }, { n: 40 }, { n: 50 }]
+    expect(applyPhraseLengthCap(longNeighbours, 5, len, 1).map(len)).toEqual([4])
+  })
+
+  it('STARVATION GUARD: never returns fewer than the round needs', () => {
+    // Cap alone leaves 2, the round wants 4 — phrase volume is a hard rail, so
+    // the cap yields and the shortest 4 come back.
+    const out = applyPhraseLengthCap(pool, 5, len, 4)
+    expect(out.map(len)).toEqual([2, 4, 6, 8])
+  })
+
+  it('the guard is why an over-tight cap degrades gracefully instead of emptying a LEGO', () => {
+    const allLong = [{ n: 60 }, { n: 69 }]
+    expect(applyPhraseLengthCap(allLong, 36, len, 4)).toHaveLength(2)
+  })
+
+  it('handles an empty pool without throwing', () => {
+    expect(applyPhraseLengthCap([], 5, len, 3)).toEqual([])
+  })
+
+  it('does not mutate the pool it was handed', () => {
+    const before = JSON.stringify(pool)
+    applyPhraseLengthCap(pool, 5, len, 4)
+    expect(JSON.stringify(pool)).toBe(before)
   })
 })
