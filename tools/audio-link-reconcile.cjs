@@ -74,6 +74,7 @@
  * Usage:
  *   node tools/audio-link-reconcile.cjs <course_code>          # report, whole course
  *   node tools/audio-link-reconcile.cjs --all                  # report, every course
+ *   node tools/audio-link-reconcile.cjs --census               # estate census, ranked
  *   node tools/audio-link-reconcile.cjs <course_code> --json   # machine-readable
  *   node tools/audio-link-reconcile.cjs <course_code> --apply  # heal bucket (b)
  *   node tools/audio-link-reconcile.cjs --all --dry-run        # explicit no-op default
@@ -84,6 +85,8 @@
  *   --include-loose heal loose-key (trailing-?) matches too — OFF by default
  *   --verify-storage  HEAD every candidate object in S3 before promising a free
  *                     link (always on under --apply)
+ *   --census        survey the WHOLE ESTATE: every course ranked by rounds lost,
+ *                   with clean-cut (ara_lb-shaped amputation) detection. Implies --all.
  *   --log <path>    override the log file path
  *
  * Read-only unless --apply. Never generates TTS. Never deletes anything.
@@ -156,7 +159,10 @@ const slotKey = (s) => `${s.table}:${s.role}`
 
 const CONTENT_COLS = {
   course_seeds: 'id, seed_number, seed_id AS ref, known_text, target_text, NULL::text AS lego_id, known_audio_id, target1_audio_id, target2_audio_id, NULL::uuid AS presentation_audio_id, NULL::int AS target1_duration_ms, NULL::int AS target2_duration_ms',
-  course_legos: 'id, seed_number, lego_id AS ref, known_text, target_text, lego_id, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms',
+  // is_new marks a LEGO that opens its own round — the player's round count is
+  // exactly the count of is_new LEGOs (verified: ara_lb 1,546 legos / 1,414
+  // rounds, matching docs/audio/ara-lb-missing-audio-scope-2026-08-06.md).
+  course_legos: 'id, seed_number, lego_id AS ref, known_text, target_text, lego_id, is_new, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms',
   course_practice_phrases: 'id, seed_number, id::text AS ref, known_text, target_text, lego_id, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms',
 }
 
@@ -270,7 +276,7 @@ async function reconcileCourse(client, course) {
             b.skipped++
             if (table === 'course_legos' && LEGO_TRIPLE[slot.role]) {
               let st = legoStates.get(row.id)
-              if (!st) legoStates.set(row.id, st = { ref: row.ref, seed_number: row.seed_number })
+              if (!st) legoStates.set(row.id, st = { ref: row.ref, seed_number: row.seed_number, is_new: row.is_new })
               st[LEGO_TRIPLE[slot.role]] = 'no-text'
             }
             continue
@@ -290,7 +296,7 @@ async function reconcileCourse(client, course) {
         const res = resolveSlot({ currentId, aliveIds, strictCands, looseCands })
         if (table === 'course_legos' && LEGO_TRIPLE[slot.role]) {
           let st = legoStates.get(row.id)
-          if (!st) legoStates.set(row.id, st = { ref: row.ref, seed_number: row.seed_number })
+          if (!st) legoStates.set(row.id, st = { ref: row.ref, seed_number: row.seed_number, is_new: row.is_new })
           st[LEGO_TRIPLE[slot.role]] = res.status
         }
         if (res.status === 'linked') { b.linked++; continue }
@@ -350,7 +356,40 @@ async function reconcileCourse(client, course) {
     }
   }
 
-  return { course_code, known_lang, target_lang, audio_rows: audio.length, buckets, legos, relinkable, dangling: danglingRows }
+  // ── CENSUS: reachable-rounds impact, and the ara_lb amputation shape ──────
+  // A round is opened by an is_new LEGO, so rounds == is_new LEGO count
+  // (ara_lb: 1,546 legos / 1,414 rounds). A LEGO short of its triple is dropped
+  // by the player, so its round ceases to exist for every learner.
+  let rounds = 0, roundsPlayable = 0
+  const perSeed = new Map() // seed_number → { complete, total }
+  for (const st of legoStates.values()) {
+    const ok = legoVerdict(st).verdict === 'complete'
+    if (st.is_new) { rounds++; if (ok) roundsPlayable++ }
+    const s = perSeed.get(st.seed_number) || { complete: 0, total: 0 }
+    s.total++; if (ok) s.complete++
+    perSeed.set(st.seed_number, s)
+  }
+  // Clean cut ("another ara_lb"): audio stops dead at some seed and NOTHING
+  // above it has any complete LEGO — a single amputation, not scattered gaps.
+  const seedNums = [...perSeed.keys()].filter((n) => n != null).sort((a, b) => a - b)
+  const lastComplete = seedNums.filter((n) => perSeed.get(n).complete > 0).pop() ?? null
+  const tail = lastComplete == null ? seedNums : seedNums.filter((n) => n > lastComplete)
+  const cleanCut = lastComplete != null && tail.length >= 20
+    && tail.every((n) => perSeed.get(n).complete === 0)
+  const census = {
+    course_code, seeds: seedNums.length, rounds, rounds_playable: roundsPlayable,
+    rounds_lost: rounds - roundsPlayable,
+    reach_pct: rounds ? Math.round((roundsPlayable / rounds) * 1000) / 10 : null,
+    legos_broken: legos.broken, legos_free: legos.free_strict + legos.free_loose,
+    broken_intro_only: legos.broken_intro_only,
+    clean_cut: cleanCut, cut_after_seed: cleanCut ? lastComplete : null,
+    silent_seeds: cleanCut ? tail.length : tail.filter((n) => perSeed.get(n).complete === 0).length,
+    cycle_gaps: (buckets['course_practice_phrases:known']?.absent || 0)
+      + (buckets['course_practice_phrases:target1']?.absent || 0)
+      + (buckets['course_practice_phrases:target2']?.absent || 0),
+  }
+
+  return { course_code, known_lang, target_lang, audio_rows: audio.length, buckets, legos, census, relinkable, dangling: danglingRows }
 }
 
 // ── the re-link pass ────────────────────────────────────────────────────────
@@ -411,11 +450,53 @@ function printCourse(result) {
   if (t.skipped) console.log(`      ${t.skipped} slots skipped (content text empty)`)
 }
 
+// ── census ──────────────────────────────────────────────────────────────────
+// Tom, 2026-08-06: ara_lb_for_eng was found by following one symptom, and it is
+// alphabetically first — so the estate has never actually been surveyed. This
+// ranks every course by severity, LEGO damage first (course-breaking) and cycle
+// gaps second (cosmetic), and flags the ara_lb shape wherever else it occurs.
+function printCensus(results) {
+  const rows = results.map((r) => r.census)
+    .filter((c) => c.rounds > 0)
+    .sort((a, b) => (b.rounds_lost - a.rounds_lost) || (b.cycle_gaps - a.cycle_gaps))
+  const pad = (s, n) => String(s).padEnd(n)
+  const rp = (s, n) => String(s).padStart(n)
+
+  const cut = rows.filter((c) => c.clean_cut)
+  console.log(`\n\n════ ESTATE CENSUS — ${results.length} courses, ranked by rounds lost ════`)
+  console.log(`\nA round is opened by an is_new LEGO. A LEGO short of intro + voice1 + voice2`)
+  console.log(`is dropped by the player, so its round ceases to exist for every learner.\n`)
+  console.log(`  course                     rounds  playable     lost   reach   intro-only   cycle gaps  cut`)
+  for (const c of rows) {
+    if (!c.rounds_lost && !c.cycle_gaps) continue
+    console.log(`  ${pad(c.course_code, 24)}${rp(c.rounds, 8)}${rp(c.rounds_playable, 10)}${rp(c.rounds_lost, 9)}`
+      + `${rp((c.reach_pct ?? 0) + '%', 8)}${rp(c.broken_intro_only, 13)}${rp(c.cycle_gaps, 13)}`
+      + (c.clean_cut ? `   ← CUT after seed ${c.cut_after_seed} (${c.silent_seeds} silent seeds)` : ''))
+  }
+  const healthy = rows.filter((c) => !c.rounds_lost && !c.cycle_gaps).length
+  console.log(`\n  ${healthy} course(s) fully reachable with no cycle gaps — omitted above.`)
+  console.log(`\n  ANOTHER ara_lb? ${cut.length} course(s) show a CLEAN CUT — audio stops dead at a seed`)
+  console.log(`  and nothing above it has a single complete LEGO:`)
+  for (const c of cut.sort((a, b) => b.rounds_lost - a.rounds_lost)) {
+    console.log(`    ${pad(c.course_code, 22)} cut after seed ${rp(c.cut_after_seed, 4)} of ${rp(c.seeds, 4)}`
+      + `   ${c.rounds_lost}/${c.rounds} rounds unreachable (${(100 - (c.reach_pct ?? 0)).toFixed(1)}%)`)
+  }
+  const totals = rows.reduce((a, c) => ({
+    rounds: a.rounds + c.rounds, lost: a.lost + c.rounds_lost,
+    intro: a.intro + c.broken_intro_only, cycle: a.cycle + c.cycle_gaps,
+  }), { rounds: 0, lost: 0, intro: 0, cycle: 0 })
+  console.log(`\n  ESTATE: ${totals.rounds - totals.lost}/${totals.rounds} rounds reachable`
+    + `  ·  ${totals.lost} lost  ·  ${totals.intro} recoverable by an intro alone`
+    + `  ·  ${totals.cycle} cosmetic cycle gaps`)
+  return { rows, clean_cut: cut, totals }
+}
+
 // ── main ────────────────────────────────────────────────────────────────────
 async function main() {
   const argv = process.argv.slice(2)
   const flag = (f) => argv.includes(f)
-  const ALL = flag('--all')
+  const CENSUS = flag('--census')       // implies --all: survey the whole estate
+  const ALL = flag('--all') || CENSUS
   const JSON_OUT = flag('--json')
   const APPLY = flag('--apply')
   // Loose matches are OPT-IN, and deliberately so. A loose match is a slot whose
@@ -452,7 +533,23 @@ async function main() {
     for (const c of courses) {
       const r = await reconcileCourse(client, c)
       results.push(r)
-      if (!JSON_OUT) printCourse(r)
+      if (!JSON_OUT) {
+        if (CENSUS) console.error(`  … ${results.length}/${courses.length} ${c.course_code}`)
+        else printCourse(r)
+      }
+    }
+
+    let censusOut = null
+    if (CENSUS) {
+      if (!JSON_OUT) censusOut = printCensus(results)
+      const censusPath = path.join(ROOT, 'docs', 'audio', 'audio-census.json')
+      fs.mkdirSync(path.dirname(censusPath), { recursive: true })
+      fs.writeFileSync(censusPath, JSON.stringify({
+        courses: results.length,
+        census: results.map((r) => r.census),
+        legos: results.map((r) => ({ course_code: r.course_code, ...r.legos, broken_refs: undefined })),
+      }, null, 1))
+      if (!JSON_OUT) console.log(`\n  census json: ${censusPath}`)
     }
 
     // LEGOs before cycles, always (Tom 2026-08-06). If a pass ever aborts on
