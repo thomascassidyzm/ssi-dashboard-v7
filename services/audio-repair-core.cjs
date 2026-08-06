@@ -94,37 +94,34 @@ const DETECTOR = {
 }
 
 /**
- * The second detector: tail integrity. `duration-vs-expected` cannot see a soft
- * tail amputation and never could — losing the final consonant of "want" costs
- * ~100 ms on a 1.4 s clip, well inside the 15% the duration check tolerates, and
- * the queue's own chars/14 expectation is coarser still. Tom heard three such
- * clips in deu_for_eng on 2026-08-05 ("I wan'" for "I want"); all three sit at
- * duration ratios the duration check calls healthy.
+ * The second detector: TAIL TRUNCATION, via the audio-intelligence engine's tier 2.
  *
- * What it measures instead is the SHAPE of the ending. A clip that was cut ends
- * at full speech level and is taken to silence by the mastering chain's 8 ms
- * anti-click fade; a clip that was allowed to finish decays over the natural
- * release of its final phoneme. So: the time from the last frame above
- * peak−10 dB to the first frame at or below peak−50 dB.
+ * `duration-vs-expected` cannot see a soft tail amputation and never could — losing
+ * the final consonant of "want" costs ~100 ms on a 1.4 s clip, well inside the 15%
+ * the duration check tolerates, and the queue's own chars/14 expectation is coarser
+ * still. Tom heard such clips in deu_for_eng on 2026-08-05 ("I wan'" for "I want");
+ * all of them sit at duration ratios the duration check calls healthy.
  *
- * Prior measurement on this estate (docs/audio-tail-gate-decision-memo-2026-08-04.md,
- * 104 blind-judged clips) put that release at a median of 30 ms for clips heard
- * as cut off against 80 ms for clips heard as natural, p = 0.0037. The threshold
- * here is that measured boundary, not a guess.
+ * ⚠️ THIS REPLACED AN EARLIER TAIL CHECK IN THIS FILE, and the replacement is the
+ * whole point rather than a tidy-up. That check measured release time from the global
+ * peak at 5 ms resolution and reported 40-65 ms for clips whose fall actually takes
+ * 21-36 ms. It scored CLEAN on the clips Tom confirmed damaged by ear on 2026-08-06,
+ * playing them outside the app. Two detectors that disagree about the same clip is
+ * how this estate spent a week unsure which of its own gates to believe, so there is
+ * now exactly one tail measurement and it lives in the engine:
  *
- * `speechRateCps` is carried as a SECOND, corroborating leg — chars of text per
- * second of speech, flagged when well above the role's own median. The same memo
- * measured steep-and-fast together at 79% precision / 68% recall. It is kept
- * separate rather than required, because rate is a whole-clip average and goes
- * blind on long clips: the S0001L04 introduction lost its final word "is" and
- * still reads as a normal speaking rate across 3.9 s.
+ *     services/audio-intelligence/tiers/tier2-edge-shape.cjs
+ *
+ * Read that file's header for what it measures, what it is calibrated on, and the
+ * four ear-confirmed-clean clips it flags that cannot be excluded. The short version:
+ * recall 16/16 against every clip Tom has ever labelled damaged, 0 false flags on 316
+ * clips that are clean or presumed clean, and 80% precision on the listened set. It
+ * detects that a clip was TRIMMED; on the labelled set 4 in 20 were trimmed
+ * harmlessly. That makes it triage — it orders clips for repair or for a human ear,
+ * and like everything else in this file it never passes or deletes audio.
  */
-const TAIL_DETECTOR = {
-  name: 'tail-integrity',
-  precision: null,
-  precisionNote:
-    'Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.',
-}
+const tier2 = require('./audio-intelligence/tiers/tier2-edge-shape.cjs')
+const TAIL_DETECTOR = tier2.DETECTOR
 
 class RepairError extends Error {
   constructor (message, code = 'repair_failed', status = 400) {
@@ -144,87 +141,32 @@ function decodeVoiceId (storedVoiceId) {
   return { provider: 'xai', voiceId: raw }
 }
 
-/** Defaults for the tail-integrity check, each one a measured boundary. */
-const TAIL_THRESHOLDS = {
-  frameMs: 5,
-  onsetDb: -10,        // relative to the clip's own peak: "still at speech level"
-  offsetDb: -50,       // relative to the clip's own peak: "gone"
-  silenceFloorDb: -70, // a clip peaking below this has no speech to measure
-  steepReleaseMs: 30,  // measured median for clips heard as cut off
-  fastRateFactor: 1.2, // chars/sec this far above the role median = suspiciously fast
-}
-
 /**
- * Where the speech stops and how fast it gets there, from a frame-RMS envelope
- * in dBFS. Pure: takes numbers, returns numbers, so the tests need no audio.
+ * The tail verdict for one clip, delegated to the engine's tier 2.
  *
- * @param {number[]} frameDb   per-frame RMS in dBFS, oldest first
- * @param {object} [opts]      overrides for TAIL_THRESHOLDS
- * @returns {{peakDb:number, releaseMs:number, speechEndMs:number, durMs:number,
- *            trailingMs:number}|null}  null when the clip has no audible content
- */
-function tailShape (frameDb, opts = {}) {
-  const { frameMs, onsetDb, offsetDb, silenceFloorDb } = { ...TAIL_THRESHOLDS, ...opts }
-  if (!Array.isArray(frameDb) || frameDb.length === 0) return null
-  const peakDb = Math.max(...frameDb)
-  // A silent clip has no tail to judge. It is a real defect, but it is the
-  // silence check's defect — saying nothing here beats inventing a verdict.
-  if (!Number.isFinite(peakDb) || peakDb < silenceFloorDb) return null
-  const hi = peakDb + onsetDb
-  const lo = peakDb + offsetDb
-
-  let lastHi = -1
-  for (let i = frameDb.length - 1; i >= 0; i--) { if (frameDb[i] > hi) { lastHi = i; break } }
-  if (lastHi < 0) return null
-
-  let firstLo = frameDb.length - 1
-  for (let i = lastHi; i < frameDb.length; i++) { if (frameDb[i] <= lo) { firstLo = i; break } }
-
-  return {
-    peakDb: Number(peakDb.toFixed(1)),
-    releaseMs: (firstLo - lastHi) * frameMs,
-    speechEndMs: (lastHi + 1) * frameMs,
-    durMs: frameDb.length * frameMs,
-    trailingMs: (frameDb.length - 1 - firstLo) * frameMs,
-  }
-}
-
-/**
- * The tail-integrity verdict for one clip. Steepness alone flags; a fast
- * speaking rate is carried alongside as corroboration, never as a requirement
- * (see TAIL_DETECTOR for why rate goes blind on long clips).
+ * The measurement deliberately does NOT live here. It takes 1 ms frames and a count of
+ * exact-zero samples in the trailing pad, neither of which survives being handed around
+ * as a 5 ms dB envelope — which is precisely how the superseded check lost the falls it
+ * was supposed to see. So the core asks for samples and passes them straight through.
  *
- * @param {number[]} frameDb
+ * @param {Int16Array} samples  mono PCM at tier2.SAMPLE_RATE
  * @param {object} [ctx]
- * @param {number} [ctx.textChars]     characters of the clip's own text
- * @param {number} [ctx.baselineCps]   median chars/sec for this role, if known
- * @param {object} [ctx.thresholds]
+ * @param {string} [ctx.text]        the clip's own script, carried into the reason only
+ * @param {object} [ctx.thresholds]  overrides; changing one needs the ground-truth rerun
+ *                                   (tools/verify-edge-shape-ground-truth.cjs)
  */
-function tailVerdict (frameDb, ctx = {}) {
-  const T = { ...TAIL_THRESHOLDS, ...(ctx.thresholds || {}) }
-  const shape = tailShape(frameDb, T)
-  if (!shape) {
-    return { flagged: null, score: null, reason: 'no audible content to measure a tail on', shape: null }
-  }
-  const cps = shape.speechEndMs
-    ? Number(((ctx.textChars || 0) / (shape.speechEndMs / 1000)).toFixed(1))
-    : null
-  const fast = !!(cps && ctx.baselineCps && cps >= T.fastRateFactor * ctx.baselineCps)
-  const steep = shape.releaseMs <= T.steepReleaseMs
-
-  const reason = steep
-    ? `ends abruptly — ${shape.releaseMs}ms from full speech level to silence (natural endings measure ~80ms)${fast ? `; and speaks ${cps} chars/sec against a ${ctx.baselineCps} baseline` : ''}`
-    : `tail decays over ${shape.releaseMs}ms — the shape of a clip allowed to finish`
-
+function tailVerdict (samples, ctx = {}) {
+  const T = ctx.thresholds || {}
+  const m = tier2.measure(samples, T)
+  const v = tier2.verdict(m, T)
   return {
-    flagged: steep,
-    // Lower sorts worse. A corroborated flag sorts ahead of a bare one.
-    score: Number((shape.releaseMs - (fast ? 5 : 0)).toFixed(3)),
-    reason,
-    steep,
-    fast,
-    speechRateCps: cps,
-    shape,
+    flagged: v.flagged,
+    score: v.score,
+    reason: v.reason,
+    category: v.category,
+    steep: v.steep,
+    padded: v.padded,
+    shape: m.error ? null : m,
   }
 }
 
@@ -963,21 +905,20 @@ function createRepairCore (deps) {
     })
 
     // The tail check needs the bytes, so it is opt-in: one S3 GET and one
-    // decode per clip. Everything is measured first, because the "fast" leg is
-    // relative to the role's own median speaking rate and that is not knowable
-    // until the whole set has been measured.
+    // decode per clip. Each clip is measured and judged in the same pass and
+    // only the verdict is kept — a 50,000-clip course cannot hold 50,000
+    // envelopes in memory, and the verdict needs no cross-clip context.
     let tailFailures = 0
+    const tailByVoice = new Map()
     if (tails) {
-      if (!verify || typeof verify.frameDb !== 'function') {
-        throw new RepairError('tail check needs a verify.frameDb dependency', 'no_tail_support', 500)
+      if (!verify || typeof verify.pcm !== 'function') {
+        throw new RepairError('tail check needs a verify.pcm dependency', 'no_tail_support', 500)
       }
       const byId = new Map(scored.map(s => [s.audioId, s]))
-      const envelopes = new Map()
       // Concurrent, because this is one S3 GET plus one ffmpeg decode per clip
       // and the courses in scope are ~50,000 clips each. Serially that is a
       // day and a half per course; the work is entirely IO- and subprocess-bound
-      // so a small pool turns it into hours. Ordering does not matter here —
-      // every envelope is keyed by id and the verdict pass runs afterwards.
+      // so a small pool turns it into hours.
       let next = 0
       let done = 0
       const worker = async () => {
@@ -985,11 +926,19 @@ function createRepairCore (deps) {
           const i = next++
           if (i >= rendered.length) return
           const r = rendered[i]
+          const voice = r.voice_id || 'unknown'
+          if (!tailByVoice.has(voice)) tailByVoice.set(voice, { measured: 0, flagged: 0, failed: 0 })
+          const bucket = tailByVoice.get(voice)
           try {
             const { buffer } = await storage.get(r.s3_key)
-            envelopes.set(r.id, await verify.frameDb(buffer))
+            const v = tailVerdict(await verify.pcm(buffer), { text: r.text })
+            const item = byId.get(r.id)
+            if (item) item.tail = v
+            bucket.measured++
+            if (v.flagged) bucket.flagged++
           } catch (err) {
             tailFailures++
+            bucket.failed++
             logger.warn?.(`[repair] tail measure failed for ${r.id}: ${err.message}`)
           }
           if (onProgress && ++done % 250 === 0) onProgress(done, rendered.length)
@@ -997,38 +946,14 @@ function createRepairCore (deps) {
       }
       await Promise.all(Array.from(
         { length: Math.max(1, Math.min(tailConcurrency, rendered.length)) }, worker))
-      // Median chars/sec per role, from this run's own measurements. Pass 1
-      // measures with no baseline; pass 2 re-runs the verdict with it.
-      const rateByRole = new Map()
-      for (const r of rendered) {
-        const env = envelopes.get(r.id)
-        if (!env) continue
-        const v = tailVerdict(env, { textChars: String(r.text || '').length })
-        if (!v.speechRateCps) continue
-        if (!rateByRole.has(r.role)) rateByRole.set(r.role, [])
-        rateByRole.get(r.role).push(v.speechRateCps)
-      }
-      const medians = new Map([...rateByRole].map(([roleName, xs]) => {
-        const s = [...xs].sort((a, b) => a - b)
-        return [roleName, s[Math.floor(s.length / 2)]]
-      }))
-      for (const r of rendered) {
-        const item = byId.get(r.id)
-        const env = envelopes.get(r.id)
-        if (!item || !env) continue
-        item.tail = tailVerdict(env, {
-          textChars: String(r.text || '').length,
-          baselineCps: medians.get(r.role) || null,
-        })
-      }
     }
 
     const kept = scored.filter(x =>
       x.detector.flagged || x.pendingCandidateId || (x.tail && x.tail.flagged))
 
     // Tail-flagged clips sort by their own (smaller = worse) score; the
-    // duration detector's ratio and the tail's milliseconds are different
-    // units, so they are never mixed into one number.
+    // duration detector's ratio and the tail's fall rate are different units,
+    // so they are never mixed into one number.
     kept.sort((a, b) => {
       const at = a.tail && a.tail.flagged, bt = b.tail && b.tail.flagged
       if (at && bt) return a.tail.score - b.tail.score
@@ -1045,6 +970,16 @@ function createRepairCore (deps) {
       flaggedByTail: kept.filter(x => x.tail && x.tail.flagged).length,
       measured: tails ? rendered.length - tailFailures : 0,
       tailMeasureFailures: tailFailures,
+      // The flag rate PER VOICE, because that is the first thing to read out of
+      // any sweep that leaves the course this detector was calibrated on. A voice
+      // whose renders naturally fall steeply lights up wholesale, and that is a
+      // calibration finding rather than ten thousand damaged clips. Reported
+      // whether or not it looks alarming, so nobody has to ask for it.
+      tailByVoice: tails
+        ? Object.fromEntries([...tailByVoice].map(([v, b]) => [v, {
+            ...b, flagRate: b.measured ? Number((b.flagged / b.measured).toFixed(4)) : null,
+          }]))
+        : null,
       // Named, not silently dropped: a queue that quietly excluded rows would
       // read as "nothing else to look at" when there is.
       excludedUnrendered: includeUnrendered ? 0 : unrendered.length,
@@ -1114,8 +1049,6 @@ module.exports = {
   RepairError,
   DETECTOR,
   TAIL_DETECTOR,
-  TAIL_THRESHOLDS,
-  tailShape,
   tailVerdict,
   DURATION_HOLDERS,
   UPLOAD_EXTENSIONS,

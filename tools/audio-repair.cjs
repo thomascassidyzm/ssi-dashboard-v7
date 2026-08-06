@@ -135,11 +135,18 @@ async function cmdQueue () {
     console.log(`detector: ${out.tailDetector.name}`)
     console.log(`  ${out.tailDetector.precisionNote}`)
     console.log(`  measured ${out.measured} clip(s); ${out.tailMeasureFailures} could not be measured`)
+    // The per-voice flag rate is printed unasked, because it is the first thing that
+    // says whether a number is damage or a calibration miss on a voice nobody measured.
+    for (const [voice, b] of Object.entries(out.tailByVoice || {})) {
+      console.log(`  ${voice.padEnd(22)} ${String(b.flagged).padStart(6)} / ${String(b.measured).padEnd(6)} flagged` +
+        ` (${b.measured ? (100 * b.flagged / b.measured).toFixed(1) : '—'}%)${b.failed ? `, ${b.failed} unmeasured` : ''}`)
+    }
   }
   console.log(`\n${out.total} clip(s) worth a human's ears (${out.flaggedByDuration} by duration, ${out.flaggedByTail} by tail); showing ${out.items.length}, worst first.\n`)
   for (const it of out.items) {
     const why = it.tail && it.tail.flagged ? it.tail.reason : it.detector.reason
-    const score = it.tail && it.tail.flagged ? `${it.tail.shape.releaseMs}ms` : String(it.detector.score)
+    const score = it.tail && it.tail.flagged
+      ? `${it.tail.shape.fallRate}dB/ms` : String(it.detector.score)
     console.log(`  ${score.padStart(7)}  ${String(it.role).padEnd(13)} ${String(it.durationMs ?? '?').padStart(6)}ms  ${JSON.stringify(String(it.text || '')).slice(0, 54)}`)
     console.log(`           ${it.audioId}  rev ${it.revision}${why ? `  — ${why}` : ''}`)
   }

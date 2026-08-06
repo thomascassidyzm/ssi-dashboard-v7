@@ -37,28 +37,21 @@
  */
 const fs=require('fs'),os=require('os'),path=require('path'),{execFileSync}=require('child_process');
 
-const SR=16000;
-const DEFAULTS={
-  fallRateDbPerMs: 0.70,   // steeper than this = a cut, not a decay
-  zeroPadPct: 80,          // at least this much of the trailing silence is exact zeros
-  topDb: 12,               // fall measured from (peak - topDb) ...
-  floorDb: 40,             // ... down to (peak - floorDb) = "speech end"
-  localWindowMs: 200,
-};
+// The measurement itself lives in the audio-intelligence engine, not here. This file is the
+// CLI over it. Two implementations of one calibrated threshold is how the estate ended up
+// with checkers that disagreed on clips Tom could hear were damaged.
+const tier2=require('../services/audio-intelligence/tiers/tier2-edge-shape.cjs');
+
+const SR=tier2.SAMPLE_RATE;
+const DEFAULTS=tier2.THRESHOLDS;
+const DETECTOR=tier2.DETECTOR;
 
 function decodePcm(file){
   const buf=execFileSync('ffmpeg',['-v','quiet','-i',file,'-ac','1','-ar',String(SR),'-f','s16le','-'],
     {maxBuffer:1<<28});
   return new Int16Array(buf.buffer,buf.byteOffset,Math.floor(buf.length/2));
 }
-function envelopeDb(x,frameMs=1){
-  const F=Math.round(SR*frameMs/1000),out=[];
-  for(let i=0;i+F<=x.length;i+=F){
-    let s=0; for(let j=0;j<F;j++){const v=x[i+j]/32768;s+=v*v;}
-    out.push(10*Math.log10(s/F+1e-12));
-  }
-  return out;
-}
+const envelopeDb=tier2.envelopeDb;
 
 const VOWELS={eng:/[aeiouy]+/g, deu:/[aeiouyäöü]+/g, fra:/[aeiouyàâéèêëîïôùûü]+/g,
   spa:/[aeiouyáéíóúü]+/g, ita:/[aeiouyàèéìòù]+/g, cym:/[aeiouwyâêîôûŵŷ]+/g};
@@ -70,54 +63,27 @@ function scriptShape(text,lang){
 }
 
 /** Measure one clip. `text`/`lang` are optional and only feed the secondary rate signal. */
-function measure(file,{text,lang}={}){
-  const x=decodePcm(file);
-  const env=envelopeDb(x);
-  if(!env.length) return {error:'clip too short to measure'};
-  const peak=Math.max(...env);
-  const speechFloor=peak-DEFAULTS.floorDb;
-  let first=-1,last=-1;
-  for(let i=0;i<env.length;i++) if(env[i]>speechFloor){ if(first<0)first=i; last=i; }
-  if(first<0) return {error:'no speech above the floor', silent:true};
-
-  let top=last;
-  for(let i=last;i>=0;i--) if(env[i]>=peak-DEFAULTS.topDb){ top=i; break; }
-  const fallMs=last-top;
-  const fallRate=+((env[top]-env[last])/(fallMs||1)).toFixed(3);
-
-  const tailStart=(last+1)*(SR/1000);
-  let zeros=0,cnt=0,sq=0;
-  for(let i=tailStart;i<x.length;i++){ if(x[i]===0)zeros++; sq+=(x[i]/32768)**2; cnt++; }
-  const zeroPadPct=cnt?+(100*zeros/cnt).toFixed(1):0;
-
-  const speechMs=last+1-first;
-  const m={durMs:Math.round(x.length/SR*1000), speechStartMs:first, speechEndMs:last+1, speechMs,
-    peakDb:+peak.toFixed(1), fallMs, fallRate, zeroPadPct,
-    trailingMs:Math.round(cnt/SR*1000)};
+function measure(file,{text,lang,...thresholds}={}){
+  const m=tier2.measure(decodePcm(file),thresholds);
+  if(m.error) return m;
   if(text){ const s=scriptShape(text,lang);
     m.sylls=s.sylls; m.words=s.words;
-    m.syllablesPerSec=+(s.sylls/(speechMs/1000)).toFixed(2);
-    m.charsPerSec=+(s.chars/(speechMs/1000)).toFixed(2);
+    m.syllablesPerSec=+(s.sylls/(m.speechMs/1000)).toFixed(2);
+    m.charsPerSec=+(s.chars/(m.speechMs/1000)).toFixed(2);
   }
   return m;
 }
 
-/** Verdict for one clip. Returns {damaged, reason, measurements}. Never writes. */
+/**
+ * Verdict for one clip. Returns {damaged, reason, measurements}. Never writes.
+ * `damaged` is three-valued: true, false, or null when the clip could not be measured —
+ * an unmeasurable clip is never silently a pass.
+ */
 function check(file,opts={}){
   const cfg={...DEFAULTS,...(opts.thresholds||{})};
-  const m=measure(file,opts);
-  if(m.error) return {damaged:null, reason:m.error, measurements:m};
-  const steep=m.fallRate>=cfg.fallRateDbPerMs;
-  const padded=m.zeroPadPct>=cfg.zeroPadPct;
-  const damaged=steep&&padded;
-  const reason = damaged
-    ? `the last ${(m.fallRate*m.fallMs).toFixed(0)} dB of this clip fall in ${m.fallMs} ms `+
-      `(${m.fallRate} dB/ms; a render allowed to finish measures under ${cfg.fallRateDbPerMs}), `+
-      `and ${m.zeroPadPct}% of the silence after it is exact digital zero — the shape of a trim, not an ending`
-    : steep ? `falls steeply (${m.fallRate} dB/ms) but the trailing silence is only ${m.zeroPadPct}% digital zero — not the trim signature`
-    : padded ? `trailing silence is ${m.zeroPadPct}% digital zero but the fall takes ${m.fallMs} ms (${m.fallRate} dB/ms) — the shape of a clip allowed to finish`
-    : `falls over ${m.fallMs} ms (${m.fallRate} dB/ms) into a live noise floor — the shape of a clip allowed to finish`;
-  return {damaged, reason, measurements:m, thresholds:cfg};
+  const m=measure(file,{...opts,...cfg});
+  const v=tier2.verdict(m,cfg);
+  return {damaged:v.flagged, reason:v.reason, category:v.category, measurements:m, thresholds:cfg};
 }
 
 async function fetchToTemp(url){
@@ -130,7 +96,7 @@ async function fetchToTemp(url){
   });
   return dst;
 }
-module.exports={check,measure,scriptShape,DEFAULTS,fetchToTemp};
+module.exports={check,measure,scriptShape,DEFAULTS,DETECTOR,decodePcm,fetchToTemp};
 
 if(require.main===module){
   (async()=>{
