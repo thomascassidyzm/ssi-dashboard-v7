@@ -180,6 +180,10 @@ new fallback resolver.
   `services/phases/phase8-audio-v13.cjs` (3 remaining), `services/voice-engine/pods-registration.cjs`,
   `tools/breakdown-flat.cjs`. `services/production-api.cjs` already carries a hand-rolled
   stripped-text fallback at lines 4292–4326 — someone hit this before and patched one site locally.
-- **`services/shared/clone-copy-match.cjs`** reimplements the tiebreak in a comment that claims to
+- **`services/shared/clone-copy-match.cjs`** reimplements the tiebreak in a comment claiming to
   mirror `pickPreferredAudioRow`, but **omits the human > TTS rule** — it orders on newest-then-id
-  only. A cross-course copy could therefore prefer a newer TTS row over a human recording.
+  only. The cause is upstream: `SELECT_COLS` in `clone-copy-index.cjs` does not fetch `origin` at
+  all, so the rule *cannot* be applied there. A cross-course copy can therefore prefer a newer TTS
+  row over a human recording. Left unchanged deliberately: fixing it changes **which voice gets
+  copied between courses**, which is a content/voice call, not a tooling one — flagged for Kai
+  rather than decided here.
