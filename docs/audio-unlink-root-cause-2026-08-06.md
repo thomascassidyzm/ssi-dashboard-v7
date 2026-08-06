@@ -207,20 +207,60 @@ timestamp per course, stepping forward every 10–20 seconds:
 | sbx_for_eng | 02:36:11.220 | 473 (100%) |
 | tel_for_eng | 02:36:17.382 | 12,562 (100%) |
 
-These were **not** cold courses: `course_audio` already existed for every one of them before
-2026-07-11 (`mar_for_eng` audio spans straight through the event; `gla_for_eng`, `bre_for_fra`,
-`por_for_jpn` back to March–May). So they had working linked audio, and in a 2m16s window every
-content row was rewritten with every audio-link column blanked. The signature is one script looping a
-fixed course list, one bulk `UPDATE … SET *_audio_id = NULL` per course.
+`course_audio` rows did already exist for eight of the nine before 2026-07-11, and in a 2m16s window
+every content row was rewritten with every audio-link column blanked. The signature is one script
+looping a fixed course list, one bulk `UPDATE … SET *_audio_id = NULL` per course.
 
-**~90,000 rows — roughly triple the documented 2026-08-03 Azure purge (31,310) — and the script that
-did it has not been identified.** It is not the Azure purge, nor the 2026-03-11 or 2026-05-23
-windows. A second unexplained event sits on the dangling-pointer column: 2026-06-02 blew out 9,667
-`presentation_audio_id` pointers in a single day, 55% of the 17,480 total, also untraced.
+> **Severity correction — checked directly, 2026-08-06, and it matters.** "They had working audio
+> before the event" is true of the row counts but **materially misleading**, and it should not be
+> repeated. Broken down by role, **not one of the nine courses has a single `target1`, `target2` or
+> `presentation` clip** — the audio they hold is `known` (the English prompt) plus scaffolding
+> (`welcome`/`instruction`/`encouragement`). `gla_for_eng`: 1,868 known, 0 target1, 0 target2, 0
+> presentation, against 536 LEGOs. `ita_for_cym` has no audio at all.
+>
+> Since a LEGO needs intro + voice 1 + voice 2, these courses could never have played a single round,
+> before or after the event. The estate census agrees independently: all nine sit at **0 playable
+> rounds, 0% reach**. They are **unbuilt, not broken** — target-side TTS has never been run for them.
+>
+> This does not dissolve the event: something still blanked every link across three tables in nine
+> courses in one pass, and that mechanism is unidentified and could equally hit a live course. But it
+> is **not** "nine working courses went dark", and it is not "bigger than the Azure purge" in
+> learner-facing damage — the Azure purge silenced a course learners were actually using.
+
+**~90,000 rows touched, and the script that did it has not been identified.** It is not the Azure
+purge, nor the 2026-03-11 or 2026-05-23 windows. Read the row count as *blast radius of an unknown
+mechanism*, not as damage — per the correction above, the damage to learners was nil because these
+courses had no target audio to lose. A second unexplained event sits on the dangling-pointer column:
+2026-06-02 blew out 9,667 `presentation_audio_id` pointers in a single day, 55% of the 17,480 total,
+also untraced.
 
 Note what this means for the fixes above: the write-path repair stops *future* text-edit unlinking,
 but it cannot stop a script that issues a direct bulk `UPDATE`. Nothing in the estate currently
 alarms when a course's link count collapses.
+
+## The actionable find — ara_lb's amputation has a twin
+
+The estate census (`tools/audio-link-reconcile.cjs --census`, 143 courses ranked by *rounds lost*
+rather than slot counts) found `ara_eg_for_eng` carrying the **exact ara_lb signature**: audio stops
+dead after seed 300, 368 silent seeds above it, nothing complete beyond the cut.
+
+| course | rounds | playable | lost | reach | blocked on intro only |
+|---|---|---|---|---|---|
+| ara_lb_for_eng | 1,414 | 638 | 776 | 45.1% | 178 |
+| **ara_eg_for_eng** | 1,334 | 683 | **651** | **51.2%** | **45** |
+
+Egyptian Arabic is missing **half its course** for every learner, by the same mechanism as Lebanese,
+and it has not been fixed. Forensics independently flags it as the estate's highest free-recovery
+count (526 slots) — the same regional-suffix trap, where the course code says `ara_eg` but
+`courses.target_lang` says `ara`, so any script deriving language from the code finds nothing and
+reports healthy.
+
+The census also surfaces the cheapest repair unit in the estate: LEGOs **blocked only on a missing
+intro**, where both voices are already rendered and one clip buys back a whole round —
+`deu_for_eng` 174, `fra_for_eng` 124, `jpn_for_eng` 93, `zho_for_eng` 86.
+
+Everything above the line here is a **content/generation** call, so it goes to Kai, not into this
+job's scope. What belongs to Popty is that the detector now exists and runs whole-course.
 
 ## Still open
 
