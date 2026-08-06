@@ -1,0 +1,743 @@
+{
+  "known_language": "fra",
+  "known_language_display": "French",
+  "template": "Bienvenue dans ce jeu inhabituel qui va t'aider à devenir {a_target_speaker}. Voici comment ça fonctionne : je t'apprends quelque chose {in_target}, puis je dis quelque chose {in_known} et je te donne l'occasion de le dire à voix haute {in_target}. Ensuite, écoute attentivement les {target_speakers} qui te serviront de modèles. C'est important que tu dises quelque chose dans les pauses, parce que c'est comme ça qu'on apprend. Même si tu n'es pas sûr, essaie de dire ce que tu peux, et tu commenceras à parler {in_target} plus tôt que tu ne le penses. Plus tu considères ça comme un jeu, plus tu t'amuses avec, plus tu ris de tes erreurs, mieux ça ira et plus vite tu apprendras. Alors, commençons à jouer.",
+  "in_known": "en français",
+  "targets": {
+    "afb": {
+      "in_target": "en arabe du Golfe",
+      "a_target_speaker": "locuteur d'arabe du Golfe",
+      "target_speakers": "locuteurs d'arabe du Golfe"
+    },
+    "afr": {
+      "in_target": "en afrikaans",
+      "a_target_speaker": "locuteur d'afrikaans",
+      "target_speakers": "locuteurs d'afrikaans"
+    },
+    "aii": {
+      "in_target": "en soureth",
+      "a_target_speaker": "locuteur de soureth",
+      "target_speakers": "locuteurs de soureth"
+    },
+    "ain": {
+      "in_target": "en aïnou",
+      "a_target_speaker": "locuteur d'aïnou",
+      "target_speakers": "locuteurs d'aïnou"
+    },
+    "ajp": {
+      "in_target": "en arabe palestinien",
+      "a_target_speaker": "locuteur d'arabe palestinien",
+      "target_speakers": "locuteurs d'arabe palestinien"
+    },
+    "amh": {
+      "in_target": "en amharique",
+      "a_target_speaker": "locuteur d'amharique",
+      "target_speakers": "locuteurs d'amharique"
+    },
+    "apc": {
+      "in_target": "en arabe levantin",
+      "a_target_speaker": "locuteur d'arabe levantin",
+      "target_speakers": "locuteurs d'arabe levantin"
+    },
+    "ara": {
+      "in_target": "en arabe",
+      "a_target_speaker": "locuteur d'arabe standard moderne",
+      "target_speakers": "locuteurs arabes"
+    },
+    "arg": {
+      "in_target": "en aragonais",
+      "a_target_speaker": "locuteur d’aragonais",
+      "target_speakers": "locuteurs aragonais"
+    },
+    "ary": {
+      "in_target": "en arabe marocain",
+      "a_target_speaker": "locuteur d'arabe marocain",
+      "target_speakers": "locuteurs d'arabe marocain"
+    },
+    "asm": {
+      "in_target": "en assamais",
+      "a_target_speaker": "locuteur d'assamais",
+      "target_speakers": "locuteurs assamais"
+    },
+    "ast": {
+      "in_target": "en asturien",
+      "a_target_speaker": "locuteur d’asturien",
+      "target_speakers": "locuteurs asturiens"
+    },
+    "aze": {
+      "in_target": "en azerbaïdjanais",
+      "a_target_speaker": "locuteur d'azerbaïdjanais",
+      "target_speakers": "locuteurs azerbaïdjanais"
+    },
+    "bar": {
+      "in_target": "en bavarois",
+      "a_target_speaker": "locuteur de bavarois",
+      "target_speakers": "locuteurs bavarois"
+    },
+    "bel": {
+      "in_target": "en biélorusse",
+      "a_target_speaker": "locuteur de biélorusse",
+      "target_speakers": "locuteurs biélorusses"
+    },
+    "ben": {
+      "in_target": "en bengali",
+      "a_target_speaker": "locuteur de bengali",
+      "target_speakers": "locuteurs bengalis"
+    },
+    "bos": {
+      "in_target": "en bosniaque",
+      "a_target_speaker": "locuteur de bosniaque",
+      "target_speakers": "locuteurs bosniaques"
+    },
+    "bre": {
+      "in_target": "en breton",
+      "a_target_speaker": "locuteur de breton",
+      "target_speakers": "locuteurs bretons"
+    },
+    "bul": {
+      "in_target": "en bulgare",
+      "a_target_speaker": "locuteur de bulgare",
+      "target_speakers": "locuteurs bulgares"
+    },
+    "cat": {
+      "in_target": "en catalan",
+      "a_target_speaker": "locuteur de catalan",
+      "target_speakers": "locuteurs catalans"
+    },
+    "ceb": {
+      "in_target": "en cebuano",
+      "a_target_speaker": "locuteur de cebuano",
+      "target_speakers": "locuteurs de cebuano"
+    },
+    "ces": {
+      "in_target": "en tchèque",
+      "a_target_speaker": "locuteur de tchèque",
+      "target_speakers": "locuteurs tchèques"
+    },
+    "chr": {
+      "in_target": "en cherokee",
+      "a_target_speaker": "locuteur de cherokee",
+      "target_speakers": "locuteurs de cherokee"
+    },
+    "cmn": {
+      "in_target": "en chinois",
+      "a_target_speaker": "locuteur de chinois",
+      "target_speakers": "locuteurs chinois"
+    },
+    "cor": {
+      "in_target": "en cornique",
+      "a_target_speaker": "locuteur de cornique",
+      "target_speakers": "locuteurs de cornique"
+    },
+    "cos": {
+      "in_target": "en corse",
+      "a_target_speaker": "locuteur de corse",
+      "target_speakers": "locuteurs corses"
+    },
+    "csb": {
+      "in_target": "en cachoube",
+      "a_target_speaker": "locuteur de cachoube",
+      "target_speakers": "locuteurs de cachoube"
+    },
+    "cym": {
+      "in_target": "en gallois",
+      "a_target_speaker": "locuteur de gallois",
+      "target_speakers": "locuteurs gallois"
+    },
+    "dan": {
+      "in_target": "en danois",
+      "a_target_speaker": "locuteur de danois",
+      "target_speakers": "locuteurs danois"
+    },
+    "deu": {
+      "in_target": "en allemand",
+      "a_target_speaker": "locuteur d'allemand",
+      "target_speakers": "locuteurs allemands"
+    },
+    "deu_AT": {
+      "in_target": "en allemand",
+      "a_target_speaker": "locuteur d'allemand autrichien",
+      "target_speakers": "locuteurs allemands"
+    },
+    "dsb": {
+      "in_target": "en bas-sorabe",
+      "a_target_speaker": "locuteur de bas-sorabe",
+      "target_speakers": "locuteurs de bas-sorabe"
+    },
+    "ell": {
+      "in_target": "en grec",
+      "a_target_speaker": "locuteur de grec",
+      "target_speakers": "locuteurs grecs"
+    },
+    "eng": {
+      "in_target": "en anglais",
+      "a_target_speaker": "locuteur d'anglais",
+      "target_speakers": "locuteurs anglais"
+    },
+    "est": {
+      "in_target": "en estonien",
+      "a_target_speaker": "locuteur d'estonien",
+      "target_speakers": "locuteurs estoniens"
+    },
+    "eus": {
+      "in_target": "en basque",
+      "a_target_speaker": "locuteur de basque",
+      "target_speakers": "locuteurs basques"
+    },
+    "fao": {
+      "in_target": "en féroïen",
+      "a_target_speaker": "locuteur de féroïen",
+      "target_speakers": "locuteurs féroïens"
+    },
+    "fas": {
+      "in_target": "en persan",
+      "a_target_speaker": "locuteur de persan",
+      "target_speakers": "locuteurs persans"
+    },
+    "fij": {
+      "in_target": "en fidjien",
+      "a_target_speaker": "locuteur de fidjien",
+      "target_speakers": "locuteurs de fidjien"
+    },
+    "fil": {
+      "in_target": "en philippin",
+      "a_target_speaker": "locuteur de philippin",
+      "target_speakers": "locuteurs philippins"
+    },
+    "fin": {
+      "in_target": "en finnois",
+      "a_target_speaker": "locuteur de finnois",
+      "target_speakers": "locuteurs finnois"
+    },
+    "frr": {
+      "in_target": "en frison septentrional",
+      "a_target_speaker": "locuteur de frison septentrional",
+      "target_speakers": "locuteurs de frison septentrional"
+    },
+    "fry": {
+      "in_target": "en frison occidental",
+      "a_target_speaker": "locuteur de frison occidental",
+      "target_speakers": "locuteurs de frison occidental"
+    },
+    "fur": {
+      "in_target": "en frioulan",
+      "a_target_speaker": "locuteur de frioulan",
+      "target_speakers": "locuteurs de frioulan"
+    },
+    "gla": {
+      "in_target": "en gaélique écossais",
+      "a_target_speaker": "locuteur de gaélique écossais",
+      "target_speakers": "locuteurs de gaélique écossais"
+    },
+    "gle": {
+      "in_target": "en irlandais",
+      "a_target_speaker": "locuteur d'irlandais",
+      "target_speakers": "locuteurs irlandais"
+    },
+    "glg": {
+      "in_target": "en galicien",
+      "a_target_speaker": "locuteur de galicien",
+      "target_speakers": "locuteurs galiciens"
+    },
+    "glv": {
+      "in_target": "en mannois",
+      "a_target_speaker": "locuteur de mannois",
+      "target_speakers": "locuteurs de mannois"
+    },
+    "grk": {
+      "in_target": "en griko",
+      "a_target_speaker": "locuteur de griko",
+      "target_speakers": "locuteurs de griko"
+    },
+    "grn": {
+      "in_target": "en guarani",
+      "a_target_speaker": "locuteur de guarani",
+      "target_speakers": "locuteurs de guarani"
+    },
+    "gsw": {
+      "in_target": "en suisse allemand",
+      "a_target_speaker": "locuteur de suisse allemand",
+      "target_speakers": "locuteurs de suisse allemand"
+    },
+    "guj": {
+      "in_target": "en gujarati",
+      "a_target_speaker": "locuteur de gujarati",
+      "target_speakers": "locuteurs de gujarati"
+    },
+    "hak": {
+      "in_target": "en hakka",
+      "a_target_speaker": "locuteur de hakka",
+      "target_speakers": "locuteurs de hakka"
+    },
+    "hau": {
+      "in_target": "en haoussa",
+      "a_target_speaker": "locuteur de haoussa",
+      "target_speakers": "locuteurs de haoussa"
+    },
+    "haw": {
+      "in_target": "en hawaïen",
+      "a_target_speaker": "locuteur d’hawaïen",
+      "target_speakers": "locuteurs hawaïens"
+    },
+    "heb": {
+      "in_target": "en hébreu",
+      "a_target_speaker": "locuteur d'hébreu",
+      "target_speakers": "locuteurs d'hébreu"
+    },
+    "hin": {
+      "in_target": "en hindi",
+      "a_target_speaker": "locuteur de hindi",
+      "target_speakers": "locuteurs de hindi"
+    },
+    "hrv": {
+      "in_target": "en croate",
+      "a_target_speaker": "locuteur de croate",
+      "target_speakers": "locuteurs croates"
+    },
+    "hsb": {
+      "in_target": "en haut-sorabe",
+      "a_target_speaker": "locuteur de haut-sorabe",
+      "target_speakers": "locuteurs de haut-sorabe"
+    },
+    "hun": {
+      "in_target": "en hongrois",
+      "a_target_speaker": "locuteur de hongrois",
+      "target_speakers": "locuteurs hongrois"
+    },
+    "hye": {
+      "in_target": "en arménien",
+      "a_target_speaker": "locuteur d'arménien",
+      "target_speakers": "locuteurs arméniens"
+    },
+    "ibo": {
+      "in_target": "en igbo",
+      "a_target_speaker": "locuteur d'igbo",
+      "target_speakers": "locuteurs d'igbo"
+    },
+    "iku": {
+      "in_target": "en inuktitut",
+      "a_target_speaker": "locuteur d'inuktitut",
+      "target_speakers": "locuteurs d'inuktitut"
+    },
+    "ind": {
+      "in_target": "en indonésien",
+      "a_target_speaker": "locuteur d'indonésien",
+      "target_speakers": "locuteurs indonésiens"
+    },
+    "isl": {
+      "in_target": "en islandais",
+      "a_target_speaker": "locuteur d'islandais",
+      "target_speakers": "locuteurs islandais"
+    },
+    "ita": {
+      "in_target": "en italien",
+      "a_target_speaker": "locuteur d'italien",
+      "target_speakers": "locuteurs italiens"
+    },
+    "jav": {
+      "in_target": "en javanais",
+      "a_target_speaker": "locuteur de javanais",
+      "target_speakers": "locuteurs javanais"
+    },
+    "jpn": {
+      "in_target": "en japonais",
+      "a_target_speaker": "locuteur de japonais",
+      "target_speakers": "locuteurs japonais"
+    },
+    "kal": {
+      "in_target": "en groenlandais",
+      "a_target_speaker": "locuteur de groenlandais",
+      "target_speakers": "locuteurs de groenlandais"
+    },
+    "kan": {
+      "in_target": "en kannada",
+      "a_target_speaker": "locuteur de kannada",
+      "target_speakers": "locuteurs de kannada"
+    },
+    "kat": {
+      "in_target": "en géorgien",
+      "a_target_speaker": "locuteur de géorgien",
+      "target_speakers": "locuteurs géorgiens"
+    },
+    "kaz": {
+      "in_target": "en kazakh",
+      "a_target_speaker": "locuteur de kazakh",
+      "target_speakers": "locuteurs kazakhs"
+    },
+    "kir": {
+      "in_target": "en kirghiz",
+      "a_target_speaker": "locuteur de kirghiz",
+      "target_speakers": "locuteurs kirghiz"
+    },
+    "kor": {
+      "in_target": "en coréen",
+      "a_target_speaker": "locuteur de coréen",
+      "target_speakers": "locuteurs coréens"
+    },
+    "kur": {
+      "in_target": "en kurde",
+      "a_target_speaker": "locuteur de kurde",
+      "target_speakers": "locuteurs kurdes"
+    },
+    "lad": {
+      "in_target": "en ladino",
+      "a_target_speaker": "locuteur de ladino",
+      "target_speakers": "locuteurs de ladino"
+    },
+    "lav": {
+      "in_target": "en letton",
+      "a_target_speaker": "locuteur de letton",
+      "target_speakers": "locuteurs lettons"
+    },
+    "lij": {
+      "in_target": "en ligure",
+      "a_target_speaker": "locuteur de ligure",
+      "target_speakers": "locuteurs ligures"
+    },
+    "lim": {
+      "in_target": "en limbourgeois",
+      "a_target_speaker": "locuteur de limbourgeois",
+      "target_speakers": "locuteurs limbourgeois"
+    },
+    "lin": {
+      "in_target": "en lingala",
+      "a_target_speaker": "locuteur de lingala",
+      "target_speakers": "locuteurs de lingala"
+    },
+    "lit": {
+      "in_target": "en lituanien",
+      "a_target_speaker": "locuteur de lituanien",
+      "target_speakers": "locuteurs lituaniens"
+    },
+    "ltz": {
+      "in_target": "en luxembourgeois",
+      "a_target_speaker": "locuteur de luxembourgeois",
+      "target_speakers": "locuteurs luxembourgeois"
+    },
+    "mal": {
+      "in_target": "en malayalam",
+      "a_target_speaker": "locuteur de malayalam",
+      "target_speakers": "locuteurs de malayalam"
+    },
+    "mar": {
+      "in_target": "en marathi",
+      "a_target_speaker": "locuteur de marathi",
+      "target_speakers": "locuteurs de marathi"
+    },
+    "mkd": {
+      "in_target": "en macédonien",
+      "a_target_speaker": "locuteur de macédonien",
+      "target_speakers": "locuteurs macédoniens"
+    },
+    "moh": {
+      "in_target": "en mohawk",
+      "a_target_speaker": "locuteur de mohawk",
+      "target_speakers": "locuteurs de mohawk"
+    },
+    "mri": {
+      "in_target": "en maori",
+      "a_target_speaker": "locuteur de maori",
+      "target_speakers": "locuteurs de maori"
+    },
+    "msa": {
+      "in_target": "en malais",
+      "a_target_speaker": "locuteur de malais",
+      "target_speakers": "locuteurs malais"
+    },
+    "nan": {
+      "in_target": "en hokkien",
+      "a_target_speaker": "locuteur de hokkien",
+      "target_speakers": "locuteurs de hokkien"
+    },
+    "nap": {
+      "in_target": "en napolitain",
+      "a_target_speaker": "locuteur de napolitain",
+      "target_speakers": "locuteurs napolitains"
+    },
+    "nav": {
+      "in_target": "en navajo",
+      "a_target_speaker": "locuteur de navajo",
+      "target_speakers": "locuteurs de navajo"
+    },
+    "nep": {
+      "in_target": "en népalais",
+      "a_target_speaker": "locuteur de népalais",
+      "target_speakers": "locuteurs népalais"
+    },
+    "nld": {
+      "in_target": "en néerlandais",
+      "a_target_speaker": "locuteur de néerlandais",
+      "target_speakers": "locuteurs néerlandais"
+    },
+    "nor": {
+      "in_target": "en norvégien",
+      "a_target_speaker": "locuteur de norvégien",
+      "target_speakers": "locuteurs norvégiens"
+    },
+    "nya": {
+      "in_target": "en chichewa",
+      "a_target_speaker": "locuteur de chichewa",
+      "target_speakers": "locuteurs de chichewa"
+    },
+    "oci": {
+      "in_target": "en occitan",
+      "a_target_speaker": "locuteur d'occitan",
+      "target_speakers": "locuteurs occitans"
+    },
+    "oji": {
+      "in_target": "en ojibwé",
+      "a_target_speaker": "locuteur d'ojibwé",
+      "target_speakers": "locuteurs d'ojibwé"
+    },
+    "pan": {
+      "in_target": "en pendjabi",
+      "a_target_speaker": "locuteur de pendjabi",
+      "target_speakers": "locuteurs de pendjabi"
+    },
+    "pol": {
+      "in_target": "en polonais",
+      "a_target_speaker": "locuteur de polonais",
+      "target_speakers": "locuteurs polonais"
+    },
+    "por": {
+      "in_target": "en portugais",
+      "a_target_speaker": "locuteur de portugais",
+      "target_speakers": "locuteurs portugais"
+    },
+    "por_BR": {
+      "in_target": "en portugais",
+      "a_target_speaker": "locuteur de portugais brésilien",
+      "target_speakers": "locuteurs portugais"
+    },
+    "por_EU": {
+      "in_target": "en portugais",
+      "a_target_speaker": "locuteur de portugais européen",
+      "target_speakers": "locuteurs portugais"
+    },
+    "pus": {
+      "in_target": "en pachto",
+      "a_target_speaker": "locuteur de pachto",
+      "target_speakers": "locuteurs de pachto"
+    },
+    "que": {
+      "in_target": "en quechua",
+      "a_target_speaker": "locuteur de quechua",
+      "target_speakers": "locuteurs de quechua"
+    },
+    "roh": {
+      "in_target": "en romanche",
+      "a_target_speaker": "locuteur de romanche",
+      "target_speakers": "locuteurs romanches"
+    },
+    "ron": {
+      "in_target": "en roumain",
+      "a_target_speaker": "locuteur de roumain",
+      "target_speakers": "locuteurs roumains"
+    },
+    "rus": {
+      "in_target": "en russe",
+      "a_target_speaker": "locuteur de russe",
+      "target_speakers": "locuteurs russes"
+    },
+    "scn": {
+      "in_target": "en sicilien",
+      "a_target_speaker": "locuteur de sicilien",
+      "target_speakers": "locuteurs siciliens"
+    },
+    "sco": {
+      "in_target": "en scots",
+      "a_target_speaker": "locuteur de scots",
+      "target_speakers": "locuteurs de scots"
+    },
+    "slk": {
+      "in_target": "en slovaque",
+      "a_target_speaker": "locuteur de slovaque",
+      "target_speakers": "locuteurs slovaques"
+    },
+    "slv": {
+      "in_target": "en slovène",
+      "a_target_speaker": "locuteur de slovène",
+      "target_speakers": "locuteurs slovènes"
+    },
+    "sme": {
+      "in_target": "en same du Nord",
+      "a_target_speaker": "locuteur de same du Nord",
+      "target_speakers": "locuteurs de same du Nord"
+    },
+    "smj": {
+      "in_target": "en same de Lule",
+      "a_target_speaker": "locuteur de same de Lule",
+      "target_speakers": "locuteurs de same de Lule"
+    },
+    "smn": {
+      "in_target": "en same d'Inari",
+      "a_target_speaker": "locuteur de same d'Inari",
+      "target_speakers": "locuteurs de same d'Inari"
+    },
+    "smo": {
+      "in_target": "en samoan",
+      "a_target_speaker": "locuteur de samoan",
+      "target_speakers": "locuteurs de samoan"
+    },
+    "sms": {
+      "in_target": "en same skolt",
+      "a_target_speaker": "locuteur de same skolt",
+      "target_speakers": "locuteurs de same skolt"
+    },
+    "snd": {
+      "in_target": "en sindhi",
+      "a_target_speaker": "locuteur de sindhi",
+      "target_speakers": "locuteurs de sindhi"
+    },
+    "som": {
+      "in_target": "en somali",
+      "a_target_speaker": "locuteur de somali",
+      "target_speakers": "locuteurs somalis"
+    },
+    "spa": {
+      "in_target": "en espagnol",
+      "a_target_speaker": "locuteur d'espagnol",
+      "target_speakers": "locuteurs espagnols"
+    },
+    "spa_EU": {
+      "in_target": "en espagnol",
+      "a_target_speaker": "locuteur d'espagnol européen",
+      "target_speakers": "locuteurs espagnols"
+    },
+    "spa_SA": {
+      "in_target": "en espagnol",
+      "a_target_speaker": "locuteur d'espagnol sud-américain",
+      "target_speakers": "locuteurs espagnols"
+    },
+    "srd": {
+      "in_target": "en sarde",
+      "a_target_speaker": "locuteur de sarde",
+      "target_speakers": "locuteurs sardes"
+    },
+    "srp": {
+      "in_target": "en serbe",
+      "a_target_speaker": "locuteur de serbe",
+      "target_speakers": "locuteurs serbes"
+    },
+    "swa": {
+      "in_target": "en swahili",
+      "a_target_speaker": "locuteur de swahili",
+      "target_speakers": "locuteurs de swahili"
+    },
+    "swe": {
+      "in_target": "en suédois",
+      "a_target_speaker": "locuteur de suédois",
+      "target_speakers": "locuteurs suédois"
+    },
+    "tah": {
+      "in_target": "en tahitien",
+      "a_target_speaker": "locuteur de tahitien",
+      "target_speakers": "locuteurs de tahitien"
+    },
+    "tam": {
+      "in_target": "en tamoul",
+      "a_target_speaker": "locuteur de tamoul",
+      "target_speakers": "locuteurs tamouls"
+    },
+    "tel": {
+      "in_target": "en télougou",
+      "a_target_speaker": "locuteur de télougou",
+      "target_speakers": "locuteurs de télougou"
+    },
+    "tha": {
+      "in_target": "en thaï",
+      "a_target_speaker": "locuteur de thaï",
+      "target_speakers": "locuteurs de thaï"
+    },
+    "ton": {
+      "in_target": "en tongien",
+      "a_target_speaker": "locuteur de tongien",
+      "target_speakers": "locuteurs de tongien"
+    },
+    "tur": {
+      "in_target": "en turc",
+      "a_target_speaker": "locuteur de turc",
+      "target_speakers": "locuteurs turcs"
+    },
+    "uig": {
+      "in_target": "en ouïghour",
+      "a_target_speaker": "locuteur d'ouïghour",
+      "target_speakers": "locuteurs ouïghours"
+    },
+    "ukr": {
+      "in_target": "en ukrainien",
+      "a_target_speaker": "locuteur d'ukrainien",
+      "target_speakers": "locuteurs ukrainiens"
+    },
+    "urd": {
+      "in_target": "en ourdou",
+      "a_target_speaker": "locuteur d'ourdou",
+      "target_speakers": "locuteurs d'ourdou"
+    },
+    "vec": {
+      "in_target": "en vénitien",
+      "a_target_speaker": "locuteur de vénitien",
+      "target_speakers": "locuteurs vénitiens"
+    },
+    "vie": {
+      "in_target": "en vietnamien",
+      "a_target_speaker": "locuteur de vietnamien",
+      "target_speakers": "locuteurs vietnamiens"
+    },
+    "vls": {
+      "in_target": "en flamand",
+      "a_target_speaker": "locuteur de flamand",
+      "target_speakers": "locuteurs flamands"
+    },
+    "wln": {
+      "in_target": "en wallon",
+      "a_target_speaker": "locuteur de wallon",
+      "target_speakers": "locuteurs wallons"
+    },
+    "wuu": {
+      "in_target": "en shanghaïen",
+      "a_target_speaker": "locuteur de shanghaïen",
+      "target_speakers": "locuteurs de shanghaïen"
+    },
+    "xho": {
+      "in_target": "en xhosa",
+      "a_target_speaker": "locuteur de xhosa",
+      "target_speakers": "locuteurs de xhosa"
+    },
+    "yid": {
+      "in_target": "en yiddish",
+      "a_target_speaker": "locuteur de yiddish",
+      "target_speakers": "locuteurs de yiddish"
+    },
+    "yor": {
+      "in_target": "en yoruba",
+      "a_target_speaker": "locuteur de yoruba",
+      "target_speakers": "locuteurs de yoruba"
+    },
+    "yue": {
+      "in_target": "en cantonais",
+      "a_target_speaker": "locuteur de cantonais",
+      "target_speakers": "locuteurs cantonais"
+    },
+    "zul": {
+      "in_target": "en zoulou",
+      "a_target_speaker": "locuteur de zoulou",
+      "target_speakers": "locuteurs zoulous"
+    },
+    "ara_lb": {
+      "in_target": "en arabe",
+      "a_target_speaker": "locuteur d'arabe libanais",
+      "target_speakers": "locuteurs arabes"
+    },
+    "ara_sy": {
+      "in_target": "en arabe",
+      "a_target_speaker": "locuteur d'arabe syrien",
+      "target_speakers": "locuteurs arabes"
+    },
+    "ara_eg": {
+      "in_target": "en arabe",
+      "a_target_speaker": "locuteur d'arabe égyptien",
+      "target_speakers": "locuteurs arabes"
+    }
+  }
+}

@@ -1,0 +1,743 @@
+{
+  "known_language": "jpn",
+  "known_language_display": "Japanese",
+  "template": "この変わったゲームへようこそ。このゲームは、あなたが{a_target_speaker}になる手助けをしてくれます。やり方はこうです。まず私が{in_target}で何かを教えます。次に{in_known}で何かを言うので、あなたはそれを声に出して{in_target}で言ってみてください。その後、{target_speakers}のお手本をよく聞いてください。間があいたときに何か言うことが大切です。それが学ぶ方法だからです。自信がなくても、とにかく言えることを言ってみてください。そうすれば、思ったより早く{in_target}で話し始めることができますよ。これをゲームだと思えば思うほど、遊び心を持てば持つほど、間違えて笑えば笑うほど、うまくいくし、早く上達します。さあ、始めましょう。",
+  "in_known": "日本語",
+  "targets": {
+    "afb": {
+      "in_target": "湾岸アラビア語",
+      "a_target_speaker": "湾岸アラビア語を話す人",
+      "target_speakers": "湾岸アラビア語のネイティブスピーカー"
+    },
+    "afr": {
+      "in_target": "アフリカーンス語",
+      "a_target_speaker": "アフリカーンス語を話す人",
+      "target_speakers": "アフリカーンス語のネイティブスピーカー"
+    },
+    "aii": {
+      "in_target": "アッシリア語",
+      "a_target_speaker": "アッシリア語を話す人",
+      "target_speakers": "アッシリア語のネイティブスピーカー"
+    },
+    "ain": {
+      "in_target": "アイヌ語",
+      "a_target_speaker": "アイヌ語を話す人",
+      "target_speakers": "アイヌ語のネイティブスピーカー"
+    },
+    "ajp": {
+      "in_target": "パレスチナ・アラビア語",
+      "a_target_speaker": "パレスチナ・アラビア語を話す人",
+      "target_speakers": "パレスチナ・アラビア語のネイティブスピーカー"
+    },
+    "amh": {
+      "in_target": "アムハラ語",
+      "a_target_speaker": "アムハラ語を話す人",
+      "target_speakers": "アムハラ語のネイティブスピーカー"
+    },
+    "apc": {
+      "in_target": "レバント・アラビア語",
+      "a_target_speaker": "レバント・アラビア語を話す人",
+      "target_speakers": "レバント・アラビア語のネイティブスピーカー"
+    },
+    "ara": {
+      "in_target": "アラビア語",
+      "a_target_speaker": "現代標準アラビア語を話す人",
+      "target_speakers": "アラビア語のネイティブスピーカー"
+    },
+    "arg": {
+      "in_target": "アラゴン語",
+      "a_target_speaker": "アラゴン語を話す人",
+      "target_speakers": "アラゴン語のネイティブスピーカー"
+    },
+    "ary": {
+      "in_target": "モロッコ・アラビア語",
+      "a_target_speaker": "モロッコ・アラビア語を話す人",
+      "target_speakers": "モロッコ・アラビア語のネイティブスピーカー"
+    },
+    "asm": {
+      "in_target": "アッサム語",
+      "a_target_speaker": "アッサム語を話す人",
+      "target_speakers": "アッサム語のネイティブスピーカー"
+    },
+    "ast": {
+      "in_target": "アストゥリアス語",
+      "a_target_speaker": "アストゥリアス語を話す人",
+      "target_speakers": "アストゥリアス語のネイティブスピーカー"
+    },
+    "aze": {
+      "in_target": "アゼルバイジャン語",
+      "a_target_speaker": "アゼルバイジャン語を話す人",
+      "target_speakers": "アゼルバイジャン語のネイティブスピーカー"
+    },
+    "bar": {
+      "in_target": "バイエルン語",
+      "a_target_speaker": "バイエルン語を話す人",
+      "target_speakers": "バイエルン語のネイティブスピーカー"
+    },
+    "bel": {
+      "in_target": "ベラルーシ語",
+      "a_target_speaker": "ベラルーシ語を話す人",
+      "target_speakers": "ベラルーシ語のネイティブスピーカー"
+    },
+    "ben": {
+      "in_target": "ベンガル語",
+      "a_target_speaker": "ベンガル語を話す人",
+      "target_speakers": "ベンガル語のネイティブスピーカー"
+    },
+    "bos": {
+      "in_target": "ボスニア語",
+      "a_target_speaker": "ボスニア語を話す人",
+      "target_speakers": "ボスニア語のネイティブスピーカー"
+    },
+    "bre": {
+      "in_target": "ブルトン語",
+      "a_target_speaker": "ブルトン語を話す人",
+      "target_speakers": "ブルトン語のネイティブスピーカー"
+    },
+    "bul": {
+      "in_target": "ブルガリア語",
+      "a_target_speaker": "ブルガリア語を話す人",
+      "target_speakers": "ブルガリア語のネイティブスピーカー"
+    },
+    "cat": {
+      "in_target": "カタルーニャ語",
+      "a_target_speaker": "カタルーニャ語を話す人",
+      "target_speakers": "カタルーニャ語のネイティブスピーカー"
+    },
+    "ceb": {
+      "in_target": "セブアノ語",
+      "a_target_speaker": "セブアノ語を話す人",
+      "target_speakers": "セブアノ語のネイティブスピーカー"
+    },
+    "ces": {
+      "in_target": "チェコ語",
+      "a_target_speaker": "チェコ語を話す人",
+      "target_speakers": "チェコ語のネイティブスピーカー"
+    },
+    "chr": {
+      "in_target": "チェロキー語",
+      "a_target_speaker": "チェロキー語を話す人",
+      "target_speakers": "チェロキー語のネイティブスピーカー"
+    },
+    "cmn": {
+      "in_target": "中国語",
+      "a_target_speaker": "中国語を話す人",
+      "target_speakers": "中国語のネイティブスピーカー"
+    },
+    "cor": {
+      "in_target": "コーンウォール語",
+      "a_target_speaker": "コーンウォール語を話す人",
+      "target_speakers": "コーンウォール語のネイティブスピーカー"
+    },
+    "cos": {
+      "in_target": "コルシカ語",
+      "a_target_speaker": "コルシカ語を話す人",
+      "target_speakers": "コルシカ語のネイティブスピーカー"
+    },
+    "csb": {
+      "in_target": "カシューブ語",
+      "a_target_speaker": "カシューブ語を話す人",
+      "target_speakers": "カシューブ語のネイティブスピーカー"
+    },
+    "cym": {
+      "in_target": "ウェールズ語",
+      "a_target_speaker": "ウェールズ語を話す人",
+      "target_speakers": "ウェールズ語のネイティブスピーカー"
+    },
+    "dan": {
+      "in_target": "デンマーク語",
+      "a_target_speaker": "デンマーク語を話す人",
+      "target_speakers": "デンマーク語のネイティブスピーカー"
+    },
+    "deu": {
+      "in_target": "ドイツ語",
+      "a_target_speaker": "ドイツ語を話す人",
+      "target_speakers": "ドイツ語のネイティブスピーカー"
+    },
+    "deu_AT": {
+      "in_target": "ドイツ語",
+      "a_target_speaker": "オーストリアドイツ語を話す人",
+      "target_speakers": "ドイツ語のネイティブスピーカー"
+    },
+    "dsb": {
+      "in_target": "下ソルブ語",
+      "a_target_speaker": "下ソルブ語を話す人",
+      "target_speakers": "下ソルブ語のネイティブスピーカー"
+    },
+    "ell": {
+      "in_target": "ギリシャ語",
+      "a_target_speaker": "ギリシャ語を話す人",
+      "target_speakers": "ギリシャ語のネイティブスピーカー"
+    },
+    "eng": {
+      "in_target": "英語",
+      "a_target_speaker": "英語を話す人",
+      "target_speakers": "英語のネイティブスピーカー"
+    },
+    "est": {
+      "in_target": "エストニア語",
+      "a_target_speaker": "エストニア語を話す人",
+      "target_speakers": "エストニア語のネイティブスピーカー"
+    },
+    "eus": {
+      "in_target": "バスク語",
+      "a_target_speaker": "バスク語を話す人",
+      "target_speakers": "バスク語のネイティブスピーカー"
+    },
+    "fao": {
+      "in_target": "フェロー語",
+      "a_target_speaker": "フェロー語を話す人",
+      "target_speakers": "フェロー語のネイティブスピーカー"
+    },
+    "fas": {
+      "in_target": "ペルシア語",
+      "a_target_speaker": "ペルシア語を話す人",
+      "target_speakers": "ペルシア語のネイティブスピーカー"
+    },
+    "fij": {
+      "in_target": "フィジー語",
+      "a_target_speaker": "フィジー語を話す人",
+      "target_speakers": "フィジー語のネイティブスピーカー"
+    },
+    "fil": {
+      "in_target": "フィリピン語",
+      "a_target_speaker": "フィリピン語を話す人",
+      "target_speakers": "フィリピン語のネイティブスピーカー"
+    },
+    "fin": {
+      "in_target": "フィンランド語",
+      "a_target_speaker": "フィンランド語を話す人",
+      "target_speakers": "フィンランド語のネイティブスピーカー"
+    },
+    "fra": {
+      "in_target": "フランス語",
+      "a_target_speaker": "フランス語を話す人",
+      "target_speakers": "フランス語のネイティブスピーカー"
+    },
+    "frr": {
+      "in_target": "北フリジア語",
+      "a_target_speaker": "北フリジア語を話す人",
+      "target_speakers": "北フリジア語のネイティブスピーカー"
+    },
+    "fry": {
+      "in_target": "西フリジア語",
+      "a_target_speaker": "西フリジア語を話す人",
+      "target_speakers": "西フリジア語のネイティブスピーカー"
+    },
+    "fur": {
+      "in_target": "フリウリ語",
+      "a_target_speaker": "フリウリ語を話す人",
+      "target_speakers": "フリウリ語のネイティブスピーカー"
+    },
+    "gla": {
+      "in_target": "スコットランド・ゲール語",
+      "a_target_speaker": "スコットランド・ゲール語を話す人",
+      "target_speakers": "スコットランド・ゲール語のネイティブスピーカー"
+    },
+    "gle": {
+      "in_target": "アイルランド語",
+      "a_target_speaker": "アイルランド語を話す人",
+      "target_speakers": "アイルランド語のネイティブスピーカー"
+    },
+    "glg": {
+      "in_target": "ガリシア語",
+      "a_target_speaker": "ガリシア語を話す人",
+      "target_speakers": "ガリシア語のネイティブスピーカー"
+    },
+    "glv": {
+      "in_target": "マン島語",
+      "a_target_speaker": "マン島語を話す人",
+      "target_speakers": "マン島語のネイティブスピーカー"
+    },
+    "grk": {
+      "in_target": "グリコ語",
+      "a_target_speaker": "グリコ語を話す人",
+      "target_speakers": "グリコ語のネイティブスピーカー"
+    },
+    "grn": {
+      "in_target": "グアラニー語",
+      "a_target_speaker": "グアラニー語を話す人",
+      "target_speakers": "グアラニー語のネイティブスピーカー"
+    },
+    "gsw": {
+      "in_target": "スイスドイツ語",
+      "a_target_speaker": "スイスドイツ語を話す人",
+      "target_speakers": "スイスドイツ語のネイティブスピーカー"
+    },
+    "guj": {
+      "in_target": "グジャラート語",
+      "a_target_speaker": "グジャラート語を話す人",
+      "target_speakers": "グジャラート語のネイティブスピーカー"
+    },
+    "hak": {
+      "in_target": "客家語",
+      "a_target_speaker": "客家語を話す人",
+      "target_speakers": "客家語のネイティブスピーカー"
+    },
+    "hau": {
+      "in_target": "ハウサ語",
+      "a_target_speaker": "ハウサ語を話す人",
+      "target_speakers": "ハウサ語のネイティブスピーカー"
+    },
+    "haw": {
+      "in_target": "ハワイ語",
+      "a_target_speaker": "ハワイ語を話す人",
+      "target_speakers": "ハワイ語のネイティブスピーカー"
+    },
+    "heb": {
+      "in_target": "ヘブライ語",
+      "a_target_speaker": "ヘブライ語を話す人",
+      "target_speakers": "ヘブライ語のネイティブスピーカー"
+    },
+    "hin": {
+      "in_target": "ヒンディー語",
+      "a_target_speaker": "ヒンディー語を話す人",
+      "target_speakers": "ヒンディー語のネイティブスピーカー"
+    },
+    "hrv": {
+      "in_target": "クロアチア語",
+      "a_target_speaker": "クロアチア語を話す人",
+      "target_speakers": "クロアチア語のネイティブスピーカー"
+    },
+    "hsb": {
+      "in_target": "上ソルブ語",
+      "a_target_speaker": "上ソルブ語を話す人",
+      "target_speakers": "上ソルブ語のネイティブスピーカー"
+    },
+    "hun": {
+      "in_target": "ハンガリー語",
+      "a_target_speaker": "ハンガリー語を話す人",
+      "target_speakers": "ハンガリー語のネイティブスピーカー"
+    },
+    "hye": {
+      "in_target": "アルメニア語",
+      "a_target_speaker": "アルメニア語を話す人",
+      "target_speakers": "アルメニア語のネイティブスピーカー"
+    },
+    "ibo": {
+      "in_target": "イボ語",
+      "a_target_speaker": "イボ語を話す人",
+      "target_speakers": "イボ語のネイティブスピーカー"
+    },
+    "iku": {
+      "in_target": "イヌクティトゥット語",
+      "a_target_speaker": "イヌクティトゥット語を話す人",
+      "target_speakers": "イヌクティトゥット語のネイティブスピーカー"
+    },
+    "ind": {
+      "in_target": "インドネシア語",
+      "a_target_speaker": "インドネシア語を話す人",
+      "target_speakers": "インドネシア語のネイティブスピーカー"
+    },
+    "isl": {
+      "in_target": "アイスランド語",
+      "a_target_speaker": "アイスランド語を話す人",
+      "target_speakers": "アイスランド語のネイティブスピーカー"
+    },
+    "ita": {
+      "in_target": "イタリア語",
+      "a_target_speaker": "イタリア語を話す人",
+      "target_speakers": "イタリア語のネイティブスピーカー"
+    },
+    "jav": {
+      "in_target": "ジャワ語",
+      "a_target_speaker": "ジャワ語を話す人",
+      "target_speakers": "ジャワ語のネイティブスピーカー"
+    },
+    "kal": {
+      "in_target": "グリーンランド語",
+      "a_target_speaker": "グリーンランド語を話す人",
+      "target_speakers": "グリーンランド語のネイティブスピーカー"
+    },
+    "kan": {
+      "in_target": "カンナダ語",
+      "a_target_speaker": "カンナダ語を話す人",
+      "target_speakers": "カンナダ語のネイティブスピーカー"
+    },
+    "kat": {
+      "in_target": "ジョージア語",
+      "a_target_speaker": "ジョージア語を話す人",
+      "target_speakers": "ジョージア語のネイティブスピーカー"
+    },
+    "kaz": {
+      "in_target": "カザフ語",
+      "a_target_speaker": "カザフ語を話す人",
+      "target_speakers": "カザフ語のネイティブスピーカー"
+    },
+    "kir": {
+      "in_target": "キルギス語",
+      "a_target_speaker": "キルギス語を話す人",
+      "target_speakers": "キルギス語のネイティブスピーカー"
+    },
+    "kor": {
+      "in_target": "韓国語",
+      "a_target_speaker": "韓国語を話す人",
+      "target_speakers": "韓国語のネイティブスピーカー"
+    },
+    "kur": {
+      "in_target": "クルド語",
+      "a_target_speaker": "クルド語を話す人",
+      "target_speakers": "クルド語のネイティブスピーカー"
+    },
+    "lad": {
+      "in_target": "ラディーノ語",
+      "a_target_speaker": "ラディーノ語を話す人",
+      "target_speakers": "ラディーノ語のネイティブスピーカー"
+    },
+    "lav": {
+      "in_target": "ラトビア語",
+      "a_target_speaker": "ラトビア語を話す人",
+      "target_speakers": "ラトビア語のネイティブスピーカー"
+    },
+    "lij": {
+      "in_target": "リグリア語",
+      "a_target_speaker": "リグリア語を話す人",
+      "target_speakers": "リグリア語のネイティブスピーカー"
+    },
+    "lim": {
+      "in_target": "リンブルフ語",
+      "a_target_speaker": "リンブルフ語を話す人",
+      "target_speakers": "リンブルフ語のネイティブスピーカー"
+    },
+    "lin": {
+      "in_target": "リンガラ語",
+      "a_target_speaker": "リンガラ語を話す人",
+      "target_speakers": "リンガラ語のネイティブスピーカー"
+    },
+    "lit": {
+      "in_target": "リトアニア語",
+      "a_target_speaker": "リトアニア語を話す人",
+      "target_speakers": "リトアニア語のネイティブスピーカー"
+    },
+    "ltz": {
+      "in_target": "ルクセンブルク語",
+      "a_target_speaker": "ルクセンブルク語を話す人",
+      "target_speakers": "ルクセンブルク語のネイティブスピーカー"
+    },
+    "mal": {
+      "in_target": "マラヤーラム語",
+      "a_target_speaker": "マラヤーラム語を話す人",
+      "target_speakers": "マラヤーラム語のネイティブスピーカー"
+    },
+    "mar": {
+      "in_target": "マラーティー語",
+      "a_target_speaker": "マラーティー語を話す人",
+      "target_speakers": "マラーティー語のネイティブスピーカー"
+    },
+    "mkd": {
+      "in_target": "マケドニア語",
+      "a_target_speaker": "マケドニア語を話す人",
+      "target_speakers": "マケドニア語のネイティブスピーカー"
+    },
+    "moh": {
+      "in_target": "モホーク語",
+      "a_target_speaker": "モホーク語を話す人",
+      "target_speakers": "モホーク語のネイティブスピーカー"
+    },
+    "mri": {
+      "in_target": "マオリ語",
+      "a_target_speaker": "マオリ語を話す人",
+      "target_speakers": "マオリ語のネイティブスピーカー"
+    },
+    "msa": {
+      "in_target": "マレー語",
+      "a_target_speaker": "マレー語を話す人",
+      "target_speakers": "マレー語のネイティブスピーカー"
+    },
+    "nan": {
+      "in_target": "閩南語",
+      "a_target_speaker": "閩南語を話す人",
+      "target_speakers": "閩南語のネイティブスピーカー"
+    },
+    "nap": {
+      "in_target": "ナポリ語",
+      "a_target_speaker": "ナポリ語を話す人",
+      "target_speakers": "ナポリ語のネイティブスピーカー"
+    },
+    "nav": {
+      "in_target": "ナバホ語",
+      "a_target_speaker": "ナバホ語を話す人",
+      "target_speakers": "ナバホ語のネイティブスピーカー"
+    },
+    "nep": {
+      "in_target": "ネパール語",
+      "a_target_speaker": "ネパール語を話す人",
+      "target_speakers": "ネパール語のネイティブスピーカー"
+    },
+    "nld": {
+      "in_target": "オランダ語",
+      "a_target_speaker": "オランダ語を話す人",
+      "target_speakers": "オランダ語のネイティブスピーカー"
+    },
+    "nor": {
+      "in_target": "ノルウェー語",
+      "a_target_speaker": "ノルウェー語を話す人",
+      "target_speakers": "ノルウェー語のネイティブスピーカー"
+    },
+    "nya": {
+      "in_target": "チェワ語",
+      "a_target_speaker": "チェワ語を話す人",
+      "target_speakers": "チェワ語のネイティブスピーカー"
+    },
+    "oci": {
+      "in_target": "オック語",
+      "a_target_speaker": "オック語を話す人",
+      "target_speakers": "オック語のネイティブスピーカー"
+    },
+    "oji": {
+      "in_target": "オジブウェー語",
+      "a_target_speaker": "オジブウェー語を話す人",
+      "target_speakers": "オジブウェー語のネイティブスピーカー"
+    },
+    "pan": {
+      "in_target": "パンジャーブ語",
+      "a_target_speaker": "パンジャーブ語を話す人",
+      "target_speakers": "パンジャーブ語のネイティブスピーカー"
+    },
+    "pol": {
+      "in_target": "ポーランド語",
+      "a_target_speaker": "ポーランド語を話す人",
+      "target_speakers": "ポーランド語のネイティブスピーカー"
+    },
+    "por": {
+      "in_target": "ポルトガル語",
+      "a_target_speaker": "ポルトガル語を話す人",
+      "target_speakers": "ポルトガル語のネイティブスピーカー"
+    },
+    "por_BR": {
+      "in_target": "ポルトガル語",
+      "a_target_speaker": "ブラジルポルトガル語を話す人",
+      "target_speakers": "ポルトガル語のネイティブスピーカー"
+    },
+    "por_EU": {
+      "in_target": "ポルトガル語",
+      "a_target_speaker": "ヨーロッパポルトガル語を話す人",
+      "target_speakers": "ポルトガル語のネイティブスピーカー"
+    },
+    "pus": {
+      "in_target": "パシュトー語",
+      "a_target_speaker": "パシュトー語を話す人",
+      "target_speakers": "パシュトー語のネイティブスピーカー"
+    },
+    "que": {
+      "in_target": "ケチュア語",
+      "a_target_speaker": "ケチュア語を話す人",
+      "target_speakers": "ケチュア語のネイティブスピーカー"
+    },
+    "roh": {
+      "in_target": "ロマンシュ語",
+      "a_target_speaker": "ロマンシュ語を話す人",
+      "target_speakers": "ロマンシュ語のネイティブスピーカー"
+    },
+    "ron": {
+      "in_target": "ルーマニア語",
+      "a_target_speaker": "ルーマニア語を話す人",
+      "target_speakers": "ルーマニア語のネイティブスピーカー"
+    },
+    "rus": {
+      "in_target": "ロシア語",
+      "a_target_speaker": "ロシア語を話す人",
+      "target_speakers": "ロシア語のネイティブスピーカー"
+    },
+    "scn": {
+      "in_target": "シチリア語",
+      "a_target_speaker": "シチリア語を話す人",
+      "target_speakers": "シチリア語のネイティブスピーカー"
+    },
+    "sco": {
+      "in_target": "スコットランド語",
+      "a_target_speaker": "スコットランド語を話す人",
+      "target_speakers": "スコットランド語のネイティブスピーカー"
+    },
+    "slk": {
+      "in_target": "スロバキア語",
+      "a_target_speaker": "スロバキア語を話す人",
+      "target_speakers": "スロバキア語のネイティブスピーカー"
+    },
+    "slv": {
+      "in_target": "スロベニア語",
+      "a_target_speaker": "スロベニア語を話す人",
+      "target_speakers": "スロベニア語のネイティブスピーカー"
+    },
+    "sme": {
+      "in_target": "北サーミ語",
+      "a_target_speaker": "北サーミ語を話す人",
+      "target_speakers": "北サーミ語のネイティブスピーカー"
+    },
+    "smj": {
+      "in_target": "ルレ・サーミ語",
+      "a_target_speaker": "ルレ・サーミ語を話す人",
+      "target_speakers": "ルレ・サーミ語のネイティブスピーカー"
+    },
+    "smn": {
+      "in_target": "イナリ・サーミ語",
+      "a_target_speaker": "イナリ・サーミ語を話す人",
+      "target_speakers": "イナリ・サーミ語のネイティブスピーカー"
+    },
+    "smo": {
+      "in_target": "サモア語",
+      "a_target_speaker": "サモア語を話す人",
+      "target_speakers": "サモア語のネイティブスピーカー"
+    },
+    "sms": {
+      "in_target": "スコルト・サーミ語",
+      "a_target_speaker": "スコルト・サーミ語を話す人",
+      "target_speakers": "スコルト・サーミ語のネイティブスピーカー"
+    },
+    "snd": {
+      "in_target": "シンド語",
+      "a_target_speaker": "シンド語を話す人",
+      "target_speakers": "シンド語のネイティブスピーカー"
+    },
+    "som": {
+      "in_target": "ソマリ語",
+      "a_target_speaker": "ソマリ語を話す人",
+      "target_speakers": "ソマリ語のネイティブスピーカー"
+    },
+    "spa": {
+      "in_target": "スペイン語",
+      "a_target_speaker": "スペイン語を話す人",
+      "target_speakers": "スペイン語のネイティブスピーカー"
+    },
+    "spa_EU": {
+      "in_target": "スペイン語",
+      "a_target_speaker": "ヨーロッパスペイン語を話す人",
+      "target_speakers": "スペイン語のネイティブスピーカー"
+    },
+    "spa_SA": {
+      "in_target": "スペイン語",
+      "a_target_speaker": "南米スペイン語を話す人",
+      "target_speakers": "スペイン語のネイティブスピーカー"
+    },
+    "srd": {
+      "in_target": "サルデーニャ語",
+      "a_target_speaker": "サルデーニャ語を話す人",
+      "target_speakers": "サルデーニャ語のネイティブスピーカー"
+    },
+    "srp": {
+      "in_target": "セルビア語",
+      "a_target_speaker": "セルビア語を話す人",
+      "target_speakers": "セルビア語のネイティブスピーカー"
+    },
+    "swa": {
+      "in_target": "スワヒリ語",
+      "a_target_speaker": "スワヒリ語を話す人",
+      "target_speakers": "スワヒリ語のネイティブスピーカー"
+    },
+    "swe": {
+      "in_target": "スウェーデン語",
+      "a_target_speaker": "スウェーデン語を話す人",
+      "target_speakers": "スウェーデン語のネイティブスピーカー"
+    },
+    "tah": {
+      "in_target": "タヒチ語",
+      "a_target_speaker": "タヒチ語を話す人",
+      "target_speakers": "タヒチ語のネイティブスピーカー"
+    },
+    "tam": {
+      "in_target": "タミル語",
+      "a_target_speaker": "タミル語を話す人",
+      "target_speakers": "タミル語のネイティブスピーカー"
+    },
+    "tel": {
+      "in_target": "テルグ語",
+      "a_target_speaker": "テルグ語を話す人",
+      "target_speakers": "テルグ語のネイティブスピーカー"
+    },
+    "tha": {
+      "in_target": "タイ語",
+      "a_target_speaker": "タイ語を話す人",
+      "target_speakers": "タイ語のネイティブスピーカー"
+    },
+    "ton": {
+      "in_target": "トンガ語",
+      "a_target_speaker": "トンガ語を話す人",
+      "target_speakers": "トンガ語のネイティブスピーカー"
+    },
+    "tur": {
+      "in_target": "トルコ語",
+      "a_target_speaker": "トルコ語を話す人",
+      "target_speakers": "トルコ語のネイティブスピーカー"
+    },
+    "uig": {
+      "in_target": "ウイグル語",
+      "a_target_speaker": "ウイグル語を話す人",
+      "target_speakers": "ウイグル語のネイティブスピーカー"
+    },
+    "ukr": {
+      "in_target": "ウクライナ語",
+      "a_target_speaker": "ウクライナ語を話す人",
+      "target_speakers": "ウクライナ語のネイティブスピーカー"
+    },
+    "urd": {
+      "in_target": "ウルドゥー語",
+      "a_target_speaker": "ウルドゥー語を話す人",
+      "target_speakers": "ウルドゥー語のネイティブスピーカー"
+    },
+    "vec": {
+      "in_target": "ヴェネト語",
+      "a_target_speaker": "ヴェネト語を話す人",
+      "target_speakers": "ヴェネト語のネイティブスピーカー"
+    },
+    "vie": {
+      "in_target": "ベトナム語",
+      "a_target_speaker": "ベトナム語を話す人",
+      "target_speakers": "ベトナム語のネイティブスピーカー"
+    },
+    "vls": {
+      "in_target": "フラマン語",
+      "a_target_speaker": "フラマン語を話す人",
+      "target_speakers": "フラマン語のネイティブスピーカー"
+    },
+    "wln": {
+      "in_target": "ワロン語",
+      "a_target_speaker": "ワロン語を話す人",
+      "target_speakers": "ワロン語のネイティブスピーカー"
+    },
+    "wuu": {
+      "in_target": "呉語",
+      "a_target_speaker": "呉語を話す人",
+      "target_speakers": "呉語のネイティブスピーカー"
+    },
+    "xho": {
+      "in_target": "コサ語",
+      "a_target_speaker": "コサ語を話す人",
+      "target_speakers": "コサ語のネイティブスピーカー"
+    },
+    "yid": {
+      "in_target": "イディッシュ語",
+      "a_target_speaker": "イディッシュ語を話す人",
+      "target_speakers": "イディッシュ語のネイティブスピーカー"
+    },
+    "yor": {
+      "in_target": "ヨルバ語",
+      "a_target_speaker": "ヨルバ語を話す人",
+      "target_speakers": "ヨルバ語のネイティブスピーカー"
+    },
+    "yue": {
+      "in_target": "広東語",
+      "a_target_speaker": "広東語を話す人",
+      "target_speakers": "広東語のネイティブスピーカー"
+    },
+    "zul": {
+      "in_target": "ズールー語",
+      "a_target_speaker": "ズールー語を話す人",
+      "target_speakers": "ズールー語のネイティブスピーカー"
+    },
+    "ara_lb": {
+      "in_target": "アラビア語",
+      "a_target_speaker": "レバノン・アラビア語を話す人",
+      "target_speakers": "アラビア語のネイティブスピーカー"
+    },
+    "ara_sy": {
+      "in_target": "アラビア語",
+      "a_target_speaker": "シリア・アラビア語を話す人",
+      "target_speakers": "アラビア語のネイティブスピーカー"
+    },
+    "ara_eg": {
+      "in_target": "アラビア語",
+      "a_target_speaker": "エジプト・アラビア語を話す人",
+      "target_speakers": "アラビア語のネイティブスピーカー"
+    }
+  }
+}

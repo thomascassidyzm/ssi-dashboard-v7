@@ -1,0 +1,826 @@
+{
+  "known_language": "fin",
+  "display_name": "Finnish",
+  "voice": {
+    "voice_id": "Gp43kq9FsSlavD7esRtx",
+    "name": "Vaino - Peaceful & Soulful",
+    "gender": "male"
+  },
+  "settings": {
+    "voice_stability": 0.4,
+    "model": "eleven_v3",
+    "language_code": "fi"
+  },
+  "welcomes": [
+    {
+      "uuid": "CAA3EA10-471A-4F84-9DF9-C88662213D7D",
+      "target_language": "bul",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan bulgarian puhujaksi. Näin se toimii - opetan sinulle jotain bulgariaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen bulgariaksi. Sen jälkeen kuuntelet tarkasti bulgarian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi bulgariaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "CAA3EA10-471A-4F84-9DF9-C88662213D7D.mp3",
+      "size_kb": 776
+    },
+    {
+      "uuid": "1736B422-D53C-4065-A53E-7EA15777C978",
+      "target_language": "cmn",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan kiinan puhujaksi. Näin se toimii - opetan sinulle jotain kiinaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen kiinaksi. Sen jälkeen kuuntelet tarkasti kiinan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi kiinaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "1736B422-D53C-4065-A53E-7EA15777C978.mp3",
+      "size_kb": 739.6
+    },
+    {
+      "uuid": "80B9B52F-91C4-4310-9A54-4AA246807CAA",
+      "target_language": "hrv",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan kroatian puhujaksi. Näin se toimii - opetan sinulle jotain kroatiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen kroatiaksi. Sen jälkeen kuuntelet tarkasti kroatian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi kroatiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "80B9B52F-91C4-4310-9A54-4AA246807CAA.mp3",
+      "size_kb": 719.6
+    },
+    {
+      "uuid": "0649AA9C-F0AD-4458-B839-F82659C43139",
+      "target_language": "dan",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan tanskan puhujaksi. Näin se toimii - opetan sinulle jotain tanskaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen tanskaksi. Sen jälkeen kuuntelet tarkasti tanskan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi tanskaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "0649AA9C-F0AD-4458-B839-F82659C43139.mp3",
+      "size_kb": 737.2
+    },
+    {
+      "uuid": "8323F19E-C50A-426E-BB44-88754F552A1B",
+      "target_language": "ces",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan tshekin puhujaksi. Näin se toimii - opetan sinulle jotain tshekiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen tshekiksi. Sen jälkeen kuuntelet tarkasti tshekin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi tshekiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "8323F19E-C50A-426E-BB44-88754F552A1B.mp3",
+      "size_kb": 737.2
+    },
+    {
+      "uuid": "E149D953-2CBB-4325-A1BC-7DFEB4A8D341",
+      "target_language": "nld",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan hollannin puhujaksi. Näin se toimii - opetan sinulle jotain hollanniksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen hollanniksi. Sen jälkeen kuuntelet tarkasti hollannin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi hollanniksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "E149D953-2CBB-4325-A1BC-7DFEB4A8D341.mp3",
+      "size_kb": 768.6
+    },
+    {
+      "uuid": "2EDE7CDB-5D25-401D-863F-A418F2048A41",
+      "target_language": "eng",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan englannin puhujaksi. Näin se toimii - opetan sinulle jotain englanniksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen englanniksi. Sen jälkeen kuuntelet tarkasti englannin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi englanniksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "2EDE7CDB-5D25-401D-863F-A418F2048A41.mp3",
+      "size_kb": 792.3
+    },
+    {
+      "uuid": "6BE46D07-CDE4-49AC-A262-85FDD1F67398",
+      "target_language": "deu",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan saksan puhujaksi. Näin se toimii - opetan sinulle jotain saksaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen saksaksi. Sen jälkeen kuuntelet tarkasti saksan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi saksaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "6BE46D07-CDE4-49AC-A262-85FDD1F67398.mp3",
+      "size_kb": 776
+    },
+    {
+      "uuid": "7C2B5182-37DF-4107-996C-46BC3C790993",
+      "target_language": "fil",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan filipinon puhujaksi. Näin se toimii - opetan sinulle jotain filipinoksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen filipinoksi. Sen jälkeen kuuntelet tarkasti filipinon puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi filipinoksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "7C2B5182-37DF-4107-996C-46BC3C790993.mp3",
+      "size_kb": 792.3
+    },
+    {
+      "uuid": "A7A17D4D-DC72-47BC-A0F8-22ABBA76ACD1",
+      "target_language": "fra",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan ranskan puhujaksi. Näin se toimii - opetan sinulle jotain ranskaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen ranskaksi. Sen jälkeen kuuntelet tarkasti ranskan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi ranskaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "A7A17D4D-DC72-47BC-A0F8-22ABBA76ACD1.mp3",
+      "size_kb": 756
+    },
+    {
+      "uuid": "04AC22F2-B5A6-4E5E-90A8-5C7C9C1E2F1A",
+      "target_language": "ell",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan kreikan puhujaksi. Näin se toimii - opetan sinulle jotain kreikaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen kreikaksi. Sen jälkeen kuuntelet tarkasti kreikan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi kreikaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "04AC22F2-B5A6-4E5E-90A8-5C7C9C1E2F1A.mp3",
+      "size_kb": 778.4
+    },
+    {
+      "uuid": "B76B3B39-A5CF-45B2-88EA-66AEFBEE60C9",
+      "target_language": "hin",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan hindin puhujaksi. Näin se toimii - opetan sinulle jotain hindiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen hindiksi. Sen jälkeen kuuntelet tarkasti hindin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi hindiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "B76B3B39-A5CF-45B2-88EA-66AEFBEE60C9.mp3",
+      "size_kb": 758.4
+    },
+    {
+      "uuid": "24F0C2C6-893F-4893-84CD-95F6B9A7ADBC",
+      "target_language": "ind",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan indonesian puhujaksi. Näin se toimii - opetan sinulle jotain indonesiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen indonesiaksi. Sen jälkeen kuuntelet tarkasti indonesian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi indonesiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "24F0C2C6-893F-4893-84CD-95F6B9A7ADBC.mp3",
+      "size_kb": 776
+    },
+    {
+      "uuid": "A635EBAC-8C42-425D-AA9A-094C61E47AE8",
+      "target_language": "jpn",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan japanin puhujaksi. Näin se toimii - opetan sinulle jotain japaniksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen japaniksi. Sen jälkeen kuuntelet tarkasti japanin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi japaniksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "A635EBAC-8C42-425D-AA9A-094C61E47AE8.mp3",
+      "size_kb": 787.4
+    },
+    {
+      "uuid": "3F8A67C3-1D77-46AB-A136-FE048A119C0C",
+      "target_language": "ita",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan italian puhujaksi. Näin se toimii - opetan sinulle jotain italiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen italiaksi. Sen jälkeen kuuntelet tarkasti italian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi italiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "3F8A67C3-1D77-46AB-A136-FE048A119C0C.mp3",
+      "size_kb": 754.7
+    },
+    {
+      "uuid": "426BEA6E-ED04-4A23-AAAC-108DD1027EC9",
+      "target_language": "kor",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan korean puhujaksi. Näin se toimii - opetan sinulle jotain koreaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen koreaksi. Sen jälkeen kuuntelet tarkasti korean puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi koreaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "426BEA6E-ED04-4A23-AAAC-108DD1027EC9.mp3",
+      "size_kb": 754.7
+    },
+    {
+      "uuid": "8D51D2E0-CEAF-44DC-A7DE-DA2B4C036582",
+      "target_language": "pol",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan puolan puhujaksi. Näin se toimii - opetan sinulle jotain puolaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen puolaksi. Sen jälkeen kuuntelet tarkasti puolan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi puolaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "8D51D2E0-CEAF-44DC-A7DE-DA2B4C036582.mp3",
+      "size_kb": 732.3
+    },
+    {
+      "uuid": "C1489EF3-0827-41D8-96A7-9B8FE4770FD5",
+      "target_language": "por",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan portugalin puhujaksi. Näin se toimii - opetan sinulle jotain portugaliksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen portugaliksi. Sen jälkeen kuuntelet tarkasti portugalin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi portugaliksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "C1489EF3-0827-41D8-96A7-9B8FE4770FD5.mp3",
+      "size_kb": 784.9
+    },
+    {
+      "uuid": "A161CC8A-542A-4EFE-81B7-0959F74B068E",
+      "target_language": "ron",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan romanian puhujaksi. Näin se toimii - opetan sinulle jotain romaniaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen romaniaksi. Sen jälkeen kuuntelet tarkasti romanian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi romaniaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "A161CC8A-542A-4EFE-81B7-0959F74B068E.mp3",
+      "size_kb": 814.7
+    },
+    {
+      "uuid": "ECA59D5C-65FE-4A77-8066-F3C29AAE6EA3",
+      "target_language": "slk",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan slovakin puhujaksi. Näin se toimii - opetan sinulle jotain slovakiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen slovakiksi. Sen jälkeen kuuntelet tarkasti slovakin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi slovakiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "ECA59D5C-65FE-4A77-8066-F3C29AAE6EA3.mp3",
+      "size_kb": 780.9
+    },
+    {
+      "uuid": "7CC6743A-D342-479C-A7BE-22FBE1C440AE",
+      "target_language": "rus",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan venäjän puhujaksi. Näin se toimii - opetan sinulle jotain venäjäksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen venäjäksi. Sen jälkeen kuuntelet tarkasti venäjän puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi venäjäksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "7CC6743A-D342-479C-A7BE-22FBE1C440AE.mp3",
+      "size_kb": 732.3
+    },
+    {
+      "uuid": "903B2993-4C8B-40EA-8040-88E2ED62B158",
+      "target_language": "msa",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan malaijin puhujaksi. Näin se toimii - opetan sinulle jotain malaijaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen malaijaksi. Sen jälkeen kuuntelet tarkasti malaijin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi malaijaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "903B2993-4C8B-40EA-8040-88E2ED62B158.mp3",
+      "size_kb": 772.3
+    },
+    {
+      "uuid": "C08BDE9A-E7FD-4C42-BF5C-1B9EA029B7A4",
+      "target_language": "swe",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan ruotsin puhujaksi. Näin se toimii - opetan sinulle jotain ruotsiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen ruotsiksi. Sen jälkeen kuuntelet tarkasti ruotsin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi ruotsiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "C08BDE9A-E7FD-4C42-BF5C-1B9EA029B7A4.mp3",
+      "size_kb": 767.4
+    },
+    {
+      "uuid": "39597274-6391-4897-8E9A-FC394D1F3804",
+      "target_language": "spa",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan espanjan puhujaksi. Näin se toimii - opetan sinulle jotain espanjaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen espanjaksi. Sen jälkeen kuuntelet tarkasti espanjan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi espanjaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "39597274-6391-4897-8E9A-FC394D1F3804.mp3",
+      "size_kb": 784.9
+    },
+    {
+      "uuid": "D8DE78A1-A7E8-4E52-A9C4-B2BEBEF12DFA",
+      "target_language": "tam",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan tamilin puhujaksi. Näin se toimii - opetan sinulle jotain tamiliksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen tamiliksi. Sen jälkeen kuuntelet tarkasti tamilin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi tamiliksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "D8DE78A1-A7E8-4E52-A9C4-B2BEBEF12DFA.mp3",
+      "size_kb": 814.7
+    },
+    {
+      "uuid": "EC44B860-376B-4199-BC51-D9C59DECF3D2",
+      "target_language": "tur",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan turkin puhujaksi. Näin se toimii - opetan sinulle jotain turkiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen turkiksi. Sen jälkeen kuuntelet tarkasti turkin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi turkiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "EC44B860-376B-4199-BC51-D9C59DECF3D2.mp3",
+      "size_kb": 751.1
+    },
+    {
+      "uuid": "FFEE66D8-A0C2-461C-A872-87EFA4D4B651",
+      "target_language": "ukr",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan ukrainan puhujaksi. Näin se toimii - opetan sinulle jotain ukrainaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen ukrainaksi. Sen jälkeen kuuntelet tarkasti ukrainan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi ukrainaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "FFEE66D8-A0C2-461C-A872-87EFA4D4B651.mp3",
+      "size_kb": 780.9
+    },
+    {
+      "uuid": "D8BD4F6F-6021-4E86-A87B-EA519588B14C",
+      "target_language": "asm",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan assamin puhujaksi. Näin se toimii - opetan sinulle jotain assamiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen assamiksi. Sen jälkeen kuuntelet tarkasti assamin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi assamiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "D8BD4F6F-6021-4E86-A87B-EA519588B14C.mp3",
+      "size_kb": 757.2
+    },
+    {
+      "uuid": "E44091B3-6454-47DA-AD62-D361723ECE0C",
+      "target_language": "afr",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan afrikaansin puhujaksi. Näin se toimii - opetan sinulle jotain afrikaansiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen afrikaansiksi. Sen jälkeen kuuntelet tarkasti afrikaansin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi afrikaansiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "E44091B3-6454-47DA-AD62-D361723ECE0C.mp3",
+      "size_kb": 794.7
+    },
+    {
+      "uuid": "6908ECDB-89A8-44A3-AEA3-5555BA65A834",
+      "target_language": "aze",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan azerbaidžanin puhujaksi. Näin se toimii - opetan sinulle jotain azerbaidžaniksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen azerbaidžaniksi. Sen jälkeen kuuntelet tarkasti azerbaidžanin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi azerbaidžaniksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "6908ECDB-89A8-44A3-AEA3-5555BA65A834.mp3",
+      "size_kb": 772.3
+    },
+    {
+      "uuid": "6816022F-8066-4CA7-8D34-23BF9C31F25F",
+      "target_language": "bel",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan valkovenäjän puhujaksi. Näin se toimii - opetan sinulle jotain valkovenäjäksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen valkovenäjäksi. Sen jälkeen kuuntelet tarkasti valkovenäjän puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi valkovenäjäksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "6816022F-8066-4CA7-8D34-23BF9C31F25F.mp3",
+      "size_kb": 763.7
+    },
+    {
+      "uuid": "ADCB28F3-4811-4535-BE60-92D34FAF5E14",
+      "target_language": "ben",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan bengalin puhujaksi. Näin se toimii - opetan sinulle jotain bengaliksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen bengaliksi. Sen jälkeen kuuntelet tarkasti bengalin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi bengaliksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "ADCB28F3-4811-4535-BE60-92D34FAF5E14.mp3",
+      "size_kb": 760.9
+    },
+    {
+      "uuid": "8C970114-49AC-4FE7-903B-D574C20210C0",
+      "target_language": "bos",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan bosnian puhujaksi. Näin se toimii - opetan sinulle jotain bosniaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen bosniaksi. Sen jälkeen kuuntelet tarkasti bosnian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi bosniaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "8C970114-49AC-4FE7-903B-D574C20210C0.mp3",
+      "size_kb": 777.2
+    },
+    {
+      "uuid": "DDFA016B-8AB7-4E0D-8AC9-617FF8B64E30",
+      "target_language": "cat",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan katalaanin puhujaksi. Näin se toimii - opetan sinulle jotain katalaniksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen katalaniksi. Sen jälkeen kuuntelet tarkasti katalaanin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi katalaniksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "DDFA016B-8AB7-4E0D-8AC9-617FF8B64E30.mp3",
+      "size_kb": 782.5
+    },
+    {
+      "uuid": "C60B4E2B-F21D-4CED-911C-6CF87B14D079",
+      "target_language": "ceb",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan cebuanon puhujaksi. Näin se toimii - opetan sinulle jotain cebuanoksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen cebuanoksi. Sen jälkeen kuuntelet tarkasti cebuanon puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi cebuanoksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "C60B4E2B-F21D-4CED-911C-6CF87B14D079.mp3",
+      "size_kb": 788.6
+    },
+    {
+      "uuid": "43824DC0-0339-49B0-9D59-703716397E1A",
+      "target_language": "cym",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan walesin puhujaksi. Näin se toimii - opetan sinulle jotain walesiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen walesiksi. Sen jälkeen kuuntelet tarkasti walesin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi walesiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "43824DC0-0339-49B0-9D59-703716397E1A.mp3",
+      "size_kb": 718.4
+    },
+    {
+      "uuid": "C5B9720D-2B44-4FB8-8867-62ADF521FDD7",
+      "target_language": "est",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan viron puhujaksi. Näin se toimii - opetan sinulle jotain viroksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen viroksi. Sen jälkeen kuuntelet tarkasti viron puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi viroksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "C5B9720D-2B44-4FB8-8867-62ADF521FDD7.mp3",
+      "size_kb": 743.7
+    },
+    {
+      "uuid": "8D3108C3-EC4C-42FC-BE4D-4ADD52115FD4",
+      "target_language": "fas",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan persian puhujaksi. Näin se toimii - opetan sinulle jotain persiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen persiaksi. Sen jälkeen kuuntelet tarkasti persian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi persiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "8D3108C3-EC4C-42FC-BE4D-4ADD52115FD4.mp3",
+      "size_kb": 731.1
+    },
+    {
+      "uuid": "68A5DAA9-27CC-48DE-91C0-5EECEC3650AF",
+      "target_language": "glg",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan galician puhujaksi. Näin se toimii - opetan sinulle jotain galiciaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen galiciaksi. Sen jälkeen kuuntelet tarkasti galician puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi galiciaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "68A5DAA9-27CC-48DE-91C0-5EECEC3650AF.mp3",
+      "size_kb": 789.8
+    },
+    {
+      "uuid": "07A75922-ABDC-44B7-A666-094EFD29DFB0",
+      "target_language": "guj",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan gudžaratin puhujaksi. Näin se toimii - opetan sinulle jotain gudžaratiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen gudžaratiksi. Sen jälkeen kuuntelet tarkasti gudžaratin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi gudžaratiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "07A75922-ABDC-44B7-A666-094EFD29DFB0.mp3",
+      "size_kb": 776
+    },
+    {
+      "uuid": "20F51301-EBD2-4A29-93CF-DF98AFB8D334",
+      "target_language": "gle",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan iirin puhujaksi. Näin se toimii - opetan sinulle jotain iiriksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen iiriksi. Sen jälkeen kuuntelet tarkasti iirin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi iiriksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "20F51301-EBD2-4A29-93CF-DF98AFB8D334.mp3",
+      "size_kb": 768.6
+    },
+    {
+      "uuid": "1F290DCD-98E7-4913-8121-5532981ADA52",
+      "target_language": "hau",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan hausan puhujaksi. Näin se toimii - opetan sinulle jotain hausaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen hausaksi. Sen jälkeen kuuntelet tarkasti hausan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi hausaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "1F290DCD-98E7-4913-8121-5532981ADA52.mp3",
+      "size_kb": 739.6
+    },
+    {
+      "uuid": "93842287-EF4A-42D7-A78F-9FD2B28FCCC4",
+      "target_language": "hun",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan unkarin puhujaksi. Näin se toimii - opetan sinulle jotain unkariksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen unkariksi. Sen jälkeen kuuntelet tarkasti unkarin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi unkariksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "93842287-EF4A-42D7-A78F-9FD2B28FCCC4.mp3",
+      "size_kb": 752.3
+    },
+    {
+      "uuid": "F3C7B562-5D15-4B8A-B612-45D27F581B1D",
+      "target_language": "hye",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan armenian puhujaksi. Näin se toimii - opetan sinulle jotain armeniaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen armeniaksi. Sen jälkeen kuuntelet tarkasti armenian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi armeniaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "F3C7B562-5D15-4B8A-B612-45D27F581B1D.mp3",
+      "size_kb": 743.7
+    },
+    {
+      "uuid": "8C9D927C-E3BA-4823-B7A7-D61C1DBE66FC",
+      "target_language": "heb",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan heprean puhujaksi. Näin se toimii - opetan sinulle jotain hepreaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen hepreaksi. Sen jälkeen kuuntelet tarkasti heprean puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi hepreaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "8C9D927C-E3BA-4823-B7A7-D61C1DBE66FC.mp3",
+      "size_kb": 757.2
+    },
+    {
+      "uuid": "1E9611B4-0C99-48C9-B854-3F1A0D69CF46",
+      "target_language": "jav",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan jaavan puhujaksi. Näin se toimii - opetan sinulle jotain jaavaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen jaavaksi. Sen jälkeen kuuntelet tarkasti jaavan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi jaavaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "1E9611B4-0C99-48C9-B854-3F1A0D69CF46.mp3",
+      "size_kb": 756
+    },
+    {
+      "uuid": "E44B1640-81D9-42AB-9928-B7F3AD94A64E",
+      "target_language": "isl",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan islannin puhujaksi. Näin se toimii - opetan sinulle jotain islanniksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen islanniksi. Sen jälkeen kuuntelet tarkasti islannin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi islanniksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "E44B1640-81D9-42AB-9928-B7F3AD94A64E.mp3",
+      "size_kb": 760.9
+    },
+    {
+      "uuid": "B7760E13-181E-4E47-BF50-33495D795395",
+      "target_language": "kan",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan kannadan puhujaksi. Näin se toimii - opetan sinulle jotain kannadaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen kannadaksi. Sen jälkeen kuuntelet tarkasti kannadan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi kannadaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "B7760E13-181E-4E47-BF50-33495D795395.mp3",
+      "size_kb": 758.4
+    },
+    {
+      "uuid": "F3AD9E15-174D-4719-9B8B-E298FFEC0864",
+      "target_language": "kat",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan georgian puhujaksi. Näin se toimii - opetan sinulle jotain georgiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen georgiaksi. Sen jälkeen kuuntelet tarkasti georgian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi georgiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "F3AD9E15-174D-4719-9B8B-E298FFEC0864.mp3",
+      "size_kb": 734.7
+    },
+    {
+      "uuid": "578D250E-8D71-4EDE-A2C8-F210B01A87BB",
+      "target_language": "kir",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan kirgiisin puhujaksi. Näin se toimii - opetan sinulle jotain kirgiisiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen kirgiisiksi. Sen jälkeen kuuntelet tarkasti kirgiisin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi kirgiisiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "578D250E-8D71-4EDE-A2C8-F210B01A87BB.mp3",
+      "size_kb": 747.4
+    },
+    {
+      "uuid": "AAF26444-339C-49AB-B22B-F2FEFD7CD382",
+      "target_language": "kaz",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan kazakin puhujaksi. Näin se toimii - opetan sinulle jotain kazakiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen kazakiksi. Sen jälkeen kuuntelet tarkasti kazakin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi kazakiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "AAF26444-339C-49AB-B22B-F2FEFD7CD382.mp3",
+      "size_kb": 758.4
+    },
+    {
+      "uuid": "061F7F84-0F0E-4229-84F6-0934D73FC6C8",
+      "target_language": "lav",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan latvian puhujaksi. Näin se toimii - opetan sinulle jotain latviaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen latviaksi. Sen jälkeen kuuntelet tarkasti latvian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi latviaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "061F7F84-0F0E-4229-84F6-0934D73FC6C8.mp3",
+      "size_kb": 791.1
+    },
+    {
+      "uuid": "56FE9B10-DF87-4E56-8FBF-493F0B4900FE",
+      "target_language": "lit",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan liettuan puhujaksi. Näin se toimii - opetan sinulle jotain liettuaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen liettuaksi. Sen jälkeen kuuntelet tarkasti liettuan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi liettuaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "56FE9B10-DF87-4E56-8FBF-493F0B4900FE.mp3",
+      "size_kb": 762.5
+    },
+    {
+      "uuid": "8E788A49-FBC8-46AA-BD61-27FF4BBAC969",
+      "target_language": "lin",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan lingalan puhujaksi. Näin se toimii - opetan sinulle jotain lingalaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen lingalaksi. Sen jälkeen kuuntelet tarkasti lingalan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi lingalaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "8E788A49-FBC8-46AA-BD61-27FF4BBAC969.mp3",
+      "size_kb": 766.2
+    },
+    {
+      "uuid": "20CCE38D-8A55-42F6-8E16-2C43005556CE",
+      "target_language": "ltz",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan luxemburgin puhujaksi. Näin se toimii - opetan sinulle jotain luxemburgiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen luxemburgiksi. Sen jälkeen kuuntelet tarkasti luxemburgin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi luxemburgiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "20CCE38D-8A55-42F6-8E16-2C43005556CE.mp3",
+      "size_kb": 771.1
+    },
+    {
+      "uuid": "523E20D3-C704-4D43-B7B8-7C69C60F8DC2",
+      "target_language": "mal",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan malajaamin puhujaksi. Näin se toimii - opetan sinulle jotain malajaamiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen malajaamiksi. Sen jälkeen kuuntelet tarkasti malajaamin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi malajaamiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "523E20D3-C704-4D43-B7B8-7C69C60F8DC2.mp3",
+      "size_kb": 768.6
+    },
+    {
+      "uuid": "7F1444E4-1503-4FE8-8009-034AC43BBA22",
+      "target_language": "mkd",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan makedonian puhujaksi. Näin se toimii - opetan sinulle jotain makedoniaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen makedoniaksi. Sen jälkeen kuuntelet tarkasti makedonian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi makedoniaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "7F1444E4-1503-4FE8-8009-034AC43BBA22.mp3",
+      "size_kb": 768.6
+    },
+    {
+      "uuid": "195C8B03-122C-4315-A22A-8A5685E9A716",
+      "target_language": "mar",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan marathin puhujaksi. Näin se toimii - opetan sinulle jotain marathiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen marathiksi. Sen jälkeen kuuntelet tarkasti marathin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi marathiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "195C8B03-122C-4315-A22A-8A5685E9A716.mp3",
+      "size_kb": 792.3
+    },
+    {
+      "uuid": "05DF73D3-0C14-4A48-A193-C2D9BEF5ACD9",
+      "target_language": "nep",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan nepalin puhujaksi. Näin se toimii - opetan sinulle jotain nepaliksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen nepaliksi. Sen jälkeen kuuntelet tarkasti nepalin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi nepaliksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "05DF73D3-0C14-4A48-A193-C2D9BEF5ACD9.mp3",
+      "size_kb": 759.6
+    },
+    {
+      "uuid": "C77F48E3-B89D-4AA6-9092-58127E349DBE",
+      "target_language": "nor",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan norjan puhujaksi. Näin se toimii - opetan sinulle jotain norjaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen norjaksi. Sen jälkeen kuuntelet tarkasti norjan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi norjaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "C77F48E3-B89D-4AA6-9092-58127E349DBE.mp3",
+      "size_kb": 712.3
+    },
+    {
+      "uuid": "61229CBD-2A2A-4C1E-9F5B-D0A0DE5C7B5B",
+      "target_language": "nya",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan tshewan puhujaksi. Näin se toimii - opetan sinulle jotain tshewaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen tshewaksi. Sen jälkeen kuuntelet tarkasti tshewan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi tshewaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "61229CBD-2A2A-4C1E-9F5B-D0A0DE5C7B5B.mp3",
+      "size_kb": 756
+    },
+    {
+      "uuid": "B20CE86A-DF46-423C-B8D6-0B730D8759BD",
+      "target_language": "pan",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan pandžabin puhujaksi. Näin se toimii - opetan sinulle jotain pandžabiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen pandžabiksi. Sen jälkeen kuuntelet tarkasti pandžabin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi pandžabiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "B20CE86A-DF46-423C-B8D6-0B730D8759BD.mp3",
+      "size_kb": 779.6
+    },
+    {
+      "uuid": "3258546F-86E5-4D81-94DF-E5212B60A782",
+      "target_language": "pus",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan pashton puhujaksi. Näin se toimii - opetan sinulle jotain pashtoksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen pashtoksi. Sen jälkeen kuuntelet tarkasti pashton puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi pashtoksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "3258546F-86E5-4D81-94DF-E5212B60A782.mp3",
+      "size_kb": 754.7
+    },
+    {
+      "uuid": "17B438FD-2640-46B4-9593-2F21F0F7D3EC",
+      "target_language": "snd",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan sindhin puhujaksi. Näin se toimii - opetan sinulle jotain sindhiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen sindhiksi. Sen jälkeen kuuntelet tarkasti sindhin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi sindhiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "17B438FD-2640-46B4-9593-2F21F0F7D3EC.mp3",
+      "size_kb": 743.7
+    },
+    {
+      "uuid": "290C4C9F-ADBE-4C31-9947-948B97EC1626",
+      "target_language": "som",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan somalin puhujaksi. Näin se toimii - opetan sinulle jotain somaliksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen somaliksi. Sen jälkeen kuuntelet tarkasti somalin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi somaliksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "290C4C9F-ADBE-4C31-9947-948B97EC1626.mp3",
+      "size_kb": 767.4
+    },
+    {
+      "uuid": "9299EFF5-0A93-4388-969A-265CC0A6F4A6",
+      "target_language": "slv",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan slovenian puhujaksi. Näin se toimii - opetan sinulle jotain sloveniaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen sloveniaksi. Sen jälkeen kuuntelet tarkasti slovenian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi sloveniaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "9299EFF5-0A93-4388-969A-265CC0A6F4A6.mp3",
+      "size_kb": 768.6
+    },
+    {
+      "uuid": "05E9D289-F357-4EAE-93E1-779FE6113130",
+      "target_language": "srp",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan serbian puhujaksi. Näin se toimii - opetan sinulle jotain serbiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen serbiaksi. Sen jälkeen kuuntelet tarkasti serbian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi serbiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "05E9D289-F357-4EAE-93E1-779FE6113130.mp3",
+      "size_kb": 742.5
+    },
+    {
+      "uuid": "1D8761A4-4C99-4610-BD65-58630DF82367",
+      "target_language": "tel",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan telugun puhujaksi. Näin se toimii - opetan sinulle jotain teluguksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen teluguksi. Sen jälkeen kuuntelet tarkasti telugun puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi teluguksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "1D8761A4-4C99-4610-BD65-58630DF82367.mp3",
+      "size_kb": 759.6
+    },
+    {
+      "uuid": "F4417C1B-92FA-4ED9-91A8-2685AE400A05",
+      "target_language": "swa",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan swahilin puhujaksi. Näin se toimii - opetan sinulle jotain swahiliksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen swahiliksi. Sen jälkeen kuuntelet tarkasti swahilin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi swahiliksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "F4417C1B-92FA-4ED9-91A8-2685AE400A05.mp3",
+      "size_kb": 753.5
+    },
+    {
+      "uuid": "8B5A5BC8-3E9B-4309-A20A-178D27DAEE79",
+      "target_language": "tha",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan thain puhujaksi. Näin se toimii - opetan sinulle jotain thaiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen thaiksi. Sen jälkeen kuuntelet tarkasti thain puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi thaiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "8B5A5BC8-3E9B-4309-A20A-178D27DAEE79.mp3",
+      "size_kb": 736
+    },
+    {
+      "uuid": "9CC1A7F6-C03D-44E0-B0A9-A36C7AB652A8",
+      "target_language": "urd",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan urdun puhujaksi. Näin se toimii - opetan sinulle jotain urduksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen urduksi. Sen jälkeen kuuntelet tarkasti urdun puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi urduksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "9CC1A7F6-C03D-44E0-B0A9-A36C7AB652A8.mp3",
+      "size_kb": 758.4
+    },
+    {
+      "uuid": "22D2CA0A-676B-4EA8-A4EB-756A03A6318A",
+      "target_language": "vie",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan vietnamin puhujaksi. Näin se toimii - opetan sinulle jotain vietnamiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen vietnamiksi. Sen jälkeen kuuntelet tarkasti vietnamin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi vietnamiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "22D2CA0A-676B-4EA8-A4EB-756A03A6318A.mp3",
+      "size_kb": 739.6
+    },
+    {
+      "uuid": "278C861C-2227-4D31-88AF-6FB82F6CA4BF",
+      "target_language": "afb",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan persianlahden arabian puhujaksi. Näin se toimii - opetan sinulle jotain persianlahden arabiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen persianlahden arabiaksi. Sen jälkeen kuuntelet tarkasti persianlahden arabian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi persianlahden arabiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "278C861C-2227-4D31-88AF-6FB82F6CA4BF.mp3",
+      "size_kb": 843.7
+    },
+    {
+      "uuid": "866874CB-90CD-4067-8426-1A227297F2B8",
+      "target_language": "aii",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan suretin puhujaksi. Näin se toimii - opetan sinulle jotain suretiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen suretiksi. Sen jälkeen kuuntelet tarkasti suretin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi suretiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "866874CB-90CD-4067-8426-1A227297F2B8.mp3",
+      "size_kb": 724.9
+    },
+    {
+      "uuid": "60346DB1-12C5-4D65-A578-E02B38E13660",
+      "target_language": "ary",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan marokonarabian puhujaksi. Näin se toimii - opetan sinulle jotain marokonarabiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen marokonarabiaksi. Sen jälkeen kuuntelet tarkasti marokonarabian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi marokonarabiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "60346DB1-12C5-4D65-A578-E02B38E13660.mp3",
+      "size_kb": 792.3
+    },
+    {
+      "uuid": "3700BE6C-9E03-4DB3-9E82-3334AC1FF794",
+      "target_language": "amh",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan amharan puhujaksi. Näin se toimii - opetan sinulle jotain amharaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen amharaksi. Sen jälkeen kuuntelet tarkasti amharan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi amharaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "3700BE6C-9E03-4DB3-9E82-3334AC1FF794.mp3",
+      "size_kb": 752.3
+    },
+    {
+      "uuid": "FBF3E692-1A24-4BF2-B0EA-1CC2A8D2C734",
+      "target_language": "apc",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan levanttinarabian puhujaksi. Näin se toimii - opetan sinulle jotain levanttinarabiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen levanttinarabiaksi. Sen jälkeen kuuntelet tarkasti levanttinarabian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi levanttinarabiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "FBF3E692-1A24-4BF2-B0EA-1CC2A8D2C734.mp3",
+      "size_kb": 808.6
+    },
+    {
+      "uuid": "2A686DEE-0B65-4599-B366-801E84385054",
+      "target_language": "ain",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan ainun puhujaksi. Näin se toimii - opetan sinulle jotain ainuksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen ainuksi. Sen jälkeen kuuntelet tarkasti ainun puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi ainuksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "2A686DEE-0B65-4599-B366-801E84385054.mp3",
+      "size_kb": 754.7
+    },
+    {
+      "uuid": "DDED0A13-05A6-4A9D-A978-5406B5DFE488",
+      "target_language": "bre",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan bretonin puhujaksi. Näin se toimii - opetan sinulle jotain bretoniksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen bretoniksi. Sen jälkeen kuuntelet tarkasti bretonin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi bretoniksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "DDED0A13-05A6-4A9D-A978-5406B5DFE488.mp3",
+      "size_kb": 760.9
+    },
+    {
+      "uuid": "C0641E83-B1BB-49F1-B84E-5F0790BF8B33",
+      "target_language": "cor",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan kornin puhujaksi. Näin se toimii - opetan sinulle jotain korniksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen korniksi. Sen jälkeen kuuntelet tarkasti kornin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi korniksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "C0641E83-B1BB-49F1-B84E-5F0790BF8B33.mp3",
+      "size_kb": 737.2
+    },
+    {
+      "uuid": "E321A516-F166-47B9-9396-D4972E84B048",
+      "target_language": "eus",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan baskin puhujaksi. Näin se toimii - opetan sinulle jotain baskiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen baskiksi. Sen jälkeen kuuntelet tarkasti baskin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi baskiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "E321A516-F166-47B9-9396-D4972E84B048.mp3",
+      "size_kb": 739.6
+    },
+    {
+      "uuid": "02043FA2-2C0F-445B-A83C-2A4947CAC8C6",
+      "target_language": "gla",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan skottigaelin puhujaksi. Näin se toimii - opetan sinulle jotain skottigaeliksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen skottigaeliksi. Sen jälkeen kuuntelet tarkasti skottigaelin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi skottigaeliksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "02043FA2-2C0F-445B-A83C-2A4947CAC8C6.mp3",
+      "size_kb": 782.5
+    },
+    {
+      "uuid": "1FE45373-54B4-447B-B266-976406E1E509",
+      "target_language": "ibo",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan igbon puhujaksi. Näin se toimii - opetan sinulle jotain igboksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen igboksi. Sen jälkeen kuuntelet tarkasti igbon puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi igboksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "1FE45373-54B4-447B-B266-976406E1E509.mp3",
+      "size_kb": 731.1
+    },
+    {
+      "uuid": "C556201F-31C0-4445-84DF-91FB1A2422DA",
+      "target_language": "moh",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan mohawkin puhujaksi. Näin se toimii - opetan sinulle jotain mohawkiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen mohawkiksi. Sen jälkeen kuuntelet tarkasti mohawkin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi mohawkiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "C556201F-31C0-4445-84DF-91FB1A2422DA.mp3",
+      "size_kb": 746.2
+    },
+    {
+      "uuid": "542DEAEB-D7C8-4FB2-B10F-623F5C33E32D",
+      "target_language": "kur",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan kurdin puhujaksi. Näin se toimii - opetan sinulle jotain kurdiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen kurdiksi. Sen jälkeen kuuntelet tarkasti kurdin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi kurdiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "542DEAEB-D7C8-4FB2-B10F-623F5C33E32D.mp3",
+      "size_kb": 749.8
+    },
+    {
+      "uuid": "8412DB0D-51A9-4AB0-BF14-AC4D73FDFB73",
+      "target_language": "grn",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan guaranin puhujaksi. Näin se toimii - opetan sinulle jotain guaraniksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen guaraniksi. Sen jälkeen kuuntelet tarkasti guaranin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi guaraniksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "8412DB0D-51A9-4AB0-BF14-AC4D73FDFB73.mp3",
+      "size_kb": 767.4
+    },
+    {
+      "uuid": "6B464301-D511-45E7-814D-DD9A9F46BB8E",
+      "target_language": "hak",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan hakan puhujaksi. Näin se toimii - opetan sinulle jotain hakaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen hakaksi. Sen jälkeen kuuntelet tarkasti hakan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi hakaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "6B464301-D511-45E7-814D-DD9A9F46BB8E.mp3",
+      "size_kb": 794.7
+    },
+    {
+      "uuid": "93E47DC6-7001-4080-BB35-8BEF2983C003",
+      "target_language": "nan",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan hokkienin puhujaksi. Näin se toimii - opetan sinulle jotain hokkieniksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen hokkieniksi. Sen jälkeen kuuntelet tarkasti hokkienin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi hokkieniksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "93E47DC6-7001-4080-BB35-8BEF2983C003.mp3",
+      "size_kb": 771.1
+    },
+    {
+      "uuid": "4059C0D0-1686-4E2A-8AF3-0185048F7C9E",
+      "target_language": "glv",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan manksin puhujaksi. Näin se toimii - opetan sinulle jotain manksiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen manksiksi. Sen jälkeen kuuntelet tarkasti manksin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi manksiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "4059C0D0-1686-4E2A-8AF3-0185048F7C9E.mp3",
+      "size_kb": 726.2
+    },
+    {
+      "uuid": "A017C076-F2BF-44AC-B46C-60FE3C7B15BE",
+      "target_language": "nap",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan napolin puhujaksi. Näin se toimii - opetan sinulle jotain napoliksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen napoliksi. Sen jälkeen kuuntelet tarkasti napolin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi napoliksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "A017C076-F2BF-44AC-B46C-60FE3C7B15BE.mp3",
+      "size_kb": 737.2
+    },
+    {
+      "uuid": "3ABB5299-2ACD-483D-9AA9-FCDDA5CD8DC5",
+      "target_language": "nav",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan navajon puhujaksi. Näin se toimii - opetan sinulle jotain navajoksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen navajoksi. Sen jälkeen kuuntelet tarkasti navajon puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi navajoksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "3ABB5299-2ACD-483D-9AA9-FCDDA5CD8DC5.mp3",
+      "size_kb": 793.5
+    },
+    {
+      "uuid": "50493EE7-AB2E-48CC-97C5-0B7D9370F1B2",
+      "target_language": "por_BR",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan brasilianportugalin puhujaksi. Näin se toimii - opetan sinulle jotain brasilianportugaliksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen brasilianportugaliksi. Sen jälkeen kuuntelet tarkasti brasilianportugalin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi brasilianportugaliksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "50493EE7-AB2E-48CC-97C5-0B7D9370F1B2.mp3",
+      "size_kb": 808.6
+    },
+    {
+      "uuid": "8672FA50-A2F5-4300-8035-123DE1E8EEFB",
+      "target_language": "oci",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan oksitaanin puhujaksi. Näin se toimii - opetan sinulle jotain oksitaaniksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen oksitaaniksi. Sen jälkeen kuuntelet tarkasti oksitaanin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi oksitaaniksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "8672FA50-A2F5-4300-8035-123DE1E8EEFB.mp3",
+      "size_kb": 780.9
+    },
+    {
+      "uuid": "C8240202-1FAE-4F38-8A6C-3B74E5B43A5C",
+      "target_language": "roh",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan retromaanin puhujaksi. Näin se toimii - opetan sinulle jotain retoromaaniksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen retoromaaniksi. Sen jälkeen kuuntelet tarkasti retromaanin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi retoromaaniksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "C8240202-1FAE-4F38-8A6C-3B74E5B43A5C.mp3",
+      "size_kb": 833.5
+    },
+    {
+      "uuid": "8D18F6CD-DF28-4B06-9BCC-46ED819EE4D1",
+      "target_language": "que",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan ketšuan puhujaksi. Näin se toimii - opetan sinulle jotain ketšuaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen ketšuaksi. Sen jälkeen kuuntelet tarkasti ketšuan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi ketšuaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "8D18F6CD-DF28-4B06-9BCC-46ED819EE4D1.mp3",
+      "size_kb": 763.7
+    },
+    {
+      "uuid": "F6C1E268-8B2E-40A3-BA4D-222C243329D5",
+      "target_language": "por_EU",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan euroopanportugalin puhujaksi. Näin se toimii - opetan sinulle jotain euroopanportugaliksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen euroopanportugaliksi. Sen jälkeen kuuntelet tarkasti euroopanportugalin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi euroopanportugaliksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "F6C1E268-8B2E-40A3-BA4D-222C243329D5.mp3",
+      "size_kb": 802.5
+    },
+    {
+      "uuid": "E5802A2D-E142-4507-9337-906F534716B1",
+      "target_language": "sme",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan pohjoissaamen puhujaksi. Näin se toimii - opetan sinulle jotain pohjoissaameksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen pohjoissaameksi. Sen jälkeen kuuntelet tarkasti pohjoissaamen puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi pohjoissaameksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "E5802A2D-E142-4507-9337-906F534716B1.mp3",
+      "size_kb": 822.5
+    },
+    {
+      "uuid": "ED515010-A10B-4695-B75B-65A8F7C9250E",
+      "target_language": "scn",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan sisilian puhujaksi. Näin se toimii - opetan sinulle jotain sisiliaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen sisiliaksi. Sen jälkeen kuuntelet tarkasti sisilian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi sisiliaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "ED515010-A10B-4695-B75B-65A8F7C9250E.mp3",
+      "size_kb": 792.3
+    },
+    {
+      "uuid": "F89AD086-AEF4-40FA-8FF0-982FD4A1FEA7",
+      "target_language": "smj",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan luulajansaamen puhujaksi. Näin se toimii - opetan sinulle jotain luulajansaameksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen luulajansaameksi. Sen jälkeen kuuntelet tarkasti luulajansaamen puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi luulajansaameksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "F89AD086-AEF4-40FA-8FF0-982FD4A1FEA7.mp3",
+      "size_kb": 797.2
+    },
+    {
+      "uuid": "55034C9E-4F7B-4175-9CF7-EDFFA30BDB3A",
+      "target_language": "smn",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan inarinsaamen puhujaksi. Näin se toimii - opetan sinulle jotain inarinsaameksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen inarinsaameksi. Sen jälkeen kuuntelet tarkasti inarinsaamen puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi inarinsaameksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "55034C9E-4F7B-4175-9CF7-EDFFA30BDB3A.mp3",
+      "size_kb": 789.8
+    },
+    {
+      "uuid": "C832C28A-46B8-4EC7-8AB0-46D6F30FE44F",
+      "target_language": "spa_EU",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan euroopanespanjan puhujaksi. Näin se toimii - opetan sinulle jotain euroopanespanjaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen euroopanespanjaksi. Sen jälkeen kuuntelet tarkasti euroopanespanjan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi euroopanespanjaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "C832C28A-46B8-4EC7-8AB0-46D6F30FE44F.mp3",
+      "size_kb": 822.5
+    },
+    {
+      "uuid": "76D15C0F-68B6-4AF0-BAD8-9F6B3A01F571",
+      "target_language": "sms",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan koltansaamen puhujaksi. Näin se toimii - opetan sinulle jotain koltansaameksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen koltansaameksi. Sen jälkeen kuuntelet tarkasti koltansaamen puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi koltansaameksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "76D15C0F-68B6-4AF0-BAD8-9F6B3A01F571.mp3",
+      "size_kb": 782.5
+    },
+    {
+      "uuid": "824DD142-8146-46F9-8A97-F1A321C5C18A",
+      "target_language": "wuu",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan shanghain puhujaksi. Näin se toimii - opetan sinulle jotain shanghaiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen shanghaiksi. Sen jälkeen kuuntelet tarkasti shanghain puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi shanghaiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "824DD142-8146-46F9-8A97-F1A321C5C18A.mp3",
+      "size_kb": 767.4
+    },
+    {
+      "uuid": "538FCC71-C327-484C-9764-C9A673E9F8BE",
+      "target_language": "spa_SA",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan eteläamerikkanespanjan puhujaksi. Näin se toimii - opetan sinulle jotain eteläamerikkanespanjaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen eteläamerikkanespanjaksi. Sen jälkeen kuuntelet tarkasti eteläamerikkanespanjan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi eteläamerikkanespanjaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "538FCC71-C327-484C-9764-C9A673E9F8BE.mp3",
+      "size_kb": 812.3
+    },
+    {
+      "uuid": "1C9E0F44-0B33-45B9-9B7B-56284A0388A8",
+      "target_language": "uig",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan uiguurin puhujaksi. Näin se toimii - opetan sinulle jotain uiguuriksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen uiguuriksi. Sen jälkeen kuuntelet tarkasti uiguurin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi uiguuriksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "1C9E0F44-0B33-45B9-9B7B-56284A0388A8.mp3",
+      "size_kb": 747.4
+    },
+    {
+      "uuid": "1FEE0A67-5AF9-41AC-8942-911A9EE9E6CA",
+      "target_language": "yid",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan jiddišin puhujaksi. Näin se toimii - opetan sinulle jotain jiddišiksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen jiddišiksi. Sen jälkeen kuuntelet tarkasti jiddišin puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi jiddišiksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "1FEE0A67-5AF9-41AC-8942-911A9EE9E6CA.mp3",
+      "size_kb": 778.4
+    },
+    {
+      "uuid": "DBB2ECBA-322E-4E0C-BE90-4920C77FA55F",
+      "target_language": "srd",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan sardinian puhujaksi. Näin se toimii - opetan sinulle jotain sardianiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen sardianiaksi. Sen jälkeen kuuntelet tarkasti sardinian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi sardianiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "DBB2ECBA-322E-4E0C-BE90-4920C77FA55F.mp3",
+      "size_kb": 798.4
+    },
+    {
+      "uuid": "E96EDB63-0610-4CBA-A47A-A32F4E6357F4",
+      "target_language": "xho",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan xhosan puhujaksi. Näin se toimii - opetan sinulle jotain xhosaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen xhosaksi. Sen jälkeen kuuntelet tarkasti xhosan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi xhosaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "E96EDB63-0610-4CBA-A47A-A32F4E6357F4.mp3",
+      "size_kb": 763.7
+    },
+    {
+      "uuid": "B13FA029-578A-4138-92FD-B11BC69CEB65",
+      "target_language": "yor",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan joruban puhujaksi. Näin se toimii - opetan sinulle jotain jorubaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen jorubaksi. Sen jälkeen kuuntelet tarkasti joruban puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi jorubaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "B13FA029-578A-4138-92FD-B11BC69CEB65.mp3",
+      "size_kb": 782.5
+    },
+    {
+      "uuid": "ECF5C6B1-D91C-4668-A3CA-29DB55F419B7",
+      "target_language": "yue",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan kantoninkiinan puhujaksi. Näin se toimii - opetan sinulle jotain kantoninkiinaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen kantoninkiinaksi. Sen jälkeen kuuntelet tarkasti kantoninkiinan puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi kantoninkiinaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "ECF5C6B1-D91C-4668-A3CA-29DB55F419B7.mp3",
+      "size_kb": 832.3
+    },
+    {
+      "uuid": "FD0D42C5-AF43-4E06-BA66-FEC4ED69A022",
+      "target_language": "zul",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan zulun puhujaksi. Näin se toimii - opetan sinulle jotain zuluksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen zuluksi. Sen jälkeen kuuntelet tarkasti zulun puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi zuluksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "FD0D42C5-AF43-4E06-BA66-FEC4ED69A022.mp3",
+      "size_kb": 774.7
+    },
+    {
+      "uuid": "5AD47F8C-0E0E-423E-B279-59BEEC4E7265",
+      "target_language": "ara_lb",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan libanonin arabian puhujaksi. Näin se toimii - opetan sinulle jotain arabiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen arabiaksi. Sen jälkeen kuuntelet tarkasti arabian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi arabiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "5AD47F8C-0E0E-423E-B279-59BEEC4E7265.mp3",
+      "size_kb": 679.8,
+      "duration_ms": 51672
+    },
+    {
+      "uuid": "618EFC7E-337A-4C08-A9D9-F1F7B2C7635F",
+      "target_language": "ara_eg",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan egyptinarabian puhujaksi. Näin se toimii - opetan sinulle jotain arabiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen arabiaksi. Sen jälkeen kuuntelet tarkasti arabian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi arabiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "618EFC7E-337A-4C08-A9D9-F1F7B2C7635F.mp3",
+      "size_kb": 665.9,
+      "duration_ms": 51168
+    },
+    {
+      "uuid": "3948DC7A-9375-492E-B046-D3C1A946EF92",
+      "target_language": "ara_sy",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan syyrian arabian puhujaksi. Näin se toimii - opetan sinulle jotain arabiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen arabiaksi. Sen jälkeen kuuntelet tarkasti arabian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi arabiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "3948DC7A-9375-492E-B046-D3C1A946EF92.mp3",
+      "size_kb": 673.7,
+      "duration_ms": 51864
+    },
+    {
+      "uuid": "8D7DD609-64F2-4746-8412-6D5D8F0BAB86",
+      "target_language": "ara",
+      "text": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan modernin yleisarabian puhujaksi. Näin se toimii - opetan sinulle jotain arabiaksi, sitten sanon jotain suomeksi ja annan sinulle mahdollisuuden sanoa sen ääneen arabiaksi. Sen jälkeen kuuntelet tarkasti arabian puhujia, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi arabiaksi nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+      "file": "8D7DD609-64F2-4746-8412-6D5D8F0BAB86.mp3",
+      "duration_ms": 51216
+    }
+  ],
+  "generated_at": "2026-05-01T15:42:33.916Z",
+  "regenerated_at": "2026-05-18T12:05:50.821Z"
+}

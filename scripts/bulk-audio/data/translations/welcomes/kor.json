@@ -1,0 +1,743 @@
+{
+  "known_language": "kor",
+  "known_language_display": "Korean",
+  "template": "{a_target_speaker}이 되는 데 도움을 줄 이 색다른 게임에 오신 것을 환영합니다. 방법은 이렇습니다. 먼저 제가 {in_target}로 무언가를 알려드립니다. 그런 다음 제가 {in_known}로 무언가를 말하면, 여러분이 그것을 {in_target}로 소리 내어 말해 보세요. 그다음, {target_speakers}의 본보기를 잘 들어 보세요. 빈 시간이 생길 때 무언가를 말하는 것이 중요합니다. 그것이 바로 배우는 방법이니까요. 확신이 없더라도, 말할 수 있는 것을 일단 말해 보세요. 그러면 생각보다 빨리 {in_target}로 말하기 시작할 거예요. 이것을 게임이라고 생각할수록, 더 즐겁게 할수록, 실수할 때 더 많이 웃을수록, 더 잘 되고 더 빨리 배우게 됩니다. 자, 시작해 볼까요.",
+  "in_known": "한국어",
+  "targets": {
+    "afb": {
+      "in_target": "걸프 아랍어",
+      "a_target_speaker": "걸프 아랍어를 말하는 사람",
+      "target_speakers": "걸프 아랍어 원어민"
+    },
+    "afr": {
+      "in_target": "아프리칸스어",
+      "a_target_speaker": "아프리칸스어를 말하는 사람",
+      "target_speakers": "아프리칸스어 원어민"
+    },
+    "aii": {
+      "in_target": "아시리아어",
+      "a_target_speaker": "아시리아어를 말하는 사람",
+      "target_speakers": "아시리아어 원어민"
+    },
+    "ain": {
+      "in_target": "아이누어",
+      "a_target_speaker": "아이누어를 말하는 사람",
+      "target_speakers": "아이누어 원어민"
+    },
+    "ajp": {
+      "in_target": "팔레스타인 아랍어",
+      "a_target_speaker": "팔레스타인 아랍어를 말하는 사람",
+      "target_speakers": "팔레스타인 아랍어 원어민"
+    },
+    "amh": {
+      "in_target": "암하라어",
+      "a_target_speaker": "암하라어를 말하는 사람",
+      "target_speakers": "암하라어 원어민"
+    },
+    "apc": {
+      "in_target": "레반트 아랍어",
+      "a_target_speaker": "레반트 아랍어를 말하는 사람",
+      "target_speakers": "레반트 아랍어 원어민"
+    },
+    "ara": {
+      "in_target": "아랍어",
+      "a_target_speaker": "현대 표준 아랍어 원어민",
+      "target_speakers": "아랍어 원어민"
+    },
+    "arg": {
+      "in_target": "아라곤어",
+      "a_target_speaker": "아라곤어를 말하는 사람",
+      "target_speakers": "아라곤어 원어민"
+    },
+    "ary": {
+      "in_target": "모로코 아랍어",
+      "a_target_speaker": "모로코 아랍어를 말하는 사람",
+      "target_speakers": "모로코 아랍어 원어민"
+    },
+    "asm": {
+      "in_target": "아삼어",
+      "a_target_speaker": "아삼어를 말하는 사람",
+      "target_speakers": "아삼어 원어민"
+    },
+    "ast": {
+      "in_target": "아스투리아스어",
+      "a_target_speaker": "아스투리아스어를 말하는 사람",
+      "target_speakers": "아스투리아스어 원어민"
+    },
+    "aze": {
+      "in_target": "아제르바이잔어",
+      "a_target_speaker": "아제르바이잔어를 말하는 사람",
+      "target_speakers": "아제르바이잔어 원어민"
+    },
+    "bar": {
+      "in_target": "바이에른어",
+      "a_target_speaker": "바이에른어를 말하는 사람",
+      "target_speakers": "바이에른어 원어민"
+    },
+    "bel": {
+      "in_target": "벨라루스어",
+      "a_target_speaker": "벨라루스어를 말하는 사람",
+      "target_speakers": "벨라루스어 원어민"
+    },
+    "ben": {
+      "in_target": "벵골어",
+      "a_target_speaker": "벵골어를 말하는 사람",
+      "target_speakers": "벵골어 원어민"
+    },
+    "bos": {
+      "in_target": "보스니아어",
+      "a_target_speaker": "보스니아어를 말하는 사람",
+      "target_speakers": "보스니아어 원어민"
+    },
+    "bre": {
+      "in_target": "브르타뉴어",
+      "a_target_speaker": "브르타뉴어를 말하는 사람",
+      "target_speakers": "브르타뉴어 원어민"
+    },
+    "bul": {
+      "in_target": "불가리아어",
+      "a_target_speaker": "불가리아어를 말하는 사람",
+      "target_speakers": "불가리아어 원어민"
+    },
+    "cat": {
+      "in_target": "카탈루냐어",
+      "a_target_speaker": "카탈루냐어를 말하는 사람",
+      "target_speakers": "카탈루냐어 원어민"
+    },
+    "ceb": {
+      "in_target": "세부아노어",
+      "a_target_speaker": "세부아노어를 말하는 사람",
+      "target_speakers": "세부아노어 원어민"
+    },
+    "ces": {
+      "in_target": "체코어",
+      "a_target_speaker": "체코어를 말하는 사람",
+      "target_speakers": "체코어 원어민"
+    },
+    "chr": {
+      "in_target": "체로키어",
+      "a_target_speaker": "체로키어를 말하는 사람",
+      "target_speakers": "체로키어 원어민"
+    },
+    "cmn": {
+      "in_target": "중국어",
+      "a_target_speaker": "중국어를 말하는 사람",
+      "target_speakers": "중국어 원어민"
+    },
+    "cor": {
+      "in_target": "콘월어",
+      "a_target_speaker": "콘월어를 말하는 사람",
+      "target_speakers": "콘월어 원어민"
+    },
+    "cos": {
+      "in_target": "코르시카어",
+      "a_target_speaker": "코르시카어를 말하는 사람",
+      "target_speakers": "코르시카어 원어민"
+    },
+    "csb": {
+      "in_target": "카슈브어",
+      "a_target_speaker": "카슈브어를 말하는 사람",
+      "target_speakers": "카슈브어 원어민"
+    },
+    "cym": {
+      "in_target": "웨일스어",
+      "a_target_speaker": "웨일스어를 말하는 사람",
+      "target_speakers": "웨일스어 원어민"
+    },
+    "dan": {
+      "in_target": "덴마크어",
+      "a_target_speaker": "덴마크어를 말하는 사람",
+      "target_speakers": "덴마크어 원어민"
+    },
+    "deu": {
+      "in_target": "독일어",
+      "a_target_speaker": "독일어를 말하는 사람",
+      "target_speakers": "독일어 원어민"
+    },
+    "deu_AT": {
+      "in_target": "독일어",
+      "a_target_speaker": "오스트리아 독일어를 말하는 사람",
+      "target_speakers": "독일어 원어민"
+    },
+    "dsb": {
+      "in_target": "하소르브어",
+      "a_target_speaker": "하소르브어를 말하는 사람",
+      "target_speakers": "하소르브어 원어민"
+    },
+    "ell": {
+      "in_target": "그리스어",
+      "a_target_speaker": "그리스어를 말하는 사람",
+      "target_speakers": "그리스어 원어민"
+    },
+    "eng": {
+      "in_target": "영어",
+      "a_target_speaker": "영어를 말하는 사람",
+      "target_speakers": "영어 원어민"
+    },
+    "est": {
+      "in_target": "에스토니아어",
+      "a_target_speaker": "에스토니아어를 말하는 사람",
+      "target_speakers": "에스토니아어 원어민"
+    },
+    "eus": {
+      "in_target": "바스크어",
+      "a_target_speaker": "바스크어를 말하는 사람",
+      "target_speakers": "바스크어 원어민"
+    },
+    "fao": {
+      "in_target": "페로어",
+      "a_target_speaker": "페로어를 말하는 사람",
+      "target_speakers": "페로어 원어민"
+    },
+    "fas": {
+      "in_target": "페르시아어",
+      "a_target_speaker": "페르시아어를 말하는 사람",
+      "target_speakers": "페르시아어 원어민"
+    },
+    "fij": {
+      "in_target": "피지어",
+      "a_target_speaker": "피지어를 말하는 사람",
+      "target_speakers": "피지어 원어민"
+    },
+    "fil": {
+      "in_target": "필리핀어",
+      "a_target_speaker": "필리핀어를 말하는 사람",
+      "target_speakers": "필리핀어 원어민"
+    },
+    "fin": {
+      "in_target": "핀란드어",
+      "a_target_speaker": "핀란드어를 말하는 사람",
+      "target_speakers": "핀란드어 원어민"
+    },
+    "fra": {
+      "in_target": "프랑스어",
+      "a_target_speaker": "프랑스어를 말하는 사람",
+      "target_speakers": "프랑스어 원어민"
+    },
+    "frr": {
+      "in_target": "북프리슬란트어",
+      "a_target_speaker": "북프리슬란트어를 말하는 사람",
+      "target_speakers": "북프리슬란트어 원어민"
+    },
+    "fry": {
+      "in_target": "서프리슬란트어",
+      "a_target_speaker": "서프리슬란트어를 말하는 사람",
+      "target_speakers": "서프리슬란트어 원어민"
+    },
+    "fur": {
+      "in_target": "프리울리어",
+      "a_target_speaker": "프리울리어를 말하는 사람",
+      "target_speakers": "프리울리어 원어민"
+    },
+    "gla": {
+      "in_target": "스코틀랜드 게일어",
+      "a_target_speaker": "스코틀랜드 게일어를 말하는 사람",
+      "target_speakers": "스코틀랜드 게일어 원어민"
+    },
+    "gle": {
+      "in_target": "아일랜드어",
+      "a_target_speaker": "아일랜드어를 말하는 사람",
+      "target_speakers": "아일랜드어 원어민"
+    },
+    "glg": {
+      "in_target": "갈리시아어",
+      "a_target_speaker": "갈리시아어를 말하는 사람",
+      "target_speakers": "갈리시아어 원어민"
+    },
+    "glv": {
+      "in_target": "맨어",
+      "a_target_speaker": "맨어를 말하는 사람",
+      "target_speakers": "맨어 원어민"
+    },
+    "grk": {
+      "in_target": "그리코어",
+      "a_target_speaker": "그리코어를 말하는 사람",
+      "target_speakers": "그리코어 원어민"
+    },
+    "grn": {
+      "in_target": "과라니어",
+      "a_target_speaker": "과라니어를 말하는 사람",
+      "target_speakers": "과라니어 원어민"
+    },
+    "gsw": {
+      "in_target": "스위스 독일어",
+      "a_target_speaker": "스위스 독일어를 말하는 사람",
+      "target_speakers": "스위스 독일어 원어민"
+    },
+    "guj": {
+      "in_target": "구자라트어",
+      "a_target_speaker": "구자라트어를 말하는 사람",
+      "target_speakers": "구자라트어 원어민"
+    },
+    "hak": {
+      "in_target": "하카어",
+      "a_target_speaker": "하카어를 말하는 사람",
+      "target_speakers": "하카어 원어민"
+    },
+    "hau": {
+      "in_target": "하우사어",
+      "a_target_speaker": "하우사어를 말하는 사람",
+      "target_speakers": "하우사어 원어민"
+    },
+    "haw": {
+      "in_target": "하와이어",
+      "a_target_speaker": "하와이어를 말하는 사람",
+      "target_speakers": "하와이어 원어민"
+    },
+    "heb": {
+      "in_target": "히브리어",
+      "a_target_speaker": "히브리어를 말하는 사람",
+      "target_speakers": "히브리어 원어민"
+    },
+    "hin": {
+      "in_target": "힌디어",
+      "a_target_speaker": "힌디어를 말하는 사람",
+      "target_speakers": "힌디어 원어민"
+    },
+    "hrv": {
+      "in_target": "크로아티아어",
+      "a_target_speaker": "크로아티아어를 말하는 사람",
+      "target_speakers": "크로아티아어 원어민"
+    },
+    "hsb": {
+      "in_target": "상소르브어",
+      "a_target_speaker": "상소르브어를 말하는 사람",
+      "target_speakers": "상소르브어 원어민"
+    },
+    "hun": {
+      "in_target": "헝가리어",
+      "a_target_speaker": "헝가리어를 말하는 사람",
+      "target_speakers": "헝가리어 원어민"
+    },
+    "hye": {
+      "in_target": "아르메니아어",
+      "a_target_speaker": "아르메니아어를 말하는 사람",
+      "target_speakers": "아르메니아어 원어민"
+    },
+    "ibo": {
+      "in_target": "이보어",
+      "a_target_speaker": "이보어를 말하는 사람",
+      "target_speakers": "이보어 원어민"
+    },
+    "iku": {
+      "in_target": "이누크티투트어",
+      "a_target_speaker": "이누크티투트어를 말하는 사람",
+      "target_speakers": "이누크티투트어 원어민"
+    },
+    "ind": {
+      "in_target": "인도네시아어",
+      "a_target_speaker": "인도네시아어를 말하는 사람",
+      "target_speakers": "인도네시아어 원어민"
+    },
+    "isl": {
+      "in_target": "아이슬란드어",
+      "a_target_speaker": "아이슬란드어를 말하는 사람",
+      "target_speakers": "아이슬란드어 원어민"
+    },
+    "ita": {
+      "in_target": "이탈리아어",
+      "a_target_speaker": "이탈리아어를 말하는 사람",
+      "target_speakers": "이탈리아어 원어민"
+    },
+    "jav": {
+      "in_target": "자바어",
+      "a_target_speaker": "자바어를 말하는 사람",
+      "target_speakers": "자바어 원어민"
+    },
+    "jpn": {
+      "in_target": "일본어",
+      "a_target_speaker": "일본어를 말하는 사람",
+      "target_speakers": "일본어 원어민"
+    },
+    "kal": {
+      "in_target": "그린란드어",
+      "a_target_speaker": "그린란드어를 말하는 사람",
+      "target_speakers": "그린란드어 원어민"
+    },
+    "kan": {
+      "in_target": "칸나다어",
+      "a_target_speaker": "칸나다어를 말하는 사람",
+      "target_speakers": "칸나다어 원어민"
+    },
+    "kat": {
+      "in_target": "조지아어",
+      "a_target_speaker": "조지아어를 말하는 사람",
+      "target_speakers": "조지아어 원어민"
+    },
+    "kaz": {
+      "in_target": "카자흐어",
+      "a_target_speaker": "카자흐어를 말하는 사람",
+      "target_speakers": "카자흐어 원어민"
+    },
+    "kir": {
+      "in_target": "키르기스어",
+      "a_target_speaker": "키르기스어를 말하는 사람",
+      "target_speakers": "키르기스어 원어민"
+    },
+    "kur": {
+      "in_target": "쿠르드어",
+      "a_target_speaker": "쿠르드어를 말하는 사람",
+      "target_speakers": "쿠르드어 원어민"
+    },
+    "lad": {
+      "in_target": "라디노어",
+      "a_target_speaker": "라디노어를 말하는 사람",
+      "target_speakers": "라디노어 원어민"
+    },
+    "lav": {
+      "in_target": "라트비아어",
+      "a_target_speaker": "라트비아어를 말하는 사람",
+      "target_speakers": "라트비아어 원어민"
+    },
+    "lij": {
+      "in_target": "리구리아어",
+      "a_target_speaker": "리구리아어를 말하는 사람",
+      "target_speakers": "리구리아어 원어민"
+    },
+    "lim": {
+      "in_target": "림뷔르흐어",
+      "a_target_speaker": "림뷔르흐어를 말하는 사람",
+      "target_speakers": "림뷔르흐어 원어민"
+    },
+    "lin": {
+      "in_target": "링갈라어",
+      "a_target_speaker": "링갈라어를 말하는 사람",
+      "target_speakers": "링갈라어 원어민"
+    },
+    "lit": {
+      "in_target": "리투아니아어",
+      "a_target_speaker": "리투아니아어를 말하는 사람",
+      "target_speakers": "리투아니아어 원어민"
+    },
+    "ltz": {
+      "in_target": "룩셈부르크어",
+      "a_target_speaker": "룩셈부르크어를 말하는 사람",
+      "target_speakers": "룩셈부르크어 원어민"
+    },
+    "mal": {
+      "in_target": "말라얄람어",
+      "a_target_speaker": "말라얄람어를 말하는 사람",
+      "target_speakers": "말라얄람어 원어민"
+    },
+    "mar": {
+      "in_target": "마라티어",
+      "a_target_speaker": "마라티어를 말하는 사람",
+      "target_speakers": "마라티어 원어민"
+    },
+    "mkd": {
+      "in_target": "마케도니아어",
+      "a_target_speaker": "마케도니아어를 말하는 사람",
+      "target_speakers": "마케도니아어 원어민"
+    },
+    "moh": {
+      "in_target": "모호크어",
+      "a_target_speaker": "모호크어를 말하는 사람",
+      "target_speakers": "모호크어 원어민"
+    },
+    "mri": {
+      "in_target": "마오리어",
+      "a_target_speaker": "마오리어를 말하는 사람",
+      "target_speakers": "마오리어 원어민"
+    },
+    "msa": {
+      "in_target": "말레이어",
+      "a_target_speaker": "말레이어를 말하는 사람",
+      "target_speakers": "말레이어 원어민"
+    },
+    "nan": {
+      "in_target": "민난어",
+      "a_target_speaker": "민난어를 말하는 사람",
+      "target_speakers": "민난어 원어민"
+    },
+    "nap": {
+      "in_target": "나폴리어",
+      "a_target_speaker": "나폴리어를 말하는 사람",
+      "target_speakers": "나폴리어 원어민"
+    },
+    "nav": {
+      "in_target": "나바호어",
+      "a_target_speaker": "나바호어를 말하는 사람",
+      "target_speakers": "나바호어 원어민"
+    },
+    "nep": {
+      "in_target": "네팔어",
+      "a_target_speaker": "네팔어를 말하는 사람",
+      "target_speakers": "네팔어 원어민"
+    },
+    "nld": {
+      "in_target": "네덜란드어",
+      "a_target_speaker": "네덜란드어를 말하는 사람",
+      "target_speakers": "네덜란드어 원어민"
+    },
+    "nor": {
+      "in_target": "노르웨이어",
+      "a_target_speaker": "노르웨이어를 말하는 사람",
+      "target_speakers": "노르웨이어 원어민"
+    },
+    "nya": {
+      "in_target": "체와어",
+      "a_target_speaker": "체와어를 말하는 사람",
+      "target_speakers": "체와어 원어민"
+    },
+    "oci": {
+      "in_target": "오크어",
+      "a_target_speaker": "오크어를 말하는 사람",
+      "target_speakers": "오크어 원어민"
+    },
+    "oji": {
+      "in_target": "오지브웨어",
+      "a_target_speaker": "오지브웨어를 말하는 사람",
+      "target_speakers": "오지브웨어 원어민"
+    },
+    "pan": {
+      "in_target": "펀자브어",
+      "a_target_speaker": "펀자브어를 말하는 사람",
+      "target_speakers": "펀자브어 원어민"
+    },
+    "pol": {
+      "in_target": "폴란드어",
+      "a_target_speaker": "폴란드어를 말하는 사람",
+      "target_speakers": "폴란드어 원어민"
+    },
+    "por": {
+      "in_target": "포르투갈어",
+      "a_target_speaker": "포르투갈어를 말하는 사람",
+      "target_speakers": "포르투갈어 원어민"
+    },
+    "por_BR": {
+      "in_target": "포르투갈어",
+      "a_target_speaker": "브라질 포르투갈어를 말하는 사람",
+      "target_speakers": "포르투갈어 원어민"
+    },
+    "por_EU": {
+      "in_target": "포르투갈어",
+      "a_target_speaker": "유럽 포르투갈어를 말하는 사람",
+      "target_speakers": "포르투갈어 원어민"
+    },
+    "pus": {
+      "in_target": "파슈토어",
+      "a_target_speaker": "파슈토어를 말하는 사람",
+      "target_speakers": "파슈토어 원어민"
+    },
+    "que": {
+      "in_target": "케추아어",
+      "a_target_speaker": "케추아어를 말하는 사람",
+      "target_speakers": "케추아어 원어민"
+    },
+    "roh": {
+      "in_target": "로만슈어",
+      "a_target_speaker": "로만슈어를 말하는 사람",
+      "target_speakers": "로만슈어 원어민"
+    },
+    "ron": {
+      "in_target": "루마니아어",
+      "a_target_speaker": "루마니아어를 말하는 사람",
+      "target_speakers": "루마니아어 원어민"
+    },
+    "rus": {
+      "in_target": "러시아어",
+      "a_target_speaker": "러시아어를 말하는 사람",
+      "target_speakers": "러시아어 원어민"
+    },
+    "scn": {
+      "in_target": "시칠리아어",
+      "a_target_speaker": "시칠리아어를 말하는 사람",
+      "target_speakers": "시칠리아어 원어민"
+    },
+    "sco": {
+      "in_target": "스코트어",
+      "a_target_speaker": "스코트어를 말하는 사람",
+      "target_speakers": "스코트어 원어민"
+    },
+    "slk": {
+      "in_target": "슬로바키아어",
+      "a_target_speaker": "슬로바키아어를 말하는 사람",
+      "target_speakers": "슬로바키아어 원어민"
+    },
+    "slv": {
+      "in_target": "슬로베니아어",
+      "a_target_speaker": "슬로베니아어를 말하는 사람",
+      "target_speakers": "슬로베니아어 원어민"
+    },
+    "sme": {
+      "in_target": "북사미어",
+      "a_target_speaker": "북사미어를 말하는 사람",
+      "target_speakers": "북사미어 원어민"
+    },
+    "smj": {
+      "in_target": "룰레 사미어",
+      "a_target_speaker": "룰레 사미어를 말하는 사람",
+      "target_speakers": "룰레 사미어 원어민"
+    },
+    "smn": {
+      "in_target": "이나리 사미어",
+      "a_target_speaker": "이나리 사미어를 말하는 사람",
+      "target_speakers": "이나리 사미어 원어민"
+    },
+    "smo": {
+      "in_target": "사모아어",
+      "a_target_speaker": "사모아어를 말하는 사람",
+      "target_speakers": "사모아어 원어민"
+    },
+    "sms": {
+      "in_target": "스콜트 사미어",
+      "a_target_speaker": "스콜트 사미어를 말하는 사람",
+      "target_speakers": "스콜트 사미어 원어민"
+    },
+    "snd": {
+      "in_target": "신디어",
+      "a_target_speaker": "신디어를 말하는 사람",
+      "target_speakers": "신디어 원어민"
+    },
+    "som": {
+      "in_target": "소말리어",
+      "a_target_speaker": "소말리어를 말하는 사람",
+      "target_speakers": "소말리어 원어민"
+    },
+    "spa": {
+      "in_target": "스페인어",
+      "a_target_speaker": "스페인어를 말하는 사람",
+      "target_speakers": "스페인어 원어민"
+    },
+    "spa_EU": {
+      "in_target": "스페인어",
+      "a_target_speaker": "유럽 스페인어를 말하는 사람",
+      "target_speakers": "스페인어 원어민"
+    },
+    "spa_SA": {
+      "in_target": "스페인어",
+      "a_target_speaker": "남미 스페인어를 말하는 사람",
+      "target_speakers": "스페인어 원어민"
+    },
+    "srd": {
+      "in_target": "사르데냐어",
+      "a_target_speaker": "사르데냐어를 말하는 사람",
+      "target_speakers": "사르데냐어 원어민"
+    },
+    "srp": {
+      "in_target": "세르비아어",
+      "a_target_speaker": "세르비아어를 말하는 사람",
+      "target_speakers": "세르비아어 원어민"
+    },
+    "swa": {
+      "in_target": "스와힐리어",
+      "a_target_speaker": "스와힐리어를 말하는 사람",
+      "target_speakers": "스와힐리어 원어민"
+    },
+    "swe": {
+      "in_target": "스웨덴어",
+      "a_target_speaker": "스웨덴어를 말하는 사람",
+      "target_speakers": "스웨덴어 원어민"
+    },
+    "tah": {
+      "in_target": "타히티어",
+      "a_target_speaker": "타히티어를 말하는 사람",
+      "target_speakers": "타히티어 원어민"
+    },
+    "tam": {
+      "in_target": "타밀어",
+      "a_target_speaker": "타밀어를 말하는 사람",
+      "target_speakers": "타밀어 원어민"
+    },
+    "tel": {
+      "in_target": "텔루구어",
+      "a_target_speaker": "텔루구어를 말하는 사람",
+      "target_speakers": "텔루구어 원어민"
+    },
+    "tha": {
+      "in_target": "태국어",
+      "a_target_speaker": "태국어를 말하는 사람",
+      "target_speakers": "태국어 원어민"
+    },
+    "ton": {
+      "in_target": "통가어",
+      "a_target_speaker": "통가어를 말하는 사람",
+      "target_speakers": "통가어 원어민"
+    },
+    "tur": {
+      "in_target": "터키어",
+      "a_target_speaker": "터키어를 말하는 사람",
+      "target_speakers": "터키어 원어민"
+    },
+    "uig": {
+      "in_target": "위구르어",
+      "a_target_speaker": "위구르어를 말하는 사람",
+      "target_speakers": "위구르어 원어민"
+    },
+    "ukr": {
+      "in_target": "우크라이나어",
+      "a_target_speaker": "우크라이나어를 말하는 사람",
+      "target_speakers": "우크라이나어 원어민"
+    },
+    "urd": {
+      "in_target": "우르두어",
+      "a_target_speaker": "우르두어를 말하는 사람",
+      "target_speakers": "우르두어 원어민"
+    },
+    "vec": {
+      "in_target": "베네토어",
+      "a_target_speaker": "베네토어를 말하는 사람",
+      "target_speakers": "베네토어 원어민"
+    },
+    "vie": {
+      "in_target": "베트남어",
+      "a_target_speaker": "베트남어를 말하는 사람",
+      "target_speakers": "베트남어 원어민"
+    },
+    "vls": {
+      "in_target": "플라망어",
+      "a_target_speaker": "플라망어를 말하는 사람",
+      "target_speakers": "플라망어 원어민"
+    },
+    "wln": {
+      "in_target": "왈롱어",
+      "a_target_speaker": "왈롱어를 말하는 사람",
+      "target_speakers": "왈롱어 원어민"
+    },
+    "wuu": {
+      "in_target": "우어",
+      "a_target_speaker": "우어를 말하는 사람",
+      "target_speakers": "우어 원어민"
+    },
+    "xho": {
+      "in_target": "코사어",
+      "a_target_speaker": "코사어를 말하는 사람",
+      "target_speakers": "코사어 원어민"
+    },
+    "yid": {
+      "in_target": "이디시어",
+      "a_target_speaker": "이디시어를 말하는 사람",
+      "target_speakers": "이디시어 원어민"
+    },
+    "yor": {
+      "in_target": "요루바어",
+      "a_target_speaker": "요루바어를 말하는 사람",
+      "target_speakers": "요루바어 원어민"
+    },
+    "yue": {
+      "in_target": "광둥어",
+      "a_target_speaker": "광둥어를 말하는 사람",
+      "target_speakers": "광둥어 원어민"
+    },
+    "zul": {
+      "in_target": "줄루어",
+      "a_target_speaker": "줄루어를 말하는 사람",
+      "target_speakers": "줄루어 원어민"
+    },
+    "ara_lb": {
+      "in_target": "아랍어",
+      "a_target_speaker": "레바논 아랍어를 말하는 사람",
+      "target_speakers": "아랍어 원어민"
+    },
+    "ara_sy": {
+      "in_target": "아랍어",
+      "a_target_speaker": "시리아 아랍어를 말하는 사람",
+      "target_speakers": "아랍어 원어민"
+    },
+    "ara_eg": {
+      "in_target": "아랍어",
+      "a_target_speaker": "이집트 아랍어를 말하는 사람",
+      "target_speakers": "아랍어 원어민"
+    }
+  }
+}

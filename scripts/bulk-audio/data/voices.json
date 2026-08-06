@@ -1,0 +1,1320 @@
+{
+  "_comment": "Voice configuration for bulk audio generation. 2 voices per language for fallback.",
+  "_model": "eleven_v3 (alpha) - supports 70+ languages natively",
+  "voices": {
+    "afr": {
+      "display_name": "Afrikaans",
+      "voices": [
+        {
+          "voice_id": "0ABF7BXBmz7UJY0BSYK4",
+          "name": "Willem",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "6lY3ohC9JnupQJ3jsHUP",
+          "name": "Annelie",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "ara": {
+      "display_name": "Arabic",
+      "voices": [
+        {
+          "voice_id": "R6nda3uM038xEEKi7GFl",
+          "name": "Anas - Calm, Attractive and Clear",
+          "type": "professional",
+          "gender": "male"
+        },
+        {
+          "voice_id": "qi4PkV9c01kb869Vh7Su",
+          "name": "Asmaa - Calm, Encouraging and Clear",
+          "type": "professional",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "hye": {
+      "display_name": "Armenian",
+      "voices": [
+        {
+          "voice_id": "h9hFRvN4Uxw09dQU7cZZ",
+          "name": "Arman",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "S34mmltXDek0T4TQOEiy",
+          "name": "Ani",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "asm": {
+      "display_name": "Assamese",
+      "voices": [
+        {
+          "voice_id": "hLP5ZMCNuGClXFvOXLUa",
+          "name": "Bhupen",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "DbGVJ55g3rT3EVh6w66L",
+          "name": "Jonali",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "aze": {
+      "display_name": "Azerbaijani",
+      "voices": [
+        {
+          "voice_id": "Nzmjl7yAqiVOb717bzW5",
+          "name": "Eldar",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "WNzdXXWyO3X0TUxG7iQX",
+          "name": "Leyla",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "bel": {
+      "display_name": "Belarusian",
+      "voices": [
+        {
+          "voice_id": "gRvXCjcPy7EPJoLYiKN3",
+          "name": "Maksim",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "LUSgxgm47Y7XmbKAfwJx",
+          "name": "Volha",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "ben": {
+      "display_name": "Bengali",
+      "voices": [
+        {
+          "voice_id": "eXKG6IGtQqcuhdj2eO6Y",
+          "name": "Rahim",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "veFJHiGoYL4sNxJxmKDU",
+          "name": "Priya",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "bos": {
+      "display_name": "Bosnian",
+      "voices": [
+        {
+          "voice_id": "PkQIMfJZb77nWI4XNH9R",
+          "name": "Emir",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "n4XZ3rHCOyHExy1o3Aa2",
+          "name": "Amina",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "bul": {
+      "display_name": "Bulgarian",
+      "voices": [
+        {
+          "voice_id": "406EiNlYvqFqcz3vsnOm",
+          "name": "Peter K - Warm, Round, and Smooth",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "M1ydWt7KnBCiuv4CnEDC",
+          "name": "Milena - Optimistic, Clear, and Balanced",
+          "type": "professional",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "cat": {
+      "display_name": "Catalan",
+      "voices": [
+        {
+          "voice_id": "DQdM6hnsR9rPigxQarUk",
+          "name": "Jordi",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "D7YpWVkQbXjIVblnmWwt",
+          "name": "Núria",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "ceb": {
+      "display_name": "Cebuano",
+      "voices": [
+        {
+          "voice_id": "RsSfih9OZEM4ghAEDcvv",
+          "name": "Rodel",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "QLebfAspY89hoBVfv4LD",
+          "name": "Gracela",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "nya": {
+      "display_name": "Chichewa",
+      "voices": [
+        {
+          "voice_id": "xSMScPGkvDZtnwcjN1e3",
+          "name": "Kondwani",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "hayMdYqQhNT7h1mDvnvP",
+          "name": "Chimwemwe",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "hrv": {
+      "display_name": "Croatian",
+      "voices": [
+        {
+          "voice_id": "ocaele7kOTNS1wQzhbSM",
+          "name": "Marko - Deep, Calm and Narrative",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "YjESejviApN7SHrbfnA2",
+          "name": "Nastya",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "ces": {
+      "display_name": "Czech",
+      "voices": [
+        {
+          "voice_id": "oJafrcmhnPdknhWvAMQq",
+          "name": "Shoshi - Czech Calm Voice",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "XOgpjkYNnVH5W7ZAlLYg",
+          "name": "Petra - Kind and Clear voice teacher",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "dan": {
+      "display_name": "Danish",
+      "voices": [
+        {
+          "voice_id": "Hp07ONf6C5qlCKOeB4oo",
+          "name": "Constantin Birkedal - Calm and Soothing",
+          "type": "professional",
+          "gender": "male"
+        },
+        {
+          "voice_id": "4RklGmuxoAskAbGXplXN",
+          "name": "Camilla - Engaging, Clear and Calm",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "nld": {
+      "display_name": "Dutch",
+      "voices": [
+        {
+          "voice_id": "Q6dV0r9H1dI4d6gz3NVD",
+          "name": "Joost - Causal & Informative",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "94W4cf0CMSgymY1uoRiX",
+          "name": "Noa",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+"est": {
+      "display_name": "Estonian",
+      "voices": [
+        {
+          "voice_id": "YrRDmXSvEA8tAhKvBdZS",
+          "name": "Taavi",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "Zcr4tYtN18htbcPh4NQa",
+          "name": "Liisa",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "fil": {
+      "display_name": "Filipino",
+      "voices": [
+        {
+          "voice_id": "pdyi3luhbIqZo983cuhK",
+          "name": "Kalma - Calm & Deep",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "StEG9BwRepduPUDVfSZR",
+          "name": "Teacher Tere - Caring and Sweet Teacher",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "fin": {
+      "display_name": "Finnish",
+      "voices": [
+        {
+          "voice_id": "Gp43kq9FsSlavD7esRtx",
+          "name": "Vaino - Peaceful & Soulful",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "RiWFFlzYFZuu4lPMig3i",
+          "name": "Soili - Neutral and Light",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "fra": {
+      "display_name": "French",
+      "voices": [
+        {
+          "voice_id": "eOwAMwUJEGkP44SKOXIH",
+          "name": "Julien - Professional customer service",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "HuLbOdhRlvQQN8oPP0AJ",
+          "name": "Claire - Customer service",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "glg": {
+      "display_name": "Galician",
+      "voices": [
+        {
+          "voice_id": "klhpzk0rul9cmH25bf8N",
+          "name": "Xoán",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "5LN3NU7K2GQ3vNAtvvrn",
+          "name": "Sabela",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "kat": {
+      "display_name": "Georgian",
+      "voices": [
+        {
+          "voice_id": "A5mMQVPfsr9kxaLHAQca",
+          "name": "Giorgi",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "D7oCEO4PKiMpbDPPvfVG",
+          "name": "Tamar",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "deu": {
+      "display_name": "German",
+      "voices": [
+        {
+          "voice_id": "FTNCalFNG5bRnkkaP5Ug",
+          "name": "Otto - Casual and Normal",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "v3V1d2rk6528UrLKRuy8",
+          "name": "Susi - Effortless and Confident",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "ell": {
+      "display_name": "Greek",
+      "voices": [
+        {
+          "voice_id": "LjADh1ECU2fAah7OCeE8",
+          "name": "Elias - Professional, confident & warm",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "7smwXrU3C1PfaspIIUZB",
+          "name": "Sophia - Assertive, Joyful and Warm",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "guj": {
+      "display_name": "Gujarati",
+      "voices": [
+        {
+          "voice_id": "Qqi1zqn1BmYL3j9PPP7o",
+          "name": "Kiran",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "yr6RrOkmCzhLCmOVQZiy",
+          "name": "Meera",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "hau": {
+      "display_name": "Hausa",
+      "voices": [
+        {
+          "voice_id": "EiYqBKx4zKLurmlZiI7A",
+          "name": "Musa",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "ET4D64uWPAOlh7VQr6ts",
+          "name": "Halima",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "heb": {
+      "display_name": "Hebrew",
+      "voices": [
+        {
+          "voice_id": "3P0KXbtVPvsB3iXsb4IW",
+          "name": "Yoav",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "BxKgZGX7oauikUd82d21",
+          "name": "Noa",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "hin": {
+      "display_name": "Hindi",
+      "voices": [
+        {
+          "voice_id": "WyjIvPRJbxeuLCf0u23f",
+          "name": "Ashis - Warm and Gripping",
+          "type": "professional",
+          "gender": "male"
+        },
+        {
+          "voice_id": "XcWoPxj7pwnIgM3dQnWv",
+          "name": "Kanika - Smooth, Intimidating",
+          "type": "professional",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "hun": {
+      "display_name": "Hungarian",
+      "voices": [
+        {
+          "voice_id": "M336tBVZHWWiWb4R54ui",
+          "name": "David - Deep, Soothing and Sincere",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "O4fnkotIypvedJqBp4yb",
+          "name": "Alexis Lancaster - Silky, Rich and Soft",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "isl": {
+      "display_name": "Icelandic",
+      "voices": [
+        {
+          "voice_id": "orw3unkrC6luM1nWxZy7",
+          "name": "Björn",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "jYwhky2uRaGgMmoJAtqC",
+          "name": "Sigríður",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "ind": {
+      "display_name": "Indonesian",
+      "voices": [
+        {
+          "voice_id": "1ijzBXcD3AIVH8RGMcQd",
+          "name": "Jefri - Soft Explanatory Voice",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "P4vDdU2QH4BSVqmloa3S",
+          "name": "Anita Jawa - Host or Presenter",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "gle": {
+      "display_name": "Irish",
+      "voices": [
+        {
+          "voice_id": "SzFYOBapPilRx0GEw38O",
+          "name": "Ciarán",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "zoc6iB6Ht2RlLbWtUjXX",
+          "name": "Aoife",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "ita": {
+      "display_name": "Italian",
+      "voices": [
+        {
+          "voice_id": "o5tUAYEqld5GJZ1Lv8uC",
+          "name": "Brando M – Expressive, Confident, Conversational",
+          "type": "professional",
+          "gender": "male"
+        },
+        {
+          "voice_id": "litDcG1avVppv4R90BLu",
+          "name": "Carla - Natural, Reflective & Narrative",
+          "type": "professional",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "jpn": {
+      "display_name": "Japanese",
+      "voices": [
+        {
+          "voice_id": "J9CDvsEpM6qIpKmOZ5xi",
+          "name": "Zakira",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "EGPLqH9Wz2tNLu58EJVR",
+          "name": "Sakura - Japanese Narration",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "jav": {
+      "display_name": "Javanese",
+      "voices": [
+        {
+          "voice_id": "EDxtxOsfORDmK5cbw0E7",
+          "name": "Budi",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "IMmSO50vPFPEawtkQVAE",
+          "name": "Ratih",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "kan": {
+      "display_name": "Kannada",
+      "voices": [
+        {
+          "voice_id": "1PqtAwpVugxGSEnAGSfK",
+          "name": "Arun",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "BNHhcjM5S2lmV8ATPBeu",
+          "name": "Kavya",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "kaz": {
+      "display_name": "Kazakh",
+      "voices": [
+        {
+          "voice_id": "jKhYvzdHPrrY6p4LhW2w",
+          "name": "Erlan",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "KcI7YAdIa51Hd0jc7F2s",
+          "name": "Ainur",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "kir": {
+      "display_name": "Kirghiz",
+      "voices": [
+        {
+          "voice_id": "iZbnZeCrMHdSgAqn3kU4",
+          "name": "Азамат",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "dHmFhCsze2foYopmaMJ6",
+          "name": "Айгүл",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "kor": {
+      "display_name": "Korean",
+      "voices": [
+        {
+          "voice_id": "ZNSVYmudV9pOqphY0x8C",
+          "name": "Choi - Soft ,Calm & Professional ",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "ah4r1hZOydd3XWlHOm3Y",
+          "name": "Jian.K – Calm mid-low, trustworthy voice",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "lav": {
+      "display_name": "Latvian",
+      "voices": [
+        {
+          "voice_id": "jShk1mXMDgbjqG8e09Fo",
+          "name": "Jānis",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "yK40qNNUwprzTigo1405",
+          "name": "Laima",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "lin": {
+      "display_name": "Lingala",
+      "voices": [
+        {
+          "voice_id": "5VSXINiBB0izJhurSWSc",
+          "name": "Fiston",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "NYoDKhaU3Fv5PTudynG2",
+          "name": "Mbilia",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "lit": {
+      "display_name": "Lithuanian",
+      "voices": [
+        {
+          "voice_id": "GIMSKllysP5FitVjkwL8",
+          "name": "Vytautas",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "qEAL1aN3OhbXD60djgrx",
+          "name": "Rūta",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "ltz": {
+      "display_name": "Luxembourgish",
+      "voices": [
+        {
+          "voice_id": "scRVUQc6MwvIhdKNTS3U",
+          "name": "Marc",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "fI8iQuFvNhO6HYSeMPbl",
+          "name": "Mireille",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "mkd": {
+      "display_name": "Macedonian",
+      "voices": [
+        {
+          "voice_id": "LnJiQx6llVXGo6ti1YlA",
+          "name": "Александар",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "zhjqImvIUPTETsod7RRU",
+          "name": "Марија",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "msa": {
+      "display_name": "Malay",
+      "voices": [
+        {
+          "voice_id": "JxGaUarxt3GRo9esNZZ6",
+          "name": "Zulfikar – Expressive Narrator ",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "tpzx5OBX8kbIrw1S4Pce",
+          "name": "Aisyah – Social Media Narrator",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "mal": {
+      "display_name": "Malayalam",
+      "voices": [
+        {
+          "voice_id": "smFmj4LCtv1QvRmtPUee",
+          "name": "Rajan",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "lwJSlUUKHiLPJCQbz7gi",
+          "name": "Lakshmi",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "cmn": {
+      "display_name": "Mandarin Chinese",
+      "voices": [
+        {
+          "voice_id": "pTOe8BQRdydOEIgv0wFL",
+          "name": "LiuPing - Clear, Professional and Calm",
+          "type": "professional",
+          "gender": "male"
+        },
+        {
+          "voice_id": "bhJUNIXWQQ94l8eI2VUf",
+          "name": "Amy - Friendly, Young and Natural",
+          "type": "professional",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "mar": {
+      "display_name": "Marathi",
+      "voices": [
+        {
+          "voice_id": "mP2vRo9CzKkHGvnfXPGa",
+          "name": "Sachin",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "XeeSUSJGjMsUIg3htBzB",
+          "name": "Sunita",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "nep": {
+      "display_name": "Nepali",
+      "voices": [
+        {
+          "voice_id": "3cFASja58MJSUxPoeHvy",
+          "name": "Ramesh",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "XgneSjVbFAhCFmRVUVTD",
+          "name": "Sita",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "nor": {
+      "display_name": "Norwegian",
+      "voices": [
+        {
+          "voice_id": "EpYEY8MWJrUGskHBoNMA",
+          "name": "Erik - Clear and Natural",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "BGEU6wFi2uNm6Kje1Yhk",
+          "name": "Maja - Calm Audiobook Narrator",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "pus": {
+      "display_name": "Pashto",
+      "voices": [
+        {
+          "voice_id": "m6ng1nqbnuM7vUzUVmFn",
+          "name": "Wahid",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "v5kgYwqHHy5vDZpit2YV",
+          "name": "Zarlashta",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "fas": {
+      "display_name": "Persian",
+      "voices": [
+        {
+          "voice_id": "0rDHdjLHBfWuWHUPBS40",
+          "name": "Ali",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "mbwx27vqqkIt5xPgh1mo",
+          "name": "Maryam",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "pol": {
+      "display_name": "Polish",
+      "voices": [
+        {
+          "voice_id": "Y1quDTS4ZfJp2mhu0Zw5",
+          "name": "Koras - Neutral, Clear, Social Media,",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "lehrjHysCyPSvjt0uSy6",
+          "name": "Marta - Calm, Symphatic, and Empathetic",
+          "type": "professional",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "por": {
+      "display_name": "Portuguese",
+      "voices": [
+        {
+          "voice_id": "zKjRewuiqTkXNUVAMwat",
+          "name": "Mariza",
+          "type": "native",
+          "gender": "female"
+        },
+        {
+          "voice_id": "QHXbC1UI61ujIZ9SUNGc",
+          "name": "Regi Piroli",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "pan": {
+      "display_name": "Punjabi",
+      "voices": [
+        {
+          "voice_id": "vQbIoo9vCGcl6lEn0NSA",
+          "name": "Gurpreet",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "9YyE2rBYldaUtzvgXaIV",
+          "name": "Simran",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "ron": {
+      "display_name": "Romanian",
+      "voices": [
+        {
+          "voice_id": "0okaJWIq26j9LWMEOE8N",
+          "name": "Daniel Mihai -  Recognized Media Voice",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "uRxQlQMA1BPSSdj5gXIK",
+          "name": "Cristina Amza - Charming and Expressive",
+          "type": "professional",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "rus": {
+      "display_name": "Russian",
+      "voices": [
+        {
+          "voice_id": "1eNbUPoawAd4HXDoj8vU",
+          "name": "Vasili - Work colleague",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "YjESejviApN7SHrbfnA2",
+          "name": "Nastya",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "srp": {
+      "display_name": "Serbian",
+      "voices": [
+        {
+          "voice_id": "IUQOXMyypGzOe4E2tDZ7",
+          "name": "Никола",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "ARusUctLtQUo0I84SB1A",
+          "name": "Милица",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "snd": {
+      "display_name": "Sindhi",
+      "voices": [
+        {
+          "voice_id": "rhx8F4mfBgaBuZLSc0GO",
+          "name": "Wazir",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "qza4G3GfC3b8TkdxGqJR",
+          "name": "Marvi",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "slk": {
+      "display_name": "Slovak",
+      "voices": [
+        {
+          "voice_id": "cplwxUXg1o6YMGPOYRbt",
+          "name": "Tibor",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "GsFe19Xn8iGqNR2RxINi",
+          "name": "Jolana",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "slv": {
+      "display_name": "Slovenian",
+      "voices": [
+        {
+          "voice_id": "iMLKxEzr6yYUByJtEfpA",
+          "name": "Luka",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "UdjVIFXMd3BQmXYbsbQP",
+          "name": "Ana",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "som": {
+      "display_name": "Somali",
+      "voices": [
+        {
+          "voice_id": "QfpIzp8LRcveCZLqEoPA",
+          "name": "Abdi",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "dOrbXxBVUV55N5VUkJy0",
+          "name": "Hodan",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "spa": {
+      "display_name": "Spanish",
+      "voices": [
+        {
+          "voice_id": "Vns8dIAJ9ToHnKSClFnQ",
+          "name": "JaviMar",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "N4QRhgZ7ZDNlSKHK9TCR",
+          "name": "Susana Escribano",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "swa": {
+      "display_name": "Swahili",
+      "voices": [
+        {
+          "voice_id": "O67fjPuJh0EGHU7W6bJO",
+          "name": "Juma",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "s82u3atj4pZY7JKiXOeE",
+          "name": "Amani",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "swe": {
+      "display_name": "Swedish",
+      "voices": [
+        {
+          "voice_id": "ZMs9a3j1SLzirC7aygJQ",
+          "name": "Kim - Svenska Swedish",
+          "type": "professional",
+          "gender": "male"
+        },
+        {
+          "voice_id": "1Iztu4UHnTb9SUjJcpS1",
+          "name": "Anna - Clear and Melodic",
+          "type": "professional",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "tam": {
+      "display_name": "Tamil",
+      "voices": [
+        {
+          "voice_id": "yrFqUM5ku2rYJCdiBKFU",
+          "name": "Aarumugam – Expressive and Engaging Narrator",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "IC6fkbI5BN65xFmhUCbY",
+          "name": "Mandira – Warm, Young Storyteller",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "tel": {
+      "display_name": "Telugu",
+      "voices": [
+        {
+          "voice_id": "sMFUzygzHiVpRc0UskkZ",
+          "name": "Venkat",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "HcKmGDQBGg5H0uwM5xIL",
+          "name": "Lakshmi",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "tha": {
+      "display_name": "Thai",
+      "voices": [
+        {
+          "voice_id": "VAjhyVG0b0RgMj5A8AIs",
+          "name": "Somchai",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "z7uc7a9BhegnfdKxSRCx",
+          "name": "Ploy",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "tur": {
+      "display_name": "Turkish",
+      "voices": [
+        {
+          "voice_id": "hPRFiYhpa5vjoox1z5mx",
+          "name": "Erandre ",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "9Hlhs8vhmiUvbP4rTY7C",
+          "name": "Meloxia - Calm Professional Narration",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "ukr": {
+      "display_name": "Ukrainian",
+      "voices": [
+        {
+          "voice_id": "0p9W8EFOJbkw3zD1oNop",
+          "name": "Alex - Warm Storyteller",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "KBxO1LTAD4PE7D9rqUeb",
+          "name": "Alisa - Sweet and Warm",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "urd": {
+      "display_name": "Urdu",
+      "voices": [
+        {
+          "voice_id": "nxKdjryAORAV32WxCMPM",
+          "name": "Ahmed",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "WeDaJtXNIksqcA8N0E3A",
+          "name": "Fatima",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "vie": {
+      "display_name": "Vietnamese",
+      "voices": [
+        {
+          "voice_id": "f966mdF5njWREvreUG07",
+          "name": "Quyen Ru",
+          "type": "native",
+          "gender": "male"
+        },
+        {
+          "voice_id": "qByVAGjXwGlkcRDJoiHg",
+          "name": "Kiều Linh",
+          "type": "native",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    },
+    "cym": {
+      "display_name": "Welsh",
+      "voices": [
+        {
+          "voice_id": "ZLqh2FOxvtg8JFBNSwFf",
+          "name": "Iwan",
+          "type": "generated",
+          "gender": "male"
+        },
+        {
+          "voice_id": "BKYqx05xehhOJgfyEAXL",
+          "name": "Nia",
+          "type": "generated",
+          "gender": "female"
+        }
+      ],
+      "model": "eleven_v3"
+    }
+  }
+}

@@ -1,0 +1,826 @@
+{
+  "known_language": "swe",
+  "display_name": "Swedish",
+  "voice": {
+    "voice_id": "1Iztu4UHnTb9SUjJcpS1",
+    "name": "Anna - Clear and Melodic",
+    "gender": "female"
+  },
+  "settings": {
+    "voice_stability": 0.4,
+    "model": "eleven_v3",
+    "language_code": "sv"
+  },
+  "welcomes": [
+    {
+      "uuid": "D1BE74EE-6B29-49D7-9FE8-7C4D4929C688",
+      "target_language": "bul",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en bulgarisktalande. Så här fungerar det - jag lär dig något på bulgariska, sedan säger jag något på svenska och ger dig en chans att säga det högt på bulgariska. Sedan lyssnar du noga på de bulgarisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på bulgariska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "D1BE74EE-6B29-49D7-9FE8-7C4D4929C688.mp3",
+      "size_kb": 663.7
+    },
+    {
+      "uuid": "4968D837-C6DA-414D-9A64-3DCDF89FF7F8",
+      "target_language": "dan",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en dansktalande. Så här fungerar det - jag lär dig något på danska, sedan säger jag något på svenska och ger dig en chans att säga det högt på danska. Sedan lyssnar du noga på de dansktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på danska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "4968D837-C6DA-414D-9A64-3DCDF89FF7F8.mp3",
+      "size_kb": 688.6
+    },
+    {
+      "uuid": "5A5AAD6A-0130-4020-B606-2F9B49A293C4",
+      "target_language": "cmn",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en kinesisktalande. Så här fungerar det - jag lär dig något på kinesiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på kinesiska. Sedan lyssnar du noga på de kinesisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på kinesiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "5A5AAD6A-0130-4020-B606-2F9B49A293C4.mp3",
+      "size_kb": 704.9
+    },
+    {
+      "uuid": "E31AE533-B02D-433E-9915-7D36BB3C01DB",
+      "target_language": "fin",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en finsktalande. Så här fungerar det - jag lär dig något på finska, sedan säger jag något på svenska och ger dig en chans att säga det högt på finska. Sedan lyssnar du noga på de finsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på finska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "E31AE533-B02D-433E-9915-7D36BB3C01DB.mp3",
+      "size_kb": 669.8
+    },
+    {
+      "uuid": "4C2E4303-0E4E-433A-B05A-7331325B1FF3",
+      "target_language": "ces",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en tjeckisktalande. Så här fungerar det - jag lär dig något på tjeckiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på tjeckiska. Sedan lyssnar du noga på de tjeckisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på tjeckiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "4C2E4303-0E4E-433A-B05A-7331325B1FF3.mp3",
+      "size_kb": 666.2
+    },
+    {
+      "uuid": "86DBFEB2-3C1F-4C9C-91CA-180EE1DE82D5",
+      "target_language": "nld",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en holländsktalande. Så här fungerar det - jag lär dig något på holländska, sedan säger jag något på svenska och ger dig en chans att säga det högt på holländska. Sedan lyssnar du noga på de holländsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på holländska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "86DBFEB2-3C1F-4C9C-91CA-180EE1DE82D5.mp3",
+      "size_kb": 680.9
+    },
+    {
+      "uuid": "FEB7A4D5-93E6-48EA-94A6-46E8360A4806",
+      "target_language": "hrv",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en kroatisktalande. Så här fungerar det - jag lär dig något på kroatiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på kroatiska. Sedan lyssnar du noga på de kroatisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på kroatiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "FEB7A4D5-93E6-48EA-94A6-46E8360A4806.mp3",
+      "size_kb": 696
+    },
+    {
+      "uuid": "57789096-21AF-4566-B3EC-635406F553A7",
+      "target_language": "fil",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en filippinsktalande. Så här fungerar det - jag lär dig något på filippinska, sedan säger jag något på svenska och ger dig en chans att säga det högt på filippinska. Sedan lyssnar du noga på de filippinsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på filippinska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "57789096-21AF-4566-B3EC-635406F553A7.mp3",
+      "size_kb": 736
+    },
+    {
+      "uuid": "6E706BCE-6101-4B5C-8C35-FC76C6437D23",
+      "target_language": "fra",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en fransktalande. Så här fungerar det - jag lär dig något på franska, sedan säger jag något på svenska och ger dig en chans att säga det högt på franska. Sedan lyssnar du noga på de fransktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på franska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "6E706BCE-6101-4B5C-8C35-FC76C6437D23.mp3",
+      "size_kb": 660.9
+    },
+    {
+      "uuid": "7AC4153C-76A2-4E5B-B2D0-F54845FE365D",
+      "target_language": "deu",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en tysktalande. Så här fungerar det - jag lär dig något på tyska, sedan säger jag något på svenska och ger dig en chans att säga det högt på tyska. Sedan lyssnar du noga på de tysktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på tyska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "7AC4153C-76A2-4E5B-B2D0-F54845FE365D.mp3",
+      "size_kb": 673.5
+    },
+    {
+      "uuid": "6019C6F9-F575-4CC6-BCFC-B435208D6C27",
+      "target_language": "ell",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en grekisktalande. Så här fungerar det - jag lär dig något på grekiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på grekiska. Sedan lyssnar du noga på de grekisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på grekiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "6019C6F9-F575-4CC6-BCFC-B435208D6C27.mp3",
+      "size_kb": 679.6
+    },
+    {
+      "uuid": "B68B99D9-41A2-45E0-A822-0B87160EACAC",
+      "target_language": "hin",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en hinditalande. Så här fungerar det - jag lär dig något på hindi, sedan säger jag något på svenska och ger dig en chans att säga det högt på hindi. Sedan lyssnar du noga på de hinditalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på hindi snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "B68B99D9-41A2-45E0-A822-0B87160EACAC.mp3",
+      "size_kb": 704.9
+    },
+    {
+      "uuid": "A12E25C1-7C7C-4927-9231-61A6A907629A",
+      "target_language": "ind",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en indonesisktalande. Så här fungerar det - jag lär dig något på indonesiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på indonesiska. Sedan lyssnar du noga på de indonesisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på indonesiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "A12E25C1-7C7C-4927-9231-61A6A907629A.mp3",
+      "size_kb": 728.6
+    },
+    {
+      "uuid": "7096DDE9-F4BB-4F4A-A335-8CC6B02CE373",
+      "target_language": "msa",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en malajisktalande. Så här fungerar det - jag lär dig något på malajiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på malajiska. Sedan lyssnar du noga på de malajisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på malajiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "7096DDE9-F4BB-4F4A-A335-8CC6B02CE373.mp3",
+      "size_kb": 669.8
+    },
+    {
+      "uuid": "4BB5E817-2BE0-44CC-B0D6-EFA2CE3EE86A",
+      "target_language": "ita",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en italiensktalande. Så här fungerar det - jag lär dig något på italienska, sedan säger jag något på svenska och ger dig en chans att säga det högt på italienska. Sedan lyssnar du noga på de italiensktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på italienska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "4BB5E817-2BE0-44CC-B0D6-EFA2CE3EE86A.mp3",
+      "size_kb": 717.2
+    },
+    {
+      "uuid": "F6E668A1-C7D4-4E17-AFF3-03AC72362CD4",
+      "target_language": "jpn",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en japansktalande. Så här fungerar det - jag lär dig något på japanska, sedan säger jag något på svenska och ger dig en chans att säga det högt på japanska. Sedan lyssnar du noga på de japansktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på japanska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "F6E668A1-C7D4-4E17-AFF3-03AC72362CD4.mp3",
+      "size_kb": 632.3
+    },
+    {
+      "uuid": "BD68514E-3F0C-4389-AAE0-32E260723C9F",
+      "target_language": "kor",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en koreansktalande. Så här fungerar det - jag lär dig något på koreanska, sedan säger jag något på svenska och ger dig en chans att säga det högt på koreanska. Sedan lyssnar du noga på de koreansktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på koreanska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "BD68514E-3F0C-4389-AAE0-32E260723C9F.mp3",
+      "size_kb": 683.7
+    },
+    {
+      "uuid": "C213CFAA-956E-42A7-BD0D-EBD1C447A53B",
+      "target_language": "pol",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en polsktalande. Så här fungerar det - jag lär dig något på polska, sedan säger jag något på svenska och ger dig en chans att säga det högt på polska. Sedan lyssnar du noga på de polsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på polska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "C213CFAA-956E-42A7-BD0D-EBD1C447A53B.mp3",
+      "size_kb": 743.7
+    },
+    {
+      "uuid": "30692242-9443-478D-B2B0-95C06CF9FE97",
+      "target_language": "por",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en portugisisktalande. Så här fungerar det - jag lär dig något på portugisiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på portugisiska. Sedan lyssnar du noga på de portugisisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på portugisiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "30692242-9443-478D-B2B0-95C06CF9FE97.mp3",
+      "size_kb": 703.7
+    },
+    {
+      "uuid": "F53B09DB-106B-492E-BA23-AEE7E574B4BF",
+      "target_language": "ron",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en rumänsktalande. Så här fungerar det - jag lär dig något på rumänska, sedan säger jag något på svenska och ger dig en chans att säga det högt på rumänska. Sedan lyssnar du noga på de rumänsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på rumänska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "F53B09DB-106B-492E-BA23-AEE7E574B4BF.mp3",
+      "size_kb": 707.4
+    },
+    {
+      "uuid": "B5FAFEE4-DAAD-4DEC-80E9-FC5854D204CE",
+      "target_language": "spa",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en spansktalande. Så här fungerar det - jag lär dig något på spanska, sedan säger jag något på svenska och ger dig en chans att säga det högt på spanska. Sedan lyssnar du noga på de spansktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på spanska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "B5FAFEE4-DAAD-4DEC-80E9-FC5854D204CE.mp3",
+      "size_kb": 656
+    },
+    {
+      "uuid": "20E69D17-11DC-404E-A458-EC03B016E1D9",
+      "target_language": "slk",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en slovakisktalande. Så här fungerar det - jag lär dig något på slovakiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på slovakiska. Sedan lyssnar du noga på de slovakisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på slovakiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "20E69D17-11DC-404E-A458-EC03B016E1D9.mp3",
+      "size_kb": 691.1
+    },
+    {
+      "uuid": "8051BE65-D2D3-4567-A20B-398537082D8D",
+      "target_language": "rus",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en rysktalande. Så här fungerar det - jag lär dig något på ryska, sedan säger jag något på svenska och ger dig en chans att säga det högt på ryska. Sedan lyssnar du noga på de rysktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på ryska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "8051BE65-D2D3-4567-A20B-398537082D8D.mp3",
+      "size_kb": 674.7
+    },
+    {
+      "uuid": "8F09B127-7CCD-4F00-9E3F-0BB308E21642",
+      "target_language": "eng",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en engelsktalande. Så här fungerar det - jag lär dig något på engelska, sedan säger jag något på svenska och ger dig en chans att säga det högt på engelska. Sedan lyssnar du noga på de engelsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på engelska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "8F09B127-7CCD-4F00-9E3F-0BB308E21642.mp3",
+      "size_kb": 698.4
+    },
+    {
+      "uuid": "53776F7A-5FC1-4AF2-B0EE-F52A5C68FB89",
+      "target_language": "tur",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en turkisktalande. Så här fungerar det - jag lär dig något på turkiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på turkiska. Sedan lyssnar du noga på de turkisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på turkiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "53776F7A-5FC1-4AF2-B0EE-F52A5C68FB89.mp3",
+      "size_kb": 684.9
+    },
+    {
+      "uuid": "7A8AF806-FCD8-489F-8E55-52C3870FD3BD",
+      "target_language": "tam",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en tamiltalande. Så här fungerar det - jag lär dig något på tamil, sedan säger jag något på svenska och ger dig en chans att säga det högt på tamil. Sedan lyssnar du noga på de tamiltalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på tamil snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "7A8AF806-FCD8-489F-8E55-52C3870FD3BD.mp3",
+      "size_kb": 674.7
+    },
+    {
+      "uuid": "075B2B24-0C06-4ACD-80AA-FBBDB3E79B1F",
+      "target_language": "ukr",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en ukrainsktalande. Så här fungerar det - jag lär dig något på ukrainska, sedan säger jag något på svenska och ger dig en chans att säga det högt på ukrainska. Sedan lyssnar du noga på de ukrainsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på ukrainska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "075B2B24-0C06-4ACD-80AA-FBBDB3E79B1F.mp3",
+      "size_kb": 706.2
+    },
+    {
+      "uuid": "B04A33FF-C20C-4520-8827-305A1B1B996F",
+      "target_language": "afr",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en afrikaanstalande. Så här fungerar det - jag lär dig något på afrikaans, sedan säger jag något på svenska och ger dig en chans att säga det högt på afrikaans. Sedan lyssnar du noga på de afrikaanstalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på afrikaans snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "B04A33FF-C20C-4520-8827-305A1B1B996F.mp3",
+      "size_kb": 707.4
+    },
+    {
+      "uuid": "2A68C571-C299-4300-B4DB-EDEB5F8FCF00",
+      "target_language": "asm",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en assamesisktalande. Så här fungerar det - jag lär dig något på assamesiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på assamesiska. Sedan lyssnar du noga på de assamesisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på assamesiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "2A68C571-C299-4300-B4DB-EDEB5F8FCF00.mp3",
+      "size_kb": 712.3
+    },
+    {
+      "uuid": "BEC377C4-A5A5-412A-98A3-476A79916F68",
+      "target_language": "bel",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en vitrysktalande. Så här fungerar det - jag lär dig något på vitryska, sedan säger jag något på svenska och ger dig en chans att säga det högt på vitryska. Sedan lyssnar du noga på de vitrysktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på vitryska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "BEC377C4-A5A5-412A-98A3-476A79916F68.mp3",
+      "size_kb": 689.8
+    },
+    {
+      "uuid": "039C0575-4B08-4A0A-A6D3-B43DBF558B68",
+      "target_language": "aze",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en azerbajdzjansktalande. Så här fungerar det - jag lär dig något på azerbajdzjanska, sedan säger jag något på svenska och ger dig en chans att säga det högt på azerbajdzjanska. Sedan lyssnar du noga på de azerbajdzjansktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på azerbajdzjanska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "039C0575-4B08-4A0A-A6D3-B43DBF558B68.mp3",
+      "size_kb": 682.5
+    },
+    {
+      "uuid": "80C5C851-31EC-475D-BCC9-99E7D55C9616",
+      "target_language": "ceb",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en cebuanotalande. Så här fungerar det - jag lär dig något på cebuano, sedan säger jag något på svenska och ger dig en chans att säga det högt på cebuano. Sedan lyssnar du noga på de cebuanotalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på cebuano snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "80C5C851-31EC-475D-BCC9-99E7D55C9616.mp3",
+      "size_kb": 700.9
+    },
+    {
+      "uuid": "1CD97680-6657-4117-A862-4CDD7DD129BA",
+      "target_language": "cat",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en katalansktalande. Så här fungerar det - jag lär dig något på katalanska, sedan säger jag något på svenska och ger dig en chans att säga det högt på katalanska. Sedan lyssnar du noga på de katalansktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på katalanska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "1CD97680-6657-4117-A862-4CDD7DD129BA.mp3",
+      "size_kb": 684.9
+    },
+    {
+      "uuid": "8ACD8ACC-A98D-4BD2-9F84-604EFCC99687",
+      "target_language": "bos",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en bosnisktalande. Så här fungerar det - jag lär dig något på bosniska, sedan säger jag något på svenska och ger dig en chans att säga det högt på bosniska. Sedan lyssnar du noga på de bosnisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på bosniska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "8ACD8ACC-A98D-4BD2-9F84-604EFCC99687.mp3",
+      "size_kb": 669.8
+    },
+    {
+      "uuid": "A90D7426-6B53-4EF8-BF15-26749AF1198F",
+      "target_language": "cym",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en walesisktalande. Så här fungerar det - jag lär dig något på walesiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på walesiska. Sedan lyssnar du noga på de walesisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på walesiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "A90D7426-6B53-4EF8-BF15-26749AF1198F.mp3",
+      "size_kb": 654.7
+    },
+    {
+      "uuid": "4FA5EC8D-F00D-4051-8C6B-30697D2F8A9F",
+      "target_language": "ben",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en bengalitalande. Så här fungerar det - jag lär dig något på bengali, sedan säger jag något på svenska och ger dig en chans att säga det högt på bengali. Sedan lyssnar du noga på de bengalitalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på bengali snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "4FA5EC8D-F00D-4051-8C6B-30697D2F8A9F.mp3",
+      "size_kb": 702.5
+    },
+    {
+      "uuid": "249E0BF7-939D-4780-9F63-55D9E088E5DB",
+      "target_language": "fas",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en persisktalande. Så här fungerar det - jag lär dig något på persiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på persiska. Sedan lyssnar du noga på de persisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på persiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "249E0BF7-939D-4780-9F63-55D9E088E5DB.mp3",
+      "size_kb": 680.9
+    },
+    {
+      "uuid": "6072D8E6-A00C-4BFE-813C-2DED5AD48848",
+      "target_language": "gle",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en irisktalande. Så här fungerar det - jag lär dig något på iriska, sedan säger jag något på svenska och ger dig en chans att säga det högt på iriska. Sedan lyssnar du noga på de irisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på iriska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "6072D8E6-A00C-4BFE-813C-2DED5AD48848.mp3",
+      "size_kb": 692.3
+    },
+    {
+      "uuid": "9282F6FD-B0CD-4B80-B1A7-5BF139A3B699",
+      "target_language": "est",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en estnisktalande. Så här fungerar det - jag lär dig något på estniska, sedan säger jag något på svenska och ger dig en chans att säga det högt på estniska. Sedan lyssnar du noga på de estnisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på estniska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "9282F6FD-B0CD-4B80-B1A7-5BF139A3B699.mp3",
+      "size_kb": 673.5
+    },
+    {
+      "uuid": "F9595A70-3E18-4178-8A8A-7CD87DC458F0",
+      "target_language": "guj",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en gujaratitalande. Så här fungerar det - jag lär dig något på gujarati, sedan säger jag något på svenska och ger dig en chans att säga det högt på gujarati. Sedan lyssnar du noga på de gujaratitalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på gujarati snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "F9595A70-3E18-4178-8A8A-7CD87DC458F0.mp3",
+      "size_kb": 703.7
+    },
+    {
+      "uuid": "22C4F47E-5476-4B03-9907-FC8D6BF5F00D",
+      "target_language": "hye",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en armenisktalande. Så här fungerar det - jag lär dig något på armeniska, sedan säger jag något på svenska och ger dig en chans att säga det högt på armeniska. Sedan lyssnar du noga på de armenisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på armeniska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "22C4F47E-5476-4B03-9907-FC8D6BF5F00D.mp3",
+      "size_kb": 664.9
+    },
+    {
+      "uuid": "68E47079-D4BF-4B04-92A7-5770A178AF0A",
+      "target_language": "hau",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en hausatalande. Så här fungerar det - jag lär dig något på hausa, sedan säger jag något på svenska och ger dig en chans att säga det högt på hausa. Sedan lyssnar du noga på de hausatalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på hausa snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "68E47079-D4BF-4B04-92A7-5770A178AF0A.mp3",
+      "size_kb": 689.8
+    },
+    {
+      "uuid": "C86A7526-4F03-4AD1-BE75-BA51C8CBF41D",
+      "target_language": "heb",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en hebreisktalande. Så här fungerar det - jag lär dig något på hebreiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på hebreiska. Sedan lyssnar du noga på de hebreisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på hebreiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "C86A7526-4F03-4AD1-BE75-BA51C8CBF41D.mp3",
+      "size_kb": 703.7
+    },
+    {
+      "uuid": "1E8E0513-AF1A-46CC-A759-45A698EBDDE3",
+      "target_language": "hun",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en ungersktalande. Så här fungerar det - jag lär dig något på ungerska, sedan säger jag något på svenska och ger dig en chans att säga det högt på ungerska. Sedan lyssnar du noga på de ungersktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på ungerska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "1E8E0513-AF1A-46CC-A759-45A698EBDDE3.mp3",
+      "size_kb": 632.3
+    },
+    {
+      "uuid": "0A742898-6CEA-4102-9FCA-74A410C893D9",
+      "target_language": "glg",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en galicisktalande. Så här fungerar det - jag lär dig något på galiciska, sedan säger jag något på svenska och ger dig en chans att säga det högt på galiciska. Sedan lyssnar du noga på de galicisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på galiciska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "0A742898-6CEA-4102-9FCA-74A410C893D9.mp3",
+      "size_kb": 746.2
+    },
+    {
+      "uuid": "2011A92A-2732-46B1-BBE8-9B6F38E2714F",
+      "target_language": "isl",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en isländsktalande. Så här fungerar det - jag lär dig något på isländska, sedan säger jag något på svenska och ger dig en chans att säga det högt på isländska. Sedan lyssnar du noga på de isländsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på isländska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "2011A92A-2732-46B1-BBE8-9B6F38E2714F.mp3",
+      "size_kb": 691.1
+    },
+    {
+      "uuid": "A887E864-4417-4C02-BD05-0F0DEBB59C97",
+      "target_language": "jav",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en javanesisktalande. Så här fungerar det - jag lär dig något på javanesiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på javanesiska. Sedan lyssnar du noga på de javanesisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på javanesiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "A887E864-4417-4C02-BD05-0F0DEBB59C97.mp3",
+      "size_kb": 680.9
+    },
+    {
+      "uuid": "FCE46DC6-A41C-41EC-A41F-808AF03F3451",
+      "target_language": "kan",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en kannadatalande. Så här fungerar det - jag lär dig något på kannada, sedan säger jag något på svenska och ger dig en chans att säga det högt på kannada. Sedan lyssnar du noga på de kannadatalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på kannada snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "FCE46DC6-A41C-41EC-A41F-808AF03F3451.mp3",
+      "size_kb": 674.7
+    },
+    {
+      "uuid": "E3DC1B0B-9FBD-4951-B3D9-11D6F020131E",
+      "target_language": "kaz",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en kazakisktalande. Så här fungerar det - jag lär dig något på kazakiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på kazakiska. Sedan lyssnar du noga på de kazakisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på kazakiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "E3DC1B0B-9FBD-4951-B3D9-11D6F020131E.mp3",
+      "size_kb": 691.1
+    },
+    {
+      "uuid": "A06D57E0-6664-48A5-A440-7A873D6E3987",
+      "target_language": "kat",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en georgisktalande. Så här fungerar det - jag lär dig något på georgiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på georgiska. Sedan lyssnar du noga på de georgisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på georgiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "A06D57E0-6664-48A5-A440-7A873D6E3987.mp3",
+      "size_kb": 697.2
+    },
+    {
+      "uuid": "DF94029A-1145-48B3-BF85-BEBBBA941D31",
+      "target_language": "lit",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en litauisktalande. Så här fungerar det - jag lär dig något på litauiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på litauiska. Sedan lyssnar du noga på de litauisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på litauiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "DF94029A-1145-48B3-BF85-BEBBBA941D31.mp3",
+      "size_kb": 674.7
+    },
+    {
+      "uuid": "5958E10C-5989-4298-81E2-9BEC32E61776",
+      "target_language": "lin",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en lingalatalande. Så här fungerar det - jag lär dig något på lingala, sedan säger jag något på svenska och ger dig en chans att säga det högt på lingala. Sedan lyssnar du noga på de lingalatalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på lingala snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "5958E10C-5989-4298-81E2-9BEC32E61776.mp3",
+      "size_kb": 639.6
+    },
+    {
+      "uuid": "96EB8213-FEC2-44FA-A22C-C8D6DE61783D",
+      "target_language": "lav",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en lettisktalande. Så här fungerar det - jag lär dig något på lettiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på lettiska. Sedan lyssnar du noga på de lettisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på lettiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "96EB8213-FEC2-44FA-A22C-C8D6DE61783D.mp3",
+      "size_kb": 674.7
+    },
+    {
+      "uuid": "D34E6C31-E465-4108-8734-2247229B2A5F",
+      "target_language": "ltz",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en luxemburgisktalande. Så här fungerar det - jag lär dig något på luxemburgiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på luxemburgiska. Sedan lyssnar du noga på de luxemburgisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på luxemburgiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "D34E6C31-E465-4108-8734-2247229B2A5F.mp3",
+      "size_kb": 698.4
+    },
+    {
+      "uuid": "44D295E1-F5CB-4603-B1A0-C314705B293C",
+      "target_language": "mal",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en malayalamtalande. Så här fungerar det - jag lär dig något på malayalam, sedan säger jag något på svenska och ger dig en chans att säga det högt på malayalam. Sedan lyssnar du noga på de malayalamtalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på malayalam snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "44D295E1-F5CB-4603-B1A0-C314705B293C.mp3",
+      "size_kb": 712.3
+    },
+    {
+      "uuid": "ABA6DB20-B16C-424B-8818-49DB45B1C08B",
+      "target_language": "kir",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en kirgizisktalande. Så här fungerar det - jag lär dig något på kirgiziska, sedan säger jag något på svenska och ger dig en chans att säga det högt på kirgiziska. Sedan lyssnar du noga på de kirgizisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på kirgiziska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "ABA6DB20-B16C-424B-8818-49DB45B1C08B.mp3",
+      "size_kb": 737.2
+    },
+    {
+      "uuid": "948EA2B7-4046-413A-940A-CBF680F7AB4B",
+      "target_language": "mar",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en marathitalande. Så här fungerar det - jag lär dig något på marathi, sedan säger jag något på svenska och ger dig en chans att säga det högt på marathi. Sedan lyssnar du noga på de marathitalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på marathi snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "948EA2B7-4046-413A-940A-CBF680F7AB4B.mp3",
+      "size_kb": 689.8
+    },
+    {
+      "uuid": "7F5B49ED-E076-4143-85B5-23E31BD94E24",
+      "target_language": "mkd",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en makedonsktalande. Så här fungerar det - jag lär dig något på makedonska, sedan säger jag något på svenska och ger dig en chans att säga det högt på makedonska. Sedan lyssnar du noga på de makedonsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på makedonska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "7F5B49ED-E076-4143-85B5-23E31BD94E24.mp3",
+      "size_kb": 699.6
+    },
+    {
+      "uuid": "D3B78049-C607-40DD-8B2C-F50BB0E2F7F9",
+      "target_language": "nor",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en norsktalande. Så här fungerar det - jag lär dig något på norska, sedan säger jag något på svenska och ger dig en chans att säga det högt på norska. Sedan lyssnar du noga på de norsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på norska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "D3B78049-C607-40DD-8B2C-F50BB0E2F7F9.mp3",
+      "size_kb": 662.5
+    },
+    {
+      "uuid": "83F723C4-4D21-4208-BA49-2C36B16288A6",
+      "target_language": "nya",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en chichewatalande. Så här fungerar det - jag lär dig något på chichewa, sedan säger jag något på svenska och ger dig en chans att säga det högt på chichewa. Sedan lyssnar du noga på de chichewatalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på chichewa snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "83F723C4-4D21-4208-BA49-2C36B16288A6.mp3",
+      "size_kb": 683.7
+    },
+    {
+      "uuid": "29FD512A-4F86-4D4B-91ED-71FCC50A3719",
+      "target_language": "nep",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en nepalesisktalande. Så här fungerar det - jag lär dig något på nepalesiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på nepalesiska. Sedan lyssnar du noga på de nepalesisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på nepalesiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "29FD512A-4F86-4D4B-91ED-71FCC50A3719.mp3",
+      "size_kb": 682.5
+    },
+    {
+      "uuid": "03E5C4E0-EDAF-42F0-BC17-BF6781A4BC9F",
+      "target_language": "slv",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en slovensktalande. Så här fungerar det - jag lär dig något på slovenska, sedan säger jag något på svenska och ger dig en chans att säga det högt på slovenska. Sedan lyssnar du noga på de slovensktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på slovenska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "03E5C4E0-EDAF-42F0-BC17-BF6781A4BC9F.mp3",
+      "size_kb": 666.2
+    },
+    {
+      "uuid": "83CDD036-E3C5-4296-A74B-341C0CDA375E",
+      "target_language": "pan",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en punjabitalande. Så här fungerar det - jag lär dig något på punjabi, sedan säger jag något på svenska och ger dig en chans att säga det högt på punjabi. Sedan lyssnar du noga på de punjabitalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på punjabi snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "83CDD036-E3C5-4296-A74B-341C0CDA375E.mp3",
+      "size_kb": 652.3
+    },
+    {
+      "uuid": "82084438-FC7B-4417-809B-EAFE66F99402",
+      "target_language": "som",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en somalisktalande. Så här fungerar det - jag lär dig något på somaliska, sedan säger jag något på svenska och ger dig en chans att säga det högt på somaliska. Sedan lyssnar du noga på de somalisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på somaliska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "82084438-FC7B-4417-809B-EAFE66F99402.mp3",
+      "size_kb": 679.6
+    },
+    {
+      "uuid": "1C7508EA-1285-497D-957F-3FA0154CDB72",
+      "target_language": "pus",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en pashtotalande. Så här fungerar det - jag lär dig något på pashto, sedan säger jag något på svenska och ger dig en chans att säga det högt på pashto. Sedan lyssnar du noga på de pashtotalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på pashto snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "1C7508EA-1285-497D-957F-3FA0154CDB72.mp3",
+      "size_kb": 678.4
+    },
+    {
+      "uuid": "A643DEA8-A3FE-42B7-A1CC-379E469B0761",
+      "target_language": "snd",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en sindhitalande. Så här fungerar det - jag lär dig något på sindhi, sedan säger jag något på svenska och ger dig en chans att säga det högt på sindhi. Sedan lyssnar du noga på de sindhitalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på sindhi snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "A643DEA8-A3FE-42B7-A1CC-379E469B0761.mp3",
+      "size_kb": 693.5
+    },
+    {
+      "uuid": "AE2B498A-B730-4B32-9DAB-B3B20B3991E3",
+      "target_language": "srp",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en serbisktalande. Så här fungerar det - jag lär dig något på serbiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på serbiska. Sedan lyssnar du noga på de serbisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på serbiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "AE2B498A-B730-4B32-9DAB-B3B20B3991E3.mp3",
+      "size_kb": 663.7
+    },
+    {
+      "uuid": "01F43F0A-BFA7-4BE5-B387-8FD8005E013C",
+      "target_language": "tha",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en thailändsktalande. Så här fungerar det - jag lär dig något på thailändska, sedan säger jag något på svenska och ger dig en chans att säga det högt på thailändska. Sedan lyssnar du noga på de thailändsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på thailändska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "01F43F0A-BFA7-4BE5-B387-8FD8005E013C.mp3",
+      "size_kb": 633.5
+    },
+    {
+      "uuid": "8BE6B62C-1D5B-4B51-B54F-B169C8EE0BF0",
+      "target_language": "swa",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en swahilitalande. Så här fungerar det - jag lär dig något på swahili, sedan säger jag något på svenska och ger dig en chans att säga det högt på swahili. Sedan lyssnar du noga på de swahilitalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på swahili snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "8BE6B62C-1D5B-4B51-B54F-B169C8EE0BF0.mp3",
+      "size_kb": 683.7
+    },
+    {
+      "uuid": "D9C008BB-DC67-4023-BE01-D95DC8CBE93C",
+      "target_language": "urd",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en urdutalande. Så här fungerar det - jag lär dig något på urdu, sedan säger jag något på svenska och ger dig en chans att säga det högt på urdu. Sedan lyssnar du noga på de urdutalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på urdu snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "D9C008BB-DC67-4023-BE01-D95DC8CBE93C.mp3",
+      "size_kb": 654.7
+    },
+    {
+      "uuid": "D4D30CA8-DE71-492A-A90A-5C9BE25BDEC7",
+      "target_language": "tel",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en telugutalande. Så här fungerar det - jag lär dig något på telugu, sedan säger jag något på svenska och ger dig en chans att säga det högt på telugu. Sedan lyssnar du noga på de telugutalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på telugu snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "D4D30CA8-DE71-492A-A90A-5C9BE25BDEC7.mp3",
+      "size_kb": 669.8
+    },
+    {
+      "uuid": "78476444-0C34-4F94-9309-DC9D9CD471C1",
+      "target_language": "vie",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en vietnamesisktalande. Så här fungerar det - jag lär dig något på vietnamesiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på vietnamesiska. Sedan lyssnar du noga på de vietnamesisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på vietnamesiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "78476444-0C34-4F94-9309-DC9D9CD471C1.mp3",
+      "size_kb": 717.2
+    },
+    {
+      "uuid": "824F75EE-BC79-4620-B789-76A53FE98876",
+      "target_language": "ain",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en ainutalande. Så här fungerar det - jag lär dig något på ainu, sedan säger jag något på svenska och ger dig en chans att säga det högt på ainu. Sedan lyssnar du noga på de ainutalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på ainu snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "824F75EE-BC79-4620-B789-76A53FE98876.mp3",
+      "size_kb": 687.4
+    },
+    {
+      "uuid": "DC4DC387-7678-4D7A-8C45-4A8308A8E964",
+      "target_language": "afb",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en gulfarabisktalande. Så här fungerar det - jag lär dig något på gulfarabiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på gulfarabiska. Sedan lyssnar du noga på de gulfarabisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på gulfarabiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "DC4DC387-7678-4D7A-8C45-4A8308A8E964.mp3",
+      "size_kb": 732.3
+    },
+    {
+      "uuid": "FFF9C4B0-5992-4E1C-B9D2-B693D038488A",
+      "target_language": "aii",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en assyrisktalande. Så här fungerar det - jag lär dig något på assyriska, sedan säger jag något på svenska och ger dig en chans att säga det högt på assyriska. Sedan lyssnar du noga på de assyrisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på assyriska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "FFF9C4B0-5992-4E1C-B9D2-B693D038488A.mp3",
+      "size_kb": 708.6
+    },
+    {
+      "uuid": "DF34FD25-4EF7-41E6-A34D-9A21DE870636",
+      "target_language": "amh",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en amharisktalande. Så här fungerar det - jag lär dig något på amhariska, sedan säger jag något på svenska och ger dig en chans att säga det högt på amhariska. Sedan lyssnar du noga på de amharisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på amhariska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "DF34FD25-4EF7-41E6-A34D-9A21DE870636.mp3",
+      "size_kb": 688.6
+    },
+    {
+      "uuid": "BF5E1F75-5EA1-4E22-93E2-DD45AE6E923A",
+      "target_language": "ary",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en marockansk arabisktalande. Så här fungerar det - jag lär dig något på marockansk arabiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på marockansk arabiska. Sedan lyssnar du noga på de marockansk arabisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på marockansk arabiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "BF5E1F75-5EA1-4E22-93E2-DD45AE6E923A.mp3",
+      "size_kb": 762.5
+    },
+    {
+      "uuid": "BC433346-25AC-45A3-8960-9426D3D3EFEF",
+      "target_language": "apc",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en levantinsk arabisktalande. Så här fungerar det - jag lär dig något på levantinsk arabiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på levantinsk arabiska. Sedan lyssnar du noga på de levantinsk arabisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på levantinsk arabiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "BC433346-25AC-45A3-8960-9426D3D3EFEF.mp3",
+      "size_kb": 806.2
+    },
+    {
+      "uuid": "F2948364-A31B-441B-AB1F-945F36CD2AFA",
+      "target_language": "bre",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en bretonsktalande. Så här fungerar det - jag lär dig något på bretonska, sedan säger jag något på svenska och ger dig en chans att säga det högt på bretonska. Sedan lyssnar du noga på de bretonsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på bretonska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "F2948364-A31B-441B-AB1F-945F36CD2AFA.mp3",
+      "size_kb": 693.5
+    },
+    {
+      "uuid": "2176B675-F335-4CA2-B1F2-9305AA6345F1",
+      "target_language": "cor",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en kornisktalande. Så här fungerar det - jag lär dig något på korniska, sedan säger jag något på svenska och ger dig en chans att säga det högt på korniska. Sedan lyssnar du noga på de kornisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på korniska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "2176B675-F335-4CA2-B1F2-9305AA6345F1.mp3",
+      "size_kb": 708.6
+    },
+    {
+      "uuid": "2243B86A-EC24-4DD2-B8A5-9A4925E456C0",
+      "target_language": "eus",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en baskisktalande. Så här fungerar det - jag lär dig något på baskiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på baskiska. Sedan lyssnar du noga på de baskisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på baskiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "2243B86A-EC24-4DD2-B8A5-9A4925E456C0.mp3",
+      "size_kb": 693.5
+    },
+    {
+      "uuid": "ED258E88-6AAA-4F55-B29D-58A3991E1293",
+      "target_language": "grn",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en guaranítalande. Så här fungerar det - jag lär dig något på guaraní, sedan säger jag något på svenska och ger dig en chans att säga det högt på guaraní. Sedan lyssnar du noga på de guaranítalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på guaraní snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "ED258E88-6AAA-4F55-B29D-58A3991E1293.mp3",
+      "size_kb": 688.6
+    },
+    {
+      "uuid": "A7AD5323-89B1-4FD1-82D0-83A7F09482BC",
+      "target_language": "hak",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en hakkatalande. Så här fungerar det - jag lär dig något på hakka, sedan säger jag något på svenska och ger dig en chans att säga det högt på hakka. Sedan lyssnar du noga på de hakkatalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på hakka snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "A7AD5323-89B1-4FD1-82D0-83A7F09482BC.mp3",
+      "size_kb": 671.1
+    },
+    {
+      "uuid": "62C12618-91E6-4503-B803-97433B2DD2B7",
+      "target_language": "gla",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en skotsk gaelisktalande. Så här fungerar det - jag lär dig något på skotsk gaeliska, sedan säger jag något på svenska och ger dig en chans att säga det högt på skotsk gaeliska. Sedan lyssnar du noga på de skotsk gaelisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på skotsk gaeliska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "62C12618-91E6-4503-B803-97433B2DD2B7.mp3",
+      "size_kb": 719.6
+    },
+    {
+      "uuid": "53AE2018-E197-42B5-B7CD-C6C5CABB4755",
+      "target_language": "glv",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en manxtalande. Så här fungerar det - jag lär dig något på manx, sedan säger jag något på svenska och ger dig en chans att säga det högt på manx. Sedan lyssnar du noga på de manxtalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på manx snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "53AE2018-E197-42B5-B7CD-C6C5CABB4755.mp3",
+      "size_kb": 713.5
+    },
+    {
+      "uuid": "436F279D-5552-4D62-99FD-947A19A66BB7",
+      "target_language": "kur",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en kurdisktalande. Så här fungerar det - jag lär dig något på kurdiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på kurdiska. Sedan lyssnar du noga på de kurdisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på kurdiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "436F279D-5552-4D62-99FD-947A19A66BB7.mp3",
+      "size_kb": 676
+    },
+    {
+      "uuid": "CDFDEF10-F62D-49B6-9ACB-BF80A12104F5",
+      "target_language": "nan",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en min nan-talande. Så här fungerar det - jag lär dig något på min nan, sedan säger jag något på svenska och ger dig en chans att säga det högt på min nan. Sedan lyssnar du noga på de min nan-talande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på min nan snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "CDFDEF10-F62D-49B6-9ACB-BF80A12104F5.mp3",
+      "size_kb": 694.7
+    },
+    {
+      "uuid": "1A98E812-01FF-446F-8AAC-76D80AD736E2",
+      "target_language": "moh",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en mohawktalande. Så här fungerar det - jag lär dig något på mohawk, sedan säger jag något på svenska och ger dig en chans att säga det högt på mohawk. Sedan lyssnar du noga på de mohawktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på mohawk snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "1A98E812-01FF-446F-8AAC-76D80AD736E2.mp3",
+      "size_kb": 703.7
+    },
+    {
+      "uuid": "284C9D81-1B90-4C95-97F7-BC88727C8F7D",
+      "target_language": "ibo",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en igbotalande. Så här fungerar det - jag lär dig något på igbo, sedan säger jag något på svenska och ger dig en chans att säga det högt på igbo. Sedan lyssnar du noga på de igbotalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på igbo snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "284C9D81-1B90-4C95-97F7-BC88727C8F7D.mp3",
+      "size_kb": 694.7
+    },
+    {
+      "uuid": "59487310-7771-43BC-8540-F1399D4A34F4",
+      "target_language": "nav",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en navajotalande. Så här fungerar det - jag lär dig något på navajo, sedan säger jag något på svenska och ger dig en chans att säga det högt på navajo. Sedan lyssnar du noga på de navajotalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på navajo snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "59487310-7771-43BC-8540-F1399D4A34F4.mp3",
+      "size_kb": 663.7
+    },
+    {
+      "uuid": "3D6193FB-B2BB-49A8-9402-0B1D274904F2",
+      "target_language": "nap",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en napolitansktalande. Så här fungerar det - jag lär dig något på napolitanska, sedan säger jag något på svenska och ger dig en chans att säga det högt på napolitanska. Sedan lyssnar du noga på de napolitansktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på napolitanska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "3D6193FB-B2BB-49A8-9402-0B1D274904F2.mp3",
+      "size_kb": 699.6
+    },
+    {
+      "uuid": "C98A687A-B4F4-4194-9ACE-9CBC6E1C72D2",
+      "target_language": "oci",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en occitansktalande. Så här fungerar det - jag lär dig något på occitanska, sedan säger jag något på svenska och ger dig en chans att säga det högt på occitanska. Sedan lyssnar du noga på de occitansktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på occitanska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "C98A687A-B4F4-4194-9ACE-9CBC6E1C72D2.mp3",
+      "size_kb": 699.6
+    },
+    {
+      "uuid": "93842976-838C-464A-A976-41A23D6A8886",
+      "target_language": "que",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en quechuatalande. Så här fungerar det - jag lär dig något på quechua, sedan säger jag något på svenska och ger dig en chans att säga det högt på quechua. Sedan lyssnar du noga på de quechuatalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på quechua snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "93842976-838C-464A-A976-41A23D6A8886.mp3",
+      "size_kb": 666.2
+    },
+    {
+      "uuid": "D211A13B-2555-4D74-BDB1-14C7379B1E20",
+      "target_language": "por_BR",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en brasiliansk portugisisktalande. Så här fungerar det - jag lär dig något på brasiliansk portugisiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på brasiliansk portugisiska. Sedan lyssnar du noga på de brasiliansk portugisisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på brasiliansk portugisiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "D211A13B-2555-4D74-BDB1-14C7379B1E20.mp3",
+      "size_kb": 800.9
+    },
+    {
+      "uuid": "E0131582-618F-4B5D-9B7D-5B4484676814",
+      "target_language": "por_EU",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en europeisk portugisisktalande. Så här fungerar det - jag lär dig något på europeisk portugisiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på europeisk portugisiska. Sedan lyssnar du noga på de europeisk portugisisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på europeisk portugisiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "E0131582-618F-4B5D-9B7D-5B4484676814.mp3",
+      "size_kb": 727.4
+    },
+    {
+      "uuid": "619D3F27-632F-49BA-B5B5-FDC991476839",
+      "target_language": "roh",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en rätoromansktalande. Så här fungerar det - jag lär dig något på rätoromanska, sedan säger jag något på svenska och ger dig en chans att säga det högt på rätoromanska. Sedan lyssnar du noga på de rätoromansktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på rätoromanska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "619D3F27-632F-49BA-B5B5-FDC991476839.mp3",
+      "size_kb": 769.8
+    },
+    {
+      "uuid": "B09326D1-7C62-413D-AE14-FD97448DE11A",
+      "target_language": "sme",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en nordsamisktalande. Så här fungerar det - jag lär dig något på nordsamiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på nordsamiska. Sedan lyssnar du noga på de nordsamisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på nordsamiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "B09326D1-7C62-413D-AE14-FD97448DE11A.mp3",
+      "size_kb": 753.5
+    },
+    {
+      "uuid": "F642C5A3-5E30-462C-B669-DEB899A33D56",
+      "target_language": "scn",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en siciliansktalande. Så här fungerar det - jag lär dig något på sicilianska, sedan säger jag något på svenska och ger dig en chans att säga det högt på sicilianska. Sedan lyssnar du noga på de siciliansktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på sicilianska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "F642C5A3-5E30-462C-B669-DEB899A33D56.mp3",
+      "size_kb": 726.2
+    },
+    {
+      "uuid": "B211AFA2-52BC-4604-936D-8E8D90C15635",
+      "target_language": "smj",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en lulesamisktalande. Så här fungerar det - jag lär dig något på lulesamiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på lulesamiska. Sedan lyssnar du noga på de lulesamisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på lulesamiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "B211AFA2-52BC-4604-936D-8E8D90C15635.mp3",
+      "size_kb": 720.9
+    },
+    {
+      "uuid": "59C963AF-B25D-4911-9231-9B4CC99566AE",
+      "target_language": "smn",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en enaresamisktalande. Så här fungerar det - jag lär dig något på enaresamiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på enaresamiska. Sedan lyssnar du noga på de enaresamisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på enaresamiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "59C963AF-B25D-4911-9231-9B4CC99566AE.mp3",
+      "size_kb": 751.1
+    },
+    {
+      "uuid": "B60B73B9-952A-4C2A-BE6D-D02A5011440D",
+      "target_language": "spa_EU",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en europeisk spansktalande. Så här fungerar det - jag lär dig något på europeisk spanska, sedan säger jag något på svenska och ger dig en chans att säga det högt på europeisk spanska. Sedan lyssnar du noga på de europeisk spansktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på europeisk spanska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "B60B73B9-952A-4C2A-BE6D-D02A5011440D.mp3",
+      "size_kb": 708.6
+    },
+    {
+      "uuid": "B2583CB1-DF0B-4B32-9DCA-0F7C0CB2B294",
+      "target_language": "srd",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en sardinsktalande. Så här fungerar det - jag lär dig något på sardinska, sedan säger jag något på svenska och ger dig en chans att säga det högt på sardinska. Sedan lyssnar du noga på de sardinsktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på sardinska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "B2583CB1-DF0B-4B32-9DCA-0F7C0CB2B294.mp3",
+      "size_kb": 740.9
+    },
+    {
+      "uuid": "8AFC61B2-2C94-4211-BE27-639BFD621B1D",
+      "target_language": "sms",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en skoltsamisktalande. Så här fungerar det - jag lär dig något på skoltsamiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på skoltsamiska. Sedan lyssnar du noga på de skoltsamisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på skoltsamiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "8AFC61B2-2C94-4211-BE27-639BFD621B1D.mp3",
+      "size_kb": 740.9
+    },
+    {
+      "uuid": "FCF890F0-B188-47A9-AA3F-B2094E7FD755",
+      "target_language": "spa_SA",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en sydamerikansk spansktalande. Så här fungerar det - jag lär dig något på sydamerikansk spanska, sedan säger jag något på svenska och ger dig en chans att säga det högt på sydamerikansk spanska. Sedan lyssnar du noga på de sydamerikansk spansktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på sydamerikansk spanska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "FCF890F0-B188-47A9-AA3F-B2094E7FD755.mp3",
+      "size_kb": 794.7
+    },
+    {
+      "uuid": "277BEF7E-96FD-42DC-8E5D-CC8CF411D9CA",
+      "target_language": "xho",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en xhosatalande. Så här fungerar det - jag lär dig något på xhosa, sedan säger jag något på svenska och ger dig en chans att säga det högt på xhosa. Sedan lyssnar du noga på de xhosatalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på xhosa snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "277BEF7E-96FD-42DC-8E5D-CC8CF411D9CA.mp3",
+      "size_kb": 624.9
+    },
+    {
+      "uuid": "215023D1-3E9C-4B7C-9A5C-63C32A783EE9",
+      "target_language": "uig",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en uigurisktalande. Så här fungerar det - jag lär dig något på uiguriska, sedan säger jag något på svenska och ger dig en chans att säga det högt på uiguriska. Sedan lyssnar du noga på de uigurisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på uiguriska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "215023D1-3E9C-4B7C-9A5C-63C32A783EE9.mp3",
+      "size_kb": 738.4
+    },
+    {
+      "uuid": "786D48B7-F69A-4254-9E1F-219B3B4A14C2",
+      "target_language": "yid",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en jiddischtalande. Så här fungerar det - jag lär dig något på jiddisch, sedan säger jag något på svenska och ger dig en chans att säga det högt på jiddisch. Sedan lyssnar du noga på de jiddischtalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på jiddisch snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "786D48B7-F69A-4254-9E1F-219B3B4A14C2.mp3",
+      "size_kb": 700.9
+    },
+    {
+      "uuid": "3930691A-902D-4F3A-95C5-11CD246EAE88",
+      "target_language": "yor",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en yorubatalande. Så här fungerar det - jag lär dig något på yoruba, sedan säger jag något på svenska och ger dig en chans att säga det högt på yoruba. Sedan lyssnar du noga på de yorubatalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på yoruba snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "3930691A-902D-4F3A-95C5-11CD246EAE88.mp3",
+      "size_kb": 691.1
+    },
+    {
+      "uuid": "4D498E47-4425-4601-A7C5-1451E014E582",
+      "target_language": "wuu",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en shanghainesisktalande. Så här fungerar det - jag lär dig något på shanghainesiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på shanghainesiska. Sedan lyssnar du noga på de shanghainesisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på shanghainesiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "4D498E47-4425-4601-A7C5-1451E014E582.mp3",
+      "size_kb": 756
+    },
+    {
+      "uuid": "31DDBD87-DD50-4502-9147-8FA4F2C15600",
+      "target_language": "zul",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en zulutalande. Så här fungerar det - jag lär dig något på zulu, sedan säger jag något på svenska och ger dig en chans att säga det högt på zulu. Sedan lyssnar du noga på de zulutalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på zulu snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "31DDBD87-DD50-4502-9147-8FA4F2C15600.mp3",
+      "size_kb": 673.5
+    },
+    {
+      "uuid": "0527CDFF-DB2E-4E8B-9B3A-D6F40EE91C6F",
+      "target_language": "yue",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en kantonesisktalande. Så här fungerar det - jag lär dig något på kantonesiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på kantonesiska. Sedan lyssnar du noga på de kantonesisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på kantonesiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "0527CDFF-DB2E-4E8B-9B3A-D6F40EE91C6F.mp3",
+      "size_kb": 674.7
+    },
+    {
+      "uuid": "A2EBD802-9A70-4EFC-9365-A2DDFE1DF476",
+      "target_language": "ara_sy",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en syrisk arabisktalande. Så här fungerar det - jag lär dig något på arabiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på arabiska. Sedan lyssnar du noga på de arabisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på arabiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "A2EBD802-9A70-4EFC-9365-A2DDFE1DF476.mp3",
+      "size_kb": 595.4,
+      "duration_ms": 46008
+    },
+    {
+      "uuid": "5BD52273-5512-4BC8-92A4-6B9B314D6A65",
+      "target_language": "ara_lb",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en libanesisk arabisktalande. Så här fungerar det - jag lär dig något på arabiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på arabiska. Sedan lyssnar du noga på de arabisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på arabiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "5BD52273-5512-4BC8-92A4-6B9B314D6A65.mp3",
+      "size_kb": 618.7,
+      "duration_ms": 47736
+    },
+    {
+      "uuid": "949B6DF5-A46E-4660-AC09-6DEB46A25EA1",
+      "target_language": "ara_eg",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli en egyptisk arabisktalande. Så här fungerar det - jag lär dig något på arabiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på arabiska. Sedan lyssnar du noga på de arabisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på arabiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "949B6DF5-A46E-4660-AC09-6DEB46A25EA1.mp3",
+      "size_kb": 611.5,
+      "duration_ms": 46896
+    },
+    {
+      "uuid": "7257BAA0-BF02-45AD-A85E-517351E0D183",
+      "target_language": "ara",
+      "text": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli modern standardarabisktalande. Så här fungerar det - jag lär dig något på arabiska, sedan säger jag något på svenska och ger dig en chans att säga det högt på arabiska. Sedan lyssnar du noga på de arabisktalande som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala på arabiska snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+      "file": "7257BAA0-BF02-45AD-A85E-517351E0D183.mp3",
+      "duration_ms": 47352
+    }
+  ],
+  "generated_at": "2026-05-01T15:42:33.933Z",
+  "regenerated_at": "2026-05-18T12:05:50.848Z"
+}

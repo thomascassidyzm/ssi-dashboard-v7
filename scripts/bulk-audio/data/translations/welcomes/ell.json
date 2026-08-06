@@ -1,0 +1,743 @@
+{
+  "known_language": "ell",
+  "known_language_display": "Greek",
+  "template": "Καλώς ήρθες σε αυτό το ασυνήθιστο παιχνίδι που θα σε βοηθήσει να γίνεις {a_target_speaker}. Να πώς λειτουργεί - σου μαθαίνω κάτι {in_target}, μετά λέω κάτι {in_known} και σου δίνω την ευκαιρία να το πεις δυνατά {in_target}. Μετά, ακούς προσεκτικά τους {target_speakers} που θα σου δείξουν πώς ακούγεται. Είναι σημαντικό να λες κάτι στα κενά, γιατί έτσι μαθαίνεις. Ακόμα κι αν δεν είσαι σίγουρος, προσπάθησε να πεις ό,τι μπορείς, και θα αρχίσεις να μιλάς {in_target} πιο γρήγορα απ' ό,τι νομίζεις. Όσο πιο πολύ το αντιμετωπίζεις σαν παιχνίδι, όσο πιο παιχνιδιάρικα το πας, όσο πιο πολύ γελάς με τα λάθη σου, τόσο καλύτερα θα πάει και τόσο πιο γρήγορα θα μάθεις. Λοιπόν, ας αρχίσουμε να παίζουμε.",
+  "in_known": "στα ελληνικά",
+  "targets": {
+    "afb": {
+      "in_target": "στα αραβικά του Κόλπου",
+      "a_target_speaker": "ομιλητής αραβικών του Κόλπου",
+      "target_speakers": "ομιλητές αραβικών του Κόλπου"
+    },
+    "afr": {
+      "in_target": "στα αφρικάανς",
+      "a_target_speaker": "ομιλητής αφρικάανς",
+      "target_speakers": "ομιλητές αφρικάανς"
+    },
+    "aii": {
+      "in_target": "στα σουρέτ",
+      "a_target_speaker": "ομιλητής σουρέτ",
+      "target_speakers": "ομιλητές σουρέτ"
+    },
+    "ain": {
+      "in_target": "στα αϊνού",
+      "a_target_speaker": "ομιλητής αϊνού",
+      "target_speakers": "ομιλητές αϊνού"
+    },
+    "ajp": {
+      "in_target": "στα παλαιστινιακά αραβικά",
+      "a_target_speaker": "ομιλητής παλαιστινιακών αραβικών",
+      "target_speakers": "ομιλητές παλαιστινιακών αραβικών"
+    },
+    "amh": {
+      "in_target": "στα αμχαρικά",
+      "a_target_speaker": "ομιλητής αμχαρικών",
+      "target_speakers": "ομιλητές αμχαρικών"
+    },
+    "apc": {
+      "in_target": "στα λεβαντίνικα αραβικά",
+      "a_target_speaker": "ομιλητής λεβαντίνικων αραβικών",
+      "target_speakers": "ομιλητές λεβαντίνικων αραβικών"
+    },
+    "ara": {
+      "in_target": "στα αραβικά",
+      "a_target_speaker": "ομιλητή της σύγχρονης τυπικής αραβικής",
+      "target_speakers": "ομιλητές αραβικών"
+    },
+    "arg": {
+      "in_target": "στα αραγωνικά",
+      "a_target_speaker": "ομιλητής αραγωνικών",
+      "target_speakers": "ομιλητές αραγωνικών"
+    },
+    "ary": {
+      "in_target": "στα μαροκινά αραβικά",
+      "a_target_speaker": "ομιλητής μαροκινών αραβικών",
+      "target_speakers": "ομιλητές μαροκινών αραβικών"
+    },
+    "asm": {
+      "in_target": "στα ασαμεζικά",
+      "a_target_speaker": "ομιλητής ασαμεζικών",
+      "target_speakers": "ομιλητές ασαμεζικών"
+    },
+    "ast": {
+      "in_target": "στα αστουριανά",
+      "a_target_speaker": "ομιλητής αστουριανών",
+      "target_speakers": "ομιλητές αστουριανών"
+    },
+    "aze": {
+      "in_target": "στα αζερικά",
+      "a_target_speaker": "ομιλητής αζερικών",
+      "target_speakers": "ομιλητές αζερικών"
+    },
+    "bar": {
+      "in_target": "στα βαυαρικά",
+      "a_target_speaker": "ομιλητής βαυαρικών",
+      "target_speakers": "ομιλητές βαυαρικών"
+    },
+    "bel": {
+      "in_target": "στα λευκορωσικά",
+      "a_target_speaker": "ομιλητής λευκορωσικών",
+      "target_speakers": "ομιλητές λευκορωσικών"
+    },
+    "ben": {
+      "in_target": "στα μπενγκάλι",
+      "a_target_speaker": "ομιλητής μπενγκάλι",
+      "target_speakers": "ομιλητές μπενγκάλι"
+    },
+    "bos": {
+      "in_target": "στα βοσνιακά",
+      "a_target_speaker": "ομιλητής βοσνιακών",
+      "target_speakers": "ομιλητές βοσνιακών"
+    },
+    "bre": {
+      "in_target": "στα βρετονικά",
+      "a_target_speaker": "ομιλητής βρετονικών",
+      "target_speakers": "ομιλητές βρετονικών"
+    },
+    "bul": {
+      "in_target": "στα βουλγαρικά",
+      "a_target_speaker": "ομιλητής βουλγαρικών",
+      "target_speakers": "ομιλητές βουλγαρικών"
+    },
+    "cat": {
+      "in_target": "στα καταλανικά",
+      "a_target_speaker": "ομιλητής καταλανικών",
+      "target_speakers": "ομιλητές καταλανικών"
+    },
+    "ceb": {
+      "in_target": "στα σεμπουάνο",
+      "a_target_speaker": "ομιλητής σεμπουάνο",
+      "target_speakers": "ομιλητές σεμπουάνο"
+    },
+    "ces": {
+      "in_target": "στα τσεχικά",
+      "a_target_speaker": "ομιλητής τσεχικών",
+      "target_speakers": "ομιλητές τσεχικών"
+    },
+    "chr": {
+      "in_target": "στα τσερόκι",
+      "a_target_speaker": "ομιλητής τσερόκι",
+      "target_speakers": "ομιλητές τσερόκι"
+    },
+    "cmn": {
+      "in_target": "στα κινεζικά",
+      "a_target_speaker": "ομιλητής κινεζικών",
+      "target_speakers": "ομιλητές κινεζικών"
+    },
+    "cor": {
+      "in_target": "στα κορνουαλικά",
+      "a_target_speaker": "ομιλητής κορνουαλικών",
+      "target_speakers": "ομιλητές κορνουαλικών"
+    },
+    "cos": {
+      "in_target": "στα κορσικανικά",
+      "a_target_speaker": "ομιλητής κορσικανικών",
+      "target_speakers": "ομιλητές κορσικανικών"
+    },
+    "csb": {
+      "in_target": "στα κασουβικά",
+      "a_target_speaker": "ομιλητής κασουβικών",
+      "target_speakers": "ομιλητές κασουβικών"
+    },
+    "cym": {
+      "in_target": "στα ουαλικά",
+      "a_target_speaker": "ομιλητής ουαλικών",
+      "target_speakers": "ομιλητές ουαλικών"
+    },
+    "dan": {
+      "in_target": "στα δανικά",
+      "a_target_speaker": "ομιλητής δανικών",
+      "target_speakers": "ομιλητές δανικών"
+    },
+    "deu": {
+      "in_target": "στα γερμανικά",
+      "a_target_speaker": "ομιλητής γερμανικών",
+      "target_speakers": "ομιλητές γερμανικών"
+    },
+    "deu_AT": {
+      "in_target": "στα γερμανικά",
+      "a_target_speaker": "ομιλητής αυστριακών γερμανικών",
+      "target_speakers": "ομιλητές γερμανικών"
+    },
+    "dsb": {
+      "in_target": "στα κάτω σορβικά",
+      "a_target_speaker": "ομιλητής κάτω σορβικών",
+      "target_speakers": "ομιλητές κάτω σορβικών"
+    },
+    "eng": {
+      "in_target": "στα αγγλικά",
+      "a_target_speaker": "ομιλητής αγγλικών",
+      "target_speakers": "ομιλητές αγγλικών"
+    },
+    "est": {
+      "in_target": "στα εσθονικά",
+      "a_target_speaker": "ομιλητής εσθονικών",
+      "target_speakers": "ομιλητές εσθονικών"
+    },
+    "eus": {
+      "in_target": "στα βασκικά",
+      "a_target_speaker": "ομιλητής βασκικών",
+      "target_speakers": "ομιλητές βασκικών"
+    },
+    "fao": {
+      "in_target": "στα φεροϊκά",
+      "a_target_speaker": "ομιλητής φεροϊκών",
+      "target_speakers": "ομιλητές φεροϊκών"
+    },
+    "fas": {
+      "in_target": "στα περσικά",
+      "a_target_speaker": "ομιλητής περσικών",
+      "target_speakers": "ομιλητές περσικών"
+    },
+    "fij": {
+      "in_target": "στα φιτζιανά",
+      "a_target_speaker": "ομιλητής φιτζιανών",
+      "target_speakers": "ομιλητές φιτζιανών"
+    },
+    "fil": {
+      "in_target": "στα φιλιππινικά",
+      "a_target_speaker": "ομιλητής φιλιππινικών",
+      "target_speakers": "ομιλητές φιλιππινικών"
+    },
+    "fin": {
+      "in_target": "στα φινλανδικά",
+      "a_target_speaker": "ομιλητής φινλανδικών",
+      "target_speakers": "ομιλητές φινλανδικών"
+    },
+    "fra": {
+      "in_target": "στα γαλλικά",
+      "a_target_speaker": "ομιλητής γαλλικών",
+      "target_speakers": "ομιλητές γαλλικών"
+    },
+    "frr": {
+      "in_target": "στα βόρεια φριζικά",
+      "a_target_speaker": "ομιλητής βόρειων φριζικών",
+      "target_speakers": "ομιλητές βόρειων φριζικών"
+    },
+    "fry": {
+      "in_target": "στα δυτικά φριζικά",
+      "a_target_speaker": "ομιλητής δυτικών φριζικών",
+      "target_speakers": "ομιλητές δυτικών φριζικών"
+    },
+    "fur": {
+      "in_target": "στα φριουλανικά",
+      "a_target_speaker": "ομιλητής φριουλανικών",
+      "target_speakers": "ομιλητές φριουλανικών"
+    },
+    "gla": {
+      "in_target": "στα σκωτικά γαελικά",
+      "a_target_speaker": "ομιλητής σκωτικών γαελικών",
+      "target_speakers": "ομιλητές σκωτικών γαελικών"
+    },
+    "gle": {
+      "in_target": "στα ιρλανδικά",
+      "a_target_speaker": "ομιλητής ιρλανδικών",
+      "target_speakers": "ομιλητές ιρλανδικών"
+    },
+    "glg": {
+      "in_target": "στα γαλικιανά",
+      "a_target_speaker": "ομιλητής γαλικιανών",
+      "target_speakers": "ομιλητές γαλικιανών"
+    },
+    "glv": {
+      "in_target": "στα μανξ",
+      "a_target_speaker": "ομιλητής μανξ",
+      "target_speakers": "ομιλητές μανξ"
+    },
+    "grk": {
+      "in_target": "στα γκρίκο",
+      "a_target_speaker": "ομιλητής γκρίκο",
+      "target_speakers": "ομιλητές γκρίκο"
+    },
+    "grn": {
+      "in_target": "στα γκουαρανί",
+      "a_target_speaker": "ομιλητής γκουαρανί",
+      "target_speakers": "ομιλητές γκουαρανί"
+    },
+    "gsw": {
+      "in_target": "στα ελβετικά γερμανικά",
+      "a_target_speaker": "ομιλητής ελβετικών γερμανικών",
+      "target_speakers": "ομιλητές ελβετικών γερμανικών"
+    },
+    "guj": {
+      "in_target": "στα γκουτζαράτι",
+      "a_target_speaker": "ομιλητής γκουτζαράτι",
+      "target_speakers": "ομιλητές γκουτζαράτι"
+    },
+    "hak": {
+      "in_target": "στα χακά",
+      "a_target_speaker": "ομιλητής χακά",
+      "target_speakers": "ομιλητές χακά"
+    },
+    "hau": {
+      "in_target": "στα χάουσα",
+      "a_target_speaker": "ομιλητής χάουσα",
+      "target_speakers": "ομιλητές χάουσα"
+    },
+    "haw": {
+      "in_target": "στα χαβαϊκά",
+      "a_target_speaker": "ομιλητής χαβαϊκών",
+      "target_speakers": "ομιλητές χαβαϊκών"
+    },
+    "heb": {
+      "in_target": "στα εβραϊκά",
+      "a_target_speaker": "ομιλητής εβραϊκών",
+      "target_speakers": "ομιλητές εβραϊκών"
+    },
+    "hin": {
+      "in_target": "στα χίντι",
+      "a_target_speaker": "ομιλητής χίντι",
+      "target_speakers": "ομιλητές χίντι"
+    },
+    "hrv": {
+      "in_target": "στα κροατικά",
+      "a_target_speaker": "ομιλητής κροατικών",
+      "target_speakers": "ομιλητές κροατικών"
+    },
+    "hsb": {
+      "in_target": "στα άνω σορβικά",
+      "a_target_speaker": "ομιλητής άνω σορβικών",
+      "target_speakers": "ομιλητές άνω σορβικών"
+    },
+    "hun": {
+      "in_target": "στα ουγγρικά",
+      "a_target_speaker": "ομιλητής ουγγρικών",
+      "target_speakers": "ομιλητές ουγγρικών"
+    },
+    "hye": {
+      "in_target": "στα αρμενικά",
+      "a_target_speaker": "ομιλητής αρμενικών",
+      "target_speakers": "ομιλητές αρμενικών"
+    },
+    "ibo": {
+      "in_target": "στα ίγκμπο",
+      "a_target_speaker": "ομιλητής ίγκμπο",
+      "target_speakers": "ομιλητές ίγκμπο"
+    },
+    "iku": {
+      "in_target": "στα ινουκτιτούτ",
+      "a_target_speaker": "ομιλητής ινουκτιτούτ",
+      "target_speakers": "ομιλητές ινουκτιτούτ"
+    },
+    "ind": {
+      "in_target": "στα ινδονησιακά",
+      "a_target_speaker": "ομιλητής ινδονησιακών",
+      "target_speakers": "ομιλητές ινδονησιακών"
+    },
+    "isl": {
+      "in_target": "στα ισλανδικά",
+      "a_target_speaker": "ομιλητής ισλανδικών",
+      "target_speakers": "ομιλητές ισλανδικών"
+    },
+    "ita": {
+      "in_target": "στα ιταλικά",
+      "a_target_speaker": "ομιλητής ιταλικών",
+      "target_speakers": "ομιλητές ιταλικών"
+    },
+    "jav": {
+      "in_target": "στα ιαβανικά",
+      "a_target_speaker": "ομιλητής ιαβανικών",
+      "target_speakers": "ομιλητές ιαβανικών"
+    },
+    "jpn": {
+      "in_target": "στα ιαπωνικά",
+      "a_target_speaker": "ομιλητής ιαπωνικών",
+      "target_speakers": "ομιλητές ιαπωνικών"
+    },
+    "kal": {
+      "in_target": "στα γροιλανδικά",
+      "a_target_speaker": "ομιλητής γροιλανδικών",
+      "target_speakers": "ομιλητές γροιλανδικών"
+    },
+    "kan": {
+      "in_target": "στα κανάντα",
+      "a_target_speaker": "ομιλητής κανάντα",
+      "target_speakers": "ομιλητές κανάντα"
+    },
+    "kat": {
+      "in_target": "στα γεωργιανά",
+      "a_target_speaker": "ομιλητής γεωργιανών",
+      "target_speakers": "ομιλητές γεωργιανών"
+    },
+    "kaz": {
+      "in_target": "στα καζακικά",
+      "a_target_speaker": "ομιλητής καζακικών",
+      "target_speakers": "ομιλητές καζακικών"
+    },
+    "kir": {
+      "in_target": "στα κιργιζικά",
+      "a_target_speaker": "ομιλητής κιργιζικών",
+      "target_speakers": "ομιλητές κιργιζικών"
+    },
+    "kor": {
+      "in_target": "στα κορεατικά",
+      "a_target_speaker": "ομιλητής κορεατικών",
+      "target_speakers": "ομιλητές κορεατικών"
+    },
+    "kur": {
+      "in_target": "στα κουρδικά",
+      "a_target_speaker": "ομιλητής κουρδικών",
+      "target_speakers": "ομιλητές κουρδικών"
+    },
+    "lad": {
+      "in_target": "στα λαδίνο",
+      "a_target_speaker": "ομιλητής λαδίνο",
+      "target_speakers": "ομιλητές λαδίνο"
+    },
+    "lav": {
+      "in_target": "στα λετονικά",
+      "a_target_speaker": "ομιλητής λετονικών",
+      "target_speakers": "ομιλητές λετονικών"
+    },
+    "lij": {
+      "in_target": "στα λιγουρικά",
+      "a_target_speaker": "ομιλητής λιγουρικών",
+      "target_speakers": "ομιλητές λιγουρικών"
+    },
+    "lim": {
+      "in_target": "στα λιμβουργικά",
+      "a_target_speaker": "ομιλητής λιμβουργικών",
+      "target_speakers": "ομιλητές λιμβουργικών"
+    },
+    "lin": {
+      "in_target": "στα λινγκάλα",
+      "a_target_speaker": "ομιλητής λινγκάλα",
+      "target_speakers": "ομιλητές λινγκάλα"
+    },
+    "lit": {
+      "in_target": "στα λιθουανικά",
+      "a_target_speaker": "ομιλητής λιθουανικών",
+      "target_speakers": "ομιλητές λιθουανικών"
+    },
+    "ltz": {
+      "in_target": "στα λουξεμβουργιανά",
+      "a_target_speaker": "ομιλητής λουξεμβουργιανών",
+      "target_speakers": "ομιλητές λουξεμβουργιανών"
+    },
+    "mal": {
+      "in_target": "στα μαλαγιάλαμ",
+      "a_target_speaker": "ομιλητής μαλαγιάλαμ",
+      "target_speakers": "ομιλητές μαλαγιάλαμ"
+    },
+    "mar": {
+      "in_target": "στα μαράθι",
+      "a_target_speaker": "ομιλητής μαράθι",
+      "target_speakers": "ομιλητές μαράθι"
+    },
+    "mkd": {
+      "in_target": "στα μακεδονικά",
+      "a_target_speaker": "ομιλητής μακεδονικών",
+      "target_speakers": "ομιλητές μακεδονικών"
+    },
+    "moh": {
+      "in_target": "στα μοχόκ",
+      "a_target_speaker": "ομιλητής μοχόκ",
+      "target_speakers": "ομιλητές μοχόκ"
+    },
+    "mri": {
+      "in_target": "στα μαορί",
+      "a_target_speaker": "ομιλητής μαορί",
+      "target_speakers": "ομιλητές μαορί"
+    },
+    "msa": {
+      "in_target": "στα μαλαϊκά",
+      "a_target_speaker": "ομιλητής μαλαϊκών",
+      "target_speakers": "ομιλητές μαλαϊκών"
+    },
+    "nan": {
+      "in_target": "στα χοκιέν",
+      "a_target_speaker": "ομιλητής χοκιέν",
+      "target_speakers": "ομιλητές χοκιέν"
+    },
+    "nap": {
+      "in_target": "στα ναπολιτάνικα",
+      "a_target_speaker": "ομιλητής ναπολιτάνικων",
+      "target_speakers": "ομιλητές ναπολιτάνικων"
+    },
+    "nav": {
+      "in_target": "στα ναβάχο",
+      "a_target_speaker": "ομιλητής ναβάχο",
+      "target_speakers": "ομιλητές ναβάχο"
+    },
+    "nep": {
+      "in_target": "στα νεπαλικά",
+      "a_target_speaker": "ομιλητής νεπαλικών",
+      "target_speakers": "ομιλητές νεπαλικών"
+    },
+    "nld": {
+      "in_target": "στα ολλανδικά",
+      "a_target_speaker": "ομιλητής ολλανδικών",
+      "target_speakers": "ομιλητές ολλανδικών"
+    },
+    "nor": {
+      "in_target": "στα νορβηγικά",
+      "a_target_speaker": "ομιλητής νορβηγικών",
+      "target_speakers": "ομιλητές νορβηγικών"
+    },
+    "nya": {
+      "in_target": "στα τσιτσέουα",
+      "a_target_speaker": "ομιλητής τσιτσέουα",
+      "target_speakers": "ομιλητές τσιτσέουα"
+    },
+    "oci": {
+      "in_target": "στα οξιτανικά",
+      "a_target_speaker": "ομιλητής οξιτανικών",
+      "target_speakers": "ομιλητές οξιτανικών"
+    },
+    "oji": {
+      "in_target": "στα οτζίμπουε",
+      "a_target_speaker": "ομιλητής οτζίμπουε",
+      "target_speakers": "ομιλητές οτζίμπουε"
+    },
+    "pan": {
+      "in_target": "στα παντζάμπι",
+      "a_target_speaker": "ομιλητής παντζάμπι",
+      "target_speakers": "ομιλητές παντζάμπι"
+    },
+    "pol": {
+      "in_target": "στα πολωνικά",
+      "a_target_speaker": "ομιλητής πολωνικών",
+      "target_speakers": "ομιλητές πολωνικών"
+    },
+    "por": {
+      "in_target": "στα πορτογαλικά",
+      "a_target_speaker": "ομιλητής πορτογαλικών",
+      "target_speakers": "ομιλητές πορτογαλικών"
+    },
+    "por_BR": {
+      "in_target": "στα πορτογαλικά",
+      "a_target_speaker": "ομιλητής βραζιλιάνικων πορτογαλικών",
+      "target_speakers": "ομιλητές πορτογαλικών"
+    },
+    "por_EU": {
+      "in_target": "στα πορτογαλικά",
+      "a_target_speaker": "ομιλητής ευρωπαϊκών πορτογαλικών",
+      "target_speakers": "ομιλητές πορτογαλικών"
+    },
+    "pus": {
+      "in_target": "στα παστό",
+      "a_target_speaker": "ομιλητής παστό",
+      "target_speakers": "ομιλητές παστό"
+    },
+    "que": {
+      "in_target": "στα κέτσουα",
+      "a_target_speaker": "ομιλητής κέτσουα",
+      "target_speakers": "ομιλητές κέτσουα"
+    },
+    "roh": {
+      "in_target": "στα ρομανς",
+      "a_target_speaker": "ομιλητής ρομανς",
+      "target_speakers": "ομιλητές ρομανς"
+    },
+    "ron": {
+      "in_target": "στα ρουμανικά",
+      "a_target_speaker": "ομιλητής ρουμανικών",
+      "target_speakers": "ομιλητές ρουμανικών"
+    },
+    "rus": {
+      "in_target": "στα ρωσικά",
+      "a_target_speaker": "ομιλητής ρωσικών",
+      "target_speakers": "ομιλητές ρωσικών"
+    },
+    "scn": {
+      "in_target": "στα σικελικά",
+      "a_target_speaker": "ομιλητής σικελικών",
+      "target_speakers": "ομιλητές σικελικών"
+    },
+    "sco": {
+      "in_target": "στα σκωτικά",
+      "a_target_speaker": "ομιλητής σκωτικών",
+      "target_speakers": "ομιλητές σκωτικών"
+    },
+    "slk": {
+      "in_target": "στα σλοβακικά",
+      "a_target_speaker": "ομιλητής σλοβακικών",
+      "target_speakers": "ομιλητές σλοβακικών"
+    },
+    "slv": {
+      "in_target": "στα σλοβενικά",
+      "a_target_speaker": "ομιλητής σλοβενικών",
+      "target_speakers": "ομιλητές σλοβενικών"
+    },
+    "sme": {
+      "in_target": "στα βόρεια σάμι",
+      "a_target_speaker": "ομιλητής βόρειων σάμι",
+      "target_speakers": "ομιλητές βόρειων σάμι"
+    },
+    "smj": {
+      "in_target": "στα λούλε σάμι",
+      "a_target_speaker": "ομιλητής λούλε σάμι",
+      "target_speakers": "ομιλητές λούλε σάμι"
+    },
+    "smn": {
+      "in_target": "στα ινάρι σάμι",
+      "a_target_speaker": "ομιλητής ινάρι σάμι",
+      "target_speakers": "ομιλητές ινάρι σάμι"
+    },
+    "smo": {
+      "in_target": "στα σαμοανικά",
+      "a_target_speaker": "ομιλητής σαμοανικών",
+      "target_speakers": "ομιλητές σαμοανικών"
+    },
+    "sms": {
+      "in_target": "στα σκολτ σάμι",
+      "a_target_speaker": "ομιλητής σκολτ σάμι",
+      "target_speakers": "ομιλητές σκολτ σάμι"
+    },
+    "snd": {
+      "in_target": "στα σίντι",
+      "a_target_speaker": "ομιλητής σίντι",
+      "target_speakers": "ομιλητές σίντι"
+    },
+    "som": {
+      "in_target": "στα σομαλικά",
+      "a_target_speaker": "ομιλητής σομαλικών",
+      "target_speakers": "ομιλητές σομαλικών"
+    },
+    "spa": {
+      "in_target": "στα ισπανικά",
+      "a_target_speaker": "ομιλητής ισπανικών",
+      "target_speakers": "ομιλητές ισπανικών"
+    },
+    "spa_EU": {
+      "in_target": "στα ισπανικά",
+      "a_target_speaker": "ομιλητής ευρωπαϊκών ισπανικών",
+      "target_speakers": "ομιλητές ισπανικών"
+    },
+    "spa_SA": {
+      "in_target": "στα ισπανικά",
+      "a_target_speaker": "ομιλητής νοτιοαμερικανικών ισπανικών",
+      "target_speakers": "ομιλητές ισπανικών"
+    },
+    "srd": {
+      "in_target": "στα σαρδηνιακά",
+      "a_target_speaker": "ομιλητής σαρδηνιακών",
+      "target_speakers": "ομιλητές σαρδηνιακών"
+    },
+    "srp": {
+      "in_target": "στα σερβικά",
+      "a_target_speaker": "ομιλητής σερβικών",
+      "target_speakers": "ομιλητές σερβικών"
+    },
+    "swa": {
+      "in_target": "στα σουαχίλι",
+      "a_target_speaker": "ομιλητής σουαχίλι",
+      "target_speakers": "ομιλητές σουαχίλι"
+    },
+    "swe": {
+      "in_target": "στα σουηδικά",
+      "a_target_speaker": "ομιλητής σουηδικών",
+      "target_speakers": "ομιλητές σουηδικών"
+    },
+    "tah": {
+      "in_target": "στα ταϊτιανά",
+      "a_target_speaker": "ομιλητής ταϊτιανών",
+      "target_speakers": "ομιλητές ταϊτιανών"
+    },
+    "tam": {
+      "in_target": "στα ταμίλ",
+      "a_target_speaker": "ομιλητής ταμίλ",
+      "target_speakers": "ομιλητές ταμίλ"
+    },
+    "tel": {
+      "in_target": "στα τελούγκου",
+      "a_target_speaker": "ομιλητής τελούγκου",
+      "target_speakers": "ομιλητές τελούγκου"
+    },
+    "tha": {
+      "in_target": "στα ταϊλανδικά",
+      "a_target_speaker": "ομιλητής ταϊλανδικών",
+      "target_speakers": "ομιλητές ταϊλανδικών"
+    },
+    "ton": {
+      "in_target": "στα τονγκανικά",
+      "a_target_speaker": "ομιλητής τονγκανικών",
+      "target_speakers": "ομιλητές τονγκανικών"
+    },
+    "tur": {
+      "in_target": "στα τουρκικά",
+      "a_target_speaker": "ομιλητής τουρκικών",
+      "target_speakers": "ομιλητές τουρκικών"
+    },
+    "uig": {
+      "in_target": "στα ουιγουρικά",
+      "a_target_speaker": "ομιλητής ουιγουρικών",
+      "target_speakers": "ομιλητές ουιγουρικών"
+    },
+    "ukr": {
+      "in_target": "στα ουκρανικά",
+      "a_target_speaker": "ομιλητής ουκρανικών",
+      "target_speakers": "ομιλητές ουκρανικών"
+    },
+    "urd": {
+      "in_target": "στα ούρντου",
+      "a_target_speaker": "ομιλητής ούρντου",
+      "target_speakers": "ομιλητές ούρντου"
+    },
+    "vec": {
+      "in_target": "στα βενετικά",
+      "a_target_speaker": "ομιλητής βενετικών",
+      "target_speakers": "ομιλητές βενετικών"
+    },
+    "vie": {
+      "in_target": "στα βιετναμικά",
+      "a_target_speaker": "ομιλητής βιετναμικών",
+      "target_speakers": "ομιλητές βιετναμικών"
+    },
+    "vls": {
+      "in_target": "στα φλαμανδικά",
+      "a_target_speaker": "ομιλητής φλαμανδικών",
+      "target_speakers": "ομιλητές φλαμανδικών"
+    },
+    "wln": {
+      "in_target": "στα βαλλονικά",
+      "a_target_speaker": "ομιλητής βαλλονικών",
+      "target_speakers": "ομιλητές βαλλονικών"
+    },
+    "wuu": {
+      "in_target": "στα σανγκαϊνέζικα",
+      "a_target_speaker": "ομιλητής σανγκαϊνέζικων",
+      "target_speakers": "ομιλητές σανγκαϊνέζικων"
+    },
+    "xho": {
+      "in_target": "στα ζόσα",
+      "a_target_speaker": "ομιλητής ζόσα",
+      "target_speakers": "ομιλητές ζόσα"
+    },
+    "yid": {
+      "in_target": "στα γίντις",
+      "a_target_speaker": "ομιλητής γίντις",
+      "target_speakers": "ομιλητές γίντις"
+    },
+    "yor": {
+      "in_target": "στα γιορούμπα",
+      "a_target_speaker": "ομιλητής γιορούμπα",
+      "target_speakers": "ομιλητές γιορούμπα"
+    },
+    "yue": {
+      "in_target": "στα καντονέζικα",
+      "a_target_speaker": "ομιλητής καντονέζικων",
+      "target_speakers": "ομιλητές καντονέζικων"
+    },
+    "zul": {
+      "in_target": "στα ζουλού",
+      "a_target_speaker": "ομιλητής ζουλού",
+      "target_speakers": "ομιλητές ζουλού"
+    },
+    "ara_lb": {
+      "in_target": "στα αραβικά",
+      "a_target_speaker": "ομιλητής λιβανέζικων αραβικών",
+      "target_speakers": "ομιλητές αραβικών"
+    },
+    "ara_sy": {
+      "in_target": "στα αραβικά",
+      "a_target_speaker": "ομιλητής συριακών αραβικών",
+      "target_speakers": "ομιλητές αραβικών"
+    },
+    "ara_eg": {
+      "in_target": "στα αραβικά",
+      "a_target_speaker": "ομιλητής αιγυπτιακών αραβικών",
+      "target_speakers": "ομιλητές αραβικών"
+    }
+  }
+}

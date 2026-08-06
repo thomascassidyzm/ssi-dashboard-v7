@@ -1,0 +1,743 @@
+{
+  "known_language": "hrv",
+  "known_language_display": "Croatian",
+  "template": "Dobrodošao u ovu neobičnu igru koja će ti pomoći da postaneš {a_target_speaker}. Evo kako to funkcionira — naučim te nešto {in_target}, zatim kažem nešto {in_known} i dajem ti priliku da to kažeš naglas {in_target}. Onda pažljivo slušaj {target_speakers} koji će ti pokazati kako to zvuči. Važno je da kažeš nešto u pauzama, jer se upravo tako učiš. Čak i ako nisi siguran, pokušaj reći sve što možeš, i počet ćeš govoriti {in_target} prije nego što misliš. Što više to shvaćaš kao igru, što se više igraš s time, što se više smiješ svojim greškama, to će bolje ići i brže ćeš učiti. Dakle, počnimo se igrati.",
+  "in_known": "na hrvatskom",
+  "targets": {
+    "afb": {
+      "in_target": "na zaljevskom arapskom",
+      "a_target_speaker": "osobom koja govori zaljevski arapski",
+      "target_speakers": "izvorne govornike zaljevskog arapskog jezika"
+    },
+    "afr": {
+      "in_target": "na afrikaansu",
+      "a_target_speaker": "osobom koja govori afrikaans",
+      "target_speakers": "izvorne govornike afrikaansa"
+    },
+    "aii": {
+      "in_target": "na suret jeziku",
+      "a_target_speaker": "osobom koja govori suret",
+      "target_speakers": "izvorne govornike suret jezika"
+    },
+    "ain": {
+      "in_target": "na ainu jeziku",
+      "a_target_speaker": "osobom koja govori ainu",
+      "target_speakers": "izvorne govornike ainu jezika"
+    },
+    "ajp": {
+      "in_target": "na palestinskom arapskom",
+      "a_target_speaker": "osobom koja govori palestinski arapski",
+      "target_speakers": "izvorne govornike palestinskog arapskog jezika"
+    },
+    "amh": {
+      "in_target": "na amharskom",
+      "a_target_speaker": "osobom koja govori amharski",
+      "target_speakers": "izvorne govornike amharskog jezika"
+    },
+    "apc": {
+      "in_target": "na levantinskom arapskom",
+      "a_target_speaker": "osobom koja govori levantinski arapski",
+      "target_speakers": "izvorne govornike levantinskog arapskog jezika"
+    },
+    "ara": {
+      "in_target": "na arapskom",
+      "a_target_speaker": "izvornog govornika modernog standardnog arapskog jezika",
+      "target_speakers": "izvorne govornike arapskog jezika"
+    },
+    "arg": {
+      "in_target": "na aragonskom",
+      "a_target_speaker": "osobom koja govori aragonski",
+      "target_speakers": "izvorne govornike aragonskog jezika"
+    },
+    "ary": {
+      "in_target": "na marokanskom arapskom",
+      "a_target_speaker": "osobom koja govori marokanski arapski",
+      "target_speakers": "izvorne govornike marokanskog arapskog jezika"
+    },
+    "asm": {
+      "in_target": "na asamskom",
+      "a_target_speaker": "osobom koja govori asamski",
+      "target_speakers": "izvorne govornike asamskog jezika"
+    },
+    "ast": {
+      "in_target": "na asturijskom",
+      "a_target_speaker": "osobom koja govori asturijski",
+      "target_speakers": "izvorne govornike asturijskog jezika"
+    },
+    "aze": {
+      "in_target": "na azerbajdžanskom",
+      "a_target_speaker": "osobom koja govori azerbajdžanski",
+      "target_speakers": "izvorne govornike azerbajdžanskog jezika"
+    },
+    "bar": {
+      "in_target": "na bavarskom",
+      "a_target_speaker": "osobom koja govori bavarski",
+      "target_speakers": "izvorne govornike bavarskog jezika"
+    },
+    "bel": {
+      "in_target": "na bjeloruskom",
+      "a_target_speaker": "osobom koja govori bjeloruski",
+      "target_speakers": "izvorne govornike bjeloruskog jezika"
+    },
+    "ben": {
+      "in_target": "na bengalskom",
+      "a_target_speaker": "osobom koja govori bengalski",
+      "target_speakers": "izvorne govornike bengalskog jezika"
+    },
+    "bos": {
+      "in_target": "na bosanskom",
+      "a_target_speaker": "osobom koja govori bosanski",
+      "target_speakers": "izvorne govornike bosanskog jezika"
+    },
+    "bre": {
+      "in_target": "na bretonskom",
+      "a_target_speaker": "osobom koja govori bretonski",
+      "target_speakers": "izvorne govornike bretonskog jezika"
+    },
+    "bul": {
+      "in_target": "na bugarskom",
+      "a_target_speaker": "osobom koja govori bugarski",
+      "target_speakers": "izvorne govornike bugarskog jezika"
+    },
+    "cat": {
+      "in_target": "na katalonskom",
+      "a_target_speaker": "osobom koja govori katalonski",
+      "target_speakers": "izvorne govornike katalonskog jezika"
+    },
+    "ceb": {
+      "in_target": "na cebuanskom",
+      "a_target_speaker": "osobom koja govori cebuanski",
+      "target_speakers": "izvorne govornike cebuanskog jezika"
+    },
+    "ces": {
+      "in_target": "na češkom",
+      "a_target_speaker": "osobom koja govori češki",
+      "target_speakers": "izvorne govornike češkog jezika"
+    },
+    "chr": {
+      "in_target": "na čerokijskom",
+      "a_target_speaker": "osobom koja govori čerokijski",
+      "target_speakers": "izvorne govornike čerokijskog jezika"
+    },
+    "cmn": {
+      "in_target": "na kineskom",
+      "a_target_speaker": "osobom koja govori kineski",
+      "target_speakers": "izvorne govornike kineskog jezika"
+    },
+    "cor": {
+      "in_target": "na kornijskom",
+      "a_target_speaker": "osobom koja govori kornijski",
+      "target_speakers": "izvorne govornike kornijskog jezika"
+    },
+    "cos": {
+      "in_target": "na korzičkom",
+      "a_target_speaker": "osobom koja govori korzički",
+      "target_speakers": "izvorne govornike korzičkog jezika"
+    },
+    "csb": {
+      "in_target": "na kašupskom",
+      "a_target_speaker": "osobom koja govori kašupski",
+      "target_speakers": "izvorne govornike kašupskog jezika"
+    },
+    "cym": {
+      "in_target": "na velškom",
+      "a_target_speaker": "osobom koja govori velški",
+      "target_speakers": "izvorne govornike velškog jezika"
+    },
+    "dan": {
+      "in_target": "na danskom",
+      "a_target_speaker": "osobom koja govori danski",
+      "target_speakers": "izvorne govornike danskog jezika"
+    },
+    "deu": {
+      "in_target": "na njemačkom",
+      "a_target_speaker": "osobom koja govori njemački",
+      "target_speakers": "izvorne govornike njemačkog jezika"
+    },
+    "deu_AT": {
+      "in_target": "na njemačkom",
+      "a_target_speaker": "osobom koja govori austrijski njemački",
+      "target_speakers": "izvorne govornike njemačkog jezika"
+    },
+    "dsb": {
+      "in_target": "na donjolužičkom",
+      "a_target_speaker": "osobom koja govori donjolužički",
+      "target_speakers": "izvorne govornike donjolužičkog jezika"
+    },
+    "ell": {
+      "in_target": "na grčkom",
+      "a_target_speaker": "osobom koja govori grčki",
+      "target_speakers": "izvorne govornike grčkog jezika"
+    },
+    "eng": {
+      "in_target": "na engleskom",
+      "a_target_speaker": "osobom koja govori engleski",
+      "target_speakers": "izvorne govornike engleskog jezika"
+    },
+    "est": {
+      "in_target": "na estonskom",
+      "a_target_speaker": "osobom koja govori estonski",
+      "target_speakers": "izvorne govornike estonskog jezika"
+    },
+    "eus": {
+      "in_target": "na baskijskom",
+      "a_target_speaker": "osobom koja govori baskijski",
+      "target_speakers": "izvorne govornike baskijskog jezika"
+    },
+    "fao": {
+      "in_target": "na ferskom",
+      "a_target_speaker": "osobom koja govori ferski",
+      "target_speakers": "izvorne govornike ferskog jezika"
+    },
+    "fas": {
+      "in_target": "na perzijskom",
+      "a_target_speaker": "osobom koja govori perzijski",
+      "target_speakers": "izvorne govornike perzijskog jezika"
+    },
+    "fij": {
+      "in_target": "na fidžijskom",
+      "a_target_speaker": "osobom koja govori fidžijski",
+      "target_speakers": "izvorne govornike fidžijskog jezika"
+    },
+    "fil": {
+      "in_target": "na filipinskom",
+      "a_target_speaker": "osobom koja govori filipinski",
+      "target_speakers": "izvorne govornike filipinskog jezika"
+    },
+    "fin": {
+      "in_target": "na finskom",
+      "a_target_speaker": "osobom koja govori finski",
+      "target_speakers": "izvorne govornike finskog jezika"
+    },
+    "fra": {
+      "in_target": "na francuskom",
+      "a_target_speaker": "osobom koja govori francuski",
+      "target_speakers": "izvorne govornike francuskog jezika"
+    },
+    "frr": {
+      "in_target": "na sjevernofrizijskom",
+      "a_target_speaker": "osobom koja govori sjevernofrizijski",
+      "target_speakers": "izvorne govornike sjevernofrizijskog jezika"
+    },
+    "fry": {
+      "in_target": "na zapadnofrizijskom",
+      "a_target_speaker": "osobom koja govori zapadnofrizijski",
+      "target_speakers": "izvorne govornike zapadnofrizijskog jezika"
+    },
+    "fur": {
+      "in_target": "na furlanskom",
+      "a_target_speaker": "osobom koja govori furlanski",
+      "target_speakers": "izvorne govornike furlanskog jezika"
+    },
+    "gla": {
+      "in_target": "na škotskom gelskom",
+      "a_target_speaker": "osobom koja govori škotski gelski",
+      "target_speakers": "izvorne govornike škotskog gelskog jezika"
+    },
+    "gle": {
+      "in_target": "na irskom",
+      "a_target_speaker": "osobom koja govori irski",
+      "target_speakers": "izvorne govornike irskog jezika"
+    },
+    "glg": {
+      "in_target": "na galicijskom",
+      "a_target_speaker": "osobom koja govori galicijski",
+      "target_speakers": "izvorne govornike galicijskog jezika"
+    },
+    "glv": {
+      "in_target": "na manskom",
+      "a_target_speaker": "osobom koja govori manski",
+      "target_speakers": "izvorne govornike manskog jezika"
+    },
+    "grk": {
+      "in_target": "na griko jeziku",
+      "a_target_speaker": "osobom koja govori griko",
+      "target_speakers": "izvorne govornike griko jezika"
+    },
+    "grn": {
+      "in_target": "na gvaranijskom",
+      "a_target_speaker": "osobom koja govori gvaranijski",
+      "target_speakers": "izvorne govornike gvaranijskog jezika"
+    },
+    "gsw": {
+      "in_target": "na švicarskom njemačkom",
+      "a_target_speaker": "osobom koja govori švicarski njemački",
+      "target_speakers": "izvorne govornike švicarskog njemačkog jezika"
+    },
+    "guj": {
+      "in_target": "na gudžaratskom",
+      "a_target_speaker": "osobom koja govori gudžaratski",
+      "target_speakers": "izvorne govornike gudžaratskog jezika"
+    },
+    "hak": {
+      "in_target": "na hakka jeziku",
+      "a_target_speaker": "osobom koja govori hakka",
+      "target_speakers": "izvorne govornike hakka jezika"
+    },
+    "hau": {
+      "in_target": "na hausa jeziku",
+      "a_target_speaker": "osobom koja govori hausa",
+      "target_speakers": "izvorne govornike hausa jezika"
+    },
+    "haw": {
+      "in_target": "na havajskom",
+      "a_target_speaker": "osobom koja govori havajski",
+      "target_speakers": "izvorne govornike havajskog jezika"
+    },
+    "heb": {
+      "in_target": "na hebrejskom",
+      "a_target_speaker": "osobom koja govori hebrejski",
+      "target_speakers": "izvorne govornike hebrejskog jezika"
+    },
+    "hin": {
+      "in_target": "na hindiju",
+      "a_target_speaker": "osobom koja govori hindi",
+      "target_speakers": "izvorne govornike hindija"
+    },
+    "hsb": {
+      "in_target": "na gornjolužičkom",
+      "a_target_speaker": "osobom koja govori gornjolužički",
+      "target_speakers": "izvorne govornike gornjolužičkog jezika"
+    },
+    "hun": {
+      "in_target": "na mađarskom",
+      "a_target_speaker": "osobom koja govori mađarski",
+      "target_speakers": "izvorne govornike mađarskog jezika"
+    },
+    "hye": {
+      "in_target": "na armenskom",
+      "a_target_speaker": "osobom koja govori armenski",
+      "target_speakers": "izvorne govornike armenskog jezika"
+    },
+    "ibo": {
+      "in_target": "na igbo jeziku",
+      "a_target_speaker": "osobom koja govori igbo",
+      "target_speakers": "izvorne govornike igbo jezika"
+    },
+    "iku": {
+      "in_target": "na inuktitutu",
+      "a_target_speaker": "osobom koja govori inuktitut",
+      "target_speakers": "izvorne govornike inuktitut jezika"
+    },
+    "ind": {
+      "in_target": "na indonezijskom",
+      "a_target_speaker": "osobom koja govori indonezijski",
+      "target_speakers": "izvorne govornike indonezijskog jezika"
+    },
+    "isl": {
+      "in_target": "na islandskom",
+      "a_target_speaker": "osobom koja govori islandski",
+      "target_speakers": "izvorne govornike islandskog jezika"
+    },
+    "ita": {
+      "in_target": "na talijanskom",
+      "a_target_speaker": "osobom koja govori talijanski",
+      "target_speakers": "izvorne govornike talijanskog jezika"
+    },
+    "jav": {
+      "in_target": "na javanskom",
+      "a_target_speaker": "osobom koja govori javanski",
+      "target_speakers": "izvorne govornike javanskog jezika"
+    },
+    "jpn": {
+      "in_target": "na japanskom",
+      "a_target_speaker": "osobom koja govori japanski",
+      "target_speakers": "izvorne govornike japanskog jezika"
+    },
+    "kal": {
+      "in_target": "na grenlandskom",
+      "a_target_speaker": "osobom koja govori grenlandski",
+      "target_speakers": "izvorne govornike grenlandskog jezika"
+    },
+    "kan": {
+      "in_target": "na kannada jeziku",
+      "a_target_speaker": "osobom koja govori kannada",
+      "target_speakers": "izvorne govornike kannada jezika"
+    },
+    "kat": {
+      "in_target": "na gruzijskom",
+      "a_target_speaker": "osobom koja govori gruzijski",
+      "target_speakers": "izvorne govornike gruzijskog jezika"
+    },
+    "kaz": {
+      "in_target": "na kazaškom",
+      "a_target_speaker": "osobom koja govori kazaški",
+      "target_speakers": "izvorne govornike kazaškog jezika"
+    },
+    "kir": {
+      "in_target": "na kirgiskom",
+      "a_target_speaker": "osobom koja govori kirgiski",
+      "target_speakers": "izvorne govornike kirgiskog jezika"
+    },
+    "kor": {
+      "in_target": "na korejskom",
+      "a_target_speaker": "osobom koja govori korejski",
+      "target_speakers": "izvorne govornike korejskog jezika"
+    },
+    "kur": {
+      "in_target": "na kurdskom",
+      "a_target_speaker": "osobom koja govori kurdski",
+      "target_speakers": "izvorne govornike kurdskog jezika"
+    },
+    "lad": {
+      "in_target": "na ladino jeziku",
+      "a_target_speaker": "osobom koja govori ladino",
+      "target_speakers": "izvorne govornike ladino jezika"
+    },
+    "lav": {
+      "in_target": "na latvijskom",
+      "a_target_speaker": "osobom koja govori latvijski",
+      "target_speakers": "izvorne govornike latvijskog jezika"
+    },
+    "lij": {
+      "in_target": "na ligurskom",
+      "a_target_speaker": "osobom koja govori ligurski",
+      "target_speakers": "izvorne govornike ligurskog jezika"
+    },
+    "lim": {
+      "in_target": "na limburškom",
+      "a_target_speaker": "osobom koja govori limburški",
+      "target_speakers": "izvorne govornike limburškog jezika"
+    },
+    "lin": {
+      "in_target": "na lingala jeziku",
+      "a_target_speaker": "osobom koja govori lingala",
+      "target_speakers": "izvorne govornike lingala jezika"
+    },
+    "lit": {
+      "in_target": "na litavskom",
+      "a_target_speaker": "osobom koja govori litavski",
+      "target_speakers": "izvorne govornike litavskog jezika"
+    },
+    "ltz": {
+      "in_target": "na luksemburškom",
+      "a_target_speaker": "osobom koja govori luksemburški",
+      "target_speakers": "izvorne govornike luksemburškog jezika"
+    },
+    "mal": {
+      "in_target": "na malajalamskom",
+      "a_target_speaker": "osobom koja govori malajalam",
+      "target_speakers": "izvorne govornike malajalam jezika"
+    },
+    "mar": {
+      "in_target": "na marathskom",
+      "a_target_speaker": "osobom koja govori marathi",
+      "target_speakers": "izvorne govornike marathi jezika"
+    },
+    "mkd": {
+      "in_target": "na makedonskom",
+      "a_target_speaker": "osobom koja govori makedonski",
+      "target_speakers": "izvorne govornike makedonskog jezika"
+    },
+    "moh": {
+      "in_target": "na mohawk jeziku",
+      "a_target_speaker": "osobom koja govori mohawk",
+      "target_speakers": "izvorne govornike mohawk jezika"
+    },
+    "mri": {
+      "in_target": "na maorskom",
+      "a_target_speaker": "osobom koja govori maorski",
+      "target_speakers": "izvorne govornike maorskog jezika"
+    },
+    "msa": {
+      "in_target": "na malajskom",
+      "a_target_speaker": "osobom koja govori malajski",
+      "target_speakers": "izvorne govornike malajskog jezika"
+    },
+    "nan": {
+      "in_target": "na min nan jeziku",
+      "a_target_speaker": "osobom koja govori min nan",
+      "target_speakers": "izvorne govornike min nan jezika"
+    },
+    "nap": {
+      "in_target": "na napolitanskom",
+      "a_target_speaker": "osobom koja govori napolitanski",
+      "target_speakers": "izvorne govornike napolitanskog jezika"
+    },
+    "nav": {
+      "in_target": "na navaho jeziku",
+      "a_target_speaker": "osobom koja govori navaho",
+      "target_speakers": "izvorne govornike navaho jezika"
+    },
+    "nep": {
+      "in_target": "na nepalskom",
+      "a_target_speaker": "osobom koja govori nepalski",
+      "target_speakers": "izvorne govornike nepalskog jezika"
+    },
+    "nld": {
+      "in_target": "na nizozemskom",
+      "a_target_speaker": "osobom koja govori nizozemski",
+      "target_speakers": "izvorne govornike nizozemskog jezika"
+    },
+    "nor": {
+      "in_target": "na norveškom",
+      "a_target_speaker": "osobom koja govori norveški",
+      "target_speakers": "izvorne govornike norveškog jezika"
+    },
+    "nya": {
+      "in_target": "na chichewa jeziku",
+      "a_target_speaker": "osobom koja govori chichewa",
+      "target_speakers": "izvorne govornike chichewa jezika"
+    },
+    "oci": {
+      "in_target": "na okcitanskom",
+      "a_target_speaker": "osobom koja govori okcitanski",
+      "target_speakers": "izvorne govornike okcitanskog jezika"
+    },
+    "oji": {
+      "in_target": "na ojibwejskom",
+      "a_target_speaker": "osobom koja govori ojibwejski",
+      "target_speakers": "izvorne govornike ojibwejskog jezika"
+    },
+    "pan": {
+      "in_target": "na pandžapskom",
+      "a_target_speaker": "osobom koja govori pandžapski",
+      "target_speakers": "izvorne govornike pandžapskog jezika"
+    },
+    "pol": {
+      "in_target": "na poljskom",
+      "a_target_speaker": "osobom koja govori poljski",
+      "target_speakers": "izvorne govornike poljskog jezika"
+    },
+    "por": {
+      "in_target": "na portugalskom",
+      "a_target_speaker": "osobom koja govori portugalski",
+      "target_speakers": "izvorne govornike portugalskog jezika"
+    },
+    "por_BR": {
+      "in_target": "na portugalskom",
+      "a_target_speaker": "osobom koja govori brazilski portugalski",
+      "target_speakers": "izvorne govornike portugalskog jezika"
+    },
+    "por_EU": {
+      "in_target": "na portugalskom",
+      "a_target_speaker": "osobom koja govori europski portugalski",
+      "target_speakers": "izvorne govornike portugalskog jezika"
+    },
+    "pus": {
+      "in_target": "na paštunskom",
+      "a_target_speaker": "osobom koja govori paštunski",
+      "target_speakers": "izvorne govornike paštunskog jezika"
+    },
+    "que": {
+      "in_target": "na kečua jeziku",
+      "a_target_speaker": "osobom koja govori kečua",
+      "target_speakers": "izvorne govornike kečua jezika"
+    },
+    "roh": {
+      "in_target": "na romanškom",
+      "a_target_speaker": "osobom koja govori romanški",
+      "target_speakers": "izvorne govornike romanškog jezika"
+    },
+    "ron": {
+      "in_target": "na rumunjskom",
+      "a_target_speaker": "osobom koja govori rumunjski",
+      "target_speakers": "izvorne govornike rumunjskog jezika"
+    },
+    "rus": {
+      "in_target": "na ruskom",
+      "a_target_speaker": "osobom koja govori ruski",
+      "target_speakers": "izvorne govornike ruskog jezika"
+    },
+    "scn": {
+      "in_target": "na sicilijanskom",
+      "a_target_speaker": "osobom koja govori sicilijanski",
+      "target_speakers": "izvorne govornike sicilijanskog jezika"
+    },
+    "sco": {
+      "in_target": "na skotskom jeziku",
+      "a_target_speaker": "osobom koja govori škotski",
+      "target_speakers": "izvorne govornike škotskog jezika"
+    },
+    "slk": {
+      "in_target": "na slovačkom",
+      "a_target_speaker": "osobom koja govori slovački",
+      "target_speakers": "izvorne govornike slovačkog jezika"
+    },
+    "slv": {
+      "in_target": "na slovenskom",
+      "a_target_speaker": "osobom koja govori slovenski",
+      "target_speakers": "izvorne govornike slovenskog jezika"
+    },
+    "sme": {
+      "in_target": "na sjevernosaamskom",
+      "a_target_speaker": "osobom koja govori sjevernosaamski",
+      "target_speakers": "izvorne govornike sjevernosaamskog jezika"
+    },
+    "smj": {
+      "in_target": "na lule saamskom",
+      "a_target_speaker": "osobom koja govori lule saamski",
+      "target_speakers": "izvorne govornike lule saamskog jezika"
+    },
+    "smn": {
+      "in_target": "na inari saamskom",
+      "a_target_speaker": "osobom koja govori inari saamski",
+      "target_speakers": "izvorne govornike inari saamskog jezika"
+    },
+    "smo": {
+      "in_target": "na samoanskom",
+      "a_target_speaker": "osobom koja govori samoanski",
+      "target_speakers": "izvorne govornike samoanskog jezika"
+    },
+    "sms": {
+      "in_target": "na skolt saamskom",
+      "a_target_speaker": "osobom koja govori skolt saamski",
+      "target_speakers": "izvorne govornike skolt saamskog jezika"
+    },
+    "snd": {
+      "in_target": "na sindhi jeziku",
+      "a_target_speaker": "osobom koja govori sindhi",
+      "target_speakers": "izvorne govornike sindhi jezika"
+    },
+    "som": {
+      "in_target": "na somalskom",
+      "a_target_speaker": "osobom koja govori somalski",
+      "target_speakers": "izvorne govornike somalskog jezika"
+    },
+    "spa": {
+      "in_target": "na španjolskom",
+      "a_target_speaker": "osobom koja govori španjolski",
+      "target_speakers": "izvorne govornike španjolskog jezika"
+    },
+    "spa_EU": {
+      "in_target": "na španjolskom",
+      "a_target_speaker": "osobom koja govori europski španjolski",
+      "target_speakers": "izvorne govornike španjolskog jezika"
+    },
+    "spa_SA": {
+      "in_target": "na španjolskom",
+      "a_target_speaker": "osobom koja govori južnoamerički španjolski",
+      "target_speakers": "izvorne govornike španjolskog jezika"
+    },
+    "srd": {
+      "in_target": "na sardinijskom",
+      "a_target_speaker": "osobom koja govori sardinijski",
+      "target_speakers": "izvorne govornike sardinijskog jezika"
+    },
+    "srp": {
+      "in_target": "na srpskom",
+      "a_target_speaker": "osobom koja govori srpski",
+      "target_speakers": "izvorne govornike srpskog jezika"
+    },
+    "swa": {
+      "in_target": "na svahiliju",
+      "a_target_speaker": "osobom koja govori svahili",
+      "target_speakers": "izvorne govornike svahilija"
+    },
+    "swe": {
+      "in_target": "na švedskom",
+      "a_target_speaker": "osobom koja govori švedski",
+      "target_speakers": "izvorne govornike švedskog jezika"
+    },
+    "tah": {
+      "in_target": "na tahićanskom",
+      "a_target_speaker": "osobom koja govori tahićanski",
+      "target_speakers": "izvorne govornike tahićanskog jezika"
+    },
+    "tam": {
+      "in_target": "na tamilskom",
+      "a_target_speaker": "osobom koja govori tamilski",
+      "target_speakers": "izvorne govornike tamilskog jezika"
+    },
+    "tel": {
+      "in_target": "na telugu jeziku",
+      "a_target_speaker": "osobom koja govori telugu",
+      "target_speakers": "izvorne govornike telugu jezika"
+    },
+    "tha": {
+      "in_target": "na tajlandskom",
+      "a_target_speaker": "osobom koja govori tajlandski",
+      "target_speakers": "izvorne govornike tajlandskog jezika"
+    },
+    "ton": {
+      "in_target": "na tongaškom",
+      "a_target_speaker": "osobom koja govori tongaški",
+      "target_speakers": "izvorne govornike tongaškog jezika"
+    },
+    "tur": {
+      "in_target": "na turskom",
+      "a_target_speaker": "osobom koja govori turski",
+      "target_speakers": "izvorne govornike turskog jezika"
+    },
+    "uig": {
+      "in_target": "na ujgurskom",
+      "a_target_speaker": "osobom koja govori ujgurski",
+      "target_speakers": "izvorne govornike ujgurskog jezika"
+    },
+    "ukr": {
+      "in_target": "na ukrajinskom",
+      "a_target_speaker": "osobom koja govori ukrajinski",
+      "target_speakers": "izvorne govornike ukrajinskog jezika"
+    },
+    "urd": {
+      "in_target": "na urdskom",
+      "a_target_speaker": "osobom koja govori urdski",
+      "target_speakers": "izvorne govornike urdskog jezika"
+    },
+    "vec": {
+      "in_target": "na venetskom",
+      "a_target_speaker": "osobom koja govori venetski",
+      "target_speakers": "izvorne govornike venetskog jezika"
+    },
+    "vie": {
+      "in_target": "na vijetnamskom",
+      "a_target_speaker": "osobom koja govori vijetnamski",
+      "target_speakers": "izvorne govornike vijetnamskog jezika"
+    },
+    "vls": {
+      "in_target": "na flamanskom",
+      "a_target_speaker": "osobom koja govori flamanski",
+      "target_speakers": "izvorne govornike flamanskog jezika"
+    },
+    "wln": {
+      "in_target": "na valonskom",
+      "a_target_speaker": "osobom koja govori valonski",
+      "target_speakers": "izvorne govornike valonskog jezika"
+    },
+    "wuu": {
+      "in_target": "na wu jeziku",
+      "a_target_speaker": "osobom koja govori wu",
+      "target_speakers": "izvorne govornike wu jezika"
+    },
+    "xho": {
+      "in_target": "na kosa jeziku",
+      "a_target_speaker": "osobom koja govori kosa",
+      "target_speakers": "izvorne govornike kosa jezika"
+    },
+    "yid": {
+      "in_target": "na jidišu",
+      "a_target_speaker": "osobom koja govori jidiš",
+      "target_speakers": "izvorne govornike jidiša"
+    },
+    "yor": {
+      "in_target": "na joruba jeziku",
+      "a_target_speaker": "osobom koja govori joruba",
+      "target_speakers": "izvorne govornike joruba jezika"
+    },
+    "yue": {
+      "in_target": "na kantonskom",
+      "a_target_speaker": "osobom koja govori kantonski",
+      "target_speakers": "izvorne govornike kantonskog jezika"
+    },
+    "zul": {
+      "in_target": "na zulu jeziku",
+      "a_target_speaker": "osobom koja govori zulu",
+      "target_speakers": "izvorne govornike zulu jezika"
+    },
+    "ara_lb": {
+      "in_target": "na arapskom",
+      "a_target_speaker": "osobom koja govori libanonski arapski",
+      "target_speakers": "izvorne govornike arapskog jezika"
+    },
+    "ara_sy": {
+      "in_target": "na arapskom",
+      "a_target_speaker": "osobom koja govori sirijski arapski",
+      "target_speakers": "izvorne govornike arapskog jezika"
+    },
+    "ara_eg": {
+      "in_target": "na arapskom",
+      "a_target_speaker": "osobom koja govori egipatski arapski",
+      "target_speakers": "izvorne govornike arapskog jezika"
+    }
+  }
+}

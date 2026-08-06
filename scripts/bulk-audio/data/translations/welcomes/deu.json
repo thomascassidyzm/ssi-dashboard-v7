@@ -1,0 +1,743 @@
+{
+  "known_language": "deu",
+  "known_language_display": "German",
+  "template": "Willkommen bei diesem ungewöhnlichen Spiel, das dir helfen wird, {a_target_speaker} zu werden. So funktioniert es: Ich bringe dir etwas {in_target} bei, dann sage ich etwas {in_known} und gebe dir die Gelegenheit, es laut {in_target} zu sagen. Dann hör aufmerksam den {target_speakers} zu, die es dir vormachen werden. Es ist wichtig, dass du in den Pausen etwas sagst, denn so lernst du. Auch wenn du dir nicht sicher bist, versuch einfach zu sagen, was du kannst, und du wirst schneller anfangen {in_target} zu sprechen, als du denkst. Je mehr du es als Spiel betrachtest, je spielerischer du damit umgehst, je mehr du über deine Fehler lachst, desto besser wird es laufen und desto schneller wirst du lernen. Also, fangen wir an zu spielen.",
+  "in_known": "auf Deutsch",
+  "targets": {
+    "afb": {
+      "in_target": "auf Golf-Arabisch",
+      "a_target_speaker": "jemand, der Golf-Arabisch spricht",
+      "target_speakers": "Golf-Arabisch-Sprechern"
+    },
+    "afr": {
+      "in_target": "auf Afrikaans",
+      "a_target_speaker": "jemand, der Afrikaans spricht",
+      "target_speakers": "Afrikaans-Sprechern"
+    },
+    "aii": {
+      "in_target": "auf Suret",
+      "a_target_speaker": "jemand, der Suret spricht",
+      "target_speakers": "Suret-Sprechern"
+    },
+    "ain": {
+      "in_target": "auf Ainu",
+      "a_target_speaker": "jemand, der Ainu spricht",
+      "target_speakers": "Ainu-Sprechern"
+    },
+    "ajp": {
+      "in_target": "auf Palästinensisches Arabisch",
+      "a_target_speaker": "jemand, der Palästinensisches Arabisch spricht",
+      "target_speakers": "palästinensisch-arabischen Sprechern"
+    },
+    "amh": {
+      "in_target": "auf Amharisch",
+      "a_target_speaker": "jemand, der Amharisch spricht",
+      "target_speakers": "amharischen Sprechern"
+    },
+    "apc": {
+      "in_target": "auf Levantinisches Arabisch",
+      "a_target_speaker": "jemand, der Levantinisches Arabisch spricht",
+      "target_speakers": "levantinisch-arabischen Sprechern"
+    },
+    "ara": {
+      "in_target": "auf Arabisch",
+      "a_target_speaker": "jemand, der Modernes Standardarabisch spricht",
+      "target_speakers": "arabischen Sprechern"
+    },
+    "arg": {
+      "in_target": "auf Aragonesisch",
+      "a_target_speaker": "jemand, der Aragonesisch spricht",
+      "target_speakers": "aragonesischen Sprechern"
+    },
+    "ary": {
+      "in_target": "auf Marokkanisches Arabisch",
+      "a_target_speaker": "jemand, der Marokkanisches Arabisch spricht",
+      "target_speakers": "marokkanisch-arabischen Sprechern"
+    },
+    "asm": {
+      "in_target": "auf Assamesisch",
+      "a_target_speaker": "jemand, der Assamesisch spricht",
+      "target_speakers": "assamesischen Sprechern"
+    },
+    "ast": {
+      "in_target": "auf Asturisch",
+      "a_target_speaker": "jemand, der Asturisch spricht",
+      "target_speakers": "asturischen Sprechern"
+    },
+    "aze": {
+      "in_target": "auf Aserbaidschanisch",
+      "a_target_speaker": "jemand, der Aserbaidschanisch spricht",
+      "target_speakers": "aserbaidschanischen Sprechern"
+    },
+    "bar": {
+      "in_target": "auf Bairisch",
+      "a_target_speaker": "jemand, der Bairisch spricht",
+      "target_speakers": "bairischen Sprechern"
+    },
+    "bel": {
+      "in_target": "auf Belarussisch",
+      "a_target_speaker": "jemand, der Belarussisch spricht",
+      "target_speakers": "belarussischen Sprechern"
+    },
+    "ben": {
+      "in_target": "auf Bengalisch",
+      "a_target_speaker": "jemand, der Bengalisch spricht",
+      "target_speakers": "bengalischen Sprechern"
+    },
+    "bos": {
+      "in_target": "auf Bosnisch",
+      "a_target_speaker": "jemand, der Bosnisch spricht",
+      "target_speakers": "bosnischen Sprechern"
+    },
+    "bre": {
+      "in_target": "auf Bretonisch",
+      "a_target_speaker": "jemand, der Bretonisch spricht",
+      "target_speakers": "bretonischen Sprechern"
+    },
+    "bul": {
+      "in_target": "auf Bulgarisch",
+      "a_target_speaker": "jemand, der Bulgarisch spricht",
+      "target_speakers": "bulgarischen Sprechern"
+    },
+    "cat": {
+      "in_target": "auf Katalanisch",
+      "a_target_speaker": "jemand, der Katalanisch spricht",
+      "target_speakers": "katalanischen Sprechern"
+    },
+    "ceb": {
+      "in_target": "auf Cebuano",
+      "a_target_speaker": "jemand, der Cebuano spricht",
+      "target_speakers": "Cebuano-Sprechern"
+    },
+    "ces": {
+      "in_target": "auf Tschechisch",
+      "a_target_speaker": "jemand, der Tschechisch spricht",
+      "target_speakers": "tschechischen Sprechern"
+    },
+    "chr": {
+      "in_target": "auf Cherokee",
+      "a_target_speaker": "jemand, der Cherokee spricht",
+      "target_speakers": "Cherokee-Sprechern"
+    },
+    "cmn": {
+      "in_target": "auf Chinesisch",
+      "a_target_speaker": "jemand, der Chinesisch spricht",
+      "target_speakers": "chinesischen Sprechern"
+    },
+    "cor": {
+      "in_target": "auf Kornisch",
+      "a_target_speaker": "jemand, der Kornisch spricht",
+      "target_speakers": "kornischen Sprechern"
+    },
+    "cos": {
+      "in_target": "auf Korsisch",
+      "a_target_speaker": "jemand, der Korsisch spricht",
+      "target_speakers": "korsischen Sprechern"
+    },
+    "csb": {
+      "in_target": "auf Kaschubisch",
+      "a_target_speaker": "jemand, der Kaschubisch spricht",
+      "target_speakers": "kaschubischen Sprechern"
+    },
+    "cym": {
+      "in_target": "auf Walisisch",
+      "a_target_speaker": "jemand, der Walisisch spricht",
+      "target_speakers": "walisischen Sprechern"
+    },
+    "dan": {
+      "in_target": "auf Dänisch",
+      "a_target_speaker": "jemand, der Dänisch spricht",
+      "target_speakers": "dänischen Sprechern"
+    },
+    "deu_AT": {
+      "in_target": "auf Österreichisches Deutsch",
+      "a_target_speaker": "jemand, der Österreichisches Deutsch spricht",
+      "target_speakers": "österreichisch-deutschen Sprechern"
+    },
+    "dsb": {
+      "in_target": "auf Niedersorbisch",
+      "a_target_speaker": "jemand, der Niedersorbisch spricht",
+      "target_speakers": "niedersorbischen Sprechern"
+    },
+    "ell": {
+      "in_target": "auf Griechisch",
+      "a_target_speaker": "jemand, der Griechisch spricht",
+      "target_speakers": "griechischen Sprechern"
+    },
+    "eng": {
+      "in_target": "auf Englisch",
+      "a_target_speaker": "jemand, der Englisch spricht",
+      "target_speakers": "englischen Sprechern"
+    },
+    "est": {
+      "in_target": "auf Estnisch",
+      "a_target_speaker": "jemand, der Estnisch spricht",
+      "target_speakers": "estnischen Sprechern"
+    },
+    "eus": {
+      "in_target": "auf Baskisch",
+      "a_target_speaker": "jemand, der Baskisch spricht",
+      "target_speakers": "baskischen Sprechern"
+    },
+    "fao": {
+      "in_target": "auf Färöisch",
+      "a_target_speaker": "jemand, der Färöisch spricht",
+      "target_speakers": "färöischen Sprechern"
+    },
+    "fas": {
+      "in_target": "auf Persisch",
+      "a_target_speaker": "jemand, der Persisch spricht",
+      "target_speakers": "persischen Sprechern"
+    },
+    "fij": {
+      "in_target": "auf Fidschianisch",
+      "a_target_speaker": "jemand, der Fidschianisch spricht",
+      "target_speakers": "fidschianischen Sprechern"
+    },
+    "fil": {
+      "in_target": "auf Filipino",
+      "a_target_speaker": "jemand, der Filipino spricht",
+      "target_speakers": "Filipino-Sprechern"
+    },
+    "fin": {
+      "in_target": "auf Finnisch",
+      "a_target_speaker": "jemand, der Finnisch spricht",
+      "target_speakers": "finnischen Sprechern"
+    },
+    "fra": {
+      "in_target": "auf Französisch",
+      "a_target_speaker": "jemand, der Französisch spricht",
+      "target_speakers": "französischen Sprechern"
+    },
+    "frr": {
+      "in_target": "auf Nordfriesisch",
+      "a_target_speaker": "jemand, der Nordfriesisch spricht",
+      "target_speakers": "nordfriesischen Sprechern"
+    },
+    "fry": {
+      "in_target": "auf Westfriesisch",
+      "a_target_speaker": "jemand, der Westfriesisch spricht",
+      "target_speakers": "westfriesischen Sprechern"
+    },
+    "fur": {
+      "in_target": "auf Friaulisch",
+      "a_target_speaker": "jemand, der Friaulisch spricht",
+      "target_speakers": "friaulischen Sprechern"
+    },
+    "gla": {
+      "in_target": "auf Schottisch-Gälisch",
+      "a_target_speaker": "jemand, der Schottisch-Gälisch spricht",
+      "target_speakers": "schottisch-gälischen Sprechern"
+    },
+    "gle": {
+      "in_target": "auf Irisch",
+      "a_target_speaker": "jemand, der Irisch spricht",
+      "target_speakers": "irischen Sprechern"
+    },
+    "glg": {
+      "in_target": "auf Galicisch",
+      "a_target_speaker": "jemand, der Galicisch spricht",
+      "target_speakers": "galicischen Sprechern"
+    },
+    "glv": {
+      "in_target": "auf Manx",
+      "a_target_speaker": "jemand, der Manx spricht",
+      "target_speakers": "Manx-Sprechern"
+    },
+    "grk": {
+      "in_target": "auf Griko",
+      "a_target_speaker": "jemand, der Griko spricht",
+      "target_speakers": "Griko-Sprechern"
+    },
+    "grn": {
+      "in_target": "auf Guarani",
+      "a_target_speaker": "jemand, der Guarani spricht",
+      "target_speakers": "Guarani-Sprechern"
+    },
+    "gsw": {
+      "in_target": "auf Schweizerdeutsch",
+      "a_target_speaker": "jemand, der Schweizerdeutsch spricht",
+      "target_speakers": "Schweizerdeutsch-Sprechern"
+    },
+    "guj": {
+      "in_target": "auf Gujarati",
+      "a_target_speaker": "jemand, der Gujarati spricht",
+      "target_speakers": "Gujarati-Sprechern"
+    },
+    "hak": {
+      "in_target": "auf Hakka",
+      "a_target_speaker": "jemand, der Hakka spricht",
+      "target_speakers": "Hakka-Sprechern"
+    },
+    "hau": {
+      "in_target": "auf Hausa",
+      "a_target_speaker": "jemand, der Hausa spricht",
+      "target_speakers": "Hausa-Sprechern"
+    },
+    "haw": {
+      "in_target": "auf Hawaiisch",
+      "a_target_speaker": "jemand, der Hawaiisch spricht",
+      "target_speakers": "hawaiischen Sprechern"
+    },
+    "heb": {
+      "in_target": "auf Hebräisch",
+      "a_target_speaker": "jemand, der Hebräisch spricht",
+      "target_speakers": "hebräischen Sprechern"
+    },
+    "hin": {
+      "in_target": "auf Hindi",
+      "a_target_speaker": "jemand, der Hindi spricht",
+      "target_speakers": "Hindi-Sprechern"
+    },
+    "hrv": {
+      "in_target": "auf Kroatisch",
+      "a_target_speaker": "jemand, der Kroatisch spricht",
+      "target_speakers": "kroatischen Sprechern"
+    },
+    "hsb": {
+      "in_target": "auf Obersorbisch",
+      "a_target_speaker": "jemand, der Obersorbisch spricht",
+      "target_speakers": "obersorbischen Sprechern"
+    },
+    "hun": {
+      "in_target": "auf Ungarisch",
+      "a_target_speaker": "jemand, der Ungarisch spricht",
+      "target_speakers": "ungarischen Sprechern"
+    },
+    "hye": {
+      "in_target": "auf Armenisch",
+      "a_target_speaker": "jemand, der Armenisch spricht",
+      "target_speakers": "armenischen Sprechern"
+    },
+    "ibo": {
+      "in_target": "auf Igbo",
+      "a_target_speaker": "jemand, der Igbo spricht",
+      "target_speakers": "Igbo-Sprechern"
+    },
+    "iku": {
+      "in_target": "auf Inuktitut",
+      "a_target_speaker": "jemand, der Inuktitut spricht",
+      "target_speakers": "Inuktitut-Sprechern"
+    },
+    "ind": {
+      "in_target": "auf Indonesisch",
+      "a_target_speaker": "jemand, der Indonesisch spricht",
+      "target_speakers": "indonesischen Sprechern"
+    },
+    "isl": {
+      "in_target": "auf Isländisch",
+      "a_target_speaker": "jemand, der Isländisch spricht",
+      "target_speakers": "isländischen Sprechern"
+    },
+    "ita": {
+      "in_target": "auf Italienisch",
+      "a_target_speaker": "jemand, der Italienisch spricht",
+      "target_speakers": "italienischen Sprechern"
+    },
+    "jav": {
+      "in_target": "auf Javanisch",
+      "a_target_speaker": "jemand, der Javanisch spricht",
+      "target_speakers": "javanischen Sprechern"
+    },
+    "jpn": {
+      "in_target": "auf Japanisch",
+      "a_target_speaker": "jemand, der Japanisch spricht",
+      "target_speakers": "japanischen Sprechern"
+    },
+    "kal": {
+      "in_target": "auf Grönländisch",
+      "a_target_speaker": "jemand, der Grönländisch spricht",
+      "target_speakers": "grönländischen Sprechern"
+    },
+    "kan": {
+      "in_target": "auf Kannada",
+      "a_target_speaker": "jemand, der Kannada spricht",
+      "target_speakers": "Kannada-Sprechern"
+    },
+    "kat": {
+      "in_target": "auf Georgisch",
+      "a_target_speaker": "jemand, der Georgisch spricht",
+      "target_speakers": "georgischen Sprechern"
+    },
+    "kaz": {
+      "in_target": "auf Kasachisch",
+      "a_target_speaker": "jemand, der Kasachisch spricht",
+      "target_speakers": "kasachischen Sprechern"
+    },
+    "kir": {
+      "in_target": "auf Kirgisisch",
+      "a_target_speaker": "jemand, der Kirgisisch spricht",
+      "target_speakers": "kirgisischen Sprechern"
+    },
+    "kor": {
+      "in_target": "auf Koreanisch",
+      "a_target_speaker": "jemand, der Koreanisch spricht",
+      "target_speakers": "koreanischen Sprechern"
+    },
+    "kur": {
+      "in_target": "auf Kurdisch",
+      "a_target_speaker": "jemand, der Kurdisch spricht",
+      "target_speakers": "kurdischen Sprechern"
+    },
+    "lad": {
+      "in_target": "auf Ladino",
+      "a_target_speaker": "jemand, der Ladino spricht",
+      "target_speakers": "Ladino-Sprechern"
+    },
+    "lav": {
+      "in_target": "auf Lettisch",
+      "a_target_speaker": "jemand, der Lettisch spricht",
+      "target_speakers": "lettischen Sprechern"
+    },
+    "lij": {
+      "in_target": "auf Ligurisch",
+      "a_target_speaker": "jemand, der Ligurisch spricht",
+      "target_speakers": "ligurischen Sprechern"
+    },
+    "lim": {
+      "in_target": "auf Limburgisch",
+      "a_target_speaker": "jemand, der Limburgisch spricht",
+      "target_speakers": "limburgischen Sprechern"
+    },
+    "lin": {
+      "in_target": "auf Lingala",
+      "a_target_speaker": "jemand, der Lingala spricht",
+      "target_speakers": "Lingala-Sprechern"
+    },
+    "lit": {
+      "in_target": "auf Litauisch",
+      "a_target_speaker": "jemand, der Litauisch spricht",
+      "target_speakers": "litauischen Sprechern"
+    },
+    "ltz": {
+      "in_target": "auf Luxemburgisch",
+      "a_target_speaker": "jemand, der Luxemburgisch spricht",
+      "target_speakers": "luxemburgischen Sprechern"
+    },
+    "mal": {
+      "in_target": "auf Malayalam",
+      "a_target_speaker": "jemand, der Malayalam spricht",
+      "target_speakers": "Malayalam-Sprechern"
+    },
+    "mar": {
+      "in_target": "auf Marathi",
+      "a_target_speaker": "jemand, der Marathi spricht",
+      "target_speakers": "Marathi-Sprechern"
+    },
+    "mkd": {
+      "in_target": "auf Mazedonisch",
+      "a_target_speaker": "jemand, der Mazedonisch spricht",
+      "target_speakers": "mazedonischen Sprechern"
+    },
+    "moh": {
+      "in_target": "auf Mohawk",
+      "a_target_speaker": "jemand, der Mohawk spricht",
+      "target_speakers": "Mohawk-Sprechern"
+    },
+    "mri": {
+      "in_target": "auf Maori",
+      "a_target_speaker": "jemand, der Maori spricht",
+      "target_speakers": "Maori-Sprechern"
+    },
+    "msa": {
+      "in_target": "auf Malaiisch",
+      "a_target_speaker": "jemand, der Malaiisch spricht",
+      "target_speakers": "malaiischen Sprechern"
+    },
+    "nan": {
+      "in_target": "auf Hokkien",
+      "a_target_speaker": "jemand, der Hokkien spricht",
+      "target_speakers": "Hokkien-Sprechern"
+    },
+    "nap": {
+      "in_target": "auf Neapolitanisch",
+      "a_target_speaker": "jemand, der Neapolitanisch spricht",
+      "target_speakers": "neapolitanischen Sprechern"
+    },
+    "nav": {
+      "in_target": "auf Navajo",
+      "a_target_speaker": "jemand, der Navajo spricht",
+      "target_speakers": "Navajo-Sprechern"
+    },
+    "nep": {
+      "in_target": "auf Nepalesisch",
+      "a_target_speaker": "jemand, der Nepalesisch spricht",
+      "target_speakers": "nepalesischen Sprechern"
+    },
+    "nld": {
+      "in_target": "auf Niederländisch",
+      "a_target_speaker": "jemand, der Niederländisch spricht",
+      "target_speakers": "niederländischen Sprechern"
+    },
+    "nor": {
+      "in_target": "auf Norwegisch",
+      "a_target_speaker": "jemand, der Norwegisch spricht",
+      "target_speakers": "norwegischen Sprechern"
+    },
+    "nya": {
+      "in_target": "auf Chichewa",
+      "a_target_speaker": "jemand, der Chichewa spricht",
+      "target_speakers": "Chichewa-Sprechern"
+    },
+    "oci": {
+      "in_target": "auf Okzitanisch",
+      "a_target_speaker": "jemand, der Okzitanisch spricht",
+      "target_speakers": "okzitanischen Sprechern"
+    },
+    "oji": {
+      "in_target": "auf Ojibwe",
+      "a_target_speaker": "jemand, der Ojibwe spricht",
+      "target_speakers": "Ojibwe-Sprechern"
+    },
+    "pan": {
+      "in_target": "auf Punjabi",
+      "a_target_speaker": "jemand, der Punjabi spricht",
+      "target_speakers": "Punjabi-Sprechern"
+    },
+    "pol": {
+      "in_target": "auf Polnisch",
+      "a_target_speaker": "jemand, der Polnisch spricht",
+      "target_speakers": "polnischen Sprechern"
+    },
+    "por": {
+      "in_target": "auf Portugiesisch",
+      "a_target_speaker": "jemand, der Portugiesisch spricht",
+      "target_speakers": "portugiesischen Sprechern"
+    },
+    "por_BR": {
+      "in_target": "auf Portugiesisch",
+      "a_target_speaker": "jemand, der Brasilianisches Portugiesisch spricht",
+      "target_speakers": "portugiesischen Sprechern"
+    },
+    "por_EU": {
+      "in_target": "auf Portugiesisch",
+      "a_target_speaker": "jemand, der Europäisches Portugiesisch spricht",
+      "target_speakers": "portugiesischen Sprechern"
+    },
+    "pus": {
+      "in_target": "auf Paschtu",
+      "a_target_speaker": "jemand, der Paschtu spricht",
+      "target_speakers": "Paschtu-Sprechern"
+    },
+    "que": {
+      "in_target": "auf Quechua",
+      "a_target_speaker": "jemand, der Quechua spricht",
+      "target_speakers": "Quechua-Sprechern"
+    },
+    "roh": {
+      "in_target": "auf Rätoromanisch",
+      "a_target_speaker": "jemand, der Rätoromanisch spricht",
+      "target_speakers": "rätoromanischen Sprechern"
+    },
+    "ron": {
+      "in_target": "auf Rumänisch",
+      "a_target_speaker": "jemand, der Rumänisch spricht",
+      "target_speakers": "rumänischen Sprechern"
+    },
+    "rus": {
+      "in_target": "auf Russisch",
+      "a_target_speaker": "jemand, der Russisch spricht",
+      "target_speakers": "russischen Sprechern"
+    },
+    "scn": {
+      "in_target": "auf Sizilianisch",
+      "a_target_speaker": "jemand, der Sizilianisch spricht",
+      "target_speakers": "sizilianischen Sprechern"
+    },
+    "sco": {
+      "in_target": "auf Scots",
+      "a_target_speaker": "jemand, der Scots spricht",
+      "target_speakers": "Scots-Sprechern"
+    },
+    "slk": {
+      "in_target": "auf Slowakisch",
+      "a_target_speaker": "jemand, der Slowakisch spricht",
+      "target_speakers": "slowakischen Sprechern"
+    },
+    "slv": {
+      "in_target": "auf Slowenisch",
+      "a_target_speaker": "jemand, der Slowenisch spricht",
+      "target_speakers": "slowenischen Sprechern"
+    },
+    "sme": {
+      "in_target": "auf Nordsamisch",
+      "a_target_speaker": "jemand, der Nordsamisch spricht",
+      "target_speakers": "nordsamischen Sprechern"
+    },
+    "smj": {
+      "in_target": "auf Lulesamisch",
+      "a_target_speaker": "jemand, der Lulesamisch spricht",
+      "target_speakers": "lulesamischen Sprechern"
+    },
+    "smn": {
+      "in_target": "auf Inarisamisch",
+      "a_target_speaker": "jemand, der Inarisamisch spricht",
+      "target_speakers": "inarisamischen Sprechern"
+    },
+    "smo": {
+      "in_target": "auf Samoanisch",
+      "a_target_speaker": "jemand, der Samoanisch spricht",
+      "target_speakers": "samoanischen Sprechern"
+    },
+    "sms": {
+      "in_target": "auf Skoltsamisch",
+      "a_target_speaker": "jemand, der Skoltsamisch spricht",
+      "target_speakers": "skoltsamischen Sprechern"
+    },
+    "snd": {
+      "in_target": "auf Sindhi",
+      "a_target_speaker": "jemand, der Sindhi spricht",
+      "target_speakers": "Sindhi-Sprechern"
+    },
+    "som": {
+      "in_target": "auf Somali",
+      "a_target_speaker": "jemand, der Somali spricht",
+      "target_speakers": "Somali-Sprechern"
+    },
+    "spa": {
+      "in_target": "auf Spanisch",
+      "a_target_speaker": "jemand, der Spanisch spricht",
+      "target_speakers": "spanischen Sprechern"
+    },
+    "spa_EU": {
+      "in_target": "auf Spanisch",
+      "a_target_speaker": "jemand, der Europäisches Spanisch spricht",
+      "target_speakers": "spanischen Sprechern"
+    },
+    "spa_SA": {
+      "in_target": "auf Spanisch",
+      "a_target_speaker": "jemand, der Südamerikanisches Spanisch spricht",
+      "target_speakers": "spanischen Sprechern"
+    },
+    "srd": {
+      "in_target": "auf Sardisch",
+      "a_target_speaker": "jemand, der Sardisch spricht",
+      "target_speakers": "sardischen Sprechern"
+    },
+    "srp": {
+      "in_target": "auf Serbisch",
+      "a_target_speaker": "jemand, der Serbisch spricht",
+      "target_speakers": "serbischen Sprechern"
+    },
+    "swa": {
+      "in_target": "auf Swahili",
+      "a_target_speaker": "jemand, der Swahili spricht",
+      "target_speakers": "Swahili-Sprechern"
+    },
+    "swe": {
+      "in_target": "auf Schwedisch",
+      "a_target_speaker": "jemand, der Schwedisch spricht",
+      "target_speakers": "schwedischen Sprechern"
+    },
+    "tah": {
+      "in_target": "auf Tahitianisch",
+      "a_target_speaker": "jemand, der Tahitianisch spricht",
+      "target_speakers": "tahitianischen Sprechern"
+    },
+    "tam": {
+      "in_target": "auf Tamil",
+      "a_target_speaker": "jemand, der Tamil spricht",
+      "target_speakers": "Tamil-Sprechern"
+    },
+    "tel": {
+      "in_target": "auf Telugu",
+      "a_target_speaker": "jemand, der Telugu spricht",
+      "target_speakers": "Telugu-Sprechern"
+    },
+    "tha": {
+      "in_target": "auf Thailändisch",
+      "a_target_speaker": "jemand, der Thailändisch spricht",
+      "target_speakers": "thailändischen Sprechern"
+    },
+    "ton": {
+      "in_target": "auf Tongaisch",
+      "a_target_speaker": "jemand, der Tongaisch spricht",
+      "target_speakers": "tongaischen Sprechern"
+    },
+    "tur": {
+      "in_target": "auf Türkisch",
+      "a_target_speaker": "jemand, der Türkisch spricht",
+      "target_speakers": "türkischen Sprechern"
+    },
+    "uig": {
+      "in_target": "auf Uigurisch",
+      "a_target_speaker": "jemand, der Uigurisch spricht",
+      "target_speakers": "uigurischen Sprechern"
+    },
+    "ukr": {
+      "in_target": "auf Ukrainisch",
+      "a_target_speaker": "jemand, der Ukrainisch spricht",
+      "target_speakers": "ukrainischen Sprechern"
+    },
+    "urd": {
+      "in_target": "auf Urdu",
+      "a_target_speaker": "jemand, der Urdu spricht",
+      "target_speakers": "Urdu-Sprechern"
+    },
+    "vec": {
+      "in_target": "auf Venezianisch",
+      "a_target_speaker": "jemand, der Venezianisch spricht",
+      "target_speakers": "venezianischen Sprechern"
+    },
+    "vie": {
+      "in_target": "auf Vietnamesisch",
+      "a_target_speaker": "jemand, der Vietnamesisch spricht",
+      "target_speakers": "vietnamesischen Sprechern"
+    },
+    "vls": {
+      "in_target": "auf Flämisch",
+      "a_target_speaker": "jemand, der Flämisch spricht",
+      "target_speakers": "flämischen Sprechern"
+    },
+    "wln": {
+      "in_target": "auf Wallonisch",
+      "a_target_speaker": "jemand, der Wallonisch spricht",
+      "target_speakers": "wallonischen Sprechern"
+    },
+    "wuu": {
+      "in_target": "auf Shanghainesisch",
+      "a_target_speaker": "jemand, der Shanghainesisch spricht",
+      "target_speakers": "Shanghainesisch-Sprechern"
+    },
+    "xho": {
+      "in_target": "auf Xhosa",
+      "a_target_speaker": "jemand, der Xhosa spricht",
+      "target_speakers": "Xhosa-Sprechern"
+    },
+    "yid": {
+      "in_target": "auf Jiddisch",
+      "a_target_speaker": "jemand, der Jiddisch spricht",
+      "target_speakers": "jiddischen Sprechern"
+    },
+    "yor": {
+      "in_target": "auf Yoruba",
+      "a_target_speaker": "jemand, der Yoruba spricht",
+      "target_speakers": "Yoruba-Sprechern"
+    },
+    "yue": {
+      "in_target": "auf Kantonesisch",
+      "a_target_speaker": "jemand, der Kantonesisch spricht",
+      "target_speakers": "kantonesischen Sprechern"
+    },
+    "zul": {
+      "in_target": "auf Zulu",
+      "a_target_speaker": "jemand, der Zulu spricht",
+      "target_speakers": "Zulu-Sprechern"
+    },
+    "ara_lb": {
+      "in_target": "auf Arabisch",
+      "a_target_speaker": "jemand, der Libanesisches Arabisch spricht",
+      "target_speakers": "arabischen Sprechern"
+    },
+    "ara_sy": {
+      "in_target": "auf Arabisch",
+      "a_target_speaker": "jemand, der Syrisch-Arabisch spricht",
+      "target_speakers": "arabischen Sprechern"
+    },
+    "ara_eg": {
+      "in_target": "auf Arabisch",
+      "a_target_speaker": "jemand, der Ägyptisches Arabisch spricht",
+      "target_speakers": "arabischen Sprechern"
+    }
+  }
+}

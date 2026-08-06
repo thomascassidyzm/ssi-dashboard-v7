@@ -1,0 +1,743 @@
+{
+  "known_language": "rus",
+  "known_language_display": "Russian",
+  "template": "Добро пожаловать в эту необычную игру, которая поможет тебе стать {a_target_speaker}. Вот как это работает — я учу тебя чему-то {in_target}, потом я говорю что-то {in_known}, и у тебя есть возможность сказать это вслух {in_target}. Затем внимательно слушай {target_speakers}, которые покажут тебе, как это звучит. Важно, чтобы ты говорил что-то в паузах, потому что именно так ты учишься. Даже если ты не уверен, попробуй сказать всё, что можешь, и ты начнёшь говорить {in_target} раньше, чем думаешь. Чем больше ты воспринимаешь это как игру, чем больше ты играешь с этим, чем больше ты смеёшься над своими ошибками, тем лучше всё пойдёт и тем быстрее ты будешь учиться. Итак, давай начнём играть.",
+  "in_known": "по-русски",
+  "targets": {
+    "afb": {
+      "in_target": "на аравийском арабском",
+      "a_target_speaker": "говорящим на аравийском арабском",
+      "target_speakers": "носителей аравийского арабского"
+    },
+    "afr": {
+      "in_target": "на африкаанс",
+      "a_target_speaker": "говорящим на африкаанс",
+      "target_speakers": "носителей африкаанс"
+    },
+    "aii": {
+      "in_target": "на ассирийском",
+      "a_target_speaker": "говорящим на ассирийском",
+      "target_speakers": "носителей ассирийского языка"
+    },
+    "ain": {
+      "in_target": "на айнском",
+      "a_target_speaker": "говорящим на айнском",
+      "target_speakers": "носителей айнского языка"
+    },
+    "ajp": {
+      "in_target": "на палестинском арабском",
+      "a_target_speaker": "говорящим на палестинском арабском",
+      "target_speakers": "носителей палестинского арабского"
+    },
+    "amh": {
+      "in_target": "на амхарском",
+      "a_target_speaker": "говорящим на амхарском",
+      "target_speakers": "носителей амхарского языка"
+    },
+    "apc": {
+      "in_target": "на левантийском арабском",
+      "a_target_speaker": "говорящим на левантийском арабском",
+      "target_speakers": "носителей левантийского арабского"
+    },
+    "ara": {
+      "in_target": "по-арабски",
+      "a_target_speaker": "носителем современного литературного арабского языка",
+      "target_speakers": "носителей арабского языка"
+    },
+    "arg": {
+      "in_target": "на арагонском",
+      "a_target_speaker": "говорящим на арагонском",
+      "target_speakers": "носителей арагонского языка"
+    },
+    "ary": {
+      "in_target": "на марокканском арабском",
+      "a_target_speaker": "говорящим на марокканском арабском",
+      "target_speakers": "носителей марокканского арабского"
+    },
+    "asm": {
+      "in_target": "на ассамском",
+      "a_target_speaker": "говорящим на ассамском",
+      "target_speakers": "носителей ассамского языка"
+    },
+    "ast": {
+      "in_target": "на астурийском",
+      "a_target_speaker": "говорящим на астурийском",
+      "target_speakers": "носителей астурийского языка"
+    },
+    "aze": {
+      "in_target": "по-азербайджански",
+      "a_target_speaker": "говорящим по-азербайджански",
+      "target_speakers": "носителей азербайджанского языка"
+    },
+    "bar": {
+      "in_target": "на баварском",
+      "a_target_speaker": "говорящим на баварском",
+      "target_speakers": "носителей баварского языка"
+    },
+    "bel": {
+      "in_target": "по-белорусски",
+      "a_target_speaker": "говорящим по-белорусски",
+      "target_speakers": "носителей белорусского языка"
+    },
+    "ben": {
+      "in_target": "на бенгальском",
+      "a_target_speaker": "говорящим на бенгальском",
+      "target_speakers": "носителей бенгальского языка"
+    },
+    "bos": {
+      "in_target": "по-боснийски",
+      "a_target_speaker": "говорящим по-боснийски",
+      "target_speakers": "носителей боснийского языка"
+    },
+    "bre": {
+      "in_target": "на бретонском",
+      "a_target_speaker": "говорящим на бретонском",
+      "target_speakers": "носителей бретонского языка"
+    },
+    "bul": {
+      "in_target": "по-болгарски",
+      "a_target_speaker": "говорящим по-болгарски",
+      "target_speakers": "носителей болгарского языка"
+    },
+    "cat": {
+      "in_target": "по-каталански",
+      "a_target_speaker": "говорящим по-каталански",
+      "target_speakers": "носителей каталанского языка"
+    },
+    "ceb": {
+      "in_target": "на себуанском",
+      "a_target_speaker": "говорящим на себуанском",
+      "target_speakers": "носителей себуанского языка"
+    },
+    "ces": {
+      "in_target": "по-чешски",
+      "a_target_speaker": "говорящим по-чешски",
+      "target_speakers": "носителей чешского языка"
+    },
+    "chr": {
+      "in_target": "на чероки",
+      "a_target_speaker": "говорящим на чероки",
+      "target_speakers": "носителей чероки"
+    },
+    "cmn": {
+      "in_target": "по-китайски",
+      "a_target_speaker": "говорящим по-китайски",
+      "target_speakers": "носителей китайского языка"
+    },
+    "cor": {
+      "in_target": "на корнском",
+      "a_target_speaker": "говорящим на корнском",
+      "target_speakers": "носителей корнского языка"
+    },
+    "cos": {
+      "in_target": "на корсиканском",
+      "a_target_speaker": "говорящим на корсиканском",
+      "target_speakers": "носителей корсиканского языка"
+    },
+    "csb": {
+      "in_target": "на кашубском",
+      "a_target_speaker": "говорящим на кашубском",
+      "target_speakers": "носителей кашубского языка"
+    },
+    "cym": {
+      "in_target": "по-валлийски",
+      "a_target_speaker": "говорящим по-валлийски",
+      "target_speakers": "носителей валлийского языка"
+    },
+    "dan": {
+      "in_target": "по-датски",
+      "a_target_speaker": "говорящим по-датски",
+      "target_speakers": "носителей датского языка"
+    },
+    "deu": {
+      "in_target": "по-немецки",
+      "a_target_speaker": "говорящим по-немецки",
+      "target_speakers": "носителей немецкого языка"
+    },
+    "deu_AT": {
+      "in_target": "по-немецки",
+      "a_target_speaker": "говорящим на австрийском немецком",
+      "target_speakers": "носителей немецкого языка"
+    },
+    "dsb": {
+      "in_target": "на нижнелужицком",
+      "a_target_speaker": "говорящим на нижнелужицком",
+      "target_speakers": "носителей нижнелужицкого языка"
+    },
+    "ell": {
+      "in_target": "по-гречески",
+      "a_target_speaker": "говорящим по-гречески",
+      "target_speakers": "носителей греческого языка"
+    },
+    "eng": {
+      "in_target": "по-английски",
+      "a_target_speaker": "говорящим по-английски",
+      "target_speakers": "носителей английского языка"
+    },
+    "est": {
+      "in_target": "по-эстонски",
+      "a_target_speaker": "говорящим по-эстонски",
+      "target_speakers": "носителей эстонского языка"
+    },
+    "eus": {
+      "in_target": "на баскском",
+      "a_target_speaker": "говорящим на баскском",
+      "target_speakers": "носителей баскского языка"
+    },
+    "fao": {
+      "in_target": "на фарерском",
+      "a_target_speaker": "говорящим на фарерском",
+      "target_speakers": "носителей фарерского языка"
+    },
+    "fas": {
+      "in_target": "на фарси",
+      "a_target_speaker": "говорящим на фарси",
+      "target_speakers": "носителей фарси"
+    },
+    "fij": {
+      "in_target": "на фиджийском",
+      "a_target_speaker": "говорящим на фиджийском",
+      "target_speakers": "носителей фиджийского языка"
+    },
+    "fil": {
+      "in_target": "по-филиппински",
+      "a_target_speaker": "говорящим по-филиппински",
+      "target_speakers": "носителей филиппинского языка"
+    },
+    "fin": {
+      "in_target": "по-фински",
+      "a_target_speaker": "говорящим по-фински",
+      "target_speakers": "носителей финского языка"
+    },
+    "fra": {
+      "in_target": "по-французски",
+      "a_target_speaker": "говорящим по-французски",
+      "target_speakers": "носителей французского языка"
+    },
+    "frr": {
+      "in_target": "на севернофризском",
+      "a_target_speaker": "говорящим на севернофризском",
+      "target_speakers": "носителей севернофризского языка"
+    },
+    "fry": {
+      "in_target": "на западнофризском",
+      "a_target_speaker": "говорящим на западнофризском",
+      "target_speakers": "носителей западнофризского языка"
+    },
+    "fur": {
+      "in_target": "на фриульском",
+      "a_target_speaker": "говорящим на фриульском",
+      "target_speakers": "носителей фриульского языка"
+    },
+    "gla": {
+      "in_target": "на шотландском гэльском",
+      "a_target_speaker": "говорящим на шотландском гэльском",
+      "target_speakers": "носителей шотландского гэльского языка"
+    },
+    "gle": {
+      "in_target": "по-ирландски",
+      "a_target_speaker": "говорящим по-ирландски",
+      "target_speakers": "носителей ирландского языка"
+    },
+    "glg": {
+      "in_target": "на галисийском",
+      "a_target_speaker": "говорящим на галисийском",
+      "target_speakers": "носителей галисийского языка"
+    },
+    "glv": {
+      "in_target": "на мэнском",
+      "a_target_speaker": "говорящим на мэнском",
+      "target_speakers": "носителей мэнского языка"
+    },
+    "grk": {
+      "in_target": "на грико",
+      "a_target_speaker": "говорящим на грико",
+      "target_speakers": "носителей грико"
+    },
+    "grn": {
+      "in_target": "на гуарани",
+      "a_target_speaker": "говорящим на гуарани",
+      "target_speakers": "носителей гуарани"
+    },
+    "gsw": {
+      "in_target": "на швейцарском немецком",
+      "a_target_speaker": "говорящим на швейцарском немецком",
+      "target_speakers": "носителей швейцарского немецкого"
+    },
+    "guj": {
+      "in_target": "на гуджарати",
+      "a_target_speaker": "говорящим на гуджарати",
+      "target_speakers": "носителей гуджарати"
+    },
+    "hak": {
+      "in_target": "на хакка",
+      "a_target_speaker": "говорящим на хакка",
+      "target_speakers": "носителей хакка"
+    },
+    "hau": {
+      "in_target": "на хауса",
+      "a_target_speaker": "говорящим на хауса",
+      "target_speakers": "носителей хауса"
+    },
+    "haw": {
+      "in_target": "на гавайском",
+      "a_target_speaker": "говорящим на гавайском",
+      "target_speakers": "носителей гавайского языка"
+    },
+    "heb": {
+      "in_target": "на иврите",
+      "a_target_speaker": "говорящим на иврите",
+      "target_speakers": "носителей иврита"
+    },
+    "hin": {
+      "in_target": "на хинди",
+      "a_target_speaker": "говорящим на хинди",
+      "target_speakers": "носителей хинди"
+    },
+    "hrv": {
+      "in_target": "по-хорватски",
+      "a_target_speaker": "говорящим по-хорватски",
+      "target_speakers": "носителей хорватского языка"
+    },
+    "hsb": {
+      "in_target": "на верхнелужицком",
+      "a_target_speaker": "говорящим на верхнелужицком",
+      "target_speakers": "носителей верхнелужицкого языка"
+    },
+    "hun": {
+      "in_target": "по-венгерски",
+      "a_target_speaker": "говорящим по-венгерски",
+      "target_speakers": "носителей венгерского языка"
+    },
+    "hye": {
+      "in_target": "по-армянски",
+      "a_target_speaker": "говорящим по-армянски",
+      "target_speakers": "носителей армянского языка"
+    },
+    "ibo": {
+      "in_target": "на игбо",
+      "a_target_speaker": "говорящим на игбо",
+      "target_speakers": "носителей игбо"
+    },
+    "iku": {
+      "in_target": "на инуктитуте",
+      "a_target_speaker": "говорящим на инуктитуте",
+      "target_speakers": "носителей инуктитута"
+    },
+    "ind": {
+      "in_target": "по-индонезийски",
+      "a_target_speaker": "говорящим по-индонезийски",
+      "target_speakers": "носителей индонезийского языка"
+    },
+    "isl": {
+      "in_target": "по-исландски",
+      "a_target_speaker": "говорящим по-исландски",
+      "target_speakers": "носителей исландского языка"
+    },
+    "ita": {
+      "in_target": "по-итальянски",
+      "a_target_speaker": "говорящим по-итальянски",
+      "target_speakers": "носителей итальянского языка"
+    },
+    "jav": {
+      "in_target": "на яванском",
+      "a_target_speaker": "говорящим на яванском",
+      "target_speakers": "носителей яванского языка"
+    },
+    "jpn": {
+      "in_target": "по-японски",
+      "a_target_speaker": "говорящим по-японски",
+      "target_speakers": "носителей японского языка"
+    },
+    "kal": {
+      "in_target": "на гренландском",
+      "a_target_speaker": "говорящим на гренландском",
+      "target_speakers": "носителей гренландского языка"
+    },
+    "kan": {
+      "in_target": "на каннада",
+      "a_target_speaker": "говорящим на каннада",
+      "target_speakers": "носителей каннада"
+    },
+    "kat": {
+      "in_target": "по-грузински",
+      "a_target_speaker": "говорящим по-грузински",
+      "target_speakers": "носителей грузинского языка"
+    },
+    "kaz": {
+      "in_target": "по-казахски",
+      "a_target_speaker": "говорящим по-казахски",
+      "target_speakers": "носителей казахского языка"
+    },
+    "kir": {
+      "in_target": "по-киргизски",
+      "a_target_speaker": "говорящим по-киргизски",
+      "target_speakers": "носителей киргизского языка"
+    },
+    "kor": {
+      "in_target": "по-корейски",
+      "a_target_speaker": "говорящим по-корейски",
+      "target_speakers": "носителей корейского языка"
+    },
+    "kur": {
+      "in_target": "по-курдски",
+      "a_target_speaker": "говорящим по-курдски",
+      "target_speakers": "носителей курдского языка"
+    },
+    "lad": {
+      "in_target": "на ладино",
+      "a_target_speaker": "говорящим на ладино",
+      "target_speakers": "носителей ладино"
+    },
+    "lav": {
+      "in_target": "по-латышски",
+      "a_target_speaker": "говорящим по-латышски",
+      "target_speakers": "носителей латышского языка"
+    },
+    "lij": {
+      "in_target": "на лигурском",
+      "a_target_speaker": "говорящим на лигурском",
+      "target_speakers": "носителей лигурского языка"
+    },
+    "lim": {
+      "in_target": "на лимбургском",
+      "a_target_speaker": "говорящим на лимбургском",
+      "target_speakers": "носителей лимбургского языка"
+    },
+    "lin": {
+      "in_target": "на лингала",
+      "a_target_speaker": "говорящим на лингала",
+      "target_speakers": "носителей лингала"
+    },
+    "lit": {
+      "in_target": "по-литовски",
+      "a_target_speaker": "говорящим по-литовски",
+      "target_speakers": "носителей литовского языка"
+    },
+    "ltz": {
+      "in_target": "на люксембургском",
+      "a_target_speaker": "говорящим на люксембургском",
+      "target_speakers": "носителей люксембургского языка"
+    },
+    "mal": {
+      "in_target": "на малаялам",
+      "a_target_speaker": "говорящим на малаялам",
+      "target_speakers": "носителей малаялам"
+    },
+    "mar": {
+      "in_target": "на маратхи",
+      "a_target_speaker": "говорящим на маратхи",
+      "target_speakers": "носителей маратхи"
+    },
+    "mkd": {
+      "in_target": "по-македонски",
+      "a_target_speaker": "говорящим по-македонски",
+      "target_speakers": "носителей македонского языка"
+    },
+    "moh": {
+      "in_target": "на мохоке",
+      "a_target_speaker": "говорящим на мохоке",
+      "target_speakers": "носителей мохока"
+    },
+    "mri": {
+      "in_target": "на маори",
+      "a_target_speaker": "говорящим на маори",
+      "target_speakers": "носителей маори"
+    },
+    "msa": {
+      "in_target": "по-малайски",
+      "a_target_speaker": "говорящим по-малайски",
+      "target_speakers": "носителей малайского языка"
+    },
+    "nan": {
+      "in_target": "на миньнань",
+      "a_target_speaker": "говорящим на миньнань",
+      "target_speakers": "носителей миньнань"
+    },
+    "nap": {
+      "in_target": "на неаполитанском",
+      "a_target_speaker": "говорящим на неаполитанском",
+      "target_speakers": "носителей неаполитанского языка"
+    },
+    "nav": {
+      "in_target": "на навахо",
+      "a_target_speaker": "говорящим на навахо",
+      "target_speakers": "носителей навахо"
+    },
+    "nep": {
+      "in_target": "на непальском",
+      "a_target_speaker": "говорящим на непальском",
+      "target_speakers": "носителей непальского языка"
+    },
+    "nld": {
+      "in_target": "по-нидерландски",
+      "a_target_speaker": "говорящим по-нидерландски",
+      "target_speakers": "носителей нидерландского языка"
+    },
+    "nor": {
+      "in_target": "по-норвежски",
+      "a_target_speaker": "говорящим по-норвежски",
+      "target_speakers": "носителей норвежского языка"
+    },
+    "nya": {
+      "in_target": "на чичева",
+      "a_target_speaker": "говорящим на чичева",
+      "target_speakers": "носителей чичева"
+    },
+    "oci": {
+      "in_target": "на окситанском",
+      "a_target_speaker": "говорящим на окситанском",
+      "target_speakers": "носителей окситанского языка"
+    },
+    "oji": {
+      "in_target": "на оджибве",
+      "a_target_speaker": "говорящим на оджибве",
+      "target_speakers": "носителей оджибве"
+    },
+    "pan": {
+      "in_target": "на панджаби",
+      "a_target_speaker": "говорящим на панджаби",
+      "target_speakers": "носителей панджаби"
+    },
+    "pol": {
+      "in_target": "по-польски",
+      "a_target_speaker": "говорящим по-польски",
+      "target_speakers": "носителей польского языка"
+    },
+    "por": {
+      "in_target": "по-португальски",
+      "a_target_speaker": "говорящим по-португальски",
+      "target_speakers": "носителей португальского языка"
+    },
+    "por_BR": {
+      "in_target": "по-португальски",
+      "a_target_speaker": "говорящим на бразильском португальском",
+      "target_speakers": "носителей португальского языка"
+    },
+    "por_EU": {
+      "in_target": "по-португальски",
+      "a_target_speaker": "говорящим на европейском португальском",
+      "target_speakers": "носителей португальского языка"
+    },
+    "pus": {
+      "in_target": "на пушту",
+      "a_target_speaker": "говорящим на пушту",
+      "target_speakers": "носителей пушту"
+    },
+    "que": {
+      "in_target": "на кечуа",
+      "a_target_speaker": "говорящим на кечуа",
+      "target_speakers": "носителей кечуа"
+    },
+    "roh": {
+      "in_target": "на романшском",
+      "a_target_speaker": "говорящим на романшском",
+      "target_speakers": "носителей романшского языка"
+    },
+    "ron": {
+      "in_target": "по-румынски",
+      "a_target_speaker": "говорящим по-румынски",
+      "target_speakers": "носителей румынского языка"
+    },
+    "scn": {
+      "in_target": "на сицилийском",
+      "a_target_speaker": "говорящим на сицилийском",
+      "target_speakers": "носителей сицилийского языка"
+    },
+    "sco": {
+      "in_target": "на шотландском",
+      "a_target_speaker": "говорящим на шотландском",
+      "target_speakers": "носителей шотландского языка"
+    },
+    "slk": {
+      "in_target": "по-словацки",
+      "a_target_speaker": "говорящим по-словацки",
+      "target_speakers": "носителей словацкого языка"
+    },
+    "slv": {
+      "in_target": "по-словенски",
+      "a_target_speaker": "говорящим по-словенски",
+      "target_speakers": "носителей словенского языка"
+    },
+    "sme": {
+      "in_target": "на северносаамском",
+      "a_target_speaker": "говорящим на северносаамском",
+      "target_speakers": "носителей северносаамского языка"
+    },
+    "smj": {
+      "in_target": "на луле-саамском",
+      "a_target_speaker": "говорящим на луле-саамском",
+      "target_speakers": "носителей луле-саамского языка"
+    },
+    "smn": {
+      "in_target": "на инари-саамском",
+      "a_target_speaker": "говорящим на инари-саамском",
+      "target_speakers": "носителей инари-саамского языка"
+    },
+    "smo": {
+      "in_target": "на самоанском",
+      "a_target_speaker": "говорящим на самоанском",
+      "target_speakers": "носителей самоанского языка"
+    },
+    "sms": {
+      "in_target": "на колтта-саамском",
+      "a_target_speaker": "говорящим на колтта-саамском",
+      "target_speakers": "носителей колтта-саамского языка"
+    },
+    "snd": {
+      "in_target": "на синдхи",
+      "a_target_speaker": "говорящим на синдхи",
+      "target_speakers": "носителей синдхи"
+    },
+    "som": {
+      "in_target": "на сомалийском",
+      "a_target_speaker": "говорящим на сомалийском",
+      "target_speakers": "носителей сомалийского языка"
+    },
+    "spa": {
+      "in_target": "по-испански",
+      "a_target_speaker": "говорящим по-испански",
+      "target_speakers": "носителей испанского языка"
+    },
+    "spa_EU": {
+      "in_target": "по-испански",
+      "a_target_speaker": "говорящим на европейском испанском",
+      "target_speakers": "носителей испанского языка"
+    },
+    "spa_SA": {
+      "in_target": "по-испански",
+      "a_target_speaker": "говорящим на южноамериканском испанском",
+      "target_speakers": "носителей испанского языка"
+    },
+    "srd": {
+      "in_target": "на сардинском",
+      "a_target_speaker": "говорящим на сардинском",
+      "target_speakers": "носителей сардинского языка"
+    },
+    "srp": {
+      "in_target": "по-сербски",
+      "a_target_speaker": "говорящим по-сербски",
+      "target_speakers": "носителей сербского языка"
+    },
+    "swa": {
+      "in_target": "на суахили",
+      "a_target_speaker": "говорящим на суахили",
+      "target_speakers": "носителей суахили"
+    },
+    "swe": {
+      "in_target": "по-шведски",
+      "a_target_speaker": "говорящим по-шведски",
+      "target_speakers": "носителей шведского языка"
+    },
+    "tah": {
+      "in_target": "на таитянском",
+      "a_target_speaker": "говорящим на таитянском",
+      "target_speakers": "носителей таитянского языка"
+    },
+    "tam": {
+      "in_target": "на тамильском",
+      "a_target_speaker": "говорящим на тамильском",
+      "target_speakers": "носителей тамильского языка"
+    },
+    "tel": {
+      "in_target": "на телугу",
+      "a_target_speaker": "говорящим на телугу",
+      "target_speakers": "носителей телугу"
+    },
+    "tha": {
+      "in_target": "по-тайски",
+      "a_target_speaker": "говорящим по-тайски",
+      "target_speakers": "носителей тайского языка"
+    },
+    "ton": {
+      "in_target": "на тонганском",
+      "a_target_speaker": "говорящим на тонганском",
+      "target_speakers": "носителей тонганского языка"
+    },
+    "tur": {
+      "in_target": "по-турецки",
+      "a_target_speaker": "говорящим по-турецки",
+      "target_speakers": "носителей турецкого языка"
+    },
+    "uig": {
+      "in_target": "на уйгурском",
+      "a_target_speaker": "говорящим на уйгурском",
+      "target_speakers": "носителей уйгурского языка"
+    },
+    "ukr": {
+      "in_target": "по-украински",
+      "a_target_speaker": "говорящим по-украински",
+      "target_speakers": "носителей украинского языка"
+    },
+    "urd": {
+      "in_target": "на урду",
+      "a_target_speaker": "говорящим на урду",
+      "target_speakers": "носителей урду"
+    },
+    "vec": {
+      "in_target": "на венетском",
+      "a_target_speaker": "говорящим на венетском",
+      "target_speakers": "носителей венетского языка"
+    },
+    "vie": {
+      "in_target": "по-вьетнамски",
+      "a_target_speaker": "говорящим по-вьетнамски",
+      "target_speakers": "носителей вьетнамского языка"
+    },
+    "vls": {
+      "in_target": "на фламандском",
+      "a_target_speaker": "говорящим на фламандском",
+      "target_speakers": "носителей фламандского языка"
+    },
+    "wln": {
+      "in_target": "на валлонском",
+      "a_target_speaker": "говорящим на валлонском",
+      "target_speakers": "носителей валлонского языка"
+    },
+    "wuu": {
+      "in_target": "на шанхайском",
+      "a_target_speaker": "говорящим на шанхайском",
+      "target_speakers": "носителей шанхайского диалекта"
+    },
+    "xho": {
+      "in_target": "на коса",
+      "a_target_speaker": "говорящим на коса",
+      "target_speakers": "носителей коса"
+    },
+    "yid": {
+      "in_target": "на идише",
+      "a_target_speaker": "говорящим на идише",
+      "target_speakers": "носителей идиша"
+    },
+    "yor": {
+      "in_target": "на йоруба",
+      "a_target_speaker": "говорящим на йоруба",
+      "target_speakers": "носителей йоруба"
+    },
+    "yue": {
+      "in_target": "на кантонском",
+      "a_target_speaker": "говорящим на кантонском",
+      "target_speakers": "носителей кантонского диалекта"
+    },
+    "zul": {
+      "in_target": "на зулу",
+      "a_target_speaker": "говорящим на зулу",
+      "target_speakers": "носителей зулу"
+    },
+    "ara_lb": {
+      "in_target": "по-арабски",
+      "a_target_speaker": "говорящим на ливанском арабском",
+      "target_speakers": "носителей арабского языка"
+    },
+    "ara_sy": {
+      "in_target": "по-арабски",
+      "a_target_speaker": "говорящим на сирийском арабском",
+      "target_speakers": "носителей арабского языка"
+    },
+    "ara_eg": {
+      "in_target": "по-арабски",
+      "a_target_speaker": "говорящим на египетском арабском",
+      "target_speakers": "носителей арабского языка"
+    }
+  }
+}

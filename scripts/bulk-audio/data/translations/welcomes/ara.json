@@ -1,0 +1,733 @@
+{
+  "known_language": "ara",
+  "known_language_display": "Arabic",
+  "template": "مرحباً بك في هذه اللعبة الغريبة التي ستساعدك على أن تصبح {a_target_speaker}. إليك كيف تعمل: أعلّمك شيئاً {in_target}، ثم أقول شيئاً {in_known} وأعطيك فرصة لتقوله بصوت عالٍ {in_target}. ثم استمع جيداً إلى {target_speakers} الذين سيقدمون لك النموذج. من المهم أن تقول شيئاً في الفراغات، لأن هذه هي طريقة التعلّم. حتى لو لم تكن متأكداً، حاول أن تقول ما تستطيع، وستبدأ بالتحدث {in_target} أسرع مما تتخيل. كلما تعاملت مع الأمر كلعبة، وكلما كنت مرحاً، وكلما ضحكت عند الأخطاء، كان الأمر أفضل وتعلّمت أسرع. هيا، لنبدأ اللعب.",
+  "in_known": "بالعربية",
+  "targets": {
+    "afb": {
+      "in_target": "بالعربية الخليجية",
+      "a_target_speaker": "متحدثاً بالعربية الخليجية",
+      "target_speakers": "المتحدثين بالعربية الخليجية"
+    },
+    "afr": {
+      "in_target": "بالأفريقانية",
+      "a_target_speaker": "متحدثاً بالأفريقانية",
+      "target_speakers": "المتحدثين بالأفريقانية"
+    },
+    "aii": {
+      "in_target": "بالسورث",
+      "a_target_speaker": "متحدثاً بالسورث",
+      "target_speakers": "المتحدثين بالسورث"
+    },
+    "ain": {
+      "in_target": "بالآينوية",
+      "a_target_speaker": "متحدثاً بالآينوية",
+      "target_speakers": "المتحدثين بالآينوية"
+    },
+    "ajp": {
+      "in_target": "بالعربية الفلسطينية",
+      "a_target_speaker": "متحدثاً بالعربية الفلسطينية",
+      "target_speakers": "المتحدثين بالعربية الفلسطينية"
+    },
+    "amh": {
+      "in_target": "بالأمهرية",
+      "a_target_speaker": "متحدثاً بالأمهرية",
+      "target_speakers": "المتحدثين بالأمهرية"
+    },
+    "apc": {
+      "in_target": "بالعربية الشامية",
+      "a_target_speaker": "متحدثاً بالعربية الشامية",
+      "target_speakers": "المتحدثين بالعربية الشامية"
+    },
+    "arg": {
+      "in_target": "بالأراغونية",
+      "a_target_speaker": "متحدثاً بالأراغونية",
+      "target_speakers": "المتحدثين بالأراغونية"
+    },
+    "ary": {
+      "in_target": "بالعربية المغربية",
+      "a_target_speaker": "متحدثاً بالعربية المغربية",
+      "target_speakers": "المتحدثين بالعربية المغربية"
+    },
+    "asm": {
+      "in_target": "بالأسامية",
+      "a_target_speaker": "متحدثاً بالأسامية",
+      "target_speakers": "المتحدثين بالأسامية"
+    },
+    "ast": {
+      "in_target": "بالأستورية",
+      "a_target_speaker": "متحدثاً بالأستورية",
+      "target_speakers": "المتحدثين بالأستورية"
+    },
+    "aze": {
+      "in_target": "بالأذربيجانية",
+      "a_target_speaker": "متحدثاً بالأذربيجانية",
+      "target_speakers": "المتحدثين بالأذربيجانية"
+    },
+    "bar": {
+      "in_target": "بالبافارية",
+      "a_target_speaker": "متحدثاً بالبافارية",
+      "target_speakers": "المتحدثين بالبافارية"
+    },
+    "bel": {
+      "in_target": "بالبيلاروسية",
+      "a_target_speaker": "متحدثاً بالبيلاروسية",
+      "target_speakers": "المتحدثين بالبيلاروسية"
+    },
+    "ben": {
+      "in_target": "بالبنغالية",
+      "a_target_speaker": "متحدثاً بالبنغالية",
+      "target_speakers": "المتحدثين بالبنغالية"
+    },
+    "bos": {
+      "in_target": "بالبوسنية",
+      "a_target_speaker": "متحدثاً بالبوسنية",
+      "target_speakers": "المتحدثين بالبوسنية"
+    },
+    "bre": {
+      "in_target": "بالبريتونية",
+      "a_target_speaker": "متحدثاً بالبريتونية",
+      "target_speakers": "المتحدثين بالبريتونية"
+    },
+    "bul": {
+      "in_target": "بالبلغارية",
+      "a_target_speaker": "متحدثاً بالبلغارية",
+      "target_speakers": "المتحدثين بالبلغارية"
+    },
+    "cat": {
+      "in_target": "بالكتالونية",
+      "a_target_speaker": "متحدثاً بالكتالونية",
+      "target_speakers": "المتحدثين بالكتالونية"
+    },
+    "ceb": {
+      "in_target": "بالسيبوانية",
+      "a_target_speaker": "متحدثاً بالسيبوانية",
+      "target_speakers": "المتحدثين بالسيبوانية"
+    },
+    "ces": {
+      "in_target": "بالتشيكية",
+      "a_target_speaker": "متحدثاً بالتشيكية",
+      "target_speakers": "المتحدثين بالتشيكية"
+    },
+    "chr": {
+      "in_target": "بالشيروكية",
+      "a_target_speaker": "متحدثاً بالشيروكية",
+      "target_speakers": "المتحدثين بالشيروكية"
+    },
+    "cmn": {
+      "in_target": "بالصينية",
+      "a_target_speaker": "متحدثاً بالصينية",
+      "target_speakers": "المتحدثين بالصينية"
+    },
+    "cor": {
+      "in_target": "بالكورنية",
+      "a_target_speaker": "متحدثاً بالكورنية",
+      "target_speakers": "المتحدثين بالكورنية"
+    },
+    "cos": {
+      "in_target": "بالكورسيكية",
+      "a_target_speaker": "متحدثاً بالكورسيكية",
+      "target_speakers": "المتحدثين بالكورسيكية"
+    },
+    "csb": {
+      "in_target": "بالكاشوبية",
+      "a_target_speaker": "متحدثاً بالكاشوبية",
+      "target_speakers": "المتحدثين بالكاشوبية"
+    },
+    "cym": {
+      "in_target": "بالويلزية",
+      "a_target_speaker": "متحدثاً بالويلزية",
+      "target_speakers": "المتحدثين بالويلزية"
+    },
+    "dan": {
+      "in_target": "بالدانماركية",
+      "a_target_speaker": "متحدثاً بالدانماركية",
+      "target_speakers": "المتحدثين بالدانماركية"
+    },
+    "deu": {
+      "in_target": "بالألمانية",
+      "a_target_speaker": "متحدثاً بالألمانية",
+      "target_speakers": "المتحدثين بالألمانية"
+    },
+    "deu_AT": {
+      "in_target": "بالألمانية",
+      "a_target_speaker": "متحدثاً بالألمانية النمساوية",
+      "target_speakers": "المتحدثين بالألمانية"
+    },
+    "dsb": {
+      "in_target": "بالصوربية السفلى",
+      "a_target_speaker": "متحدثاً بالصوربية السفلى",
+      "target_speakers": "المتحدثين بالصوربية السفلى"
+    },
+    "ell": {
+      "in_target": "باليونانية",
+      "a_target_speaker": "متحدثاً باليونانية",
+      "target_speakers": "المتحدثين باليونانية"
+    },
+    "eng": {
+      "in_target": "بالإنجليزية",
+      "a_target_speaker": "متحدثاً بالإنجليزية",
+      "target_speakers": "المتحدثين بالإنجليزية"
+    },
+    "est": {
+      "in_target": "بالإستونية",
+      "a_target_speaker": "متحدثاً بالإستونية",
+      "target_speakers": "المتحدثين بالإستونية"
+    },
+    "eus": {
+      "in_target": "بالباسكية",
+      "a_target_speaker": "متحدثاً بالباسكية",
+      "target_speakers": "المتحدثين بالباسكية"
+    },
+    "fao": {
+      "in_target": "بالفاروية",
+      "a_target_speaker": "متحدثاً بالفاروية",
+      "target_speakers": "المتحدثين بالفاروية"
+    },
+    "fas": {
+      "in_target": "بالفارسية",
+      "a_target_speaker": "متحدثاً بالفارسية",
+      "target_speakers": "المتحدثين بالفارسية"
+    },
+    "fij": {
+      "in_target": "بالفيجية",
+      "a_target_speaker": "متحدثاً بالفيجية",
+      "target_speakers": "المتحدثين بالفيجية"
+    },
+    "fil": {
+      "in_target": "بالفلبينية",
+      "a_target_speaker": "متحدثاً بالفلبينية",
+      "target_speakers": "المتحدثين بالفلبينية"
+    },
+    "fin": {
+      "in_target": "بالفنلندية",
+      "a_target_speaker": "متحدثاً بالفنلندية",
+      "target_speakers": "المتحدثين بالفنلندية"
+    },
+    "fra": {
+      "in_target": "بالفرنسية",
+      "a_target_speaker": "متحدثاً بالفرنسية",
+      "target_speakers": "المتحدثين بالفرنسية"
+    },
+    "frr": {
+      "in_target": "بالفريزية الشمالية",
+      "a_target_speaker": "متحدثاً بالفريزية الشمالية",
+      "target_speakers": "المتحدثين بالفريزية الشمالية"
+    },
+    "fry": {
+      "in_target": "بالفريزية الغربية",
+      "a_target_speaker": "متحدثاً بالفريزية الغربية",
+      "target_speakers": "المتحدثين بالفريزية الغربية"
+    },
+    "fur": {
+      "in_target": "بالفريولية",
+      "a_target_speaker": "متحدثاً بالفريولية",
+      "target_speakers": "المتحدثين بالفريولية"
+    },
+    "gla": {
+      "in_target": "بالغيلية الاسكتلندية",
+      "a_target_speaker": "متحدثاً بالغيلية الاسكتلندية",
+      "target_speakers": "المتحدثين بالغيلية الاسكتلندية"
+    },
+    "gle": {
+      "in_target": "بالأيرلندية",
+      "a_target_speaker": "متحدثاً بالأيرلندية",
+      "target_speakers": "المتحدثين بالأيرلندية"
+    },
+    "glg": {
+      "in_target": "بالجاليكية",
+      "a_target_speaker": "متحدثاً بالجاليكية",
+      "target_speakers": "المتحدثين بالجاليكية"
+    },
+    "glv": {
+      "in_target": "بالمنكسية",
+      "a_target_speaker": "متحدثاً بالمنكسية",
+      "target_speakers": "المتحدثين بالمنكسية"
+    },
+    "grk": {
+      "in_target": "بالغريكو",
+      "a_target_speaker": "متحدثاً بالغريكو",
+      "target_speakers": "المتحدثين بالغريكو"
+    },
+    "grn": {
+      "in_target": "بالغوارانية",
+      "a_target_speaker": "متحدثاً بالغوارانية",
+      "target_speakers": "المتحدثين بالغوارانية"
+    },
+    "gsw": {
+      "in_target": "بالألمانية السويسرية",
+      "a_target_speaker": "متحدثاً بالألمانية السويسرية",
+      "target_speakers": "المتحدثين بالألمانية السويسرية"
+    },
+    "guj": {
+      "in_target": "بالغوجاراتية",
+      "a_target_speaker": "متحدثاً بالغوجاراتية",
+      "target_speakers": "المتحدثين بالغوجاراتية"
+    },
+    "hak": {
+      "in_target": "بالهاكا",
+      "a_target_speaker": "متحدثاً بالهاكا",
+      "target_speakers": "المتحدثين بالهاكا"
+    },
+    "hau": {
+      "in_target": "بالهوسا",
+      "a_target_speaker": "متحدثاً بالهوسا",
+      "target_speakers": "المتحدثين بالهوسا"
+    },
+    "haw": {
+      "in_target": "بالهاوايية",
+      "a_target_speaker": "متحدثاً بالهاوايية",
+      "target_speakers": "المتحدثين بالهاوايية"
+    },
+    "heb": {
+      "in_target": "بالعبرية",
+      "a_target_speaker": "متحدثاً بالعبرية",
+      "target_speakers": "المتحدثين بالعبرية"
+    },
+    "hin": {
+      "in_target": "بالهندية",
+      "a_target_speaker": "متحدثاً بالهندية",
+      "target_speakers": "المتحدثين بالهندية"
+    },
+    "hrv": {
+      "in_target": "بالكرواتية",
+      "a_target_speaker": "متحدثاً بالكرواتية",
+      "target_speakers": "المتحدثين بالكرواتية"
+    },
+    "hsb": {
+      "in_target": "بالصوربية العليا",
+      "a_target_speaker": "متحدثاً بالصوربية العليا",
+      "target_speakers": "المتحدثين بالصوربية العليا"
+    },
+    "hun": {
+      "in_target": "بالمجرية",
+      "a_target_speaker": "متحدثاً بالمجرية",
+      "target_speakers": "المتحدثين بالمجرية"
+    },
+    "hye": {
+      "in_target": "بالأرمنية",
+      "a_target_speaker": "متحدثاً بالأرمنية",
+      "target_speakers": "المتحدثين بالأرمنية"
+    },
+    "ibo": {
+      "in_target": "بالإيغبوية",
+      "a_target_speaker": "متحدثاً بالإيغبوية",
+      "target_speakers": "المتحدثين بالإيغبوية"
+    },
+    "iku": {
+      "in_target": "بالإنوكتيتوتية",
+      "a_target_speaker": "متحدثاً بالإنوكتيتوتية",
+      "target_speakers": "المتحدثين بالإنوكتيتوتية"
+    },
+    "ind": {
+      "in_target": "بالإندونيسية",
+      "a_target_speaker": "متحدثاً بالإندونيسية",
+      "target_speakers": "المتحدثين بالإندونيسية"
+    },
+    "isl": {
+      "in_target": "بالآيسلندية",
+      "a_target_speaker": "متحدثاً بالآيسلندية",
+      "target_speakers": "المتحدثين بالآيسلندية"
+    },
+    "ita": {
+      "in_target": "بالإيطالية",
+      "a_target_speaker": "متحدثاً بالإيطالية",
+      "target_speakers": "المتحدثين بالإيطالية"
+    },
+    "jav": {
+      "in_target": "بالجاوية",
+      "a_target_speaker": "متحدثاً بالجاوية",
+      "target_speakers": "المتحدثين بالجاوية"
+    },
+    "jpn": {
+      "in_target": "باليابانية",
+      "a_target_speaker": "متحدثاً باليابانية",
+      "target_speakers": "المتحدثين باليابانية"
+    },
+    "kal": {
+      "in_target": "بالكالاليسوتية",
+      "a_target_speaker": "متحدثاً بالكالاليسوتية",
+      "target_speakers": "المتحدثين بالكالاليسوتية"
+    },
+    "kan": {
+      "in_target": "بالكنادية",
+      "a_target_speaker": "متحدثاً بالكنادية",
+      "target_speakers": "المتحدثين بالكنادية"
+    },
+    "kat": {
+      "in_target": "بالجورجية",
+      "a_target_speaker": "متحدثاً بالجورجية",
+      "target_speakers": "المتحدثين بالجورجية"
+    },
+    "kaz": {
+      "in_target": "بالكازاخية",
+      "a_target_speaker": "متحدثاً بالكازاخية",
+      "target_speakers": "المتحدثين بالكازاخية"
+    },
+    "kir": {
+      "in_target": "بالقيرغيزية",
+      "a_target_speaker": "متحدثاً بالقيرغيزية",
+      "target_speakers": "المتحدثين بالقيرغيزية"
+    },
+    "kor": {
+      "in_target": "بالكورية",
+      "a_target_speaker": "متحدثاً بالكورية",
+      "target_speakers": "المتحدثين بالكورية"
+    },
+    "kur": {
+      "in_target": "بالكردية",
+      "a_target_speaker": "متحدثاً بالكردية",
+      "target_speakers": "المتحدثين بالكردية"
+    },
+    "lad": {
+      "in_target": "باللادينو",
+      "a_target_speaker": "متحدثاً باللادينو",
+      "target_speakers": "المتحدثين باللادينو"
+    },
+    "lav": {
+      "in_target": "باللاتفية",
+      "a_target_speaker": "متحدثاً باللاتفية",
+      "target_speakers": "المتحدثين باللاتفية"
+    },
+    "lij": {
+      "in_target": "بالليغورية",
+      "a_target_speaker": "متحدثاً بالليغورية",
+      "target_speakers": "المتحدثين بالليغورية"
+    },
+    "lim": {
+      "in_target": "بالليمبورغية",
+      "a_target_speaker": "متحدثاً بالليمبورغية",
+      "target_speakers": "المتحدثين بالليمبورغية"
+    },
+    "lin": {
+      "in_target": "باللينغالية",
+      "a_target_speaker": "متحدثاً باللينغالية",
+      "target_speakers": "المتحدثين باللينغالية"
+    },
+    "lit": {
+      "in_target": "بالليتوانية",
+      "a_target_speaker": "متحدثاً بالليتوانية",
+      "target_speakers": "المتحدثين بالليتوانية"
+    },
+    "ltz": {
+      "in_target": "باللوكسمبورغية",
+      "a_target_speaker": "متحدثاً باللوكسمبورغية",
+      "target_speakers": "المتحدثين باللوكسمبورغية"
+    },
+    "mal": {
+      "in_target": "بالمالايالامية",
+      "a_target_speaker": "متحدثاً بالمالايالامية",
+      "target_speakers": "المتحدثين بالمالايالامية"
+    },
+    "mar": {
+      "in_target": "بالماراثية",
+      "a_target_speaker": "متحدثاً بالماراثية",
+      "target_speakers": "المتحدثين بالماراثية"
+    },
+    "mkd": {
+      "in_target": "بالمقدونية",
+      "a_target_speaker": "متحدثاً بالمقدونية",
+      "target_speakers": "المتحدثين بالمقدونية"
+    },
+    "moh": {
+      "in_target": "بالموهوكية",
+      "a_target_speaker": "متحدثاً بالموهوكية",
+      "target_speakers": "المتحدثين بالموهوكية"
+    },
+    "mri": {
+      "in_target": "بالماورية",
+      "a_target_speaker": "متحدثاً بالماورية",
+      "target_speakers": "المتحدثين بالماورية"
+    },
+    "msa": {
+      "in_target": "بالملايوية",
+      "a_target_speaker": "متحدثاً بالملايوية",
+      "target_speakers": "المتحدثين بالملايوية"
+    },
+    "nan": {
+      "in_target": "بالمين نان",
+      "a_target_speaker": "متحدثاً بالمين نان",
+      "target_speakers": "المتحدثين بالمين نان"
+    },
+    "nap": {
+      "in_target": "بالنابولية",
+      "a_target_speaker": "متحدثاً بالنابولية",
+      "target_speakers": "المتحدثين بالنابولية"
+    },
+    "nav": {
+      "in_target": "بالنافاهوية",
+      "a_target_speaker": "متحدثاً بالنافاهوية",
+      "target_speakers": "المتحدثين بالنافاهوية"
+    },
+    "nep": {
+      "in_target": "بالنيبالية",
+      "a_target_speaker": "متحدثاً بالنيبالية",
+      "target_speakers": "المتحدثين بالنيبالية"
+    },
+    "nld": {
+      "in_target": "بالهولندية",
+      "a_target_speaker": "متحدثاً بالهولندية",
+      "target_speakers": "المتحدثين بالهولندية"
+    },
+    "nor": {
+      "in_target": "بالنرويجية",
+      "a_target_speaker": "متحدثاً بالنرويجية",
+      "target_speakers": "المتحدثين بالنرويجية"
+    },
+    "nya": {
+      "in_target": "بالشيشيوا",
+      "a_target_speaker": "متحدثاً بالشيشيوا",
+      "target_speakers": "المتحدثين بالشيشيوا"
+    },
+    "oci": {
+      "in_target": "بالأوكسيتانية",
+      "a_target_speaker": "متحدثاً بالأوكسيتانية",
+      "target_speakers": "المتحدثين بالأوكسيتانية"
+    },
+    "oji": {
+      "in_target": "بالأوجيبوية",
+      "a_target_speaker": "متحدثاً بالأوجيبوية",
+      "target_speakers": "المتحدثين بالأوجيبوية"
+    },
+    "pan": {
+      "in_target": "بالبنجابية",
+      "a_target_speaker": "متحدثاً بالبنجابية",
+      "target_speakers": "المتحدثين بالبنجابية"
+    },
+    "pol": {
+      "in_target": "بالبولندية",
+      "a_target_speaker": "متحدثاً بالبولندية",
+      "target_speakers": "المتحدثين بالبولندية"
+    },
+    "por": {
+      "in_target": "بالبرتغالية",
+      "a_target_speaker": "متحدثاً بالبرتغالية",
+      "target_speakers": "المتحدثين بالبرتغالية"
+    },
+    "por_BR": {
+      "in_target": "بالبرتغالية",
+      "a_target_speaker": "متحدثاً بالبرتغالية البرازيلية",
+      "target_speakers": "المتحدثين بالبرتغالية"
+    },
+    "por_EU": {
+      "in_target": "بالبرتغالية",
+      "a_target_speaker": "متحدثاً بالبرتغالية الأوروبية",
+      "target_speakers": "المتحدثين بالبرتغالية"
+    },
+    "pus": {
+      "in_target": "بالبشتوية",
+      "a_target_speaker": "متحدثاً بالبشتوية",
+      "target_speakers": "المتحدثين بالبشتوية"
+    },
+    "que": {
+      "in_target": "بالكيتشوا",
+      "a_target_speaker": "متحدثاً بالكيتشوا",
+      "target_speakers": "المتحدثين بالكيتشوا"
+    },
+    "roh": {
+      "in_target": "بالرومانشية",
+      "a_target_speaker": "متحدثاً بالرومانشية",
+      "target_speakers": "المتحدثين بالرومانشية"
+    },
+    "ron": {
+      "in_target": "بالرومانية",
+      "a_target_speaker": "متحدثاً بالرومانية",
+      "target_speakers": "المتحدثين بالرومانية"
+    },
+    "rus": {
+      "in_target": "بالروسية",
+      "a_target_speaker": "متحدثاً بالروسية",
+      "target_speakers": "المتحدثين بالروسية"
+    },
+    "scn": {
+      "in_target": "بالصقلية",
+      "a_target_speaker": "متحدثاً بالصقلية",
+      "target_speakers": "المتحدثين بالصقلية"
+    },
+    "sco": {
+      "in_target": "بالسكوتسية",
+      "a_target_speaker": "متحدثاً بالسكوتسية",
+      "target_speakers": "المتحدثين بالسكوتسية"
+    },
+    "slk": {
+      "in_target": "بالسلوفاكية",
+      "a_target_speaker": "متحدثاً بالسلوفاكية",
+      "target_speakers": "المتحدثين بالسلوفاكية"
+    },
+    "slv": {
+      "in_target": "بالسلوفينية",
+      "a_target_speaker": "متحدثاً بالسلوفينية",
+      "target_speakers": "المتحدثين بالسلوفينية"
+    },
+    "sme": {
+      "in_target": "بالسامية الشمالية",
+      "a_target_speaker": "متحدثاً بالسامية الشمالية",
+      "target_speakers": "المتحدثين بالسامية الشمالية"
+    },
+    "smj": {
+      "in_target": "بالسامية اللولوية",
+      "a_target_speaker": "متحدثاً بالسامية اللولوية",
+      "target_speakers": "المتحدثين بالسامية اللولوية"
+    },
+    "smn": {
+      "in_target": "بالسامية الإنارية",
+      "a_target_speaker": "متحدثاً بالسامية الإنارية",
+      "target_speakers": "المتحدثين بالسامية الإنارية"
+    },
+    "smo": {
+      "in_target": "بالساموية",
+      "a_target_speaker": "متحدثاً بالساموية",
+      "target_speakers": "المتحدثين بالساموية"
+    },
+    "sms": {
+      "in_target": "بالسامية السكولتية",
+      "a_target_speaker": "متحدثاً بالسامية السكولتية",
+      "target_speakers": "المتحدثين بالسامية السكولتية"
+    },
+    "snd": {
+      "in_target": "بالسندية",
+      "a_target_speaker": "متحدثاً بالسندية",
+      "target_speakers": "المتحدثين بالسندية"
+    },
+    "som": {
+      "in_target": "بالصومالية",
+      "a_target_speaker": "متحدثاً بالصومالية",
+      "target_speakers": "المتحدثين بالصومالية"
+    },
+    "spa": {
+      "in_target": "بالإسبانية",
+      "a_target_speaker": "متحدثاً بالإسبانية",
+      "target_speakers": "المتحدثين بالإسبانية"
+    },
+    "spa_EU": {
+      "in_target": "بالإسبانية",
+      "a_target_speaker": "متحدثاً بالإسبانية الأوروبية",
+      "target_speakers": "المتحدثين بالإسبانية"
+    },
+    "spa_SA": {
+      "in_target": "بالإسبانية",
+      "a_target_speaker": "متحدثاً بالإسبانية الأمريكية الجنوبية",
+      "target_speakers": "المتحدثين بالإسبانية"
+    },
+    "srd": {
+      "in_target": "بالسردينية",
+      "a_target_speaker": "متحدثاً بالسردينية",
+      "target_speakers": "المتحدثين بالسردينية"
+    },
+    "srp": {
+      "in_target": "بالصربية",
+      "a_target_speaker": "متحدثاً بالصربية",
+      "target_speakers": "المتحدثين بالصربية"
+    },
+    "swa": {
+      "in_target": "بالسواحيلية",
+      "a_target_speaker": "متحدثاً بالسواحيلية",
+      "target_speakers": "المتحدثين بالسواحيلية"
+    },
+    "swe": {
+      "in_target": "بالسويدية",
+      "a_target_speaker": "متحدثاً بالسويدية",
+      "target_speakers": "المتحدثين بالسويدية"
+    },
+    "tah": {
+      "in_target": "بالتاهيتية",
+      "a_target_speaker": "متحدثاً بالتاهيتية",
+      "target_speakers": "المتحدثين بالتاهيتية"
+    },
+    "tam": {
+      "in_target": "بالتاميلية",
+      "a_target_speaker": "متحدثاً بالتاميلية",
+      "target_speakers": "المتحدثين بالتاميلية"
+    },
+    "tel": {
+      "in_target": "بالتيلوغوية",
+      "a_target_speaker": "متحدثاً بالتيلوغوية",
+      "target_speakers": "المتحدثين بالتيلوغوية"
+    },
+    "tha": {
+      "in_target": "بالتايلاندية",
+      "a_target_speaker": "متحدثاً بالتايلاندية",
+      "target_speakers": "المتحدثين بالتايلاندية"
+    },
+    "ton": {
+      "in_target": "بالتونغية",
+      "a_target_speaker": "متحدثاً بالتونغية",
+      "target_speakers": "المتحدثين بالتونغية"
+    },
+    "tur": {
+      "in_target": "بالتركية",
+      "a_target_speaker": "متحدثاً بالتركية",
+      "target_speakers": "المتحدثين بالتركية"
+    },
+    "uig": {
+      "in_target": "بالأويغورية",
+      "a_target_speaker": "متحدثاً بالأويغورية",
+      "target_speakers": "المتحدثين بالأويغورية"
+    },
+    "ukr": {
+      "in_target": "بالأوكرانية",
+      "a_target_speaker": "متحدثاً بالأوكرانية",
+      "target_speakers": "المتحدثين بالأوكرانية"
+    },
+    "urd": {
+      "in_target": "بالأردية",
+      "a_target_speaker": "متحدثاً بالأردية",
+      "target_speakers": "المتحدثين بالأردية"
+    },
+    "vec": {
+      "in_target": "بالبندقية",
+      "a_target_speaker": "متحدثاً بالبندقية",
+      "target_speakers": "المتحدثين بالبندقية"
+    },
+    "vie": {
+      "in_target": "بالفيتنامية",
+      "a_target_speaker": "متحدثاً بالفيتنامية",
+      "target_speakers": "المتحدثين بالفيتنامية"
+    },
+    "vls": {
+      "in_target": "بالفلمنكية",
+      "a_target_speaker": "متحدثاً بالفلمنكية",
+      "target_speakers": "المتحدثين بالفلمنكية"
+    },
+    "wln": {
+      "in_target": "بالوالونية",
+      "a_target_speaker": "متحدثاً بالوالونية",
+      "target_speakers": "المتحدثين بالوالونية"
+    },
+    "wuu": {
+      "in_target": "بالوو",
+      "a_target_speaker": "متحدثاً بالوو",
+      "target_speakers": "المتحدثين بالوو"
+    },
+    "xho": {
+      "in_target": "بالخوسا",
+      "a_target_speaker": "متحدثاً بالخوسا",
+      "target_speakers": "المتحدثين بالخوسا"
+    },
+    "yid": {
+      "in_target": "باليديشية",
+      "a_target_speaker": "متحدثاً باليديشية",
+      "target_speakers": "المتحدثين باليديشية"
+    },
+    "yor": {
+      "in_target": "باليوروبية",
+      "a_target_speaker": "متحدثاً باليوروبية",
+      "target_speakers": "المتحدثين باليوروبية"
+    },
+    "yue": {
+      "in_target": "بالكانتونية",
+      "a_target_speaker": "متحدثاً بالكانتونية",
+      "target_speakers": "المتحدثين بالكانتونية"
+    },
+    "zul": {
+      "in_target": "بالزولوية",
+      "a_target_speaker": "متحدثاً بالزولوية",
+      "target_speakers": "المتحدثين بالزولوية"
+    },
+    "ara_eg": {
+      "in_target": "بالعربية المصرية",
+      "a_target_speaker": "متحدثاً بالعربية المصرية",
+      "target_speakers": "المتحدثين بالعربية المصرية"
+    }
+  }
+}

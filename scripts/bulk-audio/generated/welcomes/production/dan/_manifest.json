@@ -1,0 +1,826 @@
+{
+  "known_language": "dan",
+  "display_name": "Danish",
+  "voice": {
+    "voice_id": "Hp07ONf6C5qlCKOeB4oo",
+    "name": "Constantin Birkedal - Calm and Soothing",
+    "gender": "male"
+  },
+  "settings": {
+    "voice_stability": 0.4,
+    "model": "eleven_v3",
+    "language_code": "da"
+  },
+  "welcomes": [
+    {
+      "uuid": "E7CB1201-E3DC-4DBA-904E-8C499FBAE23D",
+      "target_language": "bul",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en bulgarsktalende. Sådan fungerer det - jeg lærer dig noget på bulgarsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på bulgarsk. Derefter lytter du godt efter de bulgarsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på bulgarsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "E7CB1201-E3DC-4DBA-904E-8C499FBAE23D.mp3",
+      "size_kb": 718.4
+    },
+    {
+      "uuid": "1608FE53-5CF6-4040-BD2A-9778AB946ED7",
+      "target_language": "cmn",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en kinesisktalende. Sådan fungerer det - jeg lærer dig noget på kinesisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på kinesisk. Derefter lytter du godt efter de kinesisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på kinesisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "1608FE53-5CF6-4040-BD2A-9778AB946ED7.mp3",
+      "size_kb": 738.4
+    },
+    {
+      "uuid": "F932BA6E-F5B0-48EC-8AE4-E7863E40A961",
+      "target_language": "ces",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en tjekkisktalende. Sådan fungerer det - jeg lærer dig noget på tjekkisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på tjekkisk. Derefter lytter du godt efter de tjekkisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på tjekkisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "F932BA6E-F5B0-48EC-8AE4-E7863E40A961.mp3",
+      "size_kb": 718.4
+    },
+    {
+      "uuid": "60507DFD-EB49-4C45-9F21-74D102EC2E14",
+      "target_language": "eng",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en engelsktalende. Sådan fungerer det - jeg lærer dig noget på engelsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på engelsk. Derefter lytter du godt efter de engelsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på engelsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "60507DFD-EB49-4C45-9F21-74D102EC2E14.mp3",
+      "size_kb": 740.9
+    },
+    {
+      "uuid": "AF6BEBF5-DB0C-4661-8E18-FA08E77ACA00",
+      "target_language": "nld",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en hollandsktalende. Sådan fungerer det - jeg lærer dig noget på hollandsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på hollandsk. Derefter lytter du godt efter de hollandsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på hollandsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "AF6BEBF5-DB0C-4661-8E18-FA08E77ACA00.mp3",
+      "size_kb": 714.7
+    },
+    {
+      "uuid": "59B57CA2-E0F1-4E2E-8C4B-231381CE5230",
+      "target_language": "hrv",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en kroatisktalende. Sådan fungerer det - jeg lærer dig noget på kroatisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på kroatisk. Derefter lytter du godt efter de kroatisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på kroatisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "59B57CA2-E0F1-4E2E-8C4B-231381CE5230.mp3",
+      "size_kb": 748.6
+    },
+    {
+      "uuid": "62EF2EDE-1C31-4262-A0F8-FEAD83CAF8F3",
+      "target_language": "fin",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en finsktalende. Sådan fungerer det - jeg lærer dig noget på finsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på finsk. Derefter lytter du godt efter de finsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på finsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "62EF2EDE-1C31-4262-A0F8-FEAD83CAF8F3.mp3",
+      "size_kb": 771.1
+    },
+    {
+      "uuid": "6A196579-A2C2-4C07-A6BF-1D9A5D10A092",
+      "target_language": "fil",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en filippinsktalende. Sådan fungerer det - jeg lærer dig noget på filippinsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på filippinsk. Derefter lytter du godt efter de filippinsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på filippinsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "6A196579-A2C2-4C07-A6BF-1D9A5D10A092.mp3",
+      "size_kb": 751.1
+    },
+    {
+      "uuid": "F7EAA80F-562C-4182-8963-5DAD36BC0D5B",
+      "target_language": "deu",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en tysktalende. Sådan fungerer det - jeg lærer dig noget på tysk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på tysk. Derefter lytter du godt efter de tysktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på tysk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "F7EAA80F-562C-4182-8963-5DAD36BC0D5B.mp3",
+      "size_kb": 680.9
+    },
+    {
+      "uuid": "D0460F06-83AE-4EB7-98F0-5A9A3B48459E",
+      "target_language": "fra",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en fransktalende. Sådan fungerer det - jeg lærer dig noget på fransk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på fransk. Derefter lytter du godt efter de fransktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på fransk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "D0460F06-83AE-4EB7-98F0-5A9A3B48459E.mp3",
+      "size_kb": 694.7
+    },
+    {
+      "uuid": "16589BDE-7EAF-44F6-B58F-F97E29BD352C",
+      "target_language": "ell",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en græsktalende. Sådan fungerer det - jeg lærer dig noget på græsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på græsk. Derefter lytter du godt efter de græsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på græsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "16589BDE-7EAF-44F6-B58F-F97E29BD352C.mp3",
+      "size_kb": 727.4
+    },
+    {
+      "uuid": "577D7E7D-F5D8-4E05-9973-3B04FAB65C95",
+      "target_language": "hin",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en hinditalende. Sådan fungerer det - jeg lærer dig noget på hindi, så siger jeg noget på dansk, og du får mulighed for at sige det højt på hindi. Derefter lytter du godt efter de hinditalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på hindi hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "577D7E7D-F5D8-4E05-9973-3B04FAB65C95.mp3",
+      "size_kb": 738.4
+    },
+    {
+      "uuid": "E9ECA77E-0223-48FF-923A-1ECC9774A3B4",
+      "target_language": "ita",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en italiensktalende. Sådan fungerer det - jeg lærer dig noget på italiensk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på italiensk. Derefter lytter du godt efter de italiensktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på italiensk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "E9ECA77E-0223-48FF-923A-1ECC9774A3B4.mp3",
+      "size_kb": 736
+    },
+    {
+      "uuid": "6ABDC92F-B65E-4CCF-BADD-47ABEE60076D",
+      "target_language": "ind",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en indonesisktalende. Sådan fungerer det - jeg lærer dig noget på indonesisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på indonesisk. Derefter lytter du godt efter de indonesisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på indonesisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "6ABDC92F-B65E-4CCF-BADD-47ABEE60076D.mp3",
+      "size_kb": 717.2
+    },
+    {
+      "uuid": "33EE4800-5AEB-40F9-A4DC-5127032E0A5D",
+      "target_language": "jpn",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en japansktalende. Sådan fungerer det - jeg lærer dig noget på japansk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på japansk. Derefter lytter du godt efter de japansktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på japansk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "33EE4800-5AEB-40F9-A4DC-5127032E0A5D.mp3",
+      "size_kb": 699.6
+    },
+    {
+      "uuid": "EF89C76B-6CEE-43D3-A3BB-20C71C4054B7",
+      "target_language": "kor",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en koreansktalende. Sådan fungerer det - jeg lærer dig noget på koreansk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på koreansk. Derefter lytter du godt efter de koreansktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på koreansk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "EF89C76B-6CEE-43D3-A3BB-20C71C4054B7.mp3",
+      "size_kb": 703.7
+    },
+    {
+      "uuid": "1A1E1737-E1C0-447B-B92D-177D87EC277E",
+      "target_language": "ron",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en rumænsktalende. Sådan fungerer det - jeg lærer dig noget på rumænsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på rumænsk. Derefter lytter du godt efter de rumænsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på rumænsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "1A1E1737-E1C0-447B-B92D-177D87EC277E.mp3",
+      "size_kb": 716
+    },
+    {
+      "uuid": "FC6D568A-C5A4-49CB-AB53-44CFF5E855E3",
+      "target_language": "pol",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en polsktalende. Sådan fungerer det - jeg lærer dig noget på polsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på polsk. Derefter lytter du godt efter de polsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på polsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "FC6D568A-C5A4-49CB-AB53-44CFF5E855E3.mp3",
+      "size_kb": 733.5
+    },
+    {
+      "uuid": "17BDEB56-CEF8-4D34-82E4-9CF06A295D38",
+      "target_language": "msa",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en malaysisktalende. Sådan fungerer det - jeg lærer dig noget på malaysisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på malaysisk. Derefter lytter du godt efter de malaysisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på malaysisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "17BDEB56-CEF8-4D34-82E4-9CF06A295D38.mp3",
+      "size_kb": 769.8
+    },
+    {
+      "uuid": "9E832DFA-61EE-4E9C-B1BF-309ACB3C3F09",
+      "target_language": "por",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en portugisisktalende. Sådan fungerer det - jeg lærer dig noget på portugisisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på portugisisk. Derefter lytter du godt efter de portugisisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på portugisisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "9E832DFA-61EE-4E9C-B1BF-309ACB3C3F09.mp3",
+      "size_kb": 719.6
+    },
+    {
+      "uuid": "A7E7FAAE-2DF9-42E7-931B-89C94709B62F",
+      "target_language": "rus",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en russisktalende. Sådan fungerer det - jeg lærer dig noget på russisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på russisk. Derefter lytter du godt efter de russisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på russisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "A7E7FAAE-2DF9-42E7-931B-89C94709B62F.mp3",
+      "size_kb": 711.1
+    },
+    {
+      "uuid": "B3EDC9C7-C853-4D7B-B27E-9BE48AAEACD2",
+      "target_language": "slk",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en slovakisktalende. Sådan fungerer det - jeg lærer dig noget på slovakisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på slovakisk. Derefter lytter du godt efter de slovakisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på slovakisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "B3EDC9C7-C853-4D7B-B27E-9BE48AAEACD2.mp3",
+      "size_kb": 783.7
+    },
+    {
+      "uuid": "3DCE7534-602D-4BDC-9E68-BC164D8D38D5",
+      "target_language": "tam",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en tamiltalende. Sådan fungerer det - jeg lærer dig noget på tamil, så siger jeg noget på dansk, og du får mulighed for at sige det højt på tamil. Derefter lytter du godt efter de tamiltalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på tamil hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "3DCE7534-602D-4BDC-9E68-BC164D8D38D5.mp3",
+      "size_kb": 773.5
+    },
+    {
+      "uuid": "7FBACBD5-4B78-499B-BE07-E0A6655E489D",
+      "target_language": "swe",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en svensktalende. Sådan fungerer det - jeg lærer dig noget på svensk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på svensk. Derefter lytter du godt efter de svensktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på svensk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "7FBACBD5-4B78-499B-BE07-E0A6655E489D.mp3",
+      "size_kb": 733.5
+    },
+    {
+      "uuid": "D9E6B024-ED61-4197-8439-B0AA6F6BAABD",
+      "target_language": "spa",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en spansktalende. Sådan fungerer det - jeg lærer dig noget på spansk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på spansk. Derefter lytter du godt efter de spansktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på spansk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "D9E6B024-ED61-4197-8439-B0AA6F6BAABD.mp3",
+      "size_kb": 716
+    },
+    {
+      "uuid": "C9BAB3AA-6193-48F3-B7F9-5C7A008AFB17",
+      "target_language": "tur",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en tyrkisktalende. Sådan fungerer det - jeg lærer dig noget på tyrkisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på tyrkisk. Derefter lytter du godt efter de tyrkisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på tyrkisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "C9BAB3AA-6193-48F3-B7F9-5C7A008AFB17.mp3",
+      "size_kb": 743.7
+    },
+    {
+      "uuid": "1A3132D9-B631-4322-91F9-FE90355BDE93",
+      "target_language": "ukr",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en ukrainsktalende. Sådan fungerer det - jeg lærer dig noget på ukrainsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på ukrainsk. Derefter lytter du godt efter de ukrainsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på ukrainsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "1A3132D9-B631-4322-91F9-FE90355BDE93.mp3",
+      "size_kb": 744.9
+    },
+    {
+      "uuid": "9B90DE2A-78CF-48DD-B217-C7042F1C077E",
+      "target_language": "afr",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en afrikaanstalende. Sådan fungerer det - jeg lærer dig noget på afrikaans, så siger jeg noget på dansk, og du får mulighed for at sige det højt på afrikaans. Derefter lytter du godt efter de afrikaanstalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på afrikaans hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "9B90DE2A-78CF-48DD-B217-C7042F1C077E.mp3",
+      "size_kb": 743.7
+    },
+    {
+      "uuid": "ED4F2920-C2F6-4930-8F0A-F79C1B4E5C4B",
+      "target_language": "asm",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en assamesisktalende. Sådan fungerer det - jeg lærer dig noget på assamesisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på assamesisk. Derefter lytter du godt efter de assamesisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på assamesisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "ED4F2920-C2F6-4930-8F0A-F79C1B4E5C4B.mp3",
+      "size_kb": 713.5
+    },
+    {
+      "uuid": "9579ECBC-2304-4A62-8A0D-80F1FDA1A685",
+      "target_language": "aze",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en aserbajdsjansktalende. Sådan fungerer det - jeg lærer dig noget på aserbajdsjansk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på aserbajdsjansk. Derefter lytter du godt efter de aserbajdsjansktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på aserbajdsjansk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "9579ECBC-2304-4A62-8A0D-80F1FDA1A685.mp3",
+      "size_kb": 717.2
+    },
+    {
+      "uuid": "6670857B-2BE6-4B4F-835F-8DD8306592DB",
+      "target_language": "bel",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en hviderussisktalende. Sådan fungerer det - jeg lærer dig noget på hviderussisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på hviderussisk. Derefter lytter du godt efter de hviderussisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på hviderussisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "6670857B-2BE6-4B4F-835F-8DD8306592DB.mp3",
+      "size_kb": 723.7
+    },
+    {
+      "uuid": "00EAC377-C188-4C76-84D7-D81B8DABC013",
+      "target_language": "ben",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en bengalsktalende. Sådan fungerer det - jeg lærer dig noget på bengalsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på bengalsk. Derefter lytter du godt efter de bengalsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på bengalsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "00EAC377-C188-4C76-84D7-D81B8DABC013.mp3",
+      "size_kb": 743.7
+    },
+    {
+      "uuid": "FA329ACD-897A-43EF-ABE9-56C50D3D6DE6",
+      "target_language": "cat",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en catalansktalende. Sådan fungerer det - jeg lærer dig noget på catalansk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på catalansk. Derefter lytter du godt efter de catalansktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på catalansk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "FA329ACD-897A-43EF-ABE9-56C50D3D6DE6.mp3",
+      "size_kb": 720.9
+    },
+    {
+      "uuid": "D8EB456A-104C-42F7-9C87-39F48F109152",
+      "target_language": "ceb",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en cebuanotalende. Sådan fungerer det - jeg lærer dig noget på cebuano, så siger jeg noget på dansk, og du får mulighed for at sige det højt på cebuano. Derefter lytter du godt efter de cebuanotalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på cebuano hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "D8EB456A-104C-42F7-9C87-39F48F109152.mp3",
+      "size_kb": 758.4
+    },
+    {
+      "uuid": "977B0865-AD2D-45D3-BE9E-EA9E11BAAF1B",
+      "target_language": "est",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en estisktalende. Sådan fungerer det - jeg lærer dig noget på estisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på estisk. Derefter lytter du godt efter de estisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på estisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "977B0865-AD2D-45D3-BE9E-EA9E11BAAF1B.mp3",
+      "size_kb": 774.7
+    },
+    {
+      "uuid": "FB200F27-7463-4AFE-800F-7EDE35142420",
+      "target_language": "bos",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en bosnisktalende. Sådan fungerer det - jeg lærer dig noget på bosnisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på bosnisk. Derefter lytter du godt efter de bosnisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på bosnisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "FB200F27-7463-4AFE-800F-7EDE35142420.mp3",
+      "size_kb": 747.4
+    },
+    {
+      "uuid": "41EDEF1D-CAAB-4608-9A22-F5271A441827",
+      "target_language": "cym",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en walisisktalende. Sådan fungerer det - jeg lærer dig noget på walisisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på walisisk. Derefter lytter du godt efter de walisisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på walisisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "41EDEF1D-CAAB-4608-9A22-F5271A441827.mp3",
+      "size_kb": 676
+    },
+    {
+      "uuid": "F23A9703-BFCA-4441-B268-0EE0B50E0BE9",
+      "target_language": "fas",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en persisktalende. Sådan fungerer det - jeg lærer dig noget på persisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på persisk. Derefter lytter du godt efter de persisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på persisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "F23A9703-BFCA-4441-B268-0EE0B50E0BE9.mp3",
+      "size_kb": 694.7
+    },
+    {
+      "uuid": "F26143D1-6245-49DD-98C0-1F60B2F6484F",
+      "target_language": "hau",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en hausatalende. Sådan fungerer det - jeg lærer dig noget på hausa, så siger jeg noget på dansk, og du får mulighed for at sige det højt på hausa. Derefter lytter du godt efter de hausatalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på hausa hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "F26143D1-6245-49DD-98C0-1F60B2F6484F.mp3",
+      "size_kb": 716
+    },
+    {
+      "uuid": "22CD5601-841F-473B-A332-AC7D8B538F3D",
+      "target_language": "glg",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en galicisktalende. Sådan fungerer det - jeg lærer dig noget på galicisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på galicisk. Derefter lytter du godt efter de galicisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på galicisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "22CD5601-841F-473B-A332-AC7D8B538F3D.mp3",
+      "size_kb": 791.1
+    },
+    {
+      "uuid": "8241EF7B-9DD3-46E6-A4F2-7D6ACB5BB9DD",
+      "target_language": "guj",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en gujaratitalende. Sådan fungerer det - jeg lærer dig noget på gujarati, så siger jeg noget på dansk, og du får mulighed for at sige det højt på gujarati. Derefter lytter du godt efter de gujaratitalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på gujarati hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "8241EF7B-9DD3-46E6-A4F2-7D6ACB5BB9DD.mp3",
+      "size_kb": 743.7
+    },
+    {
+      "uuid": "2DFFF636-DAEA-4E25-92C5-CB89DDDFEFE7",
+      "target_language": "gle",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en irsktalende. Sådan fungerer det - jeg lærer dig noget på irsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på irsk. Derefter lytter du godt efter de irsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på irsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "2DFFF636-DAEA-4E25-92C5-CB89DDDFEFE7.mp3",
+      "size_kb": 709.8
+    },
+    {
+      "uuid": "14DC3B8A-CCCD-4FAB-A60A-B8BB014D9240",
+      "target_language": "heb",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en hebraisktalende. Sådan fungerer det - jeg lærer dig noget på hebraisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på hebraisk. Derefter lytter du godt efter de hebraisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på hebraisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "14DC3B8A-CCCD-4FAB-A60A-B8BB014D9240.mp3",
+      "size_kb": 737.2
+    },
+    {
+      "uuid": "AC51F336-038B-489F-A20C-3EF64E5814C6",
+      "target_language": "kan",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en kannadatalende. Sådan fungerer det - jeg lærer dig noget på kannada, så siger jeg noget på dansk, og du får mulighed for at sige det højt på kannada. Derefter lytter du godt efter de kannadatalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på kannada hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "AC51F336-038B-489F-A20C-3EF64E5814C6.mp3",
+      "size_kb": 727.4
+    },
+    {
+      "uuid": "1A8CAEA3-1572-4363-95DA-26CDCBA91EFC",
+      "target_language": "jav",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en javanesisktalende. Sådan fungerer det - jeg lærer dig noget på javanesisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på javanesisk. Derefter lytter du godt efter de javanesisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på javanesisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "1A8CAEA3-1572-4363-95DA-26CDCBA91EFC.mp3",
+      "size_kb": 720.9
+    },
+    {
+      "uuid": "45112FB2-5647-4D53-B319-C95A78079141",
+      "target_language": "isl",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en islandsktalende. Sådan fungerer det - jeg lærer dig noget på islandsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på islandsk. Derefter lytter du godt efter de islandsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på islandsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "45112FB2-5647-4D53-B319-C95A78079141.mp3",
+      "size_kb": 677.2
+    },
+    {
+      "uuid": "6112623D-0A94-4898-A849-76ECD68E36B0",
+      "target_language": "hun",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en ungarsktalende. Sådan fungerer det - jeg lærer dig noget på ungarsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på ungarsk. Derefter lytter du godt efter de ungarsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på ungarsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "6112623D-0A94-4898-A849-76ECD68E36B0.mp3",
+      "size_kb": 714.7
+    },
+    {
+      "uuid": "73C73584-A436-4F9E-8D86-1F5CCE752A3A",
+      "target_language": "hye",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en armensktalende. Sådan fungerer det - jeg lærer dig noget på armensk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på armensk. Derefter lytter du godt efter de armensktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på armensk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "73C73584-A436-4F9E-8D86-1F5CCE752A3A.mp3",
+      "size_kb": 788.6
+    },
+    {
+      "uuid": "11554202-6453-406E-82FF-843F2FB725D0",
+      "target_language": "kat",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en georgisktalende. Sådan fungerer det - jeg lærer dig noget på georgisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på georgisk. Derefter lytter du godt efter de georgisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på georgisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "11554202-6453-406E-82FF-843F2FB725D0.mp3",
+      "size_kb": 731.1
+    },
+    {
+      "uuid": "DBF04E73-3B0A-4EC5-92D1-02112302776C",
+      "target_language": "kaz",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en kasakhisktalende. Sådan fungerer det - jeg lærer dig noget på kasakhisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på kasakhisk. Derefter lytter du godt efter de kasakhisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på kasakhisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "DBF04E73-3B0A-4EC5-92D1-02112302776C.mp3",
+      "size_kb": 766.2
+    },
+    {
+      "uuid": "059D8D98-753F-4A05-8192-8F9C9CA4AEF1",
+      "target_language": "kir",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en kirgisisktalende. Sådan fungerer det - jeg lærer dig noget på kirgisisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på kirgisisk. Derefter lytter du godt efter de kirgisisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på kirgisisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "059D8D98-753F-4A05-8192-8F9C9CA4AEF1.mp3",
+      "size_kb": 753.5
+    },
+    {
+      "uuid": "53CB8EE8-EA24-43D8-880D-9ACEAC47DD92",
+      "target_language": "lav",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en lettisktalende. Sådan fungerer det - jeg lærer dig noget på lettisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på lettisk. Derefter lytter du godt efter de lettisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på lettisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "53CB8EE8-EA24-43D8-880D-9ACEAC47DD92.mp3",
+      "size_kb": 740.9
+    },
+    {
+      "uuid": "B5455D1D-A2B7-451C-A534-78F3CBC2AFA6",
+      "target_language": "ltz",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en luxembourgsktalende. Sådan fungerer det - jeg lærer dig noget på luxembourgsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på luxembourgsk. Derefter lytter du godt efter de luxembourgsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på luxembourgsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "B5455D1D-A2B7-451C-A534-78F3CBC2AFA6.mp3",
+      "size_kb": 723.7
+    },
+    {
+      "uuid": "41B32B83-0263-4331-9414-818A683FBCC4",
+      "target_language": "lin",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en lingalatalende. Sådan fungerer det - jeg lærer dig noget på lingala, så siger jeg noget på dansk, og du får mulighed for at sige det højt på lingala. Derefter lytter du godt efter de lingalatalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på lingala hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "41B32B83-0263-4331-9414-818A683FBCC4.mp3",
+      "size_kb": 767.4
+    },
+    {
+      "uuid": "68FF7471-57F8-4798-A652-894B007995D1",
+      "target_language": "lit",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en litauisktalende. Sådan fungerer det - jeg lærer dig noget på litauisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på litauisk. Derefter lytter du godt efter de litauisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på litauisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "68FF7471-57F8-4798-A652-894B007995D1.mp3",
+      "size_kb": 699.6
+    },
+    {
+      "uuid": "50A52C53-3B75-4BB8-A84E-CFB8696A1FD8",
+      "target_language": "mar",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en marathitalende. Sådan fungerer det - jeg lærer dig noget på marathi, så siger jeg noget på dansk, og du får mulighed for at sige det højt på marathi. Derefter lytter du godt efter de marathitalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på marathi hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "50A52C53-3B75-4BB8-A84E-CFB8696A1FD8.mp3",
+      "size_kb": 774.7
+    },
+    {
+      "uuid": "4E399266-4B6E-4D89-B42B-6B50678D9344",
+      "target_language": "mal",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en malayalamtalende. Sådan fungerer det - jeg lærer dig noget på malayalam, så siger jeg noget på dansk, og du får mulighed for at sige det højt på malayalam. Derefter lytter du godt efter de malayalamtalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på malayalam hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "4E399266-4B6E-4D89-B42B-6B50678D9344.mp3",
+      "size_kb": 744.9
+    },
+    {
+      "uuid": "07D31629-AD7C-4AA5-9C39-ADB14BBADEAC",
+      "target_language": "nor",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en norsktalende. Sådan fungerer det - jeg lærer dig noget på norsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på norsk. Derefter lytter du godt efter de norsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på norsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "07D31629-AD7C-4AA5-9C39-ADB14BBADEAC.mp3",
+      "size_kb": 747.4
+    },
+    {
+      "uuid": "0639067F-C52A-4E38-918D-8FB1E3B0BE0E",
+      "target_language": "nep",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en nepalesisktalende. Sådan fungerer det - jeg lærer dig noget på nepalesisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på nepalesisk. Derefter lytter du godt efter de nepalesisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på nepalesisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "0639067F-C52A-4E38-918D-8FB1E3B0BE0E.mp3",
+      "size_kb": 783.7
+    },
+    {
+      "uuid": "67F1C7FC-2DC6-43A0-A170-B7B16ACD4704",
+      "target_language": "mkd",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en makedonsktalende. Sådan fungerer det - jeg lærer dig noget på makedonsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på makedonsk. Derefter lytter du godt efter de makedonsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på makedonsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "67F1C7FC-2DC6-43A0-A170-B7B16ACD4704.mp3",
+      "size_kb": 811.1
+    },
+    {
+      "uuid": "2789FA2F-7ACD-4266-ACE9-3DA0BC1B185A",
+      "target_language": "nya",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en chichewatalende. Sådan fungerer det - jeg lærer dig noget på chichewa, så siger jeg noget på dansk, og du får mulighed for at sige det højt på chichewa. Derefter lytter du godt efter de chichewatalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på chichewa hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "2789FA2F-7ACD-4266-ACE9-3DA0BC1B185A.mp3",
+      "size_kb": 724.9
+    },
+    {
+      "uuid": "EF2AA184-B0CD-4AB5-A0D0-60A4B1201FCF",
+      "target_language": "pan",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en punjabitalende. Sådan fungerer det - jeg lærer dig noget på punjabi, så siger jeg noget på dansk, og du får mulighed for at sige det højt på punjabi. Derefter lytter du godt efter de punjabitalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på punjabi hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "EF2AA184-B0CD-4AB5-A0D0-60A4B1201FCF.mp3",
+      "size_kb": 724.9
+    },
+    {
+      "uuid": "F8C954DE-0CDF-4C83-9362-8831176851AF",
+      "target_language": "pus",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en pashtotalende. Sådan fungerer det - jeg lærer dig noget på pashto, så siger jeg noget på dansk, og du får mulighed for at sige det højt på pashto. Derefter lytter du godt efter de pashtotalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på pashto hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "F8C954DE-0CDF-4C83-9362-8831176851AF.mp3",
+      "size_kb": 784.9
+    },
+    {
+      "uuid": "50B2C843-4DF6-4E8F-B776-78B76C4FC370",
+      "target_language": "slv",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en slovensktalende. Sådan fungerer det - jeg lærer dig noget på slovensk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på slovensk. Derefter lytter du godt efter de slovensktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på slovensk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "50B2C843-4DF6-4E8F-B776-78B76C4FC370.mp3",
+      "size_kb": 717.2
+    },
+    {
+      "uuid": "1B3F787F-778D-470B-A73D-E291F2D4AB0A",
+      "target_language": "snd",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en sindhitalende. Sådan fungerer det - jeg lærer dig noget på sindhi, så siger jeg noget på dansk, og du får mulighed for at sige det højt på sindhi. Derefter lytter du godt efter de sindhitalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på sindhi hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "1B3F787F-778D-470B-A73D-E291F2D4AB0A.mp3",
+      "size_kb": 744.9
+    },
+    {
+      "uuid": "884656F2-D23A-4707-84A9-ADD2F10FBC05",
+      "target_language": "srp",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en serbisktalende. Sådan fungerer det - jeg lærer dig noget på serbisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på serbisk. Derefter lytter du godt efter de serbisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på serbisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "884656F2-D23A-4707-84A9-ADD2F10FBC05.mp3",
+      "size_kb": 728.6
+    },
+    {
+      "uuid": "537C33F5-869A-427D-855B-176E9FC05A6D",
+      "target_language": "swa",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en swahilitalende. Sådan fungerer det - jeg lærer dig noget på swahili, så siger jeg noget på dansk, og du får mulighed for at sige det højt på swahili. Derefter lytter du godt efter de swahilitalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på swahili hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "537C33F5-869A-427D-855B-176E9FC05A6D.mp3",
+      "size_kb": 684.9
+    },
+    {
+      "uuid": "DFA40FD8-7603-42D0-B076-48010E12974D",
+      "target_language": "som",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en somalisktalende. Sådan fungerer det - jeg lærer dig noget på somalisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på somalisk. Derefter lytter du godt efter de somalisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på somalisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "DFA40FD8-7603-42D0-B076-48010E12974D.mp3",
+      "size_kb": 734.7
+    },
+    {
+      "uuid": "D089BD72-89C4-4082-8AF0-095F3C790DE6",
+      "target_language": "tel",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en telugultalende. Sådan fungerer det - jeg lærer dig noget på telugu, så siger jeg noget på dansk, og du får mulighed for at sige det højt på telugu. Derefter lytter du godt efter de telugultalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på telugu hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "D089BD72-89C4-4082-8AF0-095F3C790DE6.mp3",
+      "size_kb": 693.5
+    },
+    {
+      "uuid": "0031C07D-CD87-456F-A302-A85456A573E8",
+      "target_language": "tha",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en thailandsktalende. Sådan fungerer det - jeg lærer dig noget på thailandsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på thailandsk. Derefter lytter du godt efter de thailandsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på thailandsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "0031C07D-CD87-456F-A302-A85456A573E8.mp3",
+      "size_kb": 720.9
+    },
+    {
+      "uuid": "A57F6419-9D28-42EC-914A-1770E20F3BA8",
+      "target_language": "urd",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en urdutalende. Sådan fungerer det - jeg lærer dig noget på urdu, så siger jeg noget på dansk, og du får mulighed for at sige det højt på urdu. Derefter lytter du godt efter de urdutalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på urdu hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "A57F6419-9D28-42EC-914A-1770E20F3BA8.mp3",
+      "size_kb": 753.5
+    },
+    {
+      "uuid": "C7D3F460-1623-4F01-A29B-280195A0023A",
+      "target_language": "vie",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en vietnamesisktalende. Sådan fungerer det - jeg lærer dig noget på vietnamesisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på vietnamesisk. Derefter lytter du godt efter de vietnamesisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på vietnamesisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "C7D3F460-1623-4F01-A29B-280195A0023A.mp3",
+      "size_kb": 703.7
+    },
+    {
+      "uuid": "0ECE350D-EA2E-466D-9BE3-57EF521A1C24",
+      "target_language": "aii",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en surettalende. Sådan fungerer det - jeg lærer dig noget på suret, så siger jeg noget på dansk, og du får mulighed for at sige det højt på suret. Derefter lytter du godt efter de surettalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på suret hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "0ECE350D-EA2E-466D-9BE3-57EF521A1C24.mp3",
+      "size_kb": 747.4
+    },
+    {
+      "uuid": "A2C3B2C1-946D-42D0-A8F7-C025C1D6E95A",
+      "target_language": "afb",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en gulfarabisktalende. Sådan fungerer det - jeg lærer dig noget på gulfarabisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på gulfarabisk. Derefter lytter du godt efter de gulfarabisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på gulfarabisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "A2C3B2C1-946D-42D0-A8F7-C025C1D6E95A.mp3",
+      "size_kb": 820.9
+    },
+    {
+      "uuid": "EB551602-0E8E-4661-8CA5-0A2D6BCF8845",
+      "target_language": "amh",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en amharisktalende. Sådan fungerer det - jeg lærer dig noget på amharisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på amharisk. Derefter lytter du godt efter de amharisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på amharisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "EB551602-0E8E-4661-8CA5-0A2D6BCF8845.mp3",
+      "size_kb": 643.7
+    },
+    {
+      "uuid": "D18BB216-3691-4E3D-B7E8-7A3FA5C0FD25",
+      "target_language": "ain",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en ainuitalende. Sådan fungerer det - jeg lærer dig noget på ainu, så siger jeg noget på dansk, og du får mulighed for at sige det højt på ainu. Derefter lytter du godt efter de ainuitalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på ainu hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "D18BB216-3691-4E3D-B7E8-7A3FA5C0FD25.mp3",
+      "size_kb": 822.5
+    },
+    {
+      "uuid": "241EDF55-2815-4DDB-B6E8-30AAFA4732A9",
+      "target_language": "apc",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en levantinsk arabisktalende. Sådan fungerer det - jeg lærer dig noget på levantinsk arabisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på levantinsk arabisk. Derefter lytter du godt efter de levantinsk arabisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på levantinsk arabisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "241EDF55-2815-4DDB-B6E8-30AAFA4732A9.mp3",
+      "size_kb": 796
+    },
+    {
+      "uuid": "F96F71BC-3644-48C7-B9B1-3C949864B2AB",
+      "target_language": "ary",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en marokkansk arabisktalende. Sådan fungerer det - jeg lærer dig noget på marokkansk arabisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på marokkansk arabisk. Derefter lytter du godt efter de marokkansk arabisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på marokkansk arabisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "F96F71BC-3644-48C7-B9B1-3C949864B2AB.mp3",
+      "size_kb": 858.4
+    },
+    {
+      "uuid": "05928217-4BE6-4F9A-8D2A-465D8D31E931",
+      "target_language": "bre",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en bretonsktalende. Sådan fungerer det - jeg lærer dig noget på bretonsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på bretonsk. Derefter lytter du godt efter de bretonsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på bretonsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "05928217-4BE6-4F9A-8D2A-465D8D31E931.mp3",
+      "size_kb": 726.2
+    },
+    {
+      "uuid": "2D595257-B3A3-48E1-94DE-EB1A926DD705",
+      "target_language": "eus",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en baskisktalende. Sådan fungerer det - jeg lærer dig noget på baskisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på baskisk. Derefter lytter du godt efter de baskisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på baskisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "2D595257-B3A3-48E1-94DE-EB1A926DD705.mp3",
+      "size_kb": 754.7
+    },
+    {
+      "uuid": "D43C4652-2FC1-40D1-B27D-A7C769DC58BF",
+      "target_language": "cor",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en cornisktalende. Sådan fungerer det - jeg lærer dig noget på cornisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på cornisk. Derefter lytter du godt efter de cornisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på cornisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "D43C4652-2FC1-40D1-B27D-A7C769DC58BF.mp3",
+      "size_kb": 762.5
+    },
+    {
+      "uuid": "2A79BCE6-F1C4-41BD-AB91-847BE144C9AA",
+      "target_language": "hak",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en hakkatalende. Sådan fungerer det - jeg lærer dig noget på hakka, så siger jeg noget på dansk, og du får mulighed for at sige det højt på hakka. Derefter lytter du godt efter de hakkatalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på hakka hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "2A79BCE6-F1C4-41BD-AB91-847BE144C9AA.mp3",
+      "size_kb": 648.6
+    },
+    {
+      "uuid": "B09A0320-AEE0-43A4-AC8F-D7BC2DC9EF6E",
+      "target_language": "gla",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en skotsk gælisktalende. Sådan fungerer det - jeg lærer dig noget på skotsk gælisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på skotsk gælisk. Derefter lytter du godt efter de skotsk gælisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på skotsk gælisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "B09A0320-AEE0-43A4-AC8F-D7BC2DC9EF6E.mp3",
+      "size_kb": 789.8
+    },
+    {
+      "uuid": "FAEB41E3-9BC0-4EAC-9696-AF9685057B83",
+      "target_language": "grn",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en guaranitalende. Sådan fungerer det - jeg lærer dig noget på guarani, så siger jeg noget på dansk, og du får mulighed for at sige det højt på guarani. Derefter lytter du godt efter de guaranitalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på guarani hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "FAEB41E3-9BC0-4EAC-9696-AF9685057B83.mp3",
+      "size_kb": 751.1
+    },
+    {
+      "uuid": "AB42DF70-BDC1-4F52-86F2-2664A2DE057A",
+      "target_language": "ibo",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en igbotalende. Sådan fungerer det - jeg lærer dig noget på igbo, så siger jeg noget på dansk, og du får mulighed for at sige det højt på igbo. Derefter lytter du godt efter de igbotalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på igbo hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "AB42DF70-BDC1-4F52-86F2-2664A2DE057A.mp3",
+      "size_kb": 714.7
+    },
+    {
+      "uuid": "2317ED65-608A-42F8-920E-2B3CB51BB4EC",
+      "target_language": "glv",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en manxtalende. Sådan fungerer det - jeg lærer dig noget på manx, så siger jeg noget på dansk, og du får mulighed for at sige det højt på manx. Derefter lytter du godt efter de manxtalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på manx hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "2317ED65-608A-42F8-920E-2B3CB51BB4EC.mp3",
+      "size_kb": 829.8
+    },
+    {
+      "uuid": "1A701D23-3622-46E0-9D09-FE54A0F038E4",
+      "target_language": "kur",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en kurdisktalende. Sådan fungerer det - jeg lærer dig noget på kurdisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på kurdisk. Derefter lytter du godt efter de kurdisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på kurdisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "1A701D23-3622-46E0-9D09-FE54A0F038E4.mp3",
+      "size_kb": 654.7
+    },
+    {
+      "uuid": "216F54C3-EF3A-4CFD-BD38-E1616F334BA2",
+      "target_language": "nap",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en napolitansktalende. Sådan fungerer det - jeg lærer dig noget på napolitansk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på napolitansk. Derefter lytter du godt efter de napolitansktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på napolitansk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "216F54C3-EF3A-4CFD-BD38-E1616F334BA2.mp3",
+      "size_kb": 718.4
+    },
+    {
+      "uuid": "294AF0FD-4318-44CB-9AC7-D3F98AC3A9CB",
+      "target_language": "nav",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en navajotalende. Sådan fungerer det - jeg lærer dig noget på navajo, så siger jeg noget på dansk, og du får mulighed for at sige det højt på navajo. Derefter lytter du godt efter de navajotalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på navajo hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "294AF0FD-4318-44CB-9AC7-D3F98AC3A9CB.mp3",
+      "size_kb": 856
+    },
+    {
+      "uuid": "1245356B-BA1F-4248-A5B4-EAD9F22CB128",
+      "target_language": "nan",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en min nan-talende. Sådan fungerer det - jeg lærer dig noget på min nan, så siger jeg noget på dansk, og du får mulighed for at sige det højt på min nan. Derefter lytter du godt efter de min nan-talende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på min nan hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "1245356B-BA1F-4248-A5B4-EAD9F22CB128.mp3",
+      "size_kb": 767.4
+    },
+    {
+      "uuid": "018CB302-822A-4BC9-A7D0-6D46A84C7090",
+      "target_language": "moh",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en mohawktalende. Sådan fungerer det - jeg lærer dig noget på mohawk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på mohawk. Derefter lytter du godt efter de mohawktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på mohawk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "018CB302-822A-4BC9-A7D0-6D46A84C7090.mp3",
+      "size_kb": 756
+    },
+    {
+      "uuid": "7B648868-17A4-4C33-9317-D15C4B0F5A64",
+      "target_language": "oci",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en occitansktalende. Sådan fungerer det - jeg lærer dig noget på occitansk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på occitansk. Derefter lytter du godt efter de occitansktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på occitansk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "7B648868-17A4-4C33-9317-D15C4B0F5A64.mp3",
+      "size_kb": 751.1
+    },
+    {
+      "uuid": "ADBE72C0-1EC8-42A5-8B1A-F981628EC3CD",
+      "target_language": "por_BR",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en brasiliansk portugisisktalende. Sådan fungerer det - jeg lærer dig noget på brasiliansk portugisisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på brasiliansk portugisisk. Derefter lytter du godt efter de brasiliansk portugisisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på brasiliansk portugisisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "ADBE72C0-1EC8-42A5-8B1A-F981628EC3CD.mp3",
+      "size_kb": 817.2
+    },
+    {
+      "uuid": "15A4CC26-4BF7-4834-8890-76B80213F98C",
+      "target_language": "scn",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en siciliansktalende. Sådan fungerer det - jeg lærer dig noget på siciliansk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på siciliansk. Derefter lytter du godt efter de siciliansktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på siciliansk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "15A4CC26-4BF7-4834-8890-76B80213F98C.mp3",
+      "size_kb": 847.4
+    },
+    {
+      "uuid": "81C9918F-8756-4B10-ADEF-758ECC416F99",
+      "target_language": "sme",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en nordsamisktalende. Sådan fungerer det - jeg lærer dig noget på nordsamisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på nordsamisk. Derefter lytter du godt efter de nordsamisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på nordsamisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "81C9918F-8756-4B10-ADEF-758ECC416F99.mp3",
+      "size_kb": 773.5
+    },
+    {
+      "uuid": "5DD52D9F-D956-45C7-A1F9-5E6A1344D0AA",
+      "target_language": "por_EU",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en europæisk portugisisktalende. Sådan fungerer det - jeg lærer dig noget på europæisk portugisisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på europæisk portugisisk. Derefter lytter du godt efter de europæisk portugisisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på europæisk portugisisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "5DD52D9F-D956-45C7-A1F9-5E6A1344D0AA.mp3",
+      "size_kb": 803.7
+    },
+    {
+      "uuid": "B02B7426-36BE-44E1-AB39-8EA4BE13A9C4",
+      "target_language": "que",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en quechuatalende. Sådan fungerer det - jeg lærer dig noget på quechua, så siger jeg noget på dansk, og du får mulighed for at sige det højt på quechua. Derefter lytter du godt efter de quechuatalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på quechua hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "B02B7426-36BE-44E1-AB39-8EA4BE13A9C4.mp3",
+      "size_kb": 824.9
+    },
+    {
+      "uuid": "3044994F-BAF3-45C2-B6BC-1961968F8313",
+      "target_language": "roh",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en rætoromansktalende. Sådan fungerer det - jeg lærer dig noget på rætoromansk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på rætoromansk. Derefter lytter du godt efter de rætoromansktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på rætoromansk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "3044994F-BAF3-45C2-B6BC-1961968F8313.mp3",
+      "size_kb": 793.5
+    },
+    {
+      "uuid": "8683D09F-EB35-4F4B-948F-4B509271B0B5",
+      "target_language": "smj",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en lulesamisktalende. Sådan fungerer det - jeg lærer dig noget på lulesamisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på lulesamisk. Derefter lytter du godt efter de lulesamisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på lulesamisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "8683D09F-EB35-4F4B-948F-4B509271B0B5.mp3",
+      "size_kb": 769.8
+    },
+    {
+      "uuid": "CB9AB127-476A-4C3D-B0C4-B746A46BCD63",
+      "target_language": "sms",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en skoltsamisktalende. Sådan fungerer det - jeg lærer dig noget på skoltsamisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på skoltsamisk. Derefter lytter du godt efter de skoltsamisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på skoltsamisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "CB9AB127-476A-4C3D-B0C4-B746A46BCD63.mp3",
+      "size_kb": 779.6
+    },
+    {
+      "uuid": "B5B5C4CB-786B-41BE-A462-C80E8069D5C3",
+      "target_language": "smn",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en enaresamisktalende. Sådan fungerer det - jeg lærer dig noget på enaresamisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på enaresamisk. Derefter lytter du godt efter de enaresamisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på enaresamisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "B5B5C4CB-786B-41BE-A462-C80E8069D5C3.mp3",
+      "size_kb": 787.4
+    },
+    {
+      "uuid": "F0C5E99B-8A69-4308-AEA1-EB035E3D7D25",
+      "target_language": "spa_EU",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en europæisk spansktalende. Sådan fungerer det - jeg lærer dig noget på europæisk spansk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på europæisk spansk. Derefter lytter du godt efter de europæisk spansktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på europæisk spansk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "F0C5E99B-8A69-4308-AEA1-EB035E3D7D25.mp3",
+      "size_kb": 736
+    },
+    {
+      "uuid": "5EC9770F-5221-426E-B744-731C786D6E3C",
+      "target_language": "xho",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en xhosatalende. Sådan fungerer det - jeg lærer dig noget på xhosa, så siger jeg noget på dansk, og du får mulighed for at sige det højt på xhosa. Derefter lytter du godt efter de xhosatalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på xhosa hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "5EC9770F-5221-426E-B744-731C786D6E3C.mp3",
+      "size_kb": 724.9
+    },
+    {
+      "uuid": "245F2D00-F9F4-46C4-9DE4-68F717B36770",
+      "target_language": "wuu",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en wutalende. Sådan fungerer det - jeg lærer dig noget på wu, så siger jeg noget på dansk, og du får mulighed for at sige det højt på wu. Derefter lytter du godt efter de wutalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på wu hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "245F2D00-F9F4-46C4-9DE4-68F717B36770.mp3",
+      "size_kb": 762.5
+    },
+    {
+      "uuid": "E6D31C57-1087-4228-9207-F639359E9EFD",
+      "target_language": "srd",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en sardinsktalende. Sådan fungerer det - jeg lærer dig noget på sardinsk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på sardinsk. Derefter lytter du godt efter de sardinsktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på sardinsk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "E6D31C57-1087-4228-9207-F639359E9EFD.mp3",
+      "size_kb": 789.8
+    },
+    {
+      "uuid": "9DE43499-4E4D-474E-9F4C-76F6B386554D",
+      "target_language": "yid",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en jiddischtalende. Sådan fungerer det - jeg lærer dig noget på jiddisch, så siger jeg noget på dansk, og du får mulighed for at sige det højt på jiddisch. Derefter lytter du godt efter de jiddischtalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på jiddisch hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "9DE43499-4E4D-474E-9F4C-76F6B386554D.mp3",
+      "size_kb": 722.5
+    },
+    {
+      "uuid": "99AFA51A-09F3-48E9-8F3F-57432DBBD830",
+      "target_language": "spa_SA",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en sydamerikansk spansktalende. Sådan fungerer det - jeg lærer dig noget på sydamerikansk spansk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på sydamerikansk spansk. Derefter lytter du godt efter de sydamerikansk spansktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på sydamerikansk spansk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "99AFA51A-09F3-48E9-8F3F-57432DBBD830.mp3",
+      "size_kb": 876
+    },
+    {
+      "uuid": "8097A412-64D8-414B-B566-8CFFB294FBEC",
+      "target_language": "uig",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en uigurisktalende. Sådan fungerer det - jeg lærer dig noget på uigurisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på uigurisk. Derefter lytter du godt efter de uigurisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på uigurisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "8097A412-64D8-414B-B566-8CFFB294FBEC.mp3",
+      "size_kb": 772.3
+    },
+    {
+      "uuid": "92A9B0DA-5A76-4D92-BE9B-2FA810D9A8A5",
+      "target_language": "yor",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en yorubatalende. Sådan fungerer det - jeg lærer dig noget på yoruba, så siger jeg noget på dansk, og du får mulighed for at sige det højt på yoruba. Derefter lytter du godt efter de yorubatalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på yoruba hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "92A9B0DA-5A76-4D92-BE9B-2FA810D9A8A5.mp3",
+      "size_kb": 742.5
+    },
+    {
+      "uuid": "DA89AACC-BC48-4CE6-81CB-15E669FDB113",
+      "target_language": "yue",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en kantonesisktalende. Sådan fungerer det - jeg lærer dig noget på kantonesisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på kantonesisk. Derefter lytter du godt efter de kantonesisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på kantonesisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "DA89AACC-BC48-4CE6-81CB-15E669FDB113.mp3",
+      "size_kb": 809.8
+    },
+    {
+      "uuid": "D19D9E78-172B-451D-8595-53B1BC88074F",
+      "target_language": "zul",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en zulutalende. Sådan fungerer det - jeg lærer dig noget på zulu, så siger jeg noget på dansk, og du får mulighed for at sige det højt på zulu. Derefter lytter du godt efter de zulutalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på zulu hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "D19D9E78-172B-451D-8595-53B1BC88074F.mp3",
+      "size_kb": 667.4
+    },
+    {
+      "uuid": "C6010ED6-13AD-4DD2-8A4F-EF98AC9AA1B7",
+      "target_language": "ara_lb",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en libanesisk arabisktalende. Sådan fungerer det - jeg lærer dig noget på arabisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på arabisk. Derefter lytter du godt efter de arabisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på arabisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "C6010ED6-13AD-4DD2-8A4F-EF98AC9AA1B7.mp3",
+      "size_kb": 603.4,
+      "duration_ms": 44712
+    },
+    {
+      "uuid": "00F9E7F3-D40D-4B86-B867-6B4396992A2F",
+      "target_language": "ara_eg",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en egyptisk arabisktalende. Sådan fungerer det - jeg lærer dig noget på arabisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på arabisk. Derefter lytter du godt efter de arabisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på arabisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "00F9E7F3-D40D-4B86-B867-6B4396992A2F.mp3",
+      "size_kb": 587.3,
+      "duration_ms": 43560
+    },
+    {
+      "uuid": "79018396-73B6-4EC6-8D84-430D6824E2A1",
+      "target_language": "ara_sy",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive en syrisk arabisktalende. Sådan fungerer det - jeg lærer dig noget på arabisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på arabisk. Derefter lytter du godt efter de arabisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på arabisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "79018396-73B6-4EC6-8D84-430D6824E2A1.mp3",
+      "size_kb": 651.7,
+      "duration_ms": 48288
+    },
+    {
+      "uuid": "730EDBF2-5FF8-485A-9319-39882DA57BA1",
+      "target_language": "ara",
+      "text": "Velkommen til dette usædvanlige spil, som vil hjælpe dig med at blive moderne standardarabisktalende. Sådan fungerer det - jeg lærer dig noget på arabisk, så siger jeg noget på dansk, og du får mulighed for at sige det højt på arabisk. Derefter lytter du godt efter de arabisktalende, som viser dig, hvordan det lyder. Det er vigtigt, at du siger noget i pauserne, for det er sådan, du lærer. Selv hvis du ikke er sikker, så prøv at sige det, du kan, og du vil begynde at tale på arabisk hurtigere, end du tror. Jo mere du behandler det som et spil, jo mere legende du er med det, jo mere du griner, når du laver fejl, jo bedre vil det gå, og jo hurtigere vil du lære. Så lad os begynde at spille.",
+      "file": "730EDBF2-5FF8-485A-9319-39882DA57BA1.mp3",
+      "duration_ms": 43128
+    }
+  ],
+  "generated_at": "2026-05-01T15:42:33.914Z",
+  "regenerated_at": "2026-05-18T12:05:50.809Z"
+}

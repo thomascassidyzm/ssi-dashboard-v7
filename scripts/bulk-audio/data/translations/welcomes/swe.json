@@ -1,0 +1,743 @@
+{
+  "known_language": "swe",
+  "known_language_display": "Swedish",
+  "template": "Välkommen till det här ovanliga spelet som kommer att hjälpa dig att bli {a_target_speaker}. Så här fungerar det - jag lär dig något {in_target}, sedan säger jag något {in_known} och ger dig en chans att säga det högt {in_target}. Sedan lyssnar du noga på de {target_speakers} som visar dig hur det låter. Det är viktigt att du säger något i pauserna, för det är så du lär dig. Även om du inte är säker, försök att säga det du kan, och du kommer att börja tala {in_target} snabbare än du tror. Ju mer du behandlar det som ett spel, ju mer lekfull du är med det, ju mer du skrattar när du gör fel, desto bättre kommer det att gå och desto snabbare kommer du att lära dig. Så, låt oss börja spela.",
+  "in_known": "på svenska",
+  "targets": {
+    "afb": {
+      "in_target": "på gulfarabiska",
+      "a_target_speaker": "en gulfarabisktalande",
+      "target_speakers": "gulfarabisktalande"
+    },
+    "afr": {
+      "in_target": "på afrikaans",
+      "a_target_speaker": "en afrikaanstalande",
+      "target_speakers": "afrikaanstalande"
+    },
+    "aii": {
+      "in_target": "på assyriska",
+      "a_target_speaker": "en assyrisktalande",
+      "target_speakers": "assyrisktalande"
+    },
+    "ain": {
+      "in_target": "på ainu",
+      "a_target_speaker": "en ainutalande",
+      "target_speakers": "ainutalande"
+    },
+    "ajp": {
+      "in_target": "på palestinsk arabiska",
+      "a_target_speaker": "en palestinsk arabisktalande",
+      "target_speakers": "palestinsk arabisktalande"
+    },
+    "amh": {
+      "in_target": "på amhariska",
+      "a_target_speaker": "en amharisktalande",
+      "target_speakers": "amharisktalande"
+    },
+    "apc": {
+      "in_target": "på levantinsk arabiska",
+      "a_target_speaker": "en levantinsk arabisktalande",
+      "target_speakers": "levantinsk arabisktalande"
+    },
+    "ara": {
+      "in_target": "på arabiska",
+      "a_target_speaker": "modern standardarabisktalande",
+      "target_speakers": "arabisktalande"
+    },
+    "arg": {
+      "in_target": "på aragonesiska",
+      "a_target_speaker": "en aragonesisktalande",
+      "target_speakers": "aragonesisktalande"
+    },
+    "ary": {
+      "in_target": "på marockansk arabiska",
+      "a_target_speaker": "en marockansk arabisktalande",
+      "target_speakers": "marockansk arabisktalande"
+    },
+    "asm": {
+      "in_target": "på assamesiska",
+      "a_target_speaker": "en assamesisktalande",
+      "target_speakers": "assamesisktalande"
+    },
+    "ast": {
+      "in_target": "på asturiska",
+      "a_target_speaker": "en asturisktalande",
+      "target_speakers": "asturisktalande"
+    },
+    "aze": {
+      "in_target": "på azerbajdzjanska",
+      "a_target_speaker": "en azerbajdzjansktalande",
+      "target_speakers": "azerbajdzjansktalande"
+    },
+    "bar": {
+      "in_target": "på bayerska",
+      "a_target_speaker": "en bayersktalande",
+      "target_speakers": "bayersktalande"
+    },
+    "bel": {
+      "in_target": "på vitryska",
+      "a_target_speaker": "en vitrysktalande",
+      "target_speakers": "vitrysktalande"
+    },
+    "ben": {
+      "in_target": "på bengali",
+      "a_target_speaker": "en bengalitalande",
+      "target_speakers": "bengalitalande"
+    },
+    "bos": {
+      "in_target": "på bosniska",
+      "a_target_speaker": "en bosnisktalande",
+      "target_speakers": "bosnisktalande"
+    },
+    "bre": {
+      "in_target": "på bretonska",
+      "a_target_speaker": "en bretonsktalande",
+      "target_speakers": "bretonsktalande"
+    },
+    "bul": {
+      "in_target": "på bulgariska",
+      "a_target_speaker": "en bulgarisktalande",
+      "target_speakers": "bulgarisktalande"
+    },
+    "cat": {
+      "in_target": "på katalanska",
+      "a_target_speaker": "en katalansktalande",
+      "target_speakers": "katalansktalande"
+    },
+    "ceb": {
+      "in_target": "på cebuano",
+      "a_target_speaker": "en cebuanotalande",
+      "target_speakers": "cebuanotalande"
+    },
+    "ces": {
+      "in_target": "på tjeckiska",
+      "a_target_speaker": "en tjeckisktalande",
+      "target_speakers": "tjeckisktalande"
+    },
+    "chr": {
+      "in_target": "på cherokesiska",
+      "a_target_speaker": "en cherokesisktalande",
+      "target_speakers": "cherokesisktalande"
+    },
+    "cmn": {
+      "in_target": "på kinesiska",
+      "a_target_speaker": "en kinesisktalande",
+      "target_speakers": "kinesisktalande"
+    },
+    "cor": {
+      "in_target": "på korniska",
+      "a_target_speaker": "en kornisktalande",
+      "target_speakers": "kornisktalande"
+    },
+    "cos": {
+      "in_target": "på korsikanska",
+      "a_target_speaker": "en korsikansktalande",
+      "target_speakers": "korsikansktalande"
+    },
+    "csb": {
+      "in_target": "på kasjubiska",
+      "a_target_speaker": "en kasjubisktalande",
+      "target_speakers": "kasjubisktalande"
+    },
+    "cym": {
+      "in_target": "på walesiska",
+      "a_target_speaker": "en walesisktalande",
+      "target_speakers": "walesisktalande"
+    },
+    "dan": {
+      "in_target": "på danska",
+      "a_target_speaker": "en dansktalande",
+      "target_speakers": "dansktalande"
+    },
+    "deu": {
+      "in_target": "på tyska",
+      "a_target_speaker": "en tysktalande",
+      "target_speakers": "tysktalande"
+    },
+    "deu_AT": {
+      "in_target": "på tyska",
+      "a_target_speaker": "en österrikisk tysktalande",
+      "target_speakers": "tysktalande"
+    },
+    "dsb": {
+      "in_target": "på nedre sorbiska",
+      "a_target_speaker": "en nedre sorbisktalande",
+      "target_speakers": "nedre sorbisktalande"
+    },
+    "ell": {
+      "in_target": "på grekiska",
+      "a_target_speaker": "en grekisktalande",
+      "target_speakers": "grekisktalande"
+    },
+    "eng": {
+      "in_target": "på engelska",
+      "a_target_speaker": "en engelsktalande",
+      "target_speakers": "engelsktalande"
+    },
+    "est": {
+      "in_target": "på estniska",
+      "a_target_speaker": "en estnisktalande",
+      "target_speakers": "estnisktalande"
+    },
+    "eus": {
+      "in_target": "på baskiska",
+      "a_target_speaker": "en baskisktalande",
+      "target_speakers": "baskisktalande"
+    },
+    "fao": {
+      "in_target": "på färöiska",
+      "a_target_speaker": "en färöisktalande",
+      "target_speakers": "färöisktalande"
+    },
+    "fas": {
+      "in_target": "på persiska",
+      "a_target_speaker": "en persisktalande",
+      "target_speakers": "persisktalande"
+    },
+    "fij": {
+      "in_target": "på fijianska",
+      "a_target_speaker": "en fijiansktalande",
+      "target_speakers": "fijiansktalande"
+    },
+    "fil": {
+      "in_target": "på filippinska",
+      "a_target_speaker": "en filippinsktalande",
+      "target_speakers": "filippinsktalande"
+    },
+    "fin": {
+      "in_target": "på finska",
+      "a_target_speaker": "en finsktalande",
+      "target_speakers": "finsktalande"
+    },
+    "fra": {
+      "in_target": "på franska",
+      "a_target_speaker": "en fransktalande",
+      "target_speakers": "fransktalande"
+    },
+    "frr": {
+      "in_target": "på nordfrisiska",
+      "a_target_speaker": "en nordfrisisktalande",
+      "target_speakers": "nordfrisisktalande"
+    },
+    "fry": {
+      "in_target": "på västfrisiska",
+      "a_target_speaker": "en västfrisisktalande",
+      "target_speakers": "västfrisisktalande"
+    },
+    "fur": {
+      "in_target": "på friulanska",
+      "a_target_speaker": "en friulansktalande",
+      "target_speakers": "friulansktalande"
+    },
+    "gla": {
+      "in_target": "på skotsk gaeliska",
+      "a_target_speaker": "en skotsk gaelisktalande",
+      "target_speakers": "skotsk gaelisktalande"
+    },
+    "gle": {
+      "in_target": "på iriska",
+      "a_target_speaker": "en irisktalande",
+      "target_speakers": "irisktalande"
+    },
+    "glg": {
+      "in_target": "på galiciska",
+      "a_target_speaker": "en galicisktalande",
+      "target_speakers": "galicisktalande"
+    },
+    "glv": {
+      "in_target": "på manx",
+      "a_target_speaker": "en manxtalande",
+      "target_speakers": "manxtalande"
+    },
+    "grk": {
+      "in_target": "på griko",
+      "a_target_speaker": "en grikotalande",
+      "target_speakers": "grikotalande"
+    },
+    "grn": {
+      "in_target": "på guaraní",
+      "a_target_speaker": "en guaranítalande",
+      "target_speakers": "guaranítalande"
+    },
+    "gsw": {
+      "in_target": "på schweizertyska",
+      "a_target_speaker": "en schweizertyskttalande",
+      "target_speakers": "schweizertyskttalande"
+    },
+    "guj": {
+      "in_target": "på gujarati",
+      "a_target_speaker": "en gujaratitalande",
+      "target_speakers": "gujaratitalande"
+    },
+    "hak": {
+      "in_target": "på hakka",
+      "a_target_speaker": "en hakkatalande",
+      "target_speakers": "hakkatalande"
+    },
+    "hau": {
+      "in_target": "på hausa",
+      "a_target_speaker": "en hausatalande",
+      "target_speakers": "hausatalande"
+    },
+    "haw": {
+      "in_target": "på hawaiianska",
+      "a_target_speaker": "en hawaiiansktalande",
+      "target_speakers": "hawaiiansktalande"
+    },
+    "heb": {
+      "in_target": "på hebreiska",
+      "a_target_speaker": "en hebreisktalande",
+      "target_speakers": "hebreisktalande"
+    },
+    "hin": {
+      "in_target": "på hindi",
+      "a_target_speaker": "en hinditalande",
+      "target_speakers": "hinditalande"
+    },
+    "hrv": {
+      "in_target": "på kroatiska",
+      "a_target_speaker": "en kroatisktalande",
+      "target_speakers": "kroatisktalande"
+    },
+    "hsb": {
+      "in_target": "på övre sorbiska",
+      "a_target_speaker": "en övre sorbisktalande",
+      "target_speakers": "övre sorbisktalande"
+    },
+    "hun": {
+      "in_target": "på ungerska",
+      "a_target_speaker": "en ungersktalande",
+      "target_speakers": "ungersktalande"
+    },
+    "hye": {
+      "in_target": "på armeniska",
+      "a_target_speaker": "en armenisktalande",
+      "target_speakers": "armenisktalande"
+    },
+    "ibo": {
+      "in_target": "på igbo",
+      "a_target_speaker": "en igbotalande",
+      "target_speakers": "igbotalande"
+    },
+    "iku": {
+      "in_target": "på inuktitut",
+      "a_target_speaker": "en inuktituttalande",
+      "target_speakers": "inuktituttalande"
+    },
+    "ind": {
+      "in_target": "på indonesiska",
+      "a_target_speaker": "en indonesisktalande",
+      "target_speakers": "indonesisktalande"
+    },
+    "isl": {
+      "in_target": "på isländska",
+      "a_target_speaker": "en isländsktalande",
+      "target_speakers": "isländsktalande"
+    },
+    "ita": {
+      "in_target": "på italienska",
+      "a_target_speaker": "en italiensktalande",
+      "target_speakers": "italiensktalande"
+    },
+    "jav": {
+      "in_target": "på javanesiska",
+      "a_target_speaker": "en javanesisktalande",
+      "target_speakers": "javanesisktalande"
+    },
+    "jpn": {
+      "in_target": "på japanska",
+      "a_target_speaker": "en japansktalande",
+      "target_speakers": "japansktalande"
+    },
+    "kal": {
+      "in_target": "på grönländska",
+      "a_target_speaker": "en grönländsktalande",
+      "target_speakers": "grönländsktalande"
+    },
+    "kan": {
+      "in_target": "på kannada",
+      "a_target_speaker": "en kannadatalande",
+      "target_speakers": "kannadatalande"
+    },
+    "kat": {
+      "in_target": "på georgiska",
+      "a_target_speaker": "en georgisktalande",
+      "target_speakers": "georgisktalande"
+    },
+    "kaz": {
+      "in_target": "på kazakiska",
+      "a_target_speaker": "en kazakisktalande",
+      "target_speakers": "kazakisktalande"
+    },
+    "kir": {
+      "in_target": "på kirgiziska",
+      "a_target_speaker": "en kirgizisktalande",
+      "target_speakers": "kirgizisktalande"
+    },
+    "kor": {
+      "in_target": "på koreanska",
+      "a_target_speaker": "en koreansktalande",
+      "target_speakers": "koreansktalande"
+    },
+    "kur": {
+      "in_target": "på kurdiska",
+      "a_target_speaker": "en kurdisktalande",
+      "target_speakers": "kurdisktalande"
+    },
+    "lad": {
+      "in_target": "på ladino",
+      "a_target_speaker": "en ladinotalande",
+      "target_speakers": "ladinotalande"
+    },
+    "lav": {
+      "in_target": "på lettiska",
+      "a_target_speaker": "en lettisktalande",
+      "target_speakers": "lettisktalande"
+    },
+    "lij": {
+      "in_target": "på liguriska",
+      "a_target_speaker": "en ligurisktalande",
+      "target_speakers": "ligurisktalande"
+    },
+    "lim": {
+      "in_target": "på limburgiska",
+      "a_target_speaker": "en limburgisktalande",
+      "target_speakers": "limburgisktalande"
+    },
+    "lin": {
+      "in_target": "på lingala",
+      "a_target_speaker": "en lingalatalande",
+      "target_speakers": "lingalatalande"
+    },
+    "lit": {
+      "in_target": "på litauiska",
+      "a_target_speaker": "en litauisktalande",
+      "target_speakers": "litauisktalande"
+    },
+    "ltz": {
+      "in_target": "på luxemburgiska",
+      "a_target_speaker": "en luxemburgisktalande",
+      "target_speakers": "luxemburgisktalande"
+    },
+    "mal": {
+      "in_target": "på malayalam",
+      "a_target_speaker": "en malayalamtalande",
+      "target_speakers": "malayalamtalande"
+    },
+    "mar": {
+      "in_target": "på marathi",
+      "a_target_speaker": "en marathitalande",
+      "target_speakers": "marathitalande"
+    },
+    "mkd": {
+      "in_target": "på makedonska",
+      "a_target_speaker": "en makedonsktalande",
+      "target_speakers": "makedonsktalande"
+    },
+    "moh": {
+      "in_target": "på mohawk",
+      "a_target_speaker": "en mohawktalande",
+      "target_speakers": "mohawktalande"
+    },
+    "mri": {
+      "in_target": "på maori",
+      "a_target_speaker": "en maoritalande",
+      "target_speakers": "maoritalande"
+    },
+    "msa": {
+      "in_target": "på malajiska",
+      "a_target_speaker": "en malajisktalande",
+      "target_speakers": "malajisktalande"
+    },
+    "nan": {
+      "in_target": "på min nan",
+      "a_target_speaker": "en min nan-talande",
+      "target_speakers": "min nan-talande"
+    },
+    "nap": {
+      "in_target": "på napolitanska",
+      "a_target_speaker": "en napolitansktalande",
+      "target_speakers": "napolitansktalande"
+    },
+    "nav": {
+      "in_target": "på navajo",
+      "a_target_speaker": "en navajotalande",
+      "target_speakers": "navajotalande"
+    },
+    "nep": {
+      "in_target": "på nepalesiska",
+      "a_target_speaker": "en nepalesisktalande",
+      "target_speakers": "nepalesisktalande"
+    },
+    "nld": {
+      "in_target": "på holländska",
+      "a_target_speaker": "en holländsktalande",
+      "target_speakers": "holländsktalande"
+    },
+    "nor": {
+      "in_target": "på norska",
+      "a_target_speaker": "en norsktalande",
+      "target_speakers": "norsktalande"
+    },
+    "nya": {
+      "in_target": "på chichewa",
+      "a_target_speaker": "en chichewatalande",
+      "target_speakers": "chichewatalande"
+    },
+    "oci": {
+      "in_target": "på occitanska",
+      "a_target_speaker": "en occitansktalande",
+      "target_speakers": "occitansktalande"
+    },
+    "oji": {
+      "in_target": "på ojibwe",
+      "a_target_speaker": "en ojibwetalande",
+      "target_speakers": "ojibwetalande"
+    },
+    "pan": {
+      "in_target": "på punjabi",
+      "a_target_speaker": "en punjabitalande",
+      "target_speakers": "punjabitalande"
+    },
+    "pol": {
+      "in_target": "på polska",
+      "a_target_speaker": "en polsktalande",
+      "target_speakers": "polsktalande"
+    },
+    "por": {
+      "in_target": "på portugisiska",
+      "a_target_speaker": "en portugisisktalande",
+      "target_speakers": "portugisisktalande"
+    },
+    "por_BR": {
+      "in_target": "på portugisiska",
+      "a_target_speaker": "en brasiliansk portugisisktalande",
+      "target_speakers": "portugisisktalande"
+    },
+    "por_EU": {
+      "in_target": "på portugisiska",
+      "a_target_speaker": "en europeisk portugisisktalande",
+      "target_speakers": "portugisisktalande"
+    },
+    "pus": {
+      "in_target": "på pashto",
+      "a_target_speaker": "en pashtotalande",
+      "target_speakers": "pashtotalande"
+    },
+    "que": {
+      "in_target": "på quechua",
+      "a_target_speaker": "en quechuatalande",
+      "target_speakers": "quechuatalande"
+    },
+    "roh": {
+      "in_target": "på rätoromanska",
+      "a_target_speaker": "en rätoromansktalande",
+      "target_speakers": "rätoromansktalande"
+    },
+    "ron": {
+      "in_target": "på rumänska",
+      "a_target_speaker": "en rumänsktalande",
+      "target_speakers": "rumänsktalande"
+    },
+    "rus": {
+      "in_target": "på ryska",
+      "a_target_speaker": "en rysktalande",
+      "target_speakers": "rysktalande"
+    },
+    "scn": {
+      "in_target": "på sicilianska",
+      "a_target_speaker": "en siciliansktalande",
+      "target_speakers": "siciliansktalande"
+    },
+    "sco": {
+      "in_target": "på lågskotska",
+      "a_target_speaker": "en lågskotsktalande",
+      "target_speakers": "lågskotsktalande"
+    },
+    "slk": {
+      "in_target": "på slovakiska",
+      "a_target_speaker": "en slovakisktalande",
+      "target_speakers": "slovakisktalande"
+    },
+    "slv": {
+      "in_target": "på slovenska",
+      "a_target_speaker": "en slovensktalande",
+      "target_speakers": "slovensktalande"
+    },
+    "sme": {
+      "in_target": "på nordsamiska",
+      "a_target_speaker": "en nordsamisktalande",
+      "target_speakers": "nordsamisktalande"
+    },
+    "smj": {
+      "in_target": "på lulesamiska",
+      "a_target_speaker": "en lulesamisktalande",
+      "target_speakers": "lulesamisktalande"
+    },
+    "smn": {
+      "in_target": "på enaresamiska",
+      "a_target_speaker": "en enaresamisktalande",
+      "target_speakers": "enaresamisktalande"
+    },
+    "smo": {
+      "in_target": "på samoanska",
+      "a_target_speaker": "en samoansktalande",
+      "target_speakers": "samoansktalande"
+    },
+    "sms": {
+      "in_target": "på skoltsamiska",
+      "a_target_speaker": "en skoltsamisktalande",
+      "target_speakers": "skoltsamisktalande"
+    },
+    "snd": {
+      "in_target": "på sindhi",
+      "a_target_speaker": "en sindhitalande",
+      "target_speakers": "sindhitalande"
+    },
+    "som": {
+      "in_target": "på somaliska",
+      "a_target_speaker": "en somalisktalande",
+      "target_speakers": "somalisktalande"
+    },
+    "spa": {
+      "in_target": "på spanska",
+      "a_target_speaker": "en spansktalande",
+      "target_speakers": "spansktalande"
+    },
+    "spa_EU": {
+      "in_target": "på spanska",
+      "a_target_speaker": "en europeisk spansktalande",
+      "target_speakers": "spansktalande"
+    },
+    "spa_SA": {
+      "in_target": "på spanska",
+      "a_target_speaker": "en sydamerikansk spansktalande",
+      "target_speakers": "spansktalande"
+    },
+    "srd": {
+      "in_target": "på sardinska",
+      "a_target_speaker": "en sardinsktalande",
+      "target_speakers": "sardinsktalande"
+    },
+    "srp": {
+      "in_target": "på serbiska",
+      "a_target_speaker": "en serbisktalande",
+      "target_speakers": "serbisktalande"
+    },
+    "swa": {
+      "in_target": "på swahili",
+      "a_target_speaker": "en swahilitalande",
+      "target_speakers": "swahilitalande"
+    },
+    "tah": {
+      "in_target": "på tahitiska",
+      "a_target_speaker": "en tahitisktalande",
+      "target_speakers": "tahitisktalande"
+    },
+    "tam": {
+      "in_target": "på tamil",
+      "a_target_speaker": "en tamiltalande",
+      "target_speakers": "tamiltalande"
+    },
+    "tel": {
+      "in_target": "på telugu",
+      "a_target_speaker": "en telugutalande",
+      "target_speakers": "telugutalande"
+    },
+    "tha": {
+      "in_target": "på thailändska",
+      "a_target_speaker": "en thailändsktalande",
+      "target_speakers": "thailändsktalande"
+    },
+    "ton": {
+      "in_target": "på tonganska",
+      "a_target_speaker": "en tongansktalande",
+      "target_speakers": "tongansktalande"
+    },
+    "tur": {
+      "in_target": "på turkiska",
+      "a_target_speaker": "en turkisktalande",
+      "target_speakers": "turkisktalande"
+    },
+    "uig": {
+      "in_target": "på uiguriska",
+      "a_target_speaker": "en uigurisktalande",
+      "target_speakers": "uigurisktalande"
+    },
+    "ukr": {
+      "in_target": "på ukrainska",
+      "a_target_speaker": "en ukrainsktalande",
+      "target_speakers": "ukrainsktalande"
+    },
+    "urd": {
+      "in_target": "på urdu",
+      "a_target_speaker": "en urdutalande",
+      "target_speakers": "urdutalande"
+    },
+    "vec": {
+      "in_target": "på venetianska",
+      "a_target_speaker": "en venetiansktalande",
+      "target_speakers": "venetiansktalande"
+    },
+    "vie": {
+      "in_target": "på vietnamesiska",
+      "a_target_speaker": "en vietnamesisktalande",
+      "target_speakers": "vietnamesisktalande"
+    },
+    "vls": {
+      "in_target": "på flamländska",
+      "a_target_speaker": "en flamländsktalande",
+      "target_speakers": "flamländsktalande"
+    },
+    "wln": {
+      "in_target": "på vallonska",
+      "a_target_speaker": "en vallonsktalande",
+      "target_speakers": "vallonsktalande"
+    },
+    "wuu": {
+      "in_target": "på shanghainesiska",
+      "a_target_speaker": "en shanghainesisktalande",
+      "target_speakers": "shanghainesisktalande"
+    },
+    "xho": {
+      "in_target": "på xhosa",
+      "a_target_speaker": "en xhosatalande",
+      "target_speakers": "xhosatalande"
+    },
+    "yid": {
+      "in_target": "på jiddisch",
+      "a_target_speaker": "en jiddischtalande",
+      "target_speakers": "jiddischtalande"
+    },
+    "yor": {
+      "in_target": "på yoruba",
+      "a_target_speaker": "en yorubatalande",
+      "target_speakers": "yorubatalande"
+    },
+    "yue": {
+      "in_target": "på kantonesiska",
+      "a_target_speaker": "en kantonesisktalande",
+      "target_speakers": "kantonesisktalande"
+    },
+    "zul": {
+      "in_target": "på zulu",
+      "a_target_speaker": "en zulutalande",
+      "target_speakers": "zulutalande"
+    },
+    "ara_lb": {
+      "in_target": "på arabiska",
+      "a_target_speaker": "en libanesisk arabisktalande",
+      "target_speakers": "arabisktalande"
+    },
+    "ara_sy": {
+      "in_target": "på arabiska",
+      "a_target_speaker": "en syrisk arabisktalande",
+      "target_speakers": "arabisktalande"
+    },
+    "ara_eg": {
+      "in_target": "på arabiska",
+      "a_target_speaker": "en egyptisk arabisktalande",
+      "target_speakers": "arabisktalande"
+    }
+  }
+}

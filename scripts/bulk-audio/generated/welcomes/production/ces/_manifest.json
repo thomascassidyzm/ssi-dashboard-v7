@@ -1,0 +1,826 @@
+{
+  "known_language": "ces",
+  "display_name": "Czech",
+  "voice": {
+    "voice_id": "oJafrcmhnPdknhWvAMQq",
+    "name": "Shoshi - Czech Calm Voice",
+    "gender": "male"
+  },
+  "settings": {
+    "voice_stability": 0.4,
+    "model": "eleven_v3",
+    "language_code": "cs"
+  },
+  "welcomes": [
+    {
+      "uuid": "796AF1AC-D4B4-4E8B-81F4-FA08C9D92C40",
+      "target_language": "bul",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví bulharsky. Funguje to takto — naučím tě něco bulharsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas bulharsky. Potom pozorně poslouchej rodilé mluvčí bulharštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit bulharsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "796AF1AC-D4B4-4E8B-81F4-FA08C9D92C40.mp3",
+      "size_kb": 840.9
+    },
+    {
+      "uuid": "D949FDED-B11F-4539-A311-50494F273507",
+      "target_language": "cmn",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví čínsky. Funguje to takto — naučím tě něco čínsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas čínsky. Potom pozorně poslouchej rodilé mluvčí čínštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit čínsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "D949FDED-B11F-4539-A311-50494F273507.mp3",
+      "size_kb": 797.2
+    },
+    {
+      "uuid": "623FD24B-52B7-446B-86F3-5CFCF8083931",
+      "target_language": "hrv",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví chorvatsky. Funguje to takto — naučím tě něco chorvatsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas chorvatsky. Potom pozorně poslouchej rodilé mluvčí chorvatštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit chorvatsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "623FD24B-52B7-446B-86F3-5CFCF8083931.mp3",
+      "size_kb": 767.4
+    },
+    {
+      "uuid": "B119CFC1-8E6D-466C-ACB9-3C32F552824A",
+      "target_language": "dan",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví dánsky. Funguje to takto — naučím tě něco dánsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas dánsky. Potom pozorně poslouchej rodilé mluvčí dánštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit dánsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "B119CFC1-8E6D-466C-ACB9-3C32F552824A.mp3",
+      "size_kb": 763.7
+    },
+    {
+      "uuid": "49D54BAD-DC17-49A3-A3E7-30CBBA07A6E4",
+      "target_language": "eng",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví anglicky. Funguje to takto — naučím tě něco anglicky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas anglicky. Potom pozorně poslouchej rodilé mluvčí angličtiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit anglicky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "49D54BAD-DC17-49A3-A3E7-30CBBA07A6E4.mp3",
+      "size_kb": 719.6
+    },
+    {
+      "uuid": "E18FA169-C6D3-472D-BBEE-CF06928CD1A0",
+      "target_language": "fin",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví finsky. Funguje to takto — naučím tě něco finsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas finsky. Potom pozorně poslouchej rodilé mluvčí finštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit finsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "E18FA169-C6D3-472D-BBEE-CF06928CD1A0.mp3",
+      "size_kb": 713.5
+    },
+    {
+      "uuid": "2B933345-9090-4CBC-8798-D8EEB9C22322",
+      "target_language": "fil",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví filipínsky. Funguje to takto — naučím tě něco filipínsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas filipínsky. Potom pozorně poslouchej rodilé mluvčí filipínštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit filipínsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "2B933345-9090-4CBC-8798-D8EEB9C22322.mp3",
+      "size_kb": 732.3
+    },
+    {
+      "uuid": "E05FBE46-A81B-40D5-98D2-A39AC3F97A1E",
+      "target_language": "nld",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví nizozemsky. Funguje to takto — naučím tě něco nizozemsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas nizozemsky. Potom pozorně poslouchej rodilé mluvčí nizozemštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit nizozemsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "E05FBE46-A81B-40D5-98D2-A39AC3F97A1E.mp3",
+      "size_kb": 739.6
+    },
+    {
+      "uuid": "221189DE-A028-4FD9-996A-70E75E406673",
+      "target_language": "fra",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví francouzsky. Funguje to takto — naučím tě něco francouzsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas francouzsky. Potom pozorně poslouchej rodilé mluvčí francouzštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit francouzsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "221189DE-A028-4FD9-996A-70E75E406673.mp3",
+      "size_kb": 882.5
+    },
+    {
+      "uuid": "66C5C029-DA41-4013-AFB9-022F312C6648",
+      "target_language": "deu",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví německy. Funguje to takto — naučím tě něco německy, pak řeknu něco česky a ty dostaneš šanci to říct nahlas německy. Potom pozorně poslouchej rodilé mluvčí němčiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit německy dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "66C5C029-DA41-4013-AFB9-022F312C6648.mp3",
+      "size_kb": 858.4
+    },
+    {
+      "uuid": "9592AA48-7E8E-4CAD-9EC7-BD0F4E9C0220",
+      "target_language": "ell",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví řecky. Funguje to takto — naučím tě něco řecky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas řecky. Potom pozorně poslouchej rodilé mluvčí řečtiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit řecky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "9592AA48-7E8E-4CAD-9EC7-BD0F4E9C0220.mp3",
+      "size_kb": 791.1
+    },
+    {
+      "uuid": "14F4C3E2-B673-4B0F-BBC4-F25DF3EC3E90",
+      "target_language": "hin",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví hindsky. Funguje to takto — naučím tě něco hindsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas hindsky. Potom pozorně poslouchej rodilé mluvčí hindštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit hindsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "14F4C3E2-B673-4B0F-BBC4-F25DF3EC3E90.mp3",
+      "size_kb": 737.2
+    },
+    {
+      "uuid": "1EDDEC01-6BCC-4762-87F1-2275BD2457C9",
+      "target_language": "ind",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví indonésky. Funguje to takto — naučím tě něco indonésky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas indonésky. Potom pozorně poslouchej rodilé mluvčí indonéštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit indonésky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "1EDDEC01-6BCC-4762-87F1-2275BD2457C9.mp3",
+      "size_kb": 764.9
+    },
+    {
+      "uuid": "AB889EE5-238B-48BC-B565-D8D567F9E85E",
+      "target_language": "msa",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví malajsky. Funguje to takto — naučím tě něco malajsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas malajsky. Potom pozorně poslouchej rodilé mluvčí malajštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit malajsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "AB889EE5-238B-48BC-B565-D8D567F9E85E.mp3",
+      "size_kb": 742.5
+    },
+    {
+      "uuid": "5A6EA67A-2EC9-4931-AEBE-865B98761745",
+      "target_language": "pol",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví polsky. Funguje to takto — naučím tě něco polsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas polsky. Potom pozorně poslouchej rodilé mluvčí polštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit polsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "5A6EA67A-2EC9-4931-AEBE-865B98761745.mp3",
+      "size_kb": 763.7
+    },
+    {
+      "uuid": "3D26F4E8-14F2-499E-A237-F83FDFC0A8C3",
+      "target_language": "ita",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví italsky. Funguje to takto — naučím tě něco italsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas italsky. Potom pozorně poslouchej rodilé mluvčí italštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit italsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "3D26F4E8-14F2-499E-A237-F83FDFC0A8C3.mp3",
+      "size_kb": 813.5
+    },
+    {
+      "uuid": "6E05C36B-8ABA-4D5A-92C2-71C2A095A6C1",
+      "target_language": "jpn",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví japonsky. Funguje to takto — naučím tě něco japonsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas japonsky. Potom pozorně poslouchej rodilé mluvčí japonštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit japonsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "6E05C36B-8ABA-4D5A-92C2-71C2A095A6C1.mp3",
+      "size_kb": 716
+    },
+    {
+      "uuid": "3399F886-79E0-4980-B6CB-DC378BC89022",
+      "target_language": "kor",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví korejsky. Funguje to takto — naučím tě něco korejsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas korejsky. Potom pozorně poslouchej rodilé mluvčí korejštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit korejsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "3399F886-79E0-4980-B6CB-DC378BC89022.mp3",
+      "size_kb": 759.6
+    },
+    {
+      "uuid": "FA61D669-0A58-4427-848A-F14DFA2BC26F",
+      "target_language": "por",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví portugalsky. Funguje to takto — naučím tě něco portugalsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas portugalsky. Potom pozorně poslouchej rodilé mluvčí portugalštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit portugalsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "FA61D669-0A58-4427-848A-F14DFA2BC26F.mp3",
+      "size_kb": 653.5
+    },
+    {
+      "uuid": "B9D2FE83-E920-40D0-A96D-BCBFBD9D742B",
+      "target_language": "rus",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví rusky. Funguje to takto — naučím tě něco rusky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas rusky. Potom pozorně poslouchej rodilé mluvčí ruštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit rusky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "B9D2FE83-E920-40D0-A96D-BCBFBD9D742B.mp3",
+      "size_kb": 797.2
+    },
+    {
+      "uuid": "A01EF37A-7657-4E8F-9F99-B6178F7C8BC8",
+      "target_language": "ron",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví rumunsky. Funguje to takto — naučím tě něco rumunsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas rumunsky. Potom pozorně poslouchej rodilé mluvčí rumunštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit rumunsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "A01EF37A-7657-4E8F-9F99-B6178F7C8BC8.mp3",
+      "size_kb": 934.7
+    },
+    {
+      "uuid": "63D1D847-0A5B-42B2-8587-486EEF503BF8",
+      "target_language": "slk",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví slovensky. Funguje to takto — naučím tě něco slovensky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas slovensky. Potom pozorně poslouchej rodilé mluvčí slovenštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit slovensky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "63D1D847-0A5B-42B2-8587-486EEF503BF8.mp3",
+      "size_kb": 882.5
+    },
+    {
+      "uuid": "AC9A1012-A5EB-44AB-8CCF-AE585424F6AB",
+      "target_language": "spa",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví španělsky. Funguje to takto — naučím tě něco španělsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas španělsky. Potom pozorně poslouchej rodilé mluvčí španělštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit španělsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "AC9A1012-A5EB-44AB-8CCF-AE585424F6AB.mp3",
+      "size_kb": 829.8
+    },
+    {
+      "uuid": "E65A2EF4-CDE7-4AC2-80AB-5B5FEE6E20F7",
+      "target_language": "swe",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví švédsky. Funguje to takto — naučím tě něco švédsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas švédsky. Potom pozorně poslouchej rodilé mluvčí švédštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit švédsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "E65A2EF4-CDE7-4AC2-80AB-5B5FEE6E20F7.mp3",
+      "size_kb": 696
+    },
+    {
+      "uuid": "9D428896-7245-4B60-BBA4-21A4B9D494B4",
+      "target_language": "tur",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví turecky. Funguje to takto — naučím tě něco turecky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas turecky. Potom pozorně poslouchej rodilé mluvčí turečtiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit turecky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "9D428896-7245-4B60-BBA4-21A4B9D494B4.mp3",
+      "size_kb": 811.1
+    },
+    {
+      "uuid": "6316CF9F-AC40-40B5-9E5B-693D0B09A1F7",
+      "target_language": "tam",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví tamilsky. Funguje to takto — naučím tě něco tamilsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas tamilsky. Potom pozorně poslouchej rodilé mluvčí tamilštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit tamilsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "6316CF9F-AC40-40B5-9E5B-693D0B09A1F7.mp3",
+      "size_kb": 713.5
+    },
+    {
+      "uuid": "9FA3ED61-47E4-4CC1-8D5A-10187F23EE9D",
+      "target_language": "ukr",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví ukrajinsky. Funguje to takto — naučím tě něco ukrajinsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas ukrajinsky. Potom pozorně poslouchej rodilé mluvčí ukrajinštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit ukrajinsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "9FA3ED61-47E4-4CC1-8D5A-10187F23EE9D.mp3",
+      "size_kb": 739.6
+    },
+    {
+      "uuid": "C5277057-C74A-41DC-B509-897779A16962",
+      "target_language": "afr",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví afrikánsky. Funguje to takto — naučím tě něco v afrikánštině, pak řeknu něco česky a ty dostaneš šanci to říct nahlas v afrikánštině. Potom pozorně poslouchej rodilé mluvčí afrikánštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit v afrikánštině dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "C5277057-C74A-41DC-B509-897779A16962.mp3",
+      "size_kb": 838.4
+    },
+    {
+      "uuid": "7559C974-9558-42B1-B1EC-B6257C80C8D2",
+      "target_language": "asm",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví ásámsky. Funguje to takto — naučím tě něco ásámsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas ásámsky. Potom pozorně poslouchej rodilé mluvčí ásámštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit ásámsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "7559C974-9558-42B1-B1EC-B6257C80C8D2.mp3",
+      "size_kb": 769.8
+    },
+    {
+      "uuid": "99F07474-9CA9-4519-93B8-22573D99E753",
+      "target_language": "ben",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví bengálsky. Funguje to takto — naučím tě něco bengálsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas bengálsky. Potom pozorně poslouchej rodilé mluvčí bengálštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit bengálsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "99F07474-9CA9-4519-93B8-22573D99E753.mp3",
+      "size_kb": 760.9
+    },
+    {
+      "uuid": "87CE1E77-A4EC-495C-9BC5-329E28F437A9",
+      "target_language": "bos",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví bosensky. Funguje to takto — naučím tě něco bosensky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas bosensky. Potom pozorně poslouchej rodilé mluvčí bosenštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit bosensky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "87CE1E77-A4EC-495C-9BC5-329E28F437A9.mp3",
+      "size_kb": 818.4
+    },
+    {
+      "uuid": "CE85F434-8177-4DB4-ABCC-2B87C78450AD",
+      "target_language": "cat",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví katalánsky. Funguje to takto — naučím tě něco katalánsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas katalánsky. Potom pozorně poslouchej rodilé mluvčí katalánštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit katalánsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "CE85F434-8177-4DB4-ABCC-2B87C78450AD.mp3",
+      "size_kb": 723.7
+    },
+    {
+      "uuid": "A1F6A09F-392A-48FE-8FB8-61A846EBCC5E",
+      "target_language": "aze",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví ázerbájdžánsky. Funguje to takto — naučím tě něco ázerbájdžánsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas ázerbájdžánsky. Potom pozorně poslouchej rodilé mluvčí ázerbájdžánštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit ázerbájdžánsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "A1F6A09F-392A-48FE-8FB8-61A846EBCC5E.mp3",
+      "size_kb": 851.1
+    },
+    {
+      "uuid": "C407F8EA-F03C-4208-B3DC-B5E4CE1C4DFC",
+      "target_language": "cym",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví velšsky. Funguje to takto — naučím tě něco velšsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas velšsky. Potom pozorně poslouchej rodilé mluvčí velštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit velšsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "C407F8EA-F03C-4208-B3DC-B5E4CE1C4DFC.mp3",
+      "size_kb": 788.6
+    },
+    {
+      "uuid": "9AC8AA09-D5F0-460D-97DE-9BBB4E78CB7D",
+      "target_language": "bel",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví bělorusky. Funguje to takto — naučím tě něco bělorusky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas bělorusky. Potom pozorně poslouchej rodilé mluvčí běloruštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit bělorusky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "9AC8AA09-D5F0-460D-97DE-9BBB4E78CB7D.mp3",
+      "size_kb": 800.9
+    },
+    {
+      "uuid": "49C779FD-61B5-4ED4-9189-88A0E85F7D7D",
+      "target_language": "fas",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví persky. Funguje to takto — naučím tě něco persky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas persky. Potom pozorně poslouchej rodilé mluvčí perštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit persky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "49C779FD-61B5-4ED4-9189-88A0E85F7D7D.mp3",
+      "size_kb": 873.5
+    },
+    {
+      "uuid": "845A04C2-A35D-4E51-BAF3-525D2BAD759F",
+      "target_language": "est",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví estonsky. Funguje to takto — naučím tě něco estonsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas estonsky. Potom pozorně poslouchej rodilé mluvčí estonštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit estonsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "845A04C2-A35D-4E51-BAF3-525D2BAD759F.mp3",
+      "size_kb": 759.6
+    },
+    {
+      "uuid": "C8C7B05F-8BAD-4E0D-B10B-8237C5FCAF20",
+      "target_language": "gle",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví irsky. Funguje to takto — naučím tě něco irsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas irsky. Potom pozorně poslouchej rodilé mluvčí irštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit irsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "C8C7B05F-8BAD-4E0D-B10B-8237C5FCAF20.mp3",
+      "size_kb": 723.7
+    },
+    {
+      "uuid": "329DA5EA-7E54-4DF3-91CA-6513A740C9CB",
+      "target_language": "ceb",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví cebuánsky. Funguje to takto — naučím tě něco cebuánsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas cebuánsky. Potom pozorně poslouchej rodilé mluvčí cebuánštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit cebuánsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "329DA5EA-7E54-4DF3-91CA-6513A740C9CB.mp3",
+      "size_kb": 852.3
+    },
+    {
+      "uuid": "69D4B790-8DB2-406B-867B-BE407C47A5AD",
+      "target_language": "hau",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví hausky. Funguje to takto — naučím tě něco hausky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas hausky. Potom pozorně poslouchej rodilé mluvčí hauštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit hausky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "69D4B790-8DB2-406B-867B-BE407C47A5AD.mp3",
+      "size_kb": 846.2
+    },
+    {
+      "uuid": "1BC7D191-1173-491F-95A8-5DA0D92B6325",
+      "target_language": "glg",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví galicijsky. Funguje to takto — naučím tě něco galicijsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas galicijsky. Potom pozorně poslouchej rodilé mluvčí galicijštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit galicijsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "1BC7D191-1173-491F-95A8-5DA0D92B6325.mp3",
+      "size_kb": 776
+    },
+    {
+      "uuid": "FFD0448A-AA20-4A74-B671-7019A867A6BB",
+      "target_language": "hun",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví maďarsky. Funguje to takto — naučím tě něco maďarsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas maďarsky. Potom pozorně poslouchej rodilé mluvčí maďarštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit maďarsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "FFD0448A-AA20-4A74-B671-7019A867A6BB.mp3",
+      "size_kb": 691.1
+    },
+    {
+      "uuid": "32EEA2CC-DA5F-472B-BF81-217C02BDB060",
+      "target_language": "heb",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví hebrejsky. Funguje to takto — naučím tě něco hebrejsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas hebrejsky. Potom pozorně poslouchej rodilé mluvčí hebrejštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit hebrejsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "32EEA2CC-DA5F-472B-BF81-217C02BDB060.mp3",
+      "size_kb": 768.6
+    },
+    {
+      "uuid": "9DA8A7E2-136F-49CF-AE4F-85284A6D2820",
+      "target_language": "guj",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví gudžarátsky. Funguje to takto — naučím tě něco gudžarátsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas gudžarátsky. Potom pozorně poslouchej rodilé mluvčí gudžarátštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit gudžarátsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "9DA8A7E2-136F-49CF-AE4F-85284A6D2820.mp3",
+      "size_kb": 882.5
+    },
+    {
+      "uuid": "36A5E940-8BE2-4ED8-985D-679CF4EA04FD",
+      "target_language": "hye",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví arménsky. Funguje to takto — naučím tě něco arménsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas arménsky. Potom pozorně poslouchej rodilé mluvčí arménštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit arménsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "36A5E940-8BE2-4ED8-985D-679CF4EA04FD.mp3",
+      "size_kb": 817.2
+    },
+    {
+      "uuid": "BA39F8DE-C622-4EDD-A1E5-6AD5A5DA28F4",
+      "target_language": "isl",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví islandsky. Funguje to takto — naučím tě něco islandsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas islandsky. Potom pozorně poslouchej rodilé mluvčí islandštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit islandsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "BA39F8DE-C622-4EDD-A1E5-6AD5A5DA28F4.mp3",
+      "size_kb": 694.7
+    },
+    {
+      "uuid": "F3DC1D13-00AD-405A-BC3F-B7EAD561E90A",
+      "target_language": "jav",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví jávsky. Funguje to takto — naučím tě něco jávsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas jávsky. Potom pozorně poslouchej rodilé mluvčí jávštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit jávsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "F3DC1D13-00AD-405A-BC3F-B7EAD561E90A.mp3",
+      "size_kb": 767.4
+    },
+    {
+      "uuid": "7DAA6234-019E-4546-8F23-DC351E152F8C",
+      "target_language": "kan",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví kannadsky. Funguje to takto — naučím tě něco kannadsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas kannadsky. Potom pozorně poslouchej rodilé mluvčí kannadštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit kannadsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "7DAA6234-019E-4546-8F23-DC351E152F8C.mp3",
+      "size_kb": 748.6
+    },
+    {
+      "uuid": "4E0C0CDB-84EC-4908-927E-F299285CF31D",
+      "target_language": "kat",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví gruzínsky. Funguje to takto — naučím tě něco gruzínsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas gruzínsky. Potom pozorně poslouchej rodilé mluvčí gruzínštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit gruzínsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "4E0C0CDB-84EC-4908-927E-F299285CF31D.mp3",
+      "size_kb": 774.7
+    },
+    {
+      "uuid": "2D57A790-D7BB-42E9-B9CD-04A994F6EEF8",
+      "target_language": "lav",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví lotyšsky. Funguje to takto — naučím tě něco lotyšsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas lotyšsky. Potom pozorně poslouchej rodilé mluvčí lotyštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit lotyšsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "2D57A790-D7BB-42E9-B9CD-04A994F6EEF8.mp3",
+      "size_kb": 771.1
+    },
+    {
+      "uuid": "CEC6B0AF-6BFC-403E-8D6E-F38EB08EFFF3",
+      "target_language": "kaz",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví kazašsky. Funguje to takto — naučím tě něco kazašsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas kazašsky. Potom pozorně poslouchej rodilé mluvčí kazaštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit kazašsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "CEC6B0AF-6BFC-403E-8D6E-F38EB08EFFF3.mp3",
+      "size_kb": 823.7
+    },
+    {
+      "uuid": "43021F04-45A2-4EC9-A778-694C4E1F3CCA",
+      "target_language": "lit",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví litevsky. Funguje to takto — naučím tě něco litevsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas litevsky. Potom pozorně poslouchej rodilé mluvčí litevštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit litevsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "43021F04-45A2-4EC9-A778-694C4E1F3CCA.mp3",
+      "size_kb": 736
+    },
+    {
+      "uuid": "BCA72A1A-595F-4CE9-B7FE-582C34E75B0B",
+      "target_language": "mar",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví maráthsky. Funguje to takto — naučím tě něco maráthsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas maráthsky. Potom pozorně poslouchej rodilé mluvčí maráthštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit maráthsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "BCA72A1A-595F-4CE9-B7FE-582C34E75B0B.mp3",
+      "size_kb": 757.2
+    },
+    {
+      "uuid": "FD86C2B7-6F7C-43DF-A77C-B45AB887E62B",
+      "target_language": "kir",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví kyrgyzsky. Funguje to takto — naučím tě něco kyrgyzsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas kyrgyzsky. Potom pozorně poslouchej rodilé mluvčí kyrgyzštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit kyrgyzsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "FD86C2B7-6F7C-43DF-A77C-B45AB887E62B.mp3",
+      "size_kb": 872.3
+    },
+    {
+      "uuid": "8FD3746B-3EC4-4273-BBAC-5782A2E6FFAD",
+      "target_language": "mal",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví malajálamsky. Funguje to takto — naučím tě něco malajálamsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas malajálamsky. Potom pozorně poslouchej rodilé mluvčí malajálamštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit malajálamsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "8FD3746B-3EC4-4273-BBAC-5782A2E6FFAD.mp3",
+      "size_kb": 808.6
+    },
+    {
+      "uuid": "97AD2364-EF20-4BF2-BC5A-8A7F6D18C1A5",
+      "target_language": "lin",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví lingalsky. Funguje to takto — naučím tě něco v lingale, pak řeknu něco česky a ty dostaneš šanci to říct nahlas v lingale. Potom pozorně poslouchej rodilé mluvčí lingaly, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit v lingale dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "97AD2364-EF20-4BF2-BC5A-8A7F6D18C1A5.mp3",
+      "size_kb": 803.7
+    },
+    {
+      "uuid": "BD53DD81-A467-4E5F-A2E4-3560080D9E4A",
+      "target_language": "ltz",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví lucembursky. Funguje to takto — naučím tě něco lucembursky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas lucembursky. Potom pozorně poslouchej rodilé mluvčí lucemburštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit lucembursky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "BD53DD81-A467-4E5F-A2E4-3560080D9E4A.mp3",
+      "size_kb": 763.7
+    },
+    {
+      "uuid": "EEE8E0B1-F5F8-42E7-8D20-2EC09712D218",
+      "target_language": "mkd",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví makedonsky. Funguje to takto — naučím tě něco makedonsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas makedonsky. Potom pozorně poslouchej rodilé mluvčí makedonštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit makedonsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "EEE8E0B1-F5F8-42E7-8D20-2EC09712D218.mp3",
+      "size_kb": 802.5
+    },
+    {
+      "uuid": "AD4A6B28-4116-4C81-A725-B1493C1B0772",
+      "target_language": "nep",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví nepálsky. Funguje to takto — naučím tě něco nepálsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas nepálsky. Potom pozorně poslouchej rodilé mluvčí nepálštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit nepálsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "AD4A6B28-4116-4C81-A725-B1493C1B0772.mp3",
+      "size_kb": 851.1
+    },
+    {
+      "uuid": "A146E079-0AE0-46A4-8F4F-2273EC52C7BE",
+      "target_language": "nor",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví norsky. Funguje to takto — naučím tě něco norsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas norsky. Potom pozorně poslouchej rodilé mluvčí norštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit norsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "A146E079-0AE0-46A4-8F4F-2273EC52C7BE.mp3",
+      "size_kb": 724.9
+    },
+    {
+      "uuid": "CC9EC74A-B370-42BB-9464-5661173FA1F6",
+      "target_language": "nya",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví čičevsky. Funguje to takto — naučím tě něco v čičevštině, pak řeknu něco česky a ty dostaneš šanci to říct nahlas v čičevštině. Potom pozorně poslouchej rodilé mluvčí čičevštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit v čičevštině dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "CC9EC74A-B370-42BB-9464-5661173FA1F6.mp3",
+      "size_kb": 863.7
+    },
+    {
+      "uuid": "C8A392DF-092E-4F75-AFD7-DE7B93EE24A1",
+      "target_language": "pan",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví paňdžábsky. Funguje to takto — naučím tě něco paňdžábsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas paňdžábsky. Potom pozorně poslouchej rodilé mluvčí paňdžábštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit paňdžábsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "C8A392DF-092E-4F75-AFD7-DE7B93EE24A1.mp3",
+      "size_kb": 726.2
+    },
+    {
+      "uuid": "EE3CBC8E-DAC0-46D1-AD08-1B873C1C959F",
+      "target_language": "pus",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví paštunsky. Funguje to takto — naučím tě něco paštunsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas paštunsky. Potom pozorně poslouchej rodilé mluvčí paštunštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit paštunsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "EE3CBC8E-DAC0-46D1-AD08-1B873C1C959F.mp3",
+      "size_kb": 742.5
+    },
+    {
+      "uuid": "073A029C-180F-4DFA-B9A7-2DED16951318",
+      "target_language": "slv",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví slovinsky. Funguje to takto — naučím tě něco slovinsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas slovinsky. Potom pozorně poslouchej rodilé mluvčí slovinštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit slovinsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "073A029C-180F-4DFA-B9A7-2DED16951318.mp3",
+      "size_kb": 744.9
+    },
+    {
+      "uuid": "A566CAF4-4771-4895-A770-D84A9A4BDA51",
+      "target_language": "snd",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví sindhsky. Funguje to takto — naučím tě něco sindhsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas sindhsky. Potom pozorně poslouchej rodilé mluvčí sindhštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit sindhsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "A566CAF4-4771-4895-A770-D84A9A4BDA51.mp3",
+      "size_kb": 817.2
+    },
+    {
+      "uuid": "0EF9C2AD-5532-4E7A-B014-269B13D08AB7",
+      "target_language": "srp",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví srbsky. Funguje to takto — naučím tě něco srbsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas srbsky. Potom pozorně poslouchej rodilé mluvčí srbštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit srbsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "0EF9C2AD-5532-4E7A-B014-269B13D08AB7.mp3",
+      "size_kb": 717.2
+    },
+    {
+      "uuid": "18DCB575-26EF-49E2-AF6E-8067EC5DAFCB",
+      "target_language": "som",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví somálsky. Funguje to takto — naučím tě něco somálsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas somálsky. Potom pozorně poslouchej rodilé mluvčí somálštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit somálsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "18DCB575-26EF-49E2-AF6E-8067EC5DAFCB.mp3",
+      "size_kb": 823.7
+    },
+    {
+      "uuid": "BEC99617-4CEA-4999-820C-C26AE4E5C59D",
+      "target_language": "tel",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví telugsky. Funguje to takto — naučím tě něco telugsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas telugsky. Potom pozorně poslouchej rodilé mluvčí telugštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit telugsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "BEC99617-4CEA-4999-820C-C26AE4E5C59D.mp3",
+      "size_kb": 786.2
+    },
+    {
+      "uuid": "EE69BF63-CA1D-45C4-BB40-31B020A60AA0",
+      "target_language": "swa",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví svahilsky. Funguje to takto — naučím tě něco svahilsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas svahilsky. Potom pozorně poslouchej rodilé mluvčí svahilštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit svahilsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "EE69BF63-CA1D-45C4-BB40-31B020A60AA0.mp3",
+      "size_kb": 759.6
+    },
+    {
+      "uuid": "E6F2E64E-B812-47E7-AC9D-BFC6D0CF491D",
+      "target_language": "tha",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví thajsky. Funguje to takto — naučím tě něco thajsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas thajsky. Potom pozorně poslouchej rodilé mluvčí thajštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit thajsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "E6F2E64E-B812-47E7-AC9D-BFC6D0CF491D.mp3",
+      "size_kb": 749.8
+    },
+    {
+      "uuid": "68EA44F3-0B7F-458B-9EB7-1498A4726C8A",
+      "target_language": "urd",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví urdsky. Funguje to takto — naučím tě něco urdsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas urdsky. Potom pozorně poslouchej rodilé mluvčí urdštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit urdsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "68EA44F3-0B7F-458B-9EB7-1498A4726C8A.mp3",
+      "size_kb": 732.3
+    },
+    {
+      "uuid": "58848631-76F5-4296-9F29-8A01891B4D7B",
+      "target_language": "vie",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví vietnamsky. Funguje to takto — naučím tě něco vietnamsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas vietnamsky. Potom pozorně poslouchej rodilé mluvčí vietnamštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit vietnamsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "58848631-76F5-4296-9F29-8A01891B4D7B.mp3",
+      "size_kb": 778.4
+    },
+    {
+      "uuid": "772F8252-377F-4E5C-B7D4-B625F1D19533",
+      "target_language": "afb",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví zálivovou arabštinou. Funguje to takto — naučím tě něco v zálivové arabštině, pak řeknu něco česky a ty dostaneš šanci to říct nahlas v zálivové arabštině. Potom pozorně poslouchej rodilé mluvčí zálivové arabštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit v zálivové arabštině dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "772F8252-377F-4E5C-B7D4-B625F1D19533.mp3",
+      "size_kb": 802.5
+    },
+    {
+      "uuid": "008ABCA3-F762-4FC7-BBCB-EEA9DE00463F",
+      "target_language": "aii",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví suretsky. Funguje to takto — naučím tě něco v suretu, pak řeknu něco česky a ty dostaneš šanci to říct nahlas v suretu. Potom pozorně poslouchej rodilé mluvčí suretu, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit v suretu dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "008ABCA3-F762-4FC7-BBCB-EEA9DE00463F.mp3",
+      "size_kb": 657.2
+    },
+    {
+      "uuid": "F104DAD9-ADE0-4523-9BAB-0704F2018587",
+      "target_language": "ain",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví ainsky. Funguje to takto — naučím tě něco v ainštině, pak řeknu něco česky a ty dostaneš šanci to říct nahlas v ainštině. Potom pozorně poslouchej rodilé mluvčí ainštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit v ainštině dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "F104DAD9-ADE0-4523-9BAB-0704F2018587.mp3",
+      "size_kb": 852.3
+    },
+    {
+      "uuid": "3F44FFEA-5D67-4022-9A8B-0C25F55FEF6E",
+      "target_language": "ary",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví marockou arabštinou. Funguje to takto — naučím tě něco marockou arabštinou, pak řeknu něco česky a ty dostaneš šanci to říct nahlas marockou arabštinou. Potom pozorně poslouchej rodilé mluvčí marocké arabštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit marockou arabštinou dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "3F44FFEA-5D67-4022-9A8B-0C25F55FEF6E.mp3",
+      "size_kb": 766.2
+    },
+    {
+      "uuid": "E81A711E-0C0F-4A7E-A3F5-B833BA2686D2",
+      "target_language": "amh",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví amharsky. Funguje to takto — naučím tě něco amharsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas amharsky. Potom pozorně poslouchej rodilé mluvčí amharštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit amharsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "E81A711E-0C0F-4A7E-A3F5-B833BA2686D2.mp3",
+      "size_kb": 876
+    },
+    {
+      "uuid": "4F3BC82E-9CA6-4883-AD4E-2371AA30A56B",
+      "target_language": "apc",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví levantskou arabštinou. Funguje to takto — naučím tě něco levantskou arabštinou, pak řeknu něco česky a ty dostaneš šanci to říct nahlas levantskou arabštinou. Potom pozorně poslouchej rodilé mluvčí levantské arabštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit levantskou arabštinou dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "4F3BC82E-9CA6-4883-AD4E-2371AA30A56B.mp3",
+      "size_kb": 866.2
+    },
+    {
+      "uuid": "A1EE94C7-AD3A-4F60-9C96-920B1CFE29BD",
+      "target_language": "cor",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví kornsky. Funguje to takto — naučím tě něco kornsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas kornsky. Potom pozorně poslouchej rodilé mluvčí kornštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit kornsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "A1EE94C7-AD3A-4F60-9C96-920B1CFE29BD.mp3",
+      "size_kb": 691.1
+    },
+    {
+      "uuid": "4966FFA1-5447-46B5-8AC2-888ABBBE7581",
+      "target_language": "bre",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví bretonsky. Funguje to takto — naučím tě něco bretonsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas bretonsky. Potom pozorně poslouchej rodilé mluvčí bretonštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit bretonsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "4966FFA1-5447-46B5-8AC2-888ABBBE7581.mp3",
+      "size_kb": 678.4
+    },
+    {
+      "uuid": "D7F3C76F-1332-4427-BA08-F79374A7E339",
+      "target_language": "glv",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví mansky. Funguje to takto — naučím tě něco mansky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas mansky. Potom pozorně poslouchej rodilé mluvčí manštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit mansky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "D7F3C76F-1332-4427-BA08-F79374A7E339.mp3",
+      "size_kb": 744.9
+    },
+    {
+      "uuid": "9AB6448F-8BAE-4C35-A98E-C7E664D2FF09",
+      "target_language": "gla",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví skotsky gaelsky. Funguje to takto — naučím tě něco skotsky gaelsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas skotsky gaelsky. Potom pozorně poslouchej rodilé mluvčí skotské gaelštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit skotsky gaelsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "9AB6448F-8BAE-4C35-A98E-C7E664D2FF09.mp3",
+      "size_kb": 840.9
+    },
+    {
+      "uuid": "B78B9F2C-3E88-46E3-A500-948032BC0869",
+      "target_language": "eus",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví baskicky. Funguje to takto — naučím tě něco baskicky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas baskicky. Potom pozorně poslouchej rodilé mluvčí baskičtiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit baskicky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "B78B9F2C-3E88-46E3-A500-948032BC0869.mp3",
+      "size_kb": 766.2
+    },
+    {
+      "uuid": "04530E1A-B07A-4207-82FD-861FBC78E3AC",
+      "target_language": "hak",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví hakka. Funguje to takto — naučím tě něco v hakštině, pak řeknu něco česky a ty dostaneš šanci to říct nahlas v hakštině. Potom pozorně poslouchej rodilé mluvčí hakštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit v hakštině dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "04530E1A-B07A-4207-82FD-861FBC78E3AC.mp3",
+      "size_kb": 706.2
+    },
+    {
+      "uuid": "AB967EBC-15F5-4570-8965-F3A2123B2ADF",
+      "target_language": "grn",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví guaransky. Funguje to takto — naučím tě něco guaransky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas guaransky. Potom pozorně poslouchej rodilé mluvčí guaranštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit guaransky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "AB967EBC-15F5-4570-8965-F3A2123B2ADF.mp3",
+      "size_kb": 871.1
+    },
+    {
+      "uuid": "B5760C4D-8B6C-430A-84D7-CD53162E3660",
+      "target_language": "ibo",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví igbosky. Funguje to takto — naučím tě něco v igboštině, pak řeknu něco česky a ty dostaneš šanci to říct nahlas v igboštině. Potom pozorně poslouchej rodilé mluvčí igboštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit v igboštině dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "B5760C4D-8B6C-430A-84D7-CD53162E3660.mp3",
+      "size_kb": 899.6
+    },
+    {
+      "uuid": "4EBD7752-F9FE-46A4-B6DB-43E96FDF78D0",
+      "target_language": "kur",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví kurdsky. Funguje to takto — naučím tě něco kurdsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas kurdsky. Potom pozorně poslouchej rodilé mluvčí kurdštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit kurdsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "4EBD7752-F9FE-46A4-B6DB-43E96FDF78D0.mp3",
+      "size_kb": 863.7
+    },
+    {
+      "uuid": "7FA59557-FE9E-45B6-980B-268803C59EC8",
+      "target_language": "moh",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví mohawksky. Funguje to takto — naučím tě něco v mohawkštině, pak řeknu něco česky a ty dostaneš šanci to říct nahlas v mohawkštině. Potom pozorně poslouchej rodilé mluvčí mohawkštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit v mohawkštině dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "7FA59557-FE9E-45B6-980B-268803C59EC8.mp3",
+      "size_kb": 812.3
+    },
+    {
+      "uuid": "DB82EB8C-9025-4A3A-88B8-8B31E542705B",
+      "target_language": "nap",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví neapolsky. Funguje to takto — naučím tě něco neapolsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas neapolsky. Potom pozorně poslouchej rodilé mluvčí neapolštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit neapolsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "DB82EB8C-9025-4A3A-88B8-8B31E542705B.mp3",
+      "size_kb": 740.9
+    },
+    {
+      "uuid": "555C1AAF-9560-43E4-8063-BDCABF4F0BA0",
+      "target_language": "nav",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví navažsky. Funguje to takto — naučím tě něco v navažštině, pak řeknu něco česky a ty dostaneš šanci to říct nahlas v navažštině. Potom pozorně poslouchej rodilé mluvčí navažštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit v navažštině dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "555C1AAF-9560-43E4-8063-BDCABF4F0BA0.mp3",
+      "size_kb": 737.2
+    },
+    {
+      "uuid": "F7BFE04F-1DD2-4780-B60B-24087219961F",
+      "target_language": "nan",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví min nan. Funguje to takto — naučím tě něco v min nan, pak řeknu něco česky a ty dostaneš šanci to říct nahlas v min nan. Potom pozorně poslouchej rodilé mluvčí min nan, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit v min nan dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "F7BFE04F-1DD2-4780-B60B-24087219961F.mp3",
+      "size_kb": 876
+    },
+    {
+      "uuid": "9AE1A383-F84F-43B3-9DB4-412F2C675D1E",
+      "target_language": "que",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví kečuánsky. Funguje to takto — naučím tě něco kečuánsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas kečuánsky. Potom pozorně poslouchej rodilé mluvčí kečuánštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit kečuánsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "9AE1A383-F84F-43B3-9DB4-412F2C675D1E.mp3",
+      "size_kb": 773.5
+    },
+    {
+      "uuid": "F8A0ADB0-65A8-429F-881D-65F62443F8B0",
+      "target_language": "por_BR",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví brazilsky portugalsky. Funguje to takto — naučím tě něco brazilsky portugalsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas brazilsky portugalsky. Potom pozorně poslouchej rodilé mluvčí brazilské portugalštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit brazilsky portugalsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "F8A0ADB0-65A8-429F-881D-65F62443F8B0.mp3",
+      "size_kb": 913.5
+    },
+    {
+      "uuid": "9513D708-CA90-485E-87FA-8AC98AEA8D21",
+      "target_language": "oci",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví okcitánsky. Funguje to takto — naučím tě něco okcitánsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas okcitánsky. Potom pozorně poslouchej rodilé mluvčí okcitánštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit okcitánsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "9513D708-CA90-485E-87FA-8AC98AEA8D21.mp3",
+      "size_kb": 808.6
+    },
+    {
+      "uuid": "38869FBC-8CEA-40AA-823D-27F2526494A3",
+      "target_language": "por_EU",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví evropsky portugalsky. Funguje to takto — naučím tě něco evropsky portugalsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas evropsky portugalsky. Potom pozorně poslouchej rodilé mluvčí evropské portugalštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit evropsky portugalsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "38869FBC-8CEA-40AA-823D-27F2526494A3.mp3",
+      "size_kb": 864.9
+    },
+    {
+      "uuid": "FBBBD720-83A5-432A-AFD9-408467F3D6A5",
+      "target_language": "roh",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví rétorománsky. Funguje to takto — naučím tě něco rétorománsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas rétorománsky. Potom pozorně poslouchej rodilé mluvčí rétorománštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit rétorománsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "FBBBD720-83A5-432A-AFD9-408467F3D6A5.mp3",
+      "size_kb": 837.2
+    },
+    {
+      "uuid": "CB371F51-E10C-471A-AD16-0724A488A17A",
+      "target_language": "scn",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví sicilsky. Funguje to takto — naučím tě něco sicilsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas sicilsky. Potom pozorně poslouchej rodilé mluvčí sicilštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit sicilsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "CB371F51-E10C-471A-AD16-0724A488A17A.mp3",
+      "size_kb": 798.4
+    },
+    {
+      "uuid": "78271C42-9853-4A66-AC68-C2F9E8891112",
+      "target_language": "sme",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví severnosámsky. Funguje to takto — naučím tě něco severnosámsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas severnosámsky. Potom pozorně poslouchej rodilé mluvčí severnosámštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit severnosámsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "78271C42-9853-4A66-AC68-C2F9E8891112.mp3",
+      "size_kb": 873.5
+    },
+    {
+      "uuid": "F1F985C8-101F-4C0A-86CE-021B9CA09763",
+      "target_language": "smj",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví lulsky sámsky. Funguje to takto — naučím tě něco lulskou sámštinou, pak řeknu něco česky a ty dostaneš šanci to říct nahlas lulskou sámštinou. Potom pozorně poslouchej rodilé mluvčí lulské sámštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit lulskou sámštinou dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "F1F985C8-101F-4C0A-86CE-021B9CA09763.mp3",
+      "size_kb": 799.6
+    },
+    {
+      "uuid": "C0353CE2-80B5-4E39-B4FE-390EE606E5D2",
+      "target_language": "smn",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví inarijskosámsky. Funguje to takto — naučím tě něco inarijskosámsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas inarijskosámsky. Potom pozorně poslouchej rodilé mluvčí inarijské sámštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit inarijskosámsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "C0353CE2-80B5-4E39-B4FE-390EE606E5D2.mp3",
+      "size_kb": 807.4
+    },
+    {
+      "uuid": "3F329965-C4FC-435F-A16C-6E6162EA07D7",
+      "target_language": "sms",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví skoltskosámsky. Funguje to takto — naučím tě něco skoltskosámsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas skoltskosámsky. Potom pozorně poslouchej rodilé mluvčí skoltské sámštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit skoltskosámsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "3F329965-C4FC-435F-A16C-6E6162EA07D7.mp3",
+      "size_kb": 808.6
+    },
+    {
+      "uuid": "29F356AE-6A2E-451A-B0C1-42E58380FC29",
+      "target_language": "spa_EU",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví evropsky španělsky. Funguje to takto — naučím tě něco evropskou španělštinou, pak řeknu něco česky a ty dostaneš šanci to říct nahlas evropskou španělštinou. Potom pozorně poslouchej rodilé mluvčí evropské španělštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit evropskou španělštinou dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "29F356AE-6A2E-451A-B0C1-42E58380FC29.mp3",
+      "size_kb": 907.4
+    },
+    {
+      "uuid": "94EF0C39-84F4-491B-A7A8-EE4366F32D14",
+      "target_language": "spa_SA",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví jihoamericky španělsky. Funguje to takto — naučím tě něco jihoamerickou španělštinou, pak řeknu něco česky a ty dostaneš šanci to říct nahlas jihoamerickou španělštinou. Potom pozorně poslouchej rodilé mluvčí jihoamerické španělštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit jihoamerickou španělštinou dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "94EF0C39-84F4-491B-A7A8-EE4366F32D14.mp3",
+      "size_kb": 863.7
+    },
+    {
+      "uuid": "2A3FA43F-9AFF-46E7-83AF-3553B691EAF5",
+      "target_language": "uig",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví ujgursky. Funguje to takto — naučím tě něco ujgursky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas ujgursky. Potom pozorně poslouchej rodilé mluvčí ujgurštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit ujgursky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "2A3FA43F-9AFF-46E7-83AF-3553B691EAF5.mp3",
+      "size_kb": 814.7
+    },
+    {
+      "uuid": "E0008193-C84E-4DAB-BA15-1C7DA7F2EE67",
+      "target_language": "srd",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví sardinsky. Funguje to takto — naučím tě něco sardinsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas sardinsky. Potom pozorně poslouchej rodilé mluvčí sardinštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit sardinsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "E0008193-C84E-4DAB-BA15-1C7DA7F2EE67.mp3",
+      "size_kb": 806.2
+    },
+    {
+      "uuid": "1F00454A-C307-4962-B9D5-FFC9E774F662",
+      "target_language": "wuu",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví wu. Funguje to takto — naučím tě něco ve wu, pak řeknu něco česky a ty dostaneš šanci to říct nahlas ve wu. Potom pozorně poslouchej rodilé mluvčí wu, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit ve wu dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "1F00454A-C307-4962-B9D5-FFC9E774F662.mp3",
+      "size_kb": 823.7
+    },
+    {
+      "uuid": "5111F839-79E6-43FF-8C2E-BF0045DDA268",
+      "target_language": "yue",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví kantonsky. Funguje to takto — naučím tě něco kantonsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas kantonsky. Potom pozorně poslouchej rodilé mluvčí kantonštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit kantonsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "5111F839-79E6-43FF-8C2E-BF0045DDA268.mp3",
+      "size_kb": 788.6
+    },
+    {
+      "uuid": "83A35D2E-2EBE-43E6-8D20-8A8E0881983B",
+      "target_language": "xho",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví khosky. Funguje to takto — naučím tě něco v khoštině, pak řeknu něco česky a ty dostaneš šanci to říct nahlas v khoštině. Potom pozorně poslouchej rodilé mluvčí khoštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit v khoštině dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "83A35D2E-2EBE-43E6-8D20-8A8E0881983B.mp3",
+      "size_kb": 787.4
+    },
+    {
+      "uuid": "CDC31985-8229-4DA0-9B54-3074FA1FFBEB",
+      "target_language": "yor",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví jorubsky. Funguje to takto — naučím tě něco jorubsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas jorubsky. Potom pozorně poslouchej rodilé mluvčí jorubštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit jorubsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "CDC31985-8229-4DA0-9B54-3074FA1FFBEB.mp3",
+      "size_kb": 766.2
+    },
+    {
+      "uuid": "D71A8300-7AA5-4320-80B7-B776BAA858AA",
+      "target_language": "yid",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví jidiš. Funguje to takto — naučím tě něco jidiš, pak řeknu něco česky a ty dostaneš šanci to říct nahlas jidiš. Potom pozorně poslouchej rodilé mluvčí jidiš, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit jidiš dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "D71A8300-7AA5-4320-80B7-B776BAA858AA.mp3",
+      "size_kb": 807.4
+    },
+    {
+      "uuid": "8B5DDAB3-C9B9-45B0-95EC-8D4127F5829A",
+      "target_language": "zul",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví zulsky. Funguje to takto — naučím tě něco zulsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas zulsky. Potom pozorně poslouchej rodilé mluvčí zulštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit zulsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "8B5DDAB3-C9B9-45B0-95EC-8D4127F5829A.mp3",
+      "size_kb": 840.9
+    },
+    {
+      "uuid": "C5915ADC-4888-413D-9050-6F8483412BCB",
+      "target_language": "ara_lb",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví libanonskou arabštinou. Funguje to takto — naučím tě něco arabsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas arabsky. Potom pozorně poslouchej rodilé mluvčí arabštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit arabsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "C5915ADC-4888-413D-9050-6F8483412BCB.mp3",
+      "size_kb": 617.6,
+      "duration_ms": 45912
+    },
+    {
+      "uuid": "369DFBC4-CBD3-47E6-AA80-7BF5ABAABB29",
+      "target_language": "ara_sy",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví syrsky arabsky. Funguje to takto — naučím tě něco arabsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas arabsky. Potom pozorně poslouchej rodilé mluvčí arabštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit arabsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "369DFBC4-CBD3-47E6-AA80-7BF5ABAABB29.mp3",
+      "size_kb": 600.1,
+      "duration_ms": 44904
+    },
+    {
+      "uuid": "875EFE58-3505-4561-9FBA-AF6B741BB666",
+      "target_language": "ara_eg",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se člověkem, který mluví egyptskou arabštinou. Funguje to takto — naučím tě něco arabsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas arabsky. Potom pozorně poslouchej rodilé mluvčí arabštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit arabsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "875EFE58-3505-4561-9FBA-AF6B741BB666.mp3",
+      "size_kb": 626.4,
+      "duration_ms": 46944
+    },
+    {
+      "uuid": "32FF6058-13FF-4690-AE74-0900F3E52003",
+      "target_language": "ara",
+      "text": "Vítej v této neobvyklé hře, která ti pomůže stát se rodilého mluvčího moderní standardní arabštiny. Funguje to takto — naučím tě něco arabsky, pak řeknu něco česky a ty dostaneš šanci to říct nahlas arabsky. Potom pozorně poslouchej rodilé mluvčí arabštiny, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit arabsky dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+      "file": "32FF6058-13FF-4690-AE74-0900F3E52003.mp3",
+      "duration_ms": 44256
+    }
+  ],
+  "generated_at": "2026-05-01T15:42:33.913Z",
+  "regenerated_at": "2026-05-18T12:05:50.797Z"
+}

@@ -1,0 +1,743 @@
+{
+  "known_language": "ces",
+  "known_language_display": "Czech",
+  "template": "Vítej v této neobvyklé hře, která ti pomůže stát se {a_target_speaker}. Funguje to takto — naučím tě něco {in_target}, pak řeknu něco {in_known} a ty dostaneš šanci to říct nahlas {in_target}. Potom pozorně poslouchej {target_speakers}, kteří ti ukážou, jak to zní. Je důležité, abys v pauzách něco říkal, protože právě tak se učíš. I když si nejsi jistý, zkus říct všechno, co dokážeš, a začneš mluvit {in_target} dříve, než si myslíš. Čím víc to bereš jako hru, čím víc si s tím hraješ, čím víc se směješ svým chybám, tím lépe to půjde a tím rychleji se naučíš. Tak pojďme začít hrát.",
+  "in_known": "česky",
+  "targets": {
+    "afb": {
+      "in_target": "v zálivové arabštině",
+      "a_target_speaker": "člověkem, který mluví zálivovou arabštinou",
+      "target_speakers": "rodilé mluvčí zálivové arabštiny"
+    },
+    "afr": {
+      "in_target": "v afrikánštině",
+      "a_target_speaker": "člověkem, který mluví afrikánsky",
+      "target_speakers": "rodilé mluvčí afrikánštiny"
+    },
+    "aii": {
+      "in_target": "v suretu",
+      "a_target_speaker": "člověkem, který mluví suretsky",
+      "target_speakers": "rodilé mluvčí suretu"
+    },
+    "ain": {
+      "in_target": "v ainštině",
+      "a_target_speaker": "člověkem, který mluví ainsky",
+      "target_speakers": "rodilé mluvčí ainštiny"
+    },
+    "ajp": {
+      "in_target": "palestinskou arabštinou",
+      "a_target_speaker": "člověkem, který mluví palestinskou arabštinou",
+      "target_speakers": "rodilé mluvčí palestinské arabštiny"
+    },
+    "amh": {
+      "in_target": "amharsky",
+      "a_target_speaker": "člověkem, který mluví amharsky",
+      "target_speakers": "rodilé mluvčí amharštiny"
+    },
+    "apc": {
+      "in_target": "levantskou arabštinou",
+      "a_target_speaker": "člověkem, který mluví levantskou arabštinou",
+      "target_speakers": "rodilé mluvčí levantské arabštiny"
+    },
+    "ara": {
+      "in_target": "arabsky",
+      "a_target_speaker": "rodilého mluvčího moderní standardní arabštiny",
+      "target_speakers": "rodilé mluvčí arabštiny"
+    },
+    "arg": {
+      "in_target": "aragonsky",
+      "a_target_speaker": "člověkem, který mluví aragonsky",
+      "target_speakers": "rodilé mluvčí aragonštiny"
+    },
+    "ary": {
+      "in_target": "marockou arabštinou",
+      "a_target_speaker": "člověkem, který mluví marockou arabštinou",
+      "target_speakers": "rodilé mluvčí marocké arabštiny"
+    },
+    "asm": {
+      "in_target": "ásámsky",
+      "a_target_speaker": "člověkem, který mluví ásámsky",
+      "target_speakers": "rodilé mluvčí ásámštiny"
+    },
+    "ast": {
+      "in_target": "astursky",
+      "a_target_speaker": "člověkem, který mluví astursky",
+      "target_speakers": "rodilé mluvčí asturštiny"
+    },
+    "aze": {
+      "in_target": "ázerbájdžánsky",
+      "a_target_speaker": "člověkem, který mluví ázerbájdžánsky",
+      "target_speakers": "rodilé mluvčí ázerbájdžánštiny"
+    },
+    "bar": {
+      "in_target": "bavorsky",
+      "a_target_speaker": "člověkem, který mluví bavorsky",
+      "target_speakers": "rodilé mluvčí bavorštiny"
+    },
+    "bel": {
+      "in_target": "bělorusky",
+      "a_target_speaker": "člověkem, který mluví bělorusky",
+      "target_speakers": "rodilé mluvčí běloruštiny"
+    },
+    "ben": {
+      "in_target": "bengálsky",
+      "a_target_speaker": "člověkem, který mluví bengálsky",
+      "target_speakers": "rodilé mluvčí bengálštiny"
+    },
+    "bos": {
+      "in_target": "bosensky",
+      "a_target_speaker": "člověkem, který mluví bosensky",
+      "target_speakers": "rodilé mluvčí bosenštiny"
+    },
+    "bre": {
+      "in_target": "bretonsky",
+      "a_target_speaker": "člověkem, který mluví bretonsky",
+      "target_speakers": "rodilé mluvčí bretonštiny"
+    },
+    "bul": {
+      "in_target": "bulharsky",
+      "a_target_speaker": "člověkem, který mluví bulharsky",
+      "target_speakers": "rodilé mluvčí bulharštiny"
+    },
+    "cat": {
+      "in_target": "katalánsky",
+      "a_target_speaker": "člověkem, který mluví katalánsky",
+      "target_speakers": "rodilé mluvčí katalánštiny"
+    },
+    "ceb": {
+      "in_target": "cebuánsky",
+      "a_target_speaker": "člověkem, který mluví cebuánsky",
+      "target_speakers": "rodilé mluvčí cebuánštiny"
+    },
+    "chr": {
+      "in_target": "v čerokí",
+      "a_target_speaker": "člověkem, který mluví čerokí",
+      "target_speakers": "rodilé mluvčí čerokí"
+    },
+    "cmn": {
+      "in_target": "čínsky",
+      "a_target_speaker": "člověkem, který mluví čínsky",
+      "target_speakers": "rodilé mluvčí čínštiny"
+    },
+    "cor": {
+      "in_target": "kornsky",
+      "a_target_speaker": "člověkem, který mluví kornsky",
+      "target_speakers": "rodilé mluvčí kornštiny"
+    },
+    "cos": {
+      "in_target": "korsicky",
+      "a_target_speaker": "člověkem, který mluví korsicky",
+      "target_speakers": "rodilé mluvčí korsičtiny"
+    },
+    "csb": {
+      "in_target": "kašubsky",
+      "a_target_speaker": "člověkem, který mluví kašubsky",
+      "target_speakers": "rodilé mluvčí kašubštiny"
+    },
+    "cym": {
+      "in_target": "velšsky",
+      "a_target_speaker": "člověkem, který mluví velšsky",
+      "target_speakers": "rodilé mluvčí velštiny"
+    },
+    "dan": {
+      "in_target": "dánsky",
+      "a_target_speaker": "člověkem, který mluví dánsky",
+      "target_speakers": "rodilé mluvčí dánštiny"
+    },
+    "deu": {
+      "in_target": "německy",
+      "a_target_speaker": "člověkem, který mluví německy",
+      "target_speakers": "rodilé mluvčí němčiny"
+    },
+    "deu_AT": {
+      "in_target": "německy",
+      "a_target_speaker": "člověkem, který mluví rakousky německy",
+      "target_speakers": "rodilé mluvčí němčiny"
+    },
+    "dsb": {
+      "in_target": "dolnolužicky",
+      "a_target_speaker": "člověkem, který mluví dolnolužicky",
+      "target_speakers": "rodilé mluvčí dolnolužické srbštiny"
+    },
+    "ell": {
+      "in_target": "řecky",
+      "a_target_speaker": "člověkem, který mluví řecky",
+      "target_speakers": "rodilé mluvčí řečtiny"
+    },
+    "eng": {
+      "in_target": "anglicky",
+      "a_target_speaker": "člověkem, který mluví anglicky",
+      "target_speakers": "rodilé mluvčí angličtiny"
+    },
+    "est": {
+      "in_target": "estonsky",
+      "a_target_speaker": "člověkem, který mluví estonsky",
+      "target_speakers": "rodilé mluvčí estonštiny"
+    },
+    "eus": {
+      "in_target": "baskicky",
+      "a_target_speaker": "člověkem, který mluví baskicky",
+      "target_speakers": "rodilé mluvčí baskičtiny"
+    },
+    "fao": {
+      "in_target": "faersky",
+      "a_target_speaker": "člověkem, který mluví faersky",
+      "target_speakers": "rodilé mluvčí faerštiny"
+    },
+    "fas": {
+      "in_target": "persky",
+      "a_target_speaker": "člověkem, který mluví persky",
+      "target_speakers": "rodilé mluvčí perštiny"
+    },
+    "fij": {
+      "in_target": "fidžijsky",
+      "a_target_speaker": "člověkem, který mluví fidžijsky",
+      "target_speakers": "rodilé mluvčí fidžijštiny"
+    },
+    "fil": {
+      "in_target": "filipínsky",
+      "a_target_speaker": "člověkem, který mluví filipínsky",
+      "target_speakers": "rodilé mluvčí filipínštiny"
+    },
+    "fin": {
+      "in_target": "finsky",
+      "a_target_speaker": "člověkem, který mluví finsky",
+      "target_speakers": "rodilé mluvčí finštiny"
+    },
+    "fra": {
+      "in_target": "francouzsky",
+      "a_target_speaker": "člověkem, který mluví francouzsky",
+      "target_speakers": "rodilé mluvčí francouzštiny"
+    },
+    "frr": {
+      "in_target": "severofrízsky",
+      "a_target_speaker": "člověkem, který mluví severofrízsky",
+      "target_speakers": "rodilé mluvčí severní frízštiny"
+    },
+    "fry": {
+      "in_target": "západofrízsky",
+      "a_target_speaker": "člověkem, který mluví západofrízsky",
+      "target_speakers": "rodilé mluvčí západní frízštiny"
+    },
+    "fur": {
+      "in_target": "friulsky",
+      "a_target_speaker": "člověkem, který mluví friulsky",
+      "target_speakers": "rodilé mluvčí friulštiny"
+    },
+    "gla": {
+      "in_target": "skotsky gaelsky",
+      "a_target_speaker": "člověkem, který mluví skotsky gaelsky",
+      "target_speakers": "rodilé mluvčí skotské gaelštiny"
+    },
+    "gle": {
+      "in_target": "irsky",
+      "a_target_speaker": "člověkem, který mluví irsky",
+      "target_speakers": "rodilé mluvčí irštiny"
+    },
+    "glg": {
+      "in_target": "galicijsky",
+      "a_target_speaker": "člověkem, který mluví galicijsky",
+      "target_speakers": "rodilé mluvčí galicijštiny"
+    },
+    "glv": {
+      "in_target": "mansky",
+      "a_target_speaker": "člověkem, který mluví mansky",
+      "target_speakers": "rodilé mluvčí manštiny"
+    },
+    "grk": {
+      "in_target": "v griku",
+      "a_target_speaker": "člověkem, který mluví griko",
+      "target_speakers": "rodilé mluvčí grika"
+    },
+    "grn": {
+      "in_target": "guaransky",
+      "a_target_speaker": "člověkem, který mluví guaransky",
+      "target_speakers": "rodilé mluvčí guaranštiny"
+    },
+    "gsw": {
+      "in_target": "švýcarskou němčinou",
+      "a_target_speaker": "člověkem, který mluví švýcarsky německy",
+      "target_speakers": "rodilé mluvčí švýcarské němčiny"
+    },
+    "guj": {
+      "in_target": "gudžarátsky",
+      "a_target_speaker": "člověkem, který mluví gudžarátsky",
+      "target_speakers": "rodilé mluvčí gudžarátštiny"
+    },
+    "hak": {
+      "in_target": "v hakštině",
+      "a_target_speaker": "člověkem, který mluví hakka",
+      "target_speakers": "rodilé mluvčí hakštiny"
+    },
+    "hau": {
+      "in_target": "hausky",
+      "a_target_speaker": "člověkem, který mluví hausky",
+      "target_speakers": "rodilé mluvčí hauštiny"
+    },
+    "haw": {
+      "in_target": "havajsky",
+      "a_target_speaker": "člověkem, který mluví havajsky",
+      "target_speakers": "rodilé mluvčí havajštiny"
+    },
+    "heb": {
+      "in_target": "hebrejsky",
+      "a_target_speaker": "člověkem, který mluví hebrejsky",
+      "target_speakers": "rodilé mluvčí hebrejštiny"
+    },
+    "hin": {
+      "in_target": "hindsky",
+      "a_target_speaker": "člověkem, který mluví hindsky",
+      "target_speakers": "rodilé mluvčí hindštiny"
+    },
+    "hrv": {
+      "in_target": "chorvatsky",
+      "a_target_speaker": "člověkem, který mluví chorvatsky",
+      "target_speakers": "rodilé mluvčí chorvatštiny"
+    },
+    "hsb": {
+      "in_target": "hornolužicky",
+      "a_target_speaker": "člověkem, který mluví hornolužicky",
+      "target_speakers": "rodilé mluvčí hornolužické srbštiny"
+    },
+    "hun": {
+      "in_target": "maďarsky",
+      "a_target_speaker": "člověkem, který mluví maďarsky",
+      "target_speakers": "rodilé mluvčí maďarštiny"
+    },
+    "hye": {
+      "in_target": "arménsky",
+      "a_target_speaker": "člověkem, který mluví arménsky",
+      "target_speakers": "rodilé mluvčí arménštiny"
+    },
+    "ibo": {
+      "in_target": "v igboštině",
+      "a_target_speaker": "člověkem, který mluví igbosky",
+      "target_speakers": "rodilé mluvčí igboštiny"
+    },
+    "iku": {
+      "in_target": "v inuktitutu",
+      "a_target_speaker": "člověkem, který mluví inuktitutsky",
+      "target_speakers": "rodilé mluvčí inuktitutu"
+    },
+    "ind": {
+      "in_target": "indonésky",
+      "a_target_speaker": "člověkem, který mluví indonésky",
+      "target_speakers": "rodilé mluvčí indonéštiny"
+    },
+    "isl": {
+      "in_target": "islandsky",
+      "a_target_speaker": "člověkem, který mluví islandsky",
+      "target_speakers": "rodilé mluvčí islandštiny"
+    },
+    "ita": {
+      "in_target": "italsky",
+      "a_target_speaker": "člověkem, který mluví italsky",
+      "target_speakers": "rodilé mluvčí italštiny"
+    },
+    "jav": {
+      "in_target": "jávsky",
+      "a_target_speaker": "člověkem, který mluví jávsky",
+      "target_speakers": "rodilé mluvčí jávštiny"
+    },
+    "jpn": {
+      "in_target": "japonsky",
+      "a_target_speaker": "člověkem, který mluví japonsky",
+      "target_speakers": "rodilé mluvčí japonštiny"
+    },
+    "kal": {
+      "in_target": "grónsky",
+      "a_target_speaker": "člověkem, který mluví grónsky",
+      "target_speakers": "rodilé mluvčí grónštiny"
+    },
+    "kan": {
+      "in_target": "kannadsky",
+      "a_target_speaker": "člověkem, který mluví kannadsky",
+      "target_speakers": "rodilé mluvčí kannadštiny"
+    },
+    "kat": {
+      "in_target": "gruzínsky",
+      "a_target_speaker": "člověkem, který mluví gruzínsky",
+      "target_speakers": "rodilé mluvčí gruzínštiny"
+    },
+    "kaz": {
+      "in_target": "kazašsky",
+      "a_target_speaker": "člověkem, který mluví kazašsky",
+      "target_speakers": "rodilé mluvčí kazaštiny"
+    },
+    "kir": {
+      "in_target": "kyrgyzsky",
+      "a_target_speaker": "člověkem, který mluví kyrgyzsky",
+      "target_speakers": "rodilé mluvčí kyrgyzštiny"
+    },
+    "kor": {
+      "in_target": "korejsky",
+      "a_target_speaker": "člověkem, který mluví korejsky",
+      "target_speakers": "rodilé mluvčí korejštiny"
+    },
+    "kur": {
+      "in_target": "kurdsky",
+      "a_target_speaker": "člověkem, který mluví kurdsky",
+      "target_speakers": "rodilé mluvčí kurdštiny"
+    },
+    "lad": {
+      "in_target": "v ladinu",
+      "a_target_speaker": "člověkem, který mluví ladino",
+      "target_speakers": "rodilé mluvčí ladina"
+    },
+    "lav": {
+      "in_target": "lotyšsky",
+      "a_target_speaker": "člověkem, který mluví lotyšsky",
+      "target_speakers": "rodilé mluvčí lotyštiny"
+    },
+    "lij": {
+      "in_target": "ligursky",
+      "a_target_speaker": "člověkem, který mluví ligursky",
+      "target_speakers": "rodilé mluvčí ligurštiny"
+    },
+    "lim": {
+      "in_target": "limbursky",
+      "a_target_speaker": "člověkem, který mluví limbursky",
+      "target_speakers": "rodilé mluvčí limburštiny"
+    },
+    "lin": {
+      "in_target": "v lingale",
+      "a_target_speaker": "člověkem, který mluví lingalsky",
+      "target_speakers": "rodilé mluvčí lingaly"
+    },
+    "lit": {
+      "in_target": "litevsky",
+      "a_target_speaker": "člověkem, který mluví litevsky",
+      "target_speakers": "rodilé mluvčí litevštiny"
+    },
+    "ltz": {
+      "in_target": "lucembursky",
+      "a_target_speaker": "člověkem, který mluví lucembursky",
+      "target_speakers": "rodilé mluvčí lucemburštiny"
+    },
+    "mal": {
+      "in_target": "malajálamsky",
+      "a_target_speaker": "člověkem, který mluví malajálamsky",
+      "target_speakers": "rodilé mluvčí malajálamštiny"
+    },
+    "mar": {
+      "in_target": "maráthsky",
+      "a_target_speaker": "člověkem, který mluví maráthsky",
+      "target_speakers": "rodilé mluvčí maráthštiny"
+    },
+    "mkd": {
+      "in_target": "makedonsky",
+      "a_target_speaker": "člověkem, který mluví makedonsky",
+      "target_speakers": "rodilé mluvčí makedonštiny"
+    },
+    "moh": {
+      "in_target": "v mohawkštině",
+      "a_target_speaker": "člověkem, který mluví mohawksky",
+      "target_speakers": "rodilé mluvčí mohawkštiny"
+    },
+    "mri": {
+      "in_target": "maorsky",
+      "a_target_speaker": "člověkem, který mluví maorsky",
+      "target_speakers": "rodilé mluvčí maorštiny"
+    },
+    "msa": {
+      "in_target": "malajsky",
+      "a_target_speaker": "člověkem, který mluví malajsky",
+      "target_speakers": "rodilé mluvčí malajštiny"
+    },
+    "nan": {
+      "in_target": "v min nan",
+      "a_target_speaker": "člověkem, který mluví min nan",
+      "target_speakers": "rodilé mluvčí min nan"
+    },
+    "nap": {
+      "in_target": "neapolsky",
+      "a_target_speaker": "člověkem, který mluví neapolsky",
+      "target_speakers": "rodilé mluvčí neapolštiny"
+    },
+    "nav": {
+      "in_target": "v navažštině",
+      "a_target_speaker": "člověkem, který mluví navažsky",
+      "target_speakers": "rodilé mluvčí navažštiny"
+    },
+    "nep": {
+      "in_target": "nepálsky",
+      "a_target_speaker": "člověkem, který mluví nepálsky",
+      "target_speakers": "rodilé mluvčí nepálštiny"
+    },
+    "nld": {
+      "in_target": "nizozemsky",
+      "a_target_speaker": "člověkem, který mluví nizozemsky",
+      "target_speakers": "rodilé mluvčí nizozemštiny"
+    },
+    "nor": {
+      "in_target": "norsky",
+      "a_target_speaker": "člověkem, který mluví norsky",
+      "target_speakers": "rodilé mluvčí norštiny"
+    },
+    "nya": {
+      "in_target": "v čičevštině",
+      "a_target_speaker": "člověkem, který mluví čičevsky",
+      "target_speakers": "rodilé mluvčí čičevštiny"
+    },
+    "oci": {
+      "in_target": "okcitánsky",
+      "a_target_speaker": "člověkem, který mluví okcitánsky",
+      "target_speakers": "rodilé mluvčí okcitánštiny"
+    },
+    "oji": {
+      "in_target": "v odžibvejštině",
+      "a_target_speaker": "člověkem, který mluví odžibvejsky",
+      "target_speakers": "rodilé mluvčí odžibvejštiny"
+    },
+    "pan": {
+      "in_target": "paňdžábsky",
+      "a_target_speaker": "člověkem, který mluví paňdžábsky",
+      "target_speakers": "rodilé mluvčí paňdžábštiny"
+    },
+    "pol": {
+      "in_target": "polsky",
+      "a_target_speaker": "člověkem, který mluví polsky",
+      "target_speakers": "rodilé mluvčí polštiny"
+    },
+    "por": {
+      "in_target": "portugalsky",
+      "a_target_speaker": "člověkem, který mluví portugalsky",
+      "target_speakers": "rodilé mluvčí portugalštiny"
+    },
+    "por_BR": {
+      "in_target": "portugalsky",
+      "a_target_speaker": "člověkem, který mluví brazilsky portugalsky",
+      "target_speakers": "rodilé mluvčí portugalštiny"
+    },
+    "por_EU": {
+      "in_target": "portugalsky",
+      "a_target_speaker": "člověkem, který mluví evropsky portugalsky",
+      "target_speakers": "rodilé mluvčí portugalštiny"
+    },
+    "pus": {
+      "in_target": "paštunsky",
+      "a_target_speaker": "člověkem, který mluví paštunsky",
+      "target_speakers": "rodilé mluvčí paštunštiny"
+    },
+    "que": {
+      "in_target": "kečuánsky",
+      "a_target_speaker": "člověkem, který mluví kečuánsky",
+      "target_speakers": "rodilé mluvčí kečuánštiny"
+    },
+    "roh": {
+      "in_target": "rétorománsky",
+      "a_target_speaker": "člověkem, který mluví rétorománsky",
+      "target_speakers": "rodilé mluvčí rétorománštiny"
+    },
+    "ron": {
+      "in_target": "rumunsky",
+      "a_target_speaker": "člověkem, který mluví rumunsky",
+      "target_speakers": "rodilé mluvčí rumunštiny"
+    },
+    "rus": {
+      "in_target": "rusky",
+      "a_target_speaker": "člověkem, který mluví rusky",
+      "target_speakers": "rodilé mluvčí ruštiny"
+    },
+    "scn": {
+      "in_target": "sicilsky",
+      "a_target_speaker": "člověkem, který mluví sicilsky",
+      "target_speakers": "rodilé mluvčí sicilštiny"
+    },
+    "sco": {
+      "in_target": "skotsky",
+      "a_target_speaker": "člověkem, který mluví skotsky",
+      "target_speakers": "rodilé mluvčí skotštiny"
+    },
+    "slk": {
+      "in_target": "slovensky",
+      "a_target_speaker": "člověkem, který mluví slovensky",
+      "target_speakers": "rodilé mluvčí slovenštiny"
+    },
+    "slv": {
+      "in_target": "slovinsky",
+      "a_target_speaker": "člověkem, který mluví slovinsky",
+      "target_speakers": "rodilé mluvčí slovinštiny"
+    },
+    "sme": {
+      "in_target": "severnosámsky",
+      "a_target_speaker": "člověkem, který mluví severnosámsky",
+      "target_speakers": "rodilé mluvčí severnosámštiny"
+    },
+    "smj": {
+      "in_target": "lulskou sámštinou",
+      "a_target_speaker": "člověkem, který mluví lulsky sámsky",
+      "target_speakers": "rodilé mluvčí lulské sámštiny"
+    },
+    "smn": {
+      "in_target": "inarijskosámsky",
+      "a_target_speaker": "člověkem, který mluví inarijskosámsky",
+      "target_speakers": "rodilé mluvčí inarijské sámštiny"
+    },
+    "smo": {
+      "in_target": "samojsky",
+      "a_target_speaker": "člověkem, který mluví samojsky",
+      "target_speakers": "rodilé mluvčí samojštiny"
+    },
+    "sms": {
+      "in_target": "skoltskosámsky",
+      "a_target_speaker": "člověkem, který mluví skoltskosámsky",
+      "target_speakers": "rodilé mluvčí skoltské sámštiny"
+    },
+    "snd": {
+      "in_target": "sindhsky",
+      "a_target_speaker": "člověkem, který mluví sindhsky",
+      "target_speakers": "rodilé mluvčí sindhštiny"
+    },
+    "som": {
+      "in_target": "somálsky",
+      "a_target_speaker": "člověkem, který mluví somálsky",
+      "target_speakers": "rodilé mluvčí somálštiny"
+    },
+    "spa": {
+      "in_target": "španělsky",
+      "a_target_speaker": "člověkem, který mluví španělsky",
+      "target_speakers": "rodilé mluvčí španělštiny"
+    },
+    "spa_EU": {
+      "in_target": "španělsky",
+      "a_target_speaker": "člověkem, který mluví evropsky španělsky",
+      "target_speakers": "rodilé mluvčí španělštiny"
+    },
+    "spa_SA": {
+      "in_target": "španělsky",
+      "a_target_speaker": "člověkem, který mluví jihoamericky španělsky",
+      "target_speakers": "rodilé mluvčí španělštiny"
+    },
+    "srd": {
+      "in_target": "sardinsky",
+      "a_target_speaker": "člověkem, který mluví sardinsky",
+      "target_speakers": "rodilé mluvčí sardinštiny"
+    },
+    "srp": {
+      "in_target": "srbsky",
+      "a_target_speaker": "člověkem, který mluví srbsky",
+      "target_speakers": "rodilé mluvčí srbštiny"
+    },
+    "swa": {
+      "in_target": "svahilsky",
+      "a_target_speaker": "člověkem, který mluví svahilsky",
+      "target_speakers": "rodilé mluvčí svahilštiny"
+    },
+    "swe": {
+      "in_target": "švédsky",
+      "a_target_speaker": "člověkem, který mluví švédsky",
+      "target_speakers": "rodilé mluvčí švédštiny"
+    },
+    "tah": {
+      "in_target": "tahitsky",
+      "a_target_speaker": "člověkem, který mluví tahitsky",
+      "target_speakers": "rodilé mluvčí tahitštiny"
+    },
+    "tam": {
+      "in_target": "tamilsky",
+      "a_target_speaker": "člověkem, který mluví tamilsky",
+      "target_speakers": "rodilé mluvčí tamilštiny"
+    },
+    "tel": {
+      "in_target": "telugsky",
+      "a_target_speaker": "člověkem, který mluví telugsky",
+      "target_speakers": "rodilé mluvčí telugštiny"
+    },
+    "tha": {
+      "in_target": "thajsky",
+      "a_target_speaker": "člověkem, který mluví thajsky",
+      "target_speakers": "rodilé mluvčí thajštiny"
+    },
+    "ton": {
+      "in_target": "tonžsky",
+      "a_target_speaker": "člověkem, který mluví tonžsky",
+      "target_speakers": "rodilé mluvčí tonžštiny"
+    },
+    "tur": {
+      "in_target": "turecky",
+      "a_target_speaker": "člověkem, který mluví turecky",
+      "target_speakers": "rodilé mluvčí turečtiny"
+    },
+    "uig": {
+      "in_target": "ujgursky",
+      "a_target_speaker": "člověkem, který mluví ujgursky",
+      "target_speakers": "rodilé mluvčí ujgurštiny"
+    },
+    "ukr": {
+      "in_target": "ukrajinsky",
+      "a_target_speaker": "člověkem, který mluví ukrajinsky",
+      "target_speakers": "rodilé mluvčí ukrajinštiny"
+    },
+    "urd": {
+      "in_target": "urdsky",
+      "a_target_speaker": "člověkem, který mluví urdsky",
+      "target_speakers": "rodilé mluvčí urdštiny"
+    },
+    "vec": {
+      "in_target": "benátsky",
+      "a_target_speaker": "člověkem, který mluví benátsky",
+      "target_speakers": "rodilé mluvčí benátštiny"
+    },
+    "vie": {
+      "in_target": "vietnamsky",
+      "a_target_speaker": "člověkem, který mluví vietnamsky",
+      "target_speakers": "rodilé mluvčí vietnamštiny"
+    },
+    "vls": {
+      "in_target": "vlámsky",
+      "a_target_speaker": "člověkem, který mluví vlámsky",
+      "target_speakers": "rodilé mluvčí vlámštiny"
+    },
+    "wln": {
+      "in_target": "valonsky",
+      "a_target_speaker": "člověkem, který mluví valonsky",
+      "target_speakers": "rodilé mluvčí valonštiny"
+    },
+    "wuu": {
+      "in_target": "ve wu",
+      "a_target_speaker": "člověkem, který mluví wu",
+      "target_speakers": "rodilé mluvčí wu"
+    },
+    "xho": {
+      "in_target": "v khoštině",
+      "a_target_speaker": "člověkem, který mluví khosky",
+      "target_speakers": "rodilé mluvčí khoštiny"
+    },
+    "yid": {
+      "in_target": "jidiš",
+      "a_target_speaker": "člověkem, který mluví jidiš",
+      "target_speakers": "rodilé mluvčí jidiš"
+    },
+    "yor": {
+      "in_target": "jorubsky",
+      "a_target_speaker": "člověkem, který mluví jorubsky",
+      "target_speakers": "rodilé mluvčí jorubštiny"
+    },
+    "yue": {
+      "in_target": "kantonsky",
+      "a_target_speaker": "člověkem, který mluví kantonsky",
+      "target_speakers": "rodilé mluvčí kantonštiny"
+    },
+    "zul": {
+      "in_target": "zulsky",
+      "a_target_speaker": "člověkem, který mluví zulsky",
+      "target_speakers": "rodilé mluvčí zulštiny"
+    },
+    "ara_lb": {
+      "in_target": "arabsky",
+      "a_target_speaker": "člověkem, který mluví libanonskou arabštinou",
+      "target_speakers": "rodilé mluvčí arabštiny"
+    },
+    "ara_sy": {
+      "in_target": "arabsky",
+      "a_target_speaker": "člověkem, který mluví syrsky arabsky",
+      "target_speakers": "rodilé mluvčí arabštiny"
+    },
+    "ara_eg": {
+      "in_target": "arabsky",
+      "a_target_speaker": "člověkem, který mluví egyptskou arabštinou",
+      "target_speakers": "rodilé mluvčí arabštiny"
+    }
+  }
+}

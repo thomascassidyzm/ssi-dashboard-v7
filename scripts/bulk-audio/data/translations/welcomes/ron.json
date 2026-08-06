@@ -1,0 +1,743 @@
+{
+  "known_language": "ron",
+  "known_language_display": "Romanian",
+  "template": "Bine ai venit la acest joc neobișnuit care te va ajuta să devii {a_target_speaker}. Iată cum funcționează: te învăț ceva {in_target}, apoi spun ceva {in_known} și îți dau ocazia să spui cu voce tare {in_target}. Apoi, ascultă cu atenție {target_speakers} care îți vor servi drept model. Este important să spui ceva în pauze, pentru că așa înveți. Chiar dacă nu ești sigur, încearcă să spui ce poți, și vei începe să vorbești {in_target} mai repede decât crezi. Cu cât tratezi mai mult ca pe un joc, cu cât te joci mai mult, cu cât râzi mai mult de greșelile tale, cu atât va merge mai bine și cu atât vei învăța mai repede. Așadar, hai să începem să ne jucăm.",
+  "in_known": "în română",
+  "targets": {
+    "afb": {
+      "in_target": "în arabă din Golf",
+      "a_target_speaker": "un vorbitor de arabă din Golf",
+      "target_speakers": "vorbitorii de arabă din Golf"
+    },
+    "afr": {
+      "in_target": "în afrikaans",
+      "a_target_speaker": "un vorbitor de afrikaans",
+      "target_speakers": "vorbitorii de afrikaans"
+    },
+    "aii": {
+      "in_target": "în asiriană",
+      "a_target_speaker": "un vorbitor de asiriană",
+      "target_speakers": "vorbitorii de asiriană"
+    },
+    "ain": {
+      "in_target": "în ainu",
+      "a_target_speaker": "un vorbitor de ainu",
+      "target_speakers": "vorbitorii de ainu"
+    },
+    "ajp": {
+      "in_target": "în arabă palestiniană",
+      "a_target_speaker": "un vorbitor de arabă palestiniană",
+      "target_speakers": "vorbitorii de arabă palestiniană"
+    },
+    "amh": {
+      "in_target": "în amharică",
+      "a_target_speaker": "un vorbitor de amharică",
+      "target_speakers": "vorbitorii de amharică"
+    },
+    "apc": {
+      "in_target": "în arabă levantină",
+      "a_target_speaker": "un vorbitor de arabă levantină",
+      "target_speakers": "vorbitorii de arabă levantină"
+    },
+    "ara": {
+      "in_target": "în arabă",
+      "a_target_speaker": "un vorbitor de arabă standard modernă",
+      "target_speakers": "vorbitorii de arabă"
+    },
+    "arg": {
+      "in_target": "în aragoneză",
+      "a_target_speaker": "un vorbitor de aragoneză",
+      "target_speakers": "vorbitorii de aragoneză"
+    },
+    "ary": {
+      "in_target": "în arabă marocană",
+      "a_target_speaker": "un vorbitor de arabă marocană",
+      "target_speakers": "vorbitorii de arabă marocană"
+    },
+    "asm": {
+      "in_target": "în asameză",
+      "a_target_speaker": "un vorbitor de asameză",
+      "target_speakers": "vorbitorii de asameză"
+    },
+    "ast": {
+      "in_target": "în asturiană",
+      "a_target_speaker": "un vorbitor de asturiană",
+      "target_speakers": "vorbitorii de asturiană"
+    },
+    "aze": {
+      "in_target": "în azeră",
+      "a_target_speaker": "un vorbitor de azeră",
+      "target_speakers": "vorbitorii de azeră"
+    },
+    "bar": {
+      "in_target": "în bavareză",
+      "a_target_speaker": "un vorbitor de bavareză",
+      "target_speakers": "vorbitorii de bavareză"
+    },
+    "bel": {
+      "in_target": "în belarusă",
+      "a_target_speaker": "un vorbitor de belarusă",
+      "target_speakers": "vorbitorii de belarusă"
+    },
+    "ben": {
+      "in_target": "în bengaleză",
+      "a_target_speaker": "un vorbitor de bengaleză",
+      "target_speakers": "vorbitorii de bengaleză"
+    },
+    "bos": {
+      "in_target": "în bosniacă",
+      "a_target_speaker": "un vorbitor de bosniacă",
+      "target_speakers": "vorbitorii de bosniacă"
+    },
+    "bre": {
+      "in_target": "în bretonă",
+      "a_target_speaker": "un vorbitor de bretonă",
+      "target_speakers": "vorbitorii de bretonă"
+    },
+    "bul": {
+      "in_target": "în bulgară",
+      "a_target_speaker": "un vorbitor de bulgară",
+      "target_speakers": "vorbitorii de bulgară"
+    },
+    "cat": {
+      "in_target": "în catalană",
+      "a_target_speaker": "un vorbitor de catalană",
+      "target_speakers": "vorbitorii de catalană"
+    },
+    "ceb": {
+      "in_target": "în cebuană",
+      "a_target_speaker": "un vorbitor de cebuană",
+      "target_speakers": "vorbitorii de cebuană"
+    },
+    "ces": {
+      "in_target": "în cehă",
+      "a_target_speaker": "un vorbitor de cehă",
+      "target_speakers": "vorbitorii de cehă"
+    },
+    "chr": {
+      "in_target": "în cherokee",
+      "a_target_speaker": "un vorbitor de cherokee",
+      "target_speakers": "vorbitorii de cherokee"
+    },
+    "cmn": {
+      "in_target": "în chineză",
+      "a_target_speaker": "un vorbitor de chineză",
+      "target_speakers": "vorbitorii de chineză"
+    },
+    "cor": {
+      "in_target": "în cornică",
+      "a_target_speaker": "un vorbitor de cornică",
+      "target_speakers": "vorbitorii de cornică"
+    },
+    "cos": {
+      "in_target": "în corsicană",
+      "a_target_speaker": "un vorbitor de corsicană",
+      "target_speakers": "vorbitorii de corsicană"
+    },
+    "csb": {
+      "in_target": "în cașubiană",
+      "a_target_speaker": "un vorbitor de cașubiană",
+      "target_speakers": "vorbitorii de cașubiană"
+    },
+    "cym": {
+      "in_target": "în galeză",
+      "a_target_speaker": "un vorbitor de galeză",
+      "target_speakers": "vorbitorii de galeză"
+    },
+    "dan": {
+      "in_target": "în daneză",
+      "a_target_speaker": "un vorbitor de daneză",
+      "target_speakers": "vorbitorii de daneză"
+    },
+    "deu": {
+      "in_target": "în germană",
+      "a_target_speaker": "un vorbitor de germană",
+      "target_speakers": "vorbitorii de germană"
+    },
+    "deu_AT": {
+      "in_target": "în germană",
+      "a_target_speaker": "un vorbitor de germană austriacă",
+      "target_speakers": "vorbitorii de germană"
+    },
+    "dsb": {
+      "in_target": "în sorabă de jos",
+      "a_target_speaker": "un vorbitor de sorabă de jos",
+      "target_speakers": "vorbitorii de sorabă de jos"
+    },
+    "ell": {
+      "in_target": "în greacă",
+      "a_target_speaker": "un vorbitor de greacă",
+      "target_speakers": "vorbitorii de greacă"
+    },
+    "eng": {
+      "in_target": "în engleză",
+      "a_target_speaker": "un vorbitor de engleză",
+      "target_speakers": "vorbitorii de engleză"
+    },
+    "est": {
+      "in_target": "în estonă",
+      "a_target_speaker": "un vorbitor de estonă",
+      "target_speakers": "vorbitorii de estonă"
+    },
+    "eus": {
+      "in_target": "în bască",
+      "a_target_speaker": "un vorbitor de bască",
+      "target_speakers": "vorbitorii de bască"
+    },
+    "fao": {
+      "in_target": "în feroeză",
+      "a_target_speaker": "un vorbitor de feroeză",
+      "target_speakers": "vorbitorii de feroeză"
+    },
+    "fas": {
+      "in_target": "în persană",
+      "a_target_speaker": "un vorbitor de persană",
+      "target_speakers": "vorbitorii de persană"
+    },
+    "fij": {
+      "in_target": "în fijiană",
+      "a_target_speaker": "un vorbitor de fijiană",
+      "target_speakers": "vorbitorii de fijiană"
+    },
+    "fil": {
+      "in_target": "în filipineză",
+      "a_target_speaker": "un vorbitor de filipineză",
+      "target_speakers": "vorbitorii de filipineză"
+    },
+    "fin": {
+      "in_target": "în finlandeză",
+      "a_target_speaker": "un vorbitor de finlandeză",
+      "target_speakers": "vorbitorii de finlandeză"
+    },
+    "fra": {
+      "in_target": "în franceză",
+      "a_target_speaker": "un vorbitor de franceză",
+      "target_speakers": "vorbitorii de franceză"
+    },
+    "frr": {
+      "in_target": "în frizonă de nord",
+      "a_target_speaker": "un vorbitor de frizonă de nord",
+      "target_speakers": "vorbitorii de frizonă de nord"
+    },
+    "fry": {
+      "in_target": "în frizonă de vest",
+      "a_target_speaker": "un vorbitor de frizonă de vest",
+      "target_speakers": "vorbitorii de frizonă de vest"
+    },
+    "fur": {
+      "in_target": "în friulană",
+      "a_target_speaker": "un vorbitor de friulană",
+      "target_speakers": "vorbitorii de friulană"
+    },
+    "gla": {
+      "in_target": "în gaelică scoțiană",
+      "a_target_speaker": "un vorbitor de gaelică scoțiană",
+      "target_speakers": "vorbitorii de gaelică scoțiană"
+    },
+    "gle": {
+      "in_target": "în irlandeză",
+      "a_target_speaker": "un vorbitor de irlandeză",
+      "target_speakers": "vorbitorii de irlandeză"
+    },
+    "glg": {
+      "in_target": "în galiciană",
+      "a_target_speaker": "un vorbitor de galiciană",
+      "target_speakers": "vorbitorii de galiciană"
+    },
+    "glv": {
+      "in_target": "în manxă",
+      "a_target_speaker": "un vorbitor de manxă",
+      "target_speakers": "vorbitorii de manxă"
+    },
+    "grk": {
+      "in_target": "în griko",
+      "a_target_speaker": "un vorbitor de griko",
+      "target_speakers": "vorbitorii de griko"
+    },
+    "grn": {
+      "in_target": "în guarani",
+      "a_target_speaker": "un vorbitor de guarani",
+      "target_speakers": "vorbitorii de guarani"
+    },
+    "gsw": {
+      "in_target": "în germana elvețiană",
+      "a_target_speaker": "un vorbitor de germană elvețiană",
+      "target_speakers": "vorbitorii de germană elvețiană"
+    },
+    "guj": {
+      "in_target": "în gujarati",
+      "a_target_speaker": "un vorbitor de gujarati",
+      "target_speakers": "vorbitorii de gujarati"
+    },
+    "hak": {
+      "in_target": "în hakka",
+      "a_target_speaker": "un vorbitor de hakka",
+      "target_speakers": "vorbitorii de hakka"
+    },
+    "hau": {
+      "in_target": "în hausa",
+      "a_target_speaker": "un vorbitor de hausa",
+      "target_speakers": "vorbitorii de hausa"
+    },
+    "haw": {
+      "in_target": "în hawaiiană",
+      "a_target_speaker": "un vorbitor de hawaiiană",
+      "target_speakers": "vorbitorii de hawaiiană"
+    },
+    "heb": {
+      "in_target": "în ebraică",
+      "a_target_speaker": "un vorbitor de ebraică",
+      "target_speakers": "vorbitorii de ebraică"
+    },
+    "hin": {
+      "in_target": "în hindi",
+      "a_target_speaker": "un vorbitor de hindi",
+      "target_speakers": "vorbitorii de hindi"
+    },
+    "hrv": {
+      "in_target": "în croată",
+      "a_target_speaker": "un vorbitor de croată",
+      "target_speakers": "vorbitorii de croată"
+    },
+    "hsb": {
+      "in_target": "în sorabă de sus",
+      "a_target_speaker": "un vorbitor de sorabă de sus",
+      "target_speakers": "vorbitorii de sorabă de sus"
+    },
+    "hun": {
+      "in_target": "în maghiară",
+      "a_target_speaker": "un vorbitor de maghiară",
+      "target_speakers": "vorbitorii de maghiară"
+    },
+    "hye": {
+      "in_target": "în armeană",
+      "a_target_speaker": "un vorbitor de armeană",
+      "target_speakers": "vorbitorii de armeană"
+    },
+    "ibo": {
+      "in_target": "în igbo",
+      "a_target_speaker": "un vorbitor de igbo",
+      "target_speakers": "vorbitorii de igbo"
+    },
+    "iku": {
+      "in_target": "în inuktitut",
+      "a_target_speaker": "un vorbitor de inuktitut",
+      "target_speakers": "vorbitorii de inuktitut"
+    },
+    "ind": {
+      "in_target": "în indoneziană",
+      "a_target_speaker": "un vorbitor de indoneziană",
+      "target_speakers": "vorbitorii de indoneziană"
+    },
+    "isl": {
+      "in_target": "în islandeză",
+      "a_target_speaker": "un vorbitor de islandeză",
+      "target_speakers": "vorbitorii de islandeză"
+    },
+    "ita": {
+      "in_target": "în italiană",
+      "a_target_speaker": "un vorbitor de italiană",
+      "target_speakers": "vorbitorii de italiană"
+    },
+    "jav": {
+      "in_target": "în javaneză",
+      "a_target_speaker": "un vorbitor de javaneză",
+      "target_speakers": "vorbitorii de javaneză"
+    },
+    "jpn": {
+      "in_target": "în japoneză",
+      "a_target_speaker": "un vorbitor de japoneză",
+      "target_speakers": "vorbitorii de japoneză"
+    },
+    "kal": {
+      "in_target": "în groenlandeză",
+      "a_target_speaker": "un vorbitor de groenlandeză",
+      "target_speakers": "vorbitorii de groenlandeză"
+    },
+    "kan": {
+      "in_target": "în kannada",
+      "a_target_speaker": "un vorbitor de kannada",
+      "target_speakers": "vorbitorii de kannada"
+    },
+    "kat": {
+      "in_target": "în georgiană",
+      "a_target_speaker": "un vorbitor de georgiană",
+      "target_speakers": "vorbitorii de georgiană"
+    },
+    "kaz": {
+      "in_target": "în kazahă",
+      "a_target_speaker": "un vorbitor de kazahă",
+      "target_speakers": "vorbitorii de kazahă"
+    },
+    "kir": {
+      "in_target": "în kârgâză",
+      "a_target_speaker": "un vorbitor de kârgâză",
+      "target_speakers": "vorbitorii de kârgâză"
+    },
+    "kor": {
+      "in_target": "în coreeană",
+      "a_target_speaker": "un vorbitor de coreeană",
+      "target_speakers": "vorbitorii de coreeană"
+    },
+    "kur": {
+      "in_target": "în kurdă",
+      "a_target_speaker": "un vorbitor de kurdă",
+      "target_speakers": "vorbitorii de kurdă"
+    },
+    "lad": {
+      "in_target": "în ladino",
+      "a_target_speaker": "un vorbitor de ladino",
+      "target_speakers": "vorbitorii de ladino"
+    },
+    "lav": {
+      "in_target": "în letonă",
+      "a_target_speaker": "un vorbitor de letonă",
+      "target_speakers": "vorbitorii de letonă"
+    },
+    "lij": {
+      "in_target": "în ligurică",
+      "a_target_speaker": "un vorbitor de ligurică",
+      "target_speakers": "vorbitorii de ligurică"
+    },
+    "lim": {
+      "in_target": "în limburgheză",
+      "a_target_speaker": "un vorbitor de limburgheză",
+      "target_speakers": "vorbitorii de limburgheză"
+    },
+    "lin": {
+      "in_target": "în lingala",
+      "a_target_speaker": "un vorbitor de lingala",
+      "target_speakers": "vorbitorii de lingala"
+    },
+    "lit": {
+      "in_target": "în lituaniană",
+      "a_target_speaker": "un vorbitor de lituaniană",
+      "target_speakers": "vorbitorii de lituaniană"
+    },
+    "ltz": {
+      "in_target": "în luxemburgheză",
+      "a_target_speaker": "un vorbitor de luxemburgheză",
+      "target_speakers": "vorbitorii de luxemburgheză"
+    },
+    "mal": {
+      "in_target": "în malayalam",
+      "a_target_speaker": "un vorbitor de malayalam",
+      "target_speakers": "vorbitorii de malayalam"
+    },
+    "mar": {
+      "in_target": "în marathi",
+      "a_target_speaker": "un vorbitor de marathi",
+      "target_speakers": "vorbitorii de marathi"
+    },
+    "mkd": {
+      "in_target": "în macedoneană",
+      "a_target_speaker": "un vorbitor de macedoneană",
+      "target_speakers": "vorbitorii de macedoneană"
+    },
+    "moh": {
+      "in_target": "în mohawk",
+      "a_target_speaker": "un vorbitor de mohawk",
+      "target_speakers": "vorbitorii de mohawk"
+    },
+    "mri": {
+      "in_target": "în maori",
+      "a_target_speaker": "un vorbitor de maori",
+      "target_speakers": "vorbitorii de maori"
+    },
+    "msa": {
+      "in_target": "în malaeză",
+      "a_target_speaker": "un vorbitor de malaeză",
+      "target_speakers": "vorbitorii de malaeză"
+    },
+    "nan": {
+      "in_target": "în min nan",
+      "a_target_speaker": "un vorbitor de min nan",
+      "target_speakers": "vorbitorii de min nan"
+    },
+    "nap": {
+      "in_target": "în napoletană",
+      "a_target_speaker": "un vorbitor de napoletană",
+      "target_speakers": "vorbitorii de napoletană"
+    },
+    "nav": {
+      "in_target": "în navajo",
+      "a_target_speaker": "un vorbitor de navajo",
+      "target_speakers": "vorbitorii de navajo"
+    },
+    "nep": {
+      "in_target": "în nepaleză",
+      "a_target_speaker": "un vorbitor de nepaleză",
+      "target_speakers": "vorbitorii de nepaleză"
+    },
+    "nld": {
+      "in_target": "în olandeză",
+      "a_target_speaker": "un vorbitor de olandeză",
+      "target_speakers": "vorbitorii de olandeză"
+    },
+    "nor": {
+      "in_target": "în norvegiană",
+      "a_target_speaker": "un vorbitor de norvegiană",
+      "target_speakers": "vorbitorii de norvegiană"
+    },
+    "nya": {
+      "in_target": "în chichewa",
+      "a_target_speaker": "un vorbitor de chichewa",
+      "target_speakers": "vorbitorii de chichewa"
+    },
+    "oci": {
+      "in_target": "în occitană",
+      "a_target_speaker": "un vorbitor de occitană",
+      "target_speakers": "vorbitorii de occitană"
+    },
+    "oji": {
+      "in_target": "în ojibwe",
+      "a_target_speaker": "un vorbitor de ojibwe",
+      "target_speakers": "vorbitorii de ojibwe"
+    },
+    "pan": {
+      "in_target": "în punjabi",
+      "a_target_speaker": "un vorbitor de punjabi",
+      "target_speakers": "vorbitorii de punjabi"
+    },
+    "pol": {
+      "in_target": "în poloneză",
+      "a_target_speaker": "un vorbitor de poloneză",
+      "target_speakers": "vorbitorii de poloneză"
+    },
+    "por": {
+      "in_target": "în portugheză",
+      "a_target_speaker": "un vorbitor de portugheză",
+      "target_speakers": "vorbitorii de portugheză"
+    },
+    "por_BR": {
+      "in_target": "în portugheză",
+      "a_target_speaker": "un vorbitor de portugheză braziliană",
+      "target_speakers": "vorbitorii de portugheză"
+    },
+    "por_EU": {
+      "in_target": "în portugheză",
+      "a_target_speaker": "un vorbitor de portugheză europeană",
+      "target_speakers": "vorbitorii de portugheză"
+    },
+    "pus": {
+      "in_target": "în pashto",
+      "a_target_speaker": "un vorbitor de pashto",
+      "target_speakers": "vorbitorii de pashto"
+    },
+    "que": {
+      "in_target": "în quechua",
+      "a_target_speaker": "un vorbitor de quechua",
+      "target_speakers": "vorbitorii de quechua"
+    },
+    "roh": {
+      "in_target": "în romanșă",
+      "a_target_speaker": "un vorbitor de romanșă",
+      "target_speakers": "vorbitorii de romanșă"
+    },
+    "rus": {
+      "in_target": "în rusă",
+      "a_target_speaker": "un vorbitor de rusă",
+      "target_speakers": "vorbitorii de rusă"
+    },
+    "scn": {
+      "in_target": "în siciliană",
+      "a_target_speaker": "un vorbitor de siciliană",
+      "target_speakers": "vorbitorii de siciliană"
+    },
+    "sco": {
+      "in_target": "în scots",
+      "a_target_speaker": "un vorbitor de scots",
+      "target_speakers": "vorbitorii de scots"
+    },
+    "slk": {
+      "in_target": "în slovacă",
+      "a_target_speaker": "un vorbitor de slovacă",
+      "target_speakers": "vorbitorii de slovacă"
+    },
+    "slv": {
+      "in_target": "în slovenă",
+      "a_target_speaker": "un vorbitor de slovenă",
+      "target_speakers": "vorbitorii de slovenă"
+    },
+    "sme": {
+      "in_target": "în sami de nord",
+      "a_target_speaker": "un vorbitor de sami de nord",
+      "target_speakers": "vorbitorii de sami de nord"
+    },
+    "smj": {
+      "in_target": "în sami de Lule",
+      "a_target_speaker": "un vorbitor de sami de Lule",
+      "target_speakers": "vorbitorii de sami de Lule"
+    },
+    "smn": {
+      "in_target": "în sami inari",
+      "a_target_speaker": "un vorbitor de sami inari",
+      "target_speakers": "vorbitorii de sami inari"
+    },
+    "smo": {
+      "in_target": "în samoană",
+      "a_target_speaker": "un vorbitor de samoană",
+      "target_speakers": "vorbitorii de samoană"
+    },
+    "sms": {
+      "in_target": "în sami skolt",
+      "a_target_speaker": "un vorbitor de sami skolt",
+      "target_speakers": "vorbitorii de sami skolt"
+    },
+    "snd": {
+      "in_target": "în sindhi",
+      "a_target_speaker": "un vorbitor de sindhi",
+      "target_speakers": "vorbitorii de sindhi"
+    },
+    "som": {
+      "in_target": "în somaleză",
+      "a_target_speaker": "un vorbitor de somaleză",
+      "target_speakers": "vorbitorii de somaleză"
+    },
+    "spa": {
+      "in_target": "în spaniolă",
+      "a_target_speaker": "un vorbitor de spaniolă",
+      "target_speakers": "vorbitorii de spaniolă"
+    },
+    "spa_EU": {
+      "in_target": "în spaniolă",
+      "a_target_speaker": "un vorbitor de spaniolă europeană",
+      "target_speakers": "vorbitorii de spaniolă"
+    },
+    "spa_SA": {
+      "in_target": "în spaniolă",
+      "a_target_speaker": "un vorbitor de spaniolă sud-americană",
+      "target_speakers": "vorbitorii de spaniolă"
+    },
+    "srd": {
+      "in_target": "în sardă",
+      "a_target_speaker": "un vorbitor de sardă",
+      "target_speakers": "vorbitorii de sardă"
+    },
+    "srp": {
+      "in_target": "în sârbă",
+      "a_target_speaker": "un vorbitor de sârbă",
+      "target_speakers": "vorbitorii de sârbă"
+    },
+    "swa": {
+      "in_target": "în swahili",
+      "a_target_speaker": "un vorbitor de swahili",
+      "target_speakers": "vorbitorii de swahili"
+    },
+    "swe": {
+      "in_target": "în suedeză",
+      "a_target_speaker": "un vorbitor de suedeză",
+      "target_speakers": "vorbitorii de suedeză"
+    },
+    "tah": {
+      "in_target": "în tahitiană",
+      "a_target_speaker": "un vorbitor de tahitiană",
+      "target_speakers": "vorbitorii de tahitiană"
+    },
+    "tam": {
+      "in_target": "în tamilă",
+      "a_target_speaker": "un vorbitor de tamilă",
+      "target_speakers": "vorbitorii de tamilă"
+    },
+    "tel": {
+      "in_target": "în telugu",
+      "a_target_speaker": "un vorbitor de telugu",
+      "target_speakers": "vorbitorii de telugu"
+    },
+    "tha": {
+      "in_target": "în thailandeză",
+      "a_target_speaker": "un vorbitor de thailandeză",
+      "target_speakers": "vorbitorii de thailandeză"
+    },
+    "ton": {
+      "in_target": "în tongană",
+      "a_target_speaker": "un vorbitor de tongană",
+      "target_speakers": "vorbitorii de tongană"
+    },
+    "tur": {
+      "in_target": "în turcă",
+      "a_target_speaker": "un vorbitor de turcă",
+      "target_speakers": "vorbitorii de turcă"
+    },
+    "uig": {
+      "in_target": "în uigură",
+      "a_target_speaker": "un vorbitor de uigură",
+      "target_speakers": "vorbitorii de uigură"
+    },
+    "ukr": {
+      "in_target": "în ucraineană",
+      "a_target_speaker": "un vorbitor de ucraineană",
+      "target_speakers": "vorbitorii de ucraineană"
+    },
+    "urd": {
+      "in_target": "în urdu",
+      "a_target_speaker": "un vorbitor de urdu",
+      "target_speakers": "vorbitorii de urdu"
+    },
+    "vec": {
+      "in_target": "în veneță",
+      "a_target_speaker": "un vorbitor de veneță",
+      "target_speakers": "vorbitorii de veneță"
+    },
+    "vie": {
+      "in_target": "în vietnameză",
+      "a_target_speaker": "un vorbitor de vietnameză",
+      "target_speakers": "vorbitorii de vietnameză"
+    },
+    "vls": {
+      "in_target": "în flamandă",
+      "a_target_speaker": "un vorbitor de flamandă",
+      "target_speakers": "vorbitorii de flamandă"
+    },
+    "wln": {
+      "in_target": "în valonă",
+      "a_target_speaker": "un vorbitor de valonă",
+      "target_speakers": "vorbitorii de valonă"
+    },
+    "wuu": {
+      "in_target": "în wu",
+      "a_target_speaker": "un vorbitor de wu",
+      "target_speakers": "vorbitorii de wu"
+    },
+    "xho": {
+      "in_target": "în xhosa",
+      "a_target_speaker": "un vorbitor de xhosa",
+      "target_speakers": "vorbitorii de xhosa"
+    },
+    "yid": {
+      "in_target": "în idiș",
+      "a_target_speaker": "un vorbitor de idiș",
+      "target_speakers": "vorbitorii de idiș"
+    },
+    "yor": {
+      "in_target": "în yoruba",
+      "a_target_speaker": "un vorbitor de yoruba",
+      "target_speakers": "vorbitorii de yoruba"
+    },
+    "yue": {
+      "in_target": "în cantoneză",
+      "a_target_speaker": "un vorbitor de cantoneză",
+      "target_speakers": "vorbitorii de cantoneză"
+    },
+    "zul": {
+      "in_target": "în zulu",
+      "a_target_speaker": "un vorbitor de zulu",
+      "target_speakers": "vorbitorii de zulu"
+    },
+    "ara_lb": {
+      "in_target": "în arabă",
+      "a_target_speaker": "un vorbitor de arabă libaneză",
+      "target_speakers": "vorbitorii de arabă"
+    },
+    "ara_sy": {
+      "in_target": "în arabă",
+      "a_target_speaker": "un vorbitor de arabă siriană",
+      "target_speakers": "vorbitorii de arabă"
+    },
+    "ara_eg": {
+      "in_target": "în arabă",
+      "a_target_speaker": "un vorbitor de arabă egipteană",
+      "target_speakers": "vorbitorii de arabă"
+    }
+  }
+}

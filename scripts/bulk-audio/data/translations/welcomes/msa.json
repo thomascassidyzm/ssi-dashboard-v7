@@ -1,0 +1,743 @@
+{
+  "known_language": "msa",
+  "known_language_display": "Malay",
+  "template": "Selamat datang ke permainan luar biasa ini yang akan membantu kamu menjadi {a_target_speaker}. Begini cara ia berfungsi - saya mengajar kamu sesuatu {in_target}, kemudian saya menyebut sesuatu {in_known} dan memberi kamu peluang untuk menyebutnya dengan kuat {in_target}. Kemudian, kamu mendengar dengan teliti {target_speakers} yang akan menunjukkan contoh untuk kamu. Penting untuk kamu menyebut sesuatu dalam jeda, kerana begitulah cara kamu belajar. Walaupun kamu tidak pasti, cubalah menyebut apa sahaja yang kamu boleh, dan kamu akan mula bertutur {in_target} lebih cepat daripada yang kamu sangka. Semakin kamu menganggapnya sebagai permainan, semakin kamu bermain-main dengannya, semakin kamu ketawa apabila membuat kesilapan, semakin baik ia akan berjalan dan semakin cepat kamu akan belajar. Jadi, jom mula bermain.",
+  "in_known": "dalam bahasa Melayu",
+  "targets": {
+    "afb": {
+      "in_target": "dalam bahasa Arab Teluk",
+      "a_target_speaker": "penutur bahasa Arab Teluk",
+      "target_speakers": "penutur bahasa Arab Teluk"
+    },
+    "afr": {
+      "in_target": "dalam bahasa Afrikaans",
+      "a_target_speaker": "penutur bahasa Afrikaans",
+      "target_speakers": "penutur bahasa Afrikaans"
+    },
+    "aii": {
+      "in_target": "dalam bahasa Suret",
+      "a_target_speaker": "penutur bahasa Suret",
+      "target_speakers": "penutur bahasa Suret"
+    },
+    "ain": {
+      "in_target": "dalam bahasa Ainu",
+      "a_target_speaker": "penutur bahasa Ainu",
+      "target_speakers": "penutur bahasa Ainu"
+    },
+    "ajp": {
+      "in_target": "dalam bahasa Arab Palestin",
+      "a_target_speaker": "penutur bahasa Arab Palestin",
+      "target_speakers": "penutur bahasa Arab Palestin"
+    },
+    "amh": {
+      "in_target": "dalam bahasa Amharic",
+      "a_target_speaker": "penutur bahasa Amharic",
+      "target_speakers": "penutur bahasa Amharic"
+    },
+    "apc": {
+      "in_target": "dalam bahasa Arab Levant",
+      "a_target_speaker": "penutur bahasa Arab Levant",
+      "target_speakers": "penutur bahasa Arab Levant"
+    },
+    "ara": {
+      "in_target": "dalam bahasa Arab",
+      "a_target_speaker": "penutur bahasa Arab Baku Moden",
+      "target_speakers": "penutur bahasa Arab"
+    },
+    "arg": {
+      "in_target": "dalam bahasa Aragon",
+      "a_target_speaker": "penutur bahasa Aragon",
+      "target_speakers": "penutur bahasa Aragon"
+    },
+    "ary": {
+      "in_target": "dalam bahasa Arab Maghribi",
+      "a_target_speaker": "penutur bahasa Arab Maghribi",
+      "target_speakers": "penutur bahasa Arab Maghribi"
+    },
+    "asm": {
+      "in_target": "dalam bahasa Assam",
+      "a_target_speaker": "penutur bahasa Assam",
+      "target_speakers": "penutur bahasa Assam"
+    },
+    "ast": {
+      "in_target": "dalam bahasa Asturias",
+      "a_target_speaker": "penutur bahasa Asturias",
+      "target_speakers": "penutur bahasa Asturias"
+    },
+    "aze": {
+      "in_target": "dalam bahasa Azerbaijan",
+      "a_target_speaker": "penutur bahasa Azerbaijan",
+      "target_speakers": "penutur bahasa Azerbaijan"
+    },
+    "bar": {
+      "in_target": "dalam bahasa Bavaria",
+      "a_target_speaker": "penutur bahasa Bavaria",
+      "target_speakers": "penutur bahasa Bavaria"
+    },
+    "bel": {
+      "in_target": "dalam bahasa Belarus",
+      "a_target_speaker": "penutur bahasa Belarus",
+      "target_speakers": "penutur bahasa Belarus"
+    },
+    "ben": {
+      "in_target": "dalam bahasa Bengali",
+      "a_target_speaker": "penutur bahasa Bengali",
+      "target_speakers": "penutur bahasa Bengali"
+    },
+    "bos": {
+      "in_target": "dalam bahasa Bosnia",
+      "a_target_speaker": "penutur bahasa Bosnia",
+      "target_speakers": "penutur bahasa Bosnia"
+    },
+    "bre": {
+      "in_target": "dalam bahasa Breton",
+      "a_target_speaker": "penutur bahasa Breton",
+      "target_speakers": "penutur bahasa Breton"
+    },
+    "bul": {
+      "in_target": "dalam bahasa Bulgaria",
+      "a_target_speaker": "penutur bahasa Bulgaria",
+      "target_speakers": "penutur bahasa Bulgaria"
+    },
+    "cat": {
+      "in_target": "dalam bahasa Catalan",
+      "a_target_speaker": "penutur bahasa Catalan",
+      "target_speakers": "penutur bahasa Catalan"
+    },
+    "ceb": {
+      "in_target": "dalam bahasa Cebuano",
+      "a_target_speaker": "penutur bahasa Cebuano",
+      "target_speakers": "penutur bahasa Cebuano"
+    },
+    "ces": {
+      "in_target": "dalam bahasa Czech",
+      "a_target_speaker": "penutur bahasa Czech",
+      "target_speakers": "penutur bahasa Czech"
+    },
+    "chr": {
+      "in_target": "dalam bahasa Cherokee",
+      "a_target_speaker": "penutur bahasa Cherokee",
+      "target_speakers": "penutur bahasa Cherokee"
+    },
+    "cmn": {
+      "in_target": "dalam bahasa Mandarin",
+      "a_target_speaker": "penutur bahasa Mandarin",
+      "target_speakers": "penutur bahasa Mandarin"
+    },
+    "cor": {
+      "in_target": "dalam bahasa Cornish",
+      "a_target_speaker": "penutur bahasa Cornish",
+      "target_speakers": "penutur bahasa Cornish"
+    },
+    "cos": {
+      "in_target": "dalam bahasa Corsica",
+      "a_target_speaker": "penutur bahasa Corsica",
+      "target_speakers": "penutur bahasa Corsica"
+    },
+    "csb": {
+      "in_target": "dalam bahasa Kashubia",
+      "a_target_speaker": "penutur bahasa Kashubia",
+      "target_speakers": "penutur bahasa Kashubia"
+    },
+    "cym": {
+      "in_target": "dalam bahasa Wales",
+      "a_target_speaker": "penutur bahasa Wales",
+      "target_speakers": "penutur bahasa Wales"
+    },
+    "dan": {
+      "in_target": "dalam bahasa Denmark",
+      "a_target_speaker": "penutur bahasa Denmark",
+      "target_speakers": "penutur bahasa Denmark"
+    },
+    "deu": {
+      "in_target": "dalam bahasa Jerman",
+      "a_target_speaker": "penutur bahasa Jerman",
+      "target_speakers": "penutur bahasa Jerman"
+    },
+    "deu_AT": {
+      "in_target": "dalam bahasa Jerman",
+      "a_target_speaker": "penutur bahasa Jerman Austria",
+      "target_speakers": "penutur bahasa Jerman"
+    },
+    "dsb": {
+      "in_target": "dalam bahasa Sorbian Bawah",
+      "a_target_speaker": "penutur bahasa Sorbian Bawah",
+      "target_speakers": "penutur bahasa Sorbian Bawah"
+    },
+    "ell": {
+      "in_target": "dalam bahasa Yunani",
+      "a_target_speaker": "penutur bahasa Yunani",
+      "target_speakers": "penutur bahasa Yunani"
+    },
+    "eng": {
+      "in_target": "dalam bahasa Inggeris",
+      "a_target_speaker": "penutur bahasa Inggeris",
+      "target_speakers": "penutur bahasa Inggeris"
+    },
+    "est": {
+      "in_target": "dalam bahasa Estonia",
+      "a_target_speaker": "penutur bahasa Estonia",
+      "target_speakers": "penutur bahasa Estonia"
+    },
+    "eus": {
+      "in_target": "dalam bahasa Basque",
+      "a_target_speaker": "penutur bahasa Basque",
+      "target_speakers": "penutur bahasa Basque"
+    },
+    "fao": {
+      "in_target": "dalam bahasa Faroe",
+      "a_target_speaker": "penutur bahasa Faroe",
+      "target_speakers": "penutur bahasa Faroe"
+    },
+    "fas": {
+      "in_target": "dalam bahasa Parsi",
+      "a_target_speaker": "penutur bahasa Parsi",
+      "target_speakers": "penutur bahasa Parsi"
+    },
+    "fij": {
+      "in_target": "dalam bahasa Fiji",
+      "a_target_speaker": "penutur bahasa Fiji",
+      "target_speakers": "penutur bahasa Fiji"
+    },
+    "fil": {
+      "in_target": "dalam bahasa Filipino",
+      "a_target_speaker": "penutur bahasa Filipino",
+      "target_speakers": "penutur bahasa Filipino"
+    },
+    "fin": {
+      "in_target": "dalam bahasa Finland",
+      "a_target_speaker": "penutur bahasa Finland",
+      "target_speakers": "penutur bahasa Finland"
+    },
+    "fra": {
+      "in_target": "dalam bahasa Perancis",
+      "a_target_speaker": "penutur bahasa Perancis",
+      "target_speakers": "penutur bahasa Perancis"
+    },
+    "frr": {
+      "in_target": "dalam bahasa Frisia Utara",
+      "a_target_speaker": "penutur bahasa Frisia Utara",
+      "target_speakers": "penutur bahasa Frisia Utara"
+    },
+    "fry": {
+      "in_target": "dalam bahasa Frisia Barat",
+      "a_target_speaker": "penutur bahasa Frisia Barat",
+      "target_speakers": "penutur bahasa Frisia Barat"
+    },
+    "fur": {
+      "in_target": "dalam bahasa Friuli",
+      "a_target_speaker": "penutur bahasa Friuli",
+      "target_speakers": "penutur bahasa Friuli"
+    },
+    "gla": {
+      "in_target": "dalam bahasa Gaelic Scotland",
+      "a_target_speaker": "penutur bahasa Gaelic Scotland",
+      "target_speakers": "penutur bahasa Gaelic Scotland"
+    },
+    "gle": {
+      "in_target": "dalam bahasa Ireland",
+      "a_target_speaker": "penutur bahasa Ireland",
+      "target_speakers": "penutur bahasa Ireland"
+    },
+    "glg": {
+      "in_target": "dalam bahasa Galicia",
+      "a_target_speaker": "penutur bahasa Galicia",
+      "target_speakers": "penutur bahasa Galicia"
+    },
+    "glv": {
+      "in_target": "dalam bahasa Manx",
+      "a_target_speaker": "penutur bahasa Manx",
+      "target_speakers": "penutur bahasa Manx"
+    },
+    "grk": {
+      "in_target": "dalam bahasa Griko",
+      "a_target_speaker": "penutur bahasa Griko",
+      "target_speakers": "penutur bahasa Griko"
+    },
+    "grn": {
+      "in_target": "dalam bahasa Guarani",
+      "a_target_speaker": "penutur bahasa Guarani",
+      "target_speakers": "penutur bahasa Guarani"
+    },
+    "gsw": {
+      "in_target": "dalam bahasa Jerman Switzerland",
+      "a_target_speaker": "penutur bahasa Jerman Switzerland",
+      "target_speakers": "penutur bahasa Jerman Switzerland"
+    },
+    "guj": {
+      "in_target": "dalam bahasa Gujarat",
+      "a_target_speaker": "penutur bahasa Gujarat",
+      "target_speakers": "penutur bahasa Gujarat"
+    },
+    "hak": {
+      "in_target": "dalam bahasa Hakka",
+      "a_target_speaker": "penutur bahasa Hakka",
+      "target_speakers": "penutur bahasa Hakka"
+    },
+    "hau": {
+      "in_target": "dalam bahasa Hausa",
+      "a_target_speaker": "penutur bahasa Hausa",
+      "target_speakers": "penutur bahasa Hausa"
+    },
+    "haw": {
+      "in_target": "dalam bahasa Hawaii",
+      "a_target_speaker": "penutur bahasa Hawaii",
+      "target_speakers": "penutur bahasa Hawaii"
+    },
+    "heb": {
+      "in_target": "dalam bahasa Ibrani",
+      "a_target_speaker": "penutur bahasa Ibrani",
+      "target_speakers": "penutur bahasa Ibrani"
+    },
+    "hin": {
+      "in_target": "dalam bahasa Hindi",
+      "a_target_speaker": "penutur bahasa Hindi",
+      "target_speakers": "penutur bahasa Hindi"
+    },
+    "hrv": {
+      "in_target": "dalam bahasa Croatia",
+      "a_target_speaker": "penutur bahasa Croatia",
+      "target_speakers": "penutur bahasa Croatia"
+    },
+    "hsb": {
+      "in_target": "dalam bahasa Sorbian Atas",
+      "a_target_speaker": "penutur bahasa Sorbian Atas",
+      "target_speakers": "penutur bahasa Sorbian Atas"
+    },
+    "hun": {
+      "in_target": "dalam bahasa Hungary",
+      "a_target_speaker": "penutur bahasa Hungary",
+      "target_speakers": "penutur bahasa Hungary"
+    },
+    "hye": {
+      "in_target": "dalam bahasa Armenia",
+      "a_target_speaker": "penutur bahasa Armenia",
+      "target_speakers": "penutur bahasa Armenia"
+    },
+    "ibo": {
+      "in_target": "dalam bahasa Igbo",
+      "a_target_speaker": "penutur bahasa Igbo",
+      "target_speakers": "penutur bahasa Igbo"
+    },
+    "iku": {
+      "in_target": "dalam bahasa Inuktitut",
+      "a_target_speaker": "penutur bahasa Inuktitut",
+      "target_speakers": "penutur bahasa Inuktitut"
+    },
+    "ind": {
+      "in_target": "dalam bahasa Indonesia",
+      "a_target_speaker": "penutur bahasa Indonesia",
+      "target_speakers": "penutur bahasa Indonesia"
+    },
+    "isl": {
+      "in_target": "dalam bahasa Iceland",
+      "a_target_speaker": "penutur bahasa Iceland",
+      "target_speakers": "penutur bahasa Iceland"
+    },
+    "ita": {
+      "in_target": "dalam bahasa Itali",
+      "a_target_speaker": "penutur bahasa Itali",
+      "target_speakers": "penutur bahasa Itali"
+    },
+    "jav": {
+      "in_target": "dalam bahasa Jawa",
+      "a_target_speaker": "penutur bahasa Jawa",
+      "target_speakers": "penutur bahasa Jawa"
+    },
+    "jpn": {
+      "in_target": "dalam bahasa Jepun",
+      "a_target_speaker": "penutur bahasa Jepun",
+      "target_speakers": "penutur bahasa Jepun"
+    },
+    "kal": {
+      "in_target": "dalam bahasa Kalaallisut",
+      "a_target_speaker": "penutur bahasa Kalaallisut",
+      "target_speakers": "penutur bahasa Kalaallisut"
+    },
+    "kan": {
+      "in_target": "dalam bahasa Kannada",
+      "a_target_speaker": "penutur bahasa Kannada",
+      "target_speakers": "penutur bahasa Kannada"
+    },
+    "kat": {
+      "in_target": "dalam bahasa Georgia",
+      "a_target_speaker": "penutur bahasa Georgia",
+      "target_speakers": "penutur bahasa Georgia"
+    },
+    "kaz": {
+      "in_target": "dalam bahasa Kazakh",
+      "a_target_speaker": "penutur bahasa Kazakh",
+      "target_speakers": "penutur bahasa Kazakh"
+    },
+    "kir": {
+      "in_target": "dalam bahasa Kyrgyz",
+      "a_target_speaker": "penutur bahasa Kyrgyz",
+      "target_speakers": "penutur bahasa Kyrgyz"
+    },
+    "kor": {
+      "in_target": "dalam bahasa Korea",
+      "a_target_speaker": "penutur bahasa Korea",
+      "target_speakers": "penutur bahasa Korea"
+    },
+    "kur": {
+      "in_target": "dalam bahasa Kurdi",
+      "a_target_speaker": "penutur bahasa Kurdi",
+      "target_speakers": "penutur bahasa Kurdi"
+    },
+    "lad": {
+      "in_target": "dalam bahasa Ladino",
+      "a_target_speaker": "penutur bahasa Ladino",
+      "target_speakers": "penutur bahasa Ladino"
+    },
+    "lav": {
+      "in_target": "dalam bahasa Latvia",
+      "a_target_speaker": "penutur bahasa Latvia",
+      "target_speakers": "penutur bahasa Latvia"
+    },
+    "lij": {
+      "in_target": "dalam bahasa Liguria",
+      "a_target_speaker": "penutur bahasa Liguria",
+      "target_speakers": "penutur bahasa Liguria"
+    },
+    "lim": {
+      "in_target": "dalam bahasa Limburg",
+      "a_target_speaker": "penutur bahasa Limburg",
+      "target_speakers": "penutur bahasa Limburg"
+    },
+    "lin": {
+      "in_target": "dalam bahasa Lingala",
+      "a_target_speaker": "penutur bahasa Lingala",
+      "target_speakers": "penutur bahasa Lingala"
+    },
+    "lit": {
+      "in_target": "dalam bahasa Lithuania",
+      "a_target_speaker": "penutur bahasa Lithuania",
+      "target_speakers": "penutur bahasa Lithuania"
+    },
+    "ltz": {
+      "in_target": "dalam bahasa Luxembourg",
+      "a_target_speaker": "penutur bahasa Luxembourg",
+      "target_speakers": "penutur bahasa Luxembourg"
+    },
+    "mal": {
+      "in_target": "dalam bahasa Malayalam",
+      "a_target_speaker": "penutur bahasa Malayalam",
+      "target_speakers": "penutur bahasa Malayalam"
+    },
+    "mar": {
+      "in_target": "dalam bahasa Marathi",
+      "a_target_speaker": "penutur bahasa Marathi",
+      "target_speakers": "penutur bahasa Marathi"
+    },
+    "mkd": {
+      "in_target": "dalam bahasa Macedonia",
+      "a_target_speaker": "penutur bahasa Macedonia",
+      "target_speakers": "penutur bahasa Macedonia"
+    },
+    "moh": {
+      "in_target": "dalam bahasa Mohawk",
+      "a_target_speaker": "penutur bahasa Mohawk",
+      "target_speakers": "penutur bahasa Mohawk"
+    },
+    "mri": {
+      "in_target": "dalam bahasa Maori",
+      "a_target_speaker": "penutur bahasa Maori",
+      "target_speakers": "penutur bahasa Maori"
+    },
+    "nan": {
+      "in_target": "dalam bahasa Min Nan",
+      "a_target_speaker": "penutur bahasa Min Nan",
+      "target_speakers": "penutur bahasa Min Nan"
+    },
+    "nap": {
+      "in_target": "dalam bahasa Neapolitan",
+      "a_target_speaker": "penutur bahasa Neapolitan",
+      "target_speakers": "penutur bahasa Neapolitan"
+    },
+    "nav": {
+      "in_target": "dalam bahasa Navajo",
+      "a_target_speaker": "penutur bahasa Navajo",
+      "target_speakers": "penutur bahasa Navajo"
+    },
+    "nep": {
+      "in_target": "dalam bahasa Nepal",
+      "a_target_speaker": "penutur bahasa Nepal",
+      "target_speakers": "penutur bahasa Nepal"
+    },
+    "nld": {
+      "in_target": "dalam bahasa Belanda",
+      "a_target_speaker": "penutur bahasa Belanda",
+      "target_speakers": "penutur bahasa Belanda"
+    },
+    "nor": {
+      "in_target": "dalam bahasa Norway",
+      "a_target_speaker": "penutur bahasa Norway",
+      "target_speakers": "penutur bahasa Norway"
+    },
+    "nya": {
+      "in_target": "dalam bahasa Chichewa",
+      "a_target_speaker": "penutur bahasa Chichewa",
+      "target_speakers": "penutur bahasa Chichewa"
+    },
+    "oci": {
+      "in_target": "dalam bahasa Occitan",
+      "a_target_speaker": "penutur bahasa Occitan",
+      "target_speakers": "penutur bahasa Occitan"
+    },
+    "oji": {
+      "in_target": "dalam bahasa Ojibwe",
+      "a_target_speaker": "penutur bahasa Ojibwe",
+      "target_speakers": "penutur bahasa Ojibwe"
+    },
+    "pan": {
+      "in_target": "dalam bahasa Punjabi",
+      "a_target_speaker": "penutur bahasa Punjabi",
+      "target_speakers": "penutur bahasa Punjabi"
+    },
+    "pol": {
+      "in_target": "dalam bahasa Poland",
+      "a_target_speaker": "penutur bahasa Poland",
+      "target_speakers": "penutur bahasa Poland"
+    },
+    "por": {
+      "in_target": "dalam bahasa Portugis",
+      "a_target_speaker": "penutur bahasa Portugis",
+      "target_speakers": "penutur bahasa Portugis"
+    },
+    "por_BR": {
+      "in_target": "dalam bahasa Portugis",
+      "a_target_speaker": "penutur bahasa Portugis Brazil",
+      "target_speakers": "penutur bahasa Portugis"
+    },
+    "por_EU": {
+      "in_target": "dalam bahasa Portugis",
+      "a_target_speaker": "penutur bahasa Portugis Eropah",
+      "target_speakers": "penutur bahasa Portugis"
+    },
+    "pus": {
+      "in_target": "dalam bahasa Pashto",
+      "a_target_speaker": "penutur bahasa Pashto",
+      "target_speakers": "penutur bahasa Pashto"
+    },
+    "que": {
+      "in_target": "dalam bahasa Quechua",
+      "a_target_speaker": "penutur bahasa Quechua",
+      "target_speakers": "penutur bahasa Quechua"
+    },
+    "roh": {
+      "in_target": "dalam bahasa Romansh",
+      "a_target_speaker": "penutur bahasa Romansh",
+      "target_speakers": "penutur bahasa Romansh"
+    },
+    "ron": {
+      "in_target": "dalam bahasa Romania",
+      "a_target_speaker": "penutur bahasa Romania",
+      "target_speakers": "penutur bahasa Romania"
+    },
+    "rus": {
+      "in_target": "dalam bahasa Rusia",
+      "a_target_speaker": "penutur bahasa Rusia",
+      "target_speakers": "penutur bahasa Rusia"
+    },
+    "scn": {
+      "in_target": "dalam bahasa Sicilia",
+      "a_target_speaker": "penutur bahasa Sicilia",
+      "target_speakers": "penutur bahasa Sicilia"
+    },
+    "sco": {
+      "in_target": "dalam bahasa Scots",
+      "a_target_speaker": "penutur bahasa Scots",
+      "target_speakers": "penutur bahasa Scots"
+    },
+    "slk": {
+      "in_target": "dalam bahasa Slovakia",
+      "a_target_speaker": "penutur bahasa Slovakia",
+      "target_speakers": "penutur bahasa Slovakia"
+    },
+    "slv": {
+      "in_target": "dalam bahasa Slovenia",
+      "a_target_speaker": "penutur bahasa Slovenia",
+      "target_speakers": "penutur bahasa Slovenia"
+    },
+    "sme": {
+      "in_target": "dalam bahasa Sami Utara",
+      "a_target_speaker": "penutur bahasa Sami Utara",
+      "target_speakers": "penutur bahasa Sami Utara"
+    },
+    "smj": {
+      "in_target": "dalam bahasa Sami Lule",
+      "a_target_speaker": "penutur bahasa Sami Lule",
+      "target_speakers": "penutur bahasa Sami Lule"
+    },
+    "smn": {
+      "in_target": "dalam bahasa Sami Inari",
+      "a_target_speaker": "penutur bahasa Sami Inari",
+      "target_speakers": "penutur bahasa Sami Inari"
+    },
+    "smo": {
+      "in_target": "dalam bahasa Samoa",
+      "a_target_speaker": "penutur bahasa Samoa",
+      "target_speakers": "penutur bahasa Samoa"
+    },
+    "sms": {
+      "in_target": "dalam bahasa Sami Skolt",
+      "a_target_speaker": "penutur bahasa Sami Skolt",
+      "target_speakers": "penutur bahasa Sami Skolt"
+    },
+    "snd": {
+      "in_target": "dalam bahasa Sindhi",
+      "a_target_speaker": "penutur bahasa Sindhi",
+      "target_speakers": "penutur bahasa Sindhi"
+    },
+    "som": {
+      "in_target": "dalam bahasa Somali",
+      "a_target_speaker": "penutur bahasa Somali",
+      "target_speakers": "penutur bahasa Somali"
+    },
+    "spa": {
+      "in_target": "dalam bahasa Sepanyol",
+      "a_target_speaker": "penutur bahasa Sepanyol",
+      "target_speakers": "penutur bahasa Sepanyol"
+    },
+    "spa_EU": {
+      "in_target": "dalam bahasa Sepanyol",
+      "a_target_speaker": "penutur bahasa Sepanyol Eropah",
+      "target_speakers": "penutur bahasa Sepanyol"
+    },
+    "spa_SA": {
+      "in_target": "dalam bahasa Sepanyol",
+      "a_target_speaker": "penutur bahasa Sepanyol Amerika Selatan",
+      "target_speakers": "penutur bahasa Sepanyol"
+    },
+    "srd": {
+      "in_target": "dalam bahasa Sardinia",
+      "a_target_speaker": "penutur bahasa Sardinia",
+      "target_speakers": "penutur bahasa Sardinia"
+    },
+    "srp": {
+      "in_target": "dalam bahasa Serbia",
+      "a_target_speaker": "penutur bahasa Serbia",
+      "target_speakers": "penutur bahasa Serbia"
+    },
+    "swa": {
+      "in_target": "dalam bahasa Swahili",
+      "a_target_speaker": "penutur bahasa Swahili",
+      "target_speakers": "penutur bahasa Swahili"
+    },
+    "swe": {
+      "in_target": "dalam bahasa Sweden",
+      "a_target_speaker": "penutur bahasa Sweden",
+      "target_speakers": "penutur bahasa Sweden"
+    },
+    "tah": {
+      "in_target": "dalam bahasa Tahiti",
+      "a_target_speaker": "penutur bahasa Tahiti",
+      "target_speakers": "penutur bahasa Tahiti"
+    },
+    "tam": {
+      "in_target": "dalam bahasa Tamil",
+      "a_target_speaker": "penutur bahasa Tamil",
+      "target_speakers": "penutur bahasa Tamil"
+    },
+    "tel": {
+      "in_target": "dalam bahasa Telugu",
+      "a_target_speaker": "penutur bahasa Telugu",
+      "target_speakers": "penutur bahasa Telugu"
+    },
+    "tha": {
+      "in_target": "dalam bahasa Thai",
+      "a_target_speaker": "penutur bahasa Thai",
+      "target_speakers": "penutur bahasa Thai"
+    },
+    "ton": {
+      "in_target": "dalam bahasa Tonga",
+      "a_target_speaker": "penutur bahasa Tonga",
+      "target_speakers": "penutur bahasa Tonga"
+    },
+    "tur": {
+      "in_target": "dalam bahasa Turki",
+      "a_target_speaker": "penutur bahasa Turki",
+      "target_speakers": "penutur bahasa Turki"
+    },
+    "uig": {
+      "in_target": "dalam bahasa Uyghur",
+      "a_target_speaker": "penutur bahasa Uyghur",
+      "target_speakers": "penutur bahasa Uyghur"
+    },
+    "ukr": {
+      "in_target": "dalam bahasa Ukraine",
+      "a_target_speaker": "penutur bahasa Ukraine",
+      "target_speakers": "penutur bahasa Ukraine"
+    },
+    "urd": {
+      "in_target": "dalam bahasa Urdu",
+      "a_target_speaker": "penutur bahasa Urdu",
+      "target_speakers": "penutur bahasa Urdu"
+    },
+    "vec": {
+      "in_target": "dalam bahasa Venesia",
+      "a_target_speaker": "penutur bahasa Venesia",
+      "target_speakers": "penutur bahasa Venesia"
+    },
+    "vie": {
+      "in_target": "dalam bahasa Vietnam",
+      "a_target_speaker": "penutur bahasa Vietnam",
+      "target_speakers": "penutur bahasa Vietnam"
+    },
+    "vls": {
+      "in_target": "dalam bahasa Flemish",
+      "a_target_speaker": "penutur bahasa Flemish",
+      "target_speakers": "penutur bahasa Flemish"
+    },
+    "wln": {
+      "in_target": "dalam bahasa Walloon",
+      "a_target_speaker": "penutur bahasa Walloon",
+      "target_speakers": "penutur bahasa Walloon"
+    },
+    "wuu": {
+      "in_target": "dalam bahasa Wu",
+      "a_target_speaker": "penutur bahasa Wu",
+      "target_speakers": "penutur bahasa Wu"
+    },
+    "xho": {
+      "in_target": "dalam bahasa Xhosa",
+      "a_target_speaker": "penutur bahasa Xhosa",
+      "target_speakers": "penutur bahasa Xhosa"
+    },
+    "yid": {
+      "in_target": "dalam bahasa Yiddish",
+      "a_target_speaker": "penutur bahasa Yiddish",
+      "target_speakers": "penutur bahasa Yiddish"
+    },
+    "yor": {
+      "in_target": "dalam bahasa Yoruba",
+      "a_target_speaker": "penutur bahasa Yoruba",
+      "target_speakers": "penutur bahasa Yoruba"
+    },
+    "yue": {
+      "in_target": "dalam bahasa Kantonis",
+      "a_target_speaker": "penutur bahasa Kantonis",
+      "target_speakers": "penutur bahasa Kantonis"
+    },
+    "zul": {
+      "in_target": "dalam bahasa Zulu",
+      "a_target_speaker": "penutur bahasa Zulu",
+      "target_speakers": "penutur bahasa Zulu"
+    },
+    "ara_lb": {
+      "in_target": "dalam bahasa Arab",
+      "a_target_speaker": "penutur bahasa Arab Lebanon",
+      "target_speakers": "penutur bahasa Arab"
+    },
+    "ara_sy": {
+      "in_target": "dalam bahasa Arab",
+      "a_target_speaker": "penutur bahasa Arab Syria",
+      "target_speakers": "penutur bahasa Arab"
+    },
+    "ara_eg": {
+      "in_target": "dalam bahasa Arab",
+      "a_target_speaker": "penutur bahasa Arab Mesir",
+      "target_speakers": "penutur bahasa Arab"
+    }
+  }
+}
