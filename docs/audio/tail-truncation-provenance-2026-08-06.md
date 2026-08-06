@@ -49,7 +49,7 @@ turning a healthy 648 ms render of "weak" into 100 ms of −91 dB silence.
 
 | When | What | Evidence |
 |---|---|---|
-| **2026-07-24 03:02** | `repairTailDefect` introduced, mutating by default | `44fef862` |
+| **2026-07-24 03:02** | `repairTailDefect` introduced. **Unconditional — `TAIL_REPAIR_MODE` did not exist yet, so for 12 days there was no off switch at all** | `44fef862` |
 | 2026-07-28 16:55 | `whisper-cli` first installed on watson-1 | binary mtime |
 | 2026-08-03 09:00–11:59 | **Re-link event**, 162,322 `course_audio` rows: `s3_key` changed, duration/voice/text **unchanged** — no audio characteristics altered | `content_audit_log` |
 | **2026-08-03 17:00–23:59** | **Re-voice run**, 42,256 rows: `s3_key`, `duration_ms` and `voice_id` all changed — legacy Azure voices → house voices. This is the run that produced Tom's ear-confirmed clips | `content_audit_log` + S3 LastModified |
@@ -203,6 +203,80 @@ candidate, the voice-replacement window, not a tail-clipping pass.
 
 Separately: Deborah's "under the CD means" vs "under the bridge" is a **wrong-content**
 defect, not a tail clip. Different failure class, different fix — worth tracking apart.
+
+---
+
+## Worker findings folded in
+
+### The 142,973-clip scenario is closed — refuted, not unresolved
+
+The code-forensics worker's decisive open question was whether Kai's de-hiss reprocess
+called `masterAudio` — the difference, in their words, "between ~1,000 clips and the whole
+estate." They could not find the script on this machine and asked for someone to read
+Kai's Mac.
+
+**Not needed.** The script is in the repo, on `origin/docs/kai-local-handoff` at
+`docs/handoff-kai-2026-08-04/local-tooling/reprocess-xai-hiss.cjs`. Its only import from
+the audio code is:
+
+```js
+const { ffmpegFilterToLameMp3, getAudioMetadata } = require('../services/audio-processor.cjs');
+...
+await ffmpegFilterToLameMp3(inPath, outPath, { filterChain: DENOISE });  // DENOISE = 'afftdn=nf=-25:nt=w'
+```
+
+No `masterAudio`, no `normalizeAudio`, no `repairTailDefect`. `ffmpegFilterToLameMp3` is a
+raw ffmpeg wrapper that applies exactly the chain it is handed. **The de-hiss run could not
+have invoked the amputating path.** The estate-wide scenario does not happen.
+
+A related worry can also be retired: the worker noted the commit claims "originals retained
+for rollback" while citing log paths, and that no raw pre-masters are kept. True in general
+— but irrelevant *for this run*, because the de-hiss wrote to **fresh keys** and left every
+original in place. The script even ships a `rollback` that restores the old `s3_key`.
+
+### First real damage count: 959 clips
+
+Five run logs recovered from `/tmp`, all on **2026-08-04 within two hours**:
+
+| Log (UTC) | Course | Clips cut |
+|---|---|---:|
+| fra-bulk-repair-run1 11:50:33 | fra | 99 |
+| fra-bulk-repair2 12:00:12 | fra | 198 |
+| deu-repair-run 13:30:24 | deu | 449 |
+| revoice-full 13:50:37 | deu | 38 |
+| revoice-run2 13:57:42 | deu | 175 |
+| | | **959** |
+
+Median cut **0.61 s**, max **2.07 s** — word-scale on short LEGO clips. Every one of these
+runs was a human typing a command; nothing scheduled did it. The repair and re-voice tools
+were the delivery mechanism, because they re-render through `masterAudio`.
+
+**This is a floor, not a total.** `/tmp` is luck, not an archive: no amputating run log
+survives for 07-25 → 08-03, and the 08-03 deu event is evidenced only by the audit log and
+S3. Absence of a log there is weak evidence, not proof of absence.
+
+### The 08-03 German window, confirmed twice independently
+
+`content_audit_log` puts the deu re-voice at **08-03 17:00–23:59**; S3 LastModified analysis
+independently narrows deu's damaging window to **08-03 19:34–23:41**. Two different sources,
+same event.
+
+### A third, earlier event — not the culprit
+
+An estate-wide overwrite on **2026-05-23** touched ~48% of sampled objects across 90+
+courses. Files mostly **grew**, it has clean before/after version history, and it is two
+months outside the window. Not the truncation bug — recorded so nobody re-finds it and
+raises the alarm.
+
+### Correction: how much of German is actually repaired
+
+A worker reported all ear-confirmed clips sitting at `audio_revision = 1`. For Tom's three
+named examples that is not so — they are at revision 2, on `repair-candidates/` objects.
+But the underlying signal is real and worth stating plainly:
+
+**Of 47,266 deu_for_eng clips, 95 have been repaired.** The "as often as possible" R9 batch
+has ~30 sibling clips; **two** were repaired. Revision 1 means *never examined* — not
+*proven healthy*.
 
 ---
 
