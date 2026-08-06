@@ -43,6 +43,7 @@ const audioProcessor = require('./audio-processor.cjs')
 const { spliceSegmentsToFile } = require('./voice-engine/splicer.cjs')
 const { resolveTargetPool } = require('../tools/pod-voice-coverage.cjs')
 const { parseCourseCode, getConnectorForLearnerLang } = require('./pod-explainer-generator.cjs')
+const { canonicalLanguage } = require('./shared/clip-identity.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
 const { canonicalSpeakerName } = require('../tools/pod-sync.cjs')
 
@@ -214,6 +215,9 @@ async function getCourseVoices(courseCode) {
  */
 async function compositeExplainersForCourse(courseCode, { log = console.log, limit = 0, onlyOrders = null } = {}) {
   const { target, learner } = parseCourseCode(courseCode)
+  // `target` is the course-code prefix ('gle', 'fra_ca'), which is not always a
+  // language code — the identity column takes the canonical, region-free form.
+  const identityLanguage = canonicalLanguage(target)
   const connector = getConnectorForLearnerLang(learner)
   const { targetVoice, knownVoice } = await getCourseVoices(courseCode)
 
@@ -268,10 +272,17 @@ async function compositeExplainersForCourse(courseCode, { log = console.log, lim
           const introCue = introCueFor(learner)
           const text = narrationText(chunks, tail, introCue)
           const chunkVoice = chunkVoiceFor(row.speaker)
-          const voiceTag = `comp:${chunkVoice.voice_id}+${knownVoice.voice_id}`
+          // 'comp:' is a splice RECIPE, not a voice — it names the two takes
+          // this clip was assembled from, so it keeps its own namespace and a
+          // spliced explainer never collapses onto a plain single-voice render
+          // of the same text. Each part is canonicalised the way any other
+          // voice id is; the parts came from voice_config and the pod cast, so
+          // they arrive in whatever spelling those happen to hold.
+          const voiceTag = 'comp:' +
+            [chunkVoice, knownVoice].map(v => phase8.canonicalClipVoiceId(v.voice_id, v.provider)).join('+')
 
           // Dedup: same narration + same recipe → relink the existing clip.
-          const existing = await phase8.findExistingAudio(courseCode, text, target, EXPLAINER_ROLE, voiceTag)
+          const existing = await phase8.findExistingAudio(courseCode, text, identityLanguage, EXPLAINER_ROLE, voiceTag)
           let audioId = existing
           if (!audioId) {
             // Assemble: one-time cue, then for each chunk the pattern
@@ -313,7 +324,7 @@ async function compositeExplainersForCourse(courseCode, { log = console.log, lim
               course_code: courseCode,
               text,
               text_normalized: normalizeForAudio(text),
-              language: target,
+              language: identityLanguage,
               role: EXPLAINER_ROLE,
               voice_id: voiceTag,
               origin: 'tts',

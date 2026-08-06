@@ -51,6 +51,13 @@ const { isHumanVoiceCourse } = require('../shared/human-voice-courses.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
 const { toIso3, getName: getLangEnglishName, databaseToManifest, getAzureLocale } = require('../language-code-service.cjs')
+const {
+  canonicalLanguage,
+  canonicalVoiceId,
+  tryCanonicalLanguage,
+  tryCanonicalVoiceId,
+  PROVIDER_ALIASES,
+} = require('../shared/clip-identity.cjs')
 
 const app = express()
 app.use(cors())
@@ -155,6 +162,85 @@ function getLocalisedLangName(targetLang, knownLang) {
 // Canonical text normalization — see services/shared/text-normalize.cjs
 const normalizeText = normalizeForAudio
 
+// ─── clip identity: one spelling for language and voice ──────────────────────
+//
+// A clip's identity is (language, text_normalized, voice_id)
+// (docs/architecture/AUDIO_PIPELINE_CONTENT_ADDRESSED_DESIGN-2026-08-06.md), and
+// it only dedups if the same clip is always SPELT the same. Two rules run
+// through everything below:
+//
+//   1. The value that goes to the PROVIDER stays raw. Azure wants
+//      'en-GB-SoniaNeural' in its SSML, xAI wants 'leo' — handing either a
+//      canonical 'azure_…'/'xai_…' id breaks the render. Only the value that
+//      goes into a DB column is canonicalised.
+//   2. Reads compare canonical to canonical. Live data still holds both
+//      spellings, so a read cannot filter on one of them in SQL and be honest;
+//      it fetches the candidates on the drift-free part of the key
+//      (course/text/role) and matches the two drifting columns in JS.
+
+/** True when the id already carries a provider prefix clip-identity recognises. */
+function hasProviderPrefix(voiceId) {
+  const m = String(voiceId == null ? '' : voiceId).trim().match(/^([A-Za-z0-9]+)[_:]/)
+  return !!(m && PROVIDER_ALIASES[m[1].toLowerCase()])
+}
+
+/**
+ * Canonical voice id for a DB write, given a voice from course config.
+ *
+ * The id's own prefix always wins: a config that carries BOTH a prefixed id
+ * and a `provider` key (or a defaulted one — getCourseContext defaults
+ * 'azure') would otherwise make canonicalVoiceId throw on the disagreement.
+ * The provider hint is only offered when there is no prefix to read.
+ *
+ * Composites keep their own namespace and are composed part-by-part, never
+ * handed in whole: 'comp:<a>+<b>' is a splice recipe, and a spliced explainer
+ * must never collapse onto a plain single-voice render of the same text.
+ */
+function canonicalClipVoiceId(voiceId, provider) {
+  const raw = String(voiceId == null ? '' : voiceId).trim()
+  if (/^comp:/i.test(raw)) {
+    const parts = raw.slice(5).split('+').map(p => p.trim()).filter(Boolean)
+    if (!parts.length) throw new Error(`cannot canonicalise voice_id ${JSON.stringify(voiceId)}: composite with no parts`)
+    return 'comp:' + parts.map(p => canonicalClipVoiceId(p, provider)).join('+')
+  }
+  return hasProviderPrefix(raw)
+    ? canonicalVoiceId(raw)
+    : canonicalVoiceId(raw, { provider })
+}
+
+/** Non-throwing canonicalClipVoiceId — null when the value cannot be resolved. */
+function tryCanonicalClipVoiceId(voiceId, provider) {
+  try {
+    return canonicalClipVoiceId(voiceId, provider)
+  } catch (_) {
+    return null
+  }
+}
+
+/**
+ * Does a stored row's language/voice mean the same clip as the one we are
+ * about to render?
+ *
+ * `permissive` is for the PRECIOUS-AUDIO guard ONLY. There, a stored value we
+ * cannot canonicalise ('legacy_import', 'auto', a bare 'human') counts as a
+ * match, because the two errors are not symmetric: a false positive costs one
+ * skipped TTS render, a false negative writes a TTS twin of a human recording.
+ * Dedup reads never pass it — a false positive there links the WRONG audio.
+ */
+function identityFieldMatches(requested, stored, canon, permissive = false) {
+  if (requested === stored) return true
+  const cs = canon(stored)
+  if (cs == null) return !!permissive
+  const cr = canon(requested)
+  if (cr == null) return false
+  return cr === cs
+}
+
+const sameLanguage = (requested, stored, permissive) =>
+  identityFieldMatches(requested, stored, tryCanonicalLanguage, permissive)
+const sameVoice = (requested, stored, permissive) =>
+  identityFieldMatches(requested, stored, v => tryCanonicalClipVoiceId(v), permissive)
+
 /**
  * Get or generate presentation template for a known language.
  * Looks up presentation_templates first; if none exists, uses Haiku to
@@ -243,6 +329,12 @@ async function getExistingAudioSet(courseCode) {
 // TTS. The guard now matches EITHER stored convention (see
 // services/shared/text-normalize.cjs). Widening what the guard can see is
 // strictly more protective: a false positive only skips a TTS render.
+//
+// 2026-08-06, same reasoning applied to the other two key columns: the guard
+// used to .eq() ONE spelling of the language and ONE of the voice, so a human
+// take registered under 'en-GB'/'en-GB-SoniaNeural' was invisible to a render
+// dispatched as 'eng'/'azure_en-GB-SoniaNeural'. Both predicates now leave SQL
+// and are compared canonically in JS, permissively — see identityFieldMatches.
 async function humanRowAtAudioKey(courseCode, textNormalized, language, role, voiceId) {
   const keys = audioKeyCandidates(textNormalized)
   // Transient undici "TypeError: fetch failed" blips during 8-hour batch runs
@@ -257,22 +349,53 @@ async function humanRowAtAudioKey(courseCode, textNormalized, language, role, vo
         .select('*')
         .eq('course_code', courseCode)
         .in('text_normalized', keys)
-        .eq('language', language)
         .eq('role', role)
-        .eq('voice_id', voiceId)
         .eq('origin', 'human')
       if (error) throw new Error(error.message)
       // Both conventions can hold a row for the same text, so this is a list,
       // not maybeSingle(). Any human row here means "precious audio occupies
       // this key" — pick deterministically for a stable log line and rebind.
-      if (!data || !data.length) return null
-      return data.reduce((best, row) => pickPreferredAudioRow(best, row), null)
+      const matches = (data || []).filter(row =>
+        sameLanguage(language, row.language, true) && sameVoice(voiceId, row.voice_id, true))
+      if (!matches.length) return null
+      return matches.reduce((best, row) => pickPreferredAudioRow(best, row), null)
     } catch (e) {
       lastError = e
       if (attempt < 3) await new Promise(r => setTimeout(r, attempt * 500))
     }
   }
   throw new Error(`precious-audio guard query failed: ${lastError.message}`)
+}
+
+/**
+ * Cross-course reuse: a rendered clip of this exact text, language, role and
+ * voice in ANY other course, whose S3 object we can point a new row at instead
+ * of paying to render it again. This is the query the content-addressed design
+ * is built on — every miss is a duplicate paid render.
+ *
+ * It used to .eq() one spelling of language and one of voice, so it could not
+ * see a sibling stored under the other spelling; and .limit(1).single() turned
+ * "drift produced two rows" into an error the caller discarded as "no sibling",
+ * falling straight through to TTS. Both predicates are now canonical JS matches
+ * over a small candidate set, and more than one candidate is normal, not fatal.
+ *
+ * Strict matching (no permissive branch): a false positive here would link the
+ * WRONG audio to a learner-facing slot.
+ */
+async function findSiblingCourseClip(courseCode, text, language, role, voiceId) {
+  const { data, error } = await supabase
+    .from('course_audio')
+    .select('s3_key, duration_ms, word_boundaries, language, voice_id')
+    .neq('course_code', courseCode)
+    .in('text_normalized', audioKeyCandidates(normalizeForAudio(text)))
+    .eq('role', role)
+    .not('s3_key', 'like', 'pending/%')
+    .limit(200)
+  if (error) throw new Error(`sibling-clip lookup failed: ${error.message}`)
+  return (data || []).find(row =>
+    row.s3_key &&
+    sameLanguage(language, row.language) &&
+    sameVoice(voiceId, row.voice_id)) || null
 }
 
 /**
@@ -419,6 +542,10 @@ async function classifyEnglishCopyBucket(courseCode, course, uniqueToGenerate) {
   for (const role of englishRoles) {
     const roleItems = englishItems.filter(i => i.role === role)
     const voiceId = course.voice_config?.voices?.[role]?.voiceId
+    // Raw for the source index + decideCopy (those read live rows and the
+    // `voices` registry, both of which still hold the config's own spelling);
+    // canonical only for the row executeCopyBucket writes.
+    const voiceProvider = course.voice_config?.voices?.[role]?.provider
     if (!roleItems.length || !voiceId) continue
 
     const texts = roleItems.map(i => normalizeText(i.text))
@@ -432,7 +559,7 @@ async function classifyEnglishCopyBucket(courseCode, course, uniqueToGenerate) {
     for (const item of roleItems) {
       const decision = decideCopy({ text: item.text, language: item.language, voiceId, courseCode, role }, sourceIndex)
       if (decision.action === 'COPY') {
-        toCopy.push({ ...item, voiceId, copySource: decision.source })
+        toCopy.push({ ...item, voiceId, voiceProvider, copySource: decision.source })
         copyKeys.add(`${normalizeText(item.text)}|${item.language}|${item.role}`)
       }
     }
@@ -470,9 +597,11 @@ async function executeCopyBucket(courseCode, knownLang, toCopy) {
           course_code: courseCode,
           text: item.text,
           text_normalized: normalizeForAudio(item.text),
-          language: item.language || knownLang,
+          // Identity columns, canonical. A throw here fails this one copy (the
+          // catch below logs it) rather than writing a spelling nothing can find.
+          language: canonicalLanguage(item.language || knownLang),
           role: item.role,
-          voice_id: item.voiceId,
+          voice_id: canonicalClipVoiceId(item.voiceId, item.voiceProvider),
           origin: 'tts',
           s3_key: item.copySource.s3Key, // SHARED physical object — never a new copy
           duration_ms: item.copySource.durationMs,
@@ -853,10 +982,17 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     }
     toGenerate.push({
       text: pres.text,
-      language: pres.language || course.known_lang,
+      // A pending row carries whatever spelling wrote it; carrying that forward
+      // verbatim is how one bad spelling survives every regeneration. Resolve
+      // it, and when it cannot be resolved fall back to the COURSE's own known
+      // language (presentation intros are known-language audio) — never to the
+      // unresolvable value itself.
+      language: tryCanonicalLanguage(pres.language) || canonicalLanguage(course.known_lang),
       role: 'presentation',
       lego_id: pres.lego_id || null,
-      voice_id: pres.voice_id || null  // preserved so /generate can pick it up
+      // null = "resolve from voice_config", which is what /generate does with
+      // this field anyway (see the note at the needed[] map).
+      voice_id: tryCanonicalClipVoiceId(pres.voice_id) || null
     })
   }
 
@@ -1809,13 +1945,25 @@ app.post('/generate/:courseCode', async (req, res) => {
     // then determines what actually needs TTS generation.
     // =========================================================================
 
-    // Helper to get voice settings from config (supports nested voices structure)
+    // Helper to get voice settings from config (supports nested voices structure).
+    // ALWAYS canonical: this used to return '<provider>_<id>' when the course's
+    // voice_config happened to carry a `provider` key and a BARE id when it did
+    // not, which is the main /generate path's share of the 104,728 bare rows —
+    // and a bare id also breaks TTS dispatch below, which splits on '_' to find
+    // the provider. An unresolvable voice returns null exactly as an absent one
+    // does, so the item fails on its own ("No voice configured for role …")
+    // instead of taking the whole course's generate down with it.
     const getVoiceForRole = (role) => {
       const v = voices[role]
       if (!v) return null
-      if (typeof v === 'string') return v
-      if (v.provider && v.voiceId) return `${v.provider}_${v.voiceId}`
-      return v.voiceId || null // empty voiceId → null, never the config object
+      const raw = typeof v === 'string' ? v : v.voiceId
+      if (!raw) return null // empty voiceId → null, never the config object
+      const canonical = tryCanonicalClipVoiceId(raw, typeof v === 'string' ? undefined : v.provider)
+      if (!canonical) {
+        logger.warn(`getVoiceForRole(${role}): cannot canonicalise voice ${JSON.stringify(raw)} — fix the course voice_config (provider missing/unknown)`)
+        return null
+      }
+      return canonical
     }
     const getSpeedForRole = (role) => voices[role]?.settings?.speed || 1.0
 
@@ -1933,8 +2081,26 @@ app.post('/generate/:courseCode', async (req, res) => {
     // Presentations get the dedicated resolver: explicit config wins, then
     // the English clone for eng-known courses, then the known-role voice —
     // so courses without voices.presentation no longer fail those items.
-    const presentationVoiceId = presentationAuthor.resolvePresentationVoiceId(course)
-    const needed = audioNeeds.toGenerate.map(item => ({
+    // resolvePresentationVoiceId now returns a canonical id and throws on a
+    // config it cannot resolve. Presentation items then fail individually with
+    // the usual "No voice configured for role: presentation" instead of the
+    // whole course's generate 500-ing on one bad config.
+    let presentationVoiceId = null
+    try {
+      presentationVoiceId = presentationAuthor.resolvePresentationVoiceId(course)
+    } catch (voiceErr) {
+      logger.warn(`resolvePresentationVoiceId(${courseCode}): ${voiceErr.message} — presentation items will fail until voice_config is fixed`)
+    }
+    // The language on the item is the identity column. It comes from the course
+    // row (known_lang/target_lang) and is normally already canonical; carrying
+    // the error on the item rather than throwing here keeps one broken course
+    // field from taking every role down with it.
+    const withCanonicalLanguage = (item) => {
+      const language = tryCanonicalLanguage(item.language)
+      if (language) return { ...item, language }
+      return { ...item, identityError: `cannot canonicalise language ${JSON.stringify(item.language)} — fix the course's known_lang/target_lang` }
+    }
+    const needed = audioNeeds.toGenerate.map(item => withCanonicalLanguage({
       ...item,
       voiceId: item.role === 'presentation' ? presentationVoiceId : getVoiceForRole(item.role),
       speed: getSpeedForRole(item.role)
@@ -1942,7 +2108,7 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     // Freshly authored intros join the same TTS queue
     for (const a of authoredIntros) {
-      needed.push({
+      needed.push(withCanonicalLanguage({
         text: a.text,
         language: course.known_lang,
         role: 'presentation',
@@ -1950,7 +2116,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         phrase_id: a.phrase_id || null,
         voiceId: presentationVoiceId,
         speed: getSpeedForRole('presentation')
-      })
+      }))
     }
 
     logger.info(`Audio needs: ${audioNeeds.stats.missing} missing total, ${audioNeeds.toLink} linkable, ${audioNeeds.toGenerate.length} need TTS, ${authoredIntros.length} freshly authored`)
@@ -2057,6 +2223,10 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     // Helper to generate a single audio item
     const generateItem = async (item) => {
+      // An identity we could not compose is a failure of THIS item — never a
+      // reason to write a row under a spelling no reader can find.
+      if (item.identityError) throw new Error(item.identityError)
+
       // PRECIOUS-AUDIO GUARD: if a human recording occupies this exact audio key
       // (a re-recorded row keeps its original voice_id), never TTS over it — the
       // upsert below would flip origin back to 'tts' and repoint s3_key.
@@ -2079,17 +2249,8 @@ app.post('/generate/:courseCode', async (req, res) => {
       // create a new course_audio row pointing to the same S3 file (skip TTS).
       // -----------------------------------------------------------------------
       try {
-        const { data: siblingAudio } = await supabase
-          .from('course_audio')
-          .select('s3_key, duration_ms, word_boundaries')
-          .neq('course_code', courseCode)
-          .eq('text_normalized', normalizeForAudio(item.text))
-          .eq('language', item.language)
-          .eq('role', item.role)
-          .eq('voice_id', item.voiceId)
-          .not('s3_key', 'like', 'pending/%')
-          .limit(1)
-          .single()
+        const siblingAudio = await findSiblingCourseClip(
+          courseCode, item.text, item.language, item.role, item.voiceId)
 
         if (siblingAudio?.s3_key) {
           // Reuse existing S3 file — just insert a new course_audio row
@@ -2466,10 +2627,21 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 
     const voiceConfig = course.voice_config || {}
 
-    // Get the voice settings for this role
+    // Get the voice settings for this role.
+    // voiceId is the PROVIDER's spelling and is handed to Azure/xAI/ElevenLabs
+    // verbatim below — prefixing it there breaks the render. storedVoiceId is
+    // the identity spelling and is the only one that reaches a column.
     const voiceSettings = voiceConfig.voices?.[role] || {}
     const voiceId = voiceSettings.voiceId || voiceConfig[role]
     const voiceProvider = voiceSettings.provider || 'azure'  // Default to azure
+    let storedVoiceId = null
+    if (voiceId) {
+      try {
+        storedVoiceId = canonicalClipVoiceId(voiceId, voiceSettings.provider)
+      } catch (identityErr) {
+        return res.status(400).json({ error: `voice for role ${role}: ${identityErr.message}` })
+      }
+    }
 
     // Get audio for this role - optionally filter by flagged status
     let audioToRegenerate = []
@@ -2740,7 +2912,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       const { error: updateError } = await supabase
         .from('course_audio')
         .update({
-          voice_id: voiceId,
+          voice_id: storedVoiceId,
           origin: 'tts',
           s3_key: s3Key,
           duration_ms: durationMs,
@@ -2949,15 +3121,25 @@ app.post('/insert', async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' })
     }
 
-    // Normalize language to ISO 639-3 (e.g. 'en-GB' → 'eng')
-    const normalizedLanguage = toIso3(language)
+    // Canonical identity columns. toIso3() used to do the language half and
+    // failed OPEN — it returns anything it does not recognise lowercased, so
+    // 'pt-BR' became 'pt-br' and 'auto' stayed 'auto'. canonicalLanguage throws
+    // instead, and the catch below turns that into a 400 rather than a row
+    // nothing can find. Nothing normalised voice_id at all.
+    let normalizedLanguage, normalizedVoiceId
+    try {
+      normalizedLanguage = canonicalLanguage(language)
+      normalizedVoiceId = canonicalClipVoiceId(voiceId)
+    } catch (identityErr) {
+      return res.status(400).json({ error: identityErr.message })
+    }
 
     // PRECIOUS-AUDIO GUARD: a non-human insert must never overwrite a human
     // recording occupying the same conflict key. Return the existing human row
     // instead (the audio for this key already exists — and it is precious).
     if (origin !== 'human') {
       const guardedHuman = await humanRowAtAudioKey(
-        courseCode, normalizeForAudio(text), normalizedLanguage, role, voiceId
+        courseCode, normalizeForAudio(text), normalizedLanguage, role, normalizedVoiceId
       )
       if (guardedHuman) {
         logger.info(`[PreciousAudio] /insert SKIP: human recording ${guardedHuman.id} holds key for "${text.substring(0, 40)}" (${role}) — returning existing row`)
@@ -2973,7 +3155,7 @@ app.post('/insert', async (req, res) => {
         text_normalized: normalizeForAudio(text),
         language: normalizedLanguage,
         role,
-        voice_id: voiceId,
+        voice_id: normalizedVoiceId,
         origin,
         s3_key: s3Key,
         duration_ms: durationMs
@@ -3016,7 +3198,7 @@ app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
     const { data: course } = await supabase.from('courses').select('*').eq('course_code', courseCode).single()
     if (!course) return res.status(404).json({ error: 'Course not found' })
 
-    const knownLang = course.known_lang
+    const knownLang = canonicalLanguage(course.known_lang)
     const targetLangName = getLocalisedLangName(course.target_lang, knownLang)
     const template = await getOrCreatePresentationTemplate(knownLang)
     // Short form (no "as in" context) — same stripping the course-wide endpoint uses.
@@ -3029,9 +3211,9 @@ app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
     // Match the generator's voice_id format exactly (provider_voiceId), else the
     // pending row's voice_id won't reconcile with the generated row → duplicate.
     const presVoice = voiceConfig.voices?.presentation
-    const presentationVoiceId = (presVoice?.provider && presVoice?.voiceId)
-      ? `${presVoice.provider}_${presVoice.voiceId}`
-      : (presVoice?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural')
+    const presentationVoiceId = canonicalClipVoiceId(
+      presVoice?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural',
+      presVoice?.voiceId ? presVoice?.provider : undefined)
 
     // Existing presentation rows — so we ONLY add what's genuinely missing.
     const { data: existingPres } = await supabase.from('course_audio')
@@ -3121,8 +3303,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       return res.status(404).json({ error: 'Course not found' })
     }
 
-    const knownLang = course.known_lang
-    const targetLang = course.target_lang
+    const knownLang = canonicalLanguage(course.known_lang)
+    const targetLang = canonicalLanguage(course.target_lang)
     const targetLangName = getLocalisedLangName(targetLang, knownLang)
 
     // Get template for this known language
@@ -3458,7 +3640,10 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     // Bulk upsert presentation text to course_audio
     const voiceConfig = course.voice_config || {}
-    const presentationVoiceId = voiceConfig.voices?.presentation?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural'
+    const presVoice = voiceConfig.voices?.presentation
+    const presentationVoiceId = canonicalClipVoiceId(
+      presVoice?.voiceId || voiceConfig.presentation || 'azure_en-GB-SoniaNeural',
+      presVoice?.voiceId ? presVoice?.provider : undefined)
 
     const BATCH_SIZE = 200
     const legoIdList = presentations.map(p => p.lego_id)
@@ -4106,7 +4291,7 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     const { error: updateError } = await supabase
       .from('course_audio')
       .update({
-        voice_id: voiceId,
+        voice_id: storedVoiceId,
         origin: 'tts',
         s3_key: newS3Key,
         duration_ms: durationMs,
@@ -4194,7 +4379,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       return res.status(404).json({ error: `Course not found: ${courseCode}` })
     }
 
-    const knownLang = course.known_lang
+    const knownLang = canonicalLanguage(course.known_lang)
     const voiceConfig = course.voice_config || {}
     const voiceSettings = voiceConfig.voices?.presentation || {}
     const voiceId = voiceSettings.voiceId || voiceConfig.presentation
@@ -4203,6 +4388,13 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
 
     if (!voiceId) {
       return res.status(400).json({ error: 'No voice configured for role: presentation' })
+    }
+    // Raw voiceId goes to the provider below; storedVoiceId is the identity.
+    let storedVoiceId
+    try {
+      storedVoiceId = canonicalClipVoiceId(voiceId, voiceSettings.provider)
+    } catch (identityErr) {
+      return res.status(400).json({ error: `presentation voice: ${identityErr.message}` })
     }
 
     // 2. Parse lego_id → seed_number + lego_index (e.g. "S0001L03")
@@ -4320,7 +4512,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
           text: presentationText,
           text_normalized: normalizeForAudio(presentationText),
           language: knownLang,
-          voice_id: voiceId,
+          voice_id: storedVoiceId,
           origin: 'tts',
           s3_key: newS3Key,
           duration_ms: durationMs,
@@ -4338,7 +4530,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
           text_normalized: normalizeForAudio(presentationText),
           language: knownLang,
           role: 'presentation',
-          voice_id: voiceId,
+          voice_id: storedVoiceId,
           origin: 'tts',
           s3_key: newS3Key,
           duration_ms: durationMs,
@@ -4447,8 +4639,8 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
     if (courseError || !course) {
       return res.status(404).json({ error: `Course not found: ${courseCode}` })
     }
-    const knownLang = course.known_lang
-    const targetLang = course.target_lang
+    const knownLang = canonicalLanguage(course.known_lang)
+    const targetLang = canonicalLanguage(course.target_lang)
     const voiceConfig = course.voice_config || {}
     const voices = voiceConfig.voices || voiceConfig  // support nested + flat
 
@@ -4527,8 +4719,17 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
       if (!rawVoice) {
         return res.status(400).json({ error: `No voice configured for role: ${role}` })
       }
-      const voiceProvider = voiceSettings.provider || rawVoice.split('_')[0] || 'azure'
-      const voiceId = rawVoice.startsWith(`${voiceProvider}_`) ? rawVoice : `${voiceProvider}_${rawVoice}`
+      // The hand-rolled version of this took `rawVoice.split('_')[0]` as the
+      // provider, which turns an unprefixed name into its own provider. One
+      // canonicaliser now decides the stored spelling and the dispatch pair
+      // reads back out of it.
+      let voiceId
+      try {
+        voiceId = canonicalClipVoiceId(rawVoice, voiceSettings.provider)
+      } catch (identityErr) {
+        return res.status(400).json({ error: `voice for role ${role}: ${identityErr.message}` })
+      }
+      const voiceProvider = voiceId.slice(0, voiceId.indexOf('_'))
       const voiceName = voiceId.slice(voiceProvider.length + 1)
       const speed = voiceSettings.settings?.speed || 1.0
 
@@ -4717,18 +4918,28 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       return res.status(400).json({ error: 'Course missing voice configuration', missingRoles: missingVoiceRoles, voiceConfig })
     }
 
+    // Canonical, same as /generate. This used to default the provider to
+    // 'azure' whenever the config omitted one, which spells a bare xAI voice
+    // 'azure_leo' — a voice id that exists nowhere and dispatches to the wrong
+    // provider. canonicalClipVoiceId only accepts a provider it can justify.
     const getVoiceForRole = (role) => {
       const v = voices[role]
       if (!v) return null
-      if (typeof v === 'string') return v
-      const provider = v.provider || 'azure'
-      if (v.voiceId) return `${provider}_${v.voiceId}`
-      return null // empty voiceId → null, never the config object
+      const raw = typeof v === 'string' ? v : v.voiceId
+      if (!raw) return null // empty voiceId → null, never the config object
+      const canonical = tryCanonicalClipVoiceId(raw, typeof v === 'string' ? undefined : v.provider)
+      if (!canonical) {
+        logger.warn(`[Components] getVoiceForRole(${role}): cannot canonicalise voice ${JSON.stringify(raw)} — fix the course voice_config`)
+        return null
+      }
+      return canonical
     }
     const getSpeedForRole = (role) => voices[role]?.settings?.speed || 1.0
 
-    const knownLang = course.known_lang
-    const targetLang = course.target_lang
+    // Identity columns — canonical from here down, so the guard, the sibling
+    // reuse read and the upsert all agree on one spelling.
+    const knownLang = canonicalLanguage(course.known_lang)
+    const targetLang = canonicalLanguage(course.target_lang)
     const targetLangName = getLocalisedLangName(targetLang, knownLang)
 
     // 2. Load component phrases
@@ -4924,17 +5135,8 @@ app.post('/generate-components/:courseCode', async (req, res) => {
 
       // Cross-course sharing
       try {
-        const { data: siblingAudio } = await supabase
-          .from('course_audio')
-          .select('s3_key, duration_ms, word_boundaries')
-          .neq('course_code', courseCode)
-          .eq('text_normalized', normalizeForAudio(item.text))
-          .eq('language', item.language)
-          .eq('role', item.role)
-          .eq('voice_id', item.voiceId)
-          .not('s3_key', 'like', 'pending/%')
-          .limit(1)
-          .single()
+        const siblingAudio = await findSiblingCourseClip(
+          courseCode, item.text, item.language, item.role, item.voiceId)
 
         if (siblingAudio?.s3_key) {
           const { data: insertedAudio, error: insertError } = await supabase
@@ -5800,13 +6002,11 @@ async function findExistingAudio(courseCode, text, language, role, voiceId) {
   const textNorm = normalizeForAudio(text)
   const { data, error } = await supabase
     .from('course_audio')
-    .select('id')
+    .select('id, language, voice_id')
     .eq('course_code', courseCode)
-    .eq('text_normalized', textNorm)
-    .eq('language', language)
+    .in('text_normalized', audioKeyCandidates(textNorm))
     .eq('role', role)
-    .eq('voice_id', voiceId)
-    .limit(1)
+    .limit(200)
   if (error) {
     // Fail CLOSED: a swallowed lookup error used to fall through to the upsert,
     // which on a key conflict would overwrite the existing row (including a
@@ -5814,7 +6014,13 @@ async function findExistingAudio(courseCode, text, language, role, voiceId) {
     // human recording is not.
     throw new Error(`[Pod] findExistingAudio failed: ${error.message}`)
   }
-  return data?.[0]?.id || null
+  // Language and voice are matched canonically, in JS: an .eq() on one spelling
+  // could not see the same clip stored under the other, and "clip does not
+  // exist" here means a second paid render. Strict — a false positive would
+  // relink a pod line to the wrong audio.
+  const match = (data || []).find(row =>
+    sameLanguage(language, row.language) && sameVoice(voiceId, row.voice_id))
+  return match?.id || null
 }
 
 /**
@@ -5826,12 +6032,33 @@ async function findExistingAudio(courseCode, text, language, role, voiceId) {
  * an Azure voice for that one clip so it generates rather than staying NULL.
  * The Azure voice is chosen by pickAzureFallbackVoice (course voice → default).
  *
+ * IDENTITY vs TTS CUE — one parameter used to do both jobs, and that is where
+ * `language='auto'` came from on 7,847 course_audio rows across 36 courses (all
+ * of them role='pod_explainer'). `language` was handed to buildPodTTSConfig as
+ * the xAI language CUE — where 'auto', 'fr' and 'pt-PT' are legitimate,
+ * Tom-validated tuning (tools/pod-voice-coverage.cjs resolveExplainerLanguage,
+ * 2026-06-07) — and written verbatim into the identity column, where 'auto' is
+ * not a language at all. They are now two parameters:
+ *
+ *   language        the clip's IDENTITY. Canonicalised; throws on 'auto'.
+ *                   Callers resolve it from the course, never from the cue.
+ *   ttsLanguageCue  what the provider is told. Unvalidated, passed through
+ *                   untouched. Defaults to `language` so every caller that
+ *                   never had a cue keeps its exact current behaviour.
+ *
+ * Nothing about the rendered audio changes: the cue that reaches the provider
+ * is the same string it was before.
+ *
  * @param {object} args
+ * @param {string} args.language - the clip's identity language (canonical)
+ * @param {string} [args.ttsLanguageCue] - provider language cue; defaults to `language`
  * @param {object} [args.ctx] - course context (for Azure fallback voice pick)
  * @param {('target'|'known')} [args.track] - which pod track this clip is
  * @param {string} [args.sentenceId] - pod sentence id (for the fallback log line)
  */
-async function generatePodAudio({ courseCode, text, language, role, voice, ctx, track, sentenceId, force }) {
+async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, role, voice, ctx, track, sentenceId, force }) {
+  const identityLanguage = canonicalLanguage(language)
+  const cue = (ttsLanguageCue === undefined || ttsLanguageCue === null) ? language : ttsLanguageCue
   // Pod TURN whole-takes: insert a pause cue (" … ") between sentences so the
   // engine PAUSES at each boundary, making the take cleanly splittable per
   // sentence (the newer ElevenLabs/xAI voices otherwise run sentences together,
@@ -5851,14 +6078,14 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
   // force: re-synthesise even when the row exists — the upsert below hits the
   // same conflict key, so the row (and every link to its id) is kept and just
   // gets fresh audio + word_boundaries. Used by the Take G rescue pass.
-  const existing = await findExistingAudio(courseCode, ttsText, language, role, voice.voice_id)
+  const existing = await findExistingAudio(courseCode, ttsText, identityLanguage, role, voice.voice_id)
   if (existing && !force) return { id: existing, reused: true }
 
   let provider = voice.provider || 'azure'
   let activeVoice = voice
   let audioBuffer, wordBoundaries
   try {
-    const ttsConfig = buildPodTTSConfig(activeVoice, language, courseCode)
+    const ttsConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
     ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, provider, ttsConfig))
   } catch (primaryErr) {
     // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
@@ -5867,7 +6094,10 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
     if (provider !== 'xai') { primaryErr.message = `[STAGE=tts:${provider}] ${primaryErr.message}`; throw primaryErr }
 
     const kind = track || (role === 'known' ? 'known' : 'target')
-    const azureVoice = ctx ? pickAzureFallbackVoice(ctx, kind, language) : null
+    // The fallback voice is picked from a real language, never from the cue —
+    // getAzureLocale('auto') has no answer, and that is how an explainer that
+    // lost xAI used to fall back to a voice chosen without a locale at all.
+    const azureVoice = ctx ? pickAzureFallbackVoice(ctx, kind, identityLanguage) : null
     if (!azureVoice) {
       // No Azure voice determinable — surface the original xAI failure so the
       // clip is recorded as failed (not silently wrong-voiced).
@@ -5877,7 +6107,7 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
     logger.info(`[Pods] fallback xAI→Azure for ${sentenceId || '?'} ${kind} voice=${azureVoice.voice_id} (${primaryErr.message})`)
     provider = 'azure'
     activeVoice = azureVoice
-    const azureConfig = buildPodTTSConfig(activeVoice, language, courseCode)
+    const azureConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
     try {
       ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, 'azure', azureConfig))
     } catch (e) { e.message = `[STAGE=tts:azure-fallback,xai-also-failed] ${e.message}`; throw e }
@@ -5890,7 +6120,7 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
     // Empty/corrupt TTS buffer (buflen=0) usually means a cross-language voice
     // mismatch (e.g. an English voice handed non-English text) — keep prov/voice
     // /buflen so the failure is self-diagnosing.
-    e.message = `[STAGE=master prov=${provider} voice=${voice?.voice_id} lang=${language} buflen=${audioBuffer ? audioBuffer.length : -1}] ${e.message}`
+    e.message = `[STAGE=master prov=${provider} voice=${voice?.voice_id} lang=${identityLanguage} cue=${cue} buflen=${audioBuffer ? audioBuffer.length : -1}] ${e.message}`
     throw e
   }
 
@@ -5921,9 +6151,11 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
       course_code: courseCode,
       text: ttsText,
       text_normalized: normalizeForAudio(ttsText),
-      language,
+      language: identityLanguage,
       role,
-      voice_id: voice.voice_id,
+      // The voice that actually produced the clip, canonically spelt. The raw
+      // id above is what the provider was handed; this is what the identity is.
+      voice_id: canonicalClipVoiceId(voice.voice_id, voice.provider || provider),
       origin: 'tts',
       s3_key: s3Key,
       duration_ms: durationMs,
@@ -5971,6 +6203,10 @@ async function getCourseContext(courseCode) {
   if (error) throw new Error(`course not found: ${error.message}`)
   const vc = course.voice_config || {}
   const knownVoiceRaw = vc.voices?.known || {}
+  // voice_id stays RAW here: this object is handed to the TTS providers, which
+  // want their own spelling ('en-GB-SoniaNeural' in Azure's SSML, 'leo' at
+  // xAI). The canonical spelling is composed at the DB boundary in
+  // generatePodAudio, so the bare default below no longer reaches a column.
   const knownVoice = {
     voice_id: knownVoiceRaw.voiceId || knownVoiceRaw.voice_id || 'en-GB-SoniaNeural',
     provider: knownVoiceRaw.provider || 'azure',
@@ -6199,6 +6435,10 @@ module.exports.linkAudioIds = linkAudioIds
 // PRECIOUS-AUDIO GUARD helper (G1) — exported so the pods recording stream can
 // unit-test that TTS paths refuse to write over human pod rows (additive).
 module.exports.humanRowAtAudioKey = humanRowAtAudioKey
+// Shared with pod-explainer-composite so the composite recipe's parts are spelt
+// exactly the way every other voice id in a course_audio row is.
+module.exports.canonicalClipVoiceId = canonicalClipVoiceId
+module.exports.findSiblingCourseClip = findSiblingCourseClip
 module.exports.resolvePodSpeakerVoice = resolvePodSpeakerVoice
 // Clone-once-copy-everywhere: exported so the copy-pass tool/tests can drive
 // the exact same classification the live /generate and /plan routes use.

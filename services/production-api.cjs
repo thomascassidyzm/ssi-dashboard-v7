@@ -15,6 +15,7 @@ const logger = createLogger('ProductionAPI')
 
 const s3Service = require('./s3-production-service.cjs')
 const supabaseClient = require('./supabase-client.cjs')
+const { canonicalLanguage } = require('./shared/clip-identity.cjs')
 const manifestGenerator = require('./manifest-generator.cjs')
 const courseDataService = require('./course-data-service.cjs')
 const { SchemaValidator } = require('./schema-validator.cjs')
@@ -4106,7 +4107,16 @@ app.post('/api/admin/pods/:courseCode/generate-audio', async (req, res) => {
 // xAI→Azure fallback + retry resilience); PHASE8_NO_LISTEN keeps it from
 // grabbing port 3465 when required here.
 const EXPLAINER_VOICE_ID = 'gfzdpspr5fdp'
-const EXPLAINER_LANGUAGE = 'auto'
+// The xAI language CUE, not the clip's language. 'auto' means "detect" to the
+// provider and is meaningless as an identity — it is what put 'auto' on 7,847
+// course_audio.language rows. It now travels as ttsLanguageCue (so this
+// endpoint's renders are bit-for-bit what they were) while the row gets the
+// course's own target language. Deliberately NOT switched to
+// resolveExplainerLanguage here: that would change the cue, and therefore the
+// audio, which this change is not allowed to do. The batch runner
+// (run-pod-explainer-batch.cjs) does cue per course; the divergence between the
+// two paths predates this change and is worth a ruling.
+const EXPLAINER_TTS_LANGUAGE_CUE = 'auto'
 const EXPLAINER_ROLE = 'pod_explainer'
 const EXPLAINER_PROVIDER = 'xai'
 const EXPLAINER_AUDIO_PARALLEL = 4
@@ -4115,6 +4125,21 @@ app.post('/api/admin/pods/:courseCode/generate-explainer-audio', async (req, res
   const { courseCode } = req.params
   try {
     const supabase = supabaseClient.getClient()
+
+    // The clip's IDENTITY language — the course's own target language, read
+    // from the courses row rather than inferred from the cue. Separate from
+    // EXPLAINER_TTS_LANGUAGE_CUE above, which is what xAI is told.
+    const { data: courseRow, error: courseErr } = await supabase
+      .from('courses').select('target_lang').eq('course_code', courseCode).single()
+    if (courseErr || !courseRow) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` })
+    }
+    let identityLanguage
+    try {
+      identityLanguage = canonicalLanguage(courseRow.target_lang)
+    } catch (identityErr) {
+      return res.status(400).json({ error: `course ${courseCode}: ${identityErr.message}` })
+    }
 
     // Scope: explicit pod_ids list, or a single pod via ?slug / body slug
     // (pod id is `${courseCode}:${slug}`). No scope = every pod in the course.
@@ -4163,7 +4188,8 @@ app.post('/api/admin/pods/:courseCode/generate-explainer-audio', async (req, res
           const result = await generatePodAudio({
             courseCode,
             text: row.explainer_text,
-            language: EXPLAINER_LANGUAGE,
+            language: identityLanguage,
+            ttsLanguageCue: EXPLAINER_TTS_LANGUAGE_CUE,
             role: EXPLAINER_ROLE,
             voice: {
               voice_id: EXPLAINER_VOICE_ID,
