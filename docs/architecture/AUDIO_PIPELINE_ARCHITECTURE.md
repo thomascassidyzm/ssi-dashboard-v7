@@ -429,6 +429,12 @@ code change — the `cym_*` prefix rule covers it.
 
 ## 6b. Make-Before-Break — the ordering rule for any voice swap or clip replacement
 
+> **Repairing damaged audio? The canonical process is
+> [`AUDIO_REPAIR_PROCESS.md`](./AUDIO_REPAIR_PROCESS.md).** Detection (the tail-integrity
+> predictor and its 30 ms threshold), naked-TTS generation and levelling, verification,
+> acceptance, and the LEGO-before-cycles priority all live there. It implements this section.
+> Ratified by Tom 2026-08-05; do not invent a new detector or add a trimming step.
+
 **Rule (Tom, 2026-08-05): generate the replacement first, verify it, THEN break the old link —
 never the reverse.** "why would we unlink all and then regenerate? that makes no sense — surely
 we would generate first and replace once we have the new voices???"

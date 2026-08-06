@@ -823,6 +823,16 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
       const legoAudio = legoAudioMap.get(phraseKey) || {}
       const presentationAudioId = introAudioMap.get(legoKey)
 
+      // LEGO COMPLETENESS (Tom, 2026-08-06): completeness is per-ROLE, not
+      // per-clip. A LEGO plays only with ALL THREE of intro + target voice 1 +
+      // target voice 2. Short of that the player drops the LEGO, the round
+      // disappears, and every later LEGO contingent on it breaks downstream —
+      // so this is course-breaking, not a cosmetic gap. The known-side clip is
+      // NOT part of the triple: `known && target1` was the old gate and it
+      // flattered the course (it passed a LEGO with no intro and no voice 2).
+      const legoComplete = !!(presentationAudioId
+        && legoAudio.target1_audio_uuid && legoAudio.target2_audio_uuid)
+
       // Track phrases used in this ROUND to prevent repeats
       const usedPhrasesThisRound = new Set()
 
@@ -837,6 +847,7 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
         targetText: lego.target_text,
         presentationAudioId,
         hasAudio: !!presentationAudioId,
+        legoComplete,
         isNew: true
       })
 
@@ -852,7 +863,9 @@ export async function generateLearningScript(courseCode, startSeed, endSeed) {
         sourceId: legoAudio.known_audio_uuid,
         target1Id: legoAudio.target1_audio_uuid,
         target2Id: legoAudio.target2_audio_uuid,
-        hasAudio: !!(legoAudio.known_audio_uuid && legoAudio.target1_audio_uuid),
+        // Both voices, not prompt + voice 1 — a voice-2-only gap kills the round.
+        hasAudio: !!(legoAudio.target1_audio_uuid && legoAudio.target2_audio_uuid),
+        legoComplete,
         isNew: true
       })
 

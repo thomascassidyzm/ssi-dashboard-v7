@@ -73,6 +73,40 @@ function measureLevel (buffer) {
   })
 }
 
+const FRAME_SAMPLE_RATE = 16000
+const FRAME_MS = 5 // must match TAIL_THRESHOLDS.frameMs in audio-repair-core
+
+/**
+ * The clip's amplitude envelope: per-frame RMS in dBFS, oldest first. This is
+ * the only thing the tail-integrity detector needs, and keeping the decode here
+ * keeps the core's maths pure and testable without audio.
+ */
+function frameDb (buffer) {
+  return new Promise((resolve, reject) => {
+    const child = execFile(FFMPEG,
+      ['-hide_banner', '-nostats', '-loglevel', 'error', '-i', 'pipe:0',
+        '-ac', '1', '-ar', String(FRAME_SAMPLE_RATE), '-f', 's16le', 'pipe:1'],
+      { encoding: 'buffer', maxBuffer: 1 << 28 },
+      (err, stdout) => {
+        if (err) return reject(err)
+        const samples = stdout.length / 2
+        const per = FRAME_SAMPLE_RATE * FRAME_MS / 1000
+        const out = []
+        for (let i = 0; i < samples; i += per) {
+          let sum = 0, n = 0
+          for (let j = i; j < Math.min(i + per, samples); j++) {
+            const v = stdout.readInt16LE(j * 2) / 32768
+            sum += v * v; n++
+          }
+          out.push(n ? 20 * Math.log10(Math.sqrt(sum / n) + 1e-9) : -180)
+        }
+        resolve(out)
+      })
+    child.stdin.on('error', () => {})
+    child.stdin.end(buffer)
+  })
+}
+
 function ttsOptionsFor (provider, voiceId, language) {
   if (provider === 'azure') {
     return {
@@ -127,6 +161,7 @@ const render = {
 
 const verify = {
   measure: measureLevel,
+  frameDb,
   veracity: (buffer, text, language) => veracity.checkAudioVeracity(buffer, text, language),
 }
 
@@ -150,6 +185,7 @@ module.exports = {
   render,
   verify,
   measureLevel,
+  frameDb,
   ttsOptionsFor,
   RepairError,
   // Thin pass-throughs so callers can `require('./audio-repair.cjs').accept(...)`.
@@ -159,6 +195,7 @@ module.exports = {
   reject: (...a) => core().reject(...a),
   revert: (...a) => core().revert(...a),
   queue: (...a) => core().queue(...a),
+  seedScopedAudioIds: (...a) => core().seedScopedAudioIds(...a),
   candidateBytes: (...a) => core().candidateBytes(...a),
   currentBytes: (...a) => core().currentBytes(...a),
 }

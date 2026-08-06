@@ -1,0 +1,81 @@
+
+
+════ ESTATE CENSUS — 143 courses, ranked by rounds lost ════
+
+A round is opened by an is_new LEGO. A LEGO short of intro + voice1 + voice2
+is dropped by the player, so its round ceases to exist for every learner.
+
+  course                     rounds  playable     lost   reach   intro-only   cycle gaps  cut
+  hak_for_eng                 2510         0     2510      0%            0        73689
+  mar_for_eng                 1688         0     1688      0%            0        40231
+  tel_for_eng                 1558         0     1558      0%            0        36417
+  fin_for_eng                 1394         0     1394      0%            0        42108
+  deu_ch_for_eng              1390         0     1390      0%            0        39903
+  yue_for_eng                 1022         0     1022      0%            0        26982
+  ara_lb_for_eng              1414       638      776   45.1%          178        19643   ← CUT after seed 300 (368 silent seeds)
+  por_for_jpn                  738         0      738      0%            0        20373
+  nan_for_eng                  706         0      706      0%            0        19113
+  mlt_for_eng                  677         0      677      0%            0        15678
+  ara_eg_for_eng              1334       683      651   51.2%           45        16455   ← CUT after seed 300 (368 silent seeds)
+  bre_for_fra                  596         0      596      0%            0        17778
+  eng_template                 570         0      570      0%            0        12309
+  gla_for_eng                  529         0      529      0%            0        13984
+  zho_for_jpn                  474       356      118   75.1%           73            0
+  ita_for_cym                   58         0       58      0%            0         1395
+  sbx_for_eng                   47         0       47      0%            0         1198
+  dan_for_eng                  555       546        9   98.4%           19            0
+  deu_for_eng                 1395      1388        7   99.5%          174           14
+  jpn_for_eng                 1273      1267        6   99.5%           93            0
+  cym_s_for_eng                677       672        5   99.3%            3           18
+  spa_mx_for_eng              1290      1286        4   99.7%           77           36
+  fra_for_eng                 1529      1525        4   99.7%          124           26
+  spa_for_eng                 1339      1335        4   99.7%           64           12
+  cym_n_for_eng                633       630        3   99.5%            0           11
+  cat_for_eng                  617       615        2   99.7%            8            0
+  zho_for_eng                 1100      1099        1   99.9%           86          446
+  por_br_for_eng              1424      1423        1   99.9%          135           71
+  fra_ca_for_eng              1351      1350        1   99.9%            7           43
+  eus_for_eng                  713       712        1   99.9%           34            2
+  rus_for_eng                  774       773        1   99.9%           25            2
+  pol_for_eng                  666       665        1   99.8%           81            1
+  tha_for_eng                  530       529        1   99.8%            7            0
+  zzz_test_for_eng               1         0        1      0%            0            0
+  kor_for_eng                 1345      1345        0    100%          112          156
+  ita_for_eng                 1379      1379        0    100%           72          123
+  por_for_eng                 1356      1356        0    100%           59           72
+  ara_for_eng                 1370      1370        0    100%           27           51
+  nep_for_eng                  869       869        0    100%           55            6
+  gle_for_eng                  786       786        0    100%          155            5
+  ukr_for_eng                  588       588        0    100%           44            3
+  afr_for_eng                  484       484        0    100%           29            2
+  heb_for_eng                  602       602        0    100%           25            2
+  tur_for_eng                  840       840        0    100%          499            2
+  hin_for_eng                  716       716        0    100%           53            1
+  hun_for_eng                  665       665        0    100%            7            1
+
+  54 course(s) fully reachable with no cycle gaps — omitted above.
+
+  ANOTHER ara_lb? 3 course(s) show a CLEAN CUT — audio stops dead at a seed
+  and nothing above it has a single complete LEGO:
+    ara_lb_for_eng         cut after seed  300 of  668   776/1414 rounds unreachable (54.9%)
+    ara_eg_for_eng         cut after seed  300 of  668   651/1334 rounds unreachable (48.8%)
+    eng_for_tam            cut after seed  642 of  668   0/1358 rounds unreachable (0.0%)
+
+  ESTATE: 71653/86733 rounds reachable  ·  15080 lost  ·  4912 recoverable by an intro alone  ·  398362 cosmetic cycle gaps
+
+  census json: /home/tomcassidy/SSi/ssi-dashboard-v7-clean/docs/audio/audio-census.json
+
+━━ ESTATE TOTAL over 143 course(s)
+  LEGO COMPLETENESS (intro + voice1 + voice2) — course-breaking when short
+    complete 71960/93193   free to fix 241 (+0 loose)   BROKEN 20992
+    of the incomplete: missing intro 21213  voice1 16088  voice2 16091
+    blocked ONLY on the intro: 4912   |   blocked only on voices: 8
+  ── slot counts below; phrase/cycle gaps are cosmetic beside the line above ──
+  (a) LINKED               2534634
+  (b) UNLINKED-BUT-PRESENT 14010   (13998 strict + 12 loose)  ← free
+      of which this pass would write 834; 13164 are report-only (course_practice_phrases:presentation); 12 loose held back (pass --include-loose)
+  (c) TRULY ABSENT         1311281   ← TTS spend; queue-audio-pass, never render here
+  (d) DANGLING             17537   (51 healable)
+
+  mode: DRY RUN (default) — pass --apply to write
+  log:  /home/tomcassidy/SSi/ssi-dashboard-v7-clean/docs/audio-relink-dryrun-log.json  (834 rows)

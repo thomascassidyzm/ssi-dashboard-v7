@@ -93,6 +93,39 @@ const DETECTOR = {
     'Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).',
 }
 
+/**
+ * The second detector: tail integrity. `duration-vs-expected` cannot see a soft
+ * tail amputation and never could — losing the final consonant of "want" costs
+ * ~100 ms on a 1.4 s clip, well inside the 15% the duration check tolerates, and
+ * the queue's own chars/14 expectation is coarser still. Tom heard three such
+ * clips in deu_for_eng on 2026-08-05 ("I wan'" for "I want"); all three sit at
+ * duration ratios the duration check calls healthy.
+ *
+ * What it measures instead is the SHAPE of the ending. A clip that was cut ends
+ * at full speech level and is taken to silence by the mastering chain's 8 ms
+ * anti-click fade; a clip that was allowed to finish decays over the natural
+ * release of its final phoneme. So: the time from the last frame above
+ * peak−10 dB to the first frame at or below peak−50 dB.
+ *
+ * Prior measurement on this estate (docs/audio-tail-gate-decision-memo-2026-08-04.md,
+ * 104 blind-judged clips) put that release at a median of 30 ms for clips heard
+ * as cut off against 80 ms for clips heard as natural, p = 0.0037. The threshold
+ * here is that measured boundary, not a guess.
+ *
+ * `speechRateCps` is carried as a SECOND, corroborating leg — chars of text per
+ * second of speech, flagged when well above the role's own median. The same memo
+ * measured steep-and-fast together at 79% precision / 68% recall. It is kept
+ * separate rather than required, because rate is a whole-clip average and goes
+ * blind on long clips: the S0001L04 introduction lost its final word "is" and
+ * still reads as a normal speaking rate across 3.9 s.
+ */
+const TAIL_DETECTOR = {
+  name: 'tail-integrity',
+  precision: null,
+  precisionNote:
+    'Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.',
+}
+
 class RepairError extends Error {
   constructor (message, code = 'repair_failed', status = 400) {
     super(message)
@@ -109,6 +142,90 @@ function decodeVoiceId (storedVoiceId) {
   if (m) return { provider: m[1], voiceId: m[2] }
   if (/Neural$/.test(raw)) return { provider: 'azure', voiceId: raw }
   return { provider: 'xai', voiceId: raw }
+}
+
+/** Defaults for the tail-integrity check, each one a measured boundary. */
+const TAIL_THRESHOLDS = {
+  frameMs: 5,
+  onsetDb: -10,        // relative to the clip's own peak: "still at speech level"
+  offsetDb: -50,       // relative to the clip's own peak: "gone"
+  silenceFloorDb: -70, // a clip peaking below this has no speech to measure
+  steepReleaseMs: 30,  // measured median for clips heard as cut off
+  fastRateFactor: 1.2, // chars/sec this far above the role median = suspiciously fast
+}
+
+/**
+ * Where the speech stops and how fast it gets there, from a frame-RMS envelope
+ * in dBFS. Pure: takes numbers, returns numbers, so the tests need no audio.
+ *
+ * @param {number[]} frameDb   per-frame RMS in dBFS, oldest first
+ * @param {object} [opts]      overrides for TAIL_THRESHOLDS
+ * @returns {{peakDb:number, releaseMs:number, speechEndMs:number, durMs:number,
+ *            trailingMs:number}|null}  null when the clip has no audible content
+ */
+function tailShape (frameDb, opts = {}) {
+  const { frameMs, onsetDb, offsetDb, silenceFloorDb } = { ...TAIL_THRESHOLDS, ...opts }
+  if (!Array.isArray(frameDb) || frameDb.length === 0) return null
+  const peakDb = Math.max(...frameDb)
+  // A silent clip has no tail to judge. It is a real defect, but it is the
+  // silence check's defect — saying nothing here beats inventing a verdict.
+  if (!Number.isFinite(peakDb) || peakDb < silenceFloorDb) return null
+  const hi = peakDb + onsetDb
+  const lo = peakDb + offsetDb
+
+  let lastHi = -1
+  for (let i = frameDb.length - 1; i >= 0; i--) { if (frameDb[i] > hi) { lastHi = i; break } }
+  if (lastHi < 0) return null
+
+  let firstLo = frameDb.length - 1
+  for (let i = lastHi; i < frameDb.length; i++) { if (frameDb[i] <= lo) { firstLo = i; break } }
+
+  return {
+    peakDb: Number(peakDb.toFixed(1)),
+    releaseMs: (firstLo - lastHi) * frameMs,
+    speechEndMs: (lastHi + 1) * frameMs,
+    durMs: frameDb.length * frameMs,
+    trailingMs: (frameDb.length - 1 - firstLo) * frameMs,
+  }
+}
+
+/**
+ * The tail-integrity verdict for one clip. Steepness alone flags; a fast
+ * speaking rate is carried alongside as corroboration, never as a requirement
+ * (see TAIL_DETECTOR for why rate goes blind on long clips).
+ *
+ * @param {number[]} frameDb
+ * @param {object} [ctx]
+ * @param {number} [ctx.textChars]     characters of the clip's own text
+ * @param {number} [ctx.baselineCps]   median chars/sec for this role, if known
+ * @param {object} [ctx.thresholds]
+ */
+function tailVerdict (frameDb, ctx = {}) {
+  const T = { ...TAIL_THRESHOLDS, ...(ctx.thresholds || {}) }
+  const shape = tailShape(frameDb, T)
+  if (!shape) {
+    return { flagged: null, score: null, reason: 'no audible content to measure a tail on', shape: null }
+  }
+  const cps = shape.speechEndMs
+    ? Number(((ctx.textChars || 0) / (shape.speechEndMs / 1000)).toFixed(1))
+    : null
+  const fast = !!(cps && ctx.baselineCps && cps >= T.fastRateFactor * ctx.baselineCps)
+  const steep = shape.releaseMs <= T.steepReleaseMs
+
+  const reason = steep
+    ? `ends abruptly — ${shape.releaseMs}ms from full speech level to silence (natural endings measure ~80ms)${fast ? `; and speaks ${cps} chars/sec against a ${ctx.baselineCps} baseline` : ''}`
+    : `tail decays over ${shape.releaseMs}ms — the shape of a clip allowed to finish`
+
+  return {
+    flagged: steep,
+    // Lower sorts worse. A corroborated flag sorts ahead of a bare one.
+    score: Number((shape.releaseMs - (fast ? 5 : 0)).toFixed(3)),
+    reason,
+    steep,
+    fast,
+    speechRateCps: cps,
+    shape,
+  }
 }
 
 /**
@@ -737,18 +854,85 @@ function createRepairCore (deps) {
    * pending candidate (someone already thought so); a suspiciously short clip
    * for its text length.
    */
-  async function queue ({ courseCode, limit = 50, role = null, includeUnrendered = false }) {
-    let q = supabase.from('course_audio')
-      .select('id, text, role, voice_id, language, duration_ms, s3_key, audio_revision, lego_id, veracity_pass, veracity_reason, veracity_cer')
-      .eq('course_code', courseCode)
-    if (role) q = q.eq('role', role)
-    const { data, error } = await q.limit(5000)
-    if (error) throw new RepairError(`reading course audio: ${error.message}`, 'db_error', 500)
+  async function queue ({
+    courseCode, limit = 50, role = null, includeUnrendered = false,
+    audioIds = null, tails = false, tailConcurrency = 8, onProgress = null,
+  }) {
+    // PAGED, deliberately. This used to be a single `.limit(5000)`, which
+    // silently truncated: deu_for_eng has 47,254 rendered clips and fra_for_eng
+    // 51,369, so a whole-course sweep saw barely a tenth of the course and
+    // reported a clean-looking flag rate for the part it never read. A queue
+    // that quietly stops at 5,000 reads as "that is the whole course".
+    //
+    // Paged along `text_normalized`, which is NOT an arbitrary choice: the
+    // unique index on (course_code, text_normalized, language, role, voice_id)
+    // is the only index whose leading column is course_code, so it is the only
+    // ordering Postgres can walk without sorting the whole course. Ordering by
+    // `id` or `created_at` sorts ~50,000 rows and blows the 8s statement
+    // timeout every time — measured, not assumed.
+    //
+    // text_normalized is not unique on its own (the same text exists across
+    // roles and voices), so this keysets with `gte` and de-duplicates by id
+    // rather than `gt`, which would drop every row sharing a page boundary.
+    const COLUMNS = 'id, text, text_normalized, role, voice_id, language, duration_ms, s3_key, audio_revision, lego_id, veracity_pass, veracity_reason, veracity_cer'
+    const PAGE = 1000
+    const data = []
+    if (audioIds && audioIds.length) {
+      // `.in()` on a huge id list blows the URL length, so chunk the filter too.
+      for (let i = 0; i < audioIds.length; i += PAGE) {
+        const chunk = audioIds.slice(i, i + PAGE)
+        let q = supabase.from('course_audio').select(COLUMNS)
+          .eq('course_code', courseCode).in('id', chunk)
+        if (role) q = q.eq('role', role)
+        const { data: rows, error } = await q.limit(PAGE)
+        if (error) throw new RepairError(`reading course audio: ${error.message}`, 'db_error', 500)
+        data.push(...(rows || []))
+      }
+    } else {
+      const seen = new Set()
+      let cursor = null
+      for (;;) {
+        let q = supabase.from('course_audio').select(COLUMNS)
+          .eq('course_code', courseCode).order('text_normalized', { ascending: true })
+        if (role) q = q.eq('role', role)
+        if (cursor !== null) q = q.gte('text_normalized', cursor)
+        const { data: rows, error } = await q.limit(PAGE)
+        if (error) throw new RepairError(`reading course audio: ${error.message}`, 'db_error', 500)
+        if (!rows || !rows.length) break
+        let fresh = 0
+        for (const r of rows) {
+          if (seen.has(r.id)) continue
+          seen.add(r.id); data.push(r); fresh++
+        }
+        const nextCursor = rows[rows.length - 1].text_normalized
+        // No new ids, or the cursor cannot advance: a single text_normalized
+        // fills a whole page. Stop rather than spin — and say so, because a
+        // silent stop here would under-report the course.
+        if (!fresh || nextCursor === cursor) {
+          if (rows.length === PAGE) {
+            logger.warn?.(`[repair] paging stalled at ${JSON.stringify(nextCursor)} — more than ${PAGE} clips share one normalised text; ${data.length} read`)
+          }
+          break
+        }
+        cursor = nextCursor
+        if (rows.length < PAGE) break
+      }
+    }
 
-    const { data: pend } = await supabase.from('audio_repair_candidates')
-      .select('audio_id, id, duration_ms, status')
-      .eq('course_code', courseCode).eq('status', 'pending')
-    const pendingBy = new Map((pend || []).map(c => [c.audio_id, c]))
+    // Paged for the same reason the clip read is: PostgREST caps an unbounded
+    // select, and a truncated pending list silently re-proposes clips that
+    // already have a candidate waiting for ears.
+    const pend = []
+    for (let from = 0; ; from += PAGE) {
+      const { data: rows } = await supabase.from('audio_repair_candidates')
+        .select('audio_id, id, duration_ms, status')
+        .eq('course_code', courseCode).eq('status', 'pending')
+        .order('id', { ascending: true })
+        .range(from, from + PAGE - 1)
+      pend.push(...(rows || []))
+      if (!rows || rows.length < PAGE) break
+    }
+    const pendingBy = new Map(pend.map(c => [c.audio_id, c]))
 
     // A row with no duration is almost always an UNRENDERED slot, not a
     // damaged clip — a different problem, owned by the missing-audio backlog.
@@ -776,18 +960,129 @@ function createRepairCore (deps) {
         pendingCandidateId: cand ? cand.id : null,
         detector: { flagged: score < T.suspectRatio, reason, score: Number(score.toFixed(3)) },
       }
-    }).filter(x => x.detector.flagged || x.pendingCandidateId)
+    })
 
-    scored.sort((a, b) => a.detector.score - b.detector.score)
+    // The tail check needs the bytes, so it is opt-in: one S3 GET and one
+    // decode per clip. Everything is measured first, because the "fast" leg is
+    // relative to the role's own median speaking rate and that is not knowable
+    // until the whole set has been measured.
+    let tailFailures = 0
+    if (tails) {
+      if (!verify || typeof verify.frameDb !== 'function') {
+        throw new RepairError('tail check needs a verify.frameDb dependency', 'no_tail_support', 500)
+      }
+      const byId = new Map(scored.map(s => [s.audioId, s]))
+      const envelopes = new Map()
+      // Concurrent, because this is one S3 GET plus one ffmpeg decode per clip
+      // and the courses in scope are ~50,000 clips each. Serially that is a
+      // day and a half per course; the work is entirely IO- and subprocess-bound
+      // so a small pool turns it into hours. Ordering does not matter here —
+      // every envelope is keyed by id and the verdict pass runs afterwards.
+      let next = 0
+      let done = 0
+      const worker = async () => {
+        for (;;) {
+          const i = next++
+          if (i >= rendered.length) return
+          const r = rendered[i]
+          try {
+            const { buffer } = await storage.get(r.s3_key)
+            envelopes.set(r.id, await verify.frameDb(buffer))
+          } catch (err) {
+            tailFailures++
+            logger.warn?.(`[repair] tail measure failed for ${r.id}: ${err.message}`)
+          }
+          if (onProgress && ++done % 250 === 0) onProgress(done, rendered.length)
+        }
+      }
+      await Promise.all(Array.from(
+        { length: Math.max(1, Math.min(tailConcurrency, rendered.length)) }, worker))
+      // Median chars/sec per role, from this run's own measurements. Pass 1
+      // measures with no baseline; pass 2 re-runs the verdict with it.
+      const rateByRole = new Map()
+      for (const r of rendered) {
+        const env = envelopes.get(r.id)
+        if (!env) continue
+        const v = tailVerdict(env, { textChars: String(r.text || '').length })
+        if (!v.speechRateCps) continue
+        if (!rateByRole.has(r.role)) rateByRole.set(r.role, [])
+        rateByRole.get(r.role).push(v.speechRateCps)
+      }
+      const medians = new Map([...rateByRole].map(([roleName, xs]) => {
+        const s = [...xs].sort((a, b) => a - b)
+        return [roleName, s[Math.floor(s.length / 2)]]
+      }))
+      for (const r of rendered) {
+        const item = byId.get(r.id)
+        const env = envelopes.get(r.id)
+        if (!item || !env) continue
+        item.tail = tailVerdict(env, {
+          textChars: String(r.text || '').length,
+          baselineCps: medians.get(r.role) || null,
+        })
+      }
+    }
+
+    const kept = scored.filter(x =>
+      x.detector.flagged || x.pendingCandidateId || (x.tail && x.tail.flagged))
+
+    // Tail-flagged clips sort by their own (smaller = worse) score; the
+    // duration detector's ratio and the tail's milliseconds are different
+    // units, so they are never mixed into one number.
+    kept.sort((a, b) => {
+      const at = a.tail && a.tail.flagged, bt = b.tail && b.tail.flagged
+      if (at && bt) return a.tail.score - b.tail.score
+      if (at !== bt) return at ? -1 : 1
+      return a.detector.score - b.detector.score
+    })
+
     return {
       courseCode,
       detector: DETECTOR,
-      total: scored.length,
+      tailDetector: tails ? TAIL_DETECTOR : null,
+      total: kept.length,
+      flaggedByDuration: kept.filter(x => x.detector.flagged).length,
+      flaggedByTail: kept.filter(x => x.tail && x.tail.flagged).length,
+      measured: tails ? rendered.length - tailFailures : 0,
+      tailMeasureFailures: tailFailures,
       // Named, not silently dropped: a queue that quietly excluded rows would
       // read as "nothing else to look at" when there is.
       excludedUnrendered: includeUnrendered ? 0 : unrendered.length,
-      items: scored.slice(0, limit),
+      items: kept.slice(0, limit),
     }
+  }
+
+  /**
+   * Every audio id reachable from seeds 1..maxSeedNumber of a course — seed,
+   * lego, introduction and practice-phrase clips, all voices. The repair queue
+   * works in audio ids; course work is scoped in seeds. This is the join.
+   */
+  async function seedScopedAudioIds ({ courseCode, maxSeedNumber }) {
+    const ids = new Set()
+    const add = (...xs) => { for (const x of xs) if (x) ids.add(x) }
+    const seedFilter = q => q.eq('course_code', courseCode).lte('seed_number', maxSeedNumber)
+
+    const { data: seeds } = await seedFilter(supabase.from('course_seeds')
+      .select('known_audio_id, target1_audio_id, target2_audio_id'))
+    for (const s of seeds || []) add(s.known_audio_id, s.target1_audio_id, s.target2_audio_id)
+
+    const { data: legos } = await seedFilter(supabase.from('course_legos')
+      .select('lego_id, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id'))
+    for (const l of legos || []) {
+      add(l.known_audio_id, l.target1_audio_id, l.target2_audio_id, l.presentation_audio_id)
+    }
+
+    const { data: phrases } = await seedFilter(supabase.from('course_practice_phrases')
+      .select('known_audio_id, target1_audio_id, target2_audio_id'))
+    for (const p of phrases || []) add(p.known_audio_id, p.target1_audio_id, p.target2_audio_id)
+
+    // lego_introductions has no seed_number; its lego_id carries the seed.
+    const keep = new Set((legos || []).map(l => l.lego_id))
+    const { data: intros } = await supabase.from('lego_introductions')
+      .select('lego_id, presentation_audio_id').eq('course_code', courseCode)
+    for (const i of intros || []) if (keep.has(i.lego_id)) add(i.presentation_audio_id)
+
+    return [...ids]
   }
 
   /** Bytes for a candidate, so a human can hear it before deciding. */
@@ -807,9 +1102,9 @@ function createRepairCore (deps) {
 
   return {
     propose, preview, accept, reject, revert, queue,
-    candidateBytes, currentBytes,
+    candidateBytes, currentBytes, seedScopedAudioIds,
     loadClip, linkCensus, detectorVerdict,
-    DETECTOR, RepairError,
+    DETECTOR, TAIL_DETECTOR, RepairError,
     _internal: { faultOf, syncDenormalisedDurations, thresholds: T },
   }
 }
@@ -818,6 +1113,10 @@ module.exports = {
   createRepairCore,
   RepairError,
   DETECTOR,
+  TAIL_DETECTOR,
+  TAIL_THRESHOLDS,
+  tailShape,
+  tailVerdict,
   DURATION_HOLDERS,
   UPLOAD_EXTENSIONS,
   CANDIDATE_PREFIX,

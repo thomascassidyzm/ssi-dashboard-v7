@@ -37,6 +37,7 @@
  * about money, and a flag you have to type is the cheapest possible enforcement.
  *
  *   node tools/audio-repair.cjs queue deu_for_eng --role presentation --json /tmp/q.json
+ *   node tools/audio-repair.cjs queue deu_for_eng --max-seed 5 --tails --json /tmp/q.json
  *   node tools/audio-repair.cjs preview deu_for_eng --id <audioId>
  *   node tools/audio-repair.cjs propose deu_for_eng --targets /tmp/q.json            # dry, free
  *   node tools/audio-repair.cjs propose deu_for_eng --targets /tmp/q.json --spend    # renders
@@ -61,7 +62,7 @@ const str = (v, d = null) => (v === undefined || v === true ? d : String(v))
 const USAGE = `
 audio-repair — non-destructive course audio repair (propose / preview / accept / reject)
 
-  queue    <course> [--role R] [--limit N] [--json FILE]
+  queue    <course> [--role R] [--limit N] [--json FILE] [--tails] [--max-seed N]
   preview  <course> --id <audioId>
   propose  <course> (--id <audioId> | --targets FILE) [--role R] [--only V] [--limit N]
                     [--spend] [--actor NAME] [--text "..."] [--voice V]
@@ -69,7 +70,10 @@ audio-repair — non-destructive course audio repair (propose / preview / accept
                     --i-have-listened --actor NAME [--reason "..."] [--dry]
   reject   <course> --candidate <candidateId> --actor NAME [--reason "..."]
 
+  --tails            also run the tail-integrity check (fetches + decodes every clip)
+  --max-seed N       restrict to clips reachable from seeds 1..N
   --spend            propose renders for real. WITHOUT IT NOTHING IS BILLED.
+  --concurrency N    queue --tails: clips measured at once (default 8)
   --i-have-listened  required by accept. There is no way to accept without it.
 `
 
@@ -103,16 +107,41 @@ function announce () {
 
 // ── queue ──────────────────────────────────────────────────────────────────
 async function cmdQueue () {
+  const maxSeed = flags['max-seed'] === undefined ? null : num(flags['max-seed'], null)
+  const audioIds = maxSeed
+    ? await core().seedScopedAudioIds({ courseCode: COURSE, maxSeedNumber: maxSeed })
+    : null
+  const tails = !!flags.tails
+  if (audioIds) console.log(`\nscoped to seeds 1-${maxSeed}: ${audioIds.length} clip(s) referenced`)
+  const tailConcurrency = num(flags.concurrency, 8)
+  if (tails) console.log(`tail check ON — one S3 fetch and one decode per clip, ${tailConcurrency} at a time; this is not instant.`)
+  const started = Date.now()
   const out = await core().queue({
     courseCode: COURSE, limit: num(flags.limit, 50), role: str(flags.role),
+    audioIds, tails, tailConcurrency,
+    onProgress: tails
+      ? (done, total) => {
+          const rate = done / ((Date.now() - started) / 1000)
+          const eta = Math.round((total - done) / Math.max(rate, 0.01) / 60)
+          process.stderr.write(`\r  measured ${done}/${total} (${rate.toFixed(1)}/s, ~${eta}m left)   `)
+        }
+      : null,
   })
+  if (tails) process.stderr.write('\n')
   console.log(`\naudio-repair queue — ${COURSE}`)
   console.log(`detector: ${out.detector.name}`)
   console.log(`  ${out.detector.precisionNote}`)
-  console.log(`\n${out.total} clip(s) worth a human's ears; showing ${out.items.length}, worst first.\n`)
+  if (out.tailDetector) {
+    console.log(`detector: ${out.tailDetector.name}`)
+    console.log(`  ${out.tailDetector.precisionNote}`)
+    console.log(`  measured ${out.measured} clip(s); ${out.tailMeasureFailures} could not be measured`)
+  }
+  console.log(`\n${out.total} clip(s) worth a human's ears (${out.flaggedByDuration} by duration, ${out.flaggedByTail} by tail); showing ${out.items.length}, worst first.\n`)
   for (const it of out.items) {
-    console.log(`  ${String(it.detector.score).padStart(7)}  ${String(it.role).padEnd(13)} ${String(it.durationMs ?? '?').padStart(6)}ms  ${JSON.stringify(String(it.text || '')).slice(0, 54)}`)
-    console.log(`           ${it.audioId}  rev ${it.revision}${it.detector.reason ? `  — ${it.detector.reason}` : ''}`)
+    const why = it.tail && it.tail.flagged ? it.tail.reason : it.detector.reason
+    const score = it.tail && it.tail.flagged ? `${it.tail.shape.releaseMs}ms` : String(it.detector.score)
+    console.log(`  ${score.padStart(7)}  ${String(it.role).padEnd(13)} ${String(it.durationMs ?? '?').padStart(6)}ms  ${JSON.stringify(String(it.text || '')).slice(0, 54)}`)
+    console.log(`           ${it.audioId}  rev ${it.revision}${why ? `  — ${why}` : ''}`)
   }
   if (flags.json) {
     const p = str(flags.json)
