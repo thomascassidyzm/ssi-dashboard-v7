@@ -3,11 +3,11 @@
     <!-- Header -->
     <div class="flex items-center justify-between gap-4 flex-wrap mb-1">
       <div>
-        <h2 class="text-sm font-semibold text-ink">Cast — the two voices</h2>
+        <h2 class="text-sm font-semibold text-ink">Cast — two voices</h2>
         <p class="text-xs text-muted mt-0.5">
-          Every pod is recorded with exactly two voices — one male, one female. Between them they
-          play every character in every scenario; when a scene has two characters of the same
-          gender, that voice just plays both.
+          A pod is recorded with two voices — one male, one female. Between them they play every
+          character in every scenario; when a scene has two characters of the same gender, that
+          voice just plays both.
         </p>
       </div>
       <button
@@ -126,8 +126,21 @@
             class="text-[11px] px-2.5 py-1 rounded border border-line text-ink hover:border-emerald-500"
           >+ Add the {{ people.length === 0 ? 'first' : 'second' }} voice</button>
           <span class="text-[11px] text-faint">
-            The bilingual guide reads the English lines — it's one of these same two people. If
+            The bilingual guide reads the English lines — it's one of the same people. If
             nobody's marked, we'll suggest whoever has the lightest load.
+          </span>
+        </div>
+        <!-- The opt-in upgrade (Tom 2026-08-06). Deliberately quiet and off the
+             default path: two voices records a whole course, so a leader who
+             does nothing never meets an N-voice concept. It only appears once
+             both default voices are in, and only when there's room left. -->
+        <div v-if="people.length >= 2 && people.length < maxVoices" class="mt-2">
+          <button
+            @click="addPerson"
+            class="text-[11px] text-faint hover:text-ink underline decoration-dotted underline-offset-2"
+          >Add another voice</button>
+          <span class="text-[11px] text-faint ml-2">
+            — only if you've got another recorder. Two voices records a whole course.
           </span>
         </div>
       </div>
@@ -220,17 +233,27 @@
  * pods-recording-model.md §1 + softened addendum), TWO-STATE (founder ask
  * 2026-07-17: "two voices, one saved cast, obvious"):
  *
- *   SAVED    the cast is live — exactly two person cards, live record links,
+ *   SAVED    the cast is live — a person card per voice, live record links,
  *            one Edit-cast door back into editing.
- *   EDITING  the two person rows + a live PREVIEW of who-plays-what that
+ *   EDITING  the person rows + a live PREVIEW of who-plays-what that
  *            re-solves itself as you type (POST /pods/cast/propose, debounced
  *            — no "Work out the parts" button, the preview is not a state).
  *            Links are visibly dead; ONE primary action: Save cast.
  *
+ * TWO VOICES IS THE DEFAULT (Tom, voice note 2026-08-06): "probably do it for
+ * two voices as the default. And then if you want to try it with three or four
+ * voices because you do have additional human voice recorders, then fantastic,
+ * we can do that." So the panel opens on two rows — one female, one male —
+ * and the third/fourth voice is a quiet opt-in that never appears on the
+ * default path. The principle behind it, same note: "If we are making it a lot
+ * more complicated to even get the recordings done, it's going to be harder for
+ * people to do community courses, isn't it?"
+ *
  * PUT /pods/cast saves and auto-provisions access for entries carrying an
- * email. The server collapses legacy multi-identity casts (Aranv2/Aranv3…)
- * to the two-voice shape on load, so savedCast never carries more than two
- * voices here. Plain language — community leaders run this, not engineers.
+ * email. The server still collapses LEGACY multi-identity casts
+ * (Aranv2/Aranv3…) to the two-voice shape on load; a cast that deliberately
+ * declared three or four voices is left alone. Plain language — community
+ * leaders run this, not engineers.
  */
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { getApiUrl } from '@/services/api.js'
@@ -259,6 +282,11 @@ const rosterVoices = ref([])      // [{ voiceId, name, email }]
 const savedCast = ref({})         // server's podCast (already two-voice collapsed)
 const generationColouring = ref(false)
 const provisioningNotes = ref([])
+// Server-declared cast shape: two voices by default, `max` the opt-in ceiling
+// (GET /cast castDefaults). Falls back to the same numbers if an older server
+// doesn't send it.
+const castDefaults = ref(null)
+const maxVoices = computed(() => castDefaults.value?.max || 5)
 
 const hasSavedCast = computed(() => Object.values(savedCast.value || {}).some(v => v && v.voiceId))
 const mode = computed(() => (editing.value || !hasSavedCast.value ? 'editing' : 'saved'))
@@ -284,11 +312,16 @@ function blankPerson() {
   return { name: '', gender: '', email: '', guide: false }
 }
 
-// Every pod is cast with exactly two voices (founder ruling 2026-07-17) — cap
-// the roster at two rows so the panel can't drift back into an N-voice cast.
+// Two voices is the DEFAULT, three or four an opt-in upgrade for courses that
+// genuinely have extra recorders (Tom 2026-08-06). The cap stops the panel
+// drifting back into the N-voice cast that made recording look like a
+// production, but it is a ceiling, not a wall the leader has to reach.
 function addPerson() {
-  if (people.value.length >= 2) return
-  people.value = [...people.value, blankPerson()]
+  if (people.value.length >= maxVoices.value) return
+  // Rows past the default carry no gender preference — the default two are
+  // one female and one male, and extras are just extra hands.
+  const gender = people.value.length === 0 ? 'f' : people.value.length === 1 ? 'm' : ''
+  people.value = [...people.value, { ...blankPerson(), gender }]
 }
 
 function removePerson(i) {
@@ -312,12 +345,15 @@ function cancelEditing() {
   note('')
 }
 
-// Two named/emailed people, each with a gender chosen, one male one female.
+// Two named/emailed people by default, up to maxVoices when the leader has
+// opted in — always covering both a male and a female voice, so every
+// character has someone to read it.
 const canSolve = computed(() => {
-  if (people.value.length !== 2) return false
+  const n = people.value.length
+  if (n < 2 || n > maxVoices.value) return false
   const named = people.value.every(p => (p.name && p.name.trim()) || (p.email && p.email.trim()))
-  const genders = people.value.map(p => p.gender).sort()
-  return named && genders[0] === 'f' && genders[1] === 'm'
+  const genders = people.value.map(p => p.gender)
+  return named && genders.includes('f') && genders.includes('m')
 })
 
 // 'need-more-people' is expected under the two-voice rule, not a real warning
@@ -345,16 +381,23 @@ function prefillPeople() {
     }
   }
   if (seen.size) {
-    people.value = [...seen.values()].slice(0, 2)
+    people.value = [...seen.values()].slice(0, maxVoices.value)
     return
   }
-  if (rosterVoices.value.length) {
-    people.value = rosterVoices.value.slice(0, 2).map(v => ({
-      name: v.name || '', gender: '', email: v.email || '', guide: false,
-    }))
+  // Nothing cast yet: the course gets the two-voice default — one female row,
+  // one male row, prefilled from the roster where we know who's there. A
+  // leader who configures nothing still sees exactly the shape they need
+  // (Tom 2026-08-06).
+  if (castDefaults.value?.people?.length) {
+    people.value = castDefaults.value.people.map(p => ({ ...p }))
     return
   }
-  people.value = [blankPerson()]
+  people.value = rosterVoices.value.slice(0, 2).map((v, i) => ({
+    name: v.name || '', gender: i === 0 ? 'f' : 'm', email: v.email || '', guide: false,
+  }))
+  while (people.value.length < 2) {
+    people.value = [...people.value, { ...blankPerson(), gender: people.value.length === 0 ? 'f' : 'm' }]
+  }
 }
 
 // ── Load / propose / save ────────────────────────────────────────────────────
@@ -367,6 +410,7 @@ async function loadCast() {
     explainerInfo.value = data.explainer || null
     rosterVoices.value = data.rosterVoices || []
     generationColouring.value = !!data.generationColouring
+    castDefaults.value = data.castDefaults || null
     savedCast.value = data.podCast || {}
     prefillPeople()
     editing.value = !hasSavedCast.value
