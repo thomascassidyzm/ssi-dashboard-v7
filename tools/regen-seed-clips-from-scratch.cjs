@@ -58,11 +58,32 @@
  * truncated, and — when whisper is present — ASR-checked) before it is allowed
  * to become the served clip.
  *
+ * ── --targets: the health gate lives OUTSIDE this tool ──────────────────────
+ * Seed-range mode rebuilds everything in range, which is right for a founder
+ * "redo seeds 1-5" order and wrong for the rest of the stock: pointing it at a
+ * whole course would re-render ~47k healthy-and-damaged clips alike. So the
+ * selector is a separate, free, whisper-based pass —
+ * `tools/audio-word-loss-scan.cjs`, which asks the only question that matters
+ * ("is the final word actually there?") on the DEPLOYED bytes — and its output
+ * JSON is fed back here with `--targets`. Every clip named is rebuilt; nothing
+ * else is touched.
+ *
+ * In targets mode the owning column is not assumed from a role name. Each id is
+ * reverse-looked-up across every holder column in course_legos,
+ * course_practice_phrases and lego_introductions, and ALL holders found are
+ * repointed. That matters: the damage is not confined to LEGO clips — the clip
+ * the founder named on 2026-08-06 ("as often as possible", chopped after "as")
+ * is an ENGLISH practice-phrase clip, held by
+ * course_practice_phrases.known_audio_id, which the seed-range SLOT map cannot
+ * reach. An id nothing points at is skipped, not rebuilt: no consumer plays it.
+ *
  * TTS costs money. Run only under an approved plan.
  *
  *   node tools/regen-seed-clips-from-scratch.cjs deu_for_eng --seeds 1-5 --dry
  *   node tools/regen-seed-clips-from-scratch.cjs deu_for_eng --seeds 1-5 --roles known,target1,target2,presentation
  *   node tools/regen-seed-clips-from-scratch.cjs deu_for_eng --seeds 1-1 --legos S0001L01 --roles target1
+ *   node tools/regen-seed-clips-from-scratch.cjs deu_for_eng --targets docs/audio-repair-2026-08-06/deu-wordloss-legos.json --dry
+ *   node tools/regen-seed-clips-from-scratch.cjs deu_for_eng --targets <file> --limit 20
  */
 require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') })
 const fs = require('fs')
@@ -82,11 +103,17 @@ const { toBcp47 } = require('../services/voice-discovery-service.cjs')
 
 const arg = (f) => { const i = process.argv.indexOf(f); return i > -1 ? process.argv[i + 1] : null }
 const COURSE = process.argv[2]
+const TARGETS = arg('--targets')
 const SEEDS = arg('--seeds') || '1-5'
 const ROLES = (arg('--roles') || 'known,target1,target2,presentation').split(',').map(s => s.trim()).filter(Boolean)
 const ONLY_LEGOS = (arg('--legos') || '').split(',').map(s => s.trim()).filter(Boolean)
 const LIMIT = Number(arg('--limit') || 0)
-const DRY = process.argv.includes('--dry')
+// --dry costs NOTHING: it plans the run (which clips, which holders, how many
+// TTS characters) without calling TTS at all, so a 1,000-clip plan can be
+// priced before it is approved. --dry-render is the older, paid behaviour:
+// render and compare fresh-vs-shipped duration, then decline to write.
+const DRY_RENDER = process.argv.includes('--dry-render')
+const DRY = DRY_RENDER || process.argv.includes('--dry')
 const ATTEMPTS = Number(arg('--attempts') || 3)
 const OUT = arg('--out') || null
 const FFMPEG = process.env.FFMPEG || 'ffmpeg'
@@ -95,7 +122,7 @@ const SILENCE_MEAN_DB = -60
 const NEAR_SILENCE_PEAK_DB = Number(process.env.REGEN_NEAR_SILENCE_PEAK_DB || -9)
 const TOMBSTONE = ' ::superseded-regen'
 
-/** Which column on which table owns each role. */
+/** Which column on which table owns each role, in seed-range mode. */
 const SLOT = {
   known: { table: 'course_legos', column: 'known_audio_id' },
   target1: { table: 'course_legos', column: 'target1_audio_id', durationColumn: 'target1_duration_ms' },
@@ -103,11 +130,69 @@ const SLOT = {
   presentation: { table: 'course_legos', column: 'presentation_audio_id' },
 }
 
-if (!COURSE || !/^\d+-\d+$/.test(SEEDS)) {
-  console.error('usage: regen-seed-clips-from-scratch.cjs <course> --seeds <a-b> [--roles known,target1,target2,presentation] [--legos S0001L01,...] [--limit N] [--dry]')
+/**
+ * Every column in the schema that can serve a course_audio row. Targets mode
+ * repoints ALL of them for a given id rather than guessing one from a role
+ * name — a clip is often held in more than one place, and a missed holder is a
+ * clip that keeps playing the damaged bytes.
+ */
+const HOLDERS = [
+  { table: 'course_legos', column: 'known_audio_id' },
+  { table: 'course_legos', column: 'target1_audio_id', durationColumn: 'target1_duration_ms' },
+  { table: 'course_legos', column: 'target2_audio_id', durationColumn: 'target2_duration_ms' },
+  { table: 'course_legos', column: 'presentation_audio_id' },
+  { table: 'course_practice_phrases', column: 'known_audio_id' },
+  { table: 'course_practice_phrases', column: 'target1_audio_id', durationColumn: 'target1_duration_ms' },
+  { table: 'course_practice_phrases', column: 'target2_audio_id', durationColumn: 'target2_duration_ms' },
+  { table: 'course_practice_phrases', column: 'presentation_audio_id' },
+  // lego_introductions carries the authored script; audio_uuid is its legacy
+  // pointer and must move with presentation_audio_id or the two disagree.
+  { table: 'lego_introductions', column: 'presentation_audio_id', durationColumn: 'duration_ms', alsoSet: { audio_uuid: true } },
+]
+
+if (require.main === module && (!COURSE || (!TARGETS && !/^\d+-\d+$/.test(SEEDS)))) {
+  console.error('usage: regen-seed-clips-from-scratch.cjs <course> (--seeds <a-b> | --targets <wordloss.json>) [--roles ...] [--legos S0001L01,...] [--limit N] [--dry]')
   process.exit(1)
 }
-const [SEED_FROM, SEED_TO] = SEEDS.split('-').map(Number)
+const [SEED_FROM, SEED_TO] = TARGETS ? [0, 0] : SEEDS.split('-').map(Number)
+
+/**
+ * Read a word-loss scan output (or any JSON naming clip ids) into a plain id
+ * list, preserving file order — the scan already emits LEGOs before cycles,
+ * which is the founder's repair ordering and must not be re-sorted away.
+ */
+function readTargetIds (file) {
+  const raw = JSON.parse(fs.readFileSync(file, 'utf8'))
+  const arr = Array.isArray(raw) ? raw : (raw.items || raw.results || [])
+  if (!Array.isArray(arr)) throw new Error(`${file}: no items[] array to read`)
+  const ids = []
+  const seen = new Set()
+  for (const it of arr) {
+    // A results[] array carries healthy clips too; only truncated ones qualify.
+    if (it && typeof it === 'object' && it.truncated === false) continue
+    const id = typeof it === 'string' ? it : (it && (it.audioId || it.id))
+    if (!id || seen.has(id)) continue
+    seen.add(id)
+    ids.push(id)
+  }
+  return ids
+}
+
+/** Reverse-look-up every holder of every id, in chunks PostgREST will accept. */
+async function resolveHolders (supabase, ids) {
+  const byId = new Map(ids.map(id => [id, []]))
+  for (const h of HOLDERS) {
+    for (let i = 0; i < ids.length; i += 200) {
+      const chunk = ids.slice(i, i + 200)
+      const { data, error } = await supabase.from(h.table).select(`id, ${h.column}`).in(h.column, chunk)
+      if (error) throw new Error(`resolve ${h.table}.${h.column}: ${error.message}`)
+      for (const row of data || []) {
+        byId.get(row[h.column]).push({ ...h, rowId: row.id })
+      }
+    }
+  }
+  return byId
+}
 
 const supabase = createClient(
   (process.env.SUPABASE_URL || '').trim(),
@@ -177,27 +262,43 @@ async function renderVerified (row, tmpDir) {
   throw new Error(`no attempt produced clean speech (last ${last && last.durationMs}ms)`)
 }
 
-;(async () => {
-  console.log(`\nregen-seed-clips-from-scratch — ${COURSE} seeds ${SEED_FROM}-${SEED_TO}, roles ${ROLES.join(',')}`)
+async function main () {
+  console.log(`\nregen-seed-clips-from-scratch — ${COURSE} ${TARGETS ? `targets ${TARGETS}` : `seeds ${SEED_FROM}-${SEED_TO}`}, roles ${ROLES.join(',')}`)
   veracity.announceStatus(console)
 
-  // Build the work list from the LEGOs, so every clip is reached through the
-  // column that actually serves it rather than through a stale id list.
-  const { data: legos, error: le } = await supabase.from('course_legos')
-    .select('id, lego_id, seed_number, lego_index, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id')
-    .eq('course_code', COURSE).gte('seed_number', SEED_FROM).lte('seed_number', SEED_TO)
-    .order('seed_number').order('lego_index')
-  if (le) throw new Error(`read legos: ${le.message}`)
-
   const work = []
-  for (const l of legos || []) {
-    if (ONLY_LEGOS.length && !ONLY_LEGOS.includes(l.lego_id)) continue
-    for (const role of ROLES) {
-      const slot = SLOT[role]
-      if (!slot) throw new Error(`unknown role ${role}`)
-      const id = l[slot.column]
-      if (!id) { console.log(`  ${l.lego_id} ${role}: EMPTY slot — nothing to regenerate from`); continue }
-      work.push({ lego: l, role, slot, id })
+  let unreferenced = 0
+
+  if (TARGETS) {
+    // Targets mode: the health gate already ran (whisper word-loss scan). Take
+    // exactly the clips it named, resolve who serves each one, rebuild those.
+    const ids = readTargetIds(TARGETS)
+    console.log(`${ids.length} clip id(s) in the target file`)
+    const holdersById = await resolveHolders(supabase, ids)
+    for (const id of ids) {
+      const holders = holdersById.get(id) || []
+      if (!holders.length) { unreferenced++; continue }
+      work.push({ id, label: `${holders[0].table.replace('course_', '')}#${holders[0].rowId}`, holders })
+    }
+    if (unreferenced) console.log(`${unreferenced} id(s) nothing points at — skipped (no consumer plays them)`)
+  } else {
+    // Seed-range mode: reach every clip through the column that actually serves
+    // it rather than through a stale id list.
+    const { data: legos, error: le } = await supabase.from('course_legos')
+      .select('id, lego_id, seed_number, lego_index, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id')
+      .eq('course_code', COURSE).gte('seed_number', SEED_FROM).lte('seed_number', SEED_TO)
+      .order('seed_number').order('lego_index')
+    if (le) throw new Error(`read legos: ${le.message}`)
+
+    for (const l of legos || []) {
+      if (ONLY_LEGOS.length && !ONLY_LEGOS.includes(l.lego_id)) continue
+      for (const role of ROLES) {
+        const slot = SLOT[role]
+        if (!slot) throw new Error(`unknown role ${role}`)
+        const id = l[slot.column]
+        if (!id) { console.log(`  ${l.lego_id} ${role}: EMPTY slot — nothing to regenerate from`); continue }
+        work.push({ id, label: `${l.lego_id} ${role}`, holders: [{ ...slot, rowId: l.id }] })
+      }
     }
   }
   const queue = LIMIT ? work.slice(0, LIMIT) : work
@@ -208,7 +309,7 @@ async function renderVerified (row, tmpDir) {
   let done = 0, failed = 0, chars = 0
 
   for (const [i, item] of queue.entries()) {
-    const prefix = `[${i + 1}/${queue.length}] ${item.lego.lego_id} ${item.role}`
+    const prefix = `[${i + 1}/${queue.length}] ${item.label}`
     let stage = 'read'
     let old = null, newId = null, tombstoned = false, inserted = false
     const relinked = []
@@ -217,12 +318,16 @@ async function renderVerified (row, tmpDir) {
       if (error || !row) { console.log(`${prefix}: row gone — skip`); continue }
       if (row.origin === 'human') { console.log(`${prefix}: origin=human — REFUSED`); continue }
       old = row
-      console.log(`${prefix}: ${JSON.stringify(row.text).slice(0, 60)} (rev${row.audio_revision}, ${row.s3_key})`)
+      console.log(`${prefix} ${row.role}: ${JSON.stringify(row.text).slice(0, 60)} (rev${row.audio_revision}, ${row.s3_key})`)
 
-      // Who points at it, before anything moves.
-      const { data: intros } = item.role === 'presentation'
-        ? await supabase.from('lego_introductions').select('id, lego_id').eq('presentation_audio_id', item.id)
-        : { data: [] }
+      // Free plan: everything that can be known without spending money.
+      if (DRY && !DRY_RENDER) {
+        const c = String(row.text || '').length
+        chars += c
+        console.log(`      [PLAN] ${c} chars, shipped ${row.duration_ms}ms, held by ${item.holders.map(h => `${h.table}.${h.column}`).join(', ')}`)
+        log.push({ clip: item.label, role: row.role, action: 'would-replace', oldId: row.id, oldKey: row.s3_key, oldRev: row.audio_revision, shippedMs: row.duration_ms, holders: item.holders.map(h => `${h.table}.${h.column}#${h.rowId}`), text: row.text, chars: c, voice: row.voice_id })
+        continue
+      }
 
       // 1. Render. Nothing is mutated if this throws.
       stage = 'render'
@@ -231,7 +336,7 @@ async function renderVerified (row, tmpDir) {
 
       if (DRY) {
         console.log(`      [DRY] would replace — shipped ${row.duration_ms}ms, fresh ${rendered.durationMs}ms, veracity ${rendered.verdict.checked ? (rendered.verdict.pass ? 'PASS' : 'FAIL') : 'unchecked'}`)
-        log.push({ lego: item.lego.lego_id, role: item.role, action: 'would-replace', oldId: row.id, oldKey: row.s3_key, oldRev: row.audio_revision, shippedMs: row.duration_ms, freshMs: rendered.durationMs })
+        log.push({ clip: item.label, role: row.role, action: 'would-replace', oldId: row.id, oldKey: row.s3_key, oldRev: row.audio_revision, shippedMs: row.duration_ms, freshMs: rendered.durationMs, holders: item.holders.map(h => `${h.table}.${h.column}#${h.rowId}`), text: row.text, chars: String(row.text || '').length })
         continue
       }
 
@@ -294,22 +399,17 @@ async function renderVerified (row, tmpDir) {
         inserted = true
       }
 
-      // 5. Repoint the owning column. For presentation, lego_introductions is
-      //    the row that carries the authored script; audio_uuid is its legacy
-      //    pointer and must move with presentation_audio_id.
+      // 5. Repoint EVERY column that serves this clip. A holder left behind is
+      //    a consumer still playing the damaged bytes.
       stage = 'repoint'
-      {
-        const patch = { [item.slot.column]: newId }
-        if (item.slot.durationColumn) patch[item.slot.durationColumn] = rendered.durationMs
-        const { error: e } = await supabase.from('course_legos').update(patch).eq('id', item.lego.id)
-        if (e) throw new Error(`repoint course_legos#${item.lego.id}: ${e.message}`)
-        relinked.push({ table: 'course_legos', rowId: item.lego.id, patch, before: { [item.slot.column]: row.id } })
-      }
-      for (const r of intros || []) {
-        const { error: e } = await supabase.from('lego_introductions')
-          .update({ presentation_audio_id: newId, audio_uuid: newId, duration_ms: rendered.durationMs }).eq('id', r.id)
-        if (e) throw new Error(`repoint lego_introductions#${r.id}: ${e.message}`)
-        relinked.push({ table: 'lego_introductions', rowId: r.id, before: { presentation_audio_id: row.id, audio_uuid: row.id } })
+      for (const h of item.holders) {
+        const patch = { [h.column]: newId }
+        const before = { [h.column]: row.id }
+        if (h.durationColumn) patch[h.durationColumn] = rendered.durationMs
+        if (h.alsoSet && h.alsoSet.audio_uuid) { patch.audio_uuid = newId; before.audio_uuid = row.id }
+        const { error: e } = await supabase.from(h.table).update(patch).eq('id', h.rowId)
+        if (e) throw new Error(`repoint ${h.table}#${h.rowId}: ${e.message}`)
+        relinked.push({ table: h.table, rowId: h.rowId, column: h.column, patch, before })
       }
 
       // 6. Ledger the swap. This is what makes old-vs-new comparable later:
@@ -328,9 +428,11 @@ async function renderVerified (row, tmpDir) {
           // candidate_id is FK'd to the repair-candidates table; a from-scratch
           // regeneration never goes through propose/accept, so it has none.
           candidate_id: null,
-          source: 'regen-from-scratch',
+          source: TARGETS ? 'regen-targeted-wordloss' : 'regen-from-scratch',
           accepted_by: 'founder-order-2026-08-06',
-          reason: `first-${SEED_TO} seeds regenerated from scratch; old row ${row.id} and object ${row.s3_key} retained for comparison`,
+          reason: TARGETS
+            ? `whisper word-loss target list ${path.basename(TARGETS)}; old row ${row.id} and object ${row.s3_key} retained for comparison`
+            : `first-${SEED_TO} seeds regenerated from scratch; old row ${row.id} and object ${row.s3_key} retained for comparison`,
         })
         if (e) console.log(`      WARN ledger insert failed (swap stands): ${e.message}`)
       }
@@ -340,15 +442,17 @@ async function renderVerified (row, tmpDir) {
       {
         const head = await p8.s3.send(new HeadObjectCommand({ Bucket: p8.S3_BUCKET, Key: s3Key }))
         if (!head.ContentLength) throw new Error('new object head returned no length')
-        const { data: back } = await supabase.from('course_legos')
-          .select(item.slot.column).eq('id', item.lego.id).single()
-        if (!back || back[item.slot.column] !== newId) throw new Error('link did not stick')
-        console.log(`      NEW ${newId} → ${s3Key} (${head.ContentLength}B, ${rendered.durationMs}ms, was ${row.duration_ms}ms) rev${(row.audio_revision || 1) + 1}`)
+        for (const h of item.holders) {
+          const { data: back } = await supabase.from(h.table).select(h.column).eq('id', h.rowId).single()
+          if (!back || back[h.column] !== newId) throw new Error(`link did not stick: ${h.table}#${h.rowId}.${h.column}`)
+        }
+        console.log(`      NEW ${newId} → ${s3Key} (${head.ContentLength}B, ${rendered.durationMs}ms, was ${row.duration_ms}ms) rev${(row.audio_revision || 1) + 1}, ${item.holders.length} link(s)`)
       }
 
       done++
       log.push({
-        lego: item.lego.lego_id, role: item.role, action: 'replaced',
+        clip: item.label, role: row.role, action: 'replaced',
+        holders: item.holders.map(h => `${h.table}.${h.column}#${h.rowId}`),
         oldId: row.id, oldKey: row.s3_key, oldRev: row.audio_revision, oldMs: row.duration_ms,
         newId, newKey: s3Key, newRev: (row.audio_revision || 1) + 1, newMs: rendered.durationMs,
         veracity: { checked: rendered.verdict.checked, pass: rendered.verdict.pass, cer: rendered.verdict.cer },
@@ -369,20 +473,31 @@ async function renderVerified (row, tmpDir) {
       } catch (u) {
         console.log(`      !! UNWIND FAILED: ${u.message} — INSPECT ${old && old.id} BY HAND`)
       }
-      log.push({ lego: item.lego.lego_id, role: item.role, action: 'failed', stage, error: err.message, oldId: item.id })
+      log.push({ clip: item.label, action: 'failed', stage, error: err.message, oldId: item.id })
     }
   }
 
+  const scope = TARGETS ? `targets-${path.basename(TARGETS).replace(/\.json$/, '')}` : `seeds${SEED_FROM}-${SEED_TO}`
   const outPath = OUT || path.join(__dirname, '..', 'docs', 'audio-repair-2026-08-06',
-    `${COURSE}-seeds${SEED_FROM}-${SEED_TO}-regen-${DRY ? 'dryrun' : 'applied'}-log.json`)
+    `${COURSE}-${scope}-regen-${DRY ? 'dryrun' : 'applied'}-log.json`)
   fs.mkdirSync(path.dirname(outPath), { recursive: true })
   fs.writeFileSync(outPath, JSON.stringify({
-    course: COURSE, seeds: SEEDS, roles: ROLES, dry: DRY,
-    generatedAt: new Date().toISOString(), done, failed, ttsChars: chars, log,
+    course: COURSE, seeds: TARGETS ? null : SEEDS, targets: TARGETS, roles: ROLES,
+    dry: DRY, dryRender: DRY_RENDER, unreferenced,
+    generatedAt: new Date().toISOString(), done, failed, planned: log.filter(l => l.action === 'would-replace').length,
+    ttsChars: chars, log,
   }, null, 2))
 
   console.log(`\n${done} replaced, ${failed} failed, ~${chars} TTS chars`)
   console.log(`log → ${outPath}`)
   try { fs.rmSync(tmpDir, { recursive: true, force: true }) } catch {}
   process.exit(failed ? 1 : 0)
-})().catch(e => { console.error('FATAL', e); process.exit(1) })
+}
+
+// Exported for the unit tests; the DB and TTS work only runs when this file is
+// the entry point, so requiring the module never touches the estate or spends.
+module.exports = { readTargetIds, HOLDERS, SLOT, decodeVoiceId }
+
+if (require.main === module) {
+  main().catch(e => { console.error('FATAL', e); process.exit(1) })
+}
