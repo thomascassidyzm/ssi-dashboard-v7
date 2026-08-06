@@ -174,6 +174,25 @@
           <span class="card-arrow">&rarr;</span>
         </router-link>
       </div>
+
+      <!-- Human recording is blocked while any pod line is still an unproofread
+           machine draft — a recorder who reads one records words nobody has
+           checked. Sits under the recording card because that is where the
+           person who can clear it is standing. -->
+      <router-link
+        v-if="podDraftTotal > 0"
+        :to="podDraftLink"
+        class="draft-strip"
+      >
+        <span class="draft-strip-badge">DRAFT</span>
+        <span class="draft-strip-text">
+          <strong>{{ podDraftTotal }} pod line{{ podDraftTotal === 1 ? '' : 's' }} awaiting proofread</strong>
+          — machine-written {{ targetLanguageName }} nobody has read yet. They are marked DRAFT in the
+          record room, so nobody should record them until they are read. Editing a line — or saving it
+          unchanged — takes the marker off.
+        </span>
+        <span class="draft-strip-arrow">&rarr;</span>
+      </router-link>
     </section>
 
     <!-- 3 · Review & QA -->
@@ -236,6 +255,7 @@ import { useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import { isConfigured as isSupabaseConfigured, getCourseProgress, getQASummary } from '@/services/supabase'
 import { useProductionStore } from '@/stores/production'
+import { useAuth } from '@/composables/useAuth'
 import LegacyExportDialog from '@/components/production/LegacyExportDialog.vue'
 
 const props = defineProps({
@@ -244,6 +264,7 @@ const props = defineProps({
 
 const router = useRouter()
 const store = useProductionStore()
+const { getAccessToken } = useAuth()
 const showExportDialog = ref(false)
 const isUpdating = ref(false)
 const isUpdatingTier = ref(false)
@@ -408,10 +429,43 @@ async function runAudit() {
   }
 }
 
+// --- Pod lines awaiting proofread -------------------------------------------
+// listening_pod_sentences.target_text_draft, via the course-gated pods door.
+// Surfaced next to Human Recording because that is the person who can clear it
+// and the recording is what it blocks.
+const podDrafts = ref({ total: 0, items: [] })
+const podDraftTotal = computed(() => podDrafts.value.total || 0)
+const podDraftLink = computed(() => {
+  const first = podDrafts.value.items?.[0]
+  return first?.podSlug
+    ? { path: `/production/${props.courseCode}/pods/${first.podSlug}`, query: { drafts: '1' } }
+    : { path: `/production/${props.courseCode}/pods` }
+})
+const targetLanguageName = computed(() =>
+  store.courseInfo?.targetLang || store.courseInfo?.target_lang || 'target-language'
+)
+
+async function loadPodDrafts() {
+  podDrafts.value = { total: 0, items: [] }
+  try {
+    const token = await getAccessToken()
+    const res = await fetch(`${getApiUrl()}/api/production/${props.courseCode}/pods/drafts`, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+    })
+    if (!res.ok) return   // non-fatal — the overview is still correct without it
+    const body = await res.json()
+    podDrafts.value = { total: body.total || 0, items: body.items || [] }
+  } catch { /* non-fatal */ }
+}
+
 onMounted(() => {
   store.loadCourseInfo(props.courseCode)
   loadStats()
   loadQAStats()
+  loadPodDrafts()
 })
 
 watch(() => props.courseCode, () => {
@@ -419,6 +473,7 @@ watch(() => props.courseCode, () => {
   store.loadCourseInfo(props.courseCode)
   loadStats()
   loadQAStats()
+  loadPodDrafts()
 })
 </script>
 
@@ -745,6 +800,44 @@ watch(() => props.courseCode, () => {
   background: transparent;
   border-style: dashed;
 }
+
+/* DRAFT strip — pod lines waiting on a human read. Tungsten, the same identity
+   the record room and the pod pages give the same state. */
+.draft-strip {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 166, 48, 0.08);
+  border: 1px solid var(--color-tungsten, #ffa630);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--color-tungsten, #ffa630);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.draft-strip:hover { background: rgba(255, 166, 48, 0.14); }
+.draft-strip-badge {
+  flex-shrink: 0;
+  background: var(--color-tungsten, #ffa630);
+  color: #1a1a17;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  border-radius: 3px;
+  padding: 0.1rem 0.35rem;
+  margin-top: 0.15rem;
+}
+.draft-strip-text { flex: 1; }
+.draft-strip-arrow { flex-shrink: 0; }
+
+:root[data-theme="light"] .draft-strip {
+  background: #fffbeb;
+  border-color: #b45309;
+  color: #92400e;
+}
+:root[data-theme="light"] .draft-strip-badge { background: #b45309; color: #fff; }
 
 .card-icon {
   width: 36px;

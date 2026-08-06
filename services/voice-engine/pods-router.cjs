@@ -26,6 +26,9 @@
  *                             mirroring the invite-redeem shape, or add this
  *                             course to an existing courses[] — role/voice_id
  *                             of existing users NEVER touched)
+ *   GET /drafts               every pod line whose target text is an unproofread
+ *                             machine DRAFT, course-wide, with the English
+ *                             beside it and who is cast to read it
  *   GET /recording-plan       ?voiceId= → ordered autocue queue with cues,
  *                             glue grouping, explainer queue, estimated minutes
  *
@@ -40,6 +43,7 @@ const express = require('express')
 const { proposeHumanCast } = require('../../tools/pod-voice-colour-n.cjs')
 const {
   EXPLAINER_SPEAKER,
+  castVoiceFor,
   mergePodCast,
   speakerInventory,
   hasGenerationColouring,
@@ -493,6 +497,55 @@ module.exports = function createPodsCastRouter({
     } catch (err) {
       logger.error(`[PodsCast] recording-plan failed for ${courseCode}/${voiceId}:`, err)
       res.status(500).json({ error: 'Failed to build recording plan' })
+    }
+  })
+
+  // ── GET /drafts — the proofreading queue ─────────────────────────────────
+  // Every line in this course's pods whose target text is a machine-written
+  // DRAFT nobody has read yet (listening_pod_sentences.target_text_draft).
+  // The person who proofreads is not necessarily the person who records the
+  // line, so this is course-wide and voice-blind: PATCH /sentence clears the
+  // marker, so an empty list means the course is clean.
+  router.get('/drafts', async (req, res) => {
+    const { courseCode } = req.params
+    try {
+      const db = getDb()
+      const [{ found, voiceConfig }, pods] = await Promise.all([
+        fetchVoiceConfig(db, courseCode),
+        fetchPods(db, courseCode),
+      ])
+      if (!found) return res.status(404).json({ error: `Course ${courseCode} not found` })
+      const podCast = (voiceConfig && voiceConfig.podCast) || {}
+      const podById = new Map(pods.map(p => [p.id, p]))
+      const sentences = await fetchAllSentences(db, pods.map(p => p.id))
+
+      const byPod = {}
+      const items = []
+      for (const s of sentences) {
+        if (s.target_text_draft !== true) continue
+        const pod = podById.get(s.pod_id)
+        byPod[s.pod_id] = (byPod[s.pod_id] || 0) + 1
+        // Who is cast to read it — so a proofreader can see whose session is
+        // blocked by this line, not just that a line is blocked.
+        const entry = castVoiceFor(podCast, s.speaker)
+        items.push({
+          id: s.id,
+          podId: s.pod_id,
+          podSlug: (pod && pod.slug) || null,
+          podTitle: (pod && (pod.title || pod.slug)) || s.pod_id,
+          sceneNumber: s.scene_number,
+          globalOrder: s.global_order,
+          speaker: s.speaker,
+          readBy: (entry && entry.name) || null,
+          targetText: s.target_text,
+          knownText: s.known_text,
+        })
+      }
+      items.sort((a, b) => (a.podId < b.podId ? -1 : a.podId > b.podId ? 1 : (a.globalOrder || 0) - (b.globalOrder || 0)))
+      res.json({ course_code: courseCode, courseCode, total: items.length, byPod, items })
+    } catch (err) {
+      logger.error(`[PodsCast] drafts failed for ${courseCode}:`, err)
+      res.status(500).json({ error: 'Failed to load draft lines' })
     }
   })
 
