@@ -73,6 +73,7 @@ audio-repair — non-destructive course audio repair (propose / preview / accept
   --tails            also run the tail-integrity check (fetches + decodes every clip)
   --max-seed N       restrict to clips reachable from seeds 1..N
   --spend            propose renders for real. WITHOUT IT NOTHING IS BILLED.
+  --concurrency N    queue --tails: clips measured at once (default 8)
   --i-have-listened  required by accept. There is no way to accept without it.
 `
 
@@ -112,11 +113,21 @@ async function cmdQueue () {
     : null
   const tails = !!flags.tails
   if (audioIds) console.log(`\nscoped to seeds 1-${maxSeed}: ${audioIds.length} clip(s) referenced`)
-  if (tails) console.log('tail check ON — one S3 fetch and one decode per clip; this is not instant.')
+  const tailConcurrency = num(flags.concurrency, 8)
+  if (tails) console.log(`tail check ON — one S3 fetch and one decode per clip, ${tailConcurrency} at a time; this is not instant.`)
+  const started = Date.now()
   const out = await core().queue({
     courseCode: COURSE, limit: num(flags.limit, 50), role: str(flags.role),
-    audioIds, tails,
+    audioIds, tails, tailConcurrency,
+    onProgress: tails
+      ? (done, total) => {
+          const rate = done / ((Date.now() - started) / 1000)
+          const eta = Math.round((total - done) / Math.max(rate, 0.01) / 60)
+          process.stderr.write(`\r  measured ${done}/${total} (${rate.toFixed(1)}/s, ~${eta}m left)   `)
+        }
+      : null,
   })
+  if (tails) process.stderr.write('\n')
   console.log(`\naudio-repair queue — ${COURSE}`)
   console.log(`detector: ${out.detector.name}`)
   console.log(`  ${out.detector.precisionNote}`)

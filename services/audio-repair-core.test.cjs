@@ -47,6 +47,10 @@ function makeDb (seed) {
     let headOnly = false
     let wantCount = false
     let selected = null
+    // `range` is real here, not a no-op: queue() pages every read (the courses
+    // in scope have ~50,000 clips and the old unbounded read truncated at
+    // 5,000), so a fake that ignored the window would let a paging bug through.
+    let window = null
 
     const api = {
       select (_cols, opts) {
@@ -61,6 +65,7 @@ function makeDb (seed) {
       lte (col, val) { filters.push([col, val, 'lte']); return api },
       order () { return api },
       limit () { return api },
+      range (from, to) { window = [from, to]; return api },
       insert (rows) { mode = 'insert'; payload = Array.isArray(rows) ? rows : [rows]; return api },
       update (patch) { mode = 'update'; payload = patch; return api },
       delete () { mode = 'delete'; return api },
@@ -76,8 +81,9 @@ function makeDb (seed) {
         return { data: null, error: { message: `injected failure on ${table}.${mode}` }, count: null }
       }
       if (mode === 'select') {
-        const rows = match(tables[table], filters)
+        let rows = match(tables[table], filters)
         if (headOnly || wantCount) return { data: null, error: null, count: rows.length }
+        if (window) rows = rows.slice(window[0], window[1] + 1)
         if (requireOne && rows.length !== 1) {
           return { data: null, error: { message: 'not exactly one row' } }
         }

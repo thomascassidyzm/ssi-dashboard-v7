@@ -856,20 +856,53 @@ function createRepairCore (deps) {
    */
   async function queue ({
     courseCode, limit = 50, role = null, includeUnrendered = false,
-    audioIds = null, tails = false,
+    audioIds = null, tails = false, tailConcurrency = 8, onProgress = null,
   }) {
-    let q = supabase.from('course_audio')
-      .select('id, text, role, voice_id, language, duration_ms, s3_key, audio_revision, lego_id, veracity_pass, veracity_reason, veracity_cer')
-      .eq('course_code', courseCode)
-    if (role) q = q.eq('role', role)
-    if (audioIds) q = q.in('id', audioIds)
-    const { data, error } = await q.limit(5000)
-    if (error) throw new RepairError(`reading course audio: ${error.message}`, 'db_error', 500)
+    // PAGED, deliberately. This used to be a single `.limit(5000)`, which
+    // silently truncated: deu_for_eng has 47,254 rendered clips and fra_for_eng
+    // 51,369, so a whole-course sweep saw barely a tenth of the course and
+    // reported a clean-looking flag rate for the part it never read. A queue
+    // that quietly stops at 5,000 reads as "that is the whole course".
+    const COLUMNS = 'id, text, role, voice_id, language, duration_ms, s3_key, audio_revision, lego_id, veracity_pass, veracity_reason, veracity_cer'
+    const PAGE = 1000
+    const data = []
+    if (audioIds && audioIds.length) {
+      // `.in()` on a huge id list blows the URL length, so chunk the filter too.
+      for (let i = 0; i < audioIds.length; i += PAGE) {
+        const chunk = audioIds.slice(i, i + PAGE)
+        let q = supabase.from('course_audio').select(COLUMNS)
+          .eq('course_code', courseCode).in('id', chunk)
+        if (role) q = q.eq('role', role)
+        const { data: rows, error } = await q.limit(PAGE)
+        if (error) throw new RepairError(`reading course audio: ${error.message}`, 'db_error', 500)
+        data.push(...(rows || []))
+      }
+    } else {
+      for (let from = 0; ; from += PAGE) {
+        let q = supabase.from('course_audio').select(COLUMNS)
+          .eq('course_code', courseCode).order('id', { ascending: true })
+        if (role) q = q.eq('role', role)
+        const { data: rows, error } = await q.range(from, from + PAGE - 1)
+        if (error) throw new RepairError(`reading course audio: ${error.message}`, 'db_error', 500)
+        data.push(...(rows || []))
+        if (!rows || rows.length < PAGE) break
+      }
+    }
 
-    const { data: pend } = await supabase.from('audio_repair_candidates')
-      .select('audio_id, id, duration_ms, status')
-      .eq('course_code', courseCode).eq('status', 'pending')
-    const pendingBy = new Map((pend || []).map(c => [c.audio_id, c]))
+    // Paged for the same reason the clip read is: PostgREST caps an unbounded
+    // select, and a truncated pending list silently re-proposes clips that
+    // already have a candidate waiting for ears.
+    const pend = []
+    for (let from = 0; ; from += PAGE) {
+      const { data: rows } = await supabase.from('audio_repair_candidates')
+        .select('audio_id, id, duration_ms, status')
+        .eq('course_code', courseCode).eq('status', 'pending')
+        .order('id', { ascending: true })
+        .range(from, from + PAGE - 1)
+      pend.push(...(rows || []))
+      if (!rows || rows.length < PAGE) break
+    }
+    const pendingBy = new Map(pend.map(c => [c.audio_id, c]))
 
     // A row with no duration is almost always an UNRENDERED slot, not a
     // damaged clip — a different problem, owned by the missing-audio backlog.
@@ -910,15 +943,30 @@ function createRepairCore (deps) {
       }
       const byId = new Map(scored.map(s => [s.audioId, s]))
       const envelopes = new Map()
-      for (const r of rendered) {
-        try {
-          const { buffer } = await storage.get(r.s3_key)
-          envelopes.set(r.id, await verify.frameDb(buffer))
-        } catch (err) {
-          tailFailures++
-          logger.warn?.(`[repair] tail measure failed for ${r.id}: ${err.message}`)
+      // Concurrent, because this is one S3 GET plus one ffmpeg decode per clip
+      // and the courses in scope are ~50,000 clips each. Serially that is a
+      // day and a half per course; the work is entirely IO- and subprocess-bound
+      // so a small pool turns it into hours. Ordering does not matter here —
+      // every envelope is keyed by id and the verdict pass runs afterwards.
+      let next = 0
+      let done = 0
+      const worker = async () => {
+        for (;;) {
+          const i = next++
+          if (i >= rendered.length) return
+          const r = rendered[i]
+          try {
+            const { buffer } = await storage.get(r.s3_key)
+            envelopes.set(r.id, await verify.frameDb(buffer))
+          } catch (err) {
+            tailFailures++
+            logger.warn?.(`[repair] tail measure failed for ${r.id}: ${err.message}`)
+          }
+          if (onProgress && ++done % 250 === 0) onProgress(done, rendered.length)
         }
       }
+      await Promise.all(Array.from(
+        { length: Math.max(1, Math.min(tailConcurrency, rendered.length)) }, worker))
       // Median chars/sec per role, from this run's own measurements. Pass 1
       // measures with no baseline; pass 2 re-runs the verdict with it.
       const rateByRole = new Map()
