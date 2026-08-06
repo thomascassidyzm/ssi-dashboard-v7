@@ -201,13 +201,54 @@ function buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount = DEFA
 }
 
 /**
+ * Smallest byte count we will accept as a real take. The silent-stub MP3 that
+ * the 2026-06-15 cym_n_for_eng upload wrote is 834 bytes — a frame header, an
+ * Info tag and padding, no speech. Even a half-second take at the lowest
+ * bitrate we master to clears 4 KB, so 2 KB separates "stub" from "short" with
+ * room to spare.
+ */
+const MIN_TAKE_BYTES = 2048
+
+/**
+ * Is this course_audio row a pointer to silence?
+ *
+ * WHY THIS EXISTS. On 2026-06-15 a recording-room upload wrote 27
+ * cym_n_for_eng human takes as the SAME 834-byte silent stub, under 27
+ * different ids and 27 different S3 keys — an upload that failed without
+ * failing. `recorded` used to ask only origin+voice_id, so all 27 counted as
+ * done and the recorder would never have been served them again. The takes are
+ * unrecoverable (no raw/ objects survive; only the empty mastered/ file), so
+ * the only repair is to re-record — which needs the queue to admit they are
+ * missing.
+ *
+ * Bytes, not duration, is the test. 25 of the 27 carry duration_ms NULL, but
+ * two carry a confident 10867 ms and 12251 ms against the same 834 bytes, so a
+ * duration check passes the two worst rows — the ones the player waits twelve
+ * silent seconds for. Conversely a NULL duration on its own means nothing: the
+ * zzz_test pod takes are NULL-duration and 40 KB of real speech.
+ *
+ * Absent columns are treated as unknown rather than empty, so a caller that
+ * has not been taught to select them keeps the old behaviour instead of
+ * silently reporting a whole queue as unrecorded.
+ */
+function isEmptyTake(a) {
+  if (!a) return true
+  const bytes = a.file_size_bytes
+  if (bytes != null && Number(bytes) < MIN_TAKE_BYTES) return true
+  const ms = a.duration_ms
+  if (ms != null && Number(ms) <= 0) return true
+  return false
+}
+
+/**
  * Finalize a plan for the wire: canonical item shape (pinned by
  * pod-recording-plan-contract.test.mjs — drift here rendered empty cue lines,
  * integration map fix #1) + recorded/audioId stamping (fix #2: resume and
  * progress need to know what this voice already recorded).
  *
  * recorded = the sentence's {kind}_audio_id points at a HUMAN course_audio
- * row carrying THIS queue's voiceId. audioId is the current pointer either way
+ * row carrying THIS queue's voiceId, whose bytes are real audio and not the
+ * silent stub (see isEmptyTake). audioId is the current pointer either way
  * (the client echoes it as replacesAudioId provenance on re-records).
  *
  * @param {object} args
@@ -217,7 +258,9 @@ function buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount = DEFA
  * @param {Set<string>} [args.acceptVoiceIds] - voice ids whose takes count as
  *   recorded (the queue's id plus its collapsed-away aliases); defaults to
  *   just voiceId
- * @param {(ids:string[])=>Promise<Array<{id,origin,voice_id}>>} args.fetchAudioRows
+ * @param {(ids:string[])=>Promise<Array<{id,origin,voice_id,duration_ms,file_size_bytes}>>} args.fetchAudioRows
+ *   — select file_size_bytes and duration_ms too, or silent stubs keep counting
+ *   as recorded.
  */
 async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds = null, fetchAudioRows }) {
   const accept = acceptVoiceIds && acceptVoiceIds.size ? acceptVoiceIds : new Set([voiceId])
@@ -238,7 +281,7 @@ async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds 
     const row = rowById.get(it.sentenceId) || {}
     const audioId = row[AUDIO_COL[it.kind]] || null
     const a = audioId ? audioById.get(audioId) : null
-    const isRecorded = !!(a && a.origin === 'human' && accept.has(a.voice_id))
+    const isRecorded = !!(a && a.origin === 'human' && accept.has(a.voice_id) && !isEmptyTake(a))
     if (isRecorded) recorded++
     const isTarget = it.kind === 'target'
     const out = {
@@ -282,6 +325,8 @@ async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds 
 module.exports = {
   DEFAULT_CUE_COUNT,
   finalizeRecordingPlan,
+  isEmptyTake,
+  MIN_TAKE_BYTES,
   estimateSeconds,
   sceneTitleFor,
   groupGlueItems,

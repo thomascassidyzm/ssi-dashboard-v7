@@ -503,7 +503,7 @@ module.exports = function createPodsCastRouter({
           const out = []
           for (let i = 0; i < ids.length; i += 200) {
             const { data, error } = await db.from('course_audio')
-              .select('id, origin, voice_id').in('id', ids.slice(i, i + 200))
+              .select('id, origin, voice_id, duration_ms, file_size_bytes').in('id', ids.slice(i, i + 200))
             if (error) throw new Error(error.message)
             out.push(...(data || []))
           }
