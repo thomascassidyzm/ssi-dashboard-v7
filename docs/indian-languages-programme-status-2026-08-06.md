@@ -100,6 +100,24 @@ Six of the seven `pending` rows describe *completed* work. The queue is over-rep
 
 **Shared audio (per known language) is complete** — encouragement 50/48-required, instruction 48/48, paywall 101, for all ten known languages. Gap: `bookend_listen_intro`/`outro` are absent for **kan, mar, tel** (present for ben, guj, hin, pan, sin, tam, urd). Those are the three `live` courses.
 
+**97,259 orphaned clip rows** — clips that exist in `course_audio` but are referenced by no seed, LEGO or phrase. These are the residue of text edits and revoicing (an edit nulls the link and a new clip is rendered; the old row stays). Not a defect and nothing is broken by them, but it is real storage and it maps the edit history exactly:
+
+| Course | Clip rows | Orphaned | % |
+|---|---|---|---|
+| `eng_for_tam` | 55,618 | 17,378 | 31.2% |
+| `eng_for_sin` | 51,473 | 14,261 | 27.7% |
+| `eng_for_urd` | 47,140 | 11,273 | 23.9% |
+| `eng_for_hin` | 51,279 | 11,967 | 23.3% |
+| `eng_for_guj` | 53,263 | 12,129 | 22.8% |
+| `eng_for_ben` | 49,356 | 11,235 | 22.8% |
+| `eng_for_pan` | 51,248 | 11,468 | 22.4% |
+| `eng_for_tel` | 40,952 | 3,923 | 9.6% |
+| `eng_for_kan` | 44,689 | 3,431 | 7.7% |
+| `eng_for_mar` | 39,373 | 194 | 0.5% |
+| `zho_for_hin`, `zho_for_tam`, `kor_for_hin`, `kor_for_tam` | 157,582 | **0** | 0.0% |
+
+The four non-English courses have **zero** orphans — they were generated once and never revoiced. The seven English courses above 22% are the ones that went through the July text-fix and voice-flip campaigns. Any cleanup needs a deletion plan and approval per the audio doctrine; I have not touched them.
+
 ---
 
 ## Content depth — no course is behind its siblings
