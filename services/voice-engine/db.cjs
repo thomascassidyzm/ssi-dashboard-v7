@@ -15,6 +15,8 @@
  */
 
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
+const { canonicalLanguage, canonicalVoiceId } = require('../shared/clip-identity.cjs')
+const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 
 const PAGE_SIZE = 1000
 
@@ -105,11 +107,19 @@ async function loadSeeds(supabase, courseCode) {
  * A Map (not a Set) so the job can tell "registered from THIS take" apart
  * from "registered from an older take or a splice" — re-records supersede.
  * (.has() keeps working for the splice planner.)
+ *
+ * The voice filter matches EITHER spelling (see clip-identity-lookup.cjs).
+ * This drives "which texts still need recording", so a spelling miss tells the
+ * recordist a text is unrecorded when a take already exists — a wasted human
+ * session, and a second human row on the same text. Widening the read is the
+ * cheap side of that trade: the worst case is correctly reporting a text as
+ * already recorded.
  */
 async function fetchExistingAudioTexts(supabase, { courseCode, role, voiceId }) {
+  const spellings = voiceId ? voiceSpellings(voiceId) : null
   const filters = (q) => {
     q = q.eq('course_code', courseCode).eq('role', role)
-    return voiceId ? q.eq('voice_id', voiceId) : q
+    return spellings ? q.in('voice_id', spellings) : q
   }
   const rows = await fetchAll(
     () => filters(supabase.from('course_audio').select('id', { count: 'exact', head: true })),
@@ -143,16 +153,16 @@ async function fetchAudioRowsForRole(supabase, { courseCode, role }) {
  * manifest spliced ledger (keystone decision 6 — 'splice' origin is a
  * deferred migration).
  */
-async function upsertHumanCourseAudio(supabase, { courseCode, text, language, role, voiceId, s3Key, durationMs }) {
+async function upsertHumanCourseAudio(supabase, { courseCode, text, language, role, voiceId, provider, s3Key, durationMs }) {
   const { data, error } = await supabase
     .from('course_audio')
     .upsert({
       course_code: courseCode,
       text,
       text_normalized: normalizeForAudio(text),
-      language,
+      language: canonicalLanguage(language),
       role,
-      voice_id: voiceId,
+      voice_id: canonicalVoiceId(voiceId, { provider }),
       origin: 'human',
       s3_key: s3Key,
       duration_ms: durationMs ?? null,

@@ -61,6 +61,7 @@
  */
 
 const { normalizeForAudio } = require('./text-normalize.cjs')
+const { tryCanonicalLanguage } = require('./clip-identity.cjs')
 const { pickPreferredAudioRow } = require('./audio-link-preference.cjs')
 const { slotSeverity, shouldFightHardest, SEVERITY } = require('./audio-completeness.cjs')
 
@@ -111,9 +112,30 @@ function candidateLooseText(row) {
   return ''
 }
 
+/**
+ * Compare two language values as IDENTITIES, not as strings.
+ *
+ * A strict `row.language !== language` made this resolver refuse the very rows
+ * it exists to rescue: a row stored 'en-GB' or 'en' is the same English clip as
+ * a slot asking for 'eng', and dropping it means the player gets silence while
+ * a perfectly good take sits in the table — the exact opposite of "always play
+ * what it has".
+ *
+ * Uncanonicalisable values (the 'auto' rows) fall back to raw string equality.
+ * That is not a silent guess: two values that canonicalise to nothing are only
+ * treated as the same slot when they are literally the same string, which is
+ * strictly the old behaviour and never matches two DIFFERENT languages.
+ */
+function sameLanguage(rowLanguage, language) {
+  if (rowLanguage === language) return true
+  const a = tryCanonicalLanguage(rowLanguage)
+  const b = tryCanonicalLanguage(language)
+  return a != null && b != null && a === b
+}
+
 function sameSlot(row, language, role, courseCode) {
   if (!row) return false
-  if (language != null && row.language != null && row.language !== language) return false
+  if (language != null && row.language != null && !sameLanguage(row.language, language)) return false
   if (role != null && row.role != null && row.role !== role) return false
   // course_code is normally pre-filtered by the caller's query; enforce it only
   // when both sides actually carry it.

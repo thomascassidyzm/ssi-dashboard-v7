@@ -45,6 +45,7 @@ const { createClient } = require('@supabase/supabase-js')
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const audioProcessor = require('../services/audio-processor.cjs')
 const { CHILD_VOICE_IDS } = require('../services/tts-service.cjs')
+const { canonicalVoiceId, tryCanonicalVoiceId } = require('../services/shared/clip-identity.cjs')
 const { isHumanVoiceCourse } = require('../services/shared/human-voice-courses.cjs')
 
 const argCourse = process.argv[2]
@@ -93,16 +94,62 @@ function knownSentences(text) {
   return String(text || '').split(SENTENCE_SPLIT).map((x) => x.trim()).filter(Boolean)
 }
 
+/**
+ * The spelling this tool hands to generatePodAudio, which uses the one field
+ * BOTH to call the provider and to write course_audio.voice_id.
+ *
+ * Azure: tts-service.cjs strips a leading `azure_` before the SSML request, so
+ * the canonical prefixed form renders identically and the row lands canonical.
+ * Anything else (xAI, ElevenLabs) receives the id verbatim, so a prefix would
+ * be sent to the provider and fail — those keep the provider-native id and say
+ * so, rather than trading a live render for a tidier column.
+ */
+function storedKnownVoiceId(rawVoiceId, provider) {
+  const native = String(rawVoiceId).replace(/^azure_/, '')
+  if (provider === 'azure') return canonicalVoiceId(native, { provider })
+  console.log(`  note: known voice "${native}" (provider=${provider}) written in its provider-native spelling — ` +
+    'generatePodAudio passes this field straight to the provider, which rejects a prefix')
+  return native
+}
+
+/** Both spellings of a voice id, for selection — a prefixed twin is otherwise invisible. */
+function voiceIdSpellings(ids) {
+  const out = new Set()
+  for (const id of ids) {
+    out.add(id)
+    const canonical = tryCanonicalVoiceId(id)
+    if (canonical) out.add(canonical)
+  }
+  return [...out]
+}
+
+/** Every spelling of every child voice — the selection set for this whole tool. */
+const CHILD_VOICE_ID_SPELLINGS = voiceIdSpellings(CHILD_VOICE_IDS)
+const CHILD_VOICE_ID_SET = new Set(CHILD_VOICE_ID_SPELLINGS)
+
+/** A cast entry's voice, under either spelling. */
+function isChildVoice(voiceId) {
+  return CHILD_VOICE_ID_SET.has(voiceId) || CHILD_VOICE_ID_SET.has(tryCanonicalVoiceId(voiceId))
+}
+
 async function courseContext(course) {
   const { data, error } = await supabase
     .from('courses').select('known_lang, target_lang, voice_config').eq('course_code', course).single()
   if (error) throw new Error(`course ${course}: ${error.message}`)
   const kv = data.voice_config?.voices?.known || {}
+  const provider = kv.provider || 'azure'
   return {
     knownLang: data.known_lang,
     coreKnownVoice: {
-      provider: kv.provider || 'azure',
-      voice_id: (kv.voiceId || kv.voice_id || 'en-GB-SoniaNeural').replace(/^azure_/, ''),
+      provider,
+      // This used to `.replace(/^azure_/, '')` — a strip-then-persist that took
+      // a correctly-prefixed config value and wrote the bare spelling into
+      // course_audio, making this the clearest single bare-row producer in the
+      // repo. It stores the canonical form instead. Safe for Azure because
+      // tts-service.cjs strips the `azure_` prefix before the SSML request; for
+      // any other provider the id goes to the provider verbatim, so the native
+      // spelling is kept and the drift is reported rather than risked.
+      voice_id: storedKnownVoiceId(kv.voiceId || kv.voice_id || 'en-GB-SoniaNeural', provider),
       locale: kv.language || null,
     },
     voiceConfig: data.voice_config || {},
@@ -124,11 +171,11 @@ async function rescueCourse(course, log) {
     const speakers = pod.speakers || {}
     const changed = []
     for (const [name, entry] of Object.entries(speakers)) {
-      if (entry?.known?.voice_id && CHILD_VOICE_IDS.has(entry.known.voice_id)) {
+      if (entry?.known?.voice_id && isChildVoice(entry.known.voice_id)) {
         changed.push(`${name}: ${entry.known.voice_id} → ${TOM_CLONE_KNOWN.voice_id}`)
         entry.known = { ...TOM_CLONE_KNOWN }
       }
-      if (entry?.target?.voice_id && CHILD_VOICE_IDS.has(entry.target.voice_id)) {
+      if (entry?.target?.voice_id && isChildVoice(entry.target.voice_id)) {
         console.log(`  ⚠ ${pod.id} "${name}" TARGET voice is a child voice — not auto-fixed, needs a target recast`)
         log.targetChildVoices.push({ pod: pod.id, speaker: name, voice_id: entry.target.voice_id })
       }
@@ -146,7 +193,7 @@ async function rescueCourse(course, log) {
   // ---- 2. find reachable child-voice clips ---------------------------------
   const { data: badRows, error: badErr } = await supabase
     .from('course_audio').select('*').eq('course_code', course)
-    .in('voice_id', [...CHILD_VOICE_IDS])
+    .in('voice_id', CHILD_VOICE_ID_SPELLINGS)
   if (badErr) throw new Error(badErr.message)
   if (!badRows?.length) { console.log('  no child-voice clips'); return }
   const badIds = badRows.map((r) => r.id)
@@ -306,7 +353,7 @@ async function rescueCourse(course, log) {
   let courses
   if (argCourse === '--all') {
     const { data, error } = await supabase.from('course_audio')
-      .select('course_code').in('voice_id', [...CHILD_VOICE_IDS])
+      .select('course_code').in('voice_id', CHILD_VOICE_ID_SPELLINGS)
     if (error) { console.error(error.message); process.exit(1) }
     courses = [...new Set((data || []).map((r) => r.course_code))].sort()
   } else {
