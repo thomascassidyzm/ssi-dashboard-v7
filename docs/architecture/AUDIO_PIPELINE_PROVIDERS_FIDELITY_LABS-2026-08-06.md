@@ -21,6 +21,18 @@ and §4 shows that neither of those two columns is canonical in the live estate.
 One correction to the brief that sent me: the pod voice catalogues are at `tools/pod-voices-xai.json`
 and `tools/pod-voices-azure.json`, not under `services/`.
 
+**Where this is heading, stated up front, because it changes what the strategy is for.** The long-term
+destination is **SSi staff clones on xAI** — real people on the team, cloned, used **multilingually
+wherever the clone is capable** — rather than stock provider voices. Tom's own clone is
+`gfzdpspr5fdp` and he has heard it hold up in several non-English languages. Everything below is
+designed toward that destination, not weighing it up. §3 gives VOICELAB a named first experiment to
+establish where that one voice holds and where it does not.
+
+*What it means for the product that a learner hears a specific human being — identity, consent,
+longevity — is a wider question, and a separate frame-think has been commissioned on it. This
+document is the concrete process and lab design; it will be checked against that frame-think when it
+lands.*
+
 ---
 
 ## 1 · Providers — xAI-first, and where the exceptions actually live
@@ -93,7 +105,79 @@ back from xAI to Azure is a human decision today, taken by editing a voice confi
 precisely the drift §4 is cleaning up — but it should be *stated* as the policy rather than left as
 an accident of the code.
 
+### Staff clones — the destination, and what the estate already shows
+
+The strategy above describes stock voices. The destination is not stock voices, and the estate is
+further along that road than anyone has written down.
+
+**Tom's clone is already 11.7% of all audio in the system.** `gfzdpspr5fdp` carries **295,193** of the
+2,532,679 rows in `course_audio` — the known side of **48 courses**, `target2` on 19, presentation on
+18, and the fine-known pod track on 38. A staff clone is not a future shape; it is already the single
+most-used voice in the estate by a wide margin, against **274** distinct canonical voices in total.
+
+**And it has already been used multilingually — in production, for three days, unmeasured.** Between
+2026-06-08 and 2026-06-10 the clone rendered **4,686 non-English clips across 11 non-English base
+languages** — `fr zh it de es ja tr hi ar pt ko` — all on the `pod_explainer` role. German and French
+account for **1,126** of them (465 German, 661 French).
+
+Two things about that corpus, and the second one is the important one.
+
+**It is free to audition.** Those clips exist. Under content addressing an identity that already
+exists costs nothing to hear. The first evidence about clone multilingual capability can be gathered
+without rendering a single second of new TTS.
+
+**It is not the experiment.** I sampled the text and it is **code-switched**, not monolingual — an
+Arabic phrase followed by its English gloss, in one clip, in one voice:
+
+> `"شكراً جزيلاً". means thank you very much. "بارك الله فيك". means may God bless you.`
+
+So the `language` column says `ar`, and the clip is mostly English. Checked directly: **there are zero
+clips where the clone carries a monolingual non-English role** — no `target1`, no `target2`, no
+`known`, no `presentation` in any non-English language. The clone has never once been asked to speak
+a whole German or French course sentence.
+
+That is the honest position, and it is a good one to start from: **the existing corpus is a harder
+task than the experiment** — code-switching mid-clip is more demanding of a voice than sustained
+monolingual speech — **but it is not the same task**, and it has never been assessed. It is the
+warm-up, not the verdict.
+
 ### The ladder, stated
+
+**Voice selection — clone-first, and how the gap gets filled.** This is the ladder that decides *which
+voice a side declares*, and it runs once per course side in VOICELAB, not per render:
+
+1. **A staff clone proven capable in this language.** The default, and the destination.
+2. **Another staff clone proven capable in this language.** A different colleague's voice is still an
+   SSi person and still the intended shape. Preferred over any stock voice.
+3. **An xAI stock voice** — the per-language named voices, or one of the five multilingual voices
+   (`ara`, `eve`, `leo`, `rex`, `sal`). This is where German and French sit *today* (`ara`/`leo`/`eve`).
+4. **Azure** — only for the 25 languages xAI does not cover and the four regional variants it has no
+   voice for. `de-AT` is the live example, and no amount of cloning changes it: an Austrian-German
+   staff clone would need an Austrian-German speaker on the team.
+
+**"Proven capable" has to mean something measurable, or step 1 becomes taste wearing a lab coat.** The
+proposed capability verdict per `(clone, language)` — all four already computable from machinery in
+this document:
+
+- **Phonology pass rate.** Fraction of takes whose detected spoken language is the steered language,
+  measured by the gate already at `tts-service.cjs:554-631`. This is the sharp one: it is exactly the
+  failure mode a clone is most likely to have, since a clone of an English speaker is by construction
+  English-dominant. **A clone below the bar here fails, whatever it sounds like.**
+- **Speaking rate sanity.** Syllables per second of speech span against the language's own norm. A
+  voice struggling in a language runs slow and hesitant, or fast and slurred.
+- **Consistency against the same clone's English.** Pitch centre and spread from §2. A clone that
+  shifts register when it changes language is doing an impression, not speaking.
+- **A blind A/B against the incumbent stock voice**, on real course sentences. Tom's ear, made
+  cheap and repeatable — the only one of the four that is a taste call, and it goes last, after the
+  three measurements have already eliminated the voices that cannot pass.
+
+The first three are automatic and produce a shortlist. The fourth is the decision. **That is what "on
+evidence rather than taste" means here — not that taste is removed, but that taste is spent only on
+candidates that have already passed.**
+
+### The render-time ladder
+
+Once a side has declared its voice, generation does not get a vote:
 
 1. **Render on the course side's declared voice.** One voice per side, no exceptions, no silent
    substitution.
@@ -292,6 +376,59 @@ side stayed one person, and did last month's re-render match last year's.*
 Job 4 is the one that makes it a lab rather than a picker, and it is the one built from `vadProsody.js`
 with the sign flipped.
 
+### Experiment 0 — can Tom's clone carry German and French?
+
+**This is the bench's day-one job, and VOICELAB should be designed so it is the obvious thing to do
+first rather than something you could do if you configured it right.** One voice — `gfzdpspr5fdp` —
+across the languages in play, German and French first because they are the two test cases, and a
+verdict you can freeze into a config.
+
+It runs in three phases, and **the first two cost nothing**, which is the whole point of designing it
+this way:
+
+**Phase A · Audition what already exists — zero spend, available immediately.** The 1,126 German and
+French clone clips from June are sitting in the estate. Play them. They are code-switched explainers
+rather than course sentences, so they cannot give a verdict — but they can give a *refutation*: if the
+clone's German phonology is visibly wrong in material we already own, the experiment stops here and
+has cost nothing. Run the phonology gate over them retrospectively for a first number, and note the
+known limit — on a code-switched clip, "detected language: English" is the correct answer, so this
+phase needs the gate pointed at the non-English spans, not the whole clip. **Where phase A is
+unmeasurable, it is still audible, and Tom's ear on ten clips is a legitimate stopping test.**
+
+**Phase B · Compare against the incumbents, still zero spend.** German is currently `ara` and `leo`;
+French is `eve`. Those sides hold **28,037** and **14,706** clips. So for any course sentence, the
+incumbent take already exists and is free to play. The bench lines them up side by side on identical
+text. Half of every A/B is already paid for.
+
+**Phase C · The actual test — and this needs Tom's approval on a shown plan, because it renders.**
+The smallest render that answers the question: **the clone speaking whole German and French course
+sentences as a course voice**, which has never happened. Proposed shape — and this is a proposal, not
+a plan being executed:
+
+- **Sentence set: 40 per language.** Drawn from real `deu_for_eng` and `fra_for_eng` seeds, stratified
+  deliberately — short fragments where TTS is worst, long sentences where prosody shows, and the
+  phonologically awkward ones each language has (German final devoicing and `ch`, French liaison and
+  nasal vowels). Not a demo reel: the material the learner actually hears, chosen to be hard.
+- **80 clips total.** Both languages. Against 28,037 existing German clips this is a rounding error,
+  and it is the smallest set that can carry a verdict.
+- **Every clip passes the full §2 gate stack**, so the experiment produces measurements and not just
+  impressions — phonology pass rate, speaking rate, pitch consistency against the clone's own English.
+- **Then the blind A/B** against `ara`, `leo` and `eve` on the identical sentences, with the incumbent
+  side free from phase B.
+- **Output: a frozen, versioned capability verdict per `(gfzdpspr5fdp, language)`** — hold, or does not
+  hold, with the four numbers and the sentences behind it. That verdict is what a course side's voice
+  declaration then cites.
+
+**The cost is 80 clips and it renders nothing until Tom says go.** Standing rule respected: this
+document designs the experiment and does not run it.
+
+**Why the design generalises.** Nothing in phases A–C is specific to Tom or to German. Swap the voice
+id and the language and it is the capability test for any staff clone in any language — which is what
+turns "SSi staff clones, used multilingually" from an aspiration into a process with an entry gate.
+Run it once per `(clone, language)` pair and the result is a capability matrix: which of our people
+can carry which languages, on evidence. **That matrix is the actual asset VOICELAB produces**, and
+nothing in the estate can produce it today.
+
 **What it reuses**: `algorithmConfigShared.js` for the config layer, `vadProsody.js` for the extraction
 and comparison, `VadLab.vue`'s recording and playback UI as the pattern, the pod voice catalogues as
 the candidate list, `services/voice-discovery-service.cjs` for enumeration. It is a fifth entry on
@@ -389,6 +526,36 @@ is *permitted*, and something downstream picks. Every "the store looked right bu
 old one" bug lives in that gap. **Declaring one voice per side is what closes it** — not the hash, not
 the gate. The hash makes the fix audible; the declaration makes the ambiguity impossible.
 
+### What a multilingual staff clone does to the store
+
+Under the settled identity `(language, normalised text, voice)`, a clone used multilingually is **one
+voice id appearing across many language values**. Three consequences, and the third is a warning.
+
+**Dedup gets better, not worse.** The identity key does not care that one voice spans languages — it
+keys on all three fields, so the clone speaking German and the clone speaking English are different
+identities and always were. What improves is *convergence*: the fewer distinct voices the estate uses,
+the more course sides land on the same `(language, text, voice)` triple and share an object. The clone
+already demonstrates this — it is the known-side voice of **48 courses**, so every English sentence
+those 48 courses share is already one identity rather than 48. A staff-clone estate is a
+*more* deduplicated estate, and the 236,908 saving in the store design is a floor, not a ceiling.
+
+**Declaration gets simpler.** A course side declares a voice id; the language comes from the side, not
+from the voice. So a multilingual clone needs no special representation at all — `deu_for_eng`
+target1 declaring `gfzdpspr5fdp` and `fra_for_eng` target1 declaring `gfzdpspr5fdp` are two ordinary
+declarations that happen to name the same person. **The only new thing is the capability gate**: a
+side may not declare a clone for a language where that `(clone, language)` pair has no passing verdict
+from Experiment 0. That is one check at declaration time, and it is the entire mechanism by which
+"wherever the clone is capable" stops being a hope.
+
+**And the warning: multilingual clones multiply the canonicalisation bug below.** A stock voice used
+in one language can only fragment across that language's code variants. A clone used across eleven
+languages fragments across all of them at once. The evidence is on Tom's own voice, right now: the
+clone's English clips are split across **three** language values — `eng` (239,866), `en` (42,558) and
+`en-GB` (236) — for one voice speaking one language. Estate-wide there are **132 distinct values** in
+`course_audio.language` for something on the order of forty real languages. The more multilingual the
+voices become, the more that costs, which makes the next section a prerequisite for the staff-clone
+strategy rather than a tidy-up alongside it.
+
 ### A second fragmentation the identity key needs to survive
 
 `course_audio.language` is not canonical either. German rows carry `deu`, `de` and `de-DE`; English
@@ -482,6 +649,11 @@ German is where the diagnosis was earned, and running the two together means a m
    a recommendation on which languages xAI is genuinely good at, because I have no data.** VOICELAB
    job 2 is the instrument that would produce it, and until it exists, xAI-first outside German,
    French, English and Italian is an assumption rather than a finding.
+6a. **Experiment 0, phase C — 80 clips, awaiting approval.** The clone has never spoken a monolingual
+   non-English course sentence, so the capability question cannot be answered from existing audio.
+   **Recommendation: approve it, but only after phase A.** Phases A and B cost nothing and can refute
+   the whole thing on material we already own; spending 80 clips before listening to the 1,126 we have
+   is spending money to learn something that might be free.
 7. **`XAI_OFFICIAL` (17) versus the catalogue (20).** **Recommendation: read the catalogue.** One
    list, and it is the one that carries the voice ids.
 
