@@ -280,6 +280,72 @@ has ~30 sibling clips; **two** were repaired. Revision 1 means *never examined* 
 
 ---
 
+## Measured damage — the ASR scan, and what the byte tests cannot do
+
+### `duration_ms` is corrupted evidence. Do not audit with it.
+
+Whatever rewrote the audio also rewrote `duration_ms`, so the DB agrees with the damaged
+object and no duration/size arithmetic can see this defect. The blast-radius worker proved
+it against ground truth: a duration-inversion detector catches **0 of 93** ear-confirmed
+truncated clips at every threshold, and `ffprobe` of 15 of them shows `duration_ms`
+agreeing with the *live damaged object* 15/15. Treat `duration_ms` as untrustworthy in any
+future audit. My own earlier scratch script `probe-duration.cjs` had exactly this flaw; the
+worked example above does **not** — its 4176 ms comes from `content_audit_log.old_row`,
+which records the value as it stood on 08-03, not the post-repair value.
+
+**Consequence:** scope must be set by **listening**, never by byte arithmetic.
+
+### Estate-wide in-place truncation on live clips: zero
+
+Full bucket enumeration — 5,048,251 keys, 7,388,425 versions, 0 null version IDs
+(versioning never suspended). 19,278 currently-linked objects shrank in place, all in the
+May/June clusters, and 348 ffprobe'd version pairs show these are **duration-preserving
+re-encodes** (VBR ~100–120 kbps → 96 kbps CBR); 0 of 300 lost a millisecond. Real
+truncation events exist further back (Dec 2025, Feb 2026) but every key they damaged is now
+unlinked. A naïve byte reading would have reported 5,113 truncations in the May event;
+ffprobe says none are real.
+
+**The 08-03 damage is invisible to version history**, because it wrote *fresh objects*: 91
+of the 93 ear-confirmed clips have exactly one version, dated 08-03, no delete markers. The
+prior audio is unrecoverable.
+
+### Exposure, measured rather than estimated
+
+**404,299 live clips (15.89% of the estate) point at an object that did not exist when their
+row was created** — 203,773 of them written on 08-03 alone. All `origin=tts`. `kor_for_hin`
+100%, `deu_for_eng` 90.14%, and **83 course codes at 0%**. It selected on course and voice
+(overwhelmingly the `xai_*` and in-house families), **not** on role — known/target1/target2
+split near-evenly. This supersedes the ~490k estimate earlier in this document.
+
+### The measured truncation rate — and the correction that matters
+
+`tools/audio-word-loss-scan.cjs` ASR-scanned 600 deu_for_eng clips:
+**93 truncated, 15.5%.** Split by whether the object was written after its row
+(independently replicated by me):
+
+| population | n | truncated | rate |
+|---|---:|---:|---:|
+| object rewritten after row creation | 443 | 77 | **17.4%** |
+| never rewritten | 157 | 16 | **10.2%** |
+
+The worker read the ~10% baseline as the tail-cutting code "shipping damage on the ordinary
+render path too", and concluded it should be fixed before more audio is generated. **The
+first half is right; the conclusion needs correcting.** Dating those 16 never-rewritten
+truncated clips by row creation:
+
+- **13 of 16 were created 2026-08-04** — inside the `repairTailDefect` window.
+- Only **3** predate it (2026-06-08, 06-10).
+
+So the baseline is not a separate, older, still-live defect. It is the *same* mechanism
+caught on the first-render path rather than the rewrite path — which is exactly what
+"born amputated" predicts. Both paths ran through `repairTailDefect`, and both are closed:
+the function is deleted and merged to `main`, and the deployed checkout confirms it.
+
+The 3 June clips are genuine unexplained residue — too few to characterise, and plausibly
+ASR false positives. Worth a look, not an alarm.
+
+---
+
 ## Confidence, and the gaps
 
 **High confidence** on: the mechanism, the exposure window, the fact the path is deleted
