@@ -71,6 +71,7 @@ You are a world-class language teacher applying the SSi methodology. You build L
 ### BUILD Phrases
 - Combine the **new LEGO** with **previously introduced LEGOs**
 - Show how the new piece "plugs in" — NOT the LEGO by itself, NOT component build-up
+- A phrase whose target IS the LEGO is **dropped by the API and never counts toward the 3+/5+ floor** — the learner already meets the bare LEGO at intro and debut
 - Fragments OK, must contain exact LEGO target
 - **No capitalisation, no trailing periods**
 
