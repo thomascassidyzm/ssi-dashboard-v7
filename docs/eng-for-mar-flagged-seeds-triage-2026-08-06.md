@@ -299,3 +299,40 @@ document and its query scripts are the only artefacts; the scripts live in the g
    (`queue-audio-pass.cjs`). Editing in place silences live slots.
 4. Separately: give `flagged_at` a reason field. This whole document exists because a timestamp
    cannot say why.
+
+---
+
+## Addendum — the course-wide sweep came back, and I cut its number by two thirds
+
+The read-only English proofread of the other 650 seeds finished. It reported **568 bad-English
+phrases across 218 seeds**. **I do not think that number is right, and I am not passing it on.**
+
+**64% of its findings (377 of 586) are the tag `in English`, and that tag is the drill format, not
+a defect.** Measured: `in English` appears in **719 phrases across 270 of the 668 seeds**,
+concentrated in fixed template slots — U02 (234), B02 (136), B03 (100). That is a generated slot
+that says *"…now say it in English"*, and it attaches to a bare fragment by design. Its findings
+include *"last month in English"*, *"a few words in English"*, *"to stop in English"*,
+*"difficult in English"* — all of which are ordinary course content. The same construction appears
+on the 18 flagged seeds (*"before the weekend in English"*, *"me to tell you in English"*) and I
+did **not** flag it there.
+
+The sweep's own report named this bucket as its least rigorous — classifier-built and spot-checked
+rather than hand-read, with a self-estimated 5–10% false-positive rate. The true rate is far
+higher; I judge the bucket close to entirely false.
+
+**What survives: 209 findings on the other four tags** — `very well`, `not sure`, `yet`,
+`already`. Those were hand-reviewed, and the sample I checked is solidly right and matches the
+defect class confirmed on the 18:
+
+> for the council very well · no thank you already · their new baby yet · he was an old friend of
+> my father very well · I'm not sure too busy today · have you heard very well? · I need to learn
+> yet · can you tell me something else very well?
+
+So the revised course-wide figure is **~209 broken phrases, not 568** — still roughly six times
+the 35 found on the flagged seeds, and still a real course-wide defect worth acting on.
+
+**The "60 LEGOs would drop below 4 USE phrases if deleted" figure is void**, because it was
+computed over the inflated set. It needs recomputing against the 209 before it means anything.
+
+Unchanged by this: the defect is real, it is course-wide, and deletion is still the wrong repair
+for the same reason as before.
