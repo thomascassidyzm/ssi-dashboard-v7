@@ -29,7 +29,7 @@ const fs = require('fs-extra')
 const path = require('path')
 const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
-const { normalizeForAudio } = require('../shared/text-normalize.cjs')
+const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { pickPreferredAudioRow } = require('../shared/audio-link-preference.cjs')
 const { decideCopy } = require('../shared/clone-copy-match.cjs')
 const { buildSourceIndex } = require('../shared/clone-copy-index.cjs')
@@ -233,7 +233,16 @@ async function getExistingAudioSet(courseCode) {
 // transient DB error fails the clip instead of silently clobbering (fail-closed).
 // Returns the human row if one occupies the key, else null.
 // =============================================================================
+// Callers pass normalizeForAudio(text). That is NOT how the row is stored: the
+// DB trigger rewrites text_normalized with normalize_text(), which also strips
+// a trailing '?'. So an .eq() on the JS form could not see any question-ending
+// human recording written since March 2026 — 5,090 of them as of 2026-08-06 —
+// and the guard returned null, letting the upsert below flip a human take to
+// TTS. The guard now matches EITHER stored convention (see
+// services/shared/text-normalize.cjs). Widening what the guard can see is
+// strictly more protective: a false positive only skips a TTS render.
 async function humanRowAtAudioKey(courseCode, textNormalized, language, role, voiceId) {
+  const keys = audioKeyCandidates(textNormalized)
   // Transient undici "TypeError: fetch failed" blips during 8-hour batch runs
   // were failing ~0.04% of clips AFTER the TTS money was already spent
   // (2026-07-28 batch audit). Retry the read a few times before failing the
@@ -245,14 +254,17 @@ async function humanRowAtAudioKey(courseCode, textNormalized, language, role, vo
         .from('course_audio')
         .select('*')
         .eq('course_code', courseCode)
-        .eq('text_normalized', textNormalized)
+        .in('text_normalized', keys)
         .eq('language', language)
         .eq('role', role)
         .eq('voice_id', voiceId)
         .eq('origin', 'human')
-        .maybeSingle()
       if (error) throw new Error(error.message)
-      return data || null
+      // Both conventions can hold a row for the same text, so this is a list,
+      // not maybeSingle(). Any human row here means "precious audio occupies
+      // this key" — pick deterministically for a stable log line and rebind.
+      if (!data || !data.length) return null
+      return data.reduce((best, row) => pickPreferredAudioRow(best, row), null)
     } catch (e) {
       lastError = e
       if (attempt < 3) await new Promise(r => setTimeout(r, attempt * 500))
