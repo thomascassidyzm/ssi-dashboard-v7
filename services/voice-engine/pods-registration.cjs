@@ -38,6 +38,8 @@
  */
 
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
+const { canonicalLanguage, canonicalVoiceId } = require('../shared/clip-identity.cjs')
+const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 
 // recon §1: the EXACT role strings phase8's pod generator writes. Do not invent.
 const POD_KIND_ROLES = Object.freeze({
@@ -234,18 +236,27 @@ async function preparePodRegistration({ supabase, courseCode, metadata = {}, log
  */
 async function commitPodRegistration({ supabase, courseCode, context, s3Key, durationMs = null, fileSizeBytes = null, logger = console }) {
   const textNormalized = normalizeForAudio(context.text)
+  const language = canonicalLanguage(context.language)
+  const voiceId = canonicalVoiceId(context.voiceId, { provider: context.provider })
 
   // Reversibility: if a row already occupies this exact 5-column key, the
   // upsert below repoints it — capture its current s3_key first so provenance
   // can record where the previous take lives.
+  //
+  // The lookup is deliberately WIDER than the write. The write now stores the
+  // canonical voice spelling, but a take recorded before this change is sitting
+  // under the raw one; asking only for the canonical form would find nothing,
+  // report "no prior take", and lose the replaced s3_key — which is exactly the
+  // reversibility leg of make-before-break going quietly missing. So the read
+  // reaches both spellings and the write still narrows to one.
   const { data: priorRows, error: priorErr } = await supabase
     .from('course_audio')
     .select('id, s3_key, origin')
     .eq('course_code', courseCode)
     .eq('text_normalized', textNormalized)
-    .eq('language', context.language)
+    .eq('language', language)
     .eq('role', context.role)
-    .eq('voice_id', context.voiceId)
+    .in('voice_id', voiceSpellings(context.voiceId, { provider: context.provider }))
     .limit(1)
   if (priorErr) throw new Error(`pod registration prior-row lookup failed: ${priorErr.message}`)
   const priorRow = priorRows && priorRows[0] ? priorRows[0] : null
@@ -254,9 +265,9 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
     course_code: courseCode,
     text: context.text,
     text_normalized: textNormalized,
-    language: context.language,
+    language,
     role: context.role,
-    voice_id: context.voiceId,
+    voice_id: voiceId,
     origin: 'human',
     s3_key: s3Key,
   }
@@ -279,9 +290,23 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
   if (linkErr) throw new Error(`pod sentence link failed: ${linkErr.message}`)
 
   const repointedExistingRow = !!(priorRow && priorRow.id === audioRow.id)
+
+  // A prior take found under the OTHER voice spelling cannot be repointed by
+  // the upsert — its conflict key differs, so the new take lands as a fresh
+  // row. That is the make-before-break-safe outcome (the old take still exists
+  // at its own s3_key, nothing was overwritten) but the sentence FK has moved
+  // off it, so say so rather than let it become a silent orphan.
+  if (priorRow && !repointedExistingRow) {
+    logger.log(
+      `[PodRecording] WARNING: prior take ${priorRow.id} (${priorRow.s3_key}) matched on a ` +
+      `different voice spelling than the canonical ${voiceId} now written, so it was NOT ` +
+      `repointed — the new take is row ${audioRow.id} and the old row survives, unlinked.`
+    )
+  }
+
   logger.log(
     `[PodRecording] ${context.sentenceId} ${context.kind} → course_audio ${audioRow.id} ` +
-    `(role=${context.role}, voice=${context.voiceId}, origin=human` +
+    `(role=${context.role}, voice=${voiceId}, origin=human` +
     `${repointedExistingRow ? `, repointed ${priorRow.s3_key} -> ${s3Key}` : ''}` +
     `${context.replacedAudioId && context.replacedAudioId !== audioRow.id ? `, replaces ${context.replacedAudioId}` : ''})`
   )

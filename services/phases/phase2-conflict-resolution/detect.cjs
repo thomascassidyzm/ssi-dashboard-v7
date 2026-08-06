@@ -17,6 +17,8 @@ const { createClient } = require('@supabase/supabase-js')
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 const { v4: uuidv4 } = require('uuid')
+const { canonicalLanguage, canonicalVoiceId } = require('../../shared/clip-identity.cjs')
+const { normalizeForDb } = require('../../shared/text-normalize.cjs')
 
 // Language name mapping for presentation text
 const LANG_NAMES = {
@@ -52,7 +54,10 @@ async function generatePresentationTexts(courseCode) {
   const targetLangName = LANG_NAMES[course.target_lang] || course.target_lang
   const fullTemplate = "The {target_lang_name} for — '{known}' — as in — '{seed}' — is:"
   const shortTemplate = "The {target_lang_name} for — '{known}' — is:"
-  const voiceId = course.voice_config?.presentation || 'azure_en-GB-SoniaNeural'
+  // voice_config.presentation is the flat legacy string and its shape is
+  // unconstrained, so canonicalise rather than trust it.
+  const voiceId = canonicalVoiceId(course.voice_config?.presentation || 'azure_en-GB-SoniaNeural')
+  const language = canonicalLanguage(course.known_lang)
 
   // Get all NEW LEGOs with their seed context
   const { data: legos, error: legosError } = await supabase
@@ -97,8 +102,14 @@ async function generatePresentationTexts(courseCode) {
     return {
       course_code: courseCode,
       text: presText,
-      text_normalized: presText.toLowerCase().trim(),
-      language: course.known_lang,
+      // normalizeForDb, not a fourth local rule. `presText.toLowerCase().trim()`
+      // strips no terminal punctuation, while the course_audio trigger writes
+      // rtrim(lower(trim(t)), '.?!¿¡。？！') over the top of whatever is supplied —
+      // so the value this row was upserted WITH and the value it ends up
+      // STORED with differed, and the onConflict key below was matched on the
+      // wrong string. normalizeForDb is byte-identical to the trigger.
+      text_normalized: normalizeForDb(presText),
+      language,
       role: 'presentation',
       voice_id: voiceId,
       origin: 'tts',

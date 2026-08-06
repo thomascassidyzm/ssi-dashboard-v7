@@ -233,3 +233,78 @@ describe('fight hardest for LEGOs', () => {
     expect(r.severity).toBe('none')
   })
 })
+
+// ── canonical language comparison ───────────────────────────────────────────
+// sameSlot() used to do a strict `row.language !== language`, which made this
+// resolver discard the very rows it exists to rescue: a take stored 'en-GB' is
+// the same English clip a slot asking for 'eng' needs, and dropping it means
+// the player gets silence while a good take sits in the table.
+describe('resolveAudio — language is compared as an identity, not a string', () => {
+  it('matches a candidate stored under a different spelling of the same language', () => {
+    const candidate = clip({ id: 'C', language: 'en-GB' })
+    const r = resolveAudio({
+      linkedRow: null,
+      candidates: [candidate],
+      text: 'hello',
+      language: 'eng',
+      role: 'known'
+    })
+    expect(r.audioId).toBe('C')
+    expect(r.tier).toBe('preferred-match')
+  })
+
+  it('matches in the other direction too (slot BCP-47, row ISO-3)', () => {
+    const r = resolveAudio({
+      linkedRow: null,
+      candidates: [clip({ id: 'C', language: 'eng' })],
+      text: 'hello',
+      language: 'en-GB',
+      role: 'known'
+    })
+    expect(r.audioId).toBe('C')
+  })
+
+  it('ignores region — a fr-CA row satisfies a fra slot, the voice carries the accent', () => {
+    const r = resolveAudio({
+      linkedRow: null,
+      candidates: [clip({ id: 'C', language: 'fr-CA' })],
+      text: 'hello',
+      language: 'fra',
+      role: 'known'
+    })
+    expect(r.audioId).toBe('C')
+  })
+
+  it('still refuses a genuinely different language', () => {
+    const r = resolveAudio({
+      linkedRow: null,
+      candidates: [clip({ id: 'C', language: 'spa' })],
+      text: 'hello',
+      language: 'eng',
+      role: 'known'
+    })
+    expect(r.tier).toBe('none')
+  })
+
+  it('an uncanonicalisable value falls back to exact string equality, never to a guess', () => {
+    // Two 'auto' rows are the same slot only because the strings are identical.
+    const same = resolveAudio({
+      linkedRow: null,
+      candidates: [clip({ id: 'C', language: 'auto' })],
+      text: 'hello',
+      language: 'auto',
+      role: 'known'
+    })
+    expect(same.audioId).toBe('C')
+
+    // 'auto' must NOT be treated as matching a real language.
+    const different = resolveAudio({
+      linkedRow: null,
+      candidates: [clip({ id: 'C', language: 'auto' })],
+      text: 'hello',
+      language: 'eng',
+      role: 'known'
+    })
+    expect(different.tier).toBe('none')
+  })
+})
