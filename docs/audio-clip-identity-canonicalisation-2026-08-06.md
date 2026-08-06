@@ -1,7 +1,8 @@
 # One voice, one spelling — canonicalising the clip identity key
 
 **2026-08-06.** Companion to `docs/architecture/AUDIO_PIPELINE_CONTENT_ADDRESSED_DESIGN-2026-08-06.md`.
-Code landed; the data reconciliation below is a **proposal awaiting approval** and has not been run.
+Tom approved the region merge and the sequence on 2026-08-06. Updated after the write-path and
+read-path audits landed — they corrected two things I had wrong, both recorded below.
 
 > The design says a clip's identity is `(language, normalised text, voice)`. That only dedups if two
 > clips that *are* the same combination are always *spelt* the same. Today they are not — and the bill
@@ -69,6 +70,17 @@ This is also what settles the `ara` / `ara_lb` case that started this work. `ara
 its target audio as `ara` is **correct**, not a bug: the Lebanese accent lives in the declared voices
 (`ar-LB-LaylaNeural`, `ar-LB-RamiNeural`), and the Lebanese text differs from MSA text anyway, so the
 two never collide on one identity.
+
+### Composites are not voices
+
+`comp:` is not a provider prefix. `pod-explainer-composite.cjs:271` builds it as
+`` `comp:${chunkVoice}+${knownVoice}` `` — it names a **splice of two takes**, and live data agrees:
+six `comp:` values, all `role='pod_explainer'`, four of them genuine two-part recipes such as
+`comp:ga-IE-OrlaNeural+en-GB-SoniaNeural`.
+
+My first pass treated `comp:` as an alias for xAI, which merged 213 identities that are not the same
+audio at all — a spliced explainer collapsing onto a plain `leo` render. Composites now keep their
+own namespace and each part is canonicalised: `comp:leo` → `comp:xai_leo`, never `xai_leo`.
 
 ### Voice — `<provider>_<the provider's own voice id>`
 
@@ -142,8 +154,22 @@ that wrote them. `EXAVITQu4vr4xnSDxMaL` is a recognisable ElevenLabs id and the 
 12-hex shapes look like clone ids, but *looks like* is not evidence and this is a stated gap. The
 write-path audit running alongside this work is what closes it.
 
-`auto` is likewise a code question: the language is derivable from `course_code` + `role`, and which
-writer emits `auto` decides whether that derivation is safe or whether those rows are mislabelled.
+### `auto` is a TTS tuning parameter with no column of its own
+
+Settled, from the write-path audit plus a live query. **All 7,847 `auto` rows are
+`role='pod_explainer'`, across 36 courses** — exactly as the audit predicted from the code.
+
+The cause is one parameter doing two jobs. `generatePodAudio` takes `language`, hands it to
+`buildPodTTSConfig` as the xAI **language cue** — where `'auto'`, `'fr'` and `'pt-PT'` are legitimate,
+deliberate and Tom-validated pronunciation tuning (`run-pod-explainer-batch.cjs:41-46`, whose own
+comment notes it changes the dedup key) — and then writes the same value into the **identity** column.
+Nothing between line 5834 and line 5921 inspects it.
+
+So these rows are not a mistake. They are a render parameter that the identity column absorbed because
+it was the only field available. The fix is to split the parameter, not to rewrite the rows: the row
+gets the course's real language, the cue still reaches the provider unchanged, and nothing about the
+rendered audio moves. `resolveExplainerLanguage` is a pure function of the target language, so the cue
+stays derivable and no information is lost.
 
 ---
 
@@ -157,39 +183,72 @@ in place collides on **2,578 groups covering 5,168 rows**, and in **every single
 two rows point at different S3 objects** — they are the double renders. There is no group where the
 same file is merely listed twice.
 
-Proposed order, each step gated and reversible:
+### The order I proposed was wrong, and here is the measurement
 
-1. **Convert the writers first.** Every place that writes `language` or `voice_id` composes it through
-   `clip-identity.cjs`. Until this is done, a back-fill is just cleaning behind a tap that is still
-   running — the 5 August duplicate proves the tap is open.
-2. **Apply the shape constraint** (`NOT VALID`). New writes are now canonical by construction; old rows
-   are untouched.
-3. **Back-fill the non-colliding 152,985 rows**, in the sweep-protocol shape the estate already uses:
-   DRY_RUN log first, per-row before-state assertion, abort on drift, `*-{dryrun,applied}-log.json`,
-   re-run `audio-identity-lint.cjs` and reconcile the delta exactly.
-4. **Resolve the 2,578 collision groups one at a time.** Both objects exist and both are valid audio,
-   so this is a *link* decision, not a deletion: keep the row the app currently serves, repoint, and
-   **delete nothing** — make-before-break (`AUDIO_PIPELINE_ARCHITECTURE.md` §6b), and the design's own
-   ruling that no course may delete a shared object on its own authority. The superseded objects cost
-   almost nothing to keep.
-5. **`VALIDATE` the constraints.**
-6. **The human rows** (41,895) get `human_<course>_<role>` derived from their own columns — same gated
-   script shape. These are recordings: the precious-audio guard must be verified to still see them
-   *before* the rename, not after.
-7. **The 97 opaque TTS ids and `auto`** wait on the write-path audit naming their writer. No guessing.
+I originally said constraint → back-fill. That breaks, and the reason is a genuine trap in `NOT VALID`.
 
-### One judgement call I want a word on
+`NOT VALID` is usually read as *existing rows are exempt*. It is not. It exempts them from the one-off
+validation **scan**, but the constraint is still evaluated on every `UPDATE` of an existing row —
+**including an update that does not touch the checked column**. Measured against the live schema, same
+statement, same row, inside a rolled-back transaction:
+
+```
+OK     unrelated UPDATE of a drifted row, trigger only    {"language":"en-GB","voice_id":"eve"}
+RAISE  the SAME UPDATE once the constraints are added     violates course_audio_language_canonical_shape
+```
+
+Applying the constraints while 158,153 drifted rows remain would make every one of them
+**un-updatable** — each veracity write, duration fix and relink against them would start failing. The
+constraints must come last.
+
+Corrected order, each step gated and reversible:
+
+1. **Convert the writers.** Every place that writes `language` or `voice_id` composes it through
+   `clip-identity.cjs`. Until this is done, a back-fill is cleaning behind a tap that is still running —
+   the 5 August duplicate proves the tap is open.
+2. **Apply parts 1 and 2 of the migration** — the canonicalisers, then the write trigger. From here on
+   new rows are canonical by construction, and a writer we missed gets a *corrected* insert rather than
+   a failed one.
+3. **Back-fill.** `tools/audio-identity-backfill.cjs`, dry run first. Measured today: **515,908 rows
+   rewritable**, 2,401 skipped as collisions, 64,640 skipped as unresolvable. Per-row before-state in
+   the WHERE clause, batched, resumable, logged; `s3_key` never touched, nothing deleted.
+4. **Apply part 3** — the two shape constraints — then `VALIDATE` both.
+5. **The human rows** (41,895) get `human_<course>_<role>` derived from their own columns — the scheme
+   the `voices` registry already uses. These are recordings: the precious-audio guard must be verified
+   to still see them *before* the rename, not after.
+6. **The 97 opaque TTS ids** stay as they are until their writer supplies a provider. No guessing.
+
+### The 2,401 collisions are blocked on a mechanism the design specifies and nobody has built
+
+These are the rows whose canonical spelling is already taken by a twin, on
+`unique_course_audio_per_voice`. Every pair points at two *different* S3 objects — they are the double
+renders. I checked which side the learner actually hears, expecting the canonical-spelt row to be the
+live one and the drifted row to be the orphan. It is not that tidy: **1,323 of the 2,401 drifted rows
+are linked** from `course_seeds` / `course_legos` / `course_practice_phrases` / `listening_pod_sentences`.
+In more than half of these pairs, the row the learner hears is the drifted one, and the canonical
+spelling is worn by the orphan.
+
+So "keep the linked row" is the right rule and it cannot be executed with the columns that exist: the
+linked row cannot take the canonical key while the orphan is sitting on it, and relinking the content
+to the orphan would change what a learner hears — the exact thing this whole design forbids.
+
+The mechanism that resolves it is already written down. The migration appendix specifies
+`superseded_at` plus a **partial** unique index `(language, text_normalized, voice_id) WHERE
+superseded_at IS NULL`. Stamp the orphan superseded, and it drops out of the index; the linked row
+takes the canonical key; nothing is relinked, nothing is deleted, no byte moves. That column does not
+exist yet, so these 2,401 rows stay exactly as they are and the back-fill skips them by design. They
+are 0.4% of the candidates and they cost nothing to leave — but they are the reason the constraints
+should be `VALIDATE`d only after `superseded_at` lands, or with these rows knowingly exempt.
+
+### The region merge — settled
 
 Dropping the region merges **83 identities** where the *same* xAI voice rendered the *same* text for a
-dialect pair — `spa_for_eng` and `spa_mx_for_eng`, `por_for_eng` and `por_br_for_eng`, all of them
-`pod_take_g` / `pod_explainer` rows. They were rendered under `es-ES` and `es-MX` language hints, so
-the two files may differ slightly in accent even though the voice is one person.
+dialect pair — `spa_for_eng`/`spa_mx_for_eng` and `por_for_eng`/`por_br_for_eng`, all `pod_take_g` and
+`pod_explainer` rows, rendered under `es-ES` and `es-MX` language hints.
 
-My read: **accept the merge.** The accent belongs to the voice, and if the Mexican course wants a
-Mexican accent the honest fix is for it to *declare a different voice* — which is step 2 of the design
-anyway — rather than to rely on a language tag that the identity key is about to stop carrying. But
-this is 83 pod clips and an ear, so it is Tom's call, and it is cheap either way: the alternative is to
-leave those rows non-canonical and revisit when the pod voices are next set.
+**Tom's ruling, 2026-08-06: merge them.** It matches the voice-in-clip-identity policy already set — a
+course wanting a genuinely distinct regional accent must use a genuinely distinct voice, not lean on
+the region label.
 
 ---
 
