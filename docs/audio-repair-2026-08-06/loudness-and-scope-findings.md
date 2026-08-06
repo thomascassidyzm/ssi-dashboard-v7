@@ -1,0 +1,129 @@
+# The loudness question, and what the estate-wide measurement found
+
+**2026-08-06.** Three things you asked for: explain the loudness, action the rollout, write the
+process in. This is the measurement half. The process itself is now written in at
+`docs/architecture/AUDIO_REPAIR_PROCESS.md`.
+
+---
+
+## 1. The loudness — answered, and it found a real trap
+
+You said: *"it said it was naked - but the clips were all much louder than the ones they were
+replacing - so I'm not sure what that's all about."*
+
+I measured every one of the 93 clips that were swapped, both sides — the superseded object and the
+one live now. Integrated loudness, LUFS:
+
+| | before | after | change |
+|---|---|---|---|
+| quietest tenth | −17.4 | −15.9 | +0.3 |
+| **median** | **−16.5** | **−15.6** | **+0.9** |
+| loudest tenth | −15.9 | −15.5 | +1.7 |
+
+91 of 93 are louder, but only slightly: **+0.9 dB in the middle, +2.9 dB at the very most.** They
+sit at the top of the course's own normal range and are not outliers. Peak level moved more than
+average level (−3.2 → −1.9 dB), and the clips got their final words back, which together is the
+most likely reason they read as fuller and more present.
+
+**So: no levelling step is needed before the rollout, and the 93 live clips do not need
+re-levelling.** The repair tool already normalises every clip it renders to −16 LUFS, the same
+target the rest of the estate uses, which is exactly why they land within a decibel of their
+neighbours. Nothing to change. That is the decision, taken and acted on.
+
+### But your instinct was pointing at something real
+
+Chasing this turned up a genuine defect, and it is worth knowing about.
+
+**The document you approved from described a process that did not happen.** It says *"the only
+thing applied is a single volume adjustment so the voices sit at the same level."* Its own log
+records `gainDb: 0` and `rawLufs: null` for **all 384 clips** — the loudness measurement silently
+returned nothing and the gain quietly defaulted to zero. No volume adjustment was applied at all.
+
+Those 384 truly-raw clips measure a median **−26.4 LUFS — 10.8 dB quieter** than the clips beside
+them. Every single one, no exceptions.
+
+They were never what got swapped in. The 93 that went live were a separate render that went through
+the normal levelling chain, and they are the ones you heard in the second document and accepted.
+So nothing is wrong on the course.
+
+The trap is for the next person: **if anyone implements "naked" literally as that document
+describes it, they will ship clips 10 dB quieter than every neighbour** — every word present, and
+still a defect. That is now written into the process document, along with the rule that a gain of
+zero must never be trusted without checking the measurement actually returned a number.
+
+I should be straight with you about one thing: I could not reproduce "much louder" in either
+comparison. Naked-vs-deployed measures 10.8 dB *quieter*; swapped-vs-superseded measures 0.9 dB
+louder. What I can say with confidence is the part that matters — the live clips are correctly
+levelled, and the description in that document was wrong in a way that would have bitten us at
+scale.
+
+---
+
+## 2. Detection across the two courses — free, complete
+
+Both courses swept whole with the tail-integrity predictor. No money spent.
+
+| course | clips measured | flagged | rate | characters | est. cost |
+|---|---|---|---|---|---|
+| `deu_for_eng` | 47,254 | 14,262 | **30.2 %** | 511,527 | **£16.22** |
+| `fra_for_eng` | 51,369 | 7,092 | **13.8 %** | 221,416 | **£7.02** |
+
+Zero measurement failures on either course.
+
+### This was only possible after fixing two things that were silently lying
+
+- The queue read course audio with a single `.limit(5000)`. `deu_for_eng` has 47,254 rendered
+  clips. **Every whole-course sweep before today saw a tenth of the course** and reported a flag
+  rate for the part it never read.
+- Seed-scoped sweeps (`--max-seed`) failed outright with `400 Bad Request` on every course — the id
+  filter built a 37 KB URL. So the estate tier had never actually run.
+
+Both fixed, tested, pushed.
+
+---
+
+## 3. The finding that changes the plan — and why I have not spent money yet
+
+You said fix *"only if needed"*, and that the rate-of-fade measure was a very accurate predictor. It
+was — on the three clips you named. Before committing £23 and 21,000 re-renders, I checked it at
+course scale against ground truth: unprimed speech-recognition on the deployed bytes, asking the
+only question that matters — **is the last word actually there?** — with a control group of clips
+the predictor did *not* flag.
+
+The predictor does carry real signal. But the control group is the problem: clips it passed as
+healthy are missing their final words too. Among them, verbatim from the transcripts:
+
+- *"Ich werde morgen Deutsch sprechen"* → heard as *"ich werde morgen deutsch"*. **"sprechen" is
+  gone** — the exact signature of the original amputation, in a clip the predictor did not flag.
+- *"nein, das wäre nicht möglich"* → *"nein das ware nicht"*
+- *"später und nicht jetzt"* → *"spater und nicht"*
+
+**So the rate-of-fade measure is a good ordering but the wrong scope.** Renders driven by it alone
+would re-render thousands of clips that are fine, and would leave damaged clips on the course
+untouched — the worst of both. That is why I stopped before spending rather than after.
+
+There is a better scope available and it is **free**: measure the actual defect. Speech-recognition
+final-word retention runs locally on our own machine at no cost, and it answers "is a word
+missing?" directly instead of inferring it from how fast the clip fades. It is the same check the
+process already uses to *verify* a repaired clip — it should also be what *selects* them.
+
+**Better, simpler, cheaper on all three legs**: it targets real damage instead of a proxy, it is one
+metric instead of two, and it makes the render bill smaller and precisely aimed. I am proceeding on
+that basis and the process document records it.
+
+The one thing this costs is time, not money: it is roughly three hours of our own CPU per course
+rather than fifteen minutes. It is running.
+
+---
+
+## 4. Still standing between this fix and a learner's ears
+
+The learning app serves audio with `Cache-Control: immutable` and no revision in the URL. **A phone
+that already played a damaged clip keeps the damaged bytes**, however well the repair works.
+
+The fix is written and sitting on branch `feat/audio-revision-cache-bust-2026-08-05` in the learning
+app. **I checked today: it is still not merged.** It is not mine to merge. Until it ships, every
+repair below stops at the database.
+
+That is the single highest-leverage thing outstanding, and it is a one-line answer from you: merge
+it, or say who should.
