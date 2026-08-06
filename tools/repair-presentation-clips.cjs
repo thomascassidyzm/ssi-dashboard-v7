@@ -63,6 +63,7 @@ const path = require('path')
 const { execFile } = require('child_process')
 const { v4: uuidv4 } = require('uuid')
 const { PutObjectCommand } = require('@aws-sdk/client-s3')
+const { AUDIO_CACHE_CONTROL } = require('../services/shared/audio-cache-control.cjs')
 const { createClient } = require('@supabase/supabase-js')
 const ttsService = require('../services/tts-service.cjs')
 const veracity = require('../services/audio-veracity.cjs')
@@ -206,7 +207,7 @@ async function renderVerified (row, tmpDir) {
       newId = uuidv4()
       const s3Key = `mastered/${newId.toUpperCase()}.mp3`
       await p8.s3.send(new PutObjectCommand({
-        Bucket: p8.S3_BUCKET, Key: s3Key, Body: rendered.buffer, ContentType: 'audio/mpeg',
+        Bucket: p8.S3_BUCKET, Key: s3Key, Body: rendered.buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL,
       }))
 
       // 3. Free the unique key. The old row still exists and is still linked.

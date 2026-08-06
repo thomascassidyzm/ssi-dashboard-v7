@@ -16,6 +16,7 @@
 
 const fs = require('fs')
 const path = require('path')
+const { cacheControlFor } = require('../shared/audio-cache-control.cjs')
 
 function assertKey(key) {
   if (!key || typeof key !== 'string') throw new Error('storage: key required')
@@ -116,7 +117,13 @@ function createS3Storage(opts = {}) {
     },
     async putObject(key, buffer, contentType = 'application/octet-stream') {
       assertKey(key)
-      await client.send(new PutObjectCommand({ Bucket: bucket, Key: key, Body: buffer, ContentType: contentType }))
+      // Audio keys are minted fresh per clip, so their bytes never change and
+      // they cache immutably. Manifests share this method and must not.
+      const cacheControl = cacheControlFor(contentType)
+      await client.send(new PutObjectCommand({
+        Bucket: bucket, Key: key, Body: buffer, ContentType: contentType,
+        ...(cacheControl ? { CacheControl: cacheControl } : {}),
+      }))
     },
     async getJson(key) {
       try {

@@ -19,6 +19,7 @@ const path = require('path')
 const { execFile } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
 const { PutObjectCommand, GetObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
+const { cacheControlFor } = require('./shared/audio-cache-control.cjs')
 
 const { createRepairCore, decodeVoiceId, RepairError } = require('./audio-repair-core.cjs')
 const veracity = require('./audio-veracity.cjs')
@@ -122,8 +123,10 @@ function ttsOptionsFor (provider, voiceId, language) {
 const storage = {
   async put (key, buffer, contentType = 'audio/mpeg') {
     const p8 = phase8()
+    const cacheControl = cacheControlFor(contentType)
     await p8.s3.send(new PutObjectCommand({
       Bucket: p8.S3_BUCKET, Key: key, Body: buffer, ContentType: contentType,
+      ...(cacheControl ? { CacheControl: cacheControl } : {}),
     }))
     return { key, bytes: buffer.length }
   },

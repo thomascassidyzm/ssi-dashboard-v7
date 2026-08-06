@@ -40,6 +40,7 @@ const { v4: uuidv4 } = require('uuid')
 const { createClient } = require('@supabase/supabase-js')
 const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
 const { normalizeForAudio } = require('../services/shared/text-normalize.cjs')
+const { AUDIO_CACHE_CONTROL } = require('../services/shared/audio-cache-control.cjs')
 
 // Course-parameterized (default spa so the original spa path is intact):
 //   COURSE=hrv_for_eng node tools/persist-stage0-pod0.cjs
@@ -134,7 +135,7 @@ async function ensureAudio({ text, mp3File, durationMs }) {
 
   const body = fs.readFileSync(mp3File)
   await s3.send(new PutObjectCommand({
-    Bucket: S3_BUCKET, Key: s3Key, Body: body, ContentType: 'audio/mpeg',
+    Bucket: S3_BUCKET, Key: s3Key, Body: body, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL,
   }))
   const { data: ins, error: insErr } = await supabase
     .from('course_audio')

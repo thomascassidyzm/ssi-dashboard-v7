@@ -1,6 +1,7 @@
 // services/s3-production-service.cjs
 const { S3Client, GetObjectCommand, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
 const { getSignedUrl } = require('@aws-sdk/s3-request-presigner')
+const { AUDIO_CACHE_CONTROL } = require('./shared/audio-cache-control.cjs')
 
 const BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage'
 const REGION = process.env.S3_REGION || 'eu-west-1'
@@ -182,6 +183,7 @@ async function uploadRecording(courseCode, uuid, audioBuffer, metadata = {}, opt
     Key: key,
     Body: audioBuffer,
     ContentType: 'audio/mpeg',
+    CacheControl: AUDIO_CACHE_CONTROL,
     Metadata: toS3Metadata({
       courseCode,
       uploadedAt: new Date().toISOString(),
