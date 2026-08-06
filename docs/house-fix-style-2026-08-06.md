@@ -268,6 +268,32 @@ because it wasn't asked.
 It also refused to propose new wording for the intros, on the grounds that the presentation design is
 Aran's call.
 
+### And then something undid part of it, three hours later
+
+This is the one thing in this report I'd act on tonight, and I checked it myself rather than pass it
+on.
+
+At 15:49 an estate-wide audio sweep relinked intro clips across 56 courses — 6,688 rows, including 38
+Greek LEGOs. It was a good piece of work: it found intro audio that already existed but had never been
+linked, and linked it at zero cost. It knows nothing about bracketed tags, because it wasn't about
+them.
+
+But 30 of the 38 Greek clips it linked are **tag-speaking clips**. Live right now:
+
+| | tagged intros reachable |
+|---|---|
+| Before today's sweep | 17 |
+| **Now** | **47** |
+
+Thirty more Greek LEGOs now announce their bracket out loud than did this morning. The clips it linked
+include the diagnosis document's own worked example — *"The Greek for: 'to answer (I, aorist)', is:"*
+— along with *'people (masculine plural nominative)'* and *'why (interrogative adverb)'*.
+
+Nothing here was done wrong. The diagnosis was correct when written; the sweep was correct in its own
+terms. **Neither knew about the other**, and the learner-facing count nearly tripled in the gap. This
+is the forum complaint that started the Greek work, quietly getting worse on the same day it was
+diagnosed.
+
 ---
 
 ## Part 2 — The house style, as rules you can check
@@ -390,6 +416,14 @@ better today` because the word is invariant and dodges an agreement call nobody 
 *Check:* when two candidate fixes are both correct, pick the one needing less knowledge you can't
 confirm. Count how many of your fixes rest on a call you couldn't check, and drive that number down.
 
+**11e. A diagnosis is only true until the next estate-wide sweep runs.**
+*From:* the Greek tags. A sweep that knew nothing about them relinked 30 tag-speaking clips three
+hours after they were diagnosed, taking the learner-facing count from 17 to 47. Both jobs were
+correct; neither cited the other.
+*Check:* if you diagnose something and don't fix it, say what would silently change your numbers and
+re-measure before anyone acts on them. If you run a broad sweep, check the open diagnoses on the
+courses you're about to touch — "my sweep is blind to X" is a thing to write down, not a defence.
+
 **12. Stop rather than force the last rows.**
 *From:* Spanish stopping at 332 of 367 when the pass rate flattened, rather than shipping Spanish a
 proofreader had rejected.
@@ -477,7 +511,15 @@ Honest gaps:
    the Portuguese rewrites quoted above and the zero for eng_for_ita. The Spanish account was
    independently re-derived from the live database and the fix scripts by a second session — the
    band-and-role numbers are theirs and I have not personally re-run them. The Greek reconstruction is
-   still with a third session; anything it corrects will land after this document.
+   was independently reconstructed by a third session, and I re-verified its most serious claim — the
+   47 tagged intros — against production myself.
+
+   Two Greek numbers from the diagnosis **did not reproduce** on re-run and should not be relied on:
+   its residual of 42 unsubject-ed cases now returns 94, and the estate-wide tag count drifted from
+   4,911 to 4,936. The headline 559-of-559 with zero wrong-person mismatches **did** reproduce
+   exactly. Also worth knowing: the 548 Greek component rows unlinked at 15:07 have **no recorded
+   before-image**, so those old audio ids are not recoverable — the "make-before-break" discipline
+   held for the relink but not for that unlink.
 
    Worth saying plainly: **my first pass got the "what changed today" question wrong**, by counting
    timestamps instead of comparing text. It would have let me tell you eng_for_ita was fixed when not
