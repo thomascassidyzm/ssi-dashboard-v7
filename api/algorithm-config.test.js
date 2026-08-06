@@ -173,13 +173,18 @@ describe('PATCH — auth and validation, unchanged', () => {
     expect((await patch({ key: 'pods', config: [1, 2] })).statusCode).toBe(400)
   })
 
-  it('fails, and creates no algorithm_config row, for a key that does not exist', async () => {
-    // PostgREST answers .single() over zero rows with PGRST116, so this has
-    // always come back 500 rather than the handler's 404 branch. Pinned as-is:
-    // this endpoint updates existing keys and does not create them, and that
-    // behaviour is unchanged by versioning.
-    const res = await patch({ key: 'nonexistent', config: { a: 1 } })
-    expect(res.statusCode).toBeGreaterThanOrEqual(400)
-    expect(state.db.tables.algorithm_config.find(r => r.key === 'nonexistent')).toBeUndefined()
+  it('CREATES a key that does not exist yet, rather than failing', async () => {
+    // Deliberate flip of the old assertion (2026-08-06). The write was a bare
+    // .update().eq('key'), so a key with no row came back as an error and
+    // "add a learning mode" was an engineering ticket — a hand-written SQL
+    // insert — instead of an admin action. Creating `easy_mode` from the
+    // Speaking page was exactly that case. onConflict:'key' keeps an existing
+    // row's identity, so the update path is unchanged.
+    const res = await patch({ key: 'easy_mode', config: { pause_boot_ms: 4000 } })
+    expect(res.statusCode).toBe(200)
+    expect(res.body.row.config).toEqual({ pause_boot_ms: 4000 })
+    expect(res.body.config_hash).toBe(hashConfig('easy_mode', { pause_boot_ms: 4000 }))
+    expect(state.db.tables.algorithm_config.find(r => r.key === 'easy_mode').config)
+      .toEqual({ pause_boot_ms: 4000 })
   })
 })
