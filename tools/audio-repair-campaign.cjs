@@ -70,6 +70,11 @@ const TRANCHE = num('tranche', 40)
 const CONCURRENCY = num('concurrency', 4)
 const MAX_LOAD = num('max-load', 26)
 const MAX_TRANCHES = num('max-tranches', Infinity)
+// Stop after a given tier. Tiers 1-4 are course-critical (a broken LEGO costs a whole
+// round); tier 5 is practice phrases, which are cosmetic beside that. Splitting on the
+// tier rather than on a tranche count means the boundary is a statement about what a
+// learner loses, not an arithmetic accident.
+const MAX_TIER = num('max-tier', 5)
 const SPEND = has('spend')
 const ACCEPT = has('accept')
 const AUTHORISED_BY = flag('authorised-by')
@@ -194,13 +199,14 @@ async function main () {
 
   const ordered = [...placed.entries()]
     .map(([audioId, p]) => ({ audioId, ...p, item: items.get(audioId) }))
+    .filter(r => r.tier <= MAX_TIER)
     .sort((a, b) => (a.tier - b.tier) || ((a.seed ?? 1e9) - (b.seed ?? 1e9)) ||
       (a.item.fallRate ? b.item.fallRate - a.item.fallRate : 0))
 
   const byTier = {}
   for (const r of ordered) byTier[`${r.tier} ${r.where.replace(/ voice [12]| \(on lego row\)/, '')}`] =
     (byTier[`${r.tier} ${r.where.replace(/ voice [12]| \(on lego row\)/, '')}`] || 0) + 1
-  console.log('\nrepair order — LEGO first, then learner order:')
+  console.log('\nrepair order — LEGO first, then learner order:'+(MAX_TIER<5?`  [capped at tier ${MAX_TIER}]`:''))
   for (const [k, v] of Object.entries(byTier).sort()) console.log(`  tier ${k.padEnd(34)} ${String(v).padStart(5)}`)
   // Named, never dropped silently: a clip whose holder we could not find is still broken.
   if (unplaced.length) {
