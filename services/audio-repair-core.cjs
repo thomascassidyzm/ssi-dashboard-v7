@@ -863,7 +863,18 @@ function createRepairCore (deps) {
     // 51,369, so a whole-course sweep saw barely a tenth of the course and
     // reported a clean-looking flag rate for the part it never read. A queue
     // that quietly stops at 5,000 reads as "that is the whole course".
-    const COLUMNS = 'id, text, role, voice_id, language, duration_ms, s3_key, audio_revision, lego_id, veracity_pass, veracity_reason, veracity_cer'
+    //
+    // Paged along `text_normalized`, which is NOT an arbitrary choice: the
+    // unique index on (course_code, text_normalized, language, role, voice_id)
+    // is the only index whose leading column is course_code, so it is the only
+    // ordering Postgres can walk without sorting the whole course. Ordering by
+    // `id` or `created_at` sorts ~50,000 rows and blows the 8s statement
+    // timeout every time — measured, not assumed.
+    //
+    // text_normalized is not unique on its own (the same text exists across
+    // roles and voices), so this keysets with `gte` and de-duplicates by id
+    // rather than `gt`, which would drop every row sharing a page boundary.
+    const COLUMNS = 'id, text, text_normalized, role, voice_id, language, duration_ms, s3_key, audio_revision, lego_id, veracity_pass, veracity_reason, veracity_cer'
     const PAGE = 1000
     const data = []
     if (audioIds && audioIds.length) {
@@ -878,14 +889,33 @@ function createRepairCore (deps) {
         data.push(...(rows || []))
       }
     } else {
-      for (let from = 0; ; from += PAGE) {
+      const seen = new Set()
+      let cursor = null
+      for (;;) {
         let q = supabase.from('course_audio').select(COLUMNS)
-          .eq('course_code', courseCode).order('id', { ascending: true })
+          .eq('course_code', courseCode).order('text_normalized', { ascending: true })
         if (role) q = q.eq('role', role)
-        const { data: rows, error } = await q.range(from, from + PAGE - 1)
+        if (cursor !== null) q = q.gte('text_normalized', cursor)
+        const { data: rows, error } = await q.limit(PAGE)
         if (error) throw new RepairError(`reading course audio: ${error.message}`, 'db_error', 500)
-        data.push(...(rows || []))
-        if (!rows || rows.length < PAGE) break
+        if (!rows || !rows.length) break
+        let fresh = 0
+        for (const r of rows) {
+          if (seen.has(r.id)) continue
+          seen.add(r.id); data.push(r); fresh++
+        }
+        const nextCursor = rows[rows.length - 1].text_normalized
+        // No new ids, or the cursor cannot advance: a single text_normalized
+        // fills a whole page. Stop rather than spin — and say so, because a
+        // silent stop here would under-report the course.
+        if (!fresh || nextCursor === cursor) {
+          if (rows.length === PAGE) {
+            logger.warn?.(`[repair] paging stalled at ${JSON.stringify(nextCursor)} — more than ${PAGE} clips share one normalised text; ${data.length} read`)
+          }
+          break
+        }
+        cursor = nextCursor
+        if (rows.length < PAGE) break
       }
     }
 

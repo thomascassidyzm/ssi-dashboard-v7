@@ -35,6 +35,7 @@ function makeDb (seed) {
     return rows.filter(r => filters.every(([col, val, op]) => {
       if (op === 'in') return val.includes(r[col])
       if (op === 'lte') return r[col] <= val
+      if (op === 'gte') return r[col] >= val
       return r[col] === val
     }))
   }
@@ -63,6 +64,7 @@ function makeDb (seed) {
       eq (col, val) { filters.push([col, val]); return api },
       in (col, vals) { filters.push([col, vals, 'in']); return api },
       lte (col, val) { filters.push([col, val, 'lte']); return api },
+      gte (col, val) { filters.push([col, val, 'gte']); return api },
       order () { return api },
       limit () { return api },
       range (from, to) { window = [from, to]; return api },
