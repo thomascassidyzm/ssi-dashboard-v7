@@ -7903,6 +7903,9 @@ app.post('/api/production/:courseCode/publish-manifest', async (req, res) => {
         }
       }
     }
+    // The welcome sits at top-level `introduction`, not in slices[0].samples, so the loop
+    // above never sees it — a zero-duration welcome used to ship unchallenged.
+    if (manifest.introduction?.id && !manifest.introduction.duration) zeroDurationSamples.push({ id: manifest.introduction.id, text: 'introduction (welcome)' })
     if (zeroDurationSamples.length > 0) {
       logger.warn(`[PUBLISH] Blocked: ${zeroDurationSamples.length} samples have duration 0`)
       return res.status(400).json({
