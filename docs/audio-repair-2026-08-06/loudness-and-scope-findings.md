@@ -1,8 +1,25 @@
 # The loudness question, and what the estate-wide measurement found
 
 **2026-08-06.** Three things you asked for: explain the loudness, action the rollout, write the
-process in. This is the measurement half. The process itself is now written in at
-`docs/architecture/AUDIO_REPAIR_PROCESS.md`.
+process in.
+
+## The short version
+
+- **Loudness: answered.** The live clips are correctly levelled — 0.9 dB louder than what they
+  replaced, well inside the course's normal range. Nothing to change, no re-levelling needed. But
+  chasing it found that the document you approved from describes a step that never actually ran,
+  and taken literally it would ship a course 10 dB too quiet. That is now fixed in writing.
+- **Process: written in**, as one canonical document, linked from the audio architecture doc.
+- **Rollout: detection done everywhere, and I have deliberately not spent a penny yet.** Two bugs
+  meant whole-course sweeps had never actually run — they silently read a tenth of a course, and
+  every seed-scoped sweep failed outright. Both fixed. With them fixed I could finally measure at
+  scale, and the measurement says the predictor we were going to spend on is only about 1.4× better
+  than chance at finding a clip with a missing word. Spending £23 on that scope would have
+  re-rendered thousands of healthy clips and left thousands of damaged ones alone.
+- **The estate is in better shape than feared:** 0.94 % flagged across 42 paid courses. The damage
+  is concentrated in `deu_for_eng`, `fra_for_eng` and about four others.
+- **One thing needs you**, at the very bottom: the cache fix is still not merged, and until it is,
+  none of this reaches a phone that already played a broken clip.
 
 ---
 
@@ -144,7 +161,45 @@ the cost, before anything is rendered.
 
 ---
 
-## 4. Still standing between this fix and a learner's ears
+## 4. The estate — first 50 seeds of every paid course a learner can reach
+
+All 42 swept (`premium`, and live or in beta in the app — the other 58 premium courses are draft or
+hidden, so no learner can reach them). **160,344 clips measured, zero measurement failures, nothing
+spent.**
+
+**Estate-wide flag rate: 0.94 %.** 33 of the 42 courses flag under half a percent in their first 50
+seeds. The damage is concentrated in a handful:
+
+| course | flagged in seeds 1-50 |
+|---|---|
+| `eng_for_ben` | 17.4 % (660 clips) |
+| `eng_for_hin` | 10.1 % (381) |
+| `eng_for_kan` | 4.0 % (161) |
+| `eng_for_tel` | 3.3 % (108) |
+| `eng_for_urd` | 0.9 % (38) |
+| `spa_for_eng`, `jpn_for_eng`, `kor_for_eng`, `eng_for_mar` | 0.6-0.7 % each |
+| the other 33 courses | under 0.5 %, most exactly zero |
+
+Against `deu_for_eng` at 30.2 % and `fra_for_eng` at 13.8 %, that says this is not an estate-wide
+rot. It is concentrated in a handful of courses, which is much better news than we feared — and it
+also tells us the fade measure is partly reading a voice's rendering style rather than damage,
+which is consistent with everything in section 3.
+
+## 5. Two things the LEGO-first pass turned up immediately
+
+You ruled that LEGOs come before cycles and that a LEGO means the full triple — intro, voice 1,
+voice 2. The scan is ordered that way, so the important clips are judged first. Two findings
+already:
+
+- **167 of `deu_for_eng`'s 1,570 LEGOs have no introduction clip at all.** Not damaged — absent.
+  On your own ruling that is 167 broken LEGOs, and it is a different problem from amputation with a
+  different fix. Flagging it, not folding it in.
+- **The LEGO clips are damaged at a much higher rate than the course average** — early scanning is
+  running around one clip in five, against the course-wide pilot's roughly one in six. The clips
+  that carry the learning journey are the worst affected. That is the argument for LEGO-first
+  ordering making it into the tool rather than staying a note.
+
+## 6. Still standing between this fix and a learner's ears
 
 The learning app serves audio with `Cache-Control: immutable` and no revision in the URL. **A phone
 that already played a damaged clip keeps the damaged bytes**, however well the repair works.
