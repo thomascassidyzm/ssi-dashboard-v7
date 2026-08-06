@@ -60,7 +60,7 @@ wrapping (7), trailing periods (8), Spanish `llevar`+gerund (17a), Italian subju
 | finding | count | where |
 |---|---|---|
 | Builder metadata `(introduce:false)` in learner-facing Spanish, **spoken by the TTS** | 135 phrases | `spa_mx_for_eng` |
-| Presentation audio announces a different English gloss than the LEGO teaches | 370 total (**204 severe**) | `fra_ca` 275, `ita` 62, `por_br` 16, `por` 11, `spa` 3, `spa_mx` 3, `fra` 0 |
+| Presentation audio announces a different English gloss than the LEGO teaches | **my count was low — see Corrections** | corrected: `fra_ca` **406**, `ita` **134** |
 | Learner-facing lowercase `i` where English requires `I` | 1,488 phrases + 76 LEGOs | `fra_ca` 1,422, `ita` 65, `por` 49, `por_br` 23, `spa_mx` 5 |
 | Exact duplicate practice rows inside one LEGO | 978 redundant rows / 949 groups | `ita` 313, `por` 311, `fra` 284, `por_br` 42, `spa` 28 |
 | English prompt is Spanish (never translated) | 2 phrases | `spa_mx_for_eng` S0480 |
@@ -186,7 +186,7 @@ the only course in the slice at zero; every other is 300–668. Its audio was no
 held it back; it never cleared the approval gate, and the audio ran ahead of the review anyway.
 That is a process gap rather than a content verdict, and it explains the absence of a recorded reason.
 
-**2. 275 of 1,359 LEGOs (20%) have presentation-audio drift** — 169 severe. The presenter announces
+**2. 406 of 1,359 LEGOs (29.9%) have presentation-audio drift** — 243 severe. (I first measured 275; see Corrections.) The presenter announces
 one English phrase and the screen shows a different one. Verified in context at S0039:
 
 ```
@@ -205,6 +205,54 @@ course whose display name is "Quebec French for English Speakers".
 **deliberate and intended** — protect as-designed; no re-authoring toward standard register"
 (`docs/course-optimization/dialect-scaffold-decision-pack.md`). Its content is otherwise complete:
 668/668 seeds decomposed, 0 flagged, 12 of 12,887 phrases missing known audio.
+
+## Corrections — where the workers beat my numbers
+
+Three worker reports survived (`fra_ca_for_eng.md`, `ita_for_eng.md`, `por_br_for_eng.md`, all in this
+directory). They corrected me on a real defect in my own scan, and their numbers supersede mine.
+
+**My Check 18 undercounted presentation drift by roughly half.** Presentation clips come in *two*
+carrier formats, and my regex only anchored on the second:
+
+```
+The French for: 'X', is:                 <- 630 of 1,359 fra_ca clips.  MY REGEX SKIPPED ALL OF THESE
+The French for: 'X', as in — 'Y', is:    <- 729 of 1,359 clips.         only these were checked
+```
+
+Verified directly: 1,359 clips fetched, 729 matched my pattern, 630 matched the one I skipped, 0
+matched neither. So I silently checked 54% of the course and reported the result as a course-wide
+count.
+
+| | my figure | corrected |
+|---|---|---|
+| `fra_ca_for_eng` | 275 | **406** of 1,359 (29.9%) — 243 severe, 163 mild |
+| `ita_for_eng` | 62 | **134** of 1,379 |
+
+**Note this bug is in `scan-course.md` itself**, not just my implementation — the documented Check 18
+regex is `/^The\s+\w+(?:\s\w+)?\s+for:\s+'([\s\S]*?)'\s*,\s*as in/i`, which cannot match the
+plain `', is:'` format. Any previous course scanned with it has the same blind spot. Worth fixing in
+the checker.
+
+**The `fra_ca` worker also found the root cause, which I had not.** Every seed was re-decomposed on
+2026-07-16/17. Presentation clips for seeds 301–668 were re-baked afterwards and drift there is
+**zero**; seeds 1–300 were never re-baked. **All 406 drifted clips were created in 2026-04; none in
+2026-07.** The damage is therefore concentrated in the first 300 seeds — the part of the course every
+learner sees first.
+
+**Other corrections to my scan:**
+
+- `por_br` — identical `known==target` is **18, not 2**, and hand-checking says **all 18 are false
+  positives** (cognates). My cognate allowlist was too short.
+- `por_br` — my ZUT check (Check 10) was **under-scoped**: it only compares `is_new` LEGOs, and the
+  worker found the real defect one level down, in BUILD phrases drilling a bare article
+  (`"the"` → `"o"` at S195 vs `"the"` → `"a"` at S196). It also correctly **declined** to strip the
+  `"the (masculine)"` parenthetical, because stripping it would have minted exactly that collision —
+  the trap from `fix-agent-rules` §4, live and not hypothetical.
+- `ita` — my "zero empty LEGOs" claim was wrong as stated: 60 exist, all `draft`/`is_new=false`,
+  so the conclusion (nothing actionable) stands but the number did not.
+
+I am reporting these against myself because an uncalibrated count is not evidence, and mine was not
+calibrated on the format split.
 
 ## What was fixed, and by whom
 
