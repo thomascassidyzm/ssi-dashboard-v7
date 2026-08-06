@@ -94,6 +94,34 @@ function computeConnectedLegoIds(phraseTargetText, primaryLegoTarget, introduced
 }
 
 /**
+ * A practice phrase whose target IS the LEGO's own target teaches nothing —
+ * the learner already meets the bare LEGO at intro and debut (both rendered
+ * straight from course_legos, see learning-script-generator.cjs "the debut IS
+ * the bare LEGO"). Such a row is never played; it only inflates the per-LEGO
+ * phrase count. ralph-methodology.md is explicit: a BUILD phrase is the new
+ * LEGO plugged into prior vocabulary, NOT the LEGO alone.
+ */
+function isBareLegoPhrase(phraseTarget, legoTarget) {
+  const lego = normalizeForContainment(legoTarget || '');
+  if (!lego) return false;
+  return normalizeForContainment(phraseTarget || '') === lego;
+}
+
+/**
+ * Split phrases into the ones that practise the LEGO and the bare-LEGO copies.
+ * Accepts either shape in use across the write paths ({target} or {target_text}).
+ */
+function partitionBareLegoPhrases(phrases, legoTarget) {
+  const kept = [];
+  const bare = [];
+  for (const p of phrases || []) {
+    const target = p && (p.target_text != null ? p.target_text : p.target);
+    (isBareLegoPhrase(target, legoTarget) ? bare : kept).push(p);
+  }
+  return { kept, bare };
+}
+
+/**
  * Check if LEGO uses BUILD/USE format.
  */
 function usesBuildUseFormat(lego) {
@@ -138,29 +166,43 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
     }
     return checkWordContainment(legoTarget, phraseTarget);
   };
-  const build = buildRaw.filter(p => containsLego(p.target || ''));
-  const use = useRaw.filter(p => containsLego(p.target || ''));
-  const buildComponents = buildRaw.length - build.length;
-  const useComponents = useRaw.length - use.length;
+  const buildContaining = buildRaw.filter(p => containsLego(p.target || ''));
+  const useContaining = useRaw.filter(p => containsLego(p.target || ''));
+  const buildComponents = buildRaw.length - buildContaining.length;
+  const useComponents = useRaw.length - useContaining.length;
   const componentCount = buildComponents + useComponents;
   if (componentCount > 0) {
     console.log(`  ⚠ ${componentCount} component phrase(s) excluded (don't contain full LEGO target): ${buildComponents} from build[], ${useComponents} from use[]`);
   }
 
+  // A phrase that IS the bare LEGO never counts toward the floor — otherwise the
+  // floor can be met by copying the LEGO out as its own practice phrase.
+  const buildSplit = partitionBareLegoPhrases(buildContaining, legoTarget);
+  const useSplit = partitionBareLegoPhrases(useContaining, legoTarget);
+  const build = buildSplit.kept;
+  const use = useSplit.kept;
+  const bareCount = buildSplit.bare.length + useSplit.bare.length;
+  if (bareCount > 0) {
+    console.log(`  ⚠ ${bareCount} bare-LEGO phrase(s) excluded (phrase target IS the LEGO "${legoTarget}"): ${buildSplit.bare.length} from build[], ${useSplit.bare.length} from use[]`);
+  }
+  const bareHint = (n) => n > 0
+    ? ` (${n} bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)`
+    : '';
+
   // Count validation
   if (build.length < minBuild) {
     return {
       valid: false,
-      error: `BUILD: need ${minBuild}+, got ${build.length}${componentCount > 0 ? ` (${componentCount} component phrases excluded)` : ''}`,
-      details: { build: build.length, use: use.length, components: componentCount, minBuild, minUse },
+      error: `BUILD: need ${minBuild}+, got ${build.length}${componentCount > 0 ? ` (${componentCount} component phrases excluded)` : ''}${bareHint(buildSplit.bare.length)}`,
+      details: { build: build.length, use: use.length, components: componentCount, bare: bareCount, minBuild, minUse },
     };
   }
 
   if (use.length < minUse) {
     return {
       valid: false,
-      error: `USE: need ${minUse}+, got ${use.length}${useComponents > 0 ? ` (${useComponents} component phrases excluded)` : ''}`,
-      details: { build: build.length, use: use.length, components: componentCount, minBuild, minUse },
+      error: `USE: need ${minUse}+, got ${use.length}${useComponents > 0 ? ` (${useComponents} component phrases excluded)` : ''}${bareHint(useSplit.bare.length)}`,
+      details: { build: build.length, use: use.length, components: componentCount, bare: bareCount, minBuild, minUse },
     };
   }
 
@@ -215,6 +257,7 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
       build: build.length,
       use: use.length,
       components: componentCount,
+      bare: bareCount,
       avgSyllables: use.length > 0 ? (use.reduce((sum, p) => sum + Math.round((p.target || '').length / charsPerSyllable), 0) / use.length).toFixed(1) : 0,
     },
   };
@@ -267,30 +310,11 @@ function generateBuildupPhrases(lego, courseCode) {
     });
   }
 
-  // Add LEGO itself at P(N+1) — role is 'build' (LEGO debut)
-  const legoPosition = meaningful.length + 1;
-  roleCounts.build++;
-  buildupPhrases.push({
-    id: makePhraseId(courseCode, seed, idx, 'build', roleCounts.build),
-    course_code: courseCode,
-    seed_number: seed,
-    lego_index: idx,
-    position: legoPosition,
-    known_text: known,
-    target_text: target,
-    target_text_roman: lego.target_roman || null,
-    word_count: target.length,
-    lego_count: 1,
-    phrase_role: 'build',
-    connected_lego_ids: [],
-    lego_position: computeLegoPosition(target, target),
-    metadata: { buildup: 'lego' },
-    introduce: true,
-    status: 'draft',
-    version: 1,
-  });
-
-  return { buildupPhrases, startPosition: legoPosition + 1, roleCounts };
+  // The LEGO itself is NOT emitted as a build phrase. The learner already meets
+  // it at intro and debut, both rendered from course_legos — the round generator
+  // claims that phrase id whether or not a row exists, so a bare-LEGO build row
+  // was never played, only counted. See isBareLegoPhrase above.
+  return { buildupPhrases, startPosition: meaningful.length + 1, roleCounts };
 }
 
 module.exports = {
@@ -301,6 +325,8 @@ module.exports = {
   computeLegoPosition,
   computeConnectedLegoIds,
   usesBuildUseFormat,
+  isBareLegoPhrase,
+  partitionBareLegoPhrases,
   checkBuildUsePhrases,
   getMeaningfulComponents,
   generateBuildupPhrases,
