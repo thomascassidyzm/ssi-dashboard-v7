@@ -320,6 +320,39 @@ async function main () {
       old = row
       console.log(`${prefix} ${row.role}: ${JSON.stringify(row.text).slice(0, 60)} (rev${row.audio_revision}, ${row.s3_key})`)
 
+      // A holder still pointing at a SUPERSEDED row is damage an earlier run
+      // left behind: that run repointed course_legos and nothing else, so any
+      // practice phrase sharing the clip kept the old bytes. Re-rendering is
+      // both wrong and impossible here — the tombstone marker would be spoken
+      // aloud, and the clean text is already taken by the live replacement
+      // under `unique_course_audio_per_voice`. Repoint at that replacement
+      // instead: free, and it is the clip the founder already approved.
+      if (String(row.text || '').endsWith(TOMBSTONE)) {
+        const cleanText = row.text.slice(0, -TOMBSTONE.length)
+        const { data: live } = await supabase.from('course_audio')
+          .select('id, s3_key, duration_ms').eq('course_code', row.course_code)
+          .eq('text', cleanText).eq('voice_id', row.voice_id).eq('role', row.role)
+          .order('audio_revision', { ascending: false }).limit(1)
+        const repl = live && live[0]
+        if (!repl) { console.log('      SUPERSEDED but no live replacement found — skipped, inspect by hand'); log.push({ clip: item.label, role: row.role, action: 'skipped-superseded-orphan', oldId: row.id }); continue }
+        if (DRY) {
+          console.log(`      [PLAN] superseded — would relink ${item.holders.length} holder(s) to live ${repl.id} (free, no TTS)`)
+          log.push({ clip: item.label, role: row.role, action: 'would-relink-to-live', oldId: row.id, liveId: repl.id, chars: 0, holders: item.holders.map(h => `${h.table}.${h.column}#${h.rowId}`) })
+          continue
+        }
+        for (const h of item.holders) {
+          const patch = { [h.column]: repl.id }
+          if (h.durationColumn) patch[h.durationColumn] = repl.duration_ms
+          if (h.alsoSet && h.alsoSet.audio_uuid) patch.audio_uuid = repl.id
+          const { error: e } = await supabase.from(h.table).update(patch).eq('id', h.rowId)
+          if (e) throw new Error(`relink ${h.table}#${h.rowId}: ${e.message}`)
+        }
+        console.log(`      RELINKED ${item.holders.length} holder(s) to live ${repl.id} → ${repl.s3_key} (no TTS)`)
+        done++
+        log.push({ clip: item.label, role: row.role, action: 'relinked-to-live', oldId: row.id, liveId: repl.id, newKey: repl.s3_key, holders: item.holders.map(h => `${h.table}.${h.column}#${h.rowId}`) })
+        continue
+      }
+
       // Free plan: everything that can be known without spending money.
       if (DRY && !DRY_RENDER) {
         const c = String(row.text || '').length
