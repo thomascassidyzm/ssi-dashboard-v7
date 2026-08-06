@@ -215,7 +215,7 @@ the fidelity half exists, and almost none of the consistency half.**
 
 | check | where | measures | runs |
 |---|---|---|---|
-| Whisper CER | `services/audio-veracity.cjs` | are the right words in there | post-hoc, on demand |
+| Whisper CER | `services/audio-veracity.cjs` | are the right words in there | **generation time** — `renderChecked` at `phase8-audio-v13.cjs:2089, 2588, 4777`, before the S3 put and the row upsert |
 | Empty response | `tts-service.cjs:105` | is there any audio at all | **generation time** |
 | Phonology | `tts-service.cjs:554-631` | is it the right *language* | **generation time**, xAI non-English only |
 | Syllable-rate duration | `services/audio-intelligence/tiers/duration.cjs` | is it too fast to be real | written, **untracked, unwired** |
@@ -238,11 +238,18 @@ went wrong four times. **Say which role a measurement is playing, every time.**
 
 ### What the estate does not measure at all
 
-**Loudness.** Nothing measures it in the pipeline. The evidence for the target comes from a single
-25-clip test (`docs/audio/deu-loudness-cluster-test-2026-08-06.md`) sitting between −15.0 and
-−16.3 dB. One `ffmpeg -af ebur128` pass gives integrated LUFS and true peak. It has not been the
-defect in any of this week's failures, so this gate is there to stop a good property drifting, not to
-fix a broken one.
+**Loudness — measured, never refused.** `services/audio-processor.cjs` normalises to a fixed
+**−16.0 LUFS** target (`:552`) and it does read the measured value back (`:317`, `:575`) — but nothing
+compares the output against a band and nothing fails a clip for missing it. The module's own comments
+record that a single `loudnorm` pass can stall **4–6 LUFS short** of target (`:301`). So the estate
+applies a loudness target blind and finds out later, by ear. The evidence for what "right" sounds like
+is a single 25-clip test (`docs/audio/deu-loudness-cluster-test-2026-08-06.md`) sitting between −15.0
+and −16.3 dB. **Turning an existing measurement into a verdict is the cheapest gate in this document** —
+the number is already computed; it is simply thrown away.
+
+The only loudness *consistency* check that exists anywhere is `audio-pace-gate.cjs`'s opt-in
+`--loudness` leg, which fetches **the bytes the live app actually serves** and flags anything outside
+the reference generation's own p2–p98 band ±3 dB. It is sampled, off by default, and manual.
 
 **Voice identity. Nothing, anywhere, checks that a clip sounds like the voice it claims to be.** This
 is the consistency hole, and it is total. Every check above asks "is this clip good?"; none asks "is
@@ -268,7 +275,17 @@ Ordered so the cheap ones run first and the expensive one runs on what they esca
 
 A clip failing any refusing gate is **never hashed and never stored**, so it cannot be linked by
 accident later. Failures go to a quarantine prefix with their verdict attached, because a human
-needs to be able to hear what failed and why.
+needs to be able to hear what failed and why. `audio-veracity.cjs` already does exactly this — three
+attempts, then quarantine of the failing bytes plus a JSONL record, nothing uploaded and nothing
+inserted. **The pattern exists; it needs extending to the other tiers, not inventing.**
+
+**One behaviour to change deliberately.** Today an *unchecked* clip is published — `renderChecked`
+returns `pass: null` when it could not measure, and the caller uploads anyway, recording the outcome
+as `unchecked` rather than as a pass. That was an honest choice for a gate retro-fitted onto a live
+estate. Under a store where admission is the guarantee, it inverts: **`null` must refuse.** If the
+gate cannot measure a clip, the clip does not enter the store, because the store's whole promise is
+that everything in it passed. The three-outcome shape stays — it is the right shape — but the
+disposition of the third outcome flips from admit to quarantine.
 
 ### The consistency check that does not exist yet
 
@@ -326,8 +343,19 @@ whose `useAlgorithmConfig` composable loads every `algorithm_config` row, tracks
 them back; `PodLab` calls the same config over `/api/algorithm-config`. So the persistence layer is
 common, and none of the four is more versioned than the others.
 
-What separates them is narrower and sharper: **a lab owns a model, a config page owns a model's
-settings.**
+What separates them is narrower and sharper than the framing suggested, and it is worth stating in
+terms of what each screen *persists*, because that is where they genuinely diverge:
+
+| screen | material | persists | writes live config? |
+|---|---|---|---|
+| VadLab | frozen 774-clip study corpus + your own microphone | **evidence** — recordings to S3 with scores and features | no config at all |
+| PodLab | live Supabase pod sentences and course audio | **content** — `atom_map_fine`, a draft column, tile-verified server-side | **deliberately refuses** |
+| ListeningConfig | live legos, pod sentences, explainer audio | config | yes, globally |
+| SpeakingConfig | live seeds and clip durations | config | yes, globally |
+
+So: **a lab owns a model, a config page owns a model's settings** — but the sharper operational line
+is that the two labs persist something *other than* live settings, and both of them arrived there by
+choice.
 
 `VadLab` has `vadProsody.js` — an extractor and a comparison, mirrored against a Python reference so
 the two agree. `PodLab` has the pod fine-map. Those screens exist because there is a *computation*
@@ -340,13 +368,32 @@ So the honest distinction is: **a lab is where a model is developed; a config pa
 developed model is operated.** Both need real material and audible preview. The lab additionally
 needs comparison, and a record of what was compared.
 
-**What none of the four has: versioning.** `algorithm_config` is one row per key, saved in place.
-There is no version, no freeze, no publish, no rollback, no history of what a config used to be. That
-is the same defect as the audio store's — a name whose meaning can change underneath you — and it has
-the same fix. **A config should be content-addressed too**: hash the config object, store it
-immutably, and have the live pointer name a hash. Then "which config was this course built with" is
-answerable, and rolling back is repointing. That is one small table and it serves all four screens at
-once. **This is my strongest recommendation in this document after the store itself.**
+**What none of the four has: versioning — and one of them is already refusing to save because of it.**
+
+`algorithm_config` is one row per key, upserted in place. No version column, no history table, no
+snapshot, no draft/published split, no environment split. `updated_at` and `updated_by` are the entire
+audit trail: you know who last and when last, and nothing about what it was before. **The previous
+value is gone.** Rollback is "remember the number and re-type it".
+
+And it is worse than a missing feature, because of what sits downstream:
+`useAlgorithmConfig.ts:487` in the learning app caches for **five minutes**. So a Save on the Listening
+or Speaking page is a **production deploy to every learner on every course, within five minutes, with
+no undo**.
+
+**PodLab already knows this and has opted out.** Its header states it outright: because
+`algorithm_config` writes are immediately global with no draft/env split, the lab reads live config as
+a starting point and **never writes it back** — it exports the tuned JSON to the clipboard for a human
+to apply deliberately somewhere else. The most carefully built bench in the estate has concluded that
+its own persistence layer is too dangerous to use, and has routed around it with a clipboard.
+
+That is not a quirk. **It is the same defect as the audio store's, in a second place** — a name whose
+meaning can change underneath you — and it has the same fix. **A config should be content-addressed
+too**: hash the config object, store it immutably, and have the live pointer name a hash. Then "which
+config was this course built under" is answerable, rolling back is repointing, and a draft can exist
+without being live. One small table, serving all four screens plus VOICELAB.
+
+**This is my strongest recommendation in this document after the store itself**, and PodLab's
+clipboard is the evidence that the people building on this layer already want it.
 
 ### VOICELAB — what it is for
 
@@ -449,12 +496,17 @@ it is actually missing is the versioning above: "the pauses felt right last mont
 unanswerable question. **Recommendation: give it versioned configs and rename it LISTENING LAB. That
 is the whole change.**
 
-**Speaking gains less, and I will not pretend otherwise.** `SpeakingConfig.vue` is 942 lines, reads
-seeds and audio, and drives an algorithm that lives in the production service rather than in the
-screen. Its knobs are mostly timings whose effect *is* predictable from their values. Making it a lab
-in the full sense — a local model you can run and compare — would mean moving the speaking algorithm
-into the browser, which is a real cost for a modest gain. **Recommendation: give it versioned configs
-like the others and leave it a config page.** If it later grows a model of its own, promote it then.
+**Speaking is already a lab and is only missing the name.** I had this wrong on a first pass and the
+code corrects me: `SpeakingConfig.vue:121` titles its own section **"Pause lab — {mode} timing"**. It
+has eight knobs on the boot-plus-assembly pause model, an SVG curve of pause-against-syllable-count
+that redraws on every drag **with real sample sentences plotted as dots** so the synthetic curve is
+anchored to actual clips, a sampler that picks one distinct real sentence per syllable bucket, belt
+A/B across White/Yellow/Orange/Green, and `playWithPause` — which plays a real sentence exactly as the
+learner hears it, known prompt, the computed gap, target1 at belt speed, target2. **You hear the
+parameter.** That is a bench by any definition offered in this document.
+
+**Recommendation: rename it SPEAKING LAB and give it versioned configs.** No structural work; the lab
+is already built. It is the clearest case in the estate of a thing being better than its label.
 
 ### The framing, engaged with
 
@@ -588,6 +640,11 @@ Doctrine is `AUDIO_PIPELINE_ARCHITECTURE.md` §6b, and it is not advice: on 2026
 purge deleted 31,310 rows before re-rendering and left about 2,000 course slots silent for two days
 (`docs/fra-audio-1608-forensics-2026-08-05.md`). **Nothing in this plan deletes anything.**
 
+*One piece of doctrine drift to fix while we are here: §6b names `tools/repair-silent-clips.cjs` as a
+reference implementation of make-before-break, and the store design's appendix repeats it. That tool
+was retired on 2026-08-05 and is now a shim (`tools/repair-silent-clips.cjs:3, :93`). The doctrine is
+sound; one of its two worked examples no longer exists.*
+
 **Step 0 · Declare.** In VOICELAB, or by hand until VOICELAB exists: one voice per side per course.
 `deu_for_eng` → `ara` (target1), `leo` (target2), `eve` (known). `fra_for_eng` → `eve` throughout.
 `deu_at_for_eng` → `de-AT-IngridNeural` (target), one known voice chosen from its current three.
@@ -602,7 +659,17 @@ that tells you what is actually there.
 **Step 2 · Measure before you fix.** Run the full gate stack over the hashed set as a *report*, not a
 repair queue — the pace gate's own doctrine, respected. `fra_for_eng` has **zero** veracity-checked
 rows out of 51,371 and `deu_at_for_eng` zero out of 27,264, so this is the first honest picture either
-course has ever had. Publish the distributions: pitch, rate, loudness, per side. That is the course
+course has ever had.
+
+**Expect this step to find a lot, and budget for it.** The pace gate has already been run once on the
+`deu_for_eng` known side and the result is the most decision-relevant number in this document:
+**3,210 of 16,666 clips sit below the threshold** — against a reference generation whose own 2nd
+percentile is −0.144, i.e. the new generation is internally consistent and those 3,210 are genuinely
+adrift of it. That is 19% of one side of one course, found by one gate that has never been part of
+the pipeline. Some fraction is already addressed by the seeds 1–10 known-side replacement
+(`c212fcac`), and the number should be re-measured rather than assumed — but **plan German on the
+expectation that step 2 returns thousands, not the 136 off-voice rows below.** The two numbers answer
+different questions: 136 is "wrong voice", 3,210 is "right voice, wrong take". Publish the distributions: pitch, rate, loudness, per side. That is the course
 voice report from §2, and building it here is what makes it exist.
 
 **Step 3 · Resolve the ambiguous slots.** The 48 German and 215 French texts with more than one row at
