@@ -68,6 +68,7 @@ audio-repair — non-destructive course audio repair (propose / preview / accept
                     [--spend] [--actor NAME] [--text "..."] [--voice V] [--takes N]
   accept   <course> (--from LOG | --id <audioId> --candidate <candidateId>)
                     --i-have-listened --actor NAME [--reason "..."] [--dry]
+  pending  <course> [--json FILE]        candidates rendered but never accepted
   reject   <course> --candidate <candidateId> --actor NAME [--reason "..."]
   revert   <course> (--from ACCEPT_LOG | --id <audioId>) --actor NAME [--to REV] [--dry]
 
@@ -112,6 +113,7 @@ function announce () {
 
 // ── queue ──────────────────────────────────────────────────────────────────
 async function cmdQueue () {
+  await warnIfPending()
   const maxSeed = flags['max-seed'] === undefined ? null : num(flags['max-seed'], null)
   const audioIds = maxSeed
     ? await core().seedScopedAudioIds({ courseCode: COURSE, maxSeedNumber: maxSeed })
@@ -197,6 +199,7 @@ async function cmdBytes () {
 
 // ── propose ────────────────────────────────────────────────────────────────
 async function cmdPropose () {
+  await warnIfPending()
   const targets = targetsFromArgs()
   const { jobs, skipped } = planTargets(targets, {
     role: str(flags.role), only: str(flags.only, 'all'), limit: num(flags.limit, 0),
@@ -251,10 +254,14 @@ async function cmdPropose () {
     console.log(`\n${ok.length} candidate(s) proposed, ${rows.length - ok.length} failed. NOTHING IS LIVE YET.`)
     console.log(`Listen, then accept the ones you believe:`)
     console.log(`  node tools/audio-repair.cjs accept ${COURSE} --from ${p} --i-have-listened --actor <you>\n`)
+    console.log(`Until you do, this repair is NOT done — \`pending ${COURSE}\` will keep saying so.\n`)
   } else {
     console.log(`\nNothing rendered. Re-run with --spend once the plan is approved.\n`)
   }
-  process.exit(rows.some(r => r.action === 'failed') ? 2 : 0)
+  // A real propose leaves work undone BY DESIGN. Exit 3 says exactly that, so a
+  // caller that only checks for zero cannot record a proposal as a repair.
+  if (rows.some(r => r.action === 'failed')) process.exit(2)
+  process.exit(SPEND && rows.some(r => r.action === 'proposed') ? 3 : 0)
 }
 
 // ── accept ─────────────────────────────────────────────────────────────────
@@ -410,7 +417,54 @@ async function cmdReject () {
   console.log(`candidate ${res.candidateId} rejected. The learner path was never touched; the S3 object is kept as evidence.`)
 }
 
-const COMMANDS = { queue: cmdQueue, preview: cmdPreview, propose: cmdPropose, accept: cmdAccept, reject: cmdReject, revert: cmdRevert, bytes: cmdBytes }
+// ── pending ────────────────────────────────────────────────────────────────
+/**
+ * The hand-off gate. `propose` spends money and changes nothing a learner
+ * hears; `accept` is the only thing that does. Between them sat a silent gap:
+ * on 2026-08-06 Tom heard old German clips on dev because slots were sitting
+ * on superseded audio whose verified replacements had been generated and never
+ * linked, and the propose logs read as though the work was done. Nothing
+ * counted the difference.
+ *
+ * This does. It exits 2 when anything is pending, so a script cannot treat a
+ * half-finished repair as a finished one. It does NOT accept anything —
+ * --i-have-listened stays exactly where it is.
+ */
+async function cmdPending () {
+  const rows = await require('../services/audio-repair.cjs').listPending({ courseCode: COURSE })
+  if (str(flags.json)) fs.writeFileSync(str(flags.json), JSON.stringify(rows, null, 2))
+
+  if (!rows.length) {
+    console.log(`\n${COURSE}: no pending candidates. Every proposal has been accepted or rejected.\n`)
+    process.exit(0)
+  }
+
+  console.log(`\n${rows.length} candidate(s) RENDERED AND NEVER DECIDED in ${COURSE}.`)
+  console.log(`They cost money to make and NONE of them is on the learner path.\n`)
+  for (const r of rows) {
+    const age = r.proposed_at ? String(r.proposed_at).slice(0, 10) : '?'
+    console.log(`  ${r.id}  audio ${r.audio_id}  ${age}  by ${r.proposed_by || '?'}  ` +
+      `${r.duration_ms ?? '?'}ms  veracity ${r.veracity_pass === false ? 'FAIL' : 'pass'}  ${String(r.text || '').slice(0, 48)}`)
+  }
+  console.log(`\nListen, then accept the ones you believe:`)
+  console.log(`  node tools/audio-repair.cjs accept ${COURSE} --id <audioId> --candidate <candidateId> \\`)
+  console.log(`         --i-have-listened --actor <you>`)
+  console.log(`or reject: node tools/audio-repair.cjs reject ${COURSE} --candidate <candidateId> --actor <you>\n`)
+  process.exit(2)
+}
+
+/** Printed by queue and propose so nobody starts new work on top of a stalled hand-off. */
+async function warnIfPending () {
+  try {
+    const rows = await require('../services/audio-repair.cjs').listPending({ courseCode: COURSE })
+    if (rows.length) {
+      console.log(`\n!! ${rows.length} candidate(s) in ${COURSE} were rendered and never accepted — they are NOT live.`)
+      console.log(`!! node tools/audio-repair.cjs pending ${COURSE}\n`)
+    }
+  } catch { /* never block real work on the warning */ }
+}
+
+const COMMANDS = { queue: cmdQueue, preview: cmdPreview, propose: cmdPropose, accept: cmdAccept, reject: cmdReject, revert: cmdRevert, bytes: cmdBytes, pending: cmdPending }
 
 ;(async () => {
   const fn = COMMANDS[VERB]

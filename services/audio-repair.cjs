@@ -182,8 +182,31 @@ function core () {
   return _core
 }
 
+/**
+ * Candidates that were rendered and never decided on.
+ *
+ * `propose` spends money and puts a candidate in `audio_repair_candidates`
+ * with status 'pending'. Only `accept` promotes one, and only a human can run
+ * it. Nothing used to COUNT the ones left in between, so a batch that got
+ * proposed and never accepted read, in every log and every report, exactly
+ * like a batch that had been fixed — while the learner still heard the old
+ * clip. This is the query that makes that gap visible.
+ */
+async function listPending ({ courseCode = null } = {}) {
+  let q = supabaseClient()
+    .from('audio_repair_candidates')
+    .select('id, audio_id, course_code, text, voice_id, duration_ms, veracity_pass, proposed_by, proposed_at')
+    .eq('status', 'pending')
+    .order('proposed_at', { ascending: true })
+  if (courseCode) q = q.eq('course_code', courseCode)
+  const { data, error } = await q
+  if (error) throw new Error(`listPending: ${error.message}`)
+  return data || []
+}
+
 module.exports = {
   core,
+  listPending,
   storage,
   render,
   verify,
