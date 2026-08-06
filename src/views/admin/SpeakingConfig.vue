@@ -60,7 +60,7 @@
       <section v-if="labCfg" class="config-row">
         <RowHeader
           :title="`Round shape — ${modeLabel} overrides`"
-          desc="How THIS mode reshapes the global script shape above. Blank = inherit the global value. Easy is seeded at roughly double Fast's repetitions; Fast inherits everything, which is what makes it identical to the old Normal mode."
+          desc="How THIS mode reshapes the global script shape above. Blank = inherit the global value. Easy's seeds are pitched at roughly a learner's FIRST 10 HOURS and are expected to adjust upwards from there — double the reps, half the phrase length. Fast inherits everything, which is what makes it identical to the old Normal mode."
           :row="rowMap[labMode]"
           :dirty="isDirty(labMode)"
           :saving="savingKey === labMode"
@@ -93,16 +93,24 @@
         </div>
 
         <div class="field-block">
-          <label>Phrase length preference <span class="hint">which end survives the cap</span></label>
-          <div class="seg-row">
-            <button class="seg-pill" :class="{ on: phrasePref === 'shortest' }" @click="labCfg.phraseLengthPreference = 'shortest'">Shortest first</button>
-            <button class="seg-pill" :class="{ on: phrasePref === 'longest' }" @click="labCfg.phraseLengthPreference = 'longest'">Longest first</button>
+          <div class="knob-top">
+            <label>Maximum phrase length <span class="hint">share of the course's longest phrase</span></label>
+            <span class="knob-val">{{ Math.round(maxPhraseLengthFraction * 100) }}%{{ maxPhraseLengthFraction >= 1 ? ' — no limit' : '' }}</span>
           </div>
+          <input
+            type="range" min="0.1" max="1" step="0.05"
+            :value="maxPhraseLengthFraction"
+            @input="labCfg.maxPhraseLengthFraction = Number($event.target.value)"
+          />
           <p class="field-note">
-            Phrases are sorted by syllable count and then cut at the caps above, so
-            this decides which ones survive. <strong>Longest first</strong> is Easy's
-            "longest possible phrase"; <strong>shortest first</strong> is the historic
-            behaviour and what Fast uses.
+            Caps how long a phrase this mode will use, as a share of the longest
+            phrase in the whole course — so it means the same thing in a course of
+            short sentences as a long one. <strong>100% = no limit</strong>, which is
+            Fast and is exactly the historic behaviour. Easy sits at
+            <strong>50%</strong>: half the longest possible phrase. Length is measured
+            on the target text. If the cap would leave a LEGO short of phrases it
+            yields and that LEGO's shortest are used instead — the phrase floor always
+            wins, so an over-tight cap degrades gently rather than emptying rounds.
           </p>
         </div>
       </section>
@@ -284,9 +292,11 @@ function backfillPauseRow(key, d) {
   if (c.min_pause_ms == null) c.min_pause_ms = isEasy ? 1400 : 700
   if (c.max_pause_ms == null) c.max_pause_ms = 15000
   // The two fields the mode restructure added. Absent = inherit the global
-  // script shape / use the historic sort — never a silent reshape.
+  // script shape / no length cap — never a silent reshape.
   if (c.scriptShape == null) c.scriptShape = {}
-  if (c.phraseLengthPreference == null) c.phraseLengthPreference = isEasy ? 'longest' : 'shortest'
+  // 1.0 = uncapped = the historic behaviour. Easy halves the longest phrase
+  // (Aran 2026-08-06); a missing value must never invent a cap.
+  if (c.maxPhraseLengthFraction == null) c.maxPhraseLengthFraction = isEasy ? 0.5 : 1.0
 }
 function backfillPause(d) {
   backfillPauseRow('easy_mode', d)
@@ -315,7 +325,10 @@ const modeShape = computed(() => {
   if (!cfg.scriptShape) cfg.scriptShape = {}
   return cfg.scriptShape
 })
-const phrasePref = computed(() => labCfg.value?.phraseLengthPreference || 'shortest')
+const maxPhraseLengthFraction = computed(() => {
+  const f = labCfg.value?.maxPhraseLengthFraction
+  return typeof f === 'number' && f > 0 && f <= 1 ? f : 1
+})
 
 // Help text that names the global value a blank field inherits, so the admin
 // can see what "inherit" actually means without leaving the page.
