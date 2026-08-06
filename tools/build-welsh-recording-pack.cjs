@@ -73,6 +73,9 @@ function sceneShape(sentences) {
     out.set(n, {
       lines: rows.length,
       awaitingTarget: rows.filter(r => !String(r.target_text || '').trim()).length,
+      // Drafted = machine-written, awaiting Aran's proofread. It IS in the queue —
+      // it just must never be read as if it were finished course text.
+      draftTarget: rows.filter(r => r.target_text_draft).length,
       speakers,
       mode: speakers.every(sp => CHUNK_SPEAKERS.has(sp)) ? 'chunk' : 'dialogue',
     })
@@ -88,6 +91,7 @@ function fmtTime(nTakes) {
 function renderScript({ course, voice, plan, final, sentences }) {
   const shape = sceneShape(sentences)
   const awaitingTotal = [...shape.values()].reduce((a, s) => a + s.awaitingTarget, 0)
+  const draftTotal = [...shape.values()].reduce((a, s) => a + s.draftTarget, 0)
   const isExplainer = plan.isExplainer
   const remaining = final.items.filter(i => !i.recorded)
   const L = []
@@ -103,6 +107,10 @@ function renderScript({ course, voice, plan, final, sentences }) {
   L.push('')
   if (awaitingTotal) {
     L.push(`**${awaitingTotal} of the ${CANONICAL_LINES} canonical lines have no Welsh written yet.** Their Welsh takes are not in this queue — every Welsh line printed below has been written already. Writing the missing Welsh is a translation job, not a recording job: nobody is expected to improvise it at the microphone.`)
+    L.push('')
+  }
+  if (draftTotal) {
+    L.push(`**${draftTotal} of the ${CANONICAL_LINES} canonical lines are marked 📝 DRAFT below.** That Welsh was drafted by a machine and nobody has proofread it yet — it is here so it can be read and corrected, not so it can be recorded as it stands. **Do not record a 📝 DRAFT line until Aran has approved the words.** The recording room shows the same mark, and editing the line there is what clears it.`)
     L.push('')
   }
   L.push(`Lines already recorded are marked ✅ and struck through — the recording tool will skip you straight past them; they are kept here so the numbering matches what you see on screen. A \`…\` mid-line is a **breathing point**: take a natural breath there and carry on in the same sentence.`)
@@ -126,16 +134,21 @@ function renderScript({ course, voice, plan, final, sentences }) {
           L.push('')
           L.push(`*${sh.awaitingTarget} of this scene's ${sh.lines} canonical lines have no Welsh written yet — their Welsh take is not in this queue. Where you see an English guide line with no Welsh beside it, that is why.*`)
         }
+        if (sh.draftTarget) {
+          L.push('')
+          L.push(`*${sh.draftTarget} of this scene's ${sh.lines} lines are 📝 DRAFT — drafted, not yet proofread. Read them, correct them; do not record them as they stand.*`)
+        }
         L.push('')
       }
     }
     const who = it.kind === 'target' ? it.speaker : (it.kind === 'known' ? `English (guide) — for ${it.speaker}'s line` : 'Explainer')
     const read = it.kind === 'target' ? it.line.targetText : it.line.knownText
     const gloss = it.kind === 'target' && it.line.knownText ? it.line.knownText : null
+    const draftMark = it.draft ? '📝 **DRAFT — AWAITING ARAN** ' : ''
     if (it.recorded) {
       L.push(`${n}. ✅ ~~[${who}] ${read}~~`)
     } else {
-      L.push(`${n}. **[${who}]** ${read}`)
+      L.push(`${n}. ${draftMark}**[${who}]** ${read}`)
       if (gloss) L.push(`    · *${gloss}*`)
     }
   }

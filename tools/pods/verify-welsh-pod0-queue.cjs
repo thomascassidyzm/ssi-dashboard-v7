@@ -9,9 +9,14 @@
  *
  *   1. every English line a recorder would be shown is in the current canonical;
  *   2. no English line from the superseded pod-0 appears anywhere in any queue;
- *   3. every Welsh line served is one that was written for the English beside it.
+ *   3. every Welsh line served is either one that was written for the English now
+ *      beside it, or a line MARKED AS A DRAFT (Tom 2026-08-06, "opus drafts, Aran
+ *      proofreads" — new Welsh may be served, but never as if it were finished);
+ *   4. every drafted row in the pod reaches the recorder carrying that marker, and
+ *      no line the archive wrote is marked as a draft.
  *
- * Exit 0 = a Welsh recorder cannot be served the old text. Exit 1 = it can.
+ * Exit 0 = a Welsh recorder cannot be served the old text, and cannot be served
+ * drafted words believing they are final. Exit 1 = it can.
  */
 'use strict'
 require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.env') })
@@ -45,6 +50,7 @@ const COURSES = ['cym_n_for_eng', 'cym_s_for_eng']
     const { data: pods } = await db.from('listening_pods').select('*').like('id', `${course}:%`)
     const { data: sentences } = await db.from('listening_pod_sentences')
       .select('*').in('pod_id', pods.map(p => p.id)).order('global_order')
+    const draftIds = new Set(sentences.filter(s => s.target_text_draft).map(s => s.id))
 
     const voices = [...new Map(Object.entries(podCast).filter(([k]) => k !== '__explainer__')
       .map(([, e]) => [e.voiceId, e])).values()]
@@ -58,7 +64,11 @@ const COURSES = ['cym_n_for_eng', 'cym_s_for_eng']
         acceptVoiceIds: new Set([v.voiceId, ...(aliases[v.voiceId] || [])]),
         fetchAudioRows: async (ids) => (await db.from('course_audio').select('id,origin,voice_id').in('id', ids)).data || [],
       })
-      const bad = { englishNotCanonical: [], oldEnglish: [], welshMismatched: [], emptyLine: [] }
+      const bad = {
+        englishNotCanonical: [], oldEnglish: [], welshMismatched: [], emptyLine: [],
+        draftServedUnmarked: [], archiveWelshMarkedDraft: [],
+      }
+      const seenDraftItems = new Set()
       for (const it of final.items) {
         const en = norm(it.line.knownText)
         const wl = norm(it.line.targetText)
@@ -67,15 +77,29 @@ const COURSES = ['cym_n_for_eng', 'cym_s_for_eng']
           if (oldOnlyEnglish.has(en)) bad.oldEnglish.push(`${it.sentenceId}: ${it.line.knownText}`)
           else if (!canonEnglish.has(en)) bad.englishNotCanonical.push(`${it.sentenceId}: ${it.line.knownText}`)
         }
-        // A served Welsh line must be one that was written for the English now beside it.
+        // A served Welsh line must be one that was written for the English now
+        // beside it, OR a line the recorder is being told is a draft.
         if (wl && it.kind === 'target') {
+          const isDraftRow = (it.sentenceIds || [it.sentenceId]).some(id => draftIds.has(id))
           const writtenFor = welshFor.get(wl)
-          if (writtenFor === undefined) bad.welshMismatched.push(`${it.sentenceId}: Welsh not from the archive`)
+          if (writtenFor === undefined && !isDraftRow) {
+            bad.welshMismatched.push(`${it.sentenceId}: Welsh neither from the archive nor marked as a draft`)
+          }
+          // The marker must actually REACH the recorder, both ways round.
+          if (isDraftRow) {
+            seenDraftItems.add(it.sentenceId)
+            if (it.draft !== true) bad.draftServedUnmarked.push(`${it.sentenceId}: drafted Welsh served WITHOUT the draft marker`)
+          } else if (it.draft === true) {
+            bad.archiveWelshMarkedDraft.push(`${it.sentenceId}: human-written Welsh served marked as a draft`)
+          }
         }
       }
       const n = Object.values(bad).reduce((a, x) => a + x.length, 0)
       failures += n
-      report.push({ course, voice: v.voiceId, items: final.items.length, recorded: final.totals.recorded, violations: bad, ok: n === 0 })
+      report.push({
+        course, voice: v.voiceId, items: final.items.length, recorded: final.totals.recorded,
+        draftItemsServed: seenDraftItems.size, violations: bad, ok: n === 0,
+      })
     }
   }
   console.log(JSON.stringify({ pass: failures === 0, failures, report }, null, 2))
