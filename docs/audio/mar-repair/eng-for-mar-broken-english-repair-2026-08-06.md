@@ -1,7 +1,7 @@
 # eng_for_mar — the broken English, repaired
 
 **2026-08-06.** 34 phrases rewritten on 10 live seeds. Text is fixed and live. **No audio has been
-generated** — 98 clips are needed and are waiting on your approval. Full revert is one command.
+generated** — 100 clips are needed and are waiting on your approval. Full revert is one command.
 
 ---
 
@@ -11,7 +11,7 @@ generated** — 98 clips are needed and are waiting on your approval. Full rever
 |---|---|
 | Broken phrases rewritten | **34** |
 | Left flagged as too uncertain to touch | **1 package** (S0237/S0238) + 1 item reclassified as a false positive |
-| New clips now needed | **98** — *not generated, not queued for generation, awaiting your approval* |
+| New clips now needed | **100** — *not generated, not queued for generation, awaiting your approval* |
 | Seeds still at risk of re-flagging | **0** |
 
 ---
@@ -82,7 +82,7 @@ The Marathi `फारसं अवघड नाही` contains `नाही`,
 | S0248 | complete rubbish very well | it was complete rubbish |
 | S0248 | I thought the film was complete rubbish very well | I thought that the film was complete rubbish |
 | S0248 | and I want my money back very well | I want my money back today |
-| S0245 | I've done tonight | I've done a lot in a short time |
+| S0245 | I've done tonight | I've done a lot today |
 | S0195 | on the table very well | it's on the table |
 | S0195 | the money I left on the table yet | the money I left yesterday |
 | S0114 | today than yesterday yet | worse today than yesterday |
@@ -143,6 +143,15 @@ had to label as a gap, at no extra clip cost:
 | S0118 | we were in the pub with my friends | **we were in the pub last week** | S52 attests `गेल्या आठवड्यात` in exactly this slot; mine rested on comitative vs locative order |
 | S0195 | I left it on the table | **it's on the table** | avoids the `ठेवणे` = "put" vs English "leave" mismatch entirely |
 
+**A fourth author audited what had already landed and found a hole in my own checking.** My
+consistency check looked for duplicate English *within* a LEGO; it never looked course-wide. On one
+row it mattered: my `I've done a lot in a short time` was an exact duplicate of S0089L03U04's
+English while carrying *different* Marathi — the same English taught from two different prompts.
+Their proposed fix does not work (`I've done a lot` is itself already S0089L02U01, with yet a third
+Marathi), so I wrote a third version, **`I've done a lot today`**, and verified course-wide that
+none of the 34 now duplicates anything. That cost 2 extra clips — the duplicate had been free
+precisely *because* it was a duplicate. Worth it.
+
 Where we differed elsewhere I kept mine, and the reasons are on the record — mostly that their
 alternative drifted from the seed's own meaning (`better` where the seed is about doing *worse*),
 changed person without cause (`we thought`, `she's going to`), duplicated a phrase already present
@@ -167,8 +176,15 @@ defect. I kept mine because the seed itself and the five sibling USE phrases all
    - S0195 L2 `ठेवलेले` glossed "the money I left" — the noun `पैसे` is missing from the chunk.
    - S0269 L2 `पाहायची नाही` glossed "to wait" — it carries a negation the gloss hides.
    - S0114 L2 `वाईट करत होतो` is past tense; the seed is present (`करतोय`).
-4. **The audio has never been verified against its text** for this course (`veracity_checked_at`
+4. **Five further phrases on S0269's L1 card are still non-English and I did not touch them** —
+   "I don't know for your father", "I'm not sure for your father", "I can't remember for your
+   father", and two `because` variants. They were not in the list of 35. They are broken for the
+   same root reason the card is: `वडिलांची वाट` contains a verb its English gloss does not. They
+   need a follow-up pass.
+5. **The audio has never been verified against its text** for this course (`veracity_checked_at`
    is NULL course-wide). Unchanged by this work.
+6. **Three of the four seed groups were audited by only one author each**, and 25 of the 34 rows
+   were never independently re-read after landing.
 
 ---
 
@@ -212,7 +228,7 @@ Rewriting instead of deleting is what avoided it.
 
 ---
 
-## THE AUDIO — 98 clips, and 34 slots are silent right now
+## THE AUDIO — 100 clips, and 34 slots are silent right now
 
 This is the part that needs you.
 
@@ -223,10 +239,10 @@ precisely bounded: I verified that these 34 rows are the *only* silent rows in t
 
 | | |
 |---|---|
-| Marathi (`known`) clips needed | **32** |
-| English `target1` clips needed | **33** |
+| Marathi (`known`) clips needed | **33** |
+| English `target1` clips needed | **33** (one of the 34 rows re-links free) |
 | English `target2` clips needed | **33** |
-| **Total** | **98** |
+| **Total** | **100** |
 | Rows that re-linked existing audio for free | 2 (S0149 B01/B02 — the Marathi was already correct, only the English was wrong) |
 
 **I have not run any TTS and have not started any batch.** Per the standing doctrine I have
@@ -242,7 +258,7 @@ Queueing is not generating. **Nothing will be spoken until you approve the batch
 
 ### The call that is yours
 
-98 clips of silence on a live course, versus 34 phrases drilling learners to say "I think that's
+100 clips of silence on a live course, versus 34 phrases drilling learners to say "I think that's
 very happy". I have taken the first because you asked for the text fixed and the count reported.
 If you would rather the course go back to broken-but-audible while the batch waits, the revert is
 one command and takes seconds:
@@ -269,7 +285,7 @@ It restores the original text *and* the original audio ids for all 34 rows from
 
 ## Recommendation
 
-1. Approve the 98-clip batch, or revert. Either is fine; leaving it as-is is the one bad option.
+1. Approve the 100-clip batch, or revert. Either is fine; leaving it as-is is the one bad option.
 2. Then decide S0237/S0238 — it is written up and ready.
 3. Then the ~209 course-wide, which is the same generator's damage at six times the scale.
 4. S0269 needs re-decomposition regardless; its phrases are now correct but its cards are not.
