@@ -259,6 +259,10 @@ function createRepairCore (deps) {
     nearSilencePeakDb: -9,  // the fra_for_eng near-silence signature
     suspectRatio: 0.85,     // shipped/expected below this = queue it for ears
     attempts: 3,
+    // Best-of-N. 1 preserves the original "first clean take wins" behaviour, so
+    // every existing caller is unaffected; >1 renders that many takes and keeps
+    // the one with the most natural ending. See selectTake().
+    takes: 1,
   }, deps.thresholds || {})
 
   // ── reads ────────────────────────────────────────────────────────────────
@@ -320,7 +324,7 @@ function createRepairCore (deps) {
    */
   async function propose ({
     courseCode, audioId, source = 'tts', text, voiceId,
-    buffer, filename, actor = 'unknown', dryRun = false,
+    buffer, filename, actor = 'unknown', dryRun = false, takes,
   }) {
     const row = await loadClip(courseCode, audioId)
     const useText = (text && String(text).trim()) || row.text
@@ -356,28 +360,58 @@ function createRepairCore (deps) {
           current: currentFacts(row),
         }
       }
-      // Re-roll on a bad render rather than handing a human a broken candidate.
+      // Render up to `takes` takes, then keep the best ENDING among the clean
+      // ones. With takes=1 this is exactly the old loop: re-roll on a bad render
+      // rather than handing a human a broken candidate, first clean take wins.
+      //
+      // With takes>1 it is a selection, not a retry. That matters here because
+      // the defect being repaired — a tail cut that silences the ending without
+      // shortening the file — is invisible to faultOf(): the clip is the right
+      // length, the right loudness, and carries the right words. Only the SHAPE
+      // of the ending separates a cut take from a whole one, so the shape is
+      // what ranks them. TTS is stochastic, so re-rolling and picking the
+      // best-shaped take is the cheapest defence available.
+      const takesWanted = Math.max(1, Number(takes ?? T.takes) || 1)
+      // A clean take still costs a re-roll allowance; budget for both.
+      const maxRenders = takesWanted === 1 ? T.attempts : takesWanted + T.attempts - 1
+      const clean = []
       let last = null
-      for (let attempt = 1; attempt <= T.attempts; attempt++) {
+      for (let attempt = 1; attempt <= maxRenders && clean.length < takesWanted; attempt++) {
         const out = await render.render({
           text: useText, voiceId: useVoice, language: row.language, role: row.role,
         })
         const level = await verify.measure(out.buffer)
         const verdict = await verify.veracity(out.buffer, useText, row.language)
         const fault = faultOf(out.durationMs, level, verdict)
-        attemptLog.push({ attempt, durationMs: out.durationMs, level, fault })
-        last = { ...out, level, verdict }
-        if (!fault) break
-        logger.log?.(`[repair] ${audioId} attempt ${attempt}: ${fault} — re-roll`)
+        const tail = await tailOf(out.buffer, useText)
+        attemptLog.push({
+          attempt, durationMs: out.durationMs, level, fault,
+          releaseMs: tail ? tail.shape.releaseMs : null,
+          tailReason: tail ? tail.reason : null,
+        })
+        last = { ...out, level, verdict, tail }
+        if (fault) {
+          logger.log?.(`[repair] ${audioId} take ${attempt}: ${fault} — re-roll`)
+          continue
+        }
+        clean.push(last)
+        if (takesWanted === 1) break
       }
-      const fault = faultOf(last.durationMs, last.level, last.verdict)
-      if (fault) {
+      if (!clean.length) {
+        const fault = faultOf(last.durationMs, last.level, last.verdict)
         throw new RepairError(
-          `no attempt produced a clean candidate (${fault}, last ${last.durationMs}ms)`,
+          `no take produced a clean candidate (${fault}, last ${last.durationMs}ms)`,
           'candidate_failed_verification')
       }
-      candidateBuffer = last.buffer
-      durationMs = last.durationMs
+      const chosen = selectTake(clean)
+      attemptLog.push({
+        selected: clean.indexOf(chosen) + 1,
+        of: clean.length,
+        rankedBy: 'tail release (longest natural decay wins)',
+        releaseMs: chosen.tail ? chosen.tail.shape.releaseMs : null,
+      })
+      candidateBuffer = chosen.buffer
+      durationMs = chosen.durationMs
     }
 
     // Verify whatever we ended up with — uploads included, which is the only
@@ -435,6 +469,37 @@ function createRepairCore (deps) {
       },
       current: currentFacts(row),
     }
+  }
+
+  /**
+   * Tail shape for a rendered buffer, or null when it cannot be measured.
+   * Never throws: a missing frameDb adapter (or an ffmpeg hiccup) must degrade
+   * take selection to "first clean take wins", not fail the whole repair.
+   */
+  async function tailOf (buffer, text) {
+    if (typeof verify.frameDb !== 'function') return null
+    try {
+      const v = tailVerdict(await verify.frameDb(buffer), { textChars: String(text || '').length })
+      return v && v.shape ? v : null
+    } catch (err) {
+      logger.log?.(`[repair] tail measurement unavailable: ${err.message}`)
+      return null
+    }
+  }
+
+  /**
+   * The best ending among clean takes: the longest release, i.e. the one that
+   * decays furthest rather than stepping into silence. Takes whose tail could
+   * not be measured sort last but stay eligible, so an unmeasurable batch still
+   * yields a candidate (the first clean take) instead of an error.
+   */
+  function selectTake (takes) {
+    return takes.slice().sort((a, b) => {
+      const ar = a.tail ? a.tail.shape.releaseMs : -1
+      const br = b.tail ? b.tail.shape.releaseMs : -1
+      if (br !== ar) return br - ar
+      return (b.durationMs || 0) - (a.durationMs || 0) // longer = less likely clipped
+    })[0]
   }
 
   function faultOf (durationMs, level, verdict) {

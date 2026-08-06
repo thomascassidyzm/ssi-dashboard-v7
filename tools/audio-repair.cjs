@@ -65,14 +65,19 @@ audio-repair — non-destructive course audio repair (propose / preview / accept
   queue    <course> [--role R] [--limit N] [--json FILE] [--tails] [--max-seed N]
   preview  <course> --id <audioId>
   propose  <course> (--id <audioId> | --targets FILE) [--role R] [--only V] [--limit N]
-                    [--spend] [--actor NAME] [--text "..."] [--voice V]
+                    [--spend] [--actor NAME] [--text "..."] [--voice V] [--takes N]
   accept   <course> (--from LOG | --id <audioId> --candidate <candidateId>)
                     --i-have-listened --actor NAME [--reason "..."] [--dry]
   reject   <course> --candidate <candidateId> --actor NAME [--reason "..."]
+  revert   <course> (--from ACCEPT_LOG | --id <audioId>) --actor NAME [--to REV] [--dry]
 
   --tails            also run the tail-integrity check (fetches + decodes every clip)
   --max-seed N       restrict to clips reachable from seeds 1..N
   --spend            propose renders for real. WITHOUT IT NOTHING IS BILLED.
+  --takes N          propose renders N takes and keeps the one with the most
+                     natural ending (longest tail release). Default 1. Costs
+                     N x the characters. Use it when the defect being repaired
+                     is a cut tail, which no duration or loudness check can see.
   --concurrency N    queue --tails: clips measured at once (default 8)
   --i-have-listened  required by accept. There is no way to accept without it.
 `
@@ -217,7 +222,7 @@ async function cmdPropose () {
       const out = await core().propose({
         courseCode: COURSE, audioId: job.id, source: 'tts',
         text: str(flags.text), voiceId: str(flags.voice),
-        actor, dryRun: !SPEND,
+        actor, dryRun: !SPEND, takes: num(flags.takes, 1),
       })
       if (!SPEND) {
         const cur = out.current || {}
@@ -332,6 +337,69 @@ async function cmdAccept () {
   process.exit(failed || aborted ? 2 : 0)
 }
 
+// ── revert ─────────────────────────────────────────────────────────────────
+/**
+ * Undo accepted swaps — the whole of a batch in one command, or one clip.
+ *
+ * This exists because "the old audio is retained" was true of the DATA but not
+ * reachable from the CLI: core.revert() had no verb, so undoing a 74-clip batch
+ * meant hand-writing a script against course_audio_revisions. A rollback nobody
+ * can run is not a rollback. Feed it the accept log and every clip in it goes
+ * back to the object it was serving before.
+ *
+ * No render, no spend, and no delete: the superseded object was never removed,
+ * so this is a pointer write. It moves the revision FORWARD (see core.revert)
+ * because the number's only job is to invalidate caches.
+ */
+async function cmdRevert () {
+  const DRY = flags.dry === true
+  const actor = str(flags.actor)
+  if (!DRY && (!actor || actor === 'unknown')) {
+    die('revert refuses without --actor <name>. The history row records who rolled it back.')
+  }
+
+  let items
+  if (flags.from) {
+    const log = JSON.parse(fs.readFileSync(str(flags.from), 'utf8'))
+    items = log.filter(r => r.action === 'accepted').map(r => ({ audioId: r.audioId }))
+    if (!items.length) die(`no accepted swaps in ${str(flags.from)} — nothing to revert`)
+  } else {
+    items = [{ audioId: str(flags.id) || die('revert needs --from <accept log> or --id <audioId>') }]
+  }
+
+  console.log(`\naudio-repair revert — ${COURSE}${DRY ? '  [DRY RUN]' : ''}`)
+  console.log(`${items.length} clip(s) back to their previous object; no TTS, nothing billed.\n`)
+
+  const rows = []
+  let ok = 0, failed = 0
+  for (const [i, item] of items.entries()) {
+    const prefix = `[${i + 1}/${items.length}] ${item.audioId}`
+    try {
+      if (DRY) {
+        const p = await core().preview({ courseCode: COURSE, audioId: item.audioId })
+        console.log(`${prefix}  [DRY] would restore the object served before rev ${p.current.revision}`)
+        rows.push({ audioId: item.audioId, action: 'would-revert', current: p.current }); ok++
+        continue
+      }
+      const res = await core().revert({
+        courseCode: COURSE, audioId: item.audioId,
+        toRevision: flags.to ? num(flags.to, null) : null,
+        actor, reason: str(flags.reason, 'batch revert'),
+      })
+      console.log(`${prefix}  REVERTED -> rev ${res.revision}, serving ${res.s3Key || '(previous object)'}`)
+      rows.push({ audioId: item.audioId, action: 'reverted', ...res }); ok++
+    } catch (e) {
+      failed++
+      console.log(`${prefix}  FAILED — ${e.message.slice(0, 200)}`)
+      rows.push({ audioId: item.audioId, action: 'failed', error: e.message })
+    }
+  }
+
+  writeLog(rows, { verb: 'revert', dryRun: DRY })
+  console.log(`\n${ok} ${DRY ? 'would be reverted' : 'reverted'}, ${failed} failed.\n`)
+  process.exit(failed ? 2 : 0)
+}
+
 // ── reject ─────────────────────────────────────────────────────────────────
 async function cmdReject () {
   const candidateId = str(flags.candidate) || die('reject needs --candidate <candidateId>')
@@ -342,7 +410,7 @@ async function cmdReject () {
   console.log(`candidate ${res.candidateId} rejected. The learner path was never touched; the S3 object is kept as evidence.`)
 }
 
-const COMMANDS = { queue: cmdQueue, preview: cmdPreview, propose: cmdPropose, accept: cmdAccept, reject: cmdReject, bytes: cmdBytes }
+const COMMANDS = { queue: cmdQueue, preview: cmdPreview, propose: cmdPropose, accept: cmdAccept, reject: cmdReject, revert: cmdRevert, bytes: cmdBytes }
 
 ;(async () => {
   const fn = COMMANDS[VERB]

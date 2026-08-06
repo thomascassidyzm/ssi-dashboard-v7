@@ -287,6 +287,83 @@ describe('propose', () => {
   })
 })
 
+// ── PROPOSE --takes: best-of-N by tail shape ───────────────────────────────
+//
+// The point of best-of-N is that faultOf() cannot see the defect it exists to
+// beat. A tail cut leaves the clip the right length, the right loudness and
+// carrying the right words, so every take below is "clean" — they differ ONLY
+// in the shape of the ending. If selection ever regresses to "first clean take
+// wins", these tests fail.
+
+describe('propose --takes', () => {
+  /**
+   * A core whose Nth render has the Nth release in `releases` (in decay frames).
+   * The buffer length encodes which take it is, so frameDb can hand back that
+   * take's envelope without any shared mutable counter.
+   */
+  function takesCore (db, releases) {
+    let n = 0
+    return createRepairCore({
+      supabase: db.client,
+      storage: { put: async (key) => ({ key }), head: async () => ({ exists: true }), get: async () => ({ buffer: Buffer.alloc(1) }) },
+      render: {
+        render: async () => ({ buffer: Buffer.alloc(1000 + (n++), 1), durationMs: 4100 }),
+        master: async (buf) => ({ buffer: buf, durationMs: 4100 }),
+      },
+      verify: {
+        measure: async () => ({ meanDb: -21, peakDb: -1.5 }),
+        veracity: async () => ({ checked: true, pass: true, reason: null, cer: 0.03 }),
+        frameDb: async (buf) => envelope({ decayFrames: releases[buf.length - 1000] }),
+      },
+      newId: () => 'cand-1',
+      now: () => '2026-08-05T22:00:00.000Z',
+      logger: { log () {}, warn () {}, error () {} },
+    })
+  }
+
+  const notesOf = (db) => db.snapshot().audio_repair_candidates[0].notes
+  const chosen = (db) => notesOf(db).attempts.find(a => a.selected)
+
+  it('picks the best-shaped take, not the first clean one', async () => {
+    const db = seedDb()
+    // Take 1 is clean but ends abruptly (2 decay frames); take 3 decays fully.
+    const core = takesCore(db, [2, 8, 30])
+    await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test', takes: 3 })
+    expect(chosen(db).selected).toBe(3)
+    expect(chosen(db).of).toBe(3)
+  })
+
+  it('renders exactly `takes` takes when every one is clean', async () => {
+    const db = seedDb()
+    const core = takesCore(db, [10, 12, 14])
+    await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test', takes: 3 })
+    expect(notesOf(db).attempts.filter(a => a.attempt).length).toBe(3)
+  })
+
+  it('records every take\'s release, so the selection is auditable', async () => {
+    const db = seedDb()
+    const core = takesCore(db, [2, 30])
+    await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test', takes: 2 })
+    const releases = notesOf(db).attempts.filter(a => a.attempt).map(a => a.releaseMs)
+    expect(releases).toHaveLength(2)
+    expect(releases[1]).toBeGreaterThan(releases[0])
+  })
+
+  it('defaults to one take — existing callers render exactly once', async () => {
+    const db = seedDb()
+    const core = takesCore(db, [2, 30])
+    await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test' })
+    expect(notesOf(db).attempts.filter(a => a.attempt).length).toBe(1)
+  })
+
+  it('still produces a candidate when the tail cannot be measured', async () => {
+    const db = seedDb()
+    const { core } = makeCore(db) // no frameDb adapter at all
+    const r = await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test', takes: 3 })
+    expect(r.candidateId).toBeTruthy()
+  })
+})
+
 // ── ACCEPT: the load-bearing claims ────────────────────────────────────────
 
 describe('accept', () => {
