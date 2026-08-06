@@ -878,13 +878,16 @@ function createRepairCore (deps) {
     const PAGE = 1000
     const data = []
     if (audioIds && audioIds.length) {
-      // `.in()` on a huge id list blows the URL length, so chunk the filter too.
-      for (let i = 0; i < audioIds.length; i += PAGE) {
-        const chunk = audioIds.slice(i, i + PAGE)
+      // `.in()` goes in the query string, and a uuid is 36 characters, so a
+      // 1,000-id filter is a ~37 KB URL and PostgREST answers 400 Bad Request.
+      // 200 keeps it well inside every proxy's limit.
+      const ID_CHUNK = 200
+      for (let i = 0; i < audioIds.length; i += ID_CHUNK) {
+        const chunk = audioIds.slice(i, i + ID_CHUNK)
         let q = supabase.from('course_audio').select(COLUMNS)
           .eq('course_code', courseCode).in('id', chunk)
         if (role) q = q.eq('role', role)
-        const { data: rows, error } = await q.limit(PAGE)
+        const { data: rows, error } = await q.limit(ID_CHUNK)
         if (error) throw new RepairError(`reading course audio: ${error.message}`, 'db_error', 500)
         data.push(...(rows || []))
       }
