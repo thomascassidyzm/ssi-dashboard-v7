@@ -90,8 +90,28 @@ course scale against ground truth: unprimed speech-recognition on the deployed b
 only question that matters — **is the last word actually there?** — with a control group of clips
 the predictor did *not* flag.
 
-The predictor does carry real signal. But the control group is the problem: clips it passed as
-healthy are missing their final words too. Among them, verbatim from the transcripts:
+### The numbers
+
+300 clips, 150 flagged and 150 not, judged the same way. A clip counts as truncated only when its
+final word is absent **and** the word before it was heard — that separates a clip that lost its
+ending from one the recogniser merely mis-spelled.
+
+| group | truncated |
+|---|---|
+| clips the predictor **flagged** | **24.0 %** |
+| clips the predictor **passed** | **16.7 %** |
+| seeds 1-2, already repaired on 05-08 | **0.78 %** |
+
+That third row is the one that makes the other two trustworthy. The clips we already fixed come
+back clean at 0.78 %, so the measure is not simply crying wolf — it is reading real damage, and the
+rest of the course is riddled with it.
+
+And the gap between the first two rows is far too small. **The predictor is only about 1.4× better
+than chance at finding a clip with a missing word.** On this course that means roughly three
+quarters of the 14,262 clips it flags are fine, while thousands of damaged clips it passed would
+stay broken.
+
+The control group makes it concrete — clips it passed as healthy, verbatim from the transcripts:
 
 - *"Ich werde morgen Deutsch sprechen"* → heard as *"ich werde morgen deutsch"*. **"sprechen" is
   gone** — the exact signature of the original amputation, in a clip the predictor did not flag.
@@ -109,10 +129,18 @@ process already uses to *verify* a repaired clip — it should also be what *sel
 
 **Better, simpler, cheaper on all three legs**: it targets real damage instead of a proxy, it is one
 metric instead of two, and it makes the render bill smaller and precisely aimed. I am proceeding on
-that basis and the process document records it.
+that basis; it is built (`tools/audio-word-loss-scan.cjs`), committed, and the process document
+records it.
 
-The one thing this costs is time, not money: it is roughly three hours of our own CPU per course
-rather than fifteen minutes. It is running.
+The one thing this costs is time, not money: several hours of our own CPU per course rather than
+fifteen minutes. The `deu_for_eng` scan is running now. It is checkpointed and resumable, so it
+survives a restart.
+
+**What this means for the size of the job.** If the damage really is around the rate the pilot
+suggests, this is a much bigger repair than the seeds 1-5 run implied — thousands of clips per
+course, not hundreds. The good news is that the bill scales with real damage rather than with a
+noisy proxy, and detection stays free. I will bring you the real number when the scan lands, with
+the cost, before anything is rendered.
 
 ---
 
