@@ -155,10 +155,44 @@ async function loadRows () {
   return out.filter(r => r.s3_key && r.duration_ms)
 }
 
+/**
+ * Tom's ruling, 2026-08-06: "we should prioritise LEGOS - before cycles - a
+ * missing clip in a LEGO basically destroys the learning journey / a missing
+ * clip in a cycle makes little difference", and a LEGO means the full triple:
+ * "intro + voice 1 + voice 2".
+ *
+ * The scan is hours long and checkpointed, so ORDER is what makes a partial
+ * result useful: everything reachable from course_legos goes first, so the
+ * clips that break the learning journey are judged in the first minutes rather
+ * than the last hour.
+ */
+async function legoFirst (rows) {
+  const lego = new Set()
+  let from = 0
+  for (;;) {
+    const { data, error } = await sb.from('course_legos')
+      .select('presentation_audio_id, target1_audio_id, target2_audio_id, known_audio_id')
+      .eq('course_code', COURSE).order('lego_id').range(from, from + 999)
+    if (error || !data) break
+    for (const l of data) {
+      for (const x of [l.presentation_audio_id, l.target1_audio_id, l.target2_audio_id, l.known_audio_id]) {
+        if (x) lego.add(x)
+      }
+    }
+    if (data.length < 1000) break
+    from += 1000
+  }
+  const a = [], b = []
+  for (const r of rows) (lego.has(r.id) ? a : b).push(r)
+  console.log(`LEGO-first: ${a.length} LEGO clip(s) ahead of ${b.length} other clip(s)`)
+  return a.concat(b)
+}
+
 ;(async () => {
   veracity.announceStatus(console)
   const av = require('../services/audio-veracity.cjs')
   let rows = await loadRows()
+  rows = await legoFirst(rows)
   if (LIMIT) rows = rows.slice(0, LIMIT)
   console.log(`${COURSE}: ${rows.length} rendered clip(s) to listen to`)
 
