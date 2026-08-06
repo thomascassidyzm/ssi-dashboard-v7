@@ -67,6 +67,10 @@ function parse(md) {
       if (!numMatch) continue
       const speaker = cells[1] || null
       const english = cells[2] || ''
+      // Optional 4th column: per-line author_notes. Without it a re-seed would
+      // silently drop the notes the dashboard/generator rely on (the drill-tail
+      // "vocab coda" rows carry one), so the markdown stays lossless.
+      const notes = cells[3] || null
       if (!english) continue
       // Skip the trailing summary table (scene → count): a real dialogue line
       // is never a bare number, and its "speaker" cell is a scene title.
@@ -86,6 +90,7 @@ function parse(md) {
         global_order: globalOrder,
         speaker,
         english_text: english,
+        author_notes: notes,
       })
     }
   }
