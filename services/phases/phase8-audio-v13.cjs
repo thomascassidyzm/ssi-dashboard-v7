@@ -4499,13 +4499,21 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
       }
 
       // Resolve voice for this role (voiceId / provider / speed).
+      // course_audio.voice_id is stored PREFIXED — `${provider}_${voiceName}` — because
+      // that is what the bulk path's getVoiceForRole writes and what the unique key
+      // (course, text_normalized, language, role, voice_id) is keyed on. Writing the
+      // bare name here mints a row no link/dedup pass can match to its siblings.
+      // Config may hold either form, so normalise both ways: prefixed for storage,
+      // bare for TTS dispatch.
       const voiceSettings = voices?.[role] || {}
-      const voiceId = voiceSettings.voiceId || (typeof voices?.[role] === 'string' ? voices[role] : null)
-      const voiceProvider = voiceSettings.provider || 'azure'
-      const speed = voiceSettings.settings?.speed || 1.0
-      if (!voiceId) {
+      const rawVoice = voiceSettings.voiceId || (typeof voices?.[role] === 'string' ? voices[role] : null)
+      if (!rawVoice) {
         return res.status(400).json({ error: `No voice configured for role: ${role}` })
       }
+      const voiceProvider = voiceSettings.provider || rawVoice.split('_')[0] || 'azure'
+      const voiceId = rawVoice.startsWith(`${voiceProvider}_`) ? rawVoice : `${voiceProvider}_${rawVoice}`
+      const voiceName = voiceId.slice(voiceProvider.length + 1)
+      const speed = voiceSettings.settings?.speed || 1.0
 
       const column = PHRASE_AUDIO_COLUMN[role]
 
@@ -4562,19 +4570,19 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
-          voiceName: voiceId,
+          voiceName,
           speed
         }))
       } else if (voiceProvider === 'elevenlabs') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
           apiKey: process.env.ELEVENLABS_API_KEY,
-          voiceId: voiceId,
+          voiceId: voiceName,
           speed
         }))
       } else if (voiceProvider === 'xai') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
           apiKey: process.env.XAI_API_KEY,
-          voiceId: voiceId,
+          voiceId: voiceName,
           language: toBcp47(language)
         }))
       } else {
