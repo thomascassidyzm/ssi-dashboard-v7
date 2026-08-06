@@ -5480,6 +5480,15 @@ app.post('/api/audio/link-presentation-audio/:courseCode', async (req, res) => {
 require('./api/audio-repair-routes.cjs').mount(app, { requireAdmin, requireDashboardUser, logger })
 
 // =============================================================================
+// TAIL-TRUNCATION SCAN — /api/audio/tail-scan/*
+// =============================================================================
+// A whole-course tail scan is one S3 GET plus one ffmpeg decode per clip, so it
+// is a JOB (start / poll / read the report), never a synchronous request. Every
+// route is a read: no TTS, no writes, nothing on the learner path. Job state is
+// in-process and does not survive a restart — see services/audio-tail-scan.cjs.
+require('./api/audio-tail-scan-routes.cjs').mount(app, { requireDashboardUser, logger })
+
+// =============================================================================
 // VOICE MANAGEMENT ENDPOINTS
 // =============================================================================
 
