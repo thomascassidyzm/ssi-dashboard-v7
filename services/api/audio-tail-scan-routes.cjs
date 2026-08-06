@@ -18,12 +18,26 @@
  * naming the job already running.
  *
  * ── What this surface will never do ─────────────────────────────────────────
- * There is no route here that writes to the database, writes to S3, renders
- * audio, repairs a clip or deletes anything. `/flag-rows` is the closest thing
- * to a write and it is a GET: it hands back the rows an insert WOULD make, so
- * that raising machine flags stays an explicit, attributable act belonging to
- * whoever owns the approval gate. See the seam notes at the foot of
- * services/audio-tail-scan.cjs.
+ * No route here writes to S3, renders audio, repairs a clip, passes a clip or
+ * deletes anything. Scanning and reporting write NOTHING at all.
+ *
+ * There is exactly ONE write, added 2026-08-06 on Tom's ruling: POST /raise-flags
+ * inserts the detector's findings into audio_clip_flags so they outlive the scan
+ * process — a finding that evaporates when a job ends cannot be the machine
+ * proof-of-quality step feeding the manual gate, which is the job it was built for.
+ * That write is narrow on purpose and worth being precise about:
+ *   · a flag is an ANNOTATION, not a mutation. It puts a clip in a human's field
+ *     of view. No audio is touched, nothing is passed, nothing is repaired.
+ *   · the insert is performed BY THE GATE (services/course-qa-gate.cjs), the one
+ *     module that owns that table, so there is one place deciding what a flag may
+ *     be. This surface builds rows and asks.
+ *   · it is machine-attributed AND person-attributed: source='detector', the
+ *     detector's name and measured precision on every row, raised_by
+ *     "<detector> via <whoever pressed it>".
+ *   · only a human clears a flag, with a reason — unchanged, on the gate.
+ *   · it will not reopen a flag a human already cleared at that revision.
+ * GET /flag-rows remains, and still writes nothing: it is the preview of what the
+ * POST would do.
  *
  * Clip bytes are NOT re-served here. The repair surface already serves them
  * without S3 credentials at /api/audio/repair/:courseCode/:audioId/current-audio,
@@ -47,6 +61,13 @@ function mount (app, deps) {
   // production API down at boot rather than failing one scan request.
   let _store = deps.store || null
   const store = () => (_store || (_store = createTailScanStore({ logger })))
+  // The gate owns audio_clip_flags. This surface builds rows and asks; it does not
+  // reach into that table itself, so there stays exactly one place that decides what a
+  // flag is allowed to be.
+  let _gate = deps.gate || null
+  const gate = () => (_gate || (_gate = require('../course-qa-gate.cjs').createGate({
+    getDb: deps.getDb || (() => require('../audio-repair.cjs').core().supabase), logger,
+  })))
 
   const who = (user) => user?.email || user?.username || user?.id || 'unknown'
 
@@ -121,13 +142,50 @@ function mount (app, deps) {
         jobId: req.params.jobId,
         table: 'audio_clip_flags',
         written: false,
-        note: 'These rows are NOT inserted. Raising a machine flag puts work in front of ' +
-          'a human and only a human can clear one, so the insert belongs to the approval ' +
-          'gate surface, with a name against it.',
+        note: 'These rows are NOT inserted — this is the preview. POST to ' +
+          'jobs/<jobId>/raise-flags to raise them for real; that route writes through the ' +
+          'approval gate, with a name against it, and only a human can clear one.',
         count: rows.length,
         rows,
       })
     } catch (err) { fail(res, err, `flag-rows ${req.params.jobId}`) }
+  })
+
+  // ── POST raise those rows into the approval gate, for real ───────────────
+  //
+  // Tom's ruling, 2026-08-06: findings that vanish when the scan ends cannot be the
+  // machine proof-of-quality step feeding the manual gate, so this is the durable exit.
+  // A flag is an ANNOTATION — it puts a clip in a human's field of view and touches no
+  // audio — which is why a scan may raise one where it may never pass, repair or delete.
+  //
+  // The insert itself lives in the gate, the one module that owns audio_clip_flags: it
+  // enforces source='detector', stamps `<detector> via <whoever pressed this>`, refuses to
+  // double-raise a flag that is already open, and refuses to REOPEN one a human already
+  // cleared at that revision — a machine does not get to overrule a person. Clearing stays
+  // exactly where it was, on the gate, human-only, with a reason.
+  app.post('/api/audio/tail-scan/jobs/:jobId/raise-flags', async (req, res) => {
+    const user = await requireDashboardUser(req, res)
+    if (!user) return
+    try {
+      const s = store()
+      // Same not-found / not-finished errors as `report`: a job that cannot be reported
+      // cannot be raised either.
+      s.report(req.params.jobId, { limit: 1 })
+      const raw = s.raw(req.params.jobId)
+      const rows = s.flagRowsFromScan(raw, who(user))
+      const out = await gate().raiseDetectorFlags({
+        courseCode: raw.courseCode, rows, actor: who(user),
+      })
+      res.json({
+        jobId: req.params.jobId,
+        written: true,
+        ...out,
+        // The counts mean different things and a reviewer must not read them as one number.
+        note: `${out.raised} new flag(s) raised${out.alreadyOpen ? `; ${out.alreadyOpen} were already open` : ''}` +
+          `${out.clearedAlready ? `; ${out.clearedAlready} had already been cleared by a human at this revision and were NOT reopened` : ''}. ` +
+          'Flags are annotations, never changes to audio. A human clears them, or a repair moves the revision past them.',
+      })
+    } catch (err) { fail(res, err, `raise-flags ${req.params.jobId}`) }
   })
 
   // ── GET verdicts by audio id — the Audio Preview sampler's seam ───────────

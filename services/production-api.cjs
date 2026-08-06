@@ -5486,7 +5486,11 @@ require('./api/audio-repair-routes.cjs').mount(app, { requireAdmin, requireDashb
 // is a JOB (start / poll / read the report), never a synchronous request. Every
 // route is a read: no TTS, no writes, nothing on the learner path. Job state is
 // in-process and does not survive a restart — see services/audio-tail-scan.cjs.
-require('./api/audio-tail-scan-routes.cjs').mount(app, { requireDashboardUser, logger })
+// getDb because /raise-flags writes its findings through the QA gate, which owns
+// audio_clip_flags — the same client the gate surface above is mounted with.
+require('./api/audio-tail-scan-routes.cjs').mount(app, {
+  requireDashboardUser, getDb: () => supabaseClient.getClient(), logger,
+})
 
 // =============================================================================
 // VOICE MANAGEMENT ENDPOINTS

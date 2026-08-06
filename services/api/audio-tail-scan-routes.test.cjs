@@ -55,7 +55,7 @@ const STATUS = {
   items: null,
 }
 
-function makeApp ({ user = null, store = {} } = {}) {
+function makeApp ({ user = null, store = {}, gate = {} } = {}) {
   const app = express()
   app.use(express.json())
   const calls = []
@@ -69,7 +69,7 @@ function makeApp ({ user = null, store = {} } = {}) {
       items: [{ audioId: 'a1', text: 'ich will Deutsch lernen', categories: ['tail-truncation'] }],
     })),
     list: spy('list', () => ({ jobs: [STATUS], detector: STATUS.detector, flagMeaning: FLAG_MEANING, stateNote: 'in-process' })),
-    raw: spy('raw', () => ({ id: 'j1' })),
+    raw: spy('raw', () => ({ id: 'j1', courseCode: 'deu_for_eng' })),
     latestFinished: spy('latestFinished', () => ({ id: 'j1', finishedAt: '2026-08-06T00:00:00Z', scope: {} })),
     flagRowsFromScan: spy('flagRowsFromScan', () => [{ audio_id: 'a1', source: 'detector', severity: 'suspect' }]),
     verdictsByAudioId: spy('verdictsByAudioId', () => ({ a1: { categories: ['tail-truncation'] }, a2: { categories: ['duration'] } })),
@@ -77,8 +77,15 @@ function makeApp ({ user = null, store = {} } = {}) {
     FLAG_MEANING,
   }, store)
 
+  const fakeGate = Object.assign({
+    raiseDetectorFlags: spy('raiseDetectorFlags', () => ({
+      courseCode: 'deu_for_eng', raised: 1, alreadyOpen: 0, clearedAlready: 0, flags: [{ id: 'f1', audio_id: 'a1' }],
+    })),
+  }, gate)
+
   mount(app, {
     store: fakeStore,
+    gate: fakeGate,
     logger: { log () {}, warn () {}, error () {} },
     requireDashboardUser: async (req, res) => {
       if (!user) { res.status(401).json({ error: 'Authentication required' }); return null }
@@ -186,5 +193,73 @@ describe('tail-scan routes — behaviour', () => {
     const r = await request(app).get('/api/audio/tail-scan/deu_for_eng/verdicts')
     expect(r.body.jobId).toBeNull()
     expect(r.body.note).toMatch(/do not survive a restart/)
+  })
+})
+
+// ── raising the detector's findings into the approval gate ──────────────────
+//
+// The one write on this surface. It exists because a finding that dies with the
+// scan process cannot be the machine proof-of-quality step feeding the manual
+// gate — but a scan is still not allowed to pass, repair or delete anything, and
+// these tests are where that line is held.
+
+describe('tail-scan routes — raise-flags', () => {
+  it('needs a logged-in user, like everything else here', async () => {
+    const { app } = makeApp({ user: null })
+    const res = await request(app).post('/api/audio/tail-scan/jobs/j1/raise-flags')
+    expect(res.status).toBe(401)
+  })
+
+  it('writes through the GATE, never into the flags table itself', async () => {
+    // One module owns audio_clip_flags. If this surface ever grew its own insert
+    // there would be two places deciding what a flag may be, and they would drift.
+    const { app, calls } = makeApp({ user: PRODUCER })
+    const res = await request(app).post('/api/audio/tail-scan/jobs/j1/raise-flags')
+    expect(res.status).toBe(200)
+    const raised = calls.find(c => c.name === 'raiseDetectorFlags')
+    expect(raised).toBeTruthy()
+    expect(raised.args[0].courseCode).toBe('deu_for_eng')
+    expect(raised.args[0].rows[0].source).toBe('detector')
+  })
+
+  it('names the person who pressed it, not just the machine', async () => {
+    const { app, calls } = makeApp({ user: PRODUCER })
+    await request(app).post('/api/audio/tail-scan/jobs/j1/raise-flags')
+    expect(calls.find(c => c.name === 'raiseDetectorFlags').args[0].actor)
+      .toBe('recorder@saysomethingin.com')
+    // and the rows were built for that person too
+    expect(calls.find(c => c.name === 'flagRowsFromScan').args[1])
+      .toBe('recorder@saysomethingin.com')
+  })
+
+  it('says it wrote, and reports the three counts separately', async () => {
+    // raised / alreadyOpen / clearedAlready mean different things; collapsing them
+    // into one number is how a re-run starts looking like new damage.
+    const { app } = makeApp({
+      user: PRODUCER,
+      gate: { raiseDetectorFlags: () => ({ courseCode: 'deu_for_eng', raised: 2, alreadyOpen: 5, clearedAlready: 1, flags: [] }) },
+    })
+    const res = await request(app).post('/api/audio/tail-scan/jobs/j1/raise-flags')
+    expect(res.body.written).toBe(true)
+    expect(res.body).toMatchObject({ raised: 2, alreadyOpen: 5, clearedAlready: 1 })
+    expect(res.body.note).toMatch(/already been cleared by a human/i)
+    expect(res.body.note).toMatch(/annotations, never changes to audio/i)
+  })
+
+  it('refuses a job that is not finished, the same way report does', async () => {
+    const { app } = makeApp({
+      user: PRODUCER,
+      store: { report: () => { const e = new Error('scan still running'); e.status = 409; e.code = 'not_finished'; throw e } },
+    })
+    const res = await request(app).post('/api/audio/tail-scan/jobs/j1/raise-flags')
+    expect(res.status).toBe(409)
+    expect(res.body.code).toBe('not_finished')
+  })
+
+  it('the preview route still writes nothing, and points at the one that does', async () => {
+    const { app } = makeApp({ user: PRODUCER })
+    const res = await request(app).get('/api/audio/tail-scan/jobs/j1/flag-rows')
+    expect(res.body.written).toBe(false)
+    expect(res.body.note).toMatch(/raise-flags/)
   })
 })

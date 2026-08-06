@@ -216,6 +216,30 @@
           <span class="text-xs text-faint">{{ matched }} clip(s)</span>
         </div>
 
+        <!--
+          The durable exit. A scan's findings otherwise die with the API process, and a
+          finding that evaporates cannot be the machine proof-of-quality step feeding the
+          approval gate. Raising is an ANNOTATION: it puts clips in a reviewer's field of
+          view and changes no audio — which is why the button says what it does, in full,
+          rather than reading as an action on the course.
+        -->
+        <div class="flex flex-wrap items-center gap-3 p-3 rounded border border-line bg-surface">
+          <button
+            @click="raiseFlags()"
+            :disabled="raising || !totals?.flaggedByTail"
+            class="px-3 py-1.5 text-xs rounded border border-amber-500/50 bg-surface-2 text-ink
+                   hover:border-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          >
+            {{ raising ? 'Raising…' : `Raise ${totals?.flaggedByTail || 0} trimmed clip(s) into the approval gate` }}
+          </button>
+          <span class="text-xs text-faint">
+            Records them for a reviewer, attributed to the detector and to you. No audio changes;
+            only a human clears a flag. Re-running a scan will not raise the same clip twice.
+          </span>
+        </div>
+        <p v-if="raiseResult" class="text-xs text-emerald-400">{{ raiseResult }}</p>
+        <p v-if="raiseError" class="text-xs text-red-400">{{ raiseError }}</p>
+
         <div v-if="reportError" class="text-sm text-red-400">{{ reportError }}</div>
 
         <div v-else class="space-y-2 max-h-[32rem] overflow-y-auto">
@@ -325,6 +349,9 @@ const voiceFilter = ref(null)
 const items = ref([])
 const matched = ref(0)
 const reportError = ref(null)
+const raising = ref(false)
+const raiseResult = ref(null)
+const raiseError = ref(null)
 
 let poll = null
 
@@ -436,6 +463,27 @@ async function fetchReport() {
     matched.value = out.matched ?? items.value.length
   } catch (err) {
     reportError.value = err.message
+  }
+}
+
+// Raise the detector's findings into audio_clip_flags, via the approval gate.
+// The three counts come back separately on purpose and are shown separately: a re-run
+// that reported "0 raised" without saying "N already open" would read as a failure.
+async function raiseFlags() {
+  if (!job.value?.jobId) return
+  raising.value = true
+  raiseResult.value = null
+  raiseError.value = null
+  try {
+    const out = await call(`/api/audio/tail-scan/jobs/${job.value.jobId}/raise-flags`, { method: 'POST' })
+    const parts = [`${out.raised} flag(s) raised for review`]
+    if (out.alreadyOpen) parts.push(`${out.alreadyOpen} were already open`)
+    if (out.clearedAlready) parts.push(`${out.clearedAlready} had already been cleared by a human and were not reopened`)
+    raiseResult.value = parts.join('; ') + '.'
+  } catch (err) {
+    raiseError.value = err.message
+  } finally {
+    raising.value = false
   }
 }
 
