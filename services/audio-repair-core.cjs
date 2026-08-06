@@ -820,13 +820,20 @@ function createRepairCore (deps) {
     const PAGE = 1000
     const data = []
     if (audioIds && audioIds.length) {
-      // `.in()` on a huge id list blows the URL length, so chunk the filter too.
-      for (let i = 0; i < audioIds.length; i += PAGE) {
-        const chunk = audioIds.slice(i, i + PAGE)
+      // `.in()` sends the ids in the QUERY STRING, so the limit here is URL length,
+      // not row count — a different constraint from PAGE and it needs its own number.
+      // Measured against this Supabase instance on 2026-08-06: 1,000 uuids is a hard
+      // 400 Bad Request, 500 fails in fetch, 300 is fine. That is why a seed-1-300
+      // deu_for_eng scan (18,163 clips) died on its first chunk. 200 leaves headroom
+      // and costs 91 round trips instead of 19, which is nothing next to one S3 GET
+      // and one ffmpeg decode per clip.
+      const ID_CHUNK = 200
+      for (let i = 0; i < audioIds.length; i += ID_CHUNK) {
+        const chunk = audioIds.slice(i, i + ID_CHUNK)
         let q = supabase.from('course_audio').select(COLUMNS)
           .eq('course_code', courseCode).in('id', chunk)
         if (role) q = q.eq('role', role)
-        const { data: rows, error } = await q.limit(PAGE)
+        const { data: rows, error } = await q.limit(ID_CHUNK)
         if (error) throw new RepairError(`reading course audio: ${error.message}`, 'db_error', 500)
         data.push(...(rows || []))
       }
