@@ -29,8 +29,12 @@
       </div>
       <div class="grid gap-2 sm:grid-cols-2 mt-2">
         <div v-for="a in allocation" :key="a.voiceId" class="cast-row bg-canvas/60 border border-line rounded p-3">
-          <div class="flex items-center justify-between gap-2">
-            <div class="text-sm text-ink font-medium truncate">
+          <!-- flex-wrap + min-w-0: `truncate` alone cannot shrink a flex child
+               below its content width, so next to the flex-shrink-0 button pair
+               this row measured 395px inside a 236px grid and pushed the whole
+               pods page to 519px on a 390px phone. -->
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <div class="text-sm text-ink font-medium truncate min-w-0">
               {{ a.name }}
               <span v-if="a.gender" class="text-[10px] text-muted border border-line rounded-full px-1.5 py-0.5 ml-1 align-middle">
                 {{ a.gender === 'f' ? 'female voice' : 'male voice' }}

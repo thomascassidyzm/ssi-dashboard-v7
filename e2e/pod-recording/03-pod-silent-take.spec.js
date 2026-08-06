@@ -5,8 +5,7 @@
 // and a named, re-recordable list on the summary screen.
 import { test, expect } from '@playwright/test'
 import path from 'node:path'
-import { execFileSync } from 'node:child_process'
-import { loginAsTestUser, TEST_COURSE } from './helpers.js'
+import { loginAsTestUser, TEST_COURSE, dbScalar } from './helpers.js'
 
 // Genuinely silent WAV (all-zero PCM) — every take captured against it lands
 // under the app's drop threshold (blob.size < 1200), unlike the VAD fixture
@@ -21,26 +20,20 @@ test.use({
   }
 })
 
-function psql(sql) {
-  const dbUrl = execFileSync('bash', ['-c', "grep -m1 ^DATABASE_URL= .env.psql | cut -d= -f2-"], { cwd: process.cwd() })
-    .toString().trim()
-  return execFileSync('/opt/homebrew/opt/postgresql@17/bin/psql', [dbUrl, '-t', '-A', '-c', sql]).toString().trim()
-}
-
 // Reuses whatever pod cast 01-cast-and-record.spec.js already saved for the
 // test course, rather than re-driving the cast UI here — this spec is only
 // about the silent-take path, not casting.
-function podVoiceHref() {
-  const raw = psql(`select voice_config->'podCast' from courses where course_code='${TEST_COURSE}';`)
-  if (!raw || raw === '' || raw === 'null') return null
-  const podCast = JSON.parse(raw)
+async function podVoiceHref() {
+  const voiceConfig = await dbScalar('courses', 'voice_config', { course_code: TEST_COURSE })
+  const podCast = voiceConfig && voiceConfig.podCast
+  if (!podCast) return null
   const first = Object.values(podCast)[0]
   if (!first || !first.voiceId) return null
   return `/record/${TEST_COURSE}?podVoice=${encodeURIComponent(first.voiceId)}`
 }
 
 test('a silent take is dropped with immediate on-screen feedback and a redo path', async ({ page }) => {
-  const href = podVoiceHref()
+  const href = await podVoiceHref()
   test.skip(!href, 'no pod cast saved for the test course yet — run 01-cast-and-record.spec.js first')
 
   await loginAsTestUser(page)

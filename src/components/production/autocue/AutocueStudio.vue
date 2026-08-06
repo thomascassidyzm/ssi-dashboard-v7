@@ -181,6 +181,14 @@
       <div v-if="state.scriptMode && uploadQueue.pendingCount.value > 0" class="upload-progress-bar">
         <span class="upload-label">Uploading: {{ uploadQueue.uploadedCount.value }} done, {{ uploadQueue.pendingCount.value }} pending</span>
       </div>
+
+      <!-- Failed takes, DURING the session. Waiting for the summary screen means a
+           recordist can talk through a whole script with a dead mic and only find
+           out at the end — the takes were never saved and there is nothing to retry. -->
+      <div v-if="state.scriptMode && uploadQueue.failedIndices.size > 0" class="upload-failed-bar">
+        <span class="failed-count">{{ uploadQueue.failedIndices.size }} NOT saved</span>
+        <span class="failed-reason">{{ latestFailureReason }}</span>
+      </div>
     </div>
 
     <!-- Phase: Session Summary (script mode) -->
@@ -234,7 +242,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAutocueState } from '@/composables/useAutocueState'
 import { useContinuousRecorder } from '@/composables/useContinuousRecorder'
@@ -303,6 +311,16 @@ const vadLevel = continuousRecorder.currentLevel
 // Background upload queue
 const uploadQueue = useUploadQueue()
 const uploadedCount = uploadQueue.uploadedCount
+
+// The server's own words for the most recent take it refused (e.g. "no audible
+// speech"), so the in-session failure bar says WHY, not just how many.
+const latestFailureReason = computed(() => {
+  let latest = null
+  for (const idx of uploadQueue.failedIndices) {
+    if (latest === null || idx > latest) latest = idx
+  }
+  return latest === null ? '' : (uploadQueue.failedReasons.get(latest) || 'Upload failed')
+})
 
 // Wire continuous recorder: on segment captured, store + queue upload + advance
 continuousRecorder.onSegmentCaptured((segment) => {
@@ -880,6 +898,31 @@ onUnmounted(() => {
   color: var(--color-paper-dim);
 }
 
+.upload-failed-bar {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid #dc2626;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.failed-count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fca5a5;
+}
+
+.failed-reason {
+  font-size: 0.7rem;
+  color: #fca5a5;
+  line-height: 1.3;
+}
+
 /* Recording Phase */
 .recording-phase {
   max-width: 1000px;
@@ -1015,6 +1058,11 @@ onUnmounted(() => {
   .session-stats {
     width: 100%;
     justify-content: space-around;
+    /* Four stat tiles at 1.25rem side padding and a 2rem number measure 493px;
+       without wrapping they widened the studio to 549px on a 390px phone and
+       the whole recording screen scrolled sideways. */
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .back-link {
@@ -1026,6 +1074,24 @@ onUnmounted(() => {
   .script-stats,
   .summary-stats {
     flex-wrap: wrap;
+  }
+}
+
+/* Phone. Kai records standing, holding the phone — nothing here may need a
+   sideways scroll to reach. */
+@media (max-width: 480px) {
+  .autocue-studio {
+    padding: 1rem 0.75rem;
+  }
+
+  .stat-item {
+    padding: 0.5rem 0.75rem;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .stat-value {
+    font-size: 1.35rem;
   }
 }
 </style>

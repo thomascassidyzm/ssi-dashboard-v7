@@ -121,6 +121,9 @@ const uploadedCount = ref(0)
 const pendingCount = ref(0)
 const uploadedIndices = reactive(new Set<number>())
 const failedIndices = reactive(new Set<number>())
+// itemIndex -> the server's own words for why this take was not saved, so the
+// recordist reads "no audible speech" rather than a bare red count.
+const failedReasons = reactive(new Map<number, string>())
 let processing = false
 let onUploadedCallback: ((itemIndex: number) => void) | null = null
 
@@ -147,10 +150,20 @@ export function useUploadQueue() {
           await doUpload(item)
           success = true
           break
-        } catch (err) {
+        } catch (err: any) {
           console.warn(`[UploadQueue] Attempt ${attempt + 1} failed for item ${item.itemIndex}:`, err)
+          // A 4xx is the server's verdict on THIS take (silent audio, unknown uuid,
+          // malformed body) — retrying replays the same bytes to the same verdict
+          // and just burns 12s of backoff before the recordist is told. Only retry
+          // 5xx and network failures, which are the transient ones.
+          if (err?.deterministic) {
+            failedReasons.set(item.itemIndex, err.message)
+            break
+          }
           if (attempt < MAX_RETRIES - 1) {
             await sleep(RETRY_BACKOFF[attempt])
+          } else {
+            failedReasons.set(item.itemIndex, err?.message || 'Upload failed')
           }
         }
       }
@@ -197,7 +210,11 @@ export function useUploadQueue() {
 
     if (!response.ok) {
       const errData = await response.json().catch(() => ({ error: 'Upload failed' }))
-      throw new Error(errData.error || `Upload failed: ${response.status}`)
+      const err: any = new Error(errData.error || `Upload failed: ${response.status}`)
+      err.status = response.status
+      // 4xx = the server judged this take; 5xx/network = try again
+      err.deterministic = response.status >= 400 && response.status < 500
+      throw err
     }
 
     return response.json()
@@ -213,6 +230,7 @@ export function useUploadQueue() {
     pendingCount.value = 0
     uploadedIndices.clear()
     failedIndices.clear()
+    failedReasons.clear()
     processing = false
     onUploadedCallback = null
   }
@@ -224,7 +242,8 @@ export function useUploadQueue() {
     uploadedCount,
     pendingCount,
     uploadedIndices,
-    failedIndices
+    failedIndices,
+    failedReasons
   }
 }
 

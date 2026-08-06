@@ -1,5 +1,6 @@
 <template>
-  <div class="min-h-screen bg-canvas text-ink p-8">
+  <!-- p-8 spends 64px of a 390px phone on side padding before any content -->
+  <div class="min-h-screen bg-canvas text-ink p-4 sm:p-8">
     <div class="max-w-6xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
@@ -87,9 +88,10 @@
           v-for="pod in pods"
           :key="pod.id"
           :to="`/production/${courseCode}/pods/${pod.slug}`"
-          class="block bg-surface border border-line rounded-lg p-6 hover:border-accent-2 transition-colors"
+          class="block bg-surface border border-line rounded-lg p-4 sm:p-6 hover:border-accent-2 transition-colors"
         >
-          <div class="flex items-start justify-between gap-6">
+          <!-- gap-6 + a non-wrapping right column measured 413px on a 390px phone -->
+          <div class="flex items-start justify-between gap-3 sm:gap-6 flex-wrap">
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-3 mb-2">
                 <h2 class="text-xl font-semibold text-ink truncate">{{ pod.title }}</h2>
