@@ -571,3 +571,55 @@ repairs themselves were the expense.
 **Decided by:** Tom — 2026-08-05 21:06Z escalation, verbatim: "DELETE the tail-repair service's
 ability to modify audio entirely, do not just change its default", after the clipping recurred a
 third time and reached learners in the first 10 minutes of the live German course.
+
+## 2026-08-06 — Fix the unlink at the write path, not with a cleanup cron
+
+Audio that exists and is usable was becoming unlinked from the content that needs it, and then
+reported to everyone as "missing". In `ara_lb_for_eng` 1,324 such clips were re-linked for free.
+The estate has three independent mechanisms producing this, all now addressed in
+`database/migrations/20260806_audio_link_integrity.sql`: an unlink trigger that fires on any text
+change with no counterpart that ever re-links; a relink trigger that compared text with a different
+normaliser than the one writing the column it compared against (154,257 rows unmatchable); and an
+`ON DELETE CASCADE` that deleted authored introduction rows outright when their audio went.
+
+**Decision: prevent it in the trigger, and make the trigger's preference order identical to the JS
+link passes' — rather than detect it later with a sweep.** The unlink triggers now re-link to a clip
+we already own for the new text via `audio_id_for_text()`, whose ordering (human > newest > id)
+mirrors `pickPreferredAudioRow` exactly. The reconciliation tool still exists, but as a standing
+report and a recovery pass for the historical backlog, not as the mechanism that keeps the estate
+correct.
+
+**Better:** the defect cannot accrue between sweeps — the window in which a course is silently
+missing audio it owns closes from "until someone runs the tool" to zero. It also fixes the class of
+unlink nobody would ever have sweep-detected as a bug: a cosmetic edit (trailing space, casing) that
+nulled a link even though the normalised text never changed. Verified against real production rows.
+**Simpler:** one function and three trigger bodies, in the one place every writer already goes
+through, replaces a scheduled job plus the operational burden of noticing it stopped running. There
+is exactly one definition of "which clip wins" (`pickPreferredAudioRow`) and the database now agrees
+with it instead of having its own.
+**Cheaper (total):** re-linking costs nothing and generates nothing, so every clip recovered this way
+is TTS spend not incurred — the standing failure mode was regenerating audio the estate already
+owned. No cron, no scheduler, no recurring compute.
+
+**Searched & rejected:**
+- Scheduled reconciliation sweep as the primary fix — failed *better*: leaves a window proportional
+  to the sweep interval, and the estate's own history is that periodic passes are what stopped
+  running unnoticed.
+- Redefine `normalize_text()` so the DB and JS normalisers agree — failed *cheaper* and is unsafe:
+  it feeds `UNIQUE (course_code, text_normalized, language, role, voice_id)`, so recomputing it would
+  collide on the next write to each of the 154,257 affected rows, converting a matching bug into
+  write failures. Matching was made tolerant instead; the normaliser split remains an open item for a
+  planned, gated backfill.
+- Resolve the fallback at read time in the learning app — failed *simpler*: puts the rule in the more
+  sensitive delivery codebase Tom signs off individually, and duplicates it away from
+  `pickPreferredAudioRow`. Popty holds the authoritative rule and materialises it into real links, so
+  delivery needs no change at all.
+- Drop the unlink triggers entirely — failed *better*: a text edit genuinely does invalidate audio of
+  the old text; the bug was never re-linking, not invalidating.
+
+**Search width:** component-redesign
+**Decided by:** agent, under Tom's standing ruling 2026-08-05, verbatim: "it's probably better to
+have a system that plays Azure until better voices are available in lieu of nothing!!!!" and "we
+don't want the player to screw up a course just because some audio is missing — it should ALWAYS
+PLAY WHAT IT HAS". Not escalated: monotone by construction (only fills NULL links, never overwrites
+a live one, never deletes), and a rollback file is committed alongside.
