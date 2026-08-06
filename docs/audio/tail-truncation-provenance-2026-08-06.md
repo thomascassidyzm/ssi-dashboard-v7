@@ -145,6 +145,67 @@ than mutating originals. Its own ledger clears it.
 
 ---
 
+## The de-hiss hypothesis — tested and refuted
+
+Tom's prime hypothesis (2026-08-06): Deborah reported hiss in the new female Spanish intro
+voice on 29 July; Kai said he'd "process the clips", that "it'll work automatically from
+now", and ran a pass over the files. A de-noise pass with a **noise gate or trim-silence
+step** is exactly the mechanism that clips tails — and it might be wired in permanently.
+
+**The run was found.** `docs/handoff-kai-2026-08-04/local-tooling/reprocess-xai-hiss.cjs`
+on `origin/docs/kai-local-handoff`. Three things refute it as the tail-clipping mechanism,
+each from the script itself:
+
+1. **The filter chain is `afftdn=nf=-25:nt=w` and nothing else.** A pure FFT denoise. No
+   `silenceremove`, no gate, no `atrim`, no fade. `afftdn` cannot shorten a clip; it does
+   not touch the time domain.
+2. **It never overwrites.** Output goes to a fresh `mastered/<uuid>.mp3`; the original key
+   is left intact, and the script carries a rollback that restores the old `s3_key`.
+3. **Durations are preserved and measured.** Its ledger at
+   `backups/hiss-reprocess-logs-2026-07-29/` records `oldDur` and `newDur` per file and
+   they are equal throughout.
+
+**Is it live? No.** `afftdn` appears nowhere in `origin/main`, nowhere in the deployed
+checkout, and nowhere in the running process:
+
+- The phase8 service runs from **`/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod`** (not
+  the dev tree), on `main` at `010c294f`, restarted **2026-08-06 03:00:03** from files
+  written 2026-08-05 22:03 — i.e. after the `repairTailDefect` deletion.
+- The live TTS master chain is `PRE_COMPRESS → volume → TRUE_PEAK_LIMIT → ANTI_CLICK_FADE`.
+  **No denoise, no silence removal, no gate.**
+- The de-hiss lives only on unmerged branches, as **open PR #17**
+  (`fix/xai-hiss-denoise`, not merged). Kai's "automatically from now" describes that PR's
+  intent, which was never landed.
+
+The only `silenceremove` in the tree is in `processRecordingBuffer` (human webm recordings
+from the browser recording suite) and `pod-explainer-composite.cjs` — neither is on the
+TTS course-clip path.
+
+**The 08-03 morning event was almost certainly a second de-hiss run.** Its signature is
+exactly Kai's script's: `s3_key` changes on 162,322 rows with duration, voice and text all
+unchanged — across 12 xAI-voiced courses (kor_for_hin 43,424; kor_for_tam 26,928;
+eng_for_ben 22,288; eng_for_hin 22,275; zho_for_tam 20,250; eng_for_sin 10,230;
+eng_for_kan 5,843; eng_for_tel 4,577; eng_for_tam 3,215; eng_for_guj 1,190; eng_for_urd
+1,063; eng_for_pan 1,043). Non-destructive by construction, and the originals survive at
+the old keys.
+
+### Spanish does not share German's window
+
+| spa_for_eng event | day | updates | duration changed | voice changed |
+|---|---|---:|---:|---:|
+| **Voice replacement** (Azure → xAI) | **2026-07-20** | 19,718 | 19,640 | 16,662 |
+| **De-hiss relink** | **2026-07-29** | 18,403 | **4** | 4 |
+
+No Spanish activity at all on 08-02 or 08-03. And the 07-20 voice replacement falls
+**before `repairTailDefect` existed (07-24)** — so Spanish was never exposed to the
+amputation mechanism. If Deborah's Spanish clips are bad, the cause is Tom's secondary
+candidate, the voice-replacement window, not a tail-clipping pass.
+
+Separately: Deborah's "under the CD means" vs "under the bridge" is a **wrong-content**
+defect, not a tail clip. Different failure class, different fix — worth tracking apart.
+
+---
+
 ## Confidence, and the gaps
 
 **High confidence** on: the mechanism, the exposure window, the fact the path is deleted
