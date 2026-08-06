@@ -362,6 +362,11 @@ async function reconcileCourse(client, course, opts = {}) {
         if (currentId) linkedIdsSeen.add(currentId)
 
         let strictCands = null, looseCands = null
+        // The key this slot actually matched on, kept for the log. The applied
+        // log is the permanent record of WHY each link was written, so it has to
+        // carry the real key rather than a placeholder someone would have to
+        // re-derive from the code a year from now.
+        let matchedKey = null
         if (slot.key === 'comp') {
           // Only components are ever given an intro clip; a build/use phrase
           // having none is the design, not a gap, so it must not land in
@@ -376,6 +381,7 @@ async function reconcileCourse(client, course, opts = {}) {
           // the carrier: there is no key, so there is no defensible link. Left
           // NULL and counted, never guessed.
           if (!key) { if (currentId && aliveIds.has(currentId)) b.linked++; else b.no_key++; continue }
+          matchedKey = `comp:${key}`
           const cands = compPresIdx.get(key) || []
           // The independent second axis. Every candidate here already carries
           // identical narration, so they are interchangeable BY CONSTRUCTION —
@@ -438,7 +444,7 @@ async function reconcileCourse(client, course, opts = {}) {
           relinkable.push({
             course_code, table, row_id: row.id, ref: row.ref, seed_number: row.seed_number,
             column: slot.col, role: slot.role, match: res.status, candidates: res.candidates,
-            key: slot.text === null ? `lego:${row.lego_id}` : strictKey(row[slot.text]),
+            key: matchedKey || (slot.text === null ? `lego:${row.lego_id}` : strictKey(row[slot.text])),
             audio_id: res.audio.id, audio_origin: res.audio.origin, s3_key: res.audio.s3_key,
             audio_language: res.audio.language, expected_language: langFor[slot.lang],
             duration_col: slot.dur || null, duration_ms: res.audio.duration_ms ?? null,
