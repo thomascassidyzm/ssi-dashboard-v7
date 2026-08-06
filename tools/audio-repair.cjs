@@ -91,6 +91,7 @@ audio-repair — non-destructive course audio repair (propose / preview / accept
                      any candidate whose tail was not MEASURED clean, and stamps the
                      history row so it can never read as an ear pass.
   --concurrency N    queue --tails: clips measured at once (default 8)
+                     propose: clips rendered+verified at once (default 1)
 `
 
 function die (msg, code = 1) { console.error(msg); process.exit(code) }
@@ -233,8 +234,21 @@ async function cmdPropose () {
     console.log(`Would render ${est.clips} clip(s)${est.charactersKnown ? `, ${est.characters.toLocaleString()} characters` : ' (character count unknown from this target file)'}.`)
   }
 
-  const rows = []
-  for (const [i, job] of jobs.entries()) {
+  // A propose is one TTS round trip, one mastering pass and one whisper decode. The
+  // whisper decode dominates and it is CPU-bound, so a single-file run measured ~90s
+  // per clip on a loaded box — nineteen hours for a course-scale queue, which is not a
+  // run, it is a hostage situation. Concurrency is opt-in and defaults to 1 so that
+  // nothing about the existing single-clip behaviour changes: it is a batch tool
+  // affordance, not a new default posture.
+  //
+  // Order is preserved in the log regardless of completion order (rows[i] is written by
+  // slot, never pushed), because `accept --from` reads that log and a human scanning it
+  // should see the same order they queued.
+  const CONCURRENCY = Math.max(1, num(flags.concurrency, 1))
+  const rows = new Array(jobs.length)
+  let nextJob = 0
+  const runOne = async (i) => {
+    const job = jobs[i]
     const prefix = `[${i + 1}/${jobs.length}] ${job.id}`
     try {
       const out = await core().propose({
@@ -246,24 +260,29 @@ async function cmdPropose () {
         const cur = out.current || {}
         console.log(`${prefix}  [DRY] ${cur.role} rev ${cur.revision} ${String(cur.durationMs ?? '?')}ms  ${JSON.stringify(String(cur.text || '')).slice(0, 48)}`)
         console.log(`         would render ${out.wouldSpend ? `${out.wouldSpend.characters} chars via ${out.wouldSpend.provider}` : '?'} and propose a candidate; the live row is NOT touched`)
-        rows.push({ audioId: job.id, action: 'would-propose', current: cur, wouldSpend: out.wouldSpend || null })
+        rows[i] = { audioId: job.id, action: 'would-propose', current: cur, wouldSpend: out.wouldSpend || null }
       } else {
         console.log(`${prefix}  candidate ${out.candidateId}  ${out.current.durationMs}ms -> ${out.candidate.durationMs}ms  veracity ${out.candidate.veracity.pass === false ? 'FAIL' : 'pass'}`)
-        rows.push({
+        rows[i] = {
           audioId: job.id, action: 'proposed', candidateId: out.candidateId,
           candidate: out.candidate,
           // The BEFORE-STATE. `accept` re-reads the clip and refuses if any of
           // this has moved since a human was shown it.
           expect: expectationFrom(out.current),
-        })
+        }
       }
     } catch (e) {
       console.log(`${prefix}  FAILED — ${e.message.slice(0, 160)}`)
-      rows.push({ audioId: job.id, action: 'failed', error: e.message, code: e.code || null })
+      rows[i] = { audioId: job.id, action: 'failed', error: e.message, code: e.code || null }
     }
   }
+  const workers = Array.from({ length: Math.min(CONCURRENCY, jobs.length) }, async () => {
+    for (;;) { const i = nextJob++; if (i >= jobs.length) return; await runOne(i) }
+  })
+  if (SPEND && CONCURRENCY > 1) console.log(`rendering ${CONCURRENCY} at a time`)
+  await Promise.all(workers)
 
-  const p = writeLog(rows, { verb: 'propose', dryRun: !SPEND })
+  const p = writeLog(rows.filter(Boolean), { verb: 'propose', dryRun: !SPEND })
   if (SPEND) {
     const ok = rows.filter(r => r.action === 'proposed')
     console.log(`\n${ok.length} candidate(s) proposed, ${rows.length - ok.length} failed. NOTHING IS LIVE YET.`)
