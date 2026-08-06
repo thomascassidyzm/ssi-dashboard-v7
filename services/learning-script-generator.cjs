@@ -755,9 +755,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     }
 
     // Phase 1: INTRO — standard presentation for ALL LEGOs.
-    // NO component priming: the learner never plays component_intro /
-    // component_practice cycles (components are visual ghost tiles on the
-    // intro/debut cards only — generateLearningScript.ts:1208-1212).
+    // NO component priming: COMPONENTS ARE NEVER INTRODUCED (Tom, 2026-08-06 —
+    // "Components do NOT get introduced"). The learner never plays
+    // component_intro / component_practice cycles; components are visual ghost
+    // tiles on the intro/debut cards only. The cycles API in ssi-learning-app
+    // diverged from this between 2026-08-04 and 2026-08-06 and was corrected.
     const introAudio = introAudioMap.get(currentLego.lego.id) || null
     // Learner view: mirror the learner's fallback — when presentation audio is
     // missing the intro still plays the LEGO via known audio (:1199-1202).

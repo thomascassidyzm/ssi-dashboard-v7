@@ -180,6 +180,40 @@ const { isPunctuationOnly } = require('../shared/text-classification.cjs')
 // Default 20 = max concurrency for paid tier
 const CONCURRENCY = parseInt(process.env.AUDIO_CONCURRENCY, 10) || 20
 
+// ===========================================================================
+// COMPONENTS ARE NEVER INTRODUCED — Tom's ruling, 2026-08-06
+// ===========================================================================
+// "All the components are now being introduced in the new M-LEGO
+//  introductions. Components do NOT get introduced."
+//
+// Only LEGOs get introductions. An M-LEGO's components are tiling parts of
+// one whole thought: the learner absorbs them inside the carrier, and a
+// component debut hands the learner no producible intention. The M-LEGO's
+// OWN introduction may name its pieces inline ("'x' means y") — that is the
+// LEGO's introduction and is fine. A separate per-component introduction is
+// not, and this service used to author, TTS and link exactly that.
+//
+// The `introduce` flag on component rows is NOT the gate. It is not a licence
+// to introduce the `true` ones; the ruling is unconditional. Any branch that
+// consults `introduce` to decide whether to emit a component introduction is
+// the bug, not the flag's value.
+//
+// Every presentation-authoring path below refuses component rows outright.
+// Component known/target clips are still generated — they are tile data, not
+// introductions.
+const COMPONENTS_NEVER_INTRODUCED =
+  'Components are never introduced (Tom, 2026-08-06). Only LEGOs get presentation audio; ' +
+  'component rows are tiling parts absorbed inside their carrier M-LEGO.'
+
+/**
+ * Hard refusal for any code path that tries to author, generate or link a
+ * presentation clip for a `phrase_role = 'component'` row. Throws — a guard
+ * that refuses beats a comment asking nicely.
+ */
+function refuseComponentPresentation(where) {
+  throw new Error(`[${where}] ${COMPONENTS_NEVER_INTRODUCED}`)
+}
+
 /**
  * Fetch ALL existing audio for a course from course_audio.
  * Avoids pagination entirely — uses a single query with high limit.
@@ -317,42 +351,14 @@ async function checkPresentationReadiness(courseCode, releaseTarget, seeds = nul
     missingLegoPresentations++
   }
 
-  // 3) Component phrases — they get their own presentation rows by text match.
-  //    Each component should have at least one presentation row (any text).
-  //    Approximation: count component phrases lacking a `presentation_audio_id`
-  //    binding AND whose own text doesn't appear in the existing presentation set.
-  //    For now we use the simpler check: component phrases with NULL presentation_audio_id.
-  //    /regenerate-presentations creates these rows, so this is a meaningful gate.
-  // METHODOLOGY-AWARE: only introduce:true components need a presentation.
-  // introduce:false components (e.g. grammatical particles like 才) are never
-  // introduced alone, so they must NOT be counted as "missing a presentation".
-  let compMissingQ = supabase
-    .from('course_practice_phrases')
-    .select('id', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-    .eq('phrase_role', 'component')
-    .eq('introduce', true)
-    .lte('seed_number', releaseTarget)
-    .is('presentation_audio_id', null)
-  if (scopeSeeds) compMissingQ = compMissingQ.in('seed_number', scopeSeeds)
-  const { count: componentMissingCount } = await compMissingQ
-
-  // But the component's text may have a matching course_audio row even when
-  // presentation_audio_id is null on the phrase. So we don't strictly require
-  // the per-phrase binding — only that course_audio has *some* row that could match.
-  // For the gate, "no component pending rows at all" is the failure mode worth catching.
-  const { count: pendingCompPresCount } = await supabase
-    .from('course_audio')
-    .select('id', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-    .eq('role', 'presentation')
-    .is('lego_id', null)  // component presentations have null lego_id
-
-  // If there are component phrases needing audio but ZERO component presentation
-  // rows in course_audio, /regenerate-presentations hasn't been run yet.
-  const missingComponentPresentations = (componentMissingCount > 0 && pendingCompPresCount === 0)
-    ? componentMissingCount
-    : 0
+  // 3) Component phrases — ALWAYS ZERO. A component without a presentation
+  //    clip is not "missing" anything: components are never introduced (Tom,
+  //    2026-08-06), so there is nothing for /regenerate-presentations to make
+  //    and nothing for this gate to hold /generate on. This block used to
+  //    count introduce:true components with a null presentation_audio_id and
+  //    report them as missing — the gate that made the violation a
+  //    prerequisite for release.
+  const missingComponentPresentations = 0
 
   const totalMissing = missingLegoPresentations + missingComponentPresentations
   return {
@@ -606,46 +612,13 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     for (const t of toAuthor) t.seed = seedTexts.get(t.seed_number) || null
   }
 
-  // Component intros (introduce:true only — particles are never introduced
-  // alone). Authored only when no pending component text rows exist; while
-  // they do (pre-purge transition), Step 3 already carries those texts.
-  let componentIntroSlots = 0
-  const pendingComponentRows = (rawPresentations || [])
-    .filter(p => p.s3_key && p.s3_key.startsWith('pending/') && !p.lego_id).length
-  if (pendingComponentRows === 0) {
-    let compQ = supabase
-      .from('course_practice_phrases')
-      .select('id, known_text, target_text, lego_id, seed_number')
-      .eq('course_code', courseCode)
-      .eq('phrase_role', 'component')
-      .eq('introduce', true)
-      .is('presentation_audio_id', null)
-      .lte('seed_number', releaseTarget)
-    if (scopeSeeds) compQ = compQ.in('seed_number', scopeSeeds)
-    const { data: compRows } = await compQ
-    componentIntroSlots = (compRows || []).length
-    const parentIds = [...new Set((compRows || []).map(c => c.lego_id).filter(Boolean))]
-    const parentKnown = new Map()
-    for (let i = 0; i < parentIds.length; i += 200) {
-      const { data: parents } = await supabase
-        .from('course_legos')
-        .select('lego_id, known_text')
-        .eq('course_code', courseCode)
-        .in('lego_id', parentIds.slice(i, i + 200))
-      for (const p of (parents || [])) parentKnown.set(p.lego_id, p.known_text)
-    }
-    for (const c of (compRows || [])) {
-      if (isPunctuationOnly(c.known_text)) continue
-      toAuthor.push({
-        phrase_id: c.id,
-        lego_id: null,
-        chunk: c.known_text,
-        form: c.target_text,
-        seed: parentKnown.get(c.lego_id) || null,
-        seed_number: c.seed_number
-      })
-    }
-  }
+  // NO COMPONENT INTROS. This block used to queue one presentation text per
+  // introduce:true component for authoring and TTS — the machine that made
+  // every component into its own introduction. Components are never
+  // introduced (Tom, 2026-08-06), so there are no component intro slots and
+  // nothing to author. `introduce: true` is not a licence: the flag was never
+  // the gate. Kept as a named zero because the slot maths below reads it.
+  const componentIntroSlots = 0
 
   // Step 2: Check which unlinked items have existing audio (can be linked without TTS)
   // If forceGenerate is true, skip this check — treat everything as needing TTS.
@@ -764,22 +737,6 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
           for (const l of (rows || [])) legoById.set(l.lego_id, l)
         }
 
-        // Component rows have no FK — a row is fresh if ANY current
-        // introduce:true component known_text appears quoted in its text.
-        let compProbes = []
-        if (freshPendingRows.some(r => !r.lego_id)) {
-          let compQ2 = supabase
-            .from('course_practice_phrases')
-            .select('known_text')
-            .eq('course_code', courseCode)
-            .eq('phrase_role', 'component')
-            .eq('introduce', true)
-            .lte('seed_number', releaseTarget)
-          if (scopeSeeds) compQ2 = compQ2.in('seed_number', scopeSeeds)
-          const { data: compTexts } = await compQ2
-          compProbes = [...new Set((compTexts || []).map(c => c.known_text).filter(Boolean))].map(quotedProbe)
-        }
-
         const isFreshPending = (r) => {
           const text = r.text || ''
           if (r.lego_id) {
@@ -792,7 +749,11 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
             }
             return variants.some(v => v && text.includes(quotedProbe(v)))
           }
-          return compProbes.some(p => text.includes(p))
+          // A pending row with no lego_id is a COMPONENT presentation text.
+          // Never fresh: components are never introduced (Tom, 2026-08-06),
+          // so any such row left over from the old authoring path is stale by
+          // definition and gets purged rather than TTSed.
+          return false
         }
 
         const fresh = []
@@ -1443,102 +1404,21 @@ async function linkPresentationAudio(courseCode) {
 }
 
 /**
- * Link presentation audio IDs to component phrases (course_practice_phrases).
- * Component presentation audio is matched by text_normalized + role.
- * This mirrors linkPresentationAudio but for components instead of LEGOs.
+ * Link presentation audio to component phrases — REFUSED.
+ *
+ * Components are never introduced (Tom, 2026-08-06). This used to build the
+ * "as in" presentation text for every component row, look up its clip and
+ * bind it to `course_practice_phrases.presentation_audio_id` — the last step
+ * that turned an authored component narration into something a learner could
+ * hear. It now links nothing, always.
+ *
+ * Existing bindings are left alone: unlinking ~68k rows across 96 courses is
+ * a separate, approval-gated decision. Nothing plays them (the cycles API no
+ * longer emits component_intro), so they are inert.
  */
 async function linkComponentPresentationAudio(courseCode) {
-  // 1. Get component phrases missing presentation_audio_id
-  const PAGE_SIZE = 1000
-  const components = []
-  let offset = 0
-  while (true) {
-    const { data, error } = await supabase
-      .from('course_practice_phrases')
-      .select('id, seed_number, lego_index, known_text')
-      .eq('course_code', courseCode)
-      .eq('phrase_role', 'component')
-      .is('presentation_audio_id', null)
-      .order('id')
-      .range(offset, offset + PAGE_SIZE - 1)
-    if (error || !data?.length) break
-    components.push(...data)
-    if (data.length < PAGE_SIZE) break
-    offset += PAGE_SIZE
-  }
-
-  if (components.length === 0) return { linked: 0 }
-
-  // 2. Get course info and presentation template
-  const { data: course } = await supabase
-    .from('courses')
-    .select('known_lang, target_lang')
-    .eq('course_code', courseCode)
-    .single()
-  if (!course) return { linked: 0 }
-
-  const targetLangName = getLocalisedLangName(course.target_lang, course.known_lang)
-  const template = await getOrCreatePresentationTemplate(course.known_lang)
-
-  // 3. Load parent M-LEGOs for "as in" context
-  const seedNumbers = [...new Set(components.map(c => c.seed_number))]
-  const parentMap = new Map()
-  for (let i = 0; i < seedNumbers.length; i += 500) {
-    const batch = seedNumbers.slice(i, i + 500)
-    const { data: parents } = await supabase
-      .from('course_legos')
-      .select('seed_number, lego_index, known_text')
-      .eq('course_code', courseCode)
-      .eq('type', 'M')
-      .in('seed_number', batch)
-    for (const l of (parents || [])) {
-      parentMap.set(`${l.seed_number}:${l.lego_index}`, l)
-    }
-  }
-
-  // 4. Build presentation text for each component and look up audio
-  const { data: allPresAudio } = await supabase
-    .from('course_audio')
-    .select('id, text_normalized, s3_key')
-    .eq('course_code', courseCode)
-    .eq('role', 'presentation')
-    .eq('language', course.known_lang)
-    .not('s3_key', 'like', 'pending/%')
-    .limit(100000)
-
-  const presAudioMap = new Map()
-  for (const a of (allPresAudio || [])) {
-    presAudioMap.set(a.text_normalized, a.id)
-  }
-
-  // 5. Match and link
-  let linked = 0
-  for (const comp of components) {
-    const parent = parentMap.get(`${comp.seed_number}:${comp.lego_index}`)
-    if (!parent) continue
-
-    const presText = template
-      .replace('{target_lang_name}', targetLangName)
-      .replace('{known}', comp.known_text)
-      .replace('{seed}', parent.known_text)
-
-    const norm = normalizeForAudio(presText)
-    const audioId = presAudioMap.get(norm)
-    if (!audioId) continue
-
-    const { error } = await supabase
-      .from('course_practice_phrases')
-      .update({ presentation_audio_id: audioId })
-      .eq('id', comp.id)
-
-    if (!error) linked++
-  }
-
-  if (linked > 0) {
-    logger.info(`linkComponentPresentationAudio: linked ${linked} component presentation audio IDs for ${courseCode}`)
-  }
-
-  return { linked }
+  logger.debug(`linkComponentPresentationAudio: ${COMPONENTS_NEVER_INTRODUCED} (${courseCode})`)
+  return { linked: 0 }
 }
 
 // GET /needs/:courseCode — canonical audio-needs endpoint.
@@ -1943,6 +1823,22 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     logger.info(`Audio needs: ${audioNeeds.stats.missing} missing total, ${audioNeeds.toLink} linkable, ${audioNeeds.toGenerate.length} need TTS, ${authoredIntros.length} freshly authored`)
 
+
+    // COMPONENTS ARE NEVER INTRODUCED — the money-path guard (Tom, 2026-08-06).
+    // A `presentation` item carrying a phrase_id rather than a lego_id IS a
+    // component introduction: presentation audio only ever belongs to a LEGO
+    // or a component row, and this is the last place either can reach TTS.
+    // Refuse loudly rather than spend money narrating a tiling part.
+    const componentPresentationItems = needed.filter(
+      n => n.role === 'presentation' && n.phrase_id && !n.lego_id
+    )
+    if (componentPresentationItems.length > 0) {
+      logger.error(
+        `[generate] ${componentPresentationItems.length} component presentation item(s) reached the TTS queue for ${courseCode}: ` +
+        componentPresentationItems.slice(0, 3).map(n => n.phrase_id).join(', ')
+      )
+      refuseComponentPresentation('generate')
+    }
 
     // Filter by requested roles if specified (e.g. roles: ['known', 'presentation'])
     if (requestedRoles && Array.isArray(requestedRoles) && requestedRoles.length > 0) {
@@ -3021,28 +2917,10 @@ app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
       toInsert.push({ kind: 'lego', lego_id: l.lego_id, known: l.known_text, text })
     }
 
-    // 2) Component presentations: introduce:true components in scope, with a parent
-    //    M-LEGO, lacking a presentation. introduce:false (particles) are SKIPPED.
-    const { data: comps } = await supabase.from('course_practice_phrases')
-      .select('id, seed_number, lego_index, known_text, introduce, presentation_audio_id')
-      .eq('course_code', courseCode).eq('phrase_role', 'component').in('seed_number', scopeSeeds)
-    const parentMap = new Map()
-    if (comps && comps.length) {
-      const { data: parents } = await supabase.from('course_legos')
-        .select('seed_number, lego_index, known_text')
-        .eq('course_code', courseCode).eq('type', 'M').in('seed_number', scopeSeeds)
-      for (const p of (parents || [])) parentMap.set(`${p.seed_number}:${p.lego_index}`, p)
-    }
-    for (const c of (comps || [])) {
-      if (c.introduce === false) continue            // METHODOLOGY: never introduce a silent particle
-      if (c.presentation_audio_id) continue
-      const parent = parentMap.get(`${c.seed_number}:${c.lego_index}`)
-      if (!parent) continue
-      const text = template.replace('{target_lang_name}', targetLangName)
-        .replace('{known}', c.known_text).replace('{seed}', parent.known_text)
-      if (existingTextNorms.has(normalizeForAudio(text))) continue
-      toInsert.push({ kind: 'component', phrase_id: c.id, known: c.known_text, text })
-    }
+    // 2) Component presentations: NONE. Components are never introduced
+    //    (Tom, 2026-08-06), so this endpoint inserts no component presentation
+    //    text. It used to author one per introduce:true component with a
+    //    parent M-LEGO; `introduce` was never the gate and is not one now.
 
     if (dryRun) {
       return res.json({ success: true, dryRun: true, courseCode, seeds: scopeSeeds, wouldInsert: toInsert.length, items: toInsert })
@@ -3337,78 +3215,14 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     }
 
     // =========================================================================
-    // COMPONENT PRESENTATIONS - Generate presentation text for M-LEGO components
+    // COMPONENT PRESENTATIONS — NONE. Components are never introduced
+    // (Tom, 2026-08-06). This endpoint used to build one "as in" presentation
+    // text per component row from its parent M-LEGO's known_text, which is
+    // exactly the per-component introduction the ruling forbids. It authors
+    // none now; the array stays so the response shape and the dedupe below
+    // are unchanged — always empty.
     // =========================================================================
     const componentPresentations = []
-
-    // Load all component phrases for this course
-    const compPhrases = []
-    let compOffset = 0
-    let hasMoreComps = true
-    while (hasMoreComps) {
-      const { data: compBatch, error: compError } = await supabase
-        .from('course_practice_phrases')
-        .select('id, seed_number, lego_index, known_text, target_text')
-        .eq('course_code', courseCode)
-        .eq('phrase_role', 'component')
-        .order('id')
-        .range(compOffset, compOffset + PAGE_SIZE - 1)
-
-      if (compError) { logger.warn('Failed to fetch component phrases:', compError.message); break }
-      if (compBatch && compBatch.length > 0) {
-        compPhrases.push(...compBatch)
-        hasMoreComps = compBatch.length === PAGE_SIZE
-        compOffset += PAGE_SIZE
-      } else {
-        hasMoreComps = false
-      }
-    }
-
-    if (compPhrases.length > 0) {
-      // Load parent M-LEGOs for "as in" context
-      const compSeedNumbers = [...new Set(compPhrases.map(c => c.seed_number))]
-      const parentLegoMap = new Map()
-
-      const COMP_SEED_BATCH = 500
-      for (let i = 0; i < compSeedNumbers.length; i += COMP_SEED_BATCH) {
-        const seedBatch = compSeedNumbers.slice(i, i + COMP_SEED_BATCH)
-        const { data: parentLegos } = await supabase
-          .from('course_legos')
-          .select('seed_number, lego_index, known_text, target_text')
-          .eq('course_code', courseCode)
-          .eq('type', 'M')
-          .in('seed_number', seedBatch)
-
-        for (const l of (parentLegos || [])) {
-          parentLegoMap.set(`${l.seed_number}:${l.lego_index}`, l)
-        }
-      }
-
-      // Generate presentation text for each component
-      for (const comp of compPhrases) {
-        const parent = parentLegoMap.get(`${comp.seed_number}:${comp.lego_index}`)
-        if (!parent) continue  // Skip components without a parent M-LEGO
-
-        const presText = template
-          .replace('{target_lang_name}', targetLangName)
-          .replace('{known}', comp.known_text)
-          .replace('{seed}', parent.known_text)
-
-        componentPresentations.push({
-          phrase_id: comp.id,
-          known: comp.known_text,
-          target: comp.target_text,
-          parent_known: parent.known_text,
-          seed_number: comp.seed_number,
-          lego_index: comp.lego_index,
-          presentation_text: presText
-        })
-      }
-
-      logger.info(`Generated ${componentPresentations.length} component presentations (from ${compPhrases.length} component phrases)`)
-    } else {
-      logger.info('No component phrases found for this course')
-    }
 
     if (dryRun) {
       return res.json({
@@ -4726,16 +4540,16 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       parentMap.set(`${l.seed_number}:${l.lego_index}`, l)
     }
 
-    // 4. Get (or auto-generate) presentation template
-    const presentationTemplate = await getOrCreatePresentationTemplate(knownLang)
+    // 4. No presentation template is fetched: components are never introduced
+    //    (Tom, 2026-08-06), so this endpoint has no presentation text to build.
 
     // 5. Collect all unique texts we need audio for
     const needed = []
-    const compPresTexts = new Map() // comp.id -> presentation text
+    // Always empty — kept because linkComponentAudio takes it and must bind
+    // no component presentation clip.
+    const compPresTexts = new Map()
 
     for (const comp of components) {
-      const parent = parentMap.get(`${comp.seed_number}:${comp.lego_index}`)
-
       // known audio
       if (!isPunctuationOnly(comp.known_text)) {
         needed.push({
@@ -4762,25 +4576,11 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         }
       }
 
-      // presentation audio
-      if (parent) {
-        const presText = presentationTemplate
-          .replace('{target_lang_name}', targetLangName)
-          .replace('{known}', comp.known_text)
-          .replace('{seed}', parent.known_text)
-
-        compPresTexts.set(comp.id, presText)
-
-        needed.push({
-          text: presText,
-          language: knownLang,
-          role: 'presentation',
-          voiceId: getVoiceForRole('presentation') || getVoiceForRole('known'),
-          speed: getSpeedForRole('presentation') || getSpeedForRole('known') || 1.0,
-          componentId: comp.id,
-          isComponentPresentation: true
-        })
-      }
+      // NO presentation audio. Components are never introduced (Tom,
+      // 2026-08-06). This is where the per-component "as in" narration used to
+      // be built from the parent M-LEGO and queued for TTS. The known/target
+      // clips above stay — those are tile data, not an introduction.
+      // `compPresTexts` is left empty, so linkComponentAudio binds nothing.
     }
 
     // 6. Dedup against existing course_audio (targeted query by unique texts)
