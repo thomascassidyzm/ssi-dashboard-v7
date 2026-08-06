@@ -73,6 +73,19 @@ row you were pointed at. Every fix should be careful and involve a lot of checki
 Prefer, in order: fix in place → reword one side → reword both sides → delete. Take the first one
 that leaves the course consistent, not the first one that makes the flag go away.
 
+**But check what the phrase hangs on first.** You cannot fully fix a phrase whose underlying
+LEGO gloss is broken — rewrite "talking more" into a hundred fresh frames and every one is still
+ungrammatical, because the gloss is the defect. Phrase-level rewriting is a *finishing* pass. If
+the decomposition or the gloss beneath the row is wrong, fix that or flag it; don't polish rows
+that hang off it.
+
+**Submit through the course-builder, don't re-implement the methodology.** `POST /api/seed/complete`
+runs every gate — tiling, ZUT, vocabulary, phrase counts — atomically, and rejects the whole thing
+with a full problem list rather than partially saving. A previous bespoke rewrite loop that
+re-encoded the rules in an agent prompt instead quietly dropped rules the builder already enforces
+and shipped 1.3 BUILD / 1.7 USE phrases per LEGO against a floor of 3/5. The builder would have
+rejected it outright.
+
 ## 2. The escalation ladder
 
 Work outward in this order, and don't skip a rung:
@@ -118,6 +131,12 @@ you happened to edit.
 - **Phrases tile from WHOLE already-introduced chunks — never re-split into words.** If your
   rewording needs a conjugation, inversion or contraction that has not been introduced as a whole
   chunk, it is not available to you.
+- **FORM discipline is the number-one failure mode.** Not the lemma — the *form*. Every
+  target-language word form you use must already be attested at or before this seed. Swapping the
+  pronoun in an attested frame is fine; using a frame in a shape the course has only ever shown in
+  one other shape is not. In case languages, an object form introduced under negation may only be
+  reused where that case is licensed — never invent the form the course hasn't taught. When unsure,
+  skip.
 - **Multi-word chunks are protected as units.** A fixed expression taught as one M-LEGO at seed 40
   ("ein bisschen", "lo que") must not appear wholesale in a seed-20 phrase, even when every
   individual word is known. The learner's confusion is "I recognise the words but this combination
@@ -166,6 +185,12 @@ brief written from scratch, and it is not hypothetical:
   something more natural, and that natural wording is already the prompt for a different target
   elsewhere in the course.
 - **Merging or renaming a LEGO** so its known gloss now collides with a sibling's.
+
+**So before you write any new or reworded text: grep the course for how that English chunk is
+already rendered.** Never add a *second* rendering of a chunk that already has one, and never reuse
+an existing rendering under a *different* English chunk. First-come-first-served — the established
+earlier-seed form wins, and you don't get to substitute a better idea later. (Fixing a genuine
+error is not "changing your mind"; stylistic preference is.)
 
 **Therefore: after ANY edit to a known_text, re-run the ZUT check across the course.** Not on the
 row you touched — across the course. Stripping parens/slashes before resolving ZUT is the required
@@ -245,6 +270,17 @@ candidate at sentence level, look at its tile before you close it.
 - **HUNT FALSE POSITIVES. Never report a raw hit count as a finding.** Hand-check the hits,
   separate high-confidence from possible, and state the method you used. Report those three things
   separately — "412 hits" is not a finding, it is an input.
+- **Count fix-CLUSTERS, not flags.** Real findings collapse hard: 1,499 raw flags → 1,123 adjudicated
+  real → but 90 ZUT consolidations plus ~7 tense-mapping demonstrations covered 617 of them. The
+  number that tells anyone anything is *how many distinct fixes*, not how many rows lit up.
+- **False-positive hunting over-fires too.** In that same queue, tense/inflection variants were
+  first written off as noise and then **reclassified as real** — Chinese carries tense with 了/过/在
+  rather than verb inflection, so the "noise" was a missing construction introduction. Default to
+  false-positive on a *known* FP class; don't default to it on a class you haven't understood yet.
+- **A clean strict-gate pass can sit next to a filthy course.** The answerability checks found 15+6
+  violations in 41,885 prompts (~0.05%) — the gate was genuinely fine — while a side-channel on the
+  same run carried 701 real authoring defects. Passing the thing you measured says nothing about
+  what you didn't.
 - **The word-boundary trap has bitten this estate twice.** JS `\b` only matches ASCII word
   boundaries, so `\bvocê\b`, `\bcansé\b`, `\bgrüß\b` silently never match — and every non-Latin
   script here (Devanagari, Arabic, CJK, Cyrillic, Armenian…) plus Finnish ä/ö/y breaks naive
@@ -253,10 +289,20 @@ candidate at sentence level, look at its tile before you close it.
 - **Judgement about language is not a regex.** Mechanical grouping to *gather candidates* is fine.
   **Classification is an agent's job.** A regex classifier reached ~52% on ZUT adjudication and
   under-caught systematically. Don't invest in regex normalisers/stemmers for language judgements.
-- **A passing gate is not a clean row.** The deterministic tiling/vocab/ZUT gates inspect the
-  *target* side. On `eng_for_X` courses, five seeds with known, real known-side defects passed all
-  golden-path gates with zero rejections (2026-06-16). "The gate passed it" proves the gate ran, not
-  that the content is right.
+- **A passing gate is not a clean row.** The split is **COUNT vs MEANING**, not target vs known:
+  code gates do phrase-count floors, tiling, vocab presence, complexity tiers — pure mechanics.
+  **Every judgement about what the language *means* is yours.** So:
+  - *"I want talking more"* **passed the vocabulary gate** — every word had been introduced.
+    Grammaticality is meaning, not counts, and no deterministic gate here catches it.
+  - On `eng_for_X`, five seeds with known, real known-side defects passed all golden-path gates
+    with zero rejections (2026-06-16) — those gates inspect the *target* side only, and the one
+    known-side gate is ASCII-tokenised, so it silently no-ops on Devanagari and every other
+    non-Latin script.
+  - A frame-coverage check returned `[]` on all 9,846 LEGOs tested — a **false clean** from a code
+    signature that can't judge language.
+  - A missing pair-contract makes the known-side check **silently skip**, so an un-contracted
+    course is never wrongly blocked — and never rightly blocked either.
+  "The gate passed it" proves the gate ran. A zero from a check you didn't calibrate is a rumour.
 - **Absence of findings is not absence of issues.** For languages our human reviewer doesn't speak,
   the scanner is the only gate — a quiet report there means untested, not clean.
 - **COMPONENT phrases are intentionally partial — don't "fix" them.** A component is a building
@@ -322,6 +368,15 @@ tables with concurrent writers**: on 2026-08-06 a row vanished mid-scan between 
 query and the systematic fetch, making a demonstrably-real pattern read as zero hits. If your
 counts shift under you, disclose it — don't reconcile it quietly.
 
+**Two ways a bulk edit corrupts data silently:**
+
+- **Shell-quoted `curl` eats apostrophes.** `don't` goes in as `dont`, `I'm` as `im`. **Submit from
+  a JSON file, never from an inline shell-quoted payload**, and after any run grep your new rows for
+  `dont|cant|im|wont|didnt|youre|thats` before calling it clean.
+- **Read bulk/regex dry-runs in FULL before applying.** Not a sample. Regex edge cases only surface
+  on a complete read — accented letters defeating `\b`, homographs, `"it's been"` ≠ `"it is been"`.
+  If the dry-run is too long to read, the batch is too big to apply.
+
 **Never force a fix.** Skip freely, with a one-line reason. Two good phrases beat ten stilted ones,
 and a skipped row you named is worth more than a forced row you didn't. Work slowly — course
 content is craftsmanship, and quality beats throughput every time.
@@ -380,7 +435,9 @@ Every source below is in this repo. Line references are to the state of the file
 | `.claude/commands/ssi-translation-methodology.md` | "NEVER change canonical meaning"; consistency of a chosen mapping course-wide (never "ich will" sometimes and "ich möchte" other times for "I want") — corroborates §0's merge-or-separate-consistently rule. |
 | `.claude/commands/phrase-monitor.md` | The phrase-role discipline in §5: components are intentionally partial and must be SKIPPED, BUILDs flagged only for obvious errors, and only USE phrases judged for naturalness and translation accuracy. |
 | `.claude/commands/phrase-fixer.md` | The confidence ladder (auto-fix only what is unambiguous; when uncertain, skip rather than guess) and "log your reasoning so humans can audit" (§9). **Also the source of a contradiction — see below.** |
-| `docs/course-optimization/lego-spread-backfill-playbook.md` | "**NEVER force. Skip freely with a one-line reason. 2 great phrases beat 10 stilted ones**" (§7); one writer per course and why concurrent writers collide (§7); that new inserts knock a seed's approval back into review (§7); "validate after every run — read every reported line" reinforcing §2. |
+| `docs/course-optimization/lego-spread-backfill-playbook.md` | "**NEVER force. Skip freely with a one-line reason. 2 great phrases beat 10 stilted ones**" (§7); one writer per course and why concurrent writers collide (§7); that new inserts knock a seed's approval back into review (§7); **FORM discipline as "the #1 failure mode"** and the case-licensing rule (§3); grep-before-you-write — never a second rendering of a chunk, never a rendering reused under a different chunk (§4); the shell-quoted-curl apostrophe strip and its grep-back check, and "read dry-runs in FULL before applying" (§7). |
+| `docs/course-optimization/upper-half-fix-queue.md` | **Count fix-clusters, not flags** — 1,499 raw → 1,123 real → 90 ZUT consolidations + ~7 tense demos covering 617 of them (§5); the explicit **reversal** where tense/inflection variants were first dismissed as false positives and then reclassified as real, behind "false-positive hunting over-fires too" (§5); consolidate-or-differentiate as the repeated two-branch ZUT decision (§4); the `metadata_gloss` defect class (§8). |
+| `docs/course-optimization/eng-for-x-remediation-plan.md` | **"COUNT vs MEANING, not target vs known"** (Tom, 2026-06-16) — the framing that opens §5's gate rule; *"I want talking more"* passing the vocabulary gate because grammaticality is meaning not counts; the frame-coverage check returning `[]` on all 9,846 LEGOs as a false clean; "you cannot fully fix the target side without fixing the decomposition/gloss it hangs on" and phrase rewriting as a finishing pass (§1); drive fixes **through** the course-builder rather than re-encoding methodology in a prompt, and the 1.3 BUILD / 1.7 USE failure that caused (§1). |
 | `.claude/commands/ssi-phrase-variety.md` | The SHORT 3–5 / MEDIUM 6–9 / LONG 10+ syllable ladder and the common failure of skipping MEDIUM (§7); the practice-score notion of under- vs over-used LEGOs behind "check what your deletions leave behind". |
 | `synonym-choice-architecture.md` (repo root) | Context only: when a fix forces you to choose between several valid target realisations, that choice has its own doctrine (least-action path for the pair) and is applied *before* decomposition. Nothing from it is quoted in the block. |
 | Kai's direct instructions (2026-08-06) | §0 consistency in full; §1 the wide fix space; §2 the escalation ladder; §4 the duplicate asymmetry; §3 the first-LEGO rule; §5 calibrate-before-counting and hunt-false-positives; §6 no TTS without per-batch approval. Where these overlap a repo source, both agree unless noted below. |
@@ -433,22 +490,32 @@ Reported rather than papered over.
    no scan was run against a course, no database was touched, no audio generated. The rules are
    faithful to their sources; they have not been re-tested against a live course as part of this
    job.
-8. **Coverage is what one reader could read, not an exhaustive sweep.** Three parallel harvester
-   sessions were dispatched to widen coverage and **none of them ever started** — the dispatch API
-   returned IDs that appear nowhere among the 1,013 conversations on the server. Every source in the
-   table above was therefore read directly by the author, and nothing is cited that wasn't. The
-   consequence is that the harvest is deep on the files named and **shallower on the long tail**: a
-   grep for `zut` / `false positive` across `docs/` and `.claude/` returns ~40 files, of which the
-   most on-point were followed up and the remainder were not. Files seen in that grep but **not**
-   read include `docs/eng-for-mar-flagged-seeds-triage-2026-08-06.md`,
-   `docs/spa-padding-fp-audit-2026-08-06.md`, `docs/greek-disambiguation-tags-2026-08-06.md`,
-   `docs/exception-lego-leak-sweep-2026-08-04.md`, `docs/qa-landscape-scout-2026-08-04.md` and
-   `docs/GRAMMAR_FLAG_FIXING_REPORT_2026-01-30.md`. Several are dated within the last few days and
-   may well hold rules worth adding. **This block should be treated as version 1, not as complete.**
-9. **Files assigned to the failed harvesters that were not reached at all:**
-   `docs/course-optimization/eng-for-x-remediation-plan.md` and
-   `docs/course-optimization/upper-half-fix-queue.md`. Not represented in the block, not cited above.
-   (`ssi-translation-methodology.md`, `course-methodology-analysis.md`, `calibrate.md` and
-   `translation-analysis.md` were also assigned to those sessions but were subsequently covered
-   directly — via targeted grep plus reading the matched sections, not a full read of each file, so
-   their coverage is thinner than the files in the top half of the table.)
+8. **How coverage was actually obtained, since it affects how much to trust each row.** Sources in
+   the upper half of the table were read directly and in full by the author. Three parallel
+   harvester sessions covered the rest and reported late; their findings were folded in afterwards
+   and are marked by the files only they reached
+   (`eng-for-x-remediation-plan.md`, `upper-half-fix-queue.md`, and the fuller reading of
+   `lego-spread-backfill-playbook.md`). Four command files —
+   `ssi-translation-methodology.md`, `course-methodology-analysis.md`, `calibrate.md`,
+   `translation-analysis.md` — were covered *both* by a harvester and by the author's targeted grep;
+   they agree. Where a harvester was the only reader, the block reflects its summary rather than the
+   author's own reading of the source.
+9. **The long tail was not swept.** A grep for `zut` / `false positive` across `docs/` and
+   `.claude/` returns ~40 files; the most on-point were followed up and the rest were not. Known
+   unread and plausibly relevant, several dated within the last few days:
+   `docs/eng-for-mar-flagged-seeds-triage-2026-08-06.md`, the four-file
+   `docs/spa-padding-*-2026-08-06.md` cluster (a fresh false-positive calibration case),
+   `docs/greek-disambiguation-tags-2026-08-06.md`, `docs/exception-lego-leak-sweep-2026-08-04.md`,
+   `docs/qa-landscape-scout-2026-08-04.md` and
+   `docs/GRAMMAR_FLAG_FIXING_REPORT_2026-01-30.md`. **Treat this block as version 1, not as
+   complete.**
+10. **Two more contradictions surfaced by the harvesters, both left unresolved.**
+    (a) *Phrase-tier minimums disagree.* `course-audit.md` gives per-seed-range tier counts (seeds
+    6–20: 1+ SHORT / 1+ MEDIUM / 2+ LONG; 21+: 2+ / 2+ / 3+), while `ssi-phrase-variety.md` gives a
+    flat "minimum 5 USE per LEGO spread across the tiers" with no per-tier counts. Neither
+    cross-references the other. §7 states the ladder and the 3/5 floor from
+    `ralph-methodology.md` — which is the validator's actual behaviour — and does not adopt either
+    file's tier counts.
+    (b) *USE phrase length targets differ.* `calibrate.md` says "LEGO + 10–12 syllables";
+    `ralph-methodology.md`'s USE table says LEGO + 4–6 (medium) / + 7–10 (long). The block gives
+    the SHORT/MEDIUM/LONG syllable bands rather than either target.
