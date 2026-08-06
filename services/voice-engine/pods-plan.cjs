@@ -157,10 +157,14 @@ function buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount = DEFA
         scene,
       }
 
+      // A glued chain is one item, so it reads as a draft if ANY row in it is one —
+      // the recorder is being shown unproofread words either way.
+      const targetIsDraft = di.rows.some(r => r.target_text_draft === true)
+
       const entry = castVoiceFor(cast, di.speaker)
       if (entry && entry.voiceId === voiceId && target) {
         castSpeakers.add(di.canon)
-        push({ ...base, kind: 'target', line: target, knownGloss: known || null })
+        push({ ...base, kind: 'target', line: target, knownGloss: known || null, draft: targetIsDraft })
       }
 
       if (isExplainer) {
@@ -180,7 +184,7 @@ function buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount = DEFA
       // The dialogue context everyone reads against — every line enters the
       // cue trail regardless of whose voice records it.
       if (target || known) {
-        cueTrail.push({ speaker: di.canon, target: target || null, known: known || null })
+        cueTrail.push({ speaker: di.canon, target: target || null, known: known || null, draft: targetIsDraft })
         if (cueTrail.length > cueCount) cueTrail = cueTrail.slice(-cueCount)
       }
     }
@@ -252,10 +256,14 @@ async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds 
         speaker: c.speaker,
         targetText: c.target != null ? c.target : null,
         knownText: c.known != null ? c.known : null,
+        draft: c.draft === true,
       })),
       line: isTarget
         ? { targetText: it.line, knownText: it.knownGloss != null ? it.knownGloss : null }
         : { targetText: null, knownText: it.line },
+      // true = the target words on screen are a machine draft awaiting a human
+      // proofread. Only ever set on 'target' items; the record room badges them.
+      draft: isTarget && it.draft === true,
       estimatedSeconds: it.estimatedSeconds,
       recorded: isRecorded,
       audioId,

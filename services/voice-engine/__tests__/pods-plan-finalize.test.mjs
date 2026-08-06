@@ -33,7 +33,7 @@ describe('finalizeRecordingPlan (canonical wire shape + recorded stamping)', () 
     expect(final.items).toHaveLength(2)
 
     const [first, second] = final.items
-    expect(first.cues).toEqual([{ speaker: 'Elin', targetText: 'Bore da!', knownText: 'Good morning!' }])
+    expect(first.cues).toEqual([{ speaker: 'Elin', targetText: 'Bore da!', knownText: 'Good morning!', draft: false }])
     expect(first.line).toEqual({ targetText: 'Bore da, sut wyt ti?', knownText: 'Good morning, how are you?' })
     expect(first.sceneNumber).toBe(1)
     expect(first.sceneTitle).toBe('Yn y caffi')   // boundary item carries the title

@@ -94,8 +94,8 @@ describe('buildRecordingPlan — cues', () => {
     const p = plan('human_catrin_cym')
     const annaThird = p.items.find(i => i.sentenceId === 'p0-3')
     expect(annaThird.cues).toEqual([
-      { speaker: 'Anna', target: 'Bore da', known: 'Good morning' },
-      { speaker: 'Waiter', target: 'Croeso', known: 'Welcome' },
+      { speaker: 'Anna', target: 'Bore da', known: 'Good morning', draft: false },
+      { speaker: 'Waiter', target: 'Croeso', known: 'Welcome', draft: false },
     ])
   })
 
@@ -198,5 +198,46 @@ describe('buildRecordingPlan — guards', () => {
   it('requires a voiceId', () => {
     expect(() => buildRecordingPlan({ pods: PODS, sentences: SENTENCES, podCast: POD_CAST, voiceId: null }))
       .toThrow(/voiceId/)
+  })
+})
+
+// ── DRAFT marker (Tom 2026-08-06: "opus drafts, Aran proofreads") ────────────
+// A machine-written target line rides in target_text so the record room renders
+// it and a proofreader can amend it inline. target_text_draft is what stops a
+// recorder reading it as the course's finished words — so the plan MUST carry
+// it, on the item and on the cue trail.
+describe('buildRecordingPlan — DRAFT target text', () => {
+  const DRAFTED = SENTENCES.map(r =>
+    r.id === 'p0-2' ? { ...r, target_text_draft: true } : r)
+
+  const draftPlan = (voiceId) => buildRecordingPlan({
+    pods: PODS, sentences: DRAFTED, podCast: POD_CAST, voiceId,
+  })
+
+  it('marks the drafted line and only the drafted line', () => {
+    const items = draftPlan('human_aran_cym').items.filter(i => i.kind === 'target')
+    const drafted = items.filter(i => i.draft)
+    expect(drafted.map(i => i.sentenceId)).toEqual(['p0-2'])
+    expect(items.every(i => i.draft === (i.sentenceId === 'p0-2'))).toBe(true)
+  })
+
+  it('undrafted rows report draft:false, never undefined', () => {
+    for (const it of draftPlan('human_catrin_cym').items) expect(it.draft ?? false).toBe(false)
+  })
+
+  it('a glued chain reads as draft if ANY of its rows is one', () => {
+    const glued = SENTENCES.map(r => r.id === 'p0-6' ? { ...r, target_text_draft: true } : r)
+    const item = buildRecordingPlan({ pods: PODS, sentences: glued, podCast: POD_CAST, voiceId: 'human_aran_cym' })
+      .items.find(i => i.sentenceId === 'p0-5')
+    expect(item.sentenceIds).toEqual(['p0-5', 'p0-6'])
+    expect(item.draft).toBe(true)
+  })
+
+  it('cue lines carry the marker too — context is unproofread as well', () => {
+    // p0-3 (Catrin) is cued by p0-2, the drafted Waiter line.
+    const cues = draftPlan('human_catrin_cym').items.find(i => i.sentenceId === 'p0-3').cues
+    const cue = cues.find(c => c.target === 'Croeso')
+    expect(cue.draft).toBe(true)
+    expect(cues.find(c => c.target === 'Bore da').draft).toBe(false)
   })
 })
