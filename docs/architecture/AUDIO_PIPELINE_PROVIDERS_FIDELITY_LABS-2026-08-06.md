@@ -10,13 +10,13 @@ first: it establishes that a clip is addressed by the hash of its own bytes and 
 `(language, normalised text, voice)`, that speed is applied at playback and never stored, and that a
 clip which fails its gates is never admitted to the store.
 
-**What I built on.** The two store documents in the state they are in the working tree at the time of
-writing — the update folding in Tom's three constraints was still in progress on
-`docs/audio-store-content-addressed-design-2026-08-06`, uncommitted, at commit `1241f5fb`. The
-version I read already carries all three constraints (one clip per `(language, text, voice)` shared
-across courses and sides; voice in the identity; speed a player concern). **If the identity key lands
-differently from that, the section that changes is §4's German plan and nothing else** — everything
-here about providers, gates and labs is independent of the key.
+**What I built on.** Commit **`dacb13ad`** on `docs/audio-store-content-addressed-design-2026-08-06`
+— the update folding in Tom's three constraints, which landed while this was being written and which
+I have read at its final state. It carries all three (one clip per `(language, text, voice)` shared
+across courses and sides; voice in the identity; speed a player concern), and it enforces the identity
+as a **partial unique index on `audio_objects (language, text_normalized, voice_id) WHERE
+superseded_at IS NULL`**. That last detail matters here: the constraint is on the raw column values,
+and §4 shows that neither of those two columns is canonical in the live estate.
 
 One correction to the brief that sent me: the pod voice catalogues are at `tools/pod-voices-xai.json`
 and `tools/pod-voices-azure.json`, not under `services/`.
@@ -402,8 +402,13 @@ language code and the voice prefix takes the estate from **2,099,110 identities 
 further **20,197 renders that need never happen**. (The 2,099,110 figure reproduces the store
 document's number exactly, which is a useful cross-check on both.)
 
-Twenty thousand is modest against 2.5 million. The correctness point is not modest: **the store's
-dedup guarantee is only as good as its key's canonicalisation**, and the design's own reasoning —
+Twenty thousand is modest against 2.5 million. The correctness point is not modest. The appendix at
+`dacb13ad` enforces the identity as a **unique index on the raw columns** —
+`audio_objects (language, text_normalized, voice_id) WHERE superseded_at IS NULL` — and calls that
+index "the whole of the dedup mechanism". A unique index cannot see that `de` and `deu` are one
+language or that `ara` and `xai_ara` are one voice: it will happily admit both, and the dedup
+guarantee quietly becomes a dedup tendency. **The store's dedup guarantee is only as good as its
+key's canonicalisation**, and the design's own reasoning —
 that a normalisation miss costs one extra render and never a wrong clip — holds here too, so this is
 safe to tighten later. But German and French are where the fragmentation is concentrated, so tighten
 it *before* those two rather than after. **Recommendation: canonicalise `language` to a base ISO code
