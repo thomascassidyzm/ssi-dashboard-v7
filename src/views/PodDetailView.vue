@@ -32,6 +32,33 @@
           </div>
         </div>
 
+        <!-- Drafts awaiting proofread — machine-written target text nobody has
+             read yet (listening_pod_sentences.target_text_draft). Editing a line
+             below IS the proofread: PATCH clears the marker in the same write,
+             so this panel empties itself as the proofreader works. -->
+        <div v-if="draftCount > 0" class="mb-6 draft-panel rounded-lg p-4 text-sm">
+          <div class="flex items-center justify-between gap-3 flex-wrap">
+            <div class="min-w-0">
+              <div class="draft-panel-title font-semibold">
+                {{ draftCount }} {{ targetName }} line{{ draftCount === 1 ? '' : 's' }} awaiting proofread
+              </div>
+              <div class="text-xs text-muted mt-1">
+                These are machine-written drafts, marked <strong>DRAFT</strong> below and in the
+                recording room. Nobody should record one as it stands. Edit a line — or save it
+                unchanged if it is already right — and the DRAFT marker comes off that line.
+              </div>
+            </div>
+            <button
+              @click="draftsOnly = !draftsOnly"
+              class="px-3 py-1.5 text-xs rounded whitespace-nowrap draft-filter-btn"
+              :class="draftsOnly ? 'draft-filter-on' : ''"
+            >{{ draftsOnly ? 'Showing drafts only — show all lines' : 'Show only the drafts' }}</button>
+          </div>
+        </div>
+        <div v-else-if="draftsLoaded" class="mb-6 bg-surface border border-line rounded-lg px-4 py-2 text-xs text-muted">
+          No lines are awaiting proofread — every {{ targetName }} line here has been read by a human.
+        </div>
+
         <!-- Metadata (hosts / design notes) -->
         <div v-if="hasMetadata" class="mb-6 bg-surface border border-line rounded-lg p-4 text-sm card-sep">
           <details>
@@ -154,12 +181,18 @@
                 {{ sent.beat_label }}
               </div>
               <!-- Sentence row -->
-              <div class="bg-surface border border-line rounded px-3 py-2 grid grid-cols-[32px_110px_1fr_auto] gap-3 items-start text-sm row-sep">
+              <div
+                class="bg-surface border rounded px-3 py-2 grid grid-cols-[32px_110px_1fr_auto] gap-3 items-start text-sm row-sep"
+                :class="isDraft(sent) ? 'draft-row' : 'border-line'"
+              >
                 <div class="text-faint font-mono text-xs tabular-nums pt-0.5">{{ sent.global_order }}</div>
                 <div class="text-muted text-xs truncate pt-0.5" :title="sent.speaker">{{ sent.speaker }}</div>
                 <div class="min-w-0">
                   <!-- Display mode -->
                   <template v-if="editingId !== sent.id">
+                    <!-- Unproofread machine draft: say so before the words, so
+                         nobody reads them believing they are final. -->
+                    <div v-if="isDraft(sent)" class="draft-badge">DRAFT — AWAITING PROOFREAD</div>
                     <div class="text-ink truncate" :title="sent.target_text">{{ sent.target_text }}</div>
                     <div class="text-faint text-xs truncate" :title="sent.known_text">{{ sent.known_text }}</div>
                     <!-- Stage-1 explainer (inline, only when populated) -->
@@ -180,7 +213,10 @@
                     <div class="flex items-center gap-2">
                       <button :disabled="savingEdit" @click="saveSentence(sent)" class="text-xs px-2.5 py-1 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white">{{ savingEdit ? 'Saving…' : 'Save' }}</button>
                       <button :disabled="savingEdit" @click="cancelEdit" class="text-xs px-2.5 py-1 rounded border border-line text-ink">Cancel</button>
-                      <span class="text-[11px] text-faint">editing clears this line's audio</span>
+                      <span class="text-[11px] text-faint">
+                        editing clears this line's audio<template v-if="isDraft(sent)">
+                          · saving takes the DRAFT marker off, even if you change nothing</template>
+                      </span>
                       <span v-if="editError" class="text-[11px] text-danger">{{ editError }}</span>
                     </div>
                   </div>
@@ -326,10 +362,33 @@ const hasMetadata = computed(() =>
   pod.value?.metadata && (pod.value.metadata.hosts?.length || pod.value.metadata.register || pod.value.metadata.status)
 )
 
+// --- Drafts awaiting proofread ---
+// listening_pod_sentences.target_text_draft, read from the course-gated pods
+// door (GET .../pods/drafts). The open /api/pods detail endpoint doesn't carry
+// the column, and the marker is only ever cleared through the gated PATCH, so
+// this is the same door both ways.
+const draftIds = ref(new Set())
+const draftsLoaded = ref(false)
+const draftsOnly = ref(route.query.drafts === '1')
+
+const isDraft = (sent) => draftIds.value.has(sent.id)
+const draftCount = computed(() => sentences.value.filter(s => draftIds.value.has(s.id)).length)
+
+async function loadDrafts() {
+  try {
+    const res = await authedFetch(`/api/production/${courseCode}/pods/drafts`)
+    if (!res.ok) return   // non-fatal: the page still shows every line
+    const body = await res.json()
+    draftIds.value = new Set((body.items || []).filter(i => i.podId === pod.value?.id).map(i => i.id))
+    draftsLoaded.value = true
+  } catch { /* non-fatal */ }
+}
+
 // Group sentences by scene + annotate beat-label separators
 const groupedScenes = computed(() => {
   const byScene = new Map()
-  for (const s of sentences.value) {
+  const rows = draftsOnly.value ? sentences.value.filter(s => draftIds.value.has(s.id)) : sentences.value
+  for (const s of rows) {
     if (!byScene.has(s.scene_number)) {
       byScene.set(s.scene_number, {
         number: s.scene_number,
@@ -468,6 +527,13 @@ async function saveSentence(sent) {
     sent.known_text = body.sentence.known_text
     sent.target_audio_id = null
     sent.known_audio_id = null
+    // The save WAS the proofread — the server cleared target_text_draft in the
+    // same update, so drop the badge here rather than making them reload.
+    if (body.sentence.target_text_draft === false && draftIds.value.has(sent.id)) {
+      const next = new Set(draftIds.value)
+      next.delete(sent.id)
+      draftIds.value = next
+    }
     editingId.value = null
   } catch (err) {
     editError.value = err?.message || String(err)
@@ -639,7 +705,7 @@ function recChip(sent) {
   return { text: '—', cls: 'bg-surface text-faint border border-line', title }
 }
 
-onMounted(() => { loadPod(); loadRecordingStatus() })
+onMounted(async () => { await loadPod(); loadDrafts(); loadRecordingStatus() })
 
 onUnmounted(() => {
   if (audioEl.value) { audioEl.value.pause(); audioEl.value.src = '' }
@@ -711,4 +777,46 @@ onUnmounted(() => {
 [data-theme="light"] .row-sep {
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
+
+/* DRAFT — unproofread machine-written target text. Same tungsten identity the
+   record room uses for the same state, so a line looks the same to whoever
+   meets it first (autocue: PodLongTakeStudio .cue-draft-badge). */
+.draft-panel {
+  background: rgba(255, 166, 48, 0.08);
+  border: 1px solid var(--color-tungsten, #ffa630);
+}
+.draft-panel-title { color: var(--color-tungsten, #ffa630); }
+.draft-badge {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 4px;
+  background: var(--color-tungsten, #ffa630);
+  color: #1a1a17;
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.draft-row { border-color: var(--color-tungsten, #ffa630); }
+.draft-filter-btn {
+  border: 1px solid var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, #ffa630);
+  background: transparent;
+}
+.draft-filter-on {
+  background: var(--color-tungsten, #ffa630);
+  color: #1a1a17;
+}
+
+[data-theme="light"] .draft-panel {
+  /* amber-50 fill with amber-800 text = 6.8:1 on white. */
+  background: #fffbeb;
+  border-color: #b45309;
+}
+[data-theme="light"] .draft-panel-title { color: #92400e; }
+[data-theme="light"] .draft-badge { background: #b45309; color: #fff; }
+[data-theme="light"] .draft-row { border-color: #b45309; }
+[data-theme="light"] .draft-filter-btn { border-color: #b45309; color: #92400e; }
+[data-theme="light"] .draft-filter-on { background: #b45309; color: #fff; }
 </style>

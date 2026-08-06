@@ -31,6 +31,15 @@
         <div class="sum-stat"><span class="sum-value">{{ toRecordCount }}</span><span class="sum-label">To read</span></div>
       </div>
 
+      <!-- Unproofread machine-written target text in THIS queue. Said before
+           the session starts, not only line by line inside it, so nobody
+           discovers it a hundred lines in. -->
+      <p v-if="draftCount > 0" class="draft-warning">
+        <span class="draft-warning-badge">DRAFT</span>
+        {{ draftCount }} of your {{ totals.total }} lines are machine-written drafts nobody has
+        proofread yet. They are marked line by line below — don't record one until it has been read.
+      </p>
+
       <ol class="how-to">
         <li>Tap <strong>Start</strong> and read the highlighted line aloud.</li>
         <li>Finish the line, take a breath, then tap <strong>Next</strong> (or press <kbd>Space</kbd>).</li>
@@ -192,6 +201,8 @@ const items = computed(() => {
   return target.length ? target : all
 })
 const totals = computed(() => planTotals(items.value))
+// Lines in this queue whose target text is still an unproofread machine draft.
+const draftCount = computed(() => items.value.reduce((n, it) => n + (it.draft ? 1 : 0), 0))
 const planSpeakers = computed(() => {
   const s = plan.value?.speakers
   return Array.isArray(s) && s.length > 0 ? s.filter(x => x !== '__explainer__').join(', ') : null
@@ -641,6 +652,28 @@ kbd {
   font-size: 0.62rem;
   font-weight: 800;
   text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.draft-warning {
+  margin: 0.75rem 0 0;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--color-tungsten, #ffa630);
+  border-radius: 8px;
+  background: rgba(255, 166, 48, 0.08);
+  color: var(--color-tungsten, #ffa630);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: left;
+}
+.draft-warning-badge {
+  display: inline-block;
+  margin-right: 0.4rem;
+  padding: 0.05rem 0.35rem;
+  border-radius: 3px;
+  background: var(--color-tungsten, #ffa630);
+  color: #1a1a17;
+  font-size: 0.62rem;
+  font-weight: 800;
   letter-spacing: 0.07em;
 }
 .cue-line.draft { box-shadow: inset 0 0 0 1px var(--color-tungsten, #ffa630); }

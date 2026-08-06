@@ -107,6 +107,13 @@
                   · {{ Object.keys(pod.speakers).filter(k => k !== '_default').length }} speakers
                 </span>
               </div>
+              <!-- Lines whose target text is an unproofread machine draft.
+                   Loud on the card, because a pod with drafts in it is not
+                   recordable yet however good its audio coverage looks. -->
+              <div v-if="draftCounts[pod.id] > 0" class="pv-draft mb-3 inline-flex items-center gap-2 text-xs rounded px-2 py-1">
+                <span class="pv-draft-badge">DRAFT</span>
+                <span>{{ draftCounts[pod.id] }} line{{ draftCounts[pod.id] === 1 ? '' : 's' }} awaiting proofread — open the pod to read them</span>
+              </div>
               <div class="flex gap-4 text-xs">
                 <div class="flex items-center gap-1.5">
                   <span class="text-faint">Target:</span>
@@ -252,10 +259,42 @@ async function loadPods() {
   }
 }
 
-onMounted(loadPods)
+// Per-pod count of lines still carrying the DRAFT marker
+// (listening_pod_sentences.target_text_draft), from the course-gated pods door.
+const draftCounts = ref({})
+async function loadDraftCounts() {
+  try {
+    const res = await authedFetch(`/api/production/${courseCode}/pods/drafts`)
+    if (!res.ok) return   // non-fatal — the cards still show coverage
+    const body = await res.json()
+    draftCounts.value = body.byPod || {}
+  } catch { /* non-fatal */ }
+}
+
+onMounted(() => { loadPods(); loadDraftCounts() })
 </script>
 
 <style>
+/* DRAFT — unproofread machine target text. Tungsten, same identity the record
+   room and the pod detail page use for the same state. */
+.pv-draft {
+  background: rgba(255, 166, 48, 0.08);
+  border: 1px solid var(--color-tungsten, #ffa630);
+  color: var(--color-tungsten, #ffa630);
+}
+.pv-draft-badge {
+  background: var(--color-tungsten, #ffa630);
+  color: #1a1a17;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  border-radius: 3px;
+  padding: 0 0.3rem;
+}
+:root[data-theme="light"] .pv-draft {
+  background: #fffbeb; border-color: #b45309; color: #92400e;
+}
+:root[data-theme="light"] .pv-draft-badge { background: #b45309; color: #fff; }
+
 /* Light-mode-only fixes. Dark mode is untouched (raw Tailwind classes still apply
    under dark; these selectors only fire when data-theme="light"). */
 :root[data-theme="light"] .pv-warn {
