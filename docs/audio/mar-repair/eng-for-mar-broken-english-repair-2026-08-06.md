@@ -283,9 +283,58 @@ It restores the original text *and* the original audio ids for all 34 rows from
 - `scripts/mar/revert.cjs` — the revert
 - `scripts/mar/consistency.cjs` — the threshold / duplicate / ZUT check
 
+---
+
+## Addendum — what four independent workers turned up after the repair landed
+
+Three authors worked the same list blind, and a fourth re-verified everything read-only. Their
+reports change three numbers and add one finding that matters more than the repair itself.
+
+**The list of 35 was English-only, and the seeds are therefore NOT clean.** This is the important
+one. The original triage could only confirm defects visible in the English, because it had no
+Marathi. Kai's ruling lifted that limit — and with it, **20 further rows across the same eleven
+seeds carry the identical trailing-glue signature and are still live.** Many are invisible from the
+English side alone:
+
+| still broken | English | Marathi |
+|---|---|---|
+| S0149 | so I hope you'll finish soon | `आशा आहे लवकर संपवाल लवकरच` — *soon* is said twice |
+| S0149 | because this isn't very difficult so I hope you'll finish soon | two clauses simply concatenated |
+| S0223 | he's going to in English | `तो विचारणार इंग्रजीत` — no verb in the English at all |
+| S0238 | he wanted you tonight / again / already | `त्याला वाटत होतं` + a bare appended tag |
+| S0245 | I've done already / again | `किती केलंय आधीच` |
+| S0123 | I think that's a good idea again | `… आहे पुन्हा` — tag after the copula |
+
+The first two read as perfectly good English. Only the Marathi shows the defect. **So "10 confirmed
+seeds repaired" is not the same as "10 seeds clean", and I want to be plain about that:** I fixed
+the 34 rows I was given, and roughly 20 more in those same seeds need a second pass. I have not
+touched them — they are outside the commissioned list and would need their own clip approval.
+
+**The course-wide figure is 139, not ~209.** The verification worker rebuilt the classifier,
+validated it against the 31 known-broken phrases, and fixed three real bugs in it (contraction
+blindness, verb-proximity for *very well*, missing idiom carve-outs such as *not yet*). It flags
+about a dozen of the 139 as genuinely borderline rather than claiming certainty. That number has now
+been revised twice — 568 → ~209 → 139 — and each revision came from someone checking rather than
+inheriting.
+
+**The 35-vs-31 discrepancy is resolved.** The triage listed 35 but enumerated only 31. The missing
+four are S0149's dropped-negation rows, which were described in prose rather than in the list. All
+35 are accounted for: 31 tag-glue + 4 negation, of which I repaired 34 and correctly declined 1.
+
+**Also worth a look:** the S31 lego card renders *tonight* as bare `रात्री`, but all four seed-level
+attestations (S31, S156, S294, S411) use `आज रात्री`. Bare `रात्री` means "at night" generically.
+The abbreviated card may be leaking into glue rows elsewhere in the course.
+
+**Unchanged by any of it:** the 18 flags are exactly as they were, and the audio census confirms
+every row in these seeds was fully voiced before I touched them.
+
+---
+
 ## Recommendation
 
 1. Approve the 100-clip batch, or revert. Either is fine; leaving it as-is is the one bad option.
 2. Then decide S0237/S0238 — it is written up and ready.
-3. Then the ~209 course-wide, which is the same generator's damage at six times the scale.
-4. S0269 needs re-decomposition regardless; its phrases are now correct but its cards are not.
+3. Then **the ~20 residual rows inside these same eleven seeds** — the seeds are not clean, and
+   they are the ones you already know are flagged.
+4. Then the **139** course-wide, which is the same generator's damage at four times the scale.
+5. S0269 needs re-decomposition regardless; its phrases are now correct but its cards are not.
