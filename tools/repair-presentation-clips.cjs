@@ -183,7 +183,13 @@ async function renderVerified (row, tmpDir) {
         .select('id, lego_id').eq('presentation_audio_id', id)
       const { data: legos } = await supabase.from('course_legos')
         .select('id, lego_id').eq('presentation_audio_id', id)
+      // course_practice_phrases is the third holder. Missing it here is what let
+      // A-22 happen: the old row was deleted with component phrases still pointing
+      // at it, leaving a dead id that 404s and stalls the player.
+      const { data: phrases } = await supabase.from('course_practice_phrases')
+        .select('id, lego_id').eq('presentation_audio_id', id)
       const introCountBefore = (intros || []).length
+      const phraseCountBefore = (phrases || []).length
 
       // 1. Probe render. Nothing is mutated if this throws.
       const rendered = await renderVerified(row, tmpDir)
@@ -257,8 +263,9 @@ async function renderVerified (row, tmpDir) {
         inserted = true
       }
 
-      // 5. Repoint BOTH holders. lego_introductions is the CASCADE one; the
-      //    course_legos column carries no FK but is what cycles.ts reads.
+      // 5. Repoint ALL THREE holders. lego_introductions is the CASCADE one;
+      //    course_legos carries no FK but is what cycles.ts reads; and
+      //    course_practice_phrases holds the component-presentation links.
       stage = 'repoint'
       for (const r of intros || []) {
         const { error: e } = await supabase.from('lego_introductions')
@@ -272,6 +279,12 @@ async function renderVerified (row, tmpDir) {
         if (e) throw new Error(`repoint course_legos#${r.id}: ${e.message}`)
         relinked.push({ table: 'course_legos', rowId: r.id })
       }
+      for (const r of phrases || []) {
+        const { error: e } = await supabase.from('course_practice_phrases')
+          .update({ presentation_audio_id: newId }).eq('id', r.id)
+        if (e) throw new Error(`repoint course_practice_phrases#${r.id}: ${e.message}`)
+        relinked.push({ table: 'course_practice_phrases', rowId: r.id })
+      }
 
       // 6. Prove the swap before the destructive step.
       stage = 'verify-before-delete'
@@ -284,6 +297,16 @@ async function renderVerified (row, tmpDir) {
         const { data: dangling } = await supabase.from('lego_introductions')
           .select('id').eq('presentation_audio_id', id)
         if ((dangling || []).length) throw new Error(`${dangling.length} intro row(s) still point at the old id`)
+        const { data: stillPhrases } = await supabase.from('course_practice_phrases')
+          .select('id').eq('presentation_audio_id', newId)
+        if ((stillPhrases || []).length !== phraseCountBefore) {
+          throw new Error(`phrase links ${phraseCountBefore} -> ${(stillPhrases || []).length} after repoint`)
+        }
+        const { data: danglingPhrases } = await supabase.from('course_practice_phrases')
+          .select('id').eq('presentation_audio_id', id)
+        if ((danglingPhrases || []).length) {
+          throw new Error(`${danglingPhrases.length} phrase row(s) still point at the old id`)
+        }
       }
 
       // 7. Now — and only now — the old row is unreferenced, so its CASCADE

@@ -3514,6 +3514,15 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       }
       for (let i = 0; i < idsToDelete.length; i += BATCH_SIZE) {
         const batch = idsToDelete.slice(i, i + BATCH_SIZE)
+        // Unlink BEFORE delete. course_practice_phrases.presentation_audio_id now
+        // carries an ON DELETE SET NULL FK, but course_legos.presentation_audio_id
+        // is still typed `text` and cannot, so clear both explicitly rather than
+        // relying on the constraint. A dangling id is far worse than a null one:
+        // cycles.ts resolves `presentation_audio_id || known_audio_id`, so a null
+        // falls back to the known clip while a dead id 404s and stalls the player.
+        await supabase.from('course_practice_phrases')
+          .update({ presentation_audio_id: null })
+          .in('presentation_audio_id', batch)
         await supabase.from('course_audio').delete().in('id', batch)
       }
       // Clear presentation_audio_id so plan/generate picks up the new pending records
@@ -3564,6 +3573,17 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     if (orphanIds.length > 0) {
       for (let i = 0; i < orphanIds.length; i += BATCH_SIZE) {
         const batch = orphanIds.slice(i, i + BATCH_SIZE)
+        // Unlink BEFORE delete — see the note on the stale-presentation delete above.
+        // This sweep is the one that caused A-22: it scans `role=presentation AND
+        // lego_id IS NULL`, which is exactly the component-presentation population
+        // (components are inserted without a lego_id), and it deleted 17,480 clips
+        // estate-wide while leaving course_practice_phrases pointing at them.
+        await supabase.from('course_practice_phrases')
+          .update({ presentation_audio_id: null })
+          .in('presentation_audio_id', batch)
+        await supabase.from('course_legos')
+          .update({ presentation_audio_id: null })
+          .in('presentation_audio_id', batch)
         await supabase.from('course_audio').delete().in('id', batch)
       }
       logger.info(`Deleted ${orphanIds.length} orphan presentation records (null lego_id, text no longer matches)`)
