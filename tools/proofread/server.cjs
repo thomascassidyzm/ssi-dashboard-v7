@@ -9,6 +9,15 @@
  * tools/proofread/progress/<course>.json on every click. Approving a seed
  * writes course_seeds.approved_at — the same field the dashboard's
  * mass-approve uses — and only after every phrase in the seed is marked ok.
+ *
+ * The inverse rule (Kai, 2026-08-06): approval must mean "every phrase in this
+ * seed has been reviewed", so a seed holding an unchecked phrase is not approved.
+ *  - Enforced on DECISION WRITE: clearing a decision in an approved seed
+ *    unapproves that seed immediately. Targeted, one seed, reviewer-driven.
+ *  - REPORTED, not enforced, on state load: /api/state returns staleApprovals,
+ *    seeds approved elsewhere (dashboard mass-approve) that hold unchecked
+ *    phrases. Writing those is a bulk pass over real course state, so it is
+ *    opt-in via --enforce-on-load and off by default.
  */
 const path = require('path');
 const fs = require('fs');
@@ -16,7 +25,8 @@ require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 const express = require('express');
 const { createClient } = require('@supabase/supabase-js');
 
-const COURSE = (process.argv[2] || 'fin_for_eng').trim();
+const COURSE = (process.argv.find((a, i) => i >= 2 && !a.startsWith('--')) || 'fin_for_eng').trim();
+const ENFORCE_ON_LOAD = process.argv.includes('--enforce-on-load');
 const PORT = process.env.PROOFREAD_PORT || 4747;
 const PROGRESS_DIR = path.join(__dirname, 'progress');
 
@@ -74,6 +84,29 @@ async function loadCourse(force) {
   return cache;
 }
 
+// ---------- approval / review-completeness ----------
+// A phrase is "unchecked" when the progress file holds no decision for it at all
+// (a flagged phrase counts as checked — it has been looked at).
+function uncheckedIn(data, progress, seedNumber) {
+  return data.phrases.filter((p) => p.seed_number === seedNumber && !progress.decisions[p.id]);
+}
+// Approved seeds that hold at least one unchecked phrase — the rule's violations.
+function staleApprovals(data, progress) {
+  return data.seeds
+    .filter((s) => s.approved_at && uncheckedIn(data, progress, s.seed_number).length)
+    .map((s) => s.seed_number);
+}
+async function setApprovedAt(seedNumber, value) {
+  const { error } = await supabase
+    .from('course_seeds')
+    .update({ approved_at: value })
+    .eq('course_code', COURSE)
+    .eq('seed_number', seedNumber);
+  if (error) throw new Error(error.message);
+  const seed = cache?.seeds.find((s) => s.seed_number === seedNumber);
+  if (seed) seed.approved_at = value;
+}
+
 // ---------- server ----------
 const app = express();
 app.use(express.json());
@@ -82,14 +115,21 @@ app.get('/', (_req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 app.get('/api/state', async (req, res) => {
   try {
     const data = await loadCourse(req.query.refresh === '1');
-    res.json({ ...data, progress: loadProgress(COURSE) });
+    const progress = loadProgress(COURSE);
+    let stale = staleApprovals(data, progress);
+    if (ENFORCE_ON_LOAD && stale.length) {
+      for (const n of stale) await setApprovedAt(n, null);
+      console.log(`[enforce-on-load] unapproved ${stale.length} seed(s) holding unchecked phrases`);
+      stale = [];
+    }
+    res.json({ ...data, progress, staleApprovals: stale });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
 // status: 'ok' | 'flagged' | null (clear)
-app.post('/api/decision', (req, res) => {
+app.post('/api/decision', async (req, res) => {
   const { phraseId, status, note } = req.body || {};
   if (!phraseId || !['ok', 'flagged', null].includes(status ?? null)) {
     return res.status(400).json({ error: 'phraseId and status (ok|flagged|null) required' });
@@ -99,7 +139,22 @@ app.post('/api/decision', (req, res) => {
   else progress.decisions[phraseId] = { status, note: note || '', at: new Date().toISOString() };
   progress.lastPhraseId = phraseId;
   saveProgress(COURSE, progress);
-  res.json({ ok: true });
+
+  // Clearing a decision can leave an approved seed with an unchecked phrase —
+  // approval would then overstate what has been reviewed, so drop it.
+  let unapproved = null;
+  try {
+    const data = await loadCourse(false);
+    const phrase = data.phrases.find((p) => p.id === phraseId);
+    const seed = phrase && data.seeds.find((s) => s.seed_number === phrase.seed_number);
+    if (seed?.approved_at && uncheckedIn(data, progress, seed.seed_number).length) {
+      await setApprovedAt(seed.seed_number, null);
+      unapproved = seed.seed_number;
+    }
+  } catch (err) {
+    return res.status(500).json({ ok: true, error: `decision saved; unapprove check failed: ${err.message}` });
+  }
+  res.json({ ok: true, unapprovedSeed: unapproved });
 });
 
 app.post('/api/seed/approve', async (req, res) => {

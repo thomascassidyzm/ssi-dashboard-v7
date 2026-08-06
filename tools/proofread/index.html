@@ -268,6 +268,8 @@ function render() {
   const flagCount = idxs.filter((i) => dec(S.phrases[i])?.status === 'flagged').length;
   const allOk = okCount === idxs.length;
   const approved = seedApproved(p.seed_number);
+  // approval overstates review when any phrase in the seed has no decision at all
+  const unreviewed = approved && idxs.some((i) => !dec(S.phrases[i]));
 
   // header
   const totalApproved = S.seeds.filter((s) => s.approved_at).length;
@@ -283,7 +285,8 @@ function render() {
   $('seedbox').innerHTML = `
     <div class="top">
       <span class="num">Seed ${String(p.seed_number).padStart(4, '0')}</span>
-      ${approved ? '<span class="badge approved">approved</span>' : ''}
+      ${approved ? (unreviewed ? '<span class="badge flagged">approved · unreviewed</span>'
+                               : '<span class="badge approved">approved</span>') : ''}
       <span class="stat">${okCount}/${idxs.length} ok${flagCount ? ` · ${flagCount} flagged` : ''}</span>
     </div>
     <div class="texts"><b>${esc(seed.known_text || '')}</b><br>${esc(seed.target_text || '')}</div>
@@ -331,8 +334,14 @@ async function decide(status, note) {
   S.progress.decisions[p.id] = { status, note: note || '', at: new Date().toISOString() };
   S.progress.lastPhraseId = p.id;
   render();
-  try { await api('/api/decision', { phraseId: p.id, status, note }); }
-  catch (e) { toast('Save failed: ' + e.message); return; }
+  try {
+    const r = await api('/api/decision', { phraseId: p.id, status, note });
+    if (r.unapprovedSeed) {
+      const s = seedOf.get(r.unapprovedSeed);
+      if (s) s.approved_at = null;
+      toast(`Seed ${r.unapprovedSeed} un-approved — it still has unchecked phrases`);
+    }
+  } catch (e) { toast('Save failed: ' + e.message); return; }
   advance();
 }
 
