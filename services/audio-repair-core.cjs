@@ -337,6 +337,10 @@ function createRepairCore (deps) {
     let candidateBuffer = null
     let durationMs = null
     let attemptLog = []
+    // Set by the TTS path, which has already veracity-checked the take it chose.
+    // Re-running whisper on the same bytes below would only buy a second copy of
+    // an answer we hold. Uploads leave it null and are checked from scratch.
+    let knownVerdict = null
 
     if (source === 'upload') {
       if (!buffer || !buffer.length) throw new RepairError('upload carried no bytes', 'empty_upload')
@@ -374,50 +378,75 @@ function createRepairCore (deps) {
       const takesWanted = Math.max(1, Number(takes ?? T.takes) || 1)
       // A clean take still costs a re-roll allowance; budget for both.
       const maxRenders = takesWanted === 1 ? T.attempts : takesWanted + T.attempts - 1
-      const clean = []
+
+      // Pass 1 — render, and screen on the CHEAP checks only (duration, level,
+      // tail shape). Veracity is deliberately NOT run here: it is an unprimed
+      // whisper round-trip, by far the slowest step, and running it on takes
+      // that are about to lose the ranking is most of the wall-clock for none
+      // of the safety. The winner is still veracity-checked below, and a
+      // failure there walks down the ranking, so the guarantee is unchanged:
+      // no candidate is ever recorded without passing veracity.
+      const candidates = []
       let last = null
-      for (let attempt = 1; attempt <= maxRenders && clean.length < takesWanted; attempt++) {
+      for (let attempt = 1; attempt <= maxRenders && candidates.length < takesWanted; attempt++) {
         const out = await render.render({
           text: useText, voiceId: useVoice, language: row.language, role: row.role,
         })
         const level = await verify.measure(out.buffer)
-        const verdict = await verify.veracity(out.buffer, useText, row.language)
-        const fault = faultOf(out.durationMs, level, verdict)
+        const fault = faultOf(out.durationMs, level, null)
         const tail = await tailOf(out.buffer, useText)
         attemptLog.push({
           attempt, durationMs: out.durationMs, level, fault,
           releaseMs: tail ? tail.shape.releaseMs : null,
           tailReason: tail ? tail.reason : null,
         })
-        last = { ...out, level, verdict, tail }
+        last = { ...out, level, tail, attempt }
         if (fault) {
           logger.log?.(`[repair] ${audioId} take ${attempt}: ${fault} — re-roll`)
           continue
         }
-        clean.push(last)
+        candidates.push(last)
         if (takesWanted === 1) break
       }
-      if (!clean.length) {
-        const fault = faultOf(last.durationMs, last.level, last.verdict)
+      if (!candidates.length) {
         throw new RepairError(
-          `no take produced a clean candidate (${fault}, last ${last.durationMs}ms)`,
+          `no take produced a clean candidate (${faultOf(last.durationMs, last.level, null)}, last ${last.durationMs}ms)`,
           'candidate_failed_verification')
       }
-      const chosen = selectTake(clean)
+
+      // Pass 2 — best tail first, and veracity-check down the ranking until one
+      // passes. Usually that is exactly one whisper call.
+      const ranked = rankTakes(candidates)
+      let chosen = null, lastVerdict = null
+      for (const take of ranked) {
+        const verdict = await verify.veracity(take.buffer, useText, row.language)
+        lastVerdict = verdict
+        const fault = faultOf(take.durationMs, take.level, verdict)
+        if (!fault) { chosen = { ...take, verdict }; break }
+        logger.log?.(`[repair] ${audioId} take ${take.attempt}: ${fault} — next best tail`)
+        const entry = attemptLog.find(a => a.attempt === take.attempt)
+        if (entry) entry.fault = fault
+      }
+      if (!chosen) {
+        throw new RepairError(
+          `no take produced an acceptable candidate — none passed veracity (${faultOf(ranked[0].durationMs, ranked[0].level, lastVerdict)})`,
+          'candidate_failed_verification')
+      }
       attemptLog.push({
-        selected: clean.indexOf(chosen) + 1,
-        of: clean.length,
-        rankedBy: 'tail release (longest natural decay wins)',
+        selected: chosen.attempt,
+        of: candidates.length,
+        rankedBy: 'tail release (longest natural decay wins), then veracity',
         releaseMs: chosen.tail ? chosen.tail.shape.releaseMs : null,
       })
       candidateBuffer = chosen.buffer
       durationMs = chosen.durationMs
+      knownVerdict = chosen.verdict
     }
 
     // Verify whatever we ended up with — uploads included, which is the only
     // check standing between a mis-recorded file and a human's ears.
     const level = await verify.measure(candidateBuffer)
-    const verdict = await verify.veracity(candidateBuffer, useText, row.language)
+    const verdict = knownVerdict || await verify.veracity(candidateBuffer, useText, row.language)
     const fault = faultOf(durationMs, level, verdict)
     if (fault) {
       throw new RepairError(`candidate rejected: ${fault} (${durationMs}ms)`,
@@ -488,18 +517,21 @@ function createRepairCore (deps) {
   }
 
   /**
-   * The best ending among clean takes: the longest release, i.e. the one that
+   * Takes ordered best ending first: the longest release, i.e. the one that
    * decays furthest rather than stepping into silence. Takes whose tail could
    * not be measured sort last but stay eligible, so an unmeasurable batch still
    * yields a candidate (the first clean take) instead of an error.
+   *
+   * Returns the whole ordering, not just the winner, so the caller can walk
+   * down it when the best-shaped take fails a later check.
    */
-  function selectTake (takes) {
+  function rankTakes (takes) {
     return takes.slice().sort((a, b) => {
       const ar = a.tail ? a.tail.shape.releaseMs : -1
       const br = b.tail ? b.tail.shape.releaseMs : -1
       if (br !== ar) return br - ar
       return (b.durationMs || 0) - (a.durationMs || 0) // longer = less likely clipped
-    })[0]
+    })
   }
 
   function faultOf (durationMs, level, verdict) {

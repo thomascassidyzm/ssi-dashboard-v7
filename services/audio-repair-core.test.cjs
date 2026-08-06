@@ -301,7 +301,7 @@ describe('propose --takes', () => {
    * The buffer length encodes which take it is, so frameDb can hand back that
    * take's envelope without any shared mutable counter.
    */
-  function takesCore (db, releases) {
+  function takesCore (db, releases, opts = {}) {
     let n = 0
     return createRepairCore({
       supabase: db.client,
@@ -312,7 +312,7 @@ describe('propose --takes', () => {
       },
       verify: {
         measure: async () => ({ meanDb: -21, peakDb: -1.5 }),
-        veracity: async () => ({ checked: true, pass: true, reason: null, cer: 0.03 }),
+        veracity: async () => opts.onVeracity?.() || { checked: true, pass: true, reason: null, cer: 0.03 },
         frameDb: async (buf) => envelope({ decayFrames: releases[buf.length - 1000] }),
       },
       newId: () => 'cand-1',
@@ -354,6 +354,29 @@ describe('propose --takes', () => {
     const core = takesCore(db, [2, 30])
     await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test' })
     expect(notesOf(db).attempts.filter(a => a.attempt).length).toBe(1)
+  })
+
+  it('veracity-checks only the winner, not every take', async () => {
+    const db = seedDb()
+    let whisperCalls = 0
+    const core = takesCore(db, [2, 8, 30], { onVeracity: () => { whisperCalls++ } })
+    await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test', takes: 3 })
+    // Three renders, one whisper round-trip. Veracity is the slow step, and
+    // running it on takes that lose the ranking buys nothing.
+    expect(notesOf(db).attempts.filter(a => a.attempt).length).toBe(3)
+    expect(whisperCalls).toBe(1)
+  })
+
+  it('walks down the ranking when the best-shaped take fails veracity', async () => {
+    const db = seedDb()
+    let n = 0
+    // The best tail (take 2, 30 frames) is missing words; the runner-up is fine.
+    const core = takesCore(db, [8, 30], {
+      onVeracity: () => (++n === 1 ? { checked: true, pass: false, reason: 'missing final word', cer: 0.9 } : null),
+    })
+    await core.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test', takes: 2 })
+    expect(chosen(db).selected).toBe(1) // fell back to take 1
+    expect(n).toBe(2)
   })
 
   it('still produces a candidate when the tail cannot be measured', async () => {
