@@ -28,6 +28,49 @@ million have a veracity verdict. And **versioning is barely used**: 1,131 clips 
 revised, so the `.v2` mechanism protects ~0.04% of the estate and every other clip is at a bare uuid
 whose bytes may be silently replaced.
 
+### What deduplication is worth, measured
+
+Same database, same day. These are the figures behind the design's identity section.
+
+| | |
+|---|---|
+| distinct `(language, text_normalized, voice_id)` — **the logical identity** | **2,099,110** |
+| distinct `(language, text_normalized)` — voice-free, for comparison only | **1,295,114** |
+| rows that would share an identity — `sum(n−1)` | **433,569** |
+| rows that share a file today — `sum(n−1)` over `s3_key` | 196,661 |
+| identities used by more than one course | **135,878** |
+| identities used by more than one role | **47,296** |
+| `(language, text_normalized)` pairs appearing under more than one role | **563,729** |
+| texts where the `target1` and `target2` voices **differ** | **658,984** |
+| texts where those two voices **match** | 13,275 |
+| texts carrying three or more voices | 88,205 |
+
+**The headline: 2,336,018 distinct keys collapse to 2,099,110 identities — 236,908 objects (10.1%)
+exist only because the same sentence was rendered again for a different course or a different side.**
+That is the render and storage saving, and it is a **floor**: it is measured at key level, and step 1's
+hashing pass can only find more, because two independent renders of the same text sometimes produce
+identical bytes and always produce two keys.
+
+**Sharing roughly doubles.** 196,661 rows ride a shared file today; 433,569 would ride a shared
+address. Note what does *not* happen: rows do not collapse. The per-course row survives (§B), so the
+433,569 is the count of rows sharing an address, never a count of rows deleted.
+
+**Why the voice-free column is quoted and not adopted.** 658,984 texts against 13,275 settles it —
+`target1` and `target2` are deliberately different voices, so a voice-free identity would collapse
+the two target sides onto one voice and silently revoice 659,000 slots. The 804,000-identity gap
+between the two columns is therefore mostly *design*, not waste.
+
+The waste inside that gap is voice drift, and the key does not fix it — **step 2 does**. Summing the
+distribution above, the identities beyond a two-voice shape number **~197,000**. Stated as an upper
+bound and not a measurement: a language that is known in one course and target in another
+legitimately carries more than two voices, so the true drift figure is lower and cannot be separated
+from the legitimate figure without a per-course-side voice declaration, which is what step 2 creates.
+
+*Query caveat, stated because it bears on trust: the two `count(distinct …)` cross-tabs took 67 s and
+404 s against the pooler and the first attempt at the cross-role/cross-course counts was killed by the
+default statement timeout. They were re-run as a single scan with `statement_timeout` raised. Nothing
+was estimated or sampled; every figure above is a full count.*
+
 ### Live corrections to the briefing documents
 
 1. **The revision-bump trigger does not exist.** Docs 92bfd5c4 and
@@ -68,9 +111,36 @@ enough to read in a log line. *Taste-safe default — flagged, not a ruling.*
 **Key layout.** `audio/<c1c2>/<c3c4>/<full-hash>.mp3` — two nibble-pair prefixes for even
 distribution across S3 partitions. *Taste-safe default — flagged.*
 
+**The logical identity, and where it is enforced.** `(language, text_normalized, voice_id)` is the
+lookup key: it answers *does this need rendering?* before step 3 spends anything. It lives on
+`audio_objects` as a **unique constraint**, which is the whole of the dedup mechanism — one identity,
+one current object, enforced by the database rather than by whoever remembers to check.
+
+It has to be a **partial** unique index — `(language, text_normalized, voice_id) WHERE superseded_at
+IS NULL` — and the reason is worth spelling out, because a plain unique constraint would quietly
+break this design. Re-rendering a clip to fix it produces the same identity and a *different* hash,
+so two objects legitimately share one identity: the one in use, and the one it replaced. Since
+nothing is ever deleted (§F), the old object must be allowed to stay. `superseded_at` is what
+distinguishes "the current answer for this identity" from "an object that was the answer once", and
+the partial index enforces uniqueness over the former only. Without it, the first fix to any clip
+would be rejected by the very constraint meant to enable sharing.
+
+This is a *weakening of a constraint the estate already has*, and that is the cheapest possible shape
+for it. `course_audio` today carries
+`unique_course_audio_per_voice UNIQUE (course_code, text_normalized, language, role, voice_id)`.
+Removing `course_code` and `role` — exactly the two columns Tom's constraint removes — leaves the
+identity above. Nothing new is invented; two columns come out.
+
+`text_normalized` is already a stored, trigger-maintained column
+(`trg_course_audio_normalize` → `normalize_text`), so the key needs no new normalisation code and no
+back-fill of its own. The design section states what that function does and the two narrow holes it
+leaves; both are safe to tighten later, because a normalisation miss costs one extra render and never
+a wrong clip.
+
 **A new table, `audio_objects`**, one row per distinct hash: hash (primary key), byte size, duration,
-loudness, speech start/end, the gate verdicts and the voice and text it was rendered from. This is
-the store's index and, more importantly, its **gate**:
+loudness, speech start/end, the gate verdicts, and the language, normalised text and voice it was
+rendered from — the last three carrying the unique constraint above. This is the store's index and,
+more importantly, its **gate**:
 
 > `course_audio.content_hash` carries a **foreign key to `audio_objects`**, and only the gate writer
 > inserts into `audio_objects`.
@@ -81,15 +151,29 @@ never passed the gates is not forbidden by policy, it is **rejected by the datab
 cannot route around it, because there is no path from raw TTS output to a linkable address that does
 not go through the gate.
 
-**The per-course row survives.** `course_audio` keeps its uuid, its course, its role, its text and
-its voice, and gains `content_hash`. It stops owning `s3_key` — the key is derivable from the hash.
-This preserves the serve path's shape exactly and matches what the census found: sharing is at the
-file level, with each course keeping its own row. *This is the one structural fork worth a look; my
-recommendation is keep it.*
+**The per-course row survives, and deduplication makes it load-bearing.** `course_audio` keeps its
+uuid, its course, its role, its text and its voice, and gains `content_hash`. It stops owning
+`s3_key` — the key is derivable from the hash. This preserves the serve path's shape exactly and
+matches what the census found: sharing is at the file level, with each course keeping its own row.
+
+Under the dedup constraint this stops being a preference and becomes structural. Course and role are
+no longer in the clip's identity, so **`course_audio` is the only place they exist at all** — it is
+the link layer, and it is what makes one object serve 133 courses without the object needing to know
+about any of them. `unique_course_audio_per_voice` stays exactly as it is on this table: a course
+side still gets one row per text per voice, and that is the right constraint for a *slot*. The two
+uniqueness rules now sit at their proper levels — the slot is unique per course and role, the object
+is unique per identity.
 
 **What retires.** `audio_revision`, the `.v<N>` ref suffix, `parseAudioRef`/`buildAudioRef`/
 `fetchRevisedAudioRefs`/`stampRowAudioRefs`, and the bookend gap along with them — all of it exists
 only to work around addresses that change meaning.
+
+**One row-level change worth naming.** `course_audio.voice_id` becomes derivable from the object
+rather than independently asserted by the row, which removes a class of drift the estate demonstrably
+has: today the English voice `eve` appears on German rows, and nothing stops a row claiming a voice
+its bytes do not have. Once the row points at an object whose identity *contains* the voice, that
+claim and those bytes cannot disagree. Keep the column — the serve path and the audit queries read it
+— but it becomes a denormalised copy with a single source of truth behind it.
 
 **What `courses.audio_stamp` becomes.** It survives, with a narrower and now-honest job: **it is a
 freshness signal for the list of ids, never for the bytes.** A device compares its stamp, re-reads
@@ -103,6 +187,21 @@ real reduction in what can go wrong quietly.
 
 Run on the **mastered** bytes, before the object is admitted. An object that fails is never hashed
 into `audio_objects` and therefore cannot be linked: **ungated audio is debris, never a hazard.**
+
+**Every gate measures the stored clip at its natural rate, and none of them is speed-dependent.**
+Since no speed variants are stored and a rate is applied at playback (design, *What a clip is*), the
+gates judge the render and not the delivery. This matters most for the sizing tier, which is the one
+that reads as though it might be about speed: it asks whether a phrase's syllables are all *present*,
+and playback rate is a uniform transform applied afterwards that can neither create a missing
+syllable nor remove one. The 2.5σ threshold and the 9-syllables-per-second absolute floor are
+therefore properties of the bytes alone. At a 2× playback rate a learner hears eighteen syllables per
+second; the floor is unmoved, because it was never a claim about what is followable — it is a claim
+about what is damaged.
+
+A second consequence, and a mild benefit: **the gates get cheaper as dedup bites.** They run per
+object, not per row, so the same English sentence needed by forty courses is gated once. Set against
+the estate's 2,099,110 identities rather than its 2,532,679 rows, that is 433,569 gate runs — and
+their whisper tier, the expensive one — that never happen.
 That is the clean answer content addressing buys, and I do agree with it — with one caveat: debris
 still costs storage, so failures should be written to a quarantine prefix with their verdict, so a
 human can hear what failed and why.
@@ -150,10 +249,20 @@ I tested two candidate baselines against the actual pair of clips from tonight
   the `gfzdpspr5fdp` cohort (mean 1421 ms, sd 152) the bad take is **−2.6σ and fails**; the good take
   is −0.2σ and passes.
 
-So: **cohort first, model as fallback.** Where two or more known-good takes of the same text and
-voice exist, judge against them. Where they do not — and under content addressing identical
-text+voice converges to one object, so cohorts will thin over time — fall back to the voice's own
-seconds-per-syllable distribution, which is what `tiers/duration.cjs` already does and is the better
+So: **cohort first, model as fallback — but be clear which one is the future.** Where two or more
+known-good takes of the same text and voice exist, judge against them.
+
+Deduplication settles what the previous draft could only anticipate. A cohort is "same normalised
+text, same voice, across the estate" — which is *precisely* the logical identity. Once the store
+holds one object per identity, **a cohort of more than one cannot exist for newly rendered audio.**
+The cohort method does not merely thin; for anything born after step 2 it is structurally
+unavailable. It stays valuable in exactly one place, and it is a large place: the **legacy estate**,
+where 433,569 rows currently hold duplicate takes of an identity. Those duplicates are the calibration
+set — worth mining before step 3 converges them, because after that they are the last cohorts the
+estate will ever have.
+
+So the model is not a fallback, it is the steady state, and it should be built as the primary. Fall
+back to — properly, *rely on* — the voice's own seconds-per-syllable distribution, which is what `tiers/duration.cjs` already does and is the better
 model because syllables track speech where characters do not ("words are useless, but syllables are
 pretty consistent"). Its two guards are right and should stand: 2.5σ below the voice's own rate, and
 an absolute floor of 9 syllables/second that applies even to an uncalibrated voice, so a calibration
@@ -179,6 +288,19 @@ variation that these thresholds would flag. The tail and loudness tiers are prob
 syllable-rate tier is probably not. Needs its own calibration pass before it is pointed at recorded
 material.
 
+The foreign key sharpens that open question into something that needs an answer before build, so it
+is flagged here rather than discovered later. If `course_audio.content_hash` references
+`audio_objects` and only the gate writer may insert there, then **recorded audio cannot be linked at
+all until it has a way into the store** — and the 104,629 pod rows in the estate today
+(`pod_explainer`, `pod_fine_known`, `pod_take_g`) are not a rounding error. Deduplication and gating
+are separable concerns and the store should treat them so: an object can be content-addressed,
+identity-keyed and shared without having passed the TTS tiers. The clean shape is a third verdict
+value on admission — *gated-pass*, *gated-fail*, *not gated: recorded* — which is the same
+three-outcome honesty `audio-veracity.cjs` already gets right with `pass: true|false|null`, applied
+one level up. That keeps "ungated audio is never linkable" true for TTS, where it is the whole point,
+without making recorded audio unlinkable, which was never the intent. **Still Tom's call whether pods
+are in scope at all; this only ensures that answering "out" does not accidentally mean "broken".**
+
 ---
 
 ## D. Offline bundles and the device cache
@@ -195,6 +317,20 @@ re-downloaded. That is a straight bandwidth win for every learner on a phone, an
 entitlement-layer question of what a stale lease is entitled to — a lease covers a set of addresses,
 and those addresses do not move.
 
+**A shared store makes the bundle smaller before it makes it smarter.** Because an address carries no
+course and no role, the same English sentence needed by a learner's two courses is one entry, not
+two — and within a single course, a text appearing on both the known and target sides in the same
+voice is downloaded once. 47,296 identities are already used by more than one role and 135,878 by
+more than one course, so this is a real reduction in bytes over the wire, not a theoretical one. It
+also removes a question nobody had a good answer for: what a bundle should do about a clip that two
+courses disagree about. They cannot disagree; the address means one thing.
+
+**No speed variants are ever bundled, for the same reason they are never stored.** A bundle carries
+one object per address and the player applies Easy or Fast to it on the way to the ear. This is worth
+saying explicitly here because it is where storing speed variants would have hurt most: a
+speed-variant store would have doubled every offline download for a property that costs nothing to
+apply at playback.
+
 **The device cache keys on the hash.** `packages/player-vue/src/cache/AudioCache.ts` today keys its
 IndexedDB store on audio id (`keyPath: 'id'`, store `ssi-audio-cache-v2`), which is precisely why a
 relink that keeps the same id is inaudible on a device. Keyed on the hash, a relink is *automatically*
@@ -204,13 +340,18 @@ is the whole policy, and the existing `by-last-accessed` index already supports 
 `DB_VERSION` bump and a key change; the two-namespace ephemeral/persistent split is orthogonal and
 survives untouched.
 
+Keying on the hash also makes the cache share across courses for free, which keying on audio id can
+never do. Two courses needing the same sentence hold one entry between them by construction rather
+than by coincidence of id, so a learner starting a second course finds part of its audio already on
+the device.
+
 ---
 
 ## E. Generation infrastructure — adopt or replace, per piece
 
 | piece | verdict |
 |---|---|
-| `services/shared/audio-pass-queue.cjs` + `audio_pass_requests` | **Adopt and promote.** It is already the single request corridor; it just is not the *only* one. Extend its row to carry the reason class (new text / voice change / gate failure) and make phase8 refuse work that has no request. |
+| `services/shared/audio-pass-queue.cjs` + `audio_pass_requests` | **Adopt and promote.** It is already the single request corridor; it just is not the *only* one. Extend its row to carry the reason class (new text / voice change / gate failure) and make phase8 refuse work that has no request. **Add the store lookup at the front**: resolve `(language, normalised text, voice)` before queueing a render, so an identity that already exists becomes a link and never reaches TTS. This is where the 236,908 saving is actually banked, and it is also what makes a voice change cheap when the target voice is one another course already uses. |
 | `services/phases/phase8-audio-v13.cjs` | **Adopt, narrow.** It stays the generation service; it stops being able to write a linkable row except through the gate + `audio_objects`. |
 | `services/audio-veracity.cjs` | **Adopt unchanged.** Right method, right three-outcome shape, honest limits. |
 | `services/audio-intelligence/*` | **Adopt and commit** — currently untracked. Build the missing `engine.cjs`. |
@@ -219,7 +360,8 @@ survives untouched.
 | `services/audio-processor.cjs` (mastering) | **Adopt, reorder.** Master before gating so the gates judge what the learner hears. |
 | `services/voice-engine/synthesis-job.cjs` (human recordings) | **Keep separate for now.** It writes real recordings, not TTS; it should content-address its outputs but is out of scope for the TTS gates until they are calibrated for recorded audio. |
 | The **35 files** that can currently insert into `course_audio` | **Replace with one writer.** They are the side doors. The foreign key closes them whether or not each one is individually rewritten — an un-migrated script simply starts failing its insert, loudly, which is the correct outcome. |
-| `tools/revoice-clips.cjs`, `tools/repair-silent-clips.cjs` | **Keep as the reference pattern.** They already implement make-before-break correctly (§6b); under content addressing their delete step becomes optional. |
+| `tools/revoice-clips.cjs`, `tools/repair-silent-clips.cjs` | **Keep as the reference pattern, and simplify both.** They already implement make-before-break correctly (§6b). Under content addressing `revoice-clips`' delete step becomes optional, and `repair-silent-clips`' *forced* delete-before-insert disappears outright: a same-voice re-render no longer collides on `unique_course_audio_per_voice`, because the row is updated to a new `content_hash` rather than reinserted. Its restore-from-memory recovery path exists only to survive that forced delete and can go with it. |
+| The player's speed handling — `SimplePlayer.setPlaybackRate`, `ListeningOverlay`, `algorithm_config.{easy,fast}_mode.playback_speed` | **Adopt unchanged; it is already the right layer.** Speed is applied per clip at playback and configured in DB rows, which is exactly what keeps speed variants out of the store. The only change this design *asks* for is optional and is a config question, not a code one: `playback_speed` is currently per mode, and a per-role rate would be a new field on rows that already exist. |
 
 ---
 
@@ -254,9 +396,25 @@ changes. No links change.** This alone is worth doing on its own merits: it make
 (2,532,679 rows over 2,336,017 keys — and true byte-level duplication will be higher than key-level),
 and it makes any future in-place rewrite *detectable* by re-hashing, which nothing can do today.
 
+Step 1 is also where deduplication becomes *visible* without yet being *applied*, and the distinction
+matters. Back-filling `audio_objects` will find 236,908 identities holding more than one object. None
+of them is wrong and none is deleted: one is marked current for that identity and the rest get
+`superseded_at`, which here means only "still valid, still served, no longer the answer to a lookup".
+**Rows are not relinked.** A row pointing at a duplicate object keeps pointing at it and keeps
+playing exactly the bytes it plays today. Deduplication is a rule about renders that have not
+happened yet, not a bulk rewrite of links that already work — which is what keeps this step read-only
+in every sense that matters.
+
 **Step 2 — new audio is born content-addressed.** Turn the new pipeline on for generation only.
 Every clip rendered from that day forward gets a hash address and a gate verdict. The estate begins
 converging without any bulk operation at all.
+
+This is also where dedup starts paying, and its completeness depends on step 1's coverage in a way
+worth stating plainly: the lookup can only find what has been hashed. A language whose back-fill has
+not run yet will miss, render a duplicate, and admit it — correct audio, wasted money. So **a stalled
+step 1 costs redundant renders and never wrong clips**, and the two steps can be sequenced per
+language rather than estate-wide: hash a language, then let its courses render against a store that
+knows what it already has.
 
 **Step 3 — courses migrate as they are touched.** A course that gets an audio pass, a voice swap or a
 repair gets its objects copied to hash keys as part of that work, which is work already being done
@@ -287,6 +445,21 @@ does not. See below.
   migrated: `content_hash` is either there or it is not. The one thing that must **not** stall is
   step 2 — once new audio is content-addressed, the problem stops growing, and everything after that
   is cleanup that can wait indefinitely.
+- **What a half-done migration does to sharing.** Nothing bad, and this is the property to check
+  hardest, because a dedup scheme that half-applies is exactly the kind of thing that corrupts an
+  estate. It cannot here, for one reason: **sharing is only ever consulted before a render, never
+  imposed on a link.** An unmigrated course renders its own copy exactly as it does today; a migrated
+  one finds the existing object and links it. The two behaviours differ in cost, never in what a
+  learner hears. There is no state in which a course is "partly deduplicated" and no reconciliation
+  to run if it stops halfway — the worst outcome of stalling forever is that the estate keeps the
+  236,908 duplicate objects it already has.
+- **The one genuinely new risk, named.** A shared object means a bad render can now reach more than
+  one course. That is the honest price of sharing and it is not zero. Two things hold it down: the
+  gates run *before* admission, so an object that reaches any course has passed them, and a fix is a
+  new object with a new address, so repairing a shared clip repairs it everywhere it is used in one
+  operation rather than 133. The blast radius grows and the repair radius grows with it, which is a
+  trade worth taking — but it is a trade, and pretending otherwise would be the kind of oversell this
+  document is trying to avoid.
 
 ---
 
@@ -312,3 +485,21 @@ needs its own plan and Tom's approval.** This paragraph exists so nobody later c
 - **The 3 August in-place rewrites have never been enumerated estate-wide.** We know 10 of Tom's 20
   played clips and 155 of 205 `deu` seed-1–5 revision-1 clips were rewritten. The equivalent number
   for the other 132 courses is unknown, and step 1's hashing pass is what would tell us.
+- **Voice in the logical identity is a judgement call, not a ruling.** The estate argues it hard —
+  658,984 texts against 13,275 — but Tom's constraint was stated as "identical language and text",
+  and this design has read a third column into it. If he means voice out, the consequence is a
+  659,000-slot revoice and it should be his sentence, not an inference from mine.
+- **Byte-level duplication is unmeasured.** Every dedup figure here is key-level. Two separate renders
+  of the same text sometimes produce identical bytes, and no query can see that until objects are
+  hashed. The 236,908 is therefore a floor and the real number is unknown — deliberately not
+  estimated, because a guess would read as a measurement next to the counts above.
+- **The ~197,000 voice-drift figure is an upper bound, not a measurement.** It assumes two voices per
+  text is the legitimate shape, which is wrong for any language that is known in one course and
+  target in another. Separating drift from legitimate multi-voice needs the per-course-side voice
+  declaration that step 2 creates, and cannot be done before it.
+- **Recorded audio has no admission path yet** (§C). The foreign key makes this a build-blocker rather
+  than a nicety, whichever way Tom answers the pod scope question.
+- **Per-role playback speed does not exist.** `playback_speed` is per mode and both modes sit at 1.0.
+  The design places speed firmly in the player and off the store; what rate each side should run at is
+  untouched by that and remains a taste call, against a standing ruling that slowed speech teaches a
+  register nobody speaks.
