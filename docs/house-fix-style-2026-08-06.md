@@ -114,6 +114,38 @@ swap one defect for a subtler one.
 explained the criterion difference rather than burying it — and the same audit found 18 genuinely
 broken rows its own rule had missed, which it then fixed.
 
+**The detector's real failure mode is worth more than the headline.** A second pass hand-judged 85 of
+the 367 rows against their full rounds pulled live, and **47 of the 85 were wrongly flagged**. But it
+didn't stop at "30% false positives" — it found *where* the detector was wrong, and the split is
+brutal:
+
+| | false-positive rate |
+|---|---|
+| Below round 1050 | **93.3%** — near worthless |
+| Rounds 1050–1199 | **12.5%** — reliable |
+| Build rows | 32 wrong to 9 right |
+| Use rows | 15 wrong to 29 right |
+
+The reason is the good bit. The rule flagged a phrase when several rows in one round shared a stock
+tail. That doesn't detect padding — it detects **rounds where the generator collapsed**, which only
+happened in that upper band. Below it, the same signal fires on rounds that are simply tiled well.
+And the detector had no concept of role, so a legitimate build fragment looked identical to a bare
+fragment posing as a full sentence. "I'd like to read my book today / tonight / tomorrow" is six
+perfectly natural utterances; the rule condemned them all.
+
+It also caught the mirror image: of the rows the density rule *spared*, **18 were clear defects**, and
+inside the 1050–1199 band 11 of 16 spared rows were real. So the rule was wrong in both directions at
+once, and only splitting the population by band and role revealed it.
+
+**One honest wrinkle in how it was done.** All 349 rows had *both* sides rewritten — there is not one
+where the English was left alone. In two of them the fault was purely Spanish (`¿Quién era allí?`
+needed *estaba*; `estáis haciendo muy bien` was missing *lo*) and the English was rewritten anyway.
+The job flagged the second itself as *"a heavier edit than the fault required."* Worth holding onto:
+your ruling **permits** rewording both sides, it doesn't oblige it. The Spanish machinery could only
+express two outcomes — replace both sides, or leave completely alone. Fix-in-place and reword-one-side
+weren't options it could reach, and **nothing was deleted at all** — there is no delete path in the
+tooling.
+
 No TTS was run. 1,041 clips now need generating and that spend is sitting waiting for your approval.
 
 ### English as the target language
@@ -201,6 +233,11 @@ it had parked.
 *Check:* prefer fix in place → reword one side → reword both → delete. Take the first that leaves the
 course consistent, not the first that makes the flag go away. If you delete, check what's left: the
 course norm is 5 use rows per LEGO, and dropping to 3 puts a tile in the bottom half-percent.
+*The other half of this rule:* permission to reword isn't an obligation. All 349 Spanish rows had
+both sides rewritten, including two where only the Spanish was at fault — the job flagged one of those
+itself as "a heavier edit than the fault required". Before building a tool, check it can express the
+whole ladder: the Spanish tooling could only replace both sides or leave alone, so the middle rungs
+were unreachable and delete didn't exist.
 
 **6. Same English → two different target words is a technique, not a defect — but watch where they
 sit.** Your ruling. The constraint is placement: not too many close together, and not early on where
@@ -229,6 +266,16 @@ broken English. But also: a batch of Chinese variants was written off as noise a
 real, because Chinese marks tense with particles rather than word endings.
 *Check:* keep two lists — "known false-positive class" and "class I haven't understood yet." Default
 to false-positive only on the first. The second gets read by hand.
+
+**9b. When a detector is wrong, find out *where* it's wrong before you throw it away.**
+*From:* the Spanish audit. "30% false positives" would have been a useless verdict. Split by round
+band and by role and it becomes: 93% wrong below round 1050, 12% wrong above it; on build rows wrong
+three times out of four, on use rows right two times out of three. The rule wasn't detecting padding
+at all — it was detecting rounds where the generator had collapsed. Same rule, and it was
+simultaneously over-firing in one band and missing 11 of 16 real defects in another.
+*Check:* before accepting or binning a detector, slice its hits by every dimension you have — position
+in the course, row role, seed band — and report the rate per slice. A single overall percentage hides
+which half of the tool works.
 
 **10. Count clusters, not flags.**
 *From:* 1,123 real problems collapsed to about 90 consolidations covering 617 of them.
@@ -323,11 +370,12 @@ Honest gaps:
    row is untouched, seed 371 still says `kattomaan`. So the tile that tests an untaught form is live
    right now. I have not applied anything.
 
-4. **I did not verify the Spanish or Greek claims to the same depth as the Finnish ones.** I verified
-   Finnish row by row against the live database, and I verified the Greek "nothing was changed" claim
-   and the eng_for_mar row count myself. The Spanish numbers I have read but not independently
-   re-derived. Three workers are still running on Greek, Spanish and English-as-target; anything they
-   turn up will land after this document.
+4. **Verification depth is uneven, and here is the honest map.** Finnish I verified row by row against
+   the live database. The Greek "nothing was changed" claim and the eng_for_mar row count I checked
+   myself. The Spanish account has now been independently re-derived from the live database and the
+   fix scripts by a second session, which is where the band-and-role numbers above come from — but I
+   have not personally re-run those. Greek and English-as-target are still with two other sessions and
+   anything they correct will land after this document.
 
 5. **One thing I found that nobody has reported, offered as a finding rather than a fix.** In the Greek
    course, 7,771 of 8,065 practice phrases have an id beginning `el_for_eng:` while the course itself
