@@ -1,4 +1,4 @@
-https://watson-1.tail4968cb.ts.net/d/5da151fc
+https://watson-1.tail4968cb.ts.net/d/c7e409a4
 
 # Build-phrase padding — how bad, and where it comes from
 
@@ -8,7 +8,7 @@ https://watson-1.tail4968cb.ts.net/d/5da151fc
 
 ## The three numbers
 
-**1. How bad in Spanish — 394 padded practice phrases, and they are concentrated, not spread.**
+**1. How bad in Spanish — 394 padded practice phrases (291 Use, 103 Build), and they are concentrated, not spread.**
 394 of spa_for_eng's 15,205 Build+Use phrases (2.6% course-wide). But that average hides it. In **rounds 1100–1199, 259 of 871 phrases — 30% — are padding**, and **89 of the 150 rounds between R1050 and R1199 (59%) contain two or more**. Outside that band the rate is 1–4%, and most of those are false positives. Deborah's "from R1147 onward" is right; the band actually starts at about **R1050** and stops dead at **R1200**.
 
 **2. Is it generator-side — YES.**
@@ -19,9 +19,20 @@ It is produced at build time by the LLM course-builder agent submitting through 
 
 ---
 
-## One important correction to the brief
+## Roles covered, and one correction to the brief
+
+**The detector ran on `phrase_role IN ('build','use')` throughout — both roles, every count in this document.** It was never build-only, so there is no false all-clear here. Component rows were excluded (they are sub-LEGO drill fragments, not practice phrases).
 
 Deborah calls these "Build phrases". In the database, **291 of the 394 Spanish hits are `phrase_role = 'use'`**, only 103 are `'build'`. That matters for the fix: the anti-template gate shipped on 2026-07-24 runs on BUILD baskets **only** (`services/course-builder/routes/seed-complete.cjs:1218`), so three quarters of this defect is in the half of the data no gate is watching.
+
+**A partial BUILD-only repair already ran, and it did not finish.** Re-reading the live rows on 2026-08-06: a campaign on **2026-07-27** touched 196 Build and 137 Use phrases in spa_for_eng, and the Build baskets it reached are now genuinely varied — R1150 `that person over there was absolutely right`, R1156 `if we go too close in the mud`, R1162 `the small shirt` / `a small hope`. That is real, and it is why a build-only look at those five rounds now reads clean.
+
+But it stopped short on both axes:
+
+- **103 Build-role padded rows are still live in spa_for_eng**, 79 of them untouched since 2026-07-21. R1146 is the clearest case: `whenever you feel here` and `whenever you feel before` are still Build rows today, last touched 2026-07-24 11:46 and 11:47 — the same day the anti-template gate shipped. Deborah flagged exactly these two.
+- **The Use side was never cleaned at all.** Every one of R1150/1155/1156/1157/1162's padded Use rows still carries `updated_at = 2026-07-21`, i.e. the 07-27 campaign passed over them.
+
+This corroborates the cause analysis below rather than complicating it: the remediation was scoped to BUILD because the *gate* is scoped to BUILD, and the three quarters of the defect sitting in USE was never in scope.
 
 ---
 
@@ -44,7 +55,7 @@ That list was not invented — it is the top of the empirically measured distrib
 | R1157 `I am feeling sad` | 4 |
 | R1162 `small` | 4 |
 
-Her exact rows are in there: `whenever you feel here`, `whenever you feel before`, `was absolutely right here / before / yesterday`, `in the mud here / before / yesterday`, `I am feeling sad before / yesterday / for everyone`, `small here / before / yesterday / for everyone`. **Yes — the detector found every known positive.**
+All six sets were re-read live on 2026-08-06 after this measurement, and every hit above is still present in the database today. Her exact rows are in there: `whenever you feel here`, `whenever you feel before`, `was absolutely right here / before / yesterday`, `in the mud here / before / yesterday`, `I am feeling sad before / yesterday / for everyone`, `small here / before / yesterday / for everyone`. **Yes — the detector found every known positive.**
 
 ---
 
@@ -245,6 +256,8 @@ Do these and the backlog stops growing. Nothing else changes; no existing conten
 2. **Audio.** Every replaced phrase needs new clips. Spanish alone is ~315 phrases × (known + 2 target voices) ≈ 950 clips. That is a cost gate and needs approval, and make-before-break applies — generate and verify before any old clip is touched.
 3. **ZUT.** Replacement phrases must not create a second target for a known text that already has one.
 4. **Vocabulary window.** Replacements may only use vocabulary introduced before that round — the same constraint that caused the defect, so the generator fix must land first or the repair reproduces it.
+
+**A repair harness may already exist.** Something cleaned 196 Build and 137 Use rows in spa_for_eng on 2026-07-27 and produced good varied output. Before designing a new regeneration path, find what ran that campaign and check whether it can simply be re-pointed at the Use role and the 103 Build rows it missed — that would be much cheaper than building a fresh one. I did not identify the tool that ran it; the `updated_at` cluster is the only evidence I have.
 
 **Suggested sequencing.** Ship the generator fix. Then regenerate **spa_for_eng R1050–R1199 only** — 89 rounds, ~294 phrases — as a bounded pilot, and put it in front of Deborah before touching any of the other 73 courses. If it holds, `eng_for_zho` (17%) is the next target, not Spanish; it is nearly seven times worse.
 
