@@ -65,10 +65,18 @@ describe('canonicalVoiceId — one voice, one spelling', () => {
     expect(canonicalVoiceId('ta-LK-SaranyaNeural')).toBe('azure_ta-LK-SaranyaNeural')
   })
 
-  it('collapses the three spellings of the same xAI voice', () => {
+  it('collapses the two spellings of the same xAI voice', () => {
     expect(canonicalVoiceId('leo')).toBe('xai_leo')
-    expect(canonicalVoiceId('comp:leo')).toBe('xai_leo')
     expect(canonicalVoiceId('xai_leo')).toBe('xai_leo')
+  })
+
+  it('keeps a composite in its own namespace and canonicalises each part', () => {
+    // A spliced explainer is not the same audio as a plain single-voice render,
+    // so 'comp:leo' must NOT collapse onto 'xai_leo'.
+    expect(canonicalVoiceId('comp:leo')).toBe('comp:xai_leo')
+    expect(canonicalVoiceId('comp:leo')).not.toBe(canonicalVoiceId('leo'))
+    expect(canonicalVoiceId('comp:ga-IE-OrlaNeural+en-GB-SoniaNeural'))
+      .toBe('comp:azure_ga-IE-OrlaNeural+azure_en-GB-SoniaNeural')
   })
 
   it('does not lowercase the provider voice name — Azure names are case-significant', () => {

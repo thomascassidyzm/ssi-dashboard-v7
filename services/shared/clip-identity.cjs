@@ -69,15 +69,14 @@ const PROVIDERS = ['azure', 'xai', 'elevenlabs', 'google', 'narakeet', 'human'];
 
 /**
  * Spellings that appear in the live estate and mean a provider, plus the older
- * separators. 'comp:' is the voice-engine's composite prefix and its payload is
- * an xAI voice id ('comp:leo' → xai_leo).
+ * separators. 'comp:' is deliberately NOT here — a composite is a splice of two
+ * takes, not a provider (see canonicalVoiceId).
  */
 const PROVIDER_ALIASES = {
   azure: 'azure',
   ms: 'azure',
   microsoft: 'azure',
   xai: 'xai',
-  comp: 'xai',
   elevenlabs: 'elevenlabs',
   eleven: 'elevenlabs',
   '11labs': 'elevenlabs',
@@ -207,6 +206,17 @@ function canonicalVoiceId(voiceId, opts = {}) {
   const raw = String(voiceId == null ? '' : voiceId).trim();
   if (NON_VOICE_SENTINELS.has(raw.toLowerCase())) {
     throw new ClipIdentityError('voice_id', voiceId, 'a placeholder, not a voice');
+  }
+
+  // A composite is a splice of two takes, not a voice — 'comp:' names a recipe
+  // ('comp:ga-IE-OrlaNeural+en-GB-SoniaNeural' is the Irish chunk voice over the
+  // English known voice, pod-explainer-composite.cjs:271). It keeps its own
+  // namespace and each part is canonicalised, so a spliced explainer never
+  // collapses onto a plain single-voice render of the same text.
+  if (/^comp:/i.test(raw)) {
+    const parts = raw.slice(5).split('+').map((p) => p.trim()).filter(Boolean);
+    if (!parts.length) throw new ClipIdentityError('voice_id', voiceId, 'composite with no parts');
+    return 'comp:' + parts.map((p) => canonicalVoiceId(p, opts)).join('+');
   }
 
   const hint = opts.provider ? PROVIDER_ALIASES[String(opts.provider).trim().toLowerCase()] : null;
