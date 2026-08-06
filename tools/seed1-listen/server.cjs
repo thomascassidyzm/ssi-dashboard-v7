@@ -15,7 +15,7 @@
  * or relinks audio; the only thing it writes is the reviewer's own marks.
  *
  * Data (all under SEED1_DATA_DIR, default scripts/<slug>/):
- *   manifest-<course>.json   the 65 live clips        (built by manifest.cjs; required)
+ *   manifest-<course>.json   the live clips           (built by probe/manifest.cjs; required)
  *   suspicion-<course>.json  optional ranking, [{id, rank, score, ...}]
  *   marks-<course>.json      this tool's only output  (written atomically)
  *
@@ -47,9 +47,24 @@ if (!fs.existsSync(manifestPath)) {
   console.error(`Missing manifest: ${manifestPath}`);
   process.exit(1);
 }
-const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-const CLIPS = manifest.clips || [];
-const BY_ID = new Map(CLIPS.map((c) => [c.id, c]));
+// Re-read on every request, mtime-gated, exactly as the ranking is. The seed-1 clip
+// set is NOT stable while this page is open: a components campaign linked 4 new LEGOs
+// (16 clips, 65 -> 81) during the hour this tool was built. A manifest snapshotted at
+// boot would have gone on serving 65 and shown the reviewer a short list with no sign
+// it was short — the silent-staleness failure this whole exercise is about.
+let _mf = { mtime: 0, clips: [], byId: new Map() };
+function manifestState() {
+  let mtime = 0;
+  try { mtime = fs.statSync(manifestPath).mtimeMs; } catch { return _mf; }
+  if (mtime !== _mf.mtime) {
+    try {
+      const clips = JSON.parse(fs.readFileSync(manifestPath, 'utf8')).clips || [];
+      _mf = { mtime, clips, byId: new Map(clips.map((c) => [c.id, c])) };
+    } catch { /* keep the last good manifest rather than serving an empty page */ }
+  }
+  return _mf;
+}
+manifestState();
 
 const s3 = new S3Client({
   region: process.env.AWS_REGION,
@@ -94,7 +109,7 @@ function orderedClips() {
     const r = susp.get(c.id);
     return r && Number.isFinite(Number(r.rank)) ? Number(r.rank) : Infinity;
   };
-  return CLIPS
+  return manifestState().clips
     .map((c, i) => ({ c, i }))
     .sort((a, b) => rank(a.c) - rank(b.c) || a.i - b.i)
     .map(({ c }) => {
@@ -141,9 +156,14 @@ app.get('/api/clips', (_req, res) => {
 
 // status: 'good' | 'cut' | null (clear)
 app.post('/api/mark', (req, res) => {
-  const { id, status } = req.body || {};
-  if (!id || !BY_ID.has(id)) return res.status(400).json({ error: 'unknown clip id' });
-  if (![ 'good', 'cut', null ].includes(status ?? null)) {
+  const body = req.body || {};
+  const { id, status } = body;
+  if (!id || !manifestState().byId.has(id)) return res.status(400).json({ error: 'unknown clip id' });
+  // A body with no `status` key at all is a malformed request, not a request to
+  // clear. Clearing must be explicit (status: null) — otherwise a garbled POST
+  // silently erases a verdict the reviewer already gave.
+  if (!('status' in body)) return res.status(400).json({ error: 'missing status; send good|cut|null' });
+  if (![ 'good', 'cut', null ].includes(status)) {
     return res.status(400).json({ error: 'status must be good|cut|null' });
   }
   const state = loadMarks();
@@ -156,7 +176,7 @@ app.post('/api/mark', (req, res) => {
 
 // Only manifest ids resolve to a key — an arbitrary S3 key is never fetchable.
 app.get('/api/audio/:id', async (req, res) => {
-  const clip = BY_ID.get(req.params.id);
+  const clip = manifestState().byId.get(req.params.id);
   if (!clip || !clip.s3_key) return res.status(404).json({ error: 'unknown clip id' });
   const range = req.headers.range;
   try {
@@ -178,6 +198,6 @@ app.get('/api/audio/:id', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Seed-1 listen [${COURSE}] ${CLIPS.length} clips → http://localhost:${PORT}`);
+  console.log(`Seed-1 listen [${COURSE}] ${manifestState().clips.length} clips → http://localhost:${PORT}`);
   console.log(`  data dir: ${DATA_DIR}`);
 });
