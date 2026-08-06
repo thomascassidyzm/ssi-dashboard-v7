@@ -16,6 +16,7 @@ const voiceConfigService = require('./voice-config-service.cjs');
 const uuidService = require('./uuid-service.cjs');
 
 const AWS = require('aws-sdk');
+const { AUDIO_CACHE_CONTROL } = require('./shared/audio-cache-control.cjs');
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -106,6 +107,7 @@ async function generatePreviewSample(options) {
     Key: key,
     Body: audioBuffer,
     ContentType: 'audio/mpeg',
+    CacheControl: AUDIO_CACHE_CONTROL,
     Metadata: {
       'x-preview-course': courseCode,
       'x-preview-role': role,

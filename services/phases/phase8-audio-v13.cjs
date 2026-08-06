@@ -25,6 +25,7 @@ const cors = require('cors')
 const { createClient } = require('@supabase/supabase-js')
 const { S3Client, PutObjectCommand, HeadObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3')
 const { v4: uuidv4 } = require('uuid')
+const { AUDIO_CACHE_CONTROL } = require('../shared/audio-cache-control.cjs')
 const fs = require('fs-extra')
 const path = require('path')
 const os = require('os')
@@ -2227,7 +2228,8 @@ app.post('/generate/:courseCode', async (req, res) => {
         Bucket: S3_BUCKET,
         Key: s3Key,
         Body: masteredBuffer,
-        ContentType: 'audio/mpeg'
+        ContentType: 'audio/mpeg',
+        CacheControl: AUDIO_CACHE_CONTROL,
       }))
 
       // Insert into course_audio with duration
@@ -2730,7 +2732,8 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
         Bucket: S3_BUCKET,
         Key: s3Key,
         Body: masteredBuffer,
-        ContentType: 'audio/mpeg'
+        ContentType: 'audio/mpeg',
+        CacheControl: AUDIO_CACHE_CONTROL,
       }))
 
       // Update course_audio record with duration
@@ -4095,7 +4098,8 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
       Bucket: S3_BUCKET,
       Key: newS3Key,
       Body: masteredBuffer,
-      ContentType: 'audio/mpeg'
+      ContentType: 'audio/mpeg',
+      CacheControl: AUDIO_CACHE_CONTROL,
     }))
 
     // 8. Update course_audio record
@@ -4302,7 +4306,8 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       Bucket: S3_BUCKET,
       Key: newS3Key,
       Body: masteredBuffer,
-      ContentType: 'audio/mpeg'
+      ContentType: 'audio/mpeg',
+      CacheControl: AUDIO_CACHE_CONTROL,
     }))
 
     // 8. Update the existing row in place, or insert a new one for this lego.
@@ -4611,7 +4616,8 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
         Bucket: S3_BUCKET,
         Key: newS3Key,
         Body: masteredBuffer,
-        ContentType: 'audio/mpeg'
+        ContentType: 'audio/mpeg',
+        CacheControl: AUDIO_CACHE_CONTROL,
       }))
 
       // Mint a course_audio row carrying the NEW text. We checked above that no row
@@ -5026,7 +5032,8 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         Bucket: S3_BUCKET,
         Key: s3Key,
         Body: masteredBuffer,
-        ContentType: 'audio/mpeg'
+        ContentType: 'audio/mpeg',
+        CacheControl: AUDIO_CACHE_CONTROL,
       }))
 
       const { data: insertedAudio, error: insertError } = await supabase
@@ -5543,7 +5550,8 @@ app.post('/splice-components/:courseCode', async (req, res) => {
           Bucket: S3_BUCKET,
           Key: s3Key,
           Body: splicedBuffer,
-          ContentType: 'audio/mpeg'
+          ContentType: 'audio/mpeg',
+          CacheControl: AUDIO_CACHE_CONTROL,
         }))
 
         // Insert course_audio record
@@ -5898,6 +5906,7 @@ async function generatePodAudio({ courseCode, text, language, role, voice, ctx, 
         Key: s3Key,
         Body: masteredBuffer,
         ContentType: 'audio/mpeg',
+        CacheControl: AUDIO_CACHE_CONTROL,
       }))
       break
     } catch (e) {

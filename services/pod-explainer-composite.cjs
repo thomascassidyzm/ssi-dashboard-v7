@@ -36,6 +36,7 @@ const os = require('os')
 const { v4: uuidv4 } = require('uuid')
 const { createClient } = require('@supabase/supabase-js')
 const { PutObjectCommand } = require('@aws-sdk/client-s3')
+const { AUDIO_CACHE_CONTROL } = require('./shared/audio-cache-control.cjs')
 
 const ttsService = require('./tts-service.cjs')
 const audioProcessor = require('./audio-processor.cjs')
@@ -306,6 +307,7 @@ async function compositeExplainersForCourse(courseCode, { log = console.log, lim
               Key: `mastered/${newId}.mp3`,
               Body: masteredBuffer,
               ContentType: 'audio/mpeg',
+              CacheControl: AUDIO_CACHE_CONTROL,
             }))
             const { data: ins, error: insErr } = await supabase.from('course_audio').upsert({
               course_code: courseCode,

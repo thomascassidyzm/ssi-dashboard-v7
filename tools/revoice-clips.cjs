@@ -83,6 +83,7 @@ const path = require('path')
 const { execFile } = require('child_process')
 const { v4: uuidv4 } = require('uuid')
 const { PutObjectCommand } = require('@aws-sdk/client-s3')
+const { AUDIO_CACHE_CONTROL } = require('../services/shared/audio-cache-control.cjs')
 const { createClient } = require('@supabase/supabase-js')
 const ttsService = require('../services/tts-service.cjs')
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
@@ -478,7 +479,7 @@ async function relink(links, newId, durationMs) {
       const newId = uuidv4().toUpperCase()
       const s3Key = `mastered/${newId}.mp3`
       await p8.s3.send(new PutObjectCommand({
-        Bucket: p8.S3_BUCKET, Key: s3Key, Body: rendered.buffer, ContentType: 'audio/mpeg',
+        Bucket: p8.S3_BUCKET, Key: s3Key, Body: rendered.buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL,
       }))
 
       // INSERT BEFORE DELETE. voice_id is part of the unique key and it is

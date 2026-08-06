@@ -13,6 +13,7 @@
 const AWS = require('aws-sdk');
 const fs = require('fs-extra');
 const path = require('path');
+const { AUDIO_CACHE_CONTROL, cacheControlFor } = require('./shared/audio-cache-control.cjs');
 
 // Configure AWS (uses environment variables)
 const s3 = new AWS.S3({
@@ -44,7 +45,8 @@ async function uploadAudio(uuid, audioBuffer, bucket = STAGE_BUCKET) {
     Bucket: bucket,
     Key: key,
     Body: audioBuffer,
-    ContentType: 'audio/mpeg'
+    ContentType: 'audio/mpeg',
+    CacheControl: AUDIO_CACHE_CONTROL,
     // Note: ACL removed - bucket uses bucket policy for public access
   }).promise();
 
@@ -263,11 +265,16 @@ async function uploadToLFS(key, content, contentType = 'application/octet-stream
     body = content;
   }
 
+  // Structural files (JSON, manifests) are mutable at a stable key and stay
+  // uncached; only audio bodies get the immutable header.
+  const cacheControl = cacheControlFor(contentType);
+
   await s3.putObject({
     Bucket: LFS_BUCKET,
     Key: key,
     Body: body,
-    ContentType: contentType
+    ContentType: contentType,
+    ...(cacheControl ? { CacheControl: cacheControl } : {})
     // Note: ACL removed - bucket uses bucket policy for public access
   }).promise();
 

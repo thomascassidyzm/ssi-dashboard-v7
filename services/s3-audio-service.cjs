@@ -6,6 +6,7 @@
 
 const AWS = require('aws-sdk');
 const path = require('path');
+const { AUDIO_CACHE_CONTROL } = require('./shared/audio-cache-control.cjs');
 
 const S3_BUCKET = process.env.S3_BUCKET || 'ssi-audio-stage';
 const AWS_REGION = process.env.AWS_REGION || 'eu-west-1';
@@ -33,6 +34,7 @@ async function uploadAudio(courseCode, uuid, audioBuffer) {
       Key: key,
       Body: audioBuffer,
       ContentType: 'audio/mpeg',
+      CacheControl: AUDIO_CACHE_CONTROL,
       ACL: 'public-read'
     }).promise();
 

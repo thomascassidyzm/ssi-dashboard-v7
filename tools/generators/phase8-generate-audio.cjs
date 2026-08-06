@@ -17,6 +17,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const fetch = require('node-fetch');
 const AWS = require('aws-sdk');
+const { AUDIO_CACHE_CONTROL } = require('../../services/shared/audio-cache-control.cjs');
 require('dotenv').config();
 
 // Voice ID mapping for different languages
@@ -131,6 +132,7 @@ async function uploadToS3(key, buffer) {
     Key: key,
     Body: buffer,
     ContentType: 'audio/mpeg',
+    CacheControl: AUDIO_CACHE_CONTROL,
     ACL: 'public-read'
   }).promise();
 }

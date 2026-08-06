@@ -58,6 +58,7 @@ const os = require('os')
 const { v4: uuidv4 } = require('uuid')
 const { execFileSync, spawnSync } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
+const { AUDIO_CACHE_CONTROL } = require('../services/shared/audio-cache-control.cjs')
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3')
 const { normalizeForAudio } = require('../services/shared/text-normalize.cjs')
 const lib = require('../scripts/experiments/stage0-tuner/render-lib.cjs')
@@ -179,7 +180,7 @@ async function renderAndSlice(tmpDir, glossKey, gloss) {
 async function uploadMp3(file) {
   const id = uuidv4().toUpperCase()
   const key = `mastered/${id}.mp3`
-  await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: key, Body: fs.readFileSync(file), ContentType: 'audio/mpeg' }))
+  await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: key, Body: fs.readFileSync(file), ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))
   return { id, key }
 }
 
