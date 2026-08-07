@@ -134,12 +134,10 @@ const displayChunks = computed(() => {
   font-size: 2rem;
   font-weight: 600;
   color: var(--color-paper, var(--ink));
+  /* No light-mode override: a white glow is invisible on a light canvas, and
+     splitting this into a :root[data-theme=light] pair loses the prefix off
+     the first selector once the scoped-CSS pass minifies it. */
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
-}
-
-:root[data-theme="light"] .phrase-card.current .phrase-text,
-:root[data-theme="light"] .phrase-card.current .phrase-with-gaps {
-  text-shadow: none;
 }
 
 /* State: Upcoming */
