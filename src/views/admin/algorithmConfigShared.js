@@ -47,9 +47,31 @@ export function useAlgorithmConfig(opts = {}) {
 
   function deepClone(v) { return JSON.parse(JSON.stringify(v)) }
 
+  /**
+   * JSON with object keys in a stable order. Arrays keep their order — for
+   * spacedRepOffsets the order IS the value.
+   *
+   * The dirty-check needs this because algorithm_config.config is a Postgres
+   * `jsonb` column, and jsonb stores object keys in ITS canonical order (by key
+   * length, then bytewise), not the order they were written in. So the config
+   * that comes back from a save is never the same STRING as the draft that was
+   * sent, even when it is the same value. A plain JSON.stringify comparison
+   * therefore reports a row as permanently dirty from the moment it gains a new
+   * key — Save works, the row updates, and the button stays lit as though
+   * nothing happened. Observed live on 2026-08-07 when easy_mode gained
+   * post_voice2_gap_ms and maxPhraseSyllables.
+   */
+  function stableStringify(v) {
+    if (Array.isArray(v)) return `[${v.map(stableStringify).join(',')}]`
+    if (v && typeof v === 'object') {
+      return `{${Object.keys(v).sort().map(k => `${JSON.stringify(k)}:${stableStringify(v[k])}`).join(',')}}`
+    }
+    return JSON.stringify(v) ?? 'null'
+  }
+
   function isDirty(key) {
     if (!drafts[key] || !rowMap.value[key]) return false
-    return JSON.stringify(drafts[key]) !== JSON.stringify(rowMap.value[key].config)
+    return stableStringify(drafts[key]) !== stableStringify(rowMap.value[key].config)
   }
 
   function reset(key) {
