@@ -208,6 +208,21 @@ function langKey(lang) {
   return (lang || '').toLowerCase().split(/[_-]/)[0];
 }
 
+// Pick a pool by the MOST SPECIFIC key that exists: exact code first, base
+// language only as a fallback.
+//
+// The pools carry genuinely distinct regional casts — ara_sy is Amany/Laith
+// where ara is Yasmin/Youssef, and fra_ca, por_br and spa_mx likewise. Reducing
+// the code to its base language before the lookup made every one of those
+// unreachable, so a Syrian Arabic course was cast in Modern Standard Arabic and
+// a Quebec French one in metropolitan French. Silently: the base pool exists,
+// so nothing errored.
+function poolKeyFor(pools, lang) {
+  const exact = (lang || '').toLowerCase();
+  if (exact && pools[exact]) return exact;
+  return langKey(exact);
+}
+
 // Aran's rule (2026-08-07): a pod is a TWO-HANDER — one male voice and one
 // female voice for the whole cast, however many speaker labels the markdown
 // carries. Canonical pod-0 has 26 labels; without this they fan out across the
@@ -230,8 +245,8 @@ async function assignVoices(rawSpeakers, targetLang, knownLang) {
   //   }
   // }
   const pools = await loadVoicePools();
-  const tk = langKey(targetLang);
-  const kk = langKey(knownLang);
+  const tk = poolKeyFor(pools, targetLang);
+  const kk = poolKeyFor(pools, knownLang);
   const targetPool = pools[tk] || { f: [], m: [] };
   const knownPool  = pools[kk] || { f: [], m: [] };
 
@@ -583,8 +598,11 @@ async function syncPod(markdownPath, options) {
   if (!targetPart || !knownPart) {
     throw new Error(`Course code "${courseCode}" is not in <target>_for_<known> form`);
   }
-  const targetLang = targetPart.split('_')[0];
-  const knownLang = knownPart.split('_')[0];
+  // Pass the FULL code, region and all — assignVoices resolves the most
+  // specific pool that exists and falls back to the base language itself.
+  // Stripping the region here was the other half of the same bug.
+  const targetLang = targetPart;
+  const knownLang = knownPart;
   const speakers = await assignVoices(parsed.uniqueSpeakers, targetLang, knownLang);
 
   console.log(`\n🎧 Pod Sync: ${markdownPath}`);
