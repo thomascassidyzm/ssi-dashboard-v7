@@ -47,6 +47,9 @@ const gateStack = require('../audio-intelligence/gate-stack.cjs')
 const xaiCatalogue = require('../../tools/pod-voices-xai.json')
 
 const PORT = Number(process.env.VOICELAB_PORT || 4790)
+// Loopback by default: colleagues reach this through `tailscale serve`, which proxies
+// from localhost, so binding all interfaces only ever exposed it to the public internet.
+const HOST = process.env.BIND_HOST || '127.0.0.1'
 const CLIP_DIR = process.env.VOICELAB_CLIP_DIR || path.join(__dirname, '../../scripts/voicelab-playground-clips')
 const LEDGER = path.join(CLIP_DIR, 'ledger.jsonl')
 const MAX_CHARS = 300
@@ -386,8 +389,8 @@ const server = http.createServer(async (req, res) => {
 // Listen first, read the estate second: the census query is a nicety and must never be
 // what stands between a restart and a working page. Until it lands, the menu is the
 // clone plus the xAI catalogue, and `productionNote` says so on screen.
-server.listen(PORT, '0.0.0.0', () => {
-  console.log(`[voicelab] playground on http://0.0.0.0:${PORT}`)
+server.listen(PORT, HOST, () => {
+  console.log(`[voicelab] playground on http://${HOST}:${PORT}`)
   console.log(`[voicelab] clips → ${CLIP_DIR}`)
 })
 
