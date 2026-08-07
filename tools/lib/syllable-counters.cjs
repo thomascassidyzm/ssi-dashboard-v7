@@ -179,4 +179,33 @@ function countSyllables(text, langCode) {
   return fn(text)
 }
 
-module.exports = { countSyllables, registerCounter, REGISTRY, makeVowelGroupCounter, countSyllablesHrv }
+/**
+ * Is there a counter for this language? Ask this BEFORE countSyllables in any
+ * caller that must not throw — that is exactly how the speaking script's
+ * known-side review filter stays INERT (and says so) on a course whose known
+ * language has no counter, instead of silently counting it with another
+ * language's rules.
+ *
+ * Mirrors hasSyllableCounter in the twin (packages/core/src/text/syllables.ts).
+ */
+function hasSyllableCounter(langCode) {
+  return Boolean(REGISTRY[langCode])
+}
+
+/**
+ * Normalise a course's language tag to a registry key: 'eng-GB' / 'eng_US' /
+ * 'ENG' all resolve to 'eng'. Mirrors syllableLangOf in the twin.
+ */
+function syllableLangOf(lang) {
+  return String(lang || '').split(/[-_]/)[0].toLowerCase()
+}
+
+module.exports = {
+  countSyllables,
+  hasSyllableCounter,
+  syllableLangOf,
+  registerCounter,
+  REGISTRY,
+  makeVowelGroupCounter,
+  countSyllablesHrv,
+}

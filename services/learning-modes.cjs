@@ -21,6 +21,8 @@
  * change it there in the same commit.
  */
 
+const { countSyllables, hasSyllableCounter, syllableLangOf } = require('../tools/lib/syllable-counters.cjs')
+
 /** Row key for each mode. `normal_mode` is retained in the DB as a live
  *  fallback alias until the learner app ships reading `fast_mode`. */
 const MODE_KEYS = {
@@ -49,24 +51,39 @@ const DEFAULT_MODE = 'fast'
  *  this cap alone. */
 const DEFAULT_MAX_PHRASE_LENGTH_FRACTION = 1.0
 
-/** ABSOLUTE ceiling on a phrase's target SYLLABLE count — above it the phrase
- *  is skipped (Tom, 2026-08-07). Distinct from the fraction above in two ways
- *  that matter: it is absolute rather than relative to the course, and it
- *  measures syllables rather than characters.
+/** The KNOWN-side pull filter for REVIEW and CONSOLIDATE slots (Tom,
+ *  2026-08-07): "the parameterization should be on things like the syllable
+ *  cap, as measured in the known language".
  *
- *  0 / absent / blank = NO LIMIT, which is Fast and is the historic behaviour.
- *  A cap must never appear by omission.
+ *  This REPLACED an absolute target-syllable ceiling (`maxPhraseSyllables`)
+ *  that shipped earlier the same day and was retired within hours. That one
+ *  was wrong in three ways at once and none of them are worth repeating: it
+ *  counted the TARGET side, which is the side the learner is not reading; it
+ *  applied to the whole script rather than to the review/consolidate pull; and
+ *  it never came off, so a course stayed clipped forever. It also leant on a
+ *  Latin vowel-cluster heuristic that returns 1 for every non-Latin, non-CJK
+ *  script, so it silently did nothing on most of the estate.
  *
- *  KNOWN LIMIT, stated because a silent no-op is the failure mode here: the
- *  syllable count both this generator and the learner app use is
- *  `target_syllable_count` if the column is populated, else a vowel-cluster
- *  heuristic with a CJK special case. Measured 2026-08-07: the column is
- *  populated on 10,813 of 818,220 phrases (1.3%), so the heuristic is the live
- *  path almost everywhere — and it returns 1 for any non-Latin, non-CJK script
- *  (Arabic, Hebrew, Devanagari, Cyrillic, Greek, Thai). On those courses this
- *  cap is INERT and maxPhraseLengthFraction is the only length control that
- *  bites. The admin page says so next to the knob. */
-const DEFAULT_MAX_PHRASE_SYLLABLES = 0
+ *  The replacement counts the learner's OWN language with the canonical
+ *  per-language registry (tools/lib/syllable-counters.cjs), which knows nine
+ *  languages and declares itself inert rather than guessing for the rest.
+ *
+ *  0 / absent / blank / non-finite = NO FILTER. A filter must never appear by
+ *  omission. Mirrors normalizeMaxKnownSyllables in the learner app. */
+const DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES = Infinity
+
+/** Last round on which the known-side filter applies; past it the whole basket
+ *  is in play again. Absent / non-finite / <= 0 degrades to 100 rather than to
+ *  "forever", because the filter's whole point is that it COMES OFF: the
+ *  learner who has done a hundred rounds is not the learner it protects.
+ *  Mirrors normalizeReviewFilterMaxRound in the learner app. */
+const DEFAULT_REVIEW_FILTER_MAX_ROUND = 100
+
+/** Whether the character-length cap applies to BUILD pools at all. "No
+ *  filtering on BLD phrases" (Tom, 2026-08-07) — Easy ships false and takes
+ *  its whole BUILD pool. Default TRUE keeps every other caller on the historic
+ *  path. */
+const DEFAULT_FILTER_BUILD_PHRASES = true
 
 /** Floors the length cap must never breach, from the methodology's per-LEGO
  *  phrase minimums (ralph: >=4 BUILD, >=5 USE — "fewer phrases is a FAIL").
@@ -119,18 +136,38 @@ function resolveMaxPhraseLengthFraction(modeConfig) {
 }
 
 /**
- * The absolute syllable ceiling for a mode, validated. Anything missing,
- * non-numeric, non-finite or <= 0 degrades to 0 = NO LIMIT — the historic
- * behaviour. Symmetrical with the fraction above: a bad hand-edit falls back to
- * today's uncapped script, never to a cap that silently shortens a course.
- * Fractional values floor, so 12.9 is a ceiling of 12.
+ * The known-language syllable ceiling for review/consolidate pulls, validated.
+ * Anything missing, non-numeric, non-finite or <= 0 degrades to Infinity = NO
+ * FILTER. Fractional values floor, so 15.9 is a ceiling of 15.
  */
-function resolveMaxPhraseSyllables(modeConfig) {
-  const n = modeConfig && modeConfig.maxPhraseSyllables
+function resolveReviewMaxKnownSyllables(modeConfig) {
+  const n = modeConfig && modeConfig.reviewMaxKnownSyllables
   if (typeof n !== 'number' || !Number.isFinite(n) || n <= 0) {
-    return DEFAULT_MAX_PHRASE_SYLLABLES
+    return DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES
   }
   return Math.floor(n)
+}
+
+/**
+ * The last round the known-side filter applies on, validated. Anything
+ * missing, non-numeric, non-finite or <= 0 degrades to 100 — see
+ * DEFAULT_REVIEW_FILTER_MAX_ROUND for why the degradation is a window and not
+ * "forever".
+ */
+function resolveReviewFilterMaxRound(modeConfig) {
+  const n = modeConfig && modeConfig.reviewSyllableFilterMaxRound
+  if (typeof n !== 'number' || !Number.isFinite(n) || n <= 0) {
+    return DEFAULT_REVIEW_FILTER_MAX_ROUND
+  }
+  return Math.floor(n)
+}
+
+/**
+ * Whether this mode filters its BUILD pool by the character-length cap. Only
+ * an explicit `false` turns it off, so an absent key keeps the historic path.
+ */
+function resolveFilterBuildPhrases(modeConfig) {
+  return !(modeConfig && modeConfig.filterBuildPhrases === false)
 }
 
 /**
@@ -200,27 +237,81 @@ function applyPhraseLengthCap(phrases, limit, lengthOf = phraseLengthOf, minKeep
 }
 
 /**
- * Both length caps, applied to one LEGO's candidate pool, in one place.
+ * THE one place a phrase's KNOWN-side syllable count is resolved.
  *
- * They compose rather than compete: a phrase survives only if it is inside the
- * relative CHARACTER ceiling AND the absolute SYLLABLE ceiling. Each is applied
- * through applyPhraseLengthCap with its own measure, so each carries its own
- * starvation guard and either one alone behaves exactly as it did before.
- * Order is irrelevant to the result when neither guard fires; when one does,
- * running the relative cap first keeps the guard's "shortest N" measured on the
- * pool the course-wide ceiling already agreed to.
+ * There is no stored known-side count anywhere in the schema, so this is the
+ * canonical per-language counter or it is nothing. When the course's known
+ * language has no counter it returns `countable: false` and the filter simply
+ * does not apply — LOUDLY, via the caller's log line. It never throws and it
+ * never guesses with another language's rules, because that is precisely how
+ * the retired target-side ceiling failed: it produced a plausible number
+ * nobody checked and silently did nothing.
  *
- * `caps.lengthLimit` of Infinity and `caps.syllableLimit` of 0 are both the
- * uncapped identity, so Fast short-circuits to the plain historic pool.
+ * Mirrors makeKnownSyllableResolver in the learner app's useAlgorithmConfig.ts.
  *
- * @param {Array}  phrases   candidates, any order
- * @param {object} caps      { lengthLimit, lengthOf, syllableLimit, syllablesOf }
- * @param {number} minKeep   the methodology phrase floor for this pool
+ * @param {string} knownLang  courses.known_lang for this course
  */
-function applyPhraseCaps(phrases, caps, minKeep = 1) {
-  const byLength = applyPhraseLengthCap(phrases, caps.lengthLimit, caps.lengthOf || phraseLengthOf, minKeep)
-  if (!caps.syllableLimit || !caps.syllablesOf) return byLength
-  return applyPhraseLengthCap(byLength, caps.syllableLimit, caps.syllablesOf, minKeep)
+function makeKnownSyllableResolver(knownLang) {
+  const lang = syllableLangOf(knownLang)
+  const countable = hasSyllableCounter(lang)
+  return {
+    lang,
+    countable,
+    /** Known-side syllables, or null when this course cannot be counted. */
+    syllablesOf(phrase) {
+      if (!countable) return null
+      const text = phrase && phrase.known_text
+      if (!text) return null
+      return countSyllables(text, lang)
+    },
+  }
+}
+
+/**
+ * The KNOWN-side pull filter for REVIEW and CONSOLIDATE slots (Tom,
+ * 2026-08-07). THE one place this rule lives.
+ *
+ * Given a LEGO's basket of use phrases and the round being generated, return
+ * the sub-basket the pull may draw from:
+ *
+ *   1. filter off, or past `maxRound` => the whole basket, untouched. Nothing
+ *      is backlogged when it lifts and nothing cascades: the LEGO is what is
+ *      being practised, so a phrase the learner has not met before is fine.
+ *   2. otherwise keep phrases of at most `limit` KNOWN-language syllables. A
+ *      phrase whose known side cannot be counted passes — that is the inert
+ *      path, taken per phrase rather than per course.
+ *   3. SHORTEST-IN-BASKET FALLBACK — if that leaves nothing, return the single
+ *      shortest phrase in the basket. A LEGO is never skipped and a review
+ *      slot is never left empty for want of a short phrase.
+ *
+ * A LEGO basket is that LEGO's own debut BUILD + USE phrases, so every phrase
+ * in it contains its LEGO by definition; there is no containment check here
+ * and there must not be one.
+ *
+ * @param {Array}  pool          the LEGO's basket, any order
+ * @param {number} roundNumber   the round being generated
+ * @param {object} filter        { limit, maxRound, syllablesOf } or null
+ */
+function filterReviewPool(pool, roundNumber, filter) {
+  if (!Array.isArray(pool) || pool.length === 0) return pool || []
+  if (!filter || !Number.isFinite(filter.limit) || filter.limit <= 0) return pool
+  if (roundNumber > filter.maxRound) return pool
+
+  const kept = pool.filter(p => {
+    const n = filter.syllablesOf(p)
+    if (typeof n !== 'number' || !Number.isFinite(n)) return true   // uncountable => passes
+    return n <= filter.limit
+  })
+  if (kept.length > 0) return kept
+
+  let shortest = pool[0]
+  let shortestN = Infinity
+  for (const p of pool) {
+    const n = filter.syllablesOf(p)
+    const value = typeof n === 'number' && Number.isFinite(n) ? n : Infinity
+    if (value < shortestN) { shortestN = value; shortest = p }
+  }
+  return [shortest]
 }
 
 module.exports = {
@@ -229,14 +320,19 @@ module.exports = {
   DEFAULT_MODE,
   SCRIPT_SHAPE_KEYS,
   DEFAULT_MAX_PHRASE_LENGTH_FRACTION,
-  DEFAULT_MAX_PHRASE_SYLLABLES,
+  DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES,
+  DEFAULT_REVIEW_FILTER_MAX_ROUND,
+  DEFAULT_FILTER_BUILD_PHRASES,
   MIN_BUILD_PHRASES_AFTER_CAP,
   MIN_USE_PHRASES_AFTER_CAP,
   resolveScriptShape,
   resolveMaxPhraseLengthFraction,
-  resolveMaxPhraseSyllables,
+  resolveReviewMaxKnownSyllables,
+  resolveReviewFilterMaxRound,
+  resolveFilterBuildPhrases,
   phraseLengthOf,
   courseMaxPhraseLength,
   applyPhraseLengthCap,
-  applyPhraseCaps,
+  makeKnownSyllableResolver,
+  filterReviewPool,
 }

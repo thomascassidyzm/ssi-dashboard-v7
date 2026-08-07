@@ -16,14 +16,17 @@ const {
   MODE_FALLBACKS,
   DEFAULT_MODE,
   DEFAULT_MAX_PHRASE_LENGTH_FRACTION,
-  DEFAULT_MAX_PHRASE_SYLLABLES,
+  DEFAULT_REVIEW_FILTER_MAX_ROUND,
   resolveScriptShape,
   resolveMaxPhraseLengthFraction,
-  resolveMaxPhraseSyllables,
+  resolveReviewMaxKnownSyllables,
+  resolveReviewFilterMaxRound,
+  resolveFilterBuildPhrases,
   phraseLengthOf,
   courseMaxPhraseLength,
   applyPhraseLengthCap,
-  applyPhraseCaps,
+  makeKnownSyllableResolver,
+  filterReviewPool,
 } = require('./learning-modes.cjs')
 
 // The live algorithm_config.script_shape row, read 2026-08-06.
@@ -192,80 +195,147 @@ describe('applyPhraseLengthCap — Easy halves the longest possible phrase', () 
 
 
 // ============================================================================
-// maxPhraseSyllables — the ABSOLUTE per-mode syllable ceiling (Tom, 2026-08-07).
-// The whole point of the field is that a phrase over N syllables is SKIPPED, so
-// the load-bearing claim is the inverse one: absent/0/blank must mean NO LIMIT,
-// because a cap that appears by omission would silently shorten every course in
-// the estate the moment a row was hand-edited.
+// THE KNOWN-SIDE PULL FILTER (Tom, 2026-08-07: "the parameterization should be
+// on things like the syllable cap, as measured in the known language").
+//
+// DELIBERATELY FLIPPED: this block replaces the resolveMaxPhraseSyllables and
+// applyPhraseCaps suites, which asserted an ABSOLUTE TARGET-syllable ceiling
+// applied to the whole script. That ceiling was retired hours after it shipped
+// — it counted the side the learner is not reading, it never lifted, and it
+// leant on a heuristic that returns 1 for every non-Latin, non-CJK script, so
+// it silently did nothing on most of the estate. Its tests went with it; the
+// claims below are the replacements.
 // ============================================================================
-describe('resolveMaxPhraseSyllables', () => {
+describe('resolveReviewMaxKnownSyllables', () => {
   it('reads a real ceiling off the mode row', () => {
-    expect(resolveMaxPhraseSyllables({ maxPhraseSyllables: 12 })).toBe(12)
+    expect(resolveReviewMaxKnownSyllables({ reviewMaxKnownSyllables: 15 })).toBe(15)
   })
 
-  it('floors a fractional ceiling — 12.9 syllables is a ceiling of 12', () => {
-    expect(resolveMaxPhraseSyllables({ maxPhraseSyllables: 12.9 })).toBe(12)
+  it('floors a fractional ceiling — 15.9 syllables is a ceiling of 15', () => {
+    expect(resolveReviewMaxKnownSyllables({ reviewMaxKnownSyllables: 15.9 })).toBe(15)
   })
 
-  it('degrades anything absent, blank or invalid to NO LIMIT, never to a cap', () => {
-    for (const bad of [undefined, null, {}, { maxPhraseSyllables: 0 },
-                       { maxPhraseSyllables: null }, { maxPhraseSyllables: '' },
-                       { maxPhraseSyllables: -4 }, { maxPhraseSyllables: 'twelve' },
-                       { maxPhraseSyllables: NaN }, { maxPhraseSyllables: Infinity }]) {
-      expect(resolveMaxPhraseSyllables(bad)).toBe(DEFAULT_MAX_PHRASE_SYLLABLES)
-      expect(resolveMaxPhraseSyllables(bad)).toBe(0)
+  it('degrades anything absent, blank or invalid to NO FILTER, never to a filter', () => {
+    // A filter that appears by omission would silently shorten every review
+    // pull in the estate the moment a row was hand-edited.
+    for (const bad of [undefined, null, {}, { reviewMaxKnownSyllables: 0 },
+                       { reviewMaxKnownSyllables: null }, { reviewMaxKnownSyllables: '' },
+                       { reviewMaxKnownSyllables: -4 }, { reviewMaxKnownSyllables: 'fifteen' },
+                       { reviewMaxKnownSyllables: NaN }]) {
+      expect(resolveReviewMaxKnownSyllables(bad)).toBe(Infinity)
     }
   })
 
-  it('leaves the live Fast row uncapped and reads nothing from the length fraction', () => {
-    expect(resolveMaxPhraseSyllables(FAST_CONFIG)).toBe(0)
-    expect(resolveMaxPhraseSyllables(EASY_CONFIG)).toBe(0)
+  it('the live Fast row carries 0 and so runs unfiltered', () => {
+    expect(resolveReviewMaxKnownSyllables({ ...FAST_CONFIG, reviewMaxKnownSyllables: 0 })).toBe(Infinity)
   })
 })
 
-describe('applyPhraseCaps — the two ceilings composed', () => {
+describe('resolveReviewFilterMaxRound', () => {
+  it('reads the window off the mode row', () => {
+    expect(resolveReviewFilterMaxRound({ reviewSyllableFilterMaxRound: 100 })).toBe(100)
+    expect(resolveReviewFilterMaxRound({ reviewSyllableFilterMaxRound: 250 })).toBe(250)
+  })
+
+  it('degrades to a WINDOW, not to forever — the filter is meant to come off', () => {
+    // The asymmetry with the ceiling above is deliberate. A bad ceiling must
+    // fall back to "no filter"; a bad WINDOW must fall back to a finite one,
+    // because a filter that never lifts is the failure the whole design fixes.
+    for (const bad of [undefined, null, {}, { reviewSyllableFilterMaxRound: 0 },
+                       { reviewSyllableFilterMaxRound: -1 },
+                       { reviewSyllableFilterMaxRound: NaN },
+                       { reviewSyllableFilterMaxRound: Infinity }]) {
+      expect(resolveReviewFilterMaxRound(bad)).toBe(DEFAULT_REVIEW_FILTER_MAX_ROUND)
+      expect(resolveReviewFilterMaxRound(bad)).toBe(100)
+    }
+  })
+})
+
+describe('resolveFilterBuildPhrases — "no filtering on BLD phrases"', () => {
+  it('only an explicit false turns it off', () => {
+    expect(resolveFilterBuildPhrases({ filterBuildPhrases: false })).toBe(false)
+  })
+
+  it('absent, null or true keeps the historic path', () => {
+    for (const cfg of [undefined, null, {}, { filterBuildPhrases: true },
+                       { filterBuildPhrases: null }]) {
+      expect(resolveFilterBuildPhrases(cfg)).toBe(true)
+    }
+  })
+})
+
+describe('makeKnownSyllableResolver — the learner\'s own language, or nothing', () => {
+  it('counts English on an eng-known course', () => {
+    const r = makeKnownSyllableResolver('eng')
+    expect(r.countable).toBe(true)
+    expect(r.syllablesOf({ known_text: 'I want to speak' })).toBe(4)
+  })
+
+  it('normalises a tagged language code', () => {
+    expect(makeKnownSyllableResolver('eng-GB').lang).toBe('eng')
+    expect(makeKnownSyllableResolver('ENG_US').countable).toBe(true)
+  })
+
+  it('is INERT rather than wrong for an unregistered known language', () => {
+    // A wrong-language count is worse than no count: it produces a plausible
+    // number nobody checks. It must not throw either — the script still builds.
+    const r = makeKnownSyllableResolver('ara')
+    expect(r.countable).toBe(false)
+    expect(r.syllablesOf({ known_text: 'مرحبا كيف حالك' })).toBeNull()
+    expect(makeKnownSyllableResolver(null).countable).toBe(false)
+    expect(makeKnownSyllableResolver(undefined).syllablesOf({ known_text: 'x' })).toBeNull()
+  })
+
+  it('returns null for a phrase with no known text at all', () => {
+    expect(makeKnownSyllableResolver('eng').syllablesOf({})).toBeNull()
+  })
+})
+
+describe('filterReviewPool — the pull filter itself', () => {
   const syllablesOf = p => p.syll
-  const pool = [
-    { target_text: 'aaaa', syll: 2 },        // short text, few syllables
-    { target_text: 'aaaaaaaa', syll: 3 },
-    { target_text: 'aaaaaaaaaaaa', syll: 9 },  // long text, many syllables
-    { target_text: 'aaaa', syll: 14 },        // SHORT text, many syllables
-  ]
+  const filter = { limit: 15, maxRound: 100, syllablesOf }
+  const pool = [{ id: 'a', syll: 6 }, { id: 'b', syll: 14 }, { id: 'c', syll: 22 }]
 
-  it('with both caps off, returns the pool untouched — Fast is the historic path', () => {
-    const out = applyPhraseCaps(pool, { lengthLimit: Infinity, syllableLimit: 0, syllablesOf }, 1)
-    expect(out).toEqual(pool)
+  it('keeps only the short end while the filter is in force', () => {
+    expect(filterReviewPool(pool, 12, filter).map(p => p.id)).toEqual(['a', 'b'])
   })
 
-  it('applies the character cap alone exactly as it did before', () => {
-    const out = applyPhraseCaps(pool, { lengthLimit: 8, syllableLimit: 0, syllablesOf }, 1)
-    expect(out.map(p => p.syll)).toEqual([2, 3, 14])
+  it('is inclusive of the limit itself', () => {
+    expect(filterReviewPool([{ id: 'x', syll: 15 }], 1, filter).map(p => p.id)).toEqual(['x'])
   })
 
-  it('applies the syllable cap alone — a SHORT phrase can still be too many syllables', () => {
-    // The row the character cap cannot see: 4 characters, 14 syllables.
-    const out = applyPhraseCaps(pool, { lengthLimit: Infinity, syllableLimit: 10, syllablesOf }, 1)
-    expect(out.map(p => p.syll)).toEqual([2, 3, 9])
+  it('LIFTS past the window — the whole basket is back, with nothing backlogged', () => {
+    // Round 101 gets the untouched pool, by identity. Nothing cascades: the
+    // LEGO is what is being practised, so an unmet phrase is fine.
+    expect(filterReviewPool(pool, 101, filter)).toBe(pool)
+    expect(filterReviewPool(pool, 100, filter).map(p => p.id)).toEqual(['a', 'b'])
   })
 
-  it('requires a phrase to pass BOTH ceilings, not either', () => {
-    const out = applyPhraseCaps(pool, { lengthLimit: 8, syllableLimit: 10, syllablesOf }, 1)
-    expect(out.map(p => p.syll)).toEqual([2, 3])
+  it('is the identity when the filter is off or absent', () => {
+    expect(filterReviewPool(pool, 1, null)).toBe(pool)
+    expect(filterReviewPool(pool, 1, { limit: Infinity, maxRound: 100, syllablesOf })).toBe(pool)
+    expect(filterReviewPool(pool, 1, { limit: 0, maxRound: 100, syllablesOf })).toBe(pool)
   })
 
-  it('yields to the phrase floor rather than starving a LEGO', () => {
-    // Nothing survives a 1-syllable ceiling, so the floor wins and the shortest
-    // minKeep come back — phrase volume is a hard rail, "fewer phrases is a FAIL".
-    const out = applyPhraseCaps(pool, { lengthLimit: Infinity, syllableLimit: 1, syllablesOf }, 3)
-    expect(out).toHaveLength(3)
-    expect(out.map(p => p.syll)).toEqual([2, 3, 9])
+  it('SHORTEST-IN-BASKET FALLBACK: a LEGO is never skipped for want of a short phrase', () => {
+    const allLong = [{ id: 'p', syll: 40 }, { id: 'q', syll: 25 }, { id: 'r', syll: 33 }]
+    const out = filterReviewPool(allLong, 5, filter)
+    expect(out).toHaveLength(1)
+    expect(out[0].id).toBe('q')
   })
 
-  it('is inert when the pool has no syllable measure — the counter-less-script case', () => {
-    // Every non-Latin, non-CJK script measures 1 syllable per phrase, so no
-    // phrase can ever exceed the cap. It must be a no-op, not an empty round.
-    const arabic = [{ target_text: 'مرحبا', syll: 1 }, { target_text: 'كيف حالك اليوم', syll: 1 }]
-    const out = applyPhraseCaps(arabic, { lengthLimit: Infinity, syllableLimit: 8, syllablesOf }, 1)
-    expect(out).toEqual(arabic)
+  it('passes an uncountable phrase rather than dropping it — inertness is per phrase', () => {
+    const mixed = [{ id: 'a', syll: 6 }, { id: 'u', syll: null }, { id: 'c', syll: 22 }]
+    expect(filterReviewPool(mixed, 5, filter).map(p => p.id)).toEqual(['a', 'u'])
+  })
+
+  it('handles an empty basket without inventing one', () => {
+    expect(filterReviewPool([], 5, filter)).toEqual([])
+  })
+
+  it('never mutates the basket it is given', () => {
+    const before = JSON.stringify(pool)
+    filterReviewPool(pool, 5, filter)
+    expect(JSON.stringify(pool)).toBe(before)
   })
 })

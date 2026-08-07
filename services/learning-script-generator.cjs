@@ -50,10 +50,13 @@ const createLogger = require('./shared/logger.cjs')
 const logger = createLogger('LearningScriptGenerator')
 const {
   MODE_KEYS, MODE_FALLBACKS, DEFAULT_MODE,
-  DEFAULT_MAX_PHRASE_LENGTH_FRACTION, DEFAULT_MAX_PHRASE_SYLLABLES,
+  DEFAULT_MAX_PHRASE_LENGTH_FRACTION, DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES,
+  DEFAULT_REVIEW_FILTER_MAX_ROUND, DEFAULT_FILTER_BUILD_PHRASES,
   MIN_BUILD_PHRASES_AFTER_CAP, MIN_USE_PHRASES_AFTER_CAP,
-  resolveScriptShape, resolveMaxPhraseLengthFraction, resolveMaxPhraseSyllables,
-  phraseLengthOf, courseMaxPhraseLength, applyPhraseCaps,
+  resolveScriptShape, resolveMaxPhraseLengthFraction,
+  resolveReviewMaxKnownSyllables, resolveReviewFilterMaxRound, resolveFilterBuildPhrases,
+  phraseLengthOf, courseMaxPhraseLength, applyPhraseLengthCap,
+  makeKnownSyllableResolver, filterReviewPool,
 } = require('./learning-modes.cjs')
 
 // FALLBACK spaced-rep offsets — used ONLY when algorithm_config.script_shape
@@ -125,7 +128,9 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
   let listening = { ...DEFAULT_LISTENING }
   let scriptShapeSource = 'fallback'
   let maxPhraseLengthFraction = DEFAULT_MAX_PHRASE_LENGTH_FRACTION
-  let maxPhraseSyllables = DEFAULT_MAX_PHRASE_SYLLABLES
+  let reviewMaxKnownSyllables = DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES
+  let reviewFilterMaxRound = DEFAULT_REVIEW_FILTER_MAX_ROUND
+  let filterBuildPhrases = DEFAULT_FILTER_BUILD_PHRASES
 
   // Mode rows are fetched alongside the global shape so the per-mode override
   // layers in one round-trip. The fallback chain lets fast_mode degrade to
@@ -141,7 +146,7 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
 
     if (error) {
       logger.warn(`algorithm_config fetch failed (${error.message}) — using built-in fallback shape [${FIBONACCI.join(',')}]. Script View may diverge from the learner.`)
-      return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, maxPhraseSyllables, mode }
+      return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, reviewMaxKnownSyllables, reviewFilterMaxRound, filterBuildPhrases, mode }
     }
 
     const byKey = new Map((data || []).map(r => [r.key, r.config || {}]))
@@ -164,7 +169,9 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
       const modeConfig = byKey.get(resolvedKey)
       scriptShape = resolveScriptShape(scriptShape, modeConfig)
       maxPhraseLengthFraction = resolveMaxPhraseLengthFraction(modeConfig)
-      maxPhraseSyllables = resolveMaxPhraseSyllables(modeConfig)
+      reviewMaxKnownSyllables = resolveReviewMaxKnownSyllables(modeConfig)
+      reviewFilterMaxRound = resolveReviewFilterMaxRound(modeConfig)
+      filterBuildPhrases = resolveFilterBuildPhrases(modeConfig)
       if (resolvedKey !== modeKey) {
         logger.warn(`algorithm_config.${modeKey} row MISSING — fell back to ${resolvedKey}. Expected during the learning-app promotion window; fix the row once it ships.`)
       }
@@ -175,13 +182,21 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
     logger.warn(`algorithm_config fetch threw (${err.message}) — using built-in fallback shape.`)
   }
 
-  return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, maxPhraseSyllables, mode }
+  return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, reviewMaxKnownSyllables, reviewFilterMaxRound, filterBuildPhrases, mode }
 }
 
 /**
- * Count syllables in target text.
- * CJK characters count as 1 syllable each.
- * Latin text uses vowel cluster heuristic.
+ * Count syllables in TARGET text — the shortest-first SORT key, and nothing
+ * else since 2026-08-07.
+ *
+ * CJK characters count as 1 syllable each; Latin text uses a vowel-cluster
+ * heuristic; every other script measures 1 per phrase. That is fine for a sort
+ * (a coarse key still orders a pool sensibly and has ordered it this way
+ * forever) and was NOT fine as a ceiling, which is why the target-side
+ * `maxPhraseSyllables` ceiling this used to feed is gone. Any FILTER on
+ * syllables now counts the KNOWN side with the per-language registry —
+ * see filterReviewPool / makeKnownSyllableResolver in learning-modes.cjs.
+ * Do not re-attach this counter to a filter.
  */
 function countTargetSyllables(targetText) {
   if (!targetText) return 0
@@ -710,6 +725,33 @@ async function loadSeedSentences(supabase, courseCode) {
 }
 
 /**
+ * The course's KNOWN language — the side the known-side review filter counts.
+ *
+ * Same read the learner app makes (courses.known_lang). Any failure returns
+ * null, which makes the filter declare itself inert and warn rather than guess
+ * a language; a wrong-language syllable count is worse than no count, because
+ * it produces a plausible number nobody checks.
+ */
+async function loadCourseKnownLang(supabase, courseCode) {
+  if (!supabase) return null
+  try {
+    const { data, error } = await supabase
+      .from('courses')
+      .select('known_lang')
+      .eq('course_code', courseCode)
+      .limit(1)
+    if (error) {
+      logger.warn(`Could not read courses.known_lang for ${courseCode} (${error.message}) — the known-side review filter will be inert.`)
+      return null
+    }
+    return (data && data[0] && data[0].known_lang) || null
+  } catch (err) {
+    logger.warn(`loadCourseKnownLang threw for ${courseCode} (${err.message}) — the known-side review filter will be inert.`)
+    return null
+  }
+}
+
+/**
  * Generate the complete learning script with ROUNDs and spaced repetition.
  *
  * Mirrors generateLearningScript.ts in ssi-learning-app:
@@ -739,8 +781,10 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   // which mode row layers its scriptShape override on top of the global one;
   // defaults to fast, which is the old normal_mode behaviour unchanged.
   const mode = options.mode || DEFAULT_MODE
-  const { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, maxPhraseSyllables } =
-    await loadAlgorithmConfig(supabase, mode)
+  const {
+    scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction,
+    reviewMaxKnownSyllables, reviewFilterMaxRound, filterBuildPhrases,
+  } = await loadAlgorithmConfig(supabase, mode)
   const SPACED_REP_OFFSETS = scriptShape.spacedRepOffsets
   const MAX_BUILD_PHRASES = scriptShape.maxBuildPhrases
   const CONSOLIDATE_COUNT = scriptShape.useConsolidationCount
@@ -801,23 +845,36 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   if (Number.isFinite(phraseLengthLimit)) {
     logger.info(`Mode '${mode}': phrase length capped at ${phraseLengthLimit.toFixed(0)} chars of target text (${Math.round(maxPhraseLengthFraction * 100)}% of the course's longest phrase)`)
   }
-  // The second, ABSOLUTE ceiling (Tom, 2026-08-07): skip any phrase over N
-  // target syllables. 0 = no limit = Fast = the historic path. Both caps go
-  // through applyPhraseCaps so there is one home for the rule.
-  const phraseCaps = {
-    lengthLimit: phraseLengthLimit,
-    lengthOf: phraseLengthOf,
-    syllableLimit: maxPhraseSyllables,
-    syllablesOf,
+  // "No filtering on BLD phrases" (Tom, 2026-08-07). Easy passes
+  // filterBuildPhrases:false and keeps its whole BUILD pool; passing Infinity
+  // rather than branching keeps the sort in one place, because
+  // applyPhraseLengthCap with no finite limit IS the plain historic pool.
+  const buildLengthLimit = filterBuildPhrases ? phraseLengthLimit : Infinity
+  if (!filterBuildPhrases && Number.isFinite(phraseLengthLimit)) {
+    logger.info(`Mode '${mode}': BUILD phrases are NOT length-filtered — the cap above applies to USE pools only.`)
   }
-  if (maxPhraseSyllables > 0) {
-    // Log what the cap can actually SEE, because a syllable count of 1 across
-    // the board means the cap is inert on this course rather than generous.
-    const pool = [...buildMap.values(), ...useMap.values()].flat()
-    const maxSeen = pool.reduce((m, p) => Math.max(m, syllablesOf(p)), 0)
-    logger.info(`Mode '${mode}': phrases over ${maxPhraseSyllables} target syllables are skipped (longest phrase in this course measures ${maxSeen} syllables)`)
-    if (maxSeen <= 1) {
-      logger.warn(`Mode '${mode}': the syllable cap is INERT for ${courseCode} — every phrase measures <=1 syllable, so no phrase can exceed ${maxPhraseSyllables}. This target script has no syllable counter; maxPhraseLengthFraction is the only length control that bites here.`)
+
+  // The KNOWN-side pull filter on REVIEW and CONSOLIDATE slots (Tom,
+  // 2026-08-07: "the syllable cap, as measured in the known language"). It
+  // counts the learner's own language with the per-language registry, applies
+  // to the pull rather than the whole script, and lifts after
+  // reviewFilterMaxRound. The target-side ceiling it replaced is gone; do not
+  // bring it back.
+  let reviewPullFilter = null
+  if (Number.isFinite(reviewMaxKnownSyllables)) {
+    const knownLang = await loadCourseKnownLang(supabase, courseCode)
+    const resolver = makeKnownSyllableResolver(knownLang)
+    if (resolver.countable) {
+      reviewPullFilter = {
+        limit: reviewMaxKnownSyllables,
+        maxRound: reviewFilterMaxRound,
+        syllablesOf: p => resolver.syllablesOf(p),
+      }
+      logger.info(`Mode '${mode}': review and consolidate pulls prefer phrases of <=${reviewMaxKnownSyllables} known-language syllables (${resolver.lang}) up to round ${reviewFilterMaxRound}, then the filter lifts.`)
+    } else {
+      // Loud inertness. The retired target-side ceiling failed silently on most
+      // of the estate; this one says so instead.
+      logger.warn(`Mode '${mode}': the known-side syllable filter is INERT for ${courseCode} — no syllable counter registered for known language '${resolver.lang || '(unknown)'}'. Review and consolidate pulls are NOT filtered; maxPhraseLengthFraction is the only length control in force. Add a counter to tools/lib/syllable-counters.cjs and mirror it into the learning app's packages/core/src/text/syllables.ts.`)
     }
   }
 
@@ -953,9 +1010,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     // filter to "match the app" — the app has no such gate; removing it IS the parity fix.
     // Length cap first (Easy halves the longest phrase available for this
     // LEGO; Fast is uncapped), then the historic shortest-first sort. The cap
-    // yields to the phrase floor rather than starving the round.
-    const sortedBuildPhrases = applyPhraseCaps(
-      currentBuildPhrases, phraseCaps, MIN_BUILD_PHRASES_AFTER_CAP
+    // yields to the phrase floor rather than starving the round. Easy sets
+    // filterBuildPhrases:false, which makes buildLengthLimit Infinity and
+    // hands the whole BUILD pool through untouched.
+    const sortedBuildPhrases = applyPhraseLengthCap(
+      currentBuildPhrases, buildLengthLimit, phraseLengthOf, MIN_BUILD_PHRASES_AFTER_CAP
     ).slice().sort(byPhraseLength)
 
     let practiceCount = 0
@@ -983,8 +1042,8 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
     // Step 2: Reserve USE phrases for consolidation BEFORE using them for BUILD padding
     // Same cap + historic sort, at the USE floor.
-    const sortedUsePhrases = applyPhraseCaps(
-      currentUsePhrases, phraseCaps, MIN_USE_PHRASES_AFTER_CAP
+    const sortedUsePhrases = applyPhraseLengthCap(
+      currentUsePhrases, phraseLengthLimit, phraseLengthOf, MIN_USE_PHRASES_AFTER_CAP
     ).slice().sort(byPhraseLength)
 
     // Step 3: Fill remaining BUILD slots with USE phrases (BUILD priority > CONSOLIDATE)
@@ -1101,19 +1160,26 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
       if (reviewLegoState.usePhrases.length === 0) continue
 
+      // The known-side pull filter (Tom, 2026-08-07): early rounds draw from
+      // the short end of the basket, measured in the LEARNER'S language. Past
+      // the configured round the whole basket is back in play. The filter can
+      // never empty the pool — it falls back to the basket's shortest phrase —
+      // so no LEGO loses a review to it.
+      const reviewPool = filterReviewPool(reviewLegoState.usePhrases, n, reviewPullFilter)
+
       const isN1 = review.legoIndex === n - 1
       const targetPhraseCount = isN1 ? N1_PHRASE_COUNT : 1
       const phrasesToAdd = Math.min(
         targetPhraseCount,
         MAX_SPACED_REP_PHRASES - reviewCount,
-        reviewLegoState.usePhrases.length
+        reviewPool.length
       )
 
       reviewIndices.push(review.legoIndex)
 
       for (let p = 0; p < phrasesToAdd; p++) {
         // Round-robin selection (deterministic)
-        const phrase = reviewLegoState.usePhrases[reviewLegoState.useIndex % reviewLegoState.usePhrases.length]
+        const phrase = reviewPool[reviewLegoState.useIndex % reviewPool.length]
         reviewLegoState.useIndex++
 
         const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
@@ -1160,8 +1226,11 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
       })
     }
+    // Consolidate is a REVIEW-class pull, so it takes the same known-side
+    // filter as the spaced-rep block above.
+    const consolidatePool = filterReviewPool(sortedUsePhrases, n, reviewPullFilter)
     // First pass: unused USE phrases
-    for (const phrase of sortedUsePhrases) {
+    for (const phrase of consolidatePool) {
       if (consolidateCount >= CONSOLIDATE_COUNT) break
       const phraseId = getPhraseId(phrase.known_text, phrase.target_text)
       if (usedPhrasesInRound.has(phraseId)) continue
@@ -1170,7 +1239,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     }
     // Second pass: reuse USE phrases already used in BUILD (pool was too small)
     if (consolidateCount < CONSOLIDATE_COUNT) {
-      for (const phrase of sortedUsePhrases) {
+      for (const phrase of consolidatePool) {
         if (consolidateCount >= CONSOLIDATE_COUNT) break
         emitConsolidate(phrase)
       }
