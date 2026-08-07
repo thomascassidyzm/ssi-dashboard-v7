@@ -3637,6 +3637,14 @@ async function getDirectAudioStats(courseCode) {
     azureSlots,
     azureExisting,
     breakdown: phase8Needs.breakdown || { known: 0, target1: 0, target2: 0, presentation: 0 },
+    // "missing" vs "unlinked" — a slot whose audio exists (and whose object is
+    // in the bucket) was never missing, it was just unbound. Kept as separate
+    // counts so the dashboard stops calling one the other.
+    unlinkedBreakdown: phase8Needs.unlinkedBreakdown || { known: 0, target1: 0, target2: 0, presentation: 0 },
+    missingBreakdown: phase8Needs.missingBreakdown || phase8Needs.breakdown || { known: 0, target1: 0, target2: 0, presentation: 0 },
+    toCopy: phase8Needs.toCopy || 0,
+    storageBroken: phase8Needs.storageBroken || 0,
+    storageBrokenBreakdown: phase8Needs.storageBrokenBreakdown || { known: 0, target1: 0, target2: 0 },
     existingByRole: {},
     totalPhrases: 0, // not in /needs response; consumers use /audio-pipeline/missing for breakdowns
     totalLegos: 0,
@@ -4439,11 +4447,45 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       }
     )
 
-    if (audioMeta.processed) {
-      logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
-    } else {
-      logger.warn(`[Upload] Audio processing skipped: ${audioMeta.reason}`)
+    // REFUSE unprocessed audio. processRecordingBuffer falls back to returning
+    // the ORIGINAL buffer when ffmpeg/lame are missing or the encode fails —
+    // storing that would put raw WebM/Opus bytes at a mastered/*.mp3 key,
+    // un-normalised and un-trimmed, while the recorder got a 200 and moved on.
+    // That is the silent-corruption case: a whole session can be lost before
+    // anyone notices. Fail BEFORE the S3 PUT (same principle as the uuid
+    // lookup above — a bad take must never orphan bytes) so the client's
+    // upload queue marks it failed and the take stays visible as missing.
+    if (!audioMeta.processed) {
+      logger.error(`[Upload] REFUSED unprocessed audio for ${audioId}: ${audioMeta.reason}`)
+      return res.status(500).json({
+        error: `Audio processing failed on the server, so this take was not saved: ${audioMeta.reason || 'unknown reason'}`,
+        processed: false,
+      })
     }
+
+    // REFUSE a take that processed "successfully" into no audio. The trim filter
+    // (silenceremove at -40dB) strips a silent or muted-mic take down to nothing:
+    // ffmpeg exits 0, lame writes an 834-byte header-only MP3 that ffprobe cannot
+    // even decode ("Failed to find two consecutive MPEG audio frames"), and the
+    // recorder got a 200 with success:true. That is the 2026-08-06 Welsh bug —
+    // bookkeeping said recorded, the learner got silence. In regeneration/pod mode
+    // it repoints a real phrase row at an unplayable stub. Refuse BEFORE the S3 PUT,
+    // same as the checks above, so the client's queue marks the take failed and it
+    // stays visible as missing. Threshold is deliberately low because the trim is
+    // aggressive — a synthesised 350ms tone comes out the far side at 150ms — so
+    // 100ms only catches silence, muted mics and stray clicks, never a real word.
+    const MIN_TAKE_MS = 100
+    if (!audioMeta.durationMs || audioMeta.durationMs < MIN_TAKE_MS) {
+      logger.error(`[Upload] REFUSED silent/empty take for ${audioId}: ${audioMeta.durationMs}ms after trim, ${audioMeta.outputSize} bytes`)
+      return res.status(422).json({
+        error: `This take contains no audible speech (${audioMeta.durationMs || 0}ms after silence trimming, minimum ${MIN_TAKE_MS}ms), so it was not saved. Check the microphone is live and record it again.`,
+        processed: true,
+        silent: true,
+        durationMs: audioMeta.durationMs || 0,
+      })
+    }
+
+    logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
 
     // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
     // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
@@ -5342,6 +5384,60 @@ app.post('/api/audio/link-presentation-audio/:courseCode', async (req, res) => {
 })
 
 // =============================================================================
+// REUSE-FIRST REGENERATION — /api/audio/reuse-*
+// =============================================================================
+// Thin passthroughs to Phase 8 (port 3465). The rule these serve: before any
+// TTS spend, set aside every clip the first N rounds need, ask "does this
+// voice x text x language already exist?", relink what does, and render only
+// what is genuinely missing. Phase 8 owns all the logic — these routes add
+// nothing but transport, so the UI reads Phase 8's shape directly.
+
+// GET /api/audio/reuse-plan/:courseCode?rounds=10
+// Read-only. Generates nothing, writes nothing, costs nothing.
+app.get('/api/audio/reuse-plan/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const rounds = req.query.rounds ? Number(req.query.rounds) : 10
+    const response = await proxyToPhase8('GET', `/reuse-plan/${courseCode}?rounds=${encodeURIComponent(rounds)}`)
+    logger.info(`[Reuse plan] ${courseCode} rounds=${rounds}: ${response.status}`)
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Reuse plan proxy error:', error?.message || error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
+// POST /api/audio/reuse-apply/:courseCode
+// Body: { rounds, dryRun, confirm }. dryRun:false SPENDS MONEY on TTS, so it
+// is admin-only and Phase 8 additionally requires confirm === courseCode.
+// Returns 202 + { runId } for real runs; progress comes from GET /api/audio/status.
+app.post('/api/audio/reuse-apply/:courseCode', async (req, res) => {
+  const dryRun = req.body?.dryRun !== false
+  if (!dryRun && !await requireAdmin(req, res)) return
+  try {
+    const { courseCode } = req.params
+    logger.log(`[Reuse apply] ${dryRun ? 'Dry run' : 'LIVE'} for ${courseCode} (rounds=${req.body?.rounds})`)
+    const response = await proxyToPhase8('POST', `/reuse-apply/${courseCode}`, req.body || {})
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Reuse apply proxy error:', error?.message || error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
+// GET /api/audio/reuse-run/:runId — the outcome of a finished reuse-first run.
+app.get('/api/audio/reuse-run/:runId', async (req, res) => {
+  try {
+    const { runId } = req.params
+    const response = await proxyToPhase8('GET', `/reuse-run/${runId}`)
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Reuse run proxy error:', error?.message || error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
+// =============================================================================
 // NON-DESTRUCTIVE AUDIO REPAIR — /api/audio/repair/*
 // =============================================================================
 // propose / preview / accept / reject, uniform across every clip kind
@@ -5776,8 +5872,14 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
     // =========================================================================
     const stats = await getDirectAudioStats(courseCode)
     const breakdown = stats.breakdown
-    // Use breakdown totals (Azure-only), NOT stats.missing which now includes shared+welcome
-    const azureMissing = (breakdown.known || 0) + (breakdown.target1 || 0) + (breakdown.target2 || 0) + (breakdown.presentation || 0)
+    // "Missing" now means no audio exists. Slots whose audio is already
+    // rendered and storage-verified — they were simply never bound — are
+    // reported as `unlinked`, their own count with its own fix (link, no TTS).
+    const unlinkedCounts = stats.unlinkedBreakdown || { known: 0, target1: 0, target2: 0, presentation: 0 }
+    const trulyMissingCounts = stats.missingBreakdown || breakdown
+    const sumRoles = (b) => (b.known || 0) + (b.target1 || 0) + (b.target2 || 0) + (b.presentation || 0)
+    const azureMissing = sumRoles(trulyMissingCounts)
+    const azureUnlinked = sumRoles(unlinkedCounts)
 
     const supabase = supabaseClient.getClient()
     const knownLang = stats.course?.known_lang || 'eng'
@@ -5895,7 +5997,13 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
 
       // Breakdown for Azure (UI reads counts via byProcess)
       missing: missingByRole,
-      missingCounts: breakdown,  // Direct counts for UI
+      missingCounts: trulyMissingCounts,  // no audio anywhere — needs TTS
+      unlinkedCounts,                     // audio exists in storage, slot unbound
+      totalUnlinked: azureUnlinked,
+      unboundCounts: breakdown,           // unlinked + missing, the old meaning
+      copyable: stats.toCopy || 0,        // exists in another course, right voice
+      storageBroken: stats.storageBroken || 0,
+      storageBrokenBreakdown: stats.storageBrokenBreakdown || { known: 0, target1: 0, target2: 0 },
       samples: samplesByRole,
 
       // Seeds/LEGOs included in deduped counts (no separate tracking needed)
@@ -5912,17 +6020,20 @@ app.get('/api/production/:courseCode/audio-pipeline/missing', async (req, res) =
       byProcess: {
         azure: {
           label: 'Course TTS (Phrases)',
-          missing: breakdown.known + breakdown.target1 + breakdown.target2,
+          missing: trulyMissingCounts.known + trulyMissingCounts.target1 + trulyMissingCounts.target2,
+          unlinked: unlinkedCounts.known + unlinkedCounts.target1 + unlinkedCounts.target2,
           categories: ['known', 'target1', 'target2']
         },
         azureSeeds: {
           label: 'Course TTS (Seeds)',
           missing: 0,  // Included in deduped counts
+          unlinked: 0,
           categories: []
         },
         azureLegos: {
           label: 'Intros (LEGO debuts)',
-          missing: breakdown.presentation,
+          missing: trulyMissingCounts.presentation,
+          unlinked: unlinkedCounts.presentation || 0,
           categories: ['presentation']
         },
         elevenLabs: {
@@ -7301,20 +7412,35 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     // only the actual gap, not the same from-scratch script every time.
     // ?full=true opts back into the original unfiltered script.
     const excludeRecorded = req.query.full !== 'true'
+    // ?maxSeed=N caps the script to seeds 1..N. The optimizer orders by LEGO
+    // coverage, so an uncapped 668-seed course opens somewhere in the 300s —
+    // fine for a full campaign, wrong for a test session that wants something
+    // listenable from the start. No param = whole course (existing behaviour).
+    const rawMaxSeed = parseInt(req.query.maxSeed, 10)
+    const maxSeed = Number.isInteger(rawMaxSeed) && rawMaxSeed > 0 ? rawMaxSeed : null
+    // Which voice slot this script is FOR. Only matters when excludeRecorded is
+    // on: the "already recorded" pool must be that slot's own takes, since each
+    // target voice needs its own complete set. Unknown/absent → target1, the
+    // historical behaviour.
+    const role = ['target1', 'target2'].includes(req.query.role) ? req.query.role : 'target1'
 
-    logger.log(`[Recording Script] Generating interleaved script for ${courseCode}${excludeRecorded ? ' (gap only)' : ' (full)'}`)
+    logger.log(`[Recording Script] Generating interleaved script for ${courseCode} [${role}]${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''}`)
 
     // Run the optimizer (suppress console output)
     const originalLog = console.log
     const logs = []
     console.log = (...args) => logs.push(args.join(' '))
 
-    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded })
+    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded, maxSeed, role })
 
     console.log = originalLog
 
     if (!result) {
-      return res.status(404).json({ error: 'No LEGOs found for course. Run Course Builder first.' })
+      return res.status(404).json({
+        error: maxSeed
+          ? `No LEGOs found in seeds 1-${maxSeed} for ${courseCode}.`
+          : 'No LEGOs found for course. Run Course Builder first.'
+      })
     }
 
     const phrases = result.recordingScript.phrases
@@ -7398,6 +7524,8 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
 
     res.json({
       courseCode,
+      maxSeed,
+      role,
       totalItems: items.length,
       totalPhrases: phrases.length,
       totalDirect: directItems.length,
