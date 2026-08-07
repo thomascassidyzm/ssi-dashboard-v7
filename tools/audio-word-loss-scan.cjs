@@ -50,7 +50,7 @@ const flag = (n, d = null) => {
   return i === -1 ? d : (argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[i + 1] : true)
 }
 if (!COURSE) {
-  console.error('usage: audio-word-loss-scan <course> [--max-seed N] [--role R] [--concurrency N] [--limit N] --out FILE')
+  console.error('usage: audio-word-loss-scan <course> [--max-seed N] [--role R] [--concurrency N] [--limit N] [--ids-from FILE] --out FILE')
   process.exit(1)
 }
 const OUT = flag('out', `docs/audio-repair-2026-08-06/${COURSE}-wordloss.json`)
@@ -58,6 +58,16 @@ const CONCURRENCY = Number(flag('concurrency', 4))
 const MAX_SEED = flag('max-seed') ? Number(flag('max-seed')) : null
 const ROLE = flag('role')
 const LIMIT = flag('limit') ? Number(flag('limit')) : null
+/**
+ * Re-score an EXACT clip set — the audioIds of a previous run's output.
+ *
+ * Added 2026-08-07 for the ggml-medium re-score of the German queue. Comparing
+ * two whisper models only means anything if both listened to the same clips,
+ * and the scope flags cannot reproduce a set that a killed run happened to
+ * reach. Point this at the earlier --out file (or any JSON array of ids) and
+ * the membership is identical by construction.
+ */
+const IDS_FROM = flag('ids-from')
 
 const s3 = new S3Client({
   region: process.env.AWS_REGION || 'eu-west-1',
@@ -118,7 +128,12 @@ async function scanOne (row) {
 async function loadRows () {
   const COLUMNS = 'id, text, text_normalized, role, language, duration_ms, s3_key'
   let ids = null
-  if (MAX_SEED) {
+  if (IDS_FROM) {
+    const raw = JSON.parse(fs.readFileSync(IDS_FROM, 'utf8'))
+    const list = Array.isArray(raw) ? raw : (raw.results || raw.items || [])
+    ids = [...new Set(list.map(r => (typeof r === 'string' ? r : (r.audioId || r.id))).filter(Boolean))]
+    console.log(`--ids-from ${IDS_FROM}: ${ids.length} clip id(s)`)
+  } else if (MAX_SEED) {
     ids = await require('../services/audio-repair.cjs')
       .seedScopedAudioIds({ courseCode: COURSE, maxSeedNumber: MAX_SEED })
   }
