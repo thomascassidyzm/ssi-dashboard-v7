@@ -662,3 +662,129 @@ describe('rebuild picks its swap target deterministically', () => {
     expect(d.source.swapTargetAudioId).toBe('new')
   })
 })
+
+// ── intros are never borrowed ───────────────────────────────────────────────
+
+describe('freshRoles — intros are never borrowed from another course', () => {
+  // Tom, 2026-08-07, carrying the fra_for_eng clone English into deu_for_eng:
+  // reuse the pooled known lines, but "intros ALWAYS rendered fresh, never
+  // reused". A presentation line is the one clip whose text is ABOUT the
+  // course it belongs to, so borrowing one is a course-identity error.
+  const intro = (over = {}) => clip({
+    role: 'presentation',
+    text: "The German for: 'I want', is:",
+    clipKey: "*|eng|xai_gfzdpspr5fdp|the german for i want is",
+    voiceId: 'xai_gfzdpspr5fdp',
+    ...over,
+  })
+  const introRow = (over = {}) => row({
+    role: 'presentation',
+    text: "The German for: 'I want', is:",
+    text_normalized: 'the german for i want is',
+    voice_id: 'xai_gfzdpspr5fdp',
+    ...over,
+  })
+
+  it('rejects an exact match from another course and renders instead', () => {
+    const d = decideClip(
+      intro(),
+      [introRow({ course_code: 'deu_ch_for_eng' })],
+      opts({ courseCode: 'deu_for_eng', freshRoles: ['presentation'] })
+    )
+    expect(d.decision).toBe('RENDER')
+    expect(d.reason).toContain('intros are never borrowed')
+    expect(d.source).toBeNull()
+  })
+
+  it('still accepts this course OWN row, so re-running a range never re-buys audio', () => {
+    const own = introRow({ course_code: 'deu_for_eng', id: 'own-intro' })
+    const d = decideClip(
+      intro({ holders: [{ table: 'course_legos', id: 'l1', column: 'presentation_audio_id', currentAudioId: 'own-intro' }] }),
+      [own],
+      opts({ courseCode: 'deu_for_eng', freshRoles: ['presentation'] })
+    )
+    expect(d.decision).toBe('SATISFIED')
+  })
+
+  it('leaves every OTHER role free to borrow across courses', () => {
+    const d = decideClip(
+      clip({ voiceId: 'xai_gfzdpspr5fdp' }),
+      [row({ course_code: 'fra_for_eng', voice_id: 'xai_gfzdpspr5fdp' })],
+      opts({ courseCode: 'deu_for_eng', freshRoles: ['presentation'] })
+    )
+    expect(d.decision).toBe('REUSE_CROSS')
+    expect(d.source.courseCode).toBe('fra_for_eng')
+  })
+
+  it('with no freshRoles configured, nothing changes', () => {
+    const d = decideClip(
+      intro(),
+      [introRow({ course_code: 'deu_ch_for_eng' })],
+      opts({ courseCode: 'deu_for_eng' })
+    )
+    expect(d.decision).toBe('REUSE_CROSS')
+  })
+})
+
+// ── concurrency ─────────────────────────────────────────────────────────────
+
+describe('applyReusePlan concurrency — more hands, same log', () => {
+  const src = (id) => ({ audioId: id, courseCode: 'kor_for_eng', s3Key: `mastered/${id}.mp3`, durationMs: 1000 })
+  const clips = (n) => Array.from({ length: n }, (_, i) => ({
+    ...clip({
+      clipKey: `k${i}`,
+      text: `text ${i}`,
+      holders: [{ table: 'course_practice_phrases', id: `p${i}`, column: 'known_audio_id', currentAudioId: null }],
+    }),
+    decision: 'REUSE_CROSS',
+    reason: 'x',
+    reuseSource: src(`a${i}`),
+  }))
+
+  const db = () => ({
+    from () {
+      return {
+        update () { return { eq: () => Promise.resolve({ error: null }) } },
+        upsert () { return { select: () => ({ single: () => Promise.resolve({ data: { id: 'new-row-id' }, error: null }) }) } },
+      }
+    },
+  })
+
+  it('defaults to serial — the proven behaviour is what you get unasked', async () => {
+    let live = 0, peak = 0
+    const head = async () => { live++; peak = Math.max(peak, live); await new Promise(r => setTimeout(r, 5)); live--; return { exists: true, size: 20000 } }
+    await applyReusePlan(db(), recountPlan({ courseCode: 'fra_for_eng', rounds: 10, voices: {}, shape: {}, clips: clips(6) }), { dryRun: false, bumpStamp: false, headObject: head })
+    expect(peak).toBe(1)
+  })
+
+  it('runs up to `concurrency` clips at once when asked', async () => {
+    let live = 0, peak = 0
+    const head = async () => { live++; peak = Math.max(peak, live); await new Promise(r => setTimeout(r, 5)); live--; return { exists: true, size: 20000 } }
+    await applyReusePlan(db(), recountPlan({ courseCode: 'fra_for_eng', rounds: 10, voices: {}, shape: {}, clips: clips(12) }), { dryRun: false, bumpStamp: false, headObject: head, concurrency: 4 })
+    expect(peak).toBeGreaterThan(1)
+    expect(peak).toBeLessThanOrEqual(4)
+  })
+
+  it('writes the log in PLAN order regardless of who finished first', async () => {
+    // Later clips resolve FASTER, so a push-as-you-go log would come back
+    // shuffled. The artifact has to stay diffable against the dry run.
+    const clipList = clips(8)
+    const delayFor = {}
+    clipList.forEach((c, i) => { delayFor[c.reuseSource.s3Key] = (8 - i) * 4 })
+    const head = async (key) => { await new Promise(r => setTimeout(r, delayFor[key])); return { exists: true, size: 20000 } }
+    const log = await applyReusePlan(db(), recountPlan({ courseCode: 'fra_for_eng', rounds: 10, voices: {}, shape: {}, clips: clipList }), { dryRun: false, bumpStamp: false, headObject: head, concurrency: 8 })
+    expect(log.entries.map(e => e.clipKey)).toEqual(clipList.map(c => c.clipKey))
+    expect(log.errors).toHaveLength(0)
+    expect(log.deletionsPerformed).toBe(0)
+  })
+
+  it('one clip failing under concurrency does not lose the others', async () => {
+    const clipList = clips(6)
+    const head = async (key) => (key === 'mastered/a3.mp3' ? { exists: false, size: null } : { exists: true, size: 20000 })
+    const log = await applyReusePlan(db(), recountPlan({ courseCode: 'fra_for_eng', rounds: 10, voices: {}, shape: {}, clips: clipList }), { dryRun: false, bumpStamp: false, headObject: head, concurrency: 4 })
+    expect(log.entries).toHaveLength(6)
+    expect(log.entries[3].action).toBe('FAILED')
+    expect(log.errors).toHaveLength(1)
+    expect(log.entries.filter(e => e.action === 'REUSED_CROSS')).toHaveLength(5)
+  })
+})

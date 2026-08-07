@@ -699,6 +699,7 @@ function decideClip(clip, candidates, opts = {}) {
     languageFilter = null,      // from buildLanguageNameFilter()
     preferredSourceCourses = [],// e.g. ['deu_for_eng'] — queried first, not as an afterthought
     rebuild = false,            // force a fresh render of every clip (Tom's ruling)
+    freshRoles = [],            // roles that may never BORROW from another course
   } = opts
 
   if (clip.blocked) {
@@ -730,7 +731,7 @@ function decideClip(clip, candidates, opts = {}) {
   // about it. Borrowing across a voice change is a voice-identity change, which
   // is Tom's taste call and never this code's.
   const viable = []
-  const rejected = { voice: 0, language: 0, role: 0, pending: 0, languageName: 0 }
+  const rejected = { voice: 0, language: 0, role: 0, pending: 0, languageName: 0, foreignIntro: 0 }
   for (const row of candidates) {
     const v = voicesMatch(clip.voiceId, row.voice_id, voiceAliases)
     if (!v.match) { rejected.voice++; continue }
@@ -746,6 +747,15 @@ function decideClip(clip, candidates, opts = {}) {
     // role it came from — an eng_for_hin line saying "The Hindi for ..." is an
     // English clip on the right voice and would otherwise match.
     if (languageFilter && languageFilter.namedLanguage(row.text)) { rejected.languageName++; continue }
+    // INTROS ARE NEVER BORROWED. Tom, 2026-08-07, on carrying the French run's
+    // clone English into deu_for_eng: reuse the pooled known lines, but
+    // "intros ALWAYS rendered fresh, never reused". A presentation line names
+    // the target language, so a borrowed one is a course-identity error the
+    // language-name filter only catches when the name is spelled out. This
+    // closes it structurally: a fresh role may still be SATISFIED by this
+    // course's OWN existing row (re-running a range must not re-buy audio),
+    // but it can never be copied in from anywhere else.
+    if (freshRoles.includes(clip.role) && row.course_code !== courseCode) { rejected.foreignIntro++; continue }
     viable.push({ ...row, viaAlias: v.viaAlias })
   }
 
@@ -759,6 +769,7 @@ function decideClip(clip, candidates, opts = {}) {
     if (rejected.language) why.push(`${rejected.language} in another language`)
     if (rejected.role) why.push(`${rejected.role} blocked by the Azure baked-speed guard`)
     if (rejected.languageName) why.push(`${rejected.languageName} naming a foreign language`)
+    if (rejected.foreignIntro) why.push(`${rejected.foreignIntro} in another course (intros are never borrowed)`)
     if (rejected.pending) why.push(`${rejected.pending} with no rendered audio`)
     return {
       decision: 'RENDER',
@@ -857,7 +868,7 @@ function decideClip(clip, candidates, opts = {}) {
  */
 async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
   const { crossRole = true, voiceAliases = [], mode, codeService = null,
-          preferredSourceCourses = [], rebuild = false } = options
+          preferredSourceCourses = [], rebuild = false, freshRoles = [] } = options
 
   const { clips, shape, voices, course } = await enumerateRoundClips(
     supabase, courseCode, roundCount, { crossRole: false, mode }
@@ -870,7 +881,7 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
   const decided = []
   for (const clip of clips.values()) {
     const d = decideClip(clip, candidates.get(clip.clipKey) || [], {
-      courseCode, crossRole, voiceAliases, languageFilter, preferredSourceCourses, rebuild,
+      courseCode, crossRole, voiceAliases, languageFilter, preferredSourceCourses, rebuild, freshRoles,
     })
     decided.push({
       clipKey: clip.clipKey,
@@ -933,6 +944,7 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
     voices,
     voiceAliases,
     crossRole,
+    freshRoles,
     shape,
     summary,
     byLayer,
@@ -1259,6 +1271,82 @@ async function verifyPlanBytes(plan, { headObject, concurrency = 8, minBytes = 1
   return summary
 }
 
+/**
+ * LISTEN to every clip this plan intends to keep, and promote the damaged ones
+ * to RENDER.
+ *
+ * `verifyPlanBytes` asks whether an object exists. This asks whether it says
+ * what the COURSE says it should say. Those are different questions, and the
+ * fra_for_eng damage of 2026-08-07 lived in the gap between them: the rows were
+ * right, the objects were alive, and roughly one clip in three had simply lost
+ * its final word (Tom, listening: "the final word is wholly missing and the
+ * clip ends in a gap").
+ *
+ * The expected text is `clip.text` — the ROUND GENERATOR's text, i.e. what the
+ * course says the learner should hear. Never `course_audio.text`, and never the
+ * clip's own transcript: a clip rendered from a wrong stored text passes every
+ * self-referential check ever written while the course stays broken.
+ *
+ * `fetchObject(s3Key) -> Buffer` and the veracity module are injected so the
+ * caller owns the S3 client and this file stays testable. A check that cannot
+ * be made (whisper missing, download failed) is recorded as `unknown` and
+ * NEVER treated as a failure — an unanswerable question must not trigger a
+ * re-render, the same rule verifyPlanBytes follows for missing objects.
+ *
+ * Mutates the plan in place, adding `heard` to each checked clip.
+ */
+async function verifyPlanVeracity(plan, { fetchObject, veracity, concurrency = 4, logger = console } = {}) {
+  const KEEPING = new Set(['SATISFIED', 'REUSE_OWN', 'REUSE_CROSS'])
+  const targets = []
+  for (const clip of plan.clips) {
+    if (!KEEPING.has(clip.decision)) continue
+    const s3Key = clip.reuseSource?.s3Key
+    if (s3Key) targets.push({ clip, s3Key })
+  }
+
+  const summary = { checked: 0, ok: 0, failed: 0, unknown: 0, byReason: {} }
+  let cursor = 0
+  const worker = async () => {
+    while (cursor < targets.length) {
+      const { clip, s3Key } = targets[cursor++]
+      let verdict
+      try {
+        const buf = await fetchObject(s3Key)
+        verdict = await veracity.checkAudioVeracity(buf, clip.text, clip.language)
+      } catch (e) {
+        verdict = { pass: null, checked: false, reason: 'check_failed', detail: e.message }
+      }
+      summary.checked++
+      clip.heard = {
+        checked: verdict.checked, pass: verdict.pass, reason: verdict.reason,
+        cer: verdict.cer ?? null, decode: verdict.decode ?? null,
+      }
+      if (verdict.pass === false) {
+        summary.failed++
+        summary.byReason[verdict.reason] = (summary.byReason[verdict.reason] || 0) + 1
+      } else if (verdict.pass === true) summary.ok++
+      else summary.unknown++
+
+      if (summary.checked % 200 === 0) {
+        logger.info?.(`[ReuseFirst veracity] ${summary.checked}/${targets.length} listened — ${summary.failed} damaged`)
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(concurrency, Math.max(1, targets.length)) }, worker))
+
+  for (const clip of plan.clips) {
+    if (clip.heard?.pass === false) {
+      clip.decisionBeforeVeracity = clip.decision
+      clip.decision = 'RENDER'
+      clip.reason = `${clip.reason}; but the audio is damaged (${clip.heard.reason}) — heard ${JSON.stringify(String(clip.heard.decode || '').slice(0, 60))}`
+      clip.reuseSource = null
+    }
+  }
+  recountPlan(plan)
+  plan.heard = summary
+  return summary
+}
+
 /** Recompute summary/byLayer/estimate after decisions change. */
 function recountPlan(plan) {
   const summary = { total: plan.clips.length, satisfied: 0, reuseOwn: 0, reuseCross: 0, render: 0, rebuild: 0, blocked: 0 }
@@ -1308,6 +1396,12 @@ async function applyReusePlan(supabase, plan, opts = {}) {
     onProgress = () => {},
     dryRun = true,
     bumpStamp = true,
+    // Clips are INDEPENDENT: distinct text x voice x language by construction,
+    // distinct holder rows, and every write is its own statement. So the loop
+    // is serial only by history, and on a 200-round scope that history costs
+    // hours. Opt-in, default 1 — a caller that does not ask for concurrency
+    // gets exactly the behaviour that has already been proven in production.
+    concurrency = 1,
   } = opts
   const courseCode = plan.courseCode
 
@@ -1333,20 +1427,27 @@ async function applyReusePlan(supabase, plan, opts = {}) {
     onProgress({ done, total: actionable.length, clip: clip.text, role: clip.role, outcome })
   }
 
-  for (const clip of plan.clips) {
+  // Entries are written into a pre-sized slot per clip rather than pushed, so
+  // the artifact stays in plan order however many workers ran. A log whose
+  // order depends on scheduling is a log nobody can diff against a dry run.
+  const slots = new Array(plan.clips.length).fill(null)
+  const entry = (i, e) => { slots[i] = e }
+  let cursor = 0
+
+  const processClip = async (clip, i) => {
     if (clip.decision === 'SATISFIED') {
-      log.entries.push({ clipKey: clip.clipKey, role: clip.role, text: clip.text, action: 'NONE', reason: clip.reason })
-      continue
+      entry(i, { clipKey: clip.clipKey, role: clip.role, text: clip.text, action: 'NONE', reason: clip.reason })
+      return
     }
     if (clip.decision === 'BLOCKED') {
-      log.entries.push({ clipKey: clip.clipKey, role: clip.role, text: clip.text, action: 'BLOCKED', reason: clip.reason })
-      continue
+      entry(i, { clipKey: clip.clipKey, role: clip.role, text: clip.text, action: 'BLOCKED', reason: clip.reason })
+      return
     }
 
     try {
       if (clip.decision === 'RENDER' || clip.decision === 'REBUILD') {
         if (dryRun) {
-          log.entries.push({
+          entry(i, {
             clipKey: clip.clipKey, role: clip.role, text: clip.text,
             action: clip.decision === 'REBUILD' ? 'WOULD_REBUILD' : 'WOULD_RENDER',
             voiceId: clip.voiceId, holders: clip.holders,
@@ -1354,13 +1455,13 @@ async function applyReusePlan(supabase, plan, opts = {}) {
             nextRevision: clip.reuseSource ? (clip.reuseSource.currentRevision ?? 1) + 1 : null,
           })
           progress(clip, clip.decision === 'REBUILD' ? 'would-rebuild' : 'would-render')
-          continue
+          return
         }
         if (typeof renderClip !== 'function') throw new Error('no renderer injected — cannot render')
         const rendered = await renderClip(clip)
         if (!rendered?.audioId) throw new Error('renderer returned no audioId')
         const linked = await relinkHolders(supabase, clip, rendered.audioId, { dryRun })
-        log.entries.push({
+        entry(i, {
           clipKey: clip.clipKey, role: clip.role, text: clip.text,
           action: clip.decision === 'REBUILD' ? 'REBUILT' : 'RENDERED',
           audioId: rendered.audioId, s3Key: rendered.s3Key || null, durationMs: rendered.durationMs || null,
@@ -1373,7 +1474,7 @@ async function applyReusePlan(supabase, plan, opts = {}) {
             : undefined,
         })
         progress(clip, clip.decision === 'REBUILD' ? 'rebuilt' : 'rendered')
-        continue
+        return
       }
 
       // REUSE_OWN / REUSE_CROSS — both are "a clip already says this in this
@@ -1388,13 +1489,13 @@ async function applyReusePlan(supabase, plan, opts = {}) {
       let audioId = src.audioId
       if (clip.decision === 'REUSE_CROSS') {
         if (dryRun) {
-          log.entries.push({
+          entry(i, {
             clipKey: clip.clipKey, role: clip.role, text: clip.text, action: 'WOULD_REUSE_CROSS',
             fromCourse: src.courseCode, fromAudioId: src.audioId, s3Key: src.s3Key,
             viaVoiceAlias: clip.viaVoiceAlias, holders: clip.holders,
           })
           progress(clip, 'would-reuse')
-          continue
+          return
         }
         // Copy the row into this course, pointing at the SAME S3 object. No new
         // bytes, no TTS, no spend. Text stored is the COURSE text, not the
@@ -1421,7 +1522,7 @@ async function applyReusePlan(supabase, plan, opts = {}) {
       }
 
       const holdersUpdated = await relinkHolders(supabase, clip, audioId, { dryRun })
-      log.entries.push({
+      entry(i, {
         clipKey: clip.clipKey, role: clip.role, text: clip.text,
         action: dryRun ? 'WOULD_REUSE_OWN' : (clip.decision === 'REUSE_CROSS' ? 'REUSED_CROSS' : 'REUSED_OWN'),
         fromCourse: src.courseCode, audioId,
@@ -1433,10 +1534,19 @@ async function applyReusePlan(supabase, plan, opts = {}) {
       progress(clip, dryRun ? 'would-relink' : 'relinked')
     } catch (e) {
       log.errors.push({ clipKey: clip.clipKey, role: clip.role, text: clip.text, error: e.message })
-      log.entries.push({ clipKey: clip.clipKey, role: clip.role, text: clip.text, action: 'FAILED', error: e.message })
+      entry(i, { clipKey: clip.clipKey, role: clip.role, text: clip.text, action: 'FAILED', error: e.message })
       progress(clip, 'failed')
     }
   }
+
+  const worker = async () => {
+    while (cursor < plan.clips.length) {
+      const i = cursor++
+      await processClip(plan.clips[i], i)
+    }
+  }
+  await Promise.all(Array.from({ length: Math.max(1, Math.min(concurrency, plan.clips.length || 1)) }, worker))
+  log.entries = slots.filter(Boolean)
 
   if (!dryRun && bumpStamp) {
     const changed = log.entries.some(e => ['REUSED_OWN', 'REUSED_CROSS', 'RENDERED', 'REBUILT'].includes(e.action))
@@ -1485,6 +1595,7 @@ module.exports = {
   buildReusePlan,
   findCandidates,
   verifyPlanBytes,
+  verifyPlanVeracity,
   recountPlan,
   buildCoverageTable,
   buildLanguageNameFilter,
