@@ -4597,15 +4597,18 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       })
     }
 
+    logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
+
     // REFUSE a take that processed "successfully" into no audio. The trim filter
     // (silenceremove at -40dB) strips a silent or muted-mic take down to nothing:
     // ffmpeg exits 0, lame writes an 834-byte header-only MP3 that ffprobe cannot
     // even decode ("Failed to find two consecutive MPEG audio frames"), and the
     // recorder got a 200 with success:true. That is the 2026-08-06 Welsh bug —
     // bookkeeping said recorded, the learner got silence. In regeneration/pod mode
-    // it repoints a real phrase row at an unplayable stub. Refuse BEFORE the S3 PUT,
-    // same as the checks above, so the client's queue marks the take failed and it
-    // stays visible as missing. Threshold is deliberately low because the trim is
+    // it repoints a real phrase row at an unplayable stub. Refuse BEFORE the S3 PUT
+    // (same principle as the uuid lookup above — a bad take must never orphan
+    // bytes) so the client's upload queue marks it failed and the take stays
+    // visible as missing. Threshold is deliberately low because the trim is
     // aggressive — a synthesised 350ms tone comes out the far side at 150ms — so
     // 100ms only catches silence, muted mics and stray clicks, never a real word.
     const MIN_TAKE_MS = 100
@@ -4618,8 +4621,6 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
         durationMs: audioMeta.durationMs || 0,
       })
     }
-
-    logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
 
     // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
     // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
