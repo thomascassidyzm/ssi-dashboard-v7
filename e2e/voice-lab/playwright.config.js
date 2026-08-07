@@ -28,5 +28,34 @@ export default defineConfig({
     baseURL: process.env.E2E_BASE_URL || 'http://localhost:5177',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
+    launchOptions: { args: launchArgs() },
   },
 })
+
+/**
+ * Two flags, both only ever needed when driving the DEPLOYED popty.app against
+ * the watson-1 backend, and neither papering over a product fault:
+ *
+ * E2E_ALLOW_PRIVATE_NETWORK — popty.app is a public origin and watson-1's
+ *   tailnet address is 100.108.9.37, inside the CGNAT range Chromium classes as
+ *   PRIVATE. Chromium blocks public→private subresource fetches, so the lab's
+ *   /params call fails with a bare "Failed to fetch" while a direct NAVIGATION
+ *   to the same URL returns 401 happily — proven both ways in
+ *   scripts/pw-probe.mjs. It is a browser network policy, not CORS (watson-1
+ *   answers the preflight correctly) and not the lab.
+ *
+ * E2E_RESOLVE="host=ip" — Chromium runs its own async DNS rather than going
+ *   through systemd-resolved, so MagicDNS names can be invisible inside the
+ *   browser on a box where curl resolves them fine.
+ */
+function launchArgs () {
+  const args = []
+  if (process.env.E2E_RESOLVE) {
+    const [host, ip] = process.env.E2E_RESOLVE.split('=')
+    args.push(`--host-resolver-rules=MAP ${host} ${ip}`)
+  }
+  if (process.env.E2E_ALLOW_PRIVATE_NETWORK) {
+    args.push('--disable-features=BlockInsecurePrivateNetworkRequests,PrivateNetworkAccessSendPreflights,PrivateNetworkAccessRespectPreflightResults,LocalNetworkAccessChecks')
+  }
+  return args
+}
