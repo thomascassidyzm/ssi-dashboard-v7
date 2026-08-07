@@ -1,0 +1,271 @@
+{
+  "rannAt": "2026-08-07T02:02:03.160Z",
+  "voice": "gfzdpspr5fdp",
+  "gateStackVersion": "2026-08-06",
+  "languages": {
+    "deu": {
+      "clips": 40,
+      "incumbents": [
+        "ara",
+        "leo"
+      ],
+      "byAxis": {
+        "short": 13,
+        "long": 13,
+        "awkward": 14
+      },
+      "cloneOutcomes": {
+        "quarantined": 3,
+        "admitted": 37
+      },
+      "incumbentOutcomes": {
+        "quarantined": 26,
+        "admitted": 14
+      },
+      "fourNumbers": {
+        "phonologyPassRate": 0.925,
+        "phonologyPassRateIncumbent": 0.925,
+        "speakingRateSyllPerSec": 4.43,
+        "meanSpeechMs": 2125,
+        "durationRatioVsIncumbent": 1.116
+      },
+      "perGate": {
+        "speech-span": {
+          "clonePass": 40,
+          "cloneFail": 0,
+          "cloneNotApplicable": 0,
+          "cloneUnchecked": 0,
+          "cloneUnmeasured": 0,
+          "paired": {
+            "n": 40,
+            "bothPass": 40,
+            "bothFail": 0,
+            "cloneOnlyFail": 0,
+            "incumbentOnlyFail": 0
+          }
+        },
+        "loudness": {
+          "clonePass": 40,
+          "cloneFail": 0,
+          "cloneNotApplicable": 0,
+          "cloneUnchecked": 0,
+          "cloneUnmeasured": 0,
+          "paired": {
+            "n": 40,
+            "bothPass": 33,
+            "bothFail": 0,
+            "cloneOnlyFail": 0,
+            "incumbentOnlyFail": 7
+          }
+        },
+        "tail-shape": {
+          "clonePass": 40,
+          "cloneFail": 0,
+          "cloneNotApplicable": 0,
+          "cloneUnchecked": 0,
+          "cloneUnmeasured": 0,
+          "paired": {
+            "n": 40,
+            "bothPass": 20,
+            "bothFail": 0,
+            "cloneOnlyFail": 0,
+            "incumbentOnlyFail": 20
+          }
+        },
+        "syllable-rate": {
+          "clonePass": 0,
+          "cloneFail": 0,
+          "cloneNotApplicable": 0,
+          "cloneUnchecked": 0,
+          "cloneUnmeasured": 40,
+          "paired": {
+            "n": 0,
+            "bothPass": 0,
+            "bothFail": 0,
+            "cloneOnlyFail": 0,
+            "incumbentOnlyFail": 0
+          }
+        },
+        "phonology": {
+          "clonePass": 37,
+          "cloneFail": 3,
+          "cloneNotApplicable": 0,
+          "cloneUnchecked": 0,
+          "cloneUnmeasured": 0,
+          "paired": {
+            "n": 40,
+            "bothPass": 36,
+            "bothFail": 2,
+            "cloneOnlyFail": 1,
+            "incumbentOnlyFail": 1
+          }
+        },
+        "words": {
+          "clonePass": 37,
+          "cloneFail": 0,
+          "cloneNotApplicable": 3,
+          "cloneUnchecked": 0,
+          "cloneUnmeasured": 0,
+          "paired": {
+            "n": 13,
+            "bothPass": 13,
+            "bothFail": 0,
+            "cloneOnlyFail": 0,
+            "incumbentOnlyFail": 0
+          }
+        }
+      },
+      "decision": {
+        "adverse": 1,
+        "favourable": 1,
+        "judgedPairs": 53,
+        "margin": 0,
+        "verdict": "HOLDS"
+      },
+      "cloneOnlyFailures": [
+        {
+          "text": "allein",
+          "axis": "short",
+          "refusedBy": [
+            "phonology"
+          ]
+        }
+      ]
+    },
+    "fra": {
+      "clips": 40,
+      "incumbents": [
+        "eve"
+      ],
+      "byAxis": {
+        "short": 13,
+        "long": 13,
+        "awkward": 14
+      },
+      "cloneOutcomes": {
+        "admitted": 37,
+        "quarantined": 3
+      },
+      "incumbentOutcomes": {
+        "admitted": 32,
+        "quarantined": 8
+      },
+      "fourNumbers": {
+        "phonologyPassRate": 0.95,
+        "phonologyPassRateIncumbent": 0.95,
+        "speakingRateSyllPerSec": 5.75,
+        "meanSpeechMs": 1857,
+        "durationRatioVsIncumbent": 0.982
+      },
+      "perGate": {
+        "speech-span": {
+          "clonePass": 40,
+          "cloneFail": 0,
+          "cloneNotApplicable": 0,
+          "cloneUnchecked": 0,
+          "cloneUnmeasured": 0,
+          "paired": {
+            "n": 40,
+            "bothPass": 40,
+            "bothFail": 0,
+            "cloneOnlyFail": 0,
+            "incumbentOnlyFail": 0
+          }
+        },
+        "loudness": {
+          "clonePass": 39,
+          "cloneFail": 1,
+          "cloneNotApplicable": 0,
+          "cloneUnchecked": 0,
+          "cloneUnmeasured": 0,
+          "paired": {
+            "n": 40,
+            "bothPass": 33,
+            "bothFail": 0,
+            "cloneOnlyFail": 1,
+            "incumbentOnlyFail": 6
+          }
+        },
+        "tail-shape": {
+          "clonePass": 40,
+          "cloneFail": 0,
+          "cloneNotApplicable": 0,
+          "cloneUnchecked": 0,
+          "cloneUnmeasured": 0,
+          "paired": {
+            "n": 40,
+            "bothPass": 40,
+            "bothFail": 0,
+            "cloneOnlyFail": 0,
+            "incumbentOnlyFail": 0
+          }
+        },
+        "syllable-rate": {
+          "clonePass": 0,
+          "cloneFail": 0,
+          "cloneNotApplicable": 0,
+          "cloneUnchecked": 0,
+          "cloneUnmeasured": 40,
+          "paired": {
+            "n": 0,
+            "bothPass": 0,
+            "bothFail": 0,
+            "cloneOnlyFail": 0,
+            "incumbentOnlyFail": 0
+          }
+        },
+        "phonology": {
+          "clonePass": 38,
+          "cloneFail": 2,
+          "cloneNotApplicable": 0,
+          "cloneUnchecked": 0,
+          "cloneUnmeasured": 0,
+          "paired": {
+            "n": 40,
+            "bothPass": 37,
+            "bothFail": 1,
+            "cloneOnlyFail": 1,
+            "incumbentOnlyFail": 1
+          }
+        },
+        "words": {
+          "clonePass": 37,
+          "cloneFail": 0,
+          "cloneNotApplicable": 3,
+          "cloneUnchecked": 0,
+          "cloneUnmeasured": 0,
+          "paired": {
+            "n": 31,
+            "bothPass": 31,
+            "bothFail": 0,
+            "cloneOnlyFail": 0,
+            "incumbentOnlyFail": 0
+          }
+        }
+      },
+      "decision": {
+        "adverse": 1,
+        "favourable": 1,
+        "judgedPairs": 71,
+        "margin": 0,
+        "verdict": "HOLDS"
+      },
+      "cloneOnlyFailures": [
+        {
+          "text": "fatigués",
+          "axis": "short",
+          "refusedBy": [
+            "phonology"
+          ]
+        },
+        {
+          "text": "mais",
+          "axis": "short",
+          "refusedBy": [
+            "loudness"
+          ]
+        }
+      ]
+    }
+  }
+}
