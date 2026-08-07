@@ -19,6 +19,9 @@ export interface ContinuousRecorderConfig extends Partial<VADConfig> {
   autoUpload: boolean
   // Auto-advance to next phrase after upload
   autoAdvance: boolean
+  // Listen to the room for this long before going live, and set the silence
+  // threshold from what is measured. 0 disables it and keeps the fixed default.
+  calibrationMs: number
 }
 
 export interface RecordedSegment {
@@ -33,7 +36,8 @@ const defaultConfig: ContinuousRecorderConfig = {
   minSpeechDuration: 300,
   pollInterval: 50,
   autoUpload: true,
-  autoAdvance: true
+  autoAdvance: true,
+  calibrationMs: 1500
 }
 
 export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> = {}) {
@@ -115,6 +119,16 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
 
       // Start VAD listening (share the stream)
       await vad.startListening(stream)
+
+      // Measure the room BEFORE going live and set the silence threshold from
+      // it. A threshold that does not clear this room's noise floor never ends
+      // a phrase: the studio sits on "Speaking..." and the whole read arrives
+      // as one blob. Doing it here, rather than leaving a constant to be right
+      // everywhere, also gives the studio something to warn the recordist with
+      // while the session can still be saved.
+      if (cfg.calibrationMs > 0) {
+        await vad.calibrate(cfg.calibrationMs)
+      }
 
       // Set up MediaRecorder with the first container this browser supports
       const mimeType = pickMimeType()
@@ -266,6 +280,8 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
     isCapturing,
     isSpeaking: vad.isSpeaking,
     currentLevel: vad.currentLevel,
+    isCalibrating: vad.isCalibrating,
+    calibration: vad.calibration,
     segmentCount,
     lastSegment,
     error,

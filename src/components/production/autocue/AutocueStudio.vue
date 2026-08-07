@@ -124,8 +124,24 @@
         </span>
       </div>
 
+      <!-- Room calibration: measured before the first phrase, so a room that
+           cannot be split into takes is caught now and not at the end. -->
+      <div v-if="state.scriptMode && isCalibrating" class="vad-calibrating">
+        <div class="vad-bar" :style="{ width: `${vadMeterPercent}%` }"></div>
+        <span class="vad-status">Listening to the room — stay quiet for a moment...</span>
+      </div>
+
+      <div
+        v-else-if="state.scriptMode && calibrationWarning"
+        class="vad-noise-warning"
+        :class="`quality-${calibration.quality}`"
+      >
+        <strong>{{ calibration.quality === 'too-loud' ? 'Too noisy to record' : 'Background noise' }}</strong>
+        <span>{{ calibration.message }}</span>
+      </div>
+
       <!-- VAD Level Indicator (script mode) -->
-      <div v-if="state.scriptMode && state.isRecording" class="vad-indicator">
+      <div v-if="state.scriptMode && state.isRecording && !isCalibrating" class="vad-indicator">
         <div class="vad-bar" :style="{ width: `${vadMeterPercent}%` }"></div>
         <span class="vad-status">{{ isSpeaking ? 'Speaking...' : 'Listening...' }}</span>
       </div>
@@ -288,6 +304,14 @@ const vadLevel = continuousRecorder.currentLevel
 // the raw value against silenceThreshold — see useVAD.ts). x3 puts the 0.02
 // silence threshold at a visible 6% and normal speech near full.
 const vadMeterPercent = computed(() => Math.min(100, Math.round(vadLevel.value * 300)))
+
+const isCalibrating = continuousRecorder.isCalibrating
+const calibration = continuousRecorder.calibration
+// Only surface the room measurement when it is bad news. "Nice and quiet" is
+// one more thing to read on a screen the recordist is trying to read a script off.
+const calibrationWarning = computed(() =>
+  calibration.value?.quality === 'loud' || calibration.value?.quality === 'too-loud'
+)
 
 // Background upload queue
 const uploadQueue = useUploadQueue()
@@ -856,6 +880,51 @@ onUnmounted(() => {
   font-size: 0.75rem;
   color: var(--color-paper-dim);
   white-space: nowrap;
+}
+
+/* Room calibration — same shell as the level indicator it replaces, so the
+   panel does not jump when measuring finishes and recording begins. */
+.vad-calibrating {
+  background: var(--color-shadow);
+  border: 1px solid var(--color-tungsten, var(--accent));
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.vad-noise-warning {
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.vad-noise-warning strong {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.vad-noise-warning.quality-loud {
+  background: rgba(255, 186, 92, 0.12);
+  border: 1px solid var(--color-tungsten, var(--accent));
+  color: var(--color-tungsten, var(--accent));
+}
+
+.vad-noise-warning.quality-too-loud {
+  background: rgba(255, 92, 92, 0.14);
+  border: 1px solid var(--color-crimson, #ff5c5c);
+  color: var(--color-crimson, #ff5c5c);
 }
 
 /* Upload Progress Bar */

@@ -115,3 +115,108 @@ describe('useVAD level measurement', () => {
     vad.stopListening()
   })
 })
+
+describe('useVAD room calibration', () => {
+  let state
+
+  beforeEach(() => {
+    vi.useFakeTimers()
+    state = makeAudioGraph()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+    delete global.AudioContext
+  })
+
+  // calibrate() awaits a real setTimeout, so the timers have to be advanced
+  // while the promise is in flight rather than before or after it.
+  async function runCalibration(vad, ms = 1500) {
+    const pending = vad.calibrate(ms)
+    await vi.advanceTimersByTimeAsync(ms)
+    return pending
+  }
+
+  it('sets the threshold from the room rather than from a constant', async () => {
+    const vad = useVAD()
+    await vad.startListening({ getTracks: () => [] })
+
+    // A noticeably live room: 0.02 amplitude tone is ~0.014 RMS.
+    state.amplitude = 0.02
+    const result = await runCalibration(vad)
+
+    expect(result.noiseFloor).toBeGreaterThan(0.005)
+    // Threshold must clear the measured floor, or the VAD can never see silence.
+    expect(result.threshold).toBeGreaterThan(result.noiseFloor)
+
+    vad.stopListening()
+  })
+
+  it('does not treat the room it is measuring as speech', async () => {
+    const vad = useVAD()
+    const onSpeechStart = vi.fn()
+    vad.onSpeechStart(onSpeechStart)
+    await vad.startListening({ getTracks: () => [] })
+
+    state.amplitude = 0.02
+    await runCalibration(vad)
+
+    expect(onSpeechStart).not.toHaveBeenCalled()
+    expect(vad.isSpeaking.value).toBe(false)
+
+    vad.stopListening()
+  })
+
+  it('warns when the room is too noisy to split takes', async () => {
+    const vad = useVAD()
+    await vad.startListening({ getTracks: () => [] })
+
+    // Floor within ~9dB of speech (~0.23 RMS) — measured to produce ZERO
+    // segment cuts on a real take, i.e. the whole-session-as-one-blob failure.
+    state.amplitude = 0.12
+    const result = await runCalibration(vad)
+
+    expect(result.quality).toBe('too-loud')
+    expect(result.headroomDb).toBeLessThan(14)
+
+    vad.stopListening()
+  })
+
+  it('calls a quiet room quiet', async () => {
+    const vad = useVAD()
+    await vad.startListening({ getTracks: () => [] })
+
+    // Kai's actual room measured 0.00053 RMS / 52.7dB of headroom.
+    state.amplitude = 0.00075
+    const result = await runCalibration(vad)
+
+    expect(result.quality).toBe('quiet')
+    // A very quiet room must not push the threshold arbitrarily low — a fan
+    // spinning up mid-session would otherwise re-create the original bug.
+    expect(result.threshold).toBeGreaterThanOrEqual(0.01)
+
+    vad.stopListening()
+  })
+
+  it('the measured threshold is what the state machine then uses', async () => {
+    const vad = useVAD()
+    const onSpeechEnd = vi.fn()
+    vad.onSpeechEnd(onSpeechEnd)
+    await vad.startListening({ getTracks: () => [] })
+
+    state.amplitude = 0.02
+    const { threshold } = await runCalibration(vad)
+
+    // Speak, then drop back to the room's own level. Under the old fixed 0.02
+    // this room's tone would have counted as speech forever.
+    state.amplitude = 0.3
+    vi.advanceTimersByTime(1000)
+    state.amplitude = 0.02
+    vi.advanceTimersByTime(1000)
+
+    expect(threshold).toBeGreaterThan(0.02)
+    expect(onSpeechEnd).toHaveBeenCalledTimes(1)
+
+    vad.stopListening()
+  })
+})
