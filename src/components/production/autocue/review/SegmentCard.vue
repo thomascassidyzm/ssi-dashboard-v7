@@ -1,7 +1,12 @@
 <template>
-  <div class="segment-card" :class="segment.confidenceLevel">
+  <div class="segment-card" :class="[segment.confidenceLevel, status]">
     <div class="segment-header">
-      <div class="segment-label">{{ segment.label }}</div>
+      <div class="segment-label">
+        {{ segment.label }}
+        <span v-if="status" class="verdict-badge" :class="status">
+          {{ status === 'approved' ? '✓ Approved' : '↻ Redo' }}
+        </span>
+      </div>
       <div class="confidence-badge" :class="segment.confidenceLevel">
         {{ segment.confidence }}% {{ confidenceLabel }}
       </div>
@@ -35,11 +40,21 @@
       >
         <span class="btn-icon">{{ playing ? '⏸' : '▶' }}</span> {{ playing ? 'Playing' : 'Play' }}
       </button>
-      <button class="segment-btn" @click="$emit('redo', segment)">
-        <span class="btn-icon">↻</span> Redo
+      <button
+        class="segment-btn redo"
+        :class="{ active: status === 'rejected' }"
+        :title="status === 'rejected' ? 'Queued for re-record — click to undo' : 'Queue this take for re-record'"
+        @click="$emit('redo', segment)"
+      >
+        <span class="btn-icon">↻</span> {{ status === 'rejected' ? 'Queued' : 'Redo' }}
       </button>
-      <button class="segment-btn approve" @click="$emit('approve', segment)">
-        <span class="btn-icon">✓</span> Approve
+      <button
+        class="segment-btn approve"
+        :class="{ active: status === 'approved' }"
+        :title="status === 'approved' ? 'Approved for upload — click to undo' : 'Approve this take for upload'"
+        @click="$emit('approve', segment)"
+      >
+        <span class="btn-icon">✓</span> {{ status === 'approved' ? 'Approved' : 'Approve' }}
       </button>
     </div>
   </div>
@@ -50,7 +65,10 @@ import { computed } from 'vue'
 
 const props = defineProps({
   segment: { type: Object, required: true },
-  playing: { type: Boolean, default: false }
+  playing: { type: Boolean, default: false },
+  // 'approved' | 'rejected' | null — the verdict this card is carrying, so the
+  // Approve/Redo clicks land somewhere the recordist can actually see.
+  status: { type: String, default: null }
 })
 
 defineEmits(['play', 'redo', 'approve'])
@@ -244,6 +262,58 @@ function getBarHeight(index) {
 .segment-btn.approve:hover {
   background: var(--color-emerald, #06ffa5);
   border-color: var(--color-emerald, #06ffa5);
+}
+
+/* A verdict has to be visible from across the booth, not just remembered. */
+.segment-btn.approve.active {
+  background: var(--color-emerald, #06ffa5);
+  border-color: var(--color-emerald, #06ffa5);
+  color: var(--color-void, var(--canvas));
+}
+
+.segment-btn.redo.active {
+  background: var(--color-film-red, #e63946);
+  border-color: var(--color-film-red, #e63946);
+  color: var(--color-void, var(--canvas));
+}
+
+.segment-card.approved {
+  border-left-color: var(--color-emerald, #06ffa5);
+  box-shadow: inset 0 0 0 1px rgba(6, 255, 165, 0.25);
+}
+
+.segment-card.rejected {
+  border-left-color: var(--color-film-red, #e63946);
+  opacity: 0.75;
+}
+
+.verdict-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.verdict-badge.approved {
+  background: rgba(6, 255, 165, 0.2);
+  color: var(--color-emerald, #06ffa5);
+}
+
+.verdict-badge.rejected {
+  background: rgba(230, 57, 70, 0.2);
+  color: var(--color-film-red, #e63946);
+}
+
+:root[data-theme="light"] .verdict-badge.approved {
+  background: rgba(4, 120, 87, 0.14);
+  color: #03543c;
+}
+
+:root[data-theme="light"] .verdict-badge.rejected {
+  background: rgba(220, 38, 38, 0.12);
+  color: #b91c1c;
 }
 
 /* Light-mode refinements: dark mode untouched.

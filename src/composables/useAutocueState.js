@@ -73,6 +73,8 @@ const state = reactive({
   approvedSegments: new Set(),
   rejectedSegments: new Set(),
   playingSegmentId: null,
+  // Confidence band the review grid is narrowed to, or null for everything.
+  reviewFilter: null,
 
   // Loading state (for API calls)
   isLoading: false,
@@ -184,6 +186,7 @@ export function useAutocueState() {
     state.recordedSegments = []
     state.approvedSegments.clear()
     state.rejectedSegments.clear()
+    state.reviewFilter = null
   }
 
   // Begin a continuous recording session (from script-loaded confirmation)
@@ -511,22 +514,58 @@ export function useAutocueState() {
     }
   }
 
+  // Approve/Redo are toggles: a mis-stab is undone by clicking the same button
+  // again, and the two verdicts are mutually exclusive.
   function approveSegment(segment) {
+    if (!segment?.id) return
+    if (state.approvedSegments.has(segment.id)) {
+      state.approvedSegments.delete(segment.id)
+      return
+    }
     state.approvedSegments.add(segment.id)
     state.rejectedSegments.delete(segment.id)
   }
 
   function rejectSegment(segment) {
+    if (!segment?.id) return
+    if (state.rejectedSegments.has(segment.id)) {
+      state.rejectedSegments.delete(segment.id)
+      return
+    }
     state.rejectedSegments.add(segment.id)
     state.approvedSegments.delete(segment.id)
+    // A take you've just condemned shouldn't carry on playing.
+    if (state.playingSegmentId === segment.id) stopPlayback()
   }
 
   function approveAllByConfidence(level) {
     state.recordedSegments.forEach(seg => {
       if (seg.confidenceLevel === level || (level === 'high' && seg.confidence >= 90)) {
         state.approvedSegments.add(seg.id)
+        state.rejectedSegments.delete(seg.id)
       }
     })
+  }
+
+  // "Queue Low for Re-record" does what it says: condemns the whole band and
+  // shows you exactly those cards, rather than silently filtering.
+  function queueRedoByConfidence(level) {
+    state.recordedSegments.forEach(seg => {
+      if (seg.confidenceLevel === level) {
+        state.rejectedSegments.add(seg.id)
+        state.approvedSegments.delete(seg.id)
+      }
+    })
+    state.reviewFilter = level
+  }
+
+  // Clicking the same band again clears the filter — no dead-end view.
+  function setReviewFilter(level) {
+    state.reviewFilter = state.reviewFilter === level ? null : (level || null)
+  }
+
+  function clearReviewFilter() {
+    state.reviewFilter = null
   }
 
   function backToRecording() {
@@ -657,6 +696,7 @@ export function useAutocueState() {
     state.audioRecordings.clear()
     state.approvedSegments.clear()
     state.rejectedSegments.clear()
+    state.reviewFilter = null
     state.isUploading = false
     state.uploadProgress = 0
 
@@ -882,6 +922,9 @@ export function useAutocueState() {
     playAllSegments,
     stopPlayback,
     approveAllByConfidence,
+    queueRedoByConfidence,
+    setReviewFilter,
+    clearReviewFilter,
     backToRecording,
     finalizeSession,
     resetSession,

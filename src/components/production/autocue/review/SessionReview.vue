@@ -19,6 +19,14 @@
           <span class="summary-value low">{{ stats.low }}</span>
           <span class="summary-label">Needs Review</span>
         </div>
+        <div class="summary-stat">
+          <span class="summary-value approved">{{ approvedIds.length }}</span>
+          <span class="summary-label">Approved</span>
+        </div>
+        <div class="summary-stat">
+          <span class="summary-value rejected">{{ rejectedIds.length }}</span>
+          <span class="summary-label">Queued for Redo</span>
+        </div>
       </div>
     </div>
 
@@ -27,24 +35,35 @@
       <button class="batch-btn" @click="$emit('approve-all', 'high')">
         <span class="btn-icon">✓</span> Approve All High ({{ stats.high }})
       </button>
-      <button class="batch-btn" @click="$emit('filter', 'medium')">
+      <button
+        class="batch-btn"
+        :class="{ active: activeFilter === 'medium' }"
+        @click="$emit('filter', 'medium')"
+      >
         <span class="btn-icon">⚠</span> Review Medium ({{ stats.medium }})
       </button>
-      <button class="batch-btn" @click="$emit('filter', 'low')">
+      <button class="batch-btn" @click="$emit('queue-redo', 'low')">
         <span class="btn-icon">↻</span> Queue Low for Re-record ({{ stats.low }})
       </button>
-      <button class="batch-btn" @click="$emit('play-all')">
-        <span class="btn-icon">▶</span> Play All
+      <button class="batch-btn" :disabled="!playableCount" @click="$emit('play-all')">
+        <span class="btn-icon">▶</span> Play All ({{ playableCount }})
       </button>
+    </div>
+
+    <!-- Active filter: never leave the grid narrowed with no way back -->
+    <div v-if="activeFilter" class="filter-bar">
+      <span>Showing {{ activeFilter }}-confidence takes only — {{ visible.length }} of {{ segments.length }}</span>
+      <button class="filter-clear" @click="$emit('clear-filter')">Show all</button>
     </div>
 
     <!-- Segments Grid -->
     <div class="segments-grid">
       <SegmentCard
-        v-for="segment in segments"
+        v-for="segment in visible"
         :key="segment.id"
         :segment="segment"
         :playing="segment.id === playingSegmentId"
+        :status="statusOf(segment)"
         @play="$emit('play', $event)"
         @redo="$emit('reject', $event)"
         @approve="$emit('approve', $event)"
@@ -56,8 +75,15 @@
       <button class="control-btn" @click="$emit('back')">
         <span class="btn-icon">⬅️</span> Back to Recording
       </button>
-      <button class="control-btn success" @click="$emit('finalize')">
-        <span class="btn-icon">✓</span> Finalize & Upload Session
+      <!-- Finalizing with nothing approved uploads nothing and resets the
+           session, taking every unsaved take with it. Don't offer that. -->
+      <button
+        class="control-btn success"
+        :disabled="!approvedIds.length"
+        :title="approvedIds.length ? 'Upload approved takes' : 'Approve at least one take first'"
+        @click="$emit('finalize')"
+      >
+        <span class="btn-icon">✓</span> Finalize &amp; Upload {{ approvedIds.length ? `(${approvedIds.length})` : '' }}
       </button>
     </div>
   </div>
@@ -69,10 +95,30 @@ import SegmentCard from './SegmentCard.vue'
 
 const props = defineProps({
   segments: { type: Array, required: true },
-  playingSegmentId: { type: String, default: null }
+  playingSegmentId: { type: String, default: null },
+  approvedIds: { type: Array, default: () => [] },
+  rejectedIds: { type: Array, default: () => [] },
+  activeFilter: { type: String, default: null }
 })
 
-defineEmits(['approve', 'reject', 'approve-all', 'filter', 'play', 'play-all', 'back', 'finalize'])
+defineEmits([
+  'approve', 'reject', 'approve-all', 'queue-redo', 'filter', 'clear-filter',
+  'play', 'play-all', 'back', 'finalize'
+])
+
+const visible = computed(() => (
+  props.activeFilter
+    ? props.segments.filter(s => s.confidenceLevel === props.activeFilter)
+    : props.segments
+))
+
+const playableCount = computed(() => props.segments.filter(s => s.audioUrl).length)
+
+function statusOf(segment) {
+  if (props.approvedIds.includes(segment.id)) return 'approved'
+  if (props.rejectedIds.includes(segment.id)) return 'rejected'
+  return null
+}
 
 const stats = computed(() => {
   const high = props.segments.filter(s => s.confidenceLevel === 'high').length
@@ -194,6 +240,67 @@ const stats = computed(() => {
   background: var(--color-graphite, var(--surface-3));
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.batch-btn.active {
+  background: var(--color-tungsten, var(--accent));
+  color: var(--color-void, var(--canvas));
+  border-color: var(--color-tungsten, var(--accent));
+}
+
+.batch-btn:disabled,
+.control-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.batch-btn:disabled:hover,
+.control-btn:disabled:hover {
+  transform: none;
+  box-shadow: none;
+  background: var(--color-slate, var(--surface-2));
+}
+
+.summary-value.approved {
+  color: var(--color-emerald, #06ffa5);
+}
+
+.summary-value.rejected {
+  color: var(--color-film-red, #e63946);
+}
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.6rem 1rem;
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--color-paper-dim, var(--muted));
+}
+
+.filter-clear {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--color-paper, var(--ink));
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.filter-clear:hover {
+  background: var(--color-tungsten, var(--accent));
+  color: var(--color-void, var(--canvas));
+  border-color: var(--color-tungsten, var(--accent));
 }
 
 /* Segments Grid */

@@ -248,11 +248,17 @@
       <SessionReview
         :segments="state.recordedSegments"
         :playing-segment-id="state.playingSegmentId"
+        :approved-ids="[...state.approvedSegments]"
+        :rejected-ids="[...state.rejectedSegments]"
+        :active-filter="state.reviewFilter"
         @play="playSegment"
         @play-all="playAllSegments"
         @approve="approveSegment"
         @reject="rejectSegment"
         @approve-all="approveAllByConfidence"
+        @queue-redo="queueRedoByConfidence"
+        @filter="setReviewFilter"
+        @clear-filter="clearReviewFilter"
         @finalize="finalizeSession"
         @back="backToRecording"
       />
@@ -316,6 +322,9 @@ const {
   playAllSegments,
   stopPlayback,
   approveAllByConfidence,
+  queueRedoByConfidence,
+  setReviewFilter,
+  clearReviewFilter,
   backToRecording,
   finalizeSession,
   resetSession,
