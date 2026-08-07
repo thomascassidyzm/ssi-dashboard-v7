@@ -26,6 +26,14 @@ if [ "${SHEPHERD_LOCKED:-}" != "1" ]; then
   exec flock -n "$LOCK" "$0" "$@" || { echo "another shepherd holds $LOCK — exiting"; exit 0; }
 fi
 
+# The sleep child INHERITS the lock fd, so killing the shepherd while it sleeps leaves
+# an orphaned sleep holding the lock and the next start fails with a bare exit 1 for up
+# to a minute. Found the hard way at 05:32Z. So the poll wait is an interruptible child
+# we own and kill on the way out.
+NAPPID=
+trap 'kill $NAPPID 2>/dev/null; exit 0' TERM INT
+nap() { sleep "$1" & NAPPID=$!; wait $NAPPID 2>/dev/null; NAPPID=; }
+
 REPO=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
 SNAP1=/home/tomcassidy/.fra-redo-snapshot-2026-08-07      # 0eae988d — no fromRound
 SNAP2=/home/tomcassidy/.fra-redo-snapshot2-2026-08-07     # ef0079dd — has fromRound
@@ -164,13 +172,26 @@ deu_report() {
 # incumbent clips that are present, alive and WRONG. It is printed once, mid-run, when
 # the listen phase ends, and it is the single most interesting number of the night. It
 # gets pinged the moment it appears, not at band completion hours later.
+# The listen also logs a RUNNING count every 200 clips ("N/M listened — K damaged"),
+# so the trend is visible hours before the final line. That matters here: the first
+# few hundred clips are rounds 1-10, rebuilt fresh this morning, so the early rate is
+# unrepresentatively low and the honest read is the trend, not the first number.
+# Reported every 1,000 to stay useful without becoming noise; the final line always.
 DAMAGE_SEEN=/home/tomcassidy/.fra-damage-reported
 damage_watch() {
-  grep -h "listened to .* incumbent clips" /tmp/fra-phase8-3468.log 2>/dev/null | while IFS= read -r line; do
-    grep -Fqx "$line" "$DAMAGE_SEEN" 2>/dev/null && continue
-    echo "$line" >> "$DAMAGE_SEEN"
-    alert "DAMAGE FIGURE — ${line#*\] }"
-  done
+  grep -hE "listened to .* incumbent clips|ReuseFirst veracity\] [0-9]+/" /tmp/fra-phase8-3468.log 2>/dev/null \
+  | while IFS= read -r line; do
+      case "$line" in
+        *"ReuseFirst veracity]"*)
+          n=$(printf '%s' "$line" | sed -n 's/.*veracity\] \([0-9]*\)\/.*/\1/p')
+          [ -n "$n" ] || continue
+          [ $((n % 1000)) -eq 0 ] || continue
+          ;;
+      esac
+      grep -Fqx "$line" "$DAMAGE_SEEN" 2>/dev/null && continue
+      echo "$line" >> "$DAMAGE_SEEN"
+      alert "DAMAGE — ${line#*\] }"
+    done
 }
 
 say "=== overnight shepherd starting (pid $$) ==="
@@ -217,27 +238,27 @@ while true; do
             pkill -f "$SNAP1/services/phases/phase8-audio-v13.cjs" 2>/dev/null
             pgrep -f "PHASE8_PORT=$FRA_PORT" >/dev/null 2>&1 && sleep 2
             fuser -k -n tcp $FRA_PORT 2>/dev/null; sleep 5
-            fra_launch_service || { sleep 60; continue; }
+            fra_launch_service || { nap 60; continue; }
           fi
-          fra_start_band "$next" || sleep 60
+          fra_start_band "$next" || nap 60
         fi
       fi
       ;;
     failed)
       alert "FRA band $((band+1)) FAILED — restarting it (finished clips return SATISFIED)"
       fra_service_up || fra_launch_service
-      fra_start_band "$band" || sleep 60
+      fra_start_band "$band" || nap 60
       ;;
     unreachable|unknown)
       # unknown also covers the service having died and lost its in-process run map.
       alert "FRA run state=$st — service check then restart of band $((band+1))"
       fra_service_up || fra_launch_service
-      fra_start_band "$band" || sleep 60
+      fra_start_band "$band" || nap 60
       ;;
   esac
 
   damage_watch
   tick=$((tick+1))
   [ $((tick % 5)) -eq 1 ] && deu_report
-  sleep 60
+  nap 60
 done
