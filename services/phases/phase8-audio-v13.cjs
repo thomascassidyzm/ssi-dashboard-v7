@@ -64,6 +64,11 @@ app.use(cors())
 app.use(express.json())
 
 const PORT = process.env.PHASE8_PORT || 3465  // Always use PHASE8_PORT, not generic PORT
+// Bind loopback-only by default. watson-1 has a public IP, so a bare listen()
+// (all interfaces) puts this service straight on the internet. Set BIND_HOST
+// explicitly if a service ever needs to be reachable off-box — and put it
+// behind the tailscale proxy rather than 0.0.0.0.
+const HOST = process.env.BIND_HOST || '127.0.0.1'
 
 // =============================================================================
 // CLIENTS
@@ -6587,8 +6592,31 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
 // =============================================================================
 // POST /generate-pods/:courseCode — actually generate missing audio
 // =============================================================================
-// Body: { pod_ids?: string[], roles?: ('target'|'known')[], concurrency?: number }
+// Body: { pod_ids?: string[], roles?: ('target'|'known')[], concurrency?: number,
+//         sample_limit?: number }
 // Default: all pods for the course, both roles, concurrency=5.
+//
+// SAMPLE-FIRST HARD GATE (Tom's ruling, 2026-08-07). Two modes, and the run
+// says which one it is in its first log line:
+//
+//   SAMPLE — body.sample_limit is a positive integer (capped at
+//     POD_SAMPLE_LIMIT_MAX server-side). Skips the approval check and TRUNCATES
+//     the work queue to that many clips, picking distinct voices first so the
+//     sample actually exercises the casting you are being asked to approve.
+//     Always allowed: without it the gate would be unopenable.
+//
+//   BULK — anything else, INCLUDING a run narrowed by pod_ids or roles. Refused
+//     with HTTP 409 unless app_config.pod_voice_approvals holds an approval for
+//     this course whose cast_fingerprint equals the live casting. Recast the
+//     course and the fingerprint moves, so a stale approval stops counting on
+//     its own (services/pod-voice-approvals.cjs; tests alongside it).
+//
+// Why: 16 eng_for_* courses are cast with Chinese voices on English targets
+// right now (docs/pods/pod-redo-scope-2026-08-07.md §4a). A bulk run on that
+// casting fails 100% and burns ~19 hours of whisper for nothing.
+
+const POD_SAMPLE_LIMIT_MAX = 10
+const podApprovals = require('../pod-voice-approvals.cjs')
 
 app.post('/generate-pods/:courseCode', async (req, res) => {
   try {
@@ -6596,6 +6624,33 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     const body = req.body || {}
     const podIds = body.pod_ids || null
     const roles = body.roles || ['target', 'known']
+
+    // --- Mode resolution ----------------------------------------------------
+    const modeDecision = podApprovals.parseSampleLimit(body.sample_limit, POD_SAMPLE_LIMIT_MAX)
+    if (modeDecision.mode === 'error') return res.status(400).json({ error: modeDecision.message })
+    const sampleLimit = modeDecision.mode === 'sample' ? modeDecision.limit : null
+
+    if (sampleLimit === null) {
+      const gate = await podApprovals.checkApproval(supabase, courseCode)
+      if (!gate.ok) {
+        logger.warn(`[Pods] BULK REFUSED ${courseCode}: ${gate.reason} (live cast ${gate.live_fingerprint})`)
+        return res.status(409).json({
+          error: 'pod_voices_not_approved',
+          reason: gate.reason,
+          message: gate.message,
+          course_code: courseCode,
+          live_cast_fingerprint: gate.live_fingerprint,
+          approval: gate.approval,
+          sample_first: {
+            how: `POST /generate-pods/${courseCode} with {"sample_limit": 5}`,
+            max: POD_SAMPLE_LIMIT_MAX,
+          },
+        })
+      }
+      logger.info(`[Pods] BULK mode ${courseCode}: approved by ${gate.approval.approved_by} at ${gate.approval.approved_at}, cast ${gate.live_fingerprint}`)
+    } else {
+      logger.info(`[Pods] SAMPLE mode ${courseCode}: limit ${sampleLimit} clip(s), approval check skipped`)
+    }
     // Cap fan-out: xAI TTS is flaky under heavy concurrency, so clamp to a
     // small safe ceiling (POD_GEN_CONCURRENCY_MAX) regardless of caller input.
     const concurrency = Math.max(1, Math.min(POD_GEN_CONCURRENCY_MAX, body.concurrency || POD_GEN_CONCURRENCY_DEFAULT))
@@ -6646,7 +6701,19 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
       }
     }
 
-    logger.info(`[Pods] ${courseCode}: ${workQueue.length} clips queued across ${pods.length} pod(s) at concurrency ${concurrency}`)
+    // SAMPLE truncation. Take the first clip of each distinct
+    // (voice, provider, track) before any second clip of a voice already
+    // covered — a 5-clip sample that happened to be five lines from one
+    // character would approve nothing about the rest of the cast.
+    const queuedBeforeSample = workQueue.length
+    if (sampleLimit !== null) {
+      const sample = podApprovals.selectSample(workQueue, sampleLimit)
+      workQueue.length = 0
+      workQueue.push(...sample)
+      logger.info(`[Pods] SAMPLE ${courseCode}: truncated ${queuedBeforeSample} → ${workQueue.length} clip(s)`)
+    }
+
+    logger.info(`[Pods] ${sampleLimit === null ? 'BULK' : 'SAMPLE'} ${courseCode}: ${workQueue.length} clips queued across ${pods.length} pod(s) at concurrency ${concurrency}`)
 
     const startMs = Date.now()
     let generated = 0, reused = 0, failed = 0
@@ -6693,6 +6760,9 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
 
     res.json({
       course_code: courseCode,
+      mode: sampleLimit === null ? 'bulk' : 'sample',
+      sample_limit: sampleLimit,
+      queued_before_sample: queuedBeforeSample,
       generated,
       reused,
       failed,
@@ -7173,8 +7243,8 @@ app.get('/reuse-run/:runId', (req, res) => {
 // silently skip app.listen under PM2 and the service would crash-loop.
 
 if (!process.env.PHASE8_NO_LISTEN) {
-  app.listen(PORT, () => {
-    logger.info(`Phase 8 Audio Service (v13) running on port ${PORT}`)
+  app.listen(PORT, HOST, () => {
+    logger.info(`Phase 8 Audio Service (v13) running on ${HOST}:${PORT}`)
     logger.info(`Supabase: ${process.env.SUPABASE_URL ? 'configured' : 'NOT configured'}`)
     logger.info(`S3 Bucket: ${S3_BUCKET}`)
   })
