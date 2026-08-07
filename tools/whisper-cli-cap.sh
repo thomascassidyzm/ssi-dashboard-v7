@@ -32,6 +32,18 @@ if [ "${WHISPER_NO_SEMAPHORE:-0}" = "1" ]; then
   exec "$REAL" "$@"
 fi
 
+# Auto-bypass for interactive transcription. command-surface's voice path
+# (server.js execNiced -> WHISPER_BIN) always passes --prompt, because it feeds
+# whisper a lexicon of Tom's names and jargon; the batch callers
+# (audio-veracity.cjs, tts-service.cjs phonology gate) never pass it. Detecting
+# that here means a human waiting on one transcription skips the queue with no
+# change to command-surface and no restart of a running server.
+for a in "$@"; do
+  case "$a" in
+    --prompt|*/cs-vstream-*) exec "$REAL" "$@" ;;
+  esac
+done
+
 SLOTS="${WHISPER_MAX_CONCURRENT:-4}"
 MAXT="${WHISPER_MAX_THREADS:-2}"
 
@@ -58,7 +70,14 @@ while true; do
     if flock -n "$fd"; then
       # flock survives exec: the slot stays held for whisper's whole life and
       # is released by the kernel when it exits, however it exits.
-      exec "$REAL" "${args[@]}"
+      #
+      # nice: the cap bounds how much CPU batch QC takes, but the box also
+      # carries node, lint runs and agent sessions, so load does not fall to
+      # the core count on the cap alone. Priority is what actually protects a
+      # human waiting on one transcription — at nice 15 the batch clips yield
+      # the moment anything interactive wants the CPU, and lose almost nothing
+      # when it doesn't.
+      exec nice -n "${WHISPER_NICE:-15}" "$REAL" "${args[@]}"
     fi
     exec {fd}>&-
   done
