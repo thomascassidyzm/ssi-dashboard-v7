@@ -103,6 +103,43 @@ exact launch parameters are not recoverable from the process, and a guessed rela
 it spends money and could put a wrong voice into the course. Restarting a service is free and
 reversible; reissuing a render run is neither. It alerts and leaves that call to a human.
 
+## Measured throughput, and the thing it says out loud
+
+Measured 05:18-05:22Z on this machine, with both runs sharing eight already-loaded cores.
+Whisper decodes were attributed to each service by parent pid, so these are real rates for
+*this* configuration, not estimates:
+
+| | measured |
+|---|---|
+| FRA incumbent listen | **22.7 whisper decodes/min** (4 concurrent, as configured) |
+| DEU render + gate | **17.3 clips/min**, 0 failed |
+
+Rounds 1-200 is 6,413 distinct clips = **4,314 incumbents to listen** plus 2,099 to render:
+
+- listen: **3.2 h**, finishing ~08:10Z
+- render: 2.3 h if the listen promotes nothing, **3.9 h at Tom's 1-in-3**, 4.7 h at half
+- so band 1 lands somewhere around **10:30-13:00Z** — not overnight
+
+**And that reframes the whole course.** At ~32 distinct clips per round, 1,529 rounds is
+**~49,000 distinct clips**. Band 1 is 200 of those rounds and costs the best part of a working
+day. The full-course rebuild is a **multi-day** job at this shape — days of wall-clock, not a
+night. That is a fact about the work, not a problem with the run, and it is better known now
+than discovered on Tuesday.
+
+Bands were resized on these numbers: **200 rounds each**, not the 300-400 first guessed. Bands
+exist to checkpoint, and a band that takes twelve hours is a checkpoint that never lands. Eight
+bands: `1-200, 201-400, … 1401-1529`.
+
+The obvious lever, *not* pulled: concurrency stays at **4**. Eight cores are already carrying two
+whisper fleets, and Tom's standing instruction on this machine is not to raise it.
+
+## Single instance is a lock, not a promise
+
+While resizing the bands I restarted the shepherd and briefly had **two** running — precisely the
+split-brain this file exists to prevent. Care was clearly not sufficient, so the guard is now
+structural: the script re-execs itself under `flock -n /tmp/overnight-shepherd.lock`, and a second
+copy exits immediately. Proved by launching a second copy and watching it refuse.
+
 ## Watching
 
 - `/tmp/overnight-shepherd.log` — per-minute progress, both runs

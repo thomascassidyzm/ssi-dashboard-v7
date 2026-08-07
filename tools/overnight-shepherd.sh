@@ -17,6 +17,15 @@
 # service is relaunched onto SNAP2 at the first band boundary.
 set -uo pipefail
 
+# SINGLE INSTANCE, ENFORCED. Two shepherds both resurrecting a dead service and both
+# POSTing a fresh run is the split-brain this file exists to prevent — so it is a lock,
+# not a promise. Re-exec under flock; a second copy exits immediately.
+LOCK=/tmp/overnight-shepherd.lock
+if [ "${SHEPHERD_LOCKED:-}" != "1" ]; then
+  export SHEPHERD_LOCKED=1
+  exec flock -n "$LOCK" "$0" "$@" || { echo "another shepherd holds $LOCK — exiting"; exit 0; }
+fi
+
 REPO=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
 SNAP1=/home/tomcassidy/.fra-redo-snapshot-2026-08-07      # 0eae988d — no fromRound
 SNAP2=/home/tomcassidy/.fra-redo-snapshot2-2026-08-07     # ef0079dd — has fromRound
@@ -32,8 +41,16 @@ RUNID=/home/tomcassidy/.fra-band-runid
 BANDSTATE=/home/tomcassidy/.fra-band-state     # holds the band index we are on
 ALERTS=/tmp/overnight-shepherd-alerts.log      # things a human must look at
 
-# Bands: "fromRound:rounds". Sized on measured throughput; 1-200 is already in flight.
-BANDS=("1:200" "201:500" "501:900" "901:1300" "1301:1529")
+# Bands: "fromRound:rounds". SIZED ON MEASURED THROUGHPUT (05:20Z, this machine, both
+# runs sharing 8 loaded cores):
+#   incumbent listen  22.7 whisper decodes/min at concurrency 4
+#   render+gate       ~15-17 clips/min
+# Rounds 1-200 is 6,413 distinct clips: 4,314 incumbents to listen (3.2h) plus 2,099
+# renders, more if the listen promotes damaged incumbents — 5.5-8h for the band.
+# So a band is 200 rounds, not the 300-400 first guessed: bands exist to CHECKPOINT,
+# and a band that takes 12h is a checkpoint that never lands. At ~32 distinct clips per
+# round the whole 1,529-round course is ~49,000 clips — days of wall-clock, not a night.
+BANDS=("1:200" "201:400" "401:600" "601:800" "801:1000" "1001:1200" "1201:1400" "1401:1529")
 
 CONCURRENCY=4   # 8 cores, machine already loaded — do NOT raise (Tom's standing instruction)
 
