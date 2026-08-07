@@ -29,6 +29,24 @@ Of the 165 distinct clips behind these rounds, **2 failed** when I fetched and m
 
 The one empty slot I found is not a gap — S0003L02 is "to speak" appearing a second time, and a repeated LEGO correctly has no introduction of its own.
 
+### If you want to widen it
+
+The checking costs nothing, so I ran it over a much bigger slice too — **seeds 1-10, which is 1,216 slots against the 202 in the ten rounds.** Same answer, six times the size:
+
+| | First 10 rounds | Seeds 1-10 |
+|---|---|---|
+| Slots | 202 | 1216 |
+| Distinct clips | 165 | 1022 |
+| Healthy | 163 | 1008 |
+| **Damaged — would need rendering** | **2** | **14** |
+| English reusable from other courses | 27 | 128 |
+
+So widening from 10 rounds to 10 seeds takes the repair from 2 clips to 14 — still pennies. **3 of the 655 French clips are damaged; the rest of the damage is on the English side.** Say the word and I will do that slice on the same terms: render, publish, you listen, nothing relinked until you say so.
+
+### One more thing worth your ear
+
+German's English side was rebuilt yesterday on the current generation, and French shares a lot of it: **25 of the 61 English prompts here exist as a German clip in the same voice, and 21 of those play back clean.** For tonight that saves nothing, because our own French-course copies are already healthy. It matters for the *next* course we build — and it is the first hard evidence that the shared-English-side idea actually pays.
+
 ---
 
 ## 2 · The two repairs — this is the actual decision
