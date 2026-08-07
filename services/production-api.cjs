@@ -5541,6 +5541,25 @@ app.get('/api/audio/reuse-plan/:courseCode', async (req, res) => {
   }
 })
 
+// GET /api/audio/reuse-coverage/:courseCode?rounds=10
+// Read-only. Measures, for every candidate voice, how much of what this course
+// needs already exists in the estate — the lookup key is voice x text x
+// language and nothing else, so a clip recorded as target2 in another course
+// counts for the known side here. Generates nothing; the coverage table is the
+// evidence for a voice choice, not a step in making one.
+app.get('/api/audio/reuse-coverage/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const rounds = req.query.rounds ? Number(req.query.rounds) : 10
+    const response = await proxyToPhase8('GET', `/reuse-coverage/${courseCode}?rounds=${encodeURIComponent(rounds)}`)
+    logger.info(`[Reuse coverage] ${courseCode} rounds=${rounds}: ${response.status}`)
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Reuse coverage proxy error:', error?.message || error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
 // POST /api/audio/reuse-apply/:courseCode
 // Body: { rounds, dryRun, confirm }. dryRun:false SPENDS MONEY on TTS, so it
 // is admin-only and Phase 8 additionally requires confirm === courseCode.
