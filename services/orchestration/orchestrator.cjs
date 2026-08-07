@@ -57,6 +57,10 @@ delete process.env.ANTHROPIC_API_KEY;
 
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3456;
+// Bind loopback-only by default — watson-1 has a public IP, so a bare listen()
+// (all interfaces) puts this service straight on the internet. Override with
+// BIND_HOST only behind a proxy that terminates access control.
+const HOST = process.env.BIND_HOST || '127.0.0.1';
 const VFS_ROOT = process.env.VFS_ROOT;
 const CHECKPOINT_MODE = process.env.CHECKPOINT_MODE || 'gated';
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Orchestrator';
@@ -11114,9 +11118,9 @@ app.post('/api/deploy', async (req, res) => {
 /**
  * Start server
  */
-httpServer.listen(PORT, () => {
+httpServer.listen(PORT, HOST, () => {
   console.log('');
-  console.log(`✅ ${SERVICE_NAME} listening on port ${PORT}`);
+  console.log(`✅ ${SERVICE_NAME} listening on ${HOST}:${PORT}`);
   console.log(`   VFS Root: ${VFS_ROOT}`);
   console.log(`   Checkpoint Mode: ${CHECKPOINT_MODE}`);
   console.log(`   WebSocket: /api/orchestrator/websocket`);

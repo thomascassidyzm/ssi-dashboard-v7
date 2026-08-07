@@ -64,6 +64,11 @@ app.use(cors())
 app.use(express.json())
 
 const PORT = process.env.PHASE8_PORT || 3465  // Always use PHASE8_PORT, not generic PORT
+// Bind loopback-only by default. watson-1 has a public IP, so a bare listen()
+// (all interfaces) puts this service straight on the internet. Set BIND_HOST
+// explicitly if a service ever needs to be reachable off-box — and put it
+// behind the tailscale proxy rather than 0.0.0.0.
+const HOST = process.env.BIND_HOST || '127.0.0.1'
 
 // =============================================================================
 // CLIENTS
@@ -6880,8 +6885,8 @@ app.get('/reuse-run/:runId', (req, res) => {
 // silently skip app.listen under PM2 and the service would crash-loop.
 
 if (!process.env.PHASE8_NO_LISTEN) {
-  app.listen(PORT, () => {
-    logger.info(`Phase 8 Audio Service (v13) running on port ${PORT}`)
+  app.listen(PORT, HOST, () => {
+    logger.info(`Phase 8 Audio Service (v13) running on ${HOST}:${PORT}`)
     logger.info(`Supabase: ${process.env.SUPABASE_URL ? 'configured' : 'NOT configured'}`)
     logger.info(`S3 Bucket: ${S3_BUCKET}`)
   })
