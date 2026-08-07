@@ -186,6 +186,18 @@ function langKey(lang) {
   return (lang || '').toLowerCase().split(/[_-]/)[0];
 }
 
+// Aran's rule (2026-08-07): a pod is a TWO-HANDER — one male voice and one
+// female voice for the whole cast, however many speaker labels the markdown
+// carries. Canonical pod-0 has 26 labels; without this they fan out across the
+// pool and a course ends up a 6-voice patchwork.
+//
+// Pool depth is not deleted, it is parked: POD_VOICES_PER_GENDER stays as
+// opt-in headroom for pod 1/2 ("additional voices may come later"). Raise it
+// via the env var and the old round-robin behaviour returns unchanged.
+// Mirrors the human-recording side, which already has this rule as
+// DEFAULT_POD_VOICES = 2 in services/voice-engine/pods-cast.cjs.
+const POD_VOICES_PER_GENDER = Math.max(1, parseInt(process.env.POD_VOICES_PER_GENDER || '1', 10) || 1);
+
 async function assignVoices(rawSpeakers, targetLang, knownLang) {
   // rawSpeakers: array of speaker-name strings as written in the markdown
   //   (e.g. ["Susjed (08:00)", "Susjed (M)", "Ana (F)", "Ana"]).
@@ -238,7 +250,11 @@ async function assignVoices(rawSpeakers, targetLang, knownLang) {
     // voice (same Croatian Gabrijela in hrv, where there's only 1 F target
     // voice) must share the same known voice. Otherwise listeners hear the
     // same "person" in Croatian but different people in English.
-    const tIdx = idx % tPool.length;
+    // Two-voice rule: every speaker of a gender lands on the same voice, so
+    // `idx` is confined to the first POD_VOICES_PER_GENDER entries of the pool
+    // (1 by default → always index 0). Set POD_VOICES_PER_GENDER > 1 to get the
+    // old round-robin across the full pool back.
+    const tIdx = (idx % Math.min(POD_VOICES_PER_GENDER, tPool.length));
     const kIdx = tIdx % kPool.length;
     const t = tPool[tIdx];
     const k = kPool[kIdx];
