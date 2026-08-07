@@ -29,6 +29,14 @@ Of the 165 distinct clips behind these rounds, **2 failed** when I fetched and m
 
 The one empty slot I found is not a gap — S0003L02 is "to speak" appearing a second time, and a repeated LEGO correctly has no introduction of its own.
 
+### One caveat you should have, because it changes what the French number means
+
+**Another session was rendering French audio into this same course while I was measuring it.** 57 new French clips were written between 01:11 and 01:21 tonight, and 51 of them are linked into these exact ten rounds.
+
+So when I say all 104 French clips are healthy: that is true of what the course serves *right now*, and I stand behind it — I fetched and measured every one. But **51 of those 104 are only hours old**, rendered by that other job. It is not evidence that the French side was fine before tonight. The 53 clips that predate it did all pass as well, which is reassuring, but it is a smaller claim than the headline number looks.
+
+Worth knowing separately: two jobs are writing to French audio at once tonight.
+
 ### If you want to widen it
 
 The checking costs nothing, so I ran it over a much bigger slice too — **seeds 1-10, which is 1,216 slots against the 202 in the ten rounds.** Same answer, six times the size:

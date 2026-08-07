@@ -247,3 +247,30 @@ all four; merging the audio branch into `main` conflicts in unrelated files
 **`main` cannot currently run this job.** Flagging it because it is a real
 integration debt, not a checkout accident — the audio tooling and the identity
 canonicaliser have been developed on branches that have not met.
+
+---
+
+## 7 · A concurrency caveat that qualifies §4's headline
+
+**Another session was rendering French audio into `fra_for_eng` while this
+inventory was measuring it.** 57 `course_audio` rows (fra, `xai_eve`, origin
+`tts`) were written between 01:11 and 01:21 UTC on 2026-08-07; **51 of them are
+linked into the first 10 rounds**, and the measured run overlapped that window.
+
+Of the 104 French identities graded healthy, **51 were created tonight by that
+job and 53 predate it.** The verdict on what the course serves *now* stands —
+every clip was fetched and measured. But "all 104 French clips are healthy" is
+not evidence that the French target side was healthy before tonight, and it must
+not be quoted as such. The 53 pre-existing clips did all pass, which is the
+honest, smaller claim.
+
+Both defects found are on the English known side and both predate the window, so
+the §4 conclusion — that the full-course regeneration was the wrong scope — is
+unaffected.
+
+**Design consequence.** This tool measures a moving target and has no way to know
+it. A reuse/health inventory over a live course should stamp the read
+(`max(created_at)` per scope, or an explicit snapshot) and re-check it before
+its numbers are used to approve a spend, or it will confidently report on rows
+that changed underneath it. Compare the known drift pattern where 43% of a
+270-candidate batch was consumed by a concurrent campaign in three hours.
