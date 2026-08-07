@@ -95,6 +95,36 @@ This makes the phase-2 sweep redundant as a separate step —
 `tools/fra-incumbent-veracity-sweep.cjs` stays as the read-only, renders-nothing way to *audit* the
 same question without touching anything.
 
+## Continuing past round 200 — banding, and why the cap had to go
+
+Round 200 was the overnight milestone, not the scope boundary: fra_for_eng is
+**1,529 is_new LEGOs**, so the whole course is ~1,529 rounds and this pass is **13% of it**.
+
+Two things stood in the way, both now fixed (`e63e7c3a`):
+
+- **The cap.** `rounds` was clamped to 500 on all three reuse endpoints — below the size of a real
+  scope rather than above it. Now `MAX_ROUNDS = 5000`; a cap is a runaway guard, and what actually
+  keeps a big scope safe is banding, not a small ceiling.
+- **The prefix.** Every plan started at round 1. Re-running 1-500 after 1-200 re-asks every question
+  the first pass already answered — and under `verifyIncumbents` that means re-decoding every clip
+  of every earlier round through whisper, which is *hours* of CPU for finished work. `fromRound`
+  makes bands disjoint: 1-200, then 201-500, each bounded and checkpointable. Clips a later band
+  shares with an earlier one still come back SATISFIED, so banding is idempotent, never destructive
+  and never re-buys audio.
+
+Run ids and artifact filenames carry the band (`rounds201-500-reuse-applied-log.json`), so two bands
+cannot collide on disk or in the run map.
+
+## Flagged for the morning, NOT absorbed into this run
+
+**924 of fra_for_eng's 2,449 presentation rows have a null `course_audio.lego_id`** — 38%. Six of
+them surfaced here because rounds 1-200 happen to play them; the rest are invisible until some other
+round range reaches them, at which point they will report the same false *"no authored presentation
+text"* and be silently skipped. This is systemic, it is a data-repair candidate, and it is cheap
+(one column, derivable from `course_legos.presentation_audio_id`) — but it is a course-wide sweep
+with its own before/after evidence, not something to smuggle into an audio rebuild. Six fixed
+because six were in the way; **918 left, deliberately.**
+
 ## The gate, proved rather than assumed
 
 A gate that never fires looks identical to a gate that is not running. Proved positively at 04:55Z
