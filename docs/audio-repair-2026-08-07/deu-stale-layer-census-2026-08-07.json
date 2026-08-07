@@ -1,0 +1,1124 @@
+{
+  "course": "deu_for_eng",
+  "generatedAt": "2026-08-07",
+  "roles": {
+    "known": {
+      "totalSlots": 15496,
+      "linkedSlots": 15488,
+      "missingSlots": 8,
+      "danglingLinks": 0,
+      "resolvedSlots": 15488,
+      "distinctClips": 13248,
+      "distinctTexts": 13247,
+      "duplicationPct": 0,
+      "byMonth": {
+        "2026-07": 8010,
+        "2026-03": 601,
+        "2026-02": 5257,
+        "2026-08": 1038,
+        "2026-06": 6,
+        "2026-04": 574,
+        "2026-05": 2
+      },
+      "byVoice": {
+        "xai_eve": {
+          "slots": 1723,
+          "months": {
+            "2026-07": 803,
+            "2026-08": 204,
+            "2026-02": 606,
+            "2026-06": 3,
+            "2026-03": 52,
+            "2026-04": 55
+          }
+        },
+        "eve": {
+          "slots": 13765,
+          "months": {
+            "2026-03": 549,
+            "2026-07": 7207,
+            "2026-02": 4651,
+            "2026-08": 834,
+            "2026-04": 519,
+            "2026-05": 2,
+            "2026-06": 3
+          }
+        }
+      },
+      "byProvider": {
+        "tts": {
+          "slots": 15488,
+          "months": {
+            "2026-07": 8010,
+            "2026-03": 601,
+            "2026-02": 5257,
+            "2026-08": 1038,
+            "2026-06": 6,
+            "2026-04": 574,
+            "2026-05": 2
+          }
+        }
+      },
+      "byLanguage": {
+        "eng": 15488
+      },
+      "foreignCourseLinks": {},
+      "stale": {
+        "definition": "course_audio.created_at before 2026-03",
+        "slots": 5257,
+        "slotPct": 33.9,
+        "distinctClips": 4219,
+        "distinctTexts": 4219,
+        "distinctTextChars": 162549
+      },
+      "byHolder": {
+        "course_legos": 1570,
+        "course_practice_phrases": 13926
+      }
+    },
+    "target1": {
+      "totalSlots": 15496,
+      "linkedSlots": 15494,
+      "missingSlots": 2,
+      "danglingLinks": 0,
+      "resolvedSlots": 15494,
+      "distinctClips": 13239,
+      "distinctTexts": 13226,
+      "duplicationPct": 0.1,
+      "byMonth": {
+        "2026-07": 8064,
+        "2026-01": 1734,
+        "2026-08": 742,
+        "2026-02": 3637,
+        "2026-03": 725,
+        "2026-06": 21,
+        "2026-04": 568,
+        "2026-05": 3
+      },
+      "byVoice": {
+        "ara": {
+          "slots": 13775,
+          "months": {
+            "2026-07": 7227,
+            "2026-01": 1572,
+            "2026-08": 551,
+            "2026-02": 3259,
+            "2026-03": 642,
+            "2026-06": 18,
+            "2026-04": 503,
+            "2026-05": 3
+          }
+        },
+        "xai_ara": {
+          "slots": 1719,
+          "months": {
+            "2026-07": 837,
+            "2026-08": 191,
+            "2026-01": 162,
+            "2026-04": 65,
+            "2026-02": 378,
+            "2026-03": 83,
+            "2026-06": 3
+          }
+        }
+      },
+      "byProvider": {
+        "tts": {
+          "slots": 15494,
+          "months": {
+            "2026-07": 8064,
+            "2026-01": 1734,
+            "2026-08": 742,
+            "2026-02": 3637,
+            "2026-03": 725,
+            "2026-06": 21,
+            "2026-04": 568,
+            "2026-05": 3
+          }
+        }
+      },
+      "byLanguage": {
+        "deu": 15494
+      },
+      "foreignCourseLinks": {},
+      "stale": {
+        "definition": "course_audio.created_at before 2026-03",
+        "slots": 5371,
+        "slotPct": 34.7,
+        "distinctClips": 4246,
+        "distinctTexts": 4245,
+        "distinctTextChars": 174893
+      },
+      "byHolder": {
+        "course_legos": 1570,
+        "course_practice_phrases": 13926
+      }
+    },
+    "target2": {
+      "totalSlots": 15496,
+      "linkedSlots": 15492,
+      "missingSlots": 4,
+      "danglingLinks": 0,
+      "resolvedSlots": 15492,
+      "distinctClips": 13238,
+      "distinctTexts": 13225,
+      "duplicationPct": 0.1,
+      "byMonth": {
+        "2026-07": 7844,
+        "2026-08": 1271,
+        "2026-01": 1585,
+        "2026-02": 3517,
+        "2026-03": 711,
+        "2026-04": 561,
+        "2026-05": 3
+      },
+      "byVoice": {
+        "leo": {
+          "slots": 13782,
+          "months": {
+            "2026-07": 7006,
+            "2026-08": 1043,
+            "2026-01": 1422,
+            "2026-02": 3175,
+            "2026-03": 636,
+            "2026-04": 497,
+            "2026-05": 3
+          }
+        },
+        "xai_leo": {
+          "slots": 1710,
+          "months": {
+            "2026-07": 838,
+            "2026-08": 228,
+            "2026-01": 163,
+            "2026-02": 342,
+            "2026-03": 75,
+            "2026-04": 64
+          }
+        }
+      },
+      "byProvider": {
+        "tts": {
+          "slots": 15492,
+          "months": {
+            "2026-07": 7844,
+            "2026-08": 1271,
+            "2026-01": 1585,
+            "2026-02": 3517,
+            "2026-03": 711,
+            "2026-04": 561,
+            "2026-05": 3
+          }
+        }
+      },
+      "byLanguage": {
+        "deu": 15492
+      },
+      "foreignCourseLinks": {},
+      "stale": {
+        "definition": "course_audio.created_at before 2026-03",
+        "slots": 5102,
+        "slotPct": 32.9,
+        "distinctClips": 4080,
+        "distinctTexts": 4079,
+        "distinctTextChars": 170025
+      },
+      "byHolder": {
+        "course_legos": 1570,
+        "course_practice_phrases": 13926
+      }
+    },
+    "presentation": {
+      "totalSlots": 15496,
+      "linkedSlots": 2372,
+      "missingSlots": 13124,
+      "danglingLinks": 0,
+      "resolvedSlots": 2372,
+      "distinctClips": 2371,
+      "distinctTexts": 2370,
+      "duplicationPct": 0,
+      "byMonth": {
+        "2026-07": 261,
+        "2026-08": 1731,
+        "2026-03": 366,
+        "2026-04": 13,
+        "2026-02": 1
+      },
+      "byVoice": {
+        "eve": {
+          "slots": 2095,
+          "months": {
+            "2026-07": 224,
+            "2026-08": 1532,
+            "2026-03": 330,
+            "2026-04": 9
+          }
+        },
+        "xai_eve": {
+          "slots": 277,
+          "months": {
+            "2026-08": 199,
+            "2026-03": 36,
+            "2026-07": 37,
+            "2026-04": 4,
+            "2026-02": 1
+          }
+        }
+      },
+      "byProvider": {
+        "tts": {
+          "slots": 2371,
+          "months": {
+            "2026-07": 261,
+            "2026-08": 1730,
+            "2026-03": 366,
+            "2026-04": 13,
+            "2026-02": 1
+          }
+        },
+        "human": {
+          "slots": 1,
+          "months": {
+            "2026-08": 1
+          }
+        }
+      },
+      "byLanguage": {
+        "eng": 2372
+      },
+      "foreignCourseLinks": {},
+      "stale": {
+        "definition": "course_audio.created_at before 2026-03",
+        "slots": 1,
+        "slotPct": 0,
+        "distinctClips": 1,
+        "distinctTexts": 1,
+        "distinctTextChars": 38
+      },
+      "byHolder": {
+        "course_legos": 1570,
+        "course_practice_phrases": 13926
+      }
+    }
+  },
+  "totals": {
+    "legoRows": 1570,
+    "phraseRows": 13926,
+    "totalSlots": 61984,
+    "linkedSlots": 48846,
+    "distinctLinkedClips": 42096,
+    "resolvableClips": 42096,
+    "monthsSeen": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08"
+    ]
+  },
+  "limitation": "course_audio has no updated_at. created_at is the ORIGINAL row render time; a row whose S3 object was replaced in place still reads its original month. Row age is a lower bound on staleness, not proof of it.",
+  "headline": {
+    "finding": "The stale layer is a seed band, not a role: seeds 1-300 are ~75% Jan/Feb 2026 renders across known, target1 and target2 together. Seeds 301-668 are ~86% July 2026. Presentation is current course-wide.",
+    "cutoverSeed": 300,
+    "bandStaleSlots": 14344,
+    "bandDistinctClips": 12533,
+    "bandDistinctTexts": 12531,
+    "bandChars": 507401
+  },
+  "seedBand": {
+    "cutoverSeed": 300,
+    "bandSize": 50,
+    "maxSeed": 668,
+    "erasByRole": {
+      "known": {
+        "jul": 8010,
+        "marjun": 1183,
+        "janfeb": 5257,
+        "aug": 1038
+      },
+      "target1": {
+        "jul": 8064,
+        "janfeb": 5371,
+        "aug": 742,
+        "marjun": 1317
+      },
+      "target2": {
+        "jul": 7844,
+        "aug": 1271,
+        "janfeb": 5102,
+        "marjun": 1275
+      },
+      "presentation": {
+        "jul": 261,
+        "aug": 1731,
+        "marjun": 379,
+        "janfeb": 1
+      }
+    },
+    "janFebSeedSpan": {
+      "known": {
+        "seeds": 531,
+        "min": 1,
+        "max": 668
+      },
+      "target1": {
+        "seeds": 525,
+        "min": 1,
+        "max": 668
+      },
+      "target2": {
+        "seeds": 508,
+        "min": 1,
+        "max": 668
+      },
+      "presentation": {
+        "seeds": 1,
+        "min": 264,
+        "max": 264
+      }
+    },
+    "preJulyRedoCost": {
+      "known": {
+        "slots": 6440,
+        "distinctClips": 5344,
+        "distinctTexts": 5344,
+        "chars": 203096
+      },
+      "target1": {
+        "slots": 6688,
+        "distinctClips": 5494,
+        "distinctTexts": 5485,
+        "chars": 226218
+      },
+      "target2": {
+        "slots": 6377,
+        "distinctClips": 5297,
+        "distinctTexts": 5290,
+        "chars": 220630
+      },
+      "presentation": {
+        "slots": 380,
+        "distinctClips": 380,
+        "distinctTexts": 380,
+        "chars": 25563
+      }
+    },
+    "bandsBySeedRange": {
+      "501-550": {
+        "known": {
+          "2026-07": 1595,
+          "2026-08": 118,
+          "2026-02": 84,
+          "2026-06": 1,
+          "2026-04": 3,
+          "2026-03": 46
+        },
+        "target1": {
+          "2026-07": 1634,
+          "2026-08": 78,
+          "2026-06": 3,
+          "2026-01": 78,
+          "2026-03": 48,
+          "2026-04": 3,
+          "2026-02": 3
+        },
+        "target2": {
+          "2026-07": 1589,
+          "2026-08": 132,
+          "2026-01": 72,
+          "2026-03": 48,
+          "2026-04": 3,
+          "2026-02": 3
+        },
+        "presentation": {
+          "2026-07": 51,
+          "2026-08": 142
+        }
+      },
+      "451-500": {
+        "known": {
+          "2026-03": 38,
+          "2026-07": 1109,
+          "2026-08": 80,
+          "2026-02": 61,
+          "2026-04": 1
+        },
+        "target1": {
+          "2026-07": 1125,
+          "2026-01": 60,
+          "2026-03": 41,
+          "2026-08": 59,
+          "2026-02": 2,
+          "2026-04": 1,
+          "2026-06": 2
+        },
+        "target2": {
+          "2026-07": 1095,
+          "2026-08": 98,
+          "2026-01": 53,
+          "2026-03": 41,
+          "2026-02": 2,
+          "2026-04": 1
+        },
+        "presentation": {
+          "2026-07": 46,
+          "2026-08": 158
+        }
+      },
+      "401-450": {
+        "known": {
+          "2026-07": 1034,
+          "2026-02": 67,
+          "2026-08": 82,
+          "2026-06": 2,
+          "2026-03": 18
+        },
+        "target1": {
+          "2026-07": 1040,
+          "2026-06": 6,
+          "2026-08": 43,
+          "2026-01": 78,
+          "2026-02": 3,
+          "2026-03": 33
+        },
+        "target2": {
+          "2026-07": 1007,
+          "2026-08": 97,
+          "2026-01": 64,
+          "2026-03": 32,
+          "2026-02": 2
+        },
+        "presentation": {
+          "2026-08": 109,
+          "2026-07": 30
+        }
+      },
+      "551-600": {
+        "known": {
+          "2026-07": 1291,
+          "2026-08": 81,
+          "2026-02": 71,
+          "2026-03": 44
+        },
+        "target1": {
+          "2026-07": 1316,
+          "2026-01": 76,
+          "2026-08": 39,
+          "2026-06": 6,
+          "2026-03": 43,
+          "2026-02": 8
+        },
+        "target2": {
+          "2026-07": 1298,
+          "2026-01": 68,
+          "2026-08": 72,
+          "2026-03": 42,
+          "2026-02": 8
+        },
+        "presentation": {
+          "2026-08": 93,
+          "2026-07": 48
+        }
+      },
+      "101-150": {
+        "known": {
+          "2026-02": 901,
+          "2026-08": 49,
+          "2026-07": 24,
+          "2026-05": 1,
+          "2026-03": 120,
+          "2026-04": 95
+        },
+        "target1": {
+          "2026-01": 263,
+          "2026-07": 22,
+          "2026-02": 625,
+          "2026-08": 49,
+          "2026-03": 136,
+          "2026-04": 95
+        },
+        "target2": {
+          "2026-08": 70,
+          "2026-01": 248,
+          "2026-02": 621,
+          "2026-07": 20,
+          "2026-03": 136,
+          "2026-04": 95
+        },
+        "presentation": {
+          "2026-08": 171,
+          "2026-03": 60
+        }
+      },
+      "301-350": {
+        "known": {
+          "2026-07": 997,
+          "2026-08": 93,
+          "2026-02": 65,
+          "2026-04": 2,
+          "2026-06": 1,
+          "2026-03": 21
+        },
+        "target1": {
+          "2026-07": 1000,
+          "2026-08": 60,
+          "2026-02": 3,
+          "2026-01": 69,
+          "2026-04": 4,
+          "2026-03": 41,
+          "2026-06": 3
+        },
+        "target2": {
+          "2026-07": 959,
+          "2026-08": 110,
+          "2026-01": 68,
+          "2026-04": 4,
+          "2026-03": 37,
+          "2026-02": 1
+        },
+        "presentation": {
+          "2026-07": 23,
+          "2026-08": 223
+        }
+      },
+      "601-650": {
+        "known": {
+          "2026-07": 742,
+          "2026-02": 59,
+          "2026-08": 76,
+          "2026-03": 43,
+          "2026-04": 1
+        },
+        "target1": {
+          "2026-07": 770,
+          "2026-08": 47,
+          "2026-01": 55,
+          "2026-02": 4,
+          "2026-03": 43,
+          "2026-04": 1,
+          "2026-06": 1
+        },
+        "target2": {
+          "2026-07": 748,
+          "2026-08": 84,
+          "2026-01": 45,
+          "2026-03": 40,
+          "2026-04": 1,
+          "2026-02": 2
+        },
+        "presentation": {
+          "2026-07": 32,
+          "2026-08": 48
+        }
+      },
+      "351-400": {
+        "known": {
+          "2026-07": 872,
+          "2026-08": 53,
+          "2026-02": 48,
+          "2026-04": 1,
+          "2026-06": 2,
+          "2026-03": 18
+        },
+        "target1": {
+          "2026-07": 846,
+          "2026-08": 67,
+          "2026-01": 42,
+          "2026-04": 1,
+          "2026-03": 36,
+          "2026-02": 2
+        },
+        "target2": {
+          "2026-07": 827,
+          "2026-08": 93,
+          "2026-04": 1,
+          "2026-01": 36,
+          "2026-03": 35,
+          "2026-02": 2
+        },
+        "presentation": {
+          "2026-08": 126,
+          "2026-07": 29
+        }
+      },
+      "651-700": {
+        "known": {
+          "2026-07": 167,
+          "2026-08": 12,
+          "2026-03": 14,
+          "2026-02": 9
+        },
+        "target1": {
+          "2026-07": 177,
+          "2026-03": 13,
+          "2026-01": 7,
+          "2026-02": 1,
+          "2026-08": 4
+        },
+        "target2": {
+          "2026-08": 13,
+          "2026-07": 171,
+          "2026-03": 13,
+          "2026-01": 4,
+          "2026-02": 1
+        },
+        "presentation": {
+          "2026-08": 14,
+          "2026-07": 2
+        }
+      },
+      "251-300": {
+        "known": {
+          "2026-02": 718,
+          "2026-08": 52,
+          "2026-04": 53,
+          "2026-07": 65,
+          "2026-03": 65
+        },
+        "target1": {
+          "2026-02": 647,
+          "2026-01": 104,
+          "2026-08": 55,
+          "2026-04": 54,
+          "2026-07": 19,
+          "2026-03": 73,
+          "2026-05": 1
+        },
+        "target2": {
+          "2026-02": 630,
+          "2026-01": 94,
+          "2026-08": 82,
+          "2026-04": 52,
+          "2026-07": 19,
+          "2026-03": 75,
+          "2026-05": 1
+        },
+        "presentation": {
+          "2026-03": 52,
+          "2026-08": 142,
+          "2026-04": 1,
+          "2026-02": 1
+        }
+      },
+      "151-200": {
+        "known": {
+          "2026-02": 698,
+          "2026-08": 61,
+          "2026-07": 15,
+          "2026-04": 94,
+          "2026-03": 29
+        },
+        "target1": {
+          "2026-01": 209,
+          "2026-02": 504,
+          "2026-08": 40,
+          "2026-07": 13,
+          "2026-04": 88,
+          "2026-03": 44
+        },
+        "target2": {
+          "2026-01": 195,
+          "2026-02": 498,
+          "2026-08": 62,
+          "2026-07": 13,
+          "2026-04": 87,
+          "2026-03": 43
+        },
+        "presentation": {
+          "2026-03": 53,
+          "2026-08": 117
+        }
+      },
+      "1-50": {
+        "known": {
+          "2026-02": 1237,
+          "2026-08": 183,
+          "2026-04": 61,
+          "2026-07": 17,
+          "2026-03": 7
+        },
+        "target1": {
+          "2026-03": 18,
+          "2026-01": 323,
+          "2026-08": 133,
+          "2026-02": 955,
+          "2026-04": 58,
+          "2026-07": 18
+        },
+        "target2": {
+          "2026-03": 17,
+          "2026-01": 281,
+          "2026-08": 261,
+          "2026-02": 873,
+          "2026-04": 59,
+          "2026-07": 14
+        },
+        "presentation": {
+          "2026-03": 109,
+          "2026-08": 147,
+          "2026-04": 4
+        }
+      },
+      "201-250": {
+        "known": {
+          "2026-02": 671,
+          "2026-08": 53,
+          "2026-04": 122,
+          "2026-05": 1,
+          "2026-07": 23,
+          "2026-03": 76
+        },
+        "target1": {
+          "2026-01": 179,
+          "2026-02": 495,
+          "2026-04": 124,
+          "2026-08": 32,
+          "2026-07": 23,
+          "2026-03": 93,
+          "2026-05": 1
+        },
+        "target2": {
+          "2026-01": 176,
+          "2026-02": 492,
+          "2026-04": 123,
+          "2026-08": 40,
+          "2026-07": 23,
+          "2026-03": 93,
+          "2026-05": 1
+        },
+        "presentation": {
+          "2026-03": 50,
+          "2026-08": 118,
+          "2026-04": 6
+        }
+      },
+      "51-100": {
+        "known": {
+          "2026-02": 568,
+          "2026-07": 59,
+          "2026-08": 45,
+          "2026-03": 62,
+          "2026-04": 141
+        },
+        "target1": {
+          "2026-01": 191,
+          "2026-02": 385,
+          "2026-07": 61,
+          "2026-08": 36,
+          "2026-03": 63,
+          "2026-04": 139,
+          "2026-05": 1
+        },
+        "target2": {
+          "2026-01": 181,
+          "2026-02": 382,
+          "2026-07": 61,
+          "2026-08": 57,
+          "2026-03": 59,
+          "2026-04": 135,
+          "2026-05": 1
+        },
+        "presentation": {
+          "2026-03": 42,
+          "2026-08": 123,
+          "2026-04": 2
+        }
+      }
+    },
+    "transitionWindow": [
+      {
+        "seed": 290,
+        "oldPct": 79,
+        "slots": 33
+      },
+      {
+        "seed": 291,
+        "oldPct": 73,
+        "slots": 126
+      },
+      {
+        "seed": 292,
+        "oldPct": 76,
+        "slots": 96
+      },
+      {
+        "seed": 293,
+        "oldPct": 67,
+        "slots": 84
+      },
+      {
+        "seed": 294,
+        "oldPct": 91,
+        "slots": 135
+      },
+      {
+        "seed": 295,
+        "oldPct": 80,
+        "slots": 120
+      },
+      {
+        "seed": 296,
+        "oldPct": 84,
+        "slots": 51
+      },
+      {
+        "seed": 297,
+        "oldPct": 56,
+        "slots": 132
+      },
+      {
+        "seed": 298,
+        "oldPct": 80,
+        "slots": 108
+      },
+      {
+        "seed": 299,
+        "oldPct": 80,
+        "slots": 60
+      },
+      {
+        "seed": 300,
+        "oldPct": 67,
+        "slots": 60
+      },
+      {
+        "seed": 301,
+        "oldPct": 14,
+        "slots": 42
+      },
+      {
+        "seed": 302,
+        "oldPct": 5,
+        "slots": 111
+      },
+      {
+        "seed": 303,
+        "oldPct": 5,
+        "slots": 39
+      },
+      {
+        "seed": 304,
+        "oldPct": 9,
+        "slots": 69
+      },
+      {
+        "seed": 305,
+        "oldPct": 20,
+        "slots": 30
+      },
+      {
+        "seed": 306,
+        "oldPct": 4,
+        "slots": 102
+      },
+      {
+        "seed": 307,
+        "oldPct": 2,
+        "slots": 102
+      },
+      {
+        "seed": 308,
+        "oldPct": 12,
+        "slots": 75
+      },
+      {
+        "seed": 309,
+        "oldPct": 7,
+        "slots": 69
+      },
+      {
+        "seed": 310,
+        "oldPct": 11,
+        "slots": 111
+      },
+      {
+        "seed": 311,
+        "oldPct": 2,
+        "slots": 132
+      },
+      {
+        "seed": 312,
+        "oldPct": 6,
+        "slots": 102
+      },
+      {
+        "seed": 313,
+        "oldPct": 0,
+        "slots": 69
+      },
+      {
+        "seed": 314,
+        "oldPct": 3,
+        "slots": 66
+      },
+      {
+        "seed": 315,
+        "oldPct": 10,
+        "slots": 111
+      },
+      {
+        "seed": 316,
+        "oldPct": 6,
+        "slots": 142
+      },
+      {
+        "seed": 317,
+        "oldPct": 13,
+        "slots": 39
+      },
+      {
+        "seed": 318,
+        "oldPct": 0,
+        "slots": 30
+      },
+      {
+        "seed": 319,
+        "oldPct": 0,
+        "slots": 96
+      },
+      {
+        "seed": 320,
+        "oldPct": 6,
+        "slots": 105
+      }
+    ],
+    "bandCost": {
+      "known": {
+        "bandSlots": 6366,
+        "staleSlots": 4793,
+        "stalePct": 75.3,
+        "distinctClips": 4212,
+        "distinctTexts": 4212,
+        "chars": 162509,
+        "clipsAlsoServingLaterSeeds": 200,
+        "extraSlotsTouchedBeyondBand": 443
+      },
+      "target1": {
+        "bandSlots": 6369,
+        "staleSlots": 4880,
+        "stalePct": 76.6,
+        "distinctClips": 4242,
+        "distinctTexts": 4241,
+        "chars": 174871,
+        "clipsAlsoServingLaterSeeds": 216,
+        "extraSlotsTouchedBeyondBand": 485
+      },
+      "target2": {
+        "bandSlots": 6370,
+        "staleSlots": 4671,
+        "stalePct": 73.3,
+        "distinctClips": 4079,
+        "distinctTexts": 4078,
+        "chars": 170021,
+        "clipsAlsoServingLaterSeeds": 194,
+        "extraSlotsTouchedBeyondBand": 428
+      },
+      "presentation": {
+        "bandSlots": 1198,
+        "staleSlots": 1,
+        "stalePct": 0.1,
+        "distinctClips": 1,
+        "distinctTexts": 1,
+        "chars": 38,
+        "clipsAlsoServingLaterSeeds": 0,
+        "extraSlotsTouchedBeyondBand": 0
+      }
+    },
+    "janFebResidueBeyondBand": {
+      "known": {
+        "slots": 464,
+        "sharedWithBand": 443,
+        "distinctClips": 207
+      },
+      "target1": {
+        "slots": 491,
+        "sharedWithBand": 485,
+        "distinctClips": 220
+      },
+      "target2": {
+        "slots": 431,
+        "sharedWithBand": 428,
+        "distinctClips": 195
+      }
+    },
+    "seedsAbove300MajorityOld": [
+      345,
+      365,
+      367,
+      416,
+      431,
+      451,
+      452,
+      655
+    ]
+  },
+  "revisionCaveat": {
+    "note": "audio_revision>1 marks a row whose bytes were swapped under the same id — partial bound on the created_at limitation.",
+    "staleLinkedClipsRevised": {
+      "known": {
+        "stale": 4219,
+        "revised": 361
+      },
+      "target1": {
+        "stale": 4246,
+        "revised": 277
+      },
+      "target2": {
+        "stale": 4080,
+        "revised": 230
+      },
+      "presentation": {
+        "stale": 1,
+        "revised": 0
+      }
+    },
+    "courseAudioRowsByMonthRevised": {
+      "2026-01": {
+        "rows": 1569,
+        "revised": 302
+      },
+      "2026-02": {
+        "rows": 12162,
+        "revised": 613
+      },
+      "2026-03": {
+        "rows": 2572,
+        "revised": 91
+      },
+      "2026-04": {
+        "rows": 1740,
+        "revised": 27
+      },
+      "2026-05": {
+        "rows": 301,
+        "revised": 1
+      },
+      "2026-06": {
+        "rows": 1644,
+        "revised": 0
+      },
+      "2026-07": {
+        "rows": 23600,
+        "revised": 23
+      },
+      "2026-08": {
+        "rows": 3786,
+        "revised": 262
+      }
+    },
+    "courseAudioRevisionsLedgerRows": 1381
+  },
+  "gaps": [
+    "course_audio has no updated_at; created_at is the ORIGINAL row render time. Stale counts are an upper bound on staleness.",
+    "voice_id does not track generation in deu: the xai_ prefix share is ~10% in every month including January. Cannot distinguish real January xAI use from later relabelling; course_audio records no history for that column.",
+    "No xAI per-character TTS rate is recorded in this repo. Only Azure .00/M chars (tools/build-chunk-audio-regen-queue.cjs:28). Any cost figure derived from that is a reference point, not a quote.",
+    "lego_introductions.presentation_audio_id was outside the brief scope and is NOT counted here; a redo must include it.",
+    "5,278 of 47,374 deu_for_eng course_audio rows are unreferenced by the two holder tables. Not investigated.",
+    "No S3 verification performed. Every statement here is a database statement; quality was not measured."
+  ],
+  "deuCourseAudioRows": 47374,
+  "unlinkedCourseAudioRows": 5278
+}
