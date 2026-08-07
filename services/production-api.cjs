@@ -12075,9 +12075,14 @@ app.get('/api/release-notes/drafts', async (req, res) => {
 })
 
 const PORT = process.env.PRODUCTION_API_PORT || 3470
+// Bind loopback-only by default. watson-1 has a public IP; public access to this
+// service is meant to arrive via the tailscale funnel on :8443, which proxies to
+// http://localhost:3470 — so loopback keeps the funnel working while removing the
+// raw 0.0.0.0 path. Override with BIND_HOST only with a deliberate reason.
+const HOST = process.env.BIND_HOST || '127.0.0.1'
 
-httpServer.listen(PORT, () => {
-  logger.log(`Production API server running on port ${PORT}`)
+httpServer.listen(PORT, HOST, () => {
+  logger.log(`Production API server running on ${HOST}:${PORT}`)
   logger.log(`WebSocket path: /api/production/websocket`)
   scheduleNightlyArchive()
 })
