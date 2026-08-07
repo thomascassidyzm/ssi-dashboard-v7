@@ -4897,6 +4897,299 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
 })
 
 // =============================================================================
+// POST REGENERATE-LEGO - Surgical per-LEGO AUDIO regen (text is LOCKED)
+// =============================================================================
+// Clones /regenerate-phrase's recipe against course_legos, with the "persist
+// edited text" step DELETED ON PURPOSE.
+//
+// TOM'S RULING, 2026-08-07, verbatim:
+//   "we must NOT allow people to edit the lego TEXT - we have done this before -
+//    we just add the punctuation to the TTS job, not to the canonical LEGO text"
+// Every BUILD phrase contains its LEGO's text, so editing course_legos.known_text
+// / target_text would rightly cascade across the course. This endpoint NEVER
+// writes those columns. If you are about to add that back: don't — you break the
+// cascade guarantee this endpoint exists to hold.
+//
+// Why it exists: isolated short clips (single LEGO words, fragments like "ob",
+// "mit dir") are read by the voice as if they were whole sentences. The
+// tts_* overrides let a trailing "." / "," / "…" reach the VOICE ONLY, so the
+// reading can be A/B'd by ear without touching course content.
+//
+// Roles map to course_legos columns + voice_config.voices:
+//   'known'   → known_text   → known_audio_id    → voices.known   (known_lang)
+//   'target1' → target_text  → target1_audio_id  → voices.target1 (target_lang)
+//   'target2' → target_text  → target2_audio_id  → voices.target2 (target_lang)
+// (target1 & target2 are two voices of the SAME target text.)
+//
+// Body: { roles: ['known'|'target1'|'target2', ...], tts_known_text?, tts_target_text? }
+//   - tts_* is the SPOKEN text for that side; when absent/blank the LEGO's own
+//     canonical text is spoken. This is the ONLY place the override may reach.
+// Returns: { known_audio_id, target1_audio_id, target2_audio_id,
+//            durations: { known?, target1?, target2? }, spoken: { ... } }
+// =============================================================================
+
+app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
+  const { courseCode, legoId } = req.params
+  const { roles, tts_known_text: ttsKnownText, tts_target_text: ttsTargetText } = req.body || {}
+
+  try {
+    // 0. Validate roles
+    const VALID_ROLES = ['known', 'target1', 'target2']
+    const requestedRoles = Array.isArray(roles) ? [...new Set(roles)] : []
+    if (requestedRoles.length === 0 || requestedRoles.some(r => !VALID_ROLES.includes(r))) {
+      return res.status(400).json({
+        error: `roles must be a non-empty subset of ${JSON.stringify(VALID_ROLES)}`
+      })
+    }
+
+    if (isHumanVoiceCourse(courseCode)) {
+      logger.info(`[/regenerate-lego] SKIP ${courseCode}: human-voice-only course — no TTS (Tom's ruling 2026-07-25)`)
+      return res.json({ skipped: true, reason: 'human-voice-only-course', courseCode })
+    }
+
+    // 1. Load course + voice config
+    const { data: course, error: courseError } = await supabase
+      .from('courses')
+      .select('voice_config, known_lang, target_lang')
+      .eq('course_code', courseCode)
+      .single()
+
+    if (courseError || !course) {
+      return res.status(404).json({ error: `Course not found: ${courseCode}` })
+    }
+    const knownLang = canonicalLanguage(course.known_lang)
+    const targetLang = canonicalLanguage(course.target_lang)
+    const voiceConfig = course.voice_config || {}
+    const voices = voiceConfig.voices || voiceConfig  // support nested + flat
+
+    // 2. Load the LEGO row (PK column is lego_id, e.g. fra_for_eng:S0042L03)
+    const { data: lego, error: legoError } = await supabase
+      .from('course_legos')
+      .select('lego_id, course_code, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
+      .eq('lego_id', legoId)
+      .eq('course_code', courseCode)
+      .maybeSingle()
+
+    if (legoError) throw legoError
+    if (!lego) {
+      return res.status(404).json({ error: `LEGO not found: ${legoId} in ${courseCode}` })
+    }
+
+    // 3. (deliberately absent) NO text persistence — see the ruling above.
+
+    // Spoken text per side: explicit non-blank override wins, else canonical.
+    const spokenKnown = (typeof ttsKnownText === 'string' && ttsKnownText.trim())
+      ? ttsKnownText : lego.known_text
+    const spokenTarget = (typeof ttsTargetText === 'string' && ttsTargetText.trim())
+      ? ttsTargetText : lego.target_text
+
+    const LEGO_AUDIO_COLUMN = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id' }
+
+    const result = {
+      lego_id: legoId,
+      known_audio_id: lego.known_audio_id || null,
+      target1_audio_id: lego.target1_audio_id || null,
+      target2_audio_id: lego.target2_audio_id || null,
+      durations: {},
+      spoken: {}
+    }
+    const skippedHumanRoles = []
+
+    for (const role of requestedRoles) {
+      const isKnown = role === 'known'
+      const text = isKnown ? spokenKnown : spokenTarget
+      const language = isKnown ? knownLang : targetLang
+
+      if (typeof text !== 'string' || !text.trim()) {
+        return res.status(400).json({
+          error: `No text available for role "${role}" (LEGO has no ${isKnown ? 'known_text' : 'target_text'})`
+        })
+      }
+
+      // PRECIOUS-AUDIO GUARD (currently-bound clip): a human recording is
+      // irreplaceable — refuse rather than rebind away from / TTS over it.
+      const boundId = lego[LEGO_AUDIO_COLUMN[role]]
+      if (boundId) {
+        const { data: boundAudio } = await supabase
+          .from('course_audio')
+          .select('id, origin')
+          .eq('id', boundId)
+          .maybeSingle()
+        if (boundAudio?.origin === 'human') {
+          logger.warn(`[Regen Lego] REFUSE ${courseCode}/${legoId} ${role}: bound clip ${boundId} origin=human (precious)`)
+          return res.status(409).json({
+            error: `The ${role} clip for ${legoId} is a human recording (origin=human, precious). TTS regeneration is blocked for human audio.`,
+            origin: 'human',
+            lego_id: legoId,
+            role
+          })
+        }
+      }
+
+      // Resolve voice for this role (voiceId / provider / speed) — same
+      // canonicalisation as /regenerate-phrase, so the stored voice_id matches
+      // what every link/dedup pass expects.
+      const voiceSettings = voices?.[role] || {}
+      const rawVoice = voiceSettings.voiceId || (typeof voices?.[role] === 'string' ? voices[role] : null)
+      if (!rawVoice) {
+        return res.status(400).json({ error: `No voice configured for role: ${role}` })
+      }
+      let voiceId
+      try {
+        voiceId = canonicalClipVoiceId(rawVoice, voiceSettings.provider)
+      } catch (identityErr) {
+        return res.status(400).json({ error: `voice for role ${role}: ${identityErr.message}` })
+      }
+      const voiceProvider = voiceId.slice(0, voiceId.indexOf('_'))
+      const voiceName = voiceId.slice(voiceProvider.length + 1)
+      const speed = voiceSettings.settings?.speed || 1.0
+
+      const column = LEGO_AUDIO_COLUMN[role]
+      const textNormalized = normalizeForAudio(text)
+
+      // PRECIOUS-AUDIO GUARD (target key): if a human recording already occupies
+      // the key we are about to upsert, keep it — rebind and skip TTS.
+      const guardedHuman = await humanRowAtAudioKey(courseCode, textNormalized, language, role, voiceId)
+      if (guardedHuman) {
+        const { error: humanBindError } = await supabase
+          .from('course_legos')
+          .update({ [column]: guardedHuman.id })
+          .eq('lego_id', legoId)
+          .eq('course_code', courseCode)
+        if (humanBindError) throw humanBindError
+        result[column] = guardedHuman.id
+        skippedHumanRoles.push(role)
+        logger.info(`[Regen Lego] SKIP ${legoId} ${role}: human recording ${guardedHuman.id} holds this key — LEGO rebound to the human take`)
+        continue
+      }
+
+      // Gender expansion (target1/target2 only) — Haiku first, marker regex fallback.
+      let textForTTS = text
+      if ((role === 'target1' || role === 'target2') && genderHaikuService.GENDERED_LANGUAGES.includes(language)) {
+        try {
+          const gr = await genderHaikuService.expandGender(text, language, role)
+          if (gr?.wasModified) {
+            textForTTS = gr.expandedText
+            logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
+          }
+        } catch (e) {
+          logger.warn(`Gender expansion failed, using original text: ${e.message}`)
+        }
+      }
+      if (textForTTS === text && (role === 'target1' || role === 'target2') && genderService.hasGenderMarker(text)) {
+        const mr = genderService.analyzeAndExpand(text, language, role)
+        if (mr.wasModified) {
+          textForTTS = mr.expandedText
+          logger.info(`Gender (marker): "${text}" → "${textForTTS}" (${role})`)
+        }
+      }
+
+      logger.info(`[Regen Lego] ${courseCode}/${legoId} role=${role} voice=${voiceId} "${textForTTS.substring(0, 40)}..."`)
+      let rawAudioBuffer, wordBoundaries
+      if (voiceProvider === 'azure') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+          subscriptionKey: process.env.AZURE_SPEECH_KEY,
+          region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+          voiceName,
+          speed
+        }))
+      } else if (voiceProvider === 'elevenlabs') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+          apiKey: process.env.ELEVENLABS_API_KEY,
+          voiceId: voiceName,
+          speed
+        }))
+      } else if (voiceProvider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceName,
+          language: toBcp47(language)
+        }))
+      } else {
+        return res.status(400).json({ error: `Unknown TTS provider: ${voiceProvider}` })
+      }
+
+      // Master audio (−16 LUFS, duration).
+      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+
+      // Upload mastered audio to S3 (fresh UUID, UPPERCASE per convention).
+      // Make-before-break: nothing old is touched, ever — no S3 delete here.
+      const newAudioId = uuidv4().toUpperCase()
+      const newS3Key = `mastered/${newAudioId}.mp3`
+      await s3.send(new PutObjectCommand({
+        Bucket: S3_BUCKET,
+        Key: newS3Key,
+        Body: masteredBuffer,
+        ContentType: 'audio/mpeg',
+        CacheControl: AUDIO_CACHE_CONTROL,
+      }))
+
+      // Mint a course_audio row carrying the SPOKEN text (the punctuated variant),
+      // matching the generic path — the audio row stays an honest record of what
+      // was actually said.
+      //
+      // CAVEAT, measured 2026-08-07: the upsert key uses text_normalized, and
+      // normalizeForAudio STRIPS a trailing full stop ("I want." → "i want") while
+      // KEEPING a comma or ellipsis ("irrid…" → "irrid…"). So a "." variant shares
+      // its identity key with the unpunctuated clip: re-rendering the plain text
+      // later on the same voice upserts the same row and overwrites the tuned
+      // s3_key. "," and "…" get their own rows and survive. Tuning done with "."
+      // is therefore not durable against a later course-wide pass — prefer "…"/","
+      // if the tuning must stick, until the clip-identity key is revisited.
+      const { data: insertedAudio, error: audioInsertError } = await supabase
+        .from('course_audio')
+        .upsert({
+          course_code: courseCode,
+          text,
+          text_normalized: textNormalized,
+          language,
+          role,
+          voice_id: voiceId,
+          origin: 'tts',
+          s3_key: newS3Key,
+          duration_ms: durationMs,
+          word_boundaries: wordBoundaries || null
+        }, {
+          onConflict: 'course_code,text_normalized,language,role,voice_id'
+        })
+        .select('id')
+        .single()
+      if (audioInsertError) throw audioInsertError
+      const audioRowId = insertedAudio.id
+
+      // Rebind ONLY this LEGO's own pointer column. No text column is written.
+      const { error: bindError } = await supabase
+        .from('course_legos')
+        .update({ [column]: audioRowId })
+        .eq('lego_id', legoId)
+        .eq('course_code', courseCode)
+      if (bindError) throw bindError
+
+      result[column] = audioRowId
+      result.durations[role] = durationMs
+      result.spoken[role] = textForTTS
+      logger.info(`[Regen Lego] Done: ${legoId} ${role} → ${newS3Key} (${durationMs}ms), audio_id=${audioRowId}`)
+    }
+
+    // Bust production-api stats cache + bump course version (matches neighbours).
+    try {
+      await fetch(`http://localhost:3470/api/production/${courseCode}/audio-stats?fresh=1`, {
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      })
+    } catch (e) { /* production-api may not be running */ }
+    await bumpCourseVersion(supabase, courseCode, 'patch')
+
+    if (skippedHumanRoles.length > 0) result.skipped_human = skippedHumanRoles
+
+    res.json(result)
+
+  } catch (error) {
+    logger.error('Regenerate lego error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
 // POST GENERATE-COMPONENTS - Generate audio for M-LEGO component phrases
 // =============================================================================
 

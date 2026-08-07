@@ -5468,6 +5468,26 @@ app.post('/api/audio/regenerate-phrase/:courseCode/:phraseId', async (req, res) 
   }
 })
 
+// Surgical per-LEGO AUDIO regen — LEGO TEXT IS LOCKED (never written)
+// POST /api/audio/regenerate-lego/:courseCode/:legoId
+// Body: { roles: ["known"|"target1"|"target2", ...], tts_known_text?, tts_target_text? }
+// tts_* is the SPOKEN text only (e.g. "mit dir." to test trailing punctuation on the
+// voice); course_legos.known_text/target_text are NEVER touched, so no BUILD-phrase
+// cascade. Mints a fresh UUID/S3 key per role, rebinds only this LEGO's *_audio_id.
+// Admin-only — it costs TTS (same posture as regenerate-phrase).
+app.post('/api/audio/regenerate-lego/:courseCode/:legoId', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    const { courseCode, legoId } = req.params
+    logger.log(`[Regenerate Lego] ${courseCode} / ${legoId}`)
+    const response = await proxyToPhase8('POST', `/regenerate-lego/${courseCode}/${legoId}`, req.body || {})
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Regenerate lego proxy error:', error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
 // Regenerate presentation audio
 // POST /api/audio/regenerate-presentations/:courseCode
 // Body: { dryRun, regenerateAudio }

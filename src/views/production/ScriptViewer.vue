@@ -258,6 +258,7 @@
           @playback-state="onJourneyPlaybackState"
           @item-edit="onJourneyItemEdit"
           @presentation-edit="onJourneyPresentationEdit"
+          @lego-audio-edit="onJourneyLegoAudioEdit"
           @phrase-flag="onJourneyPhraseFlag"
         />
       </template>
@@ -526,6 +527,176 @@
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
                 {{ presentationBusy ? 'Regenerating...' : 'Save & regenerate audio' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
+
+    <!-- LEGO Audio Regenerate Modal — TEXT IS LOCKED, punctuation goes to the voice only -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div
+          v-if="legoAudioModalVisible"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
+          @click.self="closeLegoAudioModal"
+        >
+          <div class="bg-surface rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-line">
+              <h3 class="text-lg font-semibold text-ink flex items-center gap-2">
+                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-14 0m7 7v3m0-3a4 4 0 01-4-4V7a4 4 0 118 0v7a4 4 0 01-4 4z" />
+                </svg>
+                Regenerate LEGO audio
+                <span class="text-sm font-mono text-muted">{{ legoAudioLegoId }}</span>
+              </h3>
+              <button @click="closeLegoAudioModal" class="text-muted hover:text-ink">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Body -->
+            <div class="px-6 py-5 space-y-4">
+              <!-- Canonical LEGO text: read-only, visibly locked -->
+              <div class="bg-surface-2 bg-opacity-60 border border-line rounded-lg p-3 space-y-1">
+                <div class="flex items-center gap-2 text-xs font-medium text-muted uppercase tracking-wide">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  LEGO text — locked
+                </div>
+                <div class="text-sm">
+                  <span class="text-ink">{{ legoAudioKnownText }}</span>
+                  <span class="mx-2 text-faint">&rarr;</span>
+                  <span class="text-ink">{{ legoAudioTargetText }}</span>
+                </div>
+                <p class="text-xs text-faint">
+                  The LEGO text cannot be edited here — every BUILD phrase contains it, so a change would cascade across the course.
+                </p>
+              </div>
+
+              <!-- Spoken text overrides -->
+              <div class="space-y-2">
+                <label class="block text-xs font-medium text-muted uppercase tracking-wide">
+                  Spoken text (sent to the voice only) — Known
+                </label>
+                <input
+                  v-model="legoSpokenKnown"
+                  type="text"
+                  class="w-full px-3 py-2 text-sm bg-canvas text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
+                />
+                <div class="flex items-center gap-1.5">
+                  <button
+                    v-for="v in punctuationVariants"
+                    :key="`k-${v.label}`"
+                    class="px-2 py-1 text-xs rounded bg-surface-2 hover:bg-surface-3 text-ink border border-line transition-colors"
+                    :title="v.title"
+                    @click="applyPunctuation('known', v)"
+                  >{{ v.label }}</button>
+                  <button
+                    class="px-2 py-1 text-xs rounded text-muted hover:text-ink transition-colors"
+                    @click="legoSpokenKnown = legoAudioKnownText"
+                  >reset</button>
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label class="block text-xs font-medium text-muted uppercase tracking-wide">
+                  Spoken text (sent to the voice only) — Target
+                </label>
+                <input
+                  v-model="legoSpokenTarget"
+                  type="text"
+                  class="w-full px-3 py-2 text-sm bg-canvas text-ink rounded border border-line focus:border-purple-500 focus:outline-none"
+                />
+                <div class="flex items-center gap-1.5">
+                  <button
+                    v-for="v in punctuationVariants"
+                    :key="`t-${v.label}`"
+                    class="px-2 py-1 text-xs rounded bg-surface-2 hover:bg-surface-3 text-ink border border-line transition-colors"
+                    :title="v.title"
+                    @click="applyPunctuation('target', v)"
+                  >{{ v.label }}</button>
+                  <button
+                    class="px-2 py-1 text-xs rounded text-muted hover:text-ink transition-colors"
+                    @click="legoSpokenTarget = legoAudioTargetText"
+                  >reset</button>
+                </div>
+              </div>
+
+              <!-- Measured 2026-08-07: clip identity normalises a trailing full stop
+                   away, so a "." tuning shares its key with the plain clip and a later
+                   course-wide pass can overwrite it. "," and "…" keep their own rows. -->
+              <p class="text-xs text-faint">
+                A trailing &ldquo;.&rdquo; is normalised away in the clip's identity, so a later
+                course-wide pass can overwrite that tuning. Use &ldquo;,&rdquo; or &ldquo;…&rdquo;
+                if it needs to stick.
+              </p>
+
+              <!-- Role checkboxes (same choice as the phrase edit modal) -->
+              <div class="space-y-2">
+                <div class="text-xs font-medium text-muted uppercase tracking-wide">Regenerate which clips</div>
+                <label class="flex items-center gap-3 p-3 rounded-lg border-2 border-line bg-surface-3 bg-opacity-10 cursor-pointer">
+                  <input v-model="legoRegenFlags.known" type="checkbox" class="w-4 h-4 bg-surface-2 border-line rounded" />
+                  <span class="text-sm font-medium text-ink">Known</span>
+                  <span class="text-xs text-faint truncate">{{ legoSpokenKnown }}</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 rounded-lg border-2 cursor-pointer"
+                  :class="legoRegenFlags.target1 ? 'border-emerald-500 bg-emerald-500 bg-opacity-10' : 'border-line'">
+                  <input v-model="legoRegenFlags.target1" type="checkbox" class="w-4 h-4 text-emerald-500 bg-surface-2 border-line rounded" />
+                  <span class="voice-badge inline-flex items-center gap-0.5 text-xs font-medium text-muted px-1.5 py-0.5 bg-surface-3 rounded">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>Voice 1
+                  </span>
+                  <span class="text-xs text-faint truncate">{{ legoSpokenTarget }}</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 rounded-lg border-2 cursor-pointer"
+                  :class="legoRegenFlags.target2 ? 'border-emerald-500 bg-emerald-500 bg-opacity-10' : 'border-line'">
+                  <input v-model="legoRegenFlags.target2" type="checkbox" class="w-4 h-4 text-emerald-500 bg-surface-2 border-line rounded" />
+                  <span class="voice-badge inline-flex items-center gap-0.5 text-xs font-medium text-muted px-1.5 py-0.5 bg-surface-3 rounded">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 20a6 6 0 0112 0"/></svg>Voice 2
+                  </span>
+                  <span class="text-xs text-faint truncate">{{ legoSpokenTarget }}</span>
+                </label>
+              </div>
+
+              <!-- Result / audition per role -->
+              <div v-if="legoAudioResults.length" class="bg-emerald-900 bg-opacity-20 border border-emerald-800 rounded-lg p-3 space-y-3">
+                <div v-for="r in legoAudioResults" :key="r.role" class="space-y-1">
+                  <div class="text-sm text-emerald-300">
+                    {{ r.label }} — {{ r.durationMs }}ms · spoke &ldquo;{{ r.spoken }}&rdquo;
+                  </div>
+                  <audio v-if="r.url" :src="r.url" controls class="w-full h-9"></audio>
+                  <div v-else class="text-xs text-faint">Regenerated, but no audition URL available.</div>
+                </div>
+              </div>
+
+              <div v-if="legoAudioError" class="bg-red-900 bg-opacity-20 border border-red-800 rounded-lg p-3 text-sm text-red-300">
+                {{ legoAudioError }}
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="flex items-center justify-end gap-3 px-6 py-4 border-t border-line">
+              <button
+                @click="closeLegoAudioModal"
+                class="px-4 py-2 bg-surface-2 hover:bg-surface-3 text-ink text-sm font-medium rounded-lg transition-colors"
+              >
+                Close
+              </button>
+              <button
+                @click="regenerateLegoAudio"
+                :disabled="legoAudioBusy || !legoSelectedRoles.length"
+                class="px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-purple-900 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
+              >
+                <svg v-if="legoAudioBusy" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                {{ legoAudioBusy ? 'Regenerating...' : 'Regenerate audio' }}
               </button>
             </div>
           </div>
@@ -1859,6 +2030,143 @@ const savePresentationAndRegen = async () => {
     presentationError.value = err instanceof Error ? err.message : 'Regeneration failed';
   } finally {
     presentationBusy.value = false;
+  }
+};
+
+// =========================================================================
+// LEGO (debut) AUDIO regen — the LEGO TEXT IS LOCKED
+// =========================================================================
+// Tom's ruling 2026-08-07: "we must NOT allow people to edit the lego TEXT —
+// we have done this before - we just add the punctuation to the TTS job, not to
+// the canonical LEGO text". This dialog therefore shows the canonical text
+// read-only and sends any punctuation variant as tts_* SPOKEN text only.
+const legoAudioModalVisible = ref(false);
+const legoAudioLegoId = ref<string>('');
+const legoAudioKnownText = ref<string>('');
+const legoAudioTargetText = ref<string>('');
+const legoSpokenKnown = ref<string>('');
+const legoSpokenTarget = ref<string>('');
+const legoRegenFlags = ref({ known: false, target1: true, target2: true });
+const legoAudioBusy = ref(false);
+const legoAudioError = ref<string | null>(null);
+const legoAudioResults = ref<Array<{ role: string; label: string; durationMs: number | null; url: string | null; spoken: string }>>([]);
+const legoAudioSourceItem = ref<any>(null);
+
+// The point of the feature: one-tap variants for an A/B by ear.
+const punctuationVariants = [
+  { label: '.', title: 'Append a full stop', suffix: '.' },
+  { label: ',', title: 'Append a comma', suffix: ',' },
+  { label: '…', title: 'Append an ellipsis', suffix: '…' },
+  { label: '… before', title: 'Prepend an ellipsis', prefix: '… ' },
+];
+
+const applyPunctuation = (side: 'known' | 'target', v: { suffix?: string; prefix?: string }) => {
+  const ref_ = side === 'known' ? legoSpokenKnown : legoSpokenTarget;
+  let text = ref_.value || '';
+  if (v.prefix) text = v.prefix + text;
+  if (v.suffix) text = text + v.suffix;
+  ref_.value = text;
+};
+
+const legoSelectedRoles = computed(() =>
+  (['known', 'target1', 'target2'] as const).filter(r => legoRegenFlags.value[r])
+);
+
+const onJourneyLegoAudioEdit = (item: any) => {
+  const legoId = item.legoId || item.lego_id;
+  if (!legoId) return;
+  legoAudioLegoId.value = legoId;
+  legoAudioKnownText.value = item.known_text || '';
+  legoAudioTargetText.value = item.target_text || '';
+  legoSpokenKnown.value = item.known_text || '';
+  legoSpokenTarget.value = item.target_text || '';
+  legoRegenFlags.value = { known: false, target1: true, target2: true };
+  legoAudioError.value = null;
+  legoAudioResults.value = [];
+  legoAudioSourceItem.value = item;
+  legoAudioModalVisible.value = true;
+};
+
+const closeLegoAudioModal = () => {
+  legoAudioModalVisible.value = false;
+};
+
+const regenerateLegoAudio = async () => {
+  const roles = legoSelectedRoles.value;
+  if (legoAudioBusy.value || !roles.length) return;
+  legoAudioBusy.value = true;
+  legoAudioError.value = null;
+  legoAudioResults.value = [];
+
+  const ROLE_LABEL: Record<string, string> = { known: 'Known', target1: 'Voice 1', target2: 'Voice 2' };
+  const apiBaseUrl = getApiBaseUrl();
+
+  try {
+    const resp = await fetch(
+      `${apiBaseUrl}/api/audio/regenerate-lego/${courseCode.value}/${encodeURIComponent(legoAudioLegoId.value)}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({
+          roles,
+          tts_known_text: legoSpokenKnown.value,
+          tts_target_text: legoSpokenTarget.value,
+        }),
+      }
+    );
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({}));
+      throw new Error(err.error || `Regeneration failed (${resp.status})`);
+    }
+    const result = await resp.json();
+    if (result.skipped) {
+      legoAudioError.value = `Skipped: ${result.reason}`;
+      return;
+    }
+
+    const COLUMN: Record<string, string> = {
+      known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id',
+    };
+    const UUID_FIELD: Record<string, string> = {
+      known: 'known_audio_uuid', target1: 'target1_audio_uuid', target2: 'target2_audio_uuid',
+    };
+
+    for (const role of roles) {
+      const audioId = result[COLUMN[role]];
+      // Rebind the live journey row in place so its play buttons hit the new clip.
+      if (audioId && legoAudioSourceItem.value) {
+        legoAudioSourceItem.value[UUID_FIELD[role]] = audioId;
+      }
+      let url: string | null = null;
+      if (audioId) {
+        try {
+          const urlResp = await fetch(
+            `${apiBaseUrl}/api/production/${courseCode.value}/audio/${audioId}/url`,
+            { headers: { 'ngrok-skip-browser-warning': 'true' } }
+          );
+          if (urlResp.ok) url = (await urlResp.json()).url || null;
+        } catch (e) { /* non-fatal: regen succeeded */ }
+      }
+      legoAudioResults.value.push({
+        role,
+        label: ROLE_LABEL[role],
+        durationMs: result.durations?.[role] ?? null,
+        url,
+        spoken: result.spoken?.[role] ?? (role === 'known' ? legoSpokenKnown.value : legoSpokenTarget.value),
+      });
+    }
+
+    if (result.skipped_human?.length) {
+      legoAudioError.value = `Kept human recording(s) for: ${result.skipped_human.join(', ')} — no TTS written.`;
+    }
+
+    // True up the journey (other rows referencing this LEGO's clips).
+    if (viewMode.value === 'journey') refreshJourneyInPlace();
+  } catch (err) {
+    console.error('LEGO audio regen failed:', err);
+    legoAudioError.value = err instanceof Error ? err.message : 'Regeneration failed';
+  } finally {
+    legoAudioBusy.value = false;
   }
 };
 
