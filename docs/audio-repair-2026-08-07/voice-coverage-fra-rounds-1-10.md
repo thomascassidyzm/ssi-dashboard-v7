@@ -14,7 +14,7 @@ current voice. **It is the other way round, and by more than the gap you imagine
 |---|---|---|
 | **Eve** — `xai_eve` + `eve` | **63 / 63 — 100%** | the current voice |
 | Azure Sonia | 56 / 63 — 89% | old estate voice, not a candidate |
-| **your clone** — `gfzdpspr5fdp` + `xai_gfzdpspr5fdp` | **32 / 63 — 51%** | |
+| **Tom (clone)** — `gfzdpspr5fdp` + `xai_gfzdpspr5fdp` | **32 / 63 — 51%** | |
 | Azure Ryan | 30 / 63 — 48% | |
 | xAI bedd6226 | 29 / 63 — 46% | |
 
@@ -23,7 +23,7 @@ Split by layer, which is where it really shows:
 | voice | English known (53) | intro/presentation (10) |
 |---|---|---|
 | Eve | **53 — all of them** | **10 — all of them** |
-| clone | 32 | **0** |
+| Tom (clone) | 32 | **0** |
 
 The clone has never spoken a single one of the ten intro lines. Eve has spoken all 169 clips these
 rounds need, in both languages.
@@ -132,3 +132,43 @@ Cross-checked by two independent join keys — `text_normalized` with both norma
 and the generated `text_stripped` column — which agree exactly. An independent third-party check was
 dispatched and died on an account limit; that verification did NOT run, and the agreement above is
 between my own two methods.*
+
+---
+
+## Update — the two things you settled, and what they changed
+
+**`eve` ≡ `xai_eve`: ruled, and built in.** Bare and provider-prefixed ids are now one voice
+identity by default, across every provider era, not just Eve's. Era-crossing matches are still
+tagged so an audit can find them, and the merge never joins two different voices.
+
+**The clone is now labelled `Tom (clone)` everywhere**, in both id spellings.
+
+**Neither merge moved a single coverage number.** The table was already unioning across id
+spellings, so this fixed the labels and the reuse matching, not the counts. Eve is still 100%, the
+clone still 51%.
+
+## Your 1,671 Quebecois intros — real, right voice, wrong lines
+
+You were right that the clone holds a large corpus of French intro lines in `fra_ca_for_eng`:
+**1,671 presentation clips**, and they say exactly the right kind of thing — *"The French for:
+'a big world', is:"*. Right voice, right target-language name.
+
+**But zero of them are lines rounds 1–10 need, and here is precisely why.** Two different intro
+frames are in play:
+
+| frame | example | fra_ca on the clone | fra_for_eng rounds 1–10 |
+|---|---|---|---|
+| bare | *"The French for: 'i want', is:"* | 1,325 | 0 of 10 |
+| with context | *"The French for: 'I want', as in — '…', is:"* | 346 | **all 10** |
+
+Every one of the ten lines these rounds need uses the context frame. The clone's Quebecois corpus is
+overwhelmingly the bare frame, and its 346 context-frame lines do not overlap our ten.
+
+Three of our ten intro texts **do** exist in `fra_ca_for_eng` byte-for-byte — including
+*"The French for: 'I want', as in — 'I want to speak French with you now', is:"* — but they are on
+**Azure Sonia**, not the clone. Checked at the individual clip.
+
+So the Quebecois route to the intros stays shut, on the same-voice rule, whichever voice you pick.
+
+**None of this changes the recommendation: Eve, who already has all ten.**
+
