@@ -26,8 +26,14 @@
     </div>
 
     <div class="segment-actions">
-      <button class="segment-btn" @click="$emit('play', segment)">
-        <span class="btn-icon">▶</span> Play
+      <button
+        class="segment-btn"
+        :class="{ playing }"
+        :disabled="!hasAudio"
+        :title="hasAudio ? 'Play this take' : 'No audio captured for this phrase'"
+        @click="$emit('play', segment)"
+      >
+        <span class="btn-icon">{{ playing ? '⏸' : '▶' }}</span> {{ playing ? 'Playing' : 'Play' }}
       </button>
       <button class="segment-btn" @click="$emit('redo', segment)">
         <span class="btn-icon">↻</span> Redo
@@ -43,10 +49,15 @@
 import { computed } from 'vue'
 
 const props = defineProps({
-  segment: { type: Object, required: true }
+  segment: { type: Object, required: true },
+  playing: { type: Boolean, default: false }
 })
 
 defineEmits(['play', 'redo', 'approve'])
+
+// A card with no captured audio says so on the button instead of offering a
+// control that can only ever be silent.
+const hasAudio = computed(() => !!props.segment.audioUrl)
 
 const confidenceLabel = computed(() => {
   if (props.segment.confidenceLevel === 'high') return 'High'
@@ -205,6 +216,23 @@ function getBarHeight(index) {
 
 .btn-icon {
   font-size: 0.9em;
+}
+
+.segment-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.segment-btn:disabled:hover {
+  background: var(--color-void, var(--canvas));
+  color: var(--color-paper, var(--ink));
+  border-color: var(--color-graphite, var(--surface-3));
+}
+
+.segment-btn.playing {
+  background: var(--color-tungsten, var(--accent));
+  color: var(--color-void, var(--canvas));
+  border-color: var(--color-tungsten, var(--accent));
 }
 
 .segment-btn:hover {
