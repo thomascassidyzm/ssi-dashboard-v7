@@ -263,6 +263,7 @@ import { useRoute } from 'vue-router'
 import { useAutocueState } from '@/composables/useAutocueState'
 import { useContinuousRecorder } from '@/composables/useContinuousRecorder'
 import { useUploadQueue } from '@/composables/useAudioUpload'
+import { legoChunkCount } from '@/utils/phraseChunks'
 
 import ModeSelector from './ModeSelector.vue'
 import RoleSelector from './RoleSelector.vue'
@@ -284,6 +285,10 @@ const route = useRoute()
 // Use shared autocue state
 const {
   state,
+  // Was missing from this list, so the script-mode header's
+  // `currentPhrase?.cadence` read undefined and the pass title said
+  // "Natural Speed" right through the slow passes too.
+  currentPhrase,
   totalPhrases,
   recordedCount,
   completionPercent,
@@ -336,6 +341,28 @@ const calibration = continuousRecorder.calibration
 // one more thing to read on a screen the recordist is trying to read a script off.
 const calibrationWarning = computed(() =>
   calibration.value?.quality === 'loud' || calibration.value?.quality === 'too-loud'
+)
+
+// How many LEGO chunks the phrase on the autocue right now is read in.
+//
+// Only a SLOW phrase gets a chunk count above 1, because only the slow pass
+// draws the gap markers (see TeleprompterDisplay's :show-gaps). A natural-speed
+// phrase is read straight through, so it stays at 1 and keeps the snappy 800ms
+// cut-off exactly as before — the longer tolerance is scoped to the phrases
+// that actually ask the recordist to pause.
+const expectedChunks = computed(() => {
+  const phrase = currentPhrase.value
+  if (!phrase || phrase.cadence !== 'slow') return 1
+  return legoChunkCount(phrase)
+})
+
+// Push it to the recorder as the autocue advances. The recorder is long-lived
+// across the whole session — a single startFlow() spans every phrase — so this
+// has to be re-sent per phrase rather than set once at start.
+watch(
+  expectedChunks,
+  (count) => continuousRecorder.setExpectedChunks(count),
+  { immediate: true }
 )
 
 // Background upload queue

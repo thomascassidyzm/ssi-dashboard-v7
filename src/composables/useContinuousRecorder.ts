@@ -35,6 +35,9 @@ const defaultConfig: ContinuousRecorderConfig = {
   silenceDuration: 800,
   minSpeechDuration: 300,
   pollInterval: 50,
+  expectedChunks: 1,
+  interChunkSilenceDuration: 2500,
+  chunkPauseDuration: 400,
   autoUpload: true,
   autoAdvance: true,
   calibrationMs: 1500
@@ -48,7 +51,10 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
     silenceThreshold: cfg.silenceThreshold,
     silenceDuration: cfg.silenceDuration,
     minSpeechDuration: cfg.minSpeechDuration,
-    pollInterval: cfg.pollInterval
+    pollInterval: cfg.pollInterval,
+    expectedChunks: cfg.expectedChunks,
+    interChunkSilenceDuration: cfg.interChunkSilenceDuration,
+    chunkPauseDuration: cfg.chunkPauseDuration
   })
 
   // State
@@ -269,6 +275,20 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
     vad.updateConfig(newConfig)
   }
 
+  /**
+   * Tell the recorder how many LEGO chunks the phrase now on the autocue is
+   * read in, so it tolerates the pauses the autocue is drawing gap markers for.
+   *
+   * Narrow on purpose: it touches expectedChunks and NOTHING else. Pushing a
+   * wider config object through here would overwrite silenceThreshold with the
+   * constant default and throw away the room calibration measured at startFlow.
+   */
+  function setExpectedChunks(count: number) {
+    const n = Number.isFinite(count) && count >= 1 ? Math.floor(count) : 1
+    cfg.expectedChunks = n
+    vad.updateConfig({ expectedChunks: n })
+  }
+
   // Cleanup on unmount
   onUnmounted(() => {
     stopFlow()
@@ -291,6 +311,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
     stopFlow,
     manualStop,
     updateConfig,
+    setExpectedChunks,
 
     // Callbacks
     onSegmentCaptured: onSegmentCapturedCallback,

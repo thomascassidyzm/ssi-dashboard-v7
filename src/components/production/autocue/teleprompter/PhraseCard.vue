@@ -37,6 +37,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import { resolvePhraseChunks } from '@/utils/phraseChunks'
 
 const props = defineProps({
   phrase: { type: Object, required: true },
@@ -48,33 +49,11 @@ const props = defineProps({
 // Slow cadence detection — from phrase's own cadence field (optimizer mode)
 const isSlowCadence = computed(() => props.phrase.cadence === 'slow')
 
-// Resolve chunks from whichever format the phrase provides.
-// Priority: recordingChunks (objects) > chunks (objects or strings) > chunksString (pipe-delimited) > text (whitespace fallback)
-const displayChunks = computed(() => {
-  // Preferred: recordingChunks with glue absorbed into adjacent LEGOs
-  if (Array.isArray(props.phrase.recordingChunks) && props.phrase.recordingChunks.length > 0) {
-    return props.phrase.recordingChunks.map(c => ({
-      text: typeof c === 'string' ? c : c.text,
-      mergedGlue: typeof c === 'object' ? c.mergedGlue : null,
-      legoId: typeof c === 'object' ? c.legoId : null,
-    }))
-  }
-  // Next: raw chunks array (strings or objects)
-  if (Array.isArray(props.phrase.chunks) && props.phrase.chunks.length > 0) {
-    return props.phrase.chunks.map(c => ({
-      text: typeof c === 'string' ? c : c.text,
-      mergedGlue: typeof c === 'object' ? c.mergedGlue : null,
-      legoId: typeof c === 'object' ? c.legoId : null,
-    }))
-  }
-  // Next: pipe-delimited string from the optimiser output
-  if (typeof props.phrase.chunksString === 'string' && props.phrase.chunksString.length > 0) {
-    return props.phrase.chunksString.split('|').map(s => ({ text: s.trim(), mergedGlue: null, legoId: null }))
-  }
-  // Fallback: legacy word-level split (no LEGO info available)
-  if (!props.phrase.text) return []
-  return props.phrase.text.split(' ').map(w => ({ text: w, mergedGlue: null, legoId: null }))
-})
+// Resolve chunks from whichever format the phrase provides. Shared with the
+// recorder (src/utils/phraseChunks.js) so the gap markers drawn here and the
+// silence the VAD will tolerate are computed from the same chunk map — the UI
+// must never invite a pause the recorder cannot survive.
+const displayChunks = computed(() => resolvePhraseChunks(props.phrase).chunks)
 </script>
 
 <style scoped>

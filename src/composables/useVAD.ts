@@ -17,6 +17,14 @@ export interface VADConfig {
   minSpeechDuration: number
   // How often to check audio levels (ms)
   pollInterval: number
+  // How many LEGO chunks the phrase now on the autocue is read in. 1 = read
+  // straight through, which is every natural-speed phrase, and the default.
+  expectedChunks: number
+  // Silence tolerated while chunks are still to come (ms). Only ever applies
+  // BEFORE the last chunk has been read — see pollAudioLevel.
+  interChunkSilenceDuration: number
+  // Silence that counts as a chunk boundary rather than a breath (ms).
+  chunkPauseDuration: number
 }
 
 export interface VADState {
@@ -45,7 +53,23 @@ const defaultConfig: VADConfig = {
   silenceThreshold: 0.02,      // time-domain RMS; see pollAudioLevel
   silenceDuration: 800,         // 800ms of silence = end of phrase
   minSpeechDuration: 300,       // At least 300ms of speech to count
-  pollInterval: 50              // Check every 50ms
+  pollInterval: 50,             // Check every 50ms
+  expectedChunks: 1,            // read straight through unless told otherwise
+  // Long enough to clear every mid-phrase pause measured in a real take (the
+  // longest was 1700ms on Kai's 2026-08-07 read) with margin. It is also the
+  // worst case rather than a typical one: a phrase whose chunks got run
+  // together waits this long once and then still ends. Nothing hangs forever.
+  interChunkSilenceDuration: 2500,
+  // What counts as "that was a chunk boundary" rather than a breath.
+  //
+  // The error here is deliberately asymmetric. Counting too FEW boundaries
+  // costs one 2500ms wait at the end of a take — slow, harmless. Counting too
+  // MANY re-creates the bug, because the counter reaches expectedChunks while
+  // the recordist is still mid-phrase and the next pause cuts at 800ms. So the
+  // bar sits well above ordinary breath: on the measured take, 45 of 71
+  // internal gaps fall under 400ms, while an inter-LEGO pause is a deliberate
+  // one the recordist is being shown a gap marker for.
+  chunkPauseDuration: 400
 }
 
 // Calibration constants. Ordinary speech through this pipeline measures ~0.23
@@ -74,6 +98,12 @@ export function useVAD(config: Partial<VADConfig> = {}) {
   const silenceStartTime = ref<number | null>(null)
   const isCalibrating = ref(false)
   const calibration = ref<VADCalibration | null>(null)
+  // Chunks completed inside the take currently being captured. Decides which
+  // silence tolerance is in force; see pollAudioLevel.
+  const chunksSeen = ref(0)
+  // Whether the CURRENT run of silence has already been counted as a chunk
+  // boundary, so one long pause increments the counter once, not every poll.
+  let silenceCounted = false
 
   // Audio nodes
   let audioContext: AudioContext | null = null
@@ -143,6 +173,8 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     silenceStartTime.value = null
     isCalibrating.value = false
     calibrationSamples = []
+    chunksSeen.value = 0
+    silenceCounted = false
   }
 
   let calibrationSamples: number[] = []
@@ -266,11 +298,13 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     if (isAboveThreshold) {
       // Sound detected
       silenceStartTime.value = null
+      silenceCounted = false
 
       if (!isSpeaking.value) {
         // Speech just started
         isSpeaking.value = true
         speechStartTime.value = now
+        chunksSeen.value = 0
         if (onSpeechStart) {
           onSpeechStart()
         }
@@ -281,23 +315,57 @@ export function useVAD(config: Partial<VADConfig> = {}) {
         // We were speaking, now silent
         if (!silenceStartTime.value) {
           silenceStartTime.value = now
-        } else if (now - silenceStartTime.value >= cfg.silenceDuration) {
-          // Silence has persisted long enough - speech ended
-          const speechDuration = speechStartTime.value 
-            ? now - speechStartTime.value - cfg.silenceDuration 
-            : 0
+          silenceCounted = false
+        } else {
+          const silenceElapsed = now - silenceStartTime.value
 
-          if (speechDuration >= cfg.minSpeechDuration) {
-            // Valid speech segment
-            if (onSpeechEnd) {
-              onSpeechEnd(speechDuration)
-            }
+          // A pause long enough to be deliberate closes off a chunk. The slow
+          // pass DRAWS a gap marker between LEGO chunks, so a pause mid-phrase
+          // is the studio's own instruction being followed — not the end of
+          // the take.
+          if (!silenceCounted && silenceElapsed >= cfg.chunkPauseDuration) {
+            silenceCounted = true
+            chunksSeen.value++
           }
 
-          // Reset state
-          isSpeaking.value = false
-          speechStartTime.value = null
-          silenceStartTime.value = null
+          // While chunks are still outstanding, tolerate a long pause; once the
+          // last chunk has been read, go back to cutting promptly.
+          //
+          // This is the whole fix for the 2026-08-07 interaction bug: the flat
+          // 800ms cut a slow take at the FIRST gap marker, so the pause the UI
+          // asked for was the pause the recorder could not survive. Simply
+          // raising the flat value is not available — measured on Kai's own
+          // 72.5s take, the gap he leaves BETWEEN phrases runs as short as
+          // 600ms, so a flat 2500ms would merge phrase after phrase into one
+          // blob, which is the failure this VAD was just fixed for, arriving
+          // from the other side. Spending the long tolerance only mid-phrase
+          // buys the pause without paying for it at the phrase boundary, where
+          // the cut still happens at the snappy 800ms.
+          const stillToCome = chunksSeen.value < cfg.expectedChunks
+          const effectiveSilence = stillToCome
+            ? cfg.interChunkSilenceDuration
+            : cfg.silenceDuration
+
+          if (silenceElapsed >= effectiveSilence) {
+            // Silence has persisted long enough - speech ended
+            const speechDuration = speechStartTime.value
+              ? now - speechStartTime.value - effectiveSilence
+              : 0
+
+            if (speechDuration >= cfg.minSpeechDuration) {
+              // Valid speech segment
+              if (onSpeechEnd) {
+                onSpeechEnd(speechDuration)
+              }
+            }
+
+            // Reset state
+            isSpeaking.value = false
+            speechStartTime.value = null
+            silenceStartTime.value = null
+            silenceCounted = false
+            chunksSeen.value = 0
+          }
         }
       }
     }
@@ -343,6 +411,7 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     currentLevel,
     isCalibrating,
     calibration,
+    chunksSeen,
 
     // Actions
     startListening,
