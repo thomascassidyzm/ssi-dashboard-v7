@@ -84,7 +84,11 @@ async function renderOne ({ text, cfg }) {
   const renderMs = Date.now() - t0
 
   const tm = Date.now()
-  const { buffer: mastered, durationMs } = await masterAudio(audioBuffer, text)
+  // masterLufs is a RENDER parameter, not a gate threshold: it changes the bytes.
+  // Play mode's "quieter ↔ louder" slider moves it, and the loudness gate then
+  // judges the result against its own band — which is the point. A slider that
+  // moved the band instead would change the verdict and nothing you can hear.
+  const { buffer: mastered, durationMs } = await masterAudio(audioBuffer, text, { targetLufs: cfg.masterLufs })
   const masterMs = Date.now() - tm
 
   return { mastered, durationMs, renderMs, masterMs, lang }
@@ -160,6 +164,16 @@ function buildExperiment ({ id, kind, title, sentences, configs, blind, notes, c
   }
   if (cfgs.some((c) => c.provider === 'azure')) {
     caveats.push('Azure clips carry no dollar figure — Azure is billed on a separate plan this lab does not meter. Characters still count against the ceiling.')
+  }
+  // A clip mastered outside the loudness gate's own band WILL be quarantined by
+  // that gate. That is not a bug and the run must say so up front, or the verdict
+  // reads as a mystery rather than as the direct consequence of a slider.
+  for (const c of cfgs) {
+    const band = (c.thresholds && c.thresholds.loudness) || {}
+    if (!Number.isFinite(band.targetLufs) || !Number.isFinite(band.toleranceDb)) continue
+    if (Math.abs(c.masterLufs - band.targetLufs) > band.toleranceDb) {
+      caveats.push(`Config ${c.key} masters to ${c.masterLufs} LUFS, outside the loudness gate's band of ${band.targetLufs} ±${band.toleranceDb} dB — the loudness gate will refuse it, by arithmetic rather than by accident.`)
+    }
   }
 
   return {

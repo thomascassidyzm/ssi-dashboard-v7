@@ -1141,9 +1141,19 @@ async function processInParallel(items, processor, concurrency = CONCURRENCY) {
  *   tail-defect gate to pick the detector mode: texts with scripted internal
  *   silences ([pause], ellipses — pod takes) legitimately go quiet-then-loud
  *   in the tail, so only the burst rule is safe on them.
+ * @param {object} [opts]
+ * @param {number} [opts.targetLufs=-16.0] - The loudness this clip is mastered
+ *   to. ADDITIVE and defaulted to the house number, so every existing caller
+ *   masters exactly as it did before. It exists for VOICELAB's Play mode: a
+ *   "quieter ↔ louder" slider that only moved the GATE'S band would change the
+ *   verdict and not one byte of what you hear, which is the dead-control
+ *   failure the lab is built to avoid. The mastering target and the gate band
+ *   stay separate numbers on purpose — one is what the clip sounds like, the
+ *   other is what would be allowed into the store.
  * @returns {Promise<{buffer: Buffer, durationMs: number}>} Mastered audio and duration
  */
-async function masterAudio(audioBuffer, ttsText) {
+async function masterAudio(audioBuffer, ttsText, opts = {}) {
+  const targetLufs = Number.isFinite(Number(opts.targetLufs)) ? Number(opts.targetLufs) : -16.0
   const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'audio-master-'))
   const rawPath = path.join(tempDir, 'raw.mp3')
   const masteredPath = path.join(tempDir, 'mastered.mp3')
@@ -1152,8 +1162,9 @@ async function masterAudio(audioBuffer, ttsText) {
     // Write raw audio to temp file
     await fs.writeFile(rawPath, audioBuffer)
 
-    // Normalize to -16 LUFS (broadcast standard)
-    await audioProcessor.normalizeAudio(rawPath, masteredPath, -16.0)
+    // Normalize to the house -16 LUFS (broadcast standard) unless a caller asked
+    // for another target — see opts.targetLufs above.
+    await audioProcessor.normalizeAudio(rawPath, masteredPath, targetLufs)
 
     // Tail-defect FLAG — read-only, never a repair (Tom's ruling 2026-08-05).
     //

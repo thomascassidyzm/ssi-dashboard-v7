@@ -31,9 +31,19 @@
  * NOTHING ON THIS SCREEN WRITES TO course_audio, and export is an export: the
  * lab hands you the config JSON, a human applies it. Same rule as Pod Lab, and
  * the same reason — an algorithm_config write reaches every learner in ~5 min.
+ *
+ * ── PLAY MODE IS THE FRONT DOOR (Tom's ruling, 2026-08-07) ──────────────────
+ * "Looks fantastic but a few levels too deep in granularity… I'm going to want
+ * to actually USE it without spending a week working out what these things
+ * mean." So the four numbered layers above now sit behind ENGINEERING, whole
+ * and unchanged, and the screen opens on PLAY: a voice, a language, a sentence,
+ * three sliders that each move something you can hear, one button, and a
+ * one-line verdict. Nothing was removed to make that happen — the depth stopped
+ * being the entrance, which is a different thing from stopping existing.
  */
 import { ref, computed } from 'vue'
 import { probe, labBase, useCloudBackend, CLOUD_BACKEND } from './voicelab/labApi'
+import PlayPanel from './voicelab/PlayPanel.vue'
 import ParametersPanel from './voicelab/ParametersPanel.vue'
 import RunPanel from './voicelab/RunPanel.vue'
 import ExperimentsPanel from './voicelab/ExperimentsPanel.vue'
@@ -45,6 +55,9 @@ const TABS = [
   { id: 'experiments', n: 3, label: 'Experiments' },
   { id: 'estate', n: 4, label: 'Estate' },
 ]
+
+/** 'play' | 'engineering'. Play is the landing layer; Engineering is the estate above, intact. */
+const mode = ref('play')
 
 const tab = ref('parameters')
 const params = ref(null)
@@ -98,8 +111,20 @@ const showB = ref(false)
         <span class="crumb-sep">/</span>
         <span class="crumb-here">Voice Lab</span>
       </nav>
-      <h1 class="page-title">Voice Lab</h1>
-      <p class="page-subtitle">
+      <div class="title-row">
+        <h1 class="page-title">Voice Lab</h1>
+        <div class="mode-switch">
+          <button :class="{ on: mode === 'play' }" @click="mode = 'play'">Play</button>
+          <button :class="{ on: mode === 'engineering' }" @click="mode = 'engineering'">Engineering</button>
+        </div>
+      </div>
+      <p v-if="mode === 'play'" class="page-subtitle">
+        Pick a voice, type a sentence, move the sliders, press Generate. Every slider here changes
+        something you can hear — what a voice cannot do is greyed out and says so.
+        <strong>Nothing here writes to <code>course_audio</code></strong>, and the daily spending
+        ceiling refuses rather than quietly costing money.
+      </p>
+      <p v-else class="page-subtitle">
         Parameters, tests, and a record of every run. Set a config, render real sentences through
         it, read the six-gate verdict beside the audio, and keep the run so the next one can be
         compared against it. <strong>Nothing here writes to <code>course_audio</code></strong>, and
@@ -130,7 +155,18 @@ const showB = ref(false)
 
     <div v-else-if="loading" class="muted">Loading the lab…</div>
 
-    <template v-if="params">
+    <!-- PLAY — the front door. -->
+    <section v-if="params && mode === 'play'">
+      <PlayPanel :params="params" />
+      <p class="play-footnote">
+        Everything else the lab can do — every gate threshold, blind A/B over a batch of real
+        course sentences, the log of every run ever made, and the free estate bench —
+        <button class="play-footlink" @click="mode = 'engineering'">is under Engineering</button>,
+        unchanged.
+      </p>
+    </section>
+
+    <template v-if="params && mode === 'engineering'">
       <nav class="tabs">
         <button v-for="t in TABS" :key="t.id" :class="{ on: tab === t.id }" @click="tab = t.id">
           <span class="tab-n">{{ t.n }}</span> {{ t.label }}
@@ -163,7 +199,7 @@ const showB = ref(false)
       </section>
     </template>
 
-    <section v-show="tab === 'estate' || (!params && !loading)">
+    <section v-show="(mode === 'engineering' && tab === 'estate') || (!params && !loading)">
       <EstatePanels />
     </section>
   </div>
@@ -177,6 +213,18 @@ const showB = ref(false)
 .crumb-link { color: var(--accent-2); text-decoration: none; }
 .crumb-sep, .crumb-here { color: var(--muted); }
 .page-title { font-size: 1.75rem; margin: 0 0 0.25rem; letter-spacing: 0.04em; }
+.title-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
+.mode-switch { display: flex; border: 1px solid var(--surface-3); border-radius: 999px; overflow: hidden; }
+.mode-switch button {
+  background: none; border: none; color: var(--muted); font-family: inherit;
+  font-size: 0.8125rem; padding: 0.4rem 1.1rem; cursor: pointer;
+}
+.mode-switch button.on { background: #ec4899; color: #fff; }
+.play-footnote { color: var(--muted); font-size: 0.78rem; margin-top: 3rem; max-width: 80ch; line-height: 1.55; }
+.play-footlink {
+  background: none; border: none; padding: 0; color: #ec4899;
+  font: inherit; cursor: pointer; text-decoration: underline;
+}
 .page-subtitle { color: var(--muted); max-width: 80ch; line-height: 1.55; margin: 0 0 0.5rem; }
 .spend-line { color: var(--muted); font-size: 0.78rem; margin: 0 0 1rem; }
 .tabs {

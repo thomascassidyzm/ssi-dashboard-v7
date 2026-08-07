@@ -23,6 +23,16 @@ const gateStack = require('../audio-intelligence/gate-stack.cjs')
 /** xAI's published TTS price. Azure is billed on a different plan and is NOT metered here. */
 const XAI_USD_PER_MILLION_CHARS = 15
 
+/**
+ * What masterAudio normalises to when nobody asks for anything else — the house
+ * level, restated here from phase8-audio-v13.cjs:masterAudio so Play mode's
+ * loudness slider can be centred on it. It is deliberately NOT the loudness
+ * gate's band centre (-15.5): the band is what the store would admit, this is
+ * what the pipeline actually renders, and the 0.5 dB between them is inside the
+ * band's own ±1.5 dB tolerance.
+ */
+const HOUSE_MASTER_LUFS = -16.0
+
 const LIMITS = {
   maxCharsPerSentence: 300,
   maxSentencesPerBatch: 20,
@@ -99,6 +109,11 @@ function normaliseConfig (raw = {}, defaults = {}) {
     bitRate: num(raw.bitRate, defaults.bitRate ?? 128000),
     codec: String(raw.codec || defaults.codec || 'mp3'),
     speed: num(raw.speed, defaults.speed ?? 1.0),
+    // What the clip is MASTERED to, which is not the same number as the loudness
+    // gate's band centre. The band says what would be admitted; this says what you
+    // hear. Play mode's "quieter ↔ louder" slider moves this one — a slider that
+    // only moved the band would change the verdict and no audio at all.
+    masterLufs: num(raw.masterLufs, defaults.masterLufs ?? HOUSE_MASTER_LUFS),
     style: raw.style ?? defaults.style ?? null,
     styleDegree: raw.styleDegree ?? defaults.styleDegree ?? null,
     pitch: raw.pitch ?? defaults.pitch ?? null,
@@ -330,7 +345,7 @@ function exportConfig (experiment, configKey) {
       voiceId: cfg.voiceId,
       voiceName: cfg.voiceName,
       language: cfg.language,
-      render: { sampleRate: cfg.sampleRate, bitRate: cfg.bitRate, codec: cfg.codec, speed: cfg.speed, style: cfg.style, styleDegree: cfg.styleDegree, pitch: cfg.pitch },
+      render: { sampleRate: cfg.sampleRate, bitRate: cfg.bitRate, codec: cfg.codec, speed: cfg.speed, masterLufs: cfg.masterLufs, style: cfg.style, styleDegree: cfg.styleDegree, pitch: cfg.pitch },
       thresholds: cfg.thresholds,
     },
     filename: `voicelab-${experiment.id}-${cfg.key}.json`,
@@ -357,6 +372,7 @@ function summarise (experiment) {
 
 module.exports = {
   XAI_USD_PER_MILLION_CHARS,
+  HOUSE_MASTER_LUFS,
   LIMITS,
   PROVIDERS,
   defaultThresholds,

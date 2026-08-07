@@ -223,6 +223,37 @@ describe('providers — the supports flags are honest', () => {
   })
 })
 
+describe('masterLufs — the loudness Play mode moves is the RENDER, not the gate band', () => {
+  it('defaults to the house mastering level rather than the gate band centre', () => {
+    // These are two different numbers on purpose: -16.0 is what masterAudio
+    // renders to, -15.5 is the centre of the band the store would admit. If a
+    // future edit collapses them, the loudness slider stops being able to fail
+    // and the gate stops meaning anything.
+    expect(lab.defaultConfig().masterLufs).toBe(lab.HOUSE_MASTER_LUFS)
+    expect(lab.HOUSE_MASTER_LUFS).toBe(-16.0)
+    expect(lab.HOUSE_MASTER_LUFS).not.toBe(loudness.DEFAULT_BAND.targetLufs)
+  })
+
+  it('is carried on a config and survives normalisation', () => {
+    expect(cfg({ masterLufs: -14.5 }).masterLufs).toBe(-14.5)
+    expect(cfg({ masterLufs: 'nonsense' }).masterLufs).toBe(lab.HOUSE_MASTER_LUFS)
+  })
+
+  it('sits inside the band at every Play-mode stop, so no slider position can be a refusal', () => {
+    // Play mode derives its stops as centre ± reach/2 where reach is the widest
+    // symmetric swing that stays in band; this asserts the arithmetic that
+    // guarantee rests on.
+    const { targetLufs, toleranceDb } = loudness.DEFAULT_BAND
+    const centre = lab.HOUSE_MASTER_LUFS
+    const reach = Math.min(centre - (targetLufs - toleranceDb), (targetLufs + toleranceDb) - centre)
+    expect(reach).toBeGreaterThan(0)
+    for (const i of [0, 1, 2, 3, 4]) {
+      const lufs = centre + (i - 2) * (reach / 2)
+      expect(Math.abs(lufs - targetLufs)).toBeLessThanOrEqual(toleranceDb)
+    }
+  })
+})
+
 describe('export — a config for a human, never a deployment', () => {
   const experiment = {
     id: 'aaaaaaaaaaaaaaaa',
