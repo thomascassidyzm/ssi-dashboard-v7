@@ -116,37 +116,101 @@
 
         <div class="field-block">
           <div class="knob-top">
-            <label>Maximum phrase syllables <span class="hint">absolute ceiling — blank or 0 = no limit</span></label>
-            <span class="knob-val">{{ maxPhraseSyllables > 0 ? maxPhraseSyllables + ' syllables' : 'no limit' }}</span>
+            <label>Repetitions per practice cycle <span class="hint">how many times each phrase plays, back to back</span></label>
+            <span class="knob-val">{{ phraseRepeatCount === 2 ? 'doubled' : 'once' }}</span>
           </div>
-          <input
-            class="syll-input"
-            type="number" min="0" step="1" placeholder="0 = no limit"
-            :value="labCfg.maxPhraseSyllables ?? 0"
-            @input="labCfg.maxPhraseSyllables = Number($event.target.value) || 0"
-          />
+          <div class="seg-row">
+            <button class="seg-pill" :class="{ on: phraseRepeatCount === 1 }" @click="labCfg.phraseRepeatCount = 1">Once</button>
+            <button class="seg-pill" :class="{ on: phraseRepeatCount === 2 }" @click="labCfg.phraseRepeatCount = 2">Twice</button>
+          </div>
           <p class="field-note">
-            A hard ceiling on a phrase's target syllable count — above it the phrase
-            is skipped entirely. Unlike the cap above this is <strong>absolute</strong>,
-            not a share of the course, so a short course and a long one get the same
-            ceiling. <strong>Blank or 0 = no limit</strong>, which is Fast and is the
-            historic behaviour. The phrase floor still wins: if the ceiling would leave
-            a LEGO short, that LEGO's shortest phrases are used anyway.
+            Easy plays every practice phrase <strong>twice in a row</strong>; Fast plays
+            it once. The repetition is the SAME phrase heard again immediately, not a
+            second different phrase — which is why Easy no longer needs inflated phrase
+            counts above. An Easy round runs about twice the length of a Fast one.
           </p>
           <p class="field-warn">
-            <strong>Read this before setting a number.</strong> Syllables are counted
-            approximately, and only for some scripts: Latin-alphabet targets are counted
-            by vowel clusters and CJK counts characters, but <strong>every other script —
-            Arabic, Hebrew, Devanagari, Cyrillic, Greek, Thai — measures 1 syllable per
-            phrase</strong>, so no phrase can ever exceed the ceiling and this knob does
-            <strong>nothing at all</strong> on those courses. Of 143 courses, 59 have a
-            target language the counter handles. The stored per-phrase count that would
-            fix this is populated on 1.3% of phrases estate-wide (10,813 of 818,220), so
-            the approximation is the live path almost everywhere. On a course where this
-            is inert, <strong>Maximum phrase length</strong> above is the only length
-            control that bites.
+            <strong>Two is the ceiling and there is no third option.</strong> Tom,
+            2026-08-07: "we do NOT ever want to repeat exactly the same phrase more than
+            2x - a phrase repeated 3x would drive people nuts, but doubled up is
+            perfect." A row edited by hand to say 3 is clamped back to 2 by the player.
           </p>
         </div>
+
+        <div class="field-block">
+          <label>Which cycles repeat <span class="hint">only these are doubled</span></label>
+          <div class="seg-row">
+            <button
+              v-for="t in REPEATABLE_CYCLE_TYPES" :key="t.key"
+              class="seg-pill" :class="{ on: repeatedCycleTypes.includes(t.key) }"
+              @click="toggleRepeatedCycleType(t.key)"
+            >{{ t.label }}</button>
+          </div>
+          <p class="field-note">
+            The four Tom named are BUILD, REVIEW, USE and CONSOLIDATE — consolidate
+            cycles are just USE phrases, so they share a type. The introduction and the
+            LEGO on its own are <strong>off by default</strong>: asked whether they
+            should double too, Tom said "of course not — the intro LEGO and not the LEGO
+            alone". Seed-sentence production reviews never repeat whatever is chosen
+            here: that block is already several plays of one sentence.
+          </p>
+        </div>
+
+        <div class="field-block">
+          <label>Filter BUILD phrases <span class="hint">should the length caps touch the debut round?</span></label>
+          <div class="seg-row">
+            <button class="seg-pill" :class="{ on: filterBuildPhrases }" @click="labCfg.filterBuildPhrases = true">Filter them</button>
+            <button class="seg-pill" :class="{ on: !filterBuildPhrases }" @click="labCfg.filterBuildPhrases = false">Leave them whole</button>
+          </div>
+          <p class="field-note">
+            Easy leaves them whole — Tom, 2026-08-07: "no filtering on BLD phrases".
+            Build phrases are short by construction, usually the new LEGO plus one or
+            two already-known ones, and they ARE the debut round, so filtering them
+            thins the one round meant to be generous. Fast filters, as it always has.
+          </p>
+        </div>
+
+        <div class="field-block">
+          <div class="knob-top">
+            <label>Review phrase length, known language <span class="hint">blank or 0 = no filter</span></label>
+            <span class="knob-val">{{ reviewMaxKnownSyllables > 0 ? reviewMaxKnownSyllables + ' syllables' : 'no filter' }}</span>
+          </div>
+          <div class="syll-row">
+            <input
+              class="syll-input"
+              type="number" min="0" step="1" placeholder="0 = no filter"
+              :value="labCfg.reviewMaxKnownSyllables ?? 0"
+              @input="labCfg.reviewMaxKnownSyllables = Number($event.target.value) || 0"
+            />
+            <input
+              class="syll-input"
+              type="number" min="1" step="1" placeholder="100"
+              :value="labCfg.reviewSyllableFilterMaxRound ?? 100"
+              @input="labCfg.reviewSyllableFilterMaxRound = Number($event.target.value) || 100"
+            />
+            <span class="hint">syllables &nbsp;·&nbsp; applies up to round N</span>
+          </div>
+          <p class="field-note">
+            When a REVIEW or CONSOLIDATE slot reaches into a LEGO's basket, it prefers a
+            phrase of at most this many syllables <strong>in the learner's own
+            language</strong> — the prompt side, not the target. Easy uses 15 for the
+            first 100 rounds; past that round the filter simply comes off, with nothing
+            backlogged and nothing cascading, because it is the LEGO being practised and
+            the phrase carrying it need never have been met before. If a LEGO has
+            nothing short enough, its shortest phrase is used — a LEGO is never skipped
+            and a review slot is never empty.
+          </p>
+          <p class="field-warn">
+            <strong>Coverage.</strong> Syllables are counted by a per-language counter
+            that covers hrv, eng, spa, ita, por, deu, fra, nld and cym. This filter
+            counts the KNOWN language, which is English on most of the estate, so it is
+            live nearly everywhere — but on a course whose known language is not on that
+            list the filter goes <strong>inert and says so in the console</strong>
+            rather than guessing. <strong>Maximum phrase length</strong> above is the
+            universal backstop that still bites there.
+          </p>
+        </div>
+
       </section>
 
       <!-- ==================== PAUSE LAB ==================== -->
@@ -336,11 +400,20 @@ function backfillPauseRow(key, d) {
   // page shows the gap that is ACTUALLY being played rather than a 0 that a
   // Save would then make true. Easy 1000, Fast 0 (Tom, 2026-08-07).
   if (c.post_voice2_gap_ms == null) c.post_voice2_gap_ms = isEasy ? 1000 : 0
-  // 0 = NO LIMIT, for BOTH modes, deliberately. Unlike the two above, no live
-  // default exists to mirror: nothing anywhere caps syllables today, so any
-  // non-zero backfill would invent a ceiling a row never had and silently
-  // shorten a course. The number is Tom's to set, on this page.
-  if (c.maxPhraseSyllables == null) c.maxPhraseSyllables = 0
+  // The Easy redesign knobs (Tom, 2026-08-07). Each backfills to what the
+  // learner app's own DEFAULT_EASY / DEFAULT_FAST already merge in for a row
+  // missing the key, so the page shows what is ACTUALLY being played rather
+  // than a value a Save would then make true.
+  if (c.phraseRepeatCount == null) c.phraseRepeatCount = isEasy ? 2 : 1
+  if (!Array.isArray(c.repeatedCycleTypes)) c.repeatedCycleTypes = ['build', 'spaced_rep', 'use']
+  if (c.filterBuildPhrases == null) c.filterBuildPhrases = !isEasy
+  if (c.reviewMaxKnownSyllables == null) c.reviewMaxKnownSyllables = isEasy ? 15 : 0
+  if (c.reviewSyllableFilterMaxRound == null) c.reviewSyllableFilterMaxRound = 100
+  // Superseded 2026-08-07 by the known-side pull filter above: it counted the
+  // TARGET side, applied to the whole script rather than to the review pull,
+  // and never lifted. Dropped from any row still carrying it, so a stale value
+  // cannot quietly outlive the knob that set it.
+  delete c.maxPhraseSyllables
 }
 function backfillPause(d) {
   backfillPauseRow('easy_mode', d)
@@ -373,11 +446,39 @@ const maxPhraseLengthFraction = computed(() => {
   const f = labCfg.value?.maxPhraseLengthFraction
   return typeof f === 'number' && f > 0 && f <= 1 ? f : 1
 })
-// Mirrors resolveMaxPhraseSyllables in services/learning-modes.cjs: anything
-// absent, blank or invalid reads as 0 = NO LIMIT. A cap must never appear by
-// omission, so the display agrees with the runtime on what "blank" means.
-const maxPhraseSyllables = computed(() => {
-  const n = labCfg.value?.maxPhraseSyllables
+// The Easy redesign knobs. Every reader below mirrors the player's own
+// normalizer, so what this page SHOWS is what the runtime DOES for a row that
+// is blank, absent or hand-edited to nonsense.
+const REPEATABLE_CYCLE_TYPES = [
+  { key: 'build', label: 'BUILD' },
+  { key: 'spaced_rep', label: 'REVIEW' },
+  { key: 'use', label: 'USE / consolidate' },
+  { key: 'intro', label: 'Introduction' },
+  { key: 'debut', label: 'The LEGO alone' },
+]
+// Clamped at 2 exactly as the player clamps it — Tom's rule, not a preference.
+const phraseRepeatCount = computed(() => {
+  const n = labCfg.value?.phraseRepeatCount
+  if (typeof n !== 'number' || !Number.isFinite(n) || n <= 1) return 1
+  return Math.min(Math.floor(n), 2)
+})
+const repeatedCycleTypes = computed(() => {
+  const t = labCfg.value?.repeatedCycleTypes
+  return Array.isArray(t) ? t : ['build', 'spaced_rep', 'use']
+})
+function toggleRepeatedCycleType(key) {
+  const cfg = labCfg.value
+  if (!cfg) return
+  const current = repeatedCycleTypes.value
+  cfg.repeatedCycleTypes = current.includes(key)
+    ? current.filter(k => k !== key)
+    : [...current, key]
+}
+// Absent reads as TRUE (filter), the historic behaviour — never as a silent
+// widening of what a mode plays.
+const filterBuildPhrases = computed(() => labCfg.value?.filterBuildPhrases !== false)
+const reviewMaxKnownSyllables = computed(() => {
+  const n = labCfg.value?.reviewMaxKnownSyllables
   return typeof n === 'number' && Number.isFinite(n) && n > 0 ? Math.floor(n) : 0
 })
 
@@ -782,6 +883,12 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   max-width: 620px;
 }
 .field-warn strong { color: #fdba74; }
+.syll-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
 .syll-input {
   width: 160px;
   background: rgba(0, 0, 0, 0.25);
