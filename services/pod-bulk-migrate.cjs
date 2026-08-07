@@ -406,6 +406,18 @@ async function loadPod0WithSentences(course) {
 }
 
 async function stageTtsInproc(course) {
+  // SAMPLE-FIRST HARD GATE (Tom's ruling, 2026-08-07). The http mode inherits
+  // the gate for free by going through /generate-pods; this in-process mode is
+  // the DEFAULT and reimplements that endpoint's work queue, so without this
+  // check it is a full bypass of the gate — the one that matters, since this is
+  // the bulk driver. Same approval record, same fingerprint, same refusal.
+  const podApprovals = require('./pod-voice-approvals.cjs')
+  const gate = await podApprovals.checkApproval(supabase, course)
+  if (!gate.ok) {
+    throw new Error(`pod voices not approved (${gate.reason}) for ${course}. ${gate.message}`)
+  }
+  stageLog(course, 'tts', `voice approval OK: cast ${gate.live_fingerprint}, approved by ${gate.approval.approved_by}`)
+
   const { generatePodAudio } = getPhase8()
   const ctx = await getCourseContext(course)
   const pod = await loadPod0WithSentences(course)
