@@ -71,19 +71,67 @@ under the fix, so it does not over-segment inside a phrase.
 How hot was the old reading? The same file needs **20dB of attenuation** before
 the old code produces any useful cuts at all.
 
+## Your "Speaking..." never changes — that IS this bug
+
+That string is bound straight to `vad.isSpeaking` (`AutocueStudio.vue:130`). It
+is set in `onSpeechStart` and cleared in exactly one place: the `onSpeechEnd`
+branch that my measurement shows never executes. So a permanent "Speaking..." is
+the take never being cut, watched live. Your symptom and the 72.5s blob are the
+same event from two angles.
+
+It also rules out the upload path: `queueUpload` is fire-and-forget into a
+background queue and never gates the recorder's state machine, so no hanging or
+silently-erroring request could produce this.
+
+## Your idea: measure the room first — built
+
+Branch also carries a calibration stage, because you are right that the deeper
+problem is a *fixed* threshold being a guess about a room, and a guess that
+lands under the noise floor loses a session with no error anywhere.
+
+`startFlow` now listens for 1.5s before going live, takes the p90 of the level
+(not the mean — one chair creak shouldn't set the floor), sets the threshold to
+floor x 4 clamped to [0.01, 0.08], and shows "Listening to the room...". The
+speech state machine is gated off while it measures. Afterwards it warns — only
+on bad news — with what to actually do about it.
+
+Bands are set where behaviour really changes, found by mixing noise into your
+own 72.5s take at increasing levels and counting cuts:
+
+| headroom | verdict | cuts |
+|---|---|---|
+| 52.7dB — **your actual room** | quiet | 12 |
+| 26.2dB | ok | 14 |
+| 18.5dB | **loud** (warn, still works) | 13 |
+| 13.3dB | too-loud | 14 |
+| 8.7dB | too-loud | **0** — the cliff |
+| 4.3dB | too-loud | **0** |
+
+The 14dB line is deliberately a shade conservative — it warns at 13.3dB where
+segmentation still worked. Warning early costs you a line of text; warning late
+costs a session.
+
+The adaptive threshold holds segmentation across a **50x range of room noise**
+(12-14 cuts from 52.7dB down to 18.5dB). No fixed constant does that.
+
+**And note what your room measured: a 0.00053 noise floor, 52.7dB of headroom.
+Genuinely quiet. This was never your microphone or your room** — even a room
+that good could not get under a threshold that wanted -98.6dBFS.
+
 ## The fix
 
-Branch `fix/autocue-vad-time-domain-2026-08-07`, commit `735ffbc2`.
+Branch `fix/autocue-vad-time-domain-2026-08-07`, commits `735ffbc2` + `6b7dfd21`.
 
 - `useVAD.ts` measures a time-domain RMS via `getFloatTimeDomainData`.
 - `AutocueStudio.vue` level meter gets a display gain (it was calibrated to the
   old inflated scale and would otherwise paint a third of the bar). The decision
   still uses the raw value.
-- `useVAD.test.js` — 3 tests pinning that the level comes from the waveform, that
+- `useVAD.ts` / `useContinuousRecorder.ts` — the room-calibration stage above.
+- `useVAD.test.js` — 8 tests pinning that the level comes from the waveform, that
   real room tone (0.004 RMS, measured from your take) ends a phrase, and that a
   300ms inter-word dip does not.
 
-7/7 autocue tests pass, `vue-tsc` clean, `npm run build` clean.
+12/12 autocue tests pass, `vue-tsc` clean, `npm run build` clean.
 
 **Not merged.** It is one merge to `main` away from live — the staleness watchdog
 picks `main` up within 10 minutes.
