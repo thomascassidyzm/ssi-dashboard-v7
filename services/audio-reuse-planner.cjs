@@ -40,14 +40,34 @@
  *
  * ── THE REUSE KEY ─────────────────────────────────────────────────────────
  *
- * Tom's key is (voice x text x language). This module adds ROLE as a fourth
- * component of the default key, which is a deliberate NARROWING and is safe in
- * one direction only: it can make us render a clip we could have borrowed, but
- * it can never make us ship a clip in the wrong voice or at the wrong pace.
- * Rationale: `role` is what distinguishes target1 from target2 when a course
- * puts the same voice on both, and Azure bakes a per-role `speed` into the
- * stored MP3 (see services/shared/clone-copy-match.cjs). Pass
- * { crossRole: true } to fall back to Tom's bare three-part key.
+ * Tom's key is (voice x text x language) and NOTHING else — evaluated across
+ * ALL courses and ALL roles (2026-08-07): "An English sentence spoken by the
+ * clone as target2 in eng_for_hin COUNTS as coverage for the English known side
+ * of fra_for_eng." So the lookup is ROLE-AGNOSTIC and DIRECTION-AGNOSTIC by
+ * default. This matters: measured on fra_for_eng rounds 1-10, role-scoping the
+ * query drops the clone's English coverage from 32 clips to 3 — a narrow query
+ * would have argued against the very voice the widening exists to find.
+ *
+ * ONE physical exception, not a policy one: Azure BAKES the configured `speed`
+ * into the stored MP3 (services/shared/clone-copy-match.cjs), and course_audio
+ * has no persisted per-row speed, so an Azure clip's pace cannot be verified
+ * after the fact. Crossing roles on an Azure source could therefore import a
+ * clip rendered at 0.85x into a 1.0x slot. xAI and ElevenLabs have no working
+ * speed parameter at all, so every clip on them is 1x and role-crossing is
+ * free. The guard is engine-shaped, not role-shaped. Pass { crossRole: false }
+ * to restore strict same-role matching everywhere.
+ *
+ * ── THE LANGUAGE-NAME FILTER (Tom, 2026-08-07) ────────────────────────────
+ *
+ * A clip whose text NAMES A LANGUAGE must never be borrowed into a course for a
+ * different language. "The German for 'to speak'" inside a French course is a
+ * learner-facing disaster, and the same trap bites the German redo in reverse.
+ * Exact text matching mostly protects us — those two lines differ, so they do
+ * not match — but the filter is enforced explicitly anyway, because it also
+ * catches the case exact matching CANNOT: a contaminated text already sitting
+ * in this course's own content, written by some earlier batch. So the rule is
+ * stated positively and audited: a text may name this course's own known or
+ * target language and no other.
  *
  * Voice is matched EXACTLY on the stored voice_id string. The estate carries
  * both bare (`eve`) and provider-prefixed (`xai_eve`) ids for what is probably
@@ -180,6 +200,33 @@ function voicesMatch(wanted, candidate, aliases = []) {
   return { match: false, viaAlias: false }
 }
 
+/**
+ * Can this voice's clips be trusted to be at natural (1x) pace, so a clip may
+ * be borrowed into a slot with a different role?
+ *
+ * xAI exposes no speed parameter at all, and ElevenLabs destructures `speed`
+ * but never sends it — every clip on either is 1x. Azure BAKES the configured
+ * rate into the SSML and therefore into the stored MP3, and course_audio keeps
+ * no per-row speed, so an Azure clip's pace is unverifiable after the fact.
+ * (Verified in services/shared/clone-copy-match.cjs against tts-service.cjs.)
+ * Unknown/legacy voice ids are untrusted — the safe default.
+ */
+function isSpeedTrustedVoice(voiceId) {
+  if (!voiceId) return false
+  const id = String(voiceId)
+  // The guard is AZURE-SHAPED, not prefix-shaped. Testing for a known-good
+  // prefix instead would fail closed on every BARE legacy id — and the estate's
+  // bare ids include `gfzdpspr5fdp`, Tom's own xAI clone. Measured 2026-08-07:
+  // the prefix-shaped version suppressed the clone's cross-role coverage
+  // entirely, which is precisely the distortion the role-agnostic widening
+  // exists to remove. So: untrusted iff it names an Azure voice.
+  if (/^azure_/i.test(id)) return false
+  // Azure ids are the only ones shaped `xx-YY-NameNeural`, with or without the
+  // provider prefix — that shape is how a bare Azure row is recognised.
+  if (/^[a-z]{2,3}(-[A-Za-z]+)?-[A-Z]{2}-/.test(id) || /Neural$/i.test(id)) return false
+  return true
+}
+
 /** All voice_id strings that are acceptable for `wanted` under `aliases`. */
 function voiceCandidates(wanted, aliases = []) {
   if (!wanted) return []
@@ -208,6 +255,73 @@ function clipKey({ role, language, voiceId, text }, { crossRole = false } = {}) 
 function isSayable(text) {
   if (!text || !String(text).trim()) return false
   return /[\p{L}\p{N}]/u.test(String(text))
+}
+
+// ===========================================================================
+// THE LANGUAGE-NAME FILTER
+// ===========================================================================
+
+/**
+ * English names of the languages the estate actually teaches, plus the common
+ * variants that appear in presentation lines. Drawn from language-code-service
+ * at call time where possible; this list is the floor, so the filter still
+ * works when a caller passes no code service.
+ */
+const LANGUAGE_NAME_FLOOR = [
+  'English', 'French', 'German', 'Spanish', 'Italian', 'Portuguese', 'Dutch',
+  'Welsh', 'Irish', 'Polish', 'Russian', 'Ukrainian', 'Czech', 'Croatian',
+  'Serbian', 'Lithuanian', 'Romanian', 'Swedish', 'Danish', 'Norwegian',
+  'Finnish', 'Hungarian', 'Greek', 'Turkish', 'Arabic', 'Hebrew', 'Persian',
+  'Hindi', 'Urdu', 'Bengali', 'Punjabi', 'Gujarati', 'Marathi', 'Tamil',
+  'Telugu', 'Kannada', 'Malayalam', 'Sinhala', 'Nepali',
+  'Chinese', 'Mandarin', 'Cantonese', 'Japanese', 'Korean', 'Vietnamese',
+  'Thai', 'Indonesian', 'Malay', 'Swahili', 'Afrikaans', 'Icelandic',
+  'Catalan', 'Basque', 'Galician', 'Latin', 'Quebecois',
+]
+
+/**
+ * Build the filter for one course: which language names this course's texts are
+ * ALLOWED to contain (its own known and target language), and which are
+ * therefore forbidden.
+ *
+ * `extraAllowed` exists because a course's target language NAME is what matters,
+ * not its code — fra_for_eng and fra_ca_for_eng are different courses whose
+ * texts both legitimately say "French", which is exactly why Tom pointed at the
+ * Quebecois course as the source for French intro lines.
+ */
+function buildLanguageNameFilter({ knownName, targetName, extraAllowed = [], names = LANGUAGE_NAME_FLOOR } = {}) {
+  const allowed = new Set(
+    [knownName, targetName, ...extraAllowed].filter(Boolean).map(s => String(s).toLowerCase())
+  )
+  const forbidden = names.filter(n => !allowed.has(n.toLowerCase()))
+  // Word-boundary match, case-insensitive. \b is correct here: every name in the
+  // list is Latin-script, and we want "German" but not "Germanic sound shift"...
+  // which \b would still catch, so the pattern requires the whole word.
+  const pattern = forbidden.length
+    ? new RegExp(`\\b(${forbidden.map(n => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})\\b`, 'i')
+    : null
+
+  /** @returns {null|string} the offending language name, or null if clean */
+  const namedLanguage = (text) => {
+    if (!pattern || !text) return null
+    const m = pattern.exec(String(text))
+    return m ? m[1] : null
+  }
+
+  return { allowed: [...allowed], forbidden, namedLanguage, pattern }
+}
+
+/**
+ * Language names a course may legitimately mention, derived from its codes.
+ * `codeService` is services/language-code-service.cjs (injected so this file
+ * stays free of a hard dependency and testable).
+ */
+function courseLanguageNames(course, codeService) {
+  const get = (c) => {
+    if (!c) return null
+    try { return codeService?.getName ? codeService.getName(c) : null } catch { return null }
+  }
+  return { knownName: get(course.known_lang), targetName: get(course.target_lang) }
 }
 
 // ===========================================================================
@@ -543,7 +657,13 @@ async function findCandidates(supabase, clips, { batchSize = 100 } = {}) {
  *   BLOCKED     cannot be decided; `reason` says why
  */
 function decideClip(clip, candidates, opts = {}) {
-  const { courseCode, crossRole = false, voiceAliases = [] } = opts
+  const {
+    courseCode,
+    crossRole = true,           // Tom's key is voice x text x language and nothing else
+    voiceAliases = [],
+    languageFilter = null,      // from buildLanguageNameFilter()
+    preferredSourceCourses = [],// e.g. ['deu_for_eng'] — queried first, not as an afterthought
+  } = opts
 
   if (clip.blocked) {
     return { decision: 'BLOCKED', reason: clip.blocked, source: null, viaAlias: false }
@@ -555,35 +675,76 @@ function decideClip(clip, candidates, opts = {}) {
     return { decision: 'BLOCKED', reason: 'text is empty or punctuation-only — nothing to say', source: null, viaAlias: false }
   }
 
+  // THE LANGUAGE-NAME FILTER, on the clip's OWN text first. A contaminated text
+  // already sitting in this course is the case exact matching cannot catch, so
+  // it is surfaced rather than quietly rendered in the wrong words.
+  if (languageFilter) {
+    const named = languageFilter.namedLanguage(clip.text)
+    if (named) {
+      return {
+        decision: 'BLOCKED',
+        reason: `this course's own text names the language "${named}", which is not a language of ${courseCode} — the text is wrong, not the audio`,
+        source: null, viaAlias: false, namedLanguage: named,
+      }
+    }
+  }
+
   // THE VOICE BOUNDARY. Enforced first and unconditionally: a row that is not
   // on this clip's voice is not a candidate for anything, whatever else is true
   // about it. Borrowing across a voice change is a voice-identity change, which
   // is Tom's taste call and never this code's.
   const viable = []
+  const rejected = { voice: 0, language: 0, role: 0, pending: 0, languageName: 0 }
   for (const row of candidates) {
     const v = voicesMatch(clip.voiceId, row.voice_id, voiceAliases)
-    if (!v.match) continue
-    if (!sameLanguage(clip.language, row.language)) continue
-    if (!crossRole && row.role !== clip.role) continue
-    if (!row.s3_key || row.s3_key.startsWith('pending/')) continue
+    if (!v.match) { rejected.voice++; continue }
+    if (!sameLanguage(clip.language, row.language)) { rejected.language++; continue }
+    if (!row.s3_key || row.s3_key.startsWith('pending/')) { rejected.pending++; continue }
+    // Role-agnostic by default. The ONE exception is physical, not editorial:
+    // Azure bakes speed into the MP3 and course_audio does not persist it, so a
+    // cross-role Azure borrow could import a 0.85x render into a 1.0x slot.
+    if (row.role !== clip.role) {
+      if (!crossRole || !isSpeedTrustedVoice(row.voice_id)) { rejected.role++; continue }
+    }
+    // A candidate naming a foreign language never enters, whatever course or
+    // role it came from — an eng_for_hin line saying "The Hindi for ..." is an
+    // English clip on the right voice and would otherwise match.
+    if (languageFilter && languageFilter.namedLanguage(row.text)) { rejected.languageName++; continue }
     viable.push({ ...row, viaAlias: v.viaAlias })
   }
 
   if (!viable.length) {
+    const why = []
+    if (rejected.voice) why.push(`${rejected.voice} on another voice`)
+    if (rejected.language) why.push(`${rejected.language} in another language`)
+    if (rejected.role) why.push(`${rejected.role} blocked by the Azure baked-speed guard`)
+    if (rejected.languageName) why.push(`${rejected.languageName} naming a foreign language`)
+    if (rejected.pending) why.push(`${rejected.pending} with no rendered audio`)
     return {
       decision: 'RENDER',
       reason: candidates.length
-        ? `${candidates.length} clip(s) say this, none on voice ${clip.voiceId} in ${clip.language} for role ${clip.role}`
+        ? `${candidates.length} clip(s) say this, none usable — ${why.join(', ')}`
         : 'no clip anywhere says this',
-      source: null,
-      viaAlias: false,
+      source: null, viaAlias: false, rejected,
     }
   }
 
-  // Prefer this course's own row, then an exact-voice row over an aliased one,
-  // then the standard link preference (human > newest > deterministic id).
+  // Preference order:
+  //   1. this course's own row (no copy needed, just a link);
+  //   2. a course the caller named as a preferred source — Tom asked for
+  //      deu_for_eng to be queried FIRST for the English layer, not to be found
+  //      by luck behind a generic estate sweep;
+  //   3. an exact-voice row over an aliased one;
+  //   4. the standard link preference (human > newest > deterministic id).
   const own = viable.filter(r => r.course_code === courseCode)
-  const pool = own.length ? own : viable
+  let pool = own
+  if (!pool.length && preferredSourceCourses.length) {
+    for (const pref of preferredSourceCourses) {
+      const hit = viable.filter(r => r.course_code === pref)
+      if (hit.length) { pool = hit; break }
+    }
+  }
+  if (!pool.length) pool = viable
   const exact = pool.filter(r => !r.viaAlias)
   const finalPool = exact.length ? exact : pool
   const winner = finalPool.reduce((best, r) => pickPreferredAudioRow(best, r), null)
@@ -628,16 +789,22 @@ function decideClip(clip, candidates, opts = {}) {
  * writes nothing, and is safe to run at any time.
  */
 async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
-  const { crossRole = false, voiceAliases = [], mode } = options
+  const { crossRole = true, voiceAliases = [], mode, codeService = null,
+          preferredSourceCourses = [] } = options
 
   const { clips, shape, voices, course } = await enumerateRoundClips(
-    supabase, courseCode, roundCount, { crossRole, mode }
+    supabase, courseCode, roundCount, { crossRole: false, mode }
   )
+  const { knownName, targetName } = courseLanguageNames(course, codeService)
+  const languageFilter = buildLanguageNameFilter({ knownName, targetName })
+
   const candidates = await findCandidates(supabase, clips)
 
   const decided = []
   for (const clip of clips.values()) {
-    const d = decideClip(clip, candidates.get(clip.clipKey) || [], { courseCode, crossRole, voiceAliases })
+    const d = decideClip(clip, candidates.get(clip.clipKey) || [], {
+      courseCode, crossRole, voiceAliases, languageFilter, preferredSourceCourses,
+    })
     decided.push({
       clipKey: clip.clipKey,
       role: clip.role,
@@ -652,6 +819,11 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
       decision: d.decision,
       reason: d.reason,
       viaVoiceAlias: d.viaAlias,
+      namedLanguage: d.namedLanguage || null,
+      // Provenance Tom asked for by name: which course AND which role each
+      // reused clip came from, so "N clips came in from eng_for_hin target2"
+      // is a number he can read rather than an assertion he must trust.
+      reuseFrom: d.source ? { courseCode: d.source.courseCode, role: d.source.role, crossedRole: d.source.role !== clip.role } : null,
       reuseSource: d.source,
     })
   }
@@ -703,6 +875,207 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
       note: 'characters are of the course text as it will be sent to TTS, before any gender expansion',
     },
     clips: decided,
+  }
+}
+
+// ===========================================================================
+// STEP 2b — THE COVERAGE TABLE
+// ===========================================================================
+//
+// Tom, 2026-08-07: "Voice selection is COVERAGE-DRIVEN, not fixed up front."
+//
+// For EACH candidate voice, what fraction of the clips these rounds need
+// ALREADY EXISTS estate-wide on that voice? The voice with the most existing
+// coverage is the cheapest to finish, and the table is the evidence on which
+// Tom makes the one-word call. It is a deliverable, not a log line.
+//
+// Two properties the table lives or dies by:
+//   - it is computed on the SAME widened key as reuse (voice x text x language,
+//     all courses, all roles). Role-scoping it drops the clone's English
+//     coverage on fra_for_eng rounds 1-10 from 32 clips to 3, which would make
+//     the table argue against the very voice the widening exists to find;
+//   - the language-name filter applies INSIDE it. A deu_for_eng text containing
+//     "German" is not coverage for a French course, and counting it would
+//     inflate the exact number the decision rests on.
+
+/** Group bare and provider-prefixed spellings of one voice into a family. */
+function voiceFamilyOf(voiceId, voiceAliases = []) {
+  if (!voiceId) return { family: 'unknown', ids: [] }
+  for (const group of voiceAliases) {
+    if (group.includes(voiceId)) return { family: group.join(' / '), ids: [...group] }
+  }
+  // Default family grouping: strip a known provider prefix so `eve` and
+  // `xai_eve` land together for DISPLAY. This is presentation only — matching
+  // still requires an explicit alias, so the table can show the consequence of
+  // a decision Tom has not made yet without pre-empting it.
+  const m = /^(xai|azure|elevenlabs|google)_(.+)$/.exec(voiceId)
+  const bare = m ? m[2] : voiceId
+  return { family: bare, ids: [voiceId] }
+}
+
+/**
+ * Compute the coverage table for the first `roundCount` rounds of a course.
+ *
+ * Read-only. Generates nothing, writes nothing, costs nothing.
+ */
+async function buildCoverageTable(supabase, courseCode, roundCount, options = {}) {
+  const {
+    voiceAliases = [],
+    codeService = null,
+    preferredSourceCourses = [],
+    layers = CLIP_ROLES,
+  } = options
+
+  const { clips, shape, voices, course } = await enumerateRoundClips(
+    supabase, courseCode, roundCount, { crossRole: false }
+  )
+
+  const { knownName, targetName } = courseLanguageNames(course, codeService)
+  const languageFilter = buildLanguageNameFilter({ knownName, targetName })
+
+  // The distinct (text, language) combinations these rounds need, per layer.
+  // Voice is deliberately NOT part of this — the whole question is which voice
+  // to put them in.
+  const needed = []
+  const excludedByName = []
+  for (const clip of clips.values()) {
+    if (!layers.includes(clip.role) || !isSayable(clip.text)) continue
+    const named = languageFilter.namedLanguage(clip.text)
+    if (named) {
+      excludedByName.push({ text: clip.text, namedLanguage: named, sourceCourse: courseCode, role: clip.role })
+      continue
+    }
+    needed.push({ role: clip.role, language: clip.language, text: clip.text })
+  }
+
+  const candidates = await findCandidates(supabase, new Map(
+    needed.map((n, i) => [`n${i}`, { clipKey: `n${i}`, text: n.text }])
+  ))
+
+  // Tally: voiceId -> per-layer set of covered texts, plus provenance.
+  const tally = new Map()
+  let excludedCandidateRows = 0
+
+  needed.forEach((n, i) => {
+    const rows = candidates.get(`n${i}`) || []
+    const key = `${n.role}|${normalizeForAudio(n.text)}`
+    for (const row of rows) {
+      if (!sameLanguage(n.language, row.language)) continue
+      if (!row.s3_key || row.s3_key.startsWith('pending/')) continue
+      if (languageFilter.namedLanguage(row.text)) { excludedCandidateRows++; continue }
+      // Role-agnostic, with the same Azure baked-speed guard reuse uses, so the
+      // table never promises coverage reuse would then refuse to take.
+      if (row.role !== n.role && !isSpeedTrustedVoice(row.voice_id)) continue
+
+      let t = tally.get(row.voice_id)
+      if (!t) {
+        t = {
+          voiceId: row.voice_id,
+          byLayer: {},
+          covered: new Set(),
+          borrowable: new Set(),
+          viaTargetRoles: new Set(),
+          sourceCourses: new Map(),
+        }
+        tally.set(row.voice_id, t)
+      }
+      t.byLayer[n.role] = t.byLayer[n.role] || new Set()
+      t.byLayer[n.role].add(key)
+      t.covered.add(key)
+      if (row.course_code !== courseCode) t.borrowable.add(key)
+      if (row.role === 'target1' || row.role === 'target2') t.viaTargetRoles.add(key)
+      const sc = t.sourceCourses.get(row.course_code) || new Set()
+      sc.add(key)
+      t.sourceCourses.set(row.course_code, sc)
+    }
+  })
+
+  const neededByLayer = {}
+  for (const n of needed) {
+    neededByLayer[n.role] = neededByLayer[n.role] || { language: n.language, needed: 0 }
+    neededByLayer[n.role].needed++
+  }
+
+  const pct = (a, b) => (b ? Math.round((1000 * a) / b) / 10 : 0)
+  const totalNeeded = needed.length
+
+  const coverage = [...tally.values()].map(t => {
+    const byLayer = {}
+    for (const [role, info] of Object.entries(neededByLayer)) {
+      const cov = t.byLayer[role]?.size || 0
+      byLayer[role] = { needed: info.needed, covered: cov, pct: pct(cov, info.needed) }
+    }
+    const fam = voiceFamilyOf(t.voiceId, voiceAliases)
+    return {
+      voiceId: t.voiceId,
+      voiceFamily: fam.family,
+      provider: /^(xai|azure|elevenlabs|google)_/.exec(t.voiceId)?.[1] || 'legacy/bare',
+      speedTrusted: isSpeedTrustedVoice(t.voiceId),
+      byLayer,
+      overall: { needed: totalNeeded, covered: t.covered.size, pct: pct(t.covered.size, totalNeeded) },
+      borrowable: t.borrowable.size,
+      viaTargetRoles: t.viaTargetRoles.size,
+      topSourceCourses: [...t.sourceCourses.entries()]
+        .map(([courseCode, set]) => ({ courseCode, clips: set.size }))
+        .sort((a, b) => b.clips - a.clips)
+        .slice(0, 10),
+      isCurrent: Object.values(voices).includes(t.voiceId),
+      _covered: t.covered,
+    }
+  }).sort((a, b) => b.overall.covered - a.overall.covered)
+
+  // Family roll-up: what the numbers become IF a bare id and its prefixed
+  // sibling are the same voice. Shown alongside, never substituted for the
+  // per-id truth — that equivalence is Tom's call, not the table's.
+  const families = new Map()
+  for (const row of coverage) {
+    const f = families.get(row.voiceFamily) || { voiceFamily: row.voiceFamily, voiceIds: [], covered: new Set(), borrowable: 0, viaTargetRoles: 0 }
+    f.voiceIds.push(row.voiceId)
+    for (const k of row._covered) f.covered.add(k)
+    families.set(row.voiceFamily, f)
+  }
+  const familyRollup = [...families.values()]
+    .map(f => ({
+      voiceFamily: f.voiceFamily,
+      voiceIds: f.voiceIds,
+      overall: { needed: totalNeeded, covered: f.covered.size, pct: pct(f.covered.size, totalNeeded) },
+    }))
+    .sort((a, b) => b.overall.covered - a.overall.covered)
+
+  for (const row of coverage) delete row._covered
+
+  const best = familyRollup[0]
+  const bestRows = coverage.filter(r => r.voiceFamily === best?.voiceFamily)
+  const gap = totalNeeded - (best?.overall.covered || 0)
+  const gapChars = needed
+    .filter(n => !bestRows.some(r => (r.byLayer[n.role]?.covered || 0) > 0))
+    .reduce((s, n) => s + n.text.length, 0)
+
+  return {
+    ok: true,
+    courseCode,
+    rounds: roundCount,
+    generatedAt: new Date().toISOString(),
+    shape,
+    currentVoices: voices,
+    layers: neededByLayer,
+    languageFilter: {
+      applied: true,
+      allowedLanguageNames: languageFilter.allowed,
+      excludedTexts: excludedByName.length,
+      excludedExamples: excludedByName.slice(0, 10),
+      excludedCandidateRows,
+      note: 'a text may name this course\'s own known or target language and no other; candidates naming any other language are excluded from coverage and from reuse',
+    },
+    coverage,
+    familyRollup,
+    recommendation: best ? {
+      voiceFamily: best.voiceFamily,
+      voiceIds: best.voiceIds,
+      coveredPct: best.overall.pct,
+      reason: `${best.overall.covered} of ${totalNeeded} needed clips already exist on this voice`,
+      spendIfChosen: { renderClips: gap, characters: gapChars },
+    } : null,
   }
 }
 
@@ -983,6 +1356,12 @@ module.exports = {
   findCandidates,
   verifyPlanBytes,
   recountPlan,
+  buildCoverageTable,
+  buildLanguageNameFilter,
+  courseLanguageNames,
+  voiceFamilyOf,
+  isSpeedTrustedVoice,
+  LANGUAGE_NAME_FLOOR,
   // applying
   applyReusePlan,
   relinkHolders,

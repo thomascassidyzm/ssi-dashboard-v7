@@ -5,7 +5,13 @@
  * These hold the claims the capability is sold on — the ones a reader of the
  * happy path cannot check:
  *
- *   - the reuse key really is (voice x text x language), and ROLE narrows it;
+ *   - the reuse key really is (voice x text x language) and NOTHING else —
+ *     role-agnostic and direction-agnostic, so an English clip sitting in a
+ *     target2 role of eng_for_hin is reusable for a French course's known side;
+ *   - the ONE exception is physical, not editorial: Azure bakes speed into the
+ *     mp3, so role-crossing is refused on Azure sources and only those;
+ *   - a text naming a FOREIGN language is never borrowed, and a course's own
+ *     text naming one is BLOCKED rather than re-rendered in the wrong words;
  *   - a clip is NEVER borrowed across a voice boundary, no matter how tempting
  *     the match. This is the rule the whole French/German redo exists to
  *     protect: borrowing an Azure clip where the course is now on xAI is a
@@ -60,7 +66,10 @@ const row = (over = {}) => ({
   ...over,
 })
 
-const opts = (over = {}) => ({ courseCode: 'fra_for_eng', crossRole: false, voiceAliases: [], ...over })
+// NOTE: crossRole is deliberately NOT pinned here. Tom's 2026-08-07 ruling made
+// the key voice x text x language and nothing else, so role-agnostic is the
+// module default and the fixture must not quietly restore the old narrow one.
+const opts = (over = {}) => ({ courseCode: 'fra_for_eng', voiceAliases: [], ...over })
 
 // ── the voice boundary ─────────────────────────────────────────────────────
 
@@ -69,7 +78,7 @@ describe('never cross a voice boundary', () => {
     const d = decideClip(clip(), [row({ voice_id: 'azure_en-GB-SoniaNeural' })], opts())
     expect(d.decision).toBe('RENDER')
     expect(d.source).toBeNull()
-    expect(d.reason).toMatch(/none on voice xai_eve/)
+    expect(d.reason).toMatch(/none usable — 1 on another voice/)
   })
 
   it('refuses the legacy BARE id as a match for the prefixed one by default', () => {
@@ -104,18 +113,21 @@ describe('never cross a voice boundary', () => {
     expect(voicesMatch('xai_eve', null).match).toBe(false)
   })
 
-  it('keeps target1 and target2 apart when the course puts one voice on both', () => {
-    // Same text, same language, same voice, different role — different pace
-    // contract. Role is part of the key precisely so this cannot leak.
+  it('DOES share one xAI voice across target1 and target2 — role is not part of the key', () => {
+    // Superseded premise, kept deliberately: this test used to assert the
+    // opposite. Tom ruled 2026-08-07 that the key is voice x text x language
+    // and nothing else. xAI exposes no speed parameter, so both layers are the
+    // same 1x render and the player paces them live — there is nothing to keep
+    // apart. The pace hazard is Azure-only and is covered below.
     const t1 = clip({ role: 'target1', language: 'fra', voiceId: 'xai_eve', text: 'je veux parler' })
     const d = decideClip(t1, [row({ role: 'target2', language: 'fra', voice_id: 'xai_eve', text_normalized: 'je veux parler' })], opts())
-    expect(d.decision).toBe('RENDER')
+    expect(d.decision).toBe('REUSE_CROSS')
   })
 
-  it('crossRole:true falls back to Tom\'s bare three-part key', () => {
+  it('crossRole:false restores the old strict same-role key when a caller wants it', () => {
     const t1 = clip({ role: 'target1', language: 'fra', voiceId: 'xai_eve' })
-    const d = decideClip(t1, [row({ role: 'target2', language: 'fra', voice_id: 'xai_eve' })], opts({ crossRole: true }))
-    expect(d.decision).toBe('REUSE_CROSS')
+    const d = decideClip(t1, [row({ role: 'target2', language: 'fra', voice_id: 'xai_eve' })], opts({ crossRole: false }))
+    expect(d.decision).toBe('RENDER')
   })
 })
 
@@ -391,5 +403,143 @@ describe('applyReusePlan — make before break, delete never', () => {
     expect(log.errors).toHaveLength(1)
     expect(log.counts.FAILED).toBe(1)
     expect(log.counts.REUSED_OWN).toBe(1)
+  })
+})
+
+// ── the language-name filter (Tom, 2026-08-07) ─────────────────────────────
+
+describe('language-name filter', () => {
+  const fra = planner.buildLanguageNameFilter({ knownName: 'English', targetName: 'French' })
+  const deu = planner.buildLanguageNameFilter({ knownName: 'English', targetName: 'German' })
+
+  it('flags a German intro line as foreign to a French course', () => {
+    expect(fra.namedLanguage("The German for: 'to speak', is:")).toBe('German')
+  })
+
+  it('bites in reverse for the German redo — a French line is foreign to a German course', () => {
+    expect(deu.namedLanguage("The French for: 'to speak', is:")).toBe('French')
+    expect(deu.namedLanguage("The German for: 'to speak', is:")).toBeNull()
+  })
+
+  it('allows the course to name its own known and target languages', () => {
+    expect(fra.namedLanguage("The French for: 'I want', is:")).toBeNull()
+    expect(fra.namedLanguage('I want to speak French with you now')).toBeNull()
+    expect(fra.namedLanguage('English')).toBeNull()
+  })
+
+  it('catches the widened-search trap — an eng_for_hin line naming Hindi', () => {
+    expect(fra.namedLanguage("The Hindi for: 'to speak', is:")).toBe('Hindi')
+  })
+
+  it('matches whole words only, so it does not fire on a substring', () => {
+    expect(fra.namedLanguage('the frenchman')).toBeNull()
+    expect(fra.namedLanguage('polishing the table')).toBeNull()
+  })
+
+  it('refuses a candidate naming a foreign language however good the voice match', () => {
+    const d = decideClip(
+      clip({ text: "The French for: 'to speak', is:", role: 'presentation' }),
+      [row({ role: 'presentation', text: "The German for: 'to speak', is:", course_code: 'deu_for_eng' })],
+      opts({ languageFilter: fra })
+    )
+    expect(d.decision).toBe('RENDER')
+  })
+
+  it('BLOCKS rather than renders when the course\'s OWN text names a foreign language', () => {
+    // The case exact text matching cannot catch: contamination already sitting
+    // in this course, written by some earlier batch. The text is wrong, not the
+    // audio, so it must not be quietly re-rendered in the wrong words.
+    const d = decideClip(clip({ text: "The German for: 'I want', is:" }), [row()], opts({ languageFilter: fra }))
+    expect(d.decision).toBe('BLOCKED')
+    expect(d.namedLanguage).toBe('German')
+  })
+})
+
+// ── role- and direction-agnostic lookup ────────────────────────────────────
+
+describe('role-agnostic, direction-agnostic reuse (Tom: voice x text x language, nothing else)', () => {
+  it('reuses an English clip sitting in a target2 role of an eng_for_X course', () => {
+    const d = decideClip(
+      clip({ role: 'known', language: 'eng', voiceId: 'xai_gfzdpspr5fdp' }),
+      [row({ course_code: 'eng_for_hin', role: 'target2', voice_id: 'xai_gfzdpspr5fdp' })],
+      opts()
+    )
+    expect(d.decision).toBe('REUSE_CROSS')
+    expect(d.source.role).toBe('target2')
+  })
+
+  it('records the provenance of a cross-role borrow', () => {
+    const d = decideClip(
+      clip({ role: 'known', voiceId: 'xai_eve' }),
+      [row({ course_code: 'eng_for_urd', role: 'target2' })],
+      opts()
+    )
+    expect(d.source.courseCode).toBe('eng_for_urd')
+    expect(d.source.role).toBe('target2')
+  })
+
+  it('still refuses to cross a role on an AZURE source — speed is baked into the mp3', () => {
+    const d = decideClip(
+      clip({ role: 'known', voiceId: 'azure_en-GB-SoniaNeural' }),
+      [row({ role: 'target2', voice_id: 'azure_en-GB-SoniaNeural' })],
+      opts()
+    )
+    expect(d.decision).toBe('RENDER')
+    expect(d.reason).toMatch(/baked-speed/)
+  })
+
+  it('the baked-speed guard is Azure-shaped, not prefix-shaped', () => {
+    // A BARE legacy id must not be treated as Azure — the estate's bare ids
+    // include Tom's own xAI clone, and failing closed on them suppressed
+    // exactly the voice the widening exists to surface.
+    expect(planner.isSpeedTrustedVoice('gfzdpspr5fdp')).toBe(true)
+    expect(planner.isSpeedTrustedVoice('eve')).toBe(true)
+    expect(planner.isSpeedTrustedVoice('xai_eve')).toBe(true)
+    expect(planner.isSpeedTrustedVoice('azure_en-GB-SoniaNeural')).toBe(false)
+    expect(planner.isSpeedTrustedVoice('en-GB-SoniaNeural')).toBe(false)
+    expect(planner.isSpeedTrustedVoice('fr-CA-SylvieNeural')).toBe(false)
+  })
+
+  it('crossRole:false restores strict same-role matching', () => {
+    const d = decideClip(
+      clip({ role: 'known', voiceId: 'xai_eve' }),
+      [row({ role: 'target2' })],
+      opts({ crossRole: false })
+    )
+    expect(d.decision).toBe('RENDER')
+  })
+})
+
+// ── preferred source ordering ──────────────────────────────────────────────
+
+describe('preferred source courses', () => {
+  it('queries the named source first rather than finding it by luck', () => {
+    const d = decideClip(
+      clip(),
+      [row({ id: 'random', course_code: 'kor_for_eng', created_at: '2026-08-06T00:00:00Z' }),
+       row({ id: 'deu', course_code: 'deu_for_eng', created_at: '2026-01-01T00:00:00Z' })],
+      opts({ preferredSourceCourses: ['deu_for_eng'] })
+    )
+    expect(d.source.audioId).toBe('deu')
+    expect(d.source.courseCode).toBe('deu_for_eng')
+  })
+
+  it('still puts the course\'s OWN row ahead of a preferred source', () => {
+    const d = decideClip(
+      clip(),
+      [row({ id: 'deu', course_code: 'deu_for_eng' }),
+       row({ id: 'own', course_code: 'fra_for_eng' })],
+      opts({ preferredSourceCourses: ['deu_for_eng'] })
+    )
+    expect(d.source.audioId).toBe('own')
+  })
+
+  it('falls through the preference list in order', () => {
+    const d = decideClip(
+      clip(),
+      [row({ id: 'spa', course_code: 'spa_for_eng' })],
+      opts({ preferredSourceCourses: ['deu_for_eng', 'spa_for_eng'] })
+    )
+    expect(d.source.courseCode).toBe('spa_for_eng')
   })
 })
