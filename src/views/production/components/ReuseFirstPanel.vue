@@ -24,6 +24,9 @@
       and renders only what is genuinely missing. Planning is read-only and always safe.
     </p>
 
+    <!-- Coverage first: which voice is cheapest to finish is decided before anything is planned -->
+    <VoiceCoverageTable :course-code="courseCode" :rounds="rounds" />
+
     <!-- Plan controls: the safe half -->
     <div class="rounded-lg border border-emerald-500/25 bg-emerald-900/10 p-4 mb-4">
       <div class="flex items-center gap-2 mb-3">
@@ -271,6 +274,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
+import VoiceCoverageTable from './VoiceCoverageTable.vue'
 
 const props = defineProps<{
   courseCode: string
