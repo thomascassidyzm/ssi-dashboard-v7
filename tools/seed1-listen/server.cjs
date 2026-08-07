@@ -34,6 +34,9 @@ require('dotenv').config({ path: path.join(REPO, '.env') });
 
 const COURSE = (process.argv.find((a, i) => i >= 2 && !a.startsWith('--')) || 'fra_for_eng').trim();
 const PORT = process.env.LISTEN_PORT || process.env.PORT || 4749;
+// Loopback by default: colleagues reach this through `tailscale serve`, which proxies
+// from localhost, so binding all interfaces only ever exposed it to the public internet.
+const HOST = process.env.BIND_HOST || '127.0.0.1';
 // The manifest and the sibling worker's ranking live in the gitignored scripts/
 // workspace of the MAIN checkout, which a dedicated service worktree does not
 // have — so the directory is overridable and the unit file points at it.
@@ -197,7 +200,7 @@ app.get('/api/audio/:id', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Seed-1 listen [${COURSE}] ${manifestState().clips.length} clips → http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Seed-1 listen [${COURSE}] ${manifestState().clips.length} clips → http://${HOST}:${PORT}`);
   console.log(`  data dir: ${DATA_DIR}`);
 });
