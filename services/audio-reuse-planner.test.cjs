@@ -557,3 +557,83 @@ describe('preferred source courses', () => {
     expect(d.source.courseCode).toBe('spa_for_eng')
   })
 })
+
+// ── rebuild mode: the versioned, no-holes swap ─────────────────────────────
+
+describe('rebuild mode', () => {
+  it('forces a REBUILD even when the clip is already perfectly satisfied', () => {
+    const c = clip({ holders: [{ table: 'course_legos', id: 'l1', column: 'known_audio_id', currentAudioId: 'own' }] })
+    const d = decideClip(c, [row({ id: 'own', course_code: 'fra_for_eng' })], opts({ rebuild: true }))
+    expect(d.decision).toBe('REBUILD')
+  })
+
+  it('carries the EXISTING row as the swap target — this is what makes it hole-free', () => {
+    // The row id must not move: holders keep pointing at it throughout, so the
+    // course never references a missing clip at any instant.
+    const d = decideClip(clip(), [row({ id: 'own', course_code: 'fra_for_eng', audio_revision: 2 })], opts({ rebuild: true }))
+    expect(d.source.swapTargetAudioId).toBe('own')
+    expect(d.source.currentRevision).toBe(2)
+    expect(d.reason).toMatch(/revision 3/)
+  })
+
+  it('never picks ANOTHER course\'s row as a swap target', () => {
+    const d = decideClip(clip(), [row({ id: 'foreign', course_code: 'kor_for_eng' })], opts({ rebuild: true }))
+    expect(d.decision).toBe('REBUILD')
+    expect(d.source).toBeNull()
+  })
+
+  it('rebuilds from nothing when the clip does not exist yet', () => {
+    const d = decideClip(clip(), [], opts({ rebuild: true }))
+    expect(d.decision).toBe('REBUILD')
+    expect(d.source).toBeNull()
+  })
+
+  it('still refuses to rebuild a clip whose own text names a foreign language', () => {
+    const fra = planner.buildLanguageNameFilter({ knownName: 'English', targetName: 'French' })
+    const d = decideClip(clip({ text: "The German for: 'I want', is:" }), [row()], opts({ rebuild: true, languageFilter: fra }))
+    expect(d.decision).toBe('BLOCKED')
+  })
+
+  it('a rebuild dry run writes nothing and names the target revision', async () => {
+    const calls = { updates: [], upserts: [], deletes: [] }
+    const db = { from: (t) => ({
+      update: () => ({ eq: () => { calls.updates.push(t); return Promise.resolve({ error: null }) } }),
+      upsert: () => { calls.upserts.push(t); return { select: () => ({ single: () => Promise.resolve({ data: { id: 'x' }, error: null }) }) } },
+      delete: () => { calls.deletes.push(t); return { eq: () => Promise.resolve({ error: null }) } },
+    }) }
+    const p = recountPlan({ courseCode: 'fra_for_eng', rounds: 10, clips: [
+      { ...clip(), decision: 'REBUILD', reason: 'x', reuseSource: { swapTargetAudioId: 'own', currentRevision: 1 } },
+    ] })
+    const log = await applyReusePlan(db, p, { dryRun: true, headObject: async () => ({ exists: true, size: 20000 }) })
+    expect(calls.updates).toHaveLength(0)
+    expect(calls.upserts).toHaveLength(0)
+    expect(log.entries[0].action).toBe('WOULD_REBUILD')
+    expect(log.entries[0].swapTargetAudioId).toBe('own')
+    expect(log.entries[0].nextRevision).toBe(2)
+  })
+
+  it('a live rebuild relinks nothing when the row id is unchanged — no FK moves, no hole', async () => {
+    const calls = { updates: [], deletes: [] }
+    const db = { from: (t) => ({
+      update: (patch) => ({ eq: (c, v) => { calls.updates.push({ t, patch, v }); return Promise.resolve({ error: null }) } }),
+      delete: () => { calls.deletes.push(t); return { eq: () => Promise.resolve({ error: null }) } },
+    }) }
+    const p = recountPlan({ courseCode: 'fra_for_eng', rounds: 10, clips: [
+      { ...clip({ holders: [{ table: 'course_legos', id: 'l1', column: 'known_audio_id', currentAudioId: 'own' }] }),
+        decision: 'REBUILD', reason: 'x', reuseSource: { swapTargetAudioId: 'own', currentRevision: 1 } },
+    ] })
+    const log = await applyReusePlan(db, p, {
+      dryRun: false, bumpStamp: false,
+      headObject: async () => ({ exists: true, size: 20000 }),
+      // the renderer publishes into the SAME row id — that is the contract
+      renderClip: async () => ({ audioId: 'own', s3Key: 'mastered/NEW.mp3', durationMs: 900, revision: 2, previousS3Key: 'mastered/OLD.mp3', swappedInPlace: true }),
+    })
+    expect(log.entries[0].action).toBe('REBUILT')
+    expect(log.entries[0].revision).toBe(2)
+    expect(log.entries[0].swappedInPlace).toBe(true)
+    // the holder already points at 'own', so relinkHolders must be a no-op
+    expect(log.entries[0].holdersUpdated).toHaveLength(0)
+    expect(calls.deletes).toHaveLength(0)
+    expect(log.deletionsPerformed).toBe(0)
+  })
+})

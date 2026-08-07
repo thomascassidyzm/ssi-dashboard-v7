@@ -6024,6 +6024,79 @@ async function reuseRenderClip(courseCode, clip, stats) {
     ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL,
   }))
 
+  // ── THE VERSIONED, NO-HOLES SWAP ───────────────────────────────────────
+  // When this render replaces a clip that already exists, it must NOT upsert
+  // over the row's s3_key in place. Doing that changes the bytes behind an
+  // unchanged learner ref, and `/api/audio/:id` serves
+  // `max-age=31536000, immutable` — so every learner who has already played
+  // the clip keeps the old audio for a YEAR, and the offline IndexedDB cache
+  // (keyed by the ref string) keeps it forever. That is the documented cause
+  // of "we kept replacing clips and got the same clip"
+  // (docs/audio/per-clip-versioned-urls-census-2026-08-06.md).
+  //
+  // Instead: same row id, bumped audio_revision, history row written. The
+  // learner ref becomes `<uuid>.v<N>`, which is a new URL and a new cache key
+  // in both layers, and because the ROW ID never moves, no holder FK is
+  // touched and the course cannot reference a missing clip at any instant.
+  // The superseded S3 object is retained — nothing is ever deleted.
+  const swapTargetAudioId = clip.reuseSource?.swapTargetAudioId
+  if (swapTargetAudioId) {
+    // Make before break: prove the new bytes are really in the bucket BEFORE
+    // the row is pointed at them.
+    const head = await reuseHeadObject(s3Key)
+    if (!head.exists) throw new Error(`new object ${s3Key} not in bucket — refusing to swap`)
+
+    const { data: row, error: readErr } = await supabase
+      .from('course_audio')
+      .select('id, course_code, s3_key, duration_ms, audio_revision')
+      .eq('id', swapTargetAudioId)
+      .single()
+    if (readErr || !row) throw new Error(`swap target ${swapTargetAudioId} not readable: ${readErr?.message || 'no row'}`)
+
+    const previousRevision = row.audio_revision ?? 1
+    const revision = previousRevision + 1
+
+    // History first — a swap that is not recorded is worse than one that does
+    // not happen. This is the rollback ledger.
+    const { error: histErr } = await supabase
+      .from('course_audio_revisions')
+      .insert({
+        audio_id: row.id,
+        course_code: row.course_code,
+        revision,
+        previous_revision: previousRevision,
+        previous_s3_key: row.s3_key,
+        new_s3_key: s3Key,
+        previous_duration_ms: row.duration_ms,
+        new_duration_ms: gated.durationMs,
+        source: 'reuse-first-rebuild',
+        accepted_by: 'phase8 /reuse-apply',
+        reason: 'rounds rebuild on the chosen voice',
+      })
+    if (histErr) throw new Error(`writing revision history: ${histErr.message}`)
+
+    // text/text_normalized/language/role/voice_id are deliberately NOT in the
+    // patch: leaving them alone keeps unique_course_audio_per_voice satisfied
+    // and keeps the id stable, which is what makes this hole-free.
+    const { error: swapErr } = await supabase
+      .from('course_audio')
+      .update({
+        s3_key: s3Key,
+        duration_ms: gated.durationMs,
+        audio_revision: revision,
+        word_boundaries: gated.wordBoundaries || null,
+        origin: 'tts',
+      })
+      .eq('id', row.id)
+    if (swapErr) throw new Error(`swapping clip ${row.id}: ${swapErr.message}`)
+
+    logger.info(`[ReuseFirst] swapped ${row.id} -> revision ${revision} (${row.s3_key} superseded, retained)`)
+    return {
+      audioId: row.id, s3Key, durationMs: gated.durationMs,
+      revision, previousS3Key: row.s3_key, swappedInPlace: true,
+    }
+  }
+
   const { data: inserted, error } = await supabase
     .from('course_audio')
     .upsert({
@@ -6131,6 +6204,7 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
   const rounds = Math.max(1, Math.min(500, parseInt(req.body?.rounds, 10) || 10))
   const dryRun = req.body?.dryRun !== false
   const crossRole = req.body?.crossRole !== false
+  const rebuild = req.body?.rebuild === true
   const voiceAliases = parseVoiceAliases(req.body?.voiceAliases)
 
   // A live run SPENDS MONEY on TTS. Typed confirmation, same shape the rest of
@@ -6156,7 +6230,7 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
   const execute = async () => {
     try {
       const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, {
-        crossRole, voiceAliases,
+        crossRole, voiceAliases, rebuild,
         codeService: { getName: getLangEnglishName },
         preferredSourceCourses: preferredSourcesFor(courseCode, req.body?.preferredSources),
       })

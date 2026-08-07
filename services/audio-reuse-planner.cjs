@@ -653,7 +653,7 @@ async function findCandidates(supabase, clips, { batchSize = 100 } = {}) {
   for (let i = 0; i < texts.length; i += batchSize) {
     const { data, error } = await supabase
       .from('course_audio')
-      .select('id, course_code, text, text_normalized, language, role, voice_id, origin, s3_key, duration_ms, word_boundaries, created_at')
+      .select('id, course_code, text, text_normalized, language, role, voice_id, origin, s3_key, duration_ms, word_boundaries, created_at, audio_revision')
       .in('text_normalized', texts.slice(i, i + batchSize))
     if (error) throw new Error(`reuse lookup: ${error.message}`)
     for (const row of (data || [])) {
@@ -698,6 +698,7 @@ function decideClip(clip, candidates, opts = {}) {
     voiceAliases = [],
     languageFilter = null,      // from buildLanguageNameFilter()
     preferredSourceCourses = [],// e.g. ['deu_for_eng'] — queried first, not as an afterthought
+    rebuild = false,            // force a fresh render of every clip (Tom's ruling)
   } = opts
 
   if (clip.blocked) {
@@ -746,6 +747,10 @@ function decideClip(clip, candidates, opts = {}) {
     // English clip on the right voice and would otherwise match.
     if (languageFilter && languageFilter.namedLanguage(row.text)) { rejected.languageName++; continue }
     viable.push({ ...row, viaAlias: v.viaAlias })
+  }
+
+  if (!viable.length && rebuild) {
+    return { decision: 'REBUILD', reason: 'rebuild: nothing exists yet — render creates the row', source: null, viaAlias: false }
   }
 
   if (!viable.length) {
@@ -798,6 +803,24 @@ function decideClip(clip, candidates, opts = {}) {
     origin: winner.origin,
   }
 
+  // REBUILD — Tom's ruling: every clip in scope is re-rendered fresh on the
+  // chosen voice, whatever already exists. The existing OWN row is carried as
+  // the swap target: the render publishes into that same row id with a bumped
+  // audio_revision, so no holder FK ever moves and the course cannot reference
+  // a missing clip at any instant. If there is no own row, it is a plain
+  // RENDER that creates one.
+  if (rebuild) {
+    const ownRow = viable.find(r => r.course_code === courseCode)
+    return {
+      decision: 'REBUILD',
+      reason: ownRow
+        ? `rebuild: re-render fresh and swap into row ${ownRow.id} as revision ${(ownRow.audio_revision ?? 1) + 1}`
+        : 'rebuild: no existing row in this course — render creates one',
+      source: ownRow ? { ...source, swapTargetAudioId: ownRow.id, currentRevision: ownRow.audio_revision ?? 1 } : null,
+      viaAlias: false,
+    }
+  }
+
   if (own.length) {
     const holdersPointingAtIt = clip.holders.filter(h => h.currentAudioId === winner.id).length
     if (clip.holders.length && holdersPointingAtIt === clip.holders.length) {
@@ -825,7 +848,7 @@ function decideClip(clip, candidates, opts = {}) {
  */
 async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
   const { crossRole = true, voiceAliases = [], mode, codeService = null,
-          preferredSourceCourses = [] } = options
+          preferredSourceCourses = [], rebuild = false } = options
 
   const { clips, shape, voices, course } = await enumerateRoundClips(
     supabase, courseCode, roundCount, { crossRole: false, mode }
@@ -838,7 +861,7 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
   const decided = []
   for (const clip of clips.values()) {
     const d = decideClip(clip, candidates.get(clip.clipKey) || [], {
-      courseCode, crossRole, voiceAliases, languageFilter, preferredSourceCourses,
+      courseCode, crossRole, voiceAliases, languageFilter, preferredSourceCourses, rebuild,
     })
     decided.push({
       clipKey: clip.clipKey,
@@ -880,7 +903,7 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
     else summary.blocked++
   }
 
-  const toRender = decided.filter(c => c.decision === 'RENDER')
+  const toRender = decided.filter(c => c.decision === 'RENDER' || c.decision === 'REBUILD')
   const characters = toRender.reduce((n, c) => n + (c.text ? c.text.length : 0), 0)
 
   const byLayer = {}
@@ -1229,16 +1252,16 @@ async function verifyPlanBytes(plan, { headObject, concurrency = 8, minBytes = 1
 
 /** Recompute summary/byLayer/estimate after decisions change. */
 function recountPlan(plan) {
-  const summary = { total: plan.clips.length, satisfied: 0, reuseOwn: 0, reuseCross: 0, render: 0, blocked: 0 }
+  const summary = { total: plan.clips.length, satisfied: 0, reuseOwn: 0, reuseCross: 0, render: 0, rebuild: 0, blocked: 0 }
   const byLayer = {}
-  const key = { SATISFIED: 'satisfied', REUSE_OWN: 'reuseOwn', REUSE_CROSS: 'reuseCross', RENDER: 'render', BLOCKED: 'blocked' }
+  const key = { SATISFIED: 'satisfied', REUSE_OWN: 'reuseOwn', REUSE_CROSS: 'reuseCross', RENDER: 'render', REBUILD: 'rebuild', BLOCKED: 'blocked' }
   for (const c of plan.clips) {
     summary[key[c.decision]]++
-    byLayer[c.role] = byLayer[c.role] || { total: 0, satisfied: 0, reuseOwn: 0, reuseCross: 0, render: 0, blocked: 0 }
+    byLayer[c.role] = byLayer[c.role] || { total: 0, satisfied: 0, reuseOwn: 0, reuseCross: 0, render: 0, rebuild: 0, blocked: 0 }
     byLayer[c.role].total++
     byLayer[c.role][key[c.decision]]++
   }
-  const toRender = plan.clips.filter(c => c.decision === 'RENDER')
+  const toRender = plan.clips.filter(c => c.decision === 'RENDER' || c.decision === 'REBUILD')
   plan.summary = summary
   plan.byLayer = byLayer
   plan.estimate = {
@@ -1312,10 +1335,16 @@ async function applyReusePlan(supabase, plan, opts = {}) {
     }
 
     try {
-      if (clip.decision === 'RENDER') {
+      if (clip.decision === 'RENDER' || clip.decision === 'REBUILD') {
         if (dryRun) {
-          log.entries.push({ clipKey: clip.clipKey, role: clip.role, text: clip.text, action: 'WOULD_RENDER', voiceId: clip.voiceId, holders: clip.holders })
-          progress(clip, 'would-render')
+          log.entries.push({
+            clipKey: clip.clipKey, role: clip.role, text: clip.text,
+            action: clip.decision === 'REBUILD' ? 'WOULD_REBUILD' : 'WOULD_RENDER',
+            voiceId: clip.voiceId, holders: clip.holders,
+            swapTargetAudioId: clip.reuseSource?.swapTargetAudioId || null,
+            nextRevision: clip.reuseSource ? (clip.reuseSource.currentRevision ?? 1) + 1 : null,
+          })
+          progress(clip, clip.decision === 'REBUILD' ? 'would-rebuild' : 'would-render')
           continue
         }
         if (typeof renderClip !== 'function') throw new Error('no renderer injected — cannot render')
@@ -1323,11 +1352,18 @@ async function applyReusePlan(supabase, plan, opts = {}) {
         if (!rendered?.audioId) throw new Error('renderer returned no audioId')
         const linked = await relinkHolders(supabase, clip, rendered.audioId, { dryRun })
         log.entries.push({
-          clipKey: clip.clipKey, role: clip.role, text: clip.text, action: 'RENDERED',
+          clipKey: clip.clipKey, role: clip.role, text: clip.text,
+          action: clip.decision === 'REBUILD' ? 'REBUILT' : 'RENDERED',
           audioId: rendered.audioId, s3Key: rendered.s3Key || null, durationMs: rendered.durationMs || null,
+          revision: rendered.revision || null,
+          previousS3Key: rendered.previousS3Key || null,
+          swappedInPlace: !!rendered.swappedInPlace,
           holdersUpdated: linked,
+          note: rendered.swappedInPlace
+            ? 'same row id, bumped revision — no holder FK moved, so the course never referenced a missing clip; old object retained'
+            : undefined,
         })
-        progress(clip, 'rendered')
+        progress(clip, clip.decision === 'REBUILD' ? 'rebuilt' : 'rendered')
         continue
       }
 
@@ -1394,7 +1430,7 @@ async function applyReusePlan(supabase, plan, opts = {}) {
   }
 
   if (!dryRun && bumpStamp) {
-    const changed = log.entries.some(e => ['REUSED_OWN', 'REUSED_CROSS', 'RENDERED'].includes(e.action))
+    const changed = log.entries.some(e => ['REUSED_OWN', 'REUSED_CROSS', 'RENDERED', 'REBUILT'].includes(e.action))
     if (changed) {
       const { error } = await supabase
         .from('courses')
