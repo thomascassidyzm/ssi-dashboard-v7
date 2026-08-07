@@ -66,7 +66,12 @@ export function useScriptPlayer(options = {}) {
         return null
       }
     }
-    return `https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/${uuid.toUpperCase()}.mp3`
+    // No resolver supplied — go through the s3_key-reading endpoint rather
+    // than building `mastered/<uuid>.mp3` by convention. That convention
+    // serves the PRE-SWAP object once a clip has been versioned, because the
+    // swap keeps the row id and changes the s3_key.
+    const base = import.meta.env.VITE_API_BASE_URL || ''
+    return `${base}/api/production/audio/${uuid}/stream`
   }
 
   // ============================================================================

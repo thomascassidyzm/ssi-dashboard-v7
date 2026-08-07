@@ -4220,6 +4220,44 @@ app.get('/api/docs/:slug', async (req, res) => {
 
 // Get signed URL for audio playback
 // Looks up s3_key from database for v13 audio, falls back to legacy path
+// GET /api/production/audio/:uuid/stream
+// A clip's bytes, resolved through course_audio.s3_key and 302'd to a signed URL.
+//
+// WHY THIS EXISTS. Popty used to build clip URLs by CONVENTION —
+// `mastered/<row-id>.mp3` — in api.js getAudioStreamUrl and in the
+// useScriptPlayer fallback. That convention held only while a clip's s3_key
+// equalled its row id. The versioned no-holes swap deliberately breaks that:
+// it keeps the ROW ID stable (so no holder FK moves and no hole opens) and
+// writes a NEW s3_key. Every convention-built URL therefore kept serving the
+// PRE-SWAP object, for ever — which is exactly why replaced clips sounded
+// unchanged in the Audio Preview tool and the cycle player on 2026-08-07.
+//
+// Synchronous by design: it returns a URL a caller can assign straight to
+// `audio.src`, so every existing call site is fixed by changing one string
+// rather than by an async refactor of each player.
+app.get('/api/production/audio/:uuid/stream', async (req, res) => {
+  try {
+    const { uuid } = req.params
+    let s3Key = null
+    if (supabaseClient.isInitialized()) {
+      const supabase = supabaseClient.getClient()
+      const { data } = await supabase
+        .from('course_audio').select('s3_key').eq('id', uuid).single()
+      if (data?.s3_key) s3Key = data.s3_key
+    }
+    if (!s3Key) return res.status(404).json({ error: `no course_audio row or s3_key for ${uuid}` })
+    if (s3Key.startsWith('pending/')) return res.status(409).json({ error: 'clip has no rendered audio yet' })
+    const url = await s3Service.getAudioSignedUrl(uuid, 3600, { s3Key })
+    // no-store: the signed URL expires, and a cached redirect would pin a
+    // learner-invisible clip to a stale object after the next swap.
+    res.set('Cache-Control', 'no-store')
+    res.redirect(302, url)
+  } catch (error) {
+    logger.error('Error streaming audio by id:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
   try {
     const { courseCode, uuid } = req.params
