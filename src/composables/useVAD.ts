@@ -118,15 +118,31 @@ export function useVAD(config: Partial<VADConfig> = {}) {
   function pollAudioLevel() {
     if (!analyser) return
 
-    // Get frequency data
-    const dataArray = new Uint8Array(analyser.frequencyBinCount)
-    analyser.getByteFrequencyData(dataArray)
+    // Signal level as a TIME-DOMAIN RMS of the waveform, which is the unit
+    // silenceThreshold (0.02) was written for.
+    //
+    // This used to read getByteFrequencyData, and that made the VAD unable to
+    // see silence at all. getByteFrequencyData does not return magnitudes; it
+    // returns each bin's power mapped from [minDecibels, maxDecibels] —
+    // defaults -100dB..-30dB — onto 0..255. Room tone at a perfectly ordinary
+    // -70dBFS lands around byte 109, i.e. a "level" of 0.43, twenty times over
+    // the threshold. For that reading to fall under 0.02 every bin has to sit
+    // below about -98.6dBFS: digital silence, a muted mic. So on any live mic
+    // the level was permanently above threshold, onSpeechEnd never fired, and
+    // useContinuousRecorder never cut the take — a whole read landed as ONE
+    // blob. (2026-08-07: Kai's session arrived as a single 72.5s upload holding
+    // ~24 separate utterances. Replaying that exact take through this state
+    // machine: 0 cuts, minimum level 0.0250 across all 1450 polls, never once
+    // below 0.02. The same take on the time-domain RMS below cuts 14 segments,
+    // and its own room tone measures p50 0.0030 against p95 0.227 for speech —
+    // ~37dB of separation, with 0.02 sitting cleanly between them.)
+    const dataArray = new Float32Array(analyser.fftSize)
+    analyser.getFloatTimeDomainData(dataArray)
 
     // Calculate RMS energy (0-1)
     let sum = 0
     for (let i = 0; i < dataArray.length; i++) {
-      const normalized = dataArray[i] / 255
-      sum += normalized * normalized
+      sum += dataArray[i] * dataArray[i]
     }
     const rms = Math.sqrt(sum / dataArray.length)
     currentLevel.value = rms

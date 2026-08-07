@@ -151,7 +151,7 @@
 
       <!-- VAD Level Indicator (script mode) -->
       <div v-if="state.scriptMode && state.isRecording" class="vad-indicator">
-        <div class="vad-bar" :style="{ width: `${vadLevel * 100}%` }"></div>
+        <div class="vad-bar" :style="{ width: `${vadMeterPercent}%` }"></div>
         <span class="vad-status">{{ isSpeaking ? 'Speaking...' : 'Listening...' }}</span>
       </div>
 
@@ -307,6 +307,12 @@ const continuousRecorder = useContinuousRecorder({
 
 const isSpeaking = continuousRecorder.isSpeaking
 const vadLevel = continuousRecorder.currentLevel
+
+// vadLevel is a time-domain RMS, so speech measures ~0.2-0.4 and would only
+// ever paint a third of the bar. Scale it for the meter (the DECISION still uses
+// the raw value against silenceThreshold — see useVAD.ts). x3 puts the 0.02
+// silence threshold at a visible 6% and normal speech near full.
+const vadMeterPercent = computed(() => Math.min(100, Math.round(vadLevel.value * 300)))
 
 // Background upload queue
 const uploadQueue = useUploadQueue()
