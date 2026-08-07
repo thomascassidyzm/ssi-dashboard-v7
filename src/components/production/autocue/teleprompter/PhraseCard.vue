@@ -134,9 +134,8 @@ const displayChunks = computed(() => {
   font-size: 2rem;
   font-weight: 600;
   color: var(--color-paper, var(--ink));
-  /* No light-mode override: a white glow is invisible on a light canvas, and
-     splitting this into a :root[data-theme=light] pair loses the prefix off
-     the first selector once the scoped-CSS pass minifies it. */
+  /* One rule for both themes — a white glow is invisible on the light canvas,
+     so this needs no :root[data-theme=light] override. */
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
 }
 
