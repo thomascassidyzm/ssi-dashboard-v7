@@ -4597,18 +4597,15 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       })
     }
 
-    logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
-
     // REFUSE a take that processed "successfully" into no audio. The trim filter
     // (silenceremove at -40dB) strips a silent or muted-mic take down to nothing:
     // ffmpeg exits 0, lame writes an 834-byte header-only MP3 that ffprobe cannot
     // even decode ("Failed to find two consecutive MPEG audio frames"), and the
     // recorder got a 200 with success:true. That is the 2026-08-06 Welsh bug —
     // bookkeeping said recorded, the learner got silence. In regeneration/pod mode
-    // it repoints a real phrase row at an unplayable stub. Refuse BEFORE the S3 PUT
-    // (same principle as the uuid lookup above — a bad take must never orphan
-    // bytes) so the client's upload queue marks it failed and the take stays
-    // visible as missing. Threshold is deliberately low because the trim is
+    // it repoints a real phrase row at an unplayable stub. Refuse BEFORE the S3 PUT,
+    // same as the checks above, so the client's queue marks the take failed and it
+    // stays visible as missing. Threshold is deliberately low because the trim is
     // aggressive — a synthesised 350ms tone comes out the far side at 150ms — so
     // 100ms only catches silence, muted mics and stray clicks, never a real word.
     const MIN_TAKE_MS = 100
@@ -4621,6 +4618,8 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
         durationMs: audioMeta.durationMs || 0,
       })
     }
+
+    logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
 
     // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
     // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
@@ -5515,6 +5514,60 @@ app.post('/api/audio/link-presentation-audio/:courseCode', async (req, res) => {
   } catch (error) {
     logger.error('Error linking presentation audio:', error)
     res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// REUSE-FIRST REGENERATION — /api/audio/reuse-*
+// =============================================================================
+// Thin passthroughs to Phase 8 (port 3465). The rule these serve: before any
+// TTS spend, set aside every clip the first N rounds need, ask "does this
+// voice x text x language already exist?", relink what does, and render only
+// what is genuinely missing. Phase 8 owns all the logic — these routes add
+// nothing but transport, so the UI reads Phase 8's shape directly.
+
+// GET /api/audio/reuse-plan/:courseCode?rounds=10
+// Read-only. Generates nothing, writes nothing, costs nothing.
+app.get('/api/audio/reuse-plan/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const rounds = req.query.rounds ? Number(req.query.rounds) : 10
+    const response = await proxyToPhase8('GET', `/reuse-plan/${courseCode}?rounds=${encodeURIComponent(rounds)}`)
+    logger.info(`[Reuse plan] ${courseCode} rounds=${rounds}: ${response.status}`)
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Reuse plan proxy error:', error?.message || error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
+// POST /api/audio/reuse-apply/:courseCode
+// Body: { rounds, dryRun, confirm }. dryRun:false SPENDS MONEY on TTS, so it
+// is admin-only and Phase 8 additionally requires confirm === courseCode.
+// Returns 202 + { runId } for real runs; progress comes from GET /api/audio/status.
+app.post('/api/audio/reuse-apply/:courseCode', async (req, res) => {
+  const dryRun = req.body?.dryRun !== false
+  if (!dryRun && !await requireAdmin(req, res)) return
+  try {
+    const { courseCode } = req.params
+    logger.log(`[Reuse apply] ${dryRun ? 'Dry run' : 'LIVE'} for ${courseCode} (rounds=${req.body?.rounds})`)
+    const response = await proxyToPhase8('POST', `/reuse-apply/${courseCode}`, req.body || {})
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Reuse apply proxy error:', error?.message || error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
+// GET /api/audio/reuse-run/:runId — the outcome of a finished reuse-first run.
+app.get('/api/audio/reuse-run/:runId', async (req, res) => {
+  try {
+    const { runId } = req.params
+    const response = await proxyToPhase8('GET', `/reuse-run/${runId}`)
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Reuse run proxy error:', error?.message || error)
+    res.status(500).json({ error: error.message || 'Phase 8 audio server not reachable' })
   }
 })
 
