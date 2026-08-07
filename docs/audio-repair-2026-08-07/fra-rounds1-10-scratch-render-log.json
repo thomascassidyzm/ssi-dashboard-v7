@@ -1,0 +1,66 @@
+{
+  "prefix": "mastered/pilot/fra-r10-2026-08-07",
+  "bucket": "ssi-audio-stage",
+  "renderedAt": "2026-08-07T01:29:31.788Z",
+  "note": "Scratch render only. No course_audio row written, no holder column repointed, no existing object touched.",
+  "clips": [
+    {
+      "id": "829126f4-827a-4df2-a241-ead3ef04b303",
+      "text": "I want to speak French with you",
+      "slots": [
+        "S0001L04/course_practice_phrases/known"
+      ],
+      "reason": "pace: 31% shorter than its cohort predicts (1270ms vs ~1849ms)",
+      "truncated": true,
+      "newDurationMs": 1680,
+      "level": {
+        "meanDb": -15.8,
+        "peakDb": -2
+      },
+      "veracity": {
+        "pass": true,
+        "checked": true,
+        "reason": "ok",
+        "cer": 0,
+        "edits": 0,
+        "threshold": 0.3,
+        "decode": "I want to speak French with you.",
+        "expected": "I want to speak French with you",
+        "language": "en",
+        "languageUnmapped": false,
+        "ms": 8719
+      },
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/pilot/fra-r10-2026-08-07/i-want-to-speak-french-with-you.mp3",
+      "key": "mastered/pilot/fra-r10-2026-08-07/i-want-to-speak-french-with-you.mp3"
+    },
+    {
+      "id": "ff5e5f28-964c-495a-a1fd-35af7eba2954",
+      "text": "I want to learn with you",
+      "slots": [
+        "S0002L01/course_practice_phrases/known"
+      ],
+      "reason": "pace: 34% shorter than its cohort predicts (1002ms vs ~1522ms)",
+      "truncated": true,
+      "newDurationMs": 1392,
+      "level": {
+        "meanDb": -15.2,
+        "peakDb": -4.6
+      },
+      "veracity": {
+        "pass": true,
+        "checked": true,
+        "reason": "ok",
+        "cer": 0,
+        "edits": 0,
+        "threshold": 0.3,
+        "decode": "I want to learn with you.",
+        "expected": "I want to learn with you",
+        "language": "en",
+        "languageUnmapped": false,
+        "ms": 10429
+      },
+      "url": "https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/pilot/fra-r10-2026-08-07/i-want-to-learn-with-you.mp3",
+      "key": "mastered/pilot/fra-r10-2026-08-07/i-want-to-learn-with-you.mp3"
+    }
+  ]
+}

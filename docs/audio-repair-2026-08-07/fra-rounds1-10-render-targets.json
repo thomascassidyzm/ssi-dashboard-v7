@@ -1,0 +1,23 @@
+{
+  "note": "fra_for_eng first 10 rounds — the only clips that failed the served-bytes health gate. Produced by tools/audio-reuse-inventory.cjs --measure.",
+  "items": [
+    {
+      "id": "829126f4-827a-4df2-a241-ead3ef04b303",
+      "text": "I want to speak French with you",
+      "slots": [
+        "S0001L04/course_practice_phrases/known"
+      ],
+      "reason": "pace: 31% shorter than its cohort predicts (1270ms vs ~1849ms)",
+      "truncated": true
+    },
+    {
+      "id": "ff5e5f28-964c-495a-a1fd-35af7eba2954",
+      "text": "I want to learn with you",
+      "slots": [
+        "S0002L01/course_practice_phrases/known"
+      ],
+      "reason": "pace: 34% shorter than its cohort predicts (1002ms vs ~1522ms)",
+      "truncated": true
+    }
+  ]
+}
