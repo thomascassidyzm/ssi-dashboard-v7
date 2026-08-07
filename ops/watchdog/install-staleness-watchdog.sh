@@ -41,4 +41,4 @@ echo "--- state ---"
 cat "${POPTY_STALENESS_STATE:-/tmp/popty-staleness-$(basename "$REPO").json}"
 echo
 echo "--- log tail ---"
-tail -5 "${POPTY_WATCHDOG_LOG:-/tmp/popty-watchdog.log}" 2>/dev/null || true
+tail -5 "${POPTY_WATCHDOG_LOG:-$HOME/.local/log/popty-watchdog.log}" 2>/dev/null || true

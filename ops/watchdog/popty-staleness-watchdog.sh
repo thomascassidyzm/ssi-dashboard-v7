@@ -20,7 +20,17 @@
 PATH="/usr/local/bin:/opt/homebrew/bin:$HOME/.npm-global/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH
 
-LOG=${POPTY_WATCHDOG_LOG:-/tmp/popty-watchdog.log}
+# The log lives outside tmpfs (2026-08-07). /tmp is wiped by every reboot, and the record of a
+# stale checkout, a diverged branch or a refused pull is exactly the evidence a reboot must not
+# take with it. STATE_FILE and ATTEMPT_FILE below stay in /tmp deliberately: those are
+# within-boot verdict and retry tokens, and clearing them on reboot is the correct behaviour.
+# The trim is inlined rather than calling command-surface's ops/trim-log.sh on purpose: this
+# script is deliberately portable to Camberley, where that repo need not exist.
+LOG=${POPTY_WATCHDOG_LOG:-$HOME/.local/log/popty-watchdog.log}
+mkdir -p "$(dirname "$LOG")" 2>/dev/null
+if [ -f "$LOG" ] && [ "$(wc -l < "$LOG" 2>/dev/null)" -gt 5000 ]; then
+  tail -n 2000 "$LOG" > "$LOG.tmp" && mv "$LOG.tmp" "$LOG"
+fi
 BRANCH_EXPECTED=${POPTY_DEPLOY_BRANCH:-main}
 
 # Repo root = two levels up from this script, so the checkout can move.
