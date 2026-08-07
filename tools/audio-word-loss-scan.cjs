@@ -68,6 +68,7 @@ const LIMIT = flag('limit') ? Number(flag('limit')) : null
  * the membership is identical by construction.
  */
 const IDS_FROM = flag('ids-from')
+const CHECKPOINT_EVERY = Number(flag('checkpoint-every', 25))
 
 const s3 = new S3Client({
   region: process.env.AWS_REGION || 'eu-west-1',
@@ -262,7 +263,14 @@ async function legoFirst (rows) {
       const r = todo[i]
       try { done[r.id] = await scanOne(r) } catch (e) { done[r.id] = { audioId: r.id, error: e.message } }
       finished++
-      if (finished % 100 === 0) {
+      /**
+       * Checkpoint every 25, not every 100. The tool's promise is that it is
+       * resumable, and the interval is what that promise is actually worth: at
+       * ggml-medium speed on a loaded box a clip takes ~20s, so 100 clips is
+       * half an hour of work thrown away by a kill — and this box killed two
+       * scans on 2026-08-06 by filling /tmp. 25 costs four small writes an hour.
+       */
+      if (finished % CHECKPOINT_EVERY === 0) {
         const rate = finished / ((Date.now() - started) / 1000)
         const eta = Math.round((todo.length - finished) / Math.max(rate, 0.01) / 60)
         const t = Object.values(done).filter(x => x.truncated).length
