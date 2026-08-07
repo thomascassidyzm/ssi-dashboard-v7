@@ -6414,6 +6414,246 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
 })
 
 // =============================================================================
+// REUSE-FIRST REGENERATION
+// =============================================================================
+// Tom's rule, 2026-08-07, verbatim:
+//   "set aside all clips for the first 10 ROUNDS / does this voice x text x
+//    lang combination exist already? / find it / then generate all missing clips"
+//
+// The decision logic lives in services/audio-reuse-planner.cjs (no TTS, no S3,
+// unit-tested). This file supplies the two things only phase 8 owns: storage
+// verification and the renderer. Nothing here deletes anything — the planner has
+// no delete path at all, and neither does this.
+//
+//   GET  /reuse-plan/:courseCode?rounds=10   read-only, generates nothing
+//   POST /reuse-apply/:courseCode            { rounds, dryRun, confirm }
+//   GET  /reuse-run/:runId                   result of a finished run
+// =============================================================================
+
+const reusePlanner = require('../audio-reuse-planner.cjs')
+
+const REUSE_ARTIFACT_DIR = path.join(__dirname, '..', '..', 'docs', 'audio-repair-2026-08-07')
+const reuseRuns = new Map()   // runId -> run record (in-process; artifact on disk is durable)
+
+/** HEAD an S3 object. Never throws for "missing"; a failed QUESTION is `null`. */
+async function reuseHeadObject(s3Key) {
+  if (!s3Key || s3Key.startsWith('pending/')) return { exists: false, size: null }
+  try {
+    const r = await s3.send(new HeadObjectCommand({ Bucket: S3_BUCKET, Key: s3Key }))
+    return { exists: true, size: r.ContentLength ?? null }
+  } catch (e) {
+    const code = e?.$metadata?.httpStatusCode
+    if (e?.name === 'NotFound' || code === 404) return { exists: false, size: null }
+    return { exists: null, size: null, error: e?.name || e?.message || 'head failed' }
+  }
+}
+
+/**
+ * Render ONE clip from the plan. Deliberately the same recipe /generate uses —
+ * gender expansion, master, PRE-PUBLISH VERACITY GATE, S3, course_audio upsert —
+ * and reading the COURSE text the planner supplied, never course_audio.text.
+ * The precious-audio guard is honoured: a human recording at this key is never
+ * overwritten.
+ */
+async function reuseRenderClip(courseCode, clip, stats) {
+  const guardedHuman = await humanRowAtAudioKey(
+    courseCode, normalizeForAudio(clip.text), clip.language, clip.role, clip.voiceId
+  )
+  if (guardedHuman) {
+    logger.info(`[ReuseFirst] SKIP render: human recording ${guardedHuman.id} holds this key`)
+    return { audioId: guardedHuman.id, s3Key: null, durationMs: null, skippedHuman: true }
+  }
+
+  const [provider, voiceName] = String(clip.voiceId).split('_', 2)
+  let textForTTS = clip.text
+  if ((clip.role === 'target1' || clip.role === 'target2') && genderService.hasGenderMarker(clip.text)) {
+    const marker = genderService.analyzeAndExpand(clip.text, clip.language, clip.role)
+    if (marker.wasModified) textForTTS = marker.expandedText
+  }
+
+  const renderAndMaster = async () => {
+    let rawAudioBuffer, wordBoundaries
+    if (provider === 'azure') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+        subscriptionKey: process.env.AZURE_SPEECH_KEY,
+        region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+        voiceName, speed: 1.0,
+      }))
+    } else if (provider === 'elevenlabs') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+        apiKey: process.env.ELEVENLABS_API_KEY, voiceId: voiceName, speed: 1.0,
+      }))
+    } else if (provider === 'xai') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+        apiKey: process.env.XAI_API_KEY, voiceId: voiceName, language: toBcp47(clip.language),
+      }))
+    } else {
+      throw new Error(`Unknown TTS provider: ${provider} (voice ${clip.voiceId})`)
+    }
+    const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+    return { buffer, durationMs, wordBoundaries }
+  }
+
+  const gated = await veracity.renderChecked({
+    render: renderAndMaster,
+    expectedText: textForTTS,
+    language: clip.language,
+    stats,
+    logger,
+    meta: { courseCode, role: clip.role, voiceId: clip.voiceId, lego_id: clip.legoId || null, originalText: clip.text },
+  })
+  if (!gated.published) {
+    throw new Error(`veracity gate: quarantined after ${gated.attempts} attempts (${gated.verdict?.reason}, CER ${gated.verdict?.cer})`)
+  }
+
+  const audioId = uuidv4().toUpperCase()
+  const s3Key = `mastered/${audioId}.mp3`
+  await s3.send(new PutObjectCommand({
+    Bucket: S3_BUCKET, Key: s3Key, Body: gated.buffer,
+    ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL,
+  }))
+
+  const { data: inserted, error } = await supabase
+    .from('course_audio')
+    .upsert({
+      course_code: courseCode,
+      text: clip.text,
+      text_normalized: normalizeForAudio(clip.text),
+      language: clip.language,
+      role: clip.role,
+      voice_id: clip.voiceId,
+      origin: 'tts',
+      s3_key: s3Key,
+      duration_ms: gated.durationMs,
+      lego_id: clip.legoId || null,
+      word_boundaries: gated.wordBoundaries || null,
+    }, { onConflict: 'course_code,text_normalized,language,role,voice_id' })
+    .select('id')
+    .single()
+  if (error) throw new Error(`course_audio upsert: ${error.message}`)
+
+  // Presentation audio also needs its FK on course_legos — the planner's holder
+  // list already carries that column, so relinkHolders covers it.
+  return { audioId: inserted.id, s3Key, durationMs: gated.durationMs }
+}
+
+/**
+ * Voice aliases: groups of voice_id strings a caller ASSERTS are one voice.
+ * Off by default. The estate carries legacy bare ids (`eve`) alongside
+ * provider-prefixed ones (`xai_eve`) and whether those are the same voice is a
+ * voice-identity call, so it is opt-in per request and recorded on every clip
+ * that used it.
+ */
+function parseVoiceAliases(raw) {
+  if (!raw) return []
+  try {
+    const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw
+    if (!Array.isArray(parsed)) return []
+    return parsed.filter(g => Array.isArray(g) && g.length > 1)
+  } catch { return [] }
+}
+
+app.get('/reuse-plan/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const rounds = Math.max(1, Math.min(500, parseInt(req.query.rounds, 10) || 10))
+    const crossRole = req.query.crossRole === 'true'
+    const voiceAliases = parseVoiceAliases(req.query.voiceAliases)
+    const verifyBytes = req.query.verifyBytes !== 'false'
+
+    const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, { crossRole, voiceAliases })
+    if (verifyBytes) await reusePlanner.verifyPlanBytes(plan, { headObject: reuseHeadObject })
+
+    res.json(plan)
+  } catch (e) {
+    logger.error(`[ReuseFirst /reuse-plan] ${e.message}`)
+    res.status(500).json({ ok: false, error: e.message })
+  }
+})
+
+app.post('/reuse-apply/:courseCode', async (req, res) => {
+  const { courseCode } = req.params
+  const rounds = Math.max(1, Math.min(500, parseInt(req.body?.rounds, 10) || 10))
+  const dryRun = req.body?.dryRun !== false
+  const crossRole = req.body?.crossRole === true
+  const voiceAliases = parseVoiceAliases(req.body?.voiceAliases)
+
+  // A live run SPENDS MONEY on TTS. Typed confirmation, same shape the rest of
+  // the dashboard uses for expensive/irreversible actions.
+  if (!dryRun && req.body?.confirm !== courseCode) {
+    return res.status(400).json({
+      ok: false,
+      error: `a live run renders audio and costs money — send confirm:"${courseCode}" to proceed`,
+    })
+  }
+  if (!dryRun && currentWork.active) {
+    return res.status(409).json({ ok: false, error: `phase 8 is busy (${currentWork.operation} on ${currentWork.courseCode})` })
+  }
+
+  const runId = `reuse-${courseCode}-r${rounds}-${Date.now()}`
+  const run = {
+    runId, courseCode, rounds, dryRun,
+    startedAt: new Date().toISOString(), finishedAt: null,
+    state: 'running', summary: null, log: null, artifactPath: null, error: null,
+  }
+  reuseRuns.set(runId, run)
+
+  const execute = async () => {
+    try {
+      const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, { crossRole, voiceAliases })
+      await reusePlanner.verifyPlanBytes(plan, { headObject: reuseHeadObject })
+      run.plan = { shape: plan.shape, summary: plan.summary, byLayer: plan.byLayer, estimate: plan.estimate, voices: plan.voices, bytes: plan.bytes }
+
+      const actionable = plan.clips.filter(c => c.decision !== 'SATISFIED' && c.decision !== 'BLOCKED').length
+      if (!dryRun) startWork('reuse-first', courseCode, actionable)
+
+      const veracityStats = {}
+      const log = await reusePlanner.applyReusePlan(supabase, plan, {
+        runId,
+        dryRun,
+        headObject: reuseHeadObject,
+        renderClip: (clip) => reuseRenderClip(courseCode, clip, veracityStats),
+        onProgress: ({ clip, outcome }) => { if (!dryRun) updateWork(`${clip} [${outcome}]`, outcome !== 'failed') },
+      })
+      if (!dryRun) endWork()
+
+      // Artifact: standing sweep hygiene — every decision, per clip, on disk.
+      await fs.ensureDir(REUSE_ARTIFACT_DIR)
+      const artifactPath = path.join(REUSE_ARTIFACT_DIR, `${courseCode}-rounds1-${rounds}-reuse-${dryRun ? 'dryrun' : 'applied'}-log.json`)
+      await fs.writeJson(artifactPath, { ...log, plan: run.plan }, { spaces: 2 })
+
+      run.log = log
+      run.summary = log.counts
+      run.artifactPath = artifactPath
+      run.state = 'done'
+      run.finishedAt = new Date().toISOString()
+      logger.info(`[ReuseFirst] ${runId} finished: ${JSON.stringify(log.counts)} (${log.errors.length} errors, ${log.deletionsPerformed} deletions)`)
+    } catch (e) {
+      if (!dryRun && currentWork.active) endWork()
+      run.state = 'failed'
+      run.error = e.message
+      run.finishedAt = new Date().toISOString()
+      logger.error(`[ReuseFirst] ${runId} failed: ${e.message}`)
+    }
+  }
+
+  // A dry run is cheap enough to await, so the caller gets the plan straight
+  // back; a live run is long and is polled from /status + /reuse-run/:runId.
+  if (dryRun) {
+    await execute()
+    return res.json({ ok: run.state === 'done', started: false, runId, ...run })
+  }
+  execute()
+  res.status(202).json({ ok: true, started: true, runId, courseCode, rounds })
+})
+
+app.get('/reuse-run/:runId', (req, res) => {
+  const run = reuseRuns.get(req.params.runId)
+  if (!run) return res.status(404).json({ ok: false, error: `no run ${req.params.runId} in this process` })
+  res.json({ ok: true, ...run })
+})
+
+// =============================================================================
 // START SERVER (suppressed when require()d as a library)
 // =============================================================================
 // Gated on PHASE8_NO_LISTEN so other tools (e.g. the pod-explainer overnight
