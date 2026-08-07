@@ -504,7 +504,7 @@ const routes = [
     path: '/admin/configs/voice',
     name: 'VoiceLab',
     component: () => import('../views/admin/VoiceLab.vue'),
-    meta: { title: 'VOICELAB - Admin' }
+    meta: { title: 'Voice Lab - Admin' }
   },
   {
     path: '/admin/configs/vad',

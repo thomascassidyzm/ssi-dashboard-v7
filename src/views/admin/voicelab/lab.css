@@ -1,0 +1,149 @@
+/* Shared Voice Lab chrome. Same vocabulary as Pod Lab and VAD Lab — panels,
+   fields, chips, a pink accent for VOICELAB — so the five labs read as one
+   surface rather than five people's screens. */
+
+.vl-panel {
+  background: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  border-radius: 10px;
+  padding: 1rem 1.1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+.vl-panel h3 {
+  font-size: 0.9rem;
+  margin: 0 0 0.35rem;
+  letter-spacing: 0.02em;
+}
+.vl-panel h4 {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 1.1rem 0 0.4rem;
+}
+.vl-note {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  max-width: 82ch;
+  margin: 0 0 0.75rem;
+}
+.vl-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem 0.9rem;
+}
+.vl-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.vl-field input,
+.vl-field select,
+.vl-field textarea {
+  padding: 0.4rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--surface-3);
+  background: var(--surface-2);
+  color: inherit;
+  font-size: 0.8125rem;
+  font-family: inherit;
+  width: 100%;
+}
+.vl-field input:disabled,
+.vl-field select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.vl-field .vl-why {
+  font-size: 0.68rem;
+  color: var(--muted);
+  opacity: 0.8;
+  line-height: 1.35;
+}
+.vl-grid {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  margin: 0.6rem 0 1rem;
+}
+.vl-grid th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--muted);
+  border-bottom: 1px solid var(--surface-3);
+  padding: 0.4rem 0.5rem;
+  white-space: nowrap;
+}
+.vl-grid td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--surface-2);
+  vertical-align: top;
+}
+.vl-mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.vl-muted { color: var(--muted); }
+.vl-err { color: #f87171; }
+.vl-ok { color: #34d399; }
+.vl-warn { color: #fbbf24; }
+
+.vl-btn,
+.vl-btn-primary {
+  border-radius: 6px;
+  padding: 0.45rem 0.95rem;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-family: inherit;
+}
+.vl-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--surface-3);
+  color: inherit;
+}
+.vl-btn:hover:not(:disabled) { border-color: #ec4899; }
+.vl-btn-primary {
+  background: #ec4899;
+  border: 1px solid #ec4899;
+  color: #fff;
+}
+.vl-btn:disabled,
+.vl-btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.vl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--surface-2);
+  border: 1px solid var(--surface-3);
+  border-radius: 999px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.72rem;
+  color: inherit;
+}
+.vl-chip.on { border-color: #ec4899; color: #ec4899; }
+.vl-chip.pass { border-color: #34d399; color: #34d399; }
+.vl-chip.fail { border-color: #f87171; color: #f87171; }
+.vl-chip.unchecked { border-color: #fbbf24; color: #fbbf24; }
+.vl-chip.na { opacity: 0.55; }
+
+.vl-play {
+  background: var(--surface-2);
+  border: 1px solid var(--surface-3);
+  border-radius: 5px;
+  padding: 0.15rem 0.55rem;
+  cursor: pointer;
+  color: inherit;
+  font-size: 0.75rem;
+}
+.vl-play:hover { border-color: #ec4899; }
+.vl-play.playing { border-color: #ec4899; color: #ec4899; }
+
+.vl-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 1000px) {
+  .vl-cols { grid-template-columns: minmax(0, 1fr); }
+}
