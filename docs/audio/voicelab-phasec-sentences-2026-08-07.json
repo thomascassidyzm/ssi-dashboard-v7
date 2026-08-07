@@ -1,0 +1,838 @@
+{
+  "experiment": "Experiment 0 phase C — (gfzdpspr5fdp, deu|fra) capability test",
+  "chosenAt": "2026-08-07T01:21:01.444Z",
+  "seed": 20260807,
+  "languages": {
+    "deu": {
+      "incumbents": [
+        "ara",
+        "leo"
+      ],
+      "pools": {
+        "short": 3579,
+        "long": 1693,
+        "awkward": 6837,
+        "distinctTexts": 13855
+      },
+      "sentences": [
+        {
+          "id": "8fb1ce14-f366-41ea-9c27-0c0e8bd30701",
+          "text": "toll",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/67147A07-A892-419C-BCE2-4569098B8FD8.mp3",
+          "duration_ms": 648,
+          "axis": "short"
+        },
+        {
+          "id": "b447aec3-e117-449f-ad3e-1e6a195e96d3",
+          "text": "sie hat ein Glas",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/1F0DDAD2-0898-4F29-96FB-02EBA424E11C.mp3",
+          "duration_ms": 1056,
+          "axis": "short"
+        },
+        {
+          "id": "682ae4e6-d22e-4ca3-a04b-73b27b732874",
+          "text": "nicht vor",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/682AE4E6-D22E-4CA3-A04B-73B27B732874.mp3",
+          "duration_ms": 912,
+          "axis": "short"
+        },
+        {
+          "id": "559e8aa8-2c89-4ca7-ba59-505177cdbde7",
+          "text": "wen",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/F64B515A-6687-47A4-B672-744AD4EDED29.mp3",
+          "duration_ms": 720,
+          "axis": "short"
+        },
+        {
+          "id": "41695294-8e89-45ba-b865-83a6295c2150",
+          "text": "Kaffee",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/686094E1-69C5-48EB-A030-9DA5DA935B0C.mp3",
+          "duration_ms": 720,
+          "axis": "short"
+        },
+        {
+          "id": "27b826db-c565-4463-9ddc-e925e2119d8a",
+          "text": "sie möchte das auch",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/3F0BC891-F3CB-4C07-95A4-063898D16AAC.mp3",
+          "duration_ms": 1200,
+          "axis": "short"
+        },
+        {
+          "id": "6ff945c9-b418-479f-b389-962d7b40497d",
+          "text": "allein",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/B80F0B7F-4029-4B45-ADB4-F57D2AB63934.mp3",
+          "duration_ms": 744,
+          "axis": "short"
+        },
+        {
+          "id": "3e190f23-6c2e-4b9a-be19-8a8b1c1527eb",
+          "text": "uns treffen",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/DA5CFE3A-0154-4310-8073-F4C578C040EE.mp3",
+          "duration_ms": 816,
+          "axis": "short"
+        },
+        {
+          "id": "89eb6442-af4a-4c5c-8027-c227accaa766",
+          "text": "das Wenigste tun",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/16D00AFA-C13D-43CF-8FC7-688B5496B244.mp3",
+          "duration_ms": 1464,
+          "axis": "short"
+        },
+        {
+          "id": "3ecb5742-46f2-480d-aefa-56729798c348",
+          "text": "sie möchte es auch",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/84332630-03FC-4929-826A-AA139AE1D6B7.mp3",
+          "duration_ms": 696,
+          "axis": "short"
+        },
+        {
+          "id": "2ba5564b-ee8d-445b-979e-ba29584ccd20",
+          "text": "spielzeuge",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/285C8D9E-54C7-41D4-9F6A-7423D83E00EF.mp3",
+          "duration_ms": 864,
+          "axis": "short"
+        },
+        {
+          "id": "8f2cc1e1-8c8a-4497-9148-bfe3d453cd9a",
+          "text": "steht",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/8F2CC1E1-8C8A-4497-9148-BFE3D453CD9A.mp3",
+          "duration_ms": 696,
+          "axis": "short"
+        },
+        {
+          "id": "ebac8d87-2d30-419c-b1f9-33558678214a",
+          "text": "schrecklichen",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/12CC0FD6-F6A3-44BD-93F1-CCE5BB33FC55.mp3",
+          "duration_ms": 552,
+          "axis": "short"
+        },
+        {
+          "id": "aa9f0a78-a49f-415d-a0b0-c7710f8dec98",
+          "text": "Vielen Dank, dass du mir geholfen hast zu verstehen, aber ich muss es wissen",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/B285ADA8-892E-44FD-BCDB-84757E315CF1.mp3",
+          "duration_ms": 4056,
+          "axis": "long"
+        },
+        {
+          "id": "80b85230-4607-4201-8907-67dc6a6979b1",
+          "text": "ich glaube als Gruppe können wir alles vor nächsten Monat fertig machen",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/193612E9-838B-43B2-AE41-178DA9B13428.mp3",
+          "duration_ms": 3432,
+          "axis": "long"
+        },
+        {
+          "id": "734d84ee-fe63-4927-98fe-5ee269581770",
+          "text": "es ist sehr nett von dir mir heute mit der Arbeit zu helfen weil sie schwierig ist",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/D40C4B8E-B7CC-40D2-B351-5A2877AF893A.mp3",
+          "duration_ms": 3864,
+          "axis": "long"
+        },
+        {
+          "id": "a1c52262-6898-4bec-8233-0a82e4854b23",
+          "text": "es wäre sehr nett von dir wenn du es mir noch einmal erklären könntest",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/5E0A532D-7D2B-4C2C-A006-E567E27DACCB.mp3",
+          "duration_ms": 3600,
+          "axis": "long"
+        },
+        {
+          "id": "a7a5f04e-d313-4e12-a556-5004fbb4e09d",
+          "text": "denkst du, dass er ein neues Leben aufbauen könnte, wenn er wollte?",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/D7B5C966-D2CE-4185-B89F-7B0A6E097B24.mp3",
+          "duration_ms": 3192,
+          "axis": "long"
+        },
+        {
+          "id": "e75ee6ea-239f-486d-a459-e576ec84375b",
+          "text": "Hallo! Sorry, ich bin ein bisschen spät. Ich bin gerade auf dem Heimweg. Hast du am Wochenende Zeit?",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/F4946EFC-9D4C-411C-B306-E080EBA96ED0.mp3",
+          "duration_ms": 5376,
+          "axis": "long"
+        },
+        {
+          "id": "da01acc9-aba0-496c-afd5-617d2b7c9c65",
+          "text": "Vielen Dank, dass du mir geholfen hast zu verstehen, aber später werde ich versuchen",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/D8701A70-2562-4642-A1FC-068F3D0BE664.mp3",
+          "duration_ms": 4392,
+          "axis": "long"
+        },
+        {
+          "id": "7b472484-4f98-4928-8c10-d663c9758ff6",
+          "text": "Natürlich weiß ich nicht, warum du das denkst, aber ich möchte verstehen",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/CEE01899-0A93-4B68-8440-6623D2901785.mp3",
+          "duration_ms": 3984,
+          "axis": "long"
+        },
+        {
+          "id": "dd3b6f88-2c2e-48d0-96c7-67a9cdb2fc5f",
+          "text": "macht es dir etwas aus wenn ich deutsch mit dir spreche weil ich üben will",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/BB4FF101-9FE5-4875-8F27-48671F5A1559.mp3",
+          "duration_ms": 3960,
+          "axis": "long"
+        },
+        {
+          "id": "d209e9a4-1882-4050-b2b1-a40f7b24c5b0",
+          "text": "es ist, als ob nichts für mich heute zu funktionieren scheint",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/21EEAD85-978B-4429-9F26-3A48A6C91B24.mp3",
+          "duration_ms": 3264,
+          "axis": "long"
+        },
+        {
+          "id": "39b8abd0-bb47-4109-8fc7-a758eb2108d9",
+          "text": "ich möchte wissen ob du eine Idee hast was wir jetzt machen können",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/B68BCC59-0BDC-49FC-804A-06B70F5E5A54.mp3",
+          "duration_ms": 3408,
+          "axis": "long"
+        },
+        {
+          "id": "2b508bd8-b919-4a49-b5d0-ddb29d48fd65",
+          "text": "mein Lehrer will dass ich antworte wie viele Leute kennst du, die gern fernsehen",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/CC17E447-95D0-4F6C-BCFF-67D9086F4F6F.mp3",
+          "duration_ms": 4128,
+          "axis": "long"
+        },
+        {
+          "id": "6a9685b6-2440-4734-9b8d-a814a9b1f774",
+          "text": "mein Freund benutzt Wörter die ungewöhnlich sind aber ich verstehe sie",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/2359CE2F-54D3-44EB-93CC-D86B42D2E837.mp3",
+          "duration_ms": 3672,
+          "axis": "long"
+        },
+        {
+          "id": "4801773e-c352-41fb-a61d-e135c9d87095",
+          "text": "Sie denken, dass das wichtig ist",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/235CBF45-3162-4027-A866-A72798344478.mp3",
+          "duration_ms": 1488,
+          "axis": "awkward"
+        },
+        {
+          "id": "e9177085-fd0d-4893-9d02-85b2671337fe",
+          "text": "ich denke, dass sie unglücklich sind",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/B3757B32-C1CC-42C6-9C92-EA925789A0A2.mp3",
+          "duration_ms": 2088,
+          "axis": "awkward"
+        },
+        {
+          "id": "52cd5271-99bf-4d60-b126-719c9ac2f50a",
+          "text": "sie will auch ein großes Glas",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/A9ADB293-7454-435B-A413-E4453D1D86FE.mp3",
+          "duration_ms": 1680,
+          "axis": "awkward"
+        },
+        {
+          "id": "9ec3276b-681c-4783-bf3c-50d7cc5d0972",
+          "text": "Ich bin beeindruckt.",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/1511EF26-2CC4-4A8D-A1DE-718D2D995B42.mp3",
+          "duration_ms": 1032,
+          "axis": "awkward"
+        },
+        {
+          "id": "1ffa35a3-10a5-4272-9c52-6b0229af3fda",
+          "text": "er ist auch umgezogen",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/019C0239-2D96-4778-A4D8-D7B9D5BAB3CB.mp3",
+          "duration_ms": 1440,
+          "axis": "awkward"
+        },
+        {
+          "id": "9bd12ac1-bd34-4326-a391-fa94505bf532",
+          "text": "sie streiten immer noch",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/BA725A59-4D80-4DF4-9062-EBEA8C849205.mp3",
+          "duration_ms": 1248,
+          "axis": "awkward"
+        },
+        {
+          "id": "2622dd80-0d0b-4fb8-bf17-58697cd45490",
+          "text": "ich finde deine Augen sehr wunderschön",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/44E01505-8DBB-4EF3-8127-71BDC15C2163.mp3",
+          "duration_ms": 1944,
+          "axis": "awkward"
+        },
+        {
+          "id": "951d2af7-cdec-489a-b8d6-8245b238a05c",
+          "text": "ich denke, dass es wichtig ist, Hoffnung zu haben",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/90099C5D-2BB9-496A-A867-BC3AAFFD2365.mp3",
+          "duration_ms": 2952,
+          "axis": "awkward"
+        },
+        {
+          "id": "9778abd6-2b65-45ee-9c8a-e226da1cfc71",
+          "text": "wir werden morgen ein Gespräch haben",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/2604822E-67BF-4C23-A9EA-C98C7AF2F41F.mp3",
+          "duration_ms": 1968,
+          "axis": "awkward"
+        },
+        {
+          "id": "f7c4b265-3d2b-42be-bfef-b2bb92a6510b",
+          "text": "ich denke, ich kenne diese Person",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/F32D777B-FFD7-43DC-91A0-D80520E7651C.mp3",
+          "duration_ms": 1992,
+          "axis": "awkward"
+        },
+        {
+          "id": "842cd628-7f68-4717-85e1-3f20f1b13665",
+          "text": "weil ich mehr sprechen will",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/0FA2A78A-8777-4222-9B00-2A3A235E3BE0.mp3",
+          "duration_ms": 1512,
+          "axis": "awkward"
+        },
+        {
+          "id": "396f546c-5994-4ee8-895b-0659c2a1f1c5",
+          "text": "sie hat nach dieser Sache gefragt",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/FA04CE7F-7DBD-46C3-A1A2-84901868029D.mp3",
+          "duration_ms": 2016,
+          "axis": "awkward"
+        },
+        {
+          "id": "7f38398f-e858-4028-9833-369c4948bff0",
+          "text": "er will nicht in einer Stadt leben",
+          "language": "deu",
+          "role": "target1",
+          "voice_id": "ara",
+          "s3_key": "mastered/04C9A226-CBB0-46CB-8D99-A97277059A32.mp3",
+          "duration_ms": 1848,
+          "axis": "awkward"
+        },
+        {
+          "id": "54a99a2e-65bf-4c13-b0bf-5ae89fd9d2c0",
+          "text": "dieser Mann lernt Deutsch",
+          "language": "deu",
+          "role": "target2",
+          "voice_id": "leo",
+          "s3_key": "mastered/54C386FB-F199-408B-9750-D357AF7C41C5.mp3",
+          "duration_ms": 1128,
+          "axis": "awkward"
+        }
+      ]
+    },
+    "fra": {
+      "incumbents": [
+        "eve"
+      ],
+      "pools": {
+        "short": 3602,
+        "long": 417,
+        "awkward": 4670,
+        "distinctTexts": 12902
+      },
+      "sentences": [
+        {
+          "id": "fec1ce6a-39e8-4571-83a3-b1a4e35b3d4f",
+          "text": "samedi soir",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/CE3A098B-8051-4FB3-B330-93D87B182679.mp3",
+          "duration_ms": 1032,
+          "axis": "short"
+        },
+        {
+          "id": "a327f833-6d7e-4cde-a2e2-be94f96b754e",
+          "text": "elle voulait que tu",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/10A2F9A8-598D-4742-AA6B-611B9D9E484A.mp3",
+          "duration_ms": 1224,
+          "axis": "short"
+        },
+        {
+          "id": "ab233cc5-e760-420f-ae3c-7aae23556718",
+          "text": "fatigués",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/6CE8F067-DFBA-4142-A01C-029A9B6758C9.mp3",
+          "duration_ms": 768,
+          "axis": "short"
+        },
+        {
+          "id": "7e1fe3c8-0090-45b0-b31e-99283e8a1a3a",
+          "text": "possible",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/0EAFC857-FDF6-4C98-8627-7B1042C9697A.mp3",
+          "duration_ms": 744,
+          "axis": "short"
+        },
+        {
+          "id": "d92b4e92-41aa-4955-94ca-b50d78557718",
+          "text": "vous cherchez",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/60B7EC31-1881-4102-AE31-66D5C0CFA03C.mp3",
+          "duration_ms": 840,
+          "axis": "short"
+        },
+        {
+          "id": "71e10732-c008-460e-b0d6-b93b3bfe82d3",
+          "text": "même",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/C79B1C1D-E1A2-4037-B41F-4385558BBAA5.mp3",
+          "duration_ms": 744,
+          "axis": "short"
+        },
+        {
+          "id": "f5ab117a-d71e-4824-944c-3415d7d3ce1e",
+          "text": "voyager",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/9B296D50-F9C5-44C4-9F0A-68CEE80282C4.mp3",
+          "duration_ms": 768,
+          "axis": "short"
+        },
+        {
+          "id": "7c0fde89-fa79-48eb-a94d-dcd2df6a0067",
+          "text": "la plage est bien",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/6B97CEF0-E023-4C59-82EA-480D04A0150E.mp3",
+          "duration_ms": 1200,
+          "axis": "short"
+        },
+        {
+          "id": "5df940e1-a76f-4ce5-bffc-971622256cba",
+          "text": "il a été ici avant",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/988A1235-1070-45D7-A92B-2598BD44D28F.mp3",
+          "duration_ms": 1368,
+          "axis": "short"
+        },
+        {
+          "id": "69159af8-e20e-46b6-8fce-ca4e25d688be",
+          "text": "mais",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/AF4248AA-A057-4236-ADA6-3AC4AA40FD2B.mp3",
+          "duration_ms": 552,
+          "axis": "short"
+        },
+        {
+          "id": "2584339d-0635-4ae8-b104-15e43af891cb",
+          "text": "n'aimait pas ça",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/636CB660-E572-4886-B26D-EA4D54E34115.mp3",
+          "duration_ms": 1056,
+          "axis": "short"
+        },
+        {
+          "id": "8ad75fd1-7c5a-447c-bcea-a8dce07e485c",
+          "text": "parce qu'elle",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/5C84E585-CE67-43D1-9E75-ABC1CDA47ED7.mp3",
+          "duration_ms": 768,
+          "axis": "short"
+        },
+        {
+          "id": "39a53e48-0823-4ea9-b44b-92082de04bc7",
+          "text": "rendre",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/107E173F-FCC9-4EAE-A657-235803B38481.mp3",
+          "duration_ms": 864,
+          "axis": "short"
+        },
+        {
+          "id": "73884d3a-86fa-41d9-8d32-aa9b2a0e3e10",
+          "text": "Je ne voulais pas vous demander quelque chose de si important",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/C14DB532-8F38-4B20-8166-A3051E3A1576.mp3",
+          "duration_ms": 2736,
+          "axis": "long"
+        },
+        {
+          "id": "c1af13c1-1d61-44ed-b156-e5b43d02cf49",
+          "text": "Je connais une vieille femme qui voulait parler français très bien",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/C020D5EE-689F-40FE-9BC5-5603E15B5F4B.mp3",
+          "duration_ms": 3216,
+          "axis": "long"
+        },
+        {
+          "id": "53fe21b2-8c7b-445b-aa85-5dac9a79e0d6",
+          "text": "j'essaie mais je ne peux pas me souvenir de comment dire ce que je voulais dire",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/29AD787E-A28A-4FD1-BC59-04BBABB7A52F.mp3",
+          "duration_ms": 3696,
+          "axis": "long"
+        },
+        {
+          "id": "b0950506-2861-4a17-9587-747661008c85",
+          "text": "elle a dit que depuis que nous avons essayé, rien ne fonctionne plus",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/6A4F2496-ADF9-4CE8-A612-604B2D5F5D59.mp3",
+          "duration_ms": 3744,
+          "axis": "long"
+        },
+        {
+          "id": "87004493-beee-49cc-b4fc-2ae7adfd1891",
+          "text": "cet homme va me dire quelque chose de nouveau s'il a le temps",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/D14B4955-754D-4F45-B792-F3F14C185A4E.mp3",
+          "duration_ms": 3168,
+          "axis": "long"
+        },
+        {
+          "id": "e91059f4-0237-4c4e-95c7-057c0c8fdb0c",
+          "text": "Je ne peux pas me souvenir de comment dire ce que je voulais dire hier",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/8A3BE381-5E4D-41AB-9B58-234A20E32E7C.mp3",
+          "duration_ms": 3552,
+          "axis": "long"
+        },
+        {
+          "id": "6fc44475-4348-468b-ba6e-8ebe7cb5be3a",
+          "text": "ton frère connaît quelqu'un qui a dit qu'il voulait aider le vieil homme",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/076BEEAA-B193-417E-9F59-3A29E6D51C80.mp3",
+          "duration_ms": 3408,
+          "axis": "long"
+        },
+        {
+          "id": "afb50992-529f-420b-8cea-200c8473a396",
+          "text": "Je pense que ma sœur peut t'aider à apprendre le français demain",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/0BF1B27E-6728-4CD6-B74B-E92C3018A7BD.mp3",
+          "duration_ms": 2880,
+          "axis": "long"
+        },
+        {
+          "id": "f8baf922-8437-453d-8767-17ab888ed1d8",
+          "text": "j'aime avoir l'impression d'être presque prêt à partir bientôt",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/28F11CE9-99D7-4A95-8E9F-B4A8B3AF38C2.mp3",
+          "duration_ms": 3120,
+          "axis": "long"
+        },
+        {
+          "id": "76b95ac8-a2b8-43e6-af33-da68a33c8427",
+          "text": "j'ai rencontré quelqu'un hier qui a dit qu'il voulait te dire quelque chose de très important",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/E65B39BC-39FF-446B-81FF-B25E0407305A.mp3",
+          "duration_ms": 4176,
+          "axis": "long"
+        },
+        {
+          "id": "af435888-3099-4972-89dc-9b4260d09a98",
+          "text": "je pense que je connais un jeune homme qui veut travailler avec vous",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/09A211BA-AFFA-4CE7-A3D9-633104325DD0.mp3",
+          "duration_ms": 3168,
+          "axis": "long"
+        },
+        {
+          "id": "6fd99e38-355e-41b2-bd74-a3e6288f22b6",
+          "text": "Je pense que je comprends ce que j'essayais de dire maintenant",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/CD962225-CF4C-495B-92E4-E96181FF6282.mp3",
+          "duration_ms": 2736,
+          "axis": "long"
+        },
+        {
+          "id": "50305dc8-ff82-4f6b-99fa-5f48884b8ac0",
+          "text": "nous devons travailler dur pour apprendre beaucoup de nouveaux mots",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/A33EDBC6-C37E-416A-8363-BFB8500DBAEB.mp3",
+          "duration_ms": 3144,
+          "axis": "long"
+        },
+        {
+          "id": "cfc32d2d-9594-4474-af20-68878cf63389",
+          "text": "j'ai besoin de mes jouets",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/481789ED-95CF-4052-85CD-D4C326329D14.mp3",
+          "duration_ms": 1368,
+          "axis": "awkward"
+        },
+        {
+          "id": "5086113e-ab8e-41b7-af10-84c90d532d8e",
+          "text": "il est important de faire un peu plus",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/269AC151-41D5-4478-A9DF-1655894590B2.mp3",
+          "duration_ms": 1968,
+          "axis": "awkward"
+        },
+        {
+          "id": "b0714e46-dadb-43bd-99e2-fcb693b7f26a",
+          "text": "est-ce que vous pouvez tous lever la main ?",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/F706A53B-065C-4B1E-8FF1-C8DC5455609B.mp3",
+          "duration_ms": 2088,
+          "axis": "awkward"
+        },
+        {
+          "id": "81a8ae42-d0e9-4677-8d40-2eba213d9821",
+          "text": "j'aimerais parler français très bien",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/B025765E-8FE6-4546-A081-0BECDFBA35AA.mp3",
+          "duration_ms": 1992,
+          "axis": "awkward"
+        },
+        {
+          "id": "e23f9b04-e168-4339-8315-5cd006e1833e",
+          "text": "on dirait que tu as besoin de quelque chose",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/ADB7841D-DBE8-4739-A837-BE0FA0575431.mp3",
+          "duration_ms": 2160,
+          "axis": "awkward"
+        },
+        {
+          "id": "6586cd87-1fba-4b70-8ce1-51d4159ee285",
+          "text": "Je pense que c'est important de parler souvent",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/875AE63E-1F8C-4486-9837-65F0E620B783.mp3",
+          "duration_ms": 2136,
+          "axis": "awkward"
+        },
+        {
+          "id": "4e026f87-5cc8-476b-8b65-fff85e02ba23",
+          "text": "Je ne suis pas encore prêt à finir ça",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/6E06D88A-5608-40FF-B2D2-0ADFA6D06064.mp3",
+          "duration_ms": 1944,
+          "axis": "awkward"
+        },
+        {
+          "id": "79b14b5b-e2d0-4155-8554-dc17e0d43a17",
+          "text": "nous avions besoin d'aide avant",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/2CFCC10B-A25F-40C1-A8B0-204D9A62B5D2.mp3",
+          "duration_ms": 1584,
+          "axis": "awkward"
+        },
+        {
+          "id": "b15cacd4-6d58-4f0c-9177-ec0b86f459ab",
+          "text": "grandir là c'est important",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/501EEC33-82C3-458B-949F-C2E1B0F6620F.mp3",
+          "duration_ms": 1776,
+          "axis": "awkward"
+        },
+        {
+          "id": "e31fd41f-479f-4aa5-a776-20fe6696dddc",
+          "text": "non ce serait mieux de rentrer directement à la maison",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/125DFB17-B064-44B8-9CF8-AF1FEF7CF1CF.mp3",
+          "duration_ms": 2832,
+          "axis": "awkward"
+        },
+        {
+          "id": "aa949690-8623-4257-8073-938bbea9e18e",
+          "text": "tu peux dire des choses intéressantes",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/8E72699B-C4B0-41E0-A589-398DA9E3375D.mp3",
+          "duration_ms": 1632,
+          "axis": "awkward"
+        },
+        {
+          "id": "d39475f0-c9cb-4fdb-9e7f-f167252aa2ca",
+          "text": "Je pensais que ça fonctionne depuis que nous avons essayé",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/6FD34F8C-835B-49A0-A3F5-1A52AB5631BA.mp3",
+          "duration_ms": 2664,
+          "axis": "awkward"
+        },
+        {
+          "id": "da45061c-7699-4003-b3e6-eeb68e082494",
+          "text": "Je veux revenir demain",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/0345A4F8-E9BC-4DB0-BE56-9FAB072C8B8E.mp3",
+          "duration_ms": 1488,
+          "axis": "awkward"
+        },
+        {
+          "id": "c7cfb308-1f27-4179-9da3-506db042eac7",
+          "text": "me rendrait très heureux",
+          "language": "fra",
+          "role": "target1",
+          "voice_id": "eve",
+          "s3_key": "mastered/D874340C-B02F-4AA4-8119-17BAE80A3DE1.mp3",
+          "duration_ms": 1536,
+          "axis": "awkward"
+        }
+      ]
+    }
+  },
+  "notes": {
+    "deuClipsCoveredByWordLossScan": 6,
+    "wordLossScanScope": "LEGO clips only (5,100 of 47,374) — most phase C sentences fall outside it"
+  }
+}
