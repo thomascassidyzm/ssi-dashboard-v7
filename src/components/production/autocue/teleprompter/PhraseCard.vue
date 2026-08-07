@@ -123,12 +123,23 @@ const displayChunks = computed(() => {
   font-size: 1.5rem;
 }
 
+/* The current card's amber highlight used to be painted onto the TEXT, which
+   made the natural-speed line amber too — so natural and slow read identically
+   and the "white for natural, amber for slow" promise on the script-loaded
+   screen was false. The current-card cue now lives in the card (border, wash,
+   marker); the text itself stays white for natural, and .slow-cadence below
+   repaints only the slow pass amber. */
 .phrase-card.current .phrase-text,
 .phrase-card.current .phrase-with-gaps {
   font-size: 2rem;
   font-weight: 600;
-  color: var(--color-tungsten, var(--accent));
-  text-shadow: 0 0 20px rgba(255, 186, 92, 0.4);
+  color: var(--color-paper, var(--ink));
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+:root[data-theme="light"] .phrase-card.current .phrase-text,
+:root[data-theme="light"] .phrase-card.current .phrase-with-gaps {
+  text-shadow: none;
 }
 
 /* State: Upcoming */

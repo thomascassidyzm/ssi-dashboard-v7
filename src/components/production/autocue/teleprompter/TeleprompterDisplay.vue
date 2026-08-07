@@ -8,12 +8,17 @@
       ref="scrollerRef"
       :style="{ transform: `translateY(-${scrollOffset}px)` }"
     >
+      <!-- show-gaps: script mode carries a real pause map per item
+           (chunksString / recordingChunks, LEGO boundaries from the recording
+           optimiser), so its slow pass gets the same gap markers the two-pass
+           mode gets on Pass 2. It was hardcoded off, leaving the recordist to
+           guess where the pauses fell. -->
       <PhraseCard
         v-for="(phrase, index) in phrases"
         :key="phrase.id"
         :phrase="phrase"
         :state="getPhraseState(index)"
-        :show-gaps="scriptMode ? false : currentPass === 2"
+        :show-gaps="scriptMode ? phrase.cadence === 'slow' : currentPass === 2"
         :uploaded="uploadedIndices.has(index)"
       />
     </div>
