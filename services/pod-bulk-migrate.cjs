@@ -707,11 +707,22 @@ async function realRun() {
 // MAIN
 // =============================================================================
 
-;(async () => {
-  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
-    console.error('Missing SUPABASE_URL / SUPABASE_SERVICE_KEY in env'); process.exit(1)
-  }
-  if (DRY_RUN) await dryRun()
-  else await realRun()
-  process.exit(0)
-})().catch(err => { console.error('FATAL:', err.stack || err.message); process.exit(1) })
+// Guarded by require.main. Without this the IIFE below ran at MODULE LOAD, so
+// merely `require()`-ing this file — to check it parsed, to read an export, to
+// let a test import a helper — started a real 49-course TTS migration. That is
+// not hypothetical: a load-check require() on 2026-08-07 rendered 111
+// pod_explainer clips across cat_for_spa, cat_for_eng, ara_sy_for_eng,
+// bul_for_eng, ara_eg_for_eng and ell_for_eng before it was killed.
+//
+// A file whose cost of being LOOKED AT is a bulk TTS run cannot be left that
+// way, whatever else guards it downstream.
+if (require.main === module) {
+  ;(async () => {
+    if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
+      console.error('Missing SUPABASE_URL / SUPABASE_SERVICE_KEY in env'); process.exit(1)
+    }
+    if (DRY_RUN) await dryRun()
+    else await realRun()
+    process.exit(0)
+  })().catch(err => { console.error('FATAL:', err.stack || err.message); process.exit(1) })
+}
