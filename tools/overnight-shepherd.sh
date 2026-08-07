@@ -142,6 +142,31 @@ fra_band_artifact() {
   [ -f "$p" ] && echo "$p" || echo ""
 }
 
+# Nothing else writes that artifact. phase8 keeps the apply log IN PROCESS and only
+# serves it at GET /reuse-run/<id>; every existing *-reuse-applied-log.json in docs/
+# was saved by hand from that endpoint. So band 1 sat at "done but artifact MISSING"
+# at 09:50Z on 2026-08-07 with all 6,413 clips actually applied — and every later band
+# would have stalled the same way. The shepherd now persists it itself, from the
+# SERVICE's own log, only for a run the service reports state:done. This writes
+# evidence, it never manufactures it: no log, no file, no advance.
+fra_persist_artifact() {
+  local idx=$1
+  local spec=${BANDS[$idx]}; local from=${spec%%:*} to=${spec##*:}
+  local id; id=$(tr -d '\n' < "$RUNID" 2>/dev/null); [ -n "$id" ] || return 1
+  local out="$REPO/docs/audio-repair-2026-08-07/${FRA_COURSE}-rounds${from}-${to}-reuse-applied-log.json"
+  curl -s -m 180 "http://localhost:$FRA_PORT/reuse-run/$id" -o /tmp/fra-band-$((idx+1))-run.json || return 1
+  python3 - /tmp/fra-band-$((idx+1))-run.json "$out" "$from" <<'PY'
+import json,sys
+d=json.load(open(sys.argv[1]))
+if d.get('state')!='done' or not d.get('log'): sys.exit(1)
+log=d['log']
+log['runState']=d['state']; log['runStartedAt']=d.get('startedAt'); log['runFinishedAt']=d.get('finishedAt')
+log['fromRound']=int(sys.argv[3])
+json.dump(log,open(sys.argv[2],'w'),indent=1,ensure_ascii=False)
+PY
+}
+
+
 deu_report() {
   local s; s=$(curl -s -m 20 "http://localhost:$DEU_PORT/status" 2>/dev/null)
   if [ -z "$s" ]; then
@@ -223,6 +248,7 @@ while true; do
       ;;
     done)
       art=$(fra_band_artifact "$band")
+      [ -z "$art" ] && { fra_persist_artifact "$band" && art=$(fra_band_artifact "$band"); }
       if [ -z "$art" ]; then
         alert "FRA band $((band+1)) reports done but its applied-log artifact is MISSING — not advancing"
       else
