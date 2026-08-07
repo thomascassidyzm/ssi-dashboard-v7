@@ -167,7 +167,20 @@ async function loadRows () {
       cursor = next
     }
   }
-  return out.filter(r => r.s3_key && r.duration_ms)
+  /**
+   * Tombstoned rows are not course audio and must never enter a repair queue.
+   *
+   * The relink work suffixes a retired row's text with `::superseded-regen` to
+   * get it out of the live slot's way. The suffix is not spoken, so the scan
+   * reads the tombstone marker as the sentence's final word, never hears it,
+   * and files a dead row as damage — a re-render we would pay for on a clip no
+   * learner can reach. 108 such rows in deu_for_eng and 57 in fra_for_eng on
+   * 2026-08-07, and the count moves while relink campaigns run.
+   */
+  const live = out.filter(r => !String(r.text || '').includes('::'))
+  const tombstoned = out.length - live.length
+  if (tombstoned) console.log(`skipping ${tombstoned} tombstoned row(s) (text carries a :: marker)`)
+  return live.filter(r => r.s3_key && r.duration_ms)
 }
 
 /**
