@@ -180,21 +180,56 @@ function resolveVoices(course) {
   return out
 }
 
+// Provider prefixes phase 8 has written at various times. Stripping one yields
+// the voice's bare legacy id, which the estate also holds directly.
+const PROVIDER_PREFIX = /^(xai|azure|elevenlabs|google)_/
+
+/** The bare voice id, with any provider-era prefix removed. */
+function bareVoiceId(voiceId) {
+  return voiceId ? String(voiceId).replace(PROVIDER_PREFIX, '') : ''
+}
+
+/**
+ * Human labels for the voices that matter, so a coverage table reads as people
+ * rather than as ids. Keyed on the BARE id, so both eras resolve.
+ * `gfzdpspr5fdp` is Tom's own cloned voice — his ruling, 2026-08-07.
+ */
+const VOICE_LABELS = {
+  gfzdpspr5fdp: 'Tom (clone)',
+  eve: 'Eve (xAI)',
+  leo: 'Leo (xAI)',
+  ara: 'Ara (xAI)',
+}
+
+/** Display name for a voice id, falling back to the bare id itself. */
+function voiceLabel(voiceId) {
+  const bare = bareVoiceId(voiceId)
+  return VOICE_LABELS[bare] || bare || 'unknown'
+}
+
 /**
  * Do two voice_id strings name the same voice?
  *
- * EXACT by default. `aliases` is a list of groups a caller has explicitly
- * asserted to be one voice (e.g. [['eve','xai_eve']] to bridge the estate's
- * legacy bare ids). Returns { match, viaAlias } so the decision can be tagged
- * and audited — an aliased reuse is a human's assertion, not a fact the data
- * proves.
+ * TOM'S RULING, 2026-08-07: "eve and xai_eve are the same voice under two id
+ * conventions; treat bare vs xai_-prefixed ids as one voice identity generally
+ * (same actual voice, different provider-migration eras)." So a bare id and its
+ * prefixed sibling now match BY DEFAULT. This was an open question until he
+ * settled it, and the code deliberately would not guess.
+ *
+ * The match is still TAGGED (`viaAlias`) so an audit can find every clip that
+ * came in across an era boundary rather than on an exact id — the ruling makes
+ * it correct, not invisible. `mergeProviderEras: false` restores strict exact
+ * matching. `aliases` remains for equivalences the prefix rule cannot express.
  */
-function voicesMatch(wanted, candidate, aliases = []) {
+function voicesMatch(wanted, candidate, aliases = [], { mergeProviderEras = true } = {}) {
   if (!wanted || !candidate) return { match: false, viaAlias: false }
   if (wanted === candidate) return { match: true, viaAlias: false }
+  if (mergeProviderEras && bareVoiceId(wanted) === bareVoiceId(candidate)) {
+    return { match: true, viaAlias: true, via: 'provider-era' }
+  }
   for (const group of aliases) {
     if (group.includes(wanted) && group.includes(candidate)) {
-      return { match: true, viaAlias: true }
+      return { match: true, viaAlias: true, via: 'explicit-alias' }
     }
   }
   return { match: false, viaAlias: false }
@@ -904,13 +939,10 @@ function voiceFamilyOf(voiceId, voiceAliases = []) {
   for (const group of voiceAliases) {
     if (group.includes(voiceId)) return { family: group.join(' / '), ids: [...group] }
   }
-  // Default family grouping: strip a known provider prefix so `eve` and
-  // `xai_eve` land together for DISPLAY. This is presentation only — matching
-  // still requires an explicit alias, so the table can show the consequence of
-  // a decision Tom has not made yet without pre-empting it.
-  const m = /^(xai|azure|elevenlabs|google)_(.+)$/.exec(voiceId)
-  const bare = m ? m[2] : voiceId
-  return { family: bare, ids: [voiceId] }
+  // Family = the voice, across provider-migration eras. Tom ruled the bare and
+  // prefixed spellings are one voice, so this grouping is now the truth rather
+  // than a display convenience, and it carries his label for the voice.
+  return { family: voiceLabel(voiceId), ids: [voiceId] }
 }
 
 /**
@@ -1424,6 +1456,9 @@ module.exports = {
   resolveVoices,
   voicesMatch,
   voiceCandidates,
+  bareVoiceId,
+  voiceLabel,
+  VOICE_LABELS,
   sameLanguage,
   languageCandidates,
   isSayable,

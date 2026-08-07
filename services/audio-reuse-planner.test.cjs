@@ -16,8 +16,9 @@
  *     the match. This is the rule the whole French/German redo exists to
  *     protect: borrowing an Azure clip where the course is now on xAI is a
  *     voice-identity change and Tom's call, never the code's;
- *   - the legacy bare voice id (`eve`) is NOT silently treated as `xai_eve`;
- *     equivalence must be asserted, and when it is used it is TAGGED;
+ *   - the bare voice id and its prefixed sibling ARE one voice (Tom's ruling,
+ *     2026-08-07) — but the match is tagged, and it never merges two different
+ *     voices;
  *   - a regional locale (fr-CA) is not the same language as fr — an accent is
  *     a voice;
  *   - a `pending/` row is not audio and is never a reuse source;
@@ -81,36 +82,49 @@ describe('never cross a voice boundary', () => {
     expect(d.reason).toMatch(/none usable — 1 on another voice/)
   })
 
-  it('refuses the legacy BARE id as a match for the prefixed one by default', () => {
-    // `eve` and `xai_eve` are almost certainly the same voice. "Almost
-    // certainly" is not a thing this code is allowed to decide.
+  it('treats the bare id and its prefixed sibling as ONE voice — Tom ruled it, 2026-08-07', () => {
+    // Superseded premise, kept deliberately: this used to assert RENDER,
+    // because whether `eve` and `xai_eve` were the same voice was a
+    // voice-identity call the code refused to make. Tom settled it — same
+    // voice, two provider-migration eras — so the merge is now the default.
     const d = decideClip(clip(), [row({ voice_id: 'eve' })], opts())
-    expect(d.decision).toBe('RENDER')
+    expect(d.decision).toBe('REUSE_CROSS')
   })
 
-  it('accepts the bare id ONLY when a caller asserts the equivalence, and tags it', () => {
-    const d = decideClip(clip(), [row({ voice_id: 'eve' })], opts({ voiceAliases: [['eve', 'xai_eve']] }))
-    expect(d.decision).toBe('REUSE_CROSS')
+  it('TAGS an era-crossing match, so the ruling is correct without being invisible', () => {
+    const d = decideClip(clip(), [row({ voice_id: 'eve' })], opts())
     expect(d.viaAlias).toBe(true)
   })
 
-  it('prefers an EXACT voice match over an aliased one when both exist', () => {
+  it('prefers an EXACT id match over an era-crossing one when both exist', () => {
     const d = decideClip(
       clip(),
-      [row({ id: 'aliased', voice_id: 'eve', created_at: '2026-08-06T00:00:00Z' }),
+      [row({ id: 'era', voice_id: 'eve', created_at: '2026-08-06T00:00:00Z' }),
        row({ id: 'exact', voice_id: 'xai_eve', created_at: '2026-01-01T00:00:00Z' })],
-      opts({ voiceAliases: [['eve', 'xai_eve']] })
+      opts()
     )
     expect(d.source.audioId).toBe('exact')
     expect(d.viaAlias).toBe(false)
   })
 
-  it('voicesMatch is exact by default and never fuzzy', () => {
+  it('mergeProviderEras:false restores strict exact matching', () => {
+    expect(voicesMatch('xai_eve', 'eve', [], { mergeProviderEras: false }).match).toBe(false)
+  })
+
+  it('merging eras never merges two DIFFERENT voices', () => {
     expect(voicesMatch('xai_eve', 'xai_eve').match).toBe(true)
-    expect(voicesMatch('xai_eve', 'eve').match).toBe(false)
+    expect(voicesMatch('xai_eve', 'eve').match).toBe(true)
     expect(voicesMatch('xai_eve', 'xai_leo').match).toBe(false)
+    expect(voicesMatch('xai_eve', 'leo').match).toBe(false)
+    expect(voicesMatch('xai_gfzdpspr5fdp', 'xai_eve').match).toBe(false)
     expect(voicesMatch('xai_eve', 'XAI_EVE').match).toBe(false)
     expect(voicesMatch('xai_eve', null).match).toBe(false)
+  })
+
+  it('labels Tom\'s clone by name, in both eras', () => {
+    expect(planner.voiceLabel('xai_gfzdpspr5fdp')).toBe('Tom (clone)')
+    expect(planner.voiceLabel('gfzdpspr5fdp')).toBe('Tom (clone)')
+    expect(planner.voiceLabel('xai_eve')).toBe('Eve (xAI)')
   })
 
   it('DOES share one xAI voice across target1 and target2 — role is not part of the key', () => {
