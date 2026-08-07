@@ -637,3 +637,28 @@ describe('rebuild mode', () => {
     expect(log.deletionsPerformed).toBe(0)
   })
 })
+
+describe('rebuild picks its swap target deterministically', () => {
+  it('prefers the EXACT voice-id row over an era-crossing sibling', () => {
+    // Regression: a bare .find() took whichever row came back first, which
+    // pointed one clip at the legacy `eve` row while its siblings sat on
+    // `xai_eve`. Same voice, but the target must not depend on row order.
+    const d = decideClip(
+      clip(),
+      [row({ id: 'legacy', course_code: 'fra_for_eng', voice_id: 'eve', created_at: '2026-08-05T00:00:00Z' }),
+       row({ id: 'exact', course_code: 'fra_for_eng', voice_id: 'xai_eve', created_at: '2026-08-01T00:00:00Z' })],
+      opts({ rebuild: true })
+    )
+    expect(d.source.swapTargetAudioId).toBe('exact')
+  })
+
+  it('falls back to the newest row when every candidate is era-crossing', () => {
+    const d = decideClip(
+      clip(),
+      [row({ id: 'old', course_code: 'fra_for_eng', voice_id: 'eve', created_at: '2026-01-01T00:00:00Z' }),
+       row({ id: 'new', course_code: 'fra_for_eng', voice_id: 'eve', created_at: '2026-08-05T00:00:00Z' })],
+      opts({ rebuild: true })
+    )
+    expect(d.source.swapTargetAudioId).toBe('new')
+  })
+})

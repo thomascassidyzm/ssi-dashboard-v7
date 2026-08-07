@@ -810,7 +810,16 @@ function decideClip(clip, candidates, opts = {}) {
   // a missing clip at any instant. If there is no own row, it is a plain
   // RENDER that creates one.
   if (rebuild) {
-    const ownRow = viable.find(r => r.course_code === courseCode)
+    // The swap target must be chosen with the SAME preference as a reuse — an
+    // exact voice-id match beats an era-crossing one, then human > newest >
+    // deterministic id. A bare `.find()` here took whichever own row happened
+    // to come back first, which on 2026-08-07 pointed one clip at the legacy
+    // `eve` row while its 52 siblings sat on `xai_eve`. Same voice under Tom's
+    // ruling, so nothing shipped wrong — but the target must be deterministic.
+    const ownRows = viable.filter(r => r.course_code === courseCode)
+    const exactOwn = ownRows.filter(r => !r.viaAlias)
+    const ownPool = exactOwn.length ? exactOwn : ownRows
+    const ownRow = ownPool.length ? ownPool.reduce((best, r) => pickPreferredAudioRow(best, r), null) : null
     return {
       decision: 'REBUILD',
       reason: ownRow
