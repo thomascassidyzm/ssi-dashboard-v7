@@ -58,16 +58,52 @@ by **run id** (not `/status`, which reads inactive for the whole multi-minute pl
 would provoke a second competing run), restarts a failed pass, relaunches the pinned service if it
 has died, and only declares DONE when a fresh dry-run plan shows zero outstanding clips.
 
-## The gap this run does NOT close — phase 2
+## Six blocked intros that were never missing
 
-The pass gates what it **renders**. A clip it leaves alone is byte-checked (alive, non-trivial size)
-and reused as-is; it is never listened to. Across rounds 1-200 that is roughly 4,300 clips, mostly
-the French side — and Tom named *"known layer and target-v2 are worst."* Every clip in the estate
-predates the last-word rule, so no incumbent has ever been asked the question.
+The 200-round plan reported six presentation clips BLOCKED with *"no authored presentation text for
+this LEGO"* — the intros for rounds 32, 85, 96, 102, 119 and 137 (`to be able to`, `for`, `the`,
+`nothing`, `well`, `it is`). All six already have real, rendered intro clips that their LEGO points
+at through `course_legos.presentation_audio_id`. The planner looks intro text up **by**
+`course_audio.lego_id`, and on those six rows it is null — as it is on 924 of fra_for_eng's 2,449
+presentation rows. Text present, planner blind, six intros silently skipped.
 
-`tools/fra-incumbent-veracity-sweep.cjs` asks it: read-only, renders nothing, writes nothing,
-deletes nothing, and emits a per-clip verdict list. It runs **after** the render pass — its whisper
-fleet and the render gate's would otherwise fight for the same 8 cores. Re-rendering whatever it
-finds is a separate, explicit step against that list.
+Fixed by writing that one column on those six rows, from the LEGO that already points at the clip
+(`tools/fra-link-blocked-presentations.cjs` — asserted per row, null-guarded in the UPDATE itself,
+nothing deleted, no audio rendered). Rounds 1-32 now plan **0 BLOCKED**, and S0010L02's intro moves
+from BLOCKED to RENDER on the clone.
 
-Smoke-tested on 20 rounds-1-11 incumbents at 04:49Z: 20 listened, 0 damaged.
+## Re-pinned at 04:56Z, and why
+
+Pinning cuts both ways: it kept the run safe from mid-flight edits, and it also held it at 04:39Z
+code. Commit `cd7392d7` landed at 04:49Z with two things this job wants, written for this repair:
+
+- **`verifyIncumbents`** — LISTEN to the clips the plan means to KEEP, against the course's own
+  text, and promote the damaged ones to RENDER. This closes the real gap: the gate only ever
+  covered what the pass *renders*, and ~4,300 clips of rounds 1-200 were going to be reused
+  unheard, mostly the French side — half of what Tom named as worst. No incumbent in the estate has
+  ever been asked the last-word question.
+- **`concurrency`** — the apply loop was serial only by history. Clips are independent by
+  construction, and serial was costing six hours of a network-bound wait.
+- **`freshRoles: ['presentation']`** — Tom's ruling today, *intros are ALWAYS rendered fresh, never
+  reused*. Now structural rather than incidental.
+
+So the snapshot was re-pinned to HEAD (`0eae988d`) and the run restarted at **04:56:51Z** as
+`reuse-fra_for_eng-r200-1786078611627`, with `concurrency: 4` and `verifyIncumbents: true`. The 96
+clips finished under the previous run are durable and came back SATISFIED.
+
+This makes the phase-2 sweep redundant as a separate step —
+`tools/fra-incumbent-veracity-sweep.cjs` stays as the read-only, renders-nothing way to *audit* the
+same question without touching anything.
+
+## The gate, proved rather than assumed
+
+A gate that never fires looks identical to a gate that is not running. Proved positively at 04:55Z
+against a real clip on the pinned code — "I want to speak French" in Tom's clone:
+
+| asked | verdict |
+|---|---|
+| the truthful text | `pass`, CER 0 |
+| the same audio, with one more word on the end | `last_word_missing`, **CER 0.29** |
+
+CER 0.29 is *under* the 0.30 threshold — the old gate would have passed it. That is the whole defect
+class, caught.

@@ -48,7 +48,7 @@ start_run() {
   say "START rounds 1-$ROUNDS on port $PORT"
   local out; out=$(curl -s -m 120 -X POST "http://localhost:$PORT/reuse-apply/$COURSE" \
     -H 'Content-Type: application/json' \
-    -d "{\"rounds\":$ROUNDS,\"dryRun\":false,\"confirm\":\"$COURSE\"}")
+    -d "{\"rounds\":$ROUNDS,\"dryRun\":false,\"confirm\":\"$COURSE\",\"concurrency\":4,\"verifyIncumbents\":true}")
   say "  -> $out"
   echo "$out" | python3 -c "
 import sys,json
