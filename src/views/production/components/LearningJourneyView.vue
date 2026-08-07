@@ -241,6 +241,17 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-14 0m7 7v3m0-3a4 4 0 01-4-4V7a4 4 0 118 0v7a4 4 0 01-4 4z" />
                   </svg>
                 </button>
+                <!-- LEGO (debut) AUDIO regen — text stays locked, punctuation goes to the TTS job only -->
+                <button
+                  v-if="item.type === 'debut'"
+                  class="w-6 h-6 flex items-center justify-center rounded text-purple-400 hover:text-white hover:bg-purple-500 hover:bg-opacity-30 transition-colors"
+                  title="Regenerate LEGO audio (text is locked)"
+                  @click.stop="emit('lego-audio-edit', item)"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-14 0m7 7v3m0-3a4 4 0 01-4-4V7a4 4 0 118 0v7a4 4 0 01-4 4z" />
+                  </svg>
+                </button>
                 <!-- Voice 1 (target1) — play -->
                 <button
                   v-if="item.target1_audio_uuid"
@@ -414,6 +425,7 @@ const emit = defineEmits<{
   }]
   'item-edit': [item: ScriptItem]
   'presentation-edit': [item: ScriptItem]
+  'lego-audio-edit': [item: ScriptItem]
   'phrase-flag': [item: ScriptItem]
 }>()
 
