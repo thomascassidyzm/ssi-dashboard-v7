@@ -171,12 +171,34 @@ function extractGenderMarker(speakerRaw) {
   return m ? m[1].toLowerCase() : null;
 }
 
+// Canonical pod-0 roles the name heuristic cannot read, because they are job
+// titles and abstractions rather than names. They used to fall through to 'n',
+// which the voice picker treats as male.
+//
+// That was survivable while every speaker got its own pool slot. Under the
+// two-voice rule it is not: 'n' → male means EVERY ungendered character in
+// EVERY course lands on the one male voice. Measured on the canonical 231-line
+// pod-0 (cym_n_for_eng:pod-0-unrecorded), 143 of 232 lines belong to ungendered
+// speakers, so the split came out 196 male / 36 female — a monologue with
+// occasional guests, not the two-hander the rule is for.
+//
+// The Learner alone is 79 lines, and casting it female brings the pod to
+// 115 female / 117 male. It also matches what the estate already does on the
+// human side, where Catrin voices the Learner in the Welsh recording.
+//
+// An explicit (F)/(M) marker in the markdown still wins over this map.
+const POD0_SPEAKER_GENDER = new Map([
+  ['learner', 'f'],
+]);
+
 function inferGenderFromName(speaker) {
   // Try the full canonical name first, then with trailing index stripped
   // ("Klijentica 1" → "klijentica") so numbered variants of the same role
   // resolve via the role's gender.
   const clean = normaliseName(speaker);
   const stripped = clean.replace(/\s+\d+$/, '').trim();
+  if (POD0_SPEAKER_GENDER.has(clean))    return POD0_SPEAKER_GENDER.get(clean);
+  if (POD0_SPEAKER_GENDER.has(stripped)) return POD0_SPEAKER_GENDER.get(stripped);
   if (FEMALE_NAMES.has(clean) || FEMALE_NAMES.has(stripped)) return 'f';
   if (MALE_NAMES.has(clean)   || MALE_NAMES.has(stripped))   return 'm';
   return null;
