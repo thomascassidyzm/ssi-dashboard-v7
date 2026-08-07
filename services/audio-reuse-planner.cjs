@@ -999,7 +999,10 @@ async function buildCoverageTable(supabase, courseCode, roundCount, options = {}
   const pct = (a, b) => (b ? Math.round((1000 * a) / b) / 10 : 0)
   const totalNeeded = needed.length
 
-  const coverage = [...tally.values()].map(t => {
+  // Per-voice-id detail, kept for auditing. The headline `coverage` array below
+  // is FAMILY-level, because that is the unit a voice decision is made in: a
+  // reader choosing "Eve" does not care that the estate spells her two ways.
+  const perVoiceId = [...tally.values()].map(t => {
     const byLayer = {}
     for (const [role, info] of Object.entries(neededByLayer)) {
       const cov = t.byLayer[role]?.size || 0
@@ -1024,32 +1027,81 @@ async function buildCoverageTable(supabase, courseCode, roundCount, options = {}
     }
   }).sort((a, b) => b.overall.covered - a.overall.covered)
 
-  // Family roll-up: what the numbers become IF a bare id and its prefixed
-  // sibling are the same voice. Shown alongside, never substituted for the
-  // per-id truth — that equivalence is Tom's call, not the table's.
+  // FAMILY ROLL-UP — the headline table. Every set is UNIONED, never summed:
+  // the same text covered by both `eve` and `xai_eve` is one covered clip, not
+  // two, and summing would silently overstate the number the voice decision
+  // rests on. Note this shows what the numbers BECOME if a bare id and its
+  // prefixed sibling are one voice; whether they are is Tom's call, so the
+  // per-id truth stays available in `coverageByVoiceId`.
   const families = new Map()
-  for (const row of coverage) {
-    const f = families.get(row.voiceFamily) || { voiceFamily: row.voiceFamily, voiceIds: [], covered: new Set(), borrowable: 0, viaTargetRoles: 0 }
-    f.voiceIds.push(row.voiceId)
-    for (const k of row._covered) f.covered.add(k)
-    families.set(row.voiceFamily, f)
+  for (const t of tally.values()) {
+    const famName = voiceFamilyOf(t.voiceId, voiceAliases).family
+    let f = families.get(famName)
+    if (!f) {
+      f = {
+        voiceFamily: famName, voiceIds: [], providers: new Set(),
+        byLayer: {}, covered: new Set(), borrowable: new Set(),
+        viaTargetRoles: new Set(), sourceCourses: new Map(), isCurrent: false,
+        speedTrusted: false,
+      }
+      families.set(famName, f)
+    }
+    f.voiceIds.push(t.voiceId)
+    f.providers.add(/^(xai|azure|elevenlabs|google)_/.exec(t.voiceId)?.[1] || 'legacy/bare')
+    f.speedTrusted = f.speedTrusted || isSpeedTrustedVoice(t.voiceId)
+    if (Object.values(voices).includes(t.voiceId)) f.isCurrent = true
+    for (const k of t.covered) f.covered.add(k)
+    for (const k of t.borrowable) f.borrowable.add(k)
+    for (const k of t.viaTargetRoles) f.viaTargetRoles.add(k)
+    for (const [role, set] of Object.entries(t.byLayer)) {
+      f.byLayer[role] = f.byLayer[role] || new Set()
+      for (const k of set) f.byLayer[role].add(k)
+    }
+    for (const [cc, set] of t.sourceCourses) {
+      const dest = f.sourceCourses.get(cc) || new Set()
+      for (const k of set) dest.add(k)
+      f.sourceCourses.set(cc, dest)
+    }
   }
-  const familyRollup = [...families.values()]
-    .map(f => ({
+
+  const coverage = [...families.values()].map(f => {
+    const byLayer = {}
+    for (const [role, info] of Object.entries(neededByLayer)) {
+      const cov = f.byLayer[role]?.size || 0
+      byLayer[role] = { needed: info.needed, covered: cov, pct: pct(cov, info.needed) }
+    }
+    return {
       voiceFamily: f.voiceFamily,
-      voiceIds: f.voiceIds,
+      voiceIds: f.voiceIds.slice().sort(),
+      provider: [...f.providers].sort().join(' / '),
+      speedTrusted: f.speedTrusted,
+      byLayer,
       overall: { needed: totalNeeded, covered: f.covered.size, pct: pct(f.covered.size, totalNeeded) },
-    }))
-    .sort((a, b) => b.overall.covered - a.overall.covered)
+      borrowable: f.borrowable.size,
+      viaTargetRoles: f.viaTargetRoles.size,
+      topSourceCourses: [...f.sourceCourses.entries()]
+        .map(([courseCode, set]) => ({ courseCode, clips: set.size }))
+        .sort((a, b) => b.clips - a.clips)
+        .slice(0, 10),
+      isCurrent: f.isCurrent,
+      _covered: f.covered,
+    }
+  }).sort((a, b) => b.overall.covered - a.overall.covered)
+
+  const familyRollup = coverage.map(r => ({
+    voiceFamily: r.voiceFamily, voiceIds: r.voiceIds, overall: r.overall,
+  }))
 
   for (const row of coverage) delete row._covered
+  for (const row of perVoiceId) delete row._covered
 
-  const best = familyRollup[0]
-  const bestRows = coverage.filter(r => r.voiceFamily === best?.voiceFamily)
+  const best = coverage[0]
   const gap = totalNeeded - (best?.overall.covered || 0)
-  const gapChars = needed
-    .filter(n => !bestRows.some(r => (r.byLayer[n.role]?.covered || 0) > 0))
-    .reduce((s, n) => s + n.text.length, 0)
+  // Characters of the clips the winner does NOT cover — an approximation
+  // proportional to the gap, because the per-text covered set is not retained
+  // past this point. Labelled as such in the payload rather than dressed up.
+  const avgChars = needed.length ? needed.reduce((a, n) => a + n.text.length, 0) / needed.length : 0
+  const gapChars = Math.round(gap * avgChars)
 
   return {
     ok: true,
@@ -1068,13 +1120,14 @@ async function buildCoverageTable(supabase, courseCode, roundCount, options = {}
       note: 'a text may name this course\'s own known or target language and no other; candidates naming any other language are excluded from coverage and from reuse',
     },
     coverage,
+    coverageByVoiceId: perVoiceId,
     familyRollup,
     recommendation: best ? {
       voiceFamily: best.voiceFamily,
       voiceIds: best.voiceIds,
       coveredPct: best.overall.pct,
       reason: `${best.overall.covered} of ${totalNeeded} needed clips already exist on this voice`,
-      spendIfChosen: { renderClips: gap, characters: gapChars },
+      spendIfChosen: { renderClips: gap, characters: gapChars, charactersApproximate: true },
     } : null,
   }
 }
