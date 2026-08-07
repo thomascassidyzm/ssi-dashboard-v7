@@ -192,14 +192,17 @@ function runSpeechSpan (ctx) {
   if (!ctx.samples) {
     return gateResult('speech-span', { pass: null, available: false, reason: `not decoded — ${ctx.decodeError || 'no samples'}` })
   }
-  const span = speechSpanTier.measure(ctx.samples, ctx.sampleRate)
-  const v = speechSpanTier.verdict(span)
+  const t = ctx.thresholds.speechSpan || {}
+  const span = speechSpanTier.measure(ctx.samples, ctx.sampleRate, t)
+  const v = speechSpanTier.verdict(span, t)
   ctx.span = v.span
   return gateResult('speech-span', { pass: v.pass, reason: v.reason, detail: { ...span, engine: span.engine } })
 }
 
 async function runLoudness (ctx) {
-  const v = await loudnessTier.check(ctx.audio, ctx.band)
+  // The declared band first, then the caller's overrides on top: a lab that hands in a
+  // target LUFS is asking the gate to judge against THAT band, and it must.
+  const v = await loudnessTier.check(ctx.audio, { ...(ctx.band || {}), ...(ctx.thresholds.loudness || {}) })
   return gateResult('loudness', {
     pass: v.pass,
     available: v.pass !== null,
@@ -212,7 +215,7 @@ function runTailShape (ctx) {
   if (!ctx.samples) {
     return gateResult('tail-shape', { pass: null, available: false, reason: `not decoded — ${ctx.decodeError || 'no samples'}` })
   }
-  const r = edgeTier.check(ctx.int16)
+  const r = edgeTier.check(ctx.int16, ctx.thresholds.tailShape || {})
   // The tier's own doctrine calls a flag a TRIAGE verdict, never a delete verdict — and it
   // is right, because at repair time a flag would select a clip for replacement at 80%
   // precision. At ADMISSION the arithmetic is different and stated: a false flag costs one
@@ -233,17 +236,25 @@ function runSyllableRate (ctx) {
   const { sylls } = durationTier.countSyllables(ctx.text, ctx.language)
   const perSecond = sylls / (speechMs / 1000)
 
+  const t = ctx.thresholds.syllableRate || {}
+  const floor = t.absoluteFloorPerSecond == null ? ABSOLUTE_SYLLABLES_PER_SECOND_FLOOR : Number(t.absoluteFloorPerSecond)
+
   // The floor first: it needs no calibration and it refuses on its own.
-  if (perSecond > ABSOLUTE_SYLLABLES_PER_SECOND_FLOOR) {
+  if (perSecond > floor) {
     return gateResult('syllable-rate', {
       pass: false,
       calibrated: false,
-      reason: `${sylls} syllables in ${speechMs} ms is ${perSecond.toFixed(1)} syllables/second — above the absolute floor of ${ABSOLUTE_SYLLABLES_PER_SECOND_FLOOR}, which no voice sustains`,
+      reason: `${sylls} syllables in ${speechMs} ms is ${perSecond.toFixed(1)} syllables/second — above the absolute floor of ${floor}, which no voice sustains`,
       detail: { sylls, speechMs, perSecond: +perSecond.toFixed(2), rule: 'absolute-floor' },
     })
   }
 
-  const scored = durationTier.score({ speechMs, script: ctx.text, language: ctx.language, voice: ctx.voiceId }, ctx.rateOpts || {})
+  const scored = durationTier.score(
+    { speechMs, script: ctx.text, language: ctx.language, voice: ctx.voiceId },
+    // rateOpts stays the outer word — it carries the rate corpus — and the threshold
+    // override sits on top of it, so a lab can move z without replacing the corpus.
+    { ...(ctx.rateOpts || {}), ...(t.z == null ? {} : { z: Number(t.z) }) }
+  )
   const fitted = FITTED_SYLLABLE_LANGUAGES.has(toIso3(ctx.language))
   const calibrated = Boolean(scored.scored) && fitted
 
@@ -310,7 +321,8 @@ async function runPhonology (ctx) {
   if (!detected) {
     return gateResult('phonology', { pass: null, available: false, reason: 'whisper returned no detection — phonology UNCHECKED, which is not a pass' })
   }
-  const suspects = new Set(['en', ...(ctx.suspectLanguages || []).map((l) => String(l).toLowerCase().split('-')[0])])
+  const extra = [...(ctx.suspectLanguages || []), ...((ctx.thresholds.phonology || {}).suspectLanguages || [])]
+  const suspects = new Set(['en', ...extra.map((l) => String(l).toLowerCase().split('-')[0])])
   suspects.delete(base)
   const suspect = suspects.has(String(detected).toLowerCase())
   return gateResult('phonology', {
@@ -336,12 +348,15 @@ async function runWords (ctx) {
   if (!av.available) {
     return gateResult('words', { pass: null, available: false, reason: `cannot check words — missing ${av.missing.join(' and ')}` })
   }
-  const v = await veracity.checkAudioVeracity(ctx.audio, ctx.text, ctx.language, { meta: ctx.meta || {} })
+  const v = await veracity.checkAudioVeracity(ctx.audio, ctx.text, ctx.language, {
+    meta: ctx.meta || {},
+    cerThreshold: (ctx.thresholds.words || {}).cerThreshold,
+  })
   return gateResult('words', {
     pass: v.checked ? v.pass : null,
     available: Boolean(v.checked),
     reason: v.reason || (v.checked ? `CER ${v.cer}` : 'not checked'),
-    detail: { cer: v.cer, decode: v.decode, checked: v.checked },
+    detail: { cer: v.cer, threshold: v.threshold, decode: v.decode, checked: v.checked },
   })
 }
 
@@ -363,6 +378,13 @@ async function runWords (ctx) {
  * @param {'admission'|'audit'} [opts.role='admission']
  * @param {Function} [opts.detectSpokenLanguage]
  * @param {string[]} [opts.only]         run a subset — VOICELAB uses this to audition cheaply
+ * @param {object} [opts.thresholds]     per-run threshold overrides, keyed by gate:
+ *   {speechSpan:{minSpeechMs,speechAboveFloorDb}, loudness:{targetLufs,toleranceDb,
+ *    truePeakCeilingDbtp}, tailShape:{...edgeTier.THRESHOLDS}, syllableRate:
+ *    {absoluteFloorPerSecond,z}, phonology:{suspectLanguages[]}, words:{cerThreshold}}.
+ *   ABSENT — which is every production caller — every shipped default applies unchanged.
+ *   This exists for VOICELAB: a number a lab can move that the gate ignores is worse
+ *   than no control, because it produces a run report about a threshold nobody applied.
  * @returns {Promise<object>} the verdict
  */
 async function evaluate (clip, opts = {}) {
@@ -378,6 +400,7 @@ async function evaluate (clip, opts = {}) {
     suspectLanguages: clip.suspectLanguages,
     detectSpokenLanguage: opts.detectSpokenLanguage,
     rateOpts: opts.rateOpts,
+    thresholds: opts.thresholds || {},
     samples: null,
     int16: null,
     sampleRate: edgeTier.SAMPLE_RATE,
@@ -420,6 +443,9 @@ async function evaluate (clip, opts = {}) {
     ...d,
     clip: { text: clip.text, language: clip.language, voiceId: clip.voiceId, provider: clip.provider || null },
     span: ctx.span || null,
+    // What this verdict was judged against, so a lab run can be read months later
+    // without guessing which sliders were where. Empty on every production call.
+    thresholds: opts.thresholds || null,
     gates: Object.fromEntries(results.map((r) => [r.id, r])),
     order: results.map((r) => r.id),
   }

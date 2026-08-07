@@ -319,9 +319,16 @@ function isNonSpeechDecode (decode) {
  * @param {string} decode  what whisper heard, having never seen `expected`
  * @param {string} expected  the text actually sent to TTS
  * @param {string} [iso1]  the pinned decode language, which picks the threshold
+ * @param {object} [opts]
+ * @param {number} [opts.cerThreshold]  override the fitted operating point for ONE call.
+ *   Absent — which is every production caller — the shipped thresholds apply unchanged.
+ *   It exists so VOICELAB can put the operating point on a slider and have the gate
+ *   actually honour it; a lab control the gate ignores is worse than no control. The
+ *   MIN_EDIT_DISTANCE floor underneath is NOT overridable: it is what stops a ratio
+ *   flagging a healthy one-word clip, and no experiment needs that switched off.
  * @returns {{pass:boolean, reason:string, cer:number, threshold:number}}
  */
-function verdictFromDecode (decode, expected, iso1) {
+function verdictFromDecode (decode, expected, iso1, opts = {}) {
   const e = normalise(expected)
   const d = normalise(decode)
   const edits = e.length ? levenshtein(e, d) : (d.length ? 1 : 0)
@@ -336,7 +343,9 @@ function verdictFromDecode (decode, expected, iso1) {
   // of characters. Both, always — see MIN_EDIT_DISTANCE for why the ratio
   // alone flags healthy one-word clips.
   const unfitted = CER_UNVALIDATED_LANGUAGES.has(String(iso1 || ''))
-  const threshold = unfitted ? CER_THRESHOLD_UNVALIDATED : CER_THRESHOLD
+  const threshold = Number.isFinite(Number(opts.cerThreshold))
+    ? Number(opts.cerThreshold)
+    : (unfitted ? CER_THRESHOLD_UNVALIDATED : CER_THRESHOLD)
   if (cer >= threshold && edits >= MIN_EDIT_DISTANCE) {
     return {
       pass: false,
@@ -439,7 +448,7 @@ async function checkAudioVeracity (input, expectedText, language, opts = {}) {
     release()
   }
 
-  const v = verdictFromDecode(decode, expectedText, iso1)
+  const v = verdictFromDecode(decode, expectedText, iso1, { cerThreshold: opts.cerThreshold })
   return {
     pass: v.pass,
     checked: true,

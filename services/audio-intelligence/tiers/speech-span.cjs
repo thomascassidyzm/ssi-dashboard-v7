@@ -63,10 +63,16 @@ function frameDb (samples, sampleRate, frameMs = FRAME_MS) {
  * The floor is the clip's own 10th percentile frame, so a quietly mastered clip is not
  * called silent by an absolute threshold and a loud one does not swallow its own tail.
  *
+ * `opts.speechAboveFloorDb` overrides that delta for one call and nothing else — absent,
+ * the shipped SPEECH_ABOVE_FLOOR_DB applies exactly as before. It exists so VOICELAB can
+ * put the number on a slider; a threshold a lab can edit that the gate ignores is worse
+ * than no slider at all.
+ *
  * @returns {{measured:boolean, startMs:number|null, endMs:number|null, speechMs:number|null,
  *            fileMs:number, floorDb:number|null, peakDb:number|null, reason:string}}
  */
-function spanFromFrames (db, frameMs = FRAME_MS) {
+function spanFromFrames (db, frameMs = FRAME_MS, opts = {}) {
+  const aboveFloorDb = opts.speechAboveFloorDb == null ? SPEECH_ABOVE_FLOOR_DB : Number(opts.speechAboveFloorDb)
   const fileMs = db.length * frameMs
   if (!db.length) {
     return { measured: false, startMs: null, endMs: null, speechMs: null, fileMs: 0, floorDb: null, peakDb: null, reason: 'no frames — nothing decoded' }
@@ -74,7 +80,7 @@ function spanFromFrames (db, frameMs = FRAME_MS) {
   const sorted = [...db].sort((a, b) => a - b)
   const floorDb = sorted[Math.floor(sorted.length * 0.10)]
   const peakDb = sorted[sorted.length - 1]
-  const threshold = floorDb + SPEECH_ABOVE_FLOOR_DB
+  const threshold = floorDb + aboveFloorDb
 
   let first = -1
   let last = -1
@@ -85,7 +91,7 @@ function spanFromFrames (db, frameMs = FRAME_MS) {
     return {
       measured: true, startMs: null, endMs: null, speechMs: 0, fileMs,
       floorDb: +floorDb.toFixed(1), peakDb: +peakDb.toFixed(1),
-      reason: `no frame rises ${SPEECH_ABOVE_FLOOR_DB} dB above this clip's own floor (${floorDb.toFixed(1)} dBFS) — there is no speech here`,
+      reason: `no frame rises ${aboveFloorDb} dB above this clip's own floor (${floorDb.toFixed(1)} dBFS) — there is no speech here`,
     }
   }
   const startMs = first * frameMs
@@ -117,7 +123,7 @@ function measure (samples, sampleRate, opts = {}) {
   const scaled = samples instanceof Float32Array
     ? samples
     : Float32Array.from(samples, (v) => v / 32768)
-  return { ...spanFromFrames(frameDb(scaled, sampleRate, FRAME_MS)), engine: 'speech-span-fallback' }
+  return { ...spanFromFrames(frameDb(scaled, sampleRate, FRAME_MS), FRAME_MS, opts), engine: 'speech-span-fallback' }
 }
 
 /**
@@ -126,15 +132,18 @@ function measure (samples, sampleRate, opts = {}) {
  *  - `false` when the clip carries essentially no speech — that is a real defect,
  *    and it is the silent-stub failure this estate has shipped before
  *  - `true` otherwise, carrying the span every later tier measures against
+ *
+ * `opts.minSpeechMs` overrides the floor for one call; absent, MIN_SPEECH_MS applies.
  */
-function verdict (span) {
+function verdict (span, opts = {}) {
+  const minSpeechMs = opts.minSpeechMs == null ? MIN_SPEECH_MS : Number(opts.minSpeechMs)
   if (!span || !span.measured) {
     return { pass: null, reason: span?.reason || 'speech span not measured', span: span || null }
   }
-  if (!span.speechMs || span.speechMs < MIN_SPEECH_MS) {
+  if (!span.speechMs || span.speechMs < minSpeechMs) {
     return {
       pass: false,
-      reason: `only ${span.speechMs || 0} ms of speech in a ${span.fileMs} ms file — below the ${MIN_SPEECH_MS} ms floor`,
+      reason: `only ${span.speechMs || 0} ms of speech in a ${span.fileMs} ms file — below the ${minSpeechMs} ms floor`,
       span,
     }
   }
