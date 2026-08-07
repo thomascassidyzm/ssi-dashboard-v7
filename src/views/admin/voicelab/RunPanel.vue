@@ -47,8 +47,9 @@ const freeText = ref('')
 // ── course text ──────────────────────────────────────────────────────────────
 const courses = ref([])
 const course = ref('')
-const role = ref('')
+const role = ref('seed')
 const query = ref('')
+const selectedCourse = computed(() => courses.value.find((c) => c.code === course.value) || null)
 const found = ref([])
 const picked = ref([])
 const searching = ref(false)
@@ -244,15 +245,21 @@ function defaultTitle () {
           <label class="vl-field">Course
             <select v-model="course" @change="search">
               <option v-for="c in courses" :key="c.code" :value="c.code">
-                {{ c.code }}{{ c.sentences ? ` · ${c.sentences.toLocaleString()}` : '' }}
+                {{ c.code }}{{ c.sentences ? ` · ${c.sentences.toLocaleString()} seeds` : '' }}{{ c.renderable === false ? ' · not steerable here' : '' }}
               </option>
             </select>
+            <span v-if="selectedCourse && selectedCourse.renderable === false" class="vl-why vl-warn">
+              This lab cannot steer {{ selectedCourse.languageName || selectedCourse.language }} — its text is
+              listed and searchable, but a run would render it in whatever language the config names.
+            </span>
           </label>
-          <label class="vl-field">Role
+          <label class="vl-field">Text
             <select v-model="role" @change="search">
-              <option value="">any</option>
-              <option value="known">known</option>
-              <option value="target">target</option>
+              <option value="seed">seed sentences</option>
+              <option value="">any practice phrase</option>
+              <option value="build">build phrases</option>
+              <option value="use">use phrases</option>
+              <option value="component">components</option>
             </select>
           </label>
           <label class="vl-field">Search

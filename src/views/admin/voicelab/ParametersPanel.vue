@@ -97,31 +97,34 @@ const GATE_TITLES = {
   phonology: 'phonology · is it the right language',
   words: 'words · are the right words in there',
 }
-const KEY_HELP = {
-  minSpeechMs: 'Below this the clip carries no speech worth the name.',
-  speechAboveFloorDb: 'How far above the clip’s own noise floor a frame must sit to count as speech.',
-  targetLufs: 'Integrated loudness the course declares. Evidence is one 25-clip German test — treat as a starting point, not a law.',
-  toleranceDb: 'How far either side of target still passes.',
-  truePeakCeilingDbtp: 'True peak must stay under this.',
-  absoluteFloorPerSecond: 'No voice sustains this rate; it refuses without calibration.',
-  cerThreshold: 'Whisper character error rate above which the words gate refuses. Fitted on German and English only.',
-  suspectLanguages: 'Comma-separated. Detecting one of these instead of the steered language refuses the clip.',
-}
+/**
+ * The backend declares, per threshold, what it means and whether moving it
+ * actually reaches a gate (`thresholdSpec[]`, keyed "group.field"). This panel
+ * carries no opinion of its own about either — a number the gate ignores must
+ * render disabled, and only the gate stack knows which those are.
+ */
+const specByKey = computed(() => {
+  const out = {}
+  for (const s of props.params.thresholdSpec || []) out[s.key] = s
+  return out
+})
 
 const thresholdGates = computed(() => {
   const t = props.modelValue.thresholds || {}
-  const meta = props.params.thresholdMeta || {}
-  return Object.entries(t).map(([gate, fields]) => ({
-    gate,
-    title: GATE_TITLES[gate] || gate,
+  return Object.entries(t).map(([group, fields]) => ({
+    group,
+    title: GATE_TITLES[group] || group,
     fields: Object.entries(fields || {}).map(([key, value]) => {
-      const m = meta[gate]?.[key] || {}
+      const spec = specByKey.value[`${group}.${key}`] || {}
       return {
         key,
         value,
         isList: Array.isArray(value),
-        readOnly: Boolean(m.readOnly),
-        why: m.why || KEY_HELP[key] || '',
+        unit: spec.unit || '',
+        // Absent from the spec means the gate stack does not read it — the same
+        // honesty as an explicit readOnly, arrived at by omission.
+        readOnly: spec.readOnly === true || !specByKey.value[`${group}.${key}`],
+        why: spec.what || '',
       }
     }),
   }))
@@ -237,33 +240,33 @@ function prettyKey (k) {
       own default until you change it; nothing here is hardcoded in the browser.
     </p>
 
-    <div v-for="g in thresholdGates" :key="g.gate" class="vl-threshold-gate">
+    <div v-for="g in thresholdGates" :key="g.group" class="vl-threshold-gate">
       <div class="vl-gate-title">{{ g.title }}</div>
       <div class="vl-fields">
         <label v-for="f in g.fields" :key="f.key" class="vl-field">
-          {{ prettyKey(f.key) }}
+          {{ prettyKey(f.key) }}<span v-if="f.unit" class="vl-unit"> · {{ f.unit }}</span>
           <input
             v-if="f.isList"
             type="text"
             :disabled="f.readOnly"
             :value="(f.value || []).join(', ')"
-            @input="setThreshold(g.gate, f.key, $event.target.value.split(',').map(s => s.trim()).filter(Boolean))"
+            @input="setThreshold(g.group, f.key, $event.target.value.split(',').map(s => s.trim()).filter(Boolean))"
           />
           <input
             v-else-if="typeof f.value === 'number'"
             type="number" step="any"
             :disabled="f.readOnly"
             :value="f.value"
-            @input="setThreshold(g.gate, f.key, Number($event.target.value))"
+            @input="setThreshold(g.group, f.key, Number($event.target.value))"
           />
           <input
             v-else
             type="text"
             :disabled="f.readOnly"
             :value="f.value ?? ''"
-            @input="setThreshold(g.gate, f.key, $event.target.value)"
+            @input="setThreshold(g.group, f.key, $event.target.value)"
           />
-          <span v-if="f.readOnly" class="vl-why vl-warn">read-only — {{ f.why || 'the gate does not accept this as a parameter yet' }}</span>
+          <span v-if="f.readOnly" class="vl-why vl-warn">read-only — the gate stack does not read this, so moving it would change nothing</span>
           <span v-else-if="f.why" class="vl-why">{{ f.why }}</span>
         </label>
       </div>
@@ -274,6 +277,7 @@ function prettyKey (k) {
 <style scoped>
 @import './lab.css';
 .vl-threshold-gate { margin: 0.75rem 0 1rem; }
+.vl-unit { opacity: 0.6; }
 .vl-gate-title {
   font-size: 0.75rem;
   color: var(--muted);

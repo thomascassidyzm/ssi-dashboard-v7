@@ -23,10 +23,10 @@ const revealed = ref(false)
 const playingId = ref('')
 let audioEl = null
 
-function play (clip) {
+async function play (clip) {
   if (!clip?.url) return
   if (audioEl) audioEl.pause()
-  audioEl = new Audio(clipUrl(clip.url))
+  audioEl = new Audio(await clipUrl(clip.url))
   playingId.value = clip.id
   audioEl.onended = () => { playingId.value = '' }
   audioEl.play().catch(() => { playingId.value = '' })
@@ -74,14 +74,18 @@ function gateChips (clip) {
   })
 }
 
+// The backend distinguishes "still rendering" from "gates still thinking" from
+// "failed" on clips[].status, so the screen says which rather than inferring a
+// spinner from a null verdict.
 function outcomeClass (clip) {
-  if (clip?.error) return 'fail'
-  if (!clip?.verdict) return 'unchecked'
+  if (!clip || clip.status === 'failed' || clip.error) return 'fail'
+  if (!clip.verdict) return 'unchecked'
   return clip.verdict.admit ? 'pass' : 'fail'
 }
 function outcomeText (clip) {
   if (!clip) return '—'
-  if (clip.error) return 'render failed'
+  if (clip.status === 'failed' || clip.error) return 'render failed'
+  if (clip.status === 'pending') return 'rendering…'
   if (!clip.verdict) return 'gating…'
   return clip.verdict.outcome
 }

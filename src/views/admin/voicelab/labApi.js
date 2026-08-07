@@ -39,12 +39,15 @@ async function accessToken () {
   }
 }
 
-async function call (path, { method = 'GET', body, auth = false } = {}) {
+// Every lab endpoint is behind a dashboard session — reads included, because a
+// read here lists what has been spent and what it sounded like. So `auth` is on
+// by default rather than per-call.
+async function call (path, { method = 'GET', body, auth = true } = {}) {
   const headers = { 'ngrok-skip-browser-warning': 'true' }
   if (body) headers['Content-Type'] = 'application/json'
   if (auth) {
     const token = await accessToken()
-    if (!token) throw new Error('Not signed in — a run spends money, so it needs an admin session.')
+    if (!token) throw new Error('Not signed in — every Voice Lab endpoint needs a dashboard session.')
     headers.Authorization = `Bearer ${token}`
   }
   const res = await fetch(`${labBase()}${path}`, {
@@ -82,17 +85,26 @@ export const api = {
   courses: () => call('/api/voicelab/courses'),
   sentences: (q) => call(`/api/voicelab/sentences?${new URLSearchParams(q)}`),
   estimate: (body) => call('/api/voicelab/estimate', { method: 'POST', body }),
-  createRun: (body) => call('/api/voicelab/runs', { method: 'POST', body, auth: true }),
+  createRun: (body) => call('/api/voicelab/runs', { method: 'POST', body }),
   listRuns: (limit = 50) => call(`/api/voicelab/runs?limit=${limit}`),
   getRun: (id) => call(`/api/voicelab/runs/${encodeURIComponent(id)}`),
-  rerun: (id) => call(`/api/voicelab/runs/${encodeURIComponent(id)}/rerun`, { method: 'POST', auth: true }),
+  rerun: (id) => call(`/api/voicelab/runs/${encodeURIComponent(id)}/rerun`, { method: 'POST' }),
   exportConfig: (id) => call(`/api/voicelab/runs/${encodeURIComponent(id)}/export`, { method: 'POST' }),
 }
 
-/** Clip URLs come back relative to the lab backend, not to popty.app. */
-export function clipUrl (url) {
+/**
+ * Clip URLs come back relative to the lab backend, not to popty.app — and the
+ * clip route is behind the same dashboard session as everything else. An
+ * `<audio src>` cannot set an Authorization header, so the backend accepts the
+ * identical bearer token as `?access_token=`. Same token, same check, different
+ * transport.
+ */
+export async function clipUrl (url) {
   if (!url) return ''
-  return /^https?:/.test(url) ? url : `${labBase()}${url}`
+  const absolute = /^https?:/.test(url) ? url : `${labBase()}${url}`
+  const token = await accessToken()
+  if (!token) return absolute
+  return `${absolute}${absolute.includes('?') ? '&' : '?'}access_token=${encodeURIComponent(token)}`
 }
 
 /**
