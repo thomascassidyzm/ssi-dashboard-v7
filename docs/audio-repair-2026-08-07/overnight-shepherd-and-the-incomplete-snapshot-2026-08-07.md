@@ -133,6 +133,89 @@ bands: `1-200, 201-400, … 1401-1529`.
 The obvious lever, *not* pulled: concurrency stays at **4**. Eight cores are already carrying two
 whisper fleets, and Tom's standing instruction on this machine is not to raise it.
 
+## The damage figure, as it lands
+
+The listen logs a running count every 200 clips, so the answer to Tom's *1-in-3* does not
+have to wait for the end of a 3.5-hour phase:
+
+| listened | damaged | cumulative | in that block |
+|---|---|---|---|
+| 200 | 2 | 1.0% | 1.0% |
+| 400 | 18 | 4.5% | 8.0% |
+| 600 | 35 | 5.8% | 8.5% |
+| 800 | 53 | 6.6% | 9.0% |
+| 1,000 | 65 | 6.5% | 6.0% |
+
+**~6.5% cumulative, 6-9% marginal — well under 1 in 3.**
+
+Preliminary, and with the reason it may rise stated up front: clips are listened in plan
+order, which is round order, and rounds 1-10 were rebuilt fresh at 04:13-04:25Z this
+morning. The first few hundred clips are therefore the newest audio in the course, which is
+exactly why the first block reads 1.0% and the rate then trebles. What we can say now is
+that the marginal rate has *settled* around 6-9% rather than continuing to climb.
+
+Nothing here contradicts what Tom heard. He was listening to specific clips, and a 1-in-3
+experience of the clips *he happened to play* is entirely compatible with a 7% base rate —
+damage is not evenly spread, and the rounds he was testing are not a random sample. The
+final number, and its distribution across rounds, is the thing to look at in the morning.
+
+## Concurrency: the parameter is not the ceiling
+
+Authorisation came through to raise FRA concurrency stepwise once DEU frees its cores. Two
+measured facts change what that is worth:
+
+**It cannot be applied to the flying band at all.** The listen result lives only in memory,
+so raising concurrency means restarting the run, which throws away every decode banked so
+far *and* the damage measurement with it. Concurrency is fixed for a run's lifetime. So this
+applies to band 2 onward, and there is nothing to do about it tonight.
+
+**And the parameter is not where the ceiling is.** `whisper-cli` runs with `-t 2`, so
+concurrency 4 is already **8 threads on 8 cores**. Going to 8 would be 16 threads on 8 cores
+— oversubscription, not throughput. With both runs live the box was at 14 threads on 8 cores
+and each run was getting roughly half a machine.
+
+So the recommendation for band 2 is **5-6, measured**, not 8: the only headroom above 4 is
+the S3-fetch wait that leaves a worker's threads briefly idle, which is a few percent, not a
+doubling. Raise, measure, and keep it only if throughput actually moved.
+
+Clean listen rate with the box otherwise quiet: **28.6 clips/min**, so the band-1 listen
+(5,217 clips) ends ~08:25Z.
+
+*A near-miss worth recording:* an intermediate reading suggested 9.5/min and a 9-hour listen.
+That was an artifact — the log lines carry no timestamps, so "when I first saw the line" is
+not "when it was written", and a probe of mine was stealing a quarter of the box at the time.
+Measuring properly gave 28.6/min and vindicated the original figure. The wrong correction was
+one command away from being reported as fact.
+
+## Bands cannot be overlapped — but the overlap is the prize
+
+Asked whether band N+1's listen could run while band N renders, since "phases touch different
+clips". **The premise is false, and measured so.** Bands are disjoint in ROUNDS but not in
+CLIPS: review offsets reach back as far as 2584 rounds, so a later band replays earlier
+clips. On real plans:
+
+- rounds 201-210 plans 501 distinct clips; **179 of them (35.7%) are clips rounds 1-200 also plays**
+- of its 173 actionable clips, **63 are shared with band 1**
+
+Running the two concurrently would double-render those 63 and race the swap — the opposite of
+idempotent.
+
+But the overlap that kills the pipelining idea is itself the cheaper win. Whisper is the
+dominant cost, and every band currently re-listens to the shared clips from scratch. So
+instead: **a persistent verdict cache** (`2c2a4836`), keyed on s3Key + expected text +
+language.
+
+It is correct *by construction* rather than by invalidation — `mastered/<uuid>.mp3` is
+write-once, a re-master mints a new key, so an s3Key names the same bytes forever. There is
+deliberately no TTL and no invalidation path; adding one could only make it wrong. An
+unanswerable check (whisper missing, download failed) is never cached, so a transient outage
+cannot freeze into a permanent verdict.
+
+Better, simpler and cheaper than the concurrency route on every leg: it removes the work
+rather than racing to do it, needs no cross-run coordination, and carries no double-write
+risk. 8 new tests, 81/81 green. Deployed to the band-2 snapshot only — **the flying run is
+deliberately untouched**.
+
 ## Single instance is a lock, not a promise
 
 While resizing the bands I restarted the shepherd and briefly had **two** running — precisely the
