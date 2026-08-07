@@ -17,8 +17,11 @@ vi.mock('@/services/api', () => ({ getApiUrl: () => 'http://api.test' }))
 
 const push = vi.fn()
 const replace = vi.fn()
+// Mutable so a test can mount the page the way a shared link arrives — with
+// query params already on the URL.
+let routeQuery = {}
 vi.mock('vue-router', () => ({
-  useRoute: () => ({ query: {} }),
+  useRoute: () => ({ query: routeQuery }),
   useRouter: () => ({ push, replace }),
 }))
 
@@ -140,6 +143,7 @@ let missingPayload = MISSING
 
 beforeEach(() => {
   missingPayload = MISSING
+  routeQuery = {}
   push.mockClear()
   replace.mockClear()
   localStorage.clear()
@@ -264,9 +268,80 @@ describe('AudioPreview', () => {
   it('carries the walkthrough anchors a future walk points at', async () => {
     const wrapper = await mountPage()
     for (const id of ['audio-preview-course-picker', 'audio-preview-filter',
-      'audio-preview-play-first', 'audio-preview-random-sample']) {
+      'audio-preview-role', 'audio-preview-play-first', 'audio-preview-random-sample']) {
       expect(wrapper.find(`[data-walk="${id}"]`).exists()).toBe(true)
     }
+  })
+})
+
+// Role selection. A recording session is judging one side of the phrase at a
+// time, and the list is otherwise all four roles interleaved. The backend has
+// applied ?role= since it shipped; these guard the wiring that reaches it.
+describe('AudioPreview — role filter', () => {
+  function clipUrls () {
+    return global.fetch.mock.calls
+      .map(([u]) => u)
+      .filter(u => typeof u === 'string' && u.includes('/audio-preview/clips'))
+  }
+
+  function roleButton (wrapper, label) {
+    return wrapper.find('[data-walk="audio-preview-role"]').findAll('button')
+      .find(b => b.text() === label)
+  }
+
+  it('sends no role param at all when "All roles" is selected', async () => {
+    await mountPage()
+    // Absence, not role=all: the column holds no such value, so sending it
+    // would filter every clip out.
+    expect(clipUrls().every(u => !u.includes('role='))).toBe(true)
+  })
+
+  it('refetches with &role= when a role is picked, and stacks with the verdict filter', async () => {
+    const wrapper = await mountPage()
+    await roleButton(wrapper, 'target2').trigger('click')
+    await flushPromises()
+
+    const last = clipUrls().at(-1)
+    expect(last).toContain('role=target2')
+    expect(last).toContain('filter=checked')
+  })
+
+  it('drops the param again on returning to "All roles"', async () => {
+    const wrapper = await mountPage()
+    await roleButton(wrapper, 'known').trigger('click')
+    await flushPromises()
+    expect(clipUrls().at(-1)).toContain('role=known')
+
+    await roleButton(wrapper, 'All roles').trigger('click')
+    await flushPromises()
+    expect(clipUrls().at(-1)).not.toContain('role=')
+  })
+
+  it('carries the role into the random sample, so the sample is of what is on screen', async () => {
+    const wrapper = await mountPage()
+    await roleButton(wrapper, 'presentation').trigger('click')
+    await flushPromises()
+    await wrapper.find('[data-walk="audio-preview-random-sample"]').trigger('click')
+    await flushPromises()
+
+    expect(global.fetch).toHaveBeenCalledWith(
+      expect.stringContaining('/audio-preview/sample?filter=checked&n=20&role=presentation'),
+      expect.anything()
+    )
+  })
+
+  it('pre-selects the role from ?role= so a link lands on the right set', async () => {
+    routeQuery = { role: 'target1' }
+    const wrapper = await mountPage()
+
+    expect(wrapper.vm.role).toBe('target1')
+    expect(clipUrls().at(-1)).toContain('role=target1')
+  })
+
+  it('ignores a role in the URL that is not one of the four', async () => {
+    routeQuery = { role: 'target9; drop table' }
+    await mountPage()
+    expect(clipUrls().every(u => !u.includes('role='))).toBe(true)
   })
 })
 

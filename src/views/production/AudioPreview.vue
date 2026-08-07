@@ -36,6 +36,21 @@
         >{{ tab.label }}</button>
       </div>
 
+      <!-- Which side of the phrase you are listening to. A recording session is
+           judging one role at a time, and the clip list is otherwise all four
+           interleaved. -->
+      <div data-walk="audio-preview-role" class="flex gap-1.5">
+        <button
+          v-for="tab in roleTabs"
+          :key="tab.key"
+          @click="setRole(tab.key)"
+          class="px-3 py-1.5 rounded text-xs font-medium transition-all"
+          :class="role === tab.key
+            ? 'bg-surface-3 border border-line text-ink'
+            : 'bg-surface border border-line text-muted hover:text-ink'"
+        >{{ tab.label }}</button>
+      </div>
+
       <div class="flex items-center gap-1.5 ml-auto">
         <button
           v-if="!sampleMode"
@@ -269,9 +284,23 @@ const filterTabs = [
   { key: 'all', label: 'All' },
 ]
 
+// Role is orthogonal to the verdict filter and stacks with it: the backend
+// applies both predicates in the same applyFilter(), so "checked and passed"
+// + target2 is a real intersection rather than one overriding the other.
+// 'all' is the ABSENCE of a role param, not a role named "all" — the column
+// holds no such value, so sending it would filter everything out.
+const roleTabs = [
+  { key: 'all', label: 'All roles' },
+  { key: 'known', label: 'known' },
+  { key: 'target1', label: 'target1' },
+  { key: 'target2', label: 'target2' },
+  { key: 'presentation', label: 'presentation' },
+]
+
 const courses = ref([])
 const activeCourse = ref(props.courseCode || localStorage.getItem(LAST_COURSE_KEY) || '')
 const filter = ref('checked')
+const role = ref('all')
 const clips = ref([])
 const total = ref(null)
 const verdictTotals = ref(null)
@@ -317,6 +346,10 @@ const filterTotal = computed(() => {
   return v ? v.passed + v.failed + (v.unchecked ?? 0) : 0
 })
 
+// Omitted entirely for 'all roles', which is exactly how the endpoints behave
+// when the param is absent.
+const roleParam = computed(() => role.value === 'all' ? '' : `&role=${encodeURIComponent(role.value)}`)
+
 function apiHeaders () {
   return { 'ngrok-skip-browser-warning': 'true' }
 }
@@ -361,7 +394,7 @@ async function fetchClips ({ append = false } = {}) {
   try {
     const offset = append ? clips.value.length : 0
     const url = `${apiUrl}/api/production/${activeCourse.value}/audio-preview/clips`
-      + `?filter=${filter.value}&limit=${PAGE_SIZE}&offset=${offset}`
+      + `?filter=${filter.value}&limit=${PAGE_SIZE}&offset=${offset}${roleParam.value}`
     const resp = await fetch(url, { headers: apiHeaders() })
     if (!resp.ok) throw new Error(`clips ${resp.status}`)
     const data = await resp.json()
@@ -470,6 +503,13 @@ function setFilter (key) {
   fetchClips()
 }
 
+function setRole (key) {
+  if (role.value === key) return
+  role.value = key
+  exitSample()
+  fetchClips()
+}
+
 function loadMore () {
   fetchClips({ append: true })
 }
@@ -495,7 +535,7 @@ async function playRandomSample () {
   try {
     const resp = await fetch(
       `${apiUrl}/api/production/${activeCourse.value}/audio-preview/sample`
-      + `?filter=${filter.value}&n=${sampleSize.value}`,
+      + `?filter=${filter.value}&n=${sampleSize.value}${roleParam.value}`,
       { headers: apiHeaders() })
     if (!resp.ok) throw new Error(`sample ${resp.status}`)
     const data = await resp.json()
@@ -559,6 +599,9 @@ watch(() => props.courseCode, (code) => {
 onMounted(async () => {
   if (route.query.filter && filterTabs.some(t => t.key === route.query.filter)) {
     filter.value = route.query.filter
+  }
+  if (route.query.role && roleTabs.some(t => t.key === route.query.role)) {
+    role.value = route.query.role
   }
   // Courseless entry: a remembered course means the second visit is one tap
   // fewer — go straight in rather than making him pick again.
