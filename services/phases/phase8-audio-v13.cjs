@@ -6435,6 +6435,12 @@ const reusePlanner = require('../audio-reuse-planner.cjs')
 const REUSE_ARTIFACT_DIR = path.join(__dirname, '..', '..', 'docs', 'audio-repair-2026-08-07')
 const reuseRuns = new Map()   // runId -> run record (in-process; artifact on disk is durable)
 
+// A full course is one round per is_new LEGO — fra_for_eng alone is 1,529 — so
+// the old cap of 500 was below the size of a real scope, not above it. The cap
+// is a runaway guard, nothing else; the thing that keeps a big scope safe is
+// BANDING (fromRound), not a small ceiling.
+const MAX_ROUNDS = 5000
+
 /** HEAD an S3 object. Never throws for "missing"; a failed QUESTION is `null`. */
 async function reuseHeadObject(s3Key) {
   if (!s3Key || s3Key.startsWith('pending/')) return { exists: false, size: null }
@@ -6665,11 +6671,12 @@ function preferredSourcesFor(courseCode, raw) {
 app.get('/reuse-coverage/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const rounds = Math.max(1, Math.min(500, parseInt(req.query.rounds, 10) || 10))
+    const rounds = Math.max(1, Math.min(MAX_ROUNDS, parseInt(req.query.rounds, 10) || 10))
+    const fromRound = Math.max(1, Math.min(rounds, parseInt(req.query.fromRound, 10) || 1))
     const voiceAliases = parseVoiceAliases(req.query.voiceAliases)
     const layers = req.query.layers ? String(req.query.layers).split(',') : undefined
     const table = await reusePlanner.buildCoverageTable(supabase, courseCode, rounds, {
-      voiceAliases,
+      voiceAliases, fromRound,
       codeService: { getName: getLangEnglishName },
       preferredSourceCourses: preferredSourcesFor(courseCode, req.query.preferredSources),
       ...(layers ? { layers } : {}),
@@ -6684,13 +6691,14 @@ app.get('/reuse-coverage/:courseCode', async (req, res) => {
 app.get('/reuse-plan/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const rounds = Math.max(1, Math.min(500, parseInt(req.query.rounds, 10) || 10))
+    const rounds = Math.max(1, Math.min(MAX_ROUNDS, parseInt(req.query.rounds, 10) || 10))
+    const fromRound = Math.max(1, Math.min(rounds, parseInt(req.query.fromRound, 10) || 1))
     const crossRole = req.query.crossRole !== 'false'
     const voiceAliases = parseVoiceAliases(req.query.voiceAliases)
     const verifyBytes = req.query.verifyBytes !== 'false'
 
     const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, {
-      crossRole, voiceAliases,
+      crossRole, voiceAliases, fromRound,
       freshRoles: parseFreshRoles(req.query.freshRoles),
       codeService: { getName: getLangEnglishName },
       preferredSourceCourses: preferredSourcesFor(courseCode, req.query.preferredSources),
@@ -6706,7 +6714,8 @@ app.get('/reuse-plan/:courseCode', async (req, res) => {
 
 app.post('/reuse-apply/:courseCode', async (req, res) => {
   const { courseCode } = req.params
-  const rounds = Math.max(1, Math.min(500, parseInt(req.body?.rounds, 10) || 10))
+  const rounds = Math.max(1, Math.min(MAX_ROUNDS, parseInt(req.body?.rounds, 10) || 10))
+  const fromRound = Math.max(1, Math.min(rounds, parseInt(req.body?.fromRound, 10) || 1))
   const dryRun = req.body?.dryRun !== false
   const crossRole = req.body?.crossRole !== false
   const rebuild = req.body?.rebuild === true
@@ -6724,9 +6733,9 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
     return res.status(409).json({ ok: false, error: `phase 8 is busy (${currentWork.operation} on ${currentWork.courseCode})` })
   }
 
-  const runId = `reuse-${courseCode}-r${rounds}-${Date.now()}`
+  const runId = `reuse-${courseCode}-r${fromRound === 1 ? rounds : `${fromRound}to${rounds}`}-${Date.now()}`
   const run = {
-    runId, courseCode, rounds, dryRun,
+    runId, courseCode, rounds, fromRound, dryRun,
     startedAt: new Date().toISOString(), finishedAt: null,
     state: 'running', summary: null, log: null, artifactPath: null, error: null,
   }
@@ -6735,7 +6744,7 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
   const execute = async () => {
     try {
       const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, {
-        crossRole, voiceAliases, rebuild,
+        crossRole, voiceAliases, rebuild, fromRound,
         freshRoles: parseFreshRoles(req.body?.freshRoles),
         codeService: { getName: getLangEnglishName },
         preferredSourceCourses: preferredSourcesFor(courseCode, req.body?.preferredSources),
@@ -6774,7 +6783,7 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
 
       // Artifact: standing sweep hygiene — every decision, per clip, on disk.
       await fs.ensureDir(REUSE_ARTIFACT_DIR)
-      const artifactPath = path.join(REUSE_ARTIFACT_DIR, `${courseCode}-rounds1-${rounds}-reuse-${dryRun ? 'dryrun' : 'applied'}-log.json`)
+      const artifactPath = path.join(REUSE_ARTIFACT_DIR, `${courseCode}-rounds${fromRound}-${rounds}-reuse-${dryRun ? 'dryrun' : 'applied'}-log.json`)
       await fs.writeJson(artifactPath, { ...log, plan: run.plan }, { spaces: 2 })
 
       run.log = log
@@ -6799,7 +6808,7 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
     return res.json({ ok: run.state === 'done', started: false, runId, ...run })
   }
   execute()
-  res.status(202).json({ ok: true, started: true, runId, courseCode, rounds })
+  res.status(202).json({ ok: true, started: true, runId, courseCode, rounds, fromRound })
 })
 
 app.get('/reuse-run/:runId', (req, res) => {

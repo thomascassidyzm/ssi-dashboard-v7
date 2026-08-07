@@ -34,7 +34,7 @@ import { describe, it, expect } from 'vitest'
 const planner = require('./audio-reuse-planner.cjs')
 const {
   decideClip, voicesMatch, sameLanguage, resolveVoices, clipKey, isSayable,
-  verifyPlanBytes, applyReusePlan, recountPlan,
+  verifyPlanBytes, applyReusePlan, recountPlan, roundsInBand,
 } = planner
 
 // ── fixtures ───────────────────────────────────────────────────────────────
@@ -786,5 +786,39 @@ describe('applyReusePlan concurrency — more hands, same log', () => {
     expect(log.entries[3].action).toBe('FAILED')
     expect(log.errors).toHaveLength(1)
     expect(log.entries.filter(e => e.action === 'REUSED_CROSS')).toHaveLength(5)
+  })
+})
+
+
+describe('round bands — a full course is ~1,500 rounds, so a pass must be able to start past round 1', () => {
+  const script = Array.from({ length: 10 }, (_, i) => ({ roundNumber: i + 1 }))
+  const nums = (rs) => rs.map(r => r.roundNumber)
+
+  it('defaults to the whole prefix — the only shape this ever had', () => {
+    expect(nums(roundsInBand(script))).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    expect(nums(roundsInBand(script, 1, 10))).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+  })
+
+  it('is inclusive at both ends, so consecutive bands tile with no gap and no overlap', () => {
+    const first = nums(roundsInBand(script, 1, 4))
+    const second = nums(roundsInBand(script, 5, 10))
+    expect(first).toEqual([1, 2, 3, 4])
+    expect(second).toEqual([5, 6, 7, 8, 9, 10])
+    expect([...first, ...second]).toEqual(nums(script))
+    expect(first.filter(n => second.includes(n))).toEqual([])
+  })
+
+  it('a single round is a legal band', () => {
+    expect(nums(roundsInBand(script, 7, 7))).toEqual([7])
+  })
+
+  it('an inverted or out-of-range band is empty, not a throw — the caller names the course', () => {
+    expect(roundsInBand(script, 9, 3)).toEqual([])
+    expect(roundsInBand(script, 99, 200)).toEqual([])
+  })
+
+  it('survives a generator that emitted nothing', () => {
+    expect(roundsInBand(null, 1, 10)).toEqual([])
+    expect(roundsInBand(undefined)).toEqual([])
   })
 })

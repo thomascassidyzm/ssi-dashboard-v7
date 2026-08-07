@@ -364,7 +364,16 @@ function courseLanguageNames(course, codeService) {
 // ===========================================================================
 
 /**
- * Set aside every clip the first `roundCount` rounds of a course play.
+ * Set aside every clip rounds `fromRound`..`roundCount` of a course play.
+ *
+ * `fromRound` defaults to 1, which is the whole prefix and the only shape this
+ * ever had. It exists because a full course is ~1,500 rounds: re-planning from
+ * round 1 every time makes each later pass re-verify — and, under
+ * verifyIncumbents, re-LISTEN to — every clip of every round before it, which
+ * is hours of whisper for work already finished. A band is disjoint, bounded
+ * and checkpointable. Clips shared with an earlier band still come back
+ * SATISFIED, so banding is idempotent, never destructive, and never re-buys
+ * audio; it only stops paying to re-ask a question already answered.
  *
  * Runs the REAL learning-script generator, walks the emitted cycles, and
  * returns the DISTINCT clip set with, for each clip: role, language, the voice
@@ -374,8 +383,18 @@ function courseLanguageNames(course, codeService) {
  *
  * @returns {Promise<{ clips: Map<string,object>, shape: object, voices: object, course: object }>}
  */
+/**
+ * The rounds a band covers: inclusive both ends, so bands tile without a gap
+ * (1-200, 201-500) and without an overlap. A band whose start is past its end
+ * is empty rather than an error here — the caller raises that, with the course
+ * name in the message.
+ */
+function roundsInBand (rounds, fromRound = 1, roundCount = Infinity) {
+  return (rounds || []).filter(r => r.roundNumber >= fromRound && r.roundNumber <= roundCount)
+}
+
 async function enumerateRoundClips(supabase, courseCode, roundCount, options = {}) {
-  const { crossRole = false, mode } = options
+  const { crossRole = false, mode, fromRound = 1 } = options
 
   const { data: course, error: courseErr } = await supabase
     .from('courses')
@@ -402,9 +421,9 @@ async function enumerateRoundClips(supabase, courseCode, roundCount, options = {
     ...(mode ? { mode } : {}),
   })
 
-  const rounds = (script.rounds || []).filter(r => r.roundNumber <= roundCount)
+  const rounds = roundsInBand(script.rounds, fromRound, roundCount)
   if (!rounds.length) {
-    throw new Error(`Generator emitted no rounds for ${courseCode}`)
+    throw new Error(`Generator emitted no rounds ${fromRound}-${roundCount} for ${courseCode}`)
   }
 
   // Holder lookup. The generator hands back lego ids, phrase ids and seed ids;
@@ -570,7 +589,7 @@ async function enumerateRoundClips(supabase, courseCode, roundCount, options = {
   shape.distinctClips = clips.size
 
   logger.info(
-    `${courseCode} rounds 1-${roundCount}: ${shape.cycles} cycles, ${shape.clipPlays} clip plays, ${shape.distinctClips} distinct clips`
+    `${courseCode} rounds ${fromRound}-${roundCount}: ${shape.cycles} cycles, ${shape.clipPlays} clip plays, ${shape.distinctClips} distinct clips`
   )
 
   return { clips, shape, voices, course }
@@ -868,10 +887,10 @@ function decideClip(clip, candidates, opts = {}) {
  */
 async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
   const { crossRole = true, voiceAliases = [], mode, codeService = null,
-          preferredSourceCourses = [], rebuild = false, freshRoles = [] } = options
+          preferredSourceCourses = [], rebuild = false, freshRoles = [], fromRound = 1 } = options
 
   const { clips, shape, voices, course } = await enumerateRoundClips(
-    supabase, courseCode, roundCount, { crossRole: false, mode }
+    supabase, courseCode, roundCount, { crossRole: false, mode, fromRound }
   )
   const { knownName, targetName } = courseLanguageNames(course, codeService)
   const languageFilter = buildLanguageNameFilter({ knownName, targetName })
@@ -938,6 +957,7 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
     ok: true,
     courseCode,
     rounds: roundCount,
+    fromRound,
     generatedAt: new Date().toISOString(),
     knownLang: course.known_lang,
     targetLang: course.target_lang,
@@ -1000,10 +1020,11 @@ async function buildCoverageTable(supabase, courseCode, roundCount, options = {}
     codeService = null,
     preferredSourceCourses = [],
     layers = CLIP_ROLES,
+    fromRound = 1,
   } = options
 
   const { clips, shape, voices, course } = await enumerateRoundClips(
-    supabase, courseCode, roundCount, { crossRole: false }
+    supabase, courseCode, roundCount, { crossRole: false, fromRound }
   )
 
   const { knownName, targetName } = courseLanguageNames(course, codeService)
@@ -1409,6 +1430,7 @@ async function applyReusePlan(supabase, plan, opts = {}) {
     runId: opts.runId || null,
     courseCode,
     rounds: plan.rounds,
+    fromRound: plan.fromRound ?? 1,
     dryRun,
     startedAt: new Date().toISOString(),
     finishedAt: null,
@@ -1590,6 +1612,7 @@ async function relinkHolders(supabase, clip, audioId, { dryRun = true } = {}) {
 }
 
 module.exports = {
+  roundsInBand,
   // planning
   enumerateRoundClips,
   buildReusePlan,
