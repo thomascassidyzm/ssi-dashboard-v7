@@ -1,206 +1,226 @@
-# French rounds 1–10 — what the learner actually hears, recounted
+# French rounds 1–10 — what the learner actually hears, measured from the course itself
 
-2026-08-07. Tom disputed last night's numbers ("that's blatantly not true — where do you get your
-clip numbers from"). He was right to. This is the recount, run through the real round generator
-rather than through the content-holder tables, and reconciled against the render that ran at 01:21.
+2026-08-07. Every number below is the output of the real learning-script generator run over the
+real `fra_for_eng` course data today. Nothing here is reconciled toward any previously stated
+figure — not Watson's, not anyone's. If a number appears, it came out of the generator or out of a
+direct read of the course tables, and the probe that produced it is named at the end.
 
-**Read-only job. No audio was generated, nothing was relinked, no course content was touched.**
+**Read-only. No audio generated, nothing relinked, no course content touched.**
 
 ---
 
-## The verdict, in four answers
+## The shape, measured
 
-### 1. "Rounds 1–10 = seeds 1–3, round 10 is S0003L03" — HALF RIGHT
+Rounds 1–10 emit **107 cycles**. Every single cycle plays **exactly three clips: 1 English + 2
+French**. There are no exceptions — the generator emits no cycle with a different clip shape:
 
-**Round 10 = `S0003L03` is RIGHT.** Three independent sources agree: the Popty script generator, the
-`course_round_index` materialised view the learner API reads, and the `course_legos` catalogue.
-The parenthetical is right too — `S0003L02` ("to speak" → *parler*) is `is_new=false`, a repeat of
-`S0001L02`, so it carries no round.
+| Cycle type | Cycles | Clips per cycle | Which clips |
+|---|---|---|---|
+| intro | 10 | 3 | presentation (English) + target1 + target2 |
+| debut | 10 | 3 | known (English) + target1 + target2 |
+| build | 41 | 3 | known (English) + target1 + target2 |
+| review | 32 | 3 | known (English) + target1 + target2 |
+| consolidate | 14 | 3 | known (English) + target1 + target2 |
+| **Total** | **107** | | |
 
-**"= seeds 1–3" is WRONG.** Seed 3 is not finished at round 10. It has four new LEGOs, and the
-fourth — `S0003L04`, "as often as possible" → *aussi souvent que possible* — debuts at **round 11**.
+So the first ten rounds are:
 
-> Rounds 1–12: 1:S0001L01 2:S0001L02 3:S0001L03 4:S0001L04 5:S0001L05 6:S0002L01 7:S0002L02
-> 8:S0002L03 9:S0003L01 **10:S0003L03** 11:S0003L04 12:S0004L01
+> **107 cycles × 3 clips = 321 clip plays.**
 
-**Correct mapping:** rounds 1–10 = seeds 1 and 2 complete, plus the first three new LEGOs of seed 3.
-Nine practice-phrase rows in seed 3 (4 BUILD, 5 USE) belong to LEGOs outside rounds 1–10.
+Those 321 plays resolve to **169 distinct clips**:
 
-### 2. "63 slots per layer" — WRONG as a description of what a learner hears
-
-63 is a count of **content-holder rows in the database** — 10 `course_legos` rows plus the 53
-`course_practice_phrases` rows those LEGOs own (22 BUILD, 25 USE, 6 component). That arithmetic
-is internally correct; I re-derived all of it and it reproduces exactly. It is simply not the
-number of things a learner hears.
-
-**What the learner actually hears in rounds 1–10:**
-
-| Layer | Slots played | Distinct clips |
+| Layer | Clip plays | Distinct clips |
 |---|---|---|
-| target1 (normal-speed French) | **107** | **53** |
-| target2 (fast French) | 107 | 53 |
+| presentation (English intro line) | 10 | 10 |
 | known (English) | 97 | 53 |
-| presentation (English intro) | 10 | 10 |
-| **Total audio slots** | **321** | — |
+| target1 (normal-speed French) | 107 | 53 |
+| target2 (fast French) | 107 | 53 |
+| **Total** | **321** | **169** |
 
-63 is wrong in **both directions at once**:
+The English side is 97 rather than 107 because intro cycles carry the presentation line instead of
+a bare English clip — 97 + 10 = 107, one English clip in every cycle.
 
-- It **over-counts**, because 6 of the 53 phrase rows are `phrase_role='component'` and the learner
-  **never plays component audio**. Components are visual ghost tiles on the intro and debut cards
-  only. This is explicit in both implementations (`learning-script-generator.cjs` header: "NO
-  component priming cycles"; `generateLearningScript.ts:1195-1212`: "we do NOT pre-introduce
-  components with their own audio cycles"). Tom ruled on this on 2026-08-06 — "Components do NOT
-  get introduced."
-- It **under-counts far more heavily**, because a round is not a list of rows. Each round emits an
-  intro, a debut, up to 7 BUILD practice items, up to 12 spaced-repetition reviews of *older* LEGOs,
-  and 2 consolidation items. The same clip is heard many times. 107 target1 slots against 53
-  distinct clips is roughly **2× repetition** across the first ten rounds alone.
+Repetition is roughly 2×: 107 French plays per speed, off 53 distinct French clips per speed.
 
-The old French renders in rounds 1–10 were **53 distinct clips**, not 58 — see (3).
+### Per round
 
-### 3. Were the 58 re-rendered clips the right 58? — YES, and slightly more than needed
+| Round | LEGO | Cycles | intro | debut | build | review | consolidate | Clip plays | pres | Eng | fra ×2 | Reviews of rounds |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | S0001L01 | 2 | 1 | 1 | — | — | — | 6 | 1 | 1 | 2 + 2 | — |
+| 2 | S0001L02 | 3 | 1 | 1 | 1 | — | — | 9 | 1 | 2 | 3 + 3 | — |
+| 3 | S0001L03 | 4 | 1 | 1 | 2 | — | — | 12 | 1 | 3 | 4 + 4 | — |
+| 4 | S0001L04 | 9 | 1 | 1 | 4 | 1 | 2 | 27 | 1 | 8 | 9 + 9 | 3 |
+| 5 | S0001L05 | 14 | 1 | 1 | 7 | 3 | 2 | 42 | 1 | 13 | 14 + 14 | 4, 3 |
+| 6 | S0002L01 | 15 | 1 | 1 | 6 | 5 | 2 | 45 | 1 | 14 | 15 + 15 | 5, 4, 3 |
+| 7 | S0002L02 | 16 | 1 | 1 | 7 | 5 | 2 | 48 | 1 | 15 | 16 + 16 | 6, 5, 4 |
+| 8 | S0002L03 | 13 | 1 | 1 | 3 | 6 | 2 | 39 | 1 | 12 | 13 + 13 | 7, 6, 5, 3 |
+| 9 | S0003L01 | 16 | 1 | 1 | 6 | 6 | 2 | 48 | 1 | 15 | 16 + 16 | 8, 7, 6, 4 |
+| 10 | S0003L03 | 15 | 1 | 1 | 5 | 6 | 2 | 45 | 1 | 14 | 15 + 15 | 9, 8, 7, 5 |
+| **Total** | | **107** | **10** | **10** | **41** | **32** | **14** | **321** | **10** | **97** | **107 + 107** | |
 
-This is the good news, and it is the part Tom's instinct did not need to worry about.
+Cycle-type names are the generator's own verbatim: `intro`, `debut`, `build`, `review`,
+`consolidate`. Nothing else is emitted — no component cycles, no listening clusters, no pod laps.
 
-| | Count |
-|---|---|
-| Distinct target1 clips rounds 1–10 actually play | **53** |
-| Of those, included in last night's render set | **53 (all of them)** |
-| Played clips left on the old Jan/Feb generation | **0** |
-| Clips in the 58 that rounds 1–10 never play | **5** |
+### Which LEGOs and seeds
 
-Every clip the learner hears in the first ten rounds is now on today's generation — I queried
-`course_audio` for all 53 ids the generator resolves and every one is stamped `2026-08`. There is
-no gap and no residue.
+Rounds 1–10 walk exactly these ten LEGOs, in this order:
 
-The 5 extras are all **component-row clips**: `je` (`S0001L01C01`), `avec` (`S0001L04C01`),
-`veux` (`S0001L01C02`), `toi` (`S0001L04C02`) and `essaie` (`S0002L02C01`). The learner never plays
-any of them in rounds 1–10. They were rendered because the render set was built from holder rows.
+> 1 `S0001L01` "I want" / *je veux* · 2 `S0001L02` "to speak" / *parler* · 3 `S0001L03` "French" /
+> *français* · 4 `S0001L04` "with you" / *avec toi* · 5 `S0001L05` "now" / *maintenant* ·
+> 6 `S0002L01` "to learn" / *apprendre* · 7 `S0002L02` "I'm trying to" / *j'essaie de* ·
+> 8 `S0002L03` "I'm trying to learn" / *j'essaie d'apprendre* · 9 `S0003L01` "how" / *comment* ·
+> 10 `S0003L03` "often" / *souvent*
 
-**This retires the one reported failure.** "essaie" — the clip the phonology gate rejected three
-times — is a component-only clip. It is **not heard in rounds 1–10 at all**, so its failure has zero
-learner impact on this slice. It does not need a decision for the purpose of Tom's listen.
+Seeds touched: 1, 2 and 3 only. Seed 3 is **not** complete at round 10 — `S0003L04`
+"as often as possible" / *aussi souvent que possible* debuts at **round 11**. `S0003L02` ("to
+speak") is `is_new=false`, a repeat of `S0001L02`, so it carries no round and the numbering
+compresses past it. Spaced repetition never reaches outside this set: the largest offset in play by
+round 10 is 5, and every reviewed round (3–9) is inside the window.
 
-One correction to the staleness figure while I was in there: of the 58 target clips, **56** were
-January/February renders and **2** were already August (`je veux parler`, rebuilt 4 Aug;
-`toi`, 6 Aug — both carrying `::superseded-regen` markers). Of the **53 played** clips, **52** were
-stale and 1 (`je veux parler`) was already current. So "61 of 63" was a slot-level restatement of
-the same fact; at clip level it is 52 of 53 played clips stale.
+The `course_round_index` materialised view — the one the learner API's `round-map.ts` reads —
+returns the same mapping independently: `1:S0001L01 … 9:S0003L01 10:S0003L03 11:S0003L04
+12:S0004L01`.
 
-### 4. Watson's sentence to Tom — **PARTLY TRUE**
+### Configuration in force
 
-> "The first 10 rounds have 63 French target1 slots, 61 of which were still January/February
-> renders; those 63 slots resolve to 58 distinct clips, so 58 were re-rendered."
+Read live from `algorithm_config.script_shape` (the generator reported source `algorithm_config`,
+not its built-in fallback): spaced-rep offsets `[1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,
+1597,2584]`, maxBuildPhrases 7, maxSpacedRepPhrases 12, n1PhraseCount 3, useConsolidationCount 2.
 
-- "63 French target1 slots" — **false**. That is a holder-row count, not slots played. The number is 107.
-- "61 of which were still January/February renders" — true of holder slots, but built on the wrong
-  denominator, so misleading.
-- "those 63 slots resolve to 58 distinct clips" — true of holder rows; not true of what is played
-  (53).
-- "so 58 were re-rendered" — true as a description of the job that ran (57 replaced, 1 failed).
+### Content dropped before the walk
 
-**The honest replacement sentence:**
-
-> Rounds 1–10 play **107 French target1 slots**, which resolve to **53 distinct clips** — 52 of them
-> still January/February renders. I rebuilt a 58-clip set (those 53 plus 5 clips held only by
-> component rows, which the learner never plays); 57 succeeded and **all 53 clips a learner actually
-> hears are now on today's generation**. The one failure, "essaie", is a component-only clip and is
-> not heard in rounds 1–10.
+Two mechanisms, both measured:
+- `is_new=false` LEGOs never enter the walk. In this range that is `S0003L02` alone.
+- The learner audio gate drops LEGOs and phrases missing any of known/target1/target2 before the
+  walk, so round numbers compress the way the learner's do. Course-wide it drops 4 LEGOs and 78
+  phrases. **Rounds 1–10 are identical with the gate on and off** — same 10 LEGOs, same 107 cycles,
+  same 321 clip plays, same 169 distinct clips. The gate changes nothing in this range.
 
 ---
 
-## How rounds 1–10 are actually built
+## Tom's question: what feeds the TTS when a clip is built or re-rendered?
 
-Enumerated through `services/learning-script-generator.cjs` — the dashboard mirror of the learner's
-`generateLearningScript.ts`, reading round shape and spaced-rep offsets **live** from
-`algorithm_config.script_shape` (source reported as `algorithm_config`, not fallback). Offsets in
-force: `[1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584]`; maxBuildPhrases 7,
-maxSpacedRepPhrases 12, n1PhraseCount 3, useConsolidationCount 2.
+**There are two different paths, and they read from two different places.**
 
-107 items total across ten rounds: 10 intro, 10 debut, 41 build, 32 review, 14 consolidate.
+### First generation — reads the course content
 
-| Round | LEGO | Items | intro | debut | build | review | consol. | Reviews of rounds | target1 slots | known slots |
-|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S0001L01 | 2 | 1 | 1 | — | — | — | — | 2 | 1 |
-| 2 | S0001L02 | 3 | 1 | 1 | 1 | — | — | — | 3 | 2 |
-| 3 | S0001L03 | 4 | 1 | 1 | 2 | — | — | — | 4 | 3 |
-| 4 | S0001L04 | 9 | 1 | 1 | 4 | 1 | 2 | 3 | 9 | 8 |
-| 5 | S0001L05 | 14 | 1 | 1 | 7 | 3 | 2 | 4, 3 | 14 | 13 |
-| 6 | S0002L01 | 15 | 1 | 1 | 6 | 5 | 2 | 5, 4, 3 | 15 | 14 |
-| 7 | S0002L02 | 16 | 1 | 1 | 7 | 5 | 2 | 6, 5, 4 | 16 | 15 |
-| 8 | S0002L03 | 13 | 1 | 1 | 3 | 6 | 2 | 7, 6, 5, 3 | 13 | 12 |
-| 9 | S0003L01 | 16 | 1 | 1 | 6 | 6 | 2 | 8, 7, 6, 4 | 16 | 15 |
-| 10 | S0003L03 | 15 | 1 | 1 | 5 | 6 | 2 | 9, 8, 7, 5 | 15 | 14 |
-| **Total** | | **107** | **10** | **10** | **41** | **32** | **14** | | **107** | **97** |
+`services/phases/phase8-audio-v13.cjs` (the `/generate` path) builds its work list in
+`getAudioNeeds`, from the **holder rows**:
 
-Cycle-type names are the generator's own (`intro`, `debut`, `build`, `review`, `consolidate`).
-Nothing else is emitted: no component cycles, no L1 listening clusters in main rounds (moved to
-Listening MODE on 2026-05-19), no pod laps (those are runtime-scheduled per learner and a
-course-level projection cannot model them).
+```
+course_practice_phrases.known_text  → known_audio_id
+course_practice_phrases.target_text → target1_audio_id
+course_practice_phrases.target_text → target2_audio_id
+course_legos.known_text             → known_audio_id
+course_legos.target_text            → target1_audio_id / target2_audio_id
+course_seeds.known_text / target_text (released seeds)
+```
 
-**Seeds and LEGOs touched:** seeds 1, 2, 3 only. LEGOs `S0001L01`–`S0001L05`, `S0002L01`–`S0002L03`,
-`S0003L01`, `S0003L03`. Spaced repetition never reaches past seed 3 here — the largest offset in
-play by round 10 is 5, and the reviewed rounds (3–9) are all inside the window. Nothing from beyond
-seed 3 is pulled in.
+It only fills links that are **NULL**. This path reads the same text the round generator plays.
 
-**Content skipped before the walk.** Two mechanisms:
-- `is_new=false` LEGOs are filtered out of the round walk entirely — that is why `S0003L02` carries
-  no round and rounds compress by one across seed 3.
-- The optional learner audio gate (`learnerView`) drops LEGOs/phrases missing any of
-  known/target1/target2 before the walk. I ran **both views**. Course-wide the gate drops 4 LEGOs
-  and 78 phrases, but **rounds 1–10 are byte-identical under both views** — same 10 LEGOs, same 107
-  items, same 53 clips. So the gate does not change which LEGOs land in rounds 1–10.
+### Re-rendering an existing clip — reads the clip, not the course
 
-## Cross-check between the two implementations
+`tools/regen-seed-clips-from-scratch.cjs` — the tool used on the French rounds overnight — works
+from a list of `course_audio` **ids**. It fetches the `course_audio` row by id, and renders
+`row.text`:
 
-The Popty mirror and the learner-path `generateLearningScript.ts` agree on everything that affects
-this count: identical round shape constants read from the same `algorithm_config` row; identical
-component handling (no component audio cycles, ghost tiles only); identical BUILD cap and USE-fill
-ordering; identical spaced-rep offset series. `course_round_index` — the materialised view the
-learner API's `round-map.ts` reads — independently confirms the round-to-LEGO mapping above.
+```js
+const { data: row } = await supabase.from('course_audio').select('*').eq('id', item.id).single()
+…
+ttsService.generateWithRetry(row.text, provider, ttsOptionsFor(provider, voiceId, row.language))
+```
 
-**Two divergences, neither of which changes any number here, both worth recording:**
+It then reverse-looks-up every holder pointing at that id (its `HOLDERS` map) purely to **repoint
+the links**. **It never reads `known_text` or `target_text`.** The source content for a re-render is
+the text the clip itself is carrying — a copy made when the clip was first generated.
 
-1. **Cycle-type names differ.** The learner emits `spaced_rep` and `use`; the mirror emits `review`
-   and `consolidate`. Same items, different labels. Anyone comparing script dumps across the two
-   will see this and should not read it as a behavioural gap.
-2. **The debut audio gate differs.** The learner requires all three of known/target1/target2 to
-   schedule a debut (`debutIsPlayable`), and requires presentation+target1 for an intro; the mirror's
-   `hasAudio` flag checks known+target1 only. In rounds 1–10 every LEGO has all three layers, so the
-   two agree exactly — but on a course with partial target2 coverage the mirror would show rounds the
-   learner silently drops. That is a real latent divergence in the mirror, reported here as a finding,
-   not fixed as part of a counting job.
+### So: is it the same source the round generator plays from?
+
+**For first generation, yes. For re-rendering, no — and the two can disagree.**
+
+The round generator plays `course_legos` / `course_practice_phrases` `known_text` and `target_text`,
+and resolves audio through the `*_audio_id` pointers. `course_audio.text` is a **snapshot** of that
+text taken at render time. Nothing in the schema keeps the two in step; there is no trigger, no
+foreign key on text, no check. If a holder's text is updated in place while its `*_audio_id` stays
+pointed at the old clip, then:
+
+- the learner **sees** the new text and **hears** the old clip, and
+- a re-render will faithfully regenerate the **old** text — the repair looks successful, the ledger
+  is clean, the veracity check passes (it compares audio against `row.text`, the same stale copy),
+  and the mismatch survives untouched.
+
+The reason this is rare rather than routine is the sanctioned edit path: `edit-cascade` **deletes
+and re-inserts** the LEGO/phrase rows, which drops the audio pointers to NULL, and `/generate` then
+refills them from the current holder text. Divergence only arises when holder text changes by some
+other route.
+
+### Measured, course-wide
+
+I checked every link in `fra_for_eng` — both holder tables, all three audio roles — comparing the
+holder's text against the text stored on the clip it points at:
+
+| Link | Linked | Text agrees | Disagrees | Dangling | Unlinked |
+|---|---|---|---|---|---|
+| `course_legos.known_audio_id` | 1,653 | 1,653 | 0 | 0 | 0 |
+| `course_legos.target1_audio_id` | 1,653 | 1,653 | 0 | 0 | 0 |
+| `course_legos.target2_audio_id` | 1,649 | 1,649 | 0 | 0 | 4 |
+| `course_practice_phrases.known_audio_id` | 15,837 | 15,837 | 0 | 0 | 61 |
+| `course_practice_phrases.target1_audio_id` | 15,827 | 15,826 | **1** | 0 | 71 |
+| `course_practice_phrases.target2_audio_id` | 15,803 | 15,803 | 0 | 0 | 95 |
+| **Total** | **52,422** | **52,421** | **1** | **0** | **231** |
+
+The single divergence:
+
+```
+course_practice_phrases.target1_audio_id  fra_for_eng:S0094L01C02  [component]
+   holder plays   : "seule"
+   clip re-renders: "seul"
+```
+
+That is the failure mode in miniature: the course says *seule*, the clip says *seul*, and any
+re-render of that clip produces *seul* again. It is a component row, so it is never played — but it
+is proof the two sources are independent, not proof they are safe.
+
+**In rounds 1–10 specifically: 159 known/target links checked, 159 agree, 0 disagree, 0 dangling.**
+So for the ten rounds under discussion, re-rendering from the clip and re-rendering from the course
+would have produced identical text. The overnight run did not render anything the course did not
+say.
 
 ---
 
-## Findings for Tom
+## Findings
 
-1. **The render was right; the reporting was wrong.** Every clip rounds 1–10 play is rebuilt and
-   current. The listen at https://watson-1.tail4968cb.ts.net/d/b07d5184 stands — it is testing the
-   right audio.
-2. **"essaie" needs no decision.** It is a component-only clip, never played. The open question in
-   last night's doc can be closed for this slice.
-3. **The holder-row-vs-slots-played error is generic, not French-specific.** Any inventory built by
-   counting `course_legos` + `course_practice_phrases` rows for a round range will under-count what
-   is heard (repetition) and over-count what is rendered (components). If other slices were scoped
-   that way, they carry the same error. Noted in one line as instructed — not audited, that is Tom's
-   call.
-4. **Component clips are being rendered but never played.** 5 of the 58 clips last night were
-   component-only. Estate-wide that is a standing spend on audio no learner hears. Worth a scoped
-   count before it becomes a decision, but again — not done here.
+1. **The re-render path is architecturally blind to the course content.** It cannot fix a clip whose
+   text is wrong, because the wrong text is its input. Today that costs `fra_for_eng` exactly one
+   row, but the property is permanent and applies to every course. A one-line change — render from
+   the holder text rather than `course_audio.text`, or at minimum assert they match before
+   rendering — would close it. Not done: that is a code change, not a counting job.
+2. **`fra_for_eng:S0094L01C02` says "seul" where the course says "seule".** Component row, never
+   played, so no learner impact — but it is a real data defect and it will not self-heal.
+3. **`course_audio` cannot be queried by `course_code` on this course** — statement timeout, the
+   same wall the pace gate hit. I worked around it by fetching all 42,708 linked clips by primary
+   key instead, which is fast. That workaround is worth folding into the pace gate; it may be the
+   whole fix.
+4. **One intro line reads oddly.** Round 8's presentation clip is *"The French for: 'I'm trying to
+   learn', as in — 'I'm trying to learn', is:"* — the LEGO and its example sentence are the same
+   string, so the "as in" clause says nothing. Observed while reading the ten intro scripts; noted,
+   not actioned.
+5. **231 links in this course are NULL** (4 lego target2, 61/71/95 phrase known/target1/target2).
+   Outside rounds 1–10, which are fully linked. Noted as an observation only.
 
 ## Gaps
 
-None. Every number in this document was re-derived live against Supabase today; nothing is carried
-over from last night's artifacts except the render log itself, which is used only as the record of
-what was rendered. The pace gate was not re-run (it still cannot run on this course — statement
-timeout, documented yesterday) and it is not needed for a counting job.
+- The course-wide text comparison covers `course_legos` and `course_practice_phrases`. It does **not**
+  cover `course_seeds` or `lego_introductions`/presentation text, which have their own link columns.
+  Not measured; stated rather than assumed.
+- No claim is made about audio *quality* — this is a text-and-count job. Whether the new French
+  takes sound right is Tom's ear on the listen doc.
 
-## Method
+## Probes (read-only, gitignored `scripts/`)
 
-Probes (read-only, gitignored workspace):
-`scripts/fra-rounds-1-10-recount.cjs` — enumerates rounds 1–10 through the real generator in both
-production and learner views, tallying slots and distinct clips per layer.
-`scripts/fra-rounds-1-10-reconcile.cjs` — cross-references the played clip set against
-`fra-rounds1-10-target1-targets.json` and `fra-r10-t1-applied.json`, and re-queries `course_audio`
-for the generation stamp of every played clip.
+- `fra-rounds-1-10-cycles.cjs` — runs the generator over rounds 1–10 in both production and
+  learner-gated views; tallies cycles by type, clips per cycle, clip plays and distinct clips per
+  layer, per round and cumulative.
+- `fra-rounds-1-10-textsource.cjs` — for every clip those cycles play, compares the text the
+  generator plays against the text stored on the clip.
+- `fra-textsource-divergence.cjs` — the same comparison across all 52,422 links in `fra_for_eng`.
