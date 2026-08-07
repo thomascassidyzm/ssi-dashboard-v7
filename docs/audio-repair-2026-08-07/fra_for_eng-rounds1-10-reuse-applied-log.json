@@ -1,10 +1,10 @@
 {
-  "runId": "reuse-fra_for_eng-r10-applied",
+  "runId": "reuse-fra_for_eng-r10-1786072450158",
   "courseCode": "fra_for_eng",
   "rounds": 10,
   "dryRun": false,
-  "startedAt": "2026-08-07T02:41:30.007Z",
-  "finishedAt": "2026-08-07T02:41:30.564Z",
+  "startedAt": "2026-08-07T03:14:19.794Z",
+  "finishedAt": "2026-08-07T03:14:19.795Z",
   "voices": {
     "known": "xai_eve",
     "target1": "xai_eve",
@@ -26,9 +26,9 @@
   },
   "summaryBefore": {
     "total": 169,
-    "satisfied": 168,
-    "relink": 0,
-    "reuseCross": 1,
+    "satisfied": 169,
+    "reuseOwn": 0,
+    "reuseCross": 0,
     "render": 0,
     "blocked": 0
   },
@@ -72,25 +72,8 @@
       "clipKey": "known|eng|xai_eve|i want to speak",
       "role": "known",
       "text": "I want to speak",
-      "action": "REUSED_CROSS",
-      "fromCourse": "kor_for_eng",
-      "audioId": "584b5cba-31dc-4f06-be63-de9b1cd834ee",
-      "previousAudioIds": [
-        "34635aed-93a2-4fa1-b517-37444ea2be30"
-      ],
-      "viaVoiceAlias": false,
-      "holdersUpdated": [
-        {
-          "table": "course_practice_phrases",
-          "id": "fra_for_eng:S0001L02B01",
-          "column": "known_audio_id",
-          "legoId": "S0001L02",
-          "currentAudioId": "34635aed-93a2-4fa1-b517-37444ea2be30",
-          "to": "584b5cba-31dc-4f06-be63-de9b1cd834ee",
-          "applied": true
-        }
-      ],
-      "note": "previous rows left in place — nothing deleted"
+      "action": "NONE",
+      "reason": "already linked to 584b5cba-31dc-4f06-be63-de9b1cd834ee"
     },
     {
       "clipKey": "target1|fra|xai_eve|parler",
@@ -1236,10 +1219,8 @@
   ],
   "deleted": [],
   "errors": [],
-  "audioStampBumped": true,
   "counts": {
-    "NONE": 168,
-    "REUSED_CROSS": 1
+    "NONE": 169
   },
   "deletionsPerformed": 0,
   "plan": {
@@ -1258,25 +1239,25 @@
     },
     "summary": {
       "total": 169,
-      "satisfied": 168,
-      "relink": 0,
-      "reuseCross": 1,
+      "satisfied": 169,
+      "reuseOwn": 0,
+      "reuseCross": 0,
       "render": 0,
       "blocked": 0
     },
     "byLayer": {
       "known": {
         "total": 53,
-        "satisfied": 52,
-        "relink": 0,
-        "reuseCross": 1,
+        "satisfied": 53,
+        "reuseOwn": 0,
+        "reuseCross": 0,
         "render": 0,
         "blocked": 0
       },
       "target1": {
         "total": 53,
         "satisfied": 53,
-        "relink": 0,
+        "reuseOwn": 0,
         "reuseCross": 0,
         "render": 0,
         "blocked": 0
@@ -1284,7 +1265,7 @@
       "target2": {
         "total": 53,
         "satisfied": 53,
-        "relink": 0,
+        "reuseOwn": 0,
         "reuseCross": 0,
         "render": 0,
         "blocked": 0
@@ -1292,7 +1273,7 @@
       "presentation": {
         "total": 10,
         "satisfied": 10,
-        "relink": 0,
+        "reuseOwn": 0,
         "reuseCross": 0,
         "render": 0,
         "blocked": 0
