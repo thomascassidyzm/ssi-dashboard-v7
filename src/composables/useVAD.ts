@@ -27,12 +27,41 @@ export interface VADState {
   silenceStartTime: number | null
 }
 
+// What a room measured before recording. `threshold` is what the VAD will
+// actually use; `quality` is what the recordist should be told.
+export interface VADCalibration {
+  // Time-domain RMS the room idles at (high percentile, not the mean, so one
+  // chair creak does not set the floor).
+  noiseFloor: number
+  // The silenceThreshold derived from that floor and now in force.
+  threshold: number
+  // Headroom between the floor and ordinary speech (~0.23 RMS), in dB.
+  headroomDb: number
+  quality: 'quiet' | 'ok' | 'loud' | 'too-loud'
+  message: string
+}
+
 const defaultConfig: VADConfig = {
-  silenceThreshold: 0.02,      // ~2% of max - quite sensitive
+  silenceThreshold: 0.02,      // time-domain RMS; see pollAudioLevel
   silenceDuration: 800,         // 800ms of silence = end of phrase
   minSpeechDuration: 300,       // At least 300ms of speech to count
   pollInterval: 50              // Check every 50ms
 }
+
+// Calibration constants. Ordinary speech through this pipeline measures ~0.23
+// RMS (p95, measured off a real take), which is the number the headroom and the
+// quality bands below are reckoned against.
+const SPEECH_RMS_REFERENCE = 0.23
+// Threshold sits this far above the measured floor, so ordinary room tone reads
+// as silence but the recordist does not have to whisper to be heard.
+const NOISE_MARGIN = 4
+// Clamps. The floor stops a freakishly quiet room from setting a threshold so
+// low that a fan spinning up later re-creates the stuck-on-"Speaking" bug. The
+// ceiling matters more: past this the threshold would start eating quiet
+// speech, and a threshold above the speech level detects nothing at all —
+// the same session-lost failure from the other direction.
+const MIN_THRESHOLD = 0.01
+const MAX_THRESHOLD = 0.08
 
 export function useVAD(config: Partial<VADConfig> = {}) {
   const cfg = { ...defaultConfig, ...config }
@@ -43,6 +72,8 @@ export function useVAD(config: Partial<VADConfig> = {}) {
   const currentLevel = ref(0)
   const speechStartTime = ref<number | null>(null)
   const silenceStartTime = ref<number | null>(null)
+  const isCalibrating = ref(false)
+  const calibration = ref<VADCalibration | null>(null)
 
   // Audio nodes
   let audioContext: AudioContext | null = null
@@ -110,6 +141,76 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     currentLevel.value = 0
     speechStartTime.value = null
     silenceStartTime.value = null
+    isCalibrating.value = false
+    calibrationSamples = []
+  }
+
+  let calibrationSamples: number[] = []
+
+  /**
+   * Listen to the room before recording starts and set silenceThreshold from
+   * what is actually there, rather than from a constant that assumes a studio.
+   *
+   * A fixed threshold cannot serve both a treated room and a kitchen with a
+   * fridge in it. Too low and the VAD never sees silence — it never ends a
+   * phrase, the UI sits on "Speaking..." forever and the whole read lands as
+   * one blob (the 2026-08-07 failure). Too high and it never hears the
+   * recordist at all. Measuring the room removes the guess, and the returned
+   * quality lets the studio warn BEFORE a session is lost rather than after.
+   *
+   * Caller must have startListening()'d first. Returns the calibration and
+   * leaves it on `calibration`.
+   */
+  async function calibrate(durationMs = 1500): Promise<VADCalibration> {
+    if (!analyser) throw new Error('calibrate() needs startListening() first')
+
+    calibrationSamples = []
+    isCalibrating.value = true
+    await new Promise(resolve => setTimeout(resolve, durationMs))
+    isCalibrating.value = false
+
+    const samples = calibrationSamples.slice().sort((a, b) => a - b)
+    calibrationSamples = []
+
+    // p90, not the mean: one chair creak or a passing car should not set the
+    // room's floor, but a floor under the genuinely noisy moments would let
+    // those moments read as speech.
+    const noiseFloor = samples.length
+      ? samples[Math.min(samples.length - 1, Math.floor(0.9 * samples.length))]
+      : 0
+
+    const threshold = Math.min(MAX_THRESHOLD, Math.max(MIN_THRESHOLD, noiseFloor * NOISE_MARGIN))
+    const headroomDb = noiseFloor > 0
+      ? 20 * Math.log10(SPEECH_RMS_REFERENCE / noiseFloor)
+      : Infinity
+
+    // Bands are set on headroom, not on whether the threshold hit its clamp.
+    // Keying "too-loud" off the clamp left "loud" spanning 20-21.2dB — a sliver
+    // no real room lands in, so the gentler warning would never have shown.
+    // The boundaries below are where measured behaviour actually changes: at
+    // 18dB the segmenter still cut Kai's take correctly (13 takes vs 14 in the
+    // clean room), so that is a warning and not a refusal; below ~14dB the
+    // threshold is clamped AND sitting inside the noise, and takes start
+    // running together.
+    let quality: VADCalibration['quality']
+    let message: string
+    if (headroomDb < 14) {
+      quality = 'too-loud'
+      message = 'This room is too noisy to split takes reliably — phrases will run together into one recording. Turn off fans, air-con or anything humming, move away from the window, or use a headset mic, then start again.'
+    } else if (headroomDb < 22) {
+      quality = 'loud'
+      message = 'There is a fair amount of background noise. It should still work, but leave a clear beat of silence between phrases.'
+    } else if (headroomDb < 30) {
+      quality = 'ok'
+      message = 'Background noise is fine.'
+    } else {
+      quality = 'quiet'
+      message = 'Nice and quiet.'
+    }
+
+    cfg.silenceThreshold = threshold
+    calibration.value = { noiseFloor, threshold, headroomDb, quality, message }
+    return calibration.value
   }
 
   /**
@@ -149,6 +250,14 @@ export function useVAD(config: Partial<VADConfig> = {}) {
 
     if (onLevelChange) {
       onLevelChange(rms)
+    }
+
+    // While calibrating we are deliberately measuring an empty room, so the
+    // speech state machine must not run — otherwise the room's own tone starts
+    // a phantom "phrase" that the first real word then appears to continue.
+    if (isCalibrating.value) {
+      calibrationSamples.push(rms)
+      return
     }
 
     const now = Date.now()
@@ -232,10 +341,13 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     isListening,
     isSpeaking,
     currentLevel,
+    isCalibrating,
+    calibration,
 
     // Actions
     startListening,
     stopListening,
+    calibrate,
     updateConfig,
 
     // Callbacks
