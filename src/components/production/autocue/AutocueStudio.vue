@@ -39,21 +39,28 @@
     <RecordingStatus :is-recording="state.isRecording" />
 
     <!-- Phase: Mode Selection -->
-    <ModeSelector
-      v-if="state.currentPhase === 'mode-select'"
-      @select="onModeSelect"
-    />
+    <div v-if="state.currentPhase === 'mode-select'">
+      <!-- Script loading failures used to reset the phase silently, so the
+           mode buttons just looked dead. Say what went wrong. -->
+      <div v-if="state.error" class="mode-error">{{ state.error }}</div>
+      <ModeSelector @select="onModeSelect" />
+    </div>
 
     <!-- Phase: Loading -->
-    <div v-else-if="state.isLoading" class="loading-phase">
+    <div v-else-if="state.currentPhase === 'loading' || state.isLoading" class="loading-phase">
       <div class="loading-spinner"></div>
-      <p class="loading-text">Loading recording script...</p>
+      <p class="loading-text">
+        Building recording script<span v-if="state.maxSeed"> for seeds 1–{{ state.maxSeed }}</span>…
+      </p>
     </div>
 
     <!-- Phase: Script Loaded Confirmation (new-course mode) -->
     <div v-else-if="state.currentPhase === 'script-loaded'" class="script-loaded-phase">
       <div class="script-summary">
         <h2>Recording Script Ready</h2>
+        <p v-if="state.scriptInfo?.maxSeed" class="script-cap-note">
+          Limited to seeds 1–{{ state.scriptInfo.maxSeed }} of the course.
+        </p>
         <div class="script-stats">
           <div class="script-stat">
             <span class="script-stat-value">{{ state.scriptInfo?.totalPhrases || 0 }}</span>
@@ -119,7 +126,7 @@
 
       <!-- VAD Level Indicator (script mode) -->
       <div v-if="state.scriptMode && state.isRecording" class="vad-indicator">
-        <div class="vad-bar" :style="{ width: `${vadLevel * 100}%` }"></div>
+        <div class="vad-bar" :style="{ width: `${vadMeterPercent}%` }"></div>
         <span class="vad-status">{{ isSpeaking ? 'Speaking...' : 'Listening...' }}</span>
       </div>
 
@@ -148,6 +155,14 @@
       <!-- Upload progress bar (script mode) -->
       <div v-if="state.scriptMode && uploadQueue.pendingCount.value > 0" class="upload-progress-bar">
         <span class="upload-label">Uploading: {{ uploadQueue.uploadedCount.value }} done, {{ uploadQueue.pendingCount.value }} pending</span>
+      </div>
+
+      <!-- Failed takes, DURING the session. Waiting for the summary screen means a
+           recordist can talk through a whole script with a dead mic and only find
+           out at the end — the takes were never saved and there is nothing to retry. -->
+      <div v-if="state.scriptMode && uploadQueue.failedIndices.size > 0" class="upload-failed-bar">
+        <span class="failed-count">{{ uploadQueue.failedIndices.size }} NOT saved</span>
+        <span class="failed-reason">{{ latestFailureReason }}</span>
       </div>
     </div>
 
@@ -202,7 +217,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAutocueState } from '@/composables/useAutocueState'
 import { useContinuousRecorder } from '@/composables/useContinuousRecorder'
@@ -234,6 +249,7 @@ const {
   sessionInfo,
   formattedTime,
   setRecordingIdentity,
+  setMaxSeed,
   selectMode,
   beginSession,
   beginContinuousSession,
@@ -267,9 +283,25 @@ const continuousRecorder = useContinuousRecorder({
 const isSpeaking = continuousRecorder.isSpeaking
 const vadLevel = continuousRecorder.currentLevel
 
+// vadLevel is a time-domain RMS, so speech measures ~0.2-0.4 and would only
+// ever paint a third of the bar. Scale it for the meter (the DECISION still uses
+// the raw value against silenceThreshold — see useVAD.ts). x3 puts the 0.02
+// silence threshold at a visible 6% and normal speech near full.
+const vadMeterPercent = computed(() => Math.min(100, Math.round(vadLevel.value * 300)))
+
 // Background upload queue
 const uploadQueue = useUploadQueue()
 const uploadedCount = uploadQueue.uploadedCount
+
+// The server's own words for the most recent take it refused (e.g. "no audible
+// speech"), so the in-session failure bar says WHY, not just how many.
+const latestFailureReason = computed(() => {
+  let latest = null
+  for (const idx of uploadQueue.failedIndices) {
+    if (latest === null || idx > latest) latest = idx
+  }
+  return latest === null ? '' : (uploadQueue.failedReasons.get(latest) || 'Upload failed')
+})
 
 // Wire continuous recorder: on segment captured, store + queue upload + advance
 continuousRecorder.onSegmentCaptured((segment) => {
@@ -316,7 +348,13 @@ continuousRecorder.onSegmentCaptured((segment) => {
 })
 
 // Event handlers
-function onModeSelect(mode) {
+function onModeSelect(mode, opts = {}) {
+  // Re-establish the cap on every choice rather than relying on the value set
+  // at mount: resetSession() clears it (singleton hygiene), so a recorder who
+  // backs out of a session and picks again would otherwise silently lose the
+  // link's ?maxSeed and start an uncapped run. An explicit opts.maxSeed (the
+  // test-batch button) wins over the link.
+  setMaxSeed(opts.maxSeed ?? route.query.maxSeed)
   selectMode(mode)
 }
 
@@ -399,6 +437,11 @@ onMounted(() => {
   // Bind (or clear) the session's voice-slot identity on every mount so a
   // Record Room session never leaks into a production-console session.
   setRecordingIdentity({ role: props.recordSlot, voiceId: props.voiceId })
+
+  // ?maxSeed=N on the recorder link caps the script to seeds 1..N — used to
+  // hand a tester a short, listenable session instead of the whole course.
+  // Set after resetSession() so it survives the mount-time reset.
+  setMaxSeed(route.query.maxSeed)
 
   // Load course data if available from route
   const courseCode = route.params.courseCode
@@ -615,6 +658,30 @@ onUnmounted(() => {
   margin-top: 1.5rem;
 }
 
+/* Surfaces a script-load failure above the mode buttons, which otherwise
+   just look unresponsive. */
+.mode-error {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  padding: 0.875rem 1.25rem;
+  border: 1px solid var(--color-film-red);
+  border-radius: 8px;
+  background: var(--color-shadow);
+  color: var(--color-film-red);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.875rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.script-cap-note {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--color-paper-dim);
+  margin: -1.25rem 0 1.75rem 0;
+}
+
 /* Script Loaded Phase */
 .script-loaded-phase {
   display: flex;
@@ -807,6 +874,31 @@ onUnmounted(() => {
   color: var(--color-paper-dim);
 }
 
+.upload-failed-bar {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid #dc2626;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.failed-count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fca5a5;
+}
+
+.failed-reason {
+  font-size: 0.7rem;
+  color: #fca5a5;
+  line-height: 1.3;
+}
+
 /* Recording Phase */
 .recording-phase {
   max-width: 1000px;
@@ -942,6 +1034,11 @@ onUnmounted(() => {
   .session-stats {
     width: 100%;
     justify-content: space-around;
+    /* Four stat tiles at 1.25rem side padding and a 2rem number measure 493px;
+       without wrapping they widened the studio to 549px on a 390px phone and
+       the whole recording screen scrolled sideways. */
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .back-link {
@@ -953,6 +1050,24 @@ onUnmounted(() => {
   .script-stats,
   .summary-stats {
     flex-wrap: wrap;
+  }
+}
+
+/* Phone. Kai records standing, holding the phone — nothing here may need a
+   sideways scroll to reach. */
+@media (max-width: 480px) {
+  .autocue-studio {
+    padding: 1rem 0.75rem;
+  }
+
+  .stat-item {
+    padding: 0.5rem 0.75rem;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .stat-value {
+    font-size: 1.35rem;
   }
 }
 </style>
