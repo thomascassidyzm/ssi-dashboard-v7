@@ -100,6 +100,7 @@ const currentAudio = ref(null)
 let stopToken = 0
 const isPlaying = ref(false)
 const playingIdx = ref(-1)
+const playingSample = ref('') // casting mode: the sample clip currently sounding
 const copied = ref(false)
 
 function clone(o) {
@@ -221,6 +222,11 @@ async function loadCourse(courseCode) {
     fineKnownMap.value = new Map((fineRows || []).map((r) => [r.text_normalized, r.id]))
 
     if (!sentences.value.length) error.value = `No pod sentences found for ${courseCode}:pod-0.`
+
+    // Casting + approval state comes from the API, not the browser client:
+    // app_config is not readable under the anon role, and the fingerprint must
+    // be the gate's own (server-side) function.
+    loadCasting(courseCode)
   } catch (e) {
     error.value = e?.message || String(e)
   } finally {
@@ -348,6 +354,7 @@ function stop() {
   isPlaying.value = false
   playingIdx.value = -1
   playingStepKey.value = ''
+  playingSample.value = ''
 }
 
 // ── THE UNIFIED LADDER — Stage 0 → pure-2× turn (Tom 2026-07-03) ────────────
@@ -1121,6 +1128,307 @@ async function playShapeSteps(steps) {
 // stop audio if the line changes out from under a running playback
 watch(selectedIdx, stop)
 
+// ── CASTING — the sample-first approval surface (Tom, 2026-08-07) ───────────
+// "The samples belong in PodLab: a per-course pod preview where he can play the
+// ~10 sample phrases for each course awaiting approval."
+//
+// What is shown is THE CAST AS STORED in listening_pods.speakers — never
+// re-resolved from app_config.pod_voice_pools — because that stored snapshot is
+// exactly what phase-8's resolvePodSpeakerVoice() reads at generation time.
+// Approve what will render, not what a pool says ought to render.
+const casting = ref(null) // GET /api/pod-voice-approval payload
+const castingLoading = ref(false)
+const castingError = ref('')
+const castNote = ref('')
+const castingSaving = ref('')
+const castingMsg = ref('')
+
+async function loadCasting(courseCode) {
+  casting.value = null
+  castingError.value = ''
+  castingMsg.value = ''
+  castNote.value = ''
+  if (!courseCode) return
+  castingLoading.value = true
+  try {
+    const sb = await import('../../services/supabase').then((m) => m.supabase)
+    const { data: { session } } = await sb.auth.getSession()
+    if (!session) throw new Error('no session — sign in')
+    const res = await fetch(`/api/pod-voice-approval?course=${encodeURIComponent(courseCode)}`, {
+      headers: { Authorization: `Bearer ${session.access_token}` },
+    })
+    const body = await res.json().catch(() => ({}))
+    if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)
+    casting.value = body
+    castNote.value = (body.record && body.record.note) || ''
+  } catch (e) {
+    castingError.value = e.message
+  } finally {
+    castingLoading.value = false
+  }
+}
+
+async function decideCasting(decision) {
+  if (!casting.value) return
+  castingSaving.value = decision
+  castingMsg.value = ''
+  try {
+    const sb = await import('../../services/supabase').then((m) => m.supabase)
+    const { data: { session } } = await sb.auth.getSession()
+    if (!session) throw new Error('no session — sign in')
+    const res = await fetch('/api/pod-voice-approval', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.access_token}` },
+      body: JSON.stringify({
+        course_code: casting.value.course_code,
+        decision,
+        // The digest of the cast actually rendered on this page — the route
+        // refuses (409) if a recast landed since it loaded.
+        cast_fingerprint: casting.value.cast_fingerprint,
+        note: castNote.value,
+      }),
+    })
+    const body = await res.json().catch(() => ({}))
+    if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)
+    casting.value = { ...casting.value, record: body.record, gate: body.gate }
+    castingMsg.value = decision === 'approve'
+      ? `Approved ✓ — generation is unlocked for casting ${body.cast_fingerprint}`
+      : 'Rejected — recorded, and generation stays refused'
+  } catch (e) {
+    castingMsg.value = `Failed: ${e.message}`
+  } finally {
+    castingSaving.value = ''
+  }
+}
+
+// Mirror of canonicalSpeakerName / resolvePodSpeakerVoice in
+// services/phases/phase8-audio-v13.cjs (~:6238). A 10-line mirror rather than an
+// import: that file is a 7k-line CJS service that opens a live Supabase client
+// and TTS providers at module load, so it cannot enter the browser bundle. The
+// FINGERPRINT — the thing that must never drift — is not mirrored: it is
+// computed server-side by the gate's own module (api/pod-voice-approval.js).
+function canonSpeakerName(speaker) {
+  return (speaker || '').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim()
+}
+function resolveSpeakerVoice(podSpeakers, speaker, track) {
+  const mapping = podSpeakers || {}
+  const entry = mapping[canonSpeakerName(speaker)] || mapping[speaker] || mapping._default
+  if (!entry) return null
+  if (entry[track] && entry[track].voice_id) {
+    return {
+      name: entry[track].name || null,
+      voice_id: entry[track].voice_id,
+      provider: entry[track].provider || 'azure',
+      locale: entry[track].locale || null,
+      gender: entry.gender || 'n',
+    }
+  }
+  if (track === 'target' && entry.voice_id) {
+    // legacy top-level shape — target only, provider defaults to xai
+    return { name: entry.name || null, voice_id: entry.voice_id, provider: entry.provider || 'xai', locale: entry.locale || null, gender: entry.gender || 'n' }
+  }
+  return null
+}
+const voiceKey = (v) => (v ? `${v.provider}|${v.voice_id}|${v.locale || ''}` : 'none')
+
+// The pod whose lines are loaded on this page (PodLab reads `:pod-0`).
+const castSpeakers = computed(() => {
+  const pods = casting.value?.pods || []
+  const p0 = pods.find((p) => p.id === `${selectedCourseCode.value}:pod-0`) || pods[0]
+  return p0 ? p0.speakers || {} : {}
+})
+// Pods beyond pod-0 are in the fingerprint but their lines are not on this page.
+const otherPodIds = computed(() =>
+  (casting.value?.pods || []).map((p) => p.id).filter((id) => id !== `${selectedCourseCode.value}:pod-0`),
+)
+
+// ISO-639-3 (courses.target_lang) → the ISO-639-1 subtag a voice locale should
+// open with. Unlisted languages report "can't check" — never a false alarm.
+const ISO3_TO_ISO1 = {
+  ara: 'ar', ben: 'bn', bul: 'bg', cat: 'ca', cym: 'cy', dan: 'da', deu: 'de', ell: 'el',
+  eng: 'en', est: 'et', eus: 'eu', fas: 'fa', fin: 'fi', fra: 'fr', gle: 'ga', guj: 'gu',
+  heb: 'he', hin: 'hi', hrv: 'hr', hye: 'hy', isl: 'is', ita: 'it', jpn: 'ja', kor: 'ko',
+  lav: 'lv', lit: 'lt', nep: 'ne', nld: 'nl', nor: 'no', pan: 'pa', pol: 'pl', por: 'pt',
+  ron: 'ro', sin: 'si', spa: 'es', swa: 'sw', swe: 'sv', tam: 'ta', tha: 'th', tur: 'tr',
+  ukr: 'uk', urd: 'ur', zho: 'zh',
+}
+// Voices legitimately steered at a near-neighbour subtag.
+const LOCALE_ALIASES = { no: ['nb', 'nn'], he: ['iw'], zh: ['cmn', 'yue'] }
+function localeMatchesTarget(locale, iso3) {
+  const want = ISO3_TO_ISO1[iso3]
+  if (!want || !locale) return null // unknown → don't claim anything
+  const got = String(locale).toLowerCase().split(/[-_]/)[0]
+  return got === want || (LOCALE_ALIASES[want] || []).includes(got)
+}
+
+// Line counts per speaker on this pod — the share an ear can't tally.
+const linesBySpeaker = computed(() => {
+  const m = new Map()
+  for (const s of sentences.value) m.set(s.speaker, (m.get(s.speaker) || 0) + 1)
+  return m
+})
+
+// One row per DISTINCT voice on a track, with the labels and line share it covers.
+function castRows(track) {
+  const speakers = castSpeakers.value
+  const rows = new Map()
+  const labels = new Set([...Object.keys(speakers), ...linesBySpeaker.value.keys()])
+  for (const label of labels) {
+    const v = resolveSpeakerVoice(speakers, label, track)
+    const k = voiceKey(v)
+    if (!rows.has(k)) rows.set(k, { key: k, voice: v, labels: [], lines: 0 })
+    const row = rows.get(k)
+    if (!row.labels.includes(label)) row.labels.push(label)
+    row.lines += linesBySpeaker.value.get(label) || 0
+  }
+  const total = [...rows.values()].reduce((a, r) => a + r.lines, 0) || 1
+  return [...rows.values()]
+    .map((r) => ({ ...r, share: Math.round((r.lines / total) * 100) }))
+    .sort((a, b) => b.lines - a.lines)
+}
+const targetCast = computed(() => castRows('target'))
+const knownCast = computed(() => castRows('known'))
+
+// The two things an ear cannot catch quickly, stated in words.
+const castFlags = computed(() => {
+  const flags = []
+  if (!casting.value) return flags
+  const iso3 = casting.value.course?.target_lang || ''
+  const voiced = targetCast.value.filter((r) => r.voice)
+  const unvoiced = targetCast.value.filter((r) => !r.voice)
+
+  if (unvoiced.length) {
+    flags.push({
+      level: 'bad',
+      text: `${unvoiced.length} speaker label${unvoiced.length === 1 ? '' : 's'} resolve to NO target voice `
+        + `(${unvoiced[0].labels.slice(0, 4).join(', ')}${unvoiced[0].labels.length > 4 ? '…' : ''}) — those lines cannot render.`,
+    })
+  }
+  if (voiced.length !== 2) {
+    flags.push({
+      level: 'bad',
+      text: `${voiced.length} distinct target voice${voiced.length === 1 ? '' : 's'} — Aran's rule is a two-hander, one male and one female.`,
+    })
+  } else {
+    const genders = voiced.map((r) => r.voice.gender)
+    if (!(genders.includes('f') && genders.includes('m'))) {
+      flags.push({ level: 'bad', text: `Two target voices, but genders are ${genders.join(' + ')} — not one male, one female.` })
+    }
+  }
+  const bad = voiced.filter((r) => localeMatchesTarget(r.voice.locale, iso3) === false)
+  if (bad.length) {
+    flags.push({
+      level: 'bad',
+      text: `${bad.length} target voice${bad.length === 1 ? '' : 's'} steered at a locale that is not the course's target language `
+        + `(${bad.map((r) => `${r.voice.name || r.voice.voice_id} → ${r.voice.locale}`).join(', ')}; target is ${iso3}). `
+        + 'It will render the target text in the wrong language’s phonology.',
+    })
+  }
+  const unknown = voiced.filter((r) => localeMatchesTarget(r.voice.locale, iso3) === null)
+  if (unknown.length) {
+    flags.push({
+      level: 'warn',
+      text: `Locale can't be checked for ${unknown.length} target voice${unknown.length === 1 ? '' : 's'} `
+        + `(${unknown.map((r) => r.voice.locale || 'no locale').join(', ')}; target ${iso3 || 'unknown'}) — judge by ear.`,
+    })
+  }
+  // Same check on the known track. It fires on exactly the 6 eng_for_* courses
+  // whose known voices are English rather than the learner's own language —
+  // nowhere else in the estate (scripts probe, 2026-08-07), so it isn't noise.
+  const kIso3 = casting.value.course?.known_lang || ''
+  const badKnown = knownCast.value.filter((r) => r.voice && localeMatchesTarget(r.voice.locale, kIso3) === false)
+  if (badKnown.length) {
+    flags.push({
+      level: 'warn',
+      text: `${badKnown.length} KNOWN voice${badKnown.length === 1 ? '' : 's'} at a locale that is not the course's known language `
+        + `(${badKnown.map((r) => `${r.voice.name || r.voice.voice_id} → ${r.voice.locale}`).join(', ')}; known is ${kIso3}) — `
+        + 'the learner would hear the translations in the wrong language.',
+    })
+  }
+  // Line share: two voices at 85/15 is technically a two-hander and audibly not one.
+  const byGender = { f: 0, m: 0, n: 0 }
+  for (const r of voiced) byGender[r.voice.gender === 'f' ? 'f' : r.voice.gender === 'm' ? 'm' : 'n'] += r.lines
+  const tot = byGender.f + byGender.m + byGender.n
+  if (tot) {
+    const pct = (n) => Math.round((n / tot) * 100)
+    const skewed = voiced.length === 2 && Math.max(pct(byGender.f), pct(byGender.m)) >= 70
+    flags.push({
+      level: skewed ? 'bad' : 'ok',
+      text: `Line share — female ${pct(byGender.f)}%, male ${pct(byGender.m)}%`
+        + (byGender.n ? `, ungendered ${pct(byGender.n)}%` : '')
+        + ` of ${tot} lines${skewed ? ' — lopsided; one voice carries the pod.' : '.'}`,
+    })
+  }
+  return flags
+})
+
+// ── the ~10 sample clips ───────────────────────────────────────────────────
+// Semantics deliberately match selectSample() in services/pod-voice-approvals.cjs
+// (the gate's own sampler): build the queue in line order, take the FIRST clip
+// of each distinct (kind, provider, voice_id, locale) before any second clip of
+// a voice already covered, then slice to the limit. A ten-clip sample that came
+// off the top of the pod could be ten lines from one character, and would
+// approve nothing about the rest of the cast.
+const SAMPLE_LIMIT = 10
+const sampleClips = computed(() => {
+  const speakers = castSpeakers.value
+  const queue = []
+  for (const s of sentences.value) {
+    if (s.target_audio_id) {
+      queue.push({ kind: 'target', id: s.target_audio_id, speaker: s.speaker, text: s.target_text,
+        other: s.known_text, order: s.global_order, voice: resolveSpeakerVoice(speakers, s.speaker, 'target') })
+    }
+    if (s.known_audio_id) {
+      queue.push({ kind: 'known', id: s.known_audio_id, speaker: s.speaker, text: s.known_text,
+        other: s.target_text, order: s.global_order, voice: resolveSpeakerVoice(speakers, s.speaker, 'known') })
+    }
+  }
+  const seen = new Set()
+  const firstOfVoice = []
+  const rest = []
+  for (const item of queue) {
+    const k = `${item.kind}|${voiceKey(item.voice)}`
+    if (seen.has(k)) rest.push(item)
+    else { seen.add(k); firstOfVoice.push(item) }
+  }
+  return [...firstOfVoice, ...rest].slice(0, SAMPLE_LIMIT)
+})
+// Honest emptiness: several courses have no pod audio at all yet.
+const sampleGap = computed(() => {
+  const total = sentences.value.length
+  const withTarget = sentences.value.filter((s) => s.target_audio_id).length
+  const withKnown = sentences.value.filter((s) => s.known_audio_id).length
+  return { total, withTarget, withKnown, none: !withTarget && !withKnown }
+})
+
+async function playSample(item) {
+  stop()
+  const myToken = ++stopToken
+  isPlaying.value = true
+  playingSample.value = `${item.kind}:${item.id}`
+  await playClip(item.id, 1)
+  if (myToken === stopToken) {
+    isPlaying.value = false
+    playingSample.value = ''
+  }
+}
+async function playSampleAll() {
+  stop()
+  const myToken = ++stopToken
+  isPlaying.value = true
+  for (const item of sampleClips.value) {
+    if (myToken !== stopToken) break
+    playingSample.value = `${item.kind}:${item.id}`
+    await playClip(item.id, 1)
+    if (myToken !== stopToken) break
+    await sleep(DEFAULT_GAP_MS)
+  }
+  if (myToken === stopToken) {
+    isPlaying.value = false
+    playingSample.value = ''
+  }
+}
+
 loadLiveConfig()
 </script>
 
@@ -1279,6 +1587,7 @@ loadLiveConfig()
         <div class="mode-switch">
           <button :class="{ on: mode === 'shapes' }" @click="mode = 'shapes'">The ladder</button>
           <button :class="{ on: mode === 'arc' }" @click="mode = 'arc'">Stage arc (live engine)</button>
+          <button :class="{ on: mode === 'casting' }" @click="mode = 'casting'">Casting &amp; approval</button>
           <button class="stop right" :disabled="!isPlaying" @click="stop">■ Stop</button>
         </div>
 
@@ -1316,6 +1625,89 @@ loadLiveConfig()
               </button>
             </div>
           </div>
+        </template>
+
+        <!-- CASTING & APPROVAL — the sample-first gate, per course (2026-08-07).
+             Everything here is the cast AS STORED in listening_pods.speakers,
+             which is what phase-8 reads at generation time. -->
+        <template v-else-if="mode === 'casting'">
+          <div v-if="castingLoading" class="empty">Loading casting…</div>
+          <div v-else-if="castingError" class="empty err-box">Casting unavailable: {{ castingError }}</div>
+          <template v-else-if="casting">
+            <div class="cast-head">
+              <span class="chip" :class="casting.gate?.ok ? 'ok' : 'err'">
+                {{ casting.gate?.ok ? 'APPROVED — generation unlocked' : casting.record ? (casting.record.rejected_at ? 'REJECTED' : 'approval STALE — the cast changed since it was granted') : 'awaiting approval' }}
+              </span>
+              <span class="chip mono" title="the gate's own cast fingerprint">{{ casting.cast_fingerprint }}</span>
+              <span v-if="casting.record" class="muted small">
+                {{ casting.record.approved_by || casting.record.rejected_by }} ·
+                {{ (casting.record.approved_at || casting.record.rejected_at || '').slice(0, 16).replace('T', ' ') }}
+              </span>
+            </div>
+
+            <ul class="cast-flags">
+              <li v-for="(f, i) in castFlags" :key="i" :class="f.level">{{ f.text }}</li>
+            </ul>
+
+            <div class="cast-tables">
+              <div v-for="grp in [{ t: 'Target voices', rows: targetCast }, { t: 'Known voices', rows: knownCast }]" :key="grp.t" class="cast-table">
+                <div class="lbl small">{{ grp.t }}</div>
+                <div v-for="r in grp.rows" :key="r.key" class="cast-row" :class="{ none: !r.voice }">
+                  <span class="cv-name">{{ r.voice ? (r.voice.name || r.voice.voice_id) : 'NO VOICE' }}</span>
+                  <span class="cv-g">{{ r.voice ? r.voice.gender : '—' }}</span>
+                  <span class="cv-meta mono">{{ r.voice ? `${r.voice.provider} · ${r.voice.voice_id} · ${r.voice.locale || 'no locale'}` : '—' }}</span>
+                  <span class="cv-cover">{{ r.labels.length }} label{{ r.labels.length === 1 ? '' : 's' }} · {{ r.lines }} line{{ r.lines === 1 ? '' : 's' }} ({{ r.share }}%)</span>
+                  <span class="cv-labels" :title="r.labels.join(', ')">{{ r.labels.slice(0, 6).join(', ') }}{{ r.labels.length > 6 ? '…' : '' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <p v-if="otherPodIds.length" class="note">
+              This course has other pods in the same approval —
+              <code v-for="id in otherPodIds" :key="id">{{ id }}</code> — their lines aren't listed
+              on this page, but their casting is inside the fingerprint you're approving.
+            </p>
+
+            <div class="transport">
+              <button class="play-all" :disabled="!sampleClips.length" @click="playSampleAll">
+                ▶ Play the sample ({{ sampleClips.length }} clips)
+              </button>
+              <span class="legend muted small">round-robin across voices — both voices before any voice twice</span>
+            </div>
+
+            <div v-if="sampleGap.none" class="empty">
+              No pod audio exists for this course yet — nothing to listen to. Generate a sample first.
+            </div>
+            <p v-else-if="sampleGap.withTarget < sampleGap.total || sampleGap.withKnown < sampleGap.total" class="note">
+              Audio present on {{ sampleGap.withTarget }}/{{ sampleGap.total }} target and
+              {{ sampleGap.withKnown }}/{{ sampleGap.total }} known lines — the sample can only draw
+              on what exists.
+            </p>
+
+            <div class="samples">
+              <div v-for="c in sampleClips" :key="c.kind + ':' + c.id" class="sample-row" :class="{ on: playingSample === c.kind + ':' + c.id }">
+                <button class="s-play" @click="playSample(c)">▶</button>
+                <span class="s-kind" :class="c.kind === 'target' ? 'r-target' : 'r-known'">{{ c.kind === 'target' ? 'T' : 'K' }}</span>
+                <span class="s-speaker">{{ c.speaker }}</span>
+                <span class="s-voice mono">{{ c.voice ? (c.voice.name || c.voice.voice_id) : 'no voice' }}</span>
+                <span class="s-text">
+                  <span class="s-main">{{ c.text }}</span>
+                  <span class="s-other">{{ c.other }}</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="cast-decide">
+              <input v-model="castNote" class="cast-note" placeholder="note (optional) — what you heard" />
+              <button class="approve" :disabled="!!castingSaving" @click="decideCasting('approve')">
+                {{ castingSaving === 'approve' ? 'Saving…' : 'Approve this casting' }}
+              </button>
+              <button class="reject" :disabled="!!castingSaving" @click="decideCasting('reject')">
+                {{ castingSaving === 'reject' ? 'Saving…' : 'Reject' }}
+              </button>
+              <span v-if="castingMsg" class="chip" :class="{ err: castingMsg.startsWith('Failed') }">{{ castingMsg }}</span>
+            </div>
+          </template>
         </template>
 
         <!-- THE UNIFIED LADDER — fusion rungs then the speed ramp, one row per stage -->
@@ -2003,5 +2395,171 @@ code {
 }
 .empty.pad {
   padding: 30px 4px;
+}
+
+/* ── casting & approval ──────────────────────────────────────────────────── */
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.err-box {
+  color: #f87171;
+}
+.cast-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 10px 0 8px;
+}
+.cast-flags {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.cast-flags li {
+  font-size: 13px;
+  line-height: 1.45;
+  padding: 6px 9px;
+  border-radius: 6px;
+  border-left: 3px solid var(--border);
+  background: var(--surface-2);
+  color: var(--muted);
+}
+.cast-flags li.bad {
+  border-left-color: #ef4444;
+  color: #fca5a5;
+}
+.cast-flags li.warn {
+  border-left-color: #f59e0b;
+  color: #fcd34d;
+}
+.cast-flags li.ok {
+  border-left-color: #22c55e;
+}
+[data-theme='light'] .cast-flags li.bad {
+  color: #b91c1c;
+}
+[data-theme='light'] .cast-flags li.warn {
+  color: #92400e;
+}
+.cast-tables {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.cast-row {
+  display: grid;
+  grid-template-columns: 110px 22px 1fr 150px 1fr;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 12px;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+}
+.cast-row.none {
+  color: #f87171;
+}
+.cv-name {
+  font-weight: 600;
+  color: var(--text);
+}
+.cv-cover {
+  white-space: nowrap;
+}
+.cv-labels,
+.cv-meta {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.samples {
+  display: grid;
+  gap: 2px;
+  margin: 8px 0 14px;
+}
+.sample-row {
+  display: grid;
+  grid-template-columns: 30px 20px 110px 96px 1fr;
+  gap: 8px;
+  align-items: baseline;
+  padding: 6px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.sample-row.on {
+  background: var(--surface-2);
+}
+.s-play {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--text);
+  padding: 2px 0;
+}
+.s-kind {
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 4px;
+}
+.s-speaker,
+.s-voice {
+  color: var(--muted);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.s-text {
+  display: grid;
+  gap: 1px;
+}
+.s-other {
+  color: var(--muted);
+  font-size: 12px;
+}
+.cast-decide {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.cast-note {
+  flex: 1 1 220px;
+  min-width: 160px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 7px 9px;
+  font-size: 13px;
+}
+.cast-decide .approve,
+.cast-decide .reject {
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+.cast-decide .approve {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #fff;
+}
+.cast-decide .reject {
+  background: var(--surface-2);
+  color: #f87171;
+}
+.cast-decide button:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 </style>

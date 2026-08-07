@@ -1,0 +1,532 @@
+{
+ "pod": {
+  "id": "eng_for_guj:pod-0",
+  "speakers": {
+   "Anna": {
+    "known": {
+     "name": "Sonia",
+     "locale": "en-GB",
+     "provider": "azure",
+     "voice_id": "en-GB-SoniaNeural"
+    },
+    "gender": "f",
+    "target": {
+     "name": "Ara",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "ara"
+    },
+    "variants": [
+     "Anna"
+    ]
+   },
+   "Guest": {
+    "known": {
+     "name": "Leo",
+     "locale": "en",
+     "provider": "xai",
+     "voice_id": "leo"
+    },
+    "gender": "m",
+    "target": {
+     "name": "Jian",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "jpi39icg"
+    },
+    "variants": [
+     "Guest"
+    ]
+   },
+   "James": {
+    "known": {
+     "name": "Leo",
+     "locale": "en",
+     "provider": "xai",
+     "voice_id": "leo"
+    },
+    "gender": "m",
+    "target": {
+     "name": "Jian",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "jpi39icg"
+    },
+    "variants": [
+     "James"
+    ]
+   },
+   "Local": {
+    "known": {
+     "name": "Leo",
+     "locale": "en",
+     "provider": "xai",
+     "voice_id": "leo"
+    },
+    "gender": "m",
+    "target": {
+     "name": "Jian",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "jpi39icg"
+    },
+    "variants": [
+     "Local"
+    ]
+   },
+   "Sarah": {
+    "known": {
+     "name": "Olivia",
+     "locale": "en",
+     "provider": "xai",
+     "voice_id": "bedd6226"
+    },
+    "gender": "f",
+    "target": {
+     "name": "Xia",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "33g9t0jl"
+    },
+    "variants": [
+     "Sarah"
+    ]
+   },
+   "Driver": {
+    "known": {
+     "name": "Leo",
+     "locale": "en",
+     "provider": "xai",
+     "voice_id": "leo"
+    },
+    "gender": "m",
+    "target": {
+     "name": "Jian",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "jpi39icg"
+    },
+    "variants": [
+     "Driver"
+    ]
+   },
+   "Friend": {
+    "known": {
+     "name": "Leo",
+     "locale": "en",
+     "provider": "xai",
+     "voice_id": "leo"
+    },
+    "gender": "m",
+    "target": {
+     "name": "Jian",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "jpi39icg"
+    },
+    "variants": [
+     "Friend (7 pm)",
+     "Friend"
+    ]
+   },
+   "Waiter": {
+    "known": {
+     "name": "Leo",
+     "locale": "en",
+     "provider": "xai",
+     "voice_id": "leo"
+    },
+    "gender": "m",
+    "target": {
+     "name": "Jian",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "jpi39icg"
+    },
+    "variants": [
+     "Waiter"
+    ]
+   },
+   "Barista": {
+    "known": {
+     "name": "Hollie",
+     "locale": "en-GB",
+     "provider": "azure",
+     "voice_id": "en-GB-HollieNeural"
+    },
+    "gender": "f",
+    "target": {
+     "name": "Jian",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "jpi39icg"
+    },
+    "variants": [
+     "Barista (3 pm)",
+     "Barista"
+    ]
+   },
+   "Learner": {
+    "known": {
+     "name": "Sonia",
+     "locale": "en-GB",
+     "provider": "azure",
+     "voice_id": "en-GB-SoniaNeural"
+    },
+    "gender": "n",
+    "target": {
+     "name": "Ara",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "ara"
+    },
+    "variants": [
+     "Learner"
+    ]
+   },
+   "Tourist": {
+    "known": {
+     "name": "Ryan",
+     "locale": "en-GB",
+     "provider": "azure",
+     "voice_id": "en-GB-RyanNeural"
+    },
+    "gender": "m",
+    "target": {
+     "name": "Hao",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "d18jlf6v"
+    },
+    "variants": [
+     "Tourist"
+    ]
+   },
+   "Customer": {
+    "known": {
+     "name": "Sonia",
+     "locale": "en-GB",
+     "provider": "azure",
+     "voice_id": "en-GB-SoniaNeural"
+    },
+    "gender": "n",
+    "target": {
+     "name": "Ara",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "ara"
+    },
+    "variants": [
+     "Customer"
+    ]
+   },
+   "Narrator": {
+    "known": {
+     "name": "Olivia",
+     "locale": "en",
+     "provider": "xai",
+     "voice_id": "bedd6226"
+    },
+    "gender": "n",
+    "target": {
+     "name": "Xia",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "33g9t0jl"
+    },
+    "variants": [
+     "Narrator"
+    ]
+   },
+   "_default": {
+    "known": {
+     "name": "Leo",
+     "locale": "en",
+     "provider": "xai",
+     "voice_id": "leo"
+    },
+    "gender": "n",
+    "target": {
+     "name": "Jian",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "jpi39icg"
+    }
+   },
+   "Assistant": {
+    "known": {
+     "name": "Libby",
+     "locale": "en-GB",
+     "provider": "azure",
+     "voice_id": "en-GB-LibbyNeural"
+    },
+    "gender": "n",
+    "target": {
+     "name": "Eve",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "eve"
+    },
+    "variants": [
+     "Assistant"
+    ]
+   },
+   "Bartender": {
+    "known": {
+     "name": "Leo",
+     "locale": "en",
+     "provider": "xai",
+     "voice_id": "leo"
+    },
+    "gender": "m",
+    "target": {
+     "name": "Jian",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "jpi39icg"
+    },
+    "variants": [
+     "Bartender"
+    ]
+   },
+   "Neighbour": {
+    "known": {
+     "name": "Leo",
+     "locale": "en",
+     "provider": "xai",
+     "voice_id": "leo"
+    },
+    "gender": "m",
+    "target": {
+     "name": "Jian",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "jpi39icg"
+    },
+    "variants": [
+     "Neighbour (8 am)",
+     "Neighbour",
+     "Neighbour (10:30 pm)"
+    ]
+   },
+   "Passenger": {
+    "known": {
+     "name": "Sonia",
+     "locale": "en-GB",
+     "provider": "azure",
+     "voice_id": "en-GB-SoniaNeural"
+    },
+    "gender": "n",
+    "target": {
+     "name": "Ara",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "ara"
+    },
+    "variants": [
+     "Passenger"
+    ]
+   },
+   "Customer 1": {
+    "known": {
+     "name": "Sonia",
+     "locale": "en-GB",
+     "provider": "azure",
+     "voice_id": "en-GB-SoniaNeural"
+    },
+    "gender": "n",
+    "target": {
+     "name": "Ara",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "ara"
+    },
+    "variants": [
+     "Customer 1"
+    ]
+   },
+   "Customer 2": {
+    "known": {
+     "name": "Libby",
+     "locale": "en-GB",
+     "provider": "azure",
+     "voice_id": "en-GB-LibbyNeural"
+    },
+    "gender": "n",
+    "target": {
+     "name": "Eve",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "eve"
+    },
+    "variants": [
+     "Customer 2"
+    ]
+   },
+   "Customer 3": {
+    "known": {
+     "name": "Maisie",
+     "locale": "en-GB",
+     "provider": "azure",
+     "voice_id": "en-GB-MaisieNeural"
+    },
+    "gender": "n",
+    "target": {
+     "name": "Hao",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "d18jlf6v"
+    },
+    "variants": [
+     "Customer 3"
+    ]
+   },
+   "Pharmacist": {
+    "known": {
+     "name": "Leo",
+     "locale": "en",
+     "provider": "xai",
+     "voice_id": "leo"
+    },
+    "gender": "m",
+    "target": {
+     "name": "Jian",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "jpi39icg"
+    },
+    "variants": [
+     "Pharmacist"
+    ]
+   },
+   "Receptionist": {
+    "known": {
+     "name": "Sonia",
+     "locale": "en-GB",
+     "provider": "azure",
+     "voice_id": "en-GB-SoniaNeural"
+    },
+    "gender": "f",
+    "target": {
+     "name": "Ara",
+     "locale": "zh",
+     "provider": "xai",
+     "voice_id": "ara"
+    },
+    "variants": [
+     "Receptionist"
+    ]
+   }
+  }
+ },
+ "sentences": [
+  {
+   "id": "eng_for_guj:pod-0:SC01-S01",
+   "global_order": 1,
+   "speaker": "Neighbour (8 am)",
+   "target_text": "Good morning, Sarah!",
+   "known_text": "સુપ્રભાત, Sarah!",
+   "target_audio_id": "3ffe1a8f-e41b-4ae2-ad74-82598f45170d",
+   "known_audio_id": "42a5e182-d870-4730-9bb7-d267bfac3505"
+  },
+  {
+   "id": "eng_for_guj:pod-0:SC01-S02",
+   "global_order": 2,
+   "speaker": "Sarah",
+   "target_text": "Good morning. How are you?",
+   "known_text": "સુપ્રભાત. તમે કેમ છો?",
+   "target_audio_id": "5f93cdc6-ae05-4edd-8e1c-7b70be068b33",
+   "known_audio_id": "0a64f3f6-6512-4b79-a12f-63790fdb79f3"
+  },
+  {
+   "id": "eng_for_guj:pod-0:SC01-S03",
+   "global_order": 3,
+   "speaker": "Neighbour",
+   "target_text": "I'm very well, thank you. Are you going to work?",
+   "known_text": "હું એકદમ સારી છું, આભાર. તમે કામ પર જઈ રહ્યા છો?",
+   "target_audio_id": "3fa0fd58-c4b2-4c4d-b3b9-40803bf647d3",
+   "known_audio_id": "744449ac-2951-431a-97e9-2a79d4cdc12c"
+  },
+  {
+   "id": "eng_for_guj:pod-0:SC01-S04",
+   "global_order": 4,
+   "speaker": "Sarah",
+   "target_text": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+   "known_text": "હા, આજે મારો દિવસ ખૂબ વ્યસ્ત છે. તમારો દિવસ સારો જાય એવી આશા છે. પછી મળીએ.",
+   "target_audio_id": "0a75a51b-147c-46b4-ba03-c3c35a86ff68",
+   "known_audio_id": "cab12a84-ac36-4e86-b1cd-2c8fbc262e38"
+  },
+  {
+   "id": "eng_for_guj:pod-0:SC02-S01",
+   "global_order": 5,
+   "speaker": "Sarah",
+   "target_text": "Excuse me, is this seat taken?",
+   "known_text": "માફ કરજો, શું આ સીટ ભરાયેલી છે?",
+   "target_audio_id": "09ed7a68-843a-45f4-aabf-04b077129ce5",
+   "known_audio_id": "3f077367-8ed3-4948-a942-95cfb48af12e"
+  },
+  {
+   "id": "eng_for_guj:pod-0:SC02-S02",
+   "global_order": 6,
+   "speaker": "Passenger",
+   "target_text": "No, it's free. Please, go ahead.",
+   "known_text": "ના, એ ખાલી છે. કૃપા કરીને બેસો.",
+   "target_audio_id": "6850b4fd-39d5-46aa-b98b-952b67e3a8a5",
+   "known_audio_id": "e08f0214-59fe-49ec-b890-54e7ac6bbf31"
+  },
+  {
+   "id": "eng_for_guj:pod-0:SC03-S01",
+   "global_order": 7,
+   "speaker": "Barista (3 pm)",
+   "target_text": "Good afternoon. What can I get you?",
+   "known_text": "નમસ્કાર. હું તમને શું આપી શકું?",
+   "target_audio_id": "600737a9-583f-4795-9bf0-b682831df393",
+   "known_audio_id": "34c464c8-ec3d-44da-abdd-5d7a55c8be0f"
+  },
+  {
+   "id": "eng_for_guj:pod-0:SC03-S02",
+   "global_order": 8,
+   "speaker": "Sarah",
+   "target_text": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.",
+   "known_text": "નમસ્કાર. મને એક કૉફી જોઈએ છે, કૃપા કરીને. દૂધ સાથે પણ ખાંડ વગર. સાથે લઈ જવા માટે.",
+   "target_audio_id": "940d237e-aa06-45cc-b567-13c7bea9bbe6",
+   "known_audio_id": "562f3074-479b-4ef1-9153-5391c70040ef"
+  },
+  {
+   "id": "eng_for_guj:pod-0:SC03-S03",
+   "global_order": 9,
+   "speaker": "Sarah",
+   "target_text": "Thank you very much. Goodbye.",
+   "known_text": "તમારો ખૂબ ખૂબ આભાર. આવજો.",
+   "target_audio_id": "9284fc62-7938-4374-93f6-790a1e1cf8a1",
+   "known_audio_id": "0b684fa1-e55f-4edd-a608-a753f1018739"
+  },
+  {
+   "id": "eng_for_guj:pod-0:SC04-S01",
+   "global_order": 10,
+   "speaker": "Friend (7 pm)",
+   "target_text": "Hello, good evening!",
+   "known_text": "નમસ્તે, શુભ સંધ્યા!",
+   "target_audio_id": "c6c35813-0699-430d-b983-f9e5f91e858e",
+   "known_audio_id": "17c81b7b-d4ca-4a7c-a42c-a20759048927"
+  },
+  {
+   "id": "eng_for_guj:pod-0:SC04-S02",
+   "global_order": 11,
+   "speaker": "Sarah",
+   "target_text": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+   "known_text": "નમસ્તે! માફ કરજો પણ હું અત્યારે વાત નથી કરી શકતી. મારે હવે ઘરે જવું છે. શું આપણે કાલે વાત કરી શકીએ?",
+   "target_audio_id": "a1f84964-64cf-4676-9c30-4c8701bfe821",
+   "known_audio_id": "16fc3183-f634-48e4-826f-a7c5e7c9545c"
+  },
+  {
+   "id": "eng_for_guj:pod-0:SC04-S03",
+   "global_order": 12,
+   "speaker": "Friend",
+   "target_text": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.",
+   "known_text": "ના, માફ કરજો, કાલે હું વ્યસ્ત છું. પણ ચાલો શનિવારે વાત કરીએ. ત્યારે મળીએ.",
+   "target_audio_id": "f190efcf-1262-46be-a66d-659db2a2e04c",
+   "known_audio_id": "0b891e26-df3b-49df-bc73-af5f9957946d"
+  }
+ ]
+}
