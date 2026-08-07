@@ -851,3 +851,35 @@ validator, one additive `voice_config` key, and three template edits.
 recording more complicated makes community courses harder — "If we are making it a lot more
 complicated to even get the recordings done, it's going to be harder for people to do community
 courses, isn't it?"
+
+## 2026-08-06 — a phrase that IS the LEGO never counts
+
+**Move:** the course generator was meeting the per-LEGO phrase floor (3+ BUILD / 5+ USE) with a
+copy of the LEGO's own text — 20-32% of rows in generated courses, vs 0.1% in hand-built Welsh.
+The floor now excludes bare-LEGO phrases and every course-builder write path drops them, so the
+floor can only be met by real practice. `generateBuildupPhrases` no longer emits the LEGO itself
+as a build row. Code fix only — the 4,172 known existing rows are untouched, a separate content
+call.
+
+**Better:** the floor now measures what it claims to. A bare-LEGO row was never played anyway —
+the round generator renders intro and debut from `course_legos` and claims that phrase id
+(`learning-script-generator.cjs`: "the debut IS the bare LEGO"), so the rows inflated counts and
+audio backlogs while teaching nothing. Same rule ralph-methodology.md already states for BUILD.
+**Simpler:** one predicate (`isBareLegoPhrase`) in the pure-function library the gate and every
+write path already import; the counting rule and the writing rule are the same line of code.
+**Cheaper (total):** removes rows from future courses — fewer phrases to store, to decompose, and
+to voice at TTS cost. No migration, no regeneration, no new service.
+
+**Searched & rejected:**
+- Retroactively delete the existing bare rows — out of scope by the brief and a content call, not
+  a tool call; deleting rows also drags audio behind it (make-before-break).
+- Let the generator auto-synthesise a replacement phrase to keep the count — failed *better*: a
+  machine-written filler phrase is the same padding wearing a better disguise. Rejecting with a
+  named reason puts the work back on the author, which is where phrase quality lives.
+- Hard-reject a first-row bare LEGO in `checkBuildRecombination` (it already hard-rejects one in
+  rows 2+, blessing row 1 as a 'debut-row') — failed *simpler*: it would reject otherwise-good
+  seeds for a row we can simply not count and not write. The count is the lever; the row is noise.
+
+**Search width:** visible-options
+**Decided by:** agent — a tool/process bug against a rule already written down, not a content
+judgement.
