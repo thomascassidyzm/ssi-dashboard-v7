@@ -83,7 +83,7 @@
             <div class="text-sm font-medium text-amber-300">Audio job running on another course</div>
             <div class="text-xs text-muted mt-1">
               Only one audio job can run at a time. Currently
-              {{ audioProgress.operation === 'regenerate-role' ? 'regenerating' : 'generating' }}
+              {{ audioProgress.operation === 'regenerate-role' ? 'regenerating' : audioProgress.operation === 'reuse-first' ? 'running reuse-first regeneration on' : 'generating' }}
               audio for <span class="text-amber-400 font-medium">{{ audioProgress.courseCode }}</span>
               — {{ audioProgress.current }}/{{ audioProgress.total }} processed.
             </div>
@@ -123,7 +123,7 @@
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
                 <h2 class="text-lg font-semibold text-ink">
-                  {{ audioProgress.operation === 'regenerate-role' ? `Regenerating ${audioProgress.role}` : 'Generating Missing Audio' }}
+                  {{ progressHeading }}
                 </h2>
                 <span class="px-2 py-0.5 text-xs bg-emerald-500/20 text-emerald-400 rounded-full font-medium">
                   LIVE
@@ -338,6 +338,20 @@
             </div>
           </div>
 
+        </section>
+
+        <!-- REUSE-FIRST REGENERATION Section -->
+        <section>
+          <div class="flex items-center gap-4 mb-4">
+            <h2 class="text-xs font-semibold text-faint uppercase tracking-wider">Reuse-First Regeneration</h2>
+            <div class="flex-1 h-px bg-surface-2/50"></div>
+          </div>
+
+          <ReuseFirstPanel
+            :course-code="courseCode"
+            :audio-progress="audioProgress"
+            @started="startProgressPolling"
+          />
         </section>
 
         <!-- PIPELINE STATUS Section -->
@@ -581,6 +595,7 @@ import { useProductionStore } from '@/stores/production'
 import PipelineProgress from './components/PipelineProgress.vue'
 import MissingAudio from './components/MissingAudio.vue'
 import SharedAudio from './components/SharedAudio.vue'
+import ReuseFirstPanel from './components/ReuseFirstPanel.vue'
 import VoiceConfiguration from '@/components/VoiceConfiguration.vue'
 
 const route = useRoute()
@@ -845,6 +860,14 @@ const otherCourseJobActive = computed(() =>
   audioProgress.value.active && audioProgress.value.courseCode && audioProgress.value.courseCode !== courseCode.value
 )
 const hasFailed = computed(() => progressStats.value.failed > 0)
+// Phase 8 reports which job is running via `operation`; reuse-first shares this
+// one progress panel with generate and regenerate-role.
+const progressHeading = computed(() => {
+  const op = audioProgress.value.operation
+  if (op === 'regenerate-role') return `Regenerating ${audioProgress.value.role}`
+  if (op === 'reuse-first') return 'Reuse-First Regeneration'
+  return 'Generating Missing Audio'
+})
 // Generate is allowed when:
 //  - There's TTS work (pending > 0), OR
 //  - There's link-only work (linkable > 0) — Generate runs the linker even with no TTS
