@@ -36,7 +36,7 @@ const defaultConfig: ContinuousRecorderConfig = {
   minSpeechDuration: 300,
   pollInterval: 50,
   expectedChunks: 1,
-  interChunkSilenceDuration: 2500,
+  interChunkSilenceDuration: 4000,
   chunkPauseDuration: 400,
   autoUpload: true,
   autoAdvance: true,

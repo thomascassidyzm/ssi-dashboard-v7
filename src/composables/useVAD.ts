@@ -55,20 +55,50 @@ const defaultConfig: VADConfig = {
   minSpeechDuration: 300,       // At least 300ms of speech to count
   pollInterval: 50,             // Check every 50ms
   expectedChunks: 1,            // read straight through unless told otherwise
-  // Long enough to clear every mid-phrase pause measured in a real take (the
-  // longest was 1700ms on Kai's 2026-08-07 read) with margin. It is also the
-  // worst case rather than a typical one: a phrase whose chunks got run
-  // together waits this long once and then still ends. Nothing hangs forever.
-  interChunkSilenceDuration: 2500,
+  // The mid-phrase pause must not cut AT ALL — not merely cut later.
+  //
+  // Cutting mid-pause does not just truncate the take, it desynchronises the
+  // whole session. The cut fires, the segment uploads, and the studio advances
+  // the autocue; the recordist then resumes into what is now the NEXT item's
+  // slot, and every take after that is one item out of step. Kai's live console
+  // on 2026-08-07 caught it happening: item 2 captured fine, then item 3 was
+  // captured moments later as a near-empty phantom (12ms of audible speech
+  // after trim) and refused 422 by the server's silent-take guard. The phantom
+  // is the tail of a pause the recorder should never have cut in.
+  //
+  // So this is sized to swallow a deliberate pause whole rather than to be a
+  // slightly longer fuse. Measured mid-phrase pauses on Kai's own 72.5s take
+  // topped out at 1700ms, and his live pauses cleared 800ms comfortably enough
+  // to trigger the cut, so the ceiling is not tightly known — this is set well
+  // clear of it deliberately.
+  //
+  // [OPEN — design intent unconfirmed as of 2026-08-07] Whether slow-cadence
+  // audio is supposed to carry baked-in pauses between LEGOs at all is still
+  // being decided. Both live answers want a tolerant value here: if the pauses
+  // are real, this has to survive them; if the finished take is meant to be
+  // continuous and the gap markers are only a reading aid, then a dip is never
+  // an ending and should be ignored outright. What DOES change with the answer
+  // is the cost — see chunkPauseDuration below.
+  interChunkSilenceDuration: 4000,
   // What counts as "that was a chunk boundary" rather than a breath.
   //
   // The error here is deliberately asymmetric. Counting too FEW boundaries
-  // costs one 2500ms wait at the end of a take — slow, harmless. Counting too
+  // costs one long wait at the end of a take — slow, harmless. Counting too
   // MANY re-creates the bug, because the counter reaches expectedChunks while
   // the recordist is still mid-phrase and the next pause cuts at 800ms. So the
   // bar sits well above ordinary breath: on the measured take, 45 of 71
   // internal gaps fall under 400ms, while an inter-LEGO pause is a deliberate
   // one the recordist is being shown a gap marker for.
+  //
+  // The known cost of the tolerant setting, stated plainly: a slow phrase read
+  // STRAIGHT THROUGH never reaches its expected chunk count, so its final
+  // silence waits out interChunkSilenceDuration before the take closes. That
+  // is unavoidable — at the moment the silence begins, "pausing between LEGOs"
+  // and "finished reading" are the same signal, and nothing in the audio can
+  // tell them apart. It is also exactly why the open question above matters: if
+  // slow takes are meant to be continuous, this whole allowance is dead weight
+  // on every slow phrase and the right change is to drop expectedChunks back to
+  // 1 for slow cadence in AutocueStudio, not to retune these constants.
   chunkPauseDuration: 400
 }
 

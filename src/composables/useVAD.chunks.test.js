@@ -145,7 +145,7 @@ describe('useVAD chunk-aware silence tolerance', () => {
     advance(850)
     expect(onSpeechEnd).not.toHaveBeenCalled() // waiting out the long window
 
-    advance(1800) // total 2650ms > interChunkSilenceDuration
+    advance(3400) // total 4250ms > interChunkSilenceDuration
     expect(onSpeechEnd).toHaveBeenCalledTimes(1)
     expect(vad.isSpeaking.value).toBe(false)
 
@@ -201,6 +201,54 @@ describe('useVAD chunk-aware silence tolerance', () => {
     state.amplitude = ROOM
     advance(850)
     expect(onSpeechEnd).toHaveBeenCalledTimes(2)
+
+    vad.stopListening()
+  })
+
+  it('does not spawn a phantom follow-on segment across a long deliberate pause', async () => {
+    // Kai's live console, 2026-08-07: item 2 captured fine, then item 3 was
+    // captured moments later as a near-empty segment — 12ms of audible speech
+    // after trim, refused 422 by the server's silent-take guard. That phantom
+    // is the tail end of a pause the recorder should never have cut in: the cut
+    // fires, the studio advances the autocue, and the recordist resumes into
+    // the NEXT item's slot with every take after that one step out of line.
+    //
+    // The requirement is therefore stronger than "cut later". A deliberate
+    // pause must produce NO cut at all, so there is no second segment to be
+    // near-empty in the first place. Note the pause here is 3000ms — far past
+    // anything the old 800ms could survive.
+    const vad = useVAD({ expectedChunks: 3 })
+    const onSpeechEnd = vi.fn()
+    const onSpeechStart = vi.fn()
+    vad.onSpeechEnd(onSpeechEnd)
+    vad.onSpeechStart(onSpeechStart)
+    await vad.startListening({ getTracks: () => [] })
+
+    state.amplitude = SPEECH
+    advance(800)
+    state.amplitude = ROOM
+    advance(3000)          // the deliberate inter-LEGO pause
+
+    // No cut, so no upload, so no advance, so no phantom slot to fill.
+    expect(onSpeechEnd).not.toHaveBeenCalled()
+    // And critically the take was never re-opened: exactly one speech start for
+    // the whole phrase. A second start here IS the phantom segment.
+    expect(onSpeechStart).toHaveBeenCalledTimes(1)
+
+    state.amplitude = SPEECH
+    advance(800)
+    state.amplitude = ROOM
+    advance(3000)          // second gap marker, still mid-phrase
+    expect(onSpeechEnd).not.toHaveBeenCalled()
+    expect(onSpeechStart).toHaveBeenCalledTimes(1)
+
+    // Last chunk, then the real end — one take, one segment, cut promptly.
+    state.amplitude = SPEECH
+    advance(800)
+    state.amplitude = ROOM
+    advance(850)
+    expect(onSpeechEnd).toHaveBeenCalledTimes(1)
+    expect(onSpeechStart).toHaveBeenCalledTimes(1)
 
     vad.stopListening()
   })
