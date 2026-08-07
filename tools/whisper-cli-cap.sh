@@ -11,11 +11,16 @@
 # clip spawns a fresh whisper-cli, it applies to already-running rebuilds
 # without restarting them.
 #
-# Two knobs, both env-overridable per call:
-#   WHISPER_MAX_CONCURRENT  slots in the semaphore   (default 4)
+# Knobs, all env-overridable per call:
+#   WHISPER_MAX_CONCURRENT  slots in the semaphore   (default 3)
 #   WHISPER_MAX_THREADS     clamp on -t              (default 2)
-# 4 x 2 = 8 threads = watson-1's core count, so batch QC tops out at load ~8
-# and leaves the box responsive for interactive work.
+#   WHISPER_NICE            nice level               (default 15)
+#   WHISPER_SCHED_IDLE      1 = SCHED_IDLE via chrt  (default 1)
+# 3 x 2 = 6 threads on a 12-core box, so whisper can never claim more than half
+# the machine even saturated — and at SCHED_IDLE it claims far less than that
+# whenever anything else wants the CPU. Was 4 slots at plain nice until
+# 2026-08-07, when the box hit load 13.9/12 with the cap already in place:
+# bounding the process COUNT does not bound contention, only priority does.
 #
 # Escape hatch: WHISPER_NO_SEMAPHORE=1 bypasses entirely (interactive use —
 # a human waiting on one transcription should never queue behind a rebuild).
@@ -44,7 +49,7 @@ for a in "$@"; do
   esac
 done
 
-SLOTS="${WHISPER_MAX_CONCURRENT:-4}"
+SLOTS="${WHISPER_MAX_CONCURRENT:-3}"
 MAXT="${WHISPER_MAX_THREADS:-2}"
 
 # Clamp -t so N concurrent processes can't multiply into N*threads runqueue.
@@ -71,13 +76,32 @@ while true; do
       # flock survives exec: the slot stays held for whisper's whole life and
       # is released by the kernel when it exits, however it exits.
       #
-      # nice: the cap bounds how much CPU batch QC takes, but the box also
-      # carries node, lint runs and agent sessions, so load does not fall to
-      # the core count on the cap alone. Priority is what actually protects a
-      # human waiting on one transcription — at nice 15 the batch clips yield
-      # the moment anything interactive wants the CPU, and lose almost nothing
-      # when it doesn't.
-      exec nice -n "${WHISPER_NICE:-15}" "$REAL" "${args[@]}"
+      # Priority, not just the cap (Tom's ruling 2026-08-07): whisper is a
+      # BACKGROUND-PRIORITY CITIZEN — it may soak idle cores, but it must yield
+      # instantly to real work, and clips queue rather than contend. The cap
+      # alone cannot do that: 3 whisper processes at normal priority still take
+      # their full share of a busy runqueue, which is how the box reached load
+      # 13.9/12 with the cap already installed.
+      #
+      # Three layers, weakest to strongest:
+      #   SCHED_IDLE (chrt --idle) — the real lever. A SCHED_IDLE task runs ONLY
+      #     when no SCHED_OTHER task wants the CPU, so an interactive process
+      #     preempts it immediately rather than merely outweighing it.
+      #   nice 15 — kept as the fallback when chrt is unavailable, and it is
+      #     what orders whisper against whisper.
+      #   ionice -c 3 (idle) — the model file and the wav are real I/O; without
+      #     this, three readers still stall an interactive disk read.
+      #
+      # Each layer degrades to the next if its binary is missing, so this never
+      # fails closed on a box that lacks util-linux.
+      run_cmd=(nice -n "${WHISPER_NICE:-15}" "$REAL" "${args[@]}")
+      if [ "${WHISPER_SCHED_IDLE:-1}" = "1" ] && command -v chrt >/dev/null 2>&1; then
+        run_cmd=(chrt --idle 0 "${run_cmd[@]}")
+      fi
+      if command -v ionice >/dev/null 2>&1; then
+        run_cmd=(ionice -c 3 "${run_cmd[@]}")
+      fi
+      exec "${run_cmd[@]}"
     fi
     exec {fd}>&-
   done

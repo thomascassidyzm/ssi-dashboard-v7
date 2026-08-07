@@ -116,3 +116,68 @@ See the "separate machine" paragraph in the accompanying report. Short version: 
 already portable (it talks only to Supabase and S3), but two concrete blockers exist —
 `services/audio-intelligence/decode.cjs` and `scripts/overnight-shepherd.sh` are
 **untracked in git**, so a fresh box cannot `git clone` and run.
+
+---
+
+# Update, same day 17:32 — the cap held and the box still saturated
+
+**Trigger:** Tom's Activity screenshot: 6 whisper processes at 6.7 cores, box load 13.9 on 12
+cores (the "8 cores" above is wrong — watson-1 has 12), fully committed. The semaphore from the
+section above was already installed and working.
+
+That is the finding worth keeping: **bounding the process COUNT does not bound contention.**
+Four whisper processes at ordinary priority still take their full fair share of a busy runqueue —
+the scheduler weights them against node, vite, ffmpeg and nine agent sessions and gives them
+roughly a third of the box. The cap made whisper's footprint *predictable*, not *deferential*.
+
+Two separate faults were behind the screenshot.
+
+## Fault 1 — orphaned work outliving its job
+
+Three `node services/run-pod-explainer-batch.cjs` processes (deu_for_jpn, ara_for_eng,
+ara_eg_for_eng) were alive with **PPID 1**, ten minutes after the job that started them
+(`pod-sample-gate`) had ended — the surface correctly reported "job already ended" while they went
+on spawning whisper and ffmpeg. They were the whole load.
+
+Root cause in `command-surface/ops/cs-run-worker.sh`: the cgroup sweep existed **only on the
+TERM/INT handlers**, never on the normal-exit path. A worker that was *stopped* had its
+descendants killed; a worker that simply *finished its turn* left every background child running,
+reparented to init, owned by nothing. Nothing throttles what nothing owns, so leaked transcription
+work is unbounded by construction.
+
+Fixed by sweeping the cgroup on the normal path too, before the sentinel is written, so "the job
+is over" and "its processes are gone" become true together. `sweep_cgroup` now takes a signal and
+the normal path escalates TERM → KILL, because after the sentinel nobody is left to retry.
+
+Verified against a control: the pre-fix script leaks both background children of a worker that
+exits 0; the post-fix script reaps them and still records the honest exit status. The stop path is
+unchanged (sentinel 143, descendants reaped).
+
+## Fault 2 — whisper was a normal-priority citizen
+
+Tom's standing doctrine from today: **whisper is a background-priority citizen — it may soak idle
+cores, but it yields instantly to real work, and clips queue rather than contend.**
+
+`tools/whisper-cli-cap.sh` now applies, on top of the semaphore:
+
+| Layer | Setting | Why |
+|---|---|---|
+| Concurrency | 3 slots (was 4) | 3 × 2 threads = 6 of 12 cores as a hard ceiling |
+| Scheduler | `chrt --idle` (SCHED_IDLE) | the real lever — runs *only* when nothing else wants the CPU, so interactive work **preempts** rather than merely outweighs |
+| Nice | 15 | fallback where chrt is missing; orders whisper against whisper |
+| I/O | `ionice -c 3` (idle) | the model file and wavs are real I/O; three readers otherwise stall an interactive disk read |
+
+Each layer degrades to the next if its binary is absent, so this never fails closed.
+
+## Verification
+
+- 8-way simultaneous burst → **peak 3 concurrent**, the other 5 queued on the semaphore.
+- Running process confirmed `SCHED_IDLE`, `ionice: idle`, and `-t` clamped 4 → 2.
+- Load **13.9 → 2.5** after the orphan reap.
+
+## Caveat
+
+The interactive bypass is unchanged: calls passing `--prompt` (command-surface's voice path) and
+`WHISPER_NO_SEMAPHORE=1` still skip the queue entirely and run at normal priority. That is
+deliberate — a human waiting on one transcription should never queue behind batch QC — but it
+means the cap is a cap on *batch* whisper, not on every whisper process on the box.
