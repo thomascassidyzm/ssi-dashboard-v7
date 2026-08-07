@@ -247,6 +247,9 @@
     <div v-else-if="state.currentPhase === 'review'" class="review-phase">
       <SessionReview
         :segments="state.recordedSegments"
+        :playing-segment-id="state.playingSegmentId"
+        @play="playSegment"
+        @play-all="playAllSegments"
         @approve="approveSegment"
         @reject="rejectSegment"
         @approve-all="approveAllByConfidence"
@@ -304,6 +307,9 @@ const {
   advanceToNext,
   approveSegment,
   rejectSegment,
+  playSegment,
+  playAllSegments,
+  stopPlayback,
   approveAllByConfidence,
   backToRecording,
   finalizeSession,
@@ -510,6 +516,7 @@ onUnmounted(() => {
     continuousRecorder.stopFlow()
   }
   uploadQueue.resetQueue()
+  stopPlayback()
   cleanup()
 })
 </script>

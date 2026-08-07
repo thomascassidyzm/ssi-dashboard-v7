@@ -44,6 +44,7 @@
         v-for="segment in segments"
         :key="segment.id"
         :segment="segment"
+        :playing="segment.id === playingSegmentId"
         @play="$emit('play', $event)"
         @redo="$emit('reject', $event)"
         @approve="$emit('approve', $event)"
@@ -67,7 +68,8 @@ import { computed } from 'vue'
 import SegmentCard from './SegmentCard.vue'
 
 const props = defineProps({
-  segments: { type: Array, required: true }
+  segments: { type: Array, required: true },
+  playingSegmentId: { type: String, default: null }
 })
 
 defineEmits(['approve', 'reject', 'approve-all', 'filter', 'play', 'play-all', 'back', 'finalize'])

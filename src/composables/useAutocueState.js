@@ -72,6 +72,7 @@ const state = reactive({
   // Review state
   approvedSegments: new Set(),
   rejectedSegments: new Set(),
+  playingSegmentId: null,
 
   // Loading state (for API calls)
   isLoading: false,
@@ -321,20 +322,31 @@ export function useAutocueState() {
     if (!phrase) return
 
     // Store the recording
+    const url = URL.createObjectURL(segment.blob)
     state.audioRecordings.set(phrase.id, {
       blob: segment.blob,
-      url: URL.createObjectURL(segment.blob),
+      url,
       mimeType: segment.blob.type || 'audio/webm'
     })
 
-    // Track as recorded
+    // Track as recorded. Script mode hands these very rows straight to the
+    // review screen, so they carry everything SegmentCard/SessionReview read —
+    // above all audioUrl, without which the play button has nothing to play.
     state.recordedSegments.push({
       id: `seg_${phrase.id}`,
       phraseId: phrase.id,
       itemIndex,
+      label: `Phrase #${String(itemIndex + 1).padStart(3, '0')}`,
       text: phrase.text,
+      translation: phrase.translation,
       cadence: phrase.cadence,
-      hasRecording: true
+      duration: ((segment.durationMs ?? 0) / 1000).toFixed(1),
+      confidence: segment.blob.size > 1000 ? 90 : 70,
+      confidenceLevel: segment.blob.size > 1000 ? 'high' : 'medium',
+      quality: segment.blob.size > 1000 ? 'Excellent' : 'Good',
+      issues: [],
+      hasRecording: true,
+      audioUrl: url
     })
 
     console.log(`[Autocue] Segment captured for item ${itemIndex}: ${phrase.text.substring(0, 30)}...`)
@@ -436,6 +448,67 @@ export function useAutocueState() {
         audioUrl: null
       }
     })
+  }
+
+  // --- Review playback -------------------------------------------------
+  // One shared element: starting a new segment stops whatever is playing, so
+  // "Play All" and stabbing at cards never overlap into a chorus.
+  let reviewAudio = null
+
+  function segmentAudioUrl(segment) {
+    if (!segment) return null
+    return segment.audioUrl || state.audioRecordings.get(segment.phraseId)?.url || null
+  }
+
+  function stopPlayback() {
+    if (reviewAudio) {
+      reviewAudio.pause()
+      reviewAudio.currentTime = 0
+    }
+    state.playingSegmentId = null
+  }
+
+  // Resolves when the clip finishes (or immediately if there is nothing to
+  // play), so playAllSegments can simply await each one in turn.
+  function playSegment(segment) {
+    const url = segmentAudioUrl(segment)
+    if (!url) {
+      console.warn('[Autocue] No audio for segment', segment?.id)
+      return Promise.resolve(false)
+    }
+
+    stopPlayback()
+    if (!reviewAudio) reviewAudio = new Audio()
+    reviewAudio.src = url
+    state.playingSegmentId = segment.id
+
+    return new Promise((resolve) => {
+      const finish = (ok) => {
+        reviewAudio.onended = null
+        reviewAudio.onerror = null
+        if (state.playingSegmentId === segment.id) state.playingSegmentId = null
+        resolve(ok)
+      }
+      reviewAudio.onended = () => finish(true)
+      reviewAudio.onerror = () => {
+        console.error('[Autocue] Playback failed for segment', segment.id)
+        finish(false)
+      }
+      const started = reviewAudio.play()
+      if (started && typeof started.catch === 'function') {
+        started.catch((err) => {
+          console.error('[Autocue] Playback rejected:', err)
+          finish(false)
+        })
+      }
+    })
+  }
+
+  async function playAllSegments() {
+    for (const segment of state.recordedSegments) {
+      if (!segmentAudioUrl(segment)) continue
+      await playSegment(segment)
+    }
   }
 
   function approveSegment(segment) {
@@ -574,6 +647,13 @@ export function useAutocueState() {
     state.elapsedSeconds = 0
     state.phrases = []
     state.recordedSegments = []
+    // Blob URLs outlive their Map entry unless revoked — and a revoked URL is
+    // exactly what makes a later play button silent, so revoke only here,
+    // where the segments referencing them are dropped in the same breath.
+    stopPlayback()
+    state.audioRecordings.forEach((rec) => {
+      if (rec?.url) URL.revokeObjectURL(rec.url)
+    })
     state.audioRecordings.clear()
     state.approvedSegments.clear()
     state.rejectedSegments.clear()
@@ -798,6 +878,9 @@ export function useAutocueState() {
     advanceToNext,
     approveSegment,
     rejectSegment,
+    playSegment,
+    playAllSegments,
+    stopPlayback,
     approveAllByConfidence,
     backToRecording,
     finalizeSession,
