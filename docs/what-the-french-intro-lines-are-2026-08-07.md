@@ -1,8 +1,9 @@
 # What the French intro lines actually are
 
 **7 August 2026. You said "I don't know what these are, and I don't know why they would exist."
-Here is the answer. Short version: you already killed this feature yourself, yesterday-but-one, and
-the 918 lines are the leftovers. Nothing needs doing.**
+Here is the answer. Short version: you already killed this feature yourself on 6 August — but the
+switch-off never reached the real app, so learners are still hearing them right now. That is worth
+your attention. The repair you were asked to approve is still the wrong thing.**
 
 ---
 
@@ -36,19 +37,28 @@ piece deserved its own little announcement.
 
 ## Does a learner ever hear one today?
 
-**No. Not one, not ever again.** For two days — 4 to 6 August — the app did play them, and that is
-what you heard and complained about: every long phrase suddenly announcing each of its parts one by
-one before it got going. On the evening of 6 August you ruled on it in one sentence: *"Components do
-NOT get introduced."* That ruling was built into the app the same night, and the code now refuses
-to play one even if it's asked to. So these 918 lines have been completely silent since the day
-before yesterday. The real introductions — the whole-thought ones — play exactly as they always did.
+**Yes — on the real app, right now.** This is the one thing in this document that surprised me, and
+I checked it against the live site rather than the code.
+
+From 4 August the app started playing them, and that is what you heard and complained about: every
+long phrase suddenly announcing each of its parts one by one before it got going. On the evening of
+6 August you ruled on it in one sentence: *"Components do NOT get introduced."* That switch-off was
+built and it works — **but it was only ever put onto the test versions of the app. It was never
+promoted to the live one.** I asked the real site for the opening of the French course this morning
+and it still hands back *"The French for: 'I', is:"* and *"The French for: 'want', is:"* as
+separate spoken announcements before the first phrase, with real audio attached — the exact clips
+from that 3 August batch.
+
+So: on the test versions, silent since 6 August. On the app real learners use, still playing.
 
 ## What would change if they all vanished
 
-Nothing a learner could notice, because nothing plays them. The phrases they were attached to would
-quietly forget about them on their own — no crash, no error, nothing left dangling. The only real
-change is that about 918 small sound files would be sitting unused on the storage account. To be
-clear, nobody is proposing to delete anything and nothing has been deleted.
+Once the switch-off reaches the live app, nothing a learner could notice — nothing would play them.
+The phrases they were attached to would quietly forget about them on their own: no crash, no error,
+nothing left dangling. About 918 small sound files would sit unused on the storage account. Twenty-two
+of them are also doing a second job as ordinary whole-word introductions, and those would leave real
+gaps — so "delete them all" is not as clean as it sounds. Nobody is proposing to delete anything and
+nothing has been deleted.
 
 ## What I think
 
@@ -56,10 +66,14 @@ clear, nobody is proposing to delete anything and nothing has been deleted.
 918 introductions "point at nothing" and get silently skipped. In fact 913 of the 918 are correctly
 attached — they're just attached to a phrase-piece rather than to a whole phrase, which is exactly
 how they were designed. The check that raised the alarm looked in the wrong place. And the thing it
-wanted to "repair" is a feature you deliberately switched off two days ago, so repairing it would
-have been reconnecting the very announcements you asked to be rid of.
+wanted to "repair" is the feature you deliberately switched off on 6 August, so repairing it would
+have meant *reconnecting* the very announcements you asked to be rid of. That item should be closed.
 
-**Nothing needs doing.**
+**But there is one real thing here, and it isn't the repair.** The switch-off you ordered on 6 August
+is sitting on the test versions and has never gone live. Learners on the real app are still hearing
+the piece-by-piece announcements today, three days after you said stop. Nothing needs building — the
+fix exists and is proven; it just needs promoting to the live app. That is a release decision, and
+it's yours.
 
 ---
 
@@ -96,8 +110,14 @@ Components are not LEGOs, so there is no `lego_id` for them to carry. The code s
 - `services/phases/phase8-audio-v13.cjs:844` — *"Component presentations have lego_id=null, so scope them by matching their 'as in — <parent>' context…"*
 
 Component intros are bound through `course_practice_phrases.presentation_audio_id`, **not** through
-`course_audio.lego_id` and **not** through `lego_introductions` (whose `lego_id` is `NOT NULL`, so a
-component cannot appear there). `linkComponentPresentationAudio`, `phase8-audio-v13.cjs:1605`.
+`course_audio.lego_id`. `linkComponentPresentationAudio`, `phase8-audio-v13.cjs:1605`.
+
+**Caveat — 22 of the 918 do double duty as LEGO introductions.** They are referenced by
+`course_legos.presentation_audio_id` (and by `lego_introductions.presentation_audio_id`), because
+their bare text (`The French for: 'X', is:`) is also a valid **Frame A** LEGO intro — the
+seed-clause-stripped form rendered by `services/phases/presentation-author.cjs:107-118`. Those 22
+play as normal whole-word introductions on every path, today, correctly. They are the reason a
+blanket delete of "the 918" would not be lossless.
 
 So A-87's premise — "918 pointers are broken" — is the *checking-the-wrong-unit* failure mode
 already catalogued on this estate (`docs/course-optimization/zut-violation-sweep-pilot-fra-40.md`).
@@ -132,6 +152,36 @@ already catalogued on this estate (`docs/course-optimization/zut-violation-sweep
 - The player adapter `toPlayerCycle` refuses a `component_intro` as a backstop.
 - Fix commit: `07b796ae`, 2026-08-06, ssi-learning-app.
 
+**…but that fix is NOT on `main`, and `main` is production** (`saysomethingin.app`, per
+ssi-learning-app `CLAUDE.md:18`). `git merge-base --is-ancestor 07b796ae origin/main` → false;
+→ true for `origin/staging`. `origin/main:api/courses/[code]/cycles.ts` still contains 3 references
+to `buildComponentIntroCycles`, and `origin/main`'s `backendCyclesToRounds.ts` still contains 4
+references to `component_intro` — so the client backstop is absent too.
+
+**Verified live against production, 2026-08-07:**
+
+```
+GET https://saysomethingin.app/api/courses/fra_for_eng/cycles?from=S0001L01&limit=8
+  intro           S0001L01_intro
+  component_intro S0001L01_component_intro_1     <-- known "I" / target "je"
+  component_intro S0001L01_component_intro_2
+  debut           S0001L01_debut
+  build           S0001L01_build_1
+  intro           S0001L02_intro
+  debut           S0001L02_debut
+```
+
+The first `component_intro` carries `audio.presentation_id =
+0dde4943-9260-4214-aa13-32a1d34d4742`, which is `text = "The French for: 'I', is:"`,
+`role = presentation`, `lego_id = NULL`, `created_at = 2026-08-03 17:09:15Z` — i.e. **one of the
+918, served to production learners today, with audio attached.**
+
+The 2026-08-06 doc's "Verified live" section was checked on **dev**, which was correct at the time
+and remains correct. Promotion to `main` simply never happened. Also worth noting: the two
+`component_intro` rows for French seed 1 exist because of the four component rows added at 18:01Z on
+2026-08-06 — the ones that doc recommended keeping as visual tiles. Keeping them is still right;
+they are only audible because the emitter is still live in production.
+
 LEGO introductions (the "working" set) **do** play — `cycles.ts` emits `intro → debut → BUILDs →
 USEs` per LEGO, verified live in `docs/components-never-introduced-2026-08-06.md` §"Verified live".
 
@@ -149,9 +199,15 @@ them, so the mutation buys nothing and the blast radius is large.
 ### Deletion consequences (thought experiment only — nothing deleted)
 
 `course_practice_phrases_presentation_audio_id_fkey … ON DELETE SET NULL`. Deleting the 918 rows
-would null 913 bindings automatically; no cascade, no crash. `lego_introductions` is untouched (22
-of the 918 are also referenced there via `presentation_audio_id`, itself `ON DELETE SET NULL`).
-S3 objects would be orphaned — no reaper runs. Learner impact: nil, nothing emits them.
+would null 913 bindings automatically; no cascade, no crash.
+`lego_introductions_presentation_audio_id_fkey` is also `ON DELETE SET NULL`. S3 objects would be
+orphaned — no reaper runs.
+
+Learner impact is **not** nil, on two counts: (a) production still emits `component_intro`, so today
+a delete would turn 896 announcements into silent skips rather than removing them; (b) the 22
+double-duty rows are live LEGO introductions on every path and would leave real gaps. A delete is
+only clean *after* the emitter fix reaches `main`, and even then it must exclude those 22. Nothing
+is being proposed — this is the thought experiment the brief asked for.
 
 ### The red herring in the brief
 
@@ -168,6 +224,15 @@ column, added by `e9274c18` on 2026-02-17 for journey search. Unrelated to this.
   `tools/extractors/extract-learner-script.cjs:137` is a separate, unrelated thing: zero fra rows
   carry that role (`use` 9,008 / `build` 5,110 / `component` 1,780). It is not what A-87 was about.
 - **German** was not examined; the brief scoped this to French. The 2026-08-06 doc indicates the
-  same pattern estate-wide.
+  same pattern estate-wide — and since the production gap is in shared code, **every one of the 96
+  courses is still emitting component intros to live learners**, not just French. Unverified per
+  course; French is proven above.
+- **Why `07b796ae` never reached `main`** is not established. `origin/main` is at `283e81ab`
+  (2026-08-07, a cherry-picked hotfix), and `origin/main..origin/staging` is ~20 commits of unrelated
+  work, so this looks like an ordinary un-run promotion train rather than a deliberate hold. I did
+  not confirm that, and I did not check the Vercel deployment SHA — the live API response above is
+  the stronger evidence and it is unambiguous.
+- **`intro_audio_missing` telemetry** (`player_events`, emitting since 2026-08-04) would give the
+  real per-learner rate. Not queried.
 
 *Read-only investigation. No database writes, no repairs, no deletions.*
