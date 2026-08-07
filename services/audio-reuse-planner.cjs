@@ -1314,9 +1314,26 @@ async function verifyPlanBytes(plan, { headObject, concurrency = 8, minBytes = 1
  * NEVER treated as a failure — an unanswerable question must not trigger a
  * re-render, the same rule verifyPlanBytes follows for missing objects.
  *
+ * `verdictCache` (optional, `{ get(key), set(key, verdict) }`) removes DUPLICATE
+ * decodes. Whisper is the dominant cost of this whole exercise, and bands re-ask
+ * the same question constantly: bands are disjoint in ROUNDS but not in CLIPS,
+ * because review offsets reach back as far as 2584 rounds — measured 2026-08-07,
+ * 35.7% of a rounds-201-210 plan is clips that rounds 1-200 also plays. Without a
+ * cache every band re-listens to that overlap from scratch.
+ *
+ * The cache is correct BY CONSTRUCTION rather than by invalidation, which is why
+ * it is safe to persist it across runs and across days: mastered/<uuid>.mp3 objects
+ * are WRITE-ONCE (a re-master mints a new key and repoints the rows), so a given
+ * s3Key names the same bytes forever. Keying on s3Key + expected text + language —
+ * exactly the three inputs to checkAudioVeracity — means a cache hit is the answer
+ * to the identical question, never a stale one. There is deliberately no TTL and no
+ * invalidation path: adding one could only ever make it wrong.
+ *
+ * Omit it and behaviour is exactly as before — every clip is decoded.
+ *
  * Mutates the plan in place, adding `heard` to each checked clip.
  */
-async function verifyPlanVeracity(plan, { fetchObject, veracity, concurrency = 4, logger = console } = {}) {
+async function verifyPlanVeracity(plan, { fetchObject, veracity, concurrency = 4, logger = console, verdictCache = null } = {}) {
   const KEEPING = new Set(['SATISFIED', 'REUSE_OWN', 'REUSE_CROSS'])
   const targets = []
   for (const clip of plan.clips) {
@@ -1325,17 +1342,32 @@ async function verifyPlanVeracity(plan, { fetchObject, veracity, concurrency = 4
     if (s3Key) targets.push({ clip, s3Key })
   }
 
-  const summary = { checked: 0, ok: 0, failed: 0, unknown: 0, byReason: {} }
+  const summary = { checked: 0, ok: 0, failed: 0, unknown: 0, cached: 0, byReason: {} }
+  // The three inputs to the question, and nothing else. A NUL separator cannot
+  // occur in an s3 key or in course text, so the parts can never run together
+  // ambiguously the way a space or a pipe could.
+  const cacheKey = (s3Key, clip) => `${s3Key}\u0000${clip.text}\u0000${clip.language}`
   let cursor = 0
   const worker = async () => {
     while (cursor < targets.length) {
       const { clip, s3Key } = targets[cursor++]
       let verdict
-      try {
-        const buf = await fetchObject(s3Key)
-        verdict = await veracity.checkAudioVeracity(buf, clip.text, clip.language)
-      } catch (e) {
-        verdict = { pass: null, checked: false, reason: 'check_failed', detail: e.message }
+      const ck = cacheKey(s3Key, clip)
+      const hit = verdictCache ? verdictCache.get(ck) : undefined
+      if (hit !== undefined && hit !== null) {
+        verdict = hit
+        summary.cached++
+      } else {
+        try {
+          const buf = await fetchObject(s3Key)
+          verdict = await veracity.checkAudioVeracity(buf, clip.text, clip.language)
+        } catch (e) {
+          verdict = { pass: null, checked: false, reason: 'check_failed', detail: e.message }
+        }
+        // An UNANSWERABLE check is never cached: whisper missing or a download that
+        // failed is a fact about this moment, not about the clip, and freezing it
+        // would make a transient outage permanent.
+        if (verdictCache && verdict.checked !== false) verdictCache.set(ck, verdict)
       }
       summary.checked++
       clip.heard = {

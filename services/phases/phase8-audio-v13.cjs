@@ -6433,6 +6433,54 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
 const reusePlanner = require('../audio-reuse-planner.cjs')
 
 const REUSE_ARTIFACT_DIR = path.join(__dirname, '..', '..', 'docs', 'audio-repair-2026-08-07')
+
+// A persistent veracity-verdict store, so a band never re-decodes a question an
+// earlier band already answered. Bands are disjoint in ROUNDS but not in CLIPS —
+// review offsets reach back as far as 2584 rounds, and 35.7% of a rounds-201-210
+// plan is clips that rounds 1-200 also plays (measured 2026-08-07). Whisper is the
+// dominant cost of the whole exercise, so that overlap is the single cheapest hour
+// to buy back.
+//
+// Safe to keep forever, and deliberately never invalidated: mastered/<uuid>.mp3 is
+// WRITE-ONCE (a re-master mints a new key), so the key names the same bytes for all
+// time. It is keyed across courses on purpose — the same object answers the same
+// question whoever is asking.
+//
+// Set AUDIO_VERACITY_CACHE=0 to turn it off; it is on by default because a cache
+// that cannot go stale has no failure mode worth a flag.
+const VERDICT_CACHE_PATH = process.env.AUDIO_VERACITY_CACHE_PATH
+  || path.join(os.homedir(), '.audio-veracity-verdicts.json')
+
+function loadVerdictCache() {
+  if (process.env.AUDIO_VERACITY_CACHE === '0') return null
+  let m = new Map()
+  try {
+    if (fs.existsSync(VERDICT_CACHE_PATH)) {
+      m = new Map(Object.entries(fs.readJsonSync(VERDICT_CACHE_PATH)))
+      logger.info(`[ReuseFirst] verdict cache: ${m.size} remembered decodes from ${VERDICT_CACHE_PATH}`)
+    }
+  } catch (e) {
+    // A corrupt cache is a cost problem, never a correctness one — start empty.
+    logger.warn(`[ReuseFirst] verdict cache unreadable (${e.message}) — starting empty`)
+    m = new Map()
+  }
+  let dirty = 0
+  const flush = () => {
+    if (!dirty) return
+    try {
+      fs.outputJsonSync(VERDICT_CACHE_PATH, Object.fromEntries(m))
+      dirty = 0
+    } catch (e) { logger.warn(`[ReuseFirst] verdict cache write failed: ${e.message}`) }
+  }
+  return {
+    get: (k) => m.get(k),
+    // Flushed every 200 new verdicts so a killed run keeps most of its listening,
+    // which is the whole point: the in-memory listen result dies with the process.
+    set: (k, v) => { m.set(k, v); if (++dirty >= 200) flush() },
+    flush,
+    get size() { return m.size },
+  }
+}
 const reuseRuns = new Map()   // runId -> run record (in-process; artifact on disk is durable)
 
 // A full course is one round per is_new LEGO — fra_for_eng alone is 1,529 — so
@@ -6756,11 +6804,13 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
       // the fra_for_eng last-word repair, which is the only way a clip that is
       // present, alive and wrong gets caught (Tom, 2026-08-07).
       if (req.body?.verifyIncumbents === true) {
+        const verdictCache = loadVerdictCache()
         const heard = await reusePlanner.verifyPlanVeracity(plan, {
-          fetchObject: reuseFetchObject, veracity, logger,
+          fetchObject: reuseFetchObject, veracity, logger, verdictCache,
           concurrency: Number(process.env.AUDIO_VERACITY_CONCURRENCY || 4),
         })
-        logger.info(`[ReuseFirst] listened to ${heard.checked} incumbent clips — ${heard.failed} damaged, ${heard.unknown} unknown, reasons ${JSON.stringify(heard.byReason)}`)
+        verdictCache?.flush()
+        logger.info(`[ReuseFirst] listened to ${heard.checked} incumbent clips — ${heard.failed} damaged, ${heard.unknown} unknown, ${heard.cached || 0} from cache, reasons ${JSON.stringify(heard.byReason)}`)
       }
       run.plan = { shape: plan.shape, summary: plan.summary, byLayer: plan.byLayer, estimate: plan.estimate, voices: plan.voices, bytes: plan.bytes, heard: plan.heard || null }
 

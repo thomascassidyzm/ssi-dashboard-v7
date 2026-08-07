@@ -34,7 +34,7 @@ import { describe, it, expect } from 'vitest'
 const planner = require('./audio-reuse-planner.cjs')
 const {
   decideClip, voicesMatch, sameLanguage, resolveVoices, clipKey, isSayable,
-  verifyPlanBytes, applyReusePlan, recountPlan, roundsInBand,
+  verifyPlanBytes, verifyPlanVeracity, applyReusePlan, recountPlan, roundsInBand,
 } = planner
 
 // ── fixtures ───────────────────────────────────────────────────────────────
@@ -820,5 +820,113 @@ describe('round bands — a full course is ~1,500 rounds, so a pass must be able
   it('survives a generator that emitted nothing', () => {
     expect(roundsInBand(null, 1, 10)).toEqual([])
     expect(roundsInBand(undefined)).toEqual([])
+  })
+})
+
+describe('verdict cache — whisper is the dominant cost, and bands re-ask the same question', () => {
+  const planWith = (clips) => recountPlan({ courseCode: 'fra_for_eng', rounds: 10, clips })
+  const sat = (over = {}) => ({
+    ...clip(), decision: 'SATISFIED', reason: 'already linked',
+    reuseSource: { s3Key: 'mastered/A.mp3' }, ...over,
+  })
+  // A cache that only ever answers; if the code decodes, the count rises.
+  const mkVeracity = (verdict, counter) => ({
+    checkAudioVeracity: async () => { counter.n++; return verdict },
+  })
+  const mkCache = () => {
+    const m = new Map()
+    return { m, get: (k) => m.get(k), set: (k, v) => m.set(k, v) }
+  }
+  const PASS = { pass: true, checked: true, reason: 'ok', cer: 0 }
+  const FAIL = { pass: false, checked: true, reason: 'last_word_missing', cer: 0.29, decode: 'i want to' }
+
+  it('without a cache, behaviour is exactly as before — every clip is decoded', async () => {
+    const c = { n: 0 }
+    const p = planWith([sat(), sat({ clipKey: 'k2' })])
+    await verifyPlanVeracity(p, { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(PASS, c) })
+    expect(c.n).toBe(2)
+    expect(p.heard.cached).toBe(0)
+  })
+
+  it('the same clip in a later band is answered from cache, not re-decoded', async () => {
+    const cache = mkCache()
+    const c = { n: 0 }
+    const band1 = planWith([sat()])
+    await verifyPlanVeracity(band1, { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(PASS, c), verdictCache: cache })
+    expect(c.n).toBe(1)
+
+    // Band 2 replays the very same clip — review offsets reach back thousands of rounds.
+    const band2 = planWith([sat()])
+    await verifyPlanVeracity(band2, { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(PASS, c), verdictCache: cache })
+    expect(c.n).toBe(1)              // NOT decoded again
+    expect(band2.heard.cached).toBe(1)
+    expect(band2.clips[0].heard.pass).toBe(true)
+  })
+
+  it('a cached DAMAGED verdict still promotes the clip to RENDER — the cache changes cost, never outcome', async () => {
+    const cache = mkCache()
+    const c = { n: 0 }
+    const band1 = planWith([sat()])
+    await verifyPlanVeracity(band1, { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(FAIL, c), verdictCache: cache })
+    expect(band1.clips[0].decision).toBe('RENDER')
+
+    const band2 = planWith([sat()])
+    await verifyPlanVeracity(band2, { fetchObject: async () => { throw new Error('must not fetch') }, veracity: mkVeracity(FAIL, c), verdictCache: cache })
+    expect(c.n).toBe(1)
+    expect(band2.clips[0].decision).toBe('RENDER')
+    expect(band2.clips[0].decisionBeforeVeracity).toBe('SATISFIED')
+    expect(band2.summary.render).toBe(1)
+  })
+
+  it('different TEXT against the same object is a different question, and is decoded', async () => {
+    const cache = mkCache()
+    const c = { n: 0 }
+    await verifyPlanVeracity(planWith([sat()]), { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(PASS, c), verdictCache: cache })
+    await verifyPlanVeracity(planWith([sat({ text: 'something else entirely' })]),
+      { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(PASS, c), verdictCache: cache })
+    expect(c.n).toBe(2)
+  })
+
+  it('different LANGUAGE against the same object is a different question too', async () => {
+    const cache = mkCache()
+    const c = { n: 0 }
+    await verifyPlanVeracity(planWith([sat()]), { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(PASS, c), verdictCache: cache })
+    await verifyPlanVeracity(planWith([sat({ language: 'fra' })]),
+      { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(PASS, c), verdictCache: cache })
+    expect(c.n).toBe(2)
+  })
+
+  it('a different OBJECT is never answered from another object cache entry', async () => {
+    const cache = mkCache()
+    const c = { n: 0 }
+    await verifyPlanVeracity(planWith([sat()]), { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(PASS, c), verdictCache: cache })
+    await verifyPlanVeracity(planWith([sat({ reuseSource: { s3Key: 'mastered/B.mp3' } })]),
+      { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(PASS, c), verdictCache: cache })
+    expect(c.n).toBe(2)
+  })
+
+  it('an UNANSWERABLE check is never cached — a whisper outage must not freeze into a permanent verdict', async () => {
+    const cache = mkCache()
+    const c = { n: 0 }
+    const p1 = planWith([sat()])
+    await verifyPlanVeracity(p1, { fetchObject: async () => { throw new Error('s3 down') }, veracity: mkVeracity(PASS, c), verdictCache: cache })
+    expect(p1.clips[0].heard.checked).toBe(false)
+    expect(p1.clips[0].decision).toBe('SATISFIED')   // unknown never triggers a re-render
+    expect(cache.m.size).toBe(0)
+
+    // Storage comes back: the question is asked again for real.
+    const p2 = planWith([sat()])
+    await verifyPlanVeracity(p2, { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(PASS, c), verdictCache: cache })
+    expect(c.n).toBe(1)
+    expect(p2.clips[0].heard.pass).toBe(true)
+  })
+
+  it('deduplicates WITHIN one run too — a plan can name the same object twice', async () => {
+    const cache = mkCache()
+    const c = { n: 0 }
+    const p = planWith([sat({ clipKey: 'a' }), sat({ clipKey: 'b' })])
+    await verifyPlanVeracity(p, { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(PASS, c), verdictCache: cache, concurrency: 1 })
+    expect(c.n).toBe(1)
+    expect(p.heard.cached).toBe(1)
   })
 })
