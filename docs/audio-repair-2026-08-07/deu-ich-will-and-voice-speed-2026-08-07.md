@@ -146,3 +146,78 @@ The human recorder is the right answer if *no* TTS voice does an isolated LEGO p
 - **A worker I dispatched to trace the render path never appeared in the queue** and never reported. I traced it myself instead, which is where the `phase8-audio-v13.cjs:2345-2359` finding comes from — first-hand, not relayed.
 - **The clip may move under this report.** There is another session running right now titled *"deu: revert ich-will LEGO clip to previous version"*. Everything above was measured against revision 2 of `823cf48a…` as served at 12:20-12:45 UTC today.
 - **Not investigated, per your ruling:** the truncated listening content. I saw nothing to suggest it is a different fault than you think it is.
+
+---
+
+# Addendum — "ich will should not BE a separate audio"
+
+*Added later on 2026-08-07, answering your design question. Report only; nothing changed.*
+
+You are right, and the pipeline already agrees with you — there is a database constraint whose entire job is one-clip-per-(course, text, language, role, voice). It mostly works. What you saw is one of exactly four ways round it, and it is the only one of the four that actually splits live content.
+
+## What the three sites really hold
+
+Three sites, **two** distinct renders per voice — the S0473 component row is already reusing:
+
+| site | target1 clip | what it is |
+|---|---|---|
+| `S0001L01` (the LEGO debut) | `0f37d106…` | the **January** take, 768 ms, voice recorded as `xai_ara`, text stored as **`ich will ::superseded-regen`** |
+| `S0241L02` (the re-teach) | `823cf48a…` | the **6 Aug** take, 744 ms, voice `ara`, text `ich will` |
+| `S0473L01C01` (component row) | `823cf48a…` | **the same 6 Aug clip** — already shared |
+
+So the split is between the debut and everything else, and it is the revert that created it: the revert re-pointed `S0001L01` at the old row and left the other two sites on the new one.
+
+**The mechanism, precisely.** `tools/regen-seed-clips-from-scratch.cjs:123` defines `const TOMBSTONE = ' ::superseded-regen'`. When a regen renders a new take, it appends that suffix to the *old* row's text so the new render can take the unique key. That is correct make-before-break behaviour and I would not remove it. The bug is what it doesn't do: **nothing re-points the holders that were pointing at the old row.** That is the same class of fault the 6 Aug repair doc already caught once — *"the original repair only ever updated the LEGO's copy of the link"*, 2,347 links across 1,036 clips.
+
+## How much duplication actually exists
+
+Counting a duplicate as: same course, same language, same text once you strip the tombstone and punctuation, same voice once you fold `xai_ara` into `ara`. Placeholder voice ids (`legacy_import`, `human`) excluded — they name a *slot*, not a voice, and counting them produces a fake 32% for the Welsh courses.
+
+**deu_for_eng — 208 redundant renders in 49,305 rows (0.4%).** Of those, only **52 are live splits** where two different takes are both pointed at by course content and a learner can really hear both. The other 156 are orphaned old rows: disk, not quality.
+
+| cause | groups | redundant rows | **live splits** |
+|---|---|---|---|
+| 1. superseded tombstone left behind | 107 | 107 | **2** ← one of these is `ich will` |
+| 2. same voice used for two roles (known + presentation) | 3 | 3 | 0 |
+| 3. bare `ara` vs prefixed `xai_ara` | 19 | 19 | **15** |
+| 4. punctuation/case variant of the same text | 79 | 79 | **35** |
+
+**Is it course-wide? Yes, but German is one of the cleanest courses on the estate.** Across all 2,495,061 clip rows with a real voice id: **19,222 redundant renders, 0.77%.**
+
+| cause | groups | redundant (estate) | of which deu_for_eng |
+|---|---|---|---|
+| 4. punctuation/case variant | 17,068 | **17,184** | 79 |
+| 3. bare vs `xai_` voice spelling | 1,248 | 1,249 | 19 |
+| 2. same voice, two roles | 611 | 625 | 3 |
+| 1. superseded tombstone | 164 | 164 | **107** |
+
+Worst courses: `eng_for_jpn` 3,250 (6.1%), `gle_for_eng` 960 (3.8%), `jpn_for_eng` 863 (1.6%). German at 0.4% is near the bottom — but it holds **107 of the estate's 164 tombstones**, because it is the course we have been repairing all week.
+
+Two readings of that table matter:
+- **91% of the estate's duplication is punctuation.** `normalizeForAudio` strips a trailing `. ! 。 ！` but keeps commas and question marks; `normalizeForDb` strips `. ? ! ¿ ¡ 。 ？ ！`. Two conventions live in one column and the planner says so out loud at `services/audio-reuse-planner.cjs:83-85`. So "der mann," and "der mann" are two keys and buy two renders. Both say the right words, so this is money and disk, not quality.
+- **The tombstone class is tiny but it is the one that hurts**, because it is the only one where the two takes are genuinely different performances of the same text.
+
+## What enforcing one-canonical-clip-per-(text, voice, cadence) would take
+
+The key exists: `unique_course_audio_per_voice (course_code, text_normalized, language, role, voice_id)`, and the reuse planner upserts against it (`audio-reuse-planner.cjs:1571`). Four things stand between that and your rule.
+
+**1. Re-point the holders when a row is tombstoned.** *This is your bug, and it is the cheap one.* `relinkHolders()` in the reuse planner already does exactly this job — it is what turned 1,036 clip fixes into 2,347 link updates on 6 Aug. `regen-seed-clips-from-scratch.cjs` needs to call it in the same transaction as the tombstone. One tool, one call. Acceptance test: tombstone a clip with three holders, assert zero holders still point at the tombstoned id.
+
+**2. Fold the voice spellings.** `audio-reuse-planner.cjs:72-78` deliberately refuses to treat `ara` and `xai_ara` as one voice — *"a voice-identity call and therefore Tom's, not ours"* — and ships a `voiceAliases` hook waiting for your ruling. **You have already made that ruling** (`eve` and `xai_eve` are one voice). It just hasn't been wired in and normalised on write. 1,249 rows estate-wide, 15 of German's 52 live splits.
+
+**3. Pick one text normaliser and backfill.** 17,184 rows. Needs one decision from you that I am not going to make: **is a trailing comma worth a separate render?** It genuinely changes the intonation the voice produces — "damit," rises, "damit" falls. My read is that a trailing comma on a LEGO is an authoring artefact rather than a prosody choice, and stripping it would be right, but that is your ear's call.
+
+**4. Cadence — and this is the part that is not built at all.** `course_audio` has **no speed, cadence or rate column.** Cadence is implicit in (course, role) → `voice_config.voices[role].settings.speed`. Three consequences:
+- Two cadences of the same text and voice **cannot coexist today**. The constraint collides them and the upsert overwrites. Your caveat is currently inexpressible.
+- **Nothing records what speed a clip was rendered at.** Change a course's `voice_config` speed and every existing clip silently becomes mislabelled, with no way to tell old from new by inspection. I had to measure syllable rates in §3 of this report for exactly this reason — a column would have answered it in one query.
+- Making your rule real means adding `render_speed numeric` to `course_audio`, backfilling it from the course's voice config as at each clip's `created_at`, and moving the constraint to `(course_code, text_normalized, language, voice_id, render_speed)` — role drops out of the key, speed comes in. Role is not identity; a voice and a speed are.
+
+## My recommendation
+
+**Do 1 and 2 now; do 4 before any German provider swap; leave 3 parked until you have an opinion on the comma.**
+
+Better: (1) is the only change that stops a learner hearing two different takes of the same LEGO, which is the actual complaint. Simpler: both are calls to functions that already exist — `relinkHolders()` and the `voiceAliases` hook — with no new machinery and no re-render. Cheaper: nothing is regenerated and nothing is deleted, so the whole thing costs a code change and a backfill.
+
+(4) is the only structural piece, and the reason to do it *before* moving German to Azure is that the swap is precisely the event that would silently mix cadences in a course with no way to tell them apart afterwards. Doing it after is a forensics job; doing it before is a column.
+
+(3) is 91% of the volume and roughly 0% of the harm — both clips say the right words. It is a tidy-up, not a fix.
