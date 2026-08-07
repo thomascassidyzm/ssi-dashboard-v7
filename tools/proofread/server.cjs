@@ -28,6 +28,9 @@ const { createClient } = require('@supabase/supabase-js');
 const COURSE = (process.argv.find((a, i) => i >= 2 && !a.startsWith('--')) || 'fin_for_eng').trim();
 const ENFORCE_ON_LOAD = process.argv.includes('--enforce-on-load');
 const PORT = process.env.PROOFREAD_PORT || 4747;
+// Loopback by default: colleagues reach this through `tailscale serve`, which proxies
+// from localhost, so binding all interfaces only ever exposed it to the public internet.
+const HOST = process.env.BIND_HOST || '127.0.0.1';
 const PROGRESS_DIR = path.join(__dirname, 'progress');
 
 if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
@@ -202,6 +205,6 @@ app.post('/api/seed/unapprove', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Proofread [${COURSE}] → http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Proofread [${COURSE}] → http://${HOST}:${PORT}`);
 });
