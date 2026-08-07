@@ -221,3 +221,74 @@ Better: (1) is the only change that stops a learner hearing two different takes 
 (4) is the only structural piece, and the reason to do it *before* moving German to Azure is that the swap is precisely the event that would silently mix cadences in a course with no way to tell them apart afterwards. Doing it after is a forensics job; doing it before is a column.
 
 (3) is 91% of the volume and roughly 0% of the harm — both clips say the right words. It is a tidy-up, not a fix.
+
+---
+
+# Addendum 2 — judged against the in-context standard
+
+*Added 2026-08-07 after your refinement. The test is no longer "is the isolated clip a faithful native rendering of the word alone" — it is **"does the isolated clip match how that word sounds inside the sentences it will be reused in."** That changes the answer, and it changes which clips are the problem.*
+
+## The headline: you have re-scoped this from one clip to the whole early course — and "ich will" is one of the better ones
+
+Measured every LEGO clip in rounds 1-40 against the same words spoken inside full course sentences, same voice, same course. **33 of 39 have endings that diverge more than their bodies. 14 of 39 have endings as far from their own in-sentence realisation as an unrelated clip is.**
+
+`ich will` ranks **35th of 39** on the January take and 26th on the 6 Aug take. It is not the defect; it is the clip that made you look.
+
+## How the measurement works, and what the numbers mean
+
+For each isolated LEGO clip I search every course sentence that contains its words for the span that best matches it under a uniform time stretch, then score two things: **body** (mean spectral distance across the whole match) and **coda** (the same distance over the final 30% — the ending). Units are dB per frequency band; lower is more alike. Uniform stretch, not DTW, because DTW is free to hide a 2× drawl inside its own path, which is precisely what we are trying to see.
+
+Two controls bracket the scale, both run through the identical machinery:
+
+| comparison | body | coda | stretch |
+|---|---|---|---|
+| **FLOOR** — the same words in two *different* sentences | 4.52 | 4.93 | 1.04× |
+| **the isolated LEGO clips** vs those words in a sentence | **5.14** | **6.18** | **1.28×** |
+| **CEILING** — unrelated words | 6.92 | 6.88 | — |
+
+Read the coda row: the natural variation between one sentence and another is 4.93. Unrelated speech is 6.88. **The isolated LEGO clips sit at 6.18 — 64% of the way from "the same words again" to "a different phrase altogether."** The bodies are far better behaved (5.14, only a quarter of the way up). The divergence is concentrated in the endings, exactly where you said it would be.
+
+## The worst offenders
+
+| rnd | LEGO | isolated text | isolated | in-sentence | stretch | body | **coda** |
+|---|---|---|---|---|---|---|---|
+| 33 | `S0010L04` | ob | 480 ms | 170 ms | 1.94× | 5.37 | **9.79** |
+| 18 | `S0005L03` | mit jemand anderem | 1224 ms | 910 ms | 1.16× | 6.77 | **8.67** |
+| 5 | `S0001L05` | mit dir | 840 ms | 360 ms | 1.81× | 6.23 | **8.02** |
+| 7 | `S0002L02` | ich versuche zu | 1248 ms | 890 ms | 1.15× | 5.68 | **7.64** |
+| 19 | `S0005L04` | sprechen üben | 1008 ms | 780 ms | 1.03× | 5.92 | **7.60** |
+| 9 | `S0003L01` | so oft wie möglich | 1464 ms | 1180 ms | 1.08× | 5.91 | **7.52** |
+| 2 | `S0001L02` | sprechen | 840 ms | 280 ms | 2.25× | 5.49 | **7.48** |
+| 31 | `S0010L02` | Ich kann | 720 ms | 460 ms | 1.17× | 4.63 | **7.47** |
+| 29 | `S0009L02` | spreche | 864 ms | 420 ms | 1.26× | 4.72 | **7.45** |
+| 23 | `S0007L01` | heute | 696 ms | 390 ms | 1.31× | 6.30 | **7.28** |
+| 26 | `S0008L01` | erklären | 840 ms | 600 ms | 1.08× | 5.59 | **7.18** |
+| 32 | `S0010L03` | den ganzen Satz | 1296 ms | 850 ms | 1.25× | 6.13 | **6.92** |
+| 17 | `S0005L02` | ich werde | 792 ms | 300 ms | 2.10× | 5.08 | **6.89** |
+| 38 | `S0011L04` | du bist | 696 ms | 280 ms | 1.04× | 5.17 | **6.89** |
+| 6 | `S0002L01` | lernen | 792 ms | 380 ms | 1.53× | 6.78 | **6.78** |
+| 13 | `S0004L02` | sagen | 744 ms | 430 ms | 1.28× | 5.49 | **6.52** |
+
+Ranked by coda divergence, worst first. `ob` is the standout: 480 ms in isolation against 170 ms in "ich wollte fragen ob du heute Abend etwas machst", and an ending 9.79 — well past the unrelated-words ceiling. `mit dir`, `sprechen` and `ich werde` are the big stretchers at 1.8-2.25×.
+
+Nine of the 39 are stretched 1.5× or more against their own in-sentence realisation. Those are the ones a learner is being taught to say at a length that will not fit the sentences we then ask them to build.
+
+## What this does to the recommendation
+
+It settles it. My previous section said "play the Azure A/B, and if Azure sounds right, re-render 200 clips." **That advice was scoped to one clip and it does not survive your criterion.** A different TTS voice will still be doing citation forms — it will produce *its own* isolated-utterance prosody, which is a different sound from *its own* in-sentence prosody, because that is what TTS does when you hand it two words with a full stop after them. Swapping Ara for Katja changes which 39 clips diverge, not whether they diverge.
+
+**So the human recorder is the right answer, and your "ich will | sprechen" split-recording idea is the specific thing that fixes it.** Record the composed phrase, then separate it — and the isolated LEGO inherits the in-context realisation by construction rather than by hope. That is the only method on the table that makes isolated-versus-context divergence structurally zero instead of something we measure afterwards and flinch at.
+
+Your instinct about the native speaker holds too, and this data sharpens it: a native asked to say "ob" on its own will give you a 480 ms citation form as readily as Ara did. The direction they need is not "say this word", it is "say this sentence, then say it again with gaps" — which is a recording protocol, not a linguistic judgement.
+
+**Sizing.** 39 LEGO clips cover rounds 1-40. Your 150-200 figure covers roughly rounds 1-200, which is where the drawled-isolated shape is concentrated. That is the right batch, and this measurement is the acceptance test for it: re-run it against the recorded clips and the coda number should land at the floor (≈4.9), not at 6.18.
+
+**Speed, revisited.** If a recorder does the first 150-200, the Azure re-render question shrinks to "everything past round 200", where clips are longer and the isolation problem largely goes away — but the 1.6× pace problem does not. Those two now separate cleanly: recorder for the short isolated stock, provider decision for the long tail.
+
+## Gaps in this measurement
+
+- **Target 1 (Ara) only.** Leo was not measured; the box was at load ~13 with two rebuilds running and doubling the sweep was not worth the contention. Expect the same shape, unverified.
+- **39 of the first 40 LEGOs.** One had no full-sentence context long enough to compare against.
+- **This is a spectral distance, not a phonetic verdict.** It tells you two recordings of the same words sound different and roughly how much, calibrated against real floors and ceilings. It does not tell you *which* phone is wrong. For that, and for any final ruling, Aran's ears beat my numbers — and the ranked list above is exactly the running order to hand him.
+- Five matches hit the search bound and were excluded from their LEGO's median where alternatives existed; they are marked in the raw data.
+- Raw per-pair output: `scripts/ichwill/` on watson-1 (gitignored scratch), summaries in `/tmp/deu-divergence-long.json`.
