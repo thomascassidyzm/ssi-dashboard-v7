@@ -5529,6 +5529,15 @@ app.post('/api/audio/link-presentation-audio/:courseCode', async (req, res) => {
 require('./api/audio-repair-routes.cjs').mount(app, { requireAdmin, requireDashboardUser, logger })
 
 // =============================================================================
+// VOICELAB — /api/voicelab/*
+// =============================================================================
+// A bench for voices and gate thresholds: parameters, runs, and every run kept as
+// an experiment. Reads are open to dashboard users; POST /runs and /rerun are
+// admin-only because they are the calls that spend money. It writes no course_audio
+// and no algorithm_config — /export hands a config back for a human to apply.
+require('./voicelab/router.cjs').mount(app, { requireAdmin, requireDashboardUser, logger })
+
+// =============================================================================
 // TAIL-TRUNCATION SCAN — /api/audio/tail-scan/*
 // =============================================================================
 // A whole-course tail scan is one S3 GET plus one ffmpeg decode per clip, so it
