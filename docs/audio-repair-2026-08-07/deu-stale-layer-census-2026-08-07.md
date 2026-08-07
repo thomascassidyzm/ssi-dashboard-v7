@@ -4,6 +4,8 @@
 Replaces the cancelled whisper re-score. Replicates the shape of
 `docs/audio-repair-2026-08-07/fra-rounds-1-10-reuse-inventory.md`, course-wide.
 
+Read on your phone: https://watson-1.tail4968cb.ts.net/d/e4c2f5cb
+
 Machine-readable companion: `deu-stale-layer-census-2026-08-07.json` (this directory).
 
 ---
