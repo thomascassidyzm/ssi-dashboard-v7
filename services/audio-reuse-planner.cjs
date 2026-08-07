@@ -537,7 +537,7 @@ async function findCandidates(supabase, clips, { batchSize = 100 } = {}) {
  *
  * Decisions:
  *   SATISFIED   every holder already points at a row on the right voice
- *   RELINK      such a row exists in THIS course; some holder does not point at it
+ *   REUSE_OWN   such a row exists in THIS course; some holder does not point at it
  *   REUSE_CROSS such a row exists in ANOTHER course; copy it in, no TTS
  *   RENDER      nothing anywhere says this in this voice — genuinely missing
  *   BLOCKED     cannot be decided; `reason` says why
@@ -608,7 +608,7 @@ function decideClip(clip, candidates, opts = {}) {
       return { decision: 'SATISFIED', reason: `already linked to ${winner.id}`, source, viaAlias: winner.viaAlias }
     }
     return {
-      decision: 'RELINK',
+      decision: 'REUSE_OWN',
       reason: `this course already owns a matching clip; ${clip.holders.length - holdersPointingAtIt} of ${clip.holders.length} holder(s) point elsewhere`,
       source,
       viaAlias: winner.viaAlias,
@@ -664,10 +664,10 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
     return CLIP_ROLES.indexOf(a.role) - CLIP_ROLES.indexOf(b.role)
   })
 
-  const summary = { total: decided.length, satisfied: 0, relink: 0, reuseCross: 0, render: 0, blocked: 0 }
+  const summary = { total: decided.length, satisfied: 0, reuseOwn: 0, reuseCross: 0, render: 0, blocked: 0 }
   for (const c of decided) {
     if (c.decision === 'SATISFIED') summary.satisfied++
-    else if (c.decision === 'RELINK') summary.relink++
+    else if (c.decision === 'REUSE_OWN') summary.reuseOwn++
     else if (c.decision === 'REUSE_CROSS') summary.reuseCross++
     else if (c.decision === 'RENDER') summary.render++
     else summary.blocked++
@@ -678,9 +678,9 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
 
   const byLayer = {}
   for (const c of decided) {
-    byLayer[c.role] = byLayer[c.role] || { total: 0, satisfied: 0, relink: 0, reuseCross: 0, render: 0, blocked: 0 }
+    byLayer[c.role] = byLayer[c.role] || { total: 0, satisfied: 0, reuseOwn: 0, reuseCross: 0, render: 0, blocked: 0 }
     byLayer[c.role].total++
-    const k = { SATISFIED: 'satisfied', RELINK: 'relink', REUSE_CROSS: 'reuseCross', RENDER: 'render', BLOCKED: 'blocked' }[c.decision]
+    const k = { SATISFIED: 'satisfied', REUSE_OWN: 'reuseOwn', REUSE_CROSS: 'reuseCross', RENDER: 'render', BLOCKED: 'blocked' }[c.decision]
     byLayer[c.role][k]++
   }
 
@@ -771,12 +771,12 @@ async function verifyPlanBytes(plan, { headObject, concurrency = 8, minBytes = 1
 
 /** Recompute summary/byLayer/estimate after decisions change. */
 function recountPlan(plan) {
-  const summary = { total: plan.clips.length, satisfied: 0, relink: 0, reuseCross: 0, render: 0, blocked: 0 }
+  const summary = { total: plan.clips.length, satisfied: 0, reuseOwn: 0, reuseCross: 0, render: 0, blocked: 0 }
   const byLayer = {}
-  const key = { SATISFIED: 'satisfied', RELINK: 'relink', REUSE_CROSS: 'reuseCross', RENDER: 'render', BLOCKED: 'blocked' }
+  const key = { SATISFIED: 'satisfied', REUSE_OWN: 'reuseOwn', REUSE_CROSS: 'reuseCross', RENDER: 'render', BLOCKED: 'blocked' }
   for (const c of plan.clips) {
     summary[key[c.decision]]++
-    byLayer[c.role] = byLayer[c.role] || { total: 0, satisfied: 0, relink: 0, reuseCross: 0, render: 0, blocked: 0 }
+    byLayer[c.role] = byLayer[c.role] || { total: 0, satisfied: 0, reuseOwn: 0, reuseCross: 0, render: 0, blocked: 0 }
     byLayer[c.role].total++
     byLayer[c.role][key[c.decision]]++
   }
@@ -836,7 +836,7 @@ async function applyReusePlan(supabase, plan, opts = {}) {
     errors: [],
   }
 
-  const actionable = plan.clips.filter(c => c.decision === 'RELINK' || c.decision === 'REUSE_CROSS' || c.decision === 'RENDER')
+  const actionable = plan.clips.filter(c => c.decision === 'REUSE_OWN' || c.decision === 'REUSE_CROSS' || c.decision === 'RENDER')
   let done = 0
   const progress = (clip, outcome) => {
     done++
@@ -873,7 +873,7 @@ async function applyReusePlan(supabase, plan, opts = {}) {
         continue
       }
 
-      // RELINK / REUSE_CROSS — both are "a clip already says this in this
+      // REUSE_OWN / REUSE_CROSS — both are "a clip already says this in this
       // voice". Prove the bytes first, always.
       const src = clip.reuseSource
       if (!src?.s3Key) throw new Error('reuse decision carries no source s3 key')
@@ -920,7 +920,7 @@ async function applyReusePlan(supabase, plan, opts = {}) {
       const holdersUpdated = await relinkHolders(supabase, clip, audioId, { dryRun })
       log.entries.push({
         clipKey: clip.clipKey, role: clip.role, text: clip.text,
-        action: dryRun ? 'WOULD_RELINK' : (clip.decision === 'REUSE_CROSS' ? 'REUSED_CROSS' : 'RELINKED'),
+        action: dryRun ? 'WOULD_REUSE_OWN' : (clip.decision === 'REUSE_CROSS' ? 'REUSED_CROSS' : 'REUSED_OWN'),
         fromCourse: src.courseCode, audioId,
         previousAudioIds: clip.currentAudioIds,
         viaVoiceAlias: clip.viaVoiceAlias,
@@ -936,7 +936,7 @@ async function applyReusePlan(supabase, plan, opts = {}) {
   }
 
   if (!dryRun && bumpStamp) {
-    const changed = log.entries.some(e => ['RELINKED', 'REUSED_CROSS', 'RENDERED'].includes(e.action))
+    const changed = log.entries.some(e => ['REUSED_OWN', 'REUSED_CROSS', 'RENDERED'].includes(e.action))
     if (changed) {
       const { error } = await supabase
         .from('courses')

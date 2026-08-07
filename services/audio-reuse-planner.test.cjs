@@ -169,7 +169,7 @@ describe('reuse source viability', () => {
        row({ id: 'own', course_code: 'fra_for_eng', created_at: '2026-01-01T00:00:00Z' })],
       opts()
     )
-    expect(d.decision).toBe('RELINK')
+    expect(d.decision).toBe('REUSE_OWN')
     expect(d.source.audioId).toBe('own')
   })
 
@@ -184,7 +184,7 @@ describe('reuse source viability', () => {
     expect(d.decision).toBe('SATISFIED')
   })
 
-  it('reports RELINK when one holder of several has drifted', () => {
+  it('reports REUSE_OWN when one holder of several has drifted', () => {
     const c = clip({
       holders: [
         { table: 'course_legos', id: 'l1', column: 'known_audio_id', currentAudioId: 'own' },
@@ -192,7 +192,7 @@ describe('reuse source viability', () => {
       ],
     })
     const d = decideClip(c, [row({ id: 'own', course_code: 'fra_for_eng' })], opts())
-    expect(d.decision).toBe('RELINK')
+    expect(d.decision).toBe('REUSE_OWN')
   })
 
   it('blocks rather than renders when text is punctuation-only or empty', () => {
@@ -322,7 +322,7 @@ describe('applyReusePlan — make before break, delete never', () => {
 
   it('refuses to relink on an UNVERIFIED claim — a failed storage question blocks the swap', async () => {
     const db = makeDb()
-    const p = basePlan([{ ...clip(), decision: 'RELINK', reason: 'x', reuseSource: { audioId: 'own', courseCode: 'fra_for_eng', s3Key: 'mastered/OK.mp3' } }])
+    const p = basePlan([{ ...clip(), decision: 'REUSE_OWN', reason: 'x', reuseSource: { audioId: 'own', courseCode: 'fra_for_eng', s3Key: 'mastered/OK.mp3' } }])
     const log = await applyReusePlan(db, p, { dryRun: false, bumpStamp: false, headObject: async () => ({ exists: null, error: 'timeout' }) })
     expect(db.calls.updates).toHaveLength(0)
     expect(log.errors[0].error).toMatch(/refusing to relink/)
@@ -349,7 +349,7 @@ describe('applyReusePlan — make before break, delete never', () => {
     const db = makeDb()
     const p = basePlan([
       { ...clip(), decision: 'REUSE_CROSS', reason: 'x', reuseSource: { audioId: 'a1', courseCode: 'kor_for_eng', s3Key: 'mastered/AAA.mp3', durationMs: 1 } },
-      { ...clip({ clipKey: 'k2' }), decision: 'RELINK', reason: 'x', reuseSource: { audioId: 'own', courseCode: 'fra_for_eng', s3Key: 'mastered/BBB.mp3' } },
+      { ...clip({ clipKey: 'k2' }), decision: 'REUSE_OWN', reason: 'x', reuseSource: { audioId: 'own', courseCode: 'fra_for_eng', s3Key: 'mastered/BBB.mp3' } },
       { ...clip({ clipKey: 'k3' }), decision: 'RENDER', reason: 'x', reuseSource: null },
       { ...clip({ clipKey: 'k4' }), decision: 'BLOCKED', reason: 'x', reuseSource: null },
     ])
@@ -367,7 +367,7 @@ describe('applyReusePlan — make before break, delete never', () => {
 
   it('a holder already pointing at the right row is left untouched', async () => {
     const db = makeDb()
-    const p = basePlan([{ ...clip(), decision: 'RELINK', reason: 'x',
+    const p = basePlan([{ ...clip(), decision: 'REUSE_OWN', reason: 'x',
       holders: [{ table: 'course_legos', id: 'l1', column: 'known_audio_id', currentAudioId: 'own' },
                 { table: 'course_practice_phrases', id: 'p1', column: 'known_audio_id', currentAudioId: 'stale' }],
       reuseSource: { audioId: 'own', courseCode: 'fra_for_eng', s3Key: 'mastered/OK.mp3' } }])
@@ -380,7 +380,7 @@ describe('applyReusePlan — make before break, delete never', () => {
     const db = makeDb()
     const p = basePlan([
       { ...clip({ clipKey: 'bad' }), decision: 'RENDER', reason: 'x', reuseSource: null },
-      { ...clip({ clipKey: 'good' }), decision: 'RELINK', reason: 'x', reuseSource: { audioId: 'own', courseCode: 'fra_for_eng', s3Key: 'mastered/OK.mp3' } },
+      { ...clip({ clipKey: 'good' }), decision: 'REUSE_OWN', reason: 'x', reuseSource: { audioId: 'own', courseCode: 'fra_for_eng', s3Key: 'mastered/OK.mp3' } },
     ])
     let first = true
     const log = await applyReusePlan(db, p, {
@@ -390,6 +390,6 @@ describe('applyReusePlan — make before break, delete never', () => {
     })
     expect(log.errors).toHaveLength(1)
     expect(log.counts.FAILED).toBe(1)
-    expect(log.counts.RELINKED).toBe(1)
+    expect(log.counts.REUSED_OWN).toBe(1)
   })
 })
