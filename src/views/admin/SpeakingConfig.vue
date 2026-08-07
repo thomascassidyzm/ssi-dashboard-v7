@@ -113,13 +113,47 @@
             wins, so an over-tight cap degrades gently rather than emptying rounds.
           </p>
         </div>
+
+        <div class="field-block">
+          <div class="knob-top">
+            <label>Maximum phrase syllables <span class="hint">absolute ceiling — blank or 0 = no limit</span></label>
+            <span class="knob-val">{{ maxPhraseSyllables > 0 ? maxPhraseSyllables + ' syllables' : 'no limit' }}</span>
+          </div>
+          <input
+            class="syll-input"
+            type="number" min="0" step="1" placeholder="0 = no limit"
+            :value="labCfg.maxPhraseSyllables ?? 0"
+            @input="labCfg.maxPhraseSyllables = Number($event.target.value) || 0"
+          />
+          <p class="field-note">
+            A hard ceiling on a phrase's target syllable count — above it the phrase
+            is skipped entirely. Unlike the cap above this is <strong>absolute</strong>,
+            not a share of the course, so a short course and a long one get the same
+            ceiling. <strong>Blank or 0 = no limit</strong>, which is Fast and is the
+            historic behaviour. The phrase floor still wins: if the ceiling would leave
+            a LEGO short, that LEGO's shortest phrases are used anyway.
+          </p>
+          <p class="field-warn">
+            <strong>Read this before setting a number.</strong> Syllables are counted
+            approximately, and only for some scripts: Latin-alphabet targets are counted
+            by vowel clusters and CJK counts characters, but <strong>every other script —
+            Arabic, Hebrew, Devanagari, Cyrillic, Greek, Thai — measures 1 syllable per
+            phrase</strong>, so no phrase can ever exceed the ceiling and this knob does
+            <strong>nothing at all</strong> on those courses. Of 143 courses, 59 have a
+            target language the counter handles. The stored per-phrase count that would
+            fix this is populated on 1.3% of phrases estate-wide (10,813 of 818,220), so
+            the approximation is the live path almost everywhere. On a course where this
+            is inert, <strong>Maximum phrase length</strong> above is the only length
+            control that bites.
+          </p>
+        </div>
       </section>
 
       <!-- ==================== PAUSE LAB ==================== -->
       <section v-if="labCfg" class="config-row">
         <RowHeader
           :title="`Pause lab — ${modeLabel} timing`"
-          desc="The learner 'say-it-yourself' gap. pause = BOOT (fixed reaction, short phrases) + ASSEMBLY (piecing parts together — grows super-linearly with length). Two belt knobs split the taper: short-phrase gaps shrink hard as the learner climbs, long-phrase gaps shrink gently. Watch it across sentence lengths (in syllables) and belts below."
+          desc="The learner 'say-it-yourself' gap. pause = BOOT (fixed reaction, short phrases) + ASSEMBLY (piecing parts together — grows super-linearly with length). Two belt knobs split the taper: short-phrase gaps shrink hard as the learner climbs, long-phrase gaps shrink gently. Watch it across sentence lengths (in syllables) and belts below. 'Hold after answer' is the odd one out — it sits AFTER the second target voice rather than before it, so it does not appear in the curve."
           :row="rowMap[labMode]"
           :dirty="isDirty(labMode)"
           :saving="savingKey === labMode"
@@ -297,6 +331,16 @@ function backfillPauseRow(key, d) {
   // 1.0 = uncapped = the historic behaviour. Easy halves the longest phrase
   // (Aran 2026-08-06); a missing value must never invent a cap.
   if (c.maxPhraseLengthFraction == null) c.maxPhraseLengthFraction = isEasy ? 0.5 : 1.0
+  // The post-voice2 hold. Backfilled to what the learner app's own DEFAULT_EASY
+  // / DEFAULT_FAST already merge in for a row missing the key, so opening the
+  // page shows the gap that is ACTUALLY being played rather than a 0 that a
+  // Save would then make true. Easy 1000, Fast 0 (Tom, 2026-08-07).
+  if (c.post_voice2_gap_ms == null) c.post_voice2_gap_ms = isEasy ? 1000 : 0
+  // 0 = NO LIMIT, for BOTH modes, deliberately. Unlike the two above, no live
+  // default exists to mirror: nothing anywhere caps syllables today, so any
+  // non-zero backfill would invent a ceiling a row never had and silently
+  // shorten a course. The number is Tom's to set, on this page.
+  if (c.maxPhraseSyllables == null) c.maxPhraseSyllables = 0
 }
 function backfillPause(d) {
   backfillPauseRow('easy_mode', d)
@@ -328,6 +372,13 @@ const modeShape = computed(() => {
 const maxPhraseLengthFraction = computed(() => {
   const f = labCfg.value?.maxPhraseLengthFraction
   return typeof f === 'number' && f > 0 && f <= 1 ? f : 1
+})
+// Mirrors resolveMaxPhraseSyllables in services/learning-modes.cjs: anything
+// absent, blank or invalid reads as 0 = NO LIMIT. A cap must never appear by
+// omission, so the display agrees with the runtime on what "blank" means.
+const maxPhraseSyllables = computed(() => {
+  const n = labCfg.value?.maxPhraseSyllables
+  return typeof n === 'number' && Number.isFinite(n) && n > 0 ? Math.floor(n) : 0
 })
 
 // Help text that names the global value a blank field inherits, so the admin
@@ -367,8 +418,8 @@ const beltTaper = computed(() => {
 // roughly double the boot and floor — the "doubling time" feel. Applied UNSAVED
 // via the lab button; tweak then Save.
 const SUGGESTED = {
-  fast_mode: { pause_reference: 'avg', pause_boot_ms: 1000, pause_assembly_threshold_ms: 900, pause_assembly_lin: 2.4, pause_assembly_quad: 120, pause_belt_boot: 0.72, pause_belt_assembly: 0.92, min_pause_ms: 700, max_pause_ms: 16000, playback_speed: 1.0 },
-  easy_mode: { pause_reference: 'avg', pause_boot_ms: 2000, pause_assembly_threshold_ms: 900, pause_assembly_lin: 2.4, pause_assembly_quad: 120, pause_belt_boot: 0.72, pause_belt_assembly: 0.92, min_pause_ms: 1400, max_pause_ms: 16000, playback_speed: 1.0 },
+  fast_mode: { pause_reference: 'avg', pause_boot_ms: 1000, pause_assembly_threshold_ms: 900, pause_assembly_lin: 2.4, pause_assembly_quad: 120, pause_belt_boot: 0.72, pause_belt_assembly: 0.92, min_pause_ms: 700, max_pause_ms: 16000, playback_speed: 1.0, post_voice2_gap_ms: 0 },
+  easy_mode: { pause_reference: 'avg', pause_boot_ms: 2000, pause_assembly_threshold_ms: 900, pause_assembly_lin: 2.4, pause_assembly_quad: 120, pause_belt_boot: 0.72, pause_belt_assembly: 0.92, min_pause_ms: 1400, max_pause_ms: 16000, playback_speed: 1.0, post_voice2_gap_ms: 1000 },
 }
 function applySuggested() {
   if (labCfg.value) Object.assign(labCfg.value, SUGGESTED[labMode.value] || {})
@@ -394,6 +445,10 @@ const KNOBS = [
   { key: 'min_pause_ms', label: 'Floor (hard min)', min: 0, max: 4000, step: 100, unit: 'ms', fmt: v => v + 'ms',
     help: 'Absolute floor — the gap never drops below this even after belt taper.' },
   { key: 'max_pause_ms', label: 'Ceiling', min: 4000, max: 20000, step: 500, unit: 'ms', fmt: v => v + 'ms' },
+  // Not part of the say-it-yourself gap — this one sits AFTER the answer, so it
+  // is excluded from the curve below (which plots the pause under test only).
+  { key: 'post_voice2_gap_ms', label: 'Hold after answer', min: 0, max: 4000, step: 50, unit: 'ms', fmt: v => v + 'ms',
+    help: 'Extra silence held after the second target voice, before the next cycle starts — "to stop the next cycle just coming in and taking over". Voice 2 is the phase with the target text on screen, so the same beat also leaves that text up for longer. Easy holds 1s; Fast holds none. 0 = the next cycle follows immediately.' },
 ]
 
 // ============================================================================
@@ -713,6 +768,33 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   color: var(--color-paper-dim, var(--muted));
   max-width: 620px;
 }
+/* A knob that does nothing on half the estate has to SAY so, right next to
+   itself — a silent no-op is the failure mode this whole note exists to stop. */
+.field-warn {
+  margin: 0.6rem 0 0;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(251, 146, 60, 0.1);
+  border: 1px solid rgba(251, 146, 60, 0.28);
+  color: #fbbf24;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  max-width: 620px;
+}
+.field-warn strong { color: #fdba74; }
+.syll-input {
+  width: 160px;
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--color-paper, var(--ink));
+  border: 1px solid var(--color-graphite, var(--surface-2));
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+  font-size: 0.875rem;
+  outline: none;
+  box-sizing: border-box;
+}
+.syll-input:focus { border-color: #60a5fa; }
 
 /* NumField */
 :deep(.num-field) { display: flex; flex-direction: column; }
@@ -935,6 +1017,13 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 [data-theme="light"] .chart-dot { stroke: #fff; }
 [data-theme="light"] .chart-knee { stroke: #1d4ed8; }
 [data-theme="light"] .chart-mark-text.knee { fill: #1d4ed8; }
+[data-theme="light"] .syll-input { background: var(--surface-2); border-color: var(--line); }
+[data-theme="light"] .field-warn {
+  background: rgba(180, 83, 9, 0.08);
+  border-color: rgba(180, 83, 9, 0.3);
+  color: #92400e;
+}
+[data-theme="light"] .field-warn strong { color: #7c2d12; }
 [data-theme="light"] .admin-warn { color: #92400e; }
 [data-theme="light"] .err,
 [data-theme="light"] :deep(.save-err) { color: #b91c1c; }

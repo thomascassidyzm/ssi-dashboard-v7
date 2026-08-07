@@ -49,6 +49,25 @@ const DEFAULT_MODE = 'fast'
  *  this cap alone. */
 const DEFAULT_MAX_PHRASE_LENGTH_FRACTION = 1.0
 
+/** ABSOLUTE ceiling on a phrase's target SYLLABLE count — above it the phrase
+ *  is skipped (Tom, 2026-08-07). Distinct from the fraction above in two ways
+ *  that matter: it is absolute rather than relative to the course, and it
+ *  measures syllables rather than characters.
+ *
+ *  0 / absent / blank = NO LIMIT, which is Fast and is the historic behaviour.
+ *  A cap must never appear by omission.
+ *
+ *  KNOWN LIMIT, stated because a silent no-op is the failure mode here: the
+ *  syllable count both this generator and the learner app use is
+ *  `target_syllable_count` if the column is populated, else a vowel-cluster
+ *  heuristic with a CJK special case. Measured 2026-08-07: the column is
+ *  populated on 10,813 of 818,220 phrases (1.3%), so the heuristic is the live
+ *  path almost everywhere — and it returns 1 for any non-Latin, non-CJK script
+ *  (Arabic, Hebrew, Devanagari, Cyrillic, Greek, Thai). On those courses this
+ *  cap is INERT and maxPhraseLengthFraction is the only length control that
+ *  bites. The admin page says so next to the knob. */
+const DEFAULT_MAX_PHRASE_SYLLABLES = 0
+
 /** Floors the length cap must never breach, from the methodology's per-LEGO
  *  phrase minimums (ralph: >=4 BUILD, >=5 USE — "fewer phrases is a FAIL").
  *  These are FLOORS, deliberately not the round's ceiling: passing the ceiling
@@ -97,6 +116,21 @@ function resolveMaxPhraseLengthFraction(modeConfig) {
     return DEFAULT_MAX_PHRASE_LENGTH_FRACTION
   }
   return f
+}
+
+/**
+ * The absolute syllable ceiling for a mode, validated. Anything missing,
+ * non-numeric, non-finite or <= 0 degrades to 0 = NO LIMIT — the historic
+ * behaviour. Symmetrical with the fraction above: a bad hand-edit falls back to
+ * today's uncapped script, never to a cap that silently shortens a course.
+ * Fractional values floor, so 12.9 is a ceiling of 12.
+ */
+function resolveMaxPhraseSyllables(modeConfig) {
+  const n = modeConfig && modeConfig.maxPhraseSyllables
+  if (typeof n !== 'number' || !Number.isFinite(n) || n <= 0) {
+    return DEFAULT_MAX_PHRASE_SYLLABLES
+  }
+  return Math.floor(n)
 }
 
 /**
@@ -165,17 +199,44 @@ function applyPhraseLengthCap(phrases, limit, lengthOf = phraseLengthOf, minKeep
   return [...phrases].sort((a, b) => lengthOf(a) - lengthOf(b)).slice(0, minKeep)
 }
 
+/**
+ * Both length caps, applied to one LEGO's candidate pool, in one place.
+ *
+ * They compose rather than compete: a phrase survives only if it is inside the
+ * relative CHARACTER ceiling AND the absolute SYLLABLE ceiling. Each is applied
+ * through applyPhraseLengthCap with its own measure, so each carries its own
+ * starvation guard and either one alone behaves exactly as it did before.
+ * Order is irrelevant to the result when neither guard fires; when one does,
+ * running the relative cap first keeps the guard's "shortest N" measured on the
+ * pool the course-wide ceiling already agreed to.
+ *
+ * `caps.lengthLimit` of Infinity and `caps.syllableLimit` of 0 are both the
+ * uncapped identity, so Fast short-circuits to the plain historic pool.
+ *
+ * @param {Array}  phrases   candidates, any order
+ * @param {object} caps      { lengthLimit, lengthOf, syllableLimit, syllablesOf }
+ * @param {number} minKeep   the methodology phrase floor for this pool
+ */
+function applyPhraseCaps(phrases, caps, minKeep = 1) {
+  const byLength = applyPhraseLengthCap(phrases, caps.lengthLimit, caps.lengthOf || phraseLengthOf, minKeep)
+  if (!caps.syllableLimit || !caps.syllablesOf) return byLength
+  return applyPhraseLengthCap(byLength, caps.syllableLimit, caps.syllablesOf, minKeep)
+}
+
 module.exports = {
   MODE_KEYS,
   MODE_FALLBACKS,
   DEFAULT_MODE,
   SCRIPT_SHAPE_KEYS,
   DEFAULT_MAX_PHRASE_LENGTH_FRACTION,
+  DEFAULT_MAX_PHRASE_SYLLABLES,
   MIN_BUILD_PHRASES_AFTER_CAP,
   MIN_USE_PHRASES_AFTER_CAP,
   resolveScriptShape,
   resolveMaxPhraseLengthFraction,
+  resolveMaxPhraseSyllables,
   phraseLengthOf,
   courseMaxPhraseLength,
   applyPhraseLengthCap,
+  applyPhraseCaps,
 }

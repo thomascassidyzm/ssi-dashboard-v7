@@ -49,9 +49,11 @@
 const createLogger = require('./shared/logger.cjs')
 const logger = createLogger('LearningScriptGenerator')
 const {
-  MODE_KEYS, MODE_FALLBACKS, DEFAULT_MODE, DEFAULT_MAX_PHRASE_LENGTH_FRACTION,
+  MODE_KEYS, MODE_FALLBACKS, DEFAULT_MODE,
+  DEFAULT_MAX_PHRASE_LENGTH_FRACTION, DEFAULT_MAX_PHRASE_SYLLABLES,
   MIN_BUILD_PHRASES_AFTER_CAP, MIN_USE_PHRASES_AFTER_CAP,
-  resolveScriptShape, resolveMaxPhraseLengthFraction, phraseLengthOf, courseMaxPhraseLength, applyPhraseLengthCap,
+  resolveScriptShape, resolveMaxPhraseLengthFraction, resolveMaxPhraseSyllables,
+  phraseLengthOf, courseMaxPhraseLength, applyPhraseCaps,
 } = require('./learning-modes.cjs')
 
 // FALLBACK spaced-rep offsets — used ONLY when algorithm_config.script_shape
@@ -123,6 +125,7 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
   let listening = { ...DEFAULT_LISTENING }
   let scriptShapeSource = 'fallback'
   let maxPhraseLengthFraction = DEFAULT_MAX_PHRASE_LENGTH_FRACTION
+  let maxPhraseSyllables = DEFAULT_MAX_PHRASE_SYLLABLES
 
   // Mode rows are fetched alongside the global shape so the per-mode override
   // layers in one round-trip. The fallback chain lets fast_mode degrade to
@@ -138,7 +141,7 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
 
     if (error) {
       logger.warn(`algorithm_config fetch failed (${error.message}) — using built-in fallback shape [${FIBONACCI.join(',')}]. Script View may diverge from the learner.`)
-      return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, mode }
+      return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, maxPhraseSyllables, mode }
     }
 
     const byKey = new Map((data || []).map(r => [r.key, r.config || {}]))
@@ -161,6 +164,7 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
       const modeConfig = byKey.get(resolvedKey)
       scriptShape = resolveScriptShape(scriptShape, modeConfig)
       maxPhraseLengthFraction = resolveMaxPhraseLengthFraction(modeConfig)
+      maxPhraseSyllables = resolveMaxPhraseSyllables(modeConfig)
       if (resolvedKey !== modeKey) {
         logger.warn(`algorithm_config.${modeKey} row MISSING — fell back to ${resolvedKey}. Expected during the learning-app promotion window; fix the row once it ships.`)
       }
@@ -171,7 +175,7 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
     logger.warn(`algorithm_config fetch threw (${err.message}) — using built-in fallback shape.`)
   }
 
-  return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, mode }
+  return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, maxPhraseSyllables, mode }
 }
 
 /**
@@ -735,7 +739,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   // which mode row layers its scriptShape override on top of the global one;
   // defaults to fast, which is the old normal_mode behaviour unchanged.
   const mode = options.mode || DEFAULT_MODE
-  const { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction } =
+  const { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, maxPhraseSyllables } =
     await loadAlgorithmConfig(supabase, mode)
   const SPACED_REP_OFFSETS = scriptShape.spacedRepOffsets
   const MAX_BUILD_PHRASES = scriptShape.maxBuildPhrases
@@ -796,6 +800,25 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     : courseMaxPhraseLength([...buildMap.values(), ...useMap.values()]) * maxPhraseLengthFraction
   if (Number.isFinite(phraseLengthLimit)) {
     logger.info(`Mode '${mode}': phrase length capped at ${phraseLengthLimit.toFixed(0)} chars of target text (${Math.round(maxPhraseLengthFraction * 100)}% of the course's longest phrase)`)
+  }
+  // The second, ABSOLUTE ceiling (Tom, 2026-08-07): skip any phrase over N
+  // target syllables. 0 = no limit = Fast = the historic path. Both caps go
+  // through applyPhraseCaps so there is one home for the rule.
+  const phraseCaps = {
+    lengthLimit: phraseLengthLimit,
+    lengthOf: phraseLengthOf,
+    syllableLimit: maxPhraseSyllables,
+    syllablesOf,
+  }
+  if (maxPhraseSyllables > 0) {
+    // Log what the cap can actually SEE, because a syllable count of 1 across
+    // the board means the cap is inert on this course rather than generous.
+    const pool = [...buildMap.values(), ...useMap.values()].flat()
+    const maxSeen = pool.reduce((m, p) => Math.max(m, syllablesOf(p)), 0)
+    logger.info(`Mode '${mode}': phrases over ${maxPhraseSyllables} target syllables are skipped (longest phrase in this course measures ${maxSeen} syllables)`)
+    if (maxSeen <= 1) {
+      logger.warn(`Mode '${mode}': the syllable cap is INERT for ${courseCode} — every phrase measures <=1 syllable, so no phrase can exceed ${maxPhraseSyllables}. This target script has no syllable counter; maxPhraseLengthFraction is the only length control that bites here.`)
+    }
   }
 
   const legos = allLegoRecords.slice(lookbackStart, lookbackStart + totalToLoad)
@@ -931,8 +954,8 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     // Length cap first (Easy halves the longest phrase available for this
     // LEGO; Fast is uncapped), then the historic shortest-first sort. The cap
     // yields to the phrase floor rather than starving the round.
-    const sortedBuildPhrases = applyPhraseLengthCap(
-      currentBuildPhrases, phraseLengthLimit, phraseLengthOf, MIN_BUILD_PHRASES_AFTER_CAP
+    const sortedBuildPhrases = applyPhraseCaps(
+      currentBuildPhrases, phraseCaps, MIN_BUILD_PHRASES_AFTER_CAP
     ).slice().sort(byPhraseLength)
 
     let practiceCount = 0
@@ -960,8 +983,8 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
     // Step 2: Reserve USE phrases for consolidation BEFORE using them for BUILD padding
     // Same cap + historic sort, at the USE floor.
-    const sortedUsePhrases = applyPhraseLengthCap(
-      currentUsePhrases, phraseLengthLimit, phraseLengthOf, MIN_USE_PHRASES_AFTER_CAP
+    const sortedUsePhrases = applyPhraseCaps(
+      currentUsePhrases, phraseCaps, MIN_USE_PHRASES_AFTER_CAP
     ).slice().sort(byPhraseLength)
 
     // Step 3: Fill remaining BUILD slots with USE phrases (BUILD priority > CONSOLIDATE)
