@@ -54,8 +54,29 @@ BANDS=("1:200" "201:400" "401:600" "601:800" "801:1000" "1001:1200" "1201:1400" 
 
 CONCURRENCY=4   # 8 cores, machine already loaded — do NOT raise (Tom's standing instruction)
 
+PARENT=3b911e37-4079-46bb-9d91-55d38c76e8b2
+SURFACE=http://localhost:4317
+
 say()   { echo "[$(date -u +%H:%M:%SZ)] $*" >> "$LOG"; }
-alert() { echo "[$(date -u +%H:%M:%SZ)] $*" | tee -a "$ALERTS" >> "$LOG"; }
+
+# Reporting must NOT depend on a chat session staying alive. The shepherd outlives any
+# agent turn, so it pings the parent itself: a band completion or a dead run at 4am is
+# useless if the only thing that would have relayed it has ended. Every alert goes to
+# the parent conversation as well as to disk.
+ping_parent() {
+  python3 - "$1" <<'PY' 2>/dev/null || true
+import json,sys,urllib.request
+body=json.dumps({"jobId":"3b911e37-4079-46bb-9d91-55d38c76e8b2","text":sys.argv[1]}).encode()
+r=urllib.request.Request("http://localhost:4317/api/reply",data=body,
+                         headers={"Content-Type":"application/json"})
+urllib.request.urlopen(r,timeout=20).read()
+PY
+}
+
+alert() {
+  echo "[$(date -u +%H:%M:%SZ)] $*" | tee -a "$ALERTS" >> "$LOG"
+  ping_parent "[shepherd $(date -u +%H:%MZ)] $*"
+}
 
 jget() { python3 -c "
 import sys,json
@@ -139,8 +160,22 @@ deu_report() {
   fi
 }
 
+# The damage figure is the first real measurement of Tom's "1 in 3" — the share of
+# incumbent clips that are present, alive and WRONG. It is printed once, mid-run, when
+# the listen phase ends, and it is the single most interesting number of the night. It
+# gets pinged the moment it appears, not at band completion hours later.
+DAMAGE_SEEN=/home/tomcassidy/.fra-damage-reported
+damage_watch() {
+  grep -h "listened to .* incumbent clips" /tmp/fra-phase8-3468.log 2>/dev/null | while IFS= read -r line; do
+    grep -Fqx "$line" "$DAMAGE_SEEN" 2>/dev/null && continue
+    echo "$line" >> "$DAMAGE_SEEN"
+    alert "DAMAGE FIGURE — ${line#*\] }"
+  done
+}
+
 say "=== overnight shepherd starting (pid $$) ==="
 [ -f "$BANDSTATE" ] || echo 0 > "$BANDSTATE"
+touch "$DAMAGE_SEEN"
 
 tick=0
 while true; do
@@ -201,6 +236,7 @@ while true; do
       ;;
   esac
 
+  damage_watch
   tick=$((tick+1))
   [ $((tick % 5)) -eq 1 ] && deu_report
   sleep 60
