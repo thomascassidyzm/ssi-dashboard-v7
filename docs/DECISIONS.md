@@ -708,3 +708,32 @@ against the cost of being wrong, and it removes a round-trip of Tom's time from 
 
 **Search width:** re-levelled
 **Decided by:** Tom, 2026-08-06, ruling the VOICELAB 01 spend.
+
+## 2026-08-07 — orchestrator off pm2, onto systemd, under the watchdog
+
+**Move:** finished the 2026-07-30 pm2→systemd migration for its last holdout. `orchestrator`
+(3456) now runs as `popty-orchestrator.service` alongside its seven siblings, is removed from pm2
+entirely, and is health-checked by the existing cron watchdog. Triggered by the 14:44 UTC watson-1
+reboot, where `@reboot pm2 resurrect` lost a race with crontab loading and left 3456 dead for ~50
+minutes while every systemd sibling recovered in five seconds unattended.
+
+**Better:** one supervision mechanism instead of two, and the surviving failure mode (the user
+manager itself dying) is already covered by the cron watchdog — which now watches 3456 too, closing
+the gap that turned a five-second recovery into a fifty-minute outage. **Simpler:** a daemon is
+removed rather than a watchdog added; pm2 now manages nothing at all. **Cheaper (total):** the pm2
+God daemon stops running, one unit file replaces an opaque `dump.pm2` blob carrying a stale
+snapshot of a 2026-07-30 shell environment, and nobody has to reason about which of two supervisors
+owns a service during an incident.
+
+**Searched & rejected:**
+- Just restart it under pm2 and move on — failed *better*: it reinstates the exact hook that just
+  failed intermittently, which is worse than a deterministic failure.
+- Add a watchdog for pm2's resurrect race — failed *simpler* and *cheaper*: it defends a daemon
+  that has no remaining reason to exist.
+- Move orchestrator to the `-prod` checkout to match its siblings — failed *better* for this pass:
+  a supervision fix should not smuggle in a checkout cutover. The unit preserves the dev checkout
+  pm2 actually ran, with a comment saying so; the cutover stays a separate, deliberate decision.
+
+**Search width:** visible-options
+**Decided by:** agent — Tom's brief specified the migration; the watchdog line and the empty
+`dump.pm2` force-save are the agent's calls, both reversible.
