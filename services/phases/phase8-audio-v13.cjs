@@ -6553,15 +6553,59 @@ function parseVoiceAliases(raw) {
   } catch { return [] }
 }
 
+/** Courses queried FIRST as reuse sources for a given course, before the
+ *  generic estate sweep. Tom, 2026-08-07: deu_for_eng is a PRIMARY source for
+ *  the English known side of fra_for_eng, "not an afterthought behind a generic
+ *  estate-wide lookup". Same-known-language courses rebuilt most recently. */
+const PREFERRED_SOURCES = {
+  fra_for_eng: ['deu_for_eng', 'spa_for_eng', 'fra_ca_for_eng'],
+  deu_for_eng: ['fra_for_eng', 'spa_for_eng'],
+}
+function preferredSourcesFor(courseCode, raw) {
+  if (raw) {
+    try {
+      const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw
+      if (Array.isArray(parsed)) return parsed.filter(s => typeof s === 'string')
+    } catch { /* fall through to the default */ }
+  }
+  return PREFERRED_SOURCES[courseCode] || []
+}
+
+// THE COVERAGE TABLE — a first-class deliverable, not an internal step.
+// Read-only: measures which voice already has the most of what these rounds
+// need, so the voice can be chosen on evidence rather than on habit.
+app.get('/reuse-coverage/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const rounds = Math.max(1, Math.min(500, parseInt(req.query.rounds, 10) || 10))
+    const voiceAliases = parseVoiceAliases(req.query.voiceAliases)
+    const layers = req.query.layers ? String(req.query.layers).split(',') : undefined
+    const table = await reusePlanner.buildCoverageTable(supabase, courseCode, rounds, {
+      voiceAliases,
+      codeService: { getName: getLangEnglishName },
+      preferredSourceCourses: preferredSourcesFor(courseCode, req.query.preferredSources),
+      ...(layers ? { layers } : {}),
+    })
+    res.json(table)
+  } catch (e) {
+    logger.error(`[ReuseFirst /reuse-coverage] ${e.message}`)
+    res.status(500).json({ ok: false, error: e.message })
+  }
+})
+
 app.get('/reuse-plan/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
     const rounds = Math.max(1, Math.min(500, parseInt(req.query.rounds, 10) || 10))
-    const crossRole = req.query.crossRole === 'true'
+    const crossRole = req.query.crossRole !== 'false'
     const voiceAliases = parseVoiceAliases(req.query.voiceAliases)
     const verifyBytes = req.query.verifyBytes !== 'false'
 
-    const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, { crossRole, voiceAliases })
+    const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, {
+      crossRole, voiceAliases,
+      codeService: { getName: getLangEnglishName },
+      preferredSourceCourses: preferredSourcesFor(courseCode, req.query.preferredSources),
+    })
     if (verifyBytes) await reusePlanner.verifyPlanBytes(plan, { headObject: reuseHeadObject })
 
     res.json(plan)
@@ -6575,7 +6619,7 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
   const { courseCode } = req.params
   const rounds = Math.max(1, Math.min(500, parseInt(req.body?.rounds, 10) || 10))
   const dryRun = req.body?.dryRun !== false
-  const crossRole = req.body?.crossRole === true
+  const crossRole = req.body?.crossRole !== false
   const voiceAliases = parseVoiceAliases(req.body?.voiceAliases)
 
   // A live run SPENDS MONEY on TTS. Typed confirmation, same shape the rest of
@@ -6600,7 +6644,11 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
 
   const execute = async () => {
     try {
-      const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, { crossRole, voiceAliases })
+      const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, {
+        crossRole, voiceAliases,
+        codeService: { getName: getLangEnglishName },
+        preferredSourceCourses: preferredSourcesFor(courseCode, req.body?.preferredSources),
+      })
       await reusePlanner.verifyPlanBytes(plan, { headObject: reuseHeadObject })
       run.plan = { shape: plan.shape, summary: plan.summary, byLayer: plan.byLayer, estimate: plan.estimate, voices: plan.voices, bytes: plan.bytes }
 
