@@ -32,13 +32,15 @@ const fs = require('fs')
 const path = require('path')
 const { Client } = require('pg')
 
-const POD_SLUG = 'pod-0'
 const REPO = path.join(__dirname, '..', '..')
 const APPLY = process.argv.includes('--apply')
 const arg = (n) => {
   const a = process.argv.find(x => x.startsWith(`--${n}=`))
   return a ? a.split('=').slice(1).join('=') : null
 }
+// Matches align-pod0-to-canonical.cjs's --pod-slug: on a live course the aligned
+// queue lives on a parallel slug so learners keep reading an intact pod-0.
+const POD_SLUG = arg('pod-slug') || 'pod-0'
 const COURSE = arg('course')
 const DRAFTS = arg('drafts')
 const SCRIPT = (arg('script') || 'latin').toLowerCase()
