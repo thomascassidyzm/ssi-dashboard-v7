@@ -665,6 +665,9 @@
 
               <!-- Result / audition per role -->
               <div v-if="legoAudioResults.length" class="bg-emerald-900 bg-opacity-20 border border-emerald-800 rounded-lg p-3 space-y-3">
+                <div class="text-xs text-emerald-400">
+                  Live on this LEGO already — nothing to save. Not right? Change the punctuation and regenerate again.
+                </div>
                 <div v-for="r in legoAudioResults" :key="r.role" class="space-y-1">
                   <div class="text-sm text-emerald-300">
                     {{ r.label }} — {{ r.durationMs }}ms · spoke &ldquo;{{ r.spoken }}&rdquo;
@@ -672,6 +675,11 @@
                   <audio v-if="r.url" :src="r.url" controls class="w-full h-9"></audio>
                   <div v-else class="text-xs text-faint">Regenerated, but no audition URL available.</div>
                 </div>
+              </div>
+
+              <!-- Nothing went wrong, but a role was deliberately left alone -->
+              <div v-if="legoAudioNotice" class="bg-amber-900 bg-opacity-20 border border-amber-800 rounded-lg p-3 text-sm text-amber-200">
+                {{ legoAudioNotice }}
               </div>
 
               <div v-if="legoAudioError" class="bg-red-900 bg-opacity-20 border border-red-800 rounded-lg p-3 text-sm text-red-300">
@@ -1565,9 +1573,19 @@ const reloadLearningJourney = () => {
 // 4-phase player (allItems) and review copies in other rounds stale — a full
 // re-fetch is the only way to true everything up. Done silently (list stays
 // mounted) with the scroll position restored, so the editor keeps their spot.
+//
+// When a search is ACTIVE the screen is rendered from journeySearchResults /
+// journeySearchAllItems, NOT from learningJourneyData — refreshing only the
+// paginated page left the visible rows and the player on the old audio (the
+// 2026-08-08 "regenerate doesn't save" report: the LEGO was found by searching
+// "explain", so nothing on screen was ever trued up). Re-run the search too.
 const refreshJourneyInPlace = async () => {
   const scrollTop = scriptContentRef.value?.scrollTop ?? 0;
-  await loadLearningJourney({ silent: true });
+  const activeSearch = journeySearch.value.trim();
+  await Promise.all([
+    loadLearningJourney({ silent: true }),
+    activeSearch ? searchJourney(activeSearch) : Promise.resolve(),
+  ]);
   await nextTick();
   if (scriptContentRef.value) scriptContentRef.value.scrollTop = scrollTop;
 };
@@ -2049,6 +2067,10 @@ const legoSpokenTarget = ref<string>('');
 const legoRegenFlags = ref({ known: false, target1: true, target2: true });
 const legoAudioBusy = ref(false);
 const legoAudioError = ref<string | null>(null);
+// Not an error: the server deliberately declined a role (a human recording is
+// precious, or the whole course is human-voiced). Said in plain words, in its
+// own panel — a red box read as "the regeneration broke".
+const legoAudioNotice = ref<string | null>(null);
 const legoAudioResults = ref<Array<{ role: string; label: string; durationMs: number | null; url: string | null; spoken: string }>>([]);
 const legoAudioSourceItem = ref<any>(null);
 
@@ -2082,6 +2104,7 @@ const onJourneyLegoAudioEdit = (item: any) => {
   legoSpokenTarget.value = item.target_text || '';
   legoRegenFlags.value = { known: false, target1: true, target2: true };
   legoAudioError.value = null;
+  legoAudioNotice.value = null;
   legoAudioResults.value = [];
   legoAudioSourceItem.value = item;
   legoAudioModalVisible.value = true;
@@ -2091,11 +2114,34 @@ const closeLegoAudioModal = () => {
   legoAudioModalVisible.value = false;
 };
 
+// A LEGO's own clips (known / Voice 1 / Voice 2) are carried by its intro and
+// debut rows, and the same LEGO is rendered from several separate arrays:
+// the paginated rounds, the paginated allItems the player reads, and — when a
+// search is active — the search rounds and search allItems. They are distinct
+// objects, so a new clip has to be written into all of them for auto-accept to
+// mean anything on screen. Phrase rows carry their own clips and are left alone.
+const rebindLegoAudioEverywhere = (legoId: string, uuidField: string, audioId: string) => {
+  const lists: any[][] = [
+    learningJourneyData.value?.allItems || [],
+    journeySearchAllItems.value || [],
+    ...(learningJourneyData.value?.rounds || []).map((r: any) => r.items || []),
+    ...(journeySearchResults.value || []).map((r: any) => r.items || []),
+  ];
+  for (const items of lists) {
+    for (const item of items) {
+      if (item?.legoId !== legoId) continue;
+      if (item.type !== 'intro' && item.type !== 'debut') continue;
+      item[uuidField] = audioId;
+    }
+  }
+};
+
 const regenerateLegoAudio = async () => {
   const roles = legoSelectedRoles.value;
   if (legoAudioBusy.value || !roles.length) return;
   legoAudioBusy.value = true;
   legoAudioError.value = null;
+  legoAudioNotice.value = null;
   legoAudioResults.value = [];
 
   const ROLE_LABEL: Record<string, string> = { known: 'Known', target1: 'Voice 1', target2: 'Voice 2' };
@@ -2120,7 +2166,9 @@ const regenerateLegoAudio = async () => {
     }
     const result = await resp.json();
     if (result.skipped) {
-      legoAudioError.value = `Skipped: ${result.reason}`;
+      legoAudioNotice.value = result.reason === 'human-voice-only-course'
+        ? 'Nothing regenerated: this course is voiced by people, so it never gets TTS.'
+        : `Nothing regenerated: ${result.reason}.`;
       return;
     }
 
@@ -2133,9 +2181,15 @@ const regenerateLegoAudio = async () => {
 
     for (const role of roles) {
       const audioId = result[COLUMN[role]];
-      // Rebind the live journey row in place so its play buttons hit the new clip.
-      if (audioId && legoAudioSourceItem.value) {
-        legoAudioSourceItem.value[UUID_FIELD[role]] = audioId;
+      // AUTO-ACCEPT: the new clip IS the LEGO's clip the moment it renders, so
+      // every loaded copy of that LEGO's row moves with it, immediately — the
+      // row under the dialog, the intro row above it, the 4-phase player's
+      // allItems, and the search arrays when a search is what's on screen.
+      // Rebinding only legoAudioSourceItem left every other copy on the old
+      // clip until (or unless) a re-fetch landed.
+      if (audioId) {
+        rebindLegoAudioEverywhere(legoAudioLegoId.value, UUID_FIELD[role], audioId);
+        if (legoAudioSourceItem.value) legoAudioSourceItem.value[UUID_FIELD[role]] = audioId;
       }
       let url: string | null = null;
       if (audioId) {
@@ -2157,7 +2211,10 @@ const regenerateLegoAudio = async () => {
     }
 
     if (result.skipped_human?.length) {
-      legoAudioError.value = `Kept human recording(s) for: ${result.skipped_human.join(', ')} — no TTS written.`;
+      const kept = result.skipped_human
+        .map((r: string) => ({ known: 'Known', target1: 'Voice 1', target2: 'Voice 2' } as any)[r] || r)
+        .join(', ');
+      legoAudioNotice.value = `${kept}: kept the human recording — it is precious, so no TTS was written and that clip is unchanged.`;
     }
 
     // True up the journey (other rows referencing this LEGO's clips).
