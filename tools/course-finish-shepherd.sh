@@ -215,10 +215,23 @@ persist_artifact() {
   local out="$ARTDIR/${COURSE}-rounds${from}-${to}-reuse-applied-log.json"
   curl -s -m 300 "http://localhost:$PORT/reuse-run/$id" -o /tmp/$COURSE_KEY-band-$((idx+1))-run.json || return 1
   python3 - /tmp/$COURSE_KEY-band-$((idx+1))-run.json "$out" "$from" <<'PY'
-import json,sys
+import json,os,sys
 d=json.load(open(sys.argv[1]))
 if d.get('state')!='done' or not d.get('log'): sys.exit(1)
 log=d['log']
+# NEVER let a re-plan clobber the record of the band that did the work. A
+# service restart makes the shepherd re-issue a band; the re-plan then finds
+# every clip already satisfied and returns RENDERED:0 — correct as a plan, and
+# a lie as a record. deu rounds 201-400 rendered 3,471 clips at 03:00:23Z on
+# 2026-08-08 and the re-run overwrote it with 0. The work was real; only the
+# bookkeeping was lost, and the morning report reads the bookkeeping.
+if os.path.exists(sys.argv[2]):
+    try:
+        prev=json.load(open(sys.argv[2]))
+        if (prev.get('counts') or {}).get('RENDERED',0) > (log.get('counts') or {}).get('RENDERED',0):
+            sys.exit(0)   # keep the richer record, still counts as persisted
+    except Exception:
+        pass
 log['runState']=d['state']; log['runStartedAt']=d.get('startedAt'); log['runFinishedAt']=d.get('finishedAt')
 log['fromRound']=int(sys.argv[3])
 json.dump(log,open(sys.argv[2],'w'),indent=1,ensure_ascii=False)

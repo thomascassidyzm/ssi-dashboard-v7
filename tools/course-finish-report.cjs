@@ -52,17 +52,39 @@ function main () {
     }
   }
 
+  // Render counts come from the append-only LEDGER, not from the last artifact.
+  // A service restart makes the shepherd re-issue a band; the re-plan finds
+  // every clip already satisfied and reports RENDERED:0 — correct as a plan and
+  // false as a record. Taking the per-band MAX across ledger entries keeps the
+  // run that actually did the work. The artifact is still the source for the
+  // per-clip origin breakdown, where a re-plan cannot invent anything.
+  const ledger = {}
+  for (const c of COURSES) {
+    ledger[c.key] = {}
+    let lines = []
+    try {
+      lines = fs.readFileSync(`/home/tomcassidy/.${c.key}-kept-unheard.jsonl`, 'utf8').trim().split('\n').filter(Boolean)
+    } catch { /* no band has completed yet */ }
+    for (const l of lines) {
+      let r; try { r = JSON.parse(l) } catch { continue }
+      const key = `${r.fromRound}-${r.toRound}`
+      const prev = ledger[c.key][key]
+      if (!prev || (r.rendered || 0) > (prev.rendered || 0)) ledger[c.key][key] = r
+    }
+  }
+
   const totals = {}
   for (const c of COURSES) {
     const t = { rendered: 0, reusedCross: 0, reusedOwn: 0, kept: 0, failed: 0, chars: 0, bandsDone: 0, lastRound: 200 }
     for (const r of state[c.key].rows) {
       if (!r.applied) continue
+      const led = ledger[c.key][`${r.from}-${r.to}`]
       const k = r.applied.counts || {}
-      t.rendered += k.RENDERED || 0
-      t.reusedCross += k.REUSED_CROSS || 0
-      t.reusedOwn += k.REUSED_OWN || 0
-      t.kept += k.NONE || 0
-      t.failed += k.FAILED || 0
+      t.rendered += led ? (led.rendered || 0) : (k.RENDERED || 0)
+      t.reusedCross += led ? (led.reusedCross || 0) : (k.REUSED_CROSS || 0)
+      t.reusedOwn += led ? (led.reusedOwn || 0) : (k.REUSED_OWN || 0)
+      t.kept += led ? (led.keptUnheard || 0) : (k.NONE || 0)
+      t.failed += led ? (led.failed || 0) : (k.FAILED || 0)
       t.chars += (r.applied.plan?.estimate?.characters) || 0
       t.bandsDone++
       t.lastRound = Number(r.to)
@@ -110,10 +132,13 @@ function main () {
   say('the same clips. The genuinely new work past round 200 was about 12,200 clips per')
   say('course, not 35,000.')
   say('')
-  say('And almost all of it is ENGLISH. Of the clips needing a fresh render, French wanted')
-  say('6,684 known-side and 1,235 presentation against just 120 French-voice clips; German')
-  say('wanted 8,250 known-side and 1,192 presentation against 7 German-voice clips. The')
-  say('target-language audio for both courses was already essentially done.')
+  say('That was the picture BEFORE your 02:02Z ruling, and the ruling changed it. Under the')
+  say('old policy the outstanding work was almost all English — French wanted 6,684')
+  say('known-side and 1,235 presentation renders against just 120 French-voice clips, and')
+  say('German 8,250 and 1,192 against 7 — because the target-language audio counted as')
+  say('already done. Once the existing French and German clips stopped counting as a')
+  say('source, the job inverted: the work is now overwhelmingly TARGET-side, which is to')
+  say('say it is the actual French and German voices being re-recorded. See section 3b.')
   say('')
 
   say('## 2. Clips rendered')
@@ -129,11 +154,15 @@ function main () {
   say('|---|---|---|')
   for (const c of COURSES) say(`| ${c.name} | ${totals[c.key].reusedCross.toLocaleString()} | ${totals[c.key].reusedOwn.toLocaleString()} |`)
   say('')
-  say('The pre-flight plan showed where the borrowed clips come from. For French the big')
-  say('donor is spa_for_eng (1,631 clips), then fra_ca_for_eng (366) and a long tail of')
-  say('eng_for_* courses. For German it is spa_for_eng again (1,263), then eng_for_mar (162)')
-  say('and fra_for_eng (142). These are all English known-side lines that another course')
-  say('already had in the right voice, so they cost nothing.')
+  say('Cross-course reuse is deliberately still ON and it is free money, but the numbers')
+  say('above look small, and the reason is worth understanding rather than reading as a')
+  say('policy failure. Borrowing only ever works for the ENGLISH known-side lines, because')
+  say('those are the ones another course already has in the same voice — the estate-wide')
+  say('pool offered French 1,631 clips from spa_for_eng, 366 from fra_ca_for_eng and a long')
+  say('tail of eng_for_* courses, and German 1,263 from spa_for_eng and 162 from')
+  say('eng_for_mar. Most of that English borrowing was already taken earlier tonight, and')
+  say('what remains after the ruling is target-side French and German audio, which by')
+  say('definition no other course can lend. So the bill is renders, not borrows.')
   say('')
 
   say('## 3b. Where every clip came from — the reuse policy')
@@ -153,13 +182,22 @@ function main () {
     for (const r of state[c.key].rows) {
       if (!r.applied) continue
       const ents = r.applied.entries || []
-      const replaced = ents.filter(e => e.action === 'RENDERED' && e.swappedInPlace).length
-      const brandNew = ents.filter(e => e.action === 'RENDERED' && !e.swappedInPlace).length
-      const cross = ents.filter(e => e.action === 'REUSED_CROSS').length
+      const led = ledger[c.key][`${r.from}-${r.to}`]
+      let replaced = ents.filter(e => e.action === 'RENDERED' && e.swappedInPlace).length
+      let brandNew = ents.filter(e => e.action === 'RENDERED' && !e.swappedInPlace).length
+      let cross = ents.filter(e => e.action === 'REUSED_CROSS').length
       const ownReuse = ents.filter(e => e.action === 'REUSED_OWN').length
-      const kept = (r.applied.counts || {}).NONE || 0
+      let kept = (r.applied.counts || {}).NONE || 0
+      let note = ''
+      // The artifact here is a re-plan that overwrote the real one; the ledger
+      // kept the true totals but not the per-clip split, so say so rather than
+      // printing a confident zero.
+      if (led && (led.rendered || 0) > replaced + brandNew) {
+        replaced = led.rendered; brandNew = 0; cross = led.reusedCross || 0; kept = led.keptUnheard || 0
+        note = ' _(totals from the run log — a service restart re-planned this band and overwrote the per-clip artifact)_'
+      }
       anySwap = true
-      say(`**${c.name}, rounds ${r.from}-${r.to}**`)
+      say(`**${c.name}, rounds ${r.from}-${r.to}**${note}`)
       say('')
       say(`- ${replaced.toLocaleString()} old ${c.name} clips REPLACED in place — these would have been reused under the old policy`)
       say(`- ${brandNew.toLocaleString()} rendered brand new (nothing existed)`)
