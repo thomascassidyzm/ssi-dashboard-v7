@@ -86,7 +86,14 @@ NAPPID=
 trap 'kill $NAPPID 2>/dev/null; exit 0' TERM INT
 nap() { sleep "$1" & NAPPID=$!; wait $NAPPID 2>/dev/null; NAPPID=; }
 
-REPO=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
+# The MAIN checkout is shared by several concurrent sessions and its branch
+# moves under you — a commit of mine landed on another session's branch at
+# 02:14Z on 2026-08-08 for exactly that reason. This run therefore reads its
+# tools and writes its artifacts in a DEDICATED WORKTREE pinned to this
+# branch, so a checkout elsewhere cannot swap the verification code out from
+# under a band that is halfway through. node_modules and .env are symlinked
+# from the main checkout (a sibling worktree has neither of its own).
+REPO=${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}
 ARTDIR="$REPO/docs/audio-repair-2026-08-07"
 
 LOG=/tmp/finish-shepherd-$COURSE_KEY.log
