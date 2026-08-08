@@ -183,17 +183,33 @@ blended two populations that should never have been averaged**, and the correcte
 The old average was arithmetically exactly this blend: 16 courses at 141 and 7 at 0 averages to
 98.1, and 16 at 0 stale with 7 at 142 averages to 43.2.
 
-The 16 `eng_for_*` courses each hold 139 target clips against 142 known clips — three short. A
-separate audit of that family is running and its findings will be published alongside this one.
+A dedicated audit of all 23 has since settled both points, in
+`pod0-nonenglish-known-audit-2026-08-08.md`:
+
+- **All 23 do descend from Aran's old canonical**, proven three ways — the scene, sentence and
+  global-order spine agrees at 142 of 142 rows in every course; the 16 `eng_for_*` courses are
+  byte-identical to the old English on 137 of 142 rows, the other 5 being the `[target language]`
+  token correctly resolved to "English"; and the 7 with no English side carry that same
+  substitution, at those same 5 row numbers, in their own languages. A line that resolves the
+  canonical's own placeholder at the canonical's own row number was not authored independently.
+- **Correctly mapped, all 23 show 141 surviving, 89 new and nothing stale** — so they are the
+  cheapest courses in the estate to bring up to the new canonical, not the most expensive.
+
+That audit also found something nobody was looking for. The three missing target clips in each
+`eng_for_*` course are the same three rows every time — and all three belong to the speaker
+**Customer 3**, who has exactly three lines in the pod. It is one speaker missed entirely, not
+three scattered failures, and it is not confined to that family: of the 65 pods that carry a
+Customer 3, **20 are missing all of its target audio**. Worth its own small item.
 
 ---
 
 ## Gaps, named plainly
 
-1. **The 7 English-on-neither-side courses are unmeasured, and it is not yet established that
-   their pod content derives from Aran's English canonical at all.** No number is offered for
-   them here rather than one nobody should believe. A dedicated audit of the 23 non-English-known
-   courses is in flight and will settle this.
+1. **Lineage for the 7 English-on-neither-side courses is proven; translation quality is not.**
+   Their diff is computed against the old canonical English supplied by row position, because
+   their own rows hold no English. That is sound for the only question that matters — has this
+   line changed — but nobody has read their Japanese, Spanish, Catalan or Basque against the
+   English for fidelity.
 2. **The diff is a text diff.** It establishes which lines changed; it does not listen to a
    single existing clip. A line that survives byte for byte is assumed to have a valid take,
    which is true of the text and unverified of the audio.
