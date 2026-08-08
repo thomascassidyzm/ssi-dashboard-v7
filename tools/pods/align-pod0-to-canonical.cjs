@@ -53,7 +53,6 @@ const { diffPod, norm } = require('./pod0-recording-diff.cjs')
 
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
-const POD_SLUG = 'pod-0'
 const CANONICAL_STAMP = '2026-08-06'
 const REPO = path.join(__dirname, '..', '..')
 
@@ -62,6 +61,14 @@ const arg = (name) => {
   const a = process.argv.find(x => x.startsWith(`--${name}=`))
   return a ? a.split('=').slice(1).join('=') : null
 }
+// Which pod slug this run rewrites. Defaults to the learner-facing `pod-0`, which
+// is right for a course that is not live. On a LIVE course, aligning in place would
+// hand real learners ~128 rows with no target text and no audio for as long as
+// translation and generation take — so the Welsh precedent (2026-08-06) is to clone
+// pod-0 to a parallel slug and align THAT. Learner-facing reads query the exact id
+// `<course>:pod-0` (player-vue useListeningPods.ts), so a different slug is invisible
+// to them. tools/pods/clone-pod.cjs makes the clone; this flag points the align at it.
+const POD_SLUG = arg('pod-slug') || 'pod-0'
 // No default course list: this tool now writes to any course, so the caller names it.
 const COURSES = (arg('course') || '').split(',').map(s => s.trim()).filter(Boolean)
 if (!COURSES.length) {
@@ -387,7 +394,9 @@ async function main() {
   }
 
   const { data: canon, error } = await db.from('canonical_pod_scenarios')
-    .select('*').eq('pod_slug', POD_SLUG).order('global_order')
+    // Always 'pod-0': this is the CANONICAL source Aran wrote, not the destination
+    // pod being rewritten. --pod-slug moves where we write, never what we read.
+    .select('*').eq('pod_slug', 'pod-0').order('global_order')
   if (error) throw error
   if (!canon.length) throw new Error('canonical_pod_scenarios has no pod-0 rows — refusing to align')
 

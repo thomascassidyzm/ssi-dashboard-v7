@@ -6652,6 +6652,14 @@ const reuseRuns = new Map()   // runId -> run record (in-process; artifact on di
 // BANDING (fromRound), not a small ceiling.
 const MAX_ROUNDS = 5000
 
+// Upper bound on /reuse-apply concurrency. Was a hard-coded 8 inline; Tom's
+// 2026-08-08 ruling is that OUR clamp should not be the binding constraint —
+// the provider's rate limit should be. Configurable so a run can be driven up
+// to the measured xAI ceiling without editing this file, and bounded rather
+// than unbounded so a typo cannot open 10,000 sockets at a TTS provider.
+const REUSE_MAX_CONCURRENCY = Math.max(1, Math.min(64,
+  parseInt(process.env.REUSE_MAX_CONCURRENCY, 10) || 8))
+
 /** HEAD an S3 object. Never throws for "missing"; a failed QUESTION is `null`. */
 async function reuseHeadObject(s3Key) {
   if (!s3Key || s3Key.startsWith('pending/')) return { exists: false, size: null }
@@ -6772,9 +6780,17 @@ async function reuseRenderClip(courseCode, clip, stats) {
 
     // History first — a swap that is not recorded is worse than one that does
     // not happen. This is the rollback ledger.
+    // UPSERT, not insert. The history write and the row update below are not
+    // atomic, so a run killed between them leaves a history row for revision N
+    // while course_audio still says N-1. Every retry then recomputes the same
+    // revision number and dies on the unique (audio_id, revision) constraint —
+    // a PERMANENT poison pill, not a transient: that clip can never be
+    // re-rendered again. Seen 2026-08-08, one clip per interrupted band.
+    // Re-writing the row is the correct repair: previous_s3_key is unchanged
+    // (the swap never landed), only the new render's details differ.
     const { error: histErr } = await supabase
       .from('course_audio_revisions')
-      .insert({
+      .upsert({
         audio_id: row.id,
         course_code: row.course_code,
         revision,
@@ -6786,7 +6802,7 @@ async function reuseRenderClip(courseCode, clip, stats) {
         source: 'reuse-first-rebuild',
         accepted_by: 'phase8 /reuse-apply',
         reason: 'rounds rebuild on the chosen voice',
-      })
+      }, { onConflict: 'audio_id,revision' })
     if (histErr) throw new Error(`writing revision history: ${histErr.message}`)
 
     // text/text_normalized/language/role/voice_id are deliberately NOT in the
@@ -6931,6 +6947,10 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
   const crossRole = req.body?.crossRole !== false
   const rebuild = req.body?.rebuild === true
   const voiceAliases = parseVoiceAliases(req.body?.voiceAliases)
+  // Own-course clips older than this date are not a reuse source — see the long
+  // note in audio-reuse-planner decideClip. A date, so the run stays idempotent.
+  const distrustOwnBefore = typeof req.body?.distrustOwnBefore === 'string'
+    ? req.body.distrustOwnBefore : null
 
   // A live run SPENDS MONEY on TTS. Typed confirmation, same shape the rest of
   // the dashboard uses for expensive/irreversible actions.
@@ -6955,7 +6975,7 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
   const execute = async () => {
     try {
       const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, {
-        crossRole, voiceAliases, rebuild, fromRound,
+        crossRole, voiceAliases, rebuild, fromRound, distrustOwnBefore,
         freshRoles: parseFreshRoles(req.body?.freshRoles),
         codeService: { getName: getLangEnglishName },
         preferredSourceCourses: preferredSourcesFor(courseCode, req.body?.preferredSources),
@@ -6980,7 +7000,16 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
       const actionable = plan.clips.filter(c => c.decision !== 'SATISFIED' && c.decision !== 'BLOCKED').length
       if (!dryRun) startWork('reuse-first', courseCode, actionable)
 
-      const veracityStats = {}
+      // newStats(), not {} — recordVerdict's UNCHECKED branch writes into
+      // stats.uncheckedReasons, so a bare object throws
+      // "Cannot read properties of undefined" and the clip is logged FAILED.
+      // Latent until a verdict comes back unchecked, which is why it survived:
+      // the checked branch only touches flat counters. It fires whenever the
+      // gate is off OR whisper is unavailable — and whisper is off PATH on
+      // watson-1 — so a missing binary turned every render into a failure
+      // instead of an honest "published unchecked". Found 2026-08-08 by the
+      // probe before the overnight run: 34 of 45 clips FAILED this way.
+      const veracityStats = veracity.newStats()
       const log = await reusePlanner.applyReusePlan(supabase, plan, {
         runId,
         dryRun,
@@ -6989,7 +7018,12 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
         // Serial by default. A 200-round scope is ~1,500 actionable clips and
         // ~4.5s each, which is two hours of wall-clock for work that has no
         // ordering constraint at all — so the caller can ask for more hands.
-        concurrency: Math.max(1, Math.min(8, parseInt(req.body?.concurrency, 10) || 1)),
+        // The old ceiling here was a hard-coded 8 — our own arbitrary clamp, not
+        // a real constraint. Tom, 2026-08-08: "concurrency should go to the xAI
+        // limits". So the bound is now a configured parameter with a sane
+        // default, and the thing that should bind a run is the PROVIDER's rate
+        // limit, discovered empirically, not a magic number in this file.
+        concurrency: Math.max(1, Math.min(REUSE_MAX_CONCURRENCY, parseInt(req.body?.concurrency, 10) || 1)),
         onProgress: ({ clip, outcome }) => { if (!dryRun) updateWork(`${clip} [${outcome}]`, outcome !== 'failed') },
       })
       if (!dryRun) endWork()

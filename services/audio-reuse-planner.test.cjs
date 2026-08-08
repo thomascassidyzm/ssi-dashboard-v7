@@ -930,3 +930,74 @@ describe('verdict cache — whisper is the dominant cost, and bands re-ask the s
     expect(p.heard.cached).toBe(1)
   })
 })
+
+// ── own clips are not a source (Tom, 2026-08-08 02:02Z) ────────────────────
+//
+// "we are not checking any internal clips first from French or German ...
+// because we KNOW that both French and German are bobbins. all French and
+// German clips in the current courses are being wiped and replaced — either
+// from other courses contributions to the pool, or by regeneration."
+//
+// The damage is ours: until 2026-08-05 masterAudio trimmed at the tail
+// detector's timestamp, eating every word after a natural mid-sentence pause.
+// So the policy is a DATE, not a boolean — and the date is what keeps a banded
+// run idempotent across restarts.
+
+describe('own-course clips are not a reuse source when distrusted', () => {
+  const CUT = '2026-08-05'
+  const ownOld = () => row({ id: 'own-old', course_code: 'fra_for_eng', created_at: '2026-07-01T00:00:00Z' })
+  const ownNew = () => row({ id: 'own-new', course_code: 'fra_for_eng', created_at: '2026-08-07T00:00:00Z' })
+  const foreign = () => row({ id: 'far', course_code: 'spa_for_eng', created_at: '2026-07-01T00:00:00Z' })
+
+  it('prefers a foreign clip over this course\'s own distrusted one', () => {
+    const d = decideClip(clip(), [ownOld(), foreign()], opts({ distrustOwnBefore: CUT }))
+    expect(d.decision).toBe('REUSE_CROSS')
+    expect(d.source.courseCode).toBe('spa_for_eng')
+  })
+
+  it('renders fresh when the only candidate is its own distrusted clip', () => {
+    const d = decideClip(clip(), [ownOld()], opts({ distrustOwnBefore: CUT }))
+    expect(d.decision).toBe('RENDER')
+  })
+
+  it('still swaps in place, so no holder FK moves and nothing goes silent', () => {
+    const d = decideClip(clip(), [ownOld()], opts({ distrustOwnBefore: CUT }))
+    expect(d.source.swapTargetAudioId).toBe('own-old')
+    expect(d.source.currentRevision).toBe(1)
+  })
+
+  it('TRUSTS an own clip written after the post-processing fix — this is what makes a restart idempotent', () => {
+    const c = clip({ holders: [{ table: 't', id: 'p1', column: 'known_audio_id', currentAudioId: 'own-new' }] })
+    const d = decideClip(c, [ownNew()], opts({ distrustOwnBefore: CUT }))
+    expect(d.decision).toBe('SATISFIED')
+  })
+
+  it('trusts an old row that was RE-RENDERED IN PLACE since the cutoff', () => {
+    // The swap bumps audio_revision and writes a history row but deliberately
+    // leaves created_at alone. Without the revision set, tonight's own output
+    // would be re-bought on every band restart.
+    const c = clip({ holders: [{ table: 't', id: 'p1', column: 'known_audio_id', currentAudioId: 'own-old' }] })
+    const d = decideClip(c, [ownOld()], opts({ distrustOwnBefore: CUT, ownRevisedSince: new Set(['own-old']) }))
+    expect(d.decision).toBe('SATISFIED')
+  })
+
+  it('never falls back onto the distrusted row and calls it a cross-course reuse', () => {
+    const d = decideClip(clip(), [ownOld()], opts({ distrustOwnBefore: CUT }))
+    expect(d.decision).not.toBe('REUSE_CROSS')
+    expect(d.decision).not.toBe('REUSE_OWN')
+  })
+
+  it('a fresh role with only a distrusted own clip renders rather than borrowing', () => {
+    const c = clip({ role: 'presentation', clipKey: 'presentation|eng|xai_eve|the french for' })
+    const d = decideClip(c,
+      [row({ id: 'own-old', course_code: 'fra_for_eng', role: 'presentation', created_at: '2026-07-01T00:00:00Z' }),
+       row({ id: 'far', course_code: 'spa_for_eng', role: 'presentation' })],
+      opts({ distrustOwnBefore: CUT, freshRoles: ['presentation'] }))
+    expect(d.decision).toBe('RENDER')
+  })
+
+  it('is inert when no cutoff is given — every other job keeps its own behaviour', () => {
+    const c = clip({ holders: [{ table: 't', id: 'p1', column: 'known_audio_id', currentAudioId: 'own-old' }] })
+    expect(decideClip(c, [ownOld()], opts()).decision).toBe('SATISFIED')
+  })
+})
