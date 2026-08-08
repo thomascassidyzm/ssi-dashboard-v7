@@ -6980,9 +6980,17 @@ async function reuseRenderClip(courseCode, clip, stats) {
 
     // History first — a swap that is not recorded is worse than one that does
     // not happen. This is the rollback ledger.
+    // UPSERT, not insert. The history write and the row update below are not
+    // atomic, so a run killed between them leaves a history row for revision N
+    // while course_audio still says N-1. Every retry then recomputes the same
+    // revision number and dies on the unique (audio_id, revision) constraint —
+    // a PERMANENT poison pill, not a transient: that clip can never be
+    // re-rendered again. Seen 2026-08-08, one clip per interrupted band.
+    // Re-writing the row is the correct repair: previous_s3_key is unchanged
+    // (the swap never landed), only the new render's details differ.
     const { error: histErr } = await supabase
       .from('course_audio_revisions')
-      .insert({
+      .upsert({
         audio_id: row.id,
         course_code: row.course_code,
         revision,
@@ -6994,7 +7002,7 @@ async function reuseRenderClip(courseCode, clip, stats) {
         source: 'reuse-first-rebuild',
         accepted_by: 'phase8 /reuse-apply',
         reason: 'rounds rebuild on the chosen voice',
-      })
+      }, { onConflict: 'audio_id,revision' })
     if (histErr) throw new Error(`writing revision history: ${histErr.message}`)
 
     // text/text_normalized/language/role/voice_id are deliberately NOT in the
