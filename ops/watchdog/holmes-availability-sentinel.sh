@@ -93,6 +93,16 @@ log "raising card after $misses consecutive misses (last code [$CODE])"
   -d "$(/usr/bin/printf '{"text":%s}' "$(/usr/bin/python3 -c 'import json,sys;print(json.dumps(sys.argv[1]))' "$TEXT")")" >/dev/null 2>&1
 
 # Remember which card is ours, so recovery resolves exactly it and a second
-# outage replaces rather than stacks.
+# outage replaces rather than stacks. The POST answers {"ok":true} and not the
+# id, so the board has to be read back.
+#
+# jq, not grep/sed. The estate has already paid for the alternative: on
+# 2026-08-06 a greedy sed over the same payload read the LAST "id" in it and
+# raised a false alarm (see the header of command-surface's
+# butler-triage-nudge.sh). A structural query cannot make that mistake, and it
+# picks the NEWEST matching card rather than whichever the text happens to sort
+# to.
 /usr/bin/curl -s "$SURFACE/api/needs-you" 2>/dev/null \
-  | /bin/grep -o '{[^{}]*Holmes[^{}]*}' | /bin/grep -o '"id":[0-9]*' | /usr/bin/head -1 | /usr/bin/cut -d: -f2 > "$CARD"
+  | /usr/bin/jq -r '[.cards[]? | select(.text // "" | contains("Holmes"))] | sort_by(.id) | last | .id // empty' \
+  > "$CARD" 2>/dev/null
+[ -s "$CARD" ] || { /bin/rm -f "$CARD"; log "WARNING: card posted but its id could not be read back — recovery will not auto-resolve it"; }
