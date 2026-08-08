@@ -31,7 +31,7 @@ them lines the course has never had before. That pilot was built to be shown to 
 approval, and he's ruled it out: *"T16 is nonsense - I don't speak Austrian German."* The Spanish
 sample has replaced it as his listening test. **So the Austrian cast question comes to you.**
 
-Listen here: https://watson-1.tail4968cb.ts.net/d/8bbc0e0d
+Listen here: https://watson-1.tail4968cb.ts.net/d/74c9ab17
 
 *(That page was written for Tom before the re-point, so it opens by asking "you" to decide. Ignore
 the framing — the clips and the notes underneath them are what matters.)*
