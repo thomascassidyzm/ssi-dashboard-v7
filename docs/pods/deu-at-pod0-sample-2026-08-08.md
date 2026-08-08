@@ -22,7 +22,7 @@ material, because none of it was in the sample. These clips fix that.
 
 ## The new lines
 
-[dotenv@17.2.3] injecting env (1) from .env.psql -- tip: ⚙️  override existing env vars with { override: true }
+[dotenv@17.2.3] injecting env (1) from .env.psql -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops
 _50 of the 100 rendered lines are new or reworded text the course has never had before. Eight of them, covering both German voices:_
 
 **Scene 3 — Barista, voiced by Sonja**
@@ -33,13 +33,13 @@ https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/C90A9D66-72C1-4BBC-9
 
 **Scene 6 — Anna, voiced by Sonja**
 > How interesting. Well, lovely to meet you.
-> **Wia interessant. Najo, hot mi gfreut, di kennenzulernen.**
+> **wia interessant. najo, hot mi gfreut, di kennenzulernen.**
 
 https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/87504D0B-2AE1-448A-80FA-63B31EB0232A.mp3
 
 **Scene 7 — Customer 1, voiced by Felix**
 > I'd like takeaway, please.
-> **I mechat's zum mitnehmen, bitte.**
+> **i mechat's zum mitnehmen, bitte.**
 
 https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/9C975F59-FE35-4199-ACEA-0125F5FAE1C2.mp3
 
@@ -57,7 +57,7 @@ https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/6FAAAD29-32DF-4D23-A
 
 **Scene 9 — Customer 2, voiced by Felix**
 > And the bill, when you're ready. Could we split it?
-> **Und de Rechnung, wenn S' so weit san. Kennan wir getrennt zahlen?**
+> **und de Rechnung, wenn S' so weit san. kennan wir getrennt zahlen?**
 
 https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/21AFFE36-5B38-46AB-B057-3BA2726C58B3.mp3
 
@@ -69,7 +69,7 @@ https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/8E4AD85B-4D68-470C-8
 
 **Scene 11 — Receptionist, voiced by Sonja**
 > Yes, you can stay until midday, no extra charge.
-> **Jo, Sie kennan bis Mittog bleibn, des kost nix extra.**
+> **jo, Sie kennan bis Mittog bleibn, des kost nix extra.**
 
 https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/E28C0263-95BF-4E46-A7AF-A11DAE2B100A.mp3
 
