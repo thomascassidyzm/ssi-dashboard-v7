@@ -265,10 +265,15 @@ export const NumField = defineComponent({
 // ============================================================================
 export const NumListField = defineComponent({
   name: 'NumListField',
-  props: { modelValue: { type: Array, required: true } },
+  // A config row that has never carried this key reads as undefined, and a
+  // missing list is a normal state — it means "inherit", not "broken". Reading
+  // it unguarded took the whole Speaking page to a blank screen below the
+  // header on 2026-08-08, so the empty list lives here rather than at each
+  // call site, where the next one added will forget it again.
+  props: { modelValue: { type: Array, default: () => [] } },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-    const text = ref(props.modelValue.join(', '))
+    const text = ref((props.modelValue || []).join(', '))
     return () => h('input', {
       type: 'text',
       class: 'num-list-input',
