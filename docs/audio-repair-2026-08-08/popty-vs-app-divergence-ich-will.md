@@ -91,11 +91,37 @@ Related inconsistency, flagged not fixed: `823cf48a…` carries `audio_revision 
 
 ---
 
-## What I have NOT established
+## The telemetry — found, and it closes the case
 
-- **The exact minute you tested the app.** If it was before 10:31:55Z, the window above explains it completely and no further mechanism is needed. If it was *after* 10:31:55Z, then production disagrees with your ear and I need to know that, because everything above is then incomplete. **This is the one thing only you can tell me.**
-- **Session telemetry.** I still have not found a record of which URL was served to your browser. A worker is on it. The verdict does not rest on it — the pipeline's own applied log and the live row values are stronger evidence than a client event would be.
-- **DEV vs PROD.** I probed PROD (`saysomethingin.app`) directly. I have not yet confirmed DEV points at the same Supabase project and the same branch; a worker is checking. If they diverge, that is a first-class finding in its own right and I will bring it separately.
+`player_events` logs every clip served, with the URL and an `env` label. Every `S0001L01` `target1` play today, in order:
+
+| Time (Z) | env | cycle | URL served |
+|---|---|---|---|
+| 10:11:30 | staging | intro | `823cf48a….v2` — **bad** |
+| 10:12:05 | staging | debut | `823cf48a….v2` — **bad** |
+| 10:15:54 | dev | intro | `823cf48a….v2` — **bad** |
+| 10:18:05 | dev | intro | `823cf48a….v2` — **bad** |
+| 10:18:14 | dev | debut | `823cf48a….v2` — **bad** |
+| 10:19:03 | staging | intro | `823cf48a….v2` — **bad** |
+| 10:19:30 | staging | intro | `823cf48a….v2` — **bad** |
+| 10:19:42 | staging | debut | `823cf48a….v2` — **bad** |
+| **← pointer moved at 10:31:55** | | | |
+| 10:43:03 | staging | intro | `823cf48a….v2` — **still bad** |
+| 10:43:35 | staging | intro | `0f37d106…` — **correct** |
+
+Three things this settles:
+
+1. **Your testing was 10:11-10:19Z — inside the bad window.** The app served you the 6-August take on every single play, in both dev and staging. Your ear and the telemetry agree exactly.
+2. **The flip is captured.** At 10:43:03 the app served the bad clip one last time, then 32 seconds later served the correct one. That 32-second tail is the client's own `cycles` payload (`private, max-age=60`) still holding the old id — sixty seconds, then gone. Not a cache *explanation*; a cache *tail*, visible and bounded.
+3. **Your testimony is confirmed to the byte.** The correct clip came back with `cacheHit=true` — the January bytes were already sitting in your browser's `AudioCache` from when you heard it play correctly yesterday. You did hear it. The bytes never left. Only the pointer moved.
+
+## DEV vs PROD — no split
+
+One `SUPABASE_URL` / service key pair, read regardless of environment (`api/_utils/audioAccess.ts:21-22`). `player_events.env` is a hostname label derived server-side, not a project selector — the same session's `dev`- and `staging`-tagged events came back from the same database. **Gap:** nobody checked Vercel's dashboard env-var config directly (no CLI access), so a per-environment override there is not formally excluded — but nothing in the code or the data suggests one.
+
+## Still open
+
+- The wider hand-fix reconciliation beyond the tombstone mechanism, and the Popty UI read-path trace, are with workers still running.
 
 ---
 
