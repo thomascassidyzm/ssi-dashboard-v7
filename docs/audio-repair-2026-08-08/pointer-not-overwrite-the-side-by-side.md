@@ -97,6 +97,31 @@ I ran the estate's own normaliser (`services/shared/text-normalize.cjs`) on thes
 
 Slots in rounds 1-200 whose current row is invisible to the planner, measured with the planner's own normaliser: **14 in `deu_for_eng`, 2 in `fra_for_eng`.** Two of the fourteen are the `ich will` pair; most of the rest are clips whose text carries a `?` the `target_text` does not.
 
+---
+
+# A SECOND, SEPARATE DEFECT — found on the way, and it is bigger than this clip
+
+**Bytes have been replaced under row ids that the app caches for a year as immutable.** I measured this myself rather than take it on report.
+
+Sample: 40 `deu_for_eng` rows at `audio_revision = 1`, created before August. For every one I HEAD'd the live S3 object and compared its `Last-Modified` to the row's `created_at`.
+
+```
+object Last-Modified by day: { "2026-08-03": 40 }
+BARE-REF rows whose bytes moved after the row was written: 40 of 40
+```
+
+**40 of 40.** Rows written in February; objects rewritten on **3 August**; `audio_revision` still **1**; **zero** rows in `course_audio_revisions` for any of them.
+
+Why that combination is the dangerous one: the app addresses a clip as a bare uuid whenever `audio_revision = 1`, and `/api/audio/<id>` is served `Cache-Control: public, max-age=31536000, immutable`. The `.vN` suffix — the only cache-buster that exists — fires **only when `audio_revision > 1`**. So for these rows the bytes changed and **no cache anywhere can be told**. Browser HTTP cache, Vercel edge, and the player's IndexedDB store (which keys on the bare id) all keep the pre-3-August audio indefinitely.
+
+`0f37d106…` — the `ich will` clip now in the slot — is one of them. Its object's `Last-Modified` is 2026-08-03T19:19:05Z, its row says `duration_ms 768`, and the object really measures 744 ms. The row and the bytes disagree because the bytes were swapped underneath it.
+
+**This is not the same thing as today's rebuild, and the contrast is the proof.** This morning's `reuse-first-rebuild` swapped bytes for 24,357 German clips *properly*: ledger entry, `audio_revision` bumped to 2, so every one of them is addressed as `.v2` and every cache drops it. An independent sample of 30 February rows that went through that path came back stamped today, all ledgered. **The designed path works. The 3-August writes bypassed it.**
+
+**Nobody knows what wrote at 19:19Z on 3 August.** `revoice-clips.cjs`, `clipfix/swap.cjs` and `audio-repair-core.cjs` were all read and cleared — they mint new keys or ledger correctly. Popty keeps no log covering that window. **That hunt matters more than this clip does**, and it is not started.
+
+One live consequence worth holding in mind: the telemetry entry at 10:43:35Z that served the correct `0f37d106…` recorded `cacheHit=true`. If a browser cached that id before 3 August, it is holding pre-3-August bytes and no amount of pointer-fixing will change what it plays.
+
 ## Gaps
 
 - I have not established which Popty screen you were looking at when you saw the replacements present. If it was a phrase-level view, the two intact phrase slots would show correctly while the two diverged LEGO slots sat elsewhere on the page — but that is inference, not evidence, and you can settle it in a glance.
