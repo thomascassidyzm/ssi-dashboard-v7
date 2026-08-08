@@ -22,6 +22,10 @@ const {
   resolveReviewMaxKnownSyllables,
   resolveReviewFilterMaxRound,
   resolveFilterBuildPhrases,
+  resolvePhraseRepeatCount,
+  resolveRepeatedCycleTypes,
+  repeatPhraseCycles,
+  MAX_PHRASE_REPEAT_COUNT,
   phraseLengthOf,
   courseMaxPhraseLength,
   applyPhraseLengthCap,
@@ -337,5 +341,105 @@ describe('filterReviewPool — the pull filter itself', () => {
     const before = JSON.stringify(pool)
     filterReviewPool(pool, 5, filter)
     expect(JSON.stringify(pool)).toBe(before)
+  })
+})
+
+// ── Easy doubling, mirrored into Script View ────────────────────────────────
+// The live easy_mode row, read 2026-08-08: phraseRepeatCount 2, and the three
+// cycle types spelled in the LEARNER'S vocabulary, which is what the DB carries.
+const LIVE_EASY_REPEAT = {
+  phraseRepeatCount: 2,
+  repeatedCycleTypes: ['build', 'spaced_rep', 'use'],
+}
+
+describe('resolvePhraseRepeatCount — the ceiling config cannot raise', () => {
+  it('reads the live Easy row as 2', () => {
+    expect(resolvePhraseRepeatCount(LIVE_EASY_REPEAT)).toBe(2)
+  })
+
+  it('reads Fast as 1, so Fast plays each cycle once', () => {
+    expect(resolvePhraseRepeatCount({ phraseRepeatCount: 1 })).toBe(1)
+  })
+
+  it('degrades every bad or absent value to 1, never to a repeat', () => {
+    for (const bad of [undefined, null, {}, NaN, Infinity, 0, -3, '2']) {
+      expect(resolvePhraseRepeatCount(typeof bad === 'object' && bad !== null ? bad : { phraseRepeatCount: bad })).toBe(1)
+    }
+  })
+
+  it('clamps a row asking for 3 — "a phrase repeated 3x would drive people nuts"', () => {
+    expect(resolvePhraseRepeatCount({ phraseRepeatCount: 3 })).toBe(MAX_PHRASE_REPEAT_COUNT)
+    expect(resolvePhraseRepeatCount({ phraseRepeatCount: 99 })).toBe(2)
+  })
+})
+
+describe('resolveRepeatedCycleTypes — one setting, two vocabularies', () => {
+  it('translates the learner spelling into Script View\'s own type names', () => {
+    const types = resolveRepeatedCycleTypes(LIVE_EASY_REPEAT)
+    expect([...types].sort()).toEqual(['build', 'consolidate', 'review'])
+  })
+
+  it('leaves intro and debut out — "the intro LEGO and not the LEGO alone"', () => {
+    const types = resolveRepeatedCycleTypes(LIVE_EASY_REPEAT)
+    expect(types.has('intro')).toBe(false)
+    expect(types.has('debut')).toBe(false)
+  })
+
+  it('defaults to the four Tom named when the key is absent', () => {
+    expect([...resolveRepeatedCycleTypes({})].sort()).toEqual(['build', 'consolidate', 'review'])
+  })
+
+  it('honours an EMPTY array as "repeat nothing" — a decision, not a bad value', () => {
+    expect(resolveRepeatedCycleTypes({ repeatedCycleTypes: [] }).size).toBe(0)
+  })
+})
+
+describe('repeatPhraseCycles — the round Script View shows is the round played', () => {
+  const round = [
+    { type: 'intro', known_text: 'to speak' },
+    { type: 'debut', known_text: 'to speak' },
+    { type: 'build', known_text: 'I want to speak' },
+    { type: 'review', known_text: 'I can speak' },
+    { type: 'review', reviewItemKind: 'seed', known_text: 'I want to speak Welsh' },
+    { type: 'consolidate', known_text: 'I would like to speak' },
+  ]
+  const easyTypes = resolveRepeatedCycleTypes(LIVE_EASY_REPEAT)
+
+  it('doubles every practice cycle and leaves the two teaching cycles alone', () => {
+    const out = repeatPhraseCycles(round, { count: 2, types: easyTypes })
+    const counts = {}
+    for (const i of out) counts[i.type] = (counts[i.type] || 0) + 1
+    expect(counts.intro).toBe(1)
+    expect(counts.debut).toBe(1)
+    expect(counts.build).toBe(2)
+    expect(counts.consolidate).toBe(2)
+    // Three review rows in: one ordinary (doubled) and one seed-phase (not).
+    expect(counts.review).toBe(3)
+  })
+
+  it('never repeats the seed-phase review — already a multi-cycle sandwich', () => {
+    const out = repeatPhraseCycles(round, { count: 2, types: easyTypes })
+    expect(out.filter(i => i.reviewItemKind === 'seed')).toHaveLength(1)
+  })
+
+  it('puts each copy immediately after its original, and marks it', () => {
+    const out = repeatPhraseCycles(round, { count: 2, types: easyTypes })
+    const i = out.findIndex(x => x.type === 'build')
+    expect(out[i].repeatOf).toBeUndefined()
+    expect(out[i + 1].known_text).toBe(out[i].known_text)
+    expect(out[i + 1].repeatOf).toBe(2)
+  })
+
+  it('returns Fast\'s list untouched, by identity — Fast is provably unchanged', () => {
+    expect(repeatPhraseCycles(round, { count: 1, types: easyTypes })).toBe(round)
+  })
+
+  it('roughly doubles a round, which is the whole point of the mirror', () => {
+    // 6 cycles in; the 3 eligible ones gain a copy each. The two teaching
+    // cycles and the seed-phase review keep their single play, which is why a
+    // real Easy round grows by a bit under 2x rather than exactly 2x.
+    const out = repeatPhraseCycles(round, { count: 2, types: easyTypes })
+    expect(out).toHaveLength(9)
+    expect(out.filter(i => i.repeatOf === 2)).toHaveLength(3)
   })
 })

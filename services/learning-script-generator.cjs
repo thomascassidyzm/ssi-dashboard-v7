@@ -52,9 +52,11 @@ const {
   MODE_KEYS, MODE_FALLBACKS, DEFAULT_MODE,
   DEFAULT_MAX_PHRASE_LENGTH_FRACTION, DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES,
   DEFAULT_REVIEW_FILTER_MAX_ROUND, DEFAULT_FILTER_BUILD_PHRASES,
+  DEFAULT_PHRASE_REPEAT_COUNT, DEFAULT_REPEATED_CYCLE_TYPES, CYCLE_TYPE_ALIASES,
   MIN_BUILD_PHRASES_AFTER_CAP, MIN_USE_PHRASES_AFTER_CAP,
   resolveScriptShape, resolveMaxPhraseLengthFraction,
   resolveReviewMaxKnownSyllables, resolveReviewFilterMaxRound, resolveFilterBuildPhrases,
+  resolvePhraseRepeatCount, resolveRepeatedCycleTypes, repeatPhraseCycles,
   phraseLengthOf, courseMaxPhraseLength, applyPhraseLengthCap,
   makeKnownSyllableResolver, filterReviewPool,
 } = require('./learning-modes.cjs')
@@ -131,6 +133,8 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
   let reviewMaxKnownSyllables = DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES
   let reviewFilterMaxRound = DEFAULT_REVIEW_FILTER_MAX_ROUND
   let filterBuildPhrases = DEFAULT_FILTER_BUILD_PHRASES
+  let phraseRepeatCount = DEFAULT_PHRASE_REPEAT_COUNT
+  let repeatedCycleTypes = new Set(DEFAULT_REPEATED_CYCLE_TYPES.map(t => CYCLE_TYPE_ALIASES[t] || t))
 
   // Mode rows are fetched alongside the global shape so the per-mode override
   // layers in one round-trip. The fallback chain lets fast_mode degrade to
@@ -146,7 +150,7 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
 
     if (error) {
       logger.warn(`algorithm_config fetch failed (${error.message}) — using built-in fallback shape [${FIBONACCI.join(',')}]. Script View may diverge from the learner.`)
-      return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, reviewMaxKnownSyllables, reviewFilterMaxRound, filterBuildPhrases, mode }
+      return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, reviewMaxKnownSyllables, reviewFilterMaxRound, filterBuildPhrases, phraseRepeatCount, repeatedCycleTypes, mode }
     }
 
     const byKey = new Map((data || []).map(r => [r.key, r.config || {}]))
@@ -172,6 +176,8 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
       reviewMaxKnownSyllables = resolveReviewMaxKnownSyllables(modeConfig)
       reviewFilterMaxRound = resolveReviewFilterMaxRound(modeConfig)
       filterBuildPhrases = resolveFilterBuildPhrases(modeConfig)
+      phraseRepeatCount = resolvePhraseRepeatCount(modeConfig)
+      repeatedCycleTypes = resolveRepeatedCycleTypes(modeConfig)
       if (resolvedKey !== modeKey) {
         logger.warn(`algorithm_config.${modeKey} row MISSING — fell back to ${resolvedKey}. Expected during the learning-app promotion window; fix the row once it ships.`)
       }
@@ -182,7 +188,7 @@ async function loadAlgorithmConfig(supabase, mode = DEFAULT_MODE) {
     logger.warn(`algorithm_config fetch threw (${err.message}) — using built-in fallback shape.`)
   }
 
-  return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, reviewMaxKnownSyllables, reviewFilterMaxRound, filterBuildPhrases, mode }
+  return { scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction, reviewMaxKnownSyllables, reviewFilterMaxRound, filterBuildPhrases, phraseRepeatCount, repeatedCycleTypes, mode }
 }
 
 /**
@@ -784,6 +790,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   const {
     scriptShape, listening, scriptShapeSource, maxPhraseLengthFraction,
     reviewMaxKnownSyllables, reviewFilterMaxRound, filterBuildPhrases,
+    phraseRepeatCount, repeatedCycleTypes,
   } = await loadAlgorithmConfig(supabase, mode)
   const SPACED_REP_OFFSETS = scriptShape.spacedRepOffsets
   const MAX_BUILD_PHRASES = scriptShape.maxBuildPhrases
@@ -844,6 +851,9 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     : courseMaxPhraseLength([...buildMap.values(), ...useMap.values()]) * maxPhraseLengthFraction
   if (Number.isFinite(phraseLengthLimit)) {
     logger.info(`Mode '${mode}': phrase length capped at ${phraseLengthLimit.toFixed(0)} chars of target text (${Math.round(maxPhraseLengthFraction * 100)}% of the course's longest phrase)`)
+  }
+  if (phraseRepeatCount > 1) {
+    logger.info(`Mode '${mode}': every ${[...repeatedCycleTypes].sort().join('/')} cycle plays ${phraseRepeatCount}x back to back, so a round is about ${phraseRepeatCount} times its single-play length.`)
   }
   // "No filtering on BLD phrases" (Tom, 2026-08-07). Easy passes
   // filterBuildPhrases:false and keeps its whole BUILD pool; passing Infinity
@@ -1289,10 +1299,28 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     }
     lastDedupItem = lastItem
 
+    // ── EASY doubling (Tom, 2026-08-07) ──────────────────────────────────────
+    // "in EASY mode, double up every phrase, every BLD, every USE, every
+    // REVIEW, every CONSOLIDATE". Script View must show the round the learner
+    // actually hears, so it repeats the same cycles, by the same rule, at the
+    // same point in the pipeline as the learner's repeatPhraseCycles: AFTER the
+    // consecutive-duplicate pass above, which would otherwise strip the second
+    // copy on sight. Both the count and the eligible types come off the mode
+    // row; Fast's count of 1 returns the list untouched.
+    //
+    // Cross-round dedup state (`lastDedupItem`) is deliberately taken from the
+    // list BEFORE doubling: a repeat is byte-identical to the item it follows,
+    // so either choice compares the same, and reading it pre-doubling keeps the
+    // learner-parity carry-over exactly as it was.
+    const playedItems = repeatPhraseCycles(dedupedItems, {
+      count: phraseRepeatCount,
+      types: repeatedCycleTypes,
+    })
+
     // Only emit rounds past the lookback range (i.e. at the requested offset)
     if (n > offset) {
       // Annotate reality on top of intent — never filters, only labels.
-      const annotatedItems = annotatePlayerDelivery(dedupedItems, {
+      const annotatedItems = annotatePlayerDelivery(playedItems, {
         lego: currentLego.lego,
         presentationAudioId: introAudio && introAudio.id,
       })

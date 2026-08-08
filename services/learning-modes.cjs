@@ -85,6 +85,41 @@ const DEFAULT_REVIEW_FILTER_MAX_ROUND = 100
  *  path. */
 const DEFAULT_FILTER_BUILD_PHRASES = true
 
+/** The hard ceiling on how many times one phrase may play back to back. Tom's
+ *  rule, not a preference — "we do NOT ever want to repeat exactly the same
+ *  phrase more than 2x - a phrase repeated 3x would drive people nuts, but
+ *  doubled up is perfect" (2026-08-07). No DB row may raise it; a row asking
+ *  for 3 is clamped here exactly as it is in the learner's
+ *  normalizePhraseRepeatCount. */
+const MAX_PHRASE_REPEAT_COUNT = 2
+
+/** Absent / <=1 ⇒ each cycle plays once, which is Fast's value and the
+ *  historic behaviour. */
+const DEFAULT_PHRASE_REPEAT_COUNT = 1
+
+/** The four practice cycles Tom named — BLD, REVIEW, USE and CONSOLIDATE —
+ *  spelled in the LEARNER'S vocabulary, because the vocabulary is what the DB
+ *  row carries: `build`, `spaced_rep`, `use`. The INTRO and the bare LEGO are
+ *  absent by his ruling ("of course not - the intro LEGO and not the LEGO
+ *  alone"); adding them is a config decision, not a code change. */
+const DEFAULT_REPEATED_CYCLE_TYPES = ['build', 'spaced_rep', 'use']
+
+/** Script View spells two of those cycle types differently from the learner:
+ *  its spaced-rep items are `review` and its consolidation items are
+ *  `consolidate` (the learner emits both as `use`/`spaced_rep`). The DB row is
+ *  written in the LEARNER'S vocabulary — SpeakingConfig.vue writes
+ *  `['build','spaced_rep','use']` — so Script View translates on read rather
+ *  than asking anyone to keep two spellings of one setting in sync.
+ *
+ *  `use` maps to `consolidate` because a consolidation cycle IS a use phrase
+ *  (Tom: "every CONSOLIDATE (these are just USE phrases)"), and Script View has
+ *  no separate `use` type: its USE phrases are emitted either as BUILD padding
+ *  (already type `build`) or as `consolidate`. */
+const CYCLE_TYPE_ALIASES = {
+  spaced_rep: 'review',
+  use: 'consolidate',
+}
+
 /** Floors the length cap must never breach, from the methodology's per-LEGO
  *  phrase minimums (ralph: >=4 BUILD, >=5 USE — "fewer phrases is a FAIL").
  *  These are FLOORS, deliberately not the round's ceiling: passing the ceiling
@@ -168,6 +203,94 @@ function resolveReviewFilterMaxRound(modeConfig) {
  */
 function resolveFilterBuildPhrases(modeConfig) {
   return !(modeConfig && modeConfig.filterBuildPhrases === false)
+}
+
+/**
+ * How many times each eligible practice cycle plays, back to back.
+ *
+ * Anything missing, non-numeric, non-finite or <= 1 degrades to 1 — no
+ * repetition, which is Fast's value and makes Fast's script provably identical
+ * to the pre-2026-08-07 walk. Above MAX_PHRASE_REPEAT_COUNT clamps to 2, which
+ * is the one thing on this row config cannot raise.
+ *
+ * Mirrors the learner's `normalizePhraseRepeatCount`
+ * (packages/player-vue/src/composables/useAlgorithmConfig.ts).
+ */
+function resolvePhraseRepeatCount(modeConfig) {
+  const n = modeConfig && modeConfig.phraseRepeatCount
+  if (typeof n !== 'number' || !Number.isFinite(n)) return DEFAULT_PHRASE_REPEAT_COUNT
+  const floored = Math.floor(n)
+  if (floored <= 1) return DEFAULT_PHRASE_REPEAT_COUNT
+  return Math.min(floored, MAX_PHRASE_REPEAT_COUNT)
+}
+
+/**
+ * Which Script View cycle types the repeat applies to, as a Set.
+ *
+ * Reads the row in the learner's vocabulary and translates through
+ * CYCLE_TYPE_ALIASES, so one setting drives both views. A non-array degrades
+ * to the four types Tom named; an EMPTY array is honoured as "repeat nothing",
+ * because that is a deliberate configuration rather than a bad value — same
+ * reading as the learner's `normalizeRepeatedCycleTypes`.
+ */
+function resolveRepeatedCycleTypes(modeConfig) {
+  const raw = modeConfig && modeConfig.repeatedCycleTypes
+  const list = Array.isArray(raw)
+    ? raw.filter(t => typeof t === 'string' && t.length > 0)
+    : DEFAULT_REPEATED_CYCLE_TYPES
+  return new Set(list.map(t => CYCLE_TYPE_ALIASES[t] || t))
+}
+
+/**
+ * Is this a cycle the active config repeats?
+ *
+ * The seed-phase production review is never repeated whatever the row says:
+ * that drained sandwich is already several cycles of one sentence, so doubling
+ * it would give four hearings of the same seed and breach the
+ * never-more-than-twice rule. Structural, not a setting — and the same carve-out
+ * the learner makes in `isRepeatedCycle`.
+ */
+function isRepeatedCycle(item, types) {
+  if (!types.has(item.type)) return false
+  if (item.reviewItemKind === 'seed') return false
+  return true
+}
+
+/**
+ * Easy doubling for Script View — every eligible practice cycle listed `count`
+ * times, consecutively.
+ *
+ * WHY A PASS OVER THE FINISHED LIST. The learner does exactly this
+ * (packages/player-vue/src/providers/repeatPhraseCycles.ts): repetition is a
+ * duplication of whole cycles, never a replay inside one, so a single pass over
+ * the assembled round list makes every emitter obey the same rule. Script View
+ * must show the round the learner actually hears, so it repeats the same way,
+ * at the same point in the pipeline — AFTER the consecutive-duplicate removal,
+ * which would otherwise strip the second copy on sight.
+ *
+ * There is no A-64 cap downstream here as there is in the player, so the
+ * ceiling in `resolvePhraseRepeatCount` is what guarantees "doubled" can never
+ * read as tripled.
+ *
+ * A count of 1 returns the input array untouched, so Fast's Script View is
+ * unchanged.
+ *
+ * Each copy past the first is marked `repeatOf` (the play number) so the view
+ * can label a second hearing rather than look like a duplicated row.
+ */
+function repeatPhraseCycles(items, { count, types }) {
+  const plays = Math.min(Math.floor(count), MAX_PHRASE_REPEAT_COUNT)
+  if (!Number.isFinite(plays) || plays <= 1) return items
+
+  const out = []
+  for (const item of items) {
+    out.push(item)
+    if (!isRepeatedCycle(item, types)) continue
+    for (let n = 2; n <= plays; n++) {
+      out.push({ ...item, repeatOf: n })
+    }
+  }
+  return out
 }
 
 /**
@@ -323,6 +446,10 @@ module.exports = {
   DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES,
   DEFAULT_REVIEW_FILTER_MAX_ROUND,
   DEFAULT_FILTER_BUILD_PHRASES,
+  MAX_PHRASE_REPEAT_COUNT,
+  DEFAULT_PHRASE_REPEAT_COUNT,
+  DEFAULT_REPEATED_CYCLE_TYPES,
+  CYCLE_TYPE_ALIASES,
   MIN_BUILD_PHRASES_AFTER_CAP,
   MIN_USE_PHRASES_AFTER_CAP,
   resolveScriptShape,
@@ -330,6 +457,10 @@ module.exports = {
   resolveReviewMaxKnownSyllables,
   resolveReviewFilterMaxRound,
   resolveFilterBuildPhrases,
+  resolvePhraseRepeatCount,
+  resolveRepeatedCycleTypes,
+  isRepeatedCycle,
+  repeatPhraseCycles,
   phraseLengthOf,
   courseMaxPhraseLength,
   applyPhraseLengthCap,
