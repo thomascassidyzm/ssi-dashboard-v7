@@ -84,8 +84,15 @@ NGROK=$(find_bin ngrok) || fail "ngrok not found.
 say "  node:  $NODE ($("$NODE" -v 2>/dev/null))"
 say "  ngrok: $NGROK ($("$NGROK" version 2>/dev/null))"
 
-NODE_DIR=$(dirname "$NODE")
-NGROK_DIR=$(dirname "$NGROK")
+# The templates prepend these to a standard PATH. When the binary already lives
+# on that standard PATH (the usual Homebrew case) prepending it again just
+# duplicates an entry in a file Tom may well read, so collapse it to nothing.
+STD_PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+path_prefix() {  # $1 = dir → "$1:" unless it is already on STD_PATH
+  case ":$STD_PATH:" in *":$1:"*) echo "" ;; *) echo "$1:" ;; esac
+}
+NODE_DIR=$(path_prefix "$(dirname "$NODE")")
+NGROK_DIR=$(path_prefix "$(dirname "$NGROK")")
 
 # ── 3. Write the plists ──────────────────────────────────────────────────────
 if [ "$DRY_RUN" = "1" ]; then

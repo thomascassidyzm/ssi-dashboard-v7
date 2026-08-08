@@ -31,7 +31,7 @@
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>
-        <string>__NGROK_DIR__:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <string>__NGROK_DIR__/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
         <!-- ngrok reads its authtoken from
              $HOME/Library/Application Support/ngrok/ngrok.yml. Without HOME it
              starts unauthenticated and cannot claim the reserved domain. -->
