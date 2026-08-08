@@ -94,11 +94,45 @@ A slot's required clip is derived entirely from `target_text`. If the row in the
 
 **This is the same root cause as the `ich will` regression**, in a different disguise: there the invisible text was the tombstone `ich will ::superseded-regen`, here it is `erklären…`. One rule, two symptoms.
 
-## Is there any human marker? No.
+## The deciding code, precisely
+
+There is **no staleness test**. The planner never compares the linked row's text to anything. `services/audio-reuse-planner.cjs:863-874`:
+
+```js
+if (own.length) {
+  const holdersPointingAtIt = clip.holders.filter(h => h.currentAudioId === winner.id).length
+  if (clip.holders.length && holdersPointingAtIt === clip.holders.length) {
+    return { decision: 'SATISFIED', reason: `already linked to …` }
+  }
+  return { decision: 'REUSE_OWN', … }   // ← drag the holder
+}
+```
+
+and the write, `:1628-1642`, which consults nothing about what the holder currently points at — not NULL-ness, not `origin`, not age:
+
+```js
+async function relinkHolders (supabase, clip, audioId, { dryRun = true } = {}) {
+  for (const holder of clip.holders) {
+    if (holder.currentAudioId === audioId) continue
+    … .from(holder.table).update({ [holder.column]: audioId }).eq('id', holder.id)
+```
+
+So the sequence is: derive the winner from text alone → the human's row was never a candidate → `holdersPointingAtIt = 0` → relink. **The pipeline does not decide the human was wrong; it never learns a human was involved.** The tell is in the artifacts: the run of 2026-08-07 04:51Z, *before* the hand-fix, logged `"action":"NONE","reason":"already linked to 823cf48a…"`. The pointer only became "wrong" in the planner's eyes once a human moved it.
+
+**A second, independent destroyer:** `tools/regen-seed-clips-from-scratch.cjs:330-353` explicitly treats a holder pointing at a tombstoned row as *"damage an earlier run left behind"* and relinks it forward. Two code paths, same outcome.
+
+**The reuse key** (`audio-reuse-planner.cjs:44-58, 748-775`) is `voice × text × language` — **role-agnostic and course-agnostic** by default, role enforced only for Azure sources, **locale not in the key at all**, `lego_id` not in the key. That last one is why a row stamped `lego_id=S0241L01` can legitimately satisfy `S0001L01`.
+
+## Is there any human marker? No — and the shape of the gap is exact.
 
 - `course_audio_revisions` since 07 Aug: **50,143 rows. Zero human.** 50,010 `reuse-first-rebuild | phase8 /reuse-apply`, 76 `tts | claude`, 57 `regen-targeted-wordloss | founder-order-2026-08-06`.
-- `course_audio.origin` has a `'human'` value and it **is** honoured — but only as a tie-break between candidates (`services/shared/audio-link-preference.cjs:16`), and only for clips that are *already* candidates. Tom's rows are `origin: 'tts'` (they are TTS renders he commissioned), so it could never have fired.
-- **There is no per-slot pin, no protected flag, no exclusion list that any relink path consults.** A hand fix is a pointer move with no memory that a human made it.
+- `course_audio.origin='human'` **is** honoured, and widely — the precious-audio guard at `phase8-audio-v13.cjs:341-372` and its three callers, `regen-seed-clips-from-scratch.cjs:319` (REFUSED), `revoice-clips.cjs:379` (REFUSING), `audio-veracity-repair.cjs:160`, and the ranking tie-break at `shared/audio-link-preference.cjs:16`. Six places. But the reuse planner reads `origin` **only to rank a winner** (`:833`) — `decideClip` and `relinkHolders` never ask what the *current holder's* origin is. So a human take that isn't the winner is relinked away from regardless.
+- Also written-but-never-read by the pipeline: `course_audio_revisions.accepted_by` (used only to render history and to `revert`), `veracity_*`, `audio_revision` (a cache key, not a lock), and `recording_provenance.quality_notes` (read by the recording UI only).
+- No `locked`, `pinned`, `protected`, `approved`, `verified` or `do_not_touch` column exists anywhere on the audio path, and there is no exclusion list or skip-file in `services/`, `tools/`, `src/` or `database/`.
+
+**So the gap has an exact shape:** the estate protects human **bytes** in six separate places, and protects **nothing at all** about a human's decision on *which row a slot points at*. That class of correction has no representation in the schema, so no code can honour it.
+
+**And there is one design that already survives.** The repair-accept path (`AudioRepairPanel.vue:617` → `audio-repair-core.cjs:636`) writes new bytes into the **same row id** — new `s3_key`, bumped `audio_revision`, ledger entry — and **never moves a pointer**. Nothing can relink away from it because the id never changes. The two paths Tom used (Regen Lego, Regen Phrase) both mint a new row and rebind the FK, which is precisely what the next reuse pass undoes.
 
 ## Blast radius
 
