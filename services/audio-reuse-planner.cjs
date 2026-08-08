@@ -978,6 +978,15 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
         .select('audio_id')
         .eq('course_code', courseCode)
         .gte('created_at', distrustOwnBefore)
+        // ORDER IS LOAD-BEARING. .range() paging without a stable sort lets
+        // PostgREST return rows in arbitrary order per page, so pages overlap
+        // and rows are silently skipped — the set comes back INCOMPLETE and
+        // non-deterministically so. Measured 2026-08-08: the same course, with
+        // nothing rendered in between, planned 3,750 clips as distrusted on one
+        // run and 0 on the next. Under-reading this set is safe in the sense
+        // that it only re-renders clips that did not need it, but it wastes
+        // money and it makes verification meaningless.
+        .order('audio_id')
         .range(from, from + PAGE - 1)
       if (error) throw new Error(`revisions since ${distrustOwnBefore}: ${error.message}`)
       for (const r of data || []) ownRevisedSince.add(r.audio_id)
