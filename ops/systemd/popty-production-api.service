@@ -13,6 +13,15 @@ Environment=PRODUCTION_API_PORT=3470
 Environment=AUDIT_ARCHIVE_CRON=off
 # Tail-repair gate — see the fuller note in popty-phase8-audio.service. Mirrors the
 # installed unit on watson-1, whose repo copy had drifted without this line.
+# PRE-RESTART SYNTAX GUARD (2026-08-08). Merge 186af122 put two
+# `const MIN_TAKE_MS = 100` in one scope of production-api.cjs — both parents
+# parsed, the merge did not — and the file sat on main until this service next
+# restarted. It then crash-looped for hours and every dot in the popty.app env
+# switcher went red. Restart=always cannot restart its way out of a parse error,
+# so the supervisor was never the missing piece; legibility was. ExecStartPre
+# refuses the start and writes a loud banner naming the file and the SyntaxError
+# to the log below, instead of a bare stack trace scrolling past every 5s.
+ExecStartPre=/usr/bin/node tools/check-service-syntax.cjs services/production-api.cjs
 ExecStart=/usr/bin/node services/production-api.cjs
 Restart=always
 RestartSec=5

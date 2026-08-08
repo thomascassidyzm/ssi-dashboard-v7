@@ -19,3 +19,12 @@ jobs:
           node-version: 22
       - name: Drift gate (--check)
         run: node tools/explainer/compile.mjs --check
+      # Added 2026-08-08 after merge 186af122 put two `const MIN_TAKE_MS` in one
+      # scope of services/production-api.cjs and shipped an unparseable file to
+      # main. Both parents parsed; the merge did not. It sat there until the
+      # service next restarted, then crash-looped and turned every dot in the
+      # popty.app env switcher red. This is the only gate workflow on the repo
+      # and it needs no npm install, so the syntax check rides along here rather
+      # than becoming a second mechanism to keep alive.
+      - name: Service entrypoint syntax gate
+        run: node tools/check-service-syntax.cjs
