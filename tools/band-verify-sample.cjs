@@ -83,6 +83,62 @@ async function fetchObject (s3Key) {
   return Buffer.concat(chunks)
 }
 
+/**
+ * ── Triage: why this tool does NOT stop on every gate failure ───────────────
+ * The gate's operating point is calibrated for the gate's own consequence — a
+ * failed clip is RE-RENDERED. A false positive there costs one re-render and is
+ * therefore cheap, so the gate is deliberately eager. Here the same verdict
+ * halts a thirteen-band overnight run. Same evidence, different cost function,
+ * so the decision threshold has to be its own thing. This does not touch the
+ * gate's thresholds or scoring — those were fitted on 165 labelled clips and
+ * changing them would invalidate the calibration. It reads the gate's verdict
+ * and triages it.
+ *
+ * The eager rule is lastWordVerdict: the script's final word must appear in the
+ * last three decoded words, within 0-2 edits by length. Two ways that fires on
+ * audio which is perfectly fine, both seen in the 2026-08-08 probe:
+ *
+ *   spelling variant     "learnt" vs whisper's "learned"  — 2 edits, tolerance 1
+ *   punctuation adhesion "is" vs "is'" (stray close-quote) — 1 edit, tolerance 0
+ *
+ * In BOTH the word is audibly present; only its transcription differs. A
+ * genuine truncation looks nothing like this — the word is absent from the tail
+ * entirely, and no amount of punctuation-stripping recovers it. So a
+ * last_word_missing verdict is re-examined against a punctuation-stripped,
+ * length-scaled comparison; if the word is recoverable it is SOFT (reported,
+ * not counted toward STOP), otherwise it stays HARD.
+ *
+ * Silence, non-speech and CER-above-threshold are never softened.
+ */
+function stripPunct (w) { return String(w || '').replace(/[^\p{L}\p{N}]/gu, '') }
+
+function levenshtein (a, b) {
+  const m = a.length, n = b.length
+  let prev = Array.from({ length: n + 1 }, (_, j) => j)
+  for (let i = 1; i <= m; i++) {
+    const cur = [i]
+    for (let j = 1; j <= n; j++) {
+      cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1))
+    }
+    prev = cur
+  }
+  return prev[n]
+}
+
+/**
+ * @returns {'HARD'|'SOFT'} SOFT = the gate's eagerness, not a defect in the clip.
+ */
+function triage (r) {
+  if (r.reason !== 'last_word_missing') return 'HARD'
+  const want = stripPunct(r.lastWord || String(r.expected || '').trim().split(/\s+/).pop())
+  if (!want) return 'HARD'
+  const tail = String(r.decode || '').trim().split(/\s+/).slice(-3).map(stripPunct).filter(Boolean)
+  // One edit per three characters, floor 1 — enough for a spelling variant
+  // ("learnt"/"learned") without matching an unrelated word.
+  const tol = Math.max(1, Math.floor(want.length / 3))
+  return tail.some(c => levenshtein(want, c) <= tol) ? 'SOFT' : 'HARD'
+}
+
 /** clipKey is `role|language|voiceId|text` — the language is field 2. */
 function languageOf (entry) {
   if (entry.language) return entry.language
@@ -129,7 +185,7 @@ async function main () {
   console.log(`[band-verify] ${entries.length} entries, ${rendered.length} rendered this band, sampling ${sample.length} (${(RATE * 100).toFixed(1)}%)`)
 
   const results = []
-  let pass = 0, fail = 0, unchecked = 0
+  let pass = 0, fail = 0, unchecked = 0, soft = 0
   const CONC = Number(process.env.AUDIO_VERACITY_CONCURRENCY || 4)
 
   let cursor = 0
@@ -143,12 +199,14 @@ async function main () {
       } catch (err) {
         r = { pass: null, checked: false, reason: 'fetch_error', detail: String(err.message).slice(0, 200) }
       }
+      let severity = null
       if (!r.checked) unchecked++
       else if (r.pass) pass++
-      else fail++
+      else { severity = triage(r); if (severity === 'SOFT') soft++; else fail++ }
       results.push({
         clipKey: e.clipKey, role: e.role, text: e.text, s3Key: e.s3Key,
         pass: r.pass, checked: r.checked, reason: r.reason, cer: r.cer ?? null,
+        severity,
         decode: r.checked && !r.pass ? r.decode : undefined,
       })
       if (results.length % 25 === 0) console.log(`[band-verify]   ${results.length}/${sample.length} — ${fail} failed, ${unchecked} unchecked`)
@@ -156,15 +214,15 @@ async function main () {
   }
   await Promise.all(Array.from({ length: Math.min(CONC, sample.length) }, worker))
 
-  const checked = pass + fail
+  const checked = pass + fail + soft
   const failRate = checked ? fail / checked : 0
 
   console.log('')
-  console.log(`[band-verify] SAMPLED ${results.length}: ${pass} pass, ${fail} FAIL, ${unchecked} unchecked`)
-  console.log(`[band-verify] failure rate ${(failRate * 100).toFixed(2)}% of ${checked} actually checked (threshold ${(MAX_FAIL_RATE * 100).toFixed(1)}%)`)
+  console.log(`[band-verify] SAMPLED ${results.length}: ${pass} pass, ${fail} HARD FAIL, ${soft} soft (gate eagerness, not a defect), ${unchecked} unchecked`)
+  console.log(`[band-verify] hard failure rate ${(failRate * 100).toFixed(2)}% of ${checked} actually checked (threshold ${(MAX_FAIL_RATE * 100).toFixed(1)}%)`)
   if (unchecked) console.log(`[band-verify] NOTE: ${unchecked} clips could not be checked — that is not a pass.`)
   for (const r of results.filter(x => x.checked && !x.pass)) {
-    console.log(`[band-verify]   FAIL ${r.role} cer=${r.cer} ${r.reason} :: "${r.text}" -> "${r.decode}"`)
+    console.log(`[band-verify]   ${r.severity} ${r.role} cer=${r.cer} ${r.reason} :: "${r.text}" -> "${r.decode}"`)
   }
 
   const out = {
@@ -173,7 +231,7 @@ async function main () {
     renderedInBand: rendered.length,
     sampled: results.length,
     rate: RATE,
-    pass, fail, unchecked, checked, failRate,
+    pass, fail, soft, unchecked, checked, failRate,
     threshold: MAX_FAIL_RATE,
     verdict: failRate > MAX_FAIL_RATE ? 'STOP' : 'CONTINUE',
     results,
