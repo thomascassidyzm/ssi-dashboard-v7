@@ -272,6 +272,40 @@ const { isPunctuationOnly } = require('../shared/text-classification.cjs')
 // Default 20 = max concurrency for paid tier
 const CONCURRENCY = parseInt(process.env.AUDIO_CONCURRENCY, 10) || 20
 
+// ===========================================================================
+// COMPONENTS ARE NEVER INTRODUCED — Tom's ruling, 2026-08-06
+// ===========================================================================
+// "All the components are now being introduced in the new M-LEGO
+//  introductions. Components do NOT get introduced."
+//
+// Only LEGOs get introductions. An M-LEGO's components are tiling parts of
+// one whole thought: the learner absorbs them inside the carrier, and a
+// component debut hands the learner no producible intention. The M-LEGO's
+// OWN introduction may name its pieces inline ("'x' means y") — that is the
+// LEGO's introduction and is fine. A separate per-component introduction is
+// not, and this service used to author, TTS and link exactly that.
+//
+// The `introduce` flag on component rows is NOT the gate. It is not a licence
+// to introduce the `true` ones; the ruling is unconditional. Any branch that
+// consults `introduce` to decide whether to emit a component introduction is
+// the bug, not the flag's value.
+//
+// Every presentation-authoring path below refuses component rows outright.
+// Component known/target clips are still generated — they are tile data, not
+// introductions.
+const COMPONENTS_NEVER_INTRODUCED =
+  'Components are never introduced (Tom, 2026-08-06). Only LEGOs get presentation audio; ' +
+  'component rows are tiling parts absorbed inside their carrier M-LEGO.'
+
+/**
+ * Hard refusal for any code path that tries to author, generate or link a
+ * presentation clip for a `phrase_role = 'component'` row. Throws — a guard
+ * that refuses beats a comment asking nicely.
+ */
+function refuseComponentPresentation(where) {
+  throw new Error(`[${where}] ${COMPONENTS_NEVER_INTRODUCED}`)
+}
+
 /**
  * Fetch ALL existing audio for a course from course_audio.
  * Avoids pagination entirely — uses a single query with high limit.
@@ -446,42 +480,14 @@ async function checkPresentationReadiness(courseCode, releaseTarget, seeds = nul
     missingLegoPresentations++
   }
 
-  // 3) Component phrases — they get their own presentation rows by text match.
-  //    Each component should have at least one presentation row (any text).
-  //    Approximation: count component phrases lacking a `presentation_audio_id`
-  //    binding AND whose own text doesn't appear in the existing presentation set.
-  //    For now we use the simpler check: component phrases with NULL presentation_audio_id.
-  //    /regenerate-presentations creates these rows, so this is a meaningful gate.
-  // METHODOLOGY-AWARE: only introduce:true components need a presentation.
-  // introduce:false components (e.g. grammatical particles like 才) are never
-  // introduced alone, so they must NOT be counted as "missing a presentation".
-  let compMissingQ = supabase
-    .from('course_practice_phrases')
-    .select('id', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-    .eq('phrase_role', 'component')
-    .eq('introduce', true)
-    .lte('seed_number', releaseTarget)
-    .is('presentation_audio_id', null)
-  if (scopeSeeds) compMissingQ = compMissingQ.in('seed_number', scopeSeeds)
-  const { count: componentMissingCount } = await compMissingQ
-
-  // But the component's text may have a matching course_audio row even when
-  // presentation_audio_id is null on the phrase. So we don't strictly require
-  // the per-phrase binding — only that course_audio has *some* row that could match.
-  // For the gate, "no component pending rows at all" is the failure mode worth catching.
-  const { count: pendingCompPresCount } = await supabase
-    .from('course_audio')
-    .select('id', { count: 'exact', head: true })
-    .eq('course_code', courseCode)
-    .eq('role', 'presentation')
-    .is('lego_id', null)  // component presentations have null lego_id
-
-  // If there are component phrases needing audio but ZERO component presentation
-  // rows in course_audio, /regenerate-presentations hasn't been run yet.
-  const missingComponentPresentations = (componentMissingCount > 0 && pendingCompPresCount === 0)
-    ? componentMissingCount
-    : 0
+  // 3) Component phrases — ALWAYS ZERO. A component without a presentation
+  //    clip is not "missing" anything: components are never introduced (Tom,
+  //    2026-08-06), so there is nothing for /regenerate-presentations to make
+  //    and nothing for this gate to hold /generate on. This block used to
+  //    count introduce:true components with a null presentation_audio_id and
+  //    report them as missing — the gate that made the violation a
+  //    prerequisite for release.
+  const missingComponentPresentations = 0
 
   const totalMissing = missingLegoPresentations + missingComponentPresentations
   return {
@@ -741,46 +747,13 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     for (const t of toAuthor) t.seed = seedTexts.get(t.seed_number) || null
   }
 
-  // Component intros (introduce:true only — particles are never introduced
-  // alone). Authored only when no pending component text rows exist; while
-  // they do (pre-purge transition), Step 3 already carries those texts.
-  let componentIntroSlots = 0
-  const pendingComponentRows = (rawPresentations || [])
-    .filter(p => p.s3_key && p.s3_key.startsWith('pending/') && !p.lego_id).length
-  if (pendingComponentRows === 0) {
-    let compQ = supabase
-      .from('course_practice_phrases')
-      .select('id, known_text, target_text, lego_id, seed_number')
-      .eq('course_code', courseCode)
-      .eq('phrase_role', 'component')
-      .eq('introduce', true)
-      .is('presentation_audio_id', null)
-      .lte('seed_number', releaseTarget)
-    if (scopeSeeds) compQ = compQ.in('seed_number', scopeSeeds)
-    const { data: compRows } = await compQ
-    componentIntroSlots = (compRows || []).length
-    const parentIds = [...new Set((compRows || []).map(c => c.lego_id).filter(Boolean))]
-    const parentKnown = new Map()
-    for (let i = 0; i < parentIds.length; i += 200) {
-      const { data: parents } = await supabase
-        .from('course_legos')
-        .select('lego_id, known_text')
-        .eq('course_code', courseCode)
-        .in('lego_id', parentIds.slice(i, i + 200))
-      for (const p of (parents || [])) parentKnown.set(p.lego_id, p.known_text)
-    }
-    for (const c of (compRows || [])) {
-      if (isPunctuationOnly(c.known_text)) continue
-      toAuthor.push({
-        phrase_id: c.id,
-        lego_id: null,
-        chunk: c.known_text,
-        form: c.target_text,
-        seed: parentKnown.get(c.lego_id) || null,
-        seed_number: c.seed_number
-      })
-    }
-  }
+  // NO COMPONENT INTROS. This block used to queue one presentation text per
+  // introduce:true component for authoring and TTS — the machine that made
+  // every component into its own introduction. Components are never
+  // introduced (Tom, 2026-08-06), so there are no component intro slots and
+  // nothing to author. `introduce: true` is not a licence: the flag was never
+  // the gate. Kept as a named zero because the slot maths below reads it.
+  const componentIntroSlots = 0
 
   // Step 2: Check which unlinked items have existing audio (can be linked without TTS)
   // If forceGenerate is true, skip this check — treat everything as needing TTS.
@@ -899,22 +872,6 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
           for (const l of (rows || [])) legoById.set(l.lego_id, l)
         }
 
-        // Component rows have no FK — a row is fresh if ANY current
-        // introduce:true component known_text appears quoted in its text.
-        let compProbes = []
-        if (freshPendingRows.some(r => !r.lego_id)) {
-          let compQ2 = supabase
-            .from('course_practice_phrases')
-            .select('known_text')
-            .eq('course_code', courseCode)
-            .eq('phrase_role', 'component')
-            .eq('introduce', true)
-            .lte('seed_number', releaseTarget)
-          if (scopeSeeds) compQ2 = compQ2.in('seed_number', scopeSeeds)
-          const { data: compTexts } = await compQ2
-          compProbes = [...new Set((compTexts || []).map(c => c.known_text).filter(Boolean))].map(quotedProbe)
-        }
-
         const isFreshPending = (r) => {
           const text = r.text || ''
           if (r.lego_id) {
@@ -927,7 +884,11 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
             }
             return variants.some(v => v && text.includes(quotedProbe(v)))
           }
-          return compProbes.some(p => text.includes(p))
+          // A pending row with no lego_id is a COMPONENT presentation text.
+          // Never fresh: components are never introduced (Tom, 2026-08-06),
+          // so any such row left over from the old authoring path is stale by
+          // definition and gets purged rather than TTSed.
+          return false
         }
 
         const fresh = []
@@ -1607,102 +1568,21 @@ async function linkPresentationAudio(courseCode) {
 }
 
 /**
- * Link presentation audio IDs to component phrases (course_practice_phrases).
- * Component presentation audio is matched by text_normalized + role.
- * This mirrors linkPresentationAudio but for components instead of LEGOs.
+ * Link presentation audio to component phrases — REFUSED.
+ *
+ * Components are never introduced (Tom, 2026-08-06). This used to build the
+ * "as in" presentation text for every component row, look up its clip and
+ * bind it to `course_practice_phrases.presentation_audio_id` — the last step
+ * that turned an authored component narration into something a learner could
+ * hear. It now links nothing, always.
+ *
+ * Existing bindings are left alone: unlinking ~68k rows across 96 courses is
+ * a separate, approval-gated decision. Nothing plays them (the cycles API no
+ * longer emits component_intro), so they are inert.
  */
 async function linkComponentPresentationAudio(courseCode) {
-  // 1. Get component phrases missing presentation_audio_id
-  const PAGE_SIZE = 1000
-  const components = []
-  let offset = 0
-  while (true) {
-    const { data, error } = await supabase
-      .from('course_practice_phrases')
-      .select('id, seed_number, lego_index, known_text')
-      .eq('course_code', courseCode)
-      .eq('phrase_role', 'component')
-      .is('presentation_audio_id', null)
-      .order('id')
-      .range(offset, offset + PAGE_SIZE - 1)
-    if (error || !data?.length) break
-    components.push(...data)
-    if (data.length < PAGE_SIZE) break
-    offset += PAGE_SIZE
-  }
-
-  if (components.length === 0) return { linked: 0 }
-
-  // 2. Get course info and presentation template
-  const { data: course } = await supabase
-    .from('courses')
-    .select('known_lang, target_lang')
-    .eq('course_code', courseCode)
-    .single()
-  if (!course) return { linked: 0 }
-
-  const targetLangName = getLocalisedLangName(course.target_lang, course.known_lang)
-  const template = await getOrCreatePresentationTemplate(course.known_lang)
-
-  // 3. Load parent M-LEGOs for "as in" context
-  const seedNumbers = [...new Set(components.map(c => c.seed_number))]
-  const parentMap = new Map()
-  for (let i = 0; i < seedNumbers.length; i += 500) {
-    const batch = seedNumbers.slice(i, i + 500)
-    const { data: parents } = await supabase
-      .from('course_legos')
-      .select('seed_number, lego_index, known_text')
-      .eq('course_code', courseCode)
-      .eq('type', 'M')
-      .in('seed_number', batch)
-    for (const l of (parents || [])) {
-      parentMap.set(`${l.seed_number}:${l.lego_index}`, l)
-    }
-  }
-
-  // 4. Build presentation text for each component and look up audio
-  const { data: allPresAudio } = await supabase
-    .from('course_audio')
-    .select('id, text_normalized, s3_key')
-    .eq('course_code', courseCode)
-    .eq('role', 'presentation')
-    .eq('language', course.known_lang)
-    .not('s3_key', 'like', 'pending/%')
-    .limit(100000)
-
-  const presAudioMap = new Map()
-  for (const a of (allPresAudio || [])) {
-    presAudioMap.set(a.text_normalized, a.id)
-  }
-
-  // 5. Match and link
-  let linked = 0
-  for (const comp of components) {
-    const parent = parentMap.get(`${comp.seed_number}:${comp.lego_index}`)
-    if (!parent) continue
-
-    const presText = template
-      .replace('{target_lang_name}', targetLangName)
-      .replace('{known}', comp.known_text)
-      .replace('{seed}', parent.known_text)
-
-    const norm = normalizeForAudio(presText)
-    const audioId = presAudioMap.get(norm)
-    if (!audioId) continue
-
-    const { error } = await supabase
-      .from('course_practice_phrases')
-      .update({ presentation_audio_id: audioId })
-      .eq('id', comp.id)
-
-    if (!error) linked++
-  }
-
-  if (linked > 0) {
-    logger.info(`linkComponentPresentationAudio: linked ${linked} component presentation audio IDs for ${courseCode}`)
-  }
-
-  return { linked }
+  logger.debug(`linkComponentPresentationAudio: ${COMPONENTS_NEVER_INTRODUCED} (${courseCode})`)
+  return { linked: 0 }
 }
 
 // GET /needs/:courseCode — canonical audio-needs endpoint.
@@ -2137,6 +2017,22 @@ app.post('/generate/:courseCode', async (req, res) => {
 
     logger.info(`Audio needs: ${audioNeeds.stats.missing} missing total, ${audioNeeds.toLink} linkable, ${audioNeeds.toGenerate.length} need TTS, ${authoredIntros.length} freshly authored`)
 
+
+    // COMPONENTS ARE NEVER INTRODUCED — the money-path guard (Tom, 2026-08-06).
+    // A `presentation` item carrying a phrase_id rather than a lego_id IS a
+    // component introduction: presentation audio only ever belongs to a LEGO
+    // or a component row, and this is the last place either can reach TTS.
+    // Refuse loudly rather than spend money narrating a tiling part.
+    const componentPresentationItems = needed.filter(
+      n => n.role === 'presentation' && n.phrase_id && !n.lego_id
+    )
+    if (componentPresentationItems.length > 0) {
+      logger.error(
+        `[generate] ${componentPresentationItems.length} component presentation item(s) reached the TTS queue for ${courseCode}: ` +
+        componentPresentationItems.slice(0, 3).map(n => n.phrase_id).join(', ')
+      )
+      refuseComponentPresentation('generate')
+    }
 
     // Filter by requested roles if specified (e.g. roles: ['known', 'presentation'])
     if (requestedRoles && Array.isArray(requestedRoles) && requestedRoles.length > 0) {
@@ -3249,28 +3145,10 @@ app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
       toInsert.push({ kind: 'lego', lego_id: l.lego_id, known: l.known_text, text })
     }
 
-    // 2) Component presentations: introduce:true components in scope, with a parent
-    //    M-LEGO, lacking a presentation. introduce:false (particles) are SKIPPED.
-    const { data: comps } = await supabase.from('course_practice_phrases')
-      .select('id, seed_number, lego_index, known_text, introduce, presentation_audio_id')
-      .eq('course_code', courseCode).eq('phrase_role', 'component').in('seed_number', scopeSeeds)
-    const parentMap = new Map()
-    if (comps && comps.length) {
-      const { data: parents } = await supabase.from('course_legos')
-        .select('seed_number, lego_index, known_text')
-        .eq('course_code', courseCode).eq('type', 'M').in('seed_number', scopeSeeds)
-      for (const p of (parents || [])) parentMap.set(`${p.seed_number}:${p.lego_index}`, p)
-    }
-    for (const c of (comps || [])) {
-      if (c.introduce === false) continue            // METHODOLOGY: never introduce a silent particle
-      if (c.presentation_audio_id) continue
-      const parent = parentMap.get(`${c.seed_number}:${c.lego_index}`)
-      if (!parent) continue
-      const text = template.replace('{target_lang_name}', targetLangName)
-        .replace('{known}', c.known_text).replace('{seed}', parent.known_text)
-      if (existingTextNorms.has(normalizeForAudio(text))) continue
-      toInsert.push({ kind: 'component', phrase_id: c.id, known: c.known_text, text })
-    }
+    // 2) Component presentations: NONE. Components are never introduced
+    //    (Tom, 2026-08-06), so this endpoint inserts no component presentation
+    //    text. It used to author one per introduce:true component with a
+    //    parent M-LEGO; `introduce` was never the gate and is not one now.
 
     if (dryRun) {
       return res.json({ success: true, dryRun: true, courseCode, seeds: scopeSeeds, wouldInsert: toInsert.length, items: toInsert })
@@ -3565,78 +3443,14 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     }
 
     // =========================================================================
-    // COMPONENT PRESENTATIONS - Generate presentation text for M-LEGO components
+    // COMPONENT PRESENTATIONS — NONE. Components are never introduced
+    // (Tom, 2026-08-06). This endpoint used to build one "as in" presentation
+    // text per component row from its parent M-LEGO's known_text, which is
+    // exactly the per-component introduction the ruling forbids. It authors
+    // none now; the array stays so the response shape and the dedupe below
+    // are unchanged — always empty.
     // =========================================================================
     const componentPresentations = []
-
-    // Load all component phrases for this course
-    const compPhrases = []
-    let compOffset = 0
-    let hasMoreComps = true
-    while (hasMoreComps) {
-      const { data: compBatch, error: compError } = await supabase
-        .from('course_practice_phrases')
-        .select('id, seed_number, lego_index, known_text, target_text')
-        .eq('course_code', courseCode)
-        .eq('phrase_role', 'component')
-        .order('id')
-        .range(compOffset, compOffset + PAGE_SIZE - 1)
-
-      if (compError) { logger.warn('Failed to fetch component phrases:', compError.message); break }
-      if (compBatch && compBatch.length > 0) {
-        compPhrases.push(...compBatch)
-        hasMoreComps = compBatch.length === PAGE_SIZE
-        compOffset += PAGE_SIZE
-      } else {
-        hasMoreComps = false
-      }
-    }
-
-    if (compPhrases.length > 0) {
-      // Load parent M-LEGOs for "as in" context
-      const compSeedNumbers = [...new Set(compPhrases.map(c => c.seed_number))]
-      const parentLegoMap = new Map()
-
-      const COMP_SEED_BATCH = 500
-      for (let i = 0; i < compSeedNumbers.length; i += COMP_SEED_BATCH) {
-        const seedBatch = compSeedNumbers.slice(i, i + COMP_SEED_BATCH)
-        const { data: parentLegos } = await supabase
-          .from('course_legos')
-          .select('seed_number, lego_index, known_text, target_text')
-          .eq('course_code', courseCode)
-          .eq('type', 'M')
-          .in('seed_number', seedBatch)
-
-        for (const l of (parentLegos || [])) {
-          parentLegoMap.set(`${l.seed_number}:${l.lego_index}`, l)
-        }
-      }
-
-      // Generate presentation text for each component
-      for (const comp of compPhrases) {
-        const parent = parentLegoMap.get(`${comp.seed_number}:${comp.lego_index}`)
-        if (!parent) continue  // Skip components without a parent M-LEGO
-
-        const presText = template
-          .replace('{target_lang_name}', targetLangName)
-          .replace('{known}', comp.known_text)
-          .replace('{seed}', parent.known_text)
-
-        componentPresentations.push({
-          phrase_id: comp.id,
-          known: comp.known_text,
-          target: comp.target_text,
-          parent_known: parent.known_text,
-          seed_number: comp.seed_number,
-          lego_index: comp.lego_index,
-          presentation_text: presText
-        })
-      }
-
-      logger.info(`Generated ${componentPresentations.length} component presentations (from ${compPhrases.length} component phrases)`)
-    } else {
-      logger.info('No component phrases found for this course')
-    }
 
     if (dryRun) {
       return res.json({
@@ -5284,16 +5098,16 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       parentMap.set(`${l.seed_number}:${l.lego_index}`, l)
     }
 
-    // 4. Get (or auto-generate) presentation template
-    const presentationTemplate = await getOrCreatePresentationTemplate(knownLang)
+    // 4. No presentation template is fetched: components are never introduced
+    //    (Tom, 2026-08-06), so this endpoint has no presentation text to build.
 
     // 5. Collect all unique texts we need audio for
     const needed = []
-    const compPresTexts = new Map() // comp.id -> presentation text
+    // Always empty — kept because linkComponentAudio takes it and must bind
+    // no component presentation clip.
+    const compPresTexts = new Map()
 
     for (const comp of components) {
-      const parent = parentMap.get(`${comp.seed_number}:${comp.lego_index}`)
-
       // known audio
       if (!isPunctuationOnly(comp.known_text)) {
         needed.push({
@@ -5320,25 +5134,11 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         }
       }
 
-      // presentation audio
-      if (parent) {
-        const presText = presentationTemplate
-          .replace('{target_lang_name}', targetLangName)
-          .replace('{known}', comp.known_text)
-          .replace('{seed}', parent.known_text)
-
-        compPresTexts.set(comp.id, presText)
-
-        needed.push({
-          text: presText,
-          language: knownLang,
-          role: 'presentation',
-          voiceId: getVoiceForRole('presentation') || getVoiceForRole('known'),
-          speed: getSpeedForRole('presentation') || getSpeedForRole('known') || 1.0,
-          componentId: comp.id,
-          isComponentPresentation: true
-        })
-      }
+      // NO presentation audio. Components are never introduced (Tom,
+      // 2026-08-06). This is where the per-component "as in" narration used to
+      // be built from the parent M-LEGO and queued for TTS. The known/target
+      // clips above stay — those are tile data, not an introduction.
+      // `compPresTexts` is left empty, so linkComponentAudio binds nothing.
     }
 
     // 6. Dedup against existing course_audio (targeted query by unique texts)
@@ -6592,8 +6392,31 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
 // =============================================================================
 // POST /generate-pods/:courseCode — actually generate missing audio
 // =============================================================================
-// Body: { pod_ids?: string[], roles?: ('target'|'known')[], concurrency?: number }
+// Body: { pod_ids?: string[], roles?: ('target'|'known')[], concurrency?: number,
+//         sample_limit?: number }
 // Default: all pods for the course, both roles, concurrency=5.
+//
+// SAMPLE-FIRST HARD GATE (Tom's ruling, 2026-08-07). Two modes, and the run
+// says which one it is in its first log line:
+//
+//   SAMPLE — body.sample_limit is a positive integer (capped at
+//     POD_SAMPLE_LIMIT_MAX server-side). Skips the approval check and TRUNCATES
+//     the work queue to that many clips, picking distinct voices first so the
+//     sample actually exercises the casting you are being asked to approve.
+//     Always allowed: without it the gate would be unopenable.
+//
+//   BULK — anything else, INCLUDING a run narrowed by pod_ids or roles. Refused
+//     with HTTP 409 unless app_config.pod_voice_approvals holds an approval for
+//     this course whose cast_fingerprint equals the live casting. Recast the
+//     course and the fingerprint moves, so a stale approval stops counting on
+//     its own (services/pod-voice-approvals.cjs; tests alongside it).
+//
+// Why: 16 eng_for_* courses are cast with Chinese voices on English targets
+// right now (docs/pods/pod-redo-scope-2026-08-07.md §4a). A bulk run on that
+// casting fails 100% and burns ~19 hours of whisper for nothing.
+
+const POD_SAMPLE_LIMIT_MAX = 10
+const podApprovals = require('../pod-voice-approvals.cjs')
 
 app.post('/generate-pods/:courseCode', async (req, res) => {
   try {
@@ -6601,6 +6424,33 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     const body = req.body || {}
     const podIds = body.pod_ids || null
     const roles = body.roles || ['target', 'known']
+
+    // --- Mode resolution ----------------------------------------------------
+    const modeDecision = podApprovals.parseSampleLimit(body.sample_limit, POD_SAMPLE_LIMIT_MAX)
+    if (modeDecision.mode === 'error') return res.status(400).json({ error: modeDecision.message })
+    const sampleLimit = modeDecision.mode === 'sample' ? modeDecision.limit : null
+
+    if (sampleLimit === null) {
+      const gate = await podApprovals.checkApproval(supabase, courseCode)
+      if (!gate.ok) {
+        logger.warn(`[Pods] BULK REFUSED ${courseCode}: ${gate.reason} (live cast ${gate.live_fingerprint})`)
+        return res.status(409).json({
+          error: 'pod_voices_not_approved',
+          reason: gate.reason,
+          message: gate.message,
+          course_code: courseCode,
+          live_cast_fingerprint: gate.live_fingerprint,
+          approval: gate.approval,
+          sample_first: {
+            how: `POST /generate-pods/${courseCode} with {"sample_limit": 5}`,
+            max: POD_SAMPLE_LIMIT_MAX,
+          },
+        })
+      }
+      logger.info(`[Pods] BULK mode ${courseCode}: approved by ${gate.approval.approved_by} at ${gate.approval.approved_at}, cast ${gate.live_fingerprint}`)
+    } else {
+      logger.info(`[Pods] SAMPLE mode ${courseCode}: limit ${sampleLimit} clip(s), approval check skipped`)
+    }
     // Cap fan-out: xAI TTS is flaky under heavy concurrency, so clamp to a
     // small safe ceiling (POD_GEN_CONCURRENCY_MAX) regardless of caller input.
     const concurrency = Math.max(1, Math.min(POD_GEN_CONCURRENCY_MAX, body.concurrency || POD_GEN_CONCURRENCY_DEFAULT))
@@ -6651,7 +6501,19 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
       }
     }
 
-    logger.info(`[Pods] ${courseCode}: ${workQueue.length} clips queued across ${pods.length} pod(s) at concurrency ${concurrency}`)
+    // SAMPLE truncation. Take the first clip of each distinct
+    // (voice, provider, track) before any second clip of a voice already
+    // covered — a 5-clip sample that happened to be five lines from one
+    // character would approve nothing about the rest of the cast.
+    const queuedBeforeSample = workQueue.length
+    if (sampleLimit !== null) {
+      const sample = podApprovals.selectSample(workQueue, sampleLimit)
+      workQueue.length = 0
+      workQueue.push(...sample)
+      logger.info(`[Pods] SAMPLE ${courseCode}: truncated ${queuedBeforeSample} → ${workQueue.length} clip(s)`)
+    }
+
+    logger.info(`[Pods] ${sampleLimit === null ? 'BULK' : 'SAMPLE'} ${courseCode}: ${workQueue.length} clips queued across ${pods.length} pod(s) at concurrency ${concurrency}`)
 
     const startMs = Date.now()
     let generated = 0, reused = 0, failed = 0
@@ -6698,6 +6560,9 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
 
     res.json({
       course_code: courseCode,
+      mode: sampleLimit === null ? 'bulk' : 'sample',
+      sample_limit: sampleLimit,
+      queued_before_sample: queuedBeforeSample,
       generated,
       reused,
       failed,
@@ -6709,6 +6574,460 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     logger.error(`[Pods /generate-pods] ${err.message}`)
     res.status(500).json({ error: err.message })
   }
+})
+
+// =============================================================================
+// REUSE-FIRST REGENERATION
+// =============================================================================
+// Tom's rule, 2026-08-07, verbatim:
+//   "set aside all clips for the first 10 ROUNDS / does this voice x text x
+//    lang combination exist already? / find it / then generate all missing clips"
+//
+// The decision logic lives in services/audio-reuse-planner.cjs (no TTS, no S3,
+// unit-tested). This file supplies the two things only phase 8 owns: storage
+// verification and the renderer. Nothing here deletes anything — the planner has
+// no delete path at all, and neither does this.
+//
+//   GET  /reuse-plan/:courseCode?rounds=10   read-only, generates nothing
+//   POST /reuse-apply/:courseCode            { rounds, dryRun, confirm }
+//   GET  /reuse-run/:runId                   result of a finished run
+// =============================================================================
+
+const reusePlanner = require('../audio-reuse-planner.cjs')
+
+const REUSE_ARTIFACT_DIR = path.join(__dirname, '..', '..', 'docs', 'audio-repair-2026-08-07')
+
+// A persistent veracity-verdict store, so a band never re-decodes a question an
+// earlier band already answered. Bands are disjoint in ROUNDS but not in CLIPS —
+// review offsets reach back as far as 2584 rounds, and 35.7% of a rounds-201-210
+// plan is clips that rounds 1-200 also plays (measured 2026-08-07). Whisper is the
+// dominant cost of the whole exercise, so that overlap is the single cheapest hour
+// to buy back.
+//
+// Safe to keep forever, and deliberately never invalidated: mastered/<uuid>.mp3 is
+// WRITE-ONCE (a re-master mints a new key), so the key names the same bytes for all
+// time. It is keyed across courses on purpose — the same object answers the same
+// question whoever is asking.
+//
+// Set AUDIO_VERACITY_CACHE=0 to turn it off; it is on by default because a cache
+// that cannot go stale has no failure mode worth a flag.
+const VERDICT_CACHE_PATH = process.env.AUDIO_VERACITY_CACHE_PATH
+  || path.join(os.homedir(), '.audio-veracity-verdicts.json')
+
+function loadVerdictCache() {
+  if (process.env.AUDIO_VERACITY_CACHE === '0') return null
+  let m = new Map()
+  try {
+    if (fs.existsSync(VERDICT_CACHE_PATH)) {
+      m = new Map(Object.entries(fs.readJsonSync(VERDICT_CACHE_PATH)))
+      logger.info(`[ReuseFirst] verdict cache: ${m.size} remembered decodes from ${VERDICT_CACHE_PATH}`)
+    }
+  } catch (e) {
+    // A corrupt cache is a cost problem, never a correctness one — start empty.
+    logger.warn(`[ReuseFirst] verdict cache unreadable (${e.message}) — starting empty`)
+    m = new Map()
+  }
+  let dirty = 0
+  const flush = () => {
+    if (!dirty) return
+    try {
+      fs.outputJsonSync(VERDICT_CACHE_PATH, Object.fromEntries(m))
+      dirty = 0
+    } catch (e) { logger.warn(`[ReuseFirst] verdict cache write failed: ${e.message}`) }
+  }
+  return {
+    get: (k) => m.get(k),
+    // Flushed every 200 new verdicts so a killed run keeps most of its listening,
+    // which is the whole point: the in-memory listen result dies with the process.
+    set: (k, v) => { m.set(k, v); if (++dirty >= 200) flush() },
+    flush,
+    get size() { return m.size },
+  }
+}
+const reuseRuns = new Map()   // runId -> run record (in-process; artifact on disk is durable)
+
+// A full course is one round per is_new LEGO — fra_for_eng alone is 1,529 — so
+// the old cap of 500 was below the size of a real scope, not above it. The cap
+// is a runaway guard, nothing else; the thing that keeps a big scope safe is
+// BANDING (fromRound), not a small ceiling.
+const MAX_ROUNDS = 5000
+
+/** HEAD an S3 object. Never throws for "missing"; a failed QUESTION is `null`. */
+async function reuseHeadObject(s3Key) {
+  if (!s3Key || s3Key.startsWith('pending/')) return { exists: false, size: null }
+  try {
+    const r = await s3.send(new HeadObjectCommand({ Bucket: S3_BUCKET, Key: s3Key }))
+    return { exists: true, size: r.ContentLength ?? null }
+  } catch (e) {
+    const code = e?.$metadata?.httpStatusCode
+    if (e?.name === 'NotFound' || code === 404) return { exists: false, size: null }
+    return { exists: null, size: null, error: e?.name || e?.message || 'head failed' }
+  }
+}
+
+/** The bytes at an S3 key, as a Buffer — for the incumbent veracity pass. */
+async function reuseFetchObject(s3Key) {
+  const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: s3Key }))
+  const chunks = []
+  for await (const chunk of r.Body) chunks.push(chunk)
+  return Buffer.concat(chunks)
+}
+
+/**
+ * Render ONE clip from the plan. Deliberately the same recipe /generate uses —
+ * gender expansion, master, PRE-PUBLISH VERACITY GATE, S3, course_audio upsert —
+ * and reading the COURSE text the planner supplied, never course_audio.text.
+ * The precious-audio guard is honoured: a human recording at this key is never
+ * overwritten.
+ */
+async function reuseRenderClip(courseCode, clip, stats) {
+  const guardedHuman = await humanRowAtAudioKey(
+    courseCode, normalizeForAudio(clip.text), clip.language, clip.role, clip.voiceId
+  )
+  if (guardedHuman) {
+    logger.info(`[ReuseFirst] SKIP render: human recording ${guardedHuman.id} holds this key`)
+    return { audioId: guardedHuman.id, s3Key: null, durationMs: null, skippedHuman: true }
+  }
+
+  const [provider, voiceName] = String(clip.voiceId).split('_', 2)
+  let textForTTS = clip.text
+  if ((clip.role === 'target1' || clip.role === 'target2') && genderService.hasGenderMarker(clip.text)) {
+    const marker = genderService.analyzeAndExpand(clip.text, clip.language, clip.role)
+    if (marker.wasModified) textForTTS = marker.expandedText
+  }
+
+  const renderAndMaster = async () => {
+    let rawAudioBuffer, wordBoundaries
+    if (provider === 'azure') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+        subscriptionKey: process.env.AZURE_SPEECH_KEY,
+        region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+        voiceName, speed: 1.0,
+      }))
+    } else if (provider === 'elevenlabs') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+        apiKey: process.env.ELEVENLABS_API_KEY, voiceId: voiceName, speed: 1.0,
+      }))
+    } else if (provider === 'xai') {
+      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+        apiKey: process.env.XAI_API_KEY, voiceId: voiceName, language: toBcp47(clip.language),
+      }))
+    } else {
+      throw new Error(`Unknown TTS provider: ${provider} (voice ${clip.voiceId})`)
+    }
+    const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+    return { buffer, durationMs, wordBoundaries }
+  }
+
+  const gated = await veracity.renderChecked({
+    render: renderAndMaster,
+    expectedText: textForTTS,
+    language: clip.language,
+    stats,
+    logger,
+    meta: { courseCode, role: clip.role, voiceId: clip.voiceId, lego_id: clip.legoId || null, originalText: clip.text },
+  })
+  if (!gated.published) {
+    throw new Error(`veracity gate: quarantined after ${gated.attempts} attempts (${gated.verdict?.reason}, CER ${gated.verdict?.cer})`)
+  }
+
+  const audioId = uuidv4().toUpperCase()
+  const s3Key = `mastered/${audioId}.mp3`
+  await s3.send(new PutObjectCommand({
+    Bucket: S3_BUCKET, Key: s3Key, Body: gated.buffer,
+    ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL,
+  }))
+
+  // ── THE VERSIONED, NO-HOLES SWAP ───────────────────────────────────────
+  // When this render replaces a clip that already exists, it must NOT upsert
+  // over the row's s3_key in place. Doing that changes the bytes behind an
+  // unchanged learner ref, and `/api/audio/:id` serves
+  // `max-age=31536000, immutable` — so every learner who has already played
+  // the clip keeps the old audio for a YEAR, and the offline IndexedDB cache
+  // (keyed by the ref string) keeps it forever. That is the documented cause
+  // of "we kept replacing clips and got the same clip"
+  // (docs/audio/per-clip-versioned-urls-census-2026-08-06.md).
+  //
+  // Instead: same row id, bumped audio_revision, history row written. The
+  // learner ref becomes `<uuid>.v<N>`, which is a new URL and a new cache key
+  // in both layers, and because the ROW ID never moves, no holder FK is
+  // touched and the course cannot reference a missing clip at any instant.
+  // The superseded S3 object is retained — nothing is ever deleted.
+  const swapTargetAudioId = clip.reuseSource?.swapTargetAudioId
+  if (swapTargetAudioId) {
+    // Make before break: prove the new bytes are really in the bucket BEFORE
+    // the row is pointed at them.
+    const head = await reuseHeadObject(s3Key)
+    if (!head.exists) throw new Error(`new object ${s3Key} not in bucket — refusing to swap`)
+
+    const { data: row, error: readErr } = await supabase
+      .from('course_audio')
+      .select('id, course_code, s3_key, duration_ms, audio_revision')
+      .eq('id', swapTargetAudioId)
+      .single()
+    if (readErr || !row) throw new Error(`swap target ${swapTargetAudioId} not readable: ${readErr?.message || 'no row'}`)
+
+    const previousRevision = row.audio_revision ?? 1
+    const revision = previousRevision + 1
+
+    // History first — a swap that is not recorded is worse than one that does
+    // not happen. This is the rollback ledger.
+    const { error: histErr } = await supabase
+      .from('course_audio_revisions')
+      .insert({
+        audio_id: row.id,
+        course_code: row.course_code,
+        revision,
+        previous_revision: previousRevision,
+        previous_s3_key: row.s3_key,
+        new_s3_key: s3Key,
+        previous_duration_ms: row.duration_ms,
+        new_duration_ms: gated.durationMs,
+        source: 'reuse-first-rebuild',
+        accepted_by: 'phase8 /reuse-apply',
+        reason: 'rounds rebuild on the chosen voice',
+      })
+    if (histErr) throw new Error(`writing revision history: ${histErr.message}`)
+
+    // text/text_normalized/language/role/voice_id are deliberately NOT in the
+    // patch: leaving them alone keeps unique_course_audio_per_voice satisfied
+    // and keeps the id stable, which is what makes this hole-free.
+    const { error: swapErr } = await supabase
+      .from('course_audio')
+      .update({
+        s3_key: s3Key,
+        duration_ms: gated.durationMs,
+        audio_revision: revision,
+        word_boundaries: gated.wordBoundaries || null,
+        origin: 'tts',
+      })
+      .eq('id', row.id)
+    if (swapErr) throw new Error(`swapping clip ${row.id}: ${swapErr.message}`)
+
+    logger.info(`[ReuseFirst] swapped ${row.id} -> revision ${revision} (${row.s3_key} superseded, retained)`)
+    return {
+      audioId: row.id, s3Key, durationMs: gated.durationMs,
+      revision, previousS3Key: row.s3_key, swappedInPlace: true,
+    }
+  }
+
+  const { data: inserted, error } = await supabase
+    .from('course_audio')
+    .upsert({
+      course_code: courseCode,
+      text: clip.text,
+      text_normalized: normalizeForAudio(clip.text),
+      language: clip.language,
+      role: clip.role,
+      voice_id: clip.voiceId,
+      origin: 'tts',
+      s3_key: s3Key,
+      duration_ms: gated.durationMs,
+      lego_id: clip.legoId || null,
+      word_boundaries: gated.wordBoundaries || null,
+    }, { onConflict: 'course_code,text_normalized,language,role,voice_id' })
+    .select('id')
+    .single()
+  if (error) throw new Error(`course_audio upsert: ${error.message}`)
+
+  // Presentation audio also needs its FK on course_legos — the planner's holder
+  // list already carries that column, so relinkHolders covers it.
+  return { audioId: inserted.id, s3Key, durationMs: gated.durationMs }
+}
+
+/**
+ * Voice aliases: groups of voice_id strings a caller ASSERTS are one voice.
+ * Off by default. The estate carries legacy bare ids (`eve`) alongside
+ * provider-prefixed ones (`xai_eve`) and whether those are the same voice is a
+ * voice-identity call, so it is opt-in per request and recorded on every clip
+ * that used it.
+ */
+function parseVoiceAliases(raw) {
+  if (!raw) return []
+  try {
+    const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw
+    if (!Array.isArray(parsed)) return []
+    return parsed.filter(g => Array.isArray(g) && g.length > 1)
+  } catch { return [] }
+}
+
+/** Courses queried FIRST as reuse sources for a given course, before the
+ *  generic estate sweep. Tom, 2026-08-07: deu_for_eng is a PRIMARY source for
+ *  the English known side of fra_for_eng, "not an afterthought behind a generic
+ *  estate-wide lookup". Same-known-language courses rebuilt most recently. */
+const PREFERRED_SOURCES = {
+  fra_for_eng: ['deu_for_eng', 'spa_for_eng', 'fra_ca_for_eng'],
+  deu_for_eng: ['fra_for_eng', 'spa_for_eng'],
+}
+/** Roles that must never be borrowed from another course. Default: intros. */
+function parseFreshRoles(raw) {
+  if (raw === undefined || raw === null || raw === '') return ['presentation']
+  const list = Array.isArray(raw) ? raw : String(raw).split(',')
+  return list.map(s => s.trim()).filter(Boolean)
+}
+
+function preferredSourcesFor(courseCode, raw) {
+  if (raw) {
+    try {
+      const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw
+      if (Array.isArray(parsed)) return parsed.filter(s => typeof s === 'string')
+    } catch { /* fall through to the default */ }
+  }
+  return PREFERRED_SOURCES[courseCode] || []
+}
+
+// THE COVERAGE TABLE — a first-class deliverable, not an internal step.
+// Read-only: measures which voice already has the most of what these rounds
+// need, so the voice can be chosen on evidence rather than on habit.
+app.get('/reuse-coverage/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const rounds = Math.max(1, Math.min(MAX_ROUNDS, parseInt(req.query.rounds, 10) || 10))
+    const fromRound = Math.max(1, Math.min(rounds, parseInt(req.query.fromRound, 10) || 1))
+    const voiceAliases = parseVoiceAliases(req.query.voiceAliases)
+    const layers = req.query.layers ? String(req.query.layers).split(',') : undefined
+    const table = await reusePlanner.buildCoverageTable(supabase, courseCode, rounds, {
+      voiceAliases, fromRound,
+      codeService: { getName: getLangEnglishName },
+      preferredSourceCourses: preferredSourcesFor(courseCode, req.query.preferredSources),
+      ...(layers ? { layers } : {}),
+    })
+    res.json(table)
+  } catch (e) {
+    logger.error(`[ReuseFirst /reuse-coverage] ${e.message}`)
+    res.status(500).json({ ok: false, error: e.message })
+  }
+})
+
+app.get('/reuse-plan/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    const rounds = Math.max(1, Math.min(MAX_ROUNDS, parseInt(req.query.rounds, 10) || 10))
+    const fromRound = Math.max(1, Math.min(rounds, parseInt(req.query.fromRound, 10) || 1))
+    const crossRole = req.query.crossRole !== 'false'
+    const voiceAliases = parseVoiceAliases(req.query.voiceAliases)
+    const verifyBytes = req.query.verifyBytes !== 'false'
+
+    const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, {
+      crossRole, voiceAliases, fromRound,
+      freshRoles: parseFreshRoles(req.query.freshRoles),
+      codeService: { getName: getLangEnglishName },
+      preferredSourceCourses: preferredSourcesFor(courseCode, req.query.preferredSources),
+    })
+    if (verifyBytes) await reusePlanner.verifyPlanBytes(plan, { headObject: reuseHeadObject })
+
+    res.json(plan)
+  } catch (e) {
+    logger.error(`[ReuseFirst /reuse-plan] ${e.message}`)
+    res.status(500).json({ ok: false, error: e.message })
+  }
+})
+
+app.post('/reuse-apply/:courseCode', async (req, res) => {
+  const { courseCode } = req.params
+  const rounds = Math.max(1, Math.min(MAX_ROUNDS, parseInt(req.body?.rounds, 10) || 10))
+  const fromRound = Math.max(1, Math.min(rounds, parseInt(req.body?.fromRound, 10) || 1))
+  const dryRun = req.body?.dryRun !== false
+  const crossRole = req.body?.crossRole !== false
+  const rebuild = req.body?.rebuild === true
+  const voiceAliases = parseVoiceAliases(req.body?.voiceAliases)
+
+  // A live run SPENDS MONEY on TTS. Typed confirmation, same shape the rest of
+  // the dashboard uses for expensive/irreversible actions.
+  if (!dryRun && req.body?.confirm !== courseCode) {
+    return res.status(400).json({
+      ok: false,
+      error: `a live run renders audio and costs money — send confirm:"${courseCode}" to proceed`,
+    })
+  }
+  if (!dryRun && currentWork.active) {
+    return res.status(409).json({ ok: false, error: `phase 8 is busy (${currentWork.operation} on ${currentWork.courseCode})` })
+  }
+
+  const runId = `reuse-${courseCode}-r${fromRound === 1 ? rounds : `${fromRound}to${rounds}`}-${Date.now()}`
+  const run = {
+    runId, courseCode, rounds, fromRound, dryRun,
+    startedAt: new Date().toISOString(), finishedAt: null,
+    state: 'running', summary: null, log: null, artifactPath: null, error: null,
+  }
+  reuseRuns.set(runId, run)
+
+  const execute = async () => {
+    try {
+      const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, {
+        crossRole, voiceAliases, rebuild, fromRound,
+        freshRoles: parseFreshRoles(req.body?.freshRoles),
+        codeService: { getName: getLangEnglishName },
+        preferredSourceCourses: preferredSourcesFor(courseCode, req.body?.preferredSources),
+      })
+      await reusePlanner.verifyPlanBytes(plan, { headObject: reuseHeadObject })
+      // Optional: LISTEN to the clips the plan means to keep, against the
+      // course's own text, and promote the damaged ones to RENDER. Off by
+      // default because it costs a whisper decode per incumbent clip; on for
+      // the fra_for_eng last-word repair, which is the only way a clip that is
+      // present, alive and wrong gets caught (Tom, 2026-08-07).
+      if (req.body?.verifyIncumbents === true) {
+        const verdictCache = loadVerdictCache()
+        const heard = await reusePlanner.verifyPlanVeracity(plan, {
+          fetchObject: reuseFetchObject, veracity, logger, verdictCache,
+          concurrency: Number(process.env.AUDIO_VERACITY_CONCURRENCY || 4),
+        })
+        verdictCache?.flush()
+        logger.info(`[ReuseFirst] listened to ${heard.checked} incumbent clips — ${heard.failed} damaged, ${heard.unknown} unknown, ${heard.cached || 0} from cache, reasons ${JSON.stringify(heard.byReason)}`)
+      }
+      run.plan = { shape: plan.shape, summary: plan.summary, byLayer: plan.byLayer, estimate: plan.estimate, voices: plan.voices, bytes: plan.bytes, heard: plan.heard || null }
+
+      const actionable = plan.clips.filter(c => c.decision !== 'SATISFIED' && c.decision !== 'BLOCKED').length
+      if (!dryRun) startWork('reuse-first', courseCode, actionable)
+
+      const veracityStats = {}
+      const log = await reusePlanner.applyReusePlan(supabase, plan, {
+        runId,
+        dryRun,
+        headObject: reuseHeadObject,
+        renderClip: (clip) => reuseRenderClip(courseCode, clip, veracityStats),
+        // Serial by default. A 200-round scope is ~1,500 actionable clips and
+        // ~4.5s each, which is two hours of wall-clock for work that has no
+        // ordering constraint at all — so the caller can ask for more hands.
+        concurrency: Math.max(1, Math.min(8, parseInt(req.body?.concurrency, 10) || 1)),
+        onProgress: ({ clip, outcome }) => { if (!dryRun) updateWork(`${clip} [${outcome}]`, outcome !== 'failed') },
+      })
+      if (!dryRun) endWork()
+
+      // Artifact: standing sweep hygiene — every decision, per clip, on disk.
+      await fs.ensureDir(REUSE_ARTIFACT_DIR)
+      const artifactPath = path.join(REUSE_ARTIFACT_DIR, `${courseCode}-rounds${fromRound}-${rounds}-reuse-${dryRun ? 'dryrun' : 'applied'}-log.json`)
+      await fs.writeJson(artifactPath, { ...log, plan: run.plan }, { spaces: 2 })
+
+      run.log = log
+      run.summary = log.counts
+      run.artifactPath = artifactPath
+      run.state = 'done'
+      run.finishedAt = new Date().toISOString()
+      logger.info(`[ReuseFirst] ${runId} finished: ${JSON.stringify(log.counts)} (${log.errors.length} errors, ${log.deletionsPerformed} deletions)`)
+    } catch (e) {
+      if (!dryRun && currentWork.active) endWork()
+      run.state = 'failed'
+      run.error = e.message
+      run.finishedAt = new Date().toISOString()
+      logger.error(`[ReuseFirst] ${runId} failed: ${e.message}`)
+    }
+  }
+
+  // A dry run is cheap enough to await, so the caller gets the plan straight
+  // back; a live run is long and is polled from /status + /reuse-run/:runId.
+  if (dryRun) {
+    await execute()
+    return res.json({ ok: run.state === 'done', started: false, runId, ...run })
+  }
+  execute()
+  res.status(202).json({ ok: true, started: true, runId, courseCode, rounds, fromRound })
+})
+
+app.get('/reuse-run/:runId', (req, res) => {
+  const run = reuseRuns.get(req.params.runId)
+  if (!run) return res.status(404).json({ ok: false, error: `no run ${req.params.runId} in this process` })
+  res.json({ ok: true, ...run })
 })
 
 // =============================================================================

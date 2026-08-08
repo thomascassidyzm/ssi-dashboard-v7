@@ -545,6 +545,17 @@ const routes = [
     component: () => import('../views/production/QAGateEstate.vue'),
     meta: { title: 'Approval Gate - Estate' }
   },
+  {
+    // Diagnostic listening artefact (2026-08-06): German seed-1 clips played at
+    // the original speed, the belt ramp alone, and the ramp × course global —
+    // so the beginner speed can be ruled on by ear. Read-only, public S3 clips,
+    // no login so it opens straight on a phone.
+    path: '/german-speed-check',
+    name: 'GermanSpeedCheck',
+    component: () => import('../views/production/GermanSpeedCheck.vue'),
+    meta: { title: 'German seed-1 speed A/B', public: true }
+
+  },
   // Nested routes under ProductionLayout - keeps layout mounted while switching tabs
   {
     path: '/production/:courseCode',

@@ -355,7 +355,56 @@ function verdictFromDecode (decode, expected, iso1, opts = {}) {
       threshold,
     }
   }
+  // Rule 3: the LAST WORD of the script must be audible in the decode.
+  //
+  // Tom, 2026-08-07, listening to fra_for_eng: "the audio is losing its LAST
+  // WORD. About 1 in 3 files. Both languages. The final word is wholly missing
+  // and the clip ends in a gap." Rules 1 and 2 are both blind to that:
+  // the clip is full of speech, and dropping one short word off the end is a
+  // handful of character edits, so it lands under MIN_EDIT_DISTANCE or under
+  // the CER threshold or both. Measured: "I want to speak French" without
+  // "French" scores CER 0.27 against a 0.3 threshold — a pass.
+  //
+  // So the last word is checked as its own event, not as a fraction. Fuzzily,
+  // and only against the TAIL of the decode, because whisper's spelling of a
+  // final word is unreliable while its PRESENCE is exactly what we are asking
+  // about.
+  const lw = lastWordVerdict(e, d)
+  if (!lw.ok) {
+    return { pass: false, reason: 'last_word_missing', cer, edits, threshold, lastWord: lw.word }
+  }
+
   return { pass: true, reason: 'ok', cer, edits, threshold }
+}
+
+/**
+ * Is the script's final word present at the end of the decode?
+ *
+ * Tolerance scales with word length: a 3-letter word has to match exactly
+ * (whisper does not mangle "you" in context, and a loose match on short words
+ * would find one anywhere), a longer word gets 1-2 edits of slack for
+ * transcription spelling. Only the last three decoded words are searched, so a
+ * word that appears EARLIER in the clip cannot vouch for a missing ending —
+ * which is the whole defect being hunted.
+ *
+ * Single-word scripts are exempt: if the only word is gone there is no speech
+ * left, and Rule 1 has already failed the clip.
+ *
+ * @param {string} e normalised expected text
+ * @param {string} d normalised decode
+ */
+function lastWordVerdict (e, d) {
+  const ew = e.split(' ').filter(Boolean)
+  const dw = d.split(' ').filter(Boolean)
+  if (ew.length < 2) return { ok: true, word: null }
+
+  const word = ew[ew.length - 1]
+  const tolerance = word.length <= 3 ? 0 : word.length <= 6 ? 1 : 2
+  const tail = dw.slice(-3)
+  for (const cand of tail) {
+    if (levenshtein(word, cand) <= tolerance) return { ok: true, word }
+  }
+  return { ok: false, word }
 }
 
 // ---------------------------------------------------------------------------

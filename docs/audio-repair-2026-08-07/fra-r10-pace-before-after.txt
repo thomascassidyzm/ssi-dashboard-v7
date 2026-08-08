@@ -1,0 +1,6 @@
+reference model: duration ≈ 344 + 40.74 × chars (n=4000, current-gen French)
+gate threshold (reference own 2nd pct residual): -0.296
+
+PACE, clips >=8 chars (n=49 of 57 replaced):
+  BEFORE (Jan/Feb generation) failing: 0/49
+  AFTER  (new Aug renders)    failing: 0/49

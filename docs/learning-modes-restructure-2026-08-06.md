@@ -66,17 +66,47 @@ identical to the old Normal mode. Defined once in `services/learning-modes.cjs`
 and mirrored in the player's `generateLearningScript.ts` — Popty's Script View
 and the learner must not diverge (prior art: `docs/voice-engine/script-divergence-report.md`).
 
-### "Longest possible phrase" — the knob that did not exist
+### Phrase length — the knob that did not exist (CORRECTED)
 
-There was no phrase-length knob. What existed: BUILD and USE phrases are sorted
-**shortest-first** by target syllable count and then truncated at the cap
-(`services/learning-script-generator.cjs`, the two sort sites).
+**Correction, same day:** an Aran WhatsApp screenshot arrived after the first
+build and inverted this. Easy **HALVES the longest possible phrase** — shorter
+phrases, not longer. The first implementation had a `phraseLengthPreference`
+(`shortest`/`longest`) sort-direction knob built on the wrong reading; it was
+deleted outright rather than flipped, because the thing actually wanted is a
+maximum **length** that Easy sets low.
 
-So the sort **direction** decides which end survives the cut. The new
-`phraseLengthPreference` field on each mode row takes `'shortest'` (historic
-default, Fast) or `'longest'` (Easy). It is a labelled pill pair on the admin
-page. An unknown or missing value degrades to `'shortest'` — a bad hand-edit
-gives today's script rather than a broken round.
+The live knob is **`maxPhraseLengthFraction`** (0 < f ≤ 1): a cap as a fraction
+of the longest phrase in the course. **Fast ships 1.0 = uncapped = exactly the
+historic path.** Easy ships **0.5**. Sorting is shortest-first everywhere, as it
+always was — length is governed by the cap alone.
+
+Two design points the measurements forced, both of which the first attempt got
+wrong and neither of which is guessable from the code alone:
+
+- **The ceiling is course-wide, not per-LEGO.** A per-LEGO pool max was tried
+  first and is useless on real data: BUILD pools average **3.2 phrases**
+  (ara_for_eng, 1,384 pools), so half-the-pool-max left under one eligible
+  phrase and the starvation guard fired on **100%** of LEGOs. The cap never bit.
+- **Length is measured in characters of target text, not syllables.**
+  `target_syllable_count` is NULL for all 11,340 ara_for_eng phrases, and the
+  `countTargetSyllables` fallback is a Latin vowel-cluster heuristic that returns
+  1 for every Arabic phrase — so a syllable ceiling computed to **0.5** and the
+  cap silently did nothing. The shortest-first *sort* still uses syllables,
+  untouched; that is what preserves Fast's byte-identity.
+
+**Starvation guard.** If the cap would leave a LEGO below the methodology's
+phrase floors (≥4 BUILD, ≥5 USE), the cap yields and that LEGO's shortest
+phrases are used instead. Phrase volume is a hard rail — fewer phrases is a
+FAIL — so an over-tight cap degrades gently rather than emptying rounds.
+
+**What this means in practice, honestly:** on `afr_for_eng` the 50% cap computes
+to 36 characters, but some LEGOs have no phrase that short, so the guard lets
+their longest through and the observed maximum stays at 69. On `ara_for_eng` the
+cap is 55 and the observed longest drops 58 → 55. There is also a real tension
+between two of Aran's seeds: **doubling the reps pulls more phrases per LEGO,
+reaching deeper into each pool, which pushes average length up** at the same
+time the cap pushes it down. The knob is correct and editable; the numbers are
+Tom's to settle.
 
 ## Seeded values for Easy — all of these are Tom's to retune
 
@@ -98,7 +128,7 @@ Timing — "doubling time" read as a gentler, slower feel:
 | `min_pause_ms` | 1000 | **2000** | 2× |
 | `max_pause_ms` | 15000 | 15000 | ceiling left as the ceiling |
 | `playback_speed` | 1 | 1 | no explicit slower-speed knob found; left at Fast's |
-| `phraseLengthPreference` | `shortest` | **`longest`** | |
+| `maxPhraseLengthFraction` | 1.0 (uncapped) | **0.5** | half the course's longest phrase |
 
 No hard caps were breached: the generator reads these values straight from the
 config with no clamping. The `adaptation_v2` row's `bounds` (buildCount ceiling

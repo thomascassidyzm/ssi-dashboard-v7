@@ -171,12 +171,34 @@ function extractGenderMarker(speakerRaw) {
   return m ? m[1].toLowerCase() : null;
 }
 
+// Canonical pod-0 roles the name heuristic cannot read, because they are job
+// titles and abstractions rather than names. They used to fall through to 'n',
+// which the voice picker treats as male.
+//
+// That was survivable while every speaker got its own pool slot. Under the
+// two-voice rule it is not: 'n' → male means EVERY ungendered character in
+// EVERY course lands on the one male voice. Measured on the canonical 231-line
+// pod-0 (cym_n_for_eng:pod-0-unrecorded), 143 of 232 lines belong to ungendered
+// speakers, so the split came out 196 male / 36 female — a monologue with
+// occasional guests, not the two-hander the rule is for.
+//
+// The Learner alone is 79 lines, and casting it female brings the pod to
+// 115 female / 117 male. It also matches what the estate already does on the
+// human side, where Catrin voices the Learner in the Welsh recording.
+//
+// An explicit (F)/(M) marker in the markdown still wins over this map.
+const POD0_SPEAKER_GENDER = new Map([
+  ['learner', 'f'],
+]);
+
 function inferGenderFromName(speaker) {
   // Try the full canonical name first, then with trailing index stripped
   // ("Klijentica 1" → "klijentica") so numbered variants of the same role
   // resolve via the role's gender.
   const clean = normaliseName(speaker);
   const stripped = clean.replace(/\s+\d+$/, '').trim();
+  if (POD0_SPEAKER_GENDER.has(clean))    return POD0_SPEAKER_GENDER.get(clean);
+  if (POD0_SPEAKER_GENDER.has(stripped)) return POD0_SPEAKER_GENDER.get(stripped);
   if (FEMALE_NAMES.has(clean) || FEMALE_NAMES.has(stripped)) return 'f';
   if (MALE_NAMES.has(clean)   || MALE_NAMES.has(stripped))   return 'm';
   return null;
@@ -185,6 +207,33 @@ function inferGenderFromName(speaker) {
 function langKey(lang) {
   return (lang || '').toLowerCase().split(/[_-]/)[0];
 }
+
+// Pick a pool by the MOST SPECIFIC key that exists: exact code first, base
+// language only as a fallback.
+//
+// The pools carry genuinely distinct regional casts — ara_sy is Amany/Laith
+// where ara is Yasmin/Youssef, and fra_ca, por_br and spa_mx likewise. Reducing
+// the code to its base language before the lookup made every one of those
+// unreachable, so a Syrian Arabic course was cast in Modern Standard Arabic and
+// a Quebec French one in metropolitan French. Silently: the base pool exists,
+// so nothing errored.
+function poolKeyFor(pools, lang) {
+  const exact = (lang || '').toLowerCase();
+  if (exact && pools[exact]) return exact;
+  return langKey(exact);
+}
+
+// Aran's rule (2026-08-07): a pod is a TWO-HANDER — one male voice and one
+// female voice for the whole cast, however many speaker labels the markdown
+// carries. Canonical pod-0 has 26 labels; without this they fan out across the
+// pool and a course ends up a 6-voice patchwork.
+//
+// Pool depth is not deleted, it is parked: POD_VOICES_PER_GENDER stays as
+// opt-in headroom for pod 1/2 ("additional voices may come later"). Raise it
+// via the env var and the old round-robin behaviour returns unchanged.
+// Mirrors the human-recording side, which already has this rule as
+// DEFAULT_POD_VOICES = 2 in services/voice-engine/pods-cast.cjs.
+const POD_VOICES_PER_GENDER = Math.max(1, parseInt(process.env.POD_VOICES_PER_GENDER || '1', 10) || 1);
 
 async function assignVoices(rawSpeakers, targetLang, knownLang) {
   // rawSpeakers: array of speaker-name strings as written in the markdown
@@ -196,8 +245,8 @@ async function assignVoices(rawSpeakers, targetLang, knownLang) {
   //   }
   // }
   const pools = await loadVoicePools();
-  const tk = langKey(targetLang);
-  const kk = langKey(knownLang);
+  const tk = poolKeyFor(pools, targetLang);
+  const kk = poolKeyFor(pools, knownLang);
   const targetPool = pools[tk] || { f: [], m: [] };
   const knownPool  = pools[kk] || { f: [], m: [] };
 
@@ -238,7 +287,11 @@ async function assignVoices(rawSpeakers, targetLang, knownLang) {
     // voice (same Croatian Gabrijela in hrv, where there's only 1 F target
     // voice) must share the same known voice. Otherwise listeners hear the
     // same "person" in Croatian but different people in English.
-    const tIdx = idx % tPool.length;
+    // Two-voice rule: every speaker of a gender lands on the same voice, so
+    // `idx` is confined to the first POD_VOICES_PER_GENDER entries of the pool
+    // (1 by default → always index 0). Set POD_VOICES_PER_GENDER > 1 to get the
+    // old round-robin across the full pool back.
+    const tIdx = (idx % Math.min(POD_VOICES_PER_GENDER, tPool.length));
     const kIdx = tIdx % kPool.length;
     const t = tPool[tIdx];
     const k = kPool[kIdx];
@@ -545,8 +598,11 @@ async function syncPod(markdownPath, options) {
   if (!targetPart || !knownPart) {
     throw new Error(`Course code "${courseCode}" is not in <target>_for_<known> form`);
   }
-  const targetLang = targetPart.split('_')[0];
-  const knownLang = knownPart.split('_')[0];
+  // Pass the FULL code, region and all — assignVoices resolves the most
+  // specific pool that exists and falls back to the base language itself.
+  // Stripping the region here was the other half of the same bug.
+  const targetLang = targetPart;
+  const knownLang = knownPart;
   const speakers = await assignVoices(parsed.uniqueSpeakers, targetLang, knownLang);
 
   console.log(`\n🎧 Pod Sync: ${markdownPath}`);

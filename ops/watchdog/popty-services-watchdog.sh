@@ -69,3 +69,6 @@ check popty-course-builder-api 3471
 # 3465 is not optional: /api/production/:course/audio-stats calls phase 8's
 # /needs and 500s outright when it is down. See the 2026-08-04 incident doc.
 check popty-phase8-audio 3465
+# 2026-08-07: orchestrator joined systemd (it was the last pm2 holdout, and the
+# 14:44 reboot left it down for ~50 min because nothing watched 3456).
+check popty-orchestrator 3456

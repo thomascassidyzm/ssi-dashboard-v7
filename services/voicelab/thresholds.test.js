@@ -108,10 +108,16 @@ describe('tail-shape — the tier already took overrides; the lab hands it the s
 })
 
 describe('words — the CER operating point', () => {
-  // 9 characters out of 39: over the edit-distance floor, comfortably under the shipped
+  // 7 characters out of 39: over the edit-distance floor, comfortably under the shipped
   // 0.3 ratio. Exactly the band where moving the threshold has to change the answer.
+  //
+  // The decode keeps the script's LAST WORD deliberately. Rule 3 of
+  // verdictFromDecode (Tom, 2026-08-07: a clip whose last word is missing fails
+  // whatever the CER says) is a separate event from the ratio, and this block is
+  // about the ratio alone — a decode that also dropped the ending would fail
+  // here for the other reason and stop testing the operating point.
   const expected = 'guten Abend wie geht es dir heute Abend'
-  const decode = 'guten Abend wie geht es dir gestern Morgen'
+  const decode = 'guten Abend wie geht es dir vorgestern Abend'
 
   it('DEFAULT: absent opts, the shipped 0.3 threshold applies exactly as before', () => {
     const a = veracity.verdictFromDecode(decode, expected, 'de')

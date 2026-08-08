@@ -883,3 +883,60 @@ to voice at TTS cost. No migration, no regeneration, no new service.
 **Search width:** visible-options
 **Decided by:** agent — a tool/process bug against a rule already written down, not a content
 judgement.
+## 2026-08-06 — TTS spend: small sample run first, always
+
+**Move:** the standing "never generate TTS without a plan and explicit approval" gate is replaced,
+for sample-scale work, by a standing doctrine in Tom's own words: *"we can spend TTS money with
+impunity these days - the whole new approach should always do small sample runs first as part of
+the new process"*. Every generation job now opens with a small sample run, judged, before any bulk
+render. First application: VOICELAB 01 (`docs/audio/voicelab-01-tom-clone-multilingual-2026-08-06.md`),
+21 clips for $0.036.
+
+**Better:** the sample is where the ear test happens, so a bad voice, a wrong-language drift or a
+broken construction is caught on twenty clips instead of twenty thousand — the fra Azure-purge
+class of accident becomes structurally cheaper to avoid. **Simpler:** one rule replaces a
+per-job approval negotiation; the agent acts, and Tom's attention goes to the clips rather than to
+the request. **Cheaper (total):** xAI at $15/1M characters makes a 2,000-character probe cost under
+four cents, against re-rendering a whole course side at ~$7.50 — the sample is rounding error
+against the cost of being wrong, and it removes a round-trip of Tom's time from every job.
+
+**Searched & rejected:**
+- Keep the blanket approval gate — failed *simpler* and *cheaper*: it spends Tom's scarcest
+  resource on decisions whose money is now negligible, and it delayed jobs that a four-cent probe
+  would have settled.
+- Drop the gate entirely — failed *better*: bulk renders are still irreversible-ish work against a
+  live estate, and make-before-break still needs a judged artifact before the swap.
+- Approve by budget ceiling instead of by sample — failed *better*: a ceiling authorises spend but
+  authorises nothing about quality, which is the thing that actually goes wrong.
+
+**Search width:** re-levelled
+**Decided by:** Tom, 2026-08-06, ruling the VOICELAB 01 spend.
+
+## 2026-08-07 — orchestrator off pm2, onto systemd, under the watchdog
+
+**Move:** finished the 2026-07-30 pm2→systemd migration for its last holdout. `orchestrator`
+(3456) now runs as `popty-orchestrator.service` alongside its seven siblings, is removed from pm2
+entirely, and is health-checked by the existing cron watchdog. Triggered by the 14:44 UTC watson-1
+reboot, where `@reboot pm2 resurrect` lost a race with crontab loading and left 3456 dead for ~50
+minutes while every systemd sibling recovered in five seconds unattended.
+
+**Better:** one supervision mechanism instead of two, and the surviving failure mode (the user
+manager itself dying) is already covered by the cron watchdog — which now watches 3456 too, closing
+the gap that turned a five-second recovery into a fifty-minute outage. **Simpler:** a daemon is
+removed rather than a watchdog added; pm2 now manages nothing at all. **Cheaper (total):** the pm2
+God daemon stops running, one unit file replaces an opaque `dump.pm2` blob carrying a stale
+snapshot of a 2026-07-30 shell environment, and nobody has to reason about which of two supervisors
+owns a service during an incident.
+
+**Searched & rejected:**
+- Just restart it under pm2 and move on — failed *better*: it reinstates the exact hook that just
+  failed intermittently, which is worse than a deterministic failure.
+- Add a watchdog for pm2's resurrect race — failed *simpler* and *cheaper*: it defends a daemon
+  that has no remaining reason to exist.
+- Move orchestrator to the `-prod` checkout to match its siblings — failed *better* for this pass:
+  a supervision fix should not smuggle in a checkout cutover. The unit preserves the dev checkout
+  pm2 actually ran, with a comment saying so; the cutover stays a separate, deliberate decision.
+
+**Search width:** visible-options
+**Decided by:** agent — Tom's brief specified the migration; the watchdog line and the empty
+`dump.pm2` force-save are the agent's calls, both reversible.

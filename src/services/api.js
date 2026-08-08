@@ -1789,8 +1789,15 @@ export default {
   // Direct S3 access - no API proxy needed (like learning app)
   getAudioStreamUrl(uuid) {
     if (!uuid) return ''
-    // S3 bucket: ssi-audio-stage, prefix: mastered/, UUID must be uppercase
-    return `https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/${uuid.toUpperCase()}.mp3`
+    // Resolve through course_audio.s3_key — NEVER by convention.
+    //
+    // This used to return `mastered/<uuid>.mp3`, which assumed a clip's S3 key
+    // equals its row id. The versioned no-holes swap breaks that assumption on
+    // purpose: the row id stays put so no FK moves, and the s3_key changes. So
+    // the old convention served the PRE-SWAP object for ever, which is why
+    // replaced clips still sounded identical in Audio Preview and the cycle
+    // player. The endpoint below reads s3_key and 302s to a signed URL.
+    return `${API_BASE_URL}/api/production/audio/${uuid}/stream`
   },
 
   // Flag a sample for review
