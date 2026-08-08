@@ -1,6 +1,6 @@
 # Did rounds 1-200 need redoing? The forensic answer
 
-**You were right about the reason and it was wrong — but the German half of the spend fixed real, widespread damage, and only the French half, about £1.30, went on audio I can find nothing wrong with.**
+**You were right about the reason and it was wrong — but the German half of the spend fixed real, widespread damage; only the French half, about £1.30, went on audio that was almost entirely fine.**
 
 ---
 
@@ -109,7 +109,13 @@ https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/30759416-D06E-407A-A
 
 *French, and this is the other half of the answer:*
 
-Eight old French clips, sampled the same way and including **the single most-shortened French clip in the entire population**, all said their full text. Not one was cut. "découvrir quelle est la réponse" — the worst case by the numbers — came through complete; it was simply spoken faster than its replacement.
+For French I did not sample — I transcribed **every one of the 170 French clips in the danger band**, that is every replaced clip whose old file was more than 15% shorter than its replacement. If the damage were there, it would be in that band.
+
+**168 of the 170 said their full text.** One was genuinely cut — "je ne veux pas" came out as "je ne veux", losing the negation. One more is doubtful: "il ne veut pas se taire en ce moment" trails into mush at the end. Everything else was complete, including "découvrir quelle est la réponse", the single most-shortened French clip in the whole population, which was simply spoken faster than its replacement.
+
+So the French damage rate in rounds 1-200 is about **one clip in a hundred within the worst band, and one or two in 3,513 overall** — against German, where six of the seven I checked below the line were cut. Same bug, same pipeline, wildly different blast radius.
+
+One caveat worth having, because it cuts against me. The same overnight rebuild that ran rounds 201 onwards — a separate job, not this one — *does* contain properly broken French: "alors j'espère que" missing its "que", "le verre d'eau est ici" reduced to "le verre d'eau". So French was not immune to this bug. It just barely touched rounds 1-200.
 
 The worst old French clip, complete, then its replacement:
 
@@ -117,16 +123,26 @@ https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/B59B70E8-6B02-4E51-A
 
 https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/D32AB44A-4F77-4CA0-A454-2B24E12305F5.mp3
 
-**So:** the German half of the spend, about £1.20, fixed real and widespread damage. The French half, about £1.30, replaced audio I could find nothing wrong with. It bought a fresher and slightly slower French read on the same voices, which may well be worth having — but it did not repair a fault, because on the evidence there was no fault to repair.
+**So:** the German half of the spend, about £1.20, fixed real and widespread damage — hundreds of clips playing learners half a sentence. The French half, about £1.30, bought the repair of one or two clips and re-rendered 3,511 that were already correct.
+
+---
+
+## Two things this turned up that were not the question
+
+**There is a second, different defect, and it is live right now.** A French clip that nothing has replaced — "Oui, je peux avoir un verre d'eau **aussi**, s'il vous plaît" — is missing "aussi" from the **middle** of the sentence. The tail-trim bug can only ever eat the end, so this is something else, and it is serving to learners today. It surfaced by luck in a sample of seven. Worth a proper look.
+
+**The detector we would reach for next does not work.** `word_boundaries`, the column that proves what the voice actually spoke, is populated on 67 of 66,626 French rows and **zero** of 61,447 German rows. Any plan that relies on it to find damage at scale will silently find nothing.
 
 ---
 
 ## Gaps
 
-- **French is cleared on a sample, not exhaustively.** Eight clips of 3,513, chosen to include the worst cases. The length test does cover all 3,513 and shows no damage signature, but I have not listened to every French clip, and a defect that does not change a clip's length would show up in neither test.
+- **French is cleared thoroughly in the danger band, not everywhere.** All 170 clips whose old file was >15% shorter were transcribed; the other 3,343 were not. A defect that does not shorten a clip would show up in neither test.
+- **German is the reverse — sampled, not exhaustive.** Eleven clips across the range. The population length test covers all 2,594, but the "600 to 1,100 damaged" figure is inferred from where the sampled damage starts, not counted.
 - **The German damage line is not crisp.** One clip at the boundary was fine while a slightly shorter-relative one was cut. "600 to 1,100 clips" is an honest range, not a count. Counting it exactly would mean transcribing all 2,605, which is a bigger job than this question needs.
 - **The cost is derived, not billed.** No invoice was consulted. $3.43 comes from the characters actually rendered at the rate written into the render code; two other methods gave $3.22 and $2.80. If the real rate differs, so does the figure — but the shape of it, roughly three dollars rather than five, does not change.
 - **My re-render count is 6,107; the job's own logs say 6,122.** I am reporting mine, from the database. The 15-clip gap is most likely a few renders falling just outside the time window I counted, but I have not chased it and it changes nothing.
+- **A much larger number is floating about, and it is wrong.** Counting everything the database did on 8 August gives ~46,700 re-renders, not 6,107. That figure sweeps in the big rounds-201-onwards rebuild, which ran from 02:00 to 04:40 and was reported separately. This job ran 04:47 to 05:45. Split by the hour, the two are cleanly distinct, and the 05:00 hour alone matches the job's own log to within three clips.
 - **German's paper trail before this week is thinner than French's.** French has a documented rounds 1-200 pass on 7 August; German has no equivalent artifact, so I cannot say from records alone what state the German English layer was in before last night — only that the database shows it was already good and was left alone.
 
 ---
