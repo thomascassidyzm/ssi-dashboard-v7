@@ -1,16 +1,21 @@
 #!/usr/bin/env node
 /**
- * align-welsh-pod0-to-canonical.cjs — make the Welsh pod-0 human-recording queue
- * serve Aran's 2026-08-06 canonical English, or serve nothing, but never the old
- * text (Tom's brief 2026-08-06: "make sure the human recording is not doing the
- * older stuff").
+ * align-pod0-to-canonical.cjs — make a course's pod-0 queue serve Aran's 2026-08-06
+ * canonical English, or serve nothing, but never the old text (Tom's brief
+ * 2026-08-06: "make sure the human recording is not doing the older stuff").
+ *
+ * Written for Welsh, generalised 2026-08-08 for the fleet-wide pod redo. Nothing in
+ * the alignment logic was ever language-specific; only the course list, the language
+ * name and the output paths were, and all three are now arguments. The course whose
+ * known language is not English is NOT yet supported — see the guard in planCourse.
  *
  * WHY THIS AND NOT `pod-dialogue-generator --sync`: sync re-flexes every changed
- * scene through an LLM, i.e. it WRITES WELSH. Nobody has authorised a machine to
- * translate Aran's new lines. This tool moves English, speakers and ordering only.
+ * scene through an LLM, i.e. it WRITES TARGET TEXT as a side effect of aligning.
+ * This tool moves English, speakers and ordering only; translation is a separate,
+ * separately-reviewable step that writes into the empty slots this run leaves.
  *
- * The Welsh target_text is sacred:
- *   - it is never overwritten with a different Welsh line,
+ * The existing target_text is sacred:
+ *   - it is never overwritten with a different target line,
  *   - it is never invented,
  *   - it is carried forward ONLY onto a slot whose English is byte-for-byte the
  *     line it was written against (survivors, plus numerals_only rewords where
@@ -18,8 +23,8 @@
  *   - everywhere else the slot is left with EMPTY target_text (the column is NOT
  *     NULL), which pods-plan.cjs's `entry.voiceId === voiceId && target` guard turns
  *     into "not recordable yet" rather than "recordable with the wrong words".
- *   - every Welsh line that is not carried forward is archived verbatim, with its
- *     old and new English side by side, for a human translator to work from.
+ *   - every target line that is not carried forward is archived verbatim, with its
+ *     old and new English side by side, for a translator to work from.
  *
  * Audio is NEVER deleted and never regenerated. A take whose line changed has its
  * pointer dropped from the slot (the course_audio row itself is untouched and is
@@ -29,9 +34,13 @@
  * DRY RUN BY DEFAULT. Pass --apply to write. Every row carries a before-state
  * assertion; any drift aborts the whole run before a single write.
  *
- *   node tools/pods/align-welsh-pod0-to-canonical.cjs            # dry run
- *   node tools/pods/align-welsh-pod0-to-canonical.cjs --apply
- *   node tools/pods/align-welsh-pod0-to-canonical.cjs --course=cym_n_for_eng
+ *   node tools/pods/align-pod0-to-canonical.cjs --course=deu_at_for_eng
+ *   node tools/pods/align-pod0-to-canonical.cjs --course=deu_at_for_eng --apply
+ *
+ * Restoring the pre-alignment state needs the archive the run wrote, so point
+ * --archive-dir at it. The 2026-08-06 Welsh run's archive lives at its own path:
+ *   node tools/pods/align-pod0-to-canonical.cjs --course=cym_n_for_eng \
+ *     --archive-dir=docs/pods/pod0-welsh-prealign-archive-2026-08-06 --restore-from-archive
  */
 'use strict'
 
@@ -46,26 +55,57 @@ const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_K
 
 const POD_SLUG = 'pod-0'
 const CANONICAL_STAMP = '2026-08-06'
-const DEFAULT_COURSES = ['cym_n_for_eng', 'cym_s_for_eng']
-const OUT_DIR = path.join(__dirname, '..', '..', 'docs', 'pods', 'welsh-recording-pack')
-const ARCHIVE_DIR = path.join(__dirname, '..', '..', 'docs', 'pods', 'pod0-welsh-prealign-archive-2026-08-06')
+const REPO = path.join(__dirname, '..', '..')
 
 const APPLY = process.argv.includes('--apply')
-const courseArg = process.argv.find(a => a.startsWith('--course='))
-const COURSES = courseArg ? [courseArg.split('=')[1]] : DEFAULT_COURSES
+const arg = (name) => {
+  const a = process.argv.find(x => x.startsWith(`--${name}=`))
+  return a ? a.split('=').slice(1).join('=') : null
+}
+// No default course list: this tool now writes to any course, so the caller names it.
+const COURSES = (arg('course') || '').split(',').map(s => s.trim()).filter(Boolean)
+if (!COURSES.length) {
+  console.error('FAILED: --course=<code>[,<code>…] is required')
+  process.exit(1)
+}
+const ARCHIVE_DIR = path.isAbsolute(arg('archive-dir') || '')
+  ? arg('archive-dir')
+  : path.join(REPO, arg('archive-dir') || path.join('docs', 'pods', 'pod0-prealign-archive'))
 
-// Aran's canonical writes the literal token "[target language]" on 5 lines, exactly
-// as the previous canonical did. Substitution is the established pipeline behaviour
-// (pod-dialogue-generator.cjs:164 does the same replace before it renders a scene),
-// and a recorder must never be handed a bracketed token to read aloud. The served
-// cym_s rows already say "Welsh"; the served cym_n rows say "Northern Welsh", which
-// is not what a learner would actually say — so "Welsh" is the default for both.
-// DECISION FOR TOM/ARAN, override with --language-name="…".
-const langArg = process.argv.find(a => a.startsWith('--language-name='))
-const LANGUAGE_NAME = langArg ? langArg.split('=').slice(1).join('=') : 'Welsh'
+// Aran's canonical writes the literal token "[target language]" on several lines,
+// exactly as the previous canonical did. Substitution is the established pipeline
+// behaviour (pod-dialogue-generator.cjs:164 does the same replace before it renders
+// a scene), and a recorder must never be handed a bracketed token to read aloud.
+//
+// The name is NOT guessed from the course code. Every served pod already resolved it
+// once — the canonical's placeholder lines all read "… I'm learning [target language].
+// …" — so the pod's own English is read back and the majority answer used. Getting
+// this wrong is not cosmetic: substituting the wrong name makes those lines diff as
+// rewordings, which silently discards a perfectly good target line and its take.
+// Override with --language-name="…" when a pod has no placeholder line to learn from.
+const LANGUAGE_NAME_OVERRIDE = arg('language-name')
+const PLACEHOLDER_TOKEN = /\[target language\]/gi
+// Separate, non-global copy: a /g regex carries lastIndex across .test() calls, so
+// reusing PLACEHOLDER_TOKEN to probe would return true/false on alternate lines.
+const HAS_PLACEHOLDER = /\[target language\]/i
+const LEARNING_RE = /i'm learning ([^.]+)\./i
 
-const substitutePlaceholder = (t) =>
-  String(t == null ? '' : t).replace(/\[target language\]/gi, LANGUAGE_NAME)
+function detectLanguageName(servedRows) {
+  if (LANGUAGE_NAME_OVERRIDE) return LANGUAGE_NAME_OVERRIDE
+  const counts = new Map()
+  for (const r of servedRows) {
+    const m = LEARNING_RE.exec(String(r.known_text || ''))
+    if (m) {
+      const name = m[1].trim()
+      counts.set(name, (counts.get(name) || 0) + 1)
+    }
+  }
+  if (!counts.size) return null
+  return [...counts.entries()].sort((a, b) => b[1] - a[1])[0][0]
+}
+
+const substitutePlaceholder = (t, name) =>
+  name ? String(t == null ? '' : t).replace(PLACEHOLDER_TOKEN, name) : String(t == null ? '' : t)
 
 const slotId = (course, scene, sentence) =>
   `${course}:${POD_SLUG}:SC${String(scene).padStart(2, '0')}-S${String(sentence).padStart(3, '0')}`
@@ -77,13 +117,27 @@ function sceneHash(lines) {
 }
 
 async function planCourse(course, canonRaw) {
-  const canon = canonRaw.map(r => ({ ...r, english_text: substitutePlaceholder(r.english_text) }))
+  // diffPod reads served.known_text against canon.english_text, so this tool is only
+  // correct where the known language IS English. For an eng_for_* or X_for_jpn course
+  // the English sits in target_text and the whole carry-forward logic inverts; that is
+  // a separate piece of work and refusing is cheaper than a plausible wrong answer.
+  if (!course.endsWith('_for_eng')) {
+    throw new Error(`${course}: known language is not English — this aligner compares ` +
+      'known_text against the canonical English and would mis-carry every line. Not supported.')
+  }
   const podId = `${course}:${POD_SLUG}`
   const { data: pod, error: pe } = await db.from('listening_pods').select('*').eq('id', podId).single()
   if (pe) throw new Error(`load pod ${podId}: ${pe.message}`)
   const { data: served, error: se } = await db.from('listening_pod_sentences')
     .select('*').eq('pod_id', podId).order('global_order')
   if (se) throw new Error(`load sentences ${podId}: ${se.message}`)
+
+  const languageName = detectLanguageName(served)
+  if (!languageName && canonRaw.some(r => HAS_PLACEHOLDER.test(r.english_text))) {
+    throw new Error(`${course}: the canonical carries "[target language]" but this pod has no ` +
+      'line to learn the name from. Pass --language-name="…" rather than shipping the token.')
+  }
+  const canon = canonRaw.map(r => ({ ...r, english_text: substitutePlaceholder(r.english_text, languageName) }))
 
   const d = diffPod(served, canon)
   const targetSafe = new Set(d.carry.targetSafe)
@@ -160,26 +214,26 @@ async function planCourse(course, canonRaw) {
     },
   }))
 
-  // Welsh that is NOT carried forward — the translator's working set.
-  const orphanedWelsh = []
+  // Target text that is NOT carried forward — the translator's working set.
+  const orphanedTarget = []
   for (const r of d.detail.reworded) {
     if (r.subtype === 'numerals_only') continue
-    orphanedWelsh.push({
+    orphanedTarget.push({
       reason: `reworded:${r.subtype}`, similarity: r.similarity,
       old_row_id: r.served.id, old_scene: r.served.scene_number, old_sentence: r.served.sentence_number,
       new_slot_id: slotId(course, r.canon.scene_number, r.canon.sentence_number),
       new_scene: r.canon.scene_number, new_sentence: r.canon.sentence_number,
       old_english: r.served.known_text, new_english: r.canon.english_text,
-      welsh_written_for_old_english: r.served.target_text,
+      target_written_for_old_english: r.served.target_text,
       target_audio_id_dropped: r.served.target_audio_id || null,
       known_audio_id_dropped: r.served.known_audio_id || null,
     })
   }
   for (const r of d.detail.stale) {
-    orphanedWelsh.push({
+    orphanedTarget.push({
       reason: 'stale', old_row_id: r.id, old_scene: r.scene_number, old_sentence: r.sentence_number,
       new_slot_id: null, old_english: r.known_text, new_english: null,
-      welsh_written_for_old_english: r.target_text,
+      target_written_for_old_english: r.target_text,
       target_audio_id_dropped: r.target_audio_id || null,
       known_audio_id_dropped: r.known_audio_id || null,
     })
@@ -212,13 +266,13 @@ async function planCourse(course, canonRaw) {
       canonical_aligned_at: CANONICAL_STAMP,
       canonical_alignment_note:
         'English, speakers and ordering aligned to Aran\'s 2026-08-06 pod-0 canonical by ' +
-        'tools/pods/align-welsh-pod0-to-canonical.cjs. Welsh target_text was carried forward ' +
+        'tools/pods/align-pod0-to-canonical.cjs. Target text was carried forward ' +
         'only where the English is unchanged; every other slot is deliberately NULL and is ' +
-        'not recordable until a human writes the Welsh.',
+        'not recordable until the target text is written.',
     },
   }
 
-  return { course, podId, pod, served, diff: d, ops, surplus, orphanedWelsh, podUpdate, sections }
+  return { course, podId, pod, served, diff: d, ops, surplus, orphanedTarget, podUpdate, sections }
 }
 
 async function applyCourse(p) {
@@ -338,7 +392,6 @@ async function main() {
   if (!canon.length) throw new Error('canonical_pod_scenarios has no pod-0 rows — refusing to align')
 
   fs.mkdirSync(ARCHIVE_DIR, { recursive: true })
-  fs.mkdirSync(OUT_DIR, { recursive: true })
 
   const summary = []
   for (const course of COURSES) {
@@ -348,8 +401,8 @@ async function main() {
     // Nothing below is recoverable from git without it.
     fs.writeFileSync(path.join(ARCHIVE_DIR, `${course}-pod0-sentences-prealign.json`),
       JSON.stringify({ pod: p.pod, sentences: p.served }, null, 1))
-    fs.writeFileSync(path.join(ARCHIVE_DIR, `${course}-welsh-needing-translation.json`),
-      JSON.stringify(p.orphanedWelsh, null, 1))
+    fs.writeFileSync(path.join(ARCHIVE_DIR, `${course}-target-needing-translation.json`),
+      JSON.stringify(p.orphanedTarget, null, 1))
     const dr = { ...p.diff }; delete dr.detail; delete dr.carry
     fs.writeFileSync(path.join(ARCHIVE_DIR, `${course}-diff-summary.json`), JSON.stringify(dr, null, 1))
     fs.writeFileSync(path.join(ARCHIVE_DIR, `${course}-align-${APPLY ? 'applied' : 'dryrun'}-log.json`),
@@ -368,10 +421,10 @@ async function main() {
         retired_not_deleted: p.surplus.length,
         final_total: p.ops.length,
       },
-      welsh: {
+      target_text: {
         carried_forward: p.ops.filter(o => o.carried.target).length,
-        slots_left_without_welsh: p.ops.filter(o => !o.carried.target).length,
-        welsh_lines_needing_human_translation_or_review: p.orphanedWelsh.length,
+        slots_left_without_target: p.ops.filter(o => !o.carried.target).length,
+        lines_needing_translation_or_review: p.orphanedTarget.length,
       },
       takes: {
         target_pointers_kept: p.ops.filter(o => o.after.target_audio_id).length,
