@@ -60,6 +60,12 @@ const artifactPath = argv.find(a => !a.startsWith('--') && argv[argv.indexOf(a) 
 const RATE = Number(flag('rate', 0.03))
 const MAX_SAMPLE = Number(flag('max-sample', 250))
 const MAX_FAIL_RATE = Number(flag('max-fail-rate', 0.02))
+// A rate alone is the wrong trigger at this sample size. A 3% sample of a
+// ~1,500-clip band is ~45 clips, so ONE unlucky clip is 2.2% and would halt the
+// night for a single defect — which is not the systematic failure the stop rule
+// is for. Two failures in 45 implies roughly 66 bad clips in the band, and that
+// IS systematic. So stopping needs both the rate AND a floor.
+const MIN_FAILS_TO_STOP = Number(flag('min-fails-to-stop', 2))
 const JSON_OUT = flag('json', null)
 
 if (!artifactPath || !fs.existsSync(artifactPath)) {
@@ -233,16 +239,21 @@ async function main () {
     rate: RATE,
     pass, fail, soft, unchecked, checked, failRate,
     threshold: MAX_FAIL_RATE,
-    verdict: failRate > MAX_FAIL_RATE ? 'STOP' : 'CONTINUE',
+    minFailsToStop: MIN_FAILS_TO_STOP,
+    verdict: (failRate > MAX_FAIL_RATE && fail >= MIN_FAILS_TO_STOP) ? 'STOP' : 'CONTINUE',
     results,
   }
   if (JSON_OUT) { fs.writeFileSync(JSON_OUT, JSON.stringify(out, null, 1)); console.log(`[band-verify] wrote ${JSON_OUT}`) }
 
-  if (failRate > MAX_FAIL_RATE) {
-    console.log('[band-verify] VERDICT: STOP — sampled failure rate is above threshold; do not release further bands.')
+  if (failRate > MAX_FAIL_RATE && fail >= MIN_FAILS_TO_STOP) {
+    console.log(`[band-verify] VERDICT: STOP — ${fail} hard failures, ${(failRate * 100).toFixed(2)}% of those checked. Systematic; do not release further bands.`)
     process.exit(1)
   }
-  console.log('[band-verify] VERDICT: CONTINUE')
+  if (fail > 0) {
+    console.log(`[band-verify] VERDICT: CONTINUE — ${fail} hard failure(s), below the floor of ${MIN_FAILS_TO_STOP} needed to call it systematic. THE CLIP(S) ABOVE ARE STILL BAD and want re-rendering.`)
+  } else {
+    console.log('[band-verify] VERDICT: CONTINUE')
+  }
 }
 
 main().catch(e => { console.error('[band-verify] fatal:', e); process.exit(2) })
