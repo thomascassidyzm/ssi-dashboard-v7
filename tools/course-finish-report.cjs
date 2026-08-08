@@ -139,7 +139,8 @@ function main () {
   say('## 4. Sampled verification')
   say('')
   say('The per-clip whisper gate was switched OFF for rendering and replaced with a ~3%')
-  say('sample at each band boundary, plus the duration/pace check over the whole band.')
+  say('sample at each band boundary. A second, ASR-free duration check was planned alongside')
+  say('it and could not run — see the gap noted below the table.')
   say('')
   let anyVerify = false
   say('| Course | Band | Rendered | Sampled | Hard failures | Soft | Unchecked | Verdict |')
@@ -161,6 +162,33 @@ function main () {
   say('truncation has the final word missing from the transcript altogether.')
   say('')
   say('**Unchecked is never counted as a pass.** If a clip could not be listened to, it says so.')
+  say('')
+  say('### The duration check did not run — an explicit gap')
+  say('')
+  say('The second leg of the plan was the pace gate: does each clip take as long to say')
+  say('its own text as the current generation of that voice does? It is free and needs no')
+  say('ASR, and it catches rushed or clipped takes that transcribe perfectly.')
+  say('')
+  say('It cannot complete on courses this size. Every ORDERED read of course_audio for')
+  say('these courses dies on the Postgres statement timeout at about 8 seconds, where the')
+  say('same read unordered returns in 223ms, and the tool needs a stable order to page')
+  say('safely — so it returns empty rather than a clean bill of health. That is a missing')
+  say('database index, not a fault in the audio, and not something worth changing on a')
+  say('shared schema overnight. Per-band outcomes:')
+  say('')
+  for (const c of COURSES) {
+    let lines = []
+    try {
+      lines = fs.readFileSync(`/home/tomcassidy/.${c.key}-pace-gate-status.jsonl`, 'utf8').trim().split('\n').filter(Boolean)
+    } catch { /* no bands reached the checkpoint */ }
+    if (!lines.length) { say(`- ${c.name}: no band reached the pace-gate checkpoint.`); continue }
+    for (const l of lines) {
+      try { const r = JSON.parse(l); say(`- ${c.name} rounds ${r.fromRound}-${r.toRound}: ${r.paceGate}`) } catch {}
+    }
+  }
+  say('')
+  say('The ASR sample above is the primary check and it does work, so the band results are')
+  say('real — but they rest on one instrument rather than two, and you should know that.')
   say('')
 
   say('## 5. What failed')

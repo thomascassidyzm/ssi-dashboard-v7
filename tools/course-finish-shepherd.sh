@@ -245,11 +245,24 @@ verify_band() {
   local line; line=$(grep -h "SAMPLED\|failure rate" "$LOG" | tail -2 | tr '\n' ' ')
   say "  verify rc=$rc :: $line"
 
-  # The pace gate over the same window — free, deterministic, and the direct
-  # test for "duration anomalous against its text length". Advisory: it reports
-  # into the band record, it does not by itself halt the run.
+  # The pace gate over the same window — the duration-versus-length check.
+  # KNOWN GAP, measured 2026-08-08: it cannot complete on courses this size.
+  # Every ORDERED read of course_audio for deu_for_eng dies on the Postgres
+  # statement timeout at ~8s (unordered is 223ms), and pageAll needs a stable
+  # order for range paging to be correct, so the tool returns an empty result
+  # rather than a clean bill of health. That is a missing index, not something
+  # this run should fix at 2am on a shared schema.
+  #
+  # So it is attempted and its OUTCOME IS RECORDED either way. An advisory check
+  # that silently swallows its own failure reads as "duration verified" when
+  # nothing was verified, which is exactly the gap-papered-over failure mode.
+  # The ASR sample above is the primary check and it does work.
   local pout="$ARTDIR/${COURSE}-rounds${from}-${to}-pace-gate.json"
-  ( cd "$REPO" && node tools/audio-pace-gate.cjs "$COURSE" --json "$pout" >> "$LOG" 2>&1 ) || true
+  local pstatus=ok
+  ( cd "$REPO" && timeout 600 node tools/audio-pace-gate.cjs "$COURSE" --json "$pout" >> "$LOG" 2>&1 ) || pstatus=failed
+  if grep -q "statement timeout" "$LOG" 2>/dev/null; then pstatus=timeout; fi
+  echo "{\"course\":\"$COURSE\",\"fromRound\":$from,\"toRound\":$to,\"paceGate\":\"$pstatus\"}" >> /home/tomcassidy/.$COURSE_KEY-pace-gate-status.jsonl
+  say "  pace gate: $pstatus"
 
   if [ $rc -eq 0 ]; then
     alert "$COURSE_KEY band $((idx+1)) VERIFY CLEAN — $line"
