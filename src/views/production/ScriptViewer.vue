@@ -2186,12 +2186,24 @@ const onJourneyPhraseFlag = (item: any) => {
   journeyFlaggedPhraseIds.value = newSet;
 };
 
-// Build details for the review modal from allItems
+// Build details for the review modal from allItems.
+//
+// ONE ROW PER PHRASE, not per appearance. A phrase legitimately appears many
+// times across the journey — reviewed at every Fibonacci offset, and since
+// 2026-08-08 played twice back to back in every Easy round — but this modal
+// lists what you are about to DELETE, and a phrase is deleted once. It is also
+// keyed by phrase_id in the template, so duplicates were duplicate Vue keys.
 const journeyFlaggedPhraseDetails = computed(() => {
   if (!learningJourneyData.value?.allItems) return [];
-  return learningJourneyData.value.allItems
-    .filter((item: any) => item.phrase_id && journeyFlaggedPhraseIds.value.has(item.phrase_id))
-    .map((item: any) => ({ phrase_id: item.phrase_id, known_text: item.known_text, target_text: item.target_text }));
+  const byId = new Map<string, any>();
+  for (const item of learningJourneyData.value.allItems as any[]) {
+    if (!item.phrase_id || byId.has(item.phrase_id)) continue;
+    if (!journeyFlaggedPhraseIds.value.has(item.phrase_id)) continue;
+    byId.set(item.phrase_id, {
+      phrase_id: item.phrase_id, known_text: item.known_text, target_text: item.target_text,
+    });
+  }
+  return [...byId.values()];
 });
 
 const onRemoveJourneyFlaggedPhrase = (phraseId: string) => {

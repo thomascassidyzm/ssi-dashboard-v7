@@ -21,6 +21,8 @@
  * change it there in the same commit.
  */
 
+const { countSyllables, hasSyllableCounter, syllableLangOf } = require('../tools/lib/syllable-counters.cjs')
+
 /** Row key for each mode. `normal_mode` is retained in the DB as a live
  *  fallback alias until the learner app ships reading `fast_mode`. */
 const MODE_KEYS = {
@@ -49,24 +51,74 @@ const DEFAULT_MODE = 'fast'
  *  this cap alone. */
 const DEFAULT_MAX_PHRASE_LENGTH_FRACTION = 1.0
 
-/** ABSOLUTE ceiling on a phrase's target SYLLABLE count — above it the phrase
- *  is skipped (Tom, 2026-08-07). Distinct from the fraction above in two ways
- *  that matter: it is absolute rather than relative to the course, and it
- *  measures syllables rather than characters.
+/** The KNOWN-side pull filter for REVIEW and CONSOLIDATE slots (Tom,
+ *  2026-08-07): "the parameterization should be on things like the syllable
+ *  cap, as measured in the known language".
  *
- *  0 / absent / blank = NO LIMIT, which is Fast and is the historic behaviour.
- *  A cap must never appear by omission.
+ *  This REPLACED an absolute target-syllable ceiling (`maxPhraseSyllables`)
+ *  that shipped earlier the same day and was retired within hours. That one
+ *  was wrong in three ways at once and none of them are worth repeating: it
+ *  counted the TARGET side, which is the side the learner is not reading; it
+ *  applied to the whole script rather than to the review/consolidate pull; and
+ *  it never came off, so a course stayed clipped forever. It also leant on a
+ *  Latin vowel-cluster heuristic that returns 1 for every non-Latin, non-CJK
+ *  script, so it silently did nothing on most of the estate.
  *
- *  KNOWN LIMIT, stated because a silent no-op is the failure mode here: the
- *  syllable count both this generator and the learner app use is
- *  `target_syllable_count` if the column is populated, else a vowel-cluster
- *  heuristic with a CJK special case. Measured 2026-08-07: the column is
- *  populated on 10,813 of 818,220 phrases (1.3%), so the heuristic is the live
- *  path almost everywhere — and it returns 1 for any non-Latin, non-CJK script
- *  (Arabic, Hebrew, Devanagari, Cyrillic, Greek, Thai). On those courses this
- *  cap is INERT and maxPhraseLengthFraction is the only length control that
- *  bites. The admin page says so next to the knob. */
-const DEFAULT_MAX_PHRASE_SYLLABLES = 0
+ *  The replacement counts the learner's OWN language with the canonical
+ *  per-language registry (tools/lib/syllable-counters.cjs), which knows nine
+ *  languages and declares itself inert rather than guessing for the rest.
+ *
+ *  0 / absent / blank / non-finite = NO FILTER. A filter must never appear by
+ *  omission. Mirrors normalizeMaxKnownSyllables in the learner app. */
+const DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES = Infinity
+
+/** Last round on which the known-side filter applies; past it the whole basket
+ *  is in play again. Absent / non-finite / <= 0 degrades to 100 rather than to
+ *  "forever", because the filter's whole point is that it COMES OFF: the
+ *  learner who has done a hundred rounds is not the learner it protects.
+ *  Mirrors normalizeReviewFilterMaxRound in the learner app. */
+const DEFAULT_REVIEW_FILTER_MAX_ROUND = 100
+
+/** Whether the character-length cap applies to BUILD pools at all. "No
+ *  filtering on BLD phrases" (Tom, 2026-08-07) — Easy ships false and takes
+ *  its whole BUILD pool. Default TRUE keeps every other caller on the historic
+ *  path. */
+const DEFAULT_FILTER_BUILD_PHRASES = true
+
+/** The hard ceiling on how many times one phrase may play back to back. Tom's
+ *  rule, not a preference — "we do NOT ever want to repeat exactly the same
+ *  phrase more than 2x - a phrase repeated 3x would drive people nuts, but
+ *  doubled up is perfect" (2026-08-07). No DB row may raise it; a row asking
+ *  for 3 is clamped here exactly as it is in the learner's
+ *  normalizePhraseRepeatCount. */
+const MAX_PHRASE_REPEAT_COUNT = 2
+
+/** Absent / <=1 ⇒ each cycle plays once, which is Fast's value and the
+ *  historic behaviour. */
+const DEFAULT_PHRASE_REPEAT_COUNT = 1
+
+/** The four practice cycles Tom named — BLD, REVIEW, USE and CONSOLIDATE —
+ *  spelled in the LEARNER'S vocabulary, because the vocabulary is what the DB
+ *  row carries: `build`, `spaced_rep`, `use`. The INTRO and the bare LEGO are
+ *  absent by his ruling ("of course not - the intro LEGO and not the LEGO
+ *  alone"); adding them is a config decision, not a code change. */
+const DEFAULT_REPEATED_CYCLE_TYPES = ['build', 'spaced_rep', 'use']
+
+/** Script View spells two of those cycle types differently from the learner:
+ *  its spaced-rep items are `review` and its consolidation items are
+ *  `consolidate` (the learner emits both as `use`/`spaced_rep`). The DB row is
+ *  written in the LEARNER'S vocabulary — SpeakingConfig.vue writes
+ *  `['build','spaced_rep','use']` — so Script View translates on read rather
+ *  than asking anyone to keep two spellings of one setting in sync.
+ *
+ *  `use` maps to `consolidate` because a consolidation cycle IS a use phrase
+ *  (Tom: "every CONSOLIDATE (these are just USE phrases)"), and Script View has
+ *  no separate `use` type: its USE phrases are emitted either as BUILD padding
+ *  (already type `build`) or as `consolidate`. */
+const CYCLE_TYPE_ALIASES = {
+  spaced_rep: 'review',
+  use: 'consolidate',
+}
 
 /** Floors the length cap must never breach, from the methodology's per-LEGO
  *  phrase minimums (ralph: >=4 BUILD, >=5 USE — "fewer phrases is a FAIL").
@@ -119,18 +171,126 @@ function resolveMaxPhraseLengthFraction(modeConfig) {
 }
 
 /**
- * The absolute syllable ceiling for a mode, validated. Anything missing,
- * non-numeric, non-finite or <= 0 degrades to 0 = NO LIMIT — the historic
- * behaviour. Symmetrical with the fraction above: a bad hand-edit falls back to
- * today's uncapped script, never to a cap that silently shortens a course.
- * Fractional values floor, so 12.9 is a ceiling of 12.
+ * The known-language syllable ceiling for review/consolidate pulls, validated.
+ * Anything missing, non-numeric, non-finite or <= 0 degrades to Infinity = NO
+ * FILTER. Fractional values floor, so 15.9 is a ceiling of 15.
  */
-function resolveMaxPhraseSyllables(modeConfig) {
-  const n = modeConfig && modeConfig.maxPhraseSyllables
+function resolveReviewMaxKnownSyllables(modeConfig) {
+  const n = modeConfig && modeConfig.reviewMaxKnownSyllables
   if (typeof n !== 'number' || !Number.isFinite(n) || n <= 0) {
-    return DEFAULT_MAX_PHRASE_SYLLABLES
+    return DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES
   }
   return Math.floor(n)
+}
+
+/**
+ * The last round the known-side filter applies on, validated. Anything
+ * missing, non-numeric, non-finite or <= 0 degrades to 100 — see
+ * DEFAULT_REVIEW_FILTER_MAX_ROUND for why the degradation is a window and not
+ * "forever".
+ */
+function resolveReviewFilterMaxRound(modeConfig) {
+  const n = modeConfig && modeConfig.reviewSyllableFilterMaxRound
+  if (typeof n !== 'number' || !Number.isFinite(n) || n <= 0) {
+    return DEFAULT_REVIEW_FILTER_MAX_ROUND
+  }
+  return Math.floor(n)
+}
+
+/**
+ * Whether this mode filters its BUILD pool by the character-length cap. Only
+ * an explicit `false` turns it off, so an absent key keeps the historic path.
+ */
+function resolveFilterBuildPhrases(modeConfig) {
+  return !(modeConfig && modeConfig.filterBuildPhrases === false)
+}
+
+/**
+ * How many times each eligible practice cycle plays, back to back.
+ *
+ * Anything missing, non-numeric, non-finite or <= 1 degrades to 1 — no
+ * repetition, which is Fast's value and makes Fast's script provably identical
+ * to the pre-2026-08-07 walk. Above MAX_PHRASE_REPEAT_COUNT clamps to 2, which
+ * is the one thing on this row config cannot raise.
+ *
+ * Mirrors the learner's `normalizePhraseRepeatCount`
+ * (packages/player-vue/src/composables/useAlgorithmConfig.ts).
+ */
+function resolvePhraseRepeatCount(modeConfig) {
+  const n = modeConfig && modeConfig.phraseRepeatCount
+  if (typeof n !== 'number' || !Number.isFinite(n)) return DEFAULT_PHRASE_REPEAT_COUNT
+  const floored = Math.floor(n)
+  if (floored <= 1) return DEFAULT_PHRASE_REPEAT_COUNT
+  return Math.min(floored, MAX_PHRASE_REPEAT_COUNT)
+}
+
+/**
+ * Which Script View cycle types the repeat applies to, as a Set.
+ *
+ * Reads the row in the learner's vocabulary and translates through
+ * CYCLE_TYPE_ALIASES, so one setting drives both views. A non-array degrades
+ * to the four types Tom named; an EMPTY array is honoured as "repeat nothing",
+ * because that is a deliberate configuration rather than a bad value — same
+ * reading as the learner's `normalizeRepeatedCycleTypes`.
+ */
+function resolveRepeatedCycleTypes(modeConfig) {
+  const raw = modeConfig && modeConfig.repeatedCycleTypes
+  const list = Array.isArray(raw)
+    ? raw.filter(t => typeof t === 'string' && t.length > 0)
+    : DEFAULT_REPEATED_CYCLE_TYPES
+  return new Set(list.map(t => CYCLE_TYPE_ALIASES[t] || t))
+}
+
+/**
+ * Is this a cycle the active config repeats?
+ *
+ * The seed-phase production review is never repeated whatever the row says:
+ * that drained sandwich is already several cycles of one sentence, so doubling
+ * it would give four hearings of the same seed and breach the
+ * never-more-than-twice rule. Structural, not a setting — and the same carve-out
+ * the learner makes in `isRepeatedCycle`.
+ */
+function isRepeatedCycle(item, types) {
+  if (!types.has(item.type)) return false
+  if (item.reviewItemKind === 'seed') return false
+  return true
+}
+
+/**
+ * Easy doubling for Script View — every eligible practice cycle listed `count`
+ * times, consecutively.
+ *
+ * WHY A PASS OVER THE FINISHED LIST. The learner does exactly this
+ * (packages/player-vue/src/providers/repeatPhraseCycles.ts): repetition is a
+ * duplication of whole cycles, never a replay inside one, so a single pass over
+ * the assembled round list makes every emitter obey the same rule. Script View
+ * must show the round the learner actually hears, so it repeats the same way,
+ * at the same point in the pipeline — AFTER the consecutive-duplicate removal,
+ * which would otherwise strip the second copy on sight.
+ *
+ * There is no A-64 cap downstream here as there is in the player, so the
+ * ceiling in `resolvePhraseRepeatCount` is what guarantees "doubled" can never
+ * read as tripled.
+ *
+ * A count of 1 returns the input array untouched, so Fast's Script View is
+ * unchanged.
+ *
+ * Each copy past the first is marked `repeatOf` (the play number) so the view
+ * can label a second hearing rather than look like a duplicated row.
+ */
+function repeatPhraseCycles(items, { count, types }) {
+  const plays = Math.min(Math.floor(count), MAX_PHRASE_REPEAT_COUNT)
+  if (!Number.isFinite(plays) || plays <= 1) return items
+
+  const out = []
+  for (const item of items) {
+    out.push(item)
+    if (!isRepeatedCycle(item, types)) continue
+    for (let n = 2; n <= plays; n++) {
+      out.push({ ...item, repeatOf: n })
+    }
+  }
+  return out
 }
 
 /**
@@ -200,27 +360,81 @@ function applyPhraseLengthCap(phrases, limit, lengthOf = phraseLengthOf, minKeep
 }
 
 /**
- * Both length caps, applied to one LEGO's candidate pool, in one place.
+ * THE one place a phrase's KNOWN-side syllable count is resolved.
  *
- * They compose rather than compete: a phrase survives only if it is inside the
- * relative CHARACTER ceiling AND the absolute SYLLABLE ceiling. Each is applied
- * through applyPhraseLengthCap with its own measure, so each carries its own
- * starvation guard and either one alone behaves exactly as it did before.
- * Order is irrelevant to the result when neither guard fires; when one does,
- * running the relative cap first keeps the guard's "shortest N" measured on the
- * pool the course-wide ceiling already agreed to.
+ * There is no stored known-side count anywhere in the schema, so this is the
+ * canonical per-language counter or it is nothing. When the course's known
+ * language has no counter it returns `countable: false` and the filter simply
+ * does not apply — LOUDLY, via the caller's log line. It never throws and it
+ * never guesses with another language's rules, because that is precisely how
+ * the retired target-side ceiling failed: it produced a plausible number
+ * nobody checked and silently did nothing.
  *
- * `caps.lengthLimit` of Infinity and `caps.syllableLimit` of 0 are both the
- * uncapped identity, so Fast short-circuits to the plain historic pool.
+ * Mirrors makeKnownSyllableResolver in the learner app's useAlgorithmConfig.ts.
  *
- * @param {Array}  phrases   candidates, any order
- * @param {object} caps      { lengthLimit, lengthOf, syllableLimit, syllablesOf }
- * @param {number} minKeep   the methodology phrase floor for this pool
+ * @param {string} knownLang  courses.known_lang for this course
  */
-function applyPhraseCaps(phrases, caps, minKeep = 1) {
-  const byLength = applyPhraseLengthCap(phrases, caps.lengthLimit, caps.lengthOf || phraseLengthOf, minKeep)
-  if (!caps.syllableLimit || !caps.syllablesOf) return byLength
-  return applyPhraseLengthCap(byLength, caps.syllableLimit, caps.syllablesOf, minKeep)
+function makeKnownSyllableResolver(knownLang) {
+  const lang = syllableLangOf(knownLang)
+  const countable = hasSyllableCounter(lang)
+  return {
+    lang,
+    countable,
+    /** Known-side syllables, or null when this course cannot be counted. */
+    syllablesOf(phrase) {
+      if (!countable) return null
+      const text = phrase && phrase.known_text
+      if (!text) return null
+      return countSyllables(text, lang)
+    },
+  }
+}
+
+/**
+ * The KNOWN-side pull filter for REVIEW and CONSOLIDATE slots (Tom,
+ * 2026-08-07). THE one place this rule lives.
+ *
+ * Given a LEGO's basket of use phrases and the round being generated, return
+ * the sub-basket the pull may draw from:
+ *
+ *   1. filter off, or past `maxRound` => the whole basket, untouched. Nothing
+ *      is backlogged when it lifts and nothing cascades: the LEGO is what is
+ *      being practised, so a phrase the learner has not met before is fine.
+ *   2. otherwise keep phrases of at most `limit` KNOWN-language syllables. A
+ *      phrase whose known side cannot be counted passes — that is the inert
+ *      path, taken per phrase rather than per course.
+ *   3. SHORTEST-IN-BASKET FALLBACK — if that leaves nothing, return the single
+ *      shortest phrase in the basket. A LEGO is never skipped and a review
+ *      slot is never left empty for want of a short phrase.
+ *
+ * A LEGO basket is that LEGO's own debut BUILD + USE phrases, so every phrase
+ * in it contains its LEGO by definition; there is no containment check here
+ * and there must not be one.
+ *
+ * @param {Array}  pool          the LEGO's basket, any order
+ * @param {number} roundNumber   the round being generated
+ * @param {object} filter        { limit, maxRound, syllablesOf } or null
+ */
+function filterReviewPool(pool, roundNumber, filter) {
+  if (!Array.isArray(pool) || pool.length === 0) return pool || []
+  if (!filter || !Number.isFinite(filter.limit) || filter.limit <= 0) return pool
+  if (roundNumber > filter.maxRound) return pool
+
+  const kept = pool.filter(p => {
+    const n = filter.syllablesOf(p)
+    if (typeof n !== 'number' || !Number.isFinite(n)) return true   // uncountable => passes
+    return n <= filter.limit
+  })
+  if (kept.length > 0) return kept
+
+  let shortest = pool[0]
+  let shortestN = Infinity
+  for (const p of pool) {
+    const n = filter.syllablesOf(p)
+    const value = typeof n === 'number' && Number.isFinite(n) ? n : Infinity
+    if (value < shortestN) { shortestN = value; shortest = p }
+  }
+  return [shortest]
 }
 
 module.exports = {
@@ -229,14 +443,27 @@ module.exports = {
   DEFAULT_MODE,
   SCRIPT_SHAPE_KEYS,
   DEFAULT_MAX_PHRASE_LENGTH_FRACTION,
-  DEFAULT_MAX_PHRASE_SYLLABLES,
+  DEFAULT_REVIEW_MAX_KNOWN_SYLLABLES,
+  DEFAULT_REVIEW_FILTER_MAX_ROUND,
+  DEFAULT_FILTER_BUILD_PHRASES,
+  MAX_PHRASE_REPEAT_COUNT,
+  DEFAULT_PHRASE_REPEAT_COUNT,
+  DEFAULT_REPEATED_CYCLE_TYPES,
+  CYCLE_TYPE_ALIASES,
   MIN_BUILD_PHRASES_AFTER_CAP,
   MIN_USE_PHRASES_AFTER_CAP,
   resolveScriptShape,
   resolveMaxPhraseLengthFraction,
-  resolveMaxPhraseSyllables,
+  resolveReviewMaxKnownSyllables,
+  resolveReviewFilterMaxRound,
+  resolveFilterBuildPhrases,
+  resolvePhraseRepeatCount,
+  resolveRepeatedCycleTypes,
+  isRepeatedCycle,
+  repeatPhraseCycles,
   phraseLengthOf,
   courseMaxPhraseLength,
   applyPhraseLengthCap,
-  applyPhraseCaps,
+  makeKnownSyllableResolver,
+  filterReviewPool,
 }
