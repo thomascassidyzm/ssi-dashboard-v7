@@ -61,14 +61,14 @@ case "$COURSE_KEY" in
   fra)
     COURSE=fra_for_eng
     PORT=3468
-    SNAP=${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}
+    SNAP=${FINISH_SNAP:-${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}}
     VERDICT_CACHE=/home/tomcassidy/.audio-veracity-verdicts.json
     BANDS=("201:400" "401:600" "601:800" "801:1000" "1001:1200" "1201:1400" "1401:1529")
     ;;
   deu)
     COURSE=deu_for_eng
     PORT=3469
-    SNAP=${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}
+    SNAP=${FINISH_SNAP:-${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}}
     VERDICT_CACHE=/home/tomcassidy/.audio-veracity-verdicts-deu.json
     BANDS=("201:400" "401:600" "601:800" "801:1000" "1001:1200" "1201:1395")
     ;;
