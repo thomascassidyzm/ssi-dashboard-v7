@@ -19,9 +19,11 @@
 require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') })
 const { createClient } = require('@supabase/supabase-js')
 const { resolveTargetPool, resolveKnownPool } = require('./pod-voice-coverage.cjs')
-const { buildAdjacency, buildTurnWeights, countAdjacentCollisions, assignVoicesColoured } = require('./pod-voice-colour.cjs')
 const {
-  canonicalSpeakerName, extractGenderMarker, inferGenderFromName,
+  buildAdjacency, buildTurnWeights, countAdjacentCollisions, assignVoicesColoured, trimPoolPerGender,
+} = require('./pod-voice-colour.cjs')
+const {
+  canonicalSpeakerName, extractGenderMarker, inferGenderFromName, loadVoicePools,
 } = require('./pod-sync.cjs')
 const { parseNameMap } = require('../services/pod-dialogue-generator.cjs')
 // Ground-truth gender check: read the gendered speech in a speaker's own lines
@@ -36,6 +38,74 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 function genderForCanon(variants) {
   for (const v of variants) { const g = extractGenderMarker(v); if (g) return g }
   return inferGenderFromName(variants[0] ? canonicalSpeakerName(variants[0]) : '') || 'n'
+}
+
+/**
+ * Build a voice pool out of the voices a pod is ALREADY cast with, one track
+ * at a time. Used by --pool-from=pod: re-deal the same voices across the
+ * speakers rather than resolving fresh ones from the coverage map.
+ *
+ * Why this exists: the pod-0 casting rule is about WHICH SPEAKER gets WHICH of
+ * the two voices, not about picking new voices. When a pod already resolves to
+ * a sensible male/female pair, re-resolving from the coverage map can hand back
+ * a worse pair (the eng known pool currently answers Tom for BOTH genders) and
+ * would strand every already-generated clip for regeneration. Keeping the pair
+ * is make-before-break: only the speakers whose side of the cut moved need new
+ * audio.
+ *
+ * A voice's gender comes from app_config.pod_voice_pools — the table pod-sync
+ * casts from, and the only place a VOICE's own gender is recorded. Only if the
+ * voice is not in the table does this fall back to the gender of the speakers
+ * it plays, weighted by line count (the rule collapseTwoVoiceCast uses).
+ * That fallback is genuinely unreliable here: on the Spanish pod-0 the Learner
+ * alone is 79 of 232 lines, so one mis-read speaker gender flips the whole
+ * voice. Voices that resolve neither way are dropped, never guessed.
+ *
+ *   speakersMap: listening_pods.speakers
+ *   track: 'target' | 'known'
+ *   genderOf: (canon) → 'f'|'m'|'n'
+ *   lineCountOf: (canon) → number
+ *   voiceGenderById: Map voice_id → 'f'|'m' (from pod_voice_pools)
+ * Returns { f:[voice], m:[voice] } in the pool shape.
+ */
+function poolFromPodCast(speakersMap, track, genderOf, lineCountOf, voiceGenderById) {
+  const byVoice = new Map()   // voice_id → { voice, f, m }
+  for (const [canon, entry] of Object.entries(speakersMap || {})) {
+    if (canon === '_default') continue
+    const v = entry && entry[track]
+    if (!v || !v.voice_id) continue
+    if (!byVoice.has(v.voice_id)) byVoice.set(v.voice_id, { voice: v, f: 0, m: 0 })
+    const rec = byVoice.get(v.voice_id)
+    const weight = Math.max(1, lineCountOf(canon) || 1)
+    const g = genderOf(canon)
+    if (g === 'f') rec.f += weight
+    if (g === 'm') rec.m += weight
+  }
+  const pool = { f: [], m: [] }
+  for (const [voiceId, { voice, f, m }] of byVoice) {
+    const known = voiceGenderById && voiceGenderById.get(voiceId)
+    if (known === 'f' || known === 'm') { pool[known].push(voice); continue }
+    if (f === m) continue          // unresolvable — never guess a voice onto a gender
+    pool[f > m ? 'f' : 'm'].push(voice)
+  }
+  return pool
+}
+
+/**
+ * voice_id → 'f'|'m' across every language in app_config.pod_voice_pools.
+ * Voice ids are globally unique handles, so one flat map serves all tracks.
+ */
+async function loadVoiceGenders() {
+  const pools = await loadVoicePools()
+  const map = new Map()
+  for (const langPool of Object.values(pools || {})) {
+    for (const gender of ['f', 'm']) {
+      for (const v of (langPool && langPool[gender]) || []) {
+        if (v && v.voice_id && !map.has(v.voice_id)) map.set(v.voice_id, gender)
+      }
+    }
+  }
+  return map
 }
 
 // Count collisions: adjacent (same-scene) speaker pairs sharing a track voice.
@@ -117,13 +187,30 @@ async function recolourPod(pod, targetPool, knownPool, opts) {
   const beforeAdjT = countAdjacentCollisions(weights, curVoice('target'))
   const beforeAdjK = countAdjacentCollisions(weights, curVoice('known'))
 
+  // --pool-from=pod: re-deal the voices this pod is already cast with, instead
+  // of resolving fresh ones. Falls back to the passed pool for a track whose
+  // existing cast doesn't yield a usable pair (e.g. a pod cast on one voice).
+  let tPool = targetPool, kPool = knownPool
+  if (opts && opts.poolFromPod) {
+    const lineCountOf = (canon) => (linesByCanon.get(canon) || []).length
+    for (const [track, fallback] of [['target', targetPool], ['known', knownPool]]) {
+      const p = poolFromPodCast(pod.speakers, track, genderOf, lineCountOf, opts.voiceGenderById)
+      const usable = p.f.length && p.m.length
+      if (track === 'target') tPool = usable ? p : fallback
+      else kPool = usable ? p : fallback
+      if (!usable) {
+        console.warn(`     ⚠️  ${pod.id}: ${track} cast yields no F/M pair — falling back to the resolved pool`)
+      }
+    }
+  }
+
   // AFTER: colour with the resolved pools.
   const { assignments, report } = assignVoicesColoured({
-    scenes, speakers, targetPool, knownPool, genderOf, meta,
+    scenes, speakers, targetPool: tPool, knownPool: kPool, genderOf, meta,
   })
   // _default for re-run safety (a speaker added between syncs falls back here).
-  const defT = (targetPool.m[0] || targetPool.f[0])
-  const defK = (knownPool.m[0] || knownPool.f[0])
+  const defT = (tPool.m[0] || tPool.f[0])
+  const defK = (kPool.m[0] || kPool.f[0])
   if (defT && defK) {
     assignments._default = {
       gender: 'n',
@@ -204,10 +291,21 @@ async function main() {
   }
 
   const knownLang = courseCode.split('_for_')[1] || 'eng'
-  const targetPool = resolveTargetPool(targetLang)
-  const knownPool = resolveKnownPool(knownLang)
+
+  // The pod-0 casting rule (Tom, 2026-08-08) — two voices, cast by speaker.
+  // --voices-per-gender=1 (the default) trims each pool to one F + one M, so
+  // the colouring runs over a two-voice cast and every character keeps one
+  // voice for every line they speak. Raise it for pod 1/2, where more voices
+  // are wanted; the pair itself always comes from the language's own pool.
+  const voicesPerGender = Math.max(1, parseInt(getArg('--voices-per-gender') || '1', 10) || 1)
+  const poolFromPod = getArg('--pool-from') === 'pod'
+  const keepAudio = !!getArg('--keep-audio')
+  const targetPool = trimPoolPerGender(resolveTargetPool(targetLang), voicesPerGender)
+  const knownPool = trimPoolPerGender(resolveKnownPool(knownLang), voicesPerGender)
 
   console.log(`\n🎨 Pod recolour: ${courseCode}  (${apply ? 'APPLY' : 'DRY-RUN'})`)
+  console.log(`   Casting BY SPEAKER on ${voicesPerGender} voice(s) per gender` +
+    `${voicesPerGender === 1 ? ' — the two-voice pod-0 rule' : ''}`)
   console.log(`   Target pool: tier ${targetPool.tier} · ${targetPool.note}`)
   console.log(`     F: ${targetPool.f.map(v => v.name).join(', ') || '(none)'}`)
   console.log(`     M: ${targetPool.m.map(v => v.name).join(', ') || '(none)'}`)
@@ -221,9 +319,11 @@ async function main() {
   if (error) { console.error('❌', error.message); process.exit(1) }
   if (!pods.length) { console.log('   (no pods found)'); process.exit(0) }
 
+  const voiceGenderById = poolFromPod ? await loadVoiceGenders() : null
+
   let totBefore = 0, totAfter = 0, totReassign = 0
   for (const pod of pods) {
-    const r = await recolourPod(pod, targetPool, knownPool, { verbose, targetLang })
+    const r = await recolourPod(pod, targetPool, knownPool, { verbose, targetLang, poolFromPod, voiceGenderById })
     if (r.skipped) { console.log(`\n   ${pod.id}: skipped (${r.skipped})`); continue }
     totBefore += r.before.target + r.before.known
     totAfter += r.after.target + r.after.known
@@ -245,6 +345,16 @@ async function main() {
       if (upErr) throw new Error(`update speakers ${r.pod_id}: ${upErr.message}`)
       const changed = await changedAudio(r, courseCode)
       totReassign += changed.target.length + changed.known.length
+      // --keep-audio: write the cast, leave every existing clip linked.
+      // Make-before-break (AUDIO_PIPELINE_ARCHITECTURE §6b): unlinking a clip
+      // before its replacement exists leaves the pod silent in the gap, and a
+      // regeneration big enough to refill it needs its own approval. With this
+      // flag the pod keeps playing on the old voices until new audio lands.
+      if (keepAudio) {
+        console.log(`     ✅ applied — cast written; ${changed.target.length} target + ` +
+          `${changed.known.length} known clips are now off-cast but LEFT LINKED (--keep-audio)`)
+        continue
+      }
       // Null the audio links whose voice changed so /generate-pods rebuilds them.
       for (const [col, idsList] of [['target_audio_id', changed.target], ['known_audio_id', changed.known]]) {
         for (let i = 0; i < idsList.length; i += 200) {
@@ -262,7 +372,9 @@ async function main() {
   console.log(`\n${'─'.repeat(60)}`)
   console.log(`   TOTAL collisions: ${totBefore} → ${totAfter}`)
   if (apply) {
-    console.log(`   Cleared ${totReassign} audio clips for regeneration.`)
+    console.log(keepAudio
+      ? `   ${totReassign} clips are off-cast and left linked (--keep-audio) — nothing went silent.`
+      : `   Cleared ${totReassign} audio clips for regeneration.`)
     console.log(`   ▶ Next: POST /generate-pods/${courseCode} (TTS — needs approval) to fill them.`)
   } else {
     console.log(`   (dry-run — no writes) Re-run with --apply to write speakers + clear changed audio.`)
@@ -272,4 +384,4 @@ async function main() {
 
 if (require.main === module) main().catch(e => { console.error('\n❌', e.message); process.exit(1) })
 
-module.exports = { recolourPod, genderForCanon, countCollisions }
+module.exports = { recolourPod, genderForCanon, countCollisions, poolFromPodCast }
