@@ -107,8 +107,13 @@ const ENVIRONMENTS = {
 
 // SYNCHRONOUS: Ensure localStorage is set BEFORE any async code runs
 // This prevents race conditions with production store loading
-// Default environment can be set via VITE_DEFAULT_ENVIRONMENT in .env (kai, tom, or api)
-const DEFAULT_ENV = import.meta.env.VITE_DEFAULT_ENVIRONMENT || 'tom'
+// Default environment can be set via VITE_DEFAULT_ENVIRONMENT in .env (kai, tom, watson or api).
+// This module writes api_base_url on import, so THIS is what a browser with no stored
+// preference actually gets. Unset: a local checkout talks to its own API; anything else
+// (popty.app included) talks to watson-1, the always-on cloud machine.
+const isLocalHost = typeof window !== 'undefined' &&
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+const DEFAULT_ENV = import.meta.env.VITE_DEFAULT_ENVIRONMENT || (isLocalHost ? 'api' : 'watson')
 const savedEnv = localStorage.getItem('ssi_environment')
 const initialEnv = (savedEnv && ENVIRONMENTS[savedEnv]) ? savedEnv : DEFAULT_ENV
 if (!savedEnv) {
@@ -138,9 +143,11 @@ const repairBranch = ref('main')
 const repairing = ref(false)
 const showRepairConfirm = ref(false)
 
+// Any machine that isn't this browser's own localhost is deployable — the ngrok string
+// test used to hide Deploy on watson-1, which is now the default environment.
 const isRemote = computed(() => {
   const url = ENVIRONMENTS[selectedEnv.value]?.url || ''
-  return url.includes('ngrok')
+  return !!url && !url.includes('localhost') && !url.includes('127.0.0.1')
 })
 
 const currentApiUrl = computed(() => {

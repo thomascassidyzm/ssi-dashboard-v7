@@ -35,10 +35,10 @@ export function getApiUrl() {
     return ''  // Relative URL - ngrok tunnel handles it
   }
 
-  // 4. popty.app (Vercel) - default to the SSi machine (always-on company server).
+  // 4. popty.app (Vercel) - default to watson-1, the always-on cloud machine.
   // Override via EnvironmentSwitcher to point at a dev box (e.g. popty.ngrok.app).
   if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') {
-    return 'https://ssi-machine.ngrok.app'
+    return 'https://watson-1.tail4968cb.ts.net:8443'
   }
 
   // 5. Other static hosting - requires EnvironmentSwitcher
