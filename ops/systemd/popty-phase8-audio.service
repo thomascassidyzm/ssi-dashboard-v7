@@ -13,6 +13,13 @@ Environment=PHASE8_PORT=3465
 # retention 0.52 vs 0.93, p=0.00001 — docs/audio-tail-gate-decision-memo-2026-08-04.md).
 # The installed unit on watson-1 has carried this since 2026-08-04; the repo copy had
 # drifted without it, so any machine provisioned from git would silently render damaged.
+# PRE-START SYNTAX GUARD (2026-08-08). Same guard production-api already
+# carries: refuse to start a file node cannot parse, and say which file and
+# which SyntaxError, instead of crash-looping every 5 seconds behind
+# Restart=always. Last line of defence — by the time this fires the old
+# process is already gone. The one that saves the service is in
+# ops/watchdog/popty-staleness-watchdog.sh, which checks BEFORE restarting.
+ExecStartPre=/usr/bin/node tools/check-service-syntax.cjs services/phases/phase8-audio-v13.cjs
 ExecStart=/usr/bin/node services/phases/phase8-audio-v13.cjs
 Restart=always
 RestartSec=5

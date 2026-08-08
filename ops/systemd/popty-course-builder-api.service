@@ -28,6 +28,13 @@ Environment=COURSE_BUILDER_PORT=3471
 # "spawn osascript ENOENT" and the Terminal.app fallback fails the same way.
 # That is what actually stopped the 2026-08-04 nld_for_eng component backfill.
 Environment=SPAWN_MODE=headless
+# PRE-START SYNTAX GUARD (2026-08-08). Same guard production-api already
+# carries: refuse to start a file node cannot parse, and say which file and
+# which SyntaxError, instead of crash-looping every 5 seconds behind
+# Restart=always. Last line of defence — by the time this fires the old
+# process is already gone. The one that saves the service is in
+# ops/watchdog/popty-staleness-watchdog.sh, which checks BEFORE restarting.
+ExecStartPre=/usr/bin/node tools/check-service-syntax.cjs services/course-builder-api.cjs
 ExecStart=/usr/bin/node services/course-builder-api.cjs
 Restart=always
 RestartSec=5

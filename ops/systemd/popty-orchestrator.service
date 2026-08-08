@@ -11,6 +11,13 @@ Type=simple
 WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
 Environment=NODE_OPTIONS=--max-old-space-size=4096
 Environment=PORT=3456
+# PRE-START SYNTAX GUARD (2026-08-08). Same guard production-api already
+# carries: refuse to start a file node cannot parse, and say which file and
+# which SyntaxError, instead of crash-looping every 5 seconds behind
+# Restart=always. Last line of defence — by the time this fires the old
+# process is already gone. The one that saves the service is in
+# ops/watchdog/popty-staleness-watchdog.sh, which checks BEFORE restarting.
+ExecStartPre=/usr/bin/node tools/check-service-syntax.cjs services/orchestration/orchestrator.cjs
 ExecStart=/usr/bin/node services/orchestration/orchestrator.cjs
 Restart=always
 RestartSec=5

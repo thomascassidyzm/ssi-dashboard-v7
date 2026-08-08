@@ -267,6 +267,41 @@ fi
 NEW_SHA=$(git rev-parse HEAD)
 log "pulled $LOCAL_SHA -> $NEW_SHA"
 
+# ── SYNTAX GATE: never hand a supervisor a file it cannot parse ──────────────
+# 2026-08-08: merge 186af122 put two `const MIN_TAKE_MS` in one scope of
+# production-api.cjs. Both parents parsed; the merge did not. It reached this
+# checkout, and Restart=always then spent the outage restarting a process that
+# could never start — a supervisor cannot restart its way out of a SyntaxError.
+#
+# So the gate sits HERE, between the pull and the restart, which is the only
+# place on this machine where the old process is still alive and the new code is
+# already on disk. Make-before-break (CLAUDE.md): verify the new thing first, and
+# if it is bad, put the disk back and leave the running service alone.
+#
+# Scope: what the pull actually changed, plus every entrypoint this checkout
+# starts — because a broken file that arrived in an EARLIER pull is still a file
+# we are about to start. Fails closed: if the checker itself cannot run (missing,
+# unparseable, node absent) that is a failed gate, not a passed one.
+if node tools/check-service-syntax.cjs --range "$LOCAL_SHA..$NEW_SHA" >>"$LOG" 2>&1 \
+   && node tools/check-service-syntax.cjs >>"$LOG" 2>&1; then
+  :
+else
+  log "ALERT: SYNTAX GATE FAILED at $NEW_SHA — rolling back to $LOCAL_SHA and NOT restarting."
+  log "       The running services keep the last-known-good code. See the gate output above. NEEDS A HUMAN."
+  # Safe: the tree was verified clean (-uno) before the pull, so there is nothing
+  # of anyone's to lose. Untracked node_modules/ is not touched by a reset.
+  if git reset --hard "$LOCAL_SHA" >>"$LOG" 2>&1; then
+    log "       rolled checkout back to $LOCAL_SHA"
+    write_state stale none "syntax gate failed at $NEW_SHA; rolled back to $LOCAL_SHA, did not restart"
+  else
+    log "ALERT: rollback to $LOCAL_SHA FAILED — this checkout now holds unparseable code. NEEDS A HUMAN URGENTLY."
+    write_state stale none "syntax gate failed at $NEW_SHA and rollback failed; checkout holds unparseable code"
+  fi
+  # ATTEMPT_FILE keeps $REMOTE_SHA on purpose: back off rather than re-pull the
+  # same broken sha every ten minutes.
+  exit 0
+fi
+
 # Deps first, or the restart crash-loops on a missing module.
 PKG_AFTER=$(git rev-parse HEAD:package.json 2>/dev/null)
 if [ "$PKG_BEFORE" != "$PKG_AFTER" ]; then

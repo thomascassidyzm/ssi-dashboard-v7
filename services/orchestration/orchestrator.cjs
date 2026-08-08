@@ -11106,11 +11106,57 @@ app.post('/api/deploy', async (req, res) => {
       execSync('git stash', { cwd: projectDir, encoding: 'utf-8', timeout: 10000 });
       addLog('Stashed local changes');
     }
+    // The sha to fall back to if the pulled code turns out not to parse.
+    const shaBeforePull = execSync('git rev-parse HEAD', { cwd: projectDir, encoding: 'utf-8', timeout: 10000 }).trim();
+
     addLog('Running git pull...');
     const pullOutput = execSync('git pull --ff-only 2>&1', { cwd: projectDir, encoding: 'utf-8', timeout: 30000 }).trim();
     addLog(`git pull: ${pullOutput}`);
 
     const alreadyUpToDate = pullOutput.includes('Already up to date');
+
+    // 2b. SYNTAX GATE — between the pull and the restart, the only moment when
+    // the new code is on disk and the old process is still alive.
+    //
+    // 2026-08-08: a merge put two `const MIN_TAKE_MS` in one scope of
+    // production-api.cjs, main carried the unparseable file, and Restart=always
+    // then restarted a process that could never start. Make-before-break: verify
+    // first, and if it fails put the disk back and leave the service running.
+    // Fails closed — if the checker cannot run, that is a failed gate.
+    if (!alreadyUpToDate) {
+      const shaAfterPull = execSync('git rev-parse HEAD', { cwd: projectDir, encoding: 'utf-8', timeout: 10000 }).trim();
+      try {
+        addLog('Syntax gate: checking the pulled code before restarting anything...');
+        execSync(`node tools/check-service-syntax.cjs --range ${shaBeforePull}..${shaAfterPull} 2>&1`, { cwd: projectDir, encoding: 'utf-8', timeout: 120000 });
+        execSync('node tools/check-service-syntax.cjs 2>&1', { cwd: projectDir, encoding: 'utf-8', timeout: 120000 });
+        addLog('Syntax gate: OK');
+      } catch (gateErr) {
+        const gateOutput = [gateErr.stdout, gateErr.stderr].map(s => (s ? s.toString().trim() : '')).filter(Boolean).join('\n');
+        for (const line of (gateOutput || String(gateErr.message)).split('\n')) addLog(`gate: ${line}`);
+        addLog(`Syntax gate FAILED at ${shaAfterPull} — rolling back to ${shaBeforePull} and NOT restarting.`);
+        execSync(`git reset --hard ${shaBeforePull}`, { cwd: projectDir, encoding: 'utf-8', timeout: 30000 });
+        addLog(`Rolled back to ${shaBeforePull}; services keep running the last-known-good code.`);
+        deployRepair.logDeployEvent(projectDir, {
+          action: 'deploy',
+          outcome: 'blocked-syntax-gate',
+          head: shaBeforePull,
+          rejected_head: shaAfterPull,
+          services_restarted: []
+        });
+        return res.status(409).json({
+          success: false,
+          error: `Deploy blocked: ${shaAfterPull.slice(0, 8)} contains a file node cannot parse. Rolled back to ${shaBeforePull.slice(0, 8)}; nothing was restarted.`,
+          gate_output: gateOutput || null,
+          checkout: describeCheckout(projectDir),
+          log,
+          // Deliberately no repair token: repair force-resets to origin/main, which
+          // is exactly the broken code this gate just refused. Fix main instead.
+          repair_available: false,
+          machine: process.env.MACHINE_NAME || os.hostname(),
+          timestamp: new Date().toISOString()
+        });
+      }
+    }
 
     // 3. Check if package.json changed (npm install needed)
     let npmInstalled = false;
