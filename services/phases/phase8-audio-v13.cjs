@@ -6852,6 +6852,14 @@ const reuseRuns = new Map()   // runId -> run record (in-process; artifact on di
 // BANDING (fromRound), not a small ceiling.
 const MAX_ROUNDS = 5000
 
+// Upper bound on /reuse-apply concurrency. Was a hard-coded 8 inline; Tom's
+// 2026-08-08 ruling is that OUR clamp should not be the binding constraint —
+// the provider's rate limit should be. Configurable so a run can be driven up
+// to the measured xAI ceiling without editing this file, and bounded rather
+// than unbounded so a typo cannot open 10,000 sockets at a TTS provider.
+const REUSE_MAX_CONCURRENCY = Math.max(1, Math.min(64,
+  parseInt(process.env.REUSE_MAX_CONCURRENCY, 10) || 8))
+
 /** HEAD an S3 object. Never throws for "missing"; a failed QUESTION is `null`. */
 async function reuseHeadObject(s3Key) {
   if (!s3Key || s3Key.startsWith('pending/')) return { exists: false, size: null }
@@ -7131,6 +7139,10 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
   const crossRole = req.body?.crossRole !== false
   const rebuild = req.body?.rebuild === true
   const voiceAliases = parseVoiceAliases(req.body?.voiceAliases)
+  // Own-course clips older than this date are not a reuse source — see the long
+  // note in audio-reuse-planner decideClip. A date, so the run stays idempotent.
+  const distrustOwnBefore = typeof req.body?.distrustOwnBefore === 'string'
+    ? req.body.distrustOwnBefore : null
 
   // A live run SPENDS MONEY on TTS. Typed confirmation, same shape the rest of
   // the dashboard uses for expensive/irreversible actions.
@@ -7155,7 +7167,7 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
   const execute = async () => {
     try {
       const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, {
-        crossRole, voiceAliases, rebuild, fromRound,
+        crossRole, voiceAliases, rebuild, fromRound, distrustOwnBefore,
         freshRoles: parseFreshRoles(req.body?.freshRoles),
         codeService: { getName: getLangEnglishName },
         preferredSourceCourses: preferredSourcesFor(courseCode, req.body?.preferredSources),
@@ -7198,7 +7210,12 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
         // Serial by default. A 200-round scope is ~1,500 actionable clips and
         // ~4.5s each, which is two hours of wall-clock for work that has no
         // ordering constraint at all — so the caller can ask for more hands.
-        concurrency: Math.max(1, Math.min(8, parseInt(req.body?.concurrency, 10) || 1)),
+        // The old ceiling here was a hard-coded 8 — our own arbitrary clamp, not
+        // a real constraint. Tom, 2026-08-08: "concurrency should go to the xAI
+        // limits". So the bound is now a configured parameter with a sane
+        // default, and the thing that should bind a run is the PROVIDER's rate
+        // limit, discovered empirically, not a magic number in this file.
+        concurrency: Math.max(1, Math.min(REUSE_MAX_CONCURRENCY, parseInt(req.body?.concurrency, 10) || 1)),
         onProgress: ({ clip, outcome }) => { if (!dryRun) updateWork(`${clip} [${outcome}]`, outcome !== 'failed') },
       })
       if (!dryRun) endWork()
