@@ -7180,7 +7180,16 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
       const actionable = plan.clips.filter(c => c.decision !== 'SATISFIED' && c.decision !== 'BLOCKED').length
       if (!dryRun) startWork('reuse-first', courseCode, actionable)
 
-      const veracityStats = {}
+      // newStats(), not {} — recordVerdict's UNCHECKED branch writes into
+      // stats.uncheckedReasons, so a bare object throws
+      // "Cannot read properties of undefined" and the clip is logged FAILED.
+      // Latent until a verdict comes back unchecked, which is why it survived:
+      // the checked branch only touches flat counters. It fires whenever the
+      // gate is off OR whisper is unavailable — and whisper is off PATH on
+      // watson-1 — so a missing binary turned every render into a failure
+      // instead of an honest "published unchecked". Found 2026-08-08 by the
+      // probe before the overnight run: 34 of 45 clips FAILED this way.
+      const veracityStats = veracity.newStats()
       const log = await reusePlanner.applyReusePlan(supabase, plan, {
         runId,
         dryRun,
