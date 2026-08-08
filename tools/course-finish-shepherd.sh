@@ -61,14 +61,14 @@ case "$COURSE_KEY" in
   fra)
     COURSE=fra_for_eng
     PORT=3468
-    SNAP=/home/tomcassidy/.fra-redo-snapshot2-2026-08-07
+    SNAP=${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}
     VERDICT_CACHE=/home/tomcassidy/.audio-veracity-verdicts.json
     BANDS=("201:400" "401:600" "601:800" "801:1000" "1001:1200" "1201:1400" "1401:1529")
     ;;
   deu)
     COURSE=deu_for_eng
     PORT=3469
-    SNAP=/home/tomcassidy/.deu-redo-snapshot2-2026-08-07
+    SNAP=${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}
     VERDICT_CACHE=/home/tomcassidy/.audio-veracity-verdicts-deu.json
     BANDS=("201:400" "401:600" "601:800" "801:1000" "1001:1200" "1201:1395")
     ;;
@@ -99,6 +99,12 @@ nap() { sleep "$1" & NAPPID=$!; wait $NAPPID 2>/dev/null; NAPPID=; }
 # branch, so a checkout elsewhere cannot swap the verification code out from
 # under a band that is halfway through. node_modules and .env are symlinked
 # from the main checkout (a sibling worktree has neither of its own).
+# Both phase-8 instances now run from THIS tree too, not from the 08-07 snapshot
+# trees. Those snapshots existed only because the main checkout lacked fromRound
+# at the time; this branch has it, plus tonight's fixes, and is internally
+# consistent and tested. Trying to hand-patch three divergent trees at 02:40
+# broke two of them — one tested tree is better, simpler and cheaper than three.
+# The snapshots have been restored to pristine and are untouched.
 REPO=${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}
 ARTDIR="$REPO/docs/audio-repair-2026-08-07"
 
@@ -168,6 +174,7 @@ launch_service() {
       AUDIO_VERACITY_CACHE_PATH="$VERDICT_CACHE" \
       REUSE_MAX_CONCURRENCY=32 \
       XAI_TTS_CONCURRENCY=$XAI_CONCURRENCY \
+      XAI_PHONO_GATE=0 \
       nohup node services/phases/phase8-audio-v13.cjs >> "$PHASE8LOG" 2>&1 & )
   for _ in $(seq 1 30); do sleep 5; service_up && { say "  service up"; return 0; }; done
   alert "$COURSE_KEY service failed to come up on $PORT after 150s"
@@ -252,6 +259,19 @@ PY
 # that path on 2026-08-05; masterAudio now normalises loudness, FLAGS tail
 # defects read-only, and ships the clip exactly as rendered. The gate is
 # insurance against a fire that is already out.
+#
+# There are THREE whisper legs in this pipeline, not two, and all three are off:
+#   AUDIO_VERACITY_GATE=off  the pre-publish veracity gate
+#   (no verify_band)         the sampled sweep over finished bands
+#   XAI_PHONO_GATE=0         the xAI PHONOLOGY gate — the one that is easy to
+#                            miss. It whispers every NON-ENGLISH xAI render to
+#                            detect language drift, so on French and German
+#                            target clips it fires on every single one. Measured
+#                            2026-08-08: it held the run to ~8 clips/min, clips
+#                            landing in pairs every 13s, because the decode
+#                            serialises everything behind it. It is also the gate
+#                            that calls a correct French "je" Turkish — whisper
+#                            language-ID is unreliable on short clips.
 #
 # So there is no verify_band step and no whisper anywhere in this run. The gate
 # CODE is untouched and every other job keeps its own default — this is an
