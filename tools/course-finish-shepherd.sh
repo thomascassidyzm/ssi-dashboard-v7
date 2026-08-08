@@ -61,19 +61,27 @@ case "$COURSE_KEY" in
   fra)
     COURSE=fra_for_eng
     PORT=3468
-    SNAP=${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}
+    SNAP=${FINISH_SNAP:-${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}}
     VERDICT_CACHE=/home/tomcassidy/.audio-veracity-verdicts.json
     BANDS=("201:400" "401:600" "601:800" "801:1000" "1001:1200" "1201:1400" "1401:1529")
     ;;
   deu)
     COURSE=deu_for_eng
     PORT=3469
-    SNAP=${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}
+    SNAP=${FINISH_SNAP:-${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}}
     VERDICT_CACHE=/home/tomcassidy/.audio-veracity-verdicts-deu.json
     BANDS=("201:400" "401:600" "601:800" "801:1000" "1001:1200" "1201:1395")
     ;;
   *) echo "usage: $0 fra|deu" >&2; exit 2 ;;
 esac
+
+# The band list above is the 2026-08-08 overnight scope: round 201 upward. A
+# later job with a different range (rounds 1-200, say) should not have to edit
+# these profiles or fork the script, because a forked shepherd is a shepherd
+# whose fixes stop arriving. BANDS_OVERRIDE="1:100 101:200" replaces the list.
+if [ -n "${BANDS_OVERRIDE:-}" ]; then
+  read -r -a BANDS <<< "$BANDS_OVERRIDE"
+fi
 
 # SINGLE INSTANCE, ENFORCED. Two shepherds both resurrecting a dead service and
 # both POSTing a fresh run is split-brain: two competing passes on one course.
@@ -106,16 +114,20 @@ nap() { sleep "$1" & NAPPID=$!; wait $NAPPID 2>/dev/null; NAPPID=; }
 # broke two of them — one tested tree is better, simpler and cheaper than three.
 # The snapshots have been restored to pristine and are untouched.
 REPO=${FINISH_REPO:-/home/tomcassidy/.finish-run-worktree}
-ARTDIR="$REPO/docs/audio-repair-2026-08-07"
+ARTDIR="$REPO/${SHEPHERD_ARTDIR:-docs/audio-repair-2026-08-07}"
 
-LOG=/tmp/finish-shepherd-$COURSE_KEY.log
+# A second run of this shepherd over a DIFFERENT range must not inherit the
+# first run's band cursor or run id, or it resumes a finished job and exits
+# immediately. SHEPHERD_TAG namespaces every piece of per-run state.
+TAG=${SHEPHERD_TAG:+-$SHEPHERD_TAG}
+LOG=/tmp/finish-shepherd-$COURSE_KEY$TAG.log
 PHASE8LOG=/tmp/$COURSE_KEY-phase8-$PORT.log
-RUNID=/home/tomcassidy/.$COURSE_KEY-band-runid
-BANDSTATE=/home/tomcassidy/.$COURSE_KEY-band-state
-ALERTS=/tmp/finish-shepherd-$COURSE_KEY-alerts.log
+RUNID=/home/tomcassidy/.$COURSE_KEY$TAG-band-runid
+BANDSTATE=/home/tomcassidy/.$COURSE_KEY$TAG-band-state
+ALERTS=/tmp/finish-shepherd-$COURSE_KEY$TAG-alerts.log
 # The sized follow-up repair job: how many incumbent clips we KEPT without
 # listening to them, per band. Written so it cannot go missing from the report.
-KEPTLOG=/home/tomcassidy/.$COURSE_KEY-kept-unheard.jsonl
+KEPTLOG=/home/tomcassidy/.$COURSE_KEY$TAG-kept-unheard.jsonl
 
 CONCURRENCY=${REUSE_CONCURRENCY:-12}
 XAI_CONCURRENCY=${XAI_TTS_CONCURRENCY:-8}
@@ -124,7 +136,9 @@ XAI_CONCURRENCY=${XAI_TTS_CONCURRENCY:-8}
 # ship exactly as rendered.
 DISTRUST_OWN_BEFORE=${DISTRUST_OWN_BEFORE:-2026-08-05}
 
-PARENT=14d775d3-80ef-494e-bd8a-d5eaffb498bb
+# Hardcoding a conversation id sends every 4am progress ping into a room
+# that ended hours ago. SHEPHERD_PARENT points them at the live job.
+PARENT=${SHEPHERD_PARENT:-14d775d3-80ef-494e-bd8a-d5eaffb498bb}
 
 say() { echo "[$(date -u +%H:%M:%SZ)] $*" >> "$LOG"; }
 
