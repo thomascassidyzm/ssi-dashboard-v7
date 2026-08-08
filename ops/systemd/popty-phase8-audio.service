@@ -5,14 +5,18 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
+WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod
 Environment=NODE_OPTIONS=--max-old-space-size=4096
 Environment=PHASE8_PORT=3465
-# Tail-repair gate: detect-and-flag, never mutate the audio. services/audio-processor.cjs
-# defaults to 'repair', the branch measured to amputate final words (final-word
-# retention 0.52 vs 0.93, p=0.00001 — docs/audio-tail-gate-decision-memo-2026-08-04.md).
-# The installed unit on watson-1 has carried this since 2026-08-04; the repo copy had
-# drifted without it, so any machine provisioned from git would silently render damaged.
+# 2026-08-05 (Tom): repairTailDefect measured to damage ~42x more clips than it
+# fixes (docs/audio-tail-gate-decision-memo-2026-08-04.md). Flag-only until the
+# padding + human-review-queue follow-up lands.
+Environment=TAIL_REPAIR_MODE=flag
+# PRE-RESTART SYNTAX GUARD — see the fuller note in popty-production-api.service.
+# Restart=always cannot restart its way out of a parse error, so a broken merge
+# turns into a silent crash-loop. ExecStartPre refuses the start and writes a
+# loud banner naming the file and the SyntaxError.
+ExecStartPre=/usr/bin/node tools/check-service-syntax.cjs services/phases/phase8-audio-v13.cjs
 ExecStart=/usr/bin/node services/phases/phase8-audio-v13.cjs
 Restart=always
 RestartSec=5

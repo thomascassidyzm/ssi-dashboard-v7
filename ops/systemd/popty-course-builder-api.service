@@ -28,6 +28,11 @@ Environment=COURSE_BUILDER_PORT=3471
 # "spawn osascript ENOENT" and the Terminal.app fallback fails the same way.
 # That is what actually stopped the 2026-08-04 nld_for_eng component backfill.
 Environment=SPAWN_MODE=headless
+# PRE-RESTART SYNTAX GUARD — see the fuller note in popty-production-api.service.
+# Restart=always cannot restart its way out of a parse error, so a broken merge
+# turns into a silent crash-loop. ExecStartPre refuses the start and writes a
+# loud banner naming the file and the SyntaxError.
+ExecStartPre=/usr/bin/node tools/check-service-syntax.cjs services/course-builder-api.cjs
 ExecStart=/usr/bin/node services/course-builder-api.cjs
 Restart=always
 RestartSec=5
