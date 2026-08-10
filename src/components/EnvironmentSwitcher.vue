@@ -76,6 +76,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { shouldFallBackToDefault } from '@/services/default-environment.js'
 
 const ENVIRONMENTS = {
   tom: {
@@ -173,8 +174,33 @@ onMounted(() => {
     console.log(`[EnvironmentSwitcher] Set api_base_url to ${selectedEnv.value}: ${targetUrl}`)
   }
 
-  // Check connection
-  checkConnection()
+  // Check connection — and if a SAVED choice is dead, heal off it rather than
+  // leaving every write to die as the browser's bare "Failed to fetch". The
+  // status line alone was not enough: it says "Connection failed" in the navbar
+  // while the person is looking at the sentence they just tried to save.
+  checkConnection().then(async (connected) => {
+    if (!shouldFallBackToDefault({
+      savedEnv: localStorage.getItem('ssi_environment'),
+      currentEnv: selectedEnv.value,
+      defaultEnv: DEFAULT_ENV,
+      isLocalHost,
+      connected,
+    })) return
+
+    const deadName = ENVIRONMENTS[selectedEnv.value].name
+    selectedEnv.value = DEFAULT_ENV
+    localStorage.setItem('ssi_environment', DEFAULT_ENV)
+    localStorage.setItem('api_base_url', ENVIRONMENTS[DEFAULT_ENV].url)
+    localStorage.setItem('ssi_machine_profile', ENVIRONMENTS[DEFAULT_ENV].machineProfile)
+    console.warn(`[EnvironmentSwitcher] ${deadName} is unreachable — fell back to ${ENVIRONMENTS[DEFAULT_ENV].name}`)
+    const healed = await checkConnection()
+    if (healed) {
+      connectionStatus.value = {
+        connected: true,
+        message: `${deadName} was unreachable — using ${ENVIRONMENTS[DEFAULT_ENV].name}`
+      }
+    }
+  })
 
   // Check for debug mode
   showDebug.value = localStorage.getItem('ssi_debug') === 'true'
@@ -218,17 +244,19 @@ async function checkConnection() {
         connected: true,
         message: `Connected to ${ENVIRONMENTS[selectedEnv.value].name}`
       }
-    } else {
-      connectionStatus.value = {
-        connected: false,
-        message: 'Server error'
-      }
+      return true
     }
+    connectionStatus.value = {
+      connected: false,
+      message: 'Server error'
+    }
+    return false
   } catch (error) {
     connectionStatus.value = {
       connected: false,
       message: 'Connection failed'
     }
+    return false
   }
 }
 
