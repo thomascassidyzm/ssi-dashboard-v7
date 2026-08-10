@@ -154,6 +154,13 @@
 
       <div class="summary-actions">
         <button class="btn-ghost" @click="reloadAfterSession">Back to my lines</button>
+        <!-- Finishing a session must never mean signing out of Popty. -->
+        <button
+          v-if="hasMainOptions"
+          class="btn-main-options"
+          :disabled="uploadQueue.pendingCount.value > 0"
+          @click="goToMainOptions"
+        >Done — back to main menu</button>
       </div>
     </section>
   </div>
@@ -172,6 +179,7 @@ import {
 } from '@/utils/podRecordingPlan'
 import { useUploadQueue } from '@/composables/useAudioUpload'
 import { useTapRecorder } from '@/composables/useTapRecorder'
+import { useMainOptions } from '@/composables/useMainOptions'
 
 // Long-take pod recorder: continuous autocue, tap-to-advance. Each line is its own
 // MediaRecorder take (reliable) — on tap we close the current line's take, upload it
@@ -185,6 +193,7 @@ const emit = defineEmits(['progress'])
 
 const recorder = useTapRecorder()
 const uploadQueue = useUploadQueue()
+const { hasMainOptions, goToMainOptions } = useMainOptions()
 
 const phase = ref('loading') // loading | no-plan | error | ready | recording | done
 const loadError = ref(null)
@@ -557,7 +566,16 @@ kbd {
 .toggle-row strong { display: block; font-size: 0.9rem; }
 .toggle-row small { display: block; font-size: 0.75rem; color: var(--color-paper-dim, #c1c1bb); line-height: 1.45; margin-top: 0.15rem; }
 
-.summary-actions { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+.summary-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 1rem; }
+/* The route out of the session that ISN'T sign out. Disabled while the upload
+   queue still has audio in it — the "keep this page open" note above says why. */
+.btn-main-options {
+  font-family: 'Josefin Sans', sans-serif; font-size: 0.95rem; font-weight: 700;
+  color: var(--color-void, #0f172a); background: var(--color-emerald, #06ffa5);
+  border: none; border-radius: 8px; padding: 0.7rem 1.6rem; cursor: pointer;
+  margin-top: 0.75rem; min-height: 44px;
+}
+.btn-main-options:disabled { opacity: 0.4; cursor: not-allowed; }
 .btn-begin {
   font-family: 'Josefin Sans', sans-serif; font-size: 1.05rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.05em;
