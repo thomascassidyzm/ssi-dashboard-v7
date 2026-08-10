@@ -119,8 +119,50 @@ function buildProvenanceContext({ courseCode, isScriptMode, metadata = {}, prove
   }
 }
 
+/**
+ * Resolve the voice id a HUMAN take is stamped with, from the course's cast.
+ *
+ * The slot's voice is authoritative — but ONLY when a human holds it. A slot
+ * still carrying its TTS voice (provider 'azure'/'xai'/...) must never lend
+ * that id to a person's recording: doing so made the database claim
+ * de-AT-IngridNeural sang lines a real recordist read on deu_at_for_eng, and
+ * anything downstream that trusts voice_id then treats real takes as
+ * machine-generated.
+ *
+ * Order: human slot voice > client-declared voice (advisory, used when the
+ * recordist has a minted voice id but no slot assigned yet) > null.
+ * A null is honest: slot-role matching still finds the take at read time.
+ *
+ * @param {object} args
+ * @param {object|null} args.voiceConfig - courses.voice_config
+ * @param {string|null} args.role - the slot being recorded ('target1' | 'target2' | ...)
+ * @param {string|null} [args.clientVoiceId] - metadata.voiceId from the recorder
+ * @returns {{voiceId: string|null, source: 'slot'|'client'|'none', warning: string|null}}
+ */
+function resolveTakeVoiceId({ voiceConfig, role, clientVoiceId = null }) {
+  const slot = role ? voiceConfig?.voices?.[role] : null
+  const slotIsHuman = slot?.provider === 'human' && !!slot.voiceId
+
+  if (slotIsHuman) {
+    const warning = clientVoiceId && clientVoiceId !== slot.voiceId
+      ? `client voiceId ${clientVoiceId} disagrees with voice_config ${role}=${slot.voiceId} — server value wins`
+      : null
+    return { voiceId: slot.voiceId, source: 'slot', warning }
+  }
+
+  if (clientVoiceId) {
+    return { voiceId: clientVoiceId, source: 'client', warning: null }
+  }
+
+  const warning = slot?.voiceId
+    ? `slot ${role} still holds the ${slot.provider || 'tts'} voice ${slot.voiceId} — human take left unstamped rather than credited to a synthetic voice`
+    : null
+  return { voiceId: null, source: 'none', warning }
+}
+
 module.exports = {
   isScriptModeUpload,
   normalizeProvenance,
-  buildProvenanceContext
+  buildProvenanceContext,
+  resolveTakeVoiceId
 }

@@ -180,6 +180,7 @@ import { useCourses } from '@/composables/useCourses'
 import { useAutocueState } from '@/composables/useAutocueState'
 import { useUploadQueue } from '@/composables/useAudioUpload'
 import { getApiUrl } from '@/services/api'
+import { resolveAssignedSlot, humanVoiceIdForSlot } from '@/utils/voiceSlots'
 import pack from '@/explainer/pack.json'
 import HowThisWorks from '@/components/explainer/HowThisWorks.vue'
 import NoticingInvitations from '@/components/explainer/NoticingInvitations.vue'
@@ -249,26 +250,18 @@ const courseDisplayName = computed(() => {
 // is THIS course's record of who holds the slot. dashboard_users.voice_id is
 // only a mirror of the person's LATEST mint (a recorder assigned on a second
 // course gets re-minted there), so it is the fallback, not the primary match.
-const assignedSlot = computed(() => {
-  const voices = voiceConfig.value?.voices
-  if (!voices) return null
-  const myEmail = learner.value?.email || null
-  for (const slot of ['target1', 'target2', 'known', 'presentation']) {
-    const v = voices[slot]
-    if (!v?.voiceId) continue
-    if (myEmail && v.assignedEmail && v.assignedEmail === myEmail) return slot
-    if (!v.assignedEmail && learner.value?.voice_id && v.voiceId === learner.value.voice_id) return slot
-  }
-  return null
-})
+// (Resolution shared with the studio's own console mount — src/utils/voiceSlots.js.)
+const assignedSlot = computed(() => resolveAssignedSlot(voiceConfig.value, {
+  email: learner.value?.email || null,
+  voiceId: learner.value?.voice_id || null
+}))
 
-// The voice id everything I record is saved under: the SLOT's voiceId for
-// THIS course (per-course canonical), not my latest cross-course mint.
-const myVoiceId = computed(() => {
-  const slot = assignedSlot.value
-  const slotVoiceId = slot ? voiceConfig.value?.voices?.[slot]?.voiceId : null
-  return slotVoiceId || learner.value?.voice_id || null
-})
+// The voice id everything I record is saved under: the SLOT's HUMAN voiceId for
+// THIS course (per-course canonical), not my latest cross-course mint — and
+// never the slot's TTS voice, which would credit a synthetic voice with my take.
+const myVoiceId = computed(() =>
+  humanVoiceIdForSlot(voiceConfig.value, assignedSlot.value) || learner.value?.voice_id || null
+)
 
 // ── Dialogue (pod) recording mode ────────────────────────────────────────────
 // Activated by ?podVoice=<voiceId> (leader-sent link) or automatically when

@@ -28,7 +28,7 @@ const publishManifestService = require('./publish-manifest-service.cjs')
 const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
-const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext } = require('./recording-upload-helpers.cjs')
+const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId } = require('./recording-upload-helpers.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
 
@@ -4753,6 +4753,7 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       // voice_id is resolved SERVER-side from the course's voice_config slot —
       // the client's metadata.voiceId is advisory (used only when the slot has
       // no human voice assigned yet, e.g. recording ahead of roster assignment).
+      // A slot still holding its TTS voice lends nothing: see resolveTakeVoiceId.
       let slotVoiceId = null
       if (isPodMode && podContext) {
         // Pod mode already resolved the cast voice server-side in prepare
@@ -4764,10 +4765,13 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
           if (slotRole) {
             const { data: courseRow } = await supabaseClient.getClient()
               .from('courses').select('voice_config').eq('course_code', courseCode).single()
-            slotVoiceId = courseRow?.voice_config?.voices?.[slotRole]?.voiceId || null
-            if (metadata?.voiceId && slotVoiceId && metadata.voiceId !== slotVoiceId) {
-              logger.warn(`[Recording] client voiceId ${metadata.voiceId} disagrees with voice_config ${slotRole}=${slotVoiceId} — server value wins`)
-            }
+            const resolved = resolveTakeVoiceId({
+              voiceConfig: courseRow?.voice_config || null,
+              role: slotRole,
+              clientVoiceId: metadata?.voiceId || null
+            })
+            slotVoiceId = resolved.voiceId
+            if (resolved.warning) logger.warn(`[Recording] ${resolved.warning}`)
           }
         } catch (voiceResolveError) {
           logger.warn('[Recording] voice_config resolve failed, falling back to client voiceId:', voiceResolveError.message)

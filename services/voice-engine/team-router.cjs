@@ -267,7 +267,9 @@ module.exports = function createTeamRouter({
         next = vacateSlot(next, currentSlot)
       }
 
-      next = assignVoiceToSlot(next, slot, voiceId, email)
+      // member.name rides along so the slot announces the PERSON in every
+      // voice UI, not the TTS voice they displaced.
+      next = assignVoiceToSlot(next, slot, voiceId, email, member.name || null)
 
       // Persist: voice_config is canonical for the course; dashboard_users.voice_id
       // mirrors the latest mint for the person.

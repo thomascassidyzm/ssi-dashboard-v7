@@ -10,6 +10,16 @@
         <div class="studio-meta">
           <h1>Autocue Studio</h1>
           <p class="session-info">{{ sessionInfo }}</p>
+          <!-- Which voice this session is credited to. Silence here is what
+               let takes be filed under voice 1 without anyone seeing it. -->
+          <p class="recording-as" v-if="recordingAs">
+            Recording as <strong>{{ recordingAs.voiceName }}</strong>
+            <span class="recording-as-slot">· {{ recordingAs.label }}</span>
+          </p>
+          <p class="recording-as recording-as-none" v-else-if="voiceConfigLoaded">
+            No voice slot assigned to you on this course — takes are saved
+            unattributed until a leader assigns you one.
+          </p>
         </div>
       </div>
 
@@ -119,6 +129,8 @@
     <!-- Phase: Role Selection (regeneration mode only) -->
     <RoleSelector
       v-else-if="state.currentPhase === 'role-select'"
+      :assigned-slot="effectiveSlot"
+      :slot-options="slotOptions"
       :course-name="state.courseName"
       :known-language="state.knownLanguage"
       :target-language="state.targetLanguage"
@@ -289,7 +301,16 @@ import { useRoute } from 'vue-router'
 import { useAutocueState } from '@/composables/useAutocueState'
 import { useContinuousRecorder } from '@/composables/useContinuousRecorder'
 import { useUploadQueue } from '@/composables/useAudioUpload'
+import { useAuth } from '@/composables/useAuth'
+import { getApiUrl } from '@/services/api'
 import { legoChunkCount } from '@/utils/phraseChunks'
+import {
+  resolveAssignedSlot,
+  humanVoiceIdForSlot,
+  slotVoiceName,
+  slotLabel,
+  recordableSlotOptions
+} from '@/utils/voiceSlots'
 
 import ModeSelector from './ModeSelector.vue'
 import RoleSelector from './RoleSelector.vue'
@@ -298,15 +319,18 @@ import RecordingControls from './recording/RecordingControls.vue'
 import RecordingStatus from './recording/RecordingStatus.vue'
 import SessionReview from './review/SessionReview.vue'
 
-// Recording identity, threaded in by the Record Room shell. Left at defaults
-// when mounted from the production console (/production/:courseCode/recording),
-// where the session falls back to the explicit target1 default.
+// Recording identity, threaded in by the Record Room shell. Absent when
+// mounted from the production console (/production/:courseCode/recording) —
+// there the studio resolves it ITSELF from the course's cast plus the signed-in
+// user (see loadVoiceIdentity). It used to fall back to a bare target1 default,
+// so a recordist cast as voice 2 recorded, invisibly, as voice 1.
 const props = defineProps({
   recordSlot: { type: String, default: null }, // 'known' | 'target1' | 'target2' | 'presentation'
   voiceId: { type: String, default: null }     // human voice id from courses.voice_config
 })
 
 const route = useRoute()
+const { learner } = useAuth()
 
 // Use shared autocue state
 const {
@@ -348,6 +372,64 @@ const {
   loadCourse,
   cleanup
 } = useAutocueState()
+
+// ── Who am I recording as? ───────────────────────────────────────────────────
+// The course's cast (courses.voice_config.voices) is the canonical record of
+// which person holds which voice slot. The Record Room resolves it and hands
+// it down; the production-console mount resolves it here from the same data,
+// so both agree instead of one of them guessing voice 1.
+const courseVoiceConfig = ref(null)
+const voiceConfigLoaded = ref(false)
+
+const resolvedSlot = computed(() => resolveAssignedSlot(courseVoiceConfig.value, {
+  email: learner.value?.email || null,
+  voiceId: learner.value?.voice_id || null
+}))
+
+// The prop wins (the Record Room already resolved it against the same config);
+// otherwise this mount's own resolution.
+const effectiveSlot = computed(() => props.recordSlot || resolvedSlot.value || null)
+
+// Only ever a HUMAN voice id — a slot still holding its TTS voice lends
+// nothing, or the take would claim a synthetic voice sang it.
+const effectiveVoiceId = computed(() =>
+  props.voiceId || humanVoiceIdForSlot(courseVoiceConfig.value, effectiveSlot.value)
+)
+
+const recordingAs = computed(() => {
+  const slot = effectiveSlot.value
+  if (!slot) return null
+  const languages = { targetLanguage: state.targetLanguage, knownLanguage: state.knownLanguage }
+  const voiceName = slotVoiceName(courseVoiceConfig.value, slot)
+    || props.voiceId
+    || learner.value?.name
+    || learner.value?.email
+  return { label: slotLabel(slot, languages), voiceName }
+})
+
+const slotOptions = computed(() => recordableSlotOptions(courseVoiceConfig.value, {
+  targetLanguage: state.targetLanguage,
+  knownLanguage: state.knownLanguage
+}))
+
+async function loadVoiceIdentity(courseCode) {
+  if (!courseCode) { voiceConfigLoaded.value = true; return }
+  try {
+    const base = localStorage.getItem('api_base_url') || getApiUrl()
+    const res = await fetch(`${base}/api/courses/${courseCode}/voice-config`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    if (res.ok) {
+      const data = await res.json()
+      courseVoiceConfig.value = data.config || null
+    }
+  } catch {
+    // Non-fatal: the banner just says nothing, and the session records
+    // unattributed rather than under someone else's voice.
+  }
+  voiceConfigLoaded.value = true
+  setRecordingIdentity({ role: effectiveSlot.value, voiceId: effectiveVoiceId.value })
+}
 
 // Continuous recorder for script mode
 const continuousRecorder = useContinuousRecorder({
@@ -576,7 +658,9 @@ onMounted(() => {
   resetSession()
 
   // Bind (or clear) the session's voice-slot identity on every mount so a
-  // Record Room session never leaks into a production-console session.
+  // Record Room session never leaks into a production-console session. The
+  // props are provisional: loadVoiceIdentity() re-binds once the course's cast
+  // is in, which is what gives a console mount the recordist's real slot.
   setRecordingIdentity({ role: props.recordSlot, voiceId: props.voiceId })
 
   // ?maxSeed=N on the recorder link caps the script to seeds 1..N — used to
@@ -588,6 +672,9 @@ onMounted(() => {
   const courseCode = route.params.courseCode
   if (courseCode) {
     loadCourse(courseCode)
+    loadVoiceIdentity(courseCode)
+  } else {
+    voiceConfigLoaded.value = true
   }
 })
 
@@ -723,6 +810,27 @@ onUnmounted(() => {
   font-size: 0.9rem;
   color: var(--color-paper-dim);
   margin: 0;
+}
+
+.recording-as {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--color-paper-dim);
+  margin: 0.25rem 0 0;
+}
+
+.recording-as strong {
+  color: var(--color-paper, inherit);
+}
+
+.recording-as-slot {
+  opacity: 0.75;
+  margin-left: 0.35rem;
+}
+
+.recording-as-none {
+  color: var(--color-amber, #d9a441);
+  max-width: 34rem;
 }
 
 .session-stats {

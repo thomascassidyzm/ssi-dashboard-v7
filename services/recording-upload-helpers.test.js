@@ -4,7 +4,8 @@ import { describe, it, expect } from 'vitest'
 import {
   isScriptModeUpload,
   normalizeProvenance,
-  buildProvenanceContext
+  buildProvenanceContext,
+  resolveTakeVoiceId
 } from './recording-upload-helpers.cjs'
 import { toS3Metadata } from './s3-production-service.cjs'
 
@@ -201,5 +202,47 @@ describe('toS3Metadata', () => {
     expect(/^[\x20-\x7e]*$/.test(meta.text)).toBe(true)
     // Short values pass through untouched
     expect(toS3Metadata({ role: 'target1' }).role).toBe('target1')
+  })
+})
+
+// The deu_at_for_eng defect (2026-08): a real recordist's takes were stamped
+// with de-AT-IngridNeural — voice 1's Azure voice — because the upload seam
+// took the slot's voiceId whatever provider held it. A human take must never
+// claim a synthetic voice sang it.
+describe('resolveTakeVoiceId', () => {
+  const config = {
+    voices: {
+      target1: { name: 'Ingrid', voiceId: 'de-AT-IngridNeural', provider: 'azure' },
+      target2: { name: 'Sasha', voiceId: 'human_sasha_wanasky_deu_at', provider: 'human', assignedEmail: 'sasha.wanasky@gmail.com' }
+    }
+  }
+
+  it('stamps the slot voice when a HUMAN holds the slot', () => {
+    const r = resolveTakeVoiceId({ voiceConfig: config, role: 'target2' })
+    expect(r).toMatchObject({ voiceId: 'human_sasha_wanasky_deu_at', source: 'slot', warning: null })
+  })
+
+  it('server slot voice wins over a disagreeing client voice, and says so', () => {
+    const r = resolveTakeVoiceId({ voiceConfig: config, role: 'target2', clientVoiceId: 'human_someone_else' })
+    expect(r.voiceId).toBe('human_sasha_wanasky_deu_at')
+    expect(r.warning).toMatch(/disagrees/)
+  })
+
+  it('NEVER lends a TTS slot voice to a human take', () => {
+    const r = resolveTakeVoiceId({ voiceConfig: config, role: 'target1' })
+    expect(r.voiceId).toBeNull()
+    expect(r.source).toBe('none')
+    expect(r.warning).toMatch(/de-AT-IngridNeural/)
+  })
+
+  it('uses the client voice on a TTS slot — a minted recordist ahead of assignment', () => {
+    const r = resolveTakeVoiceId({ voiceConfig: config, role: 'target1', clientVoiceId: 'human_kai_deu_at' })
+    expect(r).toMatchObject({ voiceId: 'human_kai_deu_at', source: 'client' })
+  })
+
+  it('is null-safe on an absent config, unknown slot or missing role', () => {
+    expect(resolveTakeVoiceId({ voiceConfig: null, role: 'target1' }).voiceId).toBeNull()
+    expect(resolveTakeVoiceId({ voiceConfig: config, role: 'target9' }).voiceId).toBeNull()
+    expect(resolveTakeVoiceId({ voiceConfig: config, role: null }).voiceId).toBeNull()
   })
 })
