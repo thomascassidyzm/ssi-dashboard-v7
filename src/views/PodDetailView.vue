@@ -56,7 +56,11 @@
           </div>
         </div>
         <div v-else-if="draftsLoaded" class="mb-6 bg-surface border border-line rounded-lg px-4 py-2 text-xs text-muted">
-          No lines are awaiting proofread — every {{ targetName }} line here has been read by a human.
+          <!-- "No drafts left" is all this can honestly claim. The marker column dates from
+               2026-08-06 and defaults to false, so an unmarked line is one nobody recorded a
+               verdict on — it is not evidence that a human read it. -->
+          No lines are marked as awaiting proofread. Lines are only marked from 6 August 2026
+          onward, so anything older is unmarked whether or not a human has read it.
         </div>
 
         <!-- Metadata (hosts / design notes) -->

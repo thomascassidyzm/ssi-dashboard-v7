@@ -179,6 +179,11 @@ async function planCourse(course, canonRaw) {
       // and trims target_text and gates on truthiness, so '' drops the line out of
       // every recording queue exactly as a NULL would — schema-legal, same effect.
       target_text: carryTarget ? src.row.target_text : '',
+      // The flag travels WITH the text it describes. Carrying the words onto a new
+      // slot and letting the flag take the column default said "a human approved
+      // this" about text no human had read — the June Welsh that reached Aran's
+      // queue unbadged. No carried text means no target text at all, so false.
+      target_text_draft: carryTarget ? !!src.row.target_text_draft : false,
       target_audio_id: carryTarget ? src.row.target_audio_id : null,
       known_audio_id: carryKnown ? src.row.known_audio_id : null,
     }
@@ -189,6 +194,7 @@ async function planCourse(course, canonRaw) {
         scene_number: existing.scene_number, sentence_number: existing.sentence_number,
         global_order: existing.global_order, speaker: existing.speaker,
         known_text: existing.known_text, target_text: existing.target_text,
+        target_text_draft: existing.target_text_draft,
         target_audio_id: existing.target_audio_id, known_audio_id: existing.known_audio_id,
       },
       after: desired,
@@ -207,16 +213,17 @@ async function planCourse(course, canonRaw) {
       scene_number: r.scene_number, sentence_number: r.sentence_number,
       global_order: r.global_order, speaker: r.speaker,
       known_text: r.known_text, target_text: r.target_text,
+      target_text_draft: r.target_text_draft,
       target_audio_id: r.target_audio_id, known_audio_id: r.known_audio_id,
     },
-    // Same nine-column shape as every other payload row (see writeRows), with the
-    // text blanked and the ordering parked past the canonical range, so the row can
-    // never re-enter any queue.
+    // Same shape as every other payload row (see writeRows), with the text blanked
+    // and the ordering parked past the canonical range, so the row can never
+    // re-enter any queue. No text left, so nothing for the draft flag to describe.
     after: {
       id: r.id, pod_id: podId,
       scene_number: r.scene_number, sentence_number: r.sentence_number,
       global_order: 90000 + r.global_order, speaker: r.speaker,
-      known_text: '', target_text: '',
+      known_text: '', target_text: '', target_text_draft: false,
       target_audio_id: null, known_audio_id: null,
     },
   }))
@@ -313,10 +320,15 @@ async function applyCourse(p) {
   // The second trap is that PostgREST builds ONE multi-row INSERT per batch whose
   // column list is the union of the keys in that batch — so a row carrying an extra
   // key writes an explicit NULL into that column for every other row in the batch.
-  // Hence: every payload row is built to exactly the same nine-column shape.
+  // Hence: every payload row is built to exactly the same column shape.
+  //
+  // target_text_draft is in this list precisely BECAUSE it has a default: leaving it
+  // out let every inserted row take `false`, which the recording queue reads as
+  // "proofread", even on rows that had just been handed unread carried-over text.
   const COLUMNS = ['id', 'pod_id', 'scene_number', 'sentence_number', 'global_order',
-    'speaker', 'known_text', 'target_text', 'target_audio_id', 'known_audio_id']
-  // The NOT NULL columns with no database default.
+    'speaker', 'known_text', 'target_text', 'target_text_draft',
+    'target_audio_id', 'known_audio_id']
+  // The NOT NULL columns that must be spelled out by the planner, not defaulted.
   const REQUIRED = COLUMNS.filter(c => c !== 'target_audio_id' && c !== 'known_audio_id')
   const shape = (row) => Object.fromEntries(COLUMNS.map(c => [c, row[c] === undefined ? null : row[c]]))
   const payload = [...p.ops.map(o => o.after), ...p.surplus.map(o => o.after)].map(shape)

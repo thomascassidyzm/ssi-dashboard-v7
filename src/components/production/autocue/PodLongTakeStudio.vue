@@ -36,8 +36,20 @@
            discovers it a hundred lines in. -->
       <p v-if="draftCount > 0" class="draft-warning">
         <span class="draft-warning-badge">DRAFT</span>
-        {{ draftCount }} of your {{ totals.total }} lines are machine-written drafts nobody has
-        proofread yet. They are marked line by line below — don't record one until it has been read.
+        {{ draftCount }} of your {{ totals.total }} lines are marked as machine-written drafts
+        nobody has proofread yet. They are marked line by line below — don't record one until it
+        has been read.
+      </p>
+
+      <!-- The absence of a badge is NOT a clearance. The marker column was added on
+           2026-08-06 defaulting to false, so every line older than that reads as
+           "proofread" whether or not a human ever saw it — which is how machine-written
+           June Welsh reached Aran's queue wearing no badge at all. Until approval is
+           recorded per line, the only honest thing this screen can say is that a missing
+           badge means nobody marked it. -->
+      <p class="draft-caveat">
+        No badge does not mean checked. Lines are only marked from 6 August 2026 onward, so an
+        unbadged line means nobody recorded a verdict either way — not that someone approved it.
       </p>
 
       <ol class="how-to">
@@ -682,6 +694,15 @@ kbd {
   font-size: 0.85rem;
   line-height: 1.5;
   text-align: left;
+}
+/* Quieter than .draft-warning on purpose: it qualifies the badge, it is not itself
+   an alarm about any particular line. */
+.draft-caveat {
+  margin: 0.5rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--color-paper-dim, #c1c1bb);
 }
 .draft-warning-badge {
   display: inline-block;
