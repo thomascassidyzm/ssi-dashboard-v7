@@ -41,6 +41,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { resolveDefaultEnv } from '@/services/default-environment.js'
 
 const ENVIRONMENTS = {
   tom: {
@@ -73,7 +74,22 @@ const ENVIRONMENTS = {
 // SYNCHRONOUS: Ensure localStorage is set BEFORE any async code runs
 // This prevents race conditions with production store loading
 // Default environment can be set via VITE_DEFAULT_ENVIRONMENT in .env (kai, tom, or api)
-const DEFAULT_ENV = import.meta.env.VITE_DEFAULT_ENVIRONMENT || 'tom'
+//
+// On popty.app the default MUST be an always-on backend. This block runs on
+// every page (the switcher lives in AppNavbar) and writes api_base_url
+// synchronously, and localStorage is priority 1 in getApiUrl() — so this,
+// not getApiUrl()'s popty.app branch, is what actually picks the backend.
+// Defaulting a community editor to 'tom' pinned them to a personal dev tunnel:
+// when that laptop sleeps every save dies as the browser's bare
+// "Failed to fetch", with nothing in any server log (Aran, 2026-08-10).
+// 'watson' is the only target that is always on, watchdogged and
+// auto-deploying; its funnel hostname resolves publicly for anyone off the
+// tailnet. Anyone who has already chosen an environment keeps their choice —
+// this only decides what a browser with no saved preference gets.
+const DEFAULT_ENV = resolveDefaultEnv(
+  typeof window !== 'undefined' ? window.location.hostname : '',
+  import.meta.env.VITE_DEFAULT_ENVIRONMENT,
+)
 const savedEnv = localStorage.getItem('ssi_environment')
 const initialEnv = (savedEnv && ENVIRONMENTS[savedEnv]) ? savedEnv : DEFAULT_ENV
 if (!savedEnv) {
