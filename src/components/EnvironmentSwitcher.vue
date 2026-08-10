@@ -22,9 +22,15 @@
       <div
         class="status-dot"
         :class="connectionStatus.connected ? 'connected' : 'disconnected'"
-        :title="connectionStatus.connected ? 'Connected' : 'Disconnected'"
+        :title="connectionStatus.message || (connectionStatus.connected ? 'Connected' : 'Disconnected')"
       ></div>
     </div>
+
+    <!-- Why the machine changed under you. A green dot alone explains nothing to
+         someone whose saves just started working again. -->
+    <span v-if="fellBackFrom" class="env-fallback-note" :title="connectionStatus.message">
+      {{ fellBackFrom }} was unreachable — using {{ ENVIRONMENTS[selectedEnv].name }}
+    </span>
 
     <!-- Deploy button for remote machines -->
     <button
@@ -134,6 +140,8 @@ if (localStorage.getItem('ssi_machine_profile') !== expectedProfile) {
 const selectedEnv = ref(initialEnv)
 const connectionStatus = ref({ connected: false, message: 'Checking...' })
 const showDebug = ref(false)
+// Name of the machine we healed away from, so the navbar can say why.
+const fellBackFrom = ref('')
 const deploying = ref(false)
 const deployMessage = ref('')
 const deployFailed = ref(false)
@@ -194,13 +202,28 @@ onMounted(() => {
     localStorage.setItem('ssi_machine_profile', ENVIRONMENTS[DEFAULT_ENV].machineProfile)
     console.warn(`[EnvironmentSwitcher] ${deadName} is unreachable — fell back to ${ENVIRONMENTS[DEFAULT_ENV].name}`)
     const healed = await checkConnection()
-    if (healed) {
-      connectionStatus.value = {
-        connected: true,
-        message: `${deadName} was unreachable — using ${ENVIRONMENTS[DEFAULT_ENV].name}`
-      }
+    if (!healed) return
+    fellBackFrom.value = deadName
+    connectionStatus.value = {
+      connected: true,
+      message: `${deadName} was unreachable — using ${ENVIRONMENTS[DEFAULT_ENV].name}`
     }
+    // Re-pinning localStorage does not un-break THIS page: its data fetches
+    // already went to the dead machine and failed. switchEnvironment() reloads
+    // for exactly this reason — do the same, so the person is not left looking
+    // at a "failed to fetch" screen that is already fixed underneath them.
+    // Safe against a loop: ssi_environment is now the default, so
+    // shouldFallBackToDefault() returns false on the next load.
+    sessionStorage.setItem('ssi_env_fell_back_from', deadName)
+    window.location.reload()
   })
+
+  // Surviving notice from a fallback that reloaded the page.
+  const healedFrom = sessionStorage.getItem('ssi_env_fell_back_from')
+  if (healedFrom) {
+    fellBackFrom.value = healedFrom
+    sessionStorage.removeItem('ssi_env_fell_back_from')
+  }
 
   // Check for debug mode
   showDebug.value = localStorage.getItem('ssi_debug') === 'true'
@@ -386,6 +409,19 @@ defineExpose({
   pointer-events: none;
   color: var(--color-paper-dim, var(--muted));
 }
+
+/* Fallback notice — why the backend changed under you. Amber, the same
+   "something is degraded but working" register the DRAFT badge uses. */
+.env-fallback-note {
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--color-tungsten, #ffa630);
+  max-width: 22rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+:root[data-theme="light"] .env-fallback-note { color: #92400e; }
 
 .status-dot {
   position: absolute;
