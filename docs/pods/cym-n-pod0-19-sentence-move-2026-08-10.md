@@ -6,7 +6,7 @@
 
 ## The verdict, in two sentences
 
-**Yes, this is affecting real learners now.** North Welsh is a released, public, live course, and its listening pod — which was deliberately empty and therefore invisible since 6 August — came back at 16:45 UTC today holding 19 lines, of which exactly 2 have any Welsh audio; the other 17 are silently skipped, so a learner who opens the pod gets two short lines from Aran and nothing else.
+**Yes, this is affecting real learners now.** North Welsh is a released, public, live course, and its listening pod — deliberately empty and therefore hidden since 6 August — came back at 16:45 UTC today holding 19 lines, of which exactly 2 have any Welsh audio; so the Dialogues tab has reappeared showing three scenes of readable Welsh, and a learner who plays it hears two short lines from Aran and then silence-and-skip through the other seventeen.
 
 **It looks accidental, not a deliberate go-live.** The trail says someone pressed Generate on the pod-0 slug in the dashboard, which rewrote the pod's header — deleting the "[GATED 2026-08-06]" warning title that was the only marker holding it off live — and then wrote three scenes of freshly machine-translated Welsh, dragging the working copy's rows out of the safe pod and into the live one as a side effect of how row ids are named. It also overwrote Aran's proofreading from earlier the same afternoon on 15 of the 19 lines.
 
@@ -81,7 +81,7 @@ So the damage is two-layered: a live pod that is 17/19 silent, **and** a dialect
 
 **Empty vs non-empty is the whole gate.** Same file, line ~239: when a network read returns zero rows the composable calls `clearCachedListeningPodRows(course)` — described in its own comment as "the course has no pod live". That is precisely why an empty `pod-0` held the pod off. It is no longer empty. *(PROVED from code.)*
 
-**What happens on the 17 silent lines: they are skipped, silently.** `packages/player-vue/src/composables/usePodLapScheduler.ts:799` and `:901`, in both the main-stage and preview loops:
+**In the main flow, the 17 silent lines are skipped.** `packages/player-vue/src/composables/usePodLapScheduler.ts:799` and `:901`, in both the main-stage and preview loops:
 
 ```ts
 const sentence = members[k]
@@ -90,13 +90,36 @@ if (!sentence.target_audio_id) continue
 
 No throw, no placeholder, no gap of silence — the sentence never becomes a play at all. And `if (plays.length === 0) return null` / `continue` means a cohort with nothing playable yields no lap rather than an error. *(PROVED from code.)*
 
-**So, in plain English:** a North Welsh learner opening the listening pod today sees the pod appear (it did not exist yesterday), and hears Aran say **"Bore da, Sarah!"** and **"Dw i'n dda iawn, diolch. Wyt ti'n mynd i'r gwaith?"** — two lines out of nineteen. The other seventeen are dropped before they reach the audio layer, so the pod does not crash and does not sit in silence; it simply ends almost as soon as it starts, with no explanation. That is the same dead-surface shape you fixed on the Southern course, arriving on the Northern one by a different door. *(The two-lines-and-stop conclusion is INFERENCE from the proved code above, not from a live playthrough — see the gap note.)*
+**But the main flow is only one of two doors, and the second one does not skip — it shows.** The Dialogues tab in Listening Mode un-hides itself the moment the pod is non-empty (`packages/player-vue/src/components/ListeningOverlay.vue:526`):
 
-A second consequence worth naming: the recording plan that builds Aran's queue filters `listening_pods` on `course_code` only (`services/voice-engine/pods-router.cjs`, `fetchPods`), so these 19 rows are still in his queue — but now carrying the machine text, not his. If he records tonight, he records the regression.
+```js
+const podsAvailable = computed(
+  () => pods.isLoading.value || !!pods.error.value || pods.scenes.value.length > 0,
+)
+```
 
-### Explicit gap
+That is your own 2026-08-08 ruling — "a pod with nothing in it is hidden, not offered", commit `c53ac4bc` — and it is precisely the mechanism that was holding Northern Welsh back. Nineteen rows means three scenes, which means the tab returns. Nothing on that path filters by audio, so **all 19 lines become visible cards**, machine Welsh and all. On a card with no clip, `buildModalQueue` (`:1247`) builds an empty queue, the player logs "No audio for phrase, skipping" (`:1437`), plays a 90 ms silence and auto-advances (`:1453-1458`). *(PROVED from the deployed source.)*
 
-**I did not confirm reachability with a live production request.** The brief asked for a live check and I am reporting honestly that I did not get one: the Popty API is not running on this box (`~/.pm2/logs/production-api-out.log` last wrote on 30 July), and I have no learner session to drive the deployed player with. Everything in this section is proved from the live database plus the player's own source. The one link I could not close by observation is "a real device, signed in, opening the pod". A second worker (#103) was sent at the deployed learning app to attempt exactly that; if its result contradicts anything here, that result wins.
+**So, in plain English, there are two learner experiences and both are bad:**
+
+- **A learner past round 6, in the normal flow:** hears Aran say **"Bore da, Sarah!"** and **"Dw i'n dda iawn, diolch. Wyt ti'n mynd i'r gwaith?"** — two lines out of nineteen. The other seventeen never reach the audio layer. No crash and no dead silence; the pod simply ends almost as soon as it starts.
+- **A learner who taps the Dialogues tab:** sees the tab reappear, sees three scene cards, and can **read** all 19 lines — including "Oes gennych chi snacs?" and "grisps". Tapping Scene 3, which has zero recordings, scrolls silently through ten cards in about a second and ends. Not so much a dead surface as a surface that visibly does nothing.
+
+**Live confirmation — PROVED, not inferred.** `GET https://saysomethingin.app/api/courses/available` → 200, includes `cym_n_for_eng` at `new_app_status: live`, `pricing_tier: premium`. `version.json` → build `76fd5d8`, the `origin/main` tip carrying every guard quoted above. An anonymous Supabase read using the publishable key shipped inside the production JS bundle returns **19 rows for `pod_id=eq.cym_n_for_eng:pod-0`, exactly 2 with `target_audio_id`, 0 with `known_audio_id`** — so the rows are not RLS-blocked from a client. Fetching those two clips through `/api/audio/{id}` returns 200 `audio/mpeg`. The pod is reachable, the data is what we think it is, and the audio that exists does play. `algorithm_config.listening` is `{"enabled": true, "podActivationRound": 6}`, so pod laps begin at round 6.
+
+**Two further consequences worth naming:**
+
+1. **Drill mode has no translation audio for any of the 19,** because `known_audio_id` is null on every row — even the two recorded lines drill target-only.
+2. **Aran's recording queue still contains these 19.** The recording plan filters `listening_pods` on `course_code` only (`services/voice-engine/pods-router.cjs`, `fetchPods`) and does not care which pod a row sits in. They now carry the machine text, not his. **If he records tonight he records the regression** — and since he already corrected several of these lines this afternoon, it will look to him like his edits did not save.
+
+### Explicit gaps
+
+- **Nobody drove the real UI as a signed-in, entitled Welsh learner.** The live checks above are HTTP and database probes against production, plus the deployed build's own source. They are not a screenshot of the pod. The repo has the right instrument (`packages/player-vue/e2e/empty-pod-hidden-probe.mjs`) but it needs an entitled session, and no test account was used.
+- **I have not checked whether anyone is currently enrolled on `cym_n_for_eng`.** This answers *can a learner reach it* — proved yes — not *has one*.
+- **The Popty API is not running on this box** (`~/.pm2/logs/production-api-out.log` last wrote on 30 July), so there is no HTTP access log for 16:44 UTC and no way to see the request that triggered the generate, or who sent it.
+- **The offline bundle may also leak the working copy.** `api/courses/[code]/bundle.ts:387,664` selects pods by `course_code` and fetches sentences with `.in('pod_id', …)`, so an entitled learner's download would carry `pod-0-unrecorded` too — 85 of those 213 rows have clips that would be needlessly cached. Inference: an entitled bundle was not fetched.
+
+*(The reachability section above is worker #103's trace of the deployed learning app, cross-checked against my own reading of `useListeningPods.ts` and `usePodLapScheduler.ts`.)*
 
 ---
 
