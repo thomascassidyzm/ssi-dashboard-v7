@@ -292,6 +292,70 @@ async function podHasAudio(podId) {
   return (data || []).length > 0
 }
 
+/**
+ * REFUSE to generate into a pod whose id-space is occupied by another pod's rows.
+ *
+ * Sentence row ids embed the pod id (`<course>:<slug>:SC01-S001`) and are upserted
+ * `onConflict: 'id'`, so a row carrying THIS pod's id prefix while living in ANOTHER
+ * pod is not a row we would create — it is a row we would STEAL, dragging it into this
+ * pod and overwriting its text on the way.
+ *
+ * That is not hypothetical. Gating a pod by repointing `pod_id` (rather than cloning
+ * with `tools/pods/clone-pod.cjs`, which re-slugs the ids) leaves the working copy's
+ * rows still carrying the LIVE pod's id prefix. On 2026-08-10 a Generate on the
+ * defaulted `pod-0` slug pulled 19 such rows out of `cym_n_for_eng:pod-0-unrecorded`
+ * back into the live pod and overwrote a day of the Welsh editor's proofreading with
+ * fresh machine translation. The gate was a naming convention, and a defaulted form
+ * field walked straight through it — see docs/pods/cym-n-pod0-19-sentence-move-2026-08-10.md.
+ *
+ * This only ever fires on a genuine CROSS-POD id collision. A generate into an empty
+ * pod, or into its own rows, never trips it — which is why it is safe estate-wide.
+ */
+async function assertNoForeignRowIds(podId, { force = false, log = () => {} } = {}) {
+  const { data, error } = await supabase
+    .from('listening_pod_sentences').select('id, pod_id')
+    .like('id', `${podId}:%`).neq('pod_id', podId)
+  if (error) throw new Error(`cross-pod id check: ${error.message}`)
+  const foreign = data || []
+  if (!foreign.length) return
+
+  const owners = [...new Set(foreign.map(r => r.pod_id))]
+  const sample = foreign.slice(0, 5).map(r => r.id).join(', ')
+  const detail =
+    `${foreign.length} row id(s) belonging to ${podId} currently live in ${owners.join(', ')} ` +
+    `(e.g. ${sample}${foreign.length > 5 ? ', …' : ''}). Generating ${podId} would upsert onto those ids ` +
+    `and STEAL those rows out of ${owners.join(', ')}, overwriting their text. ` +
+    `Fix: re-slug that pod's row ids to match its own slug (tools/pods/clone-pod.cjs is the naming ` +
+    `this expects), or generate a different slug.`
+
+  if (force) {
+    log(`[${podId}] !! CROSS-POD ID COLLISION OVERRIDDEN BY force:true — ${detail}`)
+    return
+  }
+  throw new Error(`REFUSING to generate ${podId}: ${detail}`)
+}
+
+/**
+ * REFUSE to overwrite a pod header whose title carries a `[GATED` marker. That title is
+ * the human-readable note saying "this pod is deliberately held off learners"; the
+ * 2026-08-10 incident began by silently replacing exactly such a title with the generated
+ * template, which is what removed the only visible sign that the pod was gated.
+ */
+async function assertNotGated(podId, { force = false, log = () => {} } = {}) {
+  const { data, error } = await supabase
+    .from('listening_pods').select('title').eq('id', podId).maybeSingle()
+  if (error) throw new Error(`gated-pod check: ${error.message}`)
+  const title = (data && data.title) || ''
+  if (!title.includes('[GATED')) return
+  const detail = `its title is "${title}" — that marker means the pod is deliberately held off learners. ` +
+    `Clear the marker deliberately if you really mean to generate over it.`
+  if (force) {
+    log(`[${podId}] !! GATED POD OVERWRITE OVERRIDDEN BY force:true — ${detail}`)
+    return
+  }
+  throw new Error(`REFUSING to generate ${podId}: ${detail}`)
+}
+
 /** Upsert the listening_pods header row (speakers + metadata). */
 async function upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canonicalScenes, knownLang, targetLang, ledger }) {
   // Voice-map keys must match the (localised) labels written on sentence rows —
@@ -453,6 +517,11 @@ async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, 
 
   const canonicalScenes = await loadCanonicalScenes(podSlug)
   if (canonicalScenes.length === 0) throw new Error(`no canonical scenarios for pod_slug=${podSlug}`)
+
+  // Refuse before ANY write and before any model spend — this covers every mode
+  // ('full', 'sync', 'resume'), because sync is dispatched below.
+  await assertNoForeignRowIds(podId, { force, log })
+  await assertNotGated(podId, { force, log })
 
   // mode: 'full'  = clean rebuild (today's `force`: wipe + re-flex every scene)
   //       'sync'  = incremental: diff canonical vs the live pod, re-flex ONLY
@@ -622,6 +691,8 @@ async function relabelPodSpeakers({ courseCode, podSlug = 'pod-0', log = () => {
   if (pod.source_file && !String(pod.source_file).startsWith('generated:')) {
     throw new Error(`${podId} is hand-authored (source: ${pod.source_file}) — relabel only applies to generated pods`)
   }
+  // Ends in an upsertPodRow, which would replace a gating title with the generated template.
+  await assertNotGated(podId, { log })
   const ledger = (pod.metadata && pod.metadata.consistency_ledger) || ''
   const nameMap = parseNameMap(ledger)
   if (!nameMap.length) { log(`[${podId}] no NAMES entries in ledger — nothing to relabel`); return { podId, relabelled: 0, nameMap } }
