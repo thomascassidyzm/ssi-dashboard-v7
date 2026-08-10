@@ -144,6 +144,7 @@ export function useVAD(config: Partial<VADConfig> = {}) {
   // Callbacks
   let onSpeechStart: (() => void) | null = null
   let onSpeechEnd: ((durationMs: number) => void) | null = null
+  let onSpeechAborted: ((durationMs: number) => void) | null = null
   let onLevelChange: ((level: number) => void) | null = null
 
   /**
@@ -387,6 +388,15 @@ export function useVAD(config: Partial<VADConfig> = {}) {
               if (onSpeechEnd) {
                 onSpeechEnd(speechDuration)
               }
+            } else if (onSpeechAborted) {
+              // Too short to be a take — a cough, a chair, a door. The VAD is
+              // done with it, but whoever acted on onSpeechStart is NOT: the
+              // recorder opened a capture and, without this, was left holding
+              // it open indefinitely. The next Stop then closed that stale
+              // capture and shipped a minutes-long near-silence as a take,
+              // which the server's silent-take guard refused 422 — the
+              // unexplained "1 failed" on an otherwise clean session.
+              onSpeechAborted(speechDuration)
             }
 
             // Reset state
@@ -413,6 +423,14 @@ export function useVAD(config: Partial<VADConfig> = {}) {
    */
   function onSpeechEndCallback(callback: (durationMs: number) => void) {
     onSpeechEnd = callback
+  }
+
+  /**
+   * Set callback for a speech run that ended too short to count as a take, so
+   * the capture opened at onSpeechStart can be abandoned rather than left open.
+   */
+  function onSpeechAbortedCallback(callback: (durationMs: number) => void) {
+    onSpeechAborted = callback
   }
 
   /**
@@ -452,6 +470,7 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     // Callbacks
     onSpeechStart: onSpeechStartCallback,
     onSpeechEnd: onSpeechEndCallback,
+    onSpeechAborted: onSpeechAbortedCallback,
     onLevelChange: onLevelChangeCallback
   }
 }

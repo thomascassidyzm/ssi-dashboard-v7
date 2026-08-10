@@ -71,6 +71,8 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
   let segmentStartTime: number | null = null
   let activeMimeType = 'audio/webm'
   let wakeLock: any = null
+  // Set just before a stop that must NOT produce a segment — see onstop.
+  let discardCapture = false
 
   // iOS Safari records audio/mp4 (AAC), not webm/opus — pick the first
   // supported container; the server transcodes whatever arrives (the upload
@@ -151,6 +153,18 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
       }
 
       mediaRecorder.onstop = () => {
+        // A capture the VAD disowned (too short to be speech) or one cut short
+        // by Stop before it was a take is thrown away here rather than shipped.
+        // Uploading it costs a slot, a round trip and a 422, and surfaces to the
+        // recordist as an unexplained failed take.
+        if (discardCapture) {
+          discardCapture = false
+          chunks = []
+          segmentStartTime = null
+          isCapturing.value = false
+          return
+        }
+
         if (chunks.length > 0 && segmentStartTime) {
           const blob = new Blob(chunks, { type: activeMimeType })
           const durationMs = Date.now() - segmentStartTime
@@ -200,6 +214,18 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
         }
       })
 
+      // The burst was too short to be a take. Close the capture it opened and
+      // drop it — otherwise this recorder stays 'recording' with a stale
+      // segmentStartTime until something else stops it, and that something is
+      // usually the recordist pressing Stop at the end of the session.
+      vad.onSpeechAborted(() => {
+        if (!mediaRecorder) return
+        if (mediaRecorder.state === 'recording') {
+          discardCapture = true
+          mediaRecorder.stop()
+        }
+      })
+
       isFlowMode.value = true
 
     } catch (err: any) {
@@ -217,8 +243,13 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
   function stopFlow() {
     if (!isFlowMode.value) return
 
-    // Stop any in-progress recording
+    // Stop any in-progress recording. A capture that has not yet run long
+    // enough to be speech is a tail, not a take — Stop pressed a moment after
+    // the last phrase catches the breath after it, and shipping that produces
+    // a phantom failed item on an otherwise clean session.
     if (mediaRecorder && mediaRecorder.state === 'recording') {
+      const openMs = segmentStartTime ? Date.now() - segmentStartTime : 0
+      discardCapture = openMs < cfg.minSpeechDuration
       mediaRecorder.stop()
     }
 

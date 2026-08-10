@@ -320,9 +320,22 @@ export function useAutocueState() {
   }
 
   // Called by continuous recorder when a segment is captured via VAD
+  //
+  // A second take of the same phrase SUPERSEDES the first — it never lands
+  // beside it. Appending was the 2026-08-10 duplicate report: every take of a
+  // slot got its own review card, and because the card id is derived from the
+  // phrase (`seg_<phrase.id>`, deliberately stable) all of those cards shared
+  // one identity. So they lit up together on play, took each other's
+  // Approve/Redo verdict, and collided on SessionReview's :key. One row per
+  // slot, replaced in place, is the fix for all of that at once.
   function onSegmentCaptured(segment, itemIndex) {
     const phrase = state.phrases[itemIndex]
     if (!phrase) return
+
+    const segmentId = `seg_${phrase.id}`
+    const existingIndex = state.recordedSegments.findIndex(s => s.phraseId === phrase.id)
+    const previous = existingIndex === -1 ? null : state.recordedSegments[existingIndex]
+    const previousUrl = state.audioRecordings.get(phrase.id)?.url || previous?.audioUrl || null
 
     // Store the recording
     const url = URL.createObjectURL(segment.blob)
@@ -335,8 +348,8 @@ export function useAutocueState() {
     // Track as recorded. Script mode hands these very rows straight to the
     // review screen, so they carry everything SegmentCard/SessionReview read —
     // above all audioUrl, without which the play button has nothing to play.
-    state.recordedSegments.push({
-      id: `seg_${phrase.id}`,
+    const row = {
+      id: segmentId,
       phraseId: phrase.id,
       itemIndex,
       label: `Phrase #${String(itemIndex + 1).padStart(3, '0')}`,
@@ -349,8 +362,25 @@ export function useAutocueState() {
       quality: segment.blob.size > 1000 ? 'Excellent' : 'Good',
       issues: [],
       hasRecording: true,
-      audioUrl: url
-    })
+      audioUrl: url,
+      // Shown on the card, so a recordist can SEE that the retake landed —
+      // a new take in the same voice is otherwise indistinguishable.
+      takeNumber: (previous?.takeNumber || 1) + (previous ? 1 : 0)
+    }
+
+    if (existingIndex === -1) {
+      state.recordedSegments.push(row)
+    } else {
+      // The superseded take must stop playing before its URL dies, or the
+      // review screen is left holding a revoked src.
+      if (state.playingSegmentId === segmentId) stopPlayback()
+      state.recordedSegments.splice(existingIndex, 1, row)
+      if (previousUrl && previousUrl !== url) URL.revokeObjectURL(previousUrl)
+      // A verdict belongs to the take it was given to, not to the slot.
+      state.approvedSegments.delete(segmentId)
+      state.rejectedSegments.delete(segmentId)
+      console.log(`[Autocue] Take ${row.takeNumber} supersedes the previous take of item ${itemIndex}`)
+    }
 
     console.log(`[Autocue] Segment captured for item ${itemIndex}: ${phrase.text.substring(0, 30)}...`)
   }

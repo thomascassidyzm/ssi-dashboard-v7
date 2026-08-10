@@ -132,6 +132,19 @@ const RETRY_BACKOFF = [1000, 3000, 8000]
 
 export function useUploadQueue() {
   function queueUpload(item: QueuedUpload) {
+    // A re-record supersedes the take it replaces. Drop any earlier take of the
+    // same item still waiting in the queue — uploading it costs bandwidth to
+    // land bytes the newer take immediately outranks (the voice engine takes
+    // the latest take per phrase+cadence). queue[0] may be in flight, so it is
+    // never touched; its 4xx/5xx verdict is simply superseded below.
+    for (let i = queue.length - 1; i >= 1; i--) {
+      if (queue[i].itemIndex === item.itemIndex) queue.splice(i, 1)
+    }
+    // ...and it supersedes the earlier take's verdict too, so a slot that
+    // failed once and was re-recorded stops being counted as failed.
+    failedIndices.delete(item.itemIndex)
+    failedReasons.delete(item.itemIndex)
+
     queue.push(item)
     pendingCount.value = queue.length
     processQueue()
@@ -171,15 +184,23 @@ export function useUploadQueue() {
       queue.shift()
       pendingCount.value = queue.length
 
+      // A newer take of this same item is already queued behind this one, so
+      // this take's verdict is stale either way — don't let it mark the slot.
+      const superseded = queue.some(q => q.itemIndex === item.itemIndex)
+
       if (success) {
-        uploadedCount.value++
         uploadedIndices.add(item.itemIndex)
+        // Count SLOTS uploaded, not uploads performed: re-recording an item
+        // twice used to report three of two items uploaded.
+        uploadedCount.value = uploadedIndices.size
         if (onUploadedCallback) {
           onUploadedCallback(item.itemIndex)
         }
-      } else {
+      } else if (!superseded) {
         failedIndices.add(item.itemIndex)
         console.error(`[UploadQueue] Failed after ${MAX_RETRIES} attempts: item ${item.itemIndex}`)
+      } else {
+        failedReasons.delete(item.itemIndex)
       }
     }
 

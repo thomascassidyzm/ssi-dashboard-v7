@@ -233,6 +233,23 @@
             <span class="summary-label">Failed</span>
           </div>
         </div>
+        <!-- A bare red "1 Failed" reads as a system fault on a session the
+             recordist knows went fine. The server already says WHY each take
+             was refused ("no audible speech…"); say it here, per item, so the
+             recordist knows whether anything needs recording again. -->
+        <div v-if="failedItems.length" class="summary-failures">
+          <p class="summary-failures-title">
+            {{ failedItems.length }} take{{ failedItems.length === 1 ? '' : 's' }} not saved:
+          </p>
+          <ul>
+            <li v-for="f in failedItems" :key="f.index">
+              <strong>Item {{ f.index + 1 }}</strong>
+              <span v-if="f.text"> — “{{ f.text }}”</span>
+              <span class="failed-why">{{ f.reason }}</span>
+            </li>
+          </ul>
+        </div>
+
         <div class="summary-time">
           <span>Session time: {{ formattedTime }}</span>
         </div>
@@ -380,12 +397,40 @@ watch(
   { immediate: true }
 )
 
+// The session can end without anyone pressing Stop: capturing the last item
+// auto-advances off the end of the script, which calls stopRecording() and
+// lands on the summary screen — where there is no Stop button left to press.
+// The continuous recorder was left live through all of that, mic open and VAD
+// listening, so any noise in the room started another capture against the LAST
+// item: a duplicate take of it if long enough, a 422-refused phantom if not.
+// Whatever ends the session ends the recorder with it.
+watch(
+  () => state.isRecording,
+  (recording) => {
+    if (!recording && continuousRecorder.isFlowMode.value) {
+      continuousRecorder.stopFlow()
+    }
+  }
+)
+
 // Background upload queue
 const uploadQueue = useUploadQueue()
 const uploadedCount = uploadQueue.uploadedCount
 
 // The server's own words for the most recent take it refused (e.g. "no audible
 // speech"), so the in-session failure bar says WHY, not just how many.
+// Every refused take, with the item it belonged to and the server's reason —
+// read by the summary screen.
+const failedItems = computed(() =>
+  [...uploadQueue.failedIndices]
+    .sort((a, b) => a - b)
+    .map(index => ({
+      index,
+      text: state.phrases[index]?.text || '',
+      reason: uploadQueue.failedReasons.get(index) || 'Upload failed'
+    }))
+)
+
 const latestFailureReason = computed(() => {
   let latest = null
   for (const idx of uploadQueue.failedIndices) {
@@ -1113,6 +1158,43 @@ onUnmounted(() => {
   letter-spacing: 0.1em;
   margin-top: 0.25rem;
   display: block;
+}
+
+.summary-failures {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(220, 38, 38, 0.12);
+  border: 1px solid var(--color-film-red);
+  border-radius: 8px;
+}
+
+.summary-failures-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--color-film-red);
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.summary-failures ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  list-style: disc;
+}
+
+.summary-failures li {
+  font-size: 0.8rem;
+  color: var(--color-paper-dim);
+  line-height: 1.45;
+  margin-bottom: 0.4rem;
+}
+
+.summary-failures .failed-why {
+  display: block;
+  color: var(--color-paper-dim);
+  opacity: 0.85;
 }
 
 .summary-time {

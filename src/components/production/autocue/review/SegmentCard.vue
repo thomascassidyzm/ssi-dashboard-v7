@@ -3,6 +3,11 @@
     <div class="segment-header">
       <div class="segment-label">
         {{ segment.label }}
+        <!-- A retake in the same voice sounds like the take it replaced, so
+             say plainly that it landed and which take you are hearing. -->
+        <span v-if="segment.takeNumber > 1" class="take-badge">
+          Take {{ segment.takeNumber }}
+        </span>
         <span v-if="status" class="verdict-badge" :class="status">
           {{ status === 'approved' ? '✓ Approved' : '↻ Redo' }}
         </span>
@@ -285,6 +290,17 @@ function getBarHeight(index) {
 .segment-card.rejected {
   border-left-color: var(--color-film-red, #e63946);
   opacity: 0.75;
+}
+
+.take-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background: rgba(255, 166, 48, 0.18);
+  color: var(--color-tungsten, var(--accent));
 }
 
 .verdict-badge {
