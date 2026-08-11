@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-08-11T23:35:18.037Z",
+  "ran_at": "2026-08-11T23:50:35.984Z",
   "mode": "audit",
   "counts": {
     "pools": 46,
     "entries": 145,
-    "ok": 97,
+    "ok": 144,
     "mismatch": 0,
     "absent": 0,
-    "unverifiable": 48
+    "unverifiable": 1
   },
   "rows": [
     {
@@ -17,8 +17,9 @@
       "provider": "xai",
       "voice_id": "025a38c5",
       "name": "Yasmin",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ar"
     },
     {
       "pool": "ara",
@@ -38,8 +39,9 @@
       "provider": "xai",
       "voice_id": "5f0c2251",
       "name": "Youssef",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ar"
     },
     {
       "pool": "ara",
@@ -48,8 +50,9 @@
       "provider": "xai",
       "voice_id": "f4b9d6fc",
       "name": "Omar",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ar"
     },
     {
       "pool": "ara",
@@ -113,8 +116,9 @@
       "provider": "xai",
       "voice_id": "4d3af3e1",
       "name": "Mireia",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ca-ES"
     },
     {
       "pool": "cat",
@@ -123,8 +127,9 @@
       "provider": "xai",
       "voice_id": "155d4e9b",
       "name": "Nuria",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "ca-ES"
     },
     {
       "pool": "cat",
@@ -144,8 +149,9 @@
       "provider": "xai",
       "voice_id": "c630b236",
       "name": "Jordi",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ca-ES"
     },
     {
       "pool": "cat",
@@ -154,8 +160,9 @@
       "provider": "xai",
       "voice_id": "e5d4f53e",
       "name": "Pol",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ca-ES"
     },
     {
       "pool": "cat",
@@ -175,8 +182,9 @@
       "provider": "xai",
       "voice_id": "a69bdfe7",
       "name": "Astrid",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "da-DK"
     },
     {
       "pool": "dan",
@@ -185,8 +193,9 @@
       "provider": "xai",
       "voice_id": "47519c37",
       "name": "Freja",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "da-DK"
     },
     {
       "pool": "dan",
@@ -206,8 +215,9 @@
       "provider": "xai",
       "voice_id": "cfccf16b",
       "name": "Mads",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "da-DK"
     },
     {
       "pool": "dan",
@@ -216,8 +226,9 @@
       "provider": "xai",
       "voice_id": "524f4cb1",
       "name": "Lucas",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "da-DK"
     },
     {
       "pool": "dan",
@@ -237,8 +248,9 @@
       "provider": "xai",
       "voice_id": "44c91d64",
       "name": "Sonja",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "de"
     },
     {
       "pool": "deu",
@@ -258,8 +270,9 @@
       "provider": "xai",
       "voice_id": "e1fc5a89",
       "name": "Felix",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "de"
     },
     {
       "pool": "deu",
@@ -301,8 +314,9 @@
       "provider": "xai",
       "voice_id": "bedd6226",
       "name": "Olivia",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "en-GB"
     },
     {
       "pool": "eng",
@@ -365,8 +379,9 @@
       "provider": "xai",
       "voice_id": "f15c6a6a",
       "name": "Henry",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "en-GB"
     },
     {
       "pool": "eng",
@@ -584,8 +599,9 @@
       "provider": "xai",
       "voice_id": "a00ce99a",
       "name": "Priya",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "hi"
     },
     {
       "pool": "hin",
@@ -594,8 +610,9 @@
       "provider": "xai",
       "voice_id": "0735ff93",
       "name": "Diya",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "hi"
     },
     {
       "pool": "hin",
@@ -615,8 +632,9 @@
       "provider": "xai",
       "voice_id": "bcf738e4",
       "name": "Vihaan",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "hi"
     },
     {
       "pool": "hin",
@@ -702,8 +720,9 @@
       "provider": "xai",
       "voice_id": "43423dee",
       "name": "Giulia",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "it"
     },
     {
       "pool": "ita",
@@ -723,8 +742,9 @@
       "provider": "xai",
       "voice_id": "57700f39",
       "name": "Leon",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "it"
     },
     {
       "pool": "ita",
@@ -733,8 +753,9 @@
       "provider": "xai",
       "voice_id": "1ebfec36",
       "name": "Marco",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "it"
     },
     {
       "pool": "ita",
@@ -787,8 +808,9 @@
       "provider": "xai",
       "voice_id": "d74461c6",
       "name": "Hyun-woo",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "ko"
     },
     {
       "pool": "kor",
@@ -874,8 +896,9 @@
       "provider": "xai",
       "voice_id": "cdb1cec8",
       "name": "Lieke",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "nl-NL"
     },
     {
       "pool": "nld",
@@ -884,8 +907,9 @@
       "provider": "xai",
       "voice_id": "6fe32f8a",
       "name": "Sophie",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "nl-NL"
     },
     {
       "pool": "nld",
@@ -905,8 +929,9 @@
       "provider": "xai",
       "voice_id": "18245f0d",
       "name": "Bas",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "nl-NL"
     },
     {
       "pool": "nld",
@@ -915,8 +940,9 @@
       "provider": "xai",
       "voice_id": "ef4ce33e",
       "name": "Daan",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "nl-NL"
     },
     {
       "pool": "nld",
@@ -980,8 +1006,9 @@
       "provider": "xai",
       "voice_id": "ce19f825",
       "name": "Magdalena",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "pl-PL"
     },
     {
       "pool": "pol",
@@ -990,8 +1017,9 @@
       "provider": "xai",
       "voice_id": "4984accb",
       "name": "Zofia",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "pl-PL"
     },
     {
       "pool": "pol",
@@ -1011,8 +1039,9 @@
       "provider": "xai",
       "voice_id": "70071d42",
       "name": "Tomasz",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "pl-PL"
     },
     {
       "pool": "pol",
@@ -1021,8 +1050,9 @@
       "provider": "xai",
       "voice_id": "2902bcfd",
       "name": "Piotr",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "pl-PL"
     },
     {
       "pool": "pol",
@@ -1119,8 +1149,9 @@
       "provider": "xai",
       "voice_id": "f2f41225",
       "name": "Maria",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "es"
     },
     {
       "pool": "spa",
@@ -1129,8 +1160,9 @@
       "provider": "xai",
       "voice_id": "46a802e3",
       "name": "Lucia",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "es"
     },
     {
       "pool": "spa",
@@ -1150,8 +1182,9 @@
       "provider": "xai",
       "voice_id": "d2313a0d",
       "name": "Pablo",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "es"
     },
     {
       "pool": "spa",
@@ -1160,8 +1193,9 @@
       "provider": "xai",
       "voice_id": "1a59f327",
       "name": "Carlos",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "es"
     },
     {
       "pool": "swa",
@@ -1192,8 +1226,9 @@
       "provider": "xai",
       "voice_id": "3b312632",
       "name": "Alice",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "sv-SE"
     },
     {
       "pool": "swe",
@@ -1202,8 +1237,9 @@
       "provider": "xai",
       "voice_id": "bab9c92f",
       "name": "Elsa",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "sv-SE"
     },
     {
       "pool": "swe",
@@ -1223,8 +1259,9 @@
       "provider": "xai",
       "voice_id": "4c7f16ff",
       "name": "Oscar",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "sv-SE"
     },
     {
       "pool": "swe",
@@ -1233,8 +1270,9 @@
       "provider": "xai",
       "voice_id": "93bea908",
       "name": "William",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "sv-SE"
     },
     {
       "pool": "swe",
@@ -1276,8 +1314,9 @@
       "provider": "xai",
       "voice_id": "a5341c30",
       "name": "Nicha",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "th-TH"
     },
     {
       "pool": "tha",
@@ -1286,8 +1325,9 @@
       "provider": "xai",
       "voice_id": "330f1e6d",
       "name": "Pim",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "th-TH"
     },
     {
       "pool": "tha",
@@ -1307,8 +1347,9 @@
       "provider": "xai",
       "voice_id": "4b7af2d7",
       "name": "Somchai",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "th-TH"
     },
     {
       "pool": "tha",
@@ -1317,8 +1358,9 @@
       "provider": "xai",
       "voice_id": "0463086e",
       "name": "Thanawat",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "th-TH"
     },
     {
       "pool": "tha",
@@ -1349,8 +1391,9 @@
       "provider": "xai",
       "voice_id": "f331ee80",
       "name": "Ahmet",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "tr"
     },
     {
       "pool": "tur",
@@ -1414,8 +1457,9 @@
       "provider": "xai",
       "voice_id": "e521cc67",
       "name": "Hui",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "zh"
     },
     {
       "pool": "zho",
@@ -1424,8 +1468,9 @@
       "provider": "xai",
       "voice_id": "09b02491",
       "name": "Mei",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "f",
+      "locale": "zh"
     },
     {
       "pool": "zho",
@@ -1445,8 +1490,9 @@
       "provider": "xai",
       "voice_id": "9ab26871",
       "name": "Wei",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "zh"
     },
     {
       "pool": "zho",
@@ -1455,8 +1501,9 @@
       "provider": "xai",
       "voice_id": "6997b0ec",
       "name": "Yang",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "locale": "zh"
     },
     {
       "pool": "zho",

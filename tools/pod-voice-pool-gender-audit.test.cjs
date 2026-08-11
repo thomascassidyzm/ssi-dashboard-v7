@@ -8,8 +8,10 @@
  *
  * What has to hold:
  *   (a) a mismatch is detected from the CATALOGUE, never from the display name;
- *   (b) xai entries are 'unverifiable', never 'mismatch' — no catalogue serves
- *       our opaque hex ids, and guessing is how the miscast happened;
+ *   (b) xai entries are checked against the gender xAI itself states for the id
+ *       (`voices.gender`, filled by tools/xai-voice-metadata-sync.cjs from
+ *       GET /v1/tts/voices/{id}), and are 'unverifiable' — never guessed —
+ *       only when the provider has stated no gender at all;
  *   (c) the fix moves voices between lists and neither adds nor drops one;
  *   (d) anything worse than a one-per-list transposition REFUSES, so a real
  *       scramble reaches a human instead of being guessed at.
@@ -43,6 +45,13 @@ const CATALOGUE = new Map([
   ['fr-FR-HenriNeural', { Gender: 'Male', Locale: 'fr-FR' }],
 ])
 
+// `voices` rows as tools/xai-voice-metadata-sync.cjs writes them: only ids xAI
+// stated a gender for appear at all. 'gfzdpspr5fdp' (Tom) is deliberately
+// absent — xAI 404s on it, so it has no provider-stated gender.
+const XAI = new Map([
+  ['f331ee80', { voice_id: 'f331ee80', gender: 'm', tts_locale: null, languages: ['tr'] }],
+])
+
 describe('audit', () => {
   const rows = audit(POOLS, CATALOGUE)
   const at = (pool, slot, index) => rows.find(r => r.pool === pool && r.slot === slot && r.index === index)
@@ -58,8 +67,25 @@ describe('audit', () => {
     expect(at('tur', 'f', 0)).toMatchObject({ name: 'Ahmet', catalogue_gender: 'm', verdict: 'mismatch' })
   })
 
-  it('calls xai entries unverifiable rather than guessing them', () => {
+  it('calls an xai entry unverifiable when no provider gender is on record', () => {
     expect(at('tur', 'm', 0)).toMatchObject({ provider: 'xai', verdict: 'unverifiable', catalogue_gender: null })
+  })
+
+  it('checks an xai entry against the gender xAI states for the id', () => {
+    // f331ee80 is xAI's Ahmet: GET /v1/tts/voices/f331ee80 → gender "male".
+    // Sitting in the male list, that is 'ok'; the same row in the female list
+    // is a mismatch, exactly as an Azure row would be.
+    const rows = audit(POOLS, CATALOGUE, XAI)
+    const row = rows.find(r => r.voice_id === 'f331ee80')
+    expect(row).toMatchObject({ verdict: 'ok', catalogue_gender: 'm', locale: 'tr' })
+
+    const swapped = { p: { f: [POOLS.tur.m[0]], m: [{ provider: 'azure', voice_id: 'tr-TR-AhmetNeural', name: 'Ahmet' }] } }
+    expect(audit(swapped, CATALOGUE, XAI)[0]).toMatchObject({ verdict: 'mismatch', catalogue_gender: 'm' })
+  })
+
+  it('never guesses an xai voice the provider has no gender for', () => {
+    const pools = { p: { f: [{ provider: 'xai', voice_id: 'gfzdpspr5fdp', name: 'Tom' }], m: [] } }
+    expect(audit(pools, CATALOGUE, XAI)[0]).toMatchObject({ verdict: 'unverifiable', catalogue_gender: null })
   })
 
   it('passes a pool whose labels match the catalogue', () => {

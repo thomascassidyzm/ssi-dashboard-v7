@@ -17,12 +17,16 @@
  *
  *     pool says slot 'f' → catalogue says Female?  else mismatch.
  *
- * ⚠️ xAI ENTRIES ARE NOT CHECKABLE. xAI's live /v1/tts/voices returns 26 named
- * multilingual voices (altair, ara, …), each with a gender; the 48 xAI entries
- * in our pools are opaque hex ids (`f331ee80`) that appear in NO catalogue xAI
- * serves and carry no gender anywhere in this repo or the `voices` table. They
- * are reported as UNVERIFIABLE and never touched. Same finding as
- * tools/pod-recast-target-pair.cjs recorded for Maria/Pablo.
+ * xAI ENTRIES ARE CHECKABLE TOO (corrected 2026-08-11). This file used to say
+ * they were not: xAI's /v1/tts/voices LIST is keyed by human names (altair,
+ * ara, …) and our pool ids are opaque hex (`f331ee80`), so comparing the two
+ * found nothing. That comparison was by name and proved nothing. xAI serves
+ * these ids one endpoint deeper — GET /v1/tts/voices/{voice_id} returns
+ * {voice_id, name, language, gender, age} — and 47 of the 48 pool entries
+ * answer. `tools/xai-voice-metadata-sync.cjs` reads that endpoint (a GET; no
+ * audio, no spend) and lands the answer in `voices.gender`, which is what this
+ * audit now checks xAI entries against. An xAI voice with `voices.gender` NULL
+ * is still UNVERIFIABLE — genuinely unknown, never guessed.
  *
  *   node tools/pod-voice-pool-gender-audit.cjs                  # audit only
  *   node tools/pod-voice-pool-gender-audit.cjs --fix=tur        # dry-run a fix
@@ -75,15 +79,42 @@ async function azureCatalogue() {
 }
 
 /**
+ * Every xAI voice whose gender the provider has actually stated, read from
+ * `voices` — the column tools/xai-voice-metadata-sync.cjs fills from
+ * GET /v1/tts/voices/{id}. A NULL gender is simply absent from the map, so an
+ * unknown voice stays unverifiable rather than becoming a guess.
+ */
+async function xaiCatalogue() {
+  const { data, error } = await db()
+    .from('voices').select('voice_id,gender,tts_locale,languages')
+    .eq('tts_engine', 'xai').not('gender', 'is', null)
+  if (error) throw new Error(`load xai voices: ${error.message}`)
+  return new Map(data.map(v => [v.voice_id, v]))
+}
+
+/**
  * One row per pool entry: where it sits, what the catalogue says it is.
  * verdict ∈ 'ok' | 'mismatch' | 'unverifiable' | 'absent'
+ *
+ * `xai` is optional: without it xAI entries are 'unverifiable' (the pre-2026-08-11
+ * behaviour), with it they are checked exactly like Azure's.
  */
-function audit(pools, catalogue) {
+function audit(pools, catalogue, xai = null) {
   const rows = []
   for (const [pool, genders] of Object.entries(pools)) {
     for (const slot of ['f', 'm']) {
       ;(genders[slot] || []).forEach((v, index) => {
         const base = { pool, slot, index, provider: v.provider, voice_id: v.voice_id, name: v.name }
+        if (v.provider === 'xai' && xai) {
+          const x = xai.get(v.voice_id)
+          if (!x) return rows.push({ ...base, verdict: 'unverifiable', catalogue_gender: null })
+          return rows.push({
+            ...base,
+            verdict: x.gender === slot ? 'ok' : 'mismatch',
+            catalogue_gender: x.gender,
+            locale: x.tts_locale || (x.languages || [])[0] || null,
+          })
+        }
         if (v.provider !== 'azure') return rows.push({ ...base, verdict: 'unverifiable', catalogue_gender: null })
         const hit = catalogue.get(v.voice_id)
         if (!hit) return rows.push({ ...base, verdict: 'absent', catalogue_gender: null })
@@ -127,22 +158,24 @@ function label(v) {
 async function run() {
   const args = parseArgs(process.argv)
   const catalogue = await azureCatalogue()
+  const xai = await xaiCatalogue()
   const { data: row, error } = await db()
     .from('app_config').select('value').eq('key', 'pod_voice_pools').single()
   if (error) throw new Error(`load pod_voice_pools: ${error.message}`)
   const before = row.value || {}
 
-  const rows = audit(before, catalogue)
+  const rows = audit(before, catalogue, xai)
   const mismatches = rows.filter(r => r.verdict === 'mismatch')
   const absent = rows.filter(r => r.verdict === 'absent')
   const unverifiable = rows.filter(r => r.verdict === 'unverifiable')
   const counts = { pools: Object.keys(before).length, entries: rows.length, ok: rows.filter(r => r.verdict === 'ok').length, mismatch: mismatches.length, absent: absent.length, unverifiable: unverifiable.length }
 
-  console.log(`${counts.pools} pools, ${counts.entries} entries: ${counts.ok} azure-verified ok, ${counts.mismatch} mismatched, ${counts.absent} not in azure's catalogue, ${counts.unverifiable} xai (no catalogue to check against)\n`)
+  console.log(`${counts.pools} pools, ${counts.entries} entries: ${counts.ok} provider-verified ok, ${counts.mismatch} mismatched, ${counts.absent} not in the provider's catalogue, ${counts.unverifiable} with no provider-stated gender\n`)
   for (const m of mismatches) {
-    console.log(`MISMATCH ${m.pool}.${m.slot}[${m.index}]  ${m.name} (azure:${m.voice_id})  — azure says ${m.catalogue_gender === 'f' ? 'Female' : 'Male'}, pool says ${m.slot === 'f' ? 'female' : 'male'}`)
+    console.log(`MISMATCH ${m.pool}.${m.slot}[${m.index}]  ${m.name} (${m.provider}:${m.voice_id})  — ${m.provider} says ${m.catalogue_gender === 'f' ? 'Female' : 'Male'}, pool says ${m.slot === 'f' ? 'female' : 'male'}`)
   }
-  for (const a of absent) console.log(`ABSENT   ${a.pool}.${a.slot}[${a.index}]  azure:${a.voice_id} is not in the catalogue`)
+  for (const a of absent) console.log(`ABSENT   ${a.pool}.${a.slot}[${a.index}]  ${a.provider}:${a.voice_id} is not in the catalogue`)
+  for (const u of unverifiable) console.log(`UNVERIFIABLE ${u.pool}.${u.slot}[${u.index}]  ${u.name} (${u.provider}:${u.voice_id}) — no provider-stated gender on record`)
   if (!mismatches.length) console.log('no gender mismatches.')
 
   let after = before
