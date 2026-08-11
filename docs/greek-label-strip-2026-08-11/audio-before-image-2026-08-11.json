@@ -1,0 +1,1516 @@
+{
+ "captured_at": "2026-08-11T14:18:06.908Z",
+ "note": "Pre-accept snapshot of the 16 course_audio rows, their lego links and their lego_introductions rows. Restore s3_key/duration_ms/file_size_bytes/audio_revision/word_boundaries/veracity_* from course_audio to undo a swap. Superseded S3 objects are NOT deleted and stay fetchable at the s3_key recorded here.",
+ "course_audio": [
+  {
+   "id": "014905c1-c6cc-4b71-9f93-248f7b333948",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'I have done', is:",
+   "text_normalized": "the greek for: 'i have done', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "azure_en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/EBEE4FB5-B1EC-477E-BD71-9EB97557B3FC.mp3",
+   "duration_ms": 4320,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0245L04",
+   "text_stripped": "the greek for 'i have done' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 88
+    },
+    {
+     "text": "Greek",
+     "offset": 188,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 488,
+     "duration": 363
+    },
+    {
+     "text": ":",
+     "offset": 950,
+     "duration": 163
+    },
+    {
+     "text": "'I",
+     "offset": 1113,
+     "duration": 75
+    },
+    {
+     "text": "have",
+     "offset": 1200,
+     "duration": 250
+    },
+    {
+     "text": "done",
+     "offset": 1463,
+     "duration": 363
+    },
+    {
+     "text": "(",
+     "offset": 1925,
+     "duration": 100
+    },
+    {
+     "text": "1sg",
+     "offset": 2025,
+     "duration": 575
+    },
+    {
+     "text": "perfect",
+     "offset": 2613,
+     "duration": 650
+    },
+    {
+     "text": ")',",
+     "offset": 3363,
+     "duration": 125
+    },
+    {
+     "text": "is",
+     "offset": 3488,
+     "duration": 400
+    },
+    {
+     "text": ":.",
+     "offset": 3900,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "01be2dde-63ae-46c0-97db-70b0e9a456ba",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'that man', is:",
+   "text_normalized": "the greek for: 'that man', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "azure_en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/52821CC7-685D-41F6-B69B-C1DCE43AEC70.mp3",
+   "duration_ms": 4680,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0227L01",
+   "text_stripped": "the greek for 'that man' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 88
+    },
+    {
+     "text": "Greek",
+     "offset": 188,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 488,
+     "duration": 375
+    },
+    {
+     "text": ":",
+     "offset": 963,
+     "duration": 175
+    },
+    {
+     "text": "'that",
+     "offset": 1138,
+     "duration": 363
+    },
+    {
+     "text": "(",
+     "offset": 1600,
+     "duration": 138
+    },
+    {
+     "text": "masculine",
+     "offset": 1738,
+     "duration": 575
+    },
+    {
+     "text": "demonstrative",
+     "offset": 2325,
+     "duration": 688
+    },
+    {
+     "text": "pronoun",
+     "offset": 3025,
+     "duration": 588
+    },
+    {
+     "text": ")',",
+     "offset": 3713,
+     "duration": 113
+    },
+    {
+     "text": "is",
+     "offset": 3825,
+     "duration": 425
+    },
+    {
+     "text": ":.",
+     "offset": 4263,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "0a4cd6a4-fc23-4cc9-90de-124d9df7295b",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'to help me', is:",
+   "text_normalized": "the greek for: 'to help me', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "azure_en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/364D127C-8708-4537-A3DD-19DB13C88474.mp3",
+   "duration_ms": 5208,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0203L04",
+   "text_stripped": "the greek for 'to help me' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 100
+    },
+    {
+     "text": "Greek",
+     "offset": 200,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 500,
+     "duration": 375
+    },
+    {
+     "text": ":",
+     "offset": 975,
+     "duration": 175
+    },
+    {
+     "text": "'to",
+     "offset": 1163,
+     "duration": 100
+    },
+    {
+     "text": "help",
+     "offset": 1275,
+     "duration": 300
+    },
+    {
+     "text": "me",
+     "offset": 1588,
+     "duration": 250
+    },
+    {
+     "text": "(",
+     "offset": 1938,
+     "duration": 138
+    },
+    {
+     "text": "subjunctive",
+     "offset": 2075,
+     "duration": 588
+    },
+    {
+     "text": "+",
+     "offset": 2675,
+     "duration": 325
+    },
+    {
+     "text": "1sg",
+     "offset": 3013,
+     "duration": 625
+    },
+    {
+     "text": "clitic",
+     "offset": 3650,
+     "duration": 525
+    },
+    {
+     "text": ")',",
+     "offset": 4275,
+     "duration": 125
+    },
+    {
+     "text": "is",
+     "offset": 4400,
+     "duration": 388
+    },
+    {
+     "text": ":.",
+     "offset": 4800,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "0def24aa-a7f8-4124-9d7f-c01015ca8457",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'ready', is:",
+   "text_normalized": "the greek for: 'ready', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "azure_en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/0FDECA13-FB07-4C21-82C6-3CD143077CD8.mp3",
+   "duration_ms": 4680,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0252L03",
+   "text_stripped": "the greek for 'ready' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 100
+    },
+    {
+     "text": "Greek",
+     "offset": 200,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 500,
+     "duration": 388
+    },
+    {
+     "text": ":",
+     "offset": 988,
+     "duration": 213
+    },
+    {
+     "text": "'ready",
+     "offset": 1200,
+     "duration": 375
+    },
+    {
+     "text": "(",
+     "offset": 1675,
+     "duration": 188
+    },
+    {
+     "text": "masculine",
+     "offset": 1863,
+     "duration": 550
+    },
+    {
+     "text": "nominative",
+     "offset": 2425,
+     "duration": 488
+    },
+    {
+     "text": "adjective",
+     "offset": 2925,
+     "duration": 650
+    },
+    {
+     "text": ")',",
+     "offset": 3675,
+     "duration": 150
+    },
+    {
+     "text": "is",
+     "offset": 3838,
+     "duration": 388
+    },
+    {
+     "text": ":.",
+     "offset": 4238,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "124d77c0-cfb1-4d15-b1b8-9ea8679fd8a3",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'thank you', is:",
+   "text_normalized": "the greek for: 'thank you', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "azure_en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/131928D4-E7C1-4CA9-9F2E-593A0D053E6E.mp3",
+   "duration_ms": 4056,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0173L02",
+   "text_stripped": "the greek for 'thank you' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 88
+    },
+    {
+     "text": "Greek",
+     "offset": 188,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 488,
+     "duration": 363
+    },
+    {
+     "text": ":",
+     "offset": 950,
+     "duration": 175
+    },
+    {
+     "text": "'thank",
+     "offset": 1125,
+     "duration": 263
+    },
+    {
+     "text": "you",
+     "offset": 1400,
+     "duration": 263
+    },
+    {
+     "text": "(",
+     "offset": 1763,
+     "duration": 125
+    },
+    {
+     "text": "1sg",
+     "offset": 1888,
+     "duration": 563
+    },
+    {
+     "text": "present",
+     "offset": 2463,
+     "duration": 525
+    },
+    {
+     "text": ")',",
+     "offset": 3088,
+     "duration": 150
+    },
+    {
+     "text": "is",
+     "offset": 3238,
+     "duration": 400
+    },
+    {
+     "text": ":.",
+     "offset": 3650,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "13c806b8-a411-42b5-9ae0-e6f7dcecfb40",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'before', is:",
+   "text_normalized": "the greek for: 'before', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "azure_en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/41A865EE-06B0-4E81-BF44-8F6D07D0ED6E.mp3",
+   "duration_ms": 3744,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0237L03",
+   "text_stripped": "the greek for 'before' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 100
+    },
+    {
+     "text": "Greek",
+     "offset": 200,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 500,
+     "duration": 400
+    },
+    {
+     "text": ":",
+     "offset": 1000,
+     "duration": 138
+    },
+    {
+     "text": "'before",
+     "offset": 1138,
+     "duration": 538
+    },
+    {
+     "text": "(",
+     "offset": 1775,
+     "duration": 113
+    },
+    {
+     "text": "preposition",
+     "offset": 1888,
+     "duration": 763
+    },
+    {
+     "text": "',",
+     "offset": 2750,
+     "duration": 100
+    },
+    {
+     "text": "is",
+     "offset": 2863,
+     "duration": 438
+    },
+    {
+     "text": ":.",
+     "offset": 3313,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "1421d306-90d2-4c52-bda0-24b781077670",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'I can', is:",
+   "text_normalized": "the greek for: 'i can', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "azure_en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/F3CA193E-9D12-4B78-9124-57EA05097D74.mp3",
+   "duration_ms": 4032,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0276L01",
+   "text_stripped": "the greek for 'i can' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 88
+    },
+    {
+     "text": "Greek",
+     "offset": 188,
+     "duration": 313
+    },
+    {
+     "text": "for",
+     "offset": 513,
+     "duration": 400
+    },
+    {
+     "text": ":",
+     "offset": 1013,
+     "duration": 125
+    },
+    {
+     "text": "'I",
+     "offset": 1138,
+     "duration": 100
+    },
+    {
+     "text": "can",
+     "offset": 1250,
+     "duration": 325
+    },
+    {
+     "text": "(",
+     "offset": 1675,
+     "duration": 125
+    },
+    {
+     "text": "1sg",
+     "offset": 1800,
+     "duration": 588
+    },
+    {
+     "text": "present",
+     "offset": 2400,
+     "duration": 538
+    },
+    {
+     "text": ")',",
+     "offset": 3038,
+     "duration": 138
+    },
+    {
+     "text": "is",
+     "offset": 3175,
+     "duration": 413
+    },
+    {
+     "text": ":.",
+     "offset": 3600,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "1550010d-1a76-473d-84ea-6d058b2ac8a0",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'for him to tell me', is:",
+   "text_normalized": "the greek for: 'for him to tell me', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "azure_en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/9EB1518E-ADE2-4CE6-B310-0603C61B100A.mp3",
+   "duration_ms": 5760,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0222L02",
+   "text_stripped": "the greek for 'for him to tell me' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 100
+    },
+    {
+     "text": "Greek",
+     "offset": 200,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 500,
+     "duration": 375
+    },
+    {
+     "text": ":",
+     "offset": 975,
+     "duration": 175
+    },
+    {
+     "text": "'to",
+     "offset": 1163,
+     "duration": 100
+    },
+    {
+     "text": "tell",
+     "offset": 1275,
+     "duration": 263
+    },
+    {
+     "text": "me",
+     "offset": 1550,
+     "duration": 250
+    },
+    {
+     "text": "(",
+     "offset": 1900,
+     "duration": 150
+    },
+    {
+     "text": "3sg",
+     "offset": 2050,
+     "duration": 813
+    },
+    {
+     "text": "aorist",
+     "offset": 2875,
+     "duration": 438
+    },
+    {
+     "text": "subjunctive",
+     "offset": 3325,
+     "duration": 575
+    },
+    {
+     "text": "+",
+     "offset": 3913,
+     "duration": 263
+    },
+    {
+     "text": "clitic",
+     "offset": 4188,
+     "duration": 513
+    },
+    {
+     "text": ")',",
+     "offset": 4800,
+     "duration": 138
+    },
+    {
+     "text": "is",
+     "offset": 4938,
+     "duration": 388
+    },
+    {
+     "text": ":.",
+     "offset": 5338,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "422a30ff-bf9f-4579-96a9-9cd3c2c8556b",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'it was', is:",
+   "text_normalized": "the greek for: 'it was', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/92D7EBEE-9676-4277-A083-53FAB595BEDA.mp3",
+   "duration_ms": 4320,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0219L01",
+   "text_stripped": "the greek for 'it was' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 88
+    },
+    {
+     "text": "Greek",
+     "offset": 188,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 488,
+     "duration": 375
+    },
+    {
+     "text": ":",
+     "offset": 963,
+     "duration": 163
+    },
+    {
+     "text": "'it",
+     "offset": 1125,
+     "duration": 125
+    },
+    {
+     "text": "was",
+     "offset": 1263,
+     "duration": 300
+    },
+    {
+     "text": "(",
+     "offset": 1663,
+     "duration": 138
+    },
+    {
+     "text": "3sg",
+     "offset": 1800,
+     "duration": 688
+    },
+    {
+     "text": "imperfect",
+     "offset": 2500,
+     "duration": 750
+    },
+    {
+     "text": ")',",
+     "offset": 3350,
+     "duration": 125
+    },
+    {
+     "text": "is",
+     "offset": 3475,
+     "duration": 400
+    },
+    {
+     "text": ":.",
+     "offset": 3888,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "77306e62-ab7f-4c4e-9e55-6ba3eec4d981",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'I thought', is:",
+   "text_normalized": "the greek for: 'i thought', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/CC49FBBB-6FEE-47F1-AF74-75EA0F83A338.mp3",
+   "duration_ms": 4344,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0247L01",
+   "text_stripped": "the greek for 'i thought' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 88
+    },
+    {
+     "text": "Greek",
+     "offset": 188,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 488,
+     "duration": 375
+    },
+    {
+     "text": ":",
+     "offset": 963,
+     "duration": 138
+    },
+    {
+     "text": "'I",
+     "offset": 1100,
+     "duration": 113
+    },
+    {
+     "text": "thought",
+     "offset": 1225,
+     "duration": 463
+    },
+    {
+     "text": "(",
+     "offset": 1788,
+     "duration": 138
+    },
+    {
+     "text": "1sg",
+     "offset": 1925,
+     "duration": 625
+    },
+    {
+     "text": "imperfect",
+     "offset": 2563,
+     "duration": 725
+    },
+    {
+     "text": ")',",
+     "offset": 3388,
+     "duration": 125
+    },
+    {
+     "text": "is",
+     "offset": 3513,
+     "duration": 400
+    },
+    {
+     "text": ":.",
+     "offset": 3925,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "78362281-8fdb-43a8-869b-43b312d99784",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'for you to make', is:",
+   "text_normalized": "the greek for: 'for you to make', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/D5E60CC3-6A57-40DE-B4E1-5931BB36701D.mp3",
+   "duration_ms": 3888,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0047L05",
+   "text_stripped": "the greek for 'for you to make' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 63,
+     "duration": 100
+    },
+    {
+     "text": "Greek",
+     "offset": 175,
+     "duration": 300
+    },
+    {
+     "text": "for",
+     "offset": 488,
+     "duration": 363
+    },
+    {
+     "text": ":",
+     "offset": 950,
+     "duration": 150
+    },
+    {
+     "text": "'to",
+     "offset": 1113,
+     "duration": 113
+    },
+    {
+     "text": "make",
+     "offset": 1238,
+     "duration": 375
+    },
+    {
+     "text": "(",
+     "offset": 1713,
+     "duration": 113
+    },
+    {
+     "text": "you",
+     "offset": 1825,
+     "duration": 263
+    },
+    {
+     "text": ",",
+     "offset": 2188,
+     "duration": 100
+    },
+    {
+     "text": "present",
+     "offset": 2288,
+     "duration": 525
+    },
+    {
+     "text": ")',",
+     "offset": 2913,
+     "duration": 125
+    },
+    {
+     "text": "is",
+     "offset": 3038,
+     "duration": 400
+    },
+    {
+     "text": ":.",
+     "offset": 3450,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "7d34cf46-e8a0-4a97-a31a-b25f250d6e99",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'well', is:",
+   "text_normalized": "the greek for: 'well', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/17F81ADB-302F-49CC-9FF1-ABAE462336E2.mp3",
+   "duration_ms": 3240,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0129L04",
+   "text_stripped": "the greek for 'well' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 63,
+     "duration": 113
+    },
+    {
+     "text": "Greek",
+     "offset": 188,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 488,
+     "duration": 375
+    },
+    {
+     "text": ":",
+     "offset": 963,
+     "duration": 138
+    },
+    {
+     "text": "'well",
+     "offset": 1100,
+     "duration": 350
+    },
+    {
+     "text": "(",
+     "offset": 1550,
+     "duration": 113
+    },
+    {
+     "text": "adverb",
+     "offset": 1663,
+     "duration": 513
+    },
+    {
+     "text": ")',",
+     "offset": 2275,
+     "duration": 100
+    },
+    {
+     "text": "is",
+     "offset": 2375,
+     "duration": 413
+    },
+    {
+     "text": ":.",
+     "offset": 2800,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "848e39ea-02f6-49a1-8f3c-7b422f3afadb",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'I saw', is:",
+   "text_normalized": "the greek for: 'i saw', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/C311E550-ED15-446B-BBEE-F393A7DB203D.mp3",
+   "duration_ms": 4176,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0216L01",
+   "text_stripped": "the greek for 'i saw' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 88
+    },
+    {
+     "text": "Greek",
+     "offset": 188,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 488,
+     "duration": 388
+    },
+    {
+     "text": ":",
+     "offset": 975,
+     "duration": 150
+    },
+    {
+     "text": "'I",
+     "offset": 1125,
+     "duration": 113
+    },
+    {
+     "text": "saw",
+     "offset": 1250,
+     "duration": 425
+    },
+    {
+     "text": "(",
+     "offset": 1775,
+     "duration": 125
+    },
+    {
+     "text": "1sg",
+     "offset": 1900,
+     "duration": 688
+    },
+    {
+     "text": "aorist",
+     "offset": 2600,
+     "duration": 538
+    },
+    {
+     "text": ")',",
+     "offset": 3238,
+     "duration": 113
+    },
+    {
+     "text": "is",
+     "offset": 3350,
+     "duration": 400
+    },
+    {
+     "text": ":.",
+     "offset": 3763,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "9881f178-db1e-46bd-80b5-9c265a301deb",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'to do', is:",
+   "text_normalized": "the greek for: 'to do', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/1B226CF7-629A-4344-AA1F-D17CAD7A32AF.mp3",
+   "duration_ms": 4752,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0280L01",
+   "text_stripped": "the greek for 'to do' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 88
+    },
+    {
+     "text": "Greek",
+     "offset": 188,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 488,
+     "duration": 375
+    },
+    {
+     "text": ":",
+     "offset": 963,
+     "duration": 163
+    },
+    {
+     "text": "'to",
+     "offset": 1138,
+     "duration": 125
+    },
+    {
+     "text": "do",
+     "offset": 1275,
+     "duration": 363
+    },
+    {
+     "text": "(",
+     "offset": 1738,
+     "duration": 125
+    },
+    {
+     "text": "1sg",
+     "offset": 1863,
+     "duration": 750
+    },
+    {
+     "text": "aorist",
+     "offset": 2625,
+     "duration": 375
+    },
+    {
+     "text": "subjunctive",
+     "offset": 3013,
+     "duration": 688
+    },
+    {
+     "text": ")',",
+     "offset": 3800,
+     "duration": 125
+    },
+    {
+     "text": "is",
+     "offset": 3925,
+     "duration": 375
+    },
+    {
+     "text": ":.",
+     "offset": 4313,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "e0d1a508-8326-4f1b-8624-64e9ade3a668",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'the answer', is:",
+   "text_normalized": "the greek for: 'the answer', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/46995227-A6D9-4C38-A34E-6954E986A299.mp3",
+   "duration_ms": 4920,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0232L06",
+   "text_stripped": "the greek for 'the answer' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 100
+    },
+    {
+     "text": "Greek",
+     "offset": 200,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 500,
+     "duration": 375
+    },
+    {
+     "text": ":",
+     "offset": 975,
+     "duration": 175
+    },
+    {
+     "text": "'the",
+     "offset": 1163,
+     "duration": 138
+    },
+    {
+     "text": "answer",
+     "offset": 1313,
+     "duration": 538
+    },
+    {
+     "text": "(",
+     "offset": 1950,
+     "duration": 150
+    },
+    {
+     "text": "feminine",
+     "offset": 2100,
+     "duration": 388
+    },
+    {
+     "text": "accusative",
+     "offset": 2500,
+     "duration": 625
+    },
+    {
+     "text": "with",
+     "offset": 3138,
+     "duration": 150
+    },
+    {
+     "text": "article",
+     "offset": 3300,
+     "duration": 575
+    },
+    {
+     "text": ")',",
+     "offset": 3975,
+     "duration": 113
+    },
+    {
+     "text": "is",
+     "offset": 4088,
+     "duration": 400
+    },
+    {
+     "text": ":.",
+     "offset": 4500,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  },
+  {
+   "id": "e7452495-9d96-4bf4-98a2-cdecc65ae038",
+   "course_code": "ell_for_eng",
+   "text": "The Greek for: 'idea', is:",
+   "text_normalized": "the greek for: 'idea', is:",
+   "language": "eng",
+   "role": "presentation",
+   "voice_id": "en-GB-SoniaNeural",
+   "origin": "tts",
+   "s3_key": "mastered/EC173804-EF4B-4563-8B83-85ED837FD0CF.mp3",
+   "duration_ms": 3840,
+   "file_size_bytes": null,
+   "created_at": "2026-03-16T17:31:50.947995+00:00",
+   "lego_id": "S0123L03",
+   "text_stripped": "the greek for 'idea' is",
+   "word_boundaries": [
+    {
+     "text": "The",
+     "offset": 88,
+     "duration": 88
+    },
+    {
+     "text": "Greek",
+     "offset": 188,
+     "duration": 288
+    },
+    {
+     "text": "for",
+     "offset": 488,
+     "duration": 400
+    },
+    {
+     "text": ":",
+     "offset": 988,
+     "duration": 125
+    },
+    {
+     "text": "'idea",
+     "offset": 1113,
+     "duration": 563
+    },
+    {
+     "text": "(",
+     "offset": 1775,
+     "duration": 138
+    },
+    {
+     "text": "feminine",
+     "offset": 1913,
+     "duration": 450
+    },
+    {
+     "text": "noun",
+     "offset": 2375,
+     "duration": 400
+    },
+    {
+     "text": ")',",
+     "offset": 2875,
+     "duration": 125
+    },
+    {
+     "text": "is",
+     "offset": 3000,
+     "duration": 425
+    },
+    {
+     "text": ":.",
+     "offset": 3438,
+     "duration": 100
+    }
+   ],
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1
+  }
+ ],
+ "course_legos": [
+  {
+   "lego_id": "S0222L02",
+   "presentation_audio_id": "1550010d-1a76-473d-84ea-6d058b2ac8a0",
+   "target1_duration_ms": 1680,
+   "target2_duration_ms": 1824
+  },
+  {
+   "lego_id": "S0173L02",
+   "presentation_audio_id": "cf0656ca-9585-4307-aea2-17365ff69c4e",
+   "target1_duration_ms": 1752,
+   "target2_duration_ms": 1896
+  },
+  {
+   "lego_id": "S0247L01",
+   "presentation_audio_id": "0b29efbf-4a5c-420f-ae3c-c60959b3910f",
+   "target1_duration_ms": 1656,
+   "target2_duration_ms": 1752
+  },
+  {
+   "lego_id": "S0252L03",
+   "presentation_audio_id": "ce2ccf42-60de-4210-89e2-9cd646201e3a",
+   "target1_duration_ms": 1656,
+   "target2_duration_ms": 1680
+  },
+  {
+   "lego_id": "S0203L04",
+   "presentation_audio_id": "0a4cd6a4-fc23-4cc9-90de-124d9df7295b",
+   "target1_duration_ms": 2016,
+   "target2_duration_ms": 2088
+  },
+  {
+   "lego_id": "S0227L01",
+   "presentation_audio_id": "01be2dde-63ae-46c0-97db-70b0e9a456ba",
+   "target1_duration_ms": 2112,
+   "target2_duration_ms": 2088
+  },
+  {
+   "lego_id": "S0245L04",
+   "presentation_audio_id": "cb596ccd-a907-4332-a11f-f7e474c3ad59",
+   "target1_duration_ms": 1752,
+   "target2_duration_ms": 1800
+  },
+  {
+   "lego_id": "S0232L06",
+   "presentation_audio_id": "e0d1a508-8326-4f1b-8624-64e9ade3a668",
+   "target1_duration_ms": 1872,
+   "target2_duration_ms": 1896
+  },
+  {
+   "lego_id": "S0276L01",
+   "presentation_audio_id": "1421d306-90d2-4c52-bda0-24b781077670",
+   "target1_duration_ms": 1512,
+   "target2_duration_ms": 1680
+  },
+  {
+   "lego_id": "S0280L01",
+   "presentation_audio_id": "9881f178-db1e-46bd-80b5-9c265a301deb",
+   "target1_duration_ms": 1680,
+   "target2_duration_ms": 1800
+  },
+  {
+   "lego_id": "S0237L03",
+   "presentation_audio_id": "e48004e9-e05d-4b21-a406-1c11d65839c0",
+   "target1_duration_ms": 1584,
+   "target2_duration_ms": 1584
+  },
+  {
+   "lego_id": "S0129L04",
+   "presentation_audio_id": "127e1266-9a77-4923-b7d4-2396effc3bf9",
+   "target1_duration_ms": 1464,
+   "target2_duration_ms": 1608
+  },
+  {
+   "lego_id": "S0047L05",
+   "presentation_audio_id": "78362281-8fdb-43a8-869b-43b312d99784",
+   "target1_duration_ms": 1728,
+   "target2_duration_ms": 1800
+  },
+  {
+   "lego_id": "S0216L01",
+   "presentation_audio_id": "848e39ea-02f6-49a1-8f3c-7b422f3afadb",
+   "target1_duration_ms": 1464,
+   "target2_duration_ms": 1608
+  },
+  {
+   "lego_id": "S0123L03",
+   "presentation_audio_id": "e7452495-9d96-4bf4-98a2-cdecc65ae038",
+   "target1_duration_ms": 1608,
+   "target2_duration_ms": 1680
+  },
+  {
+   "lego_id": "S0219L01",
+   "presentation_audio_id": "1807c3f9-2a67-4aaa-bf76-5fc9375b676e",
+   "target1_duration_ms": 1512,
+   "target2_duration_ms": 1680
+  }
+ ],
+ "lego_introductions": []
+}
