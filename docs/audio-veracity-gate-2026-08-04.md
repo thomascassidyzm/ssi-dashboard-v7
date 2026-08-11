@@ -275,3 +275,39 @@ None of these has a ruling. Each is a one-line change.
 *Code: `services/audio-veracity.cjs` (+ `.test.cjs`, 38 tests), `tools/audio-veracity-repair.cjs`,
 `services/phases/phase8-audio-v13.cjs`, `tools/repair-silent-clips.cjs`.
 Validation harnesses: `scripts/veracity-validate/` (gitignored workspace).*
+
+---
+
+## Amendment, 2026-08-11 — rule 3 was false-rejecting on punctuation and on short words
+
+Kai, rendering 16 `ell_for_eng` clips, watched one ("The Greek for: 'I saw', is:") be rejected and
+re-rendered **four times** over a final word that was audibly present in every take. Two faults in
+rule 3 had to fire together to do it, and both are language-independent — the Greek clip was the
+first one unlucky enough to hit both.
+
+1. **A quote mark counted as part of a word.** `normalise()` kept the ASCII apostrophe in its
+   allowed character class so that contractions and French elision survive — but it kept it
+   everywhere, including where whisper had wrapped a word in quotes. Script `is` vs decode `'is'`
+   is a Levenshtein distance of 2. The typographic `’` was in the *other* class and became a space,
+   so `don’t` and `don't` were also two edits apart.
+2. **Short words had zero tolerance.** `word.length <= 3 ? 0 : ...` — a six-letter word got an edit
+   of slack for transcription spelling, a two-letter word got none. Backwards: short unstressed
+   words are the ones whisper transcribes worst, as this module's own header records (`er` → `Ja.`,
+   `sie` → `Z.`).
+
+**Fixed:** an apostrophe is part of a word only between two word characters (`don't`, `qu'il`);
+anywhere else it is a quote mark and therefore punctuation, and every apostrophe-shaped character
+folds to one. Tolerance is now 1 edit from two characters up, 2 above six, 0 for a single character.
+The extra edit on a short word cannot be spent on a leftover: a fuzzy candidate is rejected if the
+script already accounts for it elsewhere (`où es tu` decoded `ou es` must not pass on `ou` being one
+edit from `tu`), and on a ≤3-letter word a shorter candidate cannot vouch for it.
+
+**Thresholds are untouched** — CER 0.3 / 0.55, edit floor 6, three-word tail. Every pre-existing
+test in `services/audio-veracity.test.cjs` still passes unchanged; 26 new ones cover Kai's exact
+transcript and both fault classes generically, including the truncation cases that must still fail.
+
+**Exposure at the time of the fix:** 2,562,516 `course_audio` rows, of which 760,807 end in a word of
+three characters or fewer and 523,319 carry a quote character. `course_audio` records only 1,519
+verdicts in total (1,518 `ok`, 1 `ok_apostrophe_blind` — Kai's manual workaround), because a
+rejection never becomes a row; it becomes a re-render. The cost of this bug was therefore paid in
+render spend, and is not recoverable from the database.

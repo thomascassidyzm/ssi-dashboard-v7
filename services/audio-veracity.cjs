@@ -256,6 +256,17 @@ function normalise (s) {
   return String(s == null ? '' : s)
     .toLowerCase()
     .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    // Every apostrophe-shaped character is the SAME character for our purposes.
+    // Whisper emits the typographic ’ where the script has ASCII ' (and vice
+    // versa); without this fold, "don’t" and "don't" are two edits apart and
+    // French elision ("qu’il"/"qu'il") is scored as a defect.
+    .replace(/[‘’‚‛′ʼʹʻ´`]/gu, "'")
+    // An apostrophe is part of a WORD only between two word characters
+    // ("don't", "l'ai", "qu'il"). Anywhere else it is a quote mark — opening,
+    // closing or stray — and quote marks are punctuation, exactly like the
+    // colons and commas stripped on the next line. See lastWordVerdict for the
+    // Greek clip this cost four re-renders.
+    .replace(/(?<![\p{L}\p{N}])'|'(?![\p{L}\p{N}])/gu, ' ')
     .replace(/[^\p{L}\p{N}\s']/gu, ' ')
     .replace(/\s+/g, ' ')
     .trim()
@@ -380,10 +391,8 @@ function verdictFromDecode (decode, expected, iso1, opts = {}) {
 /**
  * Is the script's final word present at the end of the decode?
  *
- * Tolerance scales with word length: a 3-letter word has to match exactly
- * (whisper does not mangle "you" in context, and a loose match on short words
- * would find one anywhere), a longer word gets 1-2 edits of slack for
- * transcription spelling. Only the last three decoded words are searched, so a
+ * Tolerance scales with word length — see lastWordTolerance. Only the last
+ * three decoded words are searched, so a
  * word that appears EARLIER in the clip cannot vouch for a missing ending —
  * which is the whole defect being hunted.
  *
@@ -399,12 +408,59 @@ function lastWordVerdict (e, d) {
   if (ew.length < 2) return { ok: true, word: null }
 
   const word = ew[ew.length - 1]
-  const tolerance = word.length <= 3 ? 0 : word.length <= 6 ? 1 : 2
+  const others = ew.slice(0, -1)
+  const tolerance = lastWordTolerance(word)
   const tail = dw.slice(-3)
   for (const cand of tail) {
-    if (levenshtein(word, cand) <= tolerance) return { ok: true, word }
+    const dist = levenshtein(word, cand)
+    if (dist === 0) return { ok: true, word }          // heard verbatim; done
+    if (dist > tolerance) continue
+
+    // A FUZZY match has to earn it, because tolerance on a short word is a
+    // large share of the word: "tu" and "ou" are one edit apart, and so are
+    // "is" and "i". Two guards, both aimed at the truncation this rule hunts —
+    // when the final word is dropped, what is left in the tail is the words
+    // BEFORE it.
+    //
+    // 1. A candidate the script already accounts for elsewhere is that other
+    //    word, not this one. "où es tu" decoded "ou es" must not pass on
+    //    "ou" being one edit from "tu".
+    if (others.some(o => levenshtein(o, cand) <= dist)) continue
+    // 2. On a short word the spare edit is for a SUBSTITUTION ("is" -> "iz"),
+    //    never a deletion: a candidate shorter than the word cannot vouch for
+    //    it.
+    if (word.length <= 3 && cand.length < word.length) continue
+
+    return { ok: true, word }
   }
   return { ok: false, word }
+}
+
+/**
+ * Edits of slack allowed on the final word, by its length.
+ *
+ * Was `<=3 ? 0 : <=6 ? 1 : 2` — zero tolerance on anything up to three
+ * characters. That was the second half of the Greek false rejection (2026-08-11,
+ * ell_for_eng S0216L01): whisper's rendering of the final word only has to
+ * differ by a single character for a two-letter word to be declared absent,
+ * while a six-letter word gets a whole edit of slack for the same noise. Short
+ * words are the ones whisper transcribes WORST — the module's own header
+ * records "er" -> "Ja." and "sie" -> "Z." — so giving them the least tolerance
+ * is backwards.
+ *
+ * Now: one edit for everything from two characters up, on the same
+ * roughly-one-edit-per-three-characters curve the long words were already on,
+ * and the same rule tools/band-verify-sample.cjs arrived at independently when
+ * it had to triage this gate's false positives. Single-character words keep
+ * tolerance 0 — one edit there matches any other single character in the tail,
+ * which is not a check at all. The length guard in the caller stops the extra
+ * edit from being spent on a deletion.
+ */
+function lastWordTolerance (word) {
+  const n = word.length
+  if (n <= 1) return 0
+  if (n <= 6) return 1
+  return 2
 }
 
 // ---------------------------------------------------------------------------
@@ -729,6 +785,8 @@ module.exports = {
   characterErrorRate,
   isNonSpeechDecode,
   normalise,
+  lastWordVerdict,
+  lastWordTolerance,
   decodeAudio,
   availability,
   isGateEnabled,

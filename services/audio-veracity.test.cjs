@@ -157,6 +157,126 @@ describe('verdictFromDecode — the operating point', () => {
   })
 })
 
+describe('rule 3 — the last word, and the two ways it used to false-reject', () => {
+  // Kai, generating 16 ell_for_eng clips on 2026-08-11, watched one clip get
+  // rejected and re-rendered FOUR times over a word that was audibly there the
+  // whole time. Both faults below had to fire together to do it, and the other
+  // 15 clips in the batch — same "The Greek for: 'X', is:" shape — passed only
+  // because whisper happened not to put quotes round their final word.
+  describe("Kai's Greek clip, ell_for_eng S0216L01 (the regression case)", () => {
+    // Verbatim from docs/greek-label-strip-2026-08-11/propose-s0216-apostrophe-blind.cjs:
+    // three independent takes, all decoding identically.
+    const expected = "The Greek for: 'I saw', is:"
+    const decode = "The Greek 'for', 'I saw', 'is'."
+
+    it('passes — every word of the script is in that decode, including "is"', () => {
+      const v = V.verdictFromDecode(decode, expected, 'en')
+      expect(v.reason).toBe('ok')
+      expect(v.pass).toBe(true)
+    })
+
+    it('was comfortably inside the CER threshold all along — only rule 3 fired', () => {
+      const v = V.verdictFromDecode(decode, expected, 'en')
+      expect(v.cer).toBeLessThan(V.CER_THRESHOLD)
+    })
+
+    it('still fails if the final word is genuinely gone from the decode', () => {
+      // The defect rule 3 exists for: same clip, truncated before "is".
+      const v = V.verdictFromDecode("The Greek 'for', 'I saw'.", expected, 'en')
+      expect(v.pass).toBe(false)
+      expect(v.reason).toBe('last_word_missing')
+    })
+  })
+
+  describe('fault 1 — a quote mark stuck to a word is not part of the word', () => {
+    it('matches a final word whichever quotes whisper wrapped it in', () => {
+      for (const heard of [
+        "i can 'see'", 'i can "see"', 'i can «see»', 'i can ‘see’', 'i can “see”',
+        "i can 'see',", 'i can see.',
+      ]) {
+        expect(V.verdictFromDecode(heard, 'I can see', 'en').pass, heard).toBe(true)
+      }
+    })
+
+    it('matches when the SCRIPT is the side carrying the quotes', () => {
+      expect(V.verdictFromDecode('say hello', "say 'hello'", 'en').pass).toBe(true)
+    })
+
+    it('normalises the typographic apostrophe to the ASCII one', () => {
+      // Whisper emits ’ where a script has ' constantly. Before the fix the
+      // curly form was punctuation (-> a space) and the straight form was a
+      // word character, so "don’t" and "don't" were two edits apart.
+      expect(V.normalise("don’t")).toBe("don't")
+      expect(V.normalise("qu’il")).toBe("qu'il")
+      expect(V.characterErrorRate("I don't know", 'i don’t know')).toBe(0)
+    })
+
+    it('keeps a word-internal apostrophe meaningful — it is not blanket-stripped', () => {
+      // The apostrophe in a contraction or a French elision carries the word.
+      expect(V.normalise("l'ai")).toBe("l'ai")
+      expect(V.normalise("j'aime")).toBe("j'aime")
+      // ...so a real elision defect is still a defect, not laundered into a match.
+      expect(V.normalise("qu'il")).not.toBe(V.normalise('quil'))
+    })
+
+    it('treats an edge apostrophe as the quote mark it is, on either side', () => {
+      expect(V.normalise("'is'")).toBe('is')
+      expect(V.normalise("‘is’")).toBe('is')
+      expect(V.normalise("say 'hello' now")).toBe('say hello now')
+    })
+  })
+
+  describe('fault 2 — short words had zero tolerance, which is backwards', () => {
+    it('gives a two-letter word the same one edit a six-letter word gets', () => {
+      expect(V.lastWordTolerance('is')).toBe(1)
+      expect(V.lastWordTolerance('you')).toBe(1)
+      expect(V.lastWordTolerance('French')).toBe(1)
+      expect(V.lastWordTolerance('understood')).toBe(2)
+    })
+
+    it('survives one character of transcription noise on a short final word', () => {
+      // Whisper mishears short unstressed words constantly — the module header
+      // records "er" -> "Ja." and "sie" -> "Z." — so this is the common case.
+      expect(V.verdictFromDecode('and this iz', 'and this is', 'en').pass).toBe(true)
+      expect(V.verdictFromDecode('give it to mi', 'give it to me', 'en').pass).toBe(true)
+    })
+
+    it('does not let a SHORTER tail word vouch for the missing one', () => {
+      // "is" dropped, leaving "i" — one edit away, but it is the wreckage of
+      // the truncation, not the word. This is what stops the extra tolerance
+      // from turning rule 3 off.
+      const v = V.lastWordVerdict('the greek for i saw is', 'the greek for i saw')
+      expect(v.ok).toBe(false)
+    })
+
+    it('keeps tolerance 0 on a single character, where one edit matches anything', () => {
+      expect(V.lastWordTolerance('a')).toBe(0)
+      expect(V.lastWordVerdict('i want a', 'i want e').ok).toBe(false)
+    })
+
+    it('still catches the truncation class rule 3 was written for', () => {
+      // Tom, 2026-08-07: the final word wholly missing, clip ends in a gap.
+      expect(V.verdictFromDecode('I want to speak', 'I want to speak French', 'en').pass).toBe(false)
+      const v = V.verdictFromDecode('where are', 'where are you', 'en')
+      expect(v.pass).toBe(false)
+      expect(v.reason).toBe('last_word_missing')
+    })
+
+    it('does not let a leftover earlier word stand in for the dropped one', () => {
+      // "où es tu" truncated to "ou es": "ou" is ONE edit from "tu", so the
+      // extra tolerance would have passed a genuinely truncated clip. The
+      // script already accounts for "ou", so it cannot vouch for "tu".
+      const v = V.verdictFromDecode('ou es', 'où es tu', 'fr')
+      expect(v.pass).toBe(false)
+      expect(v.reason).toBe('last_word_missing')
+    })
+
+    it('does not match an unrelated short word sitting in the tail', () => {
+      expect(V.verdictFromDecode('i saw the dog', 'i saw the cat', 'en').pass).toBe(false)
+    })
+  })
+})
+
 describe('the third state — unchecked is never a pass', () => {
   const saved = { ...process.env }
   beforeEach(() => { V._resetAnnouncement() })
