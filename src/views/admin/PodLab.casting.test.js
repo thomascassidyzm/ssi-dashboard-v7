@@ -363,6 +363,133 @@ describe('PodLab casting mode', () => {
     })
   })
 
+  // CANDIDATE CASTS SIDE BY SIDE (Tom, 2026-08-11, having gone looking for the
+  // Azure-vs-xAI Spanish samples on this page and found nothing: "I need it to
+  // be where I can see it - you need to do whatever you need to do to make this
+  // an actual tool that's usable").
+  //
+  // The load-bearing property is that the two casts DO NOT COLLAPSE INTO ONE:
+  // each column's clips are the ones actually rendered on ITS pair, read from
+  // course_audio. A candidate cannot borrow the cast's clips, and the cast
+  // cannot claim the candidate's.
+  describe('candidate casts, side by side', () => {
+    async function addCandidatePair(w) {
+      const [male, female] = w.findAll('.vpick-row select')
+      await male.setValue('xai|gfzdpspr5fdp|en')
+      await female.setValue('xai|bedd6226|en')
+      await w.find('.vp-add').trigger('click')
+      await flushPromises()
+      return w
+    }
+
+    it('shows the pod\'s cast and a defined pair as two columns', async () => {
+      const w = await mountLab()
+      expect(w.findAll('.candidate')).toHaveLength(1) // just the cast
+      await addCandidatePair(w)
+      const cols = w.findAll('.candidate')
+      expect(cols.length).toBe(2)
+      expect(cols[0].classes()).toContain('cast')
+      expect(cols[1].classes()).toContain('defined')
+      // Each column names its own two voices with provider and id.
+      expect(cols[1].text()).toContain('gfzdpspr5fdp')
+      expect(cols[1].text()).toContain('bedd6226')
+      // Adding a candidate writes nothing.
+      expect(global.fetch.mock.calls.some((c) => c[1] && c[1].method === 'POST')).toBe(false)
+    })
+
+    it('is honest that a fresh candidate has no clips, and offers to render some', async () => {
+      const w = await mountLab()
+      await addCandidatePair(w)
+      const cand = w.findAll('.candidate')[1]
+      expect(cand.findAll('.sample-row')).toHaveLength(0)
+      expect(cand.text()).toContain('Nothing on this pod has been rendered on this pair yet')
+      expect(cand.find('.gen-sample').text()).toMatch(/generate a sample/i)
+      // …while the cast column still has its own.
+      expect(w.findAll('.candidate.cast .samples.primary .sample-row').length).toBeGreaterThan(0)
+    })
+
+    it('gives each column only the clips rendered on ITS pair — never the other\'s', async () => {
+      // Half the pod is now rendered on the candidate's male voice: those clips
+      // are off-cast, and they are the candidate's evidence, not the cast's.
+      AUDIO_ROWS = ON_CAST_AUDIO.map((r, i) =>
+        i % 2 === 0 ? { ...r, voice_id: 'gfzdpspr5fdp', created_at: '2026-08-10T00:00:00Z' } : r)
+      const w = await mountLab()
+      await addCandidatePair(w)
+      const [castCol, candCol] = w.findAll('.candidate')
+
+      const castVoices = castCol.findAll('.samples.primary .sample-row .s-voice').map((n) => n.text())
+      const candVoices = candCol.findAll('.sample-row .s-voice').map((n) => n.text())
+      expect(candVoices.length).toBeGreaterThan(0)
+      // The candidate's clips are all on the candidate's own voice…
+      expect(candVoices.every((v) => v.includes('gfzdpspr5fdp'))).toBe(true)
+      // …and none of them are counted as evidence for the cast.
+      expect(castVoices.some((v) => v.includes('gfzdpspr5fdp'))).toBe(false)
+      expect(castCol.text()).toMatch(/clips on this pod\s+were rendered on the casting above/)
+    })
+
+    it('approving a candidate casts the pod on it, then approves that digest', async () => {
+      const w = await mountLab()
+      await addCandidatePair(w)
+      await w.find('.candidate.defined .cand-approve').trigger('click')
+      // The chain is cast-write → re-read → approve, and each hop resolves a
+      // dynamic import, so it spans macrotasks rather than microtasks.
+      for (let i = 0; i < 50; i++) {
+        await flushPromises()
+        await new Promise((r) => setTimeout(r, 0))
+        if (global.fetch.mock.calls.some((c) => String(c[0]) === '/api/pod-voice-approval' && c[1] && c[1].method === 'POST')) break
+      }
+
+      const cast = global.fetch.mock.calls.find(
+        (c) => String(c[0]) === '/api/pod-cast-voices' && c[1] && c[1].method === 'POST',
+      )
+      expect(cast, 'the pair is written as the cast').toBeTruthy()
+      expect(JSON.parse(cast[1].body).target.m).toMatchObject({ voice_id: 'gfzdpspr5fdp' })
+
+      const approval = global.fetch.mock.calls.find(
+        (c) => String(c[0]) === '/api/pod-voice-approval' && c[1] && c[1].method === 'POST',
+      )
+      expect(approval, 'and the approval is recorded in the same action').toBeTruthy()
+      // Against the digest the CAST WRITE returned — not the stale one the page
+      // loaded with, which the gate would refuse with a 409.
+      expect(JSON.parse(approval[1].body)).toMatchObject({
+        decision: 'approve',
+        cast_fingerprint: 'newfingerprint00',
+      })
+      // No audio was generated on the way.
+      expect(global.fetch.mock.calls.some((c) => String(c[0]).includes('generate-audio'))).toBe(false)
+    })
+
+    it('rejecting a candidate writes nothing and leaves the cast alone', async () => {
+      const w = await mountLab()
+      await addCandidatePair(w)
+      await w.find('.candidate.defined .reject').trigger('click')
+      await flushPromises()
+      expect(w.findAll('.candidate')).toHaveLength(1)
+      expect(global.fetch.mock.calls.some((c) => c[1] && c[1].method === 'POST')).toBe(false)
+    })
+
+    it('surfaces the pair actually heard on the pod when the audio names exactly two voices', async () => {
+      // Alternating per SENTENCE, not per row: the rows are target/known pairs,
+      // so `i % 2` would put every target clip on one voice and every known
+      // clip on the other — one target voice, and no pair to infer.
+      AUDIO_ROWS = ON_CAST_AUDIO.map((r, i) => ({
+        ...r,
+        voice_id: Math.floor(i / 2) % 2 === 0 ? 'yis75yfp' : 'ekhwx401',
+        created_at: '2026-06-10T00:00:00Z',
+      }))
+      const w = await mountLab()
+      const heard = w.find('.candidate.heard')
+      expect(heard.exists()).toBe(true)
+      expect(heard.text()).toContain('yis75yfp')
+      expect(heard.text()).toContain('ekhwx401')
+      expect(heard.findAll('.sample-row').length).toBeGreaterThan(0)
+      // It is not offered as approvable — a clip row records no provider.
+      expect(heard.find('.cand-approve').exists()).toBe(false)
+      // And the cast column still refuses to pretend.
+      expect(w.text()).toContain('Nothing on this pod was rendered on the casting above')
+    })
+  })
+
   it('POSTs the approval with the fingerprint it rendered', async () => {
     const w = await mountLab()
     await w.find('.cast-decide .approve').trigger('click')

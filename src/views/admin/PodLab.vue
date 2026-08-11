@@ -197,6 +197,7 @@ async function loadCourse(courseCode) {
   error.value = ''
   sentences.value = []
   selectedIdx.value = 0
+  candidates.value = [] // candidates are per-course page state
   stop()
   try {
     const sb = await import('../../services/supabase').then((m) => m.supabase)
@@ -1216,29 +1217,36 @@ async function loadCasting(courseCode) {
   }
 }
 
+// The one write path for a decision. `fingerprint` is the digest the decision
+// is recorded against — normally the one this page rendered (the route 409s if
+// a recast landed since), and after an approve-a-candidate recast, the digest
+// that write returned.
+async function postDecision(decision, fingerprint) {
+  const sb = await import('../../services/supabase').then((m) => m.supabase)
+  const { data: { session } } = await sb.auth.getSession()
+  if (!session) throw new Error('no session — sign in')
+  const res = await fetch('/api/pod-voice-approval', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.access_token}` },
+    body: JSON.stringify({
+      course_code: casting.value.course_code,
+      decision,
+      cast_fingerprint: fingerprint,
+      note: castNote.value,
+    }),
+  })
+  const body = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)
+  casting.value = { ...casting.value, record: body.record, gate: body.gate }
+  return body
+}
+
 async function decideCasting(decision) {
   if (!casting.value) return
   castingSaving.value = decision
   castingMsg.value = ''
   try {
-    const sb = await import('../../services/supabase').then((m) => m.supabase)
-    const { data: { session } } = await sb.auth.getSession()
-    if (!session) throw new Error('no session — sign in')
-    const res = await fetch('/api/pod-voice-approval', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.access_token}` },
-      body: JSON.stringify({
-        course_code: casting.value.course_code,
-        decision,
-        // The digest of the cast actually rendered on this page — the route
-        // refuses (409) if a recast landed since it loaded.
-        cast_fingerprint: casting.value.cast_fingerprint,
-        note: castNote.value,
-      }),
-    })
-    const body = await res.json().catch(() => ({}))
-    if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)
-    casting.value = { ...casting.value, record: body.record, gate: body.gate }
+    const body = await postDecision(decision, casting.value.cast_fingerprint)
     castingMsg.value = decision === 'approve'
       ? `Approved ✓ — generation is unlocked for casting ${body.cast_fingerprint}`
       : 'Rejected — recorded, and generation stays refused'
@@ -1646,6 +1654,28 @@ function playDataUri(uri) {
 
 // APPLY — writes casting and nothing else. No audio is generated, no clip link
 // is nulled; the approval goes stale by design and the page says so.
+// The single cast-write call. Returns the route's own body; throws unless the
+// route confirmed a write, because an unrouted /api/* on Vercel falls through
+// to the SPA and answers 200 with HTML, which parses to {}.
+async function writeCast(m, f) {
+  const token = await getAccessToken()
+  const voice = (v) => (v ? { provider: v.provider, voice_id: v.voice_id, name: v.name, locale: v.locale || undefined } : undefined)
+  const res = await fetch('/api/pod-cast-voices', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+    body: JSON.stringify({
+      course_code: casting.value?.course_code,
+      pod_id: currentPod.value?.id,
+      target: { m: voice(m), f: voice(f) },
+      cast_fingerprint: casting.value?.cast_fingerprint || null,
+    }),
+  })
+  const body = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)
+  if (!body.ok) throw new Error('the endpoint did not confirm a write — is this build deployed?')
+  return body
+}
+
 async function applyVoices() {
   const course = casting.value?.course_code
   const podId = currentPod.value?.id
@@ -1663,24 +1693,7 @@ async function applyVoices() {
   pickerBusy.value = 'apply'
   pickerMsg.value = ''
   try {
-    const token = await getAccessToken()
-    const voice = (v) => (v ? { provider: v.provider, voice_id: v.voice_id, name: v.name, locale: v.locale || undefined } : undefined)
-    const res = await fetch('/api/pod-cast-voices', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
-      body: JSON.stringify({
-        course_code: course,
-        pod_id: podId,
-        target: { m: voice(m), f: voice(f) },
-        cast_fingerprint: casting.value?.cast_fingerprint || null,
-      }),
-    })
-    const body = await res.json().catch(() => ({}))
-    if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)
-    // A 200 is NOT proof of a write: an unrouted /api/* path on Vercel falls
-    // through to the SPA and answers 200 with HTML, which parses to {}. The
-    // route's own `ok` is the only honest signal that a cast was written.
-    if (!body.ok) throw new Error('the endpoint did not confirm a write — is this build deployed?')
+    const body = await writeCast(m, f)
     const podLabel = (body.pods || []).map((p) => `${p.pod_id} (${p.speakers} speakers)`).join(', ')
     pickerMsg.value = `Applied to ${podLabel || podId}. New casting ${body.cast_fingerprint} — `
       + (body.gate?.ok ? 'still approved.' : 'the previous approval no longer applies, so generation is locked until you approve this cast.')
@@ -1714,7 +1727,11 @@ async function applyVoices() {
 //      never crowd out the rest of the cast.
 const SAMPLE_LIMIT = 10
 const EXCHANGE_MAX = 6
-const clipVoiceKey = (item) => `${item.kind}|${voiceKey(item.voice)}`
+// Clips are partitioned by the voice that ACTUALLY rendered them, never by the
+// voice the cast would like to claim. That is what lets the same routine build
+// a sample for a CANDIDATE cast the pod isn't on: a candidate's evidence is
+// simply the clips whose real voice is one of its two.
+const clipVoiceKey = (item) => `${item.kind}|${bareVoiceId(item.actualVoiceId) || 'unknown'}`
 
 // Every clip on the pod, each carrying BOTH the voice the cast says should
 // speak that line and the voice that actually rendered it.
@@ -1777,15 +1794,11 @@ function pickExchange(queue, budget) {
   return []
 }
 
-const sampleExchange = computed(() => {
-  const queue = sampleQueue()
+// Exchange-first, then coverage — for ANY queue of clips, so each candidate
+// column is sampled on exactly the same terms as the cast's own.
+function buildSample(queue) {
   const distinct = new Set(queue.map(clipVoiceKey)).size
-  return pickExchange(queue, Math.min(EXCHANGE_MAX, SAMPLE_LIMIT - Math.max(0, distinct - 2)))
-})
-
-const sampleClips = computed(() => {
-  const queue = sampleQueue()
-  const exchange = sampleExchange.value
+  const exchange = pickExchange(queue, Math.min(EXCHANGE_MAX, SAMPLE_LIMIT - Math.max(0, distinct - 2)))
   const taken = new Set(exchange)
   const seen = new Set(exchange.map(clipVoiceKey))
   const picked = [...exchange]
@@ -1796,11 +1809,16 @@ const sampleClips = computed(() => {
     if (seen.has(k)) rest.push(item)
     else { seen.add(k); picked.push(item) }
   }
-  return [...picked, ...rest].slice(0, SAMPLE_LIMIT).map((item) => ({
+  const clips = [...picked, ...rest].slice(0, SAMPLE_LIMIT).map((item) => ({
     ...item,
     inExchange: taken.has(item),
   }))
-})
+  return { exchange, clips }
+}
+
+const castSample = computed(() => buildSample(sampleQueue()))
+const sampleExchange = computed(() => castSample.value.exchange)
+const sampleClips = computed(() => castSample.value.clips)
 
 // How many distinct voices the sample actually puts in front of the ear, and
 // whether they are heard against each other. Stated in words, because "10
@@ -1860,7 +1878,7 @@ const SAMPLE_GEN_LIMIT = 10
 const genBusy = ref(false)
 const genMsg = ref('')
 
-async function generateSample() {
+async function generateSample(opts = {}) {
   const podId = currentPod.value?.id
   const course = selectedCourseCode.value
   if (!podId || !course || genBusy.value) return
@@ -1870,7 +1888,7 @@ async function generateSample() {
     genMsg.value = 'This pod is cast on HUMAN voices — TTS cannot render it. It needs its recordings.'
     return
   }
-  if (!window.confirm(
+  if (!opts.confirmed && !window.confirm(
     `Generate up to ${SAMPLE_GEN_LIMIT} sample clips for ${podId}?\n\n`
     + 'Sample mode only — the server truncates the queue to 10 and fills only lines '
     + 'that have no audio. Nothing is deleted and no bulk run starts.'
@@ -1928,6 +1946,251 @@ async function playSampleAll() {
   if (myToken === stopToken) {
     isPlaying.value = false
     playingSample.value = ''
+  }
+}
+
+// ── CANDIDATE CASTS — the two pairs, side by side, each with its own clips ──
+// Tom, 2026-08-11: "I need it to be where I can see it - you need to do
+// whatever you need to do to make this an actual tool that's usable" — said
+// after looking for the Azure-vs-xAI Spanish samples on this page and finding
+// nothing, because they had been published as external doc pages.
+//
+// So the comparison lives here. A candidate is just a PAIR OF VOICES, and its
+// evidence is the clips this pod actually has that were rendered on those two
+// voices — read from course_audio, never from listening_pods.speakers. That one
+// rule is what makes the whole thing honest: the cast column and a candidate
+// column are scored by the same test, and a pair with nothing rendered on it
+// says so in plain English instead of borrowing someone else's clips.
+//
+// Candidates are PAGE STATE. There is deliberately no candidate table: casting
+// truth is listening_pods.speakers and adding a second store of "casts we are
+// thinking about" would be a second thing to keep in sync. A candidate that has
+// clips is re-derivable from those clips anyway (see heardCandidate).
+const candidates = ref([])
+let candSeq = 0
+
+const pairKeyOf = (m, f) => `${m ? voiceKey(m) : '-'}+${f ? voiceKey(f) : '-'}`
+
+// The pod's cast today — always the first column, always the one the gate's
+// fingerprint is about.
+const castCandidate = computed(() => ({
+  id: 'cast',
+  origin: 'cast',
+  title: 'Cast now',
+  m: currentPair.value.m,
+  f: currentPair.value.f,
+  pairKey: pairKeyOf(currentPair.value.m, currentPair.value.f),
+}))
+
+// A pair inferred from the audio rather than declared: when everything on this
+// pod that ISN'T on the cast was rendered by exactly two voices, those two were
+// a cast once, and they are what Tom hears today. Named by voice id only —
+// nothing on a clip row says which provider or which name.
+const heardCandidate = computed(() => {
+  const ids = [...new Set(
+    offCastClips.value.filter((c) => c.kind === 'target' && c.actualVoiceId).map((c) => bareVoiceId(c.actualVoiceId)),
+  )]
+  if (ids.length !== 2) return null
+  return {
+    id: 'heard',
+    origin: 'heard',
+    title: 'Heard on this pod today',
+    voiceIds: ids,
+    m: null,
+    f: null,
+    pairKey: `heard:${ids.join('+')}`,
+  }
+})
+
+const comparison = computed(() => {
+  const out = [castCandidate.value]
+  const seen = new Set([castCandidate.value.pairKey])
+  for (const c of candidates.value) {
+    if (seen.has(c.pairKey)) continue
+    seen.add(c.pairKey)
+    out.push(c)
+  }
+  const h = heardCandidate.value
+  if (h) out.push(h)
+  return out
+})
+
+const candVoiceIds = (cand) =>
+  cand.voiceIds || [cand.m, cand.f].filter(Boolean).map((v) => bareVoiceId(v.voice_id)).filter(Boolean)
+
+// A candidate's clips: rendered on one of ITS two voices, target track (the
+// picker governs the target track only). The cast column keeps the existing
+// both-tracks queue so the sample still auditions the known voice too.
+function candidateClips(cand) {
+  if (cand.origin === 'cast') return sampleQueue()
+  const ids = new Set(candVoiceIds(cand))
+  return allClips.value.filter(
+    (c) => c.kind === 'target' && c.actualVoiceId && ids.has(bareVoiceId(c.actualVoiceId)),
+  )
+}
+
+const candidateSamples = computed(() => {
+  const out = new Map()
+  for (const cand of comparison.value) out.set(cand.id, buildSample(candidateClips(cand)))
+  return out
+})
+const candClips = (cand) => (cand.id === 'cast' ? sampleClips.value : candidateSamples.value.get(cand.id)?.clips || [])
+
+// Clips a candidate column is already showing don't also belong in the
+// "no longer cast" drawer — they are evidence, not debris.
+const claimedByCandidate = computed(() => {
+  const ids = new Set()
+  for (const cand of comparison.value) {
+    if (cand.origin === 'cast') continue
+    for (const c of candidateClips(cand)) ids.add(`${c.kind}:${c.id}`)
+  }
+  return ids
+})
+const strayClips = computed(() => offCastClips.value.filter((c) => !claimedByCandidate.value.has(`${c.kind}:${c.id}`)))
+
+// The two things an ear can't catch on a pair it hasn't heard yet.
+function candFlags(cand) {
+  const flags = []
+  const iso3 = casting.value?.course?.target_lang || ''
+  const voices = [cand.m, cand.f].filter(Boolean)
+  if (cand.origin !== 'heard' && voices.length !== 2) {
+    flags.push({ level: 'bad', text: `Only ${voices.length} voice — Aran's rule is a two-hander, one male and one female.` })
+  }
+  const bad = voices.filter((v) => localeMatchesTarget(v.locale, iso3) === false)
+  if (bad.length) {
+    flags.push({
+      level: 'bad',
+      text: `${bad.map((v) => `${v.name || v.voice_id} → ${v.locale}`).join(', ')} is steered at a locale that is not ${iso3} — wrong language's phonology.`,
+    })
+  }
+  return flags
+}
+
+function candVoiceRows(cand) {
+  if (cand.origin === 'heard') {
+    return cand.voiceIds.map((id) => ({
+      slot: '', name: id, meta: 'rendered these clips · provider not recorded on the clip', voice: null,
+    }))
+  }
+  return [{ slot: 'Female', v: cand.f }, { slot: 'Male', v: cand.m }].map(({ slot, v }) => ({
+    slot,
+    name: v ? (v.name || v.voice_id) : 'no voice',
+    meta: v ? `${v.provider} · ${v.voice_id} · ${v.locale || 'no locale'}` : '—',
+    voice: v || null,
+  }))
+}
+
+// ADD — defines a candidate from the two dropdowns. Writes nothing.
+function addCandidate() {
+  const m = chosen('m')
+  const f = chosen('f')
+  if (!m && !f) return
+  const key = pairKeyOf(m, f)
+  if (comparison.value.some((c) => c.pairKey === key)) {
+    pickerMsg.value = 'That pair is already in the comparison below.'
+    return
+  }
+  candidates.value.push({
+    id: `cand-${++candSeq}`,
+    origin: 'defined',
+    title: [f && (f.name || f.voice_id), m && (m.name || m.voice_id)].filter(Boolean).join(' & '),
+    m: m ? { ...m } : null,
+    f: f ? { ...f } : null,
+    pairKey: key,
+  })
+  pickerMsg.value = 'Added to the comparison — listen to it below, or generate it a sample.'
+}
+function dropCandidate(cand) {
+  candidates.value = candidates.value.filter((c) => c.id !== cand.id)
+}
+
+// Hear a voice of a candidate directly — a few seconds of TTS, per click.
+async function previewCandidateVoice(cand, row) {
+  if (!row.voice || pickerBusy.value) return
+  const g = row.slot === 'Male' ? 'm' : 'f'
+  const prev = pick.value[g]
+  pick.value[g] = voiceKey(row.voice)
+  try {
+    if (!chosen(g)) { pick.value[g] = prev; pickerMsg.value = 'That voice is not in the dropdown list — pick it there to preview.'; return }
+    await previewVoice(g)
+  } finally {
+    pick.value[g] = prev
+  }
+}
+
+async function playCandidateAll(cand) {
+  stop()
+  const myToken = ++stopToken
+  isPlaying.value = true
+  for (const item of candClips(cand)) {
+    if (myToken !== stopToken) break
+    playingSample.value = `${item.kind}:${item.id}`
+    await playClip(item.id, 1)
+    if (myToken !== stopToken) break
+    await sleep(DEFAULT_GAP_MS)
+  }
+  if (myToken === stopToken) {
+    isPlaying.value = false
+    playingSample.value = ''
+  }
+}
+
+// GENERATE for a candidate. Phase-8 renders from listening_pods.speakers, so a
+// candidate has to BE the cast for a second before it can be sampled: cast it,
+// then run the same capped sample path. Casting writes nothing but speakers and
+// deletes nothing, and the clips that come back are stamped with the voice that
+// rendered them — so they stay this candidate's evidence even if the cast moves
+// back afterwards.
+async function generateCandidateSample(cand) {
+  if (cand.origin === 'heard') return
+  if (cand.origin === 'cast') return generateSample()
+  if (genBusy.value || pickerBusy.value) return
+  if (!window.confirm(
+    `Cast ${currentPod.value?.id} on this pair and render up to ${SAMPLE_GEN_LIMIT} sample clips?\n\n`
+    + `female: ${cand.f ? `${cand.f.name} (${cand.f.provider}, ${cand.f.locale || 'no locale'})` : 'unchanged'}\n`
+    + `male:   ${cand.m ? `${cand.m.name} (${cand.m.provider}, ${cand.m.locale || 'no locale'})` : 'unchanged'}\n\n`
+    + 'Sample mode only — the server truncates to 10 clips and fills only lines with no audio. '
+    + 'Nothing is deleted. The current approval goes stale, so generation re-locks until you approve a cast.',
+  )) return
+  genBusy.value = true
+  genMsg.value = 'Casting this pair…'
+  try {
+    const body = await writeCast(cand.m, cand.f)
+    await loadCasting(casting.value?.course_code)
+    genMsg.value = `Cast ${body.cast_fingerprint} — generating…`
+  } catch (e) {
+    genMsg.value = `Failed: ${e.message}`
+    genBusy.value = false
+    return
+  }
+  genBusy.value = false
+  await generateSample({ confirmed: true })
+}
+
+// APPROVE a candidate — one action: it becomes the pod's cast, and the approval
+// is recorded against the digest that write returns.
+async function approveCandidate(cand) {
+  if (cand.origin === 'cast') return decideCasting('approve')
+  if (cand.origin === 'heard' || castingSaving.value || !casting.value) return
+  if (!window.confirm(
+    `Approve this pair as the cast for ${currentPod.value?.id}?\n\n`
+    + `female: ${cand.f ? `${cand.f.name} (${cand.f.provider}, ${cand.f.locale || 'no locale'})` : 'unchanged'}\n`
+    + `male:   ${cand.m ? `${cand.m.name} (${cand.m.provider}, ${cand.m.locale || 'no locale'})` : 'unchanged'}\n\n`
+    + 'It becomes the cast and the approval is recorded against it, unlocking generation. '
+    + 'No audio is generated and no clip is deleted.',
+  )) return
+  castingSaving.value = 'approve'
+  castingMsg.value = ''
+  try {
+    const applied = await writeCast(cand.m, cand.f)
+    await loadCasting(casting.value?.course_code)
+    await postDecision('approve', applied.cast_fingerprint)
+    dropCandidate(cand) // it is the cast now; the cast column is where it lives
+    castingMsg.value = `Approved ✓ — this pair is now the cast, and generation is unlocked for casting ${applied.cast_fingerprint}`
+  } catch (e) {
+    castingMsg.value = `Failed: ${e.message}`
+  } finally {
+    castingSaving.value = ''
   }
 }
 
@@ -2164,10 +2427,10 @@ loadLiveConfig()
             <!-- MANUAL VOICE CHOICE. Two slots, because Aran's rule makes a pod
                  a two-hander: one male voice, one female voice, whole pod.
                  Both open on what is cast today, so changing nothing changes
-                 nothing. Casting only — Apply never renders audio. -->
+                 nothing. Casting only — neither button renders audio. -->
             <div class="vpick">
               <div class="lbl small">
-                Target voices — pick the two by hand
+                Try a pair — pick the two target voices by hand
                 <span v-if="voicePools?.target" class="muted">
                   · pool <code>{{ voicePools.target.pool_key }}</code>
                   <template v-if="voicePools.sibling_keys?.length">
@@ -2192,29 +2455,203 @@ loadLiveConfig()
                 >{{ pickerBusy === `preview:${slot.g}` ? '…' : '▶' }}</button>
               </div>
               <div class="vpick-foot">
+                <button class="vp-add" :disabled="!!pickerBusy || !pickChanged" @click="addCandidate">
+                  + Add as a candidate
+                </button>
                 <button class="vp-apply" :disabled="!!pickerBusy || !pickChanged" @click="applyVoices">
                   {{ pickerBusy === 'apply' ? 'Applying…' : 'Apply to this pod' }}
                 </button>
                 <span class="muted small">
-                  Writes casting only — no audio generated, no clip deleted.
-                  Applying re-locks generation until you approve the new cast.
+                  Adding puts the pair beside the current cast below, to listen to and approve.
+                  Neither button generates audio or deletes a clip; applying re-locks generation
+                  until you approve the new cast.
                 </span>
                 <span v-if="pickerMsg" class="chip" :class="{ err: pickerMsg.startsWith('Failed') || pickerMsg.startsWith('Preview failed') }">{{ pickerMsg }}</span>
               </div>
             </div>
 
-            <div class="cast-tables">
-              <div v-for="grp in [{ t: 'Target voices', rows: targetCast }, { t: 'Known voices', rows: knownCast }]" :key="grp.t" class="cast-table">
-                <div class="lbl small">{{ grp.t }}</div>
-                <div v-for="r in grp.rows" :key="r.key" class="cast-row" :class="{ none: !r.voice }">
-                  <span class="cv-name">{{ r.voice ? (r.voice.name || r.voice.voice_id) : 'NO VOICE' }}</span>
-                  <span class="cv-g">{{ r.voice ? r.voice.gender : '—' }}</span>
-                  <span class="cv-meta mono">{{ r.voice ? `${r.voice.provider} · ${r.voice.voice_id} · ${r.voice.locale || 'no locale'}` : '—' }}</span>
-                  <span class="cv-cover">{{ r.labels.length }} label{{ r.labels.length === 1 ? '' : 's' }} · {{ r.lines }} line{{ r.lines === 1 ? '' : 's' }} ({{ r.share }}%)</span>
-                  <span class="cv-labels" :title="r.labels.join(', ')">{{ r.labels.slice(0, 6).join(', ') }}{{ r.labels.length > 6 ? '…' : '' }}</span>
+            <!-- THE COMPARISON. One column per candidate cast, each carrying its
+                 own voices, its own clips and its own approve button, so the
+                 whole decision is listen-then-press on one screen. A column's
+                 clips are the ones this pod actually has that were RENDERED on
+                 that pair (course_audio), never the ones the stored cast claims —
+                 which is why a pair with nothing rendered on it says so instead
+                 of borrowing someone else's audio. -->
+            <div class="candidates">
+              <section v-for="cand in comparison" :key="cand.id" class="candidate" :class="cand.origin">
+                <header class="cand-head">
+                  <span class="chip" :class="cand.origin === 'cast' ? (casting.gate?.ok ? 'ok' : '') : ''">
+                    {{ cand.origin === 'cast' ? 'CAST NOW' : cand.origin === 'heard' ? 'HEARD TODAY' : 'CANDIDATE' }}
+                  </span>
+                  <strong class="cand-title">{{ cand.title }}</strong>
+                  <button v-if="cand.origin === 'defined'" class="cand-drop" title="remove from the comparison — writes nothing" @click="dropCandidate(cand)">×</button>
+                </header>
+
+                <div class="cand-voices">
+                  <div v-for="(row, i) in candVoiceRows(cand)" :key="i" class="cand-voice">
+                    <span class="cv-slot">{{ row.slot }}</span>
+                    <span class="cv-name">{{ row.name }}</span>
+                    <span class="cv-meta mono">{{ row.meta }}</span>
+                    <button
+                      v-if="row.voice"
+                      class="cv-play"
+                      :disabled="!!pickerBusy"
+                      title="hear this voice on a line of this pod (a few seconds of TTS)"
+                      @click="previewCandidateVoice(cand, row)"
+                    >▶</button>
+                  </div>
+                </div>
+
+                <ul v-if="cand.origin !== 'cast' && candFlags(cand).length" class="cand-flags">
+                  <li v-for="(f, i) in candFlags(cand)" :key="i" :class="f.level">{{ f.text }}</li>
+                </ul>
+
+                <p v-if="cand.origin === 'heard'" class="muted small">
+                  These two voices rendered the audio this pod has now, but they are not its cast.
+                  To cast them, pick them in the dropdowns above — the clip row records only the id.
+                </p>
+
+                <!-- CAST COLUMN — the existing sample, coverage prose and gate. -->
+                <template v-if="cand.origin === 'cast'">
+                  <div class="transport">
+                    <button class="play-all" :disabled="!sampleClips.length" @click="playSampleAll">
+                      ▶ Play the sample ({{ sampleClips.length }} clips)
+                    </button>
+                    <button class="gen-sample" :disabled="genBusy || !currentPod" @click="generateSample()">
+                      {{ genBusy ? 'Generating…' : `Generate a sample (max ${SAMPLE_GEN_LIMIT} clips)` }}
+                    </button>
+                    <span v-if="genMsg" class="chip" :class="{ err: genMsg.startsWith('Failed') }">{{ genMsg }}</span>
+                  </div>
+                  <p class="legend muted small">
+                    <template v-if="sampleShape.exchangeLines">
+                      Leads with a <strong>{{ sampleShape.exchangeLines }}-line exchange</strong> on the
+                      {{ sampleShape.exchangeTrack }} track — {{ sampleShape.exchangeVoices.join(' answering ') }} —
+                      so you hear the two voices against each other, then one clip of every voice the
+                      exchange didn't reach.
+                    </template>
+                    <template v-else>
+                      No exchange available: no two consecutive lines of this pod are cast on different
+                      voices, so this is coverage only — one clip per voice. That is a casting problem,
+                      not a sampling one.
+                    </template>
+                  </p>
+
+                  <div v-if="sampleGap.none" class="empty">
+                    No pod audio exists for this course yet — nothing to listen to. Generate a sample first.
+                  </div>
+                  <!-- WHAT THE SAMPLE IS EVIDENCE FOR. A pod's audio accumulates while
+                       the casting moves under it; a clip rendered on a voice that is
+                       no longer cast tells you nothing about the cast you're
+                       approving, so it is excluded and said out loud. -->
+                  <p v-else-if="!castCoverage.onCast" class="note bad-note">
+                    <strong>Nothing on this pod was rendered on the casting above.</strong>
+                    All {{ castCoverage.total }} clips are on other voices
+                    <template v-if="castCoverage.otherVoices.length">({{ castCoverage.otherVoices.join(', ') }})</template>
+                    <template v-if="castCoverage.unknown">, {{ castCoverage.unknown }} with no voice on record</template>.
+                    There is nothing here to approve this cast on — generate a sample.
+                  </p>
+                  <p v-else-if="castCoverage.off" class="note">
+                    <strong>{{ castCoverage.onCast }} of {{ castCoverage.total }}</strong> clips on this pod
+                    were rendered on the casting above; those are the only ones sampled.
+                    The other {{ castCoverage.off }} are on
+                    {{ castCoverage.otherVoices.length }} older voice{{ castCoverage.otherVoices.length === 1 ? '' : 's' }}
+                    ({{ castCoverage.otherVoices.join(', ') }}<template v-if="castCoverage.dates.length">, rendered {{ castCoverage.dates[0] }}<template v-if="castCoverage.dates.length > 1">–{{ castCoverage.dates[castCoverage.dates.length - 1] }}</template></template>)
+                    and are listed below the sample — they are not evidence about this cast.
+                  </p>
+
+                  <div class="samples primary">
+                    <div v-for="c in sampleClips" :key="c.kind + ':' + c.id" class="sample-row" :class="{ on: playingSample === c.kind + ':' + c.id, exch: c.inExchange }">
+                      <button class="s-play" @click="playSample(c)">▶</button>
+                      <span class="s-exch" :title="c.inExchange ? 'part of the exchange — consecutive lines, two voices' : 'voice coverage'">{{ c.inExchange ? '⇄' : '·' }}</span>
+                      <span class="s-kind" :class="c.kind === 'target' ? 'r-target' : 'r-known'">{{ c.kind === 'target' ? 'T' : 'K' }}</span>
+                      <span class="s-speaker">{{ c.speaker }}</span>
+                      <span class="s-voice mono">{{ c.voice ? (c.voice.name || c.voice.voice_id) : 'no voice' }}</span>
+                      <span class="s-text">
+                        <span class="s-main">{{ c.text }}</span>
+                        <span class="s-other">{{ c.other }}</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="cast-decide">
+                    <input v-model="castNote" class="cast-note" placeholder="note (optional) — what you heard" />
+                    <button class="approve" :disabled="!!castingSaving" @click="decideCasting('approve')">
+                      {{ castingSaving === 'approve' ? 'Saving…' : 'Approve this casting' }}
+                    </button>
+                    <button class="reject" :disabled="!!castingSaving" @click="decideCasting('reject')">
+                      {{ castingSaving === 'reject' ? 'Saving…' : 'Reject' }}
+                    </button>
+                    <span v-if="castingMsg" class="chip" :class="{ err: castingMsg.startsWith('Failed') }">{{ castingMsg }}</span>
+                  </div>
+                </template>
+
+                <!-- CANDIDATE COLUMN — same test, its own clips. -->
+                <template v-else>
+                  <div class="transport">
+                    <button class="play-all" :disabled="!candClips(cand).length" @click="playCandidateAll(cand)">
+                      ▶ Play its clips ({{ candClips(cand).length }})
+                    </button>
+                    <button
+                      v-if="cand.origin === 'defined'"
+                      class="gen-sample"
+                      :disabled="genBusy || !currentPod"
+                      @click="generateCandidateSample(cand)"
+                    >
+                      {{ genBusy ? 'Generating…' : `Cast it and generate a sample (max ${SAMPLE_GEN_LIMIT} clips)` }}
+                    </button>
+                  </div>
+
+                  <p v-if="!candClips(cand).length" class="note cand-empty">
+                    <strong>Nothing on this pod has been rendered on this pair yet</strong> — there is
+                    nothing to listen to until you generate one. The button casts the pod on this pair
+                    and renders up to {{ SAMPLE_GEN_LIMIT }} clips; nothing is deleted.
+                  </p>
+
+                  <div class="samples">
+                    <div v-for="c in candClips(cand)" :key="cand.id + ':' + c.kind + ':' + c.id" class="sample-row" :class="{ on: playingSample === c.kind + ':' + c.id, exch: c.inExchange }">
+                      <button class="s-play" @click="playSample(c)">▶</button>
+                      <span class="s-exch">{{ c.inExchange ? '⇄' : '·' }}</span>
+                      <span class="s-kind" :class="c.kind === 'target' ? 'r-target' : 'r-known'">{{ c.kind === 'target' ? 'T' : 'K' }}</span>
+                      <span class="s-speaker">{{ c.speaker }}</span>
+                      <span class="s-voice mono" title="the voice that actually rendered this clip">{{ bareVoiceId(c.actualVoiceId) || 'unknown voice' }}</span>
+                      <span class="s-text">
+                        <span class="s-main">{{ c.text }}</span>
+                        <span class="s-other">{{ (c.renderedAt || '').slice(0, 10) }}</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div v-if="cand.origin === 'defined'" class="cast-decide">
+                    <button class="approve cand-approve" :disabled="!!castingSaving" @click="approveCandidate(cand)">
+                      {{ castingSaving === 'approve' ? 'Saving…' : 'Approve — cast the pod on this pair' }}
+                    </button>
+                    <button class="reject" :disabled="!!castingSaving" @click="dropCandidate(cand)">
+                      Reject
+                    </button>
+                    <span class="muted small">Rejecting only drops it from this comparison — the pod's cast is untouched.</span>
+                  </div>
+                </template>
+              </section>
+            </div>
+
+            <!-- The whole cast, both tracks, every speaker label. Folded away
+                 because the two-hander above is the decision; this is the
+                 detail behind it. -->
+            <details class="cast-detail">
+              <summary>Full cast detail — every speaker label, target and known tracks</summary>
+              <div class="cast-tables">
+                <div v-for="grp in [{ t: 'Target voices', rows: targetCast }, { t: 'Known voices', rows: knownCast }]" :key="grp.t" class="cast-table">
+                  <div class="lbl small">{{ grp.t }}</div>
+                  <div v-for="r in grp.rows" :key="r.key" class="cast-row" :class="{ none: !r.voice }">
+                    <span class="cv-name">{{ r.voice ? (r.voice.name || r.voice.voice_id) : 'NO VOICE' }}</span>
+                    <span class="cv-g">{{ r.voice ? r.voice.gender : '—' }}</span>
+                    <span class="cv-meta mono">{{ r.voice ? `${r.voice.provider} · ${r.voice.voice_id} · ${r.voice.locale || 'no locale'}` : '—' }}</span>
+                    <span class="cv-cover">{{ r.labels.length }} label{{ r.labels.length === 1 ? '' : 's' }} · {{ r.lines }} line{{ r.lines === 1 ? '' : 's' }} ({{ r.share }}%)</span>
+                    <span class="cv-labels" :title="r.labels.join(', ')">{{ r.labels.slice(0, 6).join(', ') }}{{ r.labels.length > 6 ? '…' : '' }}</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </details>
 
             <p v-if="otherPodIds.length" class="note">
               This course has other pods in the same approval —
@@ -2222,76 +2659,17 @@ loadLiveConfig()
               on this page, but their casting is inside the fingerprint you're approving.
             </p>
 
-            <div class="transport">
-              <button class="play-all" :disabled="!sampleClips.length" @click="playSampleAll">
-                ▶ Play the sample ({{ sampleClips.length }} clips)
-              </button>
-              <button class="gen-sample" :disabled="genBusy || !currentPod" @click="generateSample">
-                {{ genBusy ? 'Generating…' : `Generate a sample (max ${SAMPLE_GEN_LIMIT} clips)` }}
-              </button>
-              <span v-if="genMsg" class="chip" :class="{ err: genMsg.startsWith('Failed') }">{{ genMsg }}</span>
-            </div>
-            <p class="legend muted small">
-              <template v-if="sampleShape.exchangeLines">
-                Leads with a <strong>{{ sampleShape.exchangeLines }}-line exchange</strong> on the
-                {{ sampleShape.exchangeTrack }} track — {{ sampleShape.exchangeVoices.join(' answering ') }} —
-                so you hear the two voices against each other, then one clip of every voice the
-                exchange didn't reach.
-              </template>
-              <template v-else>
-                No exchange available: no two consecutive lines of this pod are cast on different
-                voices, so this is coverage only — one clip per voice. That is a casting problem,
-                not a sampling one.
-              </template>
-            </p>
-
-            <div v-if="sampleGap.none" class="empty">
-              No pod audio exists for this course yet — nothing to listen to. Generate a sample first.
-            </div>
-            <!-- WHAT THE SAMPLE IS EVIDENCE FOR. A pod's audio accumulates while
-                 the casting moves under it; a clip rendered on a voice that is
-                 no longer cast tells you nothing about the cast you're
-                 approving, so it is excluded and said out loud. -->
-            <p v-else-if="!castCoverage.onCast" class="note bad-note">
-              <strong>Nothing on this pod was rendered on the casting above.</strong>
-              All {{ castCoverage.total }} clips are on other voices
-              <template v-if="castCoverage.otherVoices.length">({{ castCoverage.otherVoices.join(', ') }})</template>
-              <template v-if="castCoverage.unknown">, {{ castCoverage.unknown }} with no voice on record</template>.
-              There is nothing here to approve this cast on — generate a sample.
-            </p>
-            <p v-else-if="castCoverage.off" class="note">
-              <strong>{{ castCoverage.onCast }} of {{ castCoverage.total }}</strong> clips on this pod
-              were rendered on the casting above; those are the only ones sampled.
-              The other {{ castCoverage.off }} are on
-              {{ castCoverage.otherVoices.length }} older voice{{ castCoverage.otherVoices.length === 1 ? '' : 's' }}
-              ({{ castCoverage.otherVoices.join(', ') }}<template v-if="castCoverage.dates.length">, rendered {{ castCoverage.dates[0] }}<template v-if="castCoverage.dates.length > 1">–{{ castCoverage.dates[castCoverage.dates.length - 1] }}</template></template>)
-              and are listed below the sample — they are not evidence about this cast.
-            </p>
-
-            <div class="samples primary">
-              <div v-for="c in sampleClips" :key="c.kind + ':' + c.id" class="sample-row" :class="{ on: playingSample === c.kind + ':' + c.id, exch: c.inExchange }">
-                <button class="s-play" @click="playSample(c)">▶</button>
-                <span class="s-exch" :title="c.inExchange ? 'part of the exchange — consecutive lines, two voices' : 'voice coverage'">{{ c.inExchange ? '⇄' : '·' }}</span>
-                <span class="s-kind" :class="c.kind === 'target' ? 'r-target' : 'r-known'">{{ c.kind === 'target' ? 'T' : 'K' }}</span>
-                <span class="s-speaker">{{ c.speaker }}</span>
-                <span class="s-voice mono">{{ c.voice ? (c.voice.name || c.voice.voice_id) : 'no voice' }}</span>
-                <span class="s-text">
-                  <span class="s-main">{{ c.text }}</span>
-                  <span class="s-other">{{ c.other }}</span>
-                </span>
-              </div>
-            </div>
-
             <!-- Off-cast audio. Kept playable — it is what the pod sounds like
                  today — but held apart from the sample so it cannot be mistaken
-                 for evidence about the casting under approval. -->
-            <details v-if="offCastClips.length" class="offcast">
+                 for evidence about the casting under approval. Clips a candidate
+                 column above is already showing are not repeated here. -->
+            <details v-if="strayClips.length" class="offcast">
               <summary>
-                {{ offCastClips.length }} more clip{{ offCastClips.length === 1 ? '' : 's' }} on this pod,
+                {{ strayClips.length }} more clip{{ strayClips.length === 1 ? '' : 's' }} on this pod,
                 rendered on voices that are no longer cast — playable, but not part of the sample
               </summary>
               <div class="samples">
-                <div v-for="c in offCastClips.slice(0, 40)" :key="'off:' + c.kind + ':' + c.id" class="sample-row" :class="{ on: playingSample === c.kind + ':' + c.id }">
+                <div v-for="c in strayClips.slice(0, 40)" :key="'off:' + c.kind + ':' + c.id" class="sample-row" :class="{ on: playingSample === c.kind + ':' + c.id }">
                   <button class="s-play" @click="playSample(c)">▶</button>
                   <span class="s-exch">·</span>
                   <span class="s-kind" :class="c.kind === 'target' ? 'r-target' : 'r-known'">{{ c.kind === 'target' ? 'T' : 'K' }}</span>
@@ -2305,21 +2683,10 @@ loadLiveConfig()
                   </span>
                 </div>
               </div>
-              <p v-if="offCastClips.length > 40" class="muted small">
-                …and {{ offCastClips.length - 40 }} more, not listed.
+              <p v-if="strayClips.length > 40" class="muted small">
+                …and {{ strayClips.length - 40 }} more, not listed.
               </p>
             </details>
-
-            <div class="cast-decide">
-              <input v-model="castNote" class="cast-note" placeholder="note (optional) — what you heard" />
-              <button class="approve" :disabled="!!castingSaving" @click="decideCasting('approve')">
-                {{ castingSaving === 'approve' ? 'Saving…' : 'Approve this casting' }}
-              </button>
-              <button class="reject" :disabled="!!castingSaving" @click="decideCasting('reject')">
-                {{ castingSaving === 'reject' ? 'Saving…' : 'Reject' }}
-              </button>
-              <span v-if="castingMsg" class="chip" :class="{ err: castingMsg.startsWith('Failed') }">{{ castingMsg }}</span>
-            </div>
           </template>
         </template>
 
@@ -3056,6 +3423,108 @@ code {
 }
 [data-theme='light'] .cast-flags li.warn {
   color: #92400e;
+}
+/* The comparison: one column per candidate cast. Two fit side by side on a
+   laptop; anything narrower stacks rather than shrinking to illegibility. */
+.candidates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+  align-items: start;
+}
+.candidate {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: var(--surface-2);
+  min-width: 0;
+}
+.candidate.cast {
+  border-color: #22c55e66;
+}
+.candidate.heard {
+  opacity: 0.9;
+}
+.cand-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.cand-title {
+  font-size: 14px;
+}
+.cand-drop {
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0 7px;
+}
+.cand-voices {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.cand-voice {
+  display: grid;
+  grid-template-columns: 58px 1fr auto 28px;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 12px;
+  padding: 3px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cand-voice .cv-slot {
+  color: var(--muted);
+}
+.cand-voice .cv-meta {
+  font-size: 11px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.cv-play {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+  color: inherit;
+}
+.cand-flags {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.cand-flags li {
+  font-size: 12px;
+  line-height: 1.45;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border-left: 3px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+}
+.cand-flags li.bad {
+  border-left-color: #ef4444;
+  color: #fca5a5;
+}
+[data-theme='light'] .cand-flags li.bad {
+  color: #b91c1c;
+}
+.cand-empty {
+  font-size: 12px;
+}
+.cast-detail summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--muted);
+  margin: 6px 0;
 }
 .cast-tables {
   display: grid;
