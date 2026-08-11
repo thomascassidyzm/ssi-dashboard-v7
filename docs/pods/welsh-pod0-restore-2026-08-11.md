@@ -97,6 +97,32 @@ dialects are genuinely different content, not a copy.
 
 No deploy is required: the player reads Supabase directly at runtime.
 
+### Live in the real app, in a real browser (worker #316)
+
+Not a DB assertion dressed up as a verification — the actual `player-vue` app, running in
+headless Chromium, driven through the actual learner path: course picker → Welsh → Northern
+/ Southern → mode tray → Listening mode.
+
+- **cym_n_for_eng** — Dialogues tab renders **22 scenes** ("Scene 1 · 8 am · 4 sentences" …
+  through Scene 22), not empty. Scene 1 opens on real Welsh over its English gloss
+  ("Bore da, Sarah!" / "Good morning, Sarah!"). Pressing play issues real
+  `/api/audio/<uuid>` requests for the pod's own `target_audio_id`s, all `200` — the 87
+  existing clips genuinely sound.
+- **Rows with no clip do not break the scene.** They render as text and the teleprompter keeps
+  flowing — no stall, no error. This is the answer that mattered for the South.
+- **cym_s_for_eng** — same 22 scenes, same side-by-side Welsh/English, reads through fine as
+  text-only content. No pod audio plays, which is correct: 0/232 clips, recording is a separate
+  track. (#316 flagged honestly that ~229 `/api/audio` hits fired during that test and then
+  cross-checked the UUIDs: they are the main learning-script loader's background prefetch in
+  the same tab, not pod audio.)
+- **Confirmed on the deployed dev alias too** (`ssi-learning-app-git-dev-zenjin.vercel.app`) —
+  22 scenes, same behaviour. Dev/staging/prod share one Supabase and this fix is data-only, so
+  it is already live everywhere the code is deployed.
+
+Screenshots: [`welsh-pod0-verify-2026-08-11/`](./welsh-pod0-verify-2026-08-11/) —
+`12-cymn-scene1.png` (North, scene 1 playing), `15-cyms-dialogues.png` (South, 22 scenes),
+`17-DEPLOYED-dev-cymn.png` (deployed build).
+
 ---
 
 ## Two things for Tom
