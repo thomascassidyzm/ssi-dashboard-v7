@@ -1,5 +1,5 @@
 <template>
-  <div class="segment-card" :class="[segment.confidenceLevel, status]">
+  <div class="segment-card" :class="[status, { flagged: hasWarning }]">
     <div class="segment-header">
       <div class="segment-label">
         {{ segment.label }}
@@ -12,27 +12,18 @@
           {{ status === 'approved' ? '✓ Approved' : '↻ Redo' }}
         </span>
       </div>
-      <div class="confidence-badge" :class="segment.confidenceLevel">
-        {{ segment.confidence }}% {{ confidenceLabel }}
-      </div>
     </div>
 
     <div class="segment-text">"{{ segment.text }}"</div>
 
     <div class="segment-meta">
       <span>Duration: {{ segment.duration }}s</span>
-      <span :class="{ 'has-issue': segment.issues?.length }">
-        {{ segment.issues?.length ? '⚠ ' + segment.issues[0] : segment.quality }}
-      </span>
     </div>
 
-    <div class="segment-waveform">
-      <div
-        v-for="i in 8"
-        :key="i"
-        class="waveform-bar"
-        :style="{ height: getBarHeight(i) + '%' }"
-      ></div>
+    <!-- The one thing we can honestly say without listening: this file is too
+         small to hold speech. No score, no waveform — both were decorative. -->
+    <div v-if="hasWarning" class="segment-warning">
+      ⚠ {{ segment.issues[0] }}
     </div>
 
     <div class="segment-actions">
@@ -82,19 +73,7 @@ defineEmits(['play', 'redo', 'approve'])
 // control that can only ever be silent.
 const hasAudio = computed(() => !!props.segment.audioUrl)
 
-const confidenceLabel = computed(() => {
-  if (props.segment.confidenceLevel === 'high') return 'High'
-  if (props.segment.confidenceLevel === 'medium') return 'Med'
-  return 'Low'
-})
-
-// Generate random waveform bar heights based on segment id
-function getBarHeight(index) {
-  const seed = props.segment.id?.charCodeAt(4) || 1
-  const heights = [40, 60, 80, 100, 85, 70, 50, 30]
-  const offset = seed % 8
-  return heights[(index + offset) % 8]
-}
+const hasWarning = computed(() => !!props.segment.issues?.length)
 </script>
 
 <style scoped>
@@ -106,15 +85,7 @@ function getBarHeight(index) {
   transition: all 0.3s ease;
 }
 
-.segment-card.high {
-  border-left-color: var(--color-emerald, #06ffa5);
-}
-
-.segment-card.medium {
-  border-left-color: var(--color-tungsten, var(--accent));
-}
-
-.segment-card.low {
+.segment-card.flagged {
   border-left-color: var(--color-film-red, #e63946);
 }
 
@@ -137,29 +108,6 @@ function getBarHeight(index) {
   color: var(--color-paper, var(--ink));
 }
 
-.confidence-badge {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-
-.confidence-badge.high {
-  background: rgba(6, 255, 165, 0.2);
-  color: var(--color-emerald, #06ffa5);
-}
-
-.confidence-badge.medium {
-  background: rgba(255, 166, 48, 0.2);
-  color: var(--color-tungsten, var(--accent));
-}
-
-.confidence-badge.low {
-  background: rgba(230, 57, 70, 0.2);
-  color: var(--color-film-red, #e63946);
-}
-
 .segment-text {
   font-family: 'Crimson Pro', serif;
   font-size: 1.2rem;
@@ -177,40 +125,14 @@ function getBarHeight(index) {
   color: var(--color-paper-dim, var(--muted));
 }
 
-.segment-meta .has-issue {
-  color: var(--color-tungsten, var(--accent));
-}
-
-.segment-waveform {
-  height: 60px;
-  background: var(--color-void, var(--canvas));
+.segment-warning {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--color-film-red, #e63946);
+  background: rgba(230, 57, 70, 0.12);
   border-radius: 6px;
+  padding: 0.5rem 0.6rem;
   margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  padding: 0 0.5rem;
-}
-
-.waveform-bar {
-  flex: 1;
-  background: var(--color-emerald, #06ffa5);
-  border-radius: 2px;
-  opacity: 0.6;
-  transition: all 0.3s ease;
-}
-
-.segment-card.medium .waveform-bar {
-  background: var(--color-tungsten, var(--accent));
-}
-
-.segment-card.low .waveform-bar {
-  background: var(--color-film-red, #e63946);
-}
-
-.segment-card:hover .waveform-bar {
-  opacity: 0.9;
 }
 
 .segment-actions {
@@ -333,20 +255,9 @@ function getBarHeight(index) {
 }
 
 /* Light-mode refinements: dark mode untouched.
-   The confidence-badge backgrounds bake neon-tinted rgba that, in light mode,
-   sit pale under the re-themed (darker) token text and fail WCAG AA. Replace
-   with theme-token tints + darker borders, and lift the faint button border. */
-:root[data-theme="light"] .confidence-badge.high {
-  background: rgba(4, 120, 87, 0.14);
-  color: #03543c;
-}
-
-:root[data-theme="light"] .confidence-badge.medium {
-  background: rgba(168, 85, 8, 0.14);
-  color: #8a4607;
-}
-
-:root[data-theme="light"] .confidence-badge.low {
+   Lift the faint button border, and darken the warning text so it clears
+   WCAG AA on the pale card. */
+:root[data-theme="light"] .segment-warning {
   background: rgba(220, 38, 38, 0.12);
   color: #b91c1c;
 }

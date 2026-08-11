@@ -8,16 +8,12 @@
       </p>
       <div class="review-summary">
         <div class="summary-stat">
-          <span class="summary-value high">{{ stats.high }}</span>
-          <span class="summary-label">High Confidence</span>
+          <span class="summary-value captured">{{ stats.captured }}</span>
+          <span class="summary-label">Takes Captured</span>
         </div>
         <div class="summary-stat">
-          <span class="summary-value medium">{{ stats.medium }}</span>
-          <span class="summary-label">Medium Confidence</span>
-        </div>
-        <div class="summary-stat">
-          <span class="summary-value low">{{ stats.low }}</span>
-          <span class="summary-label">Needs Review</span>
+          <span class="summary-value flagged">{{ stats.flagged }}</span>
+          <span class="summary-label">Needs a Look</span>
         </div>
         <div class="summary-stat">
           <span class="summary-value approved">{{ approvedIds.length }}</span>
@@ -32,18 +28,19 @@
 
     <!-- Batch Actions -->
     <div class="batch-actions">
-      <button class="batch-btn" @click="$emit('approve-all', 'high')">
-        <span class="btn-icon">✓</span> Approve All High ({{ stats.high }})
+      <button class="batch-btn" @click="$emit('approve-all')">
+        <span class="btn-icon">✓</span> Approve All Unflagged ({{ stats.captured }})
       </button>
       <button
         class="batch-btn"
-        :class="{ active: activeFilter === 'medium' }"
-        @click="$emit('filter', 'medium')"
+        :class="{ active: activeFilter === 'flagged' }"
+        :disabled="!stats.flagged"
+        @click="$emit('filter', 'flagged')"
       >
-        <span class="btn-icon">⚠</span> Review Medium ({{ stats.medium }})
+        <span class="btn-icon">⚠</span> Show Flagged ({{ stats.flagged }})
       </button>
-      <button class="batch-btn" @click="$emit('queue-redo', 'low')">
-        <span class="btn-icon">↻</span> Queue Low for Re-record ({{ stats.low }})
+      <button class="batch-btn" :disabled="!stats.flagged" @click="$emit('queue-redo')">
+        <span class="btn-icon">↻</span> Queue Flagged for Re-record ({{ stats.flagged }})
       </button>
       <button class="batch-btn" :disabled="!playableCount" @click="$emit('play-all')">
         <span class="btn-icon">▶</span> Play All ({{ playableCount }})
@@ -52,7 +49,7 @@
 
     <!-- Active filter: never leave the grid narrowed with no way back -->
     <div v-if="activeFilter" class="filter-bar">
-      <span>Showing {{ activeFilter }}-confidence takes only — {{ visible.length }} of {{ segments.length }}</span>
+      <span>Showing flagged takes only — {{ visible.length }} of {{ segments.length }}</span>
       <button class="filter-clear" @click="$emit('clear-filter')">Show all</button>
     </div>
 
@@ -106,10 +103,12 @@ defineEmits([
   'play', 'play-all', 'back', 'finalize'
 ])
 
+// A take is flagged only for something observable: nothing captured, or a
+// file too small to hold speech.
+const isFlagged = s => !s.hasRecording || !!s.issues?.length
+
 const visible = computed(() => (
-  props.activeFilter
-    ? props.segments.filter(s => s.confidenceLevel === props.activeFilter)
-    : props.segments
+  props.activeFilter === 'flagged' ? props.segments.filter(isFlagged) : props.segments
 ))
 
 const playableCount = computed(() => props.segments.filter(s => s.audioUrl).length)
@@ -121,10 +120,8 @@ function statusOf(segment) {
 }
 
 const stats = computed(() => {
-  const high = props.segments.filter(s => s.confidenceLevel === 'high').length
-  const medium = props.segments.filter(s => s.confidenceLevel === 'medium').length
-  const low = props.segments.filter(s => s.confidenceLevel === 'low').length
-  return { high, medium, low, total: props.segments.length }
+  const flagged = props.segments.filter(isFlagged).length
+  return { flagged, captured: props.segments.length - flagged, total: props.segments.length }
 })
 </script>
 
@@ -179,17 +176,11 @@ const stats = computed(() => {
   margin-bottom: 0.25rem;
 }
 
-.summary-value.high {
-  color: var(--color-emerald, #06ffa5);
-  text-shadow: 0 0 20px rgba(6, 255, 165, 0.5);
+.summary-value.captured {
+  color: var(--color-paper, var(--ink));
 }
 
-.summary-value.medium {
-  color: var(--color-tungsten, var(--accent));
-  text-shadow: 0 0 20px rgba(255, 166, 48, 0.5);
-}
-
-.summary-value.low {
+.summary-value.flagged {
   color: var(--color-film-red, #e63946);
   text-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
 }
