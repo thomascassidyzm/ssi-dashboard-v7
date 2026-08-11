@@ -9,6 +9,7 @@ const path = require('path');
 const { getBuildProgress, stopBuild, getBuildStatus } = require('../lib/build-manager.cjs');
 const { spawnInTerminal } = require('../lib/agent-spawner.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
+const { snapshotSeeds, listSnapshots, restoreSnapshot } = require('../lib/redo-snapshot.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 
 module.exports = function (ctx) {
@@ -144,6 +145,16 @@ module.exports = function (ctx) {
         });
       }
 
+      // SNAPSHOT BEFORE DELETE — same contract as /build/redo: one before-image
+      // row per seed, written first; if it throws, nothing is deleted.
+      const rangeSeeds = [];
+      for (let n = Number(from_seed); n <= Number(to_seed); n++) rangeSeeds.push(n);
+      const { batchId: rebuildBatchId } = await snapshotSeeds(ctx.supabase, courseCode, rangeSeeds, {
+        reason: 'rebuild-range',
+        notes: `rebuild ${from_seed}-${to_seed}`,
+      });
+      console.log(`[REBUILD] ${courseCode} snapshot batch ${rebuildBatchId}: ${rangeSeeds.length} seed(s) captured before delete`);
+
       // Execute the wipe
       const { count: phrasesDeleted } = await ctx.supabase
         .from('course_practice_phrases').delete({ count: 'exact' })
@@ -171,7 +182,8 @@ module.exports = function (ctx) {
         seeds_to_build: seedSpan,
         phrases_deleted: phrasesDeleted || 0,
         legos_deleted: legosDeleted || 0,
-        seeds_reset: seedsReset || 0
+        seeds_reset: seedsReset || 0,
+        snapshot_batch_id: rebuildBatchId
       });
     } catch (err) {
       res.status(500).json({ ok: false, error: err.message });
@@ -193,6 +205,16 @@ module.exports = function (ctx) {
       if (seedNumbers.length === 0) {
         return res.status(400).json({ ok: false, error: 'No valid seed numbers provided' });
       }
+
+      // SNAPSHOT BEFORE DELETE. The old decomposition is the only record of what
+      // the human is asking to be changed — it feeds the undo (POST
+      // /build/redo-undo) and the "previous decomposition" section of the redo
+      // brief. If this throws, nothing is deleted.
+      const { batchId, snapshots } = await snapshotSeeds(ctx.supabase, courseCode, seedNumbers, {
+        reason: 'redo',
+        notes,
+      });
+      console.log(`[REDO] ${courseCode} snapshot batch ${batchId}: ${snapshots.length} seed(s) captured before delete`);
 
       // Wipe each seed (delete phrases + LEGOs, reset decomposed_at)
       let totalPhrasesDeleted = 0;
@@ -249,9 +271,9 @@ module.exports = function (ctx) {
       await ctx.supabase.from('orchestrator_messages').insert({
         course_code: courseCode,
         direction: 'agent_to_human',
-        message: `Redo agent spawned for seed${seedNumbers.length > 1 ? 's' : ''} ${seedNumbers.join(', ')}. Wiped ${totalLegosDeleted} LEGOs, ${totalPhrasesDeleted} phrases.`,
+        message: `Redo agent spawned for seed${seedNumbers.length > 1 ? 's' : ''} ${seedNumbers.join(', ')}. Wiped ${totalLegosDeleted} LEGOs, ${totalPhrasesDeleted} phrases — the previous decomposition is snapshotted and can be restored (undo seed ${seedNumbers[0]}).`,
         status: 'pending',
-        metadata: { action: 'redo_spawned', seeds: seedNumbers }
+        metadata: { action: 'redo_spawned', seeds: seedNumbers, snapshot_batch_id: batchId }
       });
 
       res.json({
@@ -260,8 +282,71 @@ module.exports = function (ctx) {
         phrases_deleted: totalPhrasesDeleted,
         legos_deleted: totalLegosDeleted,
         seeds_reset: totalSeedsReset,
-        message: `Redo agent spawned for ${seedNumbers.length} seed(s)`
+        snapshot_batch_id: batchId,
+        snapshots,
+        message: `Redo agent spawned for ${seedNumbers.length} seed(s). Previous decomposition snapshotted — undo with POST /api/build/redo-undo/${courseCode}.`
       });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // GET /build/redo-snapshots/:courseCode — what can be undone.
+  //   ?seed=42 to scope to one seed, ?limit=N (default 50). Newest first.
+  router.get('/build/redo-snapshots/:courseCode', async (req, res) => {
+    const { courseCode } = req.params;
+    try {
+      const snapshots = await listSnapshots(ctx.supabase, courseCode, {
+        seed: req.query.seed || null,
+        limit: Math.min(Number(req.query.limit) || 50, 200),
+      });
+      res.json({ ok: true, course_code: courseCode, count: snapshots.length, snapshots });
+    } catch (err) {
+      res.status(500).json({ ok: false, error: err.message });
+    }
+  });
+
+  // POST /build/redo-undo/:courseCode — restore a seed's pre-redo decomposition.
+  // Body: { seed: 42 }            → newest snapshot for that seed
+  //       { snapshot_id: "uuid" } → that exact snapshot
+  //       { dry_run: true }       → report only, change nothing
+  //
+  // Deletes whatever the redo produced for the seed and re-inserts the
+  // snapshotted LEGOs/phrases verbatim (same ids, same audio pointers), then
+  // restores the seed's decomposed/approved/flagged stamps.
+  router.post('/build/redo-undo/:courseCode', async (req, res) => {
+    const { courseCode } = req.params;
+    const { seed, snapshot_id, dry_run = false } = req.body || {};
+
+    try {
+      if (!seed && !snapshot_id) {
+        return res.status(400).json({ ok: false, error: 'seed or snapshot_id required' });
+      }
+
+      const result = await restoreSnapshot(ctx.supabase, {
+        courseCode,
+        seedNumber: seed,
+        snapshotId: snapshot_id,
+        dryRun: !!dry_run,
+        restoredBy: req.get('x-agent-role') || 'dashboard',
+      });
+
+      if (dry_run) return res.json({ ok: true, ...result });
+
+      ctx.courseVocabCache.delete(courseCode);
+      await bumpCourseVersion(ctx.supabase, courseCode, 'minor');
+
+      console.log(`[REDO-UNDO] ${courseCode} seed ${result.seed_number}: restored ${result.restored.legos} LEGOs / ${result.restored.phrases} phrases from snapshot ${result.snapshot_id}`);
+
+      await ctx.supabase.from('orchestrator_messages').insert({
+        course_code: courseCode,
+        direction: 'agent_to_human',
+        message: `Undo applied to seed ${result.seed_number} — restored the pre-redo decomposition (${result.restored.legos} LEGOs, ${result.restored.phrases} phrases), replacing ${result.deleted.legos} LEGOs / ${result.deleted.phrases} phrases.`,
+        status: 'pending',
+        metadata: { action: 'redo_undo', seed_number: result.seed_number, snapshot_id: result.snapshot_id }
+      });
+
+      res.json({ ok: true, ...result });
     } catch (err) {
       res.status(500).json({ ok: false, error: err.message });
     }

@@ -5,6 +5,7 @@
  */
 
 const { getSupabase, getLanguageName, getGoldenSeedCount, buildCrossCourseSummaries, fetchGoldenSeedExamples, buildGrammarChecklist, loadCondensedMethodology } = require('./shared.cjs');
+const { latestSnapshots, formatSnapshotForBrief } = require('../course-builder/lib/redo-snapshot.cjs');
 
 async function generateRedoBrief(courseCode, query = {}) {
   const supabase = getSupabase();
@@ -34,13 +35,40 @@ async function generateRedoBrief(courseCode, query = {}) {
   const seedNumbers = query.seeds.split(',').map(Number).filter(n => n > 0);
   const notes = query.notes || '';
 
+  // The decomposition being replaced. The redo endpoint deletes the live rows
+  // before spawning this agent, so the snapshot written just before that delete
+  // is the only copy — without it, a note like "make this less formal" has no
+  // "this" to act on. Best-effort: an older redo (pre-snapshot) simply has none.
+  let previousSection = '';
+  try {
+    const snaps = await latestSnapshots(supabase, courseCode, seedNumbers);
+    const rendered = seedNumbers
+      .map(n => formatSnapshotForBrief(snaps.get(n)))
+      .filter(Boolean);
+    if (rendered.length) {
+      previousSection = `## The Decomposition You Are Replacing
+
+This is what these seeds looked like BEFORE this redo — the version the human was looking at when they asked for the change. **Read the human notes above against it**: they are describing changes to THIS, not a spec written from scratch.
+
+- Keep everything the notes do not ask you to change — same LEGO split, same phrasings — unless keeping it would break a methodology rule.
+- Change what the notes ask for, and anything that rule-checks as wrong.
+- If the notes are empty, treat the previous version as a draft to improve, not as a thing to reproduce.
+
+${rendered.join('\n\n')}
+
+`;
+    }
+  } catch (err) {
+    console.error(`[REDO BRIEF] could not load previous decomposition for ${courseCode}: ${err.message}`);
+  }
+
   return `# Redo Agent — ${courseCode} (${langName})
 
 You are rebuilding **${seedNumbers.length} seed(s)** for **${courseCode}** (${langName}).
 **Seeds to redo: ${seedNumbers.join(', ')}**
 ${notes ? `\n**Human notes:** ${notes}\n` : ''}
 
-## Your Workflow
+${previousSection}## Your Workflow
 
 For each seed in order:
 
@@ -56,6 +84,7 @@ curl -s "http://localhost:3471/api/seeds/${courseCode}" | jq ".seeds[] | select(
 
 ### Step 3: Build the decomposition
 Design LEGOs and write BUILD + USE phrases. Check every phrase against the grammar checklist below.
+If a "Decomposition You Are Replacing" section appears above, start from that version and apply the human notes to it — do not rewrite from scratch what nobody asked you to change.
 
 ### Step 4: Submit directly to the API
 \`\`\`bash
