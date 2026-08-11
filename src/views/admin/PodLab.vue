@@ -1677,6 +1677,10 @@ async function applyVoices() {
     })
     const body = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)
+    // A 200 is NOT proof of a write: an unrouted /api/* path on Vercel falls
+    // through to the SPA and answers 200 with HTML, which parses to {}. The
+    // route's own `ok` is the only honest signal that a cast was written.
+    if (!body.ok) throw new Error('the endpoint did not confirm a write — is this build deployed?')
     const podLabel = (body.pods || []).map((p) => `${p.pod_id} (${p.speakers} speakers)`).join(', ')
     pickerMsg.value = `Applied to ${podLabel || podId}. New casting ${body.cast_fingerprint} — `
       + (body.gate?.ok ? 'still approved.' : 'the previous approval no longer applies, so generation is locked until you approve this cast.')

@@ -84,6 +84,17 @@ const POOLS = {
   known: { pool_key: 'guj', exists: true, pool: { f: [], m: [] } },
   sibling_keys: [],
 }
+// POST /api/pod-cast-voices — what the route answers after writing the cast.
+// `ok` is asserted by the page: an unrouted /api/* on Vercel answers 200 with
+// the SPA's HTML, which parses to {} and would otherwise read as success.
+const APPLIED = {
+  ok: true,
+  course_code: 'eng_for_guj',
+  pods: [{ pod_id: 'eng_for_guj:pod-0', speakers: 22 }],
+  cast_fingerprint: 'newfingerprint00',
+  gate: { ok: false, reason: 'fingerprint_mismatch' },
+  audio_touched: false,
+}
 const DISCOVERED = {
   success: true,
   provider: 'xai',
@@ -128,7 +139,7 @@ describe('PodLab casting mode', () => {
         return { ok: true, json: async () => CASTING }
       }
       if (u.includes('/api/pod-cast-voices')) {
-        return { ok: true, json: async () => POOLS }
+        return { ok: true, json: async () => (u === '/api/pod-cast-voices' ? APPLIED : POOLS) }
       }
       if (u.includes('/api/voices/discover/')) {
         return { ok: true, json: async () => DISCOVERED }
@@ -334,6 +345,21 @@ describe('PodLab casting mode', () => {
       expect(body.target.f).toMatchObject({ provider: 'xai', voice_id: 'bedd6226' })
       // Casting only: the apply never reaches the audio-generation endpoint.
       expect(global.fetch.mock.calls.some((c) => String(c[0]).includes('generate-audio'))).toBe(false)
+      // The new fingerprint and the re-locked gate are stated, not implied.
+      expect(w.text()).toContain('newfingerprint00')
+      expect(w.text()).toMatch(/generation is locked until you approve this cast/)
+    })
+
+    it('does not report success when the route is not deployed', async () => {
+      // An unrouted /api/* on Vercel falls through to the SPA: 200, HTML body,
+      // which parses to {}. Reading that as "applied" would tell Tom a cast was
+      // written when nothing was.
+      const w = await mountLab()
+      global.fetch.mockImplementation(async () => ({ ok: true, json: async () => ({}) }))
+      await w.findAll('.vpick-row select')[0].setValue('xai|gfzdpspr5fdp|en')
+      await w.find('.vp-apply').trigger('click')
+      await flushPromises()
+      expect(w.text()).toMatch(/Failed: the endpoint did not confirm a write/)
     })
   })
 
