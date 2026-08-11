@@ -1,0 +1,2996 @@
+{
+  "ran_at": "2026-08-11T21:56:53.931Z",
+  "mode": "applied",
+  "courses": [
+    {
+      "course_code": "cym_n_for_eng",
+      "pods": [
+        {
+          "pod_id": "cym_n_for_eng:pod-0",
+          "slug": "pod-0",
+          "changed": true,
+          "target_voices_before": [
+            "human|HUMAN_F2",
+            "human|HUMAN_M1",
+            "human|HUMAN_F1",
+            "human|HUMAN_M2",
+            "human|HUMAN_F3"
+          ],
+          "target_voices_after": [
+            "human|human_catrinlliar_cym_n",
+            "human|human_aran_cym_n"
+          ],
+          "known_voices_before": [
+            "human|HUMAN_F2",
+            "human|HUMAN_M1",
+            "human|HUMAN_F1",
+            "human|HUMAN_M2",
+            "human|HUMAN_F3"
+          ],
+          "known_voices_after": [
+            "human|human_catrinlliar_cym_n",
+            "human|human_aran_cym_n"
+          ],
+          "speakers_before": {
+            "Anna": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Anna"
+              ]
+            },
+            "Guest": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Guest"
+              ]
+            },
+            "James": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "James"
+              ]
+            },
+            "Local": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Local"
+              ]
+            },
+            "Sarah": {
+              "known": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "variants": [
+                "Sarah"
+              ]
+            },
+            "Driver": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Driver"
+              ]
+            },
+            "Friend": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Friend (7 pm)",
+                "Friend"
+              ]
+            },
+            "Waiter": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Waiter"
+              ]
+            },
+            "Barista": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Barista (3 pm)",
+                "Barista"
+              ]
+            },
+            "Learner": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Learner"
+              ]
+            },
+            "Tourist": {
+              "known": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "variants": [
+                "Tourist"
+              ]
+            },
+            "Customer": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Customer"
+              ]
+            },
+            "Narrator": {
+              "known": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "variants": [
+                "Narrator"
+              ]
+            },
+            "Assistant": {
+              "known": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "variants": [
+                "Assistant"
+              ]
+            },
+            "Bartender": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Bartender"
+              ]
+            },
+            "Neighbour": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Neighbour (8 am)",
+                "Neighbour",
+                "Neighbour (10:30 pm)"
+              ]
+            },
+            "Passenger": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Passenger"
+              ]
+            },
+            "Customer 1": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Customer 1"
+              ]
+            },
+            "Customer 2": {
+              "known": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "variants": [
+                "Customer 2"
+              ]
+            },
+            "Customer 3": {
+              "known": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "variants": [
+                "Customer 3"
+              ]
+            },
+            "Pharmacist": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Pharmacist"
+              ]
+            },
+            "Receptionist": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Receptionist"
+              ]
+            }
+          },
+          "speakers_after": {
+            "Anna": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Anna"
+              ]
+            },
+            "Guest": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Guest"
+              ]
+            },
+            "James": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "James"
+              ]
+            },
+            "Local": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Local"
+              ]
+            },
+            "Sarah": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Sarah"
+              ]
+            },
+            "Driver": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Driver"
+              ]
+            },
+            "Friend": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Friend (7 pm)",
+                "Friend"
+              ]
+            },
+            "Waiter": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Waiter"
+              ]
+            },
+            "Barista": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Barista (3 pm)",
+                "Barista"
+              ]
+            },
+            "Learner": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Learner"
+              ]
+            },
+            "Tourist": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Tourist"
+              ]
+            },
+            "Customer": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Customer"
+              ]
+            },
+            "Narrator": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Narrator"
+              ]
+            },
+            "Assistant": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Assistant"
+              ]
+            },
+            "Bartender": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Bartender"
+              ]
+            },
+            "Neighbour": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Neighbour (8 am)",
+                "Neighbour",
+                "Neighbour (10:30 pm)"
+              ]
+            },
+            "Passenger": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Passenger"
+              ]
+            },
+            "Customer 1": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Customer 1"
+              ]
+            },
+            "Customer 2": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Customer 2"
+              ]
+            },
+            "Customer 3": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Customer 3"
+              ]
+            },
+            "Pharmacist": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Pharmacist"
+              ]
+            },
+            "Receptionist": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Receptionist"
+              ]
+            }
+          },
+          "write": "written"
+        },
+        {
+          "pod_id": "cym_n_for_eng:pod-0-unrecorded",
+          "slug": "pod-0-unrecorded",
+          "changed": true,
+          "target_voices_before": [
+            "human|HUMAN_F2",
+            "human|HUMAN_M1",
+            "human|HUMAN_F1",
+            "human|HUMAN_M2",
+            "human|HUMAN_F3"
+          ],
+          "target_voices_after": [
+            "human|human_catrinlliar_cym_n",
+            "human|human_aran_cym_n"
+          ],
+          "known_voices_before": [
+            "human|HUMAN_F2",
+            "human|HUMAN_M1",
+            "human|HUMAN_F1",
+            "human|HUMAN_M2",
+            "human|HUMAN_F3"
+          ],
+          "known_voices_after": [
+            "human|human_catrinlliar_cym_n",
+            "human|human_aran_cym_n"
+          ],
+          "speakers_before": {
+            "Anna": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Anna"
+              ]
+            },
+            "Guest": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Guest"
+              ]
+            },
+            "James": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "James"
+              ]
+            },
+            "Local": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Local"
+              ]
+            },
+            "Sarah": {
+              "known": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "variants": [
+                "Sarah"
+              ]
+            },
+            "Driver": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Driver"
+              ]
+            },
+            "Friend": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Friend (7 pm)",
+                "Friend"
+              ]
+            },
+            "Waiter": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Waiter"
+              ]
+            },
+            "Barista": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Barista (3 pm)",
+                "Barista"
+              ]
+            },
+            "Learner": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Learner"
+              ]
+            },
+            "Tourist": {
+              "known": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "variants": [
+                "Tourist"
+              ]
+            },
+            "Customer": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Customer"
+              ]
+            },
+            "Narrator": {
+              "known": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "variants": [
+                "Narrator"
+              ]
+            },
+            "Assistant": {
+              "known": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "variants": [
+                "Assistant"
+              ]
+            },
+            "Bartender": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Bartender"
+              ]
+            },
+            "Neighbour": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Neighbour (8 am)",
+                "Neighbour",
+                "Neighbour (10:30 pm)"
+              ]
+            },
+            "Passenger": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Passenger"
+              ]
+            },
+            "Customer 1": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Customer 1"
+              ]
+            },
+            "Customer 2": {
+              "known": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "variants": [
+                "Customer 2"
+              ]
+            },
+            "Customer 3": {
+              "known": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "variants": [
+                "Customer 3"
+              ]
+            },
+            "Pharmacist": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Pharmacist"
+              ]
+            },
+            "Receptionist": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Receptionist"
+              ]
+            }
+          },
+          "speakers_after": {
+            "Anna": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Anna"
+              ]
+            },
+            "Guest": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Guest"
+              ]
+            },
+            "James": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "James"
+              ]
+            },
+            "Local": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Local"
+              ]
+            },
+            "Sarah": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Sarah"
+              ]
+            },
+            "Driver": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Driver"
+              ]
+            },
+            "Friend": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Friend (7 pm)",
+                "Friend"
+              ]
+            },
+            "Waiter": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Waiter"
+              ]
+            },
+            "Barista": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Barista (3 pm)",
+                "Barista"
+              ]
+            },
+            "Learner": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Learner"
+              ]
+            },
+            "Tourist": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Tourist"
+              ]
+            },
+            "Customer": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Customer"
+              ]
+            },
+            "Narrator": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Narrator"
+              ]
+            },
+            "Assistant": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Assistant"
+              ]
+            },
+            "Bartender": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Bartender"
+              ]
+            },
+            "Neighbour": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Neighbour (8 am)",
+                "Neighbour",
+                "Neighbour (10:30 pm)"
+              ]
+            },
+            "Passenger": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Passenger"
+              ]
+            },
+            "Customer 1": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Customer 1"
+              ]
+            },
+            "Customer 2": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Customer 2"
+              ]
+            },
+            "Customer 3": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Customer 3"
+              ]
+            },
+            "Pharmacist": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_n"
+              },
+              "variants": [
+                "Pharmacist"
+              ]
+            },
+            "Receptionist": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_n"
+              },
+              "variants": [
+                "Receptionist"
+              ]
+            }
+          },
+          "write": "written"
+        }
+      ],
+      "fingerprint_before": "0fdbb8bf958e0e67",
+      "fingerprint_after": "52a0f2f517865ee8"
+    },
+    {
+      "course_code": "cym_s_for_eng",
+      "pods": [
+        {
+          "pod_id": "cym_s_for_eng:pod-0",
+          "slug": "pod-0",
+          "changed": true,
+          "target_voices_before": [
+            "human|HUMAN_F2",
+            "human|HUMAN_M1",
+            "human|HUMAN_F1",
+            "human|HUMAN_M2",
+            "human|HUMAN_F3"
+          ],
+          "target_voices_after": [
+            "human|human_catrinlliar_cym_s",
+            "human|human_aran_cym_s"
+          ],
+          "known_voices_before": [
+            "human|HUMAN_F2",
+            "human|HUMAN_M1",
+            "human|HUMAN_F1",
+            "human|HUMAN_M2",
+            "human|HUMAN_F3"
+          ],
+          "known_voices_after": [
+            "human|human_catrinlliar_cym_s",
+            "human|human_aran_cym_s"
+          ],
+          "speakers_before": {
+            "Anna": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Anna"
+              ]
+            },
+            "Guest": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Guest"
+              ]
+            },
+            "James": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "James"
+              ]
+            },
+            "Local": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Local"
+              ]
+            },
+            "Sarah": {
+              "known": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "variants": [
+                "Sarah"
+              ]
+            },
+            "Driver": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Driver"
+              ]
+            },
+            "Friend": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Friend (7 pm)",
+                "Friend"
+              ]
+            },
+            "Waiter": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Waiter"
+              ]
+            },
+            "Barista": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Barista (3 pm)",
+                "Barista"
+              ]
+            },
+            "Learner": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Learner"
+              ]
+            },
+            "Tourist": {
+              "known": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "variants": [
+                "Tourist"
+              ]
+            },
+            "Customer": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Customer"
+              ]
+            },
+            "Narrator": {
+              "known": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "variants": [
+                "Narrator"
+              ]
+            },
+            "Assistant": {
+              "known": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "variants": [
+                "Assistant"
+              ]
+            },
+            "Bartender": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Bartender"
+              ]
+            },
+            "Neighbour": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Neighbour (8 am)",
+                "Neighbour",
+                "Neighbour (10:30 pm)"
+              ]
+            },
+            "Passenger": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Passenger"
+              ]
+            },
+            "Customer 1": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Customer 1"
+              ]
+            },
+            "Customer 2": {
+              "known": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "variants": [
+                "Customer 2"
+              ]
+            },
+            "Customer 3": {
+              "known": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "variants": [
+                "Customer 3"
+              ]
+            },
+            "Pharmacist": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Pharmacist"
+              ]
+            },
+            "Receptionist": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Receptionist"
+              ]
+            }
+          },
+          "speakers_after": {
+            "Anna": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Anna"
+              ]
+            },
+            "Guest": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Guest"
+              ]
+            },
+            "James": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "James"
+              ]
+            },
+            "Local": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Local"
+              ]
+            },
+            "Sarah": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Sarah"
+              ]
+            },
+            "Driver": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Driver"
+              ]
+            },
+            "Friend": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Friend (7 pm)",
+                "Friend"
+              ]
+            },
+            "Waiter": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Waiter"
+              ]
+            },
+            "Barista": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Barista (3 pm)",
+                "Barista"
+              ]
+            },
+            "Learner": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Learner"
+              ]
+            },
+            "Tourist": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Tourist"
+              ]
+            },
+            "Customer": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Customer"
+              ]
+            },
+            "Narrator": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Narrator"
+              ]
+            },
+            "Assistant": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Assistant"
+              ]
+            },
+            "Bartender": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Bartender"
+              ]
+            },
+            "Neighbour": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Neighbour (8 am)",
+                "Neighbour",
+                "Neighbour (10:30 pm)"
+              ]
+            },
+            "Passenger": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Passenger"
+              ]
+            },
+            "Customer 1": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Customer 1"
+              ]
+            },
+            "Customer 2": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Customer 2"
+              ]
+            },
+            "Customer 3": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Customer 3"
+              ]
+            },
+            "Pharmacist": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Pharmacist"
+              ]
+            },
+            "Receptionist": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Receptionist"
+              ]
+            }
+          },
+          "write": "written"
+        },
+        {
+          "pod_id": "cym_s_for_eng:pod-0-unrecorded",
+          "slug": "pod-0-unrecorded",
+          "changed": true,
+          "target_voices_before": [
+            "human|HUMAN_F2",
+            "human|HUMAN_M1",
+            "human|HUMAN_F1",
+            "human|HUMAN_M2",
+            "human|HUMAN_F3"
+          ],
+          "target_voices_after": [
+            "human|human_catrinlliar_cym_s",
+            "human|human_aran_cym_s"
+          ],
+          "known_voices_before": [
+            "human|HUMAN_F2",
+            "human|HUMAN_M1",
+            "human|HUMAN_F1",
+            "human|HUMAN_M2",
+            "human|HUMAN_F3"
+          ],
+          "known_voices_after": [
+            "human|human_catrinlliar_cym_s",
+            "human|human_aran_cym_s"
+          ],
+          "speakers_before": {
+            "Anna": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Anna"
+              ]
+            },
+            "Guest": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Guest"
+              ]
+            },
+            "James": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "James"
+              ]
+            },
+            "Local": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Local"
+              ]
+            },
+            "Sarah": {
+              "known": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "variants": [
+                "Sarah"
+              ]
+            },
+            "Driver": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Driver"
+              ]
+            },
+            "Friend": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Friend (7 pm)",
+                "Friend"
+              ]
+            },
+            "Waiter": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Waiter"
+              ]
+            },
+            "Barista": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Barista (3 pm)",
+                "Barista"
+              ]
+            },
+            "Learner": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Learner"
+              ]
+            },
+            "Tourist": {
+              "known": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "variants": [
+                "Tourist"
+              ]
+            },
+            "Customer": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Customer"
+              ]
+            },
+            "Narrator": {
+              "known": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_F1"
+              },
+              "variants": [
+                "Narrator"
+              ]
+            },
+            "Assistant": {
+              "known": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "variants": [
+                "Assistant"
+              ]
+            },
+            "Bartender": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Bartender"
+              ]
+            },
+            "Neighbour": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Neighbour (8 am)",
+                "Neighbour",
+                "Neighbour (10:30 pm)"
+              ]
+            },
+            "Passenger": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Passenger"
+              ]
+            },
+            "Customer 1": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Customer 1"
+              ]
+            },
+            "Customer 2": {
+              "known": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Female voice 3",
+                "provider": "human",
+                "voice_id": "HUMAN_F3"
+              },
+              "variants": [
+                "Customer 2"
+              ]
+            },
+            "Customer 3": {
+              "known": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "gender": "n",
+              "target": {
+                "name": "Male voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_M2"
+              },
+              "variants": [
+                "Customer 3"
+              ]
+            },
+            "Pharmacist": {
+              "known": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Male voice 1",
+                "provider": "human",
+                "voice_id": "HUMAN_M1"
+              },
+              "variants": [
+                "Pharmacist"
+              ]
+            },
+            "Receptionist": {
+              "known": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Female voice 2",
+                "provider": "human",
+                "voice_id": "HUMAN_F2"
+              },
+              "variants": [
+                "Receptionist"
+              ]
+            }
+          },
+          "speakers_after": {
+            "Anna": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Anna"
+              ]
+            },
+            "Guest": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Guest"
+              ]
+            },
+            "James": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "James"
+              ]
+            },
+            "Local": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Local"
+              ]
+            },
+            "Sarah": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Sarah"
+              ]
+            },
+            "Driver": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Driver"
+              ]
+            },
+            "Friend": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Friend (7 pm)",
+                "Friend"
+              ]
+            },
+            "Waiter": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Waiter"
+              ]
+            },
+            "Barista": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Barista (3 pm)",
+                "Barista"
+              ]
+            },
+            "Learner": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Learner"
+              ]
+            },
+            "Tourist": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Tourist"
+              ]
+            },
+            "Customer": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Customer"
+              ]
+            },
+            "Narrator": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Narrator"
+              ]
+            },
+            "Assistant": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Assistant"
+              ]
+            },
+            "Bartender": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Bartender"
+              ]
+            },
+            "Neighbour": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Neighbour (8 am)",
+                "Neighbour",
+                "Neighbour (10:30 pm)"
+              ]
+            },
+            "Passenger": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Passenger"
+              ]
+            },
+            "Customer 1": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Customer 1"
+              ]
+            },
+            "Customer 2": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Customer 2"
+              ]
+            },
+            "Customer 3": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Customer 3"
+              ]
+            },
+            "Pharmacist": {
+              "known": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "gender": "m",
+              "target": {
+                "name": "Aran",
+                "provider": "human",
+                "voice_id": "human_aran_cym_s"
+              },
+              "variants": [
+                "Pharmacist"
+              ]
+            },
+            "Receptionist": {
+              "known": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "gender": "f",
+              "target": {
+                "name": "Catrin",
+                "provider": "human",
+                "voice_id": "human_catrinlliar_cym_s"
+              },
+              "variants": [
+                "Receptionist"
+              ]
+            }
+          },
+          "write": "written"
+        }
+      ],
+      "fingerprint_before": "7237e79cd1a10ac1",
+      "fingerprint_after": "0f1515bab1a47255"
+    }
+  ]
+}
