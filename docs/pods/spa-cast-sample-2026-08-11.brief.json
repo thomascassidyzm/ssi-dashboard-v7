@@ -1,0 +1,36 @@
+{
+  "course_code": "spa_for_eng",
+  "source": "spa_for_eng:pod-0-unrecorded, global_order 1-6 and 9 — scenes 1 and 2, a real two-hander so the ear judges a conversation and not seven disconnected lines",
+  "lines": [
+    { "id": "L1", "order": 1, "speaker": "Neighbour", "gender": "m", "known": "Good morning, Sarah!", "target": "¡Buenos días, Sarah!" },
+    { "id": "L2", "order": 2, "speaker": "Sarah", "gender": "f", "known": "Good morning. How are you?", "target": "Buenos días. ¿Cómo estás?" },
+    { "id": "L3", "order": 3, "speaker": "Neighbour", "gender": "m", "known": "I'm very well, thank you. Are you going to work?", "target": "Muy bien, gracias. ¿Vas al trabajo?" },
+    { "id": "L4", "order": 4, "speaker": "Sarah", "gender": "f", "known": "Yes, I've got a busy day today. I hope you have a good day. See you later.", "target": "Sí, tengo un día ocupado hoy. Espero que tengas un buen día. Hasta luego." },
+    { "id": "L5", "order": 5, "speaker": "Sarah", "gender": "f", "known": "Excuse me, is this seat taken?", "target": "Perdón, ¿está ocupado este asiento?" },
+    { "id": "L6", "order": 6, "speaker": "Passenger", "gender": "m", "known": "No, it's free. Please, go ahead.", "target": "No, está libre. Por favor, pase." },
+    { "id": "L7", "order": 9, "speaker": "Passenger", "gender": "m", "known": "It's not very far. Maybe three or four miles.", "target": "No está muy lejos. Quizás tres o cuatro millas." }
+  ],
+  "casts": [
+    {
+      "key": "azure-elvira-alvaro",
+      "label": "Azure Elvira + Alvaro @ es-ES — the live cast, awaiting approval",
+      "genders": ["m", "f", "n"],
+      "f": { "provider": "azure", "voice_id": "es-ES-ElviraNeural", "name": "Elvira", "locale": "es-ES" },
+      "m": { "provider": "azure", "voice_id": "es-ES-AlvaroNeural", "name": "Alvaro", "locale": "es-ES" }
+    },
+    {
+      "key": "xai-eve-manuel",
+      "label": "xAI Eve + Manuel @ es-ES — the untested explicit handle",
+      "genders": ["m", "f", "n"],
+      "f": { "provider": "xai", "voice_id": "eve", "name": "Eve", "locale": "es-ES" },
+      "m": { "provider": "xai", "voice_id": "yis75yfp", "name": "Manuel", "locale": "es-ES" }
+    },
+    {
+      "key": "xai-ara-female-alt",
+      "label": "xAI Ara @ es-ES — second female candidate; xAI has no native Spanish female at all, so the female seat is the weak link and gets two shots",
+      "genders": ["f"],
+      "f": { "provider": "xai", "voice_id": "ara", "name": "Ara", "locale": "es-ES" },
+      "m": null
+    }
+  ]
+}
