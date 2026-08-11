@@ -53,6 +53,7 @@
     border-radius: 10px; text-transform: uppercase;
   }
   .badge.approved { background: color-mix(in srgb, var(--approved) 15%, transparent); color: var(--approved); }
+  .badge.stale { background: color-mix(in srgb, var(--flag) 15%, transparent); color: var(--flag); }
   .dots { display: flex; flex-wrap: wrap; gap: 4px; }
   .dot {
     width: 14px; height: 14px; border-radius: 4px; background: var(--line);
@@ -101,6 +102,7 @@
   dialog {
     border: 1px solid var(--line); border-radius: 14px; background: var(--card);
     color: var(--ink); padding: 22px; width: min(640px, 92vw); max-height: 80vh;
+    margin: auto; /* the global `* { margin: 0 }` otherwise pins dialogs to the corner */
   }
   dialog::backdrop { background: rgba(0,0,0,.35); }
   dialog h3 { font-size: 15px; margin-bottom: 12px; }
@@ -123,6 +125,10 @@
   .flagitem:hover { border-color: var(--accent); }
   .flagitem .where { color: var(--muted); font-size: 12px; }
   .flagitem .note { color: var(--flag); }
+  .flagitem .state { color: var(--flag); font-weight: 600; }
+  .flagitem .state.ready { color: var(--ok); }
+  #btnQueue[hidden] { display: none; }
+  #btnQueue.has { border-color: var(--flag); color: var(--flag); }
   .toast {
     position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
     background: var(--ink); color: var(--bg); font-size: 13px; padding: 8px 18px;
@@ -157,6 +163,7 @@
   <div class="bar"><div id="hBar" style="width:0%"></div></div>
   <span id="hPhrases"></span>
   <input id="jump" type="number" min="1" placeholder="seed…" title="Jump to seed (G)">
+  <button id="btnQueue" title="Seeds behind you that still need review (R)" hidden>Re-review <span id="hQueueCount">0</span></button>
   <button id="btnFlags" title="Flagged list (L)">Flags <span id="hFlagCount">0</span></button>
 </header>
 
@@ -169,7 +176,7 @@
     <button class="ok" id="btnOk">OK <kbd>Enter</kbd></button>
     <button class="approve" id="btnApprove">Approve seed <kbd>A</kbd></button>
   </div>
-  <footer>Enter / Space / → ok &nbsp;·&nbsp; ← back &nbsp;·&nbsp; F flag &nbsp;·&nbsp; A approve seed &nbsp;·&nbsp; G jump &nbsp;·&nbsp; L flag list</footer>
+  <footer>Enter / Space / → ok &nbsp;·&nbsp; ← back &nbsp;·&nbsp; F flag &nbsp;·&nbsp; A approve seed &nbsp;·&nbsp; G jump &nbsp;·&nbsp; L flag list &nbsp;·&nbsp; R re-review queue</footer>
 </div></main>
 
 <dialog id="dlgFlag">
@@ -179,6 +186,11 @@
     <button id="flagCancel">Cancel</button>
     <button class="primary" id="flagSave">Flag it</button>
   </div>
+</dialog>
+
+<dialog id="dlgQueue">
+  <h3>Needs re-review <span id="queueSub" style="font-weight:400;color:var(--muted)"></span></h3>
+  <div class="flaglist" id="queuelist"></div>
 </dialog>
 
 <dialog id="dlgFlags">
@@ -252,6 +264,75 @@ function goto(i) {
   idx = i; render();
 }
 
+// ---------- re-review queue ----------
+// Forward navigation only ever moves past the reviewer's position, so a seed
+// left unapproved BEHIND them is invisible: nothing in the normal flow returns
+// to it. This queue is the way back to those seeds.
+//
+// The frontier is the furthest seed the reviewer has actually reached — the
+// highest seed number carrying any decision or an approval. Seeds beyond it are
+// simply not read yet and are none of the queue's business.
+function reviewFrontier() {
+  let f = 0;
+  for (const s of S.seeds) if (s.approved_at && s.seed_number > f) f = s.seed_number;
+  for (const p of S.phrases) if (dec(p) && p.seed_number > f) f = p.seed_number;
+  return f;
+}
+
+// Scoping (Kai, 2026-08-06): approval outside this tool never claimed "proofread
+// in this tool", so a course nobody has proofread has no queue — not 98% of its
+// seeds. The signal is the reviewer's own progress file: some decisions recorded
+// AND some seeds approved. Both absent on every course but the one being read.
+function queueActive() {
+  return Object.keys(S.progress.decisions).length > 0 && S.seeds.some((s) => s.approved_at);
+}
+
+function reviewQueue() {
+  if (!queueActive()) return [];
+  const frontier = reviewFrontier();
+  return seedOrder.filter((n) => n <= frontier && !seedApproved(n)).map((n) => {
+    const idxs = phrasesOfSeed.get(n);
+    const ds = idxs.map((i) => dec(S.phrases[i]));
+    return {
+      n,
+      total: idxs.length,
+      ok: ds.filter((d) => d?.status === 'ok').length,
+      flagged: ds.filter((d) => d?.status === 'flagged').length,
+      unchecked: ds.filter((d) => !d).length,
+    };
+  });
+}
+
+function queueLabel(q) {
+  if (q.flagged) return { text: `${q.flagged} flagged`, cls: '' };
+  if (q.unchecked === q.total) return { text: 'never reviewed', cls: '' };
+  if (q.unchecked) return { text: `${q.unchecked} of ${q.total} unchecked`, cls: '' };
+  return { text: 'all ok — just needs approving', cls: 'ready' };
+}
+
+function openQueue() {
+  const q = reviewQueue();
+  $('queueSub').textContent = q.length
+    ? `— ${q.length} seed${q.length === 1 ? '' : 's'} behind seed ${reviewFrontier()}`
+    : '';
+  $('queuelist').innerHTML = q.length ? q.map((x) => {
+    const lab = queueLabel(x);
+    const seed = seedOf.get(x.n) || {};
+    return `
+    <div class="flagitem" data-n="${x.n}">
+      <div class="where">Seed ${String(x.n).padStart(4, '0')} · ${x.ok}/${x.total} ok</div>
+      <div>${esc(seed.known_text || '')}</div>
+      <div class="state ${lab.cls}">${lab.text}</div>
+    </div>`;
+  }).join('') : '<div style="color:var(--muted)">Nothing behind you needs re-review. 🎉</div>';
+  $('queuelist').querySelectorAll('.flagitem').forEach((el) =>
+    el.addEventListener('click', () => {
+      $('dlgQueue').close();
+      goto(firstUndecidedOfSeed(Number(el.dataset.n)));
+    }));
+  $('dlgQueue').showModal();
+}
+
 function nextUnapprovedSeedStart(afterSeed) {
   for (const n of seedOrder) {
     if (n > afterSeed && !seedApproved(n)) return firstUndecidedOfSeed(n);
@@ -281,11 +362,18 @@ function render() {
   $('hBar').style.width = (100 * doneP / S.phrases.length).toFixed(1) + '%';
   $('hFlagCount').textContent = allFlags.length;
 
+  // re-review queue: hidden entirely on a course that isn't being proofread here
+  const queue = reviewQueue();
+  const btnQ = $('btnQueue');
+  btnQ.hidden = !queueActive();
+  btnQ.classList.toggle('has', queue.length > 0);
+  $('hQueueCount').textContent = queue.length;
+
   // seed box
   $('seedbox').innerHTML = `
     <div class="top">
       <span class="num">Seed ${String(p.seed_number).padStart(4, '0')}</span>
-      ${approved ? (unreviewed ? '<span class="badge flagged">approved · unreviewed</span>'
+      ${approved ? (unreviewed ? '<span class="badge stale">approved · unreviewed</span>'
                                : '<span class="badge approved">approved</span>') : ''}
       <span class="stat">${okCount}/${idxs.length} ok${flagCount ? ` · ${flagCount} flagged` : ''}</span>
     </div>
@@ -419,6 +507,7 @@ $('btnFlag').addEventListener('click', openFlag);
 $('btnBack').addEventListener('click', () => goto(idx - 1));
 $('btnApprove').addEventListener('click', approveSeed);
 $('btnFlags').addEventListener('click', openFlags);
+$('btnQueue').addEventListener('click', openQueue);
 $('jump').addEventListener('keydown', (e) => {
   if (e.key !== 'Enter') return;
   const n = Number($('jump').value);
@@ -436,6 +525,7 @@ document.addEventListener('keydown', (e) => {
   else if (k === 'a') { e.preventDefault(); if (!$('btnApprove').disabled) approveSeed(); }
   else if (k === 'g') { e.preventDefault(); $('jump').focus(); }
   else if (k === 'l') { e.preventDefault(); openFlags(); }
+  else if (k === 'r') { e.preventDefault(); if (queueActive()) openQueue(); }
 });
 
 (async () => {
