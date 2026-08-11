@@ -191,6 +191,7 @@
 <dialog id="dlgQueue">
   <h3>Needs re-review <span id="queueSub" style="font-weight:400;color:var(--muted)"></span></h3>
   <div class="flaglist" id="queuelist"></div>
+  <div class="row"><button id="queueCarry" hidden></button></div>
 </dialog>
 
 <dialog id="dlgFlags">
@@ -207,6 +208,7 @@ let seedOf = new Map();     // seed_number -> seed row
 let legoOf = new Map();     // "seed:lego_index" -> lego row
 let phrasesOfSeed = new Map(); // seed_number -> [phrase indices]
 let seedOrder = [];         // ordered distinct seed numbers
+let resumeIdx = 0;          // where forward reading was left off, so the queue can hand it back
 
 const $ = (id) => document.getElementById(id);
 const dec = (p) => S.progress.decisions[p.id];
@@ -281,33 +283,43 @@ function reviewFrontier() {
 
 // Scoping (Kai, 2026-08-06): approval outside this tool never claimed "proofread
 // in this tool", so a course nobody has proofread has no queue — not 98% of its
-// seeds. The signal is the reviewer's own progress file: some decisions recorded
-// AND some seeds approved. Both absent on every course but the one being read.
+// seeds. The signal is the reviewer's own progress file alone: decisions recorded
+// here. It used to ALSO require some seed to be approved, which made the queue
+// self-cancelling — unapproving the very seeds it was built to surface emptied it
+// (Kai, 2026-08-11). Approval is now reported, never a filter.
 function queueActive() {
-  return Object.keys(S.progress.decisions).length > 0 && S.seeds.some((s) => s.approved_at);
+  return Object.keys(S.progress.decisions).length > 0;
 }
 
+// Membership is about REVIEW, not approval: a seed belongs here if it still holds
+// a phrase never looked at, or if every phrase is reviewed but nobody approved it.
+// Approval state is shown on the row; it decides nothing.
 function reviewQueue() {
   if (!queueActive()) return [];
   const frontier = reviewFrontier();
-  return seedOrder.filter((n) => n <= frontier && !seedApproved(n)).map((n) => {
-    const idxs = phrasesOfSeed.get(n);
-    const ds = idxs.map((i) => dec(S.phrases[i]));
-    return {
-      n,
-      total: idxs.length,
-      ok: ds.filter((d) => d?.status === 'ok').length,
-      flagged: ds.filter((d) => d?.status === 'flagged').length,
-      unchecked: ds.filter((d) => !d).length,
-    };
-  });
+  const here = S.phrases[idx]?.seed_number;
+  return seedOrder
+    .filter((n) => n <= frontier && n !== here)
+    .map((n) => {
+      const idxs = phrasesOfSeed.get(n);
+      const ds = idxs.map((i) => dec(S.phrases[i]));
+      return {
+        n,
+        total: idxs.length,
+        ok: ds.filter((d) => d?.status === 'ok').length,
+        flagged: ds.filter((d) => d?.status === 'flagged').length,
+        unchecked: ds.filter((d) => !d).length,
+        approved: seedApproved(n),
+      };
+    })
+    .filter((q) => q.unchecked > 0 || !q.approved);
 }
 
 function queueLabel(q) {
-  if (q.flagged) return { text: `${q.flagged} flagged`, cls: '' };
   if (q.unchecked === q.total) return { text: 'never reviewed', cls: '' };
-  if (q.unchecked) return { text: `${q.unchecked} of ${q.total} unchecked`, cls: '' };
-  return { text: 'all ok — just needs approving', cls: 'ready' };
+  if (q.unchecked) return { text: `${q.unchecked} of ${q.total} never looked at`, cls: '' };
+  if (q.flagged) return { text: `${q.flagged} flagged`, cls: '' };
+  return { text: 'all reviewed — just needs approving', cls: 'ready' };
 }
 
 function openQueue() {
@@ -320,7 +332,7 @@ function openQueue() {
     const seed = seedOf.get(x.n) || {};
     return `
     <div class="flagitem" data-n="${x.n}">
-      <div class="where">Seed ${String(x.n).padStart(4, '0')} · ${x.ok}/${x.total} ok</div>
+      <div class="where">Seed ${String(x.n).padStart(4, '0')} · ${x.ok}/${x.total} ok${x.approved ? ' · approved' : ''}</div>
       <div>${esc(seed.known_text || '')}</div>
       <div class="state ${lab.cls}">${lab.text}</div>
     </div>`;
@@ -330,6 +342,10 @@ function openQueue() {
       $('dlgQueue').close();
       goto(firstUndecidedOfSeed(Number(el.dataset.n)));
     }));
+  // A way back: jumping into the queue must not lose the place he was reading at.
+  const carry = S.phrases[resumeIdx]?.seed_number;
+  $('queueCarry').textContent = carry ? `Carry on at seed ${String(carry).padStart(4, '0')} →` : '';
+  $('queueCarry').hidden = !carry;
   $('dlgQueue').showModal();
 }
 
@@ -508,6 +524,7 @@ $('btnBack').addEventListener('click', () => goto(idx - 1));
 $('btnApprove').addEventListener('click', approveSeed);
 $('btnFlags').addEventListener('click', openFlags);
 $('btnQueue').addEventListener('click', openQueue);
+$('queueCarry').addEventListener('click', () => { $('dlgQueue').close(); goto(resumeIdx); });
 $('jump').addEventListener('keydown', (e) => {
   if (e.key !== 'Enter') return;
   const n = Number($('jump').value);
@@ -533,8 +550,12 @@ document.addEventListener('keydown', (e) => {
     S = await api('/api/state');
     document.title = `Proofread — ${S.course}`;
     build();
-    idx = startIndex();
+    idx = resumeIdx = startIndex();
     render();
+    // Reloading used to drop him at the reading frontier with the queue behind a
+    // button he had to know to press, so seeds left behind stayed invisible
+    // (Kai, 2026-08-11). If anything is waiting, the list is the first thing he sees.
+    if (reviewQueue().length) openQueue();
   } catch (e) {
     document.body.innerHTML = `<p style="padding:40px">Failed to load: ${e.message}</p>`;
   }
