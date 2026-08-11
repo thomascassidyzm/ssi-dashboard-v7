@@ -481,6 +481,47 @@ violation and stop before running it.
 
 ---
 
+## 6c. A presentation clip must always say what its LEGO now says
+
+**Rule (Kai, 2026-08-11): any text fix that leaves a presentation clip speaking the old wording is
+not a complete fix.** Whatever clips derive from text you changed come into the *same* pass —
+counted, costed and flagged for regeneration — never deferred as a separate follow-up.
+
+Presentation ("intro") clips are frozen renderings of `course_legos.known_text` at the moment they
+were made (`renderIntro()` in `services/phases/presentation-author.cjs` interpolates `{known}`
+verbatim). Nothing re-derives them afterwards, and two structural gaps guarantee a later text edit
+never reaches them:
+
+- the staleness re-author check in `phase8-audio-v13.cjs` only re-inspects rows whose `s3_key LIKE 'pending/%'`;
+- `/regenerate-presentations` (`services/course-builder/routes/edit-cascade.cjs`) *"only processes
+  LEGOs MISSING presentation audio"*.
+
+A clip that has already rendered is structurally out of reach of both. So the clip keeps speaking
+the old words for as long as nobody looks.
+
+**The incident that forced this into doctrine.** `ell_for_eng` (Greek) introduced bracketed grammar
+labels into `known_text` to disambiguate person and aspect — `to answer (I, aorist)`. A cleanup
+later rewrote every one of those into natural person-carrying English (`for me to answer`) and left
+it there. Five months on: the source text was clean, but **70 intro clips were still speaking the
+bracket out loud**, and **57 practice phrases still carried the pre-cleanup English**, collapsing
+29 distinct English prompts onto multiple Greek forms — a live ZUT break the cleanup itself
+created. It surfaced through a learner forum complaint, not through any check.
+Full write-up: `docs/ell-grammar-label-2026-08-11/README.md`.
+
+**Two practical consequences:**
+
+1. **Measure exposure on the audio, not on the text column.** `phase8-audio-from-baskets.cjs:163`
+   strips parentheticals from `ttsText` but stores the *unstripped* `text`, so a bracket in
+   `course_audio.text` does not prove it was spoken. Conversely, correcting `text` without
+   re-rendering leaves a clip whose mp3 still speaks the defect while every text-based detector
+   now reports it clean — the defect hiding itself. The authority is
+   `course_audio.word_boundaries`, which lists the tokens the provider actually voiced.
+2. **Check the whole quoting layer, not just the clip.** A LEGO's own BUILD/USE phrases quote its
+   `known_text` too. In the Greek case they were the larger and more damaging half, and a
+   bracket-only search would have missed all 57.
+
+---
+
 ## 7. Voice Management
 
 ```

@@ -737,3 +737,39 @@ owns a service during an incident.
 **Search width:** visible-options
 **Decided by:** agent — Tom's brief specified the migration; the watchdog line and the empty
 `dump.pm2` force-save are the agent's calls, both reversible.
+
+## 2026-08-11 — presentation clips travel with the text that made them
+
+**Move:** established as standing doctrine that any text fix must bring the presentation clips
+derived from that text into the same pass — counted, costed, flagged for regeneration — and that
+exposure is measured on `course_audio.word_boundaries` (what the provider actually voiced) rather
+than on `course_audio.text`. Recorded in `AUDIO_PIPELINE_ARCHITECTURE.md` §6c. Applied to
+`ell_for_eng`, where a five-month-old grammar-label cleanup had fixed the LEGO text and stopped,
+leaving 70 intro clips speaking labels aloud and 57 practice phrases holding pre-cleanup English
+that broke ZUT on 29 counts. Fixed the 57 phrases; staged the 74 clips at $0.0087, unrendered.
+
+**Better:** the defect class becomes findable — a clip whose text was corrected without a
+re-render reports clean to every text-based detector while still speaking the fault, and only the
+word-boundary record catches it. **Simpler:** one rule at the point of edit replaces a follow-up
+queue nobody owns; the two existing gaps (phase8's `pending/%` staleness filter,
+`/regenerate-presentations` only touching MISSING audio) need no code change to stop biting.
+**Cheaper (total):** the Greek bill is under a cent because it was caught as 74 clips; the same
+neglect across the estate is ~4,900 tagged intros, and every month of deferral adds phrase-layer
+drift on top, which is the expensive half — 57 rows of broken ZUT here versus 70 clips of audio.
+
+**Searched & rejected:**
+- Teach the player to honour `presentation_audio_id` and re-render nothing — failed *better*: it
+  leaves 54 rows that speak a defect one read-path change away from live, to save $0.006.
+- Treat clip regeneration as a follow-up ticket — failed *simpler* and *better*: that is precisely
+  the mechanism that produced this incident, and the follow-up was never raised.
+- Detect via a parenthesis scan of `course_audio.text` — failed *better*: phase8 stores unstripped
+  text (so brackets over-report), and a text-only correction erases the evidence (so it
+  under-reports). Both directions wrong; word boundaries are the ground truth.
+- Fix the 62 remaining person/aspect ZUT forks in the same pass — failed *simpler*: different
+  cause, needs Greek judgement not a script, and folding it in would have destabilised the spend
+  figure a human is approving. Dispatched separately.
+
+**Search width:** re-levelled — the brief was "strip the labels"; the labels were already gone and
+the real defect was one layer down, in the phrases that quote the LEGO.
+**Decided by:** agent — Kai's ruling (4) asked for the doctrine; the word-boundary measurement
+basis and the phrase-layer scope are the agent's calls, both evidenced above.
