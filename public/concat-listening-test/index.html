@@ -67,6 +67,10 @@
   .band.middle { border-left-color: var(--accent-2); } .band.middle h2 { color: var(--accent-2); }
   .band.late { border-left-color: var(--accent); } .band.late h2 { color: var(--accent); }
   .band.carved { border-left-color: var(--dim); } .band.carved h2 { color: var(--dim); }
+  /* The three pod pairs that turned out to be a different take are weaker
+     evidence than the other eight, and the listener has to know that BEFORE
+     judging — not in the reveal afterwards. So they get their own colour. */
+  .band.retake { border-left-color: #f59e0b; } .band.retake h2 { color: #f59e0b; }
 
   .rh { font-size: 1.05rem; margin: 0 0 .7rem; color: var(--accent-2); }
   .bandtable td:first-child { min-width: 8.5rem; }
@@ -176,8 +180,8 @@ function render() {
       <span>${state.index + 1} of ${pairs.length}</span>
       <span class="bar"><i style="width:${(state.index / pairs.length) * 100}%"></i></span>
     </div>
-    <div class="card band ${pair.band || 'carved'}">
-      <h2>${escapeHtml(pair.bandLabel)}${pair.seedNumber ? ` · seed ${pair.seedNumber}` : ''}</h2>
+    <div class="card band ${pair.band || (pair.kind === 'pod-retake' ? 'retake' : 'carved')}">
+      <h2>${escapeHtml(pair.bandLabel)}${pair.seedNumber ? ` · seed ${pair.seedNumber}` : ''}${pair.kind === 'pod-retake' ? ' · different take' : ''}</h2>
       <p>${escapeHtml(pair.bandBlurb)}</p>
     </div>
     <div class="card">
