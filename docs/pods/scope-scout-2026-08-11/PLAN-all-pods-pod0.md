@@ -30,13 +30,38 @@ repoint pod-0 at the old off-canon English, reintroducing the exact drift this e
 remove. **Recommendation: restore onto the new canon.** `cym_n` is the most finished pod in the
 estate — 232 rows, fully translated, zero draft lines, human-cleared on 2026-08-10.
 
-### 2. `deu_at_for_eng` is live with 155 unproofread machine-drafted lines, 50 already voiced
+### 2. Two live pods are serving unproofread machine-drafted lines — 259 of them
 
-It is on the real learner slug (`pod-0`, not gated) and **nothing on the learner path reads
-`target_text_draft`** — verified: zero references to that column anywhere in `ssi-learning-app`,
-and it is absent from the player's fifteen-column select. A draft with audio plays exactly like a
-finished line. The course is `status: draft`, which is what made in-place alignment legitimate;
-whether that is enough containment is your call.
+**This is the draft-debt ledger. Both entries clear together, or neither does.**
+
+| pod | course status | unproofread lines | of which already voiced | how it got live |
+|---|---|---|---|---|
+| `deu_at_for_eng:pod-0` | `draft` | **155** | 50 | aligned in place on the live slug, 2026-08-08 |
+| `cym_s_for_eng:pod-0` | **`released`** | **104** | 0 | promoted during the 2026-08-11 outage fix |
+
+*(Live counts, 2026-08-11. A third set — `spa_for_eng:pod-0-unrecorded`, 128 drafts, 45 voiced —
+is NOT in this ledger because it sits on a gated slug no learner reads. It joins the moment
+anything promotes it.)*
+
+Both are the same defect class, and neither is contained by the flag: **nothing on the learner
+path reads `target_text_draft`** — verified: zero references to that column anywhere in
+`ssi-learning-app`, and it is absent from the player's fifteen-column select. A draft with audio
+plays exactly like a finished line.
+
+- **`deu_at`** is on the real learner slug (`pod-0`, not gated). The course is `status: draft`,
+  which is what made in-place alignment legitimate; whether that is enough containment is your
+  call.
+- **`cym_s`** has no such cover: the course is **released**. It went live knowingly on 2026-08-11
+  as the cheaper half of a trade — a served pod with 104 drafts beats the empty pod that had been
+  serving nothing for five days on a released course — and Northern Welsh next to it has zero
+  drafts because Aran proofread it. Full account and the one-command reversal:
+  `docs/pods/welsh-pod0-restore-2026-08-11.md`.
+
+**Both are blocked on the same ruling — call #7 below, proofreading policy, routed to Kai.**
+When that lands, whoever clears the backlog clears *both* pods, and checks `spa` has not been
+promoted in the meantime. The live query that regenerates this ledger from scratch:
+`select pod_id, count(*) from listening_pod_sentences where target_text_draft group by pod_id`
+— it is the only mechanism that cannot go stale, and it is what the Popty `/drafts` queue reads.
 
 ---
 
@@ -53,13 +78,15 @@ previous canon was 142 rows / 15 scenes, archived at `pod0-live-snapshot-2026-08
 
 | pod | rows | translated | draft lines | note |
 |---|---|---|---|---|
-| `cym_n_for_eng:pod-0-unrecorded` | 232 | 231 | 0 | most finished in the estate; human-cleared |
-| `cym_s_for_eng:pod-0-unrecorded` | 232 | 231 | 104 | drafts untouched, byte-identical |
-| `spa_for_eng:pod-0-unrecorded` | 232 | 231 | 128 | cloned via the safe path |
-| `deu_at_for_eng:pod-0` | 232 | 231 | 155 | **on the live slug** |
+| `cym_n_for_eng:pod-0` | 231 | 231 | 0 | most finished in the estate; human-cleared |
+| `cym_s_for_eng:pod-0` | 231 | 231 | 104 | **on the live slug** — drafts untouched, byte-identical |
+| `spa_for_eng:pod-0-unrecorded` | 231 | 231 | 128 | cloned via the safe path; gated |
+| `deu_at_for_eng:pod-0` | 231 | 231 | 155 | **on the live slug** |
 
-Every other pod-0 is on the old 142. The 232 = 231 canon + one pre-existing blank stray row
-(`SC15-S012`) that predates the alignment.
+Every other pod-0 is on the old 142. *(Updated 2026-08-11: the two Welsh pods moved off
+`-unrecorded` onto the live slug in the outage fix, and all four rows now read 231 rather than
+232 — the extra was a blank `SC15-S012` retired by the alignment and deleted on 2026-08-11 with
+Tom's approval. See §5.)*
 
 **How you can tell a pod is on the new text**: row count > 200 and ≥95% exact match of its English
 side against `canonical_pod_scenarios`. English is `known_text` for `X_for_eng`, `target_text` for
@@ -186,6 +213,18 @@ the price of the remaining courses:
 3. **No `status === 'released'` check in the aligner**, which is what let an in-place rewrite touch
    a released course.
 
+*(1) is closed: `tools/pods/promote-pod.cjs` and `tools/pods/reslug-pod-rows.cjs` landed with the
+2026-08-11 Welsh restore.*
+
+**The retired-row residue, closed 2026-08-11.** When canonical scene 15 shrank from 12 lines to 11,
+the aligner did not delete the surplus row: by design it blanks the text and parks the row at
+`global_order 90000 + old` so no queue can reach it — `align-pod0-to-canonical.cjs:207`, whose own
+comment reads *"NOT deleted — blanked… Deletion is a recommendation for Tom and Aran, never an
+action here."* That is the estate's deletion gate working, not an off-by-one, so the tool is
+**unchanged**. Tom made the call on 2026-08-11 and the four blank `SC15-S012` rows are gone
+(`docs/pods/pod0-blank-sc15-s012-deletion-2026-08-11.md`). Any future canon shrink will park rows
+the same way, and clearing them stays a deliberate, approved pass.
+
 ---
 
 ## 6. Proposed order of work — cheapest first
@@ -235,9 +274,11 @@ expensive and the least urgent.
    `eng_for_jpn` uses — then translating the target from that.
 6. **The six Narrator drill tails** (numbers, clock times, months). Spanish renders "2 o'clock" as
    *Las dos*; Austrian gives *Jänner*. Per-language each time, or one pinned inventory?
-7. **Proofreading policy.** `pod-redo-scope-2026-08-07.md` records a "no-human-check ruling" that
-   removes proofreading for the fleet, while the Welsh model is a named human clearing drafts one by
-   one. Both cannot hold at 69 courses, and `deu_at` is already live with 155 unproofread lines.
+7. **Proofreading policy** — routed to Kai, unruled as of 2026-08-11. `pod-redo-scope-2026-08-07.md`
+   records a "no-human-check ruling" that removes proofreading for the fleet, while the Welsh model
+   is a named human clearing drafts one by one. Both cannot hold at 69 courses. **259 lines are
+   already live behind this ruling: `deu_at` 155 and `cym_s` 104** — the draft-debt ledger at the
+   top of this document, which is the list to work from when the ruling lands.
 8. **Pointer reuse.** Repointing a pod at a correct-text, correct-language, correct-voice clip owned
    by another course is what the `eng_for_*` family already does, and it would convert ~4,044
    clip-slots from renders into pointer sets. It is not what your no-pointer-move rule was written

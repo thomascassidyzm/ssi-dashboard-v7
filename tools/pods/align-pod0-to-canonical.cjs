@@ -207,6 +207,12 @@ async function planCourse(course, canonRaw) {
   // Rows the new canonical has no slot for. NOT deleted — blanked, so pods-plan's
   // `if (target)` / `if (known)` guards drop them from every queue. Deletion is a
   // recommendation for Tom and Aran, never an action here.
+  //
+  // This is deliberate and stays deliberate: the retired rows accumulate (one per
+  // line a shrinking scene loses, per pod) and are cleared by a separate approved
+  // pass, never by this tool. Worked example — the four blank SC15-S012 cards cut
+  // on 2026-08-11: docs/pods/pod0-blank-sc15-s012-deletion-2026-08-11.md.
+  // The count is reported per run as `retired_not_deleted`.
   const surplus = served.filter(r => !claimed.has(r.id)).map(r => ({
     op: 'retire', id: r.id,
     before: {

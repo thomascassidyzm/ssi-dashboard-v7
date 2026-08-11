@@ -101,6 +101,13 @@ No deploy is required: the player reads Supabase directly at runtime.
 
 ## Two things for Tom
 
+> **Both resolved, 2026-08-11.** The 104 unproofread lines are now tracked *alongside* `deu_at`'s
+> 155 as the draft-debt ledger in
+> [`docs/pods/scope-scout-2026-08-11/PLAN-all-pods-pod0.md`](../pods/scope-scout-2026-08-11/PLAN-all-pods-pod0.md)
+> §"Read this first" #2 — both clear together on the proofreading-policy ruling with Kai. The blank
+> `SC15-S012` card was cut on all four pods:
+> [`pod0-blank-sc15-s012-deletion-2026-08-11.md`](./pod0-blank-sc15-s012-deletion-2026-08-11.md).
+
 **1. Southern Welsh goes live with 104 unproofread lines.** `cym_s_for_eng` has 104 of 232 rows
 flagged `target_text_draft=true` — machine-written Welsh nobody has read. Northern has zero
 (Aran proofread it). I promoted anyway: 104 unproofread lines beat 0 lines on a released
