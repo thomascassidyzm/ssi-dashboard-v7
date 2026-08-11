@@ -178,7 +178,7 @@
           <div class="px-3 py-2 border-t border-line/50 flex gap-2">
             <textarea
               v-model="chatInput"
-              placeholder="Message the agent..."
+              placeholder="Message the agent… (redo seed N / undo seed N)"
               rows="2"
               class="flex-1 bg-surface/50 border border-line/40 rounded px-2 py-1.5 text-xs text-ink placeholder-faint resize-none focus:outline-none focus:border-violet-500/50"
               @keydown.meta.enter="sendChat"
@@ -586,6 +586,12 @@
               class="px-4 py-2 bg-orange-600/20 border border-orange-500/50 text-orange-400 hover:border-orange-400/70 disabled:opacity-50 text-sm font-medium rounded transition-all shrink-0"
             >{{ seedRedoing ? 'Sending...' : 'Redo' }}</button>
             <button
+              @click="undoRedo"
+              :disabled="seedUndoing"
+              title="Restore the decomposition the last redo replaced"
+              class="px-4 py-2 bg-sky-600/20 border border-sky-500/50 text-sky-400 hover:border-sky-400/70 disabled:opacity-50 text-sm font-medium rounded transition-all shrink-0"
+            >{{ seedUndoing ? 'Restoring...' : 'Undo redo' }}</button>
+            <button
               @click="approveSeed"
               :disabled="seedApproving"
               class="px-4 py-2 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-sm font-medium rounded transition-all shrink-0"
@@ -801,6 +807,7 @@ const seedViewLoading = ref(false)
 const seedReviewNotes = ref('')
 const seedApproving = ref(false)
 const seedRedoing = ref(false)
+const seedUndoing = ref(false)
 const redoingFlagged = ref(false)
 
 const seedGridFinalized = computed(() => seedGrid.value.filter(s => s.status === 'complete').length)
@@ -1673,6 +1680,35 @@ async function redoSeed() {
   }
 }
 
+// Undo the last redo on this seed: restore the decomposition snapshotted just
+// before the redo deleted it. Errors clearly if the seed was redone before
+// snapshots existed (no snapshot = nothing to restore).
+async function undoRedo() {
+  const courseCode = effectiveCourseCode.value
+  const seedNum = selectedSeed.value
+  if (!courseCode || !seedNum) return
+  seedUndoing.value = true
+  try {
+    const apiBase = getApiUrl()
+    const resp = await fetch(`${apiBase}/api/build/redo-undo/${courseCode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ seed: seedNum })
+    })
+    const body = await resp.json().catch(() => ({}))
+    if (!body.ok) {
+      showActionError(`Undo failed: ${body.error || resp.status}`)
+      return
+    }
+    await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
+    await selectSeed(seedNum)
+  } catch (err) {
+    showActionError(`Failed to undo redo: ${err.message}`)
+  } finally {
+    seedUndoing.value = false
+  }
+}
+
 async function redoAllFlagged() {
   const courseCode = effectiveCourseCode.value
   if (!courseCode) return
@@ -1740,6 +1776,26 @@ async function sendChat() {
         // Optimistically update grid
         for (const s of seedGrid.value) {
           if (seedNums.includes(s.seed)) s.status = 'building'
+        }
+        await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
+        return
+      }
+    }
+
+    // "undo seed N" / "undo redo seed N" — restore the decomposition the last
+    // redo replaced, from the snapshot taken before it was deleted.
+    const undoMatch = text.match(/^undo\s+(?:redo\s+)?seeds?\s+([\d,\s]+)/i)
+    if (undoMatch) {
+      const seedNums = undoMatch[1].split(/[,\s]+/).map(Number).filter(n => n > 0)
+      if (seedNums.length > 0) {
+        for (const seedNum of seedNums) {
+          const resp = await fetch(`${apiBase}/api/build/redo-undo/${courseCode}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+            body: JSON.stringify({ seed: seedNum })
+          })
+          const body = await resp.json().catch(() => ({}))
+          if (!body.ok) showActionError(`Undo failed for seed ${seedNum}: ${body.error || resp.status}`)
         }
         await Promise.all([buildMonitor.refresh(), fetchSeedGrid()])
         return
