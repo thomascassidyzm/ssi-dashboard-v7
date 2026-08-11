@@ -21,7 +21,7 @@ Every phrase carries a banner saying **where in the course a learner meets it** 
 | Early in the course | 1, 6, 9, 12, 16, 21, 26, 30 | 8 |
 | Middle of the course | 93, 107, 119, 132, 150, 169, 179, 200 | 8 |
 | Later in the course | 260, 269, 280, 286, 290, 298, 304, 334 | 8 |
-| Pod extras (no course position) | — | 11 |
+| Pod extras (no course position) | — | 11 (8 confirmed carved, 3 same-words-different-take) |
 
 Tap to play each, as many times as you like, then pick **A better**, **B better**, or **they sound the same**. The reveal follows immediately: which was glued, the Welsh text, and the pieces it was glued from.
 
@@ -55,11 +55,13 @@ Eight are drawn per band, deduplicated on text (the same phrase usually exists i
 
 One limit worth naming: the legacy audio covers roughly seeds 1–334 of a 668-seed course, so "late" means late-in-what-was-recorded, not the very end of the course.
 
-### The eleven pod extras — the joins with nothing else attached
+### The pod extras — the joins with nothing else attached
 
-On 2026-06-15 Aran recorded eleven whole pod utterances. On 2026-06-16 a pass cut those very takes into clause pieces and registered each piece as its own `course_audio` row. Same larynx, same session, same microphone, **same take**.
+On 2026-06-15 Aran recorded eleven whole pod utterances. On 2026-06-16 a pass cut those takes into clause pieces and registered each piece as its own `course_audio` row. Where that holds, re-gluing the pieces and comparing against the take they came out of isolates the join artefact and nothing else.
 
-Re-gluing those pieces and comparing against the take they came out of isolates the join artefact and nothing else. It shows in the durations: four of the eleven come back to the millisecond (`paceRatio` exactly 1.00), and the spread is 0.79–1.05.
+**It only holds for eight of the eleven, and that was measured rather than assumed.** Scout #169 inferred the carving from timestamps, missing provenance rows and clause containment — explicitly flagging that it had not checked the audio. Since the claim decides what the page tells the listener they are judging, the build now checks it: each piece is located inside its whole take by energy envelope, then confirmed by a sample-exact correlation in a tight window around the hit. Eight pieces correlate at 0.90–1.00 — genuine excerpts. Three come in at 0.04, 0.09 and 0.45: the same words, but a **different take**. Those three are relabelled `pod-retake` and say so on screen, because for them delivery can differ as well as the joins.
+
+(The first attempt at this measurement scanned raw samples on a 5 ms grid and reported 0 of 11. That was a false negative, not a finding — at 8 kHz a 2.5 ms misalignment decorrelates speech completely. The envelope-then-refine method is in `build-pairs.cjs` with that failure written down next to it.)
 
 They are pod material, so they have **no course position** — which is exactly why they come **last**. A listener who stops after the twenty-four course pairs has fully answered the question that was asked. Found by scout job #169; source list at `docs/concat-vs-whole-2026-08-11/B-human-aran-pieces-and-whole.json`.
 
@@ -73,11 +75,11 @@ A blind test is worthless if a side is identifiable by anything other than the j
 
 - **Loudness and encoding are matched.** The one-take side goes through the *identical* trim, normalise and lame encode as the glued side. Measured across pairs: mean volume agrees within 0.1 dB. Level cannot leak the answer.
 - **Silence is trimmed on both sides.** These library clips each carry their own lead-in and tail silence; gluing them raw inserts dead air at every join and would have made the glued side sound far worse than a real fast pass ever does. Both sides get the aligner's edge trim.
-- **Length is the one remaining tell, and it is recorded rather than filtered.** `pairs.json` carries a `paceRatio` (glued duration ÷ one-take duration) per phrase. Across the course pairs most sit near parity and a handful run over 1.5×; the eleven pod extras sit at 0.79–1.05. A glued version that drags is a genuine fast-pass artefact and Kai should hear it — but the verdicts deserve to be read against that column.
+- **Length is the one remaining tell, and it is recorded rather than filtered.** `pairs.json` carries a `paceRatio` (glued duration ÷ one-take duration) per phrase. Across the course pairs most sit near parity and a handful run over 1.5×; the eight confirmed carved pairs sit at 0.79–1.05. A glued version that drags is a genuine fast-pass artefact and Kai should hear it — but the verdicts deserve to be read against that column.
 
 ## The caveat worth stating plainly
 
-The twenty-four course pairs are a **harder test than production**. Their pieces come from separate course recordings, so several are read more deliberately than the same words inside a flowing phrase. In the real fast pass the pieces are cut from one read of the phrase itself, so they sit closer to natural pace — which is precisely what the eleven pod extras already reproduce.
+The twenty-four course pairs are a **harder test than production**. Their pieces come from separate course recordings, so several are read more deliberately than the same words inside a flowing phrase. In the real fast pass the pieces are cut from one read of the phrase itself, so they sit closer to natural pace — which is precisely what the eight confirmed carved pairs already reproduce.
 
 Which means the result is asymmetric in a useful way: **if a glued version sounds fine here, it will sound at least as good in production.** If Kai dislikes them here, the next question is whether the dislike tracks the `paceRatio` column or the joins themselves — and those two have very different answers.
 
@@ -88,7 +90,7 @@ Which means the result is asymmetric in a useful way: **if a glued version sound
 | Path | What |
 |---|---|
 | `public/concat-listening-test/index.html` | the page (self-contained, no build step, no API needed) |
-| `public/concat-listening-test/pairs.json` | the 35 pairs with their `band`, `seedNumber`, source `course_audio` ids and `paceRatio` |
+| `public/concat-listening-test/pairs.json` | the 35 pairs with their `band`, `seedNumber`, `kind`, `excerptCorrelation`, source `course_audio` ids and `paceRatio` |
 | `public/concat-listening-test/audio/*.mp3` | the 70 rendered clips |
 | `tools/concat-listening-test/build-pairs.cjs` | rebuilds the set (`--count N` = pairs across all bands, `--carved <file>`) from existing clips only |
 | `tools/concat-listening-test/serve.cjs` | the standalone host behind the live URL |

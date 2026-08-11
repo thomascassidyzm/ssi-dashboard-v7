@@ -97,7 +97,7 @@
   <p>Twenty-four phrases spread across the course — eight early (seeds 1–30), eight middle (93–200), eight late (260–334) — then eleven pod extras at the end that sit outside the course.</p>
   <p>Every clip already existed; nothing was recorded or generated for this test. The glued version is made from real recordings of that phrase's own pieces, joined with the same processing the live splicer uses: each piece trimmed to its speech, levelled to the same loudness, then stuck together.</p>
   <p>Both versions get identical trimming, levelling and encoding, so loudness or file quality can't give the game away — only the joins can. The position label tells you where you are in the course; it says nothing about which side is which.</p>
-  <p>The eleven pod extras at the end are the cleanest join test there is: Aran recorded them whole, and a later pass cut those very takes into pieces. Re-gluing them changes nothing but the joins. They have no course position, which is why they come last.</p>
+  <p>The eleven pod extras at the end are the cleanest join test there is: Aran recorded them whole, and a later pass cut those very takes into pieces. Re-gluing them changes nothing but the joins. Eight of the eleven were confirmed against the waveform as genuine excerpts; the other three turned out to be a different take of the same words, and say so when you reach them. They have no course position, which is why they come last.</p>
   <p>One honest caveat on the course phrases: their pieces come from separate course recordings rather than one read of the phrase, so a few drag more than a real fast pass would. If a glued one still sounds fine, it will sound at least as good in production.</p>
 </details>
 
@@ -237,8 +237,10 @@ function revealHtml(pair, answer) {
       </dl>
       <p class="pieces">Glued from: ${pair.pieceTexts.map(t => '<code>' + escapeHtml(t) + '</code>').join(' + ')}</p>
       <p class="pieces">${pair.kind === 'carved'
-        ? 'Those pieces were cut out of this very take, so the only difference you could hear is the joins themselves.'
-        : 'Those pieces come from separate recordings, so pace can differ as well as the joins.'}</p>
+        ? 'Those pieces were cut out of this very take — measured, not assumed — so the only difference you could hear is the joins themselves.'
+        : pair.kind === 'pod-retake'
+          ? 'Same words, but those pieces turned out to be a different take, so delivery can differ as well as the joins.'
+          : 'Those pieces come from separate recordings, so pace can differ as well as the joins.'}</p>
       <button class="next" id="next">${state.index + 1 >= pairs.length ? 'See results' : 'Next phrase'}</button>
     </div>`;
 }

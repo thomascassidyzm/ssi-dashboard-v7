@@ -36,6 +36,7 @@
 
 const fs = require('fs')
 const os = require('os')
+const { execFileSync } = require('child_process')
 const path = require('path')
 
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') })
@@ -261,6 +262,65 @@ async function trimToVoiced(inputPath, outputPath) {
   })
 }
 
+// ---------------------------------------------------------------------------
+// Is a "carved" pair really carved?
+//
+// Scout #169 inferred that Aran's clause pieces were cut out of his whole takes
+// from timestamps, missing provenance rows and clause containment — not from the
+// audio. That inference decides what the page TELLS Kai ("cut out of this very
+// take, so only the joins can differ"), so it gets measured rather than trusted.
+// Measured: 8 of the 11 hold; 3 are the same words from a DIFFERENT take, and
+// are labelled accordingly.
+//
+// Method: locate each piece inside the whole take by phase-insensitive energy
+// envelope, then confirm with a sample-exact correlation in a tight window
+// around the hit. (A raw-sample scan alone is useless here — at 8 kHz a 2.5 ms
+// misalignment decorrelates speech completely and every piece reads as
+// unrelated, which is exactly the false negative the first attempt produced.)
+const CARVED_CORR_MIN = 0.75
+
+function decodePcm8k(mp3Path, tempDir) {
+  const rawPath = path.join(tempDir, `${path.basename(mp3Path)}.raw`)
+  execFileSync('ffmpeg', ['-v', 'error', '-i', mp3Path, '-ac', '1', '-ar', '8000', '-f', 's16le', rawPath])
+  const buf = fs.readFileSync(rawPath)
+  const out = new Float32Array(buf.length / 2)
+  for (let i = 0; i < out.length; i++) out[i] = buf.readInt16LE(i * 2) / 32768
+  return out
+}
+
+function rmsEnvelope(x, frame = 80) {
+  const e = new Float32Array(Math.floor(x.length / frame))
+  for (let f = 0; f < e.length; f++) {
+    let s = 0
+    for (let i = 0; i < frame; i++) { const v = x[f * frame + i]; s += v * v }
+    e[f] = Math.sqrt(s / frame)
+  }
+  return e
+}
+
+function corrAt(hay, needle, off, n) {
+  let dot = 0, eh = 0, en = 0
+  for (let i = 0; i < n; i++) { const h = hay[off + i], x = needle[i]; dot += h * x; eh += h * h; en += x * x }
+  return dot / (Math.sqrt(eh * en) || 1e-9)
+}
+
+function excerptCorrelation(whole, piece) {
+  const eh = rmsEnvelope(whole), en = rmsEnvelope(piece)
+  const m = Math.min(en.length, 200)
+  let bestFrame = 0, bestEnv = -1
+  for (let f = 0; f + m < eh.length; f++) {
+    const c = corrAt(eh, en, f, m)
+    if (c > bestEnv) { bestEnv = c; bestFrame = f }
+  }
+  const n = Math.min(piece.length, 8000 * 2)
+  let best = -1
+  for (let off = Math.max(0, bestFrame * 80 - 160); off <= bestFrame * 80 + 160 && off + n < whole.length; off++) {
+    const c = corrAt(whole, piece, off, n)
+    if (c > best) best = c
+  }
+  return best
+}
+
 /**
  * Master the whole-phrase take through the SAME trim + normalise + lame encode
  * the spliced side gets. Without this the blind test leaks: a louder or
@@ -361,9 +421,11 @@ async function main() {
     const fileB = `${pairId}-b.mp3`
     try {
       const piecePaths = []
+      const rawPiecePaths = []
       for (let k = 0; k < item.pieces.length; k++) {
         const raw = path.join(tempDir, `${pairId}-piece-${k}-raw.mp3`)
         await download(item.pieces[k].s3_key, raw)
+        rawPiecePaths.push(raw)
         const trimmed = path.join(tempDir, `${pairId}-piece-${k}.mp3`)
         await trimToVoiced(raw, trimmed)
         piecePaths.push(trimmed)
@@ -376,17 +438,34 @@ async function main() {
       const wholeOut = path.join(audioDir, fileB)
       const wholeMs = await masterWhole(wholeRaw, wholeOut, tempDir)
 
+      // A pair only gets to claim "cut from this very take" if the audio proves
+      // it. The claim changes what the listener is told they are judging, so it
+      // is measured against the raw (pre-trim) clips, not assumed from metadata.
+      let kind = item.kind || 'library'
+      let corr = null
+      if (kind === 'carved') {
+        const wholePcm = decodePcm8k(wholeRaw, tempDir)
+        const scores = rawPiecePaths.map(p => excerptCorrelation(wholePcm, decodePcm8k(p, tempDir)))
+        corr = Number(Math.min(...scores).toFixed(2))
+        if (corr < CARVED_CORR_MIN) kind = 'pod-retake'
+        console.log(`    ${pairId} excerpt correlation ${corr} -> ${kind}`)
+      }
+
       pairs.push({
         id: pairId,
-        // 'carved' = pieces cut from this very take (the join artefact alone).
-        // 'library' = pieces from separate recordings (joins plus pace drift).
-        kind: item.kind || 'library',
+        // 'carved'      = pieces PROVEN to be excerpts of this take (joins only).
+        // 'pod-retake'  = same words, but a different take — joins plus delivery.
+        // 'library'     = pieces from separate recordings (joins plus pace drift).
+        kind,
+        excerptCorrelation: corr,
         // Where in the course the learner first meets this phrase. Shown to the
         // listener BEFORE they pick — position is context for the judgement, not
         // a clue about which side is glued. null for the carved pod extras.
         band: item.band ? item.band.key : null,
         bandLabel: item.band ? item.band.label : 'Pod recording, outside the course',
-        bandBlurb: item.band ? item.band.blurb : 'no course position — the joins with nothing else attached',
+        bandBlurb: item.band ? item.band.blurb
+          : kind === 'carved' ? 'no course position — the pieces came out of this very take, so the joins are the only difference'
+          : 'no course position — same words, but the pieces are a different take',
         seedNumber: item.seed || null,
         courseCode: item.source.courseCode,
         role: item.source.role,
