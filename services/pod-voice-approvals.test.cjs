@@ -24,7 +24,7 @@ import { describe, it, expect } from 'vitest'
 
 const {
   castFingerprint, canonicalSpeaker, trackKey, evaluateApproval,
-  parseSampleLimit, selectSample, SAMPLE_LIMIT_MAX,
+  parseSampleLimit, selectSample, selectExchange, EXCHANGE_MAX, SAMPLE_LIMIT_MAX, resolveCurrentPod0,
 } = require('./pod-voice-approvals.cjs')
 
 const pod = (id, speakers) => ({ id, speakers })
@@ -259,5 +259,112 @@ describe('selectSample — truncation covers the CAST, not just the first speake
   it('never invents work: a short queue stays short', () => {
     expect(selectSample([clip('target', 'A')], 10)).toHaveLength(1)
     expect(selectSample([], 10)).toHaveLength(0)
+  })
+})
+
+// Tom's T-14 rejection, 2026-08-11: "Pods are dialogue - they need distinct
+// speakers... so Tom can judge how the two voices sound together." Coverage
+// alone can't answer that: ten clips off ten different scenes never let an ear
+// hear two people in one conversation.
+describe('selectSample — leads with an EXCHANGE so the two voices are heard together', () => {
+  const line = (pod, kind, voice_id, sentence_id) =>
+    ({ kind, pod_id: pod, sentence_id, voice: { voice_id, provider: 'xai', locale: 'es' } })
+
+  // A real pod shape: the queue interleaves each sentence's target and known
+  // clip, so two turns of the conversation are NEVER array neighbours.
+  const podQueue = (voices) => voices.flatMap((v, i) => [
+    line('p0', 'target', v, `s${i}-t`),
+    line('p0', 'known', v === 'Maria' ? 'Olivia' : 'Tom', `s${i}-k`),
+  ])
+
+  it('picks consecutive same-track lines where the voice changes', () => {
+    const q = podQueue(['Maria', 'Maria', 'Pablo', 'Pablo', 'Maria'])
+    const picked = selectSample(q, 10)
+    const targets = picked.filter(p => p.kind === 'target').map(p => p.sentence_id)
+    // The first four target lines, in order — Maria twice then Pablo twice.
+    expect(targets.slice(0, 4)).toEqual(['s0-t', 's1-t', 's2-t', 's3-t'])
+  })
+
+  it('keeps the exchange contiguous and in line order (it has to play as a conversation)', () => {
+    const q = podQueue(['Maria', 'Pablo', 'Maria', 'Pablo'])
+    const ex = selectExchange(q, 6)
+    expect(ex.map(p => p.sentence_id)).toEqual(['s0-t', 's1-t'])
+    expect(new Set(ex.map(p => p.voice.voice_id)).size).toBe(2)
+  })
+
+  it('anchors the run at the voice change, not at the top of a monologue', () => {
+    // Nine Maria lines then one Pablo: a window off the front would be Maria
+    // talking to herself, which answers nothing.
+    const q = podQueue([...Array(9).fill('Maria'), 'Pablo'])
+    const ex = selectExchange(q, 3)
+    expect(ex.map(p => p.voice.voice_id)).toEqual(['Maria', 'Maria', 'Pablo'])
+  })
+
+  it('never lets the exchange crowd out a voice nobody has heard', () => {
+    // Two target voices in conversation + two known voices. A 6-line exchange
+    // would fill a 6-clip sample and the known cast would go unheard.
+    const q = podQueue(['Maria', 'Maria', 'Pablo', 'Pablo', 'Maria', 'Pablo'])
+    const picked = selectSample(q, 6)
+    const heard = new Set(picked.map(p => `${p.kind}|${p.voice.voice_id}`))
+    expect(heard).toContain('target|Maria')
+    expect(heard).toContain('target|Pablo')
+    expect(heard).toContain('known|Olivia')
+    expect(heard).toContain('known|Tom')
+  })
+
+  it('caps the exchange at EXCHANGE_MAX even when the limit would allow more', () => {
+    const q = podQueue(['Maria', 'Pablo', 'Maria', 'Pablo', 'Maria', 'Pablo', 'Maria', 'Pablo'])
+    expect(selectExchange(q, 99)).toHaveLength(2) // budget is the caller's; EXCHANGE_MAX applied in selectSample
+    expect(selectSample(q, 10).filter(p => p.kind === 'target').length).toBeLessThanOrEqual(EXCHANGE_MAX + 2)
+  })
+
+  it('a one-voice pod has no exchange, and falls back to plain coverage', () => {
+    const q = podQueue(['Maria', 'Maria', 'Maria'])
+    expect(selectExchange(q, 6)).toEqual([])
+    expect(selectSample(q, 2)).toHaveLength(2)
+  })
+
+  it('does not treat two different pods as one conversation', () => {
+    const q = [line('p0', 'target', 'Maria', 'a'), line('p1', 'target', 'Pablo', 'b')]
+    expect(selectExchange(q, 6)).toEqual([])
+  })
+})
+
+// Tom's T-14 rejection, 2026-08-11, reason 1: the samples came off a ~140-line
+// snapshot while the current pod holds 232. The cause is a hard-coded
+// `<course>:pod-0` against a `pod-0-unrecorded` working copy.
+describe('resolveCurrentPod0 — which pod actually holds the current content', () => {
+  const p = (slug, sentence_count) => ({ id: `c:${slug}`, slug, sentence_count })
+
+  it('prefers the working copy over a stale pod-0 (the spa_for_eng shape: 142 vs 232)', () => {
+    expect(resolveCurrentPod0([p('pod-0', 142), p('pod-0-unrecorded', 232)]).slug).toBe('pod-0-unrecorded')
+  })
+
+  it('prefers the working copy over an EMPTIED, gated pod-0 (the cym shape: 0 vs 232)', () => {
+    expect(resolveCurrentPod0([p('pod-0', 0), p('pod-0-unrecorded', 232)]).slug).toBe('pod-0-unrecorded')
+  })
+
+  it('uses pod-0 when that is all the course has', () => {
+    expect(resolveCurrentPod0([p('pod-0', 231)]).slug).toBe('pod-0')
+  })
+
+  it('ignores pods outside the pod-0 family', () => {
+    const got = resolveCurrentPod0([p('music', 749), p('travel-situations', 72), p('pod-0', 142)])
+    expect(got.slug).toBe('pod-0')
+  })
+
+  it('does not pick an empty working copy over a populated pod-0', () => {
+    expect(resolveCurrentPod0([p('pod-0', 142), p('pod-0-unrecorded', 0)]).slug).toBe('pod-0')
+  })
+
+  it('is null-safe for a course with no pod-0 at all', () => {
+    expect(resolveCurrentPod0([p('music', 749)])).toBeNull()
+    expect(resolveCurrentPod0([])).toBeNull()
+    expect(resolveCurrentPod0(null)).toBeNull()
+  })
+
+  it('derives the slug from the id when the caller has none', () => {
+    expect(resolveCurrentPod0([{ id: 'cym_n_for_eng:pod-0-unrecorded', sentence_count: 232 }]).id)
+      .toBe('cym_n_for_eng:pod-0-unrecorded')
   })
 })

@@ -27,7 +27,9 @@ import { getSupabase } from './lib/supabase.js'
 import { verifySupabaseJWT } from './lib/auth.js'
 import approvals from '../services/pod-voice-approvals.cjs'
 
-const { castFingerprint, loadCastPods, loadApprovals, updateApprovals, evaluateApproval } = approvals
+const {
+  castFingerprint, loadCastPods, loadApprovals, updateApprovals, evaluateApproval, resolveCurrentPod0,
+} = approvals
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -65,6 +67,35 @@ async function getState(req, res, supabase) {
   const all = await loadApprovals(supabase)
   const record = all[courseCode] || null
 
+  // Slugs + line counts, so the page can tell which pod holds the CURRENT
+  // content instead of hard-coding `<course>:pod-0`. Three courses keep a
+  // `pod-0-unrecorded` working copy and their `pod-0` is stale or emptied —
+  // see resolveCurrentPod0() for the counts and Tom's T-14 rejection.
+  const podIds = pods.map((p) => p.id)
+  const { data: meta } = podIds.length
+    ? await supabase.from('listening_pods').select('id, slug, title, pod_type').in('id', podIds)
+    : { data: [] }
+  const metaById = new Map((meta || []).map((m) => [m.id, m]))
+
+  const counts = new Map(podIds.map((id) => [id, 0]))
+  if (podIds.length) {
+    // Only the pod_id column — a few hundred rows, no text pulled back.
+    const { data: lines, error: lineErr } = await supabase
+      .from('listening_pod_sentences').select('pod_id').in('pod_id', podIds)
+    if (lineErr) throw new Error(`count pod sentences: ${lineErr.message}`)
+    for (const l of lines || []) counts.set(l.pod_id, (counts.get(l.pod_id) || 0) + 1)
+  }
+
+  const podsOut = pods.map((p) => ({
+    id: p.id,
+    slug: metaById.get(p.id)?.slug || null,
+    title: metaById.get(p.id)?.title || null,
+    pod_type: metaById.get(p.id)?.pod_type || null,
+    sentence_count: counts.get(p.id) || 0,
+    speakers: p.speakers || {},
+  }))
+  const current = resolveCurrentPod0(podsOut)
+
   const { data: course } = await supabase
     .from('courses')
     .select('course_code, display_name, target_lang, known_lang')
@@ -74,7 +105,10 @@ async function getState(req, res, supabase) {
   return res.json({
     course_code: courseCode,
     course: course || null,
-    pods: pods.map((p) => ({ id: p.id, speakers: p.speakers || {} })),
+    pods: podsOut,
+    // The pod whose lines the casting page must show and sample. Never assume
+    // `<course>:pod-0` — for spa/cym that is the stale or emptied copy.
+    current_pod_id: current ? current.id : null,
     cast_fingerprint: live,
     record,
     // The gate's own verdict, so the page states exactly what phase-8 will do.

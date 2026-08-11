@@ -101,16 +101,51 @@ describe('PodLab casting mode', () => {
     expect(w.text()).toContain('awaiting approval')
   })
 
-  it('samples round-robin across voices, not off the top of the pod', async () => {
+  // SEMANTICS CHANGED 2026-08-11 (Tom's T-14 rejection: "Pods are dialogue -
+  // they need distinct speakers... so Tom can judge how the two voices sound
+  // together"). The old assertion here was that the first four clips were four
+  // DIFFERENT voices — pure coverage, and deliberately flipped: the sample now
+  // LEADS with a contiguous exchange, which may repeat a voice inside it,
+  // before covering the voices the exchange didn't reach.
+  it('leads with an exchange — consecutive lines, two voices answering each other', async () => {
     const w = await mountLab()
     const rows = w.findAll('.sample-row')
     expect(rows.length).toBeGreaterThan(0)
     expect(rows.length).toBeLessThanOrEqual(10)
-    // The first N clips must each be a voice not yet heard — that is the whole
-    // point of matching selectSample()'s semantics.
-    const voices = rows.map((r) => r.find('.s-kind').text() + ':' + r.find('.s-voice').text())
-    const firstFour = voices.slice(0, 4)
-    expect(new Set(firstFour).size).toBe(firstFour.length)
+
+    const exch = w.findAll('.sample-row.exch')
+    expect(exch.length).toBeGreaterThanOrEqual(2)
+    // The exchange is at the TOP of the list — it has to play as a conversation.
+    expect(rows.slice(0, exch.length).every((r) => r.classes().includes('exch'))).toBe(true)
+    // …and it puts two different voices in front of the ear.
+    expect(new Set(exch.map((r) => r.find('.s-voice').text())).size).toBe(2)
+    expect(w.text()).toMatch(/-line exchange/)
+  })
+
+  it('still covers every voice the exchange did not reach', async () => {
+    const w = await mountLab()
+    const rows = w.findAll('.sample-row')
+    const exchVoices = new Set(
+      w.findAll('.sample-row.exch').map((r) => r.find('.s-kind').text() + ':' + r.find('.s-voice').text()),
+    )
+    // Every clip after the exchange is either a voice nobody has heard yet, or
+    // (once the cast is exhausted) a repeat — never a repeat before a new one.
+    const after = rows.slice(exchVoices.size).map((r) => r.find('.s-kind').text() + ':' + r.find('.s-voice').text())
+    const seen = new Set(exchVoices)
+    let sawRepeat = false
+    for (const v of after) {
+      if (seen.has(v)) sawRepeat = true
+      else {
+        expect(sawRepeat, `voice ${v} was heard after a repeat`).toBe(false)
+        seen.add(v)
+      }
+    }
+  })
+
+  it('names the pod it is sampling, so a stale snapshot cannot pass unnoticed', async () => {
+    const w = await mountLab()
+    expect(w.find('.pod-source').text()).toContain('eng_for_guj:pod-0')
+    expect(w.find('.pod-source').text()).toMatch(/\d+ live lines/)
   })
 
   it('POSTs the approval with the fingerprint it rendered', async () => {

@@ -24,6 +24,12 @@ import CoursePicker from '../../components/CoursePicker.vue'
 // runs) — see src/lib/podEngine + tools/sync-pod-engine.sh. Vendored, not
 // cross-repo-imported, because Popty's Vercel build is single-repo.
 import { composeSentenceArc, loadStage0ClipMaps, DEFAULT_STAGE0, resolveAtoms } from '../../lib/podEngine'
+// Sample generation goes to Popty's backend (phase-8 proxy), not the Vercel
+// /api routes the rest of this page uses — same helper pair as PodDetailView.
+import { getApiUrl } from '@/services/api.js'
+import { useAuth } from '@/composables/useAuth.js'
+
+const { getAccessToken } = useAuth()
 
 // ── audio (the deployed learning-app proxy; popty.app doesn't serve /api/audio) ──
 const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
@@ -196,12 +202,23 @@ async function loadCourse(courseCode) {
     const sb = await import('../../services/supabase').then((m) => m.supabase)
     if (!sb) throw new Error('Supabase not configured')
 
+    // Casting FIRST, because it is what tells us which pod holds the course's
+    // current pod-0 content. Hard-coding `<course>:pod-0` is what put a
+    // 142-line snapshot under Tom's ear while the live pod held 232, and it
+    // shows nothing at all for Welsh, whose pod-0 was emptied when the pod was
+    // gated (services/pod-voice-approvals.cjs#resolveCurrentPod0).
+    //
+    // It is awaited, not fired-and-forgotten: the sentence query depends on it.
+    await loadCasting(courseCode)
+    const podId = casting.value?.current_pod_id || `${courseCode}:pod-0`
+    currentPodId.value = podId
+
     const { data: rows, error: podErr } = await sb
       .from('listening_pod_sentences')
       .select(
         'id, global_order, speaker, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, glue_to_next, atom_map, atom_map_fine, window_known_map, takeg_audio_ids, sentence_audio_ids, sentence_known_audio_ids',
       )
-      .eq('pod_id', `${courseCode}:pod-0`)
+      .eq('pod_id', podId)
       .order('global_order', { ascending: true })
     if (podErr) throw podErr
     sentences.value = rows || []
@@ -221,12 +238,7 @@ async function loadCourse(courseCode) {
       .eq('role', 'pod_fine_known')
     fineKnownMap.value = new Map((fineRows || []).map((r) => [r.text_normalized, r.id]))
 
-    if (!sentences.value.length) error.value = `No pod sentences found for ${courseCode}:pod-0.`
-
-    // Casting + approval state comes from the API, not the browser client:
-    // app_config is not readable under the anon role, and the fingerprint must
-    // be the gate's own (server-side) function.
-    loadCasting(courseCode)
+    if (!sentences.value.length) error.value = `No pod sentences found for ${podId}.`
   } catch (e) {
     error.value = e?.message || String(e)
   } finally {
@@ -1137,6 +1149,7 @@ watch(selectedIdx, stop)
 // exactly what phase-8's resolvePodSpeakerVoice() reads at generation time.
 // Approve what will render, not what a pool says ought to render.
 const casting = ref(null) // GET /api/pod-voice-approval payload
+const currentPodId = ref('') // the pod whose lines are loaded and sampled
 const castingLoading = ref(false)
 const castingError = ref('')
 const castNote = ref('')
@@ -1231,16 +1244,34 @@ function resolveSpeakerVoice(podSpeakers, speaker, track) {
 }
 const voiceKey = (v) => (v ? `${v.provider}|${v.voice_id}|${v.locale || ''}` : 'none')
 
-// The pod whose lines are loaded on this page (PodLab reads `:pod-0`).
-const castSpeakers = computed(() => {
+// The pod whose lines are loaded on this page — resolved server-side by
+// resolveCurrentPod0(), never assumed to be `<course>:pod-0`.
+const currentPod = computed(() => {
   const pods = casting.value?.pods || []
-  const p0 = pods.find((p) => p.id === `${selectedCourseCode.value}:pod-0`) || pods[0]
-  return p0 ? p0.speakers || {} : {}
+  return pods.find((p) => p.id === currentPodId.value) || pods[0] || null
 })
-// Pods beyond pod-0 are in the fingerprint but their lines are not on this page.
+const castSpeakers = computed(() => currentPod.value?.speakers || {})
+// Pods beyond the current one are in the fingerprint but their lines are not
+// on this page.
 const otherPodIds = computed(() =>
-  (casting.value?.pods || []).map((p) => p.id).filter((id) => id !== `${selectedCourseCode.value}:pod-0`),
+  (casting.value?.pods || []).map((p) => p.id).filter((id) => id !== currentPod.value?.id),
 )
+// Named out loud, because "which pod am I listening to?" is exactly what went
+// wrong: a stale `pod-0` sampled while the current content sat in the working
+// copy. The page states its source rather than leaving it to be inferred.
+const podSource = computed(() => {
+  const p = currentPod.value
+  if (!p) return null
+  const family = (casting.value?.pods || []).filter((q) => (q.slug || q.id.split(':')[1] || '').startsWith('pod-0'))
+  const others = family.filter((q) => q.id !== p.id)
+  return {
+    id: p.id,
+    lines: sentences.value.length,
+    claimed: p.sentence_count,
+    title: p.title || '',
+    siblings: others.map((q) => `${q.id} (${q.sentence_count ?? '?'} lines)`),
+  }
+})
 
 // ISO-639-3 (courses.target_lang) → the ISO-639-1 subtag a voice locale should
 // open with. Unlisted languages report "can't check" — never a false alarm.
@@ -1363,14 +1394,27 @@ const castFlags = computed(() => {
 })
 
 // ── the ~10 sample clips ───────────────────────────────────────────────────
-// Semantics deliberately match selectSample() in services/pod-voice-approvals.cjs
-// (the gate's own sampler): build the queue in line order, take the FIRST clip
-// of each distinct (kind, provider, voice_id, locale) before any second clip of
-// a voice already covered, then slice to the limit. A ten-clip sample that came
-// off the top of the pod could be ten lines from one character, and would
-// approve nothing about the rest of the cast.
+// Semantics deliberately match selectSample()/selectExchange() in
+// services/pod-voice-approvals.cjs — the gate's own sampler, and the thing that
+// picks which clips a SAMPLE-mode render actually generates. A mirror rather
+// than an import: that module require()s node crypto at load, so it cannot
+// enter the browser bundle. The property both sides must agree on is tested on
+// each side (PodLab.casting.test.js here, pod-voice-approvals.test.cjs there).
+//
+// Two things the sample has to answer, in this order:
+//   1. DO THE TWO VOICES WORK TOGETHER? Lead with a real EXCHANGE — consecutive
+//      lines of this pod on one track where the cast puts two different voices
+//      against each other. Tom's T-14 rejection, 2026-08-11: "Pods are dialogue
+//      - they need distinct speakers", and ten clips off ten scenes never let
+//      an ear judge a two-hander.
+//   2. IS EVERY VOICE COVERED? Slots are held back for each distinct voice the
+//      exchange doesn't reach, so a conversation between two characters can
+//      never crowd out the rest of the cast.
 const SAMPLE_LIMIT = 10
-const sampleClips = computed(() => {
+const EXCHANGE_MAX = 6
+const clipVoiceKey = (item) => `${item.kind}|${voiceKey(item.voice)}`
+
+function sampleQueue() {
   const speakers = castSpeakers.value
   const queue = []
   for (const s of sentences.value) {
@@ -1383,15 +1427,75 @@ const sampleClips = computed(() => {
         other: s.target_text, order: s.global_order, voice: resolveSpeakerVoice(speakers, s.speaker, 'known') })
     }
   }
-  const seen = new Set()
-  const firstOfVoice = []
+  return queue
+}
+
+// "Consecutive" means consecutive WITHIN a track: the queue interleaves each
+// line's target and known clip, so raw neighbours are the two halves of one
+// line, not two turns of a conversation. The run is anchored at the voice
+// change so a window cut off the front of a monologue isn't one voice again.
+function pickExchange(queue, budget) {
+  if (budget < 2) return []
+  const byTrack = new Map()
+  for (const item of queue) {
+    if (!byTrack.has(item.kind)) byTrack.set(item.kind, [])
+    byTrack.get(item.kind).push(item)
+  }
+  for (const stream of byTrack.values()) {
+    for (let i = 0; i + 1 < stream.length; i++) {
+      const a = clipVoiceKey(stream[i])
+      const b = clipVoiceKey(stream[i + 1])
+      if (a === b) continue
+      const pair = new Set([a, b])
+      let start = i
+      while (start > 0 && pair.has(clipVoiceKey(stream[start - 1]))) start--
+      const window = stream.slice(start, i + 2)
+      return window.slice(Math.max(0, window.length - budget))
+    }
+  }
+  return []
+}
+
+const sampleExchange = computed(() => {
+  const queue = sampleQueue()
+  const distinct = new Set(queue.map(clipVoiceKey)).size
+  return pickExchange(queue, Math.min(EXCHANGE_MAX, SAMPLE_LIMIT - Math.max(0, distinct - 2)))
+})
+
+const sampleClips = computed(() => {
+  const queue = sampleQueue()
+  const exchange = sampleExchange.value
+  const taken = new Set(exchange)
+  const seen = new Set(exchange.map(clipVoiceKey))
+  const picked = [...exchange]
   const rest = []
   for (const item of queue) {
-    const k = `${item.kind}|${voiceKey(item.voice)}`
+    if (taken.has(item)) continue
+    const k = clipVoiceKey(item)
     if (seen.has(k)) rest.push(item)
-    else { seen.add(k); firstOfVoice.push(item) }
+    else { seen.add(k); picked.push(item) }
   }
-  return [...firstOfVoice, ...rest].slice(0, SAMPLE_LIMIT)
+  return [...picked, ...rest].slice(0, SAMPLE_LIMIT).map((item) => ({
+    ...item,
+    inExchange: taken.has(item),
+  }))
+})
+
+// How many distinct voices the sample actually puts in front of the ear, and
+// whether they are heard against each other. Stated in words, because "10
+// clips" says nothing about whether the two-hander was auditioned.
+const sampleShape = computed(() => {
+  const clips = sampleClips.value
+  const exchange = sampleExchange.value
+  const targetVoices = new Set(clips.filter((c) => c.kind === 'target' && c.voice).map((c) => voiceKey(c.voice)))
+  const exchangeVoices = [...new Set(exchange.map((c) => c.voice && (c.voice.name || c.voice.voice_id)).filter(Boolean))]
+  return {
+    clips: clips.length,
+    targetVoices: targetVoices.size,
+    exchangeLines: exchange.length,
+    exchangeVoices,
+    exchangeTrack: exchange.length ? exchange[0].kind : null,
+  }
 })
 // Honest emptiness: several courses have no pod audio at all yet.
 const sampleGap = computed(() => {
@@ -1400,6 +1504,65 @@ const sampleGap = computed(() => {
   const withKnown = sentences.value.filter((s) => s.known_audio_id).length
   return { total, withTarget, withKnown, none: !withTarget && !withKnown }
 })
+
+// ── generating a fresh sample ───────────────────────────────────────────────
+// SAMPLE MODE ONLY, AND IT MUST STAY THAT WAY. `sample_limit` is what makes
+// phase-8 truncate the queue (and skip the approval check, because without it
+// the gate would be unopenable); omit it and the same endpoint is a BULK run.
+// The server clamps to POD_SAMPLE_LIMIT_MAX = 10 whatever we send, phase-8
+// only ever fills clips whose audio_id is null, and it deletes nothing — so
+// the worst case here is ten new clips on lines that had no audio.
+//
+// Tom's constraint, 2026-08-11: "Do NOT bulk-render anything - the whole point
+// of this gate is sample-first, cap the spend, Tom approves before any full
+// run." This button is the sample half of that, and it is scoped to the ONE
+// pod on screen.
+const SAMPLE_GEN_LIMIT = 10
+const genBusy = ref(false)
+const genMsg = ref('')
+
+async function generateSample() {
+  const podId = currentPod.value?.id
+  const course = selectedCourseCode.value
+  if (!podId || !course || genBusy.value) return
+  const unvoiced = targetCast.value.filter((r) => !r.voice).length
+  const human = targetCast.value.some((r) => r.voice && r.voice.provider === 'human')
+  if (human) {
+    genMsg.value = 'This pod is cast on HUMAN voices — TTS cannot render it. It needs its recordings.'
+    return
+  }
+  if (!window.confirm(
+    `Generate up to ${SAMPLE_GEN_LIMIT} sample clips for ${podId}?\n\n`
+    + 'Sample mode only — the server truncates the queue to 10 and fills only lines '
+    + 'that have no audio. Nothing is deleted and no bulk run starts.'
+    + (unvoiced ? `\n\n${unvoiced} speaker label(s) have no target voice; their lines can't render.` : ''),
+  )) return
+
+  genBusy.value = true
+  genMsg.value = 'Generating…'
+  try {
+    const token = await getAccessToken()
+    const res = await fetch(`${getApiUrl()}/api/admin/pods/${encodeURIComponent(course)}/generate-audio`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: JSON.stringify({ pod_ids: [podId], sample_limit: SAMPLE_GEN_LIMIT }),
+    })
+    const body = await res.json().catch(() => ({}))
+    if (!res.ok) throw new Error(body.message || body.error || `HTTP ${res.status}`)
+    genMsg.value = `${body.mode === 'sample' ? 'SAMPLE' : body.mode} — ${body.generated || 0} generated, `
+      + `${body.reused || 0} reused, ${body.failed || 0} failed `
+      + `(queue was ${body.queued_before_sample ?? '?'} clips, truncated to ${body.total ?? '?'})`
+    await loadCourse(course) // re-bind the new clips so they are playable here
+  } catch (e) {
+    genMsg.value = `Failed: ${e.message}`
+  } finally {
+    genBusy.value = false
+  }
+}
 
 async function playSample(item) {
   stop()
@@ -1645,6 +1808,16 @@ loadLiveConfig()
               </span>
             </div>
 
+            <!-- WHICH POD IS UNDER THE EAR. Stated, never inferred: sampling a
+                 stale `pod-0` while the current content sat in the working copy
+                 is what T-14 was rejected for. -->
+            <p v-if="podSource" class="pod-source">
+              Sampling <code>{{ podSource.id }}</code> — <strong>{{ podSource.lines }}</strong> live lines.
+              <span v-if="podSource.siblings.length" class="muted">
+                Not: {{ podSource.siblings.join(', ') }}.
+              </span>
+            </p>
+
             <ul class="cast-flags">
               <li v-for="(f, i) in castFlags" :key="i" :class="f.level">{{ f.text }}</li>
             </ul>
@@ -1672,8 +1845,24 @@ loadLiveConfig()
               <button class="play-all" :disabled="!sampleClips.length" @click="playSampleAll">
                 ▶ Play the sample ({{ sampleClips.length }} clips)
               </button>
-              <span class="legend muted small">round-robin across voices — both voices before any voice twice</span>
+              <button class="gen-sample" :disabled="genBusy || !currentPod" @click="generateSample">
+                {{ genBusy ? 'Generating…' : `Generate a sample (max ${SAMPLE_GEN_LIMIT} clips)` }}
+              </button>
+              <span v-if="genMsg" class="chip" :class="{ err: genMsg.startsWith('Failed') }">{{ genMsg }}</span>
             </div>
+            <p class="legend muted small">
+              <template v-if="sampleShape.exchangeLines">
+                Leads with a <strong>{{ sampleShape.exchangeLines }}-line exchange</strong> on the
+                {{ sampleShape.exchangeTrack }} track — {{ sampleShape.exchangeVoices.join(' answering ') }} —
+                so you hear the two voices against each other, then one clip of every voice the
+                exchange didn't reach.
+              </template>
+              <template v-else>
+                No exchange available: no two consecutive lines of this pod are cast on different
+                voices, so this is coverage only — one clip per voice. That is a casting problem,
+                not a sampling one.
+              </template>
+            </p>
 
             <div v-if="sampleGap.none" class="empty">
               No pod audio exists for this course yet — nothing to listen to. Generate a sample first.
@@ -1685,8 +1874,9 @@ loadLiveConfig()
             </p>
 
             <div class="samples">
-              <div v-for="c in sampleClips" :key="c.kind + ':' + c.id" class="sample-row" :class="{ on: playingSample === c.kind + ':' + c.id }">
+              <div v-for="c in sampleClips" :key="c.kind + ':' + c.id" class="sample-row" :class="{ on: playingSample === c.kind + ':' + c.id, exch: c.inExchange }">
                 <button class="s-play" @click="playSample(c)">▶</button>
+                <span class="s-exch" :title="c.inExchange ? 'part of the exchange — consecutive lines, two voices' : 'voice coverage'">{{ c.inExchange ? '⇄' : '·' }}</span>
                 <span class="s-kind" :class="c.kind === 'target' ? 'r-target' : 'r-known'">{{ c.kind === 'target' ? 'T' : 'K' }}</span>
                 <span class="s-speaker">{{ c.speaker }}</span>
                 <span class="s-voice mono">{{ c.voice ? (c.voice.name || c.voice.voice_id) : 'no voice' }}</span>
@@ -2482,7 +2672,7 @@ code {
 }
 .sample-row {
   display: grid;
-  grid-template-columns: 30px 20px 110px 96px 1fr;
+  grid-template-columns: 30px 14px 20px 110px 96px 1fr;
   gap: 8px;
   align-items: baseline;
   padding: 6px;
@@ -2491,6 +2681,37 @@ code {
 }
 .sample-row.on {
   background: var(--surface-2);
+}
+/* The exchange reads as one block: these clips are a conversation, the rest
+   are one-off coverage of a voice. */
+.sample-row.exch {
+  border-left: 2px solid var(--accent, #ffd24a);
+}
+.s-exch {
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+.pod-source {
+  margin: 4px 0 10px;
+  font-size: 12.5px;
+  color: var(--text);
+}
+.pod-source code {
+  font-size: 12px;
+}
+.gen-sample {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: var(--text);
+  cursor: pointer;
+  padding: 6px 12px;
+  font-size: 13px;
+}
+.gen-sample:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 .s-play {
   background: var(--surface-2);
