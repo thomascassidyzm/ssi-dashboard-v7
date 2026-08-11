@@ -114,7 +114,12 @@ const PLACEHOLDER_TOKEN = /\[target language\]/gi
 // Separate, non-global copy: a /g regex carries lastIndex across .test() calls, so
 // reusing PLACEHOLDER_TOKEN to probe would return true/false on alternate lines.
 const HAS_PLACEHOLDER = /\[target language\]/i
-const LEARNING_RE = /i'm learning ([^.]+)\./i
+// Both contractions, because the served pods are not uniform: the 2026-08-11 fleet dry
+// run found hin/hye/swa write "I am learning Hindi." where every other course writes
+// "I'm learning Danish." A pod that states its own language name in full sentences must
+// not be refused over an apostrophe — the alternative is hand-feeding --language-name,
+// i.e. guessing, which is the one thing this detector exists to avoid.
+const LEARNING_RE = /i(?:'m| am) learning ([^.]+)\./i
 
 function detectLanguageName(servedRows) {
   if (LANGUAGE_NAME_OVERRIDE) return LANGUAGE_NAME_OVERRIDE
