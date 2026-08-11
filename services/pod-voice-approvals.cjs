@@ -119,24 +119,138 @@ function parseSampleLimit(raw, max = SAMPLE_LIMIT_MAX) {
   return { mode: 'sample', limit: Math.min(max, raw) }
 }
 
+/** The thing an ear has to be given once: one voice on one track. */
+function voiceTrackKey(item) {
+  const v = (item && item.voice) || {}
+  return `${item.kind}|${v.provider}|${v.voice_id}|${v.locale || ''}`
+}
+
 /**
- * Truncate a work queue to `limit` clips, taking the first clip of each
- * distinct (track, provider, voice_id, locale) before any second clip of a
- * voice already covered. A 5-clip sample that happened to be five lines from
- * one character would approve nothing about the rest of the cast.
+ * The longest sample an EXCHANGE is allowed to eat. Six lines is enough to
+ * hear two people talk and still leaves room under a 10-clip cap for the
+ * voices the exchange didn't reach.
+ */
+const EXCHANGE_MAX = 6
+
+/**
+ * Find a contiguous run of consecutive same-track lines of one pod in which
+ * two different voices answer each other. Pure; returns [] when the queue
+ * holds no such run (a one-voice pod, or a queue with no two same-track
+ * neighbours).
+ *
+ * "Consecutive" means consecutive WITHIN a track: the queue interleaves each
+ * sentence's target and known clip, so raw array neighbours are usually the
+ * two halves of one line, not two turns of a conversation.
+ *
+ * The run is anchored so the voice change sits at its END — a window cut off
+ * the front of a long monologue would be one voice again.
+ */
+function selectExchange(workQueue, budget) {
+  if (budget < 2) return []
+  const streams = new Map() // `${pod_id}|${kind}` → items in queue order
+  for (const item of workQueue) {
+    const k = `${item.pod_id || ''}|${item.kind}`
+    if (!streams.has(k)) streams.set(k, [])
+    streams.get(k).push(item)
+  }
+  for (const stream of streams.values()) {
+    for (let i = 0; i + 1 < stream.length; i++) {
+      const a = voiceTrackKey(stream[i])
+      const b = voiceTrackKey(stream[i + 1])
+      if (a === b) continue
+      // Extend backwards while the run stays inside these two voices, so the
+      // exchange starts where the conversation does rather than mid-turn.
+      const pair = new Set([a, b])
+      let start = i
+      while (start > 0 && pair.has(voiceTrackKey(stream[start - 1]))) start--
+      const window = stream.slice(start, i + 2)
+      return window.slice(Math.max(0, window.length - budget))
+    }
+  }
+  return []
+}
+
+/**
+ * Truncate a work queue to `limit` clips so the sample answers the two
+ * questions the gate is actually asked.
+ *
+ * 1. DO THE TWO VOICES WORK TOGETHER? (Tom, 2026-08-11 — the T-14 rejection:
+ *    "pods are dialogue — they need distinct speakers".) The sample leads with
+ *    a real EXCHANGE: consecutive lines of one pod on one track where the cast
+ *    puts two different voices against each other. Ten clips scattered across
+ *    ten scenes never let an ear judge a two-hander.
+ * 2. IS EVERY VOICE COVERED? Slots are reserved up front for each distinct
+ *    (track, provider, voice_id, locale) the exchange does not reach, so a
+ *    conversation between two characters can never crowd out the rest of the
+ *    cast — the property this function had before the exchange existed.
  *
  * Pure: takes and returns plain work items, generates nothing.
  */
 function selectSample(workQueue, limit) {
-  const seen = new Set()
-  const firstOfVoice = []
+  const distinct = new Set(workQueue.map(voiceTrackKey))
+  // Two of the distinct voices are the exchange's own; every other one needs
+  // a slot kept back for it.
+  const reserved = Math.max(0, distinct.size - 2)
+  const exchange = selectExchange(workQueue, Math.min(EXCHANGE_MAX, limit - reserved))
+
+  const picked = []
+  const takenItems = new Set(exchange)
+  const seen = new Set(exchange.map(voiceTrackKey))
+  picked.push(...exchange)
+
   const rest = []
   for (const item of workQueue) {
-    const v = item.voice || {}
-    const k = `${item.kind}|${v.provider}|${v.voice_id}|${v.locale || ''}`
-    if (seen.has(k)) rest.push(item); else { seen.add(k); firstOfVoice.push(item) }
+    if (takenItems.has(item)) continue
+    const k = voiceTrackKey(item)
+    if (seen.has(k)) rest.push(item)
+    else { seen.add(k); picked.push(item) }
   }
-  return [...firstOfVoice, ...rest].slice(0, limit)
+  return [...picked, ...rest].slice(0, limit)
+}
+
+// ---------------------------------------------------------------------------
+// WHICH POD HOLDS THE CURRENT CONTENT
+// ---------------------------------------------------------------------------
+// Tom's T-14 rejection, 2026-08-11: "The samples were generated from an older
+// snapshot of pod-0 (~140 sentences). Aran has since done substantial
+// proofreading/authoring work and pod-0 now holds MORE THAN 200 sentences."
+//
+// That is not a stale cache — it is the wrong pod. Three courses carry a
+// `pod-0-unrecorded` working copy alongside `pod-0`, and the current content
+// lives in the working copy:
+//   spa_for_eng   pod-0 = 142 sentences   pod-0-unrecorded = 232   (the ~140)
+//   cym_n_for_eng pod-0 =   0             pod-0-unrecorded = 232
+//   cym_s_for_eng pod-0 =   0             pod-0-unrecorded = 232
+// The Welsh `pod-0` rows are [GATED 2026-08-06] placeholders, deliberately
+// emptied so no learner sees an unrecorded pod. Anything that hard-codes
+// `<course>:pod-0` therefore reads either a stale snapshot or nothing at all.
+//
+// Pure. `pods` is [{ id, slug?, sentence_count }].
+
+const POD0_PREFIX = 'pod-0'
+
+function slugOf(pod) {
+  if (pod.slug) return pod.slug
+  const i = String(pod.id || '').indexOf(':')
+  return i < 0 ? String(pod.id || '') : String(pod.id).slice(i + 1)
+}
+
+/**
+ * The pod-0-family pod whose sentences are the course's CURRENT pod-0 content.
+ * Working copy first when it actually holds lines, then the most-populated
+ * pod-0 variant, then plain pod-0. Returns null when the course has no
+ * pod-0-family pod at all.
+ */
+function resolveCurrentPod0(pods) {
+  const family = (pods || []).filter((p) => slugOf(p).startsWith(POD0_PREFIX))
+  if (!family.length) return null
+  const populated = family.filter((p) => (p.sentence_count || 0) > 0)
+  const pool = populated.length ? populated : family
+  const unrecorded = pool.find((p) => slugOf(p) === 'pod-0-unrecorded')
+  if (unrecorded) return unrecorded
+  return [...pool].sort(
+    (a, b) => (b.sentence_count || 0) - (a.sentence_count || 0) || slugOf(a).localeCompare(slugOf(b)),
+  )[0]
 }
 
 // ---------------------------------------------------------------------------
@@ -218,10 +332,14 @@ module.exports = {
   SAMPLE_LIMIT_MAX,
   parseSampleLimit,
   selectSample,
+  selectExchange,
+  voiceTrackKey,
+  EXCHANGE_MAX,
   canonicalSpeaker,
   trackKey,
   castFingerprint,
   castLines,
+  resolveCurrentPod0,
   loadCastPods,
   liveFingerprint,
   loadApprovals,
