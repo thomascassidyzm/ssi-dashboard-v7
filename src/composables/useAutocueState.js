@@ -79,6 +79,13 @@ const state = reactive({
   // Review state
   approvedSegments: new Set(),
   rejectedSegments: new Set(),
+
+  // Re-record pass (script mode). Kai listens through a whole pass flagging bad
+  // takes, then re-records ONLY those. These hold that second pass: the item
+  // indices to revisit, in script order, and how far through them we are.
+  // Empty queue = not in a re-record pass.
+  retakeQueue: [],
+  retakeCursor: 0,
   playingSegmentId: null,
   // Set to 'flagged' when the review grid is narrowed to the takes that need a
   // look, or null for everything.
@@ -304,7 +311,11 @@ export function useAutocueState() {
       timerInterval = null
     }
 
-    if (state.scriptMode) {
+    if (state.retakeQueue.length) {
+      // A re-record pass was launched FROM review and belongs back there — the
+      // summary screen is the end of a whole session, which this is not.
+      endRetakePass()
+    } else if (state.scriptMode) {
       // In script mode, go to summary instead of review
       state.currentPhase = 'summary'
     } else {
@@ -392,6 +403,21 @@ export function useAutocueState() {
 
   // Auto-advance to next phrase (called after segment captured in script mode)
   function advanceToNext() {
+    // In a re-record pass the script is the flagged list, not the whole course:
+    // stepping to currentPhraseIndex + 1 would walk the recordist off into
+    // items they never flagged and re-record them over good takes.
+    if (state.retakeQueue.length) {
+      if (state.retakeCursor < state.retakeQueue.length - 1) {
+        state.retakeCursor++
+        state.currentPhraseIndex = state.retakeQueue[state.retakeCursor]
+      } else {
+        // Every flagged item has a fresh take — stop the mic and go back to
+        // review, where the new takes are waiting to be judged.
+        stopRecording()
+      }
+      return
+    }
+
     if (state.currentPhraseIndex < totalPhrases.value - 1) {
       state.currentPhraseIndex++
     } else {
@@ -401,6 +427,17 @@ export function useAutocueState() {
   }
 
   function navigatePhrase(direction) {
+    // Manual skip inside a re-record pass moves along the flagged list too, so
+    // Next/Previous stay consistent with what the pass is for.
+    if (state.retakeQueue.length) {
+      const cursor = state.retakeCursor + direction
+      if (cursor >= 0 && cursor < state.retakeQueue.length) {
+        state.retakeCursor = cursor
+        state.currentPhraseIndex = state.retakeQueue[cursor]
+      }
+      return
+    }
+
     const newIndex = state.currentPhraseIndex + direction
     if (newIndex >= 0 && newIndex < totalPhrases.value) {
       // If recording, stop current phrase and start new one
@@ -585,10 +622,74 @@ export function useAutocueState() {
     state.currentPhase = 'recording'
   }
 
+  // --- Re-record pass ---------------------------------------------------
+  // The flag is only half a feature on its own: in script mode every take was
+  // already uploaded as it was captured, so flagging one changes nothing on the
+  // server by itself. What makes the flag mean something is coming BACK and
+  // recording that item again — a new take of the same item supersedes the old
+  // one through the path that already exists (onSegmentCaptured replaces the
+  // row in place, queueUpload drops the earlier take and re-POSTs the slot).
+  // This pass is the front end for that: walk only the flagged items, in script
+  // order, and hand each one to the ordinary capture path.
+
+  // The flagged items as item indices, in script order. Segments carry
+  // itemIndex; the phrase list is what the teleprompter is driven by.
+  const flaggedIndices = computed(() => (
+    state.recordedSegments
+      .filter(seg => state.rejectedSegments.has(seg.id))
+      .map(seg => seg.itemIndex)
+      .filter(i => Number.isInteger(i))
+      .sort((a, b) => a - b)
+  ))
+
+  const isRetakePass = computed(() => state.retakeQueue.length > 0)
+
+  // The item the pass is currently parked on, or null outside a pass — used by
+  // the studio to caption the teleprompter with "retake 2 of 5".
+  const retakeProgress = computed(() => (
+    isRetakePass.value
+      ? { current: state.retakeCursor + 1, total: state.retakeQueue.length }
+      : null
+  ))
+
+  // Returns false when there is nothing flagged, so the caller can say so
+  // rather than dropping the recordist into an empty recording screen.
+  function startRetakePass() {
+    const queue = flaggedIndices.value
+    if (!queue.length) return false
+
+    stopPlayback()
+    state.retakeQueue = [...queue]
+    state.retakeCursor = 0
+    state.currentPhraseIndex = queue[0]
+    state.currentPhase = 'recording'
+    console.log(`[Autocue] Re-record pass over ${queue.length} flagged item(s):`, queue)
+    return true
+  }
+
+  // Leaving the pass returns to review rather than the summary screen: the
+  // recordist came FROM review and still has the rest of the pass to judge.
+  function endRetakePass() {
+    state.retakeQueue = []
+    state.retakeCursor = 0
+    state.currentPhase = 'review'
+  }
+
   async function finalizeSession() {
     console.log('[Autocue] Finalizing session...')
     console.log('[Autocue] Approved:', [...state.approvedSegments])
-    console.log('[Autocue] Rejected:', [...state.rejectedSegments])
+    console.log('[Autocue] Flagged:', [...state.rejectedSegments])
+
+    // Script mode already uploaded every take as it was captured, and the
+    // latest take of each item is the live one. Re-POSTing the approved ones
+    // here would upload the same bytes a second time — under `phrase.id`
+    // ("script-7"), which is not the identity the server minted for them.
+    // Approval in script mode is the recordist's own tick-list, not a gate.
+    if (state.scriptMode) {
+      console.log('[Autocue] Script mode — takes already uploaded; ending session')
+      resetSession()
+      return
+    }
 
     // Upload approved recordings
     const approvedSegments = state.recordedSegments.filter(seg =>
@@ -709,6 +810,10 @@ export function useAutocueState() {
     state.audioRecordings.clear()
     state.approvedSegments.clear()
     state.rejectedSegments.clear()
+    // Singleton state again: a half-finished re-record pass left in place would
+    // hijack the next session's advance into a stale list of item indices.
+    state.retakeQueue = []
+    state.retakeCursor = 0
     state.reviewFilter = null
     state.isUploading = false
     state.uploadProgress = 0
@@ -943,6 +1048,11 @@ export function useAutocueState() {
     setReviewFilter,
     clearReviewFilter,
     backToRecording,
+    startRetakePass,
+    endRetakePass,
+    flaggedIndices,
+    isRetakePass,
+    retakeProgress,
     finalizeSession,
     resetSession,
     loadCourse,

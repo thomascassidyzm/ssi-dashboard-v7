@@ -21,7 +21,7 @@
         </div>
         <div class="summary-stat">
           <span class="summary-value rejected">{{ rejectedIds.length }}</span>
-          <span class="summary-label">Queued for Redo</span>
+          <span class="summary-label">Flagged for Re-record</span>
         </div>
       </div>
     </div>
@@ -72,9 +72,43 @@
       <button class="control-btn" @click="$emit('back')">
         <span class="btn-icon">⬅️</span> Back to Recording
       </button>
-      <!-- Finalizing with nothing approved uploads nothing and resets the
+
+      <!-- The button that makes flagging mean something: go round again over
+           the flagged takes only. Script mode uploads as it records, so a flag
+           on its own changes nothing until a new take supersedes the old. -->
+      <button
+        v-if="scriptMode"
+        class="control-btn retake"
+        :disabled="!rejectedIds.length"
+        :title="rejectedIds.length
+          ? 'Record the flagged takes again — each new take replaces the old one'
+          : 'Flag at least one take first'"
+        @click="$emit('re-record-flagged')"
+      >
+        <span class="btn-icon">⚑</span> Re-record Flagged {{ rejectedIds.length ? `(${rejectedIds.length})` : '' }}
+      </button>
+
+      <!-- Script mode has already uploaded every take, so there is nothing left
+           to "finalize & upload" — saying so would be a lie, and the old
+           handler re-POSTed the bytes under the wrong identity. It ends the
+           session instead, and says plainly if flags are still outstanding. -->
+      <button
+        v-if="scriptMode"
+        class="control-btn success"
+        :title="rejectedIds.length
+          ? `${rejectedIds.length} take(s) still flagged — ending now leaves them as they are`
+          : 'All takes saved — end the session'"
+        @click="$emit('finalize')"
+      >
+        <span class="btn-icon">✓</span> Done
+        <span v-if="rejectedIds.length" class="done-warn">{{ rejectedIds.length }} still flagged</span>
+      </button>
+
+      <!-- Queue mode still uploads at the end, where approval IS the gate.
+           Finalizing with nothing approved uploads nothing and resets the
            session, taking every unsaved take with it. Don't offer that. -->
       <button
+        v-else
         class="control-btn success"
         :disabled="!approvedIds.length"
         :title="approvedIds.length ? 'Upload approved takes' : 'Approve at least one take first'"
@@ -95,12 +129,15 @@ const props = defineProps({
   playingSegmentId: { type: String, default: null },
   approvedIds: { type: Array, default: () => [] },
   rejectedIds: { type: Array, default: () => [] },
-  activeFilter: { type: String, default: null }
+  activeFilter: { type: String, default: null },
+  // Script mode uploads as it records; queue mode uploads at the end. That one
+  // difference decides what the final actions can honestly offer.
+  scriptMode: { type: Boolean, default: false }
 })
 
 defineEmits([
   'approve', 'reject', 'approve-all', 'queue-redo', 'filter', 'clear-filter',
-  'play', 'play-all', 'back', 'finalize'
+  'play', 'play-all', 'back', 're-record-flagged', 'finalize'
 ])
 
 // A take is flagged only for something observable: nothing captured, or a
@@ -334,6 +371,26 @@ const stats = computed(() => {
   transform: translateY(-3px);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
   border-color: var(--color-tungsten, var(--accent));
+}
+
+.control-btn.retake {
+  background: var(--color-film-red, #e63946);
+  border-color: var(--color-film-red, #e63946);
+  color: #fff;
+}
+
+.control-btn.retake:hover:not(:disabled) {
+  box-shadow: 0 8px 32px rgba(230, 57, 70, 0.4);
+}
+
+/* An outstanding-flag count rides on the Done button rather than blocking it:
+   ending with flags left is allowed, it just must never be silent. */
+.done-warn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: none;
+  opacity: 0.85;
+  margin-left: 0.4rem;
 }
 
 .control-btn.success {

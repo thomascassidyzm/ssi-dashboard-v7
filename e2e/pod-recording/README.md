@@ -60,9 +60,27 @@ gitignored there by design.)
   Pods → cast 1M/1F → save → both record links → fake-mic dialogue recording
   → DB row + S3 object + UI playback verification.
 - `02-mode1-autocue.spec.js` — Mode 1 script-load + start/stop smoke test.
+- `04-autocue-flag-rerecord.spec.js` — flag-for-re-record: records both
+  items, flags one, walks the re-record pass over that item alone, and
+  checks the flagged take came back as Take 2 while the other stayed Take 1
+  and no second upload was sent for it.
 - `helpers.js` — login + the `api_base_url` pin (see the comment in there —
   `EnvironmentSwitcher.vue` otherwise silently redirects the app to whichever
   remote machine's `ssi_environment` default is set, every page load).
+
+## On a box without sudo (watson-1)
+
+`npx playwright install-deps chromium` needs root and will fail. Chromium
+then dies at launch with `libnspr4.so: cannot open shared object file` — a
+missing *system* library, not a Playwright or app fault, so it looks like
+the suite is broken when nothing is. The NSS/NSPR libs are already
+extracted on this machine; point the loader at them:
+
+```bash
+LD_LIBRARY_PATH=/home/tomcassidy/.pwlibs/root/usr/lib/x86_64-linux-gnu \
+E2E_BASE_URL=http://localhost:5175 E2E_API_BASE=http://localhost:3472 \
+  npx playwright test --config=e2e/pod-recording/playwright.config.js
+```
 
 ## Known sharp edge this suite works around
 
