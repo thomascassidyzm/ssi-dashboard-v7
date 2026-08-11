@@ -940,3 +940,39 @@ owns a service during an incident.
 **Search width:** visible-options
 **Decided by:** agent — Tom's brief specified the migration; the watchdog line and the empty
 `dump.pm2` force-save are the agent's calls, both reversible.
+
+## 2026-08-11 — merge and deploy the recorder review flow before Catrin's first session
+
+**Move:** merged four pieces of unmerged recorder work into `main` and deployed them —
+the flag-then-re-record-only-the-flagged review pass
+(`fix/autocue-reject-flag-2026-08-11`, including the e2e spec that drives flag → re-record
+→ supersede through the real app), removal of the fake `Math.random()` confidence badge and
+its ID-derived waveform (`fix/autocue-remove-fake-confidence-2026-08-11`), per-LEGO chunk
+playback on the review card (`feat/autocue-chunk-review-playback-2026-08-11`), and the
+draft-badge wording fix cherry-picked from `fix/recorder-draft-badge-name-2026-08-11`.
+Tom ruled: merge it. Catrin starts her first recording session today.
+
+**Better:** the review screen's Redo button previously coloured a card and changed nothing —
+a recorder could flag takes all session and none of it meant anything, while a badge that was
+only a 1KB file-size check told them the app had listened and approved. Both are now honest:
+flagging drives a real second pass, and the screen says nothing about quality it cannot observe.
+**Simpler:** three branches, one shared set of files, resolved to one lineage rather than left
+as three forks of `SessionReview.vue`/`SegmentCard.vue`/`useAutocueState.js` diverging further
+each day. The fake-confidence removal deleted 246 lines against 166 added.
+**Cheaper (total):** one bad LEGO now costs one chunk of re-reading instead of a whole phrase,
+and a flagged-only second pass replaces the existing "re-read every line from the top" walk —
+recorder time is the scarce input here. No new services, no schema change: the new
+`chunk_boundaries_ms` witness rides inside the `quality_notes` JSON blob that
+`buildProvenanceContext` already serialises.
+
+**Searched & rejected:**
+- Deploy the frontend only, leave the API on the old commit — fails Better: the new SPA sends
+  `chunkBoundariesMs` in the upload metadata and only the new `production-api` strips it before
+  the S3 PUT, so an old backend risks 400ing uploads. Frontend and backend were moved together.
+- Merge the badge branch wholesale — fails Cheaper: that branch carries ten unrelated pdc/ell/pod
+  commits. Cherry-picked the single one-line commit instead.
+- Also merge `feat/autocue-record-everything` and `feat/autocue-concat-listening-test` while in
+  there — out of scope for today's ask, and untested against this merge. Left unmerged.
+
+**Search width:** visible-options
+**Decided by:** Tom — "merge it", ahead of Catrin's first session on 2026-08-11.
