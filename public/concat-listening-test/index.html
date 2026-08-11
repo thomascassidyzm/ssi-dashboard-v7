@@ -58,7 +58,21 @@
   table { width: 100%; border-collapse: collapse; font-size: .85rem; }
   th, td { text-align: left; padding: .45rem .3rem; border-bottom: 1px solid var(--line); }
   th { color: var(--dim); font-weight: 500; }
-  .tally { font-size: 1rem; margin: 0 0 1rem; }
+  /* The course-position banner. Colour-codes early/middle/late so the shift is
+     legible at a glance on a phone; it says nothing about which side is glued. */
+  .band { padding: .8rem 1rem; border-left: 5px solid var(--line); }
+  .band h2 { font-size: .95rem; margin: 0 0 .2rem; letter-spacing: .01em; }
+  .band p { margin: 0; color: var(--dim); font-size: .84rem; }
+  .band.early { border-left-color: #60a5fa; } .band.early h2 { color: #60a5fa; }
+  .band.middle { border-left-color: var(--accent-2); } .band.middle h2 { color: var(--accent-2); }
+  .band.late { border-left-color: var(--accent); } .band.late h2 { color: var(--accent); }
+  .band.carved { border-left-color: var(--dim); } .band.carved h2 { color: var(--dim); }
+
+  .rh { font-size: 1.05rem; margin: 0 0 .7rem; color: var(--accent-2); }
+  .bandtable td:first-child { min-width: 8.5rem; }
+  .bandtable th:not(:first-child), .bandtable td:not(:first-child) { text-align: center; }
+  .dim { color: var(--dim); font-size: .76rem; }
+  .tally { font-size: 1rem; margin: 1rem 0; }
   .tally b { color: var(--accent); }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; margin-top: .9rem; }
   .row button { background: var(--card-2); border: 1px solid var(--line); padding: .8rem; font-size: .9rem; }
@@ -75,15 +89,16 @@
 </head>
 <body>
 
-<h1>Glued vs one take</h1>
-<p class="sub">Two versions of the same Welsh phrase. One was recorded in a single continuous take. The other was built by gluing together separately-recorded pieces. Which sounds better?</p>
+<h1>How far in does the join stop mattering?</h1>
+<p class="sub">Two versions of the same Welsh phrase. One was recorded in a single continuous take, the other built by gluing separately-recorded pieces. Each phrase is labelled with where in the course a learner meets it — <b>early</b>, <b>middle</b> or <b>late</b>. Judge each one on its own terms: a beginner at seed 1 has nothing to compare against, and by seed 300 the ear is a different instrument.</p>
 
 <details>
   <summary>What am I listening to, exactly?</summary>
-  <p>Every clip here already existed — nothing was recorded or generated for this test. The glued version is made from real recordings of that phrase's own pieces, stuck together with the same processing the live splicer uses: each piece trimmed to its speech, levelled to the same loudness, then joined.</p>
-  <p>Both versions get identical trimming, levelling and encoding, so loudness or file quality can't give the game away — only the joins can.</p>
-  <p>The first eleven phrases are the cleanest test there is: Aran recorded them whole, and a later pass cut those very takes into pieces. Re-gluing them changes nothing but the joins, so if you can hear a problem there, the joins are the problem.</p>
-  <p>The rest are harder than real life: their pieces come from separate course recordings rather than one read of the phrase, so a few drag more than a real fast pass would. If a glued one still sounds fine there, it will sound at least as good in production.</p>
+  <p>Twenty-four phrases spread across the course — eight early (seeds 1–30), eight middle (93–200), eight late (260–334) — then eleven pod extras at the end that sit outside the course.</p>
+  <p>Every clip already existed; nothing was recorded or generated for this test. The glued version is made from real recordings of that phrase's own pieces, joined with the same processing the live splicer uses: each piece trimmed to its speech, levelled to the same loudness, then stuck together.</p>
+  <p>Both versions get identical trimming, levelling and encoding, so loudness or file quality can't give the game away — only the joins can. The position label tells you where you are in the course; it says nothing about which side is which.</p>
+  <p>The eleven pod extras at the end are the cleanest join test there is: Aran recorded them whole, and a later pass cut those very takes into pieces. Re-gluing them changes nothing but the joins. They have no course position, which is why they come last.</p>
+  <p>One honest caveat on the course phrases: their pieces come from separate course recordings rather than one read of the phrase, so a few drag more than a real fast pass would. If a glued one still sounds fine, it will sound at least as good in production.</p>
 </details>
 
 <div id="app"></div>
@@ -96,6 +111,8 @@ const STORE_KEY = 'concat-listening-test-v1';
 const API_PATHS = ['verdicts', '/api/production/concat-listening-test/verdicts'];
 
 let pairs = [];
+let bandMeta = {};                                   // key -> {label, blurb, min, max}
+const BAND_ORDER = ['early', 'middle', 'late'];
 let state = null;      // { sessionId, listener, index, answers: {pairId: {...}} }
 let audio = new Audio();
 let playingSide = null;
@@ -159,6 +176,10 @@ function render() {
       <span>${state.index + 1} of ${pairs.length}</span>
       <span class="bar"><i style="width:${(state.index / pairs.length) * 100}%"></i></span>
     </div>
+    <div class="card band ${pair.band || 'carved'}">
+      <h2>${escapeHtml(pair.bandLabel)}${pair.seedNumber ? ` · seed ${pair.seedNumber}` : ''}</h2>
+      <p>${escapeHtml(pair.bandBlurb)}</p>
+    </div>
     <div class="card">
       <button class="play" id="btnA"><span class="icon">▶</span><span>Version A<span class="meta">tap to play</span></span></button>
       <button class="play" id="btnB"><span class="icon">▶</span><span>Version B<span class="meta">tap to play</span></span></button>
@@ -184,6 +205,7 @@ function render() {
       const chose = pick === 'same' ? 'same' : ((pick === 'A') === aIsConcat ? 'concat' : 'whole');
       state.answers[pair.id] = {
         pairId: pair.id, text: pair.text, courseCode: pair.courseCode,
+        band: pair.band, seedNumber: pair.seedNumber, kind: pair.kind,
         voiceLabel: pair.voiceLabel, pieces: pair.pieceTexts.length,
         aWas: aIsConcat ? 'concat' : 'whole', picked: pick, preferred: chose,
         answeredAt: new Date().toISOString()
@@ -226,10 +248,35 @@ function renderResults() {
   const n = k => answers.filter(a => a.preferred === k).length;
   const whole = n('whole'), concat = n('concat'), same = n('same');
 
+  // The answer Kai actually asked for: does the preference for a single take
+  // fade as the course goes on? Read band by band, not as one lump.
+  const bandRows = BAND_ORDER.map(key => {
+    const inBand = answers.filter(a => a.band === key);
+    if (!inBand.length) return '';
+    const w = inBand.filter(a => a.preferred === 'whole').length;
+    const c = inBand.filter(a => a.preferred === 'concat').length;
+    const s = inBand.filter(a => a.preferred === 'same').length;
+    const meta = (bandMeta[key] || {});
+    const seeds = inBand.map(a => a.seedNumber).filter(Boolean);
+    return `<tr><td>${escapeHtml(meta.label || key)}${seeds.length ? `<br><span class="dim">seeds ${Math.min(...seeds)}–${Math.max(...seeds)}</span>` : ''}</td>
+      <td>${w}</td><td>${c}</td><td>${s}</td>
+      <td><b>${w > c + s ? 'one take wins' : (s + c) > w ? 'join not an issue' : 'split'}</b></td></tr>`;
+  }).join('');
+  const carved = answers.filter(a => !a.band);
+  const carvedRow = carved.length ? `<tr><td>Pod extras<br><span class="dim">joins only</span></td>
+      <td>${carved.filter(a => a.preferred === 'whole').length}</td>
+      <td>${carved.filter(a => a.preferred === 'concat').length}</td>
+      <td>${carved.filter(a => a.preferred === 'same').length}</td><td></td></tr>` : '';
+
   app.innerHTML = `
     <div class="card">
+      <h2 class="rh">Where does the join stop mattering?</h2>
+      <table class="bandtable">
+        <thead><tr><th>Point in the course</th><th>one take</th><th>glued</th><th>same</th><th></th></tr></thead>
+        <tbody>${bandRows}${carvedRow}</tbody>
+      </table>
       <p class="tally">
-        Out of ${answers.length} phrases you preferred the <b>single take</b> ${whole} time${whole === 1 ? '' : 's'},
+        Overall, out of ${answers.length} phrases you preferred the <b>single take</b> ${whole} time${whole === 1 ? '' : 's'},
         the <b>glued</b> version ${concat} time${concat === 1 ? '' : 's'},
         and heard <b>no difference</b> ${same} time${same === 1 ? '' : 's'}.
       </p>
@@ -246,9 +293,9 @@ function renderResults() {
     </div>
     <div class="card">
       <table>
-        <thead><tr><th>Phrase</th><th>Pieces</th><th>Preferred</th></tr></thead>
+        <thead><tr><th>Phrase</th><th>Seed</th><th>Preferred</th></tr></thead>
         <tbody>${answers.map(a => `
-          <tr><td class="welsh">${escapeHtml(a.text)}</td><td>${a.pieces}</td>
+          <tr><td class="welsh">${escapeHtml(a.text)}</td><td>${a.seedNumber || '—'}</td>
           <td>${a.preferred === 'whole' ? 'one take' : a.preferred === 'concat' ? 'glued' : 'same'}</td></tr>`).join('')}
         </tbody>
       </table>
@@ -313,6 +360,7 @@ fetch(PAIRS_URL)
   .then(r => r.json())
   .then(data => {
     pairs = data.pairs || [];
+    for (const b of (data.bands || [])) bandMeta[b.key] = b;
     if (!pairs.length) { app.innerHTML = '<div class="card">No comparison pairs are available.</div>'; return; }
     const saved = load();
     state = (saved && saved.sessionId) ? saved : newSession();

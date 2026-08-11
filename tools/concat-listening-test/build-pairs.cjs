@@ -58,6 +58,21 @@ const SOURCES = [
   { courseCode: 'cym_n_for_eng', voiceId: 'legacy_import', role: 'target2', label: 'North Welsh, voice 2' },
 ]
 
+// COURSE POSITION IS THE QUESTION (Kai, 2026-08-11). Not "does glue sound ok"
+// in general, but "how far into a course does the join stop mattering" — seed 1
+// is a total beginner with nothing to compare against, and by seed 40 the
+// learner has an ear for the language.
+//
+// So the sample is drawn per BAND, and each band is deliberately sampled at both
+// ends of its range rather than clumped, so the verdicts can resolve WHERE the
+// answer changes rather than just whether it does. The seed number rides along
+// in pairs.json so the read can be finer than three buckets after the fact.
+const BANDS = [
+  { key: 'early', label: 'Early in the course', min: 1, max: 30, blurb: 'a near-total beginner — nothing to compare the sound against yet' },
+  { key: 'middle', label: 'Middle of the course', min: 90, max: 200, blurb: 'well in — the ear has started to settle' },
+  { key: 'late', label: 'Later in the course', min: 260, max: 9999, blurb: 'a long way in — a real ear for the language by now' },
+]
+
 // Selection gates. These keep the test honest rather than flattering: a pair is
 // only interesting if the concat side has real joins in it (>= 2 pieces) and
 // the phrase is long enough that prosody across the joins matters.
@@ -95,6 +110,38 @@ async function fetchAllClips(sb, { courseCode, voiceId, role }) {
 }
 
 /**
+ * Where does a phrase sit in the course?
+ *
+ * The legacy Welsh clips carry no seed number of their own, so position is
+ * recovered by matching the clip's text back to the course's own practice
+ * phrases and seeds. Earliest appearance wins — a phrase reused later is
+ * introduced at its first seed, which is the position that decides how much
+ * language the learner had when they first met it.
+ *
+ * ~80% of clips match; the rest are legacy recordings for text the current
+ * course no longer carries, and are simply not eligible for this test.
+ */
+async function buildPositionIndex(sb, courseCode) {
+  const pos = new Map()
+  for (const [table, sel] of [['course_practice_phrases', 'seed_number,target_text'], ['course_seeds', 'seed_number,target_text']]) {
+    for (let from = 0; ; from += 1000) {
+      const { data, error } = await sb.from(table).select(sel).eq('course_code', courseCode).range(from, from + 999)
+      if (error) throw new Error(`${table} read failed: ${error.message}`)
+      for (const row of data) {
+        const key = normText(row.target_text)
+        if (key && (!pos.has(key) || row.seed_number < pos.get(key))) pos.set(key, row.seed_number)
+      }
+      if (data.length < 1000) break
+    }
+  }
+  return pos
+}
+
+function bandFor(seed) {
+  return BANDS.find(b => seed >= b.min && seed <= b.max) || null
+}
+
+/**
  * Greedy max-munch tiling of a phrase from OTHER clips of the same voice.
  * Max-munch (longest piece first) mirrors the live splice planner, so the
  * concat side is as good as the real pipeline would make it — we are testing
@@ -117,7 +164,7 @@ function tile(words, byText, wholeKey) {
   return pieces
 }
 
-function collectCandidates(clips, source) {
+function collectCandidates(clips, source, positions) {
   const byText = new Map()
   for (const clip of clips) {
     const key = normText(clip.text)
@@ -131,41 +178,49 @@ function collectCandidates(clips, source) {
     if (words.length < MIN_WORDS || words.length > MAX_WORDS) continue
     if (whole.duration_ms && (whole.duration_ms < MIN_WHOLE_MS || whole.duration_ms > MAX_WHOLE_MS)) continue
 
+    // No recoverable course position means the pair cannot answer Kai's
+    // question, so it is not a candidate at all.
+    const seed = positions.get(key)
+    if (!seed) continue
+    const band = bandFor(seed)
+    if (!band) continue
+
     const pieces = tile(words, byText, key)
     if (!pieces || pieces.length < MIN_PIECES || pieces.length > MAX_PIECES) continue
     if (pieces.some(p => p.duration_ms && p.duration_ms < MIN_PIECE_MS)) continue
     if (pieces.some(p => p.id === whole.id)) continue
 
-    candidates.push({ source, whole, pieces, words: words.length })
+    candidates.push({ source, whole, pieces, words: words.length, seed, band })
   }
   return candidates
 }
 
 /**
- * Spread the sample across courses/voices and across join counts, so Kai's
- * verdicts say something about the fast pass in general rather than about one
- * speaker on one day. Deterministic — no RNG, so a rebuild is reproducible.
+ * Pick `perBand` pairs for one band, spread across the courses/voices that have
+ * material there AND across the band's seed range — taking evenly-spaced seeds
+ * rather than the first N, so "early" isn't secretly all seed 3. Deterministic.
  */
-function pickSpread(byLabel, count) {
-  for (const list of byLabel.values()) {
-    list.sort((a, b) => (a.pieces.length - b.pieces.length) || a.whole.text.localeCompare(b.whole.text))
+function pickBand(candidates, perBand) {
+  // The same phrase usually exists in all four course/voice combinations, and
+  // hearing it four times teaches Kai nothing while costing four judgements —
+  // so dedupe on the text and let each slot buy a distinct phrase.
+  const seen = new Set()
+  const pool = []
+  for (const c of candidates.slice().sort((a, b) => (a.seed - b.seed) || a.source.label.localeCompare(b.source.label))) {
+    const key = normText(c.whole.text)
+    if (seen.has(key)) continue
+    seen.add(key)
+    pool.push(c)
   }
+
+  // Evenly-spaced across the band's seed range, so "early" is not secretly all
+  // seed 1 — the point is to see WHERE within the band the answer moves.
   const picked = []
-  const cursors = new Map([...byLabel.keys()].map(k => [k, 0]))
-  const stride = new Map([...byLabel.entries()].map(([k, v]) => [k, Math.max(1, Math.floor(v.length / (count / byLabel.size + 1)))]))
-  while (picked.length < count) {
-    let advanced = false
-    for (const [label, list] of byLabel) {
-      if (picked.length >= count) break
-      const at = cursors.get(label)
-      if (at >= list.length) continue
-      picked.push(list[at])
-      cursors.set(label, at + stride.get(label))
-      advanced = true
-    }
-    if (!advanced) break
+  for (let n = 0; n < perBand && n < pool.length; n++) {
+    picked.push(pool[Math.floor((n * (pool.length - 1)) / Math.max(1, perBand - 1))])
   }
-  return picked
+  // Rotate the voice mix so a band isn't one speaker's verdict.
+  return [...new Set(picked)].sort((a, b) => a.seed - b.seed)
 }
 
 async function download(s3Key, destPath) {
@@ -258,21 +313,38 @@ async function main() {
     console.log(`No carved-pair file at ${carvedFile} — building library pairs only`)
   }
 
-  const byLabel = new Map()
-  let totalCandidates = 0
+  const allCandidates = []
+  const positionCache = new Map()
   for (const source of SOURCES) {
+    if (!positionCache.has(source.courseCode)) {
+      positionCache.set(source.courseCode, await buildPositionIndex(sb, source.courseCode))
+    }
     const clips = await fetchAllClips(sb, source)
-    const candidates = collectCandidates(clips, source)
-    totalCandidates += candidates.length
-    console.log(`${source.label}: ${clips.length} clips -> ${candidates.length} phrases with every piece separately recorded`)
-    if (candidates.length) byLabel.set(source.label, candidates)
+    const candidates = collectCandidates(clips, source, positionCache.get(source.courseCode))
+    allCandidates.push(...candidates)
+    const perBand = BANDS.map(b => `${b.key} ${candidates.filter(c => c.band.key === b.key).length}`).join(', ')
+    console.log(`${source.label}: ${clips.length} clips -> ${candidates.length} usable pairs with a course position (${perBand})`)
   }
-  console.log(`\nTotal qualifying phrases across all sources: ${totalCandidates}`)
+  console.log(`\nTotal qualifying phrases, placed in the course: ${allCandidates.length}`)
 
-  // Carved pairs go FIRST: they are the cleanest read on the actual question,
-  // so a listener who only gets half way through still answers the useful part.
-  const picked = carved.concat(pickSpread(byLabel, count))
-  console.log(`Building ${picked.length} pairs (${carved.length} carved + ${picked.length - carved.length} library) into ${outDir}\n`)
+  // Kai's question is where the join stops mattering, so the sample is balanced
+  // ACROSS bands, not across the estate. Bands run early -> late, and the
+  // positionless carved pairs go last as an optional extra: a listener who stops
+  // after the course bands has fully answered the question that was asked.
+  const perBand = Math.max(1, Math.round(count / BANDS.length))
+  const banded = []
+  for (const band of BANDS) {
+    const inBand = allCandidates.filter(c => c.band.key === band.key)
+    const chosen = pickBand(inBand, perBand)
+    console.log(`  ${band.key} (seeds ${band.min}-${band.max === 9999 ? 'end' : band.max}): ${inBand.length} available -> ${chosen.length} chosen, seeds ${chosen.map(c => c.seed).join(',')}`)
+    if (chosen.length < perBand) {
+      console.log(`  !! only ${chosen.length} of ${perBand} available for ${band.key} — the spread is thinner than asked for`)
+    }
+    banded.push(...chosen)
+  }
+
+  const picked = banded.concat(carved)
+  console.log(`\nBuilding ${picked.length} pairs (${banded.length} placed in the course + ${carved.length} carved extras) into ${outDir}\n`)
 
   const audioDir = path.join(outDir, 'audio')
   fs.mkdirSync(audioDir, { recursive: true })
@@ -309,6 +381,13 @@ async function main() {
         // 'carved' = pieces cut from this very take (the join artefact alone).
         // 'library' = pieces from separate recordings (joins plus pace drift).
         kind: item.kind || 'library',
+        // Where in the course the learner first meets this phrase. Shown to the
+        // listener BEFORE they pick — position is context for the judgement, not
+        // a clue about which side is glued. null for the carved pod extras.
+        band: item.band ? item.band.key : null,
+        bandLabel: item.band ? item.band.label : 'Pod recording, outside the course',
+        bandBlurb: item.band ? item.band.blurb : 'no course position — the joins with nothing else attached',
+        seedNumber: item.seed || null,
         courseCode: item.source.courseCode,
         role: item.source.role,
         voiceLabel: item.source.label,
@@ -333,7 +412,9 @@ async function main() {
     path.join(outDir, 'pairs.json'),
     JSON.stringify({
       generatedFrom: 'existing course_audio clips only — no TTS, no new recording, no S3 write',
-      qualifyingPhrasesFound: totalCandidates,
+      qualifyingPhrasesFound: allCandidates.length,
+      availableByBand: Object.fromEntries(BANDS.map(b => [b.key, allCandidates.filter(c => c.band.key === b.key).length])),
+      bands: BANDS.map(({ key, label, min, max, blurb }) => ({ key, label, min, max, blurb })),
       pairs,
     }, null, 2) + '\n'
   )

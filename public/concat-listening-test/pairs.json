@@ -1,10 +1,774 @@
 {
   "generatedFrom": "existing course_audio clips only — no TTS, no new recording, no S3 write",
-  "qualifyingPhrasesFound": 6392,
+  "qualifyingPhrasesFound": 4295,
+  "availableByBand": {
+    "early": 741,
+    "middle": 1286,
+    "late": 2268
+  },
+  "bands": [
+    {
+      "key": "early",
+      "label": "Early in the course",
+      "min": 1,
+      "max": 30,
+      "blurb": "a near-total beginner — nothing to compare the sound against yet"
+    },
+    {
+      "key": "middle",
+      "label": "Middle of the course",
+      "min": 90,
+      "max": 200,
+      "blurb": "well in — the ear has started to settle"
+    },
+    {
+      "key": "late",
+      "label": "Later in the course",
+      "min": 260,
+      "max": 9999,
+      "blurb": "a long way in — a real ear for the language by now"
+    }
+  ],
   "pairs": [
     {
       "id": "p01",
+      "kind": "library",
+      "band": "early",
+      "bandLabel": "Early in the course",
+      "bandBlurb": "a near-total beginner — nothing to compare the sound against yet",
+      "seedNumber": 1,
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "North Welsh, voice 1",
+      "text": "dw i isio siarad",
+      "pieceTexts": [
+        "dw i isio",
+        "siarad"
+      ],
+      "concat": {
+        "file": "audio/p01-a.mp3",
+        "durationMs": 3125,
+        "sourceAudioIds": [
+          "35a5e251-fdc2-4057-a3d9-6071eb41495a",
+          "683e5b55-945e-418e-9266-86befcf59232"
+        ]
+      },
+      "whole": {
+        "file": "audio/p01-b.mp3",
+        "durationMs": 3637,
+        "sourceAudioId": "8c8982df-50df-4fdc-83a0-31e01356bfe2"
+      },
+      "paceRatio": 0.86
+    },
+    {
+      "id": "p02",
+      "kind": "library",
+      "band": "early",
+      "bandLabel": "Early in the course",
+      "bandBlurb": "a near-total beginner — nothing to compare the sound against yet",
+      "seedNumber": 6,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "alla i ddim siarad Cymraeg",
+      "pieceTexts": [
+        "alla i ddim siarad",
+        "Cymraeg"
+      ],
+      "concat": {
+        "file": "audio/p02-a.mp3",
+        "durationMs": 3225,
+        "sourceAudioIds": [
+          "6104f72f-b2fb-4af9-86a9-2122525595d3",
+          "03306e2e-5787-4003-a110-88fc4f110dbc"
+        ]
+      },
+      "whole": {
+        "file": "audio/p02-b.mp3",
+        "durationMs": 2381,
+        "sourceAudioId": "6f5c475c-1eee-419f-a26a-9a7d7566028f"
+      },
+      "paceRatio": 1.35
+    },
+    {
+      "id": "p03",
+      "kind": "library",
+      "band": "early",
+      "bandLabel": "Early in the course",
+      "bandBlurb": "a near-total beginner — nothing to compare the sound against yet",
+      "seedNumber": 9,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "dw i’n moyn dweud",
+      "pieceTexts": [
+        "dw i’n moyn",
+        "dweud"
+      ],
+      "concat": {
+        "file": "audio/p03-a.mp3",
+        "durationMs": 3357,
+        "sourceAudioIds": [
+          "d5708669-36f8-4175-9a83-adf3b6d45bfb",
+          "8a8a8f1a-8af7-4840-bd65-61ad9baa7d0d"
+        ]
+      },
+      "whole": {
+        "file": "audio/p03-b.mp3",
+        "durationMs": 2426,
+        "sourceAudioId": "767d63f0-0e8b-4d2c-9ccf-499dde61bde3"
+      },
+      "paceRatio": 1.38
+    },
+    {
+      "id": "p04",
+      "kind": "library",
+      "band": "early",
+      "bandLabel": "Early in the course",
+      "bandBlurb": "a near-total beginner — nothing to compare the sound against yet",
+      "seedNumber": 12,
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "North Welsh, voice 1",
+      "text": "beth o’n i isio deud",
+      "pieceTexts": [
+        "beth",
+        "o’n i isio",
+        "deud"
+      ],
+      "concat": {
+        "file": "audio/p04-a.mp3",
+        "durationMs": 3782,
+        "sourceAudioIds": [
+          "c880e582-7bb2-455b-9956-9177df5e2f9c",
+          "779d397d-b06e-4924-af94-bd4f37cc0136",
+          "fe09bff2-44fb-4e75-8b2a-ed36fffb0ca1"
+        ]
+      },
+      "whole": {
+        "file": "audio/p04-b.mp3",
+        "durationMs": 4119,
+        "sourceAudioId": "07ac6cda-ef20-481b-8ae7-19f51af9c96a"
+      },
+      "paceRatio": 0.92
+    },
+    {
+      "id": "p05",
+      "kind": "library",
+      "band": "early",
+      "bandLabel": "Early in the course",
+      "bandBlurb": "a near-total beginner — nothing to compare the sound against yet",
+      "seedNumber": 16,
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "North Welsh, voice 1",
+      "text": "dw i wedi anghofio sut i siarad Cymraeg",
+      "pieceTexts": [
+        "dw i wedi anghofio",
+        "sut i siarad Cymraeg"
+      ],
+      "concat": {
+        "file": "audio/p05-a.mp3",
+        "durationMs": 8007,
+        "sourceAudioIds": [
+          "c1ac9960-4176-4eeb-8dc1-8ed0f75ee967",
+          "59033256-8760-4b98-9246-60baf6f77136"
+        ]
+      },
+      "whole": {
+        "file": "audio/p05-b.mp3",
+        "durationMs": 6227,
+        "sourceAudioId": "603e2a5a-694f-455f-9859-30ecd9b5bc73"
+      },
+      "paceRatio": 1.29
+    },
+    {
+      "id": "p06",
+      "kind": "library",
+      "band": "early",
+      "bandLabel": "Early in the course",
+      "bandBlurb": "a near-total beginner — nothing to compare the sound against yet",
+      "seedNumber": 21,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "well i fi ymarfer mwy",
+      "pieceTexts": [
+        "well i fi",
+        "ymarfer",
+        "mwy"
+      ],
+      "concat": {
+        "file": "audio/p06-a.mp3",
+        "durationMs": 3519,
+        "sourceAudioIds": [
+          "68c93465-d8ca-42ad-9ece-eee46723ac6c",
+          "4f808fa8-b499-4982-b6bc-efe39e36c272",
+          "78ed893a-9283-48f7-aca7-26eee4311244"
+        ]
+      },
+      "whole": {
+        "file": "audio/p06-b.mp3",
+        "durationMs": 3215,
+        "sourceAudioId": "f3bfd198-c324-4f5d-940f-831124d672c8"
+      },
+      "paceRatio": 1.09
+    },
+    {
+      "id": "p07",
+      "kind": "library",
+      "band": "early",
+      "bandLabel": "Early in the course",
+      "bandBlurb": "a near-total beginner — nothing to compare the sound against yet",
+      "seedNumber": 26,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "dw i’n trio cofio rhywbeth arall",
+      "pieceTexts": [
+        "dw i’n trio cofio",
+        "rhywbeth arall"
+      ],
+      "concat": {
+        "file": "audio/p07-a.mp3",
+        "durationMs": 3339,
+        "sourceAudioIds": [
+          "208527c1-5644-4ce4-9f33-5830e42f024b",
+          "a9dd6efa-b132-4c25-855e-cc97e0f17bf9"
+        ]
+      },
+      "whole": {
+        "file": "audio/p07-b.mp3",
+        "durationMs": 3546,
+        "sourceAudioId": "e2fbca62-8ea0-45db-9e24-a14714d82e93"
+      },
+      "paceRatio": 0.94
+    },
+    {
+      "id": "p08",
+      "kind": "library",
+      "band": "early",
+      "bandLabel": "Early in the course",
+      "bandBlurb": "a near-total beginner — nothing to compare the sound against yet",
+      "seedNumber": 30,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "ti’n siarad hi nawr",
+      "pieceTexts": [
+        "ti’n siarad hi",
+        "nawr"
+      ],
+      "concat": {
+        "file": "audio/p08-a.mp3",
+        "durationMs": 2507,
+        "sourceAudioIds": [
+          "fe5223f2-ffde-49e3-82c4-7ab309215661",
+          "b9513606-32e4-4e06-95d7-eec81a47cd8a"
+        ]
+      },
+      "whole": {
+        "file": "audio/p08-b.mp3",
+        "durationMs": 1930,
+        "sourceAudioId": "3865c19d-ac0f-4f66-b7bf-f465f1b70015"
+      },
+      "paceRatio": 1.3
+    },
+    {
+      "id": "p09",
+      "kind": "library",
+      "band": "middle",
+      "bandLabel": "Middle of the course",
+      "bandBlurb": "well in — the ear has started to settle",
+      "seedNumber": 93,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "oedd hi’n moyn siarad gyda ychydig o ffrindiau",
+      "pieceTexts": [
+        "oedd hi’n moyn",
+        "siarad",
+        "gyda ychydig o ffrindiau"
+      ],
+      "concat": {
+        "file": "audio/p09-a.mp3",
+        "durationMs": 5813,
+        "sourceAudioIds": [
+          "74105b20-bc24-400f-8922-caad585be13f",
+          "83b9d846-55c7-4151-a177-f51e9d4253fa",
+          "5310face-5c05-4e99-b8b3-feed4ea4189b"
+        ]
+      },
+      "whole": {
+        "file": "audio/p09-b.mp3",
+        "durationMs": 4880,
+        "sourceAudioId": "e031cc96-779d-461d-a0a9-7fa6f910dde5"
+      },
+      "paceRatio": 1.19
+    },
+    {
+      "id": "p10",
+      "kind": "library",
+      "band": "middle",
+      "bandLabel": "Middle of the course",
+      "bandBlurb": "well in — the ear has started to settle",
+      "seedNumber": 107,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "y ffilm ’na ar y teledu",
+      "pieceTexts": [
+        "y ffilm ’na",
+        "ar y teledu"
+      ],
+      "concat": {
+        "file": "audio/p10-a.mp3",
+        "durationMs": 2395,
+        "sourceAudioIds": [
+          "7e80a078-aa53-4b71-9bea-de579631f57c",
+          "1ff71a03-180b-4e18-9418-310c029277fe"
+        ]
+      },
+      "whole": {
+        "file": "audio/p10-b.mp3",
+        "durationMs": 2834,
+        "sourceAudioId": "d158e72c-b123-48f2-94cd-3fce20e6f69f"
+      },
+      "paceRatio": 0.85
+    },
+    {
+      "id": "p11",
+      "kind": "library",
+      "band": "middle",
+      "bandLabel": "Middle of the course",
+      "bandBlurb": "well in — the ear has started to settle",
+      "seedNumber": 119,
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "North Welsh, voice 1",
+      "text": "dyna ddigon rŵan",
+      "pieceTexts": [
+        "dyna ddigon",
+        "rŵan"
+      ],
+      "concat": {
+        "file": "audio/p11-a.mp3",
+        "durationMs": 2176,
+        "sourceAudioIds": [
+          "8dab6909-638f-42ed-b591-c2e1294ed34f",
+          "6cd36b81-feeb-4a50-a2d0-b7fa08d8f2dd"
+        ]
+      },
+      "whole": {
+        "file": "audio/p11-b.mp3",
+        "durationMs": 1874,
+        "sourceAudioId": "9bcc32fd-7fa6-4b75-9ddc-15eac7f67b41"
+      },
+      "paceRatio": 1.16
+    },
+    {
+      "id": "p12",
+      "kind": "library",
+      "band": "middle",
+      "bandLabel": "Middle of the course",
+      "bandBlurb": "well in — the ear has started to settle",
+      "seedNumber": 132,
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "North Welsh, voice 1",
+      "text": "bwyta cymaint â phosib",
+      "pieceTexts": [
+        "bwyta",
+        "cymaint â phosib"
+      ],
+      "concat": {
+        "file": "audio/p12-a.mp3",
+        "durationMs": 2461,
+        "sourceAudioIds": [
+          "34f28e9d-b4d5-4522-9282-51c9b9b8d251",
+          "1ee5c6fe-6dc1-4443-b213-134dc69a8f0b"
+        ]
+      },
+      "whole": {
+        "file": "audio/p12-b.mp3",
+        "durationMs": 2696,
+        "sourceAudioId": "2e902db7-e1f2-4355-8c83-ae4e9fadd495"
+      },
+      "paceRatio": 0.91
+    },
+    {
+      "id": "p13",
+      "kind": "library",
+      "band": "middle",
+      "bandLabel": "Middle of the course",
+      "bandBlurb": "well in — the ear has started to settle",
+      "seedNumber": 150,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "oes ’da chi deledu eich hunain?",
+      "pieceTexts": [
+        "oes ’da chi deledu?",
+        "eich hunain"
+      ],
+      "concat": {
+        "file": "audio/p13-a.mp3",
+        "durationMs": 2192,
+        "sourceAudioIds": [
+          "fe37b210-b007-45a6-86fc-2aa71417fca7",
+          "8dc466c0-4da0-4212-a24d-bcb3597ead4a"
+        ]
+      },
+      "whole": {
+        "file": "audio/p13-b.mp3",
+        "durationMs": 2103,
+        "sourceAudioId": "0773fb59-c39b-4f7f-94e1-4322c52c315c"
+      },
+      "paceRatio": 1.04
+    },
+    {
+      "id": "p14",
+      "kind": "library",
+      "band": "middle",
+      "bandLabel": "Middle of the course",
+      "bandBlurb": "well in — the ear has started to settle",
+      "seedNumber": 169,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "cofio pan o’n nhw’n ifanc",
+      "pieceTexts": [
+        "cofio",
+        "pan o’n nhw’n ifanc"
+      ],
+      "concat": {
+        "file": "audio/p14-a.mp3",
+        "durationMs": 2629,
+        "sourceAudioIds": [
+          "b4a8b19d-76d1-425f-87e1-986cb9b0801d",
+          "a6c34ee2-9cb3-4265-a9b2-e4a4ed0f0a92"
+        ]
+      },
+      "whole": {
+        "file": "audio/p14-b.mp3",
+        "durationMs": 1993,
+        "sourceAudioId": "8468b4d7-5ac3-4e90-955d-60b8e0bcc4b1"
+      },
+      "paceRatio": 1.32
+    },
+    {
+      "id": "p15",
+      "kind": "library",
+      "band": "middle",
+      "bandLabel": "Middle of the course",
+      "bandBlurb": "well in — the ear has started to settle",
+      "seedNumber": 179,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "bo’ ni’n cwpla mewn pryd",
+      "pieceTexts": [
+        "bo’ ni’n cwpla",
+        "mewn pryd"
+      ],
+      "concat": {
+        "file": "audio/p15-a.mp3",
+        "durationMs": 2332,
+        "sourceAudioIds": [
+          "0780fba5-2608-4a69-a81f-83c98bc51f65",
+          "8c2cb9c9-fd41-430d-b014-f274bc734a89"
+        ]
+      },
+      "whole": {
+        "file": "audio/p15-b.mp3",
+        "durationMs": 1798,
+        "sourceAudioId": "27c80806-f0cc-400f-b2f6-bfc9f9f030c8"
+      },
+      "paceRatio": 1.3
+    },
+    {
+      "id": "p16",
+      "kind": "library",
+      "band": "middle",
+      "bandLabel": "Middle of the course",
+      "bandBlurb": "well in — the ear has started to settle",
+      "seedNumber": 200,
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "North Welsh, voice 1",
+      "text": "wnest ti wylio’r pêl-droed ar y penwythnos?",
+      "pieceTexts": [
+        "wnest ti wylio’r pêl-droed?",
+        "ar y penwythnos"
+      ],
+      "concat": {
+        "file": "audio/p16-a.mp3",
+        "durationMs": 4180,
+        "sourceAudioIds": [
+          "4fc06e06-9cea-4093-96f3-504693a8d8ed",
+          "96260cab-2b9e-43bf-ad50-c4f11e477856"
+        ]
+      },
+      "whole": {
+        "file": "audio/p16-b.mp3",
+        "durationMs": 2842,
+        "sourceAudioId": "a70b10c2-8d69-41c7-a7c1-75d668803ce7"
+      },
+      "paceRatio": 1.47
+    },
+    {
+      "id": "p17",
+      "kind": "library",
+      "band": "late",
+      "bandLabel": "Later in the course",
+      "bandBlurb": "a long way in — a real ear for the language by now",
+      "seedNumber": 260,
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "North Welsh, voice 1",
+      "text": "bydda i’n gofyn iddi siarad",
+      "pieceTexts": [
+        "bydda i’n gofyn iddi",
+        "siarad"
+      ],
+      "concat": {
+        "file": "audio/p17-a.mp3",
+        "durationMs": 2356,
+        "sourceAudioIds": [
+          "338c0748-af24-4aaf-9bd8-92e4b9b83c8a",
+          "683e5b55-945e-418e-9266-86befcf59232"
+        ]
+      },
+      "whole": {
+        "file": "audio/p17-b.mp3",
+        "durationMs": 1639,
+        "sourceAudioId": "ce5d23af-58cc-4662-b03f-5bcdd3052da4"
+      },
+      "paceRatio": 1.44
+    },
+    {
+      "id": "p18",
+      "kind": "library",
+      "band": "late",
+      "bandLabel": "Later in the course",
+      "bandBlurb": "a long way in — a real ear for the language by now",
+      "seedNumber": 269,
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "North Welsh, voice 1",
+      "text": "dw i ddim isio o ddifri’",
+      "pieceTexts": [
+        "dw i ddim isio",
+        "o ddifri’"
+      ],
+      "concat": {
+        "file": "audio/p18-a.mp3",
+        "durationMs": 3219,
+        "sourceAudioIds": [
+          "45c662bc-67b7-45bf-ad49-0c303b6f7b77",
+          "b59550bd-a89f-4935-a4ba-fb1bf21c1310"
+        ]
+      },
+      "whole": {
+        "file": "audio/p18-b.mp3",
+        "durationMs": 1842,
+        "sourceAudioId": "2b7aa288-b7aa-4605-9f52-d9267d6fa71b"
+      },
+      "paceRatio": 1.75
+    },
+    {
+      "id": "p19",
+      "kind": "library",
+      "band": "late",
+      "bandLabel": "Later in the course",
+      "bandBlurb": "a long way in — a real ear for the language by now",
+      "seedNumber": 280,
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "North Welsh, voice 1",
+      "text": "mae o’n sefyll draw acw o fewn y gwesty",
+      "pieceTexts": [
+        "mae o’n sefyll",
+        "draw acw",
+        "o fewn y gwesty"
+      ],
+      "concat": {
+        "file": "audio/p19-a.mp3",
+        "durationMs": 4042,
+        "sourceAudioIds": [
+          "0347f29d-8373-4c7d-9063-5d2abe644f23",
+          "ff5e2c8f-aef4-44b7-8607-1b1e518a0e34",
+          "58a2c6bb-9140-4d46-86d3-9d3cc2e0d436"
+        ]
+      },
+      "whole": {
+        "file": "audio/p19-b.mp3",
+        "durationMs": 2716,
+        "sourceAudioId": "1f293787-a564-4717-859f-94f5800c9aa3"
+      },
+      "paceRatio": 1.49
+    },
+    {
+      "id": "p20",
+      "kind": "library",
+      "band": "late",
+      "bandLabel": "Later in the course",
+      "bandBlurb": "a long way in — a real ear for the language by now",
+      "seedNumber": 286,
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "North Welsh, voice 1",
+      "text": "ar draws y gwellt",
+      "pieceTexts": [
+        "ar draws",
+        "y gwellt"
+      ],
+      "concat": {
+        "file": "audio/p20-a.mp3",
+        "durationMs": 2275,
+        "sourceAudioIds": [
+          "30a90119-bb10-4a45-8448-452a4c8e388d",
+          "167df576-7465-4003-9b34-6f05a08455ff"
+        ]
+      },
+      "whole": {
+        "file": "audio/p20-b.mp3",
+        "durationMs": 1352,
+        "sourceAudioId": "f6499d5e-b21f-4229-a6c1-10ba0c27094f"
+      },
+      "paceRatio": 1.68
+    },
+    {
+      "id": "p21",
+      "kind": "library",
+      "band": "late",
+      "bandLabel": "Later in the course",
+      "bandBlurb": "a long way in — a real ear for the language by now",
+      "seedNumber": 290,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "so bywyd go iawn yn hawdd",
+      "pieceTexts": [
+        "so bywyd",
+        "go iawn",
+        "yn hawdd"
+      ],
+      "concat": {
+        "file": "audio/p21-a.mp3",
+        "durationMs": 2238,
+        "sourceAudioIds": [
+          "36c2d2eb-bbea-4f44-a146-3671ed4a2bb8",
+          "c9758ea2-3689-4d9a-aafa-63f757731310",
+          "ebfb556e-d57a-4e48-bdb6-3cc6b1093f7e"
+        ]
+      },
+      "whole": {
+        "file": "audio/p21-b.mp3",
+        "durationMs": 2003,
+        "sourceAudioId": "d5753eb0-4784-4f0a-b9b1-f2d4dfdac6c8"
+      },
+      "paceRatio": 1.12
+    },
+    {
+      "id": "p22",
+      "kind": "library",
+      "band": "late",
+      "bandLabel": "Later in the course",
+      "bandBlurb": "a long way in — a real ear for the language by now",
+      "seedNumber": 298,
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "North Welsh, voice 1",
+      "text": "oeddan ni angen aros yn fan hyn",
+      "pieceTexts": [
+        "oeddan ni angen aros",
+        "yn fan hyn"
+      ],
+      "concat": {
+        "file": "audio/p22-a.mp3",
+        "durationMs": 2756,
+        "sourceAudioIds": [
+          "340f3897-f6ce-42ed-b005-6d1bd8ab8f42",
+          "a525317c-3fe0-486c-acbd-757fb5116d2a"
+        ]
+      },
+      "whole": {
+        "file": "audio/p22-b.mp3",
+        "durationMs": 2344,
+        "sourceAudioId": "c810c7da-dd1f-4656-8067-005fc334bcd1"
+      },
+      "paceRatio": 1.18
+    },
+    {
+      "id": "p23",
+      "kind": "library",
+      "band": "late",
+      "bandLabel": "Later in the course",
+      "bandBlurb": "a long way in — a real ear for the language by now",
+      "seedNumber": 304,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "dw i’n moyn cael bach o gwsg",
+      "pieceTexts": [
+        "dw i’n moyn",
+        "cael",
+        "bach o gwsg"
+      ],
+      "concat": {
+        "file": "audio/p23-a.mp3",
+        "durationMs": 4057,
+        "sourceAudioIds": [
+          "d5708669-36f8-4175-9a83-adf3b6d45bfb",
+          "831d71f4-ffad-4cd8-bf44-a071f05338f5",
+          "1e14d367-2535-4917-bc85-ea70cf5906ce"
+        ]
+      },
+      "whole": {
+        "file": "audio/p23-b.mp3",
+        "durationMs": 1643,
+        "sourceAudioId": "466f97b2-4c9b-4ab2-88a1-6a8bc51ec660"
+      },
+      "paceRatio": 2.47
+    },
+    {
+      "id": "p24",
+      "kind": "library",
+      "band": "late",
+      "bandLabel": "Later in the course",
+      "bandBlurb": "a long way in — a real ear for the language by now",
+      "seedNumber": 334,
+      "courseCode": "cym_s_for_eng",
+      "role": "target1",
+      "voiceLabel": "South Welsh, voice 1",
+      "text": "so ti ’di blino",
+      "pieceTexts": [
+        "so",
+        "ti ’di blino"
+      ],
+      "concat": {
+        "file": "audio/p24-a.mp3",
+        "durationMs": 1248,
+        "sourceAudioIds": [
+          "1a625962-268d-42dd-b5b8-fe876d2adb8b",
+          "c2b20173-8e3e-458b-95e9-8768264eb920"
+        ]
+      },
+      "whole": {
+        "file": "audio/p24-b.mp3",
+        "durationMs": 1089,
+        "sourceAudioId": "b4d2a32e-269b-4297-8076-25ef0bcadac8"
+      },
+      "paceRatio": 1.15
+    },
+    {
+      "id": "p25",
       "kind": "carved",
+      "band": null,
+      "bandLabel": "Pod recording, outside the course",
+      "bandBlurb": "no course position — the joins with nothing else attached",
+      "seedNumber": null,
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "human_aran_cym_n_2 (human)",
@@ -14,7 +778,7 @@
         "Efo salad gwyrdd bach i ddechrau."
       ],
       "concat": {
-        "file": "audio/p01-a.mp3",
+        "file": "audio/p25-a.mp3",
         "durationMs": 3238,
         "sourceAudioIds": [
           "b54f47c4-d6a9-47d2-a25b-8de83c2180d9",
@@ -22,15 +786,19 @@
         ]
       },
       "whole": {
-        "file": "audio/p01-b.mp3",
+        "file": "audio/p25-b.mp3",
         "durationMs": 4102,
         "sourceAudioId": "d3f35b06-8b9f-4210-8595-9cb2b398af71"
       },
       "paceRatio": 0.79
     },
     {
-      "id": "p02",
+      "id": "p26",
       "kind": "carved",
+      "band": null,
+      "bandLabel": "Pod recording, outside the course",
+      "bandBlurb": "no course position — the joins with nothing else attached",
+      "seedNumber": null,
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "human_aran_cym_n_2 (human)",
@@ -41,7 +809,7 @@
         "Wela i chdi bryd hynny."
       ],
       "concat": {
-        "file": "audio/p02-a.mp3",
+        "file": "audio/p26-a.mp3",
         "durationMs": 5007,
         "sourceAudioIds": [
           "0040e425-5beb-4640-9f1c-53e04abed0f1",
@@ -50,15 +818,19 @@
         ]
       },
       "whole": {
-        "file": "audio/p02-b.mp3",
+        "file": "audio/p26-b.mp3",
         "durationMs": 6000,
         "sourceAudioId": "a323aece-5ff7-43af-bf12-3a74d6ecd2be"
       },
       "paceRatio": 0.83
     },
     {
-      "id": "p03",
+      "id": "p27",
       "kind": "carved",
+      "band": null,
+      "bandLabel": "Pod recording, outside the course",
+      "bandBlurb": "no course position — the joins with nothing else attached",
+      "seedNumber": null,
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "human_aran_cym_n_2 (human)",
@@ -68,7 +840,7 @@
         "Oes gynnoch chi contactless?"
       ],
       "concat": {
-        "file": "audio/p03-a.mp3",
+        "file": "audio/p27-a.mp3",
         "durationMs": 3224,
         "sourceAudioIds": [
           "1846441e-8aff-4d24-8fed-f7402f2ef287",
@@ -76,15 +848,19 @@
         ]
       },
       "whole": {
-        "file": "audio/p03-b.mp3",
+        "file": "audio/p27-b.mp3",
         "durationMs": 3224,
         "sourceAudioId": "611ba78f-bbf4-485f-8f22-251730686fef"
       },
       "paceRatio": 1
     },
     {
-      "id": "p04",
+      "id": "p28",
       "kind": "carved",
+      "band": null,
+      "bandLabel": "Pod recording, outside the course",
+      "bandBlurb": "no course position — the joins with nothing else attached",
+      "seedNumber": null,
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "human_aran_cym_n_2 (human)",
@@ -94,7 +870,7 @@
         "Liciwn i frechdan gaws, os gwelwch yn dda."
       ],
       "concat": {
-        "file": "audio/p04-a.mp3",
+        "file": "audio/p28-a.mp3",
         "durationMs": 3837,
         "sourceAudioIds": [
           "dcbaf775-8516-4b01-8341-24917c822b49",
@@ -102,15 +878,19 @@
         ]
       },
       "whole": {
-        "file": "audio/p04-b.mp3",
+        "file": "audio/p28-b.mp3",
         "durationMs": 3837,
         "sourceAudioId": "20def6a2-d48f-49b7-b495-0f6745a36883"
       },
       "paceRatio": 1
     },
     {
-      "id": "p05",
+      "id": "p29",
       "kind": "carved",
+      "band": null,
+      "bandLabel": "Pod recording, outside the course",
+      "bandBlurb": "no course position — the joins with nothing else attached",
+      "seedNumber": null,
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "human_aran_cym_n (human)",
@@ -120,7 +900,7 @@
         "Wyt ti'n mynd i'r gwaith?"
       ],
       "concat": {
-        "file": "audio/p05-a.mp3",
+        "file": "audio/p29-a.mp3",
         "durationMs": 2090,
         "sourceAudioIds": [
           "ba0d384d-576c-4f69-a232-15695fd71899",
@@ -128,15 +908,19 @@
         ]
       },
       "whole": {
-        "file": "audio/p05-b.mp3",
+        "file": "audio/p29-b.mp3",
         "durationMs": 2194,
         "sourceAudioId": "215e1c95-2ffe-4eae-8487-bdaaae15a36b"
       },
       "paceRatio": 0.95
     },
     {
-      "id": "p06",
+      "id": "p30",
       "kind": "carved",
+      "band": null,
+      "bandLabel": "Pod recording, outside the course",
+      "bandBlurb": "no course position — the joins with nothing else attached",
+      "seedNumber": null,
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "human_aran_cym_n (human)",
@@ -146,7 +930,7 @@
         "Gest ti ddiwrnod hir?"
       ],
       "concat": {
-        "file": "audio/p06-a.mp3",
+        "file": "audio/p30-a.mp3",
         "durationMs": 5075,
         "sourceAudioIds": [
           "d9a95b45-2033-4600-adae-295b707a76b2",
@@ -154,15 +938,19 @@
         ]
       },
       "whole": {
-        "file": "audio/p06-b.mp3",
+        "file": "audio/p30-b.mp3",
         "durationMs": 5075,
         "sourceAudioId": "27e1223f-a157-40ee-a2ee-680c3ae02295"
       },
       "paceRatio": 1
     },
     {
-      "id": "p07",
+      "id": "p31",
       "kind": "carved",
+      "band": null,
+      "bandLabel": "Pod recording, outside the course",
+      "bandBlurb": "no course position — the joins with nothing else attached",
+      "seedNumber": null,
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "human_aran_cym_n_2 (human)",
@@ -172,7 +960,7 @@
         "Fedrwn ni ei rannu fo?"
       ],
       "concat": {
-        "file": "audio/p07-a.mp3",
+        "file": "audio/p31-a.mp3",
         "durationMs": 2312,
         "sourceAudioIds": [
           "77b385ba-ea3c-4430-ac9f-b3bc677726cf",
@@ -180,15 +968,19 @@
         ]
       },
       "whole": {
-        "file": "audio/p07-b.mp3",
+        "file": "audio/p31-b.mp3",
         "durationMs": 2680,
         "sourceAudioId": "40749ac9-447c-4180-845d-8a5687d623ff"
       },
       "paceRatio": 0.86
     },
     {
-      "id": "p08",
+      "id": "p32",
       "kind": "carved",
+      "band": null,
+      "bandLabel": "Pod recording, outside the course",
+      "bandBlurb": "no course position — the joins with nothing else attached",
+      "seedNumber": null,
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "human_aran_cym_n_2 (human)",
@@ -198,7 +990,7 @@
         "Mae gen i stafell wedi'i bwcio dan yr enw Jones."
       ],
       "concat": {
-        "file": "audio/p08-a.mp3",
+        "file": "audio/p32-a.mp3",
         "durationMs": 2730,
         "sourceAudioIds": [
           "30514028-0094-40c6-b836-10530e808cfa",
@@ -206,15 +998,19 @@
         ]
       },
       "whole": {
-        "file": "audio/p08-b.mp3",
+        "file": "audio/p32-b.mp3",
         "durationMs": 3085,
         "sourceAudioId": "8080c64c-dada-4005-8452-9ad946b86bef"
       },
       "paceRatio": 0.88
     },
     {
-      "id": "p09",
+      "id": "p33",
       "kind": "carved",
+      "band": null,
+      "bandLabel": "Pod recording, outside the course",
+      "bandBlurb": "no course position — the joins with nothing else attached",
+      "seedNumber": null,
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "human_aran_cym_n_2 (human)",
@@ -224,7 +1020,7 @@
         "Dyma fy mhasbort i."
       ],
       "concat": {
-        "file": "audio/p09-a.mp3",
+        "file": "audio/p33-a.mp3",
         "durationMs": 1495,
         "sourceAudioIds": [
           "1c1ef5be-96d8-46d4-a372-5e1c3878dcb3",
@@ -232,15 +1028,19 @@
         ]
       },
       "whole": {
-        "file": "audio/p09-b.mp3",
+        "file": "audio/p33-b.mp3",
         "durationMs": 1495,
         "sourceAudioId": "39356934-7197-427b-b2cd-96b44f9fad96"
       },
       "paceRatio": 1
     },
     {
-      "id": "p10",
+      "id": "p34",
       "kind": "carved",
+      "band": null,
+      "bandLabel": "Pod recording, outside the course",
+      "bandBlurb": "no course position — the joins with nothing else attached",
+      "seedNumber": null,
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "human_aran_cym_n_2 (human)",
@@ -250,7 +1050,7 @@
         "Ydy hi'n bosib i ni gael check-out hwyr?"
       ],
       "concat": {
-        "file": "audio/p10-a.mp3",
+        "file": "audio/p34-a.mp3",
         "durationMs": 2198,
         "sourceAudioIds": [
           "93f21158-1296-49cc-9243-551658d94071",
@@ -258,15 +1058,19 @@
         ]
       },
       "whole": {
-        "file": "audio/p10-b.mp3",
+        "file": "audio/p34-b.mp3",
         "durationMs": 2583,
         "sourceAudioId": "9a72b30c-9779-4f91-82dc-eb38b1f9de9f"
       },
       "paceRatio": 0.85
     },
     {
-      "id": "p11",
+      "id": "p35",
       "kind": "carved",
+      "band": null,
+      "bandLabel": "Pod recording, outside the course",
+      "bandBlurb": "no course position — the joins with nothing else attached",
+      "seedNumber": null,
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "human_aran_cym_n_2 (human)",
@@ -276,7 +1080,7 @@
         "Be ydi'ch symptomau chi?"
       ],
       "concat": {
-        "file": "audio/p11-a.mp3",
+        "file": "audio/p35-a.mp3",
         "durationMs": 1538,
         "sourceAudioIds": [
           "1c1ef5be-96d8-46d4-a372-5e1c3878dcb3",
@@ -284,539 +1088,11 @@
         ]
       },
       "whole": {
-        "file": "audio/p11-b.mp3",
+        "file": "audio/p35-b.mp3",
         "durationMs": 1461,
         "sourceAudioId": "f44238b2-af98-4d5f-bd6c-303b68d36d24"
       },
       "paceRatio": 1.05
-    },
-    {
-      "id": "p12",
-      "kind": "library",
-      "courseCode": "cym_s_for_eng",
-      "role": "target1",
-      "voiceLabel": "South Welsh, voice 1",
-      "text": "’sen i’n gallu yfed",
-      "pieceTexts": [
-        "’sen i’n gallu",
-        "yfed"
-      ],
-      "concat": {
-        "file": "audio/p12-a.mp3",
-        "durationMs": 1662,
-        "sourceAudioIds": [
-          "8994f3b6-bb5e-41b0-87c7-ad2925cb0bca",
-          "644c31d2-d682-406c-877f-4a65aee748c0"
-        ]
-      },
-      "whole": {
-        "file": "audio/p12-b.mp3",
-        "durationMs": 1407,
-        "sourceAudioId": "e284a441-c35b-4794-8202-23c2190c0aa6"
-      },
-      "paceRatio": 1.18
-    },
-    {
-      "id": "p13",
-      "kind": "library",
-      "courseCode": "cym_s_for_eng",
-      "role": "target2",
-      "voiceLabel": "South Welsh, voice 2",
-      "text": "’sen i’n gallu yfed",
-      "pieceTexts": [
-        "’sen i’n gallu",
-        "yfed"
-      ],
-      "concat": {
-        "file": "audio/p13-a.mp3",
-        "durationMs": 1795,
-        "sourceAudioIds": [
-          "94aeca76-a78a-4607-8645-6b5398fb5c3a",
-          "fc142da9-49b6-41f2-b076-89a64cca56f4"
-        ]
-      },
-      "whole": {
-        "file": "audio/p13-b.mp3",
-        "durationMs": 2121,
-        "sourceAudioId": "396065a2-7073-47ba-becf-b4bc3cd9525b"
-      },
-      "paceRatio": 0.85
-    },
-    {
-      "id": "p14",
-      "kind": "library",
-      "courseCode": "cym_n_for_eng",
-      "role": "target1",
-      "voiceLabel": "North Welsh, voice 1",
-      "text": "’set ti’n gwybod y ffeithiau",
-      "pieceTexts": [
-        "’set ti’n gwybod",
-        "y ffeithiau"
-      ],
-      "concat": {
-        "file": "audio/p14-a.mp3",
-        "durationMs": 2053,
-        "sourceAudioIds": [
-          "616d6c0d-01d1-4480-928b-6400f993ddb4",
-          "09fda5c6-f8e8-4a6f-8162-49b293e66b7b"
-        ]
-      },
-      "whole": {
-        "file": "audio/p14-b.mp3",
-        "durationMs": 1879,
-        "sourceAudioId": "dfe8a70c-75bc-4a54-95e0-14738d21e5da"
-      },
-      "paceRatio": 1.09
-    },
-    {
-      "id": "p15",
-      "kind": "library",
-      "courseCode": "cym_n_for_eng",
-      "role": "target2",
-      "voiceLabel": "North Welsh, voice 2",
-      "text": "’set ti’n gwybod y ffeithiau",
-      "pieceTexts": [
-        "’set ti’n gwybod",
-        "y ffeithiau"
-      ],
-      "concat": {
-        "file": "audio/p15-a.mp3",
-        "durationMs": 2794,
-        "sourceAudioIds": [
-          "e48bfdbc-d117-4802-a419-eaf589050295",
-          "d35bed68-1d70-409b-aa7a-49207ff461ce"
-        ]
-      },
-      "whole": {
-        "file": "audio/p15-b.mp3",
-        "durationMs": 1911,
-        "sourceAudioId": "b5142b7a-f656-475e-8440-8daf3199df17"
-      },
-      "paceRatio": 1.46
-    },
-    {
-      "id": "p16",
-      "kind": "library",
-      "courseCode": "cym_s_for_eng",
-      "role": "target1",
-      "voiceLabel": "South Welsh, voice 1",
-      "text": "dw i’n moyn tŷ perffaith",
-      "pieceTexts": [
-        "dw i’n moyn",
-        "tŷ perffaith"
-      ],
-      "concat": {
-        "file": "audio/p16-a.mp3",
-        "durationMs": 3411,
-        "sourceAudioIds": [
-          "d5708669-36f8-4175-9a83-adf3b6d45bfb",
-          "174e65f6-b19f-4d01-b1b5-4d3e91e9894f"
-        ]
-      },
-      "whole": {
-        "file": "audio/p16-b.mp3",
-        "durationMs": 2098,
-        "sourceAudioId": "1a3b4e60-1094-4b9d-a6f9-2a34b7754e69"
-      },
-      "paceRatio": 1.63
-    },
-    {
-      "id": "p17",
-      "kind": "library",
-      "courseCode": "cym_s_for_eng",
-      "role": "target2",
-      "voiceLabel": "South Welsh, voice 2",
-      "text": "dw i’n moyn tŷ perffaith",
-      "pieceTexts": [
-        "dw i’n moyn",
-        "tŷ perffaith"
-      ],
-      "concat": {
-        "file": "audio/p17-a.mp3",
-        "durationMs": 4749,
-        "sourceAudioIds": [
-          "c00c5412-f5c8-4b76-bec9-eb6fd77e78c1",
-          "b44f1460-717f-4257-a0cd-a35e303ed727"
-        ]
-      },
-      "whole": {
-        "file": "audio/p17-b.mp3",
-        "durationMs": 2644,
-        "sourceAudioId": "78874c4c-9ea4-4396-ab03-f0d66f3e7bc8"
-      },
-      "paceRatio": 1.8
-    },
-    {
-      "id": "p18",
-      "kind": "library",
-      "courseCode": "cym_n_for_eng",
-      "role": "target1",
-      "voiceLabel": "North Welsh, voice 1",
-      "text": "dw i isio cofio be’ ddudest ti",
-      "pieceTexts": [
-        "dw i isio cofio",
-        "be’ ddudest ti"
-      ],
-      "concat": {
-        "file": "audio/p18-a.mp3",
-        "durationMs": 6019,
-        "sourceAudioIds": [
-          "c1f599df-1928-42c6-bf9d-1681804de4f8",
-          "b80dba43-ee68-41fc-87e1-4c8107c95602"
-        ]
-      },
-      "whole": {
-        "file": "audio/p18-b.mp3",
-        "durationMs": 4249,
-        "sourceAudioId": "e8f9d37e-017f-44dc-8767-3266e54f20b5"
-      },
-      "paceRatio": 1.42
-    },
-    {
-      "id": "p19",
-      "kind": "library",
-      "courseCode": "cym_n_for_eng",
-      "role": "target2",
-      "voiceLabel": "North Welsh, voice 2",
-      "text": "dw i isio cofio",
-      "pieceTexts": [
-        "dw i isio",
-        "cofio"
-      ],
-      "concat": {
-        "file": "audio/p19-a.mp3",
-        "durationMs": 2606,
-        "sourceAudioIds": [
-          "b45c8d25-15a8-4905-895a-801d29b9b83d",
-          "56ca8a03-2459-4632-aa0f-759dfaa48b3b"
-        ]
-      },
-      "whole": {
-        "file": "audio/p19-b.mp3",
-        "durationMs": 2806,
-        "sourceAudioId": "c152856b-6f57-405c-b356-b43127b8b703"
-      },
-      "paceRatio": 0.93
-    },
-    {
-      "id": "p20",
-      "kind": "library",
-      "courseCode": "cym_s_for_eng",
-      "role": "target1",
-      "voiceLabel": "South Welsh, voice 1",
-      "text": "o’n i’n moyn ymarfer siarad",
-      "pieceTexts": [
-        "o’n i’n moyn",
-        "ymarfer siarad"
-      ],
-      "concat": {
-        "file": "audio/p20-a.mp3",
-        "durationMs": 2811,
-        "sourceAudioIds": [
-          "c9705bb9-5827-435a-9f92-1dcb53e6305e",
-          "07d15a92-ba27-4446-8a18-1ea54e78b71a"
-        ]
-      },
-      "whole": {
-        "file": "audio/p20-b.mp3",
-        "durationMs": 3641,
-        "sourceAudioId": "c9520eb0-ebeb-4d8d-8700-8a9267072578"
-      },
-      "paceRatio": 0.77
-    },
-    {
-      "id": "p21",
-      "kind": "library",
-      "courseCode": "cym_s_for_eng",
-      "role": "target2",
-      "voiceLabel": "South Welsh, voice 2",
-      "text": "o’n i’n moyn ymlacio",
-      "pieceTexts": [
-        "o’n i’n moyn",
-        "ymlacio"
-      ],
-      "concat": {
-        "file": "audio/p21-a.mp3",
-        "durationMs": 4178,
-        "sourceAudioIds": [
-          "7cfa6620-8018-4441-8d40-37aadf17337e",
-          "331a08cb-d63e-4295-80a3-a9b3b3011eef"
-        ]
-      },
-      "whole": {
-        "file": "audio/p21-b.mp3",
-        "durationMs": 2088,
-        "sourceAudioId": "c67f30be-2ced-42c0-9a0f-3de465051925"
-      },
-      "paceRatio": 2
-    },
-    {
-      "id": "p22",
-      "kind": "library",
-      "courseCode": "cym_n_for_eng",
-      "role": "target1",
-      "voiceLabel": "North Welsh, voice 1",
-      "text": "mae hi isio deud wrthaf fi",
-      "pieceTexts": [
-        "mae hi isio",
-        "deud wrthaf fi"
-      ],
-      "concat": {
-        "file": "audio/p22-a.mp3",
-        "durationMs": 3910,
-        "sourceAudioIds": [
-          "b3ba3263-2aaa-4336-b10d-6ebd0f1957f7",
-          "0c8c8456-3f8c-4ede-ac15-9c3c98dbc08d"
-        ]
-      },
-      "whole": {
-        "file": "audio/p22-b.mp3",
-        "durationMs": 3646,
-        "sourceAudioId": "f060d9fc-5367-44a2-9ea1-3ea50ed9ea8c"
-      },
-      "paceRatio": 1.07
-    },
-    {
-      "id": "p23",
-      "kind": "library",
-      "courseCode": "cym_n_for_eng",
-      "role": "target2",
-      "voiceLabel": "North Welsh, voice 2",
-      "text": "mae gen i ffrind sydd isio",
-      "pieceTexts": [
-        "mae gen i ffrind",
-        "sydd isio"
-      ],
-      "concat": {
-        "file": "audio/p23-a.mp3",
-        "durationMs": 3707,
-        "sourceAudioIds": [
-          "32c91b8d-2b8b-4299-a7bc-6a093ac9fe52",
-          "8d7e0e79-a7ab-4099-9f21-f5882174b08c"
-        ]
-      },
-      "whole": {
-        "file": "audio/p23-b.mp3",
-        "durationMs": 2824,
-        "sourceAudioId": "ccda4d4d-15a3-4c01-9e95-03f5d6b551ef"
-      },
-      "paceRatio": 1.31
-    },
-    {
-      "id": "p24",
-      "kind": "library",
-      "courseCode": "cym_s_for_eng",
-      "role": "target1",
-      "voiceLabel": "South Welsh, voice 1",
-      "text": "wnes i ddim deall",
-      "pieceTexts": [
-        "wnes i ddim",
-        "deall"
-      ],
-      "concat": {
-        "file": "audio/p24-a.mp3",
-        "durationMs": 2283,
-        "sourceAudioIds": [
-          "24d577b2-1aea-4059-ab76-e1ba1b9e917d",
-          "4ec7b3d9-7a44-4aa1-8bb6-d542dd1b85bd"
-        ]
-      },
-      "whole": {
-        "file": "audio/p24-b.mp3",
-        "durationMs": 2257,
-        "sourceAudioId": "dd9fc2c0-4bfa-4fc3-a0c1-7256b28edc9b"
-      },
-      "paceRatio": 1.01
-    },
-    {
-      "id": "p25",
-      "kind": "library",
-      "courseCode": "cym_s_for_eng",
-      "role": "target2",
-      "voiceLabel": "South Welsh, voice 2",
-      "text": "wnes i ddim deall be’ ddwedest ti",
-      "pieceTexts": [
-        "wnes i ddim deall",
-        "be’ ddwedest ti"
-      ],
-      "concat": {
-        "file": "audio/p25-a.mp3",
-        "durationMs": 6187,
-        "sourceAudioIds": [
-          "bbec9dc5-5248-460b-bfd5-229f7c77940f",
-          "39de59fc-30b8-409b-91e5-1a41d6234ab4"
-        ]
-      },
-      "whole": {
-        "file": "audio/p25-b.mp3",
-        "durationMs": 3195,
-        "sourceAudioId": "3d6b5b47-0a28-4b2b-8c59-dbfc08e9ad2a"
-      },
-      "paceRatio": 1.94
-    },
-    {
-      "id": "p26",
-      "kind": "library",
-      "courseCode": "cym_n_for_eng",
-      "role": "target1",
-      "voiceLabel": "North Welsh, voice 1",
-      "text": "siarad yn araf",
-      "pieceTexts": [
-        "siarad",
-        "yn araf"
-      ],
-      "concat": {
-        "file": "audio/p26-a.mp3",
-        "durationMs": 2498,
-        "sourceAudioIds": [
-          "683e5b55-945e-418e-9266-86befcf59232",
-          "e792ac8d-3837-426d-a9b5-ba1f04b1cb82"
-        ]
-      },
-      "whole": {
-        "file": "audio/p26-b.mp3",
-        "durationMs": 2421,
-        "sourceAudioId": "88086295-875b-428f-b0f9-76954b6ae334"
-      },
-      "paceRatio": 1.03
-    },
-    {
-      "id": "p27",
-      "kind": "library",
-      "courseCode": "cym_n_for_eng",
-      "role": "target2",
-      "voiceLabel": "North Welsh, voice 2",
-      "text": "siarad efo’ch gilydd heb ddadlau",
-      "pieceTexts": [
-        "siarad efo’ch gilydd",
-        "heb ddadlau"
-      ],
-      "concat": {
-        "file": "audio/p27-a.mp3",
-        "durationMs": 3141,
-        "sourceAudioIds": [
-          "c0a8f446-ff73-4f91-978c-25a10619658e",
-          "55c14461-e585-4cdc-8f67-f05e133af05c"
-        ]
-      },
-      "whole": {
-        "file": "audio/p27-b.mp3",
-        "durationMs": 2835,
-        "sourceAudioId": "c90c5cfc-6287-4f1b-8837-8a1f240d8b71"
-      },
-      "paceRatio": 1.11
-    },
-    {
-      "id": "p28",
-      "kind": "library",
-      "courseCode": "cym_s_for_eng",
-      "role": "target1",
-      "voiceLabel": "South Welsh, voice 1",
-      "text": "dw i’n mynd i dy helpu di nawr",
-      "pieceTexts": [
-        "dw i’n mynd i",
-        "dy helpu di",
-        "nawr"
-      ],
-      "concat": {
-        "file": "audio/p28-a.mp3",
-        "durationMs": 4131,
-        "sourceAudioIds": [
-          "14573e9b-1bf0-4ffd-a0d9-e6dac28918e9",
-          "9000e4c3-f8a3-41a2-9ece-83141c8666d3",
-          "b9513606-32e4-4e06-95d7-eec81a47cd8a"
-        ]
-      },
-      "whole": {
-        "file": "audio/p28-b.mp3",
-        "durationMs": 5407,
-        "sourceAudioId": "1d60a0c1-73f4-47fe-ab6d-61a1c48f80b7"
-      },
-      "paceRatio": 0.76
-    },
-    {
-      "id": "p29",
-      "kind": "library",
-      "courseCode": "cym_s_for_eng",
-      "role": "target2",
-      "voiceLabel": "South Welsh, voice 2",
-      "text": "dw i’n mynd i siarad Cymraeg am fis",
-      "pieceTexts": [
-        "dw i’n mynd i",
-        "siarad Cymraeg",
-        "am fis"
-      ],
-      "concat": {
-        "file": "audio/p29-a.mp3",
-        "durationMs": 5091,
-        "sourceAudioIds": [
-          "c6039edc-2e4f-4007-8380-443a81e53951",
-          "e6958331-7735-4888-beac-def5fa2dd70f",
-          "ba63d29c-05c8-4f1c-9b74-30a907cf3dc0"
-        ]
-      },
-      "whole": {
-        "file": "audio/p29-b.mp3",
-        "durationMs": 3894,
-        "sourceAudioId": "6da1bdd8-fe87-4b99-b555-029ddc99a91c"
-      },
-      "paceRatio": 1.31
-    },
-    {
-      "id": "p30",
-      "kind": "library",
-      "courseCode": "cym_n_for_eng",
-      "role": "target1",
-      "voiceLabel": "North Welsh, voice 1",
-      "text": "dach chi ’di clywed beth oeddan nhw isio?",
-      "pieceTexts": [
-        "dach chi ’di clywed?",
-        "beth",
-        "oeddan nhw isio"
-      ],
-      "concat": {
-        "file": "audio/p30-a.mp3",
-        "durationMs": 2796,
-        "sourceAudioIds": [
-          "3cc30188-4311-47b4-bafd-d458161f53c7",
-          "c880e582-7bb2-455b-9956-9177df5e2f9c",
-          "805f583d-3712-4d68-a2cc-3ac10ee67f99"
-        ]
-      },
-      "whole": {
-        "file": "audio/p30-b.mp3",
-        "durationMs": 2380,
-        "sourceAudioId": "92d0525d-ceac-4b6c-b598-182242595197"
-      },
-      "paceRatio": 1.17
-    },
-    {
-      "id": "p31",
-      "kind": "library",
-      "courseCode": "cym_n_for_eng",
-      "role": "target2",
-      "voiceLabel": "North Welsh, voice 2",
-      "text": "dach chi isio panad o de neu goffi?",
-      "pieceTexts": [
-        "dach chi isio?",
-        "panad o de",
-        "neu goffi"
-      ],
-      "concat": {
-        "file": "audio/p31-a.mp3",
-        "durationMs": 4335,
-        "sourceAudioIds": [
-          "77c41933-e814-44c9-86fd-c2620e6dac0c",
-          "c6430700-56ae-4648-b07f-204c66e0a24d",
-          "98b1f26e-6ce4-48e6-87b4-d5ad300c3dd1"
-        ]
-      },
-      "whole": {
-        "file": "audio/p31-b.mp3",
-        "durationMs": 3422,
-        "sourceAudioId": "28efb534-d3b3-453a-a965-9b03fbf9a91b"
-      },
-      "paceRatio": 1.27
     }
   ]
 }
