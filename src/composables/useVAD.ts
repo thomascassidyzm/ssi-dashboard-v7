@@ -35,6 +35,26 @@ export interface VADState {
   silenceStartTime: number | null
 }
 
+// One deliberate pause inside a take, timed from the start of the take.
+//
+// The VAD has always SEEN these — that is what chunksSeen counts — but it only
+// ever counted them and threw the timings away, so the review screen could
+// offer nothing between "play the whole take" and "record the whole phrase
+// again". Keeping the two edges is what lets a single LEGO chunk be played, or
+// re-recorded, on its own.
+//
+// `endMs` is null for a pause that is still open when the take closes: the
+// final silence, whose start IS the end of the last chunk.
+//
+// Both edges are measured at poll resolution (pollInterval, 50ms), so each is
+// accurate to within one poll and lands slightly INSIDE the silence — which is
+// the harmless direction: a chunk cut on these edges keeps every syllable and
+// at worst carries a few tens of ms of room tone.
+export interface ChunkGap {
+  startMs: number
+  endMs: number | null
+}
+
 // What a room measured before recording. `threshold` is what the VAD will
 // actually use; `quality` is what the recordist should be told.
 export interface VADCalibration {
@@ -134,6 +154,9 @@ export function useVAD(config: Partial<VADConfig> = {}) {
   // Whether the CURRENT run of silence has already been counted as a chunk
   // boundary, so one long pause increments the counter once, not every poll.
   let silenceCounted = false
+  // Where those boundaries fell, in ms from the start of the current take. Same
+  // events that drive chunksSeen, kept rather than discarded.
+  let chunkGaps: ChunkGap[] = []
 
   // Audio nodes
   let audioContext: AudioContext | null = null
@@ -143,7 +166,7 @@ export function useVAD(config: Partial<VADConfig> = {}) {
 
   // Callbacks
   let onSpeechStart: (() => void) | null = null
-  let onSpeechEnd: ((durationMs: number) => void) | null = null
+  let onSpeechEnd: ((durationMs: number, chunkGaps: ChunkGap[]) => void) | null = null
   let onSpeechAborted: ((durationMs: number) => void) | null = null
   let onLevelChange: ((level: number) => void) | null = null
 
@@ -206,6 +229,7 @@ export function useVAD(config: Partial<VADConfig> = {}) {
     calibrationSamples = []
     chunksSeen.value = 0
     silenceCounted = false
+    chunkGaps = []
   }
 
   let calibrationSamples: number[] = []
@@ -336,8 +360,17 @@ export function useVAD(config: Partial<VADConfig> = {}) {
         isSpeaking.value = true
         speechStartTime.value = now
         chunksSeen.value = 0
+        chunkGaps = []
         if (onSpeechStart) {
           onSpeechStart()
+        }
+      } else {
+        // Speech RESUMED. If the pause we just came out of was long enough to
+        // have been counted as a chunk boundary, this is where the next chunk
+        // begins — close the gap off.
+        const open = chunkGaps[chunkGaps.length - 1]
+        if (open && open.endMs === null && speechStartTime.value) {
+          open.endMs = now - speechStartTime.value
         }
       }
     } else {
@@ -357,6 +390,12 @@ export function useVAD(config: Partial<VADConfig> = {}) {
           if (!silenceCounted && silenceElapsed >= cfg.chunkPauseDuration) {
             silenceCounted = true
             chunksSeen.value++
+            if (speechStartTime.value) {
+              chunkGaps.push({
+                startMs: silenceStartTime.value - speechStartTime.value,
+                endMs: null
+              })
+            }
           }
 
           // While chunks are still outstanding, tolerate a long pause; once the
@@ -384,9 +423,11 @@ export function useVAD(config: Partial<VADConfig> = {}) {
               : 0
 
             if (speechDuration >= cfg.minSpeechDuration) {
-              // Valid speech segment
+              // Valid speech segment. The gaps go WITH it: whoever is holding
+              // the audio is the only one who can act on them, and this is the
+              // last moment they exist.
               if (onSpeechEnd) {
-                onSpeechEnd(speechDuration)
+                onSpeechEnd(speechDuration, chunkGaps.map(g => ({ ...g })))
               }
             } else if (onSpeechAborted) {
               // Too short to be a take — a cough, a chair, a door. The VAD is
@@ -405,6 +446,7 @@ export function useVAD(config: Partial<VADConfig> = {}) {
             silenceStartTime.value = null
             silenceCounted = false
             chunksSeen.value = 0
+            chunkGaps = []
           }
         }
       }
@@ -421,7 +463,7 @@ export function useVAD(config: Partial<VADConfig> = {}) {
   /**
    * Set callback for when speech ends
    */
-  function onSpeechEndCallback(callback: (durationMs: number) => void) {
+  function onSpeechEndCallback(callback: (durationMs: number, chunkGaps: ChunkGap[]) => void) {
     onSpeechEnd = callback
   }
 

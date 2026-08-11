@@ -111,6 +111,14 @@ function buildProvenanceContext({ courseCode, isScriptMode, metadata = {}, prove
     phrase_index: metadata.phraseIndex ?? null,
     covers_legos: metadata.coversLegos || null,
     chunks_string: metadata.chunksString || null,
+    // The pauses the recorder's own VAD heard inside this take, in ms from its
+    // start: [{ startMs, endMs }], endMs null for the final silence. The
+    // speaker's own account of where the LEGO boundaries fell, kept beside the
+    // chunk map the script asked for. align.cjs still measures the audio for
+    // itself — this is a second, cheaper witness, not a replacement.
+    chunk_boundaries_ms: Array.isArray(metadata.chunkBoundariesMs) && metadata.chunkBoundariesMs.length
+      ? metadata.chunkBoundariesMs
+      : null,
     script_session_id: metadata.scriptSessionId || provenance.sessionId || null,
     course_audio_id: courseAudioId,
     replaced_s3_key: replacedS3Key,

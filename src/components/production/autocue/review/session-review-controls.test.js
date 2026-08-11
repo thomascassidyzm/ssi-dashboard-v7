@@ -227,8 +227,10 @@ describe('AutocueStudio listens for every event the review screen emits', () => 
   it('covers every control on the screen', () => {
     expect(declared.sort()).toEqual([
       'approve', 'approve-all', 'back', 'clear-filter', 'filter',
-      'finalize', 'play', 'play-all', 'queue-redo', 're-record-flagged',
-      'reject'
+      // play-chunk plays ONE LEGO piece of a slow-pass take; play plays the
+      // whole take.
+      'finalize', 'play', 'play-all', 'play-chunk', 'queue-redo',
+      're-record-flagged', 'reject'
     ])
   })
 })

@@ -4665,7 +4665,7 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     // text and chunk maps percent-encode at ~6-9 bytes per non-Latin char and
     // would 400 the PUT. Supabase (recording_provenance) holds the truth; keep
     // only short identifiers on the object.
-    const { text: _metaText, chunksString: _metaChunks, ...s3SafeMetadata } = metadata
+    const { text: _metaText, chunksString: _metaChunks, chunkBoundariesMs: _metaBounds, ...s3SafeMetadata } = metadata
     const result = await s3Service.uploadRecording(courseCode, audioId, processedBuffer, {
       ...s3SafeMetadata,
       recordedBy: 'human',

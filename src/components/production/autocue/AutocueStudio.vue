@@ -287,12 +287,14 @@
       <SessionReview
         :segments="state.recordedSegments"
         :playing-segment-id="state.playingSegmentId"
+        :playing-chunk-key="state.playingChunkKey"
         :approved-ids="[...state.approvedSegments]"
         :rejected-ids="[...state.rejectedSegments]"
         :active-filter="state.reviewFilter"
         :script-mode="state.scriptMode"
         @re-record-flagged="onReRecordFlagged"
         @play="playSegment"
+        @play-chunk="playChunk"
         @play-all="playAllSegments"
         @approve="approveSegment"
         @reject="rejectSegment"
@@ -372,6 +374,7 @@ const {
   approveSegment,
   rejectSegment,
   playSegment,
+  playChunk,
   playAllSegments,
   stopPlayback,
   approveAllUnflagged,
@@ -564,6 +567,13 @@ continuousRecorder.onSegmentCaptured((segment) => {
       // Pipe-delimited pause map — the aligner's required input; persisted
       // server-side with the take so slow passes stay alignable.
       chunksString: phrase.chunksString || null,
+      // WHERE the recordist actually paused in this take, in ms from its start.
+      // The browser hears these boundaries live and, until now, threw them away
+      // the moment the take was cut — leaving the server-side aligner to
+      // rediscover them with ffmpeg silencedetect (services/voice-engine/
+      // align.cjs). They cost nothing to keep and they are the speaker's own
+      // account of the cut, so they travel with the take.
+      chunkBoundariesMs: segment.chunkGaps?.length ? segment.chunkGaps : null,
       scriptSessionId: state.scriptSessionId
     },
     provenance: {

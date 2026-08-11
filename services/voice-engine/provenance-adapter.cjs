@@ -48,6 +48,11 @@ function fromProvenanceRow(row) {
     s3Key: ctx.s3_key ?? row.s3_key ?? null,
     phraseText: ctx.text ?? row.phrase_text ?? row.text ?? null,
     chunksString: ctx.chunks_string ?? row.chunks_string ?? null,
+    // The recorder's own pause timings for this take, when it sent them
+    // ([{ startMs, endMs }], ms from the start of the take). Absent on every
+    // take recorded before 2026-08-11 and on natural-speed takes, so every
+    // consumer must still work without it.
+    chunkBoundariesMs: ctx.chunk_boundaries_ms ?? null,
     voiceId: ctx.voice_id ?? row.voice_id ?? null,
     role: ctx.role ?? row.role ?? null,
     cadence: ctx.cadence ?? row.cadence ?? null,
