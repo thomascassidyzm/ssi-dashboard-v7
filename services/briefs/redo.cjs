@@ -187,6 +187,25 @@ You are running unattended. NEVER ask questions.
 Do NOT spawn sub-agents.
 Submit each seed directly to the API.
 Work SLOWLY AND STEADILY — quality over speed.
+
+### If a requested change cannot be made validly
+
+Not asking questions does NOT mean silently dropping a request. If something in the
+human notes cannot be done without breaking a methodology rule — it would create a ZUT
+collision, need vocabulary that hasn't been introduced yet, break tiling or the syllable
+cap, or otherwise fail the rails — do NOT quietly ignore it, and do NOT fudge it with a
+near-miss you hope passes. Do the parts you can, then say plainly what you could not do
+and why, in the chat post above (the requester's only window on this work):
+
+\`\`\`bash
+curl -s -X POST "http://localhost:3471/api/orchestrator/chat/${courseCode}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"agent","message":"NOT DONE — seed [N]: [what was asked] could not be applied because [rule it breaks]. I did [what you did instead]."}'
+\`\`\`
+
+The person who asked for this redo is often outside the building and will never see your
+terminal. An instruction that was not followed and not reported reads to them as an
+instruction that was followed. Say it every time, once per unfollowable request.
 `;
 }
 
