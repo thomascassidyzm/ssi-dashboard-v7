@@ -34,6 +34,17 @@
  * DRY RUN BY DEFAULT. Pass --apply to write. Every row carries a before-state
  * assertion; any drift aborts the whole run before a single write.
  *
+ * CLONE-FIRST IS AUTOMATIC ON A LIVE COURSE (2026-08-11). The tool reads
+ * `courses.status` and refuses to rewrite the learner-facing `pod-0` of any course
+ * that is `released` or `beta`; with --apply it clones to `pod-0-unrecorded` and
+ * aligns the clone instead. Overrides, in decreasing order of danger:
+ *   --force            rewrite the live pod-0 anyway (prints a warning; this is the
+ *                      path that took Welsh listening pods down for five days)
+ *   --no-auto-clone    refuse instead of cloning, so a caller can read the verdict
+ *   --pod-slug=<slug>  name the destination explicitly; any slug other than `pod-0`
+ *                      is off the learner path and the guard steps aside
+ *   --clone-slug=<s>   where auto-clone puts the copy (default `pod-0-unrecorded`)
+ *
  *   node tools/pods/align-pod0-to-canonical.cjs --course=deu_at_for_eng
  *   node tools/pods/align-pod0-to-canonical.cjs --course=deu_at_for_eng --apply
  *
@@ -48,6 +59,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.e
 const fs = require('fs')
 const path = require('path')
 const crypto = require('crypto')
+const { execFileSync } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
 const { diffPod, norm } = require('./pod0-recording-diff.cjs')
 
@@ -68,7 +80,14 @@ const arg = (name) => {
 // pod-0 to a parallel slug and align THAT. Learner-facing reads query the exact id
 // `<course>:pod-0` (player-vue useListeningPods.ts), so a different slug is invisible
 // to them. tools/pods/clone-pod.cjs makes the clone; this flag points the align at it.
-const POD_SLUG = arg('pod-slug') || 'pod-0'
+//
+// The default is NOT taken on trust any more. `pod-0` is the one slug the player
+// reads, so an in-place align on a live course is the Welsh outage by construction
+// (measured 2026-08-11: 16-30% of target-audio pointers and 20-41% of English-audio
+// pointers dropped per course). resolveSlug() below turns that default into a
+// per-course decision keyed on `courses.status`, and this constant is only the
+// caller's explicit request.
+const POD_SLUG_REQUESTED = arg('pod-slug')
 // No default course list: this tool now writes to any course, so the caller names it.
 const COURSES = (arg('course') || '').split(',').map(s => s.trim()).filter(Boolean)
 if (!COURSES.length) {
@@ -114,8 +133,86 @@ function detectLanguageName(servedRows) {
 const substitutePlaceholder = (t, name) =>
   name ? String(t == null ? '' : t).replace(PLACEHOLDER_TOKEN, name) : String(t == null ? '' : t)
 
-const slotId = (course, scene, sentence) =>
-  `${course}:${POD_SLUG}:SC${String(scene).padStart(2, '0')}-S${String(sentence).padStart(3, '0')}`
+const slotId = (course, slug, scene, sentence) =>
+  `${course}:${slug}:SC${String(scene).padStart(2, '0')}-S${String(sentence).padStart(3, '0')}`
+
+// ---------------------------------------------------------------------------
+// The released-course guard.
+//
+// Aligning rewrites a pod's English to canon and deliberately blanks the target
+// text of every line whose English changed. On a `draft` course that costs nothing.
+// On a course learners are actually in, it empties the pod they are reading — which
+// is exactly what happened to Welsh on 2026-08-06 and stayed broken for five days.
+//
+// `beta` is inside the wall with `released`: the estate's beta courses are served by
+// the same player to real beta learners, and the outage is indistinguishable to them.
+// The only status treated as safe for an in-place rewrite is `draft` — which is what
+// made the deu_at_for_eng in-place align legitimate.
+const LIVE_STATUSES = new Set(['released', 'beta'])
+// The one slug the player asks for, hardcoded: player-vue useListeningPods.ts builds
+// `${course}:pod-0`. Any other slug is invisible to learners, which is what makes the
+// clone path safe.
+const LEARNER_FACING_SLUG = 'pod-0'
+const CLONE_SLUG = arg('clone-slug') || 'pod-0-unrecorded'
+const FORCE_IN_PLACE = process.argv.includes('--force')
+// Refuse rather than clone. For a caller that wants the guard's verdict without the
+// side effect of creating a pod.
+const NO_AUTO_CLONE = process.argv.includes('--no-auto-clone')
+
+/**
+ * Decide which slug this course's align may write to, and make it exist.
+ *
+ * Returns { slug, status, cloned, reason }. Never returns the learner-facing slug for
+ * a live course unless --force was passed, and says so loudly when it does.
+ */
+async function resolveSlug(course) {
+  const { data: c, error } = await db.from('courses')
+    .select('course_code,status').eq('course_code', course).single()
+  if (error) throw new Error(`load course ${course}: ${error.message}`)
+  const status = c.status
+  const live = LIVE_STATUSES.has(status)
+
+  // An explicit --pod-slug that is not the learner-facing one is already off the
+  // live path; nothing to guard. This is how a caller re-aligns an existing clone.
+  if (POD_SLUG_REQUESTED && POD_SLUG_REQUESTED !== LEARNER_FACING_SLUG) {
+    return { slug: POD_SLUG_REQUESTED, status, cloned: false, reason: 'caller named a non-learner-facing slug' }
+  }
+  if (!live) {
+    return { slug: POD_SLUG_REQUESTED || LEARNER_FACING_SLUG, status, cloned: false, reason: `status=${status} is not live; in-place is safe` }
+  }
+  if (FORCE_IN_PLACE) {
+    console.error(`WARNING ${course}: status=${status} and --force was passed — aligning the ` +
+      'LEARNER-FACING pod-0 in place. Learners will see blank lines until translation and ' +
+      'generation catch up. This is the Welsh outage path.')
+    return { slug: LEARNER_FACING_SLUG, status, cloned: false, reason: '--force overrode the live-course guard' }
+  }
+  if (NO_AUTO_CLONE) {
+    throw new Error(`${course}: status=${status} is live and --pod-slug was not given. ` +
+      `Refusing to align ${course}:${LEARNER_FACING_SLUG} in place. Clone first ` +
+      `(tools/pods/clone-pod.cjs --course=${course} --to=${CLONE_SLUG} --apply) or pass --force.`)
+  }
+
+  // Clone-first, automatically. clone-pod.cjs is idempotent-by-refusal: it aborts if
+  // the destination already holds sentence rows, so a re-run over an existing clone
+  // must NOT re-clone. Check first and reuse.
+  const dstId = `${course}:${CLONE_SLUG}`
+  const { count, error: ce } = await db.from('listening_pod_sentences')
+    .select('id', { count: 'exact', head: true }).eq('pod_id', dstId)
+  if (ce) throw new Error(`probe ${dstId}: ${ce.message}`)
+  if (count > 0) {
+    return { slug: CLONE_SLUG, status, cloned: false, reason: `clone ${dstId} already exists with ${count} rows; aligning that` }
+  }
+  if (!APPLY) {
+    // Dry run must not create a pod. Report what would happen and plan against the
+    // live rows, which are byte-identical to what the clone would hold.
+    return { slug: LEARNER_FACING_SLUG, status, cloned: false, planned_clone: dstId,
+      reason: `status=${status}: --apply would clone to ${dstId} first; this dry run plans against ${course}:${LEARNER_FACING_SLUG}` }
+  }
+  execFileSync(process.execPath,
+    [path.join(__dirname, 'clone-pod.cjs'), `--course=${course}`, `--to=${CLONE_SLUG}`, '--apply'],
+    { stdio: 'inherit', cwd: REPO })
+  return { slug: CLONE_SLUG, status, cloned: true, reason: `status=${status}: cloned ${course}:${LEARNER_FACING_SLUG} → ${dstId} before aligning` }
+}
 
 /** Same basis as pod-dialogue-generator.cjs sceneHash() — the sync diff key. */
 function sceneHash(lines) {
@@ -123,7 +220,7 @@ function sceneHash(lines) {
   return crypto.createHash('sha1').update(basis).digest('hex').slice(0, 16)
 }
 
-async function planCourse(course, canonRaw) {
+async function planCourse(course, canonRaw, slug) {
   // diffPod reads served.known_text against canon.english_text, so this tool is only
   // correct where the known language IS English. For an eng_for_* or X_for_jpn course
   // the English sits in target_text and the whole carry-forward logic inverts; that is
@@ -132,7 +229,7 @@ async function planCourse(course, canonRaw) {
     throw new Error(`${course}: known language is not English — this aligner compares ` +
       'known_text against the canonical English and would mis-carry every line. Not supported.')
   }
-  const podId = `${course}:${POD_SLUG}`
+  const podId = `${course}:${slug}`
   const { data: pod, error: pe } = await db.from('listening_pods').select('*').eq('id', podId).single()
   if (pe) throw new Error(`load pod ${podId}: ${pe.message}`)
   const { data: served, error: se } = await db.from('listening_pod_sentences')
@@ -160,7 +257,7 @@ async function planCourse(course, canonRaw) {
   const claimed = new Set()
 
   for (const c of canon) {
-    const id = slotId(course, c.scene_number, c.sentence_number)
+    const id = slotId(course, slug, c.scene_number, c.sentence_number)
     const src = sourceFor.get(c.global_order) || null
     const carryTarget = !!(src && targetSafe.has(src.row.id))
     const carryKnown = !!(src && knownSafe.has(src.row.id))
@@ -235,7 +332,7 @@ async function planCourse(course, canonRaw) {
     orphanedTarget.push({
       reason: `reworded:${r.subtype}`, similarity: r.similarity,
       old_row_id: r.served.id, old_scene: r.served.scene_number, old_sentence: r.served.sentence_number,
-      new_slot_id: slotId(course, r.canon.scene_number, r.canon.sentence_number),
+      new_slot_id: slotId(course, slug, r.canon.scene_number, r.canon.sentence_number),
       new_scene: r.canon.scene_number, new_sentence: r.canon.sentence_number,
       old_english: r.served.known_text, new_english: r.canon.english_text,
       target_written_for_old_english: r.served.target_text,
@@ -360,14 +457,21 @@ async function applyCourse(p) {
   if (pe) throw new Error(`write pod header: ${pe.message}`)
 }
 
+// One archive set per pod, not per course: a course now gets aligned on its clone as
+// well as (later) on pod-0, and one name for both would have the second run overwrite
+// the first run's only way back. The learner-facing slug keeps the historic filename
+// so the 2026-08-06 Welsh archives stay restorable by the documented command.
+const archiveName = (course, slug, kind) =>
+  slug === LEARNER_FACING_SLUG ? `${course}-pod0-${kind}.json` : `${course}-${slug}-${kind}.json`
+
 /**
  * Put a pod back exactly as the pre-alignment archive recorded it. The chunked
  * upserts above are not one transaction, so a mid-flight failure has to have a
  * proven way back; this is it, and it is verified field-by-field before it returns.
  */
-async function restoreFromArchive(course) {
-  const podId = `${course}:${POD_SLUG}`
-  const file = path.join(ARCHIVE_DIR, `${course}-pod0-sentences-prealign.json`)
+async function restoreFromArchive(course, slug) {
+  const podId = `${course}:${slug}`
+  const file = path.join(ARCHIVE_DIR, archiveName(course, slug, 'sentences-prealign'))
   const a = JSON.parse(fs.readFileSync(file, 'utf8'))
   if (!a.sentences || !a.sentences.length) throw new Error(`${file}: no sentences — refusing to restore`)
 
@@ -399,8 +503,11 @@ async function restoreFromArchive(course) {
 
 async function main() {
   if (process.argv.includes('--restore-from-archive')) {
+    // Restore never guesses: it puts back whatever slug the caller names, defaulting
+    // to the learner-facing pod, which is what the documented Welsh command means.
+    const slug = POD_SLUG_REQUESTED || LEARNER_FACING_SLUG
     const out = []
-    for (const course of COURSES) out.push(await restoreFromArchive(course))
+    for (const course of COURSES) out.push(await restoreFromArchive(course, slug))
     console.log(JSON.stringify({ mode: 'RESTORED FROM ARCHIVE', out }, null, 2))
     return
   }
@@ -416,17 +523,20 @@ async function main() {
 
   const summary = []
   for (const course of COURSES) {
-    const p = await planCourse(course, canon)
+    // The guard runs BEFORE anything is planned or written, and it is what decides
+    // which pod this course's align is allowed to touch.
+    const g = await resolveSlug(course)
+    const p = await planCourse(course, canon, g.slug)
 
     // Full-fidelity archive of the pre-alignment rows, ALWAYS, dry run included.
     // Nothing below is recoverable from git without it.
-    fs.writeFileSync(path.join(ARCHIVE_DIR, `${course}-pod0-sentences-prealign.json`),
+    fs.writeFileSync(path.join(ARCHIVE_DIR, archiveName(course, g.slug, 'sentences-prealign')),
       JSON.stringify({ pod: p.pod, sentences: p.served }, null, 1))
-    fs.writeFileSync(path.join(ARCHIVE_DIR, `${course}-target-needing-translation.json`),
+    fs.writeFileSync(path.join(ARCHIVE_DIR, archiveName(course, g.slug, 'target-needing-translation')),
       JSON.stringify(p.orphanedTarget, null, 1))
     const dr = { ...p.diff }; delete dr.detail; delete dr.carry
-    fs.writeFileSync(path.join(ARCHIVE_DIR, `${course}-diff-summary.json`), JSON.stringify(dr, null, 1))
-    fs.writeFileSync(path.join(ARCHIVE_DIR, `${course}-align-${APPLY ? 'applied' : 'dryrun'}-log.json`),
+    fs.writeFileSync(path.join(ARCHIVE_DIR, archiveName(course, g.slug, 'diff-summary')), JSON.stringify(dr, null, 1))
+    fs.writeFileSync(path.join(ARCHIVE_DIR, archiveName(course, g.slug, `align-${APPLY ? 'applied' : 'dryrun'}-log`)),
       JSON.stringify({ ops: p.ops, surplus: p.surplus }, null, 1))
 
     if (APPLY) await applyCourse(p)
@@ -434,6 +544,8 @@ async function main() {
     summary.push({
       course,
       apply: APPLY,
+      pod_written: p.podId,
+      guard: g,
       diff: dr.buckets,
       reworded_subtypes: dr.reworded_subtypes,
       rows: {
