@@ -223,6 +223,16 @@ async function loadCourse(courseCode) {
     if (podErr) throw podErr
     sentences.value = rows || []
 
+    // WHICH VOICE ACTUALLY RENDERED EACH CLIP. Not the cast's answer — the
+    // clip's own row. A pod's audio accumulates over months while the casting
+    // moves under it, so the two disagree constantly: on
+    // spa_for_eng:pod-0-unrecorded only 16 of 119 target clips were rendered on
+    // the current two-voice cast; the other 103 are five older voices from
+    // June. Labelling a June clip with the current cast's voice name, and then
+    // asking Tom to approve that casting on the strength of it, is a lie in
+    // exactly the place a judgement is being made.
+    await loadClipVoices(sb, sentences.value)
+
     // Course-wide Stage-0 lookup maps — the SAME ones the learner's composer
     // uses, resolved by the SAME core function.
     const maps = await loadStage0ClipMaps(sb, courseCode)
@@ -245,6 +255,27 @@ async function loadCourse(courseCode) {
     loading.value = false
   }
 }
+
+// audio_id → { voice_id, created_at } straight off course_audio.
+const clipVoices = ref(new Map())
+
+async function loadClipVoices(sb, rows) {
+  clipVoices.value = new Map()
+  const ids = [...new Set(rows.flatMap((s) => [s.target_audio_id, s.known_audio_id]).filter(Boolean))]
+  if (!ids.length) return
+  const map = new Map()
+  // Chunked: a few hundred uuids in one .in() makes a URL long enough to be
+  // refused by the gateway.
+  for (let i = 0; i < ids.length; i += 100) {
+    const { data } = await sb.from('course_audio').select('id, voice_id, created_at').in('id', ids.slice(i, i + 100))
+    for (const r of data || []) map.set(r.id, { voice_id: r.voice_id, created_at: r.created_at })
+  }
+  clipVoices.value = map
+}
+
+// `eve` and `xai_eve` are ONE voice — the provider prefix is a spelling, not
+// an identity, and raw string equality silently misses ~14% of a layer.
+const bareVoiceId = (v) => String(v || '').toLowerCase().replace(/^(xai_|azure_|elevenlabs_|openai_)/, '')
 
 // ── presets + JSON editors ──────────────────────────────────────────────────
 function applyPreset(which) {
@@ -1414,21 +1445,40 @@ const SAMPLE_LIMIT = 10
 const EXCHANGE_MAX = 6
 const clipVoiceKey = (item) => `${item.kind}|${voiceKey(item.voice)}`
 
-function sampleQueue() {
+// Every clip on the pod, each carrying BOTH the voice the cast says should
+// speak that line and the voice that actually rendered it.
+const allClips = computed(() => {
   const speakers = castSpeakers.value
-  const queue = []
-  for (const s of sentences.value) {
-    if (s.target_audio_id) {
-      queue.push({ kind: 'target', id: s.target_audio_id, speaker: s.speaker, text: s.target_text,
-        other: s.known_text, order: s.global_order, voice: resolveSpeakerVoice(speakers, s.speaker, 'target') })
-    }
-    if (s.known_audio_id) {
-      queue.push({ kind: 'known', id: s.known_audio_id, speaker: s.speaker, text: s.known_text,
-        other: s.target_text, order: s.global_order, voice: resolveSpeakerVoice(speakers, s.speaker, 'known') })
-    }
+  const voices = clipVoices.value
+  const out = []
+  const push = (kind, id, s, text, other) => {
+    const cast = resolveSpeakerVoice(speakers, s.speaker, kind)
+    const actualId = voices.get(id)?.voice_id || null
+    out.push({
+      kind, id, speaker: s.speaker, text, other, order: s.global_order,
+      voice: cast,
+      actualVoiceId: actualId,
+      renderedAt: voices.get(id)?.created_at || null,
+      // Unknown actual voice (the clip row didn't come back) is NOT treated as
+      // a match — the sample must never claim a clip it cannot vouch for.
+      onCast: !!(cast && actualId) && bareVoiceId(actualId) === bareVoiceId(cast.voice_id),
+    })
   }
-  return queue
+  for (const s of sentences.value) {
+    if (s.target_audio_id) push('target', s.target_audio_id, s, s.target_text, s.known_text)
+    if (s.known_audio_id) push('known', s.known_audio_id, s, s.known_text, s.target_text)
+  }
+  return out
+})
+
+// THE SAMPLE IS OF THE CASTING UNDER APPROVAL, AND NOTHING ELSE. Clips
+// rendered on a voice that is no longer cast are still on the pod, still
+// playable, and still listed further down — but they cannot be evidence for
+// or against the cast Tom is being asked to approve.
+function sampleQueue() {
+  return allClips.value.filter((c) => c.onCast)
 }
+const offCastClips = computed(() => allClips.value.filter((c) => !c.onCast))
 
 // "Consecutive" means consecutive WITHIN a track: the queue interleaves each
 // line's target and known clip, so raw neighbours are the two halves of one
@@ -1503,6 +1553,24 @@ const sampleGap = computed(() => {
   const withTarget = sentences.value.filter((s) => s.target_audio_id).length
   const withKnown = sentences.value.filter((s) => s.known_audio_id).length
   return { total, withTarget, withKnown, none: !withTarget && !withKnown }
+})
+
+// How much of the pod's audio is actually evidence about THIS casting, and
+// what the rest was rendered on. Named voices, because "103 older clips" is
+// a shrug and "five voices from June" is a fact.
+const castCoverage = computed(() => {
+  const all = allClips.value
+  const off = offCastClips.value
+  const otherVoices = [...new Set(off.map((c) => bareVoiceId(c.actualVoiceId)).filter(Boolean))]
+  const unknown = off.filter((c) => !c.actualVoiceId).length
+  return {
+    total: all.length,
+    onCast: all.length - off.length,
+    off: off.length,
+    otherVoices,
+    unknown,
+    dates: [...new Set(off.map((c) => (c.renderedAt || '').slice(0, 10)).filter(Boolean))].sort(),
+  }
 })
 
 // ── generating a fresh sample ───────────────────────────────────────────────
@@ -1867,13 +1935,27 @@ loadLiveConfig()
             <div v-if="sampleGap.none" class="empty">
               No pod audio exists for this course yet — nothing to listen to. Generate a sample first.
             </div>
-            <p v-else-if="sampleGap.withTarget < sampleGap.total || sampleGap.withKnown < sampleGap.total" class="note">
-              Audio present on {{ sampleGap.withTarget }}/{{ sampleGap.total }} target and
-              {{ sampleGap.withKnown }}/{{ sampleGap.total }} known lines — the sample can only draw
-              on what exists.
+            <!-- WHAT THE SAMPLE IS EVIDENCE FOR. A pod's audio accumulates while
+                 the casting moves under it; a clip rendered on a voice that is
+                 no longer cast tells you nothing about the cast you're
+                 approving, so it is excluded and said out loud. -->
+            <p v-else-if="!castCoverage.onCast" class="note bad-note">
+              <strong>Nothing on this pod was rendered on the casting above.</strong>
+              All {{ castCoverage.total }} clips are on other voices
+              <template v-if="castCoverage.otherVoices.length">({{ castCoverage.otherVoices.join(', ') }})</template>
+              <template v-if="castCoverage.unknown">, {{ castCoverage.unknown }} with no voice on record</template>.
+              There is nothing here to approve this cast on — generate a sample.
+            </p>
+            <p v-else-if="castCoverage.off" class="note">
+              <strong>{{ castCoverage.onCast }} of {{ castCoverage.total }}</strong> clips on this pod
+              were rendered on the casting above; those are the only ones sampled.
+              The other {{ castCoverage.off }} are on
+              {{ castCoverage.otherVoices.length }} older voice{{ castCoverage.otherVoices.length === 1 ? '' : 's' }}
+              ({{ castCoverage.otherVoices.join(', ') }}<template v-if="castCoverage.dates.length">, rendered {{ castCoverage.dates[0] }}<template v-if="castCoverage.dates.length > 1">–{{ castCoverage.dates[castCoverage.dates.length - 1] }}</template></template>)
+              and are listed below the sample — they are not evidence about this cast.
             </p>
 
-            <div class="samples">
+            <div class="samples primary">
               <div v-for="c in sampleClips" :key="c.kind + ':' + c.id" class="sample-row" :class="{ on: playingSample === c.kind + ':' + c.id, exch: c.inExchange }">
                 <button class="s-play" @click="playSample(c)">▶</button>
                 <span class="s-exch" :title="c.inExchange ? 'part of the exchange — consecutive lines, two voices' : 'voice coverage'">{{ c.inExchange ? '⇄' : '·' }}</span>
@@ -1886,6 +1968,34 @@ loadLiveConfig()
                 </span>
               </div>
             </div>
+
+            <!-- Off-cast audio. Kept playable — it is what the pod sounds like
+                 today — but held apart from the sample so it cannot be mistaken
+                 for evidence about the casting under approval. -->
+            <details v-if="offCastClips.length" class="offcast">
+              <summary>
+                {{ offCastClips.length }} more clip{{ offCastClips.length === 1 ? '' : 's' }} on this pod,
+                rendered on voices that are no longer cast — playable, but not part of the sample
+              </summary>
+              <div class="samples">
+                <div v-for="c in offCastClips.slice(0, 40)" :key="'off:' + c.kind + ':' + c.id" class="sample-row" :class="{ on: playingSample === c.kind + ':' + c.id }">
+                  <button class="s-play" @click="playSample(c)">▶</button>
+                  <span class="s-exch">·</span>
+                  <span class="s-kind" :class="c.kind === 'target' ? 'r-target' : 'r-known'">{{ c.kind === 'target' ? 'T' : 'K' }}</span>
+                  <span class="s-speaker">{{ c.speaker }}</span>
+                  <span class="s-voice mono" :title="`cast says ${c.voice ? (c.voice.name || c.voice.voice_id) : 'no voice'}`">
+                    {{ bareVoiceId(c.actualVoiceId) || 'unknown voice' }}
+                  </span>
+                  <span class="s-text">
+                    <span class="s-main">{{ c.text }}</span>
+                    <span class="s-other">{{ (c.renderedAt || '').slice(0, 10) }}</span>
+                  </span>
+                </div>
+              </div>
+              <p v-if="offCastClips.length > 40" class="muted small">
+                …and {{ offCastClips.length - 40 }} more, not listed.
+              </p>
+            </details>
 
             <div class="cast-decide">
               <input v-model="castNote" class="cast-note" placeholder="note (optional) — what you heard" />
@@ -2691,6 +2801,18 @@ code {
   color: var(--muted);
   font-size: 12px;
   text-align: center;
+}
+.bad-note {
+  border-left: 2px solid var(--danger, #e5484d);
+  padding-left: 8px;
+}
+.offcast {
+  margin: 4px 0 14px;
+  font-size: 12.5px;
+}
+.offcast summary {
+  cursor: pointer;
+  color: var(--muted);
 }
 .pod-source {
   margin: 4px 0 10px;
