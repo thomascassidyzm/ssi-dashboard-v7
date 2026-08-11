@@ -284,8 +284,8 @@
         @play-all="playAllSegments"
         @approve="approveSegment"
         @reject="rejectSegment"
-        @approve-all="approveAllByConfidence"
-        @queue-redo="queueRedoByConfidence"
+        @approve-all="approveAllUnflagged"
+        @queue-redo="queueRedoFlagged"
         @filter="setReviewFilter"
         @clear-filter="clearReviewFilter"
         @finalize="finalizeSession"
@@ -362,8 +362,8 @@ const {
   playSegment,
   playAllSegments,
   stopPlayback,
-  approveAllByConfidence,
-  queueRedoByConfidence,
+  approveAllUnflagged,
+  queueRedoFlagged,
   setReviewFilter,
   clearReviewFilter,
   backToRecording,

@@ -13,6 +13,13 @@ import { useCourses } from '@/composables/useCourses'
 
 const { getCourseName } = useCourses()
 
+// The only thing a take's file size can honestly tell you: a file this small
+// holds no speech. It is NOT a quality score — the review screen used to dress
+// this same check up as a "90% High Confidence" badge, which measured nothing.
+const TOO_SHORT_BYTES = 1000
+const TOO_SHORT_WARNING = 'This take looks too short or empty — check it'
+const tooShort = blob => !blob || blob.size < TOO_SHORT_BYTES
+
 // Singleton state for the entire autocue session
 const state = reactive({
   // Session phase
@@ -73,7 +80,8 @@ const state = reactive({
   approvedSegments: new Set(),
   rejectedSegments: new Set(),
   playingSegmentId: null,
-  // Confidence band the review grid is narrowed to, or null for everything.
+  // Set to 'flagged' when the review grid is narrowed to the takes that need a
+  // look, or null for everything.
   reviewFilter: null,
 
   // Loading state (for API calls)
@@ -357,10 +365,7 @@ export function useAutocueState() {
       translation: phrase.translation,
       cadence: phrase.cadence,
       duration: ((segment.durationMs ?? 0) / 1000).toFixed(1),
-      confidence: segment.blob.size > 1000 ? 90 : 70,
-      confidenceLevel: segment.blob.size > 1000 ? 'high' : 'medium',
-      quality: segment.blob.size > 1000 ? 'Excellent' : 'Good',
-      issues: [],
+      issues: tooShort(segment.blob) ? [TOO_SHORT_WARNING] : [],
       hasRecording: true,
       audioUrl: url,
       // Shown on the card, so a recordist can SEE that the retake landed —
@@ -420,18 +425,11 @@ export function useAutocueState() {
       const recording = state.audioRecordings.get(phrase.id)
       const hasRecording = !!recording
 
-      // Estimate confidence based on whether we have a recording
-      let confidence, level
-      if (hasRecording && recording.blob.size > 1000) {
-        confidence = 85 + Math.floor(Math.random() * 15)
-        level = 'high'
-      } else if (hasRecording) {
-        confidence = 70 + Math.floor(Math.random() * 15)
-        level = 'medium'
-      } else {
-        confidence = 0
-        level = 'low'
-      }
+      // The only honest flags we have: nothing captured, or a file too small
+      // to hold speech. No score, no guess.
+      let issues = []
+      if (!hasRecording) issues = ['No recording']
+      else if (tooShort(recording.blob)) issues = [TOO_SHORT_WARNING]
 
       return {
         id: `seg_${phrase.id}`,
@@ -440,10 +438,7 @@ export function useAutocueState() {
         text: phrase.text,
         translation: phrase.translation,
         duration: hasRecording ? (recording.blob.size / 10000).toFixed(1) : '0.0',
-        confidence,
-        confidenceLevel: level,
-        quality: hasRecording ? (confidence > 85 ? 'Excellent' : 'Good') : 'Not Recorded',
-        issues: hasRecording ? [] : ['No recording'],
+        issues,
         hasRecording,
         audioUrl: recording?.url || null
       }
@@ -453,19 +448,6 @@ export function useAutocueState() {
   // Legacy mock function - kept for testing without microphone
   function generateMockSegments() {
     state.recordedSegments = state.phrases.map((phrase, index) => {
-      const rand = Math.random()
-      let confidence, level
-      if (rand > 0.7) {
-        confidence = 90 + Math.floor(Math.random() * 10)
-        level = 'high'
-      } else if (rand > 0.2) {
-        confidence = 70 + Math.floor(Math.random() * 20)
-        level = 'medium'
-      } else {
-        confidence = 50 + Math.floor(Math.random() * 20)
-        level = 'low'
-      }
-
       return {
         id: `seg_${phrase.id}`,
         phraseId: phrase.id,
@@ -473,10 +455,7 @@ export function useAutocueState() {
         text: phrase.text,
         translation: phrase.translation,
         duration: (1 + Math.random() * 2).toFixed(1),
-        confidence,
-        confidenceLevel: level,
-        quality: confidence > 85 ? 'Excellent' : confidence > 70 ? 'Good' : 'Needs Review',
-        issues: confidence < 70 ? ['Slight noise'] : [],
+        issues: ['No recording'],
         hasRecording: false,
         audioUrl: null
       }
@@ -568,28 +547,32 @@ export function useAutocueState() {
     if (state.playingSegmentId === segment.id) stopPlayback()
   }
 
-  function approveAllByConfidence(level) {
+  // A take is flagged only for something we can actually observe: no audio
+  // captured, or a file too small to hold speech.
+  const isFlagged = seg => !seg.hasRecording || !!seg.issues?.length
+
+  // "Approve All Unflagged" — everything we have no reason to doubt. The
+  // recordist still listens; this just saves the clicking.
+  function approveAllUnflagged() {
     state.recordedSegments.forEach(seg => {
-      if (seg.confidenceLevel === level || (level === 'high' && seg.confidence >= 90)) {
-        state.approvedSegments.add(seg.id)
-        state.rejectedSegments.delete(seg.id)
-      }
+      if (isFlagged(seg)) return
+      state.approvedSegments.add(seg.id)
+      state.rejectedSegments.delete(seg.id)
     })
   }
 
-  // "Queue Low for Re-record" does what it says: condemns the whole band and
-  // shows you exactly those cards, rather than silently filtering.
-  function queueRedoByConfidence(level) {
+  // "Queue Flagged for Re-record" does what it says: condemns the flagged
+  // takes and shows you exactly those cards, rather than silently filtering.
+  function queueRedoFlagged() {
     state.recordedSegments.forEach(seg => {
-      if (seg.confidenceLevel === level) {
-        state.rejectedSegments.add(seg.id)
-        state.approvedSegments.delete(seg.id)
-      }
+      if (!isFlagged(seg)) return
+      state.rejectedSegments.add(seg.id)
+      state.approvedSegments.delete(seg.id)
     })
-    state.reviewFilter = level
+    state.reviewFilter = 'flagged'
   }
 
-  // Clicking the same band again clears the filter — no dead-end view.
+  // Clicking the same filter again clears it — no dead-end view.
   function setReviewFilter(level) {
     state.reviewFilter = state.reviewFilter === level ? null : (level || null)
   }
@@ -906,13 +889,17 @@ export function useAutocueState() {
 
   // Stats computed
   const reviewStats = computed(() => {
-    const high = state.recordedSegments.filter(s => s.confidenceLevel === 'high').length
-    const medium = state.recordedSegments.filter(s => s.confidenceLevel === 'medium').length
-    const low = state.recordedSegments.filter(s => s.confidenceLevel === 'low').length
+    const flagged = state.recordedSegments.filter(isFlagged).length
     const approved = state.approvedSegments.size
     const pending = state.recordedSegments.length - approved
 
-    return { high, medium, low, approved, pending, total: state.recordedSegments.length }
+    return {
+      captured: state.recordedSegments.length - flagged,
+      flagged,
+      approved,
+      pending,
+      total: state.recordedSegments.length
+    }
   })
 
   return {
@@ -951,8 +938,8 @@ export function useAutocueState() {
     playSegment,
     playAllSegments,
     stopPlayback,
-    approveAllByConfidence,
-    queueRedoByConfidence,
+    approveAllUnflagged,
+    queueRedoFlagged,
     setReviewFilter,
     clearReviewFilter,
     backToRecording,

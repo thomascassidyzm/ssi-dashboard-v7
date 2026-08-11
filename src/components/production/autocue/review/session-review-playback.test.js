@@ -13,10 +13,9 @@ import { useAutocueState } from '@/composables/useAutocueState'
 
 const withAudio = {
   id: 'seg_1', phraseId: 1, label: 'Phrase #001', text: 'dw i eisiau siarad',
-  duration: '1.4', confidence: 90, confidenceLevel: 'high', quality: 'Excellent',
-  issues: [], hasRecording: true, audioUrl: 'blob:fake-1'
+  duration: '1.4', issues: [], hasRecording: true, audioUrl: 'blob:fake-1'
 }
-const silent = { ...withAudio, id: 'seg_2', phraseId: 2, hasRecording: false, audioUrl: null, confidenceLevel: 'low' }
+const silent = { ...withAudio, id: 'seg_2', phraseId: 2, hasRecording: false, audioUrl: null, issues: ['No recording'] }
 
 describe('play control wiring', () => {
   it('emits the segment when the play button is clicked', async () => {
@@ -89,5 +88,17 @@ describe('script-mode segments reach review playable', () => {
     expect(seg.hasRecording).toBe(true)
     expect(seg.label).toBe('Phrase #001')
     expect(seg.duration).toBe('1.4')
+    expect(seg.issues).toEqual([])
+  })
+
+  it('flags a take whose file is too small to hold speech', () => {
+    vi.stubGlobal('URL', { ...URL, createObjectURL: () => 'blob:tiny', revokeObjectURL: () => {} })
+    const { state, onSegmentCaptured, resetSession } = useAutocueState()
+    resetSession()
+    state.phrases = [{ id: 8, text: 'bore da', translation: 'good morning', cadence: 'natural' }]
+
+    onSegmentCaptured({ blob: new Blob(['x'.repeat(200)], { type: 'audio/webm' }), durationMs: 120 }, 0)
+
+    expect(state.recordedSegments[0].issues[0]).toContain('too short or empty')
   })
 })
