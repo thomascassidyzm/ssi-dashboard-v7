@@ -118,7 +118,7 @@
             <span v-if="it.speaker && it.kind === 'target'" class="cue-speaker" :style="{ color: speakerColor(it.speaker) }">{{ it.speaker }}</span>
             <!-- These words are a machine draft nobody has proofread yet. Say so
                  loudly: a recorder must never read one believing it is final. -->
-            <span v-if="it.draft" class="cue-draft-badge">DRAFT — AWAITING ARAN</span>
+            <span v-if="it.draft" class="cue-draft-badge">DRAFT — AWAITING PROOFREAD</span>
             <span class="cue-text">{{ it.lineText }}</span>
             <span v-if="it.lineGloss" class="cue-gloss">{{ it.lineGloss }}</span>
             <button
