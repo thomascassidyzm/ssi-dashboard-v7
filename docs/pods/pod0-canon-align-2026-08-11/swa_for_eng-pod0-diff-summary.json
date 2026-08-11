@@ -1,0 +1,31 @@
+{
+ "served_total": 142,
+ "canonical_total": 231,
+ "buckets": {
+  "survives_unchanged": 112,
+  "reworded": 29,
+  "new": 90,
+  "stale": 1
+ },
+ "reworded_subtypes": {
+  "numerals_only": 6,
+  "wording": 23,
+  "placeholder": 0
+ },
+ "survivors_moved_position": 107,
+ "survivors_speaker_changed": 0,
+ "canonical_placeholder_lines": 0,
+ "target_text_gap": {
+  "no_target_text_at_all": 90,
+  "target_needs_review": 23,
+  "target_unaffected": 6
+ },
+ "takes": {
+  "existing_target": 142,
+  "existing_known": 142,
+  "target_still_valid": 118,
+  "known_still_valid": 112,
+  "target_invalidated": 24,
+  "known_invalidated": 30
+ }
+}
