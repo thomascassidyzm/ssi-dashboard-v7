@@ -403,14 +403,23 @@ async function main() {
 
     // Archive the FULL before-state of every pod in scope (not only the changed
     // ones) before a single write — that file is the way back.
+    //
+    // ADD-ONLY. This tool is re-run as the concurrent alignment work creates more
+    // pod-0 clones, and a plain overwrite on the second run would archive the
+    // ALREADY-RECAST cast as if it were the original — silently turning the way
+    // back into a no-op. A pod's first archived entry is its only one.
+    const prior = fs.existsSync(ARCHIVE) ? JSON.parse(fs.readFileSync(ARCHIVE, 'utf8')) : null
     const archive = {
-      generated_at: new Date().toISOString(),
-      note: 'Full listening_pods.speakers before the 2026-08-11 shared-English-cast recast. '
-        + 'Restore with: node tools/pods/recast-pod-english.cjs --restore-from-archive --apply',
-      pods: Object.fromEntries(pods.map((p) => [p.id, p.speakers])),
+      first_written_at: (prior && prior.first_written_at) || new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      note: 'Full listening_pods.speakers BEFORE the 2026-08-11 shared-English-cast recast, '
+        + 'add-only across re-runs. Restore with: '
+        + 'node tools/pods/recast-pod-english.cjs --restore-from-archive --apply',
+      pods: { ...Object.fromEntries(pods.map((p) => [p.id, p.speakers])), ...((prior && prior.pods) || {}) },
     }
+    const fresh = pods.filter((p) => !(prior && prior.pods && p.id in prior.pods)).length
     fs.writeFileSync(ARCHIVE, JSON.stringify(archive, null, 2))
-    console.log(`\narchived ${pods.length} pods → ${ARCHIVE}`)
+    console.log(`\narchived ${fresh} newly-seen pod(s); ${Object.keys(archive.pods).length} total → ${ARCHIVE}`)
 
     await client.query('BEGIN')
     try {
@@ -421,8 +430,14 @@ async function main() {
       console.error(`\nABORTED — nothing was written.\n${e.message}`)
       process.exit(1)
     }
-    fs.writeFileSync(LOG('applied'), JSON.stringify(log, null, 2))
-    console.log(`applied to ${plans.length} pods. Log: ${LOG('applied')}`)
+    // Applied logs ACCUMULATE for the same reason the archive does: re-runs pick
+    // up newly-cloned pods, and each run's per-character verdicts are the record
+    // the re-audit reconciles against.
+    const priorLog = fs.existsSync(LOG('applied'))
+      ? JSON.parse(fs.readFileSync(LOG('applied'), 'utf8')) : null
+    const runs = [...((priorLog && priorLog.runs) || []), log]
+    fs.writeFileSync(LOG('applied'), JSON.stringify({ runs }, null, 2))
+    console.log(`applied to ${plans.length} pods (run ${runs.length}). Log: ${LOG('applied')}`)
   } finally {
     await client.end()
   }
