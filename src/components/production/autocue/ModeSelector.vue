@@ -28,6 +28,11 @@
       </button>
     </div>
 
+    <!-- Sits with the mode cards on purpose: the cutoff decides what Mode 1
+         actually asks the recorder for, so the cost of that choice belongs in
+         front of them BEFORE they start, not buried in a settings page. -->
+    <RecordFullCutoff v-if="courseCode" :course-code="courseCode" />
+
     <div
       class="mode-card"
       :class="{ selected: selectedMode === 'regeneration' }"
@@ -74,6 +79,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import RecordFullCutoff from './RecordFullCutoff.vue'
 
 const emit = defineEmits(['select'])
 const selectedMode = ref(null)

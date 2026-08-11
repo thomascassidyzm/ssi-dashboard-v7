@@ -775,6 +775,10 @@ export function useAutocueState() {
         totalItems: data.totalItems,
         totalPhrases: data.totalPhrases,
         totalDirect: data.totalDirect,
+        // Seeds 1..fullSeeds are recorded whole (Kai's cutoff, 2026-08-11);
+        // totalRecordInFull is how many of the items below are that kind.
+        totalRecordInFull: data.totalRecordInFull ?? 0,
+        fullSeeds: data.fullSeeds ?? 0,
         estimatedMinutes: data.estimatedMinutes,
         maxSeed: data.maxSeed ?? null
       }
@@ -796,6 +800,10 @@ export function useAutocueState() {
         seedNumber: item.seedNumber ?? null,
         legoId: item.legoId || '',
         role: state.selectedRole || 'target1',
+        // Whole-utterance item from inside the record-everything cutoff: one
+        // pass, no chunk pauses. Drives the teleprompter's own labelling.
+        recordInFull: item.recordInFull === true,
+        itemKind: item.itemKind || null,
         // LEGO-level chunking — PhraseCard uses these in Pass 2 (slow) to
         // render pause boundaries between LEGO chunks rather than every word.
         recordingChunks: item.recordingChunks || null,
@@ -804,7 +812,7 @@ export function useAutocueState() {
         chunkCount: item.chunkCount || null
       }))
 
-      console.log(`[Autocue] Loaded optimizer script: ${state.phrases.length} items (${data.totalPhrases} phrases + ${data.totalDirect} direct)`)
+      console.log(`[Autocue] Loaded optimizer script: ${state.phrases.length} items (${data.totalPhrases} phrases + ${data.totalDirect} direct${data.totalRecordInFull ? ` + ${data.totalRecordInFull} recorded in full from seeds 1-${data.fullSeeds}` : ''})`)
 
       // Also load course info
       const courseRes = await fetch(

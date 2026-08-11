@@ -82,6 +82,10 @@
             <span class="script-stat-value">{{ state.scriptInfo?.totalDirect || 0 }}</span>
             <span class="script-stat-label">Direct Items</span>
           </div>
+          <div v-if="state.scriptInfo?.totalRecordInFull" class="script-stat">
+            <span class="script-stat-value">{{ state.scriptInfo.totalRecordInFull }}</span>
+            <span class="script-stat-label">Said In Full</span>
+          </div>
           <div class="script-stat">
             <span class="script-stat-value">{{ state.scriptInfo?.totalItems || 0 }}</span>
             <span class="script-stat-label">Total Items</span>
@@ -91,7 +95,18 @@
             <span class="script-stat-label">Minutes</span>
           </div>
         </div>
-        <p class="script-instructions">
+        <!-- With a cutoff set, the session has two halves that want opposite
+             things from the recorder, so say so before they start rather than
+             letting them discover it from a label mid-take. -->
+        <p v-if="state.scriptInfo?.totalRecordInFull" class="script-instructions">
+          Seeds 1–{{ state.scriptInfo.fullSeeds }} come first:
+          {{ state.scriptInfo.totalRecordInFull }} lines marked
+          <strong class="green-text">say it straight through</strong> — one pass each, no pauses
+          inside the line. After that the usual two-pass flow: <strong>white text</strong> for
+          natural speed, then <strong class="amber-text">amber text</strong> for slow reading with
+          gaps. VAD auto-advances throughout.
+        </p>
+        <p v-else class="script-instructions">
           Each phrase appears twice: <strong>white text</strong> for natural speed,
           then <strong class="amber-text">amber text</strong> for slow reading.
           VAD will auto-detect pauses and advance automatically.
@@ -999,6 +1014,16 @@ onUnmounted(() => {
 
 .amber-text {
   color: var(--color-tungsten);
+}
+
+/* Matches the teleprompter's own in-full label, so the briefing and the thing
+   it briefs are the same colour. */
+.green-text {
+  color: var(--color-emerald, #06ffa5);
+}
+
+:root[data-theme="light"] .green-text {
+  color: #0f7a4f;
 }
 
 .script-actions {

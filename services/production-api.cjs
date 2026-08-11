@@ -7608,6 +7608,120 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
 
 // Import the recording optimizer algorithm
 const { generateRecordingScript } = require('../tools/recording-optimizer/generate-recording-script.cjs')
+const { computeRecordingEstimate, estimateAtCutoff } = require('./recording-estimate.cjs')
+
+// -----------------------------------------------------------------------------
+// RECORD-EVERYTHING CUTOFF (Kai's ruling, 2026-08-11)
+//
+// Seeds 1..N recorded as whole utterances; seeds past N keep the existing
+// fast-and-slow flow. The cutoff lives on the course, because it is a property
+// of how that course is being made, not of one recording session — every
+// recorder who opens the course inherits it without a special link.
+// -----------------------------------------------------------------------------
+
+// Estimates get asked for repeatedly while somebody drags the cutoff around, and
+// each one is three full-table reads. Cache the curve briefly — content changes
+// on the scale of hours, not seconds.
+const estimateCache = new Map() // `${courseCode}:${role}` → { at, estimate }
+const ESTIMATE_TTL_MS = 5 * 60 * 1000
+
+async function getRecordingEstimate(courseCode, role) {
+  const key = `${courseCode}:${role}`
+  const hit = estimateCache.get(key)
+  if (hit && Date.now() - hit.at < ESTIMATE_TTL_MS) return hit.estimate
+  const estimate = await computeRecordingEstimate(supabaseClient.getClient(), courseCode, { role })
+  estimateCache.set(key, { at: Date.now(), estimate })
+  return estimate
+}
+
+/**
+ * The course's saved cutoff. 0 (off) for every course that has not set one, so
+ * fast-and-slow remains the default everywhere.
+ */
+async function getCourseFullSeeds(courseCode) {
+  const { data, error } = await supabaseClient.getClient()
+    .from('courses')
+    .select('record_full_max_seed')
+    .eq('course_code', courseCode)
+    .single()
+  if (error) return 0
+  return data?.record_full_max_seed || 0
+}
+
+// GET /api/production/:courseCode/recording-estimate
+// What "record everything in full" costs, for EVERY possible cutoff, derived
+// live from course_seeds / course_legos / course_practice_phrases. Returned as a
+// whole curve so the picker can answer any N without another round trip.
+app.get('/api/production/:courseCode/recording-estimate', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const role = ['target1', 'target2'].includes(req.query.role) ? req.query.role : 'target1'
+
+    const estimate = await getRecordingEstimate(courseCode, role)
+    if (!estimate) {
+      return res.status(404).json({ error: `No seeds found for ${courseCode}. Build the course first.` })
+    }
+
+    const savedCutoff = await getCourseFullSeeds(courseCode)
+    // ?cutoff=N asks "and what would N cost?" — answered off the same curve.
+    const asked = parseInt(req.query.cutoff, 10)
+    const cutoff = Number.isInteger(asked) && asked > 0 ? asked : savedCutoff
+
+    res.json({
+      ...estimate,
+      savedCutoff,
+      atCutoff: estimateAtCutoff(estimate, cutoff),
+    })
+  } catch (error) {
+    logger.error('Error computing recording estimate:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// PATCH /api/production/:courseCode/record-full-cutoff  { maxSeed }
+// Sets (or clears, with 0) the record-everything cutoff for a course.
+app.patch('/api/production/:courseCode/record-full-cutoff', async (req, res) => {
+  try {
+    const { courseCode } = req.params
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    const raw = parseInt(req.body?.maxSeed, 10)
+    if (!Number.isInteger(raw) || raw < 0) {
+      return res.status(400).json({ error: 'maxSeed must be an integer ≥ 0 (0 turns the cutoff off)' })
+    }
+
+    const estimate = await getRecordingEstimate(courseCode, 'target1')
+    if (!estimate) {
+      return res.status(404).json({ error: `No seeds found for ${courseCode}.` })
+    }
+    // A cutoff past the end of the course means "all of it" — store the real
+    // last seed rather than a number that will look wrong next month when the
+    // course grows.
+    const maxSeed = Math.min(raw, estimate.lastSeed)
+
+    const { error } = await supabaseClient.getClient()
+      .from('courses')
+      .update({ record_full_max_seed: maxSeed })
+      .eq('course_code', courseCode)
+    if (error) throw error
+
+    logger.log(`[Record-in-full] ${courseCode} cutoff set to seed ${maxSeed}${maxSeed === 0 ? ' (off)' : ''}`)
+
+    res.json({
+      courseCode,
+      maxSeed,
+      atCutoff: estimateAtCutoff(estimate, maxSeed),
+    })
+  } catch (error) {
+    logger.error('Error setting record-full cutoff:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
 
 // GET /api/production/:courseCode/recording-optimizer
 // Runs the GuaranteedCoverage algorithm to find minimum recording set
@@ -7676,15 +7790,23 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
     // target voice needs its own complete set. Unknown/absent → target1, the
     // historical behaviour.
     const role = ['target1', 'target2'].includes(req.query.role) ? req.query.role : 'target1'
+    // Record-everything cutoff: seeds 1..N are presented as whole utterances,
+    // one pass, no chunk boundaries. Taken from the course's saved setting so
+    // every recorder inherits it; ?fullSeeds=N overrides for one session (and
+    // ?fullSeeds=0 opts a session back into pure fast-and-slow).
+    const askedFullSeeds = parseInt(req.query.fullSeeds, 10)
+    const fullSeeds = Number.isInteger(askedFullSeeds) && askedFullSeeds >= 0
+      ? askedFullSeeds
+      : await getCourseFullSeeds(courseCode)
 
-    logger.log(`[Recording Script] Generating interleaved script for ${courseCode} [${role}]${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''}`)
+    logger.log(`[Recording Script] Generating interleaved script for ${courseCode} [${role}]${excludeRecorded ? ' (gap only)' : ' (full)'}${maxSeed ? ` (seeds 1-${maxSeed})` : ''}${fullSeeds ? ` (seeds 1-${fullSeeds} in full)` : ''}`)
 
     // Run the optimizer (suppress console output)
     const originalLog = console.log
     const logs = []
     console.log = (...args) => logs.push(args.join(' '))
 
-    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded, maxSeed, role })
+    const result = await generateRecordingScript(courseCode, { verbose: false, excludeRecorded, maxSeed, role, fullSeeds })
 
     console.log = originalLog
 
@@ -7698,10 +7820,34 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
 
     const phrases = result.recordingScript.phrases
     const directItems = result.directRecord.items
+    const fullItems = result.recordInFull?.items || []
 
     // Interleave: each phrase gets natural + slow pair
     const items = []
     let idx = 0
+
+    // Record-in-full region first: seeds 1..N, in course order, ONE pass each.
+    // No slow twin and a single chunk covering the whole line — the recorder must
+    // not leave gaps in something that will never be cut apart.
+    for (const f of fullItems) {
+      const wholeChunk = [{ text: f.target, legoId: f.legoId || null, isLego: f.kind === 'lego' }]
+      items.push({
+        index: idx++,
+        text: f.target,
+        cadence: 'natural',
+        type: 'full',
+        recordInFull: true,
+        itemKind: f.kind,
+        known: f.known || '',
+        legoId: f.legoId || '',
+        seedNumber: f.seedNumber ?? null,
+        wordCount: String(f.target || '').trim().split(/\s+/).length,
+        recordingChunks: wholeChunk,
+        legoChunks: wholeChunk,
+        chunksString: f.target,
+        chunkCount: 1,
+      })
+    }
 
     for (let i = 0; i < phrases.length; i++) {
       const p = phrases[i]
@@ -7772,16 +7918,20 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
       })
     }
 
-    // Estimate: ~6 seconds per item (read + pause)
-    const estimatedMinutes = Math.round((items.length * 6) / 60)
+    // Glue items are read twice (~6s each including the pause); record-in-full
+    // items are read once at ~4s, the rate calibrated in services/recording-estimate.cjs.
+    const glueItemCount = items.length - fullItems.length
+    const estimatedMinutes = Math.round((glueItemCount * 6 + fullItems.length * 4) / 60)
 
     res.json({
       courseCode,
       maxSeed,
       role,
+      fullSeeds: result.fullSeeds || 0,
       totalItems: items.length,
       totalPhrases: phrases.length,
       totalDirect: directItems.length,
+      totalRecordInFull: fullItems.length,
       estimatedMinutes,
       items
     })

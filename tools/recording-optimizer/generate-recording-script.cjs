@@ -312,35 +312,121 @@ function applySeedCap(query, maxSeed) {
   return maxSeed ? query.lte('seed_number', maxSeed) : query;
 }
 
-async function getAllLegos(courseCode, maxSeed) {
-  const { data, error } = await applySeedCap(supabase
+/**
+ * `minSeed` excludes seeds 1..minSeed from a fetch — the mirror of maxSeed.
+ *
+ * Needed by the record-everything cutoff (Kai, 2026-08-11): seeds 1..N are
+ * recorded as whole utterances, so the splice-oriented set cover must not see
+ * them at all. If it did, it would happily pick a phrase from seed 3 to cover a
+ * LEGO in seed 300 and the join would be back.
+ */
+function applySeedRange(query, minSeed, maxSeed) {
+  let q = applySeedCap(query, maxSeed);
+  return minSeed ? q.gt('seed_number', minSeed) : q;
+}
+
+/**
+ * Paged fetch. Supabase caps an unpaged select at 1,000 rows, so courses with
+ * real bulk (fin_for_eng has 14,032 practice-phrase rows) were silently handing
+ * the optimizer a truncated candidate pool.
+ */
+async function fetchPaged(buildQuery) {
+  const PAGE = 1000;
+  const rows = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await buildQuery().range(from, from + PAGE - 1);
+    if (error) throw error;
+    rows.push(...(data || []));
+    if (!data || data.length < PAGE) break;
+  }
+  return rows;
+}
+
+async function getAllLegos(courseCode, maxSeed, minSeed = 0) {
+  return fetchPaged(() => applySeedRange(supabase
     .from('course_legos')
     .select('target_text, known_text, type, is_new, seed_number, lego_index')
     .eq('course_code', courseCode)
-    .eq('is_new', true), maxSeed);
-
-  if (error) throw error;
-  return data || [];
+    .eq('is_new', true), minSeed, maxSeed));
 }
 
-async function getAllPracticePhrases(courseCode, maxSeed) {
-  const { data, error } = await applySeedCap(supabase
+async function getAllPracticePhrases(courseCode, maxSeed, minSeed = 0) {
+  return fetchPaged(() => applySeedRange(supabase
     .from('course_practice_phrases')
-    .select('target_text, known_text, seed_number, lego_index, position')
-    .eq('course_code', courseCode), maxSeed);
-
-  if (error) throw error;
-  return data || [];
+    .select('target_text, known_text, seed_number, lego_index, position, phrase_role')
+    .eq('course_code', courseCode), minSeed, maxSeed));
 }
 
-async function getAllSeeds(courseCode, maxSeed) {
-  const { data, error } = await applySeedCap(supabase
+async function getAllSeeds(courseCode, maxSeed, minSeed = 0) {
+  return fetchPaged(() => applySeedRange(supabase
     .from('course_seeds')
     .select('target_text, known_text, seed_number')
-    .eq('course_code', courseCode), maxSeed);
+    .eq('course_code', courseCode), minSeed, maxSeed));
+}
 
-  if (error) throw error;
-  return data || [];
+/**
+ * The record-everything region: every utterance in seeds 1..fullSeeds, in course
+ * order, each recorded ONCE as a complete whole thing. No set cover, no chunk
+ * boundaries, no slow pass — there is nothing to splice, which is the entire
+ * point of the cutoff.
+ *
+ * Deduplicated on exact text because audio identity in this estate is one clip
+ * per (course, text, voice): two rows sharing a text are one recording job.
+ *
+ * @returns {Promise<{items: Array, skippedAlreadyRecorded: number}>}
+ */
+async function getFullRecordItems(courseCode, fullSeeds, { excludeRecorded = false, role = 'target1' } = {}) {
+  const [seeds, legos, phrases] = await Promise.all([
+    getAllSeeds(courseCode, fullSeeds),
+    getAllLegos(courseCode, fullSeeds),
+    getAllPracticePhrases(courseCode, fullSeeds),
+  ]);
+
+  // Order within a seed: the seed sentence, then its LEGOs, then its phrases —
+  // the recorder meets the whole thought before its parts, which is how they
+  // keep the prosody honest.
+  const bySeed = new Map();
+  const push = (seedNumber, item) => {
+    if (!bySeed.has(seedNumber)) bySeed.set(seedNumber, []);
+    bySeed.get(seedNumber).push(item);
+  };
+
+  for (const s of seeds) {
+    push(s.seed_number, { target: s.target_text, known: s.known_text, kind: 'seed' });
+  }
+  for (const l of legos) {
+    push(l.seed_number, {
+      target: l.target_text, known: l.known_text, kind: 'lego',
+      legoId: `S${String(l.seed_number).padStart(4, '0')}L${String(l.lego_index).padStart(2, '0')}`,
+    });
+  }
+  for (const p of phrases) {
+    push(p.seed_number, {
+      target: p.target_text, known: p.known_text,
+      kind: p.phrase_role === 'component' ? 'component' : (p.phrase_role || 'phrase'),
+    });
+  }
+
+  // Already in the can for THIS voice. cym_n_for_eng has thousands of real takes
+  // already, and they are whole recordings — asking that recorder to say them all
+  // again would be hours of work for no change to what a learner hears.
+  const alreadyRecorded = excludeRecorded
+    ? new Set((await getExistingHumanAudioTexts(courseCode, role)).map(t => (t || '').trim()))
+    : new Set();
+
+  const items = [];
+  const seen = new Set();
+  let skippedAlreadyRecorded = 0;
+  for (const seedNumber of [...bySeed.keys()].sort((a, b) => a - b)) {
+    for (const item of bySeed.get(seedNumber)) {
+      const key = (item.target || '').trim();
+      if (!key || seen.has(key)) continue;
+      seen.add(key);
+      if (alreadyRecorded.has(key)) { skippedAlreadyRecorded += 1; continue; }
+      items.push({ ...item, seedNumber });
+    }
+  }
+  return { items, skippedAlreadyRecorded };
 }
 
 /**
@@ -381,20 +467,36 @@ async function getExistingHumanAudioTexts(courseCode, role = 'target1') {
 // =============================================================================
 
 async function generateRecordingScript(courseCode, options = {}) {
-  const { verbose = false, excludeRecorded = false, maxSeed = null, role = 'target1' } = options;
+  const { verbose = false, excludeRecorded = false, maxSeed = null, role = 'target1', fullSeeds = 0 } = options;
 
   console.log(`\n🎙️  Recording Script Generator`);
   console.log(`   Course: ${courseCode}`);
   if (maxSeed) console.log(`   Capped to seeds 1-${maxSeed}`);
+  // The record-everything cutoff only makes sense inside the cap: a cutoff of 40
+  // on a session capped at seeds 1-5 means "record all five in full".
+  const fullCutoff = fullSeeds > 0 ? (maxSeed ? Math.min(fullSeeds, maxSeed) : fullSeeds) : 0;
+  if (fullCutoff) console.log(`   Recording seeds 1-${fullCutoff} IN FULL (no splicing); fast-and-slow beyond`);
   console.log(`${'─'.repeat(50)}\n`);
 
   // 1. Get course info
   if (verbose) console.log('📚 Loading course data...');
   const course = await getCourseInfo(courseCode);
 
-  // 2. Get all NEW LEGOs (the universe to cover)
-  const legos = await getAllLegos(courseCode, maxSeed);
-  if (legos.length === 0) {
+  // 1b. The record-everything region, if a cutoff is set. These utterances are
+  // recorded whole; they are deliberately kept out of everything below so the
+  // set cover cannot reach into them for splice material.
+  const fullRecord = fullCutoff
+    ? await getFullRecordItems(courseCode, fullCutoff, { excludeRecorded, role })
+    : { items: [], skippedAlreadyRecorded: 0 };
+  const fullRecordItems = fullRecord.items;
+  if (fullCutoff) {
+    console.log(`📖 Record-in-full items (seeds 1-${fullCutoff}): ${fullRecordItems.length}`
+      + (fullRecord.skippedAlreadyRecorded ? ` (${fullRecord.skippedAlreadyRecorded} already recorded by ${role}, skipped)` : ''));
+  }
+
+  // 2. Get all NEW LEGOs (the universe to cover) — from the GLUE region only.
+  const legos = await getAllLegos(courseCode, maxSeed, fullCutoff);
+  if (legos.length === 0 && fullRecordItems.length === 0) {
     console.log(maxSeed
       ? `❌ No LEGOs found in seeds 1-${maxSeed} for ${courseCode}.`
       : '❌ No LEGOs found for course. Run Phase 1 & 2 first.');
@@ -422,8 +524,8 @@ async function generateRecordingScript(courseCode, options = {}) {
   console.log(`📊 LEGOs to cover: ${universe.size}`);
 
   // 3. Get candidate phrases (practice phrases + seeds)
-  const practicePhrases = await getAllPracticePhrases(courseCode, maxSeed);
-  const seeds = await getAllSeeds(courseCode, maxSeed);
+  const practicePhrases = await getAllPracticePhrases(courseCode, maxSeed, fullCutoff);
+  const seeds = await getAllSeeds(courseCode, maxSeed, fullCutoff);
 
   // Deduplicate and build candidate list
   const phraseMap = new Map(); // normalized → { original, source }
@@ -567,7 +669,10 @@ async function generateRecordingScript(courseCode, options = {}) {
   // Estimated time (rough)
   const phraseTime = result.selected.length * CONFIG.SECONDS_PER_PHRASE;
   const directTime = directRecord.length * CONFIG.SECONDS_PER_DIRECT;
-  const totalSeconds = (phraseTime + directTime) * 2; // x2 for slow pass
+  // x2 for the slow pass — the glue region only. Record-in-full items are read
+  // once, because nothing is going to be sliced out of them.
+  const fullTime = fullRecordItems.length * CONFIG.SECONDS_PER_PHRASE;
+  const totalSeconds = (phraseTime + directTime) * 2 + fullTime;
   const estimatedMinutes = Math.ceil(totalSeconds / 60);
 
   // 8. Build output
@@ -576,9 +681,13 @@ async function generateRecordingScript(courseCode, options = {}) {
     generatedAt: new Date().toISOString(),
     maxSeed,
     role,
+    fullSeeds: fullCutoff,
 
     statistics: {
       totalLegos,
+      recordInFullItems: fullRecordItems.length,
+      recordInFullMinutes: Math.ceil(fullTime / 60),
+      recordInFullAlreadyRecorded: fullRecord.skippedAlreadyRecorded,
       coveredByPhrases: totalLegos - result.uncovered.size,
       directRecordNeeded: directRecord.length,
       totalRecordings,
@@ -588,6 +697,17 @@ async function generateRecordingScript(courseCode, options = {}) {
       algorithmIterations: result.iterations,
       excludeRecorded,
       alreadyCoveredByExistingRecordings: alreadyCoveredCount,
+    },
+
+    // Seeds 1..fullSeeds — read each one straight through, once. Comes FIRST in
+    // the session so the recorder does the course's opening in full while fresh.
+    recordInFull: {
+      instructions: [
+        'Seeds 1-' + fullCutoff + ': say each line as one complete, natural utterance.',
+        'One pass only — natural speed, no pauses inside the line.',
+        'Nothing here gets cut up, so do not leave gaps between words or chunks.',
+      ],
+      items: fullRecordItems,
     },
 
     recordingScript: {
@@ -640,6 +760,10 @@ async function generateRecordingScript(courseCode, options = {}) {
   console.log(`\n${'═'.repeat(50)}`);
   console.log('📊 RESULTS');
   console.log('═'.repeat(50));
+  if (fullCutoff) {
+    console.log(`Record in full:       ${fullRecordItems.length} utterances (seeds 1-${fullCutoff}, one pass)`);
+    console.log(`Glue region:          seeds ${fullCutoff + 1}${maxSeed ? `-${maxSeed}` : '+'}`);
+  }
   console.log(`Total LEGOs:          ${totalLegos}`);
   console.log(`Phrases to record:    ${result.selected.length}`);
   console.log(`Direct record items:  ${directRecord.length}`);
@@ -695,6 +819,10 @@ Options:
   --gap             Exclude LEGOs already coverable by existing HUMAN
                     recordings — output is the residual gap list, not a
                     from-scratch script
+  --max-seed <N>    Cap the script to seeds 1..N
+  --full-seeds <N>  Record-everything cutoff: seeds 1..N are emitted as whole
+                    utterances (no splicing, one pass); seeds past N use the
+                    fast-and-slow covering-subset flow. Default 0 = off.
   --help            Show this help
 
 Examples:
@@ -715,9 +843,11 @@ Examples:
   const maxSeed = maxSeedIdx !== -1 ? parseInt(args[maxSeedIdx + 1], 10) : null;
   const roleIdx = args.indexOf('--role');
   const role = roleIdx !== -1 ? args[roleIdx + 1] : 'target1';
+  const fullSeedsIdx = args.indexOf('--full-seeds');
+  const fullSeeds = fullSeedsIdx !== -1 ? parseInt(args[fullSeedsIdx + 1], 10) || 0 : 0;
 
   try {
-    const result = await generateRecordingScript(courseCode, { verbose, excludeRecorded, maxSeed, role });
+    const result = await generateRecordingScript(courseCode, { verbose, excludeRecorded, maxSeed, role, fullSeeds });
 
     if (result && outputFile) {
       const outputPath = path.resolve(outputFile);
@@ -738,4 +868,4 @@ if (require.main === module) {
 }
 
 // Export for API use
-module.exports = { generateRecordingScript, getExistingHumanAudioTexts };
+module.exports = { generateRecordingScript, getExistingHumanAudioTexts, getFullRecordItems };

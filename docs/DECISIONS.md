@@ -940,3 +940,39 @@ owns a service during an incident.
 **Search width:** visible-options
 **Decided by:** agent — Tom's brief specified the migration; the watchdog line and the empty
 `dump.pm2` force-save are the agent's calls, both reversible.
+
+## 2026-08-11 — record-everything cutoff is a course field, estimate is a curve
+
+**Move:** built Kai's record-everything option as a per-course seed cutoff N (`courses.record_full_max_seed`,
+default 0 = off) plus a picker that shows, before anyone commits, how many utterances and how many
+hours that cutoff costs — derived live from `course_seeds`/`course_legos`/`course_practice_phrases`.
+Seeds 1..N are emitted as whole single-pass utterances with no chunk boundaries; seeds past N keep
+today's fast-and-slow set cover, which now takes a `minSeed` so it cannot reach into the in-full
+region for splice material.
+
+**Better:** the estimate reproduces Kai's own two datapoints from live rows (cym_n 6,298 utterances
+→ 7.00h; fin 16,094 → 17.9h), so the number on screen is checkable rather than asserted, and the
+picker answers any N rather than only "whole course". **Simpler:** one new column and one reused
+mechanism — the cutoff rides the `maxSeed` pattern the script generator already had, and the whole
+cost curve ships in one response so the slider needs no further round trips. **Cheaper (total):**
+three selects per course per five minutes (cached), no new service, no per-N recomputation; and
+already-recorded pruning is honoured in the in-full region too, which for cym_n turns "record the
+whole course in full" from 6.5h of work into 20 minutes.
+
+**Searched & rejected:**
+- Cutoff as a recording-session setting / link parameter — failed *better*: the cutoff is a property
+  of how the course is being made, so every recorder must inherit it without a special link. The
+  `?fullSeeds=` override still exists for one-off sessions.
+- Estimate as a single figure recomputed per cutoff — failed *simpler* and *cheaper*: a fetch per
+  slider drag, and no way to see the shape of the cost.
+- Word- or syllable-scaled per-utterance duration — failed *better*: a flat 4s/utterance reproduces
+  both of Kai's datapoints exactly; a length-scaled model put Finnish at 12.9h against Kai's 18h,
+  i.e. it contradicts the only evidence available.
+- Counting rows rather than distinct texts as the job count — failed *better*: audio identity is one
+  clip per (course, text, voice), so a text repeated across seeds is one recording. Both figures are
+  shown; the headline is distinct.
+
+**Search width:** visible-options
+**Decided by:** agent — Kai's brief set the shape (cutoff, reuse `maxSeed`, estimate front and
+centre); the storage location, the curve-in-one-response design, the 4s calibration and the
+distinct-vs-rows headline are the agent's calls.

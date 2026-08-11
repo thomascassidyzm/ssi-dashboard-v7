@@ -11,6 +11,12 @@
       <!-- Slow cadence label -->
       <div v-if="isSlowCadence" class="cadence-label">SLOW</div>
 
+      <!-- Record-in-full items are said straight through, once. Labelled because
+           a recorder trained on the two-pass flow will otherwise leave chunk
+           pauses out of habit — and a pause is exactly what this item exists to
+           avoid. -->
+      <div v-else-if="phrase.recordInFull" class="cadence-label in-full-label">SAY IT STRAIGHT THROUGH</div>
+
       <!-- Normal display -->
       <div v-if="!showGaps" class="phrase-text" :class="{ 'slow-cadence': isSlowCadence }">
         {{ phrase.text }}
@@ -214,8 +220,21 @@ const displayChunks = computed(() => resolvePhraseChunks(props.phrase).chunks)
   opacity: 0.8;
 }
 
+/* Must NOT read like the SLOW label — it says the opposite thing, and a recorder
+   who skims it and leaves chunk pauses has wasted the take. Green, full opacity. */
+.in-full-label {
+  color: var(--color-emerald, #06ffa5);
+  opacity: 1;
+}
+
+:root[data-theme="light"] .in-full-label {
+  /* The dark-mode mint is ~1.4:1 on a light card. Darker green for contrast. */
+  color: #0f7a4f;
+}
+
 /* Light mode: 0.8 opacity drops the small mono label below AA on the light
    canvas (~4.0:1). Use the full accent token (5.6:1) instead. Dark untouched. */
+
 :root[data-theme="light"] .cadence-label {
   opacity: 1;
 }
