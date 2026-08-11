@@ -98,7 +98,17 @@ const TARGET = {
   pol:    { native: 'pl',    locale: 'pl'    },
   por_br: { native: 'pt',    locale: 'pt-BR' },          // native pt IS Brazilian
   rus:    { native: 'ru',    locale: 'ru'    },
-  spa:    { native: 'es',    locale: 'es-ES' },          // natives all-male → F from multilingual; accent assumed Castilian (verify by ear like pt)
+  // ⚠️ The "assumed Castilian" here is NOT verified, and one Spanish pod cast
+  // off this shape was rejected by ear on 2026-08-11: "the sampled pronunciation
+  // is Mexican Spanish, but spa_for_eng is an IBERIAN Spanish course."
+  // What that pod actually carried was the bare handle `es`, not `es-ES` — the
+  // same region-stripping that made `por` render Brazilian — so the rejection
+  // does not by itself convict the es-ES path below; nobody has heard it.
+  // Until someone does, the live pool (app_config.pod_voice_pools.spa) leads
+  // with the Azure es-ES pair Elvira/Alvaro, which is provider-guaranteed
+  // "Spanish (Spain)" and what the spa_for_eng course itself is rendered on.
+  // docs/pods/spa-cast-iberian-2026-08-11.md
+  spa:    { native: 'es',    locale: 'es-ES' },          // natives all-male → F from multilingual
   swe:    { native: 'sv-SE', locale: 'sv'    },
   tha:    { native: 'th',    locale: 'th'    },
   tur:    { native: 'tr',    locale: 'tr'    },
