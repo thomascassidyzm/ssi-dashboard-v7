@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#12121a">
+<title>Blind listening test — glued vs one take</title>
+<style>
+  :root {
+    --bg: #12121a; --card: #1c1c28; --card-2: #24243356; --line: #33334a;
+    --text: #ececf4; --dim: #9a9ab0; --accent: #4ade80; --accent-2: #fbbf24; --danger: #f87171;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 17px; line-height: 1.45;
+    padding: 1rem 1rem calc(2rem + env(safe-area-inset-bottom));
+    max-width: 640px; margin: 0 auto;
+  }
+  h1 { font-size: 1.3rem; margin: 0 0 .25rem; color: var(--accent); }
+  .sub { color: var(--dim); font-size: .9rem; margin: 0 0 1rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1rem; margin-bottom: .85rem; }
+  .progress { display: flex; align-items: center; gap: .6rem; margin-bottom: .85rem; color: var(--dim); font-size: .85rem; }
+  .bar { flex: 1; height: 6px; background: var(--card); border-radius: 3px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .25s; }
+
+  button { font: inherit; color: inherit; border: none; border-radius: 12px; cursor: pointer; }
+  button:disabled { opacity: .45; cursor: default; }
+
+  .play {
+    width: 100%; background: var(--card); border: 2px solid var(--line);
+    padding: 1.15rem 1rem; margin-bottom: .7rem; display: flex; align-items: center; gap: .9rem;
+    font-size: 1.15rem; font-weight: 600; text-align: left;
+  }
+  .play .icon {
+    flex: 0 0 46px; height: 46px; border-radius: 50%; background: var(--accent); color: #06280f;
+    display: grid; place-items: center; font-size: 1.2rem;
+  }
+  .play.playing { border-color: var(--accent); }
+  .play.playing .icon { background: var(--accent-2); color: #3a2a00; }
+  .play .meta { color: var(--dim); font-size: .8rem; font-weight: 400; display: block; }
+
+  .verdicts { display: grid; gap: .55rem; margin-top: 1rem; }
+  .verdicts button { background: var(--card-2); border: 1px solid var(--line); padding: .95rem; font-weight: 600; }
+  .verdicts button.same { color: var(--dim); }
+  .hint { color: var(--dim); font-size: .82rem; text-align: center; margin: .8rem 0 0; }
+
+  .reveal { border-color: var(--accent); }
+  .reveal h2 { font-size: 1rem; margin: 0 0 .6rem; color: var(--accent-2); }
+  .reveal dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: .35rem .7rem; font-size: .92rem; }
+  .reveal dt { color: var(--dim); }
+  .welsh { font-style: italic; color: var(--accent-2); }
+  .pieces { font-size: .85rem; color: var(--dim); margin-top: .7rem; }
+  .pieces code { background: #0e0e16; padding: .1rem .35rem; border-radius: 5px; font-style: italic; color: #cfcfe6; }
+  .next { width: 100%; background: var(--accent); color: #06280f; padding: 1rem; font-weight: 700; margin-top: .9rem; }
+
+  table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  th, td { text-align: left; padding: .45rem .3rem; border-bottom: 1px solid var(--line); }
+  th { color: var(--dim); font-weight: 500; }
+  .tally { font-size: 1rem; margin: 0 0 1rem; }
+  .tally b { color: var(--accent); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; margin-top: .9rem; }
+  .row button { background: var(--card-2); border: 1px solid var(--line); padding: .8rem; font-size: .9rem; }
+  .status { font-size: .85rem; color: var(--dim); margin-top: .7rem; min-height: 1.2em; }
+
+  input[type=text] {
+    width: 100%; background: #0e0e16; border: 1px solid var(--line); color: var(--text);
+    border-radius: 10px; padding: .7rem; font: inherit; margin-top: .4rem;
+  }
+  details { color: var(--dim); font-size: .85rem; margin-bottom: 1rem; }
+  summary { cursor: pointer; color: var(--accent-2); }
+  details p { margin: .6rem 0 0; }
+</style>
+</head>
+<body>
+
+<h1>Glued vs one take</h1>
+<p class="sub">Two versions of the same Welsh phrase. One was recorded in a single continuous take. The other was built by gluing together separately-recorded pieces. Which sounds better?</p>
+
+<details>
+  <summary>What am I listening to, exactly?</summary>
+  <p>Every clip here already existed — nothing was recorded or generated for this test. The glued version is made from real recordings of that phrase's own pieces, stuck together with the same processing the live splicer uses: each piece trimmed to its speech, levelled to the same loudness, then joined.</p>
+  <p>Both versions get identical trimming, levelling and encoding, so loudness or file quality can't give the game away — only the joins can.</p>
+  <p>One honest caveat: the pieces here come from separate course recordings, not from one slow read of this phrase. So a few of the glued versions drag more than a real fast pass would. If a glued one still sounds fine here, it will sound at least as good in production.</p>
+</details>
+
+<div id="app"></div>
+
+<script>
+const PAIRS_URL = 'pairs.json';
+const STORE_KEY = 'concat-listening-test-v1';
+const API_PATHS = ['/api/production/concat-listening-test/verdicts'];
+
+let pairs = [];
+let state = null;      // { sessionId, listener, index, answers: {pairId: {...}} }
+let audio = new Audio();
+let playingSide = null;
+
+// ---- session + blinding ---------------------------------------------------
+// A/B assignment is derived from the session id, so which side is the glued one
+// changes per listener and per phrase, but stays put if the page is reloaded
+// mid-test. Nothing in the layout, the labels or the file names says which is
+// which until a verdict has been given.
+function hash(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return (h >>> 0);
+}
+function concatIsA(pairId) { return hash(state.sessionId + ':' + pairId) % 2 === 0; }
+
+function load() {
+  try { return JSON.parse(localStorage.getItem(STORE_KEY)); } catch { return null; }
+}
+function save() {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch {}
+}
+function newSession() {
+  return {
+    sessionId: 's' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+    listener: '', index: 0, answers: {}
+  };
+}
+
+// ---- audio ----------------------------------------------------------------
+function stop() {
+  audio.pause();
+  playingSide = null;
+  document.querySelectorAll('.play').forEach(b => b.classList.remove('playing'));
+}
+function play(side, file, btn) {
+  if (playingSide === side) { stop(); return; }
+  stop();
+  playingSide = side;
+  btn.classList.add('playing');
+  audio.src = file;
+  audio.play().catch(() => { stop(); });
+}
+audio.addEventListener('ended', stop);
+
+// ---- rendering ------------------------------------------------------------
+const app = document.getElementById('app');
+
+function render() {
+  stop();
+  if (state.index >= pairs.length) return renderResults();
+
+  const pair = pairs[state.index];
+  const aIsConcat = concatIsA(pair.id);
+  const fileA = aIsConcat ? pair.concat.file : pair.whole.file;
+  const fileB = aIsConcat ? pair.whole.file : pair.concat.file;
+  const answered = state.answers[pair.id];
+
+  app.innerHTML = `
+    <div class="progress">
+      <span>${state.index + 1} of ${pairs.length}</span>
+      <span class="bar"><i style="width:${(state.index / pairs.length) * 100}%"></i></span>
+    </div>
+    <div class="card">
+      <button class="play" id="btnA"><span class="icon">▶</span><span>Version A<span class="meta">tap to play</span></span></button>
+      <button class="play" id="btnB"><span class="icon">▶</span><span>Version B<span class="meta">tap to play</span></span></button>
+      ${answered ? '' : `
+      <div class="verdicts">
+        <button data-pick="A">A sounds better</button>
+        <button data-pick="same" class="same">They sound the same</button>
+        <button data-pick="B">B sounds better</button>
+      </div>
+      <p class="hint">Play both as many times as you like.</p>`}
+    </div>
+    ${answered ? revealHtml(pair, answered) : ''}
+  `;
+
+  document.getElementById('btnA').onclick = e => play('A', fileA, e.currentTarget);
+  document.getElementById('btnB').onclick = e => play('B', fileB, e.currentTarget);
+
+  app.querySelectorAll('[data-pick]').forEach(btn => {
+    btn.onclick = () => {
+      const pick = btn.dataset.pick;
+      // Store the answer in terms of what it MEANS, not which button was hit,
+      // so the results stand up without re-deriving the blinding later.
+      const chose = pick === 'same' ? 'same' : ((pick === 'A') === aIsConcat ? 'concat' : 'whole');
+      state.answers[pair.id] = {
+        pairId: pair.id, text: pair.text, courseCode: pair.courseCode,
+        voiceLabel: pair.voiceLabel, pieces: pair.pieceTexts.length,
+        aWas: aIsConcat ? 'concat' : 'whole', picked: pick, preferred: chose,
+        answeredAt: new Date().toISOString()
+      };
+      save();
+      pushToServer();
+      render();
+    };
+  });
+
+  const nextBtn = document.getElementById('next');
+  if (nextBtn) nextBtn.onclick = () => { state.index++; save(); render(); window.scrollTo(0, 0); };
+}
+
+function revealHtml(pair, answer) {
+  const verdict = answer.preferred === 'same'
+    ? 'You heard no difference.'
+    : answer.preferred === 'whole'
+      ? 'You picked the <b>single take</b>.'
+      : 'You picked the <b>glued</b> version.';
+  return `
+    <div class="card reveal">
+      <h2>${verdict}</h2>
+      <dl>
+        <dt>Version A</dt><dd>${answer.aWas === 'concat' ? 'glued from pieces' : 'one continuous take'}</dd>
+        <dt>Version B</dt><dd>${answer.aWas === 'concat' ? 'one continuous take' : 'glued from pieces'}</dd>
+        <dt>Phrase</dt><dd class="welsh">${escapeHtml(pair.text)}</dd>
+        <dt>Voice</dt><dd>${escapeHtml(pair.voiceLabel)}</dd>
+      </dl>
+      <p class="pieces">Glued from: ${pair.pieceTexts.map(t => '<code>' + escapeHtml(t) + '</code>').join(' + ')}</p>
+      <button class="next" id="next">${state.index + 1 >= pairs.length ? 'See results' : 'Next phrase'}</button>
+    </div>`;
+}
+
+function renderResults() {
+  const answers = pairs.map(p => state.answers[p.id]).filter(Boolean);
+  const n = k => answers.filter(a => a.preferred === k).length;
+  const whole = n('whole'), concat = n('concat'), same = n('same');
+
+  app.innerHTML = `
+    <div class="card">
+      <p class="tally">
+        Out of ${answers.length} phrases you preferred the <b>single take</b> ${whole} time${whole === 1 ? '' : 's'},
+        the <b>glued</b> version ${concat} time${concat === 1 ? '' : 's'},
+        and heard <b>no difference</b> ${same} time${same === 1 ? '' : 's'}.
+      </p>
+      <label>Your name, so the results can be attributed
+        <input type="text" id="listener" placeholder="e.g. Kai" value="${escapeHtml(state.listener || '')}">
+      </label>
+      <div class="row">
+        <button id="dl">Download results</button>
+        <button id="copy">Copy results</button>
+        <button id="send">Save to server</button>
+        <button id="reset">Start again</button>
+      </div>
+      <p class="status" id="status"></p>
+    </div>
+    <div class="card">
+      <table>
+        <thead><tr><th>Phrase</th><th>Pieces</th><th>Preferred</th></tr></thead>
+        <tbody>${answers.map(a => `
+          <tr><td class="welsh">${escapeHtml(a.text)}</td><td>${a.pieces}</td>
+          <td>${a.preferred === 'whole' ? 'one take' : a.preferred === 'concat' ? 'glued' : 'same'}</td></tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+
+  const status = document.getElementById('status');
+  document.getElementById('listener').oninput = e => { state.listener = e.target.value; save(); };
+  document.getElementById('dl').onclick = () => {
+    const blob = new Blob([resultsJson()], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `concat-listening-test-${state.sessionId}.json`;
+    a.click();
+    status.textContent = 'Downloaded.';
+  };
+  document.getElementById('copy').onclick = async () => {
+    try { await navigator.clipboard.writeText(resultsJson()); status.textContent = 'Copied to clipboard.'; }
+    catch { status.textContent = 'Copy failed — use Download instead.'; }
+  };
+  document.getElementById('send').onclick = async () => {
+    status.textContent = 'Saving…';
+    const ok = await pushToServer();
+    status.textContent = ok
+      ? 'Saved to the server.'
+      : 'Server unreachable from this device — your answers are still safe in this browser, so use Download or Copy.';
+  };
+  document.getElementById('reset').onclick = () => {
+    if (!confirm('Clear your answers and start again?')) return;
+    state = newSession(); save(); render();
+  };
+}
+
+function resultsJson() {
+  return JSON.stringify({
+    sessionId: state.sessionId, listener: state.listener || null,
+    finishedAt: new Date().toISOString(),
+    verdicts: pairs.map(p => state.answers[p.id]).filter(Boolean)
+  }, null, 2);
+}
+
+// Best effort only: the page is the source of truth, this is the durable copy.
+async function pushToServer() {
+  const body = JSON.stringify({
+    sessionId: state.sessionId, listener: state.listener || null,
+    verdicts: pairs.map(p => state.answers[p.id]).filter(Boolean)
+  });
+  for (const path of API_PATHS) {
+    try {
+      const res = await fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });
+      if (res.ok) return true;
+    } catch {}
+  }
+  return false;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+// ---- boot -----------------------------------------------------------------
+fetch(PAIRS_URL)
+  .then(r => r.json())
+  .then(data => {
+    pairs = data.pairs || [];
+    if (!pairs.length) { app.innerHTML = '<div class="card">No comparison pairs are available.</div>'; return; }
+    const saved = load();
+    state = (saved && saved.sessionId) ? saved : newSession();
+    if (state.index > pairs.length) state.index = pairs.length;
+    render();
+  })
+  .catch(err => {
+    app.innerHTML = '<div class="card">Could not load the phrase list: ' + escapeHtml(err.message) + '</div>';
+  });
+</script>
+</body>
+</html>

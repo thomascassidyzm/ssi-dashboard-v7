@@ -4392,6 +4392,51 @@ app.get('/api/production/audio/:uuid/stream', async (req, res) => {
   }
 })
 
+// ---------------------------------------------------------------------------
+// Blind concat-vs-whole listening test (public/concat-listening-test/)
+//
+// Kai judges by ear whether a phrase glued from separately-recorded pieces (the
+// fast pass) holds up against the same phrase read in one take (the slow pass).
+// The page itself is static and keeps every verdict in the listener's own
+// browser, so it works on a phone even when this API is unreachable — these two
+// routes are the DURABLE copy, not the only copy. Nothing here touches audio.
+const CONCAT_TEST_DIR = path.join(__dirname, '..', 'scripts', 'concat-listening-test', 'verdicts')
+
+app.post('/api/production/concat-listening-test/verdicts', (req, res) => {
+  try {
+    const { sessionId, listener, verdicts } = req.body || {}
+    if (!Array.isArray(verdicts) || !verdicts.length) {
+      return res.status(400).json({ error: 'verdicts must be a non-empty array' })
+    }
+    fs.mkdirSync(CONCAT_TEST_DIR, { recursive: true })
+    // One file per session, rewritten as the session grows, so a listener who
+    // closes the page half way still leaves their answers behind.
+    const safeSession = String(sessionId || 'unknown').replace(/[^A-Za-z0-9_-]/g, '')
+    const file = path.join(CONCAT_TEST_DIR, `${safeSession || 'unknown'}.json`)
+    fs.writeFileSync(file, JSON.stringify({
+      sessionId: safeSession, listener: listener || null,
+      savedAt: new Date().toISOString(), verdicts
+    }, null, 2))
+    res.json({ saved: verdicts.length, file: path.basename(file) })
+  } catch (error) {
+    logger.error('concat-listening-test save failed:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+app.get('/api/production/concat-listening-test/verdicts', (req, res) => {
+  try {
+    if (!fs.existsSync(CONCAT_TEST_DIR)) return res.json({ sessions: [] })
+    const sessions = fs.readdirSync(CONCAT_TEST_DIR)
+      .filter(f => f.endsWith('.json'))
+      .map(f => JSON.parse(fs.readFileSync(path.join(CONCAT_TEST_DIR, f), 'utf8')))
+    res.json({ sessions })
+  } catch (error) {
+    logger.error('concat-listening-test read failed:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
   try {
     const { courseCode, uuid } = req.params
