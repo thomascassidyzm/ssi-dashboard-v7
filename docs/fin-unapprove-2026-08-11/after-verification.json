@@ -1,0 +1,418 @@
+{
+ "written_at_utc": "2026-08-11T14:00:22.483Z",
+ "course_code": "fin_for_eng",
+ "approved_seed_count_before": 104,
+ "approved_seed_count_after": 83,
+ "seeds_unapproved": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  20,
+  25,
+  26,
+  34,
+  37,
+  52
+ ],
+ "rows_returned_by_update": 21,
+ "course_wide_column_changes": 63,
+ "columns_changed": [
+  "version",
+  "updated_at",
+  "approved_at"
+ ],
+ "unexpected_seeds_changed": [],
+ "intended_seeds_not_changed": [],
+ "diffs": [
+  {
+   "seed_number": 1,
+   "col": "version",
+   "from": 19,
+   "to": 20
+  },
+  {
+   "seed_number": 1,
+   "col": "updated_at",
+   "from": "2026-07-15T22:03:40.959268+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 1,
+   "col": "approved_at",
+   "from": "2026-07-15T22:03:40.916+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 2,
+   "col": "version",
+   "from": 16,
+   "to": 17
+  },
+  {
+   "seed_number": 2,
+   "col": "updated_at",
+   "from": "2026-07-15T22:03:44.485671+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 2,
+   "col": "approved_at",
+   "from": "2026-07-15T22:03:44.447+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 3,
+   "col": "version",
+   "from": 18,
+   "to": 19
+  },
+  {
+   "seed_number": 3,
+   "col": "updated_at",
+   "from": "2026-07-15T22:03:48.160462+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 3,
+   "col": "approved_at",
+   "from": "2026-07-15T22:03:48.119+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 4,
+   "col": "version",
+   "from": 19,
+   "to": 20
+  },
+  {
+   "seed_number": 4,
+   "col": "updated_at",
+   "from": "2026-07-15T22:03:56.776837+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 4,
+   "col": "approved_at",
+   "from": "2026-07-15T22:03:56.735+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 5,
+   "col": "version",
+   "from": 16,
+   "to": 17
+  },
+  {
+   "seed_number": 5,
+   "col": "updated_at",
+   "from": "2026-07-15T22:04:17.524489+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 5,
+   "col": "approved_at",
+   "from": "2026-07-15T22:04:17.48+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 6,
+   "col": "version",
+   "from": 18,
+   "to": 19
+  },
+  {
+   "seed_number": 6,
+   "col": "updated_at",
+   "from": "2026-07-15T22:04:22.722069+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 6,
+   "col": "approved_at",
+   "from": "2026-07-15T22:04:22.681+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 7,
+   "col": "version",
+   "from": 17,
+   "to": 18
+  },
+  {
+   "seed_number": 7,
+   "col": "updated_at",
+   "from": "2026-07-15T22:04:30.342498+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 7,
+   "col": "approved_at",
+   "from": "2026-07-15T22:04:30.3+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 8,
+   "col": "version",
+   "from": 16,
+   "to": 17
+  },
+  {
+   "seed_number": 8,
+   "col": "updated_at",
+   "from": "2026-07-15T22:04:47.534549+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 8,
+   "col": "approved_at",
+   "from": "2026-07-15T22:04:47.49+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 9,
+   "col": "version",
+   "from": 16,
+   "to": 17
+  },
+  {
+   "seed_number": 9,
+   "col": "updated_at",
+   "from": "2026-07-15T22:04:55.457897+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 9,
+   "col": "approved_at",
+   "from": "2026-07-15T22:04:55.416+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 10,
+   "col": "version",
+   "from": 17,
+   "to": 18
+  },
+  {
+   "seed_number": 10,
+   "col": "updated_at",
+   "from": "2026-07-15T22:05:36.632976+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 10,
+   "col": "approved_at",
+   "from": "2026-07-15T22:05:36.531+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 11,
+   "col": "version",
+   "from": 20,
+   "to": 21
+  },
+  {
+   "seed_number": 11,
+   "col": "updated_at",
+   "from": "2026-08-02T23:05:45.998869+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 11,
+   "col": "approved_at",
+   "from": "2026-07-16T15:11:37.875+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 12,
+   "col": "version",
+   "from": 15,
+   "to": 16
+  },
+  {
+   "seed_number": 12,
+   "col": "updated_at",
+   "from": "2026-07-16T15:13:06.029124+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 12,
+   "col": "approved_at",
+   "from": "2026-07-16T15:13:05.99+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 13,
+   "col": "version",
+   "from": 15,
+   "to": 16
+  },
+  {
+   "seed_number": 13,
+   "col": "updated_at",
+   "from": "2026-07-16T15:13:38.385354+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 13,
+   "col": "approved_at",
+   "from": "2026-07-16T15:13:38.335+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 14,
+   "col": "version",
+   "from": 14,
+   "to": 15
+  },
+  {
+   "seed_number": 14,
+   "col": "updated_at",
+   "from": "2026-07-16T15:14:15.289848+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 14,
+   "col": "approved_at",
+   "from": "2026-07-16T15:14:15.252+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 15,
+   "col": "version",
+   "from": 15,
+   "to": 16
+  },
+  {
+   "seed_number": 15,
+   "col": "updated_at",
+   "from": "2026-07-16T15:15:11.204811+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 15,
+   "col": "approved_at",
+   "from": "2026-07-16T15:15:11.142+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 20,
+   "col": "version",
+   "from": 15,
+   "to": 16
+  },
+  {
+   "seed_number": 20,
+   "col": "updated_at",
+   "from": "2026-07-20T13:23:35.47276+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 20,
+   "col": "approved_at",
+   "from": "2026-07-20T13:23:35.38+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 25,
+   "col": "version",
+   "from": 15,
+   "to": 16
+  },
+  {
+   "seed_number": 25,
+   "col": "updated_at",
+   "from": "2026-07-27T22:02:00.32515+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 25,
+   "col": "approved_at",
+   "from": "2026-07-27T22:02:00.265+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 26,
+   "col": "version",
+   "from": 15,
+   "to": 16
+  },
+  {
+   "seed_number": 26,
+   "col": "updated_at",
+   "from": "2026-07-20T13:45:36.816233+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 26,
+   "col": "approved_at",
+   "from": "2026-07-20T13:45:36.717+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 34,
+   "col": "version",
+   "from": 16,
+   "to": 17
+  },
+  {
+   "seed_number": 34,
+   "col": "updated_at",
+   "from": "2026-08-02T23:05:46.198242+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 34,
+   "col": "approved_at",
+   "from": "2026-07-20T16:12:25.541+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 37,
+   "col": "version",
+   "from": 14,
+   "to": 15
+  },
+  {
+   "seed_number": 37,
+   "col": "updated_at",
+   "from": "2026-07-20T16:15:43.837725+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 37,
+   "col": "approved_at",
+   "from": "2026-07-20T16:15:43.744+00:00",
+   "to": null
+  },
+  {
+   "seed_number": 52,
+   "col": "version",
+   "from": 16,
+   "to": 17
+  },
+  {
+   "seed_number": 52,
+   "col": "updated_at",
+   "from": "2026-07-20T23:56:39.334265+00:00",
+   "to": "2026-08-11T14:00:22.042968+00:00"
+  },
+  {
+   "seed_number": 52,
+   "col": "approved_at",
+   "from": "2026-07-20T23:56:39.18+00:00",
+   "to": null
+  }
+ ]
+}
