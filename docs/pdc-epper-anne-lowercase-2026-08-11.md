@@ -38,3 +38,13 @@ UPDATE course_practice_phrases
  WHERE course_code = 'pdc_for_eng'
    AND target_text LIKE '%epper anne%';
 ```
+
+## Applied
+
+Applied 2026-08-11 in a single transaction, 17 rows updated, verified after: 0 rows carry capital `Anne`, 17 carry `epper anne`. Nothing else in those rows was touched.
+
+Seeds carrying the changed rows: 11, 12, 13, 14, 16, 17, 18, 20, 21, 23, 33. **None of them were approved** — Doug's approval frontier at the time of the write was seeds 1–10 only, so no approved work was disturbed and nothing needed unapproving.
+
+### Flagged, not changed
+
+The brief expected this string to originate in seed 5. It does not. Seed 5 and its LEGO card spell the same idea `ebber anners` ("someone else"), while these 17 practice phrases in seeds 11–33 spell it `epper anne`. That is a live spelling divergence between the seed/LEGO layer and the practice layer, and it is outside the scope Kai approved. It needs Doug's ruling on which spelling is right.
