@@ -1,0 +1,24 @@
+[Unit]
+Description=Popty concat-vs-whole blind listening test — cym_n_for_eng (watson-1, for Kai)
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Dedicated git worktree (branch feat/autocue-concat-listening-test-2026-08-11) so
+# this service does not vanish when another agent switches branches in the main
+# checkout. It replaced a /tmp worktree, which a reboot would have wiped.
+WorkingDirectory=/home/tomcassidy/SSi/wt-concat-listen
+Environment=CONCAT_TEST_PORT=4788
+# Not PORT= : agent shells on watson-1 carry a stray PORT=4317 (see serve.cjs).
+ExecStart=/usr/bin/node tools/concat-listening-test/serve.cjs
+Restart=always
+RestartSec=5
+# Prefer killing this over the user manager under OOM — this comes back on its
+# own, the manager does not.
+OOMScoreAdjust=500
+StandardOutput=append:/home/tomcassidy/.local/log/popty-concat-listen.log
+StandardError=append:/home/tomcassidy/.local/log/popty-concat-listen.log
+
+[Install]
+WantedBy=default.target
