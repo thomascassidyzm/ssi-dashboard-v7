@@ -74,7 +74,9 @@ test('flag a take, re-record only the flagged one, and leave the rest alone', as
   await expect(cards.nth(0).locator('.verdict-badge')).toHaveText(/Flagged/)
   await expect(cards.nth(1)).not.toHaveClass(/rejected/)
   await expect(cards.nth(1).locator('.verdict-badge')).toHaveCount(0)
-  await expect(page.getByText('Flagged for Re-record')).toBeVisible()
+  // exact: the batch bar's "Queue Flagged for Re-record" button also contains
+  // this text, so a substring match resolves to two elements and fails strict.
+  await expect(page.getByText('Flagged for Re-record', { exact: true })).toBeVisible()
 
   // ── Second pass: the flagged item only ───────────────────────────────────
   await expect(reRecord).toBeEnabled()
