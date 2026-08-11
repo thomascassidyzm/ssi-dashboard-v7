@@ -14,12 +14,29 @@ import fixture from './__fixtures__/eng_for_guj-cast.json'
 const SPEAKERS = fixture.pod.speakers
 const SENTENCES = fixture.sentences
 
-// listening_pod_sentences → the pod lines; course_audio → no fine-known clips.
+// course_audio rows for the pod's clips. By default every clip is rendered on
+// the voice the cast names for its speaker and track — the healthy case, and
+// the only one in which a sample is evidence about the casting on screen.
+// `AUDIO_ROWS` is reassigned per-test to model the unhealthy one.
+const canon = (s) => String(s || '').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim()
+function castVoiceId(speaker, track) {
+  const e = SPEAKERS[canon(speaker)] || SPEAKERS[speaker] || SPEAKERS._default
+  return (e && e[track] && e[track].voice_id) || (track === 'target' ? e && e.voice_id : null) || null
+}
+const ON_CAST_AUDIO = SENTENCES.flatMap((s) => [
+  s.target_audio_id && { id: s.target_audio_id, voice_id: castVoiceId(s.speaker, 'target'), created_at: '2026-08-08T00:00:00Z' },
+  s.known_audio_id && { id: s.known_audio_id, voice_id: castVoiceId(s.speaker, 'known'), created_at: '2026-08-08T00:00:00Z' },
+].filter(Boolean))
+let AUDIO_ROWS = ON_CAST_AUDIO
+
+// listening_pod_sentences → the pod lines; course_audio → the clip voices
+// (.in) and no fine-known clips (.eq).
 vi.mock('../../services/supabase', () => {
   const table = (name) => {
     const chain = {
       select: () => chain,
       eq: () => chain,
+      in: () => Promise.resolve({ data: name === 'course_audio' ? AUDIO_ROWS : [], error: null }),
       order: () => Promise.resolve({ data: name === 'listening_pod_sentences' ? SENTENCES : [], error: null }),
       then: (r) => Promise.resolve({ data: [], error: null }).then(r),
     }
@@ -76,6 +93,7 @@ async function mountLab() {
 
 describe('PodLab casting mode', () => {
   beforeEach(() => {
+    AUDIO_ROWS = ON_CAST_AUDIO
     global.fetch = vi.fn(async (url) => {
       if (String(url).startsWith('/api/pod-voice-approval')) {
         return { ok: true, json: async () => CASTING }
@@ -109,11 +127,11 @@ describe('PodLab casting mode', () => {
   // before covering the voices the exchange didn't reach.
   it('leads with an exchange — consecutive lines, two voices answering each other', async () => {
     const w = await mountLab()
-    const rows = w.findAll('.sample-row')
+    const rows = w.findAll('.samples.primary .sample-row')
     expect(rows.length).toBeGreaterThan(0)
     expect(rows.length).toBeLessThanOrEqual(10)
 
-    const exch = w.findAll('.sample-row.exch')
+    const exch = w.findAll('.samples.primary .sample-row.exch')
     expect(exch.length).toBeGreaterThanOrEqual(2)
     // The exchange is at the TOP of the list — it has to play as a conversation.
     expect(rows.slice(0, exch.length).every((r) => r.classes().includes('exch'))).toBe(true)
@@ -124,9 +142,9 @@ describe('PodLab casting mode', () => {
 
   it('still covers every voice the exchange did not reach', async () => {
     const w = await mountLab()
-    const rows = w.findAll('.sample-row')
+    const rows = w.findAll('.samples.primary .sample-row')
     const exchVoices = new Set(
-      w.findAll('.sample-row.exch').map((r) => r.find('.s-kind').text() + ':' + r.find('.s-voice').text()),
+      w.findAll('.samples.primary .sample-row.exch').map((r) => r.find('.s-kind').text() + ':' + r.find('.s-voice').text()),
     )
     // Every clip after the exchange is either a voice nobody has heard yet, or
     // (once the cast is exhausted) a repeat — never a repeat before a new one.
@@ -146,6 +164,54 @@ describe('PodLab casting mode', () => {
     const w = await mountLab()
     expect(w.find('.pod-source').text()).toContain('eng_for_guj:pod-0')
     expect(w.find('.pod-source').text()).toMatch(/\d+ live lines/)
+  })
+
+  // THE DEFECT THAT MADE THE T-14 SAMPLE MEANINGLESS, 2026-08-11.
+  // A pod's audio accumulates over months while its casting moves underneath.
+  // Measured on the live spa_for_eng:pod-0-unrecorded: only 16 of 119 target
+  // clips were rendered on the current two-voice cast; the other 103 are five
+  // older voices from June. The page used to label each clip with whatever the
+  // CAST said, so a June clip on `yis75yfp` was presented as "Pablo" and
+  // counted towards a two-voice exchange. Approving a cast on that evidence
+  // approves nothing.
+  it('excludes clips rendered on voices that are no longer cast, and says so', async () => {
+    AUDIO_ROWS = ON_CAST_AUDIO.map((r, i) =>
+      i % 2 === 0 ? { ...r, voice_id: 'yis75yfp', created_at: '2026-06-10T00:00:00Z' } : r)
+    const w = await mountLab()
+    const sampled = w.findAll('.samples.primary .sample-row')
+    const off = w.findAll('.offcast .sample-row')
+
+    expect(off.length).toBeGreaterThan(0)
+    expect(sampled.length).toBeGreaterThan(0)
+    // No sampled clip is one of the re-voiced ones.
+    expect(sampled.some((r) => r.find('.s-voice').text().includes('yis75yfp'))).toBe(false)
+    // The off-cast list shows the voice that ACTUALLY rendered the clip, not
+    // the one the cast would like to claim.
+    expect(off.some((r) => r.find('.s-voice').text().includes('yis75yfp'))).toBe(true)
+    // And the count is stated in words rather than left to be noticed.
+    expect(w.text()).toMatch(/clips on this pod\s+were rendered on the casting above/)
+    expect(w.text()).toContain('yis75yfp')
+  })
+
+  it('refuses to pretend when NOTHING on the pod was rendered on this cast', async () => {
+    AUDIO_ROWS = ON_CAST_AUDIO.map((r) => ({ ...r, voice_id: 'some_retired_voice' }))
+    const w = await mountLab()
+    expect(w.findAll('.samples.primary .sample-row')).toHaveLength(0)
+    expect(w.text()).toContain('Nothing on this pod was rendered on the casting above')
+  })
+
+  it('a clip whose voice cannot be established is never counted as on-cast', async () => {
+    AUDIO_ROWS = [] // course_audio returned nothing for these ids
+    const w = await mountLab()
+    expect(w.findAll('.samples.primary .sample-row')).toHaveLength(0)
+    expect(w.text()).toContain('Nothing on this pod was rendered on the casting above')
+  })
+
+  it('treats `eve` and `xai_eve` as one voice', async () => {
+    AUDIO_ROWS = ON_CAST_AUDIO.map((r) => ({ ...r, voice_id: `xai_${r.voice_id}` }))
+    const w = await mountLab()
+    expect(w.findAll('.samples.primary .sample-row').length).toBeGreaterThan(0)
+    expect(w.findAll('.offcast .sample-row')).toHaveLength(0)
   })
 
   it('POSTs the approval with the fingerprint it rendered', async () => {
