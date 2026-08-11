@@ -6105,31 +6105,130 @@ function buildPodTTSConfig(voice, language, courseCode) {
 
 /**
  * Look up existing course_audio by (course_code, text_normalized, language, role, voice_id).
- * Returns the audio row's id if a match exists, else null.
+ * Returns the matching row, or null. `findExistingAudio` is the id-returning
+ * wrapper every existing caller uses; this core exists so the pod path can also
+ * see WHICH course owns the clip it matched.
+ *
+ * CROSS-COURSE CANON REUSE (Tom's ruling, 2026-08-11 — decision 8 of the pod-0
+ * survey). The `.eq('course_code', …)` below meant the generator could never see
+ * an identical clip owned by a sibling course, even with text, language, role
+ * and voice all the same — so the shared-cast ruling would have cost ~5,837
+ * renders across the estate instead of ~374. Cross-course FK references are
+ * already normal in this schema (16 eng_for_* pods share 119/142 target_audio_id
+ * rows owned by zho_for_eng); they were simply undiscoverable from here.
+ *
+ * The relaxation is deliberately narrow, because a false positive links a
+ * learner-facing slot to the WRONG words:
+ *   (a) `opts.canonTexts` must contain `opts.canonProbe` — i.e. the CALLER has
+ *       proved this exact line is byte-identical canonical pod-0 English;
+ *   (b) the caller only supplies that set for a pod whose whole English sequence
+ *       is already aligned to canon (podCanonReuseTexts below), so a drifted or
+ *       pre-canon pod never borrows anything;
+ *   (c) the stored row's own `text` must be byte-identical to the text we would
+ *       otherwise synthesise — not merely normalisation-equal — and it must
+ *       point at real, non-pending audio;
+ *   (d) language and voice match canonically, exactly as before.
+ * Without `opts.canonTexts` the behaviour is bit-for-bit what it always was.
  */
-async function findExistingAudio(courseCode, text, language, role, voiceId) {
-  const textNorm = normalizeForAudio(text)
-  const { data, error } = await supabase
-    .from('course_audio')
-    .select('id, language, voice_id')
-    .eq('course_code', courseCode)
-    .in('text_normalized', audioKeyCandidates(textNorm))
-    .eq('role', role)
-    .limit(200)
-  if (error) {
-    // Fail CLOSED: a swallowed lookup error used to fall through to the upsert,
-    // which on a key conflict would overwrite the existing row (including a
-    // precious origin='human' one). Failing the clip is recoverable; a clobbered
-    // human recording is not.
-    throw new Error(`[Pod] findExistingAudio failed: ${error.message}`)
+async function findAudioRowForClip(courseCode, text, language, role, voiceId, opts = {}) {
+  const keys = audioKeyCandidates(normalizeForAudio(text))
+  const readCandidates = async (scopeToCourse) => {
+    let q = supabase
+      .from('course_audio')
+      .select('id, course_code, text, language, voice_id, s3_key')
+    if (scopeToCourse) q = q.eq('course_code', courseCode)
+    const { data, error } = await q.in('text_normalized', keys).eq('role', role).limit(200)
+    if (error) {
+      // Fail CLOSED: a swallowed lookup error used to fall through to the upsert,
+      // which on a key conflict would overwrite the existing row (including a
+      // precious origin='human' one). Failing the clip is recoverable; a clobbered
+      // human recording is not.
+      throw new Error(`[Pod] findExistingAudio failed: ${error.message}`)
+    }
+    return data || []
   }
+
   // Language and voice are matched canonically, in JS: an .eq() on one spelling
   // could not see the same clip stored under the other, and "clip does not
   // exist" here means a second paid render. Strict — a false positive would
   // relink a pod line to the wrong audio.
-  const match = (data || []).find(row =>
-    sameLanguage(language, row.language) && sameVoice(voiceId, row.voice_id))
-  return match?.id || null
+  const identityMatches = (row) =>
+    sameLanguage(language, row.language) && sameVoice(voiceId, row.voice_id)
+
+  const own = (await readCandidates(true)).find(identityMatches)
+  if (own) return own
+
+  const { canonTexts, canonProbe } = opts
+  if (!canonTexts || !canonTexts.has(canonProbe === undefined ? text : canonProbe)) return null
+
+  return (await readCandidates(false)).find(row =>
+    row.text === text &&
+    row.s3_key && !String(row.s3_key).startsWith('pending/') &&
+    identityMatches(row)) || null
+}
+
+/**
+ * Look up existing course_audio by (course_code, text_normalized, language, role, voice_id).
+ * Returns the audio row's id if a match exists, else null.
+ * See findAudioRowForClip for `opts` (cross-course canon reuse; off by default).
+ */
+async function findExistingAudio(courseCode, text, language, role, voiceId, opts) {
+  const row = await findAudioRowForClip(courseCode, text, language, role, voiceId, opts)
+  return row?.id || null
+}
+
+// ── Canonical pod-0 English: the proof a line may be shared ──────────────────
+// Canon lives in `canonical_pod_scenarios` (pod_slug='pod-0'), seeded from
+// docs/pods/pod0-english-canonical.md. A line carrying the [target language]
+// placeholder is substituted per course by tools/pods/align-pod0-to-canonical.cjs
+// ("I'm learning Welsh" / "…German"), so it is NEVER shareable — it is excluded
+// from the reuse set while still counting as aligned.
+const POD0_CANON_SLUG = 'pod-0'
+const POD0_CANON_SLUGS = new Set(['pod-0', 'pod-0-unrecorded'])
+const CANON_PLACEHOLDER_RE = /\[target language\]/i
+
+async function loadPod0Canon() {
+  const { data, error } = await supabase
+    .from('canonical_pod_scenarios')
+    .select('global_order, english_text')
+    .eq('pod_slug', POD0_CANON_SLUG)
+    .order('global_order')
+  if (error) throw new Error(`canonical pod-0 lookup failed: ${error.message}`)
+  return data || []
+}
+
+/**
+ * The set of canon lines this pod may reuse another course's audio for — or null
+ * when the pod is not (fully) aligned, in which case no line of it borrows
+ * anything. All-or-nothing on purpose: a partially aligned pod is exactly the
+ * state where a line's English silently disagrees with canon, and that is the
+ * case the survey's "match on EXACT canon text only" rule exists to refuse.
+ *
+ * @param {Array} canon         canonical_pod_scenarios rows (global_order, english_text)
+ * @param {Array} sentences     the pod's listening_pod_sentences rows
+ * @param {string|null} englishCol  which column of the pod holds English
+ */
+function podCanonReuseTexts(canon, sentences, englishCol) {
+  if (!englishCol || !canon.length || !sentences.length) return null
+  if (sentences.length !== canon.length) return null
+  const byOrder = new Map(sentences.map(s => [s.global_order, s]))
+  if (byOrder.size !== canon.length) return null
+  const texts = new Set()
+  for (const c of canon) {
+    const row = byOrder.get(c.global_order)
+    if (!row) return null
+    if (CANON_PLACEHOLDER_RE.test(c.english_text)) continue
+    if (String(row[englishCol]) !== c.english_text) return null
+    texts.add(c.english_text)
+  }
+  return texts.size ? texts : null
+}
+
+/** Which side of this course is English, if either — canon is English-only. */
+function englishColumnFor(ctx) {
+  if (tryCanonicalLanguage(ctx.knownLang) === 'eng') return 'known_text'
+  if (tryCanonicalLanguage(ctx.targetLang) === 'eng') return 'target_text'
+  return null
 }
 
 /**
@@ -6165,7 +6264,7 @@ async function findExistingAudio(courseCode, text, language, role, voiceId) {
  * @param {('target'|'known')} [args.track] - which pod track this clip is
  * @param {string} [args.sentenceId] - pod sentence id (for the fallback log line)
  */
-async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, role, voice, ctx, track, sentenceId, force }) {
+async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, role, voice, ctx, track, sentenceId, force, canonTexts }) {
   const identityLanguage = canonicalLanguage(language)
   const cue = (ttsLanguageCue === undefined || ttsLanguageCue === null) ? language : ttsLanguageCue
   // Pod TURN whole-takes: insert a pause cue (" … ") between sentences so the
@@ -6187,8 +6286,21 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
   // force: re-synthesise even when the row exists — the upsert below hits the
   // same conflict key, so the row (and every link to its id) is kept and just
   // gets fresh audio + word_boundaries. Used by the Take G rescue pass.
-  const existing = await findExistingAudio(courseCode, ttsText, identityLanguage, role, voice.voice_id)
-  if (existing && !force) return { id: existing, reused: true }
+  //
+  // canonTexts: the caller's proof that this pod is aligned to canonical pod-0
+  // English, which unlocks reuse of a SIBLING COURSE's identical clip. The canon
+  // probe is the ORIGINAL text, not ttsText — the " … " pause cue is a
+  // deterministic function of the line, so both courses derive the same ttsText,
+  // and the stored side is still required to be byte-identical to it.
+  const existingRow = await findAudioRowForClip(
+    courseCode, ttsText, identityLanguage, role, voice.voice_id, { canonTexts, canonProbe: text })
+  if (existingRow && !force) {
+    const crossCourse = existingRow.course_code !== courseCode
+    if (crossCourse) {
+      logger.info(`[Pods] canon reuse: ${sentenceId || '?'} ${track || role} → clip ${existingRow.id} owned by ${existingRow.course_code} (no render)`)
+    }
+    return { id: existingRow.id, reused: true, crossCourse }
+  }
 
   let provider = voice.provider || 'azure'
   let activeVoice = voice
@@ -6467,9 +6579,32 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
 
     const pods = await loadPodsForPlan(courseCode, podIds)
 
+    // CROSS-COURSE CANON REUSE (Tom, 2026-08-11). Read canon once per run and
+    // work out, per pod, which of its lines are byte-identical canonical pod-0
+    // English. Only those lines may match a sibling course's clip, and only from
+    // a pod that is aligned end to end (podCanonReuseTexts). A canon read that
+    // fails costs reuse, never correctness — the run proceeds course-scoped.
+    const englishCol = englishColumnFor(ctx)
+    let canonByPod = new Map()
+    try {
+      const podsInScope = pods.filter(p => POD0_CANON_SLUGS.has(p.slug))
+      if (englishCol && podsInScope.length) {
+        const canon = await loadPod0Canon()
+        for (const pod of podsInScope) {
+          const texts = podCanonReuseTexts(canon, pod.sentences, englishCol)
+          if (texts) canonByPod.set(pod.id, texts)
+          logger.info(`[Pods] canon reuse ${pod.id}: ${texts ? `${texts.size} shareable canon line(s)` : 'pod not aligned to canon — course-scoped matching only'}`)
+        }
+      }
+    } catch (e) {
+      logger.warn(`[Pods] canon reuse unavailable (${e.message}) — course-scoped matching only`)
+      canonByPod = new Map()
+    }
+
     // Build a flat work queue: each item is one audio clip to generate.
     const workQueue = []
     for (const pod of pods) {
+      const canonTexts = canonByPod.get(pod.id) || null
       for (const s of pod.sentences) {
         if (roles.includes('target') && !s.target_audio_id) {
           workQueue.push({
@@ -6481,6 +6616,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
             role: 'target1',
             voice: resolvePodSpeakerVoice(pod.speakers, s.speaker, 'target'),
             link_column: 'target_audio_id',
+            canonTexts,
           })
         }
         if (roles.includes('known') && !s.known_audio_id) {
@@ -6496,6 +6632,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
             role: 'known',
             voice: knownVoice,
             link_column: 'known_audio_id',
+            canonTexts,
           })
         }
       }
@@ -6516,7 +6653,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     logger.info(`[Pods] ${sampleLimit === null ? 'BULK' : 'SAMPLE'} ${courseCode}: ${workQueue.length} clips queued across ${pods.length} pod(s) at concurrency ${concurrency}`)
 
     const startMs = Date.now()
-    let generated = 0, reused = 0, failed = 0
+    let generated = 0, reused = 0, failed = 0, reusedCrossCourse = 0
     const errors = []
 
     // Simple parallel batch processor — process `concurrency` items at a time
@@ -6532,6 +6669,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
             ctx,                  // enables Azure fallback when xAI fails
             track: item.kind,     // 'target' | 'known'
             sentenceId: item.sentence_id,
+            canonTexts: item.canonTexts,  // unlocks sibling-course reuse for canon lines only
           })
 
           // Link the audio onto the pod sentence
@@ -6541,7 +6679,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
             .eq('id', item.sentence_id)
           if (linkErr) throw new Error(`link: ${linkErr.message}`)
 
-          if (result.reused) reused++; else generated++
+          if (result.reused) { reused++; if (result.crossCourse) reusedCrossCourse++ } else generated++
         } catch (err) {
           failed++
           errors.push({ sentence_id: item.sentence_id, kind: item.kind, error: err.message })
@@ -6556,7 +6694,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     await Promise.all(buckets.map(b => worker(b)))
 
     const elapsedMs = Date.now() - startMs
-    logger.info(`[Pods] ${courseCode}: ${generated} generated, ${reused} reused, ${failed} failed in ${(elapsedMs / 1000).toFixed(1)}s`)
+    logger.info(`[Pods] ${courseCode}: ${generated} generated, ${reused} reused (${reusedCrossCourse} from sibling courses on canon text), ${failed} failed in ${(elapsedMs / 1000).toFixed(1)}s`)
 
     res.json({
       course_code: courseCode,
@@ -6565,6 +6703,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
       queued_before_sample: queuedBeforeSample,
       generated,
       reused,
+      reused_cross_course: reusedCrossCourse,
       failed,
       total: workQueue.length,
       elapsed_ms: elapsedMs,
@@ -7088,6 +7227,10 @@ module.exports = app
 // Named exports for reuse from other audio-generation paths.
 module.exports.masterAudio = masterAudio
 module.exports.findExistingAudio = findExistingAudio
+module.exports.findAudioRowForClip = findAudioRowForClip
+module.exports.podCanonReuseTexts = podCanonReuseTexts
+module.exports.englishColumnFor = englishColumnFor
+module.exports.loadPod0Canon = loadPod0Canon
 module.exports.generatePodAudio = generatePodAudio
 module.exports.s3 = s3
 module.exports.S3_BUCKET = S3_BUCKET

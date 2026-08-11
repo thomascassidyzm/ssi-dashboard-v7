@@ -226,6 +226,143 @@ describe('findExistingAudio — one clip, however it was spelt', () => {
   })
 })
 
+// ─── cross-course canon reuse: exact text, or nothing ────────────────────────
+//
+// Tom's ruling 2026-08-11 (decision 8 of the pod-0 survey): a pod line whose
+// English is byte-identical canonical pod-0 text may point at a sibling course's
+// identical clip instead of paying to render it again — but ONLY on exact canon
+// text, and only from a pod already aligned to canon. The second test is the one
+// that matters: near-miss text must NOT borrow, or a learner hears wrong words.
+
+describe('findAudioRowForClip — cross-course reuse on exact canon text', () => {
+  const CANON = "let's have a coffee"
+  const canonTexts = new Set([CANON])
+
+  const siblingRow = (over = {}) => ({
+    id: 'SIB-CANON',
+    course_code: 'deu_at_for_eng',
+    text: CANON,
+    text_normalized: "let's have a coffee",
+    language: 'eng',
+    role: 'known',
+    voice_id: 'azure_en-GB-SoniaNeural',
+    s3_key: 'mastered/CANON.mp3',
+    ...over,
+  })
+
+  it('reuses a sibling course clip when the canon text matches byte for byte', async () => {
+    state.audioRows = [siblingRow()]
+    const found = await phase8.findAudioRowForClip(
+      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })
+    expect(found).toMatchObject({ id: 'SIB-CANON', course_code: 'deu_at_for_eng' })
+  })
+
+  it('does NOT reuse when the stored text has drifted, even where normalisation agrees', async () => {
+    // "…coffee!" and "…coffee" share one text_normalized (the DB trigger rtrims
+    // '!'), so the course-scoped query finds it — the raw-text check is the only
+    // thing standing between the learner and a clip of different words.
+    state.audioRows = [siblingRow({ text: "let's have a coffee!" })]
+    const found = await phase8.findAudioRowForClip(
+      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })
+    expect(found).toBeNull()
+  })
+
+  it('does NOT reuse when the REQUESTING line has drifted off canon', async () => {
+    state.audioRows = [siblingRow({ text: "let's have a coffee please", text_normalized: "let's have a coffee please" })]
+    const found = await phase8.findAudioRowForClip(
+      'cym_n_for_eng', "let's have a coffee please", 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })
+    expect(found).toBeNull()
+  })
+
+  it('stays course-scoped when no canon proof is supplied — the old behaviour, unchanged', async () => {
+    state.audioRows = [siblingRow()]
+    const found = await phase8.findAudioRowForClip(
+      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural')
+    expect(found).toBeNull()
+    expect(await phase8.findExistingAudio(
+      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural')).toBeNull()
+  })
+
+  it('never borrows a pending placeholder, and never a different voice or language', async () => {
+    state.audioRows = [siblingRow({ s3_key: 'pending/whatever.mp3' })]
+    expect(await phase8.findAudioRowForClip(
+      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })).toBeNull()
+
+    state.audioRows = [siblingRow({ voice_id: 'xai_leo' })]
+    expect(await phase8.findAudioRowForClip(
+      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })).toBeNull()
+
+    state.audioRows = [siblingRow({ language: 'deu' })]
+    expect(await phase8.findAudioRowForClip(
+      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })).toBeNull()
+  })
+
+  it('prefers the course own clip over a sibling', async () => {
+    state.audioRows = [siblingRow(), siblingRow({ id: 'OWN', course_code: 'cym_n_for_eng' })]
+    const found = await phase8.findAudioRowForClip(
+      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })
+    expect(found).toMatchObject({ id: 'OWN' })
+  })
+
+  it('matches on the canon probe while requiring the stored text to be what we would render', async () => {
+    // Multi-sentence pod turns are rendered with a " … " pause cue, derived
+    // deterministically from the canon line — so both courses hold the same
+    // stored text and the probe is still the un-paused canon line.
+    const paused = 'hello … how are you'
+    state.audioRows = [siblingRow({ text: paused, text_normalized: paused })]
+    const found = await phase8.findAudioRowForClip(
+      'cym_n_for_eng', paused, 'eng', 'known', 'azure_en-GB-SoniaNeural',
+      { canonTexts: new Set(['hello. how are you']), canonProbe: 'hello. how are you' })
+    expect(found).toMatchObject({ id: 'SIB-CANON' })
+  })
+})
+
+describe('podCanonReuseTexts — only a pod aligned end to end may borrow', () => {
+  const canon = [
+    { global_order: 1, english_text: 'hello' },
+    { global_order: 2, english_text: "I'm learning [target language]." },
+    { global_order: 3, english_text: "let's have a coffee" },
+  ]
+  const aligned = [
+    { global_order: 1, known_text: 'hello' },
+    { global_order: 2, known_text: "I'm learning Welsh." },
+    { global_order: 3, known_text: "let's have a coffee" },
+  ]
+
+  it('returns the shareable lines and excludes the per-course placeholder line', () => {
+    const texts = phase8.podCanonReuseTexts(canon, aligned, 'known_text')
+    expect([...texts].sort()).toEqual(['hello', "let's have a coffee"])
+    // The substituted line names a language — sharing it would put "Welsh" in
+    // the German course.
+    expect(texts.has("I'm learning Welsh.")).toBe(false)
+  })
+
+  it('returns null for a pod whose English has drifted anywhere at all', () => {
+    const drifted = aligned.map((r, i) => i === 2 ? { ...r, known_text: "let's have a coffee!" } : r)
+    expect(phase8.podCanonReuseTexts(canon, drifted, 'known_text')).toBeNull()
+  })
+
+  it('returns null for a pod that is short of canon, or ordered differently', () => {
+    expect(phase8.podCanonReuseTexts(canon, aligned.slice(0, 2), 'known_text')).toBeNull()
+    const reordered = [{ ...aligned[0], global_order: 3 }, aligned[1], { ...aligned[2], global_order: 1 }]
+    expect(phase8.podCanonReuseTexts(canon, reordered, 'known_text')).toBeNull()
+  })
+
+  it('reads the English side of an eng_for_* course from target_text', () => {
+    const engTarget = aligned.map(r => ({ global_order: r.global_order, target_text: r.known_text, known_text: 'ぜんぜん' }))
+    expect([...phase8.podCanonReuseTexts(canon, engTarget, 'target_text')].sort())
+      .toEqual(['hello', "let's have a coffee"])
+    expect(phase8.podCanonReuseTexts(canon, engTarget, 'known_text')).toBeNull()
+  })
+
+  it('says nothing is shareable when neither side of the course is English', () => {
+    expect(phase8.englishColumnFor({ knownLang: 'eng', targetLang: 'cym' })).toBe('known_text')
+    expect(phase8.englishColumnFor({ knownLang: 'jpn', targetLang: 'eng' })).toBe('target_text')
+    expect(phase8.englishColumnFor({ knownLang: 'spa', targetLang: 'cym' })).toBeNull()
+    expect(phase8.podCanonReuseTexts(canon, aligned, null)).toBeNull()
+  })
+})
+
 describe('findSiblingCourseClip — the query that saves the money', () => {
   it('sees a sibling course clip stored under another spelling', async () => {
     state.audioRows = [{
@@ -322,7 +459,7 @@ describe("generatePodAudio — the clip's language and the TTS cue are two thing
       role: 'pod_explainer',
       voice: explainerVoice,
     })
-    expect(result).toEqual({ id: 'EXPLAINER-1', reused: true })
+    expect(result).toMatchObject({ id: 'EXPLAINER-1', reused: true })
     expect(state.ttsCalls).toHaveLength(0)
   })
 
