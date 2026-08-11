@@ -91,6 +91,38 @@ describe('buildProvenanceContext', () => {
     expect(ctx.replaced_s3_key).toBeNull()
   })
 
+  it('keeps the pause boundaries the recorder heard inside a slow take', () => {
+    // The browser VAD hears every deliberate pause live and used to discard the
+    // timings the moment the take was cut, leaving the aligner to rediscover
+    // them from the audio. They are the speaker's own account of the cut, and
+    // they cost nothing to keep.
+    const boundaries = [
+      { startMs: 900, endMs: 1600 },
+      { startMs: 2400, endMs: 3100 },
+      { startMs: 3900, endMs: null }
+    ]
+    const ctx = buildProvenanceContext({
+      courseCode: 'cym_for_eng',
+      isScriptMode: true,
+      metadata: { cadence: 'slow', chunksString: 'dw i|eisiau|siarad', chunkBoundariesMs: boundaries },
+      provenance: {},
+      s3Key: 'mastered/DEF.mp3'
+    })
+    expect(ctx.chunk_boundaries_ms).toEqual(boundaries)
+  })
+
+  it('leaves the boundaries null for a take that carried none', () => {
+    // Every take recorded before 2026-08-11, and every natural-speed take.
+    const ctx = buildProvenanceContext({
+      courseCode: 'cym_for_eng',
+      isScriptMode: true,
+      metadata: { cadence: 'natural' },
+      provenance: {},
+      s3Key: 'mastered/GHI.mp3'
+    })
+    expect(ctx.chunk_boundaries_ms).toBeNull()
+  })
+
   it('records the replaced s3_key and row id for regeneration mode (reversibility)', () => {
     const ctx = buildProvenanceContext({
       courseCode: 'mkd_for_fra',

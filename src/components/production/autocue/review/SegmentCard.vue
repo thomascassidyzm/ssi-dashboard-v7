@@ -35,6 +35,35 @@
       ></div>
     </div>
 
+    <!-- The pieces of a slow-pass take, one button each.
+         A slow take is a whole phrase read in one go with a deliberate pause at
+         every LEGO boundary; the recorder hears those pauses and now keeps
+         their timings, so each piece can be heard on its own. That answers the
+         two questions the whole-take button cannot: was it cut where the LEGOs
+         actually are, and does the piece stand up in isolation — and it means
+         one bad LEGO costs one piece, not the whole phrase again. -->
+    <div v-if="chunks.length" class="chunk-strip">
+      <div class="chunk-strip-head">
+        <span class="chunk-strip-title">LEGO pieces</span>
+        <span v-if="chunkMismatch" class="chunk-warning" :title="chunkMismatchTitle">
+          ⚠ {{ chunks.length }} heard, script has {{ segment.chunksExpected }}
+        </span>
+      </div>
+      <div class="chunk-list">
+        <button
+          v-for="chunk in chunks"
+          :key="chunk.index"
+          class="chunk-btn"
+          :class="{ playing: playingChunkIndex === chunk.index }"
+          :title="`Play this piece on its own (${(chunk.durationMs / 1000).toFixed(1)}s)`"
+          @click="$emit('play-chunk', segment, chunk)"
+        >
+          <span class="btn-icon">{{ playingChunkIndex === chunk.index ? '⏸' : '▶' }}</span>
+          {{ chunk.label }}
+        </button>
+      </div>
+    </div>
+
     <div class="segment-actions">
       <button
         class="segment-btn"
@@ -73,14 +102,32 @@ const props = defineProps({
   playing: { type: Boolean, default: false },
   // 'approved' | 'rejected' | null — the verdict this card is carrying, so the
   // Approve/Redo clicks land somewhere the recordist can actually see.
-  status: { type: String, default: null }
+  status: { type: String, default: null },
+  // Index of the LEGO piece of THIS take that is currently playing, or null.
+  playingChunkIndex: { type: Number, default: null }
 })
 
-defineEmits(['play', 'redo', 'approve'])
+defineEmits(['play', 'redo', 'approve', 'play-chunk'])
 
 // A card with no captured audio says so on the button instead of offering a
 // control that can only ever be silent.
 const hasAudio = computed(() => !!props.segment.audioUrl)
+
+// Only a take the recorder actually heard pauses in has pieces. A phrase read
+// straight through has none, and its card looks exactly as it did before.
+const chunks = computed(() => (hasAudio.value && props.segment.chunks) || [])
+
+// Pieces heard ≠ pieces the script asks for. Said out loud rather than hidden,
+// because it is precisely what a recordist is checking for: a missed pause
+// welds two LEGOs into one piece, an extra breath splits one in two, and either
+// way the labels are withheld (see takeChunks.js) so nothing is mislabelled.
+const chunkMismatch = computed(() =>
+  chunks.value.length > 0 && props.segment.chunksExpected > 0 && !props.segment.chunksMatchScript
+)
+const chunkMismatchTitle = computed(() =>
+  'The pauses heard in this take do not line up with the script\'s LEGO boundaries, '
+  + 'so the pieces are numbered rather than named. Listen through and re-record if a piece is cut wrong.'
+)
 
 const confidenceLabel = computed(() => {
   if (props.segment.confidenceLevel === 'high') return 'High'
@@ -211,6 +258,71 @@ function getBarHeight(index) {
 
 .segment-card:hover .waveform-bar {
   opacity: 0.9;
+}
+
+/* LEGO pieces of a slow-pass take */
+.chunk-strip {
+  background: var(--color-void, var(--canvas));
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  border-radius: 8px;
+  padding: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.chunk-strip-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.chunk-strip-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-paper-dim, var(--muted));
+}
+
+.chunk-warning {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--color-tungsten, var(--accent));
+  cursor: help;
+}
+
+.chunk-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chunk-btn {
+  background: var(--color-slate, var(--surface-2));
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  color: var(--color-paper, var(--ink));
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.chunk-btn:hover {
+  background: var(--color-tungsten, var(--accent));
+  color: var(--color-void, var(--canvas));
+  border-color: var(--color-tungsten, var(--accent));
+}
+
+.chunk-btn.playing {
+  background: var(--color-tungsten, var(--accent));
+  color: var(--color-void, var(--canvas));
+  border-color: var(--color-tungsten, var(--accent));
 }
 
 .segment-actions {

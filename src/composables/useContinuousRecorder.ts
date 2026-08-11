@@ -12,7 +12,7 @@
  */
 
 import { ref, computed, onUnmounted } from 'vue'
-import { useVAD, type VADConfig } from './useVAD'
+import { useVAD, type VADConfig, type ChunkGap } from './useVAD'
 
 export interface ContinuousRecorderConfig extends Partial<VADConfig> {
   // Auto-upload after capturing segment
@@ -28,6 +28,10 @@ export interface RecordedSegment {
   blob: Blob
   durationMs: number
   timestamp: number
+  // The deliberate pauses heard INSIDE this take, timed from its start — the
+  // LEGO-chunk boundaries of a slow pass. Empty for a phrase read straight
+  // through, which is every natural-speed take.
+  chunkGaps: ChunkGap[]
 }
 
 const defaultConfig: ContinuousRecorderConfig = {
@@ -73,6 +77,10 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
   let wakeLock: any = null
   // Set just before a stop that must NOT produce a segment — see onstop.
   let discardCapture = false
+  // Gaps the VAD reported for the take now closing. MediaRecorder.stop() is
+  // asynchronous — onstop fires after the last dataavailable — so they are
+  // parked here between onSpeechEnd and the blob being assembled.
+  let pendingChunkGaps: ChunkGap[] = []
 
   // iOS Safari records audio/mp4 (AAC), not webm/opus — pick the first
   // supported container; the server transcodes whatever arrives (the upload
@@ -161,6 +169,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
           discardCapture = false
           chunks = []
           segmentStartTime = null
+          pendingChunkGaps = []
           isCapturing.value = false
           return
         }
@@ -172,7 +181,8 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
           const segment: RecordedSegment = {
             blob,
             durationMs,
-            timestamp: segmentStartTime
+            timestamp: segmentStartTime,
+            chunkGaps: pendingChunkGaps
           }
 
           lastSegment.value = segment
@@ -185,6 +195,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
 
         chunks = []
         segmentStartTime = null
+        pendingChunkGaps = []
         isCapturing.value = false
 
         // If still in flow mode, we're ready for next segment
@@ -198,6 +209,7 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
         // Speech started - begin capturing
         chunks = []
         segmentStartTime = Date.now()
+        pendingChunkGaps = []
         isCapturing.value = true
 
         if (mediaRecorder.state === 'inactive') {
@@ -205,8 +217,11 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
         }
       })
 
-      vad.onSpeechEnd((durationMs) => {
+      vad.onSpeechEnd((durationMs, chunkGaps) => {
         if (!isFlowMode.value || !mediaRecorder) return
+
+        // Carry the chunk boundaries into the blob this stop produces.
+        pendingChunkGaps = chunkGaps || []
 
         // Speech ended - stop capturing
         if (mediaRecorder.state === 'recording') {

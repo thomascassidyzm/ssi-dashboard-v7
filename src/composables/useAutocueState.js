@@ -10,6 +10,8 @@
 import { ref, computed, reactive, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
 import { useCourses } from '@/composables/useCourses'
+import { resolvePhraseChunks, legoChunkCount } from '@/utils/phraseChunks'
+import { buildTakeChunks } from '@/utils/takeChunks'
 
 const { getCourseName } = useCourses()
 
@@ -73,6 +75,10 @@ const state = reactive({
   approvedSegments: new Set(),
   rejectedSegments: new Set(),
   playingSegmentId: null,
+  // Which single LEGO chunk is playing, as `<segmentId>:<chunkIndex>`. Separate
+  // from playingSegmentId so a chunk lighting up never marks the whole take as
+  // playing, and vice versa.
+  playingChunkKey: null,
   // Confidence band the review grid is narrowed to, or null for everything.
   reviewFilter: null,
 
@@ -365,7 +371,12 @@ export function useAutocueState() {
       audioUrl: url,
       // Shown on the card, so a recordist can SEE that the retake landed —
       // a new take in the same voice is otherwise indistinguishable.
-      takeNumber: (previous?.takeNumber || 1) + (previous ? 1 : 0)
+      takeNumber: (previous?.takeNumber || 1) + (previous ? 1 : 0),
+      // Where this take's LEGO chunks start and end, so review can play one
+      // piece on its own instead of only the whole phrase. Null gaps (a natural
+      // -speed take, read straight through) simply yield no chunk list and the
+      // card shows nothing extra.
+      ...takeChunkFields(segment, phrase)
     }
 
     if (existingIndex === -1) {
@@ -374,6 +385,10 @@ export function useAutocueState() {
       // The superseded take must stop playing before its URL dies, or the
       // review screen is left holding a revoked src.
       if (state.playingSegmentId === segmentId) stopPlayback()
+      stopChunkPlayback()
+      // The retake is different audio: its predecessor's decoded buffer would
+      // play the chunk that was just re-recorded.
+      decodedTakes.delete(phrase.id)
       state.recordedSegments.splice(existingIndex, 1, row)
       if (previousUrl && previousUrl !== url) URL.revokeObjectURL(previousUrl)
       // A verdict belongs to the take it was given to, not to the slot.
@@ -383,6 +398,33 @@ export function useAutocueState() {
     }
 
     console.log(`[Autocue] Segment captured for item ${itemIndex}: ${phrase.text.substring(0, 30)}...`)
+  }
+
+  // The chunk fields a review row carries for a slow-pass take.
+  //
+  // A take only gets a chunk list if the VAD actually heard pauses in it. A
+  // phrase read straight through produces one range covering the whole take,
+  // and one piece is not a cut worth offering — the Play button above it plays
+  // exactly the same audio.
+  function takeChunkFields(segment, phrase) {
+    const durationMs = segment.durationMs ?? 0
+    const chunkTexts = resolvePhraseChunks(phrase).chunks.map(c => c.text)
+    const built = buildTakeChunks({
+      gaps: segment.chunkGaps || [],
+      durationMs,
+      // Only pair against a real LEGO map. A word-split fallback is not chunk
+      // information, and labelling pieces from it would invent boundaries the
+      // recordist was never shown — see phraseChunks.js legoChunkCount.
+      chunkTexts: legoChunkCount(phrase) > 1 ? chunkTexts : []
+    })
+
+    return {
+      takeDurationMs: durationMs,
+      chunkGaps: segment.chunkGaps || [],
+      chunks: built.chunks.length > 1 ? built.chunks : [],
+      chunksExpected: built.expected,
+      chunksMatchScript: built.matchesScript
+    }
   }
 
   // Auto-advance to next phrase (called after segment captured in script mode)
@@ -511,6 +553,7 @@ export function useAutocueState() {
     }
 
     stopPlayback()
+    stopChunkPlayback()
     if (!reviewAudio) reviewAudio = new Audio()
     reviewAudio.src = url
     state.playingSegmentId = segment.id
@@ -542,6 +585,109 @@ export function useAutocueState() {
       if (!segmentAudioUrl(segment)) continue
       await playSegment(segment)
     }
+  }
+
+  // --- Chunk playback --------------------------------------------------
+  // Playing ONE LEGO chunk out of a slow-pass take, so a recordist can hear
+  // whether the take was cut where the script says the LEGOs are, and whether
+  // the piece stands up on its own — and re-record just that piece rather than
+  // the whole phrase when it does not.
+  //
+  // This decodes the take and plays a slice of the buffer rather than seeking
+  // an <audio> element. A MediaRecorder webm carries no duration and no cues,
+  // so `currentTime = x` on it is unreliable in exactly the browsers the studio
+  // runs in — the seek lands somewhere else, or nowhere, and the recordist
+  // hears the wrong words. Decoding is the only way to cut on the sample.
+  let chunkContext = null
+  let chunkSource = null
+  const decodedTakes = new Map() // phraseId -> AudioBuffer
+
+  function audioContextCtor() {
+    if (typeof window === 'undefined') return null
+    return window.AudioContext || window.webkitAudioContext || null
+  }
+
+  async function decodeTake(segment) {
+    if (decodedTakes.has(segment.phraseId)) return decodedTakes.get(segment.phraseId)
+
+    const recording = state.audioRecordings.get(segment.phraseId)
+    if (!recording?.blob) return null
+
+    const Ctor = audioContextCtor()
+    if (!Ctor) return null
+    if (!chunkContext) chunkContext = new Ctor()
+
+    const bytes = await recording.blob.arrayBuffer()
+    const buffer = await chunkContext.decodeAudioData(bytes)
+    decodedTakes.set(segment.phraseId, buffer)
+    return buffer
+  }
+
+  function stopChunkPlayback() {
+    if (chunkSource) {
+      try { chunkSource.onended = null; chunkSource.stop() } catch { /* already ended */ }
+      chunkSource = null
+    }
+    state.playingChunkKey = null
+  }
+
+  function chunkKey(segment, chunk) {
+    return `${segment.id}:${chunk.index}`
+  }
+
+  /**
+   * Play one chunk of a take. Resolves true when the piece finishes, false if
+   * it could not be played (no audio, no Web Audio, undecodable take).
+   */
+  async function playChunk(segment, chunk) {
+    if (!segment || !chunk) return false
+
+    // Whole-take playback and chunk playback share the room: whichever starts
+    // last is the one you hear.
+    stopPlayback()
+    stopChunkPlayback()
+
+    let buffer = null
+    try {
+      buffer = await decodeTake(segment)
+    } catch (err) {
+      console.error('[Autocue] Could not decode take for chunk playback', segment.id, err)
+    }
+    if (!buffer) {
+      console.warn('[Autocue] No decodable audio for chunk', segment.id, chunk.index)
+      return false
+    }
+
+    // The gaps were timed against the wall clock while the take was captured;
+    // the decoded buffer is the ground truth for how long it actually is. Clamp
+    // rather than rescale — the two agree to within a poll in practice, and a
+    // rescale would silently move every boundary if they ever did not.
+    const totalMs = buffer.duration * 1000
+    const startMs = Math.max(0, Math.min(chunk.startMs, totalMs))
+    const endMs = Math.max(startMs, Math.min(chunk.endMs, totalMs))
+    if (endMs - startMs <= 0) return false
+
+    // A context created inside an async continuation can come up suspended
+    // even though a click started it, and a suspended context plays silence
+    // without erroring — the button would light up and nothing would be heard.
+    if (chunkContext.state === 'suspended') {
+      try { await chunkContext.resume() } catch { /* nothing more to try */ }
+    }
+
+    chunkSource = chunkContext.createBufferSource()
+    chunkSource.buffer = buffer
+    chunkSource.connect(chunkContext.destination)
+    state.playingChunkKey = chunkKey(segment, chunk)
+
+    return new Promise((resolve) => {
+      const key = state.playingChunkKey
+      chunkSource.onended = () => {
+        if (state.playingChunkKey === key) state.playingChunkKey = null
+        chunkSource = null
+        resolve(true)
+      }
+      chunkSource.start(0, startMs / 1000, (endMs - startMs) / 1000)
+    })
   }
 
   // Approve/Redo are toggles: a mis-stab is undone by clicking the same button
@@ -720,6 +866,8 @@ export function useAutocueState() {
     // exactly what makes a later play button silent, so revoke only here,
     // where the segments referencing them are dropped in the same breath.
     stopPlayback()
+    stopChunkPlayback()
+    decodedTakes.clear()
     state.audioRecordings.forEach((rec) => {
       if (rec?.url) URL.revokeObjectURL(rec.url)
     })
@@ -949,6 +1097,8 @@ export function useAutocueState() {
     approveSegment,
     rejectSegment,
     playSegment,
+    playChunk,
+    stopChunkPlayback,
     playAllSegments,
     stopPlayback,
     approveAllByConfidence,

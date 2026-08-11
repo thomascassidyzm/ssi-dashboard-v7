@@ -64,7 +64,9 @@
         :segment="segment"
         :playing="segment.id === playingSegmentId"
         :status="statusOf(segment)"
+        :playing-chunk-index="playingChunkIndexOf(segment)"
         @play="$emit('play', $event)"
+        @play-chunk="(seg, chunk) => $emit('play-chunk', seg, chunk)"
         @redo="$emit('reject', $event)"
         @approve="$emit('approve', $event)"
       />
@@ -96,6 +98,8 @@ import SegmentCard from './SegmentCard.vue'
 const props = defineProps({
   segments: { type: Array, required: true },
   playingSegmentId: { type: String, default: null },
+  // `<segmentId>:<chunkIndex>` of the single LEGO piece now playing, or null.
+  playingChunkKey: { type: String, default: null },
   approvedIds: { type: Array, default: () => [] },
   rejectedIds: { type: Array, default: () => [] },
   activeFilter: { type: String, default: null }
@@ -103,8 +107,16 @@ const props = defineProps({
 
 defineEmits([
   'approve', 'reject', 'approve-all', 'queue-redo', 'filter', 'clear-filter',
-  'play', 'play-all', 'back', 'finalize'
+  'play', 'play-chunk', 'play-all', 'back', 'finalize'
 ])
+
+// Which piece of THIS card is playing — null for every other card, so only one
+// piece anywhere in the grid is ever lit.
+function playingChunkIndexOf(segment) {
+  if (!props.playingChunkKey) return null
+  const [segmentId, index] = props.playingChunkKey.split(':')
+  return segmentId === segment.id ? Number(index) : null
+}
 
 const visible = computed(() => (
   props.activeFilter
