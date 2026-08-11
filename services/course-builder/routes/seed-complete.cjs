@@ -10,7 +10,7 @@ const { Router } = require('express');
 
 // Lib imports
 const { isChinese, getGoldenSeedCount, getLanguageName, getLangFamily, checkLegoSyllables } = require('../lib/language-config.cjs');
-const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment, stripBookendPunctuation } = require('../lib/text-normalization.cjs');
+const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment, normalizeSubmissionCasing } = require('../lib/text-normalization.cjs');
 const {
   makePhraseId, computePhraseRole, computeLegoPosition,
   extractNgrams, usesBuildUseFormat, checkBuildUsePhrases,
@@ -86,7 +86,9 @@ const allowValidationBypass = (body) => body.SKIP_VALIDATION === true && (body.s
 // Languages with no capitalisation concept — skip target lowercasing
 const NO_CAP_TARGET_LANGS = new Set(['jpn', 'zho', 'cmn', 'ara', 'kor', 'heb', 'tha', 'mya', 'lao', 'khm']);
 
-// Static allowlist of inherently capitalised words
+// Legacy backstop list of inherently capitalised words. NOT the main defence —
+// capitalisation is decided from evidence in the submission itself
+// (collectCasingEvidence), so this list never needs to grow.
 const KEEP_CAP_WORDS = new Set([
   'I',
   'English', 'French', 'German', 'Dutch', 'Spanish', 'Portuguese', 'Italian',
@@ -99,29 +101,16 @@ const KEEP_CAP_WORDS = new Set([
 ]);
 
 /**
- * Strip bookend punctuation from all text fields in a LEGO submission.
+ * Strip bookend punctuation and undo accidental sentence-case across a LEGO submission.
  * Mutates in place for efficiency.
  */
 function normalizeLegoTexts(legos, courseCode) {
-  if (!legos || !Array.isArray(legos)) return;
-  const parts = courseCode.split('_for_');
-  const targetLang = parts[0] || '';
-  const knownLang = parts[1] || '';
-  const skipTarget = NO_CAP_TARGET_LANGS.has(targetLang);
-  const skipKnown = NO_CAP_TARGET_LANGS.has(knownLang);
-
-  for (const lego of legos) {
-    if (lego.known) lego.known = stripBookendPunctuation(lego.known, skipKnown ? null : KEEP_CAP_WORDS);
-    if (lego.target) lego.target = stripBookendPunctuation(lego.target, skipTarget ? null : KEEP_CAP_WORDS);
-
-    const phraseArrays = [lego.build, lego.use, lego.phrases].filter(Boolean);
-    for (const arr of phraseArrays) {
-      for (const p of arr) {
-        if (p.known) p.known = stripBookendPunctuation(p.known, skipKnown ? null : KEEP_CAP_WORDS);
-        if (p.target) p.target = stripBookendPunctuation(p.target, skipTarget ? null : KEEP_CAP_WORDS);
-      }
-    }
-  }
+  const parts = (courseCode || '').split('_for_');
+  normalizeSubmissionCasing(legos, {
+    skipTarget: NO_CAP_TARGET_LANGS.has(parts[0] || ''),
+    skipKnown: NO_CAP_TARGET_LANGS.has(parts[1] || ''),
+    keepCapSet: KEEP_CAP_WORDS,
+  });
 }
 
 /**

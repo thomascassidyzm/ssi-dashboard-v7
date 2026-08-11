@@ -976,3 +976,32 @@ recorder time is the scarce input here. No new services, no schema change: the n
 
 **Search width:** visible-options
 **Decided by:** Tom — "merge it", ahead of Catrin's first session on 2026-08-11.
+
+## 2026-08-11 — Insert-path capitals decided by evidence, not a word list
+
+**Move:** the course-builder insert path no longer lowercases the first word of a LEGO or phrase
+unless the submission itself proves the capital is accidental. Casing is decided per side from
+the author's own writing — a word capitalised mid-sentence anywhere in the submission is never
+lowercased; a word written lowercase anywhere may be lowercased at position 0; with no evidence
+the author's capital stands. The old hard-coded `KEEP_CAP_WORDS` list survives only as a
+backstop and never needs to grow.
+
+**Better:** it stops producing wrong text. Pennsylvania Dutch and German capitalise nouns, so
+"Deitsch schwetze" was being stored as "deitsch schwetze" and "I'm waiting" as "i'm waiting";
+the evidence rule protects every proper noun and every German-style noun in every language pair,
+including ones nobody has thought of yet.
+**Simpler:** one rule replaces a 30-entry list of language names that could never be complete —
+and the leading-capital check now reads Unicode capitals (É, Ä, Ц), not just A–Z.
+**Cheaper (total):** no per-language maintenance, no new lookup, no DB read — the evidence is
+the submission already in memory; zero added latency.
+
+**Searched & rejected:**
+- Add 'Deitsch' and the I-contractions to the allowlist — fails Cheaper: the list grows forever
+  and the next language's nouns break again.
+- Skip lowercasing for noun-capitalising languages by language code — fails Simpler: swaps a word
+  list for a language-code list, and pdc was exactly the code that would have been missing.
+- Drop the lowercasing entirely — fails Better: the step has a real job, undoing sentence-case an
+  author put on a fragment.
+
+**Search width:** component-redesign
+**Decided by:** agent (bug reported by Kai on pdc_for_eng; confirmed present in deu_for_eng)
