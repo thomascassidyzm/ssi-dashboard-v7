@@ -232,7 +232,31 @@ async function main() {
     ? path.resolve(args[args.indexOf('--out') + 1])
     : path.join(__dirname, '..', '..', 'public', 'concat-listening-test')
 
+  // The purest pairs on the estate, found by the 2026-08-11 audio scout: whole
+  // pod utterances Aran recorded on 2026-06-15, which a pass on 2026-06-16 cut
+  // into clause pieces and registered as their own clips. Same larynx, same
+  // session, same microphone, same take — so re-gluing them isolates the join
+  // artefact and NOTHING else. No pace difference to argue about.
+  const carvedFile = args.includes('--carved')
+    ? path.resolve(args[args.indexOf('--carved') + 1])
+    : path.join(__dirname, '..', '..', 'docs', 'concat-vs-whole-2026-08-11', 'B-human-aran-pieces-and-whole.json')
+
   const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
+
+  const carved = []
+  if (fs.existsSync(carvedFile)) {
+    for (const row of JSON.parse(fs.readFileSync(carvedFile, 'utf8'))) {
+      carved.push({
+        kind: 'carved',
+        source: { courseCode: row.course_code, role: row.role, label: `${row.voice_id} (human)` },
+        whole: { id: row.whole_audio_id, text: row.text, s3_key: row.whole_s3_key, duration_ms: row.whole_duration_ms },
+        pieces: row.pieces.map(p => ({ id: p.audio_id, text: p.text, s3_key: p.s3_key, duration_ms: p.duration_ms })),
+      })
+    }
+    console.log(`Carved-from-the-same-take pairs (human, Aran): ${carved.length}`)
+  } else {
+    console.log(`No carved-pair file at ${carvedFile} — building library pairs only`)
+  }
 
   const byLabel = new Map()
   let totalCandidates = 0
@@ -245,8 +269,10 @@ async function main() {
   }
   console.log(`\nTotal qualifying phrases across all sources: ${totalCandidates}`)
 
-  const picked = pickSpread(byLabel, count)
-  console.log(`Building ${picked.length} pairs into ${outDir}\n`)
+  // Carved pairs go FIRST: they are the cleanest read on the actual question,
+  // so a listener who only gets half way through still answers the useful part.
+  const picked = carved.concat(pickSpread(byLabel, count))
+  console.log(`Building ${picked.length} pairs (${carved.length} carved + ${picked.length - carved.length} library) into ${outDir}\n`)
 
   const audioDir = path.join(outDir, 'audio')
   fs.mkdirSync(audioDir, { recursive: true })
@@ -280,6 +306,9 @@ async function main() {
 
       pairs.push({
         id: pairId,
+        // 'carved' = pieces cut from this very take (the join artefact alone).
+        // 'library' = pieces from separate recordings (joins plus pace drift).
+        kind: item.kind || 'library',
         courseCode: item.source.courseCode,
         role: item.source.role,
         voiceLabel: item.source.label,

@@ -4,6 +4,295 @@
   "pairs": [
     {
       "id": "p01",
+      "kind": "carved",
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "human_aran_cym_n_2 (human)",
+      "text": "A'r risotto i mi. Efo salad gwyrdd bach i ddechrau.",
+      "pieceTexts": [
+        "A'r risotto i mi.",
+        "Efo salad gwyrdd bach i ddechrau."
+      ],
+      "concat": {
+        "file": "audio/p01-a.mp3",
+        "durationMs": 3238,
+        "sourceAudioIds": [
+          "b54f47c4-d6a9-47d2-a25b-8de83c2180d9",
+          "8928e387-c575-4386-ab59-115906ff47dd"
+        ]
+      },
+      "whole": {
+        "file": "audio/p01-b.mp3",
+        "durationMs": 4102,
+        "sourceAudioId": "d3f35b06-8b9f-4210-8595-9cb2b398af71"
+      },
+      "paceRatio": 0.79
+    },
+    {
+      "id": "p02",
+      "kind": "carved",
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "human_aran_cym_n_2 (human)",
+      "text": "Na, mae'n ddrwg gen i, dw i'n brysur fory. Ond gawn ni siarad ddydd Sadwrn. Wela i chdi bryd hynny.",
+      "pieceTexts": [
+        "Na, mae'n ddrwg gen i, dw i'n brysur fory.",
+        "Ond gawn ni siarad ddydd Sadwrn.",
+        "Wela i chdi bryd hynny."
+      ],
+      "concat": {
+        "file": "audio/p02-a.mp3",
+        "durationMs": 5007,
+        "sourceAudioIds": [
+          "0040e425-5beb-4640-9f1c-53e04abed0f1",
+          "21c1204e-8211-4756-93bb-665db20448a0",
+          "a018c461-1235-4b6f-9795-49f0dbecad36"
+        ]
+      },
+      "whole": {
+        "file": "audio/p02-b.mp3",
+        "durationMs": 6000,
+        "sourceAudioId": "a323aece-5ff7-43af-bf12-3a74d6ecd2be"
+      },
+      "paceRatio": 0.83
+    },
+    {
+      "id": "p03",
+      "kind": "carved",
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "human_aran_cym_n_2 (human)",
+      "text": "Fedra i dalu efo cerdyn? Oes gynnoch chi contactless?",
+      "pieceTexts": [
+        "Fedra i dalu efo cerdyn?",
+        "Oes gynnoch chi contactless?"
+      ],
+      "concat": {
+        "file": "audio/p03-a.mp3",
+        "durationMs": 3224,
+        "sourceAudioIds": [
+          "1846441e-8aff-4d24-8fed-f7402f2ef287",
+          "aa64362e-984f-489f-848d-ab1562c46540"
+        ]
+      },
+      "whole": {
+        "file": "audio/p03-b.mp3",
+        "durationMs": 3224,
+        "sourceAudioId": "611ba78f-bbf4-485f-8f22-251730686fef"
+      },
+      "paceRatio": 1
+    },
+    {
+      "id": "p04",
+      "kind": "carved",
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "human_aran_cym_n_2 (human)",
+      "text": "Oes gynnoch chi frechdanau? Liciwn i frechdan gaws, os gwelwch yn dda.",
+      "pieceTexts": [
+        "Oes gynnoch chi frechdanau?",
+        "Liciwn i frechdan gaws, os gwelwch yn dda."
+      ],
+      "concat": {
+        "file": "audio/p04-a.mp3",
+        "durationMs": 3837,
+        "sourceAudioIds": [
+          "dcbaf775-8516-4b01-8341-24917c822b49",
+          "039add26-b11e-4a7a-b136-4a2c92868ec4"
+        ]
+      },
+      "whole": {
+        "file": "audio/p04-b.mp3",
+        "durationMs": 3837,
+        "sourceAudioId": "20def6a2-d48f-49b7-b495-0f6745a36883"
+      },
+      "paceRatio": 1
+    },
+    {
+      "id": "p05",
+      "kind": "carved",
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "human_aran_cym_n (human)",
+      "text": "Dw i'n dda iawn, diolch. Wyt ti'n mynd i'r gwaith?",
+      "pieceTexts": [
+        "Dw i'n dda iawn, diolch.",
+        "Wyt ti'n mynd i'r gwaith?"
+      ],
+      "concat": {
+        "file": "audio/p05-a.mp3",
+        "durationMs": 2090,
+        "sourceAudioIds": [
+          "ba0d384d-576c-4f69-a232-15695fd71899",
+          "cb6f0ad8-7679-42ab-8e2e-9abf8db9d9bd"
+        ]
+      },
+      "whole": {
+        "file": "audio/p05-b.mp3",
+        "durationMs": 2194,
+        "sourceAudioId": "215e1c95-2ffe-4eae-8487-bdaaae15a36b"
+      },
+      "paceRatio": 0.95
+    },
+    {
+      "id": "p06",
+      "kind": "carved",
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "human_aran_cym_n (human)",
+      "text": "Noswaith dda, Sarah. Gest ti ddiwrnod hir?",
+      "pieceTexts": [
+        "Noswaith dda, Sarah.",
+        "Gest ti ddiwrnod hir?"
+      ],
+      "concat": {
+        "file": "audio/p06-a.mp3",
+        "durationMs": 5075,
+        "sourceAudioIds": [
+          "d9a95b45-2033-4600-adae-295b707a76b2",
+          "8badddca-6a5e-498b-9eae-046709f5991e"
+        ]
+      },
+      "whole": {
+        "file": "audio/p06-b.mp3",
+        "durationMs": 5075,
+        "sourceAudioId": "27e1223f-a157-40ee-a2ee-680c3ae02295"
+      },
+      "paceRatio": 1
+    },
+    {
+      "id": "p07",
+      "kind": "carved",
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "human_aran_cym_n_2 (human)",
+      "text": "A'r bil, pan fyddwch chi'n barod. Fedrwn ni ei rannu fo?",
+      "pieceTexts": [
+        "A'r bil, pan fyddwch chi'n barod.",
+        "Fedrwn ni ei rannu fo?"
+      ],
+      "concat": {
+        "file": "audio/p07-a.mp3",
+        "durationMs": 2312,
+        "sourceAudioIds": [
+          "77b385ba-ea3c-4430-ac9f-b3bc677726cf",
+          "6daf2708-b29a-4614-bad1-7cd8149b1629"
+        ]
+      },
+      "whole": {
+        "file": "audio/p07-b.mp3",
+        "durationMs": 2680,
+        "sourceAudioId": "40749ac9-447c-4180-845d-8a5687d623ff"
+      },
+      "paceRatio": 0.86
+    },
+    {
+      "id": "p08",
+      "kind": "carved",
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "human_aran_cym_n_2 (human)",
+      "text": "Prynhawn da. Mae gen i stafell wedi'i bwcio dan yr enw Jones.",
+      "pieceTexts": [
+        "Prynhawn da.",
+        "Mae gen i stafell wedi'i bwcio dan yr enw Jones."
+      ],
+      "concat": {
+        "file": "audio/p08-a.mp3",
+        "durationMs": 2730,
+        "sourceAudioIds": [
+          "30514028-0094-40c6-b836-10530e808cfa",
+          "2a7ba1f9-1371-4789-832e-0dc2b77dfb26"
+        ]
+      },
+      "whole": {
+        "file": "audio/p08-b.mp3",
+        "durationMs": 3085,
+        "sourceAudioId": "8080c64c-dada-4005-8452-9ad946b86bef"
+      },
+      "paceRatio": 0.88
+    },
+    {
+      "id": "p09",
+      "kind": "carved",
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "human_aran_cym_n_2 (human)",
+      "text": "Wrth gwrs. Dyma fy mhasbort i.",
+      "pieceTexts": [
+        "Wrth gwrs.",
+        "Dyma fy mhasbort i."
+      ],
+      "concat": {
+        "file": "audio/p09-a.mp3",
+        "durationMs": 1495,
+        "sourceAudioIds": [
+          "1c1ef5be-96d8-46d4-a372-5e1c3878dcb3",
+          "a9559bdb-515d-4b54-93c4-69f16dd8a353"
+        ]
+      },
+      "whole": {
+        "file": "audio/p09-b.mp3",
+        "durationMs": 1495,
+        "sourceAudioId": "39356934-7197-427b-b2cd-96b44f9fad96"
+      },
+      "paceRatio": 1
+    },
+    {
+      "id": "p10",
+      "kind": "carved",
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "human_aran_cym_n_2 (human)",
+      "text": "Ardderchog. Ydy hi'n bosib i ni gael check-out hwyr?",
+      "pieceTexts": [
+        "Ardderchog.",
+        "Ydy hi'n bosib i ni gael check-out hwyr?"
+      ],
+      "concat": {
+        "file": "audio/p10-a.mp3",
+        "durationMs": 2198,
+        "sourceAudioIds": [
+          "93f21158-1296-49cc-9243-551658d94071",
+          "60fd24d5-c6c0-415a-9ec9-d2740fc800a7"
+        ]
+      },
+      "whole": {
+        "file": "audio/p10-b.mp3",
+        "durationMs": 2583,
+        "sourceAudioId": "9a72b30c-9779-4f91-82dc-eb38b1f9de9f"
+      },
+      "paceRatio": 0.85
+    },
+    {
+      "id": "p11",
+      "kind": "carved",
+      "courseCode": "cym_n_for_eng",
+      "role": "target1",
+      "voiceLabel": "human_aran_cym_n_2 (human)",
+      "text": "Wrth gwrs. Be ydi'ch symptomau chi?",
+      "pieceTexts": [
+        "Wrth gwrs.",
+        "Be ydi'ch symptomau chi?"
+      ],
+      "concat": {
+        "file": "audio/p11-a.mp3",
+        "durationMs": 1538,
+        "sourceAudioIds": [
+          "1c1ef5be-96d8-46d4-a372-5e1c3878dcb3",
+          "6366f61f-ff83-4fbe-97b7-37a3abb33cb1"
+        ]
+      },
+      "whole": {
+        "file": "audio/p11-b.mp3",
+        "durationMs": 1461,
+        "sourceAudioId": "f44238b2-af98-4d5f-bd6c-303b68d36d24"
+      },
+      "paceRatio": 1.05
+    },
+    {
+      "id": "p12",
+      "kind": "library",
       "courseCode": "cym_s_for_eng",
       "role": "target1",
       "voiceLabel": "South Welsh, voice 1",
@@ -13,7 +302,7 @@
         "yfed"
       ],
       "concat": {
-        "file": "audio/p01-a.mp3",
+        "file": "audio/p12-a.mp3",
         "durationMs": 1662,
         "sourceAudioIds": [
           "8994f3b6-bb5e-41b0-87c7-ad2925cb0bca",
@@ -21,14 +310,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p01-b.mp3",
+        "file": "audio/p12-b.mp3",
         "durationMs": 1407,
         "sourceAudioId": "e284a441-c35b-4794-8202-23c2190c0aa6"
       },
       "paceRatio": 1.18
     },
     {
-      "id": "p02",
+      "id": "p13",
+      "kind": "library",
       "courseCode": "cym_s_for_eng",
       "role": "target2",
       "voiceLabel": "South Welsh, voice 2",
@@ -38,7 +328,7 @@
         "yfed"
       ],
       "concat": {
-        "file": "audio/p02-a.mp3",
+        "file": "audio/p13-a.mp3",
         "durationMs": 1795,
         "sourceAudioIds": [
           "94aeca76-a78a-4607-8645-6b5398fb5c3a",
@@ -46,14 +336,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p02-b.mp3",
+        "file": "audio/p13-b.mp3",
         "durationMs": 2121,
         "sourceAudioId": "396065a2-7073-47ba-becf-b4bc3cd9525b"
       },
       "paceRatio": 0.85
     },
     {
-      "id": "p03",
+      "id": "p14",
+      "kind": "library",
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "North Welsh, voice 1",
@@ -63,7 +354,7 @@
         "y ffeithiau"
       ],
       "concat": {
-        "file": "audio/p03-a.mp3",
+        "file": "audio/p14-a.mp3",
         "durationMs": 2053,
         "sourceAudioIds": [
           "616d6c0d-01d1-4480-928b-6400f993ddb4",
@@ -71,14 +362,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p03-b.mp3",
+        "file": "audio/p14-b.mp3",
         "durationMs": 1879,
         "sourceAudioId": "dfe8a70c-75bc-4a54-95e0-14738d21e5da"
       },
       "paceRatio": 1.09
     },
     {
-      "id": "p04",
+      "id": "p15",
+      "kind": "library",
       "courseCode": "cym_n_for_eng",
       "role": "target2",
       "voiceLabel": "North Welsh, voice 2",
@@ -88,7 +380,7 @@
         "y ffeithiau"
       ],
       "concat": {
-        "file": "audio/p04-a.mp3",
+        "file": "audio/p15-a.mp3",
         "durationMs": 2794,
         "sourceAudioIds": [
           "e48bfdbc-d117-4802-a419-eaf589050295",
@@ -96,14 +388,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p04-b.mp3",
+        "file": "audio/p15-b.mp3",
         "durationMs": 1911,
         "sourceAudioId": "b5142b7a-f656-475e-8440-8daf3199df17"
       },
       "paceRatio": 1.46
     },
     {
-      "id": "p05",
+      "id": "p16",
+      "kind": "library",
       "courseCode": "cym_s_for_eng",
       "role": "target1",
       "voiceLabel": "South Welsh, voice 1",
@@ -113,7 +406,7 @@
         "tŷ perffaith"
       ],
       "concat": {
-        "file": "audio/p05-a.mp3",
+        "file": "audio/p16-a.mp3",
         "durationMs": 3411,
         "sourceAudioIds": [
           "d5708669-36f8-4175-9a83-adf3b6d45bfb",
@@ -121,14 +414,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p05-b.mp3",
+        "file": "audio/p16-b.mp3",
         "durationMs": 2098,
         "sourceAudioId": "1a3b4e60-1094-4b9d-a6f9-2a34b7754e69"
       },
       "paceRatio": 1.63
     },
     {
-      "id": "p06",
+      "id": "p17",
+      "kind": "library",
       "courseCode": "cym_s_for_eng",
       "role": "target2",
       "voiceLabel": "South Welsh, voice 2",
@@ -138,7 +432,7 @@
         "tŷ perffaith"
       ],
       "concat": {
-        "file": "audio/p06-a.mp3",
+        "file": "audio/p17-a.mp3",
         "durationMs": 4749,
         "sourceAudioIds": [
           "c00c5412-f5c8-4b76-bec9-eb6fd77e78c1",
@@ -146,14 +440,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p06-b.mp3",
+        "file": "audio/p17-b.mp3",
         "durationMs": 2644,
         "sourceAudioId": "78874c4c-9ea4-4396-ab03-f0d66f3e7bc8"
       },
       "paceRatio": 1.8
     },
     {
-      "id": "p07",
+      "id": "p18",
+      "kind": "library",
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "North Welsh, voice 1",
@@ -163,7 +458,7 @@
         "be’ ddudest ti"
       ],
       "concat": {
-        "file": "audio/p07-a.mp3",
+        "file": "audio/p18-a.mp3",
         "durationMs": 6019,
         "sourceAudioIds": [
           "c1f599df-1928-42c6-bf9d-1681804de4f8",
@@ -171,14 +466,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p07-b.mp3",
+        "file": "audio/p18-b.mp3",
         "durationMs": 4249,
         "sourceAudioId": "e8f9d37e-017f-44dc-8767-3266e54f20b5"
       },
       "paceRatio": 1.42
     },
     {
-      "id": "p08",
+      "id": "p19",
+      "kind": "library",
       "courseCode": "cym_n_for_eng",
       "role": "target2",
       "voiceLabel": "North Welsh, voice 2",
@@ -188,7 +484,7 @@
         "cofio"
       ],
       "concat": {
-        "file": "audio/p08-a.mp3",
+        "file": "audio/p19-a.mp3",
         "durationMs": 2606,
         "sourceAudioIds": [
           "b45c8d25-15a8-4905-895a-801d29b9b83d",
@@ -196,14 +492,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p08-b.mp3",
+        "file": "audio/p19-b.mp3",
         "durationMs": 2806,
         "sourceAudioId": "c152856b-6f57-405c-b356-b43127b8b703"
       },
       "paceRatio": 0.93
     },
     {
-      "id": "p09",
+      "id": "p20",
+      "kind": "library",
       "courseCode": "cym_s_for_eng",
       "role": "target1",
       "voiceLabel": "South Welsh, voice 1",
@@ -213,7 +510,7 @@
         "ymarfer siarad"
       ],
       "concat": {
-        "file": "audio/p09-a.mp3",
+        "file": "audio/p20-a.mp3",
         "durationMs": 2811,
         "sourceAudioIds": [
           "c9705bb9-5827-435a-9f92-1dcb53e6305e",
@@ -221,14 +518,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p09-b.mp3",
+        "file": "audio/p20-b.mp3",
         "durationMs": 3641,
         "sourceAudioId": "c9520eb0-ebeb-4d8d-8700-8a9267072578"
       },
       "paceRatio": 0.77
     },
     {
-      "id": "p10",
+      "id": "p21",
+      "kind": "library",
       "courseCode": "cym_s_for_eng",
       "role": "target2",
       "voiceLabel": "South Welsh, voice 2",
@@ -238,7 +536,7 @@
         "ymlacio"
       ],
       "concat": {
-        "file": "audio/p10-a.mp3",
+        "file": "audio/p21-a.mp3",
         "durationMs": 4178,
         "sourceAudioIds": [
           "7cfa6620-8018-4441-8d40-37aadf17337e",
@@ -246,14 +544,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p10-b.mp3",
+        "file": "audio/p21-b.mp3",
         "durationMs": 2088,
         "sourceAudioId": "c67f30be-2ced-42c0-9a0f-3de465051925"
       },
       "paceRatio": 2
     },
     {
-      "id": "p11",
+      "id": "p22",
+      "kind": "library",
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "North Welsh, voice 1",
@@ -263,7 +562,7 @@
         "deud wrthaf fi"
       ],
       "concat": {
-        "file": "audio/p11-a.mp3",
+        "file": "audio/p22-a.mp3",
         "durationMs": 3910,
         "sourceAudioIds": [
           "b3ba3263-2aaa-4336-b10d-6ebd0f1957f7",
@@ -271,14 +570,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p11-b.mp3",
+        "file": "audio/p22-b.mp3",
         "durationMs": 3646,
         "sourceAudioId": "f060d9fc-5367-44a2-9ea1-3ea50ed9ea8c"
       },
       "paceRatio": 1.07
     },
     {
-      "id": "p12",
+      "id": "p23",
+      "kind": "library",
       "courseCode": "cym_n_for_eng",
       "role": "target2",
       "voiceLabel": "North Welsh, voice 2",
@@ -288,7 +588,7 @@
         "sydd isio"
       ],
       "concat": {
-        "file": "audio/p12-a.mp3",
+        "file": "audio/p23-a.mp3",
         "durationMs": 3707,
         "sourceAudioIds": [
           "32c91b8d-2b8b-4299-a7bc-6a093ac9fe52",
@@ -296,14 +596,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p12-b.mp3",
+        "file": "audio/p23-b.mp3",
         "durationMs": 2824,
         "sourceAudioId": "ccda4d4d-15a3-4c01-9e95-03f5d6b551ef"
       },
       "paceRatio": 1.31
     },
     {
-      "id": "p13",
+      "id": "p24",
+      "kind": "library",
       "courseCode": "cym_s_for_eng",
       "role": "target1",
       "voiceLabel": "South Welsh, voice 1",
@@ -313,7 +614,7 @@
         "deall"
       ],
       "concat": {
-        "file": "audio/p13-a.mp3",
+        "file": "audio/p24-a.mp3",
         "durationMs": 2283,
         "sourceAudioIds": [
           "24d577b2-1aea-4059-ab76-e1ba1b9e917d",
@@ -321,14 +622,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p13-b.mp3",
+        "file": "audio/p24-b.mp3",
         "durationMs": 2257,
         "sourceAudioId": "dd9fc2c0-4bfa-4fc3-a0c1-7256b28edc9b"
       },
       "paceRatio": 1.01
     },
     {
-      "id": "p14",
+      "id": "p25",
+      "kind": "library",
       "courseCode": "cym_s_for_eng",
       "role": "target2",
       "voiceLabel": "South Welsh, voice 2",
@@ -338,7 +640,7 @@
         "be’ ddwedest ti"
       ],
       "concat": {
-        "file": "audio/p14-a.mp3",
+        "file": "audio/p25-a.mp3",
         "durationMs": 6187,
         "sourceAudioIds": [
           "bbec9dc5-5248-460b-bfd5-229f7c77940f",
@@ -346,14 +648,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p14-b.mp3",
+        "file": "audio/p25-b.mp3",
         "durationMs": 3195,
         "sourceAudioId": "3d6b5b47-0a28-4b2b-8c59-dbfc08e9ad2a"
       },
       "paceRatio": 1.94
     },
     {
-      "id": "p15",
+      "id": "p26",
+      "kind": "library",
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "North Welsh, voice 1",
@@ -363,7 +666,7 @@
         "yn araf"
       ],
       "concat": {
-        "file": "audio/p15-a.mp3",
+        "file": "audio/p26-a.mp3",
         "durationMs": 2498,
         "sourceAudioIds": [
           "683e5b55-945e-418e-9266-86befcf59232",
@@ -371,14 +674,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p15-b.mp3",
+        "file": "audio/p26-b.mp3",
         "durationMs": 2421,
         "sourceAudioId": "88086295-875b-428f-b0f9-76954b6ae334"
       },
       "paceRatio": 1.03
     },
     {
-      "id": "p16",
+      "id": "p27",
+      "kind": "library",
       "courseCode": "cym_n_for_eng",
       "role": "target2",
       "voiceLabel": "North Welsh, voice 2",
@@ -388,7 +692,7 @@
         "heb ddadlau"
       ],
       "concat": {
-        "file": "audio/p16-a.mp3",
+        "file": "audio/p27-a.mp3",
         "durationMs": 3141,
         "sourceAudioIds": [
           "c0a8f446-ff73-4f91-978c-25a10619658e",
@@ -396,14 +700,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p16-b.mp3",
+        "file": "audio/p27-b.mp3",
         "durationMs": 2835,
         "sourceAudioId": "c90c5cfc-6287-4f1b-8837-8a1f240d8b71"
       },
       "paceRatio": 1.11
     },
     {
-      "id": "p17",
+      "id": "p28",
+      "kind": "library",
       "courseCode": "cym_s_for_eng",
       "role": "target1",
       "voiceLabel": "South Welsh, voice 1",
@@ -414,7 +719,7 @@
         "nawr"
       ],
       "concat": {
-        "file": "audio/p17-a.mp3",
+        "file": "audio/p28-a.mp3",
         "durationMs": 4131,
         "sourceAudioIds": [
           "14573e9b-1bf0-4ffd-a0d9-e6dac28918e9",
@@ -423,14 +728,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p17-b.mp3",
+        "file": "audio/p28-b.mp3",
         "durationMs": 5407,
         "sourceAudioId": "1d60a0c1-73f4-47fe-ab6d-61a1c48f80b7"
       },
       "paceRatio": 0.76
     },
     {
-      "id": "p18",
+      "id": "p29",
+      "kind": "library",
       "courseCode": "cym_s_for_eng",
       "role": "target2",
       "voiceLabel": "South Welsh, voice 2",
@@ -441,7 +747,7 @@
         "am fis"
       ],
       "concat": {
-        "file": "audio/p18-a.mp3",
+        "file": "audio/p29-a.mp3",
         "durationMs": 5091,
         "sourceAudioIds": [
           "c6039edc-2e4f-4007-8380-443a81e53951",
@@ -450,14 +756,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p18-b.mp3",
+        "file": "audio/p29-b.mp3",
         "durationMs": 3894,
         "sourceAudioId": "6da1bdd8-fe87-4b99-b555-029ddc99a91c"
       },
       "paceRatio": 1.31
     },
     {
-      "id": "p19",
+      "id": "p30",
+      "kind": "library",
       "courseCode": "cym_n_for_eng",
       "role": "target1",
       "voiceLabel": "North Welsh, voice 1",
@@ -468,7 +775,7 @@
         "oeddan nhw isio"
       ],
       "concat": {
-        "file": "audio/p19-a.mp3",
+        "file": "audio/p30-a.mp3",
         "durationMs": 2796,
         "sourceAudioIds": [
           "3cc30188-4311-47b4-bafd-d458161f53c7",
@@ -477,14 +784,15 @@
         ]
       },
       "whole": {
-        "file": "audio/p19-b.mp3",
+        "file": "audio/p30-b.mp3",
         "durationMs": 2380,
         "sourceAudioId": "92d0525d-ceac-4b6c-b598-182242595197"
       },
       "paceRatio": 1.17
     },
     {
-      "id": "p20",
+      "id": "p31",
+      "kind": "library",
       "courseCode": "cym_n_for_eng",
       "role": "target2",
       "voiceLabel": "North Welsh, voice 2",
@@ -495,7 +803,7 @@
         "neu goffi"
       ],
       "concat": {
-        "file": "audio/p20-a.mp3",
+        "file": "audio/p31-a.mp3",
         "durationMs": 4335,
         "sourceAudioIds": [
           "77c41933-e814-44c9-86fd-c2620e6dac0c",
@@ -504,7 +812,7 @@
         ]
       },
       "whole": {
-        "file": "audio/p20-b.mp3",
+        "file": "audio/p31-b.mp3",
         "durationMs": 3422,
         "sourceAudioId": "28efb534-d3b3-453a-a965-9b03fbf9a91b"
       },

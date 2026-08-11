@@ -82,7 +82,8 @@
   <summary>What am I listening to, exactly?</summary>
   <p>Every clip here already existed — nothing was recorded or generated for this test. The glued version is made from real recordings of that phrase's own pieces, stuck together with the same processing the live splicer uses: each piece trimmed to its speech, levelled to the same loudness, then joined.</p>
   <p>Both versions get identical trimming, levelling and encoding, so loudness or file quality can't give the game away — only the joins can.</p>
-  <p>One honest caveat: the pieces here come from separate course recordings, not from one slow read of this phrase. So a few of the glued versions drag more than a real fast pass would. If a glued one still sounds fine here, it will sound at least as good in production.</p>
+  <p>The first eleven phrases are the cleanest test there is: Aran recorded them whole, and a later pass cut those very takes into pieces. Re-gluing them changes nothing but the joins, so if you can hear a problem there, the joins are the problem.</p>
+  <p>The rest are harder than real life: their pieces come from separate course recordings rather than one read of the phrase, so a few drag more than a real fast pass would. If a glued one still sounds fine there, it will sound at least as good in production.</p>
 </details>
 
 <div id="app"></div>
@@ -213,6 +214,9 @@ function revealHtml(pair, answer) {
         <dt>Voice</dt><dd>${escapeHtml(pair.voiceLabel)}</dd>
       </dl>
       <p class="pieces">Glued from: ${pair.pieceTexts.map(t => '<code>' + escapeHtml(t) + '</code>').join(' + ')}</p>
+      <p class="pieces">${pair.kind === 'carved'
+        ? 'Those pieces were cut out of this very take, so the only difference you could hear is the joins themselves.'
+        : 'Those pieces come from separate recordings, so pace can differ as well as the joins.'}</p>
       <button class="next" id="next">${state.index + 1 >= pairs.length ? 'See results' : 'Next phrase'}</button>
     </div>`;
 }
