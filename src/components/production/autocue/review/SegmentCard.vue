@@ -9,7 +9,7 @@
           Take {{ segment.takeNumber }}
         </span>
         <span v-if="status" class="verdict-badge" :class="status">
-          {{ status === 'approved' ? '✓ Approved' : '↻ Redo' }}
+          {{ status === 'approved' ? '✓ Approved' : '⚑ Flagged' }}
         </span>
       </div>
       <div class="confidence-badge" :class="segment.confidenceLevel">
@@ -48,10 +48,10 @@
       <button
         class="segment-btn redo"
         :class="{ active: status === 'rejected' }"
-        :title="status === 'rejected' ? 'Queued for re-record — click to undo' : 'Queue this take for re-record'"
+        :title="status === 'rejected' ? 'Flagged for re-record — click to unflag' : 'Flag this take for re-record'"
         @click="$emit('redo', segment)"
       >
-        <span class="btn-icon">↻</span> {{ status === 'rejected' ? 'Queued' : 'Redo' }}
+        <span class="btn-icon">⚑</span> {{ status === 'rejected' ? 'Flagged' : 'Flag' }}
       </button>
       <button
         class="segment-btn approve"
@@ -287,9 +287,14 @@ function getBarHeight(index) {
   box-shadow: inset 0 0 0 1px rgba(6, 255, 165, 0.25);
 }
 
+/* Flagged means "come back to this", so the card has to pull the eye across a
+   grid of thirty, not recede into it — it used to be dimmed to 0.75, which read
+   as "dealt with, ignore me": exactly backwards for the one state the recordist
+   is scanning for. */
 .segment-card.rejected {
   border-left-color: var(--color-film-red, #e63946);
-  opacity: 0.75;
+  box-shadow: inset 0 0 0 1px rgba(230, 57, 70, 0.45);
+  background: rgba(230, 57, 70, 0.07);
 }
 
 .take-badge {

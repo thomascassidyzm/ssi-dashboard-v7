@@ -183,6 +183,15 @@
         <span class="vad-status">{{ isSpeaking ? 'Speaking...' : 'Listening...' }}</span>
       </div>
 
+      <!-- A re-record pass looks exactly like a first pass on screen, except
+           the script is three items long and out of order. Say which pass this
+           is, or the recordist reads the jump as the teleprompter losing its
+           place. -->
+      <div v-if="retakeProgress" class="retake-banner">
+        <span class="retake-flag">⚑</span>
+        Re-recording flagged takes — {{ retakeProgress.current }} of {{ retakeProgress.total }}
+      </div>
+
       <!-- Teleprompter -->
       <TeleprompterDisplay
         :phrases="state.phrases"
@@ -206,6 +215,7 @@
       />
 
       <!-- Upload progress bar (script mode) -->
+      <!-- (styles for .retake-banner live with the other in-session bars) -->
       <div v-if="state.scriptMode && uploadQueue.pendingCount.value > 0" class="upload-progress-bar">
         <span class="upload-label">Uploading: {{ uploadQueue.uploadedCount.value }} done, {{ uploadQueue.pendingCount.value }} pending</span>
       </div>
@@ -280,6 +290,8 @@
         :approved-ids="[...state.approvedSegments]"
         :rejected-ids="[...state.rejectedSegments]"
         :active-filter="state.reviewFilter"
+        :script-mode="state.scriptMode"
+        @re-record-flagged="onReRecordFlagged"
         @play="playSegment"
         @play-all="playAllSegments"
         @approve="approveSegment"
@@ -367,6 +379,8 @@ const {
   setReviewFilter,
   clearReviewFilter,
   backToRecording,
+  startRetakePass,
+  retakeProgress,
   finalizeSession,
   resetSession,
   loadCourse,
@@ -608,6 +622,17 @@ async function onToggleRecording() {
         stopRecording()
       }
     }
+  }
+}
+
+// Second pass: drop the recordist back on the teleprompter parked on the first
+// flagged item. They press record as normal, and each new take goes down the
+// same capture path as the first pass — which already supersedes the earlier
+// take both locally (one row per item) and on the server (the queue drops the
+// old take and re-POSTs the slot). Nothing new is needed on the receiving end.
+function onReRecordFlagged() {
+  if (!startRetakePass()) {
+    console.warn('[Autocue] Re-record pressed with nothing flagged')
   }
 }
 
@@ -1154,6 +1179,23 @@ onUnmounted(() => {
 }
 
 /* Upload Progress Bar */
+.retake-banner {
+  margin-bottom: 1rem;
+  padding: 0.6rem 1rem;
+  background: rgba(230, 57, 70, 0.12);
+  border: 1px solid var(--color-film-red, #e63946);
+  border-radius: 8px;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--color-film-red, #e63946);
+}
+
+.retake-flag {
+  margin-right: 0.4rem;
+}
+
 .upload-progress-bar {
   margin-top: 1rem;
   padding: 0.5rem 1rem;

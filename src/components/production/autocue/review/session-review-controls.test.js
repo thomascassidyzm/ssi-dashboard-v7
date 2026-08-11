@@ -54,10 +54,11 @@ describe('SegmentCard controls emit', () => {
     expect(w.find('.verdict-badge').text()).toContain('Approved')
   })
 
-  it('shows the redo verdict on the card', () => {
+  it('shows the flagged verdict on the card', () => {
     const w = mount(SegmentCard, { props: { segment: high, status: 'rejected' } })
-    expect(btns(w)[1].text()).toContain('Queued')
+    expect(btns(w)[1].text()).toContain('Flagged')
     expect(btns(w)[1].classes()).toContain('active')
+    expect(w.find('.verdict-badge').text()).toContain('Flagged')
   })
 })
 
@@ -206,7 +207,8 @@ describe('AutocueStudio listens for every event the review screen emits', () => 
   it('covers every control on the screen', () => {
     expect(declared.sort()).toEqual([
       'approve', 'approve-all', 'back', 'clear-filter', 'filter',
-      'finalize', 'play', 'play-all', 'queue-redo', 'reject'
+      'finalize', 'play', 'play-all', 'queue-redo', 're-record-flagged',
+      'reject'
     ])
   })
 })
