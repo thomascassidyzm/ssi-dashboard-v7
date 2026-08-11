@@ -35,6 +35,11 @@ Two smaller consequences worth naming:
 - The count is not trivial: 387 draft lines estate-wide right now — 104 Welsh (`cym_s_for_eng`),
   128 Spanish (`spa_for_eng`), 155 Austrian German (`deu_at_for_eng`). At two clicks and a page
   region change per line, the missing button is roughly 800 interactions.
+  **Update 2026-08-11: 259 of those 387 are now on live learner slugs** — the Welsh 104 moved onto
+  `cym_s_for_eng:pod-0` in the outage fix, joining `deu_at`'s 155; only the Spanish 128 remain
+  gated. Both live sets are tracked together as the draft-debt ledger in
+  `docs/pods/scope-scout-2026-08-11/PLAN-all-pods-pod0.md` §"Read this first" #2, pending the
+  proofreading-policy ruling with Kai.
 
 ## 2. Recommended approach
 

@@ -159,7 +159,7 @@ describe('phase8 origin guard vs human pod rows', () => {
       role: 'target1',
       voice: { voice_id: 'human_catrin_cym', provider: 'azure' },
     })
-    expect(result).toEqual({ id: 'HUMAN-target1', reused: true })
+    expect(result).toMatchObject({ id: 'HUMAN-target1', reused: true })
     expect(state.ttsCalls).toBe(0)
     expect(state.upserts).toEqual([])
   })

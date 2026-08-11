@@ -213,6 +213,10 @@ async function loadCourse(courseCode) {
     const podId = casting.value?.current_pod_id || `${courseCode}:pod-0`
     currentPodId.value = podId
 
+    // The voice picker's inventory. Not awaited: the dropdowns fill in when it
+    // lands, and nothing else on the page depends on it.
+    loadVoicePicker(courseCode)
+
     const { data: rows, error: podErr } = await sb
       .from('listening_pod_sentences')
       .select(
@@ -1424,6 +1428,273 @@ const castFlags = computed(() => {
   return flags
 })
 
+// ── MANUAL VOICE CHOICE — two dropdowns, one male slot, one female slot ─────
+// Tom, 2026-08-11, having rejected the Spanish pod-0 cast ("Spanish needs
+// Iberian Spanish, not Mexican pronounciation, that's a different course"):
+//
+//   "should the casting process, in the PODLAB allow voice choice? I think it
+//    should - I built a VOICELAB actually which allows more control but that may
+//    be overkill but it's worth choosing the voices manually if there's only 2
+//    of them"
+//
+// So: a LIGHTWEIGHT picker. Two selects, a ▶ per slot, an Apply. VoiceLab's
+// inventory and preview endpoints are reused wholesale; none of its controls
+// (per-role lanes, provider switching, prosody knobs) come with them.
+//
+// It governs the TARGET track only — that is where the miscast was, and where
+// the ear judges. The known track is English for nearly the whole estate and
+// has its own settled pool; re-pointing it is a different decision from a
+// different page. The endpoint accepts a known override already, so wiring a
+// second pair of selects later is a template change, not a rebuild.
+const POOL_KEY_MARK = 'pool'
+const voicePools = ref(null) // GET /api/pod-cast-voices
+const discovered = ref([]) // GET /api/voices/discover/:lang?provider=xai
+const pick = ref({ m: '', f: '' }) // voiceKey() of the chosen voice per slot
+const pickerBusy = ref('')
+const pickerMsg = ref('')
+const pickerError = ref('')
+
+// The BCP-47 tag this course's target language should be steered at. For an
+// xAI voice this tag IS the accent decision — the same voice reads es-ES or
+// es-MX depending on it — so it travels with the pick rather than being
+// re-derived at render time.
+const targetBcp47 = computed(() => {
+  const lang = String(casting.value?.course?.target_lang || '')
+  const iso1 = ISO3_TO_ISO1[lang.split('_')[0]] || null
+  if (!iso1) return null
+  const region = lang.includes('_') ? lang.split('_')[1] : ''
+  return region ? `${iso1}-${region.toUpperCase()}` : iso1
+})
+
+// The voice each gender slot is cast on TODAY — the default both dropdowns
+// open at, so opening the panel and changing nothing changes nothing.
+const currentPair = computed(() => {
+  const out = { m: null, f: null }
+  for (const r of targetCast.value) {
+    if (!r.voice) continue
+    const g = r.voice.gender === 'f' ? 'f' : 'm'
+    // Most lines wins, so an odd speaker can't misreport the slot.
+    if (!out[g] || r.lines > out[g].lines) out[g] = { ...r.voice, lines: r.lines }
+  }
+  return out
+})
+
+// Options for one gender: the curated pool for this course's language FIRST and
+// marked as such, then the wider discovered xAI inventory. Anything already
+// cast but in neither list is kept at the top so the dropdown can always show
+// where the pod actually stands.
+function voiceOptions(gender) {
+  const seen = new Set()
+  const out = []
+  const push = (v, source) => {
+    const key = voiceKey(v)
+    if (!v || !v.voice_id || seen.has(key)) return
+    seen.add(key)
+    out.push({ ...v, key, source })
+  }
+  const cur = currentPair.value[gender]
+  if (cur) push({ provider: cur.provider, voice_id: cur.voice_id, name: cur.name, locale: cur.locale }, 'cast')
+  const pool = voicePools.value?.target?.pool?.[gender] || []
+  for (const v of pool) {
+    push({ provider: v.provider, voice_id: v.voice_id, name: v.name, locale: azureLocaleOf(v.voice_id) || targetBcp47.value }, POOL_KEY_MARK)
+  }
+  for (const v of discovered.value) {
+    if (String(v.gender || '').toLowerCase()[0] !== gender) continue
+    push({ provider: 'xai', voice_id: v.id, name: v.name, locale: targetBcp47.value || v.locale }, 'xai')
+  }
+  return out
+}
+const optionsM = computed(() => voiceOptions('m'))
+const optionsF = computed(() => voiceOptions('f'))
+
+// Azure voice ids carry their own locale; nothing else does.
+function azureLocaleOf(voiceId) {
+  const m = String(voiceId || '').match(/^([a-z]{2,3}(?:-[A-Za-z]{4})?-[A-Z]{2})-/)
+  return m ? m[1] : null
+}
+// The label a human reads to tell es-ES from es-MX at a glance.
+function voiceLabel(v) {
+  const iso3 = casting.value?.course?.target_lang || ''
+  const ok = localeMatchesTarget(v.locale, iso3)
+  // The voice_id is on the row because it is the only unique thing here — two
+  // providers ship a "Sonia", and the cast table names ids for the same reason.
+  const bits = [v.name || v.voice_id, v.provider, v.voice_id, v.locale || 'no locale']
+  if (v.source === POOL_KEY_MARK) bits.push(`pool ${voicePools.value?.target?.pool_key || ''}`.trim())
+  else if (v.source === 'cast') bits.push('cast now')
+  if (ok === false) bits.push('⚠ WRONG LANGUAGE')
+  return bits.join(' · ')
+}
+function chosen(gender) {
+  return (gender === 'm' ? optionsM.value : optionsF.value).find((o) => o.key === pick.value[gender]) || null
+}
+// Has the human actually moved either dropdown off what is cast today?
+const pickChanged = computed(() =>
+  ['m', 'f'].some((g) => {
+    const cur = currentPair.value[g]
+    return pick.value[g] && pick.value[g] !== (cur ? voiceKey(cur) : '')
+  }),
+)
+
+async function loadVoicePicker(courseCode) {
+  voicePools.value = null
+  discovered.value = []
+  pickerError.value = ''
+  pickerMsg.value = ''
+  if (!courseCode) return
+  try {
+    const token = await getAccessToken()
+    const res = await fetch(`/api/pod-cast-voices?course=${encodeURIComponent(courseCode)}`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    })
+    const body = await res.json().catch(() => ({}))
+    if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)
+    // Shape-checked, not trusted: the picker degrades to the discovered
+    // inventory rather than rendering half a payload.
+    voicePools.value = body && body.target && body.target.pool ? body : null
+  } catch (e) {
+    pickerError.value = `pool unavailable: ${e.message}`
+  }
+  // The wider inventory is a bonus, not a requirement — a failure here leaves
+  // the curated pool selectable rather than emptying the dropdowns.
+  try {
+    const lang = casting.value?.course?.target_lang
+    if (!lang) return
+    const token = await getAccessToken()
+    const res = await fetch(`${getApiUrl()}/api/voices/discover/${encodeURIComponent(lang)}?provider=xai`, {
+      headers: { 'ngrok-skip-browser-warning': 'true', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+    })
+    const body = await res.json().catch(() => ({}))
+    if (res.ok && body.success && Array.isArray(body.voices)) discovered.value = body.voices
+  } catch { /* pool-only is a working picker */ }
+}
+
+// Both selects default to what is cast today. Re-runs whenever the cast moves
+// under the page (a load, an apply), never while the human is mid-choice on an
+// unchanged cast.
+watch(currentPair, (pair) => {
+  for (const g of ['m', 'f']) {
+    const key = pair[g] ? voiceKey(pair[g]) : ''
+    if (key && pick.value[g] !== key) pick.value[g] = key
+  }
+}, { immediate: true, deep: true })
+
+// A short line to hear the voice on. A REAL sentence from this pod where one
+// exists for that gender's speaker — hearing the actual content is the point —
+// otherwise a fixed neutral phrase.
+const PREVIEW_FALLBACK = 'Buenos días. ¿Cómo estás hoy?'
+function previewText(gender) {
+  const speakers = castSpeakers.value
+  for (const s of sentences.value) {
+    const v = resolveSpeakerVoice(speakers, s.speaker, 'target')
+    const g = v && v.gender === 'f' ? 'f' : 'm'
+    const text = (s.target_text || '').trim()
+    if (g === gender && text.length >= 8 && text.length <= 160) return text
+  }
+  const any = sentences.value.map((s) => (s.target_text || '').trim()).find((t) => t.length >= 8 && t.length <= 160)
+  return any || PREVIEW_FALLBACK
+}
+
+// The one place this feature spends money: a few seconds of TTS, per click.
+async function previewVoice(gender) {
+  const v = chosen(gender)
+  if (!v || pickerBusy.value) return
+  stop() // supersede any sample or earlier preview — never two at once
+  pickerBusy.value = `preview:${gender}`
+  pickerMsg.value = ''
+  try {
+    const token = await getAccessToken()
+    const res = await fetch(`${getApiUrl()}/api/voices/preview`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: JSON.stringify({
+        voiceId: v.voice_id,
+        text: previewText(gender),
+        provider: v.provider,
+        language: v.locale || targetBcp47.value || undefined,
+      }),
+    })
+    const body = await res.json().catch(() => ({}))
+    if (!res.ok || !body.audio) throw new Error(body.error || `HTTP ${res.status}`)
+    await playDataUri(body.audio)
+  } catch (e) {
+    pickerMsg.value = `Preview failed: ${e.message}`
+  } finally {
+    pickerBusy.value = ''
+  }
+}
+
+// Preview playback goes through the SAME currentAudio handle as every clip on
+// this page, so stop() and the next ▶ supersede it — no overlapping playback.
+function playDataUri(uri) {
+  return new Promise((resolve) => {
+    const myToken = ++stopToken
+    const a = new Audio(uri)
+    currentAudio.value = a
+    let done = false
+    const finish = () => { if (!done) { done = true; resolve() } }
+    a.onended = finish
+    a.onerror = finish
+    a.play().catch(finish)
+    // If something else claimed playback while the bytes were loading, drop it.
+    setTimeout(() => { if (myToken !== stopToken) { a.pause(); finish() } }, 0)
+  })
+}
+
+// APPLY — writes casting and nothing else. No audio is generated, no clip link
+// is nulled; the approval goes stale by design and the page says so.
+async function applyVoices() {
+  const course = casting.value?.course_code
+  const podId = currentPod.value?.id
+  const m = chosen('m')
+  const f = chosen('f')
+  if (!course || !podId || (!m && !f) || pickerBusy.value) return
+  if (!window.confirm(
+    `Re-cast ${podId} on these two voices?\n\n`
+    + `male:   ${m ? `${m.name} (${m.provider}, ${m.locale || 'no locale'})` : 'unchanged'}\n`
+    + `female: ${f ? `${f.name} (${f.provider}, ${f.locale || 'no locale'})` : 'unchanged'}\n\n`
+    + 'Casting only — no audio is generated and no existing clip is deleted. '
+    + 'The current approval goes stale, so generation re-locks until you approve the new cast.',
+  )) return
+
+  pickerBusy.value = 'apply'
+  pickerMsg.value = ''
+  try {
+    const token = await getAccessToken()
+    const voice = (v) => (v ? { provider: v.provider, voice_id: v.voice_id, name: v.name, locale: v.locale || undefined } : undefined)
+    const res = await fetch('/api/pod-cast-voices', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+      body: JSON.stringify({
+        course_code: course,
+        pod_id: podId,
+        target: { m: voice(m), f: voice(f) },
+        cast_fingerprint: casting.value?.cast_fingerprint || null,
+      }),
+    })
+    const body = await res.json().catch(() => ({}))
+    if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)
+    // A 200 is NOT proof of a write: an unrouted /api/* path on Vercel falls
+    // through to the SPA and answers 200 with HTML, which parses to {}. The
+    // route's own `ok` is the only honest signal that a cast was written.
+    if (!body.ok) throw new Error('the endpoint did not confirm a write — is this build deployed?')
+    const podLabel = (body.pods || []).map((p) => `${p.pod_id} (${p.speakers} speakers)`).join(', ')
+    pickerMsg.value = `Applied to ${podLabel || podId}. New casting ${body.cast_fingerprint} — `
+      + (body.gate?.ok ? 'still approved.' : 'the previous approval no longer applies, so generation is locked until you approve this cast.')
+    // Re-read the cast from the server: the table, the flags and both dropdowns
+    // all re-derive from it, so nothing on screen is a local guess.
+    await loadCasting(course)
+    currentPodId.value = podId
+  } catch (e) {
+    pickerMsg.value = `Failed: ${e.message}`
+  } finally {
+    pickerBusy.value = ''
+  }
+}
+
 // ── the ~10 sample clips ───────────────────────────────────────────────────
 // Semantics deliberately match selectSample()/selectExchange() in
 // services/pod-voice-approvals.cjs — the gate's own sampler, and the thing that
@@ -1889,6 +2160,48 @@ loadLiveConfig()
             <ul class="cast-flags">
               <li v-for="(f, i) in castFlags" :key="i" :class="f.level">{{ f.text }}</li>
             </ul>
+
+            <!-- MANUAL VOICE CHOICE. Two slots, because Aran's rule makes a pod
+                 a two-hander: one male voice, one female voice, whole pod.
+                 Both open on what is cast today, so changing nothing changes
+                 nothing. Casting only — Apply never renders audio. -->
+            <div class="vpick">
+              <div class="lbl small">
+                Target voices — pick the two by hand
+                <span v-if="voicePools?.target" class="muted">
+                  · pool <code>{{ voicePools.target.pool_key }}</code>
+                  <template v-if="voicePools.sibling_keys?.length">
+                    (also on record: {{ voicePools.sibling_keys.join(', ') }})
+                  </template>
+                </span>
+              </div>
+              <div v-if="pickerError" class="chip err">{{ pickerError }}</div>
+              <div v-for="slot in [{ g: 'm', t: 'Male' }, { g: 'f', t: 'Female' }]" :key="slot.g" class="vpick-row">
+                <span class="vp-slot">{{ slot.t }}</span>
+                <select v-model="pick[slot.g]" class="vp-select">
+                  <option v-if="!pick[slot.g]" value="">— no voice cast —</option>
+                  <option v-for="o in (slot.g === 'm' ? optionsM : optionsF)" :key="o.key" :value="o.key">
+                    {{ voiceLabel(o) }}
+                  </option>
+                </select>
+                <button
+                  class="vp-play"
+                  :disabled="!!pickerBusy || !pick[slot.g]"
+                  :title="`Hear this voice on a line of this pod (a few seconds of TTS)`"
+                  @click="previewVoice(slot.g)"
+                >{{ pickerBusy === `preview:${slot.g}` ? '…' : '▶' }}</button>
+              </div>
+              <div class="vpick-foot">
+                <button class="vp-apply" :disabled="!!pickerBusy || !pickChanged" @click="applyVoices">
+                  {{ pickerBusy === 'apply' ? 'Applying…' : 'Apply to this pod' }}
+                </button>
+                <span class="muted small">
+                  Writes casting only — no audio generated, no clip deleted.
+                  Applying re-locks generation until you approve the new cast.
+                </span>
+                <span v-if="pickerMsg" class="chip" :class="{ err: pickerMsg.startsWith('Failed') || pickerMsg.startsWith('Preview failed') }">{{ pickerMsg }}</span>
+              </div>
+            </div>
 
             <div class="cast-tables">
               <div v-for="grp in [{ t: 'Target voices', rows: targetCast }, { t: 'Known voices', rows: knownCast }]" :key="grp.t" class="cast-table">
@@ -2902,6 +3215,68 @@ code {
   color: #f87171;
 }
 .cast-decide button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Manual voice choice — two slots, deliberately plain. */
+.vpick {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: var(--surface-2);
+}
+.vpick-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.vp-slot {
+  width: 62px;
+  flex: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.vp-select {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 7px 9px;
+  font-size: 13px;
+}
+.vp-play {
+  flex: none;
+  width: 34px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 7px 0;
+  cursor: pointer;
+}
+.vpick-foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.vp-apply {
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.vpick button:disabled {
   opacity: 0.5;
   cursor: default;
 }

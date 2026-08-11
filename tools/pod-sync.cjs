@@ -27,7 +27,22 @@ const fs = require('fs');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+// LAZY on purpose. This module is the one implementation of pod casting
+// (assignVoices), so it is imported by things that must not open a DB
+// connection — unit tests, and the Vercel function api/pod-cast-voices.js,
+// where the service key is named SUPABASE_SERVICE_ROLE_KEY and a top-level
+// createClient() with an undefined key throws at import and 500s the route.
+// Nothing else changes: every call site below goes through db().
+let _supabase = null;
+function db() {
+  if (!_supabase) {
+    _supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY,
+    );
+  }
+  return _supabase;
+}
 
 // ---------------------------------------------------------------------------
 // Voice assignment
@@ -146,7 +161,7 @@ const MALE_NAMES = new Set([
 // Voice pools live in app_config.pod_voice_pools (JSONB). See migration
 // 20260505_app_config_pod_voice_pools.sql for shape and policy.
 async function loadVoicePools() {
-  const { data, error } = await supabase
+  const { data, error } = await db()
     .from('app_config').select('value').eq('key', 'pod_voice_pools').single();
   if (error) throw new Error(`load pod_voice_pools: ${error.message}`);
   return data.value;
@@ -235,16 +250,60 @@ function poolKeyFor(pools, lang) {
 // DEFAULT_POD_VOICES = 2 in services/voice-engine/pods-cast.cjs.
 const POD_VOICES_PER_GENDER = Math.max(1, parseInt(process.env.POD_VOICES_PER_GENDER || '1', 10) || 1);
 
-async function assignVoices(rawSpeakers, targetLang, knownLang) {
+// A MANUAL voice choice, as picked in PodLab's casting panel.
+//
+// Shape: { target: { m: <voice>, f: <voice> }, known: { m, f } }, every key
+// optional; <voice> is { provider, voice_id, name?, locale? }. An override
+// replaces the pool pick for that (track, gender) and NOTHING else — gender
+// resolution, variant collapsing, known-rank locking and the two-voice rule all
+// run exactly as they do without it. A voice with no voice_id is ignored, so a
+// half-filled dropdown can never blank a track.
+//
+// ⚠️ This choice lives ONLY in listening_pods.speakers. Re-running
+// tools/pod-sync.cjs on the pod's markdown re-casts from the pool and will
+// silently stomp a manual pick back to the pool default — re-apply the choice
+// in PodLab (or pass overrides here) after any re-sync.
+function normaliseOverrides(overrides) {
+  const out = { target: {}, known: {} };
+  if (!overrides || typeof overrides !== 'object') return out;
+  for (const track of ['target', 'known']) {
+    const t = overrides[track];
+    if (!t || typeof t !== 'object') continue;
+    for (const g of ['m', 'f']) {
+      const v = t[g];
+      if (!v || typeof v !== 'object' || !v.voice_id) continue;
+      const picked = { provider: v.provider || 'xai', voice_id: v.voice_id, name: v.name || v.voice_id };
+      // locale is carried only when the picker supplied one: pool entries have
+      // none, so a no-override cast stays byte-identical to today's.
+      if (v.locale) picked.locale = v.locale;
+      out[track][g] = picked;
+    }
+  }
+  return out;
+}
+
+// assignVoices = load the live pools, then resolve. The two halves are split so
+// that the resolution — the part with all the rules in it — can be tested
+// without a database (tools/pod-sync-cast-overrides.test.cjs). There is still
+// exactly ONE implementation of casting: this wrapper does nothing but fetch.
+async function assignVoices(rawSpeakers, targetLang, knownLang, overrides = null) {
+  const pools = await loadVoicePools();
+  return resolveCast(rawSpeakers, targetLang, knownLang, pools, overrides);
+}
+
+function resolveCast(rawSpeakers, targetLang, knownLang, pools, overrides = null) {
   // rawSpeakers: array of speaker-name strings as written in the markdown
   //   (e.g. ["Susjed (08:00)", "Susjed (M)", "Ana (F)", "Ana"]).
   //   Variants of the same character collapse to one canonical key.
+  // pools: app_config.pod_voice_pools, as loaded.
+  // overrides: manual voice choice, see normaliseOverrides above. Omit it and
+  //   this function behaves exactly as it always has.
   // returns: {
   //   [canonicalSpeaker]: {
   //     gender, target: { provider, voice_id, name }, known: { ... }
   //   }
   // }
-  const pools = await loadVoicePools();
+  const ov = normaliseOverrides(overrides);
   const tk = poolKeyFor(pools, targetLang);
   const kk = poolKeyFor(pools, knownLang);
   const targetPool = pools[tk] || { f: [], m: [] };
@@ -277,10 +336,13 @@ async function assignVoices(rawSpeakers, targetLang, knownLang) {
     const idx = counters[pickGender]++;
     const tPool = targetPool[pickGender] || [];
     const kPool = knownPool[pickGender] || [];
-    if (tPool.length === 0) {
+    // A manual override supplies the voice itself, so an empty pool is no
+    // longer a blocker for that gender — it is exactly how a language whose
+    // pool has only one gender gets cast as a two-hander by hand.
+    if (tPool.length === 0 && !ov.target[pickGender]) {
       throw new Error(`No target voice available: pod_voice_pools["${tk}"]["${pickGender}"] is empty (speaker "${canon}")`);
     }
-    if (kPool.length === 0) {
+    if (kPool.length === 0 && !ov.known[pickGender]) {
       throw new Error(`No known voice available: pod_voice_pools["${kk}"]["${pickGender}"] is empty (speaker "${canon}")`);
     }
     // Known voice rank is locked to target rank: characters who share a target
@@ -291,26 +353,30 @@ async function assignVoices(rawSpeakers, targetLang, knownLang) {
     // `idx` is confined to the first POD_VOICES_PER_GENDER entries of the pool
     // (1 by default → always index 0). Set POD_VOICES_PER_GENDER > 1 to get the
     // old round-robin across the full pool back.
-    const tIdx = (idx % Math.min(POD_VOICES_PER_GENDER, tPool.length));
-    const kIdx = tIdx % kPool.length;
+    const tIdx = tPool.length ? (idx % Math.min(POD_VOICES_PER_GENDER, tPool.length)) : 0;
+    const kIdx = kPool.length ? (tIdx % kPool.length) : 0;
     const t = tPool[tIdx];
     const k = kPool[kIdx];
     assignments[canon] = {
       gender,
       variants,
-      target: { provider: t.provider, voice_id: t.voice_id, name: t.name },
-      known:  { provider: k.provider, voice_id: k.voice_id, name: k.name },
+      // Cloned, never aliased: every speaker gets its own voice object, so the
+      // stored cast can be edited per speaker later without one edit moving all.
+      target: ov.target[pickGender] ? { ...ov.target[pickGender] } : { provider: t.provider, voice_id: t.voice_id, name: t.name },
+      known:  ov.known[pickGender]  ? { ...ov.known[pickGender] }  : { provider: k.provider, voice_id: k.voice_id, name: k.name },
     };
   }
 
   // _default for re-run safety (markdown adds a speaker between re-syncs).
-  const defT = (targetPool.m || [])[0];
-  const defK = (knownPool.m  || [])[0];
+  // It is the MALE slot, so a male override governs it too — otherwise a new
+  // speaker would arrive on the pool voice the manual choice replaced.
+  const defT = ov.target.m || (targetPool.m || [])[0];
+  const defK = ov.known.m  || (knownPool.m  || [])[0];
   if (defT && defK) {
     assignments._default = {
       gender: 'n',
-      target: { provider: defT.provider, voice_id: defT.voice_id, name: defT.name },
-      known:  { provider: defK.provider, voice_id: defK.voice_id, name: defK.name },
+      target: defT === ov.target.m ? { ...defT } : { provider: defT.provider, voice_id: defT.voice_id, name: defT.name },
+      known:  defK === ov.known.m  ? { ...defK } : { provider: defK.provider, voice_id: defK.voice_id, name: defK.name },
     };
   }
 
@@ -643,11 +709,11 @@ async function syncPod(markdownPath, options) {
     source_file: path.basename(markdownPath),
     updated_at: new Date().toISOString(),
   };
-  const { error: podErr } = await supabase.from('listening_pods').upsert(podRow, { onConflict: 'id' });
+  const { error: podErr } = await db().from('listening_pods').upsert(podRow, { onConflict: 'id' });
   if (podErr) throw new Error(`Pod upsert failed: ${podErr.message}`);
 
   // 2. Wipe + reinsert sentences (wholesale replace semantics on re-sync)
-  const { error: delErr } = await supabase.from('listening_pod_sentences').delete().eq('pod_id', podId);
+  const { error: delErr } = await db().from('listening_pod_sentences').delete().eq('pod_id', podId);
   if (delErr) throw new Error(`Sentence delete failed: ${delErr.message}`);
 
   const sentenceRows = [];
@@ -675,7 +741,7 @@ async function syncPod(markdownPath, options) {
   const CHUNK = 500;
   for (let i = 0; i < sentenceRows.length; i += CHUNK) {
     const batch = sentenceRows.slice(i, i + CHUNK);
-    const { error: insErr } = await supabase.from('listening_pod_sentences').insert(batch);
+    const { error: insErr } = await db().from('listening_pod_sentences').insert(batch);
     if (insErr) throw new Error(`Sentence insert failed (batch ${i / CHUNK}): ${insErr.message}`);
   }
 
@@ -756,7 +822,7 @@ Examples:
 if (require.main === module) main();
 
 module.exports = {
-  parseMarkdown, syncPod, assignVoices,
+  parseMarkdown, syncPod, assignVoices, resolveCast,
   canonicalSpeakerName, extractGenderMarker, inferGenderFromName,
-  loadVoicePools,
+  loadVoicePools, poolKeyFor, normaliseOverrides,
 };

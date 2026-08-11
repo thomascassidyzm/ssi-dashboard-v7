@@ -418,10 +418,30 @@ async function stageTtsInproc(course) {
   }
   stageLog(course, 'tts', `voice approval OK: cast ${gate.live_fingerprint}, approved by ${gate.approval.approved_by}`)
 
-  const { generatePodAudio } = getPhase8()
+  const phase8 = getPhase8()
+  const { generatePodAudio } = phase8
   const ctx = await getCourseContext(course)
   const pod = await loadPod0WithSentences(course)
   const roles = ['target', 'known']
+
+  // CROSS-COURSE CANON REUSE (Tom, 2026-08-11). Same proof the /generate-pods
+  // endpoint builds: the set of this pod's lines that are byte-identical
+  // canonical pod-0 English, and only when the pod is aligned end to end. A line
+  // in that set may point at a sibling course's identical clip instead of paying
+  // to render it again. Unavailable canon costs reuse, never correctness.
+  let canonTexts = null
+  try {
+    const englishCol = phase8.englishColumnFor(ctx)
+    if (englishCol) {
+      canonTexts = phase8.podCanonReuseTexts(await phase8.loadPod0Canon(), pod.sentences, englishCol)
+    }
+    stageLog(course, 'tts', canonTexts
+      ? `canon reuse: ${canonTexts.size} shareable canon line(s) — sibling-course clips are eligible`
+      : 'canon reuse: pod not aligned to canon — course-scoped matching only')
+  } catch (e) {
+    stageLog(course, 'tts', `canon reuse unavailable (${e.message}) — course-scoped matching only`)
+    canonTexts = null
+  }
 
   const workQueue = []
   for (const s of pod.sentences) {
@@ -449,7 +469,7 @@ async function stageTtsInproc(course) {
       try {
         const result = await generatePodAudio({
           courseCode: course, text: item.text, language: item.language, role: item.role,
-          voice: item.voice, ctx, track: item.kind, sentenceId: item.sentence_id,
+          voice: item.voice, ctx, track: item.kind, sentenceId: item.sentence_id, canonTexts,
         })
         const { error: linkErr } = await supabase
           .from('listening_pod_sentences').update({ [item.link_column]: result.id }).eq('id', item.sentence_id)

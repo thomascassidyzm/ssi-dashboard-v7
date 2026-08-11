@@ -90,8 +90,27 @@ function exactColourTwoVoices(nodes, adj, pool, genderOf, weights) {
     }
   }
 
+  // Gender realism is the THIRD objective, never the first two: among cuts that
+  // are already optimal on the ear metrics, prefer the one that puts female
+  // characters on the female voice. Tom's ruling makes conversational
+  // distinctness the hard restriction and accepts that a two-voice cast will
+  // sometimes voice a character against their gender ("one voice can work well
+  // enough for all the different characters"), so this only ever picks between
+  // ties — it can never cost a single adjacent turn.
+  const fSide = nodes.map(sp => genderOf(sp) === 'f')
+  const mSide = nodes.map(sp => genderOf(sp) === 'm')
+  const genderCost = (mask, femaleSide) => {
+    let bad = 0
+    for (let i = 0; i < nodes.length; i++) {
+      const side = (mask >> i) & 1
+      if (fSide[i] && side !== femaleSide) bad++
+      if (mSide[i] && side === femaleSide) bad++
+    }
+    return bad
+  }
+
   const n = nodes.length
-  let bestMask = 0, bestTurns = Infinity, bestCo = Infinity
+  let bestMask = 0, bestTurns = Infinity, bestCo = Infinity, bestGender = Infinity
   // Fix node 0 to side 0 (symmetry halves the space): iterate masks over nodes 1..n-1.
   const limit = 1 << (n - 1)
   for (let m = 0; m < limit; m++) {
@@ -105,7 +124,15 @@ function exactColourTwoVoices(nodes, adj, pool, genderOf, weights) {
     for (const [i, j] of coPairs) {
       if (((mask >> i) & 1) === ((mask >> j) & 1)) co++
     }
-    if (turns < bestTurns || co < bestCo) { bestMask = mask; bestTurns = turns; bestCo = co }
+    if (turns === bestTurns && co > bestCo) continue
+    // The female voice goes to whichever side carries more female speakers, so
+    // score this cut's gender cost under its own best orientation.
+    let f0 = 0, f1 = 0
+    for (let i = 0; i < n; i++) if (fSide[i]) (((mask >> i) & 1) === 0 ? f0++ : f1++)
+    const gender = genderCost(mask, f0 >= f1 ? 0 : 1)
+    if (turns < bestTurns || co < bestCo || gender < bestGender) {
+      bestMask = mask; bestTurns = turns; bestCo = co; bestGender = gender
+    }
   }
 
   // Side → voice: put the female voice on the side with more 'f' speakers.
@@ -190,6 +217,38 @@ function colourTrack(speakers, adj, pool, genderOf, weights) {
 }
 
 /**
+ * Trim a voice pool to the first N voices per gender, preserving pool order.
+ *
+ * THE POD-0 CASTING RULE (Tom, 2026-08-08: "of course cast by speaker").
+ * Pod 0 runs on exactly TWO voices — one male, one female — and casting is BY
+ * SPEAKER, never by line position: each character is assigned a voice and keeps
+ * it for every line they speak, including consecutive ones. A third or later
+ * character in a scene recycles a voice that is already in play. Strict
+ * line-by-line alternation is explicitly rejected, because it splits a single
+ * speaker across two voices the moment they have two lines in a row.
+ *
+ * `voicesPerGender = 1` IS that rule (1 F + 1 M = the two-voice cast). Pool
+ * depth is parked, not deleted: raise N for pod 1/2, where more voices are
+ * wanted. Mirrors POD_VOICES_PER_GENDER in tools/pod-sync.cjs and
+ * DEFAULT_POD_VOICES in services/voice-engine/pods-cast.cjs — same rule, three
+ * entry points, one meaning.
+ *
+ * The voice PAIR is a parameter, never hardcoded: whatever the caller's pool
+ * resolves to for its language is what the two voices are. Nothing here is
+ * course-specific.
+ *
+ *   pool: { f:[voice], m:[voice], ...rest }  → same shape, trimmed
+ */
+function trimPoolPerGender(pool, voicesPerGender) {
+  const n = Math.max(1, parseInt(voicesPerGender, 10) || 1)
+  return {
+    ...pool,
+    f: (pool.f || []).slice(0, n),
+    m: (pool.m || []).slice(0, n),
+  }
+}
+
+/**
  * Full assignment for a pod.
  *   scenes:     Array<Array<canonicalSpeaker>>
  *   speakers:   canonical speaker list (nodes; pass all distinct speakers)
@@ -253,4 +312,7 @@ function countAdjacentCollisions(weights, voiceOf) {
   return { pairs, turns }
 }
 
-module.exports = { buildAdjacency, buildTurnWeights, countAdjacentCollisions, colourTrack, assignVoicesColoured }
+module.exports = {
+  buildAdjacency, buildTurnWeights, countAdjacentCollisions, colourTrack,
+  assignVoicesColoured, trimPoolPerGender,
+}

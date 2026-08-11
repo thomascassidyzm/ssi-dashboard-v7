@@ -65,6 +65,45 @@ const CASTING = {
   gate: { ok: false, reason: 'no_approval' },
 }
 
+// GET /api/pod-cast-voices — the curated pool for the course's target language.
+// eng_for_guj's target is ENGLISH, so this is the English pool, and the five
+// zh-steered voices the pod is actually cast on are in none of it. That is the
+// case the picker exists for.
+const POOLS = {
+  course_code: 'eng_for_guj',
+  target_lang: 'eng',
+  known_lang: 'guj',
+  target: {
+    pool_key: 'eng',
+    exists: true,
+    pool: {
+      f: [{ name: 'Olivia', provider: 'xai', voice_id: 'bedd6226' }, { name: 'Sonia', provider: 'azure', voice_id: 'en-GB-SoniaNeural' }],
+      m: [{ name: 'Tom', provider: 'xai', voice_id: 'gfzdpspr5fdp' }, { name: 'Ryan', provider: 'azure', voice_id: 'en-GB-RyanNeural' }],
+    },
+  },
+  known: { pool_key: 'guj', exists: true, pool: { f: [], m: [] } },
+  sibling_keys: [],
+}
+// POST /api/pod-cast-voices — what the route answers after writing the cast.
+// `ok` is asserted by the page: an unrouted /api/* on Vercel answers 200 with
+// the SPA's HTML, which parses to {} and would otherwise read as success.
+const APPLIED = {
+  ok: true,
+  course_code: 'eng_for_guj',
+  pods: [{ pod_id: 'eng_for_guj:pod-0', speakers: 22 }],
+  cast_fingerprint: 'newfingerprint00',
+  gate: { ok: false, reason: 'fingerprint_mismatch' },
+  audio_touched: false,
+}
+const DISCOVERED = {
+  success: true,
+  provider: 'xai',
+  voices: [
+    { id: 'disc_f', name: 'Discovered F', gender: 'female', locale: 'en' },
+    { id: 'disc_m', name: 'Discovered M', gender: 'male', locale: 'en' },
+  ],
+}
+
 async function mountLab() {
   const PodLab = (await import('./PodLab.vue')).default
   const wrapper = mount(PodLab, {
@@ -95,11 +134,22 @@ describe('PodLab casting mode', () => {
   beforeEach(() => {
     AUDIO_ROWS = ON_CAST_AUDIO
     global.fetch = vi.fn(async (url) => {
-      if (String(url).startsWith('/api/pod-voice-approval')) {
+      const u = String(url)
+      if (u.startsWith('/api/pod-voice-approval')) {
         return { ok: true, json: async () => CASTING }
+      }
+      if (u.includes('/api/pod-cast-voices')) {
+        return { ok: true, json: async () => (u === '/api/pod-cast-voices' ? APPLIED : POOLS) }
+      }
+      if (u.includes('/api/voices/discover/')) {
+        return { ok: true, json: async () => DISCOVERED }
+      }
+      if (u.includes('/api/voices/preview')) {
+        return { ok: true, json: async () => ({ success: true, audio: 'data:audio/mpeg;base64,AAA' }) }
       }
       return { ok: true, json: async () => ({ rows: [] }) }
     })
+    window.confirm = vi.fn(() => true)
     global.Audio = class {
       play() { setTimeout(() => this.onended && this.onended(), 0); return Promise.resolve() }
       pause() {}
@@ -212,6 +262,105 @@ describe('PodLab casting mode', () => {
     const w = await mountLab()
     expect(w.findAll('.samples.primary .sample-row').length).toBeGreaterThan(0)
     expect(w.findAll('.offcast .sample-row')).toHaveLength(0)
+  })
+
+  // MANUAL VOICE CHOICE (Tom, 2026-08-11, after rejecting the Spanish cast:
+  // "it's worth choosing the voices manually if there's only 2 of them").
+  // The load-bearing property is that opening the panel and changing nothing
+  // changes nothing — so both dropdowns must open on what is cast TODAY.
+  describe('the two voice dropdowns', () => {
+    it('offers exactly two slots, male and female', async () => {
+      const w = await mountLab()
+      const rows = w.findAll('.vpick-row')
+      expect(rows).toHaveLength(2)
+      expect(rows.map((r) => r.find('.vp-slot').text())).toEqual(['Male', 'Female'])
+      expect(w.findAll('.vpick-row select')).toHaveLength(2)
+      expect(w.findAll('.vpick-row .vp-play')).toHaveLength(2)
+    })
+
+    it('initialises to the voices the current cast uses for each gender', async () => {
+      const w = await mountLab()
+      const [male, female] = w.findAll('.vpick-row select')
+      // The fixture is a BROKEN five-voice cast — the case the picker exists
+      // for — so each slot opens on the voice carrying the most lines of that
+      // gender: Jian across the male labels, Xia across the female ones.
+      expect(male.element.value).toBe('xai|jpi39icg|zh')
+      expect(female.element.value).toBe('xai|33g9t0jl|zh')
+      // …and the option they are sitting on names itself as the current cast.
+      expect(male.find('option:checked').text()).toContain('cast now')
+    })
+
+    it('nothing to apply until the human actually moves a dropdown', async () => {
+      const w = await mountLab()
+      expect(w.find('.vp-apply').attributes('disabled')).toBeDefined()
+    })
+
+    it('marks a voice steered at the wrong language, and names the pool', async () => {
+      const w = await mountLab()
+      const opts = w.findAll('.vpick-row select option').map((o) => o.text())
+      // The cast's own zh voice on an English course — flagged in the row.
+      expect(opts.some((t) => t.includes('jpi39icg') && t.includes('WRONG LANGUAGE'))).toBe(true)
+      // The curated pool is offered, marked as the pool, and is not flagged.
+      const poolOpt = opts.find((t) => t.includes('gfzdpspr5fdp'))
+      expect(poolOpt).toContain('pool eng')
+      expect(poolOpt).not.toContain('WRONG LANGUAGE')
+      // The wider discovered inventory is there too, below the pool.
+      expect(opts.some((t) => t.includes('Discovered M'))).toBe(true)
+    })
+
+    it('previews the selected voice through the shared preview endpoint', async () => {
+      const w = await mountLab()
+      await w.findAll('.vpick-row .vp-play')[0].trigger('click')
+      await flushPromises()
+      const call = global.fetch.mock.calls.find((c) => String(c[0]).includes('/api/voices/preview'))
+      expect(call).toBeTruthy()
+      const body = JSON.parse(call[1].body)
+      expect(body.voiceId).toBe('jpi39icg')
+      expect(body.provider).toBe('xai')
+      expect(body.text.length).toBeGreaterThan(0)
+    })
+
+    it('applies the chosen pair to the CURRENT pod, casting only', async () => {
+      const w = await mountLab()
+      const [male, female] = w.findAll('.vpick-row select')
+      await male.setValue('xai|gfzdpspr5fdp|en')
+      await female.setValue('xai|bedd6226|en')
+      expect(w.find('.vp-apply').attributes('disabled')).toBeUndefined()
+
+      await w.find('.vp-apply').trigger('click')
+      await flushPromises()
+
+      const post = global.fetch.mock.calls.find(
+        (c) => String(c[0]) === '/api/pod-cast-voices' && c[1] && c[1].method === 'POST',
+      )
+      expect(post).toBeTruthy()
+      expect(post[1].headers.Authorization).toBe('Bearer tok')
+      const body = JSON.parse(post[1].body)
+      expect(body).toMatchObject({
+        course_code: 'eng_for_guj',
+        pod_id: 'eng_for_guj:pod-0',
+        cast_fingerprint: 'abc1234567890def',
+      })
+      expect(body.target.m).toMatchObject({ provider: 'xai', voice_id: 'gfzdpspr5fdp' })
+      expect(body.target.f).toMatchObject({ provider: 'xai', voice_id: 'bedd6226' })
+      // Casting only: the apply never reaches the audio-generation endpoint.
+      expect(global.fetch.mock.calls.some((c) => String(c[0]).includes('generate-audio'))).toBe(false)
+      // The new fingerprint and the re-locked gate are stated, not implied.
+      expect(w.text()).toContain('newfingerprint00')
+      expect(w.text()).toMatch(/generation is locked until you approve this cast/)
+    })
+
+    it('does not report success when the route is not deployed', async () => {
+      // An unrouted /api/* on Vercel falls through to the SPA: 200, HTML body,
+      // which parses to {}. Reading that as "applied" would tell Tom a cast was
+      // written when nothing was.
+      const w = await mountLab()
+      global.fetch.mockImplementation(async () => ({ ok: true, json: async () => ({}) }))
+      await w.findAll('.vpick-row select')[0].setValue('xai|gfzdpspr5fdp|en')
+      await w.find('.vp-apply').trigger('click')
+      await flushPromises()
+      expect(w.text()).toMatch(/Failed: the endpoint did not confirm a write/)
+    })
   })
 
   it('POSTs the approval with the fingerprint it rendered', async () => {
