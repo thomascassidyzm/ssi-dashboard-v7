@@ -83,10 +83,14 @@ async function azureCatalogue() {
  * `voices` — the column tools/xai-voice-metadata-sync.cjs fills from
  * GET /v1/tts/voices/{id}. A NULL gender is simply absent from the map, so an
  * unknown voice stays unverifiable rather than becoming a guess.
+ *
+ * `metadata_source` comes with it because not every answer is the provider's:
+ * a cloned voice (Tom's own, eng.m[0]) is known by provenance instead, and the
+ * report says so rather than counting it as provider-verified.
  */
 async function xaiCatalogue() {
   const { data, error } = await db()
-    .from('voices').select('voice_id,gender,tts_locale,languages')
+    .from('voices').select('voice_id,gender,tts_locale,languages,metadata_source')
     .eq('tts_engine', 'xai').not('gender', 'is', null)
   if (error) throw new Error(`load xai voices: ${error.message}`)
   return new Map(data.map(v => [v.voice_id, v]))
@@ -112,6 +116,7 @@ function audit(pools, catalogue, xai = null) {
             ...base,
             verdict: x.gender === slot ? 'ok' : 'mismatch',
             catalogue_gender: x.gender,
+            gender_source: x.metadata_source || null,
             locale: x.tts_locale || (x.languages || [])[0] || null,
           })
         }
@@ -168,9 +173,12 @@ async function run() {
   const mismatches = rows.filter(r => r.verdict === 'mismatch')
   const absent = rows.filter(r => r.verdict === 'absent')
   const unverifiable = rows.filter(r => r.verdict === 'unverifiable')
-  const counts = { pools: Object.keys(before).length, entries: rows.length, ok: rows.filter(r => r.verdict === 'ok').length, mismatch: mismatches.length, absent: absent.length, unverifiable: unverifiable.length }
+  const ok = rows.filter(r => r.verdict === 'ok')
+  const humanKnown = ok.filter(r => /^human/.test(r.gender_source || ''))
+  const counts = { pools: Object.keys(before).length, entries: rows.length, ok: ok.length, ok_human_known: humanKnown.length, mismatch: mismatches.length, absent: absent.length, unverifiable: unverifiable.length }
 
-  console.log(`${counts.pools} pools, ${counts.entries} entries: ${counts.ok} provider-verified ok, ${counts.mismatch} mismatched, ${counts.absent} not in the provider's catalogue, ${counts.unverifiable} with no provider-stated gender\n`)
+  console.log(`${counts.pools} pools, ${counts.entries} entries: ${counts.ok - counts.ok_human_known} provider-verified ok, ${counts.ok_human_known} ok on human knowledge, ${counts.mismatch} mismatched, ${counts.absent} not in the provider's catalogue, ${counts.unverifiable} with no provider-stated gender\n`)
+  for (const h of humanKnown) console.log(`HUMAN-KNOWN ${h.pool}.${h.slot}[${h.index}]  ${h.name} (${h.provider}:${h.voice_id}) — ${h.gender_source}`)
   for (const m of mismatches) {
     console.log(`MISMATCH ${m.pool}.${m.slot}[${m.index}]  ${m.name} (${m.provider}:${m.voice_id})  — ${m.provider} says ${m.catalogue_gender === 'f' ? 'Female' : 'Male'}, pool says ${m.slot === 'f' ? 'female' : 'male'}`)
   }

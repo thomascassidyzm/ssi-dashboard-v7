@@ -1,13 +1,14 @@
 {
-  "ran_at": "2026-08-11T23:50:35.984Z",
+  "ran_at": "2026-08-11T23:56:01.349Z",
   "mode": "audit",
   "counts": {
     "pools": 46,
     "entries": 145,
-    "ok": 144,
+    "ok": 145,
+    "ok_human_known": 1,
     "mismatch": 0,
     "absent": 0,
-    "unverifiable": 1
+    "unverifiable": 0
   },
   "rows": [
     {
@@ -19,6 +20,7 @@
       "name": "Yasmin",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "ar"
     },
     {
@@ -41,6 +43,7 @@
       "name": "Youssef",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "ar"
     },
     {
@@ -52,6 +55,7 @@
       "name": "Omar",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "ar"
     },
     {
@@ -118,6 +122,7 @@
       "name": "Mireia",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "ca-ES"
     },
     {
@@ -129,6 +134,7 @@
       "name": "Nuria",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "ca-ES"
     },
     {
@@ -151,6 +157,7 @@
       "name": "Jordi",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "ca-ES"
     },
     {
@@ -162,6 +169,7 @@
       "name": "Pol",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "ca-ES"
     },
     {
@@ -184,6 +192,7 @@
       "name": "Astrid",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "da-DK"
     },
     {
@@ -195,6 +204,7 @@
       "name": "Freja",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "da-DK"
     },
     {
@@ -217,6 +227,7 @@
       "name": "Mads",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "da-DK"
     },
     {
@@ -228,6 +239,7 @@
       "name": "Lucas",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "da-DK"
     },
     {
@@ -250,6 +262,7 @@
       "name": "Sonja",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "de"
     },
     {
@@ -272,6 +285,7 @@
       "name": "Felix",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "de"
     },
     {
@@ -316,6 +330,7 @@
       "name": "Olivia",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "en-GB"
     },
     {
@@ -369,8 +384,10 @@
       "provider": "xai",
       "voice_id": "gfzdpspr5fdp",
       "name": "Tom",
-      "verdict": "unverifiable",
-      "catalogue_gender": null
+      "verdict": "ok",
+      "catalogue_gender": "m",
+      "gender_source": "human-known: Tom's own voice clone (en-GB male); xAI clone id, absent from the by-id catalogue",
+      "locale": "en-GB"
     },
     {
       "pool": "eng",
@@ -381,6 +398,7 @@
       "name": "Henry",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "en-GB"
     },
     {
@@ -601,6 +619,7 @@
       "name": "Priya",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "hi"
     },
     {
@@ -612,6 +631,7 @@
       "name": "Diya",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "hi"
     },
     {
@@ -634,6 +654,7 @@
       "name": "Vihaan",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "hi"
     },
     {
@@ -722,6 +743,7 @@
       "name": "Giulia",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "it"
     },
     {
@@ -744,6 +766,7 @@
       "name": "Leon",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "it"
     },
     {
@@ -755,6 +778,7 @@
       "name": "Marco",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "it"
     },
     {
@@ -810,6 +834,7 @@
       "name": "Hyun-woo",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "ko"
     },
     {
@@ -898,6 +923,7 @@
       "name": "Lieke",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "nl-NL"
     },
     {
@@ -909,6 +935,7 @@
       "name": "Sophie",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "nl-NL"
     },
     {
@@ -931,6 +958,7 @@
       "name": "Bas",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "nl-NL"
     },
     {
@@ -942,6 +970,7 @@
       "name": "Daan",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "nl-NL"
     },
     {
@@ -1008,6 +1037,7 @@
       "name": "Magdalena",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "pl-PL"
     },
     {
@@ -1019,6 +1049,7 @@
       "name": "Zofia",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "pl-PL"
     },
     {
@@ -1041,6 +1072,7 @@
       "name": "Tomasz",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "pl-PL"
     },
     {
@@ -1052,6 +1084,7 @@
       "name": "Piotr",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "pl-PL"
     },
     {
@@ -1151,6 +1184,7 @@
       "name": "Maria",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "es"
     },
     {
@@ -1162,6 +1196,7 @@
       "name": "Lucia",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "es"
     },
     {
@@ -1184,6 +1219,7 @@
       "name": "Pablo",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "es"
     },
     {
@@ -1195,6 +1231,7 @@
       "name": "Carlos",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "es"
     },
     {
@@ -1228,6 +1265,7 @@
       "name": "Alice",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "sv-SE"
     },
     {
@@ -1239,6 +1277,7 @@
       "name": "Elsa",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "sv-SE"
     },
     {
@@ -1261,6 +1300,7 @@
       "name": "Oscar",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "sv-SE"
     },
     {
@@ -1272,6 +1312,7 @@
       "name": "William",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "sv-SE"
     },
     {
@@ -1316,6 +1357,7 @@
       "name": "Nicha",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "th-TH"
     },
     {
@@ -1327,6 +1369,7 @@
       "name": "Pim",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "th-TH"
     },
     {
@@ -1349,6 +1392,7 @@
       "name": "Somchai",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "th-TH"
     },
     {
@@ -1360,6 +1404,7 @@
       "name": "Thanawat",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "th-TH"
     },
     {
@@ -1393,6 +1438,7 @@
       "name": "Ahmet",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "tr"
     },
     {
@@ -1459,6 +1505,7 @@
       "name": "Hui",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "zh"
     },
     {
@@ -1470,6 +1517,7 @@
       "name": "Mei",
       "verdict": "ok",
       "catalogue_gender": "f",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "zh"
     },
     {
@@ -1492,6 +1540,7 @@
       "name": "Wei",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "zh"
     },
     {
@@ -1503,6 +1552,7 @@
       "name": "Yang",
       "verdict": "ok",
       "catalogue_gender": "m",
+      "gender_source": "xai:GET /v1/tts/voices/{id}",
       "locale": "zh"
     },
     {

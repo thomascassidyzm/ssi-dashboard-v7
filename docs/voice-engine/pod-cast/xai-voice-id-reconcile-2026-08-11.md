@@ -80,3 +80,30 @@ Corrected to the provider's word. None of the three is in the live 48 pool entri
 - `tools/xai-voice-metadata-sync.cjs` + `.test.cjs` — resolve by id, write `voices` (13 tests)
 - `tools/pod-voice-pool-gender-audit.cjs` + `.test.cjs` — now verifies xAI too (13 tests)
 - `docs/voice-engine/pod-cast/xai-voice-metadata-applied-log.json` — per-id log of every answer
+
+---
+
+## Follow-up, same night: the residual is recorded (Tom's go-ahead)
+
+`xai:gfzdpspr5fdp` now carries `gender='m'`, `age=NULL`, and
+`metadata_source="human-known: Tom's own voice clone (en-GB male); xAI clone id, absent from the by-id catalogue"`,
+written by `tools/tom-clone-voice-metadata.cjs --apply` — one UPDATE keyed on
+`voice_id`, asserted against the row's before-state, no provider call, no
+rendering, no listening pass. `age` stays NULL because nobody has stated one.
+
+The source string is deliberately not shaped like the sync tool's
+`xai:GET /v1/tts/voices/{id}`: this answer comes from provenance, not from the
+provider, and the two must stay distinguishable in the column. So the pool
+audit now reads `metadata_source` as well and reports the distinction instead
+of quietly folding it into its "provider-verified" count:
+
+```
+46 pools, 145 entries: 144 provider-verified ok, 1 ok on human knowledge, 0 mismatched, 0 absent, 0 with no provider-stated gender
+HUMAN-KNOWN eng.m[0]  Tom (xai:gfzdpspr5fdp) — human-known: Tom's own voice clone (en-GB male); …
+```
+
+Every entry in all 46 live pools now has a gender on record with its provenance
+attached. The Italian-coverage decision above is untouched and still open.
+
+- `tools/tom-clone-voice-metadata.cjs` + `.test.cjs` — the one-row write (6 tests)
+- `docs/voice-engine/pod-cast/tom-clone-voice-metadata-applied-log.json` — before/patch/after
