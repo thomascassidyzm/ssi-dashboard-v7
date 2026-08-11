@@ -90,7 +90,9 @@
 <script>
 const PAIRS_URL = 'pairs.json';
 const STORE_KEY = 'concat-listening-test-v1';
-const API_PATHS = ['/api/production/concat-listening-test/verdicts'];
+// Same-origin first (the standalone host in tools/concat-listening-test/serve.cjs),
+// then the dashboard API. Whichever is actually reachable takes the save.
+const API_PATHS = ['verdicts', '/api/production/concat-listening-test/verdicts'];
 
 let pairs = [];
 let state = null;      // { sessionId, listener, index, answers: {pairId: {...}} }

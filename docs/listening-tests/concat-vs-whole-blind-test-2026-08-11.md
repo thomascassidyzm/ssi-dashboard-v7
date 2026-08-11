@@ -2,7 +2,11 @@
 
 **For Kai.** Before committing to a "record every phrase in full" mode, judge by ear whether a phrase glued from separately-recorded pieces (the fast pass) actually sounds worse than the same phrase read in one continuous take.
 
-**Page:** `public/concat-listening-test/index.html` — open `/concat-listening-test/` on a phone.
+**Live now, on any phone:** <https://watson-1.tail4968cb.ts.net:8443/concat-listening-test/>
+
+Served by `tools/concat-listening-test/serve.cjs` (loopback :4788), path-mounted on the funnel that was already public on :8443. Nothing else on the box changed. To take it down: `tailscale funnel --https=8443 --set-path=/concat-listening-test off` and stop the node process.
+
+Once this branch is merged and the dashboard deploys, the same page ships as a static asset at `/concat-listening-test/` and the standalone host is no longer needed.
 
 ---
 
