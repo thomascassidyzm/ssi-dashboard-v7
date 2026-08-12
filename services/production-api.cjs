@@ -4300,22 +4300,32 @@ app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
   try {
     const { courseCode, uuid } = req.params
 
-    // Accept s3Key from query param (e.g. for intro audio where we already know the path)
-    let s3Key = req.query.s3Key || null
+    // The DB is authoritative for a clip's s3_key, and a caller's copy of it is
+    // not. A regen keeps the ROW ID stable and writes a NEW s3_key (see the
+    // /audio/:uuid/stream block above), so a page that loaded before the regen
+    // holds a key pointing at the PRE-REGEN object — which is still on S3,
+    // because make-before-break never deletes it. Trusting that key served the
+    // old take back for ever and read as "my regenerated audio reverted"
+    // (Deborah, eus_for_eng, 2026-08-12). Same failure the /stream endpoint was
+    // built to kill on 2026-08-07; it survived here because this endpoint let
+    // the client win. The query param is now only a fallback for a clip with no
+    // row (legacy paths), never an override of one that has.
+    let s3Key = null
 
-    // If no s3Key provided, try to look it up from course_audio
-    if (!s3Key && supabaseClient.isInitialized()) {
+    if (supabaseClient.isInitialized()) {
       const supabase = supabaseClient.getClient()
       const { data: audioData } = await supabase
         .from('course_audio')
         .select('s3_key')
         .eq('id', uuid)
-        .single()
+        .maybeSingle()
 
       if (audioData?.s3_key) {
         s3Key = audioData.s3_key
       }
     }
+
+    if (!s3Key) s3Key = req.query.s3Key || null
 
     // Generate signed URL (uses s3_key if available, otherwise legacy path)
     const url = await s3Service.getAudioSignedUrl(uuid, 3600, { s3Key })
