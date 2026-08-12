@@ -180,13 +180,26 @@ module.exports = function createSeedTranslateRoutes(ctx) {
           duplicateLegos.push(targetLego.id);
         }
 
-        // Translate components if M-type
+        // Translate components if M-type. Match each component to its
+        // translation BY TARGET TEXT, never by array index: the translator
+        // returns entries keyed to the target chunk they gloss, and nothing
+        // guarantees it preserves the source array's order. Index-pasting
+        // silently inverts every pair where the two orders disagree — which
+        // is precisely what a word-order-divergent pair does. The phrase-row
+        // path 30 lines below already matches by target_text; this is the
+        // same lookup.
+        //
+        // Fallback when no translation matches: leave `known` as the source
+        // course's gloss rather than substituting the TARGET string, which
+        // would put target-language text in the known-language field.
         let components = targetLego.components;
         if (components && lt.component_translations) {
-          components = components.map((comp, i) => ({
-            ...comp,
-            known: lt.component_translations[i]?.known_text || comp.target,
-          }));
+          components = components.map((comp) => {
+            const match = lt.component_translations.find(
+              (c) => c?.target_text === comp.target
+            );
+            return match?.known_text ? { ...comp, known: match.known_text } : { ...comp };
+          });
         }
 
         const { error: legoError } = await ctx.supabase
