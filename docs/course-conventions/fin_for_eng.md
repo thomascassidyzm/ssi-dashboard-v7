@@ -153,6 +153,13 @@ One-to-one, course-wide. Breaking one of these is a ZUT defect:
 **Deliberate exceptions kept:** seeds 377, 510, 413, 534, 665 teach a general `mennä` form as their
 LEGO; seed 173 keeps "manage".
 
+**Verified live 2026-08-12 — these sweeps hold at ZERO violations in all three tables**, so a fix
+worker can trust them and need not re-check: begin/start · more (`enemmän`/`lisää`) ·
+earlier/sooner · `pärjätä` (no "getting on" left anywhere) · use/spend · the `tarvii` paradigm
+(no `tarvitset`/`tarvitsee`/`ei tarvi`) · `tää`/`tän` (no bare `tämä`/`tämän`) · `haluu` (no
+`haluaa`/`halua`) · the `fin`-substitution corruption · standard adjective stems (no `vaikee-`
+class; `nopeesti`/`oikeesti` are adverbs and correct). The three that still have residue are in C5.
+
 **`very`:** `tosi` for affirmative; `kovin` **only** negative, interrogative or down-toning.
 **`happy`:** `tyytyväinen` is **always relational** ("happy with/that X", carries `siihen`); bare or
 "so" happy → `onnellinen`. (`onnellinen` singular debuts late at S129, which is why earlier
@@ -225,6 +232,47 @@ carry the formality lexically?**
 **C4 — `-ko/-kö` carries yes/no questions**, 688 of 951 question rows; the remaining 263 are
 wh-questions in normal word order, not a rival construction. Consistent with the recorded
 "prefer `onko`/`-ko`/`-tko`" rule; recorded here only because the *proportion* has never been stated.
+
+**C5 — every sweep residue in this course sits in a `component` row. This is the sharpest finding
+here, and it needs a ruling.** Three independent sweeps were re-run against the live course. Each is
+**clean at zero in `build` and `use`**, and each has leftovers **only** in components:
+
+| sweep | build | use | **component** | the leftover rows |
+|---|---|---|---|---|
+| possessive → `mun/sun` | 0 | 0 | **1** | `S0513L02C02` |
+| bare "how" → `miten` | 0 | 0 | **3** | `S0033L01C01`, `S0420L02C01`, `S0470L01C01` |
+| come → come back | 0 | 0 | **2** | `S0016L03C01`, `S0168L03C01` |
+
+Sometimes that is deliberate — the logs explicitly left the `kovin`/`tosi` atoms alone. But at
+seed 513 it has produced a component that **contradicts all eight of its own siblings**:
+
+| seed 513, same LEGO | English | Finnish |
+|---|---|---|
+| B01 / B02 / B03 / B04 | I move **my head** | `mä liikutan **mun päätä**` |
+| U01 / U02 / U03 | it hurts when I move **my head** | `…kun mä liikutan **mun päätä**` |
+| **C02** *(component)* | **my head** | **`päätäni`** ← the old form, missed |
+
+**Kai: is a component that disagrees with every sibling a defect, or does "components are never
+drilled bare" make it harmless?** The answer decides whether these six rows are work or noise — and
+whether future sweeps must include components by default.
+
+**C6 — "go" in the departure sense takes `lähteä`, and only in seed text.** Four seeds gloss `lähteä`
+as "go" outside the recorded `go home` / `go out` idioms. Phrases and LEGOs are clean at zero. All
+four are *departure* rather than motion-toward, so `lähteä` looks right and the English can't be
+touched (B4) — this may simply be a third legitimate sense to record rather than a fault:
+
+| seed | English | Finnish |
+|---|---|---|
+| 93 | it's time **to go** now | `Nyt on aika lähteä` |
+| 97 | I'm ready **to go** as soon as you want | `mä oon valmis lähtemään, heti kun sä haluut` |
+| 26 | I'm nearly ready **to go** | `mä oon melkein valmis lähtemään` |
+| 650 | do you want **to go** madam? | `Haluatteko te lähteä, rouva?` |
+
+A second cluster of ~14 rows is **"come and help" / "come with us"** — purposive motion, structurally
+the same shape as the recorded `come home` exception but not on the exclusion list (e.g. seed 168
+"I'll be able to come and help" → `pystyn tulemaan auttamaan`). Note the logs already single out
+`S0168L02` as left bare because tiling forbids renaming it, and say **Kai may want a native check on
+that one**. Ruling wanted: is "come and X" a third exception?
 
 ---
 
