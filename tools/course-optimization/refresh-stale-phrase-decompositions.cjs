@@ -83,6 +83,24 @@ if (!ALL && !ONE_COURSE && !UNDO) {
 }
 
 const norm = (s) => (s || '').toLowerCase().replace(/\s+/g, ' ').trim();
+
+/**
+ * Compare decompositions by CONTENT, never by raw JSON.stringify.
+ *
+ * `decomposition` is jsonb, and jsonb normalises object key order on write
+ * (shortest key first, then bytewise). A value read back from the DB therefore
+ * stringifies in a different key order than the in-memory object that was
+ * written, even when the two are identical. Strict stringify comparison made
+ * --undo skip every row it had itself applied as SKIP_NOT_OURS: verified on the
+ * eus_for_eng applied log, 447/447 rows key-order-only mismatches, 0 genuinely
+ * different. Sorting keys at every level makes both sides canonical.
+ */
+const canon = (v) =>
+  JSON.stringify(v, (_k, val) =>
+    val && typeof val === 'object' && !Array.isArray(val)
+      ? Object.fromEntries(Object.keys(val).sort().map((k) => [k, val[k]]))
+      : val
+  );
 const legoIdOf = (seed, index) =>
   `S${String(seed).padStart(4, '0')}L${String(index).padStart(2, '0')}`;
 
@@ -204,7 +222,7 @@ async function refreshCourse(client, courseCode, log) {
     // fresh blocks are still stale (or identical to what is stored), writing
     // buys nothing — log and move on rather than churn the row.
     const residual = staleBlocks(result.blocks, legoById);
-    const unchanged = JSON.stringify(result.blocks) === JSON.stringify(p.decomposition);
+    const unchanged = canon(result.blocks) === canon(p.decomposition);
     if (residual.length > 0 || unchanged) {
       summary.skipped_no_improvement++;
       log.rows.push({
@@ -238,7 +256,7 @@ async function refreshCourse(client, courseCode, log) {
       'SELECT decomposition FROM course_practice_phrases WHERE id = $1',
       [p.id]
     );
-    if (!live.length || JSON.stringify(live[0].decomposition) !== JSON.stringify(p.decomposition)) {
+    if (!live.length || canon(live[0].decomposition) !== canon(p.decomposition)) {
       entry.status = 'ABORT_DRIFT';
       log.rows.push(entry);
       summary.aborted_drift++;
@@ -281,7 +299,7 @@ async function undoFromLog(client, logPath) {
     );
     // Only roll back what this tool actually wrote — if the row has moved on
     // since, someone else owns it now.
-    if (!live.length || JSON.stringify(live[0].decomposition) !== JSON.stringify(r.after)) {
+    if (!live.length || canon(live[0].decomposition) !== canon(r.after)) {
       out.rows.push({ id: r.id, status: 'SKIP_NOT_OURS' });
       drifted++;
       continue;
