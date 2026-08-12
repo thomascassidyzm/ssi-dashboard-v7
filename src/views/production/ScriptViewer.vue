@@ -255,6 +255,7 @@
           :is-loading="isLoadingJourney"
           :hide-controls="true"
           :flagged-phrase-ids="journeyFlaggedPhraseIds"
+          :can-edit-mapping="canEditMapping"
           @playback-state="onJourneyPlaybackState"
           @item-edit="onJourneyItemEdit"
           @presentation-edit="onJourneyPresentationEdit"
@@ -1008,6 +1009,10 @@ const learningJourneyData = ref<{
   totalLegoCount?: number;
 } | null>(null);
 const isLoadingJourney = ref(false);
+// Whether this user may re-pair a word mapping in the journey rows. Decided by
+// the API (editor/admin), not by the client; the client only uses it to avoid
+// offering a gesture that would be refused.
+const canEditMapping = ref(false);
 const journeyError = ref<string | null>(null);
 
 // Server-side pagination for journey view (20 LEGOs per page)
@@ -1534,14 +1539,12 @@ const loadLearningJourney = async (opts: { silent?: boolean } = {}) => {
   journeyError.value = null;
 
   try {
-    const apiBaseUrl = getApiBaseUrl();
-    const url = `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey?maxLegos=${journeyPageSize}&offset=${journeyOffset.value}${learnerAudioView.value ? '&learnerView=1' : ''}`;
-
-    const response = await fetch(url, {
-      headers: {
-        'ngrok-skip-browser-warning': 'true'
-      }
-    });
+    // Authed: the response now carries canEditMapping, which the API can only
+    // decide if it knows who is asking. The course-scope gate accepts this
+    // token on every other /api/production route already.
+    const response = await authedFetch(
+      `/api/production/${courseCode.value}/learning-journey?maxLegos=${journeyPageSize}&offset=${journeyOffset.value}${learnerAudioView.value ? '&learnerView=1' : ''}`
+    );
 
     if (!response.ok) throw new Error('Failed to load learning journey');
 
@@ -1552,6 +1555,8 @@ const loadLearningJourney = async (opts: { silent?: boolean } = {}) => {
       stats: data.stats || null,
       totalLegoCount: data.totalLegoCount || 0,
     };
+    // A reader still sees every mapping; only the re-pairing gesture is gated.
+    canEditMapping.value = !!data.canEditMapping;
 
     // Detect if there are more pages
     journeyHasMore.value = (data.pagination?.returned || 0) >= journeyPageSize;

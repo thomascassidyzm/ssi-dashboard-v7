@@ -255,14 +255,65 @@
                 R{{ item.reviewOf }}
               </div>
 
-              <!-- Content: known → target -->
+              <!-- Content: known → target, OR the word mapping in two lines.
+                   This is a FLIP, not an expansion (Tom, 2026-08-12: "I don't
+                   want to make the row deeper"). Both states occupy the same
+                   fixed height, so opening a mapping never moves the rows
+                   below it. -->
               <div class="item-content flex-1 min-w-0">
-                <div class="flex gap-4">
+                <!-- Two-line mapping: known words on top, target words below,
+                     each line in its own natural reading order. Paired chips
+                     light up together — that pairing is the whole point, and a
+                     crossed pair is what Deborah needs to be able to see. -->
+                <div
+                  v-if="isMappingOpen(round.roundNumber, idx)"
+                  class="mapping-stack flex flex-col justify-center"
+                  @click.stop
+                >
+                  <div class="mapping-line flex items-center gap-1 flex-nowrap overflow-x-auto">
+                    <button
+                      v-for="chip in mappingKnownChips(round.roundNumber, idx, item)"
+                      :key="`k${chip.block}`"
+                      type="button"
+                      class="mapping-chip mapping-chip-known"
+                      :class="chipClass(round.roundNumber, idx, chip.block, 'known')"
+                      :title="mappingChipTitle(round.roundNumber, idx, item, chip.block)"
+                      @click="onChipTap(round.roundNumber, idx, item, chip.block, 'known')"
+                      @mouseenter="hoverBlock = { row: rowKey(round.roundNumber, idx), block: chip.block }"
+                      @mouseleave="hoverBlock = null"
+                    >{{ chip.text }}</button>
+                  </div>
+                  <div class="mapping-line flex items-center gap-1 flex-nowrap overflow-x-auto">
+                    <button
+                      v-for="chip in mappingTargetChips(round.roundNumber, idx, item)"
+                      :key="`t${chip.block}`"
+                      type="button"
+                      class="mapping-chip mapping-chip-target"
+                      :class="chipClass(round.roundNumber, idx, chip.block, 'target')"
+                      :title="mappingChipTitle(round.roundNumber, idx, item, chip.block)"
+                      @click="onChipTap(round.roundNumber, idx, item, chip.block, 'target')"
+                      @mouseenter="hoverBlock = { row: rowKey(round.roundNumber, idx), block: chip.block }"
+                      @mouseleave="hoverBlock = null"
+                    >{{ chip.text }}</button>
+                  </div>
+                </div>
+                <!-- Normal one-line row -->
+                <div v-else class="flex gap-4 items-center mapping-oneline">
                   <span class="text-muted truncate flex-1">{{ item.known_text }}</span>
                   <span class="text-faint">&rarr;</span>
                   <span class="text-ink truncate flex-1">{{ item.target_text }}</span>
                 </div>
               </div>
+
+              <!-- Save feedback for a re-pairing. Plain sentences only — the
+                   reader is a course editor, not an engineer. -->
+              <span
+                v-if="mappingStatus(round.roundNumber, idx)"
+                class="mapping-status flex-shrink-0 text-xs px-2 py-0.5 rounded whitespace-nowrap"
+                :class="mappingStatus(round.roundNumber, idx)!.ok
+                  ? 'text-emerald-300 bg-emerald-900/30'
+                  : 'text-amber-200 bg-amber-900/40'"
+              >{{ mappingStatus(round.roundNumber, idx)!.message }}</span>
 
               <!-- Player-delivery flag, only where nothing else on the row says
                    it. Missing phrase audio already shows as a dropped play
@@ -277,6 +328,22 @@
 
               <!-- Edit & Flag Buttons -->
               <div class="edit-flags flex items-center gap-1 flex-shrink-0">
+                <!-- Check mapping — only on rows that HAVE a multi-part mapping
+                     to check ("when appropriate", Tom 2026-08-12). A row with
+                     one part gets no glyph at all rather than a dead one. -->
+                <button
+                  v-if="item.mapping"
+                  class="mapping-btn w-6 h-6 flex items-center justify-center rounded transition-colors"
+                  :class="isMappingOpen(round.roundNumber, idx)
+                    ? 'bg-sky-500 text-white'
+                    : 'text-faint hover:text-ink hover:bg-surface-3'"
+                  title="Check mapping"
+                  @click.stop="toggleMapping(round.roundNumber, idx)"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h6M14 6h6M4 18h6m4 0h6M10 6l4 12M14 6l-4 12" />
+                  </svg>
+                </button>
                 <!-- Pencil edit button — LEGO text (debut) is NOT editable; only phrases -->
                 <button
                   v-if="item.type !== 'debut'"
@@ -414,9 +481,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, nextTick, onMounted } from 'vue'
+import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import { useScriptPlayer } from '@/composables/useScriptPlayer'
 import { getApiUrl } from '@/services/api'
+import { useAuth } from '@/composables/useAuth.js'
 import { buildLearningAppUrl } from '@/utils/learningAppUrl'
 import { qaGate } from '@/services/qaGate'
 
@@ -425,6 +493,22 @@ import { qaGate } from '@/services/qaGate'
 // and pod laps are never played in the learner's main flow (Listening MODE
 // and the per-learner pod scheduler own those) so Script View no longer
 // projects them — see docs/voice-engine/script-divergence-report.md.
+// The known↔target word mapping a row can show. Two stores feed it and they
+// are NOT the same thing: a phrase row's stored per-chunk decomposition (what
+// the player renders under the target text, and therefore what a wrong gloss
+// reaches a learner through), or an M-LEGO's own component tiling.
+interface MappingBlock {
+  known: string
+  target: string
+  legoId: string | null
+  isGhost: boolean
+  isSalient: boolean
+}
+interface ItemMapping {
+  source: 'phrase' | 'lego'
+  blocks: MappingBlock[]
+}
+
 interface ScriptItem {
   roundNumber: number
   legoId: string
@@ -451,6 +535,8 @@ interface ScriptItem {
   playerCanDeliver?: boolean
   playerDropReason?: 'intro-audio' | 'debut-audio' | 'phrase-audio' | 'seed-audio'
   missingAudioRoles?: string[]
+  // Present only when there is genuinely more than one part to pair.
+  mapping?: ItemMapping | null
 }
 
 interface RoundData {
@@ -492,6 +578,10 @@ const props = defineProps<{
   isLoading?: boolean
   hideControls?: boolean
   flaggedPhraseIds?: Set<string>
+  // Whether THIS user may re-pair a mapping. A reader still sees the mapping;
+  // only the editing gesture is withheld. Server-side is the real gate — this
+  // just stops the UI offering something that would be refused.
+  canEditMapping?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -513,6 +603,202 @@ const emit = defineEmits<{
 // Default empty sets for optional props
 const emptySet = new Set<string>()
 const flaggedPhraseIds = computed(() => props.flaggedPhraseIds || emptySet)
+
+// ── Word mapping: check it on the row, and re-pair it there ────────────────
+// Deborah, reading Basque on 2026-08-12, saw `hitz bat` glossed with its two
+// words crossed and asked whether she could fix it herself. This is that.
+//
+// "Check mapping" flips the row's single line into two: known words on top,
+// target words below, each in its own natural reading order. The lines are NOT
+// re-ordered to make pairs line up — Basque puts its article after the noun, so
+// a correct mapping crosses too. What makes a WRONG pairing visible is that
+// tapping or hovering either partner lights up both, so the editor reads the
+// pairing directly instead of inferring it from position.
+//
+// Correcting one is tap-a-chip, tap-its-correct-partner. That is always a
+// straight swap of two chunks' glosses, which is why the write can be a pure
+// permutation and can leave every word of learner-facing text alone.
+
+const rowKey = (roundNumber: number, idx: number) => `${roundNumber}-${idx}`
+
+// Same authed-fetch shape ScriptViewer uses for its phrase edits.
+const { getAccessToken } = useAuth()
+const mappingFetch = async (path: string, init: RequestInit = {}) => {
+  const token = await getAccessToken()
+  const headers: Record<string, string> = {
+    'ngrok-skip-browser-warning': 'true',
+    'Content-Type': 'application/json',
+    ...((init.headers as Record<string, string>) || {}),
+  }
+  if (token) headers.Authorization = `Bearer ${token}`
+  return fetch(`${localStorage.getItem('api_base_url') || getApiUrl()}${path}`, { ...init, headers })
+}
+
+const openMappings = ref<Set<string>>(new Set())
+// The chip waiting for its partner: which row, which block, which line.
+const armedChip = ref<{ row: string; block: number; side: 'known' | 'target' } | null>(null)
+const hoverBlock = ref<{ row: string; block: number } | null>(null)
+// Per-row save feedback, in plain sentences.
+const mappingStatuses = ref<Map<string, { ok: boolean; message: string }>>(new Map())
+// Local overrides applied after a successful save, so the row shows the
+// correction immediately without a full journey refetch.
+const mappingOverrides = ref<Map<string, string[]>>(new Map())
+
+const isMappingOpen = (roundNumber: number, idx: number) =>
+  openMappings.value.has(rowKey(roundNumber, idx))
+
+const toggleMapping = (roundNumber: number, idx: number) => {
+  const key = rowKey(roundNumber, idx)
+  const next = new Set(openMappings.value)
+  if (next.has(key)) {
+    next.delete(key)
+    if (armedChip.value?.row === key) armedChip.value = null
+    mappingStatuses.value.delete(key)
+  } else {
+    next.add(key)
+  }
+  openMappings.value = next
+}
+
+const mappingStatus = (roundNumber: number, idx: number) =>
+  mappingStatuses.value.get(rowKey(roundNumber, idx)) || null
+
+// The glosses currently on the row — the stored ones, unless this row has been
+// re-paired since the page loaded.
+const currentKnowns = (roundNumber: number, idx: number, item: ScriptItem): string[] => {
+  const override = mappingOverrides.value.get(rowKey(roundNumber, idx))
+  if (override) return override
+  return (item.mapping?.blocks || []).map(b => b.known)
+}
+
+// The target line: stored block order, which IS the target's reading order.
+// A block with no gloss (an inserted particle the course does not teach on its
+// own) still gets a chip — an unpaired word must be visible, not hidden.
+const mappingTargetChips = (roundNumber: number, idx: number, item: ScriptItem) =>
+  (item.mapping?.blocks || [])
+    .map((b, block) => ({ block, text: b.target.trim() }))
+    .filter(c => c.text.length > 0)
+
+// The known line: ordered by where each gloss actually sits in the row's own
+// known text, so it reads as English reads. Blocks whose gloss cannot be found
+// there keep their stored rank — better a stable order than a confident wrong
+// one. Empty glosses produce no chip.
+const mappingKnownChips = (roundNumber: number, idx: number, item: ScriptItem) => {
+  const knowns = currentKnowns(roundNumber, idx, item)
+  const haystack = (item.known_text || '').toLowerCase()
+  const chips = knowns
+    .map((text, block) => ({ block, text: (text || '').trim() }))
+    .filter(c => c.text.length > 0)
+    .map(c => {
+      const at = haystack.indexOf(c.text.toLowerCase())
+      return { ...c, at: at === -1 ? Number.MAX_SAFE_INTEGER : at }
+    })
+  return chips
+    .slice()
+    .sort((a, b) => (a.at - b.at) || (a.block - b.block))
+    .map(({ block, text }) => ({ block, text }))
+}
+
+const chipClass = (
+  roundNumber: number, idx: number, block: number, side: 'known' | 'target',
+) => {
+  const key = rowKey(roundNumber, idx)
+  const armed = armedChip.value
+  const isArmed = !!armed && armed.row === key && armed.block === block && armed.side === side
+  // Both partners light together, on hover OR tap — this is the signal, and it
+  // must not depend on a pointer the touch user does not have.
+  const isPaired =
+    (!!armed && armed.row === key && armed.block === block) ||
+    (!!hoverBlock.value && hoverBlock.value.row === key && hoverBlock.value.block === block)
+  return {
+    'mapping-chip-armed': isArmed,
+    'mapping-chip-paired': isPaired && !isArmed,
+    // Never colour alone: the pair also gets an outline, so a crossed pair
+    // reads for someone who is not looking for it.
+    [`mapping-tint-${block % 6}`]: true,
+  }
+}
+
+const mappingChipTitle = (
+  roundNumber: number, idx: number, item: ScriptItem, block: number,
+) => {
+  const knowns = currentKnowns(roundNumber, idx, item)
+  const target = (item.mapping?.blocks?.[block]?.target || '').trim()
+  const known = (knowns[block] || '').trim()
+  if (!known) return `${target} — no English word is paired with this`
+  return `${known} = ${target}`
+}
+
+// Tap one chip to arm it, tap its correct partner on the OTHER line to swap.
+// Tapping the armed chip again disarms. Same-line taps re-arm rather than
+// swapping, so a stray tap costs nothing.
+const onChipTap = async (
+  roundNumber: number, idx: number, item: ScriptItem,
+  block: number, side: 'known' | 'target',
+) => {
+  const key = rowKey(roundNumber, idx)
+  if (!props.canEditMapping) return
+  const armed = armedChip.value
+
+  if (armed && armed.row === key && armed.block === block) { armedChip.value = null; return }
+  if (!armed || armed.row !== key || armed.side === side) {
+    armedChip.value = { row: key, block, side }
+    mappingStatuses.value.delete(key)
+    return
+  }
+
+  const from = armed.block
+  const to = block
+  armedChip.value = null
+  if (from === to) return
+
+  const knowns = currentKnowns(roundNumber, idx, item).slice()
+  const swapped = knowns.slice()
+  swapped[from] = knowns[to]
+  swapped[to] = knowns[from]
+
+  await saveMapping(key, item, swapped)
+}
+
+const saveMapping = async (key: string, item: ScriptItem, knowns: string[]) => {
+  const source = item.mapping?.source
+  const rowId = source === 'phrase' ? item.phrase_id : item.legoId
+  if (!source || !rowId) {
+    mappingStatuses.value.set(key, { ok: false, message: 'This row cannot be changed here.' })
+    return
+  }
+
+  mappingStatuses.value.set(key, { ok: true, message: 'Saving…' })
+  // Optimistic: the swap shows at once, and is rolled back if the save fails.
+  const previous = mappingOverrides.value.get(key)
+  mappingOverrides.value = new Map(mappingOverrides.value).set(key, knowns)
+
+  try {
+    const resp = await mappingFetch(
+      `/api/production/${props.courseCode}/mapping/${encodeURIComponent(rowId)}`,
+      { method: 'POST', body: JSON.stringify({ source, known: knowns }) },
+    )
+    // An unrouted /api path on this estate answers 200 with the SPA's HTML, so
+    // res.ok is not proof of a write — only a JSON body that echoes the saved
+    // blocks is. Anything else is treated as a failure.
+    const ct = resp.headers.get('content-type') || ''
+    const body = ct.includes('application/json') ? await resp.json().catch(() => null) : null
+    if (!resp.ok || !body?.success || !Array.isArray(body.blocks)) {
+      throw new Error(body?.error || 'The mapping could not be saved.')
+    }
+    mappingOverrides.value = new Map(mappingOverrides.value)
+      .set(key, body.blocks.map((b: MappingBlock) => b.known))
+    mappingStatuses.value = new Map(mappingStatuses.value)
+      .set(key, { ok: true, message: 'Saved' })
+  } catch (err: any) {
+    const rolled = new Map(mappingOverrides.value)
+    if (previous) rolled.set(key, previous); else rolled.delete(key)
+    mappingOverrides.value = rolled
+    mappingStatuses.value = new Map(mappingStatuses.value)
+      .set(key, { ok: false, message: err?.message || 'The mapping could not be saved.' })
+  }
+}
+
 
 // ── Player-delivery annotation ────────────────────────────────────────────
 // The Script Viewer always shows the FULL intended course. These helpers turn
@@ -595,6 +881,13 @@ async function loadQaStatus() {
 }
 onMounted(loadQaStatus)
 watch(() => props.courseCode, loadQaStatus)
+
+// Escape disarms a half-made re-pairing without closing the mapping.
+onMounted(() => {
+  const onEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') armedChip.value = null }
+  window.addEventListener('keydown', onEsc)
+  onUnmounted(() => window.removeEventListener('keydown', onEsc))
+})
 
 // Quick audition of a single voice track (F = target1, M = target2).
 const playingTrackUuid = ref<string | null>(null)
@@ -979,5 +1272,60 @@ const getItemBgClass = (item: ScriptItem): string => {
 :root[data-theme="light"] .stat-val-missing,
 :root[data-theme="light"] .audio-missing-icon {
   color: var(--accent); /* #a85508 amber/orange family, 5.4:1 on surface */
+}
+
+/* ── Word mapping ─────────────────────────────────────────────────────────
+   The two-line mapping must occupy EXACTLY the height of the single line it
+   replaces (Tom, 2026-08-12: "I don't want to make the row deeper"). Both
+   states are pinned to 1.5rem, so flipping a row never moves the rows below
+   it. Two 0.75rem lines fit inside that; anything longer scrolls sideways
+   rather than wrapping, because a wrap would grow the row. */
+.mapping-oneline,
+.mapping-stack {
+  height: 1.5rem;
+}
+
+.mapping-line {
+  height: 0.75rem;
+  line-height: 0.75rem;
+  scrollbar-width: none;
+}
+.mapping-line::-webkit-scrollbar { display: none; }
+
+.mapping-chip {
+  flex: 0 0 auto;
+  padding: 0 0.25rem;
+  font-size: 0.6875rem;
+  line-height: 0.75rem;
+  border-radius: 0.1875rem;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+.mapping-chip-target { font-weight: 600; }
+
+/* Pair tints. Deliberately subtle and deliberately NOT the only signal — the
+   highlight below carries an outline as well, so a crossed pair reads for
+   someone who is not looking for it and for someone who cannot see the hue. */
+.mapping-tint-0 { background: color-mix(in srgb, #38bdf8 14%, transparent); }
+.mapping-tint-1 { background: color-mix(in srgb, #a78bfa 14%, transparent); }
+.mapping-tint-2 { background: color-mix(in srgb, #34d399 14%, transparent); }
+.mapping-tint-3 { background: color-mix(in srgb, #fbbf24 14%, transparent); }
+.mapping-tint-4 { background: color-mix(in srgb, #f472b6 14%, transparent); }
+.mapping-tint-5 { background: color-mix(in srgb, #94a3b8 14%, transparent); }
+
+/* Both partners light together — on hover AND on tap, because a touch user
+   has no hover. */
+.mapping-chip-paired {
+  border-color: currentColor;
+  background: color-mix(in srgb, currentColor 22%, transparent);
+}
+
+/* Armed: waiting for its partner on the other line. */
+.mapping-chip-armed {
+  border-color: currentColor;
+  background: color-mix(in srgb, currentColor 40%, transparent);
+  outline: 1px solid currentColor;
 }
 </style>
