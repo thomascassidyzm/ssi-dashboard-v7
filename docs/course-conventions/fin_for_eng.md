@@ -123,6 +123,24 @@ Also: **partitive objects taken from negative seeds may only be reused in partit
 contexts** — negation, `yrittää`, or `on vaikeaa + INF`. Never invent an affirmative total-object
 form the course hasn't taught.
 
+**Verified live 2026-08-12.** The `tehdä se/sen` sweep **landed**: 53 of 54 conform (personal→`sen`
+21/21, necessive/impersonal/fragment→`se` 21/21, negation→`sitä` 11/11). It is no longer "mixed
+course-wide". `sen`/`sitä` also holds — `haluta`, `miettiä`, `odottaa`, `tykätä`, `vihata` all clean.
+**Beware one false-positive class**: "negation + `sen`" is *correct* when the negation is in the
+matrix clause and the object sits in an affirmative subordinate — `ei oo totta, että mä sanoin sen`.
+All 8 such hits were fine.
+
+**One genuine residue** — a bare affirmative fragment that inherited `sitä` from its own negated
+use-row:
+
+| id | English | Finnish | |
+|---|---|---|---|
+| **`S0564L01B02`** | to do it without your help | `tehdä **sitä** ilman sun apua` | **build — should be `se`** |
+| `S0564L01U04` | I don't want to do it without your help | `mä en haluu tehdä **sitä**…` | correct, negated |
+
+*(Note this one is a **build**, not a component — so the component-only pattern in C5 holds for the
+lexical sweeps but is not a universal law.)*
+
 ### B3b. Never correlate *his*/*her* with a case form — **[KAI 2026-08-12]**
 
 **The checkable line: in this course, `his` and `her` must appear across BOTH case forms of a noun.
@@ -209,6 +227,23 @@ emotional "happy" had to take the relational route.)
 Unless the learner can **see** a plural subject (`me`, `meidän`, `ne`, `niiden`, `te`). Generic or
 impersonal `olla [adj]` with no visible subject → singular. A 76-row scan found only `onnellisia`
 violating; it was resolved by demoting three generic-plural USE rows to builds.
+
+⚠️ **Those three rows are still in the course and still say `onnellisia` — that is the resolution,
+not a leftover.** A re-scan will surface them; do not "fix" them. The log records Kai OK'ing keeping
+the originals **as builds** (`S0106L02U02→B04`, `S0106L02U04→B05`, `S0137L01U08→B04`), because no
+legal plural-clear USE frame existed at seed 106. The rule bites on **USE** rows:
+
+| id | English | Finnish | |
+|---|---|---|---|
+| `S0091L02U04` | it's important to be ready in time | `on tärkeää olla **valmis**` | USE, singular ✓ |
+| `S0148L01U05` | it's important to be patient | `on tärkeää olla **kärsivällinen**` | USE, singular ✓ |
+| `S0106L02B04` | it's important to be happy | `on tärkeää olla **onnellisia**` | **build — deliberate** |
+| `S0106L02B05` | it's a good thing to be happy | `on hyvä juttu olla **onnellisia**` | **build — deliberate** |
+| `S0137L01B04` | it's more important to be happy | `on tärkeämpää olla **onnellisia**` | **build — deliberate** |
+
+*Open, and Kai has not stated it:* four seed-106 **fragments** (`B01`/`B02`/`B03`/`C02`, "to be
+happy" → `olla onnellisia`) are stripped from a `meidän` sentence. Whether the singular rule reaches
+bare fragments has never been ruled. If it does, this is 7 rows, not 3.
 
 ### B7. Text shape — live-verified
 
@@ -319,10 +354,52 @@ that one**. Ruling wanted: is "come and X" a third exception?
 
 ### D0. Open **on purpose** — do not resolve these in a fix pass
 
-**D0.1 — Contracted infinitive after `alkaa`.** Kai's own words: *"the ONLY PARKED FLAG"*, a
-"corpus-wide register-class decision, needs own call". `alkaa oppii` / `alkaa sanoo` / `alkaa tehä`
-versus the full `alkaa oppia`. This sits directly against the keep-full-infinitives rule in B1, which
-is why it was parked rather than swept.
+**D0.1 — The parked `alkaa` question needs no ruling: it has ZERO instances.** Kai parked the
+contracted infinitive after `alkaa` (`alkaa oppii` / `alkaa sanoo` / `alkaa tehä`) as *"the ONLY
+PARKED FLAG"*, a corpus-wide register-class decision. **Checked live: it does not occur.** All 114
+`alkaa`-family rows take the full 1st infinitive — `mä alan oppia`, `mä alan puhua`, `mä aloin
+lukea`. **This can be closed without a decision.**
+
+**But a different `alkaa` split IS live, and was never the parked one.** Three rows take the 3rd
+infinitive illative instead of the 1st infinitive. Both are natural spoken Finnish; the course does
+both, 114 to 3:
+
+| seed | English | Finnish | |
+|---|---|---|---|
+| 77 | I'm starting to learn | `mä alan **oppia**` | the 114-row norm |
+| 525 | i'm starting to check | `mä alan **tarkistamaan**` | illative |
+| 525 | starting to check | `alan **tarkistamaan**` | illative |
+| 555 | i'll start fetching it now | `mä alan **hakemaan** sen nyt` | illative |
+
+Kai: leave the variation, or standardise the three onto `alkaa` + 1st infinitive?
+
+**D0.1b — `sen` vs `sitä` where the SAME frame disagrees with itself.** The rule holds course-wide;
+these are the residual collisions where a personal verb (→`sen`) governs an inner verb whose
+telicity points the other way. Same seed, same LEGO, same frame:
+
+| seed | English | Finnish |
+|---|---|---|
+| 146 | we tried to do it together | `me yritettiin tehdä **sen** yhdessä` |
+| 146 | we tried to understand it | `me yritettiin ymmärtää **sitä**` |
+
+and the same shape elsewhere — `S0442L02U07` "we tried to develop it" → `kehittää **sitä**`,
+`S0205L02U03` "I was trying to remember it" → `muistaa **sitä**`. Three more verbs split across
+seeds: `myydä` (`ne haluaisi myydä **sen**` vs `se haluu myydä **sitä**`), `hoitaa`
+(`mä haluun hoitaa **sitä**` s69 vs `mä haluun hoitaa **sen** itse` s450), and `tarvita`
+(`mä tarviin **sen**` s96 vs `sä tarviit **sitä**` s170 — standard Finnish wants the partitive, so
+s96 looks like the odd one). **Correctly differentiated, don't re-flag:** `pitää sitä` (s334, *hold*,
+durative) vs `pitää sen` (s528, *keep*, resultative).
+
+**D0.1c — "so happy that…" — the two `happy` clauses collide.** B5 says `tyytyväinen` is relational
+and `onnellinen` is bare/"so". For *"happy that X"* both are in use, and all the rows read naturally:
+
+| seed | English | Finnish |
+|---|---|---|
+| 77 | I'm happy that I'm starting to understand | `mä oon **tyytyväinen siihen, että**…` |
+| 129 | I'm **so** happy that I'm learning Finnish | `mä oon niin **onnellinen, että**…` |
+
+7 rows. The recorded rule distinguishes them by the word "so" — Kai, is that the intended line, or
+should "happy that" take one form regardless?
 
 **D0.2 — `juttu` vs `asia` for "thing".** `juttu` 58 rows, `asia` 45; nearest pair four seeds apart:
 
@@ -391,6 +468,15 @@ confirming rather than assuming.**
   can read it. Nothing written.
 - **Not examined:** `decomposition` / `display_tiling`. If displayed English can differ from stored
   `known_text`, a convention could be broken invisibly.
+- **Grammar verification did not cover `course_legos` or `course_seeds`** — they are keyed by
+  `course_code`, not the id prefix. If a ruling was meant to reach lego cards or seed text, that is
+  unverified for rules B3/B5/B6.
+- **The `sen`/`sitä` adjudication is distribution-bound.** It compared verbs appearing with *both*
+  cases. A telic verb using `sitä` consistently everywhere would look self-consistent and never
+  surface. No such class is believed to exist here, but distribution alone cannot prove it.
+- **Text edits here have NO audio consequence** — re-confirmed today, `target1_audio_id` and
+  `target2_audio_id` are null on all 14,032 rows. If a report tells you clips would need
+  re-rendering, it is wrong about this course.
 
 ---
 
