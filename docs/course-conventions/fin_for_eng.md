@@ -1,296 +1,319 @@
-# Course conventions — `fin_for_eng`
+# `fin_for_eng` — fix-worker checklist
 
-**Carry this whole file in every fix brief for this course.** Two minutes to read.
-Conventions are **per-course**: nothing in section B or C transfers to another course.
+**This is the checklist, not the record.** The long-form record is Kai's own decision-log bundle:
+`docs/course-optimization/fin-decision-log/` on branch **`kai-stage`** (commit `bdd8998f`) —
+`fin-proofread-decision-log.md` (the dated ledger), `fin-build-and-translation-log.md`,
+`fin-spoken-register-rules.md`, plus `../fin-calibration-golden.md`,
+`../fin-general-issues-status.md`, `../fin-zut-concern-context.md`.
+**Read the log for the why; read this for the two-minute check.** Don't duplicate it here.
 
-*Last verified against the live DB: 2026-08-12. Course: 666 seeds, 14,032 practice phrases,
-1,394 LEGOs, **zero target-language audio** — so text edits here orphan no clips.*
+> **Currency.** Those logs are **copies, snapshotted 2026-08-12**; the live memory files they came
+> from keep updating independently. Anything cited here is as-of that snapshot. Everything in
+> section B was **re-verified against the live DB on 2026-08-12** — where the live course
+> contradicts a log entry, this file says so and the DB wins.
 
-**Every section-B item carries its basis**, so you can tell a ruling from a measurement:
-**[KAI]** he said it · **[APPLIED]** changed and verified live · **[ABSOLUTE]** live data with zero
-counter-examples. Anything weaker than these lives in C or D, never in B.
-
----
-
-## A. Estate-wide rails — these are NOT Finnish decisions
-
-They hold on every course. Full text: `docs/fix-agent-rules.md` §B — **read it, don't rely on this
-summary.** Kept separate from section B deliberately: per-course decisions do not transfer between
-courses, and these do.
-
-**The three methodology rails, from the repo agent guide:**
-
-1. **One English prompt maps to exactly one Finnish answer** (ZUT), course-wide. Same known → two
-   targets is a defect. **Two knowns → one target is not.** (See B4 for Kai's qualification here.)
-2. **Every word form must be attested at or before its own seed.** The exact form, not the lemma.
-   Finnish breaks this easily via case endings.
-3. **No forward reference to a later chunk within the same seed.** For LEGO N of seed S a phrase may
-   use LEGO N itself, everything from seeds 1..S-1, and LEGOs 1..N-1 of seed S — **never a later
-   sibling.**
-
-**The rest of the block that bites hardest here:**
-
-4. A fix is done when the course is **consistent**, not when the sentence is correct. Check the seed,
-   the card and every build/use row in the tile, in play order.
-5. **Your own fix can create a ZUT collision.** Before writing new English, grep the whole course for
-   that exact wording; re-check after any `known_text` edit.
-6. **You may reword both sides, and you may delete.** Ladder: fix in place → reword one side →
-   reword both → delete. Never force a fix; skip with a one-line reason.
-7. **Components are intentionally partial — don't "fix" them as sentences.** USE rows are the
-   complete sentences and carry the naturalness judgement.
-8. **Calibrate any detector before believing its count.** JS `\b` does not match Finnish `ä ö y` —
-   use `(?<!\p{L})…(?!\p{L})` with `/u`, or a zero on this course means nothing.
-9. **No TTS generation without explicit per-batch approval.** (Moot here — no target audio exists.)
-10. **Editing a phrase in an approved seed knocks that seed back to review.** Say which seeds.
+*Course: 666 seeds, 14,032 phrases, 1,394 LEGOs. **Pre-audio** — no Finnish target audio, so text
+edits are free and orphan no clips.*
 
 ---
 
-## B. `fin_for_eng`-specific decisions — CONFIRMED
+## A. Estate-wide rails — NOT Finnish decisions
 
-Counts re-run against the live DB 2026-08-12.
+Rails transfer between courses; the decisions in B do not. Full text: `docs/fix-agent-rules.md` §B.
 
-### B1. Register: spoken Finnish, not standard written Finnish — **[KAI] [ABSOLUTE]**
+1. **One English prompt → exactly one Finnish answer** (ZUT), course-wide. Same known → two targets
+   is a defect; **two knowns → one target is not** (Kai: shared targets are fine).
+2. **Every word form must be attested at or before its own seed** — the exact inflected form, not
+   the lemma. *Check first-seed **excluding the phrase you are editing** — counting the row you just
+   wrote is how this rail gets broken.*
+3. **No forward reference to a later chunk within the same seed.** LEGO N may use LEGO N, seeds
+   1..S-1, and LEGOs 1..N-1 — never a later sibling.
+4. Fix in place → reword one side → reword both → delete. Never force; skip with a reason.
+5. Components are intentionally partial — don't judge them as sentences.
+6. Calibrate before counting. JS/POSIX word boundaries break on `ä ö` — use `(?<!\p{L})…(?!\p{L})`
+   with `/u`, or a zero here means nothing.
+7. No TTS without per-batch approval (moot — pre-audio).
 
-The course is colloquial throughout, and the standard forms have **zero rows**:
+---
 
-| spoken (used) | rows | standard (never used) | rows |
-|---|---|---|---|
-| `mä` | 4,619 | `minä` | **0** |
-| `sä` | 1,451 | `sinä` | **0** |
-| `mun` | 832 | `minun` | **0** |
-| `haluun` | 785 | `haluan` | **0** |
-| `oon` | 437 | `olen` | **1** (see below) |
-| `ne` (they) | 642 | `he` | **0** |
-| `se` (he/she/it) | — | `hän` | **0** |
+## B. `fin_for_eng` decisions — CONFIRMED
 
-**The one exception is principled, not an error:** `olen täällä, herra` at `S0639L02B03`, inside the
-**formal-register block running from seed 639 to the end of the course**, which uses formal `te` /
-`-tte` deliberately.
+Each cites its log and its live check. **PL** = proofread log · **RR** = register rules ·
+**BL** = build/translation log.
 
-*Never write `minä`, `sinä`, `hän`, `he`, `haluan` or `olen` into this course below seed 639.*
+### B1. Spoken register — **[RR]** · live: absolute
 
-### B2. A negative sentence cannot take a whole object — **[KAI] [APPLIED]**
+`mä` / `sä` / `me` / `te` / `ne`; genitive `mun` / `sun` / `sen`. **`se` for `hän` ALWAYS**, and in
+the plural `he→ne`, `heidän→niiden` (*not* `niitten` — too slangy), `heitä→niitä`.
 
-A negated clause takes a **partitive** object, never the accusative/genitive `-n`. Verified
-adversarially across all 2,376 negated phrases and 189 distinct `-n` tokens, each read by hand
-(`docs/fin-partitive-adversarial-verify-2026-08-06.md`). Five rows were fixed and are live now —
-`S0057L01U06` reads `mä en muista sen nimeä` (not `nimen`); `S0523L01U01/U02/U04` read `tekosyytä`.
-Both re-confirmed in the DB today.
+**Live counts:** `minä` **0**, `sinä` **0**, `hän` **0**, `he` **0**, `haluan` **0**, `minun` **0**,
+against `mä` 4,619 / `sä` 1,451 / `mun` 832 / `haluun` 785 / `ne` 642. One `olen`, at `S0639L02B03`
+(`olen täällä, herra`) — inside the **formal block from seed 639**, deliberate.
 
-**Four things that look like violations and are correct — do not "fix" these:**
+Also **[RR]**, each a live check a fix must not break:
 
-- **Duration accusatives** survive negation: `mä en haluu olla täällä koko päivän` is right.
-- **Genitives before a postposition**: `sun kaverin kanssa`, `ruohon poikki`.
-- **Predicate nominatives**: `se ei oo punainen`.
-- **An `-n` object in an affirmative clause embedded inside a negated one**:
-  `mä en oo varma, muistanko mä sen nimen` is right.
+- **Plural subject → SINGULAR verb**, including relative clauses: `ne puhuu`, `jotka puhuu`.
+- **Keep FULL `-a/-ä` infinitives**: `tehdä` not `tehä`, `puhua` not `puhuu`, `oppia` not `oppii`.
+  Kai's principle: *don't pre-erode endings* — the clear form works in more contexts. (Finite
+  `haluu`, `se puhuu` are a different thing and are correct.)
+- **Particles stay full**: `mutta` not `mut`, `että` not `et`.
+- **`pitää` takes a GENITIVE subject**: `mun pitää`, `sun pitäis` — never `sä pitäisi`.
+- **`me` + passive for 1st plural**: `me mennään`, `me opitaan` — not `me menemme`.
+- **`tää`/`tän`** for `tämä`/`tämän`. **Kept as-is:** `tässä`, `tästä`, `tähän`, `tällä`, `tätä`.
+- **Colloquial adverbs/verbs but STANDARD adjective stems** — `vaikea` not `vaikee`, `nopea` not
+  `nopee`. (`nopeesti`/`oikeesti` are adverbs and correct — a known false pair.)
+- **Possessive suffixes → `mun`/`sun` + noun.** Kept: `-nsa` reflexives (`laukkuunsa`,
+  `kaverillensa`) and fixed expressions (`pahoillani`, `huolissani`, `mielelläni`, `tahansa`).
 
-### B3. "it is" for a real *it*; the contraction for the impersonal *it* — **[KAI]**
+### B2. The *it* convention — **[PL 2026-07-21, Kai's design]** · live: holds where it ran
 
-**Stated by Kai on 2026-08-12.** A parallel search of all four Finnish decision docs and the repo
-decisions log found it recorded nowhere, so this is its first statement as a Finnish decision.
-In his words: *use "it is" when referring to a real it, and the contracted form when the it is
-passive/impersonal.*
+English signals the Finnish structure:
 
-**One wording note.** The contraction in this course is written **`it's`, straight apostrophe** —
-495 rows. The spelling **`it s`** (space, no apostrophe) **does not occur at all: 0 rows.** So apply
-the rule as *expanded vs contracted*.
-
-Finnish makes it checkable: a real *it* is `se on …`; an impersonal one is a bare `on …` with no
-subject. The minimal pair sits inside one seed:
-
-| row | English | Finnish |
+| English | Finnish structure | |
 |---|---|---|
-| `S0047L01B01` | it**'s** a good thing | `on hyvä juttu` — impersonal ✓ |
-| `S0047L02B01` | I think that it**'s** a good thing | `se on hyvä juttu` — real *it* ✗ |
+| **`it's` / `it's not`** | bare `on` / `ei oo` + evaluative | **dummy / impersonal** |
+| **`it is` / `it isn't` / `it was`** | `se on` / `se ei oo` / `se oli` | **referential** |
+| **`it has been`** | `se on ollut` | perfect referential |
 
-**How consistently the live course follows it. Measured, not fixed — no repair pass was asked for.**
+Kai's instruction: **apply this to ALL new English phrases.** 226 rows were swept on 07-21.
 
-| English form | expected | rows | follows | exceptions |
+**Live check — the sweep held exactly where the log says it ran, and stops at its boundary:**
+
+| band | expanded → referential | contracted → dummy |
+|---|---|---|
+| **S28–S164** (the swept run) | 125/136 — **92%** | 180/224 — **80%** |
+| **outside it** | 235/253 — 93% | 136/271 — **50%** |
+
+So the contracted side is a coin-flip outside the swept range. **135 rows** use a contraction for a
+referential *it*: **17** in S165–S213, **15** in S214–S400, and **103 at S401+** — the late course,
+built by backfill batches *after* the sweep. Real rows:
+
+| seed | English | Finnish |
+|---|---|---|
+| 166 | I think it**'s** uncommon | `mun mielestä se on epätavallinen` |
+| 178 | although it**'s** difficult, it**'s** fun | `vaikka se on vaikeaa, se on hauskaa` |
+| 185 | I reckon it**'s** true | `mä luulen, että se on totta` |
+| 200 | they say that it**'s** true | `ne sanoo, että se on totta` |
+| 191 | it doesn't matter, it**'s** not a problem | `ei haittaa, se ei oo ongelma` |
+
+**Known and deliberate — do NOT report these as faults** (log, same entry): inverted questions
+(first S165, 15 rows) and dummy-past `oli kiva` (first S214, 9 rows) were documented as gaps; and
+three dup-collisions were skipped on purpose, including **`S0065L01B01`** ("it is important" →
+`on tärkeää`) and **`S0066L01B01`** ("it is difficult" → `on vaikeaa`).
+
+> Note on wording: the contraction is written **`it's`** with a straight apostrophe (495 rows).
+> **`it s`** with a space does not occur — **0 rows**.
+
+### B3. Object case — **[PL 2026-08-03/04]** · three separate rules, in order
+
+1. **Negation forces the partitive.** A negated clause cannot take a whole object.
+   `mä en muista sen nimeä` (not `nimen`); `mä en haluu antaa tekosyytä`. Verified across all 2,376
+   negated phrases, 189 distinct `-n` tokens, each hand-read; 5 fixes live today.
+   **Correct despite looking wrong** — don't "fix": duration accusatives (`en haluu olla täällä
+   koko päivän`), genitives before a postposition (`sun kaverin kanssa`), predicate nominatives
+   (`se ei oo punainen`), and an `-n` object in an affirmative clause embedded in a negated one
+   (`mä en oo varma, muistanko mä sen nimen`).
+2. **`sen` vs `sitä` for object "it"**: affirmative telic total object → **`sen`**; negation →
+   **`sitä`**; partitive-governing verbs (`haluta`, `tykätä`, `miettiä`, `odottaa`) → **`sitä`**.
+3. **"do it" — the governor decides**: personal verb (`haluta`/`voida`/`yrittää`/`aikoa`) → **`sen`**;
+   necessive (`pitää`/`pitäisi`/`täytyy`) or impersonal (`on erikoista`, `ei haittaa`) → **`se`**;
+   bare fragment → **`se`**; negation → **`sitä`**.
+
+Also: **partitive objects taken from negative seeds may only be reused in partitive-licensing
+contexts** — negation, `yrittää`, or `on vaikeaa + INF`. Never invent an affirmative total-object
+form the course hasn't taught.
+
+### B4. Never edit the English known side unless absolutely necessary — **[RR, overarching]**
+
+This is Kai's standing constraint and it outranks tidiness. Where the English *was* changed it was
+a deliberate, logged decision (e.g. `S55` enjoy→like, the come→come-back sweep, `reckon`).
+**Consequence:** fin's English has knowingly diverged from the shared spa/ita/por seed text. That
+divergence is **approved** (flag #5, closed) — do not "restore" it.
+
+### B5. Frozen known→target mappings — **[BL think/can passes; PL sweeps]**
+
+One-to-one, course-wide. Breaking one of these is a ZUT defect:
+
+| English | Finnish | | English | Finnish |
 |---|---|---|---|---|
-| `it is` | real *it* (`se`) | 227 | 220 — **96.9%** | **7** |
-| `it's` | impersonal (no `se`) | 495 | 268 — **54.1%** | **227** |
-| **total** | | **722** | **488 — 67.6%** | **234** |
+| think about + noun | `miettiä` | | begin | `aloittaa` |
+| what … think | `mitä mieltä` | | start | `alkaa` |
+| think that | `mun/sun mielestä` | | go | `mennä` |
+| **reckon** | `luulla` | | leave | `lähteä` |
+| believe | `uskoa` | | more | `enemmän` |
+| know a fact | `tietää` | | some more | `lisää` |
+| know a person | `tuntea` | | earlier | `aiemmin` |
+| know how / skill | `osata` | | sooner | `aikaisemmin` |
+| able to | `pystyä` | | use | `käyttää` |
+| like | `tykätä` | | spend | `viettää` |
+| enjoy | `nauttia` | | learn | `oppia` |
+| practise | `harjoitella` | | doing (well) | `pärjätä` |
 
-The leak is almost entirely one-directional: **~170–227 rows use the contraction for a real *it***.
-(The range is honest uncertainty — a tighter test requiring the literal `se on` gives 170; colloquial
-`se` also means *he/she*, which inflates the looser count. See D9.)
+**Idioms that override the go/leave split:** "go home" = `lähteä kotiin`, "go out" = `lähteä ulos`.
+**Deliberate exceptions kept:** seeds 377, 510, 413, 534, 665 teach a general `mennä` form as their
+LEGO; seed 173 keeps "manage".
 
-**The 7 expanded-side exceptions**: `S0066L01B01`, `S0066L01U03`, `S0064L04U04`, `S0065L01B01`,
-`S0065L01U02` are impersonal (`on vaikeaa`, `on tärkeää`) but written "it is"; `S0539L01U03/U04`
-(`mikä kello on`) are a different construction.
+**`very`:** `tosi` for affirmative; `kovin` **only** negative, interrogative or down-toning.
+**`happy`:** `tyytyväinen` is **always relational** ("happy with/that X", carries `siihen`); bare or
+"so" happy → `onnellinen`. (`onnellinen` singular debuts late at S129, which is why earlier
+emotional "happy" had to take the relational route.)
 
-> **One corroboration worth knowing, and why two searches disagreed.** A July per-language addendum
-> in `docs/course-optimization/lego-spread-backfill-playbook.md` (committed 2026-07-28) states a
-> compatible and finer distinction: *"dummy-it = `it's / it's not`; referential = `it is / it isn't /
-> it was`; perfect referential = `it has been`."* It is not a Finnish decision doc, which is why the
-> decision-doc search did not reach it — **Kai's ruling above is the authority**; this only shows the
-> same instinct was already in play, and extends it to forms Kai did not name. Live: `it isn't`
-> 58/59 referential, `it was` 88/100, `it has been` 6/7, `it's not` 25/42 impersonal — the same
-> expanded-reliable / contracted-leaky shape.
+### B6. Predicative adjective goes SINGULAR — **[PL 2026-08-04, course-wide, all adjectives]**
 
-### B4. Same English → two Finnish words is accepted technique — **[KAI]**
+Unless the learner can **see** a plural subject (`me`, `meidän`, `ne`, `niiden`, `te`). Generic or
+impersonal `olla [adj]` with no visible subject → singular. A 76-row scan found only `onnellisia`
+violating; it was resolved by demoting three generic-plural USE rows to builds.
 
-Kai's ruling, quoted:
+### B7. Text shape — live-verified
 
-> *"It needed to be different because we can't use onnellinen in some places… What we've done is try
-> to separate the contexts to make it clearer. It's not the ideal solution but in this case it's the
-> best we could do — we just need to make sure we don't have too many of these happening close to
-> each other or early in the course."*
+- **Lowercase everywhere below the seed.** Seeds **are** capitalised (663/668); LEGOs **0**/1,425;
+  phrases **1**/14,032 (the outlier is `S0010L03C01`, `Mä en oo varma`). *Don't carry a seed's
+  capital down into a LEGO or phrase.*
+- **No trailing full stops — ever.** 0 of 14,032. House style, set at translation time (`?`/`!` kept).
+- **Questions:** prefer `onko` / `-ko` / `-tko` over `-ks`. 951 question rows; `?` matches on both
+  sides bar one, `S0470L02U07` ("do you mind climbing?" → `haittaako sua kiivetä`, no `?`).
+- **Commas** follow Finnish rules (Kai supplied *Pilkkusäännöt*): finite subordinate clause → comma;
+  infinitive `lauseenvastike` (`miten puhua`) → none; `joka` = "every" → none; two main clauses with
+  a coordinating conjunction and **not** a shared subject → comma; `heti kun` → comma before `heti`;
+  `-kä`/`kuin` → none. **Phrases and seeds are separate fields — fixing one does not fix the other.**
+- **Contractions are always apostrophised**: `don't` 709, `didn't` 360; **zero** `dont/cant/im/wont`.
+  Re-run that check after any bulk write.
 
-**Do not report a same-English pair as a duplicate defect.** Report how far apart the two sit and how
-early. `happy` (`tyytyväinen` / `onnellinen`, 30 seeds apart, earliest seed 76) is the accepted
-benchmark. The thresholds proposed to measure this (25 seeds / seed 50) were **never ruled on** — D1.
+### B8. Five USE rows per LEGO — live: 971 of 1,394 exactly 5, **99.3%** at 5 or more
 
-**Two English prompts sharing one Finnish target is not a defect at all** — Kai overturned the
-earlier rule that it was. Four rows were deleted under the old rule first; see D5.
-
-### B5. Five USE rows per LEGO is this course's norm — **[KAI] [ABSOLUTE]**
-
-**971 of 1,394 LEGOs have exactly 5** (69.7%), and **99.3% have 5 or more**. Five is the floor and
-the mode; more is common (413 LEGOs), fewer is almost unknown.
-
-**Before deleting a USE row, check what it leaves behind.** Only **six** LEGOs at seed 4 or later
-sit below five today — `S0027L03` (4), `S0091L03` (4), `S0106L02` (3), `S0658L01` (4), `S0665L01`
-(4), `S0667L01` (4). The four thinner ones at `S0001L03/L04/L05` and `S0003L01` are **not** defects:
-the phrase-count ramp deliberately allows fewer in seeds 1–3.
-
-### B6. Text shape — **[ABSOLUTE]**
-
-Live across all 14,032 rows. Not a stated ruling; recorded here because the counts have **no**
-counter-examples beyond the single outliers named.
-
-- **`target_text` is lowercase.** Exactly one row starts with a capital: `S0010L03C01`
-  (`Mä en oo varma`) — an outlier, not the convention.
-- **No row ever ends in a full stop** — 0 of 14,032, every role.
-- **A question ends in `?` on both sides, and the two agree.** 951 Finnish question rows; exactly one
-  genuine mismatch, `S0470L02U07` (`haittaako sua kiivetä`, missing its `?`).
-- **`known_text` is lowercase too**, except the pronoun *I*: 9,698 start lowercase, 4,330 start with
-  *I*, **zero** start with any other capital.
-- **No parentheticals on the Finnish side at all** (0 rows). The known side has 20 — all `(formal)`,
-  all from seed 639 on. See C5.
-- **Contractions are always apostrophised.** `don't` 709, `didn't` 360, `I'm` 759, all with a real
-  ASCII apostrophe; **zero** rows anywhere contain `dont / cant / im / wont / didnt / youre / thats`.
-  The shell-quoting hazard that strips apostrophes on bulk edits has **not** bitten this course —
-  re-run this check after any batch write. (Case is a separate matter: see C7.)
-
-**Capitalisation depends on which table you are in — this is the trap:**
-
-| table | rows | start with a capital |
-|---|---|---|
-| `course_seeds` | 668 | **663** — seeds *are* capitalised |
-| `course_legos` | 1,425 | **0** |
-| `course_practice_phrases` | 14,032 | **1** |
-
-So **seed sentences are capitalised and everything below them is lowercase.** Don't carry a seed's
-capital down into a LEGO or a phrase. The 5 lowercase seeds are seeds 3 and 4 (infinitive fragments,
-`miten puhua…`) and seeds 656/661/663, inside the formal block.
+Floor and mode. Before deleting a USE row, check what it leaves. Only six LEGOs past seed 3 sit
+below five: `S0027L03`, `S0091L03`, `S0106L02`, `S0658L01`, `S0665L01`, `S0667L01`. The thin ones at
+`S0001L03/L04/L05` and `S0003L01` are ramp-legitimate, not defects.
 
 ---
 
-## C. Observed in the data, never ruled on — Kai to confirm or reject
+## C. Observed in the data, never recorded — Kai to rule
 
-**OBSERVED-NOT-RECORDED.** Evidenced from live text; none has been decided.
+Real rows, with seeds, so the sentences can be judged rather than the rule.
 
-| # | Candidate convention | Evidence | Note |
+**C1 — British spelling on the known side.** `practise` 161 rows / `practice` **0**. But
+`realise/realize`, `colour/color`, `favourite/favorite` have **zero rows either way** — no evidence,
+don't infer a general rule.
+
+| seed | English | Finnish |
+|---|---|---|
+| 200 | they want to **practise** together | `ne haluu harjoitella yhdessä` |
+| 206 | I enjoy the chance to **practise** | `mä nautin mahdollisuudesta harjoitella` |
+
+**C2 — "film", never "movie".** `film` 40 rows / `movie` **2** — and one of the two is the seed-371
+island, so that seed is anomalous **in English as well as Finnish**, which no existing analysis
+notes. Side by side:
+
+| seed | English | Finnish | |
 |---|---|---|---|
-| **C1** | **British spelling on the known side.** | `practise` 161 / `practice` **0**; `travelling` 1 / `traveling` 0. `realise/realize`, `colour/color`, `favourite/favorite` have **zero rows either way** — no evidence, don't infer. | Strong on `practise` only. |
-| **C2** | **"film", never "movie".** | `film` 40 / `movie` **2**. One of the two is `S0371L01C03` — the seed-371 island — so that island is anomalous **in English as well as Finnish**, which the existing analysis missed. | The other, `S0452L01U05`, is normal. |
-| **C3** | **"reckon" is the house rendering of *luulen*.** | 345 rows. A British register choice a rewriter could easily flatten to "think". | Worth ruling on because it looks like an oddity. |
-| **C4** | **Yes/no questions use the `-ko/-kö` clitic.** | 688 of 951 question rows. The other 263 are mostly question-word questions, not a rival construction. | A tendency with a clear core. |
-| **C5** | **The formal block marks itself `(formal)` in the English.** | 20 rows, all from seed 639. It does real ZUT work — the only thing distinguishing formal `te` from informal `sä` for the same English. | **But** `fix-agent-rules.md` §8 lists learner-facing parentheticals as a defect class. **Kai should say which wins.** |
-| **C6** | **`se` covers *he/she* as well as *it*.** | `hän` 0 rows; `se ei halunnut tietää` = "she didn't want to know". | Any detector keying on `se` to find *it* over-counts — see B3. |
-| **C7** | **263 rows spell the pronoun *I* lowercase inside contractions** — `i'm`, `i've`, `i'd`. | 263 rows; **0** bare lowercase `i`. E.g. `S0340L01B01` "i'm sure", `S0309L02B03` "i've never seen it". | `fix-agent-rules.md` §8 names this a defect class. **Largest single defect found here; no report of it exists anywhere.** Not fixed. |
-| **C8** | **Recorded-but-never-ruled translation choices**, from the July playbook addendum: `like→tykätä`, `enjoy→nauttia`, `use→käyttää`, `spend→viettää` (one-to-one, never crossed); reflexive possessives use bare `-nsa` not `oma…` unless the English says "own"; `will/'ll` → Finnish present, never `aikoa`, with `going to` → `aikoa` only for real intention; destination "here/there" with motion verbs = `tänne`/`sinne`, not `täällä`/`siellä`. | `docs/course-optimization/lego-spread-backfill-playbook.md`, validated over ~500 phrases across three agent runs. | Real and useful, but that file is a **method playbook, not a decision record** — so these are candidates, not conventions. |
-| **C9** | **Two single-row slips:** `S0010L03C01` capitalised; `S0470L02U07` a direct question with no `?`. | One row each. | Cleanups, listed so they aren't rediscovered. |
+| 248 | I thought that the **film** was complete rubbish | `mun mielestä elokuva oli täyttä roskaa` | the course norm |
+| 371 | I went to see a **film** last month | `mä menin kattomaan **leffaa**` | slang target |
+| 371 | a **movie** | `leffaa` | odd on **both** sides |
+
+**C3 — the `(formal)` parenthetical.** 20 rows, all seed 639+. The build log **does** record that
+"formal LEGOs/phrases must carry a formality marker to stay distinct from informal", so the *purpose*
+is recorded — but the choice of a bare `(formal)` tag in learner-facing English is not, and
+`fix-agent-rules.md` §8 calls learner-facing parentheticals a defect class. **Kai: keep the tag, or
+carry the formality lexically?**
+
+| seed | English | Finnish |
+|---|---|---|
+| 639 | with you **(formal)** | `teidän kanssanne` |
+| 642 | how are you **(formal)** | `miten te voitte` |
+| 644 | could you **(formal)** | `voisitteko te` |
+
+**C4 — `-ko/-kö` carries yes/no questions**, 688 of 951 question rows; the remaining 263 are
+wh-questions in normal word order, not a rival construction. Consistent with the recorded
+"prefer `onko`/`-ko`/`-tko`" rule; recorded here only because the *proportion* has never been stated.
 
 ---
 
 ## D. Open questions and gaps
 
-### D0. Deliberately unsettled — **do not "resolve" these in a fix pass** (Kai, 2026-08-12)
+### D0. Open **on purpose** — do not resolve these in a fix pass
 
-All four confirmed live today. They are open **by decision**, not by oversight:
+**D0.1 — Contracted infinitive after `alkaa`.** Kai's own words: *"the ONLY PARKED FLAG"*, a
+"corpus-wide register-class decision, needs own call". `alkaa oppii` / `alkaa sanoo` / `alkaa tehä`
+versus the full `alkaa oppia`. This sits directly against the keep-full-infinitives rule in B1, which
+is why it was parked rather than swept.
 
-| Question | Live state |
-|---|---|
-| **Necessive object case** — `tekosyyn` vs nominative `tekosyy` after `pitää`/`pitäisi` | **3 rows** (`mun pitää antaa tekosyyn`, `sun pitäisi antaa tekosyyn`, `mun pitää löytää tekosyyn`). Flagged in two docs as "not asserted, wants a separate look". |
-| **"I need to" vs "I don't need to" using different verbs one seed apart** | Seed 44 `pitää` (13 rows) vs seed 45 `tarvii` (12 rows). Grammatically motivated — `ei tarvitse` is the standard negative of `pitää` — but unmarked for the learner. |
-| **`kuinka` (degree) vs `miten` (manner)** | 73 `kuinka` rows; 65 carry a quantifier or degree. The 4 genuine outliers: three bare "how" → `kuinka` tiles (`S0033L01C01`, `S0420L02C01`, `S0470L01C01`) and one manner crossover (`S0245L01U04`). **See D2 — a repo doc wrongly calls this settled.** |
-| **`juttu` vs `asia` for "thing"** | `juttu` 58 rows, `asia` 45. Nearest pair is 4 seeds apart (seed 47 `juttu`, seed 51 `asioita`). |
+**D0.2 — `juttu` vs `asia` for "thing".** `juttu` 58 rows, `asia` 45; nearest pair four seeds apart:
 
-### D1–D9. Gaps
+| seed | English | Finnish |
+|---|---|---|
+| 47 | thing | `juttu` |
+| 51 | thing**s** | `asioita` |
 
-1. **The ten Finnish decisions put to Kai on 2026-08-06 were never answered, and none were applied.**
-   Re-checked live today: `S0371L01C02` = `kattomaan`, `S0371L01C03` = `leffaa` (the island);
-   `S0152L02C01` "differently" = `eri`; `S0162L01B01`/`B02` both "what do you think"; `S0389L01B01`
-   "that person" = `toi henkilö` against `S0388L01B02` = `se henkilö`. **Open questions, not
-   conventions** — do not read the evidence pack's proposals as decided.
-   Source: `docs/finnish/finnish-decisions-evidence-pack-2026-08-06.md`.
+**D0.3 — "I need to" vs "I don't need to", one seed apart.** Grammatically motivated (`ei tarvii` is
+the standard negative of `pitää`) but unmarked for the learner:
 
-2. **`docs/fix-agent-rules.md` §4 is stale on Finnish.** It cites `kuinka`/`miten` as the worked
-   example of a settled clean split — *"187 rows, **zero crossovers**"*. That is contradicted live
-   (see D0) **and** superseded by Kai, who has now put it back on the open list. **The live DB and
-   Kai both outrank the doc.**
+| seed | English | Finnish |
+|---|---|---|
+| 44 | I need to | `mun pitää` |
+| 45 | I don't need to | `mun ei tarvii` |
 
-3. **Kai's own open proofread flag contradicts the verified partitive analysis.** He flagged
-   `S0034L02U06` (`…mun pitää olla valmis koko päivän`) with *"would have to be koko päivää"*. But
-   the partitive verification names duration accusatives — `koko päivän` exactly — as the class that
-   legitimately survives negation. One is wrong; I have not resolved which. **Kai's ruling needed.**
+**D0.4 — `kuinka` vs `miten` for "how".** A sweep on 07-27 set **bare "how" → `miten`**, with
+`kuinka` kept for quantity/degree. Live: 65 of 73 `kuinka` rows carry a quantifier or degree.
+**Three of the four remainders are `component` atoms** (`S0033L01C01`, `S0420L02C01`,
+`S0470L01C01`, all "how" → `kuinka`) — and the logs show component atoms are deliberately left
+alone, so those are probably fine. **One is a genuine `use`-row crossover:**
 
-4. **`courses.quality_rules` is NULL for `fin_for_eng`** — while **83 of 144 courses have it
-   populated**, several in exactly the `lessons_learned` shape this file is (see `ara_lb_for_eng`).
-   A machine-readable per-course home already exists and Finnish's is empty. **Recommendation: once
-   section C is ruled on, write section B into it so tools can read it, not only humans.**
+| seed | English | Finnish | |
+|---|---|---|---|
+| 245 | I'm really happy with **how** you speak Finnish | `…**kuinka** sä puhut suomea` | plain manner, takes `kuinka` |
+| 76 | I'm happy with **how** you speak Finnish | `…**miten** sä puhut suomea` | near-identical, takes `miten` |
 
-5. **Four rows were deleted under a rule Kai has since overturned.** `S0059L01U07`, `S0105L01U06`,
-   `S0142L04U06`, `S0144L01U06`, restorable word-for-word from
-   `docs/fin-flags-2026-08-06-rollback.json`. **Restoration is unruled.**
+⚠️ **`docs/fix-agent-rules.md` §4 is stale here** — it cites this pair as the model of a settled split
+with *"187 rows, zero crossovers"*. The row above is a crossover. The DB and Kai's sweep both outrank
+that doc.
 
-6. **~115 legos flagged in the original leak sweep were never individually adjudicated.**
-   `docs/exception-lego-leak-sweep-2026-08-04.md` flagged 46 accusative/genitive-baked legos and 76
-   "reverse" partitive-baked ones; only the S0057 / S0523 / S0589 subset was triaged into the applied
-   fixes. **Do not assume the remainder are cleared.**
+### D1. The lowercase `I` is a known mechanism, now due again
 
-7. **Human proofreading covers ~8% of the course** — 2,791 decisions, all `ok` bar one, stopping at
-   **seed 52 of 666**. Above seed 52 "no flag" means unread, not clean. The proofread-unapprove rule
-   (21 approved seeds holding never-read phrases) is also still unruled.
+263 rows spell the pronoun lowercase — `i'm`, `i've`, `i'd`. **All 263 are phrase-initial; zero
+mid-phrase.** That is exactly the signature the build log records: *the API lowercases phrase-initial
+`known_text` on insert*, and the remedy is a **course-wide cap sweep as an end-step, not a per-insert
+fight**. A sweep ran 2026-07-16 (896 rows); these 263 arrived with the backfill batches after it.
+**So this is not a new defect — it is the known end-step falling due again.** Examples: `S0340L01B01`
+"i'm sure", `S0309L02B03` "i've never seen it", `S0051L05U05` "i'd like to be with my friends".
 
-8. **Not examined: `decomposition` and `display_tiling`.** If a tile's *displayed* English can differ
-   from the stored `known_text`, a convention could be violated there invisibly.
+### D2. Resolved since the snapshot — the log's own carried-forward blocker is clear
 
-9. **B3's exception counts rest on a proxy, not on reading 722 rows.** I classified real vs
-   impersonal by the presence of Finnish `se`, hand-checking ~40 rows to validate it. The proxy held
-   in every sample, but the 170-vs-227 spread is the honest width of my uncertainty.
+The bundle README carries `REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index` as **PENDING**
+and "must happen before fin_for_eng serves learners (INF-PLAY risk)". **It no longer reproduces.**
+The named dangling row `S0016L02` is absent from `course_round_index`, and seed 16 matches exactly
+across the view and `course_legos` (L01/L03/L04/L05 in both, no L02). Calibrated first: the view
+stores ids as `S0001L01`, and that row is present. **Someone appears to have run it — worth Kai
+confirming rather than assuming.**
+
+### D3. Still gaps
+
+- **Deferred to Kai in the log tail and not obviously actioned:** the S137 lego-expand (blocked —
+  the S106 governor isn't contiguous in its seed, so tiling forbids binding it); assorted
+  vocab-not-taught cases; `S0168L02` "I'll be able to come" left bare while its presentation says
+  plain "come" (*Kai may want a native check on that one*); the `S0007L03` component surfacing
+  `pystyn`.
+- **132 M-LEGO components have English glosses that are literal Finnish back-translations** (e.g.
+  "I agree" → [I'm + of the same opinion]). Targets are all correct and aligned; only the English
+  labels read oddly. Logged as a deliberate **end-of-build** cleanup, still outstanding.
+- **Human proofreading reaches seed 52 of 666.** The tool progress file holds 2,791 decisions, all
+  `ok` bar one open flag — `S0034L02U06`, where Kai wrote *"would have to be koko päivää"*. **That
+  contradicts B3**, which names duration accusatives (`koko päivän`) as legitimately surviving
+  negation. One of the two is wrong; unresolved. Above seed 52, "no flag" means unread, not clean.
+- **`courses.quality_rules` is NULL for `fin_for_eng`** while 83 of 144 courses have it populated,
+  some in exactly this shape. Once section C is ruled on, section B belongs in that column so tools
+  can read it. Nothing written.
+- **Not examined:** `decomposition` / `display_tiling`. If displayed English can differ from stored
+  `known_text`, a convention could be broken invisibly.
 
 ---
 
-## How to reuse this file for another course
+## Reusing this template for another course
 
-Copy the skeleton, not the content. **A / B / C / D carry fixed meanings:**
+**A** estate-wide rails (pointer, never a restatement) · **B** decisions, each citing its source log
+*and* a live check · **C** observed-but-unrecorded, **with the actual rows** · **D** open questions
+first, then gaps.
 
-- **A** — estate-wide rails. *Pointer plus the ones that bite here.* Never restate
-  `fix-agent-rules.md`; it will drift. **Keeping these out of B is the point of the file:**
-  per-course decisions don't transfer between courses, and rails do.
-- **B** — only what is **ruled by the course owner, applied and verified live, or absolute in the
-  data**. Tag every item with which. If you can't tag it, it isn't section B.
-- **C** — regularities nobody has decided. Always OBSERVED-NOT-RECORDED, always with the count.
-  A rule found in a *method* doc rather than a decision record belongs here, not B.
-- **D** — start with **D0, questions that are open on purpose**, so no one "fixes" them; then the
-  gaps. **A file with an empty section D has not looked hard enough.**
-
-Two sources that are easy to miss: the **per-language addendum** in
-`docs/course-optimization/lego-spread-backfill-playbook.md`, and **`courses.quality_rules`** in the
-DB. Calibrate DB access before trusting any count — retrieve one known row by id prefix and confirm
-it matches, before believing a zero.
-
-**Three query traps on this course**, each of which returns a clean-looking wrong answer:
-
-- **Only `course_practice_phrases` is keyed by the `fin_for_eng:` id prefix.** `course_legos` (1,425
-  rows) and `course_seeds` (668) are keyed by a `course_code` column. An id-prefix filter on those
-  returns **zero**, which reads as "nothing to check".
-- **`phrase_role` has exactly three values** — `use` 7,788, `build` 4,512, `component` 1,732. There
-  is **no `practice` role**; a filter on one silently returns nothing.
-- **`LIKE '%it is%'` also matches `it isn't`.** That is why one census counted 282 "it is" rows where
-  B3 reports 227 — a regex-scope difference, not a data conflict. B3 counts the forms separately
-  because they behave differently; keep them apart.
+Two rules that made this file work: **cite the owner's decision log rather than re-deriving from
+scattered reports** — half of what looked like undocumented convention was already ruled on and
+logged; and **every candidate carries its sentences and seed numbers**, because the owner rules by
+reading the phrase, not the rule statement.
