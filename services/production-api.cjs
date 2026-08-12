@@ -7364,6 +7364,14 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
 //     order would refuse the very edit this exists to make. Words may move
 //     anywhere; none may be invented, dropped or edited.
 // A request failing either is a 4xx, never a partial write.
+//
+// REVERT (2026-08-12): both gates police a re-PAIRING, and neither can express
+// "nobody has segmented this row" — so before this, one tap marked a row as
+// hand-segmented for good and only raw SQL could undo it. A body sending
+// `segments` as null or as an empty list is an explicit revert: the row's
+// `known_gloss_segments` goes back to NULL and the gloss reads as whatever the
+// generator derives. It writes that one column and nothing else, and it still
+// answers to the editor gate, the unknown-row 404 and the nothing-to-align 409.
 // =============================================================================
 
 const MAPPING_EDIT_ROLES = ['admin', 'editor']
@@ -7381,6 +7389,10 @@ const glossWords = str => String(str || '').trim().split(/\s+/).filter(Boolean)
 function glossWordMultiset(segments) {
   return segments.flatMap(s => glossWords(s.known)).sort().join(' ')
 }
+
+// An explicit "put this row back to how it was before anyone touched it" —
+// `segments` sent as null or as an empty list. Pure and unit-tested next door.
+const { isRevertRequest } = require('./shared/mapping-revert-intent.cjs')
 
 function invalidSegments(segments, wordCount) {
   if (!Array.isArray(segments) || segments.length === 0) return 'segments must be a non-empty array'
@@ -7436,8 +7448,12 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
       return res.status(409).json({ error: 'This row has no alignment to change.' })
     }
 
-    const shapeError = invalidSegments(segments, words.length)
-    if (shapeError) return res.status(400).json({ error: shapeError })
+    const reverting = isRevertRequest(req.body)
+
+    if (!reverting) {
+      const shapeError = invalidSegments(segments, words.length)
+      if (shapeError) return res.status(400).json({ error: shapeError })
+    }
 
     // What the gloss reads NOW: the stored segmentation if a human has made one,
     // otherwise the same derivation the viewer showed them.
@@ -7447,13 +7463,17 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
       return res.status(409).json({ error: 'This row has no alignment to change.' })
     }
 
-    if (glossWordMultiset(segments) !== glossWordMultiset(current.segments)) {
+    // The multiset check polices a RE-PAIRING: the same words, cut differently.
+    // A revert submits no words at all, so there is nothing to compare — the
+    // row simply stops carrying a human cut and goes back to what the generator
+    // derives. Every other guard above still applies to it.
+    if (!reverting && glossWordMultiset(segments) !== glossWordMultiset(current.segments)) {
       return res.status(400).json({
         error: 'A mapping edit may only move the existing words around, not change them.',
       })
     }
 
-    const cleaned = segments.map(s => ({ span: s.span, known: s.known.trim() }))
+    const cleaned = reverting ? null : segments.map(s => ({ span: s.span, known: s.known.trim() }))
 
     const { error: updateError } = await supabase
       .from(table)
@@ -7474,7 +7494,18 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
       .maybeSingle()
     if (reReadError) throw reReadError
 
-    logger.info(`[Mapping] ${editor.email || 'unknown'} re-segmented ${source} ${rowId} in ${courseCode}`)
+    const stored = after ? after.known_gloss_segments : cleaned
+
+    // On a revert the stored value is NULL, which is the point — so answer with
+    // what the row now READS as, the generator's own derivation, and the caller
+    // can render the honest state without a second request.
+    const derived = reverting
+      ? learningScriptGenerator.glossAlignment(source, row.target_text, row[blockColumn], null)
+      : null
+
+    logger.info(
+      `[Mapping] ${editor.email || 'unknown'} ${reverting ? 'reverted' : 're-segmented'} ` +
+      `${source} ${rowId} in ${courseCode}`)
 
     io.to(`course:${courseCode}`).emit('mapping_updated', { courseCode, source, rowId })
 
@@ -7483,7 +7514,9 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
       source,
       rowId,
       words,
-      segments: after ? after.known_gloss_segments : cleaned,
+      segments: reverting ? (derived ? derived.segments : []) : stored,
+      segmented: !reverting,
+      ...(reverting ? { reverted: true } : {}),
     })
   } catch (error) {
     logger.error(`[Mapping] Failed to re-segment ${source} ${rowId} in ${courseCode}:`, error.message)

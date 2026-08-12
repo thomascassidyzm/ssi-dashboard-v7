@@ -324,6 +324,21 @@
                       </template>
                     </div>
                   </template>
+                  <!-- The way out. Only on a row a human has actually cut, and
+                       only for someone who may edit — a row already showing the
+                       original has nothing to go back to. It lives at the end of
+                       the chunk row, inside the strip: the closed row gains
+                       nothing at all, and the strip's height is fixed, so this
+                       costs no pixels either way (Tom: "I don't want to make the
+                       row deeper"). One tap, no confirm — it loses a few taps of
+                       work and is instantly redoable. -->
+                  <button
+                    v-if="canEditMapping && isHandSegmented(round.roundNumber, idx, item)"
+                    type="button"
+                    class="mapping-revert"
+                    title="Put this row's mapping back to the original"
+                    @click="revertMapping(round.roundNumber, idx, item)"
+                  >back to the original</button>
                 </div>
                 <!-- Normal one-line row -->
                 <div v-else class="flex gap-4 items-center mapping-oneline">
@@ -683,6 +698,10 @@ const mappingStatuses = ref<Map<string, { ok: boolean; message: string }>>(new M
 // Segmentations applied since the page loaded, so a row shows the new cut
 // immediately without refetching the whole journey.
 const mappingOverrides = ref<Map<string, GlossSegment[]>>(new Map())
+// Whether a row carries a HUMAN cut, as changed since the page loaded. Separate
+// from the cut itself because a revert changes this without the row going
+// blank: it keeps a gloss, just the generator's one rather than a person's.
+const mappingSegmented = ref<Map<string, boolean>>(new Map())
 
 const isMappingOpen = (roundNumber: number, idx: number) =>
   openMappings.value.has(rowKey(roundNumber, idx))
@@ -706,6 +725,13 @@ const currentSegments = (roundNumber: number, idx: number, item: ScriptItem): Gl
   mappingOverrides.value.get(rowKey(roundNumber, idx))
     || item.mapping?.segments
     || []
+
+// Has a person cut this row, as things stand right now? Only such a row has an
+// original to go back to.
+const isHandSegmented = (roundNumber: number, idx: number, item: ScriptItem): boolean => {
+  const changed = mappingSegmented.value.get(rowKey(roundNumber, idx))
+  return changed === undefined ? !!item.mapping?.segmented : changed
+}
 
 // Lay the segmentation out as columns for rendering: each chunk carries the
 // target words it sits under, and whether a break can be added inside it.
@@ -803,8 +829,20 @@ const nudgeWord = async (
   await saveSegments(roundNumber, idx, item, next)
 }
 
+// Put the row back to the state it was in before any human touched it. The row
+// keeps a gloss — it goes back to the one the generator derives — so this is not
+// a delete, and it is instantly redoable by cutting again. `null` on the wire is
+// the server's spelling of "no human segmentation here"; it stores NULL and
+// answers with the derived cut so the row can show the truth at once.
+const revertMapping = async (roundNumber: number, idx: number, item: ScriptItem) => {
+  if (!props.canEditMapping) return
+  if (!isHandSegmented(roundNumber, idx, item)) return
+  await saveSegments(roundNumber, idx, item, null)
+}
+
+// `segments === null` means revert; anything else is a re-segmentation.
 const saveSegments = async (
-  roundNumber: number, idx: number, item: ScriptItem, segments: GlossSegment[],
+  roundNumber: number, idx: number, item: ScriptItem, segments: GlossSegment[] | null,
 ) => {
   const key = rowKey(roundNumber, idx)
   const source = item.mapping?.source
@@ -816,8 +854,10 @@ const saveSegments = async (
 
   mappingStatuses.value.set(key, { ok: true, message: 'Saving…' })
   // Optimistic: the new cut shows at once, and is rolled back if the save fails.
+  // A revert shows nothing early on purpose — only the server knows what the
+  // derived gloss reads as, and guessing it would flash a cut that is not real.
   const previous = mappingOverrides.value.get(key)
-  mappingOverrides.value = new Map(mappingOverrides.value).set(key, segments)
+  if (segments) mappingOverrides.value = new Map(mappingOverrides.value).set(key, segments)
 
   try {
     const resp = await mappingFetch(
@@ -832,8 +872,16 @@ const saveSegments = async (
     if (!resp.ok || !body?.success || !Array.isArray(body.segments)) {
       throw new Error(body?.error || 'The mapping could not be saved.')
     }
+    // The body carries what the row now READS as — after a revert that is the
+    // generator's derivation, not the stale cut the page was served at load, so
+    // it is what the override must hold rather than being cleared.
     mappingOverrides.value = new Map(mappingOverrides.value).set(key, body.segments)
-    mappingStatuses.value = new Map(mappingStatuses.value).set(key, { ok: true, message: 'Saved' })
+    // A backend that predates the revert path says nothing about `segmented`;
+    // fall back to what the request itself implies rather than to false.
+    mappingSegmented.value = new Map(mappingSegmented.value)
+      .set(key, typeof body.segmented === 'boolean' ? body.segmented : !!segments)
+    mappingStatuses.value = new Map(mappingStatuses.value)
+      .set(key, { ok: true, message: segments ? 'Saved' : 'Back to the original' })
   } catch (err: any) {
     const rolled = new Map(mappingOverrides.value)
     if (previous) rolled.set(key, previous); else rolled.delete(key)
@@ -1423,4 +1471,24 @@ const getItemBgClass = (item: ScriptItem): string => {
 .mapping-nudge:hover, .mapping-merge:hover,
 .mapping-nudge:focus-visible, .mapping-merge:focus-visible { opacity: 1; }
 .mapping-merge { font-size: 0.4375rem; }
+
+/* The way back, at the end of the chunk row. It sits INSIDE the strip, whose
+   height is fixed at 1.5rem, so it can cost no row height in either state; it
+   is written for a course editor reading it cold, never in repo vocabulary. */
+.mapping-revert {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-left: 0.5rem;
+  padding: 0 0.3rem;
+  font-size: 0.5625rem;
+  line-height: 0.875rem;
+  white-space: nowrap;
+  opacity: 0.45;
+  cursor: pointer;
+  border-radius: 0.1875rem;
+  border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+  transition: opacity 0.12s ease;
+}
+.mapping-revert:hover,
+.mapping-revert:focus-visible { opacity: 1; }
 </style>
