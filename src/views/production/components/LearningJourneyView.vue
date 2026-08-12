@@ -255,47 +255,75 @@
                 R{{ item.reviewOf }}
               </div>
 
-              <!-- Content: known → target, OR the word mapping in two lines.
+              <!-- Content: known -> target, OR the literal gloss alignment.
                    This is a FLIP, not an expansion (Tom, 2026-08-12: "I don't
                    want to make the row deeper"). Both states occupy the same
-                   fixed height, so opening a mapping never moves the rows
+                   fixed height, so opening an alignment never moves the rows
                    below it. -->
               <div class="item-content flex-1 min-w-0">
-                <!-- Two-line mapping: known words on top, target words below,
-                     each line in its own natural reading order. Paired chips
-                     light up together — that pairing is the whole point, and a
-                     crossed pair is what Deborah needs to be able to see. -->
+                <!-- The alignment. Each TARGET word is a fixed column in the
+                     target's own order, with the literal gloss chunk sitting
+                     directly underneath the column(s) it covers. The known side
+                     reads wrong when the orders differ, and that is the point
+                     (Tom: "cosa azul = blue thing maps literally to thing
+                     blue"). Nothing here is ever reordered. -->
                 <div
                   v-if="isMappingOpen(round.roundNumber, idx)"
-                  class="mapping-stack flex flex-col justify-center"
+                  class="mapping-grid"
                   @click.stop
                 >
-                  <div class="mapping-line flex items-center gap-1 flex-nowrap overflow-x-auto">
-                    <button
-                      v-for="chip in mappingKnownChips(round.roundNumber, idx, item)"
-                      :key="`k${chip.block}`"
-                      type="button"
-                      class="mapping-chip mapping-chip-known"
-                      :class="chipClass(round.roundNumber, idx, chip.block, 'known')"
-                      :title="mappingChipTitle(round.roundNumber, idx, item, chip.block)"
-                      @click="onChipTap(round.roundNumber, idx, item, chip.block, 'known')"
-                      @mouseenter="hoverBlock = { row: rowKey(round.roundNumber, idx), block: chip.block }"
-                      @mouseleave="hoverBlock = null"
-                    >{{ chip.text }}</button>
-                  </div>
-                  <div class="mapping-line flex items-center gap-1 flex-nowrap overflow-x-auto">
-                    <button
-                      v-for="chip in mappingTargetChips(round.roundNumber, idx, item)"
-                      :key="`t${chip.block}`"
-                      type="button"
-                      class="mapping-chip mapping-chip-target"
-                      :class="chipClass(round.roundNumber, idx, chip.block, 'target')"
-                      :title="mappingChipTitle(round.roundNumber, idx, item, chip.block)"
-                      @click="onChipTap(round.roundNumber, idx, item, chip.block, 'target')"
-                      @mouseenter="hoverBlock = { row: rowKey(round.roundNumber, idx), block: chip.block }"
-                      @mouseleave="hoverBlock = null"
-                    >{{ chip.text }}</button>
-                  </div>
+                  <template v-for="chunk in glossChunks(round.roundNumber, idx, item)" :key="`c${chunk.index}`">
+                    <div class="mapping-col">
+                      <!-- Target line: one cell per target word, always, in the
+                           target's own order. Between two words of the SAME
+                           chunk sits a split control — tap it to cut the chunk
+                           exactly there. -->
+                      <div class="mapping-target-line">
+                        <template v-for="(w, wi) in chunk.words" :key="`w${w.col}`">
+                          <button
+                            v-if="wi > 0 && canEditMapping"
+                            type="button"
+                            class="mapping-split"
+                            title="Split the gloss here"
+                            @click="splitChunk(round.roundNumber, idx, item, chunk.index, wi)"
+                          >&#8942;</button>
+                          <span v-else-if="wi > 0" class="mapping-split-static">&#8942;</span>
+                          <span class="mapping-word">{{ w.text }}</span>
+                        </template>
+                      </div>
+                      <!-- Gloss line: ONE chunk, centred under all the words it
+                           covers. A chunk spanning two target words visibly
+                           spans both — that is many-to-one, read at a glance. -->
+                      <div
+                        class="mapping-gloss"
+                        :class="{ 'mapping-gloss-empty': !chunk.known }"
+                        :title="chunkTitle(chunk)"
+                      >{{ chunk.known || '·' }}</div>
+                    </div>
+                    <!-- The divider AFTER this chunk: merge it with the next, or
+                         move a single gloss word across without moving the
+                         break. Always visible, never hover-gated — this has to
+                         work on a tap. -->
+                    <div v-if="chunk.hasDividerAfter" class="mapping-divider">
+                      <template v-if="canEditMapping">
+                        <button
+                          type="button" class="mapping-nudge"
+                          title="Move one gloss word left"
+                          @click="nudgeWord(round.roundNumber, idx, item, chunk.index, 'left')"
+                        >&lsaquo;</button>
+                        <button
+                          type="button" class="mapping-merge"
+                          title="Merge these two chunks"
+                          @click="mergeChunk(round.roundNumber, idx, item, chunk.index)"
+                        >&#9679;</button>
+                        <button
+                          type="button" class="mapping-nudge"
+                          title="Move one gloss word right"
+                          @click="nudgeWord(round.roundNumber, idx, item, chunk.index, 'right')"
+                        >&rsaquo;</button>
+                      </template>
+                    </div>
+                  </template>
                 </div>
                 <!-- Normal one-line row -->
                 <div v-else class="flex gap-4 items-center mapping-oneline">
@@ -305,7 +333,7 @@
                 </div>
               </div>
 
-              <!-- Save feedback for a re-pairing. Plain sentences only — the
+              <!-- Save feedback for a re-segmentation. Plain sentences only — the
                    reader is a course editor, not an engineer. -->
               <span
                 v-if="mappingStatus(round.roundNumber, idx)"
@@ -497,16 +525,22 @@ import { qaGate } from '@/services/qaGate'
 // are NOT the same thing: a phrase row's stored per-chunk decomposition (what
 // the player renders under the target text, and therefore what a wrong gloss
 // reaches a learner through), or an M-LEGO's own component tiling.
-interface MappingBlock {
+// One chunk of the literal known-language gloss: the text, and how many
+// consecutive TARGET-word columns it sits under. Spans always sum to the number
+// of target words, so the grid can never claim more or fewer columns than the
+// target actually has.
+interface GlossSegment {
+  span: number
   known: string
-  target: string
-  legoId: string | null
-  isGhost: boolean
-  isSalient: boolean
 }
 interface ItemMapping {
   source: 'phrase' | 'lego'
-  blocks: MappingBlock[]
+  // The target's own words, in the target's own order. These are the columns
+  // and they are never edited or reordered.
+  words: string[]
+  segments: GlossSegment[]
+  // false = derived from the LEGO-chunked breakdown, no human has cut it yet.
+  segmented: boolean
 }
 
 interface ScriptItem {
@@ -604,20 +638,29 @@ const emit = defineEmits<{
 const emptySet = new Set<string>()
 const flaggedPhraseIds = computed(() => props.flaggedPhraseIds || emptySet)
 
-// ── Word mapping: check it on the row, and re-pair it there ────────────────
-// Deborah, reading Basque on 2026-08-12, saw `hitz bat` glossed with its two
-// words crossed and asked whether she could fix it herself. This is that.
+// ── Gloss alignment: read it on the row, re-cut it there ──────────────────
+// Deborah, reading Basque on 2026-08-12, saw the gloss on the wrong word and
+// asked whether she could fix it herself. This is that.
 //
-// "Check mapping" flips the row's single line into two: known words on top,
-// target words below, each in its own natural reading order. The lines are NOT
-// re-ordered to make pairs line up — Basque puts its article after the noun, so
-// a correct mapping crosses too. What makes a WRONG pairing visible is that
-// tapping or hovering either partner lights up both, so the editor reads the
-// pairing directly instead of inferring it from position.
+// "Check mapping" flips the row's single line into an aligned grid: each TARGET
+// word is a fixed column in the target's own order, and the literal gloss sits
+// directly underneath the column(s) it covers. When the two languages order
+// things differently the known side reads wrong, and that is deliberate —
+// Tom, 2026-08-12: "word order of target must be preserved and known language
+// will look wrong when the orders differ (cosa azul = blue thing maps literally
+// to thing blue)." Nothing on either line is ever reordered.
 //
-// Correcting one is tap-a-chip, tap-its-correct-partner. That is always a
-// straight swap of two chunks' glosses, which is why the write can be a pure
-// permutation and can leave every word of learner-facing text alone.
+// Editing is SEGMENTATION, not pairing. The target columns are fixed and never
+// edited. All an editor changes is where the breaks fall and which gloss words
+// sit in each chunk:
+//   tap a gap inside a chunk  -> split it there
+//   tap the divider dot       -> merge with the next chunk
+//   tap < or >                -> move one gloss word across that divider
+// A chunk may cover several columns (many-to-one) or be empty beside a wide
+// neighbour (one-to-many); neither needs a special case, both fall out of where
+// the breaks are (Tom: "sometimes total word counts do not match and that is
+// OK"). Every gesture saves immediately and can only move words between chunks
+// — never add, drop or edit one, and never touch the target or known text.
 
 const rowKey = (roundNumber: number, idx: number) => `${roundNumber}-${idx}`
 
@@ -635,14 +678,11 @@ const mappingFetch = async (path: string, init: RequestInit = {}) => {
 }
 
 const openMappings = ref<Set<string>>(new Set())
-// The chip waiting for its partner: which row, which block, which line.
-const armedChip = ref<{ row: string; block: number; side: 'known' | 'target' } | null>(null)
-const hoverBlock = ref<{ row: string; block: number } | null>(null)
 // Per-row save feedback, in plain sentences.
 const mappingStatuses = ref<Map<string, { ok: boolean; message: string }>>(new Map())
-// Local overrides applied after a successful save, so the row shows the
-// correction immediately without a full journey refetch.
-const mappingOverrides = ref<Map<string, string[]>>(new Map())
+// Segmentations applied since the page loaded, so a row shows the new cut
+// immediately without refetching the whole journey.
+const mappingOverrides = ref<Map<string, GlossSegment[]>>(new Map())
 
 const isMappingOpen = (roundNumber: number, idx: number) =>
   openMappings.value.has(rowKey(roundNumber, idx))
@@ -650,117 +690,123 @@ const isMappingOpen = (roundNumber: number, idx: number) =>
 const toggleMapping = (roundNumber: number, idx: number) => {
   const key = rowKey(roundNumber, idx)
   const next = new Set(openMappings.value)
-  if (next.has(key)) {
-    next.delete(key)
-    if (armedChip.value?.row === key) armedChip.value = null
-    mappingStatuses.value.delete(key)
-  } else {
-    next.add(key)
-  }
+  if (next.has(key)) { next.delete(key); mappingStatuses.value.delete(key) }
+  else next.add(key)
   openMappings.value = next
 }
 
 const mappingStatus = (roundNumber: number, idx: number) =>
   mappingStatuses.value.get(rowKey(roundNumber, idx)) || null
 
-// The glosses currently on the row — the stored ones, unless this row has been
-// re-paired since the page loaded.
-const currentKnowns = (roundNumber: number, idx: number, item: ScriptItem): string[] => {
-  const override = mappingOverrides.value.get(rowKey(roundNumber, idx))
-  if (override) return override
-  return (item.mapping?.blocks || []).map(b => b.known)
-}
+const glossWords = (s: string) => (s || '').trim().split(/\s+/).filter(Boolean)
 
-// The target line: stored block order, which IS the target's reading order.
-// A block with no gloss (an inserted particle the course does not teach on its
-// own) still gets a chip — an unpaired word must be visible, not hidden.
-const mappingTargetChips = (roundNumber: number, idx: number, item: ScriptItem) =>
-  (item.mapping?.blocks || [])
-    .map((b, block) => ({ block, text: b.target.trim() }))
-    .filter(c => c.text.length > 0)
+// The segmentation currently on the row: whatever this session last saved,
+// otherwise what the server served.
+const currentSegments = (roundNumber: number, idx: number, item: ScriptItem): GlossSegment[] =>
+  mappingOverrides.value.get(rowKey(roundNumber, idx))
+    || item.mapping?.segments
+    || []
 
-// The known line: ordered by where each gloss actually sits in the row's own
-// known text, so it reads as English reads. Blocks whose gloss cannot be found
-// there keep their stored rank — better a stable order than a confident wrong
-// one. Empty glosses produce no chip.
-const mappingKnownChips = (roundNumber: number, idx: number, item: ScriptItem) => {
-  const knowns = currentKnowns(roundNumber, idx, item)
-  const haystack = (item.known_text || '').toLowerCase()
-  const chips = knowns
-    .map((text, block) => ({ block, text: (text || '').trim() }))
-    .filter(c => c.text.length > 0)
-    .map(c => {
-      const at = haystack.indexOf(c.text.toLowerCase())
-      return { ...c, at: at === -1 ? Number.MAX_SAFE_INTEGER : at }
+// Lay the segmentation out as columns for rendering: each chunk carries the
+// target words it sits under, and whether a break can be added inside it.
+const glossChunks = (roundNumber: number, idx: number, item: ScriptItem) => {
+  const words = item.mapping?.words || []
+  const segments = currentSegments(roundNumber, idx, item)
+  const out: Array<{
+    index: number
+    known: string
+    words: Array<{ col: number; text: string }>
+    hasDividerAfter: boolean
+  }> = []
+  let col = 0
+  segments.forEach((seg, index) => {
+    const cols = []
+    for (let i = 0; i < seg.span; i++, col++) cols.push({ col, text: words[col] ?? '' })
+    out.push({
+      index,
+      known: seg.known,
+      words: cols,
+      hasDividerAfter: index < segments.length - 1,
     })
-  return chips
-    .slice()
-    .sort((a, b) => (a.at - b.at) || (a.block - b.block))
-    .map(({ block, text }) => ({ block, text }))
+  })
+  return out
 }
 
-const chipClass = (
-  roundNumber: number, idx: number, block: number, side: 'known' | 'target',
-) => {
-  const key = rowKey(roundNumber, idx)
-  const armed = armedChip.value
-  const isArmed = !!armed && armed.row === key && armed.block === block && armed.side === side
-  // Both partners light together, on hover OR tap — this is the signal, and it
-  // must not depend on a pointer the touch user does not have.
-  const isPaired =
-    (!!armed && armed.row === key && armed.block === block) ||
-    (!!hoverBlock.value && hoverBlock.value.row === key && hoverBlock.value.block === block)
-  return {
-    'mapping-chip-armed': isArmed,
-    'mapping-chip-paired': isPaired && !isArmed,
-    // Never colour alone: the pair also gets an outline, so a crossed pair
-    // reads for someone who is not looking for it.
-    [`mapping-tint-${block % 6}`]: true,
-  }
+const chunkTitle = (chunk: { known: string; words: Array<{ text: string }> }) => {
+  const target = chunk.words.map(w => w.text).join(' ')
+  return chunk.known ? `${target} = ${chunk.known}` : `${target} — no gloss sits here`
 }
 
-const mappingChipTitle = (
-  roundNumber: number, idx: number, item: ScriptItem, block: number,
-) => {
-  const knowns = currentKnowns(roundNumber, idx, item)
-  const target = (item.mapping?.blocks?.[block]?.target || '').trim()
-  const known = (knowns[block] || '').trim()
-  if (!known) return `${target} — no English word is paired with this`
-  return `${known} = ${target}`
-}
+// ── The three gestures. Each produces a whole new segmentation and saves it. ──
 
-// Tap one chip to arm it, tap its correct partner on the OTHER line to swap.
-// Tapping the armed chip again disarms. Same-line taps re-arm rather than
-// swapping, so a stray tap costs nothing.
-const onChipTap = async (
-  roundNumber: number, idx: number, item: ScriptItem,
-  block: number, side: 'known' | 'target',
+// Split a chunk at the boundary the editor tapped: `at` is how many of the
+// chunk's target words fall on the left. The gloss is cut at the proportionally
+// matching word boundary — a starting position the editor then nudges, never a
+// claim about which half means what.
+const splitChunk = async (
+  roundNumber: number, idx: number, item: ScriptItem, index: number, at: number,
 ) => {
-  const key = rowKey(roundNumber, idx)
   if (!props.canEditMapping) return
-  const armed = armedChip.value
+  const segments = currentSegments(roundNumber, idx, item)
+  const seg = segments[index]
+  if (!seg || seg.span < 2) return
 
-  if (armed && armed.row === key && armed.block === block) { armedChip.value = null; return }
-  if (!armed || armed.row !== key || armed.side === side) {
-    armedChip.value = { row: key, block, side }
-    mappingStatuses.value.delete(key)
-    return
-  }
-
-  const from = armed.block
-  const to = block
-  armedChip.value = null
-  if (from === to) return
-
-  const knowns = currentKnowns(roundNumber, idx, item).slice()
-  const swapped = knowns.slice()
-  swapped[from] = knowns[to]
-  swapped[to] = knowns[from]
-
-  await saveMapping(key, item, swapped)
+  const leftSpan = Math.min(Math.max(at, 1), seg.span - 1)
+  const gw = glossWords(seg.known)
+  const cut = Math.round((gw.length * leftSpan) / seg.span)
+  const next = segments.slice()
+  next.splice(index, 1,
+    { span: leftSpan, known: gw.slice(0, cut).join(' ') },
+    { span: seg.span - leftSpan, known: gw.slice(cut).join(' ') })
+  await saveSegments(roundNumber, idx, item, next)
 }
 
-const saveMapping = async (key: string, item: ScriptItem, knowns: string[]) => {
+const mergeChunk = async (
+  roundNumber: number, idx: number, item: ScriptItem, index: number,
+) => {
+  if (!props.canEditMapping) return
+  const segments = currentSegments(roundNumber, idx, item)
+  const a = segments[index]
+  const b = segments[index + 1]
+  if (!a || !b) return
+  const next = segments.slice()
+  next.splice(index, 2, {
+    span: a.span + b.span,
+    known: [a.known, b.known].map(t => t.trim()).filter(Boolean).join(' '),
+  })
+  await saveSegments(roundNumber, idx, item, next)
+}
+
+// Move exactly one gloss word across the divider after `index`. The columns do
+// not move — only which chunk the word belongs to.
+const nudgeWord = async (
+  roundNumber: number, idx: number, item: ScriptItem,
+  index: number, direction: 'left' | 'right',
+) => {
+  if (!props.canEditMapping) return
+  const segments = currentSegments(roundNumber, idx, item)
+  const a = segments[index]
+  const b = segments[index + 1]
+  if (!a || !b) return
+
+  const aw = glossWords(a.known)
+  const bw = glossWords(b.known)
+  if (direction === 'right') {
+    if (!aw.length) return
+    bw.unshift(aw.pop() as string)
+  } else {
+    if (!bw.length) return
+    aw.push(bw.shift() as string)
+  }
+  const next = segments.slice()
+  next.splice(index, 2, { ...a, known: aw.join(' ') }, { ...b, known: bw.join(' ') })
+  await saveSegments(roundNumber, idx, item, next)
+}
+
+const saveSegments = async (
+  roundNumber: number, idx: number, item: ScriptItem, segments: GlossSegment[],
+) => {
+  const key = rowKey(roundNumber, idx)
   const source = item.mapping?.source
   const rowId = source === 'phrase' ? item.phrase_id : item.legoId
   if (!source || !rowId) {
@@ -769,27 +815,25 @@ const saveMapping = async (key: string, item: ScriptItem, knowns: string[]) => {
   }
 
   mappingStatuses.value.set(key, { ok: true, message: 'Saving…' })
-  // Optimistic: the swap shows at once, and is rolled back if the save fails.
+  // Optimistic: the new cut shows at once, and is rolled back if the save fails.
   const previous = mappingOverrides.value.get(key)
-  mappingOverrides.value = new Map(mappingOverrides.value).set(key, knowns)
+  mappingOverrides.value = new Map(mappingOverrides.value).set(key, segments)
 
   try {
     const resp = await mappingFetch(
       `/api/production/${props.courseCode}/mapping/${encodeURIComponent(rowId)}`,
-      { method: 'POST', body: JSON.stringify({ source, known: knowns }) },
+      { method: 'POST', body: JSON.stringify({ source, segments }) },
     )
     // An unrouted /api path on this estate answers 200 with the SPA's HTML, so
-    // res.ok is not proof of a write — only a JSON body that echoes the saved
-    // blocks is. Anything else is treated as a failure.
+    // res.ok is not proof of a write — only a JSON body echoing the saved
+    // segments is. Anything else is treated as a failure.
     const ct = resp.headers.get('content-type') || ''
     const body = ct.includes('application/json') ? await resp.json().catch(() => null) : null
-    if (!resp.ok || !body?.success || !Array.isArray(body.blocks)) {
+    if (!resp.ok || !body?.success || !Array.isArray(body.segments)) {
       throw new Error(body?.error || 'The mapping could not be saved.')
     }
-    mappingOverrides.value = new Map(mappingOverrides.value)
-      .set(key, body.blocks.map((b: MappingBlock) => b.known))
-    mappingStatuses.value = new Map(mappingStatuses.value)
-      .set(key, { ok: true, message: 'Saved' })
+    mappingOverrides.value = new Map(mappingOverrides.value).set(key, body.segments)
+    mappingStatuses.value = new Map(mappingStatuses.value).set(key, { ok: true, message: 'Saved' })
   } catch (err: any) {
     const rolled = new Map(mappingOverrides.value)
     if (previous) rolled.set(key, previous); else rolled.delete(key)
@@ -798,7 +842,6 @@ const saveMapping = async (key: string, item: ScriptItem, knowns: string[]) => {
       .set(key, { ok: false, message: err?.message || 'The mapping could not be saved.' })
   }
 }
-
 
 // ── Player-delivery annotation ────────────────────────────────────────────
 // The Script Viewer always shows the FULL intended course. These helpers turn
@@ -882,9 +925,12 @@ async function loadQaStatus() {
 onMounted(loadQaStatus)
 watch(() => props.courseCode, loadQaStatus)
 
-// Escape disarms a half-made re-pairing without closing the mapping.
+// Escape closes any open alignment. Every edit gesture is a single tap that
+// saves on its own, so there is no half-made state left to abandon.
 onMounted(() => {
-  const onEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') armedChip.value = null }
+  const onEsc = (e: KeyboardEvent) => {
+    if (e.key === 'Escape' && openMappings.value.size) openMappings.value = new Set()
+  }
   window.addEventListener('keydown', onEsc)
   onUnmounted(() => window.removeEventListener('keydown', onEsc))
 })
@@ -1274,58 +1320,107 @@ const getItemBgClass = (item: ScriptItem): string => {
   color: var(--accent); /* #a85508 amber/orange family, 5.4:1 on surface */
 }
 
-/* ── Word mapping ─────────────────────────────────────────────────────────
-   The two-line mapping must occupy EXACTLY the height of the single line it
-   replaces (Tom, 2026-08-12: "I don't want to make the row deeper"). Both
-   states are pinned to 1.5rem, so flipping a row never moves the rows below
-   it. Two 0.75rem lines fit inside that; anything longer scrolls sideways
-   rather than wrapping, because a wrap would grow the row. */
-.mapping-oneline,
-.mapping-stack {
+/* ── Gloss alignment ──────────────────────────────────────────────────────
+   Each TARGET word is a column, in the target's own order, with the literal
+   gloss chunk directly underneath the column(s) it covers. When the languages
+   order things differently the known side reads wrong — that is the point
+   (Tom, 2026-08-12), so nothing here is ever reordered to read naturally.
+
+   The whole grid must occupy EXACTLY the height of the single line it replaces
+   ("I don't want to make the row deeper"). Both states are pinned to 1.5rem;
+   two 0.75rem lines fit inside that, and a long phrase scrolls sideways rather
+   than wrapping, because a wrap would grow the row. */
+.mapping-oneline {
   height: 1.5rem;
 }
 
-.mapping-line {
-  height: 0.75rem;
-  line-height: 0.75rem;
+.mapping-grid {
+  height: 1.5rem;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   scrollbar-width: none;
 }
-.mapping-line::-webkit-scrollbar { display: none; }
+.mapping-grid::-webkit-scrollbar { display: none; }
 
-.mapping-chip {
+/* One chunk: its target words on top, its single gloss underneath them. The
+   column is as wide as the wider of the two, which is what makes the gloss sit
+   under exactly the words it belongs to. */
+.mapping-col {
+  position: relative;
   flex: 0 0 auto;
-  padding: 0 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.3rem;
+  border-radius: 0.1875rem;
+  background: color-mix(in srgb, currentColor 6%, transparent);
+  margin-right: 0.25rem;
+}
+.mapping-col:last-child { margin-right: 0; }
+
+.mapping-target-line {
+  display: flex;
+  gap: 0.3rem;
+  height: 0.75rem;
+  line-height: 0.75rem;
+  white-space: nowrap;
+}
+.mapping-word {
   font-size: 0.6875rem;
   line-height: 0.75rem;
-  border-radius: 0.1875rem;
-  border: 1px solid transparent;
+  font-weight: 600;
+}
+
+/* The gloss sits centred under its whole column — a chunk covering two target
+   words visibly spans both, which is how many-to-one reads at a glance. */
+.mapping-gloss {
+  height: 0.75rem;
+  line-height: 0.75rem;
+  font-size: 0.625rem;
+  text-align: center;
   white-space: nowrap;
+  opacity: 0.75;
+}
+/* A target word with no gloss under it stays visible as a dot rather than
+   silently looking like part of its neighbour. */
+.mapping-gloss-empty { opacity: 0.3; }
+
+/* The split control, between two target words of the SAME chunk. Always
+   visible, never hover-gated — the whole thing has to work on a tap. */
+.mapping-split,
+.mapping-split-static {
+  font-size: 0.5625rem;
+  line-height: 0.75rem;
+  opacity: 0.35;
   cursor: pointer;
-  transition: background-color 0.12s ease, border-color 0.12s ease;
+  transition: opacity 0.12s ease;
 }
-.mapping-chip-target { font-weight: 600; }
+.mapping-split-static { cursor: default; }
+.mapping-split:hover,
+.mapping-split:focus-visible { opacity: 1; }
 
-/* Pair tints. Deliberately subtle and deliberately NOT the only signal — the
-   highlight below carries an outline as well, so a crossed pair reads for
-   someone who is not looking for it and for someone who cannot see the hue. */
-.mapping-tint-0 { background: color-mix(in srgb, #38bdf8 14%, transparent); }
-.mapping-tint-1 { background: color-mix(in srgb, #a78bfa 14%, transparent); }
-.mapping-tint-2 { background: color-mix(in srgb, #34d399 14%, transparent); }
-.mapping-tint-3 { background: color-mix(in srgb, #fbbf24 14%, transparent); }
-.mapping-tint-4 { background: color-mix(in srgb, #f472b6 14%, transparent); }
-.mapping-tint-5 { background: color-mix(in srgb, #94a3b8 14%, transparent); }
-
-/* Both partners light together — on hover AND on tap, because a touch user
-   has no hover. */
-.mapping-chip-paired {
-  border-color: currentColor;
-  background: color-mix(in srgb, currentColor 22%, transparent);
+/* The divider between two chunks: nudge one gloss word either way, or merge. */
+.mapping-divider {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.0625rem;
+  padding: 0 0.125rem;
+  margin-right: 0.25rem;
+  border-left: 1px solid color-mix(in srgb, currentColor 30%, transparent);
 }
-
-/* Armed: waiting for its partner on the other line. */
-.mapping-chip-armed {
-  border-color: currentColor;
-  background: color-mix(in srgb, currentColor 40%, transparent);
-  outline: 1px solid currentColor;
+.mapping-nudge,
+.mapping-merge {
+  font-size: 0.5625rem;
+  line-height: 1;
+  padding: 0 0.0625rem;
+  opacity: 0.45;
+  cursor: pointer;
+  transition: opacity 0.12s ease;
 }
+.mapping-nudge:hover, .mapping-merge:hover,
+.mapping-nudge:focus-visible, .mapping-merge:focus-visible { opacity: 1; }
+.mapping-merge { font-size: 0.4375rem; }
 </style>

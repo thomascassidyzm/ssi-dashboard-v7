@@ -255,51 +255,107 @@ function calculateSpacedRepReviews(roundNumber, offsets = FIBONACCI) {
 }
 
 /**
- * The known↔target word mapping a row can SHOW — PURE.
+ * The literal gloss alignment a row can SHOW — PURE.
  *
- * This is the thing Deborah reads under the target text: which English gloss
- * sits against which chunk of the target. Two stores hold it and they are NOT
- * interchangeable:
+ * Tom's ruling, 2026-08-12: "word order of target must be preserved and known
+ * language will look wrong when the orders differ (cosa azul = blue thing maps
+ * literally to thing blue)." So the target's own words are fixed columns, left
+ * to right, and the known-language gloss is cut into chunks that sit UNDER
+ * them. Basque `hitz bat` reads `word` `a`. Nothing is ever reordered to make
+ * the known side read naturally — reading wrong is the point.
  *
- *  - a PHRASE row's `course_practice_phrases.decomposition` — the ordered
- *    per-chunk breakdown of that phrase, `{known, target, legoId, isGhost,
- *    isSalient}`. This is what the player renders ("Strategy 0 (authoritative)"
- *    in LearningPlayer.vue) and therefore what a wrong gloss reaches a learner
- *    through. It is the source for build/use/review/consolidate rows.
- *  - an M-LEGO's `course_legos.components` — `{known, target, introduce}`, the
- *    LEGO's own internal tiling. Source for intro/debut rows, and only M-LEGOs
- *    have one.
+ * A chunk may span several target words (many-to-one) and may be empty beside a
+ * wide neighbour (one-to-many). Both fall out of where the breaks are; neither
+ * is a special case, and the two sides' word counts need not match.
  *
- * "When appropriate" (Tom, 2026-08-12) = there is genuinely more than one part
- * to pair. A single block has no mapping to check, so it returns null and the
- * row shows no glyph rather than a dead one.
+ * Storage is `known_gloss_segments`, and it is deliberately NOT `decomposition`:
+ * decomposition is chunked by LEGO, not by word (`hitz bat esan nahi dut` is 3
+ * blocks over 5 words), and the learner's player renders those blocks as tiles
+ * that require the salient LEGO to stay whole. See the migration for the full
+ * reasoning. When no human has segmented a row yet, we DERIVE a faithful start
+ * from decomposition/components — each block's gloss spanning exactly that
+ * block's own target words — rather than guessing a per-word split, because
+ * guessing a split is precisely the drift bug this tool exists to fix.
  *
- * @returns {{source:'phrase'|'lego', blocks:Array<{known:string,target:string,legoId:string|null,isGhost:boolean,isSalient:boolean}>}|null}
+ * "When appropriate" (Tom): a row with fewer than two target words has no
+ * alignment to look at, so it returns null and shows no glyph rather than a
+ * dead one.
  */
-function mappingFromDecomposition(decomposition) {
-  if (!Array.isArray(decomposition) || decomposition.length < 2) return null
-  const blocks = decomposition.map(b => ({
-    known: typeof b.known === 'string' ? b.known : '',
-    target: typeof b.target === 'string' ? b.target : '',
-    legoId: b.legoId || null,
-    isGhost: !!b.isGhost,
-    isSalient: !!b.isSalient,
-  }))
-  if (!blocks.some(b => b.target.trim())) return null
-  return { source: 'phrase', blocks }
+
+/** Target words are the columns. Split on whitespace; nothing else is a word. */
+function targetWordsOf(targetText) {
+  return String(targetText || '').trim().split(/\s+/).filter(Boolean)
 }
 
-function mappingFromComponents(components) {
-  if (!Array.isArray(components) || components.length < 2) return null
-  const blocks = components.map(c => ({
-    known: typeof c.known === 'string' ? c.known : '',
-    target: typeof c.target === 'string' ? c.target : '',
-    legoId: null,
-    isGhost: false,
-    isSalient: false,
-  }))
-  if (!blocks.some(b => b.target.trim())) return null
-  return { source: 'lego', blocks }
+/** Do these chunks exactly cover `wordCount` columns? */
+function segmentsCoverWords(segments, wordCount) {
+  if (!Array.isArray(segments) || segments.length === 0) return false
+  let total = 0
+  for (const seg of segments) {
+    if (!seg || !Number.isInteger(seg.span) || seg.span < 1) return false
+    if (typeof seg.known !== 'string') return false
+    total += seg.span
+  }
+  return total === wordCount
+}
+
+/**
+ * Derive a starting segmentation from LEGO-chunked blocks. Each block claims as
+ * many target-word columns as its own target text has words, and its gloss sits
+ * across all of them. Faithful, never inventive.
+ */
+function segmentsFromBlocks(blocks, wordCount) {
+  const segments = []
+  let claimed = 0
+  for (const b of blocks) {
+    const span = targetWordsOf(b.target).length
+    if (span < 1) continue
+    if (claimed + span > wordCount) break
+    segments.push({ span, known: typeof b.known === 'string' ? b.known : '' })
+    claimed += span
+  }
+  // The blocks did not tile the target text (stale or partial decomposition).
+  // Give the leftover columns their own empty chunks rather than dropping them:
+  // a target word with no gloss must stay visible, not vanish.
+  if (claimed < wordCount) {
+    for (let i = claimed; i < wordCount; i++) segments.push({ span: 1, known: '' })
+  }
+  return segments
+}
+
+/**
+ * @returns {{source:'phrase'|'lego', words:string[], segments:Array<{span:number,known:string}>, segmented:boolean}|null}
+ */
+function glossAlignment(source, targetText, blocks, storedSegments) {
+  const words = targetWordsOf(targetText)
+  if (words.length < 2) return null
+
+  if (segmentsCoverWords(storedSegments, words.length)) {
+    return {
+      source,
+      words,
+      segments: storedSegments.map(s => ({ span: s.span, known: s.known })),
+      segmented: true,
+    }
+  }
+
+  const usable = Array.isArray(blocks) ? blocks : []
+  const segments = segmentsFromBlocks(usable, words.length)
+  // Nothing to look at if no column carries any gloss at all.
+  if (!segments.some(s => s.known.trim())) return null
+  return { source, words, segments, segmented: false }
+}
+
+function mappingFromPhrase(phrase) {
+  if (!phrase) return null
+  return glossAlignment(
+    'phrase', phrase.target_text, phrase.decomposition, phrase.known_gloss_segments)
+}
+
+function mappingFromLego(lego) {
+  if (!lego) return null
+  return glossAlignment(
+    'lego', lego.target_text, lego.components, lego.known_gloss_segments)
 }
 
 /**
@@ -543,10 +599,10 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
           known_duration_ms: null,
           target1_duration_ms: record.target1_duration_ms,
           target2_duration_ms: record.target2_duration_ms,
-          // M-LEGO internal tiling — carried so intro/debut rows can show the
-          // component mapping. NULL on every A-LEGO; the mapping helper turns
-          // that into "no glyph on this row".
+          // M-LEGO internal tiling — carried so intro/debut rows can derive a
+          // starting gloss alignment. NULL on every A-LEGO.
           components: record.components || null,
+          known_gloss_segments: record.known_gloss_segments || null,
         },
         seed: {
           seed_id: seedId,
@@ -630,12 +686,14 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         known_duration_ms: null,
         target1_duration_ms: row.target1_duration_ms,
         target2_duration_ms: row.target2_duration_ms,
-        // The stored per-chunk known/target breakdown — the gloss the player
-        // renders under the target text, and so the mapping the Script Viewer
-        // shows and lets an editor re-pair. This projection is a fixed shape,
-        // not a passthrough: leaving it out here is exactly why the mapping was
+        // The stored per-chunk known/target breakdown — the LEGO-chunked tiling
+        // the player renders. This projection is a fixed shape, not a
+        // passthrough: leaving a column out here is exactly why the mapping was
         // absent from every phrase row on the first pass.
         decomposition: row.decomposition || null,
+        // The human-made per-target-word gloss alignment, when one exists.
+        // Falls back to deriving from decomposition when NULL.
+        known_gloss_segments: row.known_gloss_segments || null,
       }))
 
       const componentPhrases = allPhrases.filter(p => p.phrase_role === 'component')
@@ -1050,7 +1108,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: currentLego.lego.target1_audio_uuid,
         target2_audio_uuid: currentLego.lego.target2_audio_uuid,
         hasAudio: !!(effectiveIntroAudio && currentLego.lego.target1_audio_uuid),
-        mapping: mappingFromComponents(currentLego.lego.components),
+        mapping: mappingFromLego(currentLego.lego),
       })
     }
 
@@ -1065,7 +1123,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: currentLego.lego.target1_audio_uuid,
         target2_audio_uuid: currentLego.lego.target2_audio_uuid,
         hasAudio: !!(currentLego.lego.known_audio_uuid && currentLego.lego.target1_audio_uuid),
-        mapping: mappingFromComponents(currentLego.lego.components),
+        mapping: mappingFromLego(currentLego.lego),
       })
     }
     // The debut IS the bare LEGO — claim it whether or not it was emitted, so
@@ -1107,7 +1165,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: phrase.target1_audio_uuid,
         target2_audio_uuid: phrase.target2_audio_uuid,
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
-        mapping: mappingFromDecomposition(phrase.decomposition),
+        mapping: mappingFromPhrase(phrase),
       })
       usedPhrasesInRound.add(phraseId)
       practiceCount++
@@ -1137,7 +1195,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: phrase.target1_audio_uuid,
         target2_audio_uuid: phrase.target2_audio_uuid,
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
-        mapping: mappingFromDecomposition(phrase.decomposition),
+        mapping: mappingFromPhrase(phrase),
       })
       usedPhrasesInRound.add(phraseId)
       practiceCount++
@@ -1278,7 +1336,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
           target1_audio_uuid: phrase.target1_audio_uuid,
           target2_audio_uuid: phrase.target2_audio_uuid,
           hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
-          mapping: mappingFromDecomposition(phrase.decomposition),
+          mapping: mappingFromPhrase(phrase),
         })
         reviewCount++
       }
@@ -1299,7 +1357,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: phrase.target1_audio_uuid,
         target2_audio_uuid: phrase.target2_audio_uuid,
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
-        mapping: mappingFromDecomposition(phrase.decomposition),
+        mapping: mappingFromPhrase(phrase),
       })
     }
     // Consolidate is a REVIEW-class pull, so it takes the same known-side
@@ -1461,8 +1519,12 @@ module.exports = {
   loadAlgorithmConfig,
   calculateSpacedRepReviews,
   seedSentenceFor,
-  mappingFromDecomposition,
-  mappingFromComponents,
+  glossAlignment,
+  targetWordsOf,
+  segmentsCoverWords,
+  segmentsFromBlocks,
+  mappingFromPhrase,
+  mappingFromLego,
   reviewItemIsSeed,
   legoIntroIsPlayable,
   legoDebutIsPlayable,

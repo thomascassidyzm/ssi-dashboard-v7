@@ -762,63 +762,132 @@ describe('generateLearningScript learnerView — per-item degradation parity', (
   })
 })
 
-// ── Word mapping: what a row can SHOW, and when it shows nothing ──────────
-// Deborah's Basque case (2026-08-12): the gloss under the target text is
-// PHRASE decomposition, not LEGO components — the row she reported
-// (eus_for_eng S0006L02, an A-LEGO) has no components at all.
+// ── Gloss alignment: target words are the columns ─────────────────────────
+// Tom's ruling, 2026-08-12: the target keeps its own word order and the known
+// gloss sits underneath it, reading wrong when the orders differ. Basque
+// `hitz bat` glosses `word` `a`, never reordered to "a word".
 const {
-  mappingFromDecomposition,
-  mappingFromComponents,
+  glossAlignment,
+  targetWordsOf,
+  segmentsCoverWords,
+  segmentsFromBlocks,
+  mappingFromPhrase,
+  mappingFromLego,
 } = require('./learning-script-generator.cjs')
 
-describe('word mapping on a row', () => {
-  // The real stored decomposition of eus_for_eng:S0006L02B01, after the
-  // 2026-08-12 gloss refresh.
-  const hitzBat = [
+describe('gloss alignment on a row', () => {
+  // The real stored decomposition of eus_for_eng:S0006L02B01. Note it is
+  // chunked by LEGO, not by word: 3 blocks over 5 target words.
+  const hitzBatBlocks = [
     { known: 'a word', legoId: 'S0006L02', target: 'hitz bat', isGhost: false, isSalient: true },
     { known: '', legoId: null, target: ' esan', isGhost: true },
     { known: 'I want', legoId: 'S0001L01', target: ' nahi dut', isGhost: false },
   ]
+  const hitzBatTarget = 'hitz bat esan nahi dut'
 
-  it('carries every stored block through, ghosts included', () => {
-    const m = mappingFromDecomposition(hitzBat)
-    expect(m.source).toBe('phrase')
-    expect(m.blocks).toHaveLength(3)
-    expect(m.blocks[0]).toEqual({
-      known: 'a word', target: 'hitz bat', legoId: 'S0006L02', isGhost: false, isSalient: true,
-    })
-    // A ghost keeps its slot — an unpaired word must stay visible, not vanish.
-    expect(m.blocks[1].isGhost).toBe(true)
-    expect(m.blocks[1].known).toBe('')
+  it('makes one column per TARGET word, in the target order', () => {
+    const a = glossAlignment('phrase', hitzBatTarget, hitzBatBlocks, null)
+    expect(a.words).toEqual(['hitz', 'bat', 'esan', 'nahi', 'dut'])
   })
 
-  it('normalises the optional flags rather than leaking undefined', () => {
-    const m = mappingFromDecomposition(hitzBat)
-    expect(m.blocks[2].isSalient).toBe(false)
-  })
-
-  // "When appropriate" (Tom): nothing to pair → no glyph on the row.
-  it('shows nothing when there is nothing to pair', () => {
-    expect(mappingFromDecomposition(null)).toBeNull()
-    expect(mappingFromDecomposition([])).toBeNull()
-    expect(mappingFromDecomposition([hitzBat[0]])).toBeNull()
-    expect(mappingFromComponents(null)).toBeNull()
-    expect(mappingFromComponents([{ known: 'a', target: 'b' }])).toBeNull()
-  })
-
-  it('shows nothing when every block is empty of target text', () => {
-    expect(mappingFromDecomposition([
-      { known: 'a', target: '  ' }, { known: 'b', target: '' },
-    ])).toBeNull()
-  })
-
-  it('reads an M-LEGO components array as a lego-source mapping', () => {
-    const m = mappingFromComponents([
-      { known: 'to remember', target: 'gogoratu', introduce: true },
-      { known: 'wishing to', target: 'nahian ari naiz', introduce: false },
+  it('derives a faithful start: each block spans its own words, never guessing a split', () => {
+    const a = glossAlignment('phrase', hitzBatTarget, hitzBatBlocks, null)
+    // "a word" spans hitz+bat as one chunk — it is NOT split into word/a,
+    // because which half is which is exactly what a human must decide.
+    expect(a.segments).toEqual([
+      { span: 2, known: 'a word' },
+      { span: 1, known: '' },
+      { span: 2, known: 'I want' },
     ])
-    expect(m.source).toBe('lego')
-    expect(m.blocks.map(b => b.known)).toEqual(['to remember', 'wishing to'])
-    expect(m.blocks.every(b => b.isGhost === false)).toBe(true)
+    expect(a.segments.reduce((n, s) => n + s.span, 0)).toBe(a.words.length)
+    expect(a.segmented).toBe(false)
+  })
+
+  it('prefers a human segmentation over the derived one', () => {
+    // What Tom asked for on this row: hitz -> word, bat -> a.
+    const human = [
+      { span: 1, known: 'word' }, { span: 1, known: 'a' }, { span: 1, known: '' },
+      { span: 1, known: 'want' }, { span: 1, known: 'I do' },
+    ]
+    const a = glossAlignment('phrase', hitzBatTarget, hitzBatBlocks, human)
+    expect(a.segments).toEqual(human)
+    expect(a.segmented).toBe(true)
+  })
+
+  it('ignores a stored segmentation that no longer covers the target', () => {
+    const stale = [{ span: 2, known: 'a word' }]   // 2 of 5 columns
+    const a = glossAlignment('phrase', hitzBatTarget, hitzBatBlocks, stale)
+    expect(a.segmented).toBe(false)
+    expect(a.segments.reduce((n, s) => n + s.span, 0)).toBe(5)
+  })
+
+  it('gives leftover target words their own empty column rather than dropping them', () => {
+    // Blocks tile only the first two words; the rest must still be visible.
+    const partial = [{ known: 'a word', target: 'hitz bat' }]
+    const a = glossAlignment('phrase', hitzBatTarget, partial, null)
+    expect(a.segments).toEqual([
+      { span: 2, known: 'a word' },
+      { span: 1, known: '' }, { span: 1, known: '' }, { span: 1, known: '' },
+    ])
+  })
+
+  // "When appropriate" (Tom): nothing to align -> no glyph on the row.
+  it('shows nothing when there is nothing to align', () => {
+    expect(glossAlignment('phrase', 'hitzak', hitzBatBlocks, null)).toBeNull()
+    expect(glossAlignment('phrase', '', hitzBatBlocks, null)).toBeNull()
+    expect(glossAlignment('phrase', 'hitz bat', [], null)).toBeNull()
+    expect(glossAlignment('phrase', 'hitz bat', [{ known: '', target: 'hitz bat' }], null)).toBeNull()
+  })
+
+  it('reads an M-LEGO components array the same way', () => {
+    const a = mappingFromLego({
+      target_text: 'gogoratzen saiatzen ari naiz',
+      components: [
+        { known: 'to remember', target: 'gogoratu', introduce: true },
+        { known: 'wishing to', target: 'nahian ari naiz', introduce: false },
+      ],
+      known_gloss_segments: null,
+    })
+    expect(a.source).toBe('lego')
+    expect(a.words).toEqual(['gogoratzen', 'saiatzen', 'ari', 'naiz'])
+    // 'gogoratu' is one word, 'nahian ari naiz' is three — 1 + 3 = 4 columns.
+    expect(a.segments).toEqual([
+      { span: 1, known: 'to remember' },
+      { span: 3, known: 'wishing to' },
+    ])
+  })
+
+  it('mappingFromPhrase tolerates a row with no blocks at all', () => {
+    expect(mappingFromPhrase({ target_text: 'hitz bat', decomposition: null })).toBeNull()
+    expect(mappingFromPhrase(null)).toBeNull()
+  })
+
+  describe('the shape gate', () => {
+    it('accepts only whole spans of at least 1 that sum to the column count', () => {
+      expect(segmentsCoverWords([{ span: 2, known: 'a' }, { span: 1, known: '' }], 3)).toBe(true)
+      expect(segmentsCoverWords([{ span: 2, known: 'a' }], 3)).toBe(false)
+      expect(segmentsCoverWords([{ span: 0, known: 'a' }], 0)).toBe(false)
+      expect(segmentsCoverWords([{ span: 1.5, known: 'a' }], 1.5)).toBe(false)
+      expect(segmentsCoverWords([{ span: 1 }], 1)).toBe(false)          // no known
+      expect(segmentsCoverWords([], 0)).toBe(false)
+      expect(segmentsCoverWords(null, 0)).toBe(false)
+    })
+  })
+
+  describe('target words', () => {
+    it('splits on whitespace and nothing else', () => {
+      expect(targetWordsOf('  hitz   bat  ')).toEqual(['hitz', 'bat'])
+      expect(targetWordsOf('')).toEqual([])
+      expect(targetWordsOf(null)).toEqual([])
+      // Punctuation stays attached — it is part of the word as rendered.
+      expect(targetWordsOf('¿cosa azul?')).toEqual(['¿cosa', 'azul?'])
+    })
+  })
+
+  describe('derivation from blocks', () => {
+    it('never emits a span wider than the columns that remain', () => {
+      const segs = segmentsFromBlocks([{ known: 'x', target: 'a b c d' }], 2)
+      expect(segs).toEqual([{ span: 1, known: '' }, { span: 1, known: '' }])
+    })
   })
 })

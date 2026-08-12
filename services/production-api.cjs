@@ -7337,48 +7337,69 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
 // Shows rounds with spaced repetition (Fibonacci-based reviews)
 // Ported from ssi-learning-app's generateLearningScript()
 // =============================================================================
-// WORD MAPPING — read on the row, re-pair in place
+// GLOSS ALIGNMENT — read on the row, re-segment in place
 //
-// The mapping is which known gloss sits against which chunk of target text.
-// Deborah reported it crossed on Basque `hitz bat` (2026-08-12) and asked to be
-// able to fix it herself; this is that write path.
+// The alignment is the literal known-language gloss cut into chunks that sit
+// UNDER the target's own words, in the target's own order (Tom, 2026-08-12:
+// "word order of target must be preserved and known language will look wrong
+// when the orders differ"). Deborah reported it wrong on Basque `hitz bat`
+// (2026-08-12) and asked to be able to fix it herself; this is that write path.
 //
-// It re-pairs and NOTHING else. The request may only PERMUTE the known glosses
-// already stored on the row — it cannot introduce a gloss, drop one, reorder
-// the target, or touch any text a learner hears. Consequences, all deliberate:
+// Editing is SEGMENTATION, not pairing. The target words are fixed columns and
+// are never touched. All this endpoint can change is where the breaks fall and
+// which known words land in each chunk. Consequences, all deliberate:
 //
-//  - no row is deleted or recreated (unlike the components/backfill route,
-//    which drops and rebuilds every component row and would orphan audio);
-//  - no `known_text` or `target_text` on any phrase or LEGO changes, so NO
-//    audio clip anywhere goes stale and no audio pass is owed;
-//  - it can never trigger a re-translate or a TTS render.
+//  - no target text and no known text changes anywhere, on any row, ever;
+//  - no row is deleted or recreated, and `decomposition` is not touched at all,
+//    so the learner's LEGO tiling and its salient highlight are untouched;
+//  - therefore no audio clip can go stale and no audio pass is owed;
+//  - it can never reach a re-translate or a TTS render.
 //
-// The permutation check is what buys all of that, so it is a hard gate, not a
-// nicety: a body that is not a permutation is a 400, never a partial write.
+// Two hard gates buy all of that, so neither is a nicety:
+//  1. the chunk spans must sum to the row's actual target word count — the
+//     alignment can never claim more or fewer columns than the target has;
+//  2. the gloss words must be exactly the words already there, as a multiset.
+//     Order is deliberately NOT compared — re-cutting to follow the target's
+//     order is what reorders the gloss ("a word" -> `word` `a`), so comparing
+//     order would refuse the very edit this exists to make. Words may move
+//     anywhere; none may be invented, dropped or edited.
+// A request failing either is a 4xx, never a partial write.
 // =============================================================================
 
-// Resolve the caller HERE rather than reading req.dashboardUser. The course
-// scope param sets that field, but it returns early for same-host service-mesh
-// calls, which would leave the field unset and silently refuse a real editor
-// (or, on any future change to that early return, silently admit a caller who
-// was never identified). Deciding a write gate off a side effect of another
-// middleware is not worth the saved line.
 const MAPPING_EDIT_ROLES = ['admin', 'editor']
 function canEditMapping(user) {
   return !!user && MAPPING_EDIT_ROLES.includes(user.role)
 }
 
-// Multiset equality on the glosses. Order is exactly what the editor is
-// changing, so it must NOT be part of the comparison — only membership is.
-function sameGlossMultiset(a, b) {
-  if (a.length !== b.length) return false
-  const key = s => (typeof s === 'string' ? s : '').trim()
-  return [...a].map(key).sort().join(' ') === [...b].map(key).sort().join(' ')
+const glossWords = str => String(str || '').trim().split(/\s+/).filter(Boolean)
+
+// The gloss as a word MULTISET, independent of order and of where the breaks
+// are. Order deliberately plays no part: re-segmenting to follow the target's
+// word order is exactly what reorders the gloss — Basque `hitz bat` turns
+// "a word" into `word` `a` — so an ordered comparison would refuse the very
+// edit this tool exists to make. What must not change is WHICH words are there.
+function glossWordMultiset(segments) {
+  return segments.flatMap(s => glossWords(s.known)).sort().join(' ')
+}
+
+function invalidSegments(segments, wordCount) {
+  if (!Array.isArray(segments) || segments.length === 0) return 'segments must be a non-empty array'
+  let total = 0
+  for (const seg of segments) {
+    if (!seg || typeof seg !== 'object') return 'each segment must be an object'
+    if (!Number.isInteger(seg.span) || seg.span < 1) return 'each segment needs a whole span of at least 1'
+    if (typeof seg.known !== 'string') return 'each segment needs a known string'
+    total += seg.span
+  }
+  if (total !== wordCount) {
+    return `the segments cover ${total} target words but this row has ${wordCount}`
+  }
+  return null
 }
 
 app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
   const { courseCode, rowId } = req.params
-  const { source, known } = req.body || {}
+  const { source, segments } = req.body || {}
 
   const editor = await resolveDashboardUserCached(req)
   if (!canEditMapping(editor)) {
@@ -7386,9 +7407,6 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
   }
   if (source !== 'phrase' && source !== 'lego') {
     return res.status(400).json({ error: "source must be 'phrase' or 'lego'" })
-  }
-  if (!Array.isArray(known) || known.some(k => typeof k !== 'string')) {
-    return res.status(400).json({ error: 'known must be an array of strings' })
   }
 
   try {
@@ -7398,12 +7416,12 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
     const supabase = supabaseClient.getClient()
 
     const table = source === 'phrase' ? 'course_practice_phrases' : 'course_legos'
-    const column = source === 'phrase' ? 'decomposition' : 'components'
+    const blockColumn = source === 'phrase' ? 'decomposition' : 'components'
     const idColumn = source === 'phrase' ? 'id' : 'lego_id'
 
     const { data: row, error: fetchError } = await supabase
       .from(table)
-      .select(`${idColumn}, ${column}`)
+      .select(`${idColumn}, target_text, ${blockColumn}, known_gloss_segments`)
       .eq(idColumn, rowId)
       .eq('course_code', courseCode)
       .maybeSingle()
@@ -7411,28 +7429,35 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
     if (fetchError) throw fetchError
     if (!row) return res.status(404).json({ error: `No such row ${rowId} in ${courseCode}` })
 
-    const blocks = row[column]
-    if (!Array.isArray(blocks) || blocks.length === 0) {
-      return res.status(409).json({ error: 'This row has no stored mapping to change.' })
+    // The columns are the target's words, read from the row itself — never from
+    // the request. The client cannot widen or narrow the grid.
+    const words = learningScriptGenerator.targetWordsOf(row.target_text)
+    if (words.length < 2) {
+      return res.status(409).json({ error: 'This row has no alignment to change.' })
     }
-    if (blocks.length !== known.length) {
-      return res.status(409).json({
-        error: 'The mapping changed while you were editing it. Reload the page and try again.',
-      })
+
+    const shapeError = invalidSegments(segments, words.length)
+    if (shapeError) return res.status(400).json({ error: shapeError })
+
+    // What the gloss reads NOW: the stored segmentation if a human has made one,
+    // otherwise the same derivation the viewer showed them.
+    const current = learningScriptGenerator.glossAlignment(
+      source, row.target_text, row[blockColumn], row.known_gloss_segments)
+    if (!current) {
+      return res.status(409).json({ error: 'This row has no alignment to change.' })
     }
-    if (!sameGlossMultiset(blocks.map(b => b.known), known)) {
+
+    if (glossWordMultiset(segments) !== glossWordMultiset(current.segments)) {
       return res.status(400).json({
         error: 'A mapping edit may only move the existing words around, not change them.',
       })
     }
 
-    // Rebuild in place: every field except `known` is copied through untouched,
-    // so legoId/isGhost/isSalient (phrase) and introduce (lego) survive exactly.
-    const updated = blocks.map((b, i) => ({ ...b, known: known[i] }))
+    const cleaned = segments.map(s => ({ span: s.span, known: s.known.trim() }))
 
     const { error: updateError } = await supabase
       .from(table)
-      .update({ [column]: updated })
+      .update({ known_gloss_segments: cleaned })
       .eq(idColumn, rowId)
       .eq('course_code', courseCode)
 
@@ -7443,19 +7468,25 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
     // told what the database now holds and can check it itself.
     const { data: after, error: reReadError } = await supabase
       .from(table)
-      .select(column)
+      .select('known_gloss_segments')
       .eq(idColumn, rowId)
       .eq('course_code', courseCode)
       .maybeSingle()
     if (reReadError) throw reReadError
 
-    logger.info(`[Mapping] ${editor.email || 'unknown'} re-paired ${source} ${rowId} in ${courseCode}`)
+    logger.info(`[Mapping] ${editor.email || 'unknown'} re-segmented ${source} ${rowId} in ${courseCode}`)
 
     io.to(`course:${courseCode}`).emit('mapping_updated', { courseCode, source, rowId })
 
-    res.json({ success: true, source, rowId, blocks: after ? after[column] : updated })
+    res.json({
+      success: true,
+      source,
+      rowId,
+      words,
+      segments: after ? after.known_gloss_segments : cleaned,
+    })
   } catch (error) {
-    logger.error(`[Mapping] Failed to re-pair ${source} ${rowId} in ${courseCode}:`, error.message)
+    logger.error(`[Mapping] Failed to re-segment ${source} ${rowId} in ${courseCode}:`, error.message)
     res.status(500).json({ error: 'The mapping could not be saved. Nothing was changed.' })
   }
 })

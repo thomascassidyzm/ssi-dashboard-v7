@@ -1,10 +1,10 @@
 // Live check of the word-mapping viewer/editor in a real browser.
 //
-// Proves the things a screenshot cannot: that flipping a row into two lines
-// does NOT change its height or move the rows below it (Tom's hard requirement,
-// 2026-08-12), that touching either partner lights up both, that a row with
-// nothing to pair shows no glyph, and that a tap-tap re-pairing persists across
-// a full reload.
+// Proves the things a screenshot cannot: that flipping a row into the aligned
+// grid does NOT change its height or move the rows below it (Tom's hard
+// requirement, 2026-08-12), that the TARGET line sits above its gloss in the
+// target's own order, that a row with nothing to align shows no glyph, and that
+// splitting / merging / nudging persists across a full reload.
 //
 //   npm run build
 //   npx vite preview --port 5197 --strictPort --host 127.0.0.1 &
@@ -61,9 +61,8 @@ await openJourney()
 
 const glyphs = page.locator('button[title="Check mapping"]')
 const glyphCount = await glyphs.count()
-check(glyphCount > 0, '1. "check mapping" glyph is on the rows that have a mapping', `${glyphCount} on screen`)
+check(glyphCount > 0, '1. "check mapping" glyph is on the rows that have an alignment', `${glyphCount} on screen`)
 
-// Rows WITHOUT a mapping must have no glyph at all — no dead affordance.
 const rowStats = await page.evaluate(() => {
   const rows = [...document.querySelectorAll('.item-row')]
   return {
@@ -72,16 +71,13 @@ const rowStats = await page.evaluate(() => {
   }
 })
 check(rowStats.withGlyph < rowStats.total,
-  '2. rows with nothing to pair show no glyph',
+  '2. rows with nothing to align show no glyph',
   `${rowStats.total - rowStats.withGlyph} of ${rowStats.total} rows have none`)
 
 // ── Row height: the hard requirement ──────────────────────────────────────
 const target = glyphs.nth(Math.min(3, glyphCount - 1))
 const row = target.locator('xpath=ancestor::div[contains(@class,"item-row")][1]')
 
-// Measure EVERY row's top before and after. Nothing below the flipped row may
-// move by even a pixel — that is the requirement, and a single following
-// sibling is too weak a test for it (the row may be the last in its round).
 const allTops = () => page.evaluate(() =>
   [...document.querySelectorAll('.item-row')].map(r => r.getBoundingClientRect().top + window.scrollY))
 const allHeights = () => page.evaluate(() =>
@@ -97,120 +93,132 @@ const topsAfter = await allTops()
 const heightsAfter = await allHeights()
 
 check(Math.abs(heightAfter - heightBefore) < 1,
-  '3. the row does not get deeper when the mapping opens',
+  '3. the row does not get deeper when the alignment opens',
   `${heightBefore.toFixed(1)}px -> ${heightAfter.toFixed(1)}px`)
-
 const movedRows = topsBefore.filter((t, i) => Math.abs(t - topsAfter[i]) >= 1).length
 const resizedRows = heightsBefore.filter((h, i) => Math.abs(h - heightsAfter[i]) >= 1).length
 check(movedRows === 0 && resizedRows === 0,
   '4. not one of the other rows moves or resizes',
   `${topsBefore.length} rows measured, ${movedRows} moved, ${resizedRows} resized`)
 
-const knownChips = row.locator('.mapping-chip-known')
-const targetChips = row.locator('.mapping-chip-target')
-const kN = await knownChips.count(); const tN = await targetChips.count()
-check(kN > 0 && tN > 0, '5. two lines of chips, known above target', `${kN} known / ${tN} target`)
-
-const lineTops = await row.evaluate(el => {
-  const k = el.querySelector('.mapping-chip-known')?.getBoundingClientRect().top
-  const t = el.querySelector('.mapping-chip-target')?.getBoundingClientRect().top
-  return { k, t }
-})
-check(lineTops.k < lineTops.t, '6. the known line is the top line')
-
-// ── Pairing highlight, on hover AND on tap ────────────────────────────────
-await knownChips.first().hover()
-await page.waitForTimeout(250)
-const pairedOnHover = await row.locator('.mapping-chip-paired').count()
-check(pairedOnHover >= 2, '7. hovering one chip lights up BOTH partners', `${pairedOnHover} chips lit`)
-
-const litSides = await row.evaluate(el => {
-  const lit = [...el.querySelectorAll('.mapping-chip-paired')]
-  return { known: lit.filter(c => c.classList.contains('mapping-chip-known')).length,
-           target: lit.filter(c => c.classList.contains('mapping-chip-target')).length }
-})
-check(litSides.known >= 1 && litSides.target >= 1,
-  '8. the lit pair spans both lines', `${litSides.known} known + ${litSides.target} target`)
-
-// ── The re-pairing gesture ────────────────────────────────────────────────
-const readPairs = async () => row.evaluate(el => ({
-  known: [...el.querySelectorAll('.mapping-chip-known')].map(c => c.textContent.trim()),
-  target: [...el.querySelectorAll('.mapping-chip-target')].map(c => c.textContent.trim()),
+// ── Target order preserved, gloss underneath ──────────────────────────────
+const readGrid = async (scope) => scope.evaluate(el => ({
+  words: [...el.querySelectorAll('.mapping-word')].map(w => w.textContent.trim()),
+  glosses: [...el.querySelectorAll('.mapping-gloss')].map(g => g.textContent.trim()),
+  chunks: el.querySelectorAll('.mapping-col').length,
+  wordTop: el.querySelector('.mapping-word')?.getBoundingClientRect().top,
+  glossTop: el.querySelector('.mapping-gloss')?.getBoundingClientRect().top,
 }))
-const rowLabel = await row.locator('.type-badge').first().textContent()
-const pairsBefore = await readPairs()
+const grid = await readGrid(row)
+check(grid.words.length > 1, '5. one cell per target word', `${grid.words.length} words`)
+check(grid.wordTop < grid.glossTop,
+  '6. the TARGET line is on top, the literal gloss underneath it')
 
-// Which target chip is the FIRST known chip paired with? That, not the order of
-// the text, is what a re-pairing changes — both lines keep their own natural
-// reading order, so the words never move; only the partner does.
-const partnerOf0 = async (scope) => {
-  await scope.locator('.mapping-chip-known').first().hover()
-  await page.waitForTimeout(250)
-  return scope.evaluate(el => [...el.querySelectorAll('.mapping-chip-target')]
-    .findIndex(c => c.classList.contains('mapping-chip-paired')))
-}
-const partnerBefore = await partnerOf0(row)
-console.log(`  editing the ${rowLabel.trim()} row: known ${JSON.stringify(pairsBefore.known)}`)
+// The rendered target words must be the row's own target text, in its own
+// order — never reordered to make the known side read naturally.
+const rowTarget = await row.evaluate(el => {
+  const one = el.querySelector('.mapping-oneline')
+  return one ? one.lastElementChild.textContent.trim() : null
+})
+const targetFromApi = await page.evaluate(async ([course, api]) => {
+  const r = await fetch(`${api}/api/production/${course}/learning-journey?maxLegos=25&offset=0`)
+  const d = await r.json()
+  return (d.allItems || []).filter(i => i.mapping).map(i => i.target_text)
+}, [COURSE, API])
+check(targetFromApi.some(t => t.split(/\s+/).join(' ') === grid.words.join(' ')),
+  '7. the column words are a real target sentence, in target order',
+  grid.words.join(' '))
 
-if (kN >= 2) {
-  await knownChips.nth(0).click()
-  await page.waitForTimeout(200)
-  const armed = await row.locator('.mapping-chip-armed').count()
-  check(armed === 1, '9. the first tap arms exactly one chip')
+// ── The three gestures ────────────────────────────────────────────────────
+const chunksNow = async () => (await readGrid(row)).chunks
+const glossesNow = async () => (await readGrid(row)).glosses
 
-  await page.keyboard.press('Escape')
-  await page.waitForTimeout(200)
-  check(await row.locator('.mapping-chip-armed').count() === 0, '10. Escape disarms it')
+const startChunks = await chunksNow()
+console.log(`  editing a row of ${grid.words.length} target words in ${startChunks} chunks:`,
+  JSON.stringify(await glossesNow()))
 
-  // Tap a known chip, then a chip on the OTHER line that is NOT already its
-  // partner — tapping a chip's own partner is correctly a no-op, so it proves
-  // nothing about saving.
-  await knownChips.nth(0).click()
-  await page.waitForTimeout(300)
-  const otherIdx = await row.evaluate(el => {
-    const t = [...el.querySelectorAll('.mapping-chip-target')]
-    return t.findIndex(c => !c.classList.contains('mapping-chip-paired'))
-  })
-  check(otherIdx >= 0, '10b. the armed chip has a non-partner to swap with', `target chip #${otherIdx}`)
-  await targetChips.nth(otherIdx).click()
-  await page.waitForResponse(r => r.url().includes('/mapping/'), { timeout: 30000 })
-  await page.waitForTimeout(1200)
+// Capture the row's EXACT starting state so it can be put back precisely.
+// Merging back only restores the chunk COUNT — a nudge moves a word across a
+// break, and merging does not move it home again.
+const rowIdent = await page.evaluate(async ([course, api, words]) => {
+  const r = await fetch(`${api}/api/production/${course}/learning-journey?maxLegos=25&offset=0`)
+  const d = await r.json()
+  const it = (d.allItems || []).find(i => i.mapping
+    && i.mapping.words.join(' ') === words.join(' '))
+  return it ? {
+    source: it.mapping.source,
+    rowId: it.mapping.source === 'phrase' ? it.phrase_id : it.legoId,
+    segments: it.mapping.segments,
+  } : null
+}, [COURSE, API, grid.words])
+check(!!rowIdent, '7b. the edited row was identified for exact restore')
 
-  const status = await row.locator('.mapping-status').textContent().catch(() => '')
-  check((status || '').includes('Saved'), '11. the swap saves and says so on the row', `"${(status||'').trim()}"`)
-
-  const pairsAfter = await readPairs()
-  check(JSON.stringify(pairsAfter.known) === JSON.stringify(pairsBefore.known),
-    '12. neither line reordered — the words stay where they read',
-    JSON.stringify(pairsAfter.known))
-  const partnerAfter = await partnerOf0(row)
-  check(partnerAfter !== partnerBefore && partnerAfter >= 0,
-    '12b. the first known word is now paired with a different target word',
-    `target chip #${partnerBefore} -> #${partnerAfter}`)
-
-  // ── Reload: is it really persisted? ─────────────────────────────────────
-  await openJourney()
-  const reloadedGlyph = page.locator('button[title="Check mapping"]').nth(Math.min(3, glyphCount - 1))
-  const reloadedRow = reloadedGlyph.locator('xpath=ancestor::div[contains(@class,"item-row")][1]')
-  await reloadedGlyph.click()
-  await page.waitForTimeout(600)
-  const partnerReloaded = await partnerOf0(reloadedRow)
-  check(partnerReloaded === partnerAfter,
-    '13. after a full reload the new pairing is still there',
-    `target chip #${partnerReloaded}`)
-
-  // Put it back.
-  const rKnown = reloadedRow.locator('.mapping-chip-known')
-  const rTarget = reloadedRow.locator('.mapping-chip-target')
-  await rKnown.nth(0).click(); await page.waitForTimeout(300)
-  const rOther = await reloadedRow.evaluate(el => {
-    const t = [...el.querySelectorAll('.mapping-chip-target')]
-    return t.findIndex(c => !c.classList.contains('mapping-chip-paired'))
-  })
-  await rTarget.nth(rOther).click()
+// SPLIT — tap the divider inside a multi-column chunk.
+const splitBtn = row.locator('.mapping-split')
+if (await splitBtn.count()) {
+  await splitBtn.first().click()
   await page.waitForResponse(r => r.url().includes('/mapping/'), { timeout: 30000 })
   await page.waitForTimeout(1000)
-  console.log('  restored the row to its original pairing')
+  const afterSplit = await chunksNow()
+  check(afterSplit === startChunks + 1, '8. tapping inside a chunk splits it',
+    `${startChunks} -> ${afterSplit} chunks`)
+  const st = await row.locator('.mapping-status').textContent().catch(() => '')
+  check((st || '').includes('Saved'), '9. the split saves and says so on the row', `"${(st||'').trim()}"`)
+
+  // NUDGE — move one gloss word across a divider; columns must not change.
+  const beforeNudge = await readGrid(row)
+  await row.locator('.mapping-nudge').first().click()
+  await page.waitForResponse(r => r.url().includes('/mapping/'), { timeout: 30000 })
+  await page.waitForTimeout(1000)
+  const afterNudge = await readGrid(row)
+  check(JSON.stringify(afterNudge.words) === JSON.stringify(beforeNudge.words),
+    '10. nudging never moves a TARGET word')
+  check(JSON.stringify(afterNudge.glosses) !== JSON.stringify(beforeNudge.glosses)
+        || beforeNudge.glosses.every(g => g === '·'),
+    '11. nudging moves a gloss word between chunks',
+    `${JSON.stringify(beforeNudge.glosses)} -> ${JSON.stringify(afterNudge.glosses)}`)
+
+  // Reload: is it really persisted?
+  const persisted = await glossesNow()
+  await openJourney()
+  const reGlyph = page.locator('button[title="Check mapping"]').nth(Math.min(3, glyphCount - 1))
+  const reRow = reGlyph.locator('xpath=ancestor::div[contains(@class,"item-row")][1]')
+  await reGlyph.click()
+  await page.waitForTimeout(600)
+  const reloaded = await readGrid(reRow)
+  check(JSON.stringify(reloaded.glosses) === JSON.stringify(persisted),
+    '12. after a full reload the new cut is still there', JSON.stringify(reloaded.glosses))
+
+  // MERGE back, twice if needed, to return the row to its starting shape.
+  let guard = 0
+  while ((await readGrid(reRow)).chunks > startChunks && guard++ < 6) {
+    await reRow.locator('.mapping-merge').first().click()
+    await page.waitForResponse(r => r.url().includes('/mapping/'), { timeout: 30000 })
+    await page.waitForTimeout(900)
+  }
+  const back = await readGrid(reRow)
+  check(back.chunks === startChunks, '13. merging returns the row to its original chunk count',
+    `${back.chunks} chunks`)
+
+  // Put the row back EXACTLY, through the same gated endpoint the UI uses.
+  if (rowIdent) {
+    const restore = await page.evaluate(async ([course, api, ident]) => {
+      const tok = JSON.parse(Object.keys(localStorage)
+        .filter(k => k.includes('auth-token')).map(k => localStorage.getItem(k))[0] || '{}')
+      const r = await fetch(`${api}/api/production/${course}/mapping/${encodeURIComponent(ident.rowId)}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+                   Authorization: `Bearer ${tok.access_token || ''}` },
+        body: JSON.stringify({ source: ident.source, segments: ident.segments }),
+      })
+      return { status: r.status, body: await r.json().catch(() => null) }
+    }, [COURSE, API, rowIdent])
+    check(restore.status === 200,
+      '15. the edited row is restored to exactly how it was found',
+      `HTTP ${restore.status} ${JSON.stringify(restore.body?.segments || restore.body?.error)}`)
+  }
+} else {
+  check(false, '8-13. the chosen row had no multi-column chunk to split')
 }
 
 // ── Nothing else regressed ────────────────────────────────────────────────
