@@ -29,6 +29,7 @@ const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext } = require('./recording-upload-helpers.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
+const presentationAuthor = require('./phases/presentation-author.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -2252,12 +2253,49 @@ app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => 
       .maybeSingle()
     if (error) throw error
 
+    // No row yet — most LEGOs on a course that has never had its intros authored.
+    // Hand back the line this LEGO WOULD get, rendered off its OWN course's
+    // template, flagged is_suggested so the editor can say it isn't stored yet.
+    // Anything less leaves the edit box blank, and a blank box was read as
+    // content once already (Deborah, 2026-08-12: the placeholder's Chinese
+    // example looked like eus_for_eng's stored narration).
+    let suggested = null
+    if (!data) {
+      try {
+        const { data: course } = await db
+          .from('courses')
+          .select('known_lang, target_lang')
+          .eq('course_code', courseCode)
+          .maybeSingle()
+        const seedNumber = parseInt(legoId.slice(1, 5), 10)
+        const legoIndex = parseInt(legoId.slice(6, 8), 10)
+        const { data: lego } = await db
+          .from('course_legos')
+          .select('known_text')
+          .eq('course_code', courseCode)
+          .eq('seed_number', seedNumber)
+          .eq('lego_index', legoIndex)
+          .maybeSingle()
+        if (course && lego?.known_text) {
+          suggested = await presentationAuthor.defaultIntroText(db, {
+            knownLang: course.known_lang,
+            targetLang: course.target_lang,
+            knownText: lego.known_text
+          })
+        }
+      } catch (draftErr) {
+        // A missing template is not a reason to fail the read — fall back to blank.
+        logger.warn(`No suggested narration for ${courseCode}/${legoId}: ${draftErr.message}`)
+      }
+    }
+
     const isPending = !data?.s3_key || data.s3_key.startsWith('pending/')
     res.json({
       success: true,
       lego_id: legoId,
       exists: !!data,
-      text: data?.text || null,
+      text: data?.text || suggested,
+      is_suggested: !data && !!suggested,
       audio_id: data?.id || null,
       duration_ms: data?.duration_ms || null,
       hasAudio: !!data && !isPending

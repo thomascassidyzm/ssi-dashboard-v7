@@ -458,11 +458,23 @@
                 <label class="block text-xs font-medium text-muted uppercase tracking-wide">
                   Presentation text (spoken in the known language)
                 </label>
+
+                <!-- Un-authored LEGO: the box below is a DRAFT, not the course's -->
+                <!-- stored narration. Say so — the old grey placeholder held a -->
+                <!-- Chinese example and read as this course's real text. -->
+                <div
+                  v-if="presentationIsSuggested"
+                  class="bg-amber-900 bg-opacity-20 border border-amber-800 rounded-lg p-3 text-sm text-amber-200"
+                >
+                  No intro narration is stored for this LEGO yet. The text below is a
+                  suggested draft built from this course's own template — edit it and save
+                  to record it.
+                </div>
+
                 <textarea
                   v-model="presentationText"
                   rows="4"
                   class="w-full px-3 py-2 text-sm bg-canvas text-ink rounded border border-line focus:border-purple-500 focus:outline-none resize-y"
-                  placeholder="The Chinese for 'to want', is: ... '想' ... '想'"
                 ></textarea>
                 <p class="text-xs text-faint">
                   This is the authoritative store for the intro audio. Saving regenerates only this LEGO's clip.
@@ -1869,6 +1881,8 @@ const presentationBusy = ref(false);
 const presentationError = ref<string | null>(null);
 const presentationResult = ref<{ audio_id: string; duration_ms: number; created: boolean } | null>(null);
 const presentationAudioUrl = ref<string | null>(null);
+// True when nothing is stored for this LEGO and the box holds a suggested draft.
+const presentationIsSuggested = ref(false);
 
 const onJourneyPresentationEdit = async (item: any) => {
   const legoId = item.legoId || item.lego_id;
@@ -1877,6 +1891,7 @@ const onJourneyPresentationEdit = async (item: any) => {
   presentationKnownText.value = item.known_text || '';
   presentationTargetText.value = item.target_text || '';
   presentationText.value = '';
+  presentationIsSuggested.value = false;
   presentationError.value = null;
   presentationResult.value = null;
   presentationAudioUrl.value = null;
@@ -1893,6 +1908,7 @@ const onJourneyPresentationEdit = async (item: any) => {
     if (resp.ok) {
       const data = await resp.json();
       presentationText.value = data.text || '';
+      presentationIsSuggested.value = !!data.is_suggested;
     }
   } catch (err) {
     console.error('Failed to load presentation text:', err);

@@ -16,6 +16,7 @@
  */
 
 const { claudeChat, HAIKU_MODEL } = require('../shared/claude-cli.cjs')
+const { getName: getLangEnglishName, databaseToManifest } = require('../language-code-service.cjs')
 const createLogger = require('../shared/logger.cjs')
 
 const logger = createLogger('PresentationAuthor')
@@ -125,6 +126,49 @@ function renderIntro({ frame, template, targetLangName, chunk, seed }) {
     .replace(/\{seed\}/g, seed || '')
     .replace(/\s{2,}/g, ' ')
     .trim()
+}
+
+/**
+ * Target language name localised into the known language.
+ * Intl.DisplayNames (CLDR) with a language-code-service fallback, except for
+ * English-known courses, which use the house names from the CSV ("Bengali",
+ * not CLDR's "Bangla") — intros must match how the courses brand themselves.
+ */
+function localisedLangName(targetLang, knownLang) {
+  if (knownLang === 'eng') return getLangEnglishName(targetLang)
+  try {
+    const dn = new Intl.DisplayNames([databaseToManifest(knownLang)], { type: 'language' })
+    const target2 = databaseToManifest(targetLang)
+    const name = dn.of(target2)
+    if (name && name !== target2) return name
+  } catch (_) { /* fall through */ }
+  return getLangEnglishName(targetLang)
+}
+
+/** Slash-compound known_text like "to listen / to hear" introduces its first option only. */
+function introChunk(knownText) {
+  const t = String(knownText || '')
+  return t.includes(' / ') ? t.split(' / ')[0].trim() : t.trim()
+}
+
+/**
+ * The intro line a LEGO WOULD get if one were authored now: Frame A (bare) off
+ * the course's own known-language template. One implementation, so every caller
+ * that needs a default — the single-LEGO regen, and the Script Viewer's edit
+ * affordance showing an un-authored LEGO — renders the same course-correct line
+ * instead of inventing its own.
+ */
+async function defaultIntroText(supabase, { knownLang, targetLang, knownText }) {
+  const template = await getOrCreatePresentationTemplate(
+    supabase, knownLang, localisedLangName(knownLang, 'eng')
+  )
+  return renderIntro({
+    frame: 'A',
+    template,
+    targetLangName: localisedLangName(targetLang, knownLang),
+    chunk: introChunk(knownText),
+    seed: ''
+  })
 }
 
 /**
@@ -284,6 +328,9 @@ module.exports = {
   getOrCreatePresentationTemplate,
   stripSeedClause,
   renderIntro,
+  localisedLangName,
+  introChunk,
+  defaultIntroText,
   fallbackFrame,
   judgeBatch,
   authorPresentations,
