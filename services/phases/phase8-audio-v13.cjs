@@ -148,21 +148,10 @@ async function s3ObjectExists(s3Key) {
 // Get the target language name localised into the known language.
 // Uses Intl.DisplayNames (488 languages via CLDR) with language-code-service fallback.
 // No hardcoded maps — adding a new language Just Works.
-function getLocalisedLangName(targetLang, knownLang) {
-  // English known-side: use the house names from the CSV (e.g. "Bengali"),
-  // not CLDR's variants ("Bangla") — intros must match how the courses brand
-  // their languages.
-  if (knownLang === 'eng') return getLangEnglishName(targetLang)
-  try {
-    const target2 = databaseToManifest(targetLang) // 3-letter → 2-letter for Intl API
-    const known2 = databaseToManifest(knownLang)
-    const dn = new Intl.DisplayNames([known2], { type: 'language' })
-    const name = dn.of(target2)
-    if (name && name !== target2) return name
-  } catch (_) { /* fall through */ }
-  // Fallback: English name from CSV
-  return getLangEnglishName(targetLang)
-}
+// Lives in presentation-author now, so the Script Viewer's edit affordance and
+// the audio pipeline name a language identically. Kept as a local alias because
+// this file calls it from five places.
+const getLocalisedLangName = presentationAuthor.localisedLangName
 
 // Canonical text normalization — see services/shared/text-normalize.cjs
 const normalizeText = normalizeForAudio
@@ -4276,19 +4265,12 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
         return res.status(404).json({ error: `LEGO not found and no text provided: ${legoId}` })
       }
 
-      const template = await getOrCreatePresentationTemplate(knownLang)
       // Short form (no "as in" context) — matches the bulk path's no-context branch.
-      const shortTemplate = template
-        .replace(/, as in — '\{seed\}',/g, ',')
-        .replace(/ as in — '\{seed\}' —| como en — '\{seed\}' —| comme dans — '\{seed\}' —| wie in — '\{seed\}' —| como em — '\{seed\}' —| come in — '\{seed\}' —| fel yn — '\{seed\}' —| — 「\{seed\}」のように —| — '\{seed\}'처럼 —| كما في — '\{seed\}' —| kaip — '\{seed\}' —| 如「\{seed\}」—|, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
-      const targetLangName = getLocalisedLangName(course.target_lang, knownLang)
-      const knownForPresentation = lego.known_text.includes(' / ')
-        ? lego.known_text.split(' / ')[0].trim()
-        : lego.known_text
-      presentationText = shortTemplate
-        .replace('{target_lang_name}', targetLangName)
-        .replace('{known}', knownForPresentation)
-        .replace('{seed}', '')
+      presentationText = await presentationAuthor.defaultIntroText(supabase, {
+        knownLang,
+        targetLang: course.target_lang,
+        knownText: lego.known_text
+      })
     }
 
     // 5. Generate TTS for the single presentation line (whole line → known voice).

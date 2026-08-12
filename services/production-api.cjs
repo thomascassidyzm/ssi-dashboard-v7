@@ -31,6 +31,7 @@ const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId } = require('./recording-upload-helpers.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
+const presentationAuthor = require('./phases/presentation-author.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -2361,12 +2362,49 @@ app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => 
       .maybeSingle()
     if (error) throw error
 
+    // No row yet — most LEGOs on a course that has never had its intros authored.
+    // Hand back the line this LEGO WOULD get, rendered off its OWN course's
+    // template, flagged is_suggested so the editor can say it isn't stored yet.
+    // Anything less leaves the edit box blank, and a blank box was read as
+    // content once already (Deborah, 2026-08-12: the placeholder's Chinese
+    // example looked like eus_for_eng's stored narration).
+    let suggested = null
+    if (!data) {
+      try {
+        const { data: course } = await db
+          .from('courses')
+          .select('known_lang, target_lang')
+          .eq('course_code', courseCode)
+          .maybeSingle()
+        const seedNumber = parseInt(legoId.slice(1, 5), 10)
+        const legoIndex = parseInt(legoId.slice(6, 8), 10)
+        const { data: lego } = await db
+          .from('course_legos')
+          .select('known_text')
+          .eq('course_code', courseCode)
+          .eq('seed_number', seedNumber)
+          .eq('lego_index', legoIndex)
+          .maybeSingle()
+        if (course && lego?.known_text) {
+          suggested = await presentationAuthor.defaultIntroText(db, {
+            knownLang: course.known_lang,
+            targetLang: course.target_lang,
+            knownText: lego.known_text
+          })
+        }
+      } catch (draftErr) {
+        // A missing template is not a reason to fail the read — fall back to blank.
+        logger.warn(`No suggested narration for ${courseCode}/${legoId}: ${draftErr.message}`)
+      }
+    }
+
     const isPending = !data?.s3_key || data.s3_key.startsWith('pending/')
     res.json({
       success: true,
       lego_id: legoId,
       exists: !!data,
-      text: data?.text || null,
+      text: data?.text || suggested,
+      is_suggested: !data && !!suggested,
       audio_id: data?.id || null,
       duration_ms: data?.duration_ms || null,
       hasAudio: !!data && !isPending
@@ -4396,22 +4434,32 @@ app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
   try {
     const { courseCode, uuid } = req.params
 
-    // Accept s3Key from query param (e.g. for intro audio where we already know the path)
-    let s3Key = req.query.s3Key || null
+    // The DB is authoritative for a clip's s3_key, and a caller's copy of it is
+    // not. A regen keeps the ROW ID stable and writes a NEW s3_key (see the
+    // /audio/:uuid/stream block above), so a page that loaded before the regen
+    // holds a key pointing at the PRE-REGEN object — which is still on S3,
+    // because make-before-break never deletes it. Trusting that key served the
+    // old take back for ever and read as "my regenerated audio reverted"
+    // (Deborah, eus_for_eng, 2026-08-12). Same failure the /stream endpoint was
+    // built to kill on 2026-08-07; it survived here because this endpoint let
+    // the client win. The query param is now only a fallback for a clip with no
+    // row (legacy paths), never an override of one that has.
+    let s3Key = null
 
-    // If no s3Key provided, try to look it up from course_audio
-    if (!s3Key && supabaseClient.isInitialized()) {
+    if (supabaseClient.isInitialized()) {
       const supabase = supabaseClient.getClient()
       const { data: audioData } = await supabase
         .from('course_audio')
         .select('s3_key')
         .eq('id', uuid)
-        .single()
+        .maybeSingle()
 
       if (audioData?.s3_key) {
         s3Key = audioData.s3_key
       }
     }
+
+    if (!s3Key) s3Key = req.query.s3Key || null
 
     // Generate signed URL (uses s3_key if available, otherwise legacy path)
     const url = await s3Service.getAudioSignedUrl(uuid, 3600, { s3Key })
