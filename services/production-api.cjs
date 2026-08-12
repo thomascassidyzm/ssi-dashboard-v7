@@ -7336,6 +7336,123 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
 // Generate learning script showing how the course looks to a learner
 // Shows rounds with spaced repetition (Fibonacci-based reviews)
 // Ported from ssi-learning-app's generateLearningScript()
+// =============================================================================
+// WORD MAPPING — read on the row, re-pair in place
+//
+// The mapping is which known gloss sits against which chunk of target text.
+// Deborah reported it crossed on Basque `hitz bat` (2026-08-12) and asked to be
+// able to fix it herself; this is that write path.
+//
+// It re-pairs and NOTHING else. The request may only PERMUTE the known glosses
+// already stored on the row — it cannot introduce a gloss, drop one, reorder
+// the target, or touch any text a learner hears. Consequences, all deliberate:
+//
+//  - no row is deleted or recreated (unlike the components/backfill route,
+//    which drops and rebuilds every component row and would orphan audio);
+//  - no `known_text` or `target_text` on any phrase or LEGO changes, so NO
+//    audio clip anywhere goes stale and no audio pass is owed;
+//  - it can never trigger a re-translate or a TTS render.
+//
+// The permutation check is what buys all of that, so it is a hard gate, not a
+// nicety: a body that is not a permutation is a 400, never a partial write.
+// =============================================================================
+
+const MAPPING_EDIT_ROLES = ['admin', 'editor']
+function canEditMapping(user) {
+  return !!user && MAPPING_EDIT_ROLES.includes(user.role)
+}
+
+// Multiset equality on the glosses. Order is exactly what the editor is
+// changing, so it must NOT be part of the comparison — only membership is.
+function sameGlossMultiset(a, b) {
+  if (a.length !== b.length) return false
+  const key = s => (typeof s === 'string' ? s : '').trim()
+  return [...a].map(key).sort().join(' ') === [...b].map(key).sort().join(' ')
+}
+
+app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
+  const { courseCode, rowId } = req.params
+  const { source, known } = req.body || {}
+
+  if (!canEditMapping(req.dashboardUser)) {
+    return res.status(403).json({ error: 'You need editor access to change a word mapping.' })
+  }
+  if (source !== 'phrase' && source !== 'lego') {
+    return res.status(400).json({ error: "source must be 'phrase' or 'lego'" })
+  }
+  if (!Array.isArray(known) || known.some(k => typeof k !== 'string')) {
+    return res.status(400).json({ error: 'known must be an array of strings' })
+  }
+
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    const table = source === 'phrase' ? 'course_practice_phrases' : 'course_legos'
+    const column = source === 'phrase' ? 'decomposition' : 'components'
+    const idColumn = source === 'phrase' ? 'id' : 'lego_id'
+
+    const { data: row, error: fetchError } = await supabase
+      .from(table)
+      .select(`${idColumn}, ${column}`)
+      .eq(idColumn, rowId)
+      .eq('course_code', courseCode)
+      .maybeSingle()
+
+    if (fetchError) throw fetchError
+    if (!row) return res.status(404).json({ error: `No such row ${rowId} in ${courseCode}` })
+
+    const blocks = row[column]
+    if (!Array.isArray(blocks) || blocks.length === 0) {
+      return res.status(409).json({ error: 'This row has no stored mapping to change.' })
+    }
+    if (blocks.length !== known.length) {
+      return res.status(409).json({
+        error: 'The mapping changed while you were editing it. Reload the page and try again.',
+      })
+    }
+    if (!sameGlossMultiset(blocks.map(b => b.known), known)) {
+      return res.status(400).json({
+        error: 'A mapping edit may only move the existing words around, not change them.',
+      })
+    }
+
+    // Rebuild in place: every field except `known` is copied through untouched,
+    // so legoId/isGhost/isSalient (phrase) and introduce (lego) survive exactly.
+    const updated = blocks.map((b, i) => ({ ...b, known: known[i] }))
+
+    const { error: updateError } = await supabase
+      .from(table)
+      .update({ [column]: updated })
+      .eq(idColumn, rowId)
+      .eq('course_code', courseCode)
+
+    if (updateError) throw updateError
+
+    // Read back. An /api/* path that is not routed on this estate answers 200
+    // with the SPA's HTML, so a 200 is not proof a write landed — the caller is
+    // told what the database now holds and can check it itself.
+    const { data: after, error: reReadError } = await supabase
+      .from(table)
+      .select(column)
+      .eq(idColumn, rowId)
+      .eq('course_code', courseCode)
+      .maybeSingle()
+    if (reReadError) throw reReadError
+
+    logger.info(`[Mapping] ${req.dashboardUser?.email || 'unknown'} re-paired ${source} ${rowId} in ${courseCode}`)
+
+    io.to(`course:${courseCode}`).emit('mapping_updated', { courseCode, source, rowId })
+
+    res.json({ success: true, source, rowId, blocks: after ? after[column] : updated })
+  } catch (error) {
+    logger.error(`[Mapping] Failed to re-pair ${source} ${rowId} in ${courseCode}:`, error.message)
+    res.status(500).json({ error: 'The mapping could not be saved. Nothing was changed.' })
+  }
+})
+
 app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
   const { courseCode } = req.params
   const { maxLegos, offset, learnerView } = req.query
@@ -7378,6 +7495,10 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
       allItems,
       stats,
       totalLegoCount,
+      // Whether THIS caller may re-pair a row's word mapping. Read is open to
+      // any course-scoped dashboard user; the write is editor/admin only, and
+      // the viewer hides the editing gesture (not the mapping) when false.
+      canEditMapping: canEditMapping(req.dashboardUser),
       pagination: {
         maxLegos: maxLegosNum,
         offset: offsetNum,

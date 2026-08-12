@@ -761,3 +761,64 @@ describe('generateLearningScript learnerView — per-item degradation parity', (
     }
   })
 })
+
+// ── Word mapping: what a row can SHOW, and when it shows nothing ──────────
+// Deborah's Basque case (2026-08-12): the gloss under the target text is
+// PHRASE decomposition, not LEGO components — the row she reported
+// (eus_for_eng S0006L02, an A-LEGO) has no components at all.
+const {
+  mappingFromDecomposition,
+  mappingFromComponents,
+} = require('./learning-script-generator.cjs')
+
+describe('word mapping on a row', () => {
+  // The real stored decomposition of eus_for_eng:S0006L02B01, after the
+  // 2026-08-12 gloss refresh.
+  const hitzBat = [
+    { known: 'a word', legoId: 'S0006L02', target: 'hitz bat', isGhost: false, isSalient: true },
+    { known: '', legoId: null, target: ' esan', isGhost: true },
+    { known: 'I want', legoId: 'S0001L01', target: ' nahi dut', isGhost: false },
+  ]
+
+  it('carries every stored block through, ghosts included', () => {
+    const m = mappingFromDecomposition(hitzBat)
+    expect(m.source).toBe('phrase')
+    expect(m.blocks).toHaveLength(3)
+    expect(m.blocks[0]).toEqual({
+      known: 'a word', target: 'hitz bat', legoId: 'S0006L02', isGhost: false, isSalient: true,
+    })
+    // A ghost keeps its slot — an unpaired word must stay visible, not vanish.
+    expect(m.blocks[1].isGhost).toBe(true)
+    expect(m.blocks[1].known).toBe('')
+  })
+
+  it('normalises the optional flags rather than leaking undefined', () => {
+    const m = mappingFromDecomposition(hitzBat)
+    expect(m.blocks[2].isSalient).toBe(false)
+  })
+
+  // "When appropriate" (Tom): nothing to pair → no glyph on the row.
+  it('shows nothing when there is nothing to pair', () => {
+    expect(mappingFromDecomposition(null)).toBeNull()
+    expect(mappingFromDecomposition([])).toBeNull()
+    expect(mappingFromDecomposition([hitzBat[0]])).toBeNull()
+    expect(mappingFromComponents(null)).toBeNull()
+    expect(mappingFromComponents([{ known: 'a', target: 'b' }])).toBeNull()
+  })
+
+  it('shows nothing when every block is empty of target text', () => {
+    expect(mappingFromDecomposition([
+      { known: 'a', target: '  ' }, { known: 'b', target: '' },
+    ])).toBeNull()
+  })
+
+  it('reads an M-LEGO components array as a lego-source mapping', () => {
+    const m = mappingFromComponents([
+      { known: 'to remember', target: 'gogoratu', introduce: true },
+      { known: 'wishing to', target: 'nahian ari naiz', introduce: false },
+    ])
+    expect(m.source).toBe('lego')
+    expect(m.blocks.map(b => b.known)).toEqual(['to remember', 'wishing to'])
+    expect(m.blocks.every(b => b.isGhost === false)).toBe(true)
+  })
+})

@@ -255,6 +255,54 @@ function calculateSpacedRepReviews(roundNumber, offsets = FIBONACCI) {
 }
 
 /**
+ * The known↔target word mapping a row can SHOW — PURE.
+ *
+ * This is the thing Deborah reads under the target text: which English gloss
+ * sits against which chunk of the target. Two stores hold it and they are NOT
+ * interchangeable:
+ *
+ *  - a PHRASE row's `course_practice_phrases.decomposition` — the ordered
+ *    per-chunk breakdown of that phrase, `{known, target, legoId, isGhost,
+ *    isSalient}`. This is what the player renders ("Strategy 0 (authoritative)"
+ *    in LearningPlayer.vue) and therefore what a wrong gloss reaches a learner
+ *    through. It is the source for build/use/review/consolidate rows.
+ *  - an M-LEGO's `course_legos.components` — `{known, target, introduce}`, the
+ *    LEGO's own internal tiling. Source for intro/debut rows, and only M-LEGOs
+ *    have one.
+ *
+ * "When appropriate" (Tom, 2026-08-12) = there is genuinely more than one part
+ * to pair. A single block has no mapping to check, so it returns null and the
+ * row shows no glyph rather than a dead one.
+ *
+ * @returns {{source:'phrase'|'lego', blocks:Array<{known:string,target:string,legoId:string|null,isGhost:boolean,isSalient:boolean}>}|null}
+ */
+function mappingFromDecomposition(decomposition) {
+  if (!Array.isArray(decomposition) || decomposition.length < 2) return null
+  const blocks = decomposition.map(b => ({
+    known: typeof b.known === 'string' ? b.known : '',
+    target: typeof b.target === 'string' ? b.target : '',
+    legoId: b.legoId || null,
+    isGhost: !!b.isGhost,
+    isSalient: !!b.isSalient,
+  }))
+  if (!blocks.some(b => b.target.trim())) return null
+  return { source: 'phrase', blocks }
+}
+
+function mappingFromComponents(components) {
+  if (!Array.isArray(components) || components.length < 2) return null
+  const blocks = components.map(c => ({
+    known: typeof c.known === 'string' ? c.known : '',
+    target: typeof c.target === 'string' ? c.target : '',
+    legoId: null,
+    isGhost: false,
+    isSalient: false,
+  }))
+  if (!blocks.some(b => b.target.trim())) return null
+  return { source: 'lego', blocks }
+}
+
+/**
  * Resolve the FULL PARENT SEED SENTENCE for a LEGO id — PURE, unit tested.
  *
  * Parent seed id = first 5 chars of the LEGO id (`S` + 4-digit seed number),
@@ -495,6 +543,10 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
           known_duration_ms: null,
           target1_duration_ms: record.target1_duration_ms,
           target2_duration_ms: record.target2_duration_ms,
+          // M-LEGO internal tiling — carried so intro/debut rows can show the
+          // component mapping. NULL on every A-LEGO; the mapping helper turns
+          // that into "no glyph on this row".
+          components: record.components || null,
         },
         seed: {
           seed_id: seedId,
@@ -992,6 +1044,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: currentLego.lego.target1_audio_uuid,
         target2_audio_uuid: currentLego.lego.target2_audio_uuid,
         hasAudio: !!(effectiveIntroAudio && currentLego.lego.target1_audio_uuid),
+        mapping: mappingFromComponents(currentLego.lego.components),
       })
     }
 
@@ -1006,6 +1059,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: currentLego.lego.target1_audio_uuid,
         target2_audio_uuid: currentLego.lego.target2_audio_uuid,
         hasAudio: !!(currentLego.lego.known_audio_uuid && currentLego.lego.target1_audio_uuid),
+        mapping: mappingFromComponents(currentLego.lego.components),
       })
     }
     // The debut IS the bare LEGO — claim it whether or not it was emitted, so
@@ -1047,6 +1101,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: phrase.target1_audio_uuid,
         target2_audio_uuid: phrase.target2_audio_uuid,
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
+        mapping: mappingFromDecomposition(phrase.decomposition),
       })
       usedPhrasesInRound.add(phraseId)
       practiceCount++
@@ -1076,6 +1131,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: phrase.target1_audio_uuid,
         target2_audio_uuid: phrase.target2_audio_uuid,
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
+        mapping: mappingFromDecomposition(phrase.decomposition),
       })
       usedPhrasesInRound.add(phraseId)
       practiceCount++
@@ -1216,6 +1272,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
           target1_audio_uuid: phrase.target1_audio_uuid,
           target2_audio_uuid: phrase.target2_audio_uuid,
           hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
+          mapping: mappingFromDecomposition(phrase.decomposition),
         })
         reviewCount++
       }
@@ -1236,6 +1293,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: phrase.target1_audio_uuid,
         target2_audio_uuid: phrase.target2_audio_uuid,
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
+        mapping: mappingFromDecomposition(phrase.decomposition),
       })
     }
     // Consolidate is a REVIEW-class pull, so it takes the same known-side
@@ -1397,6 +1455,8 @@ module.exports = {
   loadAlgorithmConfig,
   calculateSpacedRepReviews,
   seedSentenceFor,
+  mappingFromDecomposition,
+  mappingFromComponents,
   reviewItemIsSeed,
   legoIntroIsPlayable,
   legoDebutIsPlayable,
