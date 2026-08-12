@@ -1005,3 +1005,38 @@ the submission already in memory; zero added latency.
 
 **Search width:** component-redesign
 **Decided by:** agent (bug reported by Kai on pdc_for_eng; confirmed present in deu_for_eng)
+
+## 2026-08-12 — stale phrase glosses fixed by content, not version stamp
+
+**Move:** Deborah's eus_for_eng report ("the English gloss under 'hitz bat' is wrong") traced to
+frozen `course_practice_phrases.decomposition` rows, and fixed by a new gated tool
+(`tools/course-optimization/refresh-stale-phrase-decompositions.cjs`) that detects drift by
+COMPARING EACH BLOCK'S STORED GLOSS TO THE LEGO IT NAMES, then recomputes with `decomposeAnchored`.
+Applied to eus_for_eng: 447 phrases rewritten, 543 → 46 stale blocks, residual reconciles exactly
+to the 44 rows the tool deliberately declined.
+
+The decomposition is computed once at phrase-write time and each block is bound to a lego_id SLOT
+carrying the gloss that slot held then. Re-author or re-index the LEGO and the frozen gloss stays,
+now labelling a different word — and the player renders those stored strings verbatim
+(`LearningPlayer.vue` "Strategy 0 (authoritative)"), so it reaches the learner.
+
+**Better:** the existing detector (`/api/admin/decomposition-audit`) keys off
+`decomposition_course_version < courses.version`; only 29% of decomposed phrases estate-wide carry
+that stamp and a NULL fails the `<` test, so it saw 49 stale eus rows where content comparison sees
+502. Content keying cannot be defeated by a missing stamp.
+**Simpler:** no new decomposer — it calls the one the build path already uses, and unlike the
+version-keyed backfill it uses `decomposeAnchored` rather than plain `decomposeText`, so a lost
+salient anchor is restored rather than re-lost.
+**Cheaper (total):** one query per course, writes only the `decomposition` column (no phrase text,
+no LEGO, no audio row — verified: eus audio links unchanged at 6449/6450), and the applied log
+keeps every pre-write value so `--undo` is exact. No TTS, no regeneration, no spend.
+
+**Searched & rejected:**
+- Stamp every phrase and let the existing version-keyed backfill run — fails Better: a stamp
+  written now says "current" about a decomposition computed against long-gone LEGOs.
+- Drop the stored decomposition and let the player's runtime fallback decompose — fails Better:
+  the runtime path is the one the stored tiling was introduced to replace.
+- Hand-edit the reported row — fails Cheaper: 502 eus phrases and ~22k blocks estate-wide behind it.
+
+**Search width:** component-redesign
+**Decided by:** agent
