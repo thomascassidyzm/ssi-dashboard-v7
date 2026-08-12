@@ -123,6 +123,45 @@ Also: **partitive objects taken from negative seeds may only be reused in partit
 contexts** — negation, `yrittää`, or `on vaikeaa + INF`. Never invent an affirmative total-object
 form the course hasn't taught.
 
+### B3b. Never correlate *his*/*her* with a case form — **[KAI 2026-08-12]**
+
+**The checkable line: in this course, `his` and `her` must appear across BOTH case forms of a noun.
+If an English gender word predicts the Finnish case, that is the defect.**
+
+Finnish `sen` is genderless — it is the *same word* for "his" and "her". So when the English gender
+tracks the case ending, the learner reads a case contrast as a gender rule. Today that correlation
+is near-total on "name":
+
+| Finnish form | with "his" | with "her" |
+|---|---|---|
+| `sen nimen` (genitive) | **18** | **0** |
+| `sen nimeä` (partitive) | **1** | **14** |
+| `sen nimi` (nominative) | **0** | **11** |
+
+and it starts at the two LEGO cards that teach the forms, one seed apart:
+
+| seed | English | Finnish |
+|---|---|---|
+| **20** L02 | **his** name | `sen nimen` — genitive |
+| **21** L03 | **her** name | `sen nimeä` — partitive |
+
+**Kai's ruling: do NOT split them by gender.** From the point where both forms are available
+(**seed 21**), deliberately **mix `his` and `her` across both forms**, drilling each case in its own
+contexts. The learner may first assume the change is gendered and then re-infer it as contextual —
+**that re-inference is the intended teaching mechanism**, not a confusion to design away.
+
+**The constraint that makes this checkable rather than free:** the case is still chosen by the
+grammar (B3), never by taste. Mixing means varying *which gender appears in which grammatical
+context*, not putting a case where the clause doesn't license it. The course's single existing
+crossover shows the shape exactly — and it exists only because negation forced the partitive:
+
+| seed | English | Finnish |
+|---|---|---|
+| 57 | I don't remember **his** name | `mä en muista sen **nimeä**` — negation demands the partitive |
+
+*The authoring backlog is being handled separately — do not write those phrases as part of a fix.
+This entry records the rule so no future fix or new phrase re-creates the correlation.*
+
 ### B4. Never edit the English known side unless absolutely necessary — **[RR, overarching]**
 
 This is Kai's standing constraint and it outranks tidiness. Where the English *was* changed it was
