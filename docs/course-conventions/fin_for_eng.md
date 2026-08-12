@@ -169,6 +169,22 @@ counter-examples beyond the single outliers named.
   *I*, **zero** start with any other capital.
 - **No parentheticals on the Finnish side at all** (0 rows). The known side has 20 — all `(formal)`,
   all from seed 639 on. See C5.
+- **Contractions are always apostrophised.** `don't` 709, `didn't` 360, `I'm` 759, all with a real
+  ASCII apostrophe; **zero** rows anywhere contain `dont / cant / im / wont / didnt / youre / thats`.
+  The shell-quoting hazard that strips apostrophes on bulk edits has **not** bitten this course —
+  re-run this check after any batch write. (Case is a separate matter: see C7.)
+
+**Capitalisation depends on which table you are in — this is the trap:**
+
+| table | rows | start with a capital |
+|---|---|---|
+| `course_seeds` | 668 | **663** — seeds *are* capitalised |
+| `course_legos` | 1,425 | **0** |
+| `course_practice_phrases` | 14,032 | **1** |
+
+So **seed sentences are capitalised and everything below them is lowercase.** Don't carry a seed's
+capital down into a LEGO or a phrase. The 5 lowercase seeds are seeds 3 and 4 (infinitive fragments,
+`miten puhua…`) and seeds 656/661/663, inside the formal block.
 
 ---
 
@@ -267,3 +283,14 @@ Two sources that are easy to miss: the **per-language addendum** in
 `docs/course-optimization/lego-spread-backfill-playbook.md`, and **`courses.quality_rules`** in the
 DB. Calibrate DB access before trusting any count — retrieve one known row by id prefix and confirm
 it matches, before believing a zero.
+
+**Three query traps on this course**, each of which returns a clean-looking wrong answer:
+
+- **Only `course_practice_phrases` is keyed by the `fin_for_eng:` id prefix.** `course_legos` (1,425
+  rows) and `course_seeds` (668) are keyed by a `course_code` column. An id-prefix filter on those
+  returns **zero**, which reads as "nothing to check".
+- **`phrase_role` has exactly three values** — `use` 7,788, `build` 4,512, `component` 1,732. There
+  is **no `practice` role**; a filter on one silently returns nothing.
+- **`LIKE '%it is%'` also matches `it isn't`.** That is why one census counted 282 "it is" rows where
+  B3 reports 227 — a regex-scope difference, not a data conflict. B3 counts the forms separately
+  because they behave differently; keep them apart.
