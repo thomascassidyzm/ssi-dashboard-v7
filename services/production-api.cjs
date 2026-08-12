@@ -11321,8 +11321,18 @@ app.post('/api/admin/audit-archive', async (req, res) => {
 //
 // Returns:
 //   null_count    — phrases with decomposition IS NULL (never computed)
-//   stale_count   — decomposition_course_version < courses.version
+//   stale_count   — decomposition present AND its version stamp is NULL or
+//                   older than courses.version
 //   clean_count   — decomposition present AND version is current
+//
+// An UNSTAMPED row (decomposition present, decomposition_course_version NULL)
+// counts as STALE. It used to count as neither: `< version` and `>= version`
+// are both NULL — hence false — for a NULL stamp, so those rows fell out of
+// every bucket and total != null + stale + clean. 71% of decomposed phrases
+// estate-wide are unstamped, so the audit was hiding most of its own subject:
+// eus_for_eng reported 49 stale where content inspection found 502
+// (docs/gloss-mapping-bug-2026-08-12.md). Reporting a small clean number is
+// precisely what stopped anyone looking.
 //   total         — total phrases in this course
 //   course_version — current courses.version (the target)
 //
@@ -11357,7 +11367,7 @@ app.get('/api/admin/decomposition-audit/:courseCode', async (req, res) => {
         .select('*', { count: 'exact', head: true })
         .eq('course_code', courseCode)
         .not('decomposition', 'is', null)
-        .lt('decomposition_course_version', courseVersion),
+        .or(`decomposition_course_version.is.null,decomposition_course_version.lt.${courseVersion}`),
       sb.from('course_practice_phrases')
         .select('*', { count: 'exact', head: true })
         .eq('course_code', courseCode)
@@ -11459,8 +11469,28 @@ app.post('/api/admin/decomposition-backfill', async (req, res) => {
       const courseVersion = course.version ?? 1
 
       // Page through phrases needing work. The "needs work" predicate is
-      // decomposition IS NULL OR decomposition_course_version < courseVersion.
+      // decomposition IS NULL OR its version stamp is NULL or < courseVersion.
       // PostgREST's `or()` handles that compactly.
+      //
+      // NOTE — deliberately NOT widened to unstamped rows, even though the
+      // audit endpoint above now counts them as stale.
+      //
+      // `decomposition_course_version.lt.N` is NULL — not true — for an
+      // unstamped row, so a phrase that HAS a decomposition and NO stamp
+      // matches neither leg and is never backfilled. That is 71% of decomposed
+      // phrases estate-wide. Widening this predicate looks like the fix and is
+      // not: this loop writes with decomposeText, which has no parent LEGO and
+      // so cannot restore a salient anchor. Turning it loose on ~435k
+      // previously-untouched rows would overwrite correct anchored
+      // decompositions with weaker unanchored ones — a regression bigger than
+      // the drift it repairs.
+      //
+      // Widening is safe only once this loop decomposes with decomposeAnchored
+      // (needs lego_index in the select for the parent LEGO, plus the
+      // kind==='error' skip so a phrase that does not contain its own LEGO is
+      // left alone rather than silently flattened). Until then the content-keyed
+      // repair path is tools/course-optimization/refresh-stale-phrase-decompositions.cjs.
+      // See docs/gloss-mapping-bug-2026-08-12.md.
       // We don't use offset/range because we mutate as we go — keep refetching
       // the first page until it stops returning rows.
       while (true) {
