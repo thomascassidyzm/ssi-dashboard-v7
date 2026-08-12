@@ -31,8 +31,26 @@ export function useScriptPlayer(options = {}) {
   const callbacks = { onItemChange: [], onPhaseChange: [], onComplete: [] }
 
   // URL resolver + cache
+  //
+  // Entries EXPIRE. A regen keeps the clip's row id and writes a new s3_key, so
+  // a URL resolved before the regen still plays — the PRE-swap object, which
+  // make-before-break leaves in the bucket for ever. Caching for ever against a
+  // uuid that outlives its bytes is what made a regenerated clip audition
+  // correctly in the edit modal and then play the old take in the round player
+  // (Deborah, eus_for_eng, 2026-08-12). The signed URLs expire after an hour
+  // anyway, so an unbounded cache was already handing out dead links on long
+  // sessions. A short TTL self-heals both without per-phrase round-trips inside
+  // a cycle; regenerating callers should also call forgetAudioUrl(uuid) to see
+  // their own change immediately.
   const audioUrlResolver = options.audioUrlResolver || null
+  const URL_CACHE_TTL_MS = 5 * 60 * 1000
   const resolvedUrlCache = new Map()
+
+  /** Drop a clip's cached URL — call after regenerating that clip. */
+  function forgetAudioUrl(uuid) {
+    if (uuid) resolvedUrlCache.delete(uuid)
+    else resolvedUrlCache.clear()
+  }
 
   // Computed
   const totalItems = computed(() => items.value.length)
@@ -56,10 +74,11 @@ export function useScriptPlayer(options = {}) {
   async function getAudioUrl(uuid) {
     if (!uuid) return null
     if (audioUrlResolver) {
-      if (resolvedUrlCache.has(uuid)) return resolvedUrlCache.get(uuid)
+      const hit = resolvedUrlCache.get(uuid)
+      if (hit && Date.now() - hit.at < URL_CACHE_TTL_MS) return hit.url
       try {
         const url = await audioUrlResolver(uuid)
-        if (url) resolvedUrlCache.set(uuid, url)
+        if (url) resolvedUrlCache.set(uuid, { url, at: Date.now() })
         return url
       } catch (err) {
         console.warn('[ScriptPlayer] URL resolver failed for', uuid, err)
@@ -411,6 +430,7 @@ export function useScriptPlayer(options = {}) {
     skip,
     previous,
     seekTo,
+    forgetAudioUrl,
 
     // Event registration
     onItemChange,
