@@ -1040,3 +1040,36 @@ keeps every pre-write value so `--undo` is exact. No TTS, no regeneration, no sp
 
 **Search width:** component-redesign
 **Decided by:** agent
+
+
+## 2026-08-12 — Decompositions preserve target word order
+
+**Move:** recorded Tom's ruling that a phrase decomposition always follows **target-language**
+word order — the chunk sequence rebuilds the target sentence exactly, and the known-side glosses
+are segmented to sit underneath their target chunks, reading deliberately out of order where the
+two languages diverge (his example: `cosa azul` maps literally as "thing blue"). Applied to
+`eng_for_X`, where English is the target, this means the **English** side is decomposed, not the
+known side. Corrected the two briefs that said otherwise: `.claude/commands/eng-for-jpn-build.md`
+told builders "LEGOs decompose the Japanese known text", and
+`.claude/commands/layered-decomposition-brief.md` was headed `eng_for_jpn` while every LEGO in it
+decomposed the Japanese side — it is a `jpn_for_eng` brief and is now labelled as one.
+
+**Better:** the learner sees how target grammar maps onto what they already know, which is the
+whole point of showing a breakdown; a known-ordered breakdown teaches nothing about the target.
+**Simpler:** one rule for all 178 courses, and it is the rule the writer already implements —
+`decomposeText(p.target_text, vocab)` in `services/phrase-decomposer.cjs` has always tiled the
+target. The briefs were the only place the other side was written down.
+**Cheaper (total):** no data migration and no re-render. Audited all 19 `eng_for_X` courses,
+193,201 stored decompositions: **zero** decompose the known side, so the ruling costs nothing to
+adopt (`scripts/engforx-decompose/audit-side.cjs`, 99.2–100% target-recomposing per course).
+
+**Searched & rejected:**
+- Rewrite the layered brief's Japanese examples into English-target ones — fails Cheaper: it
+  invents new worked content when the brief is already correct for `jpn_for_eng`; relabelling is
+  free and loses nothing.
+- Enforce target-order at the gate — fails Simpler: nothing violates it, so a gate would be a
+  check with no defects to catch. The real residue is stale drift, not wrong-side (below).
+
+**Search width:** visible-options
+**Decided by:** Tom — ruling given 2026-08-12; also relayed to job #389 (component-mapping editor)
+as "target-order-preserving display, segmentation-of-known-text as the edit model".
