@@ -630,6 +630,12 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         known_duration_ms: null,
         target1_duration_ms: row.target1_duration_ms,
         target2_duration_ms: row.target2_duration_ms,
+        // The stored per-chunk known/target breakdown — the gloss the player
+        // renders under the target text, and so the mapping the Script Viewer
+        // shows and lets an editor re-pair. This projection is a fixed shape,
+        // not a passthrough: leaving it out here is exactly why the mapping was
+        // absent from every phrase row on the first pass.
+        decomposition: row.decomposition || null,
       }))
 
       const componentPhrases = allPhrases.filter(p => p.phrase_role === 'component')

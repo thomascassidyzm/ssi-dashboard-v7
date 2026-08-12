@@ -7357,6 +7357,12 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
 // nicety: a body that is not a permutation is a 400, never a partial write.
 // =============================================================================
 
+// Resolve the caller HERE rather than reading req.dashboardUser. The course
+// scope param sets that field, but it returns early for same-host service-mesh
+// calls, which would leave the field unset and silently refuse a real editor
+// (or, on any future change to that early return, silently admit a caller who
+// was never identified). Deciding a write gate off a side effect of another
+// middleware is not worth the saved line.
 const MAPPING_EDIT_ROLES = ['admin', 'editor']
 function canEditMapping(user) {
   return !!user && MAPPING_EDIT_ROLES.includes(user.role)
@@ -7374,7 +7380,8 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
   const { courseCode, rowId } = req.params
   const { source, known } = req.body || {}
 
-  if (!canEditMapping(req.dashboardUser)) {
+  const editor = await resolveDashboardUserCached(req)
+  if (!canEditMapping(editor)) {
     return res.status(403).json({ error: 'You need editor access to change a word mapping.' })
   }
   if (source !== 'phrase' && source !== 'lego') {
@@ -7442,7 +7449,7 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
       .maybeSingle()
     if (reReadError) throw reReadError
 
-    logger.info(`[Mapping] ${req.dashboardUser?.email || 'unknown'} re-paired ${source} ${rowId} in ${courseCode}`)
+    logger.info(`[Mapping] ${editor.email || 'unknown'} re-paired ${source} ${rowId} in ${courseCode}`)
 
     io.to(`course:${courseCode}`).emit('mapping_updated', { courseCode, source, rowId })
 
@@ -7498,7 +7505,7 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
       // Whether THIS caller may re-pair a row's word mapping. Read is open to
       // any course-scoped dashboard user; the write is editor/admin only, and
       // the viewer hides the editing gesture (not the mapping) when false.
-      canEditMapping: canEditMapping(req.dashboardUser),
+      canEditMapping: canEditMapping(req.dashboardUser || await resolveDashboardUserCached(req)),
       pagination: {
         maxLegos: maxLegosNum,
         offset: offsetNum,
