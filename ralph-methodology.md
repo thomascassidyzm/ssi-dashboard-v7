@@ -115,6 +115,8 @@ Multi-word phrase. Patterns are inferred through overlap with related A-LEGOs.
 
 > **Type is author-declared, not computed.** "Single word = A, multi-word = M" is the convention *you* follow — the validator never counts words to assign type. It only checks the literal value is `'A'` or `'M'` (a missing type defaults to `'A'`), and rejects an `'M'` with no `components[]`.
 >
+> **`components[]` is optional on an M-LEGO, not a hard requirement.** Since the 2026-08-12/13 mapping-editor rulings, an Intro's authored mapping (`known_gloss_segments`) is the PRIMARY feed for tile display; componentisation is only the fallback used to derive tiles when no mapping has been authored. So an M-LEGO with no `components[]` is a legitimate, expected state — it either carries an authored Intro mapping instead, or awaits one — not an error; the validator already treats a missing `components` array as skip-not-reject.
+>
 > **The real size guard is syllables, not word count.** Every LEGO — A or M — has its target capped at **8 syllables** (`MAX_LEGO_SYLLABLES`), estimated from character length per language. This cap **always runs, even under `skip_validation`**. An oversized LEGO is rejected with a prompt to decompose it into multiple smaller LEGOs (aim for 2-4 words, max 8 syllables).
 
 ### Optional Component Introduction (`introduce: false`)
