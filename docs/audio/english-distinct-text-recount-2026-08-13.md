@@ -249,4 +249,23 @@ What is waiting on that single decision:
 - and, if Tom extends the ruling to course content, the 547,477-render estate build ($242)
 
 The sample pack is built from **clips that already exist** on the two cast voices — nothing was
-rendered to make it. It is published separately and linked from this document.
+rendered to make it.
+
+### 👉 The sample pack: https://watson-1.tail4968cb.ts.net/d/b44f9a8d
+
+36 tappable players, clone first and Olivia second every time. **15 of them are true A/B pairs** —
+the identical English sentence in both voices — so the comparison is on the same words, not on
+vibes. 0 dead clips; every one verified alive on both URL forms before inclusion.
+
+The pool it was drawn from, characterised honestly:
+
+| voice | distinct texts | 1–4w | 5–8w | 9–11w | 12+w | statements | questions | exclamations |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Tom's clone | 277 | 18 | 105 | 71 | 83 | 148 | 120 | 9 |
+| Olivia | 230 | 16 | 102 | 41 | 71 | 129 | 98 | 3 |
+
+Both voices carry every length band, and 141 of the 507 distinct texts exist in both — so the pool
+**is** enough to judge these two voices. Two limits stated rather than papered over: it is pod-0
+**conversational** English only (greetings, class talk, restaurant and ticket lines, numbers-and-
+colours drills — no narration, no course prompts, no read-aloud register), and exclamations are
+thin (9 clone / 3 Olivia). Nothing was rendered to fill either gap.
