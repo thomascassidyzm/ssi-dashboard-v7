@@ -14,6 +14,7 @@
  */
 
 const createLogger = require('./logger.cjs')
+const { isHumanVoiceCourse } = require('./human-voice-courses.cjs')
 const logger = createLogger('AudioPassQueue')
 
 /**
@@ -22,6 +23,22 @@ const logger = createLogger('AudioPassQueue')
  * Never throws — a content pass must not fail because the queue write did.
  */
 async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null, metadata = {} }) {
+  // Human-voice courses never enter a render queue, and an audio_pass_request IS
+  // a render queue entry — phase8 /generate fulfils it. This is the route by which
+  // an ordinary Welsh text edit would have quietly proposed synthesis over Aran's
+  // and Catrin's recordings (Tom 2026-08-13; the cym_* requests dismissed
+  // 2026-07-25 arrived exactly this way). Refuse, loudly in the log, and do not
+  // fail the caller's content pass — the edit itself is legitimate; only the
+  // render request is not. A Welsh text change is a RECORDING task.
+  if (isHumanVoiceCourse(courseCode)) {
+    logger.warn(
+      `Refused audio-pass request for ${courseCode} (${reason}) — human-voice course, ` +
+      'no TTS is ever queued for it. If this content changed, it is a recording task for ' +
+      'Aran and Catrin, not a render.'
+    )
+    return { queued: false, touched: false, refused: true, reason: 'human_voice_course' }
+  }
+
   try {
     const { data: existing } = await supabase
       .from('audio_pass_requests')

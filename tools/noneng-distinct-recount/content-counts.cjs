@@ -8,10 +8,20 @@
  *   perlang_distinct   - distinct normalised text across every course in the language
  *                        (the per-language dedupe unit; this is the 2026-08-12 `needed`)
  * Writes tools/noneng-distinct-recount/content-counts.json
+ *
+ * HUMAN-VOICE LANGUAGES ARE EXCLUDED AT THE QUERY (Tom 2026-08-13). The first run
+ * of this tool counted Welsh into the queue at ~23,442 proposed renders, which is
+ * exactly the mistake the ruling forbids: Welsh is human-recorded by Aran and
+ * Catrin, and its gaps are a recording worklist, not a render backlog. The filter
+ * lives in services/shared/human-voice-courses.cjs and the assertion below makes a
+ * regression impossible to ship quietly.
  */
 const { Client } = require('pg')
 require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env.psql') })
 const fs = require('fs')
+const { renderableLangSql, assertNoHumanVoiceInQueue } = require('../../services/shared/human-voice-courses.cjs')
+
+const RENDERABLE = renderableLangSql('c.target_lang')
 
 const NORM = `lower(btrim(regexp_replace($COL$,'[。？！、，.!?,;:()（）「」『』\\[\\]…—–¿¡\\-]+','','g')))`
 const n = col => NORM.replace('$COL$', col)
@@ -20,15 +30,15 @@ const SQL = `
 WITH src AS (
   SELECT c.target_lang AS lang, c.course_code, ${n('s.target_text')} AS t
     FROM course_seeds s JOIN courses c ON c.course_code = s.course_code
-   WHERE c.target_lang <> 'eng' AND coalesce(s.target_text,'') <> ''
+   WHERE c.target_lang <> 'eng' AND ${RENDERABLE} AND coalesce(s.target_text,'') <> ''
   UNION ALL
   SELECT c.target_lang, c.course_code, ${n('l.target_text')}
     FROM course_legos l JOIN courses c ON c.course_code = l.course_code
-   WHERE c.target_lang <> 'eng' AND coalesce(l.target_text,'') <> ''
+   WHERE c.target_lang <> 'eng' AND ${RENDERABLE} AND coalesce(l.target_text,'') <> ''
   UNION ALL
   SELECT c.target_lang, c.course_code, ${n('p.target_text')}
     FROM course_practice_phrases p JOIN courses c ON c.course_code = p.course_code
-   WHERE c.target_lang <> 'eng' AND coalesce(p.target_text,'') <> ''
+   WHERE c.target_lang <> 'eng' AND ${RENDERABLE} AND coalesce(p.target_text,'') <> ''
 ), percourse AS (
   SELECT lang, course_code, count(DISTINCT t) AS d, count(*) AS rows
     FROM src GROUP BY 1,2
@@ -47,15 +57,15 @@ const CHARS = `
 WITH src AS (
   SELECT c.target_lang AS lang, ${n('s.target_text')} AS t
     FROM course_seeds s JOIN courses c ON c.course_code = s.course_code
-   WHERE c.target_lang <> 'eng' AND coalesce(s.target_text,'') <> ''
+   WHERE c.target_lang <> 'eng' AND ${RENDERABLE} AND coalesce(s.target_text,'') <> ''
   UNION ALL
   SELECT c.target_lang, ${n('l.target_text')}
     FROM course_legos l JOIN courses c ON c.course_code = l.course_code
-   WHERE c.target_lang <> 'eng' AND coalesce(l.target_text,'') <> ''
+   WHERE c.target_lang <> 'eng' AND ${RENDERABLE} AND coalesce(l.target_text,'') <> ''
   UNION ALL
   SELECT c.target_lang, ${n('p.target_text')}
     FROM course_practice_phrases p JOIN courses c ON c.course_code = p.course_code
-   WHERE c.target_lang <> 'eng' AND coalesce(p.target_text,'') <> ''
+   WHERE c.target_lang <> 'eng' AND ${RENDERABLE} AND coalesce(p.target_text,'') <> ''
 ), d AS (SELECT DISTINCT lang, t FROM src)
 SELECT lang, count(*) AS distinct_texts, sum(length(t)) AS chars FROM d GROUP BY 1;
 `
@@ -77,6 +87,7 @@ SELECT lang, count(*) AS distinct_texts, sum(length(t)) AS chars FROM d GROUP BY
       perlang_distinct: +r.perlang_distinct,
       chars: +(byLang.get(r.lang) || {}).chars || 0,
     }))
+    assertNoHumanVoiceInQueue(out, { context: 'noneng-distinct-recount/content-counts', lang: r => r.lang })
     fs.writeFileSync(__dirname + '/content-counts.json', JSON.stringify(out, null, 1))
     console.log('languages', out.length)
     console.log('slots', out.reduce((a, b) => a + b.slots, 0))

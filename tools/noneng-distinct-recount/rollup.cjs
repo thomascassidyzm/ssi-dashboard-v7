@@ -2,9 +2,17 @@
 /**
  * READ ONLY. Joins content-counts.json + coverage.json + course-voices.json into the
  * per-language before/after table. No DB access, no writes outside this directory.
+ *
+ * HUMAN-VOICE LANGUAGES ARE DROPPED HERE TOO (Tom 2026-08-13), not only upstream:
+ * this file's inputs are committed JSON, so it can be re-run against a snapshot
+ * taken before the exclusion existed. The filter runs on the joined rows and the
+ * assertion runs on the output, so a stale content-counts.json cannot put Welsh
+ * back into a render total. cym was in the original PREMIUM8 list below and has
+ * been removed from it — the premium set is now 7 languages.
  */
 const fs = require('fs')
-const counts = require('./content-counts.json')
+const { isHumanVoiceLang, assertNoHumanVoiceInQueue } = require('../../services/shared/human-voice-courses.cjs')
+const counts = require('./content-counts.json').filter(r => !isHumanVoiceLang(r.lang))
 const coverage = require('./coverage.json')
 const cvoices = require('./course-voices.json')
 const voices = require('./voices.json')
@@ -89,13 +97,16 @@ const out = counts.map(r => {
   }
 }).sort((a, b) => b.old_renders - a.old_renders)
 
+assertNoHumanVoiceInQueue(out, { context: 'noneng-distinct-recount/rollup', lang: r => r.lang })
 fs.writeFileSync(__dirname + '/rollup.json', JSON.stringify(out, null, 1))
 
-const PREMIUM8 = ['spa', 'kor', 'zho', 'por', 'ita', 'cym', 'jpn', 'ara']
+// Was PREMIUM8 with 'cym'. Welsh is human-voiced and never renders (Tom 2026-08-13),
+// so the premium render set is seven languages.
+const PREMIUM7 = ['spa', 'kor', 'zho', 'por', 'ita', 'jpn', 'ara']
 const sum = (rows, k) => rows.reduce((a, b) => a + b[k], 0)
-const p8 = out.filter(r => PREMIUM8.includes(r.lang))
+const p8 = out.filter(r => PREMIUM7.includes(r.lang))
 const fd = out.filter(r => ['fra', 'deu'].includes(r.lang))
-console.log('--- the 8 premium languages (the ~210k queue) ---')
+console.log('--- the 7 premium render languages (Welsh excluded: human-voiced) ---')
 console.log('perlang_distinct (the "210k")', sum(p8, 'perlang_distinct'))
 console.log('per-course distinct        ', sum(p8, 'percourse_distinct'))
 console.log('raw slots                  ', sum(p8, 'slots'))
@@ -104,6 +115,6 @@ console.log('NEW renders / cost         ', sum(p8, 'new_renders'), '$' + sum(p8,
 console.log('reuse credit               ', sum(p8, 'credit'))
 console.log('--- fra + deu (excluded, pending #334) ---')
 console.log('OLD', sum(fd, 'old_renders'), '$' + sum(fd, 'old_cost').toFixed(2), '| NEW', sum(fd, 'new_renders'), '$' + sum(fd, 'new_cost').toFixed(2))
-console.log('--- all 66 non-English languages ---')
+console.log('--- all non-English render languages (human-voice languages excluded) ---')
 console.log('OLD', sum(out, 'old_renders'), '$' + sum(out, 'old_cost').toFixed(2), '| NEW', sum(out, 'new_renders'), '$' + sum(out, 'new_cost').toFixed(2))
 console.log('voice decided for', out.filter(r => r.voice_decided).length, 'of', out.length, 'languages')

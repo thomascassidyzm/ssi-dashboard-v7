@@ -23,7 +23,9 @@ const fs = require('fs')
 const rows = JSON.parse(fs.readFileSync(__dirname + '/slots-resolved.json'))
 const need = JSON.parse(fs.readFileSync(__dirname + '/need.json'))
 
-const HUMAN = /^cym_/, TEST = /^zzz_test/
+// One home for the human-voice rule, not a local regex that can drift from it.
+const { isHumanVoiceCourse } = require('../../services/shared/human-voice-courses.cjs')
+const HUMAN = { test: c => isHumanVoiceCourse(c) }, TEST = /^zzz_test/
 const needKeys = new Set(need.map(u => u.norm + ' ' + u.want))
 
 const bucket = new Map()

@@ -39,6 +39,7 @@ const { v4: uuidv4 } = require('uuid')
 process.env.PHASE8_NO_LISTEN = '1'
 const ttsService = require('../../services/tts-service.cjs')
 const veracity = require('../../services/audio-veracity.cjs')
+const { isHumanVoiceCourse } = require('../../services/shared/human-voice-courses.cjs')
 const phase8 = require('../../services/phases/phase8-audio-v13.cjs')
 
 const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
@@ -90,7 +91,7 @@ let onCast = new Map()
 async function renderOne(p, i) {
   const tag = `[${i + 1}/${queue.length}] ${p.voice === 'bedd6226' ? 'Olivia' : 'clone '} ${JSON.stringify(p.text.slice(0, 48))}`
   if (!APPROVED.has(p.voice)) throw new Error(`voice ${p.voice} is not in the approved cast`)
-  if (/^cym_/.test(p.owner_course)) throw new Error(`owner ${p.owner_course} is human-voiced — refused`)
+  if (isHumanVoiceCourse(p.owner_course)) throw new Error(`owner ${p.owner_course} is human-voiced — refused`)
 
   const existing = onCast.get(p.norm + ' ' + p.voice)
   if (existing) {

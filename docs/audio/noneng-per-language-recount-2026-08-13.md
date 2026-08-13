@@ -12,6 +12,30 @@ landed as `c57b219c`), generalised to all 66 non-English target languages.
 
 ---
 
+## RULING SINCE PUBLICATION — Welsh is out of the queue, permanently (Tom, 2026-08-13)
+
+§5 below recommended that `cym` come out of the TTS rebuild queue and that Welsh work be scoped as
+a recording task. **Tom has now ruled, as a hard rule and not a one-off: Welsh is permanently
+excluded from every TTS render queue. Aran's and Catrin's recordings are never overwritten by
+synthesis.** Welsh gaps are a recording worklist, never a render backlog.
+
+So **every cym figure in the tables below is superseded, not merely disputed.** Read them as the
+count that *was* proposed, not as work anyone may schedule:
+
+| the premium queue | renders | cost |
+|---|---:|---:|
+| as published below, 8 languages including cym | 321,970 | $121.17 |
+| **cym, removed by the ruling** | **−23,442** | **−$11.99** |
+| **the premium render queue, 7 languages** | **298,528** | **$109.18** |
+
+The exclusion is now enforced in code, not by anyone remembering this note:
+`services/shared/human-voice-courses.cjs` holds the one rule (`isHumanVoiceLang`,
+`assertNoHumanVoiceInQueue`), and `tools/noneng-distinct-recount/` filters at the query and asserts
+on its output, so this recount can no longer produce a Welsh line at all. There is deliberately no
+runtime override: putting Welsh back would take a code change with Tom's sign-off.
+
+---
+
 ## The headline, and the honest shape of it
 
 **The ~210k number was already per-language deduped.** It is the sum of distinct target texts across
@@ -177,7 +201,11 @@ themselves point at.
 
 ## 5. Welsh — the queue would render TTS over human recordings
 
-`cym` sits at #7 in the premium queue for 23,442 renders. Before any of that is approved:
+> **RULED, 2026-08-13.** The recommendation at the end of this section is now Tom's standing hard
+> rule: Welsh is permanently excluded from every TTS render queue, and the 1,077 unrecorded texts
+> are a recording worklist for Aran and Catrin. See the ruling banner at the top of this doc.
+
+`cym` sat at #7 in the premium queue for 23,442 renders. Before any of that could be approved:
 
 - **39,351 `cym` clips have `origin='human'`** — 20,295 distinct texts, voice `legacy_import`,
   created Jan–Mar 2026, plus Aran's and Catrin's named recordings.

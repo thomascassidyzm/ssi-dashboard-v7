@@ -2,7 +2,13 @@
 // Welsh cym_* courses are human-recorded — no TTS ever).
 // Run: npx vitest run services/shared/human-voice-courses.test.js
 import { describe, it, expect } from 'vitest'
-import { HUMAN_VOICE_COURSES, isHumanVoiceCourse } from './human-voice-courses.cjs'
+import {
+  HUMAN_VOICE_COURSES,
+  isHumanVoiceCourse,
+  isHumanVoiceLang,
+  renderableLangSql,
+  assertNoHumanVoiceInQueue,
+} from './human-voice-courses.cjs'
 import ttsService from '../tts-service.cjs'
 
 describe('isHumanVoiceCourse', () => {
@@ -33,6 +39,79 @@ describe('isHumanVoiceCourse', () => {
     expect(isHumanVoiceCourse(null)).toBe(false)
     expect(isHumanVoiceCourse(undefined)).toBe(false)
     expect(isHumanVoiceCourse('')).toBe(false)
+  })
+})
+
+// Tom's ruling 2026-08-13: Welsh is permanently excluded from every render queue.
+// The 2026-08-13 recount was LANGUAGE-keyed, so the course-code rule above could
+// not see it — these cover the language-keyed half.
+describe('isHumanVoiceLang', () => {
+  it('flags every Welsh target-language code the estate stores', () => {
+    expect(isHumanVoiceLang('cym')).toBe(true)
+    expect(isHumanVoiceLang('cym_n')).toBe(true)
+    expect(isHumanVoiceLang('cym_s')).toBe(true)
+  })
+
+  it('flags Breton (2026-07-27 ruling)', () => {
+    expect(isHumanVoiceLang('bre')).toBe(true)
+  })
+
+  it('does not flag renderable languages, including near-misses', () => {
+    expect(isHumanVoiceLang('spa')).toBe(false)
+    expect(isHumanVoiceLang('eng')).toBe(false)
+    expect(isHumanVoiceLang('cymric')).toBe(false) // prefix rule must not over-match
+  })
+
+  it('is null-safe', () => {
+    expect(isHumanVoiceLang(null)).toBe(false)
+    expect(isHumanVoiceLang(undefined)).toBe(false)
+    expect(isHumanVoiceLang('')).toBe(false)
+  })
+})
+
+describe('renderableLangSql', () => {
+  it('excludes every human-voice language and covers future cym_* codes', () => {
+    const sql = renderableLangSql('c.target_lang')
+    for (const lang of ['cym', 'cym_n', 'cym_s', 'bre']) expect(sql).toContain(`'${lang}'`)
+    expect(sql).toContain("!~ '^cym(_|$)'")
+    expect(sql).toContain('c.target_lang')
+  })
+})
+
+describe('assertNoHumanVoiceInQueue (the gate on a finished queue)', () => {
+  it('passes a clean queue', () => {
+    expect(() => assertNoHumanVoiceInQueue(
+      [{ lang: 'spa' }, { lang: 'jpn' }],
+      { context: 'test', lang: r => r.lang }
+    )).not.toThrow()
+  })
+
+  it('throws on a Welsh language row — the 2026-08-13 regression', () => {
+    expect(() => assertNoHumanVoiceInQueue(
+      [{ lang: 'spa' }, { lang: 'cym' }],
+      { context: 'recount', lang: r => r.lang }
+    )).toThrow(/Human-voice content in a TTS render queue \(recount\): cym/)
+  })
+
+  it('throws on a Welsh course row', () => {
+    expect(() => assertNoHumanVoiceInQueue(
+      [{ course_code: 'cym_s_for_eng' }],
+      { context: 'render plan', course: r => r.course_code }
+    )).toThrow(/cym_s_for_eng/)
+  })
+
+  it('names the recording worklist so the error teaches the policy', () => {
+    let err
+    try {
+      assertNoHumanVoiceInQueue([{ lang: 'cym_n' }], { context: 'x', lang: r => r.lang })
+    } catch (e) { err = e }
+    expect(err.message).toMatch(/recording worklist/)
+    expect(err.message).toMatch(/no runtime override/)
+  })
+
+  it('tolerates an empty or absent queue', () => {
+    expect(() => assertNoHumanVoiceInQueue([], { context: 'x', lang: r => r.lang })).not.toThrow()
+    expect(() => assertNoHumanVoiceInQueue(null, { context: 'x', lang: r => r.lang })).not.toThrow()
   })
 })
 

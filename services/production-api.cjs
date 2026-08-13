@@ -1055,6 +1055,18 @@ const ESTATE_MAP_SEMANTICS = {
     "Aran's and Catrin's recordings are PROTECTED SLOTS. Those are their real voices, and TTS never overwrites "
     + 'them, even when a clip is dead. Tom\'s standing position on the 23 dead Welsh English stubs is that they '
     + "remain his voice's slots until Aran says otherwise.",
+  welsh_is_human_voice:
+    'HARD RULE, Tom 2026-08-13: WELSH IS A HUMAN-VOICE LANGUAGE. Its gaps are RECORDING TASKS FOR '
+    + 'ARAN AND CATRIN, NOT RENDER TASKS. Every cym_* course is permanently excluded from every TTS '
+    + 'render queue — recount, render plan, audio-pass request, all of it — and Aran\'s and Catrin\'s '
+    + 'recordings are never overwritten by synthesis. A low Welsh audio-coverage figure in this '
+    + 'response is a recording backlog and must never be costed, queued or proposed as renders. '
+    + 'Enforced in code at services/shared/human-voice-courses.cjs (isHumanVoiceCourse / '
+    + 'isHumanVoiceLang / assertNoHumanVoiceInQueue), with no runtime override by design: including '
+    + 'Welsh would take a code change signed off by Tom. Breton (bre_for_fra) is the same class '
+    + '(2026-07-27). The trigger was the 2026-08-13 recount proposing 23,442 Welsh renders while 91% '
+    + 'of Welsh distinct texts were already humanly recorded and 23,960 slots already pointed at '
+    + 'origin=\'human\' clips.',
   known_dead_stubs:
     'Slots linked to a clip whose file is under 2KB — linked in the database, silent to the learner. The 23 on the '
     + 'Welsh pod-0 English track are 834-byte files from a bad write on 2026-06-15. A linked slot is not a filled slot.',
