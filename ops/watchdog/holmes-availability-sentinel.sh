@@ -55,6 +55,13 @@ set -u
 
 URL=${HOLMES_HEALTH_URL:-https://popty.ngrok.app/api/languages}
 MISSES_TO_ALERT=${HOLMES_MISSES_TO_ALERT:-3}
+
+# `half` is held to a LONGER bar than `down` (Tom's ruling, 2026-08-13): Holmes is
+# a ROAMING LAPTOP, and its wake transition briefly looks half-working by
+# construction, so a service fault must prove itself for MORE THAN 30 MINUTES
+# before it is worth a decision card. `down` keeps the 15-minute bar because it is
+# demand-gated and so cannot fire on an idle sleeping Mac at all.
+HALF_MISSES_TO_ALERT=${HOLMES_HALF_MISSES_TO_ALERT:-6}
 LOG=${HOLMES_SENTINEL_LOG:-$HOME/.local/log/holmes-availability-sentinel.log}
 SURFACE=${CS_SURFACE:-http://localhost:4317}
 
@@ -197,10 +204,14 @@ if [ "$prevstate" = "$STATE_NOW" ]; then run=$((run + 1)); else run=1; fi
 # unreachable for two hours with something waiting on it is one continuous outage,
 # however the failure happens to be spelled at the edge. `half` counts only its
 # own run — see the note by RUN above. This is the whole behavioural change.
-if [ "$STATE_NOW" = half ]; then COUNT=$run; else COUNT=$misses; fi
+if [ "$STATE_NOW" = half ]; then
+  COUNT=$run; THRESHOLD=$HALF_MISSES_TO_ALERT
+else
+  COUNT=$misses; THRESHOLD=$MISSES_TO_ALERT
+fi
 
-if [ "$COUNT" -lt "$MISSES_TO_ALERT" ]; then
-  log "$STATE_NOW: $WHY, miss $COUNT/$MISSES_TO_ALERT, staying quiet"
+if [ "$COUNT" -lt "$THRESHOLD" ]; then
+  log "$STATE_NOW: $WHY, miss $COUNT/$THRESHOLD, staying quiet"
   exit 0
 fi
 

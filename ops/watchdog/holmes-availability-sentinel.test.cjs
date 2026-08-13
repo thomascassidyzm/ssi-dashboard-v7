@@ -133,7 +133,7 @@ async function main() {
   ]) {
     reset()
     holmes = half.resp
-    r = await tick()
+    r = await tick({ HOLMES_HALF_MISSES_TO_ALERT: '1' })
     check(half.name, r.posts.length === 1 && /looks online but isn't working/.test(JSON.parse(r.posts[0].body).text),
       JSON.stringify(r.posts))
   }
@@ -191,25 +191,27 @@ async function main() {
   holmes = waking
   r = await tick({ HOLMES_MISSES_TO_ALERT: '3' })
   check('a lone 503 after a sleep does not wake Tom', r.posts.length === 0, JSON.stringify(r.posts))
-  check('and it is counted as miss 1 of its own run, not 3', /miss 1\/3/.test(r.log), r.log.trim())
+  check('and it is counted as miss 1 of its own run, not 3', /miss 1\/6/.test(r.log), r.log.trim())
   holmes = awake
   r = await tick({ HOLMES_MISSES_TO_ALERT: '3' })
   check('recovers silently on the next tick', r.posts.length === 0 && /recovered/.test(r.log), r.log.trim())
 
-  console.log('\n6b. but a SUSTAINED half-working state still escalates')
+  console.log('\n6b. but a SUSTAINED half-working state still escalates, at the >30 min bar')
+  // Defaults on purpose: `half` must prove itself for MORE THAN 30 MINUTES, i.e.
+  // 6 consecutive probes at 5 minutes each. The `down` bar stays at 3.
   reset()
   holmes = asleep
-  await tick({ HOLMES_MISSES_TO_ALERT: '3' })
-  await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  await tick()
+  await tick()
   holmes = waking
-  r = await tick({ HOLMES_MISSES_TO_ALERT: '3' })
-  check('503 run 1 silent', r.posts.length === 0, JSON.stringify(r.posts))
-  r = await tick({ HOLMES_MISSES_TO_ALERT: '3' })
-  check('503 run 2 silent', r.posts.length === 0, JSON.stringify(r.posts))
-  r = await tick({ HOLMES_MISSES_TO_ALERT: '3' })
-  check('503 run 3 escalates — this one is real', r.posts.length === 1, JSON.stringify(r.posts))
-  check('and it reports ~15 minutes of the FAULT, not of the sleep',
-    r.posts.length === 1 && /~15 minutes/.test(JSON.parse(r.posts[0].body).text),
+  for (let i = 1; i <= 5; i++) {
+    r = await tick()
+    check(`503 run ${i} of 6 silent (${i * 5} min — under the 30 min bar)`, r.posts.length === 0, JSON.stringify(r.posts))
+  }
+  r = await tick()
+  check('503 run 6 escalates — 30 minutes of real fault', r.posts.length === 1, JSON.stringify(r.posts))
+  check('and it reports ~30 minutes of the FAULT, not of the sleep',
+    r.posts.length === 1 && /~30 minutes/.test(JSON.parse(r.posts[0].body).text),
     r.posts.length ? r.posts[0].body : '(none)')
 
   console.log('\n6c. a sleeping Mac with real demand still escalates as before')
