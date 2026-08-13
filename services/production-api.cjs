@@ -1022,6 +1022,9 @@ const ESTATE_MAP_SEMANTICS = {
     'In the casting docs and the premium queue, "blocked" means AWAITING VOICE CASTING. It says nothing '
     + 'whatsoever about whether the course is released — released courses are routinely blocked, and blocked '
     + 'courses are routinely live. Reading "blocked" as "unreleased" is one of the specific errors this endpoint exists to stop.',
+  blocked_reasons:
+    'EVERY applicable blocker for the course, not just the top one. `blocked_reason` is the first and the one to '
+    + 'act on; this list is the whole truth. They sum to more than the blocked course count.',
   blocked_reason:
     'Machine-readable blocker, most-blocking first: no_audio | pod0_awaiting_voice_approval | '
     + 'pod0_stale_voice_approval | pod0_known_track_incomplete | pod0_target_track_incomplete | null. '
@@ -1065,30 +1068,39 @@ const ESTATE_MAP_SEMANTICS = {
 /**
  * Decide what a course is blocked on, from its already-derived row plus the live
  * pod-0 voice-approval verdict. Pure — no I/O — so the ordering is readable and testable.
+ *
+ * Returns EVERY applicable blocker, not just the first. Reporting only the highest
+ * would be the bug this endpoint exists to prevent: every one of the 67 pod-0 courses
+ * is awaiting voice approval, which would mask the fact that the Welsh pod-0 English
+ * track is separately silent. `blocked_reason` is the one to act on; `blocked_reasons`
+ * is the truth.
  */
-function estateMapBlocker(course, approval) {
+function estateMapBlockers(course, approval) {
   const pod0 = course.pod_0 || { exists: false }
+  const out = []
   if ((course.audio?.clips || 0) === 0) {
-    return { reason: 'no_audio', detail: 'No audio rows exist for this course at all.' }
+    out.push({ reason: 'no_audio', detail: 'No audio rows exist for this course at all.' })
   }
   if (pod0.exists && approval && !approval.ok) {
-    const reason = approval.reason === 'stale_approval' ? 'pod0_stale_voice_approval' : 'pod0_awaiting_voice_approval'
-    return { reason, detail: approval.message }
+    out.push({
+      reason: approval.reason === 'stale_approval' ? 'pod0_stale_voice_approval' : 'pod0_awaiting_voice_approval',
+      detail: approval.message,
+    })
   }
   if (pod0.exists && (pod0.known_empty > 0 || pod0.known_dead_stubs > 0)) {
-    return {
+    out.push({
       reason: 'pod0_known_track_incomplete',
       detail: `Pod 0's known-language track has ${pod0.known_empty} empty slots and `
         + `${pod0.known_dead_stubs} linked-but-dead clips out of ${pod0.slots}.`,
-    }
+    })
   }
   if (pod0.exists && pod0.target_empty > 0) {
-    return {
+    out.push({
       reason: 'pod0_target_track_incomplete',
       detail: `Pod 0's target-language track has ${pod0.target_empty} empty slots out of ${pod0.slots}.`,
-    }
+    })
   }
-  return { reason: null, detail: null }
+  return out
 }
 
 /** Skimmable text rendering, so a worker can eyeball the map without jq. */
@@ -1114,7 +1126,7 @@ function estateMapAsText(payload) {
       + c.audio.voice_mode.padEnd(8)
       + String(c.audio.clips).padEnd(9)
       + pod
-      + (c.blocked_reason || ''),
+      + c.blocked_reasons.join(', '),
     )
   }
   lines.push('', 'SEMANTICS — what these words mean here', '')
@@ -1157,25 +1169,21 @@ app.get('/api/estate-map', async (req, res) => {
           podVoiceApprovals.castFingerprint(coursePods),
         )
         : null
-      const blocker = estateMapBlocker(c, approval)
+      const blockers = estateMapBlockers(c, approval)
       return {
         ...c,
         pod_voice_approval: approval ? approval.reason : 'no_pods',
-        blocked: blocker.reason !== null,
-        blocked_reason: blocker.reason,
-        blocked_detail: blocker.detail,
+        blocked: blockers.length > 0,
+        blocked_reason: blockers.length ? blockers[0].reason : null,
+        blocked_detail: blockers.length ? blockers[0].detail : null,
+        blocked_reasons: blockers.map(b => b.reason),
+        blockers,
       }
     })
 
     // 3. Cheap conveniences. The unfiltered read stays the default.
     if (req.query.released === 'true') courses = courses.filter(c => c.released)
     if (req.query.course) courses = courses.filter(c => c.course_code === req.query.course)
-
-    const countBy = (key) => courses.reduce((acc, c) => {
-      const k = typeof key === 'function' ? key(c) : c[key]
-      if (k !== null && k !== undefined) acc[k] = (acc[k] || 0) + 1
-      return acc
-    }, {})
 
     const payload = {
       generated_at: new Date().toISOString(),
@@ -1195,7 +1203,12 @@ app.get('/api/estate-map', async (req, res) => {
         },
         with_pod_0: courses.filter(c => c.pod_0.exists).length,
         blocked: courses.filter(c => c.blocked).length,
-        blocked_by_reason: countBy('blocked_reason'),
+        // Counted over every applicable blocker, so a course blocked three ways
+        // appears under all three. These will sum to more than `blocked`.
+        blocked_by_reason: courses.reduce((acc, c) => {
+          for (const r of c.blocked_reasons) acc[r] = (acc[r] || 0) + 1
+          return acc
+        }, {}),
         clips: courses.reduce((n, c) => n + (c.audio.clips || 0), 0),
       },
       semantics: ESTATE_MAP_SEMANTICS,
