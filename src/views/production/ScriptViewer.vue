@@ -255,6 +255,7 @@
           :is-loading="isLoadingJourney"
           :hide-controls="true"
           :flagged-phrase-ids="journeyFlaggedPhraseIds"
+          :can-edit-mapping="canEditMapping"
           @playback-state="onJourneyPlaybackState"
           @item-edit="onJourneyItemEdit"
           @presentation-edit="onJourneyPresentationEdit"
@@ -480,11 +481,23 @@
                 <label class="block text-xs font-medium text-muted uppercase tracking-wide">
                   Presentation text (spoken in the known language)
                 </label>
+
+                <!-- Un-authored LEGO: the box below is a DRAFT, not the course's -->
+                <!-- stored narration. Say so — the old grey placeholder held a -->
+                <!-- Chinese example and read as this course's real text. -->
+                <div
+                  v-if="presentationIsSuggested"
+                  class="bg-amber-900 bg-opacity-20 border border-amber-800 rounded-lg p-3 text-sm text-amber-200"
+                >
+                  No intro narration is stored for this LEGO yet. The text below is a
+                  suggested draft built from this course's own template — edit it and save
+                  to record it.
+                </div>
+
                 <textarea
                   v-model="presentationText"
                   rows="4"
                   class="w-full px-3 py-2 text-sm bg-canvas text-ink rounded border border-line focus:border-purple-500 focus:outline-none resize-y"
-                  placeholder="The Chinese for 'to want', is: ... '想' ... '想'"
                 ></textarea>
                 <p class="text-xs text-faint">
                   This is the authoritative store for the intro audio. Saving regenerates only this LEGO's clip.
@@ -1008,6 +1021,10 @@ const learningJourneyData = ref<{
   totalLegoCount?: number;
 } | null>(null);
 const isLoadingJourney = ref(false);
+// Whether this user may re-pair a word mapping in the journey rows. Decided by
+// the API (editor/admin), not by the client; the client only uses it to avoid
+// offering a gesture that would be refused.
+const canEditMapping = ref(false);
 const journeyError = ref<string | null>(null);
 
 // Server-side pagination for journey view (20 LEGOs per page)
@@ -1534,14 +1551,12 @@ const loadLearningJourney = async (opts: { silent?: boolean } = {}) => {
   journeyError.value = null;
 
   try {
-    const apiBaseUrl = getApiBaseUrl();
-    const url = `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey?maxLegos=${journeyPageSize}&offset=${journeyOffset.value}${learnerAudioView.value ? '&learnerView=1' : ''}`;
-
-    const response = await fetch(url, {
-      headers: {
-        'ngrok-skip-browser-warning': 'true'
-      }
-    });
+    // Authed: the response now carries canEditMapping, which the API can only
+    // decide if it knows who is asking. The course-scope gate accepts this
+    // token on every other /api/production route already.
+    const response = await authedFetch(
+      `/api/production/${courseCode.value}/learning-journey?maxLegos=${journeyPageSize}&offset=${journeyOffset.value}${learnerAudioView.value ? '&learnerView=1' : ''}`
+    );
 
     if (!response.ok) throw new Error('Failed to load learning journey');
 
@@ -1552,6 +1567,8 @@ const loadLearningJourney = async (opts: { silent?: boolean } = {}) => {
       stats: data.stats || null,
       totalLegoCount: data.totalLegoCount || 0,
     };
+    // A reader still sees every mapping; only the re-pairing gesture is gated.
+    canEditMapping.value = !!data.canEditMapping;
 
     // Detect if there are more pages
     journeyHasMore.value = (data.pagination?.returned || 0) >= journeyPageSize;
@@ -1898,6 +1915,11 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
       const durationMs: number | null = result.durations?.[role] ?? null;
       if (newUuid) {
+        // The upsert on the audio table can land on the SAME row id when the
+        // regenerated text/voice key is unchanged (writes a fresh s3_key in
+        // place) — the round player's resolvedUrlCache would otherwise keep
+        // serving the pre-regen object for its 5-minute TTL.
+        learningJourneyRef.value?.player?.forgetAudioUrl(newUuid);
         const url = await fetchAuditionUrl(newUuid);
         phraseEditModalRef.value?.setAuditionResult(role, { url, durationMs });
       } else {
@@ -1960,6 +1982,8 @@ const presentationBusy = ref(false);
 const presentationError = ref<string | null>(null);
 const presentationResult = ref<{ audio_id: string; duration_ms: number; created: boolean } | null>(null);
 const presentationAudioUrl = ref<string | null>(null);
+// True when nothing is stored for this LEGO and the box holds a suggested draft.
+const presentationIsSuggested = ref(false);
 
 const onJourneyPresentationEdit = async (item: any) => {
   const legoId = item.legoId || item.lego_id;
@@ -1968,6 +1992,7 @@ const onJourneyPresentationEdit = async (item: any) => {
   presentationKnownText.value = item.known_text || '';
   presentationTargetText.value = item.target_text || '';
   presentationText.value = '';
+  presentationIsSuggested.value = false;
   presentationError.value = null;
   presentationResult.value = null;
   presentationAudioUrl.value = null;
@@ -1984,6 +2009,7 @@ const onJourneyPresentationEdit = async (item: any) => {
     if (resp.ok) {
       const data = await resp.json();
       presentationText.value = data.text || '';
+      presentationIsSuggested.value = !!data.is_suggested;
     }
   } catch (err) {
     console.error('Failed to load presentation text:', err);
@@ -2041,6 +2067,9 @@ const savePresentationAndRegen = async () => {
     }
 
     console.log(`Regenerated presentation for ${presentationLegoId.value} → audio ${result.audio_id} (${result.duration_ms}ms)`);
+    // The presentation row is keyed by lego_id, so a regen usually lands on the
+    // SAME audio id with a fresh s3_key — drop any cached URL before reload.
+    if (result.audio_id) learningJourneyRef.value?.player?.forgetAudioUrl(result.audio_id);
     // Refresh the journey so the intro item picks up the new audio
     reloadLearningJourney();
   } catch (err) {
@@ -2190,6 +2219,10 @@ const regenerateLegoAudio = async () => {
       if (audioId) {
         rebindLegoAudioEverywhere(legoAudioLegoId.value, UUID_FIELD[role], audioId);
         if (legoAudioSourceItem.value) legoAudioSourceItem.value[UUID_FIELD[role]] = audioId;
+        // Text is locked for LEGO regen, so the upsert key is usually unchanged
+        // and lands on the SAME audio row with a fresh s3_key — drop any cached
+        // URL so the round player re-resolves instead of riding out the TTL.
+        learningJourneyRef.value?.player?.forgetAudioUrl(audioId);
       }
       let url: string | null = null;
       if (audioId) {

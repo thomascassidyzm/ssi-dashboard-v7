@@ -255,14 +255,108 @@
                 R{{ item.reviewOf }}
               </div>
 
-              <!-- Content: known → target -->
+              <!-- Content: known -> target, OR the literal gloss alignment.
+                   This is a FLIP, not an expansion (Tom, 2026-08-12: "I don't
+                   want to make the row deeper"). Both states occupy the same
+                   fixed height, so opening an alignment never moves the rows
+                   below it. -->
               <div class="item-content flex-1 min-w-0">
-                <div class="flex gap-4">
+                <!-- The alignment. Each TARGET word is a fixed column in the
+                     target's own order, with the literal gloss chunk sitting
+                     directly underneath the column(s) it covers. The known side
+                     reads wrong when the orders differ, and that is the point
+                     (Tom: "cosa azul = blue thing maps literally to thing
+                     blue"). Nothing here is ever reordered. -->
+                <div
+                  v-if="isMappingOpen(round.roundNumber, idx)"
+                  class="mapping-grid"
+                  @click.stop
+                >
+                  <template v-for="chunk in glossChunks(round.roundNumber, idx, item)" :key="`c${chunk.index}`">
+                    <div class="mapping-col">
+                      <!-- Target line: one cell per target word, always, in the
+                           target's own order. Between two words of the SAME
+                           chunk sits a split control — tap it to cut the chunk
+                           exactly there. -->
+                      <div class="mapping-target-line">
+                        <template v-for="(w, wi) in chunk.words" :key="`w${w.col}`">
+                          <button
+                            v-if="wi > 0 && canEditMapping"
+                            type="button"
+                            class="mapping-split"
+                            title="Split the gloss here"
+                            @click="splitChunk(round.roundNumber, idx, item, chunk.index, wi)"
+                          >&#8942;</button>
+                          <span v-else-if="wi > 0" class="mapping-split-static">&#8942;</span>
+                          <span class="mapping-word">{{ w.text }}</span>
+                        </template>
+                      </div>
+                      <!-- Gloss line: ONE chunk, centred under all the words it
+                           covers. A chunk spanning two target words visibly
+                           spans both — that is many-to-one, read at a glance. -->
+                      <div
+                        class="mapping-gloss"
+                        :class="{ 'mapping-gloss-empty': !chunk.known }"
+                        :title="chunkTitle(chunk)"
+                      >{{ chunk.known || '·' }}</div>
+                    </div>
+                    <!-- The divider AFTER this chunk: merge it with the next, or
+                         move a single gloss word across without moving the
+                         break. Always visible, never hover-gated — this has to
+                         work on a tap. -->
+                    <div v-if="chunk.hasDividerAfter" class="mapping-divider">
+                      <template v-if="canEditMapping">
+                        <button
+                          type="button" class="mapping-nudge"
+                          title="Move one gloss word left"
+                          @click="nudgeWord(round.roundNumber, idx, item, chunk.index, 'left')"
+                        >&lsaquo;</button>
+                        <button
+                          type="button" class="mapping-merge"
+                          title="Merge these two chunks"
+                          @click="mergeChunk(round.roundNumber, idx, item, chunk.index)"
+                        >&#9679;</button>
+                        <button
+                          type="button" class="mapping-nudge"
+                          title="Move one gloss word right"
+                          @click="nudgeWord(round.roundNumber, idx, item, chunk.index, 'right')"
+                        >&rsaquo;</button>
+                      </template>
+                    </div>
+                  </template>
+                  <!-- The way out. Only on a row a human has actually cut, and
+                       only for someone who may edit — a row already showing the
+                       original has nothing to go back to. It lives at the end of
+                       the chunk row, inside the strip: the closed row gains
+                       nothing at all, and the strip's height is fixed, so this
+                       costs no pixels either way (Tom: "I don't want to make the
+                       row deeper"). One tap, no confirm — it loses a few taps of
+                       work and is instantly redoable. -->
+                  <button
+                    v-if="canEditMapping && isHandSegmented(round.roundNumber, idx, item)"
+                    type="button"
+                    class="mapping-revert"
+                    title="Put this row's mapping back to the original"
+                    @click="revertMapping(round.roundNumber, idx, item)"
+                  >back to the original</button>
+                </div>
+                <!-- Normal one-line row -->
+                <div v-else class="flex gap-4 items-center mapping-oneline">
                   <span class="text-muted truncate flex-1">{{ item.known_text }}</span>
                   <span class="text-faint">&rarr;</span>
                   <span class="text-ink truncate flex-1">{{ item.target_text }}</span>
                 </div>
               </div>
+
+              <!-- Save feedback for a re-segmentation. Plain sentences only — the
+                   reader is a course editor, not an engineer. -->
+              <span
+                v-if="mappingStatus(round.roundNumber, idx)"
+                class="mapping-status flex-shrink-0 text-xs px-2 py-0.5 rounded whitespace-nowrap"
+                :class="mappingStatus(round.roundNumber, idx)!.ok
+                  ? 'text-emerald-300 bg-emerald-900/30'
+                  : 'text-amber-200 bg-amber-900/40'"
+              >{{ mappingStatus(round.roundNumber, idx)!.message }}</span>
 
               <!-- Player-delivery flag, only where nothing else on the row says
                    it. Missing phrase audio already shows as a dropped play
@@ -277,6 +371,26 @@
 
               <!-- Edit & Flag Buttons -->
               <div class="edit-flags flex items-center gap-1 flex-shrink-0">
+                <!-- Check mapping — INTRO rows only (Tom, 2026-08-13: "it's
+                     only the INTROS that need mapping - no regular phrases need
+                     the mapping"). The intro's mapping is what the learner's
+                     tile assembler renders; a phrase row's is read by nobody, so
+                     the glyph there was work with no destination. The generator
+                     now only attaches `mapping` to intros, and this guard says
+                     so at the point of use as well. -->
+                <button
+                  v-if="item.mapping && item.type === 'intro'"
+                  class="mapping-btn w-6 h-6 flex items-center justify-center rounded transition-colors"
+                  :class="isMappingOpen(round.roundNumber, idx)
+                    ? 'bg-sky-500 text-white'
+                    : 'text-faint hover:text-ink hover:bg-surface-3'"
+                  title="Check mapping"
+                  @click.stop="toggleMapping(round.roundNumber, idx)"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h6M14 6h6M4 18h6m4 0h6M10 6l4 12M14 6l-4 12" />
+                  </svg>
+                </button>
                 <!-- Pencil edit button — LEGO text (debut) is NOT editable; only phrases -->
                 <button
                   v-if="item.type !== 'debut'"
@@ -414,9 +528,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, nextTick, onMounted } from 'vue'
+import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import { useScriptPlayer } from '@/composables/useScriptPlayer'
 import { getApiUrl } from '@/services/api'
+import { useAuth } from '@/composables/useAuth.js'
 import { buildLearningAppUrl } from '@/utils/learningAppUrl'
 import { qaGate } from '@/services/qaGate'
 
@@ -425,6 +540,28 @@ import { qaGate } from '@/services/qaGate'
 // and pod laps are never played in the learner's main flow (Listening MODE
 // and the per-learner pod scheduler own those) so Script View no longer
 // projects them — see docs/voice-engine/script-divergence-report.md.
+// The known↔target word mapping a row can show. Two stores feed it and they
+// are NOT the same thing: a phrase row's stored per-chunk decomposition (what
+// the player renders under the target text, and therefore what a wrong gloss
+// reaches a learner through), or an M-LEGO's own component tiling.
+// One chunk of the literal known-language gloss: the text, and how many
+// consecutive TARGET-word columns it sits under. Spans always sum to the number
+// of target words, so the grid can never claim more or fewer columns than the
+// target actually has.
+interface GlossSegment {
+  span: number
+  known: string
+}
+interface ItemMapping {
+  source: 'phrase' | 'lego'
+  // The target's own words, in the target's own order. These are the columns
+  // and they are never edited or reordered.
+  words: string[]
+  segments: GlossSegment[]
+  // false = derived from the LEGO-chunked breakdown, no human has cut it yet.
+  segmented: boolean
+}
+
 interface ScriptItem {
   roundNumber: number
   legoId: string
@@ -451,6 +588,10 @@ interface ScriptItem {
   playerCanDeliver?: boolean
   playerDropReason?: 'intro-audio' | 'debut-audio' | 'phrase-audio' | 'seed-audio'
   missingAudioRoles?: string[]
+  // Present on INTRO rows only (Tom, 2026-08-13). Always present on one, even
+  // when nothing could be derived — an intro that cannot be opened can never be
+  // mapped, and the mapping is what the learner's tile assembler renders.
+  mapping?: ItemMapping | null
 }
 
 interface RoundData {
@@ -492,6 +633,10 @@ const props = defineProps<{
   isLoading?: boolean
   hideControls?: boolean
   flaggedPhraseIds?: Set<string>
+  // Whether THIS user may re-pair a mapping. A reader still sees the mapping;
+  // only the editing gesture is withheld. Server-side is the real gate — this
+  // just stops the UI offering something that would be refused.
+  canEditMapping?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -513,6 +658,244 @@ const emit = defineEmits<{
 // Default empty sets for optional props
 const emptySet = new Set<string>()
 const flaggedPhraseIds = computed(() => props.flaggedPhraseIds || emptySet)
+
+// ── Gloss alignment: read it on the row, re-cut it there ──────────────────
+// Deborah, reading Basque on 2026-08-12, saw the gloss on the wrong word and
+// asked whether she could fix it herself. This is that.
+//
+// "Check mapping" flips the row's single line into an aligned grid: each TARGET
+// word is a fixed column in the target's own order, and the literal gloss sits
+// directly underneath the column(s) it covers. When the two languages order
+// things differently the known side reads wrong, and that is deliberate —
+// Tom, 2026-08-12: "word order of target must be preserved and known language
+// will look wrong when the orders differ (cosa azul = blue thing maps literally
+// to thing blue)." Nothing on either line is ever reordered.
+//
+// Editing is SEGMENTATION, not pairing. The target columns are fixed and never
+// edited. All an editor changes is where the breaks fall and which gloss words
+// sit in each chunk:
+//   tap a gap inside a chunk  -> split it there
+//   tap the divider dot       -> merge with the next chunk
+//   tap < or >                -> move one gloss word across that divider
+// A chunk may cover several columns (many-to-one) or be empty beside a wide
+// neighbour (one-to-many); neither needs a special case, both fall out of where
+// the breaks are (Tom: "sometimes total word counts do not match and that is
+// OK"). Every gesture saves immediately and can only move words between chunks
+// — never add, drop or edit one, and never touch the target or known text.
+
+const rowKey = (roundNumber: number, idx: number) => `${roundNumber}-${idx}`
+
+// Same authed-fetch shape ScriptViewer uses for its phrase edits.
+const { getAccessToken } = useAuth()
+const mappingFetch = async (path: string, init: RequestInit = {}) => {
+  const token = await getAccessToken()
+  const headers: Record<string, string> = {
+    'ngrok-skip-browser-warning': 'true',
+    'Content-Type': 'application/json',
+    ...((init.headers as Record<string, string>) || {}),
+  }
+  if (token) headers.Authorization = `Bearer ${token}`
+  return fetch(`${localStorage.getItem('api_base_url') || getApiUrl()}${path}`, { ...init, headers })
+}
+
+const openMappings = ref<Set<string>>(new Set())
+// Per-row save feedback, in plain sentences.
+const mappingStatuses = ref<Map<string, { ok: boolean; message: string }>>(new Map())
+// Segmentations applied since the page loaded, so a row shows the new cut
+// immediately without refetching the whole journey.
+const mappingOverrides = ref<Map<string, GlossSegment[]>>(new Map())
+// Whether a row carries a HUMAN cut, as changed since the page loaded. Separate
+// from the cut itself because a revert changes this without the row going
+// blank: it keeps a gloss, just the generator's one rather than a person's.
+const mappingSegmented = ref<Map<string, boolean>>(new Map())
+
+const isMappingOpen = (roundNumber: number, idx: number) =>
+  openMappings.value.has(rowKey(roundNumber, idx))
+
+const toggleMapping = (roundNumber: number, idx: number) => {
+  const key = rowKey(roundNumber, idx)
+  const next = new Set(openMappings.value)
+  if (next.has(key)) { next.delete(key); mappingStatuses.value.delete(key) }
+  else next.add(key)
+  openMappings.value = next
+}
+
+const mappingStatus = (roundNumber: number, idx: number) =>
+  mappingStatuses.value.get(rowKey(roundNumber, idx)) || null
+
+const glossWords = (s: string) => (s || '').trim().split(/\s+/).filter(Boolean)
+
+// The segmentation currently on the row: whatever this session last saved,
+// otherwise what the server served.
+const currentSegments = (roundNumber: number, idx: number, item: ScriptItem): GlossSegment[] =>
+  mappingOverrides.value.get(rowKey(roundNumber, idx))
+    || item.mapping?.segments
+    || []
+
+// Has a person cut this row, as things stand right now? Only such a row has an
+// original to go back to.
+const isHandSegmented = (roundNumber: number, idx: number, item: ScriptItem): boolean => {
+  const changed = mappingSegmented.value.get(rowKey(roundNumber, idx))
+  return changed === undefined ? !!item.mapping?.segmented : changed
+}
+
+// Lay the segmentation out as columns for rendering: each chunk carries the
+// target words it sits under, and whether a break can be added inside it.
+const glossChunks = (roundNumber: number, idx: number, item: ScriptItem) => {
+  const words = item.mapping?.words || []
+  const segments = currentSegments(roundNumber, idx, item)
+  const out: Array<{
+    index: number
+    known: string
+    words: Array<{ col: number; text: string }>
+    hasDividerAfter: boolean
+  }> = []
+  let col = 0
+  segments.forEach((seg, index) => {
+    const cols = []
+    for (let i = 0; i < seg.span; i++, col++) cols.push({ col, text: words[col] ?? '' })
+    out.push({
+      index,
+      known: seg.known,
+      words: cols,
+      hasDividerAfter: index < segments.length - 1,
+    })
+  })
+  return out
+}
+
+const chunkTitle = (chunk: { known: string; words: Array<{ text: string }> }) => {
+  const target = chunk.words.map(w => w.text).join(' ')
+  return chunk.known ? `${target} = ${chunk.known}` : `${target} — no gloss sits here`
+}
+
+// ── The three gestures. Each produces a whole new segmentation and saves it. ──
+
+// Split a chunk at the boundary the editor tapped: `at` is how many of the
+// chunk's target words fall on the left. The gloss is cut at the proportionally
+// matching word boundary — a starting position the editor then nudges, never a
+// claim about which half means what.
+const splitChunk = async (
+  roundNumber: number, idx: number, item: ScriptItem, index: number, at: number,
+) => {
+  if (!props.canEditMapping) return
+  const segments = currentSegments(roundNumber, idx, item)
+  const seg = segments[index]
+  if (!seg || seg.span < 2) return
+
+  const leftSpan = Math.min(Math.max(at, 1), seg.span - 1)
+  const gw = glossWords(seg.known)
+  const cut = Math.round((gw.length * leftSpan) / seg.span)
+  const next = segments.slice()
+  next.splice(index, 1,
+    { span: leftSpan, known: gw.slice(0, cut).join(' ') },
+    { span: seg.span - leftSpan, known: gw.slice(cut).join(' ') })
+  await saveSegments(roundNumber, idx, item, next)
+}
+
+const mergeChunk = async (
+  roundNumber: number, idx: number, item: ScriptItem, index: number,
+) => {
+  if (!props.canEditMapping) return
+  const segments = currentSegments(roundNumber, idx, item)
+  const a = segments[index]
+  const b = segments[index + 1]
+  if (!a || !b) return
+  const next = segments.slice()
+  next.splice(index, 2, {
+    span: a.span + b.span,
+    known: [a.known, b.known].map(t => t.trim()).filter(Boolean).join(' '),
+  })
+  await saveSegments(roundNumber, idx, item, next)
+}
+
+// Move exactly one gloss word across the divider after `index`. The columns do
+// not move — only which chunk the word belongs to.
+const nudgeWord = async (
+  roundNumber: number, idx: number, item: ScriptItem,
+  index: number, direction: 'left' | 'right',
+) => {
+  if (!props.canEditMapping) return
+  const segments = currentSegments(roundNumber, idx, item)
+  const a = segments[index]
+  const b = segments[index + 1]
+  if (!a || !b) return
+
+  const aw = glossWords(a.known)
+  const bw = glossWords(b.known)
+  if (direction === 'right') {
+    if (!aw.length) return
+    bw.unshift(aw.pop() as string)
+  } else {
+    if (!bw.length) return
+    aw.push(bw.shift() as string)
+  }
+  const next = segments.slice()
+  next.splice(index, 2, { ...a, known: aw.join(' ') }, { ...b, known: bw.join(' ') })
+  await saveSegments(roundNumber, idx, item, next)
+}
+
+// Put the row back to the state it was in before any human touched it. The row
+// keeps a gloss — it goes back to the one the generator derives — so this is not
+// a delete, and it is instantly redoable by cutting again. `null` on the wire is
+// the server's spelling of "no human segmentation here"; it stores NULL and
+// answers with the derived cut so the row can show the truth at once.
+const revertMapping = async (roundNumber: number, idx: number, item: ScriptItem) => {
+  if (!props.canEditMapping) return
+  if (!isHandSegmented(roundNumber, idx, item)) return
+  await saveSegments(roundNumber, idx, item, null)
+}
+
+// `segments === null` means revert; anything else is a re-segmentation.
+const saveSegments = async (
+  roundNumber: number, idx: number, item: ScriptItem, segments: GlossSegment[] | null,
+) => {
+  const key = rowKey(roundNumber, idx)
+  const source = item.mapping?.source
+  const rowId = source === 'phrase' ? item.phrase_id : item.legoId
+  if (!source || !rowId) {
+    mappingStatuses.value.set(key, { ok: false, message: 'This row cannot be changed here.' })
+    return
+  }
+
+  mappingStatuses.value.set(key, { ok: true, message: 'Saving…' })
+  // Optimistic: the new cut shows at once, and is rolled back if the save fails.
+  // A revert shows nothing early on purpose — only the server knows what the
+  // derived gloss reads as, and guessing it would flash a cut that is not real.
+  const previous = mappingOverrides.value.get(key)
+  if (segments) mappingOverrides.value = new Map(mappingOverrides.value).set(key, segments)
+
+  try {
+    const resp = await mappingFetch(
+      `/api/production/${props.courseCode}/mapping/${encodeURIComponent(rowId)}`,
+      { method: 'POST', body: JSON.stringify({ source, segments }) },
+    )
+    // An unrouted /api path on this estate answers 200 with the SPA's HTML, so
+    // res.ok is not proof of a write — only a JSON body echoing the saved
+    // segments is. Anything else is treated as a failure.
+    const ct = resp.headers.get('content-type') || ''
+    const body = ct.includes('application/json') ? await resp.json().catch(() => null) : null
+    if (!resp.ok || !body?.success || !Array.isArray(body.segments)) {
+      throw new Error(body?.error || 'The mapping could not be saved.')
+    }
+    // The body carries what the row now READS as — after a revert that is the
+    // generator's derivation, not the stale cut the page was served at load, so
+    // it is what the override must hold rather than being cleared.
+    mappingOverrides.value = new Map(mappingOverrides.value).set(key, body.segments)
+    // A backend that predates the revert path says nothing about `segmented`;
+    // fall back to what the request itself implies rather than to false.
+    mappingSegmented.value = new Map(mappingSegmented.value)
+      .set(key, typeof body.segmented === 'boolean' ? body.segmented : !!segments)
+    mappingStatuses.value = new Map(mappingStatuses.value)
+      .set(key, { ok: true, message: segments ? 'Saved' : 'Back to the original' })
+  } catch (err: any) {
+    const rolled = new Map(mappingOverrides.value)
+    if (previous) rolled.set(key, previous); else rolled.delete(key)
+    mappingOverrides.value = rolled
+    mappingStatuses.value = new Map(mappingStatuses.value)
+      .set(key, { ok: false, message: err?.message || 'The mapping could not be saved.' })
+  }
+}
 
 // ── Player-delivery annotation ────────────────────────────────────────────
 // The Script Viewer always shows the FULL intended course. These helpers turn
@@ -595,6 +978,16 @@ async function loadQaStatus() {
 }
 onMounted(loadQaStatus)
 watch(() => props.courseCode, loadQaStatus)
+
+// Escape closes any open alignment. Every edit gesture is a single tap that
+// saves on its own, so there is no half-made state left to abandon.
+onMounted(() => {
+  const onEsc = (e: KeyboardEvent) => {
+    if (e.key === 'Escape' && openMappings.value.size) openMappings.value = new Set()
+  }
+  window.addEventListener('keydown', onEsc)
+  onUnmounted(() => window.removeEventListener('keydown', onEsc))
+})
 
 // Quick audition of a single voice track (F = target1, M = target2).
 const playingTrackUuid = ref<string | null>(null)
@@ -980,4 +1373,128 @@ const getItemBgClass = (item: ScriptItem): string => {
 :root[data-theme="light"] .audio-missing-icon {
   color: var(--accent); /* #a85508 amber/orange family, 5.4:1 on surface */
 }
+
+/* ── Gloss alignment ──────────────────────────────────────────────────────
+   Each TARGET word is a column, in the target's own order, with the literal
+   gloss chunk directly underneath the column(s) it covers. When the languages
+   order things differently the known side reads wrong — that is the point
+   (Tom, 2026-08-12), so nothing here is ever reordered to read naturally.
+
+   The whole grid must occupy EXACTLY the height of the single line it replaces
+   ("I don't want to make the row deeper"). Both states are pinned to 1.5rem;
+   two 0.75rem lines fit inside that, and a long phrase scrolls sideways rather
+   than wrapping, because a wrap would grow the row. */
+.mapping-oneline {
+  height: 1.5rem;
+}
+
+.mapping-grid {
+  height: 1.5rem;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.mapping-grid::-webkit-scrollbar { display: none; }
+
+/* One chunk: its target words on top, its single gloss underneath them. The
+   column is as wide as the wider of the two, which is what makes the gloss sit
+   under exactly the words it belongs to. */
+.mapping-col {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.3rem;
+  border-radius: 0.1875rem;
+  background: color-mix(in srgb, currentColor 6%, transparent);
+  margin-right: 0.25rem;
+}
+.mapping-col:last-child { margin-right: 0; }
+
+.mapping-target-line {
+  display: flex;
+  gap: 0.3rem;
+  height: 0.75rem;
+  line-height: 0.75rem;
+  white-space: nowrap;
+}
+.mapping-word {
+  font-size: 0.6875rem;
+  line-height: 0.75rem;
+  font-weight: 600;
+}
+
+/* The gloss sits centred under its whole column — a chunk covering two target
+   words visibly spans both, which is how many-to-one reads at a glance. */
+.mapping-gloss {
+  height: 0.75rem;
+  line-height: 0.75rem;
+  font-size: 0.625rem;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0.75;
+}
+/* A target word with no gloss under it stays visible as a dot rather than
+   silently looking like part of its neighbour. */
+.mapping-gloss-empty { opacity: 0.3; }
+
+/* The split control, between two target words of the SAME chunk. Always
+   visible, never hover-gated — the whole thing has to work on a tap. */
+.mapping-split,
+.mapping-split-static {
+  font-size: 0.5625rem;
+  line-height: 0.75rem;
+  opacity: 0.35;
+  cursor: pointer;
+  transition: opacity 0.12s ease;
+}
+.mapping-split-static { cursor: default; }
+.mapping-split:hover,
+.mapping-split:focus-visible { opacity: 1; }
+
+/* The divider between two chunks: nudge one gloss word either way, or merge. */
+.mapping-divider {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.0625rem;
+  padding: 0 0.125rem;
+  margin-right: 0.25rem;
+  border-left: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+}
+.mapping-nudge,
+.mapping-merge {
+  font-size: 0.5625rem;
+  line-height: 1;
+  padding: 0 0.0625rem;
+  opacity: 0.45;
+  cursor: pointer;
+  transition: opacity 0.12s ease;
+}
+.mapping-nudge:hover, .mapping-merge:hover,
+.mapping-nudge:focus-visible, .mapping-merge:focus-visible { opacity: 1; }
+.mapping-merge { font-size: 0.4375rem; }
+
+/* The way back, at the end of the chunk row. It sits INSIDE the strip, whose
+   height is fixed at 1.5rem, so it can cost no row height in either state; it
+   is written for a course editor reading it cold, never in repo vocabulary. */
+.mapping-revert {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-left: 0.5rem;
+  padding: 0 0.3rem;
+  font-size: 0.5625rem;
+  line-height: 0.875rem;
+  white-space: nowrap;
+  opacity: 0.45;
+  cursor: pointer;
+  border-radius: 0.1875rem;
+  border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+  transition: opacity 0.12s ease;
+}
+.mapping-revert:hover,
+.mapping-revert:focus-visible { opacity: 1; }
 </style>

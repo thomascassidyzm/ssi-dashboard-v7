@@ -31,6 +31,7 @@ const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId } = require('./recording-upload-helpers.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
+const presentationAuthor = require('./phases/presentation-author.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -2361,12 +2362,49 @@ app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => 
       .maybeSingle()
     if (error) throw error
 
+    // No row yet — most LEGOs on a course that has never had its intros authored.
+    // Hand back the line this LEGO WOULD get, rendered off its OWN course's
+    // template, flagged is_suggested so the editor can say it isn't stored yet.
+    // Anything less leaves the edit box blank, and a blank box was read as
+    // content once already (Deborah, 2026-08-12: the placeholder's Chinese
+    // example looked like eus_for_eng's stored narration).
+    let suggested = null
+    if (!data) {
+      try {
+        const { data: course } = await db
+          .from('courses')
+          .select('known_lang, target_lang')
+          .eq('course_code', courseCode)
+          .maybeSingle()
+        const seedNumber = parseInt(legoId.slice(1, 5), 10)
+        const legoIndex = parseInt(legoId.slice(6, 8), 10)
+        const { data: lego } = await db
+          .from('course_legos')
+          .select('known_text')
+          .eq('course_code', courseCode)
+          .eq('seed_number', seedNumber)
+          .eq('lego_index', legoIndex)
+          .maybeSingle()
+        if (course && lego?.known_text) {
+          suggested = await presentationAuthor.defaultIntroText(db, {
+            knownLang: course.known_lang,
+            targetLang: course.target_lang,
+            knownText: lego.known_text
+          })
+        }
+      } catch (draftErr) {
+        // A missing template is not a reason to fail the read — fall back to blank.
+        logger.warn(`No suggested narration for ${courseCode}/${legoId}: ${draftErr.message}`)
+      }
+    }
+
     const isPending = !data?.s3_key || data.s3_key.startsWith('pending/')
     res.json({
       success: true,
       lego_id: legoId,
       exists: !!data,
-      text: data?.text || null,
+      text: data?.text || suggested,
+      is_suggested: !data && !!suggested,
       audio_id: data?.id || null,
       duration_ms: data?.duration_ms || null,
       hasAudio: !!data && !isPending
@@ -4396,22 +4434,32 @@ app.get('/api/production/:courseCode/audio/:uuid/url', async (req, res) => {
   try {
     const { courseCode, uuid } = req.params
 
-    // Accept s3Key from query param (e.g. for intro audio where we already know the path)
-    let s3Key = req.query.s3Key || null
+    // The DB is authoritative for a clip's s3_key, and a caller's copy of it is
+    // not. A regen keeps the ROW ID stable and writes a NEW s3_key (see the
+    // /audio/:uuid/stream block above), so a page that loaded before the regen
+    // holds a key pointing at the PRE-REGEN object — which is still on S3,
+    // because make-before-break never deletes it. Trusting that key served the
+    // old take back for ever and read as "my regenerated audio reverted"
+    // (Deborah, eus_for_eng, 2026-08-12). Same failure the /stream endpoint was
+    // built to kill on 2026-08-07; it survived here because this endpoint let
+    // the client win. The query param is now only a fallback for a clip with no
+    // row (legacy paths), never an override of one that has.
+    let s3Key = null
 
-    // If no s3Key provided, try to look it up from course_audio
-    if (!s3Key && supabaseClient.isInitialized()) {
+    if (supabaseClient.isInitialized()) {
       const supabase = supabaseClient.getClient()
       const { data: audioData } = await supabase
         .from('course_audio')
         .select('s3_key')
         .eq('id', uuid)
-        .single()
+        .maybeSingle()
 
       if (audioData?.s3_key) {
         s3Key = audioData.s3_key
       }
     }
+
+    if (!s3Key) s3Key = req.query.s3Key || null
 
     // Generate signed URL (uses s3_key if available, otherwise legacy path)
     const url = await s3Service.getAudioSignedUrl(uuid, 3600, { s3Key })
@@ -7336,6 +7384,221 @@ app.get('/api/production/:courseCode/script-view', async (req, res) => {
 // Generate learning script showing how the course looks to a learner
 // Shows rounds with spaced repetition (Fibonacci-based reviews)
 // Ported from ssi-learning-app's generateLearningScript()
+// =============================================================================
+// GLOSS ALIGNMENT — read on the row, re-segment in place
+//
+// The alignment is the literal known-language gloss cut into chunks that sit
+// UNDER the target's own words, in the target's own order (Tom, 2026-08-12:
+// "word order of target must be preserved and known language will look wrong
+// when the orders differ"). Deborah reported it wrong on Basque `hitz bat`
+// (2026-08-12) and asked to be able to fix it herself; this is that write path.
+//
+// Editing is SEGMENTATION, not pairing. The target words are fixed columns and
+// are never touched. All this endpoint can change is where the breaks fall and
+// which known words land in each chunk. Consequences, all deliberate:
+//
+//  - no target text and no known text changes anywhere, on any row, ever;
+//  - no row is deleted or recreated, and `decomposition` is not touched at all,
+//    so the learner's LEGO tiling and its salient highlight are untouched;
+//  - therefore no audio clip can go stale and no audio pass is owed;
+//  - it can never reach a re-translate or a TTS render.
+//
+// Two hard gates buy all of that, so neither is a nicety:
+//  1. the chunk spans must sum to the row's actual target word count — the
+//     alignment can never claim more or fewer columns than the target has;
+//  2. the gloss words must be exactly the words already there, as a multiset.
+//     Order is deliberately NOT compared — re-cutting to follow the target's
+//     order is what reorders the gloss ("a word" -> `word` `a`), so comparing
+//     order would refuse the very edit this exists to make. Words may move
+//     anywhere; none may be invented, dropped or edited.
+// A request failing either is a 4xx, never a partial write.
+//
+// REVERT (2026-08-12): both gates police a re-PAIRING, and neither can express
+// "nobody has segmented this row" — so before this, one tap marked a row as
+// hand-segmented for good and only raw SQL could undo it. A body sending
+// `segments` as null or as an empty list is an explicit revert: the row's
+// `known_gloss_segments` goes back to NULL and the gloss reads as whatever the
+// generator derives. It writes that one column and nothing else, and it still
+// answers to the editor gate, the unknown-row 404 and the nothing-to-align 409.
+// =============================================================================
+
+const MAPPING_EDIT_ROLES = ['admin', 'editor']
+function canEditMapping(user) {
+  return !!user && MAPPING_EDIT_ROLES.includes(user.role)
+}
+
+const glossWords = str => String(str || '').trim().split(/\s+/).filter(Boolean)
+
+// The gloss as a word MULTISET, independent of order and of where the breaks
+// are. Order deliberately plays no part: re-segmenting to follow the target's
+// word order is exactly what reorders the gloss — Basque `hitz bat` turns
+// "a word" into `word` `a` — so an ordered comparison would refuse the very
+// edit this tool exists to make. What must not change is WHICH words are there.
+function glossWordMultiset(segments) {
+  return segments.flatMap(s => glossWords(s.known)).sort().join(' ')
+}
+
+// An explicit "put this row back to how it was before anyone touched it" —
+// `segments` sent as null or as an empty list. Pure and unit-tested next door.
+const { isRevertRequest } = require('./shared/mapping-revert-intent.cjs')
+
+function invalidSegments(segments, wordCount) {
+  if (!Array.isArray(segments) || segments.length === 0) return 'segments must be a non-empty array'
+  let total = 0
+  for (const seg of segments) {
+    if (!seg || typeof seg !== 'object') return 'each segment must be an object'
+    if (!Number.isInteger(seg.span) || seg.span < 1) return 'each segment needs a whole span of at least 1'
+    if (typeof seg.known !== 'string') return 'each segment needs a known string'
+    total += seg.span
+  }
+  if (total !== wordCount) {
+    return `the segments cover ${total} target words but this row has ${wordCount}`
+  }
+  return null
+}
+
+app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
+  const { courseCode, rowId } = req.params
+  const { source, segments } = req.body || {}
+
+  const editor = await resolveDashboardUserCached(req)
+  if (!canEditMapping(editor)) {
+    return res.status(403).json({ error: 'You need editor access to change a word mapping.' })
+  }
+  if (source !== 'phrase' && source !== 'lego') {
+    return res.status(400).json({ error: "source must be 'phrase' or 'lego'" })
+  }
+
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    const table = source === 'phrase' ? 'course_practice_phrases' : 'course_legos'
+    const blockColumn = source === 'phrase' ? 'decomposition' : 'components'
+    const idColumn = source === 'phrase' ? 'id' : 'lego_id'
+
+    const { data: row, error: fetchError } = await supabase
+      .from(table)
+      .select(`${idColumn}, known_text, target_text, ${blockColumn}, known_gloss_segments`)
+      .eq(idColumn, rowId)
+      .eq('course_code', courseCode)
+      .maybeSingle()
+
+    if (fetchError) throw fetchError
+    if (!row) return res.status(404).json({ error: `No such row ${rowId} in ${courseCode}` })
+
+    // The columns are the target's words, read from the row itself — never from
+    // the request. The client cannot widen or narrow the grid.
+    const words = learningScriptGenerator.targetWordsOf(row.target_text)
+    if (words.length < 1) {
+      return res.status(409).json({ error: 'This row has no alignment to change.' })
+    }
+
+    // A LEGO row is reached only from an intro glyph, and an intro is always a
+    // mapping candidate (Tom, 2026-08-13) — including an A-LEGO with no
+    // components at all, which is the `hitz bat` case. Seeding the derivation
+    // with the row's own known text is what lets that row be saved rather than
+    // 409-ing as "nothing to change".
+    const alignOpts = source === 'lego' ? { introSeedKnown: row.known_text } : undefined
+
+    const reverting = isRevertRequest(req.body)
+
+    if (!reverting) {
+      const shapeError = invalidSegments(segments, words.length)
+      if (shapeError) return res.status(400).json({ error: shapeError })
+    }
+
+    // What the gloss reads NOW: the stored segmentation if a human has made one,
+    // otherwise the same derivation the viewer showed them.
+    const current = learningScriptGenerator.glossAlignment(
+      source, row.target_text, row[blockColumn], row.known_gloss_segments, alignOpts)
+    if (!current) {
+      return res.status(409).json({ error: 'This row has no alignment to change.' })
+    }
+
+    // The multiset check polices a RE-PAIRING: the same words, cut differently.
+    // A revert submits no words at all, so there is nothing to compare — the
+    // row simply stops carrying a human cut and goes back to what the generator
+    // derives. Every other guard above still applies to it.
+    //
+    // TWO multisets are acceptable, and the second one is the point. What is
+    // being segmented is the row's OWN KNOWN TEXT against the target's word
+    // order — never a word-pairing exercise, and never a re-translation. The
+    // derived start is usually that same text cut by LEGO blocks, so the two
+    // agree and nothing changes. But a LEGO whose components do not occur in
+    // its own target text derives its start from the COMPONENTS' glosses
+    // instead, and then the only words on offer are words the sentence does not
+    // contain: eus_for_eng `gogoratzen saiatzen ari naiz` starts as "to
+    // remember" + "wishing to" while its known text reads "I'm trying to
+    // remember". Under one multiset that row can never be given a correct
+    // literal build — which is exactly the sentence Tom photographed on
+    // 2026-08-13 and asked to see mapped. Accepting the row's own known words
+    // unblocks it while keeping the guard's whole purpose: every word must come
+    // from this row, and no edit may invent or re-translate one.
+    const acceptable = [
+      glossWordMultiset(current.segments),
+      glossWordMultiset([{ known: row.known_text || '' }]),
+    ]
+    if (!reverting && !acceptable.includes(glossWordMultiset(segments))) {
+      return res.status(400).json({
+        error: 'A mapping edit may only move the existing words around, not change them.',
+      })
+    }
+
+    const cleaned = reverting ? null : segments.map(s => ({ span: s.span, known: s.known.trim() }))
+
+    const { error: updateError } = await supabase
+      .from(table)
+      .update({ known_gloss_segments: cleaned })
+      .eq(idColumn, rowId)
+      .eq('course_code', courseCode)
+
+    if (updateError) throw updateError
+
+    // Read back. An /api/* path that is not routed on this estate answers 200
+    // with the SPA's HTML, so a 200 is not proof a write landed — the caller is
+    // told what the database now holds and can check it itself.
+    const { data: after, error: reReadError } = await supabase
+      .from(table)
+      .select('known_gloss_segments')
+      .eq(idColumn, rowId)
+      .eq('course_code', courseCode)
+      .maybeSingle()
+    if (reReadError) throw reReadError
+
+    const stored = after ? after.known_gloss_segments : cleaned
+
+    // On a revert the stored value is NULL, which is the point — so answer with
+    // what the row now READS as, the generator's own derivation, and the caller
+    // can render the honest state without a second request.
+    const derived = reverting
+      ? learningScriptGenerator.glossAlignment(
+          source, row.target_text, row[blockColumn], null, alignOpts)
+      : null
+
+    logger.info(
+      `[Mapping] ${editor.email || 'unknown'} ${reverting ? 'reverted' : 're-segmented'} ` +
+      `${source} ${rowId} in ${courseCode}`)
+
+    io.to(`course:${courseCode}`).emit('mapping_updated', { courseCode, source, rowId })
+
+    res.json({
+      success: true,
+      source,
+      rowId,
+      words,
+      segments: reverting ? (derived ? derived.segments : []) : stored,
+      segmented: !reverting,
+      ...(reverting ? { reverted: true } : {}),
+    })
+  } catch (error) {
+    logger.error(`[Mapping] Failed to re-segment ${source} ${rowId} in ${courseCode}:`, error.message)
+    res.status(500).json({ error: 'The mapping could not be saved. Nothing was changed.' })
+  }
+})
+
 app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
   const { courseCode } = req.params
   const { maxLegos, offset, learnerView } = req.query
@@ -7378,6 +7641,10 @@ app.get('/api/production/:courseCode/learning-journey', async (req, res) => {
       allItems,
       stats,
       totalLegoCount,
+      // Whether THIS caller may re-pair a row's word mapping. Read is open to
+      // any course-scoped dashboard user; the write is editor/admin only, and
+      // the viewer hides the editing gesture (not the mapping) when false.
+      canEditMapping: canEditMapping(req.dashboardUser || await resolveDashboardUserCached(req)),
       pagination: {
         maxLegos: maxLegosNum,
         offset: offsetNum,

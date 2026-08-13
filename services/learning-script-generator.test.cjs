@@ -761,3 +761,192 @@ describe('generateLearningScript learnerView — per-item degradation parity', (
     }
   })
 })
+
+// ── Gloss alignment: target words are the columns ─────────────────────────
+// Tom's ruling, 2026-08-12: the target keeps its own word order and the known
+// gloss sits underneath it, reading wrong when the orders differ. Basque
+// `hitz bat` glosses `word` `a`, never reordered to "a word".
+const {
+  glossAlignment,
+  targetWordsOf,
+  segmentsCoverWords,
+  segmentsFromBlocks,
+  mappingFromLego,
+} = require('./learning-script-generator.cjs')
+
+describe('gloss alignment on a row', () => {
+  // The real stored decomposition of eus_for_eng:S0006L02B01. Note it is
+  // chunked by LEGO, not by word: 3 blocks over 5 target words.
+  const hitzBatBlocks = [
+    { known: 'a word', legoId: 'S0006L02', target: 'hitz bat', isGhost: false, isSalient: true },
+    { known: '', legoId: null, target: ' esan', isGhost: true },
+    { known: 'I want', legoId: 'S0001L01', target: ' nahi dut', isGhost: false },
+  ]
+  const hitzBatTarget = 'hitz bat esan nahi dut'
+
+  it('makes one column per TARGET word, in the target order', () => {
+    const a = glossAlignment('phrase', hitzBatTarget, hitzBatBlocks, null)
+    expect(a.words).toEqual(['hitz', 'bat', 'esan', 'nahi', 'dut'])
+  })
+
+  it('derives a faithful start: each block spans its own words, never guessing a split', () => {
+    const a = glossAlignment('phrase', hitzBatTarget, hitzBatBlocks, null)
+    // "a word" spans hitz+bat as one chunk — it is NOT split into word/a,
+    // because which half is which is exactly what a human must decide.
+    expect(a.segments).toEqual([
+      { span: 2, known: 'a word' },
+      { span: 1, known: '' },
+      { span: 2, known: 'I want' },
+    ])
+    expect(a.segments.reduce((n, s) => n + s.span, 0)).toBe(a.words.length)
+    expect(a.segmented).toBe(false)
+  })
+
+  it('prefers a human segmentation over the derived one', () => {
+    // What Tom asked for on this row: hitz -> word, bat -> a.
+    const human = [
+      { span: 1, known: 'word' }, { span: 1, known: 'a' }, { span: 1, known: '' },
+      { span: 1, known: 'want' }, { span: 1, known: 'I do' },
+    ]
+    const a = glossAlignment('phrase', hitzBatTarget, hitzBatBlocks, human)
+    expect(a.segments).toEqual(human)
+    expect(a.segmented).toBe(true)
+  })
+
+  it('ignores a stored segmentation that no longer covers the target', () => {
+    const stale = [{ span: 2, known: 'a word' }]   // 2 of 5 columns
+    const a = glossAlignment('phrase', hitzBatTarget, hitzBatBlocks, stale)
+    expect(a.segmented).toBe(false)
+    expect(a.segments.reduce((n, s) => n + s.span, 0)).toBe(5)
+  })
+
+  it('gives leftover target words their own empty column rather than dropping them', () => {
+    // Blocks tile only the first two words; the rest must still be visible.
+    const partial = [{ known: 'a word', target: 'hitz bat' }]
+    const a = glossAlignment('phrase', hitzBatTarget, partial, null)
+    expect(a.segments).toEqual([
+      { span: 2, known: 'a word' },
+      { span: 1, known: '' }, { span: 1, known: '' }, { span: 1, known: '' },
+    ])
+  })
+
+  // "When appropriate" (Tom): nothing to align -> no glyph on the row.
+  it('shows nothing when there is nothing to align', () => {
+    expect(glossAlignment('phrase', 'hitzak', hitzBatBlocks, null)).toBeNull()
+    expect(glossAlignment('phrase', '', hitzBatBlocks, null)).toBeNull()
+    expect(glossAlignment('phrase', 'hitz bat', [], null)).toBeNull()
+    expect(glossAlignment('phrase', 'hitz bat', [{ known: '', target: 'hitz bat' }], null)).toBeNull()
+  })
+
+  it('reads an M-LEGO components array the same way', () => {
+    const a = mappingFromLego({
+      target_text: 'gogoratzen saiatzen ari naiz',
+      components: [
+        { known: 'to remember', target: 'gogoratu', introduce: true },
+        { known: 'wishing to', target: 'nahian ari naiz', introduce: false },
+      ],
+      known_gloss_segments: null,
+    })
+    expect(a.source).toBe('lego')
+    expect(a.words).toEqual(['gogoratzen', 'saiatzen', 'ari', 'naiz'])
+    // 'gogoratu' is one word, 'nahian ari naiz' is three — 1 + 3 = 4 columns.
+    expect(a.segments).toEqual([
+      { span: 1, known: 'to remember' },
+      { span: 3, known: 'wishing to' },
+    ])
+  })
+
+  it('tolerates a row with no blocks at all', () => {
+    expect(mappingFromLego({ target_text: 'hitz bat', components: null })).toBeNull()
+    expect(mappingFromLego(null)).toBeNull()
+  })
+
+  // Tom, 2026-08-13: "the phrase that launched the 1000 ships - a word = hitz
+  // bat - is NOT given as a mapping candidate". An A-LEGO has no components, so
+  // nothing derived carries a gloss and the row went dark. On an intro it must
+  // not: the intro's mapping is the learner's tile feed, so an intro that
+  // cannot be opened can never be mapped at all.
+  describe('an INTRO is always a mapping candidate', () => {
+    const hitzBat = { known_text: 'a word', target_text: 'hitz bat', components: null }
+
+    it('seeds an A-LEGO intro from its own known text across every column', () => {
+      const a = mappingFromLego(hitzBat, { intro: true })
+      expect(a).not.toBeNull()
+      expect(a.source).toBe('lego')
+      expect(a.words).toEqual(['hitz', 'bat'])
+      expect(a.segments).toEqual([{ span: 2, known: 'a word' }])
+      // Nobody has cut it yet — it is a starting state, not a human's ruling.
+      expect(a.segmented).toBe(false)
+    })
+
+    it('still goes dark on the same row when it is NOT an intro', () => {
+      expect(mappingFromLego(hitzBat)).toBeNull()
+    })
+
+    it('leaves componentisation as the fallback wherever it does gloss', () => {
+      const a = mappingFromLego({
+        known_text: "I'm trying to remember",
+        target_text: 'gogoratzen saiatzen ari naiz',
+        components: [
+          { known: 'to remember', target: 'gogoratu' },
+          { known: 'wishing to', target: 'nahian ari naiz' },
+        ],
+        known_gloss_segments: null,
+      }, { intro: true })
+      // The derived chunks win — the seed is a last resort, never an override.
+      expect(a.segments).toEqual([
+        { span: 1, known: 'to remember' },
+        { span: 3, known: 'wishing to' },
+      ])
+    })
+
+    it('prefers an authored mapping over both', () => {
+      const a = mappingFromLego({
+        ...hitzBat,
+        known_gloss_segments: [{ span: 1, known: 'word' }, { span: 1, known: 'a' }],
+      }, { intro: true })
+      expect(a.segments).toEqual([{ span: 1, known: 'word' }, { span: 1, known: 'a' }])
+      expect(a.segmented).toBe(true)
+    })
+
+    it('opens a single-target-word intro rather than showing a dead row', () => {
+      const a = mappingFromLego(
+        { known_text: 'yes', target_text: 'bai', components: null }, { intro: true })
+      expect(a.segments).toEqual([{ span: 1, known: 'yes' }])
+    })
+
+    it('has nothing to offer when the row has no known text either', () => {
+      expect(mappingFromLego({ known_text: '  ', target_text: 'hitz bat' }, { intro: true }))
+        .toBeNull()
+    })
+  })
+
+  describe('the shape gate', () => {
+    it('accepts only whole spans of at least 1 that sum to the column count', () => {
+      expect(segmentsCoverWords([{ span: 2, known: 'a' }, { span: 1, known: '' }], 3)).toBe(true)
+      expect(segmentsCoverWords([{ span: 2, known: 'a' }], 3)).toBe(false)
+      expect(segmentsCoverWords([{ span: 0, known: 'a' }], 0)).toBe(false)
+      expect(segmentsCoverWords([{ span: 1.5, known: 'a' }], 1.5)).toBe(false)
+      expect(segmentsCoverWords([{ span: 1 }], 1)).toBe(false)          // no known
+      expect(segmentsCoverWords([], 0)).toBe(false)
+      expect(segmentsCoverWords(null, 0)).toBe(false)
+    })
+  })
+
+  describe('target words', () => {
+    it('splits on whitespace and nothing else', () => {
+      expect(targetWordsOf('  hitz   bat  ')).toEqual(['hitz', 'bat'])
+      expect(targetWordsOf('')).toEqual([])
+      expect(targetWordsOf(null)).toEqual([])
+      // Punctuation stays attached — it is part of the word as rendered.
+      expect(targetWordsOf('¿cosa azul?')).toEqual(['¿cosa', 'azul?'])
+    })
+  })
+
+  describe('derivation from blocks', () => {
+    it('never emits a span wider than the columns that remain', () => {
+      const segs = segmentsFromBlocks([{ known: 'x', target: 'a b c d' }], 2)
+      expect(segs).toEqual([{ span: 1, known: '' }, { span: 1, known: '' }])
+    })
+  })
+})

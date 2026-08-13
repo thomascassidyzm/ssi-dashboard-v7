@@ -255,6 +255,125 @@ function calculateSpacedRepReviews(roundNumber, offsets = FIBONACCI) {
 }
 
 /**
+ * The literal gloss alignment a row can SHOW — PURE.
+ *
+ * Tom's ruling, 2026-08-12: "word order of target must be preserved and known
+ * language will look wrong when the orders differ (cosa azul = blue thing maps
+ * literally to thing blue)." So the target's own words are fixed columns, left
+ * to right, and the known-language gloss is cut into chunks that sit UNDER
+ * them. Basque `hitz bat` reads `word` `a`. Nothing is ever reordered to make
+ * the known side read naturally — reading wrong is the point.
+ *
+ * A chunk may span several target words (many-to-one) and may be empty beside a
+ * wide neighbour (one-to-many). Both fall out of where the breaks are; neither
+ * is a special case, and the two sides' word counts need not match.
+ *
+ * Storage is `known_gloss_segments`, and it is deliberately NOT `decomposition`:
+ * decomposition is chunked by LEGO, not by word (`hitz bat esan nahi dut` is 3
+ * blocks over 5 words), and the learner's player renders those blocks as tiles
+ * that require the salient LEGO to stay whole. See the migration for the full
+ * reasoning. When no human has segmented a row yet, we DERIVE a faithful start
+ * from decomposition/components — each block's gloss spanning exactly that
+ * block's own target words — rather than guessing a per-word split, because
+ * guessing a split is precisely the drift bug this tool exists to fix.
+ *
+ * "When appropriate" (Tom): a row with fewer than two target words has no
+ * alignment to look at, so it returns null and shows no glyph rather than a
+ * dead one.
+ *
+ * EXCEPT on an INTRO (Tom, 2026-08-13). The intro's authored mapping is what
+ * the learner's tile assembler renders, so an intro that cannot be opened can
+ * never be mapped — which is exactly how `a word = hitz bat` stayed invisible:
+ * an A-LEGO has no components, so nothing derived carried a gloss and the row
+ * returned null. An intro is therefore ALWAYS a candidate: when nothing can be
+ * derived, it is seeded with its own known text as one chunk across every
+ * target column, which is the honest starting state and the one the editor's
+ * split control is built to cut. Componentisation is untouched and stays the
+ * fallback wherever it does produce a gloss.
+ */
+
+/** Target words are the columns. Split on whitespace; nothing else is a word. */
+function targetWordsOf(targetText) {
+  return String(targetText || '').trim().split(/\s+/).filter(Boolean)
+}
+
+/** Do these chunks exactly cover `wordCount` columns? */
+function segmentsCoverWords(segments, wordCount) {
+  if (!Array.isArray(segments) || segments.length === 0) return false
+  let total = 0
+  for (const seg of segments) {
+    if (!seg || !Number.isInteger(seg.span) || seg.span < 1) return false
+    if (typeof seg.known !== 'string') return false
+    total += seg.span
+  }
+  return total === wordCount
+}
+
+/**
+ * Derive a starting segmentation from LEGO-chunked blocks. Each block claims as
+ * many target-word columns as its own target text has words, and its gloss sits
+ * across all of them. Faithful, never inventive.
+ */
+function segmentsFromBlocks(blocks, wordCount) {
+  const segments = []
+  let claimed = 0
+  for (const b of blocks) {
+    const span = targetWordsOf(b.target).length
+    if (span < 1) continue
+    if (claimed + span > wordCount) break
+    segments.push({ span, known: typeof b.known === 'string' ? b.known : '' })
+    claimed += span
+  }
+  // The blocks did not tile the target text (stale or partial decomposition).
+  // Give the leftover columns their own empty chunks rather than dropping them:
+  // a target word with no gloss must stay visible, not vanish.
+  if (claimed < wordCount) {
+    for (let i = claimed; i < wordCount; i++) segments.push({ span: 1, known: '' })
+  }
+  return segments
+}
+
+/**
+ * @returns {{source:'phrase'|'lego', words:string[], segments:Array<{span:number,known:string}>, segmented:boolean}|null}
+ */
+function glossAlignment(source, targetText, blocks, storedSegments, opts) {
+  // An intro passes its own known text here: it is always a candidate, and this
+  // is what it falls back to when nothing else carries a gloss.
+  const seedKnown = opts && typeof opts.introSeedKnown === 'string'
+    ? opts.introSeedKnown.trim()
+    : ''
+  const words = targetWordsOf(targetText)
+  if (words.length < 1) return null
+  if (words.length < 2 && !seedKnown) return null
+
+  if (segmentsCoverWords(storedSegments, words.length)) {
+    return {
+      source,
+      words,
+      segments: storedSegments.map(s => ({ span: s.span, known: s.known })),
+      segmented: true,
+    }
+  }
+
+  const usable = Array.isArray(blocks) ? blocks : []
+  const segments = segmentsFromBlocks(usable, words.length)
+  // Nothing to look at if no column carries any gloss at all — unless this is
+  // an intro, which seeds from its own known text instead of going dark.
+  if (!segments.some(s => s.known.trim())) {
+    if (!seedKnown) return null
+    return { source, words, segments: [{ span: words.length, known: seedKnown }], segmented: false }
+  }
+  return { source, words, segments, segmented: false }
+}
+
+function mappingFromLego(lego, opts) {
+  if (!lego) return null
+  return glossAlignment(
+    'lego', lego.target_text, lego.components, lego.known_gloss_segments,
+    opts && opts.intro ? { introSeedKnown: lego.known_text } : undefined)
+}
+
+/**
  * Resolve the FULL PARENT SEED SENTENCE for a LEGO id — PURE, unit tested.
  *
  * Parent seed id = first 5 chars of the LEGO id (`S` + 4-digit seed number),
@@ -495,6 +614,10 @@ async function loadAllUniqueLegos(supabase, courseCode, maxLegos = 1000, offset 
           known_duration_ms: null,
           target1_duration_ms: record.target1_duration_ms,
           target2_duration_ms: record.target2_duration_ms,
+          // M-LEGO internal tiling — carried so intro/debut rows can derive a
+          // starting gloss alignment. NULL on every A-LEGO.
+          components: record.components || null,
+          known_gloss_segments: record.known_gloss_segments || null,
         },
         seed: {
           seed_id: seedId,
@@ -578,6 +701,14 @@ async function loadAllPracticePhrasesGrouped(supabase, courseCode) {
         known_duration_ms: null,
         target1_duration_ms: row.target1_duration_ms,
         target2_duration_ms: row.target2_duration_ms,
+        // The stored per-chunk known/target breakdown — the LEGO-chunked tiling
+        // the player renders. This projection is a fixed shape, not a
+        // passthrough: leaving a column out here is exactly why the mapping was
+        // absent from every phrase row on the first pass.
+        decomposition: row.decomposition || null,
+        // The human-made per-target-word gloss alignment, when one exists.
+        // Falls back to deriving from decomposition when NULL.
+        known_gloss_segments: row.known_gloss_segments || null,
       }))
 
       const componentPhrases = allPhrases.filter(p => p.phrase_role === 'component')
@@ -992,6 +1123,13 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: currentLego.lego.target1_audio_uuid,
         target2_audio_uuid: currentLego.lego.target2_audio_uuid,
         hasAudio: !!(effectiveIntroAudio && currentLego.lego.target1_audio_uuid),
+        // The ONLY row that carries a mapping (Tom, 2026-08-13: "it's only the
+        // INTROS that need mapping - no regular phrases need the mapping").
+        // The intro's mapping is the feed for the learner's tile assembler, so
+        // it is the one place authoring it changes what a learner sees. The
+        // debut renders the same LEGO from the same row, so authoring here
+        // covers it too without a second glyph saying the same thing twice.
+        mapping: mappingFromLego(currentLego.lego, { intro: true }),
       })
     }
 
@@ -1397,6 +1535,11 @@ module.exports = {
   loadAlgorithmConfig,
   calculateSpacedRepReviews,
   seedSentenceFor,
+  glossAlignment,
+  targetWordsOf,
+  segmentsCoverWords,
+  segmentsFromBlocks,
+  mappingFromLego,
   reviewItemIsSeed,
   legoIntroIsPlayable,
   legoDebutIsPlayable,
