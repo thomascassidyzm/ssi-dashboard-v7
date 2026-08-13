@@ -371,13 +371,14 @@
 
               <!-- Edit & Flag Buttons -->
               <div class="edit-flags flex items-center gap-1 flex-shrink-0">
-                <!-- Check mapping — INTRO rows only (Tom, 2026-08-13: "it's
-                     only the INTROS that need mapping - no regular phrases need
-                     the mapping"). The intro's mapping is what the learner's
-                     tile assembler renders; a phrase row's is read by nobody, so
-                     the glyph there was work with no destination. The generator
-                     now only attaches `mapping` to intros, and this guard says
-                     so at the point of use as well. -->
+                <!-- Check mapping — M-LEGO INTRO rows only (Tom, 2026-08-13:
+                     "it's only the INTROS that need mapping - no regular phrases
+                     need the mapping", and "A-LEGOs can't be mappable by
+                     definition"). The intro's mapping is what the learner's tile
+                     assembler renders; a phrase row's is read by nobody, so the
+                     glyph there was work with no destination. The generator
+                     attaches `mapping` to M-LEGO intros alone, and this guard
+                     says the intro half at the point of use as well. -->
                 <button
                   v-if="item.mapping && item.type === 'intro'"
                   class="mapping-btn w-6 h-6 flex items-center justify-center rounded transition-colors"
@@ -588,9 +589,8 @@ interface ScriptItem {
   playerCanDeliver?: boolean
   playerDropReason?: 'intro-audio' | 'debut-audio' | 'phrase-audio' | 'seed-audio'
   missingAudioRoles?: string[]
-  // Present on INTRO rows only (Tom, 2026-08-13). Always present on one, even
-  // when nothing could be derived — an intro that cannot be opened can never be
-  // mapped, and the mapping is what the learner's tile assembler renders.
+  // Present on M-LEGO INTRO rows only (Tom, 2026-08-13). An A-LEGO is a single
+  // word on at least one side, so it cannot be split and never carries one.
   mapping?: ItemMapping | null
 }
 
