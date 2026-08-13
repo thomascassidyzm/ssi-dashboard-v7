@@ -1030,9 +1030,17 @@ const ESTATE_MAP_SEMANTICS = {
     + 'pod0_stale_voice_approval | pod0_known_track_incomplete | pod0_target_track_incomplete | null. '
     + 'Every value is about AUDIO PRODUCTION, never about release state.',
   veracity_checked:
-    'Clips that have been through the veracity QA process. This is an UNAPPLIED QA process, not a quality '
-    + 'signal: a low figure means the process has not been run over those clips. It does NOT mean the audio is '
-    + 'bad, unchecked in any meaningful sense, or in need of repair.',
+    'Clips that have been through the veracity QA process. NOT a quality signal, and NOT a coverage target: '
+    + 'blanket per-clip whisper checking was deliberately removed from phase8, and the standing model is '
+    + 'graduated sampling (see `render_qa_policy`). A low figure here is the policy working as intended — it '
+    + 'does NOT mean the audio is bad, unchecked in any meaningful sense, or in need of repair, and it is not '
+    + 'a backlog to burn down.',
+  render_qa_policy:
+    'STANDING MODEL for render/QA, Tom 2026-08-13: GRADUATED SAMPLING. Veracity-check ~10% of the FIRST '
+    + 'job/course in a render run; if that sample comes back clean, drop to ~1% across the remaining 90%; keep '
+    + 'relaxing the rate as trust accumulates course by course through the run. Neither blanket per-clip '
+    + 'whisper on everything (removed from phase8 last week) nor zero checking. Trust is earned within a run '
+    + 'and spent on the run — a clean first sample buys the cheaper rate for what follows it.',
   voice_mode:
     'tts | human | mixed | unknown, derived from course_audio.origin. "unknown" means the course has no audio '
     + 'rows at all — it is not a guess at TTS. "mixed" is a real and common state on this estate, not a defect.',
@@ -1053,6 +1061,21 @@ const ESTATE_MAP_SEMANTICS = {
   english_audio:
     'English renders once, estate-wide, and links everywhere: there is one English clone pool shared across the '
     + 'estate. Do not assume a course\'s English audio was rendered for that course.',
+  pods_by_language:
+    'STANDING FACT, Tom 2026-08-13: PODS ARE PER LANGUAGE, NOT PER COURSE. Each language\'s pod content renders '
+    + 'ONCE and is shared across every course in that language — the English pod-0 dedupe generalised to the '
+    + 'whole estate. The player handles pod delivery speed; per-course pod duplication is not the answer to '
+    + 'anything. This block is the ruling made countable: `slots_per_course_counting` is the OLD unit, '
+    + '`distinct_lines` is the real render cost, and `collapse_factor` is the ratio between them.',
+  collapse_factor:
+    'slots_per_course_counting / distinct_lines for a language\'s pod-0 content. It is how much a per-course '
+    + 'count over-states the render. CONSEQUENCE Tom flagged: the ~210k-clip premium-first non-English rebuild '
+    + 'queue was counted per-course and should collapse significantly under per-language dedupe. That number '
+    + 'wants recounting and publishing BEFORE anyone proposes spend against it.',
+  pod_0:
+    'Per-COURSE pod state — still the right unit for "can a learner play this course\'s pod 0", and the WRONG '
+    + 'unit for costing a render. To cost a render, read `pods_by_language`. Both are in this response on '
+    + 'purpose, because conflating them is what produced a per-course render queue.',
   lego_types:
     'An A-LEGO is one word on at least one side, and is therefore unmappable. An M-LEGO is two or more words on '
     + 'BOTH sides, is mappable, and mapping is offered on Intros only. Tom: "It\'s just classification that feeds the mapping."',
@@ -1114,6 +1137,13 @@ function estateMapAsText(payload) {
     `pod 0: ${t.with_pod_0} courses have one | blocked: ${t.blocked}`,
     ...Object.entries(t.blocked_by_reason).map(([r, n]) => `    ${n}  ${r}`),
     '',
+    `pod lines, per-course counting ${t.pod_0_lines.per_course_counting} -> per-LANGUAGE `
+      + `${t.pod_0_lines.distinct_per_language} distinct. Pods are per language, not per course.`,
+    ...payload.pods_by_language.slice(0, 8).map(l =>
+      `    ${l.lang.padEnd(5)} ${String(l.slots_per_course_counting).padStart(6)} slots -> `
+      + `${String(l.distinct_lines).padStart(5)} lines  (${l.collapse_factor}x)  across `
+      + `${l.courses_with_pod_0} courses`),
+    '',
     'COURSE                          REL  VOICE   CLIPS    POD-0 (tgt/known of slots)  BLOCKED ON',
   ]
   for (const c of payload.courses) {
@@ -1143,9 +1173,13 @@ app.get('/api/estate-map', async (req, res) => {
     }
     const supabase = supabaseClient.getClient()
 
-    // 1. The derived rows — one round trip, aggregated in SQL (~1s over ~2.5M audio rows).
-    const { data: rows, error } = await supabase.rpc('estate_map')
+    // 1. The derived rows — one round trip, aggregated in SQL (~1.8s over ~2.5M audio rows).
+    //    Returns { courses, pods_by_language }: pods are counted per LANGUAGE as well
+    //    as per course, because per-language is the unit a render is actually costed in.
+    const { data: derived, error } = await supabase.rpc('estate_map')
     if (error) throw new Error(`estate_map(): ${error.message}`)
+    const rows = derived?.courses || []
+    const podsByLanguage = derived?.pods_by_language || []
 
     // 2. Overlay the live pod-0 voice-approval verdict. Same code path the real
     //    generation gate uses, so a course reported as awaiting approval here is a
@@ -1210,7 +1244,16 @@ app.get('/api/estate-map', async (req, res) => {
           return acc
         }, {}),
         clips: courses.reduce((n, c) => n + (c.audio.clips || 0), 0),
+        // Pods counted in BOTH units, so the gap between them is impossible to miss.
+        // The per-course number is what a render queue gets costed at when nobody
+        // remembers that pods are per language.
+        pod_0_lines: {
+          per_course_counting: podsByLanguage.reduce((n, l) => n + l.slots_per_course_counting, 0),
+          distinct_per_language: podsByLanguage.reduce((n, l) => n + l.distinct_lines, 0),
+        },
       },
+      // Tom, 2026-08-13: pods are per LANGUAGE. This is the unit to cost a render in.
+      pods_by_language: podsByLanguage,
       semantics: ESTATE_MAP_SEMANTICS,
       courses,
     }
