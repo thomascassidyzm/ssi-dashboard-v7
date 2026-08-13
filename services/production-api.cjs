@@ -30,6 +30,7 @@ const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
 const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId } = require('./recording-upload-helpers.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
+const podVoiceApprovals = require('./pod-voice-approvals.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
 const presentationAuthor = require('./phases/presentation-author.cjs')
 
@@ -992,6 +993,224 @@ app.get('/api/courses', async (req, res) => {
     res.json({ courses: result })
   } catch (err) {
     logger.error('Failed to get courses:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// =============================================================================
+// THE DERIVED ESTATE MAP — GET /api/estate-map
+// =============================================================================
+// The questions workers on this estate keep getting wrong, answered from the
+// database on every read. Tom's ruling, 2026-08-13: "Code >> Doctrine - we
+// basically moved to deprecate doctrine docs as much as possible because of our
+// speed of iteration. It's too difficult to keep docs up to date." So this is a
+// query, not a document: no cache, no snapshot, no materialised view, no cron.
+// Every field below is recomputed per request (public.estate_map(), see
+// database/migrations/20260813_estate_map.sql).
+//
+// The SEMANTICS block below is the one human-authored part, and it is here rather
+// than in a doc on purpose: the meaning of a field lives in the same file as the
+// query that produces it, so a change to one lands next to the other. Most of this
+// week's estate errors were wrong MEANINGS, not wrong numbers — "blocked" read as
+// unreleased, "veracity" read as quality, "draft lines" read as missing content.
+
+const ESTATE_MAP_SEMANTICS = {
+  released:
+    "new_app_status IN ('live','beta'). Tom: \"Live + Beta = released in the DB status.\" "
+    + 'A course that is not marked released is not necessarily unbuilt — it may be fully built and simply not switched on.',
+  blocked:
+    'In the casting docs and the premium queue, "blocked" means AWAITING VOICE CASTING. It says nothing '
+    + 'whatsoever about whether the course is released — released courses are routinely blocked, and blocked '
+    + 'courses are routinely live. Reading "blocked" as "unreleased" is one of the specific errors this endpoint exists to stop.',
+  blocked_reason:
+    'Machine-readable blocker, most-blocking first: no_audio | pod0_awaiting_voice_approval | '
+    + 'pod0_stale_voice_approval | pod0_known_track_incomplete | pod0_target_track_incomplete | null. '
+    + 'Every value is about AUDIO PRODUCTION, never about release state.',
+  veracity_checked:
+    'Clips that have been through the veracity QA process. This is an UNAPPLIED QA process, not a quality '
+    + 'signal: a low figure means the process has not been run over those clips. It does NOT mean the audio is '
+    + 'bad, unchecked in any meaningful sense, or in need of repair.',
+  voice_mode:
+    'tts | human | mixed | unknown, derived from course_audio.origin. "unknown" means the course has no audio '
+    + 'rows at all — it is not a guess at TTS. "mixed" is a real and common state on this estate, not a defect.',
+  voices_of_record:
+    'The voice ids actually carrying this course\'s clips, read from course_audio. NOT the stored cast: only 16 of '
+    + '119 Spanish pod clips sit on the stored listening_pods.speakers cast, and 0 of 110 on cym_n. If you want to '
+    + 'know what a learner hears, this is the field; the stored cast is INTENDED casting and is a different thing.',
+  human_clips:
+    "Aran's and Catrin's recordings are PROTECTED SLOTS. Those are their real voices, and TTS never overwrites "
+    + 'them, even when a clip is dead. Tom\'s standing position on the 23 dead Welsh English stubs is that they '
+    + "remain his voice's slots until Aran says otherwise.",
+  known_dead_stubs:
+    'Slots linked to a clip whose file is under 2KB — linked in the database, silent to the learner. The 23 on the '
+    + 'Welsh pod-0 English track are 834-byte files from a bad write on 2026-06-15. A linked slot is not a filled slot.',
+  draft_lines:
+    'Pod lines whose target text is machine-translated and no human has read yet. The text EXISTS; it is '
+    + 'unconfirmed, not missing.',
+  english_audio:
+    'English renders once, estate-wide, and links everywhere: there is one English clone pool shared across the '
+    + 'estate. Do not assume a course\'s English audio was rendered for that course.',
+  lego_types:
+    'An A-LEGO is one word on at least one side, and is therefore unmappable. An M-LEGO is two or more words on '
+    + 'BOTH sides, is mappable, and mapping is offered on Intros only. Tom: "It\'s just classification that feeds the mapping."',
+  mapping:
+    'Presentational segmentation of the known text in target word order. Never a text change, never word-pairing. '
+    + 'Editing a mapping is segmentation, not translation.',
+  code_over_doctrine:
+    'Tom: "Code >> Doctrine - we basically moved to deprecate doctrine docs as much as possible because of our '
+    + 'speed of iteration. It\'s too difficult to keep docs up to date." Where a doc and the live database disagree, '
+    + 'the doc is stale. This endpoint being derived rather than written is that principle applied to the estate map itself.',
+}
+
+/**
+ * Decide what a course is blocked on, from its already-derived row plus the live
+ * pod-0 voice-approval verdict. Pure — no I/O — so the ordering is readable and testable.
+ */
+function estateMapBlocker(course, approval) {
+  const pod0 = course.pod_0 || { exists: false }
+  if ((course.audio?.clips || 0) === 0) {
+    return { reason: 'no_audio', detail: 'No audio rows exist for this course at all.' }
+  }
+  if (pod0.exists && approval && !approval.ok) {
+    const reason = approval.reason === 'stale_approval' ? 'pod0_stale_voice_approval' : 'pod0_awaiting_voice_approval'
+    return { reason, detail: approval.message }
+  }
+  if (pod0.exists && (pod0.known_empty > 0 || pod0.known_dead_stubs > 0)) {
+    return {
+      reason: 'pod0_known_track_incomplete',
+      detail: `Pod 0's known-language track has ${pod0.known_empty} empty slots and `
+        + `${pod0.known_dead_stubs} linked-but-dead clips out of ${pod0.slots}.`,
+    }
+  }
+  if (pod0.exists && pod0.target_empty > 0) {
+    return {
+      reason: 'pod0_target_track_incomplete',
+      detail: `Pod 0's target-language track has ${pod0.target_empty} empty slots out of ${pod0.slots}.`,
+    }
+  }
+  return { reason: null, detail: null }
+}
+
+/** Skimmable text rendering, so a worker can eyeball the map without jq. */
+function estateMapAsText(payload) {
+  const t = payload.totals
+  const lines = [
+    `ESTATE MAP — computed ${payload.generated_at} (fresh per read, never cached)`,
+    '',
+    `courses ${t.courses} | released ${t.released} (live ${t.new_app_live} + beta ${t.new_app_beta}) | `
+      + `tts ${t.voice_mode.tts} human ${t.voice_mode.human} mixed ${t.voice_mode.mixed} unknown ${t.voice_mode.unknown}`,
+    `pod 0: ${t.with_pod_0} courses have one | blocked: ${t.blocked}`,
+    ...Object.entries(t.blocked_by_reason).map(([r, n]) => `    ${n}  ${r}`),
+    '',
+    'COURSE                          REL  VOICE   CLIPS    POD-0 (tgt/known of slots)  BLOCKED ON',
+  ]
+  for (const c of payload.courses) {
+    const pod = c.pod_0.exists
+      ? `${c.pod_0.target_linked}/${c.pod_0.known_linked} of ${c.pod_0.slots}`.padEnd(26)
+      : '—'.padEnd(26)
+    lines.push(
+      c.course_code.padEnd(32)
+      + (c.released ? 'yes' : 'no ').padEnd(5)
+      + c.audio.voice_mode.padEnd(8)
+      + String(c.audio.clips).padEnd(9)
+      + pod
+      + (c.blocked_reason || ''),
+    )
+  }
+  lines.push('', 'SEMANTICS — what these words mean here', '')
+  for (const [k, v] of Object.entries(payload.semantics)) lines.push(`${k}:`, `  ${v}`, '')
+  return lines.join('\n')
+}
+
+// GET /api/estate-map — the derived map. No auth, by design: any worker with a curl
+// must be able to read it, or they will go back to inferring estate facts instead.
+app.get('/api/estate-map', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+    const supabase = supabaseClient.getClient()
+
+    // 1. The derived rows — one round trip, aggregated in SQL (~1s over ~2.5M audio rows).
+    const { data: rows, error } = await supabase.rpc('estate_map')
+    if (error) throw new Error(`estate_map(): ${error.message}`)
+
+    // 2. Overlay the live pod-0 voice-approval verdict. Same code path the real
+    //    generation gate uses, so a course reported as awaiting approval here is a
+    //    course /generate-pods will actually refuse.
+    const [{ data: pods, error: podErr }, approvals] = await Promise.all([
+      supabase.from('listening_pods').select('id, course_code, speakers'),
+      podVoiceApprovals.loadApprovals(supabase),
+    ])
+    if (podErr) throw new Error(`load pods: ${podErr.message}`)
+    const podsByCourse = new Map()
+    for (const p of pods || []) {
+      if (!podsByCourse.has(p.course_code)) podsByCourse.set(p.course_code, [])
+      podsByCourse.get(p.course_code).push(p)
+    }
+
+    let courses = (rows || []).map(c => {
+      const coursePods = podsByCourse.get(c.course_code) || []
+      const approval = coursePods.length
+        ? podVoiceApprovals.evaluateApproval(
+          approvals[c.course_code] || null,
+          podVoiceApprovals.castFingerprint(coursePods),
+        )
+        : null
+      const blocker = estateMapBlocker(c, approval)
+      return {
+        ...c,
+        pod_voice_approval: approval ? approval.reason : 'no_pods',
+        blocked: blocker.reason !== null,
+        blocked_reason: blocker.reason,
+        blocked_detail: blocker.detail,
+      }
+    })
+
+    // 3. Cheap conveniences. The unfiltered read stays the default.
+    if (req.query.released === 'true') courses = courses.filter(c => c.released)
+    if (req.query.course) courses = courses.filter(c => c.course_code === req.query.course)
+
+    const countBy = (key) => courses.reduce((acc, c) => {
+      const k = typeof key === 'function' ? key(c) : c[key]
+      if (k !== null && k !== undefined) acc[k] = (acc[k] || 0) + 1
+      return acc
+    }, {})
+
+    const payload = {
+      generated_at: new Date().toISOString(),
+      derived: 'Computed from the database on every read. Never cached, never a snapshot. '
+        + 'If this disagrees with a document, the document is stale.',
+      totals: {
+        courses: courses.length,
+        released: courses.filter(c => c.released).length,
+        new_app_live: courses.filter(c => c.new_app_status === 'live').length,
+        new_app_beta: courses.filter(c => c.new_app_status === 'beta').length,
+        legacy_released: courses.filter(c => ['live', 'beta', 'released'].includes(c.legacy_app_status)).length,
+        voice_mode: {
+          tts: courses.filter(c => c.audio.voice_mode === 'tts').length,
+          human: courses.filter(c => c.audio.voice_mode === 'human').length,
+          mixed: courses.filter(c => c.audio.voice_mode === 'mixed').length,
+          unknown: courses.filter(c => c.audio.voice_mode === 'unknown').length,
+        },
+        with_pod_0: courses.filter(c => c.pod_0.exists).length,
+        blocked: courses.filter(c => c.blocked).length,
+        blocked_by_reason: countBy('blocked_reason'),
+        clips: courses.reduce((n, c) => n + (c.audio.clips || 0), 0),
+      },
+      semantics: ESTATE_MAP_SEMANTICS,
+      courses,
+    }
+
+    logger.info(`Estate map: ${payload.totals.courses} courses, ${payload.totals.released} released, ${payload.totals.blocked} blocked`)
+
+    if (req.query.format === 'text' || (req.accepts(['json', 'text']) === 'text' && !req.query.format)) {
+      res.type('text/plain').send(estateMapAsText(payload))
+      return
+    }
+    res.json(payload)
+  } catch (err) {
+    logger.error('Failed to build estate map:', err)
     res.status(500).json({ error: err.message })
   }
 })
