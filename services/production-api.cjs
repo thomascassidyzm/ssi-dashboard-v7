@@ -1040,7 +1040,10 @@ const ESTATE_MAP_SEMANTICS = {
     + 'job/course in a render run; if that sample comes back clean, drop to ~1% across the remaining 90%; keep '
     + 'relaxing the rate as trust accumulates course by course through the run. Neither blanket per-clip '
     + 'whisper on everything (removed from phase8 last week) nor zero checking. Trust is earned within a run '
-    + 'and spent on the run — a clean first sample buys the cheaper rate for what follows it.',
+    + 'and spent on the run — a clean first sample buys the cheaper rate for what follows it, and a FAILURE '
+    + 'snaps the rate straight back. Implemented in services/audio-veracity.cjs (createSampler); phase8 marks '
+    + 'the course boundaries. What it catches is a bad RUN — a voice gone silent, a truncating provider — not '
+    + 'one bad clip among healthy ones; do not sell it as the latter.',
   voice_mode:
     'tts | human | mixed | unknown, derived from course_audio.origin. "unknown" means the course has no audio '
     + 'rows at all — it is not a guess at TTS. "mixed" is a real and common state on this estate, not a defect.',

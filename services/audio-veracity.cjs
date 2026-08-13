@@ -234,7 +234,7 @@ function announceStatus (logger = console) {
     } else if (!av.available) {
       warn(`[audio-veracity] ⚠️  CANNOT CHECK — missing ${av.missing.join(' and ')}. Clips are being PUBLISHED UNCHECKED for silence and truncation. This is NOT a pass.`)
     } else {
-      info(`[audio-veracity] ON — unprimed whisper round-trip, model ${path.basename(WHISPER_MODEL)}, CER threshold ${CER_THRESHOLD}. Validated on silence + truncation only; mispronunciation is NOT covered.`)
+      info(`[audio-veracity] ON — unprimed whisper round-trip, model ${path.basename(WHISPER_MODEL)}, CER threshold ${CER_THRESHOLD}. GRADUATED SAMPLING: ${(SAMPLE_RATE_FIRST * 100).toFixed(0)}% of the first course, ${(SAMPLE_RATE_TRUSTED * 100).toFixed(0)}% once that samples clean, relaxing to a ${(SAMPLE_RATE_FLOOR * 100).toFixed(1)}% floor — a failure snaps it back. Validated on silence + truncation only; mispronunciation is NOT covered.`)
     }
   }
   return { enabled, available: av.available, missing: av.missing }
@@ -1011,12 +1011,29 @@ function quarantine (record, audioBuffer, logger = console) {
 
 /** The counts Tom asked to see on every render. */
 function newStats () {
-  return { checked: 0, passed: 0, failed: 0, rerendered: 0, quarantined: 0, unchecked: 0, uncheckedReasons: {} }
+  return {
+    checked: 0,
+    passed: 0,
+    failed: 0,
+    rerendered: 0,
+    quarantined: 0,
+    unchecked: 0,
+    uncheckedReasons: {},
+    // Clips the SAMPLER deliberately did not check. Counted apart from
+    // `unchecked` on purpose: `unchecked` is an admission that we could not
+    // look, and it is meant to be alarming. `not_sampled` is the policy doing
+    // exactly what it was told to do, and it is not.
+    not_sampled: 0,
+  }
 }
 
 /** Fold one verdict into a stats object. */
 function recordVerdict (stats, verdict) {
   if (!stats) return
+  if (verdict && verdict.checked !== true && verdict.reason === 'not_sampled') {
+    stats.not_sampled++
+    return
+  }
   if (!verdict || verdict.checked !== true) {
     stats.unchecked++
     const r = verdict?.reason || 'unchecked_unknown'
@@ -1025,6 +1042,158 @@ function recordVerdict (stats, verdict) {
   }
   stats.checked++
   if (verdict.pass) stats.passed++; else stats.failed++
+}
+
+// ---------------------------------------------------------------------------
+// GRADUATED SAMPLING — the standing QA model (Tom, 2026-08-13)
+// ---------------------------------------------------------------------------
+//
+// "Veracity-check ~10% of the FIRST job/course in a render run; if that sample
+// comes back clean, drop to sampling 1% of the remaining 90%; keep relaxing the
+// sample rate as trust accumulates course by course through the run."
+//
+// Neither of the two things it replaces: not blanket per-clip whisper on
+// everything (removed from phase8 last week — it made every render pay full ASR
+// cost to re-confirm a thing that had been true for thousands of clips), and not
+// zero checking (which is how a silent render reaches a learner, because there is
+// no staging environment between a TTS render and an ear).
+//
+// TRUST IS EARNED WITHIN A RUN AND SPENT ON THE RUN. Two properties make that
+// safe rather than merely cheap:
+//
+//  1. A FAILURE SNAPS THE RATE BACK to the opening rate, immediately, mid-course.
+//     The cheap rate is a statement that the last few hundred clips were clean;
+//     the moment that stops being true the statement is withdrawn. Without this,
+//     graduated sampling is just "check less and less regardless", and the run
+//     that goes bad half way through is exactly the run it would miss.
+//  2. SELECTION IS DETERMINISTIC AND SPREAD, not random. A counter picks every
+//     Nth clip, so a 1% sample is one-in-a-hundred ACROSS the course rather than
+//     a random draw that can leave a 3,000-clip stretch untouched by luck. It is
+//     also reproducible: same run, same clips sampled, which is what makes a
+//     "sampled clean" claim checkable afterwards.
+//
+// WHAT THIS DOES NOT CLAIM. A 1% sample cannot find one bad clip in a course; it
+// finds a bad RUN — a voice that has started returning silence, a truncating
+// provider, a config that renders the wrong language. That is the failure class
+// that has actually bitten this estate, and it is a cohort problem, which is why
+// sampling can address it at all. A single defective clip among healthy ones is
+// not what this catches and must not be sold as if it were.
+
+const SAMPLE_RATE_FIRST = Number(process.env.AUDIO_VERACITY_SAMPLE_FIRST || 0.10)
+const SAMPLE_RATE_TRUSTED = Number(process.env.AUDIO_VERACITY_SAMPLE_TRUSTED || 0.01)
+// The floor the relaxation walks down to. Never 0: a run that never looks again
+// cannot notice it has gone wrong, however much trust it has banked.
+const SAMPLE_RATE_FLOOR = Number(process.env.AUDIO_VERACITY_SAMPLE_FLOOR || 0.002)
+
+/**
+ * The sampler for one render run. A "run" is one process's pass over one or more
+ * courses; `startCourse()` is the boundary that lets trust accumulate across them.
+ *
+ * @param {object} [o]
+ * @param {number} [o.first]    rate for the first course (default 10%)
+ * @param {number} [o.trusted]  rate once the first course sampled clean (default 1%)
+ * @param {number} [o.floor]    the lowest rate relaxation will reach (default 0.2%)
+ */
+function createSampler (o = {}) {
+  const first = o.first != null ? Number(o.first) : SAMPLE_RATE_FIRST
+  const trusted = o.trusted != null ? Number(o.trusted) : SAMPLE_RATE_TRUSTED
+  const floor = o.floor != null ? Number(o.floor) : SAMPLE_RATE_FLOOR
+
+  let cleanCourses = 0      // consecutive courses that sampled clean
+  let coursesStarted = 0
+  let rate = first
+  let counter = 0           // drives the every-Nth selection
+  let courseSampled = 0
+  let courseFailed = 0
+  let courseCode = null
+
+  /** The rate this course runs at, given the trust banked so far. */
+  function rateForCourse () {
+    if (coursesStarted <= 1 || cleanCourses === 0) return first
+    // Halve again for each further clean course, down to the floor. Two clean
+    // courses is 1%, three is 0.5%, four 0.25%, then the floor holds.
+    return Math.max(floor, trusted / Math.pow(2, cleanCourses - 1))
+  }
+
+  return {
+    /** Begin a course. Banks the previous course's result first. */
+    startCourse (code) {
+      if (courseCode !== null) {
+        if (courseFailed === 0 && courseSampled > 0) cleanCourses++
+        else if (courseFailed > 0) cleanCourses = 0
+        // A course where nothing was sampled banks nothing: no evidence, no trust.
+      }
+      courseCode = code
+      coursesStarted++
+      courseSampled = 0
+      courseFailed = 0
+      counter = 0
+      rate = rateForCourse()
+      return { course: code, rate, clean_courses: cleanCourses }
+    },
+
+    /**
+     * Should this clip be checked? Every-Nth selection, so the sample is spread
+     * across the course rather than clumped by luck.
+     */
+    shouldCheck () {
+      if (rate >= 1) return true
+      if (rate <= 0) return false
+      const every = Math.max(1, Math.round(1 / rate))
+      const take = (counter % every) === 0
+      counter++
+      if (take) courseSampled++
+      return take
+    },
+
+    /**
+     * Fold in a verdict from a sampled clip. A genuine failure snaps the rate
+     * back to the opening rate for the rest of this course — the cheap rate was
+     * a claim about clips that turned out not to hold.
+     */
+    recordVerdict (verdict) {
+      if (!verdict || verdict.checked !== true) return { rate, snapped: false }
+      if (verdict.pass === true) return { rate, snapped: false }
+      courseFailed++
+      const snapped = rate !== first
+      rate = first
+      counter = 0
+      cleanCourses = 0
+      return { rate, snapped }
+    },
+
+    /** Current state, for the render report and for tests. */
+    state () {
+      return {
+        course: courseCode,
+        rate,
+        courses_started: coursesStarted,
+        clean_courses: cleanCourses,
+        sampled_this_course: courseSampled,
+        failed_this_course: courseFailed,
+      }
+    },
+  }
+}
+
+// The process-wide sampler. Phase 8 calls startCourse() per course; anything that
+// renders without calling it gets the opening rate, which is the safe default.
+let runSampler = createSampler()
+
+/** Start a course on the process-wide sampler. Returns the rate it will use. */
+function startCourse (code) {
+  return runSampler.startCourse(code)
+}
+
+/** Reset the run's accumulated trust — a new run starts from scratch. */
+function resetSampler (o) {
+  runSampler = createSampler(o)
+  return runSampler.state()
+}
+
+/** The process-wide sampler's current state. */
+function samplerState () {
+  return runSampler.state()
 }
 
 // ---------------------------------------------------------------------------
@@ -1121,6 +1290,19 @@ async function renderChecked (o) {
   const warn = (m) => (logger.warn || logger.log || console.warn).call(logger, m)
   const err = (m) => (logger.error || logger.log || console.error).call(logger, m)
   const label = `${meta.role || '?'} "${String(expectedText).slice(0, 40)}"`
+  // Test seam. Production callers use the process-wide run sampler.
+  const sampler = o.sampler || runSampler
+
+  // GRADUATED SAMPLING (Tom, 2026-08-13). Clips the sampler passes over are
+  // rendered once and published with veracity_pass NULL — honestly "not checked",
+  // never a fabricated pass. `not_sampled` is its own counter so a deliberate
+  // policy skip can never be read as the gate failing to run.
+  if (!sampler.shouldCheck()) {
+    const rendered = await render(1)
+    const verdict = { checked: false, pass: null, reason: 'not_sampled' }
+    recordVerdict(stats, verdict)
+    return { published: true, ...rendered, verdict, attempts: 1, verdicts: [verdict] }
+  }
 
   const verdicts = []
   let last = null
@@ -1128,6 +1310,14 @@ async function renderChecked (o) {
     last = await render(attempt)
     const verdict = await check(last.buffer, expectedText, language, { meta })
     verdicts.push({ attempt, ...verdict, decode: verdict.decode })
+    // Tell the sampler before anything else acts on the verdict: a failure has to
+    // snap the rate back for the clips that follow, whether or not a re-render
+    // rescues this one.
+    const snap = sampler.recordVerdict(verdict)
+    if (snap.snapped) {
+      warn(`[audio-veracity] sample failed on ${label} — sampling rate snapped back to `
+        + `${(snap.rate * 100).toFixed(1)}% for the rest of this course`)
+    }
 
     if (!verdict.checked) {
       // NOT a pass — an admission. Publish (the alternative is halting the
@@ -1170,6 +1360,13 @@ function formatStats (stats) {
     `${stats.quarantined} quarantined`,
     `${stats.unchecked} UNCHECKED`,
   ]
+  // Sampling state belongs on the same line as the counts, or "12 checked" out of
+  // 30,000 clips reads as a broken gate rather than as the policy working.
+  if (stats.not_sampled) {
+    const st = samplerState()
+    bits.push(`${stats.not_sampled} not sampled (graduated sampling at `
+      + `${(st.rate * 100).toFixed(1)}%, ${st.clean_courses} clean course(s) banked)`)
+  }
   const why = Object.entries(stats.uncheckedReasons || {}).map(([k, v]) => `${k}=${v}`).join(', ')
   return `veracity: ${bits.join(', ')}${why ? ` (${why})` : ''}`
 }
@@ -1194,6 +1391,13 @@ module.exports = {
   quarantine,
   newStats,
   recordVerdict,
+  createSampler,
+  startCourse,
+  resetSampler,
+  samplerState,
+  SAMPLE_RATE_FIRST,
+  SAMPLE_RATE_TRUSTED,
+  SAMPLE_RATE_FLOOR,
   formatStats,
   verdictColumns,
   CER_THRESHOLD,

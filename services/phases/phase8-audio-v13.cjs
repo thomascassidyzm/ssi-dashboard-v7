@@ -2080,6 +2080,11 @@ app.post('/generate/:courseCode', async (req, res) => {
     // "published unchecked" can never be mistaken for "published clean".
     results.veracity = veracity.newStats()
     veracity.announceStatus(logger)
+    // Course boundary for graduated sampling (Tom, 2026-08-13): trust accrues
+    // course by course through a run, so the sampler has to be told where one
+    // course ends and the next begins.
+    const sampleRate = veracity.startCourse(courseCode)
+    logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (${sampleRate.clean_courses} clean course(s) banked this run)`)
 
     // Bind presentation audio to its consumers: the course_legos FK AND the
     // lego_introductions projection (both read live by the learning app —
@@ -2719,6 +2724,11 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     const results = { success: 0, failed: 0, errors: [] }
     results.veracity = veracity.newStats()
     veracity.announceStatus(logger)
+    // Course boundary for graduated sampling (Tom, 2026-08-13): trust accrues
+    // course by course through a run, so the sampler has to be told where one
+    // course ends and the next begins.
+    const sampleRate = veracity.startCourse(courseCode)
+    logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (${sampleRate.clean_courses} clean course(s) banked this run)`)
     // Use speed from voice config (everything is a parameter!)
     const speed = voiceSettings.settings?.speed || 1.0
 
@@ -5208,6 +5218,11 @@ app.post('/generate-components/:courseCode', async (req, res) => {
     const results = { success: 0, failed: 0, errors: [] }
     results.veracity = veracity.newStats()
     veracity.announceStatus(logger)
+    // Course boundary for graduated sampling (Tom, 2026-08-13): trust accrues
+    // course by course through a run, so the sampler has to be told where one
+    // course ends and the next begins.
+    const sampleRate = veracity.startCourse(courseCode)
+    logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (${sampleRate.clean_courses} clean course(s) banked this run)`)
 
     // Generate items using the same pattern as /generate
     const generateItem = async (item) => {

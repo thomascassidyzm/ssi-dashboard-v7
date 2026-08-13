@@ -500,6 +500,11 @@ describe('quarantine', () => {
 })
 
 describe('renderChecked — the publish decision', () => {
+  // These tests are about the GATE's decision, not about which clips the sampler
+  // picks, so they run with sampling pinned open. Graduated sampling has its own
+  // block below. Before 2026-08-13 there was no sampler and every clip was checked,
+  // which is why these calls used to need no `sampler` at all.
+  const always = V.createSampler({ first: 1, trusted: 1, floor: 1 })
   const buf = (s) => Buffer.from(s)
   const passing = async () => ({ pass: true, checked: true, reason: 'ok', cer: 0.02, decode: 'hallo' })
   const failing = async () => ({ pass: false, checked: true, reason: 'cer_above_threshold', cer: 0.8, decode: 'ha' })
@@ -509,6 +514,7 @@ describe('renderChecked — the publish decision', () => {
     let renders = 0
     const stats = V.newStats()
     const r = await V.renderChecked({
+      sampler: always,
       render: async () => { renders++; return { buffer: buf('a'), durationMs: 900 } },
       expectedText: 'hallo', language: 'deu', check: passing, stats, logger: quiet,
     })
@@ -522,6 +528,7 @@ describe('renderChecked — the publish decision', () => {
     let renders = 0
     const stats = V.newStats()
     const r = await V.renderChecked({
+      sampler: always,
       render: async () => { renders++; return { buffer: buf(`a${renders}`), durationMs: 900 } },
       expectedText: 'hallo', language: 'deu', stats, logger: quiet,
       check: async (b) => (String(b) === 'a1' ? failing() : passing()),
@@ -538,6 +545,7 @@ describe('renderChecked — the publish decision', () => {
     let renders = 0
     const stats = V.newStats()
     const r = await V.renderChecked({
+      sampler: always,
       render: async () => { renders++; return { buffer: buf('bad'), durationMs: 200 } },
       expectedText: 'hallo', language: 'deu', check: failing, stats, logger: quiet,
       meta: { courseCode: 'tst_for_eng', role: 'target1' },
@@ -554,6 +562,7 @@ describe('renderChecked — the publish decision', () => {
   it('honours a custom attempt budget', async () => {
     let renders = 0
     const r = await V.renderChecked({
+      sampler: always,
       render: async () => { renders++; return { buffer: buf('bad'), durationMs: 200 } },
       expectedText: 'hallo', language: 'deu', check: failing, attempts: 1, logger: quiet,
       meta: { courseCode: 'tst_for_eng' },
@@ -566,6 +575,7 @@ describe('renderChecked — the publish decision', () => {
     let renders = 0
     const stats = V.newStats()
     const r = await V.renderChecked({
+      sampler: always,
       render: async () => { renders++; return { buffer: buf('a'), durationMs: 900 } },
       expectedText: 'hallo', language: 'deu', stats, logger: quiet,
       check: async () => ({ pass: null, checked: false, reason: 'unchecked_no_whisper', cer: null, decode: null }),
@@ -637,5 +647,113 @@ describe('verdictColumns', () => {
     const merged = { ...stale, ...V.verdictColumns({ checked: false, pass: null, reason: 'unchecked_disabled' }) }
     for (const k of Object.keys(stale)) expect(merged[k]).not.toBe(stale[k])
     expect(merged.veracity_pass).toBeNull()
+  })
+})
+
+describe('graduated sampling — the standing QA model (Tom, 2026-08-13)', () => {
+  const quiet = { info: () => {}, warn: () => {}, error: () => {}, log: () => {} }
+  const buf = (s) => Buffer.from(s)
+  const passing = async () => ({ pass: true, checked: true, reason: 'ok', cer: 0.02, decode: 'hallo' })
+  const failing = async () => ({ pass: false, checked: true, reason: 'cer_above_threshold', cer: 0.8, decode: 'ha' })
+
+  it('samples ~10% of the first course', () => {
+    const s = V.createSampler()
+    s.startCourse('spa_for_eng')
+    const taken = Array.from({ length: 100 }, () => s.shouldCheck()).filter(Boolean).length
+    expect(taken).toBe(10)
+  })
+
+  it('drops to ~1% on the next course once the first sampled clean', () => {
+    const s = V.createSampler()
+    s.startCourse('a')
+    for (let i = 0; i < 100; i++) if (s.shouldCheck()) s.recordVerdict({ checked: true, pass: true })
+    s.startCourse('b')
+    expect(s.state().rate).toBeCloseTo(0.01, 5)
+    const taken = Array.from({ length: 1000 }, () => s.shouldCheck()).filter(Boolean).length
+    expect(taken).toBe(10)
+  })
+
+  it('keeps relaxing as clean courses accumulate, but never to zero', () => {
+    const s = V.createSampler()
+    const rates = []
+    for (let course = 0; course < 12; course++) {
+      s.startCourse(`c${course}`)
+      rates.push(s.state().rate)
+      for (let i = 0; i < 2000; i++) if (s.shouldCheck()) s.recordVerdict({ checked: true, pass: true })
+    }
+    expect(rates[0]).toBeCloseTo(0.10, 5)
+    expect(rates[1]).toBeCloseTo(0.01, 5)
+    expect(rates[2]).toBeCloseTo(0.005, 5)
+    expect(rates[3]).toBeCloseTo(0.0025, 5)
+    // The floor holds. A run that stops looking cannot notice it has gone wrong.
+    expect(Math.min(...rates)).toBeGreaterThan(0)
+    expect(Math.min(...rates)).toBeCloseTo(0.002, 5)
+  })
+
+  it('a failure snaps the rate back to the opening rate, mid-course', () => {
+    const s = V.createSampler()
+    s.startCourse('a')
+    for (let i = 0; i < 100; i++) if (s.shouldCheck()) s.recordVerdict({ checked: true, pass: true })
+    s.startCourse('b')
+    expect(s.state().rate).toBeCloseTo(0.01, 5)
+    const snap = s.recordVerdict({ checked: true, pass: false })
+    expect(snap.snapped).toBe(true)
+    expect(s.state().rate).toBeCloseTo(0.10, 5)
+    // ...and the trust is gone, so the NEXT course opens at the full rate too.
+    s.startCourse('c')
+    expect(s.state().rate).toBeCloseTo(0.10, 5)
+  })
+
+  it('a course that sampled nothing banks no trust — no evidence, no relaxation', () => {
+    const s = V.createSampler()
+    s.startCourse('a')          // never calls shouldCheck: a course with no clips
+    s.startCourse('b')
+    expect(s.state().rate).toBeCloseTo(0.10, 5)
+  })
+
+  it('spreads the sample across the course instead of clumping it', () => {
+    const s = V.createSampler({ first: 0.01, trusted: 0.01, floor: 0.01 })
+    s.startCourse('a')
+    const picks = []
+    for (let i = 0; i < 500; i++) if (s.shouldCheck()) picks.push(i)
+    expect(picks).toEqual([0, 100, 200, 300, 400])
+  })
+
+  it('an unsampled clip is published, rendered once, and recorded as not_sampled — never as a pass', async () => {
+    const never = V.createSampler({ first: 0, trusted: 0, floor: 0 })
+    never.startCourse('a')
+    let renders = 0
+    let checks = 0
+    const stats = V.newStats()
+    const r = await V.renderChecked({
+      sampler: never,
+      render: async () => { renders++; return { buffer: buf('a'), durationMs: 900 } },
+      check: async () => { checks++; return passing() },
+      expectedText: 'hallo', language: 'deu', stats, logger: quiet,
+    })
+    expect(r.published).toBe(true)
+    expect(renders).toBe(1)
+    expect(checks).toBe(0)                        // no whisper cost at all
+    expect(stats.not_sampled).toBe(1)
+    expect(stats.checked).toBe(0)
+    expect(stats.passed).toBe(0)
+    // The row must say "not checked", never a fabricated pass.
+    expect(V.verdictColumns(r.verdict).veracity_pass).toBeNull()
+    // And a policy skip is NOT the alarming "we could not look" counter.
+    expect(stats.unchecked).toBe(0)
+  })
+
+  it('a sampled failure still quarantines — sampling changes WHICH clips are checked, not what a failure means', async () => {
+    const always = V.createSampler({ first: 1, trusted: 1, floor: 1 })
+    always.startCourse('a')
+    const stats = V.newStats()
+    const r = await V.renderChecked({
+      sampler: always,
+      render: async () => ({ buffer: buf('a'), durationMs: 900 }),
+      check: failing, attempts: 2,
+      expectedText: 'hallo', language: 'deu', stats, logger: quiet,
+    })
+    expect(r.published).toBe(false)
+    expect(stats.quarantined).toBe(1)
   })
 })
