@@ -7517,8 +7517,16 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
 
     // What the gloss reads NOW: the stored segmentation if a human has made one,
     // otherwise the same derivation the viewer showed them.
+    // A declared M-LEGO with no components has no DERIVED start — but it is a
+    // mapping candidate all the same (Tom, 2026-08-13: "it's just classification
+    // that feeds the mapping"), so the editor opens on blank columns and the
+    // save must not 409. 1,354 of the 4,088 rows reclassified that day are
+    // exactly this shape, `a word = hitz bat` among them. The blank start
+    // carries no words of its own, so the multiset check below falls through to
+    // the row's own known text — which is the only source an author may draw on.
     const current = learningScriptGenerator.glossAlignment(
       source, row.target_text, row[blockColumn], row.known_gloss_segments)
+      || learningScriptGenerator.blankAlignment(source, row.target_text)
     if (!current) {
       return res.status(409).json({ error: 'This row has no alignment to change.' })
     }
@@ -7579,7 +7587,8 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
     // what the row now READS as, the generator's own derivation, and the caller
     // can render the honest state without a second request.
     const derived = reverting
-      ? learningScriptGenerator.glossAlignment(source, row.target_text, row[blockColumn], null)
+      ? (learningScriptGenerator.glossAlignment(source, row.target_text, row[blockColumn], null)
+         || learningScriptGenerator.blankAlignment(source, row.target_text))
       : null
 
     logger.info(

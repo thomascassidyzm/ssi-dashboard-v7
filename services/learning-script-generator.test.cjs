@@ -919,8 +919,33 @@ describe('gloss alignment on a row', () => {
       expect(a.segmented).toBe(true)
     })
 
-    it('tolerates a row with no blocks, and a missing row', () => {
-      expect(mappingFromLego({ type: 'M', target_text: 'hitz bat', components: null })).toBeNull()
+    // Tom, 2026-08-13, after the A→M reclassification: "it's just classification
+    // that feeds the mapping". 1,354 of the 4,088 reclassified rows carry no
+    // components, so there is nothing to DERIVE — but they are candidates, and
+    // the editor must open on them with blank columns for a human to author.
+    // Guessing a split is still forbidden: every column starts empty.
+    it('opens a component-less M-LEGO on blank columns rather than refusing it', () => {
+      const a = mappingFromLego({
+        type: 'M', known_text: 'a word', target_text: 'hitz bat',
+        components: null, known_gloss_segments: null,
+      })
+      expect(a.source).toBe('lego')
+      expect(a.words).toEqual(['hitz', 'bat'])
+      expect(a.segments).toEqual([{ span: 1, known: '' }, { span: 1, known: '' }])
+      expect(a.segmented).toBe(false)
+    })
+
+    it('still prefers an authored mapping on a component-less M-LEGO', () => {
+      const a = mappingFromLego({
+        type: 'M', known_text: 'a word', target_text: 'hitz bat', components: null,
+        known_gloss_segments: [{ span: 1, known: 'word' }, { span: 1, known: 'a' }],
+      })
+      expect(a.segments).toEqual([{ span: 1, known: 'word' }, { span: 1, known: 'a' }])
+      expect(a.segmented).toBe(true)
+    })
+
+    it('shows no grid where there is only one target word, and tolerates a missing row', () => {
+      expect(mappingFromLego({ type: 'M', target_text: 'hitzak', components: null })).toBeNull()
       expect(mappingFromLego(null)).toBeNull()
       expect(legoIsMappable(null)).toBe(false)
       expect(legoIsMappable({ type: null })).toBe(false)

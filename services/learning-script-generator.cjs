@@ -362,10 +362,25 @@ function legoIsMappable(lego) {
   return !!lego && lego.type === 'M'
 }
 
+/**
+ * Candidacy, not derivation (Tom, 2026-08-13: "it's just classification that
+ * feeds the mapping"). A declared M-LEGO with no components has nothing
+ * FAITHFUL to derive — but it is splittable by declaration, so the editor must
+ * still open on it with empty columns for a human to author. The refusal to
+ * guess a split stays exactly where it was: every column starts blank, and
+ * nothing here invents a gloss. Returns null when there is no grid to show.
+ */
+function blankAlignment(source, targetText) {
+  const words = targetWordsOf(targetText)
+  if (words.length < 2) return null
+  return { source, words, segments: words.map(() => ({ span: 1, known: '' })), segmented: false }
+}
+
 function mappingFromLego(lego) {
   if (!legoIsMappable(lego)) return null
   return glossAlignment(
     'lego', lego.target_text, lego.components, lego.known_gloss_segments)
+    || blankAlignment('lego', lego.target_text)
 }
 
 /**
@@ -1533,6 +1548,7 @@ module.exports = {
   calculateSpacedRepReviews,
   seedSentenceFor,
   glossAlignment,
+  blankAlignment,
   targetWordsOf,
   segmentsCoverWords,
   segmentsFromBlocks,
