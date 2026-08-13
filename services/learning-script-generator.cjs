@@ -281,15 +281,15 @@ function calculateSpacedRepReviews(roundNumber, offsets = FIBONACCI) {
  * alignment to look at, so it returns null and shows no glyph rather than a
  * dead one.
  *
- * EXCEPT on an INTRO (Tom, 2026-08-13). The intro's authored mapping is what
- * the learner's tile assembler renders, so an intro that cannot be opened can
- * never be mapped — which is exactly how `a word = hitz bat` stayed invisible:
- * an A-LEGO has no components, so nothing derived carried a gloss and the row
- * returned null. An intro is therefore ALWAYS a candidate: when nothing can be
- * derived, it is seeded with its own known text as one chunk across every
- * target column, which is the honest starting state and the one the editor's
- * split control is built to cut. Componentisation is untouched and stays the
- * fallback wherever it does produce a gloss.
+ * And ONLY an M-LEGO intro can be mapped at all (Tom, 2026-08-13): "A-LEGOs
+ * can't be mappable by definition — an A-LEGO has only one word in at least one
+ * language, and therefore cannot be split and mapped." So the refusal on `a
+ * word = hitz bat` was right all along. `type` is the authored declaration of
+ * exactly that splittability, so it is what gates the glyph — NOT the absence
+ * of components, which only looks equivalent: 72 A-LEGOs estate-wide carry
+ * components anyway and 16 of those have a multi-word target, so a
+ * components-only test hands a glyph to rows that must never have one
+ * (afr S0113L01 "why can't I", ita S0288L01 "to most people", …).
  */
 
 /** Target words are the columns. Split on whitespace; nothing else is a word. */
@@ -336,15 +336,9 @@ function segmentsFromBlocks(blocks, wordCount) {
 /**
  * @returns {{source:'phrase'|'lego', words:string[], segments:Array<{span:number,known:string}>, segmented:boolean}|null}
  */
-function glossAlignment(source, targetText, blocks, storedSegments, opts) {
-  // An intro passes its own known text here: it is always a candidate, and this
-  // is what it falls back to when nothing else carries a gloss.
-  const seedKnown = opts && typeof opts.introSeedKnown === 'string'
-    ? opts.introSeedKnown.trim()
-    : ''
+function glossAlignment(source, targetText, blocks, storedSegments) {
   const words = targetWordsOf(targetText)
-  if (words.length < 1) return null
-  if (words.length < 2 && !seedKnown) return null
+  if (words.length < 2) return null
 
   if (segmentsCoverWords(storedSegments, words.length)) {
     return {
@@ -357,20 +351,21 @@ function glossAlignment(source, targetText, blocks, storedSegments, opts) {
 
   const usable = Array.isArray(blocks) ? blocks : []
   const segments = segmentsFromBlocks(usable, words.length)
-  // Nothing to look at if no column carries any gloss at all — unless this is
-  // an intro, which seeds from its own known text instead of going dark.
-  if (!segments.some(s => s.known.trim())) {
-    if (!seedKnown) return null
-    return { source, words, segments: [{ span: words.length, known: seedKnown }], segmented: false }
-  }
+  // Nothing to look at if no column carries any gloss at all.
+  if (!segments.some(s => s.known.trim())) return null
   return { source, words, segments, segmented: false }
 }
 
-function mappingFromLego(lego, opts) {
-  if (!lego) return null
+/** An A-LEGO is one word in at least one language, so it cannot be split and
+ *  mapped — the declared type IS the splittability test (Tom, 2026-08-13). */
+function legoIsMappable(lego) {
+  return !!lego && lego.type === 'M'
+}
+
+function mappingFromLego(lego) {
+  if (!legoIsMappable(lego)) return null
   return glossAlignment(
-    'lego', lego.target_text, lego.components, lego.known_gloss_segments,
-    opts && opts.intro ? { introSeedKnown: lego.known_text } : undefined)
+    'lego', lego.target_text, lego.components, lego.known_gloss_segments)
 }
 
 /**
@@ -1124,12 +1119,14 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target2_audio_uuid: currentLego.lego.target2_audio_uuid,
         hasAudio: !!(effectiveIntroAudio && currentLego.lego.target1_audio_uuid),
         // The ONLY row that carries a mapping (Tom, 2026-08-13: "it's only the
-        // INTROS that need mapping - no regular phrases need the mapping").
-        // The intro's mapping is the feed for the learner's tile assembler, so
-        // it is the one place authoring it changes what a learner sees. The
-        // debut renders the same LEGO from the same row, so authoring here
-        // covers it too without a second glyph saying the same thing twice.
-        mapping: mappingFromLego(currentLego.lego, { intro: true }),
+        // INTROS that need mapping - no regular phrases need the mapping"), and
+        // only an M-LEGO's intro at that — an A-LEGO cannot be split, so it can
+        // never be mapped. The intro's mapping is the feed for the learner's
+        // tile assembler, so it is the one place authoring it changes what a
+        // learner sees. The debut renders the same LEGO from the same row, so
+        // authoring here covers it too without a second glyph saying the same
+        // thing twice.
+        mapping: mappingFromLego(currentLego.lego),
       })
     }
 
@@ -1540,6 +1537,7 @@ module.exports = {
   segmentsCoverWords,
   segmentsFromBlocks,
   mappingFromLego,
+  legoIsMappable,
   reviewItemIsSeed,
   legoIntroIsPlayable,
   legoDebutIsPlayable,

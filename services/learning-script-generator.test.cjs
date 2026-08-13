@@ -772,6 +772,7 @@ const {
   segmentsCoverWords,
   segmentsFromBlocks,
   mappingFromLego,
+  legoIsMappable,
 } = require('./learning-script-generator.cjs')
 
 describe('gloss alignment on a row', () => {
@@ -840,6 +841,7 @@ describe('gloss alignment on a row', () => {
 
   it('reads an M-LEGO components array the same way', () => {
     const a = mappingFromLego({
+      type: 'M',
       target_text: 'gogoratzen saiatzen ari naiz',
       components: [
         { known: 'to remember', target: 'gogoratu', introduce: true },
@@ -856,68 +858,72 @@ describe('gloss alignment on a row', () => {
     ])
   })
 
-  it('tolerates a row with no blocks at all', () => {
-    expect(mappingFromLego({ target_text: 'hitz bat', components: null })).toBeNull()
-    expect(mappingFromLego(null)).toBeNull()
-  })
+  // Tom, 2026-08-13: "A-LEGOs can't be mappable by definition — an A-LEGO has
+  // only one word in at least one language, and therefore cannot be split and
+  // mapped." So `a word = hitz bat` must show NO glyph, and the editor's
+  // original refusal on it was right all along.
+  describe('only an M-LEGO intro is a mapping candidate', () => {
+    const hitzBat = {
+      type: 'A', known_text: 'a word', target_text: 'hitz bat', components: null,
+    }
+    const gogoratzen = {
+      type: 'M',
+      known_text: "I'm trying to remember",
+      target_text: 'gogoratzen saiatzen ari naiz',
+      components: [
+        { known: 'to remember', target: 'gogoratu' },
+        { known: 'wishing to', target: 'nahian ari naiz' },
+      ],
+      known_gloss_segments: null,
+    }
 
-  // Tom, 2026-08-13: "the phrase that launched the 1000 ships - a word = hitz
-  // bat - is NOT given as a mapping candidate". An A-LEGO has no components, so
-  // nothing derived carries a gloss and the row went dark. On an intro it must
-  // not: the intro's mapping is the learner's tile feed, so an intro that
-  // cannot be opened can never be mapped at all.
-  describe('an INTRO is always a mapping candidate', () => {
-    const hitzBat = { known_text: 'a word', target_text: 'hitz bat', components: null }
-
-    it('seeds an A-LEGO intro from its own known text across every column', () => {
-      const a = mappingFromLego(hitzBat, { intro: true })
-      expect(a).not.toBeNull()
-      expect(a.source).toBe('lego')
-      expect(a.words).toEqual(['hitz', 'bat'])
-      expect(a.segments).toEqual([{ span: 2, known: 'a word' }])
-      // Nobody has cut it yet — it is a starting state, not a human's ruling.
-      expect(a.segmented).toBe(false)
-    })
-
-    it('still goes dark on the same row when it is NOT an intro', () => {
+    it('refuses an A-LEGO outright — the multi-word target does not save it', () => {
       expect(mappingFromLego(hitzBat)).toBeNull()
+      expect(legoIsMappable(hitzBat)).toBe(false)
     })
 
-    it('leaves componentisation as the fallback wherever it does gloss', () => {
-      const a = mappingFromLego({
-        known_text: "I'm trying to remember",
-        target_text: 'gogoratzen saiatzen ari naiz',
-        components: [
-          { known: 'to remember', target: 'gogoratu' },
-          { known: 'wishing to', target: 'nahian ari naiz' },
-        ],
-        known_gloss_segments: null,
-      }, { intro: true })
-      // The derived chunks win — the seed is a last resort, never an override.
+    // The trap: 72 A-LEGOs estate-wide DO carry components, 16 of them with a
+    // multi-word target (afr S0113L01 "why can't I"). Gating on "has no
+    // components" instead of on the declared type hands those a glyph.
+    it('refuses an A-LEGO that happens to carry components', () => {
+      expect(mappingFromLego({
+        type: 'A',
+        known_text: "why can't I",
+        target_text: 'waarom kan ek nie',
+        components: [{ known: 'why', target: 'waarom' }, { known: "can't I", target: 'kan ek nie' }],
+      })).toBeNull()
+    })
+
+    it('accepts an M-LEGO intro, componentisation deriving the start', () => {
+      const a = mappingFromLego(gogoratzen)
+      expect(legoIsMappable(gogoratzen)).toBe(true)
+      expect(a.source).toBe('lego')
+      expect(a.words).toEqual(['gogoratzen', 'saiatzen', 'ari', 'naiz'])
       expect(a.segments).toEqual([
         { span: 1, known: 'to remember' },
         { span: 3, known: 'wishing to' },
       ])
+      expect(a.segmented).toBe(false)
     })
 
-    it('prefers an authored mapping over both', () => {
+    it('prefers an authored mapping over the derived start', () => {
       const a = mappingFromLego({
-        ...hitzBat,
-        known_gloss_segments: [{ span: 1, known: 'word' }, { span: 1, known: 'a' }],
-      }, { intro: true })
-      expect(a.segments).toEqual([{ span: 1, known: 'word' }, { span: 1, known: 'a' }])
+        ...gogoratzen,
+        known_gloss_segments: [
+          { span: 1, known: 'remember' }, { span: 1, known: 'trying to' }, { span: 2, known: "I'm" },
+        ],
+      })
+      expect(a.segments).toEqual([
+        { span: 1, known: 'remember' }, { span: 1, known: 'trying to' }, { span: 2, known: "I'm" },
+      ])
       expect(a.segmented).toBe(true)
     })
 
-    it('opens a single-target-word intro rather than showing a dead row', () => {
-      const a = mappingFromLego(
-        { known_text: 'yes', target_text: 'bai', components: null }, { intro: true })
-      expect(a.segments).toEqual([{ span: 1, known: 'yes' }])
-    })
-
-    it('has nothing to offer when the row has no known text either', () => {
-      expect(mappingFromLego({ known_text: '  ', target_text: 'hitz bat' }, { intro: true }))
-        .toBeNull()
+    it('tolerates a row with no blocks, and a missing row', () => {
+      expect(mappingFromLego({ type: 'M', target_text: 'hitz bat', components: null })).toBeNull()
+      expect(mappingFromLego(null)).toBeNull()
+      expect(legoIsMappable(null)).toBe(false)
+      expect(legoIsMappable({ type: null })).toBe(false)
     })
   })
 
