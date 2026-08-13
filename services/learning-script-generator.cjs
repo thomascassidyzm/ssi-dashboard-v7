@@ -280,6 +280,16 @@ function calculateSpacedRepReviews(roundNumber, offsets = FIBONACCI) {
  * "When appropriate" (Tom): a row with fewer than two target words has no
  * alignment to look at, so it returns null and shows no glyph rather than a
  * dead one.
+ *
+ * EXCEPT on an INTRO (Tom, 2026-08-13). The intro's authored mapping is what
+ * the learner's tile assembler renders, so an intro that cannot be opened can
+ * never be mapped — which is exactly how `a word = hitz bat` stayed invisible:
+ * an A-LEGO has no components, so nothing derived carried a gloss and the row
+ * returned null. An intro is therefore ALWAYS a candidate: when nothing can be
+ * derived, it is seeded with its own known text as one chunk across every
+ * target column, which is the honest starting state and the one the editor's
+ * split control is built to cut. Componentisation is untouched and stays the
+ * fallback wherever it does produce a gloss.
  */
 
 /** Target words are the columns. Split on whitespace; nothing else is a word. */
@@ -326,9 +336,15 @@ function segmentsFromBlocks(blocks, wordCount) {
 /**
  * @returns {{source:'phrase'|'lego', words:string[], segments:Array<{span:number,known:string}>, segmented:boolean}|null}
  */
-function glossAlignment(source, targetText, blocks, storedSegments) {
+function glossAlignment(source, targetText, blocks, storedSegments, opts) {
+  // An intro passes its own known text here: it is always a candidate, and this
+  // is what it falls back to when nothing else carries a gloss.
+  const seedKnown = opts && typeof opts.introSeedKnown === 'string'
+    ? opts.introSeedKnown.trim()
+    : ''
   const words = targetWordsOf(targetText)
-  if (words.length < 2) return null
+  if (words.length < 1) return null
+  if (words.length < 2 && !seedKnown) return null
 
   if (segmentsCoverWords(storedSegments, words.length)) {
     return {
@@ -341,21 +357,20 @@ function glossAlignment(source, targetText, blocks, storedSegments) {
 
   const usable = Array.isArray(blocks) ? blocks : []
   const segments = segmentsFromBlocks(usable, words.length)
-  // Nothing to look at if no column carries any gloss at all.
-  if (!segments.some(s => s.known.trim())) return null
+  // Nothing to look at if no column carries any gloss at all — unless this is
+  // an intro, which seeds from its own known text instead of going dark.
+  if (!segments.some(s => s.known.trim())) {
+    if (!seedKnown) return null
+    return { source, words, segments: [{ span: words.length, known: seedKnown }], segmented: false }
+  }
   return { source, words, segments, segmented: false }
 }
 
-function mappingFromPhrase(phrase) {
-  if (!phrase) return null
-  return glossAlignment(
-    'phrase', phrase.target_text, phrase.decomposition, phrase.known_gloss_segments)
-}
-
-function mappingFromLego(lego) {
+function mappingFromLego(lego, opts) {
   if (!lego) return null
   return glossAlignment(
-    'lego', lego.target_text, lego.components, lego.known_gloss_segments)
+    'lego', lego.target_text, lego.components, lego.known_gloss_segments,
+    opts && opts.intro ? { introSeedKnown: lego.known_text } : undefined)
 }
 
 /**
@@ -1108,7 +1123,13 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: currentLego.lego.target1_audio_uuid,
         target2_audio_uuid: currentLego.lego.target2_audio_uuid,
         hasAudio: !!(effectiveIntroAudio && currentLego.lego.target1_audio_uuid),
-        mapping: mappingFromLego(currentLego.lego),
+        // The ONLY row that carries a mapping (Tom, 2026-08-13: "it's only the
+        // INTROS that need mapping - no regular phrases need the mapping").
+        // The intro's mapping is the feed for the learner's tile assembler, so
+        // it is the one place authoring it changes what a learner sees. The
+        // debut renders the same LEGO from the same row, so authoring here
+        // covers it too without a second glyph saying the same thing twice.
+        mapping: mappingFromLego(currentLego.lego, { intro: true }),
       })
     }
 
@@ -1123,7 +1144,6 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: currentLego.lego.target1_audio_uuid,
         target2_audio_uuid: currentLego.lego.target2_audio_uuid,
         hasAudio: !!(currentLego.lego.known_audio_uuid && currentLego.lego.target1_audio_uuid),
-        mapping: mappingFromLego(currentLego.lego),
       })
     }
     // The debut IS the bare LEGO — claim it whether or not it was emitted, so
@@ -1165,7 +1185,6 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: phrase.target1_audio_uuid,
         target2_audio_uuid: phrase.target2_audio_uuid,
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
-        mapping: mappingFromPhrase(phrase),
       })
       usedPhrasesInRound.add(phraseId)
       practiceCount++
@@ -1195,7 +1214,6 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: phrase.target1_audio_uuid,
         target2_audio_uuid: phrase.target2_audio_uuid,
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
-        mapping: mappingFromPhrase(phrase),
       })
       usedPhrasesInRound.add(phraseId)
       practiceCount++
@@ -1336,7 +1354,6 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
           target1_audio_uuid: phrase.target1_audio_uuid,
           target2_audio_uuid: phrase.target2_audio_uuid,
           hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
-          mapping: mappingFromPhrase(phrase),
         })
         reviewCount++
       }
@@ -1357,7 +1374,6 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
         target1_audio_uuid: phrase.target1_audio_uuid,
         target2_audio_uuid: phrase.target2_audio_uuid,
         hasAudio: !!(phrase.known_audio_uuid && phrase.target1_audio_uuid),
-        mapping: mappingFromPhrase(phrase),
       })
     }
     // Consolidate is a REVIEW-class pull, so it takes the same known-side
@@ -1523,7 +1539,6 @@ module.exports = {
   targetWordsOf,
   segmentsCoverWords,
   segmentsFromBlocks,
-  mappingFromPhrase,
   mappingFromLego,
   reviewItemIsSeed,
   legoIntroIsPlayable,

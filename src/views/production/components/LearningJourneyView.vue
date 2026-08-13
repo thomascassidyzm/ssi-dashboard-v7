@@ -371,11 +371,15 @@
 
               <!-- Edit & Flag Buttons -->
               <div class="edit-flags flex items-center gap-1 flex-shrink-0">
-                <!-- Check mapping — only on rows that HAVE a multi-part mapping
-                     to check ("when appropriate", Tom 2026-08-12). A row with
-                     one part gets no glyph at all rather than a dead one. -->
+                <!-- Check mapping — INTRO rows only (Tom, 2026-08-13: "it's
+                     only the INTROS that need mapping - no regular phrases need
+                     the mapping"). The intro's mapping is what the learner's
+                     tile assembler renders; a phrase row's is read by nobody, so
+                     the glyph there was work with no destination. The generator
+                     now only attaches `mapping` to intros, and this guard says
+                     so at the point of use as well. -->
                 <button
-                  v-if="item.mapping"
+                  v-if="item.mapping && item.type === 'intro'"
                   class="mapping-btn w-6 h-6 flex items-center justify-center rounded transition-colors"
                   :class="isMappingOpen(round.roundNumber, idx)
                     ? 'bg-sky-500 text-white'
@@ -584,7 +588,9 @@ interface ScriptItem {
   playerCanDeliver?: boolean
   playerDropReason?: 'intro-audio' | 'debut-audio' | 'phrase-audio' | 'seed-audio'
   missingAudioRoles?: string[]
-  // Present only when there is genuinely more than one part to pair.
+  // Present on INTRO rows only (Tom, 2026-08-13). Always present on one, even
+  // when nothing could be derived — an intro that cannot be opened can never be
+  // mapped, and the mapping is what the learner's tile assembler renders.
   mapping?: ItemMapping | null
 }
 

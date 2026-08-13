@@ -771,7 +771,6 @@ const {
   targetWordsOf,
   segmentsCoverWords,
   segmentsFromBlocks,
-  mappingFromPhrase,
   mappingFromLego,
 } = require('./learning-script-generator.cjs')
 
@@ -857,9 +856,69 @@ describe('gloss alignment on a row', () => {
     ])
   })
 
-  it('mappingFromPhrase tolerates a row with no blocks at all', () => {
-    expect(mappingFromPhrase({ target_text: 'hitz bat', decomposition: null })).toBeNull()
-    expect(mappingFromPhrase(null)).toBeNull()
+  it('tolerates a row with no blocks at all', () => {
+    expect(mappingFromLego({ target_text: 'hitz bat', components: null })).toBeNull()
+    expect(mappingFromLego(null)).toBeNull()
+  })
+
+  // Tom, 2026-08-13: "the phrase that launched the 1000 ships - a word = hitz
+  // bat - is NOT given as a mapping candidate". An A-LEGO has no components, so
+  // nothing derived carries a gloss and the row went dark. On an intro it must
+  // not: the intro's mapping is the learner's tile feed, so an intro that
+  // cannot be opened can never be mapped at all.
+  describe('an INTRO is always a mapping candidate', () => {
+    const hitzBat = { known_text: 'a word', target_text: 'hitz bat', components: null }
+
+    it('seeds an A-LEGO intro from its own known text across every column', () => {
+      const a = mappingFromLego(hitzBat, { intro: true })
+      expect(a).not.toBeNull()
+      expect(a.source).toBe('lego')
+      expect(a.words).toEqual(['hitz', 'bat'])
+      expect(a.segments).toEqual([{ span: 2, known: 'a word' }])
+      // Nobody has cut it yet — it is a starting state, not a human's ruling.
+      expect(a.segmented).toBe(false)
+    })
+
+    it('still goes dark on the same row when it is NOT an intro', () => {
+      expect(mappingFromLego(hitzBat)).toBeNull()
+    })
+
+    it('leaves componentisation as the fallback wherever it does gloss', () => {
+      const a = mappingFromLego({
+        known_text: "I'm trying to remember",
+        target_text: 'gogoratzen saiatzen ari naiz',
+        components: [
+          { known: 'to remember', target: 'gogoratu' },
+          { known: 'wishing to', target: 'nahian ari naiz' },
+        ],
+        known_gloss_segments: null,
+      }, { intro: true })
+      // The derived chunks win — the seed is a last resort, never an override.
+      expect(a.segments).toEqual([
+        { span: 1, known: 'to remember' },
+        { span: 3, known: 'wishing to' },
+      ])
+    })
+
+    it('prefers an authored mapping over both', () => {
+      const a = mappingFromLego({
+        ...hitzBat,
+        known_gloss_segments: [{ span: 1, known: 'word' }, { span: 1, known: 'a' }],
+      }, { intro: true })
+      expect(a.segments).toEqual([{ span: 1, known: 'word' }, { span: 1, known: 'a' }])
+      expect(a.segmented).toBe(true)
+    })
+
+    it('opens a single-target-word intro rather than showing a dead row', () => {
+      const a = mappingFromLego(
+        { known_text: 'yes', target_text: 'bai', components: null }, { intro: true })
+      expect(a.segments).toEqual([{ span: 1, known: 'yes' }])
+    })
+
+    it('has nothing to offer when the row has no known text either', () => {
+      expect(mappingFromLego({ known_text: '  ', target_text: 'hitz bat' }, { intro: true }))
+        .toBeNull()
+    })
   })
 
   describe('the shape gate', () => {

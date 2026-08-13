@@ -7481,7 +7481,7 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
 
     const { data: row, error: fetchError } = await supabase
       .from(table)
-      .select(`${idColumn}, target_text, ${blockColumn}, known_gloss_segments`)
+      .select(`${idColumn}, known_text, target_text, ${blockColumn}, known_gloss_segments`)
       .eq(idColumn, rowId)
       .eq('course_code', courseCode)
       .maybeSingle()
@@ -7492,9 +7492,16 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
     // The columns are the target's words, read from the row itself — never from
     // the request. The client cannot widen or narrow the grid.
     const words = learningScriptGenerator.targetWordsOf(row.target_text)
-    if (words.length < 2) {
+    if (words.length < 1) {
       return res.status(409).json({ error: 'This row has no alignment to change.' })
     }
+
+    // A LEGO row is reached only from an intro glyph, and an intro is always a
+    // mapping candidate (Tom, 2026-08-13) — including an A-LEGO with no
+    // components at all, which is the `hitz bat` case. Seeding the derivation
+    // with the row's own known text is what lets that row be saved rather than
+    // 409-ing as "nothing to change".
+    const alignOpts = source === 'lego' ? { introSeedKnown: row.known_text } : undefined
 
     const reverting = isRevertRequest(req.body)
 
@@ -7506,7 +7513,7 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
     // What the gloss reads NOW: the stored segmentation if a human has made one,
     // otherwise the same derivation the viewer showed them.
     const current = learningScriptGenerator.glossAlignment(
-      source, row.target_text, row[blockColumn], row.known_gloss_segments)
+      source, row.target_text, row[blockColumn], row.known_gloss_segments, alignOpts)
     if (!current) {
       return res.status(409).json({ error: 'This row has no alignment to change.' })
     }
@@ -7548,7 +7555,8 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
     // what the row now READS as, the generator's own derivation, and the caller
     // can render the honest state without a second request.
     const derived = reverting
-      ? learningScriptGenerator.glossAlignment(source, row.target_text, row[blockColumn], null)
+      ? learningScriptGenerator.glossAlignment(
+          source, row.target_text, row[blockColumn], null, alignOpts)
       : null
 
     logger.info(
