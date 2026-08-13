@@ -191,3 +191,36 @@ Checked: no build gate rejects a component-less M-LEGO. `services/course-builder
 ---
 
 *Method: `scripts/a-lego-wordcount-census.cjs` (read-only). Full row-level census: `docs/a-lego-reclassification-census-2026-08-13.json`.*
+
+---
+
+# What then happened — the write, and the acceptance test
+
+**4,088 rows flipped `A` → `M`. A: 49,938 → 45,850. M: 43,916 → 48,004.** Exactly 4,088 either way, and a re-census finds zero type `A` rows left with two or more words on both sides. Every row was re-read at write time and had to still be type `A` with unchanged text before it was flipped: 0 skipped, 0 aborted. Only the `type` column was written. No text, no components, no gloss segments, no audio.
+
+The run tripped once on the way: `psql` prints its `UPDATE 55` command tag as if it were a returned row, so the count assertion fired and stopped the run after one course. That is the assertion doing its job. The tag is stripped now and the 55 rows from the stopped course were counted as already-done, not written twice.
+
+## One code change, and why it was needed
+
+Flipping the type was not enough on its own. 1,354 of the 4,088 rows carry no `components`, so there was nothing faithful to DERIVE a mapping from — and the derivation's refusal to guess was sitting at the candidacy layer too, so `a word = hitz bat` came out of the flip still showing no glyph.
+
+The fix is the smallest one that matches the ruling: a declared M-LEGO with two or more target words is now a mapping **candidate** even with no components, and the editor opens on **blank** columns for a human to author. Both ends changed together — the viewer gets the glyph, and the save no longer answers "this row has no alignment to change". The refusal to guess is untouched: every column starts empty and no gloss is invented anywhere. The edit guard still holds, because a blank start offers no words of its own, so an author may only draw on the row's own known text. `services/learning-script-generator.cjs`, `services/production-api.cjs`, tests updated in lockstep, 67/67 green.
+
+## The acceptance test, on the live site
+
+Tom's test: *"'a word = hitz bat' in eus_for_eng shows the mapping glyph and can be segmented."* Driven in a real browser against the deployed popty.app and the live watson-1 backend. **9 of 9 checks passed.**
+
+**[See it — three frames](https://watson-1.tail4968cb.ts.net/evidence/a-lego-reclassify-2026-08-13/index.html)**
+
+| | check | result |
+|---|---|---|
+| 1 | the bare `a word` → `hitz bat` LEGO row is on the live page | `INTRO a word → hitz bat` |
+| 2 | that row now carries the mapping glyph | present |
+| 3 | the editor opens on the row | 2 columns |
+| 4 | the columns are the row's own target words, in Basque order | `hitz` `bat` |
+| 5 | every column starts blank — nothing was guessed | `["·","·"]` |
+| 6 | the row does not jump when the mapping opens | 52.0px → 52.0px |
+| 7 | the live API serves a mapping for `S0006L02` | `segments: [{span:1,known:""},{span:1,known:""}]` |
+| 8 | it is an unauthored candidate — this run wrote no mapping | `segmented=false` |
+
+The split `hitz` → *word*, `bat` → *a* is now Deborah's to author in the editor, which is what "classification that feeds the mapping" means. This job did not write it.
