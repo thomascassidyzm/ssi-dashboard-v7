@@ -1915,6 +1915,11 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
       const durationMs: number | null = result.durations?.[role] ?? null;
       if (newUuid) {
+        // The upsert on the audio table can land on the SAME row id when the
+        // regenerated text/voice key is unchanged (writes a fresh s3_key in
+        // place) — the round player's resolvedUrlCache would otherwise keep
+        // serving the pre-regen object for its 5-minute TTL.
+        learningJourneyRef.value?.player?.forgetAudioUrl(newUuid);
         const url = await fetchAuditionUrl(newUuid);
         phraseEditModalRef.value?.setAuditionResult(role, { url, durationMs });
       } else {
@@ -2062,6 +2067,9 @@ const savePresentationAndRegen = async () => {
     }
 
     console.log(`Regenerated presentation for ${presentationLegoId.value} → audio ${result.audio_id} (${result.duration_ms}ms)`);
+    // The presentation row is keyed by lego_id, so a regen usually lands on the
+    // SAME audio id with a fresh s3_key — drop any cached URL before reload.
+    if (result.audio_id) learningJourneyRef.value?.player?.forgetAudioUrl(result.audio_id);
     // Refresh the journey so the intro item picks up the new audio
     reloadLearningJourney();
   } catch (err) {
@@ -2211,6 +2219,10 @@ const regenerateLegoAudio = async () => {
       if (audioId) {
         rebindLegoAudioEverywhere(legoAudioLegoId.value, UUID_FIELD[role], audioId);
         if (legoAudioSourceItem.value) legoAudioSourceItem.value[UUID_FIELD[role]] = audioId;
+        // Text is locked for LEGO regen, so the upsert key is usually unchanged
+        // and lands on the SAME audio row with a fresh s3_key — drop any cached
+        // URL so the round player re-resolves instead of riding out the TTL.
+        learningJourneyRef.value?.player?.forgetAudioUrl(audioId);
       }
       let url: string | null = null;
       if (audioId) {
