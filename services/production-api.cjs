@@ -7522,7 +7522,26 @@ app.post('/api/production/:courseCode/mapping/:rowId', async (req, res) => {
     // A revert submits no words at all, so there is nothing to compare — the
     // row simply stops carrying a human cut and goes back to what the generator
     // derives. Every other guard above still applies to it.
-    if (!reverting && glossWordMultiset(segments) !== glossWordMultiset(current.segments)) {
+    //
+    // TWO multisets are acceptable, and the second one is the point. What is
+    // being segmented is the row's OWN KNOWN TEXT against the target's word
+    // order — never a word-pairing exercise, and never a re-translation. The
+    // derived start is usually that same text cut by LEGO blocks, so the two
+    // agree and nothing changes. But a LEGO whose components do not occur in
+    // its own target text derives its start from the COMPONENTS' glosses
+    // instead, and then the only words on offer are words the sentence does not
+    // contain: eus_for_eng `gogoratzen saiatzen ari naiz` starts as "to
+    // remember" + "wishing to" while its known text reads "I'm trying to
+    // remember". Under one multiset that row can never be given a correct
+    // literal build — which is exactly the sentence Tom photographed on
+    // 2026-08-13 and asked to see mapped. Accepting the row's own known words
+    // unblocks it while keeping the guard's whole purpose: every word must come
+    // from this row, and no edit may invent or re-translate one.
+    const acceptable = [
+      glossWordMultiset(current.segments),
+      glossWordMultiset([{ known: row.known_text || '' }]),
+    ]
+    if (!reverting && !acceptable.includes(glossWordMultiset(segments))) {
       return res.status(400).json({
         error: 'A mapping edit may only move the existing words around, not change them.',
       })
