@@ -1,77 +1,66 @@
-# The mapping now reaches the learner — and `hitz bat` can be mapped at all
+# The mapping reaches the learner — on M-LEGOs, which are the only ones that can be split
 
-*2026-08-13. Both ends of your correction, live on popty.app and saysomethingin.app.*
+*2026-08-13. Live on popty.app and saysomethingin.app.*
 
-**See it: [before and after, on the real page](https://watson-1.tail4968cb.ts.net/evidence/intro-mapping-tiles-2026-08-13/index.html)**
+**See it: [the two cases, on the real page](https://watson-1.tail4968cb.ts.net/evidence/intro-mapping-tiles-2026-08-13/index.html)**
 
 ---
 
-## What you asked for, and what it does now
+## Your two test cases
 
-**Only intros get the glyph.** Measured on the live API for eus_for_eng: 894 rows in the first 50
-rounds, 50 carry a mapping, and all 50 are intros. Build, review, consolidate and debut carry none.
+**`gogoratzen saiatzen ari naiz` (M-LEGO)** — has the glyph, is mappable, and renders tile by tile:
+Basque in its own order, each tile carrying the literal known chunk. *remember · trying to · I'm*.
+Wrong English, on purpose.
 
-**Every intro is a candidate, including `a word = hitz bat`.** It has been saved through the real
-editor endpoint: `hitz` → *word*, `bat` → *a*.
+**`a word = hitz bat` (A-LEGO)** — no glyph, and renders as one unsplit tile with "a word" under it.
+The editor's original refusal was right all along.
 
-**The mapping feeds the tile assembler.** `gogoratzen saiatzen ari naiz` no longer renders as one
-block with one natural English sentence under it. It renders tile by tile, Basque in its own order,
-each tile carrying the literal known chunk that maps to it — *remember · trying to · I'm*. Wrong
-English, on purpose.
+## The count
 
-## How it was done — your instruction, followed
+Live Popty API, eus_for_eng, first 50 rounds: 894 rows, 23 carry a mapping, all 23 are M-LEGO
+intros. Nothing on build, review, consolidate, debut, or any A-LEGO.
 
-You said: work with the existing mechanism, not around it or in place of it. So nothing was
-special-cased in the assembler. It is still keyed on componentisation, and componentisation still
-glosses every row nobody has mapped. What changed is that a better SOURCE now reaches it:
+## One thing you should know: reverting wasn't enough
 
-- the intro's authored mapping is authoritative **wherever one exists**;
-- componentisation is the fallback **everywhere else**, untouched and unbypassed.
+I had made A-LEGO intros mappable earlier today. Taking that back restores the old rule — *no
+components, so nothing to derive, so no glyph* — and that rule only LOOKS like yours.
 
-The mapping had genuinely never reached the player at all. It is stored on
-`course_legos.known_gloss_segments`, and no learner code path read that column — the database
-function that feeds the player did not even return it. Authoring a mapping changed nothing anyone
-could see. That is now wired end to end.
+Measured estate-wide: **72 A-LEGOs carry components anyway, and 16 of those have a multi-word
+target.** Under the components test they get a glyph they must never have — afr S0113L01 "why can't
+I", ita S0288L01 "to most people", ita S0289L03 "I wonder if", and 13 more. That hole predates
+yesterday's feature entirely.
 
-A mapping that no longer covers its own target text is dropped rather than rendered. Authored
-against an older wording, it would put the wrong English under the right Basque, which is worse than
-no gloss — so that row simply falls back to componentisation.
+So mappability is now gated on the **declared type**, which is what actually records splittability:
+M only, everywhere. The glyph is gone from the viewer, and the save endpoint refuses a non-M lego
+row, so a stray call can't author one behind the UI's back. The learner side refuses too, in both
+cycle producers — a row authored before the rule landed can never reach a learner as pieces.
 
-## Two things worth your eye
+## What I put back
 
-**1. I authored the two mappings myself, and they are a demo, not a ruling.** To show the mechanism
-working I had to put something in it. On `gogoratzen saiatzen ari naiz` I cut *I'm trying to
-remember* as **remember / trying to / I'm**. On `hitz bat`, **word / a**. Both are live to learners
-now. If either is wrong to your ear, the editor changes it in a few taps.
+`hitz bat` briefly carried a mapping I authored while the brief still called for it. It has been
+cleared. **No A-LEGO estate-wide carries a mapping now.**
 
-**2. That M-LEGO could not be mapped correctly at all until I widened one guard.** The editor lets
-you move the existing gloss words around but never invent one — right rule. The problem is where the
-starting words came from. `gogoratzen saiatzen ari naiz` declares components `gogoratu` and `nahian
-ari naiz`, and **neither of those occurs in its own target text**. So the row's starting gloss was
-"to remember" + "wishing to", while its known text reads "I'm trying to remember". The only words on
-offer were words the sentence does not contain, and every correct literal build was rejected as an
-invented word. The row's own known text is now equally acceptable — that is what is actually being
-segmented. The guard's purpose is intact: every word must come from that row.
+The M-LEGO's mapping stands: I cut *I'm trying to remember* as **remember / trying to / I'm**. That
+is my segmentation, not your ruling — a few taps in the editor changes it.
+
+## The re-sourcing stands, unchanged
+
+Authored mapping is the primary feed for tile display wherever one exists on an M-LEGO.
+Componentisation is the fallback wherever none has been authored. Nothing special-cased in the
+assembler; A-LEGOs render as one tile because that is what they are.
+
+## Still worth your eye
+
+That M-LEGO could not be mapped correctly at all until I widened one guard. Its components
+(`gogoratu`, `nahian ari naiz`) **do not occur in its own target text**, so the row's starting gloss
+words were "to remember" + "wishing to" while its known text reads "I'm trying to remember" — every
+correct literal build was rejected as an invented word. The row's own known text is now equally
+acceptable. The guard's purpose is intact: no word may be invented or re-translated.
 
 Those stale components are a content question, not a display one, and I have not touched them.
 
-## Debut rows — the call I made
-
-Your word was "INTROS", and the glyph is on `intro` only. The debut row shows the same LEGO from the
-same database row, so authoring on the intro already governs how the debut renders — a second glyph
-would have said the same thing twice. Say the word if you want it on both.
-
 ## What I did not do
 
-- No TTS, no audio, no re-rendering. Display only.
-- No bulk backfill. Only two eus_for_eng rows carry an authored mapping; every other intro in the
-  estate falls back to componentisation exactly as before. A course-wide or estate-wide mapping pass
-  is your call, not something to fold into this.
-- No course text edited.
-
-## One gap, stated plainly
-
-I verified the Popty side on the served bytes and on the live API rather than by screenshotting the
-Script Viewer: the deployed bundle carries the intro-only guard, and the live API returns a mapping
-on 50 intros and `null` on the other 844 rows. The save path was exercised for real, twice. I did
-not capture a picture of the glyph itself.
+No TTS, no audio, no re-rendering. No bulk backfill — one eus_for_eng row carries an authored
+mapping; every other intro in the estate falls back to componentisation exactly as before. No course
+text edited.
