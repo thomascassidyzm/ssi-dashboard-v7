@@ -251,6 +251,130 @@ describe('Rule 3 — the last word of the script must have been SPOKEN', () => {
   })
 })
 
+describe('Rule 4 — numerals: how a number is SPELT is not whether it was SAID', () => {
+  // The 2026-08-13 pod-0 English render quarantined 35 clips and every one of
+  // them was this: whisper writes "£48" where the script writes "forty-eight
+  // pounds". The transcripts below are the real ones from that run
+  // (tools/eng-distinct-render/quarantined.json).
+
+  describe('the transcription variants that quarantined 35 healthy clips', () => {
+    const REAL = [
+      ["Here we are. That's twelve pound fifty.", "Here we are. That's £12.50."],
+      ["That's forty-eight pounds altogether.", "That's £48 altogether."],
+      ["Here we are. That's a hundred and fifty pounds.", "Here we are. That's £150."],
+      ["Lovely. The room is on the third floor, room seven hundred and nine.", 'Lovely. The room is on the third floor, room 709.'],
+      ["Lovely. The room is on the third floor, room seven zero nine.", 'Lovely, the room is on the third floor, Room 709.'],
+      ["Here we are. That's twelve thousand and five hundred króna.", "Here we are. That's 12,500 kroner."],
+      ["Here we are. That's one thousand two hundred and fifty baht.", "Here we are, that's 1,250 baht."],
+      ["That's eleven hundred yen altogether.", "That's 1,100 yen altogether."],
+      ["Here we are. That's fourteen hundred rupees.", "Here we are. That's 1,400 rupees."],
+      ["That's nine thousand won altogether.", "That's 9001, altogether."],
+      ["Here we are. That's twelve złoty fifty groszy.", "Here we are, that's 12's Wattie 50 Grushy."],
+      ["Here we are. That's fifteen leva.", "Here we are, that's 15 lever."],
+    ]
+    for (const [script, heard] of REAL) {
+      it(`passes ${JSON.stringify(script.slice(0, 42))} heard as ${JSON.stringify(heard)}`, () => {
+        expect(V.verdictFromDecode(heard, script, 'en').pass).toBe(true)
+      })
+    }
+  })
+
+  describe('a number that is genuinely WRONG is still caught', () => {
+    it('convicts a substituted number that canonicalisation would otherwise hide', () => {
+      // Once "£150" reads as "one hundred and fifty", this is three characters
+      // from the script — far under MIN_EDIT_DISTANCE. Rule 2 cannot see it.
+      const v = V.verdictFromDecode("That's 150 pesos altogether.", "That's two hundred and fifty pesos altogether.", 'en')
+      expect(v.pass).toBe(false)
+      expect(v.reason).toBe('numeral_mismatch')
+      expect(v.numerals).toEqual({ expected: '250', heard: '150' })
+    })
+
+    it('convicts a wrong number even when whisper spells it out too', () => {
+      const v = V.verdictFromDecode("That's eight pound fourteen altogether.", "That's eight pound forty altogether.", 'en')
+      expect(v.pass).toBe(false)
+      expect(v.reason).toBe('numeral_mismatch')
+    })
+
+    it('convicts a dropped digit — 709 read as 79', () => {
+      const v = V.verdictFromDecode('Lovely. The room is on the third floor, room 79.',
+        'Lovely. The room is on the third floor, room seven hundred and nine.', 'en')
+      expect(v.pass).toBe(false)
+      expect(v.reason).toBe('numeral_mismatch')
+    })
+
+    it('convicts a wrong price where only the pence differ', () => {
+      expect(V.verdictFromDecode("Here we are. That's £12.15.", "Here we are. That's twelve pound fifty.", 'en').pass).toBe(false)
+    })
+
+    it('convicts an order-of-magnitude error', () => {
+      expect(V.verdictFromDecode("Here we are, that's 50,000 won.", "Here we are. That's fifteen thousand won.", 'en').pass).toBe(false)
+    })
+  })
+
+  describe('a number that is missing altogether', () => {
+    it('is Rule 2\'s conviction, not Rule 4\'s — the spelt-out words are simply gone', () => {
+      const v = V.verdictFromDecode("That's pesos altogether.", "That's two hundred and fifty pesos altogether.", 'en')
+      expect(v.pass).toBe(false)
+      expect(v.reason).toBe('cer_above_threshold')
+    })
+
+    it('abstains rather than convicting "one moment" heard as "a moment"', () => {
+      // The script's "one" is not a quantity. Convicting here would be a new
+      // false-alarm class, and Rule 2 already scores this pair as healthy.
+      expect(V.verdictFromDecode('A moment, please.', 'one moment please', 'en').pass).toBe(true)
+    })
+  })
+
+  describe('the readings themselves', () => {
+    it('reads a number the British way, "and" included', () => {
+      expect(V.numberToWords(709)).toBe('seven hundred and nine')
+      expect(V.numberToWords(12500)).toBe('twelve thousand five hundred')
+      expect(V.numberToWords(9001)).toBe('nine thousand and one')
+      expect(V.numberToWords(48)).toBe('forty eight')
+    })
+
+    it('parses spelt-out numbers back, whichever way they were grouped', () => {
+      expect(V.cardinalsOf('a hundred and fifty')).toEqual([150])
+      expect(V.cardinalsOf('one thousand two hundred and fifty')).toEqual([1250])
+      expect(V.cardinalsOf('twelve hundred and fifty')).toEqual([1250])
+      expect(V.cardinalsOf('nine thousand and one')).toEqual([9001])
+      // A price is two numbers, not their sum: "twelve fifty" is 12·50, not 62.
+      expect(V.cardinalsOf('twelve pound fifty')).toEqual([12, 50])
+      expect(V.cardinalsOf('seven zero nine')).toEqual([7, 0, 9])
+      expect(V.cardinalsOf('no numbers here')).toEqual([])
+    })
+
+    it('offers the digit-by-digit reading a room number is actually spoken with', () => {
+      expect(V.numeralReadings('709')).toContain('seven hundred and nine')
+      expect(V.numeralReadings('709')).toContain('seven zero nine')
+      expect(V.numeralReadings('1250')).toContain('twelve hundred and fifty')
+      expect(V.numeralReadings('£12.50')).toContain('twelve pounds fifty')
+    })
+
+    it('leaves a text with no digits exactly as it was — this change is a no-op there', () => {
+      // Why the 5,341 remembered decodes re-judge identically: with no numeral
+      // token there is one candidate reading and it is the plain normalisation.
+      expect(V.numeralVariants('je suis surpris')).toEqual(['je suis surpris'])
+    })
+  })
+
+  describe('the rules underneath still see the canonicalised text', () => {
+    it('does not report a dropped final word when the word is written as a symbol', () => {
+      // "£150" carries "pounds"; before the fix Rule 3 called it missing.
+      expect(V.verdictFromDecode("Here we are. That's £150.", "Here we are. That's a hundred and fifty pounds.", 'en').reason).toBe('ok')
+    })
+
+    it('still catches a dropped final word in a sentence that contains a number', () => {
+      const v = V.verdictFromDecode("Here we are. That's 150", "Here we are. That's a hundred and fifty pounds sterling", 'en')
+      expect(v.pass).toBe(false)
+    })
+
+    it('still fails a silent clip whose script is a number', () => {
+      expect(V.verdictFromDecode('[BLANK_AUDIO]', "That's forty-eight pounds altogether.", 'en').reason).toBe('non_speech_decode')
+    })
+  })
+})
+
 describe('the third state — unchecked is never a pass', () => {
   const saved = { ...process.env }
   beforeEach(() => { V._resetAnnouncement() })

@@ -312,6 +312,343 @@ function isNonSpeechDecode (decode) {
   return normalise(raw).length === 0
 }
 
+// ---------------------------------------------------------------------------
+// Numerals — "£48" and "forty-eight pounds" are the same clip
+// ---------------------------------------------------------------------------
+
+/**
+ * WHY THIS EXISTS (the 2026-08-13 pod-0 English render).
+ *
+ * Whisper writes what the orthography prefers, and English orthography prefers
+ * digits: a clip whose script reads "That's forty-eight pounds altogether" comes
+ * back "That's £48 altogether". Nothing is missing — the transcript is shorter by
+ * fifteen characters purely because a number was SPELT differently. CER is a
+ * character ratio, so that lands at 0.5 on a 30-character script and Rule 2
+ * convicts every price, room number and time in the estate. Tonight's render
+ * quarantined 35 clips and all 35 are this: 12,500 for "twelve thousand and five
+ * hundred", 709 for "seven hundred and nine", £12.50 for "twelve pound fifty".
+ *
+ * Same shape of mistake as the last-word rule before d951ddae: the check asked
+ * how a number is WRITTEN when the question is which number was SAID.
+ *
+ * THE FIX IS A CANONICALISATION, NOT AN EXEMPTION. Both strings are re-read into
+ * the same currency — words — before any comparison, and the comparison then runs
+ * unchanged at the same operating point. A number that is genuinely wrong or
+ * genuinely absent is still a difference after canonicalisation, so it is still
+ * caught; only the spelling difference disappears.
+ *
+ * READINGS, PLURAL. "709" is "seven hundred and nine" in one clip and "seven zero
+ * nine" in the next, and "1250" is "one thousand two hundred and fifty" or
+ * "twelve hundred and fifty". A single canonical reading would just move the false
+ * alarm somewhere else, so each numeral offers its plausible readings and the
+ * scoring takes the best-fitting combination. The unmodified text is always among
+ * the candidates, which is what makes this change a no-op for every clip that
+ * contains no digits on either side.
+ *
+ * Canonicalisation alone would then LOSE sensitivity: once "£150" reads as "one
+ * hundred and fifty", the difference between it and "two hundred and fifty" is
+ * three characters, well under MIN_EDIT_DISTANCE. So the numerals are also checked
+ * as their own event (Rule 4 in verdictFromDecode), the same way the last word is.
+ */
+
+const NUM_SMALL = {
+  zero: 0, oh: 0, nought: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6,
+  seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, thirteen: 13,
+  fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18, nineteen: 19,
+}
+const NUM_TENS = {
+  twenty: 20, thirty: 30, forty: 40, fourty: 40, fifty: 50, sixty: 60,
+  seventy: 70, eighty: 80, ninety: 90,
+}
+const NUM_SCALES = { thousand: 1e3, million: 1e6, billion: 1e9 }
+const ONES_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine',
+  'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
+const TENS_WORDS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+const ORDINAL_WORDS = {
+  1: 'first', 2: 'second', 3: 'third', 4: 'fourth', 5: 'fifth', 6: 'sixth', 7: 'seventh',
+  8: 'eighth', 9: 'ninth', 10: 'tenth', 11: 'eleventh', 12: 'twelfth', 13: 'thirteenth',
+  20: 'twentieth', 21: 'twenty first', 30: 'thirtieth',
+}
+
+/** British long form, "and" included: 709 -> "seven hundred and nine". */
+function numberToWords (n) {
+  n = Math.trunc(Math.abs(Number(n) || 0))
+  if (n < 20) return ONES_WORDS[n]
+  if (n < 100) return (TENS_WORDS[Math.floor(n / 10)] + (n % 10 ? ' ' + ONES_WORDS[n % 10] : ''))
+  if (n < 1000) {
+    const rest = n % 100
+    return ONES_WORDS[Math.floor(n / 100)] + ' hundred' + (rest ? ' and ' + numberToWords(rest) : '')
+  }
+  for (const [word, scale] of [['billion', 1e9], ['million', 1e6], ['thousand', 1e3]]) {
+    if (n >= scale) {
+      const rest = n % scale
+      return numberToWords(Math.floor(n / scale)) + ' ' + word
+        + (rest ? (rest < 100 ? ' and ' : ' ') + numberToWords(rest) : '')
+    }
+  }
+  return String(n)
+}
+
+/** Digit-by-digit, how a room number or a phone number is often read. */
+function digitwiseWords (digits) {
+  return String(digits).split('').map(c => ONES_WORDS[Number(c)]).join(' ')
+}
+
+/**
+ * A currency symbol IS a spoken word, and it is the word the script writes out:
+ * "£48" is read "forty-eight pounds", "£12.50" is read "twelve pounds fifty".
+ * Whisper writes the symbol, the script writes the word, and without this the
+ * word looks dropped — which fired Rule 3 on "a hundred and fifty pounds" heard
+ * as "£150". English puts the word after the amount, or between the parts of a
+ * price, so both placements are offered as readings and the best fit wins.
+ */
+const CURRENCY_WORDS = {
+  '£': 'pounds', $: 'dollars', '€': 'euros', '¥': 'yen', '₹': 'rupees',
+  '₩': 'won', '₪': 'shekels', '₺': 'lira', '₫': 'dong', '₴': 'hryvnia', '₦': 'naira',
+}
+
+/**
+ * The plausible spoken readings of one numeric token, RAW FORM FIRST so that
+ * leaving the text untouched is always one of the candidates.
+ */
+function numeralReadings (token) {
+  const cur = CURRENCY_WORDS[token[0]]
+  if (cur) {
+    const base = numeralReadings(token.slice(1))
+    const dec = /^(\d+)\.(\d{2})$/.exec(token.slice(1))
+    const out = [token, ...base.slice(1).map(r => `${r} ${cur}`)]
+    // "twelve pounds fifty" — the word sits between the parts of a price.
+    if (dec) out.push(`${numberToWords(Number(dec[1]))} ${cur} ${numberToWords(Number(dec[2]))}`)
+    return [...new Set(out)]
+  }
+  const out = [token]
+  const ord = /^(\d+)(st|nd|rd|th)$/i.exec(token)
+  if (ord) {
+    const n = Number(ord[1])
+    out.push(ORDINAL_WORDS[n] || (numberToWords(n) + 'th'))
+    return out
+  }
+  const dec = /^(\d+)\.(\d+)$/.exec(token)
+  if (dec) {
+    const whole = Number(dec[1])
+    // "12.50" is a price: "twelve fifty". Anything else gets read out as digits.
+    if (dec[2].length === 2) out.push(`${numberToWords(whole)} ${numberToWords(Number(dec[2]))}`)
+    out.push(`${numberToWords(whole)} point ${digitwiseWords(dec[2])}`)
+    return out
+  }
+  if (!/^\d+$/.test(token)) return out
+  const n = Number(token)
+  if (!Number.isFinite(n) || token.length > 12) return out
+  out.push(numberToWords(n))
+  // "twelve hundred and fifty" — the hundreds reading of a four-digit number.
+  if (n >= 1000 && n <= 9999) {
+    const rest = n % 100
+    out.push(numberToWords(Math.floor(n / 100)) + ' hundred' + (rest ? ' and ' + numberToWords(rest) : ''))
+  }
+  if (token.length >= 2) out.push(digitwiseWords(token))
+  return [...new Set(out)]
+}
+
+const NUMERAL_TOKEN = /[£$€¥₹₩₪₺₫₴₦]?\d+(?:\.\d+)?(?:st|nd|rd|th)?/gi
+/** Thousands separators are punctuation, not structure: 12,500 -> 12500. */
+function stripGrouping (s) { return String(s == null ? '' : s).replace(/(\d),(?=\d{3}(?:\D|$))/g, '$1') }
+
+/**
+ * Every normalised reading of `text` worth scoring against. Index 0 is the plain
+ * normalisation, so a text with no digits yields exactly one candidate and this
+ * whole mechanism is a no-op — which is why the 5,341 remembered decodes re-judge
+ * identically except where a numeral is actually involved.
+ */
+const MAX_NUMERAL_VARIANTS = 12
+function numeralVariants (text) {
+  const raw = stripGrouping(text)
+  const plain = normalise(raw)
+  const tokens = raw.match(NUMERAL_TOKEN)
+  if (!tokens || !tokens.length) return [plain]
+
+  const readings = tokens.map(numeralReadings)
+  const combos = readings.reduce((acc, r) => acc * r.length, 1)
+  // Too many numerals to enumerate: score the plain text, the all-long-form
+  // reading and the all-digitwise reading, and let the best one speak.
+  const picks = combos > MAX_NUMERAL_VARIANTS
+    ? [0, 1, readings[0].length - 1].map(i => readings.map(r => r[Math.min(i, r.length - 1)]))
+    : cartesian(readings)
+
+  const out = new Set([plain])
+  for (const pick of picks) {
+    let i = 0
+    // Padded, because whisper writes "12's" and an unpadded swap would make one
+    // unparseable word of "twelve's".
+    out.add(normalise(raw.replace(NUMERAL_TOKEN, () => ` ${pick[i++]} `)))
+  }
+  return [...out]
+}
+
+function cartesian (lists) {
+  return lists.reduce((acc, list) => acc.flatMap(prefix => list.map(v => [...prefix, v])), [[]])
+}
+
+/**
+ * The cardinal numbers a text says, in order, whatever notation it used.
+ * Digits are read into words first, so ONE parser serves both sides.
+ */
+function cardinalsOf (text) {
+  return parseCardinals(cardinalWords(text))
+}
+
+/** The text with every numeral token spelt out, as a word array. */
+function cardinalWords (text) {
+  const raw = stripGrouping(text)
+  const asWords = normalise(raw.replace(NUMERAL_TOKEN, t => {
+    const r = numeralReadings(t)
+    return ` ${r.length > 1 ? r[1] : r[0]} `
+  }))
+  return asWords.split(' ').filter(Boolean)
+}
+
+/**
+ * The digit strings a text could be saying — plural, because a run of
+ * single-digit words is genuinely ambiguous between a sum and a digit sequence.
+ * "room seven zero nine" is 709 read out digit by digit, not 7 + 0 + 9; but
+ * "twenty twenty" really is two numbers. Both readings are offered and Rule 4
+ * accepts any agreement.
+ */
+function digitStringsOf (text) {
+  const words = cardinalWords(text)
+  const out = new Set([parseCardinals(words).map(String).join('')])
+  out.add(parseCardinals(words, { digitRuns: true }).map(String).join(''))
+  return out
+}
+
+/**
+ * Word-stream cardinal parser: "nine thousand and one" -> [9001].
+ * With `digitRuns`, a run of two or more single-digit words is read as one
+ * number spoken digit by digit: "seven zero nine" -> [709].
+ */
+function parseCardinals (words, o = {}) {
+  const values = []
+  let total = 0, current = 0, started = false
+  const flush = () => { if (started) values.push(total + current); total = 0; current = 0; started = false }
+  const isNumWord = (w) => w != null && (w in NUM_SMALL || w in NUM_TENS || w === 'hundred' || w in NUM_SCALES)
+
+  const isDigitWord = (w) => w != null && w in NUM_SMALL && NUM_SMALL[w] <= 9
+
+  for (let i = 0; i < words.length; i++) {
+    const w = words[i]
+    if (o.digitRuns && isDigitWord(w) && isDigitWord(words[i + 1])) {
+      flush()
+      let run = ''
+      while (isDigitWord(words[i])) run += String(NUM_SMALL[words[i++]])
+      i--
+      values.push(run)
+      continue
+    }
+    // A new atom EXTENDS the number being built only where English lets it:
+    // after a hundred/thousand ("seven hundred and nine"), or a unit after a ten
+    // ("twenty five"). Otherwise it starts a new number — "twelve fifty" is a
+    // price, twelve and fifty, not sixty-two.
+    const atom = w in NUM_SMALL ? NUM_SMALL[w] : (w in NUM_TENS ? NUM_TENS[w] : null)
+    // A spoken "zero" is never a summand — it is a digit in its own right.
+    if (atom === 0) { flush(); values.push(0); continue }
+    if (atom != null) {
+      const extends_ = current === 0 || current >= 100 || (current >= 20 && current % 10 === 0 && atom < 10)
+      if (!extends_) flush()
+      current += atom
+      started = true
+      continue
+    }
+    if (w === 'hundred') { current = (current || 1) * 100; started = true; continue }
+    if (w in NUM_SCALES) { total += (current || 1) * NUM_SCALES[w]; current = 0; started = true; continue }
+    // "and" and "a" belong to the number only when a number follows them.
+    if (w === 'and' && started && isNumWord(words[i + 1])) continue
+    if (w === 'a' && (words[i + 1] === 'hundred' || words[i + 1] in NUM_SCALES)) { started = true; continue }
+    flush()
+  }
+  flush()
+  return values
+}
+
+/** Does `needle` appear as a contiguous run of words inside `hay`? */
+function containsWordRun (hayWords, needleWords) {
+  if (!needleWords.length) return true
+  for (let i = 0; i + needleWords.length <= hayWords.length; i++) {
+    let ok = true
+    for (let j = 0; j < needleWords.length; j++) if (hayWords[i + j] !== needleWords[j]) { ok = false; break }
+    if (ok) return true
+  }
+  return false
+}
+
+/**
+ * Rule 4: the numbers in the script must be the numbers in the decode.
+ *
+ * Canonicalisation makes a wrong number CHEAP in character terms — "£150" read as
+ * "one hundred and fifty" is three edits away from "two hundred and fifty", far
+ * under MIN_EDIT_DISTANCE — so the numbers are checked as their own event rather
+ * than left to a ratio. Two ways to satisfy it, because two different things can
+ * go right:
+ *
+ *  1. The digits agree end to end. Grouping and notation are ignored: "twelve
+ *     pound fifty" and "£12.50" are both 12·50, "seven zero nine" and "709" are
+ *     both 709.
+ *  2. Failing that, every number the script says still appears, spelt out, inside
+ *     the decode's own reading. This is the escape hatch for whisper absorbing a
+ *     neighbouring word into the numeral — "nine thousand won altogether" comes
+ *     back "9001, altogether", and "nine thousand" is plainly still in there.
+ *
+ * ABSTENTION, and it is deliberate: when the decode carries NO number at all,
+ * this rule says nothing. A dropped number leaves the script's numeral words
+ * wholly unaccounted for, which is a large CER event that Rule 2 already convicts
+ * on ("that's 250 pesos" heard as "that's pesos" is 22 edits). Convicting here as
+ * well would only add false alarms on the "one moment" / "a moment" class, where
+ * the script's "one" is not really a quantity.
+ *
+ * WHAT THIS GIVES UP: path 2 tolerates EXTRA numeric material in the decode, so
+ * "room seven" heard as "room 79" passes this rule. That is Rule 2's business —
+ * an inserted number is a whole-string difference — and the alternative is
+ * convicting the "won"→1 class, which is healthy audio.
+ *
+ * @returns {{ok:boolean, via?:string, expected?:string, heard?:string}}
+ */
+function numeralVerdict (expectedText, decodeText) {
+  const eNums = cardinalsOf(expectedText)
+  if (!eNums.length) return { ok: true }
+  const dNums = cardinalsOf(decodeText)
+  if (!dNums.length) return { ok: true, via: 'decode_has_no_numerals' }
+
+  const eDigits = [...digitStringsOf(expectedText)]
+  const dDigits = [...digitStringsOf(decodeText)]
+  if (eDigits.some(x => dDigits.includes(x))) return { ok: true }
+
+  const dVariants = numeralVariants(decodeText).map(v => v.split(' ').filter(Boolean))
+  const allHeard = eNums.every(n => {
+    const readings = [...new Set([numberToWords(n), digitwiseWords(String(n)), String(n)])]
+      .map(r => r.split(' ').filter(Boolean))
+    return readings.some(r => dVariants.some(dv => containsWordRun(dv, r)))
+  })
+  if (allHeard) return { ok: true, via: 'numerals_spelt_out_in_decode' }
+  return { ok: false, expected: eDigits[0], heard: dDigits[0] }
+}
+
+/**
+ * The best-fitting pair of readings of (expected, decode) and the edit distance
+ * between them. With no digits on either side this is plain normalisation and one
+ * levenshtein, exactly as before.
+ */
+function alignedPair (expected, decode) {
+  const eVars = numeralVariants(expected)
+  const dVars = numeralVariants(decode)
+  let best = { e: eVars[0], d: dVars[0], edits: levenshtein(eVars[0], dVars[0]) }
+  if (eVars.length === 1 && dVars.length === 1) return best
+  for (const e of eVars) {
+    for (const d of dVars) {
+      const edits = levenshtein(e, d)
+      if (edits < best.edits) best = { e, d, edits }
+    }
+  }
+  return best
+}
+
 /**
  * The verdict, given a decode that has already happened. Pure — this is the
  * function the operating point lives in and the one the tests pin.
@@ -329,9 +666,14 @@ function isNonSpeechDecode (decode) {
  * @returns {{pass:boolean, reason:string, cer:number, threshold:number}}
  */
 function verdictFromDecode (decode, expected, iso1, opts = {}) {
-  const e = normalise(expected)
-  const d = normalise(decode)
-  const edits = e.length ? levenshtein(e, d) : (d.length ? 1 : 0)
+  // Both sides are re-read into the same currency before anything is measured:
+  // whisper spells numbers with digits and the scripts spell them with words, and
+  // that difference is orthography, not audio (see numeralVariants above). With no
+  // digits anywhere this is plain normalisation and the old code path exactly.
+  const aligned = alignedPair(expected, decode)
+  const e = aligned.e
+  const d = aligned.d
+  const edits = e.length ? aligned.edits : (d.length ? 1 : 0)
   const cer = e.length ? edits / e.length : (d.length ? 1 : 0)
 
   // Rule 1, language-independent: nothing was transcribed at all.
@@ -374,12 +716,22 @@ function verdictFromDecode (decode, expected, iso1, opts = {}) {
     return { pass: false, reason: 'last_word_missing', cer, edits, threshold, lastWord: lw.word }
   }
 
+  // Rule 4: the numbers said must be the numbers asked for. Canonicalisation
+  // above deliberately made a numeral's SPELLING free; this is what stops it
+  // making a numeral's VALUE free with it. See numeralVerdict.
+  const nv = numeralVerdict(expected, decode)
+  if (!nv.ok) {
+    return { pass: false, reason: 'numeral_mismatch', cer, edits, threshold, numerals: { expected: nv.expected, heard: nv.heard } }
+  }
+
   // A pass that only survived because the final word was heard in a DIFFERENT
   // shape is still a pass, but it is worth carrying: it is the class this rule
   // used to fail wholesale, and it is the class a future mispronunciation check
   // would want to look at first. Reported, never acted on.
-  if (lw.via) return { pass: true, reason: 'ok', cer, edits, threshold, lastWordVia: lw.via }
-  return { pass: true, reason: 'ok', cer, edits, threshold }
+  const extra = {}
+  if (lw.via) extra.lastWordVia = lw.via
+  if (nv.via) extra.numeralsVia = nv.via
+  return { pass: true, reason: 'ok', cer, edits, threshold, ...extra }
 }
 
 /**
@@ -830,6 +1182,11 @@ module.exports = {
   characterErrorRate,
   isNonSpeechDecode,
   normalise,
+  numberToWords,
+  numeralReadings,
+  numeralVariants,
+  cardinalsOf,
+  numeralVerdict,
   decodeAudio,
   availability,
   isGateEnabled,
