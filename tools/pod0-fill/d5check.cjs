@@ -1,0 +1,11 @@
+require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') })
+const { createClient } = require('@supabase/supabase-js')
+const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
+;(async()=>{
+  const { data } = await sb.from('listening_pod_sentences').select('*').eq('pod_id','spa_for_eng:pod-0').limit(1)
+  console.log('SENTENCE COLUMNS:', Object.keys(data[0]).join(', '))
+  const { data: pd } = await sb.from('listening_pods').select('*').eq('id','spa_for_eng:pod-0').limit(1)
+  console.log('\nPOD COLUMNS:', Object.keys(pd[0]).join(', '))
+  for (const k of Object.keys(pd[0])) if (/proof|draft|status|review|approv/i.test(k)) console.log('  POD.'+k+' =', JSON.stringify(pd[0][k]))
+  for (const k of Object.keys(data[0])) if (/proof|draft|status|review|approv/i.test(k)) console.log('  SENT.'+k+' =', JSON.stringify(data[0][k]))
+})().catch(e=>{console.error(e.message);process.exit(1)})

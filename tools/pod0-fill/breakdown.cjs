@@ -1,0 +1,12 @@
+const e = require('./empties.json')
+const g = (arr, k) => arr.reduce((m,x)=>{const v=k(x);(m[v]=m[v]||[]).push(x);return m},{})
+const bySlug = g(e, x=>x.slug)
+console.log('BY SLUG:', Object.entries(bySlug).map(([k,v])=>[k,v.length]))
+const byCourse = g(e, x=>x.course_code)
+const rows = Object.entries(byCourse).map(([k,v])=>({course:k, empty:v.length, side:v[0].side, distinct:new Set(v.map(x=>(x.text||'').trim())).size}))
+rows.sort((a,b)=>b.empty-a.empty)
+console.log('COURSES:', rows.length)
+rows.forEach(r=>console.log(`  ${r.course.padEnd(20)} ${String(r.empty).padStart(5)} empty  ${String(r.distinct).padStart(4)} distinct  side=${r.side}`))
+// how many are eng-target courses
+const engTarget = e.filter(x=>x.side==='target')
+console.log('\nTARGET-side (eng_for_*) empties:', engTarget.length, 'courses:', [...new Set(engTarget.map(x=>x.course_code))])
