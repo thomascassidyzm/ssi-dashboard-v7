@@ -290,3 +290,59 @@ Worth recording, because both were the tooling lying rather than the audio being
 `baseline.cjs` (the pitch baseline), `pitch.cjs` (the F0 estimator), `verify.cjs` (the six
 checks, resumable), `triage.cjs` (re-decode a flagged clip and print script vs ASR side by
 side), `rollout.cjs` + `rollout-log.json` (every approve/render/revoke step).*
+
+---
+
+## Addendum, 2026-08-13: the one truncated clip is fixed
+
+Tom approved a strictly-scoped follow-up: re-render the single confirmed truncation from
+§6/§9, `ara_sy_for_eng` `pod-0` `SC01-S004` (known/English track). Nothing else touched.
+
+**What was wrong.** `course_audio` row `263240af-71e2-4d7d-9c2e-ea9f4dd993aa` — text "Yes,
+I've got a busy day today. … I hope you have a good day. … See you later." (three sentences,
+joined by the pod pause cue) — held only 2.76s of audio, cut off after the first sentence.
+Confirmed twice in §6: ASR decoded just the first sentence, and the clip ran at 26.8
+chars/second, the only outlier in the 725-clip set (median 14.2).
+
+**What ran.** New tool: `tools/pod0-fill/fix-ara-sy-sc01-s004.cjs`. Make-before-break,
+scoped to this one row:
+
+1. The approval gate was opened for `ara_sy_for_eng` only (`pod-approve-voices.cjs
+   --course=ara_sy_for_eng`), narrower even than the original run — noted in the approval
+   record as a single-clip re-render, not a bulk fill.
+2. Speaker `Sarah`'s known-role voice was re-resolved live from the pod's own cast
+   (`resolvePodSpeakerVoice`) and checked against the voice already on the live row
+   (`xai_bedd6226` / Olivia) before rendering — confirms the cast has not moved since the
+   original render.
+3. A fresh clip was synthesised with the same text and the same pause-cue join phase 8
+   uses for multi-sentence turns, and uploaded to a **new** S3 key
+   (`mastered/318A649F-8117-4472-A48D-F943FB894AE4.mp3`). The live row was not touched at
+   this point — the old object (`mastered/7268ABA9-EE92-47B3-9E8A-0D3A8C6AAA90.mp3`) was
+   still the one being served.
+4. The new object was verified before anything pointed at it:
+   - **ASR** (`services/audio-veracity.cjs`) decoded all three sentences with **zero
+     character error**: `"Yes, I've got a busy day today. I hope you have a good day. See
+     you later."` — an exact match.
+   - **Duration**: 4.78s, 73% longer than the truncated original's 2.76s, consistent with
+     three sentences rendering instead of one.
+   - **Speech rate**: 12.1 chars/sec — in line with the run's 14.2 median, nowhere near the
+     truncated clip's 26.8 outlier.
+   - **Pitch**: median F0 211Hz, inside Olivia's range from the original run's baseline
+     (138–314Hz across 331 clips, median 195Hz) and nowhere near the clone's range
+     (79–176Hz) — corroborates the correct cast member, on top of the voice_id check in
+     step 2.
+5. Only once all four checks passed did a single `UPDATE course_audio SET s3_key = …`
+   swap the live row onto the new object. The old object was left on S3, untouched and
+   undeleted — nothing to make-before-break because nothing was broken.
+6. **Post-swap, the live link was independently re-verified**: downloaded the new object
+   fresh from its public S3 URL (not from the render buffer still in memory) and re-ran
+   ASR against it — same result, exact match, zero error. What learners now hear was
+   checked as bytes actually on S3, not as bytes about to be uploaded.
+7. The approval gate was revoked for `ara_sy_for_eng` immediately after
+   (`pod-approve-voices.cjs --revoke=ara_sy_for_eng`) — confirmed back to
+   `No pod voice approvals on record. Every course is currently BULK-BLOCKED.`, the same
+   state every other course was left in at the end of §4.
+
+No other clip, sentence, pod or course was touched. The two items flagged in §9 that "want
+a human ear" (`ara_sy_for_eng` `SC08-S016`, `fra_for_eng` `SC11-S012`) are unaffected and
+still open, as is the `cym_s_for_eng` draft-line flag.
