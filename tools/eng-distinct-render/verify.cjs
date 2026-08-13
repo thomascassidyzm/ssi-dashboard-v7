@@ -34,17 +34,29 @@ const rendered = fs.readFileSync(path.join(__dirname, 'render-log.jsonl'), 'utf8
   .split('\n').filter(Boolean).map(JSON.parse).filter(r => r.ok && !r.skipped)
 console.log('clips rendered by this run:', rendered.length)
 
-const head = u => {
+/**
+ * One retry on a TRANSPORT failure, and only on that. A curl exit code is not a verdict
+ * about the clip — the 2026-08-13 re-verification run died on its 655th object with
+ * curl 35 (SSL connect error) and threw away a complete pass over the estate. A dead
+ * object still answers 404/200 and is judged on the answer; a socket that never opened
+ * is asked again. Two failures in a row still throw, because a check that swallows its
+ * own inability to run is the bug this whole pipeline exists to avoid.
+ */
+const retryTransport = (fn) => {
+  try { return fn() } catch (e) { return fn() }
+}
+
+const head = u => retryTransport(() => {
   const out = execFileSync('curl', ['-sI', '-m', '30', u]).toString()
   const status = Number((out.match(/HTTP\/[\d.]+ (\d{3})/) || [])[1] || 0)
   const len = Number((out.match(/[Cc]ontent-[Ll]ength: (\d+)/) || [])[1] || 0)
   return { status, len }
-}
+})
 
 function probe(u) {
   const tmp = path.join(os.tmpdir(), 'edr-' + Math.abs(hash(u)) + '.mp3')
   try {
-    execFileSync('curl', ['-s', '-m', '60', '-o', tmp, u])
+    retryTransport(() => execFileSync('curl', ['-s', '-m', '60', '-o', tmp, u]))
     const bytes = fs.statSync(tmp).size
     const out = execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration',
       '-of', 'default=nw=1:nk=1', tmp], { stdio: ['ignore', 'pipe', 'pipe'] }).toString().trim()

@@ -1,0 +1,28 @@
+PASS ok cer=0.1364
+  script : Here we are. That's twelve złoty fifty groszy.
+  medium : Here we are, that's 12-Swati 50-Grushy.
+  small  : Here we are, that's 12's Wattie 50 Grushy.
+PASS ok cer=0.1429
+  script : That's nine thousand won altogether.
+  medium : That's 9,001 altogether.
+  small  : That's 9001, altogether.
+PASS ok cer=0.027
+  script : Here we are. That's twelve pound fifty.
+  medium : Here we are. That's £12.50.
+  small  : Here we are. That's £12.50.
+PASS ok cer=0
+  script : Lovely. The room is on the third floor, room seven zero nine.
+  medium : Lovely. The room is on the third floor, room 709.
+  small  : Lovely, the room is on the third floor, Room 709.
+PASS ok cer=0.1053
+  script : Here we are. That's twelve thousand and five hundred króna.
+  medium : Here we are. That's 12,500 Kroner.
+  small  : Here we are. That's 12,500 kroner.
+PASS ok cer=0
+  script : That's forty-eight pounds altogether.
+  medium : That's 48 pounds altogether.
+  small  : That's £48 altogether.
+PASS ok cer=0
+  script : Here we are. That's a hundred and fifty pounds.
+  medium : Here we are, that's a hundred and fifty pounds.
+  small  : Here we are. That's £150.
