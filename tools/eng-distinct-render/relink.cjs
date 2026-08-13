@@ -110,7 +110,9 @@ if (!APPLY) { console.log('\nDRY RUN — nothing written. Re-run with --apply.')
       const tos = batch.map(b => b.to)
       const r = await q(
         `UPDATE listening_pod_sentences s SET ${column} = v.to_id::uuid
-         FROM (SELECT unnest($1::uuid[]) AS id, unnest($2::uuid[]) AS from_id, unnest($3::uuid[]) AS to_id) v
+         -- listening_pod_sentences.id is TEXT while the audio columns are UUID; the arrays
+         -- must be cast per column or the join operator does not resolve.
+         FROM (SELECT unnest($1::text[]) AS id, unnest($2::uuid[]) AS from_id, unnest($3::uuid[]) AS to_id) v
          WHERE s.id = v.id AND s.${column} IS NOT DISTINCT FROM v.from_id
          RETURNING s.id`, [ids, froms, tos])
       written += r.length

@@ -29,13 +29,18 @@ const API = process.env.SERVED_CHECK_API || 'http://localhost:3470'   // product
 const N = (() => { const i = process.argv.indexOf('--n'); return i > -1 ? Number(process.argv[i + 1]) : 12 })()
 
 const get = (u, extra = []) => execFileSync('curl', ['-s', '-m', '45', ...extra, u]).toString()
+// GET, not HEAD: the player route answers HEAD with 405, so a HEAD probe would report
+// every clip in the estate as broken — including Aran's human recordings, which is how
+// this was caught. -o /dev/null keeps the bytes off disk while still fetching them, so
+// Content-Length here is a real transfer, not a promise.
+// The size is curl's own %{size_download} — bytes that actually arrived — not a
+// Content-Length header. The header is unreliable here (redirects and chunked responses
+// both put a misleading value in the stream), and it is a promise about the body rather
+// than the body. The status is the FINAL status after redirects, for the same reason.
 const headOf = u => {
-  const out = execFileSync('curl', ['-sIL', '-m', '45', u]).toString()
-  return {
-    status: Number((out.match(/HTTP\/[\d.]+ (\d{3})[^]*$/) || out.match(/HTTP\/[\d.]+ (\d{3})/) || [])[1] || 0),
-    len: Number((out.match(/[Cc]ontent-[Ll]ength: (\d+)/g) || []).slice(-1)[0]?.replace(/\D/g, '') || 0),
-    type: ((out.match(/[Cc]ontent-[Tt]ype: ([^\r\n]+)/g) || []).slice(-1)[0] || '').split(':').slice(1).join(':').trim(),
-  }
+  const out = execFileSync('curl', ['-sL', '-m', '45', '-o', '/dev/null',
+    '-w', '%{http_code} %{size_download} %{content_type}', u]).toString().trim().split(/\s+/)
+  return { status: Number(out[0] || 0), len: Number(out[1] || 0), type: out[2] || '' }
 }
 
 ;(async () => {
@@ -92,12 +97,16 @@ const headOf = u => {
      FROM listening_pod_sentences s JOIN listening_pods p ON p.id=s.pod_id
      JOIN course_audio a ON a.id=s.known_audio_id
      WHERE p.course_code LIKE 'cym%' AND p.slug LIKE 'pod-0%' AND s.known_audio_id IS NOT NULL`)
-  console.log(`\nWelsh human-recording rows still linked: ${welsh.length}`)
-  const wsample = welsh.slice(0, 6)
-  for (const w of wsample) {
-    const h = headOf(`${HOST}/api/audio/${w.id ? w.known_audio_id : ''}.v${w.rev}`)
-    console.log(`  ${w.pod_id} voice=${w.voice_id} origin=${w.origin} player=${h.status} ${h.len}b`)
+  const wrong = welsh.filter(w => w.voice_id !== 'human_aran_cym_n' || w.origin !== 'human')
+  console.log(`\nWelsh human-recording rows still linked: ${welsh.length} (${new Set(welsh.map(w => w.known_audio_id)).size} distinct clips), off-cast/non-human: ${wrong.length}`)
+  let wAlive = 0
+  for (const w of welsh) {
+    const h = headOf(`${HOST}/api/audio/${w.known_audio_id}.v${w.rev}`)
+    w.player_http = h.status; w.player_bytes = h.len
+    if (h.status === 200 && h.len > 2048) wAlive++
+    else console.log(`  DEAD ${w.pod_id} ${w.known_audio_id} ${h.status} ${h.len}b`)
   }
+  console.log(`  all ${welsh.length} still Aran, ${wAlive}/${welsh.length} serve real audio through the player path`)
 
   const pass = results.filter(r => r.playable && r.api_points_at_new_clip).length
   console.log(`\nSERVED SPOT-CHECK: ${pass}/${results.length} slots serve the new shared clip through the real path`)
