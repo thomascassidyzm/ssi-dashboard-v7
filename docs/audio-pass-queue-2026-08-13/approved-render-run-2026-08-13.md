@@ -5,8 +5,23 @@
 its fulfillers are named as prose inside the request text. I was dispatched to be the executor.
 
 **Nothing was rendered onto the learner path. Nothing was deleted. Total spend: 9 test renders,
-about $0.0001.** Both halves of the job turned out to be blocked, and in both cases the block is
-worth more than the render would have been.
+about $0.0001.** Both halves of the job turned out to be blocked.
+
+> ## ⚠️ Correction, added later the same day
+>
+> **The "wrong-language voices" section below is wrong, and I have struck it through.** I read the
+> **known** track and called it English. Course codes are `<target>_for_<known>` — so for
+> `eng_for_pan`, English is the **target** track and Punjabi is the known one. Every Azure voice I
+> named is the correct voice of the *learner's own language*, on the other track. Verified
+> directly: `eng_for_pan:pod-0` has `known_text` in Punjabi script and `target_text` in English.
+>
+> **The English cast is Tom's clone plus Olivia — the top male and female picks of the `eng` voice
+> pool. It is correct, and it does not need recasting.** A parallel session caught this and halted
+> the recast before anything was touched: `docs/pods/pod0-recast-halted-2026-08-13.md` (`83ba414d`).
+>
+> **What survives the correction:** the approval gate refuses all 57 courses, `/generate-pods`
+> cannot do the scope its own row names, and none of the plan's counts match live data. Those three
+> findings were measured independently of the track error and still stand.
 
 ---
 
@@ -92,10 +107,11 @@ all 57 courses. **All 57 refused, reason `no_approval`.** Not one has ever been 
 The gate's own comment explains why it exists: sixteen courses are cast with wrong-language voices,
 and a bulk run on that casting "fails 100% and burns ~19 hours of whisper for nothing."
 
-### It is refusing for exactly the right reason
+### ~~It is refusing for exactly the right reason~~ — WRONG, see the correction above
 
-The approved plan is a **"pod-0 English fresh build (Eve + clone `xai:gfzdpspr5fdp`)"**. Here is
-what the stored cast for the English track actually is:
+~~The approved plan is a "pod-0 English fresh build (Eve + clone `xai:gfzdpspr5fdp`)". Here is
+what the stored cast for the English track actually is:~~ **This reads the KNOWN track. For the 15
+`eng_for_*` courses in the list, the known track is the learner's language, not English.**
 
 - `xai:gfzdpspr5fdp` — the clone — 4,491 lines ✅
 - `xai:bedd6226` — 1,530 lines
@@ -105,9 +121,14 @@ what the stored cast for the English track actually is:
   `ja-JP-Naoki` (Japanese), `bn-IN-Bashkar` (Bengali), `gu-IN-Niranjan` (Gujarati),
   `ta-LK-Kumar` (Tamil), `pt-PT-Duarte` (Portuguese), `fr-FR-Henri` (French), and more.
 
-**Eve is not in the cast anywhere.** Running the job today would have spent money rendering English
-lines in Punjabi, Sinhala, Urdu and Japanese voices. The gate stopped precisely the thing it was
-built to stop.
+~~**Eve is not in the cast anywhere.** Running the job today would have spent money rendering
+English lines in Punjabi, Sinhala, Urdu and Japanese voices.~~
+
+**Corrected:** not one of those voices speaks a line of English. The real English cast is
+`xai:gfzdpspr5fdp` (the clone, 11,546 slots) and `xai:bedd6226` (Olivia, 5,490) — the `eng` pool's
+top male and female. Eve genuinely is absent, but Eve has **never** been an English voice on this
+estate; she is a multilingual *target* voice across 19 locales. So "recast to Eve + clone" would
+replace Olivia with Eve — a taste decision, not a repair.
 
 ### The named fulfiller cannot do the named scope in any case
 
@@ -161,11 +182,12 @@ from. *My recommendation: before any repair run trusts that cache again, exempt 
 word is a short function word, and re-run it. Cheaper than rendering 467 clips that are probably
 correct.*
 
-**2. Pod-0 cannot be rendered until the cast is fixed.** The approved plan wants Eve and the clone;
-the stored cast is the clone, a second xAI voice, 224 uncast lines, and a tail of wrong-language
-Azure voices. *My recommendation: recast the 57 pod-0s to Eve + clone, approve the new cast through
-the voice-approval gate, then render — in that order. Rendering first spends money on voices the
-plan does not want.* This is a recast job, not a render job, and it is bigger than tonight's brief.
+**2. Pod-0 cannot be rendered until a cast is approved — but the cast is already right.**
+~~Recast to Eve + clone first.~~ **Withdrawn: that recommendation rested on my track error.** The
+English cast is the clone plus Olivia and needs no repair. What remains true is that all 57 courses
+sit at `no_approval`, so nothing can render at all. *My recommendation: approve the existing cast
+through the voice-approval gate and render on that. Swapping Olivia for Eve is a separate taste
+call and should not be bundled into a render job.*
 
 ---
 
