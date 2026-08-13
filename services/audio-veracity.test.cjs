@@ -157,6 +157,100 @@ describe('verdictFromDecode — the operating point', () => {
   })
 })
 
+describe('Rule 3 — the last word of the script must have been SPOKEN', () => {
+  // The defect this rule was built for, in Tom's words (2026-08-07): "the final
+  // word is wholly missing and the clip ends in a gap". Rules 1 and 2 are blind
+  // to it — the clip is full of speech and one short word is a handful of edits.
+  describe('a dropped final word is still caught — this is the whole point', () => {
+    it('catches the case that motivated the rule', () => {
+      // Rule 2 happens to reach this particular one first — losing "French" is
+      // 7 edits on a 22-character script, over both the floor and the threshold.
+      // It is the SHORTER drops below that Rule 2 misses and Rule 3 exists for.
+      const v = V.verdictFromDecode('I want to speak', 'I want to speak French', 'en')
+      expect(v.pass).toBe(false)
+    })
+
+    it('catches drops that Rule 2 waves through as small', () => {
+      for (const [expected, heard] of [
+        ['ce que tu as dit hier', 'ce que tu as dit.'],
+        ['nous devons travailler dur', 'Nous devons travailler.'],
+        ['je vois ces choses différemment maintenant', 'Je vois ces choses différemment.'],
+        ['il ne connaissait pas ça', 'il ne connaissait pas.'],
+      ]) {
+        const v = V.verdictFromDecode(heard, expected, 'fr')
+        expect(v.pass, `${expected} -> ${heard}`).toBe(false)
+        expect(v.reason, `${expected} -> ${heard}`).toBe('last_word_missing')
+        expect(v.cer, `${expected} -> ${heard}`).toBeLessThan(V.CER_THRESHOLD)
+      }
+    })
+
+    it('convicts on a tie — a word truncated MID-WAY is the defect, not a variant', () => {
+      // "Je suis sur..." is whisper reporting that the audio stopped inside the
+      // final word. Whole and headless fit equally well; the rule stays suspicious.
+      const v = V.verdictFromDecode('Je suis sur...', 'je suis surpris', 'fr')
+      expect(v.pass).toBe(false)
+      expect(v.reason).toBe('last_word_missing')
+    })
+  })
+
+  describe('transcription variance is not a missing word (the 2026-08-13 precision fix)', () => {
+    // All four were hand-checked against live S3 bytes by the 2026-08-12 render
+    // audit and found to be healthy audio. Every one of them used to fail here.
+    it('passes the four clips the audit proved healthy', () => {
+      for (const [expected, heard, iso] of [
+        ['it is okay', 'It is OK.', 'en'],          // orthography, not a fault
+        ['come se', 'Come si?', 'it'],
+        ['più di', 'PUD', 'it'],                     // 9/9 fresh renders failed identically
+        ['più di', 'Pewdie!', 'it'],
+      ]) {
+        const v = V.verdictFromDecode(heard, expected, iso)
+        expect(v.pass, `${expected} -> ${heard}`).toBe(true)
+        expect(v.reason, `${expected} -> ${heard}`).toBe('ok')
+      }
+    })
+
+    it('passes re-segmentation and homophone spellings', () => {
+      for (const [expected, heard] of [
+        ['why are you not happy any more', 'Why are you not happy anymore?'],
+        ['you like to', 'You like too.'],
+        ["it's difficult to", "It's difficult, too."],
+      ]) {
+        const v = V.verdictFromDecode(heard, expected, 'en')
+        expect(v.pass, `${expected} -> ${heard}`).toBe(true)
+      }
+    })
+
+    it('marks HOW a rescued pass was granted, so the class stays countable', () => {
+      expect(V.verdictFromDecode('It is OK.', 'it is okay', 'en').lastWordVia).toBe('not_truncated')
+      expect(V.verdictFromDecode('PUD', 'più di', 'it').lastWordVia).toBe('decode_does_not_track_script')
+    })
+
+    it('leaves an ordinary pass unmarked — Test 1 heard the word plainly', () => {
+      expect(V.verdictFromDecode('Ich bin jetzt fertig.', 'Ich bin jetzt fertig', 'de').lastWordVia).toBeUndefined()
+    })
+  })
+
+  describe('abstention — the rule says nothing when it cannot see the final slot', () => {
+    it('does not convict when the decode is not recognisably this script', () => {
+      // Two-word fragment whisper simply failed to hear. There is no "final slot"
+      // to reason about; whole-string wrongness is Rule 2's job, not Rule 3's.
+      const v = V.verdictFromDecode('Oscar.', 'ask her', 'en')
+      expect(v.reason).not.toBe('last_word_missing')
+    })
+
+    it('hands such a clip to Rule 2, which still fails it when it is bad enough', () => {
+      const v = V.verdictFromDecode('completely different words here', 'ask her', 'en')
+      expect(v.pass).toBe(false)
+      expect(v.reason).toBe('cer_above_threshold')
+    })
+  })
+
+  it('never opines on a single-word script — Rule 1 already owns that case', () => {
+    expect(V.verdictFromDecode('Mia.', 'mir', 'de').reason).not.toBe('last_word_missing')
+    expect(V.verdictFromDecode('', 'mir', 'de').reason).toBe('non_speech_decode')
+  })
+})
+
 describe('the third state — unchecked is never a pass', () => {
   const saved = { ...process.env }
   beforeEach(() => { V._resetAnnouncement() })

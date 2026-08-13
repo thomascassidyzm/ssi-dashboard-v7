@@ -374,24 +374,89 @@ function verdictFromDecode (decode, expected, iso1, opts = {}) {
     return { pass: false, reason: 'last_word_missing', cer, edits, threshold, lastWord: lw.word }
   }
 
+  // A pass that only survived because the final word was heard in a DIFFERENT
+  // shape is still a pass, but it is worth carrying: it is the class this rule
+  // used to fail wholesale, and it is the class a future mispronunciation check
+  // would want to look at first. Reported, never acted on.
+  if (lw.via) return { pass: true, reason: 'ok', cer, edits, threshold, lastWordVia: lw.via }
   return { pass: true, reason: 'ok', cer, edits, threshold }
 }
 
 /**
+ * How badly the decode's opening may fit the script-minus-its-last-word before
+ * this rule stops having an opinion at all. Same 0.3 as the CER operating point,
+ * and for the same reason: past it the two strings are not the same utterance.
+ */
+const LAST_WORD_HEAD_FIT_MAX = Number(process.env.AUDIO_VERACITY_HEAD_FIT_MAX || 0.3)
+
+/**
  * Is the script's final word present at the end of the decode?
  *
- * Tolerance scales with word length: a 3-letter word has to match exactly
- * (whisper does not mangle "you" in context, and a loose match on short words
- * would find one anywhere), a longer word gets 1-2 edits of slack for
- * transcription spelling. Only the last three decoded words are searched, so a
- * word that appears EARLIER in the clip cannot vouch for a missing ending —
- * which is the whole defect being hunted.
+ * TWO TESTS, and the second one exists because the first one alone was wrong.
+ *
+ * Test 1 — the word is spelt roughly as expected, somewhere in the last three
+ * decoded words. Tolerance scales with word length: a 3-letter word has to match
+ * exactly (whisper does not mangle "you" in context, and a loose match on short
+ * words would find one anywhere), a longer word gets 1-2 edits of slack. Only
+ * the tail is searched, so a word appearing EARLIER cannot vouch for a missing
+ * ending — which is the whole defect being hunted.
+ *
+ * Test 2 — added 2026-08-13, and this is the precision fix.
+ *
+ * Test 1 alone asks "is this word spelt the way I expect?" when the question is
+ * "was this word SPOKEN?", and whisper answers the first question badly on
+ * purpose: it writes what English/French/Italian orthography prefers, not what
+ * the script author typed. The 2026-08-12 render audit hand-checked four flagged
+ * clips and all four were healthy audio: a clip saying "it is okay" was queued
+ * for re-rendering because the transcript spelt it "OK"; "come se" was written
+ * "Come si"; "più di" came back "PUD" and "Pewdie". None of those clips has lost
+ * a word. Nine fresh Azure renders of the Italian ones failed identically, which
+ * is the proof — a renderer does not truncate a six-character phrase nine times
+ * out of nine in the same place (docs/… render-audit, 2026-08-12).
+ *
+ * So a spelling mismatch is no longer sufficient to convict. A DROPPED final
+ * word has a structural signature that a mis-spelt one does not: the decode
+ * stops fitting the whole script and starts fitting the script MINUS its last
+ * word. Measure both and compare.
+ *
+ *     "it is okay"      -> "it is ok"       whole 2  headless 3   word was said
+ *     "ce que tu as dit hier" -> "ce que tu as dit"  whole 5  headless 0   word is gone
+ *
+ * Ties convict. A tie means the decode is explained equally well as "final word
+ * mangled" and "final word truncated mid-way" — which is exactly Tom's
+ * 2026-08-07 defect ("Je suis surpris" -> "Je suis sur...") and exactly where
+ * this rule should stay suspicious.
+ *
+ * ABSTENTION. The comparison only means something if the decode is recognisably
+ * this script at all. When the decode's opening does not track the script's own
+ * opening (head fit past LAST_WORD_HEAD_FIT_MAX), there is no "final slot" to
+ * reason about — "più di" -> "PUD" is not a truncation report, it is whisper
+ * failing to hear a two-word fragment. Those clips belong to Rule 2, which
+ * measures whole-string wrongness and needs no alignment to do it. Rule 3 says
+ * nothing rather than guessing.
+ *
+ * WHAT THIS DELIBERATELY GIVES UP, and the name says so. The rescue reason is
+ * `not_truncated`, NOT "spelling variant", because from text alone those two are
+ * not distinguishable and claiming otherwise would be a lie in a log file. All
+ * this test establishes is that the decode's final region is better explained as
+ * a rendering of the final word than as its absence. "prendre le bus" heard as
+ * "prendre le but" now passes here — whisper mishearing a spoken word and TTS
+ * speaking the wrong one produce the same transcript, and only listening can
+ * separate them.
+ *
+ * That is the module's stated envelope, not a new gap: substitution is the one
+ * class a free decode can launder, it was never validated here, and this rule
+ * was built for truncation. Rule 2 still catches substitutions that are gross
+ * enough. Such passes carry `lastWordVia` so the class stays countable for
+ * whoever validates mispronunciation properly one day.
  *
  * Single-word scripts are exempt: if the only word is gone there is no speech
  * left, and Rule 1 has already failed the clip.
  *
  * @param {string} e normalised expected text
  * @param {string} d normalised decode
+ * @returns {{ok:boolean, word:string|null, via?:string}} `via` is set only on a
+ *   pass that Test 1 did not grant — i.e. the word was heard in another shape.
  */
 function lastWordVerdict (e, d) {
   const ew = e.split(' ').filter(Boolean)
@@ -404,7 +469,43 @@ function lastWordVerdict (e, d) {
   for (const cand of tail) {
     if (levenshtein(word, cand) <= tolerance) return { ok: true, word }
   }
+
+  const head = e.slice(0, e.length - word.length).trim()
+  if (!head.length) return { ok: true, word, via: 'no_head_to_align' }
+
+  const headFit = prefixDistance(head, d) / head.length
+  if (headFit > LAST_WORD_HEAD_FIT_MAX) return { ok: true, word, via: 'decode_does_not_track_script' }
+
+  if (levenshtein(e, d) < levenshtein(head, d)) return { ok: true, word, via: 'not_truncated' }
   return { ok: false, word }
+}
+
+/**
+ * Levenshtein of `a` against the BEST-matching prefix of `b` — "does b start
+ * with a?", tolerant of whatever b carries afterwards.
+ *
+ * Plain levenshtein cannot answer that: it charges for the trailing remainder,
+ * so "je suis" scores 4 against "je suis sur" purely for the word we are trying
+ * to reason about. Taking the minimum over the final DP row is the standard
+ * prefix-alignment trick and costs nothing extra.
+ */
+function prefixDistance (a, b) {
+  if (!a.length) return 0
+  if (!b.length) return a.length
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j)
+  const cur = new Array(b.length + 1)
+  for (let i = 1; i <= a.length; i++) {
+    cur[0] = i
+    for (let j = 1; j <= b.length; j++) {
+      cur[j] = Math.min(
+        prev[j] + 1,
+        cur[j - 1] + 1,
+        prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1),
+      )
+    }
+    prev = cur.slice()
+  }
+  return Math.min(...prev)
 }
 
 // ---------------------------------------------------------------------------
