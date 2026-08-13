@@ -1136,6 +1136,7 @@ function estateMapAsText(payload) {
     `ESTATE MAP — computed ${payload.generated_at} (fresh per read, never cached)`,
     '',
     `courses ${t.courses} | released ${t.released} (live ${t.new_app_live} + beta ${t.new_app_beta}) | `
+      + `unreleased ${t.courses - t.released} (drafts/never-shipped) | `
       + `tts ${t.voice_mode.tts} human ${t.voice_mode.human} mixed ${t.voice_mode.mixed} unknown ${t.voice_mode.unknown}`,
     `pod 0: ${t.with_pod_0} courses have one | blocked: ${t.blocked}`,
     ...Object.entries(t.blocked_by_reason).map(([r, n]) => `    ${n}  ${r}`),
