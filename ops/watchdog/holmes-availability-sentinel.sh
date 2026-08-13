@@ -73,6 +73,25 @@ STATE_DIR=${HOLMES_STATE_DIR:-/tmp}
 STATE=$STATE_DIR/holmes-sentinel-misses
 OPEN=$STATE_DIR/holmes-sentinel-open
 
+# Per-STATE run counters (2026-08-13). `misses` counts every unhealthy probe
+# regardless of KIND, and that is what made this script cry wolf: a Mac that has
+# been legitimately asleep for hours piles up a large 404 count, and then the one
+# probe that happens to catch the WAKE TRANSITION — ngrok's agent reconnected,
+# node on 3470 not back yet, which the edge answers as ERR_NGROK_8012 / 503 — is
+# classified `half` and escalates INSTANTLY, because the inherited 404 count is
+# already past the threshold.
+#
+# The evidence: of 753 probes logged 08-08 to 08-13, 735 were [404] and 16 were
+# [503] — and every single [503] was an ISOLATED probe. Not one persisted to the
+# next tick five minutes later. So every `half` escalation so far has been a false
+# alarm on a sleeping laptop, and the "~N minutes" in its text was the length of
+# the SLEEP, not of any fault: today's said "~15 minutes" off three ticks of which
+# only the last was a 503, and the API was answering again by the next probe.
+#
+# `half` therefore now needs its own consecutive evidence before it may speak.
+RUN=$STATE_DIR/holmes-sentinel-staterun
+LAST=$STATE_DIR/holmes-sentinel-laststate
+
 /bin/mkdir -p "$(/usr/bin/dirname "$LOG")" 2>/dev/null
 if [ -f "$LOG" ] && [ "$(/usr/bin/wc -l < "$LOG" 2>/dev/null)" -gt 5000 ]; then
   /usr/bin/tail -n 2000 "$LOG" > "$LOG.tmp" && /bin/mv "$LOG.tmp" "$LOG"
@@ -129,10 +148,10 @@ escalate() {
   # threshold we keep counting and keep logging, but we do not re-post every 5
   # minutes — that is how a notice becomes noise.
   if [ -f "$OPEN" ]; then
-    log "$STATE_NOW: $WHY — miss $misses, already escalated, staying quiet"
+    log "$STATE_NOW: $WHY — miss $COUNT, already escalated, staying quiet"
     return 0
   fi
-  log "escalating ($STATE_NOW) after $misses consecutive misses: $WHY"
+  log "escalating ($STATE_NOW) after $COUNT consecutive misses: $WHY"
   /usr/bin/curl -s -X POST "$SURFACE/api/needs-you" -H 'Content-Type: application/json' \
     -H "Cookie: cs_user=$CS_COOKIE" -H "Origin: $SURFACE" \
     -d "$(/usr/bin/printf '{"text":%s}' "$(/usr/bin/python3 -c 'import json,sys;print(json.dumps(sys.argv[1]))' "$1")")" \
@@ -154,7 +173,7 @@ if [ "$STATE_NOW" = healthy ]; then
       log "recovered after $prev consecutive misses (never escalated)"
     fi ;;
   esac
-  /bin/rm -f "$OPEN"
+  /bin/rm -f "$OPEN" "$RUN" "$LAST"
   /bin/echo 0 > "$STATE"
   exit 0
 fi
@@ -164,12 +183,30 @@ case "$misses" in ''|*[!0-9]*) misses=0 ;; esac
 misses=$((misses + 1))
 /bin/echo "$misses" > "$STATE"
 
-if [ "$misses" -lt "$MISSES_TO_ALERT" ]; then
-  log "$STATE_NOW: $WHY, miss $misses/$MISSES_TO_ALERT, staying quiet"
+# The run of CONSECUTIVE probes in this SAME state. It resets whenever the state
+# changes, so the 404,404,503 sequence that fired today leaves the 503 on run 1
+# instead of inheriting a count of 3.
+prevstate=$(/bin/cat "$LAST" 2>/dev/null)
+run=$(/bin/cat "$RUN" 2>/dev/null)
+case "$run" in ''|*[!0-9]*) run=0 ;; esac
+if [ "$prevstate" = "$STATE_NOW" ]; then run=$((run + 1)); else run=1; fi
+/bin/echo "$run" > "$RUN"
+/bin/echo "$STATE_NOW" > "$LAST"
+
+# `down` keeps counting on the TOTAL, deliberately: a Mac that has been asleep or
+# unreachable for two hours with something waiting on it is one continuous outage,
+# however the failure happens to be spelled at the edge. `half` counts only its
+# own run — see the note by RUN above. This is the whole behavioural change.
+if [ "$STATE_NOW" = half ]; then COUNT=$run; else COUNT=$misses; fi
+
+if [ "$COUNT" -lt "$MISSES_TO_ALERT" ]; then
+  log "$STATE_NOW: $WHY, miss $COUNT/$MISSES_TO_ALERT, staying quiet"
   exit 0
 fi
 
-MINS=$(( misses * 5 ))
+# Reports the length of the state being described, not of every unhealthy probe
+# that preceded it — the old MINS attributed the sleep to the fault.
+MINS=$(( COUNT * 5 ))
 
 if [ "$STATE_NOW" = half ]; then
   # No demand condition here, deliberately: a dashboard showing green while the

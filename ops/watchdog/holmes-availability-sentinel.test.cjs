@@ -167,6 +167,61 @@ async function main() {
   r = await tick({ HOLMES_MISSES_TO_ALERT: '3' })
   check('miss 4 does NOT re-post', r.posts.length === 0 && /already escalated/.test(r.log), r.log.trim())
 
+  // 6. THE 2026-08-13 FALSE ALARM, replayed exactly.
+  //
+  // Holmes is a laptop and it sleeps, so the sentinel sees a long run of [404]
+  // (ERR_NGROK_3200, endpoint offline) — correctly silent. Then it wakes: ngrok's
+  // agent re-establishes its session before node is listening on 3470 again, so
+  // for ONE tick the edge answers ERR_NGROK_8012 / [503]. That is `half`.
+  //
+  // The bug was that `half` inherited the 404 miss count and escalated on that
+  // single tick, telling Tom his Mac had been broken for "~15 minutes" when it
+  // had merely been asleep and was already recovering. Every one of the 16 [503]s
+  // logged 08-08..08-13 was isolated like this. `half` must now show its own
+  // consecutive evidence.
+  const asleep = { status: 404, body: '<html>endpoint is offline (ERR_NGROK_3200)</html>', type: 'text/html' }
+  const waking = { status: 503, body: 'ERR_NGROK_8012', type: 'text/plain' }
+  const awake = { status: 200, body: '[{"code":"fra_for_eng"}]', type: 'application/json' }
+
+  console.log('\n6. asleep, then one wake-transition tick -> must NOT escalate')
+  reset()
+  holmes = asleep
+  await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  holmes = waking
+  r = await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  check('a lone 503 after a sleep does not wake Tom', r.posts.length === 0, JSON.stringify(r.posts))
+  check('and it is counted as miss 1 of its own run, not 3', /miss 1\/3/.test(r.log), r.log.trim())
+  holmes = awake
+  r = await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  check('recovers silently on the next tick', r.posts.length === 0 && /recovered/.test(r.log), r.log.trim())
+
+  console.log('\n6b. but a SUSTAINED half-working state still escalates')
+  reset()
+  holmes = asleep
+  await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  holmes = waking
+  r = await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  check('503 run 1 silent', r.posts.length === 0, JSON.stringify(r.posts))
+  r = await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  check('503 run 2 silent', r.posts.length === 0, JSON.stringify(r.posts))
+  r = await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  check('503 run 3 escalates — this one is real', r.posts.length === 1, JSON.stringify(r.posts))
+  check('and it reports ~15 minutes of the FAULT, not of the sleep',
+    r.posts.length === 1 && /~15 minutes/.test(JSON.parse(r.posts[0].body).text),
+    r.posts.length ? r.posts[0].body : '(none)')
+
+  console.log('\n6c. a sleeping Mac with real demand still escalates as before')
+  reset()
+  fs.writeFileSync(marker, 'test\n')
+  holmes = asleep
+  await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  r = await tick({ HOLMES_MISSES_TO_ALERT: '3' })
+  check('down + demand is untouched by the half fix', r.posts.length === 1 && /something is waiting on it/.test(JSON.parse(r.posts[0].body).text),
+    JSON.stringify(r.posts))
+
   holmesServer.close(); surfaceServer.close()
   fs.rmSync(tmp, { recursive: true, force: true })
 
