@@ -24,6 +24,9 @@ import { resolveTakePlayback } from '@/composables/useStoredClip'
 const props = defineProps({
   // The course_audio uuid, once the server has the take. Null until then.
   uuid: { type: String, default: null },
+  // The stored clip addressed directly, for callers whose stored bytes are not
+  // keyed by a course_audio uuid (the recordist surface: voice + line).
+  storedUrl: { type: String, default: null },
   // The raw local capture, pre-upload only.
   localUrl: { type: String, default: null },
   pending: { type: Boolean, default: false },
@@ -37,6 +40,7 @@ defineEmits(['toggle'])
 
 const playback = computed(() => resolveTakePlayback({
   uuid: props.uuid,
+  storedUrl: props.storedUrl,
   localUrl: props.localUrl,
   pending: props.pending,
   failed: props.failed,
