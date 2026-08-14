@@ -10,6 +10,9 @@ import { mount } from '@vue/test-utils'
 import SegmentCard from './SegmentCard.vue'
 import SessionReview from './SessionReview.vue'
 import { useAutocueState } from '@/composables/useAutocueState'
+import { storedClipUrl, STORED_LABEL, LOCAL_LABEL } from '@/composables/useStoredClip'
+
+const STORED_UUID = 'DDDD9999-EEEE-8888-FFFF-777766665555'
 
 const withAudio = {
   id: 'seg_1', phraseId: 1, label: 'Phrase #001', text: 'dw i eisiau siarad',
@@ -100,5 +103,84 @@ describe('script-mode segments reach review playable', () => {
     onSegmentCaptured({ blob: new Blob(['x'.repeat(200)], { type: 'audio/webm' }), durationMs: 120 }, 0)
 
     expect(state.recordedSegments[0].issues[0]).toContain('too short or empty')
+  })
+})
+
+/**
+ * Review preview must play the PROCESSED, STORED clip once a take has been
+ * uploaded. The local blob is the pre-upload state only — a raw preview sounds
+ * perfect whatever the server's trim chain did to the bytes actually kept,
+ * which is how the head-clipping bug survived months of listening
+ * (docs/audio-forensics-2026-08-14/).
+ */
+describe('preview plays the stored clip once a take has uploaded', () => {
+  let played
+
+  beforeEach(() => {
+    played = []
+    vi.stubGlobal('Audio', class {
+      constructor() { this.src = null }
+      play() { played.push(this.src); this.onended?.(); return Promise.resolve() }
+      pause() {}
+    })
+  })
+
+  it('plays the stored-clip route, not the blob, after upload', async () => {
+    const { playSegment, setStoredClip, resetSession } = useAutocueState()
+    resetSession()
+    setStoredClip(withAudio.phraseId, STORED_UUID)
+
+    await expect(playSegment(withAudio)).resolves.toBe(true)
+
+    expect(played).toEqual([storedClipUrl(STORED_UUID)])
+    expect(played[0]).toContain(`/api/production/audio/${STORED_UUID}/stream`)
+    expect(played[0].startsWith('blob:')).toBe(false)
+  })
+
+  it('still plays the raw local blob before the take has uploaded', async () => {
+    const { playSegment, resetSession } = useAutocueState()
+    resetSession()
+    await expect(playSegment(withAudio)).resolves.toBe(true)
+    expect(played).toEqual(['blob:fake-1'])
+  })
+
+  it('names the source honestly either way', () => {
+    const { segmentPlayback, setStoredClip, resetSession } = useAutocueState()
+    resetSession()
+    expect(segmentPlayback(withAudio).source).toBe('local')
+    expect(segmentPlayback(withAudio).label).toBe(LOCAL_LABEL)
+
+    setStoredClip(withAudio.phraseId, STORED_UUID)
+    expect(segmentPlayback(withAudio).source).toBe('stored')
+    expect(segmentPlayback(withAudio).label).toBe(STORED_LABEL)
+  })
+
+  it('forgets stored identities on reset, so a new session cannot play the old one', () => {
+    const { segmentPlayback, setStoredClip, resetSession } = useAutocueState()
+    resetSession()
+    setStoredClip(withAudio.phraseId, STORED_UUID)
+    resetSession()
+    expect(segmentPlayback(withAudio).source).not.toBe('stored')
+  })
+})
+
+describe('the review card says which bytes its play button fetches', () => {
+  it('tags an uploaded take STORED', () => {
+    const w = mount(SegmentCard, { props: { segment: withAudio, playbackSource: 'stored' } })
+    expect(w.text()).toContain('STORED')
+    expect(w.find('.segment-btn').attributes('title')).toContain('processed clip stored on the server')
+  })
+
+  it('tags a not-yet-uploaded take RAW LOCAL, never STORED', () => {
+    const w = mount(SegmentCard, { props: { segment: withAudio, playbackSource: 'local' } })
+    expect(w.text()).toContain('RAW LOCAL')
+    expect(w.text()).not.toContain('STORED')
+  })
+
+  it('carries the tag down from SessionReview', () => {
+    const w = mount(SessionReview, {
+      props: { segments: [withAudio], playbackSources: { seg_1: 'stored' } }
+    })
+    expect(w.text()).toContain('STORED')
   })
 })

@@ -124,8 +124,14 @@ const failedIndices = reactive(new Set<number>())
 // itemIndex -> the server's own words for why this take was not saved, so the
 // recordist reads "no audible speech" rather than a bare red count.
 const failedReasons = reactive(new Map<number, string>())
+// itemIndex -> the course_audio uuid the server minted for that take. Without
+// this the queue swallowed the upload response and no caller could ever name
+// the STORED clip, so playback had nothing to point at but the raw local blob
+// — the exact preview that let a butchered trim chain sound perfect for
+// months. See useStoredClip.js.
+const uploadedUuids = reactive(new Map<number, string>())
 let processing = false
-let onUploadedCallback: ((itemIndex: number) => void) | null = null
+let onUploadedCallback: ((itemIndex: number, result: any) => void) | null = null
 
 const MAX_RETRIES = 3
 const RETRY_BACKOFF = [1000, 3000, 8000]
@@ -144,6 +150,11 @@ export function useUploadQueue() {
     // failed once and was re-recorded stops being counted as failed.
     failedIndices.delete(item.itemIndex)
     failedReasons.delete(item.itemIndex)
+    // The new take supersedes the stored clip of the old one, and its own uuid
+    // does not exist yet. Playing the superseded uuid would hand the recordist
+    // the PREVIOUS take while the screen says "stored clip" — so the slot goes
+    // back to having no stored clip until this upload lands.
+    uploadedUuids.delete(item.itemIndex)
 
     queue.push(item)
     pendingCount.value = queue.length
@@ -157,10 +168,11 @@ export function useUploadQueue() {
     while (queue.length > 0) {
       const item = queue[0]
       let success = false
+      let result: any = null
 
       for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
         try {
-          await doUpload(item)
+          result = await doUpload(item)
           success = true
           break
         } catch (err: any) {
@@ -193,8 +205,14 @@ export function useUploadQueue() {
         // Count SLOTS uploaded, not uploads performed: re-recording an item
         // twice used to report three of two items uploaded.
         uploadedCount.value = uploadedIndices.size
+        // Record the stored clip's identity — unless a newer take of this slot
+        // is already queued, in which case this uuid is about to be outranked
+        // and must not be offered as "the stored clip" in the meantime.
+        if (!superseded && result?.uuid) {
+          uploadedUuids.set(item.itemIndex, result.uuid)
+        }
         if (onUploadedCallback) {
-          onUploadedCallback(item.itemIndex)
+          onUploadedCallback(item.itemIndex, result)
         }
       } else if (!superseded) {
         failedIndices.add(item.itemIndex)
@@ -241,8 +259,13 @@ export function useUploadQueue() {
     return response.json()
   }
 
-  function onUploaded(cb: (itemIndex: number) => void) {
+  function onUploaded(cb: (itemIndex: number, result?: any) => void) {
     onUploadedCallback = cb
+  }
+
+  // The stored clip's uuid for a slot, or null while it is queued/in flight/failed.
+  function storedUuidFor(itemIndex: number): string | null {
+    return uploadedUuids.get(itemIndex) ?? null
   }
 
   function resetQueue() {
@@ -252,6 +275,7 @@ export function useUploadQueue() {
     uploadedIndices.clear()
     failedIndices.clear()
     failedReasons.clear()
+    uploadedUuids.clear()
     processing = false
     onUploadedCallback = null
   }
@@ -260,9 +284,11 @@ export function useUploadQueue() {
     queueUpload,
     onUploaded,
     resetQueue,
+    storedUuidFor,
     uploadedCount,
     pendingCount,
     uploadedIndices,
+    uploadedUuids,
     failedIndices,
     failedReasons
   }

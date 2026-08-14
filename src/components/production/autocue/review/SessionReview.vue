@@ -62,6 +62,7 @@
         :playing="segment.id === playingSegmentId"
         :status="statusOf(segment)"
         :playing-chunk-index="playingChunkIndexOf(segment)"
+        :playback-source="playbackSources[segment.id] || ''"
         @play="$emit('play', $event)"
         @play-chunk="(seg, chunk) => $emit('play-chunk', seg, chunk)"
         @redo="$emit('reject', $event)"
@@ -129,6 +130,10 @@ import SegmentCard from './SegmentCard.vue'
 const props = defineProps({
   segments: { type: Array, required: true },
   playingSegmentId: { type: String, default: null },
+  // segmentId -> 'stored' | 'local': which bytes each play button will fetch.
+  // The review screen must never let a raw local preview read as the stored,
+  // processed clip — that is the whole point of the control.
+  playbackSources: { type: Object, default: () => ({}) },
   // `<segmentId>:<chunkIndex>` of the single LEGO piece now playing, or null.
   playingChunkKey: { type: String, default: null },
   approvedIds: { type: Array, default: () => [] },

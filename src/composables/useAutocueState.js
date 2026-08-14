@@ -12,6 +12,7 @@ import { getApiUrl } from '@/services/api'
 import { useCourses } from '@/composables/useCourses'
 import { resolvePhraseChunks, legoChunkCount } from '@/utils/phraseChunks'
 import { buildTakeChunks } from '@/utils/takeChunks'
+import { resolveTakePlayback, diagnoseStoredClip } from '@/composables/useStoredClip'
 
 const { getCourseName } = useCourses()
 
@@ -77,6 +78,14 @@ const state = reactive({
 
   // Audio recordings (map of phrase id -> { blob, url })
   audioRecordings: new Map(),
+
+  // phrase id -> the course_audio uuid the server minted for that take, once
+  // the upload has landed. Its presence is what flips review playback from the
+  // RAW LOCAL capture to the PROCESSED, STORED clip. The local blob above is
+  // only ever the pre-upload state: a raw preview sounds perfect while the
+  // stored clip is being butchered, which is how the trim bug survived months
+  // of listening (docs/audio-forensics-2026-08-14/).
+  storedClipUuids: new Map(),
 
   // Review state
   approvedSegments: new Set(),
@@ -546,9 +555,29 @@ export function useAutocueState() {
   // "Play All" and stabbing at cards never overlap into a chorus.
   let reviewAudio = null
 
+  // Record the stored identity of an uploaded take. Called when the upload
+  // queue reports a landed take (AutocueStudio wires it).
+  function setStoredClip(phraseId, uuid) {
+    if (phraseId === undefined || phraseId === null || !uuid) return
+    state.storedClipUuids.set(phraseId, uuid)
+  }
+
+  /**
+   * WHICH BYTES review playback uses, and what the screen is allowed to call
+   * them. Uploaded take -> the stored clip off the server, every time; the
+   * local blob is kept only as the pre-upload state. Returns the descriptor
+   * from useStoredClip so the label and the bytes can never drift apart.
+   */
+  function segmentPlayback(segment) {
+    if (!segment) return resolveTakePlayback({})
+    return resolveTakePlayback({
+      uuid: state.storedClipUuids.get(segment.phraseId) || null,
+      localUrl: segment.audioUrl || state.audioRecordings.get(segment.phraseId)?.url || null
+    })
+  }
+
   function segmentAudioUrl(segment) {
-    if (!segment) return null
-    return segment.audioUrl || state.audioRecordings.get(segment.phraseId)?.url || null
+    return segmentPlayback(segment).url
   }
 
   function stopPlayback() {
@@ -956,6 +985,7 @@ export function useAutocueState() {
       if (rec?.url) URL.revokeObjectURL(rec.url)
     })
     state.audioRecordings.clear()
+    state.storedClipUuids.clear()
     state.approvedSegments.clear()
     state.rejectedSegments.clear()
     // Singleton state again: a half-finished re-record pass left in place would
@@ -1189,6 +1219,9 @@ export function useAutocueState() {
     approveSegment,
     rejectSegment,
     playSegment,
+    segmentPlayback,
+    setStoredClip,
+    diagnoseStoredClip,
     playChunk,
     stopChunkPlayback,
     playAllSegments,

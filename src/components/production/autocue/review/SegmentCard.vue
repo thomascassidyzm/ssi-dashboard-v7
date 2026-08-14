@@ -60,10 +60,14 @@
         class="segment-btn"
         :class="{ playing }"
         :disabled="!hasAudio"
-        :title="hasAudio ? 'Play this take' : 'No audio captured for this phrase'"
+        :title="hasAudio ? playHint : 'No audio captured for this phrase'"
         @click="$emit('play', segment)"
       >
         <span class="btn-icon">{{ playing ? '⏸' : '▶' }}</span> {{ playing ? 'Playing' : 'Play' }}
+        <!-- Stored bytes and raw local bytes never wear the same word. A raw
+             preview that reads as "the take" is exactly how a butchered trim
+             chain sounded perfect for months. -->
+        <span v-if="hasAudio && sourceTag" class="source-tag" :class="playbackSource">{{ sourceTag }}</span>
       </button>
       <button
         class="segment-btn redo"
@@ -87,6 +91,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import { STORED_HINT, LOCAL_HINT } from '@/composables/useStoredClip'
 
 const props = defineProps({
   segment: { type: Object, required: true },
@@ -95,7 +100,10 @@ const props = defineProps({
   // Approve/Redo clicks land somewhere the recordist can actually see.
   status: { type: String, default: null },
   // Index of the LEGO piece of THIS take that is currently playing, or null.
-  playingChunkIndex: { type: Number, default: null }
+  playingChunkIndex: { type: Number, default: null },
+  // Which bytes the play button will actually fetch: 'stored' (the processed
+  // clip off the server) or 'local' (the raw capture still in this browser).
+  playbackSource: { type: String, default: '' }
 })
 
 defineEmits(['play', 'redo', 'approve', 'play-chunk'])
@@ -103,6 +111,19 @@ defineEmits(['play', 'redo', 'approve', 'play-chunk'])
 // A card with no captured audio says so on the button instead of offering a
 // control that can only ever be silent.
 const hasAudio = computed(() => !!props.segment.audioUrl)
+
+const sourceTag = computed(() =>
+  props.playbackSource === 'stored' ? 'STORED'
+    : props.playbackSource === 'local' ? 'RAW LOCAL'
+      : ''
+)
+const playHint = computed(() =>
+  props.playbackSource === 'stored'
+    ? STORED_HINT
+    : props.playbackSource === 'local'
+      ? LOCAL_HINT
+      : 'Play this take'
+)
 
 const hasWarning = computed(() => !!props.segment.issues?.length)
 
@@ -297,6 +318,13 @@ const chunkMismatchTitle = computed(() =>
   color: var(--color-void, var(--canvas));
   border-color: var(--color-tungsten, var(--accent));
 }
+
+.source-tag {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; letter-spacing: 0.08em;
+  padding: 0.05rem 0.28rem; border-radius: 3px; margin-left: 0.35rem;
+}
+.source-tag.stored { background: var(--color-emerald, #06ffa5); color: #04211a; font-weight: 700; }
+.source-tag.local { background: #ffb703; color: #241a00; font-weight: 700; }
 
 .segment-btn.approve:hover {
   background: var(--color-emerald, #06ffa5);

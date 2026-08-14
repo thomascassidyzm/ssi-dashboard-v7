@@ -285,6 +285,7 @@
     <!-- Phase: Review -->
     <div v-else-if="state.currentPhase === 'review'" class="review-phase">
       <SessionReview
+        :playback-sources="playbackSources"
         :segments="state.recordedSegments"
         :playing-segment-id="state.playingSegmentId"
         :playing-chunk-key="state.playingChunkKey"
@@ -374,6 +375,8 @@ const {
   approveSegment,
   rejectSegment,
   playSegment,
+  segmentPlayback,
+  setStoredClip,
   playChunk,
   playAllSegments,
   stopPlayback,
@@ -536,6 +539,25 @@ const latestFailureReason = computed(() => {
     if (latest === null || idx > latest) latest = idx
   }
   return latest === null ? '' : (uploadQueue.failedReasons.get(latest) || 'Upload failed')
+})
+
+// The stored clip's identity, back from the upload queue. Until this landed,
+// the review screen could only ever play the RAW LOCAL blob — a preview that
+// sounds perfect no matter what the server's trim chain did to the bytes that
+// were actually kept. Now an uploaded take plays from the server.
+uploadQueue.onUploaded((itemIndex, result) => {
+  const phrase = state.phrases[itemIndex]
+  if (phrase && result?.uuid) setStoredClip(phrase.id, result.uuid)
+})
+
+// segmentId -> 'stored' | 'local', so each card can say which bytes its play
+// button fetches rather than leaving the recordist to guess.
+const playbackSources = computed(() => {
+  const map = {}
+  for (const seg of state.recordedSegments) {
+    map[seg.id] = segmentPlayback(seg).source
+  }
+  return map
 })
 
 // Wire continuous recorder: on segment captured, store + queue upload + advance
