@@ -1,0 +1,30 @@
+{
+  "mode": "dryrun",
+  "summary": {
+    "candidates": 2,
+    "written": 0,
+    "by_course": {
+      "zzz_test_for_eng": 2
+    }
+  },
+  "ops": [
+    {
+      "sentence_id": "zzz_test_for_eng:pod-0-s2",
+      "side": "known",
+      "course_code": "zzz_test_for_eng",
+      "line": "a coffee, please.",
+      "audio_id": "5ceb3fd6-370f-4e1a-a66d-139c25c4665d",
+      "voice_id": "bedd6226",
+      "file_size_bytes": null
+    },
+    {
+      "sentence_id": "zzz_test_for_eng:pod-0-s3",
+      "side": "known",
+      "course_code": "zzz_test_for_eng",
+      "line": "would you like anything else?",
+      "audio_id": "9f2357b4-323a-4b02-9673-30ae18d90c34",
+      "voice_id": "gfzdpspr5fdp",
+      "file_size_bytes": null
+    }
+  ]
+}
