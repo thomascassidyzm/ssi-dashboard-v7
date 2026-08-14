@@ -37,7 +37,9 @@ I have not touched them. The text is live, the audio is linked, and changing tex
 
 Applying "tu-first" literally produced a bartender being asked `У тебе є якісь снеки?` and a hotel receptionist telling a guest `у тебе двомісний номер`. In Ukrainian that is not casual, it is wrong.
 
-Repaired: **Ukrainian** (29 of 109 lines), **Polish** (25 of 123), and **Armenian, Estonian and Latvian** in flight. Croatian, Italian, Lithuanian and Finnish got it right unprompted.
+Repaired, all verified at zero residual informal service lines: **Ukrainian** 29 of 109, **Polish** 25 of 123, **French** 24 of 111, **Armenian** 32 of 126, **Estonian** 22 of 109, **Latvian** 21 of 101 — 153 lines across six languages. Croatian, Italian, Lithuanian and Finnish got it right unprompted.
+
+French is worth its own line, because the clash there was mine. A worker flagged a tu/vous split and honestly noted a second writer had landed 9 rows in vous; that writer was me, doing the residual lines the variant-blind extract had hidden. The course's own pre-existing pod lines settle it — "Bonjour. Comment allez-vous ?", "Excellent choix. Je vous l'apporte tout de suite." — so the uniform tu was the outlier and my 9 matched the house convention. Checked rather than assumed.
 
 The working rule, which is your own rail rather than a departure from it — tu-first *unless context insists*, and a stranger in a service role is context insisting:
 
