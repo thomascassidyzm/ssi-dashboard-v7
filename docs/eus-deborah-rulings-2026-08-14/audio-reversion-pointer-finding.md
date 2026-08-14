@@ -54,24 +54,30 @@ All three are **ancestors of `origin/main` and of the production checkout**
 **The timeline matters:** the regenerations that reverted on her were 09:29–14:30 on 08-12. The
 fixes landed at 15:26–15:32 the same afternoon. Everything she reported was from *before* the fix.
 
-## 4. Did it regress? No — but it never fully landed
+## 4. Did it regress? No — it landed fully, and it is deployed
 
 The `?s3Key=` override is properly demoted: the primary URL route now reads `s3_key` from the DB
 and 404s if there is none. A client-supplied key survives only as a **fallback** when the DB has
 no key (`production-api.cjs` ~line 4755), which is a much weaker hazard.
 
-**The cache fix is the incomplete one.** It shipped two things:
+The cache fix shipped two things, and **both are wired**:
 
-- a 5-minute TTL (`URL_CACHE_TTL_MS = 5 * 60 * 1000`), which works; and
-- an invalidator, `forgetAudioUrl(uuid)`, whose own comment says *"regenerating callers should
-  also call forgetAudioUrl(uuid)"*.
+- a 5-minute TTL (`URL_CACHE_TTL_MS = 5 * 60 * 1000`); and
+- an invalidator, `forgetAudioUrl(uuid)`, called from **all three** regeneration handlers in
+  `src/views/production/ScriptViewer.vue` (lines 1922, 2072, 2225).
 
-**`forgetAudioUrl` has zero callers.** It is defined and exported from `useScriptPlayer.js` and
-never invoked anywhere in `src/`. The regeneration handler was never wired to it.
+Verified on the **served bytes**, not just the source: `https://popty.app/` →
+`assets/index-sH8puE86.js` → `assets/ScriptViewer-91WVB9Q-.js` contains `forgetAudioUrl`. So the
+fix is deployed to the app Deborah actually uses.
 
-So the reversion window went from **for ever** to **up to 5 minutes** — a real improvement, and
-still enough to reproduce exactly what Deborah describes if she re-plays a round soon after
-regenerating. This is the live defect, and it is a two-line fix.
+> **Correction.** An earlier version of this document claimed `forgetAudioUrl` had zero callers
+> and that the fix "never fully landed". That was wrong: I grepped this shared checkout's working
+> tree, whose copy of `ScriptViewer.vue` is stale, and generalised from it. The call sites exist
+> on `origin/main` and in the deployed bundle. Job #569 caught this independently.
+
+**So the cache vector is closed, and the timeline is decisive:** her regenerations that reverted
+were 09:29–14:30 on 08-12; the fix deployed at 15:32 that afternoon. All of her 08-13 and 08-14
+work — 169 of the 182 swaps — was never exposed to it.
 
 ## 5. The `audio_clips` hypothesis — refuted for this course
 
@@ -139,8 +145,23 @@ rest of the "staleness" is text to clean up. The thing actually worth fixing is 
 
 ## Decision — make regeneration self-evidently correct
 
-**D1 (recommended, do now): wire `forgetAudioUrl`.** The regen handler in `ScriptViewer` calls it
-for the affected uuids on success. Two lines, closes the live defect, and needs nothing else.
+*(D1 as originally written — "wire `forgetAudioUrl`" — is withdrawn: it is already wired and
+deployed. See the correction in §4. The two live risks below are the real ones, and job #569
+proved both.)*
+
+**D0 (recommended, most urgent): hold the `audio_clips` convergence pass.** Job #569 found the
+follow-up `…_converge_s3.sql` would point `course_audio.s3_key` at the canonical object — and for
+two eus lines ("I like learning quickly", "I like meeting people") the canon is **the very take
+Deborah replaced**, inherited from `fra_ca_for_eng` and `lav_for_eng`. Estate-wide **262,097**
+rows diverge from their canon. Running that pass as written would produce a real,
+database-level reversion — the thing that has *not* happened so far. It must not run until the
+canon is reconciled against later regenerations.
+
+**D0b (recommended): stop regeneration overwriting a shared clip.** #569 proved this fired **8
+times in three days** on Deborah's work, silently changing audio on rows she was not editing —
+including three genuine Basque grammar distinctions (*duen*/*duten*, *ez dut*/*ez naiz*). 670
+hazardous shared clips are live in eus alone. Same fix as D3 below; it has now moved from
+theoretical to demonstrated.
 
 **D2: make the collision path versioned.** `eus_for_eng` has **zero** rows in
 `course_audio_revisions` — not "none recently", none ever — and every clip is still at
