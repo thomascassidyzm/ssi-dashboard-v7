@@ -96,3 +96,14 @@ back-merged to `dev` so the next promotion can't drop it.
 
 **`staging` does not have it.** It will pick it up on the next `dev → staging`
 promotion. Nothing to do unless someone wants it on the soak build sooner.
+
+## Rendered-page evidence
+
+Screenshots of `popty.app` driven in a real browser after the deploy, logged in
+against the live database:
+**https://watson-1.tail4968cb.ts.net/evidence/pdc-live-2026-08-14/index.html**
+
+The course library reads **Pennsylvania Dutch** in the TARGET column with
+`pdc_for_eng` still in the CODE column, the production overview breadcrumb reads
+"Pennsylvania Dutch for English Speakers", and North Welsh still reads
+"Welsh (North)" as a control.
