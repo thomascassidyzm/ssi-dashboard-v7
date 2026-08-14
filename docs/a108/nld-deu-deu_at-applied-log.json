@@ -1,0 +1,357 @@
+{
+  "job": "A-108 T-V register / gender / annotations on staged pod drafts",
+  "date": "2026-08-14",
+  "languages": [
+    "nld_for_eng",
+    "deu_for_eng",
+    "deu_at_for_eng"
+  ],
+  "drafts_examined": {
+    "nld_for_eng": 115,
+    "deu_for_eng": 112,
+    "deu_at_for_eng": 155
+  },
+  "changes_applied": {
+    "register": 34,
+    "gender": 0,
+    "annotations": 0
+  },
+  "per_language_changes": {
+    "nld_for_eng": 33,
+    "deu_for_eng": 0,
+    "deu_at_for_eng": 1
+  },
+  "rule1_annotations": "Zero slash-forms, brackets or parentheticals found in any of the 382 draft rows. No action.",
+  "rule2_gender": "Zero changes. Cast gender is explicit (not 'n') for every speaking role in all three courses; Learner is female in all three (Noor / Lena / Sonja). Dutch and German inflect no predicate adjective for gender, and no draft line carries a gendered profession noun or participle, so rule 2 has no surface to act on in these languages.",
+  "rule3_register": "34 lines changed. Detail in `changes`.",
+  "changes": [
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC02-S004",
+      "before": "Kun je me vertellen hoe ver het naar het centrum is?",
+      "after": "Kunt u me vertellen hoe ver het naar het centrum is?",
+      "rule": "register",
+      "reason": "Scene 2 = stranger on the bus, canon V. je->u."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC03-S002",
+      "before": "Goedemiddag. Ik wil graag een koffie, alsjeblieft. Met melk maar zonder suiker. Om mee te nemen.",
+      "after": "Goedemiddag. Ik wil graag een koffie, alstublieft. Met melk maar zonder suiker. Om mee te nemen.",
+      "rule": "register",
+      "reason": "Scene 3 barista = service, canon V. alsjeblieft->alstublieft."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC03-S003",
+      "before": "Heb je eten?",
+      "after": "Heeft u eten?",
+      "rule": "register",
+      "reason": "Scene 3 service V; customer to barista."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC03-S004",
+      "before": "Heb je snacks?",
+      "after": "Heeft u snacks?",
+      "rule": "register",
+      "reason": "Scene 3 service V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC03-S005",
+      "before": "Heb je chips, of noten, of zoiets?",
+      "after": "Heeft u chips, of noten, of zoiets?",
+      "rule": "register",
+      "reason": "Scene 3 service V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC03-S007",
+      "before": "Ja, wil je de menukaart?",
+      "after": "Ja, wilt u de menukaart?",
+      "rule": "register",
+      "reason": "Scene 3 service V; barista to customer."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC03-S009",
+      "before": "Hier is je koffie.",
+      "after": "Hier is uw koffie.",
+      "rule": "register",
+      "reason": "Scene 3 service V; possessive je->uw."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC07-S004",
+      "before": "Ik wil graag een grote, alsjeblieft. Met havermelk als je die hebt.",
+      "after": "Ik wil graag een grote, alstublieft. Met havermelk als u die heeft.",
+      "rule": "register",
+      "reason": "Scene 7 barista = service V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC08-S002",
+      "before": "Ik wil graag een pint, alsjeblieft. Welke ales heb je?",
+      "after": "Ik wil graag een pint, alstublieft. Welke ales heeft u?",
+      "rule": "register",
+      "reason": "Scene 8 bartender = service V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC08-S004",
+      "before": "Ik wil graag een pint bitter, alsjeblieft.",
+      "after": "Ik wil graag een pint bitter, alstublieft.",
+      "rule": "register",
+      "reason": "Scene 8 service V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC08-S007",
+      "before": "We hebben een huiswijn rood, een huiswijn wit, of je kunt een van onze flessen nemen.",
+      "after": "We hebben een huiswijn rood, een huiswijn wit, of u kunt een van onze flessen nemen.",
+      "rule": "register",
+      "reason": "Scene 8 service V; bartender to customer."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC08-S015",
+      "before": "Heb je broodjes? Ik wil graag een kaasbroodje, alsjeblieft.",
+      "after": "Heeft u broodjes? Ik wil graag een kaasbroodje, alstublieft.",
+      "rule": "register",
+      "reason": "Scene 8 service V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC09-S015",
+      "before": "Is alles naar wens? Heb je nog ruimte voor een toetje?",
+      "after": "Is alles naar wens? Heeft u nog ruimte voor een toetje?",
+      "rule": "register",
+      "reason": "Scene 9 waiter = service V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC13-S001",
+      "before": "Neem me niet kwalijk, weet je hoe ik bij de dichtstbijzijnde supermarkt kom?",
+      "after": "Neem me niet kwalijk, weet u hoe ik bij de dichtstbijzijnde supermarkt kom?",
+      "rule": "register",
+      "reason": "Scene 13 tourist to a stranger in the street = V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC14-S007",
+      "before": "Alsjeblieft. Dat is twaalf pond vijftig.",
+      "after": "Alstublieft. Dat is twaalf pond vijftig.",
+      "rule": "register",
+      "reason": "Scene 14 taxi driver = service V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC15-S002",
+      "before": "Kun je me vertellen hoeveel dat is?",
+      "after": "Kunt u me vertellen hoeveel dat is?",
+      "rule": "register",
+      "reason": "Solo line, asking a price of a vendor = service, V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC15-S007",
+      "before": "Vier enkele kaartjes naar het centrum, alsjeblieft.",
+      "after": "Vier enkele kaartjes naar het centrum, alstublieft.",
+      "rule": "register",
+      "reason": "Solo line, buying tickets at a counter = service, V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC15-S008",
+      "before": "Twee retourkaartjes naar het centrum, alsjeblieft.",
+      "after": "Twee retourkaartjes naar het centrum, alstublieft.",
+      "rule": "register",
+      "reason": "Solo line, ticket counter = service, V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC16-S006",
+      "before": "Heb je iets te eten?",
+      "after": "Heeft u iets te eten?",
+      "rule": "register",
+      "reason": "Solo line inside the menu/pay run = ordering from staff, V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC17-S002",
+      "before": "Wil je contant of met kaart betalen, of op de kamer laten zetten?",
+      "after": "Wilt u contant of met kaart betalen, of op de kamer laten zetten?",
+      "rule": "register",
+      "reason": "Solo line spoken BY hotel staff to a guest = V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC17-S003",
+      "before": "Kunnen we het op de kamer laten zetten, alsjeblieft?",
+      "after": "Kunnen we het op de kamer laten zetten, alstublieft?",
+      "rule": "register",
+      "reason": "Solo line, guest to hotel staff = V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC17-S004",
+      "before": "Wil je contant, met kaart, of op de kamer betalen?",
+      "after": "Wilt u contant, met kaart, of op de kamer betalen?",
+      "rule": "register",
+      "reason": "Solo line spoken BY staff = V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC17-S005",
+      "before": "Wilde je contant of met kaart betalen?",
+      "after": "Wilde u contant of met kaart betalen?",
+      "rule": "register",
+      "reason": "Solo line spoken BY staff = V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC17-S006",
+      "before": "We betalen weer met kaart, alsjeblieft.",
+      "after": "We betalen weer met kaart, alstublieft.",
+      "rule": "register",
+      "reason": "Solo line, guest to staff = V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC18-S002",
+      "before": "Heb je sinaasappelsap?",
+      "after": "Heeft u sinaasappelsap?",
+      "rule": "register",
+      "reason": "Solo line, ordering a drink = service, V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC18-S003",
+      "before": "Heb je appelsap?",
+      "after": "Heeft u appelsap?",
+      "rule": "register",
+      "reason": "Solo line, ordering a drink = service, V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC19-S010",
+      "before": "Ik wil graag twee bolletjes ijs, alsjeblieft.",
+      "after": "Ik wil graag twee bolletjes ijs, alstublieft.",
+      "rule": "register",
+      "reason": "Solo line, ordering at an ice-cream counter = service, V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC20-S003",
+      "before": "Heb je ijs?",
+      "after": "Heeft u ijs?",
+      "rule": "register",
+      "reason": "Solo line, ordering at an ice-cream counter = service, V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC21-S004",
+      "before": "Kun je me vertellen waar het toilet is?",
+      "after": "Kunt u me vertellen waar het toilet is?",
+      "rule": "register",
+      "reason": "Solo line, asking staff in a venue = V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC21-S007",
+      "before": "Kun je dat nog eens zeggen?",
+      "after": "Kunt u dat nog eens zeggen?",
+      "rule": "register",
+      "reason": "Same exchange as SC21-S004/S008 (staff giving directions) = V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC21-S011",
+      "before": "Wil je drankjes bestellen?",
+      "after": "Wilt u drankjes bestellen?",
+      "rule": "register",
+      "reason": "Solo line spoken BY a waiter = V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC21-S012",
+      "before": "Wil je eerst drankjes bestellen?",
+      "after": "Wilt u eerst drankjes bestellen?",
+      "rule": "register",
+      "reason": "Solo line spoken BY a waiter = V."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC21-S013",
+      "before": "Wilde je eerst iets drinken?",
+      "after": "Wilde u eerst iets drinken?",
+      "rule": "register",
+      "reason": "Solo line spoken BY a waiter = V."
+    },
+    {
+      "id": "deu_at_for_eng:pod-0:SC21-S007",
+      "before": "Kannst des no amoi sogn?",
+      "after": "Kennan S' des no amoi sogn?",
+      "rule": "register",
+      "reason": "Same exchange as SC21-S004 (Kennan S' ma sogn, wo de Toilette is?) — addressed to the stranger giving directions, so V. Austrian dialect spelling kept in place, not copied from deu."
+    }
+  ],
+  "left_alone": {
+    "nld_for_eng": [
+      {
+        "scenes": "1,4,5,6,22",
+        "note": "peer scenes (Neighbour/Friend/Anna+James/Sarah) — je/jij correct under rule 3 default T; untouched."
+      },
+      {
+        "ids": [
+          "SC15-S009",
+          "SC16-S001",
+          "SC16-S002",
+          "SC19-S003",
+          "SC21-S002",
+          "SC22-S001"
+        ],
+        "note": "general 'speak slowly to me' / 'it sounds as though you...' lines with no service cue — rule 3 default T. Left as je."
+      },
+      {
+        "ids": [
+          "SC19-S004",
+          "SC19-S005"
+        ],
+        "note": "'Is it okay if I sit here / we put this here' — plausibly said to a stranger, but not CLEARLY so; rule 3 default T wins. Judgment call, logged not changed."
+      },
+      {
+        "ids": [
+          "SC20-S004",
+          "SC20-S005",
+          "SC20-S006",
+          "SC20-S008",
+          "SC20-S009",
+          "SC20-S010"
+        ],
+        "note": "thanking/complimenting run with no service cue in the line itself — left T. If Tom reads scene 20 as continuing the ice-cream counter, these six flip to u/uw together."
+      },
+      {
+        "ids": [
+          "SC13-S002"
+        ],
+        "note": "'Ga rechtdoor over deze weg' — Dutch bare imperative carries no T/V marking, so nothing to fix."
+      },
+      {
+        "ids": [
+          "SC02-S003",
+          "SC02-S005",
+          "SC03-S001",
+          "SC03-S006",
+          "SC03-S008",
+          "SC05-S002",
+          "SC07-S001",
+          "SC07-S010",
+          "SC08-S006",
+          "SC08-S013",
+          "SC09-S001",
+          "SC10-S002",
+          "SC11-S003",
+          "SC11-S004",
+          "SC12-S010",
+          "SC14-S002",
+          "SC14-S010",
+          "and all other draft rows"
+        ],
+        "note": "no second-person form present — nothing to change."
+      }
+    ],
+    "deu_for_eng": [
+      {
+        "note": "all 112 drafts examined; service scenes 2,3,7,8,9,10,11,12,14 already use Sie/Ihr throughout; peer scenes and general solo lines use du. Zero changes required."
+      }
+    ],
+    "deu_at_for_eng": [
+      {
+        "note": "all 155 drafts examined; service scenes already use S'/Sie/Ihnen; peer scenes 6 and 22 use du. One line changed (SC21-S007). Heavy Viennese dialect orthography left in place — out of A-108 scope."
+      }
+    ]
+  },
+  "out_of_scope_residue": {
+    "nld_for_eng": "24 NON-draft lines in service scenes 2,3,7,8,9,10,14 still use je/jij/alsjeblieft. Brief scope is target_text_draft=true only, so they were not touched — the scenes are now mixed register until a second pass is authorised.",
+    "deu_at_for_eng": "deu_at drafts are written in heavy Viennese dialect spelling (i/mir/hobn/ned/mechat). Not a register defect; flagged, not changed."
+  },
+  "flagged_not_fixed_translation_quality": [
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC14-S007",
+      "note": "known 'Here we are' rendered 'Alstublieft' (= here you are). Mistranslation, not a register defect — out of A-108 scope."
+    },
+    {
+      "id": "nld_for_eng:pod-0-unrecorded:SC20-S001",
+      "note": "'one of strawberry' rendered 'een aardbei' (a strawberry) — should be 'een bolletje aardbei'. Out of scope."
+    }
+  ]
+}
