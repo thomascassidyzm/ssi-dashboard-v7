@@ -279,7 +279,7 @@
           <select v-model="decompCourse" @change="loadDecompAudit">
             <option value="">— select —</option>
             <option v-for="c in availableCourses" :key="c.code" :value="c.code">
-              {{ c.code }}
+              {{ getCourseName(c.code) }}
             </option>
           </select>
         </label>
@@ -423,10 +423,12 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '../composables/useAuth'
+import { useCourses } from '../composables/useCourses'
 import UptimePanel from '../components/UptimePanel.vue'
 import RecoveryPanel from '../components/RecoveryPanel.vue'
 
 const { getAccessToken } = useAuth()
+const { getCourseName } = useCourses()
 
 const stats = ref(null)
 const loading = ref(false)

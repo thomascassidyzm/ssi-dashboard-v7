@@ -27,7 +27,7 @@
             :key="course.course_code"
             :value="course.course_code"
           >
-            {{ course.target_language }} for {{ course.source_language }} ({{ course.course_code }})
+            {{ getLanguageName(course.target_language) }} for {{ getLanguageName(course.source_language) }} ({{ course.course_code }})
           </option>
         </select>
       </div>
@@ -35,7 +35,7 @@
       <!-- Course Context Header -->
       <div v-if="currentCourse" class="mb-4 pb-4 border-b border-line">
         <h2 class="text-xl font-semibold text-ink">
-          {{ currentCourse.target_language }} for {{ currentCourse.source_language }}
+          {{ getLanguageName(currentCourse.target_language) }} for {{ getLanguageName(currentCourse.source_language) }}
           <span class="text-faint text-sm ml-2">({{ currentCourse.course_code }})</span>
         </h2>
       </div>
@@ -478,6 +478,7 @@
 import api, { getApiUrl } from '@/services/api'
 import { isMolecularLego, getLegoComponents } from '@/services/legoFormatAdapter'
 import { useToast } from 'vue-toastification'
+import { languageName } from '@/utils/languageNames'
 import AudioPreviewPlayer from './AudioPreviewPlayer.vue'
 
 const toast = useToast()
@@ -560,6 +561,9 @@ export default {
     }
   },
   methods: {
+    getLanguageName(code) {
+      return languageName(code)
+    },
     formatPattern(pattern) {
       if (!pattern) return ''
       // Format P_NEW_* patterns to be more readable

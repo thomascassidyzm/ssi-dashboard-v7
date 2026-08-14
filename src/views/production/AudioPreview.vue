@@ -11,10 +11,10 @@
           data-walk="audio-preview-course-picker"
           class="px-2.5 py-1 bg-surface-2 border border-line rounded text-sm font-mono text-accent-2"
         >
-          <option v-for="c in courses" :key="c.code" :value="c.code">{{ c.code }}</option>
+          <option v-for="c in courses" :key="c.code" :value="c.code">{{ courseName(c.code) }}</option>
         </select>
-        <span v-else class="px-2.5 py-1 bg-surface-2 border border-line rounded text-sm font-mono text-accent-2">
-          {{ activeCourse }}
+        <span v-else class="px-2.5 py-1 bg-surface-2 border border-line rounded text-sm text-accent-2">
+          {{ courseName(activeCourse) }}
         </span>
       </div>
       <div class="batch-actions flex items-center gap-2">
@@ -258,6 +258,7 @@
 import { ref, computed, watch, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
+import { courseName } from '@/utils/languageNames'
 import AudioPreviewClip from './components/AudioPreviewClip.vue'
 import AudioPreviewMissing from './components/AudioPreviewMissing.vue'
 import AudioPreviewCourseGaps from './components/AudioPreviewCourseGaps.vue'

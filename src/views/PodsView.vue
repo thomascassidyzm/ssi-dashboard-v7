@@ -8,14 +8,14 @@
           <router-link to="/" class="text-accent-2 hover:opacity-80">Home</router-link>
           <span class="text-faint">/</span>
           <router-link :to="`/production/${courseCode}`" class="text-accent-2 hover:opacity-80">
-            {{ formatCourseCode(courseCode) }}
+            {{ getCourseName(courseCode) }}
           </router-link>
           <span class="text-faint">/</span>
           <span class="text-muted">Listening Pods</span>
         </div>
         <h1 class="text-3xl font-bold text-accent-2 mb-2">Listening Pods</h1>
         <p class="text-muted text-sm">
-          Layer 2 podcast content · {{ courseCode }}
+          Layer 2 podcast content · {{ getCourseName(courseCode) }}
         </p>
       </div>
 
@@ -26,7 +26,7 @@
           <template v-if="!pod0">
             <div class="text-sm font-semibold text-ink">Generate Pod 0 from canonical scenarios</div>
             <div class="text-xs text-muted mt-0.5">
-              Flexes the 10 English scenarios into {{ courseCode }} (target dialogue + translation) via Claude. Generated text has no audio yet — review &amp; edit it, then run audio.
+              Flexes the 10 English scenarios into {{ getCourseName(courseCode) }} (target dialogue + translation) via Claude. Generated text has no audio yet — review &amp; edit it, then run audio.
             </div>
           </template>
           <!-- pod-0 exists: this is the manage/re-flex step -->
@@ -156,10 +156,12 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
+import { useCourses } from '@/composables/useCourses'
 import PodCastPanel from '@/components/PodCastPanel.vue'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
+const { getCourseName } = useCourses()
 
 const pods = ref([])
 const loading = ref(true)
@@ -223,8 +225,8 @@ function regenerate() {
   if (!p) return
   const c = p.audio_coverage || {}
   const msg = pod0HasAudio.value
-    ? `Regenerate Pod 0 for ${courseCode}?\n\nThis DELETES all ${p.sentence_count} sentences and their audio (${c.target}/${c.total_sentences} target, ${c.known}/${c.total_sentences} known voiced), then re-flexes from the canonical English. Audio will need re-recording (TTS cost).`
-    : `Regenerate Pod 0 for ${courseCode}?\n\nThis replaces all ${p.sentence_count} sentences by re-flexing from the canonical English.`
+    ? `Regenerate Pod 0 for ${getCourseName(courseCode)}?\n\nThis DELETES all ${p.sentence_count} sentences and their audio (${c.target}/${c.total_sentences} target, ${c.known}/${c.total_sentences} known voiced), then re-flexes from the canonical English. Audio will need re-recording (TTS cost).`
+    : `Regenerate Pod 0 for ${getCourseName(courseCode)}?\n\nThis replaces all ${p.sentence_count} sentences by re-flexing from the canonical English.`
   if (!window.confirm(msg)) return
   generatePod(true)
 }
@@ -232,10 +234,6 @@ function regenerate() {
 const totalSentences = computed(() =>
   pods.value.reduce((a, p) => a + (p.sentence_count || 0), 0)
 )
-
-function formatCourseCode(code) {
-  return code || '(unknown)'
-}
 
 function podTypeClass(type) {
   if (type === 'core') return 'pv-pill-core bg-emerald-900/40 text-emerald-300 border border-emerald-700'

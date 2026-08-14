@@ -5,7 +5,7 @@
       <div class="flex items-center gap-3 mb-6 text-sm">
         <router-link to="/" class="link-emerald">Home</router-link>
         <span class="text-faint">/</span>
-        <router-link :to="`/production/${courseCode}`" class="link-emerald">{{ courseCode }}</router-link>
+        <router-link :to="`/production/${courseCode}`" class="link-emerald">{{ getCourseName(courseCode) }}</router-link>
         <span class="text-faint">/</span>
         <router-link :to="`/production/${courseCode}/pods`" class="link-emerald">Pods</router-link>
         <span class="text-faint">/</span>
@@ -315,11 +315,12 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
-import { getLanguageName } from '@/composables/useCourses.js'
+import { getLanguageName, useCourses } from '@/composables/useCourses.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
 const slug = route.params.slug
+const { getCourseName } = useCourses()
 
 // Flag + name for each SSi language code. England/Wales/Scotland use regional
 // tag sequences — NOT 🇬🇧 — so an English course shows St George's cross.

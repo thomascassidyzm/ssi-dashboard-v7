@@ -5,7 +5,7 @@
       <div class="flex items-center gap-4">
         <h2 class="text-lg font-semibold text-ink">Calibration Review</h2>
         <span class="px-3 py-1 bg-surface-2/50 border border-line/50 rounded text-sm font-mono text-emerald-400">
-          {{ courseCode }}
+          {{ getCourseName(courseCode) }}
         </span>
       </div>
       <div class="flex items-center gap-3 text-sm">
@@ -192,11 +192,13 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { useCourses } from '@/composables/useCourses'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
 })
 
+const { getCourseName } = useCourses()
 const builderApiUrl = getApiUrl()
 
 const loading = ref(true)

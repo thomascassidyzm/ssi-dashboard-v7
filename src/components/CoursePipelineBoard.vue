@@ -166,7 +166,7 @@ const props = defineProps({
 
 const emit = defineEmits(['action', 'updateLegacyStatus', 'updateNewAppStatus', 'deployToProduction'])
 const router = useRouter()
-const { getCourseName, languageNames } = useCourses()
+const { getCourseName, getLanguageName } = useCourses()
 
 const searchQuery = ref('')
 const searchFocused = ref(false)
@@ -221,11 +221,7 @@ function parseCode(code) {
 }
 
 function langName(isoCode) {
-  if (!isoCode) return isoCode
-  // Try full code first (e.g. "ara_eg"), then base (e.g. "ara")
-  if (languageNames[isoCode]) return languageNames[isoCode]
-  const base = isoCode.split('_')[0]
-  return languageNames[base] || isoCode.toUpperCase()
+  return getLanguageName(isoCode)
 }
 
 // --- App status helpers ---
