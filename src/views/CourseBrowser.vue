@@ -76,13 +76,13 @@
         <span class="text-xs text-faint uppercase tracking-wider">Known</span>
         <select v-model="knownFilter" class="filter-select">
           <option value="">All</option>
-          <option v-for="l in knownLangs" :key="l" :value="l">{{ l }}</option>
+          <option v-for="l in knownLangs" :key="l" :value="l">{{ getLanguageName(l) }}</option>
         </select>
 
         <span class="text-xs text-faint uppercase tracking-wider ml-2">Target</span>
         <select v-model="targetFilter" class="filter-select">
           <option value="">All</option>
-          <option v-for="l in targetLangs" :key="l" :value="l">{{ l }}</option>
+          <option v-for="l in targetLangs" :key="l" :value="l">{{ getLanguageName(l) }}</option>
         </select>
 
         <button
@@ -170,8 +170,8 @@
                 <span v-if="highlightedCourses.has(course.course_code)" class="ml-1 text-[10px] text-accent-2 font-sans">• new</span>
               </td>
               <td class="px-3 py-2 text-muted max-w-xs truncate">{{ getFullCourseName(course.course_code) }}</td>
-              <td class="px-3 py-2 text-faint font-mono hidden md:table-cell">{{ parseLangs(course.course_code).known }}</td>
-              <td class="px-3 py-2 text-faint font-mono hidden md:table-cell">{{ parseLangs(course.course_code).target }}</td>
+              <td class="px-3 py-2 text-faint hidden md:table-cell">{{ getLanguageName(parseLangs(course.course_code).known) }}</td>
+              <td class="px-3 py-2 text-faint hidden md:table-cell">{{ getLanguageName(parseLangs(course.course_code).target) }}</td>
               <td class="px-3 py-2">
                 <span class="pricing-pill px-2 py-0.5 rounded-full text-[11px] font-medium" :class="getPricingClass(course.pricing_tier)">
                   {{ (course.pricing_tier || 'premium').toUpperCase() }}
@@ -251,7 +251,7 @@ import { useAuth } from '../composables/useAuth'
 const toast = useToast()
 const router = useRouter()
 const { canAccessCourse, getAccessToken } = useAuth()
-const { getCourseName } = useCourses()
+const { getCourseName, getLanguageName } = useCourses()
 const courses = ref([])
 const loading = ref(true)
 const loadingStats = ref(false)
@@ -448,7 +448,7 @@ async function confirmBulk() {
   bulkBusy.value = false
   clearSelection()
 
-  if (failed.length) toast.warning(`Updated ${ok}/${codes.length} — failed: ${failed.join(', ')}`)
+  if (failed.length) toast.warning(`Updated ${ok}/${codes.length} — failed: ${failed.map(getCourseName).join(', ')}`)
   else toast.success(`Updated ${ok} course${ok > 1 ? 's' : ''} → ${label}`)
 }
 
@@ -518,8 +518,8 @@ function sortValue(course, key) {
   const { known, target } = parseLangs(code)
   switch (key) {
     case 'name': return getFullCourseName(code).toLowerCase()
-    case 'known': return known
-    case 'target': return target
+    case 'known': return getLanguageName(known).toLowerCase()
+    case 'target': return getLanguageName(target).toLowerCase()
     case 'pricing': return PRICING_RANK[course.pricing_tier || 'premium'] ?? 9
     case 'stage': return STAGE_RANK[course.status || 'draft'] ?? 9
     case 'recent': {
@@ -644,12 +644,6 @@ async function loadCourses() {
     console.error('Failed to load courses:', err)
     loading.value = false
   }
-}
-
-function formatCourseCode(code) {
-  // Just return the course code as-is (e.g., "spa_for_eng")
-  // This is a builder's tool, so showing the actual code is clearest
-  return code
 }
 
 function getFullCourseName(courseCode) {

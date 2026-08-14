@@ -9,7 +9,7 @@
               ← Back to Dashboard
             </router-link>
             <h1 class="text-3xl font-bold text-accent-2">
-              Course Progress: {{ courseCode }}
+              Course Progress: {{ getCourseName(courseCode) }}
             </h1>
             <p class="mt-2 text-muted" v-if="progress">
               Status: <span :class="statusColor">{{ progress.overallStatus }}</span>
@@ -73,7 +73,7 @@
             </div>
             <div>
               <h2 class="text-2xl font-semibold text-accent-2">Course Ready!</h2>
-              <p class="text-muted">{{ courseCode }} generated successfully</p>
+              <p class="text-muted">{{ getCourseName(courseCode) }} generated successfully</p>
             </div>
           </div>
           <router-link
@@ -161,9 +161,11 @@ import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
 import PipelineProgress from '../components/PipelineProgress.vue'
 import { SeedProgressGrid } from '../components/generation'
 import { getApiUrl } from '@/services/api'
+import { useCourses } from '../composables/useCourses'
 
 const route = useRoute()
 const courseCode = ref(route.params.code)
+const { getCourseName } = useCourses()
 
 const progress = ref(null)
 const loading = ref(true)

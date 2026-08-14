@@ -80,7 +80,7 @@
               >
                 <option value="">Select known language</option>
                 <option v-for="lang in languages" :key="lang.code" :value="lang.code">
-                  {{ lang.name }}
+                  {{ getLanguageName(lang.code) }}
                 </option>
               </select>
               <select
@@ -89,7 +89,7 @@
               >
                 <option value="">Select target language</option>
                 <option v-for="lang in languages" :key="lang.code" :value="lang.code">
-                  {{ lang.name }}
+                  {{ getLanguageName(lang.code) }}
                 </option>
               </select>
             </div>
@@ -796,9 +796,11 @@ import { io } from 'socket.io-client'
 import { LanguageBriefEditor } from '../components/generation'
 import { getApiUrl } from '@/services/api'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
+import { useCourses } from '../composables/useCourses'
 
 const route = useRoute()
 const router = useRouter()
+const { getCourseName, getLanguageName } = useCourses()
 
 // WebSocket connection for real-time events
 let socket = null
@@ -1076,18 +1078,20 @@ const MAX_HISTORY = 30
 // Events
 const events = ref([])
 
-// Static data
+// Selectable languages for a new course. The set is deliberately restricted
+// (not every language Popty knows a name for is buildable here) — display
+// names for these codes come from languageNames.js, not from this list.
 const languages = ref([
-  { code: 'eng', name: 'English' },
-  { code: 'spa', name: 'Spanish' },
-  { code: 'fra', name: 'French' },
-  { code: 'deu', name: 'German' },
-  { code: 'ita', name: 'Italian' },
-  { code: 'por', name: 'Portuguese' },
-  { code: 'zho', name: 'Mandarin Chinese' },
-  { code: 'jpn', name: 'Japanese' },
-  { code: 'kor', name: 'Korean' },
-  { code: 'ara', name: 'Arabic' }
+  { code: 'eng' },
+  { code: 'spa' },
+  { code: 'fra' },
+  { code: 'deu' },
+  { code: 'ita' },
+  { code: 'por' },
+  { code: 'zho' },
+  { code: 'jpn' },
+  { code: 'kor' },
+  { code: 'ara' }
 ])
 
 const courseSizes = [
@@ -1140,11 +1144,7 @@ const isNewCourse = computed(() => !props.courseCode && !route.params.courseCode
 const displayName = computed(() => {
   const code = props.courseCode || route.params.courseCode
   if (!code) return ''
-  const [targetPart, knownPart] = code.split('_for_')
-  const target = targetPart.split('_')[0]
-  const targetName = languages.value.find(l => l.code === target)?.name || target
-  const knownName = languages.value.find(l => l.code === knownPart)?.name || knownPart
-  return `${targetName} for ${knownName} speakers`
+  return getCourseName(code)
 })
 
 // Effective language codes (from existing course or new course selection)
@@ -1166,13 +1166,9 @@ const effectiveTargetCode = computed(() => {
   return targetLang.value
 })
 
-const effectiveKnownName = computed(() => {
-  return languages.value.find(l => l.code === effectiveKnownCode.value)?.name || effectiveKnownCode.value
-})
+const effectiveKnownName = computed(() => getLanguageName(effectiveKnownCode.value))
 
-const effectiveTargetName = computed(() => {
-  return languages.value.find(l => l.code === effectiveTargetCode.value)?.name || effectiveTargetCode.value
-})
+const effectiveTargetName = computed(() => getLanguageName(effectiveTargetCode.value))
 
 // Language brief state
 const languageBrief = ref(null)
@@ -1580,7 +1576,7 @@ async function createCourse() {
 
     if (!response.ok) throw new Error('Failed to create course')
 
-    addEvent(`Created course: ${newCode}`)
+    addEvent(`Created course: ${getCourseName(newCode)}`)
     router.push(`/course/${newCode}`)
 
   } catch (error) {
@@ -1716,7 +1712,7 @@ async function startCourseBuilder() {
     jobStartTime.value = Date.now()
     parallelPhase.value = 'drafting'
 
-    addEvent(`Started Parallel Build for ${code} (${seedCount.value} seeds)`)
+    addEvent(`Started Parallel Build for ${getCourseName(code)} (${seedCount.value} seeds)`)
 
   } catch (error) {
     console.error('Failed to start course builder:', error)
