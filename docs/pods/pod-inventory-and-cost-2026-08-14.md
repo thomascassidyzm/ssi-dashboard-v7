@@ -25,6 +25,22 @@ Two of those want a sentence each.
 
 **The 3,770 is real and slightly larger than the prior**, not smaller. That is the opposite of what the per-language dedupe did to English, and the reason is simple: English pod-0 collapsed 8.19x because 39 courses share one English known side. On the target side, most languages have exactly one course, so there is almost nothing to dedupe — 4,504 empty slots collapse to 3,770 distinct lines, a factor of 1.19.
 
+### Correction, made the same day: 3,770 is too low. It is 4,161.
+
+I built a tool to harvest the free lines the per-language ruling implies — if a sibling course in the same language already carries an English line, translating it again is paying twice, and risks two targets for one known line, which breaks ZUT by construction. It reported 288 free carries, including `deu_for_eng` at 112 out of 112 and `spa_mx_for_eng` at 117 out of 117.
+
+Those two hundred-percents were the tell. `courses.target_lang` is `deu` for both `deu_for_eng` and `deu_at_for_eng`, and `spa` for both `spa_for_eng` and `spa_mx_for_eng`. A free fill on every line was really a silent dialect flattening: Austrian German pushed into the standard German course, Iberian Spanish into the Mexican one, across the board.
+
+Keying on the target **variant** instead, the honest answer is that **there are zero mechanical carries on this estate**. All 304 apparent ones cross a variant boundary, and vosotros against ustedes, *ordenador* against *computadora*, *Jänner* against *Januar* is your ear and not a script's. So:
+
+| | |
+|---|---:|
+| lines that genuinely need translating | **4,161** |
+| lines where the text exists but only in another variant — **your call** | **304** |
+| lines carryable with no judgement at all | **0** |
+
+The same variant-lumping is in the cost table below, which deduped on `target_lang`. It understates by about 391 lines and roughly $0.23. The $4.48 headline becomes about $4.71 and nothing else about the decision moves.
+
 ## Where the debt actually lives
 
 There are two pod families, and the debt is almost entirely in the second one:
