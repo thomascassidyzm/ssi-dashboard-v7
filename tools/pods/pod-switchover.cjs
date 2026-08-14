@@ -17,15 +17,19 @@
  * clip is regenerated. There is no delete path in this tool except for the two now-empty
  * pod header rows whose sentences have already been moved.
  *
- * IT REFUSES TO MIS-CREDIT. `learner_pod_state.sentence_id` is a SLOT key
- * (`<course>:pod-0:SC03-S003`), and the staged canon inserts sentences mid-scene, so a
- * naive swap leaves the slot alive with a different sentence in it — the learner is
- * credited with something they never heard. Measured estate-wide on 2026-08-14: 538
- * rows, 4,837 exposures. `cym_n_for_eng` and `cym_s_for_eng` were swapped in place on
- * 2026-08-11 and carry that damage today. So: if the course has learner pod state and
- * no migration has been recorded for it, this tool STOPS. The migration rules are in
- * docs/pods/pod-migration-rules-2026-08-14.md and are awaiting Tom's blessing; the
- * migration code does not exist yet, by design.
+ * IT MIGRATES LEARNER PROGRESS, IN THE SAME TRANSACTION. `learner_pod_state.sentence_id`
+ * is a SLOT key (`<course>:pod-0:SC03-S003`), and the staged canon inserts sentences
+ * mid-scene, so a naive swap leaves the slot alive with a different sentence in it — the
+ * learner is credited with something they never heard. Measured estate-wide on
+ * 2026-08-14: 528 rows / 4,827 exposures across the 27 courses still to flip, plus the
+ * 20 rows on `cym_n_for_eng` and `cym_s_for_eng` that were swapped in place on
+ * 2026-08-11 and repaired on 2026-08-14.
+ *
+ * Since Tom's A-107 ruling (2026-08-14) the migration is no longer a thing to wait for:
+ * `pod-state-migrate.cjs` plans it, this tool applies it between the archive and the
+ * promote, and the whole flip is one transaction — so learner progress can never be
+ * observed against a canon it was not mapped to. Rules and rationale:
+ * docs/pods/pod-migration-protocol.md.
  *
  * DRY RUN BY DEFAULT. Pass --apply to write. Everything happens in one transaction.
  *
@@ -37,6 +41,7 @@
 
 require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.env.psql') })
 const { Client } = require('pg')
+const { planMigration, POSITION_BOUND } = require('./pod-state-migrate.cjs')
 
 const APPLY = process.argv.includes('--apply')
 const ROLLBACK = process.argv.includes('--rollback')
@@ -50,7 +55,9 @@ const STAGED = arg('staged') || 'pod-0-unrecorded'
 const STAMP = arg('stamp') || '2026-08-14'
 const RETIRED = `${LIVE}-retired-${STAMP}`
 /** Escape hatch for a course we have consciously decided to swap without migrating
- *  (a draft course with throwaway state). Never use it on a released course. */
+ *  (a draft course with throwaway state). Never use it on a released course.
+ *  It does NOT mean "leave the rows alone" — leaving them alone is the mis-credit.
+ *  It means "discard this course's pod progress outright". */
 const FORCE_NO_MIGRATION = process.argv.includes('--accept-miscredit')
 
 if (!COURSE) {
@@ -103,11 +110,48 @@ async function main () {
     if (!retired) fail(`no retired pod ${COURSE}:${RETIRED} to roll back to`)
     if (!live) fail(`no live pod ${COURSE}:${LIVE} — nothing to displace`)
     log(`ROLLBACK ${COURSE}: ${LIVE} (${await countOf(LIVE)}) → ${STAGED}, ${RETIRED} (${await countOf(RETIRED)}) → ${LIVE}`)
+
+    // Rollback has to migrate learner progress BACK, by the same rules. Restoring the old
+    // content while leaving progress mapped to the new canon is the mis-credit in reverse,
+    // and it is the failure a rollback is least likely to be checked for.
+    const canon = async (slug) => (await db.query(
+      `select id, scene_number, sentence_number, global_order, known_text
+         from listening_pod_sentences where pod_id = $1 order by global_order`, [`${COURSE}:${slug}`])).rows
+    const { rows: backRows } = await db.query(
+      `select learner_id, course_code, sentence_id, exposures, updated_at
+         from learner_pod_state where course_code = $1 order by learner_id, sentence_id`, [COURSE])
+    const backPlan = backRows.length ? planMigration(await canon(LIVE), await canon(RETIRED), backRows) : null
+    if (backPlan) {
+      const t = backPlan.actions.reduce((m, a) => { m[a.action] = (m[a.action] || 0) + 1; return m }, {})
+      log(`  learner progress migrated back: carry ${t.carry || 0}, keep ${t.keep || 0}, merge ${t.merge || 0}, drop ${t.drop || 0}`)
+    }
     if (!APPLY) { log('\nDRY RUN — pass --apply to write.'); await db.end(); return }
     await db.query('begin')
     try {
       await movePod(db, LIVE, STAGED, null)
       await movePod(db, RETIRED, LIVE, null)
+      if (backPlan) {
+        for (const a of backPlan.actions) {
+          const del = () => db.query(
+            `delete from learner_pod_state where learner_id=$1 and course_code=$2 and sentence_id=$3 and exposures=$4`,
+            [a.learner_id, COURSE, a.sentence_id, a.exposures])
+          if (a.action === 'drop' || a.action === 'merge') {
+            const r = await del()
+            if (r.rowCount !== 1) throw new Error(`drift: expected 1 state row for ${a.sentence_id}, got ${r.rowCount}`)
+          } else {
+            const target = reslug(a.to.replace(/:s\d+$/, ''), RETIRED, LIVE) + (/:s\d+$/.exec(a.to)?.[0] || '')
+            if (target === a.sentence_id) continue
+            const r = await del()
+            if (r.rowCount !== 1) throw new Error(`drift: expected 1 state row for ${a.sentence_id}, got ${r.rowCount}`)
+            await db.query(
+              `insert into learner_pod_state (learner_id, course_code, sentence_id, exposures)
+               values ($1,$2,$3,$4)
+               on conflict (learner_id, course_code, sentence_id)
+               do update set exposures = greatest(learner_pod_state.exposures, excluded.exposures)`,
+              [a.learner_id, COURSE, target, a.exposures])
+          }
+        }
+      }
       await db.query('commit')
       log('rolled back.')
     } catch (e) { await db.query('rollback'); throw e }
@@ -142,21 +186,29 @@ async function main () {
   if (Number(s.draft) > 0) blockers.push(`${s.draft} staged sentences are still marked draft`)
   if (Number(s.no_target_audio) > 0) blockers.push(`${s.no_target_audio} staged sentences have no target audio`)
 
-  // The mis-credit gate. See the header.
-  const { rows: [st] } = await db.query(
-    'select count(*) rows, count(distinct learner_id) learners from learner_pod_state where course_code = $1', [COURSE]
+  // ---- the learner-progress migration, planned before anything moves ----------
+  // Planned here, against the two canons as they stand now, and applied inside the same
+  // transaction as the move. `to` targets are computed against the STAGED slug and
+  // reslugged onto LIVE at apply time, because promotion re-keys every sentence id.
+  const { rows: stateRows } = await db.query(
+    `select learner_id, course_code, sentence_id, exposures, updated_at
+       from learner_pod_state where course_code = $1 order by learner_id, sentence_id`, [COURSE]
   )
-  if (Number(st.rows) > 0) {
-    log(`  learner state: ${st.rows} rows across ${st.learners} learners`)
-    if (!FORCE_NO_MIGRATION) {
-      blockers.push(
-        `${st.rows} learner pod state rows exist and no migration has been applied — ` +
-        'promoting now would credit learners with sentences they have not heard ' +
-        '(see docs/pods/pod-migration-rules-2026-08-14.md)'
-      )
-    } else {
-      log('  --accept-miscredit given: proceeding WITHOUT migrating learner state')
-    }
+  let plan = null
+  if (stateRows.length) {
+    const canon = async (slug) => (await db.query(
+      `select id, scene_number, sentence_number, global_order, known_text
+         from listening_pod_sentences where pod_id = $1 order by global_order`, [`${COURSE}:${slug}`])).rows
+    plan = planMigration(await canon(LIVE), await canon(STAGED), stateRows)
+    const t = plan.actions.reduce((m, a) => { m[a.action] = (m[a.action] || 0) + 1; return m }, {})
+    const learners = new Set(stateRows.map(r => r.learner_id)).size
+    log(`  learner state: ${stateRows.length} rows across ${learners} learners`)
+    log(`    migration (${POSITION_BOUND}):`)
+    log(`      carry ${t.carry || 0}, keep ${t.keep || 0}, merge ${t.merge || 0}, drop ${t.drop || 0}` +
+        `  — prevents ${plan.actions.filter(a => a.miscredit_avoided).length} mis-credits`)
+    // Ambiguity would make matching a guess rather than a lookup. Refuse rather than guess.
+    if (plan.ambiguous > 0) blockers.push(`${plan.ambiguous} duplicate sentence texts across the two canons — content matching would be a guess, not a lookup`)
+    if (FORCE_NO_MIGRATION) log('  --accept-miscredit given: learner pod progress for this course will be DISCARDED, not mapped')
   }
 
   if (blockers.length) {
@@ -169,6 +221,7 @@ async function main () {
   log(`\nplan:`)
   log(`  1. ${COURSE}:${LIVE} (${liveN} sentences) → ${COURSE}:${RETIRED}   [archived, not deleted]`)
   log(`  2. ${COURSE}:${STAGED} (${s.n} sentences) → ${COURSE}:${LIVE}      [now learner-facing]`)
+  if (plan) log(`  3. ${stateRows.length} learner pod state rows migrated by content + position`)
   log(`  rollback: node tools/pods/pod-switchover.cjs --course=${COURSE} --rollback --apply`)
 
   if (!APPLY) { log('\nDRY RUN — pass --apply to write.'); await db.end(); return }
@@ -182,8 +235,45 @@ async function main () {
     if (after !== Number(s.n)) throw new Error(`post-check failed: live pod holds ${after} sentences, expected ${s.n}`)
     const kept = Number((await db.query('select count(*) c from listening_pod_sentences where pod_id = $1', [`${COURSE}:${RETIRED}`])).rows[0].c)
     if (kept !== liveN) throw new Error(`post-check failed: archived pod holds ${kept} sentences, expected ${liveN}`)
+
+    // The learner-progress migration, in the same transaction as the move so progress is
+    // never observable against a canon it was not mapped to.
+    let carried = 0, dropped = 0
+    if (plan) {
+      for (const a of plan.actions) {
+        const del = () => db.query(
+          `delete from learner_pod_state where learner_id=$1 and course_code=$2 and sentence_id=$3 and exposures=$4`,
+          [a.learner_id, COURSE, a.sentence_id, a.exposures])
+        if (FORCE_NO_MIGRATION || a.action === 'drop' || a.action === 'merge') {
+          const r = await del()
+          if (r.rowCount !== 1) throw new Error(`drift: expected 1 state row for ${a.sentence_id}, got ${r.rowCount}`)
+          dropped++
+        } else if (a.action === 'carry' || a.action === 'keep') {
+          const target = reslug(a.to.replace(/:s\d+$/, ''), STAGED, LIVE) + (/:s\d+$/.exec(a.to)?.[0] || '')
+          if (target === a.sentence_id) continue
+          const r = await del()
+          if (r.rowCount !== 1) throw new Error(`drift: expected 1 state row for ${a.sentence_id}, got ${r.rowCount}`)
+          await db.query(
+            `insert into learner_pod_state (learner_id, course_code, sentence_id, exposures)
+             values ($1,$2,$3,$4)
+             on conflict (learner_id, course_code, sentence_id)
+             do update set exposures = greatest(learner_pod_state.exposures, excluded.exposures)`,
+            [a.learner_id, COURSE, target, a.exposures])
+          carried++
+        }
+      }
+      // No state row may be left pointing at a sentence that does not exist.
+      const { rows: [orph] } = await db.query(
+        `select count(*) n from learner_pod_state ls
+          where ls.course_code = $1
+            and not exists (select 1 from listening_pod_sentences s
+                             where s.id = regexp_replace(ls.sentence_id, ':s\\d+$', ''))`, [COURSE])
+      if (Number(orph.n) > 0) throw new Error(`post-check failed: ${orph.n} learner state rows point at no sentence`)
+    }
+
     await db.query('commit')
     log(`\nswitched. archived ${archived}, promoted ${promoted}.`)
+    if (plan) log(`learner progress: ${carried} carried, ${dropped} dropped.`)
   } catch (e) { await db.query('rollback'); throw e }
 
   await db.end()
