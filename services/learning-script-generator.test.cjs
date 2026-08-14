@@ -771,6 +771,7 @@ const {
   targetWordsOf,
   segmentsCoverWords,
   segmentsFromBlocks,
+  sameTargetWords,
   mappingFromLego,
   legoIsMappable,
 } = require('./learning-script-generator.cjs')
@@ -978,6 +979,73 @@ describe('gloss alignment on a row', () => {
     it('never emits a span wider than the columns that remain', () => {
       const segs = segmentsFromBlocks([{ known: 'x', target: 'a b c d' }], 2)
       expect(segs).toEqual([{ span: 1, known: '' }, { span: 1, known: '' }])
+    })
+
+    // Tom's amendment, 2026-08-14: the DEFAULT mapping is auto-generated and a
+    // human only fixes what it gets wrong. Components are stored in the KNOWN
+    // language's order about a fifth of the time, so claiming columns in array
+    // order put glosses under the wrong words on 8,542 rows estate-wide.
+    it('puts each block under its OWN target words, not the next columns along', () => {
+      // eng_for_pan S0045L03-shaped: components listed in the known order.
+      const segs = segmentsFromBlocks(
+        [{ known: 'time-gloss', target: 'time' }, { known: 'didnt-have-gloss', target: "didn't have" }],
+        ["didn't", 'have', 'time'])
+      expect(segs).toEqual([
+        { span: 2, known: 'didnt-have-gloss' },
+        { span: 1, known: 'time-gloss' },
+      ])
+    })
+
+    it('lets a longer block claim its columns before a shorter one takes one from inside it', () => {
+      const segs = segmentsFromBlocks(
+        [{ known: 'A', target: 'la' }, { known: 'B', target: 'la casa' }],
+        ['la', 'casa', 'la'])
+      // 'la casa' takes columns 0-1; the one-word 'la' can then only be col 2.
+      expect(segs).toEqual([{ span: 2, known: 'B' }, { span: 1, known: 'A' }])
+    })
+
+    it('matches a block through case and trailing punctuation', () => {
+      const segs = segmentsFromBlocks(
+        [{ known: 'q', target: 'Azul' }, { known: 'p', target: 'cosa' }],
+        ['¿cosa', 'azul?'])
+      expect(segs).toEqual([{ span: 1, known: 'p' }, { span: 1, known: 'q' }])
+    })
+
+    // The refusal to guess (7892dce5) survives: locating uses only what the
+    // component already says, and never invents a placement for one that is not
+    // in the sentence at all.
+    it('falls back to the old sequential start when no block is in the target text', () => {
+      // eus_for_eng `gogoratzen saiatzen ari naiz`: components glossed, not tiled.
+      const segs = segmentsFromBlocks(
+        [{ known: 'to remember', target: 'gogoratu' }, { known: 'wishing to', target: 'nahi' }],
+        ['gogoratzen', 'saiatzen', 'ari', 'naiz'])
+      expect(segs).toEqual([
+        { span: 1, known: 'to remember' },
+        { span: 1, known: 'wishing to' },
+        { span: 1, known: '' }, { span: 1, known: '' },
+      ])
+    })
+
+    it('gives an unlocatable block the leftover columns rather than dropping its gloss', () => {
+      const segs = segmentsFromBlocks(
+        [{ known: 'here', target: 'bat' }, { known: 'nowhere', target: 'xxx yyy' }],
+        ['hitz', 'bat', 'esan', 'nahi'])
+      expect(segs).toEqual([
+        { span: 1, known: 'nowhere' },
+        { span: 1, known: 'here' },
+        { span: 1, known: '' }, { span: 1, known: '' },
+      ])
+      // Nothing invented: every gloss came from a block.
+      expect(segs.map(s => s.known).filter(Boolean).sort()).toEqual(['here', 'nowhere'])
+    })
+
+    it('never invents a gloss for a column no block covers', () => {
+      const segs = segmentsFromBlocks([{ known: 'a word', target: 'hitz bat' }],
+        ['hitz', 'bat', 'esan', 'nahi', 'dut'])
+      expect(segs).toEqual([
+        { span: 2, known: 'a word' },
+        { span: 1, known: '' }, { span: 1, known: '' }, { span: 1, known: '' },
+      ])
     })
   })
 })

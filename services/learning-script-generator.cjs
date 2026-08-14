@@ -310,25 +310,137 @@ function segmentsCoverWords(segments, wordCount) {
 }
 
 /**
- * Derive a starting segmentation from LEGO-chunked blocks. Each block claims as
- * many target-word columns as its own target text has words, and its gloss sits
- * across all of them. Faithful, never inventive.
+ * Compare two target strings as the SAME words, ignoring case and the
+ * punctuation that rides along with a word. Nothing else is normalised — a
+ * component either is the row's own words or it is not.
  */
-function segmentsFromBlocks(blocks, wordCount) {
-  const segments = []
-  let claimed = 0
-  for (const b of blocks) {
-    const span = targetWordsOf(b.target).length
-    if (span < 1) continue
-    if (claimed + span > wordCount) break
-    segments.push({ span, known: typeof b.known === 'string' ? b.known : '' })
-    claimed += span
+function sameTargetWords(a, b) {
+  const flat = s => String(s || '')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s']/gu, '')
+    .trim()
+    .replace(/\s+/g, ' ')
+  return flat(a) === flat(b) && flat(a) !== ''
+}
+
+/**
+ * Where does this block's own target text sit in the target's word list?
+ * Returns the start column of the first UNCLAIMED contiguous run that reads as
+ * exactly this block's target, or -1 when it is not there at all.
+ */
+function locateBlock(words, blockTarget, claimedBy) {
+  const span = targetWordsOf(blockTarget).length
+  if (span < 1) return -1
+  for (let start = 0; start + span <= words.length; start++) {
+    let free = true
+    for (let i = start; i < start + span; i++) if (claimedBy[i] !== -1) { free = false; break }
+    if (!free) continue
+    if (sameTargetWords(words.slice(start, start + span).join(' '), blockTarget)) return start
   }
-  // The blocks did not tile the target text (stale or partial decomposition).
-  // Give the leftover columns their own empty chunks rather than dropping them:
-  // a target word with no gloss must stay visible, not vanish.
-  if (claimed < wordCount) {
-    for (let i = claimed; i < wordCount; i++) segments.push({ span: 1, known: '' })
+  return -1
+}
+
+/**
+ * Derive a starting segmentation from LEGO-chunked blocks — PURE.
+ *
+ * Tom's amendment, 2026-08-14: "the DEFAULT mapping is auto-generated from the
+ * existing LEGO components - no human effort to create the initial alignment";
+ * the drag tool exists only to fix what this gets wrong. So this is not
+ * scaffolding, it is the feature, and it is worth being careful here.
+ *
+ * The old rule claimed columns SEQUENTIALLY: block 1 took the first N columns,
+ * block 2 the next, and so on. That silently assumes the components are stored
+ * in the TARGET's word order, and estate-wide they very often are not — they
+ * are stored in the KNOWN language's order. `eng_for_pan S0178L01` is
+ * "didn't have time" with components [time, didn't have], so sequential
+ * claiming put the gloss for "time" underneath "didn't". Measured across 92
+ * courses, 8,542 of 35,166 derivable rows opened visibly wrong that way.
+ *
+ * So each block is now LOCATED by its own target text: it claims the columns
+ * that actually read as its words, wherever they are. Longest blocks go first,
+ * so a one-word block cannot steal a column out of the middle of a longer one.
+ * A block placed this way is correct by construction — the columns under its
+ * gloss ARE its target words.
+ *
+ * The refusal to guess is untouched (7892dce5). Locating uses only what the
+ * component already says; a block whose target does not occur in the row's own
+ * target text is not invented into place — it falls back to the leftover
+ * columns in its given order, exactly where the old rule would have put it, and
+ * a row with nothing to derive still opens blank for a human to author.
+ *
+ * `words` may be passed as the target-word ARRAY (locating possible) or as a
+ * plain count (sequential only — no words to match against).
+ */
+function segmentsFromBlocks(blocks, words) {
+  const wordList = Array.isArray(words) ? words : null
+  const wordCount = wordList ? wordList.length : words
+
+  const usable = (Array.isArray(blocks) ? blocks : [])
+    .map((b, order) => ({
+      order,
+      span: targetWordsOf(b && b.target).length,
+      target: b && b.target,
+      known: typeof (b && b.known) === 'string' ? b.known : '',
+    }))
+    .filter(b => b.span >= 1)
+
+  // Fill the columns left to right from a list of blocks, ignoring where their
+  // words actually are — the old rule, kept for the blocks that cannot be
+  // located and for callers that pass only a count.
+  const sequential = (list, limit) => {
+    const segments = []
+    let claimed = 0
+    for (const b of list) {
+      if (claimed + b.span > limit) break
+      segments.push({ span: b.span, known: b.known })
+      claimed += b.span
+    }
+    for (let i = claimed; i < limit; i++) segments.push({ span: 1, known: '' })
+    return segments
+  }
+
+  if (!wordList) return sequential(usable, wordCount)
+
+  const claimedBy = new Array(wordCount).fill(-1)
+  const placed = new Map()   // start column -> { span, known }
+  const unplaced = []
+
+  // Longest first: a block spanning three columns must take them before a
+  // one-word block can claim a column from inside it.
+  for (const b of [...usable].sort((x, y) => y.span - x.span || x.order - y.order)) {
+    const start = locateBlock(wordList, b.target, claimedBy)
+    if (start === -1) { unplaced.push(b); continue }
+    for (let i = start; i < start + b.span; i++) claimedBy[i] = b.order
+    placed.set(start, { span: b.span, known: b.known })
+  }
+
+  // Nothing located — the components describe something other than this row's
+  // own target text (a LEGO glossed from its components rather than tiled by
+  // them). The old sequential start is then the only honest one available.
+  if (placed.size === 0) return sequential(usable, wordCount)
+
+  // Walk the columns in target order. A located block emits its own segment;
+  // each maximal run of leftover columns emits one segment, and the blocks that
+  // could not be located fill those runs in their given order.
+  const segments = []
+  const leftovers = unplaced.sort((x, y) => x.order - y.order)
+  let li = 0
+  for (let col = 0; col < wordCount;) {
+    const hit = placed.get(col)
+    if (hit) { segments.push({ span: hit.span, known: hit.known }); col += hit.span; continue }
+    let run = 0
+    while (col + run < wordCount && !placed.has(col + run) && claimedBy[col + run] === -1) run++
+    if (li < leftovers.length) {
+      // An unlocatable block still has a gloss and it has to go somewhere; this
+      // run is where the old rule would have put it.
+      segments.push({ span: run, known: leftovers[li++].known })
+    } else {
+      // No gloss for these columns. One column each, never one wide empty
+      // chunk: a target word with no gloss must stay visible AND must be able
+      // to receive a tile of its own.
+      for (let i = 0; i < run; i++) segments.push({ span: 1, known: '' })
+    }
+    col += run
   }
   return segments
 }
@@ -350,7 +462,7 @@ function glossAlignment(source, targetText, blocks, storedSegments) {
   }
 
   const usable = Array.isArray(blocks) ? blocks : []
-  const segments = segmentsFromBlocks(usable, words.length)
+  const segments = segmentsFromBlocks(usable, words)
   // Nothing to look at if no column carries any gloss at all.
   if (!segments.some(s => s.known.trim())) return null
   return { source, words, segments, segmented: false }
@@ -1552,6 +1664,8 @@ module.exports = {
   targetWordsOf,
   segmentsCoverWords,
   segmentsFromBlocks,
+  sameTargetWords,
+  locateBlock,
   mappingFromLego,
   legoIsMappable,
   reviewItemIsSeed,
