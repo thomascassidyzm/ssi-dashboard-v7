@@ -173,7 +173,7 @@
 // Welsh queue, however many courses those lines happen to serve, which is why
 // no course code appears anywhere on this page.
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
-import { getApiUrl } from '@/services/api'
+import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useTapRecorder } from '@/composables/useTapRecorder'
 import { useRecordistQueue } from '@/composables/useRecordistQueue'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
@@ -199,14 +199,6 @@ const readThisSession = ref(0)
 // stored clip for, because only those have an upload we watched land.
 const sessionIds = ref([])
 const lastLine = ref(null)
-
-function apiBase() {
-  if (typeof localStorage !== 'undefined') {
-    const pinned = localStorage.getItem('api_base_url')
-    if (pinned) return pinned
-  }
-  return getApiUrl()
-}
 
 // ── Progress, in plain words ────────────────────────────────────────────────
 const doneIds = ref(new Set())

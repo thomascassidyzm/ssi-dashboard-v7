@@ -62,7 +62,7 @@
 // per-clip approval — every one of those was a decision nobody was making, on a
 // screen someone still had to read.
 import { ref, onMounted } from 'vue'
-import { getApiUrl } from '@/services/api'
+import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useAuth } from '@/composables/useAuth'
 
 const { getAccessToken } = useAuth()
@@ -73,15 +73,6 @@ const error = ref(null)
 const saving = ref(null)
 const copied = ref(null)
 
-function apiBase() {
-  const pinned = typeof localStorage !== 'undefined' && localStorage.getItem('api_base_url')
-  if (pinned) return pinned
-  // Same-origin on popty.app: the /api/recording/* routes are proxied there by
-  // vercel.json, which keeps this page off the cross-origin path that the
-  // browser blocks as public-to-local-address-space.
-  if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') return ''
-  return getApiUrl()
-}
 
 // The estate authorises /api/* off a Supabase bearer token, not a cookie —
 // every other production-api caller in this app does the same. (credentials:

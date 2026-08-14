@@ -13,6 +13,7 @@
 // every studio. Never resolve a playback URL by hand anywhere else.
 
 import { getApiUrl } from '@/services/api'
+import { recordingApiBase } from '@/services/recordingApi'
 
 // A marker a human can grep for in the served bundle to prove this shipped.
 export const STORED_CLIP_FEATURE = 'stored-clip-playback-2026-08-14'
@@ -38,22 +39,6 @@ function apiBase() {
   return getApiUrl()
 }
 
-/**
- * Base for the RECORDIST routes specifically. Same-origin on popty.app, because
- * a public page fetching watson-1 directly is refused by the browser as a
- * public-to-local-address-space request, before CORS is consulted, and reaches
- * the recordist as a bare "Failed to fetch". vercel.json proxies
- * /api/recording/* through, so the hop happens server-side. See
- * useRecordistQueue.js for the full note.
- */
-function recordingApiBase() {
-  if (typeof localStorage !== 'undefined') {
-    const pinned = localStorage.getItem('api_base_url')
-    if (pinned) return pinned
-  }
-  if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') return ''
-  return getApiUrl()
-}
 
 /**
  * The stored clip's URL: GET /api/production/audio/:uuid/stream, which reads
