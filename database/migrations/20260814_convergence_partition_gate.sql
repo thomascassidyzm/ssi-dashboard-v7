@@ -118,7 +118,64 @@ SELECT count(*) FILTER (WHERE amb_bulk_reuse)      AS bulk_reuse,
 FROM _divergence_partition WHERE bucket = 'c_unknown';
 
 -- ============================================================================
--- WHEN CONVERGENCE IS EVENTUALLY APPROVED, it operates on bucket (b) ONLY:
+-- BUCKET (c) IS PERMANENTLY UNCONVERGED. Tom's ruling, 2026-08-14.
+--
+-- This is a DELIBERATE RULING, NOT A DEFERRAL. It is not an open item, not a
+-- backlog entry, and not something a later pass should tidy up.
+--
+--   * An unprovable divergence KEEPS WHAT LEARNERS CURRENTLY HEAR. The row's
+--     existing bytes stay authoritative. Where the estate cannot prove who
+--     replaced a clip, the replacement stands.
+--
+--   * The storage cost of the 52,306 duplicate S3 objects is KNOWINGLY ACCEPTED
+--     as the price of not guessing. That cost is the deliberate purchase of not
+--     silently destroying a human correction the ledgers failed to record.
+--
+--   * The ONLY thing that may EVER reclassify a bucket-(c) row is POSITIVE
+--     EVIDENCE — specifically, a future human re-record replacing it through the
+--     new recordist pipeline, which self-resolves the row by giving it real
+--     provenance. At that point it is no longer unprovable and it belongs in
+--     bucket (a), where it is PROMOTED to canon rather than converged.
+--
+--   * NO BATCH PROCESS SHOULD EVER REVISIT BUCKET (c) SPECULATIVELY. A future
+--     sweep that finds 52,306 "unresolved" rows and decides to finish the job is
+--     the exact failure this ruling exists to prevent. There is nothing to
+--     finish.
+--
+-- ============================================================================
+-- WHAT ACTUALLY RAN, 2026-08-14 — the approved bucket-(b)-only pass.
+--
+--   partitioned            262,097
+--   (a) human-corrected      5,570  promoted, never converged  — 0 touched
+--   (b) stale/duplicate    204,221  approved for convergence
+--   (c) unknown             52,306  untouched, permanently     — 0 touched
+--
+--   converged              202,917  logged in audio_convergence_log
+--   excluded, legacy key     1,088  normalize_text(text) <> text_normalized, so
+--                                   trg_course_audio_normalize would have
+--                                   re-keyed the row on UPDATE and collided with
+--                                   unique_course_audio_per_voice
+--   excluded, dead canon       216  canonical object returns 403 — see below
+--
+-- TWO DEFECTS THIS PASS EXPOSED, both recorded because neither is fixed here:
+--
+--  1. 623 canonical clips point at 'repair-candidates/' or 'mastered-v2/'
+--     objects, which do not publicly serve. The canon-selection rule preferred
+--     the OLDEST row, and for some identities the oldest is a repair CANDIDATE —
+--     a take proposed for a human decision that was never accepted. An
+--     unaccepted candidate became canon, which is the human-outranks-canon
+--     doctrine violated in reverse. Canon selection must exclude any prefix that
+--     is not learner-serving. NOT FIXED HERE: re-selecting canon is a different
+--     write and needs its own approval.
+--
+--  2. 12 fra_for_eng rows WERE converged onto 403 objects and were RESTORED
+--     from this log (pass 'REVERT-nonserving-2026-08-14'), byte-verified serving
+--     again. Cause: the pre-flight emitted failures.slice(0, 200) beside an
+--     honest failed=212, and the caller built its exclusion set from the
+--     truncated array. Fixed in tools/canonical-audio/preflight-canon-objects.cjs.
+--
+-- ============================================================================
+-- CONVERGENCE operates on bucket (b) ONLY:
 --
 --   UPDATE course_audio ca SET s3_key = p.canon_s3_key, …
 --   FROM _divergence_partition p
