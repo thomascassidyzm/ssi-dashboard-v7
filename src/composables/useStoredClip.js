@@ -56,6 +56,39 @@ export function storedClipUrl(uuid) {
 }
 
 /**
+ * The stored clip's URL on the ONE recordist surface (/r/:voiceId), which is
+ * keyed by language + line rather than by a course_audio uuid the page has no
+ * business knowing: GET /api/recording/voice/:voiceId/line/:lineId/clip, which
+ * serves (or 302s to) the processed bytes.
+ *
+ * This is the URL the recordist's playback MUST use. The take upload also
+ * returns a clipUrl, but that is what the page thinks it uploaded; this route
+ * is what the server will actually hand a learner.
+ */
+export function recordistClipUrl(voiceId, lineId) {
+  if (!voiceId || lineId === null || lineId === undefined || lineId === '') return null
+  return `${apiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}/line/${encodeURIComponent(lineId)}/clip`
+}
+
+/**
+ * Same job as diagnoseStoredClip, pointed at the recordist route. Only paid
+ * when playback has already failed — an <audio> error carries no status code.
+ */
+export async function diagnoseRecordistClip(voiceId, lineId) {
+  const url = recordistClipUrl(voiceId, lineId)
+  if (!url) return 'No stored clip for this line.'
+  try {
+    const res = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+    if (res.status === 404) return 'The server has no stored clip for this line yet (404). It may not have finished saving.'
+    if (res.status === 409) return 'The take is registered but has no processed audio yet (409). Try again in a moment.'
+    if (!res.ok) return `The stored clip could not be fetched (${res.status}).`
+    return 'The stored clip was found but could not be played in this browser.'
+  } catch {
+    return 'Could not reach the server to fetch the stored clip.'
+  }
+}
+
+/**
  * Ask the route what actually went wrong, so the recordist reads something
  * true rather than a generic failure. An <audio> error event carries no status
  * code, so we only pay this fetch when playback has already failed.
@@ -81,16 +114,19 @@ export async function diagnoseStoredClip(uuid) {
  * Which bytes a take should be played from, and what to call them.
  *
  * `uuid` present = the server has it: play the STORED clip, say so.
- * No uuid = pre-upload state. `allowLocal` decides whether the raw local blob
+ * `storedUrl` is the same claim made by a caller whose stored clip is addressed
+ * some other way (the recordist surface addresses it by voice + line, not by
+ * uuid) — it wears exactly the same label, because it is the same promise.
+ * Neither = pre-upload state. `allowLocal` decides whether the raw local blob
  * is offered at all; when it is, it is labelled as raw, never as stored.
  *
  * Returns { source, url, playable, label, playingLabel, hint }.
  */
-export function resolveTakePlayback({ uuid = null, localUrl = null, pending = false, failed = false, allowLocal = true } = {}) {
-  if (uuid) {
+export function resolveTakePlayback({ uuid = null, storedUrl = null, localUrl = null, pending = false, failed = false, allowLocal = true } = {}) {
+  if (uuid || storedUrl) {
     return {
       source: 'stored',
-      url: storedClipUrl(uuid),
+      url: storedUrl || storedClipUrl(uuid),
       playable: true,
       label: STORED_LABEL,
       playingLabel: STORED_LABEL_PLAYING,

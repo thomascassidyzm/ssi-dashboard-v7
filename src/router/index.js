@@ -94,6 +94,14 @@ const routes = [
     component: () => import('../views/BoardReportDetail.vue'),
     meta: { title: 'Board Report - Admin' }
   },
+  // Human recording, Tom's side: the per-language flag, the coverage bar, and
+  // the link to send each recordist. Normal auth — only the /r/ surface is open.
+  {
+    path: '/admin/recording',
+    name: 'AdminRecording',
+    component: () => import('../views/AdminRecording.vue'),
+    meta: { title: 'Human Recording - Admin' }
+  },
   {
     path: '/maintenance',
     name: 'Maintenance',
@@ -373,14 +381,35 @@ const routes = [
     redirect: '/'
   },
 
-  // Record Room — minimal recording shell for voice helpers (role 'recorder').
-  // A recorder is confined here by the router guard; editors/admins can use it too.
-  // courseCode is optional so an unassigned recorder still has somewhere to land.
+  // ============================================
+  // THE ONE RECORDIST SURFACE (Tom, 2026-08-14)
+  // ============================================
+  // Link-is-identity: whoever holds /r/:voiceId IS that voice. `public: true`
+  // is doing two jobs deliberately — it exempts the route from the auth guard
+  // (no login) AND from the recorder-confinement block below (which would
+  // otherwise force-redirect role 'recorder' straight back to /record/:course),
+  // and it also hides the app navbar (AppNavbar.isHidden), so the recordist
+  // sees the line and nothing else. The queue is by LANGUAGE, never by course.
+  {
+    path: '/r/:voiceId',
+    name: 'RecordistRoom',
+    component: () => import('../views/RecordistRoom.vue'),
+    props: true,
+    meta: { title: 'Recording', public: true }
+  },
+
+  // Record Room — the OLD recording shell. Kept alive so nothing Aran already
+  // holds 404s, but a link carrying ?podVoice= (every link the cast panel ever
+  // produced) now lands on the one surface instead.
   {
     path: '/record/:courseCode?',
     name: 'RecordRoom',
     component: () => import('../views/RecordRoom.vue'),
     props: true,
+    // The ?podVoice= redirect lives in the global guard below, NOT here: a
+    // route-level beforeEnter runs AFTER beforeEach, so an anonymous Aran
+    // opening the link he already holds would be sent to Login and never reach
+    // the redirect at all.
     meta: { title: 'Record Room', requiresAuth: true }
   },
   {
@@ -753,6 +782,17 @@ router.beforeEach(async (to, from, next) => {
   document.title = to.meta.title
     ? `${to.meta.title} - Popty`
     : 'Popty v14.0.0 - SSi Course Production Dashboard'
+
+  // Every record link ever sent carried ?podVoice= — those are Aran's and
+  // Catrin's bookmarks, and they now land on the one recordist surface. This
+  // runs BEFORE the auth check on purpose: the whole point of the new surface
+  // is that holding the link is enough, so sending its old shape to Login
+  // first would break exactly the people it exists for.
+  if (to.name === 'RecordRoom' && to.query.podVoice) {
+    const v = to.query.podVoice
+    const voiceId = Array.isArray(v) ? v[0] : v
+    if (voiceId) return next({ name: 'RecordistRoom', params: { voiceId }, replace: true })
+  }
 
   // Public routes (login, auth verify) don't need auth
   if (to.meta.public) return next()

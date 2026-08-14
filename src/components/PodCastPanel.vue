@@ -582,8 +582,12 @@ const allocation = computed(() => {
 
 // ── Record links ─────────────────────────────────────────────────────────────
 
+// The record link IS the recordist's identity, and the queue behind it is by
+// LANGUAGE, not by course — so the link carries the voice and nothing else.
+// Links already sent in the old /record/:course?podVoice= shape keep working:
+// the router redirects them here (src/router/index.js, RecordRoom beforeEnter).
 function recordLink(voiceId) {
-  return `${window.location.origin}/record/${props.courseCode}?podVoice=${encodeURIComponent(voiceId)}`
+  return `${window.location.origin}/r/${encodeURIComponent(voiceId)}`
 }
 
 async function copyRecordLink(voiceId) {
