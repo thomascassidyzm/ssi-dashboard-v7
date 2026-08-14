@@ -77,7 +77,7 @@
 
         <!-- Empty -->
         <div v-if="queue.length === 0" class="py-8 text-center text-faint">
-          No clips flagged for repair in {{ courseCode }}.
+          No clips flagged for repair in {{ getCourseName(courseCode) }}.
         </div>
 
         <!-- Queue -->
@@ -345,6 +345,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { useCourses } from '@/composables/useCourses'
 import AudioTailScanSection from './AudioTailScanSection.vue'
 
 function getApiBaseUrl() {
@@ -361,6 +362,8 @@ const props = defineProps({
     default: 0
   }
 })
+
+const { getCourseName } = useCourses()
 
 const emit = defineEmits(['accepted'])
 
