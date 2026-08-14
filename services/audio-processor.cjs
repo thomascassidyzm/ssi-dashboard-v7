@@ -899,7 +899,7 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
     // start_duration is NOT its sibling: it is the amount of non-silence that
     // must accumulate before trimming stops, and everything before that point
     // is DISCARDED — including the audio that proved it was not silence. The
-    // old `start_silence=0.05` here therefore destroyed exactly 100ms off the
+    // old `start_duration=0.1` here therefore destroyed exactly 100ms off the
     // front of every human take, and the areverse sandwich did the same to the
     // tail. Measured on a 1.000s tone padded with silence: out at 0.799s.
     // With start_silence the same tone comes out whole (see the T-20
