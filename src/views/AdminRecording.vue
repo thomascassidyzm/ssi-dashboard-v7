@@ -63,6 +63,9 @@
 // screen someone still had to read.
 import { ref, onMounted } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { useAuth } from '@/composables/useAuth'
+
+const { getAccessToken } = useAuth()
 
 const rows = ref([])
 const loading = ref(true)
@@ -72,6 +75,18 @@ const copied = ref(null)
 
 function apiBase() {
   return (typeof localStorage !== 'undefined' && localStorage.getItem('api_base_url')) || getApiUrl()
+}
+
+// The estate authorises /api/* off a Supabase bearer token, not a cookie —
+// every other production-api caller in this app does the same. (credentials:
+// 'include' is not just unnecessary here, it is fatal: a server answering
+// Access-Control-Allow-Origin:* fails the credentialed CORS check outright.)
+async function authHeaders() {
+  const token = await getAccessToken()
+  return {
+    'ngrok-skip-browser-warning': 'true',
+    ...(token ? { Authorization: `Bearer ${token}` } : {})
+  }
 }
 
 function pct(n, total) {
@@ -102,9 +117,7 @@ async function load() {
   loading.value = true
   error.value = null
   try {
-    const res = await fetch(`${apiBase()}/api/recording/coverage`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }, credentials: 'include'
-    })
+    const res = await fetch(`${apiBase()}/api/recording/coverage`, { headers: await authHeaders() })
     if (!res.ok) throw new Error(`Could not load coverage (${res.status})`)
     const data = await res.json()
     rows.value = Array.isArray(data) ? data : (data.languages || [])
@@ -120,8 +133,7 @@ async function toggle(row, humanOnly) {
   try {
     const res = await fetch(`${apiBase()}/api/recording/languages/${encodeURIComponent(row.language)}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      credentials: 'include',
+      headers: { ...(await authHeaders()), 'Content-Type': 'application/json' },
       body: JSON.stringify({ humanOnly })
     })
     if (!res.ok) throw new Error(`Could not save (${res.status})`)

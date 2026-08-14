@@ -34,7 +34,7 @@
       <div v-if="recorder.devices.value.length > 1" class="mic-pick">
         <label class="mic-label">Microphone</label>
         <select v-model="selectedDeviceId" class="mic-select">
-          <option v-for="d in recorder.devices.value" :key="d.deviceId" :value="d.deviceId">{{ d.label }}</option>
+          <option v-for="(d, i) in recorder.devices.value" :key="d.deviceId" :value="d.deviceId">{{ d.label || `Microphone ${i + 1}` }}</option>
         </select>
       </div>
 
@@ -439,7 +439,7 @@ watch(() => props.voiceId, load, { immediate: true })
 }
 @keyframes rc-spin { to { transform: rotate(360deg); } }
 
-.how-to { margin: 0 0 1.25rem; padding-left: 1.2rem; color: var(--color-paper-dim, #c1c1bb); font-size: 0.95rem; line-height: 1.75; }
+.how-to { list-style: decimal outside; margin: 0 0 1.25rem; padding-left: 1.4rem; color: var(--color-paper-dim, #c1c1bb); font-size: 0.95rem; line-height: 1.75; }
 .how-to strong { color: var(--color-paper, #f7f7f2); }
 kbd {
   font-family: 'IBM Plex Mono', monospace; font-size: 0.78em;
