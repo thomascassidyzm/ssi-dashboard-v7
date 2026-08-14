@@ -195,6 +195,28 @@ async function uploadRecording(courseCode, uuid, audioBuffer, metadata = {}, opt
   return { uuid, key, uploaded: true }
 }
 
+// Retain a voice actor's UNTOUCHED take at raw/{UUID}.{ext}.
+// The bytes are stored exactly as the client sent them — no transcode, no trim,
+// no normalisation — because every destructive step downstream has no undo
+// (T-20: 107 butchered Welsh clips, zero recoverable originals). Same uuid as
+// the mastered object, so the join is a string swap.
+// Metadata stays short (the mastered key + a couple of ids): S3 caps TOTAL user
+// metadata at 2KB, and Supabase holds the truth.
+async function uploadRawTake({ key, buffer, contentType = 'application/octet-stream', metadata = {} }) {
+  const command = new PutObjectCommand({
+    Bucket: BUCKET,
+    Key: key,
+    Body: buffer,
+    ContentType: contentType,
+    Metadata: toS3Metadata({
+      retainedAt: new Date().toISOString(),
+      ...metadata
+    })
+  })
+  await s3Client.send(command)
+  return { key, bytes: buffer.length, uploaded: true }
+}
+
 // Batch check if audio files exist in ssi-audio-stage bucket
 async function batchCheckAudio(uuids, bucket = process.env.S3_BUCKET || 'ssi-audio-stage') {
   const results = {}
@@ -236,5 +258,6 @@ module.exports = {
   getAudioSignedUrl,
   audioFileExists,
   uploadRecording,
+  uploadRawTake,
   toS3Metadata
 }

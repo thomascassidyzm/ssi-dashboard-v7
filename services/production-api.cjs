@@ -28,7 +28,7 @@ const publishManifestService = require('./publish-manifest-service.cjs')
 const manifestDiffService = require('./manifest-diff-service.cjs')
 const languageCodeService = require('./language-code-service.cjs')
 const { decomposeText } = require('./phrase-decomposer.cjs')
-const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId } = require('./recording-upload-helpers.cjs')
+const { isScriptModeUpload, normalizeProvenance, buildProvenanceContext, resolveTakeVoiceId, retainAndProcessTake } = require('./recording-upload-helpers.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
 const podVoiceApprovals = require('./pod-voice-approvals.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
@@ -4939,54 +4939,19 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     const rawBuffer = Buffer.from(audioData, 'base64')
     logger.log(`[Upload] Received ${rawBuffer.length} bytes for ${audioId}${isScriptMode ? ' (script mode, server-minted)' : ''}`)
 
-    // Determine input format from MIME type
-    let inputFormat = 'webm'
-    if (mimeType.includes('mp3')) inputFormat = 'mp3'
-    else if (mimeType.includes('wav')) inputFormat = 'wav'
-    else if (mimeType.includes('m4a') || mimeType.includes('mp4')) inputFormat = 'm4a'
-    else if (mimeType.includes('ogg')) inputFormat = 'ogg'
-
-    // Process audio: convert to MP3, normalize, trim silence
-    logger.log(`[Upload] Processing audio (format: ${inputFormat})...`)
-    const { buffer: processedBuffer, metadata: audioMeta } = await audioProcessor.processRecordingBuffer(
-      rawBuffer,
-      {
-        inputFormat,
-        trimSilence: true,
-        normalize: true,
-        targetLUFS: -16
-      }
-    )
-
-    // REFUSE unprocessed audio. processRecordingBuffer falls back to returning
-    // the ORIGINAL buffer when ffmpeg/lame are missing or the encode fails —
-    // storing that would put raw WebM/Opus bytes at a mastered/*.mp3 key,
-    // un-normalised and un-trimmed, while the recorder got a 200 and moved on.
-    // That is the silent-corruption case: a whole session can be lost before
-    // anyone notices. Fail BEFORE the S3 PUT (same principle as the uuid
-    // lookup above — a bad take must never orphan bytes) so the client's
-    // upload queue marks it failed and the take stays visible as missing.
-    if (!audioMeta.processed) {
-      logger.error(`[Upload] REFUSED unprocessed audio for ${audioId}: ${audioMeta.reason}`)
-      return res.status(500).json({
-        error: `Audio processing failed on the server, so this take was not saved: ${audioMeta.reason || 'unknown reason'}`,
-        processed: false,
-      })
-    }
-
-    logger.log(`[Upload] Audio processed: ${audioMeta.inputSize} -> ${audioMeta.outputSize} bytes, duration: ${audioMeta.durationMs}ms`)
-
-    // REFUSE a take that processed "successfully" into no audio. The trim filter
-    // (silenceremove at -40dB) strips a silent or muted-mic take down to nothing:
-    // ffmpeg exits 0, lame writes an 834-byte header-only MP3 that ffprobe cannot
-    // even decode ("Failed to find two consecutive MPEG audio frames"), and the
-    // recorder got a 200 with success:true. That is the 2026-08-06 Welsh bug —
-    // bookkeeping said recorded, the learner got silence. In regeneration/pod mode
-    // it repoints a real phrase row at an unplayable stub. Refuse BEFORE the S3 PUT
-    // (same principle as the uuid lookup above — a bad take must never orphan
-    // bytes) so the client's upload queue marks it failed and the take stays
-    // visible as missing. Threshold is deliberately low so that it only catches
-    // silence, muted mics and stray clicks, never a real word.
+    // The silent-take floor, enforced inside retainAndProcessTake below.
+    //
+    // A take that processed "successfully" into no audio is refused: the trim
+    // filter (silenceremove at -40dB) strips a silent or muted-mic take down to
+    // nothing — ffmpeg exits 0, lame writes an 834-byte header-only MP3 that
+    // ffprobe cannot even decode ("Failed to find two consecutive MPEG audio
+    // frames"), and the recorder got a 200 with success:true. That is the
+    // 2026-08-06 Welsh bug — bookkeeping said recorded, the learner got silence.
+    // In regeneration/pod mode it repoints a real phrase row at an unplayable
+    // stub. Refused BEFORE the S3 PUT (same principle as the uuid lookup above —
+    // a bad take must never orphan bytes) so the client's upload queue marks it
+    // failed and the take stays visible as missing. Threshold is deliberately low
+    // so that it only catches silence, muted mics and stray clicks, never a word.
     //
     // The old note here read "the trim is aggressive — a synthesised 350ms tone
     // comes out the far side at 150ms". That was the T-20 bug being observed and
@@ -4995,15 +4960,59 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     // A 350ms tone now survives as ~350ms, so this guard has MORE headroom than
     // when it was written, not less. It stays as the silent-take backstop.
     const MIN_TAKE_MS = 100
-    if (!audioMeta.durationMs || audioMeta.durationMs < MIN_TAKE_MS) {
-      logger.error(`[Upload] REFUSED silent/empty take for ${audioId}: ${audioMeta.durationMs}ms after trim, ${audioMeta.outputSize} bytes`)
-      return res.status(422).json({
-        error: `This take contains no audible speech (${audioMeta.durationMs || 0}ms after silence trimming, minimum ${MIN_TAKE_MS}ms), so it was not saved. Check the microphone is live and record it again.`,
-        processed: true,
-        silent: true,
-        durationMs: audioMeta.durationMs || 0,
-      })
+
+    // RETAIN THE RAW TAKE, THEN PROCESS — the order is deliberate and load-bearing.
+    //
+    // Until now the raw container lived only in this request-local buffer and was
+    // gone the moment the handler returned; only the processed MP3 was ever PUT.
+    // That is why the originals of 107 butchered Welsh clips do not exist anywhere
+    // in ssi-audio-stage (T-20 post-mortem): every destructive step in the chain
+    // had no undo. A voice actor's take is irreplaceable — archive it first.
+    //
+    // The archive write happens BEFORE processing so that even a take this handler
+    // goes on to REFUSE (unprocessable, or nothing audible after the trim — both
+    // below, both unchanged) still has its original kept. A refused take is exactly
+    // the one someone will want to recover or diagnose. Orphans under raw/ are
+    // acceptable and wanted; orphans under mastered/ are not, which is why the two
+    // refusals still sit before the mastered PUT.
+    //
+    // A failed archive write does NOT fail the take (retainAndProcessTake swallows
+    // and logs it) — losing the upload because the archive PUT failed would be
+    // worse than the problem being solved.
+    logger.log(`[Upload] Retaining raw take + processing (mimeType: ${mimeType})...`)
+    const take = await retainAndProcessTake({
+      rawBuffer,
+      mimeType,
+      s3KeyUuid,
+      audioId,
+      minTakeMs: MIN_TAKE_MS,
+      logger,
+      retainRaw: ({ rawKey, buffer, contentType }) => s3Service.uploadRawTake({
+        key: rawKey,
+        buffer,
+        contentType,
+        metadata: {
+          courseCode,
+          audioId,
+          masteredKey: s3Key,
+          mimeType,
+          via: 'recording'
+        }
+      }),
+      processRecording: (buffer, options) => audioProcessor.processRecordingBuffer(buffer, options)
+    })
+
+    const rawKey = take.rawKey
+    const { audioMeta } = take
+
+    // Both refusals are the pre-existing ones, verbatim: unprocessable audio (500)
+    // and a take that trimmed down to nothing (422). They still fire BEFORE the
+    // mastered PUT — the raw is already archived by this point, and the response
+    // now carries its key so a refused take is recoverable.
+    if (take.refused) {
+      return res.status(take.refused.status).json(take.refused.body)
     }
+    const processedBuffer = take.processedBuffer
 
     // Upload processed audio to S3 at the canon mastered/{UUID}.mp3 key.
     // S3 user metadata rides in HTTP headers with a 2KB total cap — long target
@@ -5015,7 +5024,11 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
       ...s3SafeMetadata,
       recordedBy: 'human',
       via: 'recording',
-      audioProcessing: audioMeta
+      audioProcessing: audioMeta,
+      // Pointer to this clip's untouched original (raw/{UUID}.{ext}). A short
+      // key, never text — S3 caps TOTAL user metadata at 2KB. Null when the
+      // archive write failed, so the object never claims an original it lacks.
+      rawKey: rawKey || null
     }, { s3Key })
 
     // Regeneration mode: repoint the course_audio row at the fresh human take.
@@ -5129,6 +5142,7 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
         metadata,
         provenance: prov,
         s3Key,
+        rawS3Key: rawKey,
         courseAudioId: isPodMode
           ? (podResult ? podResult.audioRow.id : null)
           : (existingRow ? uuid : null),
@@ -5202,6 +5216,7 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
         }
       } : {}),
       s3Key: s3Key || null,
+      rawKey: rawKey || null,
       uploaded: true,
       audioProcessing: audioMeta.processed ? {
         durationMs: audioMeta.durationMs,
