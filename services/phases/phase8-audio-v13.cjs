@@ -47,7 +47,7 @@ const { claudeChat, HAIKU_MODEL } = require('../shared/claude-cli.cjs')
 const presentationAuthor = require('./presentation-author.cjs')
 const { emitProgress } = require('../shared/emit-progress.cjs')
 const { fulfillAudioPassRequests } = require('../shared/audio-pass-queue.cjs')
-const { isHumanVoiceCourse } = require('../shared/human-voice-courses.cjs')
+const { isHumanVoiceCourse, HUMAN_VOICE_TARGET_LANGS } = require('../shared/human-voice-courses.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
 const { toIso3, getName: getLangEnglishName, databaseToManifest, getAzureLocale } = require('../language-code-service.cjs')
@@ -621,6 +621,56 @@ async function executeCopyBucket(courseCode, knownLang, toCopy) {
   return { copied, failed }
 }
 
+/**
+ * The set of languages recorded by humans, never by TTS.
+ *
+ * TWO SOURCES, UNIONED, AND THE DIRECTION MATTERS.
+ *
+ * 1. services/shared/human-voice-courses.cjs — the hard floor. Welsh, Breton and
+ *    Pennsylvania Dutch are there by explicit owner rulings (2026-07-25,
+ *    2026-07-27, 2026-08-13, 2026-08-14) and that file says, deliberately, that
+ *    there is NO runtime bypass: putting one of them back in a render queue is a
+ *    code change signed off by Tom, and nothing cheaper counts.
+ *
+ * 2. language_recording_policy.human_only — the new per-language flag (Tom,
+ *    2026-08-14), so a language we decide we have no TTS voice for can be turned
+ *    on from the admin surface without a deploy.
+ *
+ * The flag is strictly ADDITIVE: it can only ever ADD a language to human-only,
+ * never remove one the hard floor names. If it could subtract, then a stray
+ * toggle — or a bad row — would quietly resurrect the exact ~23,442-clip Welsh
+ * render the 2026-08-13 recount proposed, over 91% already-human-recorded texts.
+ * Tom asked for one control surface, not for a weaker guarantee.
+ *
+ * Cached for a minute: /generate asks per course, and the answer only changes
+ * when a human flips a flag.
+ */
+let _humanOnlyCache = { at: 0, set: null }
+async function getHumanOnlyLanguages() {
+  const now = Date.now()
+  if (_humanOnlyCache.set && now - _humanOnlyCache.at < 60_000) return _humanOnlyCache.set
+
+  // The hard floor, canonicalised so 'cym_n'/'cym_s' collapse onto 'cym'.
+  const floor = new Set()
+  for (const l of HUMAN_VOICE_TARGET_LANGS) floor.add(tryCanonicalLanguage(l) || l)
+
+  try {
+    const { data, error } = await supabase
+      .from('language_recording_policy')
+      .select('language')
+      .eq('human_only', true)
+    if (error) throw error
+    for (const r of (data || [])) floor.add(r.language)
+  } catch (e) {
+    // The floor still applies — only the additive half is lost, and it is
+    // logged rather than swallowed.
+    logger.error(`getHumanOnlyLanguages: could not read language_recording_policy (${e.message}) — falling back to the hard-coded floor only`)
+  }
+
+  _humanOnlyCache = { at: now, set: floor }
+  return floor
+}
+
 async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = false, seeds = null) {
   const PAGE_SIZE = 1000
   // Optional incremental scope: when `seeds` is a non-empty array, every query is
@@ -956,14 +1006,42 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     toGenerate.map(n => [`${normalizeText(n.text)}|${n.language}|${n.role}`, n])
   ).values()]
 
+  // Step 4.4: HUMAN-ONLY LANGUAGES NEVER GO TO TTS.
+  //
+  // Tom, 2026-08-14: human recording exists for "any languages WE DECIDE we
+  // don't have the TTS voices for". That decision lives in exactly one place —
+  // language_recording_policy.human_only — and this is the single point where it
+  // bites: a slot in a flagged language is not missing audio we should render,
+  // it is audio that is WAITING FOR A PERSON.
+  //
+  // Held items are counted and returned, never silently dropped: a queue that
+  // quietly shrinks reads as "covered" when it is not. They stay visible as
+  // humanOnlyHeld so the dashboard can say "waiting on a human" rather than
+  // pretending the work does not exist.
+  //
+  // This deliberately does NOT touch existing TTS clips already rendered in a
+  // flagged language. Retiring those is a separate, destructive decision and it
+  // is Tom's to make.
+  const humanOnlyLangs = await getHumanOnlyLanguages()
+  const heldForHumans = []
+  const renderable = []
+  for (const item of dedupedToGenerate) {
+    const lang = tryCanonicalLanguage(item.language)
+    if (lang && humanOnlyLangs.has(lang)) heldForHumans.push(item)
+    else renderable.push(item)
+  }
+  if (heldForHumans.length) {
+    logger.info(`getAudioNeeds(${courseCode}): holding ${heldForHumans.length} item(s) for human recording (human-only language)`)
+  }
+
   // Step 4.5: "Clone once, copy everywhere" — pull English items (known-role
   // for X_for_eng, target-role for eng_for_X) that already exist as rendered
   // audio elsewhere out of toGenerate and into a distinct toCopy bucket, so
   // /generate copies them (no TTS) instead of re-rendering. See
   // classifyEnglishCopyBucket() above.
   const { toGenerate: uniqueToGenerate, toCopy } = forceGenerate
-    ? { toGenerate: dedupedToGenerate, toCopy: [] }
-    : await classifyEnglishCopyBucket(courseCode, course, dedupedToGenerate)
+    ? { toGenerate: renderable, toCopy: [] }
+    : await classifyEnglishCopyBucket(courseCode, course, renderable)
 
   // Step 5: presentation readiness is informational only now — /generate
   // authors missing intro text itself (frame judgment), so nothing gates on
@@ -1042,6 +1120,9 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     toAuthor,
     stalePendingIds,
     stats,
+    // Items in a human-only language: real work, waiting on a person, never on
+    // TTS. Surfaced rather than dropped so "missing" never reads as "covered".
+    humanOnlyHeld: heldForHumans,
     // The text stage is folded into /generate — never gate on it again.
     readyForGenerate: true,
     presentationStatus
