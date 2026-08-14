@@ -447,6 +447,21 @@ app.use('/api/production/:courseCode/audio-preview',
     logger,
   }))
 
+// The ONE recordist surface. Top-level /api/recording/* on purpose: this queue
+// is derived BY LANGUAGE across every course (language_recording_policy), so it
+// has no :courseCode to be scoped by, and its three recordist routes are
+// deliberately unauthenticated — the link IS the identity. The admin routes it
+// carries (/languages) take requireAdmin.
+// Mounted AFTER handleRecordingUpload is defined (hoisted function declaration),
+// which it calls rather than duplicating the upload seam.
+app.use('/api/recording',
+  require('./voice-engine/recordist-router.cjs')({
+    getDb: () => (supabaseClient.isInitialized() ? supabaseClient.getClient() : null),
+    logger,
+    requireAdmin,
+    handleRecordingUpload,
+  }))
+
 // Course QA / approval gate: per-round human play-through sign-off, derived
 // per-cycle verification status, and the publish block that stops a course
 // reaching learners unsigned. Mounted on its own top-level /api/qa-gate/*
@@ -4866,7 +4881,15 @@ app.get('/api/production/:courseCode/audio/by-text', async (req, res) => {
 
 // Upload human recording
 // POST /api/production/:courseCode/recording/upload
-app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
+//
+// Extracted from its route closure so the recordist surface
+// (/api/recording/voice/:voiceId/take, services/voice-engine/recordist-router.cjs)
+// can hand a take to THIS handler instead of growing a second uploader. The
+// recordist route adapts its multipart body into the shape below and calls
+// handleRecordingUpload directly — which is what keeps raw/{UUID}.{ext}
+// archive-before-process, the two refusals, provenance and pod registration
+// identical on both surfaces, with one set of tests over them.
+async function handleRecordingUpload(req, res) {
   try {
     const { courseCode } = req.params
     const {
@@ -4909,7 +4932,11 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
         return res.status(503).json({ error: 'Supabase not initialized — pod recordings cannot be registered' })
       }
       const prep = await podsRegistration.preparePodRegistration({
-        supabase: supabaseClient.getClient(), courseCode, metadata, logger
+        supabase: supabaseClient.getClient(), courseCode, metadata, logger,
+        // Set ONLY by the recordist surface, which resolved the voice from
+        // language_recording_policy before it got here (req.recordistVoiceId).
+        // Absent on every other caller, so the cast stays authoritative there.
+        forcedVoiceId: req.recordistVoiceId || null
       })
       if (prep.error) return res.status(prep.status || 400).json({ error: prep.error })
       podContext = prep.context
@@ -5230,7 +5257,9 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     logger.error('Error uploading recording:', error)
     res.status(500).json({ error: error.message })
   }
-})
+}
+
+app.post('/api/production/:courseCode/recording/upload', handleRecordingUpload)
 
 // Helper function to proxy requests to Phase 8 Audio Generator (port 3465)
 async function proxyToPhase8(method, path, body = null) {
