@@ -81,8 +81,19 @@
       <p class="stage-progress">{{ progressWords }}</p>
 
       <div class="line-well">
-        <p class="line-target">{{ current?.text }}</p>
+        <!-- Narration lines carry <src>/<tgt> markup. Parsed into segments in
+             JS and rendered as spans — never v-html, because this is database
+             text and never as a raw string, because then the recordist reads
+             the angle brackets aloud. -->
+        <p class="line-target">
+          <span
+            v-for="(seg, i) in currentSegments"
+            :key="i"
+            :class="['seg', 'seg-' + seg.kind]"
+          >{{ seg.text }}</span>
+        </p>
         <p v-if="current?.knownText" class="line-known">{{ current.knownText }}</p>
+        <p v-if="current?.rerecordReason" class="line-why">{{ current.rerecordReason }}</p>
       </div>
 
       <!-- Hear the STORED clip of the line just read: the served bytes, never
@@ -204,6 +215,41 @@ const recordedCount = computed(() => lines.value.reduce((n, l) => n + (isRecorde
 const progressWords = computed(() => `${recordedCount.value} of ${lines.value.length} recorded`)
 
 const current = computed(() => lines.value[index.value] || null)
+
+/**
+ * Split a line into readable segments.
+ *
+ * Pod dialogue is plain text and comes back as a single segment. LEGO narration
+ * — which reaches the queue because the queue is content-type-agnostic — is
+ * stored with markup:
+ *
+ *   The Welsh for <src>are they?</src> is <tgt>ydyn nhw?</tgt> <tgt>Ydyn nhw?</tgt>
+ *
+ * Rendered raw, the recordist sees and reads the tags. So the tags are parsed
+ * out here and each part carries its own class: the known-language part and the
+ * target part look different on screen, and the recordist just reads the words.
+ * Done with a parser rather than v-html because this is database content and
+ * v-html on database content is an injection waiting to happen.
+ */
+function segmentsFor(text) {
+  const raw = String(text || '')
+  if (!raw) return []
+  const out = []
+  const re = /<(src|tgt)>([\s\S]*?)<\/\1>/g
+  let at = 0
+  let m
+  while ((m = re.exec(raw)) !== null) {
+    if (m.index > at) out.push({ kind: 'plain', text: raw.slice(at, m.index) })
+    out.push({ kind: m[1], text: m[2] })
+    at = m.index + m[0].length
+  }
+  if (at < raw.length) out.push({ kind: 'plain', text: raw.slice(at) })
+  // Any stray unmatched tag would still be visible, so strip the shape itself
+  // as a last resort rather than showing a half-tag.
+  return out.map(s => ({ ...s, text: s.text.replace(/<\/?(?:src|tgt)>/g, '') }))
+}
+
+const currentSegments = computed(() => segmentsFor(current.value?.text))
 
 const startIndex = computed(() => {
   if (!lines.value.length) return -1
@@ -531,6 +577,14 @@ kbd {
 .line-known {
   margin: 1rem 0 0; font-size: 1rem; line-height: 1.5;
   color: var(--color-paper-dim, #c1c1bb); opacity: 0.75;
+}
+/* Narration segments. The words the recordist says are all of them — these only
+   make the two languages tellable apart at a glance, never add anything to read. */
+.seg-src { color: var(--color-paper-dim, #c1c1bb); font-style: italic; }
+.seg-tgt { color: var(--color-emerald, #06ffa5); }
+.line-why {
+  margin: 0.75rem 0 0; font-size: 0.85rem; line-height: 1.4;
+  color: var(--color-paper-dim, #c1c1bb); opacity: 0.6;
 }
 
 .hear-bar {

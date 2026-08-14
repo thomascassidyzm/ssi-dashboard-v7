@@ -498,40 +498,52 @@ async function recordedTextKeys(db, recordist) {
  */
 async function buildCoverage(db) {
   const policies = await loadPolicies(db, { humanOnlyOnly: true })
-  const out = []
-  for (const policy of policies) {
+
+  // CONCURRENTLY, because this is Tom's dashboard and it was costing him the
+  // page. Done language-by-language it took 7.7s cold against the live estate —
+  // inside the estate's own 8s statement budget by a hair, which is to say it
+  // failed for whoever loaded it first with a cold cache. The languages share no
+  // state, so the wall clock should be the slowest ONE, not the sum of all of
+  // them. Same reasoning for the two voices inside a language.
+  const out = await Promise.all(policies.map(async (policy) => {
     const voices = policy.voices || {}
     // ONE pass over the language's pods, whatever the cast size — and it runs
     // even when the language has no cast at all, which is the only way pdc's
     // and bre's uncast lines are visible rather than reported as a flat zero.
     const language = await buildLanguageLines(db, policy.language)
-    const entry = {
-      language: policy.language,
-      languageName: languageName(policy.language),
-      humanOnly: true,
-      total: 0,
-      recorded: 0,
-      uncast: language.uncast,
-      pct: 0,
-      voices: [],
-    }
-    for (const gender of Object.keys(voices)) {
+
+    const perVoice = (await Promise.all(Object.keys(voices).map(async (gender) => {
       const recordist = await resolveRecordist(db, voices[gender].voiceId)
-      if (!recordist) continue
+      if (!recordist) return null
       const q = await finishQueue(db, recordist, language.byGender.get(recordist.gender) || [], language, { includeRecorded: true })
-      entry.total += q.total
-      entry.recorded += q.recorded
-      entry.voices.push({
+      return {
         voiceId: recordist.voiceId,
         name: recordist.displayName,
         gender: recordist.gender,
         total: q.total,
         recorded: q.recorded,
-      })
+      }
+    }))).filter(Boolean)
+
+    // Ordered by gender so the bar does not reshuffle between two loads.
+    perVoice.sort((a, b) => String(a.gender).localeCompare(String(b.gender)))
+
+    const total = perVoice.reduce((n, v) => n + v.total, 0)
+    const recorded = perVoice.reduce((n, v) => n + v.recorded, 0)
+    return {
+      language: policy.language,
+      languageName: languageName(policy.language),
+      humanOnly: true,
+      total,
+      recorded,
+      uncast: language.uncast,
+      pct: total ? Math.round((recorded / total) * 1000) / 10 : 0,
+      voices: perVoice,
     }
-    entry.pct = entry.total ? Math.round((entry.recorded / entry.total) * 1000) / 10 : 0
-    out.push(entry)
-  }
+  }))
+
+  // Stable order for the dashboard.
+  out.sort((a, b) => a.language.localeCompare(b.language))
   return out
 }
 
