@@ -158,38 +158,46 @@ WHERE c.text_key = s.text_key
   AND c.role     = s.role
   AND c.voice_id = s.voice_id;
 
-CREATE INDEX IF NOT EXISTS _canon_stage_clip ON _canon_stage (audio_id) INCLUDE (clip_id);
+-- Batch membership is decided ONCE, here, not re-derived per batch.
+--
+-- The first attempt looped `SELECT … WHERE ca.clip_id IS DISTINCT FROM s.clip_id
+-- LIMIT 50000`, which looks like the obvious resumable batch and is quadratic:
+-- every pass re-scans the rows it already linked to find 50,000 it has not. It
+-- linked 600,000 rows and then crawled. A precomputed batch number turns each
+-- pass into an index range scan that cannot see the finished work at all.
+ALTER TABLE _canon_stage ADD COLUMN IF NOT EXISTS batch_no int;
+UPDATE _canon_stage SET batch_no = (rn - 1) / 50000
+FROM (SELECT audio_id, row_number() OVER (ORDER BY audio_id) AS rn FROM _canon_stage) o
+WHERE o.audio_id = _canon_stage.audio_id;
+CREATE INDEX IF NOT EXISTS _canon_stage_batch ON _canon_stage (batch_no) INCLUDE (audio_id, clip_id);
 ANALYZE _canon_stage;
 
--- Batched, so no single transaction holds row locks on a live table for half an
+-- Batched so no single transaction holds row locks on a live table for half an
 -- hour. Live render workers are inserting into course_audio throughout.
 SET session_replication_role = replica;
 
 DO $$
 DECLARE
-  batch    int := 50000;
+  b        int := 0;
+  max_b    int;
   moved    bigint;
   total    bigint := 0;
 BEGIN
-  LOOP
-    WITH todo AS (
-      SELECT s.audio_id, s.clip_id
-      FROM _canon_stage s
-      JOIN course_audio ca ON ca.id = s.audio_id
-      WHERE s.clip_id IS NOT NULL
-        AND ca.clip_id IS DISTINCT FROM s.clip_id
-      LIMIT batch
-    )
+  SELECT max(batch_no) INTO max_b FROM _canon_stage;
+  WHILE b <= max_b LOOP
     UPDATE course_audio ca
-    SET clip_id = todo.clip_id
-    FROM todo
-    WHERE ca.id = todo.audio_id;
+    SET clip_id = s.clip_id
+    FROM _canon_stage s
+    WHERE s.batch_no = b
+      AND s.clip_id IS NOT NULL
+      AND ca.id = s.audio_id
+      AND ca.clip_id IS DISTINCT FROM s.clip_id;
 
     GET DIAGNOSTICS moved = ROW_COUNT;
     total := total + moved;
-    EXIT WHEN moved = 0;
-    RAISE NOTICE 'linked % (total %)', moved, total;
     COMMIT;
+    RAISE NOTICE 'batch %/% linked % (total %)', b, max_b, moved, total;
+    b := b + 1;
   END LOOP;
   RAISE NOTICE 'LINK DONE: % rows', total;
 END $$;
