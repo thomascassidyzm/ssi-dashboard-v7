@@ -6450,6 +6450,11 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
     const ctx = await getCourseContext(courseCode)
     const pods = await loadPodsForPlan(courseCode, podIds)
 
+    // Surfaced here too, so the uncast-speaker refusal is visible from the plan
+    // rather than only when you try to render. Advisory in /plan-pods (which
+    // spends nothing); the refusal itself lives in /generate-pods.
+    const uncastSpeakers = podApprovals.findUncastSpeakers(pods)
+
     const podPlans = []
     let totalChars = 0
     let totalMissing = 0
@@ -6491,6 +6496,8 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
       total_chars: totalChars,
       estimated_cost_usd: +(totalChars * POD_CHARS_TO_COST).toFixed(4),
       pods: podPlans,
+      uncast_speakers: uncastSpeakers,
+      blocked_by_uncast_speakers: uncastSpeakers.length > 0,
     })
   } catch (err) {
     logger.error(`[Pods /plan-pods] ${err.message}`)
@@ -6575,6 +6582,24 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     }
 
     const pods = await loadPodsForPlan(courseCode, podIds)
+
+    // UNCAST-SPEAKER HARD GATE (Tom's ruling, 2026-08-14 — the Thai cast gap).
+    // Runs in BOTH modes, and BEFORE any spend: a speaker label that appears in
+    // the sentence rows but has no key in listening_pods.speakers resolves to
+    // speakers._default in resolvePodSpeakerVoice() and renders on the wrong
+    // voice, silently. Sample mode is not exempt — a sample that renders an
+    // uncast role on the default voice is precisely the thing being approved by
+    // mistake. General check, no per-course special cases.
+    const uncast = podApprovals.findUncastSpeakers(pods)
+    if (uncast.length) {
+      logger.warn(`[Pods] UNCAST SPEAKERS REFUSED ${courseCode}: ${uncast.map(u => `${u.speaker}×${u.lines}`).join(', ')}`)
+      return res.status(409).json({
+        error: 'pod_speakers_uncast',
+        course_code: courseCode,
+        message: podApprovals.describeUncastSpeakers(uncast),
+        uncast_speakers: uncast,
+      })
+    }
 
     // CROSS-COURSE CANON REUSE (Tom, 2026-08-11). Read canon once per run and
     // work out, per pod, which of its lines are byte-identical canonical pod-0

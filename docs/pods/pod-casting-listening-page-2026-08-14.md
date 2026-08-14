@@ -6,6 +6,8 @@
 
 English is not on this page — Olivia and your clone are already approved and unaffected.
 
+**One extra ask, in the Thai section only.** Thai has five speaker roles with nobody cast, 43 lines that were about to render on one male default voice — 18 of them written female. It is at the end of `tha`, it needs a word rather than an ear, and the Thai render is blocked in code until it gets one.
+
 ---
 
 ## Arabic (MSA)  `ara`
@@ -943,6 +945,46 @@ https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/DC06318D-E4D2-477C-8
 *ara* — male, xai, 59 clips
 
 https://ssi-audio-stage.s3.eu-west-1.amazonaws.com/mastered/C169EE65-F7DC-4024-AF83-B595CDCF403D.mp3
+
+### Thai also has five roles with nobody cast at all
+
+Separate from the male/female pick above, and worth thirty seconds while you are here. Five speaker labels in `tha_for_eng:pod-0-unrecorded` have no entry in the cast at all — **43 lines**. Phase 8 resolves an unknown label to the pod's `_default` voice and says nothing, so every one of those lines was going to render as **Krit** — male, xai — including **18 lines written female**. That render is now blocked in code and stays blocked until this is settled.
+
+**The diagnosis is that this is a labelling accident, not a casting gap.** The cast already holds the recorded pod's scene-specific names. The unrecorded pod uses generic ones for the same characters, in the same scenes, with the same line counts:
+
+| uncast label | lines | scene | the already-cast role it is |
+|---|---|---|---|
+| Customer 1 | 14 | 7 / 8 / 9 | Cafe customer 1 · Bar customer 1 · Diner 1 |
+| Customer 2 | 10 | 7 / 8 / 9 | Cafe customer 2 · Bar customer 2 · Diner 2 |
+| **Customer** | **10** | 10 / 12 | **Shopper · Patient** |
+| Passenger | 6 | 2 / 14 | Bus passenger · Taxi passenger |
+| Customer 3 | 3 | 7 / 8 | Cafe customer 3 · Bar customer 3 |
+
+**Customer** is in bold because you did not name it — I found it alongside the four you did, with the same gap. Accept or drop it.
+
+Note what the scene column means: one generic label is **several different characters**. "Customer 1" is a woman ordering coffee in scene 7 and a man ordering lamb in scene 9 — the Thai proves it, ค่ะ then ครับ. So naming one voice per label would put one voice on two people of different genders. That is why the recommendation below is a relabel, not a casting.
+
+**Option A — relabel, recommended, needs no ear.** Point those 43 rows at the scene-specific roles in the table, which are already cast and already the voices your recorded pod uses. Nothing new is chosen, nothing new is rendered, the gap closes. One word from you and I apply it.
+
+**Option B — cast the generic labels.** Name a voice for each of the five and I cast them as written. Cheaper to say, but it hands scene 7's woman and scene 9's man the same voice.
+
+The lines themselves, so you can hear what is at stake:
+
+*Customer 1, scene 7 — female* — ขอกาแฟดำหนึ่งแก้วนะคะ — "I'd like a black coffee, please."
+
+*Customer 1, scene 9 — male* — ผมขอเนื้อแกะครับ พร้อมผักด้วยครับ — "I'll have the lamb, please. With a side of greens."
+
+*Customer 2, scene 7 — female* — ใช้บัตรได้ไหมคะ มีการแตะบัตรไหมคะ — "Could I pay by card? Do you have contactless?"
+
+*Customer 3, scene 8 — female* — ขอไวน์ขาวแก้วใหญ่หน่อยนะคะ — "I'd like a large glass of white wine, please."
+
+*Customer, scene 10 — female* — ขอโทษนะคะ มียาแก้ปวดไหมคะ — "Excuse me. Do you have any painkillers?"
+
+*Customer, scene 12 — male* — ผมปวดหัวและเจ็บคอตั้งแต่เมื่อวานครับ — "I've had a headache and a sore throat since yesterday."
+
+*Passenger, scene 14 — male* — สวัสดีครับ ช่วยพาผมไปสถานีรถไฟได้ไหมครับ — "Hello. Can you take me to the train station, please?"
+
+No new clips were rendered for this block. The four Thai voices above are the samples — `908c4626660f` is Krit, the default these 43 lines would have gone to.
 
 ---
 
