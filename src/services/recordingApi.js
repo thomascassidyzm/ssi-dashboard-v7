@@ -30,12 +30,23 @@
 import { getApiUrl } from '@/services/api'
 
 export function recordingApiBase() {
-  // A pinned base always wins, so a dev box can point anywhere.
+  // ON popty.app THE PROXY ALWAYS WINS — checked BEFORE the pin, deliberately.
+  //
+  // The app's environment bootstrap writes api_base_url into localStorage on
+  // load, pointing at watson-1, and it does so for anonymous visitors too. So a
+  // recordist who has merely opened the page once carries a pin that would send
+  // them straight back out to watson-1 and straight back into the blocked
+  // public-to-local-address-space fetch. Honouring the pin first is exactly the
+  // bug: the surface stayed broken while the code read as if it were fixed.
+  //
+  // A pin is a development affordance, and on popty.app the same-origin proxy is
+  // always present and always better, so there is nothing for a pin to usefully
+  // say here. Off popty.app it still decides everything.
+  if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') return ''
   if (typeof localStorage !== 'undefined') {
     const pinned = localStorage.getItem('api_base_url')
     if (pinned) return pinned
   }
-  if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') return ''
   return getApiUrl()
 }
 
