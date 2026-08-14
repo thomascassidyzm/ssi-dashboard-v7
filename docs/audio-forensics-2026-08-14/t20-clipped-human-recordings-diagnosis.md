@@ -145,7 +145,8 @@ it is the sole remaining chance of a pristine source.
 
 Tom's ear said the ends were clipped worse than the beginnings, and asked whether
 the tail is trimmed by a separate pass that might still carry the destructive
-parameter. It is a separate pass. It does not still carry it.
+parameter. It is a separate pass. It does not still carry it — but the ear was
+right about the ends, for a reason the first measurement missed. Both below.
 
 **How the tail is trimmed.** There is no `stop_periods`/`stop_duration` anywhere.
 The tail is the *same* filter applied to reversed audio — `trim, areverse, trim,
@@ -197,31 +198,46 @@ if that pass reverts, verified by reverting just that pass. A second case assert
 a silent take still collapses under the handler's 100 ms floor, so the 834-byte
 empty-stub hole cannot be reopened by a future retention change.
 
-### Head versus tail on the damaged clips — the data disagrees with the ear
+### Head versus tail — the ear was right, and my first measurement was wrong
 
-Two independent measurements over all 81 damaged clips, run separately:
+Two first-pass measurements said the heads were damaged worse: waveform edge RMS
+(1.79 head vs 1.27 tail, head louder in 55 of 81, p = 0.0017) and ASR first-word
+loss (61/81 vs 28/81). Reported honestly, they contradicted what Tom heard.
 
-| measure | head | tail |
-|---|---|---|
-| waveform: edge RMS ÷ clip median (median of 81) | **1.79** | 1.27 |
-| clips cut into speech (edge > 0.5 × median) | 72 / 81 | 68 / 81 |
-| ASR: first vs last word missing or corrupted | **61 / 81 (75 %)** | 28 / 81 (35 %) |
+They were the wrong measurement. Both ask *how loud is the audio at the cut*,
+which is not what "cut off" sounds like. The estate already has the right
+instrument — the tail-integrity detector in `services/audio-repair-core.cjs`,
+whose `releaseMs` measures **how fast speech falls from −10 dB to −50 dB relative
+to the clip's own peak**, with a measured boundary of **≤30 ms = heard as cut
+off**. Running that, and mirroring it onto the head as an `attackMs`, against a
+control set of undamaged pre-trim cym_n clips:
 
-Paired, the head edge is louder than the tail edge in **55 of 81** clips against
-26 the other way (sign test p = 0.0017). **Both methods say the beginnings took
-more damage than the ends, not less.**
+| | undamaged control (n=40) | damaged (n=81) | change |
+|---|---|---|---|
+| median ATTACK (head) | 35 ms | 5 ms | −86 % |
+| head flagged steep | **17 / 40 (43 %)** | 70 / 81 (86 %) | ×2 |
+| median RELEASE (tail) | **165 ms** | **10 ms** | **−94 %** |
+| tail flagged steep | **0 / 40 (0 %)** | **59 / 81 (73 %)** | **0 → 73 %** |
+| trailing silence after speech | 130 ms | 5 ms | — |
+| leading silence before speech | 65 ms | 0 ms | — |
 
-That contradicts what Tom heard, so it is worth being precise about what it does
-and does not overturn. It does not overturn the complaint: **both ends are cut**,
-72 of 81 at the head and 68 of 81 at the tail, and every one of the 81 needs
-re-recording either way. What it overturns is only the ordering. The likeliest
-reason the ends *sound* worse is perceptual rather than physical — a truncated
-phrase-ending removes the natural release, so the clip stops dead in the air and
-the damage is exposed against the silence that follows, whereas a missing onset
-is immediately masked by the loud speech behind it and reads as a clip that
-merely "starts sharply". Trust levels: the waveform measure is a direct physical
-measurement; the ASR pass is Welsh whisper on isolated lines and is noisier, but
-a transcription artefact would hit both edges evenly and this did not.
+**This is why the beginnings sound fine and the ends sound wrong.** A natural
+speech onset is *already* steep — 43 % of undamaged clips flag at the head, that
+is simply how speech starts — so a clipped head still sounds like a head. A
+natural speech ending is *never* steep: **not one** of the 40 undamaged clips
+flags at the tail, because real speech decays over ~165 ms. In the damaged clips
+that decay is 10 ms. The phrase hits a vertical wall where it should fall away.
+
+So the ear was reading deviation-from-natural, and the edge-RMS measure was
+reading absolute loudness. On the question that matters — what a listener
+notices — **the tail is the damaged edge**: 0 % → 73 % on the estate's own
+"heard as cut off" flag, against a head that was half-flagged before the bug
+ever touched it.
+
+None of this changes the fix or the lists: both edges lose 100 ms, and all 81
+clips need re-recording either way. It changes which defect the re-records should
+be checked against by ear, and it is the reason the tail verdict had to be
+settled before anyone records.
 
 ---
 
