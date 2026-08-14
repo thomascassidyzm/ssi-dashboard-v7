@@ -48,7 +48,7 @@ function fixture({ audio = [] } = {}) {
       human_only: true,
       voices: {
         m: { name: 'Aran', email: 'aran@hey.com', voiceId: 'human_aran_cym_n' },
-        f: { name: 'Catrin', email: 'c@x.com', voiceId: 'human_catrinlliar_cym_n' },
+        f: { name: 'Catrin', email: 'c@x.com', voiceId: 'human_catrinlliar_cym_n', aliases: ['human_catrinlliar_cym_s'] },
       },
     }],
     courses: [
@@ -118,8 +118,14 @@ test('a take recorded under an ALIAS spelling counts as recorded', async () => {
 
 test('an alias spelling in the link opens the canonical voice’s queue', async () => {
   const db = stubDb(fixture())
-  const viaAlias = await resolveRecordist(db, 'human_aran_cym_n_2')
-  assert.equal(viaAlias.voiceId, 'human_aran_cym_n')
+  // from voice_config.podCastAliases (links handed out before the policy existed)
+  const viaCourseAlias = await resolveRecordist(db, 'human_aran_cym_n_2')
+  assert.equal(viaCourseAlias.voiceId, 'human_aran_cym_n')
+  // from the policy row's own aliases — the per-language decision, one table
+  const viaPolicyAlias = await resolveRecordist(db, 'human_catrinlliar_cym_s')
+  assert.equal(viaPolicyAlias.voiceId, 'human_catrinlliar_cym_n')
+  assert.ok(viaPolicyAlias.spellings.includes('human_catrinlliar_cym_s'),
+    'a policy alias also widens the recorded lookup, so per-course takes still count')
   assert.equal(await resolveRecordist(db, 'human_nobody'), null)
 })
 

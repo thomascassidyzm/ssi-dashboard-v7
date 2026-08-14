@@ -135,9 +135,20 @@ async function resolveRecordist(db, voiceIdParam) {
     for (const gender of Object.keys(voices)) {
       const entry = voices[gender] || {}
       if (!entry.voiceId) continue
+      // The policy row's own `aliases` are the FIRST source of truth — the
+      // per-language decision lives in one table, so the older spellings of a
+      // recordist's voice belong beside the voice, not scattered per course.
+      // voice_config.podCastAliases is still merged in, because links handed
+      // out before the policy existed must keep opening the right queue.
+      const declared = new Set(Array.isArray(entry.aliases) ? entry.aliases : [])
       const matches = entry.voiceId === canonical || entry.voiceId === asked ||
-        (aliasMap.get(entry.voiceId) || new Set()).has(asked)
+        declared.has(asked) || (aliasMap.get(entry.voiceId) || new Set()).has(asked)
       if (!matches) continue
+      for (const a of declared) {
+        const set = aliasMap.get(entry.voiceId) || new Set()
+        set.add(a)
+        aliasMap.set(entry.voiceId, set)
+      }
       return {
         voiceId: entry.voiceId,
         displayName: entry.name || entry.voiceId,
@@ -182,21 +193,22 @@ function castEntryFor(podCast, speaker) {
 }
 
 /**
- * Build the language-wide queue for one recordist.
+ * Every pod line of a language, partitioned by the gender its course cast
+ * names, collapsed by clip identity — computed ONCE per language.
  *
- * @param {object} db supabase client
- * @param {object} recordist from resolveRecordist()
- * @param {object} [opts]
- * @param {boolean} [opts.includeRecorded] keep already-recorded lines in `lines`
- *        (they are always counted; this only decides whether they are listed).
- * @returns {Promise<{lines: Array, total, recorded, remaining, uncast, duplicatesCollapsed}>}
+ * Both the recordist's queue and the coverage bar read this, so the number on
+ * Tom's bar and the number on Aran's page cannot drift apart. It also means
+ * `uncast` is what it actually is — a property of the LANGUAGE's pods, visible
+ * even for a language that has no cast at all yet (bre, pdc), where every line
+ * is uncast and the old per-voice loop would have reported a flat zero.
+ *
+ * @returns {Promise<{byGender: Map<string, Array>, uncast, duplicatesCollapsed, courses: string[]}>}
  */
-async function buildQueue(db, recordist, { includeRecorded = false } = {}) {
-  const courses = await coursesForLanguage(db, recordist.language)
+async function buildLanguageLines(db, language) {
+  const courses = await coursesForLanguage(db, language)
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
-  if (!courses.length) {
-    return { lines: [], total: 0, recorded: 0, remaining: 0, uncast: 0, duplicatesCollapsed: 0, courses: [] }
-  }
+  const empty = { byGender: new Map(), uncast: 0, duplicatesCollapsed: 0, courses: [...byCourse.keys()] }
+  if (!courses.length) return empty
 
   const { data: pods, error: podErr } = await db
     .from('listening_pods')
@@ -204,9 +216,7 @@ async function buildQueue(db, recordist, { includeRecorded = false } = {}) {
     .in('course_code', [...byCourse.keys()])
   if (podErr) throw new Error(`pod list failed: ${podErr.message}`)
   const podById = new Map((pods || []).map((p) => [p.id, p]))
-  if (!podById.size) {
-    return { lines: [], total: 0, recorded: 0, remaining: 0, uncast: 0, duplicatesCollapsed: 0, courses: [...byCourse.keys()] }
-  }
+  if (!podById.size) return empty
 
   const sentences = await fetchAllSentences(db, [...podById.keys()])
 
@@ -221,10 +231,10 @@ async function buildQueue(db, recordist, { includeRecorded = false } = {}) {
       String(a.id).localeCompare(String(b.id))
   })
 
+  const byGender = new Map()
+  const seen = new Map()   // gender -> Map(normalized text -> representative line)
   let uncast = 0
   let duplicatesCollapsed = 0
-  const seen = new Map()   // normalized target text -> the representative line
-  const mine = []
 
   for (const s of sentences) {
     const text = (s.target_text || '').trim()
@@ -238,13 +248,13 @@ async function buildQueue(db, recordist, { includeRecorded = false } = {}) {
       uncast += 1
       continue
     }
-    if (gender !== recordist.gender) continue
-
+    if (!byGender.has(gender)) { byGender.set(gender, []); seen.set(gender, new Map()) }
     const key = normalizeForDb(text)
-    if (seen.has(key)) {
+    const seenForGender = seen.get(gender)
+    if (seenForGender.has(key)) {
       // One recording, not three. The duplicate is remembered against the
       // representative so a finished take can fill every course's pod.
-      seen.get(key).duplicateOf.push({ sentenceId: s.id, podId: s.pod_id, courseCode: pod.course_code })
+      seenForGender.get(key).duplicateOf.push({ sentenceId: s.id, podId: s.pod_id, courseCode: pod.course_code })
       duplicatesCollapsed += 1
       continue
     }
@@ -259,10 +269,35 @@ async function buildQueue(db, recordist, { includeRecorded = false } = {}) {
       textNormalized: key,
       duplicateOf: [],
     }
-    seen.set(key, line)
-    mine.push(line)
+    seenForGender.set(key, line)
+    byGender.get(gender).push(line)
   }
 
+  return { byGender, uncast, duplicatesCollapsed, courses: [...byCourse.keys()] }
+}
+
+/**
+ * Build the language-wide queue for one recordist.
+ *
+ * @param {object} db supabase client
+ * @param {object} recordist from resolveRecordist()
+ * @param {object} [opts]
+ * @param {boolean} [opts.includeRecorded] keep already-recorded lines in `lines`
+ *        (they are always counted; this only decides whether they are listed).
+ * @returns {Promise<{lines: Array, total, recorded, remaining, uncast, duplicatesCollapsed}>}
+ */
+async function buildQueue(db, recordist, { includeRecorded = false } = {}) {
+  const language = await buildLanguageLines(db, recordist.language)
+  const mine = language.byGender.get(recordist.gender) || []
+  return finishQueue(db, recordist, mine, language, { includeRecorded })
+}
+
+/**
+ * Score a gender's lines against what this recordist has already recorded, and
+ * shape them for the wire. Split out so buildQueue and buildCoverage share one
+ * definition of `recorded`.
+ */
+async function finishQueue(db, recordist, mine, language, { includeRecorded = false } = {}) {
   const recordedKeys = await recordedTextKeys(db, recordist)
 
   let recorded = 0
@@ -295,9 +330,9 @@ async function buildQueue(db, recordist, { includeRecorded = false } = {}) {
     total: mine.length,
     recorded,
     remaining: mine.length - recorded,
-    uncast,
-    duplicatesCollapsed,
-    courses: [...byCourse.keys()],
+    uncast: language.uncast,
+    duplicatesCollapsed: language.duplicatesCollapsed,
+    courses: language.courses,
   }
 }
 
@@ -338,14 +373,23 @@ async function fetchAllSentences(db, podIds) {
 async function recordedTextKeys(db, recordist) {
   const keys = new Set()
   const PAGE = 1000
+  const page = (from) => db
+    .from('course_audio')
+    .select('text_normalized')
+    .eq('language', recordist.language)
+    .in('voice_id', recordist.spellings)
+    .order('text_normalized')
+    .range(from, from + PAGE - 1)
+
   for (let from = 0; ; from += PAGE) {
-    const { data, error } = await db
-      .from('course_audio')
-      .select('text_normalized')
-      .eq('language', recordist.language)
-      .in('voice_id', recordist.spellings)
-      .order('text_normalized')
-      .range(from, from + PAGE - 1)
+    let { data, error } = await page(from)
+    // course_audio is ~2.5M rows and this read has been seen to lose a race
+    // with the statement timeout on a cold cache (it plans at ~150ms warm).
+    // One retry, because the failure mode otherwise is a recordist opening
+    // their link to a broken page.
+    if (error && /timeout/i.test(error.message || '')) {
+      ;({ data, error } = await page(from))
+    }
     if (error) throw new Error(`recorded lookup failed: ${error.message}`)
     for (const row of data || []) {
       for (const key of audioKeyCandidates(row.text_normalized)) keys.add(key)
@@ -365,18 +409,26 @@ async function buildCoverage(db) {
   const out = []
   for (const policy of policies) {
     const voices = policy.voices || {}
-    const entry = { language: policy.language, languageName: languageName(policy.language), humanOnly: true, total: 0, recorded: 0, uncast: 0, pct: 0, voices: [] }
-    let uncastSeen = null
+    // ONE pass over the language's pods, whatever the cast size — and it runs
+    // even when the language has no cast at all, which is the only way pdc's
+    // and bre's uncast lines are visible rather than reported as a flat zero.
+    const language = await buildLanguageLines(db, policy.language)
+    const entry = {
+      language: policy.language,
+      languageName: languageName(policy.language),
+      humanOnly: true,
+      total: 0,
+      recorded: 0,
+      uncast: language.uncast,
+      pct: 0,
+      voices: [],
+    }
     for (const gender of Object.keys(voices)) {
       const recordist = await resolveRecordist(db, voices[gender].voiceId)
       if (!recordist) continue
-      const q = await buildQueue(db, recordist, { includeRecorded: true })
+      const q = await finishQueue(db, recordist, language.byGender.get(recordist.gender) || [], language, { includeRecorded: true })
       entry.total += q.total
       entry.recorded += q.recorded
-      // `uncast` is a property of the LANGUAGE's pods, not of one voice — every
-      // voice's pass over the same sentences counts the same uncast speakers,
-      // so take it once rather than multiplying it by the cast size.
-      uncastSeen = uncastSeen === null ? q.uncast : Math.max(uncastSeen, q.uncast)
       entry.voices.push({
         voiceId: recordist.voiceId,
         name: recordist.displayName,
@@ -385,7 +437,6 @@ async function buildCoverage(db) {
         recorded: q.recorded,
       })
     }
-    entry.uncast = uncastSeen || 0
     entry.pct = entry.total ? Math.round((entry.recorded / entry.total) * 1000) / 10 : 0
     out.push(entry)
   }
@@ -475,6 +526,7 @@ module.exports = {
   resolveRecordist,
   recordedSpellings,
   castEntryFor,
+  buildLanguageLines,
   buildQueue,
   buildCoverage,
   recordedTextKeys,
