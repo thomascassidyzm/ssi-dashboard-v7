@@ -151,14 +151,23 @@ async function main() {
       }
       console.log(`  wrote ${OUT}`)
     } else {
+      // Variant-scoped, for exactly the reason carry is. Keyed on target_lang alone,
+      // this exclusion silently dropped lines from the queue that were filled in a
+      // SIBLING DIALECT: ara_for_eng (MSA) lost 17 lines because ara_eg and ara_sy
+      // had them, and por/fra_ca/ara_sy/ara_eg/fra lost 47 between them. The rows were
+      // still blank in the course being extracted, so "already covered" was false —
+      // it just meant some other dialect had said it. A queue that under-reports is
+      // worse than one that over-reports: nothing downstream can see the gap.
       const { rows: filled } = await db.query(
-        `select lower(btrim(s.known_text)) k
+        `select lower(btrim(s.known_text)) k, p.course_code
            from listening_pods p
            join listening_pod_sentences s on s.pod_id = p.id
            join courses c on c.course_code = p.course_code
           where c.target_lang = $1 and c.known_lang = $2 and btrim(s.target_text) <> ''`,
         [course.target_lang, course.known_lang])
-      const known = new Set(filled.map(r => norm(r.k)))
+      const mine = variantOf(COURSE)
+      const known = new Set(
+        filled.filter(r => variantOf(r.course_code) === mine).map(r => norm(r.k)))
 
       const todo = empties
         .filter(e => !known.has(norm(e.known_text)))
