@@ -4985,9 +4985,15 @@ app.post('/api/production/:courseCode/recording/upload', async (req, res) => {
     // it repoints a real phrase row at an unplayable stub. Refuse BEFORE the S3 PUT
     // (same principle as the uuid lookup above — a bad take must never orphan
     // bytes) so the client's upload queue marks it failed and the take stays
-    // visible as missing. Threshold is deliberately low because the trim is
-    // aggressive — a synthesised 350ms tone comes out the far side at 150ms — so
-    // 100ms only catches silence, muted mics and stray clicks, never a real word.
+    // visible as missing. Threshold is deliberately low so that it only catches
+    // silence, muted mics and stray clicks, never a real word.
+    //
+    // The old note here read "the trim is aggressive — a synthesised 350ms tone
+    // comes out the far side at 150ms". That was the T-20 bug being observed and
+    // worked around rather than fixed: the trim was destroying 100ms at each end
+    // (start_duration, since corrected to start_silence — see audio-processor.cjs).
+    // A 350ms tone now survives as ~350ms, so this guard has MORE headroom than
+    // when it was written, not less. It stays as the silent-take backstop.
     const MIN_TAKE_MS = 100
     if (!audioMeta.durationMs || audioMeta.durationMs < MIN_TAKE_MS) {
       logger.error(`[Upload] REFUSED silent/empty take for ${audioId}: ${audioMeta.durationMs}ms after trim, ${audioMeta.outputSize} bytes`)

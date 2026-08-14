@@ -893,11 +893,27 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
     // Build filter chain
     const filters = [];
 
-    // 1. Trim silence from start and end (gentle threshold for speech)
+    // 1. Trim silence from start and end, KEEPING the speech.
+    //
+    // start_silence is the parameter that says "retain this much silence".
+    // start_duration is NOT its sibling: it is the amount of non-silence that
+    // must accumulate before trimming stops, and everything before that point
+    // is DISCARDED — including the audio that proved it was not silence. The
+    // old `start_silence=0.05` here therefore destroyed exactly 100ms off the
+    // front of every human take, and the areverse sandwich did the same to the
+    // tail. Measured on a 1.000s tone padded with silence: out at 0.799s.
+    // With start_silence the same tone comes out whole (see the T-20
+    // diagnosis, docs/audio-forensics-2026-08-14/).
+    //
+    // That bug butchered 107 cym_n clips before anyone heard it, and the
+    // originals are not recoverable — the raw upload is never stored, so this
+    // filter is destructive-on-write with no undo. Do not reintroduce
+    // start_duration here. pod-explainer-composite.cjs has always used the
+    // correct form; this chain was the odd one out.
     if (trimSilence) {
-      filters.push('silenceremove=start_periods=1:start_threshold=-40dB:start_duration=0.1');
+      filters.push('silenceremove=start_periods=1:start_threshold=-40dB:start_silence=0.05');
       filters.push('areverse');
-      filters.push('silenceremove=start_periods=1:start_threshold=-40dB:start_duration=0.1');
+      filters.push('silenceremove=start_periods=1:start_threshold=-40dB:start_silence=0.05');
       filters.push('areverse');
     }
 
