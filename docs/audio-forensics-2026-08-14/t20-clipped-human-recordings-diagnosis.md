@@ -22,8 +22,9 @@ with the wrong ffmpeg parameter.
 
 **The relief:** the damage is bounded. It is **not** the 40,000-clip Welsh
 estate. Only takes uploaded through the recording studio since the step landed
-are affected, and Aran's practical exposure is roughly **one session's worth of
-clips**, not his whole body of work. Exact figures below.
+are affected, and it re-cuts by voice role into **92 lines for Aran and 15 for Catrin**.
+Exact figures below — and note that 26 of the 107 turn out not to be clipped at
+all, but silent.
 
 ---
 
@@ -172,9 +173,10 @@ and predate the studio path entirely.
 The 39,182 legacy Welsh human clips (cym_n + cym_s) predate the step and are
 clean — confirmed by both metadata and direct measurement.
 
-### How many of the 107 actually lost speech
+### How many of the 81 real clips actually lost speech
 
-Of the 81 clips from Aran's May-August sessions, measured individually:
+Of the 81 clips that contain real audio (the other 26 are the empty stubs
+described below), measured individually:
 
 - **80 of 81 (99 %)** lost real speech at an edge;
 - **70 of 81 (86 %)** are severe — the edge sits at or above the clip's median
@@ -212,23 +214,64 @@ around ("a 350 ms tone comes out at 150 ms"). The guard is unchanged and still
 correct — it now has *more* headroom than when it was written — but the comment
 now says so.
 
-**b. Re-record the 107, and only 63 of them are Aran's.** No process can restore
-audio that was never written to disk. But the 107 split by who actually read them:
+**b. Re-record the 107 — split by VOICE ROLE, not by upload account.**
 
-| recordist | butchered clips |
-|---|---|
-| aran@hey.com | **63** |
-| thomas.cassidy+ssi@gmail.com | **44** |
-| e2e test account | 6 (throwaway) |
+Tom's ground truth for Welsh human recording: **Aran records all male voices,
+Catrin records all female voices, for both cym_n and cym_s.** The upload-account
+split reported earlier (63 aran@hey.com / 44 thomas.cassidy) is an artefact of
+which login was open, not of who spoke, and must not be used as a work plan.
+Re-cut against the course's own `voice_config.podCast`, which maps every pod
+character to an actor and a gender:
 
-**So the ask on Aran is 63 clips — one short session.** The other 44 are Tom's
-own takes. The per-clip damage list is computed and can be handed over as a work
-list so each recordist re-reads only what was actually cut, in recording order.
+| recordist | lines | clipped (Welsh target) | empty stubs (English known) |
+|---|---|---|---|
+| **Aran** (all male characters) | **92** | 81 | 11 |
+| **Catrin** (all female characters) | **15** | 0 | 15 |
+| | **107** | 81 | 26 |
 
-*Join note:* `recording_provenance.audio_uuid` keys on the **S3 key uuid**, not
-on `course_audio.id`. Pod and script mode mint a fresh key uuid per take, so
-joining on the row id returns zero provenance for every studio-recorded clip —
-which reads as "no provenance was ever written" when in fact it is all there.
+Work lists: `rerecord-list-aran.csv`, `rerecord-list-catrin.csv` in this
+directory — one row per line, with the character, the track, the pod sentence id
+and the text.
+
+**The account split was an artefact, confirmed acoustically.** Median fundamental
+frequency, measured per clip:
+
+| set | n | median F0 |
+|---|---|---|
+| reference: Aran, unbutchered cym_n clips | 15 | **131 Hz** |
+| reference: Catrin (her only recordings, cym_anthem_for_jpn) | 15 | **182 Hz** |
+| the 63 uploaded under aran@hey.com | 63 | 151 Hz |
+| the 44 uploaded under thomas.cassidy | 18 real (26 are empty) | **141 Hz** |
+
+The "Tom" clips are not a third voice: 26 of the 44 contain no voice at all, and
+the remaining 18 sit at 141 Hz — a male voice in the same range as Aran's and
+nowhere near Catrin's. Tom's reading is confirmed: a failed or test session under
+whichever account was logged in. *Caveat:* nine of the 81 real clips measure
+167-198 Hz, overlapping the bottom of Catrin's range. They are all male-cast
+characters on questions and animated lines, where rising intonation lifts median
+F0, so the likeliest reading is the same speaker — but F0 alone cannot settle
+those nine, and I have not had a human ear on them.
+
+**A second, worse defect surfaced while doing this: 26 of the 107 are not
+clipped, they are EMPTY.** Each is exactly 834 bytes — a header-only MP3 that
+ffprobe cannot decode at all, the same silent-take signature the `MIN_TAKE_MS`
+guard was later added to catch. Every one is an English (`known`) line, and all
+15 of Catrin's are in this group.
+
+So the earlier "107 clipped clips" framing was wrong in an important way:
+
+- **81 clips are clipped** — real audio, 100 ms bitten off each end;
+- **26 clips are silent** — no audio at all, and a learner reaching them hears nothing.
+
+**The 26 stubs are the complete set, verified.** All 19,914 cym_n human clips
+were HEAD-checked on S3, zero errors: exactly 26 are under 2 KB, and they are
+these 26. No other silent clip is hiding in the course.
+
+> `SWEEP DONE. 19914 cym_n human clips. Under 2KB (empty stubs): 26. Errors: 0`
+
+**Catrin has never recorded in cym_n at all.** She has 35 clips estate-wide, all
+in `cym_anthem_for_jpn`. Her 15 lines here are empty stubs, so for her this is a
+first recording, not a re-record.
 
 **c. Do not touch the 39,182 legacy clips.** They are clean. Any "repair" pass
 over them would be the make-before-break rule broken for no reason.
