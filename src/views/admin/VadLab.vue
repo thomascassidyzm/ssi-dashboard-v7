@@ -29,6 +29,7 @@
  */
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import VadContour from './VadContour.vue'
+import { languageName } from '@/utils/languageNames'
 import {
   dtwWarp,
   extractFeatures,
@@ -116,18 +117,7 @@ const CATEGORY_META = {
 }
 const catMeta = (c) => CATEGORY_META[c] || { label: c, short: c }
 
-const LANG_NAMES = {
-  spa: 'Spanish',
-  fra: 'French',
-  ita: 'Italian',
-  zho: 'Chinese',
-  por: 'Portuguese',
-  kor: 'Korean',
-  eus: 'Basque',
-  cym: 'Welsh',
-  eng: 'English',
-}
-const langName = (l) => LANG_NAMES[l] || l
+const langName = (l) => languageName(l)
 
 function voiceLabel(side) {
   if (side.origin === 'human') return 'Human recording'

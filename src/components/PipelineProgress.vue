@@ -7,7 +7,7 @@
       </div>
       <div>
         <h3 class="text-lg font-semibold text-ink">{{ title }}</h3>
-        <p class="text-sm text-muted">{{ courseCode }}</p>
+        <p class="text-sm text-muted">{{ getCourseName(courseCode) }}</p>
       </div>
     </div>
 
@@ -88,6 +88,9 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useCourses } from '../composables/useCourses'
+
+const { getCourseName } = useCourses()
 
 const props = defineProps({
   courseCode: {
