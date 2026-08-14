@@ -44,6 +44,25 @@
           <small>Off = only read the lines that still need a recording. New takes replace old ones; nothing is deleted.</small></span>
       </label>
 
+      <!-- Aran arrives with takes already made. Let him hear them before
+           deciding to re-read: the contract already hands us their clips. -->
+      <div v-if="includeRecorded && alreadyRecorded.length" class="listen-back">
+        <h3>What you've already recorded</h3>
+        <p class="listen-note">These play the clip stored on the server.</p>
+        <ul>
+          <li v-for="l in alreadyRecorded" :key="l.id" :class="{ playing: playingId === l.id }">
+            <span class="listen-text">{{ l.text }}</span>
+            <StoredTakeButton
+              :stored-url="storedUrlFor(l.id)"
+              :allow-local="false"
+              :is-playing="playingId === l.id"
+              @toggle="togglePlay(l.id)"
+            />
+          </li>
+        </ul>
+        <p v-if="playbackError" class="note error">{{ playbackError }}</p>
+      </div>
+
       <button class="btn-begin" :disabled="startIndex === -1" @click="begin">Start</button>
       <p v-if="startIndex === -1" class="note done">Everything is recorded. Turn on "re-read" above to do another pass.</p>
       <p v-if="micError" class="note error">{{ micError }}</p>
@@ -206,8 +225,16 @@ const playingId = ref(null)
 const playbackError = ref(null)
 let audioEl = null
 
+// Which bytes a line's play button points at, in strict precedence — the order
+// IS the honesty. A failed or in-flight NEW take must never fall back to the
+// clip it is replacing: playing the previous take under the word "stored" is
+// the same lie as playing the local blob.
 function storedUrlFor(lineId) {
-  return queue.saved.has(lineId) ? recordistClipUrl(props.voiceId, lineId) : null
+  if (queue.failed.has(lineId)) return null                       // nothing to play
+  if (queue.saved.has(lineId)) return recordistClipUrl(props.voiceId, lineId)
+  if (sessionIds.value.includes(lineId)) return null              // this session's take is still in flight
+  const line = lines.value.find(l => l.id === lineId)
+  return line?.recorded ? recordistClipUrl(props.voiceId, lineId) : null  // a take from a previous session
 }
 function isPending(lineId) {
   return !queue.saved.has(lineId) && !queue.failed.has(lineId) && sessionIds.value.includes(lineId)
@@ -218,6 +245,7 @@ const failedNote = computed(() => {
   if (!lastLine.value) return null
   return queue.failed.get(lastLine.value.id) || null
 })
+const alreadyRecorded = computed(() => lines.value.filter(l => l.recorded))
 const sessionLines = computed(() =>
   sessionIds.value.map(id => lines.value.find(l => l.id === id)).filter(Boolean)
 )
