@@ -291,37 +291,77 @@
                           <span class="mapping-word">{{ w.text }}</span>
                         </template>
                       </div>
-                      <!-- Gloss line: ONE chunk, centred under all the words it
-                           covers. A chunk spanning two target words visibly
-                           spans both — that is many-to-one, read at a glance. -->
+                      <!-- Gloss line: the chunk's known words, centred under all
+                           the target words it covers. A chunk spanning two
+                           target words visibly spans both — that is many-to-one,
+                           read at a glance.
+
+                           Each known word is its own TILE. Tap one to pick it
+                           up and every place it could go opens as a landing
+                           slot — under any column, in any order (Tom,
+                           2026-08-14: "we need to be able to move any known tile
+                           to match any target tile and change the order of the
+                           known words as well"). Drag does the same for a mouse;
+                           nothing needs it. The target line above has no tiles,
+                           no slots and no drag: it never moves. -->
                       <div
                         class="mapping-gloss"
                         :class="{ 'mapping-gloss-empty': !chunk.known }"
                         :title="chunkTitle(chunk)"
-                      >{{ chunk.known || '·' }}</div>
+                      >
+                        <template v-if="canEditMapping">
+                          <span
+                            v-if="isPlacing(round.roundNumber, idx)"
+                            class="mapping-slot"
+                            title="Put the tile here"
+                            @click.stop="dropTile(round.roundNumber, idx, item, chunk.index, 0)"
+                            @dragover.prevent
+                            @drop="dropDragged($event, round.roundNumber, idx, item, chunk.index, 0)"
+                          ></span>
+                          <template v-for="t in chunk.tiles" :key="`t${chunk.index}-${t.at}`">
+                            <button
+                              type="button"
+                              class="mapping-tile"
+                              :class="{ 'mapping-tile-picked': isPicked(round.roundNumber, idx, chunk.index, t.at) }"
+                              :title="isPicked(round.roundNumber, idx, chunk.index, t.at)
+                                ? 'Tap where it should go, or tap it again to put it back'
+                                : `Move &quot;${t.text}&quot;`"
+                              draggable="true"
+                              @click.stop="pickTile(round.roundNumber, idx, chunk.index, t.at)"
+                              @dragstart="dragTile($event, round.roundNumber, idx, chunk.index, t.at)"
+                            >{{ t.text }}</button>
+                            <span
+                              v-if="isPlacing(round.roundNumber, idx)"
+                              class="mapping-slot"
+                              title="Put the tile here"
+                              @click.stop="dropTile(round.roundNumber, idx, item, chunk.index, t.at + 1)"
+                              @dragover.prevent
+                              @drop="dropDragged($event, round.roundNumber, idx, item, chunk.index, t.at + 1)"
+                            ></span>
+                          </template>
+                          <!-- A column with no gloss on it is legal and stays
+                               visible, so a tile can be brought to it. -->
+                          <span
+                            v-if="!chunk.tiles.length && !isPlacing(round.roundNumber, idx)"
+                            class="mapping-gloss-dot"
+                          >&middot;</span>
+                        </template>
+                        <template v-else>{{ chunk.known || '·' }}</template>
+                      </div>
                     </div>
-                    <!-- The divider AFTER this chunk: merge it with the next, or
-                         move a single gloss word across without moving the
-                         break. Always visible, never hover-gated — this has to
-                         work on a tap. -->
+                    <!-- The divider AFTER this chunk: merge it with the next.
+                         The two arrows that used to sit here moved one gloss
+                         word across this one break; a tile can now be taken to
+                         any column at all, so they said less than a tap does.
+                         Always visible, never hover-gated — this has to work on
+                         a tap. -->
                     <div v-if="chunk.hasDividerAfter" class="mapping-divider">
-                      <template v-if="canEditMapping">
-                        <button
-                          type="button" class="mapping-nudge"
-                          title="Move one gloss word left"
-                          @click="nudgeWord(round.roundNumber, idx, item, chunk.index, 'left')"
-                        >&lsaquo;</button>
-                        <button
-                          type="button" class="mapping-merge"
-                          title="Merge these two chunks"
-                          @click="mergeChunk(round.roundNumber, idx, item, chunk.index)"
-                        >&#9679;</button>
-                        <button
-                          type="button" class="mapping-nudge"
-                          title="Move one gloss word right"
-                          @click="nudgeWord(round.roundNumber, idx, item, chunk.index, 'right')"
-                        >&rsaquo;</button>
-                      </template>
+                      <button
+                        v-if="canEditMapping"
+                        type="button" class="mapping-merge"
+                        title="Merge these two chunks"
+                        @click="mergeChunk(round.roundNumber, idx, item, chunk.index)"
+                      >&#9679;</button>
                     </div>
                   </template>
                   <!-- The way out. Only on a row a human has actually cut, and
@@ -535,6 +575,9 @@ import { getApiUrl } from '@/services/api'
 import { useAuth } from '@/composables/useAuth.js'
 import { buildLearningAppUrl } from '@/utils/learningAppUrl'
 import { qaGate } from '@/services/qaGate'
+// The one rule for what a tap does lives in src/utils/glossPlacement.ts,
+// pure and unit tested — it is the only thing that rewrites a segmentation.
+import { moveGlossWord, type GlossSegment } from '@/utils/glossPlacement'
 
 // Mirrors the learner session's cycle types: the generator emits ONLY
 // intro/debut/build/review/consolidate. Component priming, listening clusters
@@ -549,10 +592,6 @@ import { qaGate } from '@/services/qaGate'
 // consecutive TARGET-word columns it sits under. Spans always sum to the number
 // of target words, so the grid can never claim more or fewer columns than the
 // target actually has.
-interface GlossSegment {
-  span: number
-  known: string
-}
 interface ItemMapping {
   source: 'phrase' | 'lego'
   // The target's own words, in the target's own order. These are the columns
@@ -671,17 +710,40 @@ const flaggedPhraseIds = computed(() => props.flaggedPhraseIds || emptySet)
 // will look wrong when the orders differ (cosa azul = blue thing maps literally
 // to thing blue)." Nothing on either line is ever reordered.
 //
-// Editing is SEGMENTATION, not pairing. The target columns are fixed and never
-// edited. All an editor changes is where the breaks fall and which gloss words
-// sit in each chunk:
+// MOST rows need none of this. The alignment is DERIVED from the row's own
+// components and 82% of them open already correct (Tom, 2026-08-14: "the
+// DEFAULT mapping is auto-generated from the existing LEGO components - no
+// human effort to create the initial alignment"). An editor who agrees with
+// what they see taps nothing and saves nothing. Everything below is the REPAIR
+// path, for the rows the derivation gets wrong.
+//
+// Repair is FREE PLACEMENT of the known tiles (Tom, 2026-08-14): "I need to be
+// able to position any item in the known language underneath any item in the
+// target language … we need to be able to move any known tile to match any
+// target tile and change the order of the known words as well — but never the
+// target words of course." So every gloss WORD is its own tile and can be put
+// under any column, in any order, regardless of where it started:
+//   tap a known tile          -> pick it up; every place it could go lights up
+//   tap one of those places   -> it lands there, and the row saves
+//   tap the tile again        -> put it back down, nothing happens
+// Drag does the same thing for anyone on a mouse, but nothing needs a drag:
+// Deborah works on a tablet and every control is always visible, never revealed
+// on hover.
+//
+// The old segmentation gestures stay, because they change the COLUMN SPANS
+// which free placement does not:
 //   tap a gap inside a chunk  -> split it there
 //   tap the divider dot       -> merge with the next chunk
-//   tap < or >                -> move one gloss word across that divider
 // A chunk may cover several columns (many-to-one) or be empty beside a wide
 // neighbour (one-to-many); neither needs a special case, both fall out of where
 // the breaks are (Tom: "sometimes total word counts do not match and that is
-// OK"). Every gesture saves immediately and can only move words between chunks
-// — never add, drop or edit one, and never touch the target or known text.
+// OK"). Every gesture saves immediately and can only MOVE the words already on
+// the row — never add, drop or edit one, and never touch the known or target
+// text, so nothing here can stale a clip, owe an audio pass, or reach a
+// re-translate or a TTS render.
+//
+// The target row is never any of this: no tile in it is pickable, droppable or
+// draggable, and no gesture reorders it.
 
 const rowKey = (roundNumber: number, idx: number) => `${roundNumber}-${idx}`
 
@@ -757,6 +819,9 @@ const glossChunks = (roundNumber: number, idx: number, item: ScriptItem) => {
     out.push({
       index,
       known: seg.known,
+      // Each gloss word is its own tile, so it can be picked up and put
+      // anywhere. `at` is where it sits inside this chunk right now.
+      tiles: glossWords(seg.known).map((text, at) => ({ text, at })),
       words: cols,
       hasDividerAfter: index < segments.length - 1,
     })
@@ -769,7 +834,53 @@ const chunkTitle = (chunk: { known: string; words: Array<{ text: string }> }) =>
   return chunk.known ? `${target} = ${chunk.known}` : `${target} — no gloss sits here`
 }
 
-// ── The three gestures. Each produces a whole new segmentation and saves it. ──
+// ── Free placement: any known tile, under any target column, in any order ────
+
+// The tile currently in the editor's hand, if any. One at a time, page-wide:
+// picking a tile on another row puts this one down, which is what a person
+// expects and what stops two rows both looking half-edited.
+const pickedTile = ref<{ key: string; seg: number; at: number } | null>(null)
+
+const isPicked = (roundNumber: number, idx: number, seg: number, at: number) => {
+  const p = pickedTile.value
+  return !!p && p.key === rowKey(roundNumber, idx) && p.seg === seg && p.at === at
+}
+// Is this row the one holding a tile? Only that row shows its landing places.
+const isPlacing = (roundNumber: number, idx: number) =>
+  !!pickedTile.value && pickedTile.value.key === rowKey(roundNumber, idx)
+
+const pickTile = (roundNumber: number, idx: number, seg: number, at: number) => {
+  if (!props.canEditMapping) return
+  if (isPicked(roundNumber, idx, seg, at)) { pickedTile.value = null; return }
+  pickedTile.value = { key: rowKey(roundNumber, idx), seg, at }
+}
+
+const dropTile = async (
+  roundNumber: number, idx: number, item: ScriptItem, seg: number, at: number,
+) => {
+  const p = pickedTile.value
+  if (!props.canEditMapping || !p || p.key !== rowKey(roundNumber, idx)) return
+  pickedTile.value = null
+  const next = moveGlossWord(currentSegments(roundNumber, idx, item), p, { seg, at })
+  if (next) await saveSegments(roundNumber, idx, item, next)
+}
+
+// Drag is the SAME move, for anyone on a mouse. Nothing depends on it: the tap
+// path above is complete on its own, because this has to work on a tablet.
+const dragTile = (ev: DragEvent, roundNumber: number, idx: number, seg: number, at: number) => {
+  if (!props.canEditMapping) return
+  pickedTile.value = { key: rowKey(roundNumber, idx), seg, at }
+  if (ev.dataTransfer) ev.dataTransfer.effectAllowed = 'move'
+}
+const dropDragged = async (
+  ev: DragEvent, roundNumber: number, idx: number, item: ScriptItem, seg: number, at: number,
+) => {
+  ev.preventDefault()
+  await dropTile(roundNumber, idx, item, seg, at)
+}
+
+// ── The segmentation gestures. Each produces a whole new segmentation and
+//    saves it. These change the column SPANS, which free placement does not. ──
 
 // Split a chunk at the boundary the editor tapped: `at` is how many of the
 // chunk's target words fall on the left. The gloss is cut at the proportionally
@@ -806,32 +917,6 @@ const mergeChunk = async (
     span: a.span + b.span,
     known: [a.known, b.known].map(t => t.trim()).filter(Boolean).join(' '),
   })
-  await saveSegments(roundNumber, idx, item, next)
-}
-
-// Move exactly one gloss word across the divider after `index`. The columns do
-// not move — only which chunk the word belongs to.
-const nudgeWord = async (
-  roundNumber: number, idx: number, item: ScriptItem,
-  index: number, direction: 'left' | 'right',
-) => {
-  if (!props.canEditMapping) return
-  const segments = currentSegments(roundNumber, idx, item)
-  const a = segments[index]
-  const b = segments[index + 1]
-  if (!a || !b) return
-
-  const aw = glossWords(a.known)
-  const bw = glossWords(b.known)
-  if (direction === 'right') {
-    if (!aw.length) return
-    bw.unshift(aw.pop() as string)
-  } else {
-    if (!bw.length) return
-    aw.push(bw.shift() as string)
-  }
-  const next = segments.slice()
-  next.splice(index, 2, { ...a, known: aw.join(' ') }, { ...b, known: bw.join(' ') })
   await saveSegments(roundNumber, idx, item, next)
 }
 
@@ -1440,6 +1525,45 @@ const getItemBgClass = (item: ScriptItem): string => {
 /* A target word with no gloss under it stays visible as a dot rather than
    silently looking like part of its neighbour. */
 .mapping-gloss-empty { opacity: 0.3; }
+.mapping-gloss-dot { opacity: 0.6; }
+
+/* One known word = one tile, and a tile goes anywhere (Tom, 2026-08-14). The
+   gloss line keeps its 0.75rem height exactly: a tile is inline text with a
+   little padding, never a box that grows the row. */
+.mapping-tile {
+  display: inline-block;
+  font-size: 0.625rem;
+  line-height: 0.75rem;
+  padding: 0 0.125rem;
+  border-radius: 0.125rem;
+  cursor: grab;
+  transition: background 0.12s ease, box-shadow 0.12s ease;
+}
+.mapping-tile:hover,
+.mapping-tile:focus-visible { background: color-mix(in srgb, currentColor 16%, transparent); }
+/* The tile in hand. Tint alone never carries a state here (a69b7921) — it
+   outlines too, so it reads without relying on colour. */
+.mapping-tile-picked {
+  background: color-mix(in srgb, currentColor 22%, transparent);
+  box-shadow: inset 0 0 0 1px currentColor;
+  cursor: grabbing;
+}
+
+/* Where a picked tile can land: one slot before every tile and one after the
+   last, in EVERY chunk including the empty ones. They exist only while a tile
+   is in hand, so the resting row is exactly as it was — and they add width,
+   never height, because the grid scrolls sideways and must not grow. */
+.mapping-slot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.75rem;
+  vertical-align: top;
+  cursor: pointer;
+  border-left: 2px solid color-mix(in srgb, currentColor 35%, transparent);
+  margin: 0 0.0625rem;
+  transition: border-color 0.12s ease;
+}
+.mapping-slot:hover { border-left-color: currentColor; }
 
 /* The split control, between two target words of the SAME chunk. Always
    visible, never hover-gated — the whole thing has to work on a tap. */
@@ -1455,7 +1579,7 @@ const getItemBgClass = (item: ScriptItem): string => {
 .mapping-split:hover,
 .mapping-split:focus-visible { opacity: 1; }
 
-/* The divider between two chunks: nudge one gloss word either way, or merge. */
+/* The divider between two chunks: merge them. */
 .mapping-divider {
   flex: 0 0 auto;
   display: flex;
@@ -1465,7 +1589,6 @@ const getItemBgClass = (item: ScriptItem): string => {
   margin-right: 0.25rem;
   border-left: 1px solid color-mix(in srgb, currentColor 30%, transparent);
 }
-.mapping-nudge,
 .mapping-merge {
   font-size: 0.5625rem;
   line-height: 1;
@@ -1474,8 +1597,8 @@ const getItemBgClass = (item: ScriptItem): string => {
   cursor: pointer;
   transition: opacity 0.12s ease;
 }
-.mapping-nudge:hover, .mapping-merge:hover,
-.mapping-nudge:focus-visible, .mapping-merge:focus-visible { opacity: 1; }
+.mapping-merge:hover,
+.mapping-merge:focus-visible { opacity: 1; }
 .mapping-merge { font-size: 0.4375rem; }
 
 /* The way back, at the end of the chunk row. It sits INSIDE the strip, whose
