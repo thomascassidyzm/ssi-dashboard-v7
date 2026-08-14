@@ -395,3 +395,39 @@ trim as a given to be worked around rather than a defect to be fixed. A gate
 that measured edge energy on the *output* would have caught this on day one; it
 is the same lesson as the veracity work — verify the served bytes, not the
 intent of the filter.
+
+---
+
+## Before anyone records: the two things that had to be true
+
+**1. The recordist must hear the STORED clip, not their own microphone.**
+Checked and it was not true. `useAutocueState.js` previewed a `blob:` URL of the
+local capture, and `PodLongTakeStudio.vue` — the studio these pod-0 re-records
+actually use — had **no playback at all** in 797 lines. A raw preview sounds
+perfect while the stored clip is being butchered, which is precisely how this bug
+survived months of recording.
+
+Now: playback resolves through one module that returns the URL *and* its label
+together, so they cannot drift. An uploaded take plays
+`GET /api/production/audio/:uuid/stream` labelled **STORED**; a take that has not
+uploaded is either disabled or labelled **RAW LOCAL**. The pod studio offers no
+raw fallback whatsoever. Verified independently of the build: the bytes that
+route serves are **byte-identical to the S3 object** (18,389 bytes,
+md5 `78bd6cd5…`), and the deployed popty.app chunks carry the labels. The first
+re-records now self-verify the fixed trim by ear.
+
+**2. The raw take must be kept.** It now is. Every upload archives the original
+to `raw/{UUID}.{ext}` — same uuid as the mastered clip, so clip → original is a
+string swap — **before** processing, so even a take the server goes on to refuse
+keeps its original, while the existing refusals still fire before the mastered
+PUT so `mastered/` never collects orphans. The pointer is recorded three ways:
+`raw_s3_key` in `recording_provenance`, `rawKey` as S3 user-metadata on the
+mastered object, and `rawKey` in the response including both refusal responses.
+Verified live: uploaded 20,500 bytes, md5 `40575ad4…`; the object at `raw/…webm`
+is byte-identical. Cost is noise — mean raw 236 KiB, so 10,000 takes is 2.25 GiB
+≈ $0.06/month.
+
+**What this repairs is the deeper fault, not just this bug.** Every destructive
+step in this chain previously had no undo and no ear on it. Now the destruction
+is reversible (the original survives) and audible (the recordist hears the
+result). Either one alone would have caught T-20 in its first session.
