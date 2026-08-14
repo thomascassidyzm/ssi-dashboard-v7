@@ -106,10 +106,20 @@ function canonicalSpeakerName(speaker) {
  * entry yet (recording ahead of casting — same trust model as the
  * voice_config.voices[role] slot fallback in the upload seam).
  *
- * @returns {{ voiceId: string|null, source: 'cast'|'client'|null, disagreement: boolean }}
+ * A forcedVoiceId outranks BOTH. It exists for the recordist surface, where the
+ * voice is decided per LANGUAGE (language_recording_policy.voices) rather than
+ * per course: whoever holds the recording link IS that voice, and a course cast
+ * naming a per-course spelling of the same person (human_aran_cym_s beside
+ * human_aran_cym_n) must not re-fragment one person's clips across courses —
+ * that fragmentation is what the by-language queue exists to end.
+ *
+ * @returns {{ voiceId: string|null, source: 'forced'|'cast'|'client'|null, disagreement: boolean }}
  */
-function resolvePodCastVoiceId({ voiceConfig = {}, speaker = '', kind, clientVoiceId = null }) {
+function resolvePodCastVoiceId({ voiceConfig = {}, speaker = '', kind, clientVoiceId = null, forcedVoiceId = null }) {
   const podCast = (voiceConfig && voiceConfig.podCast) || {}
+  if (forcedVoiceId) {
+    return { voiceId: forcedVoiceId, source: 'forced', disagreement: false }
+  }
   let entry = null
   if (kind === 'target') {
     entry = podCast[canonicalSpeakerName(speaker)] || podCast[speaker] || null
@@ -147,7 +157,7 @@ function validatePodUploadMetadata(metadata = {}) {
  *
  * @returns {Promise<{ context: object }|{ error: string, status: number }>}
  */
-async function preparePodRegistration({ supabase, courseCode, metadata = {}, logger = console }) {
+async function preparePodRegistration({ supabase, courseCode, metadata = {}, logger = console, forcedVoiceId = null }) {
   const valid = validatePodUploadMetadata(metadata)
   if (!valid.ok) return { error: valid.error, status: 400 }
 
@@ -198,6 +208,7 @@ async function preparePodRegistration({ supabase, courseCode, metadata = {}, log
     speaker: sentence.speaker,
     kind,
     clientVoiceId: metadata.voiceId || null,
+    forcedVoiceId,
   })
   if (resolved.disagreement) {
     logger.warn(`[PodRecording] client voiceId ${metadata.voiceId} disagrees with podCast → ${resolved.voiceId} — server value wins`)
