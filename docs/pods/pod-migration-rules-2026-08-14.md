@@ -73,6 +73,8 @@ language has finished new content yet. Every staged pod currently has around 110
 sentences still untranslated and unrecorded, which is what job #481 is doing now. The
 switchover refuses to run until that's complete, so it can't go early by accident.
 
-Separately, and worth knowing: the offline download currently sends learners the unfinished
-working copy of the pods as well as the live one. That's live today, it isn't caused by any
-of this, and it's a one-line fix which I've included in the switchover work.
+Separately, and worth knowing: the offline download packs up the unfinished working copy of
+the pods as well as the live one. No learner is hearing it — nothing in the app actually
+reads the pods out of that download yet — so it's a trap waiting rather than a fire. But it
+would become a fire the moment offline listening is switched on, so I've closed it with a
+one-line filter as part of this work.

@@ -47,10 +47,21 @@ Consequently the offline bundle already ships:
 - choice pods such as `spa_for_eng:music` (749 sentences, 0 target audio).
 
 The staging model that `clone-pod.cjs` relies on — "a pod on any other slug is invisible to
-learners" — is true of the player and false of the bundle. This is live today, independent
-of the switchover, and the one-line filter that fixes it is also exactly the place the
-bundle learns the switchover. I have not exercised the deployed endpoint (it is auth-gated);
-the finding is from the code, which is unambiguous.
+learners" — is true of the player and false of the bundle.
+
+**Severity, stated honestly: latent, not an active incident.** `BundlePod` is a type
+declaration with no runtime consumer — nothing outside tests reads `bundle.pods`, and
+`iterateBundleAudio`, which the comment at `bundle.ts:408` says collapses duplicate pod
+downloads, does not exist yet; that name appears only in the comment. So the staged pod is
+serialised into the bundle response and then read by nobody, and no learner is currently
+hearing unfinished content through this path. Job #484 reached the same conclusion
+independently and flagged it as unproven-by-grep rather than certain; I confirmed it by
+searching for consumers and for `iterateBundleAudio` directly.
+
+It still needs the filter, for two reasons: it becomes a real incident the day offline
+listening is wired up, and it is precisely the place the bundle path learns the switchover
+contract. I have not exercised the deployed endpoint (auth-gated); the finding is from the
+code, which is unambiguous.
 
 ## 2. What "the new content" actually is
 
