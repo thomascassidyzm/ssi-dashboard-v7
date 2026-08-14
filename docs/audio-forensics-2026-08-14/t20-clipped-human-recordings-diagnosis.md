@@ -201,23 +201,10 @@ loses nothing. Cheap, reversible, and it protects every future session.
 `production-api.cjs:4562` was calibrated against the aggressive trim — it stays
 valid but its rationale comment will be stale.
 
-**b. Re-record the 107, and only 63 of them are Aran's.** No process can restore
-audio that was never written to disk. But the 107 split by who actually read them:
-
-| recordist | butchered clips |
-|---|---|
-| aran@hey.com | **63** |
-| thomas.cassidy+ssi@gmail.com | **44** |
-| e2e test account | 6 (throwaway) |
-
-**So the ask on Aran is 63 clips — one short session.** The other 44 are Tom's
-own takes. The per-clip damage list is computed and can be handed over as a work
-list so each recordist re-reads only what was actually cut, in recording order.
-
-*Join note:* `recording_provenance.audio_uuid` keys on the **S3 key uuid**, not
-on `course_audio.id`. Pod and script mode mint a fresh key uuid per take, so
-joining on the row id returns zero provenance for every studio-recorded clip —
-which reads as "no provenance was ever written" when in fact it is all there.
+**b. Re-record the 107, not the estate.** No process can restore audio that was
+never written to disk. The 107 clips are one bounded ask of Aran — the
+per-clip damage list is computed and can be handed over as a work list, so he
+re-reads only what was actually cut, in the order he recorded it.
 
 **c. Do not touch the 39,182 legacy clips.** They are clean. Any "repair" pass
 over them would be the make-before-break rule broken for no reason.
