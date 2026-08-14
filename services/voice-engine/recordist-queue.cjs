@@ -273,7 +273,91 @@ async function buildLanguageLines(db, language) {
     byGender.get(gender).push(line)
   }
 
+  // ── SECOND SOURCE: anything else that needs re-recording ──────────────────
+  //
+  // Tom, 2026-08-14: the 18 failing LEGO-narration clips should "just ride the
+  // new queue's existing design, since it's content-type-agnostic by language
+  // and voice role" — explicitly NOT a bespoke path on the old system.
+  //
+  // So a queue item is not "a pod sentence". It is "a piece of this language
+  // that needs a human voice". course_audio.rerecord_wanted carries the second
+  // kind: any clip of any content type — presentation narration, encouragement,
+  // instruction, course audio — flagged as needing a new take.
+  //
+  // ROUTED BY REQUIRED VOICE, NOT BY AUTHORSHIP. Who recorded the original is
+  // frequently unknowable (presentation narration is stored under the shared
+  // untagged voice 'human'), but which voice the REPLACEMENT needs is always
+  // known, and that is what rerecord_wanted.voice_gender states. Guessing at
+  // authorship is how a clip gets filed under the wrong person.
+  //
+  // These deliberately share the dedupe map above: if a wanted re-record has the
+  // same normalised text as a pod line, it is the same clip identity and one
+  // take serves both.
+  const wanted = await fetchRerecordWanted(db, [...byCourse.keys()])
+  for (const w of wanted) {
+    const text = (w.text || '').trim()
+    if (!text) continue
+    const gender = String(w.rerecord_wanted.voice_gender || '').toLowerCase()
+    if (gender !== 'm' && gender !== 'f') {
+      // No required voice stated — the one thing that would have to be guessed.
+      uncast += 1
+      continue
+    }
+    if (!byGender.has(gender)) { byGender.set(gender, []); seen.set(gender, new Map()) }
+    const key = normalizeForDb(text)
+    const seenForGender = seen.get(gender)
+    if (seenForGender.has(key)) {
+      seenForGender.get(key).duplicateOf.push({ audioId: w.id, courseCode: w.course_code })
+      duplicatesCollapsed += 1
+      continue
+    }
+    const line = {
+      id: w.id,
+      podId: null,
+      order: Number.MAX_SAFE_INTEGER,   // after the pod lines, stably
+      text,
+      knownText: null,
+      speaker: null,
+      courseCode: w.course_code,
+      textNormalized: key,
+      duplicateOf: [],
+      // `kind` tells the surface how to READ this line. Narration text carries
+      // <src>/<tgt> markup — it must be rendered, never read aloud as tags.
+      kind: 'rerecord',
+      role: w.role,
+      rerecordReason: w.rerecord_wanted.reason || null,
+    }
+    seenForGender.set(key, line)
+    byGender.get(gender).push(line)
+  }
+
   return { byGender, uncast, duplicatesCollapsed, courses: [...byCourse.keys()] }
+}
+
+/**
+ * Clips flagged as needing a new take, for the given courses. Paged, because the
+ * flag is deliberately not limited to any one content type and a bad day could
+ * flag thousands.
+ */
+async function fetchRerecordWanted(db, courseCodes) {
+  if (!courseCodes.length) return []
+  const out = []
+  const PAGE = 1000
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from('course_audio')
+      .select('id, course_code, role, text, rerecord_wanted')
+      .in('course_code', courseCodes)
+      .not('rerecord_wanted', 'is', null)
+      .order('course_code', { ascending: true })
+      .order('id', { ascending: true })
+      .range(from, from + PAGE - 1)
+    if (error) throw new Error(`rerecord_wanted read failed: ${error.message}`)
+    const rows = (data || []).filter((r) => r && r.rerecord_wanted)
+    out.push(...rows)
+    if ((data || []).length < PAGE) break
+  }
+  return out
 }
 
 /**
@@ -321,6 +405,14 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // How many other pod lines, in any course of this language, this one
         // recording also fills.
         alsoFills: line.duplicateOf.length,
+        // What KIND of thing this is to read. 'pod' is dialogue; 'rerecord' is
+        // any other content type flagged as needing a new take — narration,
+        // encouragement, instruction. The surface needs this because narration
+        // text carries <src>/<tgt> markup that must be RENDERED, never read
+        // aloud as tags, and because a re-record deserves to say why.
+        kind: line.kind || 'pod',
+        role: line.role || null,
+        rerecordReason: line.rerecordReason || null,
       })
     }
   }

@@ -23,6 +23,11 @@ function stubDb(tables) {
         select() { return q },
         eq(col, val) { rows = rows.filter((r) => r[col] === val); return q },
         in(col, vals) { rows = rows.filter((r) => vals.includes(r[col])); return q },
+        // Only the one form the queue uses: .not(col, 'is', null)
+        not(col, op, val) {
+          if (op === 'is' && val === null) rows = rows.filter((r) => r[col] != null)
+          return q
+        },
         order() { return q },
         range(from, to) { return Promise.resolve({ data: rows.slice(from, to + 1), error: null }) },
         maybeSingle() { return Promise.resolve({ data: rows[0] || null, error: null }) },
@@ -134,4 +139,57 @@ test('recordedSpellings reaches canonical, alias and bare forms', () => {
   assert.ok(spellings.includes('human_aran_cym_n'))
   assert.ok(spellings.includes('human_aran_cym_n_2'))
   assert.ok(spellings.includes('aran_cym_n'), 'the bare form is half the estate’s rows')
+})
+
+// ── The queue is content-type-agnostic (Tom, 2026-08-14) ────────────────────
+// The 18 failing LEGO-narration clips ride the ordinary queue rather than a
+// bespoke path. A queue item is "a piece of this language needing a human
+// voice", not "a pod sentence".
+
+test('a flagged re-record of ANY content type enters the queue, routed by required voice', async () => {
+  const f = fixture()
+  f.course_audio = [
+    { id: 'ca1', course_code: 'cym_n_for_eng', role: 'presentation', language: 'cym',
+      voice_id: 'human', text: 'The Welsh for <src>are they?</src> is <tgt>ydyn nhw?</tgt>',
+      rerecord_wanted: { reason: 'ends abruptly', voice_gender: 'm' } },
+    { id: 'ca2', course_code: 'cym_s_for_eng', role: 'presentation', language: 'cym',
+      voice_id: 'human', text: 'The Welsh for <src>the girl</src> is <tgt>yr hogan</tgt>',
+      rerecord_wanted: { reason: 'ends abruptly', voice_gender: 'f' } },
+  ]
+  const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  const catrin = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_catrinlliar_cym_n'), { includeRecorded: true })
+
+  const aranRe = aran.lines.filter((l) => l.kind === 'rerecord')
+  const catrinRe = catrin.lines.filter((l) => l.kind === 'rerecord')
+  assert.equal(aranRe.length, 1, 'the male-voice re-record lands in the male queue')
+  assert.equal(aranRe[0].id, 'ca1')
+  assert.equal(aranRe[0].role, 'presentation', 'content type rides along for the surface to render')
+  assert.equal(catrinRe.length, 1, 'and the female-voice one in the female queue')
+  assert.equal(catrinRe[0].id, 'ca2')
+  // Routed by REQUIRED voice, never by who recorded the original — the
+  // originals are both stored under the shared untagged voice 'human'.
+  assert.equal(aran.lines.some((l) => l.id === 'ca2'), false)
+})
+
+test('a re-record with no required voice is counted as uncast, never guessed into a queue', async () => {
+  const f = fixture()
+  f.course_audio = [
+    { id: 'ca3', course_code: 'cym_n_for_eng', role: 'encouragement', language: 'cym',
+      voice_id: 'human', text: 'Da iawn ti.', rerecord_wanted: { reason: 'clipped' } },
+  ]
+  const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(aran.lines.some((l) => l.id === 'ca3'), false)
+  assert.equal(aran.uncast, 2, 'the gender-less speaker plus the gender-less re-record')
+})
+
+test('a re-record sharing a pod line’s text is ONE recording, not two', async () => {
+  const f = fixture()
+  f.course_audio = [
+    { id: 'ca4', course_code: 'cym_n_for_eng', role: 'presentation', language: 'cym',
+      voice_id: 'human', text: 'Bore da!', rerecord_wanted: { reason: 'clipped', voice_gender: 'm' } },
+  ]
+  const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(aran.lines.filter((l) => l.kind === 'rerecord').length, 0,
+    'it collapses onto the pod line of the same clip identity')
+  assert.equal(aran.lines.find((l) => l.text === 'Bore da.').alsoFills, 2)
 })
