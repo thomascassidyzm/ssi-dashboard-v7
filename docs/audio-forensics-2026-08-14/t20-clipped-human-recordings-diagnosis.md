@@ -76,9 +76,11 @@ exact production filter strings:
 On real speech (one of Aran's own takes, re-padded and re-run) the chain ate
 206 ms beyond the padding — the same 100 ms per edge.
 
-The `-40 dB` threshold makes it worse than the headline number at quiet edges:
-anything below −40 dBFS is discarded *before* the 100 ms counter even starts, so
-Welsh word-final fricatives and unvoiced stops lose more than 100 ms.
+The `-40 dB` threshold adds to this at quiet edges: anything below −40 dBFS is
+discarded *before* the 100 ms counter even starts. That effect is real at the
+filter level but small once the audio is encoded — quantified in "The residue"
+below, where it measures 7-8 ms through the actual MP3 output. The 100 ms per
+edge is the substance of the damage.
 
 The codebase already half-knew. A comment at `production-api.cjs:4560` reads:
 *"the trim is aggressive — a synthesised 350 ms tone comes out the far side at
@@ -135,6 +137,91 @@ Every location checked, and what it said:
 **The only gap:** whether Aran's own device or browser kept a private copy is
 outside anything the code or the estate can answer. Worth one question to him —
 it is the sole remaining chance of a pristine source.
+
+
+---
+
+## The tail question — chain walked, and the answer is no second bug
+
+Tom's ear said the ends were clipped worse than the beginnings, and asked whether
+the tail is trimmed by a separate pass that might still carry the destructive
+parameter. It is a separate pass. It does not still carry it.
+
+**How the tail is trimmed.** There is no `stop_periods`/`stop_duration` anywhere.
+The tail is the *same* filter applied to reversed audio — `trim, areverse, trim,
+areverse` — so the second `silenceremove` is the tail pass. Both passes are built
+from one string, and the landed fix replaced both together.
+
+**Proved in isolation**, not inferred from the round trip. Input: a 1.000 s tone
+with padding on the TAIL ONLY, so anything the head pass does is invisible:
+
+| tail pass | output | tone surviving | verdict |
+|---|---|---|---|
+| input | 2.000 s | 1.000 s | 1.000 s of pad after the tone |
+| **fixed** (`start_silence`) | 1.050 s | **1.000 s** | pad removed, **nothing eaten** |
+| old (`start_duration`) | 0.900 s | 0.899 s | **100 ms of tone destroyed** |
+
+The tail pass demonstrably ran (it removed 950 ms of padding) and took none of
+the speech. **Verified live on the served bytes too**: a tail-padded take through
+the running service came back at 1.050 s with the full 1.000 s tone and 45 ms of
+tail retained — 955 ms of pad removed. The 45 ms in the earlier test did come
+through the real tail-trim path.
+
+### The residue, measured rather than assumed
+
+The parameter was only half the mechanism. The other half is the `-40 dB`
+threshold: real speech *decays through* it at a phrase end, so a decaying tail
+can be classed as silence. On a synthetic worst-case word (soft onset, decaying
+tail) at the filter level, the old settings lost 163 ms of head and 191 ms of
+tail, and raising retention to 0.30 s brought both to zero.
+
+**But that gain does not survive the real pipeline, so it was not shipped.**
+Driving the actual `processRecordingBuffer`, whose output is a 128 kbps MP3:
+
+| measurement floor | speech lost, retention 0.05 | retention 0.30 |
+|---|---|---|
+| −30 dBFS | 2 ms | 2 ms |
+| −40 dBFS | 0 ms | 0 ms |
+| −45 dBFS | 7 ms | 0 ms |
+| −60 dBFS | 8 ms | 0 ms |
+
+The difference is **7–8 ms of material below −45 dBFS** — which the MP3 encode
+does not faithfully carry anyway. Raising retention would have added 250 ms of
+silence to both ends of every future clip to buy that. It fails on cheaper and on
+simpler, so retention stays at 0.05 and **no second fix was landed**.
+
+What did land is a **tail-specific regression test**. The two passes are separate
+strings, so an edit can fix or break one side alone — which is precisely the
+failure Tom was pointing at. The new case pads only the tail and fails at 0.893 s
+if that pass reverts, verified by reverting just that pass. A second case asserts
+a silent take still collapses under the handler's 100 ms floor, so the 834-byte
+empty-stub hole cannot be reopened by a future retention change.
+
+### Head versus tail on the damaged clips — the data disagrees with the ear
+
+Two independent measurements over all 81 damaged clips, run separately:
+
+| measure | head | tail |
+|---|---|---|
+| waveform: edge RMS ÷ clip median (median of 81) | **1.79** | 1.27 |
+| clips cut into speech (edge > 0.5 × median) | 72 / 81 | 68 / 81 |
+| ASR: first vs last word missing or corrupted | **61 / 81 (75 %)** | 28 / 81 (35 %) |
+
+Paired, the head edge is louder than the tail edge in **55 of 81** clips against
+26 the other way (sign test p = 0.0017). **Both methods say the beginnings took
+more damage than the ends, not less.**
+
+That contradicts what Tom heard, so it is worth being precise about what it does
+and does not overturn. It does not overturn the complaint: **both ends are cut**,
+72 of 81 at the head and 68 of 81 at the tail, and every one of the 81 needs
+re-recording either way. What it overturns is only the ordering. The likeliest
+reason the ends *sound* worse is perceptual rather than physical — a truncated
+phrase-ending removes the natural release, so the clip stops dead in the air and
+the damage is exposed against the silence that follows, whereas a missing onset
+is immediately masked by the loud speech behind it and reads as a clip that
+merely "starts sharply". Trust levels: the waveform measure is a direct physical
+measurement; the ASR pass is Welsh whisper on isolated lines and is noisier, but
+a transcription artefact would hit both edges evenly and this did not.
 
 ---
 
