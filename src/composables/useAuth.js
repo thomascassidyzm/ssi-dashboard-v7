@@ -201,9 +201,17 @@ async function sendOTP(email) {
   error.value = null
 
   try {
+    // emailRedirectTo pins the magic link embedded in the OTP email to the
+    // domain the user is actually logging into (popty.app in prod). Without
+    // it, Supabase falls back to the project's SITE_URL (saysomethingin.app)
+    // and the link 404s there. Requires popty.app on the Supabase project's
+    // redirect allowlist — see docs/secrets-vault.md.
     const { error: otpError } = await supabase.auth.signInWithOtp({
       email,
-      options: { shouldCreateUser: true }
+      options: {
+        shouldCreateUser: true,
+        ...(typeof window !== 'undefined' && { emailRedirectTo: window.location.origin })
+      }
     })
 
     if (otpError) {
