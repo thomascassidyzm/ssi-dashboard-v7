@@ -152,6 +152,20 @@ verification path.
 
 ---
 
+## Deployed, and checked where it is served
+
+- **API** — merged to `main`, the production checkout pulled, and
+  `popty-production-api.service` restarted. Asked live on the restarted service,
+  `eng_for_pan S0019L02` now comes back derived as
+  `[3: ਨਹੀਂ ਕਰਨਾ ਚਾਹੁੰਦਾ] [1: ਬੰਦ] [1: ਗੱਲਾਂ ਕਰਨੀਆਂ]` — correct, where before the restart it
+  answered fully crossed.
+- **Frontend** — Vercel rebuilt `popty.app` from `main`. Checked on the bytes
+  actually served, not asserted: chunk `assets/ScriptViewer-DLBYZFhJ.js` carries
+  `mapping-tile`, `mapping-tile-picked`, `mapping-slot` and "Put the tile here",
+  no longer carries `mapping-nudge`, and still carries "back to the original".
+
+---
+
 ## Taste-safe defaults — overrule any of these cheaply
 
 1. **The multiset gate is kept.** An author may rearrange and re-place the words
