@@ -37,9 +37,14 @@ DECLARE
   incoming_rank int;
   canon_rank    int;
 BEGIN
-  -- A placeholder is not a clip. `pending/%` rows are stubs written before the
-  -- render exists; they must never become canon and must never borrow bytes.
-  IF NEW.s3_key IS NULL OR NEW.s3_key = '' OR NEW.s3_key LIKE 'pending/%' THEN
+  -- Only a learner-serving object can be, or borrow from, canon.
+  --
+  -- `pending/%` are stubs written before the render exists. `repair-candidates/%`
+  -- are takes PROPOSED for a human decision and never accepted — promoting one
+  -- to canon is the human-outranks-canon doctrine violated from the other
+  -- direction, and it happened to 623 identities before this was an allow-list.
+  -- Anything off the serving prefix is left alone and unlinked.
+  IF NEW.s3_key IS NULL OR NEW.s3_key = '' OR NEW.s3_key NOT LIKE 'mastered/%' THEN
     NEW.clip_id := NULL;
     RETURN NEW;
   END IF;

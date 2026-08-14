@@ -78,7 +78,13 @@ JOIN _canon_lang_map  lm ON lm.raw = ca.language
 JOIN _canon_voice_map vm ON vm.raw = ca.voice_id
 WHERE ca.s3_key IS NOT NULL
   AND ca.s3_key <> ''
-  AND ca.s3_key NOT LIKE 'pending/%'
+  -- Serving prefix ONLY, as an allow-list. This used to exclude just 'pending/%'
+  -- and that let 623 identities take a `repair-candidates/` object as canon —
+  -- a take PROPOSED for a human decision and never accepted, on a prefix that
+  -- returns 403 to every learner. An unaccepted proposal is never canon (Tom,
+  -- 2026-08-14). Mirrored by CHECK audio_clips_serving_prefix, which is what
+  -- actually enforces it; this clause just stops the query trying.
+  AND ca.s3_key LIKE 'mastered/%'
   AND (:'scope' = 'ALL' OR lm.canon = :'scope');
 
 CREATE UNIQUE INDEX _canon_stage_audio ON _canon_stage (audio_id);
