@@ -1,0 +1,617 @@
+{
+  "pass": "repair-nonserving-2026-08-14",
+  "apply": true,
+  "bucket": "ssi-audio-stage",
+  "ranAt": "2026-08-14T21:34:40.607Z",
+  "repointed": [
+    {
+      "audioId": "eefdb889-ae58-41db-b413-ab118199893b",
+      "course": "por_for_eng",
+      "language": "eng",
+      "role": "known",
+      "voiceId": "azure_en-GB-SoniaNeural",
+      "text": "are you ready to go home",
+      "action": "repoint_canon",
+      "oldKey": "pending/705F0F4B-BB12-4B99-8FB7-A3B499E264D3",
+      "oldProbe": {
+        "ok": false,
+        "stage": "head",
+        "error": "NotFound"
+      },
+      "newKey": "mastered/73A60AE3-9744-4BC8-B3B3-27A5B1DEC490.mp3",
+      "newProbe": {
+        "ok": true,
+        "status": 200,
+        "bytes": 24480,
+        "sha256": "944c68f7b0da6bf9c0b221aa676b115d36e428af7c8400538253feecdbb56fae",
+        "isMp3": true
+      },
+      "fromCourse": "zho_for_eng",
+      "reachableByLearner": true,
+      "applied": true,
+      "error": null,
+      "storedKeyAfter": "mastered/73A60AE3-9744-4BC8-B3B3-27A5B1DEC490.mp3",
+      "afterProbe": {
+        "ok": true,
+        "status": 200,
+        "bytes": 24480,
+        "sha256": "944c68f7b0da6bf9c0b221aa676b115d36e428af7c8400538253feecdbb56fae",
+        "isMp3": true
+      },
+      "verdict": "PASS"
+    },
+    {
+      "audioId": "7f051838-13ff-41da-9de7-abc8a519c775",
+      "course": "spa_mx_for_eng",
+      "language": "eng",
+      "role": "known",
+      "voiceId": "azure_en-GB-SoniaNeural",
+      "text": "you don't mind",
+      "action": "repoint_canon",
+      "oldKey": "pending/4A64283A-DC41-45B7-8FE9-121C9D8BA602",
+      "oldProbe": {
+        "ok": false,
+        "stage": "head",
+        "error": "NotFound"
+      },
+      "newKey": "mastered/676A5F28-7DF8-437F-BFA5-E1F2F3EA8AB4.mp3",
+      "newProbe": {
+        "ok": true,
+        "status": 200,
+        "bytes": 20160,
+        "sha256": "da83ae85a3dcc1326ab6bcedca203a672c045c56b0e12432fa7afdeb225fa8f4",
+        "isMp3": true
+      },
+      "fromCourse": "ita_for_eng",
+      "reachableByLearner": true,
+      "applied": true,
+      "error": null,
+      "storedKeyAfter": "mastered/676A5F28-7DF8-437F-BFA5-E1F2F3EA8AB4.mp3",
+      "afterProbe": {
+        "ok": true,
+        "status": 200,
+        "bytes": 20160,
+        "sha256": "da83ae85a3dcc1326ab6bcedca203a672c045c56b0e12432fa7afdeb225fa8f4",
+        "isMp3": true
+      },
+      "verdict": "PASS"
+    },
+    {
+      "audioId": "97dd31bc-fc86-4636-82d8-b7d3685d8a35",
+      "course": "spa_mx_for_eng",
+      "language": "eng",
+      "role": "known",
+      "voiceId": "azure_en-GB-SoniaNeural",
+      "text": "so what's your name",
+      "action": "repoint_canon",
+      "oldKey": "pending/E3C7EC69-25BF-4D78-A2E2-8B4DD1D9EDAE",
+      "oldProbe": {
+        "ok": false,
+        "stage": "head",
+        "error": "NotFound"
+      },
+      "newKey": "mastered/F41C004F-1DD9-4A6C-9346-34565DC8AB46.mp3",
+      "newProbe": {
+        "ok": true,
+        "status": 200,
+        "bytes": 22752,
+        "sha256": "b7d6707a4fb6b4b80f868bbc78268297519fadd0216bdadefa8d9e74eff77168",
+        "isMp3": true
+      },
+      "fromCourse": "fra_ca_for_eng",
+      "reachableByLearner": true,
+      "applied": true,
+      "error": null,
+      "storedKeyAfter": "mastered/F41C004F-1DD9-4A6C-9346-34565DC8AB46.mp3",
+      "afterProbe": {
+        "ok": true,
+        "status": 200,
+        "bytes": 22752,
+        "sha256": "b7d6707a4fb6b4b80f868bbc78268297519fadd0216bdadefa8d9e74eff77168",
+        "isMp3": true
+      },
+      "verdict": "PASS"
+    },
+    {
+      "audioId": "9d0ca53e-1067-4d66-8786-f3f229e76003",
+      "course": "zho_for_jpn",
+      "language": "jpn",
+      "role": "known",
+      "voiceId": "azure_ja-JP-ShioriNeural",
+      "text": "必要",
+      "action": "repoint_sibling",
+      "oldKey": "pending/74B2F9F2-6386-44DF-97BA-EA1FFD292AE5.mp3",
+      "oldProbe": {
+        "ok": false,
+        "stage": "head",
+        "error": "NotFound"
+      },
+      "newKey": "mastered/AF523859-CB64-40CB-8C37-DE3796E839A7.mp3",
+      "newProbe": {
+        "ok": true,
+        "status": 200,
+        "bytes": 21312,
+        "sha256": "a73ce8e82532aa777a30068e01b7667257199c1695f63f02cfc921e2a17a8834",
+        "isMp3": true
+      },
+      "fromCourse": "fra_for_jpn",
+      "reachableByLearner": true,
+      "applied": true,
+      "error": null,
+      "storedKeyAfter": "mastered/AF523859-CB64-40CB-8C37-DE3796E839A7.mp3",
+      "afterProbe": {
+        "ok": true,
+        "status": 200,
+        "bytes": 21312,
+        "sha256": "a73ce8e82532aa777a30068e01b7667257199c1695f63f02cfc921e2a17a8834",
+        "isMp3": true
+      },
+      "verdict": "PASS"
+    }
+  ],
+  "queued": [
+    {
+      "course": "deu_at_for_eng",
+      "rows": 13,
+      "reachableByLearner": 6,
+      "lines": [
+        {
+          "audioId": "784bc959-8f90-40cc-a599-3f0f917f0b1b",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "changed",
+          "deadKey": "pending/E97AB84D-5D5D-4050-BB46-7D7947A2E0CE.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "290a037c-922f-4c71-b934-36481c0ba06a",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "you had to",
+          "deadKey": "pending/CA3053AD-B90D-4725-9539-2509105C4143.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "e9391724-d717-490e-bc20-25b1f6bb2cfb",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "we need to",
+          "deadKey": "pending/F41B4F13-1399-4135-AE40-D29D9726D066.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "fc284a5b-a65c-40be-9191-9f358fbf952f",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "there are",
+          "deadKey": "pending/B342D1CE-FD10-49E1-B156-21B84DBCE068.mp3",
+          "reachable": true
+        },
+        {
+          "audioId": "012c03b0-f3be-48f7-b62c-da66b5084d35",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "s are going around",
+          "deadKey": "pending/AD201FE1-EF94-4848-A3EA-CF1BA231F323.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "238628b1-b00b-40a4-b001-6dcc0ff19e9a",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "on saturday night",
+          "deadKey": "pending/7734C0FB-5D55-4DE7-A313-A2ECDBB9DF4C.mp3",
+          "reachable": true
+        },
+        {
+          "audioId": "c7a225be-8084-4e37-981d-cf1f65eb3265",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "in the middle of the night",
+          "deadKey": "pending/D4571A53-47A6-4922-937E-4838A6A709F3.mp3",
+          "reachable": true
+        },
+        {
+          "audioId": "3b3a8478-e28c-4d0e-b855-2f7d74e6a013",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "ideas",
+          "deadKey": "pending/DB1A5DC7-7C6E-42B9-AB90-B24EEA5F45B5.mp3",
+          "reachable": true
+        },
+        {
+          "audioId": "8ba8383c-8ce2-49ef-a22a-606f6f822c2e",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "i hope you",
+          "deadKey": "pending/5BD27066-8FBF-4A7C-AAB9-CEB27AA88D69.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "c8c0baa8-c359-4d48-b9a0-dadfa7bf9bf8",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "i had hoped",
+          "deadKey": "pending/06260C5E-D225-4060-AE93-FE254FEAC671.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "30c70b54-a1ae-48bb-b455-de5eee1f532f",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "him",
+          "deadKey": "pending/421361A2-8776-4618-BDDB-A3577C13AC2C.mp3",
+          "reachable": true
+        },
+        {
+          "audioId": "9a5a6b45-a730-4bd0-8eea-59ad686437c0",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "he is trying to tell me what he wants",
+          "deadKey": "pending/629D8F7A-1416-4532-9D98-FD3254BFA4D4.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "36b44412-343c-428b-9ab0-9476f3674418",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_",
+          "text": "exciting",
+          "deadKey": "pending/00A22F1A-84AD-4284-8DB6-CDD5B929605C.mp3",
+          "reachable": true
+        }
+      ],
+      "queueResult": {
+        "queued": false,
+        "touched": true,
+        "id": "10d4382d-9071-476e-aeec-8b3cae527e83"
+      }
+    },
+    {
+      "course": "deu_for_eng",
+      "rows": 12,
+      "reachableByLearner": 0,
+      "lines": [
+        {
+          "audioId": "57925752-aba2-4196-a5a5-255cdc1d1dce",
+          "role": "presentation",
+          "language": "eng",
+          "voiceId": "en-GB-SoniaNeural",
+          "text": "the german for: 'opposite', as in — 'opposite the post office', is:",
+          "deadKey": "pending/E53D0142-9735-4838-B958-AA331E41B95E.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "d11982f9-304b-43c6-b117-e542df2a4291",
+          "role": "presentation",
+          "language": "eng",
+          "voiceId": "en-GB-SoniaNeural",
+          "text": "the german for: 'do you want to stop?', as in — 'why do you want to stop', is:",
+          "deadKey": "pending/391EC5DD-0AE9-4EED-A0F3-993C31465BE9.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "5c933d7f-4b8d-40ad-9122-9c09f1cc2aa9",
+          "role": "presentation",
+          "language": "eng",
+          "voiceId": "en-GB-SoniaNeural",
+          "text": "the german for: 'expect it', as in — 'i wasn't expecting it', is:",
+          "deadKey": "pending/12EC5326-5178-4047-A9C8-E95C5F96990E.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "0ba69c9a-5e6a-4fc7-aa97-6b72573627f7",
+          "role": "presentation",
+          "language": "eng",
+          "voiceId": "azure_en-GB-SoniaNeural",
+          "text": "the german for: 'her book', as in — 'i liked her book', is:",
+          "deadKey": "pending/6214024B-FC21-40A5-81C6-78650AC98AAA.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "bbdd0eb5-0d12-4867-955f-c5c43ccee5bf",
+          "role": "presentation",
+          "language": "eng",
+          "voiceId": "en-GB-SoniaNeural",
+          "text": "the german for: 'it's not difficult', as in — 'it's not difficult to find the answer', is:",
+          "deadKey": "pending/27B9AF2F-138C-43D0-B0FD-1D58995FB0B9.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "9a581d83-6071-4e62-a55b-f5132c17d5d6",
+          "role": "presentation",
+          "language": "eng",
+          "voiceId": "en-GB-SoniaNeural",
+          "text": "the german for: 'makes', as in — 'makes out', is:",
+          "deadKey": "pending/03EAC5C7-5D5B-49C1-AD12-E9D424C0E403.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "94b4f512-6b0a-4903-8590-e7dafb231a73",
+          "role": "presentation",
+          "language": "eng",
+          "voiceId": "en-GB-SoniaNeural",
+          "text": "the german for: 'month', as in — 'last month', is:",
+          "deadKey": "pending/909B0F2E-E3D3-48EA-80B7-51E449224C46.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "09bb2584-6aaf-4066-9183-48b988afb948",
+          "role": "presentation",
+          "language": "eng",
+          "voiceId": "azure_en-GB-SoniaNeural",
+          "text": "the german for: 'pleased', as in — 'i liked her book', is:",
+          "deadKey": "pending/8EA9024F-A801-4AAD-B02E-D3317F958608.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "f820f2cd-5bae-4815-ab35-4d46c19492fc",
+          "role": "presentation",
+          "language": "eng",
+          "voiceId": "en-GB-SoniaNeural",
+          "text": "the german for: 'the same thing', as in — 'the same thing to eat', is:",
+          "deadKey": "pending/E4E3DE6C-A46D-4F84-9A09-30338CA1D738.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "dc82c91f-e724-4711-a703-f4273f11ff50",
+          "role": "presentation",
+          "language": "eng",
+          "voiceId": "en-GB-SoniaNeural",
+          "text": "the german for: 'to practise speaking', as in — 'that man has just started to practise speaking', is:",
+          "deadKey": "pending/C0049FA9-8F79-40B1-96FE-072A6A7A43B6.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "bb56fce2-8388-450d-b567-4a193a833d0f",
+          "role": "presentation",
+          "language": "eng",
+          "voiceId": "en-GB-SoniaNeural",
+          "text": "the german for: 'very', as in — 'not very important', is:",
+          "deadKey": "pending/A263BDBB-E48E-4E1C-A48B-B421CA704DDC.mp3",
+          "reachable": false
+        },
+        {
+          "audioId": "e31f5158-1065-4ab2-975c-c89261d24ede",
+          "role": "presentation",
+          "language": "eng",
+          "voiceId": "en-GB-SoniaNeural",
+          "text": "the german for: 'what do you think?', as in — 'what do you think about that', is:",
+          "deadKey": "pending/6B88094A-3114-41FD-B9F3-DC8F05E7C74C.mp3",
+          "reachable": false
+        }
+      ],
+      "queueResult": {
+        "queued": false,
+        "touched": true,
+        "id": "e92a5982-4dd7-4417-bafa-a91c8dc5e116"
+      }
+    },
+    {
+      "course": "por_for_eng",
+      "rows": 4,
+      "reachableByLearner": 4,
+      "lines": [
+        {
+          "audioId": "b676ce5f-ecb1-44de-a95c-f01eb122b4cd",
+          "role": "target1",
+          "language": "por",
+          "voiceId": "azure_pt-PT-RaquelNeural",
+          "text": "estás pronto para ir para casa",
+          "deadKey": "pending/D0D5AF1A-233D-4C3A-A8A1-9AE1F42F32AD",
+          "reachable": true
+        },
+        {
+          "audioId": "b18a7f2d-4a5b-447c-bb0c-7f30acf26908",
+          "role": "target2",
+          "language": "por",
+          "voiceId": "azure_pt-PT-DuarteNeural",
+          "text": "queres testar-te a ti mesmo",
+          "deadKey": "pending/22198900-E2C3-4203-AA22-07FC28A5580B",
+          "reachable": true
+        },
+        {
+          "audioId": "42fb9da1-77b8-4d7f-8374-368284a7484f",
+          "role": "target1",
+          "language": "por",
+          "voiceId": "azure_pt-PT-RaquelNeural",
+          "text": "queres testar-te a ti mesmo",
+          "deadKey": "pending/860D7C20-B510-4AFC-9D30-0CA79C2C5AE3",
+          "reachable": true
+        },
+        {
+          "audioId": "51777ba7-dcfb-45b7-a65c-70f4f818604f",
+          "role": "target2",
+          "language": "por",
+          "voiceId": "azure_pt-PT-DuarteNeural",
+          "text": "estás pronto para ir para casa",
+          "deadKey": "pending/ABD6E756-F655-49D2-9B47-101C12846B8C",
+          "reachable": true
+        }
+      ],
+      "queueResult": {
+        "queued": false,
+        "touched": true,
+        "id": "1bd4226c-68b8-440a-a22a-03a1080a6098"
+      }
+    },
+    {
+      "course": "spa_mx_for_eng",
+      "rows": 17,
+      "reachableByLearner": 13,
+      "lines": [
+        {
+          "audioId": "b250b2d9-7e65-4feb-b737-fcec33c6d861",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_en-GB-SoniaNeural",
+          "text": "you don't mind speaking spanish with my friends next week",
+          "deadKey": "pending/A6F0B235-E1ED-41D3-9FD0-3B0AEA9B50BB",
+          "reachable": true
+        },
+        {
+          "audioId": "0afeb3bf-adfa-45e6-a7f0-e82c302ba051",
+          "role": "target2",
+          "language": "spa",
+          "voiceId": "azure_es-MX-LucianoNeural",
+          "text": "¿así que cómo te llamas",
+          "deadKey": "pending/D313459A-4715-484D-B182-70DADEA2CC59",
+          "reachable": true
+        },
+        {
+          "audioId": "dc2bd146-9997-4fd3-bf44-eb99233ee025",
+          "role": "target2",
+          "language": "spa",
+          "voiceId": "azure_es-MX-LucianoNeural",
+          "text": "¿cuándo lo estás haciendo? ¿creo que es importante",
+          "deadKey": "pending/2F667A91-7AA0-47A3-94BE-5AAC11DB3438",
+          "reachable": false
+        },
+        {
+          "audioId": "f579041b-3ed1-48ba-ae9a-2f8453fe1641",
+          "role": "target1",
+          "language": "spa",
+          "voiceId": "azure_es-MX-CarlotaNeural",
+          "text": "¿cuándo lo estás haciendo? ¿creo que es importante",
+          "deadKey": "pending/A45F6CE6-E19D-44F9-B783-0517C1F71D29",
+          "reachable": false
+        },
+        {
+          "audioId": "5c7ea622-3982-4f35-9c2c-3a07424cbd58",
+          "role": "target1",
+          "language": "spa",
+          "voiceId": "azure_es-MX-CarlotaNeural",
+          "text": "¿así que cómo te llamas",
+          "deadKey": "pending/C679685A-0178-4DDE-B954-1C55C093A3DD",
+          "reachable": true
+        },
+        {
+          "audioId": "951acc20-2e3c-465a-9685-18cd068400f3",
+          "role": "target2",
+          "language": "spa",
+          "voiceId": "azure_es-MX-LucianoNeural",
+          "text": "¿no te importa ayudarme a mejorar lo más rápido posible",
+          "deadKey": "pending/7962DD57-AA61-44A6-9FE0-87586F33FA93",
+          "reachable": true
+        },
+        {
+          "audioId": "ab7de026-5c30-4658-86c6-6b45e7a5ada5",
+          "role": "target2",
+          "language": "spa",
+          "voiceId": "azure_es-MX-LucianoNeural",
+          "text": "¿estás aprendiendo cómo explicar algo en español",
+          "deadKey": "pending/CDF5E846-4974-4E55-BBF3-C49DDEBF801D",
+          "reachable": true
+        },
+        {
+          "audioId": "55747e65-7926-4e67-94cc-ec6f83b7c0e5",
+          "role": "target1",
+          "language": "spa",
+          "voiceId": "azure_es-MX-CarlotaNeural",
+          "text": "¿estás aprendiendo cómo explicar algo en español",
+          "deadKey": "pending/3606C79E-B5C2-4E8A-96E9-78C0FA1DC0ED",
+          "reachable": true
+        },
+        {
+          "audioId": "d1ffddce-08e7-409f-bb6f-8d8939835706",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_en-GB-SoniaNeural",
+          "text": "you don't mind helping me improve as quickly as possible",
+          "deadKey": "pending/5C3D872B-A123-4954-BBC0-4A5A1F4E98DB",
+          "reachable": true
+        },
+        {
+          "audioId": "c040fcc2-cde6-4010-a960-b6b872529e0a",
+          "role": "target1",
+          "language": "spa",
+          "voiceId": "azure_es-MX-CarlotaNeural",
+          "text": "¿por qué no voy a esperar? ¿porque quiero empezar ya",
+          "deadKey": "pending/F2D64FCC-EF47-45C0-82A3-D600F34B1752",
+          "reachable": false
+        },
+        {
+          "audioId": "51e70a5e-3eaf-4abd-8871-bb5c5f80d173",
+          "role": "target2",
+          "language": "spa",
+          "voiceId": "azure_es-MX-LucianoNeural",
+          "text": "¿no te importa hablar español con mis amigos la próxima semana",
+          "deadKey": "pending/85848069-C7F1-4842-8200-8A76C942E963",
+          "reachable": true
+        },
+        {
+          "audioId": "a6a55120-52c0-4d3d-bd93-bd953537a0cf",
+          "role": "target1",
+          "language": "spa",
+          "voiceId": "azure_es-MX-CarlotaNeural",
+          "text": "¿no te importa hablar español con mis amigos la próxima semana",
+          "deadKey": "pending/246AA70D-F788-4CB6-A928-56C7B04BB635",
+          "reachable": true
+        },
+        {
+          "audioId": "4280e7db-2da3-4fd2-867f-5a8c0134b848",
+          "role": "target1",
+          "language": "spa",
+          "voiceId": "azure_es-MX-CarlotaNeural",
+          "text": "¿no te importa ayudarme a mejorar lo más rápido posible",
+          "deadKey": "pending/8C2A4700-9B8C-4680-86DA-6B1A7AA9CD44",
+          "reachable": true
+        },
+        {
+          "audioId": "8d629a18-490f-4b61-a673-132502c79957",
+          "role": "known",
+          "language": "eng",
+          "voiceId": "azure_en-GB-SoniaNeural",
+          "text": "are you learning how to explain something in spanish",
+          "deadKey": "pending/F9013DA6-E992-40B9-8CC2-8498177404F1",
+          "reachable": true
+        },
+        {
+          "audioId": "f8e6f904-85c7-42a2-8afd-0fd4aa2f3708",
+          "role": "target2",
+          "language": "spa",
+          "voiceId": "azure_es-MX-LucianoNeural",
+          "text": "¿puedes darme ese libro el domingo",
+          "deadKey": "pending/53D87ADB-0852-4AA7-A6B3-7B46145B8A11",
+          "reachable": true
+        },
+        {
+          "audioId": "643e3a24-2650-434c-806c-78352bb408c5",
+          "role": "target1",
+          "language": "spa",
+          "voiceId": "azure_es-MX-CarlotaNeural",
+          "text": "¿puedes darme ese libro el domingo",
+          "deadKey": "pending/31596748-E300-461F-91BA-18A72853CF85",
+          "reachable": true
+        },
+        {
+          "audioId": "d7b75394-f999-456d-8d20-18d09fea3f19",
+          "role": "target2",
+          "language": "spa",
+          "voiceId": "azure_es-MX-LucianoNeural",
+          "text": "¿por qué no voy a esperar? ¿porque quiero empezar ya",
+          "deadKey": "pending/376A653E-711C-4BDD-B94C-767F6EA5CAF6",
+          "reachable": false
+        }
+      ],
+      "queueResult": {
+        "queued": false,
+        "touched": true,
+        "id": "c4870ec5-8bd0-4df0-bfc8-fbb32dd23070"
+      }
+    }
+  ],
+  "skipped": []
+}
