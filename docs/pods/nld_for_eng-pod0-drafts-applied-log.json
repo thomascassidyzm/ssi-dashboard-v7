@@ -1,0 +1,822 @@
+{
+ "mode": "APPLIED",
+ "summary": {
+  "course": "nld_for_eng",
+  "pod_rows": 232,
+  "blank_slots_before": 116,
+  "drafts_supplied": 115,
+  "will_write": 115,
+  "rejected_by_qc": 0,
+  "skipped_slot_not_blank": 0,
+  "blank_slots_remaining_after": 1
+ },
+ "ops": [
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC01-S003",
+   "global_order": 3,
+   "english": "I'm very well, thank you. Are you going to work?",
+   "target_text": "Heel goed, dank je. Ga je naar je werk?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC02-S003",
+   "global_order": 7,
+   "english": "How far is it into town?",
+   "target_text": "Hoe ver is het naar het centrum?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC02-S004",
+   "global_order": 8,
+   "english": "Can you tell me how far it is into town?",
+   "target_text": "Kun je me vertellen hoe ver het naar het centrum is?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC02-S005",
+   "global_order": 9,
+   "english": "It's not very far. Maybe three or four miles.",
+   "target_text": "Het is niet erg ver. Misschien drie of vier mijl.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC03-S001",
+   "global_order": 10,
+   "english": "Good afternoon. What can I get you?",
+   "target_text": "Goedemiddag. Wat mag het zijn?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC03-S002",
+   "global_order": 11,
+   "english": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.",
+   "target_text": "Goedemiddag. Ik wil graag een koffie, alsjeblieft. Met melk maar zonder suiker. Om mee te nemen.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC03-S003",
+   "global_order": 12,
+   "english": "Do you have any food?",
+   "target_text": "Heb je eten?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC03-S004",
+   "global_order": 13,
+   "english": "Do you have any snacks?",
+   "target_text": "Heb je snacks?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC03-S005",
+   "global_order": 14,
+   "english": "Do you have crisps, or nuts, or anything?",
+   "target_text": "Heb je chips, of noten, of zoiets?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC03-S006",
+   "global_order": 15,
+   "english": "No, we've only got drinks.",
+   "target_text": "Nee, we hebben alleen drankjes.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC03-S007",
+   "global_order": 16,
+   "english": "Yes, would you like the menu?",
+   "target_text": "Ja, wil je de menukaart?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC03-S008",
+   "global_order": 17,
+   "english": "Yes, please.",
+   "target_text": "Ja, graag.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC03-S009",
+   "global_order": 18,
+   "english": "Here's your coffee.",
+   "target_text": "Hier is je koffie.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC05-S002",
+   "global_order": 24,
+   "english": "Yes, very. I'm very tired now. Good night. See you tomorrow.",
+   "target_text": "Ja, heel erg. Ik ben nu erg moe. Welterusten. Tot morgen.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC07-S001",
+   "global_order": 38,
+   "english": "Good morning. What can I get you?",
+   "target_text": "Goedemorgen. Wat mag het zijn?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC07-S004",
+   "global_order": 41,
+   "english": "I'd like large, please. With oat milk if you have it.",
+   "target_text": "Ik wil graag een grote, alsjeblieft. Met havermelk als je die hebt.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC07-S010",
+   "global_order": 47,
+   "english": "That's eight pound forty altogether.",
+   "target_text": "Dat is in totaal acht pond veertig.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC08-S002",
+   "global_order": 54,
+   "english": "I'd like a pint, please. What ales do you have on?",
+   "target_text": "Ik wil graag een pint, alsjeblieft. Welke ales heb je?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC08-S004",
+   "global_order": 56,
+   "english": "I'd like a pint of the bitter, please.",
+   "target_text": "Ik wil graag een pint bitter, alsjeblieft.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC08-S006",
+   "global_order": 58,
+   "english": "Could I see the wine list? I want a glass of wine.",
+   "target_text": "Mag ik de wijnkaart zien? Ik wil een glas wijn.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC08-S007",
+   "global_order": 59,
+   "english": "We have a house red, a house white, or you could have one of our bottles.",
+   "target_text": "We hebben een huiswijn rood, een huiswijn wit, of je kunt een van onze flessen nemen.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC08-S013",
+   "global_order": 65,
+   "english": "Yes, of course. Here it is. The fish and chips are very good.",
+   "target_text": "Ja, natuurlijk. Hier is het. De fish and chips zijn erg lekker.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC08-S015",
+   "global_order": 67,
+   "english": "Do you have any sandwiches? I'd like a cheese sandwich, please.",
+   "target_text": "Heb je broodjes? Ik wil graag een kaasbroodje, alsjeblieft.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC09-S001",
+   "global_order": 69,
+   "english": "Good evening. We have a booking for two, under the name Davies.",
+   "target_text": "Goedenavond. We hebben een reservering voor twee personen, onder de naam Davies.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC09-S015",
+   "global_order": 83,
+   "english": "Is everything alright? Do you have any room for dessert?",
+   "target_text": "Is alles naar wens? Heb je nog ruimte voor een toetje?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC10-S002",
+   "global_order": 88,
+   "english": "Yes, they're down that aisle, on the left.",
+   "target_text": "Ja, ze staan verderop in dat gangpad, aan de linkerkant.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC11-S003",
+   "global_order": 99,
+   "english": "Of course. Here's my passport.",
+   "target_text": "Natuurlijk. Hier is mijn paspoort.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC11-S004",
+   "global_order": 100,
+   "english": "Lovely. The room is on the third floor, room 709.",
+   "target_text": "Fijn. De kamer is op de derde verdieping, kamer 709.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC12-S010",
+   "global_order": 119,
+   "english": "19. 20. 21. Wednesday. Thursday.",
+   "target_text": "19. 20. 21. Woensdag. Donderdag.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC13-S001",
+   "global_order": 120,
+   "english": "Excuse me, do you know how to get to the nearest supermarket?",
+   "target_text": "Neem me niet kwalijk, weet je hoe ik bij de dichtstbijzijnde supermarkt kom?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC13-S002",
+   "global_order": 121,
+   "english": "Yes, it's about a ten minute walk. Go straight along this road.",
+   "target_text": "Ja, het is ongeveer tien minuten lopen. Ga rechtdoor over deze weg.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC14-S002",
+   "global_order": 132,
+   "english": "Yes, of course. It may take some time, there's a lot of traffic at the moment.",
+   "target_text": "Ja, natuurlijk. Het kan even duren, er is op dit moment veel verkeer.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC14-S007",
+   "global_order": 137,
+   "english": "Here we are. That's twelve pound fifty.",
+   "target_text": "Alsjeblieft. Dat is twaalf pond vijftig.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC14-S010",
+   "global_order": 140,
+   "english": "100. 200. 1000. Sunday. 12 o'clock.",
+   "target_text": "100. 200. 1000. Zondag. Twaalf uur.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC15-S001",
+   "global_order": 141,
+   "english": "How much is that?",
+   "target_text": "Hoeveel is dat?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC15-S002",
+   "global_order": 142,
+   "english": "Can you tell me how much that is?",
+   "target_text": "Kun je me vertellen hoeveel dat is?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC15-S003",
+   "global_order": 143,
+   "english": "How much does it cost to get a taxi into town?",
+   "target_text": "Hoeveel kost het om een taxi naar het centrum te nemen?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC15-S004",
+   "global_order": 144,
+   "english": "How much does it cost to get a bus into town?",
+   "target_text": "Hoeveel kost het om een bus naar het centrum te nemen?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC15-S005",
+   "global_order": 145,
+   "english": "Where can we get a bus?",
+   "target_text": "Waar kunnen we een bus nemen?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC15-S006",
+   "global_order": 146,
+   "english": "Where can we get a taxi?",
+   "target_text": "Waar kunnen we een taxi nemen?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC15-S007",
+   "global_order": 147,
+   "english": "Four single tickets to town, please.",
+   "target_text": "Vier enkele kaartjes naar het centrum, alsjeblieft.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC15-S008",
+   "global_order": 148,
+   "english": "Two return tickets to town, please.",
+   "target_text": "Twee retourkaartjes naar het centrum, alsjeblieft.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC15-S009",
+   "global_order": 149,
+   "english": "I prefer to try to speak your language, I think it's polite.",
+   "target_text": "Ik probeer liever jouw taal te spreken, ik vind het beleefd.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC15-S010",
+   "global_order": 150,
+   "english": "I'm sorry I can't speak very quickly.",
+   "target_text": "Sorry, ik kan niet erg snel praten.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC15-S011",
+   "global_order": 151,
+   "english": "100,000. 60. 70. 1 o'clock. 11 o'clock.",
+   "target_text": "100.000. 60. 70. Eén uur. Elf uur.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC16-S001",
+   "global_order": 152,
+   "english": "But if you can speak slowly I think we'll be able to manage.",
+   "target_text": "Maar als je langzaam kunt praten, denk ik dat we het wel redden.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC16-S002",
+   "global_order": 153,
+   "english": "You spoke a little too quickly, so I'm not sure if I understood.",
+   "target_text": "Je sprak een beetje te snel, dus ik weet niet zeker of ik het begreep.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC16-S003",
+   "global_order": 154,
+   "english": "Can we try again?",
+   "target_text": "Kunnen we het nog eens proberen?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC16-S004",
+   "global_order": 155,
+   "english": "Can we see the menu?",
+   "target_text": "Kunnen we de menukaart zien?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC16-S005",
+   "global_order": 156,
+   "english": "Can we see the dessert menu also?",
+   "target_text": "Kunnen we ook de dessertkaart zien?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC16-S006",
+   "global_order": 157,
+   "english": "Do you have anything to eat?",
+   "target_text": "Heb je iets te eten?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC16-S007",
+   "global_order": 158,
+   "english": "Can we pay?",
+   "target_text": "Kunnen we betalen?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC16-S008",
+   "global_order": 159,
+   "english": "Can we pay by card?",
+   "target_text": "Kunnen we met kaart betalen?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC16-S009",
+   "global_order": 160,
+   "english": "No, we only take cash.",
+   "target_text": "Nee, we accepteren alleen contant geld.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC16-S010",
+   "global_order": 161,
+   "english": "I'm sorry, I don't have any cash.",
+   "target_text": "Sorry, ik heb geen contant geld.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC16-S011",
+   "global_order": 162,
+   "english": "A million. 80. 90. 2 o'clock. 10 o'clock.",
+   "target_text": "Een miljoen. 80. 90. Twee uur. Tien uur.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC17-S001",
+   "global_order": 163,
+   "english": "Is there a cash machine near here?",
+   "target_text": "Is er een geldautomaat in de buurt?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC17-S002",
+   "global_order": 164,
+   "english": "Do you want to pay by cash or card or put it on the room?",
+   "target_text": "Wil je contant of met kaart betalen, of op de kamer laten zetten?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC17-S003",
+   "global_order": 165,
+   "english": "Can we put it on the room, please?",
+   "target_text": "Kunnen we het op de kamer laten zetten, alsjeblieft?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC17-S004",
+   "global_order": 166,
+   "english": "Would you like to pay by cash or card or on the room?",
+   "target_text": "Wil je contant, met kaart, of op de kamer betalen?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC17-S005",
+   "global_order": 167,
+   "english": "Did you want to pay by cash or card?",
+   "target_text": "Wilde je contant of met kaart betalen?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC17-S006",
+   "global_order": 168,
+   "english": "We'll pay by card again, please.",
+   "target_text": "We betalen weer met kaart, alsjeblieft.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC17-S007",
+   "global_order": 169,
+   "english": "It's hot today, again.",
+   "target_text": "Het is weer warm vandaag.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC17-S008",
+   "global_order": 170,
+   "english": "Is the water warm?",
+   "target_text": "Is het water warm?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC17-S009",
+   "global_order": 171,
+   "english": "No, it's a little cold today.",
+   "target_text": "Nee, het is vandaag een beetje koud.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC17-S010",
+   "global_order": 172,
+   "english": "It's not bad.",
+   "target_text": "Het is niet slecht.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC17-S011",
+   "global_order": 173,
+   "english": "3 o'clock. 9 o'clock. January. February.",
+   "target_text": "Drie uur. Negen uur. Januari. Februari.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC18-S001",
+   "global_order": 174,
+   "english": "That's a bad idea.",
+   "target_text": "Dat is een slecht idee.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC18-S002",
+   "global_order": 175,
+   "english": "Do you have any orange juice?",
+   "target_text": "Heb je sinaasappelsap?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC18-S003",
+   "global_order": 176,
+   "english": "Do you have any apple juice?",
+   "target_text": "Heb je appelsap?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC18-S004",
+   "global_order": 177,
+   "english": "Does the boat leave from here?",
+   "target_text": "Vertrekt de boot vanaf hier?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC18-S005",
+   "global_order": 178,
+   "english": "Does the bus leave from here?",
+   "target_text": "Vertrekt de bus vanaf hier?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC18-S006",
+   "global_order": 179,
+   "english": "Where does the bus leave from?",
+   "target_text": "Vanwaar vertrekt de bus?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC18-S007",
+   "global_order": 180,
+   "english": "Is that correct? Am I correct?",
+   "target_text": "Klopt dat? Heb ik gelijk?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC18-S008",
+   "global_order": 181,
+   "english": "Am I wrong about that?",
+   "target_text": "Heb ik het daarin mis?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC18-S009",
+   "global_order": 182,
+   "english": "I'm sorry, my son lost his ticket.",
+   "target_text": "Sorry, mijn zoon is zijn kaartje kwijtgeraakt.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC18-S010",
+   "global_order": 183,
+   "english": "We have paid, but my daughter has lost her ticket.",
+   "target_text": "We hebben betaald, maar mijn dochter is haar kaartje kwijtgeraakt.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC18-S011",
+   "global_order": 184,
+   "english": "4 o'clock. 8 o'clock. March. April.",
+   "target_text": "Vier uur. Acht uur. Maart. April.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC19-S001",
+   "global_order": 185,
+   "english": "That makes me happy.",
+   "target_text": "Dat maakt me blij.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC19-S002",
+   "global_order": 186,
+   "english": "That makes me feel a little worried.",
+   "target_text": "Dat maakt me een beetje bezorgd.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC19-S003",
+   "global_order": 187,
+   "english": "When you talk quickly, it makes me feel stupid.",
+   "target_text": "Als je snel praat, voel ik me dom.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC19-S004",
+   "global_order": 188,
+   "english": "Is it okay if I sit here?",
+   "target_text": "Vind je het goed als ik hier ga zitten?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC19-S005",
+   "global_order": 189,
+   "english": "Is it okay if we put this here?",
+   "target_text": "Vind je het goed als we dit hier neerzetten?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC19-S006",
+   "global_order": 190,
+   "english": "I don't want to be late.",
+   "target_text": "Ik wil niet te laat zijn.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC19-S007",
+   "global_order": 191,
+   "english": "Are we going to be late?",
+   "target_text": "Komen we te laat?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC19-S008",
+   "global_order": 192,
+   "english": "I promise I won't be late.",
+   "target_text": "Ik beloof dat ik niet te laat ben.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC19-S009",
+   "global_order": 193,
+   "english": "I promise we won't be late.",
+   "target_text": "Ik beloof dat we niet te laat zijn.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC19-S010",
+   "global_order": 194,
+   "english": "I'd like two scoops of ice-cream, please.",
+   "target_text": "Ik wil graag twee bolletjes ijs, alsjeblieft.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC19-S011",
+   "global_order": 195,
+   "english": "5 o'clock. 7 o'clock. May. June.",
+   "target_text": "Vijf uur. Zeven uur. Mei. Juni.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC20-S001",
+   "global_order": 196,
+   "english": "Can I have one scoop of chocolate and one of strawberry?",
+   "target_text": "Mag ik een bolletje chocolade en een aardbei?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC20-S002",
+   "global_order": 197,
+   "english": "And then another cone with one scoop of lemon and one of blueberry.",
+   "target_text": "En dan nog een hoorntje met een bolletje citroen en een bosbes.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC20-S003",
+   "global_order": 198,
+   "english": "Do you have any ice-cream?",
+   "target_text": "Heb je ijs?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC20-S004",
+   "global_order": 199,
+   "english": "Thank you for all your work.",
+   "target_text": "Bedankt voor al je werk.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC20-S005",
+   "global_order": 200,
+   "english": "I wish you good luck with everything.",
+   "target_text": "Ik wens je veel succes met alles.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC20-S006",
+   "global_order": 201,
+   "english": "Thank you for helping me.",
+   "target_text": "Bedankt dat je me hebt geholpen.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC20-S007",
+   "global_order": 202,
+   "english": "Good luck with that!",
+   "target_text": "Veel succes daarmee!",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC20-S008",
+   "global_order": 203,
+   "english": "That's very kind of you.",
+   "target_text": "Dat is erg aardig van je.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC20-S009",
+   "global_order": 204,
+   "english": "You're very kind.",
+   "target_text": "Je bent erg aardig.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC20-S010",
+   "global_order": 205,
+   "english": "Thank you for being so friendly.",
+   "target_text": "Bedankt dat je zo vriendelijk bent.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC20-S011",
+   "global_order": 206,
+   "english": "6 o'clock. July. August. September.",
+   "target_text": "Zes uur. Juli. Augustus. September.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S001",
+   "global_order": 207,
+   "english": "It sounds as though we need to leave soon.",
+   "target_text": "Het klinkt alsof we snel moeten vertrekken.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S002",
+   "global_order": 208,
+   "english": "It sounds as though you want us not to do that.",
+   "target_text": "Het klinkt alsof je wilt dat we dat niet doen.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S003",
+   "global_order": 209,
+   "english": "Is there a toilet here?",
+   "target_text": "Is er hier een toilet?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S004",
+   "global_order": 210,
+   "english": "Can you tell me where the toilet is?",
+   "target_text": "Kun je me vertellen waar het toilet is?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S005",
+   "global_order": 211,
+   "english": "It's down there on the left.",
+   "target_text": "Het is daar beneden, aan de linkerkant.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S006",
+   "global_order": 212,
+   "english": "It's down there on the right.",
+   "target_text": "Het is daar beneden, aan de rechterkant.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S007",
+   "global_order": 213,
+   "english": "Can you say that again?",
+   "target_text": "Kun je dat nog eens zeggen?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S008",
+   "global_order": 214,
+   "english": "Yes, I said it's over there.",
+   "target_text": "Ja, ik zei dat het daar is.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S009",
+   "global_order": 215,
+   "english": "What is that?",
+   "target_text": "Wat is dat?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S010",
+   "global_order": 216,
+   "english": "What is that over there?",
+   "target_text": "Wat is dat daar?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S011",
+   "global_order": 217,
+   "english": "Would you like to order some drinks?",
+   "target_text": "Wil je drankjes bestellen?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S012",
+   "global_order": 218,
+   "english": "Do you want to order some drinks first?",
+   "target_text": "Wil je eerst drankjes bestellen?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S013",
+   "global_order": 219,
+   "english": "Did you want something to drink first?",
+   "target_text": "Wilde je eerst iets drinken?",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC21-S014",
+   "global_order": 220,
+   "english": "October. November. December.",
+   "target_text": "Oktober. November. December.",
+   "note": null
+  },
+  {
+   "id": "nld_for_eng:pod-0-unrecorded:SC22-S001",
+   "global_order": 221,
+   "english": "Would you mind if I tried to practise speaking Dutch with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.",
+   "target_text": "Zou je het erg vinden als ik probeerde Nederlands met je te oefenen? Ik leer het nog niet zo lang, en ik voel me nog een beetje zenuwachtig om met andere mensen te praten.",
+   "note": null
+  }
+ ],
+ "rejected": [],
+ "skipped": []
+}
