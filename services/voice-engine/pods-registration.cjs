@@ -158,7 +158,7 @@ async function preparePodRegistration({ supabase, courseCode, metadata = {}, log
 
   const { data: sentence, error: sentErr } = await supabase
     .from('listening_pod_sentences')
-    .select('id, pod_id, speaker, target_text, known_text, explainer_text, target_audio_id, known_audio_id, explainer_audio_id')
+    .select('id, pod_id, speaker, target_text, known_text, explainer_text, rerecord_wanted, target_audio_id, known_audio_id, explainer_audio_id')
     .eq('id', metadata.sentenceId)
     .maybeSingle()
   if (sentErr) return { error: `sentence lookup failed: ${sentErr.message}`, status: 500 }
@@ -281,11 +281,29 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
     .single()
   if (upsertErr) throw new Error(`pod course_audio upsert failed: ${upsertErr.message}`)
 
+  // FULFILMENT. This take IS the re-record that was wanted for this track, so
+  // the want is cleared in the same write that re-points the FK — one statement,
+  // so the line can never be left both freshly recorded and still queued.
+  // Only this kind's key goes: a want for the OTHER track is a different job.
+  const patch = { [context.linkColumn]: audioRow.id }
+  const { data: wantRow, error: wantErr } = await supabase
+    .from('listening_pod_sentences')
+    .select('rerecord_wanted')
+    .eq('id', context.sentenceId)
+    .maybeSingle()
+  if (wantErr) throw new Error(`pod rerecord_wanted lookup failed: ${wantErr.message}`)
+  const wanted = wantRow && wantRow.rerecord_wanted
+  if (wanted && typeof wanted === 'object' && wanted[context.kind] != null) {
+    const rest = { ...wanted }
+    delete rest[context.kind]
+    patch.rerecord_wanted = Object.keys(rest).length ? rest : null
+  }
+
   // Link explicitly — recon §2: the autolink trigger NEVER touches
   // listening_pod_sentences (mirrors phase8's update at generate-pods).
   const { error: linkErr } = await supabase
     .from('listening_pod_sentences')
-    .update({ [context.linkColumn]: audioRow.id })
+    .update(patch)
     .eq('id', context.sentenceId)
   if (linkErr) throw new Error(`pod sentence link failed: ${linkErr.message}`)
 

@@ -60,7 +60,7 @@ const {
 const { buildRecordingPlan, finalizeRecordingPlan, DEFAULT_CUE_COUNT } = require('./pods-plan.cjs')
 
 const SENTENCE_COLUMNS =
-  'id, pod_id, scene_number, global_order, speaker, target_text, target_text_draft, known_text, explainer_text, glue_to_next, target_audio_id, known_audio_id, explainer_audio_id'
+  'id, pod_id, scene_number, global_order, speaker, target_text, target_text_draft, known_text, explainer_text, glue_to_next, rerecord_wanted, target_audio_id, known_audio_id, explainer_audio_id'
 const PAGE_SIZE = 1000 // PostgREST max-rows silently truncates — always paginate
 
 /**

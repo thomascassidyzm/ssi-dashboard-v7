@@ -82,6 +82,32 @@ function joinedText(rows, field) {
 }
 
 /**
+ * Is this track WANTED, freshly recorded, by one of these voices?
+ *
+ * listening_pod_sentences.rerecord_wanted is {"target":"<voiceId>","known":"<voiceId>"}
+ * (either key optional). It is the make-before-break lever: a line can be
+ * pending for a named recordist while its existing audio stays linked and
+ * playable, where the old lever — nulling {kind}_audio_id — took working audio
+ * off the learner's path first.
+ *
+ * A glued chain is one recording item, so a want on ANY row in the chain wants
+ * the whole utterance: the recordist reads it as one take either way.
+ *
+ * @param {Array} rows - the sentence rows behind one plan item
+ * @param {string} kind - 'target' | 'known'
+ * @param {Set<string>|string} voices - accepted voice id(s)
+ */
+function isRerecordWanted(rows, kind, voices) {
+  const accept = voices instanceof Set ? voices : new Set([voices])
+  for (const r of rows || []) {
+    const w = r && r.rerecord_wanted
+    if (!w || typeof w !== 'object') continue
+    if (w[kind] && accept.has(w[kind])) return true
+  }
+  return false
+}
+
+/**
  * Build the recording queue for one voice across a course's pods.
  *
  * @param {object} args
@@ -162,15 +188,25 @@ function buildRecordingPlan({ pods, sentences, podCast, voiceId, cueCount = DEFA
       const targetIsDraft = di.rows.some(r => r.target_text_draft === true)
 
       const entry = castVoiceFor(cast, di.speaker)
-      if (entry && entry.voiceId === voiceId && target) {
-        castSpeakers.add(di.canon)
+      const castHolds = !!(entry && entry.voiceId === voiceId)
+      // A wanted track routes to the named voice REGARDLESS of the cast — that
+      // is what lets a known (English) line reach a non-explainer recordist at
+      // all, since every known line otherwise routes to __explainer__.
+      const targetWanted = isRerecordWanted(di.rows, 'target', voiceId)
+      const knownWanted = isRerecordWanted(di.rows, 'known', voiceId)
+
+      if ((castHolds || targetWanted) && target) {
+        if (castHolds) castSpeakers.add(di.canon)
         push({ ...base, kind: 'target', line: target, knownGloss: known || null, draft: targetIsDraft })
       }
 
-      if (isExplainer) {
+      if (isExplainer || knownWanted) {
         if (known) {
           push({ ...base, kind: 'known', line: known, knownGloss: null })
         }
+      }
+
+      if (isExplainer) {
         for (const r of di.rows) {
           const explainer = (r.explainer_text || '').trim()
           if (!explainer) continue   // '' = deliberately none (recon §5)
@@ -281,7 +317,14 @@ async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds 
     const row = rowById.get(it.sentenceId) || {}
     const audioId = row[AUDIO_COL[it.kind]] || null
     const a = audioId ? audioById.get(audioId) : null
-    const isRecorded = !!(a && a.origin === 'human' && accept.has(a.voice_id) && !isEmptyTake(a))
+    // A WANTED track is outstanding whatever its audio says — that is the whole
+    // point of rerecord_wanted: the old take stays linked and playable while the
+    // line waits for its fresh one. (Never applies to 'explainer': the column
+    // carries target/known only.)
+    const isWanted = isRerecordWanted(
+      (it.sentenceIds || [it.sentenceId]).map(id => rowById.get(id)).filter(Boolean),
+      it.kind, accept)
+    const isRecorded = !isWanted && !!(a && a.origin === 'human' && accept.has(a.voice_id) && !isEmptyTake(a))
     if (isRecorded) recorded++
     const isTarget = it.kind === 'target'
     const out = {
@@ -326,6 +369,7 @@ module.exports = {
   DEFAULT_CUE_COUNT,
   finalizeRecordingPlan,
   isEmptyTake,
+  isRerecordWanted,
   MIN_TAKE_BYTES,
   estimateSeconds,
   sceneTitleFor,

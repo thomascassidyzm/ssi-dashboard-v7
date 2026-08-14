@@ -288,6 +288,38 @@ describe('commitPodRegistration', () => {
     expect(result.repointedExistingRow).toBe(false)
   })
 
+  // ── RE-RECORD WANTED fulfilment (2026-08-14) ──────────────────────────────
+  // The take IS the re-record that was wanted, so the want is cleared in the
+  // SAME statement that re-points the FK — a line can never be left both
+  // freshly recorded and still queued for its recordist.
+
+  it('clears this track\'s rerecord_wanted key in the same write as the FK repoint', async () => {
+    const state = fixtureState()
+    state.sentences['cym_n_for_eng:pod-0:SC01-S001'].rerecord_wanted = { target: 'human_catrin_cym' }
+    await prepareAndCommit(state)
+    expect(state.updates).toEqual([{
+      table: 'listening_pod_sentences',
+      patch: { target_audio_id: 'NEW-AUDIO-UUID', rerecord_wanted: null },
+      where: { id: 'cym_n_for_eng:pod-0:SC01-S001' },
+    }])
+  })
+
+  it('leaves a want for the OTHER track alone — that is a different job', async () => {
+    const state = fixtureState()
+    state.sentences['cym_n_for_eng:pod-0:SC01-S001'].rerecord_wanted =
+      { target: 'human_catrin_cym', known: 'human_catrin_cym' }
+    await prepareAndCommit(state)
+    expect(state.updates[0].patch).toEqual({
+      target_audio_id: 'NEW-AUDIO-UUID',
+      rerecord_wanted: { known: 'human_catrin_cym' },
+    })
+  })
+
+  it('writes no rerecord_wanted key when nothing was wanted', async () => {
+    const { state } = await prepareAndCommit(fixtureState())
+    expect(state.updates[0].patch).toEqual({ target_audio_id: 'NEW-AUDIO-UUID' })
+  })
+
   it('re-record of the same line+voice repoints the SAME row (5-col key) and records the old s3_key', async () => {
     const state = fixtureState()
     // First human take already registered + linked
