@@ -21,6 +21,7 @@
  */
 import { ref, computed, watch } from 'vue'
 import { api } from './labApi'
+import { courseNameWithCode, languageName } from '@/utils/languageNames'
 import RunResult from './RunResult.vue'
 
 const props = defineProps({
@@ -245,11 +246,11 @@ function defaultTitle () {
           <label class="vl-field">Course
             <select v-model="course" @change="search">
               <option v-for="c in courses" :key="c.code" :value="c.code">
-                {{ c.code }}{{ c.sentences ? ` · ${c.sentences.toLocaleString()} seeds` : '' }}{{ c.renderable === false ? ' · not steerable here' : '' }}
+                {{ courseNameWithCode(c.code) }}{{ c.sentences ? ` · ${c.sentences.toLocaleString()} seeds` : '' }}{{ c.renderable === false ? ' · not steerable here' : '' }}
               </option>
             </select>
             <span v-if="selectedCourse && selectedCourse.renderable === false" class="vl-why vl-warn">
-              This lab cannot steer {{ selectedCourse.languageName || selectedCourse.language }} — its text is
+              This lab cannot steer {{ languageName(selectedCourse.language) }} — its text is
               listed and searchable, but a run would render it in whatever language the config names.
             </span>
           </label>

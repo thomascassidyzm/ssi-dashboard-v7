@@ -39,6 +39,7 @@
  */
 import { ref, computed, watch } from 'vue'
 import { api, clipUrl } from './labApi'
+import { courseNameWithCode } from '@/utils/languageNames'
 
 const props = defineProps({
   params: { type: Object, required: true },
@@ -451,7 +452,7 @@ function gateDetail (clip) {
           <label class="play-field">
             <span class="play-sub">Course</span>
             <select v-model="course" class="play-select small" @change="search">
-              <option v-for="c in courses" :key="c.code" :value="c.code">{{ c.code }}</option>
+              <option v-for="c in courses" :key="c.code" :value="c.code">{{ courseNameWithCode(c.code) }}</option>
             </select>
           </label>
           <label class="play-field grow">

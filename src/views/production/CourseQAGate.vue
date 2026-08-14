@@ -28,7 +28,7 @@
         <div>
           <div class="text-xs uppercase tracking-wide opacity-70">Approval gate</div>
           <h1 class="text-2xl font-semibold mt-1">
-            {{ courseCode }} — {{ gateLabel }}
+            {{ courseName(courseCode) }} — {{ gateLabel }}
           </h1>
           <p class="mt-2 text-sm opacity-90 max-w-2xl">
             <template v-if="gate?.gate_status === 'passed'">
@@ -246,6 +246,7 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { buildLearningAppUrl } from '@/utils/learningAppUrl'
+import { courseName } from '@/utils/languageNames'
 import { qaGate, ROUND_STATUS_LABEL, ROUND_STATUS_CLASS, GATE_STATUS_LABEL } from '@/services/qaGate'
 
 const props = defineProps({ courseCode: { type: String, required: true } })

@@ -85,7 +85,10 @@
       </thead>
       <tbody class="divide-y divide-subtle">
         <tr v-for="c in filtered" :key="c.course_code" class="hover:bg-surface-2">
-          <td class="py-2 font-mono">{{ c.course_code }}</td>
+          <td class="py-2">
+            {{ courseName(c.course_code) }}
+            <span class="block text-xs font-mono text-faint">{{ c.course_code }}</span>
+          </td>
           <td :class="c.pricing_tier === 'premium' ? 'text-amber-300' : 'text-muted'">
             {{ c.pricing_tier }}
           </td>
@@ -131,6 +134,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { qaGate, GATE_STATUS_LABEL } from '@/services/qaGate'
+import { courseName } from '@/utils/languageNames'
 
 const courses = ref([])
 const summary = ref(null)

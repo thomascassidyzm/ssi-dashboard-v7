@@ -32,7 +32,7 @@
             <span class="lane-icon">{{ role.icon }}</span>
             <span class="lane-name">{{ role.name }}</span>
           </div>
-          <span class="lane-lang">{{ getLanguageForRole(role.id).toUpperCase() }}</span>
+          <span class="lane-lang">{{ languageName(getLanguageForRole(role.id)) }}</span>
         </div>
 
         <!-- Current Selection -->
@@ -361,6 +361,7 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
+import { languageName } from '@/utils/languageNames'
 import { isConfigured as isSupabaseConfigured, getVoiceConfig, getSeedPhrasesPreview } from '@/services/supabase'
 
 const props = defineProps({
