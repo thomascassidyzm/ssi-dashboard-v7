@@ -264,15 +264,21 @@ $function$;
 -- voice_rows aggregates every row of course_audio (2.56M) into 1,857 groups. There
 -- is no smaller question — "which voices carry clips for this course, and how many"
 -- is a count over all clips. It runs as a parallel index-only scan of the 32MB
--- idx_course_audio_estate_map, which fits shared_buffers comfortably and is fast
--- when the visibility map is clean.
+-- idx_course_audio_estate_map, which fits shared_buffers comfortably.
 --
--- It is not clean whenever course_audio is under bulk write. Measured during the
--- 1.1M-row clip_id canonicalisation backfill running on 2026-08-14: 799,102 heap
--- fetches, 20-44s. This is the same "unvacuumed visibility map" grain of truth the
--- qa-gate fix found, and it is why the endpoint's cost is best-case-fine and
--- worst-case-fatal rather than simply too slow.
+-- Its cost is entirely a function of the visibility map, measured minutes apart on
+-- the same live data:
 --
--- If this endpoint times out again while course_audio is quiet, voice_rows is the
--- thing to change, and the change is a real one (a maintained rollup, not an index).
+--   799,102 heap fetches   28,057ms   (during the 1.1M-row clip_id backfill)
+--         0 heap fetches    1,311ms   (immediately after VACUUM)
+--
+-- Same rows, same index, same plan. This is the same "unvacuumed visibility map"
+-- grain of truth the qa-gate fix found. It is addressed in
+-- 20260814b_course_audio_insert_autovacuum.sql, which makes insert-driven autovacuum
+-- fire at about one render batch instead of half a million rows.
+--
+-- With the visibility map clean, estate_map() is 1.04s and the endpoint answers in
+-- ~1.15s. If it ever times out again while course_audio is genuinely quiet and
+-- vacuumed, voice_rows is the thing to change, and the change is a real one — a
+-- maintained rollup, not another index.
 -- ---------------------------------------------------------------------------
