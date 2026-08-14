@@ -59,6 +59,15 @@ const SCRIPTS = {
   greek: /^[\p{Script=Greek}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   arabic: /^[\p{Script=Arabic}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   hebrew: /^[\p{Script=Hebrew}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
+  // Added 2026-08-14 for the pod translation pass: hin/nep, hye, tha and kor all had
+  // real translation debt and no script to gate them with, which would have meant
+  // running them on `any` — i.e. with the strongest text gate switched off on four
+  // languages nobody on the team reads.
+  devanagari: /^[\p{Script=Devanagari}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
+  armenian: /^[\p{Script=Armenian}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
+  thai: /^[\p{Script=Thai}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
+  // Korean is written in Hangul but takes bare Han for the occasional proper noun.
+  korean: /^[\p{Script=Hangul}\p{Script=Han}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   // Japanese and Chinese mix scripts by design, so these are unions, not single blocks.
   japanese: /^[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧ー]*$/u,
   han: /^[\p{Script=Han}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
