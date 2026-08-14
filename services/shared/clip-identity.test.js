@@ -44,6 +44,31 @@ describe('canonicalLanguage — every spelling of a language collapses to one', 
     expect(canonicalLanguage('cmn')).toBe('zho')
   })
 
+  // 2026-08-14: the guard rejected fourteen languages the estate builds courses
+  // in — pdc, hak, nan, yue, yor, lmo, rgn, vec, fur, nap, scn, roh, sme, yid —
+  // purely because the reference CSV had no database_code for them. That was
+  // history, not policy (docs/audio-language-guard-scoping-2026-08-14.md): the
+  // Celtic block was hand-written years ago and these rows never were. Zero
+  // audio rows existed under any of the fourteen, so filling the column was a
+  // data fix with nothing to migrate.
+  it('admits the fourteen languages the CSV had no database_code for', () => {
+    for (const code of [
+      'pdc', 'hak', 'nan', 'yue', 'yor', 'lmo', 'rgn',
+      'vec', 'fur', 'nap', 'scn', 'roh', 'sme', 'yid',
+    ]) {
+      expect(canonicalLanguage(code)).toBe(code)
+    }
+  })
+
+  it('resolves the manifest spellings of the four renamed rows', () => {
+    // The CSV files these under a 639-1 manifest code; the database_code is the
+    // 639-3 one the course codes use.
+    expect(canonicalLanguage('rm')).toBe('roh')
+    expect(canonicalLanguage('se')).toBe('sme')
+    expect(canonicalLanguage('yi')).toBe('yid')
+    expect(canonicalLanguage('yo')).toBe('yor')
+  })
+
   it('throws on a value that is not a language rather than guessing', () => {
     expect(() => canonicalLanguage('auto')).toThrow(ClipIdentityError)
     expect(() => canonicalLanguage('')).toThrow(ClipIdentityError)
