@@ -21,11 +21,27 @@ import { getApiUrl } from '@/services/api'
 const MAX_RETRIES = 3
 const RETRY_BACKOFF = [1000, 3000, 8000]
 
+/**
+ * Where the recordist's API lives.
+ *
+ * On popty.app this is deliberately the EMPTY string — a same-origin, relative
+ * path — and not getApiUrl()'s https://watson-1…:8443. A recordist is an
+ * anonymous person on a phone, and a public page fetching watson-1 directly is
+ * refused by the browser before CORS is ever consulted: Chrome treats it as a
+ * public document reaching into the local address space and blocks it. On the
+ * recordist's screen that arrives as a bare "Failed to fetch" over a backend
+ * that is perfectly healthy — which is exactly what it looked like when this was
+ * driven live. vercel.json proxies /api/recording/* through to watson-1, so the
+ * page keeps talking to its own origin and the hop happens server-side.
+ *
+ * A pinned api_base_url still wins, so a dev box can point this anywhere.
+ */
 function apiBase() {
   if (typeof localStorage !== 'undefined') {
     const pinned = localStorage.getItem('api_base_url')
     if (pinned) return pinned
   }
+  if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') return ''
   return getApiUrl()
 }
 

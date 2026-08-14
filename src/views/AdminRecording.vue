@@ -74,7 +74,13 @@ const saving = ref(null)
 const copied = ref(null)
 
 function apiBase() {
-  return (typeof localStorage !== 'undefined' && localStorage.getItem('api_base_url')) || getApiUrl()
+  const pinned = typeof localStorage !== 'undefined' && localStorage.getItem('api_base_url')
+  if (pinned) return pinned
+  // Same-origin on popty.app: the /api/recording/* routes are proxied there by
+  // vercel.json, which keeps this page off the cross-origin path that the
+  // browser blocks as public-to-local-address-space.
+  if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') return ''
+  return getApiUrl()
 }
 
 // The estate authorises /api/* off a Supabase bearer token, not a cookie —

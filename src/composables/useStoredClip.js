@@ -39,6 +39,23 @@ function apiBase() {
 }
 
 /**
+ * Base for the RECORDIST routes specifically. Same-origin on popty.app, because
+ * a public page fetching watson-1 directly is refused by the browser as a
+ * public-to-local-address-space request, before CORS is consulted, and reaches
+ * the recordist as a bare "Failed to fetch". vercel.json proxies
+ * /api/recording/* through, so the hop happens server-side. See
+ * useRecordistQueue.js for the full note.
+ */
+function recordingApiBase() {
+  if (typeof localStorage !== 'undefined') {
+    const pinned = localStorage.getItem('api_base_url')
+    if (pinned) return pinned
+  }
+  if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') return ''
+  return getApiUrl()
+}
+
+/**
  * The stored clip's URL: GET /api/production/audio/:uuid/stream, which reads
  * course_audio.s3_key and 302s to a signed S3 URL (services/production-api.cjs
  * :4701). Deliberately NOT built by the old `mastered/<id>.mp3` convention —
@@ -67,7 +84,7 @@ export function storedClipUrl(uuid) {
  */
 export function recordistClipUrl(voiceId, lineId) {
   if (!voiceId || lineId === null || lineId === undefined || lineId === '') return null
-  return `${apiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}/line/${encodeURIComponent(lineId)}/clip`
+  return `${recordingApiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}/line/${encodeURIComponent(lineId)}/clip`
 }
 
 /**
