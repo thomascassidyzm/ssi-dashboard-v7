@@ -53,17 +53,28 @@ const abs = (p) => (path.isAbsolute(p) ? p : path.join(REPO, p))
 // Expected-script gate. Ranges are deliberately permissive about shared punctuation
 // and digits, and strict about the letters — the failure this catches is a model
 // answering in the wrong language entirely, not a stray character.
+// ZERO-WIDTH JOINERS ARE LETTERS, NOT NOISE. U+200C (ZWNJ) is ordinary Persian
+// orthography — the half-space that separates the parts of a compound like یه‌کم —
+// and U+200D (ZWJ) does comparable work in Devanagari conjuncts. Neither is in
+// \p{M}/\p{P}, so the gate rejected them, and on 2026-08-14 it rejected 66 of 122
+// Persian lines for "not arabic script" when every one of them WAS Arabic script.
+// That is not a harmless false positive: the worker stripped ZWNJ to satisfy the
+// gate, which silently fused یه‌کم into یهکم — a real misspelling the gate then
+// happily passed. A gate that rejects correct text and accepts what you replace it
+// with is worse than no gate, because it manufactures the defect it cannot see.
+// 162 pre-existing Persian rows carry ZWNJ, so stripping it also made new content
+// orthographically inconsistent with the content beside it.
 const SCRIPTS = {
   latin: /^[\p{Script=Latin}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   cyrillic: /^[\p{Script=Cyrillic}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   greek: /^[\p{Script=Greek}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
-  arabic: /^[\p{Script=Arabic}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
-  hebrew: /^[\p{Script=Hebrew}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
+  arabic: /^[‌‍\p{Script=Arabic}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
+  hebrew: /^[‌‍\p{Script=Hebrew}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   // Added 2026-08-14 for the pod translation pass: hin/nep, hye, tha and kor all had
   // real translation debt and no script to gate them with, which would have meant
   // running them on `any` — i.e. with the strongest text gate switched off on four
   // languages nobody on the team reads.
-  devanagari: /^[\p{Script=Devanagari}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
+  devanagari: /^[‌‍\p{Script=Devanagari}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   armenian: /^[\p{Script=Armenian}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   thai: /^[\p{Script=Thai}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   // Korean is written in Hangul but takes bare Han for the occasional proper noun.
