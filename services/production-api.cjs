@@ -1064,7 +1064,9 @@ const ESTATE_MAP_SEMANTICS = {
     + 'Enforced in code at services/shared/human-voice-courses.cjs (isHumanVoiceCourse / '
     + 'isHumanVoiceLang / assertNoHumanVoiceInQueue), with no runtime override by design: including '
     + 'Welsh would take a code change signed off by Tom. Breton (bre_for_fra) is the same class '
-    + '(2026-07-27). The trigger was the 2026-08-13 recount proposing 23,442 Welsh renders while 91% '
+    + '(2026-07-27), and so is Pennsylvania Dutch (pdc_for_eng, 2026-08-14) — admitted to clip '
+    + 'identity the same day it was ruled human-voice-only, so its clips can be written but never '
+    + 'synthesised. The trigger was the 2026-08-13 recount proposing 23,442 Welsh renders while 91% '
     + 'of Welsh distinct texts were already humanly recorded and 23,960 slots already pointed at '
     + 'origin=\'human\' clips.',
   known_dead_stubs:

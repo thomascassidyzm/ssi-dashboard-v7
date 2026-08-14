@@ -217,7 +217,7 @@ function assertNotChildVoice(config) {
 function assertNotHumanVoiceCourse(config) {
   const courseCode = config?.courseCode;
   if (courseCode && isHumanVoiceCourse(courseCode)) {
-    throw new Error(`Human-voice course blocked (403): ${courseCode} is human-voiced only — no TTS may ever be generated (Tom's ruling 2026-07-25). Skip this course at the pipeline entry point.`);
+    throw new Error(`Human-voice course blocked (403): ${courseCode} is human-voiced only — no TTS may ever be generated (Tom's rulings 2026-07-25 Welsh, 2026-07-27 Breton, 2026-08-14 Pennsylvania Dutch). Skip this course at the pipeline entry point.`);
   }
 }
 

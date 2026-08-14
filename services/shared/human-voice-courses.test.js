@@ -24,6 +24,15 @@ describe('isHumanVoiceCourse', () => {
     expect(HUMAN_VOICE_COURSES.has('bre_for_fra')).toBe(true)
   })
 
+  // Tom 2026-08-14, taken with admitting pdc to clip identity: pdc can now be
+  // written as a clip language and can never be synthesised.
+  it('covers Pennsylvania Dutch', () => {
+    expect(isHumanVoiceCourse('pdc_for_eng')).toBe(true)
+    expect(HUMAN_VOICE_COURSES.has('pdc_for_eng')).toBe(true)
+    expect(isHumanVoiceCourse('pdc_for_deu')).toBe(true)  // prefix rule, future courses
+    expect(isHumanVoiceCourse('eng_for_pdc')).toBe(false) // pdc as KNOWN, not target
+  })
+
   it('flags any cym_* course by prefix (future Welsh courses covered)', () => {
     expect(isHumanVoiceCourse('cym_for_spa')).toBe(true)
     expect(isHumanVoiceCourse('cym_mid_for_eng')).toBe(true)
@@ -56,10 +65,15 @@ describe('isHumanVoiceLang', () => {
     expect(isHumanVoiceLang('bre')).toBe(true)
   })
 
+  it('is true for Pennsylvania Dutch', () => {
+    expect(isHumanVoiceLang('pdc')).toBe(true)
+  })
+
   it('does not flag renderable languages, including near-misses', () => {
     expect(isHumanVoiceLang('spa')).toBe(false)
     expect(isHumanVoiceLang('eng')).toBe(false)
     expect(isHumanVoiceLang('cymric')).toBe(false) // prefix rule must not over-match
+    expect(isHumanVoiceLang('pdcx')).toBe(false)
   })
 
   it('is null-safe', () => {
@@ -72,8 +86,9 @@ describe('isHumanVoiceLang', () => {
 describe('renderableLangSql', () => {
   it('excludes every human-voice language and covers future cym_* codes', () => {
     const sql = renderableLangSql('c.target_lang')
-    for (const lang of ['cym', 'cym_n', 'cym_s', 'bre']) expect(sql).toContain(`'${lang}'`)
+    for (const lang of ['cym', 'cym_n', 'cym_s', 'bre', 'pdc']) expect(sql).toContain(`'${lang}'`)
     expect(sql).toContain("!~ '^cym(_|$)'")
+    expect(sql).toContain("!~ '^pdc(_|$)'")
     expect(sql).toContain('c.target_lang')
   })
 })
@@ -107,6 +122,17 @@ describe('assertNoHumanVoiceInQueue (the gate on a finished queue)', () => {
     } catch (e) { err = e }
     expect(err.message).toMatch(/recording worklist/)
     expect(err.message).toMatch(/no runtime override/)
+  })
+
+  it('throws on a Pennsylvania Dutch language or course row', () => {
+    expect(() => assertNoHumanVoiceInQueue(
+      [{ lang: 'spa' }, { lang: 'pdc' }],
+      { context: 'recount', lang: r => r.lang }
+    )).toThrow(/pdc/)
+    expect(() => assertNoHumanVoiceInQueue(
+      [{ course_code: 'pdc_for_eng' }],
+      { context: 'render plan', course: r => r.course_code }
+    )).toThrow(/pdc_for_eng/)
   })
 
   it('tolerates an empty or absent queue', () => {

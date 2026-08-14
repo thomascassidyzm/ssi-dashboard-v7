@@ -42,12 +42,26 @@
  * Welsh gaps are a RECORDING worklist for Aran and Catrin, never a render
  * backlog. Anything that reads a Welsh coverage gap as work-to-synthesise has
  * misread the estate.
+ *
+ * OWNER RULING (Tom 2026-08-14): pdc (Pennsylvania Dutch) is HUMAN-VOICED ONLY,
+ * on the same terms as Welsh and Breton. It has no synthetic voice anywhere and
+ * its speakers are a community Doug and Erik are recording; a German voice
+ * reading a Pennsylvania Dutch line is the defect this prevents. The ruling was
+ * taken together with admitting pdc to clip identity — the reference CSV gained
+ * a database_code for pdc and thirteen other languages the same day
+ * (docs/audio-language-guard-scoping-2026-08-14.md) — so this filter is what
+ * makes that admission safe: pdc can now be WRITTEN as a clip language, and can
+ * never be SYNTHESISED. pdc gaps are a recording worklist, never a render one.
+ *
+ * The same no-runtime-bypass rule applies: reinstating pdc as TTS-renderable is
+ * a code change to this file with Tom's sign-off, nothing cheaper.
  */
 
 const HUMAN_VOICE_COURSES = new Set([
   'cym_n_for_eng',
   'cym_s_for_eng',
   'bre_for_fra',
+  'pdc_for_eng',
 ]);
 
 /**
@@ -60,6 +74,7 @@ const HUMAN_VOICE_TARGET_LANGS = new Set([
   'cym_n',
   'cym_s',
   'bre',
+  'pdc',
 ]);
 
 /**
@@ -68,7 +83,7 @@ const HUMAN_VOICE_TARGET_LANGS = new Set([
  */
 function isHumanVoiceCourse(courseCode) {
   const code = String(courseCode || '');
-  return HUMAN_VOICE_COURSES.has(code) || /^cym_/.test(code);
+  return HUMAN_VOICE_COURSES.has(code) || /^cym_/.test(code) || /^pdc_/.test(code);
 }
 
 /**
@@ -77,7 +92,7 @@ function isHumanVoiceCourse(courseCode) {
  */
 function isHumanVoiceLang(lang) {
   const code = String(lang || '');
-  return HUMAN_VOICE_TARGET_LANGS.has(code) || /^cym(_|$)/.test(code);
+  return HUMAN_VOICE_TARGET_LANGS.has(code) || /^cym(_|$)/.test(code) || /^pdc(_|$)/.test(code);
 }
 
 /**
@@ -90,7 +105,7 @@ function isHumanVoiceLang(lang) {
  */
 function renderableLangSql(col) {
   const list = [...HUMAN_VOICE_TARGET_LANGS].map(l => `'${l}'`).join(', ');
-  return `(${col} NOT IN (${list}) AND ${col} !~ '^cym(_|$)')`;
+  return `(${col} NOT IN (${list}) AND ${col} !~ '^cym(_|$)' AND ${col} !~ '^pdc(_|$)')`;
 }
 
 /**
@@ -118,9 +133,10 @@ function assertNoHumanVoiceInQueue(items, { context, lang, course } = {}) {
     const shown = [...new Set(offenders)].slice(0, 10).join(', ');
     throw new Error(
       `Human-voice content in a TTS render queue (${context}): ${shown}` +
-      ` — ${offenders.length} row(s). Welsh and Breton are human-voiced only and are permanently` +
-      ` excluded from every render queue (Tom 2026-08-13; 2026-07-25; 2026-07-27). Their coverage` +
-      ` gaps are a recording worklist for Aran and Catrin, not renders. Filter them out at the` +
+      ` — ${offenders.length} row(s). Welsh, Breton and Pennsylvania Dutch are human-voiced only` +
+      ` and are permanently excluded from every render queue (Tom 2026-08-14; 2026-08-13;` +
+      ` 2026-07-25; 2026-07-27). Their coverage` +
+      ` gaps are a recording worklist for their recordists, not renders. Filter them out at the` +
       ` query, or, to genuinely change the policy, edit services/shared/human-voice-courses.cjs` +
       ` with Tom's sign-off — there is no runtime override on purpose.`
     );
