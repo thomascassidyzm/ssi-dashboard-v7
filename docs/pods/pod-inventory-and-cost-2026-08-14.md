@@ -111,6 +111,33 @@ Ordered as Tuesday's recount ordered it. `untrans` needs translating before it c
 
 **English is out of scope by your ruling** — 85 off-cast lines, reported not rendered. Separately, English pod-0 has ~251 distinct texts with no audio at all against 7,771 clips linked and alive. Also reported, not actioned.
 
+## The two-voice recast is only half done
+
+"Complete the audios which were recast to have just 2 voices" assumes the recast happened. On half the estate it did not.
+
+| pod cast state | pods |
+|---|---:|
+| two voices — recast done | 53 |
+| three to six voices — recast **not** done | 50 |
+
+Korean carries six target voices — Jun-seo, Ji-yeon, Seo-yeon, Ara, Eve, Min-jun. So do German and `deu_for_jpn`. Chinese, Italian, Japanese, Portuguese, French and Arabic are all on four or five. Every one of those is in the premium queue.
+
+This sets the order of operations, and getting it wrong wastes the approval:
+
+1. **Recast** the 50 pods with `tools/pod-recast.cjs`. It writes `listening_pods.speakers` and nothing else — free, reversible, no audio touched. Not `pod-recolour.cjs`, which nulls the audio links and would strip working learner-facing audio with nothing queued to replace it.
+2. **Approve** the resulting cast.
+3. **Render.**
+
+Approving before recasting is wasted work: the approval is keyed to a cast fingerprint, so recasting immediately stales it.
+
+`spa_for_eng` is the exception and that is why it is the right first language — already two voices (Elvira and Alvaro, Iberian Azure, Olivia and Tom on the English side), verified against the cast directly, 397 render units, nothing to do before it can render.
+
+### A tooling note for whoever renders
+
+`tools/revoice-clips.cjs` is the closest thing to the right tool for the 2,850 off-cast lines — it is make-before-break by construction (insert the new row, re-point the links, delete last), and unlike `repair-silent-clips.cjs` it covers `listening_pod_sentences` including the three ARRAY audio columns that carry no foreign key and would otherwise be left holding dangling uuids.
+
+But it takes the target voice from the **course** `voice_config`, and pods do not cast that way. `kor_for_eng` has Azure `ko-KR-YuJin`/`GookMin` in its course config and six xAI voices on its pod cast — different provider, different voices. Pointed at pods as-is it would render the wrong voice faithfully. It needs to read the per-speaker cast from `listening_pods.speakers` before it can be used here.
+
 ## What is actually blocking
 
 1. **Zero voice approvals exist.** The `pod_voice_approvals` config row is an empty object — not one course of 57 is approved, so every bulk render refuses with `no_approval`. This is the gate, and it is the only thing standing between here and a $4.48 render.
