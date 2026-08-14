@@ -1,6 +1,6 @@
 # T-20 — Aran's clipped Welsh recordings: what happened, and do the originals survive
 
-**Date:** 2026-08-14 · **Status:** diagnosis complete, read-only, nothing changed
+**Date:** 2026-08-14 · **Status:** diagnosis complete · pipeline fix applied and live · no audio reprocessed
 **Trigger:** Tom listened to the 12 cym_n takes on T-20 and reported them all badly clipped.
 
 ---
@@ -30,7 +30,8 @@ clips**, not his whole body of work. Exact figures below.
 ## 2. The butcher, named and measured
 
 `services/audio-processor.cjs:894-902`, inside `processRecordingBuffer` — the
-only function the human-upload endpoint calls:
+only function the human-upload endpoint calls. **This is the code as it stood
+before the fix**; it has since been corrected (see the repair path below):
 
 ```js
 if (trimSilence) {
@@ -191,15 +192,25 @@ chain took a bite out of the word.
 Reprocessing from originals is **not available** — there are no originals. What
 remains:
 
-**a. Stop the bleeding (one-line, verified).** Change the human chain to the
-`start_silence` form already proven correct in `pod-explainer-composite.cjs`,
-or drop `trimSilence` for human takes entirely. Long-take recording cuts lines
-on the recordist's tap, not on a VAD, so the raw blobs already have clean
-boundaries and need no trimming at all. The tone test above verifies the fix
-loses nothing. Cheap, reversible, and it protects every future session.
-*Note the coupled guard:* the `MIN_TAKE_MS = 100` silence check at
-`production-api.cjs:4562` was calibrated against the aggressive trim — it stays
-valid but its rationale comment will be stale.
+**a. Stop the bleeding — ✅ DONE, live on watson-1 (2026-08-14 16:49Z).** The
+human chain now uses `start_silence=0.05`, the form
+`pod-explainer-composite.cjs` has always used. Merged to `main` (`7178b34a`,
+`cfcdddc2`), prod checkout pulled, `popty-production-api` restarted.
+
+Verified end-to-end against the **served bytes**, not just the response: a real
+upload through the running service returns **1099 ms where the old chain gave
+799 ms**, and the S3 object contains the full 1.000 s tone with 55 ms of lead-in
+and 45 ms of tail retained — the padding is still trimmed, the speech is not.
+
+Locked in by `services/audio-processor-trim.test.cjs`, which drives the real
+`processRecordingBuffer` over a real WebM/Opus payload and fails at 0.794 s if
+anyone reintroduces `start_duration`. Full suite green: 1,237 tests, 70 files.
+
+*Coupled guard, also updated:* the `MIN_TAKE_MS = 100` silence check in
+`production-api.cjs` had a comment documenting this bug as a property to work
+around ("a 350 ms tone comes out at 150 ms"). The guard is unchanged and still
+correct — it now has *more* headroom than when it was written — but the comment
+now says so.
 
 **b. Re-record the 107, and only 63 of them are Aran's.** No process can restore
 audio that was never written to disk. But the 107 split by who actually read them:
@@ -222,8 +233,9 @@ which reads as "no provenance was ever written" when in fact it is all there.
 **c. Do not touch the 39,182 legacy clips.** They are clean. Any "repair" pass
 over them would be the make-before-break rule broken for no reason.
 
-**Nothing above has been applied.** No file was reprocessed, no object deleted,
-no row updated. The fix in (a) is a proposal awaiting Tom's go.
+**Status:** (a) is applied, merged and live. (b) and (c) are untouched — no
+audio was reprocessed, no object deleted, no course_audio row updated. The
+re-record scheduling for the 63 + 44 clips sits with Tom.
 
 ---
 
