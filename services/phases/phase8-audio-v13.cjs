@@ -32,6 +32,7 @@ const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { pickPreferredAudioRow } = require('../shared/audio-link-preference.cjs')
+const { findCanonicalClip } = require('../shared/canonical-clip-store.cjs')
 const { decideCopy } = require('../shared/clone-copy-match.cjs')
 const { buildSourceIndex } = require('../shared/clone-copy-index.cjs')
 const createLogger = require('../shared/logger.cjs')
@@ -396,34 +397,38 @@ async function humanRowAtAudioKey(courseCode, textNormalized, language, role, vo
 }
 
 /**
- * Cross-course reuse: a rendered clip of this exact text, language, role and
- * voice in ANY other course, whose S3 object we can point a new row at instead
- * of paying to render it again. This is the query the content-addressed design
- * is built on — every miss is a duplicate paid render.
+ * The estate's clip for this text, language, role and voice, whose S3 object we
+ * can point a new row at instead of paying to render it again. Every miss is a
+ * duplicate paid render.
  *
- * It used to .eq() one spelling of language and one of voice, so it could not
- * see a sibling stored under the other spelling; and .limit(1).single() turned
- * "drift produced two rows" into an error the caller discarded as "no sibling",
- * falling straight through to TTS. Both predicates are now canonical JS matches
- * over a small candidate set, and more than one candidate is normal, not fatal.
+ * The name is now a historical artefact and the `courseCode` argument is unused:
+ * there are no siblings any more. Tom's ruling of 2026-08-14 moved clip identity
+ * into `audio_clips`, which has no course_code column, so "another course's copy
+ * of this clip" is not a thing that can exist — there is one clip, and courses
+ * are members of it. Both are kept so the three call sites read unchanged.
  *
- * Strict matching (no permissive branch): a false positive here would link the
- * WRONG audio to a learner-facing slot.
+ * This replaces a fetch-200-rows-and-filter-in-JS scan, and the reason that scan
+ * existed is now handled upstream: course_audio holds several spellings of one
+ * identity (`eve` vs `xai_eve`, `en` vs `eng`, text_normalized with and without
+ * a trailing '?'), so no single `.eq()` could reach them all. audio_clips stores
+ * the canonicalised key, computed by the same functions the database uses, so
+ * one indexed lookup on a unique key sees everything. Strictness is unchanged —
+ * a false positive would link the WRONG audio to a learner-facing slot — but it
+ * is now enforced by a unique constraint rather than by a JS predicate.
+ *
+ * Returns the same shape it always did, so callers need no change.
  */
 async function findSiblingCourseClip(courseCode, text, language, role, voiceId) {
-  const { data, error } = await supabase
-    .from('course_audio')
-    .select('s3_key, duration_ms, word_boundaries, language, voice_id')
-    .neq('course_code', courseCode)
-    .in('text_normalized', audioKeyCandidates(normalizeForAudio(text)))
-    .eq('role', role)
-    .not('s3_key', 'like', 'pending/%')
-    .limit(200)
-  if (error) throw new Error(`sibling-clip lookup failed: ${error.message}`)
-  return (data || []).find(row =>
-    row.s3_key &&
-    sameLanguage(language, row.language) &&
-    sameVoice(voiceId, row.voice_id)) || null
+  const clip = await findCanonicalClip(supabase, { text, language, role, voiceId })
+  if (!clip) return null
+  return {
+    s3_key: clip.s3_key,
+    duration_ms: clip.duration_ms,
+    word_boundaries: clip.word_boundaries,
+    language,
+    voice_id: voiceId,
+    clip_id: clip.id,
+  }
 }
 
 /**
@@ -6297,6 +6302,48 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
       logger.info(`[Pods] canon reuse: ${sentenceId || '?'} ${track || role} → clip ${existingRow.id} owned by ${existingRow.course_code} (no render)`)
     }
     return { id: existingRow.id, reused: true, crossCourse }
+  }
+
+  // The canonical clip store — the audit's actual finding, fixed here.
+  //
+  // This is the line the estate was missing: generatePodAudio's only pre-render
+  // check was course-scoped, so 40,625 of 58,170 English pod clips (70%) were
+  // paid renders of a line the estate already had. "I'd like a large glass of
+  // white wine, please." was rendered fifty times, once per course.
+  //
+  // No canonTexts gate here, and that is the point. That gate existed because
+  // reuse across courses had to be PROVED safe case by case — the identity key
+  // could not carry the proof, so the caller had to. audio_clips' identity IS
+  // the proof: same canonical text, same language, same role, same voice is the
+  // definition of the same clip, enforced by a unique constraint.
+  //
+  // The membership row still gets written, with this course's own text and the
+  // canonical bytes, so every FK holder keeps pointing at a course_audio id
+  // exactly as before. What does not happen is the render.
+  if (!force) {
+    const canonical = await findCanonicalClip(
+      supabase, { text: ttsText, language: identityLanguage, role, voiceId: voice.voice_id })
+    if (canonical) {
+      const { data: member, error: memberErr } = await supabase
+        .from('course_audio')
+        .upsert({
+          course_code: courseCode,
+          text: ttsText,
+          text_normalized: normalizeForAudio(ttsText),
+          language: identityLanguage,
+          role,
+          voice_id: canonicalClipVoiceId(voice.voice_id, voice.provider),
+          origin: canonical.origin,
+          s3_key: canonical.s3_key,
+          duration_ms: canonical.duration_ms,
+          word_boundaries: canonical.word_boundaries || null,
+        }, { onConflict: 'course_code,text_normalized,language,role,voice_id' })
+        .select('id')
+        .single()
+      if (memberErr) throw new Error(`canonical membership insert failed: ${memberErr.message}`)
+      logger.info(`[Pods] canonical reuse: ${sentenceId || '?'} ${track || role} → clip ${canonical.id} (no render)`)
+      return { id: member.id, reused: true, crossCourse: true, canonical: true }
+    }
   }
 
   let provider = voice.provider || 'azure'

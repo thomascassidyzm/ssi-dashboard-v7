@@ -74,23 +74,38 @@ LANGUAGE sql STABLE PARALLEL SAFE AS $fn$
   SELECT normalize_text(regexp_replace(lower(trim(coalesce(t, ''))), '\s+', ' ', 'g'))
 $fn$;
 
+-- PARALLEL UNSAFE, not merely restricted: a plpgsql EXCEPTION block opens a
+-- subtransaction, which a parallel worker cannot do — it fails with "cannot
+-- start commands during a parallel operation". Declared PARALLEL SAFE, that
+-- error hit the (then WHEN OTHERS) handler and the function returned the raw
+-- value for codes it maps perfectly well, so one input yielded two keys inside
+-- a single query. Both halves of that bug are fixed here: narrow handler, and
+-- the honest parallel-safety label.
 CREATE OR REPLACE FUNCTION audio_canon_voice(v text) RETURNS text
-LANGUAGE plpgsql STABLE PARALLEL SAFE AS $fn$
+LANGUAGE plpgsql STABLE PARALLEL UNSAFE AS $fn$
 BEGIN
   RETURN canonical_voice_id(v);
-EXCEPTION WHEN OTHERS THEN
+EXCEPTION WHEN check_violation THEN
   -- Legacy placeholder ('legacy_import', 'human', …) or an id with no inferable
-  -- provider. Keep it verbatim as its own identity rather than guessing.
+  -- provider — canonical_voice_id raises check_violation for exactly those.
+  -- Keep it verbatim as its own identity rather than guessing.
+  --
+  -- ONLY check_violation is caught. A WHEN OTHERS here swallowed a transient
+  -- error during the first backfill attempt and returned the raw value for a
+  -- code that maps perfectly well, so the same input produced two different
+  -- keys in one query. A canonicalisation function that is not deterministic
+  -- is worse than none.
   RETURN lower(btrim(coalesce(v, '')));
 END
 $fn$;
 
 CREATE OR REPLACE FUNCTION audio_canon_lang(l text) RETURNS text
-LANGUAGE plpgsql STABLE PARALLEL SAFE AS $fn$
+LANGUAGE plpgsql STABLE PARALLEL UNSAFE AS $fn$
 BEGIN
   RETURN canonical_language(l);
-EXCEPTION WHEN OTHERS THEN
+EXCEPTION WHEN check_violation THEN
   -- 'auto' and friends: a placeholder, not a language. Its own identity.
+  -- Narrow on purpose — see audio_canon_voice above for why WHEN OTHERS is a bug.
   RETURN lower(btrim(coalesce(l, '')));
 END
 $fn$;

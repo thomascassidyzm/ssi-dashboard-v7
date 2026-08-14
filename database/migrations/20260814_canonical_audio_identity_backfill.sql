@@ -38,22 +38,48 @@ SET statement_timeout = 0;
 
 -- ----------------------------------------------------------------------------
 -- 1. Staging: compute the canonical key once, not once per query.
+--
+-- audio_canon_lang/voice are plpgsql with an EXCEPTION block, which costs a
+-- subtransaction per call — 2.5M of those is hours. There are only ~80 distinct
+-- language spellings and a few hundred voice spellings in the whole table, so
+-- they are mapped ONCE into small lookup tables and joined. Same values, two
+-- orders of magnitude less work.
 -- ----------------------------------------------------------------------------
 
 DROP TABLE IF EXISTS _canon_stage;
+DROP TABLE IF EXISTS _canon_lang_map;
+DROP TABLE IF EXISTS _canon_voice_map;
+
+-- DISTINCT the raw value FIRST, then map it: `SELECT DISTINCT raw, f(raw)`
+-- de-duplicates the PAIR, so any non-determinism in f silently produces two
+-- rows for one raw value. This shape cannot.
+CREATE UNLOGGED TABLE _canon_lang_map AS
+SELECT raw, audio_canon_lang(raw) AS canon
+FROM (SELECT DISTINCT language AS raw FROM course_audio) d;
+CREATE UNIQUE INDEX ON _canon_lang_map (raw);
+
+CREATE UNLOGGED TABLE _canon_voice_map AS
+SELECT raw, audio_canon_voice(raw) AS canon
+FROM (SELECT DISTINCT voice_id AS raw FROM course_audio) d;
+CREATE UNIQUE INDEX ON _canon_voice_map (raw);
+
+ANALYZE _canon_lang_map;
+ANALYZE _canon_voice_map;
 
 CREATE UNLOGGED TABLE _canon_stage AS
 SELECT
   ca.id                                     AS audio_id,
   audio_canon_text(ca.text_normalized)      AS text_key,
-  audio_canon_lang(ca.language)             AS language,
+  lm.canon                                  AS language,
   ca.role                                   AS role,
-  audio_canon_voice(ca.voice_id)            AS voice_id
+  vm.canon                                  AS voice_id
 FROM course_audio ca
+JOIN _canon_lang_map  lm ON lm.raw = ca.language
+JOIN _canon_voice_map vm ON vm.raw = ca.voice_id
 WHERE ca.s3_key IS NOT NULL
   AND ca.s3_key <> ''
   AND ca.s3_key NOT LIKE 'pending/%'
-  AND (:'scope' = 'ALL' OR audio_canon_lang(ca.language) = :'scope');
+  AND (:'scope' = 'ALL' OR lm.canon = :'scope');
 
 CREATE UNIQUE INDEX _canon_stage_audio ON _canon_stage (audio_id);
 CREATE INDEX _canon_stage_key ON _canon_stage (text_key, language, role, voice_id);
@@ -96,18 +122,79 @@ ON CONFLICT ON CONSTRAINT audio_clips_identity DO NOTHING;
 
 -- ----------------------------------------------------------------------------
 -- 3. Link every staged course_audio row to its canonical clip.
+--
+-- session_replication_role = replica suppresses user triggers FOR THIS SESSION
+-- ONLY — no table lock, no effect on any concurrent writer — and it is required
+-- here for correctness, not just speed:
+--
+--   * trg_course_audio_normalize is BEFORE UPDATE on ALL columns and reassigns
+--     text_normalized := normalize_text(text). Rows written before ~March 2026
+--     still carry the older convention (trailing '?' kept), so merely writing
+--     clip_id would REWRITE their identity column — and on the first attempt
+--     that collided with unique_course_audio_per_voice at ita_for_eng "have you
+--     got more to learn today". Setting a pointer must not silently re-key the
+--     row it points from.
+--   * course_audio_audit, course_audio_touch_audio_stamp and
+--     touch_course_content_stamp would each fire 1.1M times for a change that
+--     alters no audio and no content. A link is metadata.
+--
+-- Wrapped in an explicit transaction because SET LOCAL needs one. The FK on
+-- clip_id is not enforced while triggers are off; step 4 re-checks every link
+-- against audio_clips by all four identity components, which is stricter.
 -- ----------------------------------------------------------------------------
 
-UPDATE course_audio ca
+-- Resolve the clip id INTO the staging table first. Joining course_audio to
+-- audio_clips on four text columns while also writing course_audio put the
+-- planner on a random-IO path that was still running after 32 minutes; split in
+-- two, each half is cheap — one hash join between two indexed tables, then a
+-- pure primary-key update.
+ALTER TABLE _canon_stage ADD COLUMN IF NOT EXISTS clip_id uuid;
+
+UPDATE _canon_stage s
 SET clip_id = c.id
-FROM _canon_stage s
-JOIN audio_clips c
-  ON c.text_key = s.text_key
- AND c.language = s.language
- AND c.role     = s.role
- AND c.voice_id = s.voice_id
-WHERE ca.id = s.audio_id
-  AND (ca.clip_id IS NULL OR ca.clip_id <> c.id);
+FROM audio_clips c
+WHERE c.text_key = s.text_key
+  AND c.language = s.language
+  AND c.role     = s.role
+  AND c.voice_id = s.voice_id;
+
+CREATE INDEX IF NOT EXISTS _canon_stage_clip ON _canon_stage (audio_id) INCLUDE (clip_id);
+ANALYZE _canon_stage;
+
+-- Batched, so no single transaction holds row locks on a live table for half an
+-- hour. Live render workers are inserting into course_audio throughout.
+SET session_replication_role = replica;
+
+DO $$
+DECLARE
+  batch    int := 50000;
+  moved    bigint;
+  total    bigint := 0;
+BEGIN
+  LOOP
+    WITH todo AS (
+      SELECT s.audio_id, s.clip_id
+      FROM _canon_stage s
+      JOIN course_audio ca ON ca.id = s.audio_id
+      WHERE s.clip_id IS NOT NULL
+        AND ca.clip_id IS DISTINCT FROM s.clip_id
+      LIMIT batch
+    )
+    UPDATE course_audio ca
+    SET clip_id = todo.clip_id
+    FROM todo
+    WHERE ca.id = todo.audio_id;
+
+    GET DIAGNOSTICS moved = ROW_COUNT;
+    total := total + moved;
+    EXIT WHEN moved = 0;
+    RAISE NOTICE 'linked % (total %)', moved, total;
+    COMMIT;
+  END LOOP;
+  RAISE NOTICE 'LINK DONE: % rows', total;
+END $$;
+
+RESET session_replication_role;
 
 -- ----------------------------------------------------------------------------
 -- 4. Reconciliation. Any mismatch aborts loudly rather than reporting success.
@@ -166,3 +253,5 @@ END $$;
 SELECT origin, count(*) FROM audio_clips GROUP BY 1 ORDER BY 2 DESC;
 
 DROP TABLE IF EXISTS _canon_stage;
+DROP TABLE IF EXISTS _canon_lang_map;
+DROP TABLE IF EXISTS _canon_voice_map;
