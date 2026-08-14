@@ -59,7 +59,6 @@
   ],
   "rewrites": [
     {
-      "comment": "The recordist surface is the ONE page anonymous people open on their phones, so it cannot afford a cross-origin fetch. popty.app talking straight to watson-1 is blocked by the browser BEFORE CORS is even consulted — Chrome refuses it as a public page reaching into the local address space ('Permission was denied for this request to access the `local` address space'), which surfaces to a recordist as a bare 'Failed to fetch' with a perfectly healthy backend. Proxying the route through popty.app makes the call same-origin, so there is no private-network hop and no preflight to get wrong. Must stay ABOVE the SPA catch-all.",
       "source": "/api/recording/:path*",
       "destination": "https://watson-1.tail4968cb.ts.net:8443/api/recording/:path*"
     },
