@@ -94,11 +94,32 @@ The finding I would take seriously estate-wide is the §B one: **the known side 
 
 ---
 
-## One finding I am keeping from the cancelled work
+## Correction to an earlier claim of mine, and one good result
 
-While the recording deliverable was live I traced the audio-ingest path, and the result stands on its own as an estate finding: **no mode of `POST /api/production/:courseCode/recording/upload` can attach externally-recorded audio to a course row that has no `course_audio` row yet.** Regeneration mode 404s without a pre-existing row (`production-api.cjs:4491-4508`); pod mode commits against `listening_pod_sentences` only; script mode writes an S3 object and a `recording_provenance` row and **never a `course_audio` row** — `course_audio` is touched twice in the whole handler, both inside the regeneration branch. There is no multipart route and no bulk-import tool. Since the only thing that mints content audio rows is the TTS path, **a course banked as text has no way in for human audio until someone mints those rows.**
+While the recording deliverable was live I traced the audio-ingest path and reported it as a hard blocker. **I overstated it, and sub-worker #653 caught me.** Correcting it here because the wrong version is already in my earlier report.
 
-Not acting on it, not designing around it — just not losing it.
+**What I got right:** script-mode uploads write an S3 object and a `recording_provenance` row and **never** a `course_audio` row (`course_audio` is touched twice in the whole upload handler, both inside the regeneration branch). Regeneration mode does 404 without a pre-existing row. There is no multipart route and no folder-level bulk-import tool.
+
+**What I got wrong:** I concluded there was therefore no way in for human audio. There is. A **second stage** exists — `POST /api/production/:courseCode/voice-engine/synthesize`, mounted live at `production-api.cjs:389-390`. It reads the takes back out of `recording_provenance`, matches them to phrases by normalised text, and **upserts `course_audio`** (`services/voice-engine/db.cjs:148`), which then fires the `audio_autolink` trigger that sets the `known/target1/target2_audio_id` FK columns. So takes are not stranded; they need a separate, manually-invoked job. Nothing chains upload → synthesize, and that is the real (much smaller) gap.
+
+Worth noting for anyone else reading that file: `voice-engine/router.cjs`'s own header comment says *"NOT mounted anywhere by this build"*. **That comment is stale — it is mounted.** It is what led me to under-rate the path.
+
+**And the good result, which I verified live rather than taking on trust.** The join that links a `course_audio` row to its content row is not a UUID or a filename — it is `normalize_text(text)` matched against `text_normalized`, in the `link_audio_to_content()` trigger. For a tonal language that is exactly where tone could be destroyed at the last step. It is not:
+
+```sql
+normalize_text(input) = rtrim(lower(trim(input_text)), '.?!¿¡。？！')
+```
+
+Lowercase, trim, trailing punctuation. **No diacritic stripping.** Tested against the live database:
+
+```
+normalize_text('kọ́') = normalize_text('kọ')   → false
+normalize_text('ọkọ̀') = normalize_text('ọkọ')  → false
+```
+
+So the tone-safety chain is now verified end to end: the authoring gate preserves tone, the stored bytes preserve tone, and **the database's own audio-linking trigger preserves tone**. Yoruba audio will not be cross-linked onto a differently-toned word.
+
+Not acting on any of it — just not losing it, and not leaving my own error standing.
 
 ---
 
