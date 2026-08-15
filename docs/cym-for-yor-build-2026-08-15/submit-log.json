@@ -1,0 +1,554 @@
+[
+ {
+  "seed": 2,
+  "status": 200,
+  "body": {
+   "ok": true,
+   "seed": "S0002",
+   "status": "INSERTED",
+   "action": "PROCEED TO NEXT SEED",
+   "known_text": "Mo ń gbìyànjú láti kọ́",
+   "target_text": "Dw i'n trio dysgu.",
+   "legos": 2,
+   "duplicates_skipped": 0,
+   "phrases": 6,
+   "buildup_phrases": 2,
+   "quality_reminder": {
+    "role": "You are a world-class language teacher creating speakable phrases.",
+    "goal": "Maximum VARIETY in sentence structures, within vocabulary constraints.",
+    "anti_pattern": "Never use the same sentence formula twice in a row. Each phrase should feel fresh and natural.",
+    "examples": [
+     "GOOD: \"I think we should go tomorrow\" → \"Maybe she wants to come too\" → \"The weather looks nice today\"",
+     "BAD: \"I don't know if...\" → \"I'm not sure if...\" → \"I don't know if...\" (formulaic, lazy)"
+    ],
+    "mantra": "If you catch yourself repeating a pattern, STOP and create something different."
+   },
+   "session": {
+    "seeds_this_session": 1,
+    "suggestion": "CONTINUE",
+    "message": "Keep building. Full course in one context window."
+   },
+   "next_seed": {
+    "instruction": "BUILD THIS SEED NOW - do not resubmit the previous one",
+    "seed_number": 3,
+    "known_text": "bí mo ṣe máa sọ lóòrèkóòrè tó bá ṣeé ṣe",
+    "recency_hints": null
+   },
+   "introduced_vocab": {
+    "note": "SERVER-INJECTED introduced-LEGO vocabulary (introduction order). This survives your context compaction — recombine BUILD phrases from THIS list. Never pad with filler tags (\", yes/here/again\"): the anti-template gate rejects them.",
+    "total_legos": 7,
+    "coverage": "complete",
+    "legos": [
+     "Mo fẹ́ → dw i isio",
+     "láti sọ → siarad",
+     "èdè Welsh → Cymraeg",
+     "pẹ̀lú rẹ → efo chdi",
+     "báyìí → rŵan",
+     "Mo ń gbìyànjú → dw i'n trio",
+     "láti kọ́ → dysgu"
+    ]
+   }
+  }
+ },
+ {
+  "seed": 3,
+  "status": 200,
+  "body": {
+   "ok": true,
+   "seed": "S0003",
+   "status": "INSERTED",
+   "action": "PROCEED TO NEXT SEED",
+   "known_text": "bí mo ṣe máa sọ lóòrèkóòrè tó bá ṣeé ṣe",
+   "target_text": "sut i siarad mor aml â phosib",
+   "legos": 2,
+   "duplicates_skipped": 0,
+   "phrases": 8,
+   "buildup_phrases": 4,
+   "quality_reminder": {
+    "role": "You are a world-class language teacher creating speakable phrases.",
+    "goal": "Maximum VARIETY in sentence structures, within vocabulary constraints.",
+    "anti_pattern": "Never use the same sentence formula twice in a row. Each phrase should feel fresh and natural.",
+    "examples": [
+     "GOOD: \"I think we should go tomorrow\" → \"Maybe she wants to come too\" → \"The weather looks nice today\"",
+     "BAD: \"I don't know if...\" → \"I'm not sure if...\" → \"I don't know if...\" (formulaic, lazy)"
+    ],
+    "mantra": "If you catch yourself repeating a pattern, STOP and create something different."
+   },
+   "session": {
+    "seeds_this_session": 1,
+    "suggestion": "CONTINUE",
+    "message": "Keep building. Full course in one context window."
+   },
+   "next_seed": {
+    "instruction": "BUILD THIS SEED NOW - do not resubmit the previous one",
+    "seed_number": 4,
+    "known_text": "bí mo ṣe máa sọ nǹkan ní èdè Welsh",
+    "recency_hints": null
+   },
+   "introduced_vocab": {
+    "note": "SERVER-INJECTED introduced-LEGO vocabulary (introduction order). This survives your context compaction — recombine BUILD phrases from THIS list. Never pad with filler tags (\", yes/here/again\"): the anti-template gate rejects them.",
+    "total_legos": 9,
+    "coverage": "complete",
+    "legos": [
+     "Mo fẹ́ → dw i isio",
+     "láti sọ → siarad",
+     "èdè Welsh → Cymraeg",
+     "pẹ̀lú rẹ → efo chdi",
+     "báyìí → rŵan",
+     "Mo ń gbìyànjú → dw i'n trio",
+     "láti kọ́ → dysgu",
+     "bí mo ṣe máa sọ → sut i siarad",
+     "lóòrèkóòrè tó bá ṣeé ṣe → mor aml â phosib"
+    ]
+   }
+  }
+ },
+ {
+  "seed": 4,
+  "status": 200,
+  "body": {
+   "ok": true,
+   "seed": "S0004",
+   "status": "INSERTED",
+   "action": "PROCEED TO NEXT SEED",
+   "known_text": "bí mo ṣe máa sọ nǹkan ní èdè Welsh",
+   "target_text": "sut i ddeud rhywbeth yn Gymraeg",
+   "legos": 3,
+   "duplicates_skipped": 0,
+   "phrases": 27,
+   "buildup_phrases": 3,
+   "quality_reminder": {
+    "role": "You are a world-class language teacher creating speakable phrases.",
+    "goal": "Maximum VARIETY in sentence structures, within vocabulary constraints.",
+    "anti_pattern": "Never use the same sentence formula twice in a row. Each phrase should feel fresh and natural.",
+    "examples": [
+     "GOOD: \"I think we should go tomorrow\" → \"Maybe she wants to come too\" → \"The weather looks nice today\"",
+     "BAD: \"I don't know if...\" → \"I'm not sure if...\" → \"I don't know if...\" (formulaic, lazy)"
+    ],
+    "mantra": "If you catch yourself repeating a pattern, STOP and create something different."
+   },
+   "session": {
+    "seeds_this_session": 1,
+    "suggestion": "CONTINUE",
+    "message": "Keep building. Full course in one context window."
+   },
+   "next_seed": {
+    "instruction": "BUILD THIS SEED NOW - do not resubmit the previous one",
+    "seed_number": 5,
+    "known_text": "Mo máa kọ sísọ pẹ̀lú ẹlòmíràn",
+    "recency_hints": null
+   },
+   "introduced_vocab": {
+    "note": "SERVER-INJECTED introduced-LEGO vocabulary (introduction order). This survives your context compaction — recombine BUILD phrases from THIS list. Never pad with filler tags (\", yes/here/again\"): the anti-template gate rejects them.",
+    "total_legos": 12,
+    "coverage": "complete",
+    "legos": [
+     "Mo fẹ́ → dw i isio",
+     "láti sọ → siarad",
+     "èdè Welsh → Cymraeg",
+     "pẹ̀lú rẹ → efo chdi",
+     "báyìí → rŵan",
+     "Mo ń gbìyànjú → dw i'n trio",
+     "láti kọ́ → dysgu",
+     "bí mo ṣe máa sọ → sut i siarad",
+     "lóòrèkóòrè tó bá ṣeé ṣe → mor aml â phosib",
+     "nǹkan → rhywbeth",
+     "bí mo ṣe máa sọ nǹkan → sut i ddeud rhywbeth",
+     "ní èdè Welsh → yn Gymraeg"
+    ]
+   }
+  }
+ },
+ {
+  "seed": 5,
+  "status": 200,
+  "body": {
+   "ok": true,
+   "seed": "S0005",
+   "status": "INSERTED",
+   "action": "PROCEED TO NEXT SEED",
+   "known_text": "Mo máa kọ sísọ pẹ̀lú ẹlòmíràn",
+   "target_text": "Dw i'n mynd i ymarfer siarad efo rhywun arall.",
+   "legos": 3,
+   "duplicates_skipped": 0,
+   "phrases": 26,
+   "buildup_phrases": 2,
+   "quality_reminder": {
+    "role": "You are a world-class language teacher creating speakable phrases.",
+    "goal": "Maximum VARIETY in sentence structures, within vocabulary constraints.",
+    "anti_pattern": "Never use the same sentence formula twice in a row. Each phrase should feel fresh and natural.",
+    "examples": [
+     "GOOD: \"I think we should go tomorrow\" → \"Maybe she wants to come too\" → \"The weather looks nice today\"",
+     "BAD: \"I don't know if...\" → \"I'm not sure if...\" → \"I don't know if...\" (formulaic, lazy)"
+    ],
+    "mantra": "If you catch yourself repeating a pattern, STOP and create something different."
+   },
+   "session": {
+    "seeds_this_session": 1,
+    "suggestion": "CONTINUE",
+    "message": "Keep building. Full course in one context window."
+   },
+   "next_seed": {
+    "instruction": "BUILD THIS SEED NOW - do not resubmit the previous one",
+    "seed_number": 6,
+    "known_text": "Mo ń gbìyànjú láti rántí ọ̀rọ̀ kan",
+    "recency_hints": null
+   },
+   "introduced_vocab": {
+    "note": "SERVER-INJECTED introduced-LEGO vocabulary (introduction order). This survives your context compaction — recombine BUILD phrases from THIS list. Never pad with filler tags (\", yes/here/again\"): the anti-template gate rejects them.",
+    "total_legos": 15,
+    "coverage": "complete",
+    "legos": [
+     "Mo fẹ́ → dw i isio",
+     "láti sọ → siarad",
+     "èdè Welsh → Cymraeg",
+     "pẹ̀lú rẹ → efo chdi",
+     "báyìí → rŵan",
+     "Mo ń gbìyànjú → dw i'n trio",
+     "láti kọ́ → dysgu",
+     "bí mo ṣe máa sọ → sut i siarad",
+     "lóòrèkóòrè tó bá ṣeé ṣe → mor aml â phosib",
+     "nǹkan → rhywbeth",
+     "bí mo ṣe máa sọ nǹkan → sut i ddeud rhywbeth",
+     "ní èdè Welsh → yn Gymraeg",
+     "sísọ → siarad",
+     "mo máa kọ → dw i'n mynd i ymarfer",
+     "pẹ̀lú ẹlòmíràn → efo rhywun arall"
+    ]
+   }
+  }
+ },
+ {
+  "seed": 6,
+  "status": 200,
+  "body": {
+   "ok": true,
+   "seed": "S0006",
+   "status": "INSERTED",
+   "action": "PROCEED TO NEXT SEED",
+   "known_text": "Mo ń gbìyànjú láti rántí ọ̀rọ̀ kan",
+   "target_text": "Dw i'n trio cofio gair.",
+   "legos": 2,
+   "duplicates_skipped": 0,
+   "phrases": 16,
+   "buildup_phrases": 0,
+   "quality_reminder": {
+    "role": "You are a world-class language teacher creating speakable phrases.",
+    "goal": "Maximum VARIETY in sentence structures, within vocabulary constraints.",
+    "anti_pattern": "Never use the same sentence formula twice in a row. Each phrase should feel fresh and natural.",
+    "examples": [
+     "GOOD: \"I think we should go tomorrow\" → \"Maybe she wants to come too\" → \"The weather looks nice today\"",
+     "BAD: \"I don't know if...\" → \"I'm not sure if...\" → \"I don't know if...\" (formulaic, lazy)"
+    ],
+    "mantra": "If you catch yourself repeating a pattern, STOP and create something different."
+   },
+   "session": {
+    "seeds_this_session": 1,
+    "suggestion": "CONTINUE",
+    "message": "Keep building. Full course in one context window."
+   },
+   "next_seed": {
+    "instruction": "BUILD THIS SEED NOW - do not resubmit the previous one",
+    "seed_number": 7,
+    "known_text": "Mo fẹ́ láti gbìyànjú gidigidi bí mo ṣe lè lónìí",
+    "recency_hints": null
+   },
+   "introduced_vocab": {
+    "note": "SERVER-INJECTED introduced-LEGO vocabulary (introduction order). This survives your context compaction — recombine BUILD phrases from THIS list. Never pad with filler tags (\", yes/here/again\"): the anti-template gate rejects them.",
+    "total_legos": 17,
+    "coverage": "complete",
+    "legos": [
+     "Mo fẹ́ → dw i isio",
+     "láti sọ → siarad",
+     "èdè Welsh → Cymraeg",
+     "pẹ̀lú rẹ → efo chdi",
+     "báyìí → rŵan",
+     "Mo ń gbìyànjú → dw i'n trio",
+     "láti kọ́ → dysgu",
+     "bí mo ṣe máa sọ → sut i siarad",
+     "lóòrèkóòrè tó bá ṣeé ṣe → mor aml â phosib",
+     "nǹkan → rhywbeth",
+     "bí mo ṣe máa sọ nǹkan → sut i ddeud rhywbeth",
+     "ní èdè Welsh → yn Gymraeg",
+     "sísọ → siarad",
+     "mo máa kọ → dw i'n mynd i ymarfer",
+     "pẹ̀lú ẹlòmíràn → efo rhywun arall",
+     "láti rántí → cofio",
+     "ọ̀rọ̀ kan → gair"
+    ]
+   }
+  }
+ },
+ {
+  "seed": 7,
+  "status": 200,
+  "body": {
+   "ok": true,
+   "seed": "S0007",
+   "status": "INSERTED",
+   "action": "PROCEED TO NEXT SEED",
+   "known_text": "Mo fẹ́ láti gbìyànjú gidigidi bí mo ṣe lè lónìí",
+   "target_text": "Dw i isio trio mor galed â phosib heddiw.",
+   "legos": 3,
+   "duplicates_skipped": 0,
+   "phrases": 26,
+   "buildup_phrases": 2,
+   "quality_reminder": {
+    "role": "You are a world-class language teacher creating speakable phrases.",
+    "goal": "Maximum VARIETY in sentence structures, within vocabulary constraints.",
+    "anti_pattern": "Never use the same sentence formula twice in a row. Each phrase should feel fresh and natural.",
+    "examples": [
+     "GOOD: \"I think we should go tomorrow\" → \"Maybe she wants to come too\" → \"The weather looks nice today\"",
+     "BAD: \"I don't know if...\" → \"I'm not sure if...\" → \"I don't know if...\" (formulaic, lazy)"
+    ],
+    "mantra": "If you catch yourself repeating a pattern, STOP and create something different."
+   },
+   "session": {
+    "seeds_this_session": 1,
+    "suggestion": "CONTINUE",
+    "message": "Keep building. Full course in one context window."
+   },
+   "next_seed": {
+    "instruction": "BUILD THIS SEED NOW - do not resubmit the previous one",
+    "seed_number": 8,
+    "known_text": "Mo máa gbìyànjú láti ṣàlàyé ohun tí mo túmọ̀ sí",
+    "recency_hints": null
+   },
+   "introduced_vocab": {
+    "note": "SERVER-INJECTED introduced-LEGO vocabulary (introduction order). This survives your context compaction — recombine BUILD phrases from THIS list. Never pad with filler tags (\", yes/here/again\"): the anti-template gate rejects them.",
+    "total_legos": 20,
+    "coverage": "complete",
+    "legos": [
+     "Mo fẹ́ → dw i isio",
+     "láti sọ → siarad",
+     "èdè Welsh → Cymraeg",
+     "pẹ̀lú rẹ → efo chdi",
+     "báyìí → rŵan",
+     "Mo ń gbìyànjú → dw i'n trio",
+     "láti kọ́ → dysgu",
+     "bí mo ṣe máa sọ → sut i siarad",
+     "lóòrèkóòrè tó bá ṣeé ṣe → mor aml â phosib",
+     "nǹkan → rhywbeth",
+     "bí mo ṣe máa sọ nǹkan → sut i ddeud rhywbeth",
+     "ní èdè Welsh → yn Gymraeg",
+     "sísọ → siarad",
+     "mo máa kọ → dw i'n mynd i ymarfer",
+     "pẹ̀lú ẹlòmíràn → efo rhywun arall",
+     "láti rántí → cofio",
+     "ọ̀rọ̀ kan → gair",
+     "láti gbìyànjú → trio",
+     "gidigidi bí mo ṣe lè → mor galed â phosib",
+     "lónìí → heddiw"
+    ]
+   }
+  }
+ },
+ {
+  "seed": 8,
+  "status": 200,
+  "body": {
+   "ok": true,
+   "seed": "S0008",
+   "status": "INSERTED",
+   "action": "PROCEED TO NEXT SEED",
+   "known_text": "Mo máa gbìyànjú láti ṣàlàyé ohun tí mo túmọ̀ sí",
+   "target_text": "Dw i'n mynd i drio esbonio be dw i'n feddwl.",
+   "legos": 3,
+   "duplicates_skipped": 0,
+   "phrases": 27,
+   "buildup_phrases": 3,
+   "quality_reminder": {
+    "role": "You are a world-class language teacher creating speakable phrases.",
+    "goal": "Maximum VARIETY in sentence structures, within vocabulary constraints.",
+    "anti_pattern": "Never use the same sentence formula twice in a row. Each phrase should feel fresh and natural.",
+    "examples": [
+     "GOOD: \"I think we should go tomorrow\" → \"Maybe she wants to come too\" → \"The weather looks nice today\"",
+     "BAD: \"I don't know if...\" → \"I'm not sure if...\" → \"I don't know if...\" (formulaic, lazy)"
+    ],
+    "mantra": "If you catch yourself repeating a pattern, STOP and create something different."
+   },
+   "session": {
+    "seeds_this_session": 1,
+    "suggestion": "CONTINUE",
+    "message": "Keep building. Full course in one context window."
+   },
+   "next_seed": {
+    "instruction": "BUILD THIS SEED NOW - do not resubmit the previous one",
+    "seed_number": 9,
+    "known_text": "Mo sọ èdè Welsh díẹ̀ báyìí",
+    "recency_hints": null
+   },
+   "introduced_vocab": {
+    "note": "SERVER-INJECTED introduced-LEGO vocabulary (introduction order). This survives your context compaction — recombine BUILD phrases from THIS list. Never pad with filler tags (\", yes/here/again\"): the anti-template gate rejects them.",
+    "total_legos": 23,
+    "coverage": "complete",
+    "legos": [
+     "Mo fẹ́ → dw i isio",
+     "láti sọ → siarad",
+     "èdè Welsh → Cymraeg",
+     "pẹ̀lú rẹ → efo chdi",
+     "báyìí → rŵan",
+     "Mo ń gbìyànjú → dw i'n trio",
+     "láti kọ́ → dysgu",
+     "bí mo ṣe máa sọ → sut i siarad",
+     "lóòrèkóòrè tó bá ṣeé ṣe → mor aml â phosib",
+     "nǹkan → rhywbeth",
+     "bí mo ṣe máa sọ nǹkan → sut i ddeud rhywbeth",
+     "ní èdè Welsh → yn Gymraeg",
+     "sísọ → siarad",
+     "mo máa kọ → dw i'n mynd i ymarfer",
+     "pẹ̀lú ẹlòmíràn → efo rhywun arall",
+     "láti rántí → cofio",
+     "ọ̀rọ̀ kan → gair",
+     "láti gbìyànjú → trio",
+     "gidigidi bí mo ṣe lè → mor galed â phosib",
+     "lónìí → heddiw",
+     "mo máa gbìyànjú → dw i'n mynd i drio",
+     "láti ṣàlàyé → esbonio",
+     "ohun tí mo túmọ̀ sí → be dw i'n feddwl"
+    ]
+   }
+  }
+ },
+ {
+  "seed": 9,
+  "status": 200,
+  "body": {
+   "ok": true,
+   "seed": "S0009",
+   "status": "INSERTED",
+   "action": "PROCEED TO NEXT SEED",
+   "known_text": "Mo sọ èdè Welsh díẹ̀ báyìí",
+   "target_text": "Dw i'n siarad chydig o Gymraeg rŵan.",
+   "legos": 2,
+   "duplicates_skipped": 0,
+   "phrases": 18,
+   "buildup_phrases": 2,
+   "quality_reminder": {
+    "role": "You are a world-class language teacher creating speakable phrases.",
+    "goal": "Maximum VARIETY in sentence structures, within vocabulary constraints.",
+    "anti_pattern": "Never use the same sentence formula twice in a row. Each phrase should feel fresh and natural.",
+    "examples": [
+     "GOOD: \"I think we should go tomorrow\" → \"Maybe she wants to come too\" → \"The weather looks nice today\"",
+     "BAD: \"I don't know if...\" → \"I'm not sure if...\" → \"I don't know if...\" (formulaic, lazy)"
+    ],
+    "mantra": "If you catch yourself repeating a pattern, STOP and create something different."
+   },
+   "session": {
+    "seeds_this_session": 1,
+    "suggestion": "CONTINUE",
+    "message": "Keep building. Full course in one context window."
+   },
+   "next_seed": {
+    "instruction": "BUILD THIS SEED NOW - do not resubmit the previous one",
+    "seed_number": 10,
+    "known_text": "Mi ò rò pé mo lè rántí gbogbo gbólóhùn náà",
+    "recency_hints": null
+   },
+   "introduced_vocab": {
+    "note": "SERVER-INJECTED introduced-LEGO vocabulary (introduction order). This survives your context compaction — recombine BUILD phrases from THIS list. Never pad with filler tags (\", yes/here/again\"): the anti-template gate rejects them.",
+    "total_legos": 25,
+    "coverage": "complete",
+    "legos": [
+     "Mo fẹ́ → dw i isio",
+     "láti sọ → siarad",
+     "èdè Welsh → Cymraeg",
+     "pẹ̀lú rẹ → efo chdi",
+     "báyìí → rŵan",
+     "Mo ń gbìyànjú → dw i'n trio",
+     "láti kọ́ → dysgu",
+     "bí mo ṣe máa sọ → sut i siarad",
+     "lóòrèkóòrè tó bá ṣeé ṣe → mor aml â phosib",
+     "nǹkan → rhywbeth",
+     "bí mo ṣe máa sọ nǹkan → sut i ddeud rhywbeth",
+     "ní èdè Welsh → yn Gymraeg",
+     "sísọ → siarad",
+     "mo máa kọ → dw i'n mynd i ymarfer",
+     "pẹ̀lú ẹlòmíràn → efo rhywun arall",
+     "láti rántí → cofio",
+     "ọ̀rọ̀ kan → gair",
+     "láti gbìyànjú → trio",
+     "gidigidi bí mo ṣe lè → mor galed â phosib",
+     "lónìí → heddiw",
+     "mo máa gbìyànjú → dw i'n mynd i drio",
+     "láti ṣàlàyé → esbonio",
+     "ohun tí mo túmọ̀ sí → be dw i'n feddwl",
+     "Mo sọ → dw i'n siarad",
+     "èdè Welsh díẹ̀ → chydig o Gymraeg"
+    ]
+   }
+  }
+ },
+ {
+  "seed": 10,
+  "status": 200,
+  "body": {
+   "ok": true,
+   "seed": "S0010",
+   "status": "INSERTED",
+   "action": "PROCEED TO NEXT SEED",
+   "known_text": "Mi ò rò pé mo lè rántí gbogbo gbólóhùn náà",
+   "target_text": "Dw i ddim yn siŵr fedra i gofio'r frawddeg gyfan.",
+   "legos": 3,
+   "duplicates_skipped": 0,
+   "phrases": 28,
+   "buildup_phrases": 4,
+   "quality_reminder": {
+    "role": "You are a world-class language teacher creating speakable phrases.",
+    "goal": "Maximum VARIETY in sentence structures, within vocabulary constraints.",
+    "anti_pattern": "Never use the same sentence formula twice in a row. Each phrase should feel fresh and natural.",
+    "examples": [
+     "GOOD: \"I think we should go tomorrow\" → \"Maybe she wants to come too\" → \"The weather looks nice today\"",
+     "BAD: \"I don't know if...\" → \"I'm not sure if...\" → \"I don't know if...\" (formulaic, lazy)"
+    ],
+    "mantra": "If you catch yourself repeating a pattern, STOP and create something different."
+   },
+   "session": {
+    "seeds_this_session": 1,
+    "suggestion": "CONTINUE",
+    "message": "Keep building. Full course in one context window."
+   },
+   "next_seed": {
+    "instruction": "BUILD THIS SEED NOW - do not resubmit the previous one",
+    "seed_number": 11,
+    "known_text": "Mo fẹ́ láti lè sọ lẹ́yìn tí o bá parí",
+    "recency_hints": null
+   },
+   "introduced_vocab": {
+    "note": "SERVER-INJECTED introduced-LEGO vocabulary (introduction order). This survives your context compaction — recombine BUILD phrases from THIS list. Never pad with filler tags (\", yes/here/again\"): the anti-template gate rejects them.",
+    "total_legos": 28,
+    "coverage": "complete",
+    "legos": [
+     "Mo fẹ́ → dw i isio",
+     "láti sọ → siarad",
+     "èdè Welsh → Cymraeg",
+     "pẹ̀lú rẹ → efo chdi",
+     "báyìí → rŵan",
+     "Mo ń gbìyànjú → dw i'n trio",
+     "láti kọ́ → dysgu",
+     "bí mo ṣe máa sọ → sut i siarad",
+     "lóòrèkóòrè tó bá ṣeé ṣe → mor aml â phosib",
+     "nǹkan → rhywbeth",
+     "bí mo ṣe máa sọ nǹkan → sut i ddeud rhywbeth",
+     "ní èdè Welsh → yn Gymraeg",
+     "sísọ → siarad",
+     "mo máa kọ → dw i'n mynd i ymarfer",
+     "pẹ̀lú ẹlòmíràn → efo rhywun arall",
+     "láti rántí → cofio",
+     "ọ̀rọ̀ kan → gair",
+     "láti gbìyànjú → trio",
+     "gidigidi bí mo ṣe lè → mor galed â phosib",
+     "lónìí → heddiw",
+     "mo máa gbìyànjú → dw i'n mynd i drio",
+     "láti ṣàlàyé → esbonio",
+     "ohun tí mo túmọ̀ sí → be dw i'n feddwl",
+     "Mo sọ → dw i'n siarad",
+     "èdè Welsh díẹ̀ → chydig o Gymraeg",
+     "mo lè → fedra i",
+     "rántí gbogbo gbólóhùn náà → gofio'r frawddeg gyfan",
+     "Mi ò rò pé → dw i ddim yn siŵr"
+    ]
+   }
+  }
+ }
+]
