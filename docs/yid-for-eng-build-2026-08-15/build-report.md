@@ -232,3 +232,50 @@ Two things that are worth doing regardless of the speaker, and are not Yiddish-s
 ---
 
 *Sub-workers: **#656** (script integrity) and **#657** (orthography census), both sonnet, both read-only. Their full reports are linked from this document's companion files. No audio was generated at any point in this job.*
+
+---
+
+## 9. Mis-pairing self-check (requested after the estate scan)
+
+**Headline: 0 instances of the estate defect, and 0 missing LEGOs, across 29 LEGOs and 52 server-generated component rows — 81 known/target pairings.** Method below, so the zero is checkable rather than asserted.
+
+I ran this against the **stored** rows, not my authoring file, so it covers the 52 component rows the **server** generated itself — machine output is exactly where this defect would live. Script: `docs/yid-for-eng-build-2026-08-15/mispairing-selfcheck.cjs`.
+
+| # | Test | Result |
+|---|---|---|
+| 1 | same KNOWN → different TARGETS | **0** |
+| 2 | same TARGET → different KNOWNS | **0** (was 1 — fixed, below) |
+| 3 | LEGO target is not a contiguous span of its seed target | 1 — adjudicated, deliberate |
+| 4 | LEGO known is not a contiguous span of its seed known | 7 — all adjudicated benign |
+| 5 | **MISSING LEGO** — a seed target word no LEGO teaches | **0** |
+| 6 | seed known word claimed by no LEGO in that seed | 1 — adjudicated benign |
+| 7 | **the estate signature run explicitly** | **0** |
+
+**Test 7 is the one that matters.** The scan's signature is *"the borrowed counterpart belongs to a NEIGHBOURING lego in the SAME seed, and the course contradicts itself elsewhere by pairing those two correctly."* So for every LEGO I asked directly: does its known appear anywhere else in the course paired with a **sibling's** target? Does its target appear elsewhere paired with a **sibling's** known? **Zero hits, both directions.** Combined with Test 1 = 0 (no known is ever paired with two different targets), no known side in this output can have been borrowed from a sibling.
+
+### The one real finding, and I fixed it
+
+Test 2 initially flagged **`רעדן` glossed "to speak" in S1L01/S1L04/S3L01 but "speaking" in S5L02** — seed 5 is "I'm going to practise *speaking*", where English uses a gerund for the same Yiddish infinitive.
+
+This was **not** the estate defect: "speaking" belongs to neither of seed 5's siblings (`זיך געניטן אין` "to practise", `מיט עמעצן אַנדערש` "with someone else"), and Test 7 confirms it. It was a genuine convergence, which the methodology permits. But it is exactly the shape the scan flags, so I normalised it to "to speak" — row `yid_for_eng:S0005L02C02`, a component with `introduce:false`, no presentation and no audio of any kind attached, so a single-column update with zero learner impact. Kai's standing rule (change a LEGO text, fix its presentation in the same pass) has nothing to fix here; I checked before touching it. The source file was aligned to match.
+
+**Honest trade-off:** this moved one row from Test 2 into Test 4 (the gloss "to speak" is now not a span of seed 5's English). I judged that the right direction — Test 2 is the estate signature, Test 4 is not — but it was a trade, not a free win.
+
+### The remaining Test 3 finding is deliberate, and it matters for the scan itself
+
+**S1L01: target `איך וויל רעדן` ("I want to speak") is not a contiguous span of seed 1's target `איך וויל איצט רעדן`** — `איצט` sits between the finite verb and the infinitive.
+
+The known and target **correspond correctly**; nothing is borrowed. It is a synthesized-but-valid chunk, not a mis-slice, and it is documented in the seed note. It exists because seed 1 has zero prior vocabulary, so a bare second LEGO admits exactly one possible phrase and cannot fill BUILD and USE distinctly (the server rejects both a bare-LEGO BUILD and a BUILD/USE duplicate). The alternative that would remove it — make L1 the full frame `איך וויל איצט רעדן` and drop the separate L4 — is clean, and I would take it on a rebuild; I did not perform destructive surgery on already-written content to chase a non-defect.
+
+**This generalises, and whoever runs the estate scan should know it: in a V2 / verb-bracket language, a LEGO's target legitimately need not be a contiguous span of its seed**, because the finite verb and the infinitive are separated by the middle field. Yiddish, German, Dutch and Afrikaans all do this. A span-contiguity test will therefore produce false positives on exactly those courses — and **`deu_for_zho` is one of the four confirmed cases**. Span-contiguity is not a safe discriminator there; the known↔target correspondence test (1, 2, 7) is.
+
+Related: **"claimed twice" is not evidence of the defect in this methodology.** Overlapping LEGOs are *the* teaching mechanism — `ralph-methodology.md` says overlaps are "expected and encouraged" and the tiling gate is word-set-based by design. Seed 1 deliberately has `איך וויל` and `רעדן` claimed by both L1 and L4. A scan that flags double-claims will flag every correctly-built course.
+
+### The other adjudications
+
+- **Test 4 (7 findings), all benign.** Two are my frame LEGOs (S1L04, S7L02) where every English word is present but reordered — that reordering *is* the rule in §3. Five are component glosses that name the Yiddish word's meaning rather than a slice of the sentence: `וואָס`→"what", `עפֿטער`→"more often" (seed 3), `וועל`→"will" (seed 5), `איך בין`→"I am" (seed 10, just the contraction of "I'm"). Every one is a correct pairing, and `וואָס`→"what" is glossed identically in seed 3 **and** seed 8 — self-consistency, the opposite of the defect signature.
+- **Test 6 (1 finding), benign.** Seed 9's English contains "Yiddish" but no seed-9 LEGO claims it — because `ייִדיש` was introduced in seed 1 and is correctly *not* re-taught (methodology principle 5, "don't re-teach the known"). Test 5 confirms the Yiddish word is taught. This is intended behaviour, not an incomplete decomposition.
+
+### Gap
+
+This check has **no Yiddish knowledge in it**. It proves internal consistency — that no row contradicts another and no side was borrowed from a sibling — which is precisely what the estate scan's language-free test proves. It **cannot** detect a pairing that is uniformly wrong throughout (if I mis-glossed a word the same way every time, every test above still reads zero). That residue is what §6's speaker questions are for.

@@ -272,7 +272,7 @@ module.exports = [
         idx: 2, type: 'M', known: 'to practise speaking', target: 'זיך געניטן אין רעדן',
         components: [
           { known: 'to practise', target: 'זיך געניטן אין' },
-          { known: 'speaking', target: 'רעדן', introduce: false },
+          { known: 'to speak', target: 'רעדן', introduce: false },
         ],
         build: [
           { known: "I'm going to practise speaking", target: 'איך וועל זיך געניטן אין רעדן' },
