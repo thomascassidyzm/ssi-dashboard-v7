@@ -12,6 +12,34 @@ taught to learners until it is ruled on.
 
 ---
 
+## A0. BLOCKING, AND MOST URGENT — "he wants / she wants": `vole`, `vò`, or `vo'`?
+
+*(Added after a corpus-wide sweep of all 668 seeds, 2026-08-15.)*
+
+The existing translations spell the "he/she wants" form **three different ways**, and there is no
+visible reason for the difference — same subject, same tense, same construction:
+
+| Spelling | Seeds | Example |
+|---|---|---|
+| `vole` | **4** — 16, 17, 34, 35 | S16 `isso **vole** turnà cu tutte ll'ate cchiù tarde` |
+| `vò` | **9** — 177, 299, 300, 301, 302, 303, 304, 469, 480 | S299 `isso **vò** pavà 'a mità` |
+| `vo'` | **3** — 222, 230, 533 | S230 `nu guaglione ca **vo'** faticà cu tte` |
+
+`vole` appears **only** in seeds 16–35 and nowhere after; the later 600 seeds use `vò` / `vo'`.
+That pattern looks like an early authoring habit that drifted.
+
+**A0.1 Which one should the course use everywhere?** Please pick one, or tell us if they are
+genuinely different (register, emphasis, region) and when each is used.
+
+**A0.2 Are `vò` and `vo'` the same word spelled two ways, or two different things?**
+
+> **Why this one is urgent:** the course already teaches `vole` — it is the "he wants" card at seed
+> 16 and the "she wants" card at seed 17, and it appears in **47 practice sentences** already in the
+> database. If the answer is `vò`, those two cards and all 47 sentences have to be changed. Nothing
+> else in this question list touches content that is already built.
+
+---
+
 ## A. Where the clitic goes (me / te / ce)
 
 This is the single biggest source of uncertainty in the build, because it decides how phrases
@@ -38,6 +66,43 @@ The existing translations do it two different ways:
 **A3.** Is there a simple rule you could state? For example: *"after a / 'e / pe + verb the little
 word stays on the verb; with voglio / pozzo / aggi'a it jumps to the front."* If that is the rule,
 say so — it will let us build a lot more sentences safely.
+
+> **Evidence gathered since these questions were first written:** a sweep of all 668 translations
+> found **no** case anywhere in the corpus of a little word stuck on the *end* of a verb (Italian
+> would say *ricordarmi*; Neapolitan here never does). With `voglio` / `pozzo` / `aggi'a` the little
+> word always sits **in front of the whole thing**. That points at **(b) `me voglio arricurdà`** for
+> A1 — but it is an inference from 668 sentences, not a speaker's judgement, so please still confirm
+> it. The course currently avoids the sentence entirely rather than guess.
+
+---
+
+## A4. "need to" — the corpus uses two unrelated constructions
+
+Also from the corpus sweep. English "need to" comes out two different ways with no visible pattern:
+
+- `avimm'a` — seeds 210, 395, 396, 397 — *"we need to turn left"* → `avimm'a vutà…`
+- `tenimmo bisogno 'e` — seeds 104, 106 — *"we need to change"* → `tenimmo bisogno 'e cagnà…`
+
+And it is inconsistent by person: "I need to" uses `aggi'a` (44, 45, 188) — the same word as
+*have to* and *going to* — while "she/he needs to" always uses `tene bisogno 'e` (319, 320, 322,
+323, 325, 326, 327).
+
+**A4.1** Is "need to" its own thing in Neapolitan (`tené bisogno 'e`), or is it fine to say it with
+the `aggi'a` / `avimm'a` family the way *have to* is said? Not yet reached in the build — but it
+lands around seed 104.
+
+---
+
+## A5. "soon" — `ampressa` or `priesto`?
+
+`ampressa` covers *quickly* (seeds 20, 77, 91 …) **and** *soon* (149, 291) — 11 seeds in all.
+`priesto` appears only twice, both meaning *soon* (23, 431).
+
+The course currently teaches them as two separate words — `ampressa` = "quickly" (seed 20),
+`priesto` = "soon" (seed 23).
+
+**A5.1** Is that a real distinction a Neapolitan speaker makes, or would you use one word for both?
+If one word does both jobs, we should drop `priesto` and say `ampressa` throughout.
 
 ---
 

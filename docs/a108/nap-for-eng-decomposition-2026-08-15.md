@@ -163,6 +163,57 @@ thinner than it should be.
 
 ---
 
+## Addendum — the three worker reports landed after this was written
+
+All three sonnet workers (#631 orthography, #633 ZUT forks, #634 morphology) delivered after the
+first version of this report. Gap 3 above is therefore **closed**. What they change:
+
+**1. A fork that touches content already built — needs a ruling.** #633 found, and I verified
+directly against all 668 seeds, that "he/she wants" is spelled **three** ways: `vole` (4 seeds —
+16, 17, 34, 35), `vò` (9 seeds — 177, 299–304, 469, 480), `vo'` (3 seeds — 222, 230, 533). `vole`
+appears *only* in the 16–35 band and never again. **The build teaches `vole`** — it is the "he
+wants" card at seed 16 and "she wants" at seed 17, and it is in **47 practice sentences now in the
+database**. If a speaker rules for `vò`, those two LEGOs and 47 phrases need rewriting (and, under
+Kai's standing rule, the presentations that introduce them in the same pass). This is now question
+**A0**, at the top of the speaker list, and it is the only open question that implicates built
+content.
+
+**2. Strong evidence on the clitic question (was BLOCKING A1).** #634 swept the corpus and found
+**no** case anywhere of a clitic suffixed to an infinitive — Neapolitan here never does the Italian
+*ricordarmi*; with `voglio`/`pozzo`/`aggi'a` the clitic climbs to the front. That points at
+`me voglio arricurdà`, i.e. the form the build deliberately avoided was indeed the wrong one. It is
+corpus inference, not a speaker's judgement, so A1 stays open — but the caution was correct and the
+question is now much cheaper to answer.
+
+**3. Two more forks, both beyond seed 30, added as A4 and A5.** "need to" splits between the
+`aggi'a`/`avimm'a` family and `tené bisogno 'e` with no visible pattern (lands ~seed 104), and
+`ampressa` already covers *soon* as well as *quickly*, which makes the course's separate `priesto`
+(taught at seed 23) look like free variation.
+
+**4. Corroboration, no change needed.** #633 independently reached the same call the build made on
+"more" — bare `cchiù` premodifies, `'e cchiù` postmodifies — which is exactly how seed 23 teaches
+it. It also confirms English "that" needs three-way known-side splitting (`ca` complementiser /
+`chello ca` relative / `chesto` demonstrative); the build has split the first two correctly and has
+not yet reached the third.
+
+**5. One correction to the orthography table above.** #631 established that **nap.wikipedia has no
+codified orthography or style guide at all** — a full-text search returns only an unrelated 1789
+Wikisource document. Every "what Wikipedia does" cell in the table above is therefore *observed
+usage in live articles*, which is the best available proxy for Kai's ruling but is not itself a
+ruled convention. #631 also notes that Wikipedia's `d''o`/`d''a` doubled apostrophe is produced by
+a template emitting curly marks to stop MediaWiki reading `''` as italics — so the corpus's
+straight-apostrophe `d''o` is very likely the same convention, not a divergence, but the rendering
+difference is a wiki artifact rather than a typographic choice. The verdict is unchanged: **broadly
+aligned, no smoking-gun divergence, nothing to normalise.**
+
+**6. A morphology fact worth having before seed 73.** #634 established that `avé` and `tené` are
+two verbs in this corpus, not one: `avé` (aggio/haje/ha/avimmo) is the perfect **auxiliary only**,
+`tené` (tengo/tiene/tene/tenimmo) is **possession**. Seeds 73 and 75 (`tengo cchiù cose 'a 'mparà`)
+depend on it. `essere` is also a perfect auxiliary, restricted to reflexives and reciprocals
+(`te si' scurdato`, `ce simmo viste`).
+
+---
+
 ## Where the next agent picks up
 
 Next seed is **31** (`vulive parlà cu mme stasera` — "You wanted to speak with me tonight").
