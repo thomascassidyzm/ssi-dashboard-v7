@@ -279,3 +279,29 @@ Related: **"claimed twice" is not evidence of the defect in this methodology.** 
 ### Gap
 
 This check has **no Yiddish knowledge in it**. It proves internal consistency — that no row contradicts another and no side was borrowed from a sibling — which is precisely what the estate scan's language-free test proves. It **cannot** detect a pairing that is uniformly wrong throughout (if I mis-glossed a word the same way every time, every test above still reads zero). That residue is what §6's speaker questions are for.
+
+---
+
+## 10. Both sub-workers reported. One number disagreed, and resolving it found an estate-wide defect.
+
+**#656 (script integrity)** and **#657 (orthography census)** both finished. Nothing is still in flight. Their findings are folded into §4 and §5 above; two things are worth pulling out.
+
+**#656 caught a bug in its own test harness and said so.** Its first PostgREST pass showed 15 "mismatches" that turned out to be its own Buffer-concatenation error decoding HTTP chunks independently — not data corruption. After the fix: **0 mismatches across all 668 rows** on the anon-key REST path, matching the pg-direct read. Its remaining gap is real and worth naming: the learning app's own Vercel API routes and the supabase-js client library were **not** exercised — only the raw REST endpoint. It also confirmed it dropped its scratch table and never wrote to `course_seeds`.
+
+**#657's question-mark count (111) disagreed with mine (109).** I chased it, and the discrepancy is not in the Yiddish:
+
+```
+seed 643   EN "Do you want sir"          YI  ווילט איר, הער?
+seed 659   EN "Could you all say that"   YI  וואָלט איר אַלע געקענט זאָגן דאָס?
+```
+
+**The Yiddish is right and the English canonical seed is wrong** — both are questions missing their question mark (643 is also missing a comma before "sir"). All 111 Yiddish question marks are correct; 109 is the English count.
+
+**This is estate-wide, not a Yiddish problem.** Both seeds are missing the question mark in the canonical English of every course I checked:
+
+| seed | deu_for_eng | fra_for_eng | heb_for_eng | spa_for_eng | yid_for_eng |
+|---|---|---|---|---|---|
+| 643 | "do you want sir" | "do you want sir" | "Do you want sir" | "Do you want sir" | "Do you want sir" |
+| 659 | "could you all say that" | "could you all say that" | "Could you all say that" | "could you all say that" | "Could you all say that" |
+
+I did **not** fix it. Canonical seed text is shared across every course, so an edit cascades estate-wide and is well outside this brief — it is Tom's or Kai's call. Flagging it because it affects the known side of two seeds in every English-known course on the estate, and because a translator working from "Do you want sir" has no cue that it is a question.
