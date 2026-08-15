@@ -132,6 +132,48 @@ We know Yoruba also has a respectful form (**ẹ**) used with elders and people 
 
 ---
 
+---
+
+## Part 5 — Three more, from a sweep of the rest of the course
+
+These come from later material we have not built yet, but you are the right people to settle them and we would rather ask once.
+
+### 13. Should "Sunday" be an English word?
+
+Four sentences use the English word **Sunday** inside otherwise-Yoruba sentences, rather than a Yoruba day name:
+
+> **...ní òwúrọ̀ ọjọ́ Sunday** — *"on Sunday morning"*
+
+It is written the same way in all four places, so it looks deliberate rather than a slip, and we know English day names are common in everyday spoken Yoruba.
+
+- Is that what you would say, or should the course teach the Yoruba day name (**Ọjọ́-àìkú**)?
+- If people really do say "Sunday" in conversation, should a course still teach the Yoruba name?
+
+*(No other English words appear anywhere in the course except the name "Jane", which is a person's name.)*
+
+### 14. Does this add a "they" that isn't in the English?
+
+We want to say: **"So that I don't get left behind"** — in English, it doesn't say *who* might leave you behind.
+
+What we have is: **Kí wọ́n má bàa fi mí sílẹ̀**
+
+That looks to us like it says **"so that *they* don't leave me behind"**, with a "they" that the English never mentions.
+
+- Does Yoruba need someone named there, so this is just how it must be said?
+- Or is there a way to say it without specifying who?
+
+### 15. Is *búrúkú* the right word for "ugly"?
+
+We want: **"I think the small church is very ugly"**
+
+We have used **búrúkú púpọ̀** for *"very ugly"*.
+
+Our doubt: we think **búrúkú** usually means **bad** — a bad person, bad luck — rather than *ugly* in the sense of how something looks.
+
+- Is *búrúkú* right here, or is there a better word for something being ugly to look at?
+
+---
+
 ## And one open invitation
 
 While you are recording, if **any** line makes you pause — because it is not how anyone really speaks, or the tone marks look wrong, or it is technically correct but nobody would say it — please tell us, even if it is not on this list.
