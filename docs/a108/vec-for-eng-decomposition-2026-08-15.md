@@ -225,13 +225,16 @@ S10; `do-support` → `pàrlitu`, S14; `past` → `vołeva`, S30).
 
 ## Explicit gaps
 
-1. **Worker #689 (orthography census) died on an account rate-limit, delivering nothing.**
-   There is no independent second opinion on the orthography, and no comparison against
-   `vec.wikipedia.org`. The census in this report is my own measurement.
-2. **Worker #690 (ZUT fork / gloss map) had not returned when this report was written.**
-   Its findings — a corpus-wide fork inventory across all 668 seeds — would strengthen the
-   pair contract beyond the 30-seed band I measured directly. The contract should be
-   revisited when it lands.
+1. **BOTH dispatched workers died on the same account rate-limit, delivering nothing.**
+   Neither piece of independent legwork exists. This is a single shared cause, not two
+   unlucky tasks, and it means **every finding in this report is single-sourced from my
+   own measurement** with no second opinion behind it.
+   - **#689 (orthography census)** — no independent check of the GVU conformance table,
+     and no comparison against `vec.wikipedia.org`. The census here is my own.
+   - **#690 (ZUT fork / gloss map)** — no corpus-wide fork inventory across all 668 seeds.
+     **The pair contract's `glossSynonyms` therefore rests on the 30-seed band only.**
+     Forks that first appear at seed 31+ are unmeasured, and the contract should be
+     revisited before the next block is built, not after.
 3. **638 of 668 seeds are not decomposed.** The course is 4.5% built.
 4. **No Venetian speaker has seen any of this.** Ten questions are banked; nothing was
    fudged past them.
