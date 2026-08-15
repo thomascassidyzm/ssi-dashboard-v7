@@ -153,6 +153,45 @@ only by a diacritic (`di`/`dî`/`dì`, `la`/`lâ`/`là`, `e`/`è`, `si`/`sì`, `
 `scugnìn`/`scugnin` are **first person plural vs third person plural**, not two spellings of one
 form. Reporting those as inconsistencies would have been a false alarm.
 
+### Three of my committed glosses are contradicted later in the corpus — needs a decision
+
+The ZUT-fork worker (#703) checked the 11 glosses seeds 1–25 commit to against all 668 seeds.
+**Six hold. Two are genuinely contradicted, one is a sense-split, one is unverifiable.** Every claim
+below was re-queried against the database by me before being written here.
+
+| Gloss I taught | Where it breaks | The later text |
+|---|---|---|
+| **`I have to` → `o scugni`** (S25) | **S181, S293** | `ma o **ai di** puartâ mê mari dal miedi` / `o **ai di** vignî a savê…` |
+| **`soon` → `chi di pôc`** (S23) | **S149, S431** | `o speri che tu finissis **prest**` / `a saran pronts **prest**` |
+| **`to try` → `impegnâmi`** (S7) | **S236, S541** | `e varès **cirût di** judâ` / `**cirî di** respirâ planc` |
+
+**What each one means, plainly:**
+
+1. **`I have to`** is the sharpest. Two Friulian constructions — `o scugni` and `o ai di` — answer
+   the same English prompt. Whoever reaches seed 181 must either use my gloss (and change that
+   seed's translation) or differentiate the English. **The ZUT gate will force the choice at S181;
+   better to decide it now.**
+2. **`soon`** is the same shape: `chi di pôc` (mine, S23) vs `prest` (S149, S431). Collides at S149.
+3. **`to try` confirms question B and sharpens it.** `impegnâsi` is the *try hard* idiom; plain
+   "try to do X" is `cirî di` throughout the corpus. The likely resolution is to re-gloss S7's LEGO
+   as **"to make an effort"** and let `cirî di` carry "try to". That is a change to live content,
+   so I have not made it.
+4. **`more` → `di plui`** is *not* contradicted — S73/75 (`ancjemò alc`, "more to learn") and S103
+   (`tantis altris peraulis`, "more words") are different senses of English *more*, not different
+   renderings of mine. A fork risk to watch, not a defect.
+5. **`to meet up` → `cjatâsi` cannot be checked**: the phrase "meet up" appears nowhere else in the
+   668 seeds. Question **C** stands unresolved either way.
+
+**Re-glossing is cheap right now, and this is the moment.** Kai's rule is that changing a LEGO's
+text means fixing the presentation that introduces it in the same pass — I checked, and
+`/api/seed/complete` writes only to `course_legos` and `course_practice_phrases`; **it creates no
+presentation rows at all**, and none exist for these 74 LEGOs. So a re-gloss today touches the LEGO
+and its phrases and nothing else.
+
+**#703's own honest gap, worth repeating:** it frequency-scanned and hand-verified the
+highest-signal candidates rather than every recurring English word, so **absence from its list is
+not proof that no other fork exists.**
+
 ### A cross-course content leak in the existing translations — needs a decision
 
 **Four seeds carry the word `yoruba` where the Friulian word for "Friulian" belongs.** Found by the
@@ -246,10 +285,11 @@ Both are flagged rather than hidden, because both may be wrong in a way no self-
    `ratified: null` — nobody here speaks Friulian, so it runs advisory until a speaker signs it off.
 
 2. **A native-speaker question list** —
-   `docs/a108/fur-for-eng-native-speaker-questions-2026-08-15.md`. Fourteen areas in plain English,
-   answerable one line each by someone who knows nothing about our system. **Four are BLOCKING**,
-   meaning the course teaches a guess today: the `-mi` reflexives being locked to *I*, the two verbs
-   for *try*, the two verbs for *meet*, and the `il so non` merge.
+   `docs/a108/fur-for-eng-native-speaker-questions-2026-08-15.md`. Sixteen areas in plain English,
+   answerable one line each by someone who knows nothing about our system. **Four are BLOCKING**
+   (A, B, C and the new F2), meaning the course teaches a guess today: the `-mi` reflexives being
+   locked to *I*, the two verbs for *try*, the two verbs for *meet*, and the two ways the corpus says
+   *I have to* and *soon*.
 
 ---
 
@@ -265,9 +305,9 @@ Both are flagged rather than hidden, because both may be wrong in a way no self-
    anything — the orthography audit and the corpus scout. The orthography section above began as my
    own first-hand measurement of all 668 seeds; the replacement **#702** has since landed and its
    findings are folded in above (and independently verified where they changed a claim — the
-   `yoruba` leak was re-queried against the database before being written down). **#703**, the
-   ZUT-fork map and verb-linker table for seeds 26+, was still running at the time of writing; its
-   findings are NOT in this report.
+   `yoruba` leak was re-queried against the database before being written down). **#703**, the ZUT-fork map and verb-linker
+   table for seeds 26+, has also landed and is folded in above, with each of its contradiction
+   claims re-verified against the database. Its own coverage gap is recorded with it.
 5. **The pair-contract is written but not live.** The running course-builder executes from a
    different checkout (`ssi-dashboard-v7-clean-prod`, on `main`), outside this session's workspace,
    so the build ran against the generic `_default_eng` fallback. Practical effect: the gate was

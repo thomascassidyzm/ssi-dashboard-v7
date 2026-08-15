@@ -35,8 +35,14 @@ suggests the ending does not always agree. Is that right?)
 
 We have taught `o cîr di` as "I'm trying to" and `impegnâmi` as "to try".
 
-**Question:** does *impegnâsi* actually mean "try", or does it mean something narrower like "make an
-effort / commit yourself"? If it is narrower, what should the English on the card say instead?
+**A scan of all 668 seeds since strongly suggests the second reading:** plain "try to do X" is
+`cirî di` everywhere else in the corpus — S236 *e varès **cirût di** judâ* ("she was going to try to
+help"), S541 *al è une buine idee **cirî di** respirâ planc* ("it's a good idea to try and breathe
+slowly"). `impegnâsi` appears only in the "try **hard**" sentence.
+
+**Question:** does *impegnâsi* actually mean "try", or something narrower like "make an effort /
+commit yourself"? If narrower, we would re-word the card to **"to make an effort"** and let `cirî di`
+carry "try to" — is that right?
 
 ## C. BLOCKING — two different verbs for English "meet"
 
@@ -77,9 +83,32 @@ The seeds show a pattern we have built the whole course on: each verb chooses it
 | scomençâ | **a** | S23 `o scomençarai a fevelâ` |
 | smeti | **di** | S19 `smeti di fevelâ` |
 | volê / podê / scugnî | **none** | S1 `o vuei fevelâ`, S11 `podê fevelâ`, S25 `o scugni lâ` |
+| bisugnâ (need) | **di** | corpus-wide scan |
+| continuâ (continue) | **a** | corpus-wide scan |
+| judâ (help) | **a** | corpus-wide scan |
+| pront (ready) | **a** | corpus-wide scan |
+| daûr (in the process of) | **a** | corpus-wide scan |
+
+A scan of all 668 seeds found **no verb taking both** *a* and *di*, which is encouraging.
 
 **Question:** is that table right, and does *impegnâsi* take one (e.g. *impegnâmi a fevelâ*)? We
 avoided ever writing it because we did not know.
+
+## F2. BLOCKING — two ways to say "I have to", and two ways to say "soon"
+
+We taught *I have to* as **o scugni** (S25) and *soon* as **chi di pôc** (S23). Later seeds use
+different words for the same English:
+
+| English | What we teach | What later seeds say |
+|---|---|---|
+| I have to | `o scugni` (S25) | **o ai di** — S181 *ma o **ai di** puartâ mê mari dal miedi*; S293 *o **ai di** vignî a savê…* |
+| soon | `chi di pôc` (S23) | **prest** — S149 *o speri che tu finissis **prest***; S431 *a saran pronts **prest*** |
+
+Our method allows only one Friulian answer per English prompt, so one of each pair has to win.
+
+**Question 1:** is there a real difference between *o scugni* and *o ai di* (obligation from outside
+vs a personal must?), or are they interchangeable — and which should a learner be taught first?
+**Question 2:** same for *chi di pôc* vs *prest*.
 
 ## G. "remember" with and without *di*
 
@@ -162,4 +191,4 @@ S18 has **cheste sere** and S31 (not yet built) has **usgnot**. Both land on Eng
 ### How to answer
 
 A one-line answer per lettered question is enough. Anything marked BLOCKING changes content that is
-already in the database, so those four are the ones worth doing first.
+already in the database, so those four (A, B, C and F2) are the ones worth doing first.
