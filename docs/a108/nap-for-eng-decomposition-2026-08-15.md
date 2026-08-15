@@ -214,6 +214,29 @@ depend on it. `essere` is also a perfect auxiliary, restricted to reflexives and
 
 ---
 
+## Mis-pairing self-check (estate scan, 2026-08-15)
+
+Full write-up: `docs/a108/nap-for-eng-mispairing-selfcheck-2026-08-15.md`.
+
+Ran against all 93 LEGOs and 86 component rows produced tonight, in response to the confirmed
+estate defect class (a LEGO whose known and target sides don't correspond because one was sliced
+from a different word in the same seed).
+
+- **Zero instances of the estate defect.** No known or target side borrowed from a sibling LEGO.
+- **Zero missing LEGOs** — every word of all 30 seed sentences is taught.
+- **93 of 93 LEGOs round-tripped byte-identically** between the JSON I submitted and the rows the
+  API stored — known side, target side, every component. The shared machinery altered nothing on
+  the `/api/seed/complete` path.
+- **One real defect found and fixed**, of a different kind: S25L2 had two learner-facing cards both
+  prompting "before" (`primma ca` and `primma`) — a plain ZUT collision from a gloss I duplicated
+  when splitting a chunk, not a mis-slice. The component is now `introduce:false`; no text changed;
+  untaught-word check re-verified at 707 phrases, 0 violations.
+- Two false-positive classes flagged for whoever runs the estate scan: **stripping apostrophes**
+  merges `'e` ("of") with `e` ("and") and will fire across every apostrophe-heavy orthography, and
+  **intentional A-inside-M overlap** produced 8 "double-claim" hits in 30 seeds.
+
+---
+
 ## Where the next agent picks up
 
 Next seed is **31** (`vulive parlà cu mme stasera` — "You wanted to speak with me tonight").
