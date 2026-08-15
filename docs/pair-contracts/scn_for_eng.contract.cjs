@@ -50,6 +50,14 @@ module.exports = {
     'lu sò': ['his', 'her'],
   },
 
+  // ── OPEN ZUT COMMITMENT, for whoever builds seeds 31+ ──
+  // This build taught "people" -> genti at S22 (that is what S22 says). Seeds 85, 87, 88, 286,
+  // 287, 288, 297 use pirsuni for the same English word. One known prompt may map to only one
+  // target, so seed 85 will be REJECTED until this is ruled on. See speaker question K.
+  openForks: [
+    { gloss: 'people', committed: 'genti', committedAt: 22, competing: 'pirsuni', competingAt: [85, 87, 88, 286, 287, 288, 297] },
+  ],
+
   // glossUnits: bound, non-compositional English phrases taught whole at a carrier.
   glossUnits: [
     // English "as X as possible" / "as X as I can" are realised by frames that are not
@@ -77,13 +85,17 @@ module.exports = {
   //                                       sèntirimi (S26), pigghiàrimi (S27),
   //                                       spiàriti (S30), vìdirini (S18)
   //   PROCLITIC before a finite verb:     mi pozzu arricurdari (S10, S56, S57, S113)
-  // S24 "nun aju a putiri arricurdàrimi" shows the enclitic surviving under a modal,
-  // so climbing is optional rather than obligatory. Authors should reproduce whichever
-  // pattern the seed uses and NOT invent the other. See speaker question D.
+  // A full sweep of all 668 seeds (worker #704) found the two patterns COMPLEMENTARY with
+  // ZERO counter-examples: enclitic iff the verb is an infinitive (41 instances), proclitic
+  // iff the verb is finite. This is a rule, not free variation. The one case still open is
+  // under a modal, where S24 "nun aju a putiri arricurdàrimi" shows the enclitic surviving
+  // but the corpus only ever shows climbing elsewhere ("mi pozzu arricurdari"). Authors
+  // should reproduce whichever pattern the seed uses and NOT invent the other.
+  // See speaker question D.
   cliticPlacement: {
     enclitic_on_infinitive: true,
     proclitic_on_finite: true,
-    climbing_optional: true,
+    climbing_optional: null,   // unresolved for modals specifically — see speaker question D
   },
 
   clusterRounds: {},

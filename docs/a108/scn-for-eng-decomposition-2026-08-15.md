@@ -183,6 +183,40 @@ list for seeds 31+.
 
 ---
 
+## A cross-course data bug found by worker #704, verified by me
+
+**Five scn_for_eng seeds say `yoruba` where they should say `sicilianu`** — S160, S283, S285, S286,
+S297. I re-queried the database directly rather than take the worker's word for it; it is exactly as
+reported. None of them is in the 1–30 band, so **nothing built tonight is affected**, but seeds 160
+and 283–297 must be corrected before anyone decomposes them or learners will be taught to say they
+speak Yoruba.
+
+**It is not confined to this course.** Checking the estate for `yoruba` in non-Yoruba courses:
+
+| Course | Affected seeds |
+|---|---|
+| cor_for_eng | 283, 285, 286, 297 |
+| fur_for_eng | 283, 285, 286, 297 |
+| lmo_for_eng | 283, 285, 286, 297 |
+| nap_for_eng | 160, 283, 285, 286, 297 |
+| rgn_for_eng | 160, 283, 285, 286, 297 |
+| scn_for_eng | 160, 283, 285, 286, 297 |
+| vec_for_eng | 64, 160, 283, 285, 286, 297 |
+
+**33 seeds across 7 courses, hitting the same seed numbers in every one.** That shared numbering is
+the tell: this is a single upstream template fault in whatever produced these translations, not
+seven independent slips. Every affected course is in the minority-language decomposition fleet
+running tonight. I have not edited any of them — fixing another build's course data is not mine to
+do, and it wants one deliberate pass, not seven agents each patching their own.
+
+## One forward hazard my own build has created
+
+Seed 22 taught **"people" → `genti`**, because that is what seed 22 says. Seeds 85, 87, 88, 286, 287,
+288 and 297 use **`pirsuni`** for the same English word. Since the system enforces one English prompt
+→ one Sicilian answer, whoever builds seed 85 will hit a hard rejection unless this is ruled on
+first. It is question **K** in the speaker list. Flagging it as *my* commitment rather than a
+pre-existing corpus problem, because the choice was made by this build.
+
 ## Two things produced alongside the content
 
 **1. A pair-contract** — `docs/pair-contracts/scn_for_eng.contract.cjs`. There was none for this

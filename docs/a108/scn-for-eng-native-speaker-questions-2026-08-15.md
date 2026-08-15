@@ -69,13 +69,22 @@ and which is a variation:
 Seed 24 has *both* patterns available and uses the stuck-on-the-end one: `nun aju a putiri
 arricurdàrimi`.
 
-1. Are **both** of these correct Sicilian, or is one of them wrong?
-2. If both are correct, is one more natural in speech?
-3. Would a speaker ever say `pozzu arricurdàrimi` (ending) instead of `mi pozzu arricurdari`
-   (front)? We avoided producing that combination because we could not tell.
+**Since this question was first written, a full sweep of all 668 sentences has answered most of it.**
+The two patterns turn out to be perfectly complementary, with **no counter-examples anywhere in the
+corpus**: the clitic attaches to the end when the verb is an *infinitive* (41 instances), and stands
+in front when the verb is *finite*. So this is a rule, not free variation, and the course is
+following it.
 
-This matters more than it looks: until it is settled, we are avoiding whole classes of sentence,
-which is why the "remember" material is thinner than it should be.
+What remains genuinely open is only the narrow case:
+
+1. Would a speaker ever say `pozzu arricurdàrimi` (clitic on the end, under a modal) instead of
+   `mi pozzu arricurdari` (clitic climbing to the front)? Both look possible to us and the corpus
+   only ever shows the second — but seed 24 has `nun aju a putiri **arricurdàrimi**`, which *is*
+   the ending pattern under a modal. So are both allowed after a modal specifically?
+2. If both are allowed, is one more natural in speech?
+
+We avoided producing the untested combination rather than guessing, which is why the "remember"
+material is a little thinner than it could be.
 
 ---
 
@@ -160,6 +169,57 @@ These passed our checks but we scored them low ourselves. If any sounds wrong, s
 | I want you to speak Sicilian with me | `vogghiu ca parri sicilianu cu mia` | Is `vogghiu ca` + verb the natural way to say "I want you to…"? |
 | I'd like to be nearly ready to go tomorrow | `vulirìa èssiri quasi prontu a jiri dumani` | We built `èssiri` from other seeds; is it right here? |
 | I like feeling as if I'm nearly ready to go | `mi piaci sèntirimi comu si fussi quasi prontu a jiri` | Long chain — does it hold together? |
+
+---
+
+## K. "people" is two different words — and seed 22 has already committed us to one
+
+Seed 22 (built): *"…to meet **people** who speak Sicilian"* → `…canusciri **genti** ca parra sicilianu`
+Seed 85 (not built): *"I don't know those **people**"* → `nun canusciu a chiḍḍi **pirsuni**`
+
+Across the corpus, `genti` appears 3 times and `pirsuni` 7 times, both for English "people". We taught
+`genti` at seed 22 because that is what seed 22 says.
+
+1. Is there a real difference — is `genti` "people in general" and `pirsuni` "specific individuals"?
+2. If they are interchangeable, which should the course teach as *the* word for "people"?
+
+**This one is time-sensitive for whoever builds seeds 31+**: the system enforces one English prompt →
+one Sicilian answer, so when they reach seed 85 the prompt "people" will already be committed to
+`genti`. Better to rule on it now than to discover it as a rejection at seed 85.
+
+---
+
+## L. NOT a language question — a data bug we found and did not touch
+
+Five Sicilian sentences say **`yoruba`** where they should say **`sicilianu`**:
+
+| Seed | English | Sicilian as stored |
+|---|---|---|
+| 160 | How do you say this word in Sicilian? | `comu si dici sta palora 'n **yoruba**?` |
+| 283 | Which of your friends speak Sicilian? | `quali di li tò amici pàrranu **yoruba**?` |
+| 285 | She speaks Sicilian. | `iḍḍa parra **yoruba**` |
+| 286 | People who like speaking Sicilian. | `pirsuni ca ci piaci parrari **yoruba**` |
+| 297 | I don't know many people who speak Sicilian. | `nun canusciu assai pirsuni ca pàrranu **yoruba**` |
+
+**This is not a Sicilian question and needs no speaker** — the word is simply the wrong language's
+name, left over from a template. It is *not* in the 30 seeds we built, so nothing currently teaches
+it. It must be fixed before seeds 160 and 283–297 are decomposed, or learners will be taught to say
+they speak Yoruba.
+
+**It is not just this course.** The same leak, at the *same seed numbers*, is in six other courses:
+
+| Course | Affected seeds |
+|---|---|
+| cor_for_eng | 283, 285, 286, 297 |
+| fur_for_eng | 283, 285, 286, 297 |
+| lmo_for_eng | 283, 285, 286, 297 |
+| nap_for_eng | 160, 283, 285, 286, 297 |
+| rgn_for_eng | 160, 283, 285, 286, 297 |
+| scn_for_eng | 160, 283, 285, 286, 297 |
+| vec_for_eng | 64, 160, 283, 285, 286, 297 |
+
+33 seeds across 7 courses, all sharing the same seed numbers — so this is one upstream template
+fault, not seven independent mistakes.
 
 ---
 
