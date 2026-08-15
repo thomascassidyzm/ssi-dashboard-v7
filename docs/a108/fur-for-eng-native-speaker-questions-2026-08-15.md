@@ -120,6 +120,22 @@ Same phrase, same meaning, two spellings.
 **Question:** which is correct? (We have changed nothing — this is in the seed text as it stands, and
 neither seed is in the block we built.)
 
+## K2. Three more spelling pairs — errors, or different persons?
+
+An independent scan of all 668 seeds found six word-pairs spelled two ways. Three look like plain
+inconsistency; three may be legitimate grammar:
+
+| Pair | Seeds | Our reading |
+|---|---|---|
+| `fat` / `fât` ("done") | 89, 218, 245, 339, 535 vs 152, 207, 607 | same participle, inconsistent mark |
+| `mal` / `mâl` ("badly") | 112 vs 338, 339, 513 | same adverb, inconsistent mark |
+| `podarès` / `podarês` ("could") | 116 + 8 more vs 668 | ? |
+| `cirìn` / `cirin` | 102, 103 (`o cirìn`) vs 213 (`a cirin`) | **we** vs **they** — different forms, not an error |
+| `scugnìn` / `scugnin` | 109, 210 (`o scugnìn`) vs 450 (`a scugnin`) | **we** vs **they** — different forms, not an error |
+
+**Question:** are the last three genuine person distinctions (so nothing to fix), and are the first
+two simple slips? None of these seeds is in the block we built.
+
 ## L. After *che*, is the verb the same form?
 
 S15 gives **o vuei che tu fevelis furlan cun me doman** and we teach *I want you to speak* as

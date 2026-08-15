@@ -133,12 +133,47 @@ One with the circumflex, one without, identical phrase. **Neither seed is in the
 tonight,** so nothing built tonight depends on it. It is question **K** for a speaker. **Nothing was
 normalised** — that is a human's ruling, per the brief.
 
+**A second, independent pass (#702) agrees and adds two cases I had dismissed.** That worker checked
+sentence context for every algorithmically flagged variant and came out at **6 genuine word-pairs,
+~17 seeds** — a low rate across 668 seeds. Beyond `vioditi`/`viodîti` it found two I had wrongly
+written off as minimal pairs, and it is right: **`fat`/`fât`** ("done", 5 vs 3 seeds — both the past
+participle after *vê*, same syntactic slot) and **`mal`/`mâl`** ("badly", 1 vs 3). It also flags
+`podarès`/`podarês`, `cirìn`/`cirin` and `scugnìn`/`scugnin` without confirming them; on those I
+looked at the subject clitics in context (`o cirìn` vs `a cirin`, `o scugnìn` vs `a scugnin`) and
+read them as **first person plural vs third person plural — different forms, not two spellings**.
+That reading needs a speaker's yes, so it is question **K2**. None of the six is in seeds 1–25.
+It found **0 Italian or Venetian leakage** and **0 seeds in a non-standard variety** — though it
+records an honest gap there: no surface diagnostic separates Carnian/Western/Gorizian from the
+central standard without a native reader.
+
 **Not a divergence, and worth saying because a naive scan reports it as one:** 27 word-pairs differ
 only by a diacritic (`di`/`dî`/`dì`, `la`/`lâ`/`là`, `e`/`è`, `si`/`sì`, `su`/`sù`, `an`/`àn`,
 `lat`/`lât` …). I checked these in context and they are **minimal pairs — different words**
 (*of* / *to say* / *day*; *the* / *to go* / *there*; *milk* / *gone*). Likewise `cirìn`/`cirin` and
 `scugnìn`/`scugnin` are **first person plural vs third person plural**, not two spellings of one
 form. Reporting those as inconsistencies would have been a false alarm.
+
+### A cross-course content leak in the existing translations — needs a decision
+
+**Four seeds carry the word `yoruba` where the Friulian word for "Friulian" belongs.** Found by the
+replacement orthography worker (#702) and **verified first-hand against the database** before being
+written here:
+
+| Seed | English prompt | Friulian as stored |
+|---|---|---|
+| S283 | Which of your friends speak Friulian? | cuâi dai tiei amîs fevelino **yoruba**? |
+| S285 | She speaks Friulian. | e fevele **yoruba** |
+| S286 | People who like speaking Friulian. | int che i plâs fevelâ **yoruba** |
+| S297 | I don't know many people who speak Friulian. | no cognòs tante int che e fevele **yoruba** |
+
+This is not a spelling variant — it is another course's language name left in the Friulian text,
+almost certainly from a batch translation run shared with `yor_for_eng`. **None of the four is in
+seeds 1–25, so nothing built tonight teaches it** and no LEGO or practice phrase contains it.
+
+**Nothing was changed.** These are seed `target_text` values in a course a human owns; the fix is
+one word in each of four rows (`yoruba` → `furlan`) and it is cheap and safe *now* — the four seeds
+have no LEGOs and no audio, so no downstream rows would be orphaned. It gets expensive once someone
+decomposes seed 283. **This is Kai's call to make, not a build-time normalisation.**
 
 ---
 
@@ -227,10 +262,12 @@ Both are flagged rather than hidden, because both may be wrong in a way no self-
 3. **The tier is still not readable from the database.** 668 seed rows exist; no field says whether
    the build target is 300 or 668. Reported, not guessed.
 4. **Two sonnet workers died on an account limit** (`⚙ hit kai-gmail's limit`) before writing
-   anything — the orthography audit and the corpus scout. **The orthography section above is
-   therefore my own first-hand measurement of all 668 seeds, not a restatement of a worker.** Two
-   replacements (#702 orthography, #703 ZUT-fork map for seeds 26+) were still running when this
-   report was written; their findings are not in it.
+   anything — the orthography audit and the corpus scout. The orthography section above began as my
+   own first-hand measurement of all 668 seeds; the replacement **#702** has since landed and its
+   findings are folded in above (and independently verified where they changed a claim — the
+   `yoruba` leak was re-queried against the database before being written down). **#703**, the
+   ZUT-fork map and verb-linker table for seeds 26+, was still running at the time of writing; its
+   findings are NOT in this report.
 5. **The pair-contract is written but not live.** The running course-builder executes from a
    different checkout (`ssi-dashboard-v7-clean-prod`, on `main`), outside this session's workspace,
    so the build ran against the generic `_default_eng` fallback. Practical effect: the gate was
