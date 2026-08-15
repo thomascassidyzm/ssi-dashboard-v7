@@ -172,7 +172,7 @@ Not a failure list — the judgements I refused to fake. Each is written so some
 
 5. **`bí mo ṣe máa sọ` embeds a 1sg subject** (`mo`), so it literally means "how **I** speak". I have taught it as "how to speak". Will that break the moment a learner needs it with another subject?
 
-6. **The language name is left in English.** Every seed says `èdè Welsh`, not a Yoruba name for Welsh. Is that acceptable to a Yoruba speaker, or should it be rendered in Yoruba? This is 668 seeds' worth of consistency, so it is cheap to change now and expensive later.
+6. **The language name is left in English**, as `èdè Welsh` rather than a Yoruba name for Welsh. Is that acceptable, or should it be rendered in Yoruba? **This affects only 14 of the 668 seeds** — the language is named far less often than the opening seeds suggest — and all 14 use `èdè Welsh` consistently, never bare `Welsh`. So it is a cheap change if a speaker wants one. *(Related, same question and same small cost: 4 seeds — 161, 175, 179, 218 — write the day as `ọjọ́ Sunday`, an English day-name inside the Yoruba, where the Welsh has `dydd Sul`.)*
 
 7. **Seeds 68 and 194 are an exact duplicate.** Both have the Yoruba `Kí ni o ń wá?` (byte-identical, verified) but two different Welsh translations — *"Be wyt ti'n chwilio amdano?"* and *"Be ti'n chwilio amdano fo?"*. One Yoruba prompt cannot have two Welsh answers. Either the Welsh should be consolidated to one form, or the two Yoruba prompts should be made genuinely different. This will hard-block the build when it reaches seed 194.
 
@@ -196,7 +196,38 @@ Not a failure list — the judgements I refused to fake. Each is written so some
 
 ---
 
-## 8. Dialect: North, settled with numbers
+## 8. The ZUT forks ahead — where Yoruba merges what Welsh splits
+
+The published version of this report listed this as an open gap: I knew of **one** fork (`sọ` = speak/say) and could not claim to know all of them. The worker I sent to find the rest died on an account limit, so I ran the scan myself. **It is no longer a gap.**
+
+**Method.** Distributional alignment over all 668 seed pairs, with the shared English corpus as a readability pivot. For each Yoruba token, find the Welsh tokens it is strongly tied to (Dice ≥ 0.28, lift ≥ 3), then collapse Welsh mutation variants so `deud`/`ddeud` is not miscounted as a fork. All Yoruba grouping is diacritic-exact. **Sanity check: `sọ` comes out at rank 1** — if it had not, the method would be wrong and I would be reporting that instead.
+
+**73 Yoruba tokens have two or more distinct strong Welsh correspondents.** Most are artefacts of co-occurrence (`ràn … lọ́wọ́` = *helpu* is one Yoruba idiom spanning two tokens, not a fork). These are the ones I judge real, ranked by blast radius:
+
+| Yoruba | Seeds | Welsh splits into | The distinction Welsh makes |
+|---|---|---|---|
+| **sọ** | **97** | siarad / deud | speak vs say — **the confirmed one** |
+| **ṣe** | 94 | sut / gwneud | the `bí…ṣe` "how" frame vs `ṣe` = do |
+| **kò** | 81 | dydy / doedd | negation is split **by tense** in Welsh, not in Yoruba |
+| **tó** | 52 | cyn / nesa | before vs next |
+| **mọ̀** | 36 | gwybod / nabod | know a **fact** vs know a **person** — the classic Welsh split |
+| **gbogbo** | 34 | i gyd / bob | all (of them) vs every |
+| **rẹ** | 34 | dy…di / chdi | your (possessive) vs you (object) |
+| **bí** | 34 | sut / fel | how vs like/as |
+| **nígbà** | 27 | pan / pryd | when (relative) vs when? (question) |
+| **síi** | 25 | mwy / chydig | more vs a little |
+| **ọ̀rẹ́** | 22 | ffrind / ffrindiau | Yoruba marks plural with `àwọn`, Welsh on the noun |
+| **dáadáa** | 13 | yn dda / yn well | well vs better |
+
+**What this means for the build, concretely.** Each of these will hard-reject at the API the moment two seeds want the same Yoruba chunk to produce different Welsh — the ZUT gate is doing its job. The fix is never to weaken the gate; it is the methodology's *consolidate-or-differentiate* call, made once per fork by a speaker, before the seeds that contain them are built. I made that call for `sọ` at seeds 1–10 (teach `sọ` = *siarad* everywhere; reach "say" only through the whole chunk `sọ nǹkan`), and it is question 1 in §7.
+
+**`kò` and `nígbà` are the two I would look at first**, because they are not vocabulary choices at all — they are places where Welsh grammar forces a distinction Yoruba carries in context. `kò` alone touches 81 seeds. Whoever builds seeds 11–668 should have a ruling on all twelve of these in hand before starting, not discover them one 400-response at a time.
+
+**Limits, stated plainly:** this is co-occurrence, not a real word aligner. It finds candidates for a human to rule on. It will miss forks carried by multi-word chunks rather than single tokens, and the twelve above are my judgement calls out of 73 raw hits — a speaker may promote some I discarded. The scan is committed as `zut-fork-scan.cjs`; re-run it and disagree with me.
+
+---
+
+## 9. Dialect: North, settled with numbers
 
 You asked which the corpus carries. **North Welsh, decisively, and internally consistent.**
 
@@ -217,7 +248,7 @@ My own output follows suit: `dw i isio`, `efo chdi`, `rŵan`, `deud`, `fedra i`,
 
 ---
 
-## 9. Method: where I followed it and where I departed
+## 10. Method: where I followed it and where I departed
 
 Followed: `ralph-methodology.md` (overlapping LEGOs, BUILD vs USE, ZUT, non-greedy introduction, particles as construction-features), the layered-decomposition brief, and the `calibrate` skill's stop-at-golden discipline.
 
@@ -231,18 +262,18 @@ Three deliberate departures, all forced by this pair:
 
 ---
 
-## 10. Explicit gaps
+## 11. Explicit gaps
 
 - **658 of 668 seeds are not decomposed.** 1.5% done. §1 says why I stopped rather than continuing.
 - **`courses.seed_count` is still NULL.** I did not set it. Until it is set to 668, the builder hard-stops at seed 300. Your call (§2).
 - **Nobody on this job speaks either language.** Every judgement in §7 is unverified. The Welsh is anchored to a released North Welsh course and is therefore on firmer ground than the Yoruba, which is anchored to nothing but the corpus itself.
 - **Seeds 68/194 will hard-block the build** when it reaches them (§7 q7). Not fixable without a speaker.
-- **One worker was still running when I wrote this** — a corpus-wide scan for other places where Yoruba merges a distinction Welsh splits (the `sọ` = speak/say problem, generalised). Its report will land in this conversation. Until it does, **I know of one such fork and cannot claim to know all of them.** Expect more.
+- **The fork scan is done and this gap is closed** (§8). The worker I sent for it died on an account limit, so I ran it myself: 12 real ZUT forks across the corpus, `kò` (81 seeds) and `nígbà` (27) being the two that are grammar rather than vocabulary. It is co-occurrence, not a true aligner, so it will miss forks carried by multi-word chunks.
 - I did not modify a single existing seed row, and generated no audio.
 
 ---
 
-## 11. Reproducing any of this
+## 12. Reproducing any of this
 
 Everything is committed under `docs/cym-for-yor-build-2026-08-15/`:
 
@@ -254,3 +285,4 @@ Everything is committed under `docs/cym-for-yor-build-2026-08-15/`:
 | `selfcheck-stored.cjs` | Re-runs the three self-checks against **what is in Postgres** |
 | `roundtrip-check.cjs` | Byte-for-byte diacritic round-trip |
 | `submit.cjs` / `submit-log.json` | Submission and the ten 200 responses |
+| `zut-fork-scan.cjs` | The corpus-wide fork scan behind §8 |
