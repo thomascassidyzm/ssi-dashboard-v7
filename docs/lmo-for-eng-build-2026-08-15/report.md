@@ -95,6 +95,25 @@ Note S143 contains *both* `primma` and `roba` — the drift is within-seed, not 
 
 **This directly affected my build.** Seed 17 gave me `la resposta`, so the LEGO "what the answer is" → `quala che l'è la resposta` is banked with the **minority** spelling (1 of 6 occurrences corpus-wide). If Kai rules that `risposta` is canonical, that LEGO's text and — per Kai's standing rule — the presentation that introduces it must both be corrected in the same pass. **Flagging it now rather than letting it become a silent defect.**
 
+### 4b. Full corpus census (worker #706) — corroborated, and it found more than I did
+
+Worker #706 ran the same census independently across all 668 seeds. Its report: https://watson-1.tail4968cb.ts.net/d/c07ce6f4
+
+It **independently reproduced** my two headline results, including the trap: it also caught that the 11 `mia` hits are the possessive "my" and not the Eastern negator, and independently rejected 63 of 82 raw candidate pairs as false positives (verb-paradigm forms like `parlà`/`parlaa`, accent-distinguished homographs like `la`/`là`) — the same false-positive class my own scan had to filter.
+
+It found **19 genuine spelling inconsistencies where I had confirmed 8**. The ones I missed: `besogn`/`bisogn` (need), `macchina`/`machina`, `d'accord`/`d'acord`, `stracch`/`strach`, `insemma`/`insema`, `grazzie`/`grazie`, `fenestra`/`finestra`, `gioven`/`giovin`, `possibil`/`possibel`, `dopodisnà`/`dopodisnaa`, `gh'avevem`/`gh'avevom`. My scan under-reported because I hand-verified only the highest-frequency groups.
+
+**`besogn`/`bisogn` shows a clean positional split** that the others don't: `bisogn` occupies seeds 44–106, `besogn` seeds 167 onward. That looks like a translation pass that changed convention at a boundary rather than random drift — which matters, because it suggests a *rule* could fix a whole band of seeds rather than requiring 19 individual rulings.
+
+**Blast radius on banked content — the actionable number: 2 of the 19 touch seeds 1–30.**
+
+| Spelling in a banked LEGO | LEGO | corpus verdict |
+|---|---|---|
+| `resposta` (S17) | S17L3 `"what the answer is"` → `quala che l'è la resposta` | **minority** — 1 occurrence vs 5 for `risposta` |
+| `prima` (S25) | S25L2 `"before I have to"` → `prima che gh'abbia de` | evenly split — 6 vs 6 for `primma` |
+
+**22 practice phrases** also carry one of these two strings. So a ruling on either changes 1 LEGO, its presentation, and its phrases together — still small, and cheap to fix now. The remaining 17 inconsistencies all sit at seed 35 or later and cost nothing today, but they will land on whoever decomposes seeds 31–668.
+
 ---
 
 ## 5. Self-check for the estate mis-pairing defect — result with method
@@ -184,7 +203,8 @@ I could have met the 5-USE minimum with padded fragments. The methodology explic
 Each is written so a speaker can answer it without knowing anything about our software. **This list is a deliverable, not a shortfall** — these are the points where I refused to guess.
 
 **Spelling — needs a ruling, affects banked content**
-1. The corpus spells the same words two ways: `prima`/`primma`, `robba`/`roba`, `bonna`/`bona`, `settimanna`/`settimana`, `resposta`/`risposta`, `hinn`/`hin`, `nò`/`no`, `su`/`sù`. Which spelling is correct in each pair? (`resposta` vs `risposta` is urgent — it is already banked in a LEGO.)
+1. The corpus spells the same word two ways in **19** confirmed cases (full list in §4b). Which spelling is correct in each? **Two are urgent because they are already banked in LEGOs: `resposta` vs `risposta` (S17) and `prima` vs `primma` (S25).** The other 17 sit at seed 35+ and can wait, but they will hit whoever builds seeds 31–668.
+   1a. For `besogn`/`bisogn` specifically: seeds 44–106 use `bisogn` and seeds 167+ use `besogn`. Is one of these simply wrong, or are both acceptable Milanese?
 
 **Words I had to split or join, where I may have drawn the line wrong**
 2. `con tì` (with you, S1) but `cont on olter` (with someone else, S5). Is `cont` simply `con` before a vowel, or a different word? I taught them as two separate whole chunks to avoid teaching a contradiction.
@@ -213,7 +233,7 @@ Each is written so a speaker can answer it without knowing anything about our so
 ## 8. EXPLICIT GAPS — reported, not papered over
 
 1. **639 of 668 seeds are still undecomposed.** I built 29. This is 4.3% of the corpus. The course is **not** built; it is calibrated and started.
-2. **Three sub-workers died on an account limit** (`#687` orthography census, `#688` builder mechanics, `#692` blind alignment — all exited 1 with "hit kai-gmail's limit"). I retried two as **`#705`** (blind alignment) and **`#706`** (orthography census); at the time of writing they had not reported back. **Everything in §3 and §4 above I therefore computed myself rather than waiting** — the counts are mine and reproducible from `.a108-lmo/`. I dropped the builder-mechanics retry because I had already answered it empirically by building 29 seeds through the API successfully.
+2. ~~Workers #705 and #706 had not reported.~~ **BOTH CLOSED — #705 in §5b, #706 in §4b.** Originally, three sub-workers died on an account limit (`#687` orthography census, `#688` builder mechanics, `#692` blind alignment — all exited 1 with "hit kai-gmail's limit"). I retried two as **`#705`** (blind alignment) and **`#706`** (orthography census); at the time of writing they had not reported back. **Everything in §3 and §4 above I therefore computed myself rather than waiting** — the counts are mine and reproducible from `.a108-lmo/`. I dropped the builder-mechanics retry because I had already answered it empirically by building 29 seeds through the API successfully.
 3. ~~The independent blind alignment did not land.~~ **CLOSED — it landed as worker #705 and is reported in §5b: 86 LEGOs diffed, 0 swap signatures.** My §5 result no longer rests on self-consistency alone.
 4. **No native-speaker verification exists for any of this.** See the limit stated at the end of §5.
 5. **Seed 26 deferred** (§6).
