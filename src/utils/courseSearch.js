@@ -74,29 +74,42 @@ export function boundedDistance(a, b, max) {
   return prev[b.length] > max ? max + 1 : prev[b.length]
 }
 
+const NO_MATCH = { rank: Infinity, at: 0 }
+
 /**
- * How well one query token matches one course's searchable text.
- * Lower is better; returns Infinity when the token does not match at all.
+ * How well one query token matches one course's searchable text, and WHERE.
+ * `rank` is lower-is-better; `at` is the index of the first word that matched.
+ *
+ * `at` is what makes "welsh" put "Welsh for Yoruba Speakers" above "Arabic for
+ * Welsh Speakers": both are word-start hits, but the earlier the hit sits, the
+ * more the course is about the thing you typed. Code words come first, so a
+ * code hit always beats a name hit too.
  */
-function tokenRank(token, haystack, words) {
-  for (const word of words) {
-    if (word.startsWith(token)) return RANK_WORD_START
+function tokenMatch(token, words) {
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].startsWith(token)) return { rank: RANK_WORD_START, at: i }
   }
-  if (haystack.includes(token)) return RANK_CONTAINS
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].includes(token)) return { rank: RANK_CONTAINS, at: i }
+  }
 
   const budget = editBudget(token)
   if (budget > 0) {
-    for (const word of words) {
+    for (let i = 0; i < words.length; i++) {
+      const word = words[i]
       // Whole-word near-miss ("welch" -> "welsh")…
-      if (boundedDistance(token, word, budget) <= budget) return RANK_FUZZY
+      if (boundedDistance(token, word, budget) <= budget) return { rank: RANK_FUZZY, at: i }
       // …or a near-miss on the word's opening, so a typo in a long word's
       // prefix still finds it ("engilsh" -> "english speakers").
-      if (word.length > token.length) {
-        if (boundedDistance(token, word.slice(0, token.length), budget) <= budget) return RANK_FUZZY
+      if (
+        word.length > token.length &&
+        boundedDistance(token, word.slice(0, token.length), budget) <= budget
+      ) {
+        return { rank: RANK_FUZZY, at: i }
       }
     }
   }
-  return Infinity
+  return NO_MATCH
 }
 
 /** Build the searchable surface for one course, once per query. */
@@ -116,27 +129,39 @@ function indexCourse(course, getName) {
 }
 
 /**
- * Rank one course against an already-normalised query. Returns Infinity for
- * "no match". Exported for tests; components use `searchCourses`.
+ * Score one course against an already-normalised query.
+ * `rank` is the band (Infinity = no match); `offset` orders within a band.
  */
-export function rankCourse(course, normalisedQuery, getName) {
-  if (!normalisedQuery) return RANK_EXACT_CODE
+function scoreCourse(course, normalisedQuery, getName) {
   const { code, haystack, words } = indexCourse(course, getName)
-  if (!haystack) return Infinity
+  if (!haystack) return NO_MATCH_SCORE
 
-  if (code && code === normalisedQuery) return RANK_EXACT_CODE
-  if (code && code.startsWith(normalisedQuery)) return RANK_CODE_PREFIX
+  if (code && code === normalisedQuery) return { rank: RANK_EXACT_CODE, offset: 0 }
+  if (code && code.startsWith(normalisedQuery)) return { rank: RANK_CODE_PREFIX, offset: 0 }
 
   // Conjunctive: EVERY token must match something, so `welsh north` returns
   // the courses satisfying both, not every Welsh course plus everything northern.
   // The course's band is the worst band any of its tokens needed.
   let worst = RANK_WORD_START
+  let offset = 0
   for (const token of normalisedQuery.split(' ')) {
-    const r = tokenRank(token, haystack, words)
-    if (r === Infinity) return Infinity
-    if (r > worst) worst = r
+    const m = tokenMatch(token, words)
+    if (m.rank === Infinity) return NO_MATCH_SCORE
+    if (m.rank > worst) worst = m.rank
+    offset += m.at
   }
-  return worst
+  return { rank: worst, offset }
+}
+
+const NO_MATCH_SCORE = { rank: Infinity, offset: 0 }
+
+/**
+ * Rank one course against an already-normalised query. Returns Infinity for
+ * "no match". Exported for tests; components use `searchCourses`.
+ */
+export function rankCourse(course, normalisedQuery, getName) {
+  if (!normalisedQuery) return RANK_EXACT_CODE
+  return scoreCourse(course, normalisedQuery, getName).rank
 }
 
 /**
@@ -155,14 +180,15 @@ export function searchCourses(query, courses, options = {}) {
   const getName = options.getName
   const scored = []
   for (let i = 0; i < list.length; i++) {
-    const rank = rankCourse(list[i], q, getName)
-    if (rank !== Infinity) scored.push({ course: list[i], rank, index: i })
+    const { rank, offset } = scoreCourse(list[i], q, getName)
+    if (rank !== Infinity) scored.push({ course: list[i], rank, offset, index: i })
   }
 
-  // Deterministic within a band: shorter code first, then alphabetical, then
-  // original order — so the list never jitters between renders.
+  // Deterministic within a band: earliest match first, then shorter code, then
+  // alphabetical, then original order — so the list never jitters between renders.
   scored.sort((a, b) => {
     if (a.rank !== b.rank) return a.rank - b.rank
+    if (a.offset !== b.offset) return a.offset - b.offset
     const ac = String((a.course && a.course.code) || '')
     const bc = String((b.course && b.course.code) || '')
     if (ac.length !== bc.length) return ac.length - bc.length

@@ -196,6 +196,24 @@ describe('ranking bands', () => {
     expect(result.slice(0, 2)).toEqual(['spa_for_eng', 'spa_mx_for_eng'])
   })
 
+  it('within a band, the earliest match wins — the language you typed leads', () => {
+    // Both are word-start hits on "welsh"; the course ABOUT Welsh must come
+    // first, not the one that merely teaches something to Welsh speakers.
+    const list = [
+      { code: 'ara_for_cym', name: 'Arabic for Welsh Speakers' },
+      { code: 'cym_for_yor', name: 'Welsh for Yoruba Speakers' },
+    ]
+    expect(codes(searchCourses('welsh', list))).toEqual(['cym_for_yor', 'ara_for_cym'])
+  })
+
+  it('a hit in the code outranks a hit of the same band in the name', () => {
+    const list = [
+      { code: 'deu_for_eng', name: 'German for English Speakers' },
+      { code: 'eng_for_deu', name: 'English for German Speakers' },
+    ]
+    expect(codes(searchCourses('eng', list))[0]).toBe('eng_for_deu')
+  })
+
   it('sorts deterministically within a band: shorter code, then alphabetical', () => {
     const list = [
       { code: 'zzz_for_eng', name: 'Zzz for English Speakers' },
