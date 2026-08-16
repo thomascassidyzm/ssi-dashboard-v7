@@ -50,6 +50,10 @@
         <h3>What you've already recorded</h3>
         <p class="listen-note">These play the clip stored on the server. Tap <strong>Compare</strong> to hear your original
           take next to the processed one learners hear.</p>
+        <p v-if="wantedAgainCount" class="listen-note">
+          {{ wantedAgainCount === alreadyRecorded.length ? 'All of these are' : `${wantedAgainCount} of these are` }}
+          queued for a fresh take. Nothing has been deleted — the old take stays until the new one lands.
+        </p>
         <ul>
           <li v-for="l in alreadyRecorded" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
             <div class="listen-row">
@@ -284,7 +288,9 @@ function storedUrlFor(lineId) {
   if (queue.saved.has(lineId)) return recordistClipUrl(props.voiceId, lineId)
   if (sessionIds.value.includes(lineId)) return null              // this session's take is still in flight
   const line = lines.value.find(l => l.id === lineId)
-  return line?.recorded ? recordistClipUrl(props.voiceId, lineId) : null  // a take from a previous session
+  // clipUrl, not `recorded`: a line queued for a re-record still HAS a take,
+  // and hearing it is the whole reason it is being re-recorded.
+  return line?.clipUrl ? recordistClipUrl(props.voiceId, lineId) : null  // a take from a previous session
 }
 function isPending(lineId) {
   return !queue.saved.has(lineId) && !queue.failed.has(lineId) && sessionIds.value.includes(lineId)
@@ -305,7 +311,13 @@ const failedNote = computed(() => {
   if (!lastLine.value) return null
   return queue.failed.get(lastLine.value.id) || null
 })
-const alreadyRecorded = computed(() => lines.value.filter(l => l.recorded))
+// Every line this voice has a STORED take for — which is not the same set as
+// the lines counted done. When a whole set is commissioned again (T-20 ALL:
+// Aran's 170 Welsh lines, 71 of them with an existing take), every line reads
+// as outstanding, and keying this off `recorded` emptied the section and took
+// Compare with it — exactly when he most needs to hear what he already gave us.
+const alreadyRecorded = computed(() => lines.value.filter(l => l.clipUrl))
+const wantedAgainCount = computed(() => alreadyRecorded.value.reduce((n, l) => n + (l.rerecordWanted ? 1 : 0), 0))
 const sessionLines = computed(() =>
   sessionIds.value.map(id => lines.value.find(l => l.id === id)).filter(Boolean)
 )
