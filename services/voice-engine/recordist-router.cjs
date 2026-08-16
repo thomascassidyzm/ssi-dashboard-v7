@@ -86,7 +86,14 @@ function captureResponse() {
   return { res, captured }
 }
 
-module.exports = function createRecordistRouter({ getDb, logger = console, requireAdmin, handleRecordingUpload }) {
+module.exports = function createRecordistRouter({
+  getDb,
+  logger = console,
+  requireAdmin,
+  handleRecordingUpload,
+  // Injectable only so the route's variant handling is testable without S3.
+  s3 = require('../s3-production-service.cjs'),
+}) {
   const router = express.Router()
 
   const db = () => {
@@ -357,8 +364,22 @@ module.exports = function createRecordistRouter({ getDb, logger = console, requi
   })
 
   // ── 3. the stored bytes ────────────────────────────────────────────────────
+  // `?variant=raw` serves the UNTOUCHED original instead of the mastered clip,
+  // so a recordist can hear what the processing chain did to their take before
+  // deciding to re-read anything (T-20: 107 Welsh clips lost their heads and
+  // nobody could hear it, because there was nothing to compare against).
+  // Default stays `processed` — every existing caller is untouched.
   router.get('/voice/:voiceId/line/:lineId/clip', async (req, res) => {
     try {
+      const variant = req.query.variant === undefined || req.query.variant === ''
+        ? 'processed'
+        : String(req.query.variant)
+      if (variant !== 'processed' && variant !== 'raw') {
+        return res.status(400).json({
+          error: `variant must be 'processed' or 'raw' (got '${variant}')`,
+          reason: 'bad_variant',
+        })
+      }
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
 
@@ -392,11 +413,30 @@ module.exports = function createRecordistRouter({ getDb, logger = console, requi
           .limit(1)
         row = data && data[0] ? data[0] : null
       }
-      if (!row) return res.status(404).json({ error: 'No stored take for this line yet' })
+      if (!row) {
+        return res.status(404).json({ error: 'No stored take for this line yet', reason: 'no_take' })
+      }
 
-      const s3 = require('../s3-production-service.cjs')
+      if (variant === 'raw') {
+        // One HEAD, paid only because a human asked to compare. The raw key
+        // lives in the mastered object's own metadata — there is no column.
+        const { url, rawKey, notFound } = await s3.getRawSignedUrl(row.s3_key, 3600)
+        if (!rawKey) {
+          return res.status(404).json({
+            error: notFound
+              ? 'The processed clip for this take is missing from storage, so its original cannot be found.'
+              : 'No original was kept for this take — it was recorded before 2026-08-14, when raw originals started being retained.',
+            reason: notFound ? 'mastered_missing' : 'no_raw_retained',
+            audioId: row.id,
+            variant: 'raw',
+          })
+        }
+        if (req.query.json === '1') return res.json({ audioId: row.id, s3Key: rawKey, url, variant: 'raw' })
+        return res.redirect(302, url)
+      }
+
       const url = await s3.getAudioSignedUrl(row.id, 3600, { s3Key: row.s3_key })
-      if (req.query.json === '1') return res.json({ audioId: row.id, s3Key: row.s3_key, url })
+      if (req.query.json === '1') return res.json({ audioId: row.id, s3Key: row.s3_key, url, variant: 'processed' })
       res.redirect(302, url)
     } catch (err) {
       logger.error(`[Recordist] clip: ${err.message}`)

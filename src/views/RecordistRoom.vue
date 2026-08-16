@@ -48,16 +48,27 @@
            deciding to re-read: the contract already hands us their clips. -->
       <div v-if="includeRecorded && alreadyRecorded.length" class="listen-back">
         <h3>What you've already recorded</h3>
-        <p class="listen-note">These play the clip stored on the server.</p>
+        <p class="listen-note">These play the clip stored on the server. Tap <strong>Compare</strong> to hear your original
+          take next to the processed one learners hear.</p>
         <ul>
-          <li v-for="l in alreadyRecorded" :key="l.id" :class="{ playing: playingId === l.id }">
-            <span class="listen-text">{{ l.text }}</span>
-            <StoredTakeButton
-              :stored-url="storedUrlFor(l.id)"
-              :allow-local="false"
-              :is-playing="playingId === l.id"
-              @toggle="togglePlay(l.id)"
-            />
+          <li v-for="l in alreadyRecorded" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
+            <div class="listen-row">
+              <span class="listen-text">{{ l.text }}</span>
+              <div class="listen-actions">
+                <StoredTakeButton
+                  :stored-url="storedUrlFor(l.id)"
+                  :allow-local="false"
+                  :is-playing="playingId === l.id"
+                  @toggle="togglePlay(l.id)"
+                />
+                <button class="cmp-btn" :class="{ open: comparingId === l.id }" type="button" @click="toggleCompare(l.id)">
+                  {{ comparingId === l.id ? 'Hide' : 'Compare' }}
+                </button>
+              </div>
+            </div>
+            <!-- Mounted only on demand: the raw side costs an S3 HEAD per line,
+                 and Catrin's queue is 276 lines long. -->
+            <RawVsProcessed v-if="comparingId === l.id" :voice-id="voiceId" :line-id="l.id" />
           </li>
         </ul>
         <p v-if="playbackError" class="note error">{{ playbackError }}</p>
@@ -177,6 +188,7 @@ import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useTapRecorder } from '@/composables/useTapRecorder'
 import { useRecordistQueue } from '@/composables/useRecordistQueue'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
+import RawVsProcessed from '@/components/production/autocue/RawVsProcessed.vue'
 import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStoredClip'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
@@ -278,6 +290,16 @@ function isPending(lineId) {
   return !queue.saved.has(lineId) && !queue.failed.has(lineId) && sessionIds.value.includes(lineId)
 }
 function hasFailed(lineId) { return queue.failed.has(lineId) }
+
+// ── Compare: raw original vs processed ──────────────────────────────────────
+// One open at a time. The panel owns its own audio element, so opening a second
+// one while the first still played would put two takes of two lines on top of
+// each other — and the whole point is hearing one thing clearly.
+const comparingId = ref(null)
+function toggleCompare(lineId) {
+  stopPlayback()
+  comparingId.value = comparingId.value === lineId ? null : lineId
+}
 
 const failedNote = computed(() => {
   if (!lastLine.value) return null
@@ -619,6 +641,18 @@ kbd {
   padding: 0.55rem 0.7rem; border-radius: 8px; background: rgba(255, 255, 255, 0.04);
 }
 .listen-back li.playing { background: rgba(6, 255, 165, 0.14); }
+/* A row that can open a compare panel underneath it stacks instead of sitting
+   on one line — on a phone the two play buttons and the text never fit across. */
+.listen-back li.stacked { display: block; }
+.listen-row { display: flex; align-items: center; gap: 0.75rem; justify-content: space-between; flex-wrap: wrap; }
+.listen-actions { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+.cmp-btn {
+  font-family: 'Josefin Sans', sans-serif; font-size: 0.72rem; font-weight: 600;
+  color: var(--color-paper, #f7f7f2); background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 6px;
+  padding: 0.35rem 0.7rem; cursor: pointer; min-height: 36px;
+}
+.cmp-btn.open { border-color: var(--color-tungsten, #ffa630); color: var(--color-tungsten, #ffa630); }
 .listen-text { font-size: 0.9rem; min-width: 0; }
 .redo-list li {
   display: flex; flex-direction: column; gap: 0.3rem; align-items: flex-start;
