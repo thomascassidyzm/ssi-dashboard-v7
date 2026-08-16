@@ -82,6 +82,10 @@ signals agree. All nine ara_sy changes therefore go feminine → masculine.
 recast the Syrian Learner voice, not to rewrite the text — and these nine rows should then be
 reverted rather than kept. As cast today, masculine is what rule 2 requires.
 
+> **Ruled 2026-08-16 (plate A-120): recast female.** The Syrian Learner is now cast on
+> `ar-SY-AmanyNeural` with `gender: "f"`, and these nine rows have been reverted to their
+> feminine `before` values — see `docs/pods/a120-ara-sy-learner-recast-2026-08-16.md`.
+
 Beyond the Learner, gender fixes also landed on Sarah (Hindi, Hebrew), Customer 1/2 and the
 Receptionist (Hindi), and Customer (Egyptian) — all female voices carrying masculine agreement.
 
