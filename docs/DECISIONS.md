@@ -1107,3 +1107,43 @@ its non-happening was the blocker. The verifier cost 8 subscription CLI calls fo
 **Search width:** visible-options
 **Decided by:** Tom — ruling given 2026-08-16 on A-109, verbatim in
 `docs/pods/text-approval-policy-2026-08-16.md`.
+## 2026-08-16 — Voice pools carry a locale, and the Spanish pool says Manuel
+
+`app_config.pod_voice_pools` entries may now carry an optional `locale`, which `resolveCast` copies
+onto the cast voice; the `spa` pool now leads with xAI Manuel `yis75yfp` @ `es-ES` (male) and Azure
+Elvira @ `es-ES` (female), the cast Tom approved by ear on 2026-08-14. Before this, the approved
+cast lived only in `listening_pods.speakers` and any re-sync of `spa_for_eng` from its markdown
+would have recast Manuel back to Azure Alvaro, moving the fingerprint and self-invalidating Tom's
+own approval. Named in `docs/pods/spa-t17-cast-approval-2026-08-14.md` and again in the 2026-08-16
+A-109 re-check; measured here as 55 target seats that would have moved, now 0.
+
+**Better:** the pool and the approved reality agree, so the stomp is structurally impossible rather
+than merely unlikely; a malformed locale throws instead of being silently dropped. **Simpler:** the
+field the fingerprint already digests and phase8 already honours now exists in the one place casting
+reads from — `pod-recolour` already assumed pools could carry one, so this removes a discrepancy
+rather than adding a concept. **Cheaper (total):** no migration, no new table, no render; 144 of the
+146 pool entries carry no locale and cast byte-identically to before, verified by casting all 46
+pool keys under old and new code.
+
+**Searched & rejected:**
+- Reorder the pool to put Alvaro/Elvira first without a locale — failed *better*: it records a
+  different cast from the one Tom listened to (plain `es` is a different handle from `es-ES`).
+- Derive the locale in `resolveCast` from the voice id — failed *better*: it works for Azure and is
+  exactly wrong for xAI, where the tag IS the Iberian-vs-Mexican choice and must be the human's.
+- Rewrite the stored cast, or raise `POD_VOICES_PER_GENDER`, to make the known side match too —
+  failed *better*: both fake a passing acceptance test, and Tom's ruling the same day settled that
+  neither is wanted anyway ("in the re-casting to 2 voices for the PODS, there should only be one
+  voice per gender, right? this may well be different from the voices in the main course").
+
+**Amended the same day by that ruling.** One voice per gender per pod IS the design, and the pod
+pool is independent of main-course voices, so the 6 English voices in `spa_for_eng`'s stored cast
+are earlier casting leakage rather than something to preserve. Converging them to Tom's clone (male)
+and Olivia (female) is the intended end state, not a regression. The target side still pins Manuel @
+`es-ES` and Elvira exactly. Applying that convergence will legitimately move the fingerprint
+`29cc217afb5fa101` → `92ab0ed61dbc6741` and so requires a fresh approval — the gate working as
+designed. Not applied here: this pass wrote no cast.
+
+**Search width:** visible-options
+**Decided by:** Tom (the approach was his commission); the insertion order, the throw-on-malformed
+rule and the `pod-recast` explicit-beats-derived precedence are the agent's calls, all reversible —
+the apply log holds a full backup of the pool row.

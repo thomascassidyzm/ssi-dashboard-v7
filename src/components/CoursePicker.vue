@@ -42,10 +42,11 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { useCourses } from '../composables/useCourses'
+import { searchCourses } from '../utils/courseSearch'
 
 const props = defineProps({
   modelValue: { type: String, default: '' },
-  placeholder: { type: String, default: 'Search courses…' },
+  placeholder: { type: String, default: 'Search courses by code or name…' },
 })
 const emit = defineEmits(['update:modelValue'])
 
@@ -58,15 +59,9 @@ const searchQuery = ref('')
 
 const buttonName = computed(() => (props.modelValue ? getCourseName(props.modelValue) : 'Choose course…'))
 
-const filteredCourses = computed(() => {
-  if (!searchQuery.value) return courses.value
-  const q = searchQuery.value.toLowerCase()
-  return courses.value.filter((c) =>
-    c.code.toLowerCase().includes(q) ||
-    (c.name || '').toLowerCase().includes(q) ||
-    getCourseName(c.code).toLowerCase().includes(q)
-  )
-})
+const filteredCourses = computed(() =>
+  searchCourses(searchQuery.value, courses.value, { getName: getCourseName })
+)
 
 function toggleDropdown() {
   dropdownOpen.value = !dropdownOpen.value
