@@ -132,6 +132,83 @@ module.exports = function createRecordistRouter({ getDb, logger = console, requi
     }
   })
 
+  /**
+   * A take for a queue item that is a flagged CLIP rather than a pod line
+   * (narration, encouragement, instruction — see the note at the call site).
+   * Regeneration mode: same upload seam, same raw archive, same refusals.
+   */
+  async function recordRerecordClip({ req, res, recordist, lineId, text, audioBase64, mimeType }) {
+    const { data: clip, error: clipErr } = await db()
+      .from('course_audio')
+      .select('id, course_code, text, role, language, voice_id, s3_key, rerecord_wanted')
+      .eq('id', lineId)
+      .maybeSingle()
+    // An id that is neither a pod line nor a clip is the old 404, unchanged.
+    if (clipErr && clipErr.code !== '22P02') throw new Error(`clip lookup failed: ${clipErr.message}`)
+    if (!clip) return res.status(404).json({ error: `No line ${lineId}` })
+
+    if (!clip.rerecord_wanted) {
+      return res.status(409).json({
+        error: 'That clip is not queued for a re-record. This surface re-records what was asked for, ' +
+          'and nothing else.',
+      })
+    }
+    if (clip.language !== recordist.language) {
+      return res.status(403).json({ error: `Clip ${lineId} is ${clip.language}, not ${recordist.language}` })
+    }
+
+    const clipText = (clip.text || '').trim()
+    if (text && text.trim() && text.trim() !== clipText) {
+      return res.status(409).json({
+        error: 'The text on this line has changed since the queue was loaded — reload before recording it.',
+        expected: clipText,
+        received: text.trim(),
+      })
+    }
+
+    const { res: innerRes, captured } = captureResponse()
+    await handleRecordingUpload({
+      params: { courseCode: clip.course_code },
+      headers: { authorization: req.headers.authorization },
+      socket: req.socket,
+      recordistVoiceId: recordist.voiceId,
+      // uuid + no pod/script metadata IS regeneration mode: the row is looked up
+      // before the S3 PUT, so a bad id cannot orphan bytes.
+      body: {
+        uuid: clip.id,
+        audioData: audioBase64,
+        mimeType,
+        metadata: { text: clipText, role: clip.role, voiceId: recordist.voiceId },
+        provenance: { recorded_by: recordist.email || recordist.displayName, mode: 'recordist' },
+      },
+    }, innerRes)
+    if (captured.status >= 400 || !captured.body || !captured.body.success) {
+      return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
+    }
+
+    // Retire the want by ID, not by clip identity. Narration lives in the shared
+    // untagged 'human' voice bucket, so an identity-based clear would not match
+    // this row and the line would be asked for again forever.
+    let retired = 0
+    try {
+      const { error } = await db().from('course_audio').update({ rerecord_wanted: null }).eq('id', clip.id)
+      if (error) logger.error(`[Recordist] want clear failed for ${clip.id}: ${error.message}`)
+      else retired = 1
+    } catch (wantErr) {
+      logger.error(`[Recordist] want clear threw (take is stored): ${wantErr.message}`)
+    }
+
+    return res.json({
+      ok: true,
+      audioId: clip.id,
+      kind: 'rerecord',
+      role: clip.role,
+      alsoFilled: 0,
+      rawKey: captured.body.rawKey || null,
+      wantsRetired: retired,
+    })
+  }
+
   // ── 2. a take ──────────────────────────────────────────────────────────────
   router.post('/voice/:voiceId/take', async (req, res) => {
     try {
@@ -168,7 +245,25 @@ module.exports = function createRecordistRouter({ getDb, logger = console, requi
         .eq('id', lineId)
         .maybeSingle()
       if (sentErr) throw new Error(`line lookup failed: ${sentErr.message}`)
-      if (!sentence) return res.status(404).json({ error: `No line ${lineId}` })
+
+      // NOT A POD LINE — a flagged re-record of some other content type.
+      //
+      // The queue is content-type-agnostic by design (Tom, 2026-08-14: the
+      // failing LEGO-narration clips "ride the new queue's existing design"),
+      // and it has been emitting those items since. This route was not: it
+      // resolved every lineId against listening_pod_sentences, so all 18 live
+      // Welsh narration re-records answered 404 on tap — 17 of them in Aran's
+      // queue, waiting for his first session.
+      //
+      // A re-record of an existing clip is exactly what the upload seam's
+      // REGENERATION mode is for: the course_audio row keeps its id and its
+      // s3_key moves to a fresh object, so the 18 course_legos rows pointing at
+      // it keep working with no relink, and the old object stays at the old key
+      // for reversibility. Only a clip that ASKED for a new take is accepted —
+      // this is a re-record path, never a way to overwrite arbitrary audio.
+      if (!sentence) {
+        return recordRerecordClip({ req, res, recordist, lineId, text, audioBase64, mimeType })
+      }
 
       const { data: pod, error: podErr } = await db()
         .from('listening_pods').select('id, course_code').eq('id', sentence.pod_id).maybeSingle()
