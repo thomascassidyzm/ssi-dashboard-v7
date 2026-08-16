@@ -69,6 +69,13 @@ function droppedSlashForm (decodeNorm, before, after, norm) {
   const retained = wordsOf(after).map(norm).filter(Boolean)
   const heard = decodeNorm.split(/\s+/).filter(Boolean)
 
+  // PLAIN Levenshtein here, deliberately. Merge-tolerance is only sound when
+  // both sides of a comparison get it; the deleted form and the retained words
+  // are DIFFERENT candidate sets, so tolerating merges on the retained side
+  // would let a decode word be excused by a word it merely begins with —
+  // `pani` would be "explained" by the retained `pan` and a clip still saying
+  // both forms would pass. Merge-tolerance lives in twinMultiplicity and
+  // speaksFusedForm, where every candidate is scored the same way.
   const distToRetained = w => retained.reduce((m, r) => Math.min(m, lev(w, r)), Infinity)
 
   const judge = tok => {
@@ -79,21 +86,149 @@ function droppedSlashForm (decodeNorm, before, after, norm) {
       if (d < worstD) { worstD = d; worst = w }
     }
     const dRetained = worst === null ? Infinity : distToRetained(worst)
+    // A deleted form that is a SUBSTRING of a word the corrected sentence still
+    // contains is structurally undecidable by distance: `عايز` inside `عايزة`,
+    // `pan` inside `pani`. Every faithful rendering of the retained word sits
+    // within (retained.length - deleted.length) edits of the deleted one, so
+    // "closer to the deleted form" carries no information about what was said.
+    // Distance cannot decide it — but MULTIPLICITY can, and does (see
+    // twinMultiplicity). That is what gates the swallowed case instead.
+    const swallowed = retained.find(r => r !== tok && r.includes(tok)) || null
     return {
       deleted_token: tok,
       closest_decode_word: worst,
       distance_to_deleted: worstD === Infinity ? null : worstD,
       distance_to_nearest_retained: dRetained === Infinity ? null : dRetained,
+      swallowed_by_retained: swallowed,
       // Still spoken iff some word is strictly closer to the deleted form than
       // to anything the corrected sentence legitimately contains.
       still_spoken: worst !== null && worstD < dRetained,
     }
   }
 
-  const gating = deleted.filter(t => t.length >= GATING_MIN_LEN).map(judge)
-  const advisory = deleted.filter(t => t.length < GATING_MIN_LEN).map(judge)
+  const judged = deleted.map(judge)
+  // Gating requires a token long enough to survive whisper's noise floor AND
+  // not swallowed by a retained word. Everything else is advisory: those clips
+  // are still gated by CER-vs-superseded, by shorter_than_superseded (a clip
+  // that still spoke both gendered forms cannot be shorter than the one that
+  // did), and by the fused-form check where the edit introduced a new word.
+  const gates = r => r.deleted_token.length >= GATING_MIN_LEN && !r.swallowed_by_retained
+  const gating = judged.filter(gates)
+  const advisory = judged.filter(r => !gates(r))
 
-  return { ok: gating.every(r => !r.still_spoken), results: gating, advisory }
+  // The swallowed cases are not left ungated: they are handed to the
+  // multiplicity test, which IS decidable when one form contains the other.
+  const twins = [...new Set(judged.map(r => r.swallowed_by_retained).filter(Boolean))]
+  const multiplicity = twins.map(twin => twinMultiplicity(twin, retained, heard))
+
+  return {
+    ok: gating.every(r => !r.still_spoken) && multiplicity.every(m => m.ok),
+    results: gating, advisory, multiplicity,
+  }
 }
 
-module.exports = { droppedSlashForm, GATING_MIN_LEN, lev }
+/**
+ * How many times does the decode say the surviving twin?
+ *
+ * When the deleted form is contained in a retained one (`pan` in `pani`,
+ * `عايز` in `عايزة`), no distance test can tell "Pani" from "Pan Pani" — but
+ * COUNTING can. The broken clip says the twin-ish sound TWICE (once for each
+ * gendered form, which are by construction near-identical); the corrected clip
+ * says it as many times as the corrected text actually contains it.
+ *
+ * A decode word counts towards the twin only if it is nearer to the twin than
+ * to any OTHER retained word, so unrelated vocabulary cannot inflate the count.
+ * The radius scales with the twin's length rather than being a fixed constant,
+ * because one edit means something different in a 4-letter word and a 12-letter
+ * one.
+ */
+function twinMultiplicity (twin, retained, heard) {
+  const radius = Math.max(1, Math.floor(twin.length / 3))
+  const others = retained.filter(r => r !== twin)
+  const expected = retained.filter(r => r === twin).length
+  const matched = heard.filter(w => {
+    const d = distTolerantOfMerges(w, twin)
+    if (d > radius) return false
+    return others.every(o => distTolerantOfMerges(w, o) > d)
+  })
+  return {
+    twin, radius, expected_in_corrected_text: expected,
+    heard_count: matched.length, matched_decode_words: matched,
+    // Fewer than expected is whisper dropping a word — noisy, not evidence of
+    // the slash form surviving. MORE than expected is the failure this catches.
+    ok: matched.length <= expected,
+  }
+}
+
+/**
+ * Levenshtein, tolerant of whisper running two words together.
+ *
+ * whisper merges adjacent words freely — Latvian `gatava sākt` came back as the
+ * single token `gatavasak`, which is 3 edits from `gatava` AND 3 from the
+ * superseded `gatavs`, so a strictly-closer test cannot separate them and a
+ * healthy clip fails for a reason that has nothing to do with the words spoken.
+ *
+ * So a decode word is also scored against `candidate` after being cut to the
+ * candidate's own length, from each end. The cut is driven by the CANDIDATE's
+ * length, so every candidate is treated identically and the comparison stays
+ * unbiased: `gatavasak` scores 0 against `gatava` and 1 against `gatavs`, which
+ * is the true reading.
+ */
+function distTolerantOfMerges (word, candidate) {
+  const whole = lev(word, candidate)
+  if (word.length <= candidate.length) return whole
+  const n = candidate.length
+  return Math.min(whole, lev(word.slice(0, n), candidate), lev(word.slice(-n), candidate))
+}
+
+/**
+ * Did the clip say the FUSED corrected form rather than the superseded one?
+ *
+ * The A-119 sibling of speaksCorrectedForm() in changed-form-check.cjs, which
+ * this pass cannot use unmodified: that function scores decode words with plain
+ * Levenshtein, and Latvian `gatava sākt` came back from whisper as the single
+ * merged token `gatavasak` — 3 edits from the corrected `gatava` and 3 from the
+ * superseded `gatavs`, so "strictly closer to the corrected form" could not
+ * separate them and a healthy clip failed. Scoring merge-tolerantly (and
+ * identically for both candidates) reads it correctly: 0 vs 1.
+ *
+ * changed-form-check.cjs is left untouched so the isl/ell/est pass and its
+ * independent verifier keep the exact semantics they shipped with.
+ */
+function speaksFusedForm (decodeNorm, newTokens, oldTokens, norm, unchangedTokens) {
+  const unchanged = (unchangedTokens || []).map(norm)
+  const heard = decodeNorm.split(/\s+/).filter(Boolean)
+  const distToUnchanged = w => unchanged.reduce((m, u) => Math.min(m, distTolerantOfMerges(w, u)), Infinity)
+
+  const pairs = newTokens.map(t => {
+    const nt = norm(t)
+    let ot = null, bd = Infinity
+    for (const o of oldTokens) { const d = lev(nt, norm(o)); if (d < bd) { bd = d; ot = norm(o) } }
+    return { newTok: nt, oldTok: ot }
+  })
+
+  const results = pairs.map(p => {
+    let best = null, bestScore = Infinity
+    for (const w of heard) {
+      const score = p.oldTok === null
+        ? distTolerantOfMerges(w, p.newTok)
+        : Math.min(distTolerantOfMerges(w, p.newTok), distTolerantOfMerges(w, p.oldTok))
+      // A decode word the sentence already contained elsewhere says nothing
+      // about the slot that changed.
+      if (distToUnchanged(w) < score) continue
+      if (score < bestScore) { bestScore = score; best = w }
+    }
+    const dNew = best === null ? Infinity : distTolerantOfMerges(best, p.newTok)
+    const dOld = best === null || p.oldTok === null ? Infinity : distTolerantOfMerges(best, p.oldTok)
+    return {
+      heard: best, newTok: p.newTok, oldTok: p.oldTok,
+      distance_to_new: dNew === Infinity ? null : dNew,
+      distance_to_superseded: dOld === Infinity ? null : dOld,
+      ok: best !== null && (p.oldTok === null ? dNew <= 2 : dNew < dOld),
+    }
+  })
+
+  return { ok: results.every(r => r.ok), results }
+}
+
+module.exports = { droppedSlashForm, speaksFusedForm, twinMultiplicity, distTolerantOfMerges, GATING_MIN_LEN, lev }

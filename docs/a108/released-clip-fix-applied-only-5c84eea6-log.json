@@ -1,0 +1,157 @@
+{
+  "job": "A-119 released slash-form clips — render the audio to match the corrected text",
+  "date": "2026-08-16",
+  "mode": "apply",
+  "approval": {
+    "by": "tom",
+    "when": "2026-08-16",
+    "verbatim": "A119 - yes go ahead. Regenerate all audio necessary."
+  },
+  "scope_rows": 79,
+  "text_only_rows": [
+    {
+      "id": "spa_for_eng:travel-situations:SC01-S053",
+      "course": "spa_for_eng",
+      "pod": "travel-situations",
+      "target_text": "¿Llevas líquidos?"
+    },
+    {
+      "id": "spa_for_eng:travel-situations:SC01-S057",
+      "course": "spa_for_eng",
+      "pod": "travel-situations",
+      "target_text": "Señor, por aquí, por favor."
+    },
+    {
+      "id": "spa_for_eng:travel-situations:SC01-S059",
+      "course": "spa_for_eng",
+      "pod": "travel-situations",
+      "target_text": "Menudo alivio. ¿Todo bien?"
+    },
+    {
+      "id": "spa_for_eng:travel-situations:SC01-S065",
+      "course": "spa_for_eng",
+      "pod": "travel-situations",
+      "target_text": "Aquí tienes. Hay cola hasta para eso."
+    }
+  ],
+  "already_synced_rows": [
+    {
+      "id": "ara_for_eng:pod-0:SC08-S001",
+      "clip_id": "d3af89ab-73ee-4d2e-8a5b-89fb8b8dbb8f",
+      "course": "ara_for_eng"
+    }
+  ],
+  "clips": [
+    {
+      "clip_id": "5c84eea6-220a-48b7-b61a-5737c868f024",
+      "course": "pol_for_eng",
+      "action": "render",
+      "voice_id": "97fabd54445f",
+      "provider": "xai",
+      "language": "pol",
+      "before": "Dzień dobry. Jak się Pan/Pani ma?",
+      "after": "Dzień dobry. Jak się Pan ma?",
+      "previous_s3_key": "mastered/5B460953-61B7-475D-87DB-6D1257A9E9A9.mp3",
+      "new_s3_key": "mastered/FDFD9440-75C0-4521-90C1-234A645542CF.mp3",
+      "previous_duration_ms": 2688,
+      "new_duration_ms": 2208,
+      "previous_revision": 1,
+      "revision": 2,
+      "chars": 28,
+      "cost_usd": 0.000448,
+      "rows": [
+        {
+          "id": "pol_for_eng:pod-0-unrecorded:SC01-S002",
+          "pod": "pod-0-unrecorded",
+          "scene": 1,
+          "sentence": 2,
+          "speaker": "Sarah"
+        },
+        {
+          "id": "pol_for_eng:pod-0:SC01-S002",
+          "pod": "pod-0",
+          "scene": 1,
+          "sentence": 2,
+          "speaker": "Sarah"
+        }
+      ],
+      "checks": [
+        {
+          "name": "s3_alive",
+          "ok": true,
+          "detail": "HTTP ok, ContentLength 27072"
+        },
+        {
+          "name": "s3_bytes_match",
+          "ok": true,
+          "detail": "27072 vs local 27072"
+        },
+        {
+          "name": "decodable",
+          "ok": true,
+          "detail": "ffprobe 2208ms"
+        },
+        {
+          "name": "duration_agrees",
+          "ok": true,
+          "detail": "ffprobe 2208ms vs mastered 2208ms"
+        },
+        {
+          "name": "not_truncated",
+          "ok": true,
+          "detail": "2208ms vs length-scaled expectation 2281ms (ratio 0.97, old 2688ms)"
+        },
+        {
+          "name": "shorter_than_superseded",
+          "ok": true,
+          "detail": "2208ms vs superseded 2688ms — a clip still speaking both gendered forms cannot be shorter"
+        },
+        {
+          "name": "asr_decoded",
+          "ok": true,
+          "detail": "\"Dzień dobry, jak się pan ma?\""
+        },
+        {
+          "name": "asr_is_speech",
+          "ok": true,
+          "detail": "CER vs corrected text 0.000 (<0.6 = real speech of this content, not silence or the wrong language)"
+        },
+        {
+          "name": "asr_closer_to_corrected",
+          "ok": true,
+          "detail": "CER 0.000 vs corrected < 0.161 vs superseded"
+        },
+        {
+          "name": "asr_slash_form_gone",
+          "ok": true,
+          "detail": "\"pani\": nearest decode word \"pan\" is 1 from it and 0 from the nearest retained word"
+        }
+      ],
+      "asr": {
+        "decode": "Dzień dobry, jak się pan ma?",
+        "cer_vs_new": 0,
+        "cer_vs_old": 0.16129032258064516,
+        "reason": "ok",
+        "deleted_forms": [
+          {
+            "deleted_token": "pani",
+            "closest_decode_word": "pan",
+            "distance_to_deleted": 1,
+            "distance_to_nearest_retained": 0,
+            "still_spoken": false
+          }
+        ],
+        "deleted_forms_advisory": [],
+        "substituted_forms": []
+      },
+      "applied": true
+    }
+  ],
+  "summary": {
+    "rendered": 1,
+    "relinked": 0,
+    "failed": 0,
+    "chars": 28,
+    "cost_usd": 0.0004
+  }
+}

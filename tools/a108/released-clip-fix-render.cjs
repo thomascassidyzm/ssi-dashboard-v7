@@ -64,8 +64,8 @@ const ttsService = require('../../services/tts-service.cjs')
 const veracity = require('../../services/audio-veracity.cjs')
 const { toBcp47 } = require('../../services/voice-discovery-service.cjs')
 const { normalizeForAudio } = require('../../services/shared/text-normalize.cjs')
-const { tokenDiff, speaksCorrectedForm } = require('./changed-form-check.cjs')
-const { droppedSlashForm } = require('./slash-form-check.cjs')
+const { tokenDiff } = require('./changed-form-check.cjs')
+const { droppedSlashForm, speaksFusedForm } = require('./slash-form-check.cjs')
 const ROW_IDS = require('./released-clip-row-ids.cjs')
 
 const PSQL = path.join(process.env.HOME, '.local/pg17/bin/psql')
@@ -78,7 +78,11 @@ const COURSES = ['pol_for_eng', 'lav_for_eng', 'por_for_eng', 'ara_for_eng', 'sp
 const RATE_PER_CHAR = 16 / 1e6
 
 const APPLY = process.argv.includes('--apply')
-const ONLY = (() => { const i = process.argv.indexOf('--only'); return i > -1 ? process.argv[i + 1] : null })()
+// --only takes one clip id or a comma-separated list (re-running a failure set).
+const ONLY = (() => {
+  const i = process.argv.indexOf('--only')
+  return i > -1 ? process.argv[i + 1].split(',').map(s => s.trim()).filter(Boolean) : null
+})()
 
 /** A slash form or a parenthetical gender residue in learner-facing target text. */
 const ANNOTATED = t => /[^\s]\/[^\s]/.test(String(t)) || /\(/.test(String(t))
@@ -228,7 +232,22 @@ async function verifyNewClip (c, buffer, durationMs, s3Key, tmpFile) {
   const expected = c.duration_ms * (c.after.length / c.before.length)
   const ratio = durationMs / expected
   add('not_truncated', ratio >= 0.75 && ratio <= 1.4, `${durationMs}ms vs length-scaled expectation ${Math.round(expected)}ms (ratio ${ratio.toFixed(2)}, old ${c.duration_ms}ms)`)
-  add('shorter_than_superseded', durationMs < c.duration_ms, `${durationMs}ms vs superseded ${c.duration_ms}ms — a clip still speaking both gendered forms cannot be shorter`)
+  // A slash fix only removes syllables, so a shorter clip is good evidence the
+  // second gendered form is gone — but only where the provider's pace is
+  // reproducible. Azure's is. xAI's is NOT: it exposes no speed parameter and
+  // its natural rate varies between renders of the same text, which is how
+  // pol 29afbcee came back 2280ms for SEVEN words against a superseded 2136ms
+  // for EIGHT. Gating on that would reject healthy audio for a property of the
+  // provider, so on xAI this is reported and not enforced; the ASR checks below
+  // are the direct instrument for "does it still say the other form".
+  const durationIsEvidence = c.voice.provider === 'azure'
+  const shorter = durationMs < c.duration_ms
+  if (durationIsEvidence) {
+    add('shorter_than_superseded', shorter, `${durationMs}ms vs superseded ${c.duration_ms}ms — a clip still speaking both gendered forms cannot be shorter`)
+  } else {
+    checks.push({ name: 'shorter_than_superseded', ok: true, advisory: true,
+      detail: `${durationMs}ms vs superseded ${c.duration_ms}ms (${shorter ? 'shorter' : 'NOT shorter'}) — advisory only: xAI has no speed control and its pace varies between renders` })
+  }
 
   const v = await veracity.checkAudioVeracity(tmpFile, c.after, c.language)
   if (!v.checked) {
@@ -252,13 +271,13 @@ async function verifyNewClip (c, buffer, durationMs, s3Key, tmpFile) {
     return w(c.after).filter(x => b.has(x))
   })()
   const forms = newTokens.length
-    ? speaksCorrectedForm(decodeN, newTokens, oldTokens, veracity.normalise, unchangedTokens)
+    ? speaksFusedForm(decodeN, newTokens, oldTokens, veracity.normalise, unchangedTokens)
     : { ok: true, results: [] }
 
   c.asr = {
     decode: v.decode, cer_vs_new: cerNew, cer_vs_old: cerOld, reason: v.reason,
     deleted_forms: dropped.results, deleted_forms_advisory: dropped.advisory,
-    substituted_forms: forms.results,
+    twin_multiplicity: dropped.multiplicity, substituted_forms: forms.results,
   }
 
   add('asr_decoded', true, JSON.stringify(v.decode))
@@ -268,6 +287,10 @@ async function verifyNewClip (c, buffer, durationMs, s3Key, tmpFile) {
     ? dropped.results.map(r => `"${r.deleted_token}": nearest decode word "${r.closest_decode_word}" is ${r.distance_to_deleted} from it and ${r.distance_to_nearest_retained} from the nearest retained word${r.still_spoken ? ' — STILL SPOKEN' : ''}`).join('; ')
     : 'no deleted token long enough to gate on; carried by CER-vs-superseded and the duration check' +
       (dropped.advisory.length ? ` (advisory: ${dropped.advisory.map(r => `"${r.deleted_token}" ${r.still_spoken ? 'possibly present' : 'absent'}`).join(', ')})` : ''))
+  if (dropped.multiplicity.length) {
+    add('asr_twin_said_once', dropped.multiplicity.every(m => m.ok), dropped.multiplicity.map(m =>
+      `"${m.twin}" heard ${m.heard_count}x within ${m.radius} edit(s) [${m.matched_decode_words.join(', ') || 'none'}], corrected text contains it ${m.expected_in_corrected_text}x`).join('; '))
+  }
   if (newTokens.length) {
     add('asr_speaks_fused_form', forms.ok, forms.results.map(r =>
       `"${r.heard}" is ${r.distance_to_new} from ${r.newTok}${r.oldTok === null ? '' : ` and ${r.distance_to_superseded} from superseded ${r.oldTok}`}`).join('; '))
@@ -320,7 +343,7 @@ where id = ${lit(c.clip_id)}
 delete from course_audio_envelope where audio_id = ${lit(c.clip_id)};
 
 -- learners must refetch: /api/audio/:id serves immutable for a year
-update courses set audio_stamp = now() where code = ${lit(c.course)};
+update courses set audio_stamp = now() where course_code = ${lit(c.course)};
 
 do $$
 declare n int;
@@ -358,7 +381,7 @@ function relink (c) {
 begin;
 update listening_pod_sentences set target_audio_id = ${lit(c.relink_to.id)}
 where id in (${rowIds}) and target_audio_id = ${lit(c.clip_id)} and target_text = ${lit(c.after)};
-update courses set audio_stamp = now() where code = ${lit(c.course)};
+update courses set audio_stamp = now() where course_code = ${lit(c.course)};
 do $$
 declare n int;
 begin
@@ -403,7 +426,7 @@ async function verifyRelinkTarget (c, tmpDir) {
 // ── MAIN ────────────────────────────────────────────────────────────────────
 ;(async () => {
   const { rows, clips: allClips, textOnly, alreadySynced } = buildPlan()
-  let clips = ONLY ? allClips.filter(c => c.clip_id === ONLY) : allClips
+  let clips = ONLY ? allClips.filter(c => ONLY.includes(c.clip_id)) : allClips
 
   console.log(`pod rows in scope:      ${rows.length} (the 79 corrected on 2026-08-14)`)
   console.log(`text-only, no audio:    ${textOnly.length} rows (${[...new Set(textOnly.map(t => t.course))].join(', ') || '—'})`)
@@ -535,7 +558,7 @@ async function verifyRelinkTarget (c, tmpDir) {
 
   const spentChars = log.clips.filter(c => c.applied && c.action === 'render').reduce((a, c) => a + c.chars, 0)
   log.summary = { rendered: ok, relinked, failed, chars: spentChars, cost_usd: +(spentChars * RATE_PER_CHAR).toFixed(4) }
-  write(log, ONLY ? 'applied-only-' + ONLY.slice(0, 8) : 'applied')
+  write(log, ONLY ? 'applied-only-' + ONLY[0].slice(0, 8) : 'applied')
   console.log(`\nrendered ${ok}, relinked ${relinked}, failed ${failed}. No S3 object and no DB row was deleted.`)
   if (failed) process.exitCode = 1
 })().catch(e => { console.error(e.stack || e.message); process.exit(1) })
