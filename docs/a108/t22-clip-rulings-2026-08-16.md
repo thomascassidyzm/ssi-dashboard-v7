@@ -79,8 +79,33 @@ reaches every polite Dutch line rendered on it rather than one bartender order.
 xAI Dutch voices in the cast (Noor, Femke, Thijs) behaved the same way on the same sentence, so this
 is a property of the model, not of one voice.
 
-An audit (#783) is decoding all 35. After today I will report its decodes as a **map of where to
-listen**, never as a verdict — and I will say which clips a human still has to hear.
+The audit (#783) has landed: all 35 fetched from S3 and decoded, zero gaps. Read as a **map of where
+to listen**, not as a verdict — that caveat is mine, not the auditor's, and it is the whole reason
+I am not acting on these numbers:
+
+- **21 of 35** decode as the informal `alsjeblieft`
+- **3** decode as the polite `alstublieft`
+- **11** decode too mangled to call — and the mangling is itself informative: `als te blijft`,
+  `als tubleefd`, `Als toeblieft`, `oudstabliefd`. Those are the shape of the *polite* word, not the
+  informal one, and six of the eleven are one voice (Sal)
+
+Two things in it survive the caveat, because they do not depend on trusting a single decode:
+
+- **It is not one voice.** Every xAI Dutch voice shows it at some rate — Noor, the T-22 voice, is
+  not uniquely bad.
+- **Azure is not a clean control.** Both `MaartenNeural` clips decode informal too — which, given
+  that Azure reads text faithfully, is more evidence against the *instrument* than against Azure.
+
+Also checked and clean: the polite pronoun **u/uw** is preserved in all four clips carrying it —
+which cuts against my own whole-sentence-rewrite hypothesis and leaves the `Wilt u` probe on the
+listen page as the thing that decides it.
+
+Full table with every verbatim decode: <https://watson-1.tail4968cb.ts.net/d/8d442001>
+
+**What this needs next is ears, not more decoding** — a handful of those 21, chosen across voices,
+listened to once. I have not queued that: after A/B/C/NONE on the one clip, I will know whether the
+right shape is a listening pack or a provider decision, and I would rather bring you one of those
+than both.
 
 ## Method notes worth keeping
 
