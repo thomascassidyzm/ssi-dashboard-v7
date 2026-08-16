@@ -185,10 +185,29 @@ describe its own audio — a separate one-row content fix, not a recording job.
 
 ---
 
+## Final verdict — Tom's ruling, 2026-08-16
+
+**No TTS in the Welsh courses. All 18 are human recordings — the adversarial TTS-vs-human
+verification is moot.** Tom read this trace and settled it; the two verification workers dispatched
+to check TTS-vs-human independently (#789, #790) were disregarded as unnecessary once the ruling
+landed.
+
+Restored to the recording queues, exactly per the per-line table above:
+- **The 17 cym_n lines: restored** — `held` unnested back to active, unchanged male/Aran casting.
+  Landed as a **later, named narration session**, not Aran's first — they sit at the tail of his
+  queue (indices 153-169 of 170), after all 153 pod lines, by the existing queue-ordering design
+  (`course_audio` wants sort after pod lines; no new code needed). Verified live: Aran **153 → 170**.
+- **cym_s `S0301L02`: retired, not restored** — the audio is correct and undamaged (clean 0.000 tail);
+  re-recording it teaches nothing. Its `f` gender tag was the routing bug that put it in Catrin's
+  queue, not a cast choice; retiring the want removes it from both queues. Catrin stays at 275 — no
+  false-positive re-record land there. The text↔audio mismatch on this row is a **separate,
+  logged follow-up** (one-row content fix), not acted on here.
+
+Full restore detail: `welsh-narration-queue-hold-2026-08-16.md` (this directory), "RESTORED" section.
+
 ## Landing line
 
-Commits are on **`fix/welsh-narration-queue-hold-2026-08-16`**, pushed to origin, **not merged** to
-`main`, **not deployed** — nothing here needs deploying, the hold is a database state change and it is
-already live and verified on popty.app. The DB write itself (18 rows, wants parked) is applied to
-production and reversible with the single statement in
-`welsh-narration-queue-hold-2026-08-16.md`.
+Commits are on **`fix/welsh-narration-queue-hold-2026-08-16`**, pushed to origin. The queue-hold write
+(18 rows parked) and the restore write (17 restored, 1 retired) are both database state changes,
+already live and verified on popty.app — nothing here needs deploying. Not yet merged to `main` as of
+the hold commit; land status for the restore commits is in the branch's own history at push time.

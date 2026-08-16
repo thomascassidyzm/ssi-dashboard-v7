@@ -50,6 +50,48 @@ Full before-state, per row: `welsh-narration-wants-held-before-2026-08-16.json` 
 Aran cannot now meet an unrecognised line in his first session. The pod work — the whole of it — is
 untouched and still queued.
 
+## RESTORED — 2026-08-16, following Tom's ruling on the provenance trace
+
+Tom settled the open question (`welsh-narration-provenance-2026-08-16.md`, published as
+[doc 9f4f21f8](https://watson-1.tail4968cb.ts.net/d/9f4f21f8)): **no TTS in the Welsh courses — all 18
+are human recordings**, genuinely his own teaching voice. Ruling applied exactly to the doc's own
+per-line recommendation table, not a blanket restore:
+
+- **The 17 cym_n lines (measured genuinely end-clipped, tail 0.30–0.53 of p90): restored** — `held`
+  key unnested back to the top level, unchanged (`voice_gender: 'm'`, Aran). One statement, in a
+  transaction:
+  ```sql
+  update course_audio set rerecord_wanted = rerecord_wanted->'held'
+   where role='presentation' and course_code='cym_n_for_eng' and rerecord_wanted ? 'held';
+  -- UPDATE 17
+  ```
+- **`cym_s_for_eng` `S0301L02` (clean tail, 0.000 — not clipped; the `f` was a routing bug, not a cast
+  choice): retired, not restored.** Re-recording it fixes nothing — the audio is correct ("ynoch chi").
+  What it needs is a text fix (its stored text is the wrong lead-in), a separate one-row content edit,
+  out of scope here.
+  ```sql
+  update course_audio set rerecord_wanted = null
+   where role='presentation' and course_code='cym_s_for_eng' and lego_id='S0301L02'
+     and rerecord_wanted ? 'held';
+  -- UPDATE 1
+  ```
+
+**Landed as a later, named narration session, never at the front of Aran's pods queue.** The 17
+restored wants live in `course_audio.rerecord_wanted`, the second source `buildLanguageLines` reads
+(`services/voice-engine/recordist-queue.cjs`) — pod lines are collected first, `course_audio` wants are
+appended after with `order: Number.MAX_SAFE_INTEGER`, so they land at the tail of the array by
+construction, no new grouping code needed.
+
+Verified live, on the served queue:
+
+| Recordist | Before restore | After restore | Narration lines |
+|---|---|---|---|
+| Aran `human_aran_cym_n` | 153 total / 153 left | **170 / 170** | 0 → **17**, indices 153-169 (all after the 153 pod lines) |
+| Catrin `human_catrinlliar_cym_n` | 275 total / 275 left | **275 / 275** (unchanged) | 0 → **0** |
+
+Restore log (18 rows, each with the exact prior/new `rerecord_wanted` state):
+`welsh-narration-wants-restored-2026-08-16.json` (this directory).
+
 ## The 18
 
 `course_audio` rows, `role='presentation'`, `voice_id='human'`, `origin='human'`:
