@@ -1073,3 +1073,37 @@ adopt (`scripts/engforx-decompose/audit-side.cjs`, 99.2–100% target-recomposin
 **Search width:** visible-options
 **Decided by:** Tom — ruling given 2026-08-12; also relayed to job #389 (component-mapping editor)
 as "target-order-preserving display, segmentation-of-known-text as the edit model".
+
+## 2026-08-16 — Verifier agent approves drafted pod text for audio
+
+**Move:** implemented Tom's A-109 ruling — a human proofread of every line is rejected as policy;
+instead an agent independent of the translator judges each machine-written draft for
+"reasonableness", clean lines are marked approved to generate audio, and only the flagged tail
+reaches a human. One predicate (`services/pod-text-approval.cjs`) refuses the target track of any
+unapproved draft in `/generate-pods`, `/plan-pods` and `pod-bulk-migrate`'s in-process mode.
+
+**Better:** 4,852 drafted lines across 42 pods could be rendered by any unscoped bulk call; the
+gate makes that structurally impossible rather than a thing someone must remember, and blocked
+lines are reported as a number (`blocked_unapproved_target`) instead of silence.
+**Simpler:** one boolean condition in one pure, tested module, mirroring the existing voice gate
+next to it; approval is a single timestamp, so there is no second flag to disagree with it.
+**Cheaper (total):** the alternative — humans reading 4,852 lines — was never going to happen, and
+its non-happening was the blocker. The verifier cost 8 subscription CLI calls for 128 lines
+(~5 min), no metered API, no TTS. The gate adds one map lookup per queue item.
+
+**Searched & rejected:**
+- Human proofread of every line — Tom's own word: "lunacy". Fails Cheaper on the only cost that
+  matters here, attention, and it had already stalled the estate for ten days.
+- A boolean `approved_for_audio` column alongside a timestamp — fails Simpler: two sources of
+  truth that can disagree, for no gain over `approved_at IS NOT NULL`.
+- Gate only `/generate-pods` — fails Better: the estimate would promise clips the render refuses,
+  and `pod-bulk-migrate`'s DEFAULT in-process mode rebuilds the queue itself, so it would have
+  remained a full bypass on the bulk driver.
+- Gate the known (English) track too — fails Better: `known_text` was never drafted, so it would
+  block the English side of 4,852 lines to no purpose.
+- Trust a zero-flag verifier result — rejected as unproven; calibrated against 8 control lines
+  carrying 5 planted defects (5/5 caught, 0 false positives) before the result was believed.
+
+**Search width:** visible-options
+**Decided by:** Tom — ruling given 2026-08-16 on A-109, verbatim in
+`docs/pods/text-approval-policy-2026-08-16.md`.

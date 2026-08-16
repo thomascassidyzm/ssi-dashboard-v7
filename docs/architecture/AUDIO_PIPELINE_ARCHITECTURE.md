@@ -429,6 +429,9 @@ code change — the `cym_*` prefix rule covers it.
 
 ## 6b. Make-Before-Break — the ordering rule for any voice swap or clip replacement
 
+> **Rendering pod audio? Unread drafted target text cannot be rendered.** The policy, the gate
+> and the verifier pass are in [`../pods/text-approval-policy-2026-08-16.md`](../pods/text-approval-policy-2026-08-16.md).
+
 > **Repairing damaged audio? The canonical process is
 > [`AUDIO_REPAIR_PROCESS.md`](./AUDIO_REPAIR_PROCESS.md).** Detection (the tail-integrity
 > predictor and its 30 ms threshold), naked-TTS generation and levelling, verification,
