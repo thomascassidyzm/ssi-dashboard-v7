@@ -36,21 +36,51 @@ were singled out by one thing only: the 2026-08-14 tail-integrity sweep flagged 
 
 ### 2. Did the old app ever serve audio — TTS or human?
 
-**Yes, and human, on all 18.** Four independent measurements agree:
+**Yes, and human, on all 18 — high confidence, after an adversarial pass that tried to refute it.**
 
-- **The bytes exist and are old.** 49–199 KB each, S3 `LastModified` 2025-05-15, i.e. the old app's own
-  master files, not anything rendered here.
-- **The audio says what the row says.** Transcribed all 18: e.g. S0141L01 → *"The Welsh for 'are they'
-  is ydyn nhw. Ydyn nhw."*, S0159L01 → *"…is fel athro for a man, or fel athrawes for a woman."*
-- **The wording drifts from the stored text in the way only human speech does** — the audio says *"The
-  Welsh **word** to give her"* where the row reads *"The Welsh **for** to give her"*, and *"which you'll
-  usually hear as **just** y fenga"* where the row omits the "just". Text transcribed from speech, not
-  speech rendered from text. No TTS pipeline produces that drift.
-- **One human male voice throughout.** Median F0 107–158 Hz across all 18 (Aran's known pod takes
-  measure 137–151 Hz on the same instrument).
+**First, the finding that reframes the question: the documentary answer does not exist and could not
+exist.** The old app's `samples` records carry exactly four fields — `id`, `role`, `duration`,
+`cadence` (`ssi-learning-app/docs/welsh-json-to-v12-mapping.md:134-170`), confirmed by the importer,
+which reads only `presAudio.id` and `presAudio.duration`. No voice, no speaker, no synthesis flag.
+Recovering the JSON from the Mac would not settle it. The answer has to come from the bytes.
+(The `cy-GB-Standard-A` strings in that mapping doc are the doc author's placeholder config, marked
+`# Configure` — not old-app data. Read as evidence of Google TTS they would be badly misleading.)
 
-**No TTS was ever involved, and TTS is not an option now**: Welsh is `human_only` in
-`language_recording_policy`, and this is the presenter's own teaching voice.
+**The evidence that carries it — a discriminator with zero overlap on this estate's own controls.**
+Speech-band high-frequency content, measured on loud speech frames only:
+
+| cohort | n | spectral cutoff | 12–16 kHz vs 0.1–4 kHz |
+|---|---|---|---|
+| **The 18** | 18 | **14.1 – 16.8 kHz** | **−51.0 to −37.0 dB** |
+| Known-human controls (Welsh legacy, Aran, English instruction) | 24 | ≥ 13.4 kHz (22 of 24) | ≥ −49.4 dB |
+| Known-TTS controls (clone, xAI, Azure) | 28 | **≤ 11.3 kHz, every one** | **≤ −59.8 dB, every one** |
+
+The gap between the worst of the 18 and the best TTS control is **8.8 dB, and the zone between is
+empty**. Azure's source is 16 kHz (an 8 kHz wall), xAI's 9 kHz, the clone's 24 kHz (11 kHz wall) —
+none can put fricative energy at 14–16 kHz. All 18 have it.
+
+The confounds were closed: it is not the encoder (the 18 are the *lower*-bitrate files at 72–82 kbps
+VBR against the TTS controls' 96 kbps CBR — a codec cannot manufacture high frequencies), not the
+mastering stage (TTS and human clips from the same course through the same mastering sit 36 dB
+apart), and not hiss (measured relative to the speech band, on speech).
+
+**The error direction is the safe one.** Two known-human control clips (browser-recorder captures)
+came out narrowband and would be misread as TTS — so this test's false positives run human→TTS,
+never TTS→human. A wideband result cannot be produced by a narrowband synthesiser.
+
+**Corroborating, weaker:** the bytes are old-app masters (S3 `LastModified` 2025-05-15); the 17 cym_n
+clips share their encode profile with the legacy human Welsh corpus, not with the modern TTS
+mastering profile; the course welcome clip, explicitly `voice_id='Aran'`, measures 136.8 Hz — dead
+centre of the narration band — on that same profile; and your own recorded policy
+(commit `1ce305cd`, 2026-07-28) states *"Every Welsh clip in the estate is human-recorded — no Welsh
+TTS"*, with Welsh named as the deliberate human exception to TTS-by-default.
+
+**What this cannot rule out**, stated honestly: a hypothetical 48 kHz-native wideband TTS from a
+vendor with no trace anywhere in `course_audio`, used before 2026-02. Remote, but not excluded.
+
+**And TTS was never a lawful option anyway**: `language_recording_policy` for `cym` is
+`human_only = true` — *"No TTS Welsh voice we accept. Aran (m) and Catrin (f) record it."* The
+recommendation could not have flipped to re-render whatever the old app did.
 
 ### 3. Reachable, or dead weight?
 
@@ -101,6 +131,13 @@ house style.
 
 It also carries `voice_gender: 'f'`, which is what put it in **Catrin's** queue — on a clip whose voice
 measures 155 Hz, male. The routing was wrong as well as the flag.
+
+**And its two repeats are the same samples.** Cross-correlating the clip's two renditions of "ynoch
+chi" gives **0.999** — sample-identical, a DAW copy-paste rather than a second utterance. Every other
+clip's repeat scores 0.05–0.40, i.e. genuinely distinct renditions. Together with its container
+(44.1 kHz **stereo** 192 kbps, where all 17 others are 48 kHz mono VBR) and its ad-libbed script, this
+clip was hand-assembled by an editor from a human take. The voice is human; only the repeat is a copy.
+Treat it as its own item, not as one of the seventeen.
 
 ---
 
@@ -180,6 +217,14 @@ describe its own audio — a separate one-row content fix, not a recording job.
   by design — the Feb event could never have been logged there.
 - **Whisper transcription of Welsh is unreliable** and was used only to establish that speech is present
   and matches, never to judge quality. The clipping verdict is an energy measurement, not a transcript.
+- **Correction to an earlier draft of this doc.** It cited two places where the audio's wording drifts
+  from the stored text as proof the bytes could not be TTS rendered from that text. One of them — *"The
+  Welsh **word** to give her"* against the row's *"The Welsh **for** to give her"* — is a whisper
+  artefact: the medium model hears "word", small and tiny both hear "fort", i.e. the row's own "for
+  t‑". A second cited instance turned out to be no drift at all (the row already contains the "just").
+  Only S0153L01 survives, on 3 of 3 model sizes. That bullet has been replaced above by the
+  high-frequency measurement, which does not depend on transcription at all. The verdict is unchanged;
+  the evidence behind it is different and stronger.
 - The entitled-learner cycles response was not driven end to end (no learner JWT minted). Reachability
   rests on the code path plus the unauthenticated proxy serving 200.
 
@@ -187,10 +232,11 @@ describe its own audio — a separate one-row content fix, not a recording job.
 
 ## Final verdict — Tom's ruling, 2026-08-16
 
-**No TTS in the Welsh courses. All 18 are human recordings — the adversarial TTS-vs-human
-verification is moot.** Tom read this trace and settled it; the two verification workers dispatched
-to check TTS-vs-human independently (#789, #790) were disregarded as unnecessary once the ruling
-landed.
+**No TTS in the Welsh courses. All 18 are human recordings.** Tom ruled it, and both verification
+workers subsequently reported and **independently confirmed it** — #789 documentary (the old app's
+schema cannot record provenance; Welsh is `human_only` by policy) and #790 adversarial acoustic
+(tasked with refuting "human", could not; produced the zero-overlap high-frequency discriminator in
+§2 above). The ruling stands on measurement, not only on assertion.
 
 Restored to the recording queues, exactly per the per-line table above:
 - **The 17 cym_n lines: restored** — `held` unnested back to active, unchanged male/Aran casting.
