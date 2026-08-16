@@ -55,13 +55,26 @@ const lit = s => "'" + String(s).replace(/'/g, "''") + "'"
   }
 
   // ── 1. course-wide: no desync anywhere in the five courses ────────────────
-  const desync = q(`
+  //
+  // A clip's text legitimately carries a ' … ' PAUSE CUE that the pod row does
+  // not: it is a TTS instruction, not content, and the render path puts it in
+  // on purpose. A first version of this check compared the raw strings and
+  // reported 260 "desyncs" — 258 of which were this convention and nothing
+  // else (lav 35, spa 223, zero residue once the cue is normalised away). That
+  // is a check lying about its own subject, so the cue is normalised out here
+  // and the check asks the question the job was actually set: do the WORDS
+  // agree?
+  const stripCue = t => String(t).replace(/\s*…\s*/g, ' ').replace(/\s+/g, ' ').trim()
+  const allPairs = q(`
     select p.course_code, s.id, a.text as audio_text, s.target_text
     from listening_pods p join listening_pod_sentences s on s.pod_id = p.id
     join course_audio a on a.id = s.target_audio_id
     where p.course_code in (${COURSES.map(lit).join(',')}) and a.text is distinct from s.target_text`)
+  const desync = allPairs.filter(r => stripCue(r.audio_text) !== stripCue(r.target_text))
   note(desync.length === 0, 'no_text_audio_desync_in_the_five_courses',
-    desync.length ? `${desync.length} row(s), e.g. ${desync[0].id}` : 'zero rows disagree')
+    desync.length
+      ? `${desync.length} row(s), e.g. ${desync[0].id}`
+      : `zero rows disagree on words (${allPairs.length} differ by the ' … ' pause cue alone, which is by design)`)
 
   // ── 2. course-wide: no annotation left in pod target text or its clips ────
   const annotatedRows = q(`
