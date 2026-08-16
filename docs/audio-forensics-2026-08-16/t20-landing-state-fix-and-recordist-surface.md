@@ -9,6 +9,11 @@ both are in the production checkout, and the process serving them was restarted 
 
 Nothing needs merging. Nothing needs deploying. There is no unblocking step.
 
+**And the test course you asked for was built** — `zzz_test_for_eng`, hidden, live, with 11 lines
+still waiting for you at **`https://popty.app/r/human_tom_zzz`**. Your own take from 2026-08-14 is
+still there, and measuring it against its retained raw original proves the fixed filter produced it.
+Details below; the order is test course → you record → Aran and Catrin record.
+
 ---
 
 ## The two artefacts
@@ -82,15 +87,67 @@ decision is "one conversation, one session", the number to put in front of her i
 
 ---
 
+---
+
+## The test course exists, and it already proved the fix on a real take
+
+Tom asked earlier for a sandbox course to exercise human recording end to end without touching a
+real course, and thought it might have been built. **It was**, on 2026-08-14 (`d7246e2d`,
+`fe8e7e37`), and it is live right now.
+
+| | |
+|---|---|
+| Course | `zzz_test_for_eng` — status `draft`, visibility **`hidden`**. A second fixture, `zzz_test2_for_eng`, exists so one take can be seen filling two courses. |
+| Language | `zzz` ("Test Language"), a real row in `language_recording_policy`, `human_only` |
+| **Tom's link** | **`https://popty.app/r/human_tom_zzz`** — 12 lines, 1 recorded, **11 left** |
+| Female test queue | `https://popty.app/r/human_test_f_zzz` — 13 lines, 0 recorded |
+
+It is real in every way that matters: same tables, same upload path, same S3 storage, same playback.
+Not a demo mode — which is the point, because a demo mode could not tell him whether the real
+pipeline works.
+
+### What his one existing take proves
+
+On 2026-08-14 20:33 Tom recorded "A coffee, please." through this surface. Three things follow from
+that single row, and together they are better evidence than any synthetic probe:
+
+1. **Raw retention is live.** The untouched original is on S3 at
+   `raw/B35340E2-5FFA-4B31-9A2A-54D04E6D1265.webm` (13,843 bytes). Nothing before 2026-08-14 has one.
+2. **One take fills many courses.** The same object, `mastered/B35340E2-…mp3`, is linked from both
+   `zzz_test_for_eng` and `zzz_test2_for_eng` — one S3 object, two courses, no re-render.
+3. **The take came out of the FIXED filter, measured.** Re-running the retained raw through each
+   filter and comparing against the clip actually being served:
+
+| | Duration |
+|---|---|
+| Raw original | 1.408 s |
+| **Served mastered clip** | **1.400045 s** |
+| Raw re-run through the **new** filter (`start_silence=0.05`) | **1.400042 s** — matches to 3 µs |
+| Raw re-run through the **old** filter (`start_duration=0.1`) | 1.199938 s — **200 ms shorter** |
+
+The served clip is the new filter's output, not the old one's. That is the served-bytes proof, on a
+real human take, with no junk written into the estate.
+
+---
+
+## The sequence, in order
+
+1. **Test course ready — it already is.** Nothing to build, nothing to merge, nothing to deploy.
+2. **Tom records into it**: `https://popty.app/r/human_tom_zzz`, 11 lines left. Tap the link, tap
+   Start. No login, no course picker. Hidden draft course, so nothing reaches a learner.
+3. **Then Aran and Catrin record for real**: `https://popty.app/r/human_aran_cym_n` (99 left) and
+   `https://popty.app/r/human_catrinlliar_cym_n` (276 left).
+
+---
+
 ## Explicit gaps
 
-- **I did not push a synthetic take through the live upload path.** Doing so writes a junk clip into
-  the estate, and the fences on this job forbid that. The trim fix is therefore verified as
-  *correct source in the checkout the running unit serves, with a restart after the commit* — strong,
-  but not the served-bytes proof the 2026-08-14 diagnosis used for the defect itself.
 - **Aran's own device or browser** remains the only unexplored place a pre-processing original of his
   twelve clips could survive. That is a question for a human to ask him, not something code can
   answer. Not chased.
+- The head-loss measurement above is a **duration** comparison, which is what distinguishes the two
+  filters unambiguously (200 ms apart). It is not a listening judgement, and no one is being asked
+  to make one.
 
 ---
 
