@@ -273,11 +273,43 @@ function normaliseOverrides(overrides) {
       const v = t[g];
       if (!v || typeof v !== 'object' || !v.voice_id) continue;
       const picked = { provider: v.provider || 'xai', voice_id: v.voice_id, name: v.name || v.voice_id };
-      // locale is carried only when the picker supplied one: pool entries have
-      // none, so a no-override cast stays byte-identical to today's.
+      // locale is carried only when the picker supplied one. Pool entries may
+      // now carry one too (see poolVoice below), and an override still wins
+      // outright: it replaces the pool pick whole, locale included.
       if (v.locale) picked.locale = v.locale;
       out[track][g] = picked;
     }
+  }
+  return out;
+}
+
+// A voice pool entry, rendered as a cast voice.
+//
+// Pool entries MAY carry an optional `locale` (Tom, 2026-08-16). They did not
+// before: the Spanish recast of 2026-08-14 put xAI Manuel on the male target
+// seats at an explicit es-ES — the Iberian-vs-Mexican steering tag Tom picked
+// by ear — and the pool could not express that, so the approved cast lived only
+// in listening_pods.speakers and any re-sync from markdown would have stomped
+// it back to Azure Alvaro, self-invalidating his own approval.
+// (docs/pods/spa-t17-cast-approval-2026-08-14.md.)
+//
+// Backwards compatibility is the whole safety argument: an entry with no
+// `locale` produces exactly the object this code has always produced, so the
+// ~145 locale-less entries on the estate cast byte-identically to today.
+//
+// A malformed locale THROWS rather than being dropped: a silently dropped
+// locale is precisely the bug this change exists to fix. Same BCP-47 shape the
+// PodLab casting route validates against (api/pod-cast-voices.js#readVoice).
+const BCP47_RE = /^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$/;
+
+function poolVoice(entry, where) {
+  const out = { provider: entry.provider, voice_id: entry.voice_id, name: entry.name };
+  const raw = entry.locale == null ? '' : String(entry.locale).trim();
+  if (raw) {
+    if (!BCP47_RE.test(raw)) {
+      throw new Error(`${where}: pool entry "${entry.voice_id}" has locale "${raw}", which is not a BCP-47 tag`);
+    }
+    out.locale = raw;
   }
   return out;
 }
@@ -362,8 +394,8 @@ function resolveCast(rawSpeakers, targetLang, knownLang, pools, overrides = null
       variants,
       // Cloned, never aliased: every speaker gets its own voice object, so the
       // stored cast can be edited per speaker later without one edit moving all.
-      target: ov.target[pickGender] ? { ...ov.target[pickGender] } : { provider: t.provider, voice_id: t.voice_id, name: t.name },
-      known:  ov.known[pickGender]  ? { ...ov.known[pickGender] }  : { provider: k.provider, voice_id: k.voice_id, name: k.name },
+      target: ov.target[pickGender] ? { ...ov.target[pickGender] } : poolVoice(t, `pod_voice_pools["${tk}"]["${pickGender}"]`),
+      known:  ov.known[pickGender]  ? { ...ov.known[pickGender] }  : poolVoice(k, `pod_voice_pools["${kk}"]["${pickGender}"]`),
     };
   }
 
@@ -375,8 +407,8 @@ function resolveCast(rawSpeakers, targetLang, knownLang, pools, overrides = null
   if (defT && defK) {
     assignments._default = {
       gender: 'n',
-      target: defT === ov.target.m ? { ...defT } : { provider: defT.provider, voice_id: defT.voice_id, name: defT.name },
-      known:  defK === ov.known.m  ? { ...defK } : { provider: defK.provider, voice_id: defK.voice_id, name: defK.name },
+      target: defT === ov.target.m ? { ...defT } : poolVoice(defT, `pod_voice_pools["${tk}"]["m"][0]`),
+      known:  defK === ov.known.m  ? { ...defK } : poolVoice(defK, `pod_voice_pools["${kk}"]["m"][0]`),
     };
   }
 

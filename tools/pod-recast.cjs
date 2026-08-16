@@ -105,8 +105,12 @@ function remapExactPool(assignments, pools, targetLang, knownLang) {
 // Locale
 // ---------------------------------------------------------------------------
 // phase8's buildPodTTSConfig prefers the `locale` stored on the voice and only
-// falls back to toBcp47(language) when it's absent. app_config.pod_voice_pools
-// carries no locale field, so we derive it from live data only — never invent:
+// falls back to toBcp47(language) when it's absent. A pool entry MAY now carry
+// an explicit `locale` (Tom, 2026-08-16), and when it does that field is the
+// human's own choice — the Iberian-vs-Mexican steering tag for xAI Spanish —
+// so it wins outright and nothing below runs. Derivation is the fallback for
+// the ~145 locale-less entries, and it derives from live data only — never
+// invents:
 //   1. Azure voice ids encode it ('en-GB-SoniaNeural' → 'en-GB').
 //   2. Otherwise toBcp47(lang), but only if it is a real 2-letter primary
 //      subtag (toBcp47('ara') returns 'ara', which is not a BCP-47 tag).
@@ -143,6 +147,17 @@ function stampLocales(assignments, pools, targetLang, knownLang) {
     for (const [canon, a] of Object.entries(assignments)) {
       const entry = a[track]
       if (!entry) continue
+      // Explicit beats derived: resolveCast already copied a pool entry's own
+      // locale onto the voice, and that field is a human's choice, not a guess.
+      // Warn when derivation would have said something else, so a pool typo
+      // still surfaces instead of being silently honoured.
+      if (entry.locale) {
+        const derived = resolveLocale(entry, lang, pool)
+        if (derived && derived !== entry.locale) {
+          warn.push(`${canon}/${track}: keeping explicit locale ${entry.locale} for ${entry.voice_id} (derivation said ${derived})`)
+        }
+        continue
+      }
       const locale = resolveLocale(entry, lang, pool)
       if (locale) entry.locale = locale
       else warn.push(`${canon}/${track}: no locale resolvable for ${entry.voice_id} (${lang})`)
