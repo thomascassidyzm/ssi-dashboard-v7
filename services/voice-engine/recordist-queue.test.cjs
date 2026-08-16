@@ -193,3 +193,57 @@ test('a re-record sharing a pod line’s text is ONE recording, not two', async 
     'it collapses onto the pod line of the same clip identity')
   assert.equal(aran.lines.find((l) => l.text === 'Bore da.').alsoFills, 2)
 })
+
+// ── rule 6: a want makes a recorded line outstanding again ───────────────────
+//
+// Until 2026-08-16 this queue knew only "a clip exists", so the 90 re-record
+// wants written for T-20 were invisible on the surface the recordists actually
+// use: Aran's link showed 71 lines done when every one of them was queued for a
+// re-record. These pin both carriers of a want and the make-before-break
+// property that the old take stays playable while the line is outstanding.
+
+test('a pod line flagged rerecord_wanted is outstanding even though a take exists', async () => {
+  const f = fixture({ audio: [{ language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'bore da' }] })
+  const clean = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(clean.lines.find((l) => l.text === 'Bore da.').recorded, true, 'baseline: a take alone is done')
+
+  const wanted = fixture({ audio: [{ language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'bore da' }] })
+  wanted.listening_pod_sentences[0].rerecord_wanted = { target: 'human_aran_cym_n' }
+  const q = await buildQueue(stubDb(wanted), await resolveRecordist(stubDb(wanted), 'human_aran_cym_n'), { includeRecorded: true })
+  const line = q.lines.find((l) => l.text === 'Bore da.')
+  assert.equal(line.recorded, false, 'the want outranks the take')
+  assert.equal(line.rerecordWanted, true, 'and the surface is told WHY it is outstanding')
+  assert.ok(line.clipUrl, 'MAKE BEFORE BREAK: the old take is still linked and still playable')
+  assert.equal(q.remaining, q.total, 'nothing on this voice counts as done')
+})
+
+test('a want on ANY course’s copy of a collapsed line wants the one recording', async () => {
+  // The collapse is by clip identity, so a want written against cym_s must not
+  // be dropped when cym_n's copy is the representative the recordist sees.
+  const f = fixture({ audio: [{ language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'bore da' }] })
+  f.listening_pod_sentences.find((s) => s.id === 's4').rerecord_wanted = { target: 'human_aran_cym_n' }
+  const q = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(q.lines.find((l) => l.text === 'Bore da.').recorded, false)
+})
+
+test('a want on the KNOWN track never reaches the target queue', async () => {
+  // The known side of a human_only course is English and is somebody else's
+  // queue entirely; reading it here would put lines in the wrong person's list.
+  const f = fixture({ audio: [{ language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'bore da' }] })
+  f.listening_pod_sentences[0].rerecord_wanted = { known: 'human_aran_cym_n' }
+  const q = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(q.lines.find((l) => l.text === 'Bore da.').recorded, true)
+})
+
+test('a CLIP flagged rerecord_wanted re-opens the pod line of the same identity', async () => {
+  // This is the path that carries "re-record everything you already recorded":
+  // the flag goes on the clip, and the live pod line of that text re-opens.
+  const f = fixture({ audio: [{ language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'bore da' }] })
+  f.course_audio.push({ id: 'ca9', course_code: 'cym_n_for_eng', role: 'target1', language: 'cym',
+    voice_id: 'human_aran_cym_n', text: 'Bore da.', rerecord_wanted: { reason: 'trim-chain damage', voice_gender: 'm' } })
+  const q = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  const line = q.lines.find((l) => l.text === 'Bore da.')
+  assert.equal(line.recorded, false)
+  assert.equal(line.rerecordReason, 'trim-chain damage', 'the reason rides along to the recordist')
+  assert.equal(q.lines.filter((l) => l.kind === 'rerecord').length, 0, 'still ONE line, not two')
+})

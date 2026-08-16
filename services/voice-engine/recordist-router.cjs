@@ -36,6 +36,7 @@ const {
   loadPolicies,
   languageName,
   propagateTakeToDuplicates,
+  clearRerecordWants,
 } = require('./recordist-queue.cjs')
 const { canonicalLanguage, canonicalVoiceId, ClipIdentityError } = require('../shared/clip-identity.cjs')
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
@@ -236,12 +237,23 @@ module.exports = function createRecordistRouter({ getDb, logger = console, requi
         logger.error(`[Recordist] propagation failed (take is stored and linked): ${propErr.message}`)
       }
 
+      // The line was queued BECAUSE a re-record was wanted; that want is now
+      // satisfied. Retired last, after the take is stored, linked and
+      // propagated — and never allowed to fail the take.
+      let retired = { clips: 0, sentences: 0 }
+      try {
+        retired = await clearRerecordWants({ db: db(), recordist, text: lineText, sentenceId: sentence.id, logger })
+      } catch (wantErr) {
+        logger.error(`[Recordist] want retirement failed (take is stored and linked): ${wantErr.message}`)
+      }
+
       res.json({
         ok: true,
         audioId,
         clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${sentence.id}/clip`,
         alsoFilled: propagation.linked.length,
         rawKey: captured.body.rawKey || null,
+        wantsRetired: retired.clips + retired.sentences,
       })
     } catch (err) {
       logger.error(`[Recordist] take: ${err.message}`)
