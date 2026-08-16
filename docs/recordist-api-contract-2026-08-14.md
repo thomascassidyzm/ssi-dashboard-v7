@@ -95,7 +95,47 @@ what every existing recorder client on the estate sends.
 ## 3. `GET /api/recording/voice/:voiceId/line/:lineId/clip`
 
 302 to a signed URL for what is **actually stored** — never a local blob.
-`?json=1` returns `{audioId, s3Key, url}` instead of redirecting.
+`?json=1` returns `{audioId, s3Key, url, variant}` instead of redirecting.
+
+### `?variant=raw` — the untouched original (added 2026-08-16, T-20)
+
+`variant` is `processed` by default, so no existing caller changes. `raw` serves
+the recordist's **untouched** take instead of the mastered clip, which is what
+makes an A/B comparison possible at all: the T-20 clips were butchered by the
+processing chain and nobody could hear it, because there was nothing to hear it
+against.
+
+There is **no `raw_key` column anywhere.** The pointer lives in the mastered
+object's own S3 user metadata (`rawKey` at write time, handed back lowercased as
+`rawkey`), so finding it costs a `HeadObject`. That HEAD is paid **lazily**, when
+a human taps Compare — never per line on a queue load, because Catrin's queue is
+276 lines and 276 HEADs would make the page unusable. `hasRaw` is deliberately
+NOT in the queue payload for that reason.
+
+```json
+{"audioId":"9dc8a8cb-…","s3Key":"raw/B35340E2-5FFA-4B31-9A2A-54D04E6D1265.webm",
+ "url":"https://…","variant":"raw"}
+```
+
+Every take made **before 2026-08-14** (commit `0d76bd5c`) has no original — that
+includes all of Aran's existing Welsh clips. That is a permanent absence, and it
+answers a machine-readable 404 so the UI can say so in words rather than show a
+dead player:
+
+```json
+{"error":"No original was kept for this take — it was recorded before 2026-08-14, when raw originals started being retained.",
+ "reason":"no_raw_retained","audioId":"09ba841f-…","variant":"raw"}
+```
+
+`reason` distinguishes the three failures a caller must not conflate:
+`no_raw_retained` (no original kept), `no_take` (nothing recorded for this line
+yet — also now returned by the processed variant), `mastered_missing` (the
+processed object itself is gone from storage). An unknown variant is a `400`
+with `reason: "bad_variant"` rather than a silent fallback to processed.
+
+Live verification, 2026-08-16, on `human_tom_zzz` / `zzz_test_for_eng:pod-0-s2`:
+both URLs resolve `200`, raw `1.408s` vs processed `1.400s` by `ffprobe` — the
+head-loss the comparison exists to make visible.
 
 ## 4. `GET /api/recording/coverage`
 

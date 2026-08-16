@@ -67,9 +67,57 @@ export function storedClipUrl(uuid) {
  * returns a clipUrl, but that is what the page thinks it uploaded; this route
  * is what the server will actually hand a learner.
  */
-export function recordistClipUrl(voiceId, lineId) {
+export function recordistClipUrl(voiceId, lineId, variant = 'processed') {
   if (!voiceId || lineId === null || lineId === undefined || lineId === '') return null
-  return `${recordingApiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}/line/${encodeURIComponent(lineId)}/clip`
+  const base = `${recordingApiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}/line/${encodeURIComponent(lineId)}/clip`
+  // The default is left bare so every URL this app has ever built stays
+  // byte-identical: `?variant=processed` and no query at all are the same route.
+  return variant === 'raw' ? `${base}?variant=raw` : base
+}
+
+// What the raw side is, and what its absence means. Both are stated in the same
+// words the backend uses, because a recordist reading "no original was kept"
+// must be reading the server's actual finding and not a guess made in the UI.
+export const RAW_VARIANT_LABEL = 'Original (raw)'
+export const PROCESSED_VARIANT_LABEL = 'Processed (what learners hear)'
+export const NO_RAW_RETAINED =
+  'No original was kept for this take — recorded before 2026-08-14, when raw originals started being retained. ' +
+  'Re-record it and both versions will be here to compare.'
+
+/**
+ * Does this line have a raw original, and if not, why not? One call, made only
+ * when a human taps Compare — the raw key lives in the mastered object's S3
+ * metadata, so answering it costs a HEAD and must never be paid per line on a
+ * page load (Catrin's queue is 276 lines).
+ *
+ * Returns { available, url, reason, message }.
+ */
+export async function fetchRecordistRawClip(voiceId, lineId) {
+  const probe = recordistClipUrl(voiceId, lineId, 'raw')
+  if (!probe) return { available: false, url: null, reason: 'no_line', message: 'No line to compare.' }
+  try {
+    const res = await fetch(`${probe}&json=1`, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+    if (res.ok) {
+      const data = await res.json()
+      return { available: true, url: data.url || probe, reason: null, message: null }
+    }
+    let body = {}
+    try { body = await res.json() } catch { /* a non-JSON error body is still a real failure */ }
+    if (body.reason === 'no_raw_retained') {
+      return { available: false, url: null, reason: 'no_raw_retained', message: NO_RAW_RETAINED }
+    }
+    if (body.reason === 'no_take') {
+      return { available: false, url: null, reason: 'no_take', message: 'Nothing has been recorded for this line yet.' }
+    }
+    return {
+      available: false,
+      url: null,
+      reason: body.reason || `http_${res.status}`,
+      message: body.error || `The original could not be fetched (${res.status}).`
+    }
+  } catch {
+    return { available: false, url: null, reason: 'network', message: 'Could not reach the server to look for the original.' }
+  }
 }
 
 /**
