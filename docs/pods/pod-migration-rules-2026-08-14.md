@@ -17,7 +17,7 @@ scenes, so position 3 in scene 3 is a different sentence than it used to be.
 Across all languages, swapping the pods the same way would do this to **538 sentences of
 learner progress, covering 4,837 listens, for 39 learners.**
 
-## The rules I propose
+## The rules, adopted as standing doctrine on 2026-08-16 by Tom's ruling on plate item A-111
 
 1. **Match by the sentence itself, never by its position.** Position is the thing that
    broke Welsh.

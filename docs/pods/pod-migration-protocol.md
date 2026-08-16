@@ -1,8 +1,10 @@
 # Content-change migration protocol — how learner progress survives an edit
 
-*Standing protocol. Written 2026-08-14 under Tom's A-107 ruling. **Awaiting BLESS/CHANGE**,
-alongside [`pod-migration-rules-2026-08-14.md`](./pod-migration-rules-2026-08-14.md), which is
-the short page that argued the rules. This page is the rule as it now runs in code.*
+*Standing doctrine. Written 2026-08-14 under Tom's A-107 ruling, and **adopted as the standing
+rule by Tom on 2026-08-16** — plate item A-111, ruled "Approve" — alongside
+[`pod-migration-rules-2026-08-14.md`](./pod-migration-rules-2026-08-14.md), which is the short
+page that argued the rules. This page is the rule as it now runs in code, and every content
+change to a pod is required to follow it.*
 
 ---
 
