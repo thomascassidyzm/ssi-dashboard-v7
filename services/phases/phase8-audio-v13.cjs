@@ -6540,12 +6540,22 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
     let totalChars = 0
     let totalMissing = 0
 
+    let totalBlockedTarget = 0
+
     for (const pod of pods) {
       const missing = { target: [], known: [] }
+      let blockedTarget = 0
       for (const s of pod.sentences) {
         if (!s.target_audio_id) {
-          const voice = resolvePodSpeakerVoice(pod.speakers, s.speaker, 'target')
-          missing.target.push({ id: s.id, speaker: s.speaker, voice_id: voice?.voice_id, chars: (s.target_text || '').length })
+          // TEXT APPROVAL GATE (A-109). Gate the estimate exactly as the render
+          // gates it — an estimate that promises clips /generate-pods then
+          // refuses is a confusing lie about what a run will cost.
+          if (!podTextApproval.targetTextRenderable(s)) {
+            blockedTarget++
+          } else {
+            const voice = resolvePodSpeakerVoice(pod.speakers, s.speaker, 'target')
+            missing.target.push({ id: s.id, speaker: s.speaker, voice_id: voice?.voice_id, chars: (s.target_text || '').length })
+          }
         }
         if (!s.known_audio_id) {
           // Per-speaker known voice from app_config.pod_voice_pools (via pod-sync).
@@ -6562,12 +6572,14 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
         total_sentences: pod.sentences.length,
         sentences_needing_target: missing.target.length,
         sentences_needing_known: missing.known.length,
+        blocked_unapproved_target: blockedTarget,
         chars: podChars,
         estimated_cost_usd: +(podChars * POD_CHARS_TO_COST).toFixed(4),
         distinct_speakers: [...new Set(pod.sentences.map(s => s.speaker))],
       })
       totalChars += podChars
       totalMissing += missing.target.length + missing.known.length
+      totalBlockedTarget += blockedTarget
     }
 
     res.json({
@@ -6576,6 +6588,9 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
       total_clips_to_generate: totalMissing,
       total_chars: totalChars,
       estimated_cost_usd: +(totalChars * POD_CHARS_TO_COST).toFixed(4),
+      // Target clips this plan does NOT promise, because their words are still
+      // unapproved drafts (A-109). Excluded from the counts and the cost above.
+      blocked_unapproved_target: totalBlockedTarget,
       pods: podPlans,
       uncast_speakers: uncastSpeakers,
       blocked_by_uncast_speakers: uncastSpeakers.length > 0,
@@ -6614,6 +6629,14 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
 
 const POD_SAMPLE_LIMIT_MAX = 10
 const podApprovals = require('../pod-voice-approvals.cjs')
+
+// TEXT approval gate (Tom's A-109 ruling, 2026-08-16). The voice gate above says
+// the voices sound right; it says nothing about whether the WORDS are finished.
+// This one refuses the target track of any line still marked as an unread draft
+// unless a verifier has approved it. Applies in BULK and SAMPLE alike, never
+// touches the known track, and never fails a run — blocked lines are counted and
+// reported. See services/pod-text-approval.cjs.
+const podTextApproval = require('../pod-text-approval.cjs')
 
 app.post('/generate-pods/:courseCode', async (req, res) => {
   try {
@@ -6741,6 +6764,19 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
       }
     }
 
+    // TEXT APPROVAL GATE (Tom's A-109 ruling, 2026-08-16). Withhold the target
+    // track of any line whose words are not settled — still a machine-written
+    // draft, and not yet approved by a verifier. Applied BEFORE sample
+    // truncation, so a sample cannot render words a bulk run would refuse.
+    const sentencesById = podTextApproval.indexSentences(pods.flatMap(p => p.sentences))
+    const textGate = podTextApproval.partitionWorkQueue(workQueue, sentencesById)
+    const blockedUnapprovedTarget = textGate.blocked.length
+    if (blockedUnapprovedTarget) {
+      workQueue.length = 0
+      workQueue.push(...textGate.allowed)
+      logger.warn(`[Pods] TEXT GATE ${courseCode}: ${blockedUnapprovedTarget} target clip(s) withheld — unapproved draft target_text (verify with tools/pods/verify-pod-text.cjs)`)
+    }
+
     // SAMPLE truncation. Take the first clip of each distinct
     // (voice, provider, track) before any second clip of a voice already
     // covered — a 5-clip sample that happened to be five lines from one
@@ -6808,6 +6844,10 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
       reused,
       reused_cross_course: reusedCrossCourse,
       failed,
+      // Target clips withheld because their words are not settled. Reported as
+      // its own number, never as silence: a run that quietly skips 112 lines is
+      // the bug this gate exists to fix, wearing a new coat.
+      blocked_unapproved_target: blockedUnapprovedTarget,
       total: workQueue.length,
       elapsed_ms: elapsedMs,
       errors: errors.slice(0, 20),

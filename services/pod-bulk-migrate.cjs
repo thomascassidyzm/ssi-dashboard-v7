@@ -443,15 +443,31 @@ async function stageTtsInproc(course) {
     canonTexts = null
   }
 
+  // TEXT APPROVAL GATE (Tom's A-109 ruling, 2026-08-16). Same reasoning as the
+  // voice gate above: the http mode inherits this from /generate-pods, but
+  // in-process is the DEFAULT mode and rebuilds the endpoint's work queue, so
+  // without this it is a full bypass of the gate on the bulk driver — the one
+  // place it matters most. Withheld lines are counted and logged, never fatal.
+  const podTextApproval = require('./pod-text-approval.cjs')
+
   const workQueue = []
+  let blockedUnapprovedTarget = 0
   for (const s of pod.sentences) {
-    if (!s.target_audio_id && s.target_text) {
+    // Target only. The line's KNOWN track drops through to the branch below and
+    // renders as normal — the draft marker is about target words, and the
+    // English side of a drafted line was never in doubt.
+    if (!s.target_audio_id && s.target_text && !podTextApproval.targetTextRenderable(s)) {
+      blockedUnapprovedTarget++
+    } else if (!s.target_audio_id && s.target_text) {
       workQueue.push({ kind: 'target', sentence_id: s.id, text: s.target_text, language: ctx.targetLang, role: 'target1', voice: resolvePodSpeakerVoice(pod.speakers, s.speaker, 'target'), link_column: 'target_audio_id' })
     }
     if (!s.known_audio_id && s.known_text) {
       const knownVoice = resolvePodSpeakerVoice(pod.speakers, s.speaker, 'known') || ctx.knownVoice
       workQueue.push({ kind: 'known', sentence_id: s.id, text: s.known_text, language: ctx.knownLang, role: 'known', voice: knownVoice, link_column: 'known_audio_id' })
     }
+  }
+  if (blockedUnapprovedTarget) {
+    stageLog(course, 'tts', `TEXT GATE: ${blockedUnapprovedTarget} target clip(s) withheld — unapproved draft target_text (verify with tools/pods/verify-pod-text.cjs)`)
   }
   stageLog(course, 'tts', `${workQueue.length} clips to render (${pod.sentences.length} sentences)`)
   if (workQueue.length === 0) return { generated: 0, reused: 0, failed: 0 }

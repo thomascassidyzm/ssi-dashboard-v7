@@ -311,6 +311,15 @@ function buildSentenceEditPatch(body = {}) {
     // so the DRAFT marker comes off in the same update (Tom 2026-08-06: "opus
     // drafts, Aran proofreads" — this is the gate closing).
     patch.target_text_draft = false
+    // An approval is bound to the WORDS it approved (A-109, 2026-08-16). Clearing
+    // the draft flag already makes this line renderable, so this is not what
+    // unblocks it — it stops a verdict about the OLD text outliving that text.
+    // Without it, target_text_review would name words that no longer exist, and
+    // anything that later re-marked the line a draft would find it silently
+    // pre-approved on someone else's say-so.
+    patch.target_text_approved_at = null
+    patch.target_text_approved_by = null
+    patch.target_text_review = null
   }
   if (typeof body.known_text === 'string') {
     patch.known_text = body.known_text.trim()

@@ -159,6 +159,7 @@ describe('buildSentenceEditPatch (community script editing)', () => {
   it('clears exactly the audio pointers of the edited fields', () => {
     expect(buildSentenceEditPatch({ target_text: ' Bore da! ' })).toEqual({
       target_text: 'Bore da!', target_audio_id: null, target_text_draft: false,
+      target_text_approved_at: null, target_text_approved_by: null, target_text_review: null,
     })
     expect(buildSentenceEditPatch({ known_text: 'Hi', explainer_text: 'Note the mutation' })).toEqual({
       known_text: 'Hi', known_audio_id: null,
@@ -176,6 +177,21 @@ describe('buildSentenceEditPatch (community script editing)', () => {
   // line IS the proofread, so the DRAFT marker comes off in the same update.
   it('editing target_text clears the DRAFT marker', () => {
     expect(buildSentenceEditPatch({ target_text: 'Faint yw hwnna?' }).target_text_draft).toBe(false)
+  })
+
+  // A-109, 2026-08-16: an approval is bound to the words it approved. Clearing
+  // the draft flag is what unblocks the line; clearing the approval is what stops
+  // a verdict about the OLD text outliving that text.
+  it('editing target_text clears any verifier approval of the old words', () => {
+    const patch = buildSentenceEditPatch({ target_text: '¿Cuánto cuesta?' })
+    expect(patch.target_text_approved_at).toBe(null)
+    expect(patch.target_text_approved_by).toBe(null)
+    expect(patch.target_text_review).toBe(null)
+  })
+
+  it('editing only known/explainer leaves the approval alone', () => {
+    expect('target_text_approved_at' in buildSentenceEditPatch({ known_text: 'How much is that?' })).toBe(false)
+    expect('target_text_review' in buildSentenceEditPatch({ explainer_text: 'x' })).toBe(false)
   })
 
   it('editing only known/explainer leaves the DRAFT marker alone', () => {
