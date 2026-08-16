@@ -479,6 +479,13 @@ that isn't immediately preceded by a verified render/insert of its replacement (
 by a restore-on-failure path like `repair-silent-clips.cjs`'s), treat it as a make-before-break
 violation and stop before running it.
 
+**S3 versioning now backs this doctrine (A-112, 2026-08-16).** The `ssi-audio-stage` bucket has
+object versioning enabled, so an overwrite or delete at the S3 layer is no longer terminal — the
+prior bytes survive as a noncurrent version (or behind a delete marker) and are recoverable via
+`ListObjectVersions` + a copy of the wanted version over the current key. It's a second line of
+defence underneath the four steps above, not a substitute for them. Detail, before/after state,
+and the lifecycle rule: `docs/a112-s3-versioning-2026-08-16.md`.
+
 ---
 
 ## 7. Voice Management
