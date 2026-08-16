@@ -1097,9 +1097,17 @@ pool keys under old and new code.
 - Derive the locale in `resolveCast` from the voice id — failed *better*: it works for Azure and is
   exactly wrong for xAI, where the tag IS the Iberian-vs-Mexican choice and must be the human's.
 - Rewrite the stored cast, or raise `POD_VOICES_PER_GENDER`, to make the known side match too —
-  failed *better*: both fake a passing acceptance test. The known-side divergence (6 stored English
-  voices vs 2 a pool can produce) is reported open, with preserving an approved cast on re-sync as
-  the recommended fix.
+  failed *better*: both fake a passing acceptance test, and Tom's ruling the same day settled that
+  neither is wanted anyway ("in the re-casting to 2 voices for the PODS, there should only be one
+  voice per gender, right? this may well be different from the voices in the main course").
+
+**Amended the same day by that ruling.** One voice per gender per pod IS the design, and the pod
+pool is independent of main-course voices, so the 6 English voices in `spa_for_eng`'s stored cast
+are earlier casting leakage rather than something to preserve. Converging them to Tom's clone (male)
+and Olivia (female) is the intended end state, not a regression. The target side still pins Manuel @
+`es-ES` and Elvira exactly. Applying that convergence will legitimately move the fingerprint
+`29cc217afb5fa101` → `92ab0ed61dbc6741` and so requires a fresh approval — the gate working as
+designed. Not applied here: this pass wrote no cast.
 
 **Search width:** visible-options
 **Decided by:** Tom (the approach was his commission); the insertion order, the throw-on-malformed

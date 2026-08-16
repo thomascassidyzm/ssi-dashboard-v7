@@ -47,16 +47,36 @@ The verifier is read-only: it loads the live pods, computes the fingerprint of t
 | stored cast fingerprint | `29cc217afb5fa101` — unchanged, still matches the approval |
 | what a re-sync would now store | `92ab0ed61dbc6741` |
 | **Manuel seats stomped back to Alvaro** | **0 — the trap is closed** |
-| target seats that still move | 8, all of them a gender question (below) |
-| known (English) seats that still move | 55 (below) |
+| target voices a re-sync would use | **only Manuel @ es-ES (43 seats) and Elvira @ es-ES (12)** — nothing else |
+| known voices a re-sync would use | Tom's clone (43) and Olivia (12) — one per gender |
 
-### The two things that still move — reported, not papered over
+### What a re-sync would now produce, in full
 
-**The known side still diverges, and this job could not fix it.** Your stored cast carries **6 English voices** (Tom's clone, Olivia, Leo, and three Azure en-GB voices on `travel-situations`). Pool-driven casting is a two-hander by rule — one male, one female — so it can only ever produce **2**. Of the 55 known-side moves, 45 are the locale field alone (same voice, `en` → blank, because the `eng` pool carries no locale) and 10 are genuinely different voices: the three Azure en-GB voices on `travel-situations`, Leo → your clone, and two Learner seats.
+Your ruling today — *"in the re-casting to 2 voices for the PODS, there should only be one voice per gender"* — is what the code already enforces (`POD_VOICES_PER_GENDER = 1`), and it settles what this measurement means. Convergence to one voice per gender is the **intended end state**, not a regression. So here is the whole cast a re-sync would store, so your next approval covers it knowingly.
 
-I did not "fix" this by editing the `eng` pool, rewriting your stored cast, or raising the two-voice limit — all three would have faked a pass. **The real fix is a decision for you, not for this job: pod-sync could preserve an existing approved cast on re-sync instead of re-deriving it.** That is one sentence of policy and a small change; it is also the thing that would make every future approval durable rather than just the Spanish one. My recommendation is that we do it, as its own scoped piece.
+**Target side: exactly your two voices, and nothing else.**
 
-**Eight target seats are a gender question, not a locale one.** Speakers with no `(F)`/`(M)` marker in the markdown — Customer, Narrator, Passenger, Customer 1, Agente, Learner — are stored on Elvira but resolve male by rule, so a re-sync would move them Elvira ↔ Manuel. Both voices are yours; only which character gets which is in question. The fix is markers in the markdown, not code — and it is out of scope here.
+| voice | seats |
+|---|---|
+| xAI Manuel `yis75yfp` @ es-ES | 43 |
+| Azure Elvira @ es-ES | 12 |
+
+Compare the stored cast: Manuel 37, Elvira 18. Same two voices, same locales — the 6 seats that shift are ungendered speakers (Customer, Narrator, Passenger, Customer 1, Agente, Learner: no `(F)`/`(M)` marker in the markdown, so they resolve male by rule). That is a *which character* question, not a *which voice* one, and it is answered by adding markers to the markdown, not in code.
+
+**Known side: the six English voices converge to two, which is the point.**
+
+| voice | seats | |
+|---|---|---|
+| xAI **Tom** (your clone, `gfzdpspr5fdp`) | 43 | survives — male |
+| xAI **Olivia** `bedd6226` | 12 | survives — female |
+| xAI Leo | 4 → 0 | drops out |
+| Azure Sonia / Hollie / Libby (en-GB) | 3 → 0 | drop out — all on `travel-situations` |
+
+The six voices in the stored cast are earlier casting leakage; the pod pool is independent of the main-course voices that generate speaking practice. Your clone and Olivia are what survive.
+
+**One detail worth your eye, and it costs nothing:** the converged known voices carry no `locale`, where the stored ones say `en`. That is fingerprint text only — `toBcp47('eng')` is `en`, so the renderer produces the identical `en` either way. No audio would differ. I did not add a locale to the `eng` pool to tidy it up, because that is a change to every English-known course on the estate and not part of this job.
+
+**The fingerprint will legitimately move when this convergence is applied** — from `29cc217afb5fa101` to `92ab0ed61dbc6741`. That is the approval gate working as designed: a real casting change should require a fresh approval. Nothing here rewrote your stored cast; applying the convergence is a separate, deliberate step.
 
 ## Blast radius, stated plainly
 
