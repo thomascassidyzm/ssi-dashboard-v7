@@ -271,3 +271,130 @@ of overwriting, de-duplicates on retry, selects `reason` so it can see what it i
 and logs the merged text. `requested_by` is left last-writer-wins with a comment saying
 why that is a choice and not a bug. Merge logic unit-tested 6/6 (null, empty, new, repeat,
 already-present-in-list, third addition); module loads clean.
+
+---
+
+# FINAL — the four classes ruled and closed
+
+Tom's rulings of 2026-08-17 on classes (a)–(d), all executed. **340 slots relinked in
+total, zero spend. The render bill is $1.44.**
+
+## (a) The 21 same-voice slots — APPLIED, proved per row by `decodeVoiceId`
+
+Tom's condition was to prove equivalence with **the estate's own decoder**, not string
+surgery. Done: `tools/deborah/relink-silent-slots.cjs` now imports `decodeVoiceId` from
+`services/audio-repair-core.cjs` and compares `{provider, voiceId}` after decode.
+
+Its verdicts on the real cases, before anything was written:
+
+| Pair | decodeVoiceId |
+|---|---|
+| `xai_bedd6226` vs `bedd6226` | **SAME** |
+| `xai_gfzdpspr5fdp` vs `gfzdpspr5fdp` | **SAME** |
+| `azure_en-GB-SoniaNeural` vs `en-GB-SoniaNeural` | **SAME** |
+| `xai_eve` vs `azure_en-GB-SoniaNeural` | DIFF |
+| `azure_es-MX-CarlotaNeural` vs `azure_es-ES-ElviraNeural` | DIFF |
+| `xai_leo` vs `azure_fr-FR-HenriNeural` | DIFF |
+
+**21 of 21 relinked**, 14 rows: `eng_for_mar` 18, `fra_ca_for_eng` 2, `spa_mx_for_eng` 1.
+Every one recorded with `voice_equivalence: "decodeVoiceId"` in the log, so the basis for
+each link is auditable rather than asserted. No row was disputed by decode, so none stayed
+held on that ground. Log: `relink-2026-08-17-applied-decode21.json`.
+
+**Running total: 319 + 21 = 340 slots relinked, 188 rows, zero spend, zero failures.**
+
+## (b) The 11 `cym_s_for_eng` rows — filed as a config defect
+
+`courses.voice_config` for `cym_s_for_eng` has **no `known` voice at all** — that is what
+`wanted_voice: null` meant. Neither authorised route reaches them: relinking needs the
+configured voice to prove equivalence, and rendering needs it to know what to render *in*.
+Filed at `docs/deborah/fix-item-cym-s-missing-known-voice.md` with the question for Kai
+(confirming `azure_en-GB-SoniaNeural` would make all 11 free). **Excluded from the render
+bill** for that reason.
+
+## (c) The 72 genuine voice differences — folded into the render pass
+
+Per Tom: rendering them in the **correct** voice costs pennies and sidesteps the whole
+substitution question. They move out of the link list and into the bill.
+
+| | Renders | Characters |
+|---|---|---|
+| Previously "needs render" | 2,386 | 88,883 |
+| **+ folded in from classes (c) and (d)** | **+60** | +1,429 |
+| **TOTAL** | **2,446** | **90,312** |
+
+*(60, not 72, because a render is keyed on distinct text × role — several of the 72 slots
+share a text with a row already in the bill.)*
+
+## (d) The 4 cross-language slots — never linked, and now structurally impossible
+
+Two assertions added to the relink tool, so this class cannot be chosen by mistake again:
+
+- **Language assertion** — a clip's `language` must canonicalise to the course's language
+  for that role, via `canonicalLanguage` from `services/shared/clip-identity.cjs`. **Fails
+  closed**: that function throws on a sentinel or an unknown code (it rejects nine of the
+  estate's course languages outright), and a language we cannot assert is a language we do
+  not link.
+- **Voice assertion** — `decodeVoiceId` equivalence, applied to *every* candidate
+  whichever list it arrived on, not only to the promoted ones.
+
+**Verified against the real hazards, not just assumed from a zero count:**
+
+| Check | Result |
+|---|---|
+| `xai_ara` clip for a `zh-CN` slot | **refused** |
+| `xai_ara` clip for a `ko-KR` slot | **refused** |
+| clip language `ara` / `ar` vs course `zho` | **refused** |
+| `eu-ES` vs `eus`, `en-GB` vs `eng`, `pt_BR` vs `por` | **allowed** (regional variants of one language) |
+| `auto`, `""`, `null` vs `eng` | **refused** (fails closed) |
+
+The dry run over `zho_for_eng` and `kor_for_eng` promoted **0** rows — and the table above
+is why that zero means "refused" rather than "never looked".
+
+---
+
+# THE RENDER DECISION, as it should read to Kai
+
+**2,446 renders, 90,312 characters. $1.44 at Azure neural standard; under $3 worst case.**
+Two independent methods: $0.42 by today's measured per-render rate (Sinhala: 81 renders
+for $0.014), $1.44 per-character at $16/1M. Quote the per-character figure — Azure prices
+per character, and the Sinhala texts were shorter than these.
+
+| Course | Renders | Cost |
+|---|---|---|
+| `spa_for_eng` | 1,072 | **$0.86** (60% of the bill) |
+| `zho_for_eng` | 436 | $0.11 |
+| `ita_for_eng` | 183 | $0.09 |
+| `kor_for_eng` | 156 | $0.07 |
+| `por_br_for_eng` | 120 | $0.07 |
+| `fra_ca_for_eng` | 120 | $0.06 |
+| `por_for_eng` | 74 | $0.04 |
+| `eng_for_mar` | 68 | $0.03 |
+| `ara_for_eng` | 51 | $0.02 |
+| `spa_mx_for_eng` | 48 | $0.02 |
+| `eng_for_por` | 42 | $0.03 |
+| `cym_s_for_eng` | 33 | $0.01 |
+| `fra_for_eng` | 18 | $0.01 |
+| **`eus_for_eng`** | **12** | **$0.006** |
+| 5 more | 13 | <$0.01 |
+
+## And the honesty that has to travel with it
+
+**340 slots relinked is not 340 restored learner slots.** Of the 188 rows:
+
+| | Rows |
+|---|---|
+| `build` / `use` — drilled by the bundle, learner-audible | **~59** |
+| `component` — **never drilled by the bundle** | ~131 |
+| LEGO rows — always learner-facing | 5 |
+
+The free repair is mostly **data-integrity work**: it removes NULL pointers that corrupt
+every future census (they inflated my own first count from 1,034 to 2,820), and it costs
+nothing, but a learner hears the difference in roughly a third of it. `spa_mx_for_eng`'s
+257 relinked slots are **entirely** component rows — no learner hears any of them.
+
+**The learner-audible repair is overwhelmingly in the render pass, not the relinks.** That
+is the number the decision turns on: **$1.44 buys back 2,446 slots that are currently
+silent**, including all 1,072 in `spa_for_eng` — the course Deborah stopped checking and
+whose silence nobody has reported. `eus_for_eng`, where she is redoing audio by hand right
+now, is six tenths of a cent.

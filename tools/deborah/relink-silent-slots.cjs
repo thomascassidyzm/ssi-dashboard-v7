@@ -28,6 +28,42 @@ require('dotenv').config({ path: require('path').join(__dirname, '../../.env'), 
 const { createClient } = require('@supabase/supabase-js')
 const { S3Client, HeadObjectCommand } = require('@aws-sdk/client-s3')
 const { scopeCourse } = require('./silent-slot-repair-scope.cjs')
+// The estate's OWN voice decoder and language canonicaliser. Tom's ruling
+// 2026-08-17: prove voice equivalence "with the estate's own decodeVoiceId — the
+// same check that killed this morning's false voice-swap alarm — not string surgery."
+const { decodeVoiceId } = require('../../services/audio-repair-core.cjs')
+const { canonicalLanguage } = require('../../services/shared/clip-identity.cjs')
+
+/**
+ * Are two stored voice ids the SAME voice? `bedd6226` and `xai_bedd6226` are one
+ * voice under two taggings; `xai_eve` and `azure_en-GB-SoniaNeural` are not.
+ * Decided by decodeVoiceId, never by trimming prefixes by hand.
+ */
+function voicesEquivalent (a, b) {
+  if (!a || !b) return false
+  if (a === b) return true
+  try {
+    const x = decodeVoiceId(a), y = decodeVoiceId(b)
+    return x.provider === y.provider && x.voiceId === y.voiceId
+  } catch { return false }
+}
+
+/**
+ * LANGUAGE ASSERTION (Tom's ruling d, 2026-08-17): make the cross-language class
+ * structurally impossible rather than merely unchosen. The scope pass found a
+ * Chinese slot and a Korean slot each with a candidate clip stored under `xai_ara`
+ * — an Arabic voice id. Nothing should ever link those, so this refuses them at
+ * the tool level instead of relying on an operator noticing.
+ *
+ * FAILS CLOSED: canonicalLanguage throws on a sentinel or a code it does not know
+ * (it rejects nine of the estate's course languages outright). A language we cannot
+ * assert is a language we do not link.
+ */
+function languageMatches (clipLanguage, expectedLanguage) {
+  try {
+    return canonicalLanguage(clipLanguage) === canonicalLanguage(expectedLanguage)
+  } catch { return false }
+}
 
 const db = createClient(
   process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL,
@@ -55,13 +91,51 @@ async function s3Alive (key) {
   return out
 }
 
-async function relinkCourse (courseCode, { apply }) {
+async function relinkCourse (courseCode, { apply, decodeEquivalent = false }) {
   const scope = await scopeCourse(courseCode)
-  const targets = (scope.detail || []).filter(d => d.verdict === 'relinkable')
+  let targets = (scope.detail || []).filter(d => d.verdict === 'relinkable')
+
+  // The course's expected language per role, for the language assertion.
+  const { data: crs } = await db.from('courses')
+    .select('known_lang, target_lang, voice_config').eq('course_code', courseCode).maybeSingle()
+  const expectedLang = role => (role === 'known' ? crs?.known_lang : crs?.target_lang)
+  const voices = crs?.voice_config?.voices || crs?.voice_config || {}
+  const wantVoice = role => {
+    const v = voices?.[role]
+    if (!v) return null
+    const raw = typeof v === 'string' ? v : v.voiceId
+    if (!raw) return null
+    const provider = (typeof v === 'object' && v.provider) || 'azure'
+    return raw.includes('_') ? raw : `${provider}_${raw}`
+  }
+
+  // --decode-equivalent promotes the voice-mismatch rows whose candidate is the
+  // SAME voice under a different id tagging (Tom authorised these on 2026-08-17,
+  // conditional on decodeVoiceId agreeing per row; any row it disputes stays held).
+  const promoted = []
+  if (decodeEquivalent) {
+    for (const d of (scope.detail || []).filter(x => x.verdict === 'voice-mismatch')) {
+      const want = wantVoice(d.role)
+      if (!want) continue                                  // class (b): no configured voice
+      const { data: cands } = await db.from('course_audio')
+        .select('id, voice_id, language, s3_key, role, course_code')
+        .eq('role', d.role).eq('text_normalized', d.norm).not('s3_key', 'is', null)
+      const hit = (cands || []).find(c => voicesEquivalent(c.voice_id, want) &&
+                                          languageMatches(c.language, expectedLang(d.role)))
+      if (hit) {
+        promoted.push({ ...d, verdict: 'relinkable', clip_id: hit.id,
+                        clip_course: hit.course_code, voice_id: hit.voice_id,
+                        promoted_by: 'decodeVoiceId', wanted_voice: want })
+      }
+    }
+    targets = targets.concat(promoted)
+  }
 
   const result = {
     course_code: courseCode, candidates: targets.length,
-    relinked: 0, refused_no_file: 0, refused_not_null: 0, failed_verify: 0, rows: []
+    promoted_by_decode: promoted.length,
+    relinked: 0, refused_no_file: 0, refused_not_null: 0,
+    refused_language: 0, refused_voice: 0, failed_verify: 0, rows: []
   }
   if (targets.length === 0) return result
 
@@ -92,14 +166,38 @@ async function relinkCourse (courseCode, { apply }) {
       // the scope ran, and we never overwrite a live link.
       if (before[col]) { result.refused_not_null++; continue }
       const { data: clip } = await db.from('course_audio')
-        .select('id, s3_key, voice_id, role, text, duration_ms').eq('id', s.clip_id).maybeSingle()
+        .select('id, s3_key, voice_id, role, language, text, duration_ms')
+        .eq('id', s.clip_id).maybeSingle()
       if (!clip?.s3_key) { result.refused_no_file++; continue }
+
+      // ASSERTION 1 — LANGUAGE. Structurally forbids the cross-language class: a
+      // Chinese slot must never take a clip filed under an Arabic voice, whatever
+      // its text_normalized says. Fails closed on a language we cannot canonicalise.
+      if (!languageMatches(clip.language, expectedLang(s.role))) {
+        result.refused_language++
+        result.rows.push({ table: row.table, id: row.id, role: s.role, outcome: 'refused-language',
+                           clip_id: clip.id, clip_language: clip.language,
+                           expected_language: expectedLang(s.role), clip_voice: clip.voice_id })
+        continue
+      }
+      // ASSERTION 2 — VOICE. Decided by the estate's decodeVoiceId, so a prefix
+      // difference passes and a genuinely different voice cannot, whichever list
+      // this candidate arrived on.
+      const want = wantVoice(s.role)
+      if (!voicesEquivalent(clip.voice_id, want)) {
+        result.refused_voice++
+        result.rows.push({ table: row.table, id: row.id, role: s.role, outcome: 'refused-voice',
+                           clip_id: clip.id, clip_voice: clip.voice_id, wanted_voice: want })
+        continue
+      }
+
       // MAKE BEFORE BREAK: prove the bytes exist before any pointer moves.
       const head = await s3Alive(clip.s3_key)
       if (!head || head.error) { result.refused_no_file++; continue }
       patch[col] = clip.id
       verified.push({ role: s.role, col, clip_id: clip.id, s3_key: clip.s3_key,
-                      bytes: head.bytes, voice_id: clip.voice_id })
+                      bytes: head.bytes, voice_id: clip.voice_id, language: clip.language,
+                      voice_equivalence: clip.voice_id === want ? 'exact' : 'decodeVoiceId' })
     }
     if (Object.keys(patch).length === 0) continue
 
@@ -142,6 +240,7 @@ async function relinkCourse (courseCode, { apply }) {
 async function main () {
   const argv = process.argv.slice(2)
   const apply = argv.includes('--apply')
+  const decodeEquivalent = argv.includes('--decode-equivalent')
   const logAt = argv.indexOf('--log')
   const logOut = logAt >= 0 ? argv[logAt + 1] : null
   const courses = argv.filter(a => /_for_/.test(a))
@@ -153,15 +252,15 @@ async function main () {
 
   const all = []
   const hdr = 'course'.padEnd(18) + 'cands'.padStart(7) + 'relinked'.padStart(10) +
-              'no-file'.padStart(9) + 'not-null'.padStart(10) + 'verifyfail'.padStart(12)
+              'no-file'.padStart(9) + 'ref-lang'.padStart(10) + 'ref-voice'.padStart(11) + 'verifyfail'.padStart(12)
   console.log(hdr); console.log('-'.repeat(hdr.length))
   for (const c of courses) {
     try {
-      const r = await relinkCourse(c, { apply })
+      const r = await relinkCourse(c, { apply, decodeEquivalent })
       all.push(r)
       console.log(c.padEnd(18) + String(r.candidates).padStart(7) + String(r.relinked).padStart(10) +
-        String(r.refused_no_file).padStart(9) + String(r.refused_not_null).padStart(10) +
-        String(r.failed_verify).padStart(12))
+        String(r.refused_no_file).padStart(9) + String(r.refused_language).padStart(10) +
+        String(r.refused_voice).padStart(11) + String(r.failed_verify).padStart(12))
     } catch (e) {
       console.log(`${c.padEnd(18)} GAP: ${e.message}`)
       all.push({ course_code: c, gap: e.message })
@@ -170,8 +269,9 @@ async function main () {
   const sum = k => all.reduce((n, r) => n + (r[k] || 0), 0)
   console.log('-'.repeat(hdr.length))
   console.log('TOTAL'.padEnd(18) + String(sum('candidates')).padStart(7) + String(sum('relinked')).padStart(10) +
-    String(sum('refused_no_file')).padStart(9) + String(sum('refused_not_null')).padStart(10) +
-    String(sum('failed_verify')).padStart(12))
+    String(sum('refused_no_file')).padStart(9) + String(sum('refused_language')).padStart(10) +
+    String(sum('refused_voice')).padStart(11) + String(sum('failed_verify')).padStart(12))
+  if (sum('promoted_by_decode')) console.log(`\npromoted by decodeVoiceId (same voice, different id tagging): ${sum('promoted_by_decode')}`)
 
   if (logOut) {
     require('fs').writeFileSync(logOut, JSON.stringify(all, null, 2))
