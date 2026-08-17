@@ -38,9 +38,11 @@
 // wired into any render path.
 //
 // COST. One render per voice, ~2-3s of speech each: ~$0.002 per voice on xAI,
-// less on Azure. A full T-21 sweep is ~250 voices ≈ $0.50 and, at the default
-// concurrency of 4, roughly 10-15 minutes of wall clock. THAT SWEEP IS NOT
-// AUTHORISED BY THIS FILE — it is bulk rendering and it is Tom's call.
+// less on Azure. Ordered by Tom's ruling below, TIER 1 IS 13 RENDERS (~$0.03,
+// under a minute) and covers 53.5% of every clip the estate has ever shipped;
+// tiers 1+2 are 36 renders (~$0.07) for 67.5%. The full T-21 candidate pool
+// including never-cast voices is ~250 renders ≈ $0.50 and 10-15 minutes. NO
+// SWEEP IS AUTHORISED BY THIS FILE — it is bulk rendering and it is Tom's call.
 //
 // Usage:
 //   node tools/a108/a133-voice-tail-screen.cjs voices.json [outdir]
@@ -59,6 +61,56 @@ const { decode, envelope, events, endOfSpeech, roomFloorDb, SR } = require('./a1
 const SUSPECT_OVER_FLOOR_DB = 20
 const CONCURRENCY = Number(process.env.CONCURRENCY || 4)
 const KEEP_RAW = process.env.KEEP_RAW !== '0'
+
+// ── Sampling order (Tom's ruling, 2026-08-17) ────────────────────────────────
+// "Sample HEAVY-USE voices first, not alphabetically. (1) English voices first —
+// his own voice clone and Olivia; (2) the big money courses next — Chinese,
+// Spanish, German, French, Japanese; (3) everything else after."
+//
+// The point is blast radius, not fairness: a click in Tom's clone is a click in
+// 325,223 shipped clips, and screening it costs the same one render as screening
+// a voice nobody has cast yet. Measured estate-wide clip counts (course_audio,
+// 2026-08-17), counting BOTH the bare and xai_-prefixed spellings of each id —
+// that duality hides ~50% of a voice's clips if you match only one:
+//
+//   en-GB-SoniaNeural  414,080   |  gfzdpspr5fdp (Tom's clone)  325,223
+//   eve                162,906   |  bedd6226 (Olivia)           150,237
+//   leo                 90,044   |  en-GB-RyanNeural             79,120
+//
+// So the two voices Tom named are #2 and #4 in the whole estate. Note Sonia is #1
+// and Eve #3, and both are English-side too — they sit in tier 1 immediately
+// behind the two he named rather than waiting for tier 3. Flagged for him.
+const TIER1_NAMED = ['gfzdpspr5fdp', 'bedd6226']            // Tom's clone, Olivia — first, in this order
+const TIER1_LANGS = ['eng', 'en']                            // the rest of the English side
+const TIER2_LANGS = ['zho', 'spa', 'deu', 'fra', 'jpn']      // the big money courses, in Tom's order
+const bare = id => String(id || '').replace(/^(xai_|azure_|elevenlabs_)/, '')
+
+// Assign a tier to one voice spec. `lang` is the language the voice SERVES
+// (a course's target_lang, or 'eng' for the known-side pool).
+function tierOf(v) {
+  const b = bare(v.voiceId || v.voiceName || v.key)
+  const named = TIER1_NAMED.indexOf(b)
+  if (named >= 0) return { tier: 1, rank: named, why: `named by Tom — ${b === 'gfzdpspr5fdp' ? "his own voice clone" : 'Olivia'}` }
+  const lang = String(v.lang || '').toLowerCase()
+  if (TIER1_LANGS.includes(lang)) return { tier: 1, rank: 100, why: 'English side' }
+  const t2 = TIER2_LANGS.indexOf(lang)
+  if (t2 >= 0) return { tier: 2, rank: t2, why: `big-money course (${lang})` }
+  return { tier: 3, rank: 0, why: 'everything else' }
+}
+
+// Order any candidate list by Tom's ruling. Within a tier, heaviest use first —
+// `clips` if the caller measured it (a133-build-screen-list.cjs does), else the
+// list's own order. NEVER alphabetical.
+function prioritise(voices) {
+  return voices
+    .map((v, i) => ({ v, i, ...tierOf(v) }))
+    .sort((a, b) =>
+      a.tier - b.tier ||
+      a.rank - b.rank ||
+      (b.v.clips || 0) - (a.v.clips || 0) ||
+      a.i - b.i)
+    .map(({ v, tier, why }) => ({ ...v, tier, tierWhy: why }))
+}
 
 const NL = 'Ik wil graag een glas bitter, alstublieft.'
 const VALIDATION = [
@@ -127,32 +179,41 @@ async function pool(items, n, fn) {
 async function main() {
   const spec = process.argv[2]
   const outDir = process.argv[3] || '/tmp/a133-screen'
-  const voices = spec ? JSON.parse(fs.readFileSync(spec, 'utf8')) : VALIDATION
+  // Tom's ruling 2026-08-17: heavy-use voices first, never alphabetically.
+  const voices = prioritise(spec ? JSON.parse(fs.readFileSync(spec, 'utf8')) : VALIDATION)
   fs.mkdirSync(outDir, { recursive: true })
+  const byTier = [1, 2, 3].map(t => `${voices.filter(v => v.tier === t).length} in tier ${t}`).join(', ')
   console.log(`screening ${voices.length} voice(s) — one raw render each, no processing applied`)
+  console.log(`order: ${byTier}. First up: ${voices.slice(0, 3).map(v => v.key).join(', ')}`)
 
+  const done = []
   const rows = await pool(voices, CONCURRENCY, async (v) => {
     const file = path.join(outDir, `${v.key}.mp3`)
+    let row
     try {
       if (!fs.existsSync(file)) fs.writeFileSync(file, await render(v))
       const r = screenFile(file)
       if (!KEEP_RAW) fs.unlinkSync(file)
-      return { ...v, ...r, file: KEEP_RAW ? file : null }
+      row = { ...v, ...r, file: KEEP_RAW ? file : null }
     } catch (e) {
-      return { ...v, verdict: 'error', reason: e.message, impulses: [] }
+      row = { ...v, verdict: 'error', reason: e.message, impulses: [] }
     }
+    // Written as we go, so a sweep killed part-way still leaves the heavy-use
+    // verdicts on disk — which is the whole reason the order matters.
+    done.push(row)
+    fs.writeFileSync(path.join(outDir, 'screen.json'), JSON.stringify(done, null, 2))
+    return row
   })
 
   for (const r of rows) {
     const mark = r.expect ? (r.expect === r.verdict ? ' ✓expected' : ` ✗EXPECTED ${r.expect}`) : ''
-    console.log(`${r.verdict.toUpperCase().padEnd(10)} ${r.key.padEnd(26)} ${r.reason}${mark}`)
+    console.log(`T${r.tier} ${r.verdict.toUpperCase().padEnd(10)} ${r.key.padEnd(26)} ${r.reason}${mark}`)
   }
   const suspects = rows.filter(r => r.verdict === 'suspect')
   console.log(`\n${suspects.length}/${rows.length} suspect — a suspect is "a human listens before this voice is cast", never an automatic reject.`)
-  fs.writeFileSync(path.join(outDir, 'screen.json'), JSON.stringify(rows, null, 2))
-  console.log(`wrote ${outDir}/screen.json`)
+  console.log(`wrote ${outDir}/screen.json (updated after every voice, so a killed sweep keeps its tier-1 verdicts)`)
   if (rows.some(r => r.expect && r.expect !== r.verdict)) process.exitCode = 1
 }
 
-module.exports = { screenFile, SUSPECT_OVER_FLOOR_DB }
+module.exports = { screenFile, prioritise, tierOf, SUSPECT_OVER_FLOOR_DB, TIER1_NAMED, TIER2_LANGS }
 if (require.main === module) main().catch(e => { console.error(e.stack || e.message); process.exit(1) })
