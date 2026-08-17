@@ -1198,6 +1198,33 @@ async function masterAudio(audioBuffer, ttsText, opts = {}) {
     // Write raw audio to temp file
     await fs.writeFile(rawPath, audioBuffer)
 
+    // END-OF-SPEECH TAIL (A-133, Tom's ruling 2026-08-17 after the ear check:
+    // "Click is gone and latest processing chain sounds excellent").
+    //
+    // The file ends at the last sustained speech event plus 250ms of natural
+    // decay. That is pure subtraction of the provider's dead room tone — and on
+    // the xAI voices that click, the two impulses sitting 260ms and 380ms past
+    // the last phonation fall outside the file rather than being edited out of
+    // it. Nothing is patched, padded, crossfaded or de-clicked.
+    //
+    // It runs HERE, on the raw provider bytes before mastering, because that is
+    // the order the published ear check measured (a133-tail-probe.cjs trims the
+    // raw decode and feeds the result to this same masterAudio).
+    //
+    // This is NOT the deleted repairTailDefect. That trimmed already-shipped
+    // clips at a 9%-precise detector's guess and ate the final word of live
+    // German course audio. This decides where a brand-new file ends, cuts on
+    // sustained speech energy rather than on flagTailDefect, and fails OPEN on
+    // all four guards — uncertain detection ships the clip untouched, never
+    // shortened. See the block above audioProcessor.trimToEndOfSpeech.
+    const trimmedPath = path.join(tempDir, 'eos.wav')
+    const eosTail = await audioProcessor.trimToEndOfSpeech(rawPath, trimmedPath)
+    if (eosTail.refused) {
+      logger.warn(`masterAudio: end-of-speech tail refused — ${eosTail.refused}`)
+    } else if (eosTail.trimmed) {
+      logger.debug(`masterAudio: end-of-speech tail removed ${eosTail.removedMs}ms of post-speech dead air`)
+    }
+
     // Normalize to the house -16 LUFS (broadcast standard) unless a caller asked
     // for another target — see opts.targetLufs above.
     //
@@ -1211,7 +1238,7 @@ async function masterAudio(audioBuffer, ttsText, opts = {}) {
     // other side as "that hissy mastering stuff" (2026-07-29), which is why
     // normalizeAudioClean already existed. Pure subtraction: one stage removed,
     // nothing added. Measured cost: output lands 0.8-1.7 LUFS quieter.
-    await audioProcessor.normalizeAudioClean(rawPath, masteredPath, targetLufs)
+    await audioProcessor.normalizeAudioClean(eosTail.path, masteredPath, targetLufs)
 
     // Tail-defect FLAG — read-only, never a repair (Tom's ruling 2026-08-05).
     //

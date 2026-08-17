@@ -549,6 +549,218 @@ async function flagTailDefect(inputPath, { text, mode } = {}) {
   };
 }
 
+// =============================================================================
+// END-OF-SPEECH TAIL (A-133) — the ONLY sanctioned trim in this module
+// =============================================================================
+//
+// Read the deletion notice above detectTailClick first. That notice bans a
+// REPAIR pass that cut already-shipped clips at a 9%-precise detector's guess.
+// This is a different operation and must stay different:
+//
+//   - it decides where a BRAND-NEW file ends, at render time, on a clip that
+//     does not exist yet. It never reads, rewrites or re-masters a shipped clip;
+//   - the only operation permitted is "stop the file earlier". Nothing is
+//     patched, padded, crossfaded, de-clicked, synthesised or rewritten;
+//   - it cuts on SUSTAINED SPEECH ENERGY, not on flagTailDefect. That detector
+//     is instrumentation and never decides a byte here;
+//   - every guard FAILS OPEN. Uncertain detection, a decode error, a suspicious
+//     cut — the clip passes through untouched and the reason is returned. There
+//     is no input for which this function may produce a shorter clip than it can
+//     justify, and no error path that ends in a cut.
+//
+// WHAT IT IS FOR (A-133, 2026-08-17, Tom's ruling after the ear check). The xAI
+// clone cast on nld_for_eng pod-0 emits two isolated impulses in the RAW
+// provider bytes, 260ms and 380ms after the last phonation, 42dB above the room
+// floor they interrupt — the click Tom placed by ear as "after the voice ends".
+// The 8ms ANTI_CLICK_FADE never touched them because the fade is at EOF and the
+// impulses are half a second upstream of it. Ending the file at end-of-speech
+// + 250ms leaves them outside the file. On clean voices the same pass removes
+// only the provider's dead room tone (0-730ms observed across 18 voices) and on
+// the tightest voices removes nothing at all.
+// Evidence: docs/a108/a133-end-of-speech-tail-2026-08-17.md and
+// docs/a108/a133-money-voices-ear-check-2026-08-17.md.
+
+// Detection constants, lifted verbatim from tools/a108/a133-tail-probe.cjs so
+// the render chain cuts at exactly the point the published ear-check measured.
+const EOS_SR = 44100;
+// Speech threshold, dB RELATIVE TO THE CLIP'S OWN SPEECH PEAK — not a fixed
+// dBFS number, because xAI clones are peaky (crest factor ~19dB) and a fixed
+// floor means something different on every voice.
+const EOS_SPEECH_DB = -45;
+const EOS_WIN_MS = 5;
+// An event counts as SPEECH only if this much of it is ACTUALLY above threshold
+// (summed window time, not the event's span). This is the load-bearing rule.
+// The naive "last sample over -45dB" detector fails here because the clicks ARE
+// over -45dB — they hit -25dB — but they are 10-20ms of energy. Speech is
+// sustained. A word-final plosive burst can be shorter than 40ms and so could be
+// mis-labelled an impulse; it is still protected, because EOS_DECAY_MS keeps
+// 250ms past the previous speech event and no language has a 250ms word-internal
+// closure. The trim can only ever reach something standing MORE than 250ms clear
+// of the last sustained speech.
+const EOS_MIN_SPEECH_MS = 40;
+// Windows this close together belong to the same event (intra-word closures).
+const EOS_EVENT_GAP_MS = 20;
+// Natural decay kept past end-of-speech. 250ms, not the probe's original 150ms,
+// and the reason is the learning app: at the cycle player's voice1→voice2 seam
+// the app contributes NO gap at all (`transition_gap_ms` is dead config with no
+// consumer), so this pad IS the entire audible separation between two
+// consecutive phrases. 250ms separates them audibly on its own and still ends
+// the file 10ms short of the earliest impulse on the known clicker.
+const EOS_DECAY_MS = 250;
+// Refusal guards. These bound a DETECTION FAILURE, not normal operation: the
+// provider's dead tail is routinely 20%+ of a short clip, so a 15% fraction
+// guard would refuse every good cut.
+const EOS_MAX_TRIM_FRAC = 0.40;
+const EOS_MAX_TRIM_MS = 2000;
+
+/** Decode to mono 16-bit PCM at EOS_SR. Streamed — no execSync buffer ceiling. */
+function decodePcmMono(inputPath) {
+  return new Promise((resolve, reject) => {
+    const ff = spawn('ffmpeg', ['-v', 'quiet', '-i', inputPath, '-ac', '1',
+      '-ar', String(EOS_SR), '-f', 's16le', '-']);
+    const chunks = [];
+    let err = '';
+    ff.stdout.on('data', d => chunks.push(d));
+    ff.stderr.on('data', d => { err += d.toString(); });
+    ff.on('error', reject);
+    ff.on('close', code => {
+      if (code !== 0) return reject(new Error(`ffmpeg decode exited ${code}: ${err.slice(-300)}`));
+      const pcm = Buffer.concat(chunks);
+      const n = pcm.length >> 1;
+      const s = new Int16Array(n);
+      for (let i = 0; i < n; i++) s[i] = pcm.readInt16LE(i * 2);
+      let peak = 1;
+      for (let i = 0; i < n; i++) peak = Math.max(peak, Math.abs(s[i]));
+      resolve({ s, n, peak });
+    });
+  });
+}
+
+const eosDb = (v, peak) => 20 * Math.log10(Math.max(v, 1) / peak);
+
+function eosWinPeak(s, from, to) {
+  let p = 0;
+  for (let i = Math.max(0, from); i < Math.min(s.length, to); i++) p = Math.max(p, Math.abs(s[i]));
+  return p;
+}
+
+/** Envelope of 5ms window peaks, dB relative to the clip's own peak. */
+function eosEnvelope(s, n, peak) {
+  const win = Math.round(EOS_SR * EOS_WIN_MS / 1000);
+  const e = [];
+  for (let i = 0; i + win <= n; i += win) e.push({ i, end: i + win, db: eosDb(eosWinPeak(s, i, i + win), peak) });
+  return e;
+}
+
+/** Group above-threshold windows into events; label each SPEECH or IMPULSE. */
+function eosEvents(env) {
+  const gapWin = Math.max(1, Math.round(EOS_EVENT_GAP_MS / EOS_WIN_MS));
+  const out = [];
+  let cur = null, gap = 0;
+  for (const w of env) {
+    if (w.db > EOS_SPEECH_DB) {
+      if (cur && gap <= gapWin) { cur.end = w.end; cur.peakDb = Math.max(cur.peakDb, w.db); cur.aboveWins++; }
+      else { if (cur) out.push(cur); cur = { start: w.i, end: w.end, peakDb: w.db, aboveWins: 1 }; }
+      gap = 0;
+    } else if (cur) gap++;
+  }
+  if (cur) out.push(cur);
+  return out.map(e => ({
+    ...e,
+    ms: (e.end - e.start) / EOS_SR * 1000,
+    aboveMs: e.aboveWins * EOS_WIN_MS,
+    kind: e.aboveWins * EOS_WIN_MS >= EOS_MIN_SPEECH_MS ? 'speech' : 'impulse',
+  }));
+}
+
+/** End of speech = end of the LAST event long enough to be speech. */
+function endOfSpeech(env) {
+  const sp = eosEvents(env).filter(e => e.kind === 'speech');
+  return sp.length ? sp[sp.length - 1].end : null;
+}
+
+/** Write mono 16-bit PCM as a WAV file. */
+async function writeMonoWav(file, s, n) {
+  const data = Buffer.alloc(n * 2);
+  for (let i = 0; i < n; i++) data.writeInt16LE(s[i], i * 2);
+  const h = Buffer.alloc(44);
+  h.write('RIFF', 0); h.writeUInt32LE(36 + data.length, 4); h.write('WAVE', 8);
+  h.write('fmt ', 12); h.writeUInt32LE(16, 16); h.writeUInt16LE(1, 20); h.writeUInt16LE(1, 22);
+  h.writeUInt32LE(EOS_SR, 24); h.writeUInt32LE(EOS_SR * 2, 28); h.writeUInt16LE(2, 32); h.writeUInt16LE(16, 34);
+  h.write('data', 36); h.writeUInt32LE(data.length, 40);
+  await fs.writeFile(file, Buffer.concat([h, data]));
+}
+
+/**
+ * trimToEndOfSpeech — end a NEW render at end-of-speech + 250ms.
+ *
+ * FAILS OPEN, always. Four refusal guards, any one of which keeps the clip
+ * whole, plus a catch-all: no detected speech; a cut larger than 40% of the
+ * clip; a cut longer than 2000ms; a cut whose removed region contains a speech
+ * event (an independent second opinion on the plan — by construction it cannot,
+ * so if it ever fires the detector has contradicted itself and we keep the take);
+ * and any thrown error whatsoever.
+ *
+ * @param {string} inputPath - the raw provider bytes
+ * @param {string} outputPath - where the trimmed WAV is written (only on a cut)
+ * @returns {Promise<{trimmed: boolean, path: string, refused: string|null,
+ *   removedMs: number, durationMs: number|null, eosMs: number|null}>}
+ *   `path` is what the caller should master: outputPath on a cut, inputPath on
+ *   any refusal. A refusal is never an error.
+ */
+async function trimToEndOfSpeech(inputPath, outputPath) {
+  const untouched = (refused, extra = {}) => ({
+    trimmed: false, path: inputPath, refused, removedMs: 0,
+    durationMs: null, eosMs: null, ...extra,
+  });
+  try {
+    const { s, n, peak } = await decodePcmMono(inputPath);
+    if (!n) return untouched('decoded to zero samples — refused, kept untrimmed');
+    const env = eosEnvelope(s, n, peak);
+    const durationMs = Math.round(n / EOS_SR * 1000);
+
+    // GUARD 1 — nothing in this clip reads as sustained speech. Could be a very
+    // short take, a whisper, a decode we do not understand. We do not cut what
+    // we cannot see.
+    const eos = endOfSpeech(env);
+    if (eos === null) return untouched('no sustained speech event detected — refused, kept untrimmed', { durationMs });
+
+    const want = Math.min(n, eos + Math.round(EOS_SR * EOS_DECAY_MS / 1000));
+    const removed = n - want;
+    const eosMs = Math.round(eos / EOS_SR * 1000);
+    if (removed <= 0) return untouched(null, { durationMs, eosMs });   // already ends tight — no cut needed, not a refusal
+
+    // GUARD 2 — removing this much of the clip means the detector, not the
+    // provider's dead air, is driving the number.
+    if (removed / n > EOS_MAX_TRIM_FRAC) {
+      return untouched(`would remove ${(removed / n * 100).toFixed(1)}% of the clip (guard ${EOS_MAX_TRIM_FRAC * 100}%) — refused, kept untrimmed`, { durationMs, eosMs });
+    }
+    // GUARD 3 — same reasoning in absolute time, for long clips where a huge
+    // cut is still a small fraction.
+    const removedMs = Math.round(removed / EOS_SR * 1000);
+    if (removedMs > EOS_MAX_TRIM_MS) {
+      return untouched(`would remove ${removedMs}ms (guard ${EOS_MAX_TRIM_MS}ms) — refused, kept untrimmed`, { durationMs, eosMs });
+    }
+    // Never end before the detected end of speech, whatever the arithmetic says.
+    const end = Math.max(want, eos);
+    // GUARD 4 — independent assertion on the finished plan: whatever we are
+    // about to drop must contain no speech event. By construction it cannot, so
+    // this firing means the detector disagrees with itself. Keep the take.
+    if (eosEvents(env).some(e => e.kind === 'speech' && e.end > end)) {
+      return untouched('planned cut would remove a speech event — refused, kept untrimmed', { durationMs, eosMs });
+    }
+
+    await writeMonoWav(outputPath, s.subarray(0, end), end);
+    return {
+      trimmed: true, path: outputPath, refused: null,
+      removedMs: Math.round((n - end) / EOS_SR * 1000), durationMs, eosMs,
+    };
+  } catch (error) {
+    // FAIL OPEN. A trim we could not compute is a trim we do not do.
+    return untouched(`detection failed (${error.message}) — refused, kept untrimmed`);
+  }
+}
+
 async function normalizeAudio(inputPath, outputPath, targetLUFS = -16.0) {
   try {
     const measured = await measureIntegratedLoudness(inputPath, PRE_COMPRESS);
@@ -1000,6 +1212,11 @@ module.exports = {
   // block above detectTailClick. A stale caller must fail loudly on an undefined
   // function, never silently fall back to something that looks like it worked.
   flagTailDefect,
+  // A-133 end-of-speech tail. The one sanctioned trim, render-time only, fails
+  // open on every guard — read the block above trimToEndOfSpeech before reusing.
+  trimToEndOfSpeech,
+  endOfSpeech,
+  EOS_DECAY_MS,
   checkSoxInstalled,
   getAudioDuration,
   checkMp3Format,
