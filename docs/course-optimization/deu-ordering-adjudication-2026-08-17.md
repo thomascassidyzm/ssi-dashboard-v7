@@ -168,7 +168,7 @@ Confirming a finding is *not* actually fine is half the job, and five were not:
 
 ## What to do about the nine — two piles, two different authorities
 
-### Pile A · PROPOSE a debut reorder — for Kai, not applied
+### Pile A · PROPOSE a debut reorder — with Kai, not applied
 
 Five of the nine phrases are fine sentences whose *curriculum order* is wrong. In each case the
 missing word is a beginner essential used long before its debut, and moving one lego earlier
@@ -213,17 +213,28 @@ than deciding.
 
 ## Held, and why — the honest gap
 
-**Nothing has been applied.** At approximately **13:00 UTC** Supabase became unreachable from this
-machine on **both** paths — the REST API (requests hang indefinitely, then return an HTML error
-page) and the Postgres pooler (`aws-1-eu-west-1.pooler.supabase.com:5432` → `FATAL: Failed to
-connect to database: {:error, :timeout}`). Retried at 13:04 and 13:09; still down. All the reads
-this adjudication rests on completed at **12:45–12:55**, before the outage, and are captured
-offline — so the analysis above is complete and live-derived. The *writes* are not possible.
+**Nothing has been applied, and that is now a ruling rather than a recommendation.** At
+approximately **13:00 UTC** Supabase also became unreachable from this machine on **both** paths —
+the REST API (requests hang indefinitely, then return an HTML error page) and the Postgres pooler
+(`aws-1-eu-west-1.pooler.supabase.com:5432` → `FATAL: Failed to connect to database: {:error,
+:timeout}`). Retried at 13:04, 13:09 and 13:14; still down. All the reads this adjudication rests
+on completed at **12:45–12:55**, before the outage, and are captured offline — so the analysis above
+is complete and live-derived. The *writes* are not possible.
+
+**The dispositions, as ruled 2026-08-17:**
+
+- **Pile B (the four phrase edits) — HELD** until `feat/edit-impact-check-2026-08-17` merges. The
+  pre-check tool and the same-voice migration that closes the silent-voice-swap hole both live on
+  that branch, and editing a released course around a fix that is already written is the wrong
+  trade. The merge ask is with Tom. **The apply happens in a fresh dispatch after the branch lands.**
+- **Pile A (the three debut reorders) — WITH KAI.** A course-structure change; queued for his
+  ruling. Not to be acted on here.
+- **The S47 adjacent-sentiment judgement — WITH KAI**, alongside Pile A.
 
 Three things are therefore outstanding, and none of them is a judgement I am dodging:
 
-1. **The four Pile B edits are specified to the row and verified, but not written.** They need the
-   live DB, and they need item 2 first.
+1. **The four Pile B edits are specified to the row and verified, but not written** — held per the
+   ruling above, and they need item 2 to land first.
 2. **The audio consequence is worse than I first wrote, and it has no safe tool on `main`.**
    #920 scouted it and I verified the trigger bodies myself in
    `database/migrations/20260806_audio_link_integrity.sql:113-165`. My earlier phrasing — that an
