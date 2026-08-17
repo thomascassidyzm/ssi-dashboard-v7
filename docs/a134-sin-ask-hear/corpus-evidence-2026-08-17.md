@@ -452,3 +452,96 @@ Reported as gaps rather than papered over:
 All queries run as `psql "$DATABASE_URL"` with `.env.psql` at the repo root, against the live
 Supabase estate on 2026-08-17, read-only, before the shared session pooler saturated under a
 concurrent 18-worker fleet. Sinhala text is reproduced exactly as stored.
+
+---
+
+## 9. The route reversed, on measured evidence (2026-08-17, pool reopened)
+
+Two things measured once the pool cleared overturned the recommendation in §6. Both were things I
+had **asserted rather than measured**, which is exactly where this went wrong.
+
+### 9a. `විමසන්න` was undercounted — badly
+
+I called it "a single attestation, in a reflexive frame, in a more formal register" and rejected
+the distinct-word route on that basis. Measured:
+
+| where | count |
+|---|---|
+| seeds | 1 |
+| legos | 1 |
+| **practice phrases** | **15** |
+
+Spanning seeds **99, 100, 106, 109** — and mostly **not** reflexive, with varied addressees:
+
+| id | known | English |
+|---|---|---|
+| `S0099L01B02` | විමසන්න මට | ask me |
+| `S0099L01B03` | විමසන්න ඇයි | ask why |
+| `S0099L01U02` | මට ඕනේ විමසන්න ඔයාට මොකක්හරි | I want to ask you something |
+| `S0099L01U05` | මම විමසන්නවා ඔයාට හෙට | I'll ask you tomorrow |
+| `S0099L01U08` | මට ඕනේ විමසන්න ඔයාගේ මිතුරාට | I want to ask your friend |
+| `S0100L01U05` | ඔයා ඕනේ නෑ විමසන්න ඇයි | you shouldn't ask why |
+| `S0106L01U08` | ඔයා විතරයි ඕනේ විමසන්න | you just need to ask |
+| `S0109L01U05` | ඔයා කළ යුතුයි විමසන්න ඔයාටම ඇයි | you must ask yourself why |
+
+Two incidental defects visible here: **`මම විමසන්නවා`** (`S0099L01U05`) appears malformed —
+`විමසනවා` is the form — and these phrases mark the addressee with the **dative** (`මට`, `ඔයාට`,
+`මිතුරාට`) where the `අහනවා` seeds use the **ablative**. Both are with the refuter.
+
+Also honest: the past form **`විමසුවා` is not attested anywhere in the course** — only the
+infinitive `විමසන්න`. My proposed `විමසුවා`/`විමසුවේ`/`විමසුවාද` are **inferred** forms.
+
+### 9b. The English side cannot be touched — this is the decisive measurement
+
+`tools/edit-impact-check.cjs` run on `S0380L03` both ways:
+
+| | ablative route (English gains "her") | distinct-word route (known side only) |
+|---|---|---|
+| verdict | **RECONSIDER** | RECONSIDER |
+| **phrases that stop tiling** | **143, across 48 seeds** | **0** — "no vocab unit removed" |
+| own phrases losing containment | **8** | 0 |
+| silent slots | **4** (known, target1, target2, presentation) | 2 (known, presentation) |
+| stale presentation clips | 2 | 2 |
+| clips to render | more | **≈3** |
+
+The English chunk `"i asked what"` is **tiled through 143 phrases across 48 seeds**. Changing it to
+`"I asked her what"` breaks all of them — other people's finished work — for the sake of one row.
+
+And the ablative route **cannot avoid** the English change: putting `ඇයගෙන්` on the known side
+while the English stays "I asked what" would leave the prompt saying *her* and the answer not, which
+is precisely the known↔target mismatch the fix exists to remove.
+
+**So the ablative route is dead for the three collisions, and my §6 recommendation is withdrawn.**
+The viable route is the **distinct known-side word**, English untouched:
+
+| seed | known before | known after | English |
+|---|---|---|---|
+| 380 | මොකක්ද කියලා මම ඇහුවා | මොකක්ද කියලා මම විමසුවා | **unchanged** — "I asked what" |
+| 381 | කියලා මම ඇහුවේ නෑ | කියලා මම විමසුවේ නෑ | **unchanged from the seed** — "I didn't ask if" |
+| 382 | ඔයා ... ඇහුවාද | ඔයා ... විමසුවාද | **unchanged from the seed** — "did you ask" |
+
+It also reaches the two cases the ablative route could not: **405 and 420** need no addressee under
+`විමසනවා`, so the coherence gap closes rather than leaving two named residues.
+
+The zero-English-cost ablative fixes at **415** (`මගෙන් ඇහුවොත්`) and **465** (`ඇගෙන්`) still stand
+on their own merits — those are naturalness repairs that touch no English chunk.
+
+### 9c. Live-state facts now established
+
+- **Every affected lego is fully linked.** Known side is `azure_si-LK-SameeraNeural` throughout;
+  target side is `bedd6226`/`xai_bedd6226` — the **same voice**, bare and prefixed. No genuine
+  voice split. `S0382L04` has no presentation clip, consistent with being a phraseless reuse.
+- **Known-side edits null, they don't re-point.** No clip exists for any proposed new text, so
+  `audio_id_for_text` returns NULL — a visible silent slot rather than a silent voice swap. The
+  voice-swap hazard of §7 is real but **does not fire on this particular repair**.
+- **`PRESENTATIONS STALE` is flagged DANGER on every variant** — 2 intro clips per edit, and one of
+  them belongs to a *sibling* card (`S0380L01`) whose own text never changes but whose presentation
+  quotes the seed sentence.
+- **A lego and a phrase share one clip** ("same text elsewhere ... they share the same clip").
+- **`eng_for_sin` is `new_app_status = 'beta'` — reachable by learners.** The blast radius is live.
+- The course has **1 pod**, so the migration protocol check applies.
+- This tool **does** tokenise Sinhala (it named `විමසුවා` by form), unlike the ASCII-only
+  seed-complete known-side gate. Its "taught at seed NEVER" flag on `විමසුවා` is the one real
+  objection left to the distinct-word route — an inflected form of an already-taught verb, on the
+  learner's *native* side. Whether that counts as untaught vocabulary is a judgement for the
+  refuter and ultimately a native speaker.
