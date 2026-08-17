@@ -41,14 +41,31 @@
 --      audio_id_for_text(..., 'presentation') returns NULL every time and the
 --      assignment nulls the column as a side effect.
 --
---   3. That nulling is PERMANENT AND UNRECORDED. link_audio_to_content — the
---      AFTER INSERT ON course_audio trigger that refills NULL slots when audio
---      lands — matches presentation on the same never-true predicate
---      (normalize_text(target_text) = NEW.text_normalized). So a NULLed lego
---      presentation link is never refilled by anything, by any route, ever. The
---      clip survives in course_audio, fully paid for, permanently unreachable.
---      This is the bleed: an ordinary lego text edit silently and irreversibly
---      severs a presentation slot, and nothing anywhere writes down that it did.
+--   3. That nulling is UNRECORDED, and no DATABASE path can undo it.
+--      link_audio_to_content — the AFTER INSERT ON course_audio trigger that
+--      refills NULL slots when audio lands — matches presentation on the same
+--      never-true predicate (normalize_text(target_text) = NEW.text_normalized),
+--      so it can never refill this column. Nothing anywhere writes down that the
+--      link was severed. This is the bleed: an ordinary lego text edit silently
+--      severs a presentation slot with no record that it happened.
+--
+--      CORRECTED, and the correction matters. An earlier draft of this header
+--      said the link is "never refilled by anything, by any route, ever". That
+--      is FALSE and an adversarial review caught it. linkPresentationAudio()
+--      (services/phases/phase8-audio-v13.cjs, ~line 1550) DOES refill NULL lego
+--      presentation slots during a phase8 audio run — matching on
+--      course_audio.lego_id, not on text, for legos with is_new = true. Measured
+--      2026-08-17: 70,903 legos are within reach of that route, and of the
+--      22,665 legos whose presentation link is NULL today, 151 are refillable by
+--      it right now.
+--
+--      So the accurate claim is narrower and still damning: no trigger and no
+--      automatic path repairs it; repair requires a phase8 audio run that nobody
+--      is prompted to make, because nothing recorded that the link was lost.
+--      And note the shape of that route — it keys on lego_id, which does NOT
+--      change when the text changes. A refill can therefore restore a link to a
+--      clip that introduces the OLD wording. Recording the drop is what makes
+--      that distinguishable after the fact; today it is not.
 --
 --   4. course_legos.presentation_audio_id is TEXT, not uuid, and carries NO
 --      foreign key (course_practice_phrases' is uuid). Today all 72,062 values
@@ -79,6 +96,23 @@
 -- single course_audio row in any branch (make-before-break,
 -- docs/architecture/AUDIO_PIPELINE_ARCHITECTURE.md §6b). No TTS is generated,
 -- requested or implied.
+--
+-- ── Rule 0: THE WRITER WINS ─────────────────────────────────────────────────
+--
+-- Before any of the three, per column: if the UPDATE that changed the text ALSO
+-- set that link column to a different value, this function keeps its hands off
+-- it entirely and records nothing. The writer is managing the link explicitly
+-- and knows something the trigger does not.
+--
+-- This is new, and it fixes a real clobber the 20260806 rule had. Without it the
+-- function reads OLD, resolves a substitute from OLD's voice, and overwrites the
+-- value the writer supplied in the same statement — so
+--   UPDATE course_legos SET target_text = 'new', target1_audio_id = NULL ...
+-- silently RESURRECTS the link the writer deliberately cleared, pointing at a
+-- clip that speaks the old words. That is exactly the shape of an audio-first
+-- text repair (render the new clip, then swap text and link together in one
+-- statement), so it is not a hypothetical. Found by adversarial review, not by
+-- the canary, which had no check for it until that review.
 --
 -- ── Scope: all four columns, and what changes for each ──────────────────────
 --
@@ -158,9 +192,12 @@ BEGIN
       MESSAGE = 'audio_id_for_text_same_voice() does not exist',
       HINT    = 'Apply 20260817_seed_audio_link_integrity.sql first: node database/canary/canary_seed_audio_link_integrity.cjs --commit';
   END IF;
+  -- IS DISTINCT FROM, not <>: if the column were missing entirely the subselect
+  -- returns NULL, `NULL <> 'text'` is NULL, and the IF would fall through as if
+  -- the dependency were satisfied.
   IF (SELECT data_type FROM information_schema.columns
        WHERE table_schema='public' AND table_name='content_audio_link_drops'
-         AND column_name='row_id') <> 'text' THEN
+         AND column_name='row_id') IS DISTINCT FROM 'text' THEN
     RAISE EXCEPTION USING
       MESSAGE = 'content_audio_link_drops.row_id is not text',
       HINT    = 'Apply 20260817b_phrase_audio_link_integrity.sql first — it widens the column.';
@@ -221,6 +258,14 @@ BEGIN
     IF v_role = 'known' THEN
       CONTINUE WHEN NEW.known_text IS NOT DISTINCT FROM OLD.known_text;
       v_col := 'known_audio_id'; v_new_text := NEW.known_text; v_cur := OLD.known_audio_id;
+      -- The writer set this link EXPLICITLY in the same UPDATE as the text.
+      -- Respect it: they know something we do not. Without this the function
+      -- reads OLD, resolves a substitute from OLD's voice, and overwrites the
+      -- value the writer just supplied — so `SET known_text=…, known_audio_id=NULL`
+      -- silently RESURRECTS a link the writer deliberately cleared. That is the
+      -- exact shape of an audio-first text repair (render the new clip, then
+      -- swap text and link together), so it is not hypothetical.
+      CONTINUE WHEN NEW.known_audio_id IS DISTINCT FROM OLD.known_audio_id;
 
     ELSIF v_role = 'presentation' THEN
       -- Invalidation scope preserved verbatim from 20260806: a presentation clip
@@ -229,6 +274,8 @@ BEGIN
                 AND NEW.target_text IS NOT DISTINCT FROM OLD.target_text;
       v_col := 'presentation_audio_id'; v_new_text := NEW.target_text;
       v_raw := OLD.presentation_audio_id;
+      -- Writer-set link in the same UPDATE: respect it (see the known branch).
+      CONTINUE WHEN NEW.presentation_audio_id IS DISTINCT FROM OLD.presentation_audio_id;
       CONTINUE WHEN v_raw IS NULL;
 
       -- The cosmetic-keep rule, expressed against the ROW's text rather than the
@@ -261,6 +308,10 @@ BEGIN
       v_col := v_role || '_audio_id'; v_new_text := NEW.target_text;
       v_cur := CASE v_role WHEN 'target1' THEN OLD.target1_audio_id
                            ELSE OLD.target2_audio_id END;
+      -- Writer-set link in the same UPDATE: respect it (see the known branch).
+      CONTINUE WHEN CASE v_role WHEN 'target1' THEN NEW.target1_audio_id
+                                ELSE NEW.target2_audio_id END
+                    IS DISTINCT FROM v_cur;
     END IF;
 
     -- Nothing linked: nothing can be stale. link_audio_to_content (AFTER INSERT
@@ -284,7 +335,21 @@ BEGIN
     CONTINUE WHEN v_found AND (v_prev.text_normalized = normalize_text(v_new_text)
                             OR normalize_text(v_prev.text) = normalize_text(v_new_text));
 
-    IF v_found THEN
+    IF v_found AND v_role = 'presentation' THEN
+      -- Rule 2 is DELIBERATELY SKIPPED for presentation, on a measurement rather
+      -- than a preference. A presentation clip never speaks a bare lego
+      -- target_text — 0 of 72,062 estate-wide — so this lookup provably cannot
+      -- return a row. And it is not free: audio_id_for_text_same_voice costs
+      -- 263ms warm and up to 4.6s cold on a large course, because the
+      -- `OR normalize_text(a.text) = …` disjunct defeats the index. Paying that
+      -- on every genuinely-edited lego that has a presentation link, for a result
+      -- that is always NULL, is a straight tax on every content pass.
+      -- An earlier draft called it "one lookup" and kept it for uniformity; the
+      -- measurement is the better argument. If a future generator ever mints
+      -- presentation clips whose text IS the target text, delete this branch and
+      -- uniformity returns with it.
+      v_sub := NULL;
+    ELSIF v_found THEN
       v_sub := audio_id_for_text_same_voice(NEW.course_code, v_new_text, v_role, v_cur);
     ELSE
       -- The link points at a course_audio row that no longer exists: there is no
@@ -298,6 +363,12 @@ BEGIN
       CONTINUE;  -- resolved back to the same clip; nothing happened
     ELSIF NOT v_found THEN
       v_reason := 'nulled-dangling-link';
+    ELSIF v_role = 'presentation' THEN
+      -- Distinct from the reason below on purpose: we did not look for a
+      -- same-voice substitute and fail to find one, we declined to look. A
+      -- reader counting 'nulled-no-same-voice-clip-for-new-text' rows should not
+      -- have presentation drops silently folded into that number.
+      v_reason := 'nulled-presentation-not-text-addressable';
     ELSE
       v_reason := 'nulled-no-same-voice-clip-for-new-text';
     END IF;

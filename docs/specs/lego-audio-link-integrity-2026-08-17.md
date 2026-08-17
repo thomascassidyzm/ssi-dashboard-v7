@@ -50,15 +50,30 @@ the number whose clip text normalises to the row's `target_text` is **zero**. No
 few — zero. So the lookup returns NULL every time and the assignment severs the
 column as a side effect. **Including on a trailing-space edit.**
 
-**3. That severing is permanent and unrecorded.** `link_audio_to_content` — the
-trigger that refills NULL slots when audio lands — matches presentation on the
-same never-true predicate (`normalize_text(target_text) = NEW.text_normalized`).
-So a NULLed lego presentation link is never refilled by anything, by any route,
-ever. The clip survives in `course_audio`, fully paid for, permanently
-unreachable. Nothing anywhere writes down that it happened.
+**3. That severing is unrecorded, and no database path can undo it.**
+`link_audio_to_content` — the trigger that refills NULL slots when audio lands —
+matches presentation on the same never-true predicate
+(`normalize_text(target_text) = NEW.text_normalized`), so it can never refill this
+column. Nothing anywhere writes down that the link was severed.
 
-**That is the bleed.** An ordinary lego text edit silently and irreversibly
-severs a presentation slot, and the only visible symptom is a learner hearing
+> **Correction.** An earlier draft of this report — and of the migration header —
+> said the link is "never refilled by anything, by any route, ever". **That is
+> false**, and an adversarial review (#942) caught it before the migration was
+> applied. `linkPresentationAudio()` (`services/phases/phase8-audio-v13.cjs`,
+> ~line 1550) **does** refill NULL lego presentation slots during a phase8 audio
+> run — matching on `course_audio.lego_id`, not on text, for `is_new` legos.
+> Measured: **70,903** legos are within reach of that route, and of the **22,665**
+> whose presentation link is NULL today, **151** are refillable by it right now.
+>
+> The accurate claim is narrower and still damning: no trigger and no automatic
+> path repairs it; repair needs a phase8 run that nobody is prompted to make,
+> because nothing recorded that the link was lost. And note the route's shape — it
+> keys on `lego_id`, which does **not** change when the text changes, so a refill
+> can restore a link to a clip that introduces the *old* wording. Recording the
+> drop is what makes that distinguishable afterwards. Today it is not.
+
+**That is the bleed.** An ordinary lego text edit silently severs a presentation
+slot, nothing records it, and the only visible symptom is a learner hearing
 nothing where an introduction should be.
 
 **4. `course_legos.presentation_audio_id` is TEXT, not uuid, and carries no
@@ -85,7 +100,10 @@ before the migration is applied:
 | `BASELINE` — and nothing is written down about it | confirmed: zero report rows |
 | `BASELINEPRES` — a **trailing-space** edit destroys the presentation link | confirmed: severed |
 | `BASELINEPRES` — the clip itself survives | confirmed: alive in `course_audio`, unreachable |
-| `BASELINEPRES` — `link_audio_to_content` could refill it | **no** — its predicate cannot hold for an intro |
+| `BASELINEPRES` — any *trigger* could refill it | **no** — read from the live `link_audio_to_content` body |
+| `BASELINEPRES` — the phase8 `lego_id` route is real | **yes, 151 slots refillable today** — the check exists to stop the report overclaiming again |
+| `WRITERWINS` — a link set in the same UPDATE as the text | respected, not clobbered |
+| `LANGUAGE` — a same-voice clip in a *different* language | rejected; control shows the old rule would take it |
 | `CONTROL` — `audio_id_for_text` *would* still have swapped it after the migration | confirmed |
 
 The defect is not inferred. It is reproduced, then fixed, then reproduced again
@@ -111,8 +129,38 @@ nothing dangles. What changes is only the honesty:
   the clip's, because a presentation clip never speaks the row's text and so the
   clip-text test can never be the thing that saves it.
 - a **genuine** edit still nulls the link — as it does today — but now writes a
-  `content_audio_link_drops` row naming the clip, its voice and its words. The
-  severed slot becomes countable, and the link becomes restorable by hand.
+  `content_audio_link_drops` row naming the clip, its voice and its words, under
+  its own reason `nulled-presentation-not-text-addressable`. The severed slot
+  becomes countable, and the link becomes restorable by hand.
+
+Rule 2 is **deliberately skipped** for presentation, on a measurement rather than
+a preference. An earlier draft applied it for uniformity and called it "one
+lookup". The adversarial review measured it: `audio_id_for_text_same_voice` costs
+**263 ms warm and up to 4.6 s cold** on a large course, because the
+`OR normalize_text(a.text) = …` disjunct defeats the index — and for presentation
+it provably cannot return a row. Paying that on every genuinely-edited lego for a
+result that is always NULL is a straight tax on every content pass. The drop gets
+its own reason string so that presentation drops are never silently folded into
+the `nulled-no-same-voice-clip-for-new-text` count.
+
+### Rule 0: the writer wins
+
+New in this migration, and it fixes a real clobber the 2026-08-06 rule had.
+Before any of the three rules, per column: **if the UPDATE that changed the text
+also set that link column, the trigger keeps its hands off it and records
+nothing.**
+
+Without it the function reads `OLD`, resolves a substitute from `OLD`'s voice, and
+overwrites what the writer supplied in the same statement — so
+
+```sql
+UPDATE course_legos SET target_text = 'new', target1_audio_id = NULL ...
+```
+
+silently **resurrects** the link the writer deliberately cleared, pointing at a
+clip that speaks the old words. That is exactly the shape of an audio-first text
+repair, so it is not hypothetical. Found by adversarial review, not by the canary
+— which had no check for it until that review, and now has two.
 
 Two schema realities are handled because nothing forbids them:
 
@@ -126,11 +174,14 @@ Two schema realities are handled because nothing forbids them:
 
 ## What this does NOT fix — recorded, not papered over
 
-- **A dropped presentation slot still cannot be refilled automatically.**
-  `link_audio_to_content` matches it on the same never-true predicate. This
-  migration makes every drop *recorded* and therefore reversible by hand; it does
-  not touch that trigger, which sits on a different table with a much larger
-  blast radius. **This is the next open item on this thread.**
+- **A dropped presentation slot is still not refilled automatically.** No trigger
+  can do it. A phase8 audio run can, via `linkPresentationAudio()`'s `lego_id`
+  route — but nothing schedules that, and because that route keys on `lego_id`
+  rather than on text it can restore a link to a clip introducing the *old*
+  wording. This migration makes every drop recorded and therefore reversible by
+  hand; it does not touch `link_audio_to_content`, which sits on a different
+  table with a much larger blast radius. **This is the next open item on this
+  thread.**
 - **31 known, 103 target1 and 103 target2 lego links are already stale today** —
   the clip does not speak the row's text. Under the new rule a cosmetic edit to
   one of those rows drops the link rather than re-resolving it. That is the
@@ -151,10 +202,10 @@ inside one transaction, replays the real behaviour against it, and commits only
 if every assertion is green. Anything red, or no `--commit`, and the database
 never saw it.
 
-**55/55 green.** Checks: `BASELINE`, `BASELINEPRES`, `CONTROL`, `NOSWAP`,
-`SAMEVOICE`, `COSMETIC`, `COSMETICPRES`, `PRESDROP`, `PRESRAW`, `PRESDANGLE`,
-`STALENORM`, `TARGET`, `NULLKNOWN`, `NULLSTAYS`, `NOTEXT`, `NAME`, `ROWID`,
-`NOAUDIODEL`, `LIVEPATHS`.
+**62/62 green**, and applied. Checks: `BASELINE`, `BASELINEPRES`, `CONTROL`,
+`NOSWAP`, `SAMEVOICE`, `WRITERWINS`, `LANGUAGE`, `COSMETIC`, `COSMETICPRES`,
+`PRESDROP`, `PRESRAW`, `PRESDANGLE`, `STALENORM`, `TARGET`, `NULLKNOWN`,
+`NULLSTAYS`, `NOTEXT`, `NAME`, `ROWID`, `NOAUDIODEL`, `LIVEPATHS`.
 
 The three fixture lessons from today's applies are baked in:
 
@@ -167,6 +218,17 @@ The three fixture lessons from today's applies are baked in:
   prior canaries lacked, which is how a real trailing space reached
   `eng_for_sin` seed 1 and `eng_for_sin:S0001L01B01` on `--commit`.
 
+And one more, which the review forced: an explicit restore is **not enough**, and
+claiming "left exactly as it was found" on the strength of one was overclaiming.
+Two UPDATEs on a live lego also bump `version`, write permanent
+`content_audit_log` rows, bump the course version, and fire
+`touch_course_content_stamp` — which on `--commit` would invalidate every
+`eng_for_sin` learner's cached script. None of that is undone by writing the old
+text back. The whole production probe now runs inside a **`SAVEPOINT`** and is
+rolled back to it; the explicit restore is still performed and still asserted
+first, because that is the behaviour under test. Verified live afterwards: the
+probed lego is still at `version 34`.
+
 It also added a lock guard: `DROP`/`CREATE TRIGGER` takes ACCESS EXCLUSIVE on
 `course_legos` and holds it to COMMIT, so a run started against a busy table
 would queue behind the content passes *and* make every one of their writes queue
@@ -178,6 +240,39 @@ phrase triggers went live earlier today and other agents' real edits land in it
 while the canary runs. Every drops read is now scoped to a high-water id taken
 before anything is applied. An unscoped assertion fails on other people's rows
 and says nothing about our own.
+
+---
+
+## Applied, and verified live
+
+`node database/canary/canary_lego_audio_link_integrity.cjs --commit` — 62/62
+green, committed, fixtures removed, PostgREST notified.
+
+Preconditions checked before applying, as briefed:
+
+- **DB stable** — probed once a minute for ~30 minutes; connection latency steady
+  at ~300 ms, no errors, no exclusive locks.
+- **No write fleet on `course_legos`** — a content pass wrote 119 legos at
+  14:45Z; it drained to a trickle and then to nothing. Applied at 15:12Z with no
+  `course_legos` write for 10 minutes and no active backend on any content table.
+- The canary now also sets **`lock_timeout = 15s`** and reads its slow queries
+  *before* the apply, so it cannot sit on `ACCESS EXCLUSIVE` while a fleet queues
+  behind it.
+
+Independent post-apply verification (`tools/audio-link/verify-audio-link-rule-live.cjs`,
+read-only) — **24/24 green**:
+
+- all three text-edit triggers exist and all three carry a `WHEN` clause
+- the lego function is `SECURITY DEFINER`, pins `search_path`, uses the
+  same-voice matcher, **no longer references the voice-blind one**, writes to
+  `content_audio_link_drops`, and contains no write against `course_audio` in any
+  branch
+- rule 0 present for `known`, `presentation`, and `target1`/`target2`
+- presentation rule 2 skipped, with its own reason string
+- `row_id` is `text`, `old_link_raw` exists and is nullable
+- **no fixture row left behind** in any of the six tables
+- the probed production lego is pristine: no trailing space, `version` still 34,
+  all four links intact
 
 ---
 

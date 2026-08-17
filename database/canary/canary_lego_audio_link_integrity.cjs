@@ -41,21 +41,37 @@
  *   NULLKNOWN    course_legos.known_text is NULLABLE; setting it to NULL drops
  *                and reports rather than raising.
  *   NULLSTAYS    an already-NULL link stays NULL and reports nothing.
- *   NOTEXT       a non-text update touches no link and reports nothing (WHEN).
+ *   NOTEXT       a non-text update touches no link and reports nothing.
+ *   WRITERWINS   a link set in the SAME UPDATE as the text is respected, and an
+ *                explicit NULL is not resurrected (rule 0).
+ *   LANGUAGE     a same-voice clip in a DIFFERENT language is not accepted as a
+ *                substitute, with a control showing the old rule would take it.
  *   NAME         the trigger keeps its (misleading) name, so every pg_trigger
  *                match on it — tools/edit-impact-check.cjs included — resolves.
  *   ROWID        a lego uuid id records through the text row_id column, and a
  *                SEED edit and a PHRASE edit still record correctly too.
- *   NOAUDIODEL   no course_audio row is inserted, updated or deleted by any of it.
+ *   NOAUDIODEL   the function contains no write against course_audio in any
+ *                branch (static), and the one borrowed production clip is
+ *                byte-identical afterwards (targeted).
  *   LIVEPATHS    the queries the learner path and the dashboard run against
- *                course_legos still work, a real production lego can still be
- *                written, and this canary LEAVES IT EXACTLY AS IT FOUND IT.
+ *                course_legos still work, and a real production lego can still
+ *                be written.
  *
  * The restore discipline is not decoration. Both prior canaries dirtied a real
  * production row and never cleaned it up; --commit commits, so on 2026-08-17
  * that left a real trailing space on eng_for_sin seed 1 and on
- * eng_for_sin:S0001L01B01. This canary restores every production row it dirties
- * and ASSERTS the restore, on the text and on all four links.
+ * eng_for_sin:S0001L01B01. This canary performs the explicit restore AND asserts
+ * it — and then rolls the whole production probe back to a SAVEPOINT, because an
+ * explicit restore cannot undo the version bump, the content_audit_log rows or
+ * the content-stamp bump that invalidates learners' cached scripts. Claiming
+ * "left exactly as it was found" on the strength of a text rewrite alone was
+ * overclaiming, and an adversarial review said so.
+ *
+ * Several checks are deliberately KEEP tests (COSMETIC, COSMETICPRES, NULLSTAYS,
+ * NOTEXT, STALENORM) and would also pass if the trigger were simply absent. That
+ * is what they are for — they guard against over-eager dropping. The tests that
+ * prove the trigger is present and doing work are NOSWAP, SAMEVOICE, PRESDROP,
+ * TARGET, WRITERWINS, LANGUAGE and NAME.
  *
  * 20260817_seed_audio_link_integrity.sql and 20260817b_phrase_audio_link_integrity.sql
  * are hard dependencies (this migration owns no matcher and no report table of
@@ -226,11 +242,56 @@ const dropsForPre = async (c, id) =>
     const bpStillThere = await q(c, `SELECT id FROM course_audio WHERE id=$1`, [bpClip]);
     assert('BASELINEPRES the clip itself survives — it is the LINK that is lost',
       bpStillThere.length === 1, 'paid for, alive in course_audio, now unreachable');
-    const bpRefill = await q(c, `
-      SELECT count(*)::int n FROM course_audio a
-       WHERE a.id=$1 AND normalize_text($2::text) = a.text_normalized`, [bpClip, 'දැන්']);
-    assert('BASELINEPRES link_audio_to_content could never refill it',
-      bpRefill[0].n === 0, 'its predicate normalize_text(target_text)=text_normalized cannot hold for an intro');
+    // No DATABASE path can put it back. link_audio_to_content is the only trigger
+    // that refills NULL slots; read its LIVE body and confirm the predicate it
+    // really uses for presentation, rather than re-deriving the arithmetic of a
+    // predicate we wrote out ourselves — which is a tautology, and is what an
+    // earlier draft of this check did.
+    const linkFn = (await q(c, `
+      SELECT pg_get_functiondef(p.oid) AS d FROM pg_proc p
+        JOIN pg_namespace n ON n.oid=p.pronamespace
+       WHERE n.nspname='public' AND p.proname='link_audio_to_content'`))[0].d;
+    const presBranch = linkFn.slice(linkFn.indexOf("NEW.role = 'presentation'"));
+    assert('BASELINEPRES no TRIGGER can refill it — link_audio_to_content keys presentation on target_text',
+      /course_legos/.test(presBranch) &&
+      /normalize_text\(target_text\)\s*=\s*NEW\.text_normalized/.test(presBranch),
+      'read from the live function body, not assumed');
+    // But repair is not IMPOSSIBLE, and saying so was a real error in an earlier
+    // draft of the migration header, caught by adversarial review.
+    // linkPresentationAudio() in phase8 refills NULL lego presentation slots by
+    // course_audio.lego_id — not by text — for is_new legos. It is simply not
+    // automatic, and nothing prompts it, because nothing records the loss.
+    const bpRefillable = (await q(c, `
+      SELECT count(*)::int n FROM course_legos l
+       WHERE l.presentation_audio_id IS NULL AND l.is_new AND l.lego_id IS NOT NULL
+         AND EXISTS (SELECT 1 FROM course_audio a
+                      WHERE a.course_code=l.course_code AND a.role='presentation'
+                        AND a.lego_id = l.lego_id
+                        AND (a.s3_key IS NULL OR a.s3_key NOT LIKE 'pending/%'))`))[0].n;
+    assert('BASELINEPRES the phase8 lego_id refill route is real — the header must not deny it',
+      bpRefillable > 0,
+      `${bpRefillable} currently-NULL lego presentation slots are refillable by a phase8 run today`);
+
+    // ── Read the slow stuff BEFORE the apply ────────────────────────────────
+    // Everything after the apply runs while this transaction holds ACCESS
+    // EXCLUSIVE on course_legos (DROP/CREATE TRIGGER takes it and holds it to
+    // COMMIT), and every other session writing legos queues behind us for that
+    // whole window. This scan alone measured ~3.3s. It is a read of a real
+    // course that does not need the migration live, so it is paid up front.
+    const snClip = (await q(c, `
+      SELECT id, text, text_normalized, normalize_text(text) AS live
+        FROM course_audio
+       WHERE course_code='ara_for_eng' AND role='known'
+         AND text_normalized <> normalize_text(text)
+       ORDER BY id LIMIT 1`))[0];
+
+    // The real production lego the LIVEPATHS block probes, chosen up front for
+    // the same reason.
+    const realLego = (await q(c, `
+      SELECT id, known_text, target_text, known_audio_id, target1_audio_id,
+             target2_audio_id, presentation_audio_id, version
+        FROM course_legos WHERE course_code='eng_for_sin' AND presentation_audio_id IS NOT NULL
+       ORDER BY seed_number, lego_index LIMIT 1`))[0];
 
     // ── Apply, in this same transaction ─────────────────────────────────────
     if (!(await q(c, `SELECT to_regclass('public.content_audio_link_drops') AS t`))[0].t) {
@@ -251,9 +312,6 @@ const dropsForPre = async (c, id) =>
     await c.query(inlined(MIGRATION));
     console.log('  lego migration applied inside the transaction\n');
 
-    const audioBefore = (await q(c, `SELECT count(*)::int n FROM course_audio`))[0].n;
-    const fixtureClipsAtApply = (await q(c,
-      `SELECT count(*)::int n FROM course_audio WHERE course_code=$1`, [COURSE]))[0].n;
 
     // ── NAME ────────────────────────────────────────────────────────────────
     const defAfter = (await q(c, `
@@ -307,6 +365,55 @@ const dropsForPre = async (c, id) =>
       svDrops[0].new_audio_id === svNew && svDrops[0].old_text === 'she is my mother',
       JSON.stringify(svDrops.map(d => d.reason)));
 
+    // ── WRITERWINS: a text+audio UPDATE in one statement is not clobbered ───
+    // The audio-first repair shape: render the new clip, then swap the text and
+    // the link together. Without rule 0 the trigger reads OLD, resolves from
+    // OLD's voice, and overwrites what the writer just set.
+    const wwOld = await mkClip(c, 'the old wording', 'known', 'azure_en-GB-RyanNeural', 'eng');
+    const wwNew = await mkClip(c, 'the new wording', 'known', 'azure_en-GB-RyanNeural', 'eng');
+    const wwLego = await mkLego(c, 915, 'the old wording', 'පරණ වචන', { known: wwOld });
+    await c.query(`UPDATE course_legos SET known_text='the new wording', known_audio_id=$2 WHERE id=$1`,
+      [wwLego, wwNew]);
+    const ww = await linkOf(c, wwLego);
+    assert('WRITERWINS a link set in the SAME UPDATE as the text is respected, not overwritten',
+      ww.known_audio_id === wwNew,
+      ww.known_audio_id === wwOld ? 'CLOBBERED back to the old clip' : 'kept the writer value');
+    assert('WRITERWINS and nothing is reported, because nothing was dropped',
+      (await dropsFor(c, wwLego)).length === 0);
+
+    // The destructive half of the same shape: an explicit NULL must stay NULL.
+    const wnClip = await mkClip(c, 'clear me', 'known', 'azure_en-GB-RyanNeural', 'eng');
+    const wnLego = await mkLego(c, 916, 'clear me', 'මකන්න', { known: wnClip });
+    await c.query(`UPDATE course_legos SET known_text='cleared', known_audio_id=NULL WHERE id=$1`, [wnLego]);
+    const wn = await linkOf(c, wnLego);
+    assert('WRITERWINS an explicit NULL in the same UPDATE is not resurrected',
+      wn.known_audio_id === null,
+      wn.known_audio_id === null ? 'stayed NULL' : 'RESURRECTED a link the writer cleared');
+
+    // ── LANGUAGE: the same-voice matcher also constrains language ───────────
+    // Never exercised before this review. Same canonical voice id, different
+    // language — must NOT be accepted as a substitute.
+    const lgOld = await mkClip(c, 'ich will gehen', 'known', 'azure_multi-Ryan', 'deu');
+    const lgWrong = await mkClip(c, 'i want to go', 'known', 'azure_multi-Ryan', 'eng');
+    const lgLego = await mkLego(c, 917, 'ich will gehen', 'මට යන්න ඕන', { known: lgOld });
+    await c.query(`UPDATE course_legos SET known_text='i want to go' WHERE id=$1`, [lgLego]);
+    const lg = await linkOf(c, lgLego);
+    assert('LANGUAGE a same-voice clip in a DIFFERENT language is not accepted as a substitute',
+      lg.known_audio_id !== lgWrong && lg.known_audio_id === null,
+      lg.known_audio_id === lgWrong ? 'ACCEPTED a cross-language substitute' : 'nulled, correctly');
+    const lgControl = await q(c, `SELECT audio_id_for_text($1,$2,'known') AS id`, [COURSE, 'i want to go']);
+    assert('LANGUAGE control: the old voice-and-language-blind rule WOULD have taken it',
+      lgControl[0].id === lgWrong, 'audio_id_for_text constrains neither');
+
+    // ── SAMEVOICE on target1, not just known ───────────────────────────────
+    const svtOld = await mkClip(c, 'පරණ ඉලක්කය', 'target1', 'azure_si-LK-SameeraNeural', 'sin');
+    const svtNew = await mkClip(c, 'අලුත් ඉලක්කය', 'target1', 'azure_si-LK-SameeraNeural', 'sin');
+    const svtLego = await mkLego(c, 918, 'old target', 'පරණ ඉලක්කය', { t1: svtOld });
+    await c.query(`UPDATE course_legos SET target_text='අලුත් ඉලක්කය' WHERE id=$1`, [svtLego]);
+    const svt = await linkOf(c, svtLego);
+    assert('SAMEVOICE the same-voice relink works on target1 too, not only known',
+      svt.target1_audio_id === svtNew);
+
     // ── COSMETIC ────────────────────────────────────────────────────────────
     const cosClip = await mkClip(c, 'I want to go home', 'known', 'azure_en-GB-RyanNeural', 'eng');
     const cosLego = await mkLego(c, 903, 'I want to go home', 'මට ගෙදර යන්න ඕන', { known: cosClip });
@@ -341,7 +448,10 @@ const dropsForPre = async (c, id) =>
       pdDrops.length === 1 && pdDrops[0].column_name === 'presentation_audio_id' &&
       pdDrops[0].role === 'presentation' && pdDrops[0].old_audio_id === pdPres &&
       pdDrops[0].old_voice_id === 'azure_si-LK-SameeraNeural' &&
-      pdDrops[0].reason === 'nulled-no-same-voice-clip-for-new-text' &&
+      // A reason of its own: rule 2 is not attempted for presentation, so this
+      // is "we declined to look", not "we looked and found nothing". Folding it
+      // into nulled-no-same-voice-clip-for-new-text would corrupt that count.
+      pdDrops[0].reason === 'nulled-presentation-not-text-addressable' &&
       pdDrops[0].new_text === 'පස්සේ',
       JSON.stringify(pdDrops.map(d => [d.column_name, d.reason])));
     assert('PRESDROP the drop is therefore reversible by hand — the clip id is kept',
@@ -355,8 +465,11 @@ const dropsForPre = async (c, id) =>
     await c.query(`UPDATE course_legos SET presentation_audio_id='not-a-uuid-at-all' WHERE id=$1`, [prLego]);
     await c.query(`UPDATE course_legos SET target_text='අලුත්' WHERE id=$1`, [prLego]);
     const pr = await linkOf(c, prLego);
-    assert('PRESRAW an unparseable presentation link does not block the edit', true);
-    assert('PRESRAW it is nulled', pr.presentation_audio_id === null);
+    // Reaching this line at all IS the "it did not raise" result — an exception
+    // would have aborted the transaction two statements ago. Asserting `true`
+    // here, as an earlier draft did, records a pass that cannot fail.
+    assert('PRESRAW an unparseable presentation link is nulled, and did not block the edit',
+      pr.presentation_audio_id === null);
     const prDrops = await dropsFor(c, prLego);
     assert('PRESRAW and the raw value is preserved in old_link_raw',
       prDrops.length === 1 && prDrops[0].reason === 'nulled-unparseable-link' &&
@@ -378,12 +491,8 @@ const dropsForPre = async (c, id) =>
     // The state cannot be forged: trg_course_audio_normalize recomputes
     // text_normalized on every write to course_audio. Borrow a real clip in that
     // state; nothing about the borrowed clip is modified.
-    const snClip = (await q(c, `
-      SELECT id, text, text_normalized, normalize_text(text) AS live
-        FROM course_audio
-       WHERE course_code='ara_for_eng' AND role='known'
-         AND text_normalized <> normalize_text(text)
-       ORDER BY id LIMIT 1`))[0];
+    // (snClip was read BEFORE the apply — see the pre-apply block — so its
+    //  multi-second scan is not paid while holding ACCESS EXCLUSIVE.)
     if (!snClip) {
       assert('STALENORM no stale-normalised clip left to test against', true,
         'the backlog has been backfilled — this check is obsolete');
@@ -489,13 +598,32 @@ const dropsForPre = async (c, id) =>
       rowIdType?.data_type === 'text' && (await dropsFor(c, nsLego)).length === 1, rowIdType?.data_type);
 
     // ── NOAUDIODEL ──────────────────────────────────────────────────────────
-    const audioAfter = (await q(c, `SELECT count(*)::int n FROM course_audio`))[0].n;
-    const fixtureClipsNow = (await q(c,
-      `SELECT count(*)::int n FROM course_audio WHERE course_code=$1`, [COURSE]))[0].n;
-    const madeSince = fixtureClipsNow - fixtureClipsAtApply;
-    assert('NOAUDIODEL no course_audio row outside the fixtures changed count',
-      audioAfter - audioBefore === madeSince,
-      `${audioBefore} -> ${audioAfter}, fixture clips made since apply ${madeSince}`);
+    // NOT a global count(*) diff. That was the first version of this check and it
+    // proved nothing: in READ COMMITTED a concurrent render can false-FAIL it and
+    // a paired delete+insert elsewhere can false-PASS it, and on 2.5M rows it also
+    // cost seconds while holding ACCESS EXCLUSIVE. Two sound checks instead.
+    //
+    // (a) STATIC: the function body contains no write against course_audio at
+    //     all. A property of the code, not a racy observation.
+    const fnBody = (await q(c, `
+      SELECT pg_get_functiondef(p.oid) AS d FROM pg_proc p
+        JOIN pg_namespace n ON n.oid=p.pronamespace
+       WHERE n.nspname='public' AND p.proname='null_lego_audio_on_text_change'`))[0].d;
+    const writesAudio = /\b(INSERT\s+INTO|UPDATE|DELETE\s+FROM)\s+course_audio\b/i.test(fnBody);
+    assert('NOAUDIODEL the function contains no write against course_audio, in any branch',
+      !writesAudio, 'static check on pg_get_functiondef — not a racy row count');
+
+    // (b) TARGETED: the one real production clip this canary touches (the
+    //     borrowed stale-normalised one) is byte-identical afterwards.
+    if (snClip) {
+      const snAfter = (await q(c, `
+        SELECT id, text, text_normalized, voice_id, language, role, s3_key, duration_ms
+          FROM course_audio WHERE id=$1`, [snClip.id]))[0];
+      assert('NOAUDIODEL the borrowed production clip is byte-identical afterwards',
+        !!snAfter && snAfter.text === snClip.text &&
+        snAfter.text_normalized === snClip.text_normalized,
+        'the only real course_audio row this canary reads');
+    }
 
     // ── LIVEPATHS ───────────────────────────────────────────────────────────
     const live = await q(c, `
@@ -519,16 +647,25 @@ const dropsForPre = async (c, id) =>
     // dirties is restored and the restore is ASSERTED, on the text AND on all
     // four links. Both prior canaries skipped this and left real trailing spaces
     // behind on --commit.
-    const realLego = (await q(c, `
-      SELECT id, known_text, target_text, known_audio_id, target1_audio_id,
-             target2_audio_id, presentation_audio_id
-        FROM course_legos WHERE course_code='eng_for_sin' AND presentation_audio_id IS NOT NULL
-       ORDER BY seed_number, lego_index LIMIT 1`))[0];
     assert('LIVEPATHS a real production lego with a presentation link was found to probe',
       !!realLego, realLego && `seed lego ${String(realLego.id).slice(0, 8)}`);
 
+    // EVERYTHING that touches the real row happens inside a savepoint.
+    //
+    // An explicit restore of known_text is NOT enough, and saying "left exactly
+    // as it was found" on the strength of one was overclaiming — an adversarial
+    // review caught it. Two UPDATEs on a live lego also bump `version` (+3 via
+    // increment_version), write permanent content_audit_log rows, bump the
+    // course version, and fire touch_course_content_stamp — which on --commit
+    // invalidates every eng_for_sin learner's cached script. None of that is
+    // undone by writing the old text back.
+    //
+    // ROLLBACK TO SAVEPOINT undoes all of it. The explicit restore is still
+    // performed and still asserted first, because that is the behaviour under
+    // test; the savepoint is what makes the claim in the check name true.
+    await c.query('SAVEPOINT realprobe');
+
     await c.query(`UPDATE course_legos SET release_batch=release_batch WHERE id=$1`, [realLego.id]);
-    assert('LIVEPATHS a no-op write on a real production lego still succeeds', true);
 
     await c.query(`UPDATE course_legos SET known_text = known_text || ' ' WHERE id=$1`, [realLego.id]);
     const realAfter = await linkOf(c, realLego.id);
@@ -559,6 +696,18 @@ const dropsForPre = async (c, id) =>
       restored.presentation_audio_id === realLego.presentation_audio_id);
     assert('LIVEPATHS the restore itself dropped nothing',
       (await dropsFor(c, realLego.id)).length === 0);
+
+    // Now undo the side effects an explicit restore cannot reach.
+    await c.query('ROLLBACK TO SAVEPOINT realprobe');
+    const pristine = (await q(c, `
+      SELECT known_text, target_text, version, known_audio_id, target1_audio_id,
+             target2_audio_id, presentation_audio_id
+        FROM course_legos WHERE id=$1`, [realLego.id]))[0];
+    assert('LIVEPATHS the real lego is untouched down to its version number',
+      pristine.version === realLego.version &&
+      pristine.known_text === realLego.known_text &&
+      pristine.presentation_audio_id === realLego.presentation_audio_id,
+      `version ${realLego.version} -> ${pristine.version} (no audit rows, no cache-stamp bump)`);
 
     // Nothing outside the fixture course may have a drop recorded against it BY
     // THIS RUN. Scoped by id > the high-water mark taken before anything was

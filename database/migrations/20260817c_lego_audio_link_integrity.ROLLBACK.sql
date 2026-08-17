@@ -7,11 +7,16 @@
 --
 --   * an ordinary lego text edit can silently move a slot onto a different
 --     voice, with no NULL and no alarm; and
---   * ANY lego text edit — including a trailing-space one — permanently and
---     unrecordedly severs the row's presentation_audio_id, because
---     audio_id_for_text(..., 'presentation') matches nothing (0 of 72,062 lego
---     presentation clips speak the row's target_text) and link_audio_to_content
---     can never refill the slot afterwards.
+--   * ANY lego text edit — including a trailing-space one — unrecordedly severs
+--     the row's presentation_audio_id, because audio_id_for_text(...,
+--     'presentation') matches nothing (0 of 72,062 lego presentation clips speak
+--     the row's target_text), and no database path can put it back:
+--     link_audio_to_content matches presentation on that same never-true
+--     predicate. Repair is possible but not automatic — linkPresentationAudio()
+--     (services/phases/phase8-audio-v13.cjs, ~line 1550) refills NULL lego
+--     presentation slots during a phase8 audio run, keying on course_audio.lego_id
+--     rather than on text, for is_new legos. Nobody is prompted to make that run,
+--     because under this restored rule nothing records that the link was lost.
 --
 -- That is a real regression, not a neutral undo. Run it only to unblock, and
 -- re-apply.
@@ -66,6 +71,13 @@ $function$;
 
 COMMENT ON FUNCTION public.null_lego_audio_on_text_change() IS
   'MISNAMED: it does not null, it re-resolves via audio_id_for_text(), which constrains neither voice nor language — a text edit can therefore swap the voice a learner hears with no NULL and no alarm. For presentation_audio_id that lookup never matches, so any text edit severs the slot permanently and unrecorded. Restored by 20260817c_lego_audio_link_integrity.ROLLBACK.sql.';
+
+-- CREATE OR REPLACE FUNCTION does NOT reset the ACL, so the forward migration's
+-- `REVOKE ALL … FROM PUBLIC` survives this file unless it is undone explicitly.
+-- (Visible today on the seed and phrase functions, which have the same REVOKE and
+-- whose rollbacks do not undo it.) The 20260806 function had the default ACL —
+-- EXECUTE to PUBLIC — so restoring behaviour means restoring that too.
+GRANT EXECUTE ON FUNCTION public.null_lego_audio_on_text_change() TO PUBLIC;
 
 DROP TRIGGER IF EXISTS trg_null_lego_audio_on_text_change ON public.course_legos;
 CREATE TRIGGER trg_null_lego_audio_on_text_change
