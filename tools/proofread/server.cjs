@@ -32,6 +32,7 @@ const PORT = process.env.PROOFREAD_PORT || 4747;
 // from localhost, so binding all interfaces only ever exposed it to the public internet.
 const HOST = process.env.BIND_HOST || '127.0.0.1';
 const PROGRESS_DIR = path.join(__dirname, 'progress');
+const FETCH_TIMEOUT_MS = Number(process.env.PROOFREAD_FETCH_TIMEOUT_MS || 15000);
 
 if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
   console.error('Missing SUPABASE_URL / SUPABASE_SERVICE_KEY in .env');
@@ -65,6 +66,10 @@ async function fetchAll(table, columns, order, filter) {
     let q = supabase.from(table).select(columns).eq('course_code', COURSE).range(from, from + PAGE - 1);
     if (filter) q = filter(q);
     for (const [col, opts] of order) q = q.order(col, opts);
+    // Without a deadline a Supabase outage hangs each page until Cloudflare's own
+    // ~100s edge timeout, so the reviewer stares at bare chrome for a minute and a
+    // half before anything at all appears (2026-08-17). Fail fast, fall back.
+    q = q.abortSignal(AbortSignal.timeout(FETCH_TIMEOUT_MS));
     const { data, error } = await q;
     if (error) throw new Error(`${table}: ${error.message}`);
     rows.push(...data);
@@ -76,18 +81,75 @@ async function fetchAll(table, columns, order, filter) {
 let cache = null;
 let cacheFetchedAt = 0;
 const CACHE_TTL_MS = 60 * 1000;
+
+// Last-good snapshot on disk. The 60s TTL plus the page's ?refresh=1 mean every
+// load goes to the network, so an upstream outage used to leave the reviewer with
+// nothing at all — header and buttons, no phrases, no boxes. Serving the last
+// known-good course (clearly labelled stale) keeps proofreading possible while
+// Supabase is unreachable; decisions already save to the local progress file.
+function snapshotPath(course) {
+  return path.join(PROGRESS_DIR, `${course}.snapshot.json`);
+}
+function saveSnapshot(data) {
+  try {
+    // The fallback is only worth having if it cannot be poisoned. A read that
+    // comes back a fraction of the size of the last good one is far more likely
+    // a partial/misdirected fetch than a course that genuinely lost most of its
+    // phrases, so keep the old snapshot and say so rather than overwrite it.
+    const prev = loadSnapshot();
+    if (prev && data.phrases.length < prev.phrases.length * 0.5) {
+      console.warn(`[snapshot] refusing to overwrite ${prev.phrases.length} phrases with ${data.phrases.length}; keeping previous`);
+      return;
+    }
+    fs.mkdirSync(PROGRESS_DIR, { recursive: true });
+    const tmp = snapshotPath(data.course) + '.tmp';
+    fs.writeFileSync(tmp, JSON.stringify(data));
+    fs.renameSync(tmp, snapshotPath(data.course));
+  } catch (err) {
+    console.warn('[snapshot] save failed:', err.message);
+  }
+}
+function loadSnapshot() {
+  try {
+    return JSON.parse(fs.readFileSync(snapshotPath(COURSE), 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
+// While the database is down, every click would otherwise pay the full fetch
+// timeout before falling back — unusable for someone working through phrases.
+// After a failure, background reads serve the snapshot straight away; only an
+// explicit reload (?refresh=1) retries the network.
+let lastFailureAt = 0;
+const FAILURE_BACKOFF_MS = 60 * 1000;
+
 async function loadCourse(force) {
   if (cache && !force && Date.now() - cacheFetchedAt < CACHE_TTL_MS) return cache;
-  const [seeds, legos, phrases] = await Promise.all([
-    fetchAll('course_seeds', 'seed_number, known_text, target_text, approved_at, flagged_at', [['seed_number', {}]]),
-    fetchAll('course_legos', 'seed_number, lego_index, known_text, target_text', [['seed_number', {}], ['lego_index', {}]]),
-    fetchAll('course_practice_phrases', 'id, seed_number, lego_index, position, known_text, target_text, phrase_role', [
-      ['seed_number', {}], ['lego_index', {}], ['position', {}],
-    ], (q) => q.neq('phrase_role', 'component')),
-  ]);
-  cacheFetchedAt = Date.now();
-  cache = { course: COURSE, seeds, legos, phrases, fetchedAt: cacheFetchedAt };
-  return cache;
+  if (!force && Date.now() - lastFailureAt < FAILURE_BACKOFF_MS) {
+    const fallback = cache || loadSnapshot();
+    if (fallback) return { ...fallback, offline: true, offlineReason: 'database unreachable (backing off)' };
+  }
+  try {
+    const [seeds, legos, phrases] = await Promise.all([
+      fetchAll('course_seeds', 'seed_number, known_text, target_text, approved_at, flagged_at', [['seed_number', {}]]),
+      fetchAll('course_legos', 'seed_number, lego_index, known_text, target_text', [['seed_number', {}], ['lego_index', {}]]),
+      fetchAll('course_practice_phrases', 'id, seed_number, lego_index, position, known_text, target_text, phrase_role', [
+        ['seed_number', {}], ['lego_index', {}], ['position', {}],
+      ], (q) => q.neq('phrase_role', 'component')),
+    ]);
+    cacheFetchedAt = Date.now();
+    lastFailureAt = 0;
+    cache = { course: COURSE, seeds, legos, phrases, fetchedAt: cacheFetchedAt };
+    saveSnapshot(cache);
+    return cache;
+  } catch (err) {
+    lastFailureAt = Date.now();
+    const fallback = cache || loadSnapshot();
+    if (!fallback) throw err;
+    console.warn(`[offline] live fetch failed (${err.message}) — serving snapshot from ${new Date(fallback.fetchedAt).toISOString()}`);
+    return { ...fallback, offline: true, offlineReason: err.message };
+  }
 }
 
 // ---------- approval / review-completeness ----------
@@ -123,7 +185,9 @@ app.get('/api/state', async (req, res) => {
     const data = await loadCourse(req.query.refresh === '1');
     const progress = loadProgress(COURSE);
     let stale = staleApprovals(data, progress);
-    if (ENFORCE_ON_LOAD && stale.length) {
+    // Never bulk-write approvals off a stale snapshot — the seeds it names may
+    // already have been reviewed in the window the snapshot cannot see.
+    if (ENFORCE_ON_LOAD && stale.length && !data.offline) {
       for (const n of stale) await setApprovedAt(n, null);
       console.log(`[enforce-on-load] unapproved ${stale.length} seed(s) holding unchecked phrases`);
       stale = [];
@@ -151,6 +215,9 @@ app.post('/api/decision', async (req, res) => {
   let unapproved = null;
   try {
     const data = await loadCourse(false);
+    // On a stale snapshot approved_at may already have moved, and the write would
+    // fail anyway — the decision above is saved, which is what matters offline.
+    if (data.offline) return res.json({ ok: true, unapprovedSeed: null, offline: true });
     const phrase = data.phrases.find((p) => p.id === phraseId);
     const seed = phrase && data.seeds.find((s) => s.seed_number === phrase.seed_number);
     if (seed?.approved_at && uncheckedIn(data, progress, seed.seed_number).length) {
