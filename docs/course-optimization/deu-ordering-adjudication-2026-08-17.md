@@ -224,13 +224,43 @@ Three things are therefore outstanding, and none of them is a judgement I am dod
 
 1. **The four Pile B edits are specified to the row and verified, but not written.** They need the
    live DB, and they need item 2 first.
-2. **The blast-radius briefing (#920) has not landed.** Before touching a released course I need its
-   answer on one specific thing: a phrase text edit **re-resolves** its audio link silently via
-   `audio_id_for_text()` rather than nulling it, which means an edit can leave the learner hearing
-   **stale bytes under correct-looking metadata**. The lego trigger does the opposite and nulls its
-   link. I will not edit these four rows until that trigger behaviour is confirmed against
-   `supabase/schema.sql` and the lawful write path is named. No TTS will be run either way — the
-   pass ends by *queueing* an audio pass.
+2. **The audio consequence is worse than I first wrote, and it has no safe tool on `main`.**
+   #920 scouted it and I verified the trigger bodies myself in
+   `database/migrations/20260806_audio_link_integrity.sql:113-165`. My earlier phrasing — that an
+   edit could leave the learner hearing "stale bytes under correct-looking metadata" — **was
+   wrong**, and in a way worth correcting: `null_phrase_audio_on_text_change` is a **BEFORE
+   UPDATE** trigger that rewrites the audio column in the same statement, so there is no window in
+   which new text sits over old audio. The two real outcomes are both sharper:
+
+   - **Silent voice swap.** `audio_id_for_text()` matches on `course_code + role + s3_key IS NOT
+     NULL + text_normalized` and **constrains no voice**. If the estate already owns a clip of the
+     new German text in a *different* voice, the slot re-points at it immediately, with no NULL and
+     no alarm.
+   - **Immediate silence.** If no clip of the new text exists, the function returns NULL and the
+     slot goes silent at once — not "silent until an audio pass runs".
+
+   A `known_text` edit touches `known_audio_id` only; a `target_text` edit touches
+   `target1_audio_id` and `target2_audio_id`. The phrase trigger deliberately leaves
+   `presentation_audio_id` alone — the **lego** trigger does re-resolve it, so the two cards fail in
+   opposite directions and neither can be reasoned about from the other.
+
+   All four of my proposed edits change **both** sides, so all four are exposed to both outcomes.
+
+   Two pieces of the safety kit exist but are **not on `main`** — they are committed and pushed on
+   a colleague's in-flight branch, `feat/edit-impact-check-2026-08-17`: `tools/edit-impact-check.cjs`
+   (read-only pre-check; reports the audio-link consequence per row before you commit to the SQL)
+   and `database/migrations/20260817b_phrase_audio_link_integrity.sql`, whose commit message is
+   *"phrases get the seed rule — no more silent voice swap"* — i.e. it closes the exact hazard above
+   by adding an `audio_id_for_text_same_voice` rule, and ships with a ROLLBACK companion. **The
+   right move is to let that branch land first rather than to edit these four rows around it.**
+   That is a hand-off, not a blocker I own.
+
+   One gap in this: `supabase/schema.sql`, which CLAUDE.md names as the schema source of truth,
+   **does not exist in this checkout**, so the migrations pile was the only available evidence. The
+   trigger bodies above are what the migrations *say*; I could not confirm against the live
+   database what is actually installed, because of the outage. No TTS will be run either way — the
+   pass ends by *queueing* an audio pass, and `queue-audio-pass.cjs` refuses human-voice courses,
+   which is one more thing needing a live check on `eng_for_deu`.
 3. **Two verification workers are outstanding** — #919 on the direction claim and #921 the
    adversarial refutation of all nine findings. The direction claim is load-bearing for the entire
    96.1% figure, which is why it went to someone other than me. If #919 refutes it, the tier-1

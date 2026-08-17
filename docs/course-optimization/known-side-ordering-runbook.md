@@ -133,12 +133,29 @@ so "remove or remap" resolves to **remap**.
 
 - **Ordered paging** on every read; explicit paths on every `git add` (never `-A`), because a
   sibling session's dirty hunks will otherwise ride along.
-- **Impact-check** before any text edit, and re-verify audio links **after** — on a released
-  course a phrase text edit **re-resolves** its audio link silently via `audio_id_for_text()`
-  rather than nulling it, so the learner can be left hearing correct-looking metadata over stale
-  bytes. The lego trigger behaves the *opposite* way and nulls its presentation link. Confirm both
-  against `supabase/schema.sql` for the course you are touching — adjacent cards fail in opposite
-  directions.
+- **Impact-check** before any text edit, and re-verify audio links **after**. Know exactly what the
+  trigger does before you touch a released course, because it is not what "invalidate the audio"
+  would suggest. `null_phrase_audio_on_text_change` is a **BEFORE UPDATE** trigger that re-resolves
+  via `audio_id_for_text()` in the same statement, so there is never new text over old audio. The
+  two real outcomes are:
+  - **silent voice swap** — `audio_id_for_text()` constrains `course_code + role + s3_key IS NOT
+    NULL + text_normalized` and **not voice**, so if the estate owns a clip of the new text in
+    another voice the slot re-points at it with no NULL and no alarm;
+  - **immediate silence** — no clip of the new text means NULL, at once, not "until a pass runs".
+
+  A `known_text` edit touches `known_audio_id`; a `target_text` edit touches `target1_audio_id` and
+  `target2_audio_id`. The phrase trigger leaves `presentation_audio_id` alone; the **lego** trigger
+  re-resolves it. Adjacent cards fail in opposite directions and neither can be reasoned about from
+  the other — read both trigger bodies for the course you are touching.
+
+  Check whether `tools/edit-impact-check.cjs` and the `audio_id_for_text_same_voice` migration
+  (`20260817b_phrase_audio_link_integrity.sql`) have landed on `main` yet. As of 2026-08-17 they are
+  committed and pushed on `feat/edit-impact-check-2026-08-17` but not merged; the migration exists
+  specifically to close the silent-voice-swap hole above. **If they have landed, use them. If not,
+  prefer waiting over editing around them.** Note also that `supabase/schema.sql` — named in
+  CLAUDE.md as the schema source of truth — may be absent from your checkout, in which case the
+  migrations pile is your only evidence and you should say so rather than implying you verified the
+  live database.
 - **Blast-radius duty** on any text change: pods, learner progress, and the materialised
   `course_round_index` view.
 - **Never run TTS.** A content pass ends by **queueing** an audio pass:
