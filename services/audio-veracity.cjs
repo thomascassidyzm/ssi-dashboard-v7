@@ -234,7 +234,7 @@ function announceStatus (logger = console) {
     } else if (!av.available) {
       warn(`[audio-veracity] ⚠️  CANNOT CHECK — missing ${av.missing.join(' and ')}. Clips are being PUBLISHED UNCHECKED for silence and truncation. This is NOT a pass.`)
     } else {
-      info(`[audio-veracity] ON — unprimed whisper round-trip, model ${path.basename(WHISPER_MODEL)}, CER threshold ${CER_THRESHOLD}. GRADUATED SAMPLING: ${(SAMPLE_RATE_FIRST * 100).toFixed(0)}% of the first course, ${(SAMPLE_RATE_TRUSTED * 100).toFixed(0)}% once that samples clean, relaxing to a ${(SAMPLE_RATE_FLOOR * 100).toFixed(1)}% floor — a failure snaps it back. Validated on silence + truncation only; mispronunciation is NOT covered.`)
+      info(`[audio-veracity] ON — unprimed whisper round-trip, model ${path.basename(WHISPER_MODEL)}, CER threshold ${CER_THRESHOLD}. GRADUATED SAMPLING, PER COURSE: ${(SAMPLE_RATE_FIRST * 100).toFixed(0)}% opening, ${(SAMPLE_RATE_TRUSTED * 100).toFixed(0)}% after ${SAMPLE_STEP_CLEAN} clean sampled clips, relaxing a rung per further ${SAMPLE_STEP_CLEAN} down to a ${(SAMPLE_RATE_FLOOR * 100).toFixed(1)}% floor — a failure snaps it back and every course starts fresh. Validated on silence + truncation only; mispronunciation is NOT covered.`)
     }
   }
   return { enabled, available: av.available, missing: av.missing }
@@ -1052,14 +1052,28 @@ function recordVerdict (stats, verdict) {
 // comes back clean, drop to sampling 1% of the remaining 90%; keep relaxing the
 // sample rate as trust accumulates course by course through the run."
 //
+// SCOPE CORRECTED TO PER-COURSE (Tom, 2026-08-17): "Long-run whisper sampling
+// should be scoped PER COURSE, not per run — Kai typically generates one course
+// at a time, so the graduated drop to the 0.2% floor within a course is
+// explicitly fine and approved."
+//
+// This matters because the original reading made the relaxation unreachable in
+// practice. Trust was banked at COURSE BOUNDARIES, so a run containing exactly
+// one course never banked anything and stayed at the opening 10% from first clip
+// to last. Since one course per run is how the estate is actually driven, the
+// cheap end of the ladder was dead code and every course paid full opening rate
+// forever. The relaxation now happens WITHIN a course, as clean sampled clips
+// accumulate, and each course starts fresh from the opening rate — trust is no
+// longer carried across a course boundary in either direction.
+//
 // Neither of the two things it replaces: not blanket per-clip whisper on
 // everything (removed from phase8 last week — it made every render pay full ASR
 // cost to re-confirm a thing that had been true for thousands of clips), and not
 // zero checking (which is how a silent render reaches a learner, because there is
 // no staging environment between a TTS render and an ear).
 //
-// TRUST IS EARNED WITHIN A RUN AND SPENT ON THE RUN. Two properties make that
-// safe rather than merely cheap:
+// TRUST IS EARNED WITHIN A COURSE AND SPENT ON THAT COURSE. Two properties make
+// that safe rather than merely cheap:
 //
 //  1. A FAILURE SNAPS THE RATE BACK to the opening rate, immediately, mid-course.
 //     The cheap rate is a statement that the last few hundred clips were clean;
@@ -1084,52 +1098,65 @@ const SAMPLE_RATE_TRUSTED = Number(process.env.AUDIO_VERACITY_SAMPLE_TRUSTED || 
 // The floor the relaxation walks down to. Never 0: a run that never looks again
 // cannot notice it has gone wrong, however much trust it has banked.
 const SAMPLE_RATE_FLOOR = Number(process.env.AUDIO_VERACITY_SAMPLE_FLOOR || 0.002)
+// How many consecutive CLEAN SAMPLED clips buy one step down the ladder. This is
+// the within-course analogue of the old "that course sampled clean" — the opening
+// sample is a block of checks, not a single clip, because one clean clip is not
+// evidence that a run is healthy. At the opening 10% rate, 10 clean sampled clips
+// means ~100 clips rendered clean before the rate relaxes to 1%.
+const SAMPLE_STEP_CLEAN = Number(process.env.AUDIO_VERACITY_SAMPLE_STEP || 10)
 
 /**
- * The sampler for one render run. A "run" is one process's pass over one or more
- * courses; `startCourse()` is the boundary that lets trust accumulate across them.
+ * The sampler for one COURSE. `startCourse()` resets it: trust is earned within a
+ * course and never carried across a course boundary (Tom, 2026-08-17).
+ *
+ * The ladder, walked within a single course as clean sampled clips accumulate:
+ *   10%  →  1%  →  0.5%  →  0.25%  →  0.2% floor
+ * and a single failure snaps it straight back to the opening rate.
  *
  * @param {object} [o]
- * @param {number} [o.first]    rate for the first course (default 10%)
- * @param {number} [o.trusted]  rate once the first course sampled clean (default 1%)
+ * @param {number} [o.first]    opening rate for every course (default 10%)
+ * @param {number} [o.trusted]  rate after the opening sample comes back clean (default 1%)
  * @param {number} [o.floor]    the lowest rate relaxation will reach (default 0.2%)
+ * @param {number} [o.step]     clean sampled clips per step down the ladder (default 10)
  */
 function createSampler (o = {}) {
   const first = o.first != null ? Number(o.first) : SAMPLE_RATE_FIRST
   const trusted = o.trusted != null ? Number(o.trusted) : SAMPLE_RATE_TRUSTED
   const floor = o.floor != null ? Number(o.floor) : SAMPLE_RATE_FLOOR
 
-  let cleanCourses = 0      // consecutive courses that sampled clean
+  const step = o.step != null ? Number(o.step) : SAMPLE_STEP_CLEAN
+
   let coursesStarted = 0
   let rate = first
   let counter = 0           // drives the every-Nth selection
+  let steps = 0             // rungs descended THIS course
+  let cleanSinceStep = 0    // clean sampled clips since the last rung
   let courseSampled = 0
   let courseFailed = 0
   let courseCode = null
 
-  /** The rate this course runs at, given the trust banked so far. */
-  function rateForCourse () {
-    if (coursesStarted <= 1 || cleanCourses === 0) return first
-    // Halve again for each further clean course, down to the floor. Two clean
-    // courses is 1%, three is 0.5%, four 0.25%, then the floor holds.
-    return Math.max(floor, trusted / Math.pow(2, cleanCourses - 1))
+  /** The rate at rung `n` of the ladder. Rung 0 is the opening rate; rung 1 is
+   *  the trusted rate; each rung after that halves again, down to the floor. */
+  function rateAtStep (n) {
+    if (n <= 0) return first
+    return Math.max(floor, trusted / Math.pow(2, n - 1))
   }
 
   return {
-    /** Begin a course. Banks the previous course's result first. */
+    /** Begin a course. Every course starts at the opening rate: trust earned on
+     *  the last course says nothing about this one's voices, text or provider
+     *  config, and carrying it across was what made the ladder unreachable for
+     *  one-course runs in the first place. */
     startCourse (code) {
-      if (courseCode !== null) {
-        if (courseFailed === 0 && courseSampled > 0) cleanCourses++
-        else if (courseFailed > 0) cleanCourses = 0
-        // A course where nothing was sampled banks nothing: no evidence, no trust.
-      }
       courseCode = code
       coursesStarted++
       courseSampled = 0
       courseFailed = 0
       counter = 0
-      rate = rateForCourse()
-      return { course: code, rate, clean_courses: cleanCourses }
+      steps = 0
+      cleanSinceStep = 0
+      rate = first
+      return { course: code, rate, step: steps, step_clips: step }
     },
 
     /**
@@ -1147,18 +1174,36 @@ function createSampler (o = {}) {
     },
 
     /**
-     * Fold in a verdict from a sampled clip. A genuine failure snaps the rate
-     * back to the opening rate for the rest of this course — the cheap rate was
-     * a claim about clips that turned out not to hold.
+     * Fold in a verdict from a sampled clip.
+     *
+     * A run of clean sampled clips walks the rate DOWN the ladder a rung at a
+     * time; a genuine failure snaps it straight back to the opening rate and
+     * forfeits every rung — the cheap rate was a claim about clips that turned
+     * out not to hold, so it is withdrawn in full rather than decremented.
      */
     recordVerdict (verdict) {
       if (!verdict || verdict.checked !== true) return { rate, snapped: false }
-      if (verdict.pass === true) return { rate, snapped: false }
+      if (verdict.pass === true) {
+        cleanSinceStep++
+        if (cleanSinceStep >= step && rate > floor) {
+          cleanSinceStep = 0
+          steps++
+          rate = rateAtStep(steps)
+          // The counter deliberately keeps running. Resetting it here would
+          // force a sample on the very next clip — spending a check to confirm
+          // the thing we just relaxed on. The every-Nth walk simply continues
+          // with the wider N. (On a snap-back we DO reset, because there we
+          // want to start looking again immediately.)
+          return { rate, snapped: false, relaxed: true, step: steps }
+        }
+        return { rate, snapped: false }
+      }
       courseFailed++
       const snapped = rate !== first
       rate = first
       counter = 0
-      cleanCourses = 0
+      steps = 0
+      cleanSinceStep = 0
       return { rate, snapped }
     },
 
@@ -1168,7 +1213,9 @@ function createSampler (o = {}) {
         course: courseCode,
         rate,
         courses_started: coursesStarted,
-        clean_courses: cleanCourses,
+        step: steps,
+        clean_since_step: cleanSinceStep,
+        step_clips: step,
         sampled_this_course: courseSampled,
         failed_this_course: courseFailed,
       }
@@ -1213,7 +1260,7 @@ function samplerState () {
 const ALWAYS_SAMPLER = Object.freeze({
   shouldCheck: () => true,
   recordVerdict: () => ({ rate: 1, snapped: false }),
-  state: () => ({ course: null, rate: 1, courses_started: 0, clean_courses: 0, sampled_this_course: 0, failed_this_course: 0 }),
+  state: () => ({ course: null, rate: 1, courses_started: 0, step: 0, clean_since_step: 0, step_clips: 0, sampled_this_course: 0, failed_this_course: 0 }),
 })
 
 // ---------------------------------------------------------------------------
@@ -1309,6 +1356,7 @@ async function renderChecked (o) {
   const check = o.check || checkAudioVeracity
   const warn = (m) => (logger.warn || logger.log || console.warn).call(logger, m)
   const err = (m) => (logger.error || logger.log || console.error).call(logger, m)
+  const info = (m) => (logger.info || logger.log || console.log).call(logger, m)
   const label = `${meta.role || '?'} "${String(expectedText).slice(0, 40)}"`
   // The run's graduated sampler by default. Production callers pass one only to
   // opt a whole path out of sampling — see ALWAYS_SAMPLER, used by the
@@ -1339,6 +1387,13 @@ async function renderChecked (o) {
     if (snap.snapped) {
       warn(`[audio-veracity] sample failed on ${label} — sampling rate snapped back to `
         + `${(snap.rate * 100).toFixed(1)}% for the rest of this course`)
+    }
+    // The relaxation is as worth saying out loud as the snap-back: it is the
+    // moment the run starts paying less, and a reader of the log should be able
+    // to see WHY the checked count stops climbing.
+    if (snap.relaxed) {
+      info(`[audio-veracity] ${meta.courseCode || 'course'}: sample clean — relaxing to `
+        + `${(snap.rate * 100).toFixed(2)}% (rung ${snap.step})`)
     }
 
     if (!verdict.checked) {
@@ -1387,7 +1442,7 @@ function formatStats (stats) {
   if (stats.not_sampled) {
     const st = samplerState()
     bits.push(`${stats.not_sampled} not sampled (graduated sampling at `
-      + `${(st.rate * 100).toFixed(1)}%, ${st.clean_courses} clean course(s) banked)`)
+      + `${(st.rate * 100).toFixed(1)}%, rung ${st.step} of this course's ladder)`)
   }
   const why = Object.entries(stats.uncheckedReasons || {}).map(([k, v]) => `${k}=${v}`).join(', ')
   return `veracity: ${bits.join(', ')}${why ? ` (${why})` : ''}`

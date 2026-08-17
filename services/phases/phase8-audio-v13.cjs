@@ -2203,7 +2203,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // course by course through a run, so the sampler has to be told where one
     // course ends and the next begins.
     const sampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (${sampleRate.clean_courses} clean course(s) banked this run)`)
+    logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (per-course ladder, relaxes every ${sampleRate.step_clips} clean sampled clips)`)
 
     // Bind presentation audio to its consumers: the course_legos FK AND the
     // lego_introductions projection (both read live by the learning app —
@@ -2847,7 +2847,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     // course by course through a run, so the sampler has to be told where one
     // course ends and the next begins.
     const sampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (${sampleRate.clean_courses} clean course(s) banked this run)`)
+    logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (per-course ladder, relaxes every ${sampleRate.step_clips} clean sampled clips)`)
     // Use speed from voice config (everything is a parameter!)
     const speed = voiceSettings.settings?.speed || 1.0
 
@@ -5481,7 +5481,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
     // course by course through a run, so the sampler has to be told where one
     // course ends and the next begins.
     const sampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (${sampleRate.clean_courses} clean course(s) banked this run)`)
+    logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (per-course ladder, relaxes every ${sampleRate.step_clips} clean sampled clips)`)
 
     // Generate items using the same pattern as /generate
     const generateItem = async (item) => {
@@ -6912,7 +6912,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     podVeracityStats = veracity.newStats()
     veracity.announceStatus(logger)
     const podSampleRate = veracity.startCourse(courseCode)
-    logger.info(`[audio-veracity] ${courseCode}: sampling ${(podSampleRate.rate * 100).toFixed(1)}% of pod clips (${podSampleRate.clean_courses} clean course(s) banked this run)`)
+    logger.info(`[audio-veracity] ${courseCode}: sampling ${(podSampleRate.rate * 100).toFixed(1)}% of pod clips (per-course ladder, relaxes every ${podSampleRate.step_clips} clean sampled clips)`)
 
     // Optional per-run voice overrides. Useful when you want pod audio to use
     // a different provider (e.g. xAI) than the course's canonical voice_config.
