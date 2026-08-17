@@ -1,6 +1,6 @@
 # Runbook — adjudicating known-side ordering findings, one course per job
 
-**Written 2026-08-17 from the `eng_for_deu` pilot** (A135 sweep → 486 findings → 9 confirmed defects).
+**Written 2026-08-17 from the `eng_for_deu` pilot** (A135 sweep → 486 findings → 13 confirmed defects, 5 of them serious).
 This is the per-course procedure the remaining courses queue behind. It is written so a background
 worker can follow it without re-deriving the method, and so its output is comparable across courses.
 
@@ -57,6 +57,18 @@ real course and an unpaged Supabase query truncates silently. Filter phrases to
 `phrase_role in (build, use, practice)` — component rows are never drilled by the learner and
 including them inflated an earlier census by ~60%.
 
+**Never regex over a serialised `components` blob.** `components` is an array of `{known, target}`
+pairs, so a regex across the stringified JSON matches the literal **key name** `"known"` — which
+reports the English word *know* as taught at seed 1 in 457 legos, and will silently exonerate every
+finding that depends on it. Access the fields (`c.known`, `c.target`), and when you are checking
+which side a word is taught on, match that side only. Found the hard way on the pilot's adversarial
+pass.
+
+**Mind which side your stemmer indexes.** The pilot's target-side index was built from lego
+`target_text` only and not from component glosses, which biases towards *over*-reporting — a word
+taught only in a component reads as untaught. That is the safe direction to be wrong in, but say so
+rather than implying full coverage.
+
 ## Step 2 — bulk tier-1 pass, with STATED criteria
 
 Build the tier-1 test as code, with criteria written down, and report the fraction that dies.
@@ -107,6 +119,28 @@ to default to refuted when uncertain, and to re-derive every debut seed itself. 
 to try the strongest available refutation — for a language pair with transparent cognates, "the
 learner probably knows this word anyway" — and to grade that refutation honestly, because under
 the SSi method "they'd know it from school" is weak.
+
+**Ask it to adjudicate your DISMISSALS too, not just your findings.** On the pilot the refuter
+promoted **four of five dismissals** and demoted three findings — it moved the numbers in both
+directions, and the dismissals were where the adjudicator (me) had been sloppiest. Two lessons worth
+carrying:
+
+- **A one-seed gap is not automatically tolerable.** The pilot dismissed two one-seed items as
+  symmetric. They were not: `gut`→`good` is transparent, so the gap is harmless, whereas `care` has
+  no cognate and no loanword route, so one seed of distance still leaves the learner with nothing.
+  Judge the *reach*, never the *distance*.
+- **Check whether the target word is a loanword in the known language.** Duden listing `sorry` and
+  `Fun` as German demoted three findings from serious to mild, because a learner who uses the word
+  daily in their own language is not frightened by it. Note what the loanword does *not* supply —
+  usually the frame or the syntax — and keep the finding at tier 2 rather than dropping it.
+- **Check whether the "debut" you are citing teaches the sense the phrase needs.** The pilot's worst
+  item was reported as "hard debuts S106"; both S106/S109 legos teach `work hard`, the manner adverb,
+  and the predicative sense is never taught at all. A debut seed that names a repair which does not
+  exist is worse than no debut seed, because it makes a reorder look like a fix.
+- **A missing irregular form hides behind a well-taught lemma.** English `knew` appears nowhere in
+  300 seeds although `know` is taught fifteen times — the family routed around the simple past every
+  time. Enumerate the irregular forms the prompts actually demand and check each surface form, not
+  the lemma.
 
 ## Step 4 — fix the confirmed tier-2/3, cheapest honest route each
 
@@ -181,7 +215,8 @@ hand-verified examples. Read its numbers as a floor on quality, not a typical ca
 |---|---|---|
 | tier-1 kill rate | 96.1% | **lower** where the known side is agglutinative or CJK — the matcher's noise is higher but so is the hand-audit cost |
 | findings surviving | 19 of 486 | scales with the target-side gap, not the raw count |
-| confirmed defects | 9 phrases | |
+| moved by the adversarial pass | 4 dismissals promoted, 3 findings demoted | budget for this — it is not a rubber stamp |
+| confirmed defects | 13 phrases (5 serious, 8 mild) | |
 
 Three known traps, all recorded in the A135 report and all still live:
 

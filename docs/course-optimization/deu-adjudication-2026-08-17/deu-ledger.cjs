@@ -50,27 +50,35 @@ const RULINGS = {
     why: 'must produce "understand" at S27; debuts S58. Nothing in the S1–S26 inventory approximates it.' },
   'eng_for_deu:S0043L02U04': { tier: 3, word: 'understand', debut: 58, gap: 15,
     why: 'same word, same absence, at S43.' },
-  'eng_for_deu:S0038L03U06': { tier: 3, word: 'fun', debut: 64, gap: 26,
-    why: 'must produce "it is fun" at S38; "fun" debuts S64 — and S64 teaches it via this very German phrase ("es macht Spaß"). The S38 prompt uses the S64 lego 26 seeds before its own debut.' },
-  'eng_for_deu:S0043L01U06': { tier: 3, word: 'sorry', debut: 139, gap: 96,
-    why: 'must produce "I\'m sorry" at S43; "sorry" debuts S139. A 96-seed gap and the largest single item in the course.' },
-  'eng_for_deu:S0084L01U06': { tier: 3, word: 'sorry', debut: 139, gap: 55,
-    why: 'same word, same absence, at S84.' },
-  'eng_for_deu:S0047L02U06': { tier: 3, word: 'important + take', debut: 65, gap: 18,
-    why: 'must produce "it\'s important to take time" at S47; BOTH "important" and "take" debut at S65, together, in this same phrase. Two untaught content words in one prompt.' },
+  // DEMOTED 3→2 by #921's adversarial pass: Duden lists BOTH "Fun" (noun, der Fun) and "sorry"
+  // (interjection) as current German loanwords, so the learner does hold the word — from outside
+  // the course. That is not nothing: a learner who says "Sorry" colloquially in German is not
+  // frightened by being asked for it in English, and Kai's tier 3 turns on the SCARE. What the
+  // loanword does NOT supply is the frame ("I'm sorry, …" vs bare "Sorry"), so these stay defects.
+  'eng_for_deu:S0038L03U06': { tier: 2, word: 'fun', debut: 64, gap: 26,
+    why: 'must produce "it is fun" at S38; "fun" debuts S64 — and S64 teaches it via this very German phrase ("es macht Spaß"), so S38 is using a later seed\'s material wholesale. DEMOTED from 3 to 2 by #921: "Fun" is a Duden-listed German noun, so the word is available to the learner; the predicative English syntax is not.' },
+  'eng_for_deu:S0043L01U06': { tier: 2, word: 'sorry', debut: 139, gap: 96,
+    why: 'must produce "I\'m sorry" at S43; "sorry" debuts S139 — a 96-seed gap, still the largest in the course. DEMOTED from 3 to 2 by #921: Duden lists "sorry" as a German interjection in daily colloquial use, so the learner holds the word. German "Sorry" is bare, though, and the required "I\'m sorry, …" frame is not given.' },
+  'eng_for_deu:S0084L01U06': { tier: 2, word: 'sorry', debut: 139, gap: 55,
+    why: 'same word, same absence, at S84. Demoted with S43, same reasoning.' },
+  // TAKE sub-claim REFUTED by #921 — and it was my prose, not my code, that over-reached.
+  'eng_for_deu:S0047L02U06': { tier: 3, word: 'important', debut: 65, gap: 18,
+    why: 'must produce "it\'s important to take time" at S47; "important" debuts S65, in this same phrase — S47 is using the S65 lego wholesale. #921 calls this the least refutable of the set: no cognate, no loanword, and "importieren" is a false friend. My hedged "possibly also TAKE" is REFUTED — S27 teaches "taking too much time", 20 seeds earlier.' },
+  // STRENGTHENED by #921: both "hard" legos (S106, S109) are "work hard" — the manner ADVERB.
   'eng_for_deu:S0055L02U02': { tier: 3, word: 'hard', debut: 106, gap: 51,
-    why: 'must produce "it\'s hard" at S55; "hard" debuts S106 and its near-synonym "difficult" only at S66. At S55 the learner has neither, so no reach exists.' },
+    why: 'must produce "it\'s hard" at S55, and neither "hard" (S106) nor "difficult" (S66) is available. WORSE than I first wrote: #921 shows both "hard" legos are "work hard", the manner adverb — the PREDICATIVE sense this phrase needs is never taught in all 300 seeds. So "debuts S106" names a repair that does not exist, and a debut reorder cannot fix this one.' },
   'eng_for_deu:S0090L01U04': { tier: 2, word: 'hard', debut: 106, gap: 16,
-    why: 'must produce "it\'s not so hard" at S90. By S90 "difficult" IS taught (S66), so a reach EXISTS — but it is the wrong word: the learner says "difficult" and is answered "hard". Kai tier 2 exactly: a distinct lexeme for a concept they hold under another word.' },
-  // DISMISSED on adjudication — confirmed NOT defects.
+    why: 'must produce "it\'s not so hard" at S90. By S90 "difficult" IS taught (S66), so a reach EXISTS — but it is the wrong word: the learner says "difficult" and is answered "hard". Kai tier 2 exactly. Per #921 the predicative "hard" never arrives at all, which makes the proposed swap to "difficult" the ONLY route rather than one of two.' },
+  // PROMOTED from my dismissals by #921. My dismissals of these four were wrong.
+  'eng_for_deu:S0047L04U06': { tier: 2, word: 'care', debut: 48, gap: 1,
+    why: 'PROMOTED from my dismissal. I treated this as symmetric with S46 "good" — one seed, therefore tolerable. #921 shows it is not symmetric: "good" is transparent from "gut", whereas "care" has no cognate and no loanword status, and the only earlier reach is S37 "carefully", which is semantically unconnected to "care about". One seed of distance helps a learner at S48, not at S47. Real, shallow, cheap.' },
+  'eng_for_deu:S0207L02U02': { tier: 2, word: 'knew', debut: null, gap: null,
+    why: 'PROMOTED from my dismissal. I ruled that S105 "didn\'t know" gave the learner past-tense know. #921 shows the string "knew" appears in NO lego target_text anywhere in 300 seeds: the KNOW family is taught 15 times and routes around the simple past every time (S105 "didn\'t know", S128 "used to know", S152 "had known"). Worse, S105\'s glosses sit under "kannte" (kennen) while S207 prompts "wusste" (wissen). A German speaker asked for an affirmative past they have never met regularises it to "knowed".' },
+  'eng_for_deu:S0211L02U05': { tier: 2, word: 'knew', debut: null, gap: null, why: 'PROMOTED, as S207 — same missing irregular, same wissen/kennen mismatch.' },
+  'eng_for_deu:S0263L01U02': { tier: 2, word: 'knew', debut: null, gap: null, why: 'PROMOTED, as S207.' },
+  // DISMISSAL UPHELD by #921.
   'eng_for_deu:S0046L03U06': { tier: 0, word: 'good', debut: 47, gap: 1,
-    why: 'DISMISSED. "good" debuts S47, used S46 — one seed. A one-seed lead is inside authoring tolerance and the German "gut" is taught from S13 ("sehr gut"). Also: "th" in the automated output was a stemmer artefact of "thing", not a real word.' },
-  'eng_for_deu:S0047L04U06': { tier: 0, word: 'care', debut: 48, gap: 1,
-    why: 'DISMISSED. "I don\'t care about" debuts S48, used S47 — one seed. Same tolerance. ("carefully" at S37 is a different lexeme and is not the licence.)' },
-  'eng_for_deu:S0207L02U02': { tier: 0, word: 'knew', debut: 105, gap: -102,
-    why: 'DISMISSED. The English past of "know" is taught at S105 ("didn\'t know" ← "kannte nicht") and exercised again at S128 ("I used to know"). The surface string "knew" is not separately drilled, but the learner has had past-tense know for a hundred seeds — tier 1, an uninstructed form of a word they hold.' },
-  'eng_for_deu:S0211L02U05': { tier: 0, word: 'knew', debut: 105, gap: -106, why: 'DISMISSED, as S207.' },
-  'eng_for_deu:S0263L01U02': { tier: 0, word: 'knew', debut: 105, gap: -158, why: 'DISMISSED, as S207.' },
+    why: 'DISMISSED, and #921 upheld it: "gut"→"good" is perfectly transparent, plus the gap is one seed. Also, the "th" that appeared in the automated output was a stemmer artefact of "thing", not a word.' },
 };
 
 // ── build the funnel ────────────────────────────────────────────────────────────────

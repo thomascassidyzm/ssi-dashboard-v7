@@ -56,13 +56,19 @@ RAW                                    486 findings   466 phrases
 ├─ TIER 1, direction-void               60             60
 │     ── dead at tier 1: 467/486 = 96.1%
 └─ SURVIVED to adjudication             19             14
-     ├─ DISMISSED on adjudication        5              5
-     ├─ TIER 2 (mild)                    1              1
-     └─ TIER 3 (serious)                13              8
+     ├─ DISMISSED on adjudication        1              1
+     ├─ TIER 2 (mild)                   11              8
+     └─ TIER 3 (serious)                 7              5
 ```
 
 Re-derived live from `course_legos` + `course_practice_phrases` at 12:45 UTC, not from the A135
 snapshot. The live count matched the report's 486 exactly.
+
+**These are the numbers after the adversarial pass (#921), and it moved them in both directions.**
+My first cut read 9 confirmed defects with 5 dismissals; the refutation promoted four of those
+dismissals and demoted three findings from tier 3 to tier 2, landing at **13 confirmed phrases —
+5 serious, 8 mild**. Its verdict on my nine was that none was an outright error, two were
+*understated*, and one sub-claim of mine was wrong. What it changed is set out under each tier.
 
 ---
 
@@ -110,80 +116,113 @@ should pick one.
 
 ---
 
-## Tier 2 — one phrase
+## Tier 3 — five phrases, no reach available
 
-**`eng_for_deu:S0090L01U04`, S90**
-DE `wenn du langsamer sprechen kannst, ist es nicht so schwer`
-EN `if you can speak more slowly it's not so hard`
-
-English **"hard"** debuts at **S106**. But by S90 the learner *does* have **"difficult"** (S66,
-`es ist nicht schwierig`). So a reach exists — and it is the wrong word. They say "difficult",
-they are answered "hard". This is Kai's tier 2 precisely: a distinct lexeme for a concept they
-already hold under another word. Not frightening. Still wrong.
-
----
-
-## Tier 3 — eight phrases, no reach available
-
-Every debut seed below was re-derived by hand from `course_legos`, not taken from the matcher.
+Every debut seed below was re-derived by hand from `course_legos`, then re-derived *again*
+independently by #921 against the live database. All five survived.
 
 | seed | phrase | untaught English | debuts | gap |
 |---|---|---|---|---|
-| **S43** | `es tut mir leid, ich habe nicht darüber nachgedacht` → *I'm sorry, I wasn't thinking about it* | **sorry** | S139 | **96** |
-| **S84** | `es tut mir leid, ich stimme nicht dem zu, was du gesagt hast` → *I'm sorry, I don't agree with what you said* | **sorry** | S139 | 55 |
-| **S55** | `es ist schwer, fertig zu werden, wenn ich nicht gut geschlafen habe` → *it's hard to finish when I didn't sleep very well* | **hard** | S106 | 51 |
+| **S55** | `es ist schwer, fertig zu werden, wenn ich nicht gut geschlafen habe` → *it's hard to finish when I didn't sleep very well* | **hard** (predicative) | **never** | — |
 | **S27** | `ich mag es nicht, mit Leuten zu sprechen, die mich nicht verstehen` → *…people who don't understand me* | **understand** | S58 | 31 |
-| **S38** | `ich lerne seit ungefähr einer Woche, und es macht Spaß` → *…and it is fun* | **fun** | S64 | 26 |
-| **S47** | `ich denke, es ist wichtig, sich Zeit zu nehmen` → *I think it's important to take time* | **important** *and* **take** | S65 | 18 |
+| **S47** | `ich denke, es ist wichtig, sich Zeit zu nehmen` → *I think it's important to take time* | **important** | S65 | 18 |
 | **S43** | `ich habe angefangen zu verstehen, wie ich antworten soll` → *I started to understand how to answer* | **understand** | S58 | 15 |
 | **S26** | `ich denke, sie ist fast bereit zu gehen` → *I think she is nearly ready to go* | **think** | S37 | 11 |
 
-**Worked tier-3 example — the flagship.** At S43 the learner hears `es tut mir leid` and must say
-**"I'm sorry"**. English "sorry" is not taught until **S139**, ninety-six seeds later. There is no
-near-miss in the S1–S42 inventory — no "excuse me", no "apologise", nothing. The learner does not
-reach for the closest thing they know, because there is no closest thing. They stop. And "I'm
-sorry" is a phrase most learners want in their first hour, so the scare lands on something that
-should have been easy. Even were the pairing perfectly correct German-to-English — and it is — the
-scare alone makes it serious.
+**The worst one is worse than I wrote, and it is not an ordering fault at all.** At S55 the learner
+must say **"it's hard"**. I reported this as "hard debuts S106". #921 checked what those legos
+actually teach: **both** `hard` legos — S106 and S109 — are `work hard`, the manner **adverb**. The
+**predicative** sense this phrase needs is *never taught in all 300 seeds*. So S106 names a repair
+that does not exist, and no debut reorder can fix it. The `hart`/`hard` cognate is real but keyed to
+a word this prompt does not use: the prompt says `schwer`. Every other item on this page is a word
+that exists and arrives late. This one is a word that never arrives.
 
-**A note on how two of these arose.** S38's untaught word "fun" debuts at S64 *via this very German
-phrase* (`es macht Spaß` → `it is fun`), and S47's "important" and "take" both debut together at S65
-in **the same phrase** the S47 prompt is using. These are not near-misses in ordering; they are a
-later seed's teaching material used wholesale, early. That is a recognisable authoring shape and
-worth looking for on the next course.
+**Runner-up, and the cleanest pure gap: S47 "important."** #921 rates it the least refutable of the
+set — no cognate, no loanword, and `importieren` is a false friend. My hedge that **take** was also
+untaught is **refuted**: S27 teaches `taking too much time`, twenty seeds earlier. That was my prose
+over-reaching, not my code — the tooling never flagged "take", and I should not have added it.
 
-### Dismissed on adjudication — 5 findings
-
-Confirming a finding is *not* actually fine is half the job, and five were not:
-
-- **S46 "good"** (debuts S47, used S46) and **S47 "care"** (debuts S48, used S47) — a **one-seed**
-  lead, inside authoring tolerance. German `gut` has been taught since S13. The `th` that also
-  appeared in the automated output at S46 was a **stemmer artefact of "thing"**, not a word.
-- **S207, S211, S263 — "knew"**. The English past of "know" is taught at **S105** (`kannte nicht` →
-  `didn't know`) and again at S128 (`I used to know`). The exact string "knew" is never drilled, but
-  the learner has held past-tense *know* for a hundred seeds. Tier 1: an uninstructed form of a word
-  they have.
+**A note on how two of these arose.** S47's "important" debuts at S65 *in the very phrase the S47
+prompt is using*, and the same shape appears at S38/S64. These are not near-misses in ordering; they
+are a later seed's teaching material used wholesale, early. Worth looking for on the next course.
 
 ---
 
-## What to do about the nine — two piles, two different authorities
+## Tier 2 — eight phrases, a reach exists but it is the wrong one
+
+Three of these were tier 3 in my first cut and were **demoted** by the adversarial pass; four were
+**dismissals of mine that #921 promoted**. The demotions and the promotions are both worth reading,
+because they turn on the same question: does a reach exist *from anywhere*, not just from the course?
+
+**Demoted 3 → 2 — the loanword defence.** Duden lists **`sorry`** as a current German interjection
+in daily colloquial use, and **`Fun`** as a German noun (*der Fun*). A learner who says "Sorry" in
+German every day is not *frightened* by being asked for it in English, and Kai's tier 3 turns on the
+scare. So these stay defects but stop being serious ones:
+
+| seed | phrase | word | debuts | gap |
+|---|---|---|---|---|
+| **S43** | `es tut mir leid, ich habe nicht darüber nachgedacht` → *I'm sorry, I wasn't thinking about it* | **sorry** | S139 | **96** |
+| **S84** | `es tut mir leid, ich stimme nicht dem zu, was du gesagt hast` → *I'm sorry, I don't agree with…* | **sorry** | S139 | 55 |
+| **S38** | `ich lerne seit ungefähr einer Woche, und es macht Spaß` → *…and it is fun* | **fun** | S64 | 26 |
+
+What the loanword supplies is the *word*, not the *frame*: German `Sorry` is bare, and the phrase
+needs `I'm sorry, …`. The 96-seed gap at S43 is still the largest single item in the course, and
+"I'm sorry" is still something a learner wants in their first hour — it is just no longer a freeze.
+
+**S90 `hard` — tier 2 as originally ruled.** By S90 the learner has `difficult` (S66), so a reach
+exists and it is the wrong word: they say "difficult", they are answered "hard". #921's finding that
+predicative "hard" never arrives makes the proposed swap to "difficult" the **only** route rather
+than one of two.
+
+**Promoted from my dismissals — four phrases I got wrong.**
+
+- **S47 `care`.** I dismissed this as symmetric with S46 `good`: a one-seed lead, inside tolerance.
+  It is not symmetric. `good` is transparent from `gut`; `care` has **no cognate and no loanword
+  status**, and the only earlier reach is S37 `carefully`, semantically unconnected to "care about".
+  One seed of distance helps a learner at S48, not at S47. Real, shallow, cheap.
+- **S207, S211, S263 `knew`.** I ruled that S105 `didn't know` had given the learner past-tense
+  *know*. #921 checked the whole course: the string **`knew` appears in no lego's `target_text`
+  anywhere in 300 seeds.** The KNOW family is taught fifteen times and **routes around the simple
+  past every time** — S105 `didn't know`, S128 `used to know`, S152 `had known`. Worse, S105's
+  glosses sit under `kannte` (*kennen*) while S207 and S211 prompt `wusste` (*wissen*). A German
+  speaker asked for an affirmative past they have never met regularises it: **"knowed"**. That the
+  course teaches this verb fifteen times and never once in the plain past is the interesting part.
+
+### Dismissed on adjudication — 1 finding
+
+- **S46 `good`** (debuts S47, used S46). Upheld by #921: `gut`→`good` is perfectly transparent and
+  the gap is one seed. The `th` that also appeared in my automated output here was a **stemmer
+  artefact of "thing"**, not a word.
+
+---
+
+## What to do about the thirteen — two piles, two different authorities
 
 ### Pile A · PROPOSE a debut reorder — with Kai, not applied
 
-Five of the nine phrases are fine sentences whose *curriculum order* is wrong. In each case the
-missing word is a beginner essential used long before its debut, and moving one lego earlier
-re-legalises the phrase without adding a word of content. **This is a course-structure change and
-is listed, not applied.**
+Six of the thirteen phrases are fine sentences whose *curriculum order* is wrong. In each case the
+missing word is a beginner essential used before its debut, and moving one lego earlier re-legalises
+the phrase without adding a word of content. **This is a course-structure change and is listed, not
+applied.**
 
 | move this lego | from | to at most | re-legalises |
 |---|---|---|---|
 | `es tut mir leid` → *I'm sorry* | S139 | **S43** | S43, S84 |
 | `understand` (`…verstehst`) | S58 | **S27** | S27, S43 |
 | `ich denke` → *I think* | S37 | **S26** | S26 |
+| `es ist mir egal` → *I don't care about* | S48 | **S47** | S47 |
 
-Three lego moves, five phrases fixed, no new content. This is the cheapest honest route on the
-page, and "I'm sorry" arriving at S139 in a course that wants it at S43 looks like a plain
-sequencing oversight rather than a judgement anyone made.
+Four lego moves, six phrases fixed, no new content. This is the cheapest honest route on the page,
+and "I'm sorry" arriving at S139 in a course that wants it at S43 looks like a plain sequencing
+oversight rather than a judgement anyone made. The `care` move is a single seed and is as cheap as a
+fix gets.
+
+**A fifth Pile A item, and it is an addition rather than a move — `knew`.** S207, S211 and S263 all
+require the English simple past of *know*, which the course never teaches once in 300 seeds despite
+teaching the verb fifteen times. There is no lego to reorder, so the honest fix is to **introduce
+`knew` before S207**. Whether a 300-seed English course should be teaching the plain past of its
+most-drilled irregular verb at all is a curriculum question well past the scope of this
+adjudication — flagging it, not answering it.
 
 ### Pile B · EDIT the phrase — four rows, specified and verified, ready to apply
 
@@ -203,6 +242,11 @@ the contraction `can't`, untaught until S57).
 S38, S47 and S55 use only their own seed's legos. S90 is a one-word swap on both sides to the
 synonym the learner already has, which also removes German `schwer` from the corpus entirely
 before S106 — the only two occurrences are S55 and S90, and both are addressed here.
+
+**The adversarial pass hardened two of these four from "a fix" into "the only fix."** Because
+predicative `hard` is never taught anywhere in the course, S55 and S90 cannot be resolved by moving
+a lego earlier — there is nothing to move. For those two, editing the phrase is the sole route, which
+removes the main argument against Pile B on them.
 
 **Judgement call for Kai on S47:** the replacement is close in sentiment to S46's existing
 `I don't worry about making mistakes`. It is lawful and it is the seed's own material, but whether
@@ -272,11 +316,19 @@ Three things are therefore outstanding, and none of them is a judgement I am dod
    database what is actually installed, because of the outage. No TTS will be run either way — the
    pass ends by *queueing* an audio pass, and `queue-audio-pass.cjs` refuses human-voice courses,
    which is one more thing needing a live check on `eng_for_deu`.
-3. **Two verification workers are outstanding** — #919 on the direction claim and #921 the
-   adversarial refutation of all nine findings. The direction claim is load-bearing for the entire
-   96.1% figure, which is why it went to someone other than me. If #919 refutes it, the tier-1
-   count changes and this page needs revising; the nine tier-3 items would survive regardless,
-   since they fail on both axes.
+3. **#921, the adversarial refutation, has landed and is folded in above** — every tier on this page
+   is post-refutation. Its own write-up, with the Duden and false-friend sources, is at
+   [`/d/e03724a8`](https://watson-1.tail4968cb.ts.net/d/e03724a8). It re-derived all nine teaching
+   seeds against the live database rather than reasoning from my summary (it polled through the same
+   outage to do so), confirmed every phrase is a real `phrase_role='use'` row at the stated seed,
+   and found **no outright error** in my nine — but two understatements, one wrong sub-claim of mine
+   (`take`), and four dismissals of mine that should not have been dismissed. Net effect: 9
+   confirmed phrases became **13**, and the serious count fell from 8 to **5**.
+
+   **#919, the direction claim, is still outstanding.** It confirmed the code-path half before the
+   outage and is blocked on the database for the data half. It is load-bearing for the entire 96.1%
+   figure, which is why it went to someone other than me. If it refutes the claim, the tier-1 split
+   needs revising — but the five tier-3 items survive regardless, since they fail on both axes.
 
 ## The runbook
 
