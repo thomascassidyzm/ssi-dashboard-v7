@@ -2433,6 +2433,15 @@ loadLiveConfig()
                 Try a pair — pick the two target voices by hand
                 <span v-if="voicePools?.target" class="muted">
                   · pool <code>{{ voicePools.target.pool_key }}</code>
+                  <!-- Say out loud whether this key is a stored ruling or a
+                       fallback. A regional variant carries the BASE tag in
+                       target_lang, so before T-21 this line could read `deu`
+                       for an Austrian German course and nothing on screen
+                       said the cast belonged to German instead. -->
+                  <template v-if="voicePools.voice_pool_key">
+                    (pinned for this course, not shared with
+                    <code>{{ voicePools.target_lang }}</code>)
+                  </template>
                   <template v-if="voicePools.sibling_keys?.length">
                     (also on record: {{ voicePools.sibling_keys.join(', ') }})
                   </template>
