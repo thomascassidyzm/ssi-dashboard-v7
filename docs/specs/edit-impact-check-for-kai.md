@@ -47,9 +47,19 @@ It only reads — it can't write, and it never makes audio. For any edit, to any
 
 ---
 
-## What I've deliberately not done
+## Both are now built — here's what that means
 
-Anything that changes how edits get written. No new database rules, nothing that can refuse someone's work. Designed and costed, not shipped — that's your call, not mine.
+You said yes to 1 and 2 and no to the gate. Both are built; the gate isn't, and won't be.
+
+**1. Seeds now have an audio rule.** With one change to what you'd assumed. Copying the lego/phrase rule exactly would have brought its own bug along: when it re-points a link it doesn't check *who is speaking*, so an edit can quietly move a line onto a different voice and nobody is told. On seeds that would have spread a silent voice swap into the one table nobody watches. So the new rule keeps the good part and refuses that: if we already own the new words **in the same voice**, it re-points; otherwise it goes silent and **writes down what it dropped** — which clip, which voice, and the words that clip actually says. A silence is visible. A wrong voice isn't.
+
+It is **tested but not switched on.** It passes 26 checks against the real database — applied for real, exercised, then rolled back, so nothing was left behind. I didn't switch it on because your Sinhala fleet was editing seeds while I was writing it, and changing the rule under people mid-job is how you break their work rather than protect it. Switching it on is one command whenever you want it.
+
+Two things worth knowing. It stops the **next** one; it doesn't repair the **674 seed lines already like this** across the estate — worst in Chinese, Irish, Canadian French, Portuguese and Japanese. Fixing those means touching live audio on released courses, so I've left it for you to call. And while measuring I found something older and worse: **41,900 recordings** carry a stale internal fingerprint from a rule that was changed and never re-applied. My first version would have thrown away good recordings because of it. It doesn't now — but that 41,900 is still sitting there, affecting the lego and phrase rules too.
+
+**2. The report now comes back to whoever submits.** Four endpoints answer with it, including the dashboard's own edit path. It never refuses anything — an edit that says "reconsider" is still applied, exactly as before, and there's a test that proves it. If the check itself breaks or gets slow, your edit still goes through and the answer plainly says the check didn't finish, rather than pretending everything's fine. It adds about a second and a half; you can turn it off per call.
+
+**Nothing is merged and nothing is deployed yet.** It's all on a branch, ready when you want it.
 
 ---
 

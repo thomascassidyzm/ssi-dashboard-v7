@@ -129,6 +129,17 @@ GRANT USAGE, SELECT ON SEQUENCE public.content_audio_link_drops_id_seq TO servic
 -- second, course-and-role-scoped, catches the 41,900. Matching only the stored
 -- column would make this function silently blind on those rows — which is exactly
 -- how a clip that speaks the right words would get dropped as if it did not.
+-- COST, measured rather than assumed: the OR defeats a pure index scan and the
+-- planner falls back to a bitmap heap scan over the course's clips for that role
+-- — 48ms over 15,309 rows on fra_for_eng, one of the largest (EXPLAIN ANALYZE,
+-- 2026-08-17). That is per stale link, and this function is NOT called for the
+-- common cases: an unchanged text never reaches the trigger (the WHEN clause), a
+-- cosmetic edit returns at the keep test, and an already-NULL link returns
+-- earlier still. A bulk edit of 100 genuinely-changed seeds would pay ~5s.
+-- If that ever bites, the fix is an index on normalize_text(text) — deliberately
+-- NOT added here, because CREATE INDEX CONCURRENTLY cannot run inside a
+-- transaction and would break the one-transaction canary this migration is
+-- verified by.
 CREATE OR REPLACE FUNCTION public.audio_id_for_text_same_voice(
   p_course text, p_text text, p_role text, p_like uuid
 ) RETURNS uuid

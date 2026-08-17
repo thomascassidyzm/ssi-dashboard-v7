@@ -1,6 +1,6 @@
 # The blast radius check for content edits
 
-**Status:** read-only reporter BUILT and pushed (branch `feat/edit-impact-check-2026-08-17`). Write-path changes DESIGNED and COSTED, held for Kai's yes.
+**Status:** read-only reporter BUILT. **A and B approved by Kai and BUILT** (branch `feat/edit-impact-check-2026-08-17`, not merged). **C rejected — not built.** The seed trigger of A is **STAGED, not applied**: see §"A, as built" for why and for the one command that applies it. B is live in the code and returns verdicts from four endpoints, but is **not deployed** — the running course-builder serves from the `-prod` checkout on `main`.
 **Commissioned by:** Kai, 2026-08-17 — *"seed text edits ... can affect the legos and the phrases and all phrases that use something from the seed all over the course. And therefore all of that audio (including the presentations of any affected legos). ... I think this is a general problem. Any changes like these need to trigger a check of the effects."*
 
 ---
@@ -141,6 +141,84 @@ Held deliberately — none of it ships without Kai's yes, because all of it chan
 My recommendation is **A + B**: fix the silent failure, and make the decision come back to whoever proposed the edit on the path most edits take, without ever refusing a submission.
 
 C is the one to leave alone, and Kai's ruling is the reason as much as the practicality is. Looping the proposing agent back in works because the agent still owns the decision — it can weigh the blast radius against what it knows about *why* the edit was wanted, and decide to proceed anyway. A gate that refuses takes that judgement away from the only party holding both halves of it, and gets switched off in a hurry at 2am and then stays off.
+
+---
+
+## A, as built — `trg_null_seed_audio_on_text_change`
+
+`database/migrations/20260817_seed_audio_link_integrity.sql`, with a rollback file and a 26-check canary beside it.
+
+**The rule.** It takes the SHAPE of the lego/phrase triggers — `BEFORE UPDATE`, per column, driven by `IS DISTINCT FROM`, reusing the estate's own `normalize_text` — and narrows their RULE, because Kai's instruction was to match the mechanism *and not import its hazard*:
+
+| The new text… | …and the outcome |
+|---|---|
+| normalises to what the linked clip already speaks (whitespace, casing, a trailing `?`) | **KEEP the clip.** This is the cosmetic-edit fix the 2026-08-06 migration existed to deliver, and it survives intact |
+| we already own it in the **same canonical voice and language** | **re-point**, and write the move down |
+| anything else | **NULL**, and write the drop down |
+
+Null-and-report, never silent relink. A NULL is a hole every missing-audio sweep already finds; the row in the new `content_audio_link_drops` keeps the clip id, its voice and the text it actually speaks, so the drop is countable and reversible. No branch deletes audio. An already-NULL link is left alone.
+
+**Why not just copy Gap 2's rule.** `audio_id_for_text` constrains `course_code`, `role`, `s3_key` and `text_normalized` — **not `voice_id`, not `language`**. On seeds that would spread a silent voice swap into the one table nobody is watching. The canary does not merely assert the new rule refuses the swap; it carries a **control** proving `audio_id_for_text` *would have made that exact swap* on the same fixtures. The hazard is measured, not asserted.
+
+**The defect the measurement caught.** `course_audio.text_normalized` is written by a trigger calling `normalize_text()` — but `normalize_text()` was later redefined to rtrim trailing `.?!¿¡。？！` and **the column was never backfilled. 41,900 rows** hold a normalisation the current function would not produce (measured 2026-08-17). It is the open item the 08-06 migration recorded and deliberately left alone, because that column feeds `UNIQUE (course_code, text_normalized, language, role, voice_id)`.
+
+The first version of this trigger tested the stored column, so on any of those 41,900 clips a recording that speaks the **exact right words** compared unequal and the link would have been dropped — the precise regression the migration was written to avoid, re-entering through the back door. Both the keep test and the substitute lookup now match on the stored column **OR** the clip's real text re-normalised now. The stored column stays as the index-assisted first disjunct and is never the sole authority.
+
+That check could not be tested by forging state: `trg_course_audio_normalize` recomputes `text_normalized` on every write to `course_audio`, so the forged fixture was corrected on the way in and the check passed for the wrong reason. Disabling that trigger would take an `ACCESS EXCLUSIVE` lock on a 2.5M-row table the estate is actively writing to — not a trade worth making for a test. The canary borrows a **real** already-stale clip instead and modifies nothing about it.
+
+**Two things settled rather than assumed.** All three of `course_seeds`' audio foreign keys are `ON DELETE SET NULL`, so the dangling-link branch cannot be provoked; it is kept as cheap defence against a future constraint change and now says so. And the trigger carries a `WHEN` clause the lego/phrase ones lack — `course_seeds` is written constantly for `status` and `approved_at`, and none of that can move an audio link.
+
+**Cost, measured.** The substitute lookup's `OR` defeats a pure index scan: 48ms over 15,309 rows on `fra_for_eng` (`EXPLAIN ANALYZE`). That is per genuinely-stale link, and the function is not reached for the common cases. A bulk edit of 100 changed seeds pays ~5s. The fix if it ever bites is an index on `normalize_text(text)`, deliberately not added here because `CREATE INDEX CONCURRENTLY` cannot run inside a transaction and would break the one-transaction canary.
+
+### Why it is STAGED and not applied
+
+The canary is green — **26/26**, applied and replayed inside one transaction, then rolled back, so the database has never seen it. It was not committed because the **A-134 fleet was editing `eng_for_sin` seeds while this was being written** (10 rows in the preceding 20 minutes, `sin-mamaa-73` / `sin-haebaeyi-late-seeds` / `sin-cards-verify` live). Changing the audio-link rule under a fleet mid-write is the one thing the brief said not to do, and a staged migration was named an acceptable outcome. Applying it is one command, and it re-runs every check before it commits:
+
+```bash
+node database/canary/canary_seed_audio_link_integrity.cjs --commit   # commits iff all 26 are green
+node database/canary/canary_seed_audio_link_integrity.cjs            # dry run, always rolls back
+```
+
+### What it does NOT do
+
+It stops the **next** stale seed link. It does **not** repair the existing ones. Measured on the live normaliser (not the stored column, which inflates the figure to 1,033 / 1,305 / 1,304):
+
+| | known | target1 | target2 | seed rows |
+|---|---|---|---|---|
+| **stale seed audio links today** | 285 | 395 | 391 | **674** |
+
+Concentrated in `zho_for_eng` (398 rows), `gle_for_eng` (299), `fra_ca_for_eng` (286), `por_for_eng` (270), `jpn_for_eng` (155). Draining that pool means nulling or moving live links on released courses — a separate job, and nobody's without a ruling.
+
+---
+
+## B, as built — the verdict comes back to whoever submitted
+
+`services/course-builder/lib/impact-report.cjs`. Returned, never enforced.
+
+| Endpoint | Default |
+|---|---|
+| `PATCH /api/seed/:courseCode/:seedNumber` | **ON** |
+| `POST /api/course/:courseCode/edit-cascade` (all four response paths, incl. `dryRun`) | **ON** |
+| `POST /api/course/:courseCode/translate` | opt-in `?impact=1` |
+| `POST /api/seed/complete` | opt-in `?impact=1` |
+
+The two opt-in ones are the build hot path — ~300 calls a build — so they cost nothing until asked. `?impact=0` opts out anywhere. `SeedEditor.vue` has no edit route of its own; it posts to `translate`, `approve-seeds` and `edit-cascade`, two of which are wired, so the dashboard editor gets the verdict.
+
+The verdict rides on a **new** top-level `impact` key — no existing response field changed or removed, because agents and the dashboard already parse these. It runs against the **pre-edit** state, before the write: run it after, and the tool diffs the new text against itself and every finding collapses to a hollow `proceed`.
+
+**Failure isolation.** `impactFor()` never rejects. A sync throw, an async throw, a missing module and a 20s timeout all resolve to a block with `checked:false` and **no `verdict` field at all** — a failed check must never read as a clean pass. Batches cap at 10 edits and the block names how many went unchecked; no silent truncation.
+
+**Latency, measured over real HTTP** on `eng_for_sin` (668 seeds, 11,719 phrases): **1.4s** steady state, 8.4s on the first call after boot (cold pg connect), `fra` 2.7s, `deu` 3.2s, 0.15s with `?impact=0`.
+
+**Tests, run:** `npx vitest run services/course-builder` → 8 files, **104 passed**, including 17 new ones that mount the real router on a real express app and assert on the HTTP response — a `reconsider` returns 200 **and the write still lands**; a reporter throw returns 200 with `status:"unavailable"` **and the write still lands**. `node --test tools/edit-impact-check.test.cjs` → **18/18**.
+
+**A Part-A defect this wiring exposed and fixed:** a no-change proposal — which `POST /seed/complete` makes on *every* re-submission, since it re-upserts the canonical seed text — produced a report with no `decision`, so `buildEnvelope` threw and the whole batch came back as "the check failed" rather than "nothing to do". Fixed with a regression test.
+
+### Gaps, stated
+
+- **`POST /api/course/:code/finalize` is not wired.** It writes legos and phrases for many seeds from drafts; a per-seed check there is a multi-minute batch and wanted a decision rather than a unilateral choice.
+- **Not deployed.** The course-builder on 3471 serves from the `-prod` checkout on `main`; everything live was verified on a second instance booted from this worktree on 3971, since shut down. Nothing on this branch reaches a running service until it is merged.
+- **The timeout abandons the promise, not the query.** A pg client from a timed-out check closes when the query eventually finishes. Bounded and harmless at 20s, but it is not cancellation.
 
 ---
 
