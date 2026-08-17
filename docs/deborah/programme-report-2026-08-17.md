@@ -4,6 +4,24 @@
 `docs/deborah/findings-2026-08-17.md` (committed — they no longer live only in Slack).
 Nothing has been posted to Deborah.
 
+**Addendum incorporated.** Kai's second Slack excerpt (native verdicts, the confirmed
+R95 instance, and the "enumerate all rounds" ask) is answered in §Addendum at the end,
+and the seven native verdicts have an implementation plan at
+`docs/deborah/eus-native-verdicts-implementation-2026-08-17.md`.
+
+> **Two things in the addendum change the picture, and one of them is urgent.**
+>
+> 1. **Tom's lane already diagnosed and fixed this revert bug — twice, with row-level
+>    evidence.** My independent code reading landed on the same mechanism he proved.
+>    The serving bug was closed on 2026-08-12 and is deployed. So the right posture is
+>    **validate his fix**, not re-diagnose from scratch — see §Addendum 2.
+> 2. **Deborah may be re-doing Basque audio right now that does not need re-doing.**
+>    His 2026-08-14 forensics concluded, on the bytes, *"Deborah needs to redo
+>    nothing."* If that still holds for 08-15→17 — which I could not check — then the
+>    most valuable thing you can do today is tell her to stop before she spends
+>    another day on it. **I could not verify the 08-15→17 window, so treat this as a
+>    thing to check first, not a conclusion.**
+
 ---
 
 ## Read this first: the database refused every connection for the whole session
@@ -15,14 +33,26 @@ reads. **I could not make a single one.** From 12:55Z to 13:30Z, continuously re
 |---|---|
 | `pg` direct, session pooler `:5432` | `FATAL 08006 Failed to connect to database: {:error, :timeout}` |
 | `pg` direct, transaction pooler `:6543` | same |
-| PostgREST via service key | hangs past 120 s, no response |
-| `@supabase/supabase-js` | hangs past 45 s |
+| PostgREST via service key | **HTTP 522 from Cloudflare — "Connection timed out"** |
+| `@supabase/supabase-js` | same 522, returned as an HTML error page |
 | **Local production-api `:3470`, non-DB route** | **404 in 4 ms — the service is alive** |
 | Local production-api `:3470`, DB-backed route | hangs past 40 s |
 
-The last two rows are the diagnosis: this is not my credentials and not my machine.
-The Supabase backend itself is saturated — exactly the starvation you warned about.
-A poller is still running; nothing opened.
+The last two rows rule out my credentials and my machine. **A 522 means Cloudflare
+could not reach the Supabase origin at all** — that is stronger than "the pool is busy".
+
+**I checked whether it's us or them, and cannot cleanly attribute it:**
+`status.supabase.com` shows an **active "API Gateway — Degraded Performance"**
+incident, with Database and Connection Pooler reported operational and `eu-west-1`
+operational. The gateway incident is a plausible external cause for the REST 522 —
+**but the direct Postgres path on both pooler ports does not traverse that gateway,
+and it timed out too.** Both paths failing at once is what an overloaded project
+origin looks like, with the gateway degradation possibly compounding it.
+
+Practical read for you: the pooler timeouts are the half that worker load would
+cause and the half within our control — which is why I held the fan-out. The 522 is
+the half that matches a live Supabase incident. A poller is still running; nothing
+has opened in 45 minutes.
 
 **So I did not fan out a single worker.** Every worker would have queued behind the
 same closed pool, deepened the starvation, and reported the same gap I'm reporting
@@ -327,6 +357,119 @@ I could not find her points, and the reason is itself worth your attention.
    and helps every RTL course at once.
 5. **Rule on the two rails questions**: "her" → `sua`/`suo` prompting, and
    "as soon as possible" across por + eus S0028 as one change.
+
+---
+
+---
+
+# Addendum — Kai's second excerpt
+
+## Addendum 1 — the seven native verdicts
+
+Full plan: **`docs/deborah/eus-native-verdicts-implementation-2026-08-17.md`**.
+**Nothing applied** — every write needs the DB. Two results worth surfacing here:
+
+**Her basket question is answered, from the repo, without the DB.** She ruled `egotea`
+correct and said whether to *teach* it "depends on the other sentences in the basket".
+Tom enumerated that exact basket on 08-16
+(`docs/basque-seven-for-deborah-followup-2026-08-16.md`): after his A-122 flip of
+`S0055L04`, **seven siblings still say `esna izatea`, and every one of them means
+"being awake"** — the same temporary state her ruling covers. The basket is homogeneous,
+so the condition she attached is satisfied as strongly as it can be:
+**teach `egotea`, flip all seven.** Leaving them split would also be a ZUT hazard in
+itself — one prompt, two target forms.
+
+Two things I will not fix silently: sentence 5, `esna izatea baina nekatuta nago`
+("being awake but I'm tired"), is broken in *both* languages — the swap makes it
+grammatical and still meaningless, so it needs a rewrite decision from you. And her
+R299 sibling (the phrase she "just corrected" saying `sentitzen dut`) **I could not
+find** — that search is blocked, and it should be resolved *before* the R299 change
+lands, in case the sibling set a different frame.
+
+**What Tom already applied from her earlier answers:** commit `882bbbac` (2026-08-16),
+`fix(eus): flip S0055L04 to egotea (A-122)`, with dry-run and applied logs. That is
+consistent with her verdict — `egotea` is what she confirms. **I could not verify the
+row actually holds `egotea` now, or that its audio was handled**, so "consistent with
+her verdict" is a code-and-log check, not a live one.
+
+## Addendum 2 — the revert bug: Tom fixed it, and my job is to validate, not re-diagnose
+
+You were right to send me to his lane first. He has **two** prior forensic passes:
+
+| Doc | Date | Finding |
+|---|---|---|
+| `docs/eus-audio-revert-forensics-2026-08-12/findings.md` | 08-12 | proved the storage mechanism: in-place `s3_key` swaps leaving `audio_revision` at 1; **"R95 Build 2 has no edit on record"** |
+| `docs/eus-audio-revert-forensics-2026-08-14/findings.md` | 08-14 | **no reversion occurred** — three independent detectors, all zero, over the whole audit reach |
+| `docs/eus-deborah-rulings-2026-08-14/audio-reversion-pointer-finding.md` | 08-14 | the R95 Build 2 gap **closed**: she regenerated it 08-14 10:13Z, DB points at her new bytes |
+
+**My independent Channel A was the same mechanism he proved** — the
+upsert-on-conflict at `phase8-audio-v13.cjs` that updates `s3_key` in place. I reached
+it from the code; he had already measured it: **182 swaps, 182 keys changed, 0
+revisions bumped.** Treat my four-channel list as corroboration of his §2, not as a
+new diagnosis.
+
+**The actual cause was serving, not storage**, and it is closed:
+`resolvedUrlCache` was keyed on the clip uuid, and the regeneration path *keeps the
+uuid* and swaps only the `s3_key` — so the cache held a URL that outlived its bytes.
+Fixed 2026-08-12 15:32Z (`84d37385`), and he verified it on the **served** bundle, not
+just the source.
+
+**Validation I could do without the DB — it has not regressed.** On today's
+`origin/main`: `forgetAudioUrl` is still defined (`src/composables/useScriptPlayer.js:50`),
+the 5-minute TTL is intact, and it is still called from all three regeneration handlers
+in `ScriptViewer.vue` (1922, 2072, 2225). No handler has been added without it.
+
+**One residual weakness in that fix, code-visible.** All three calls go through
+`learningJourneyRef.value?.player?.forgetAudioUrl(...)` — optional chaining. If that
+component isn't mounted when she regenerates, **the invalidation silently no-ops** and
+the 5-minute TTL is the only backstop. Not the bug she reported, but it is a
+best-effort invalidation presented as a fix, and worth hardening.
+
+### A hypothesis I raised and then refuted myself — recorded so nobody re-runs it
+
+I thought I had found a second, unclosed vector in the **learner** app. The chain looked
+strong: the PWA caches audio under per-clip versioned refs `<uuid>.vN`, and
+`buildAudioRef()` emits a version suffix **only when `audio_revision > 1`**
+(`ssi-learning-app/api/_utils/audioAccess.ts:129-131`; `fetchRevisedAudioRefs` filters
+`.gt('audio_revision', 1)`). Since every eus clip sits at revision 1 and her regens
+never bump it, her new bytes would land under a ref *identical* to the old one — and
+the `audio_stamp` lane deliberately does **not** clear the audio store, precisely
+because it trusts versioned refs to make repaired clips miss. That would mean the
+learner keeps the old take permanently.
+
+**It is refuted.** Both regeneration handlers call
+`bumpCourseVersion(courseCode, 'patch')`, which writes `courses.content_version`
+(`services/shared/course-version.cjs:20-45`) — visible firing in the live log,
+`[Version] eus_for_eng: 0.700.149 → 0.700.150`. A `content_version` change is the
+learner cache's **lane 1**, which clears the script cache *and* the Service Worker
+audio cache. So the learner heals. The versioned-ref weakness is real in isolation but
+is not reachable, because the version bump fires on the same path.
+
+## Addendum 3 — enumerate ALL rounds, not just R95
+
+Built: **`tools/deborah/eus-revert-enumerate.sql`** — Tom's three detectors, plus the
+text-vs-voiced and redo-snapshot checks, re-parameterised and reported **per round**.
+**Not run.**
+
+The scope is deliberately narrow, and this is the useful part of the answer:
+**his 08-14 pass already ran the enumeration over the whole audit reach
+(2026-07-03 → 2026-08-14 19:40Z) and the answer was zero on every detector** — no clip's
+`s3_key` ever returned to a previous value (0 repeats in 362 states), no pointer ever
+returned to a previous clip (0 rows). So "enumerate all rounds where regeneration was
+followed by reversion" is **already answered for everything up to 08-14 19:40Z, and the
+answer is none.**
+
+What is genuinely unaudited is **2026-08-14 19:40Z → now** — which is exactly the window
+she is working in. That is what the SQL targets, and it is the one thing I would run
+first when the origin comes back, because it decides whether her current re-do work is
+necessary at all.
+
+**Where the enumeration can go blind, stated plainly:** `content_audit_log` records
+UPDATE and DELETE only — **it cannot see an INSERT.** Her regenerations of *edited* text
+mint a new row rather than colliding, so that whole population is invisible to the audit
+log and has to be counted from `created_at` and cross-checked against pointer moves.
+That is also the most likely reason the 08-12 pass found "no edit on record" for R95
+Build 2 when an edit had in fact happened.
 
 ---
 
