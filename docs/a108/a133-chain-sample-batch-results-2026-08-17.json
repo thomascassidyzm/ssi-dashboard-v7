@@ -726,5 +726,386 @@
     "provider": "elevenlabs",
     "voiceLabel": "elevenlabs_FVdzAUsp8apoOdc0907A — 2,740 clips across the estate",
     "error": "TTS generation failed (non-retriable): ElevenLabs API error (400): {\"detail\":{\"type\":\"authentication_error\",\"code\":\"invalid_api_key\",\"message\":\"API key ID used as API key - only valid API keys can be used. API keys start with 'sk_' and are shown when the key is created or rotated.\",\"status\":\"api_key_id_used_as_api_key\",\"request_id\":\"bb40e44dd6fc51aa47584e506b39d9d2\",\"param\":\"api_key\",\"docs_url\":\"https://elevenlabs.io/docs/api-reference/authentication\"}}"
+  },
+  {
+    "key": "21-nld-clicker-repeat-1",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, repeat render 1 of 6",
+    "tail": "THE CLICKER, HUNTED — independent render of the reference line",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 144,
+      "eosMs": 2942
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3336,
+      "eosMs": 2942,
+      "postEosMs": 394,
+      "roomFloorDb": -63.3,
+      "impulses": [],
+      "lufs": -17
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 3192,
+      "eosMs": 2957,
+      "postEosMs": 235,
+      "roomFloorDb": -63.8,
+      "impulses": [],
+      "lufs": -17
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alstublieft."
+    },
+    "deltaMs": 144
+  },
+  {
+    "key": "22-nld-clicker-repeat-2",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, repeat render 2 of 6",
+    "tail": "THE CLICKER, HUNTED — independent render of the reference line",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 253,
+      "eosMs": 2425
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 2928,
+      "eosMs": 2430,
+      "postEosMs": 498,
+      "roomFloorDb": -62.8,
+      "impulses": [
+        {
+          "startMs": 2706,
+          "peakDb": -40.9,
+          "overFloorDb": 21.9
+        },
+        {
+          "startMs": 2771,
+          "peakDb": -37.6,
+          "overFloorDb": 25.2
+        }
+      ],
+      "lufs": -16.9
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2675,
+      "eosMs": 2430,
+      "postEosMs": 245,
+      "roomFloorDb": -62.8,
+      "impulses": [],
+      "lufs": -16.7
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 253
+  },
+  {
+    "key": "23-nld-clicker-repeat-3",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, repeat render 3 of 6",
+    "tail": "THE CLICKER, HUNTED — independent render of the reference line",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 318,
+      "eosMs": 2360
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 2928,
+      "eosMs": 2365,
+      "postEosMs": 563,
+      "roomFloorDb": -65.4,
+      "impulses": [
+        {
+          "startMs": 2641,
+          "peakDb": -40.8,
+          "overFloorDb": 24.6
+        },
+        {
+          "startMs": 2806,
+          "peakDb": -31.6,
+          "overFloorDb": 33.9
+        }
+      ],
+      "lufs": -16.7
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2610,
+      "eosMs": 2365,
+      "postEosMs": 245,
+      "roomFloorDb": -65.4,
+      "impulses": [],
+      "lufs": -16.7
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 318
+  },
+  {
+    "key": "24-nld-clicker-repeat-4",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, repeat render 4 of 6",
+    "tail": "THE CLICKER, HUNTED — independent render of the reference line",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 511,
+      "eosMs": 2335
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3096,
+      "eosMs": 2355,
+      "postEosMs": 741,
+      "roomFloorDb": -63.8,
+      "impulses": [
+        {
+          "startMs": 2651,
+          "peakDb": -19.9,
+          "overFloorDb": 43.8
+        },
+        {
+          "startMs": 2756,
+          "peakDb": -18.8,
+          "overFloorDb": 45
+        }
+      ],
+      "lufs": -17.4
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2585,
+      "eosMs": 2355,
+      "postEosMs": 230,
+      "roomFloorDb": -64.3,
+      "impulses": [],
+      "lufs": -17.2
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 511
+  },
+  {
+    "key": "25-nld-clicker-repeat-5",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, repeat render 5 of 6",
+    "tail": "THE CLICKER, HUNTED — independent render of the reference line",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 544,
+      "eosMs": 2446
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3240,
+      "eosMs": 2871,
+      "postEosMs": 369,
+      "roomFloorDb": -62.3,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2696,
+      "eosMs": 2471,
+      "postEosMs": 225,
+      "roomFloorDb": -62.8,
+      "impulses": [],
+      "lufs": -16.9
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter als teblieft."
+    },
+    "deltaMs": 544
+  },
+  {
+    "key": "26-nld-clicker-repeat-6",
+    "provider": "xai",
+    "voice": "247783ebdd51",
+    "voiceLabel": "Noor — xai_247783ebdd51, repeat render 6 of 6",
+    "tail": "THE CLICKER, HUNTED — independent render of the reference line",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 222,
+      "eosMs": 2456
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 2928,
+      "eosMs": 2481,
+      "postEosMs": 447,
+      "roomFloorDb": -61.1,
+      "impulses": [
+        {
+          "startMs": 2806,
+          "peakDb": -26.1,
+          "overFloorDb": 35
+        }
+      ],
+      "lufs": -16.9
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2706,
+      "eosMs": 2481,
+      "postEosMs": 225,
+      "roomFloorDb": -61.1,
+      "impulses": [],
+      "lufs": -17.1
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 222
+  },
+  {
+    "key": "27-nld-fenna-azure",
+    "provider": "azure",
+    "voice": "nl-NL-FennaNeural",
+    "voiceLabel": "Fenna (Azure) — the Dutch family that came out clean in the blind test",
+    "tail": "CONTROL — the clean comparator for the clicker, same language",
+    "text": "Ik wil graag een glas bitter, alstublieft.",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 609,
+      "eosMs": 2741
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 3600,
+      "eosMs": 2746,
+      "postEosMs": 854,
+      "roomFloorDb": -58,
+      "impulses": [],
+      "lufs": -16.6
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2991,
+      "eosMs": 2746,
+      "postEosMs": 245,
+      "roomFloorDb": -57.7,
+      "impulses": [],
+      "lufs": -16.5
+    },
+    "finalWord": {
+      "ok": false,
+      "unit": "final word \"alstublieft\"",
+      "heard": "Ik wil graag een glas bitter, alsjeblieft."
+    },
+    "deltaMs": 609
+  },
+  {
+    "key": "28-nld-thijs-sibilant",
+    "provider": "xai",
+    "voice": "a13662ba951c",
+    "voiceLabel": "Thijs — xAI Dutch male",
+    "tail": "HARD — final /s/ into a stop",
+    "text": "Kun je me vertellen waar het station is, alsjeblieft?",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 2,
+      "eosMs": 2436
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 2688,
+      "eosMs": 2456,
+      "postEosMs": 232,
+      "roomFloorDb": -56.4,
+      "impulses": [],
+      "lufs": -17.7
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2686,
+      "eosMs": 2456,
+      "postEosMs": 230,
+      "roomFloorDb": -56.4,
+      "impulses": [],
+      "lufs": -17.6
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "final word \"alsjeblieft\"",
+      "heard": "Kun je me vertellen waar het station is alsjeblieft?"
+    },
+    "deltaMs": 2
+  },
+  {
+    "key": "29-zho-yunyi-particle",
+    "provider": "azure",
+    "voice": "zh-CN-YunyiMultilingualNeural",
+    "voiceLabel": "Yunyi (Azure) — Chinese male, 11,278 clips",
+    "tail": "HARD — sentence-final 了, unstressed and short",
+    "text": "我已经在这里等了很久了。",
+    "guard": {
+      "refused": null,
+      "trimmed": true,
+      "removedMs": 177,
+      "eosMs": 1949
+    },
+    "before": {
+      "label": "before — old chain",
+      "durationMs": 2376,
+      "eosMs": 1949,
+      "postEosMs": 427,
+      "roomFloorDb": -58.6,
+      "impulses": [],
+      "lufs": -17.2
+    },
+    "after": {
+      "label": "after — new chain",
+      "durationMs": 2199,
+      "eosMs": 1949,
+      "postEosMs": 250,
+      "roomFloorDb": -58.3,
+      "impulses": [],
+      "lufs": -17.2
+    },
+    "finalWord": {
+      "ok": true,
+      "unit": "last 3 characters \"很久了\"",
+      "heard": "我已经在这里等了很久了。"
+    },
+    "deltaMs": 177
   }
 ]

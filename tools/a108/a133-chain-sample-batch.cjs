@@ -143,6 +143,37 @@ const SAMPLES = [
     voiceLabel: 'elevenlabs_FVdzAUsp8apoOdc0907A — 2,740 clips across the estate',
     tail: 'HARD — final nasal /n/ trailing off with no burst',
     text: 'Ich weiß noch nicht, ob ich morgen überhaupt kommen kann.' },
+
+  // ── Second pass, added after the first run's finding ──────────────────────
+  // The first 19 fresh renders contained NOT ONE post-speech impulse — including
+  // the known clicker voice, on the exact line it clicked on this morning. So
+  // the click is intermittent per RENDER, not a property of the voice, and the
+  // batch could only prove the pad safe, not that it removes a click on a fresh
+  // take. These six repeats of the clicker on its reference line hunt one. Each
+  // is an independent TTS call; if any comes back with impulses in the raw, the
+  // demonstration is fresh rather than archived. If none does, that is itself
+  // the finding and gets reported as a measured miss rate, not glossed.
+  ...Array.from({ length: 6 }, (_, i) => ({
+    key: `2${i + 1}-nld-clicker-repeat-${i + 1}`, provider: 'xai', voiceId: '247783ebdd51', lang: 'nl',
+    voiceLabel: `Noor — xai_247783ebdd51, repeat render ${i + 1} of 6`,
+    tail: 'THE CLICKER, HUNTED — independent render of the reference line',
+    text: 'Ik wil graag een glas bitter, alstublieft.',
+  })),
+
+  // Three more voices so the fresh-only set clears 20 without the blocked
+  // ElevenLabs sample propping the count up.
+  { key: '27-nld-fenna-azure', provider: 'azure', voiceName: 'nl-NL-FennaNeural',
+    voiceLabel: 'Fenna (Azure) — the Dutch family that came out clean in the blind test',
+    tail: 'CONTROL — the clean comparator for the clicker, same language',
+    text: 'Ik wil graag een glas bitter, alstublieft.' },
+  { key: '28-nld-thijs-sibilant', provider: 'xai', voiceId: 'a13662ba951c', lang: 'nl',
+    voiceLabel: 'Thijs — xAI Dutch male',
+    tail: 'HARD — final /s/ into a stop',
+    text: 'Kun je me vertellen waar het station is, alsjeblieft?' },
+  { key: '29-zho-yunyi-particle', provider: 'azure', voiceName: 'zh-CN-YunyiMultilingualNeural',
+    voiceLabel: 'Yunyi (Azure) — Chinese male, 11,278 clips',
+    tail: 'HARD — sentence-final 了, unstressed and short',
+    text: '我已经在这里等了很久了。' },
 ]
 
 // ── Rendering ────────────────────────────────────────────────────────────────
@@ -229,6 +260,7 @@ const LANG_HINT = {
   '01': 'nl', '02': 'nl', '07': 'nl', '03': 'en', '04': 'en', '05': 'en', '06': 'en',
   '08': 'en', '09': 'en', '10': 'de', '11': 'de', '12': 'fr', '13': 'fr',
   '14': 'es', '15': 'es', '16': 'zh', '17': 'ja', '18': 'ja', '19': 'cy', '20': 'de',
+  '21': 'nl', '22': 'nl', '23': 'nl', '24': 'nl', '25': 'nl', '26': 'nl', '27': 'nl', '28': 'nl', '29': 'zh',
 }
 
 async function main() {
