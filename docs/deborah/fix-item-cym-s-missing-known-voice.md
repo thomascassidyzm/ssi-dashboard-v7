@@ -1,52 +1,57 @@
-# Fix item — `cym_s_for_eng` has no configured `known` voice
+# `cym_s_for_eng`'s 44 silent slots need a HUMAN recording, not a config fix
 
-**Filed 2026-08-17 per Tom's ruling (b).** Not repairable until the config says what the
-voice *is*, so this is a small question for Kai, folded into the render decision.
+**Filed 2026-08-17 per Tom's ruling (b) — and CORRECTED the same day. My first version
+of this item had the diagnosis wrong; this replaces it.**
 
-## What was found
+## What I first said, and why it was wrong
 
-While classifying the 108 held voice-mismatch slots, 11 of them — **all of
-`cym_s_for_eng`, all on the `known` side** — came back with `wanted_voice: null`. That is
-not a mismatch. It means `courses.voice_config` for this course **has no `known` voice at
-all**, so there is nothing to match a candidate against.
+I filed this as "`cym_s_for_eng` has no configured `known` voice — a config defect, small
+Kai question". That reading came from `wanted_voice: null` on 11 held slots.
 
-The 11 slots have clips available for their text on the `known` role (e.g. `"I didn't"`,
-`"you're ready"`, on `azure_en-GB-SoniaNeural` and one on `eve`). We cannot link any of
-them, because we cannot say whether Sonia is the right voice for this course's English
-side or the wrong one.
+**It is not a config defect.** Reading the actual `voice_config` shows it contains only a
+`podCast` block — no `voices` key at all, so **no `known`, `target1` or `target2` voice
+exists**, not just the known one. And the reason is that
 
-## Why it can't be worked around
+> **`cym_s_for_eng` is a HUMAN-VOICE-ONLY course. TTS is forbidden on it by Tom's own
+> ruling of 2026-07-25.**
 
-Every safe path needs the configured voice as its reference:
+`services/shared/human-voice-courses.cjs` names it explicitly and also matches `/^cym_/`,
+and `phase8-audio-v13.cjs:1905` short-circuits `/generate` for it:
+`SKIP … human-voice-only course — no TTS generated`. The missing voice config is not an
+omission — it is the correct state for a course that is never machine-voiced.
 
-- **Relinking** needs it to prove the candidate is the same voice (the `decodeVoiceId`
-  assertion in `tools/deborah/relink-silent-slots.cjs` returns `false` for a null want,
-  by design — it fails closed).
-- **Rendering** needs it to know which voice to render *in*. Tom's ruling (c) sends the
-  genuine voice-mismatch class to the render pass precisely because rendering in the
-  correct voice sidesteps substitution — but that requires knowing the correct voice.
+## What this changes
 
-So these 11 are the one class in the whole repair that neither authorised route reaches.
-They are **excluded from the 2,446-render bill** for that reason, and `cym_s_for_eng`'s
-33 render slots in the table are its *target*-side ones only.
+**All 44 of its silent slots are out of scope for both authorised routes:**
 
-## The question for Kai
+- **Relink** — cannot prove voice equivalence with no configured voice, and the tool
+  fails closed. Correct behaviour, wrong conclusion drawn from it.
+- **Render** — TTS is forbidden. **I had wrongly included its 33 "needs render" slots in
+  the render bill.** They are now removed: the corrected bill is **2,413 renders /
+  89,424 characters / $1.43**, down from 2,446 / 90,312 / $1.44. Trivial in money,
+  wrong in kind — a render pass that included them would have been skipped by phase8
+  and reported as a silent no-op.
 
-**Which English voice should `cym_s_for_eng` use on the known side?** Two candidates are
-already present in its own data — `azure_en-GB-SoniaNeural` (the estate's usual English
-known voice, used by most `*_for_eng` courses) and one clip on `eve`. Confirming Sonia
-would make these 11 immediately relinkable at zero cost.
+## What they actually need
 
-## Worth checking at the same time
+A **human recording pass** — a different route, a different queue, and a person's time
+rather than pennies. Welsh is recorded by **Catrin** (the Learner voice, so most lines sit
+in her queue) with **Aran** as admin. So this is not a Kai config question folded into the
+render decision; it is a **recording request**, and it belongs to whoever schedules Catrin.
 
-I have **not** swept the estate for other courses missing a role in `voice_config` — this
-surfaced only because `cym_s_for_eng` happened to have silent known-side slots. A course
-with a missing voice entry and no silent slots would not have shown up here at all, and
-the same gap would bite the moment it needed one. One query over `courses.voice_config`
-checking all four roles are present would settle it.
+Its sibling `cym_n_for_eng` and `bre_for_fra` are in the same category and were not
+measured here.
+
+## The gap I have not closed
+
+I still have **not** swept the estate for courses whose `voice_config` is missing course
+voices. This surfaced only because `cym_s_for_eng` happened to have silent slots. Now that
+the cause is known, that sweep would answer a sharper question: **which courses have
+silent slots that no TTS pass can ever fill** — because they are human-voiced — so they
+never sit in a render queue waiting for approval that would silently skip them.
 
 ## What this is not
 
-Not the cause of the silence. These 11 slots went NULL by the same mechanism as the rest
-(a text edit re-resolving the link, see the programme report). The missing voice config is
+Not the cause of the silence. These 44 went NULL by the same mechanism as the rest — a
+text edit re-resolving the link (see the programme report). Being a human-voice course is
 what blocks the *repair*, not what caused the damage.

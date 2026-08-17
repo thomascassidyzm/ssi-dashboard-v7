@@ -398,3 +398,72 @@ is the number the decision turns on: **$1.44 buys back 2,446 slots that are curr
 silent**, including all 1,072 in `spa_for_eng` — the course Deborah stopped checking and
 whose silence nobody has reported. `eus_for_eng`, where she is redoing audio by hand right
 now, is six tenths of a cent.
+
+---
+
+# CORRECTIONS — two, both mine, both material
+
+## 1. `cym_s_for_eng` cannot be rendered at all. The bill is $1.43, not $1.44.
+
+I filed its 11 held slots as a "missing known voice config" defect. **That was wrong.**
+Its `voice_config` holds only a `podCast` block — **no course voices at all** — because
+`cym_s_for_eng` is a **HUMAN-VOICE-ONLY course and TTS is forbidden on it** by Tom's ruling
+of 2026-07-25 (`services/shared/human-voice-courses.cjs`, enforced at
+`phase8-audio-v13.cjs:1905`, which short-circuits `/generate` with
+`SKIP … no TTS generated`).
+
+So I had **wrongly included its 33 slots in the render bill**. Removed:
+
+| | Renders | Characters | Azure standard |
+|---|---|---|---|
+| As previously stated | 2,446 | 90,312 | $1.44 |
+| **Corrected** | **2,413** | **89,424** | **$1.43** |
+
+Trivial in money, **wrong in kind**: a render pass containing them would have been skipped
+by phase8 and reported as a no-op. All **44** of its silent slots need a **human recording**
+from Catrin's queue, not pennies of TTS. Fix item rewritten accordingly. Checked the other
+18 courses — **`cym_s_for_eng` is the only human-voice course in this set.**
+
+## 2. My filler-Build detector measures the wrong thing. Worker #925 was right.
+
+Worker **#925** validated the detector I built, as it was asked to, and found an **81%
+false-positive rate**: 13 of 16 sampled "confirmed" clusters are normal, correct SSi
+practice — *"She speaks Spanish / a lot / very well"*. **That criticism is correct and I
+accept it.** My definition is **structural** (residue ≤ 3 tokens); Deborah's defect is
+**semantic** (the residue carries no meaning). "very well" and "yesterday" are
+indistinguishable to my test and completely different to a learner. Its recurrence gate is
+also satisfied by `my`/`your`/`the`, which are not filler either.
+
+The tool's header claim that it "reproduces all five of Deborah's real examples" needs the
+same correction. It was true of the **logic applied to her quoted strings offline** — I
+tested that, 5/5 — and it is **not** true of the tool **run against the database**, because
+those rows are not there (see below). A reader would take the header for the second claim.
+**#925's corrected detector, which requires a semantically-empty residue (~10–15% FP), is
+the instrument to use.** Its result: `spa_for_eng` **15 confirmed Builds in 7 clusters
+(0.3%)**, while unchecked courses are far worse — `ces_for_eng` **776**, `ara_eg_for_eng`
+**387**.
+
+### And I verified the `spa_for_eng` reconciliation myself, precisely
+
+#925 reported "her quoted Builds aren't in the DB". That is right in substance but too
+loose, and the precise version matters:
+
+- **Her LEGOs and their Builds DO exist.** 25 rows match her quoted texts.
+- **Those Builds are varied and correct** — `because he has been playing until they are
+  ready`, `because he has been playing since the second day of…`, `dirty and wet because he
+  has been playing`. This is good practice, not filler.
+- **Not one of the 14 exact filler forms she quoted exists.** I tested each:
+  `was absolutely right here` / `yesterday` / `before`, `in the mud here` / `yesterday` /
+  `before`, `I am feeling sad yesterday` / `before`, `small yesterday` / `here` / `before` /
+  `for everyone`, `because he has been playing here` / `yesterday` — **0 of 14 found.**
+
+**So Deborah is describing content that the database does not contain, under LEGOs that it
+does.** Her "nearly every Build" and the measured 0.3% cannot both describe the same rows.
+The most likely explanation is that she is reading a **cached baked script** rather than
+live content — and if that is so, it may also bear on her "my fixes reverted" reports,
+because a stale script would show her old text *and* old audio together.
+
+**This is the one thing I would put to her before `spa_for_eng` is judged at all**, and the
+question to ask is narrow: **which surface is she reviewing in, and when did it last
+refresh?** Note it does *not* dissolve the Basque alarm — those 7 NULL pointers are real
+and measured in the live database, not in a cache.
