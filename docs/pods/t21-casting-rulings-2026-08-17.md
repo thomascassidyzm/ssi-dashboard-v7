@@ -821,3 +821,25 @@ ruling, so approving would fingerprint the wrong cast.
 - **The forensics worker hit the fan-out depth ceiling** as a depth-2 worker and therefore did all
   four legs itself rather than routing around the cap. No work was dropped; recorded so the coverage
   is not mistaken for a partition.
+
+---
+
+### 2026-08-17 — A-133 ear verdict lands on top of the Dutch ruling above
+
+Tom listened to the A-133 55-clip phrase test (11 voices × 5 different lines, fresh renders through
+the wired chain) and ruled on nine voices. Full record, with the SQL and the file references:
+**`docs/pods/a133-ear-verdict-casting-rulings-2026-08-17.md`**.
+
+**It contradicts the Dutch row above and that is unresolved.** T-21 rejected `247783ebdd51` (Noor)
+and `a13662ba951c` (Thijs) as "misgendered … and not good enough anyway". A-133 has Thijs
+**passing perfectly** and Noor **under review** (fails phrases p1/p3, passes p2/p4/p5). Different
+material — labelled casting-page samples vs five unlabelled fresh lines. Tom's call; nothing recast.
+
+Also new and not in conflict with anything here: **both Azure Dutch voices** (`nl-NL-FennaNeural`,
+`nl-NL-MaartenNeural`) are **rejected on quality — drop Azure for Dutch entirely**. They are still
+sitting at index 2 of each gender in `app_config.pod_voice_pools.nld`; removing them is a casting
+change and is left for him.
+
+English: **`gfzdpspr5fdp` (Tom's clone) and `bedd6226` (Olivia) are the LEADS**; **`eve` is OUT**
+(register wrong for learning content), **`sal` is OUT** (American accent — a second, independent
+reason on top of the T-21 gender note), **`leo` is BENCHED** as redundant.

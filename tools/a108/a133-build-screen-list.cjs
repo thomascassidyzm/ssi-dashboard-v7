@@ -36,15 +36,43 @@ const { prioritise } = require('./a133-voice-tail-screen.cjs')
 // Mandarin is the known weak case here: its syllables end in vowels or nasals, so
 // the zho line has a softer decay than the others and the screen is correspondingly
 // less sensitive on it. Stated rather than papered over.
-const LINES = {
+//
+// ⚑ TOM'S SCREENING PREFERENCE, 2026-08-17 (A-133 ear verdict, after listening
+// to all 55 phrase-test clips): **the p4 and p5 shapes screen a voice best.**
+// So eng and nld below are no longer the short "glass of water" line — they are
+// the p5 shape from tools/a108/a133-phrase-test.cjs (weak final stop: Dutch
+// final devoicing /d/→/t/; English final /t/ closing a /pt/ cluster), with the
+// p4 shape (quiet low-energy ending, no consonant to mark the end) available as
+// the alternate. Set SCREEN_SHAPE=p4 to screen on that one instead; anything
+// else falls back to p5, then to the legacy line.
+//
+// THE HONEST GAP: p4/p5 shapes have only been authored for nl and en, because
+// those are the only two languages the phrase test covered. zho, spa, deu, fra
+// and jpn keep their original single line and are marked so below — screening
+// those on Tom's preferred shape needs a native-authored p4/p5 pair first, and
+// inventing one here would be a guess wearing his ruling's clothes.
+const SCREEN_SHAPE = process.env.SCREEN_SHAPE === 'p4' ? 'p4' : 'p5'
+const LINES_BY_SHAPE = {
+  p4: {
+    eng: 'She told me the buses always leave from the other entrance.',
+    nld: 'Ik probeer dit nu al ongeveer drie maanden te leren.',
+  },
+  p5: {
+    eng: "I'd rather wait here until the rain has completely stopped.",
+    nld: 'Dat had ik echt nooit tegen hem gezegd.',
+  },
+}
+// Legacy single lines — still the only shape available for these languages.
+const LINES_LEGACY = {
   eng: "I'd like a glass of water, please.",
   nld: 'Ik wil graag een glas bitter, alstublieft.',
-  zho: '请给我一杯水，谢谢。',
-  spa: 'Quiero un vaso de agua, por favor.',
-  deu: 'Ich möchte bitte ein Glas Wasser.',
-  fra: 'Je voudrais boire quelque chose.',
-  jpn: 'お水を一杯お願いします。',
+  zho: '请给我一杯水，谢谢。',              // no p4/p5 shape authored yet
+  spa: 'Quiero un vaso de agua, por favor.',  // no p4/p5 shape authored yet
+  deu: 'Ich möchte bitte ein Glas Wasser.',   // no p4/p5 shape authored yet
+  fra: 'Je voudrais boire quelque chose.',    // no p4/p5 shape authored yet
+  jpn: 'お水を一杯お願いします。',             // no p4/p5 shape authored yet
 }
+const LINES = { ...LINES_LEGACY, ...LINES_BY_SHAPE[SCREEN_SHAPE] }
 // xAI wants a short language tag; Azure infers it from the voice name.
 const XAI_TAG = { eng: 'en', nld: 'nl', zho: 'zh', spa: 'es', deu: 'de', fra: 'fr', jpn: 'ja' }
 

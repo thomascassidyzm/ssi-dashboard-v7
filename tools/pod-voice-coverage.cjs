@@ -56,6 +56,42 @@ const AZURE = require(path.join(__dirname, 'pod-voices-azure.json'))  // { <loca
 const MULTI = (XAI.multilingual || []).filter(v => v.voice_id !== 'leo')
 
 // -----------------------------------------------------------------------------
+// A-133 EAR VERDICT, Tom, 2026-08-17 — RECORDED, NOT YET ENFORCED HERE.
+//
+// He listened to the 55-clip phrase test (5 different lines per voice, fresh
+// renders through the wired chain — tools/a108/a133-phrase-test.cjs, doc
+// /d/3566099e) and ruled on nine voices. The full record, with his reasons and
+// the T-21 collision it opens, is docs/pods/a133-ear-verdict-casting-rulings-
+// 2026-08-17.md. Each ruling is also written to `voices.notes`, the only free
+// text field that store has.
+//
+//   ENGLISH LEADS   gfzdpspr5fdp (Tom's clone) and bedd6226 (Olivia) — "the
+//                   BEST"; they are the leads/primary for English.
+//   OUT             eve — register completely wrong for learning content.
+//   OUT             sal — American accent. (Already unusable for a gendered
+//                   seat under UNRELIABLE_GENDER below, for a different reason.)
+//   BENCHED         leo — fine, but redundant. Already out of MULTI above.
+//   DUTCH → xAI     nl-NL-FennaNeural and nl-NL-MaartenNeural are UNUSABLE on
+//                   quality. Drop Azure for Dutch entirely.
+//   DUTCH PASSES    58d27475085e (Femke), a13662ba951c (Thijs), 244e27b39200
+//                   (Ruben) — all pass perfectly.
+//   UNDER REVIEW    247783ebdd51 (Noor) — fails phrases p1 and p3, passes
+//                   p2/p4/p5. NOT rejected and NOT approved pending the A-133
+//                   p1/p3 click diagnosis.
+//
+// WHY NOTHING IS FILTERED HERE YET. `eve` is half the multilingual female
+// overflow (MULTI_F is ara + eve); dropping it can leave a language with an
+// empty female list, which resolvePodVoicePool() turns into a hard "No target
+// voice available" at cast time. And the live Dutch pool in
+// app_config.pod_voice_pools — the store pod-sync.cjs actually reads — carries
+// the two rejected Azure voices at index 2 of each gender and does NOT carry
+// Femke/Thijs/Ruben at all, so removing them shortens nld to 2f/2m and changes
+// the colours available to a scene. Both are casting changes with a render
+// consequence, not a recording of a ruling. They are the recommendation in the
+// doc above; they are Tom's to authorise.
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
 // Provider-verified gender — `voices.gender`, the provider's own word.
 //
 // A Map<voice_id, 'f'|'m'>, loaded once per process and then consulted by every
@@ -178,7 +214,7 @@ const TARGET = {
   ita:    { native: 'it',    locale: 'it'    },
   jpn:    { native: 'ja',    locale: 'ja'    },
   kor:    { native: 'ko',    locale: 'ko'    },
-  nld:    { native: 'nl',    locale: 'nl'    },
+  nld:    { native: 'nl',    locale: 'nl'    },          // xAI ONLY — Tom rejected both Azure Dutch voices by ear, A-133 2026-08-17 (see the ruling block above)
   pol:    { native: 'pl',    locale: 'pl'    },
   por_br: { native: 'pt',    locale: 'pt-BR' },          // native pt IS Brazilian
   rus:    { native: 'ru',    locale: 'ru'    },

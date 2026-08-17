@@ -56,6 +56,20 @@ const RESULTS = process.env.RESULTS || 'results.json'
 // renders per voice probe five distinct ways the end-of-speech detector could
 // be wrong rather than one line five times. A control sits in each set so a
 // clean result on the hard ones is readable against something ordinary.
+//
+// ⚑ TOM'S SCREENING PREFERENCE, 2026-08-17, after listening to all 55 clips:
+//   **p4 and p5 are the shapes that work best for screening a voice.** When a
+//   future screen can afford only one or two lines per voice, use the p4 and p5
+//   SHAPES for that language, not p1. The single-line screen in
+//   a133-build-screen-list.cjs now defaults to them (its LINES map).
+//   p4 = the quiet unstressed / low-energy ending with no consonant to mark the
+//        end (nl schwa; en final sibilant cluster).
+//   p5 = the weak final stop — devoiced or cluster-final (nl /d/→/t/; en /pt/).
+//   Both are the endings a tail detector is most likely to get wrong, so a
+//   voice that survives them is the one worth casting. p1 stays as the CONTROL
+//   in the five-line set: it is the reference line, not a screening shape.
+//   Recorded from the A-133 ear verdict — docs/pods/a133-ear-verdict-casting-
+//   rulings-2026-08-17.md.
 const PHRASES = {
   nl: [
     { id: 'p1', tail: 'CONTROL — the clicker reference line, /t/ after a fricative',
