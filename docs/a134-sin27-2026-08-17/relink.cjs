@@ -1,5 +1,14 @@
 // A-134 — swap the 27 corrupt eng_for_sin presentation clips for the re-recorded ones.
 //
+// UPDATED 2026-08-17 (RENDER worker, A-134): 12 of the 27 legos got a second re-render
+// once the orchestrator found phase8's composer had a real example sentence available
+// for them (recomposed.json, changes_vs_823 === true) — clip-ledger-12.json holds those
+// 12 rows, staged separately at repair-candidates/a134-sin12-examples-2026-08-17/. The
+// effective ledger below is clip-ledger.json (27) with those 12 rows' `new` field
+// overridden by clip-ledger-12.json; `old` is unchanged (same corrupt clip being
+// replaced either way — verified byte-identical old.clip_id/old.ms across both ledgers).
+// The other 15 keep #823's headword-only clip from clip-ledger.json untouched.
+//
 // NOT RUN. Dry-run is the default and --apply is the only way past it. This exists so
 // that when Kai rules on the listen page (https://watson-1.tail4968cb.ts.net/d/81770eaa)
 // the swap is one command rather than a fresh piece of thinking.
@@ -38,8 +47,16 @@ const crypto = require('crypto')
 const APPLY = process.argv.includes('--apply')
 const COURSE = 'eng_for_sin'
 const VOICE = 'azure_si-LK-SameeraNeural'   // read from courses.voice_config, not chosen
-const STAGED = 'repair-candidates/a134-sin27-2026-08-17/'
-const ledger = require('./clip-ledger.json')
+// Two staging prefixes are live now: #823's headword-only 27 and the RENDER worker's
+// 12 examples. Each ledger row's new.s3_key already carries its own full prefix.
+const STAGED_27 = 'repair-candidates/a134-sin27-2026-08-17/'
+const STAGED_12 = 'repair-candidates/a134-sin12-examples-2026-08-17/'
+const ledger27 = require('./clip-ledger.json')
+const ledger12 = require('./clip-ledger-12.json')
+const ledger = ledger27.map(row => {
+  const override = ledger12.find(r => r.lego_id === row.lego_id)
+  return override ? { ...row, new: override.new } : row
+})
 
 function dbUrl() {
   const f = path.resolve(__dirname, '../../.env.psql')
