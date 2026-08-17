@@ -24,7 +24,7 @@ https://watson-1.tail4968cb.ts.net/evidence/a133-money-voices-2026-08-17/00-run-
 
 https://watson-1.tail4968cb.ts.net/evidence/a133-money-voices-2026-08-17/00-run-together-new.mp3
 
-The silence between sentences goes from **1.03 seconds to 0.44 seconds**. Tighter, yes. Run together, no — 0.44s is still a clear breath, and it is a *snappier* listen. The listening and pod modes are unaffected either way: those add their own gaps on purpose (50ms, 90ms, and 100–1000ms in pods), so they land at 0.5–1.4s.
+The silence between sentences goes from **1.03 seconds to 0.44 seconds**. Tighter, yes. Run together, no — 0.44s is still a clear breath, and it is a *snappier* listen. The listening and pod modes are unaffected either way: those add their own gaps on purpose (50ms, 90ms, and 100–1000ms in pods), so they land at roughly 0.35s (the deliberately tightest same-speaker join in immersion) up to 1.4s (between pod chunks).
 
 I picked that voice for the comparison deliberately: it is the one in the set where the trim removes the most (0.6s), so it is the hardest case. On the lighter voices the difference is smaller or nothing at all.
 
