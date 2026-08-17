@@ -484,3 +484,114 @@ ruled pair at index 0 and needed **no pool edit at all**.
 No render slice was run in this pass. The languages that are cleanly approved and ready
 (`hye`, `eus`, `bul`, `est`) are the correct first slice, and the #800 end-click tail-listen must
 happen on that slice before anything is released more widely.
+
+## Voice-gender forensics — every lock verified on three independent sources (#805)
+
+Full evidence: <https://watson-1.tail4968cb.ts.net/d/d8110524>. Read-only job; nothing written.
+
+Three sources, in descending authority: **Azure's own live voice list** (556 voices, `Gender`
+field); **acoustic measurement** of median F0 on real served clip bytes (autocorrelation, 1024-frame,
+70–350 Hz, silence-gated); and the **repo voice records**. **Where sources overlap they agree in
+every single case.** No contradiction was found anywhere.
+
+### xAI voices, measured acoustically on served bytes
+
+| Voice id | Name | Median F0 | Verdict | Repo record | Agree? |
+|---|---|---|---|---|---|
+| `rex` | Rex | 93.0 Hz | MALE | m | ✅ |
+| `eve` | Eve | 186.0 Hz | FEMALE | f | ✅ |
+| `ara` (the VOICE) | Ara | 235.3 Hz | FEMALE | f | ✅ |
+| `0ih5oi34` | Kasper | 102.6 Hz | MALE | m | ✅ |
+| `0p0rt7o1` | Remi | 117.6 Hz | MALE | m | ✅ |
+| `9ab26871` | Wei | 127.0 Hz | MALE | pool `zho/m` | ✅ |
+| `18245f0d` | Bas | 141.6 Hz | MALE | pool `nld/m` | ✅ |
+| `cdb1cec8` | Lieke | 183.9 Hz | FEMALE | pool `nld/f` | ✅ |
+| `sal` | Sal | 140.4 Hz, IQR 111–186 | **ambiguous by design** | m in JSON, both in cast metadata | — |
+
+**Egyptian Arabic confirmed, not assumed:** `rex` male, `eve` female. Tom's "the male and the
+female" maps exactly as he described. The first amendment's discrepancy is fully resolved.
+
+All twenty Azure voices in play resolve to one Azure ShortName each with an unambiguous `Gender`,
+and every pool pair is a correct male/female pair.
+
+### Catalan — resolved, and it needs no render
+
+- **Enric is male**: Azure says Male; acoustic median F0 **128.0 Hz**.
+- **Enric is a different voice from Alba**, proven on a clean A/B — both have a clip of the
+  *identical* Catalan sentence: Enric **128.0 Hz**, Alba **190.5 Hz**. A 62.5 Hz separation on the
+  same words.
+- **Enric's clips are alive**: HTTP 200, `audio/mpeg`, 198,144 bytes, 16.128 s of real audio; 132
+  `target1` clips in `cat_for_eng` plus more.
+
+So Catalan's audio is already a correct male/female pair in production. **What is wrong is the
+paperwork, not the audio.** Catalan needs the label fix and Tom's ear on Enric — nothing more.
+
+### A-131 — the collision is REAL and does NOT dissolve
+
+Checked against the live database. Clip `7e08e470-61a2-49ae-8614-222ed9155a75`
+(`nld_for_eng:pod-0:SC08-S004`, "Ik wil graag een glas bitter, alstublieft.") carries
+`voice_id = xai_247783ebdd51` — **Noor, one of the two rejected Dutch production voices.** It is not
+already on Bas or Lieke.
+
+A wholesale Dutch re-render would replace exactly the clip Tom ruled untouchable. **The collision
+stands and remains his call.** Nothing was deleted, relinked, queued or modified.
+
+Note the near-miss: the clip carries the `xai_`-prefixed spelling. A query matching only the bare
+`247783ebdd51` would have missed it and wrongly reported the collision dissolved.
+
+### The Dutch re-render cost — real, from the pipeline's own constant
+
+`services/phases/phase8-audio-v13.cjs:6142` — `POD_CHARS_TO_COST = 15.00 / 1_000_000` (xAI's
+published TTS rate). The $4.48 estate figure reconciles exactly: 298,494 chars × $15/1M = **$4.477**.
+
+| Scope | Distinct clips | Characters | Cost |
+|---|---|---|---|
+| Rejected-voice clips actually played | 93 | 6,097 | **$0.09** |
+| All rejected-voice target-side clips | 356 | 18,119 | $0.27 |
+| Full recast, played clips only | 142 | 8,457 | $0.13 |
+| Full recast, all target-side clips | 549 | 24,899 | **$0.37** |
+
+**Dutch costs between 9 and 37 cents.** Cost is not a reason to hesitate; the A-131 ruling and the
+#800 end-click are, and those are correctness reasons. **Nothing was rendered.**
+
+### Gaps, stated rather than filled
+
+- **Bas and Lieke are absent from `tools/pod-voices-xai.json`** — its `nl` block has only Thijs,
+  Femke, Noor and Ruben. Their genders are established acoustically because the repo record does not
+  contain them. That hole is worth closing separately.
+- **Bas's male reading has the narrowest margin** in the set (141.6 Hz). It is male, but if any male
+  label here fails Tom's ear it is this one — worth thirty seconds of listening before Dutch renders.
+- **`sal` cannot be assigned a gender** and must not be locked into a gendered slot. Genuinely
+  neutral, not a defect.
+- The brief's "roughly 173 Dutch pod clips" is not reproducible against the live database; the real
+  distinct-clip counts are in the table above.
+
+## The render — four languages released, tails clean
+
+The first slice went on Armenian, then the rest on the four cleanly-approved languages.
+
+**The #800 end-click was checked before releasing anything wider.** Measured on the fresh clips: the
+final 30 ms of every clip sits at **−91 dB** — digital silence — with no hard cut at level. **No end
+click.** That is consistent with the click being an xAI-plus-compressor artefact; these four
+languages are Azure-cast and are not exposed to it. **Nothing was repaired, patched or trimmed** —
+the abolished-tail-repair ruling was never approached.
+
+| Course | Generated | Failed | Text-blocked | Voices on the fresh clips |
+|---|---|---|---|---|
+| `hye_for_eng` | 116 | 2 | 2 | Hayk 29 + Anahit 94 — **the approved pair only** |
+| `eus_for_eng` | 109 | 2 | 1 | Ander 23 + Ainhoa 86 — **approved pair only** |
+| `bul_for_eng` | 105 | 2 | 1 | Borislav 17 + Kalina 88 — **approved pair only** |
+| `est_for_eng` | 105 | 2 | 4 | Kert 20 + Anu 85 — **approved pair only** |
+
+**435 clips, about $0.28 total.** Every fresh clip is on exactly Tom's approved pair — no leakage.
+Spot-checked eight clips across the four languages: all HTTP 200, all real audio, all tails clean.
+
+### Two defects found by rendering
+
+1. **`SC15-S012` has empty text in all four courses.** Every language failed the same sentence id
+   with `Text cannot be empty`. One content defect replicated across the pod source, not four
+   coincidences.
+2. **A second, separate gate exists that is not the voice gate.** `blocked_unapproved_target` is the
+   **A-109 text-approval gate** (`targetTextRenderable`), which refuses to render unproofread target
+   text. It is small here (1–4 sentences per course) but it is a real, independent blocker on any
+   T-21 render, and a voice approval does not open it.
