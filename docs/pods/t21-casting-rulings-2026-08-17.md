@@ -118,12 +118,12 @@ slice of rows. Read the real voice from `course_audio`, never `listening_pods.sp
 | Italian | `ita` | APPROVED | Leon (m, xai) + Giulia (f, xai) | ear-verified | **Official pool** kept 2026-08-17; production `x7avnu1k` + `eve` REJECTED. Already index 0 — **no pool edit needed.** |
 | Japanese | `jpn` | APPROVED | Naoki (m, azure) + Mayu (f, azure) | ear-verified | **Official pool** kept 2026-08-17; production `b1a7441b97a1` + `ara` REJECTED. Already index 0 — **no pool edit needed.** |
 | Korean | `kor` | APPROVED | Jun-seo `bf9fe5b5f981` (m, xai, production) + YuJin (f, azure, pool) | ear-verified | Cross-block pick 2026-08-17, like Chinese. Pool male Hyun-woo NOT picked; production `23be42535a45` (**Ji-yeon, female**) NOT picked. **Pool edit applied.** |
-| Latvian | `lav` | PENDING his listen | — | — | Not yet listened. |
-| Lithuanian | `lit` | PENDING his listen | — | — | Not yet listened. |
-| Nepali | `nep` | PENDING his listen | — | — | Not yet listened. |
-| Norwegian | `nor` | PENDING his listen | — | — | Not yet listened. |
-| Persian | `fas` | PENDING his listen | — | — | Not yet listened. |
-| Polish | `pol` | PENDING his listen | — | — | Not yet listened. |
+| Latvian | `lav` | APPROVED | Nils (m, azure) + Everita (f, azure) | ear-verified | Only pair available ("no other options"), 2026-08-17. Already index 0 — **no pool edit needed.** |
+| Lithuanian | `lit` | APPROVED | Leonas (m, azure) + Ona (f, azure) | ear-verified | Only pair available ("no other options"), 2026-08-17. Already index 0 — **no pool edit needed.** |
+| Nepali | `nep` | APPROVED | Sagar (m, azure) + Hemkala (f, azure) | ear-verified | Only pair available ("no other options"), 2026-08-17. Already index 0 — **no pool edit needed.** |
+| Norwegian | `nor` | APPROVED | Finn (m, azure) + Iselin (f, azure) | ear-verified | Only pair available ("no other options"), 2026-08-17. Already index 0 — **no pool edit needed.** |
+| Persian | `fas` | APPROVED | Farid (m, azure) + Dilara (f, azure) | ear-verified | Only pair available ("when there's only two voices, I can't choose"), 2026-08-17. Already index 0 — **no pool edit needed.** |
+| Polish | `pol` | APPROVED | Tomasz (m, xai) + Magdalena (f, xai) | ear-verified | First-listed male/female on the candidate page, 2026-08-17 (dictation "Polish now is the first choice... Thomas" read as Tomasz). Pool candidates Aleksandra (f) and Mateusz (m) NOT picked. Already index 0 — **no pool edit needed.** |
 | Portuguese — Brazilian | `por_br` | PENDING his listen | — | — | Not yet listened. |
 | Portuguese — European | `por` | PENDING his listen | — | — | Not yet listened. |
 | Romanian | `ron` | PENDING his listen | — | — | Not yet listened. |
@@ -821,3 +821,39 @@ ruling, so approving would fingerprint the wrong cast.
 - **The forensics worker hit the fan-out depth ceiling** as a depth-2 worker and therefore did all
   four legs itself rather than routing around the cap. No work was dropped; recorded so the coverage
   is not mistaken for a partition.
+
+## 2026-08-17 — Latvian, Lithuanian, Nepali, Norwegian, Persian, Polish — six-language voice note
+
+Tom's voice note, 22:41Z, working from the candidate page at `docs/pods/t21-remaining-casting-2026-08-17.md`
+(commit `adbceb32` on `docs/nld-pool-recast-2026-08-17`). *Relayed, not verbatim* except where quoted.
+
+- **Latvian, Lithuanian, Nepali, Norwegian** — each has exactly one candidate pair on the page.
+  "No other options" — accepted as-is: Nils/Everita, Leonas/Ona, Sagar/Hemkala, Finn/Iselin.
+- **Persian** — same shape: "when there's only two voices, I can't choose." Accepted Farid/Dilara.
+- **Polish** — four candidates on the page (Tomasz m, Magdalena f, Aleksandra f, Mateusz m).
+  Dictation garbled to "Polish now is the first choice. Okay, Thomas" — read as naming **Tomasz**,
+  the only Tomasz-like name on the page, so the ruling is unambiguous: **first-listed male
+  (Tomasz) + first-listed female (Magdalena)**. Aleksandra and Mateusz not picked.
+
+**Verified against live `app_config.pod_voice_pools` before writing anything**: all six languages
+already had Tom's picked voice at **index 0** of both the `m` and `f` arrays —
+
+| Language | Code | Pool state (before, unchanged) |
+|---|---|---|
+| Latvian | `lav` | `m: [Nils]`, `f: [Everita]` — single pair, already index 0 |
+| Lithuanian | `lit` | `m: [Leonas]`, `f: [Ona]` — single pair, already index 0 |
+| Nepali | `nep` | `m: [Sagar]`, `f: [Hemkala]` — single pair, already index 0 |
+| Norwegian | `nor` | `m: [Finn]`, `f: [Iselin]` — single pair, already index 0 |
+| Persian | `fas` | `m: [Farid]`, `f: [Dilara]` — single pair, already index 0 |
+| Polish | `pol` | `m: [Tomasz, Piotr, Marek]`, `f: [Magdalena, Zofia(xai), Zofia(azure)]` — Tomasz and Magdalena already index 0 |
+
+**No `app_config` write was made** — same as the Greek/Hebrew/Icelandic/Irish/Italian/Japanese
+precedent earlier in this ledger, locking an already-correct index 0 needs no edit, only the ruling
+recorded. Gender cross-checked against `tools/pod-voices-azure.json` for the five Azure pairs (all
+Male/Female ✓); Polish's Tomasz/Magdalena are xAI voices not present in the static
+`pod-voices-xai.json` snapshot, so gender was cross-checked against the live candidate page instead,
+which is itself sourced from real voice records per its own header (not the old page that mislabelled
+Catalan and German).
+
+**Casts lock only — no bulk rendering.** The A-132 render hold (above) still applies to all locked
+T-21 languages; these six are locked and pending render release, not rendered.
