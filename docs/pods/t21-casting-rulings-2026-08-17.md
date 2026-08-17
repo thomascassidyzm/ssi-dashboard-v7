@@ -402,3 +402,85 @@ something real:
 **Nothing was written to the pool for the four blocked languages.** Locking one of them on a guess
 would silently miscast the other two or three, which is the same failure mode as locking on a wrong
 gender label — and Tom's standing instruction on that is to lock nothing and report the gap.
+
+## What was actually locked, approved and blocked — 2026-08-17
+
+### Azure genders, verified from Azure's own live voice list
+
+Not from the doc's labels. Fetched from
+`https://<region>.tts.speech.microsoft.com/cognitiveservices/voices/list` with the key in `.env`.
+**Every Azure pool pair in play is a correct male/female pair:**
+
+| Voice | Azure says | Voice | Azure says |
+|---|---|---|---|
+| `hy-AM-HaykNeural` | Male | `hy-AM-AnahitNeural` | Female |
+| `eu-ES-AnderNeural` | Male | `eu-ES-AinhoaNeural` | Female |
+| `bg-BG-BorislavNeural` | Male | `bg-BG-KalinaNeural` | Female |
+| `hr-HR-SreckoNeural` | Male | `hr-HR-GabrijelaNeural` | Female |
+| `et-EE-KertNeural` | Male | `et-EE-AnuNeural` | Female |
+| `fi-FI-HarriNeural` | Male | `fi-FI-SelmaNeural` | Female |
+| `fr-FR-HenriNeural` | Male | `fr-FR-CelesteNeural` | Female |
+| `fr-CA-AntoineNeural` | Male | `fr-CA-SylvieNeural` | Female |
+| `ar-SY-LaithNeural` | Male | `ar-SY-AmanyNeural` | Female |
+| **`ca-ES-EnricNeural`** | **Male** | **`ca-ES-AlbaNeural`** | **Female** |
+
+**This resolves Catalan cheaply.** Enric is genuinely male and genuinely a different voice from
+Alba; Alba is genuinely female, exactly as Tom heard. Catalan therefore needs **no new render** —
+only the label fix and Tom's ear on Enric as the male half. That is the whole outstanding question
+for `cat`.
+
+### The stored casts are not all what the doc implies
+
+`--show` on each course, read through `tools/pod-approve-voices.cjs`. Pods are one voice per gender
+by design, so a stored cast with more voices is **leakage to converge, not a cast to preserve**.
+
+| Course | Stored cast | Verdict |
+|---|---|---|
+| `hye_for_eng` | Hayk + Anahit, clean two-hander | matches Tom's ruling — **approved** |
+| `eus_for_eng` | Ander + Ainhoa, clean | matches — **approved** |
+| `bul_for_eng` | Borislav + Kalina, clean | matches — **approved** |
+| `est_for_eng` | Kert + Anu, clean | matches — **approved** |
+| `zho_for_eng` | `ara`, `eve`, `jpi39icg`, `d18jlf6v` — **four voices** | Wei is not cast at all. Needs a recast onto the now-locked pool before it can be approved. |
+| `dan_for_eng` | `ara`, `eve`, `0ih5oi34`, `gwnexu6y` — **four voices** | `eve` and `gwnexu6y` are leakage. Needs a recast before approval. |
+| `hrv_for_eng` | **ElevenLabs** voices mixed with Azure Srecko/Gabrijela | Tom approved the Azure pair; several seats are on a third provider entirely. Needs a recast before approval. |
+| `fin_for_eng` | every seat reads `deferred` | The cast is **not resolved at all**. Cannot be approved or rendered until it is. **Explicit gap.** |
+
+### Approvals recorded
+
+Four, through `tools/pod-approve-voices.cjs`, `--by=Tom`, `--sample-doc=` the afdcc743 doc:
+
+| Course | Casting fingerprint |
+|---|---|
+| `hye_for_eng` | `ace3e0e192f373c8` |
+| `eus_for_eng` | `53db22477cfead0f` |
+| `bul_for_eng` | `58b28f161221e874` |
+| `est_for_eng` | `28cf137f452ffd1c` |
+
+Each self-invalidates if the course is recast, which is the designed behaviour.
+
+**Deliberately NOT approved**, each for a stated reason:
+- `nld_for_eng` — Tom blocked the Dutch render behind #800. Recording an approval would open the
+  bulk gate he explicitly closed, so the gate stays shut.
+- `zho`, `dan`, `hrv` — stored cast does not yet match the ruling; approving now would fingerprint
+  the wrong cast.
+- `fin` — cast unresolved.
+- `ara_eg`, `ara_sy`, `fra`, `fra_ca` — blocked on the shared-pool-key collision above.
+
+### Pool edits applied
+
+`zho` and `dan` only. Before-state asserted per pool, readback verified, full backup of the
+`pod_voice_pools` row in the applied log.
+
+| Pool | index-0 male | index-0 female |
+|---|---|---|
+| `zho` | Wei `9ab26871` (unchanged) | Hui → **Ara `ara`** |
+| `dan` | Mads → **Kasper `0ih5oi34`** | Astrid → **Ara `ara`** |
+
+Seven other approved languages (`hye`, `eus`, `bul`, `hrv`, `est`, `fin`, `nld`) already had their
+ruled pair at index 0 and needed **no pool edit at all**.
+
+### Nothing was rendered
+
+No render slice was run in this pass. The languages that are cleanly approved and ready
+(`hye`, `eus`, `bul`, `est`) are the correct first slice, and the #800 end-click tail-listen must
+happen on that slice before anything is released more widely.
