@@ -7,6 +7,10 @@ when he generates audio the old way in Popty, the new improved process is trigge
 **The headline: yes — the ordinary Popty path already had the full chain, and I proved it live. Five other
 render paths did not, and now do.**
 
+> **Updated 2026-08-17 23:10Z for two rulings from Tom.** (1) Pod explainers no longer exist as a content
+> type, so the explainer gating is *dropped*, not hardened. (2) Whisper sampling is scoped **per course**,
+> not per run — which turned out to be a real fix, not a relabel. Both are folded in below and live.
+
 ---
 
 ## 1. The answer Kai needs
@@ -17,10 +21,10 @@ render paths did not, and now do.**
 `POST /generate/:courseCode` on phase 8. That path already carried all three parts of the chain before I
 touched anything, and I verified it end-to-end on the deployed service, not by reading the code.
 
-One caveat, and it is a small one: the graduated sampler opens at **10% of the first course**, then halves
-per clean course down to a **0.2% floor**. On a multi-course run that is by design, but it means a course
-late in a long run may be sampled at the floor. I have **not** retuned it — the shipped rates are Tom's
-2026-08-13 decision and changing them for Kai's run is his call, not mine. See §6.
+**No caveat any more.** My earlier note here worried that a course late in a long run could sit at the
+0.2% floor. Tom's 2026-08-17 ruling resolves it and inverts the concern: sampling is scoped **per course**,
+every course opens at 10%, and the relaxation happens *within* a course as clean clips accumulate. Kai
+generates one course at a time, so each of his runs opens at full rate and earns its way down. See §6.
 
 ---
 
@@ -44,7 +48,7 @@ to what the running service executes.
 | `POST /regenerate-presentation/:courseCode/:legoId` | yes | **no → wired** | **gap closed** |
 | `POST /regenerate-phrase/:courseCode/:phraseId` | yes | **no → wired** | **gap closed** |
 | `POST /regenerate-lego/:courseCode/:legoId` | yes | **no → wired** | **gap closed** |
-| `pod-explainer-composite.cjs` | composite mastered: yes | **no → wired on the pieces** | **gap closed** |
+| `pod-explainer-composite.cjs` | composite mastered: yes | ungated | **DROPPED 2026-08-17** — pod explainers no longer exist as a content type, so this path is not worth hardening |
 | `POST /insert` | n/a | n/a | **exempt** — registers a row for bytes the caller already put in S3 |
 | `POST /prepare-presentations-scoped/:courseCode` | n/a | n/a | **exempt** — authors text, renders nothing |
 | `POST /regenerate-presentations/:courseCode` | n/a | n/a | **exempt** — text only |
@@ -76,12 +80,11 @@ And calling `startCourse()` there would reset the every-Nth counter and bank a b
 person fixing a clip in ScriptViewer would silently corrupt the trust accounting of a bulk run in the same
 process. `ALWAYS_SAMPLER` holds no state and touches none. Cost is one whisper decode per button press.
 
-**Pod explainers**: the gate goes on the **piece**, not the assembled composite. The composite plays each
-target three times against a one-line text, so whisper against that text would report a wild CER on every
-healthy clip and the gate would be pure noise. The piece is one honest utterance and is where new TTS bytes
-actually enter. Pieces are cached per (voice, text), so the check runs once per distinct piece. Languages
-are now passed explicitly — checking an English gloss as the target language would have been a
-false-failure generator.
+**Pod explainers — reverted, not shipped.** I had gated the explainer *pieces* (the composite plays each
+target three times against a one-line text, so whisper against the composite would have been pure noise).
+Tom's ruling on 2026-08-17 is that pod explainers no longer exist as a content type, so that work is on a
+path that is going away. `services/pod-explainer-composite.cjs` is back to its pre-gating state and holds
+zero veracity references. Dropped rather than hardened, which is the cheaper answer by some distance.
 
 No new feature flags on the chain. The tail-repair switch was itself the bug once (2026-08-05), and a
 default that must be set correctly in every unit file and cron leaks.
@@ -198,18 +201,50 @@ I only found this because I insisted on *exercising* a newly-wired route instead
 
 ---
 
-## 6. For Tom — one genuine fork, no action taken
+## 6. Sampling is now per COURSE — and that was a real fix, not a relabel
 
-**Sampling rates for a long multi-course run.** The sampler halves per clean course to a 0.2% floor. Across
-Kai's planned big runs that means the later courses are sampled at roughly one clip in five hundred. That
-is the policy working as designed and as you decided it on 2026-08-13, so I have **not** touched it. If you
-want a different posture for a long run, the honest lever is a floor raise for that run only. My read: leave
-it — the floor is a claim about *the renderer*, not about each course, and the failure-snap-back is what
-actually protects you. But it is your call and I am not making it silently.
+Tom's ruling, 2026-08-17: *"Long-run whisper sampling should be scoped PER COURSE, not per run — Kai
+typically generates one course at a time, so the graduated drop to the 0.2% floor within a course is
+explicitly fine and approved."*
 
-Everything else that came up resolved on better × simpler × cheaper and I decided it myself: the
-`ALWAYS_SAMPLER` posture on repair routes, gating explainer pieces rather than composites, and leaving the
-four text-only/splice paths exempt with the reason written into the code.
+Implementing it exposed that **the cheap end of the ladder had been unreachable in practice.** Trust was
+banked at *course boundaries*: `cleanCourses` only incremented when one course ended and the next began. A
+run containing exactly one course therefore banked nothing and stayed at the opening 10% from its first
+clip to its last. One course per run is how the estate is actually driven — so every course paid full
+opening rate forever, and the 1% / 0.5% / 0.2% rungs were dead code.
+
+**Now the ladder is walked inside a single course**, one rung per 10 clean sampled clips
+(`AUDIO_VERACITY_SAMPLE_STEP`), and every course starts fresh at the opening rate — trust does not cross a
+course boundary in either direction. Measured on the deployed module:
+
+| after this many clips of one course | sampling rate |
+|---|---|
+| 0 | 10% |
+| 91 | 1% |
+| 1,001 | 0.5% |
+| 3,001 | 0.25% |
+| 6,801 | 0.2% (floor) |
+
+Over a 400,000-clip course that is **826 clips whisper-checked instead of 40,000** — a 48× reduction in ASR
+cost — while never stopping looking, which is the property the floor exists to guarantee.
+
+The safety properties are unchanged or stronger. A failure still snaps straight back to 10%, and now
+forfeits **every** rung rather than one: the cheap rate was a claim that turned out not to hold, so it is
+withdrawn in full. Selection stays deterministic every-Nth, so the sample is spread and reproducible. The
+relax is logged as loudly as the snap-back, so a reader can see *why* the checked count stops climbing.
+
+One detail worth stating because it is easy to get backwards: the every-Nth counter deliberately keeps
+running across a relax. Resetting it there would spend a check confirming the very thing we just relaxed
+on. It **is** reset on a snap-back, where the point is to start looking again immediately.
+
+**Nothing here needs a decision from you.** The one judgement I had to make is the step size — the ruling
+sets the scope, not the granularity. I used **10 clean sampled clips per rung**, which is the faithful
+within-course analogue of the old "that course sampled clean" (the opening sample was always a *block* of
+checks, never one clip). At the opening rate that means ~100 clips render clean before anything gets
+cheaper. It is one env knob (`AUDIO_VERACITY_SAMPLE_STEP`) if your ear says otherwise.
+
+Three cross-course tests encoded the old scope and were flipped deliberately, each carrying a note saying
+so, plus a new test pinning the invariant the ruling turns on — every course starts fresh. 92 tests pass.
 
 ---
 
