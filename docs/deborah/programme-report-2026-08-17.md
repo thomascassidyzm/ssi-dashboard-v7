@@ -645,3 +645,79 @@ tracked.
 
 *Writes this session: exactly one — the `S0006L02U04` relink, before-image and rollback
 recorded. No TTS generated, nothing deleted, no text edited, nothing posted to Deborah.*
+
+---
+
+# ⚑ ESTATE SWEEP — this is not a Basque bug, it is an estate incident
+
+Worker **#924** found the identical mechanism in `eng_for_por` (27 silent slots, all
+dating to one 2026-08-06 batch, 23 of them from the "as soon as possible" change) and
+flagged "are other courses affected?" as a gap. **I answered it. They are.**
+
+I verified #924's count independently: `eng_for_por` = 25 phrase + 2 lego NULLs. Exact.
+
+## 1,034 silent phrase slots across 19 courses
+
+Courses where silent `target1` slots are a *small minority* of the total — the collateral
+shape, as against a course that was simply never rendered:
+
+| Course | Silent | of | % |
+|---|---|---|---|
+| **`spa_for_eng`** | **380** | 16,328 | 2.33% |
+| `spa_mx_for_eng` | 156 | 12,688 | 1.23% |
+| `zho_for_eng` | 149 | 11,879 | 1.25% |
+| `ita_for_eng` | 71 | 13,507 | 0.53% |
+| `fra_ca_for_eng` | 57 | 12,887 | 0.44% |
+| `kor_for_eng` | 52 | 13,910 | 0.37% |
+| `por_br_for_eng` | 45 | 14,179 | 0.32% |
+| `eng_for_mar` | 34 | 12,848 | 0.26% |
+| `por_for_eng` | 27 | 14,155 | 0.19% |
+| `eng_for_por` | 24 | 6,011 | 0.40% |
+| `ara_for_eng` | 17 | 12,638 | 0.13% |
+| + 8 more (`cym_s`, `fra`, `eus`, `gle`, `heb`, `afr`, `hun`, `ukr`) | 22 | | |
+| **TOTAL** | **1,034** | | |
+
+## The signature holds, and it points at one day
+
+For each silent slot I asked whether `content_audit_log` shows an UPDATE whose
+`old_row` still carried a live `target1_audio_id` — i.e. it *had* audio and an edit took
+it away:
+
+| Course | Silent | **Confirmed lost to a text edit** | Loss dates |
+|---|---|---|---|
+| `spa_for_eng` | 380 | **380 (100%)** | 2026-07-31, 2026-08-06 |
+| `spa_mx_for_eng` | 156 | 135 | 2026-08-06 |
+| `ita_for_eng` | 71 | 30 | 2026-08-06 |
+| `por_for_eng` | 27 | 5 | 2026-07-03 → 2026-08-06 |
+| `zho_for_eng` | 149 | 4 | 2026-07-16 |
+
+**`2026-08-06` recurs in four courses independently** — `spa_for_eng`, `spa_mx_for_eng`,
+`ita_for_eng` and (per #924) `eng_for_por`. That was one estate-wide editing batch, and
+it silenced learner-facing slots in every course it touched. Deborah's Basque case is
+the same incident seen from one course.
+
+**These "confirmed" numbers are a FLOOR, not a total.** `content_audit_log` is pruned to
+roughly a 14-day hot window (`tools/archive-audit-log.cjs`), so losses older than that
+cannot be attributed at all — which is exactly why `zho_for_eng` (4 of 149) and
+`por_for_eng` (5 of 27) attribute so poorly. Their silent slots may be older collateral,
+or may never have been rendered. **I did not distinguish those two causes.**
+
+## The part that matters most
+
+**`spa_for_eng` has 380 silent slots, 380 of them confirmed lost to a text edit — and it
+is the course Deborah has STOPPED CHECKING.** She paused it over the filler-Build defect
+and has therefore never reported the 380, because she never got to them. It is the
+largest single concentration on the estate and nobody has been told.
+
+For the rest of her courses: `eng_for_ita` is **clean (0)**. `eus_for_eng` is down to 4
+after my relink. `ara_lb_for_eng` has 6,506 of 12,333 (53%) — that is the never-rendered
+shape, not collateral, and consistent with her only just starting it.
+
+## What this changes
+
+The "as soon as possible" decision is no longer only a content-design question. **The
+identical change has already been applied in `eng_for_por`, and it silenced 23 slots
+there.** If it is applied to `eus_for_eng` S0028 the same way, it will silence that round
+too. **Sequence the audio first, or don't apply it yet.**
+
+*Additional writes: none. This section is measurement only.*
