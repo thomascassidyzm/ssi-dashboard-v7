@@ -452,12 +452,37 @@ async function checkEdit(c, snap, triggers, edit) {
     // `tts_estimate.clips_needing_render` and `course_wide.tiling.broken` off every
     // report, and an early return that omitted them made the whole batch throw,
     // which the caller then sees as "the check failed" rather than "nothing to do".
-    report.course_wide = { tiling: { broken: [], removed_vocab_units: [], note: 'No text change.' }, ordering: [], same_text_elsewhere: [] };
+    //
+    // The SAME shape trap bit a second time on 2026-08-17: `tts_estimate` was
+    // filled in here but WITHOUT its `breakdown`, and the human renderer reads
+    // `tts_estimate.breakdown.row_clips` unconditionally. Pointing the tool at a
+    // row whose edit had ALREADY BEEN APPLIED — the commonest way to use it after
+    // the fact — therefore died with "Cannot read properties of undefined
+    // (reading 'row_clips')" and exit 2. Exit 2 means "the tool failed", which is
+    // the honest answer to a crash but the WRONG answer to "nothing to do".
+    // So every field the renderer and the envelope read is populated here, in
+    // full, and the renderer is defensive as well (belt and braces: a missing
+    // field must degrade to a printed gap, never to an exception).
+    report.trigger = {
+      table: edit.table,
+      live_triggers: triggers[edit.table] || [],
+      relink_trigger: null,
+      behaviour: 'Not evaluated: the text is unchanged, so no audio-link trigger can fire.',
+    };
+    report.course_wide = { tiling: { broken: [], removed_vocab_units: [], checked: 0, note: 'No text change.' }, ordering: [], same_text_elsewhere: [] };
     report.derived = { note: 'No text change.' };
-    report.tts_estimate = { clips_needing_render: 0, note: 'No text change — nothing to render.' };
+    report.tts_estimate = {
+      clips_needing_render: 0,
+      breakdown: { row_clips: 0, presentation_clips: 0 },
+      note: 'No text change — nothing to render. This tool never renders.',
+    };
     report.decision = {
       verdict: 'proceed',
-      headline: 'The proposed text is identical to what is stored — this edit changes nothing.',
+      // Indistinguishable by construction: an edit already applied and an edit
+      // that was always a no-op both arrive here as "stored text == proposed
+      // text". Say both rather than guessing which, and say "nothing to do"
+      // rather than anything that could read as an approval of a pending change.
+      headline: 'Nothing to do: the stored text is already the proposed text — this edit is a no-op, or has already been applied.',
       reasons: [],
       required_actions: [],
       note: 'Advice to the proposing agent. This tool cannot and does not block anything.',
@@ -1000,7 +1025,16 @@ function render(rep) {
 
   L.push('');
   L.push('── TTS ' + '─'.repeat(70));
-  L.push(`  ≈ ${rep.tts_estimate.clips_needing_render} clip(s) would need rendering (${rep.tts_estimate.breakdown.row_clips} row + ${rep.tts_estimate.breakdown.presentation_clips} presentation). NOTHING WAS RENDERED.`);
+  // Defensive on purpose. The renderer is the LAST thing to run, after all the
+  // real work; an exception here throws away a report that was already complete
+  // and correct, and surfaces as exit 2 ("the tool failed") — which a caller can
+  // only read as "I learned nothing". A missing sub-field prints as a gap.
+  const tts = rep.tts_estimate || {};
+  const bd = tts.breakdown;
+  L.push(`  ≈ ${tts.clips_needing_render ?? '?'} clip(s) would need rendering` +
+    (bd ? ` (${bd.row_clips} row + ${bd.presentation_clips} presentation)` : '') +
+    '. NOTHING WAS RENDERED.');
+  if (tts.note) L.push(`  ${tts.note}`);
 
   L.push('');
   L.push('── DOCTRINE ' + '─'.repeat(65));
@@ -1091,6 +1125,9 @@ function buildEnvelope(courseCode, reports, mode) {
     generated_at: new Date().toISOString(),
     course_code: courseCode,
     mode,
+    // The check ran to completion. Its counterpart is failureEnvelope(), which
+    // sets this false and carries NO `decision` at all — see the note there.
+    checked: true,
     read_only: true,
     tts_rendered: 0,
     edits: reports.length,
@@ -1150,8 +1187,44 @@ async function checkEdits(courseCode, proposed) {
   }
 }
 
-if (require.main === module) {
-  main().catch(err => { console.error(`\n  edit-impact-check FAILED: ${err.message}\n`); process.exit(2); });
+/**
+ * What the tool emits when it could NOT complete the check.
+ *
+ * The load-bearing property, and the reason this is a separate builder rather
+ * than a flag on the normal envelope: it carries NO `decision` key, so
+ * `env.decision.verdict` is a TypeError rather than a plausible-looking
+ * 'proceed', and `checked` is false. A caller that forgets to test either one
+ * crashes; it cannot quietly read a failure as an approval. Exit stays 2, which
+ * EXIT deliberately never maps to a verdict.
+ */
+function failureEnvelope(courseCode, err, mode) {
+  return {
+    tool: 'edit-impact-check',
+    generated_at: new Date().toISOString(),
+    course_code: courseCode || null,
+    mode: mode || null,
+    checked: false,
+    read_only: true,
+    tts_rendered: 0,
+    error: { message: err && err.message ? err.message : String(err), stack: err && err.stack ? err.stack : null },
+    note: 'THE CHECK DID NOT RUN. This is not an approval and carries no verdict. Fix the cause and re-run; do not apply the edit on the strength of this.',
+  };
 }
 
-module.exports = { checkEdits, decide, buildEnvelope, sameVoice, tilingBlastRadius, orderingCheck, accumulate, words, EXIT };
+if (require.main === module) {
+  main().catch(err => {
+    console.error(`\n  edit-impact-check FAILED: ${err.message}\n`);
+    // Honour --json even on failure: a caller piping the report needs the
+    // structured "did not run" answer, not an empty stdout it might read as a
+    // silent pass.
+    try {
+      const a = parseArgs(process.argv);
+      const env = failureEnvelope(a.course, err, a['replay-since'] ? 'replay' : a.plan ? 'plan' : 'single');
+      if (a.json === '-') process.stdout.write(JSON.stringify(env, null, 2) + '\n');
+      else if (a.json && a.json !== true) fs.writeFileSync(a.json, JSON.stringify(env, null, 2));
+    } catch { /* the failure report must never itself become the failure */ }
+    process.exit(2);
+  });
+}
+
+module.exports = { checkEdits, decide, buildEnvelope, failureEnvelope, render, sameVoice, tilingBlastRadius, orderingCheck, accumulate, words, EXIT };

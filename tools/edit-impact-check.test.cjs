@@ -214,6 +214,68 @@ test('the envelope survives a report whose decision came from the no-change earl
   assert.strictEqual(env.summary.phrases_broken_course_wide, 0);
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// The already-applied / no-op input. Pointing the tool at a row whose edit has
+// ALREADY LANDED is the commonest way to use it after the fact, and it used to
+// CRASH: the no-change early return filled `tts_estimate` without `breakdown`,
+// and `render` reads `tts_estimate.breakdown.row_clips` unconditionally.
+// Observed live on 2026-08-17: "Cannot read properties of undefined (reading
+// 'row_clips')", exit 2. Exit 2 means "the tool failed" — the honest answer to a
+// crash, and the WRONG answer to "nothing to do".
+// ─────────────────────────────────────────────────────────────────────────────
+const { render, failureEnvelope } = require('./edit-impact-check.cjs');
+
+// The exact shape checkEdit's no-change early return produces.
+function noChangeReport() {
+  return {
+    edit: { course_code: 'tst_for_eng', table: 'course_seeds', key: 'seed 5', seed_number: 5, changes: {}, source: 'proposed' },
+    trigger: { table: 'course_seeds', live_triggers: [], relink_trigger: null, behaviour: 'Not evaluated: the text is unchanged, so no audio-link trigger can fire.' },
+    audio: [], presentations: [], doctrine: [],
+    derived: { note: 'No text change.' },
+    course_wide: { tiling: { broken: [], removed_vocab_units: [], checked: 0, note: 'No text change.' }, ordering: [], same_text_elsewhere: [] },
+    tts_estimate: { clips_needing_render: 0, breakdown: { row_clips: 0, presentation_clips: 0 }, note: 'No text change — nothing to render. This tool never renders.' },
+    verdicts: [{ level: 'ok', message: 'No text change — nothing to check.' }],
+    decision: { verdict: 'proceed', headline: 'Nothing to do: the stored text is already the proposed text — this edit is a no-op, or has already been applied.', reasons: [], required_actions: [] },
+  };
+}
+
+test('an already-applied edit RENDERS instead of crashing on tts_estimate.breakdown', () => {
+  const out = render(noChangeReport());
+  assert.match(out, /already been applied/);
+  assert.match(out, /0 row \+ 0 presentation/);
+  assert.match(out, /NOTHING WAS RENDERED/);
+});
+
+test('the renderer degrades to a printed gap rather than throwing on a missing breakdown', () => {
+  // Belt and braces: even a report shape this tool does not currently produce
+  // must not turn a completed check into exit 2 at the very last step.
+  const r = noChangeReport();
+  delete r.tts_estimate.breakdown;
+  const out = render(r);
+  assert.match(out, /would need rendering/);
+  assert.ok(!/row \+/.test(out.split('── TTS')[1]), 'the breakdown clause is omitted, not printed as undefined');
+});
+
+test('an already-applied edit is a structured PROCEED with no work invented', () => {
+  const env = buildEnvelope('tst_for_eng', [noChangeReport()], 'single');
+  assert.strictEqual(env.checked, true);
+  assert.strictEqual(env.decision.verdict, 'proceed');
+  assert.deepStrictEqual(env.decision.required_actions, []);
+  assert.strictEqual(env.summary.clips_needing_render, 0);
+  assert.match(env.reports[0].decision.headline, /no-op, or has already been applied/);
+});
+
+test('a FAILED check carries checked:false and NO verdict — it can never read as approval', () => {
+  const env = failureEnvelope('tst_for_eng', new Error('connection refused'), 'single');
+  assert.strictEqual(env.checked, false);
+  assert.strictEqual(env.decision, undefined, 'a failure envelope must carry no decision at all');
+  assert.strictEqual(env.tts_rendered, 0);
+  assert.match(env.error.message, /connection refused/);
+  // The property that matters: reading a verdict off it throws rather than
+  // yielding something a caller could mistake for a pass.
+  assert.throws(() => env.decision.verdict);
+});
+
 test('exit codes are distinct, and 2 is never a decision — it means the tool failed', () => {
   const codes = Object.values(EXIT);
   assert.strictEqual(new Set(codes).size, codes.length);
