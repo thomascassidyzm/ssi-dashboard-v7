@@ -112,14 +112,16 @@ module.exports = {
   // Free class — Telugu closed-class function words, corpus-derived from eng_for_tel phrase
   // prompts. Pronouns are listed in every case form the corpus attests, because the matcher cannot
   // relate నేను to నాకు to నన్ను. EVERY entry below was checked to occur as a standalone token in
-  // this corpus (tokenizeKnown, lego+phrase rows).
+  // this corpus (tokenizeKnown over all 13,759 lego+phrase rows); candidates that scored 0 —
+  // వాళ్ళకి, మిమ్మల్ని — were dropped rather than carried on intuition, and the 3pl dative is
+  // therefore not represented here even though the language obviously has one.
   freeClass: [
     // personal pronouns — nominative (note BOTH 2sg registers and BOTH 1pl are real here)
     'నేను', 'మేము', 'మనం', 'నువ్వు', 'మీరు', 'మీరందరూ', 'అతను', 'ఆమె', 'వాళ్ళు', 'అది', 'ఇది', 'తాను',
     // dative (-కు / -కి) — the case of experiencers, knowers, likers, needers, possessors
-    'నాకు', 'నీకు', 'మాకు', 'మీకు', 'మనకు', 'అతనికి', 'ఆమెకు', 'వాళ్ళకి', 'అందరికీ',
+    'నాకు', 'నీకు', 'మాకు', 'మీకు', 'మనకు', 'అతనికి', 'ఆమెకు', 'అందరికీ',
     // accusative (-ని / -ను)
-    'నన్ను', 'నిన్ను', 'మమ్మల్ని', 'మిమ్మల్ని', 'దాన్ని', 'వాటిని', 'ఆమెను', 'అతన్ని',
+    'నన్ను', 'నిన్ను', 'మమ్మల్ని', 'దాన్ని', 'వాటిని', 'ఆమెను', 'అతన్ని',
     // genitive
     'నా', 'నీ', 'మా', 'మీ', 'తన', 'దాని', 'అతని',
     // comitative / ablative pronoun forms

@@ -105,13 +105,14 @@ module.exports = {
   // Free class — Kannada closed-class function words, corpus-derived from eng_for_kan phrase
   // prompts. Pronouns are listed in every case form the corpus attests, because the matcher cannot
   // relate ನಾನು to ನನಗೆ to ನನ್ನನ್ನ. EVERY entry below was checked to occur as a standalone token in
-  // this corpus (tokenizeKnown, lego+phrase rows); candidates that scored 0 — ನೀನು / ನಿನಗೆ /
-  // ನಿನ್ನ, ಯಾರಿಗೆ, ಯಾವ, ಯಾರಾದರೂ — were dropped rather than carried on intuition.
+  // this corpus (tokenizeKnown over all 15,784 lego+phrase rows); candidates that scored 0 —
+  // ನೀನು / ನಿನಗೆ / ನಿನ್ನ, ಯಾರಿಗೆ, ಯಾವ, ಯಾರಾದರೂ, ಅಷ್ಟು — were dropped rather than carried on
+  // intuition.
   freeClass: [
     // personal pronouns — nominative
     'ನಾನು', 'ನಾವು', 'ನೀವು', 'ಅವನು', 'ಅವಳು', 'ಅವರು', 'ಅದು', 'ಇದು', 'ತಾನು', 'ಒಬ್ಬರು', 'ನೀವೆಲ್ಲ',
     // dative (-ಗೆ) — the case of experiencers, wanters, knowers and possessors
-    'ನನಗೆ', 'ನಮಗೆ', 'ನಿಮಗೆ', 'ಅವನಿಗೆ', 'ಅವಳಿಗೆ', 'ಅವರಿಗೆ', 'ಯಾರಿಗೆ',
+    'ನನಗೆ', 'ನಮಗೆ', 'ನಿಮಗೆ', 'ಅವನಿಗೆ', 'ಅವಳಿಗೆ', 'ಅವರಿಗೆ',
     // accusative (-ನ್ನ, spoken for -ನ್ನು)
     'ನನ್ನನ್ನ', 'ನಮ್ಮನ್ನ', 'ನಿಮ್ಮನ್ನ', 'ಅದನ್ನ', 'ಅವನ್ನ', 'ಅವಳನ್ನ', 'ಇದನ್ನ',
     // genitive
@@ -121,7 +122,7 @@ module.exports = {
     // demonstratives / deictic determiners
     'ಆ', 'ಈ', 'ಅದೇ', 'ಇದೇ', 'ಹಾಗೆ', 'ಹೀಗೆ',
     // determiners / quantifiers / degree
-    'ಒಂದು', 'ಒಬ್ಬ', 'ಒಬ್ಬರು', 'ಕೆಲವು', 'ಎಲ್ಲಾ', 'ತುಂಬಾ', 'ಹೆಚ್ಚು', 'ಸ್ವಲ್ಪ', 'ಇಷ್ಟು', 'ಅಷ್ಟು', 'ಬೇರೆ', 'ಮಾತ್ರ',
+    'ಒಂದು', 'ಒಬ್ಬ', 'ಕೆಲವು', 'ಎಲ್ಲಾ', 'ತುಂಬಾ', 'ಹೆಚ್ಚು', 'ಸ್ವಲ್ಪ', 'ಇಷ್ಟು', 'ಬೇರೆ', 'ಮಾತ್ರ',
     // conjunctions, quotative complementizers, discourse glue
     'ಆದರೆ', 'ಮತ್ತು', 'ಮತ್ತೆ', 'ಅಥವಾ', 'ಅಂತ', 'ಅನ್ನೋ', 'ಹೌದು',
     // free postpositions (the bound ones are suffixes — see case_suffix_stacking)
