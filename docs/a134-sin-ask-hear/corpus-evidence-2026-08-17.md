@@ -628,3 +628,71 @@ Real dangers from #913's run, which survive all of the above:
 
 Full plan: `docs/a134-sin-ask-hear/change-plan-2026-08-17.md`, machine-readable in
 `plan-edits.json`. Still **nothing applied**.
+
+---
+
+## 11. My census regex was blind to a whole spelling family (#926)
+
+The adversarial verify (#926) came back **PARTIALLY REFUTED on the priority claim** and it earned
+that verdict: it found defects the evidence file could not see, because **§1's regex
+`known_text ~ 'අහ|ඇහු|විමස'` misses `ඇහෙ-`**. In Unicode, `ඇහෙ` is
+`[0D87][0DB9][0DD9]` — it shares no matchable prefix with either `අහ` `[0D85][0DB9]` or `ඇහු`
+`[0D87][0DB9][0DD4]`. Every claim in §1 is therefore **under-counted**, mine and #913's alike.
+
+Corrected census on `ඇහෙ|ඇහී|ඉල්ලු`, verified live:
+
+| src | id | known | English |
+|---|---|---|---|
+| seed | 71 | කිසිම කෙනෙකුට සත්‍ය **ඇහෙනවා** දෙන්න ඕනේ හිතුනේ නෑ. | We didn't want to let anyone hear the truth. |
+| lego | `S0071L01` | ඇහෙනවා | hear |
+| seed | 203 | මම ඔයාගෙන් උදව් **ඉල්ලුවොත්** ඔයා මොකද කරන්නේ? | What would you do if I asked you to help me? |
+| lego | `S0203L02` | මම ඔයාගෙන් උදව් ඉල්ලුවොත් | if I asked you to help me |
+| seed | 272 | ඔව් ඒ ගොඩ හොඳ අදහසක් ලෙස **ඇහෙනවා**. | Yes that sounds like a great idea. |
+| lego | `S0272L01` | වගේ ඇහෙනවා | sounds like |
+| seed | 420 | ඔහු කොච්චර කාලද කියලා ඒ අයට අහන්නේ ඕනෑ නෑ. | They don't need to **ask** how old he is. |
+| lego | `S0420L03` | ඒ අයට **ඇහෙන්නේ** ඕනෑ නෑ | they don't need to **hear** |
+| seed | 432 | ඔයා **ඇහෙන්නයි** ඒ අය ඕනේ කරනවා කියලා ඒ අයට ෆෝකිවෙනවා. | They could mean that they want you to **ask**. |
+| lego | `S0432L01` | ඔයා ඇහෙන්නයි ඒ අය ඕනේ කරනවා | they want to **hear** you |
+| seed | 497 | ඔයාට නිදා ගන්නේ ඕනේ වගේ **ඇහෙනවා**. | That sounds as though you need to get some sleep. |
+| lego | `S0497L02` | ඔයාට ඕනේ වගේ ඇහෙනවා | that sounds as though you need |
+| seed | 609 | කරන්නට බුද්ධිසම්පන්න දෙය **ඇහීම**. | The sensible thing to do would have been to **ask**. |
+| lego | `S0609L02` | ඇහීම | asking was |
+
+### What this changes
+
+**1. Two more cards contradict their own seeds — the count is five, not three.**
+`S0420L03` and `S0432L01` both gloss **hear** under a seed whose English says **ask**. Same defect
+class as 381/382, and **#913's change plan does not cover either**, so that plan is incomplete
+against Kai's coherence mandate as written.
+
+**These two are worse than 381/382.** `ඇහුවා` is genuinely ambiguous, so 381/382 were a defensible
+wrong guess. But `ඇහෙනවා` is the **involuntary** form — 'be heard / sound' — and it **cannot bear
+the ASK meaning at all**. Those two cards are not sense-mismatched, they are ungrammatical for the
+sense their seed requires. `S0420L02` has a separate defect too: `ඔහු කොච්චර කාලද` → "how long he
+stayed" under a seed asking "how old he is".
+
+**2. My C6(a) premise was false.** I rejected the involuntary-form route for HEAR on the grounds
+that it has "**zero** attestations in this course". It has **six rows**, including a bare
+`ඇහෙනවා → hear` card at `S0071L01`. So a distinct-word split for the HEAR side — `ඇහෙනවා` hear vs
+`අහනවා` ask — was available and attested all along, and I dismissed it on a fact I had not checked.
+That is the third premise in this plate I asserted instead of measuring.
+
+**3. There are at least four "ask" verbs, not two.** `අහනවා` (ask/hear), `විමසනවා` (ask, 15
+phrases), `ඉල්ලනවා` (ask for/request — seed 203), and the verbal noun `ඇහීම` (seed 609, glossed
+"asking"). #913's "9/9 ASK seeds mark the addressee ablative" **wrongly counts seed 203**, whose
+verb is `ඉල්ලනවා`, not `අහනවා` — so the true denominator is 8/8. The rule survives, with a
+corrected count.
+
+**4. `ඇහෙනවා` itself carries two senses** — bare = *hear* (`S0071L01`), and with `වගේ`/`ලෙස` =
+*sounds like* (`S0272L01`, `S0497L02`). The `වගේ` appears to disambiguate, so I am not calling this
+a defect; it is unverified taste and goes on the speaker list.
+
+### Still open
+
+- **Phrase-level count for `ඇහෙ|ඇහී|ඉල්ලු` was not obtained** — the pool closed mid-query. Every
+  phrase-level figure in §1, §4 and #913's plan (`0 of 125` HEAR, `40 of 133` ASK) is computed on
+  the blind regex and is therefore **under-counted by an unknown amount**. This needs re-running
+  before anything is applied.
+- #926's other verdicts: C1, C2, C3, C5, C6(b), C7 **survive**; C4 partially refuted (the marker is
+  real, not epiphenomenal, but its teachability depends on a coherence sweep that does not fully
+  close); C8 **survives** — it was right that the denominator was miscounted and the census blind.
