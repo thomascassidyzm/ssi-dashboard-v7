@@ -6380,6 +6380,12 @@ function englishColumnFor(ctx) {
  * @param {('target'|'known')} [args.track] - which pod track this clip is
  * @param {string} [args.sentenceId] - pod sentence id (for the fallback log line)
  */
+// Veracity counters for the pod render in flight. Module-level because
+// generatePodAudio is called from several places inside a pod run and none of
+// them thread a stats object through; /generate-pods resets it per run and
+// reports it, exactly as /generate does with its own results.veracity.
+let podVeracityStats = veracity.newStats()
+
 async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, role, voice, ctx, track, sentenceId, force, canonTexts }) {
   const identityLanguage = canonicalLanguage(language)
   const cue = (ttsLanguageCue === undefined || ttsLanguageCue === null) ? language : ttsLanguageCue
@@ -6420,46 +6426,79 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
 
   let provider = voice.provider || 'azure'
   let activeVoice = voice
-  let audioBuffer, wordBoundaries
-  try {
-    const ttsConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
-    ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, provider, ttsConfig))
-  } catch (primaryErr) {
-    // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
-    // back when the primary was xAI — Azure failing has nowhere better to go,
-    // and elevenlabs failures aren't in scope for this safety net.
-    if (provider !== 'xai') { primaryErr.message = `[STAGE=tts:${provider}] ${primaryErr.message}`; throw primaryErr }
 
-    const kind = track || (role === 'known' ? 'known' : 'target')
-    // The fallback voice is picked from a real language, never from the cue —
-    // getAzureLocale('auto') has no answer, and that is how an explainer that
-    // lost xAI used to fall back to a voice chosen without a locale at all.
-    const azureVoice = ctx ? pickAzureFallbackVoice(ctx, kind, identityLanguage) : null
-    if (!azureVoice) {
-      // No Azure voice determinable — surface the original xAI failure so the
-      // clip is recorded as failed (not silently wrong-voiced).
-      primaryErr.message = `[STAGE=tts:xai,no-azure-fallback] ${primaryErr.message}`; throw primaryErr
-    }
-
-    logger.info(`[Pods] fallback xAI→Azure for ${sentenceId || '?'} ${kind} voice=${azureVoice.voice_id} (${primaryErr.message})`)
-    provider = 'azure'
-    activeVoice = azureVoice
-    const azureConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
+  // One attempt: TTS (with the xAI→Azure safety net) AND master. Shaped as a
+  // closure because the veracity gate below re-runs it on a failed check — a
+  // re-render has to be a REAL re-render, provider fallback and all, not a
+  // re-master of the same defective bytes.
+  const renderAndMaster = async () => {
+    // Each attempt starts from the configured voice: a previous attempt's
+    // fallback must not silently pin every retry to Azure.
+    provider = voice.provider || 'azure'
+    activeVoice = voice
+    let audioBuffer, wordBoundaries
     try {
-      ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, 'azure', azureConfig))
-    } catch (e) { e.message = `[STAGE=tts:azure-fallback,xai-also-failed] ${e.message}`; throw e }
+      const ttsConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
+      ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, provider, ttsConfig))
+    } catch (primaryErr) {
+      // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
+      // back when the primary was xAI — Azure failing has nowhere better to go,
+      // and elevenlabs failures aren't in scope for this safety net.
+      if (provider !== 'xai') { primaryErr.message = `[STAGE=tts:${provider}] ${primaryErr.message}`; throw primaryErr }
+
+      const kind = track || (role === 'known' ? 'known' : 'target')
+      // The fallback voice is picked from a real language, never from the cue —
+      // getAzureLocale('auto') has no answer, and that is how an explainer that
+      // lost xAI used to fall back to a voice chosen without a locale at all.
+      const azureVoice = ctx ? pickAzureFallbackVoice(ctx, kind, identityLanguage) : null
+      if (!azureVoice) {
+        // No Azure voice determinable — surface the original xAI failure so the
+        // clip is recorded as failed (not silently wrong-voiced).
+        primaryErr.message = `[STAGE=tts:xai,no-azure-fallback] ${primaryErr.message}`; throw primaryErr
+      }
+
+      logger.info(`[Pods] fallback xAI→Azure for ${sentenceId || '?'} ${kind} voice=${azureVoice.voice_id} (${primaryErr.message})`)
+      provider = 'azure'
+      activeVoice = azureVoice
+      const azureConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
+      try {
+        ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, 'azure', azureConfig))
+      } catch (e) { e.message = `[STAGE=tts:azure-fallback,xai-also-failed] ${e.message}`; throw e }
+    }
+    try {
+      const { buffer, durationMs } = await masterAudio(audioBuffer, ttsText)
+      return { buffer, durationMs, wordBoundaries }
+    } catch (e) {
+      // Empty/corrupt TTS buffer (buflen=0) usually means a cross-language voice
+      // mismatch (e.g. an English voice handed non-English text) — keep prov/voice
+      // /buflen so the failure is self-diagnosing.
+      e.message = `[STAGE=master prov=${provider} voice=${activeVoice?.voice_id} lang=${identityLanguage} cue=${cue} buflen=${audioBuffer ? audioBuffer.length : -1}] ${e.message}`
+      throw e
+    }
   }
+
+  // ── PRE-PUBLISH VERACITY GATE ────────────────────────────────────────────
+  // Same gate, same sampler, same reasoning as /generate: pod clips are
+  // published straight to learners by the upsert below, so the check happens
+  // after mastering and before anything is written. /generate-pods calls
+  // veracity.startCourse() so pods take part in the run's graduated sampling
+  // rather than paying for a whisper decode on every clip.
+  //
+  // Checked against ttsText, not text: the " … " pause cue is what the voice
+  // was actually asked to say, and it is the canonical text stored below.
+  const gated = await veracity.renderChecked({
+    render: renderAndMaster,
+    expectedText: ttsText,
+    language: identityLanguage,
+    stats: podVeracityStats,
+    logger,
+    meta: { courseCode, role, voiceId: activeVoice?.voice_id, sentenceId: sentenceId || null, track: track || null, originalText: text },
+  })
+  if (!gated.published) {
+    throw new Error(`[STAGE=veracity] quarantined after ${gated.attempts} attempts (${gated.verdict?.reason}, CER ${gated.verdict?.cer}, heard ${JSON.stringify(String(gated.verdict?.decode || '').slice(0, 60))})`)
+  }
+  const { buffer: masteredBuffer, durationMs, wordBoundaries } = gated
   voice = activeVoice  // course_audio row records the voice that actually produced the clip
-  let masteredBuffer, durationMs
-  try {
-    ;({ buffer: masteredBuffer, durationMs } = await masterAudio(audioBuffer, ttsText))
-  } catch (e) {
-    // Empty/corrupt TTS buffer (buflen=0) usually means a cross-language voice
-    // mismatch (e.g. an English voice handed non-English text) — keep prov/voice
-    // /buflen so the failure is self-diagnosing.
-    e.message = `[STAGE=master prov=${provider} voice=${voice?.voice_id} lang=${identityLanguage} cue=${cue} buflen=${audioBuffer ? audioBuffer.length : -1}] ${e.message}`
-    throw e
-  }
 
   const audioId = uuidv4().toUpperCase()
   const s3Key = `mastered/${audioId}.mp3`
@@ -6497,6 +6536,12 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
       s3_key: s3Key,
       duration_ms: durationMs,
       word_boundaries: wordBoundaries && wordBoundaries.length ? wordBoundaries : null,
+      // The gate's verdict travels WITH the clip — see the same call in
+      // /generate. Three-state: true/false/NULL-for-not-sampled.
+      ...veracity.verdictColumns(gated.verdict, {
+        checker: 'phase8-generate-pods',
+        attempts: gated.attempts,
+      }),
     }, {
       onConflict: 'course_code,text_normalized,language,role,voice_id',
     })
@@ -6715,6 +6760,15 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
 
     const ctx = await getCourseContext(courseCode)
 
+    // Pod clips go through the same pre-publish veracity gate and the same
+    // graduated sampler as course audio (generatePodAudio). Announce and start
+    // the course here so pods bank trust in the run alongside /generate rather
+    // than each clip landing on whatever counter the last run left behind.
+    podVeracityStats = veracity.newStats()
+    veracity.announceStatus(logger)
+    const podSampleRate = veracity.startCourse(courseCode)
+    logger.info(`[audio-veracity] ${courseCode}: sampling ${(podSampleRate.rate * 100).toFixed(1)}% of pod clips (${podSampleRate.clean_courses} clean course(s) banked this run)`)
+
     // Optional per-run voice overrides. Useful when you want pod audio to use
     // a different provider (e.g. xAI) than the course's canonical voice_config.
     // Shape: { voice_id: string, provider: 'xai'|'azure'|'elevenlabs', gender?: string }
@@ -6873,6 +6927,10 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     const elapsedMs = Date.now() - startMs
     logger.info(`[Pods] ${courseCode}: ${generated} generated, ${reused} reused (${reusedCrossCourse} from sibling courses on canon text), ${failed} failed in ${(elapsedMs / 1000).toFixed(1)}s`)
 
+    const podVLine = veracity.formatStats(podVeracityStats)
+    if (podVeracityStats.quarantined > 0 || podVeracityStats.unchecked > 0) logger.error(`[audio-veracity] ${courseCode}: ${podVLine}`)
+    else logger.info(`[audio-veracity] ${courseCode}: ${podVLine}`)
+
     res.json({
       course_code: courseCode,
       mode: sampleLimit === null ? 'bulk' : 'sample',
@@ -6888,6 +6946,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
       blocked_unapproved_target: blockedUnapprovedTarget,
       total: workQueue.length,
       elapsed_ms: elapsedMs,
+      veracity: podVeracityStats,
       errors: errors.slice(0, 20),
     })
   } catch (err) {
