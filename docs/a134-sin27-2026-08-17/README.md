@@ -1,6 +1,9 @@
 # A-134 — the 27 corrupt eng_for_sin presentation clips, re-recorded
 
-**Listen page (for Kai, by ear, on a phone):** https://watson-1.tail4968cb.ts.net/d/81770eaa
+**Listen page v2 (current, for Kai, by ear, on a phone):** https://watson-1.tail4968cb.ts.net/d/75ab15fd
+**Listen page v1 (superseded — said 27 example sentences needed authoring; they did not):** https://watson-1.tail4968cb.ts.net/d/81770eaa
+
+> **SUPERSEDED IN PART.** The gap this document states — "27 Sinhala example sentences want authoring by a speaker" — is not real. The example slot is selected by the course's own composer from existing seed/USE content, not authored. 12 of the 27 get a real example restored; 15 are correct exactly as recorded below. See `composer-finding.md`, `gate-report.md` and `seed-coherence-analysis.md`.
 
 Kai approved the spend on 2026-08-17. Actual spend: **$0.014** across 81 Azure renders
 (27 shipping takes + 54 spares). Nothing is live; the swap waits on his word.
