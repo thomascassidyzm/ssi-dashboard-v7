@@ -164,6 +164,11 @@ const dropsForPre = async (c, id) =>
     // The fingerprint and the stale predicates below both blow the server
     // default; a read that proves safety must not be the thing that times out.
     await c.query(`SET statement_timeout = '300s'`);
+    // DROP/CREATE TRIGGER takes ACCESS EXCLUSIVE on course_legos and holds it to
+    // COMMIT. course_legos is written by content passes all day, so without this
+    // a canary run started against a busy table would queue behind them AND make
+    // every one of their writes queue behind it. Fail fast and be re-run instead.
+    await c.query(`SET lock_timeout = '15s'`);
     await c.query('BEGIN');
 
     await c.query(
