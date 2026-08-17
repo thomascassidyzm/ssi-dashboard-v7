@@ -32,6 +32,7 @@
 const { Router } = require('express');
 
 const { isChinese } = require('../lib/language-config.cjs');
+const { impactFor, impactRequested } = require('../lib/impact-report.cjs');
 const { extractVocab } = require('../lib/text-normalization.cjs');
 
 const SELF_URL = process.env.COURSE_BUILDER_SELF_URL
@@ -166,6 +167,15 @@ module.exports = function(ctx) {
         return res.status(404).json({ error: `Seed ${seed_number} not found for ${courseCode}` });
       }
 
+      // ── Blast-radius verdict, computed HERE: before any branch below mutates ──
+      // anything, so it is a prediction against the pre-edit row rather than a
+      // reading of the damage after the fact. It rides back on every response
+      // path below under `impact`, and it blocks none of them — the cascade's own
+      // dryRun/rollback machinery is the safety net; this is the second opinion
+      // (audio links, presentations, same-text-elsewhere) that dryRun cannot give.
+      const impact = await impactFor(courseCode, [{ seed: Number(seed_number), target: newTarget }],
+        { requested: impactRequested(req, true) });
+
       // ── Auto-decompose path: caller wants the pipeline to produce the new ──
       // breakdown. We update the target and hand back a re-decomposition brief;
       // an agent (or the editor) then resubmits to this endpoint WITH `legos`.
@@ -188,6 +198,7 @@ module.exports = function(ctx) {
             target_updated: false,
             message: `DRY RUN — would set target to "${newTarget}" and request a re-decomposition `
               + `(known side unchanged: "${seed.known_text}"). No write performed.`,
+            impact,
           });
         }
         await ctx.supabase
@@ -206,6 +217,7 @@ module.exports = function(ctx) {
             + `(known side unchanged: "${seed.known_text}") and resubmit to `
             + `POST /api/course/${courseCode}/edit-cascade with the new \`legos\`.`,
           seed: { seed_number, known_text: seed.known_text, target_text: newTarget },
+          impact,
         });
       }
 
@@ -256,6 +268,7 @@ module.exports = function(ctx) {
           },
           message: `DRY RUN — nothing changed. ${editCase}; would delete ${(oldLegos || []).length} LEGO(s)/${(oldPhrases || []).length} phrase(s) and regenerate audio for the new breakdown. `
             + `${failures.length ? `${failures.length} seed(s) would need attention.` : 'No downstream breakage predicted.'}`,
+          impact,
         });
       }
 
@@ -387,6 +400,7 @@ module.exports = function(ctx) {
         blastRadius,
         message: `Seed ${seed_number} re-translated (${editCase}). `
           + `${blastRadius.failures.length ? `${blastRadius.failures.length} seed(s) need attention.` : 'No new validation failures.'}`,
+        impact,
       });
 
     } catch (err) {

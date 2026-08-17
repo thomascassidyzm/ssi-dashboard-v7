@@ -11,6 +11,7 @@ const { loadCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cj
 const { getCheckpointStatus, CHECKPOINT_SEEDS } = require('../lib/checkpoint.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { calculateLegoBalanceScores } = require('../lib/validation.cjs');
+const { impactFor, impactRequested } = require('../lib/impact-report.cjs');
 
 // ─── Inline helpers (not yet extracted to a lib module) ──────────────
 
@@ -921,6 +922,10 @@ USE:
   });
 
   // ─── PATCH /seed/:courseCode/:seedNumber ─────────────────────────────
+  // Writes seed text in place. `course_seeds` has NO audio-nulling trigger, so an
+  // edit here silently strands the seed's clip on the old text — which is exactly
+  // the class of damage edit-impact-check predicts. The verdict rides back on
+  // `impact`; it is advice, and it never blocks the write (Kai, 2026-08-17).
   router.patch('/seed/:courseCode/:seedNumber', async (req, res) => {
     const { courseCode, seedNumber } = req.params;
     const { target_text, known_text } = req.body;
@@ -929,6 +934,15 @@ USE:
     if (!target_text && !known_text) {
       return res.status(400).json({ error: 'target_text or known_text is required' });
     }
+
+    // PRE-edit: the tool diffs proposed text against what is in the row NOW. Run it
+    // after the UPDATE and it diffs the new text against itself, and every finding
+    // collapses to a hollow `proceed`. Deliberate single edit → default ON.
+    const impact = await impactFor(courseCode, [{
+      seed: seedNum,
+      ...(known_text ? { known: known_text } : {}),
+      ...(target_text ? { target: target_text } : {}),
+    }], { requested: impactRequested(req, true) });
 
     const updateFields = { status: 'released' };
     if (target_text) updateFields.target_text = target_text;
@@ -948,7 +962,7 @@ USE:
     recordActivity(ctx, courseCode, seedNum);
 
     console.log(`\u2713 S${String(seedNum).padStart(4, '0')} translation: ${target_text || known_text}`);
-    res.json({ ok: true, seed: seedNum, target_text, known_text });
+    res.json({ ok: true, seed: seedNum, target_text, known_text, impact });
   });
 
   // ─── DELETE /course/:courseCode ──────────────────────────────────────

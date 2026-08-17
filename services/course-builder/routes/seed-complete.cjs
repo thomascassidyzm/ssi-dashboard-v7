@@ -25,6 +25,7 @@ const {
 } = require('../lib/validation.cjs');
 const { loadCourseVocab, addToCourseVocab, loadTranslationVocab, loadIntroducedLegoPairs, buildVocabInjection } = require('../lib/vocab-cache.cjs');
 const { escalateBuildPhrases } = require('../lib/build-escalation.cjs');
+const { impactFor, impactRequested } = require('../lib/impact-report.cjs');
 
 // Build a SEED-indexed known-side context (mirror of the round-indexed CLI ctx):
 // gloss-stems & construction/unit carriers keyed by debut SEED, from prior-seed
@@ -1116,6 +1117,16 @@ module.exports = function seedCompleteRoutes(ctx) {
       const known_text = canonicalSeed.known_text || agent_known_text;
       const target_text = canonicalSeed.target_text || agent_target_text;
 
+      // ── Blast-radius verdict (opt-IN here) ────────────────────────────────
+      // This is the build hot path: a 300-seed build calls it 300 times, and the
+      // check costs seconds per seed, so the default is OFF and you ask for it
+      // with ?impact=1. It earns its keep on a RE-submission — a seed that is
+      // already decomposed and already voiced, where re-inserting the breakdown
+      // drops audio pointers and the seed upsert rewrites the text. Computed
+      // before the insert phase, against the pre-edit row. It blocks nothing.
+      const impact = await impactFor(course_code, [{ seed: seed_number, known: known_text, target: target_text }],
+        { requested: impactRequested(req, false) });
+
       const knownSource = canonicalSeed.known_text ? 'canonical (eng)' : 'agent';
       const targetSource = canonicalSeed.target_text ? 'canonical (eng)' : 'agent';
 
@@ -1758,6 +1769,7 @@ module.exports = function seedCompleteRoutes(ctx) {
           phrases: legos.reduce((sum, l) => sum + (l.build?.length || 0) + (l.use?.length || 0) + (l.phrases?.length || 0), 0),
           warnings: warnings.length > 0 ? { note: 'Warnings for next seed', items: warnings } : undefined,
           hint: 'Draft saved. Run POST /api/course/:code/finalize when all seeds are drafted.',
+          impact,
           introduced_vocab: await vocabInjectionFor(ctx, course_code, seed_number),
         });
       }
@@ -2198,6 +2210,8 @@ module.exports = function seedCompleteRoutes(ctx) {
           ],
           mantra: 'If you catch yourself repeating a pattern, STOP and create something different.',
         },
+
+        impact,
 
         session: (() => {
           const activity = ctx.courseActivity.get(course_code);

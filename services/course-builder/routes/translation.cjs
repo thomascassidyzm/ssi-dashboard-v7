@@ -14,6 +14,7 @@ const { Router } = require('express');
 const { getLanguageName } = require('../lib/language-config.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { emitProgress, emitProgressThrottled } = require('../../shared/emit-progress.cjs');
+const { impactFor, impactRequested } = require('../lib/impact-report.cjs');
 
 module.exports = function (ctx) {
   const router = Router();
@@ -376,6 +377,19 @@ module.exports = function (ctx) {
     const knownLang = parts[1] || '';
     const knownIsEng = knownLang === 'eng';
 
+    // Blast-radius verdict, PRE-edit. Default OFF here: this is the batch
+    // translate pass, which submits hundreds of seeds at a time during a build,
+    // and the check costs seconds per edit. Ask for it with ?impact=1 when the
+    // batch is a REVISION of already-decomposed seeds — that is when it has
+    // something to say. It never blocks: the writes below run either way.
+    const impact = await impactFor(courseCode, translations
+      .filter(t => t.seed_number && (t.known_text || t.target_text))
+      .map(t => ({
+        seed: t.seed_number,
+        ...(t.known_text ? { known: t.known_text } : {}),
+        ...(t.target_text ? { target: t.target_text } : {}),
+      })), { requested: impactRequested(req, false) });
+
     let updated = 0;
     let errors = [];
 
@@ -427,7 +441,8 @@ module.exports = function (ctx) {
       submitted: translations.length,
       updated,
       errors: errors.length > 0 ? errors : undefined,
-      message: `${updated} seeds translated successfully`
+      message: `${updated} seeds translated successfully`,
+      impact
     });
   });
 

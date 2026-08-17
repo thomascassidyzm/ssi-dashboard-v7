@@ -193,6 +193,27 @@ test('the batch envelope takes the WORST verdict and maps it to the exit code', 
   assert.strictEqual(env.decision.reconsider_edits.length, 1);
 });
 
+test('the envelope survives a report whose decision came from the no-change early return', () => {
+  // A submit path that re-sends a row's CURRENT text (POST /seed/complete re-upserts
+  // the canonical seed text every time) produces the no-change report. Before the
+  // 2026-08-17 fix that report carried no `decision`, no `tts_estimate` and no
+  // `course_wide`, so buildEnvelope threw and the caller saw "the check failed"
+  // instead of "nothing to do" — measured live on eng_for_sin seed 181.
+  const noChange = {
+    edit: { course_code: 'tst_for_eng', key: 'seed 5' },
+    audio: [], presentations: [], doctrine: [],
+    derived: { note: 'No text change.' },
+    course_wide: { tiling: { broken: [], removed_vocab_units: [] }, ordering: [], same_text_elsewhere: [] },
+    tts_estimate: { clips_needing_render: 0 },
+    verdicts: [{ level: 'ok', message: 'No text change — nothing to check.' }],
+    decision: { verdict: 'proceed', headline: 'identical', reasons: [], required_actions: [] },
+  };
+  const env = buildEnvelope('tst_for_eng', [noChange], 'api');
+  assert.strictEqual(env.decision.verdict, 'proceed');
+  assert.strictEqual(env.summary.clips_needing_render, 0);
+  assert.strictEqual(env.summary.phrases_broken_course_wide, 0);
+});
+
 test('exit codes are distinct, and 2 is never a decision — it means the tool failed', () => {
   const codes = Object.values(EXIT);
   assert.strictEqual(new Set(codes).size, codes.length);

@@ -445,6 +445,23 @@ async function checkEdit(c, snap, triggers, edit) {
   }
   if (!sides.length) {
     report.verdicts.push({ level: 'ok', message: 'No text change — nothing to check.' });
+    // A no-change proposal is COMMON, not exotic: a submit path that re-sends a
+    // row's current text (POST /seed/complete re-upserts the canonical seed text
+    // on every re-submission) lands here. It still has to come back as a complete,
+    // well-formed report — `buildEnvelope` reads `decision.verdict`,
+    // `tts_estimate.clips_needing_render` and `course_wide.tiling.broken` off every
+    // report, and an early return that omitted them made the whole batch throw,
+    // which the caller then sees as "the check failed" rather than "nothing to do".
+    report.course_wide = { tiling: { broken: [], removed_vocab_units: [], note: 'No text change.' }, ordering: [], same_text_elsewhere: [] };
+    report.derived = { note: 'No text change.' };
+    report.tts_estimate = { clips_needing_render: 0, note: 'No text change — nothing to render.' };
+    report.decision = {
+      verdict: 'proceed',
+      headline: 'The proposed text is identical to what is stored — this edit changes nothing.',
+      reasons: [],
+      required_actions: [],
+      note: 'Advice to the proposing agent. This tool cannot and does not block anything.',
+    };
     return report;
   }
 
