@@ -53,6 +53,39 @@ list.
 
 ---
 
+## What the ~1,100 actually is — and it is better news than the number looks
+
+The seven adjudicators agreed on two things that change how this should be read.
+
+**It is a small number of words, repeated.** Behind the hits sit very few distinct
+lexemes: Sinhala 9, Urdu 8, Hindi 5, Punjabi 5, Gujarati 3, Tamil 2, Bengali 1 —
+**about 33 distinct words across all seven courses**. Sinhala's 548 comes from nine
+words, four of them one word used six times. Fixing a lexeme fixes many prompts.
+
+**Most of it is ordering, not absence.** The commonest real defect is a word the
+course *does* teach, used hundreds of seeds before it is taught. Sinhala ගාව is
+used at seed 143 and debuts at 454; හැබැයි used at 246, debuts at 469; Punjabi ਵੱਧ
+used at 256, debuts at 485. Only a minority are words the course never teaches at
+all (Punjabi ਸੁੰਦਰ, ਖਰੀਦ; Sinhala ලිහිල්). Reordering a debut is a cheaper fix than
+writing new vocabulary.
+
+**Three findings that are content defects in their own right, not gate output:**
+
+- **eng_for_hin** teaches समुदाय for "the community" at seed 418, then the practice
+  phrases say समाज — a different word for the same gloss.
+- **eng_for_sin** contains malformed Sinhala: ඔොළා puts a vowel sign on an
+  independent vowel letter, which is not a possible Sinhala spelling.
+- **eng_for_ben** prompts use পেতে "to get" from seed 66; the lexeme পাওয়া is not
+  taught until seed 195.
+
+**All seven adjudicators independently reached the same verdict on the gate
+itself:** an exact-form matcher must never be a pass/fail gate for these
+languages — it is a ranked triage list until someone writes morphological
+normalisation. That is the posture the code now ships (advisory, never blocking),
+arrived at before their reports came in.
+
+---
+
 ## The bigger number is the one with no count next to it
 
 **34 more courses with real content still have no known-side check at all** —
