@@ -46,6 +46,32 @@ Blast radius of the shared production voice ids, all labelled male in the doc:
 Eight of `ara`'s ten languages are ones Tom has **not yet listened to**. Until the label is fixed at
 source, listening further means judging a female voice presented as the male candidate.
 
+### The source record is already correct — the defect is in the READER
+
+`tools/pod-voices-xai.json` has a `multilingual` block that already records the truth:
+
+| voice_id | name | gender |
+|---|---|---|
+| `ara` | Ara | **f** |
+| `eve` | Eve | **f** |
+| `leo` | Leo | m |
+| `rex` | Rex | m |
+| `sal` | Sal | m |
+
+**Do not "correct" this file — it is right.** Whatever generated the casting doc labelled all 41
+production voices male and therefore was not reading this record at all. The fix is to find the
+reader, not to rewrite the record.
+
+Two leads: the doc prints **raw voice ids** for production entries (`0ih5oi34`, `jpi39icg`, `ara`)
+but **friendly names** for official-pool entries (Mads, Astrid, Wei, Hui) — two inventories, two code
+paths. And the doc's friendly names do not match `pod-voices-xai.json` at all (its `da` block is
+Kasper/Lars/Ida, not Mads/Astrid; its `zh-CN` block is Jian/Hao/Xia, not Wei/Hui). `0ih5oi34` is
+"Kasper", male, and `jpi39icg` is "Jian", male, in that file — consistent with the doc, which means
+the male labels are **accidentally right**, not correctly derived.
+
+`sal` is recorded male in that file but is genuinely **gender-neutral** in the cast metadata
+elsewhere in this estate. Known, legitimate exception — not another bug.
+
 **Footgun:** `ara` is simultaneously a **language code** (Arabic MSA) and an **xAI voice id**. Every
 query, config key and log line that matches the bare string must say which namespace it means. Also
 `eve`/`xai_eve` are ONE voice — match bare AND `xai_`-prefixed spellings or you silently miss a large
@@ -63,8 +89,8 @@ slice of rows. Read the real voice from `course_audio`, never `listening_pods.sp
 | Bulgarian | `bul` | APPROVED | Borislav (m, azure) + Kalina (f, azure) | Approved as sampled, 2026-08-17. |
 | Catalan | `cat` | PENDING — xAI rejected | Alba (f, azure) confirmed; male half open | xAI pair Jordi/Mireia rejected 2026-08-17. Alba is female, mislabelled male in the doc. |
 | Chinese | `zho` | APPROVED | Wei (m, xai) + ara (f, xai) | Approved 2026-08-17. Pick crosses both blocks; Hui not picked. `ara` here is the VOICE id, not the language code. |
-| Croatian | `hrv` | PENDING his listen | — | Not yet listened. |
-| Danish | `dan` | PENDING his listen | — | Not yet listened. |
+| Croatian | `hrv` | APPROVED | Srecko (m, azure) + Gabrijela (f, azure) | Approved as sampled, 2026-08-17. |
+| Danish | `dan` | APPROVED | `0ih5oi34` (m, xai) + `ara` (f, xai) | Approved 2026-08-17. Production pair; official pool Mads/Astrid NOT picked. |
 | Dutch | `nld` | PENDING his listen | — | Not yet listened. |
 | Estonian | `est` | PENDING his listen | — | Not yet listened. |
 | Finnish | `fin` | PENDING his listen | — | Not yet listened. |
@@ -155,3 +181,14 @@ Check **Enric** (azure, 229 clips, already in production) before spending on fre
 *Relayed, not verbatim.* Male = **Wei** (official pool, xai). Female = **`ara`** (production, xai) —
 Tom confirms by ear that `ara` is a **female** voice, mislabelled male. The pick **crosses both
 blocks**; **Hui is not picked**. Pool for `zho` writes Wei + `ara` and drops Hui.
+
+### 2026-08-17 — Croatian (`hrv`) — APPROVED
+
+*Relayed, not verbatim.* Approved as sampled: **Srecko** (m, azure) + **Gabrijela** (f, azure), the
+single Azure pool pair with no production fork.
+
+### 2026-08-17 — Danish (`dan`) — APPROVED
+
+*Relayed, not verbatim.* The two **in-production** voices are his pick: **`0ih5oi34`** as male and
+**`ara`** as female — the same `ara` he ruled female on Chinese. The official-pool pair the doc shows
+for Danish (Mads, Astrid) is **not** his pick.
