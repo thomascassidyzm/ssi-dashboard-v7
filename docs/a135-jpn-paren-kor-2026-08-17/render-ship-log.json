@@ -2,1776 +2,362 @@
  {
   "id": "eng_for_kor:S0040L01U04",
   "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
   "text": "영어로 말하는 것에 대해 기분이 어때요?",
-  "old_clip": "ec6e349d-e0bb-475f-b9e5-ae4ac1c49c6e",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0040L01U04__a1.mp3",
-   "ms": 3960,
-   "gates": {
-    "fail": [],
-    "z": -0.8454289940828379,
-    "tail": -87.4575039358678,
-    "tokens": 7,
-    "chars": 16,
-    "expected_ms": 4189,
-    "ffprobe_ms": 3960,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "영어로",
-     "offset": 56,
-     "duration": 458
-    },
-    {
-     "text": "말하는",
-     "offset": 528,
-     "duration": 431
-    },
-    {
-     "text": "것에",
-     "offset": 972,
-     "duration": 264
-    },
-    {
-     "text": "대해",
-     "offset": 1250,
-     "duration": 417
-    },
-    {
-     "text": "기분이",
-     "offset": 1681,
-     "duration": 528
-    },
-    {
-     "text": "어때요",
-     "offset": 2222,
-     "duration": 722
-    },
-    {
-     "text": "?.",
-     "offset": 2958,
-     "duration": 125
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0040L01U04__a2.mp3",
-    "ms": 3816
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0040L01U04__a3.mp3",
-    "ms": 4284
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 3960,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3816,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4284,
-    "fail": []
-   }
-  ]
+  "skipped": "already owned: c6b79e1b-78f5-4141-b03f-e326f30a7694",
+  "shipped": null,
+  "spares": []
  },
  {
   "id": "eng_for_kor:S0040L01U05",
   "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
   "text": "영어를 배우는 것에 대해 기분이 어때요?",
-  "old_clip": "191c5cc1-00ed-4320-a2e5-c7dffdcbddc6",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0040L01U05__a1.mp3",
-   "ms": 4032,
-   "gates": {
-    "fail": [],
-    "z": -0.5791568047337254,
-    "tail": -87.54576067271408,
-    "tokens": 7,
-    "chars": 16,
-    "expected_ms": 4189,
-    "ffprobe_ms": 4032,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "영어를",
-     "offset": 56,
-     "duration": 472
-    },
-    {
-     "text": "배우는",
-     "offset": 542,
-     "duration": 431
-    },
-    {
-     "text": "것에",
-     "offset": 986,
-     "duration": 264
-    },
-    {
-     "text": "대해",
-     "offset": 1264,
-     "duration": 417
-    },
-    {
-     "text": "기분이",
-     "offset": 1694,
-     "duration": 583
-    },
-    {
-     "text": "어때요",
-     "offset": 2292,
-     "duration": 722
-    },
-    {
-     "text": "?.",
-     "offset": 3028,
-     "duration": 125
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0040L01U05__a2.mp3",
-    "ms": 3924
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0040L01U05__a3.mp3",
-    "ms": 4284
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4032,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3924,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4284,
-    "fail": []
-   }
-  ]
+  "skipped": "already owned: ebc64c35-acab-4d24-8e32-6bc40ee6b41e",
+  "shipped": null,
+  "spares": []
  },
  {
   "id": "eng_for_kor:S0280L03U04",
   "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
   "text": "저는 가기 전에 그 일만 했어요",
-  "old_clip": "b4c034df-892e-434e-aacd-cd78946544c0",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0280L03U04__a1.mp3",
-   "ms": 3564,
-   "gates": {
-    "fail": [],
-    "z": 0.450340236686392,
-    "tail": -86.22956734876135,
-    "tokens": 7,
-    "chars": 12,
-    "expected_ms": 3442,
-    "ffprobe_ms": 3564,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 458
-    },
-    {
-     "text": "가기",
-     "offset": 528,
-     "duration": 361
-    },
-    {
-     "text": "전에",
-     "offset": 903,
-     "duration": 347
-    },
-    {
-     "text": "그",
-     "offset": 1264,
-     "duration": 208
-    },
-    {
-     "text": "일만",
-     "offset": 1486,
-     "duration": 361
-    },
-    {
-     "text": "했어요",
-     "offset": 1861,
-     "duration": 681
-    },
-    {
-     "text": ".",
-     "offset": 2556,
-     "duration": 125
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0280L03U04__a2.mp3",
-    "ms": 3420
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0280L03U04__a3.mp3",
-    "ms": 4032
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 3564,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3420,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4032,
-    "fail": []
-   }
-  ]
+  "skipped": "already owned: 1c948c53-a616-4673-82c0-9a52a7321ace",
+  "shipped": null,
+  "spares": []
  },
  {
   "id": "eng_for_kor:S0280L03U05",
   "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
   "text": "그녀는 일만 했어요, 하지만 있고 싶어하지 않았어요",
-  "old_clip": "66b426b0-b8ac-46c3-bd60-97d018d98ac0",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0280L03U05__a1.mp3",
-   "ms": 5040,
-   "gates": {
-    "fail": [],
-    "z": -0.3016789940828388,
-    "tail": -88.19967632453084,
-    "tokens": 9,
-    "chars": 21,
-    "expected_ms": 5122,
-    "ffprobe_ms": 5040,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "그녀는",
-     "offset": 56,
-     "duration": 444
-    },
-    {
-     "text": "일만",
-     "offset": 514,
-     "duration": 375
-    },
-    {
-     "text": "했어요",
-     "offset": 903,
-     "duration": 750
-    },
-    {
-     "text": ",",
-     "offset": 1764,
-     "duration": 56
-    },
-    {
-     "text": "하지만",
-     "offset": 1833,
-     "duration": 486
-    },
-    {
-     "text": "있고",
-     "offset": 2333,
-     "duration": 278
-    },
-    {
-     "text": "싶어하지",
-     "offset": 2625,
-     "duration": 514
-    },
-    {
-     "text": "않았어요",
-     "offset": 3153,
-     "duration": 889
-    },
-    {
-     "text": ".",
-     "offset": 4056,
-     "duration": 125
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0280L03U05__a2.mp3",
-    "ms": 4968
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0280L03U05__a3.mp3",
-    "ms": 5508
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 5040,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 4968,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 5508,
-    "fail": []
-   }
-  ]
+  "skipped": "already owned: be44316e-9b3b-4072-b91b-6bd1a4ef7cb0",
+  "shipped": null,
+  "spares": []
  },
  {
   "id": "eng_for_kor:S0280L03U06",
   "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
   "text": "우리는 함께 일만 했어요, 그리고 저는 갈 준비가 됐어요",
-  "old_clip": "15fc6d8d-25a6-41ef-b6ac-a1241dd3a86d",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0280L03U06__a1.mp3",
-   "ms": 5436,
-   "gates": {
-    "fail": [],
-    "z": 0.4727514792899421,
-    "tail": -87.77551860897431,
-    "tokens": 11,
-    "chars": 22,
-    "expected_ms": 5308,
-    "ffprobe_ms": 5436,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "우리는",
-     "offset": 56,
-     "duration": 500
-    },
-    {
-     "text": "함께",
-     "offset": 569,
-     "duration": 361
-    },
-    {
-     "text": "일만",
-     "offset": 944,
-     "duration": 347
-    },
-    {
-     "text": "했어요",
-     "offset": 1306,
-     "duration": 736
-    },
-    {
-     "text": ",",
-     "offset": 2153,
-     "duration": 42
-    },
-    {
-     "text": "그리고",
-     "offset": 2208,
-     "duration": 472
-    },
-    {
-     "text": "저는",
-     "offset": 2694,
-     "duration": 333
-    },
-    {
-     "text": "갈",
-     "offset": 3042,
-     "duration": 181
-    },
-    {
-     "text": "준비가",
-     "offset": 3236,
-     "duration": 458
-    },
-    {
-     "text": "됐어요",
-     "offset": 3708,
-     "duration": 750
-    },
-    {
-     "text": ".",
-     "offset": 4472,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0280L03U06__a2.mp3",
-    "ms": 5400
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0280L03U06__a3.mp3",
-    "ms": 5976
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 5436,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 5400,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 5976,
-    "fail": []
-   }
-  ]
+  "skipped": "already owned: aa7f248e-7aca-47b1-807e-f73174009d59",
+  "shipped": null,
+  "spares": []
  },
  {
   "id": "eng_for_kor:S0282L01U03",
   "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
   "text": "더 많은 시간이 필요하면 아니요, 문제없어요",
-  "old_clip": "7d0349c7-478a-4f0d-9019-8af94bf28509",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0282L01U03__a1.mp3",
-   "ms": 4572,
-   "gates": {
-    "fail": [],
-    "z": 0.037751479289942824,
-    "tail": -87.36573769804261,
-    "tokens": 8,
-    "chars": 18,
-    "expected_ms": 4562,
-    "ffprobe_ms": 4572,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "더",
-     "offset": 56,
-     "duration": 236
-    },
-    {
-     "text": "많은",
-     "offset": 306,
-     "duration": 333
-    },
-    {
-     "text": "시간이",
-     "offset": 653,
-     "duration": 431
-    },
-    {
-     "text": "필요하면",
-     "offset": 1097,
-     "duration": 597
-    },
-    {
-     "text": "아니요",
-     "offset": 1708,
-     "duration": 583
-    },
-    {
-     "text": ",",
-     "offset": 2403,
-     "duration": 97
-    },
-    {
-     "text": "문제없어요",
-     "offset": 2514,
-     "duration": 1069
-    },
-    {
-     "text": ".",
-     "offset": 3597,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0282L01U03__a2.mp3",
-    "ms": 4428
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0282L01U03__a3.mp3",
-    "ms": 4572
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4572,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 4428,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4572,
-    "fail": []
-   }
-  ]
+  "skipped": "already owned: 179a240e-105a-4c37-bd83-c4aa9ef00bfc",
+  "shipped": null,
+  "spares": []
  },
  {
   "id": "eng_for_kor:S0282L01U04",
   "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
   "text": "우리가 함께 일할 때 아니요, 문제없어요",
-  "old_clip": "de974622-e511-4ecc-a03d-531075a819ed",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0282L01U04__a1.mp3",
-   "ms": 4356,
-   "gates": {
-    "fail": [],
-    "z": 0.6190680473372805,
-    "tail": -87.82999351790284,
-    "tokens": 8,
-    "chars": 16,
-    "expected_ms": 4189,
-    "ffprobe_ms": 4356,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "우리가",
-     "offset": 56,
-     "duration": 458
-    },
-    {
-     "text": "함께",
-     "offset": 528,
-     "duration": 417
-    },
-    {
-     "text": "일할",
-     "offset": 958,
-     "duration": 292
-    },
-    {
-     "text": "때",
-     "offset": 1264,
-     "duration": 194
-    },
-    {
-     "text": "아니요",
-     "offset": 1472,
-     "duration": 569
-    },
-    {
-     "text": ",",
-     "offset": 2153,
-     "duration": 83
-    },
-    {
-     "text": "문제없어요",
-     "offset": 2250,
-     "duration": 1083
-    },
-    {
-     "text": ".",
-     "offset": 3347,
-     "duration": 125
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0282L01U04__a2.mp3",
-    "ms": 4140
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0282L01U04__a3.mp3",
-    "ms": 4356
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4356,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 4140,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4356,
-    "fail": []
-   }
-  ]
+  "skipped": "already owned: 771fd28f-f24b-469b-b997-271b102080e4",
+  "shipped": null,
+  "spares": []
  },
  {
   "id": "eng_for_kor:S0284L01U06",
   "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
   "text": "저는 당신이 제 여동생 친구를 만났으면 좋겠어요",
-  "old_clip": "1281ddd2-b100-4f0e-87c2-7e6f10b88b41",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0284L01U06__a1.mp3",
-   "ms": 5256,
-   "gates": {
-    "fail": [],
-    "z": 1.187204142011836,
-    "tail": -86.64755712914652,
-    "tokens": 8,
-    "chars": 20,
-    "expected_ms": 4935,
-    "ffprobe_ms": 5256,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 444
-    },
-    {
-     "text": "당신이",
-     "offset": 514,
-     "duration": 861
-    },
-    {
-     "text": "제",
-     "offset": 1389,
-     "duration": 250
-    },
-    {
-     "text": "여동생",
-     "offset": 1653,
-     "duration": 542
-    },
-    {
-     "text": "친구를",
-     "offset": 2208,
-     "duration": 458
-    },
-    {
-     "text": "만났으면",
-     "offset": 2681,
-     "duration": 681
-    },
-    {
-     "text": "좋겠어요",
-     "offset": 3375,
-     "duration": 889
-    },
-    {
-     "text": ".",
-     "offset": 4278,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0284L01U06__a2.mp3",
-    "ms": 4968
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0284L01U06__a3.mp3",
-    "ms": 5616
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 5256,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 4968,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 5616,
-    "fail": []
-   }
-  ]
+  "skipped": "already owned: 99cbadaf-b940-4312-88f2-58b9b4f0196a",
+  "shipped": null,
+  "spares": []
  },
  {
   "id": "eng_for_kor:S0288L01U01",
   "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
   "text": "저는 피곤할 때 텔레비전 보는 것을 좋아해요",
-  "old_clip": "0c50aa80-97f9-455c-b894-4f285695e6c7",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0288L01U01__a1.mp3",
-   "ms": 4428,
-   "gates": {
-    "fail": [],
-    "z": -0.4947928994082821,
-    "tail": -86.96765512835832,
-    "tokens": 8,
-    "chars": 18,
-    "expected_ms": 4562,
-    "ffprobe_ms": 4428,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 389
-    },
-    {
-     "text": "피곤할",
-     "offset": 458,
-     "duration": 486
-    },
-    {
-     "text": "때",
-     "offset": 958,
-     "duration": 250
-    },
-    {
-     "text": "텔레비전",
-     "offset": 1222,
-     "duration": 722
-    },
-    {
-     "text": "보는",
-     "offset": 1958,
-     "duration": 264
-    },
-    {
-     "text": "것을",
-     "offset": 2236,
-     "duration": 375
-    },
-    {
-     "text": "좋아해요",
-     "offset": 2625,
-     "duration": 806
-    },
-    {
-     "text": ".",
-     "offset": 3444,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0288L01U01__a2.mp3",
-    "ms": 4356
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0288L01U01__a3.mp3",
-    "ms": 4968
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4428,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 4356,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4968,
-    "fail": []
-   }
-  ]
+  "skipped": "already owned: 691abc27-3768-45a9-b330-433b4c5b825d",
+  "shipped": null,
+  "spares": []
  },
  {
   "id": "eng_for_kor:S0288L01U02",
   "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
   "text": "저는 저녁에 텔레비전 보는 것을 좋아해요",
-  "old_clip": "15278a0a-ad07-4b59-867e-53948374e943",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0288L01U02__a1.mp3",
-   "ms": 4212,
-   "gates": {
-    "fail": [],
-    "z": -0.6035428994082852,
-    "tail": -86.3244407485363,
-    "tokens": 7,
-    "chars": 17,
-    "expected_ms": 4375,
-    "ffprobe_ms": 4212,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 514
-    },
-    {
-     "text": "저녁에",
-     "offset": 583,
-     "duration": 472
-    },
-    {
-     "text": "텔레비전",
-     "offset": 1069,
-     "duration": 653
-    },
-    {
-     "text": "보는",
-     "offset": 1736,
-     "duration": 264
-    },
-    {
-     "text": "것을",
-     "offset": 2014,
-     "duration": 389
-    },
-    {
-     "text": "좋아해요",
-     "offset": 2417,
-     "duration": 792
-    },
-    {
-     "text": ".",
-     "offset": 3222,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0288L01U02__a2.mp3",
-    "ms": 4104
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0288L01U02__a3.mp3",
-    "ms": 4788
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4212,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 4104,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4788,
-    "fail": []
-   }
-  ]
+  "skipped": "already owned: 9d6f3937-69d0-4c3d-a847-8fd143b61b6b",
+  "shipped": null,
+  "spares": []
  },
  {
   "id": "eng_for_kor:S0288L01U03",
   "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
   "text": "다른 사람과 텔레비전 보는 것을 좋아해요?",
-  "old_clip": "a47c0102-44e9-48f6-ae36-01b2ec0c609c",
+  "skipped": "already owned: 8a42efc3-4157-4e54-99a4-db54620b9fd6",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0288L01U04",
+  "course": "eng_for_kor",
+  "text": "저는 쉬고 싶을 때 텔레비전 보는 것을 좋아해요",
+  "skipped": "already owned: 167dff99-a0ea-43fb-9484-55ac6977858e",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0288L02U05",
+  "course": "eng_for_kor",
+  "text": "제가 아는 대부분의 사람들은 영어로 말하는 것이 괜찮아요",
+  "skipped": "already owned: 51137f7e-eaf6-4a5f-8c66-4236a888dec6",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0292L01U01",
+  "course": "eng_for_kor",
+  "text": "저는 당신과 파티에 가고 싶어요",
+  "skipped": "already owned: 57549d96-1510-4de7-a870-7856df6b270e",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0292L01U02",
+  "course": "eng_for_kor",
+  "text": "오늘 밤 파티에 오고 싶어요?",
+  "skipped": "already owned: 08df6814-55fa-4d11-9401-0ed6859a8378",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0292L01U03",
+  "course": "eng_for_kor",
+  "text": "저는 파티에 갈 수 있을지 모르겠어요",
+  "skipped": "already owned: a01657a4-5854-482b-96c2-49210b5bf4ba",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0292L01U04",
+  "course": "eng_for_kor",
+  "text": "저는 친구들과 파티에 가고 싶어요",
+  "skipped": "already owned: 75a6e02b-39e1-4ed2-8361-ad2c02e4d757",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0294L01U06",
+  "course": "eng_for_kor",
+  "text": "죄송하지만 오늘 당신에게 전화할 시간이 충분하지 않아요",
+  "skipped": "already owned: e564bb7c-9f22-45a1-89cd-9512d0d528bb",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0294L01U07",
+  "course": "eng_for_kor",
+  "text": "저는 어젯밤에 당신에게 전화할 시간이 충분하지 않았어요",
+  "skipped": "already owned: 77e3fe19-7a02-4796-b57e-9e29df88bca4",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0294L01U08",
+  "course": "eng_for_kor",
+  "text": "그는 오늘 저녁에 당신에게 전화할 시간이 충분하지 않아요",
+  "skipped": "already owned: 56317fd0-a6ae-4d38-9d53-a759122d8a07",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0296L01U01",
+  "course": "eng_for_kor",
+  "text": "저는 영어로 더 자주 말해야 한다고 말했어요",
+  "skipped": "already owned: 081265fe-556e-4cd5-9e9e-d5748bcfb3ec",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0296L01U02",
+  "course": "eng_for_kor",
+  "text": "저는 연습할 시간이 더 필요하다고 말했어요",
+  "skipped": "already owned: 5b1ad1e2-a985-4070-a363-9ce2bfafb01a",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0296L01U03",
+  "course": "eng_for_kor",
+  "text": "저는 답을 찾아야 한다고 말했어요",
+  "skipped": "already owned: b5d2acc9-a1ef-4cd8-8256-dd42fa0339a8",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0296L01U04",
+  "course": "eng_for_kor",
+  "text": "저는 어제 당신과 이야기해야 한다고 말했어요",
+  "skipped": "already owned: 666722c1-8547-44c6-96c3-7dd084a172af",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0298L01U01",
+  "course": "eng_for_kor",
+  "text": "저는 그것에 대해 할 말이 없다고 생각해요",
+  "skipped": "already owned: 655fb999-8c3d-4172-8ea1-cf7d34bc22b2",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0298L01U02",
+  "course": "eng_for_kor",
+  "text": "그녀는 저에게 할 말이 없다고 말했어요",
+  "skipped": "already owned: f7ff0140-7889-4cef-8f13-d9ad6e231efc",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0298L01U03",
+  "course": "eng_for_kor",
+  "text": "죄송하지만 저는 할 말이 없어요",
+  "skipped": "already owned: d57ed210-0787-4946-bb06-a55d6ee330dc",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0300L01U01",
+  "course": "eng_for_kor",
+  "text": "저는 불친절하게 보이고 싶지 않아요",
+  "skipped": "already owned: d6907fc1-27f3-4090-8c71-7937135ab0ae",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0300L01U02",
+  "course": "eng_for_kor",
+  "text": "저는 그가 불친절하다고 생각했어요",
+  "skipped": "already owned: 69742c38-291d-4dc6-b3ee-62595c809f87",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0300L01U04",
+  "course": "eng_for_kor",
+  "text": "저는 그녀가 불친절하다고 생각하지 않아요",
+  "skipped": "already owned: f4837350-576a-4a1b-bee3-8bd4d6c65e07",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0300L02U01",
+  "course": "eng_for_kor",
+  "text": "저는 그녀가 불친절하게 보이고 싶어하지 않는다는 것을 알아요",
+  "skipped": "already owned: f43ccd5c-73bd-4a86-89b1-c53509d6ce63",
+  "shipped": null,
+  "spares": []
+ },
+ {
+  "id": "eng_for_kor:S0290L01U05",
+  "course": "eng_for_kor",
+  "voice_id": "azure_ko-KR-SunHiNeural",
+  "text": "저는 누가 답을 알고 있는지 알아야 해요",
+  "old_clip": "edb771ad-0c30-455c-ad0d-eb30fa7212a9",
   "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0288L01U03__a1.mp3",
+   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0290L01U05__a1.mp3",
    "ms": 4104,
    "gates": {
     "fail": [],
-    "z": -1.002951183431954,
-    "tail": -87.11209501917608,
-    "tokens": 7,
-    "chars": 17,
-    "expected_ms": 4375,
+    "z": -0.31288461538461304,
+    "tail": -87.04943902597904,
+    "tokens": 8,
+    "chars": 16,
+    "expected_ms": 4189,
     "ffprobe_ms": 4104,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
    },
    "word_boundaries": [
     {
-     "text": "다른",
-     "offset": 56,
-     "duration": 333
-    },
-    {
-     "text": "사람과",
-     "offset": 403,
-     "duration": 542
-    },
-    {
-     "text": "텔레비전",
-     "offset": 958,
-     "duration": 681
-    },
-    {
-     "text": "보는",
-     "offset": 1653,
-     "duration": 264
-    },
-    {
-     "text": "것을",
-     "offset": 1931,
-     "duration": 375
-    },
-    {
-     "text": "좋아해요",
-     "offset": 2319,
-     "duration": 806
-    },
-    {
-     "text": "?.",
-     "offset": 3139,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0288L01U03__a2.mp3",
-    "ms": 4176
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0288L01U03__a3.mp3",
-    "ms": 4644
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4104,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 4176,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4644,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0288L01U04",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 쉬고 싶을 때 텔레비전 보는 것을 좋아해요",
-  "old_clip": "c99013b3-b00a-4447-89df-746bd1cf5267",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0288L01U04__a1.mp3",
-   "ms": 4788,
-   "gates": {
-    "fail": [],
-    "z": 0.14650147928993928,
-    "tail": -86.71517386740787,
-    "tokens": 9,
-    "chars": 19,
-    "expected_ms": 4748,
-    "ffprobe_ms": 4788,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
      "text": "저는",
      "offset": 56,
+     "duration": 444
+    },
+    {
+     "text": "누가",
+     "offset": 514,
+     "duration": 444
+    },
+    {
+     "text": "답을",
+     "offset": 972,
      "duration": 389
     },
     {
-     "text": "쉬고",
-     "offset": 458,
-     "duration": 278
-    },
-    {
-     "text": "싶을",
-     "offset": 750,
-     "duration": 319
-    },
-    {
-     "text": "때",
-     "offset": 1083,
-     "duration": 278
-    },
-    {
-     "text": "텔레비전",
+     "text": "알고",
      "offset": 1375,
-     "duration": 917
-    },
-    {
-     "text": "보는",
-     "offset": 2306,
-     "duration": 264
-    },
-    {
-     "text": "것을",
-     "offset": 2583,
-     "duration": 375
-    },
-    {
-     "text": "좋아해요",
-     "offset": 2972,
-     "duration": 806
-    },
-    {
-     "text": ".",
-     "offset": 3792,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0288L01U04__a2.mp3",
-    "ms": 4644
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0288L01U04__a3.mp3",
-    "ms": 5328
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4788,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 4644,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 5328,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0288L02U05",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "제가 아는 대부분의 사람들은 영어로 말하는 것이 괜찮아요",
-  "old_clip": "bd2f320d-2223-4307-a12e-7ec9edc2d6fc",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0288L02U05__a1.mp3",
-   "ms": 5400,
-   "gates": {
-    "fail": [],
-    "z": -1.0405177514792892,
-    "tail": -86.98127456251902,
-    "tokens": 9,
-    "chars": 24,
-    "expected_ms": 5681,
-    "ffprobe_ms": 5400,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "제가",
-     "offset": 56,
-     "duration": 403
-    },
-    {
-     "text": "아는",
-     "offset": 472,
-     "duration": 278
-    },
-    {
-     "text": "대부분의",
-     "offset": 764,
-     "duration": 556
-    },
-    {
-     "text": "사람들은",
-     "offset": 1333,
-     "duration": 917
-    },
-    {
-     "text": "영어로",
-     "offset": 2264,
-     "duration": 458
-    },
-    {
-     "text": "말하는",
-     "offset": 2736,
-     "duration": 444
-    },
-    {
-     "text": "것이",
-     "offset": 3194,
-     "duration": 306
-    },
-    {
-     "text": "괜찮아요",
-     "offset": 3514,
-     "duration": 889
-    },
-    {
-     "text": ".",
-     "offset": 4417,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0288L02U05__a2.mp3",
-    "ms": 5328
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0288L02U05__a3.mp3",
-    "ms": 5868
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 5400,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 5328,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 5868,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0292L01U01",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 당신과 파티에 가고 싶어요",
-  "old_clip": "5467e83a-4cb8-4985-8fd5-577fe57406c5",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0292L01U01__a1.mp3",
-   "ms": 3780,
-   "gates": {
-    "fail": [],
-    "z": 0.5590902366863918,
-    "tail": -87.85393906519332,
-    "tokens": 6,
-    "chars": 13,
-    "expected_ms": 3629,
-    "ffprobe_ms": 3780,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 431
-    },
-    {
-     "text": "당신과",
-     "offset": 500,
-     "duration": 806
-    },
-    {
-     "text": "파티에",
-     "offset": 1319,
-     "duration": 500
-    },
-    {
-     "text": "가고",
-     "offset": 1833,
-     "duration": 306
-    },
-    {
-     "text": "싶어요",
-     "offset": 2153,
-     "duration": 639
-    },
-    {
-     "text": ".",
-     "offset": 2806,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0292L01U01__a2.mp3",
-    "ms": 3636
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0292L01U01__a3.mp3",
-    "ms": 4104
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 3780,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3636,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4104,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0292L01U02",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "오늘 밤 파티에 오고 싶어요?",
-  "old_clip": "af645699-07c0-4fd0-957b-6587ef3a9d20",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0292L01U02__a1.mp3",
-   "ms": 3204,
-   "gates": {
-    "fail": [],
-    "z": -0.1909541420118344,
-    "tail": -87.40248653271316,
-    "tokens": 6,
-    "chars": 11,
-    "expected_ms": 3256,
-    "ffprobe_ms": 3204,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "오늘",
-     "offset": 56,
-     "duration": 403
-    },
-    {
-     "text": "밤",
-     "offset": 472,
-     "duration": 278
-    },
-    {
-     "text": "파티에",
-     "offset": 764,
-     "duration": 486
-    },
-    {
-     "text": "오고",
-     "offset": 1264,
-     "duration": 264
-    },
-    {
-     "text": "싶어요",
-     "offset": 1542,
-     "duration": 639
-    },
-    {
-     "text": "?.",
-     "offset": 2194,
-     "duration": 125
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0292L01U02__a2.mp3",
-    "ms": 3132
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0292L01U02__a3.mp3",
-    "ms": 3744
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 3204,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3132,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 3744,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0292L01U03",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 파티에 갈 수 있을지 모르겠어요",
-  "old_clip": "87ab5b10-881c-4e0c-b568-0b358b53f175",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0292L01U03__a1.mp3",
-   "ms": 3924,
-   "gates": {
-    "fail": [],
-    "z": -0.2884985207100583,
-    "tail": -86.74159423601863,
-    "tokens": 7,
-    "chars": 15,
-    "expected_ms": 4002,
-    "ffprobe_ms": 3924,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 403
-    },
-    {
-     "text": "파티에",
-     "offset": 472,
-     "duration": 486
-    },
-    {
-     "text": "갈",
-     "offset": 972,
-     "duration": 222
-    },
-    {
-     "text": "수",
-     "offset": 1208,
-     "duration": 167
-    },
-    {
-     "text": "있을지",
-     "offset": 1389,
-     "duration": 542
-    },
-    {
-     "text": "모르겠어요",
-     "offset": 1944,
-     "duration": 1000
-    },
-    {
-     "text": ".",
-     "offset": 2958,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0292L01U03__a2.mp3",
-    "ms": 3816
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0292L01U03__a3.mp3",
-    "ms": 4572
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 3924,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3816,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4572,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0292L01U04",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 친구들과 파티에 가고 싶어요",
-  "old_clip": "29950af3-2677-473a-964e-b643b76dd76c",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0292L01U04__a1.mp3",
-   "ms": 3708,
-   "gates": {
-    "fail": [],
-    "z": -0.3972485207100581,
-    "tail": -87.24512441566192,
-    "tokens": 6,
-    "chars": 14,
-    "expected_ms": 3815,
-    "ffprobe_ms": 3708,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 417
-    },
-    {
-     "text": "친구들과",
-     "offset": 486,
-     "duration": 708
-    },
-    {
-     "text": "파티에",
-     "offset": 1208,
-     "duration": 542
-    },
-    {
-     "text": "가고",
-     "offset": 1764,
-     "duration": 319
-    },
-    {
-     "text": "싶어요",
-     "offset": 2097,
-     "duration": 611
-    },
-    {
-     "text": ".",
-     "offset": 2722,
-     "duration": 125
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0292L01U04__a2.mp3",
-    "ms": 3636
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0292L01U04__a3.mp3",
-    "ms": 4212
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 3708,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3636,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4212,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0294L01U06",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "죄송하지만 오늘 당신에게 전화할 시간이 충분하지 않아요",
-  "old_clip": "4ec98362-0f61-4b3d-96fc-0108f24d17d1",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0294L01U06__a1.mp3",
-   "ms": 5220,
-   "gates": {
-    "fail": [],
-    "z": -1.7061982248520702,
-    "tail": -87.27637475128356,
-    "tokens": 8,
-    "chars": 24,
-    "expected_ms": 5681,
-    "ffprobe_ms": 5220,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "죄송하지만",
-     "offset": 56,
-     "duration": 1014
-    },
-    {
-     "text": "오늘",
-     "offset": 1083,
      "duration": 361
     },
     {
-     "text": "당신에게",
-     "offset": 1458,
-     "duration": 597
-    },
-    {
-     "text": "전화할",
-     "offset": 2069,
-     "duration": 472
-    },
-    {
-     "text": "시간이",
-     "offset": 2556,
+     "text": "있는지",
+     "offset": 1750,
      "duration": 444
     },
     {
-     "text": "충분하지",
-     "offset": 3014,
-     "duration": 611
+     "text": "알아야",
+     "offset": 2208,
+     "duration": 417
     },
     {
-     "text": "않아요",
-     "offset": 3639,
-     "duration": 597
-    },
-    {
-     "text": ".",
-     "offset": 4250,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0294L01U06__a2.mp3",
-    "ms": 5076
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0294L01U06__a3.mp3",
-    "ms": 5616
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 5220,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 5076,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 5616,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0294L01U07",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 어젯밤에 당신에게 전화할 시간이 충분하지 않았어요",
-  "old_clip": "b8d53da8-6532-4159-8d77-0c623e205c0c",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0294L01U07__a1.mp3",
-   "ms": 5364,
-   "gates": {
-    "fail": [],
-    "z": -1.1736538461538455,
-    "tail": -87.47515370498493,
-    "tokens": 8,
-    "chars": 24,
-    "expected_ms": 5681,
-    "ffprobe_ms": 5364,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 458
-    },
-    {
-     "text": "어젯밤에",
-     "offset": 528,
-     "duration": 708
-    },
-    {
-     "text": "당신에게",
-     "offset": 1250,
-     "duration": 653
-    },
-    {
-     "text": "전화할",
-     "offset": 1917,
-     "duration": 458
-    },
-    {
-     "text": "시간이",
-     "offset": 2389,
+     "text": "해요",
+     "offset": 2639,
      "duration": 472
     },
     {
-     "text": "충분하지",
-     "offset": 2875,
-     "duration": 611
-    },
-    {
-     "text": "않았어요",
-     "offset": 3500,
-     "duration": 875
-    },
-    {
      "text": ".",
-     "offset": 4389,
-     "duration": 111
+     "offset": 3125,
+     "duration": 125
     }
    ]
   },
   "spares": [
    {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0294L01U07__a2.mp3",
-    "ms": 5148
+    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0290L01U05__a2.mp3",
+    "ms": 4104
    },
    {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0294L01U07__a3.mp3",
-    "ms": 5832
+    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0290L01U05__a3.mp3",
+    "ms": 4536
    }
   ],
   "all_takes": [
    {
     "attempt": 1,
     "pass": true,
-    "ms": 5364,
+    "ms": 4104,
     "fail": []
    },
    {
     "attempt": 2,
     "pass": true,
-    "ms": 5148,
+    "ms": 4104,
     "fail": []
    },
    {
     "attempt": 3,
     "pass": true,
-    "ms": 5832,
+    "ms": 4536,
     "fail": []
    }
   ]
  },
  {
-  "id": "eng_for_kor:S0294L01U08",
+  "id": "eng_for_kor:S0300L02U02",
   "course": "eng_for_kor",
   "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "그는 오늘 저녁에 당신에게 전화할 시간이 충분하지 않아요",
-  "old_clip": "6d615b61-0cfb-4f13-9520-21c5fa18bf51",
+  "text": "그는 까다롭게 보이고 싶어하지 않는다고 생각해요",
+  "old_clip": "80f6ac88-2c7e-4f34-acae-2736a6b94aff",
   "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0294L01U08__a1.mp3",
-   "ms": 5220,
+   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0300L02U02__a1.mp3",
+   "ms": 4572,
    "gates": {
     "fail": [],
-    "z": -1.7061982248520702,
-    "tail": -86.54268129837156,
-    "tokens": 9,
-    "chars": 24,
-    "expected_ms": 5681,
-    "ffprobe_ms": 5220,
+    "z": -2.03244822485207,
+    "tail": -87.91665840203967,
+    "tokens": 7,
+    "chars": 21,
+    "expected_ms": 5122,
+    "ffprobe_ms": 4572,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
    },
@@ -1779,414 +365,48 @@
     {
      "text": "그는",
      "offset": 56,
-     "duration": 375
+     "duration": 431
     },
     {
-     "text": "오늘",
-     "offset": 444,
-     "duration": 333
+     "text": "까다롭게",
+     "offset": 500,
+     "duration": 611
     },
     {
-     "text": "저녁에",
-     "offset": 792,
-     "duration": 500
+     "text": "보이고",
+     "offset": 1125,
+     "duration": 389
     },
     {
-     "text": "당신에게",
-     "offset": 1306,
-     "duration": 722
+     "text": "싶어하지",
+     "offset": 1528,
+     "duration": 528
     },
     {
-     "text": "전화할",
-     "offset": 2042,
-     "duration": 472
-    },
-    {
-     "text": "시간이",
-     "offset": 2528,
-     "duration": 444
-    },
-    {
-     "text": "충분하지",
-     "offset": 2986,
+     "text": "않는다고",
+     "offset": 2069,
      "duration": 625
     },
     {
-     "text": "않아요",
-     "offset": 3625,
-     "duration": 597
+     "text": "생각해요",
+     "offset": 2708,
+     "duration": 847
     },
     {
      "text": ".",
-     "offset": 4236,
+     "offset": 3569,
      "duration": 125
     }
    ]
   },
   "spares": [
    {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0294L01U08__a2.mp3",
-    "ms": 5004
+    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L02U02__a2.mp3",
+    "ms": 4356
    },
    {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0294L01U08__a3.mp3",
-    "ms": 5688
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 5220,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 5004,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 5688,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0296L01U01",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 영어로 더 자주 말해야 한다고 말했어요",
-  "old_clip": "8747074e-994f-47f6-9577-c6a2d5cebbbd",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0296L01U01__a1.mp3",
-   "ms": 4644,
-   "gates": {
-    "fail": [],
-    "z": 0.3040236686390553,
-    "tail": -86.87407863566422,
-    "tokens": 8,
-    "chars": 18,
-    "expected_ms": 4562,
-    "ffprobe_ms": 4644,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 583
-    },
-    {
-     "text": "영어로",
-     "offset": 653,
-     "duration": 500
-    },
-    {
-     "text": "더",
-     "offset": 1167,
-     "duration": 278
-    },
-    {
-     "text": "자주",
-     "offset": 1458,
-     "duration": 319
-    },
-    {
-     "text": "말해야",
-     "offset": 1792,
-     "duration": 431
-    },
-    {
-     "text": "한다고",
-     "offset": 2236,
-     "duration": 458
-    },
-    {
-     "text": "말했어요",
-     "offset": 2708,
-     "duration": 958
-    },
-    {
-     "text": ".",
-     "offset": 3681,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0296L01U01__a2.mp3",
-    "ms": 4284
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0296L01U01__a3.mp3",
-    "ms": 5148
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4644,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 4284,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 5148,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0296L01U02",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 연습할 시간이 더 필요하다고 말했어요",
-  "old_clip": "fa10bdb5-a00d-49d9-84ce-760f29490c36",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0296L01U02__a1.mp3",
-   "ms": 4356,
-   "gates": {
-    "fail": [],
-    "z": -0.7610650887573945,
-    "tail": -86.58877121558902,
-    "tokens": 7,
-    "chars": 18,
-    "expected_ms": 4562,
-    "ffprobe_ms": 4356,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 417
-    },
-    {
-     "text": "연습할",
-     "offset": 486,
-     "duration": 486
-    },
-    {
-     "text": "시간이",
-     "offset": 986,
-     "duration": 486
-    },
-    {
-     "text": "더",
-     "offset": 1486,
-     "duration": 250
-    },
-    {
-     "text": "필요하다고",
-     "offset": 1750,
-     "duration": 708
-    },
-    {
-     "text": "말했어요",
-     "offset": 2472,
-     "duration": 903
-    },
-    {
-     "text": ".",
-     "offset": 3389,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0296L01U02__a2.mp3",
-    "ms": 4104
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0296L01U02__a3.mp3",
-    "ms": 4860
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4356,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 4104,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4860,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0296L01U03",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 답을 찾아야 한다고 말했어요",
-  "old_clip": "f9075a89-6176-4da4-be04-411fe0137e86",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0296L01U03__a1.mp3",
-   "ms": 3852,
-   "gates": {
-    "fail": [],
-    "z": 0.13529585798816676,
-    "tail": -86.6733779915282,
-    "tokens": 6,
-    "chars": 14,
-    "expected_ms": 3815,
-    "ffprobe_ms": 3852,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 472
-    },
-    {
-     "text": "답을",
-     "offset": 542,
-     "duration": 403
-    },
-    {
-     "text": "찾아야",
-     "offset": 958,
-     "duration": 458
-    },
-    {
-     "text": "한다고",
-     "offset": 1431,
-     "duration": 472
-    },
-    {
-     "text": "말했어요",
-     "offset": 1917,
-     "duration": 931
-    },
-    {
-     "text": ".",
-     "offset": 2861,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0296L01U03__a2.mp3",
-    "ms": 3672
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0296L01U03__a3.mp3",
-    "ms": 4392
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 3852,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3672,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4392,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0296L01U04",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 어제 당신과 이야기해야 한다고 말했어요",
-  "old_clip": "18741ea2-485f-4c67-9d89-4147f48f0b85",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0296L01U04__a1.mp3",
-   "ms": 4572,
-   "gates": {
-    "fail": [],
-    "z": -0.6523150887573981,
-    "tail": -86.36293690205589,
-    "tokens": 7,
-    "chars": 19,
-    "expected_ms": 4748,
-    "ffprobe_ms": 4572,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 444
-    },
-    {
-     "text": "어제",
-     "offset": 514,
-     "duration": 347
-    },
-    {
-     "text": "당신과",
-     "offset": 875,
-     "duration": 611
-    },
-    {
-     "text": "이야기해야",
-     "offset": 1500,
-     "duration": 667
-    },
-    {
-     "text": "한다고",
-     "offset": 2181,
-     "duration": 472
-    },
-    {
-     "text": "말했어요",
-     "offset": 2667,
-     "duration": 903
-    },
-    {
-     "text": ".",
-     "offset": 3583,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0296L01U04__a2.mp3",
-    "ms": 4392
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0296L01U04__a3.mp3",
-    "ms": 5004
+    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L02U02__a3.mp3",
+    "ms": 5076
    }
   ],
   "all_takes": [
@@ -2199,128 +419,138 @@
    {
     "attempt": 2,
     "pass": true,
-    "ms": 4392,
+    "ms": 4356,
     "fail": []
    },
    {
     "attempt": 3,
     "pass": true,
-    "ms": 5004,
+    "ms": 5076,
     "fail": []
    }
   ]
  },
  {
-  "id": "eng_for_kor:S0298L01U01",
+  "id": "eng_for_kor:S0300L02U03",
   "course": "eng_for_kor",
   "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 그것에 대해 할 말이 없다고 생각해요",
-  "old_clip": "13b6928e-00af-4669-9bba-73cd8bdde08d",
+  "text": "다른 사람들이 있을 때 그녀는 피곤하게 보이고 싶어하지 않아요",
+  "old_clip": "da781913-56a2-42bc-bd81-b7ceee7ffc46",
   "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0298L01U01__a1.mp3",
-   "ms": 4248,
+   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0300L02U03__a1.mp3",
+   "ms": 5616,
    "gates": {
     "fail": [],
-    "z": -0.47040680473372903,
-    "tail": -88.09154335481247,
-    "tokens": 8,
-    "chars": 17,
-    "expected_ms": 4375,
-    "ffprobe_ms": 4248,
+    "z": -1.621834319526627,
+    "tail": -87.3321942078486,
+    "tokens": 10,
+    "chars": 26,
+    "expected_ms": 6055,
+    "ffprobe_ms": 5616,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
    },
    "word_boundaries": [
     {
-     "text": "저는",
+     "text": "다른",
      "offset": 56,
-     "duration": 486
+     "duration": 347
     },
     {
-     "text": "그것에",
-     "offset": 556,
-     "duration": 431
+     "text": "사람들이",
+     "offset": 417,
+     "duration": 556
     },
     {
-     "text": "대해",
-     "offset": 1000,
-     "duration": 361
+     "text": "있을",
+     "offset": 986,
+     "duration": 347
     },
     {
-     "text": "할",
-     "offset": 1375,
-     "duration": 208
+     "text": "때",
+     "offset": 1347,
+     "duration": 264
     },
     {
-     "text": "말이",
-     "offset": 1597,
-     "duration": 250
+     "text": "그녀는",
+     "offset": 1625,
+     "duration": 764
     },
     {
-     "text": "없다고",
-     "offset": 1861,
-     "duration": 514
+     "text": "피곤하게",
+     "offset": 2403,
+     "duration": 611
     },
     {
-     "text": "생각해요",
-     "offset": 2389,
-     "duration": 861
+     "text": "보이고",
+     "offset": 3028,
+     "duration": 417
+    },
+    {
+     "text": "싶어하지",
+     "offset": 3458,
+     "duration": 542
+    },
+    {
+     "text": "않아요",
+     "offset": 4014,
+     "duration": 597
     },
     {
      "text": ".",
-     "offset": 3264,
-     "duration": 125
+     "offset": 4625,
+     "duration": 111
     }
    ]
   },
   "spares": [
    {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0298L01U01__a2.mp3",
-    "ms": 4032
+    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L02U03__a2.mp3",
+    "ms": 5616
    },
    {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0298L01U01__a3.mp3",
-    "ms": 4716
+    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L02U03__a3.mp3",
+    "ms": 6156
    }
   ],
   "all_takes": [
    {
     "attempt": 1,
     "pass": true,
-    "ms": 4248,
+    "ms": 5616,
     "fail": []
    },
    {
     "attempt": 2,
     "pass": true,
-    "ms": 4032,
+    "ms": 5616,
     "fail": []
    },
    {
     "attempt": 3,
     "pass": true,
-    "ms": 4716,
+    "ms": 6156,
     "fail": []
    }
   ]
  },
  {
-  "id": "eng_for_kor:S0298L01U02",
+  "id": "eng_for_kor:S0300L02U04",
   "course": "eng_for_kor",
   "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "그녀는 저에게 할 말이 없다고 말했어요",
-  "old_clip": "d54252dc-cbdb-444f-afe9-7be8b8743ab2",
+  "text": "그녀는 말하기 전에 긴장하게 보이고 싶어하지 않아요",
+  "old_clip": "5cc3c068-f52b-4821-b00d-49583a90b9ec",
   "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0298L01U02__a1.mp3",
-   "ms": 4032,
+   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0300L02U04__a1.mp3",
+   "ms": 4716,
    "gates": {
     "fail": [],
-    "z": -0.5791568047337254,
-    "tail": -86.11218579132385,
-    "tokens": 7,
-    "chars": 16,
-    "expected_ms": 4189,
-    "ffprobe_ms": 4032,
+    "z": -2.1899704142011824,
+    "tail": -86.97699646961149,
+    "tokens": 8,
+    "chars": 22,
+    "expected_ms": 5308,
+    "ffprobe_ms": 4716,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
    },
@@ -2328,497 +558,72 @@
     {
      "text": "그녀는",
      "offset": 56,
-     "duration": 556
-    },
-    {
-     "text": "저에게",
-     "offset": 625,
-     "duration": 486
-    },
-    {
-     "text": "할",
-     "offset": 1125,
-     "duration": 208
-    },
-    {
-     "text": "말이",
-     "offset": 1347,
-     "duration": 222
-    },
-    {
-     "text": "없다고",
-     "offset": 1583,
-     "duration": 514
-    },
-    {
-     "text": "말했어요",
-     "offset": 2111,
-     "duration": 917
-    },
-    {
-     "text": ".",
-     "offset": 3042,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0298L01U02__a2.mp3",
-    "ms": 3816
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0298L01U02__a3.mp3",
-    "ms": 4608
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4032,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3816,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4608,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0298L01U03",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "죄송하지만 저는 할 말이 없어요",
-  "old_clip": "ff5f784a-f224-4ae9-b421-8e7224842dd0",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0298L01U03__a1.mp3",
-   "ms": 3492,
-   "gates": {
-    "fail": [],
-    "z": -0.5059985207100579,
-    "tail": -86.85950135618491,
-    "tokens": 6,
-    "chars": 13,
-    "expected_ms": 3629,
-    "ffprobe_ms": 3492,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "죄송하지만",
-     "offset": 56,
-     "duration": 861
-    },
-    {
-     "text": "저는",
-     "offset": 931,
-     "duration": 403
-    },
-    {
-     "text": "할",
-     "offset": 1347,
-     "duration": 194
-    },
-    {
-     "text": "말이",
-     "offset": 1556,
-     "duration": 222
-    },
-    {
-     "text": "없어요",
-     "offset": 1792,
-     "duration": 694
-    },
-    {
-     "text": ".",
-     "offset": 2500,
-     "duration": 111
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0298L01U03__a2.mp3",
-    "ms": 3456
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0298L01U03__a3.mp3",
-    "ms": 3888
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 3492,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3456,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 3888,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0300L01U01",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 불친절하게 보이고 싶지 않아요",
-  "old_clip": "6b2c135e-50e3-4d9f-bbd4-1eae29ef431a",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0300L01U01__a1.mp3",
-   "ms": 3816,
-   "gates": {
-    "fail": [],
-    "z": -0.687906804733727,
-    "tail": -87.66157907624178,
-    "tokens": 6,
-    "chars": 15,
-    "expected_ms": 4002,
-    "ffprobe_ms": 3816,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 472
-    },
-    {
-     "text": "불친절하게",
-     "offset": 542,
-     "duration": 833
-    },
-    {
-     "text": "보이고",
-     "offset": 1389,
-     "duration": 431
-    },
-    {
-     "text": "싶지",
-     "offset": 1833,
-     "duration": 347
-    },
-    {
-     "text": "않아요",
-     "offset": 2194,
-     "duration": 597
-    },
-    {
-     "text": ".",
-     "offset": 2806,
-     "duration": 125
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L01U01__a2.mp3",
-    "ms": 3744
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L01U01__a3.mp3",
-    "ms": 4428
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 3816,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3744,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4428,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0300L01U02",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 그가 불친절하다고 생각했어요",
-  "old_clip": "f243d0d0-f422-408b-83ee-5d70e1b2591a",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0300L01U02__a1.mp3",
-   "ms": 4104,
-   "gates": {
-    "fail": [],
-    "z": 0.3771819526627228,
-    "tail": -88.1205788992723,
-    "tokens": 5,
-    "chars": 15,
-    "expected_ms": 4002,
-    "ffprobe_ms": 4104,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 458
-    },
-    {
-     "text": "그가",
-     "offset": 528,
-     "duration": 431
-    },
-    {
-     "text": "불친절하다고",
-     "offset": 972,
-     "duration": 1028
-    },
-    {
-     "text": "생각했어요",
-     "offset": 2014,
-     "duration": 1083
-    },
-    {
-     "text": ".",
-     "offset": 3111,
-     "duration": 125
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L01U02__a2.mp3",
-    "ms": 3852
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L01U02__a3.mp3",
-    "ms": 4464
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4104,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3852,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4464,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0300L01U04",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 그녀가 불친절하다고 생각하지 않아요",
-  "old_clip": "2b69bac0-9faa-4b82-8c31-c4a5c3f52747",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0300L01U04__a1.mp3",
-   "ms": 4320,
-   "gates": {
-    "fail": [],
-    "z": -0.8942011834319508,
-    "tail": -87.51473504271698,
-    "tokens": 6,
-    "chars": 18,
-    "expected_ms": 4562,
-    "ffprobe_ms": 4320,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 486
-    },
-    {
-     "text": "그녀가",
-     "offset": 556,
-     "duration": 444
-    },
-    {
-     "text": "불친절하다고",
-     "offset": 1014,
-     "duration": 1028
-    },
-    {
-     "text": "생각하지",
-     "offset": 2056,
-     "duration": 611
-    },
-    {
-     "text": "않아요",
-     "offset": 2681,
-     "duration": 625
-    },
-    {
-     "text": ".",
-     "offset": 3319,
-     "duration": 125
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L01U04__a2.mp3",
-    "ms": 4212
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L01U04__a3.mp3",
-    "ms": 4824
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4320,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 4212,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4824,
-    "fail": []
-   }
-  ]
- },
- {
-  "id": "eng_for_kor:S0300L02U01",
-  "course": "eng_for_kor",
-  "voice_id": "azure_ko-KR-SunHiNeural",
-  "text": "저는 그녀가 불친절하게 보이고 싶어하지 않는다는 것을 알아요",
-  "old_clip": "3bf5da01-0543-4a5a-b887-302fd130c5a4",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_kor_S0300L02U01__a1.mp3",
-   "ms": 5328,
-   "gates": {
-    "fail": [],
-    "z": -2.6869230769230765,
-    "tail": -86.82789903048084,
-    "tokens": 9,
-    "chars": 26,
-    "expected_ms": 6055,
-    "ffprobe_ms": 5328,
-    "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "저는",
-     "offset": 56,
-     "duration": 472
-    },
-    {
-     "text": "그녀가",
-     "offset": 542,
-     "duration": 444
-    },
-    {
-     "text": "불친절하게",
-     "offset": 1000,
-     "duration": 861
-    },
-    {
-     "text": "보이고",
-     "offset": 1875,
-     "duration": 417
-    },
-    {
-     "text": "싶어하지",
-     "offset": 2306,
-     "duration": 556
-    },
-    {
-     "text": "않는다는",
-     "offset": 2875,
-     "duration": 597
-    },
-    {
-     "text": "것을",
-     "offset": 3486,
-     "duration": 333
-    },
-    {
-     "text": "알아요",
-     "offset": 3833,
      "duration": 500
     },
     {
+     "text": "말하기",
+     "offset": 569,
+     "duration": 472
+    },
+    {
+     "text": "전에",
+     "offset": 1056,
+     "duration": 347
+    },
+    {
+     "text": "긴장하게",
+     "offset": 1417,
+     "duration": 694
+    },
+    {
+     "text": "보이고",
+     "offset": 2125,
+     "duration": 403
+    },
+    {
+     "text": "싶어하지",
+     "offset": 2542,
+     "duration": 556
+    },
+    {
+     "text": "않아요",
+     "offset": 3111,
+     "duration": 597
+    },
+    {
      "text": ".",
-     "offset": 4347,
+     "offset": 3722,
      "duration": 125
     }
    ]
   },
   "spares": [
    {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L02U01__a2.mp3",
-    "ms": 5256
+    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L02U04__a2.mp3",
+    "ms": 4608
    },
    {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L02U01__a3.mp3",
-    "ms": 5796
+    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_kor_S0300L02U04__a3.mp3",
+    "ms": 5148
    }
   ],
   "all_takes": [
    {
     "attempt": 1,
     "pass": true,
-    "ms": 5328,
+    "ms": 4716,
     "fail": []
    },
    {
     "attempt": 2,
     "pass": true,
-    "ms": 5256,
+    "ms": 4608,
     "fail": []
    },
    {
     "attempt": 3,
     "pass": true,
-    "ms": 5796,
+    "ms": 5148,
     "fail": []
    }
   ]
@@ -2826,219 +631,17 @@
  {
   "id": "eng_for_jpn:S0267L01U04",
   "course": "eng_for_jpn",
-  "voice_id": "azure_ja-JP-MayuNeural",
   "text": "今週あなたの息子から連絡がありましたか？",
-  "old_clip": "8d70f05b-f1f6-400e-af21-0f6a7c4bbb4d",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_jpn_S0267L01U04__a1.mp3",
-   "ms": 4284,
-   "gates": {
-    "fail": [],
-    "z": 0.3550376647834268,
-    "tail": -87.74566038962284,
-    "tokens": 12,
-    "chars": 19,
-    "expected_ms": 4171,
-    "ffprobe_ms": 4284,
-    "model": "eng_for_jpn|azure_ja-JP-MayuNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "今週",
-     "offset": 53,
-     "duration": 540
-    },
-    {
-     "text": "あなた",
-     "offset": 605,
-     "duration": 395
-    },
-    {
-     "text": "の",
-     "offset": 1013,
-     "duration": 118
-    },
-    {
-     "text": "息子",
-     "offset": 1145,
-     "duration": 355
-    },
-    {
-     "text": "から",
-     "offset": 1513,
-     "duration": 303
-    },
-    {
-     "text": "連絡",
-     "offset": 1842,
-     "duration": 487
-    },
-    {
-     "text": "が",
-     "offset": 2342,
-     "duration": 92
-    },
-    {
-     "text": "あり",
-     "offset": 2447,
-     "duration": 197
-    },
-    {
-     "text": "まし",
-     "offset": 2658,
-     "duration": 237
-    },
-    {
-     "text": "た",
-     "offset": 2908,
-     "duration": 105
-    },
-    {
-     "text": "か",
-     "offset": 3026,
-     "duration": 290
-    },
-    {
-     "text": "？.",
-     "offset": 3329,
-     "duration": 118
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_jpn_S0267L01U04__a2.mp3",
-    "ms": 4284
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_jpn_S0267L01U04__a3.mp3",
-    "ms": 4284
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 4284,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 4284,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 4284,
-    "fail": []
-   }
-  ]
+  "skipped": "already owned: 89ecf7de-2c7b-47f6-a183-72ce90a15639",
+  "shipped": null,
+  "spares": []
  },
  {
   "id": "eng_for_jpn:S0269L02U04",
   "course": "eng_for_jpn",
-  "voice_id": "azure_ja-JP-MayuNeural",
   "text": "なぜこれを手伝いたくないのですか？",
-  "old_clip": "6ad21767-823f-4991-9f4e-479a627ed635",
-  "shipped": {
-   "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/ship/eng_for_jpn_S0269L02U04__a1.mp3",
-   "ms": 3312,
-   "gates": {
-    "fail": [],
-    "z": -1.1683615819209032,
-    "tail": -88.18851737342885,
-    "tokens": 10,
-    "chars": 16,
-    "expected_ms": 3684,
-    "ffprobe_ms": 3312,
-    "model": "eng_for_jpn|azure_ja-JP-MayuNeural",
-    "gate7_all_chars_voiced": true
-   },
-   "word_boundaries": [
-    {
-     "text": "なぜ",
-     "offset": 53,
-     "duration": 303
-    },
-    {
-     "text": "これ",
-     "offset": 368,
-     "duration": 237
-    },
-    {
-     "text": "を",
-     "offset": 618,
-     "duration": 118
-    },
-    {
-     "text": "手伝い",
-     "offset": 750,
-     "duration": 487
-    },
-    {
-     "text": "たく",
-     "offset": 1250,
-     "duration": 237
-    },
-    {
-     "text": "ない",
-     "offset": 1500,
-     "duration": 211
-    },
-    {
-     "text": "の",
-     "offset": 1724,
-     "duration": 92
-    },
-    {
-     "text": "です",
-     "offset": 1829,
-     "duration": 250
-    },
-    {
-     "text": "か",
-     "offset": 2092,
-     "duration": 263
-    },
-    {
-     "text": "？.",
-     "offset": 2368,
-     "duration": 118
-    }
-   ]
-  },
-  "spares": [
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_jpn_S0269L02U04__a2.mp3",
-    "ms": 3312
-   },
-   {
-    "file": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/wt-a135/docs/a135-jpn-paren-kor-2026-08-17/spares/eng_for_jpn_S0269L02U04__a3.mp3",
-    "ms": 3312
-   }
-  ],
-  "all_takes": [
-   {
-    "attempt": 1,
-    "pass": true,
-    "ms": 3312,
-    "fail": []
-   },
-   {
-    "attempt": 2,
-    "pass": true,
-    "ms": 3312,
-    "fail": []
-   },
-   {
-    "attempt": 3,
-    "pass": true,
-    "ms": 3312,
-    "fail": []
-   }
-  ]
+  "skipped": "already owned: d0b7dcb3-9923-4b90-a57e-06734fcc4a3b",
+  "shipped": null,
+  "spares": []
  }
 ]

@@ -8,12 +8,14 @@
 
 | | found | fixed & live | held |
 |---|---|---|---|
-| **Korean prompts showing English** (`eng_for_kor`) | 39 | **33 repaired + 2 deleted** | 4 |
+| **Korean prompts showing English** (`eng_for_kor`) | 39 | **37 repaired + 2 deleted — all of them** | 0 |
 | **Same defect, Japanese** (`eng_for_jpn`) | 4 | **2** | 2 |
 | **Japanese grammar notes in the prompt** (7 courses) | 1,423 rows on 3 surfaces | **0** | all of it |
-| New audio clips rendered, gated and live | | **33** | |
+| New audio clips rendered, gated and live | | **37** | |
 | Prompt slots left silent | | **0** | |
 | Seeds unapproved for your re-approval | | **12** | |
+
+> **Round 2 (after Kai's ship-if-likely-an-improvement ruling):** the 4 held Korean rows are now shipped too, checked against real Korean grammar sources under the web-search authorisation. `eng_for_kor` has **zero** rows showing English.
 
 Nothing was deleted. Every old clip is still alive.
 
@@ -188,19 +190,39 @@ It also returned **three false "Reconsider" verdicts**, all its own faults, all 
   safe *by circumstance* — this course has zero rows in every progress table and both enrolled
   learners are at zero — not because the mechanism is safe by design. Worth its own decision.
 
-## For a future Korean speaker
+## Round 2 — the four held rows, checked against real Korean and shipped
 
-The 13 rows to put in front of one, most doubtful first:
+You ruled: ship the weak ones if they're likely improvements on what's there, and use web search to
+check them. Both changed the answer, in opposite directions.
 
-1. **`S0300L02U02`** — `어렵게 보이다` of a *person* reads "look hard (to do)", not "seem difficult". **Held, not shipped.**
-2. **`S0300L02U04`** — `긴장하게 보이고`; a native would more likely say `긴장한 것처럼 보이다`. **Held.**
-3. **`S0300L02U03`** — `피곤하게 보이다`. **Held.**
-4. **`S0290L01U05`** — the course glosses `알아야 해요` as "have to find out" but this row says "need to find out". **Held.**
-5–13. The eight **medium**-confidence rows that *did* ship, listed in `kor-final-plan.json`.
+**Two of the three refutations did not survive contact with the grammar.** `#891` held
+`피곤하게 보이다` and `긴장하게 보이다` because the `-게` adverbial form appears nowhere else in the
+course. That's a real controlled-language observation, but it isn't a Korean problem: the reference
+grammars state outright that **`A-게 보이다` is interchangeable with `A-아/어 보이다` with no change of
+meaning**. Both shipped as originally authored.
 
-The four held rows still show English to a learner today. That is a known, documented defect and I
-would rather leave it visible than ship Korean we can't stand behind — but it is your call, and
-reversing it is one edit each.
+**The third refutation was right, and the search also found the fix neither the author nor the
+refuter could name.** `어렵게 보이다` is used of *tasks* — "looks difficult to do". For a person's
+character, Korean uses **`까다롭다`**. So `S0300L02U02` now reads
+`그는 까다롭게 보이고 싶어하지 않는다고 생각해요`, parallel to the attested sibling in the same lego.
+Cost, stated plainly: `까다롭` appears **nowhere** in this course, so this introduces a new word —
+accepted under your ruling, because what sat there instead was an English sentence being read aloud
+by a Korean voice.
+
+**`S0290L01U05` shipped with two imperfections named rather than hidden.** `알아야 해요` debuts three
+seeds later (S293) — an *ordering* issue on a word the course does teach, the cheap-fix class. And it
+means "have to know" where the target says "find out"; the exact Korean for that is `알아내다`, which
+appears nowhere in the course. The attested near-match beats both the unattested exact match and the
+English that was there.
+
+### Still for a future Korean speaker
+
+Nine rows, all now live, none blocking:
+
+1. **`S0300L02U02`** — `까다롭게` is a new word in this course; confirm it's the right register.
+2. **`S0290L01U05`** — the have-to / find-out gloss split, and a 3-seed debut reorder.
+3. **`S0280L03U05` / `U06`** — `일만 했어요` renders "only did the work"; the English says "only *had to* do the job". The obligation is not carried.
+4–9. The remaining medium rows in `kor-final-plan.json` and `kor-round2-plan.json`.
 
 ---
 
