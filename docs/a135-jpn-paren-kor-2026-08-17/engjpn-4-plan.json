@@ -1,0 +1,54 @@
+[
+ {
+  "row_uuid": "eng_for_jpn:S0267L01U04",
+  "seed_number": 267,
+  "old_known_text": "have you heard from your son this week?",
+  "target_text": "have you heard from your son this week?",
+  "new_known_text": "今週あなたの息子から連絡がありましたか？",
+  "action": "patch",
+  "provenance": "authored",
+  "confidence": "high",
+  "reason": "Attested frame S0267L01U02 「今日彼から連絡がありましたか？」 with two attested substitutions: 今週 debuts S63 as 'this week', 息子 debuts S197 as 'son'. Elicits the target English and nothing else.",
+  "clip_id": "8d70f05b-f1f6-400e-af21-0f6a7c4bbb4d",
+  "clip_action": "render-new"
+ },
+ {
+  "row_uuid": "eng_for_jpn:S0269L02U04",
+  "seed_number": 269,
+  "old_known_text": "why don't you want to help me with this?",
+  "target_text": "why don't you want to help me with this?",
+  "new_known_text": "なぜこれを手伝いたくないのですか？",
+  "action": "patch",
+  "provenance": "authored",
+  "confidence": "medium",
+  "reason": "Attested frame S0269L02B02 「なぜ私を手伝いたくないのですか」 ('why don't you want to help me?'), differentiated by これ (debuts S51). MEDIUM because the 'me' becomes implicit: 手伝う takes を for the task, so 私を and これを cannot both surface. 「なぜこれで私を手伝いたくないのですか？」 keeps the 'me' explicit but is stiff; I chose the natural reading and am flagging the trade rather than hiding it.",
+  "clip_id": "6ad21767-823f-4991-9f4e-479a627ed635",
+  "clip_action": "render-new"
+ },
+ {
+  "row_uuid": "eng_for_jpn:S0248L01U04",
+  "seed_number": 248,
+  "old_known_text": "I'm sorry to say that I thought the film was complete rubbish",
+  "target_text": "I'm sorry to say that I thought the film was complete rubbish",
+  "new_known_text": null,
+  "action": "hold",
+  "recommendation": "delete",
+  "confidence": null,
+  "reason": "The course has NO attested Japanese for 'I'm sorry to say'. 残念ながら is already double-glossed in this course ('unfortunately' on legos S0086L01/S0273L01, 'I'm afraid' in the S183 phrases and in S0248L01B02 which carries this very film sentence), so reusing it would be a third gloss on an already-forked chunk. 申し訳ありませんが is glossed 'I'm sorry but' at S193, so it would elicit the wrong English. Any authoring here either invents a new known-side chunk or produces a prompt that asks for a different sentence than target_text. Held rather than guessed. It is a near-duplicate of S0248L01B02 and S0248L01U01; deletion is the honest resolution and matches the ruling already given for eng_for_kor:S0300L01U03.",
+  "clip_id": "4d56ad00-7f0a-4306-b818-10f0d469ad9b",
+  "clip_action": "none"
+ },
+ {
+  "row_uuid": "eng_for_jpn:S0248L02U05",
+  "seed_number": 248,
+  "old_known_text": "I want my money back because I thought the film was complete rubbish",
+  "target_text": "I want my money back because I thought the film was complete rubbish",
+  "new_known_text": null,
+  "action": "hold",
+  "recommendation": "delete",
+  "confidence": null,
+  "reason": "The only reason-marker attested at S248 is ので (からです debuts later, at S267). Japanese puts the reason clause first, so any faithful rendering is 「その映画は全くひどかったので、お金を返してほしいです」 — which is BYTE-IDENTICAL to two rows that already exist, S0248L01U05 and S0248L02U06, both carrying the different English 'I thought the film was complete rubbish so I want my money back'. Authoring it would manufacture a three-way ZUT fork in a live beta course. Held.",
+  "clip_id": "48732507-3656-43bf-bf00-06ba94359d8a",
+  "clip_action": "none"
+ }
+]

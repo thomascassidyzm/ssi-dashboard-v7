@@ -308,8 +308,37 @@ function tilingBlastRadius(snap, fromSeed, removedUnits) {
 // ── Gap 4: taught-late / used-early, on whichever side was edited ─────────────
 // `හැබැයි` is taught as a LEGO at seed 469 but used by seeds 165…464. An impact
 // check that only looks at the edited seed's own children never sees that.
+// Languages written without spaces between words. Splitting these on ' ' yields
+// ONE token — the whole sentence — which can never match a LEGO, so every CJK
+// known side came back "the course teaches it at no point at all" and inherited a
+// false `reconsider`. Measured on eng_for_jpn S0267L01U04: the proposed prompt
+// 今週あなたの息子から連絡がありましたか？ is built entirely from 今週 (taught S63),
+// 息子 (S197) and the seed's own 連絡がありましたか, and was still reported untaught.
+// This is the same fault A135 fixed in the known-side gate's tokenizer; that fix
+// is on its own branch and has not reached main, and this tool carries a second,
+// independent copy of it in `words()`.
+const SPACELESS = /[぀-ヿ㐀-䶿一-鿿豈-﫿฀-๿຀-໿ក-៿က-႟]/;
+
 function words(text) {
-  return normalizeForContainment(text || '').split(' ').filter(Boolean);
+  const norm = normalizeForContainment(text || '');
+  if (!norm) return [];
+  // English tokenizes byte-for-byte as it always did — the space split is proven
+  // against real English prompts and must not move.
+  if (!SPACELESS.test(norm)) return norm.split(' ').filter(Boolean);
+  if (typeof Intl === 'undefined' || typeof Intl.Segmenter !== 'function') {
+    // No segmenter: fall back to the space split rather than invent boundaries.
+    // Reports stay as blind as before, but nothing is fabricated.
+    return norm.split(' ').filter(Boolean);
+  }
+  const seg = new Intl.Segmenter(undefined, { granularity: 'word' });
+  const out = [];
+  for (const part of norm.split(' ')) {
+    if (!part) continue;
+    for (const { segment, isWordLike } of seg.segment(part)) {
+      if (isWordLike && segment.trim()) out.push(segment);
+    }
+  }
+  return out;
 }
 
 function orderingCheck(snap, side, addedForms, editedSeed) {
@@ -648,8 +677,18 @@ async function checkEdit(c, snap, triggers, edit) {
         .map(l => ({ table: 'course_legos', seed: l.seed_number, lego_index: l.lego_index })),
       ...snap.phrases.filter(p => normalizeForStorage(p[col] || '', snap.chinese) === norm)
         .map(p => ({ table: 'course_practice_phrases', seed: p.seed_number, id: p.id })),
-    ].filter(r => !(r.table === edit.table && String(r.seed) === String(edit.seed_number)
-                    && (r.id ? r.id === edit.key : true)));
+    // Exclude the row being edited — and ONLY that row. `edit.key` is a DISPLAY
+    // label ("phrase eng_for_jpn:S0267L01U04"), never an identity, so comparing
+    // it to r.id could not match: every phrase edit reported ITSELF as "1 other
+    // row carrying the identical old text" and inherited a false `reconsider`.
+    // The seed/lego side had the mirror fault — with r.id undefined the guard
+    // collapsed to table+seed and swallowed genuine same-text siblings sharing
+    // that seed. Match on the row's own identity instead.
+    ].filter(r => !(r.table === edit.table
+                    && String(r.seed) === String(edit.seed_number)
+                    && (r.id != null || edit.row_id != null
+                          ? r.id === edit.row_id
+                          : r.lego_index === undefined || r.lego_index === edit.lego_index)));
     if (same.length) report.course_wide.same_text_elsewhere.push({ side, old_text: oldText, rows: same });
   }
   if (report.course_wide.same_text_elsewhere.length) {
@@ -833,17 +872,17 @@ async function resolveRow(c, courseCode, edit) {
   if (edit.table === 'course_seeds') {
     const r = await q(c, `SELECT * FROM course_seeds WHERE course_code=$1 AND seed_number=$2`, [courseCode, edit.seed_number]);
     if (!r.length) throw new Error(`seed ${edit.seed_number} not found in ${courseCode}`);
-    return { row: r[0], key: `seed ${edit.seed_number}` };
+    return { row: r[0], key: `seed ${edit.seed_number}`, row_id: null };
   }
   if (edit.table === 'course_legos') {
     const r = await q(c, `SELECT * FROM course_legos WHERE course_code=$1 AND seed_number=$2 AND lego_index=$3`,
       [courseCode, edit.seed_number, edit.lego_index]);
     if (!r.length) throw new Error(`lego ${edit.seed_number}:${edit.lego_index} not found in ${courseCode}`);
-    return { row: r[0], key: `lego ${edit.seed_number}:${edit.lego_index}` };
+    return { row: r[0], key: `lego ${edit.seed_number}:${edit.lego_index}`, row_id: null };
   }
   const r = await q(c, `SELECT * FROM course_practice_phrases WHERE id=$1`, [edit.id]);
   if (!r.length) throw new Error(`phrase ${edit.id} not found`);
-  return { row: r[0], key: `phrase ${edit.id}` };
+  return { row: r[0], key: `phrase ${edit.id}`, row_id: r[0].id };
 }
 
 // Replay: reconstruct already-applied edits from content_audit_log, whose old_row
