@@ -63,11 +63,16 @@
 // Under a brief contract checkKnownSide has no negationMarkers regex, so it decides "is this
 // prompt negated?" by testing whether any `negation` string occurs as a SUBSTRING of the prompt.
 // Spanish's negator is the two-letter `no`, which is a substring of nosotros, nombre, conocer,
-// nota, novia, nuevo… so a large share of positive prompts will read as negated and the NPI check
-// (`NPI token X without negation`) is largely inert for Spanish. I have kept the true markers
+// nota, nuevo…, and `ni`/`nada` are similarly short. MEASURED on the 4,898 build/use/practice
+// prompts of eng_for_spa (2026-08-17): the substring test calls 29.4% of prompts negated, while a
+// word-boundary regex over the same marker list calls 19.2% negated — so 502 prompts (10.2%) are
+// FALSELY read as negated. That is the second-best of the four Romance briefs, but it still means
+// one prompt in ten is silently exempted from the NPI check, which is why that check fired only
+// ONCE across the whole course. The check is DEGRADED, not inert. I have kept the true markers
 // anyway: the list is also the adjudicator's reference, and dropping `no` to buy a check would
-// misdescribe the language. Fixing this properly needs a mechanical contract with a real
-// negationMarkers regex (/\b(no|nunca|jamás|ni|tampoco)\b/i) and is out of scope for a brief.
+// misdescribe the language. A real fix needs a mechanical contract with a word-boundary
+// negationMarkers regex (/\b(no|nunca|jamás|ni|tampoco|nada|nadie|ningún\w*)\b/i) and is out of
+// scope for a brief.
 //
 // ── TOKENS I COULD NOT CONFIDENTLY CLASSIFY, AND LEFT OUT OF freeClass ──
 //   • `bien`(16), `así`(13), `ya`(11), `pues`, `entonces`: discourse/degree particles that shade

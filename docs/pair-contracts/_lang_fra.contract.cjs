@@ -52,18 +52,21 @@
 //  4. NEGATION IS TWO-PART AND ONE OF ITS PARTS IS ONE LETTER. See `negation` and the honest
 //     gap note below — this is where the brief-dialect gate is weakest on French.
 //
-// ── HONEST GAP: NEGATION DETECTION IS SUBSTRING-BASED HERE, AND FRENCH DEFEATS IT ──
+// ── HONEST GAP: NEGATION DETECTION IS SUBSTRING-BASED HERE, AND FRENCH IS THE WORST CASE ──
 // checkKnownSide has no negationMarkers regex under a brief contract, so it decides "is this
 // prompt negated?" by asking whether any `negation` string occurs as a SUBSTRING of the prompt.
-// French's negative particle is `ne` (and elided `n'`). "ne" is a substring of prochaine,
-// personne, une, jeune, semaine, entendu… i.e. of very nearly every French sentence. So under
-// this contract EVERY French prompt reads as negated, and the NPI check (`NPI token X without
-// negation`) is effectively INERT for French. I have left the true markers in `negation` anyway,
-// because the list is also the adjudicator's reference and because removing `ne` would misdescribe
-// the language to buy a check that a two-word particle cannot support in a substring test. The
-// npiLicensing prose below is therefore written for the HUMAN/agent adjudicator, not for the
-// matcher. Fixing this properly needs a mechanical contract with a real negationMarkers regex
-// (/\bne\b|\bn['’]|\bpas\b|\bjamais\b/i) and is out of scope for a brief.
+// French's negative particle is `ne` (and elided `n'`), which is a substring of prochaine,
+// personne, jeune, semaine, entendu, venir…; `plus` and `ni` are similarly short. MEASURED on the
+// 5,240 build/use/practice prompts of eng_for_fra (2026-08-17): the substring test calls 42.0% of
+// prompts negated, while a word-boundary regex over the same marker list calls 27.8% negated — so
+// 744 prompts (14.2%) are FALSELY read as negated. That is the worst rate of the four Romance
+// briefs, tied with Italian. The NPI check is therefore DEGRADED, not inert: it still fired 34
+// times on this course, but roughly one in seven prompts is silently exempted from it. The true
+// markers stay in `negation` — the list is also the adjudicator's reference, and removing `ne`
+// would misdescribe the language to buy back a check that a two-word discontinuous particle
+// cannot support in a substring test. The npiLicensing prose below is written for the HUMAN/agent
+// adjudicator first. A real fix needs a mechanical contract with a word-boundary negationMarkers
+// regex (/\bne\b|\bn['’]|\bpas\b|\bjamais\b|\brien\b|\baucun/i) and is out of scope for a brief.
 //
 // ── TOKENS I COULD NOT CONFIDENTLY CLASSIFY, AND LEFT OUT OF freeClass ──
 //   • `plus` (28) and `moins` (5): degree adverbs ('more'/'less') AND the negative particle of

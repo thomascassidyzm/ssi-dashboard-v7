@@ -55,11 +55,16 @@
 // ── HONEST GAP: NEGATION DETECTION IS SUBSTRING-BASED HERE ──
 // Under a brief contract checkKnownSide has no negationMarkers regex, so it decides "is this
 // prompt negated?" by testing whether any `negation` string occurs as a SUBSTRING of the prompt.
-// Italian's negator `non` is a substring of nonna and, more damagingly, `né`/`mai` are short and
-// `mai` occurs inside `domani`, `mail`, `ormai`. So a substantial share of positive prompts read
-// as negated and the NPI check is largely inert for Italian. The true markers are kept anyway:
-// the list is also the adjudicator's reference, and dropping them to buy a check would misdescribe
-// the language. A real fix needs a mechanical contract with /\b(non|mai|né|nessun\w*|niente|nulla)\b/i.
+// Italian's negator `non` is a substring of nonna and — more damagingly — `mai` occurs inside
+// domani, mail, ormai, and `no` inside nome, nostro, conosco, nuovo. MEASURED on the 4,982
+// build/use/practice prompts of eng_for_ita (2026-08-17): the substring test calls 40.0% of prompts
+// negated, while a word-boundary regex over the same marker list calls 26.0% negated — so 699
+// prompts (14.0%) are FALSELY read as negated, the joint-worst rate of the four Romance briefs
+// alongside French. The NPI check is therefore DEGRADED, not inert: it still fired 41 times on this
+// course, but roughly one prompt in seven is silently exempted from it. The true markers are kept
+// anyway: the list is also the adjudicator's reference, and dropping them to buy a check would
+// misdescribe the language. A real fix needs a mechanical contract with a word-boundary regex
+// (/\b(non|mai|né|nessun\w*|niente|nulla|neanche|nemmeno)\b/i) and is out of scope for a brief.
 //
 // ── TOKENS I COULD NOT CONFIDENTLY CLASSIFY, AND LEFT OUT OF freeClass ──
 //   • `ancora`(4): 'still' / 'yet' (polarity-conditioned) / 'again'. Placed in `npi` for the

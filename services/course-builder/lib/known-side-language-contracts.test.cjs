@@ -242,6 +242,59 @@ describe('calibration: the plant is found because of the tokenizer, not by luck'
   })
 })
 
+// ─── 2b. Negation detection under a brief contract ────────────────────
+//
+// A brief has no negationMarkers regex, so "is this prompt negated?" is decided from a bare
+// list of negator strings. The test was `known.includes(n)` — the negator ANYWHERE in the
+// string — which read 48% of cym_for_yor prompts as negated against a true rate of 5%,
+// because Yoruba `má` is a proper prefix of the future particle `máa`. A wrongly-negated
+// prompt silently licenses every NPI in it.
+//
+// The rule is now: a negator counts if it IS a token, or ENDS one. Both arms are load-bearing.
+
+describe('brief-contract negation detection', () => {
+  const negCtx = (negation) => ({
+    ...compileKnownContract({ known_lang: 'test', npi: ['ANY'], negation }),
+    stemFirstPos: new Map(), consPos: {}, unitPos: [],
+  })
+  // An unlicensed NPI is the observable: it appears iff the prompt did NOT read as negated.
+  const readsAsNegated = (prompt, negation) => {
+    const ctx = negCtx(negation)
+    ctx.stemFirstPos.set(stemKnownGloss('ANY'), 1)
+    return !checkKnownSide(`${prompt} ANY`, 1, ctx).some((p) => /NPI token/.test(p))
+  }
+
+  it('a negator standing as its own token is negation', () => {
+    expect(readsAsNegated('kò lọ', ['kò'])).toBe(true)
+  })
+
+  it('a negator that ENDS a word is negation — Dravidian negation is a bound suffix', () => {
+    // விரும்பவில்லை = "don't want": the negator வில்லை is fused onto the verb.
+    expect(readsAsNegated('நான் விரும்பவில்லை', ['வில்லை'])).toBe(true)
+  })
+
+  it('a negator at the START of a longer word is NOT negation', () => {
+    // Yoruba má vs the future particle máa — the single biggest source of the old overreach.
+    expect(readsAsNegated('máa lọ', ['má'])).toBe(false)
+  })
+
+  it('a negator buried MID-word is not negation', () => {
+    expect(readsAsNegated('xxlaxx yy', ['la'])).toBe(false)
+  })
+
+  it('an empty or whitespace-only negation list never licenses anything', () => {
+    expect(readsAsNegated('anything at all', [])).toBe(false)
+    expect(readsAsNegated('anything at all', ['  '])).toBe(false)
+  })
+
+  it('a MECHANICAL contract never reaches the fallback — its regex decides', () => {
+    // _default_eng carries negationMarkers; the token/suffix rule must not touch that path.
+    const eng = require('../../../docs/pair-contracts/_default_eng.contract.cjs')
+    expect(eng.negationMarkers).toBeTruthy()
+    expect(isMechanicalContract(eng)).toBe(true)
+  })
+})
+
 // ─── 3. Brief-vs-mechanical: findings must not be able to fail a build ─
 
 describe('language-level contracts are advisory by construction', () => {

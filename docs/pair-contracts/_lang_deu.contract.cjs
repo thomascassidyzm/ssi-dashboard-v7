@@ -68,6 +68,21 @@
 // einladen:1, nett:1 — i.e. on the order of 40–50 hits, ~10% of the raw count. THAT is the real
 // signal, and it is buried under a 9:1 morphological noise floor. Hence advisory, always.
 //
+// ── POST-CONTRACT SWEEP, MEASURED WITH THIS FILE IN PLACE ────────────────────────────────────
+//   node tools/course-optimization/known-side-sweep.cjs eng_for_deu
+//   · eng_for_deu  known=deu via lang:_lang_deu  triage  phrases=4937  raw=486
+//     (vocab 486, adv 0)  distinct-unknown=122        →  0 CONFIRMED breaches, exit 0.
+// The 486 split by kind: 380 "unknown gloss" and 106 "gloss not introduced until seed N", and the
+// NPI advisories are now 0 (they were 28 before the npi array was cut — see the note on npi).
+// The 106 ordering findings are a DIFFERENT and more interesting class than the 380: they are
+// phrases using a gloss whose LEGO debuts later in the same course — 'ich denke, …' at S26/S38/S46
+// against a 'denke' debut at S47; 'es tut mir leid' at S84 against a S139 debut; 'etwas
+// Interessantes' at S53 against S164. Those are not morphology and an adjudicator should look at
+// them first. The 380 unknown-gloss hits are dominated by exactly the four machines above —
+// spreche:32, hören:23, anzufangen:18, erledigen:16, wollen:12, trinken:10, hilfst:9, gehe:9 …
+// The freeClass here absorbed 19 of the 141 pre-contract types (zur, denen, wem, wieder, dafür,
+// davon, bis, denn, einige, sonst, sofort, auch, wirklich, alle, ihre, ihrer, will, sollen, wem).
+//
 // ── WHAT I COULD NOT CONFIDENTLY CLASSIFY (left OUT of freeClass, on purpose) ────────────────
 // * TIME AND FREQUENCY ADVERBS — heute:166, morgen:148, gestern:62, oft:70, bald:43, früh:36,
 //   jetzt:69, später:24, gerade:34, schnell:74, langsam:1. Arguably glue, but the SSi method
@@ -136,15 +151,31 @@ module.exports = {
     'jedes', 'jeden', 'jedem', 'beide', 'beiden', 'einige', 'einigen', 'manche', 'mehrere',
     'selbst', 'sogar', 'wieder', 'sonst', 'überhaupt', 'eigentlich', 'zwar',
     'jemand', 'jemanden', 'jemandem', 'niemand', 'niemanden', 'niemandem',
+    // the irgend- FREE-CHOICE indefinite series. Deliberately here and NOT in npi — see
+    // npiLicensing.rule: these are 'some-' in a positive declarative and 'any-' only under a
+    // licenser, exactly like Tamil's -ஆவது series, so a positive-declarative occurrence is never
+    // a violation. Measured: putting them in npi produced 12 false NPI reports on eng_for_deu
+    // ('ich möchte irgendwo mit dir sprechen', 'ich würde gerne irgendwo üben') and zero true ones.
+    'irgendetwas', 'irgendwas', 'irgendwer', 'irgendjemand', 'irgendwen', 'irgendwem',
+    'irgendwo', 'irgendwohin', 'irgendwie', 'irgendwann', 'irgendein', 'irgendeine',
     // answer words / interjections
     'ja', 'nein', 'okay', 'bitte',
   ],
 
   // NPI items + WHEN they are licensed. Violation = an NPI in a plain POSITIVE DECLARATIVE only.
-  npi: ['jemals', 'überhaupt', 'irgendetwas', 'irgendwas', 'irgendwer', 'irgendjemand',
-    'irgendwo', 'irgendwie', 'noch', 'mehr', 'sonst', 'länger'],
+  // DELIBERATELY SHORT, and calibrated by measurement rather than by analogy with the English
+  // contract. The first draft of this file listed überhaupt / irgend- / noch / mehr / sonst /
+  // länger here; sweeping eng_for_deu with that list produced 28 NPI advisories and ALL 28 were
+  // false positives — 17 on 'länger' in the plain comparative ('kannst du ein bisschen länger mit
+  // mir sprechen?') and 12 on 'irgendwo' in a positive declarative ('ich möchte irgendwo mit dir
+  // sprechen'). 'noch' (78 unlicensed occurrences) and 'mehr' (139) never surfaced at all, because
+  // checkKnownSide tests freeClass BEFORE npi and they are glue — which means listing them in npi
+  // was inert as well as wrong. All of them are now handled in prose below instead, and the sweep
+  // reports zero NPI advisories on German. 'jemals' ('ever') is the one item that is genuinely
+  // marked in a plain positive declarative; it does not occur in the corpus at all.
+  npi: ['jemals'],
   npiLicensing: {
-    rule: "German is NOT an NPI-heavy language in the English sense, and this is the single most important thing for a gate to understand about it: English 'any' has NO German counterpart. German expresses 'anything/anyone/anywhere' with the SAME irgend- series it uses for 'something/someone/somewhere' (irgendetwas / irgendjemand / irgendwo) and, far more often, with a BARE PLURAL or a bare mass noun and no determiner at all — 'hast du Fragen?' is 'do you have any questions?' with no 'any' word to license. So a German prompt that translates an English NPI usually contains no NPI-shaped token whatsoever, and any gate written by analogy with the English contract will look for something that is not there. The items that ARE genuinely polarity-sensitive in German are (a) the scalar/temporal residuals — 'noch' in the sense 'yet' (only under negation: 'ich bin noch nicht bereit', corpus S-many), 'mehr' in 'nicht mehr' ('not any more'), 'länger' in 'nicht länger', and 'sonst' in the sense 'else/otherwise'; and (b) 'jemals' ('ever'), which is fine in questions and conditionals and marked in a plain positive declarative. CRITICAL CAVEAT, and the reason these should almost never be reported: 'noch' and 'mehr' are RAMPANT in positive declaratives in a completely different, non-NPI sense — 'noch' = 'still' ('ich möchte noch üben' = 'I still want to practise'), 'mehr' = 'more' ('ein bisschen mehr Zeit'). In eng_for_deu 'noch' occurs 121 times and 'mehr' 176 times, and the great majority are the positive 'still'/'more' senses. An NPI-without-negation report on 'noch' or 'mehr' is therefore a FALSE POSITIVE by default and must be treated as such: only the specific collocations 'nicht mehr', 'nicht länger', 'noch nicht', 'kein … mehr' are the polarity uses, and those all already carry their own negator. They are listed in npi only so that an adjudicating agent knows the sense split exists, never so that a build can fail on them. The licensing environments below apply to the irgend- series and 'jemals'.",
+    rule: "German is NOT an NPI-heavy language in the English sense, and this is the single most important thing for a gate to understand about it: English 'any' has NO German counterpart. German expresses 'anything/anyone/anywhere' with the SAME irgend- series it uses for 'something/someone/somewhere' (irgendetwas / irgendjemand / irgendwo) and, far more often, with a BARE PLURAL or a bare mass noun and no determiner at all — 'hast du Fragen?' is 'do you have any questions?' with no 'any' word to license. So a German prompt that translates an English NPI usually contains no NPI-shaped token whatsoever, and any gate written by analogy with the English contract will look for something that is not there. The items that ARE genuinely polarity-sensitive in German are (a) the scalar/temporal residuals — 'noch' in the sense 'yet' (only under negation: 'ich bin noch nicht bereit', corpus S-many), 'mehr' in 'nicht mehr' ('not any more'), 'länger' in 'nicht länger', and 'sonst' in the sense 'else/otherwise'; and (b) 'jemals' ('ever'), which is fine in questions and conditionals and marked in a plain positive declarative. CRITICAL CAVEAT, and the reason these should almost never be reported: 'noch' and 'mehr' are RAMPANT in positive declaratives in a completely different, non-NPI sense — 'noch' = 'still' ('ich möchte noch üben' = 'I still want to practise'), 'mehr' = 'more' ('ein bisschen mehr Zeit'). In eng_for_deu 'noch' occurs 121 times and 'mehr' 176 times, and the great majority are the positive 'still'/'more' senses. An NPI-without-negation report on 'noch' or 'mehr' is therefore a FALSE POSITIVE by default and must be treated as such: only the specific collocations 'nicht mehr', 'nicht länger', 'noch nicht', 'kein … mehr' are the polarity uses, and those all already carry their own negator. They are therefore documented HERE and kept OUT of the npi array (see the note above it) — an adjudicating agent needs to know the sense split exists, but the matcher must not report it. The irgend- series is likewise in freeClass and not in npi: like Tamil's -ஆவது series it is a FREE-CHOICE indefinite that means 'some-' in a positive declarative and extends to 'any-' only under a licenser, so a positive occurrence is never a violation. What is left in npi is 'jemals' alone, and the licensing environments below are what would free it.",
     licensedIn: [
       "Sentential negation with 'nicht' (post-verbal, and its position is what scopes it) — 'ich bin mir nicht sicher', 'ich weiß noch nicht, wie man das sagt' (corpus S10/S60).",
       "Determiner negation with 'kein/keine/keinen/keinem/keiner' — the negated indefinite article, which is how German negates a noun phrase (72 prompts in eng_for_deu): 'du solltest dir keine Sorgen darum machen'.",
@@ -201,7 +232,8 @@ module.exports = {
     { id: 'caseAndDeclensionAreGlue', rule: "English a/an/the/to/of/for/with/in/at correspond to German case-inflected articles and prepositions (der/den/dem/des, ein/einen/einem/einer, im/am/zum/zur/beim/vom) and to adjective endings. All are free on the known side and require no separate introduced LEGO; which case form surfaces is dictated by the governing verb or preposition. The gate must treat a declined determiner or adjective ending as the same item as its citation form even though the strings differ." },
     { id: 'werdenIsFutureAndPassive', rule: "One German 'werden' underlies English future 'will' AND the English passive 'be + participle'; and German frequently uses the bare present where English requires 'will'. So English 'will' has no reliable German token, and a German 'werde/wird' may render either. Polarity/tense machinery, not vocabulary." },
     { id: 'manIsNotHeSheYou', rule: "'man' renders English generic 'you', 'one', 'people' or 'they' according to English idiom, with 3sg agreement in German. One German form → several English pronouns; do not force it to a specific person, and do not conflate it with the noun 'Mann' ('man'), which lowercases to the same token." },
-    { id: 'nochUndMehrSenseSplit', rule: "'noch' and 'mehr' each carry a positive and a negative-polarity sense on one form: 'noch' = 'still' positive ('ich möchte noch üben') but 'yet' under negation ('ich bin noch nicht bereit'); 'mehr' = 'more' positive but 'any more' in 'nicht mehr'. They are listed in npi ONLY to record the split — with 121 and 176 corpus occurrences dominated by the positive senses, an NPI-without-negation report on either is a false positive by default." },
+    { id: 'nochUndMehrSenseSplit', rule: "'noch' and 'mehr' each carry a positive and a negative-polarity sense on one form: 'noch' = 'still' positive ('ich möchte noch üben') but 'yet' under negation ('ich bin noch nicht bereit'); 'mehr' = 'more' positive but 'any more' in 'nicht mehr'; 'länger' = 'longer' positive but 'any longer' in 'nicht länger'. All three are freeClass glue and are deliberately NOT in npi — measured on eng_for_deu, 78 unlicensed 'noch', 139 'mehr' and 17 'länger', with the positive sense in every case sampled. The polarity uses ('noch nicht', 'nicht mehr', 'nicht länger', 'kein … mehr') all carry their own negator, so nothing is lost by leaving them out." },
+    { id: 'irgendIsFreeChoiceNotNpi', rule: "The irgend- series (irgendetwas / irgendwas / irgendjemand / irgendwer / irgendwo / irgendwie / irgendwann / irgendein) is a FREE-CHOICE indefinite, not a negative-polarity item: it means 'some-' in a plain positive declarative ('ich möchte irgendwo mit dir sprechen' = 'I'd like to speak somewhere with you') and extends to 'any-' under a question, conditional or negation. Structurally identical to Tamil's -ஆவது series. It is freeClass glue and never an NPI violation; treating it as one produced 12 false reports on this corpus and zero true ones." },
     { id: 'eszettIsNotSs', rule: "ß and ss are DIFFERENT strings to this gate (stemKnownGloss('weiß')≠stemKnownGloss('weiss')) and there is no folding step. eng_for_deu is internally consistent (7 ß-types, no ss doublets), so no findings arise from it today. Any future Swiss-orthography deu-known course, which writes ss for ß throughout, would read as a wholly separate lexeme inventory — that would be an orthography artefact, never a vocabulary breach." },
     { id: 'umlautIsPartOfTheStem', rule: "Umlaut is morphological, not decorative: wissen/weiß, muss/müssen, fahren/fährst, lang/länger, gut/besser, viel/mehr, denken/dachte, finden/fand. An exact-form matcher sees unrelated strings. When adjudicating, derive the lexeme by ablaut/umlaut class and never conclude 'untaught word' from a vowel change alone — this rule plus separablePrefixIsOneLexeme plus caseAndDeclensionAreGlue account for roughly nine of every ten raw findings on this known side." },
   ],

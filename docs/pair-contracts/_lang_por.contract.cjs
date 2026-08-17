@@ -68,12 +68,18 @@
 // ── HONEST GAP: NEGATION DETECTION IS SUBSTRING-BASED HERE ──
 // Under a brief contract checkKnownSide has no negationMarkers regex, so it decides "is this prompt
 // negated?" by testing whether any `negation` string occurs as a SUBSTRING of the prompt.
-// Portuguese is the LEAST damaged of the four by this — `não` carries a tilde and is not a
-// substring of common words — but `nem`, `nada` and `nunca` still match inside e.g. 'ninguém'
-// (no), 'nadar' (yes, `nada`), 'nunca' (fine). The check is weakly usable here rather than inert,
-// which is worth noting: Portuguese is the one Romance known side where a mechanical contract with
-// /\b(não|nunca|jamais|nem|nada|ninguém|nenhum\w*)\b/i would immediately buy a working NPI gate.
-// That upgrade is out of scope for a brief and is recorded here as the obvious next step.
+// Portuguese is by a wide margin the LEAST damaged of the four, and this is the one place where
+// measuring beat guessing. MEASURED on the 5,104 build/use/practice prompts of eng_for_por
+// (2026-08-17): the substring test calls 22.1% of prompts negated, and a word-boundary regex over
+// the same marker list calls 22.1% negated — ZERO false positives, an exact match on this corpus.
+// Portuguese gets away with it because its markers are long and tilde-bearing (não, nunca, nada,
+// ninguém, nenhum) and none of them occurs word-internally in this vocabulary. The consequence is
+// that the NPI check as written IS trustworthy on Portuguese in a way it is not on the other three
+// (Spanish 10.2% false-negated, Italian 14.0%, French 14.2%). Do NOT generalise this to a
+// Brazilian corpus or to a larger vocabulary without re-measuring — `nada` inside 'nadar' and
+// `nem` inside 'nenhum' are latent, just unattested here. A mechanical contract with
+// /\b(não|nunca|jamais|nem|nada|ninguém|nenhum\w*)\b/i would make the guarantee structural rather
+// than accidental; that upgrade is out of scope for a brief and is recorded here as the next step.
 //
 // ── TOKENS I COULD NOT CONFIDENTLY CLASSIFY, AND LEFT OUT OF freeClass ──
 //   • `bem`(3), `assim`(2), `então`(2), `claro`, `pois`: discourse/degree particles that shade

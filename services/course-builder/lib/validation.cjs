@@ -904,17 +904,49 @@ function compileKnownContract(contract) {
   };
 }
 
+// Is this prompt negated, judged against a brief contract's bare negation LIST (no regex)?
+//
+// The test used to be `known.includes(n)` — the negator anywhere in the string. Measured by
+// the Arabic/Yoruba contract author, 2026-08-17: that read 64% of eng_for_ara prompts as
+// negated against 29% that actually contain a negator token, and 48% vs 5% for cym_for_yor,
+// where Yoruba `má` is a proper prefix of the ubiquitous future particle `máa`. Every one of
+// those is a positive prompt wrongly licensed, which silently suppresses NPI findings.
+//
+// A negator counts when it either IS a whole token, or ENDS one. The suffix arm is not
+// slack — it is required: in Tamil, Kannada and Telugu negation is a bound suffix fused onto
+// the verb (விரும்பவில்லை = "don't want"), so a whole-token test alone would never fire for
+// the Dravidian languages. What the suffix arm deliberately does NOT do is match a negator
+// sitting at the START or MIDDLE of a longer word, which is exactly the má/máa case.
+//
+// The error direction has flipped: this under-licenses rather than over-licenses, so an NPI
+// finding can now be raised on a prompt whose negation is expressed some way the list does
+// not spell. Under a brief contract that is a triage line, never a build failure.
+// MECHANICAL contracts are untouched — they carry a negationMarkers regex and never reach here.
+function isNegatedByTokenOrSuffix(known, negSet) {
+  if (!negSet || !negSet.size) return false;
+  const toks = tokenizeKnown(known);
+  for (const n of negSet) {
+    if (!n) continue;
+    const neg = n.trim();
+    if (!neg) continue;
+    for (const t of toks) {
+      if (t === neg || stemKnownGloss(t) === neg) return true;
+      if (t.length > neg.length && t.endsWith(neg)) return true;
+    }
+  }
+  return false;
+}
+
 // ctx = { ...compileKnownContract, stemFirstPos:Map(stem->pos), consPos:{id->pos}, unitPos:[{phrase,pos}] }
 function checkKnownSide(known, currentPos, ctx) {
   const C = ctx.contract;
   const probs = [];
   // A brief contract has no negationMarkers regex (and `new RegExp(undefined)` silently
-  // becomes /undefined/, which never matches) — fall back to substring-testing its
+  // becomes /undefined/, which never matches) — fall back to a token/suffix test over its
   // negation list, which is the right test where negation is a bound suffix (Tamil -வில்லை).
   const negRe = C.negationMarkers instanceof RegExp ? C.negationMarkers
     : (C.negationMarkers ? new RegExp(C.negationMarkers, 'i') : null);
-  const negated = negRe ? negRe.test(known)
-    : [...ctx.neg].some((n) => n && known.includes(n));
+  const negated = negRe ? negRe.test(known) : isNegatedByTokenOrSuffix(known, ctx.neg);
   for (const con of C.constructions || []) {
     const test = con.test instanceof RegExp ? con.test : new RegExp(con.test, 'i');
     if (test.test(known)) {
