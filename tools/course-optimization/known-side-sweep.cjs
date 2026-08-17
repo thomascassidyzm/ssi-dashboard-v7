@@ -113,7 +113,7 @@ async function sweepCourse(course, opts) {
   // ONLY build/use/practice phrases. Component rows are never drilled by the learner and
   // carry un-authored known text; including them inflated an earlier census by ~60%.
   const phrases = (await pageAll(
-    'course_practice_phrases', 'phrase_id,lego_id,seed_number,known_text,target_text,phrase_role', { course_code: code },
+    'course_practice_phrases', 'id,lego_id,seed_number,position,known_text,target_text,phrase_role', { course_code: code },
   )).filter(p => ['build', 'use', 'practice'].includes(p.phrase_role));
 
   const mechanical = isMechanicalContract(contract);
@@ -144,7 +144,7 @@ async function sweepCourse(course, opts) {
     }
     perSeed[p.seed_number] = (perSeed[p.seed_number] || 0) + probs.length;
     if (examples.length < (opts.examples || 12)) {
-      examples.push({ phrase_id: p.phrase_id, seed: p.seed_number, known: p.known_text, target: p.target_text, problems: probs.slice(0, 4) });
+      examples.push({ phrase_id: p.id, seed: p.seed_number, known: p.known_text, target: p.target_text, problems: probs.slice(0, 4) });
     }
   }
 
