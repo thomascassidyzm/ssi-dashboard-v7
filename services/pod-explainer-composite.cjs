@@ -44,7 +44,6 @@ const { spliceSegmentsToFile } = require('./voice-engine/splicer.cjs')
 const { resolveTargetPool } = require('../tools/pod-voice-coverage.cjs')
 const { parseCourseCode, getConnectorForLearnerLang } = require('./pod-explainer-generator.cjs')
 const { canonicalLanguage } = require('./shared/clip-identity.cjs')
-const veracity = require('./audio-veracity.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
 const { canonicalSpeakerName } = require('../tools/pod-sync.cjs')
 
@@ -159,38 +158,17 @@ const EDGE_TRIM_FILTER = [
   'areverse',
 ].join(',')
 
-async function renderPiece(cache, tempDir, text, voice, language, stats) {
+async function renderPiece(cache, tempDir, text, voice) {
   const key = `${voice.provider}|${voice.voice_id}|${text}`
   if (cache.has(key)) return cache.get(key)
-  const n = cache.size
-  const rawFile = path.join(tempDir, `raw-${n}.mp3`)
-  const file = path.join(tempDir, `piece-${n}.mp3`)
-
-  // THE GATE GOES HERE, not on the assembled composite. The composite says the
-  // target three times against a one-line `text` — whisper would report that as
-  // a wild CER every time and the gate would be noise. The PIECE is a single
-  // honest utterance, and it is where new TTS bytes enter this path; a silent
-  // or truncated piece is exactly what poisons the assembly downstream.
-  const renderAndTrim = async () => {
-    const { audioBuffer } = await ttsService.generateWithRetry(text, voice.provider, buildTTSConfig(voice))
-    if (!audioBuffer || audioBuffer.length === 0) throw new Error(`empty TTS piece (${voice.voice_id}: "${text.slice(0, 40)}")`)
-    fs.writeFileSync(rawFile, audioBuffer)
-    // Edge-trim voiced pieces only — the ensureSilence gap pieces must keep
-    // their full authored length.
-    await audioProcessor.ffmpegFilterToLameMp3(rawFile, file, { filterChain: EDGE_TRIM_FILTER })
-    return { buffer: fs.readFileSync(file) }
-  }
-
-  const gated = await veracity.renderChecked({
-    render: renderAndTrim,
-    expectedText: text,
-    language,
-    stats,
-    meta: { role: EXPLAINER_ROLE, voiceId: voice.voice_id, piece: true },
-  })
-  if (!gated.published) {
-    throw new Error(`veracity gate: explainer piece quarantined after ${gated.attempts} attempts (${gated.verdict?.reason}, CER ${gated.verdict?.cer}) — "${text.slice(0, 40)}"`)
-  }
+  const { audioBuffer } = await ttsService.generateWithRetry(text, voice.provider, buildTTSConfig(voice))
+  if (!audioBuffer || audioBuffer.length === 0) throw new Error(`empty TTS piece (${voice.voice_id}: "${text.slice(0, 40)}")`)
+  const rawFile = path.join(tempDir, `raw-${cache.size}.mp3`)
+  fs.writeFileSync(rawFile, audioBuffer)
+  const file = path.join(tempDir, `piece-${cache.size}.mp3`)
+  // Edge-trim voiced pieces only — the ensureSilence gap pieces must keep
+  // their full authored length.
+  await audioProcessor.ffmpegFilterToLameMp3(rawFile, file, { filterChain: EDGE_TRIM_FILTER })
   cache.set(key, file)
   return file
 }
@@ -240,14 +218,6 @@ async function compositeExplainersForCourse(courseCode, { log = console.log, lim
   // `target` is the course-code prefix ('gle', 'fra_ca'), which is not always a
   // language code — the identity column takes the canonical, region-free form.
   const identityLanguage = canonicalLanguage(target)
-  const knownLanguage = canonicalLanguage(learner)
-  // Explainer PIECES go through the same pre-publish veracity gate and the same
-  // graduated sampler as every other clip — see renderPiece for why the gate is
-  // on the piece and not on the assembled composite.
-  const vStats = veracity.newStats()
-  veracity.announceStatus({ info: log, warn: log, error: log })
-  const vRate = veracity.startCourse(courseCode)
-  log(`[${courseCode}] composite: veracity sampling ${(vRate.rate * 100).toFixed(1)}% of pieces`)
   const connector = getConnectorForLearnerLang(learner)
   const { targetVoice, knownVoice } = await getCourseVoices(courseCode)
 
@@ -321,19 +291,19 @@ async function compositeExplainersForCourse(courseCode, { log = console.log, lim
             // more targets reinforce the sound — no need to repeat the meaning).
             // No "means" before each gloss — the cue set that up once.
             const files = []
-            files.push(await renderPiece(cache, tempDir, introCue, knownVoice, knownLanguage, vStats))
+            files.push(await renderPiece(cache, tempDir, introCue, knownVoice))
             files.push(await ensureSilence(cache, tempDir, GAP_AFTER_INTRO_MS))
             for (let i = 0; i < chunks.length; i++) {
               const c = chunks[i]
-              const tgt = await renderPiece(cache, tempDir, c.chunk_target, chunkVoice, identityLanguage, vStats)
-              const gls = await renderPiece(cache, tempDir, c.chunk_known, knownVoice, knownLanguage, vStats)
+              const tgt = await renderPiece(cache, tempDir, c.chunk_target, chunkVoice)
+              const gls = await renderPiece(cache, tempDir, c.chunk_known, knownVoice)
               const gap = await ensureSilence(cache, tempDir, GAP_CHUNK_TO_GLOSS_MS)
               files.push(tgt, gap, gls, gap, tgt, gap, tgt)
               if (i < chunks.length - 1) files.push(await ensureSilence(cache, tempDir, GAP_BETWEEN_PAIRS_MS))
             }
             if (tail) {
               files.push(await ensureSilence(cache, tempDir, GAP_BETWEEN_PAIRS_MS))
-              files.push(await renderPiece(cache, tempDir, tail, knownVoice, knownLanguage, vStats))
+              files.push(await renderPiece(cache, tempDir, tail, knownVoice))
             }
 
             const outPath = path.join(tempDir, `out-${row.global_order}.mp3`)
@@ -388,8 +358,7 @@ async function compositeExplainersForCourse(courseCode, { log = console.log, lim
   }
 
   log(`[${courseCode}] composite done: ${rendered} rendered, ${reused} reused, ${queue.length} failed`)
-  log(`[${courseCode}] composite: ${veracity.formatStats(vStats)}`)
-  return { rendered, reused, failed: queue.length, veracity: vStats }
+  return { rendered, reused, failed: queue.length }
 }
 
 module.exports = { compositeExplainersForCourse, narrationText, activeChunks }

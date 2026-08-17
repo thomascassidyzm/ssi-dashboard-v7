@@ -650,7 +650,7 @@ describe('verdictColumns', () => {
   })
 })
 
-describe('graduated sampling — the standing QA model (Tom, 2026-08-13)', () => {
+describe('graduated sampling — per COURSE (Tom, 2026-08-13; scope corrected 2026-08-17)', () => {
   const quiet = { info: () => {}, warn: () => {}, error: () => {}, log: () => {} }
   const buf = (s) => Buffer.from(s)
   const passing = async () => ({ pass: true, checked: true, reason: 'ok', cer: 0.02, decode: 'hallo' })
@@ -663,50 +663,72 @@ describe('graduated sampling — the standing QA model (Tom, 2026-08-13)', () =>
     expect(taken).toBe(10)
   })
 
-  it('drops to ~1% on the next course once the first sampled clean', () => {
+  // FLIPPED 2026-08-17. This used to assert the relaxation happened on the NEXT
+  // course. Tom's ruling scopes sampling per course — and the old shape made the
+  // cheap end of the ladder unreachable, because one course per run is how the
+  // estate is actually driven, so nothing ever banked.
+  it('relaxes to ~1% WITHIN a course once the opening sample comes back clean', () => {
     const s = V.createSampler()
     s.startCourse('a')
-    for (let i = 0; i < 100; i++) if (s.shouldCheck()) s.recordVerdict({ checked: true, pass: true })
-    s.startCourse('b')
-    expect(s.state().rate).toBeCloseTo(0.01, 5)
+    let sampled = 0
+    for (let i = 0; i < 100; i++) if (s.shouldCheck()) { sampled++; s.recordVerdict({ checked: true, pass: true }) }
+    expect(sampled).toBe(10)                        // 10% of the first 100 clips
+    expect(s.state().rate).toBeCloseTo(0.01, 5)     // ...and that bought a rung
+    // The wider walk now holds: one in a hundred, and no double-sample from the
+    // step itself.
     const taken = Array.from({ length: 1000 }, () => s.shouldCheck()).filter(Boolean).length
     expect(taken).toBe(10)
   })
 
-  it('keeps relaxing as clean courses accumulate, but never to zero', () => {
+  // FLIPPED 2026-08-17: the ladder is now walked inside ONE course.
+  it('keeps relaxing down the ladder within one course, but never to zero', () => {
     const s = V.createSampler()
-    const rates = []
-    for (let course = 0; course < 12; course++) {
-      s.startCourse(`c${course}`)
-      rates.push(s.state().rate)
-      for (let i = 0; i < 2000; i++) if (s.shouldCheck()) s.recordVerdict({ checked: true, pass: true })
+    s.startCourse('one_long_course')
+    const seen = [s.state().rate]
+    for (let i = 0; i < 400000; i++) {
+      if (s.shouldCheck()) {
+        s.recordVerdict({ checked: true, pass: true })
+        const r = s.state().rate
+        if (r !== seen[seen.length - 1]) seen.push(r)
+      }
     }
-    expect(rates[0]).toBeCloseTo(0.10, 5)
-    expect(rates[1]).toBeCloseTo(0.01, 5)
-    expect(rates[2]).toBeCloseTo(0.005, 5)
-    expect(rates[3]).toBeCloseTo(0.0025, 5)
+    expect(seen[0]).toBeCloseTo(0.10, 5)
+    expect(seen[1]).toBeCloseTo(0.01, 5)
+    expect(seen[2]).toBeCloseTo(0.005, 5)
+    expect(seen[3]).toBeCloseTo(0.0025, 5)
     // The floor holds. A run that stops looking cannot notice it has gone wrong.
-    expect(Math.min(...rates)).toBeGreaterThan(0)
-    expect(Math.min(...rates)).toBeCloseTo(0.002, 5)
+    expect(Math.min(...seen)).toBeGreaterThan(0)
+    expect(Math.min(...seen)).toBeCloseTo(0.002, 5)
   })
 
   it('a failure snaps the rate back to the opening rate, mid-course', () => {
     const s = V.createSampler()
     s.startCourse('a')
     for (let i = 0; i < 100; i++) if (s.shouldCheck()) s.recordVerdict({ checked: true, pass: true })
-    s.startCourse('b')
-    expect(s.state().rate).toBeCloseTo(0.01, 5)
+    expect(s.state().rate).toBeCloseTo(0.01, 5)   // relaxed a rung, within the course
     const snap = s.recordVerdict({ checked: true, pass: false })
     expect(snap.snapped).toBe(true)
     expect(s.state().rate).toBeCloseTo(0.10, 5)
-    // ...and the trust is gone, so the NEXT course opens at the full rate too.
-    s.startCourse('c')
-    expect(s.state().rate).toBeCloseTo(0.10, 5)
+    // Every rung is forfeit, not just the last one: the cheap rate was a claim
+    // that turned out not to hold, so it is withdrawn in full.
+    expect(s.state().step).toBe(0)
   })
 
-  it('a course that sampled nothing banks no trust — no evidence, no relaxation', () => {
+  // NEW 2026-08-17, the invariant the scope ruling actually turns on.
+  it('starts every course fresh, however clean the previous one was', () => {
+    const s = V.createSampler()
+    s.startCourse('a')
+    for (let i = 0; i < 100; i++) if (s.shouldCheck()) s.recordVerdict({ checked: true, pass: true })
+    expect(s.state().rate).toBeCloseTo(0.01, 5)
+    s.startCourse('b')
+    expect(s.state().rate).toBeCloseTo(0.10, 5)   // trust does NOT cross the boundary
+    expect(s.state().step).toBe(0)
+  })
+
+  it('a course that sampled nothing relaxes nothing — no evidence, no relaxation', () => {
     const s = V.createSampler()
     s.startCourse('a')          // never calls shouldCheck: a course with no clips
+    expect(s.state().rate).toBeCloseTo(0.10, 5)
     s.startCourse('b')
     expect(s.state().rate).toBeCloseTo(0.10, 5)
   })
