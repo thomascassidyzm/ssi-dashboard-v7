@@ -1,0 +1,904 @@
+{
+  "step": "sample(10)",
+  "course": "nld_for_eng",
+  "approval": {
+    "by": "tom",
+    "when": "2026-08-17",
+    "ruling": "A-136",
+    "verbatim": "A-136: Noor clicks on 5 of 5 diagnostic lines — she is dropped from the Dutch cast and her clips re-rendered on Femke."
+  },
+  "to_voice": "xai_58d27475085e",
+  "records": [
+    {
+      "id": "6e2188e3-5e0e-457d-a358-393d1f15c49f",
+      "role": "pod_take_g",
+      "language": "nl-NL",
+      "text": "Nee, hij is vrij.",
+      "chars": 17,
+      "previous_s3_key": "mastered/96595611-2D37-4BA3-8394-133A0AED6016.mp3",
+      "previous_duration_ms": 1320,
+      "previous_revision": 1,
+      "previous_voice_id": "247783ebdd51",
+      "refs": 0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "s3_key": "mastered/AFF4463A-D573-4C15-B35C-0163C8FCFB53.mp3",
+          "duration_ms": 1488,
+          "bytes": 18432,
+          "chars": 17,
+          "cost_usd": 0.000272,
+          "decode": "Nee, hij is vrij.",
+          "cer": 0,
+          "unchecked_reason": null,
+          "tail": {
+            "measured": true,
+            "floor_db": -63.3,
+            "tail_ms": 158,
+            "bursts": [],
+            "impulses": []
+          },
+          "checks": [
+            {
+              "name": "s3_alive",
+              "ok": true,
+              "detail": "ContentLength 18432 vs 18432"
+            },
+            {
+              "name": "decodable",
+              "ok": true,
+              "detail": "ffprobe 1488ms"
+            },
+            {
+              "name": "duration_agrees",
+              "ok": true,
+              "detail": "ffprobe 1488ms vs mastered 1488ms"
+            },
+            {
+              "name": "not_truncated",
+              "ok": true,
+              "detail": "1488ms vs superseded 1320ms (ratio 1.13)"
+            },
+            {
+              "name": "no_post_speech_impulse",
+              "ok": true,
+              "detail": "0 tick(s), 0 detached burst(s) in 158ms of post-speech air (floor -63.3dB)"
+            },
+            {
+              "name": "asr_checked",
+              "ok": true,
+              "detail": "\"Nee, hij is vrij.\""
+            },
+            {
+              "name": "asr_matches_text",
+              "ok": true,
+              "detail": "CER 0.000"
+            }
+          ],
+          "accepted": true
+        }
+      ],
+      "applied": true,
+      "cost_usd": 0.000272,
+      "revision": 2,
+      "new_s3_key": "mastered/AFF4463A-D573-4C15-B35C-0163C8FCFB53.mp3",
+      "new_duration_ms": 1488,
+      "new_voice_id": "xai_58d27475085e",
+      "result": "swapped"
+    },
+    {
+      "id": "0b300fd9-fb65-44db-a934-4a4e6b6945dd",
+      "role": "pod_take_g",
+      "language": "nl-NL",
+      "text": "Alsjeblieft, ga je gang.",
+      "chars": 24,
+      "previous_s3_key": "mastered/088A82A3-B35D-454E-87E1-3D31921F7DBE.mp3",
+      "previous_duration_ms": 1632,
+      "previous_revision": 1,
+      "previous_voice_id": "247783ebdd51",
+      "refs": 0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "s3_key": "mastered/AD32AFA0-2A99-4227-80E7-B0EBB4B63ADA.mp3",
+          "duration_ms": 1560,
+          "bytes": 19296,
+          "chars": 24,
+          "cost_usd": 0.000384,
+          "decode": "Alsjeblieft ga je gang!",
+          "cer": 0,
+          "unchecked_reason": null,
+          "tail": {
+            "measured": true,
+            "floor_db": -50.1,
+            "tail_ms": 118,
+            "bursts": [],
+            "impulses": []
+          },
+          "checks": [
+            {
+              "name": "s3_alive",
+              "ok": true,
+              "detail": "ContentLength 19296 vs 19296"
+            },
+            {
+              "name": "decodable",
+              "ok": true,
+              "detail": "ffprobe 1560ms"
+            },
+            {
+              "name": "duration_agrees",
+              "ok": true,
+              "detail": "ffprobe 1560ms vs mastered 1560ms"
+            },
+            {
+              "name": "not_truncated",
+              "ok": true,
+              "detail": "1560ms vs superseded 1632ms (ratio 0.96)"
+            },
+            {
+              "name": "no_post_speech_impulse",
+              "ok": true,
+              "detail": "0 tick(s), 0 detached burst(s) in 118ms of post-speech air (floor -50.1dB)"
+            },
+            {
+              "name": "asr_checked",
+              "ok": true,
+              "detail": "\"Alsjeblieft ga je gang!\""
+            },
+            {
+              "name": "asr_matches_text",
+              "ok": true,
+              "detail": "CER 0.000"
+            }
+          ],
+          "accepted": true
+        }
+      ],
+      "applied": true,
+      "cost_usd": 0.000384,
+      "revision": 2,
+      "new_s3_key": "mastered/AD32AFA0-2A99-4227-80E7-B0EBB4B63ADA.mp3",
+      "new_duration_ms": 1560,
+      "new_voice_id": "xai_58d27475085e",
+      "result": "swapped"
+    },
+    {
+      "id": "164ce636-3305-4903-8f02-152ad773a6b1",
+      "role": "pod_take_g",
+      "language": "nl-NL",
+      "text": "Mijn naam is Anna. En jij?",
+      "chars": 26,
+      "previous_s3_key": "mastered/7209B9E2-BA7D-44F4-93FA-32049B68CF3F.mp3",
+      "previous_duration_ms": 1752,
+      "previous_revision": 1,
+      "previous_voice_id": "247783ebdd51",
+      "refs": 0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "s3_key": "mastered/9B26E46C-DF72-4D2A-8FF9-A955AD1F8329.mp3",
+          "duration_ms": 2688,
+          "bytes": 32832,
+          "chars": 26,
+          "cost_usd": 0.000416,
+          "decode": "Mijn naam is Anna en jij?",
+          "cer": 0,
+          "unchecked_reason": null,
+          "tail": {
+            "measured": true,
+            "floor_db": -64.8,
+            "tail_ms": 226,
+            "bursts": [],
+            "impulses": []
+          },
+          "checks": [
+            {
+              "name": "s3_alive",
+              "ok": true,
+              "detail": "ContentLength 32832 vs 32832"
+            },
+            {
+              "name": "decodable",
+              "ok": true,
+              "detail": "ffprobe 2688ms"
+            },
+            {
+              "name": "duration_agrees",
+              "ok": true,
+              "detail": "ffprobe 2688ms vs mastered 2688ms"
+            },
+            {
+              "name": "not_truncated",
+              "ok": true,
+              "detail": "2688ms vs superseded 1752ms (ratio 1.53)"
+            },
+            {
+              "name": "no_post_speech_impulse",
+              "ok": true,
+              "detail": "0 tick(s), 0 detached burst(s) in 226ms of post-speech air (floor -64.8dB)"
+            },
+            {
+              "name": "asr_checked",
+              "ok": true,
+              "detail": "\"Mijn naam is Anna en jij?\""
+            },
+            {
+              "name": "asr_matches_text",
+              "ok": true,
+              "detail": "CER 0.000"
+            }
+          ],
+          "accepted": true
+        }
+      ],
+      "applied": true,
+      "cost_usd": 0.000416,
+      "revision": 2,
+      "new_s3_key": "mastered/9B26E46C-DF72-4D2A-8FF9-A955AD1F8329.mp3",
+      "new_duration_ms": 2688,
+      "new_voice_id": "xai_58d27475085e",
+      "result": "swapped"
+    },
+    {
+      "id": "f2538e11-3e61-498d-a0f4-320822a5c22c",
+      "role": "pod_take_g",
+      "language": "nl-NL",
+      "text": "Insgelijks. Waar kom jij vandaan?",
+      "chars": 33,
+      "previous_s3_key": "mastered/9AA8EF6C-C0FE-411B-ADF5-F948EE5A308E.mp3",
+      "previous_duration_ms": 2160,
+      "previous_revision": 1,
+      "previous_voice_id": "247783ebdd51",
+      "refs": 0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "s3_key": "mastered/09C23A17-E0EA-40AC-908A-93B5C3DFE07A.mp3",
+          "duration_ms": 2448,
+          "bytes": 29952,
+          "chars": 33,
+          "cost_usd": 0.000528,
+          "decode": "Insgalijks, waar kom jij vandaan?",
+          "cer": 0.0323,
+          "unchecked_reason": null,
+          "tail": {
+            "measured": true,
+            "floor_db": -64.8,
+            "tail_ms": 274,
+            "bursts": [],
+            "impulses": []
+          },
+          "checks": [
+            {
+              "name": "s3_alive",
+              "ok": true,
+              "detail": "ContentLength 29952 vs 29952"
+            },
+            {
+              "name": "decodable",
+              "ok": true,
+              "detail": "ffprobe 2448ms"
+            },
+            {
+              "name": "duration_agrees",
+              "ok": true,
+              "detail": "ffprobe 2448ms vs mastered 2448ms"
+            },
+            {
+              "name": "not_truncated",
+              "ok": true,
+              "detail": "2448ms vs superseded 2160ms (ratio 1.13)"
+            },
+            {
+              "name": "no_post_speech_impulse",
+              "ok": true,
+              "detail": "0 tick(s), 0 detached burst(s) in 274ms of post-speech air (floor -64.8dB)"
+            },
+            {
+              "name": "asr_checked",
+              "ok": true,
+              "detail": "\"Insgalijks, waar kom jij vandaan?\""
+            },
+            {
+              "name": "asr_matches_text",
+              "ok": true,
+              "detail": "CER 0.032"
+            }
+          ],
+          "accepted": true
+        }
+      ],
+      "applied": true,
+      "cost_usd": 0.000528,
+      "revision": 2,
+      "new_s3_key": "mastered/09C23A17-E0EA-40AC-908A-93B5C3DFE07A.mp3",
+      "new_duration_ms": 2448,
+      "new_voice_id": "xai_58d27475085e",
+      "result": "swapped"
+    },
+    {
+      "id": "8acce76d-c13a-4cab-8220-158d2b8ee46a",
+      "role": "pod_take_g",
+      "language": "nl-NL",
+      "text": "Ik kom uit Frankrijk. Ik woon hier, al twee jaar.",
+      "chars": 49,
+      "previous_s3_key": "mastered/DF1F9701-E255-418C-98B7-49667154A522.mp3",
+      "previous_duration_ms": 3048,
+      "previous_revision": 1,
+      "previous_voice_id": "247783ebdd51",
+      "refs": 0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "s3_key": "mastered/74F7E46A-66AF-486B-B30E-5613243AF7F4.mp3",
+          "duration_ms": 3336,
+          "bytes": 40608,
+          "chars": 49,
+          "cost_usd": 0.000784,
+          "decode": "Ik kom uit Frankrijk. Ik woon hier al twee jaar.",
+          "cer": 0,
+          "unchecked_reason": null,
+          "tail": {
+            "measured": true,
+            "floor_db": -60.1,
+            "tail_ms": 154,
+            "bursts": [],
+            "impulses": []
+          },
+          "checks": [
+            {
+              "name": "s3_alive",
+              "ok": true,
+              "detail": "ContentLength 40608 vs 40608"
+            },
+            {
+              "name": "decodable",
+              "ok": true,
+              "detail": "ffprobe 3336ms"
+            },
+            {
+              "name": "duration_agrees",
+              "ok": true,
+              "detail": "ffprobe 3336ms vs mastered 3336ms"
+            },
+            {
+              "name": "not_truncated",
+              "ok": true,
+              "detail": "3336ms vs superseded 3048ms (ratio 1.09)"
+            },
+            {
+              "name": "no_post_speech_impulse",
+              "ok": true,
+              "detail": "0 tick(s), 0 detached burst(s) in 154ms of post-speech air (floor -60.1dB)"
+            },
+            {
+              "name": "asr_checked",
+              "ok": true,
+              "detail": "\"Ik kom uit Frankrijk. Ik woon hier al twee jaar.\""
+            },
+            {
+              "name": "asr_matches_text",
+              "ok": true,
+              "detail": "CER 0.000"
+            }
+          ],
+          "accepted": true
+        }
+      ],
+      "applied": true,
+      "cost_usd": 0.000784,
+      "revision": 2,
+      "new_s3_key": "mastered/74F7E46A-66AF-486B-B30E-5613243AF7F4.mp3",
+      "new_duration_ms": 3336,
+      "new_voice_id": "xai_58d27475085e",
+      "result": "swapped"
+    },
+    {
+      "id": "72ddd3c6-3d52-46aa-9c45-318698b8c0a2",
+      "role": "pod_take_g",
+      "language": "nl-NL",
+      "text": "Ja, natuurlijk.",
+      "chars": 15,
+      "previous_s3_key": "mastered/2CEBB940-E5AD-4245-A7B2-F9F995B94B81.mp3",
+      "previous_duration_ms": 984,
+      "previous_revision": 1,
+      "previous_voice_id": "247783ebdd51",
+      "refs": 0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "s3_key": "mastered/36090D54-06C4-4D8B-B3E3-8D4D55404261.mp3",
+          "duration_ms": 1320,
+          "bytes": 16416,
+          "chars": 15,
+          "cost_usd": 0.00024,
+          "decode": "Я, естественно.",
+          "cer": 1,
+          "unchecked_reason": null,
+          "tail": {
+            "measured": true,
+            "floor_db": -59.8,
+            "tail_ms": 136,
+            "bursts": [],
+            "impulses": []
+          },
+          "checks": [
+            {
+              "name": "s3_alive",
+              "ok": true,
+              "detail": "ContentLength 16416 vs 16416"
+            },
+            {
+              "name": "decodable",
+              "ok": true,
+              "detail": "ffprobe 1320ms"
+            },
+            {
+              "name": "duration_agrees",
+              "ok": true,
+              "detail": "ffprobe 1320ms vs mastered 1320ms"
+            },
+            {
+              "name": "not_truncated",
+              "ok": true,
+              "detail": "1320ms vs superseded 984ms (ratio 1.34)"
+            },
+            {
+              "name": "no_post_speech_impulse",
+              "ok": true,
+              "detail": "0 tick(s), 0 detached burst(s) in 136ms of post-speech air (floor -59.8dB)"
+            },
+            {
+              "name": "asr_checked",
+              "ok": true,
+              "detail": "\"Я, естественно.\""
+            },
+            {
+              "name": "asr_matches_text",
+              "ok": false,
+              "detail": "CER 1.000"
+            }
+          ],
+          "accepted": false
+        },
+        {
+          "attempt": 2,
+          "s3_key": "mastered/A23F7D0D-A84B-4DB4-A270-4F93A8A7AABD.mp3",
+          "duration_ms": 1248,
+          "bytes": 15552,
+          "chars": 15,
+          "cost_usd": 0.00024,
+          "decode": "Ja, natuurlijk.",
+          "cer": 0,
+          "unchecked_reason": null,
+          "tail": {
+            "measured": true,
+            "floor_db": -60.1,
+            "tail_ms": 128,
+            "bursts": [],
+            "impulses": []
+          },
+          "checks": [
+            {
+              "name": "s3_alive",
+              "ok": true,
+              "detail": "ContentLength 15552 vs 15552"
+            },
+            {
+              "name": "decodable",
+              "ok": true,
+              "detail": "ffprobe 1248ms"
+            },
+            {
+              "name": "duration_agrees",
+              "ok": true,
+              "detail": "ffprobe 1248ms vs mastered 1248ms"
+            },
+            {
+              "name": "not_truncated",
+              "ok": true,
+              "detail": "1248ms vs superseded 984ms (ratio 1.27)"
+            },
+            {
+              "name": "no_post_speech_impulse",
+              "ok": true,
+              "detail": "0 tick(s), 0 detached burst(s) in 128ms of post-speech air (floor -60.1dB)"
+            },
+            {
+              "name": "asr_checked",
+              "ok": true,
+              "detail": "\"Ja, natuurlijk.\""
+            },
+            {
+              "name": "asr_matches_text",
+              "ok": true,
+              "detail": "CER 0.000"
+            }
+          ],
+          "accepted": true
+        }
+      ],
+      "applied": true,
+      "cost_usd": 0.00048,
+      "revision": 2,
+      "new_s3_key": "mastered/A23F7D0D-A84B-4DB4-A270-4F93A8A7AABD.mp3",
+      "new_duration_ms": 1248,
+      "new_voice_id": "xai_58d27475085e",
+      "result": "swapped"
+    },
+    {
+      "id": "33bc40f9-430c-4460-b13d-2dc829a346d0",
+      "role": "pod_take_g",
+      "language": "nl-NL",
+      "text": "Ik ben verpleegkundige, in het ziekenhuis, om de hoek.",
+      "chars": 54,
+      "previous_s3_key": "mastered/620B430E-FDB2-46B7-A404-355ADA17D0D9.mp3",
+      "previous_duration_ms": 3096,
+      "previous_revision": 1,
+      "previous_voice_id": "247783ebdd51",
+      "refs": 0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "s3_key": "mastered/20E0C0FB-D3EA-4FC8-A808-ECB89D7035EB.mp3",
+          "duration_ms": 3336,
+          "bytes": 40608,
+          "chars": 54,
+          "cost_usd": 0.000864,
+          "decode": "Ik ben verpleegkundige in het ziekenhuis Omderhoek.",
+          "cer": 0.0392,
+          "unchecked_reason": null,
+          "tail": {
+            "measured": true,
+            "floor_db": -56.1,
+            "tail_ms": 184,
+            "bursts": [],
+            "impulses": []
+          },
+          "checks": [
+            {
+              "name": "s3_alive",
+              "ok": true,
+              "detail": "ContentLength 40608 vs 40608"
+            },
+            {
+              "name": "decodable",
+              "ok": true,
+              "detail": "ffprobe 3336ms"
+            },
+            {
+              "name": "duration_agrees",
+              "ok": true,
+              "detail": "ffprobe 3336ms vs mastered 3336ms"
+            },
+            {
+              "name": "not_truncated",
+              "ok": true,
+              "detail": "3336ms vs superseded 3096ms (ratio 1.08)"
+            },
+            {
+              "name": "no_post_speech_impulse",
+              "ok": true,
+              "detail": "0 tick(s), 0 detached burst(s) in 184ms of post-speech air (floor -56.1dB)"
+            },
+            {
+              "name": "asr_checked",
+              "ok": true,
+              "detail": "\"Ik ben verpleegkundige in het ziekenhuis Omderhoek.\""
+            },
+            {
+              "name": "asr_matches_text",
+              "ok": true,
+              "detail": "CER 0.039"
+            }
+          ],
+          "accepted": true
+        }
+      ],
+      "applied": true,
+      "cost_usd": 0.000864,
+      "revision": 2,
+      "new_s3_key": "mastered/20E0C0FB-D3EA-4FC8-A808-ECB89D7035EB.mp3",
+      "new_duration_ms": 3336,
+      "new_voice_id": "xai_58d27475085e",
+      "result": "swapped"
+    },
+    {
+      "id": "d22bc109-a4a6-4d31-aa51-fd04e2a3e43d",
+      "role": "pod_take_g",
+      "language": "nl-NL",
+      "text": "Wat interessant. Nou, leuk je te hebben leren kennen.",
+      "chars": 53,
+      "previous_s3_key": "mastered/E4650D83-A1C7-41A4-9E4B-F74DEC7AAEC5.mp3",
+      "previous_duration_ms": 3168,
+      "previous_revision": 1,
+      "previous_voice_id": "247783ebdd51",
+      "refs": 0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "s3_key": "mastered/F37D1BC4-F8F9-4555-8A7F-1C27B914E44F.mp3",
+          "duration_ms": 3576,
+          "bytes": 43488,
+          "chars": 53,
+          "cost_usd": 0.000848,
+          "decode": "Wat interessant! Nou, leuk je te hebben leren kennen.",
+          "cer": 0,
+          "unchecked_reason": null,
+          "tail": {
+            "measured": true,
+            "floor_db": -62.4,
+            "tail_ms": 210,
+            "bursts": [],
+            "impulses": []
+          },
+          "checks": [
+            {
+              "name": "s3_alive",
+              "ok": true,
+              "detail": "ContentLength 43488 vs 43488"
+            },
+            {
+              "name": "decodable",
+              "ok": true,
+              "detail": "ffprobe 3576ms"
+            },
+            {
+              "name": "duration_agrees",
+              "ok": true,
+              "detail": "ffprobe 3576ms vs mastered 3576ms"
+            },
+            {
+              "name": "not_truncated",
+              "ok": true,
+              "detail": "3576ms vs superseded 3168ms (ratio 1.13)"
+            },
+            {
+              "name": "no_post_speech_impulse",
+              "ok": true,
+              "detail": "0 tick(s), 0 detached burst(s) in 210ms of post-speech air (floor -62.4dB)"
+            },
+            {
+              "name": "asr_checked",
+              "ok": true,
+              "detail": "\"Wat interessant! Nou, leuk je te hebben leren kennen.\""
+            },
+            {
+              "name": "asr_matches_text",
+              "ok": true,
+              "detail": "CER 0.000"
+            }
+          ],
+          "accepted": true
+        }
+      ],
+      "applied": true,
+      "cost_usd": 0.000848,
+      "revision": 2,
+      "new_s3_key": "mastered/F37D1BC4-F8F9-4555-8A7F-1C27B914E44F.mp3",
+      "new_duration_ms": 3576,
+      "new_voice_id": "xai_58d27475085e",
+      "result": "swapped"
+    },
+    {
+      "id": "6030d4d6-eaa4-4eca-971b-7e277ddee77c",
+      "role": "pod_take_g",
+      "language": "nl-NL",
+      "text": "Ik werk, in het ziekenhuis.",
+      "chars": 27,
+      "previous_s3_key": "mastered/2E0AFD40-601B-4BB9-A501-F6FA48D02164.mp3",
+      "previous_duration_ms": 1680,
+      "previous_revision": 1,
+      "previous_voice_id": "247783ebdd51",
+      "refs": 0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "s3_key": "mastered/63395F8C-E049-4B7D-870C-6D33BB75E2FF.mp3",
+          "duration_ms": 1896,
+          "bytes": 23328,
+          "chars": 27,
+          "cost_usd": 0.000432,
+          "decode": "Ik werk in het ziekenhuis.",
+          "cer": 0,
+          "unchecked_reason": null,
+          "tail": {
+            "measured": true,
+            "floor_db": -63.2,
+            "tail_ms": 174,
+            "bursts": [],
+            "impulses": []
+          },
+          "checks": [
+            {
+              "name": "s3_alive",
+              "ok": true,
+              "detail": "ContentLength 23328 vs 23328"
+            },
+            {
+              "name": "decodable",
+              "ok": true,
+              "detail": "ffprobe 1896ms"
+            },
+            {
+              "name": "duration_agrees",
+              "ok": true,
+              "detail": "ffprobe 1896ms vs mastered 1896ms"
+            },
+            {
+              "name": "not_truncated",
+              "ok": true,
+              "detail": "1896ms vs superseded 1680ms (ratio 1.13)"
+            },
+            {
+              "name": "no_post_speech_impulse",
+              "ok": true,
+              "detail": "0 tick(s), 0 detached burst(s) in 174ms of post-speech air (floor -63.2dB)"
+            },
+            {
+              "name": "asr_checked",
+              "ok": true,
+              "detail": "\"Ik werk in het ziekenhuis.\""
+            },
+            {
+              "name": "asr_matches_text",
+              "ok": true,
+              "detail": "CER 0.000"
+            }
+          ],
+          "accepted": true
+        }
+      ],
+      "applied": true,
+      "cost_usd": 0.000432,
+      "revision": 2,
+      "new_s3_key": "mastered/63395F8C-E049-4B7D-870C-6D33BB75E2FF.mp3",
+      "new_duration_ms": 1896,
+      "new_voice_id": "xai_58d27475085e",
+      "result": "swapped"
+    },
+    {
+      "id": "10418d73-4678-4214-9839-6f11969185b8",
+      "role": "pod_take_g",
+      "language": "nl-NL",
+      "text": "En wat doe jij, voor werk?",
+      "chars": 26,
+      "previous_s3_key": "mastered/660770AA-D46D-436F-8E6D-65AB642BD9D8.mp3",
+      "previous_duration_ms": 1416,
+      "previous_revision": 1,
+      "previous_voice_id": "247783ebdd51",
+      "refs": 0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "s3_key": "mastered/0D62C17A-D28C-48FA-8B63-4822C981890A.mp3",
+          "duration_ms": 1656,
+          "bytes": 20448,
+          "chars": 26,
+          "cost_usd": 0.000416,
+          "decode": "E vou doer aí, for ver que...",
+          "cer": 0.5833,
+          "unchecked_reason": null,
+          "tail": {
+            "measured": true,
+            "floor_db": -66,
+            "tail_ms": 192,
+            "bursts": [],
+            "impulses": []
+          },
+          "checks": [
+            {
+              "name": "s3_alive",
+              "ok": true,
+              "detail": "ContentLength 20448 vs 20448"
+            },
+            {
+              "name": "decodable",
+              "ok": true,
+              "detail": "ffprobe 1656ms"
+            },
+            {
+              "name": "duration_agrees",
+              "ok": true,
+              "detail": "ffprobe 1656ms vs mastered 1656ms"
+            },
+            {
+              "name": "not_truncated",
+              "ok": true,
+              "detail": "1656ms vs superseded 1416ms (ratio 1.17)"
+            },
+            {
+              "name": "no_post_speech_impulse",
+              "ok": true,
+              "detail": "0 tick(s), 0 detached burst(s) in 192ms of post-speech air (floor -66dB)"
+            },
+            {
+              "name": "asr_checked",
+              "ok": true,
+              "detail": "\"E vou doer aí, for ver que...\""
+            },
+            {
+              "name": "asr_matches_text",
+              "ok": false,
+              "detail": "CER 0.583"
+            }
+          ],
+          "accepted": false
+        },
+        {
+          "attempt": 2,
+          "s3_key": "mastered/6D3B4FAF-2B11-4F67-826D-9D8B3692B2B5.mp3",
+          "duration_ms": 1656,
+          "bytes": 20448,
+          "chars": 26,
+          "cost_usd": 0.000416,
+          "decode": "En wat doe jij voor werk?",
+          "cer": 0,
+          "unchecked_reason": null,
+          "tail": {
+            "measured": true,
+            "floor_db": -66.1,
+            "tail_ms": 206,
+            "bursts": [],
+            "impulses": []
+          },
+          "checks": [
+            {
+              "name": "s3_alive",
+              "ok": true,
+              "detail": "ContentLength 20448 vs 20448"
+            },
+            {
+              "name": "decodable",
+              "ok": true,
+              "detail": "ffprobe 1656ms"
+            },
+            {
+              "name": "duration_agrees",
+              "ok": true,
+              "detail": "ffprobe 1656ms vs mastered 1656ms"
+            },
+            {
+              "name": "not_truncated",
+              "ok": true,
+              "detail": "1656ms vs superseded 1416ms (ratio 1.17)"
+            },
+            {
+              "name": "no_post_speech_impulse",
+              "ok": true,
+              "detail": "0 tick(s), 0 detached burst(s) in 206ms of post-speech air (floor -66.1dB)"
+            },
+            {
+              "name": "asr_checked",
+              "ok": true,
+              "detail": "\"En wat doe jij voor werk?\""
+            },
+            {
+              "name": "asr_matches_text",
+              "ok": true,
+              "detail": "CER 0.000"
+            }
+          ],
+          "accepted": true
+        }
+      ],
+      "applied": true,
+      "cost_usd": 0.000832,
+      "revision": 2,
+      "new_s3_key": "mastered/6D3B4FAF-2B11-4F67-826D-9D8B3692B2B5.mp3",
+      "new_duration_ms": 1656,
+      "new_voice_id": "xai_58d27475085e",
+      "result": "swapped"
+    }
+  ],
+  "relinks": [],
+  "totals": {
+    "attempted": 10,
+    "swapped": 10,
+    "failed": 0,
+    "relinked": 0,
+    "chars": 365,
+    "cost_usd": 0.00584
+  }
+}
