@@ -93,13 +93,16 @@ trap you hit on Catalan and Chinese. Don't judge German off the old page.
 
 ## Catalan — solved without spending anything
 
-Checked against Azure's own voice list rather than our labels:
+Checked against Azure's own records and by measuring the actual audio:
 
-- **Enric is genuinely male**, and genuinely a different voice from Alba
-- **Alba is genuinely female** — exactly as you heard
+- **Enric is genuinely male** — and genuinely a different voice from Alba. The proof is a clean A/B:
+  both have a clip of the *same Catalan sentence*. Enric reads at 128 Hz, Alba at 190 Hz. Two
+  different people, not one voice under two names.
+- **Alba is genuinely female** — exactly as you heard.
+- Enric's clips are alive and real — 132 of them already in the course.
 
 So Catalan doesn't need new voices rendered. It needs **your ear on Enric** as the male half, next to
-Alba as the female. If he's good, Catalan locks as Enric + Alba.
+Alba as the female. If he's good, Catalan locks as Enric + Alba and the audio never moves.
 
 ---
 
@@ -111,10 +114,10 @@ revisited later without anyone having to remember.
 
 | Language | Cast | State |
 |---|---|---|
-| Armenian | Hayk + Anahit | **locked, approved, ready to render** |
-| Basque | Ander + Ainhoa | **locked, approved, ready to render** |
-| Bulgarian | Borislav + Kalina | **locked, approved, ready to render** |
-| Estonian | Kert + Anu | **locked, approved, ready to render** |
+| Armenian | Hayk + Anahit | **locked, approved, RENDERED ✓** |
+| Basque | Ander + Ainhoa | **locked, approved, RENDERED ✓** |
+| Bulgarian | Borislav + Kalina | **locked, approved, RENDERED ✓** |
+| Estonian | Kert + Anu | **locked, approved, RENDERED ✓** |
 | Chinese | Wei + Ara | locked — needs a recast first, see below |
 | Danish | Kasper + Ara | locked — needs a recast first |
 | Croatian | Srecko + Gabrijela | locked — needs a recast first |
@@ -128,8 +131,16 @@ revisited later without anyone having to remember.
 | Catalan | Enric + Alba? | needs your ear on Enric |
 | Everything else | — | waiting for your listen |
 
-Four languages are fully locked, approved and ready. Nothing has been rendered yet — the first
-render slice goes on those four, with a listen to the clip tails for the click before anything wider.
+**Four languages are done — locked, approved and rendered.** 435 clips for about 28 cents. Every
+single clip is on exactly the pair you picked, with no stray voices leaking in.
+
+**I checked for your click before releasing any of it.** I rendered a handful first and measured the
+end of every clip: they finish in true silence, with no hard cut. No click. That fits what we already
+knew — the click is an xAI-and-compressor problem, and these four are Azure. Nothing was repaired,
+trimmed or patched; that lane stays abolished.
+
+**Your Egyptian pair is confirmed.** Rex measures male, Eve measures female — exactly "the male and
+the female" you described. The old page calling them both male was the labelling bug, not your ear.
 
 ---
 
@@ -201,5 +212,17 @@ these have three or four, and Croatian has several seats on a completely differe
 (ElevenLabs) from the Azure pair you approved. They need a tidy-up pass onto your chosen pair before
 they render — not a new decision from you, just work.
 
-**No click repair will ever be done.** Your ruling stands: that lane is abolished. If the fresh
-clips carry the click, that's reported as a pipeline defect and stopped, never patched.
+**Dutch is cheap, so cost isn't the reason to wait.** The whole Dutch re-render is between **9 and
+37 cents**, measured from the pipeline's own pricing. The reasons to hold it are the click bug and
+the A-131 clip above — both correctness, not money.
+
+**Two content defects turned up while rendering.** One sentence (SC15-S012) has empty text in *all
+four* languages — one defect copied across the pod source, not four coincidences. And there's a
+second gate, separate from voice approval, that blocks unproofread target text from rendering; it
+only caught a handful of lines here, but it will bite any bigger render.
+
+**One voice to check with your ear: Bas.** He measures male, but by the narrowest margin of anyone
+in the set. Worth thirty seconds before Dutch renders, since you're relying on him for the male half.
+
+**No click repair will ever be done.** Your ruling stands: that lane is abolished. If fresh clips
+carry the click, that's reported as a pipeline defect and stopped, never patched.
