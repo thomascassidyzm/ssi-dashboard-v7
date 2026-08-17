@@ -49,6 +49,13 @@ async function buildWorklist(db) {
     work.push({ id: r.row_uuid, course: 'eng_for_kor', table: 'course_practice_phrases',
                 ttsText: r.new_known_text, old_clip: r.clip_id, voice: await voiceFor('eng_for_kor') })
   }
+  // Round 2: the four rows held at the first pass and released by Kai's
+  // ship-if-likely-an-improvement ruling. The 33 already applied will self-skip
+  // below, because their repaired text now owns a clip.
+  for (const r of require('./kor-round2-plan.json').filter(r => r.action === 'patch')) {
+    work.push({ id: r.row_uuid, course: 'eng_for_kor', table: 'course_practice_phrases',
+                ttsText: r.new_known_text, old_clip: r.clip_id, voice: await voiceFor('eng_for_kor') })
+  }
   const jpn = require('./engjpn-4-plan.json').filter(r => r.action === 'patch')
   for (const r of jpn) {
     work.push({ id: r.row_uuid, course: 'eng_for_jpn', table: 'course_practice_phrases',

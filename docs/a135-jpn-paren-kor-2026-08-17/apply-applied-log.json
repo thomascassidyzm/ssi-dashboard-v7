@@ -1,17 +1,7 @@
 {
  "seeds_unapproved": [
-  "eng_for_kor:40",
-  "eng_for_kor:280",
-  "eng_for_kor:282",
-  "eng_for_kor:284",
-  "eng_for_kor:288",
-  "eng_for_kor:292",
-  "eng_for_kor:294",
-  "eng_for_kor:296",
-  "eng_for_kor:298",
-  "eng_for_kor:300",
-  "eng_for_jpn:267",
-  "eng_for_jpn:269"
+  "eng_for_kor:290",
+  "eng_for_kor:300"
  ],
  "rows": [
   {
@@ -19,377 +9,319 @@
    "id": "eng_for_kor:S0040L01U04",
    "seed": 40,
    "op": "patch",
-   "mode": "INSERT",
    "old": "how do you feel at the moment about speaking English?",
    "neu": "영어로 말하는 것에 대해 기분이 어때요?",
    "old_clip": "ec6e349d-e0bb-475f-b9e5-ae4ac1c49c6e",
-   "new_clip": "c6b79e1b-78f5-4141-b03f-e326f30a7694",
-   "uploaded": "mastered/C6B79E1B-78F5-4141-B03F-E326F30A7694.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"영어로 말하는 것에 대해 기분이 어때요?\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0040L01U05",
    "seed": 40,
    "op": "patch",
-   "mode": "INSERT",
    "old": "how do you feel at the moment about learning English?",
    "neu": "영어를 배우는 것에 대해 기분이 어때요?",
    "old_clip": "191c5cc1-00ed-4320-a2e5-c7dffdcbddc6",
-   "new_clip": "ebc64c35-acab-4d24-8e32-6bc40ee6b41e",
-   "uploaded": "mastered/EBC64C35-ACAB-4D24-8E32-6BC40EE6B41E.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"영어를 배우는 것에 대해 기분이 어때요?\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0280L03U04",
    "seed": 280,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I only had to do the job before I could go",
    "neu": "저는 가기 전에 그 일만 했어요",
    "old_clip": "b4c034df-892e-434e-aacd-cd78946544c0",
-   "new_clip": "1c948c53-a616-4673-82c0-9a52a7321ace",
-   "uploaded": "mastered/1C948C53-A616-4673-82C0-9A52A7321ACE.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 가기 전에 그 일만 했어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0280L03U05",
    "seed": 280,
    "op": "patch",
-   "mode": "INSERT",
    "old": "she only had to do the job but she didn't want to stay",
    "neu": "그녀는 일만 했어요, 하지만 있고 싶어하지 않았어요",
    "old_clip": "66b426b0-b8ac-46c3-bd60-97d018d98ac0",
-   "new_clip": "be44316e-9b3b-4072-b91b-6bd1a4ef7cb0",
-   "uploaded": "mastered/BE44316E-9B3B-4072-B91B-6BD1A4EF7CB0.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"그녀는 일만 했어요, 하지만 있고 싶어하지 않았어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0280L03U06",
    "seed": 280,
    "op": "patch",
-   "mode": "INSERT",
    "old": "we only had to do the job together and then I was ready to go",
    "neu": "우리는 함께 일만 했어요, 그리고 저는 갈 준비가 됐어요",
    "old_clip": "15fc6d8d-25a6-41ef-b6ac-a1241dd3a86d",
-   "new_clip": "aa7f248e-7aca-47b1-807e-f73174009d59",
-   "uploaded": "mastered/AA7F248E-7ACA-47B1-807E-F73174009D59.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"우리는 함께 일만 했어요, 그리고 저는 갈 준비가 됐어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0282L01U01",
    "seed": 282,
    "op": "patch",
-   "mode": "REBIND",
    "old": "no, that's not a problem at all",
    "neu": "아니요, 전혀 문제없어요",
    "old_clip": "af1b9abf-3f56-4d2c-a4c9-8d9ec2d99609",
-   "new_clip": "f1772583-1f9c-4c6a-ae35-d06753ba227f",
-   "uploaded": null,
-   "applied": true
+   "relinks_to": "f1772583-1f9c-4c6a-ae35-d06753ba227f",
+   "skipped": "drift: known_text is now \"아니요, 전혀 문제없어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0282L01U02",
    "seed": 282,
    "op": "patch",
-   "mode": "REBIND",
    "old": "no, that's not a problem for me",
    "neu": "저에게 아니요, 문제없어요",
    "old_clip": "ea070f56-dc02-43f7-87c4-f76e20d325ed",
-   "new_clip": "553cfd4a-8d1e-44e1-af69-d8cf56c7196e",
-   "uploaded": null,
-   "applied": true
+   "relinks_to": "553cfd4a-8d1e-44e1-af69-d8cf56c7196e",
+   "skipped": "drift: known_text is now \"저에게 아니요, 문제없어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0282L01U03",
    "seed": 282,
    "op": "patch",
-   "mode": "INSERT",
    "old": "no, that's not a problem if you need more time",
    "neu": "더 많은 시간이 필요하면 아니요, 문제없어요",
    "old_clip": "7d0349c7-478a-4f0d-9019-8af94bf28509",
-   "new_clip": "179a240e-105a-4c37-bd83-c4aa9ef00bfc",
-   "uploaded": "mastered/179A240E-105A-4C37-BD83-C4AA9EF00BFC.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"더 많은 시간이 필요하면 아니요, 문제없어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0282L01U04",
    "seed": 282,
    "op": "patch",
-   "mode": "INSERT",
    "old": "no, that's not a problem when we work together",
    "neu": "우리가 함께 일할 때 아니요, 문제없어요",
    "old_clip": "de974622-e511-4ecc-a03d-531075a819ed",
-   "new_clip": "771fd28f-f24b-469b-b997-271b102080e4",
-   "uploaded": "mastered/771FD28F-F24B-469B-B997-271B102080E4.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"우리가 함께 일할 때 아니요, 문제없어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0284L01U06",
    "seed": 284,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I would like you to meet my sister's friend",
    "neu": "저는 당신이 제 여동생 친구를 만났으면 좋겠어요",
    "old_clip": "1281ddd2-b100-4f0e-87c2-7e6f10b88b41",
-   "new_clip": "99cbadaf-b940-4312-88f2-58b9b4f0196a",
-   "uploaded": "mastered/99CBADAF-B940-4312-88F2-58B9B4F0196A.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 당신이 제 여동생 친구를 만났으면 좋겠어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0288L01U01",
    "seed": 288,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I like watching television when I'm tired",
    "neu": "저는 피곤할 때 텔레비전 보는 것을 좋아해요",
    "old_clip": "0c50aa80-97f9-455c-b894-4f285695e6c7",
-   "new_clip": "691abc27-3768-45a9-b330-433b4c5b825d",
-   "uploaded": "mastered/691ABC27-3768-45A9-B330-433B4C5B825D.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 피곤할 때 텔레비전 보는 것을 좋아해요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0288L01U02",
    "seed": 288,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I like watching television in the evening",
    "neu": "저는 저녁에 텔레비전 보는 것을 좋아해요",
    "old_clip": "15278a0a-ad07-4b59-867e-53948374e943",
-   "new_clip": "9d6f3937-69d0-4c3d-a847-8fd143b61b6b",
-   "uploaded": "mastered/9D6F3937-69D0-4C3D-A847-8FD143B61B6B.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 저녁에 텔레비전 보는 것을 좋아해요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0288L01U03",
    "seed": 288,
    "op": "patch",
-   "mode": "INSERT",
    "old": "do you like watching television with someone else?",
    "neu": "다른 사람과 텔레비전 보는 것을 좋아해요?",
    "old_clip": "a47c0102-44e9-48f6-ae36-01b2ec0c609c",
-   "new_clip": "8a42efc3-4157-4e54-99a4-db54620b9fd6",
-   "uploaded": "mastered/8A42EFC3-4157-4E54-99A4-DB54620B9FD6.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"다른 사람과 텔레비전 보는 것을 좋아해요?\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0288L01U04",
    "seed": 288,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I like watching television when I want to relax",
    "neu": "저는 쉬고 싶을 때 텔레비전 보는 것을 좋아해요",
    "old_clip": "c99013b3-b00a-4447-89df-746bd1cf5267",
-   "new_clip": "167dff99-a0ea-43fb-9484-55ac6977858e",
-   "uploaded": "mastered/167DFF99-A0EA-43FB-9484-55AC6977858E.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 쉬고 싶을 때 텔레비전 보는 것을 좋아해요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0288L02U05",
    "seed": 288,
    "op": "patch",
-   "mode": "INSERT",
    "old": "most people I know don't mind speaking English",
    "neu": "제가 아는 대부분의 사람들은 영어로 말하는 것이 괜찮아요",
    "old_clip": "bd2f320d-2223-4307-a12e-7ec9edc2d6fc",
-   "new_clip": "51137f7e-eaf6-4a5f-8c66-4236a888dec6",
-   "uploaded": "mastered/51137F7E-EAF6-4A5F-8C66-4236A888DEC6.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"제가 아는 대부분의 사람들은 영어로 말하는 것이 괜찮아요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0292L01U01",
    "seed": 292,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I'd like to go to the party with you",
    "neu": "저는 당신과 파티에 가고 싶어요",
    "old_clip": "5467e83a-4cb8-4985-8fd5-577fe57406c5",
-   "new_clip": "57549d96-1510-4de7-a870-7856df6b270e",
-   "uploaded": "mastered/57549D96-1510-4DE7-A870-7856DF6B270E.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 당신과 파티에 가고 싶어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0292L01U02",
    "seed": 292,
    "op": "patch",
-   "mode": "INSERT",
    "old": "do you want to come to the party tonight?",
    "neu": "오늘 밤 파티에 오고 싶어요?",
    "old_clip": "af645699-07c0-4fd0-957b-6587ef3a9d20",
-   "new_clip": "08df6814-55fa-4d11-9401-0ed6859a8378",
-   "uploaded": "mastered/08DF6814-55FA-4D11-9401-0ED6859A8378.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"오늘 밤 파티에 오고 싶어요?\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0292L01U03",
    "seed": 292,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I'm not sure if I can go to the party",
    "neu": "저는 파티에 갈 수 있을지 모르겠어요",
    "old_clip": "87ab5b10-881c-4e0c-b568-0b358b53f175",
-   "new_clip": "a01657a4-5854-482b-96c2-49210b5bf4ba",
-   "uploaded": "mastered/A01657A4-5854-482B-96C2-49210B5BF4BA.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 파티에 갈 수 있을지 모르겠어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0292L01U04",
    "seed": 292,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I want to go to the party with my friends",
    "neu": "저는 친구들과 파티에 가고 싶어요",
    "old_clip": "29950af3-2677-473a-964e-b643b76dd76c",
-   "new_clip": "75a6e02b-39e1-4ed2-8361-ad2c02e4d757",
-   "uploaded": "mastered/75A6E02B-39E1-4ED2-8361-AD2C02E4D757.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 친구들과 파티에 가고 싶어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0294L01U06",
    "seed": 294,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I'm sorry but I don't have enough time to call you today",
    "neu": "죄송하지만 오늘 당신에게 전화할 시간이 충분하지 않아요",
    "old_clip": "4ec98362-0f61-4b3d-96fc-0108f24d17d1",
-   "new_clip": "e564bb7c-9f22-45a1-89cd-9512d0d528bb",
-   "uploaded": "mastered/E564BB7C-9F22-45A1-89CD-9512D0D528BB.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"죄송하지만 오늘 당신에게 전화할 시간이 충분하지 않아요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0294L01U07",
    "seed": 294,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I didn't have enough time to call you last night",
    "neu": "저는 어젯밤에 당신에게 전화할 시간이 충분하지 않았어요",
    "old_clip": "b8d53da8-6532-4159-8d77-0c623e205c0c",
-   "new_clip": "77e3fe19-7a02-4796-b57e-9e29df88bca4",
-   "uploaded": "mastered/77E3FE19-7A02-4796-B57E-9E29DF88BCA4.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 어젯밤에 당신에게 전화할 시간이 충분하지 않았어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0294L01U08",
    "seed": 294,
    "op": "patch",
-   "mode": "INSERT",
    "old": "he doesn't have enough time to call you this evening",
    "neu": "그는 오늘 저녁에 당신에게 전화할 시간이 충분하지 않아요",
    "old_clip": "6d615b61-0cfb-4f13-9520-21c5fa18bf51",
-   "new_clip": "56317fd0-a6ae-4d38-9d53-a759122d8a07",
-   "uploaded": "mastered/56317FD0-A6AE-4D38-9D53-A759122D8A07.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"그는 오늘 저녁에 당신에게 전화할 시간이 충분하지 않아요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0296L01U01",
    "seed": 296,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I said that I needed to speak English more often",
    "neu": "저는 영어로 더 자주 말해야 한다고 말했어요",
    "old_clip": "8747074e-994f-47f6-9577-c6a2d5cebbbd",
-   "new_clip": "081265fe-556e-4cd5-9e9e-d5748bcfb3ec",
-   "uploaded": "mastered/081265FE-556E-4CD5-9E9E-D5748BCFB3EC.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 영어로 더 자주 말해야 한다고 말했어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0296L01U02",
    "seed": 296,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I said that I needed more time to practise",
    "neu": "저는 연습할 시간이 더 필요하다고 말했어요",
    "old_clip": "fa10bdb5-a00d-49d9-84ce-760f29490c36",
-   "new_clip": "5b1ad1e2-a985-4070-a363-9ce2bfafb01a",
-   "uploaded": "mastered/5B1AD1E2-A985-4070-A363-9CE2BFAFB01A.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 연습할 시간이 더 필요하다고 말했어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0296L01U03",
    "seed": 296,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I said that I needed to find the answer",
    "neu": "저는 답을 찾아야 한다고 말했어요",
    "old_clip": "f9075a89-6176-4da4-be04-411fe0137e86",
-   "new_clip": "b5d2acc9-a1ef-4cd8-8256-dd42fa0339a8",
-   "uploaded": "mastered/B5D2ACC9-A1EF-4CD8-8256-DD42FA0339A8.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 답을 찾아야 한다고 말했어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0296L01U04",
    "seed": 296,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I said that I needed to talk to you yesterday",
    "neu": "저는 어제 당신과 이야기해야 한다고 말했어요",
    "old_clip": "18741ea2-485f-4c67-9d89-4147f48f0b85",
-   "new_clip": "666722c1-8547-44c6-96c3-7dd084a172af",
-   "uploaded": "mastered/666722C1-8547-44C6-96C3-7DD084A172AF.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 어제 당신과 이야기해야 한다고 말했어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0298L01U01",
    "seed": 298,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I think I've got nothing left to say about that",
    "neu": "저는 그것에 대해 할 말이 없다고 생각해요",
    "old_clip": "13b6928e-00af-4669-9bba-73cd8bdde08d",
-   "new_clip": "655fb999-8c3d-4172-8ea1-cf7d34bc22b2",
-   "uploaded": "mastered/655FB999-8C3D-4172-8EA1-CF7D34BC22B2.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 그것에 대해 할 말이 없다고 생각해요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0298L01U02",
    "seed": 298,
    "op": "patch",
-   "mode": "INSERT",
    "old": "she told me that she's got nothing left to say",
    "neu": "그녀는 저에게 할 말이 없다고 말했어요",
    "old_clip": "d54252dc-cbdb-444f-afe9-7be8b8743ab2",
-   "new_clip": "f7ff0140-7889-4cef-8f13-d9ad6e231efc",
-   "uploaded": "mastered/F7FF0140-7889-4CEF-8F13-D9AD6E231EFC.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"그녀는 저에게 할 말이 없다고 말했어요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0298L01U03",
    "seed": 298,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I'm sorry but I've got nothing left to say",
    "neu": "죄송하지만 저는 할 말이 없어요",
    "old_clip": "ff5f784a-f224-4ae9-b421-8e7224842dd0",
-   "new_clip": "d57ed210-0787-4946-bb06-a55d6ee330dc",
-   "uploaded": "mastered/D57ED210-0787-4946-BB06-A55D6EE330DC.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"죄송하지만 저는 할 말이 없어요\""
   },
   {
    "course": "eng_for_kor",
@@ -397,104 +329,29 @@
    "seed": 298,
    "op": "delete",
    "old": "when I'm tired I've got nothing left to say",
-   "applied": true,
-   "deleted_row": {
-    "id": "eng_for_kor:S0298L01U04",
-    "course_code": "eng_for_kor",
-    "seed_number": 298,
-    "lego_index": 1,
-    "position": 10,
-    "known_text": "when I'm tired I've got nothing left to say",
-    "target_text": "when I'm tired I've got nothing left to say",
-    "word_count": 43,
-    "lego_count": 9,
-    "difficulty": null,
-    "register": null,
-    "metadata": {
-     "score": 8,
-     "format": "build_use",
-     "pipeline": "backfill",
-     "scored_at": "2026-05-14T21:15:58.983Z",
-     "target_score": 8
-    },
-    "status": "draft",
-    "release_batch": null,
-    "version": 8,
-    "updated_at": "2026-06-02T22:36:59.415Z",
-    "created_at": "2026-05-14T21:15:59.029Z",
-    "target_syllable_count": null,
-    "phrase_role": "use",
-    "connected_lego_ids": [],
-    "lego_position": "end",
-    "known_audio_id": "1523569d-e072-48ad-8e45-45dd271ddd9d",
-    "target1_audio_id": "729d43cd-6006-4fd8-a72a-a66fb970abdd",
-    "target2_audio_id": "bcd65be2-bd83-4c36-a73e-a07f1252a642",
-    "qa_checked": null,
-    "target1_duration_ms": 2832,
-    "target2_duration_ms": 3912,
-    "lego_id": null,
-    "target_text_roman": null,
-    "target_phrase_id": null,
-    "presentation_audio_id": null,
-    "introduce": true,
-    "decomposition": [
-     {
-      "known": "",
-      "legoId": null,
-      "target": "when",
-      "isGhost": true
-     },
-     {
-      "known": "피곤해요",
-      "legoId": "S0039L01",
-      "target": " I'm tired",
-      "isGhost": false
-     },
-     {
-      "known": "배울 것이 있어요",
-      "legoId": "S0073L02",
-      "target": " I've got",
-      "isGhost": false
-     },
-     {
-      "known": "할 말이 없어요",
-      "legoId": "S0298L01",
-      "target": " nothing left to say",
-      "isGhost": false,
-      "isSalient": true
-     }
-    ],
-    "decomposition_course_version": null,
-    "display_tiling": null,
-    "display_tiling_version": null,
-    "known_gloss_segments": null
-   }
+   "skipped": "row not found"
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0300L01U01",
    "seed": 300,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I don't want to seem unfriendly",
    "neu": "저는 불친절하게 보이고 싶지 않아요",
    "old_clip": "6b2c135e-50e3-4d9f-bbd4-1eae29ef431a",
-   "new_clip": "d6907fc1-27f3-4090-8c71-7937135ab0ae",
-   "uploaded": "mastered/D6907FC1-27F3-4090-8C71-7937135AB0AE.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 불친절하게 보이고 싶지 않아요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0300L01U02",
    "seed": 300,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I thought he was unfriendly",
    "neu": "저는 그가 불친절하다고 생각했어요",
    "old_clip": "f243d0d0-f422-408b-83ee-5d70e1b2591a",
-   "new_clip": "69742c38-291d-4dc6-b3ee-62595c809f87",
-   "uploaded": "mastered/69742C38-291D-4DC6-B3EE-62595C809F87.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 그가 불친절하다고 생각했어요\""
   },
   {
    "course": "eng_for_kor",
@@ -502,115 +359,80 @@
    "seed": 300,
    "op": "delete",
    "old": "I'm surprised that she seems unfriendly",
-   "applied": true,
-   "deleted_row": {
-    "id": "eng_for_kor:S0300L01U03",
-    "course_code": "eng_for_kor",
-    "seed_number": 300,
-    "lego_index": 1,
-    "position": 6,
-    "known_text": "I'm surprised that she seems unfriendly",
-    "target_text": "I'm surprised that she seems unfriendly",
-    "word_count": 39,
-    "lego_count": 6,
-    "difficulty": null,
-    "register": null,
-    "metadata": {
-     "score": 7,
-     "format": "build_use",
-     "pipeline": "backfill",
-     "scored_at": "2026-05-14T21:16:02.926Z",
-     "target_score": 7
-    },
-    "status": "draft",
-    "release_batch": null,
-    "version": 8,
-    "updated_at": "2026-06-02T22:36:59.439Z",
-    "created_at": "2026-05-14T21:16:02.967Z",
-    "target_syllable_count": null,
-    "phrase_role": "use",
-    "connected_lego_ids": [],
-    "lego_position": "end",
-    "known_audio_id": "bc17fb3e-04c8-45e6-b78a-fddf83a43f5d",
-    "target1_audio_id": "21886d8d-9142-479c-8b69-fa24396c81a4",
-    "target2_audio_id": "bec2d8e5-3605-4706-be88-be113ebb84d1",
-    "qa_checked": null,
-    "target1_duration_ms": 2904,
-    "target2_duration_ms": 3840,
-    "lego_id": null,
-    "target_text_roman": null,
-    "target_phrase_id": null,
-    "presentation_audio_id": null,
-    "introduce": true,
-    "decomposition": [
-     {
-      "known": "",
-      "legoId": null,
-      "target": "I'm",
-      "isGhost": true
-     },
-     {
-      "known": "놀라워요",
-      "legoId": "S0077L01",
-      "target": " surprised",
-      "isGhost": false
-     },
-     {
-      "known": "",
-      "legoId": null,
-      "target": " that",
-      "isGhost": true
-     },
-     {
-      "known": "그녀는",
-      "legoId": "S0017L01",
-      "target": " she",
-      "isGhost": false
-     },
-     {
-      "known": "",
-      "legoId": null,
-      "target": " seems",
-      "isGhost": true
-     },
-     {
-      "known": "불친절한",
-      "legoId": "S0300L01",
-      "target": " unfriendly",
-      "isGhost": false,
-      "isSalient": true
-     }
-    ],
-    "decomposition_course_version": null,
-    "display_tiling": null,
-    "display_tiling_version": null,
-    "known_gloss_segments": null
-   }
+   "skipped": "row not found"
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0300L01U04",
    "seed": 300,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I don't think she is unfriendly",
    "neu": "저는 그녀가 불친절하다고 생각하지 않아요",
    "old_clip": "2b69bac0-9faa-4b82-8c31-c4a5c3f52747",
-   "new_clip": "f4837350-576a-4a1b-bee3-8bd4d6c65e07",
-   "uploaded": "mastered/F4837350-576A-4A1B-BEE3-8BD4D6C65E07.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 그녀가 불친절하다고 생각하지 않아요\""
   },
   {
    "course": "eng_for_kor",
    "id": "eng_for_kor:S0300L02U01",
    "seed": 300,
    "op": "patch",
-   "mode": "INSERT",
    "old": "I know she doesn't want to seem unfriendly",
    "neu": "저는 그녀가 불친절하게 보이고 싶어하지 않는다는 것을 알아요",
    "old_clip": "3bf5da01-0543-4a5a-b887-302fd130c5a4",
-   "new_clip": "f43ccd5c-73bd-4a86-89b1-c53509d6ce63",
-   "uploaded": "mastered/F43CCD5C-73BD-4A86-89B1-C53509D6CE63.mp3",
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"저는 그녀가 불친절하게 보이고 싶어하지 않는다는 것을 알아요\""
+  },
+  {
+   "course": "eng_for_kor",
+   "id": "eng_for_kor:S0290L01U05",
+   "seed": 290,
+   "op": "patch",
+   "mode": "INSERT",
+   "old": "I need to find out who knows the answer",
+   "neu": "저는 누가 답을 알고 있는지 알아야 해요",
+   "old_clip": "edb771ad-0c30-455c-ad0d-eb30fa7212a9",
+   "new_clip": "fef5e5e0-c25c-47d2-a007-c76114ef38fa",
+   "uploaded": "mastered/FEF5E5E0-C25C-47D2-A007-C76114EF38FA.mp3",
+   "applied": true
+  },
+  {
+   "course": "eng_for_kor",
+   "id": "eng_for_kor:S0300L02U02",
+   "seed": 300,
+   "op": "patch",
+   "mode": "INSERT",
+   "old": "I think he doesn't want to seem difficult",
+   "neu": "그는 까다롭게 보이고 싶어하지 않는다고 생각해요",
+   "old_clip": "80f6ac88-2c7e-4f34-acae-2736a6b94aff",
+   "new_clip": "423d50dd-8abe-408e-a2dd-ab4f7584a2cc",
+   "uploaded": "mastered/423D50DD-8ABE-408E-A2DD-AB4F7584A2CC.mp3",
+   "applied": true
+  },
+  {
+   "course": "eng_for_kor",
+   "id": "eng_for_kor:S0300L02U03",
+   "seed": 300,
+   "op": "patch",
+   "mode": "INSERT",
+   "old": "she doesn't want to seem tired when other people are here",
+   "neu": "다른 사람들이 있을 때 그녀는 피곤하게 보이고 싶어하지 않아요",
+   "old_clip": "da781913-56a2-42bc-bd81-b7ceee7ffc46",
+   "new_clip": "71c9a6a7-db81-415f-9338-d7a2bfc24e96",
+   "uploaded": "mastered/71C9A6A7-DB81-415F-9338-D7A2BFC24E96.mp3",
+   "applied": true
+  },
+  {
+   "course": "eng_for_kor",
+   "id": "eng_for_kor:S0300L02U04",
+   "seed": 300,
+   "op": "patch",
+   "mode": "INSERT",
+   "old": "she doesn't want to seem nervous before she speaks",
+   "neu": "그녀는 말하기 전에 긴장하게 보이고 싶어하지 않아요",
+   "old_clip": "5cc3c068-f52b-4821-b00d-49583a90b9ec",
+   "new_clip": "0dfacf4b-0231-47c7-828a-8fc6266d52eb",
+   "uploaded": "mastered/0DFACF4B-0231-47C7-828A-8FC6266D52EB.mp3",
    "applied": true
   },
   {
@@ -618,26 +440,22 @@
    "id": "eng_for_jpn:S0267L01U04",
    "seed": 267,
    "op": "patch",
-   "mode": "INSERT",
    "old": "have you heard from your son this week?",
    "neu": "今週あなたの息子から連絡がありましたか？",
    "old_clip": "8d70f05b-f1f6-400e-af21-0f6a7c4bbb4d",
-   "new_clip": "89ecf7de-2c7b-47f6-a183-72ce90a15639",
-   "uploaded": "mastered/89ECF7DE-2C7B-47F6-A183-72CE90A15639.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"今週あなたの息子から連絡がありましたか？\""
   },
   {
    "course": "eng_for_jpn",
    "id": "eng_for_jpn:S0269L02U04",
    "seed": 269,
    "op": "patch",
-   "mode": "INSERT",
    "old": "why don't you want to help me with this?",
    "neu": "なぜこれを手伝いたくないのですか？",
    "old_clip": "6ad21767-823f-4991-9f4e-479a627ed635",
-   "new_clip": "d0b7dcb3-9923-4b90-a57e-06734fcc4a3b",
-   "uploaded": "mastered/D0B7DCB3-9923-4B90-A57E-06734FCC4A3B.mp3",
-   "applied": true
+   "relinks_to": null,
+   "skipped": "drift: known_text is now \"なぜこれを手伝いたくないのですか？\""
   }
  ]
 }

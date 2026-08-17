@@ -34,6 +34,7 @@ const dbUrl = () => fs.readFileSync(path.resolve(__dirname, '../../.env.psql'), 
 
 function worklist() {
   const kor = require('./kor-final-plan.json')
+  const kor2 = require('./kor-round2-plan.json')
   const jpn = require('./engjpn-4-plan.json')
   const ship = require('./render-ship-log.json')
   const shipBy = new Map(ship.map(s => [s.id, s]))
@@ -42,6 +43,10 @@ function worklist() {
     if (r.action === 'patch') rows.push({ course: 'eng_for_kor', id: r.row_uuid, seed: r.seed_number, op: 'patch',
       old: r.old_known_text, neu: r.new_known_text, old_clip: r.clip_id, relinks_to: r.relinks_to, ship: shipBy.get(r.row_uuid) })
     if (r.action === 'delete') rows.push({ course: 'eng_for_kor', id: r.row_uuid, seed: r.seed_number, op: 'delete', old: r.old_known_text })
+  }
+  for (const r of kor2) {
+    if (r.action === 'patch') rows.push({ course: 'eng_for_kor', id: r.row_uuid, seed: r.seed_number, op: 'patch',
+      old: r.old_known_text, neu: r.new_known_text, old_clip: r.clip_id, relinks_to: null, ship: shipBy.get(r.row_uuid) })
   }
   for (const r of jpn) {
     if (r.action === 'patch') rows.push({ course: 'eng_for_jpn', id: r.row_uuid, seed: r.seed_number, op: 'patch',

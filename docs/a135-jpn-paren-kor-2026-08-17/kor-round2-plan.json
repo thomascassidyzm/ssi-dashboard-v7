@@ -1,0 +1,54 @@
+[
+ {
+  "row_uuid": "eng_for_kor:S0290L01U05",
+  "seed_number": 290,
+  "old_known_text": "I need to find out who knows the answer",
+  "target_text": "I need to find out who knows the answer",
+  "new_known_text": "저는 누가 답을 알고 있는지 알아야 해요",
+  "action": "patch",
+  "provenance": "authored",
+  "confidence": "medium",
+  "clip_id": "edb771ad-0c30-455c-ad0d-eb30fa7212a9",
+  "relinks_to": null,
+  "reason": "SHIPPED AS ORIGINALLY AUTHORED. Two known imperfections, both stated rather than hidden: 알아야 해요 debuts at S293, three seeds after this row (an ORDERING issue on a word the course does teach, the cheap-fix class), and it means 'have to know' where the target says 'find out' — the precise Korean for 'find out' is 알아내다, which appears NOWHERE in this course. Shipping the attested near-match beats both the unattested exact match and the English sentence that is there today."
+ },
+ {
+  "row_uuid": "eng_for_kor:S0300L02U02",
+  "seed_number": 300,
+  "old_known_text": "I think he doesn't want to seem difficult",
+  "target_text": "I think he doesn't want to seem difficult",
+  "new_known_text": "그는 까다롭게 보이고 싶어하지 않는다고 생각해요",
+  "action": "patch",
+  "provenance": "authored",
+  "confidence": "medium",
+  "clip_id": "80f6ac88-2c7e-4f34-acae-2736a6b94aff",
+  "relinks_to": null,
+  "reason": "어렵게 CHANGED to 까다롭게 on web evidence. 어렵게 보이다 is used of TASKS ('looks difficult to do'); for a PERSON's character the Korean is 까다롭다 (fussy/demanding). #891 and the author both smelled this and neither could name the fix. Cost: 까다롭 appears nowhere in the course (0 hits), so this introduces a lexeme — accepted under Kai's ship-if-likely-an-improvement ruling, because what is there right now is an English sentence read aloud by a Korean voice. Structure kept parallel to the attested sibling S0300L02 그는 불친절하게 보이고 싶어하지 않는다고 생각해요."
+ },
+ {
+  "row_uuid": "eng_for_kor:S0300L02U03",
+  "seed_number": 300,
+  "old_known_text": "she doesn't want to seem tired when other people are here",
+  "target_text": "she doesn't want to seem tired when other people are here",
+  "new_known_text": "다른 사람들이 있을 때 그녀는 피곤하게 보이고 싶어하지 않아요",
+  "action": "patch",
+  "provenance": "authored",
+  "confidence": "medium",
+  "clip_id": "da781913-56a2-42bc-bd81-b7ceee7ffc46",
+  "relinks_to": null,
+  "reason": "SHIPPED AS ORIGINALLY AUTHORED. #891 refuted it because 피곤하게 has no -게 attestation in the course, but that was a controlled-language objection, not a grammar one, and the grammar checks out: koreantopik states outright that A-게 보이다 'can be interchangeable with A-아/어 보이다 without meaning changes'. 피곤하다 is attested from S26. The frame 게 보이 debuts at this seed with 2 exemplars; this is a third."
+ },
+ {
+  "row_uuid": "eng_for_kor:S0300L02U04",
+  "seed_number": 300,
+  "old_known_text": "she doesn't want to seem nervous before she speaks",
+  "target_text": "she doesn't want to seem nervous before she speaks",
+  "new_known_text": "그녀는 말하기 전에 긴장하게 보이고 싶어하지 않아요",
+  "action": "patch",
+  "provenance": "authored",
+  "confidence": "medium",
+  "clip_id": "5cc3c068-f52b-4821-b00d-49583a90b9ec",
+  "relinks_to": null,
+  "reason": "SHIPPED AS ORIGINALLY AUTHORED, same reasoning as U03. 긴장하다 attested from S147; -게 보이다 confirmed interchangeable with -아/어 보이다."
+ }
+]
