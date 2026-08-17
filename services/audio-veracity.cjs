@@ -1196,6 +1196,26 @@ function samplerState () {
   return runSampler.state()
 }
 
+/**
+ * A sampler that checks EVERY clip and banks no trust — for the single-clip,
+ * human-triggered repair routes (regenerate-single/-phrase/-lego/-presentation).
+ *
+ * Graduated sampling exists to make BULK affordable. It is exactly wrong on the
+ * repair path: at the 0.2% floor a one-clip regenerate is checked essentially
+ * never, and that is the one render where someone is deliberately replacing a
+ * clip they believe is bad. One whisper decode per button press is nothing.
+ *
+ * Deliberately NOT the process-wide sampler: startCourse() would reset the
+ * every-Nth counter and bank a bogus clean course, so one person fixing a clip
+ * in ScriptViewer would corrupt the trust accounting of a bulk run happening in
+ * the same process at the same time. This one holds no state and touches none.
+ */
+const ALWAYS_SAMPLER = Object.freeze({
+  shouldCheck: () => true,
+  recordVerdict: () => ({ rate: 1, snapped: false }),
+  state: () => ({ course: null, rate: 1, courses_started: 0, clean_courses: 0, sampled_this_course: 0, failed_this_course: 0 }),
+})
+
 // ---------------------------------------------------------------------------
 // Persisting the verdict — the difference between a claim and a measurement
 // ---------------------------------------------------------------------------
@@ -1290,7 +1310,9 @@ async function renderChecked (o) {
   const warn = (m) => (logger.warn || logger.log || console.warn).call(logger, m)
   const err = (m) => (logger.error || logger.log || console.error).call(logger, m)
   const label = `${meta.role || '?'} "${String(expectedText).slice(0, 40)}"`
-  // Test seam. Production callers use the process-wide run sampler.
+  // The run's graduated sampler by default. Production callers pass one only to
+  // opt a whole path out of sampling — see ALWAYS_SAMPLER, used by the
+  // single-clip repair routes. Tests pass their own.
   const sampler = o.sampler || runSampler
 
   // GRADUATED SAMPLING (Tom, 2026-08-13). Clips the sampler passes over are
@@ -1392,6 +1414,7 @@ module.exports = {
   newStats,
   recordVerdict,
   createSampler,
+  ALWAYS_SAMPLER,
   startCourse,
   resetSampler,
   samplerState,
