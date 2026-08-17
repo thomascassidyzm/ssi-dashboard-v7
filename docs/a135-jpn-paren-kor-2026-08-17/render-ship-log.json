@@ -11,14 +11,51 @@
    "gates": {
     "fail": [],
     "z": -0.8454289940828379,
-    "tail": -87.7214140481235,
+    "tail": -87.4575039358678,
     "tokens": 7,
     "chars": 16,
     "expected_ms": 4189,
     "ffprobe_ms": 3960,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "영어로",
+     "offset": 56,
+     "duration": 458
+    },
+    {
+     "text": "말하는",
+     "offset": 528,
+     "duration": 431
+    },
+    {
+     "text": "것에",
+     "offset": 972,
+     "duration": 264
+    },
+    {
+     "text": "대해",
+     "offset": 1250,
+     "duration": 417
+    },
+    {
+     "text": "기분이",
+     "offset": 1681,
+     "duration": 528
+    },
+    {
+     "text": "어때요",
+     "offset": 2222,
+     "duration": 722
+    },
+    {
+     "text": "?.",
+     "offset": 2958,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -63,14 +100,51 @@
    "gates": {
     "fail": [],
     "z": -0.5791568047337254,
-    "tail": -87.42653027723492,
+    "tail": -87.54576067271408,
     "tokens": 7,
     "chars": 16,
     "expected_ms": 4189,
     "ffprobe_ms": 4032,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "영어를",
+     "offset": 56,
+     "duration": 472
+    },
+    {
+     "text": "배우는",
+     "offset": 542,
+     "duration": 431
+    },
+    {
+     "text": "것에",
+     "offset": 986,
+     "duration": 264
+    },
+    {
+     "text": "대해",
+     "offset": 1264,
+     "duration": 417
+    },
+    {
+     "text": "기분이",
+     "offset": 1694,
+     "duration": 583
+    },
+    {
+     "text": "어때요",
+     "offset": 2292,
+     "duration": 722
+    },
+    {
+     "text": "?.",
+     "offset": 3028,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -115,14 +189,51 @@
    "gates": {
     "fail": [],
     "z": 0.450340236686392,
-    "tail": -86.2979804854679,
+    "tail": -86.22956734876135,
     "tokens": 7,
     "chars": 12,
     "expected_ms": 3442,
     "ffprobe_ms": 3564,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 458
+    },
+    {
+     "text": "가기",
+     "offset": 528,
+     "duration": 361
+    },
+    {
+     "text": "전에",
+     "offset": 903,
+     "duration": 347
+    },
+    {
+     "text": "그",
+     "offset": 1264,
+     "duration": 208
+    },
+    {
+     "text": "일만",
+     "offset": 1486,
+     "duration": 361
+    },
+    {
+     "text": "했어요",
+     "offset": 1861,
+     "duration": 681
+    },
+    {
+     "text": ".",
+     "offset": 2556,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -167,14 +278,61 @@
    "gates": {
     "fail": [],
     "z": -0.3016789940828388,
-    "tail": -88.19866246662588,
+    "tail": -88.19967632453084,
     "tokens": 9,
     "chars": 21,
     "expected_ms": 5122,
     "ffprobe_ms": 5040,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "그녀는",
+     "offset": 56,
+     "duration": 444
+    },
+    {
+     "text": "일만",
+     "offset": 514,
+     "duration": 375
+    },
+    {
+     "text": "했어요",
+     "offset": 903,
+     "duration": 750
+    },
+    {
+     "text": ",",
+     "offset": 1764,
+     "duration": 56
+    },
+    {
+     "text": "하지만",
+     "offset": 1833,
+     "duration": 486
+    },
+    {
+     "text": "있고",
+     "offset": 2333,
+     "duration": 278
+    },
+    {
+     "text": "싶어하지",
+     "offset": 2625,
+     "duration": 514
+    },
+    {
+     "text": "않았어요",
+     "offset": 3153,
+     "duration": 889
+    },
+    {
+     "text": ".",
+     "offset": 4056,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -219,14 +377,71 @@
    "gates": {
     "fail": [],
     "z": 0.4727514792899421,
-    "tail": -87.80562816459326,
+    "tail": -87.77551860897431,
     "tokens": 11,
     "chars": 22,
     "expected_ms": 5308,
     "ffprobe_ms": 5436,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "우리는",
+     "offset": 56,
+     "duration": 500
+    },
+    {
+     "text": "함께",
+     "offset": 569,
+     "duration": 361
+    },
+    {
+     "text": "일만",
+     "offset": 944,
+     "duration": 347
+    },
+    {
+     "text": "했어요",
+     "offset": 1306,
+     "duration": 736
+    },
+    {
+     "text": ",",
+     "offset": 2153,
+     "duration": 42
+    },
+    {
+     "text": "그리고",
+     "offset": 2208,
+     "duration": 472
+    },
+    {
+     "text": "저는",
+     "offset": 2694,
+     "duration": 333
+    },
+    {
+     "text": "갈",
+     "offset": 3042,
+     "duration": 181
+    },
+    {
+     "text": "준비가",
+     "offset": 3236,
+     "duration": 458
+    },
+    {
+     "text": "됐어요",
+     "offset": 3708,
+     "duration": 750
+    },
+    {
+     "text": ".",
+     "offset": 4472,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -278,7 +493,49 @@
     "ffprobe_ms": 4572,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "더",
+     "offset": 56,
+     "duration": 236
+    },
+    {
+     "text": "많은",
+     "offset": 306,
+     "duration": 333
+    },
+    {
+     "text": "시간이",
+     "offset": 653,
+     "duration": 431
+    },
+    {
+     "text": "필요하면",
+     "offset": 1097,
+     "duration": 597
+    },
+    {
+     "text": "아니요",
+     "offset": 1708,
+     "duration": 583
+    },
+    {
+     "text": ",",
+     "offset": 2403,
+     "duration": 97
+    },
+    {
+     "text": "문제없어요",
+     "offset": 2514,
+     "duration": 1069
+    },
+    {
+     "text": ".",
+     "offset": 3597,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -330,7 +587,49 @@
     "ffprobe_ms": 4356,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "우리가",
+     "offset": 56,
+     "duration": 458
+    },
+    {
+     "text": "함께",
+     "offset": 528,
+     "duration": 417
+    },
+    {
+     "text": "일할",
+     "offset": 958,
+     "duration": 292
+    },
+    {
+     "text": "때",
+     "offset": 1264,
+     "duration": 194
+    },
+    {
+     "text": "아니요",
+     "offset": 1472,
+     "duration": 569
+    },
+    {
+     "text": ",",
+     "offset": 2153,
+     "duration": 83
+    },
+    {
+     "text": "문제없어요",
+     "offset": 2250,
+     "duration": 1083
+    },
+    {
+     "text": ".",
+     "offset": 3347,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -375,14 +674,56 @@
    "gates": {
     "fail": [],
     "z": 1.187204142011836,
-    "tail": -86.53777239814873,
+    "tail": -86.64755712914652,
     "tokens": 8,
     "chars": 20,
     "expected_ms": 4935,
     "ffprobe_ms": 5256,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 444
+    },
+    {
+     "text": "당신이",
+     "offset": 514,
+     "duration": 861
+    },
+    {
+     "text": "제",
+     "offset": 1389,
+     "duration": 250
+    },
+    {
+     "text": "여동생",
+     "offset": 1653,
+     "duration": 542
+    },
+    {
+     "text": "친구를",
+     "offset": 2208,
+     "duration": 458
+    },
+    {
+     "text": "만났으면",
+     "offset": 2681,
+     "duration": 681
+    },
+    {
+     "text": "좋겠어요",
+     "offset": 3375,
+     "duration": 889
+    },
+    {
+     "text": ".",
+     "offset": 4278,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -427,14 +768,56 @@
    "gates": {
     "fail": [],
     "z": -0.4947928994082821,
-    "tail": -87.04635221873653,
+    "tail": -86.96765512835832,
     "tokens": 8,
     "chars": 18,
     "expected_ms": 4562,
     "ffprobe_ms": 4428,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 389
+    },
+    {
+     "text": "피곤할",
+     "offset": 458,
+     "duration": 486
+    },
+    {
+     "text": "때",
+     "offset": 958,
+     "duration": 250
+    },
+    {
+     "text": "텔레비전",
+     "offset": 1222,
+     "duration": 722
+    },
+    {
+     "text": "보는",
+     "offset": 1958,
+     "duration": 264
+    },
+    {
+     "text": "것을",
+     "offset": 2236,
+     "duration": 375
+    },
+    {
+     "text": "좋아해요",
+     "offset": 2625,
+     "duration": 806
+    },
+    {
+     "text": ".",
+     "offset": 3444,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -479,14 +862,51 @@
    "gates": {
     "fail": [],
     "z": -0.6035428994082852,
-    "tail": -86.49881204029803,
+    "tail": -86.3244407485363,
     "tokens": 7,
     "chars": 17,
     "expected_ms": 4375,
     "ffprobe_ms": 4212,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 514
+    },
+    {
+     "text": "저녁에",
+     "offset": 583,
+     "duration": 472
+    },
+    {
+     "text": "텔레비전",
+     "offset": 1069,
+     "duration": 653
+    },
+    {
+     "text": "보는",
+     "offset": 1736,
+     "duration": 264
+    },
+    {
+     "text": "것을",
+     "offset": 2014,
+     "duration": 389
+    },
+    {
+     "text": "좋아해요",
+     "offset": 2417,
+     "duration": 792
+    },
+    {
+     "text": ".",
+     "offset": 3222,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -531,14 +951,51 @@
    "gates": {
     "fail": [],
     "z": -1.002951183431954,
-    "tail": -86.69671203052712,
+    "tail": -87.11209501917608,
     "tokens": 7,
     "chars": 17,
     "expected_ms": 4375,
     "ffprobe_ms": 4104,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "다른",
+     "offset": 56,
+     "duration": 333
+    },
+    {
+     "text": "사람과",
+     "offset": 403,
+     "duration": 542
+    },
+    {
+     "text": "텔레비전",
+     "offset": 958,
+     "duration": 681
+    },
+    {
+     "text": "보는",
+     "offset": 1653,
+     "duration": 264
+    },
+    {
+     "text": "것을",
+     "offset": 1931,
+     "duration": 375
+    },
+    {
+     "text": "좋아해요",
+     "offset": 2319,
+     "duration": 806
+    },
+    {
+     "text": "?.",
+     "offset": 3139,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -590,7 +1047,54 @@
     "ffprobe_ms": 4788,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 389
+    },
+    {
+     "text": "쉬고",
+     "offset": 458,
+     "duration": 278
+    },
+    {
+     "text": "싶을",
+     "offset": 750,
+     "duration": 319
+    },
+    {
+     "text": "때",
+     "offset": 1083,
+     "duration": 278
+    },
+    {
+     "text": "텔레비전",
+     "offset": 1375,
+     "duration": 917
+    },
+    {
+     "text": "보는",
+     "offset": 2306,
+     "duration": 264
+    },
+    {
+     "text": "것을",
+     "offset": 2583,
+     "duration": 375
+    },
+    {
+     "text": "좋아해요",
+     "offset": 2972,
+     "duration": 806
+    },
+    {
+     "text": ".",
+     "offset": 3792,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -635,14 +1139,61 @@
    "gates": {
     "fail": [],
     "z": -1.0405177514792892,
-    "tail": -86.87132264772248,
+    "tail": -86.98127456251902,
     "tokens": 9,
     "chars": 24,
     "expected_ms": 5681,
     "ffprobe_ms": 5400,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "제가",
+     "offset": 56,
+     "duration": 403
+    },
+    {
+     "text": "아는",
+     "offset": 472,
+     "duration": 278
+    },
+    {
+     "text": "대부분의",
+     "offset": 764,
+     "duration": 556
+    },
+    {
+     "text": "사람들은",
+     "offset": 1333,
+     "duration": 917
+    },
+    {
+     "text": "영어로",
+     "offset": 2264,
+     "duration": 458
+    },
+    {
+     "text": "말하는",
+     "offset": 2736,
+     "duration": 444
+    },
+    {
+     "text": "것이",
+     "offset": 3194,
+     "duration": 306
+    },
+    {
+     "text": "괜찮아요",
+     "offset": 3514,
+     "duration": 889
+    },
+    {
+     "text": ".",
+     "offset": 4417,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -687,14 +1238,46 @@
    "gates": {
     "fail": [],
     "z": 0.5590902366863918,
-    "tail": -87.88728225254258,
+    "tail": -87.85393906519332,
     "tokens": 6,
     "chars": 13,
     "expected_ms": 3629,
     "ffprobe_ms": 3780,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 431
+    },
+    {
+     "text": "당신과",
+     "offset": 500,
+     "duration": 806
+    },
+    {
+     "text": "파티에",
+     "offset": 1319,
+     "duration": 500
+    },
+    {
+     "text": "가고",
+     "offset": 1833,
+     "duration": 306
+    },
+    {
+     "text": "싶어요",
+     "offset": 2153,
+     "duration": 639
+    },
+    {
+     "text": ".",
+     "offset": 2806,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -746,7 +1329,39 @@
     "ffprobe_ms": 3204,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "오늘",
+     "offset": 56,
+     "duration": 403
+    },
+    {
+     "text": "밤",
+     "offset": 472,
+     "duration": 278
+    },
+    {
+     "text": "파티에",
+     "offset": 764,
+     "duration": 486
+    },
+    {
+     "text": "오고",
+     "offset": 1264,
+     "duration": 264
+    },
+    {
+     "text": "싶어요",
+     "offset": 1542,
+     "duration": 639
+    },
+    {
+     "text": "?.",
+     "offset": 2194,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -798,7 +1413,44 @@
     "ffprobe_ms": 3924,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 403
+    },
+    {
+     "text": "파티에",
+     "offset": 472,
+     "duration": 486
+    },
+    {
+     "text": "갈",
+     "offset": 972,
+     "duration": 222
+    },
+    {
+     "text": "수",
+     "offset": 1208,
+     "duration": 167
+    },
+    {
+     "text": "있을지",
+     "offset": 1389,
+     "duration": 542
+    },
+    {
+     "text": "모르겠어요",
+     "offset": 1944,
+     "duration": 1000
+    },
+    {
+     "text": ".",
+     "offset": 2958,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -850,7 +1502,39 @@
     "ffprobe_ms": 3708,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 417
+    },
+    {
+     "text": "친구들과",
+     "offset": 486,
+     "duration": 708
+    },
+    {
+     "text": "파티에",
+     "offset": 1208,
+     "duration": 542
+    },
+    {
+     "text": "가고",
+     "offset": 1764,
+     "duration": 319
+    },
+    {
+     "text": "싶어요",
+     "offset": 2097,
+     "duration": 611
+    },
+    {
+     "text": ".",
+     "offset": 2722,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -895,14 +1579,56 @@
    "gates": {
     "fail": [],
     "z": -1.7061982248520702,
-    "tail": -87.43649814657785,
+    "tail": -87.27637475128356,
     "tokens": 8,
     "chars": 24,
     "expected_ms": 5681,
     "ffprobe_ms": 5220,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "죄송하지만",
+     "offset": 56,
+     "duration": 1014
+    },
+    {
+     "text": "오늘",
+     "offset": 1083,
+     "duration": 361
+    },
+    {
+     "text": "당신에게",
+     "offset": 1458,
+     "duration": 597
+    },
+    {
+     "text": "전화할",
+     "offset": 2069,
+     "duration": 472
+    },
+    {
+     "text": "시간이",
+     "offset": 2556,
+     "duration": 444
+    },
+    {
+     "text": "충분하지",
+     "offset": 3014,
+     "duration": 611
+    },
+    {
+     "text": "않아요",
+     "offset": 3639,
+     "duration": 597
+    },
+    {
+     "text": ".",
+     "offset": 4250,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -947,14 +1673,56 @@
    "gates": {
     "fail": [],
     "z": -1.1736538461538455,
-    "tail": -87.48910104819926,
+    "tail": -87.47515370498493,
     "tokens": 8,
     "chars": 24,
     "expected_ms": 5681,
     "ffprobe_ms": 5364,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 458
+    },
+    {
+     "text": "어젯밤에",
+     "offset": 528,
+     "duration": 708
+    },
+    {
+     "text": "당신에게",
+     "offset": 1250,
+     "duration": 653
+    },
+    {
+     "text": "전화할",
+     "offset": 1917,
+     "duration": 458
+    },
+    {
+     "text": "시간이",
+     "offset": 2389,
+     "duration": 472
+    },
+    {
+     "text": "충분하지",
+     "offset": 2875,
+     "duration": 611
+    },
+    {
+     "text": "않았어요",
+     "offset": 3500,
+     "duration": 875
+    },
+    {
+     "text": ".",
+     "offset": 4389,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -1006,7 +1774,54 @@
     "ffprobe_ms": 5220,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "그는",
+     "offset": 56,
+     "duration": 375
+    },
+    {
+     "text": "오늘",
+     "offset": 444,
+     "duration": 333
+    },
+    {
+     "text": "저녁에",
+     "offset": 792,
+     "duration": 500
+    },
+    {
+     "text": "당신에게",
+     "offset": 1306,
+     "duration": 722
+    },
+    {
+     "text": "전화할",
+     "offset": 2042,
+     "duration": 472
+    },
+    {
+     "text": "시간이",
+     "offset": 2528,
+     "duration": 444
+    },
+    {
+     "text": "충분하지",
+     "offset": 2986,
+     "duration": 625
+    },
+    {
+     "text": "않아요",
+     "offset": 3625,
+     "duration": 597
+    },
+    {
+     "text": ".",
+     "offset": 4236,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -1051,14 +1866,56 @@
    "gates": {
     "fail": [],
     "z": 0.3040236686390553,
-    "tail": -86.88588011796625,
+    "tail": -86.87407863566422,
     "tokens": 8,
     "chars": 18,
     "expected_ms": 4562,
     "ffprobe_ms": 4644,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 583
+    },
+    {
+     "text": "영어로",
+     "offset": 653,
+     "duration": 500
+    },
+    {
+     "text": "더",
+     "offset": 1167,
+     "duration": 278
+    },
+    {
+     "text": "자주",
+     "offset": 1458,
+     "duration": 319
+    },
+    {
+     "text": "말해야",
+     "offset": 1792,
+     "duration": 431
+    },
+    {
+     "text": "한다고",
+     "offset": 2236,
+     "duration": 458
+    },
+    {
+     "text": "말했어요",
+     "offset": 2708,
+     "duration": 958
+    },
+    {
+     "text": ".",
+     "offset": 3681,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -1110,7 +1967,44 @@
     "ffprobe_ms": 4356,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 417
+    },
+    {
+     "text": "연습할",
+     "offset": 486,
+     "duration": 486
+    },
+    {
+     "text": "시간이",
+     "offset": 986,
+     "duration": 486
+    },
+    {
+     "text": "더",
+     "offset": 1486,
+     "duration": 250
+    },
+    {
+     "text": "필요하다고",
+     "offset": 1750,
+     "duration": 708
+    },
+    {
+     "text": "말했어요",
+     "offset": 2472,
+     "duration": 903
+    },
+    {
+     "text": ".",
+     "offset": 3389,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -1155,14 +2049,46 @@
    "gates": {
     "fail": [],
     "z": 0.13529585798816676,
-    "tail": -86.72038423903332,
+    "tail": -86.6733779915282,
     "tokens": 6,
     "chars": 14,
     "expected_ms": 3815,
     "ffprobe_ms": 3852,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 472
+    },
+    {
+     "text": "답을",
+     "offset": 542,
+     "duration": 403
+    },
+    {
+     "text": "찾아야",
+     "offset": 958,
+     "duration": 458
+    },
+    {
+     "text": "한다고",
+     "offset": 1431,
+     "duration": 472
+    },
+    {
+     "text": "말했어요",
+     "offset": 1917,
+     "duration": 931
+    },
+    {
+     "text": ".",
+     "offset": 2861,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -1207,14 +2133,51 @@
    "gates": {
     "fail": [],
     "z": -0.6523150887573981,
-    "tail": -86.46916733698936,
+    "tail": -86.36293690205589,
     "tokens": 7,
     "chars": 19,
     "expected_ms": 4748,
     "ffprobe_ms": 4572,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 444
+    },
+    {
+     "text": "어제",
+     "offset": 514,
+     "duration": 347
+    },
+    {
+     "text": "당신과",
+     "offset": 875,
+     "duration": 611
+    },
+    {
+     "text": "이야기해야",
+     "offset": 1500,
+     "duration": 667
+    },
+    {
+     "text": "한다고",
+     "offset": 2181,
+     "duration": 472
+    },
+    {
+     "text": "말했어요",
+     "offset": 2667,
+     "duration": 903
+    },
+    {
+     "text": ".",
+     "offset": 3583,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -1259,14 +2222,56 @@
    "gates": {
     "fail": [],
     "z": -0.47040680473372903,
-    "tail": -88.06927402690634,
+    "tail": -88.09154335481247,
     "tokens": 8,
     "chars": 17,
     "expected_ms": 4375,
     "ffprobe_ms": 4248,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 486
+    },
+    {
+     "text": "그것에",
+     "offset": 556,
+     "duration": 431
+    },
+    {
+     "text": "대해",
+     "offset": 1000,
+     "duration": 361
+    },
+    {
+     "text": "할",
+     "offset": 1375,
+     "duration": 208
+    },
+    {
+     "text": "말이",
+     "offset": 1597,
+     "duration": 250
+    },
+    {
+     "text": "없다고",
+     "offset": 1861,
+     "duration": 514
+    },
+    {
+     "text": "생각해요",
+     "offset": 2389,
+     "duration": 861
+    },
+    {
+     "text": ".",
+     "offset": 3264,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -1311,14 +2316,51 @@
    "gates": {
     "fail": [],
     "z": -0.5791568047337254,
-    "tail": -86.04358707626403,
+    "tail": -86.11218579132385,
     "tokens": 7,
     "chars": 16,
     "expected_ms": 4189,
     "ffprobe_ms": 4032,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "그녀는",
+     "offset": 56,
+     "duration": 556
+    },
+    {
+     "text": "저에게",
+     "offset": 625,
+     "duration": 486
+    },
+    {
+     "text": "할",
+     "offset": 1125,
+     "duration": 208
+    },
+    {
+     "text": "말이",
+     "offset": 1347,
+     "duration": 222
+    },
+    {
+     "text": "없다고",
+     "offset": 1583,
+     "duration": 514
+    },
+    {
+     "text": "말했어요",
+     "offset": 2111,
+     "duration": 917
+    },
+    {
+     "text": ".",
+     "offset": 3042,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -1363,14 +2405,46 @@
    "gates": {
     "fail": [],
     "z": -0.5059985207100579,
-    "tail": -86.87014124228853,
+    "tail": -86.85950135618491,
     "tokens": 6,
     "chars": 13,
     "expected_ms": 3629,
     "ffprobe_ms": 3492,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "죄송하지만",
+     "offset": 56,
+     "duration": 861
+    },
+    {
+     "text": "저는",
+     "offset": 931,
+     "duration": 403
+    },
+    {
+     "text": "할",
+     "offset": 1347,
+     "duration": 194
+    },
+    {
+     "text": "말이",
+     "offset": 1556,
+     "duration": 222
+    },
+    {
+     "text": "없어요",
+     "offset": 1792,
+     "duration": 694
+    },
+    {
+     "text": ".",
+     "offset": 2500,
+     "duration": 111
+    }
+   ]
   },
   "spares": [
    {
@@ -1415,14 +2489,46 @@
    "gates": {
     "fail": [],
     "z": -0.687906804733727,
-    "tail": -87.82011436703421,
+    "tail": -87.66157907624178,
     "tokens": 6,
     "chars": 15,
     "expected_ms": 4002,
     "ffprobe_ms": 3816,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 472
+    },
+    {
+     "text": "불친절하게",
+     "offset": 542,
+     "duration": 833
+    },
+    {
+     "text": "보이고",
+     "offset": 1389,
+     "duration": 431
+    },
+    {
+     "text": "싶지",
+     "offset": 1833,
+     "duration": 347
+    },
+    {
+     "text": "않아요",
+     "offset": 2194,
+     "duration": 597
+    },
+    {
+     "text": ".",
+     "offset": 2806,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -1467,14 +2573,41 @@
    "gates": {
     "fail": [],
     "z": 0.3771819526627228,
-    "tail": -88.34611166489051,
+    "tail": -88.1205788992723,
     "tokens": 5,
     "chars": 15,
     "expected_ms": 4002,
     "ffprobe_ms": 4104,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 458
+    },
+    {
+     "text": "그가",
+     "offset": 528,
+     "duration": 431
+    },
+    {
+     "text": "불친절하다고",
+     "offset": 972,
+     "duration": 1028
+    },
+    {
+     "text": "생각했어요",
+     "offset": 2014,
+     "duration": 1083
+    },
+    {
+     "text": ".",
+     "offset": 3111,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -1519,14 +2652,46 @@
    "gates": {
     "fail": [],
     "z": -0.8942011834319508,
-    "tail": -87.42135724543473,
+    "tail": -87.51473504271698,
     "tokens": 6,
     "chars": 18,
     "expected_ms": 4562,
     "ffprobe_ms": 4320,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 486
+    },
+    {
+     "text": "그녀가",
+     "offset": 556,
+     "duration": 444
+    },
+    {
+     "text": "불친절하다고",
+     "offset": 1014,
+     "duration": 1028
+    },
+    {
+     "text": "생각하지",
+     "offset": 2056,
+     "duration": 611
+    },
+    {
+     "text": "않아요",
+     "offset": 2681,
+     "duration": 625
+    },
+    {
+     "text": ".",
+     "offset": 3319,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -1571,14 +2736,61 @@
    "gates": {
     "fail": [],
     "z": -2.6869230769230765,
-    "tail": -86.91178707481298,
+    "tail": -86.82789903048084,
     "tokens": 9,
     "chars": 26,
     "expected_ms": 6055,
     "ffprobe_ms": 5328,
     "model": "eng_for_kor|azure_ko-KR-SunHiNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "저는",
+     "offset": 56,
+     "duration": 472
+    },
+    {
+     "text": "그녀가",
+     "offset": 542,
+     "duration": 444
+    },
+    {
+     "text": "불친절하게",
+     "offset": 1000,
+     "duration": 861
+    },
+    {
+     "text": "보이고",
+     "offset": 1875,
+     "duration": 417
+    },
+    {
+     "text": "싶어하지",
+     "offset": 2306,
+     "duration": 556
+    },
+    {
+     "text": "않는다는",
+     "offset": 2875,
+     "duration": 597
+    },
+    {
+     "text": "것을",
+     "offset": 3486,
+     "duration": 333
+    },
+    {
+     "text": "알아요",
+     "offset": 3833,
+     "duration": 500
+    },
+    {
+     "text": ".",
+     "offset": 4347,
+     "duration": 125
+    }
+   ]
   },
   "spares": [
    {
@@ -1623,14 +2835,76 @@
    "gates": {
     "fail": [],
     "z": 0.3550376647834268,
-    "tail": -87.8469031072241,
+    "tail": -87.74566038962284,
     "tokens": 12,
     "chars": 19,
     "expected_ms": 4171,
     "ffprobe_ms": 4284,
     "model": "eng_for_jpn|azure_ja-JP-MayuNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "今週",
+     "offset": 53,
+     "duration": 540
+    },
+    {
+     "text": "あなた",
+     "offset": 605,
+     "duration": 395
+    },
+    {
+     "text": "の",
+     "offset": 1013,
+     "duration": 118
+    },
+    {
+     "text": "息子",
+     "offset": 1145,
+     "duration": 355
+    },
+    {
+     "text": "から",
+     "offset": 1513,
+     "duration": 303
+    },
+    {
+     "text": "連絡",
+     "offset": 1842,
+     "duration": 487
+    },
+    {
+     "text": "が",
+     "offset": 2342,
+     "duration": 92
+    },
+    {
+     "text": "あり",
+     "offset": 2447,
+     "duration": 197
+    },
+    {
+     "text": "まし",
+     "offset": 2658,
+     "duration": 237
+    },
+    {
+     "text": "た",
+     "offset": 2908,
+     "duration": 105
+    },
+    {
+     "text": "か",
+     "offset": 3026,
+     "duration": 290
+    },
+    {
+     "text": "？.",
+     "offset": 3329,
+     "duration": 118
+    }
+   ]
   },
   "spares": [
    {
@@ -1675,14 +2949,66 @@
    "gates": {
     "fail": [],
     "z": -1.1683615819209032,
-    "tail": -88.10282750725901,
+    "tail": -88.18851737342885,
     "tokens": 10,
     "chars": 16,
     "expected_ms": 3684,
     "ffprobe_ms": 3312,
     "model": "eng_for_jpn|azure_ja-JP-MayuNeural",
     "gate7_all_chars_voiced": true
-   }
+   },
+   "word_boundaries": [
+    {
+     "text": "なぜ",
+     "offset": 53,
+     "duration": 303
+    },
+    {
+     "text": "これ",
+     "offset": 368,
+     "duration": 237
+    },
+    {
+     "text": "を",
+     "offset": 618,
+     "duration": 118
+    },
+    {
+     "text": "手伝い",
+     "offset": 750,
+     "duration": 487
+    },
+    {
+     "text": "たく",
+     "offset": 1250,
+     "duration": 237
+    },
+    {
+     "text": "ない",
+     "offset": 1500,
+     "duration": 211
+    },
+    {
+     "text": "の",
+     "offset": 1724,
+     "duration": 92
+    },
+    {
+     "text": "です",
+     "offset": 1829,
+     "duration": 250
+    },
+    {
+     "text": "か",
+     "offset": 2092,
+     "duration": 263
+    },
+    {
+     "text": "？.",
+     "offset": 2368,
+     "duration": 118
+    }
+   ]
   },
   "spares": [
    {

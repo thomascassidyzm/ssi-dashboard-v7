@@ -109,13 +109,13 @@ async function main() {
       const file = path.join(isShip ? SHIP_DIR : SPARE_DIR, `${w.id.replace(/[:/]/g, '_')}__a${attempt}.mp3`)
       fs.writeFileSync(file, t.buffer)
       const g = runGates(row, w.ttsText, t.wordBoundaries, t.durationMs, file)
-      takes.push({ attempt, file, ms: t.durationMs, pass: g.fail.length === 0, gates: g })
+      takes.push({ attempt, file, ms: t.durationMs, pass: g.fail.length === 0, gates: g, wordBoundaries: t.wordBoundaries })
       console.log(`  ${w.id} a${attempt} ${g.fail.length === 0 ? 'PASS' : 'FAIL'} ${g.fail.join('; ')} (z=${g.z == null ? '-' : g.z.toFixed(2)}, tail=${g.tail == null ? '-' : g.tail.toFixed(1)}dB)`)
     }
     const passing = takes.filter(t => t.pass)
     log.push({
       id: w.id, course: w.course, voice_id: voiceId, text: w.ttsText, old_clip: w.old_clip,
-      shipped: passing[0] ? { file: passing[0].file, ms: passing[0].ms, gates: passing[0].gates } : null,
+      shipped: passing[0] ? { file: passing[0].file, ms: passing[0].ms, gates: passing[0].gates, word_boundaries: passing[0].wordBoundaries } : null,
       spares: passing.slice(1).map(t => ({ file: t.file, ms: t.ms })),
       all_takes: takes.map(t => ({ attempt: t.attempt, pass: t.pass, ms: t.ms, fail: t.gates?.fail, error: t.error })),
     })
