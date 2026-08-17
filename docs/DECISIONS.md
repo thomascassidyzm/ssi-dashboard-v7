@@ -1182,3 +1182,46 @@ provider bytes: −68.0 dB).
 test moved the question to the provider's bytes)
 **Decided by:** Tom — the blind-test ruling and the A/B ear check are his; the call site chosen and
 the other `normalizeAudio()` callers left alone are the agent's, both reversible.
+
+---
+
+## 2026-08-17 — A regional variant gets its own voice-pool key, not its own `target_lang`
+
+**Decision:** add `courses.voice_pool_key` (nullable) and resolve pod casting through one
+function, `poolKeysForCourse()` in `tools/pod-sync.cjs`. Leave `courses.target_lang` alone.
+
+**Problem:** `target_lang` carries the BASE tag for a regional-variant course — `deu_at_for_eng`
+is `deu`, `ara_eg_for_eng` is `ara`, `spa_mx_for_eng` is `spa`. Casting resolved the pool from
+that column, so a variant and its base shared one slot. Tom then ruled opposite pairs either
+side of it (German → Moritz + Lena, Austrian German → Felix + Sonja) and six languages became
+unlockable: locking one silently recast its sibling.
+
+**Better:** each of the seven affected slots now holds its own ruling, and the same change kills
+the long-standing `spa_mx`/`por_br` variant-unreachable bug on the casting page.
+**Simpler:** one resolver replaces three disagreeing ones (`pod-sync` and `pod-recast` read the
+course code, `api/pod-cast-voices.js` read `target_lang`). `NULL` means "exactly as before".
+**Cheaper (total):** the new column is read by the casting path and nowhere else. Retagging
+`target_lang` would have touched a column read by ~105 files across Popty and
+`ssi-learning-app` — syllable counting, i18n, entitlement, pricing, the learner round map —
+each one a learner-facing failure if wrong, and each one needing its own regression pass.
+
+**Searched & rejected:**
+- Retag `courses.target_lang` to the true variant tag — rejected on blast radius, above. It was
+  the option the casting worker named first; the enumeration is what ruled it out.
+- Derive the variant from the course code everywhere — rejected: the estate's standing lesson
+  from `spa_mx_for_eng` is "read the column, never the course code". Kept as tier 2 *below* the
+  column, purely so no course the tools already cast correctly can regress.
+- Make manual voice picks stick / re-fix after every sync — rejected by Tom's brief.
+
+**Fallback on a bad key THROWS, deliberately.** A `voice_pool_key` naming a pool that does not
+exist raises rather than falling back to the base language: a silent fallback is precisely the
+miscast the column exists to stop.
+
+**Verification:** resolved casts computed for all 145 courses before and after —
+132 byte-identical, 13 moved, every one intended or a stated knock-on
+(`docs/pods/t21-resolved-cast-after-diff.json`). 102 unit tests green across five suites.
+
+**Search width:** re-levelled (the brief framed it as "give variants their own language tag";
+the enumeration moved the question from *which tag* to *which column*)
+**Decided by:** agent — Tom's brief delegated the (a)/(b) choice explicitly and called it
+reversible. The casting rulings applied are Tom's own.

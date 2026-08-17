@@ -32,9 +32,15 @@ const { escalateBuildPhrases } = require('../lib/build-escalation.cjs');
 async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentLegos, contract) {
   const prior = [];
   for (let from = 0; ; from += 1000) {
+    // PostgREST offset paging without an ORDER BY can return the same row twice and
+    // drop another, so the known-side context silently loses legos on courses with
+    // >1000 prior ones. That makes the gate stricter than it should be: it rejects a
+    // gloss the course really did introduce. Measured on fin_for_eng (1,425 legos),
+    // it manufactured a false "unknown gloss" breach at S0644L01.
     const { data, error } = await supabase.from('course_legos')
       .select('target_text,known_text,components,seed_number')
-      .eq('course_code', courseCode).lt('seed_number', currentSeed).range(from, from + 999);
+      .eq('course_code', courseCode).lt('seed_number', currentSeed)
+      .order('seed_number').order('lego_index').range(from, from + 999);
     if (error) throw new Error(error.message);
     prior.push(...data);
     if (data.length < 1000) break;

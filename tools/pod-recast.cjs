@@ -42,7 +42,7 @@ require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') }
 const fs = require('fs')
 const path = require('path')
 const { createClient } = require('@supabase/supabase-js')
-const { assignVoices, canonicalSpeakerName, loadVoicePools } = require('./pod-sync.cjs')
+const { assignVoices, canonicalSpeakerName, loadVoicePools, poolKeysForCourse } = require('./pod-sync.cjs')
 const { toBcp47 } = require('../services/voice-discovery-service.cjs')
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
@@ -208,8 +208,14 @@ async function recastPod(pod, targetLang, knownLang, pools) {
   }
   if (!raw.length) return { pod_id: pod.id, skipped: 'no speaker labels' }
 
+  // targetLang/knownLang arrive here as RESOLVED POOL KEYS (see recastCourse),
+  // so assignVoices lands on the exact pool by itself and remapExactPool has
+  // nothing left to do. It is deliberately NOT called: re-pointing an
+  // already-exact assignment by rank could move a voice that is already right,
+  // which is the opposite of what this tool is for. The function stays exported
+  // for the tests that pin its behaviour.
   const after = await assignVoices(raw, targetLang, knownLang)
-  const remapped = remapExactPool(after, pools, targetLang, knownLang)
+  const remapped = []
   const localeWarnings = stampLocales(after, pools, targetLang, knownLang)
 
   const changes = []
@@ -269,22 +275,37 @@ async function assertNoDrift(pod) {
 }
 
 async function recastCourse(courseCode, pools, opts) {
-  const targetLang = courseCode.split('_for_')[0]
-  const knownLang = courseCode.split('_for_')[1] || 'eng'
+  const codeTarget = courseCode.split('_for_')[0]
+  const codeKnown = courseCode.split('_for_')[1] || 'eng'
 
-  const out = { course: courseCode, target_lang: targetLang, known_lang: knownLang, pods: [] }
+  // Pool keys come from the COURSE ROW so that courses.voice_pool_key — Tom's
+  // regional-variant ruling — governs, exactly as it does on the PodLab casting
+  // route. A pod whose course row is missing (test fixtures) keeps the old
+  // code-derived behaviour.
+  const { data: course } = await supabase
+    .from('courses').select('course_code, target_lang, known_lang, voice_pool_key')
+    .eq('course_code', courseCode).maybeSingle()
 
-  const tk = poolKeyFor(pools, targetLang)
-  const kk = poolKeyFor(pools, knownLang)
-  out.pool_keys = { target: tk.exact || (tk.baseExists ? tk.base : null), known: kk.exact || (kk.baseExists ? kk.base : null) }
+  const out = { course: courseCode, pods: [] }
+  let keys
+  try {
+    keys = course
+      ? poolKeysForCourse(pools, course)
+      : poolKeysForCourse(pools, { course_code: courseCode, target_lang: codeTarget, known_lang: codeKnown })
+  } catch (e) {
+    out.blocked = e.message
+    return out
+  }
+  const targetLang = keys.target
+  const knownLang = keys.known
+  out.target_lang = course ? course.target_lang : codeTarget
+  out.known_lang = course ? course.known_lang : codeKnown
+  out.voice_pool_key = course ? (course.voice_pool_key || null) : null
+  out.pool_keys = { target: pools[targetLang] ? targetLang : null, known: pools[knownLang] ? knownLang : null }
   if (!out.pool_keys.target || !out.pool_keys.known) {
     out.blocked = `no voice pool for ${!out.pool_keys.target ? `target "${targetLang}"` : ''}${!out.pool_keys.target && !out.pool_keys.known ? ' and ' : ''}${!out.pool_keys.known ? `known "${knownLang}"` : ''}`
     return out
   }
-  // Exact key present but base key missing: assignVoices would throw before we
-  // could remap. Report rather than silently mis-cast.
-  if (tk.exact && !tk.baseExists) { out.blocked = `pool has "${tk.exact}" but not base "${tk.base}"; assignVoices cannot reach it — fix langKey() in pod-sync.cjs`; return out }
-  if (kk.exact && !kk.baseExists) { out.blocked = `pool has "${kk.exact}" but not base "${kk.base}"; assignVoices cannot reach it — fix langKey() in pod-sync.cjs`; return out }
 
   let podQuery = supabase.from('listening_pods')
     .select('id, slug, speakers').eq('course_code', courseCode).order('slug')
