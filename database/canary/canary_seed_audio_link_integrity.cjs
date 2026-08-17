@@ -136,6 +136,51 @@ const dropsFor = async (c, id) =>
       cos.known_audio_id === cosClip);
     assert('COSMETIC nothing is reported for it', (await dropsFor(c, cosSeed)).length === 0);
 
+    // ── STALENORM: the clip's stored text_normalized predates the normaliser ─
+    // 41,900 course_audio rows hold a text_normalized the current normalize_text()
+    // would not produce, because the function was redefined to strip a trailing
+    // '?' and the column was never backfilled. A trigger that trusted the stored
+    // column alone would call those clips stale and drop a link to a recording
+    // that speaks the exact right words. Forge that state and prove we do not.
+    //
+    // The state CANNOT be forged: trg_course_audio_normalize is a BEFORE UPDATE
+    // on course_audio that recomputes text_normalized on every write, so an
+    // UPDATE that tries to write a stale value has it corrected on the way in.
+    // (The first version of this check did exactly that and passed for the wrong
+    // reason.) Disabling that trigger would take an ACCESS EXCLUSIVE lock on a
+    // 2.5M-row table the live estate is writing to — not acceptable. So this
+    // borrows a REAL clip that is already in the stale state. The FK on
+    // course_seeds.known_audio_id is on id alone, so a canary seed can point at
+    // it; nothing about the borrowed clip is modified.
+    const snClip = (await q(c, `
+      SELECT id, text, text_normalized, normalize_text(text) AS live
+        FROM course_audio
+       WHERE course_code='ara_for_eng' AND role='known'
+         AND text_normalized <> normalize_text(text)
+       ORDER BY id LIMIT 1`))[0];
+    if (!snClip) {
+      assert('STALENORM no stale-normalised clip left to test against', true,
+        'the 41,900-row backlog has been backfilled — this check is obsolete');
+    } else {
+      assert('STALENORM a real clip is in the stale state', snClip.text_normalized !== snClip.live,
+        `stored "${snClip.text_normalized}" vs live "${snClip.live}"`);
+      const snSeed = await mkSeed(c, 908, snClip.text, 'ඕනෑම දෙයක්', null);
+      await c.query(`UPDATE course_seeds SET known_audio_id=$2 WHERE id=$1`, [snSeed, snClip.id]);
+      // A cosmetic edit: same words, different case. The clip still speaks them.
+      await c.query(`UPDATE course_seeds SET known_text=upper(known_text) WHERE id=$1`, [snSeed]);
+      const sn = await linkOf(c, snSeed);
+      assert('STALENORM a stale-normalised clip that speaks the right words is KEPT',
+        sn.known_audio_id === snClip.id,
+        sn.known_audio_id === null ? 'DROPPED a good link' : 'kept');
+      assert('STALENORM nothing is reported for it', (await dropsFor(c, snSeed)).length === 0);
+      // The control: the stored-column-only test the naive version would have
+      // used calls this good clip stale.
+      const naive = (await q(c, `SELECT $1::text = normalize_text($2) AS same`,
+        [snClip.text_normalized, snClip.text.toUpperCase()]))[0];
+      assert('STALENORM control: a stored-column-only test WOULD have dropped it',
+        naive.same === false, 'confirms the disjunct is load-bearing, not decorative');
+    }
+
     // ── SAMEVOICE: we already own the new text in the same voice ────────────
     const svOld = await mkClip(c, 'she is my mother', 'known', 'azure_en-GB-RyanNeural', 'eng');
     const svNew = await mkClip(c, 'she is my mum', 'known', 'azure_en-GB-RyanNeural', 'eng');

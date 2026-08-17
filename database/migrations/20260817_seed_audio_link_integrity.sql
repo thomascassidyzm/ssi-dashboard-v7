@@ -114,6 +114,21 @@ GRANT USAGE, SELECT ON SEQUENCE public.content_audio_link_drops_id_seq TO servic
 -- `xai_`-prefixed id) onto one value, so this does not reject a substitute over
 -- a tagging artefact. Ordering is identical to audio_id_for_text so the two can
 -- never disagree about which of several eligible rows wins.
+--
+-- THE STORED text_normalized CANNOT BE TRUSTED ON ITS OWN. It is written by the
+-- audio_normalize_text trigger, which calls normalize_text() — but normalize_text
+-- was REDEFINED to rtrim trailing '.?!¿¡。？！' and the existing column was never
+-- backfilled. 41,900 course_audio rows today hold a text_normalized that the
+-- current normaliser would not produce (measured 2026-08-17); it is the open item
+-- 20260806_audio_link_integrity.sql recorded and deliberately left alone, because
+-- text_normalized feeds UNIQUE (course_code, text_normalized, language, role,
+-- voice_id) and rewriting it could collide.
+--
+-- So match on EITHER the stored column OR the clip's real text re-normalised now.
+-- The first disjunct is index-assisted (idx_course_audio_text_lookup) and the
+-- second, course-and-role-scoped, catches the 41,900. Matching only the stored
+-- column would make this function silently blind on those rows — which is exactly
+-- how a clip that speaks the right words would get dropped as if it did not.
 CREATE OR REPLACE FUNCTION public.audio_id_for_text_same_voice(
   p_course text, p_text text, p_role text, p_like uuid
 ) RETURNS uuid
@@ -125,7 +140,8 @@ AS $function$
    WHERE a.course_code = p_course
      AND a.role        = p_role
      AND a.s3_key IS NOT NULL
-     AND a.text_normalized = normalize_text(p_text)
+     AND (a.text_normalized = normalize_text(p_text)
+          OR normalize_text(a.text) = normalize_text(p_text))
      AND audio_canon_voice(a.voice_id) = audio_canon_voice(prev.voice_id)
      AND a.language IS NOT DISTINCT FROM prev.language
    ORDER BY (a.origin = 'human') DESC, a.created_at DESC, a.id::text DESC
@@ -179,7 +195,15 @@ BEGIN
     -- The clip still speaks the new text (whitespace / casing / trailing
     -- punctuation only): keep it. This is the case the 2026-08-06 migration
     -- existed to stop breaking, and it stays unbroken here.
-    CONTINUE WHEN v_found AND v_prev.text_normalized = normalize_text(v_new_text);
+    --
+    -- normalize_text(v_prev.text) — the clip's REAL text, re-normalised now —
+    -- not v_prev.text_normalized. On the 41,900 rows whose stored column predates
+    -- the normaliser's redefinition the stored value still carries the trailing
+    -- '?', so testing it would call a clip that speaks the exact right words
+    -- "stale" and drop a good link. The stored column is kept as a fast first
+    -- disjunct; it is never the sole authority.
+    CONTINUE WHEN v_found AND (v_prev.text_normalized = normalize_text(v_new_text)
+                            OR normalize_text(v_prev.text) = normalize_text(v_new_text));
 
     IF v_found THEN
       v_sub := audio_id_for_text_same_voice(NEW.course_code, v_new_text, v_role, v_cur);
