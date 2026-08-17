@@ -290,7 +290,79 @@ separately.
 
 ---
 
-## 6. What is NOT established here
+## 6. The coherence scope (Kai's ruling, 2026-08-17)
+
+Kai's clarification changes what has to ship. The distinct-word and expanded-context routes have
+**equal standing** — `විමසන්න` was never the preferred option — and the ablative-context route is
+endorsed in principle here. What is **mandatory** is coherence: because the ablative rule is
+one-directional, *"any phrases that can be misinterpreted by the learner should be removed or
+fixed"*, and the shipped state must leave **no phrase a Sinhala speaker could read as the wrong
+sense**. Wider scope is authorised if that is what it takes.
+
+This reframes the 41% recall gap in §1. It is **not a flaw in the rule** — it is a measure of the
+work needed to make the rule true. Marking every ASK row converts a one-directional cue
+(*ablative ⇒ ask*, already 100% precise) into a **bidirectional** one, at which point *bare ⇒
+hear* becomes reliable too, because there would no longer be a bare ASK row anywhere in the
+course. The three-card fix cannot deliver that; the full sweep can.
+
+So the scope is every ASK row, not three. Triaged from §1 by what it costs on the English side:
+
+### Already unambiguous — no change
+
+| seed | why |
+|---|---|
+| 30, 136, 176, 177, 190, 208, 223 | ablative addressee already present |
+| 99 | uses the distinct word `විමසන්න`, not `අහනවා` at all — the course already runs a mixed system |
+
+### Zero English change — ablative added on the known side only
+
+| seed | current known side | proposed | note |
+|---|---|---|---|
+| 119 | `මොකක් හරි අහන්නට පුළුවන්ද?` | add `ඔයාගෙන්` | English already says "ask **you** something" |
+| 415 | `මාව ලවා ඇහුවොත්` | `මගෙන් ඇහුවොත්` | `ලවා` is a causative-agent marker, not the addressee ablative; the idiomatic form *is* the ablative, so this is a naturalness fix that pays for itself |
+| 465 | `මම ඇගේ නම මොකක්ද කියලා අහනවා` | `ඇගෙන්` | English already says "ask **her**" |
+
+### English gains an addressee — the three collisions
+
+| seed | current | proposed known | proposed English |
+|---|---|---|---|
+| 380 | `මොකක්ද කියලා මම ඇහුවා` | `... මම ඇයගෙන් ඇහුවා` | "I asked **her** what" |
+| 381 | `කියලා මම ඇහුවේ නෑ` (card wrongly says *hear*) | `... මම ඔහුගෙන් ඇහුවේ නෑ` | "I didn't ask **him** if" |
+| 382 | `ඔයා ... ඇහුවාද` (`is_new=false` reuse, wrongly *hear*) | `ඔයා ... ඔහුගෙන් ඇහුවාද` | "did you ask **him**" |
+
+### Newly in scope — found while enumerating, same defect class
+
+**`S0030L02`** is bare `අහන්න` → "to ask", **even though seed 30 itself carries `ඔයාගෙන්`**. The
+card strips the very disambiguator its own seed had — exactly what happened at 381/382, and I did
+not spot it in the first pass. Its ~8 phrases are bare too (`මට අහන්න ඕනේ` = "I want to ask").
+
+Worse, those phrases mark the person asked with the **dative `ඔයාට`**, not the ablative:
+`මට ඔයාට මොකක් හරි අහන්න ඕනේ` ("I want to ask you something"), `මම ඔයාට අහන්න උත්සාහ කරනවා`
+("I'm trying to ask you"). The seed uses `ඔයාගෙන්`. If dative is not grammatical for the addressee
+of `අහනවා` — my reading is that it is not, and this needs the refuter and ultimately a native ear —
+then those phrases are **independently wrong**, and correcting them to ablative fixes a grammar
+defect and the ambiguity together, at **zero English cost**.
+
+### The hard cases — may be unfixable without changing meaning
+
+| seed | English | problem |
+|---|---|---|
+| 405 | "Should we ask if we have to book?" | no addressee in the English, so the ablative cannot be added without inventing one |
+| 420 | "They don't need to ask how old he is." | same |
+| 423 | "Do they need to ask such an obvious question?" | carries the question-noun `ප්‍රශ්නේ`, which I *think* disambiguates — but one can *hear* a question as well as *ask* one, so this is not settled |
+
+**These decide whether the mandate is fully achievable.** If 405 and 420 cannot be marked, the
+gap never fully closes, *bare ⇒ hear* stays one-directional, and the honest shipped answer is
+"fixed everywhere it could be, with two named residues" rather than "coherent". Kai's ruling
+allows removal as well as repair, so deleting or remapping the offending phrases is on the table —
+subject to the phrase-floor constraint, which forbids deletion at the ramp minimum and resolves
+"remove or remap" into remapping from already-introduced chunks.
+
+Not yet costed: how many practice phrases course-wide tile through these legos. That needs the DB.
+
+---
+
+## 7. What is NOT established here
 
 Reported as gaps rather than papered over:
 
