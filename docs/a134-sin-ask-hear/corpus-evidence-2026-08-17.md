@@ -696,3 +696,105 @@ a defect; it is unverified taste and goes on the speaker list.
 - #926's other verdicts: C1, C2, C3, C5, C6(b), C7 **survive**; C4 partially refuted (the marker is
   real, not epiphenomenal, but its teachability depends on a coherence sweep that does not fully
   close); C8 **survives** — it was right that the denominator was miscounted and the census blind.
+
+---
+
+## 12. The corrected recount, and the route it settles
+
+Per Tom's ruling: recount first with a Unicode-aware pattern, calibrated against the six known
+`ඇහෙ` rows, then evaluate both routes on real numbers.
+
+### The pattern, and why it is right
+
+`[අඇ]හ|විමස|ඉල්ල`. The whole `අහනවා` family shares the consonant `හ` immediately after an initial
+`අ` or `ඇ`, with the *vowel sign following* `හ` — so matching the two-character prefix catches every
+inflection without enumerating them. Calibrated before use:
+
+| form | old regex | new |
+|---|---|---|
+| අහනවා | ✓ | ✓ |
+| ඇහුවා | ✓ | ✓ |
+| **ඇහෙනවා** | **✗** | ✓ |
+| **ඇහීම** | **✗** | ✓ |
+| **ඇහෙන්නේ** | **✗** | ✓ |
+| අහන්න | ✓ | ✓ |
+| විමසන්න | ✓ | ✓ |
+| **ඉල්ලුවොත්** | **✗** | ✓ |
+
+`අහිමි` (seed 399, "lose hope") matches both and is excluded by hand as a known homograph.
+
+### The census
+
+| table | ASK | of which ablative | HEAR | ablative | SOUNDS-LIKE | OTHER |
+|---|---|---|---|---|---|---|
+| seeds | 23 | 8 | 11 | **0** | 2 | 2 |
+| legos | 13 | 2 | 14 | **0** | 2 | 2 |
+| phrases | 188 | 51 | 125 | **0** | 19 | 25 |
+
+**The load-bearing claim survives the corrected regex exceptionlessly: zero ablative-marked HEAR
+rows at every level — 0/11 seeds, 0/14 legos, 0/125 phrases.** That was the part the whole ruling
+rested on, and it is now verified on a pattern that cannot hide a spelling family.
+
+What the blind regex had actually under-counted was the **ASK** side, not the HEAR side: #913's
+"40 of 133 ASK" becomes **51 of 188**, while its "0 of 125 HEAR" was already exactly right. So the
+correction widens the ASK denominator and leaves the negative evidence untouched.
+
+### The defect list is four, and it is two classes not one
+
+Comparing every card's sense against its own seed's, over the corrected census:
+
+| lego | is_new | seed says | card says | known side | form |
+|---|---|---|---|---|---|
+| `S0381L03` | t | ASK | HEAR | කියලා මම ඇහුවේ නෑ | `ඇහුවා` — genuinely ambiguous |
+| `S0382L04` | **f** | ASK | HEAR | ඔයා ... ඇහුවාද | `ඇහුවා` — reuse of the 366 card |
+| `S0420L03` | t | ASK | HEAR | ඒ අයට ඇහෙන්නේ ඕනෑ නෑ | **`ඇහෙනවා` — cannot mean ask** |
+| `S0432L01` | t | ASK | HEAR | ඔයා ඇහෙන්නයි ඒ අය ඕනේ කරනවා | **`ඇහෙනවා` — cannot mean ask** |
+
+I previously called this "five contradictions". It is **four contradictions plus one collision**, and
+the distinction matters because they need different fixes:
+
+- **Class 1 — contradiction** (card disagrees with its own seed): 381, 382, 420, 432.
+  Within it, 381/382 are *markable* — `ඇහුවා` genuinely bears both senses, so an ablative fixes
+  them. **420/432 are not** — the involuntary `ඇහෙනවා` means 'be heard/sound' and cannot carry ASK
+  at all, so the verb must be **re-authored**, exactly as Tom ruled: their own class within the plan.
+- **Class 2 — collision** (card agrees with its seed, but its known text is shared with the other
+  sense): **380** only. `මොකක්ද කියලා මම ඇහුවා` = "I asked what" against 364/368/509's
+  `කියලා මම ඇහුවා` = "I heard that".
+
+`S0380L03` does **not** appear in the contradiction list, because seed 380 and its card both say
+ASK. It was never a contradiction — I had it filed wrongly.
+
+### Route B is measurably worse — this is not a taste fork
+
+Route B was the attested-form split: move HEAR onto `ඇහෙනවා`, leaving `අහනවා` for ask. Costed:
+
+| | Route A (ablative-mark ASK) | Route B (form split for HEAR) |
+|---|---|---|
+| rows touched | **~9** (380/381/382 marked, 415/465 naturalness) + 2 re-authored | **~150** (11 seeds, 14 legos, 125 phrases) |
+| English changes | 3 anchor sentences gain a pronoun | none |
+| **new collision created** | **none** | **yes — 19 SOUNDS-LIKE phrases** |
+| 420/432 still need re-authoring | yes | **yes** |
+
+Route B's fatal measured objection: **`ඇහෙනවා` already carries a second sense.** It is *hear* bare
+(`S0071L01`) and *sounds like* with `වගේ`/`ලෙස` (`S0272L01`, `S0497L02`) — **2 seeds, 2 legos and 19
+phrases**. Moving 125 HEAR phrases onto it would rest the entire hear-vs-sounds-like distinction on
+one particle, manufacturing a fresh ambiguity of the same shape as the one being fixed, at 16× the
+row count. And it does not even save the two hard cases: 420/432 need re-authoring under either
+route.
+
+**So Route A — Kai's 2b, the ablative mark — is confirmed on measured numbers, with 420/432 as a
+separate authoring class.** Not adopted on the rebound, and not a taste call.
+
+### Residue for the speaker list
+
+- `S0420L02` — `ඔහු කොච්චර කාලද` → "how long he stayed" under a seed asking "how old he is". A
+  separate defect from the sense problem, in the same card family.
+- `S0609L02` — `ඇහීම` → "asking was", the verbal noun, glossed ASK while `ඇහෙනවා` elsewhere is
+  hear/sounds-like. Not obviously wrong; unverified.
+- `S0099L01U05` — `මම විමසන්නවා` looks malformed (`විමසනවා` is the form).
+- The `විමස-` phrases mark the addressee **dative** (`මට`, `ඔයාට`) where `අහනවා` seeds use the
+  **ablative**. Whether that split is correct Sinhala is a native-ear question.
+- `මගෙන්` (the 415 fix) is taught nowhere — Kai's ruling still outstanding.
+- Whether `වගේ ඇහෙනවා` vs bare `ඇහෙනවා` is a safe hear/sounds-like distinction.
+
+**Nothing applied. No text edit will be made until #932 reports the seed triggers live.**
