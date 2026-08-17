@@ -1,0 +1,9696 @@
+{
+ "findings": [
+  {
+   "row_uuid": "6ef68acb-8409-49fe-89b8-3f2ae058e49f",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 77,
+   "row_key": "S0077L02",
+   "old": "始める（一人称）",
+   "new": "始める（私が）",
+   "target": "anfange",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "29a29e87-d7fd-41ac-9fb8-239223a1fc73",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 99,
+   "row_key": "S0099L01",
+   "old": "すべきです（2人称）",
+   "new": "すべきです（あなたが）",
+   "target": "solltest",
+   "old_paren": "2人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "18e90557-a300-46b6-b5ff-ff0ab839a72c",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 99,
+   "row_key": "S0099L02",
+   "old": "うまくいく（3人称現在）",
+   "new": "うまくいく（彼・彼女が）",
+   "target": "funktioniert",
+   "old_paren": "3人称現在",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "efad37d4-7812-47df-b0d7-e6550bf8a6bf",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 111,
+   "row_key": "S0111L03",
+   "old": "変える（3人称現在）",
+   "new": "変える（彼・彼女が）",
+   "target": "verändert",
+   "old_paren": "3人称現在",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "28c7e473-7cd8-4bd7-b823-c223318a999d",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 119,
+   "row_key": "S0119L01",
+   "old": "行く（二人称）",
+   "new": "行く（あなたが）",
+   "target": "gehst",
+   "old_paren": "二人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "7ce448a5-0568-4507-9a6f-ebfe823ea951",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 120,
+   "row_key": "S0120L01",
+   "old": "乗る（二人称）",
+   "new": "乗る（あなたが）",
+   "target": "fährst",
+   "old_paren": "二人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "1a7f90af-1980-4b0f-a44d-594ae2b727e5",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 122,
+   "row_key": "S0122L01",
+   "old": "始まる（三人称）",
+   "new": "始まる（彼・彼女が）",
+   "target": "fängt",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "8385a674-c512-4272-923e-c902b672d8e5",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 122,
+   "row_key": "S0122L04",
+   "old": "進む（三人称）",
+   "new": "進む（彼・彼女が）",
+   "target": "läuft",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "60f566e4-7ee5-4114-b220-7d333f213a16",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 125,
+   "row_key": "S0125L01",
+   "old": "信じる（一人称）",
+   "new": "信じる（私が）",
+   "target": "glaube",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "86219ab0-c23c-479d-b7fe-42d4507c7d4b",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 133,
+   "row_key": "S0133L04",
+   "old": "学ぶ（3人称）",
+   "new": "学ぶ（彼・彼女が）",
+   "target": "lernt",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "68e36e94-1f97-42c2-8876-eb13502ff2c8",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 133,
+   "row_key": "S0133L05",
+   "old": "働く（3人称）",
+   "new": "働く（彼・彼女が）",
+   "target": "arbeitet",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "1cb6df4f-d338-4c30-80b6-46b426609f1f",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 146,
+   "row_key": "S0146L01",
+   "old": "〜のようだ（三人称）",
+   "new": "〜のようだ（彼・彼女が）",
+   "target": "scheint",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "e6a35e1d-3cf0-49ad-983b-a0f3f8674144",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 150,
+   "row_key": "S0150L01",
+   "old": "〜という名前です（二人称）",
+   "new": "〜という名前です（あなたが）",
+   "target": "heißt",
+   "old_paren": "二人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "667b3763-9602-4de4-9da0-35947f140713",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 162,
+   "row_key": "S0162L01",
+   "old": "思う（二人称）",
+   "new": "思う（あなたが）",
+   "target": "denkst",
+   "old_paren": "二人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "a1c5fbdd-2956-4ec3-abb9-5eb6f6139aaa",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 167,
+   "row_key": "S0167L02",
+   "old": "する必要がある（二人称）",
+   "new": "する必要がある（あなたが）",
+   "target": "musst",
+   "old_paren": "二人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "c4fe4fca-88cc-4ee3-a64f-57ddd29b8626",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 170,
+   "row_key": "S0170L01",
+   "old": "言う（二人称接続法）",
+   "new": "言う（あなたが）",
+   "target": "sagst",
+   "old_paren": "二人称接続法",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "0d001a07-a2e6-4724-9ba9-5437625ab793",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 170,
+   "row_key": "S0170L02",
+   "old": "必要とする（二人称）",
+   "new": "必要とする（あなたが）",
+   "target": "brauchst",
+   "old_paren": "二人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "4621040f-7e91-4704-9c4a-0d2e5c6de858",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 171,
+   "row_key": "S0171L03",
+   "old": "手伝う（一人称接続法）",
+   "new": "手伝う（私が）",
+   "target": "helfe",
+   "old_paren": "一人称接続法",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "6176d594-573e-43bc-98d3-4dc60dccef95",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 173,
+   "row_key": "S0173L02",
+   "old": "来る（一人称） —",
+   "new": "来る（私が） —",
+   "target": "komme",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "3bd189a3-e8f5-4500-9de8-e667afc83bf6",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 174,
+   "row_key": "S0174L02",
+   "old": "言う（一人称現在）",
+   "new": "言う（私が）",
+   "target": "sage",
+   "old_paren": "一人称現在",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "f9261a3a-3d0a-4ecb-bd93-0b84cb5c0cf3",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 176,
+   "row_key": "S0176L06",
+   "old": "〜するつもりです（一人称未来）",
+   "new": "〜するつもりです（私が）",
+   "target": "werde",
+   "old_paren": "一人称未来",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "deu_for_jpn:S0179L02B01",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 179,
+   "row_key": "deu_for_jpn:S0179L02B01",
+   "old": "するつもりです（二人称）",
+   "new": "するつもりです（あなたが）",
+   "target": "wirst",
+   "old_paren": "二人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b9311ae9-c166-41fd-afd5-8534020cf5ce",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 179,
+   "row_key": "S0179L02",
+   "old": "するつもりです（二人称未来）",
+   "new": "するつもりです（あなたが）",
+   "target": "wirst",
+   "old_paren": "二人称未来",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "5a0a67ca-1212-4ab0-adbb-d76faeb9e862",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 181,
+   "row_key": "S0181L02",
+   "old": "しなければなりません（一人称）",
+   "new": "しなければなりません（私が）",
+   "target": "muss",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "c08c991f-d2ca-40e1-a5b7-d90b350d1cae",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 183,
+   "row_key": "S0183L02",
+   "old": "〜しました（助動詞・一人称）",
+   "new": "〜しました（私が）",
+   "target": "habe",
+   "old_paren": "助動詞・一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "35499c51-7601-4c1a-9c60-094247155f64",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 190,
+   "row_key": "S0190L04",
+   "old": "質問する（一人称現在）",
+   "new": "質問する（私が）",
+   "target": "stelle",
+   "old_paren": "一人称現在",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "deu_for_jpn:S0194L02B01",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 194,
+   "row_key": "deu_for_jpn:S0194L02B01",
+   "old": "探す（二人称）",
+   "new": "探す（あなたが）",
+   "target": "suchst",
+   "old_paren": "二人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "deu_for_jpn:S0194L02B02",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 194,
+   "row_key": "deu_for_jpn:S0194L02B02",
+   "old": "何を探す（二人称）",
+   "new": "何を探す（あなたが）",
+   "target": "suchst du",
+   "old_paren": "二人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "11b106dd-51f3-42be-b596-1916b899543f",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 194,
+   "row_key": "S0194L02",
+   "old": "探す（二人称現在）",
+   "new": "探す（あなたが）",
+   "target": "suchst",
+   "old_paren": "二人称現在",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "cb638db3-b7ce-4755-8dbc-63e1a52818ce",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 195,
+   "row_key": "S0195L04",
+   "old": "しようとしています（一人称）",
+   "new": "しようとしています（私が）",
+   "target": "versuche",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b912d892-03c2-4106-977f-656a996e03f8",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 199,
+   "row_key": "S0199L01",
+   "old": "〜た（完了助動詞三人称）",
+   "new": "〜た（彼・彼女が）",
+   "target": "hat",
+   "old_paren": "完了助動詞三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "2d44c96f-30ff-47e6-ab75-58176ffa6a1f",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 200,
+   "row_key": "S0200L02",
+   "old": "〜したい（三人称複数）",
+   "new": "〜したい（彼らが）",
+   "target": "wollen",
+   "old_paren": "三人称複数",
+   "new_paren": "彼らが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らが",
+     "debut": 213,
+     "example": "彼らが何を達成しようとしているかわかりません。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼らが",
+     "debut": 213,
+     "example": "彼らが何を達成しようとしているかわかりません。"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "f0731d3b-d521-43f3-ab75-70cab3ba0866",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 203,
+   "row_key": "S0203L01",
+   "old": "〜するでしょう（二人称条件）",
+   "new": "〜するでしょう（あなたが）",
+   "target": "würdest",
+   "old_paren": "二人称条件",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "9f10efe2-bea8-4cb3-921a-ed302f608fde",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 204,
+   "row_key": "S0204L02",
+   "old": "手伝う（三人称単数現在）",
+   "new": "手伝う（彼・彼女が）",
+   "target": "hilft",
+   "old_paren": "三人称単数現在",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "d8ee66e9-c07a-4cb2-8d95-75fccb50d896",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 211,
+   "row_key": "S0211L01",
+   "old": "〜したくなかった（三人称複数過去）",
+   "new": "〜したくなかった（彼らが）",
+   "target": "wollten",
+   "old_paren": "三人称複数過去",
+   "new_paren": "彼らが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らが",
+     "debut": 213,
+     "example": "彼らが何を達成しようとしているかわかりません。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼らが",
+     "debut": 213,
+     "example": "彼らが何を達成しようとしているかわかりません。"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "a7a13ceb-0e3f-4054-bdf2-2dc78aba328f",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 214,
+   "row_key": "S0214L03",
+   "old": "楽しかった（二人称過去）",
+   "new": "楽しかった（あなたが）",
+   "target": "hattest",
+   "old_paren": "二人称過去",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ed3e0e33-3d9f-4ab5-aa95-97ee38084fb1",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 223,
+   "row_key": "S0223L01",
+   "old": "〜するつもりです（三人称）",
+   "new": "〜するつもりです（彼・彼女が）",
+   "target": "wird",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "539507fb-8f73-4ebd-bd8b-36e59584832e",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 233,
+   "row_key": "S0233L03",
+   "old": "知っている（三人称単数）",
+   "new": "知っている（彼・彼女が）",
+   "target": "kennt",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "bcc658a4-4dc6-4afb-9bc1-0fe4da772c77",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 235,
+   "row_key": "S0235L01",
+   "old": "〜と言った（三人称過去）",
+   "new": "〜と言った（彼・彼女が）",
+   "target": "sagte",
+   "old_paren": "三人称過去",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "d1a9ed1d-0a6a-4c8a-86ff-2000a13ce147",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 238,
+   "row_key": "S0238L01",
+   "old": "〜と言う（二人称現在）",
+   "new": "〜と言う（あなたが）",
+   "target": "sagst",
+   "old_paren": "二人称現在",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "3ce822e4-9647-4c81-82f8-ea6a138203b9",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 239,
+   "row_key": "S0239L01",
+   "old": "読む（三人称現在）",
+   "new": "読む（彼・彼女が）",
+   "target": "liest",
+   "old_paren": "三人称現在",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "deu_for_jpn:S0240L02B01",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 240,
+   "row_key": "deu_for_jpn:S0240L02B01",
+   "old": "聞く（三単現）",
+   "new": "聞く（彼・彼女が）",
+   "target": "hört",
+   "old_paren": "三単現",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b22c2ce1-e7f8-4737-9cc0-72f146acee6c",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 240,
+   "row_key": "S0240L02",
+   "old": "聞く（三単現）",
+   "new": "聞く（彼・彼女が）",
+   "target": "hört",
+   "old_paren": "三単現",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "7596f2cc-099b-4ff8-b043-69b1156c332b",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 249,
+   "row_key": "S0249L01",
+   "old": "手伝う（二人称現在）",
+   "new": "手伝う（あなたが）",
+   "target": "hilfst",
+   "old_paren": "二人称現在",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "adb8f5fb-b778-4553-bd7a-b2753a23efc8",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 250,
+   "row_key": "S0250L01",
+   "old": "答える（一人称現在）",
+   "new": "答える（私が）",
+   "target": "antworte",
+   "old_paren": "一人称現在",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "074f56a9-84c6-4bb7-a2f1-e4cf5f3ac3d3",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 253,
+   "row_key": "S0253L01",
+   "old": "〜のはずです（一人称条件）",
+   "new": "〜のはずです（私が）",
+   "target": "sollte",
+   "old_paren": "一人称条件",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "c79b7fb8-d09a-49f7-a8ac-9e255401a20d",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 255,
+   "row_key": "S0255L01",
+   "old": "〜と思う（二人称現在）",
+   "new": "〜と思う（あなたが）",
+   "target": "denkst",
+   "old_paren": "二人称現在",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "7fc6b2eb-5fac-4e9e-8e18-9ec1d9fecb9d",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 263,
+   "row_key": "S0263L02",
+   "old": "意味する・言う（二人称現在）",
+   "new": "意味する・言う（あなたが）",
+   "target": "meinst",
+   "old_paren": "二人称現在",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "f453e529-6e00-4b92-9338-dbdd4f897392",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 269,
+   "row_key": "S0269L01",
+   "old": "〜したい（二人称現在）",
+   "new": "〜したい（あなたが）",
+   "target": "möchtest",
+   "old_paren": "二人称現在",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "deu_for_jpn:S0270L04B01",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 270,
+   "row_key": "deu_for_jpn:S0270L04B01",
+   "old": "来る（一人称）",
+   "new": "来る（私が）",
+   "target": "komme",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "39083da6-e131-465a-bccd-f71a7d8fdc09",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 270,
+   "row_key": "S0270L04",
+   "old": "来る（一人称）",
+   "new": "来る（私が）",
+   "target": "komme",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "deu_for_jpn:S0272L01B01",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 272,
+   "row_key": "deu_for_jpn:S0272L01B01",
+   "old": "聞こえる（三単現）",
+   "new": "聞こえる（彼・彼女が）",
+   "target": "klingt",
+   "old_paren": "三単現",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b1fd15df-61fc-40e7-8d38-999266c70fe5",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 272,
+   "row_key": "S0272L01",
+   "old": "聞こえる（三単現）",
+   "new": "聞こえる（彼・彼女が）",
+   "target": "klingt",
+   "old_paren": "三単現",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "d35c7cab-0972-4562-81fd-56758a62fc2a",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 281,
+   "row_key": "S0281L02",
+   "old": "飲み終わる（一人称・現在）",
+   "new": "飲み終わる（私が）",
+   "target": "austrinke",
+   "old_paren": "一人称・現在",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b1733a33-e81a-459d-b9e0-83100deedf32",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 281,
+   "row_key": "S0281L03",
+   "old": "始める（二人称・現在）",
+   "new": "始める（あなたが）",
+   "target": "anfängst",
+   "old_paren": "二人称・現在",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "042ee58f-73f9-45cb-97c6-3b652ccc60a7",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 284,
+   "row_key": "S0284L01",
+   "old": "知っている（二人称・現在）",
+   "new": "知っている（あなたが）",
+   "target": "kennst",
+   "old_paren": "二人称・現在",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 11,
+     "example": "あなたが終わったら"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "deu_for_jpn:S0285L01B01",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 285,
+   "row_key": "deu_for_jpn:S0285L01B01",
+   "old": "話す（三人称）",
+   "new": "話す（彼・彼女が）",
+   "target": "spricht",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "3acdb9dc-ebc3-4380-b86a-c34bf9a54ee0",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 285,
+   "row_key": "S0285L01",
+   "old": "話す（三人称・現在）",
+   "new": "話す（彼・彼女が）",
+   "target": "spricht",
+   "old_paren": "三人称・現在",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "5eb5152c-ac0f-421d-983b-bb74c4660797",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 293,
+   "row_key": "S0293L01",
+   "old": "〜する予定だ（三人称・未来）",
+   "new": "〜する予定だ（彼・彼女が）",
+   "target": "wird",
+   "old_paren": "三人称・未来",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "7eacaf49-1b5e-4816-bd52-36a233cca965",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 295,
+   "row_key": "S0295L01",
+   "old": "〜したかった（一人称・過去）",
+   "new": "〜したかった（私が）",
+   "target": "wollte",
+   "old_paren": "一人称・過去",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "4674aea4-ab0b-4e89-850f-e06bdbb3aca9",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 296,
+   "row_key": "S0296L01",
+   "old": "言った（一人称・過去）",
+   "new": "言った（私が）",
+   "target": "sagte",
+   "old_paren": "一人称・過去",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "d2418964-ed7e-4b93-aa6d-6715aff1e669",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 296,
+   "row_key": "S0296L02",
+   "old": "必要だ（一人称・現在）",
+   "new": "必要だ（私が）",
+   "target": "brauche",
+   "old_paren": "一人称・現在",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 8,
+     "example": "私が言いたいこと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "fra_for_jpn:S0200L03C02",
+   "surface": "component_row_latent",
+   "course": "fra_for_jpn",
+   "seed": 200,
+   "row_key": "fra_for_jpn:S0200L03C02",
+   "old": "〜したい（三人称複数）",
+   "new": "〜したい（彼ら）",
+   "target": "veulent",
+   "old_paren": "三人称複数",
+   "new_paren": "彼ら",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼ら",
+     "debut": 87,
+     "example": "彼らは人たちです"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "90ee3c69-63a9-42df-98e1-04d1b77bc2f5",
+   "surface": "known_text",
+   "course": "fra_for_jpn",
+   "seed": 200,
+   "row_key": "S0200L01",
+   "old": "終わらせる（一人称複数現在）",
+   "new": "終わらせる（私たち）",
+   "target": "finissons",
+   "old_paren": "一人称複数現在",
+   "new_paren": "私たち",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私たち",
+     "debut": 18,
+     "example": "私たちは〜したいです"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "fra_for_jpn:S0211L02C01",
+   "surface": "component_row_latent",
+   "course": "fra_for_jpn",
+   "seed": 211,
+   "row_key": "fra_for_jpn:S0211L02C01",
+   "old": "〜した（三人称複数助動詞）",
+   "new": "〜した（彼ら）",
+   "target": "ont",
+   "old_paren": "三人称複数助動詞",
+   "new_paren": "彼ら",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼ら",
+     "debut": 87,
+     "example": "彼らは人たちです"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "0144695a-9c27-4a0f-8304-d63124476486",
+   "surface": "known_text",
+   "course": "fra_for_jpn",
+   "seed": 211,
+   "row_key": "S0211L01",
+   "old": "〜したかった（三人称複数半過去）",
+   "new": "〜したかった（彼ら）",
+   "target": "voulaient",
+   "old_paren": "三人称複数半過去",
+   "new_paren": "彼ら",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼ら",
+     "debut": 87,
+     "example": "彼らは人たちです"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "329f9e95-4656-49fc-8ebc-b157d34a21df",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 49,
+   "row_key": "S0049L01",
+   "old": "〜です（三人称）",
+   "new": "〜です（彼・彼女が）",
+   "target": "è",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "63e459cb-87b6-450f-86d0-074ba8021a24",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 63,
+   "row_key": "S0063L01",
+   "old": "〜です（二人称）",
+   "new": "〜です（あなたが）",
+   "target": "sei",
+   "old_paren": "二人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 13,
+     "example": "話す（あなたが）"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0070L02C02",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 70,
+   "row_key": "ita_for_jpn:S0070L02C02",
+   "old": "〜だった（三人称）",
+   "new": "〜だった（彼・彼女が）",
+   "target": "era",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0122L01B01",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 122,
+   "row_key": "ita_for_jpn:S0122L01B01",
+   "old": "〜し始めている（3人称）",
+   "new": "〜し始めている（彼・彼女が）",
+   "target": "sta iniziando a",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0122L01C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 122,
+   "row_key": "ita_for_jpn:S0122L01C01",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女が）",
+   "target": "sta",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0122L02C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 122,
+   "row_key": "ita_for_jpn:S0122L02C01",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女が）",
+   "target": "\"sta\"",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "fdb6a91c-8731-464d-b39b-023091089a92",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 122,
+   "row_key": "S0122L01",
+   "old": "〜し始めている（3人称）",
+   "new": "〜し始めている（彼・彼女が）",
+   "target": "sta iniziando a",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0211L01C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 211,
+   "row_key": "ita_for_jpn:S0211L01C01",
+   "old": "〜した（三人称複数）",
+   "new": "〜した（彼らが）",
+   "target": "hanno",
+   "old_paren": "三人称複数",
+   "new_paren": "彼らが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らが",
+     "debut": 210,
+     "example": "私がしようとしていることについて彼らが何を思っているかわかりません。"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "e052c86b-1d1a-4b3d-a241-9abf049ed91d",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 211,
+   "row_key": "S0211L02",
+   "old": "〜したかった（三人称複数）",
+   "new": "〜したかった（彼らが）",
+   "target": "volevano",
+   "old_paren": "三人称複数",
+   "new_paren": "彼らが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らが",
+     "debut": 210,
+     "example": "私がしようとしていることについて彼らが何を思っているかわかりません。"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "5f6df49e-b451-46f8-ac00-e4a2a8ecd84a",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 213,
+   "row_key": "S0213L02",
+   "old": "〜している（三人称複数）",
+   "new": "〜している（彼らが）",
+   "target": "stanno",
+   "old_paren": "三人称複数",
+   "new_paren": "彼らが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らが",
+     "debut": 210,
+     "example": "私がしようとしていることについて彼らが何を思っているかわかりません。"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0216L01C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 216,
+   "row_key": "ita_for_jpn:S0216L01C01",
+   "old": "〜した（一人称）",
+   "new": "〜した（私が）",
+   "target": "ho",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 25,
+     "example": "私が行かなければならない前に"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0218L01C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 218,
+   "row_key": "ita_for_jpn:S0218L01C01",
+   "old": "〜した（一人称）",
+   "new": "〜した（私が）",
+   "target": "ho",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 25,
+     "example": "私が行かなければならない前に"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0222L01B01",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 222,
+   "row_key": "ita_for_jpn:S0222L01B01",
+   "old": "〜しようとしている（三人称単数）",
+   "new": "〜しようとしている（彼・彼女が）",
+   "target": "sta cercando di",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0222L01C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 222,
+   "row_key": "ita_for_jpn:S0222L01C01",
+   "old": "〜している（三人称単数）",
+   "new": "〜している（彼・彼女が）",
+   "target": "sta",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "47521b86-de53-41f9-9d3f-b1e40c1fd739",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 222,
+   "row_key": "S0222L01",
+   "old": "〜しようとしている（三人称単数）",
+   "new": "〜しようとしている（彼・彼女が）",
+   "target": "sta cercando di",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0223L01B01",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 223,
+   "row_key": "ita_for_jpn:S0223L01B01",
+   "old": "〜するつもりです（三人称単数）",
+   "new": "〜するつもりです（彼・彼女が）",
+   "target": "va a",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0223L01C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 223,
+   "row_key": "ita_for_jpn:S0223L01C01",
+   "old": "行く（三人称単数）",
+   "new": "行く（彼・彼女が）",
+   "target": "va",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "2488ef34-9f5d-4262-803f-c811d14bf609",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 223,
+   "row_key": "S0223L01",
+   "old": "〜するつもりです（三人称単数）",
+   "new": "〜するつもりです（彼・彼女が）",
+   "target": "va a",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0224L01B01",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 224,
+   "row_key": "ita_for_jpn:S0224L01B01",
+   "old": "〜を始めた（三人称）",
+   "new": "〜を始めた（彼・彼女が）",
+   "target": "iniziato a",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "c408d0e3-524b-4006-8fdb-b777e1e7dddc",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 224,
+   "row_key": "S0224L01",
+   "old": "〜を始めた（三人称）",
+   "new": "〜を始めた（彼・彼女が）",
+   "target": "iniziato a",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "a5ce7880-abab-4156-8a6a-1fcf1b4fde3c",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 225,
+   "row_key": "S0225L01",
+   "old": "くれるでしょう（三人称）",
+   "new": "くれるでしょう（彼・彼女が）",
+   "target": "darebbe",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "2772385e-ca71-45c9-8413-7c9081fba14b",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 228,
+   "row_key": "S0228L01",
+   "old": "練習する（三人称）",
+   "new": "練習する（彼・彼女が）",
+   "target": "esercitarsi",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0232L02B01",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 232,
+   "row_key": "ita_for_jpn:S0232L02B01",
+   "old": "〜できる（三人称単数）",
+   "new": "〜できる（彼・彼女が）",
+   "target": "riesce a",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0232L02C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 232,
+   "row_key": "ita_for_jpn:S0232L02C01",
+   "old": "できる（三人称）",
+   "new": "できる（彼・彼女が）",
+   "target": "riesce",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "fea0fbee-e064-4725-8ef7-fa0e6dc11764",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 232,
+   "row_key": "S0232L02",
+   "old": "〜できる（三人称単数）",
+   "new": "〜できる（彼・彼女が）",
+   "target": "riesce a",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0234L01C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 234,
+   "row_key": "ita_for_jpn:S0234L01C01",
+   "old": "〜した（一人称）",
+   "new": "〜した（私が）",
+   "target": "ho",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 25,
+     "example": "私が行かなければならない前に"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0236L01C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 236,
+   "row_key": "ita_for_jpn:S0236L01C01",
+   "old": "〜するだろう（三人称）",
+   "new": "〜するだろう（彼・彼女が）",
+   "target": "avrebbe",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "5c99b0fb-e689-43ae-8caf-57722d305a29",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 261,
+   "row_key": "S0261L01",
+   "old": "〜かもしれない（三人称）",
+   "new": "〜かもしれない（彼・彼女が）",
+   "target": "potrebbe",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "fbf0ea1d-64ce-4440-8945-fdb2ca8682d2",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 263,
+   "row_key": "S0263L01",
+   "old": "意味する（二人称）",
+   "new": "意味する（あなたが）",
+   "target": "intendi",
+   "old_paren": "二人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 13,
+     "example": "話す（あなたが）"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "953c2f26-f79a-4796-9204-3d096e230325",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 284,
+   "row_key": "S0284L01",
+   "old": "知っている（二人称）",
+   "new": "知っている（あなたが）",
+   "target": "conosci",
+   "old_paren": "二人称",
+   "new_paren": "あなたが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなたが",
+     "debut": 13,
+     "example": "話す（あなたが）"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "por_for_jpn:S0028L01C01",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 28,
+   "row_key": "por_for_jpn:S0028L01C01",
+   "old": "～です（3人称単数）",
+   "new": "～です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称単数",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "por_for_jpn:S0099L03C01",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 99,
+   "row_key": "por_for_jpn:S0099L03C01",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女は）",
+   "target": "está a",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "ebfb5389-fe5b-4a50-a3af-2ffc12d8a43a",
+   "surface": "known_text",
+   "course": "por_for_jpn",
+   "seed": 112,
+   "row_key": "S0112L01",
+   "old": "〜でした（3人称過去）",
+   "new": "〜でした（彼・彼女は）",
+   "target": "foi",
+   "old_paren": "3人称過去",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "7f026489-4855-483d-a98e-0b6920e96494",
+   "surface": "known_text",
+   "course": "por_for_jpn",
+   "seed": 116,
+   "row_key": "S0116L01",
+   "old": "〜です（3人称）",
+   "new": "〜です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "bf6a8677-44e5-4c88-879a-064e0b3ca827",
+   "surface": "known_text",
+   "course": "por_for_jpn",
+   "seed": 147,
+   "row_key": "S0147L01",
+   "old": "〜でした（3人称過去）",
+   "new": "〜でした（彼・彼女は）",
+   "target": "foi",
+   "old_paren": "3人称過去",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "por_for_jpn:S0149L02C02",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 149,
+   "row_key": "por_for_jpn:S0149L02C02",
+   "old": "〜です（3人称）",
+   "new": "〜です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "por_for_jpn:S0150L02C02",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 150,
+   "row_key": "por_for_jpn:S0150L02C02",
+   "old": "〜です（3人称）",
+   "new": "〜です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "19e0f3eb-9261-4324-9109-2eb2c814e2e4",
+   "surface": "known_text",
+   "course": "por_for_jpn",
+   "seed": 219,
+   "row_key": "S0219L01",
+   "old": "〜でした（3人称過去）",
+   "new": "〜でした（彼・彼女は）",
+   "target": "foi",
+   "old_paren": "3人称過去",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "e14e5445-abec-4176-a1c3-88def1ad9fc1",
+   "surface": "known_text",
+   "course": "por_for_jpn",
+   "seed": 232,
+   "row_key": "S0232L01",
+   "old": "〜できる（三人称）",
+   "new": "〜できる（彼・彼女は）",
+   "target": "consegue",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "por_for_jpn:S0238L01C02",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 238,
+   "row_key": "por_for_jpn:S0238L01C02",
+   "old": "伝えた（接続法・tu形）",
+   "new": "伝えた（君は）",
+   "target": "dissesses",
+   "old_paren": "接続法・tu形",
+   "new_paren": "君は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "君は",
+     "debut": 162,
+     "example": "〜と思う（君は）"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "por_for_jpn:S0249L01C02",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 249,
+   "row_key": "por_for_jpn:S0249L01C02",
+   "old": "手伝う（接続法・tu形）",
+   "new": "手伝う（君は）",
+   "target": "ajudes",
+   "old_paren": "接続法・tu形",
+   "new_paren": "君は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "君は",
+     "debut": 162,
+     "example": "〜と思う（君は）"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "por_for_jpn:S0261L01B01",
+   "surface": "known_text",
+   "course": "por_for_jpn",
+   "seed": 261,
+   "row_key": "por_for_jpn:S0261L01B01",
+   "old": "〜かもしれない（3人称）",
+   "new": "〜かもしれない（彼・彼女は）",
+   "target": "pode ser",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "por_for_jpn:S0261L01C01",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 261,
+   "row_key": "por_for_jpn:S0261L01C01",
+   "old": "〜できる（3人称）",
+   "new": "〜できる（彼・彼女は）",
+   "target": "pode",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "630ad461-e153-4913-9f37-b129861d307d",
+   "surface": "known_text",
+   "course": "por_for_jpn",
+   "seed": 261,
+   "row_key": "S0261L01",
+   "old": "〜かもしれない（3人称）",
+   "new": "〜かもしれない（彼・彼女は）",
+   "target": "pode ser",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "por_for_jpn:S0263L01C02",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 263,
+   "row_key": "por_for_jpn:S0263L01C02",
+   "old": "言及する（tu形）",
+   "new": "言及する（君は）",
+   "target": "referes",
+   "old_paren": "tu形",
+   "new_paren": "君は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "君は",
+     "debut": 162,
+     "example": "〜と思う（君は）"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "1f001a8d-0a61-4b55-94d9-cf9909c25127",
+   "surface": "known_text",
+   "course": "por_for_jpn",
+   "seed": 272,
+   "row_key": "S0272L01",
+   "old": "～のようだ・～に見える（3人称）",
+   "new": "～のようだ・～に見える（彼・彼女は）",
+   "target": "parece",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "6a3008e8-feef-4128-bc3c-1b719a0f4301",
+   "surface": "known_text",
+   "course": "por_for_jpn",
+   "seed": 279,
+   "row_key": "S0279L01",
+   "old": "残っていた（3人称・不完了過去）",
+   "new": "残っていた（彼・彼女は）",
+   "target": "sobrava",
+   "old_paren": "3人称・不完了過去",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "por_for_jpn:S0289L03C01",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 289,
+   "row_key": "por_for_jpn:S0289L03C01",
+   "old": "聞く（一人称）",
+   "new": "聞く（私は）",
+   "target": "pergunto",
+   "old_paren": "一人称",
+   "new_paren": "私は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私は",
+     "debut": 13,
+     "example": "私はとても上手にポルトガル語を話せるようになりたいです"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "32611120-9d2b-4ae3-b3a5-4de51193d505",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 22,
+   "row_key": "S0022L02",
+   "old": "話す（三人称複数）",
+   "new": "話す（彼らは）",
+   "target": "hablan",
+   "old_paren": "三人称複数",
+   "new_paren": "彼らは",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らは",
+     "debut": 34,
+     "example": "彼らはいる"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼らは",
+     "debut": 34,
+     "example": "彼らはいる"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "adca6164-fa36-4c69-8137-c84052289329",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 29,
+   "row_key": "S0029L02",
+   "old": "できる（一人称接続法）",
+   "new": "できる（私が）",
+   "target": "pueda",
+   "old_paren": "一人称接続法",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "f1124377-25c1-4619-9f76-8cca26383c6f",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 38,
+   "row_key": "S0038L03",
+   "old": "学び続けている（一人称）",
+   "new": "学び続けている（私が）",
+   "target": "llevo aprendiendo",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "spa_for_jpn:S0038L03B01",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 38,
+   "row_key": "spa_for_jpn:S0038L03B01",
+   "old": "学び続けている（一人称）",
+   "new": "学び続けている（私が）",
+   "target": "llevo aprendiendo",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "51829fba-3990-4125-a7d2-6555697a9e9a",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 40,
+   "row_key": "S0040L02",
+   "old": "感じる（二人称）",
+   "new": "感じる（あなた）",
+   "target": "sientes",
+   "old_paren": "二人称",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "449faae0-4cb7-4b30-abbd-6d7b3510d81d",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 41,
+   "row_key": "S0041L01",
+   "old": "感じる（一人称）",
+   "new": "感じる（私が）",
+   "target": "siento",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "51be52b2-c6b3-4e95-9077-90bf94f99e22",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 42,
+   "row_key": "S0042L01",
+   "old": "〜していた（一人称）",
+   "new": "〜していた（私が）",
+   "target": "estaba",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "44cad7cf-b70f-479f-9857-db188d98ec9c",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 44,
+   "row_key": "S0044L02",
+   "old": "必要がある（一人称）",
+   "new": "必要がある（私が）",
+   "target": "necesito",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "af1bb787-d37a-451d-9b36-fec944e71141",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 46,
+   "row_key": "S0046L01",
+   "old": "心配する（一人称）",
+   "new": "心配する（私が）",
+   "target": "preocupo",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "9d3beec3-f5a9-4e8b-86c1-377cab74250d",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 47,
+   "row_key": "S0047L01",
+   "old": "思う（一人称）",
+   "new": "思う（私が）",
+   "target": "creo",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "aebc32fc-55cf-49aa-8e9e-ebca603ab40c",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 51,
+   "row_key": "S0051L06",
+   "old": "楽しむ（一人称）",
+   "new": "楽しむ（私が）",
+   "target": "disfruto",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "3343c252-aa42-4d90-a5fd-fa6d9129c721",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 99,
+   "row_key": "S0099L02",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女は）",
+   "target": "está",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "spa_for_jpn:S0099L02B01",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 99,
+   "row_key": "spa_for_jpn:S0099L02B01",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女は）",
+   "target": "está",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b588de36-bd6e-4f28-bbad-5d53a56a80be",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 111,
+   "row_key": "S0111L03",
+   "old": "変わります（3人称）",
+   "new": "変わります（彼・彼女は）",
+   "target": "cambia",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b1801e50-febe-47e8-8645-5f2be1baf117",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 124,
+   "row_key": "S0124L01",
+   "old": "思いました（1人称単数過去）",
+   "new": "思いました（私が）",
+   "target": "pensé",
+   "old_paren": "1人称単数過去",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "99389be8-9d56-428f-8a3e-22d5354a458a",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 132,
+   "row_key": "S0132L03",
+   "old": "言っていた（3人称不完了過去）",
+   "new": "言っていた（彼・彼女は）",
+   "target": "decía",
+   "old_paren": "3人称不完了過去",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "c5e9b6a8-8027-417d-b060-0a4af3a09961",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 133,
+   "row_key": "S0133L02",
+   "old": "働く（2人称）",
+   "new": "働く（あなた）",
+   "target": "trabajas",
+   "old_paren": "2人称",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "bae0857a-9104-4c02-be52-dcfa532f70eb",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 144,
+   "row_key": "S0144L01",
+   "old": "目が覚めた（1人称過去）",
+   "new": "目が覚めた（私が）",
+   "target": "desperté",
+   "old_paren": "1人称過去",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "f6ccd231-b63d-459a-8147-12b8ac75bc64",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 176,
+   "row_key": "S0176L03",
+   "old": "できるでしょう（三人称）",
+   "new": "できるでしょう（彼・彼女は）",
+   "target": "podrá",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "adca16e8-772d-4542-bb90-39182bdff8ad",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 178,
+   "row_key": "S0178L01",
+   "old": "持っていた（tener一人称過去形）",
+   "new": "持っていた（私が）",
+   "target": "tuve",
+   "old_paren": "tener一人称過去形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "22294c41-3a89-461c-8d8a-beb92fb1bf2a",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 182,
+   "row_key": "S0182L01",
+   "old": "～しましたか（現在完了、二人称）",
+   "new": "～しましたか（あなた）",
+   "target": "has",
+   "old_paren": "現在完了、二人称",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ad379388-29c3-448c-888a-3f82ddb7bf77",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 184,
+   "row_key": "S0184L01",
+   "old": "見た（ver一人称過去形）",
+   "new": "見た（私が）",
+   "target": "vi",
+   "old_paren": "ver一人称過去形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "5409b3d4-c7cd-43bb-852a-b9bc3a83a990",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 185,
+   "row_key": "S0185L01",
+   "old": "置いてきた、残してきた（dejar二人称過去形）",
+   "new": "置いてきた、残してきた（あなた）",
+   "target": "dejaste",
+   "old_paren": "dejar二人称過去形",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "4a99ce40-991e-4647-8451-c046a1069e1a",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 190,
+   "row_key": "S0190L01",
+   "old": "する、作る（hacer一人称現在形）",
+   "new": "する、作る（私が）",
+   "target": "hago",
+   "old_paren": "hacer一人称現在形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "spa_for_jpn:S0194L01C01",
+   "surface": "component_row_latent",
+   "course": "spa_for_jpn",
+   "seed": 194,
+   "row_key": "spa_for_jpn:S0194L01C01",
+   "old": "～している（二人称）",
+   "new": "～している（あなた）",
+   "target": "estás",
+   "old_paren": "二人称",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "53c0d97e-018a-4abf-a5d2-af3bc2b97a98",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 195,
+   "row_key": "S0195L03",
+   "old": "置いた、残した（dejar一人称過去形）",
+   "new": "置いた、残した（私が）",
+   "target": "dejé",
+   "old_paren": "dejar一人称過去形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "e5ce821b-615b-40e2-8676-e411ba5d1dba",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 197,
+   "row_key": "S0197L02",
+   "old": "働いている（trabajar三人称現在形）",
+   "new": "働いている（彼・彼女は）",
+   "target": "trabaja",
+   "old_paren": "trabajar三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "6c721524-fef0-4647-912f-e660923e3410",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 200,
+   "row_key": "S0200L01",
+   "old": "言っている（decir三人称複数現在形）",
+   "new": "言っている（彼らは）",
+   "target": "dicen",
+   "old_paren": "decir三人称複数現在形",
+   "new_paren": "彼らは",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らは",
+     "debut": 34,
+     "example": "彼らはいる"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "c2f44fe0-e430-4849-8b72-8a4053ea6002",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 200,
+   "row_key": "S0200L02",
+   "old": "望んでいる（querer三人称複数現在形）",
+   "new": "望んでいる（彼らは）",
+   "target": "quieren",
+   "old_paren": "querer三人称複数現在形",
+   "new_paren": "彼らは",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らは",
+     "debut": 34,
+     "example": "彼らはいる"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "be043732-9e26-4f7a-8349-2cbbfafe6832",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 200,
+   "row_key": "S0200L04",
+   "old": "終わらせる（terminar一人称複数接続法）",
+   "new": "終わらせる（私たちは）",
+   "target": "terminemos",
+   "old_paren": "terminar一人称複数接続法",
+   "new_paren": "私たちは",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私たちは",
+     "debut": 18,
+     "example": "私たちは〜したい"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "d1ae020e-01cd-42c6-8fa5-9fbb9ac3f09a",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 203,
+   "row_key": "S0203L01",
+   "old": "するだろう（hacer二人称条件法）",
+   "new": "するだろう（あなた）",
+   "target": "harías",
+   "old_paren": "hacer二人称条件法",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "26898355-e73e-4f7b-bd9a-123cfb52a4a5",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 203,
+   "row_key": "S0203L02",
+   "old": "頼んだら（pedir一人称過去接続法）",
+   "new": "頼んだら（私が）",
+   "target": "pidiera",
+   "old_paren": "pedir一人称過去接続法",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "55c92f6c-85e3-416b-b206-ea713f1bb796",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 203,
+   "row_key": "S0203L03",
+   "old": "手伝う（ayudar二人称過去接続法）",
+   "new": "手伝う（あなた）",
+   "target": "ayudaras",
+   "old_paren": "ayudar二人称過去接続法",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "93267ccd-cc80-4d47-8d78-104ffe67c7fa",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 204,
+   "row_key": "S0204L01",
+   "old": "手伝う（ayudar三人称過去接続法）",
+   "new": "手伝う（彼・彼女は）",
+   "target": "ayudara",
+   "old_paren": "ayudar三人称過去接続法",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "581e4fd3-944f-4efe-b536-9b08d9762cd6",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 210,
+   "row_key": "S0210L01",
+   "old": "思っている（pensar三人称複数現在形）",
+   "new": "思っている（彼らは）",
+   "target": "piensan",
+   "old_paren": "pensar三人称複数現在形",
+   "new_paren": "彼らは",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らは",
+     "debut": 34,
+     "example": "彼らはいる"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "986f1b0d-dfe6-47bb-9e99-c45280d8541f",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 211,
+   "row_key": "S0211L02",
+   "old": "言った（decir三人称複数過去形）",
+   "new": "言った（彼らは）",
+   "target": "dijeron",
+   "old_paren": "decir三人称複数過去形",
+   "new_paren": "彼らは",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らは",
+     "debut": 34,
+     "example": "彼らはいる"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "05bf21c6-8fa0-4f6d-9b4d-8f15be524d3b",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 211,
+   "row_key": "S0211L03",
+   "old": "したかった（querer三人称複数過去形）",
+   "new": "したかった（彼らは）",
+   "target": "querían",
+   "old_paren": "querer三人称複数過去形",
+   "new_paren": "彼らは",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らは",
+     "debut": 34,
+     "example": "彼らはいる"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "69652cbb-43f4-48d1-9bce-5b578c3ff130",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 213,
+   "row_key": "S0213L01",
+   "old": "知っている（saber一人称複数現在形）",
+   "new": "知っている（私たちは）",
+   "target": "sabemos",
+   "old_paren": "saber一人称複数現在形",
+   "new_paren": "私たちは",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私たちは",
+     "debut": 18,
+     "example": "私たちは〜したい"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "0d882bd4-66ec-47ff-b3c0-4b09c60015f7",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 214,
+   "row_key": "S0214L01",
+   "old": "過ごした（pasar二人称過去形）",
+   "new": "過ごした（あなた）",
+   "target": "pasaste",
+   "old_paren": "pasar二人称過去形",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "e4a408dc-cdab-46ca-85c4-9b1523b9874c",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 215,
+   "row_key": "S0215L01",
+   "old": "出かけた（salir一人称過去形）",
+   "new": "出かけた（私が）",
+   "target": "salí",
+   "old_paren": "salir一人称過去形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "1ab35d20-a195-4190-8b1d-d97285ca9cf4",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 217,
+   "row_key": "S0217L01",
+   "old": "飲んだ（tomar一人称過去形）",
+   "new": "飲んだ（私が）",
+   "target": "tomé",
+   "old_paren": "tomar一人称過去形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "7ce07eaa-30a4-4409-874a-97ce4a9af76b",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 218,
+   "row_key": "S0218L01",
+   "old": "した（hacer一人称過去形）",
+   "new": "した（私が）",
+   "target": "hice",
+   "old_paren": "hacer一人称過去形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ba39e0c3-6acc-4b21-9530-0969b31a0820",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 220,
+   "row_key": "S0220L01",
+   "old": "見た（ver二人称過去形）",
+   "new": "見た（あなた）",
+   "target": "viste",
+   "old_paren": "ver二人称過去形",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "f8ff5bea-8123-42cc-babf-b36798cd790b",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 224,
+   "row_key": "S0224L01",
+   "old": "～したばかり（acabar de三人称現在形）",
+   "new": "～したばかり（彼・彼女は）",
+   "target": "acaba",
+   "old_paren": "acabar de三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "86c17abb-c0d1-4349-91df-621eed348f39",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 232,
+   "row_key": "S0232L02",
+   "old": "できる（poder三人称現在形）",
+   "new": "できる（彼・彼女は）",
+   "target": "puede",
+   "old_paren": "poder三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "5b0742cf-4a87-40d9-bd79-90fd84c33452",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 234,
+   "row_key": "S0234L01",
+   "old": "会った（conocer一人称過去形）",
+   "new": "会った（私が）",
+   "target": "conocí",
+   "old_paren": "conocer一人称過去形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "685da45f-67b8-4cd4-ad44-7498a995df12",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 236,
+   "row_key": "S0236L01",
+   "old": "～するつもりだった（ir過去三人称）",
+   "new": "～するつもりだった（彼・彼女は）",
+   "target": "iba",
+   "old_paren": "ir過去三人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "899fc367-170b-4f19-8add-6f1be08bc60c",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 244,
+   "row_key": "S0244L01",
+   "old": "～した（haber一人称現在形）",
+   "new": "～した（私が）",
+   "target": "he",
+   "old_paren": "haber一人称現在形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b2070ad3-c732-42d1-850e-1168e79609e3",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 247,
+   "row_key": "S0247L01",
+   "old": "思った（pensar一人称過去形）",
+   "new": "思った（私が）",
+   "target": "pensé",
+   "old_paren": "pensar一人称過去形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "3986fb83-48c5-4f34-82d4-f0934b262e3c",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 248,
+   "row_key": "S0248L04",
+   "old": "返してほしい（devolver接続法三人称複数）",
+   "new": "返してほしい（彼らは）",
+   "target": "devuelvan",
+   "old_paren": "devolver接続法三人称複数",
+   "new_paren": "彼らは",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らは",
+     "debut": 34,
+     "example": "彼らはいる"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "bf76f6f1-63a5-463e-9fd1-f82dab3091c5",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 250,
+   "row_key": "S0250L02",
+   "old": "答える（responder接続法一人称）",
+   "new": "答える（私が）",
+   "target": "responda",
+   "old_paren": "responder接続法一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "c1659f16-c4c6-45ca-a4c0-45e1a15d78f0",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 252,
+   "row_key": "S0252L02",
+   "old": "～になるでしょう（estar二人称未来形）",
+   "new": "～になるでしょう（あなた）",
+   "target": "estarás",
+   "old_paren": "estar二人称未来形",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ce7feb8b-91b0-4cdf-a6a7-912abaa09b64",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 256,
+   "row_key": "S0256L01",
+   "old": "思う（creer一人称現在形）",
+   "new": "思う（私が）",
+   "target": "creo",
+   "old_paren": "creer一人称現在形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "d32f04df-e0b2-410f-8451-d351eac5f27e",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 256,
+   "row_key": "S0256L02",
+   "old": "～になるでしょう（estar一人称未来形）",
+   "new": "～になるでしょう（私が）",
+   "target": "estaré",
+   "old_paren": "estar一人称未来形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "55342683-91c6-492d-8df6-69c53e0351f1",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 263,
+   "row_key": "S0263L01",
+   "old": "知っている（saber一人称現在形）",
+   "new": "知っている（私が）",
+   "target": "sé",
+   "old_paren": "saber一人称現在形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "e3958c40-97d7-4b5d-94f2-c9fcf4a43bed",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 263,
+   "row_key": "S0263L02",
+   "old": "言及している（referirse二人称現在形）",
+   "new": "言及している（あなた）",
+   "target": "refieres",
+   "old_paren": "referirse二人称現在形",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "795f3c24-28fb-4791-8469-13680eabeca6",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 267,
+   "row_key": "S0267L01",
+   "old": "〜した（haber二人称現在形）",
+   "new": "〜した（あなた）",
+   "target": "has",
+   "old_paren": "haber二人称現在形",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "be5099c5-fbf1-4082-a5e6-251e1d50ec9c",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 268,
+   "row_key": "S0268L01",
+   "old": "送った（enviar三人称過去形）",
+   "new": "送った（彼・彼女は）",
+   "target": "envió",
+   "old_paren": "enviar三人称過去形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "3142b27b-8629-43e2-a0ec-7b579dba19c7",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 270,
+   "row_key": "S0270L01",
+   "old": "心配している（preocuparse一人称現在形）",
+   "new": "心配している（私が）",
+   "target": "preocupo",
+   "old_paren": "preocuparse一人称現在形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "088b594f-cf82-4273-a3a2-19dfe1dc800c",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 272,
+   "row_key": "S0272L01",
+   "old": "聞こえる、～のようだ（sonar三人称現在形）",
+   "new": "聞こえる、～のようだ（彼・彼女は）",
+   "target": "suena",
+   "old_paren": "sonar三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "dd898f69-b9fc-4f25-9b86-675370626b1a",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 274,
+   "row_key": "S0274L01",
+   "old": "持っている（tener二人称現在形）",
+   "new": "持っている（あなた）",
+   "target": "tienes",
+   "old_paren": "tener二人称現在形",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "f93575b2-7f88-46f9-8fab-0bde5fe349cf",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 278,
+   "row_key": "S0278L01",
+   "old": "〜しなければならなかった（tener二人称過去形）",
+   "new": "〜しなければならなかった（あなた）",
+   "target": "tuviste",
+   "old_paren": "tener二人称過去形",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b9882142-a92f-4592-a3b6-7f57f75d85ca",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 279,
+   "row_key": "S0279L01",
+   "old": "残っていた（quedar三人称過去形）",
+   "new": "残っていた（彼・彼女は）",
+   "target": "quedaba",
+   "old_paren": "quedar三人称過去形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "7507b76d-c48f-4f70-b828-c0d47f524768",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 280,
+   "row_key": "S0280L01",
+   "old": "〜しなければならなかった（tener一人称過去形）",
+   "new": "〜しなければならなかった（私が）",
+   "target": "tuve",
+   "old_paren": "tener一人称過去形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "a7c82cb7-9ee9-4913-8f0a-3343e298b1a0",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 281,
+   "row_key": "S0281L01",
+   "old": "気になる（importar三人称現在形）",
+   "new": "気になる（彼・彼女は）",
+   "target": "importa",
+   "old_paren": "importar三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "bacabc54-fb9e-4118-be70-14d005d37b4f",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 281,
+   "row_key": "S0281L02",
+   "old": "終わらせる（terminar一人称現在形）",
+   "new": "終わらせる（私が）",
+   "target": "termino",
+   "old_paren": "terminar一人称現在形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "9a1675f2-2715-4463-9907-1215a112d48a",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 281,
+   "row_key": "S0281L04",
+   "old": "始める（empezar二人称接続法現在形）",
+   "new": "始める（あなた）",
+   "target": "empieces",
+   "old_paren": "empezar二人称接続法現在形",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "5edec236-85e5-4464-bfef-27cbe6a3167f",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 283,
+   "row_key": "S0283L03",
+   "old": "話す（hablar三人称現在形）",
+   "new": "話す（彼・彼女は）",
+   "target": "habla",
+   "old_paren": "hablar三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "81c251fd-2d83-44cb-bb24-c401784480dd",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 284,
+   "row_key": "S0284L01",
+   "old": "知っている（conocer二人称現在形）",
+   "new": "知っている（あなた）",
+   "target": "conoces",
+   "old_paren": "conocer二人称現在形",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "3789dc83-aa5f-41a6-a8e3-973db059a1fb",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 289,
+   "row_key": "S0289L01",
+   "old": "疑問に思う（preguntarse一人称現在形）",
+   "new": "疑問に思う（私が）",
+   "target": "pregunto",
+   "old_paren": "preguntarse一人称現在形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ad2b762c-d44a-4367-8263-f987a24ab723",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 291,
+   "row_key": "S0291L01",
+   "old": "望む、期待する（esperar一人称現在形）",
+   "new": "望む、期待する（私が）",
+   "target": "espero",
+   "old_paren": "esperar一人称現在形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "cb59e95c-3ac3-46b5-b915-501b9db62836",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 295,
+   "row_key": "S0295L01",
+   "old": "言った（decir一人称過去形）",
+   "new": "言った（私が）",
+   "target": "dije",
+   "old_paren": "decir一人称過去形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "f8fce767-cdda-45db-8448-5315cfead74b",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 296,
+   "row_key": "S0296L01",
+   "old": "必要だった（necesitar一人称過去形）",
+   "new": "必要だった（私が）",
+   "target": "necesitaba",
+   "old_paren": "necesitar一人称過去形",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "38d1ce74-e313-4f06-8cd0-941277a371b0",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 297,
+   "row_key": "S0297L02",
+   "old": "話す（hablar三人称複数現在形）",
+   "new": "話す（彼らは）",
+   "target": "hablan",
+   "old_paren": "hablar三人称複数現在形",
+   "new_paren": "彼らは",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らは",
+     "debut": 34,
+     "example": "彼らはいる"
+    }
+   ],
+   "late": [],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "1cd2a308-e12c-456f-b90d-4284b4b62272",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 298,
+   "row_key": "S0298L01",
+   "old": "残っている（quedar三人称現在形）",
+   "new": "残っている（彼・彼女は）",
+   "target": "queda",
+   "old_paren": "quedar三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "d35cde2e-3738-45c1-adbb-70c28e3a037b",
+   "surface": "card_tile",
+   "course": "fra_for_jpn",
+   "seed": 200,
+   "row_key": "S0200L03#tile1.known",
+   "old": "〜したい（三人称複数）",
+   "new": "〜したい（彼ら）",
+   "target": "veulent",
+   "old_paren": "三人称複数",
+   "new_paren": "彼ら",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼ら",
+     "debut": 87,
+     "example": "彼らは人たちです"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "ca4a7844-00c2-400c-bc5f-88891ac7287e",
+   "surface": "card_tile",
+   "course": "fra_for_jpn",
+   "seed": 211,
+   "row_key": "S0211L02#tile0.known",
+   "old": "〜した（三人称複数助動詞）",
+   "new": "〜した（彼ら）",
+   "target": "ont",
+   "old_paren": "三人称複数助動詞",
+   "new_paren": "彼ら",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼ら",
+     "debut": 87,
+     "example": "彼らは人たちです"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "5cad2247-787f-41fb-be4f-9c1f8e565bc3",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 70,
+   "row_key": "S0070L02#tile1.known",
+   "old": "〜だった（三人称）",
+   "new": "〜だった（彼・彼女が）",
+   "target": "era",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "fdb6a91c-8731-464d-b39b-023091089a92",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 122,
+   "row_key": "S0122L01#tile0.known",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女が）",
+   "target": "sta",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "090a9cdc-f027-4cec-8185-d3177a5f9eca",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 122,
+   "row_key": "S0122L02#tile0.known",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女が）",
+   "target": "\"sta\"",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "bc03f4fd-61cb-4c75-8821-7a9db878614d",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 211,
+   "row_key": "S0211L01#tile0.known",
+   "old": "〜した（三人称複数）",
+   "new": "〜した（彼らが）",
+   "target": "hanno",
+   "old_paren": "三人称複数",
+   "new_paren": "彼らが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らが",
+     "debut": 210,
+     "example": "私がしようとしていることについて彼らが何を思っているかわかりません。"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "b288eeb9-adcb-43a9-ab56-9c3bba03ea54",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 216,
+   "row_key": "S0216L01#tile0.known",
+   "old": "〜した（一人称）",
+   "new": "〜した（私が）",
+   "target": "ho",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 25,
+     "example": "私が行かなければならない前に"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "e01838e9-38f9-4503-bea6-7dc21fe1e6d2",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 218,
+   "row_key": "S0218L01#tile0.known",
+   "old": "〜した（一人称）",
+   "new": "〜した（私が）",
+   "target": "ho",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 25,
+     "example": "私が行かなければならない前に"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "47521b86-de53-41f9-9d3f-b1e40c1fd739",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 222,
+   "row_key": "S0222L01#tile0.known",
+   "old": "〜している（三人称単数）",
+   "new": "〜している（彼・彼女が）",
+   "target": "sta",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "2488ef34-9f5d-4262-803f-c811d14bf609",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 223,
+   "row_key": "S0223L01#tile0.known",
+   "old": "行く（三人称単数）",
+   "new": "行く（彼・彼女が）",
+   "target": "va",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "fea0fbee-e064-4725-8ef7-fa0e6dc11764",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 232,
+   "row_key": "S0232L02#tile0.known",
+   "old": "できる（三人称）",
+   "new": "できる（彼・彼女が）",
+   "target": "riesce",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "c9a47d2f-2b2d-42d8-96ee-dead3d37000a",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 234,
+   "row_key": "S0234L01#tile0.known",
+   "old": "〜した（一人称）",
+   "new": "〜した（私が）",
+   "target": "ho",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 25,
+     "example": "私が行かなければならない前に"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "bc50f836-1144-436d-a9bc-f57fa68db274",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 236,
+   "row_key": "S0236L01#tile0.known",
+   "old": "〜するだろう（三人称）",
+   "new": "〜するだろう（彼・彼女が）",
+   "target": "avrebbe",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "2b621124-9ef5-4072-b9b9-18c351d21245",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 28,
+   "row_key": "S0028L01#tile0.known",
+   "old": "～です（3人称単数）",
+   "new": "～です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称単数",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "24962679-a120-4459-b468-935da9a6f752",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 99,
+   "row_key": "S0099L03#tile0.known",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女は）",
+   "target": "está a",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "b1fcd622-a4f4-49e8-b2a6-88fca3155ec4",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 148,
+   "row_key": "S0148L02#tile1.known",
+   "old": "〜でした（3人称過去）",
+   "new": "〜でした（彼・彼女は）",
+   "target": "foi",
+   "old_paren": "3人称過去",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "7e030442-6c44-4829-8b50-201457eb49b4",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 149,
+   "row_key": "S0149L02#tile1.known",
+   "old": "〜です（3人称）",
+   "new": "〜です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "a1f4bcf6-350b-4381-8677-56b86fb6f236",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 150,
+   "row_key": "S0150L02#tile1.known",
+   "old": "〜です（3人称）",
+   "new": "〜です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "f7ab0179-305c-45de-85c4-e08193e8cfd0",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 238,
+   "row_key": "S0238L01#tile1.known",
+   "old": "伝えた（接続法・tu形）",
+   "new": "伝えた（君は）",
+   "target": "dissesses",
+   "old_paren": "接続法・tu形",
+   "new_paren": "君は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "君は",
+     "debut": 162,
+     "example": "〜と思う（君は）"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "fdc57a13-aede-48ed-98a6-575fe709d759",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 249,
+   "row_key": "S0249L01#tile1.known",
+   "old": "手伝う（接続法・tu形）",
+   "new": "手伝う（君は）",
+   "target": "ajudes",
+   "old_paren": "接続法・tu形",
+   "new_paren": "君は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "君は",
+     "debut": 162,
+     "example": "〜と思う（君は）"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "630ad461-e153-4913-9f37-b129861d307d",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 261,
+   "row_key": "S0261L01#tile0.known",
+   "old": "〜できる（3人称）",
+   "new": "〜できる（彼・彼女は）",
+   "target": "pode",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "facb3938-f7ed-4ffc-b422-116cbb745ca4",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 263,
+   "row_key": "S0263L01#tile1.known",
+   "old": "言及する（tu形）",
+   "new": "言及する（君は）",
+   "target": "referes",
+   "old_paren": "tu形",
+   "new_paren": "君は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "君は",
+     "debut": 162,
+     "example": "〜と思う（君は）"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "db1f5bab-4fa7-4437-bed2-6ed489ce50bb",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 289,
+   "row_key": "S0289L03#tile0.known",
+   "old": "聞く（一人称）",
+   "new": "聞く（私は）",
+   "target": "pergunto",
+   "old_paren": "一人称",
+   "new_paren": "私は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私は",
+     "debut": 13,
+     "example": "私はとても上手にポルトガル語を話せるようになりたいです"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "132f89ab-5847-4d8e-a7c1-f3c9c6969e47",
+   "surface": "card_tile",
+   "course": "spa_for_jpn",
+   "seed": 194,
+   "row_key": "S0194L01#tile0.known",
+   "old": "～している（二人称）",
+   "new": "～している（あなた）",
+   "target": "estás",
+   "old_paren": "二人称",
+   "new_paren": "あなた",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "あなた",
+     "debut": 1,
+     "example": "あなたと"
+    }
+   ],
+   "late": [],
+   "has_clip": false
+  }
+ ],
+ "lateOnes": [
+  {
+   "row_uuid": "18e90557-a300-46b6-b5ff-ff0ab839a72c",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 99,
+   "row_key": "S0099L02",
+   "old": "うまくいく（3人称現在）",
+   "new": "うまくいく（彼・彼女が）",
+   "target": "funktioniert",
+   "old_paren": "3人称現在",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "efad37d4-7812-47df-b0d7-e6550bf8a6bf",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 111,
+   "row_key": "S0111L03",
+   "old": "変える（3人称現在）",
+   "new": "変える（彼・彼女が）",
+   "target": "verändert",
+   "old_paren": "3人称現在",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "1a7f90af-1980-4b0f-a44d-594ae2b727e5",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 122,
+   "row_key": "S0122L01",
+   "old": "始まる（三人称）",
+   "new": "始まる（彼・彼女が）",
+   "target": "fängt",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "8385a674-c512-4272-923e-c902b672d8e5",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 122,
+   "row_key": "S0122L04",
+   "old": "進む（三人称）",
+   "new": "進む（彼・彼女が）",
+   "target": "läuft",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "86219ab0-c23c-479d-b7fe-42d4507c7d4b",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 133,
+   "row_key": "S0133L04",
+   "old": "学ぶ（3人称）",
+   "new": "学ぶ（彼・彼女が）",
+   "target": "lernt",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "68e36e94-1f97-42c2-8876-eb13502ff2c8",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 133,
+   "row_key": "S0133L05",
+   "old": "働く（3人称）",
+   "new": "働く（彼・彼女が）",
+   "target": "arbeitet",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "1cb6df4f-d338-4c30-80b6-46b426609f1f",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 146,
+   "row_key": "S0146L01",
+   "old": "〜のようだ（三人称）",
+   "new": "〜のようだ（彼・彼女が）",
+   "target": "scheint",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b912d892-03c2-4106-977f-656a996e03f8",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 199,
+   "row_key": "S0199L01",
+   "old": "〜た（完了助動詞三人称）",
+   "new": "〜た（彼・彼女が）",
+   "target": "hat",
+   "old_paren": "完了助動詞三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "2d44c96f-30ff-47e6-ab75-58176ffa6a1f",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 200,
+   "row_key": "S0200L02",
+   "old": "〜したい（三人称複数）",
+   "new": "〜したい（彼らが）",
+   "target": "wollen",
+   "old_paren": "三人称複数",
+   "new_paren": "彼らが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らが",
+     "debut": 213,
+     "example": "彼らが何を達成しようとしているかわかりません。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼らが",
+     "debut": 213,
+     "example": "彼らが何を達成しようとしているかわかりません。"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "9f10efe2-bea8-4cb3-921a-ed302f608fde",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 204,
+   "row_key": "S0204L02",
+   "old": "手伝う（三人称単数現在）",
+   "new": "手伝う（彼・彼女が）",
+   "target": "hilft",
+   "old_paren": "三人称単数現在",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "d8ee66e9-c07a-4cb2-8d95-75fccb50d896",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 211,
+   "row_key": "S0211L01",
+   "old": "〜したくなかった（三人称複数過去）",
+   "new": "〜したくなかった（彼らが）",
+   "target": "wollten",
+   "old_paren": "三人称複数過去",
+   "new_paren": "彼らが",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らが",
+     "debut": 213,
+     "example": "彼らが何を達成しようとしているかわかりません。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼らが",
+     "debut": 213,
+     "example": "彼らが何を達成しようとしているかわかりません。"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ed3e0e33-3d9f-4ab5-aa95-97ee38084fb1",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 223,
+   "row_key": "S0223L01",
+   "old": "〜するつもりです（三人称）",
+   "new": "〜するつもりです（彼・彼女が）",
+   "target": "wird",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "539507fb-8f73-4ebd-bd8b-36e59584832e",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 233,
+   "row_key": "S0233L03",
+   "old": "知っている（三人称単数）",
+   "new": "知っている（彼・彼女が）",
+   "target": "kennt",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "bcc658a4-4dc6-4afb-9bc1-0fe4da772c77",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 235,
+   "row_key": "S0235L01",
+   "old": "〜と言った（三人称過去）",
+   "new": "〜と言った（彼・彼女が）",
+   "target": "sagte",
+   "old_paren": "三人称過去",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "3ce822e4-9647-4c81-82f8-ea6a138203b9",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 239,
+   "row_key": "S0239L01",
+   "old": "読む（三人称現在）",
+   "new": "読む（彼・彼女が）",
+   "target": "liest",
+   "old_paren": "三人称現在",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "deu_for_jpn:S0240L02B01",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 240,
+   "row_key": "deu_for_jpn:S0240L02B01",
+   "old": "聞く（三単現）",
+   "new": "聞く（彼・彼女が）",
+   "target": "hört",
+   "old_paren": "三単現",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b22c2ce1-e7f8-4737-9cc0-72f146acee6c",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 240,
+   "row_key": "S0240L02",
+   "old": "聞く（三単現）",
+   "new": "聞く（彼・彼女が）",
+   "target": "hört",
+   "old_paren": "三単現",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "deu_for_jpn:S0272L01B01",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 272,
+   "row_key": "deu_for_jpn:S0272L01B01",
+   "old": "聞こえる（三単現）",
+   "new": "聞こえる（彼・彼女が）",
+   "target": "klingt",
+   "old_paren": "三単現",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b1fd15df-61fc-40e7-8d38-999266c70fe5",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 272,
+   "row_key": "S0272L01",
+   "old": "聞こえる（三単現）",
+   "new": "聞こえる（彼・彼女が）",
+   "target": "klingt",
+   "old_paren": "三単現",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "deu_for_jpn:S0285L01B01",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 285,
+   "row_key": "deu_for_jpn:S0285L01B01",
+   "old": "話す（三人称）",
+   "new": "話す（彼・彼女が）",
+   "target": "spricht",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "3acdb9dc-ebc3-4380-b86a-c34bf9a54ee0",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 285,
+   "row_key": "S0285L01",
+   "old": "話す（三人称・現在）",
+   "new": "話す（彼・彼女が）",
+   "target": "spricht",
+   "old_paren": "三人称・現在",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "5eb5152c-ac0f-421d-983b-bb74c4660797",
+   "surface": "known_text",
+   "course": "deu_for_jpn",
+   "seed": 293,
+   "row_key": "S0293L01",
+   "old": "〜する予定だ（三人称・未来）",
+   "new": "〜する予定だ（彼・彼女が）",
+   "target": "wird",
+   "old_paren": "三人称・未来",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 132,
+     "example": "彼女が言ったことを覚えていますか？"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "329f9e95-4656-49fc-8ebc-b157d34a21df",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 49,
+   "row_key": "S0049L01",
+   "old": "〜です（三人称）",
+   "new": "〜です（彼・彼女が）",
+   "target": "è",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0070L02C02",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 70,
+   "row_key": "ita_for_jpn:S0070L02C02",
+   "old": "〜だった（三人称）",
+   "new": "〜だった（彼・彼女が）",
+   "target": "era",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0122L01B01",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 122,
+   "row_key": "ita_for_jpn:S0122L01B01",
+   "old": "〜し始めている（3人称）",
+   "new": "〜し始めている（彼・彼女が）",
+   "target": "sta iniziando a",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0122L01C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 122,
+   "row_key": "ita_for_jpn:S0122L01C01",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女が）",
+   "target": "sta",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0122L02C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 122,
+   "row_key": "ita_for_jpn:S0122L02C01",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女が）",
+   "target": "\"sta\"",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "fdb6a91c-8731-464d-b39b-023091089a92",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 122,
+   "row_key": "S0122L01",
+   "old": "〜し始めている（3人称）",
+   "new": "〜し始めている（彼・彼女が）",
+   "target": "sta iniziando a",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0222L01B01",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 222,
+   "row_key": "ita_for_jpn:S0222L01B01",
+   "old": "〜しようとしている（三人称単数）",
+   "new": "〜しようとしている（彼・彼女が）",
+   "target": "sta cercando di",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0222L01C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 222,
+   "row_key": "ita_for_jpn:S0222L01C01",
+   "old": "〜している（三人称単数）",
+   "new": "〜している（彼・彼女が）",
+   "target": "sta",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "47521b86-de53-41f9-9d3f-b1e40c1fd739",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 222,
+   "row_key": "S0222L01",
+   "old": "〜しようとしている（三人称単数）",
+   "new": "〜しようとしている（彼・彼女が）",
+   "target": "sta cercando di",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0223L01B01",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 223,
+   "row_key": "ita_for_jpn:S0223L01B01",
+   "old": "〜するつもりです（三人称単数）",
+   "new": "〜するつもりです（彼・彼女が）",
+   "target": "va a",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0223L01C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 223,
+   "row_key": "ita_for_jpn:S0223L01C01",
+   "old": "行く（三人称単数）",
+   "new": "行く（彼・彼女が）",
+   "target": "va",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "2488ef34-9f5d-4262-803f-c811d14bf609",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 223,
+   "row_key": "S0223L01",
+   "old": "〜するつもりです（三人称単数）",
+   "new": "〜するつもりです（彼・彼女が）",
+   "target": "va a",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0224L01B01",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 224,
+   "row_key": "ita_for_jpn:S0224L01B01",
+   "old": "〜を始めた（三人称）",
+   "new": "〜を始めた（彼・彼女が）",
+   "target": "iniziato a",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "c408d0e3-524b-4006-8fdb-b777e1e7dddc",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 224,
+   "row_key": "S0224L01",
+   "old": "〜を始めた（三人称）",
+   "new": "〜を始めた（彼・彼女が）",
+   "target": "iniziato a",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "a5ce7880-abab-4156-8a6a-1fcf1b4fde3c",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 225,
+   "row_key": "S0225L01",
+   "old": "くれるでしょう（三人称）",
+   "new": "くれるでしょう（彼・彼女が）",
+   "target": "darebbe",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "2772385e-ca71-45c9-8413-7c9081fba14b",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 228,
+   "row_key": "S0228L01",
+   "old": "練習する（三人称）",
+   "new": "練習する（彼・彼女が）",
+   "target": "esercitarsi",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0232L02B01",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 232,
+   "row_key": "ita_for_jpn:S0232L02B01",
+   "old": "〜できる（三人称単数）",
+   "new": "〜できる（彼・彼女が）",
+   "target": "riesce a",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0232L02C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 232,
+   "row_key": "ita_for_jpn:S0232L02C01",
+   "old": "できる（三人称）",
+   "new": "できる（彼・彼女が）",
+   "target": "riesce",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "fea0fbee-e064-4725-8ef7-fa0e6dc11764",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 232,
+   "row_key": "S0232L02",
+   "old": "〜できる（三人称単数）",
+   "new": "〜できる（彼・彼女が）",
+   "target": "riesce a",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "ita_for_jpn:S0236L01C01",
+   "surface": "component_row_latent",
+   "course": "ita_for_jpn",
+   "seed": 236,
+   "row_key": "ita_for_jpn:S0236L01C01",
+   "old": "〜するだろう（三人称）",
+   "new": "〜するだろう（彼・彼女が）",
+   "target": "avrebbe",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "5c99b0fb-e689-43ae-8caf-57722d305a29",
+   "surface": "known_text",
+   "course": "ita_for_jpn",
+   "seed": 261,
+   "row_key": "S0261L01",
+   "old": "〜かもしれない（三人称）",
+   "new": "〜かもしれない（彼・彼女が）",
+   "target": "potrebbe",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "por_for_jpn:S0028L01C01",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 28,
+   "row_key": "por_for_jpn:S0028L01C01",
+   "old": "～です（3人称単数）",
+   "new": "～です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称単数",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "por_for_jpn:S0099L03C01",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 99,
+   "row_key": "por_for_jpn:S0099L03C01",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女は）",
+   "target": "está a",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "ebfb5389-fe5b-4a50-a3af-2ffc12d8a43a",
+   "surface": "known_text",
+   "course": "por_for_jpn",
+   "seed": 112,
+   "row_key": "S0112L01",
+   "old": "〜でした（3人称過去）",
+   "new": "〜でした（彼・彼女は）",
+   "target": "foi",
+   "old_paren": "3人称過去",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "7f026489-4855-483d-a98e-0b6920e96494",
+   "surface": "known_text",
+   "course": "por_for_jpn",
+   "seed": 116,
+   "row_key": "S0116L01",
+   "old": "〜です（3人称）",
+   "new": "〜です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "bf6a8677-44e5-4c88-879a-064e0b3ca827",
+   "surface": "known_text",
+   "course": "por_for_jpn",
+   "seed": 147,
+   "row_key": "S0147L01",
+   "old": "〜でした（3人称過去）",
+   "new": "〜でした（彼・彼女は）",
+   "target": "foi",
+   "old_paren": "3人称過去",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "por_for_jpn:S0149L02C02",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 149,
+   "row_key": "por_for_jpn:S0149L02C02",
+   "old": "〜です（3人称）",
+   "new": "〜です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "por_for_jpn:S0150L02C02",
+   "surface": "component_row_latent",
+   "course": "por_for_jpn",
+   "seed": 150,
+   "row_key": "por_for_jpn:S0150L02C02",
+   "old": "〜です（3人称）",
+   "new": "〜です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "32611120-9d2b-4ae3-b3a5-4de51193d505",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 22,
+   "row_key": "S0022L02",
+   "old": "話す（三人称複数）",
+   "new": "話す（彼らは）",
+   "target": "hablan",
+   "old_paren": "三人称複数",
+   "new_paren": "彼らは",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼らは",
+     "debut": 34,
+     "example": "彼らはいる"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼らは",
+     "debut": 34,
+     "example": "彼らはいる"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "adca6164-fa36-4c69-8137-c84052289329",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 29,
+   "row_key": "S0029L02",
+   "old": "できる（一人称接続法）",
+   "new": "できる（私が）",
+   "target": "pueda",
+   "old_paren": "一人称接続法",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "f1124377-25c1-4619-9f76-8cca26383c6f",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 38,
+   "row_key": "S0038L03",
+   "old": "学び続けている（一人称）",
+   "new": "学び続けている（私が）",
+   "target": "llevo aprendiendo",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "spa_for_jpn:S0038L03B01",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 38,
+   "row_key": "spa_for_jpn:S0038L03B01",
+   "old": "学び続けている（一人称）",
+   "new": "学び続けている（私が）",
+   "target": "llevo aprendiendo",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "449faae0-4cb7-4b30-abbd-6d7b3510d81d",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 41,
+   "row_key": "S0041L01",
+   "old": "感じる（一人称）",
+   "new": "感じる（私が）",
+   "target": "siento",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "51be52b2-c6b3-4e95-9077-90bf94f99e22",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 42,
+   "row_key": "S0042L01",
+   "old": "〜していた（一人称）",
+   "new": "〜していた（私が）",
+   "target": "estaba",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "44cad7cf-b70f-479f-9857-db188d98ec9c",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 44,
+   "row_key": "S0044L02",
+   "old": "必要がある（一人称）",
+   "new": "必要がある（私が）",
+   "target": "necesito",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "af1bb787-d37a-451d-9b36-fec944e71141",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 46,
+   "row_key": "S0046L01",
+   "old": "心配する（一人称）",
+   "new": "心配する（私が）",
+   "target": "preocupo",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "9d3beec3-f5a9-4e8b-86c1-377cab74250d",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 47,
+   "row_key": "S0047L01",
+   "old": "思う（一人称）",
+   "new": "思う（私が）",
+   "target": "creo",
+   "old_paren": "一人称",
+   "new_paren": "私が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "late": [
+    {
+     "needle": "私が",
+     "debut": 49,
+     "example": "あなたは良いことだと私が思うことを知らない"
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "3343c252-aa42-4d90-a5fd-fa6d9129c721",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 99,
+   "row_key": "S0099L02",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女は）",
+   "target": "está",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "spa_for_jpn:S0099L02B01",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 99,
+   "row_key": "spa_for_jpn:S0099L02B01",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女は）",
+   "target": "está",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b588de36-bd6e-4f28-bbad-5d53a56a80be",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 111,
+   "row_key": "S0111L03",
+   "old": "変わります（3人称）",
+   "new": "変わります（彼・彼女は）",
+   "target": "cambia",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "99389be8-9d56-428f-8a3e-22d5354a458a",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 132,
+   "row_key": "S0132L03",
+   "old": "言っていた（3人称不完了過去）",
+   "new": "言っていた（彼・彼女は）",
+   "target": "decía",
+   "old_paren": "3人称不完了過去",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "f6ccd231-b63d-459a-8147-12b8ac75bc64",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 176,
+   "row_key": "S0176L03",
+   "old": "できるでしょう（三人称）",
+   "new": "できるでしょう（彼・彼女は）",
+   "target": "podrá",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "e5ce821b-615b-40e2-8676-e411ba5d1dba",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 197,
+   "row_key": "S0197L02",
+   "old": "働いている（trabajar三人称現在形）",
+   "new": "働いている（彼・彼女は）",
+   "target": "trabaja",
+   "old_paren": "trabajar三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "93267ccd-cc80-4d47-8d78-104ffe67c7fa",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 204,
+   "row_key": "S0204L01",
+   "old": "手伝う（ayudar三人称過去接続法）",
+   "new": "手伝う（彼・彼女は）",
+   "target": "ayudara",
+   "old_paren": "ayudar三人称過去接続法",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "f8ff5bea-8123-42cc-babf-b36798cd790b",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 224,
+   "row_key": "S0224L01",
+   "old": "～したばかり（acabar de三人称現在形）",
+   "new": "～したばかり（彼・彼女は）",
+   "target": "acaba",
+   "old_paren": "acabar de三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "86c17abb-c0d1-4349-91df-621eed348f39",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 232,
+   "row_key": "S0232L02",
+   "old": "できる（poder三人称現在形）",
+   "new": "できる（彼・彼女は）",
+   "target": "puede",
+   "old_paren": "poder三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "685da45f-67b8-4cd4-ad44-7498a995df12",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 236,
+   "row_key": "S0236L01",
+   "old": "～するつもりだった（ir過去三人称）",
+   "new": "～するつもりだった（彼・彼女は）",
+   "target": "iba",
+   "old_paren": "ir過去三人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "be5099c5-fbf1-4082-a5e6-251e1d50ec9c",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 268,
+   "row_key": "S0268L01",
+   "old": "送った（enviar三人称過去形）",
+   "new": "送った（彼・彼女は）",
+   "target": "envió",
+   "old_paren": "enviar三人称過去形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "088b594f-cf82-4273-a3a2-19dfe1dc800c",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 272,
+   "row_key": "S0272L01",
+   "old": "聞こえる、～のようだ（sonar三人称現在形）",
+   "new": "聞こえる、～のようだ（彼・彼女は）",
+   "target": "suena",
+   "old_paren": "sonar三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "b9882142-a92f-4592-a3b6-7f57f75d85ca",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 279,
+   "row_key": "S0279L01",
+   "old": "残っていた（quedar三人称過去形）",
+   "new": "残っていた（彼・彼女は）",
+   "target": "quedaba",
+   "old_paren": "quedar三人称過去形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "a7c82cb7-9ee9-4913-8f0a-3343e298b1a0",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 281,
+   "row_key": "S0281L01",
+   "old": "気になる（importar三人称現在形）",
+   "new": "気になる（彼・彼女は）",
+   "target": "importa",
+   "old_paren": "importar三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "5edec236-85e5-4464-bfef-27cbe6a3167f",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 283,
+   "row_key": "S0283L03",
+   "old": "話す（hablar三人称現在形）",
+   "new": "話す（彼・彼女は）",
+   "target": "habla",
+   "old_paren": "hablar三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "1cd2a308-e12c-456f-b90d-4284b4b62272",
+   "surface": "known_text",
+   "course": "spa_for_jpn",
+   "seed": 298,
+   "row_key": "S0298L01",
+   "old": "残っている（quedar三人称現在形）",
+   "new": "残っている（彼・彼女は）",
+   "target": "queda",
+   "old_paren": "quedar三人称現在形",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は〜したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は〜したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": true
+  },
+  {
+   "row_uuid": "5cad2247-787f-41fb-be4f-9c1f8e565bc3",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 70,
+   "row_key": "S0070L02#tile1.known",
+   "old": "〜だった（三人称）",
+   "new": "〜だった（彼・彼女が）",
+   "target": "era",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "fdb6a91c-8731-464d-b39b-023091089a92",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 122,
+   "row_key": "S0122L01#tile0.known",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女が）",
+   "target": "sta",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "090a9cdc-f027-4cec-8185-d3177a5f9eca",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 122,
+   "row_key": "S0122L02#tile0.known",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女が）",
+   "target": "\"sta\"",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "47521b86-de53-41f9-9d3f-b1e40c1fd739",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 222,
+   "row_key": "S0222L01#tile0.known",
+   "old": "〜している（三人称単数）",
+   "new": "〜している（彼・彼女が）",
+   "target": "sta",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "2488ef34-9f5d-4262-803f-c811d14bf609",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 223,
+   "row_key": "S0223L01#tile0.known",
+   "old": "行く（三人称単数）",
+   "new": "行く（彼・彼女が）",
+   "target": "va",
+   "old_paren": "三人称単数",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "fea0fbee-e064-4725-8ef7-fa0e6dc11764",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 232,
+   "row_key": "S0232L02#tile0.known",
+   "old": "できる（三人称）",
+   "new": "できる（彼・彼女が）",
+   "target": "riesce",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "bc50f836-1144-436d-a9bc-f57fa68db274",
+   "surface": "card_tile",
+   "course": "ita_for_jpn",
+   "seed": 236,
+   "row_key": "S0236L01#tile0.known",
+   "old": "〜するだろう（三人称）",
+   "new": "〜するだろう（彼・彼女が）",
+   "target": "avrebbe",
+   "old_paren": "三人称",
+   "new_paren": "彼・彼女が",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "したい（彼が）"
+    },
+    {
+     "needle": "彼女が",
+     "debut": 36,
+     "example": "彼女がイタリア語を話す時に中断しないようにしています。"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女が",
+     "debut": null,
+     "example": null
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "2b621124-9ef5-4072-b9b9-18c351d21245",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 28,
+   "row_key": "S0028L01#tile0.known",
+   "old": "～です（3人称単数）",
+   "new": "～です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称単数",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "24962679-a120-4459-b468-935da9a6f752",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 99,
+   "row_key": "S0099L03#tile0.known",
+   "old": "〜している（3人称）",
+   "new": "〜している（彼・彼女は）",
+   "target": "está a",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "b1fcd622-a4f4-49e8-b2a6-88fca3155ec4",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 148,
+   "row_key": "S0148L02#tile1.known",
+   "old": "〜でした（3人称過去）",
+   "new": "〜でした（彼・彼女は）",
+   "target": "foi",
+   "old_paren": "3人称過去",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "7e030442-6c44-4829-8b50-201457eb49b4",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 149,
+   "row_key": "S0149L02#tile1.known",
+   "old": "〜です（3人称）",
+   "new": "〜です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  },
+  {
+   "row_uuid": "a1f4bcf6-350b-4381-8677-56b86fb6f236",
+   "surface": "card_tile",
+   "course": "por_for_jpn",
+   "seed": 150,
+   "row_key": "S0150L02#tile1.known",
+   "old": "〜です（3人称）",
+   "new": "〜です（彼・彼女は）",
+   "target": "é",
+   "old_paren": "3人称",
+   "new_paren": "彼・彼女は",
+   "stem_changed": false,
+   "checks": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    },
+    {
+     "needle": "彼",
+     "debut": 16,
+     "example": "彼は～したい"
+    },
+    {
+     "needle": "彼女は",
+     "debut": 17,
+     "example": "彼女は～したい"
+    }
+   ],
+   "late": [
+    {
+     "needle": "彼・彼女は",
+     "debut": 197,
+     "example": "働いています（彼・彼女は）"
+    }
+   ],
+   "has_clip": false
+  }
+ ],
+ "families": [
+  {
+   "family": "一人称  ->  私が",
+   "n": 21
+  },
+  {
+   "family": "2人称  ->  あなたが",
+   "n": 1
+  },
+  {
+   "family": "3人称現在  ->  彼・彼女が",
+   "n": 2
+  },
+  {
+   "family": "二人称  ->  あなたが",
+   "n": 12
+  },
+  {
+   "family": "三人称  ->  彼・彼女が",
+   "n": 17
+  },
+  {
+   "family": "3人称  ->  彼・彼女が",
+   "n": 8
+  },
+  {
+   "family": "二人称接続法  ->  あなたが",
+   "n": 1
+  },
+  {
+   "family": "一人称接続法  ->  私が",
+   "n": 2
+  },
+  {
+   "family": "一人称現在  ->  私が",
+   "n": 3
+  },
+  {
+   "family": "一人称未来  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "二人称未来  ->  あなたが",
+   "n": 1
+  },
+  {
+   "family": "助動詞・一人称  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "二人称現在  ->  あなたが",
+   "n": 6
+  },
+  {
+   "family": "完了助動詞三人称  ->  彼・彼女が",
+   "n": 1
+  },
+  {
+   "family": "三人称複数  ->  彼らが",
+   "n": 5
+  },
+  {
+   "family": "二人称条件  ->  あなたが",
+   "n": 1
+  },
+  {
+   "family": "三人称単数現在  ->  彼・彼女が",
+   "n": 1
+  },
+  {
+   "family": "三人称複数過去  ->  彼らが",
+   "n": 1
+  },
+  {
+   "family": "二人称過去  ->  あなたが",
+   "n": 1
+  },
+  {
+   "family": "三人称単数  ->  彼・彼女が",
+   "n": 11
+  },
+  {
+   "family": "三人称過去  ->  彼・彼女が",
+   "n": 1
+  },
+  {
+   "family": "三人称現在  ->  彼・彼女が",
+   "n": 1
+  },
+  {
+   "family": "三単現  ->  彼・彼女が",
+   "n": 4
+  },
+  {
+   "family": "一人称条件  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "一人称・現在  ->  私が",
+   "n": 2
+  },
+  {
+   "family": "二人称・現在  ->  あなたが",
+   "n": 2
+  },
+  {
+   "family": "三人称・現在  ->  彼・彼女が",
+   "n": 1
+  },
+  {
+   "family": "三人称・未来  ->  彼・彼女が",
+   "n": 1
+  },
+  {
+   "family": "一人称・過去  ->  私が",
+   "n": 2
+  },
+  {
+   "family": "三人称複数  ->  彼ら",
+   "n": 2
+  },
+  {
+   "family": "一人称複数現在  ->  私たち",
+   "n": 1
+  },
+  {
+   "family": "三人称複数助動詞  ->  彼ら",
+   "n": 2
+  },
+  {
+   "family": "三人称複数半過去  ->  彼ら",
+   "n": 1
+  },
+  {
+   "family": "3人称単数  ->  彼・彼女は",
+   "n": 2
+  },
+  {
+   "family": "3人称  ->  彼・彼女は",
+   "n": 15
+  },
+  {
+   "family": "3人称過去  ->  彼・彼女は",
+   "n": 4
+  },
+  {
+   "family": "三人称  ->  彼・彼女は",
+   "n": 2
+  },
+  {
+   "family": "接続法・tu形  ->  君は",
+   "n": 4
+  },
+  {
+   "family": "tu形  ->  君は",
+   "n": 2
+  },
+  {
+   "family": "3人称・不完了過去  ->  彼・彼女は",
+   "n": 1
+  },
+  {
+   "family": "一人称  ->  私は",
+   "n": 2
+  },
+  {
+   "family": "三人称複数  ->  彼らは",
+   "n": 1
+  },
+  {
+   "family": "二人称  ->  あなた",
+   "n": 3
+  },
+  {
+   "family": "1人称単数過去  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "3人称不完了過去  ->  彼・彼女は",
+   "n": 1
+  },
+  {
+   "family": "2人称  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "1人称過去  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "tener一人称過去形  ->  私が",
+   "n": 2
+  },
+  {
+   "family": "現在完了、二人称  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "ver一人称過去形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "dejar二人称過去形  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "hacer一人称現在形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "dejar一人称過去形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "trabajar三人称現在形  ->  彼・彼女は",
+   "n": 1
+  },
+  {
+   "family": "decir三人称複数現在形  ->  彼らは",
+   "n": 1
+  },
+  {
+   "family": "querer三人称複数現在形  ->  彼らは",
+   "n": 1
+  },
+  {
+   "family": "terminar一人称複数接続法  ->  私たちは",
+   "n": 1
+  },
+  {
+   "family": "hacer二人称条件法  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "pedir一人称過去接続法  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "ayudar二人称過去接続法  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "ayudar三人称過去接続法  ->  彼・彼女は",
+   "n": 1
+  },
+  {
+   "family": "pensar三人称複数現在形  ->  彼らは",
+   "n": 1
+  },
+  {
+   "family": "decir三人称複数過去形  ->  彼らは",
+   "n": 1
+  },
+  {
+   "family": "querer三人称複数過去形  ->  彼らは",
+   "n": 1
+  },
+  {
+   "family": "saber一人称複数現在形  ->  私たちは",
+   "n": 1
+  },
+  {
+   "family": "pasar二人称過去形  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "salir一人称過去形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "tomar一人称過去形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "hacer一人称過去形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "ver二人称過去形  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "acabar de三人称現在形  ->  彼・彼女は",
+   "n": 1
+  },
+  {
+   "family": "poder三人称現在形  ->  彼・彼女は",
+   "n": 1
+  },
+  {
+   "family": "conocer一人称過去形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "ir過去三人称  ->  彼・彼女は",
+   "n": 1
+  },
+  {
+   "family": "haber一人称現在形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "pensar一人称過去形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "devolver接続法三人称複数  ->  彼らは",
+   "n": 1
+  },
+  {
+   "family": "responder接続法一人称  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "estar二人称未来形  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "creer一人称現在形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "estar一人称未来形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "saber一人称現在形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "referirse二人称現在形  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "haber二人称現在形  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "enviar三人称過去形  ->  彼・彼女は",
+   "n": 1
+  },
+  {
+   "family": "preocuparse一人称現在形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "sonar三人称現在形  ->  彼・彼女は",
+   "n": 1
+  },
+  {
+   "family": "tener二人称現在形  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "tener二人称過去形  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "quedar三人称過去形  ->  彼・彼女は",
+   "n": 1
+  },
+  {
+   "family": "importar三人称現在形  ->  彼・彼女は",
+   "n": 1
+  },
+  {
+   "family": "terminar一人称現在形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "empezar二人称接続法現在形  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "hablar三人称現在形  ->  彼・彼女は",
+   "n": 1
+  },
+  {
+   "family": "conocer二人称現在形  ->  あなた",
+   "n": 1
+  },
+  {
+   "family": "preguntarse一人称現在形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "esperar一人称現在形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "decir一人称過去形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "necesitar一人称過去形  ->  私が",
+   "n": 1
+  },
+  {
+   "family": "hablar三人称複数現在形  ->  彼らは",
+   "n": 1
+  },
+  {
+   "family": "quedar三人称現在形  ->  彼・彼女は",
+   "n": 1
+  }
+ ]
+}
