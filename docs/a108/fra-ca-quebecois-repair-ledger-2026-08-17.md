@@ -122,7 +122,15 @@ Both produce a masculine pronoun with feminine agreement. Both date from 2026-07
 
 **6c. The presentation narrator changes voice mid-course.** `voice_config` names Sonia (`en-GB-SoniaNeural`); the 2026-07-29 pass rendered 1,671 presentation clips as `xai_gfzdpspr5fdp` (Tom) against 1,386 earlier Sonia clips. **The render path did not honour `voice_config.voices.presentation`.** A pipeline defect, untouched.
 
-**6d. The autolink trap generalises.** Any course in the 674-row stale-seed ledger has the same problem: a re-render creates the right clip, the trigger refuses to attach it, and the pass reports success. **Run the relink query before costing any of them** — most of the spend may not be real.
+**6d. The pod corpus is a separate register question — GAP in my own scope check.** My scope check covered seeds, legos, phrases and presentations. It did **not** cover the pod roles, and an independent census caught that: `pod_explainer` (1,090 clips) and `pod_take_g` (182) also carry French, and they are live — `pod_legos.explainer_audio_id` is 429/429 linked and 140/232 pod sentences carry a take-g reference.
+
+They are **not** metropolitan residue from the conversion: the 15 `français` hits all read *"le français québécois"*, correctly naming the dialect. But the pod scenarios are a separate corpus (restaurant, station) written in standard register — *"Je vais prendre l'agneau, s'il vous plaît"*, *"Je veux, un verre de vin"* — where the course's seed side says `m'as` and `j'veux`. 17 clips carry uncontracted `je veux` / `je vais`.
+
+Uncontracted forms are valid Quebec French, so this is a **methodology call, not a data defect**, and it is not counted in any figure above. It needs a human ruling. Note also that `pod_take_g` uses `fr-CA-JeanNeural` — so Jean is not unused after all.
+
+**6e. The two SSML builders disagree on `xml:lang`.** `services/tts-service.cjs:353` hardcodes `<speak xml:lang="en-US">` regardless of the target voice, while `services/azure-tts-service.cjs:162-164` derives the locale from the voice name. An explicit `<voice name="fr-CA-...">` governs pronunciation, so this is very likely inert — but it is unverified, and it means **my 16 renders (via `azure-tts-service`, correctly tagged `fr-CA`) were not built identically to what the phase8 production path would emit.** Worth reconciling before the next render on any regional-variant course.
+
+**6f. The autolink trap generalises.** Any course in the 674-row stale-seed ledger has the same problem: a re-render creates the right clip, the trigger refuses to attach it, and the pass reports success. **Run the relink query before costing any of them** — most of the spend may not be real.
 
 ---
 
