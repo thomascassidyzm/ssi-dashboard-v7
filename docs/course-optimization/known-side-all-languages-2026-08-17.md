@@ -10,7 +10,33 @@ then how contract resolution works.
 
 All 34 now run. **198,832 drilled prompts, 67,650 raw findings.**
 
-**Confirmed defects: 8.** Everything else on this page is a reading list.
+**Confirmed defects: 10.** But the important number is the one below.
+
+### The 16,715 findings that are not morphology
+
+The raw findings split into two kinds, and they are **not** equally trustworthy:
+
+| kind | count | what it means |
+|---|---|---|
+| `unknown gloss` | 49,118 | the word never appears in the course at all |
+| **`not introduced until`** | **16,715 (25%)** | **the word IS taught by this course — just LATER than the prompt that uses it** |
+
+The second class is far stronger evidence, and this is the single most useful thing to come out of
+the sweep. The whole reason a raw count is untrustworthy is that the matcher cannot recognise an
+inflected form of a taught word — but a `not introduced until` finding means the exact form **did**
+match a taught gloss. Morphology blindness cannot easily manufacture it. These are candidate
+**ordering defects**: the learner is prompted with a word before they have been given it.
+
+I verified this end-to-end on German rather than assuming it. In `eng_for_deu`, `denke` first
+appears as a LEGO at **seed 47**, and prompts use it at **S26, S38 and S46** — twenty-one seeds
+early. `es tut mir leid` is used at S84 and debuts at S139. That is 106 of `eng_for_deu`'s 486
+findings, and it is authoring, not morphology.
+
+**This class should be the next pass.** One caveat, stated: for Japanese and Chinese a segmenter
+fragment could coincidentally match a later lego's fragment, so the CJK share of the 16,715 needs
+its own adjudication. German is clean because German tokenises on spaces.
+
+Everything else on this page is a reading list.
 
 That gap between 67,650 and 8 is the honest headline, and the reason for it is the point of the
 whole exercise. For these languages the matcher compares **exact word forms**. It cannot tell an
@@ -56,7 +82,7 @@ can usually name".
 | **cym** | 2 | 474 | 38 | 80 | 474 prompts total; too few to read |
 | **yor** | 1 | 168 | 0 | **0** | **0 carries no information** — 168 prompts, 43 distinct word types |
 
-### The 8 confirmed defects
+### The 10 confirmed defects
 
 Found by adjudicating the top repeated findings against the real corpus. Reported, **not fixed** —
 that was the scope. Each needs a decision from a person who knows the course.
@@ -86,7 +112,21 @@ that was the scope. Each needs a decision from a person who knows the course.
    4/20/55/69 *with an attached tatweel* (U+0640, category `Lm`, which survives stemming), so those
    debut keys can never match their own later fused uses. This one needs a **tokenizer** fix, not a
    contract fix.
-8. **A defect in the matcher itself, found and fixed here** — see below.
+8. **`eng_for_deu` — 106 ordering defects**, of which `denke` (taught S47, used S26/S38/S46) and
+   `es tut mir leid` (taught S139, used S84) are verified by hand. See the section above: this is
+   the strongest class on the estate.
+9. **`zho_for_gle` — the inventory has enshrined a *mutated* form as the headword.** `dhéanamh` (18
+   occurrences) and `bhaint` (21) appear **only** lenited; the radicals `déanamh`/`baint` never
+   occur. The day a prompt uses the radical, the gate will report the correct form as unknown.
+   Exact-form matching doesn't merely miss mutations — it can canonicalise one.
+10. **A defect in the matcher itself, found and fixed here** — see below.
+
+**And one strong negative result.** Welsh: all 38 `ita_for_cym` findings are 9 word types, and every
+one is accounted for — 26 hits are soft mutation of a radical the course taught (`ddeud`←deud,
+`drio`←trio), 12 are the fused definite-article clitic `'r` welding onto a content word
+(`cofio'r` = "remember THE"), 1 is `wyt`. **Genuinely untaught Welsh vocabulary: zero of 38.** That
+is the argument for advisory-not-blocking in a single number, measured on the only Welsh corpus
+that exists.
 
 ### The matcher defect, found and fixed
 
@@ -162,6 +202,13 @@ Before trusting a single per-course result:
 - **`por` is European Portuguese.** A pt-BR course needs a revision, not this file.
 - **The recorded "1,126 false Arabic defects" figure is stale** and must not be re-cited against this
   gate — it belongs to the old ASCII-only tokenizer. Arabic `،؟؛` separate correctly today.
+- **Four tokenizer-level gaps that no contract file can close**, all measured, all left unfixed:
+  `expandContractions` is English and runs on *every* known language, so German `"Wie geht's dir?"`
+  tokenises to `["wie","geht","is"]` — inventing an English token (dormant: `eng_for_deu` has zero
+  apostrophes in 5,880 prompts). Welsh `'r`/`'n` weld onto content words, which is 12 of the 38
+  Welsh findings. Irish `an tSínis` fuses to `tsínis` and `ár n-athair` splits to a stray `n`.
+  German `ß` and `ss` do not unify — dormant in `eng_for_deu`, but a Swiss-orthography `deu_ch`
+  course would read as a wholly separate lexeme inventory.
 - **Not in effect for live submissions.** See the landing line.
 
 ---
