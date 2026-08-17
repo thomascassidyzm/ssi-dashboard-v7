@@ -91,7 +91,7 @@ slice of rows. Read the real voice from `course_audio`, never `listening_pods.sp
 | Chinese | `zho` | APPROVED | Wei (m, xai) + ara (f, xai) | Approved 2026-08-17. Pick crosses both blocks; Hui not picked. `ara` here is the VOICE id, not the language code. |
 | Croatian | `hrv` | APPROVED | Srecko (m, azure) + Gabrijela (f, azure) | Approved as sampled, 2026-08-17. |
 | Danish | `dan` | APPROVED | `0ih5oi34` (m, xai) + `ara` (f, xai) | Approved 2026-08-17. Production pair; official pool Mads/Astrid NOT picked. |
-| Dutch | `nld` | PENDING his listen | — | Not yet listened. |
+| Dutch | `nld` | APPROVED — locked, **render BLOCKED** | Bas (m, xai) + Lieke (f, xai) | Official-pool pair approved 2026-08-17. Both production voices REJECTED. No re-render until #800 end-click is fixed and ear-verified — Tom's own instruction. A-131 collision open, see below. |
 | Estonian | `est` | PENDING his listen | — | Not yet listened. |
 | Finnish | `fin` | PENDING his listen | — | Not yet listened. |
 | French | `fra` | PENDING his listen | — | Not yet listened. |
@@ -192,3 +192,56 @@ single Azure pool pair with no production fork.
 *Relayed, not verbatim.* The two **in-production** voices are his pick: **`0ih5oi34`** as male and
 **`ara`** as female — the same `ara` he ruled female on Chinese. The official-pool pair the doc shows
 for Danish (Mads, Astrid) is **not** his pick.
+
+### 2026-08-17 — Dutch (`nld`) — APPROVED on the official pool, render BLOCKED
+
+*Relayed, not verbatim.* **Cast locked as Bas (m, xai) + Lieke (f, xai)** — the official-pool pair —
+for all future rendering.
+
+**Both in-production Dutch voices are REJECTED**: `247783ebdd51` (88 clips) and `a13662ba951c`
+(85 clips), both tagged male in the doc. His stated reasons: they are misgendered in the labels, and
+not good enough anyway.
+
+**Render is blocked by his own instruction.** Dutch's ~173 existing clips sit on now-rejected voices,
+so the language is heading for a full re-render — but **no bulk Dutch re-render until the #800
+end-click pipeline defect is fixed and ear-verified**. Dutch is sequenced behind #800. Nothing was
+rendered; the cost is flagged below rather than incurred.
+
+**Third mislabel proven, and it widens the defect.** `tools/pod-voices-xai.json` `nl` block:
+
+| voice_id | name | record says | doc says |
+|---|---|---|---|
+| `247783ebdd51` | **Noor** | **f** | male |
+| `a13662ba951c` | Thijs | m | male |
+| `58d27475085e` | Femke | f | — |
+| `244e27b39200` | Ruben | m | — |
+
+`ara` and `eve` sit in the file's `multilingual` block, so a plausible narrow theory was that only
+multilingual voices were mishandled. **Noor is a plain language-specific `nl` voice and is
+mislabelled too — that kills the narrow theory.** The doc's entire "In production now" column emits
+male regardless of any record, consistent with the 41-male / 0-female count.
+
+Note also that the doc's official-pool names for Dutch — **Bas and Lieke** — appear nowhere in that
+file's `nl` block (Thijs, Femke, Noor, Ruben). Third language showing **two separate voice
+inventories**.
+
+#### The A-131 collision — Tom's call, not ours
+
+`docs/a108/t22-nld-a131-closeout-2026-08-17.md` records Tom ruling, **verbatim**, on one Dutch clip —
+`nld_for_eng` pod-0 line `SC08-S004`, clip `7e08e470-61a2-49ae-8614-222ed9155a75`:
+
+> "A-131 these are all correct but the original - which I don't believe I marked as wrong sounds best.
+> All the others have a slight click off - which to me, sounds like a sharp switch off of a
+> compression algorithm"
+
+Consequence recorded in the closeout: **"The original live take stays. The three re-rendered
+candidates are discarded and are never to be shipped — not now, not later."**
+
+That surviving original sits on a Dutch production voice — the very voices T-21 has now rejected. **A
+wholesale Dutch re-render onto Bas + Lieke would replace the exact clip he ruled must stay.** The two
+rulings were about different things (A-131 = register and the end click on one clip; T-21 = the voice
+cast for the language), and either reading is defensible.
+
+**This is a genuine taste-fork and it is Tom's call.** Nothing about that clip has been touched — not
+deleted, not relinked, not queued. It is recorded here so the collision is visible **before** anyone
+renders Dutch, which is the whole reason the render must not start now.
