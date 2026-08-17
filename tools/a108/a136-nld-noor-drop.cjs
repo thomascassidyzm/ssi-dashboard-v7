@@ -527,8 +527,22 @@ function write (obj, kind) {
 
   if (!has('--apply') && !sampleN) { console.log('\nnothing to do — pass --plan, --sample N, --apply, --cast or --verify'); return }
 
-  // Only clips still on Noor are eligible, so --apply after --sample resumes cleanly.
-  const todo = sampleN ? rerender.slice(0, sampleN) : rerender
+  // Only clips still on Noor are eligible, so --apply after --sample resumes
+  // cleanly, and a killed run resumes by simply being re-run.
+  //
+  // --slice k/n partitions the work so several workers can run at once without
+  // racing. The partition is by position in a deterministic plan order, so the
+  // slices are disjoint by construction rather than by locking. Renders are
+  // ~45s each against xAI and everything else in the loop is fast, so this is
+  // the only lever that matters on a 300-clip batch.
+  let todo = sampleN ? rerender.slice(0, sampleN) : rerender
+  const sliceArg = has('--slice') ? argv[argv.indexOf('--slice') + 1] : null
+  if (sliceArg) {
+    const [k, n] = sliceArg.split('/').map(Number)
+    if (!(n > 0) || !(k >= 1 && k <= n)) throw new Error(`--slice wants k/n with 1<=k<=n, got ${sliceArg}`)
+    todo = todo.filter((_, i) => i % n === (k - 1))
+    console.log(`  slice ${k}/${n}          ${todo.length} clip(s) this worker`)
+  }
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'a136-nld-'))
   const log = { step: sampleN ? `sample(${sampleN})` : 'apply', course: COURSE,
     approval: { by: 'tom', when: '2026-08-17', ruling: 'A-136', verbatim: REASON },
@@ -548,7 +562,10 @@ function write (obj, kind) {
     if (failed && sampleN) { console.log('\nSAMPLE FAILED — stopping. Nothing beyond this clip was rendered.'); break }
   }
 
-  if (!sampleN) {
+  // Relinks are cheap and must happen exactly once, so they belong to the whole
+  // run or to worker 1 — never to every slice.
+  const doRelinks = !sampleN && (!sliceArg || sliceArg.startsWith('1/'))
+  if (doRelinks) {
     for (const c of relink) {
       const r = relinkOne(c)
       log.relinks.push(r)
@@ -563,7 +580,7 @@ function write (obj, kind) {
     cost_usd: +(log.records.reduce((s, r) => s + (r.cost_usd || 0), 0).toFixed(6)),
   }
   if (done) runSql(`update courses set audio_stamp = now() where course_code = ${lit(COURSE)};`)
-  write(log, sampleN ? 'sample' : 'apply')
+  write(log, sampleN ? 'sample' : `apply${sliceArg ? '-slice' + sliceArg.replace('/', 'of') : ''}`)
   console.log(`\nswapped ${done}, failed ${failed}, relinked ${log.relinks.length}, spend $${log.totals.cost_usd.toFixed(4)}`)
   if (failed) process.exitCode = 1
 })().catch(e => { console.error(e.stack || e.message); process.exit(1) })
