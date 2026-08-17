@@ -473,5 +473,175 @@ Build 2 when an edit had in fact happened.
 
 ---
 
-*Read-only session throughout. Nothing generated, nothing deleted, nothing relinked,
-no TTS spent, nothing posted to Deborah.*
+# ⚑ LIVE FINDINGS — the pool opened at 13:40Z and this is the answer
+
+Everything above was written while the origin was returning 522. It reopened, and the
+picture changed. **The revert alarm has a confirmed mechanism, and it is not the one
+anybody has been chasing.**
+
+## The mechanism: applying her rulings is what destroys her audio
+
+Deborah's earlier Basque rulings were applied in **one batch at
+`2026-08-14 19:38:01.972581+00`**. Four rows, one transaction (Tom's
+`docs/eus-deborah-rulings-2026-08-14/apply-applied-log.json`, commit `be910c9f`).
+Every one of them had a live `target1_audio_id` **before** that write. Every one is
+**NULL now**:
+
+| Round | Row | Old target text | Old target1 clip | Now |
+|---|---|---|---|---|
+| R18 | `S0006L02B03` | beste bat nahi dut | `a6cb1dcc…` | **NULL** |
+| R18 | `S0006L02U04` | beste bat praktikatu nahi dut | `f3f06e93…` | **NULL** → *restored, see below* |
+| R152 | `S0055L04U06` | ez zait gustatzen ondo lo egin ez dudanean esna egotea | `55988a0f…` | **NULL** |
+| R299 | `S0115L02U04` | euskaraz hitz egiteko prest sentitzen naiz | `380fdbc8…` | **NULL** |
+
+Plus Tom's separate A-122 flip on 2026-08-16 14:27:48Z (`S0055L04`, `izatea`→`egotea`):
+**both `target1_audio_id` and `target2_audio_id` NULL**, and one older casualty at
+R105 (`S0037L02` `kontuz`, silent since 2026-07-31).
+
+**Why.** `null_lego_audio_on_text_change` / `null_phrase_audio_on_text_change` re-resolve
+the link on any text change via `audio_id_for_text()`, matching on `text_normalized`.
+No clip existed for the new Basque text, so the function returned NULL. I confirmed
+there is **no `egotea` clip anywhere in the estate** — not in any course, any voice.
+
+**So the loop she is trapped in is this:** she corrects text and re-voices it → her
+ruling is applied to the text by a later batch → the trigger throws her audio link
+away → she comes back, finds the text right and her voice gone, and reports it as a
+reversion. **She is not wrong that her work is being destroyed. It is — by the act of
+applying her own text verdicts.**
+
+### Why the 08-14 all-clear and her experience both stand
+
+The 08-14 forensics window ran to **19:40Z**. That batch landed at **19:38:01Z —
+two minutes inside it.** Its three detectors asked "did any clip's `s3_key` return to a
+previous value?" and "did any pointer return to a previous clip?" — both correctly zero.
+**Nobody asked "did any pointer go to NULL?"** So "no reversion, nothing lost, Deborah
+needs to redo nothing" was true about *bytes* and wrong about *reachability*. Both
+reports are honest; the detector set had a hole exactly the shape of this bug.
+
+### Current damage: 7 silent slots, and nothing has touched her audio since 08-14
+
+`content_audit_log` since 2026-08-14 19:40Z, `eus_for_eng`: **`course_audio` 0 rows,
+`course_practice_phrases` 0 rows**, `course_legos` **1** (Tom's deliberate flip),
+`courses` 229 (stamp triggers only).
+
+**So no in-place byte swap and no phrase change has occurred in three days.** The 109
+new eus clips dated 2026-08-17 01:01Z are pod-0 conversation lines, not her work.
+
+> **Tell Deborah to stop re-doing Basque audio.** Nothing is overwriting it. What she is
+> hitting is **absence** — seven slots with no Basque clip at all — not reversion. Redoing
+> a take cannot fix a NULL pointer, so the work she is doing right now cannot stick.
+
+### What I did about it
+
+- **Restored 1 of the 7, free.** `S0006L02U04` ("hitz bat ikasten saiatzen ari naiz"):
+  two clips already existed in `eus_for_spa` with **exactly** this course's target voices
+  (`azure_eu-ES-AinhoaNeural` / `AnderNeural`), correct roles, language `eus`. I HEAD-checked
+  both S3 objects alive (38,304 B each) **before** moving any pointer, then relinked and
+  re-verified both keys resolve. Before-image and a one-line rollback:
+  `docs/deborah/eus-relink-2026-08-17-before-image.json`. No TTS, nothing deleted.
+- **Queued an audio pass for the other 6** rather than rendering them — TTS costs money
+  and is yours to approve: `queue-audio-pass.cjs eus_for_eng` (touched the existing pending
+  request). The 6 are `S0055L04` (lego), `S0055L04U06`, `S0115L02U04`, `S0006L02B03`,
+  `S0037L02` (lego) and `S0037L02B01`.
+
+## R95 — her named instance: text landed, and the real defect is a different one
+
+Her R95 report has two halves, and they need splitting:
+
+- **"Her corrected Builds REVERTED" — they did not.** `S0033L01B02` reads
+  `zenbat denbora daramazu ikasten?` and `B03` reads `noiz arte elkartu nahi duzu?`
+  right now. Both of her corrections are in place, both clips carry the matching text,
+  and the bytes were swapped to her 08-14 takes. Nothing to restore. **No redo-snapshot
+  needed — my Channel D is refuted for R95.**
+- **"Correct versions need `daramazu` and `noiz arte`, not yet introduced" — CONFIRMED,
+  and worse than she put it.** Measured: `daramazu` and `noiz arte` appear in **no
+  `course_legos` row anywhere in the course** — they are never introduced at all. They
+  are first *used* at R95, in her own corrected Builds, and appear 3 and 5 times
+  course-wide. So her linguistically-correct fix imports vocabulary the course never
+  teaches. **This needs your ruling**: introduce `daramazu` / `noiz arte` as legos, or
+  re-word the Builds within taught vocabulary.
+
+## Her `sentitzen` sibling — found
+
+She asked us to find a sibling she corrected in an earlier round and check consistency.
+**It is `eus_for_eng:S0114L02U05` at R297** — `ikasten ari naizela sentitzen dut`,
+"I feel as if I'm learning". The inconsistent row is one round later:
+
+> **`eus_for_eng:S0115L02U05` (R299) — `ikasten ari naizela nagoenik sentitzen dut`**
+
+It is wrong on *both* counts. It is **affirmative** yet carries `nagoenik`, which her
+ruling says is negative-context only; and it is structurally broken — `ikasten ari
+naizela` already carries the `-la` complementiser, so `nagoenik` is a second one wedged
+in. Her R299 siblings that *are* negative (`U03`, `B03`, `U01`) all use `nagoenik`
+correctly. **Not fixed — it needs her wording, and it would go silent like the others.**
+
+## R325 — her verdict and the database disagree, and she is right
+
+Kai's relay reads "lan hau CORRECT there — no change, clear any flag." **But the course
+does not say `lan hau`. `S0126L01` teaches `lan honek`**, and applying her actual rule —
+ergative `honek` only as a transitive subject — condemns four live phrases. Basque marks
+transitive subjects ergative (`-k`) and intransitive subjects absolutive (unmarked), and
+`da` is intransitive `izan`:
+
+| Row | Current | Verb | Verdict |
+|---|---|---|---|
+| `S0126L01B03` | lan honek bikaina **da** | intransitive | ✗ → `lan hau bikaina da` |
+| `S0126L01U01` | lan honek ona **da** | intransitive | ✗ → `lan hau ona da` |
+| `S0126L01U03` | lan honek garrantzitsua **da** | intransitive | ✗ → `lan hau garrantzitsua da` |
+| `S0126L01U04` | lan honek oso interesgarria **da** | intransitive | ✗ → `lan hau oso interesgarria da` |
+| seed 126 | Lan honek …forma aldatzen ari da | **transitive** | ✓ correct |
+| `S0126L01U02` | lan honek nire burmuina aldatzen ari da | **transitive** | ✓ correct |
+| `S0126L01U06` | lan hau gustatzen zait | *gustatu* → absolutive | ✓ correct |
+| **`S0126L01` (the LEGO)** | **lan honek** = "this work" | citation form | ⚠ ergative as the taught card |
+
+So "no change" is the one reading her rule does **not** support. Either her verdict was
+about a phrase rather than the LEGO, or the relay compressed it. **Please put the four
+rows above back to her before anything is edited** — I have changed nothing here.
+Separately, `lan honek ona da` glosses "this work is good **for me**" with no
+`niretzat`: the English promises an argument the Basque doesn't have.
+
+## Her closing note — the nld / ara_eg open points, located
+
+They are **not** in `course_qa_flags`: that table holds nothing for nld_for_eng,
+ara_eg_for_eng, eus_for_eng, eng_for_por, eng_for_ita or ara_lb_for_eng — its only rows
+for any of her courses are 4 February `false_positive` rows in spa_for_eng. They are in
+**`audio_flags`**, and they are genuinely unresolved:
+
+| Course | Flags | By | Unresolved |
+|---|---|---|---|
+| `nld_for_eng` | **2** | **`deborah-am-pronunciation-2`** (2026-05-20) | **2** |
+| `nld_for_eng` | 20 | `dashboard_user` (2026-06-08) | 20 |
+| `ara_eg_for_eng` | 1,810 | `gender-prep` (machine, 2026-07-20) | 1,810 |
+| `eus_for_eng` | 4 | `dashboard_user` (2026-06-11) | 4 |
+
+**She is right that hers were not addressed.** Her two nld flags are a short-word TTS
+pronunciation fix for "am", and **one of them has `regen_count = 0` — never regenerated,
+not once.** Two things in them are worth your eye:
+
+- The flagged `known` clip's text is **`'am…'`** — the pronunciation-nudge-by-ellipsis
+  trick. That is precisely the fix the 2026-08-08 forensics proved gets erased by any
+  text-matching pass, because `am…` and `am` are different clips.
+- The paired `presentation` clip's stored text is **`The Dutch for — <phoneme alphabet=…`**
+  — raw SSML baked into `course_audio.text`. Anything that re-renders from stored text
+  without SSML handling will speak the markup aloud.
+
+`ara_eg_for_eng`'s 1,810 are machine gender-prep flags, not hers, and its 11
+`flagged_at` seeds are a separate queue. **Her Egyptian-Arabic points are not in any
+store I can reach** — that part of her note remains an explicit gap, and it is the same
+gap as before: her review has no ticket store behind it, so "addressed or not" cannot be
+tracked.
+
+## Corrections to what I wrote earlier in this document
+
+- My **Channel D** (redo destroyed R95's Builds) is **refuted** — her Builds are intact,
+  and no `seed_redo_snapshots` restore is needed.
+- My **Channel B** is **confirmed, in its NULL branch**: the trigger re-resolves and,
+  finding nothing, nulls. I had framed it as "an older clip wins"; the live failure is
+  "no clip wins".
+- The **Phase 4 numbers are still not mine** — workers **#924** (eng_for_por triage) and
+  **#925** (cross-course sweep) are running and their reports land in this conversation.
+
+---
+
+*Writes this session: exactly one — the `S0006L02U04` relink, before-image and rollback
+recorded. No TTS generated, nothing deleted, no text edited, nothing posted to Deborah.*
