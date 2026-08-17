@@ -1,0 +1,1393 @@
+[
+ {
+  "side": "known",
+  "inner": "接続法",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 16,
+  "courses": [
+   "ita_for_jpn",
+   "por_for_jpn",
+   "spa_for_jpn"
+  ],
+  "examples": [
+   "S0163L01 tile 1: 〜である（接続法） → sia",
+   "S0169L01 tile 2: する（接続法） → faccia"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "女性形",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 14,
+  "courses": [
+   "fra_for_jpn",
+   "ita_for_jpn",
+   "por_for_jpn",
+   "spa_for_jpn"
+  ],
+  "examples": [
+   "S0147L01 tile 1: 親切な（女性形） → gentille",
+   "S0198L01 tile 0: 私の（女性形） → ma"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "複数",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 8,
+  "courses": [
+   "fra_for_jpn",
+   "ita_for_jpn",
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0018L01 tile 1: 〜したい（複数） → voulons",
+   "S0087L01 tile 0: 〜です(複数) → sont"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "私たち",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 7,
+  "courses": [
+   "fra_for_jpn",
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0102L01 tile 0: 試みる(私たち) → essayons",
+   "S0104L01 tile 0: 持つ(私たち) → avons"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "3人称",
+  "bucket": "A",
+  "reason": "person stated as a grammar label — the information is load-bearing but the wording is metalinguistic — authored rewrite to this course's own 3sg marker （彼・彼女が）",
+  "n": 6,
+  "courses": [
+   "ita_for_jpn",
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0122L01 tile 0: 〜している（3人称） → sta",
+   "S0122L02 tile 0: 〜している（3人称） → \"sta\""
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "あなたは",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 6,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0095L01 tile 0: 〜ですか（あなたは） → estás",
+   "S0107L03 tile 0: 〜していました（あなたは） → estavas a"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "私は",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 6,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0096L02 tile 0: 〜です（私は） → estou",
+   "S0101L01 tile 0: 〜しています（私は） → estou a"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "関係詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 6,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0146L01 tile 1: 〜という（関係詞） → que",
+   "S0146L04 tile 1: 〜という（関係詞） → que"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "object marker",
+  "bucket": "A",
+  "reason": "names a particle's grammatical function — ralph P4 names this exact string as the canonical dishonest gloss",
+  "n": 5,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0068L01 tile 1: を → (object marker)",
+   "S0082L02 tile 1: を → (object marker)"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "女性冠詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 5,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0052L05 tile 0: 〜の（女性冠詞） → la",
+   "S0053L03 tile 0: 〜の（女性冠詞） → la"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "私たちは",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 5,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0102L01 tile 0: 〜しています（私たちは） → estamos",
+   "S0104L01 tile 0: 必要です（私たちは） → precisamos"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "女性",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 4,
+  "courses": [
+   "fra_for_jpn",
+   "ita_for_jpn",
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0136L03 tile 1: 友達(女性) → amie",
+   "S0181L02 tile 0: 私の（女性） → ma"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "あなたが",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 4,
+  "courses": [
+   "ita_for_jpn",
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0021L02 tile 0: している（あなたが） → stai",
+   "S0107L03 tile 0: 〜していた（あなたが） → \"stavi\""
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "冠詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 4,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0028L02 tile 0: （冠詞） → il",
+   "S0033L02 tile 0: （冠詞） → l'"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "助動詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 4,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0037L01 tile 0: 〜した（助動詞） → ho",
+   "S0182L01 tile 0: あなたは（助動詞） → hai"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "前置詞+冠詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 4,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0052L04 tile 0: 〜に（前置詞+冠詞） → al",
+   "S0053L04 tile 0: 〜の中に（前置詞+冠詞） → nella"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "女性複数",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 4,
+  "courses": [
+   "ita_for_jpn",
+   "por_for_jpn",
+   "spa_for_jpn"
+  ],
+  "examples": [
+   "S0182L02 tile 0: 私の（女性複数） → le mie",
+   "S0288L01 tile 1: の（女性複数） → das"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "一人称",
+  "bucket": "A",
+  "reason": "person stated as a grammar label — the information is load-bearing but the wording is metalinguistic — authored rewrite to this course's own 1sg marker （私が）",
+  "n": 4,
+  "courses": [
+   "ita_for_jpn",
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0216L01 tile 0: 〜した（一人称） → ho",
+   "S0218L01 tile 0: 〜した（一人称） → ho"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "彼らは",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 4,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0200L01 tile 0: 言う（彼らは） → dizem",
+   "S0210L01 tile 0: 思っています（彼らは） → acham"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "丁寧",
+  "bucket": "C",
+  "reason": "semantic sense or register selector — names part of the message the learner intends, not a property of the target form",
+  "n": 3,
+  "courses": [
+   "fra_for_jpn",
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0011L01 tile 1: 〜したい（丁寧） → aimerais",
+   "S0012L01 tile 2: 〜したい（丁寧） → aimerais"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "再帰",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 3,
+  "courses": [
+   "fra_for_jpn",
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0018L02 tile 0: 私たち（再帰） → nous",
+   "S0214L01 tile 1: 自分を（再帰） → te"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "前置詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 3,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0025L02 tile 0: 〜に（前置詞） → ad",
+   "S0026L04 tile 2: 〜に（前置詞） → ad"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "三人称",
+  "bucket": "A",
+  "reason": "person stated as a grammar label — the information is load-bearing but the wording is metalinguistic — authored rewrite to this course's own 3sg marker （彼・彼女が）",
+  "n": 3,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0070L02 tile 1: 〜だった（三人称） → era",
+   "S0232L02 tile 0: できる（三人称） → riesce"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "定冠詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 3,
+  "courses": [
+   "por_for_jpn",
+   "spa_for_jpn"
+  ],
+  "examples": [
+   "S0036L03 tile 0: （定冠詞） → a",
+   "S0052L05 tile 0: その（定冠詞） → la"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "進行",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 3,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0146L03 tile 0: 〜している（進行） → a",
+   "S0147L05 tile 0: 〜している（進行） → a"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "過去分詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 3,
+  "courses": [
+   "por_for_jpn",
+   "spa_for_jpn"
+  ],
+  "examples": [
+   "S0152L01 tile 1: した（過去分詞） → feito",
+   "S0153L01 tile 2: 言った（過去分詞） → dito"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "進行形",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 3,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0205L02 tile 1: 〜している（進行形） → a",
+   "S0209L02 tile 0: 〜している（進行形） → a"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "状態",
+  "bucket": "C",
+  "reason": "semantic sense or register selector — names part of the message the learner intends, not a property of the target form",
+  "n": 3,
+  "courses": [
+   "por_for_jpn",
+   "spa_for_jpn"
+  ],
+  "examples": [
+   "S0222L01 tile 0: 〜です（状態） → está",
+   "S0062L01 tile 0: （状態）である → estoy"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "三人称複数",
+  "bucket": "A",
+  "reason": "person stated as a grammar label — the information is load-bearing but the wording is metalinguistic — authored rewrite to this course's own 3pl marker （彼ら）",
+  "n": 2,
+  "courses": [
+   "fra_for_jpn",
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0200L03 tile 1: 〜したい（三人称複数） → veulent",
+   "S0211L01 tile 0: 〜した（三人称複数） → hanno"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "私が",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 2,
+  "courses": [
+   "ita_for_jpn",
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0026L03 tile 2: 〜だったら（私が） → fossi",
+   "S0190L01 tile 3: する（私が） → faça"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "私",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 2,
+  "courses": [
+   "ita_for_jpn",
+   "spa_for_jpn"
+  ],
+  "examples": [
+   "S0038L01 tile 0: 〜している（私） → sto",
+   "S0038L03 tile 0: 〜し続けている（私） → llevo"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "私を",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 2,
+  "courses": [
+   "ita_for_jpn",
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0074L01 tile 0: 〜してくれた（私を） → avermi",
+   "S0147L05 tile 1: 感じる（私を） → sentir-me"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "女性複数形",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 2,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0183L01 tile 2: 見た（女性複数形） → viste",
+   "S0185L02 tile 2: 置いてきた（女性複数形） → lasciate"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "三人称単数",
+  "bucket": "A",
+  "reason": "person stated as a grammar label — the information is load-bearing but the wording is metalinguistic — authored rewrite to this course's own 3sg marker （彼・彼女が）",
+  "n": 2,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0222L01 tile 0: 〜している（三人称単数） → sta",
+   "S0223L01 tile 0: 行く（三人称単数） → va"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "条件法",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 2,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0152L01 tile 0: 〜だろう（条件法） → teria",
+   "S0153L01 tile 1: 〜だろう（条件法） → teria"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "男性定冠詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 2,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0154L03 tile 0: 〜に（男性定冠詞） → no",
+   "S0157L03 tile 0: 〜に（男性定冠詞） → no"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "女性名詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 2,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0156L02 tile 0: この〜（女性名詞） → esta",
+   "S0254L01 tile 1: この〜（女性名詞） → esta"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "目的語",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 2,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0222L02 tile 1: 私を（目的語） → me",
+   "S0226L02 tile 1: 私を（目的語） → me"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "接続法・tu形",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it + person stated as a grammar label with a target-language lemma leaked in — the information is load-bearing but the wording is metalinguistic — authored rewrite to this course's own 2sg marker （君は）",
+  "n": 2,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0238L01 tile 1: 伝えた（接続法・tu形） → dissesses",
+   "S0249L01 tile 1: 手伝う（接続法・tu形） → ajudes"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "目的",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 2,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0239L03 tile 1: 〜が（目的） → de",
+   "S0286L01 tile 1: 〜が（目的） → de"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "君は",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 2,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0274L01 tile 0: 持っている（君は） → tens",
+   "S0281L02 tile 0: 気にする？（君は） → importas-te"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "from 探す, to search",
+  "bucket": "A",
+  "reason": "dictionary-form etymology — an authoring note about where the inflected form came from",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0068L01 tile 2: 探して → looking for (from 探す, to search)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "progressive: are ~ing",
+  "bucket": "A",
+  "reason": "aspect metadata — the learner produces nothing from the word 'progressive'",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0068L01 tile 3: います → (progressive: are ~ing)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "question marker",
+  "bucket": "A",
+  "reason": "particle-function label — banned as a gloss by ralph P4",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0068L01 tile 4: か → (question marker)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "from やる, to do",
+  "bucket": "A",
+  "reason": "dictionary-form etymology — an authoring note",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0072L01 tile 0: やっ → doing (from やる, to do)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "progressive: -ing / are ~ing",
+  "bucket": "A",
+  "reason": "aspect metadata",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0072L01 tile 1: ている → (progressive: -ing / are ~ing)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "→ turn out",
+  "bucket": "C",
+  "reason": "honest sense gloss: it says what いく MEANS in this idiom, in plain words",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0094L04 tile 1: いく → go (→ turn out)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "the ... one",
+  "bucket": "C",
+  "reason": "plain-words paraphrase of the fragment, not terminology",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0098L04 tile 0: 方 → way/option (the ... one)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "subject marker",
+  "bucket": "A",
+  "reason": "particle-function label — banned as a gloss by ralph P4",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0098L04 tile 1: が → (subject marker)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "marker",
+  "bucket": "A",
+  "reason": "particle-function label — banned as a gloss by ralph P4",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0107L02 tile 2: を → (marker)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "part 1",
+  "bucket": "A",
+  "reason": "authoring bookkeeping for a word split across two tiles (もち/ろん) — pure internal metadata",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0136L01 tile 0: もち → of course (part 1)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "part 2",
+  "bucket": "A",
+  "reason": "authoring bookkeeping for a word split across two tiles (もち/ろん) — pure internal metadata",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0136L01 tile 1: ろん → of course (part 2)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "potential",
+  "bucket": "A",
+  "reason": "verb-form metadata",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0140L01 tile 0: 見え → see (potential)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "polite",
+  "bucket": "C",
+  "reason": "register — the learner intends politeness",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0150L03 tile 1: いただけますか → could you (polite)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "not",
+  "bucket": "C",
+  "reason": "part of the gloss itself ('(not) very') — stripping it would leave a gloss that means the opposite",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0166L05 tile 0: あまり → (not) very"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "location marker: on/at",
+  "bucket": "A",
+  "reason": "particle-function label — banned as a gloss by ralph P4",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0195L03 tile 1: に → (location marker: on/at)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "object",
+  "bucket": "A",
+  "reason": "case label",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0233L05 tile 0: を → (object)"
+  ]
+ },
+ {
+  "side": "target",
+  "inner": "topic marker",
+  "bucket": "A",
+  "reason": "particle-function label — banned as a gloss by ralph P4",
+  "n": 1,
+  "courses": [
+   "eng_for_jpn"
+  ],
+  "examples": [
+   "S0239L01 tile 1: は → (topic marker)"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "複数形",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "fra_for_jpn"
+  ],
+  "examples": [
+   "S0022L03 tile 2: 話す（複数形） → parlent"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "耳で",
+  "bucket": "C",
+  "reason": "semantic sense or register selector — names part of the message the learner intends, not a property of the target form",
+  "n": 1,
+  "courses": [
+   "fra_for_jpn"
+  ],
+  "examples": [
+   "S0103L01 tile 0: 聞く(耳で) → entendre"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "母音前",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "fra_for_jpn"
+  ],
+  "examples": [
+   "S0200L04 tile 1: 〜ということ（母音前） → qu'ils"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "半過去",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "fra_for_jpn"
+  ],
+  "examples": [
+   "S0203L02 tile 0: 頼む（半過去） → demandais"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "三人称複数助動詞",
+  "bucket": "A",
+  "reason": "person stated as a grammar label — the information is load-bearing but the wording is metalinguistic — authored rewrite to this course's own 3pl marker （彼ら）",
+  "n": 1,
+  "courses": [
+   "fra_for_jpn"
+  ],
+  "examples": [
+   "S0211L02 tile 0: 〜した（三人称複数助動詞） → ont"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "彼が",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 1,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0016L01 tile 1: 話す（彼が） → parla"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "彼らが",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 1,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0022L02 tile 2: 話す（彼らが） → parlano"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "複数冠詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0051L02 tile 0: 〜の（複数冠詞） → i"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "単数",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0052L04 tile 2: 友達（単数） → amico"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "とても",
+  "bucket": "C",
+  "reason": "semantic sense or register selector — names part of the message the learner intends, not a property of the target form",
+  "n": 1,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0073L01 tile 1: 千（とても） → mille"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "過去",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0124L02 tile 0: 思う（過去） → pensavo"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "不定詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0176L02 tile 1: 手伝う（不定詞） → ad aiutare"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "複数の冠詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0195L03 tile 0: （複数の冠詞） → i"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "複数女性",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "ita_for_jpn"
+  ],
+  "examples": [
+   "S0288L01 tile 1: その（複数女性） → le"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "あなた・接続法",
+  "bucket": "MIXED",
+  "reason": "carries both: あなた=content, 接続法=gram",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0015L02 tile 2: 話す（あなた・接続法） → fales"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "関係節",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0022L03 tile 1: 話す（関係節） → que falam"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "3人称単数",
+  "bucket": "A",
+  "reason": "person stated as a grammar label — the information is load-bearing but the wording is metalinguistic — authored rewrite to this course's own 3sg marker （彼・彼女は）",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0028L01 tile 0: ～です（3人称単数） → é"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "人・場所",
+  "bucket": "C",
+  "reason": "semantic sense or register selector — names part of the message the learner intends, not a property of the target form + semantic sense or register selector — names part of the message the learner intends, not a property of the target form",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0085L01 tile 1: 知っている（人・場所） → conheço"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "私たちが",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0110L04 tile 1: 終える（私たちが） → terminarmos"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "自分を",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0115L01 tile 1: 感じる（自分を） → me sinto"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "3人称過去",
+  "bucket": "A",
+  "reason": "person stated as a grammar label — the information is load-bearing but the wording is metalinguistic — authored rewrite to this course's own 3sg marker （彼・彼女は）",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0148L02 tile 1: 〜でした（3人称過去） → foi"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "あなたが・接続法",
+  "bucket": "MIXED",
+  "reason": "carries both: あなたが=content, 接続法=gram",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0149L04 tile 2: 終わる（あなたが・接続法） → acabes"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "定冠詞男性",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0150L03 tile 0: 〜の（定冠詞男性） → o"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "不完全過去",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0151L01 tile 1: 〜でした（不完全過去） → era"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "接続法不完全過去",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0151L03 tile 1: 起こる（接続法不完全過去） → acontecesse"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "縮約",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0153L03 tile 0: 〜の（縮約） → da"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "女性定冠詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0154L04 tile 0: 〜に（女性定冠詞） → à"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "君",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0167L02 tile 0: 必要がある（君） → precisas"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "接続法過去",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0170L02 tile 1: 言ってくれる（接続法過去） → dissesses"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "非人称",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0208L02 tile 0: 〜（非人称） → se"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "時間",
+  "bucket": "C",
+  "reason": "semantic sense or register selector — names part of the message the learner intends, not a property of the target form",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0234L01 tile 0: 〜に（時間） → à"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "tu形",
+  "bucket": "A",
+  "reason": "person stated as a grammar label with a target-language lemma leaked in — the information is load-bearing but the wording is metalinguistic — authored rewrite to this course's own 2sg marker （君は）",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0263L01 tile 1: 言及する（tu形） → referes"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "彼女は",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0268L01 tile 0: 送った（彼女は） → enviou"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "男性形",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0269L04 tile 1: その（男性形） → o"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "君は・丁寧",
+  "bucket": "C",
+  "reason": "person/subject marker — Japanese is pro-drop, the target form is person-inflected, so the marker is the only thing that fixes one known prompt to one target form + semantic sense or register selector — names part of the message the learner intends, not a property of the target form",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0271L01 tile 0: ～したい（君は・丁寧） → gostarias"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "君は・過去形",
+  "bucket": "MIXED",
+  "reason": "carries both: 君は=content, 過去形=gram",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0278L01 tile 0: あった（君は・過去形） → tiveste"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "私は・過去形",
+  "bucket": "MIXED",
+  "reason": "carries both: 私は=content, 過去形=gram",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0280L01 tile 0: あった（私は・過去形） → tive"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "plural",
+  "bucket": "A",
+  "reason": "target-language lemma / orthography leaked into the Japanese prompt",
+  "n": 1,
+  "courses": [
+   "por_for_jpn"
+  ],
+  "examples": [
+   "S0283L04 tile 2: your (plural) → teus"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "希望",
+  "bucket": "C",
+  "reason": "semantic sense or register selector — names part of the message the learner intends, not a property of the target form",
+  "n": 1,
+  "courses": [
+   "spa_for_jpn"
+  ],
+  "examples": [
+   "S0015L03 tile 1: あなたが話す（希望） → hables"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "完了",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "spa_for_jpn"
+  ],
+  "examples": [
+   "S0089L01 tile 0: （完了） → he"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "程度",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "spa_for_jpn"
+  ],
+  "examples": [
+   "S0091L01 tile 0: （程度） → lo"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "二人称",
+  "bucket": "A",
+  "reason": "person stated as a grammar label — the information is load-bearing but the wording is metalinguistic — authored rewrite to this course's own 2sg marker （あなた）",
+  "n": 1,
+  "courses": [
+   "spa_for_jpn"
+  ],
+  "examples": [
+   "S0194L01 tile 0: ～している（二人称） → estás"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "人の前の前置詞",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "spa_for_jpn"
+  ],
+  "examples": [
+   "S0216L01 tile 1: ～に（人の前の前置詞） → a"
+  ]
+ },
+ {
+  "side": "known",
+  "inner": "結果補語",
+  "bucket": "A",
+  "reason": "grammar metadata (person/tense/mood/case/gender/number/part-of-speech/construction label) — a learner can produce nothing from it",
+  "n": 1,
+  "courses": [
+   "zho_for_jpn"
+  ],
+  "examples": [
+   "S0272L02 tile 1: 〜し始める（結果補語） → 起来"
+  ]
+ }
+]
