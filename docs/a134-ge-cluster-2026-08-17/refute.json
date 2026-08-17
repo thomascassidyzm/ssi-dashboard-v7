@@ -1,0 +1,42 @@
+[
+ {
+  "attack": 1,
+  "verdict": "CONFIRMED",
+  "msg": "byte-compared known_text vs course_audio.text for all 24: 0 desync"
+ },
+ {
+  "attack": 2,
+  "verdict": "REFUTED",
+  "msg": "bare ගෙ: {\"course_practice_phrases\":0,\"course_legos\":0,\"course_seeds\":0,\"course_audio\":454}; control — the same table still matches ගෙදර in 149 rows, so the scan is live"
+ },
+ {
+  "attack": 3,
+  "verdict": "CONFIRMED",
+  "msg": "seeds 60/154/155/156/158 silent rows now: 0; of the 24, null-linked: 0; the 3 formerly-silent rows all linked: true; 21 rows were voiced before and 24/24 are voiced now"
+ },
+ {
+  "attack": 4,
+  "verdict": "CONFIRMED",
+  "msg": "21 superseded clips: 21 still in course_audio, 21 still HEAD-200 on S3, 0 missing"
+ },
+ {
+  "attack": 5,
+  "verdict": "CONFIRMED",
+  "msg": "fetched ALL 24 via /api/audio/<id> (path segment): 24/24 HTTP 200 + decode within 60ms of duration_ms"
+ },
+ {
+  "attack": 6,
+  "verdict": "CONFIRMED",
+  "msg": "live ZUT over 11719 phrases: 136 conflicts course-wide, 0 involving any of the 24"
+ },
+ {
+  "attack": 8,
+  "verdict": "CONFIRMED",
+  "msg": "gate5d against 10 adversarial inputs incl. ගෙදර/ගෙන/ඉගෙනීම and punctuation- and space-padded ගෙ: 0 wrong"
+ },
+ {
+  "attack": 9,
+  "verdict": "CONFIRMED",
+  "msg": "refit n=13438: ms = 1398.4 + 45.56x, sd 149.8 (README claimed 1398.2 + 45.57x sd 149.9, n=13412 — reproduced: true); worst of the 24 is S0158L01U04 at z=-1.57"
+ }
+]

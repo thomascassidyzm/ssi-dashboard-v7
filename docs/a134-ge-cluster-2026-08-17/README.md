@@ -107,3 +107,63 @@ every morpheme in it is taught earlier (`එක` + dative at s95 `බස් එ�
 at s155 `කිහිපයක්`), it is the course's **own** rendering of exactly this English at
 seeds 161 and 167, and the earlier-attested alternative `එකට` is a homograph of
 "together" (S0133L02) which would have been genuinely ambiguous here.
+
+---
+
+# Adversarial verification
+
+**EXPLICIT GAP: an independent verifier was refused on the fan-out depth ceiling** (this
+job already sits at depth 1 of a 2-level tree). Everything below is **self-review**, plus
+three independent linguistic opinions taken via the Claude CLI — which is not a dispatched
+worker. Weigh it accordingly: mechanical claims below are re-derived from the live database
+rather than from my own logs, but no second pair of eyes signed them off.
+
+`refute.cjs` runs nine attacks against the live database. **7 confirmed, 1 refuted, 1 done
+separately.**
+
+| # | attack | verdict |
+|---|---|---|
+| 1 | text/audio desync — byte-compare `known_text` vs `course_audio.text` | CONFIRMED, 0/24 desync |
+| 2 | re-derive the defect set across all four tables | **REFUTED — see below** |
+| 3 | the 3 silent rows, and no new silence | CONFIRMED, 0 silent, 24/24 voiced |
+| 4 | make-before-break | CONFIRMED, 21/21 superseded clips still in the DB and HEAD-200 on S3 |
+| 5 | learner path, **all 24 not a sample** | CONFIRMED, 24/24 HTTP 200, decode within 60ms |
+| 6 | ZUT from live data | CONFIRMED, 136 course-wide conflicts, **0 involving the 24** |
+| 7 | the Sinhala itself (hostile third pass) | CONFIRMED, 24/24 OK |
+| 8 | gate5d against 10 adversarial inputs | CONFIRMED, 0 wrong |
+| 9 | independent refit of the rate model | CONFIRMED, reproduced: 1398.4 + 45.56x, sd 149.8, n=13,438 |
+
+## Attack 2 — what it refuted, and what it did not
+
+My scan of `course_practice_phrases` alone was too narrow. **454 `course_audio` rows in
+this course still hold a bare `ගෙ` in their text.** Reachability, measured through every
+content pointer that exists:
+
+| pointer | rows |
+|---|---|
+| `course_legos.presentation_audio_id` | **4** |
+| `course_legos.known_audio_id` | 0 |
+| `course_practice_phrases.known_audio_id` | 0 |
+| `course_practice_phrases.presentation_audio_id` | 0 |
+| `course_seeds.known_audio_id` | 0 |
+
+So **450 of the 454 are inert** — superseded takes and orphans that nothing points at,
+including the 21 clips this job itself just superseded and deliberately kept.
+
+The **4 that are reachable are all presentation clips carrying the `ඒ ගෙ` placeholder** —
+a different defect class, assigned to the sibling worker, and one of them (S0207L02) sits
+on this job's explicit do-not-touch list. **They were left alone, on purpose.**
+
+The honest restatement of my claim: zero bare `ගෙ` remains in the **text** of any phrase,
+lego or seed, and zero is reachable through any practice-phrase pointer. Four remain
+reachable as presentation audio and are somebody else's scope.
+
+## Soft near-conflict, reported for judgement, not widened into a failure
+
+The hostile reviewer noted that S0154L02U04 renders "meet" as `හමු වෙන්න` while
+S0154L02U05 renders it `මුණ ගැහෙන්න`. Both are correct Sinhala and both are the string
+the course itself teaches for their respective English. Measured against a snapshot taken
+**before** my edits, the course already carried three renderings of "meet" across 78
+phrases: `හම්බවෙන්න` (39), `හමු වෙන්න` (32), `මුණ ගැහෙන්න` (7). **The split predates this
+job and was not introduced by it.** It is a translation-choice question for the course
+owner, not a defect in these rows.
