@@ -3134,6 +3134,10 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 // POST INSERT - Insert audio record (after TTS or recording)
 // =============================================================================
 
+// VERACITY-EXEMPT: registers a course_audio row for bytes the CALLER already
+// put in S3 (human recordings, imports). Nothing is synthesised here, so
+// there is no render for the gate to check — and a human recording is not
+// the gate's business.
 app.post('/insert', async (req, res) => {
   try {
     const {
@@ -3215,6 +3219,8 @@ app.post('/insert', async (req, res) => {
 // (skips silent particle components — e.g. 才). Safe on a live course.
 // POST /prepare-presentations-scoped/:courseCode { seeds:[80], dryRun:true }
 // =========================================================================
+// VERACITY-EXEMPT: authors presentation TEXT for a seed scope. No TTS here;
+// the audio for these rows is rendered by /generate, which is gated.
 app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -3293,6 +3299,9 @@ app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
   }
 })
 
+// VERACITY-EXEMPT: this route rewrites presentation TEXT only and renders no
+// audio (its `regenerateAudio` body param is destructured and never read).
+// The re-render happens later through /generate, which is gated.
 app.post('/regenerate-presentations/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -4195,33 +4204,58 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     // 5. TTS generate
     logger.info(`[Regen Single] "${text.substring(0, 40)}..." role=${role} voice=${voiceId} attempt=${regenCount}`)
 
-    let rawAudioBuffer, wordBoundaries
-    if (voiceProvider === 'azure') {
-      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-        subscriptionKey: process.env.AZURE_SPEECH_KEY,
-        region: process.env.AZURE_SPEECH_REGION || 'westeurope',
-        voiceName: voiceId,
-        speed,
-        regenerationAttempt: regenCount
-      }))
-    } else if (voiceProvider === 'elevenlabs') {
-      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-        apiKey: process.env.ELEVENLABS_API_KEY,
-        voiceId: voiceId,
-        speed
-      }))
-    } else if (voiceProvider === 'xai') {
-      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-        apiKey: process.env.XAI_API_KEY,
-        voiceId: voiceId,
-        language: toBcp47(lang),
-      }))
-    } else {
-      throw new Error(`Unknown TTS provider: ${voiceProvider}`)
+    // One attempt: TTS AND master, as a closure — the veracity gate below
+    // re-runs it on a failed check, and a re-render has to be a REAL re-render
+    // rather than a re-master of the same defective bytes.
+    const renderAndMaster = async () => {
+      let rawAudioBuffer, wordBoundaries
+      if (voiceProvider === 'azure') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+          subscriptionKey: process.env.AZURE_SPEECH_KEY,
+          region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+          voiceName: voiceId,
+          speed,
+          regenerationAttempt: regenCount
+        }))
+      } else if (voiceProvider === 'elevenlabs') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+          apiKey: process.env.ELEVENLABS_API_KEY,
+          voiceId: voiceId,
+          speed
+        }))
+      } else if (voiceProvider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceId,
+          language: toBcp47(lang),
+        }))
+      } else {
+        throw new Error(`Unknown TTS provider: ${voiceProvider}`)
+      }
+
+      // 6. Master audio
+      const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+      return { buffer, durationMs, wordBoundaries }
     }
 
-    // 6. Master audio
-    const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+    // ── PRE-PUBLISH VERACITY GATE ──────────────────────────────────────────
+    // ALWAYS_SAMPLER, not the run sampler: this is a human pressing regenerate
+    // on one clip they believe is bad, so it is exactly the render you want
+    // checked, and at the graduated floor it would be checked essentially never.
+    // It also banks no trust and holds no counter, so a single repair cannot
+    // disturb a bulk run's sampling in the same process.
+    const gated = await veracity.renderChecked({
+      render: renderAndMaster,
+      expectedText: textForTTS,
+      language: lang,
+      sampler: veracity.ALWAYS_SAMPLER,
+      logger,
+      meta: { courseCode, role, voiceId, audio_uuid: audioUuid, originalText: text },
+    })
+    if (!gated.published) {
+      throw new Error(`veracity gate: quarantined after ${gated.attempts} attempts (${gated.verdict?.reason}, CER ${gated.verdict?.cer}, heard ${JSON.stringify(String(gated.verdict?.decode || '').slice(0, 60))})`)
+    }
+    const { buffer: masteredBuffer, durationMs, wordBoundaries } = gated
 
     // 7. Upload to S3
     const newAudioId = uuidv4().toUpperCase()
@@ -4243,7 +4277,12 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
         origin: 'tts',
         s3_key: newS3Key,
         duration_ms: durationMs,
-        word_boundaries: wordBoundaries || null
+        word_boundaries: wordBoundaries || null,
+        // The gate's verdict travels WITH the clip, as it does on the bulk path.
+        ...veracity.verdictColumns(gated.verdict, {
+          checker: 'phase8-regenerate-single',
+          attempts: gated.attempts,
+        }),
       })
       .eq('id', audioUuid)
 
@@ -4405,32 +4444,57 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     // 5. Generate TTS for the single presentation line (whole line → known voice).
     logger.info(`[Regen Presentation] ${courseCode}/${legoId} voice=${voiceId} "${presentationText.substring(0, 50)}..."`)
 
-    let rawAudioBuffer, wordBoundaries
-    if (voiceProvider === 'azure') {
-      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'azure', {
-        subscriptionKey: process.env.AZURE_SPEECH_KEY,
-        region: process.env.AZURE_SPEECH_REGION || 'westeurope',
-        voiceName: voiceId,
-        speed
-      }))
-    } else if (voiceProvider === 'elevenlabs') {
-      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'elevenlabs', {
-        apiKey: process.env.ELEVENLABS_API_KEY,
-        voiceId: voiceId,
-        speed
-      }))
-    } else if (voiceProvider === 'xai') {
-      ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'xai', {
-        apiKey: process.env.XAI_API_KEY,
-        voiceId: voiceId,
-        language: toBcp47(knownLang)
-      }))
-    } else {
-      return res.status(400).json({ error: `Unknown TTS provider: ${voiceProvider}` })
+    // One attempt: TTS AND master, as a closure — the veracity gate below
+    // re-runs it on a failed check, and a re-render has to be a REAL re-render
+    // rather than a re-master of the same defective bytes.
+    const renderAndMaster = async () => {
+      let rawAudioBuffer, wordBoundaries
+      if (voiceProvider === 'azure') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'azure', {
+          subscriptionKey: process.env.AZURE_SPEECH_KEY,
+          region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+          voiceName: voiceId,
+          speed
+        }))
+      } else if (voiceProvider === 'elevenlabs') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'elevenlabs', {
+          apiKey: process.env.ELEVENLABS_API_KEY,
+          voiceId: voiceId,
+          speed
+        }))
+      } else if (voiceProvider === 'xai') {
+        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'xai', {
+          apiKey: process.env.XAI_API_KEY,
+          voiceId: voiceId,
+          language: toBcp47(knownLang)
+        }))
+      } else {
+        throw new Error(`Unknown TTS provider: ${voiceProvider}`)
+      }
+
+      // 6. Master audio (−16 LUFS, duration)
+      const { buffer, durationMs } = await masterAudio(rawAudioBuffer, presentationText)
+      return { buffer, durationMs, wordBoundaries }
     }
 
-    // 6. Master audio (−16 LUFS, duration)
-    const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, presentationText)
+    // ── PRE-PUBLISH VERACITY GATE ──────────────────────────────────────────
+    // ALWAYS_SAMPLER, not the run sampler: this is a human pressing regenerate
+    // on one clip they believe is bad, so it is exactly the render you want
+    // checked, and at the graduated floor it would be checked essentially never.
+    // It also banks no trust and holds no counter, so a single repair cannot
+    // disturb a bulk run's sampling in the same process.
+    const gated = await veracity.renderChecked({
+      render: renderAndMaster,
+      expectedText: presentationText,
+      language: knownLang,
+      sampler: veracity.ALWAYS_SAMPLER,
+      logger,
+      meta: { courseCode, role: 'presentation', voiceId, lego_id: legoId, originalText: presentationText },
+    })
+    if (!gated.published) {
+      throw new Error(`veracity gate: quarantined after ${gated.attempts} attempts (${gated.verdict?.reason}, CER ${gated.verdict?.cer}, heard ${JSON.stringify(String(gated.verdict?.decode || '').slice(0, 60))})`)
+    }
+    const { buffer: masteredBuffer, durationMs, wordBoundaries } = gated
 
     // 7. Upload mastered audio to S3 (fresh UUID, UPPERCASE to match convention)
     const newAudioId = uuidv4().toUpperCase()
@@ -4457,7 +4521,12 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
           origin: 'tts',
           s3_key: newS3Key,
           duration_ms: durationMs,
-          word_boundaries: wordBoundaries || null
+          word_boundaries: wordBoundaries || null,
+          // The gate's verdict travels WITH the clip, as it does on the bulk path.
+          ...veracity.verdictColumns(gated.verdict, {
+            checker: 'phase8-regenerate-presentation',
+            attempts: gated.attempts,
+          }),
         })
         .eq('id', existingRow.id)
       if (updateError) throw updateError
@@ -4476,7 +4545,12 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
           s3_key: newS3Key,
           duration_ms: durationMs,
           lego_id: legoId,
-          word_boundaries: wordBoundaries || null
+          word_boundaries: wordBoundaries || null,
+          // The gate's verdict travels WITH the clip, as it does on the bulk path.
+          ...veracity.verdictColumns(gated.verdict, {
+            checker: 'phase8-regenerate-presentation',
+            attempts: gated.attempts,
+          }),
         })
         .select('id')
         .single()
@@ -4724,32 +4798,57 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
 
       // TTS generate (same provider branches as the bulk path).
       logger.info(`[Regen Phrase] ${courseCode}/${phraseId} role=${role} voice=${voiceId} "${textForTTS.substring(0, 40)}..."`)
-      let rawAudioBuffer, wordBoundaries
-      if (voiceProvider === 'azure') {
-        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-          subscriptionKey: process.env.AZURE_SPEECH_KEY,
-          region: process.env.AZURE_SPEECH_REGION || 'westeurope',
-          voiceName,
-          speed
-        }))
-      } else if (voiceProvider === 'elevenlabs') {
-        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-          apiKey: process.env.ELEVENLABS_API_KEY,
-          voiceId: voiceName,
-          speed
-        }))
-      } else if (voiceProvider === 'xai') {
-        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-          apiKey: process.env.XAI_API_KEY,
-          voiceId: voiceName,
-          language: toBcp47(language)
-        }))
-      } else {
-        return res.status(400).json({ error: `Unknown TTS provider: ${voiceProvider}` })
+      // One attempt: TTS AND master, as a closure — the veracity gate below
+      // re-runs it on a failed check, and a re-render has to be a REAL re-render
+      // rather than a re-master of the same defective bytes.
+      const renderAndMaster = async () => {
+        let rawAudioBuffer, wordBoundaries
+        if (voiceProvider === 'azure') {
+          ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+            subscriptionKey: process.env.AZURE_SPEECH_KEY,
+            region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+            voiceName,
+            speed
+          }))
+        } else if (voiceProvider === 'elevenlabs') {
+          ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+            apiKey: process.env.ELEVENLABS_API_KEY,
+            voiceId: voiceName,
+            speed
+          }))
+        } else if (voiceProvider === 'xai') {
+          ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+            apiKey: process.env.XAI_API_KEY,
+            voiceId: voiceName,
+            language: toBcp47(language)
+          }))
+        } else {
+          throw new Error(`Unknown TTS provider: ${voiceProvider}`)
+        }
+
+        // Master audio (−16 LUFS, duration).
+        const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+        return { buffer, durationMs, wordBoundaries }
       }
 
-      // Master audio (−16 LUFS, duration).
-      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+      // ── PRE-PUBLISH VERACITY GATE ──────────────────────────────────────────
+      // ALWAYS_SAMPLER, not the run sampler: this is a human pressing regenerate
+      // on one clip they believe is bad, so it is exactly the render you want
+      // checked, and at the graduated floor it would be checked essentially never.
+      // It also banks no trust and holds no counter, so a single repair cannot
+      // disturb a bulk run's sampling in the same process.
+      const gated = await veracity.renderChecked({
+        render: renderAndMaster,
+        expectedText: textForTTS,
+        language: language,
+        sampler: veracity.ALWAYS_SAMPLER,
+        logger,
+        meta: { courseCode, role, voiceId: voiceName, phrase_id: phraseId, originalText: text },
+      })
+      if (!gated.published) {
+        throw new Error(`veracity gate: quarantined after ${gated.attempts} attempts (${gated.verdict?.reason}, CER ${gated.verdict?.cer}, heard ${JSON.stringify(String(gated.verdict?.decode || '').slice(0, 60))})`)
+      }
+      const { buffer: masteredBuffer, durationMs, wordBoundaries } = gated
 
       // Upload mastered audio to S3 (fresh UUID, UPPERCASE per convention).
       const newAudioId = uuidv4().toUpperCase()
@@ -4779,7 +4878,12 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
           origin: 'tts',
           s3_key: newS3Key,
           duration_ms: durationMs,
-          word_boundaries: wordBoundaries || null
+          word_boundaries: wordBoundaries || null,
+          // The gate's verdict travels WITH the clip, as it does on the bulk path.
+          ...veracity.verdictColumns(gated.verdict, {
+            checker: 'phase8-regenerate-phrase',
+            attempts: gated.attempts,
+          }),
         }, {
           onConflict: 'course_code,text_normalized,language,role,voice_id'
         })
@@ -5010,32 +5114,57 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
       }
 
       logger.info(`[Regen Lego] ${courseCode}/${legoId} role=${role} voice=${voiceId} "${textForTTS.substring(0, 40)}..."`)
-      let rawAudioBuffer, wordBoundaries
-      if (voiceProvider === 'azure') {
-        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-          subscriptionKey: process.env.AZURE_SPEECH_KEY,
-          region: process.env.AZURE_SPEECH_REGION || 'westeurope',
-          voiceName,
-          speed
-        }))
-      } else if (voiceProvider === 'elevenlabs') {
-        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-          apiKey: process.env.ELEVENLABS_API_KEY,
-          voiceId: voiceName,
-          speed
-        }))
-      } else if (voiceProvider === 'xai') {
-        ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-          apiKey: process.env.XAI_API_KEY,
-          voiceId: voiceName,
-          language: toBcp47(language)
-        }))
-      } else {
-        return res.status(400).json({ error: `Unknown TTS provider: ${voiceProvider}` })
+      // One attempt: TTS AND master, as a closure — the veracity gate below
+      // re-runs it on a failed check, and a re-render has to be a REAL re-render
+      // rather than a re-master of the same defective bytes.
+      const renderAndMaster = async () => {
+        let rawAudioBuffer, wordBoundaries
+        if (voiceProvider === 'azure') {
+          ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+            subscriptionKey: process.env.AZURE_SPEECH_KEY,
+            region: process.env.AZURE_SPEECH_REGION || 'westeurope',
+            voiceName,
+            speed
+          }))
+        } else if (voiceProvider === 'elevenlabs') {
+          ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+            apiKey: process.env.ELEVENLABS_API_KEY,
+            voiceId: voiceName,
+            speed
+          }))
+        } else if (voiceProvider === 'xai') {
+          ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+            apiKey: process.env.XAI_API_KEY,
+            voiceId: voiceName,
+            language: toBcp47(language)
+          }))
+        } else {
+          throw new Error(`Unknown TTS provider: ${voiceProvider}`)
+        }
+
+        // Master audio (−16 LUFS, duration).
+        const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+        return { buffer, durationMs, wordBoundaries }
       }
 
-      // Master audio (−16 LUFS, duration).
-      const { buffer: masteredBuffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+      // ── PRE-PUBLISH VERACITY GATE ──────────────────────────────────────────
+      // ALWAYS_SAMPLER, not the run sampler: this is a human pressing regenerate
+      // on one clip they believe is bad, so it is exactly the render you want
+      // checked, and at the graduated floor it would be checked essentially never.
+      // It also banks no trust and holds no counter, so a single repair cannot
+      // disturb a bulk run's sampling in the same process.
+      const gated = await veracity.renderChecked({
+        render: renderAndMaster,
+        expectedText: textForTTS,
+        language: language,
+        sampler: veracity.ALWAYS_SAMPLER,
+        logger,
+        meta: { courseCode, role, voiceId: voiceName, lego_id: legoId, originalText: text },
+      })
+      if (!gated.published) {
+        throw new Error(`veracity gate: quarantined after ${gated.attempts} attempts (${gated.verdict?.reason}, CER ${gated.verdict?.cer}, heard ${JSON.stringify(String(gated.verdict?.decode || '').slice(0, 60))})`)
+      }
+      const { buffer: masteredBuffer, durationMs, wordBoundaries } = gated
 
       // Upload mastered audio to S3 (fresh UUID, UPPERCASE per convention).
       // Make-before-break: nothing old is touched, ever — no S3 delete here.
@@ -5073,7 +5202,12 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
           origin: 'tts',
           s3_key: newS3Key,
           duration_ms: durationMs,
-          word_boundaries: wordBoundaries || null
+          word_boundaries: wordBoundaries || null,
+          // The gate's verdict travels WITH the clip, as it does on the bulk path.
+          ...veracity.verdictColumns(gated.verdict, {
+            checker: 'phase8-regenerate-lego',
+            attempts: gated.attempts,
+          }),
         }, {
           onConflict: 'course_code,text_normalized,language,role,voice_id'
         })
@@ -5773,6 +5907,11 @@ async function spliceAudio(parentAudioBuffer, startMs, endMs, paddingMs = 20) {
  * 5. Upload splice to S3, create course_audio record
  * 6. Link audio ID to the component phrase
  */
+// VERACITY-EXEMPT, deliberately. This route synthesises nothing: it downloads
+// clips that already passed the gate and cuts them on their own word
+// boundaries, so the bytes it writes are a slice of verified audio. Whisper
+// on a one-word slice is noise, not evidence — CER against a single token is
+// dominated by decode variance. The parent's verdict is the slice's warrant.
 app.post('/splice-components/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -6380,6 +6519,12 @@ function englishColumnFor(ctx) {
  * @param {('target'|'known')} [args.track] - which pod track this clip is
  * @param {string} [args.sentenceId] - pod sentence id (for the fallback log line)
  */
+// Veracity counters for the pod render in flight. Module-level because
+// generatePodAudio is called from several places inside a pod run and none of
+// them thread a stats object through; /generate-pods resets it per run and
+// reports it, exactly as /generate does with its own results.veracity.
+let podVeracityStats = veracity.newStats()
+
 async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, role, voice, ctx, track, sentenceId, force, canonTexts }) {
   const identityLanguage = canonicalLanguage(language)
   const cue = (ttsLanguageCue === undefined || ttsLanguageCue === null) ? language : ttsLanguageCue
@@ -6420,46 +6565,79 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
 
   let provider = voice.provider || 'azure'
   let activeVoice = voice
-  let audioBuffer, wordBoundaries
-  try {
-    const ttsConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
-    ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, provider, ttsConfig))
-  } catch (primaryErr) {
-    // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
-    // back when the primary was xAI — Azure failing has nowhere better to go,
-    // and elevenlabs failures aren't in scope for this safety net.
-    if (provider !== 'xai') { primaryErr.message = `[STAGE=tts:${provider}] ${primaryErr.message}`; throw primaryErr }
 
-    const kind = track || (role === 'known' ? 'known' : 'target')
-    // The fallback voice is picked from a real language, never from the cue —
-    // getAzureLocale('auto') has no answer, and that is how an explainer that
-    // lost xAI used to fall back to a voice chosen without a locale at all.
-    const azureVoice = ctx ? pickAzureFallbackVoice(ctx, kind, identityLanguage) : null
-    if (!azureVoice) {
-      // No Azure voice determinable — surface the original xAI failure so the
-      // clip is recorded as failed (not silently wrong-voiced).
-      primaryErr.message = `[STAGE=tts:xai,no-azure-fallback] ${primaryErr.message}`; throw primaryErr
-    }
-
-    logger.info(`[Pods] fallback xAI→Azure for ${sentenceId || '?'} ${kind} voice=${azureVoice.voice_id} (${primaryErr.message})`)
-    provider = 'azure'
-    activeVoice = azureVoice
-    const azureConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
+  // One attempt: TTS (with the xAI→Azure safety net) AND master. Shaped as a
+  // closure because the veracity gate below re-runs it on a failed check — a
+  // re-render has to be a REAL re-render, provider fallback and all, not a
+  // re-master of the same defective bytes.
+  const renderAndMaster = async () => {
+    // Each attempt starts from the configured voice: a previous attempt's
+    // fallback must not silently pin every retry to Azure.
+    provider = voice.provider || 'azure'
+    activeVoice = voice
+    let audioBuffer, wordBoundaries
     try {
-      ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, 'azure', azureConfig))
-    } catch (e) { e.message = `[STAGE=tts:azure-fallback,xai-also-failed] ${e.message}`; throw e }
+      const ttsConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
+      ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, provider, ttsConfig))
+    } catch (primaryErr) {
+      // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
+      // back when the primary was xAI — Azure failing has nowhere better to go,
+      // and elevenlabs failures aren't in scope for this safety net.
+      if (provider !== 'xai') { primaryErr.message = `[STAGE=tts:${provider}] ${primaryErr.message}`; throw primaryErr }
+
+      const kind = track || (role === 'known' ? 'known' : 'target')
+      // The fallback voice is picked from a real language, never from the cue —
+      // getAzureLocale('auto') has no answer, and that is how an explainer that
+      // lost xAI used to fall back to a voice chosen without a locale at all.
+      const azureVoice = ctx ? pickAzureFallbackVoice(ctx, kind, identityLanguage) : null
+      if (!azureVoice) {
+        // No Azure voice determinable — surface the original xAI failure so the
+        // clip is recorded as failed (not silently wrong-voiced).
+        primaryErr.message = `[STAGE=tts:xai,no-azure-fallback] ${primaryErr.message}`; throw primaryErr
+      }
+
+      logger.info(`[Pods] fallback xAI→Azure for ${sentenceId || '?'} ${kind} voice=${azureVoice.voice_id} (${primaryErr.message})`)
+      provider = 'azure'
+      activeVoice = azureVoice
+      const azureConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
+      try {
+        ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, 'azure', azureConfig))
+      } catch (e) { e.message = `[STAGE=tts:azure-fallback,xai-also-failed] ${e.message}`; throw e }
+    }
+    try {
+      const { buffer, durationMs } = await masterAudio(audioBuffer, ttsText)
+      return { buffer, durationMs, wordBoundaries }
+    } catch (e) {
+      // Empty/corrupt TTS buffer (buflen=0) usually means a cross-language voice
+      // mismatch (e.g. an English voice handed non-English text) — keep prov/voice
+      // /buflen so the failure is self-diagnosing.
+      e.message = `[STAGE=master prov=${provider} voice=${activeVoice?.voice_id} lang=${identityLanguage} cue=${cue} buflen=${audioBuffer ? audioBuffer.length : -1}] ${e.message}`
+      throw e
+    }
   }
+
+  // ── PRE-PUBLISH VERACITY GATE ────────────────────────────────────────────
+  // Same gate, same sampler, same reasoning as /generate: pod clips are
+  // published straight to learners by the upsert below, so the check happens
+  // after mastering and before anything is written. /generate-pods calls
+  // veracity.startCourse() so pods take part in the run's graduated sampling
+  // rather than paying for a whisper decode on every clip.
+  //
+  // Checked against ttsText, not text: the " … " pause cue is what the voice
+  // was actually asked to say, and it is the canonical text stored below.
+  const gated = await veracity.renderChecked({
+    render: renderAndMaster,
+    expectedText: ttsText,
+    language: identityLanguage,
+    stats: podVeracityStats,
+    logger,
+    meta: { courseCode, role, voiceId: activeVoice?.voice_id, sentenceId: sentenceId || null, track: track || null, originalText: text },
+  })
+  if (!gated.published) {
+    throw new Error(`[STAGE=veracity] quarantined after ${gated.attempts} attempts (${gated.verdict?.reason}, CER ${gated.verdict?.cer}, heard ${JSON.stringify(String(gated.verdict?.decode || '').slice(0, 60))})`)
+  }
+  const { buffer: masteredBuffer, durationMs, wordBoundaries } = gated
   voice = activeVoice  // course_audio row records the voice that actually produced the clip
-  let masteredBuffer, durationMs
-  try {
-    ;({ buffer: masteredBuffer, durationMs } = await masterAudio(audioBuffer, ttsText))
-  } catch (e) {
-    // Empty/corrupt TTS buffer (buflen=0) usually means a cross-language voice
-    // mismatch (e.g. an English voice handed non-English text) — keep prov/voice
-    // /buflen so the failure is self-diagnosing.
-    e.message = `[STAGE=master prov=${provider} voice=${voice?.voice_id} lang=${identityLanguage} cue=${cue} buflen=${audioBuffer ? audioBuffer.length : -1}] ${e.message}`
-    throw e
-  }
 
   const audioId = uuidv4().toUpperCase()
   const s3Key = `mastered/${audioId}.mp3`
@@ -6497,6 +6675,12 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
       s3_key: s3Key,
       duration_ms: durationMs,
       word_boundaries: wordBoundaries && wordBoundaries.length ? wordBoundaries : null,
+      // The gate's verdict travels WITH the clip — see the same call in
+      // /generate. Three-state: true/false/NULL-for-not-sampled.
+      ...veracity.verdictColumns(gated.verdict, {
+        checker: 'phase8-generate-pods',
+        attempts: gated.attempts,
+      }),
     }, {
       onConflict: 'course_code,text_normalized,language,role,voice_id',
     })
@@ -6715,6 +6899,15 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
 
     const ctx = await getCourseContext(courseCode)
 
+    // Pod clips go through the same pre-publish veracity gate and the same
+    // graduated sampler as course audio (generatePodAudio). Announce and start
+    // the course here so pods bank trust in the run alongside /generate rather
+    // than each clip landing on whatever counter the last run left behind.
+    podVeracityStats = veracity.newStats()
+    veracity.announceStatus(logger)
+    const podSampleRate = veracity.startCourse(courseCode)
+    logger.info(`[audio-veracity] ${courseCode}: sampling ${(podSampleRate.rate * 100).toFixed(1)}% of pod clips (${podSampleRate.clean_courses} clean course(s) banked this run)`)
+
     // Optional per-run voice overrides. Useful when you want pod audio to use
     // a different provider (e.g. xAI) than the course's canonical voice_config.
     // Shape: { voice_id: string, provider: 'xai'|'azure'|'elevenlabs', gender?: string }
@@ -6873,6 +7066,10 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     const elapsedMs = Date.now() - startMs
     logger.info(`[Pods] ${courseCode}: ${generated} generated, ${reused} reused (${reusedCrossCourse} from sibling courses on canon text), ${failed} failed in ${(elapsedMs / 1000).toFixed(1)}s`)
 
+    const podVLine = veracity.formatStats(podVeracityStats)
+    if (podVeracityStats.quarantined > 0 || podVeracityStats.unchecked > 0) logger.error(`[audio-veracity] ${courseCode}: ${podVLine}`)
+    else logger.info(`[audio-veracity] ${courseCode}: ${podVLine}`)
+
     res.json({
       course_code: courseCode,
       mode: sampleLimit === null ? 'bulk' : 'sample',
@@ -6888,6 +7085,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
       blocked_unapproved_target: blockedUnapprovedTarget,
       total: workQueue.length,
       elapsed_ms: elapsedMs,
+      veracity: podVeracityStats,
       errors: errors.slice(0, 20),
     })
   } catch (err) {
