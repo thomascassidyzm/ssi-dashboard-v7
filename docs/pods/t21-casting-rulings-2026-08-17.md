@@ -324,3 +324,81 @@ present to him as two male voices. That is precisely the trap he hit on Catalan 
 
 The official pool is Felix (m, xai) + Sonja (f, xai); those names appear nowhere in the record's `de`
 block either (Clara, Moritz, Niklas, Lena) — the same two-inventory pattern.
+
+## THE LOCK BLOCKER — regional variants share one pool key (found 2026-08-17)
+
+**Measured, not assumed.** A cast is locked by putting the approved voice at **index 0** of its
+gender list in `app_config.pod_voice_pools`, because `POD_VOICES_PER_GENDER` is 1 and
+`tools/pod-sync.cjs` casts index 0 (`tools/pod-sync.cjs:251,388`). That is the whole mechanism the
+Spanish precedent `c7c596ca` used.
+
+The pool key is chosen by `poolKeyFor(pools, targetLang)` (`tools/pod-sync.cjs:235`), and
+`targetLang` is the course's **`courses.target_lang` column, not its course code**. Queried live:
+
+| Course | `target_lang` | Pool key it actually casts from |
+|---|---|---|
+| `ara_for_eng` | `ara` | `ara` |
+| `ara_eg_for_eng` | `ara` | `ara` |
+| `ara_sy_for_eng` | `ara` | `ara` |
+| `fra_for_eng` | `fra` | `fra` |
+| `fra_ca_for_eng` | `fra` | `fra` |
+| `deu_at_for_eng` | `deu` | `deu` |
+| `spa_mx_for_eng` | `spa` | `spa` |
+| `por_br_for_eng` | `por` | `por` |
+
+So the `ara_sy`, `fra_ca`, `spa_mx` and `por_br` **pool keys exist but are unreachable** through
+pod-sync — `tools/pod-recast.cjs:55-64` already documents this and works around it *after the fact*
+with `remapExactPool()`, which is why the A-120 Syrian recast succeeded even though the pool that
+casts Syrian Arabic is the MSA one.
+
+**The consequence for T-21 is a hard blocker on two families:**
+
+- **`ara` / `ara_eg` / `ara_sy` are ONE pool key with THREE different rulings.** MSA is rejected
+  outright; Egyptian is approved on rex + eve; Syrian is approved on Laith + Amany. Only one of the
+  three can sit at index 0. **Locking any one of them stomps the other two.**
+- **`fra` / `fra_ca` are ONE pool key with TWO different rulings.** French is (by default) Henri +
+  Celeste; Québécois is Antoine + Sylvie. Locking French casts Québécois onto *French-France*
+  voices, which is precisely the authenticity failure the Québécois ruling was trying to avoid.
+- **`deu` / `deu_at` will collide the same way** the moment German is ruled — and German is next.
+
+**There is no durable override store to escape through.** `resolveCast` accepts an `overrides`
+argument (`tools/pod-sync.cjs:266,338`), but it is a **function parameter only**: the re-sync path
+at `tools/pod-sync.cjs:704` calls `assignVoices(parsed.uniqueSpeakers, targetLang, knownLang)` with
+no overrides at all. A manual pick therefore lives only in `listening_pods.speakers`, which is
+exactly what the code's own comment at line 262 warns gets stomped.
+
+### What this means for the locks
+
+| Language | Pool state | Lock action |
+|---|---|---|
+| Armenian `hye` | Hayk + Anahit already at index 0 | **already locked — no edit needed** |
+| Basque `eus` | Ander + Ainhoa at index 0 | **already locked** |
+| Bulgarian `bul` | Borislav + Kalina at index 0 | **already locked** |
+| Croatian `hrv` | Srecko + Gabrijela at index 0 | **already locked** |
+| Estonian `est` | Kert + Anu at index 0 | **already locked** |
+| Finnish `fin` | Harri + Selma at index 0 | **already locked** |
+| Dutch `nld` | Bas + Lieke already at index 0 | **already locked** (render still blocked behind #800) |
+| Chinese `zho` | Wei at m[0] ✓; f[0] is Hui, needs `ara` | **pool edit required** |
+| Danish `dan` | m[0] is Mads, needs `0ih5oi34`; f[0] is Astrid, needs `ara` | **pool edit required** |
+| Egyptian `ara_eg` | shares key `ara` | **BLOCKED — collides with MSA + Syrian** |
+| Syrian `ara_sy` | shares key `ara` | **BLOCKED — collides with MSA + Egyptian** |
+| French `fra` | Henri + Celeste at index 0 | index 0 already right, but locking it **casts Québécois wrong** |
+| Québécois `fra_ca` | shares key `fra` | **BLOCKED — collides with French** |
+
+Seven of the languages Tom has approved need **no pool edit at all** — their approved pair is
+already index 0, so a re-sync cannot stomp them. Two need a straightforward edit. Four are blocked
+on a structural collision that is **Tom's call, not ours**, because every available option trades
+something real:
+
+1. **Give regional variants their own `target_lang`** (`ara_eg`, `ara_sy`, `fra_ca`, …) so the
+   already-existing pool keys become reachable. Cleanest and it deletes the whole class of bug —
+   but it changes a column other code reads, so it needs its own scoped pass and blast-radius check.
+2. **Persist the `overrides` parameter** as a per-course store that pod-sync reads on re-sync. The
+   parameter and its normaliser already exist; only the durable store and the read are missing.
+3. **Do nothing structural and accept that regional variants are recast by `pod-recast.cjs`** after
+   every sync, relying on `remapExactPool()`. That is the status quo, and it is exactly the
+   "remember to re-apply it" step the approval fingerprint was designed to remove.
+
+**Nothing was written to the pool for the four blocked languages.** Locking one of them on a guess
+would silently miscast the other two or three, which is the same failure mode as locking on a wrong
+gender label — and Tom's standing instruction on that is to lock nothing and report the gap.
