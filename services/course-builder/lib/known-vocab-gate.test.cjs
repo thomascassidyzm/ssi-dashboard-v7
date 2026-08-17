@@ -48,8 +48,19 @@ describe('loadPairContract default fallback', () => {
     expect(c.course_code).toBe('fra_for_eng')
   })
 
-  it('returns null for a non-English-known pair with no contract', () => {
-    expect(loadPairContract('eng_for_kor')).toBeNull()
+  // SUPERSEDED 2026-08-17. This used to assert `loadPairContract('eng_for_kor')` was null —
+  // "a non-English-known pair with no contract". That null WAS the defect: eng_for_kor is
+  // Korean-known and got no known-side check at all. Resolution is now keyed on the known
+  // language, so a Korean-known course picks up _lang_kor. The assertion is inverted, not
+  // deleted, so the history of what changed stays readable.
+  it('a non-English-known pair now resolves its LANGUAGE-level contract', () => {
+    const c = loadPairContract('eng_for_kor', 'kor')
+    expect(c).toBeTruthy()
+    expect(c.known_lang).toBe('kor')
+  })
+
+  it('still returns null when the known language has no contract at all', () => {
+    expect(loadPairContract('eng_for_qqq', 'qqq')).toBeNull()
   })
 })
 
