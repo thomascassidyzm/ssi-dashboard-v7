@@ -15,9 +15,12 @@ Machine-readable record of exactly what was written: [`fin-hisher-applied-log-20
 
 `sen` is genderless — the same word for *his* and *her*. The course had let the English gender word
 predict the Finnish case ending, so a learner could read a **case** contrast as a **gender** rule.
-That is the defect recorded as doctrine on 2026-08-12 in
-[`docs/course-conventions/fin_for_eng.md`](../course-conventions/fin_for_eng.md), and the seed-21
+That is the defect recorded as doctrine on 2026-08-12 (commit `5808218d`), and the seed-21
 corrective set was the first instalment. This is the rest of the course.
+
+> That doctrine file, `docs/course-conventions/fin_for_eng.md`, exists **only on the unmerged branch
+> `docs/course-conventions-fin-2026-08-12`** — it is not on `main` and not in a normal checkout. Worth
+> merging: two separate jobs have now gone looking for it and found nothing.
 
 Two boxes in the his/her × case table were empty across all 668 seeds: **her + `nimen`** and
 **his + `nimi`**. Both are now filled, measured live after the apply:
@@ -55,6 +58,13 @@ own `B`/`U` sequence; positions append after the basket's existing maximum. The 
 appended build still plays in the build block.
 
 ### Two signals that look like failures and are not
+
+A third, found afterwards by the parallel investigation and checked here: the shared harness pages
+`course_legos` with `.range()` and **no `.order()`**, so on courses with more than 1,000 prior legos
+the known-side context can silently drop rows. Re-ran the known-side gate over all 70 phrases with
+ordered paging: **0 breaches either way, 0 phrases where the two disagree.** The bug can only remove
+evidence that a gloss was introduced, so it makes the gate *stricter* — a PASS under it stays a PASS.
+This run's result is unaffected, but the harness should be fixed before reuse.
 
 **`checkPhraseComplexity` reports 48 blocking failures — all pre-existing.** The gate is a
 whole-basket band-balance check, and the harness computes it over the *existing* basket. Measured
@@ -117,6 +127,35 @@ None yet. `courses.status='draft'` and **`new_app_status='not_available'`**; the
 gate is `new_app_status IN ('live','beta')`
 (`ssi-learning-app/api/courses/available.ts:35`). The phrases are live in the database and will be
 served the moment the course is published.
+
+## One applied phrase needs Kai's judgement — S0654L01 register
+
+Found by the parallel `nimi` investigation and **confirmed here against the live basket**. The phrase
+applied today at `S0654L01#12`:
+
+> **i'm not sure what his name is** → **en ole varma, mikä sen nimi on**
+
+sits on the **formal-register** card `i'm not sure (formal)` → `en ole varma`. Since **seed 10** the
+course has taught the identical English frame in the informal register — `I'm not sure what the
+answer is` → *mä en oo varma, mikä vastaus on* — and there are dozens of them.
+
+The basket's own convention is that the phrases drop the `(formal)` tag from the English and instead
+carry a register signal **inside the sentence**: `i'm not sure, sir` → *en ole varma, herra*; `i'm
+not sure what you said` → *en ole varma, mitä **te** sanoitte*; `i'm not sure about that, sir`. The
+new phrase carries **no register signal at all**, so nothing in the prompt tells the learner which
+register is wanted. On Kai's severity test — would the learner notice, would it derail them — this
+is **yes and yes**: they will answer *mä en oo varma, mikä sen nimi on* and be marked wrong.
+
+Not a hard ZUT hit (no identical English prompt exists), which is why the gate passed it. Two fixes,
+both one-line, **neither applied** — this is Kai's call:
+
+- **(a) match the basket** — `i'm not sure what his name is, sir` → `en ole varma, mikä sen nimi on,
+  herra`. Follows what three of the basket's five `use` phrases already do, and adds no parenthetical.
+- **(b) tag the known side** — `i'm not sure what his name is (formal)`. Simpler, but bakes a
+  parenthetical into `known_text`, which the estate has had to clean up elsewhere.
+
+(a) is the better fit for the basket. Nothing is urgent: the course is unpublished, so no learner can
+reach it.
 
 ## Noted in passing, not acted on
 
