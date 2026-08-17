@@ -1147,3 +1147,38 @@ designed. Not applied here: this pass wrote no cast.
 **Decided by:** Tom (the approach was his commission); the insertion order, the throw-on-malformed
 rule and the `pod-recast` explicit-beats-derived precedence are the agent's calls, all reversible —
 the apply log holds a full backup of the pool row.
+## 2026-08-17 — TTS clips master without the compressor
+
+**Move:** phase8's `masterAudio` — the one mastering step every generated clip passes through —
+now calls `audioProcessor.normalizeAudioClean()` instead of `normalizeAudio()`, dropping the
+`PRE_COMPRESS` stage (`acompressor=threshold=-24dB:ratio=8`) and its make-up gain. Pure
+subtraction: one processing stage removed, nothing added; the limiter and the 8ms anti-click fades
+stay, and the deleted tail-repair mutation path is not touched (`verify-tail-repair-mode` passes).
+
+**Better:** the compressor lifts whatever sits in a clip's tail by ~12dB. A blind listening test
+that day (Tom: "all good apart from 4 — had a tiny click") decoded to the nld pod-0 xAI voice
+`xai_247783ebdd51` as raw provider bytes, with none of our processing on it — so the click is
+baked into that voice at source and the compressor was amplifying it, not creating it. Removing
+the amplification is the only lever our chain has. Same defect Tom heard from the other side on
+2026-07-29 as "that hissy mastering stuff", which is why `normalizeAudioClean` already existed.
+**Simpler:** one existing function swapped for another existing function, one call site, no flag,
+no branch, no A/B toggle — nothing new to maintain or to get wrong in a fresh checkout.
+**Cheaper (total):** one filter stage less per render across the estate; no new code, no new
+config, no new test surface.
+
+**Measured cost, accepted:** output lands 0.8–1.7 LUFS quieter (this take: −15.6 → −16.9 LUFS),
+and the tail floor drops from −53.5 to −64.9 dB relative to the clip's own speech peak (raw
+provider bytes: −68.0 dB).
+
+**Searched & rejected:**
+- Feature flag / env switch on the chain — rejected: the tail-repair switch WAS the bug once
+  already (ruling 2026-08-05); a default that must be set right in every unit file and cron leaks.
+- Trim, pad or de-click the tail — rejected: mutation of course audio is deleted doctrine; it once
+  shipped a German clip missing its final word.
+- Keep the compressor and recast the Dutch pod off the clicking voice — not rejected, deferred:
+  it is the remaining lever if Tom still hears the click on the new chain, and it is his call.
+
+**Search width:** re-levelled (the earlier search assumed our chain caused the click; the blind
+test moved the question to the provider's bytes)
+**Decided by:** Tom — the blind-test ruling and the A/B ear check are his; the call site chosen and
+the other `normalizeAudio()` callers left alone are the agent's, both reversible.

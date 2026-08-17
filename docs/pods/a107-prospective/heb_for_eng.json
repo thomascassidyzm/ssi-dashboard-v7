@@ -1,0 +1,105 @@
+{
+  "course": "heb_for_eng",
+  "from": "pod-0",
+  "to": "pod-0-unrecorded",
+  "applied": false,
+  "bound": "corresponding scene, and <= 8 sentence positions within it",
+  "old_count": 142,
+  "new_count": 232,
+  "survivors": 98,
+  "ambiguous_texts": 0,
+  "tally": {
+    "carry": 7
+  },
+  "exposures_by_action": {
+    "carry": 28
+  },
+  "miscredits_prevented": 0,
+  "drop_reasons": {},
+  "actions": [
+    {
+      "learner_id": "661d4847-a473-40a3-8e33-8aedd2d04508",
+      "course_code": "heb_for_eng",
+      "sentence_id": "heb_for_eng:pod-0:SC01-S001",
+      "exposures": 7,
+      "updated_at": "2026-07-15T01:36:11.490Z",
+      "action": "carry",
+      "to": "heb_for_eng:pod-0-unrecorded:SC01-S001",
+      "heard": "Good morning, Sarah!",
+      "moved": "SC1-S1 -> SC1-S1",
+      "miscredit_avoided": null
+    },
+    {
+      "learner_id": "661d4847-a473-40a3-8e33-8aedd2d04508",
+      "course_code": "heb_for_eng",
+      "sentence_id": "heb_for_eng:pod-0:SC01-S002:s0",
+      "exposures": 6,
+      "updated_at": "2026-07-15T01:36:11.490Z",
+      "action": "carry",
+      "to": "heb_for_eng:pod-0-unrecorded:SC01-S002:s0",
+      "heard": "Good morning. How are you?",
+      "moved": "SC1-S2 -> SC1-S2",
+      "miscredit_avoided": null
+    },
+    {
+      "learner_id": "661d4847-a473-40a3-8e33-8aedd2d04508",
+      "course_code": "heb_for_eng",
+      "sentence_id": "heb_for_eng:pod-0:SC01-S002:s1",
+      "exposures": 5,
+      "updated_at": "2026-07-15T01:36:11.490Z",
+      "action": "carry",
+      "to": "heb_for_eng:pod-0-unrecorded:SC01-S002:s1",
+      "heard": "Good morning. How are you?",
+      "moved": "SC1-S2 -> SC1-S2",
+      "miscredit_avoided": null
+    },
+    {
+      "learner_id": "661d4847-a473-40a3-8e33-8aedd2d04508",
+      "course_code": "heb_for_eng",
+      "sentence_id": "heb_for_eng:pod-0:SC01-S003:s0",
+      "exposures": 4,
+      "updated_at": "2026-07-15T01:36:11.490Z",
+      "action": "carry",
+      "to": "heb_for_eng:pod-0-unrecorded:SC01-S003:s0",
+      "heard": "I'm very well, thank you. Are you going to work?",
+      "moved": "SC1-S3 -> SC1-S3",
+      "miscredit_avoided": null
+    },
+    {
+      "learner_id": "661d4847-a473-40a3-8e33-8aedd2d04508",
+      "course_code": "heb_for_eng",
+      "sentence_id": "heb_for_eng:pod-0:SC01-S003:s1",
+      "exposures": 3,
+      "updated_at": "2026-07-15T01:36:11.490Z",
+      "action": "carry",
+      "to": "heb_for_eng:pod-0-unrecorded:SC01-S003:s1",
+      "heard": "I'm very well, thank you. Are you going to work?",
+      "moved": "SC1-S3 -> SC1-S3",
+      "miscredit_avoided": null
+    },
+    {
+      "learner_id": "661d4847-a473-40a3-8e33-8aedd2d04508",
+      "course_code": "heb_for_eng",
+      "sentence_id": "heb_for_eng:pod-0:SC01-S004:s0",
+      "exposures": 2,
+      "updated_at": "2026-07-15T01:36:11.490Z",
+      "action": "carry",
+      "to": "heb_for_eng:pod-0-unrecorded:SC01-S004:s0",
+      "heard": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+      "moved": "SC1-S4 -> SC1-S4",
+      "miscredit_avoided": null
+    },
+    {
+      "learner_id": "661d4847-a473-40a3-8e33-8aedd2d04508",
+      "course_code": "heb_for_eng",
+      "sentence_id": "heb_for_eng:pod-0:SC01-S004:s1",
+      "exposures": 1,
+      "updated_at": "2026-07-15T01:36:11.490Z",
+      "action": "carry",
+      "to": "heb_for_eng:pod-0-unrecorded:SC01-S004:s1",
+      "heard": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+      "moved": "SC1-S4 -> SC1-S4",
+      "miscredit_avoided": null
+    }
+  ]
+}
