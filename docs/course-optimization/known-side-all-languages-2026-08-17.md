@@ -10,7 +10,7 @@ then how contract resolution works.
 
 All 34 now run. **198,832 drilled prompts, 67,650 raw findings.**
 
-**Confirmed defects: 10.** But the important number is the one below.
+**Confirmed defects: 11.** But the important number is the one below.
 
 ### The 16,715 findings that are not morphology
 
@@ -32,14 +32,24 @@ appears as a LEGO at **seed 47**, and prompts use it at **S26, S38 and S46** —
 early. `es tut mir leid` is used at S84 and debuts at S139. That is 106 of `eng_for_deu`'s 486
 findings, and it is authoring, not morphology.
 
-**This class should be the next pass.** One caveat, stated: for Japanese and Chinese a segmenter
-fragment could coincidentally match a later lego's fragment, so the CJK share of the 16,715 needs
-its own adjudication. German is clean because German tokenises on spaces.
+**This class should be the next pass.** Three caveats, all stated rather than discovered later:
 
-Everything else on this page is a reading list.
+- **Japanese and Chinese**: a segmenter fragment can coincidentally match a later lego's fragment,
+  so the CJK share of the 16,715 needs its own adjudication.
+- **Telugu**: a zero-width non-joiner between a loanword and its case suffix strands the bare suffix
+  as a token. `గా` debuts as a LEGO only at **S474**, so a stranded early-seed `గా` reads as a hard
+  "not introduced until 474" that is purely an artefact.
+- **Marathi**: the *debut seeds* come from `eng_for_mar`'s LEGO cards, which are on record as
+  unreliable for this course. The finding count is sound; the seed each word is credited to is the
+  weakest input in the Marathi file.
 
-That gap between 67,650 and 8 is the honest headline, and the reason for it is the point of the
-whole exercise. For these languages the matcher compares **exact word forms**. It cannot tell an
+German is the clean case — it tokenises on spaces, its debut seeds are trustworthy, and it is the
+one I verified by hand.
+
+### Why the other 49,118 are only a reading list
+
+The gap between 67,650 raw and 11 named defects is the honest headline, and the reason for it is
+the point of the whole exercise. For these languages the matcher compares **exact word forms**. It cannot tell an
 inflected form of a word the learner already has from a word they have never seen. Tamil
 விரும்பவில்லை is the taught verb விரும்பு with negation fused onto it; the matcher sees a string it
 has never met and says so. So a raw count is a **triage list**, not a verdict — and these findings
@@ -82,7 +92,7 @@ can usually name".
 | **cym** | 2 | 474 | 38 | 80 | 474 prompts total; too few to read |
 | **yor** | 1 | 168 | 0 | **0** | **0 carries no information** — 168 prompts, 43 distinct word types |
 
-### The 10 confirmed defects
+### The 11 confirmed defects
 
 Found by adjudicating the top repeated findings against the real corpus. Reported, **not fixed** —
 that was the scope. Each needs a decision from a person who knows the course.
@@ -119,7 +129,13 @@ that was the scope. Each needs a decision from a person who knows the course.
    occurrences) and `bhaint` (21) appear **only** lenited; the radicals `déanamh`/`baint` never
    occur. The day a prompt uses the radical, the gate will report the correct form as unknown.
    Exact-form matching doesn't merely miss mutations — it can canonicalise one.
-10. **A defect in the matcher itself, found and fixed here** — see below.
+10. **`eng_for_kan` — Kannada prompts written with a Telugu codepoint.** 12 distinct tokens across
+    **50 learner-facing prompt rows** spell the `-u` vowel with Telugu **U+0C41** instead of Kannada
+    **U+0CC1** — `ನಾನು` ("I") most often, also `ಅವನು`, `ಹೌದು`, `ಇರೋದು`. Visually identical, so it is
+    invisible to proofreading; it can never match anything in the inventory; and a Kannada voice has
+    no reason to read a Telugu codepoint, so it is a latent TTS defect too. Independently
+    re-confirmed here by codepoint scan.
+11. **A defect in the matcher itself, found and fixed here** — see below.
 
 **And one strong negative result.** Welsh: all 38 `ita_for_cym` findings are 9 word types, and every
 one is accounted for — 26 hits are soft mutation of a radical the course taught (`ddeud`←deud,
@@ -145,6 +161,12 @@ Measured after the change — the last two rows are the proof it is right rather
 | Arabic `eng_for_ara` | 64.4% | **45.5%** |
 | Tamil `eng_for_tam` | 12.7% | 12.4% — bound-suffix negation still fires |
 | Marathi `eng_for_mar` | 19.3% | 19.2% — unchanged |
+
+**The fix is an improvement, not a cure, and I measured its residual too.** A word that legitimately
+*ends* in the negator still reads as negated: Kannada `ಪರವಾಗಿಲ್ಲ` means "no problem" but ends in
+`ಇಲ್ಲ`, so the suffix arm fires on it. That is the old error direction (over-licensing, which
+suppresses findings rather than inventing them), and closing it needs real morphology, not a
+better string rule.
 
 ### An unplanned find
 

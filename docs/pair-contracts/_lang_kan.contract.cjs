@@ -64,6 +64,16 @@
 // or an `introduce` directive in known_text — so the frequencies above are not tag-distorted. (The
 // recorded tag leakage is on the ENGLISH known side of mirror courses, not here.)
 //
+// ── A REAL CORPUS DEFECT THE FIRST SWEEP OF THIS CONTRACT FOUND ──────────────────────
+// 12 distinct tokens, 58 occurrences across 51 course_practice_phrases rows (0 lego rows), end in
+// the TELUGU vowel sign U+0C41 ు instead of the Kannada U+0CC1 ು. The two are visually near
+// identical, so this is invisible on the page: ನಾನು "I" is written ನಾ + ನ + U+0C41 in 28 phrases,
+// and likewise ಹೇಳಿದಳು 'she said' (8), ಅವಳು (7), ಅವನು (5), ಹೌದು (2), ನೀವು (2), ನೋಡಬೇಕಿತ್ತು,
+// ಇರೋದು, ಅನ್ನೋದು, ನಾವು, ಹೇಳಿದವನು, ಏನು (1 each). These are corrupt strings, not variants: they can
+// never match a free-class or introduced form, and a Kannada TTS voice has no reason to read a
+// Telugu codepoint correctly. Reported 2026-08-17 with this contract; NOT fixed here (this file
+// only describes the language). Do not "fix" it by adding the corrupt spellings to the free class.
+//
 // ── HONEST GAPS: TOKENS I DID NOT PUT IN THE FREE CLASS, AND WHY ─────────────────────
 // High-frequency but LEXICAL, each with a real debut, so classing them free would hide breaches:
 // ಅನಿಸುತ್ತೆ (391, 'it seems/I feel' — carrier of the whole ನನಗೆ … ಅನಿಸುತ್ತೆ frame), ಗೊತ್ತು (213,
