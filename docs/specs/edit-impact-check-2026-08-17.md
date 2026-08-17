@@ -5,6 +5,50 @@
 
 ---
 
+## Who calls it (Kai's ruling, 2026-08-17)
+
+> *"it's probably better to just get the original agent to do that (or to launch one when they have a proposed change ready). The results might affect the original decision, so it's good to loop the original agent back in."*
+
+**There is no guardian and no watcher process.** The check is a function the proposing agent calls on itself, before applying:
+
+```
+agent has a change ready
+    → agent runs the check itself, pre-apply
+    → agent reads `decision` and decides
+    → the result may CHANGE OR CANCEL the original proposal
+```
+
+That is a real design constraint, not a note about deployment, and it is what the output is now shaped around. A monitor only needs to be *right*; a report the proposer acts on has to be **decidable** — it must say, in one field, whether the proposal should go ahead as written, and if so what else the agent has to do. So every report opens with a `decision` block:
+
+| verdict | meaning | exit |
+|---|---|---|
+| `proceed` | nothing beyond the edited row is affected — apply as written | 0 |
+| `proceed-with-repairs` | safe to apply, but **not finished when the text lands** — carry out `required_actions` | 10 |
+| `reconsider` | the edit as written damages work beyond itself — revise, narrow, or accept the cost deliberately, then re-run | 20 |
+
+Exit code `2` is reserved for the tool itself failing, so "the check broke" is never mistaken for "the check found nothing". `decision` is **advice to the proposing agent — it blocks nothing, by design**, which is the same reason the blocking gate below stays unbuilt.
+
+What earns a `reconsider` is deliberately narrow: it is the set of outcomes that should make an agent rethink rather than just do more work afterwards — phrases breaking elsewhere in the course, a LEGO's own phrases losing containment, a seed needing re-decomposition, a **silent voice swap**, and an edit placing vocabulary at a position where the course hasn't taught it yet. That last one distinguishes debt the edit *inherits* (reported, not blocking) from a rail the edit *breaks* (`untaught_at_this_position`).
+
+Three call shapes, all pre-apply:
+
+```bash
+# 1. inline, one edit — ~15s, cheap enough to just run
+node tools/edit-impact-check.cjs --course eng_for_sin --seed 181 --known "…"
+
+# 2. pipe the pending proposal in, read the decision out
+echo "$PROPOSED" | node tools/edit-impact-check.cjs --course eng_for_sin \
+    --plan - --json - --quiet | jq -r '.decision.verdict, .decision.required_actions[]'
+
+# 3. in-process, no CLI — safe to require, nothing runs on load
+const { checkEdits } = require('./tools/edit-impact-check.cjs')
+const r = await checkEdits('eng_for_sin', [{ seed: 181, known: '…' }])
+```
+
+`--plan -` reads stdin so an agent never has to invent a temp file — `/tmp` is shared between dispatched workers and a scratch file there has been silently overwritten by a parallel slice before. Run it yourself rather than dispatching a worker unless the batch is large; at ~15s per edit the dispatch costs more than the check.
+
+---
+
 ## What the existing edit-cascade already does, gets wrong, and never sees
 
 There is real prior art. `services/course-builder/routes/edit-cascade.cjs` (spec: `docs/specs/edit-cascade-spec.md`, marked IMPLEMENTED 2026-06-21) has a `dryRun` mode, and the part of it that works is the important part: it discriminates a **vocab-preserving (Case 1)** edit from a **vocab-changing (Case 2)** one by set-diffing the seed's LEGO+component contribution, and it gets the downstream tiling failures *exactly* by replaying `/v2/validate` with a non-mutating in-memory `override`. That reasoning is correct and this work **reuses it rather than replacing it** — the new tool walks the same tile-then-add loop and calls the same `checkVocabViolations` DP chunk-tiler.
@@ -90,11 +134,13 @@ Held deliberately — none of it ships without Kai's yes, because all of it chan
 | Proposal | What it is | Cost | Risk |
 |---|---|---|---|
 | **A. `trg_null_seed_audio_on_text_change`** | Give `course_seeds` the same relink trigger the other two tables already have, so Gap 1 stops being silent. One migration, ~15 lines, mirrors an existing function. | half a day | DDL on a live table; converts a *silent* failure into a *visible* one (a NULL slot), which is strictly better but will surface a backlog of missing audio that has been hiding |
-| **B. Wire the check into `POST /api/seed/complete` and the dashboard save** | The report is computed and returned alongside the existing gate result. Advisory, never blocking. | 1 day | none to content; the endpoint gets slower by ~1s |
-| **C. A blocking gate** | The submission is *refused* when the report contains a `danger`. | 1 day | real — it can stop legitimate work, and the estate has parallel campaigns that would trip it |
-| **D. Extend `edit-cascade.cjs`'s dry run to call this** | Fold the audio half into the existing modal so a dashboard editor sees it too. | 1 day | touches mutating code |
+| **B. Return the `decision` block from `POST /api/seed/complete` and the dashboard save** | The submitting agent/editor gets its own blast radius back **in the response to its own submission** — the same loop-back shape as the CLI, on the API path. Advisory, never blocking. | 1 day | none to content; the endpoint gets slower by ~1s |
+| **C. A blocking gate** | The submission is *refused* when the decision is `reconsider`. | 1 day | real — it can stop legitimate work, and the estate has parallel campaigns that would trip it |
+| **D. Extend `edit-cascade.cjs`'s dry run to call this** | Fold the audio half into the existing modal, so a dashboard editor gets the same decision block a worker gets. | 1 day | touches mutating code |
 
-My recommendation is **A + B**: fix the silent failure, and make the report appear automatically on the path most edits take, without ever refusing a submission. C is the one to leave alone — a gate that can refuse work is the kind of thing that gets switched off in a hurry at 2am and then stays off.
+My recommendation is **A + B**: fix the silent failure, and make the decision come back to whoever proposed the edit on the path most edits take, without ever refusing a submission.
+
+C is the one to leave alone, and Kai's ruling is the reason as much as the practicality is. Looping the proposing agent back in works because the agent still owns the decision — it can weigh the blast radius against what it knows about *why* the edit was wanted, and decide to proceed anyway. A gate that refuses takes that judgement away from the only party holding both halves of it, and gets switched off in a hurry at 2am and then stays off.
 
 ---
 

@@ -8,6 +8,28 @@
  * this is a general problem. Any changes like these need to trigger a check of the
  * effects."
  *
+ * HOW IT IS MEANT TO BE CALLED (Kai's ruling, 2026-08-17):
+ *
+ *   "it's probably better to just get the original agent to do that (or to launch
+ *    one when they have a proposed change ready). The results might affect the
+ *    original decision, so it's good to loop the original agent back in."
+ *
+ * So this is NOT a monitor and there is NO guardian process. The loop is:
+ *
+ *      agent has a change ready
+ *          → agent runs this check itself, BEFORE applying
+ *          → agent reads `decision` and decides
+ *          → the result may change or cancel the original proposal
+ *
+ * The check answers one question — should this proposal go ahead as written? —
+ * and, if it should, exactly what else must be done to leave the course whole.
+ * `decision.verdict` is one of `proceed` / `proceed-with-repairs` / `reconsider`,
+ * mirrored in the exit code (0 / 10 / 20; 2 means the tool itself failed).
+ * It is advice to the proposing agent. It blocks nothing, by design.
+ *
+ * It is cheap enough to run inline — ~15s for one edit — so run it yourself
+ * rather than dispatching a worker unless you have a large batch.
+ *
  * This is the READ-ONLY half of that. It answers, for a proposed (or already
  * applied) edit to a seed / LEGO / phrase, in any course, by any route:
  *
@@ -58,6 +80,15 @@
  *   # a batch, from a plan file: [{table,seed,lego_index,id,known,target}, ...]
  *   node tools/edit-impact-check.cjs --course eng_for_sin --plan my-edits.json
  *
+ *   # the agent call pattern: pipe the pending proposal in, read the decision out
+ *   echo "$MY_PROPOSED_EDITS" \
+ *     | node tools/edit-impact-check.cjs --course eng_for_sin --plan - --json - --quiet \
+ *     | jq -r '.decision.verdict, .decision.required_actions[]'
+ *
+ *   # or in-process, no CLI:
+ *   #   const { checkEdits } = require('./tools/edit-impact-check.cjs')
+ *   #   const r = await checkEdits('eng_for_sin', [{ seed: 181, known: '…' }])
+ *
  *   # replay edits that ALREADY happened, from content_audit_log — this is how
  *   # you check the reporter against reality
  *   node tools/edit-impact-check.cjs --course eng_for_sin --replay-since 2026-08-17
@@ -78,6 +109,20 @@ const {
   normalizeForStorage,
 } = require(path.join(REPO, 'services/course-builder/lib/text-normalization.cjs'));
 const { checkVocabViolations } = require(path.join(REPO, 'services/course-builder/lib/validation.cjs'));
+// Pure constants + functions, no side effects on load — safe to require.
+const { decodeVoiceId } = require(path.join(REPO, 'services/audio-repair-core.cjs'));
+
+// The SAME voice is stored under more than one id: `si-LK-SameeraNeural` and
+// `azure_si-LK-SameeraNeural` are one voice, as are a bare and an `xai_`-prefixed
+// id. Comparing the raw strings manufactures a voice-change finding out of a
+// tagging artefact — a `reconsider` verdict has to be worth the word, so decode
+// both sides with the estate's own rule before calling it a change.
+function sameVoice(a, b) {
+  if (a === b) return true;
+  if (!a || !b) return false;
+  const x = decodeVoiceId(a), y = decodeVoiceId(b);
+  return x.provider === y.provider && x.voiceId === y.voiceId;
+}
 
 // ── Tables we understand, and what the live schema does to each ───────────────
 // The trigger facts are VERIFIED at runtime against pg_trigger (see loadTriggerFacts)
@@ -291,9 +336,15 @@ function orderingCheck(snap, side, addedForms, editedSeed) {
       earlier_use_seeds: taughtAt == null ? uses.slice(0, 12).map(u => u.seed)
         : uses.filter(u => u.seed < taughtAt).slice(0, 12).map(u => u.seed),
       introduced_by_this_edit_at_seed: editedSeed,
+      // THE ONE THAT SHOULD CHANGE THE PROPOSAL: this edit puts the form at seed
+      // `editedSeed`, but the course does not teach it until later — or ever. That
+      // is the methodology rail directly ("never use words the learner hasn't been
+      // given yet"), caused by THIS edit rather than inherited from the course.
+      untaught_at_this_position: editedSeed != null
+        && (taughtAt == null || taughtAt > editedSeed),
     });
   }
-  return out.filter(r => r.uses_before_taught > 0 || r.taught_at_seed == null);
+  return out.filter(r => r.uses_before_taught > 0 || r.taught_at_seed == null || r.untaught_at_this_position);
 }
 
 // ── Presentations: clips that embed the edited text ───────────────────────────
@@ -466,7 +517,7 @@ async function checkEdit(c, snap, triggers, edit) {
         voice_id: predicted.voice_id, language: predicted.language, origin: predicted.origin,
         has_object: predicted.has_object, text: predicted.text,
       },
-      voice_change: !!(current && predicted && current.voice_id !== predicted.voice_id),
+      voice_change: !!(current && predicted && !sameVoice(current.voice_id, predicted.voice_id)),
       needs_tts: verdict === 'nulled-silent' || (verdict === 'left-stale' && !repair?.correct_audio_id),
       repair,
     };
@@ -641,7 +692,140 @@ async function checkEdit(c, snap, triggers, edit) {
   report.doctrine = await doctrineFlags(c, snap, edit, report.audio);
 
   if (!report.verdicts.length) report.verdicts.push({ level: 'ok', message: 'No blast radius detected beyond the edited row.' });
+
+  // ── 8. The decision — what the PROPOSING agent should do with this ──────────
+  report.decision = decide(report, edit);
   return report;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// THE DECISION BLOCK
+//
+// Kai's ruling, 2026-08-17: "it's probably better to just get the original agent
+// to do that (or to launch one when they have a proposed change ready). The
+// results might affect the original decision, so it's good to loop the original
+// agent back in."
+//
+// So this is not a monitor and there is no guardian. The proposing agent runs the
+// check BEFORE applying, and reads this block to decide. It answers one question —
+// should this proposal go ahead as written? — and, if it should, exactly what else
+// the agent has to do to leave the course whole.
+//
+//   proceed              nothing beyond the edited row
+//   proceed-with-repairs safe to apply, but ONLY if required_actions are carried out
+//   reconsider           the edit as written damages work beyond itself; revise it,
+//                        narrow it, or accept the listed cost deliberately
+//
+// `reconsider` is advice to the proposing agent, never a refusal — this tool cannot
+// block anything, by design.
+// ─────────────────────────────────────────────────────────────────────────────
+function decide(report, edit) {
+  const reasons = [];
+  const actions = [];
+  let level = 'proceed';
+  const raise = (l) => {
+    const rank = { proceed: 0, 'proceed-with-repairs': 1, reconsider: 2 };
+    if (rank[l] > rank[level]) level = l;
+  };
+
+  // ── Things that should change the proposal ─────────────────────────────────
+  const broken = report.course_wide.tiling.broken;
+  if (broken.length) {
+    raise('reconsider');
+    const seeds = [...new Set(broken.map(b => b.seed))];
+    reasons.push({
+      code: 'course-wide-breakage',
+      detail: `${broken.length} phrase(s) across ${seeds.length} seed(s) stop tiling once this edit removes ${report.course_wide.tiling.removed_vocab_units.map(u => JSON.stringify(u)).join(', ')}. Those phrases are other people's finished work.`,
+    });
+    actions.push(`Either keep the removed chunk(s) in the new text, or accept re-authoring ${broken.length} phrase(s) (seeds ${seeds.slice(0, 10).join(', ')}${seeds.length > 10 ? `, +${seeds.length - 10} more` : ''}).`);
+  }
+
+  const contain = report.derived.containment_failures || [];
+  if (contain.length) {
+    raise('reconsider');
+    reasons.push({ code: 'containment-broken', detail: `${contain.length} of this LEGO's own build/use phrases no longer contain its target text, so the LEGO stops being what those phrases teach.` });
+    actions.push(`Re-author ${contain.length} phrase(s) for this LEGO, or choose a new text those phrases still contain.`);
+  }
+
+  if (/Case 2/.test(report.derived.edit_case || '')) {
+    raise('reconsider');
+    reasons.push({ code: 're-decomposition-required', detail: 'The new seed target does not tile from this seed\'s existing LEGOs, so the breakdown must be rebuilt — this is not a text-only edit.' });
+    actions.push('Produce a new LEGO breakdown and apply it through POST /api/course/:code/edit-cascade (which snapshots and rolls back on a bad breakdown) rather than by direct UPDATE.');
+  }
+
+  const untaught = (report.course_wide.ordering || []).filter(o => o.untaught_at_this_position);
+  if (untaught.length) {
+    raise('reconsider');
+    reasons.push({
+      code: 'uses-untaught-vocabulary',
+      detail: `This edit places ${untaught.map(o => JSON.stringify(o.form)).join(', ')} at seed ${edit.seed_number}, but the course teaches ${untaught.length > 1 ? 'them' : 'it'} at ${untaught.map(o => o.taught_at_seed == null ? 'no point at all' : `seed ${o.taught_at_seed}`).join(', ')}. The methodology rail is that the learner is never given a word they haven't been taught.`,
+      caveat: 'Matching is on exact word-forms with NO stemming, exactly like the known-side gate. In an inflecting language a flagged form may be a case/tense variant of a word that IS taught — which a gate could not tell apart, and you can. Judge it; do not assume it.',
+    });
+    actions.push('Use vocabulary already introduced by this point, or move the introduction earlier — deliberately, as a separate decision.');
+  }
+
+  const voiceSwaps = report.audio.filter(a => a.verdict === 'relinked' && a.voice_change);
+  if (voiceSwaps.length) {
+    raise('reconsider');
+    reasons.push({ code: 'silent-voice-change', detail: `${voiceSwaps.length} link(s) would silently bind to a clip in a DIFFERENT voice (${voiceSwaps.map(a => `${a.current_clip?.voice_id} → ${a.predicted_clip?.voice_id}`).join('; ')}). Nothing reports this and the learner hears the swap.` });
+    actions.push('Decide the voice deliberately: bind the correct clip explicitly after the edit, or render a replacement in the intended voice (make-before-break).');
+  }
+
+  // ── Things that are safe to apply, provided you then do the work ───────────
+  for (const a of report.audio) {
+    if (a.verdict === 'left-stale') {
+      raise('proceed-with-repairs');
+      reasons.push({ code: 'stale-link', detail: `${a.column} will be left pointing at the OLD text with no trigger and no alarm.` });
+      actions.push(a.repair.action);
+    } else if (a.verdict === 'nulled-silent') {
+      raise('proceed-with-repairs');
+      reasons.push({ code: 'silent-slot', detail: `${a.column} becomes NULL — a silent slot until new audio is rendered.` });
+      actions.push(`Queue an audio pass so ${a.column} is refilled: node tools/course-optimization/queue-audio-pass.cjs ${report.edit.course_code} --reason "<pass>". Do NOT run TTS directly.`);
+    } else if (a.verdict === 'relinked') {
+      raise('proceed-with-repairs');
+      reasons.push({ code: 'silent-relink', detail: `${a.column} rebinds to existing clip ${a.predicted_audio_id} (same voice). Verify it says what you intend — matching strips trailing punctuation.` });
+      actions.push(`Listen to / verify clip ${a.predicted_audio_id} before trusting the rebind.`);
+    }
+    if (a.unique_constraint) {
+      raise('proceed-with-repairs');
+      actions.push(`Do NOT INSERT a new clip for ${a.column}: unique_course_audio_per_voice will reject it. Bind existing clip ${a.unique_constraint.existing_clips[0].id} instead.`);
+    }
+  }
+
+  if (report.presentations.length) {
+    raise('proceed-with-repairs');
+    reasons.push({ code: 'stale-presentations', detail: `${report.presentations.length} intro clip(s) embed the old text and will keep speaking it.` });
+    actions.push(`Re-compose ${report.presentations.length} presentation clip(s) (POST /regenerate-presentations, which self-scopes to missing), then queue the audio pass.`);
+  }
+
+  const sameText = report.course_wide.same_text_elsewhere;
+  if (sameText.length) {
+    raise('proceed-with-repairs');
+    const n = sameText.reduce((a, r) => a + r.rows.length, 0);
+    reasons.push({ code: 'same-text-elsewhere', detail: `${n} other row(s) carry the identical old text and share its clip. Editing one leaves the course inconsistent.` });
+    actions.push(`Decide explicitly whether the other ${n} row(s) should change too — include them in this proposal, or say why not.`);
+  }
+
+  if (report.doctrine.some(d => d.flag === 'pod-content-migration')) {
+    raise('proceed-with-repairs');
+    actions.push('If this text appears in a pod, migrate learner progress FIRST — docs/pods/pod-migration-protocol.md. Never edit a live pod in place.');
+  }
+
+  if (report.tts_estimate.clips_needing_render > 0) {
+    actions.push(`≈${report.tts_estimate.clips_needing_render} clip(s) will need rendering. TTS costs money — show a plan and get approval; end the pass by QUEUEING, never by running TTS.`);
+  }
+
+  return {
+    verdict: level,
+    headline: level === 'proceed'
+      ? 'Apply as proposed — nothing beyond the edited row is affected.'
+      : level === 'proceed-with-repairs'
+        ? `Safe to apply, but it is not finished when the text lands — ${actions.length} follow-up action(s) are required to leave the course whole.`
+        : 'Reconsider this edit as written: it damages work beyond itself. Revise it, narrow it, or accept the listed cost as a deliberate decision.',
+    reasons,
+    required_actions: [...new Set(actions)],
+    note: 'Advice to the proposing agent. This tool cannot and does not block anything.',
+  };
 }
 
 // ── Edit sources ──────────────────────────────────────────────────────────────
@@ -709,6 +893,29 @@ function render(rep) {
     L.push(`  ${col}:`);
     L.push(`      was  ${JSON.stringify(ch.from)}`);
     L.push(`      now  ${JSON.stringify(ch.to)}`);
+  }
+
+  // The decision goes FIRST — it is what the proposing agent came for.
+  const d = rep.decision;
+  if (d) {
+    L.push('');
+    L.push('┌─ DECISION ' + '─'.repeat(65));
+    L.push(`│  ${d.verdict.toUpperCase()}`);
+    L.push(`│  ${d.headline}`);
+    if (d.reasons.length) {
+      L.push('│');
+      L.push('│  because:');
+      for (const r of d.reasons) {
+        L.push(`│    · ${r.detail}`);
+        if (r.caveat) L.push(`│      (${r.caveat})`);
+      }
+    }
+    if (d.required_actions.length) {
+      L.push('│');
+      L.push('│  before this edit is finished, you must:');
+      d.required_actions.forEach((x, i) => L.push(`│    ${i + 1}. ${x}`));
+    }
+    L.push('└' + '─'.repeat(76));
   }
 
   L.push('');
@@ -805,7 +1012,12 @@ async function main() {
       edits = await replayEdits(c, courseCode, a['replay-since']);
       if (!edits.length) console.error(`  (no text edits to ${courseCode} in content_audit_log since ${a['replay-since']})`);
     } else if (a.plan) {
-      const plan = JSON.parse(fs.readFileSync(a.plan, 'utf8'));
+      // `--plan -` reads the proposal from stdin, so an agent can pipe its own
+      // pending change straight in without inventing a temp file. (/tmp is shared
+      // between dispatched workers; a scratch file there has been silently
+      // overwritten by a parallel slice before.)
+      const raw = a.plan === '-' ? fs.readFileSync(0, 'utf8') : fs.readFileSync(a.plan, 'utf8');
+      const plan = JSON.parse(raw);
       for (const p of (Array.isArray(plan) ? plan : plan.edits || [])) {
         const spec = p.table || (p.id ? 'course_practice_phrases' : p.lego_index != null ? 'course_legos' : 'course_seeds');
         const e = { table: spec, seed_number: p.seed ?? p.seed_number, lego_index: p.lego_index, id: p.id, known: p.known ?? p.known_text, target: p.target ?? p.target_text };
@@ -829,32 +1041,93 @@ async function main() {
     const reports = [];
     for (const e of edits) reports.push(await checkEdit(c, snap, triggers, e));
 
-    const out = {
-      tool: 'edit-impact-check',
-      generated_at: new Date().toISOString(),
-      course_code: courseCode,
-      mode: a['replay-since'] ? 'replay' : a.plan ? 'plan' : 'single',
-      read_only: true,
-      tts_rendered: 0,
-      edits: reports.length,
-      summary: {
-        danger: reports.reduce((n, r) => n + r.verdicts.filter(v => v.level === 'danger').length, 0),
-        warn: reports.reduce((n, r) => n + r.verdicts.filter(v => v.level === 'warn').length, 0),
-        clips_needing_render: reports.reduce((n, r) => n + r.tts_estimate.clips_needing_render, 0),
-        phrases_broken_course_wide: reports.reduce((n, r) => n + r.course_wide.tiling.broken.length, 0),
-      },
-      reports,
-    };
+    const out = buildEnvelope(courseCode, reports, a['replay-since'] ? 'replay' : a.plan ? 'plan' : 'single');
 
     if (!a.quiet) {
       for (const r of reports) console.log(render(r));
-      console.log(`\n  ${reports.length} edit(s) checked · ${out.summary.danger} danger · ${out.summary.warn} warn · ≈${out.summary.clips_needing_render} clip(s) would need rendering · 0 rendered · 0 rows written\n`);
+      console.log(`\n  ${reports.length} edit(s) checked · DECISION: ${out.decision.verdict.toUpperCase()} · ` +
+        `${out.summary.danger} danger · ${out.summary.warn} warn · ≈${out.summary.clips_needing_render} clip(s) would need rendering · 0 rendered · 0 rows written\n`);
     }
-    if (a.json && a.json !== true) {
+    if (a.json === '-') {
+      process.stdout.write(JSON.stringify(out, null, 2) + '\n');
+    } else if (a.json && a.json !== true) {
       fs.writeFileSync(a.json, JSON.stringify(out, null, 2));
       console.error(`  JSON report → ${a.json}`);
     }
-    process.exitCode = out.summary.danger ? 1 : 0;
+    process.exitCode = EXIT[out.decision.verdict];
+  } finally {
+    await c.end();
+  }
+}
+
+// Exit codes, so a proposing agent can branch on the decision without parsing.
+// 2 is reserved for the tool itself failing — never confuse "the check broke"
+// with "the check found nothing".
+const EXIT = { proceed: 0, 'proceed-with-repairs': 10, reconsider: 20 };
+
+function buildEnvelope(courseCode, reports, mode) {
+  const rank = { proceed: 0, 'proceed-with-repairs': 1, reconsider: 2 };
+  const worst = reports.reduce((w, r) => rank[r.decision.verdict] > rank[w] ? r.decision.verdict : w, 'proceed');
+  const allActions = [...new Set(reports.flatMap(r => r.decision.required_actions))];
+  return {
+    tool: 'edit-impact-check',
+    generated_at: new Date().toISOString(),
+    course_code: courseCode,
+    mode,
+    read_only: true,
+    tts_rendered: 0,
+    edits: reports.length,
+    // The proposing agent reads THIS first and decides. Everything below is why.
+    decision: {
+      verdict: worst,
+      exit_code: EXIT[worst],
+      headline: worst === 'proceed'
+        ? `All ${reports.length} proposed edit(s) are self-contained — apply as written.`
+        : worst === 'proceed-with-repairs'
+          ? `Apply, then carry out ${allActions.length} follow-up action(s). The edit is not finished when the text lands.`
+          : `${reports.filter(r => r.decision.verdict === 'reconsider').length} of ${reports.length} edit(s) damage work beyond themselves. Revise, narrow, or accept the cost deliberately — then re-run this check.`,
+      required_actions: allActions,
+      reconsider_edits: reports.filter(r => r.decision.verdict === 'reconsider')
+        .map(r => ({ key: r.edit.key, reasons: r.decision.reasons.map(x => x.code) })),
+      note: 'Advice to the agent that proposed these edits. This tool blocks nothing.',
+    },
+    summary: {
+      danger: reports.reduce((n, r) => n + r.verdicts.filter(v => v.level === 'danger').length, 0),
+      warn: reports.reduce((n, r) => n + r.verdicts.filter(v => v.level === 'warn').length, 0),
+      clips_needing_render: reports.reduce((n, r) => n + r.tts_estimate.clips_needing_render, 0),
+      phrases_broken_course_wide: reports.reduce((n, r) => n + r.course_wide.tiling.broken.length, 0),
+    },
+    reports,
+  };
+}
+
+/**
+ * In-process API, for a service or an agent already holding a connection.
+ * Same computation, same envelope, no CLI.
+ *
+ *   const { checkEdits } = require('./tools/edit-impact-check.cjs');
+ *   const report = await checkEdits('eng_for_sin', [{ seed: 181, known: '…' }]);
+ *   if (report.decision.verdict === 'reconsider') ... rethink the proposal
+ *
+ * Safe to require: this module runs nothing on load (see the require.main guard).
+ */
+async function checkEdits(courseCode, proposed) {
+  const c = await connect();
+  try {
+    const triggers = await loadTriggerFacts(c);
+    const snap = await loadCourse(c, courseCode);
+    const reports = [];
+    for (const p of proposed) {
+      const e = {
+        table: p.table || (p.id ? 'course_practice_phrases' : p.lego_index != null ? 'course_legos' : 'course_seeds'),
+        seed_number: p.seed ?? p.seed_number, lego_index: p.lego_index, id: p.id,
+        known: p.known ?? p.known_text ?? null, target: p.target ?? p.target_text ?? null,
+      };
+      const r = await resolveRow(c, courseCode, e);
+      if (e.table === 'course_practice_phrases') e.seed_number = r.row.seed_number;
+      reports.push(await checkEdit(c, snap, triggers, { ...e, ...r }));
+    }
+    return buildEnvelope(courseCode, reports, 'api');
   } finally {
     await c.end();
   }
@@ -864,4 +1137,4 @@ if (require.main === module) {
   main().catch(err => { console.error(`\n  edit-impact-check FAILED: ${err.message}\n`); process.exit(2); });
 }
 
-module.exports = { tilingBlastRadius, orderingCheck, accumulate, words };
+module.exports = { checkEdits, decide, buildEnvelope, sameVoice, tilingBlastRadius, orderingCheck, accumulate, words, EXIT };

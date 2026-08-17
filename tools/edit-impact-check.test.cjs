@@ -96,3 +96,115 @@ test('tokenisation is script-agnostic — Sinhala and Arabic are not tokenised t
   assert.deepStrictEqual(words('أريد أن أتكلم'), ['أريد', 'أن', 'أتكلم']);
   assert.deepStrictEqual(words('I want, to speak.'), ['i', 'want', 'to', 'speak']);
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// The decision block — what the PROPOSING agent acts on (Kai's ruling 2026-08-17:
+// the report loops back to the original agent, and may change its proposal).
+// ─────────────────────────────────────────────────────────────────────────────
+const { decide, buildEnvelope, EXIT } = require('./edit-impact-check.cjs');
+
+function baseReport(over = {}) {
+  return {
+    edit: { course_code: 'tst_for_eng', key: 'seed 5' },
+    audio: [], presentations: [], doctrine: [],
+    derived: {},
+    course_wide: { tiling: { broken: [], removed_vocab_units: [] }, ordering: [], same_text_elsewhere: [] },
+    tts_estimate: { clips_needing_render: 0 },
+    verdicts: [],
+    ...over,
+  };
+}
+
+test('a self-contained edit is PROCEED, and says so without inventing work', () => {
+  const d = decide(baseReport(), { seed_number: 5 });
+  assert.strictEqual(d.verdict, 'proceed');
+  assert.deepStrictEqual(d.required_actions, []);
+});
+
+test('a stale audio link is PROCEED-WITH-REPAIRS and the repair is in the actions', () => {
+  const d = decide(baseReport({
+    audio: [{ column: 'known_audio_id', verdict: 'left-stale', repair: { action: 'REPOINT IT', correct_audio_id: 'abc' } }],
+  }), { seed_number: 5 });
+  assert.strictEqual(d.verdict, 'proceed-with-repairs');
+  assert.ok(d.required_actions.includes('REPOINT IT'));
+});
+
+test('course-wide breakage is RECONSIDER — the whole point of looping the agent back in', () => {
+  const d = decide(baseReport({
+    course_wide: {
+      tiling: { broken: [{ seed: 9 }, { seed: 12 }], removed_vocab_units: ['to speak'] },
+      ordering: [], same_text_elsewhere: [],
+    },
+  }), { seed_number: 5 });
+  assert.strictEqual(d.verdict, 'reconsider');
+  assert.ok(d.reasons.some(r => r.code === 'course-wide-breakage'));
+});
+
+test('using vocabulary the course has not taught yet is RECONSIDER, not a repairable footnote', () => {
+  const d = decide(baseReport({
+    course_wide: {
+      tiling: { broken: [], removed_vocab_units: [] },
+      ordering: [{ side: 'known', form: 'later', taught_at_seed: 469, untaught_at_this_position: true }],
+      same_text_elsewhere: [],
+    },
+  }), { seed_number: 181 });
+  assert.strictEqual(d.verdict, 'reconsider');
+  assert.ok(d.reasons.some(r => r.code === 'uses-untaught-vocabulary'));
+});
+
+test('a course-wide ordering finding NOT caused by this edit does not force a reconsider', () => {
+  const d = decide(baseReport({
+    course_wide: {
+      tiling: { broken: [], removed_vocab_units: [] },
+      ordering: [{ side: 'known', form: 'olddebt', taught_at_seed: 3, untaught_at_this_position: false }],
+      same_text_elsewhere: [],
+    },
+  }), { seed_number: 181 });
+  assert.strictEqual(d.verdict, 'proceed');
+});
+
+test('a silent voice swap is RECONSIDER — nothing else reports it and the learner hears it', () => {
+  const d = decide(baseReport({
+    audio: [{
+      column: 'target1_audio_id', verdict: 'relinked', voice_change: true,
+      current_clip: { voice_id: 'v_old' }, predicted_clip: { voice_id: 'v_new' },
+    }],
+  }), { seed_number: 5 });
+  assert.strictEqual(d.verdict, 'reconsider');
+  assert.ok(d.reasons.some(r => r.code === 'silent-voice-change'));
+});
+
+test('required actions are de-duplicated so the agent gets a list it can work through', () => {
+  const rep = baseReport({
+    audio: [
+      { column: 'a', verdict: 'left-stale', repair: { action: 'SAME ACTION', correct_audio_id: 'x' } },
+      { column: 'b', verdict: 'left-stale', repair: { action: 'SAME ACTION', correct_audio_id: 'x' } },
+    ],
+  });
+  const d = decide(rep, { seed_number: 5 });
+  assert.strictEqual(d.required_actions.filter(x => x === 'SAME ACTION').length, 1);
+});
+
+test('the batch envelope takes the WORST verdict and maps it to the exit code', () => {
+  const mk = (v) => ({ ...baseReport(), decision: { verdict: v, required_actions: [], reasons: [] } });
+  const env = buildEnvelope('tst_for_eng', [mk('proceed'), mk('reconsider'), mk('proceed-with-repairs')], 'plan');
+  assert.strictEqual(env.decision.verdict, 'reconsider');
+  assert.strictEqual(env.decision.exit_code, EXIT.reconsider);
+  assert.strictEqual(env.decision.reconsider_edits.length, 1);
+});
+
+test('exit codes are distinct, and 2 is never a decision — it means the tool failed', () => {
+  const codes = Object.values(EXIT);
+  assert.strictEqual(new Set(codes).size, codes.length);
+  assert.ok(!codes.includes(2), 'exit 2 is reserved for tool failure');
+});
+
+test('a voice-id tagging artefact is NOT a voice change — reconsider must be worth the word', () => {
+  const { sameVoice } = require('./edit-impact-check.cjs');
+  // Measured live on eng_for_sin lego 108:2 during the replay: the naive string
+  // compare called this a silent voice swap. It is one voice, tagged two ways.
+  assert.ok(sameVoice('si-LK-SameeraNeural', 'azure_si-LK-SameeraNeural'));
+  assert.ok(sameVoice('bedd6226', 'xai_bedd6226'));
+  assert.ok(!sameVoice('azure_si-LK-SameeraNeural', 'azure_si-LK-ThiliniNeural'));
+  assert.ok(!sameVoice('azure_en-GB-SoniaNeural', 'bedd6226'));
+});
