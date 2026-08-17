@@ -4162,6 +4162,12 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     const voiceId = voiceSettings.voiceId || voiceConfig[role]
     const voiceProvider = voiceSettings.provider || 'azure'
     const speed = voiceSettings.settings?.speed || 1.0
+    // The identity spelling of the voice, as /regenerate-role and
+    // /regenerate-presentation both compute it. This route referenced
+    // storedVoiceId at its course_audio update without ever declaring it, so
+    // every call threw "storedVoiceId is not defined" AFTER paying for the
+    // render — which is why nothing in the dashboard calls this route.
+    const storedVoiceId = canonicalClipVoiceId(voiceId, voiceProvider)
 
     if (!voiceId) {
       return res.status(400).json({ error: `No voice configured for role: ${role}` })
