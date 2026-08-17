@@ -1,0 +1,15 @@
+{
+  "run": "dry",
+  "voice_id": "sal",
+  "rows": 1,
+  "changes": [
+    {
+      "voice_id": "sal",
+      "column": "notes",
+      "before": null,
+      "after": "NOT RELIABLY GENDERED (T-21, 2026-08-17). The gender column above is xAI's own stated word and is left standing as such, but it must not be relied on: the estate cast metadata calls sal both f and m, and the T-21 acoustic measurement put it at 140.4 Hz median with an IQR of 111-186 Hz straddling the f/m boundary. This is a property of the voice, not a label defect. sal must never fill a gendered pod seat; tools/pod-voice-coverage.cjs enforces that via UNRELIABLE_GENDER, which deliberately overrides this column. Evidence: docs/pods/t21-voice-gender-forensics-2026-08-17.md.",
+      "gender_before": "m",
+      "gender_after": "m"
+    }
+  ]
+}
