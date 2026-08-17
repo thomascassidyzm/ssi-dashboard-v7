@@ -70,24 +70,45 @@ produced on exactly this pattern, without asking you again.
 
 You caught Alba being called male in Catalan. That wasn't a typo.
 
-Across the whole casting page, the "In production now" block carries **41 male labels and 0 female
-ones**. Not one production voice in the entire document was labelled female. The gender wasn't being
-read per voice at all.
+Across the whole casting page, the "In production now" block called **all 41 voices male**. Not one
+was labelled female. **Twenty of those 41 are actually women.**
 
-So far **four** voices are proven mislabelled, and our own records already had them right:
+**It wasn't our records — those were right all along.** We have a proper voice table with genders
+taken straight from xAI's own system, and it correctly says these voices are female. Three other
+places we store voice data agree. The page that was built for you simply never asked any of them: it
+printed "male" for every production voice because it had nothing to go on and defaulted.
 
-| Voice | Called | Actually | Languages it affects |
+The giveaway is that the *other* half of the same page — the "official pool" voices — is 100%
+correct. There, the gender is built into how the data is stored, so it came for free. Where it had
+to be looked up, it was wrong every single time.
+
+**Seven voices were mislabelled. You caught four by ear. Three more turned up when we checked:**
+
+| Voice | Called | Actually | Where it shows up |
 |---|---|---|---|
-| `ara` | male | **female** | 10 — including Chinese, Danish, French, Japanese, Thai |
-| `eve` | male | **female** | 5 — including Egyptian Arabic, Italian, Spanish |
-| Noor `247783ebdd51` | male | **female** | Dutch |
-| Lena `3a7889066fa2` | male | **female** | German |
+| Ara | male | **female** | 10 languages — Chinese, Danish, French, Japanese, Thai and more |
+| Eve | male | **female** | 5 — Egyptian Arabic, Italian, Spanish and more |
+| Noor | male | **female** | Dutch |
+| Lena | male | **female** | German |
+| **Ji-yeon** | male | **female** | **Korean** |
+| **Aleksandra** | male | **female** | **Polish** |
+| Alba | male | **female** | Catalan |
 
-You spotted `ara` and Alba by ear. Noor and Lena were found by checking the records afterwards.
+Corrected, the page reads 21 male and 20 female — roughly a pair per language, which is what you'd
+expect and is itself a check that the answer is right.
+
+This matters more than a paperwork tidy: **Ara and Eve alone carry pod work across 35 and 37
+courses.** Judging voices off those male labels means reasoning about the wrong half of the estate.
 
 **German matters most, because it's next for you.** Its two production voices are **Moritz (male) and
-Lena (female)** — a proper pair — and the old page was about to show you two males. That's the same
-trap you hit on Catalan and Chinese. Don't judge German off the old page.
+Lena (female)** — a proper pair — and the old page was about to show you two males. Same trap as
+Catalan and Chinese. Don't judge German off the old page.
+
+**The honest gap: I couldn't fix the page's builder, because it doesn't exist any more.** It was
+never saved into the repo — only the page it produced was. There's nothing to recover and no other
+live code doing the same thing. So the fix is a written requirement for whoever builds the next one:
+read gender from the voice table, and show unknown as *unknown*, never as male. That last part is
+what caused this — Azure voices currently have no gender recorded, and blank became "male".
 
 ---
 
