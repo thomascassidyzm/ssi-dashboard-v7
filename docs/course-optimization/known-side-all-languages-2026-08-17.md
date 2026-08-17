@@ -209,8 +209,8 @@ Before trusting a single per-course result:
 
 ## Gaps, stated rather than papered
 
-- **The 8 confirmed defects come from adjudicating the top repeated findings, not from a pass over
-  all 67,650.** The true confirmed count is higher than 8. Chinese is the best next candidate.
+- **The 11 confirmed defects come from adjudicating the top repeated findings, not from a pass
+  over all 67,650.** The true confirmed count is higher than 11. Chinese is the best next candidate.
 - **`yor` (168 prompts), `cym` (474) and `gle` (117) are not calibrated.** Yoruba's 0 findings is
   the expected result for 43 distinct word types across ten seeds and says nothing about quality.
   The Yoruba contract is unratified linguistics — its tone, allomorphy and `ní → l-` claims need a
