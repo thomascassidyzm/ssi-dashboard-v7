@@ -1,0 +1,181 @@
+# Runbook — adjudicating known-side ordering findings, one course per job
+
+**Written 2026-08-17 from the `eng_for_deu` pilot** (A135 sweep → 486 findings → 9 confirmed defects).
+This is the per-course procedure the remaining courses queue behind. It is written so a background
+worker can follow it without re-deriving the method, and so its output is comparable across courses.
+
+The frame is Kai's (2026-08-17) and is not negotiable by the worker:
+
+| tier | what it is | what to do |
+|---|---|---|
+| **1** | an uninstructed **FORM** of a word the learner knows — case, conjugation, contraction, gender, declension | tick off in bulk, state the criteria, report the fraction |
+| **2** | a **DISTINCT lexeme** for a concept taught under a different word | fix — usually edit the phrase; re-legalises when any form of the missing lexeme is introduced |
+| **3** | the learner has **no chance of guessing at all** — not even a closest-word reach | fix with priority |
+
+And the test is always the same: **put yourself in the learner's shoes at that exact seed.**
+What do they know? What would they reach for? Would they cope, or freeze?
+**Confirm a finding is not actually fine before fixing it.**
+
+---
+
+## Step 0 — establish the DIRECTION before anything else
+
+This is the step the pilot proved you cannot skip, and it changes the answer more than any other.
+
+Read `courses.known_lang` and `courses.target_lang`. `known_text` is the **prompt**; `target_text`
+is what the learner **produces**. Then ask which of the two is the learner's **native** language.
+
+- **Known side = the learner's native language** (e.g. `eng_for_deu`: German speakers learning
+  English). A native speaker is never puzzled by a word of their own language, so an
+  un-introduced *known-side* word cannot by itself scare them. It harms them only where the
+  **target-side** word it demands has not been taught yet. **The gate is measuring the wrong side.**
+  Adjudicate on the target side and expect the great majority of findings to die.
+- **Known side = a language the learner is also acquiring** (a few pairs do this): the gate is
+  measuring the right side and the findings carry their face value.
+
+Record the verdict in the report, with the file/line evidence for how the prompt reaches the
+learner. Get it independently checked — the pilot dispatched a worker for exactly this, because
+the whole adjudication rests on it.
+
+## Step 1 — re-derive the findings from live data. Never trust the snapshot.
+
+```bash
+node tools/course-optimization/known-side-sweep.cjs <course_code>
+```
+
+Confirm the total matches the A135 report for that course. If it does not, say so and use the
+live number — content moves.
+
+The sweep prints only ~12 examples, so dump the full set. The pilot's dump/classify/ledger
+scripts are the pattern (they are gitignored working files by design, `scripts/`):
+`deu-dump.cjs` → `deu-tier1.cjs` → `deu-english-axis.cjs` → `deu-ledger.cjs`.
+Rebuild them per course rather than generalising them prematurely — the morphology is
+language-specific and a shared "lemmatiser" would be a lie.
+
+**Page every query.** `course_legos` and `course_practice_phrases` both exceed 1,000 rows on a
+real course and an unpaged Supabase query truncates silently. Filter phrases to
+`phrase_role in (build, use, practice)` — component rows are never drilled by the learner and
+including them inflated an earlier census by ~60%.
+
+## Step 2 — bulk tier-1 pass, with STATED criteria
+
+Build the tier-1 test as code, with criteria written down, and report the fraction that dies.
+Two independent signals, both cheap:
+
+**(A) Morphological relatedness on the known side.** For token T in a phrase at seed S: is any
+*other form of the same lexeme* taught at or before S? Build the language's paradigms explicitly.
+For German the tractable machines were: umlaut/ablaut families (`wissen/weiß/wusste`,
+`sein/bin/war/wäre`), the `ge-…-t / ge-…-en` participle circumfix, separable prefix + **zu-infix**
+(`anfangen → anzufangen`), adjective/determiner declension, and noun plural/case. Fold umlauts
+and ß before comparing.
+
+**(B) Target-side coverage.** Are all the content words the learner must *produce* taught at or
+before S? Function words are method-supplied structure, not vocabulary — exclude them. Use light
+stemming, and handle irregulars explicitly (English `knew←know`, `better←good`).
+
+Tier 1 = both signals satisfied. In the pilot this killed **467 of 486 = 96.1%**.
+
+### Then HAND-AUDIT the pairings. This is not optional.
+
+String morphology makes semantic mistakes, and in the pilot **7 of the classifier's pairings were
+wrong or missing** — every one found by eye, none by the code:
+
+- `warte` paired to `war` ("was") — pure string coincidence; the real licence is `warten` (S82).
+- `ändere` ("change") paired to `ander-` ("other") — different lexemes.
+- `hören` ("hear") paired to `aufhören` ("stop") by prefix-stripping — different lexemes; the real
+  licence was `hört` at S71, which happened to make the verdict right for the wrong reason.
+- `meinst` paired via a homograph (`meine` = both "my" and "I mean") — right by luck.
+- Four were **missed**, because of a length guard that refused to strip `-en` from a 4-character
+  stem (`übst←üben`) and a gap in the ablaut table (`verstanden←verstehen`).
+
+So: print every pairing with the reason, read them all, and correct them by hand in a file that
+records the correction and its evidence. A classifier that is right for the wrong reason is a
+classifier that will be wrong on the next course.
+
+## Step 3 — learner's-shoes adjudication of the remainder
+
+For each survivor, write out: the seed, the prompt, the answer, the missing word, and the seed
+that word actually debuts. Then rule, in prose, why the learner can or cannot cope. Web search is
+fair game for real usage and grammar evidence — the pilot's languages are well-resourced.
+
+Dismiss aggressively where dismissal is honest. In the pilot 5 of 19 survivors were dismissed:
+two were **one-seed** leads (inside authoring tolerance), three were an English irregular past
+whose base had been taught a hundred seeds earlier.
+
+**Then get the survivors adversarially refuted.** Dispatch a worker whose job is to *refute*, told
+to default to refuted when uncertain, and to re-derive every debut seed itself. Ask it explicitly
+to try the strongest available refutation — for a language pair with transparent cognates, "the
+learner probably knows this word anyway" — and to grade that refutation honestly, because under
+the SSi method "they'd know it from school" is weak.
+
+## Step 4 — fix the confirmed tier-2/3, cheapest honest route each
+
+Sort the confirmed defects into two piles, and note that they need **different authority**:
+
+**Pile A — PROPOSE a debut reorder. Do NOT apply.** When the missing word is a *beginner
+essential* used far before its debut, the phrase is right and the curriculum order is wrong. In
+the pilot: `sorry` debuts S139 but is used at S43 and S84; `understand` debuts S58, used at S27 and
+S43; `think` debuts S37, used at S26. Moving three legos earlier re-legalises five phrases and adds
+no content. This is a **course-structure change** — list it for Kai and stop there.
+
+**Pile B — EDIT the phrase.** When the debut order is defensible and the phrase simply reached too
+early. Prefer the smallest honest change: trim the offending clause, or swap the concept for one
+already taught. Two rules:
+- **Never invent vocabulary to patch it.** Every word in the replacement must be introduced at or
+  before that seed. Verify the replacement against the inventory, in code, before proposing it.
+- **Replacement text is a craftsmanship call.** Propose it and flag it for an author's eye; do not
+  treat "it passes the gate" as "it is good content".
+
+Deletion is usually unlawful anyway: at the phrase-count ramp minimum a seed cannot lose a phrase,
+so "remove or remap" resolves to **remap**.
+
+## Step 5 — gates at apply
+
+- **Ordered paging** on every read; explicit paths on every `git add` (never `-A`), because a
+  sibling session's dirty hunks will otherwise ride along.
+- **Impact-check** before any text edit, and re-verify audio links **after** — on a released
+  course a phrase text edit **re-resolves** its audio link silently via `audio_id_for_text()`
+  rather than nulling it, so the learner can be left hearing correct-looking metadata over stale
+  bytes. The lego trigger behaves the *opposite* way and nulls its presentation link. Confirm both
+  against `supabase/schema.sql` for the course you are touching — adjacent cards fail in opposite
+  directions.
+- **Blast-radius duty** on any text change: pods, learner progress, and the materialised
+  `course_round_index` view.
+- **Never run TTS.** A content pass ends by **queueing** an audio pass:
+  `node tools/course-optimization/queue-audio-pass.cjs <course> --reason "<pass>"`.
+- **Pod content is never edited in place** — migrate learner progress under
+  `docs/pods/pod-migration-protocol.md`. Progress is filed under a sentence's *slot*, not its text.
+- **Adversarial verify** anything seed- or card-level before and after.
+
+## Step 6 — report
+
+Publish a mobile page (`/api/publish-doc`) carrying: the funnel (raw → tier-1 dead → adjudicated →
+fixed/held), a worked example of each tier, the judgement items for Kai, and a landing line naming
+branch / merge target / deployment. Quote sub-workers as `#N`.
+
+---
+
+## Per-course expectations, from the pilot
+
+`eng_for_deu` is the **easiest** course in the queue: space-tokenised, trustworthy debut seeds,
+hand-verified examples. Read its numbers as a floor on quality, not a typical case.
+
+| what | pilot value | what to expect elsewhere |
+|---|---|---|
+| tier-1 kill rate | 96.1% | **lower** where the known side is agglutinative or CJK — the matcher's noise is higher but so is the hand-audit cost |
+| findings surviving | 19 of 486 | scales with the target-side gap, not the raw count |
+| confirmed defects | 9 phrases | |
+
+Three known traps, all recorded in the A135 report and all still live:
+
+- **Japanese and Chinese**: a segmenter fragment can coincidentally match a later lego's fragment.
+  The CJK share needs its own adjudication and the tier-1 test above will not transfer.
+- **Telugu**: a zero-width non-joiner strands a bare case suffix as a token; `గా` debuts at S474,
+  so early-seed occurrences read as a hard ordering defect that is purely an artefact.
+- **Marathi**: the debut seeds come from `eng_for_mar`'s LEGO cards, which are on record as
+  unreliable. The finding count is sound; the seed each word is credited to is the weakest input.
+
+And one methodological trap worth its own line: **`ß` and `ss` do not unify**, and
+`expandContractions()` is English and rewrites a German `geht's` to the English word `is`.
+Neither fires on `eng_for_deu` (zero apostrophes in 5,880 prompts, no ss/ß doublets) but both are
+live for any future `deu_ch`/`deu_at` course.
