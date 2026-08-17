@@ -51,7 +51,7 @@ import approvals from '../services/pod-voice-approvals.cjs'
 import podSync from '../tools/pod-sync.cjs'
 
 const { castFingerprint, loadCastPods, loadApprovals, evaluateApproval, resolveCurrentPod0 } = approvals
-const { assignVoices, loadVoicePools, poolKeyFor, canonicalSpeakerName } = podSync
+const { assignVoices, loadVoicePools, poolKeysForCourse, canonicalSpeakerName } = podSync
 
 const PROVIDERS = new Set(['xai', 'azure', 'elevenlabs'])
 
@@ -84,7 +84,7 @@ export default async function handler(req, res) {
 async function courseOf(supabase, courseCode) {
   const { data, error } = await supabase
     .from('courses')
-    .select('course_code, display_name, target_lang, known_lang')
+    .select('course_code, display_name, target_lang, known_lang, voice_pool_key')
     .eq('course_code', courseCode)
     .maybeSingle()
   if (error) throw new Error(`load course: ${error.message}`)
@@ -102,13 +102,17 @@ async function getPools(req, res, supabase) {
 
   const course = await courseOf(supabase, courseCode)
   const pools = await loadVoicePools()
-  const tk = poolKeyFor(pools, course.target_lang)
-  const kk = poolKeyFor(pools, course.known_lang)
+  // The COURSE's keys, not the raw target_lang: a regional-variant course
+  // carries the base tag in target_lang and its real pool key in
+  // voice_pool_key (T-21, 2026-08-17). Reading target_lang here is what made
+  // deu_at_for_eng and deu_for_eng share one casting slot.
+  const { target: tk, known: kk } = poolKeysForCourse(pools, course)
 
   return res.json({
     course_code: courseCode,
     target_lang: course.target_lang,
     known_lang: course.known_lang,
+    voice_pool_key: course.voice_pool_key || null,
     target: { pool_key: tk, exists: !!pools[tk], pool: pools[tk] || { f: [], m: [] } },
     known: { pool_key: kk, exists: !!pools[kk], pool: pools[kk] || { f: [], m: [] } },
     // Every regional key the pools carry for this base language, so the page can
@@ -182,6 +186,7 @@ async function postApply(req, res, supabase, user) {
   }
 
   const course = await courseOf(supabase, courseCode)
+  const poolKeys = poolKeysForCourse(await loadVoicePools(), course)
 
   // Which pod. Default is the CURRENT pod — the one PodLab shows and samples,
   // resolved by the gate's own resolveCurrentPod0 and never assumed to be
@@ -236,7 +241,10 @@ async function postApply(req, res, supabase, user) {
       written.push({ pod_id: pod.id, skipped: 'no speaker labels — nothing to cast' })
       continue
     }
-    const cast = await assignVoices([...labels], course.target_lang, course.known_lang, overrides)
+    // The resolved pool KEYS, never the raw langs — same reason as getPools.
+    // poolKeyFor() inside resolveCast is idempotent on a key that exists, so
+    // passing the key through is safe and keeps ONE resolution point.
+    const cast = await assignVoices([...labels], poolKeys.target, poolKeys.known, overrides)
 
     // Writes speakers and speakers only. No sentence row is read for update,
     // no audio id is touched, no TTS is queued.

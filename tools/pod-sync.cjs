@@ -238,6 +238,83 @@ function poolKeyFor(pools, lang) {
   return langKey(exact);
 }
 
+// A pool key as stored in courses.voice_pool_key: 'deu_at', 'ara_eg', 'spa_mx'.
+// Deliberately narrow — the whole point of the column is that it is an explicit
+// human ruling, so anything that isn't obviously a pool key is a typo.
+const POOL_KEY_RE = /^[a-z]{2,3}(_[a-z0-9]{2,4})?$/;
+
+// The pool keys for a COURSE, target and known.
+//
+// Why this exists (2026-08-17, T-21): `courses.target_lang` carries the BASE tag
+// for a regional-variant course — deu_at_for_eng is target_lang 'deu',
+// ara_eg_for_eng is 'ara', spa_mx_for_eng is 'spa'. So a variant course and its
+// base share ONE casting slot, and Tom has now ruled OPPOSITE pairs either side
+// of that slot: German on Moritz + Lena, Austrian German on Felix + Sonja.
+// Locking one silently recast the other.
+//
+// The fix is an explicit per-course key rather than a new tag in target_lang,
+// because target_lang is read by ~105 files across this repo and
+// ssi-learning-app — syllable counting, i18n, entitlement, pricing — and none of
+// them want to learn about regions. `voice_pool_key` is read HERE and nowhere
+// else, so the blast radius is exactly the casting path.
+//
+// Resolution order for the target track:
+//   1. courses.voice_pool_key, when set — the human's ruling, and it WINS.
+//   2. otherwise the region carried by the COURSE CODE ('deu_at_for_eng' →
+//      'deu_at'), but only when the pools actually have that key. This is what
+//      tools/pod-sync.cjs and tools/pod-recast.cjs already did before this
+//      column existed, so keeping it as tier 2 means no course they cast
+//      correctly today can regress — and it is what lifts api/pod-cast-voices.js
+//      onto the same answer those two tools were already giving.
+//   3. otherwise courses.target_lang, resolved exact-then-base by poolKeyFor()
+//      exactly as before. A course with no variant sibling therefore resolves
+//      byte-identically to how it did before this column existed.
+//
+// Tier 1 above tier 2 is the whole point: the estate's standing lesson from
+// spa_mx_for_eng is "read the column, never the course code", and a stored
+// human ruling must be able to overrule what the code string happens to spell.
+//
+// An explicit key that is malformed, or that names a pool which does not exist,
+// THROWS. It must not fall back to the base language: falling back is precisely
+// the miscast this column was added to stop, and it would be silent.
+// The known track has no explicit key — no known language on the estate has a
+// regional variant in play — so it keeps tiers 2 and 3 only.
+function codeParts(courseCode) {
+  const [target, known] = String(courseCode || '').split('_for_');
+  return { target: target || '', known: known || '' };
+}
+
+function poolKeysForCourse(pools, course) {
+  if (!course || typeof course !== 'object') {
+    throw new Error('poolKeysForCourse: a course row is required');
+  }
+  const where = course.course_code || '(unknown course)';
+  const parts = codeParts(course.course_code);
+  const raw = course.voice_pool_key == null ? '' : String(course.voice_pool_key).trim();
+
+  let target;
+  if (raw) {
+    const key = raw.toLowerCase();
+    if (!POOL_KEY_RE.test(key)) {
+      throw new Error(`${where}: courses.voice_pool_key "${raw}" is not a pool key (expected e.g. "deu_at")`);
+    }
+    if (!pools[key]) {
+      throw new Error(`${where}: courses.voice_pool_key "${key}" has no pod_voice_pools entry — refusing to fall back to "${langKey(key)}", which would silently miscast`);
+    }
+    target = key;
+  } else if (parts.target && pools[parts.target.toLowerCase()]) {
+    target = parts.target.toLowerCase();
+  } else {
+    target = poolKeyFor(pools, course.target_lang);
+  }
+
+  const known = parts.known && pools[parts.known.toLowerCase()]
+    ? parts.known.toLowerCase()
+    : poolKeyFor(pools, course.known_lang);
+
+  return { target, known };
+}
+
 // Aran's rule (2026-08-07): a pod is a TWO-HANDER — one male voice and one
 // female voice for the whole cast, however many speaker labels the markdown
 // carries. Canonical pod-0 has 26 labels; without this they fan out across the
@@ -696,12 +773,21 @@ async function syncPod(markdownPath, options) {
   if (!targetPart || !knownPart) {
     throw new Error(`Course code "${courseCode}" is not in <target>_for_<known> form`);
   }
-  // Pass the FULL code, region and all — assignVoices resolves the most
-  // specific pool that exists and falls back to the base language itself.
-  // Stripping the region here was the other half of the same bug.
-  const targetLang = targetPart;
-  const knownLang = knownPart;
-  const speakers = await assignVoices(parsed.uniqueSpeakers, targetLang, knownLang);
+  // Pool keys come from the COURSE ROW, not from the code, so that
+  // courses.voice_pool_key — the human's regional-variant ruling — governs.
+  // The code-derived parts stay as the fallback for a pod whose course row is
+  // missing (test fixtures), where the FULL code, region and all, is passed so
+  // assignVoices still resolves the most specific pool that exists.
+  const pools = await loadVoicePools();
+  const { data: course } = await db()
+    .from('courses').select('course_code, target_lang, known_lang, voice_pool_key')
+    .eq('course_code', courseCode).maybeSingle();
+  const keys = course
+    ? poolKeysForCourse(pools, course)
+    : { target: poolKeyFor(pools, targetPart), known: poolKeyFor(pools, knownPart) };
+  const targetLang = keys.target;
+  const knownLang = keys.known;
+  const speakers = resolveCast(parsed.uniqueSpeakers, targetLang, knownLang, pools);
 
   console.log(`\n🎧 Pod Sync: ${markdownPath}`);
   console.log(`   Target:   ${podId}  (type=${podType})`);
@@ -856,5 +942,5 @@ if (require.main === module) main();
 module.exports = {
   parseMarkdown, syncPod, assignVoices, resolveCast,
   canonicalSpeakerName, extractGenderMarker, inferGenderFromName,
-  loadVoicePools, poolKeyFor, normaliseOverrides,
+  loadVoicePools, poolKeyFor, poolKeysForCourse, normaliseOverrides,
 };
