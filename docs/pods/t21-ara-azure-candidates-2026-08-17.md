@@ -237,14 +237,22 @@ Worth knowing before you answer: the French production pair was **shown to you w
 French has 284 existing clips, so I've locked the pool pair but **held the full render** until you
 say. That costs one word; guessing wrong costs real money and a cleanup.
 
-### 2. Regional variants can't hold separate casts — a real structural problem
+### 2. Regional variants can't hold separate casts — and German just hit it
 
-Arabic MSA, Egyptian and Syrian are **three different rulings from you** that the system can only
-store as **one**. They share a single casting slot, because it's keyed on the base language rather
-than the course. Same for French and Québécois. German and Austrian German will collide the moment
-you rule on German.
+I flagged this last time as something that *would* bite when you ruled on German. **It just did.**
 
-So I locked nothing for those four — locking one silently miscasts the others.
+You've ruled German onto the production pair (Moritz + Lena) and Austrian German onto the pool pair
+(Felix + Sonja) — opposite choices. But the system stores one casting slot for both, because it's
+keyed on the base language rather than the course. Locking German's choice would recast Austrian
+German onto Moritz and Lena, and vice versa.
+
+Same problem, same cause, for Arabic MSA / Egyptian / Syrian — **three** different rulings from you
+sharing **one** slot — and for French / Québécois.
+
+So I locked nothing for those six. Locking one silently miscasts its siblings.
+
+There's a small mercy on Austrian German: its stored voices happen to be Felix and Sonja already, so
+it's currently correct — which is a second reason not to touch that slot.
 
 Three ways out, and it's your call:
 
@@ -255,7 +263,8 @@ Three ways out, and it's your call:
 - **Leave it and re-fix after every sync.** That's today's behaviour, and it's exactly the
   "remember to redo it" step the approval system was built to remove.
 
-My recommendation is the first one, as its own scoped job.
+My recommendation is the first one, as its own scoped job. It's now blocking six languages rather
+than four, so it's earned its place.
 
 ### 3. Dutch — your two rulings collide, and I've touched nothing
 
