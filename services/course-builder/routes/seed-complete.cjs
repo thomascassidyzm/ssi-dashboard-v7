@@ -1493,7 +1493,10 @@ module.exports = function seedCompleteRoutes(ctx) {
       //       agglutinative and exact-form matching cannot tell an inflected form of an
       //       introduced word from a new one, so blocking on them would be wrong.
       {
-        const contract = loadPairContract(course_code);
+        // Keyed on the KNOWN LANGUAGE since 2026-08-17, with course-code override
+        // precedence (see loadPairContract in lib/validation.cjs). Passing knownLang
+        // explicitly is what lets kor_for_tam pick up the Tamil contract at all.
+        const contract = loadPairContract(course_code, knownLang);
         const applies = contract && (!contract.known_lang || contract.known_lang === knownLang);
         if (!applies) {
           warnings.push({

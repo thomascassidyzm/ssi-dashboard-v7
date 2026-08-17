@@ -958,22 +958,66 @@ function checkKnownSide(known, currentPos, ctx) {
   return probs;
 }
 
-// Load a pair-contract by course_code; falls back to the shared _default_eng scaffold
-// for any English-known course without its own contract (vocab-gate fix 2026-07-27 —
-// the silent skip on contract-less courses is how "yes I want to speak" reached
-// glg_for_eng). Null only for non-English-known pairs with no contract. Cached.
+// ─── Contract resolution: keyed on the KNOWN LANGUAGE, course-code overrides ───
+//
+// PRECEDENCE RULE (Kai's ruling 2026-08-17, "more checking never hurts"):
+//
+//   1. <course_code>.contract.cjs        — a course-specific contract ALWAYS WINS.
+//   2. _lang_<known_lang>.contract.cjs   — the language-level contract is the FALLBACK.
+//   3. _default_eng.contract.cjs         — legacy English scaffold (only when known is eng).
+//   4. null                              — no contract; the caller must warn, never pass silently.
+//
+// WHY. The old resolver keyed on course_code alone. The known side is a property of the
+// KNOWN LANGUAGE, not of the pair: everything the gate needs (the free glue class, the NPI
+// series, the negation markers, the machinery constructions) is Tamil grammar, and Tamil
+// grammar does not change because the target language is Korean instead of English. Keying
+// on course_code meant eng_for_tam was checked while kor_for_tam and zho_for_tam got a
+// silent all-clear. Measured 2026-08-17: 34 courses with real lego content, across 17 known
+// languages, had NO known-side check of any kind.
+//
+// WHY COURSE-CODE STILL WINS. A pair can have genuine pair-specific knowledge that the
+// language-level contract cannot carry — a construction that only matters because of what
+// THIS target teaches, or a ratified pair contract that has been calibrated against this
+// corpus. Overriding is rare and deliberate; when a course-specific file exists, it is
+// there because someone decided the language-level default was wrong for that pair.
+//
+// A language-level contract is a NORMAL contract file whose `known_lang` is the language
+// it serves; the only thing that makes it "language-level" is the `_lang_<iso>` filename.
+// Where a language's knowledge already lives in a pair file (the seven eng_for_<Indic>
+// briefs), `_lang_<iso>` RE-EXPORTS it rather than copying — one source of truth.
 const _contractCache = new Map();
-function loadPairContract(courseCode) {
-  if (_contractCache.has(courseCode)) return _contractCache.get(courseCode);
-  let contract = null;
+const _CONTRACT_DIR = '../../../docs/pair-contracts';
+function _tryContract(name) {
+  try { return require(`${_CONTRACT_DIR}/${name}.contract.cjs`); } catch (_) { return null; }
+}
+// Last resort when the caller has no known_lang to hand: the course_code convention is
+// <target>_for_<known>, so the trailing 3-letter segment is the known language. Regional
+// TARGET variants (spa_mx_for_jpn, ara_sy_for_zho) keep the known segment last, so this
+// holds for them too. Prefer the explicit knownLang argument — this is the fallback.
+function knownLangFromCourseCode(courseCode) {
+  const m = /_for_([a-z]{3})(?:_v\d+)?$/.exec(courseCode || '');
+  return m ? m[1] : null;
+}
+/**
+ * @param {string} courseCode  e.g. 'kor_for_tam'
+ * @param {string} [knownLang] ISO-639-3 of the KNOWN side, from courses.known_lang.
+ *                             Derived from the course_code when omitted.
+ */
+function loadPairContract(courseCode, knownLang) {
+  const known = knownLang || knownLangFromCourseCode(courseCode);
+  const cacheKey = `${courseCode} ${known || ''}`;
+  if (_contractCache.has(cacheKey)) return _contractCache.get(cacheKey);
   // Strip a trailing "_vN" so a versioned course (e.g. zho_for_eng_v2) inherits the base
   // pair's contract. The full course_code stays the DB partition key elsewhere.
   const contractCode = courseCode.replace(/_v\d+$/, '');
-  try { contract = require(`../../../docs/pair-contracts/${contractCode}.contract.cjs`); } catch (_) { contract = null; }
-  if (!contract && /_for_eng$/.test(contractCode)) {
-    try { contract = require('../../../docs/pair-contracts/_default_eng.contract.cjs'); } catch (_) { contract = null; }
-  }
-  _contractCache.set(courseCode, contract);
+  // 1. course-specific override
+  let contract = _tryContract(contractCode);
+  // 2. language-level fallback
+  if (!contract && known) contract = _tryContract(`_lang_${known}`);
+  // 3. legacy English scaffold (kept so English resolution is byte-identical to pre-2026-08-17
+  //    behaviour even if _lang_eng were ever removed).
+  if (!contract && (known === 'eng' || /_for_eng$/.test(contractCode))) contract = _tryContract('_default_eng');
+  _contractCache.set(cacheKey, contract);
   return contract;
 }
 
@@ -1104,6 +1148,7 @@ module.exports = {
   isKnownVocabBreach,
   isMechanicalContract,
   loadPairContract,
+  knownLangFromCourseCode,
   checkPhraseComplexity,
   checkVocabViolations,
   calculateLegoBalanceScores,
