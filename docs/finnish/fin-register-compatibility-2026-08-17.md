@@ -46,7 +46,7 @@ task — new lego cards inside the block** — not an edit to the phrases. That 
 | ├ C. contracted colloquial verb (`oon`, `haluun`, `nään`) | 16 |
 | └ D. informal 2nd person `sä`/`sun`/`sua` | **0** |
 | union needing formal **first-person** material (B1∪B2∪C) | **52** |
-| formal **seeds** that are themselves defective | **2** (S0655, S0660) |
+| formal **seeds** that are themselves defective | **3** (S0655, S0660, S0668) — only S0655 addresses a polite singular |
 | applied in this pass | **0** |
 
 Classes overlap — 56 is the union, not the sum.
@@ -136,10 +136,27 @@ Two seeds later, the same sentence:
 
 > `S0642L02#3` **i'm here madam** → **mä oon täällä, rouva**
 
-Identical English, opposite register, sixteen phrases apart. The course contradicts itself inside its
-own formal block. The seeds do it too — `S0645` *Voin auttaa teitä, rouva* and `S0654` *En ole varma,
-voinko auttaa teitä, herra* both **drop** the pronoun, while `S0655` *Mun mielestä…* and `S0660` *Mä
-voin auttaa teitä kaikkia* **keep** it.
+Identical English, opposite register, sixteen phrases apart.
+
+### ⚠️ Correction: the pronoun drops are noise, not intent
+
+An earlier draft of this page read the seeds `S0645` *Voin auttaa teitä, rouva* and `S0654` *En ole
+varma, voinko auttaa teitä, herra* as **deliberately** dropping the pronoun, and set them against
+`S0655` / `S0660` which keep it. **Adversarial verification (#881) refuted that**, and the correction
+matters because it was load-bearing:
+
+- Course-wide, the 1sg pronoun is dropped about **3% of the time** — `voin` appears in 73 phrases
+  outside the block and **71 of them carry `mä`**; 1sg negation `en` appears 1,067 times and 1,035
+  carry `mä`.
+- The killer counterexample is on the card itself: **`S0645L01B01` is "mä voin auttaa teitä"** — the
+  seed's own sentence *with* the pronoun, first build rung under the seed that drops it. A deliberate
+  register decision is not contradicted by the first phrase beneath it.
+- The block's high `en`-drop rate (15 of 17) comes from **one card**, `S0654L01` *en ole varma*, whose
+  phrases all inherit that seed's wording — one authoring choice replicated, not a pattern.
+
+So the drops are authoring variation, not a formal alternative the learner was given. **This
+strengthens the conclusion rather than weakening it**: pronoun-drop was never taught, which is exactly
+what the gate run proves independently below.
 
 ### The obvious repair fails the course's own gates
 
@@ -183,21 +200,30 @@ Three ways out, for Kai:
 
 I am not the one to choose between 1 and 2 — that is a native-speaker call about how far the formal
 register extends, and it decides the fate of 49 phrases either way. **Option 2 is the smaller change
-and matches how the course was overwhelmingly authored** (40 of 40 `mä`-carrying formal phrases keep
-the pronoun; the drops are 3 outliers).
+and matches how the course was overwhelmingly authored**: every `mä`-carrying formal phrase keeps the
+pronoun, and the handful of drops are, on #881's base rates, indistinguishable from the 3% the course
+drops everywhere else. Restricting to the least arguable case — phrases carrying colloquial
+`mä`/`mun`/`mua` **and** a `herra`/`rouva` vocative in the same sentence, so the addressee is
+unambiguously a polite singular — the count is **29 phrases across 9 seeds** (639, 642, 643, 644, 645,
+647, 648, 653, 655). That is the number to rule on if you want the narrowest defensible scope.
 
-### The two defective seeds
+### The defective seeds — three, not two
 
-Under rule 3 as written, two seeds in the block mix colloquial first person with formal address:
+| seed | now | addressee | under option 1 | under option 2 |
+|---|---|---|---|---|
+| **S0655** | I think that you're doing very well, madam · **Mun mielestä** te pärjäätte tosi hyvin, rouva | polite **singular** | *Minun mielestäni…* (needs `minun` + the `-ni` suffix, neither taught) | no change |
+| **S0660** | I can help you all · **Mä voin** auttaa teitä kaikkia | plural | *Voin auttaa teitä kaikkia* | no change |
+| **S0668** | I hope you'll all be able to go · **Mä toivon**, että te kaikki pystytte menemään | plural | drop `Mä` | no change |
 
-| seed | now | under option 1 | under option 2 |
-|---|---|---|---|
-| **S0655** | I think that you're doing very well, madam · **Mun mielestä** te pärjäätte tosi hyvin, rouva | *Minun mielestäni te pärjäätte…* (needs `minun` + the `-ni` suffix, neither taught) | no change |
-| **S0660** | I can help you all · **Mä voin** auttaa teitä kaikkia | *Voin auttaa teitä kaikkia* — exactly what S0645 already says | no change |
+**S0668 was missed by my own boundary.** I swept 639–667; the formal material runs to 668. #881 found
+it, and it has the identical shape to S0660. Corrected here.
 
-Neither is applied. Both are seed edits, and under the standing rule a seed edit is adversarially
-verified before it is applied — which is what job **#881** was dispatched to do, on the claims this
-document rests on.
+Note what the addressee column does to this: **only S0655 is colloquial-1sg meeting a genuinely
+*polite* addressee.** S0660 and S0668 address *you all* — plural, where Finnish has no register
+contrast at all — so under the reading in option 2 they are not defects in any sense.
+
+Nothing is applied. All three are seed edits, and under the standing rule a seed edit is adversarially
+verified before it is applied — job **#881**, whose findings are folded in throughout this page.
 
 If S0655 or S0660 is repaired, the cascade duty for this course is small and known: all 29 formal-block
 seeds carry **no audio links at all**, the course has **zero Finnish audio**, and `course_seeds` has no
@@ -205,6 +231,58 @@ audio trigger — so the repair is a text edit plus a check of the derived legos
 nothing to re-render.
 
 ---
+
+## A fourth finding, from the verification: the `(formal)` tag is unreliable both ways
+
+#881 was asked to refute my scope. It did, and turned up a class neither pass had looked at.
+
+**The tag is on cards that are not polite, and missing from cards that teach the same morphology.**
+Four of the 19 tagged cards are plural (`S0658`, `S0659`, `S0660`, `S0667` — their own English says
+*you all*), while the structurally identical `S0656`, `S0657`, `S0661`, `S0662`, `S0663`, `S0665`,
+`S0666`, `S0668` carry no tag. So `(formal)` marks 4 of 12 plural cards essentially at random.
+
+**And five cards outside the block teach `te`/`-tte` address with no tag and, in two cases, a bare
+English *you*:**
+
+| card | English | Finnish |
+|---|---|---|
+| `S0133L02` | **you work** | te teette töitä |
+| `S0501L03` | **you play together** | te pelaatte yhdessä |
+| `S0529L01` | can you all | voitteko te kaikki |
+| `S0529L02` | to put up | nostaa *(phrases: "voitteko te kaikki nostaa sen?")* |
+| `S0529L03` | your hands | **kätenne** *(2pl possessive)* |
+
+`S0133L02` and `S0501L03` are the serious ones. A learner meets **you work → te teette töitä** at seed
+**133** — five hundred seeds before the formal block — with nothing in the prompt saying whether that
+`te` is polite or plural. (Plural was intended: `S0133L02`'s first practice phrase glosses `te` as
+*you all*. The card itself does not say so.) That is a known-side ambiguity of exactly the kind this
+whole job exists to remove, and it sits outside every scope either pass defined.
+
+My scope claim was therefore **wrong as stated** — "19 tagged + 2 vocatives is the complete formal
+set" is only true if you accept the tag as the definition of formal. The corrected polite-singular
+count is unchanged at **17** (15 genuinely-singular tagged cards + the 2 vocatives), which is the
+number this page's counts already use, so the 206-phrase denominator stands.
+
+## What the verification confirmed, and what it broke
+
+| claim | verdict |
+|---|---|
+| `hän` appears nowhere, any form, incl. JSON columns | **survives** — 0 across 15 column/table combinations |
+| `minä`/`minun`/`minua`/`sinä`/`sinun` are zero | **survives** — 0, course is uniformly colloquial |
+| no formal **seed** uses the se-family for a person | **survives at seed level**; the 7 *phrases* do, which is this page's class A |
+| the formal set is 19 tagged + 2 vocatives | **refuted** — see above |
+| exactly two seeds mix colloquial 1sg with formal address; S645/S654 drop deliberately | **refuted** — three seeds, and the drops are 3%-base-rate noise |
+
+Two caveats #881 raised that weaken the first survival as evidence of care rather than of fact:
+`target_text_roman` is **NULL on all 668 seeds, all 1,425 legos and all 14,123 phrases**, and
+`decomposition` / `display_tiling` are **NULL on all 14,123 phrases** — those columns could not have
+hidden a counterexample because they hold nothing at all. The token-level cross-check is the real
+evidence: every token in the course containing `hän` is `vähän`, `tähän`, `myöhään`, `tietääköhän` and
+the like — the `-hän` clitic, never the pronoun.
+
+Two further facts worth keeping: **0 of 668** seeds carry any audio id (course-wide, not just the
+block), and `course_seeds_version_trigger` is **unconditional** — `version` counts touches, not edits,
+so the block's versions of 12–16 say nothing about how often it was really changed.
 
 ## Method and gaps
 
@@ -221,9 +299,11 @@ before/after delta on the same harness, not an absolute count.
 - **My intra-seed lego-order checker mis-flags the vocative cards themselves** — `S0639L02`'s own
   phrases use *herra* because *herra* is that card. Five such flags in the run above are checker
   artefacts, not content defects. The check is still correct for every other basket.
-- **`(formal)` remains the only machine-readable register marker**; the `register` column on
-  `course_practice_phrases` is NULL on all 14,123 rows. The two untagged formal cards were found by a
-  `te`-form cross-check, not by the tag — a third untagged formal card elsewhere in the course would
-  have been found the same way, and none was, but that is a search result rather than a guarantee.
+- **`(formal)` is not a trustworthy register marker** — it is on 4 plural cards and missing from 8
+  identical ones, and from five `te`-teaching cards outside the block. The `register` column on
+  `course_practice_phrases` is NULL on all 14,123 rows. Every scope on this page is therefore a
+  *judgement* about which cards are formal, not a lookup, and #881 moved that judgement once already.
+- **`S0133L02` / `S0501L03` are outside this job's remit but are a real defect** — bare English *you*
+  against a `te`-form, 500 seeds before the register is ever explained. Not swept, not fixed, flagged.
 - **Nothing in this pass was written to the database.** The 59 vocative fixes from the first pass
   remain applied and unaffected.
