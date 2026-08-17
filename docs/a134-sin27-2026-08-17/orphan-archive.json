@@ -1,0 +1,934 @@
+{
+  "job": "A-134 step 5 of 5: soft-delete 6 orphan course_audio presentation clips in eng_for_sin",
+  "created": "2026-08-17",
+  "branch": "fix/sin-orphans-2026-08-17",
+  "worktree_base": "fix/sin-27-seed-rebuild-2026-08-17",
+  "context": "6 of the 33 corrupt presentation clips found in eng_for_sin. 27 were linked to a real card (handled separately, NOT touched here). These 6 carry the same defect but their lego_id (S0181L03, S0181L04, S0197L03, S0198L03, S0202L03, S0204L02) does not exist in course_legos for eng_for_sin -- consistent with the presentation set having been composed against a LEGO numbering that has since been renumbered.",
+  "verification_method": "For each row: (1) SELECT from course_legos WHERE course_code='eng_for_sin' AND lego_id = <lego_id> -- confirmed 0 rows for all 6. (2) SELECT from course_legos (any course_code) WHERE known_audio_id/target1_audio_id/target2_audio_id/presentation_audio_id = <this course_audio.id> -- confirmed 0 rows for all 6. (3) Swept every other table in the public schema with an *_audio_id / *_clip_id column (course_practice_phrases, course_seeds, lego_introductions, listening_pod_sentences, pod_legos, audio_clip_flags, audio_clip_signoffs, audio_clip_promotions, content_feedback, course_qa_cycle_clips, feedback_aggregated, course_audio_revisions, course_audio_envelope, audio_repair_candidates) -- all clean except course_qa_clip_status, which held one un-FK'd status row per id (QA tracking metadata about the clip itself, not a reference INTO the clip from course content -- confirmed via pg_constraint that no FK exists from course_qa_clip_status to course_audio).",
+  "schema_note": "course_audio has NO status/deleted/archived column. CHECK constraint course_audio_role_check pins role to a fixed enum-like list (known/target1/target2/presentation/welcome/encouragement/instruction/bookend_listen_intro/bookend_listen_outro/pod_explainer/pod_fine_known/pod_take_g), so role cannot carry an 'archived' value. course_code has an FK to courses(course_code) ON DELETE CASCADE, so course_code cannot be repointed to a synthetic 'archived' value without that value existing in courses. The least-destructive available marker is lego_id, which has no FK and only a plain (non-unique) index -- prefixing it de-lists the row from any lego_id-keyed scan while leaving every other column, and the S3 object, untouched.",
+  "soft_delete_marker": "lego_id prefixed with 'ARCHIVED_ORPHAN_2026-08-17_' (original value preserved after the prefix, and recorded verbatim in original_lego_id below)",
+  "rows": [
+    {
+      "id": "8790e212-3bc8-44f7-b9eb-c4b31b46528e",
+      "course_code": "eng_for_sin",
+      "text": "ඉංග්‍රීසිෙන්. 'අම්මව'. 'මමා ළඟ මමා ගේ අම්මව ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ අරගෙන' ඉතින්. :",
+      "text_normalized": "ඉංග්‍රීසිෙන්. 'අම්මව'. 'මමා ළඟ මමා ගේ අම්මව ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ අරගෙන' ඉතින්. :",
+      "language": "sin",
+      "role": "presentation",
+      "voice_id": "azure_si-LK-SameeraNeural",
+      "origin": "tts",
+      "s3_key": "mastered/04E2C7C1-B9C6-4649-BCFE-ED23E76DC18F.mp3",
+      "duration_ms": 7512,
+      "file_size_bytes": null,
+      "created_at": "2026-04-15T17:34:45.629Z",
+      "lego_id": "S0181L03",
+      "text_stripped": "ඉංග්‍රීසිෙන් 'අම්මව' 'මමා ළඟ මමා ගේ අම්මව ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ අරගෙන' ඉතින්",
+      "word_boundaries": [
+        {
+          "text": "ඉංග්‍රීසිෙන්",
+          "offset": 150,
+          "duration": 325
+        },
+        {
+          "text": ".",
+          "offset": 638,
+          "duration": 63
+        },
+        {
+          "text": "'අම්මව",
+          "offset": 1700,
+          "duration": 300
+        },
+        {
+          "text": "'.",
+          "offset": 2150,
+          "duration": 50
+        },
+        {
+          "text": "'මමා",
+          "offset": 3175,
+          "duration": 125
+        },
+        {
+          "text": "ළඟ",
+          "offset": 3300,
+          "duration": 163
+        },
+        {
+          "text": "මමා",
+          "offset": 3500,
+          "duration": 200
+        },
+        {
+          "text": "ගේ",
+          "offset": 3738,
+          "duration": 88
+        },
+        {
+          "text": "අම්මව",
+          "offset": 3863,
+          "duration": 325
+        },
+        {
+          "text": "ඒ",
+          "offset": 4238,
+          "duration": 100
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4363,
+          "duration": 125
+        },
+        {
+          "text": "ඒ",
+          "offset": 4525,
+          "duration": 125
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4675,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 4863,
+          "duration": 125
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5013,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 5200,
+          "duration": 125
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5350,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 5538,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5675,
+          "duration": 125
+        },
+        {
+          "text": "අරගෙන",
+          "offset": 5838,
+          "duration": 300
+        },
+        {
+          "text": "'",
+          "offset": 6175,
+          "duration": 88
+        },
+        {
+          "text": "ඉතින්",
+          "offset": 6300,
+          "duration": 225
+        },
+        {
+          "text": ". :",
+          "offset": 6563,
+          "duration": 25
+        }
+      ],
+      "sequence": null,
+      "veracity_checked_at": null,
+      "veracity_pass": null,
+      "veracity_reason": null,
+      "veracity_cer": null,
+      "veracity_attempts": null,
+      "veracity_checker": null,
+      "audio_revision": 1,
+      "clip_id": null,
+      "rerecord_wanted": null,
+      "original_lego_id": "S0181L03",
+      "archived_lego_id": "ARCHIVED_ORPHAN_2026-08-17_S0181L03",
+      "s3_object_deleted": false
+    },
+    {
+      "id": "c4937825-2c14-4842-9188-7154c49579b3",
+      "course_code": "eng_for_sin",
+      "text": "ඉංග්‍රීසිෙන්. 'ලෙකර'. 'මමා ළඟ මමා ගේ අම්මව ලෙකරට ඒ ගෙ ඒ ගෙ ඒ ගෙ අරගෙන' ඉතින්. :",
+      "text_normalized": "ඉංග්‍රීසිෙන්. 'ලෙකර'. 'මමා ළඟ මමා ගේ අම්මව ලෙකරට ඒ ගෙ ඒ ගෙ ඒ ගෙ අරගෙන' ඉතින්. :",
+      "language": "sin",
+      "role": "presentation",
+      "voice_id": "azure_si-LK-SameeraNeural",
+      "origin": "tts",
+      "s3_key": "mastered/C3178B51-593C-489D-960F-406FF0397042.mp3",
+      "duration_ms": 7272,
+      "file_size_bytes": null,
+      "created_at": "2026-04-15T17:34:45.629Z",
+      "lego_id": "S0181L04",
+      "text_stripped": "ඉංග්‍රීසිෙන් 'ලෙකර' 'මමා ළඟ මමා ගේ අම්මව ලෙකරට ඒ ගෙ ඒ ගෙ ඒ ගෙ අරගෙන' ඉතින්",
+      "word_boundaries": [
+        {
+          "text": "ඉංග්‍රීසිෙන්",
+          "offset": 150,
+          "duration": 325
+        },
+        {
+          "text": ".",
+          "offset": 638,
+          "duration": 63
+        },
+        {
+          "text": "'ලෙකර",
+          "offset": 1688,
+          "duration": 300
+        },
+        {
+          "text": "'.",
+          "offset": 2138,
+          "duration": 63
+        },
+        {
+          "text": "'මමා",
+          "offset": 3225,
+          "duration": 125
+        },
+        {
+          "text": "ළඟ",
+          "offset": 3350,
+          "duration": 163
+        },
+        {
+          "text": "මමා",
+          "offset": 3550,
+          "duration": 188
+        },
+        {
+          "text": "ගේ",
+          "offset": 3775,
+          "duration": 88
+        },
+        {
+          "text": "අම්මව",
+          "offset": 3900,
+          "duration": 300
+        },
+        {
+          "text": "ලෙකරට",
+          "offset": 4238,
+          "duration": 375
+        },
+        {
+          "text": "ඒ",
+          "offset": 4663,
+          "duration": 100
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4788,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 4975,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5113,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 5300,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5438,
+          "duration": 113
+        },
+        {
+          "text": "අරගෙන",
+          "offset": 5588,
+          "duration": 300
+        },
+        {
+          "text": "'",
+          "offset": 5925,
+          "duration": 88
+        },
+        {
+          "text": "ඉතින්",
+          "offset": 6050,
+          "duration": 225
+        },
+        {
+          "text": ". :",
+          "offset": 6313,
+          "duration": 25
+        }
+      ],
+      "sequence": null,
+      "veracity_checked_at": null,
+      "veracity_pass": null,
+      "veracity_reason": null,
+      "veracity_cer": null,
+      "veracity_attempts": null,
+      "veracity_checker": null,
+      "audio_revision": 1,
+      "clip_id": null,
+      "rerecord_wanted": null,
+      "original_lego_id": "S0181L04",
+      "archived_lego_id": "ARCHIVED_ORPHAN_2026-08-17_S0181L04",
+      "s3_object_deleted": false
+    },
+    {
+      "id": "7d70e86c-ad79-43b4-b24b-42e1b47d9caf",
+      "course_code": "eng_for_sin",
+      "text": "ඉංග්‍රීසිෙන්. 'ගුරු'. 'මමා ගේ ඒ ගෙ ඒ ගෙ ඒ ගෙ ගුරු ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ' ඉතින්. :",
+      "text_normalized": "ඉංග්‍රීසිෙන්. 'ගුරු'. 'මමා ගේ ඒ ගෙ ඒ ගෙ ඒ ගෙ ගුරු ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ' ඉතින්. :",
+      "language": "sin",
+      "role": "presentation",
+      "voice_id": "azure_si-LK-SameeraNeural",
+      "origin": "tts",
+      "s3_key": "mastered/0CDD6A71-7F7E-483A-8DB7-BC01AF7C9CBA.mp3",
+      "duration_ms": 7584,
+      "file_size_bytes": null,
+      "created_at": "2026-04-15T17:34:45.629Z",
+      "lego_id": "S0197L03",
+      "text_stripped": "ඉංග්‍රීසිෙන් 'ගුරු' 'මමා ගේ ඒ ගෙ ඒ ගෙ ඒ ගෙ ගුරු ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ' ඉතින්",
+      "word_boundaries": [
+        {
+          "text": "ඉංග්‍රීසිෙන්",
+          "offset": 150,
+          "duration": 325
+        },
+        {
+          "text": ".",
+          "offset": 638,
+          "duration": 63
+        },
+        {
+          "text": "'ගුරු",
+          "offset": 1700,
+          "duration": 88
+        },
+        {
+          "text": "'.",
+          "offset": 1950,
+          "duration": 75
+        },
+        {
+          "text": "'මමා",
+          "offset": 3025,
+          "duration": 0
+        },
+        {
+          "text": "ගේ",
+          "offset": 3188,
+          "duration": 113
+        },
+        {
+          "text": "ඒ",
+          "offset": 3350,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 3488,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 3663,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 3800,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 3975,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4113,
+          "duration": 125
+        },
+        {
+          "text": "ගුරු",
+          "offset": 4288,
+          "duration": 213
+        },
+        {
+          "text": "ඒ",
+          "offset": 4563,
+          "duration": 100
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4700,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 4888,
+          "duration": 125
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5050,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 5238,
+          "duration": 125
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5400,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 5588,
+          "duration": 125
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5738,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 5925,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 6063,
+          "duration": 113
+        },
+        {
+          "text": "'",
+          "offset": 6213,
+          "duration": 113
+        },
+        {
+          "text": "ඉතින්",
+          "offset": 6363,
+          "duration": 225
+        },
+        {
+          "text": ". :",
+          "offset": 6625,
+          "duration": 38
+        }
+      ],
+      "sequence": null,
+      "veracity_checked_at": null,
+      "veracity_pass": null,
+      "veracity_reason": null,
+      "veracity_cer": null,
+      "veracity_attempts": null,
+      "veracity_checker": null,
+      "audio_revision": 1,
+      "clip_id": null,
+      "rerecord_wanted": null,
+      "original_lego_id": "S0197L03",
+      "archived_lego_id": "ARCHIVED_ORPHAN_2026-08-17_S0197L03",
+      "s3_object_deleted": false
+    },
+    {
+      "id": "9a179777-4fa9-4d4b-bbb6-8e01a46e0c6c",
+      "course_code": "eng_for_sin",
+      "text": "ඉංග්‍රීසිෙන්. 'කවුන්සිලේ'. 'මමා ගේ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගාවෙ කවුන්සිලේ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ' ඉතින්. :",
+      "text_normalized": "ඉංග්‍රීසිෙන්. 'කවුන්සිලේ'. 'මමා ගේ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගාවෙ කවුන්සිලේ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ' ඉතින්. :",
+      "language": "sin",
+      "role": "presentation",
+      "voice_id": "azure_si-LK-SameeraNeural",
+      "origin": "tts",
+      "s3_key": "mastered/55477201-B035-4445-BB4B-D3C8DECA364A.mp3",
+      "duration_ms": 8280,
+      "file_size_bytes": null,
+      "created_at": "2026-04-15T17:34:45.629Z",
+      "lego_id": "S0198L03",
+      "text_stripped": "ඉංග්‍රීසිෙන් 'කවුන්සිලේ' 'මමා ගේ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගාවෙ කවුන්සිලේ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ' ඉතින්",
+      "word_boundaries": [
+        {
+          "text": "ඉංග්‍රීසිෙන්",
+          "offset": 150,
+          "duration": 325
+        },
+        {
+          "text": ".",
+          "offset": 638,
+          "duration": 63
+        },
+        {
+          "text": "'කවුන්සිලේ",
+          "offset": 1700,
+          "duration": 400
+        },
+        {
+          "text": "'.",
+          "offset": 2238,
+          "duration": 50
+        },
+        {
+          "text": "'මමා",
+          "offset": 3300,
+          "duration": 0
+        },
+        {
+          "text": "ගේ",
+          "offset": 3463,
+          "duration": 113
+        },
+        {
+          "text": "ඒ",
+          "offset": 3613,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 3750,
+          "duration": 125
+        },
+        {
+          "text": "ඒ",
+          "offset": 3913,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4050,
+          "duration": 125
+        },
+        {
+          "text": "ඒ",
+          "offset": 4213,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4350,
+          "duration": 125
+        },
+        {
+          "text": "ඒ",
+          "offset": 4513,
+          "duration": 100
+        },
+        {
+          "text": "ගාවෙ",
+          "offset": 4638,
+          "duration": 188
+        },
+        {
+          "text": "කවුන්සිලේ",
+          "offset": 4888,
+          "duration": 425
+        },
+        {
+          "text": "ඒ",
+          "offset": 5363,
+          "duration": 100
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5488,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 5675,
+          "duration": 125
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5825,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 6013,
+          "duration": 125
+        },
+        {
+          "text": "ගෙ",
+          "offset": 6163,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 6350,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 6488,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 6663,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 6800,
+          "duration": 113
+        },
+        {
+          "text": "'",
+          "offset": 6950,
+          "duration": 100
+        },
+        {
+          "text": "ඉතින්",
+          "offset": 7088,
+          "duration": 225
+        },
+        {
+          "text": ". :",
+          "offset": 7338,
+          "duration": 25
+        }
+      ],
+      "sequence": null,
+      "veracity_checked_at": null,
+      "veracity_pass": null,
+      "veracity_reason": null,
+      "veracity_cer": null,
+      "veracity_attempts": null,
+      "veracity_checker": null,
+      "audio_revision": 1,
+      "clip_id": null,
+      "rerecord_wanted": null,
+      "original_lego_id": "S0198L03",
+      "archived_lego_id": "ARCHIVED_ORPHAN_2026-08-17_S0198L03",
+      "s3_object_deleted": false
+    },
+    {
+      "id": "1b7796d6-ed4a-4913-b421-9bc6860b4f00",
+      "course_code": "eng_for_sin",
+      "text": "ඉංග්‍රීසිෙන්. 'කාටවත්'. 'කාටවත් ප්‍රශ්නෙ ඒ ගාවෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ විශ්වාස' ඉතින්. :",
+      "text_normalized": "ඉංග්‍රීසිෙන්. 'කාටවත්'. 'කාටවත් ප්‍රශ්නෙ ඒ ගාවෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ විශ්වාස' ඉතින්. :",
+      "language": "sin",
+      "role": "presentation",
+      "voice_id": "azure_si-LK-SameeraNeural",
+      "origin": "tts",
+      "s3_key": "mastered/A1A79699-D44A-40F0-8DF4-2832085AB218.mp3",
+      "duration_ms": 8064,
+      "file_size_bytes": null,
+      "created_at": "2026-04-15T17:34:45.629Z",
+      "lego_id": "S0202L03",
+      "text_stripped": "ඉංග්‍රීසිෙන් 'කාටවත්' 'කාටවත් ප්‍රශ්නෙ ඒ ගාවෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ විශ්වාස' ඉතින්",
+      "word_boundaries": [
+        {
+          "text": "ඉංග්‍රීසිෙන්",
+          "offset": 150,
+          "duration": 325
+        },
+        {
+          "text": ".",
+          "offset": 638,
+          "duration": 63
+        },
+        {
+          "text": "'කාටවත්",
+          "offset": 1675,
+          "duration": 338
+        },
+        {
+          "text": "'.",
+          "offset": 2125,
+          "duration": 63
+        },
+        {
+          "text": "'කාටවත්",
+          "offset": 3150,
+          "duration": 175
+        },
+        {
+          "text": "ප්‍රශ්නෙ",
+          "offset": 3450,
+          "duration": 325
+        },
+        {
+          "text": "ඒ",
+          "offset": 3813,
+          "duration": 75
+        },
+        {
+          "text": "ගාවෙ",
+          "offset": 3913,
+          "duration": 225
+        },
+        {
+          "text": "ඒ",
+          "offset": 4200,
+          "duration": 100
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4325,
+          "duration": 125
+        },
+        {
+          "text": "ඒ",
+          "offset": 4488,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4625,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 4800,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4938,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 5113,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5250,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 5425,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5563,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 5750,
+          "duration": 125
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5900,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 6075,
+          "duration": 100
+        },
+        {
+          "text": "ගෙ",
+          "offset": 6200,
+          "duration": 100
+        },
+        {
+          "text": "විශ්වාස",
+          "offset": 6338,
+          "duration": 388
+        },
+        {
+          "text": "'",
+          "offset": 6763,
+          "duration": 63
+        },
+        {
+          "text": "ඉතින්",
+          "offset": 6863,
+          "duration": 213
+        },
+        {
+          "text": ". :",
+          "offset": 7113,
+          "duration": 25
+        }
+      ],
+      "sequence": null,
+      "veracity_checked_at": null,
+      "veracity_pass": null,
+      "veracity_reason": null,
+      "veracity_cer": null,
+      "veracity_attempts": null,
+      "veracity_checker": null,
+      "audio_revision": 1,
+      "clip_id": null,
+      "rerecord_wanted": null,
+      "original_lego_id": "S0202L03",
+      "archived_lego_id": "ARCHIVED_ORPHAN_2026-08-17_S0202L03",
+      "s3_object_deleted": false
+    },
+    {
+      "id": "3eade834-d625-4ba7-8392-0abf5936c35c",
+      "course_code": "eng_for_sin",
+      "text": "ඉංග්‍රීසිෙන්. 'කටයුතු'. 'කටයුතු ඒ ගාවෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ සම්බන්ධව' ඉතින්. :",
+      "text_normalized": "ඉංග්‍රීසිෙන්. 'කටයුතු'. 'කටයුතු ඒ ගාවෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ සම්බන්ධව' ඉතින්. :",
+      "language": "sin",
+      "role": "presentation",
+      "voice_id": "azure_si-LK-SameeraNeural",
+      "origin": "tts",
+      "s3_key": "mastered/8575875C-020F-49E0-BBA9-920E11D7B77F.mp3",
+      "duration_ms": 7152,
+      "file_size_bytes": null,
+      "created_at": "2026-04-15T17:34:45.629Z",
+      "lego_id": "S0204L02",
+      "text_stripped": "ඉංග්‍රීසිෙන් 'කටයුතු' 'කටයුතු ඒ ගාවෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ ඒ ගෙ සම්බන්ධව' ඉතින්",
+      "word_boundaries": [
+        {
+          "text": "ඉංග්‍රීසිෙන්",
+          "offset": 150,
+          "duration": 325
+        },
+        {
+          "text": ".",
+          "offset": 638,
+          "duration": 63
+        },
+        {
+          "text": "'කටයුතු",
+          "offset": 1700,
+          "duration": 250
+        },
+        {
+          "text": "'.",
+          "offset": 2100,
+          "duration": 63
+        },
+        {
+          "text": "'කටයුතු",
+          "offset": 3138,
+          "duration": 175
+        },
+        {
+          "text": "ඒ",
+          "offset": 3438,
+          "duration": 88
+        },
+        {
+          "text": "ගාවෙ",
+          "offset": 3563,
+          "duration": 225
+        },
+        {
+          "text": "ඒ",
+          "offset": 3850,
+          "duration": 100
+        },
+        {
+          "text": "ගෙ",
+          "offset": 3975,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 4150,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4288,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 4463,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4600,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 4775,
+          "duration": 113
+        },
+        {
+          "text": "ගෙ",
+          "offset": 4913,
+          "duration": 138
+        },
+        {
+          "text": "ඒ",
+          "offset": 5088,
+          "duration": 100
+        },
+        {
+          "text": "ගෙ",
+          "offset": 5213,
+          "duration": 88
+        },
+        {
+          "text": "සම්බන්ධව",
+          "offset": 5325,
+          "duration": 475
+        },
+        {
+          "text": "'",
+          "offset": 5838,
+          "duration": 88
+        },
+        {
+          "text": "ඉතින්",
+          "offset": 5963,
+          "duration": 225
+        },
+        {
+          "text": ". :",
+          "offset": 6213,
+          "duration": 25
+        }
+      ],
+      "sequence": null,
+      "veracity_checked_at": null,
+      "veracity_pass": null,
+      "veracity_reason": null,
+      "veracity_cer": null,
+      "veracity_attempts": null,
+      "veracity_checker": null,
+      "audio_revision": 1,
+      "clip_id": null,
+      "rerecord_wanted": null,
+      "original_lego_id": "S0204L02",
+      "archived_lego_id": "ARCHIVED_ORPHAN_2026-08-17_S0204L02",
+      "s3_object_deleted": false
+    }
+  ],
+  "reversal_sql": [
+    "UPDATE course_audio SET lego_id = 'S0181L03' WHERE id = '8790e212-3bc8-44f7-b9eb-c4b31b46528e';",
+    "UPDATE course_audio SET lego_id = 'S0181L04' WHERE id = 'c4937825-2c14-4842-9188-7154c49579b3';",
+    "UPDATE course_audio SET lego_id = 'S0197L03' WHERE id = '7d70e86c-ad79-43b4-b24b-42e1b47d9caf';",
+    "UPDATE course_audio SET lego_id = 'S0198L03' WHERE id = '9a179777-4fa9-4d4b-bbb6-8e01a46e0c6c';",
+    "UPDATE course_audio SET lego_id = 'S0202L03' WHERE id = '1b7796d6-ed4a-4913-b421-9bc6860b4f00';",
+    "UPDATE course_audio SET lego_id = 'S0204L02' WHERE id = '3eade834-d625-4ba7-8392-0abf5936c35c';"
+  ],
+  "forward_sql": [
+    "UPDATE course_audio SET lego_id = 'ARCHIVED_ORPHAN_2026-08-17_S0181L03' WHERE id = '8790e212-3bc8-44f7-b9eb-c4b31b46528e';",
+    "UPDATE course_audio SET lego_id = 'ARCHIVED_ORPHAN_2026-08-17_S0181L04' WHERE id = 'c4937825-2c14-4842-9188-7154c49579b3';",
+    "UPDATE course_audio SET lego_id = 'ARCHIVED_ORPHAN_2026-08-17_S0197L03' WHERE id = '7d70e86c-ad79-43b4-b24b-42e1b47d9caf';",
+    "UPDATE course_audio SET lego_id = 'ARCHIVED_ORPHAN_2026-08-17_S0198L03' WHERE id = '9a179777-4fa9-4d4b-bbb6-8e01a46e0c6c';",
+    "UPDATE course_audio SET lego_id = 'ARCHIVED_ORPHAN_2026-08-17_S0202L03' WHERE id = '1b7796d6-ed4a-4913-b421-9bc6860b4f00';",
+    "UPDATE course_audio SET lego_id = 'ARCHIVED_ORPHAN_2026-08-17_S0204L02' WHERE id = '3eade834-d625-4ba7-8392-0abf5936c35c';"
+  ]
+}
