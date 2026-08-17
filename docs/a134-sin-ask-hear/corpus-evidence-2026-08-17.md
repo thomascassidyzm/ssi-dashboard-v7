@@ -545,3 +545,86 @@ on their own merits — those are naturalness repairs that touch no English chun
   objection left to the distinct-word route — an inflected form of an already-taught verb, on the
   learner's *native* side. Whether that counts as untaught vocabulary is a judgement for the
   refuter and ultimately a native speaker.
+
+---
+
+## 10. §9b RETRACTED — I read a number without a baseline
+
+**The "143 phrases across 48 seeds break" figure in §9b does not mean what I said it means, and
+the route reversal I built on it is withdrawn.**
+
+Worker **#913** — the authoring job I had written off as a loss when it died on an account limit —
+had already done the measurement I skipped. It ran a **control edit** on a completely unrelated
+lego (`176:3`, `next year` → `next year time`) and got **172** broken phrases, in the same seeds
+(396, 403, 410, 412, 427, 441, 485, 489, 490, 492 …). The tool's `COURSE-WIDE BREAKAGE` count is
+dominated by a **pre-existing baseline it does not subtract**: `eng_for_sin` has roughly 135
+phrases that already fail the tiling check today, caused by nothing in this plate.
+
+I reproduced its control myself before accepting it:
+
+```
+$ node tools/edit-impact-check.cjs --course eng_for_sin --lego 176:3 \
+    --known "කියලා මම ඔහුගෙන් අහනවා" \
+    --target "I'll ask him if he'll be able to help next year time"
+[DANGER] COURSE-WIDE BREAKAGE: 172 phrase(s) elsewhere ...
+  tiling: 172 phrase(s) break of 7068 re-tiled  (chunks removed: next year)
+```
+
+Subtracting the baseline, #913's intersection of the sets:
+
+| lego edit | reported broken | pre-existing | **edit-caused** |
+|---|---|---|---|
+| 380:3 | 143 | 135 | **8** — its own phrases, which the plan rewrites anyway |
+| 381:3 | 135 | 135 | **0** |
+| 382:4 | 135 | 135 | **0** |
+| 415:3 | 0 | — | **0** |
+
+**Real collateral damage outside the edited seeds: zero.** So the English-side change does *not*
+break other people's finished work, the ablative route is not disqualified, and §9b's "decisive
+measurement" was me quoting a raw tool number as though it were a delta. The lesson is the same
+one that produced §9a: I asserted where I should have measured. #913 ran the control; I ran the
+headline.
+
+### #913's rule is narrower and better evidenced than mine
+
+It also corrects §1's framing. The right statement is not "ASK always takes an ablative" but:
+
+> **When an addressee is expressed, ASK marks it ablative; HEAR never does.**
+
+Its census, over 36 ask/hear-bearing seeds (a wider net than my 28):
+
+- **9/9** ASK seeds that express an addressee mark it ablative (30, 99, 136, 176, 177, 190, 203,
+  208, 223)
+- **0/12** HEAR seeds carry an ablative
+- at phrase level the negative side is exceptionless: **0 of 125** HEAR-glossed phrases contain
+  `-ගෙන්`/`-යෙන්`, against **40 of 133** ASK-glossed ones
+- the **only two** ASK seeds expressing an addressee *without* an ablative are **415 and 465** —
+  precisely the two naturalness fixes already proposed in §6. That convergence is the strongest
+  single piece of evidence for the rule.
+
+**This dissolves the recall gap I treated as the central problem.** The bare ASK rows are bare
+because they *express no addressee*, not because they are unmarked — so **405, 420 and 423 need no
+change at all**, and the coherence mandate is satisfiable without the two named residues I warned
+about in §6. My "41% recall" framing counted rows that were never ambiguous in the first place.
+
+### Where that leaves the route
+
+The ablative route (Kai's 2b, as endorsed) is back as the recommendation, on #913's evidence rather
+than mine. `විමසුවා` stays as a **fallback** for any row where an ablative genuinely cannot go —
+and §9a's corrected count (15 phrases across seeds 99/100/106/109, not "a single attestation")
+means that fallback is far better attested than I first claimed. That part of §9 stands.
+
+Real dangers from #913's run, which survive all of the above:
+
+1. **`course_seeds` has no audio-nulling trigger** — all five seed edits leave the learner hearing
+   the OLD sentence with no signal. Repair: NULL the three audio ids by hand in the same
+   transaction. Named stale clips: 380 `d8cf428e`/`a1d66785`/`1793eced`; 381 `d81a3055`/`a872bf67`/`d1268275`;
+   382 `5ff52ce5`/`77507944`/`13716681`; 415 `1d4d22a8`; 465 `8a499630`.
+2. **44 distinct presentation clips** embed an old seed sentence and are built at render time.
+3. **`මගෙන්` is taught nowhere** (the 415 fix) — a genuine reconsider needing a ruling, not a fix.
+4. For lego `382:4`, "same text elsewhere" names `366:3`. **The explicit decision is NO** — 366 is
+   the HEAR seed and keeping its wording is the whole point; the shared clip stays with 366 and
+   only 382's link is nulled.
+
+Full plan: `docs/a134-sin-ask-hear/change-plan-2026-08-17.md`, machine-readable in
+`plan-edits.json`. Still **nothing applied**.
