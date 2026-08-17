@@ -1,0 +1,1691 @@
+[
+  {
+    "course_code": "zho_for_eng",
+    "candidates": 11,
+    "relinked": 10,
+    "refused_no_file": 0,
+    "refused_not_null": 0,
+    "failed_verify": 1,
+    "rows": [
+      {
+        "table": "course_legos",
+        "id": "S0476L01",
+        "known_text": "second half",
+        "target_text": "下半场",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": "8f93a3c1-6904-474b-ab06-fef814b79c8c",
+          "target2_audio_id": "a0fb186d-d330-4a12-8297-f1e6218fad5c"
+        },
+        "after_intended": {
+          "known_audio_id": "1259a7b2-c92d-4690-ad91-9cc76896073a",
+          "target1_audio_id": "8f93a3c1-6904-474b-ab06-fef814b79c8c",
+          "target2_audio_id": "a0fb186d-d330-4a12-8297-f1e6218fad5c"
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "1259a7b2-c92d-4690-ad91-9cc76896073a",
+            "s3_key": "mastered/B421D2C3-12F8-4763-B156-2A4239B4F495.mp3",
+            "bytes": 20160,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_legos set known_audio_id=null where lego_id='S0476L01';",
+        "after_actual": null,
+        "outcome": "verify-failed"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "zho_for_eng:S0053L03C01",
+        "known_text": "to put",
+        "target_text": "放",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": "2d2c2548-cd93-4db1-8153-a5eca6a30908",
+          "target2_audio_id": "d4e2cd08-2996-4043-b443-1b9de7f36130"
+        },
+        "after_intended": {
+          "known_audio_id": "033b9259-af2e-4499-a076-10a0ad98e468",
+          "target1_audio_id": "2d2c2548-cd93-4db1-8153-a5eca6a30908",
+          "target2_audio_id": "d4e2cd08-2996-4043-b443-1b9de7f36130"
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "033b9259-af2e-4499-a076-10a0ad98e468",
+            "s3_key": "mastered/46B70B09-E45C-4759-9AF4-DC28E5974164.mp3",
+            "bytes": 14976,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='zho_for_eng:S0053L03C01';",
+        "after_actual": {
+          "known_audio_id": "033b9259-af2e-4499-a076-10a0ad98e468",
+          "target1_audio_id": "2d2c2548-cd93-4db1-8153-a5eca6a30908",
+          "target2_audio_id": "d4e2cd08-2996-4043-b443-1b9de7f36130"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "zho_for_eng:S0251L01U11",
+        "known_text": "I want to know why you think that",
+        "target_text": "我想知道你为什么这么觉得",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "1ea2ae96-a1a0-42f2-9167-0c2921c04143",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "1ea2ae96-a1a0-42f2-9167-0c2921c04143",
+            "s3_key": "mastered/AB6633EE-36D3-45DA-9C89-7C46D0820C7D.mp3",
+            "bytes": 27936,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='zho_for_eng:S0251L01U11';",
+        "after_actual": {
+          "known_audio_id": "1ea2ae96-a1a0-42f2-9167-0c2921c04143",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "zho_for_eng:S0303L01U11",
+        "known_text": "I think it's the same thing",
+        "target_text": "我觉得是同一件事",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "0062638d-6a38-495a-aaeb-bad14a524e2a",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "0062638d-6a38-495a-aaeb-bad14a524e2a",
+            "s3_key": "mastered/B13D32BF-005F-443B-8BDB-A1BD7DF78A3F.mp3",
+            "bytes": 25632,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='zho_for_eng:S0303L01U11';",
+        "after_actual": {
+          "known_audio_id": "0062638d-6a38-495a-aaeb-bad14a524e2a",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "zho_for_eng:S0303L01U14",
+        "known_text": "I think this is an interesting book",
+        "target_text": "我觉得这是一本有意思的书",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "42ff91de-e9fe-4b5a-bf4b-d63fef670a09",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "42ff91de-e9fe-4b5a-bf4b-d63fef670a09",
+            "s3_key": "mastered/B9F51E2F-947B-45E8-8742-03362B496A66.mp3",
+            "bytes": 29952,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='zho_for_eng:S0303L01U14';",
+        "after_actual": {
+          "known_audio_id": "42ff91de-e9fe-4b5a-bf4b-d63fef670a09",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "zho_for_eng:S0455L02U08",
+        "known_text": "because he is my friend",
+        "target_text": "因为他是我的朋友",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "2b8ff870-e73a-4e70-acf2-efd6e0197b29",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "2b8ff870-e73a-4e70-acf2-efd6e0197b29",
+            "s3_key": "mastered/51C4753E-5B71-4786-8714-00A2FF264545.mp3",
+            "bytes": 24768,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='zho_for_eng:S0455L02U08';",
+        "after_actual": {
+          "known_audio_id": "2b8ff870-e73a-4e70-acf2-efd6e0197b29",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "zho_for_eng:S0476L01B01",
+        "known_text": "second half",
+        "target_text": "下半场",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": "8f93a3c1-6904-474b-ab06-fef814b79c8c",
+          "target2_audio_id": "a0fb186d-d330-4a12-8297-f1e6218fad5c"
+        },
+        "after_intended": {
+          "known_audio_id": "1259a7b2-c92d-4690-ad91-9cc76896073a",
+          "target1_audio_id": "8f93a3c1-6904-474b-ab06-fef814b79c8c",
+          "target2_audio_id": "a0fb186d-d330-4a12-8297-f1e6218fad5c"
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "1259a7b2-c92d-4690-ad91-9cc76896073a",
+            "s3_key": "mastered/B421D2C3-12F8-4763-B156-2A4239B4F495.mp3",
+            "bytes": 20160,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='zho_for_eng:S0476L01B01';",
+        "after_actual": {
+          "known_audio_id": "1259a7b2-c92d-4690-ad91-9cc76896073a",
+          "target1_audio_id": "8f93a3c1-6904-474b-ab06-fef814b79c8c",
+          "target2_audio_id": "a0fb186d-d330-4a12-8297-f1e6218fad5c"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "zho_for_eng:S0553L01U13",
+        "known_text": "I think I've already learnt a lot",
+        "target_text": "我觉得我已经学了很多",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "3981ce45-b06b-44ef-ade4-d043c2a707b0",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "3981ce45-b06b-44ef-ade4-d043c2a707b0",
+            "s3_key": "mastered/4D2B0087-9EB6-4F7A-9F64-9FA9A57D597C.mp3",
+            "bytes": 29664,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='zho_for_eng:S0553L01U13';",
+        "after_actual": {
+          "known_audio_id": "3981ce45-b06b-44ef-ade4-d043c2a707b0",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "zho_for_eng:S0553L01U27",
+        "known_text": "I think she has a kind heart",
+        "target_text": "我觉得她有一颗善良的心",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "92b18ee9-c629-4b3c-860f-60d0e88bd929",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "92b18ee9-c629-4b3c-860f-60d0e88bd929",
+            "s3_key": "mastered/36D784FE-3527-4FB2-8B44-02E425191C36.mp3",
+            "bytes": 28224,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='zho_for_eng:S0553L01U27';",
+        "after_actual": {
+          "known_audio_id": "92b18ee9-c629-4b3c-860f-60d0e88bd929",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "zho_for_eng:S0636L01U27",
+        "known_text": "I think the red wine is good",
+        "target_text": "我觉得红酒很好",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "3af02ca8-8af7-42bb-a996-cf509dfc91ef",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "3af02ca8-8af7-42bb-a996-cf509dfc91ef",
+            "s3_key": "mastered/B80F0BAF-0354-41E9-8262-5C017CEA610C.mp3",
+            "bytes": 28800,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='zho_for_eng:S0636L01U27';",
+        "after_actual": {
+          "known_audio_id": "3af02ca8-8af7-42bb-a996-cf509dfc91ef",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "zho_for_eng:S0636L01U29",
+        "known_text": "I think they love each other",
+        "target_text": "我觉得他们彼此相爱",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "280e7af4-0a33-402a-91a6-a299b873ee3c",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "280e7af4-0a33-402a-91a6-a299b873ee3c",
+            "s3_key": "mastered/28C244AF-17F4-4422-BEB2-38B3B07CA39D.mp3",
+            "bytes": 25344,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='zho_for_eng:S0636L01U29';",
+        "after_actual": {
+          "known_audio_id": "280e7af4-0a33-402a-91a6-a299b873ee3c",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      }
+    ]
+  },
+  {
+    "course_code": "fra_ca_for_eng",
+    "candidates": 16,
+    "relinked": 11,
+    "refused_no_file": 0,
+    "refused_not_null": 0,
+    "failed_verify": 5,
+    "rows": [
+      {
+        "table": "course_legos",
+        "id": "S0085L02",
+        "known_text": "I don't know",
+        "target_text": "j'connais pas",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "125f5dbf-a31e-490a-bf90-63b2cc4be68c",
+          "target1_audio_id": "601cf862-6be0-42e5-8228-3532ed0ccbc7",
+          "target2_audio_id": "aa48ad2c-1a25-4e89-a697-670496237af1"
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "125f5dbf-a31e-490a-bf90-63b2cc4be68c",
+            "s3_key": "mastered/147A12C8-178B-468A-BF2C-AD9DFDB6C1F8.mp3",
+            "bytes": 12096,
+            "voice_id": "xai_gfzdpspr5fdp"
+          },
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "601cf862-6be0-42e5-8228-3532ed0ccbc7",
+            "s3_key": "mastered/40803ADC-AA78-4893-A553-B3EB01868D55.mp3",
+            "bytes": 25344,
+            "voice_id": "azure_fr-CA-SylvieNeural"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "aa48ad2c-1a25-4e89-a697-670496237af1",
+            "s3_key": "mastered/F9D1AAD6-90C1-4091-816D-3098A63D6FA5.mp3",
+            "bytes": 22752,
+            "voice_id": "azure_fr-CA-AntoineNeural"
+          }
+        ],
+        "rollback": "update course_legos set known_audio_id=null, target1_audio_id=null, target2_audio_id=null where lego_id='S0085L02';",
+        "after_actual": null,
+        "outcome": "verify-failed"
+      },
+      {
+        "table": "course_legos",
+        "id": "S0593L03",
+        "known_text": "still",
+        "target_text": "quand même",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": "e3974a14-a6b3-476f-ac90-06be3704abc2",
+          "target2_audio_id": "6d78af8e-ef6e-4823-bd3f-9ad62eeaf8d4"
+        },
+        "after_intended": {
+          "known_audio_id": "0b2fd2fe-519b-43a9-aa50-9c9e07323690",
+          "target1_audio_id": "e3974a14-a6b3-476f-ac90-06be3704abc2",
+          "target2_audio_id": "6d78af8e-ef6e-4823-bd3f-9ad62eeaf8d4"
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "0b2fd2fe-519b-43a9-aa50-9c9e07323690",
+            "s3_key": "mastered/DE70F69D-C54E-443C-839E-FCC22EA9B6F5.mp3",
+            "bytes": 9216,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_legos set known_audio_id=null where lego_id='S0593L03';",
+        "after_actual": null,
+        "outcome": "verify-failed"
+      },
+      {
+        "table": "course_legos",
+        "id": "S0631L01",
+        "known_text": "what...?",
+        "target_text": "qu'est-ce que",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": "0e6e2d08-6be6-4309-a0b3-3840f6a304ca",
+          "target2_audio_id": "04252ab1-8abd-4e00-944b-72aee9011dd3"
+        },
+        "after_intended": {
+          "known_audio_id": "11476d54-d40e-4fc5-aedc-037eefa8150e",
+          "target1_audio_id": "0e6e2d08-6be6-4309-a0b3-3840f6a304ca",
+          "target2_audio_id": "04252ab1-8abd-4e00-944b-72aee9011dd3"
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "11476d54-d40e-4fc5-aedc-037eefa8150e",
+            "s3_key": "mastered/D126B1AE-9363-4332-B2D2-58DF89B98D81.mp3",
+            "bytes": 7488,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_legos set known_audio_id=null where lego_id='S0631L01';",
+        "after_actual": null,
+        "outcome": "verify-failed"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "fra_ca_for_eng:S0174L01B02",
+        "known_text": "do you understand this word?",
+        "target_text": "tu comprends-tu ce mot-là?",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "02f0636a-7206-4338-a6c1-2198b5945e0a",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "02f0636a-7206-4338-a6c1-2198b5945e0a",
+            "s3_key": "mastered/313784CD-73C8-48D8-9B8C-1D17DACEB094.mp3",
+            "bytes": 21600,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='fra_ca_for_eng:S0174L01B02';",
+        "after_actual": {
+          "known_audio_id": "02f0636a-7206-4338-a6c1-2198b5945e0a",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "fra_ca_for_eng:S0199L02B03",
+        "known_text": "my friend used to work in an office in those days",
+        "target_text": "mon ami travaillait dans un bureau dans le temps",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "86025f90-6f95-4b1f-a4e4-19f2b3d67f6a",
+          "target1_audio_id": "d94ff682-fac6-4d62-9b63-b139e15f2070",
+          "target2_audio_id": "e1d1261e-bf24-4aa5-a954-44e384e256d4"
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "86025f90-6f95-4b1f-a4e4-19f2b3d67f6a",
+            "s3_key": "mastered/3D55B70B-4682-4E78-8D3A-EFEE5BA44C03.mp3",
+            "bytes": 32832,
+            "voice_id": "xai_gfzdpspr5fdp"
+          },
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "d94ff682-fac6-4d62-9b63-b139e15f2070",
+            "s3_key": "mastered/E23B8F12-DAFC-4B34-8377-42B4EEC2F032.mp3",
+            "bytes": 45216,
+            "voice_id": "azure_fr-CA-SylvieNeural"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "e1d1261e-bf24-4aa5-a954-44e384e256d4",
+            "s3_key": "mastered/FD37AC22-9A1D-4EA1-8AE3-327107E81A8C.mp3",
+            "bytes": 45216,
+            "voice_id": "azure_fr-CA-AntoineNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null, target1_audio_id=null, target2_audio_id=null where id='fra_ca_for_eng:S0199L02B03';",
+        "after_actual": {
+          "known_audio_id": "86025f90-6f95-4b1f-a4e4-19f2b3d67f6a",
+          "target1_audio_id": "d94ff682-fac6-4d62-9b63-b139e15f2070",
+          "target2_audio_id": "e1d1261e-bf24-4aa5-a954-44e384e256d4"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "fra_ca_for_eng:S0647L01B01",
+        "known_text": "you speak it madam",
+        "target_text": "vous le parlez madame",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "0ee52199-e68b-4096-b23d-d029770b5aae",
+          "target1_audio_id": "4aea2ffc-e065-47dc-9812-d53ab17dd82d",
+          "target2_audio_id": "5c7949ba-eac3-4837-8b54-f75c1d5b26b9"
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "0ee52199-e68b-4096-b23d-d029770b5aae",
+            "s3_key": "mastered/89536355-F148-412D-AC8B-5879B518BA74.mp3",
+            "bytes": 14976,
+            "voice_id": "xai_gfzdpspr5fdp"
+          },
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "4aea2ffc-e065-47dc-9812-d53ab17dd82d",
+            "s3_key": "mastered/1FDDEA52-A7B6-4324-908E-78A7422F5141.mp3",
+            "bytes": 30816,
+            "voice_id": "azure_fr-CA-SylvieNeural"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "5c7949ba-eac3-4837-8b54-f75c1d5b26b9",
+            "s3_key": "mastered/372EDCAA-B639-4980-ABE9-D3D7A4711586.mp3",
+            "bytes": 29664,
+            "voice_id": "azure_fr-CA-AntoineNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null, target1_audio_id=null, target2_audio_id=null where id='fra_ca_for_eng:S0647L01B01';",
+        "after_actual": {
+          "known_audio_id": "0ee52199-e68b-4096-b23d-d029770b5aae",
+          "target1_audio_id": "4aea2ffc-e065-47dc-9812-d53ab17dd82d",
+          "target2_audio_id": "5c7949ba-eac3-4837-8b54-f75c1d5b26b9"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "fra_ca_for_eng:S0648L01B01",
+        "known_text": "you said madam",
+        "target_text": "vous avez dit madame",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "a7544992-de25-4adb-90a8-ed9dfe90a298",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "a7544992-de25-4adb-90a8-ed9dfe90a298",
+            "s3_key": "mastered/B461C8CF-54A2-48BB-B90A-AB58324C3FCF.mp3",
+            "bytes": 12096,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='fra_ca_for_eng:S0648L01B01';",
+        "after_actual": {
+          "known_audio_id": "a7544992-de25-4adb-90a8-ed9dfe90a298",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "fra_ca_for_eng:S0650L01B02",
+        "known_text": "do you want to go today madam?",
+        "target_text": "voulez-vous partir aujourd'hui madame?",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "00ff202e-24ec-4fd3-b888-8a95dacb7eb1",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "00ff202e-24ec-4fd3-b888-8a95dacb7eb1",
+            "s3_key": "mastered/A40E52BE-77C9-4752-AA79-FB3CE6F7FCED.mp3",
+            "bytes": 17856,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='fra_ca_for_eng:S0650L01B02';",
+        "after_actual": {
+          "known_audio_id": "00ff202e-24ec-4fd3-b888-8a95dacb7eb1",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "fra_ca_for_eng:S0653L01B01",
+        "known_text": "does it bother you madam",
+        "target_text": "ça vous dérange madame",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": null,
+          "target1_audio_id": "cc1aac33-3c38-41b4-bfcd-a5cdd50d0271",
+          "target2_audio_id": "a0297bd8-0b15-43ea-9049-13235dd81098"
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "cc1aac33-3c38-41b4-bfcd-a5cdd50d0271",
+            "s3_key": "mastered/19D4D717-05F6-44D6-8099-6D5434F9AD30.mp3",
+            "bytes": 32256,
+            "voice_id": "azure_fr-CA-SylvieNeural"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "a0297bd8-0b15-43ea-9049-13235dd81098",
+            "s3_key": "mastered/C588D9EC-34CF-4A1F-8417-A1F6534D175D.mp3",
+            "bytes": 28800,
+            "voice_id": "azure_fr-CA-AntoineNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target1_audio_id=null, target2_audio_id=null where id='fra_ca_for_eng:S0653L01B01';",
+        "after_actual": {
+          "known_audio_id": null,
+          "target1_audio_id": "cc1aac33-3c38-41b4-bfcd-a5cdd50d0271",
+          "target2_audio_id": "a0297bd8-0b15-43ea-9049-13235dd81098"
+        },
+        "outcome": "relinked"
+      }
+    ]
+  },
+  {
+    "course_code": "eng_for_mar",
+    "candidates": 14,
+    "relinked": 14,
+    "refused_no_file": 0,
+    "refused_not_null": 0,
+    "failed_verify": 0,
+    "rows": [
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_mar:S0149L02B01",
+        "known_text": "फारसं अवघड नाही",
+        "target_text": "isn't very difficult",
+        "before": {
+          "known_audio_id": "5410278a-faf4-4eea-a114-dfefd60208af",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "5410278a-faf4-4eea-a114-dfefd60208af",
+          "target1_audio_id": null,
+          "target2_audio_id": "1a92ffdb-0780-442f-b474-f50da74f6855"
+        },
+        "verified_clips": [
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "1a92ffdb-0780-442f-b474-f50da74f6855",
+            "s3_key": "mastered/1A92FFDB-0780-442F-B474-F50DA74F6855.mp3",
+            "bytes": 19584,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target2_audio_id=null where id='eng_for_mar:S0149L02B01';",
+        "after_actual": {
+          "known_audio_id": "5410278a-faf4-4eea-a114-dfefd60208af",
+          "target1_audio_id": null,
+          "target2_audio_id": "1a92ffdb-0780-442f-b474-f50da74f6855"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_mar:S0195L01B03",
+        "known_text": "ते टेबलावर आहे",
+        "target_text": "it's on the table",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": null,
+          "target1_audio_id": "b06bb7c9-d593-4c49-bb22-9c5c38797b32",
+          "target2_audio_id": "687f7c85-5218-44f1-9b7e-53524106b196"
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "b06bb7c9-d593-4c49-bb22-9c5c38797b32",
+            "s3_key": "mastered/C7A61753-58FE-45AC-8D90-A80C7D40EEC8.mp3",
+            "bytes": 14400,
+            "voice_id": "xai_bedd6226"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "687f7c85-5218-44f1-9b7e-53524106b196",
+            "s3_key": "mastered/A6CBFE20-2BCA-4C82-8602-E800182C6413.mp3",
+            "bytes": 14112,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target1_audio_id=null, target2_audio_id=null where id='eng_for_mar:S0195L01B03';",
+        "after_actual": {
+          "known_audio_id": null,
+          "target1_audio_id": "b06bb7c9-d593-4c49-bb22-9c5c38797b32",
+          "target2_audio_id": "687f7c85-5218-44f1-9b7e-53524106b196"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_mar:S0223L01B03",
+        "known_text": "तो तुम्हाला विचारणार",
+        "target_text": "he's going to ask you",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": null,
+          "target1_audio_id": "174107fe-7ded-43d4-b86b-1259445d999e",
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "174107fe-7ded-43d4-b86b-1259445d999e",
+            "s3_key": "mastered/174107FE-7DED-43D4-B86B-1259445D999E.mp3",
+            "bytes": 20736,
+            "voice_id": "xai_bedd6226"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target1_audio_id=null where id='eng_for_mar:S0223L01B03';",
+        "after_actual": {
+          "known_audio_id": null,
+          "target1_audio_id": "174107fe-7ded-43d4-b86b-1259445d999e",
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_mar:S0223L01U05",
+        "known_text": "मला वाटतं की तो तुम्हाला विचारणार आहे",
+        "target_text": "I think that he's going to ask you",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": null,
+          "target1_audio_id": "6419d130-030a-4e21-999f-bb21b28a690c",
+          "target2_audio_id": "c4c09abc-b62a-4d7f-8035-bdb256e056cd"
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "6419d130-030a-4e21-999f-bb21b28a690c",
+            "s3_key": "mastered/4041AFCB-E96F-472E-A936-C6A14EFE0CC8.mp3",
+            "bytes": 23328,
+            "voice_id": "xai_bedd6226"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "c4c09abc-b62a-4d7f-8035-bdb256e056cd",
+            "s3_key": "mastered/707DF385-5C8D-4A97-B8B7-44DB007EBEEB.mp3",
+            "bytes": 23328,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target1_audio_id=null, target2_audio_id=null where id='eng_for_mar:S0223L01U05';",
+        "after_actual": {
+          "known_audio_id": null,
+          "target1_audio_id": "6419d130-030a-4e21-999f-bb21b28a690c",
+          "target2_audio_id": "c4c09abc-b62a-4d7f-8035-bdb256e056cd"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_mar:S0245L01B02",
+        "known_text": "मी आज खूप काही केलंय",
+        "target_text": "I've done a lot today",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": "0335d17c-e21a-4cd0-a8f8-4b7c2536c63b"
+        },
+        "verified_clips": [
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "0335d17c-e21a-4cd0-a8f8-4b7c2536c63b",
+            "s3_key": "mastered/0335D17C-E21A-4CD0-A8F8-4B7C2536C63B.mp3",
+            "bytes": 18144,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target2_audio_id=null where id='eng_for_mar:S0245L01B02';",
+        "after_actual": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": "0335d17c-e21a-4cd0-a8f8-4b7c2536c63b"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_mar:S0248L01B03",
+        "known_text": "तो अगदी टाकाऊ होता",
+        "target_text": "it was complete rubbish",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": "1351fb81-a8d1-42de-9690-0f8e247f99ce"
+        },
+        "verified_clips": [
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "1351fb81-a8d1-42de-9690-0f8e247f99ce",
+            "s3_key": "mastered/1351FB81-A8D1-42DE-9690-0F8E247F99CE.mp3",
+            "bytes": 23616,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target2_audio_id=null where id='eng_for_mar:S0248L01B03';",
+        "after_actual": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": "1351fb81-a8d1-42de-9690-0f8e247f99ce"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_mar:S0269L01B03",
+        "known_text": "तुमच्या वडिलांची वाट पाहायला",
+        "target_text": "to wait for your father",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": null,
+          "target1_audio_id": "87dc2e2b-e54b-4f7c-a2f5-e24e3b4d0c51",
+          "target2_audio_id": "6dc9be8c-8e79-4d20-b8a7-ab332ccb059a"
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "87dc2e2b-e54b-4f7c-a2f5-e24e3b4d0c51",
+            "s3_key": "mastered/1F4D2B88-2CCD-41ED-9B2C-67D6C41011A5.mp3",
+            "bytes": 16128,
+            "voice_id": "xai_bedd6226"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "6dc9be8c-8e79-4d20-b8a7-ab332ccb059a",
+            "s3_key": "mastered/D3030209-CC6E-4D6A-B388-F7155875C79C.mp3",
+            "bytes": 16128,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target1_audio_id=null, target2_audio_id=null where id='eng_for_mar:S0269L01B03';",
+        "after_actual": {
+          "known_audio_id": null,
+          "target1_audio_id": "87dc2e2b-e54b-4f7c-a2f5-e24e3b4d0c51",
+          "target2_audio_id": "6dc9be8c-8e79-4d20-b8a7-ab332ccb059a"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_mar:S0269L02B03",
+        "known_text": "मला वाट पाहायची नाही",
+        "target_text": "I don't want to wait",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": null,
+          "target1_audio_id": "04fdd442-c8e5-4639-95d7-f34f46e4ea84",
+          "target2_audio_id": "0dcea28d-91ec-4d9c-b17f-f8212d2b65e4"
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "04fdd442-c8e5-4639-95d7-f34f46e4ea84",
+            "s3_key": "mastered/7CD4B739-EF27-4BDC-9F47-B201D5306579.mp3",
+            "bytes": 12672,
+            "voice_id": "xai_bedd6226"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "0dcea28d-91ec-4d9c-b17f-f8212d2b65e4",
+            "s3_key": "mastered/73421BBD-D6AA-4FC2-A71D-B39C00C467ED.mp3",
+            "bytes": 19872,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target1_audio_id=null, target2_audio_id=null where id='eng_for_mar:S0269L02B03';",
+        "after_actual": {
+          "known_audio_id": null,
+          "target1_audio_id": "04fdd442-c8e5-4639-95d7-f34f46e4ea84",
+          "target2_audio_id": "0dcea28d-91ec-4d9c-b17f-f8212d2b65e4"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_mar:S0269L03B01",
+        "known_text": "तुम्हाला वाट का पाहायची नाही?",
+        "target_text": "why don't you want to wait?",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": null,
+          "target1_audio_id": "00c3669c-1001-4752-ad9a-6dba008d5902",
+          "target2_audio_id": "4796d1ec-73b5-4607-bdfa-2d037b2574f8"
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "00c3669c-1001-4752-ad9a-6dba008d5902",
+            "s3_key": "mastered/00C3669C-1001-4752-AD9A-6DBA008D5902.mp3",
+            "bytes": 19008,
+            "voice_id": "xai_bedd6226"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "4796d1ec-73b5-4607-bdfa-2d037b2574f8",
+            "s3_key": "mastered/7F8AA4BE-EB78-4399-8D18-22BBC4D1557C.mp3",
+            "bytes": 18144,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target1_audio_id=null, target2_audio_id=null where id='eng_for_mar:S0269L03B01';",
+        "after_actual": {
+          "known_audio_id": null,
+          "target1_audio_id": "00c3669c-1001-4752-ad9a-6dba008d5902",
+          "target2_audio_id": "4796d1ec-73b5-4607-bdfa-2d037b2574f8"
+        },
+        "outcome": "relinked"
+      }
+    ]
+  },
+  {
+    "course_code": "eng_for_por",
+    "candidates": 12,
+    "relinked": 10,
+    "refused_no_file": 0,
+    "refused_not_null": 0,
+    "failed_verify": 2,
+    "rows": [
+      {
+        "table": "course_legos",
+        "id": "S0028L01",
+        "known_text": "o mais cedo possível",
+        "target_text": "as soon as possible",
+        "before": {
+          "known_audio_id": "840df372-500c-4544-9a6c-aa1d16661d69",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "840df372-500c-4544-9a6c-aa1d16661d69",
+          "target1_audio_id": "ca7e1671-049b-4fba-a13b-2eaf1cf0e705",
+          "target2_audio_id": "d4f00041-0c3c-444c-94c5-7ca69a94a7bb"
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "ca7e1671-049b-4fba-a13b-2eaf1cf0e705",
+            "s3_key": "mastered/66AA93E5-A358-4238-A407-1753283E2BB6.mp3",
+            "bytes": 22752,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "d4f00041-0c3c-444c-94c5-7ca69a94a7bb",
+            "s3_key": "mastered/0216C19B-9A32-491F-B703-31BC3334A15E.mp3",
+            "bytes": 26496,
+            "voice_id": "azure_en-GB-RyanNeural"
+          }
+        ],
+        "rollback": "update course_legos set target1_audio_id=null, target2_audio_id=null where lego_id='S0028L01';",
+        "after_actual": null,
+        "outcome": "verify-failed"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_por:S0002L01B01",
+        "known_text": "quero aprender",
+        "target_text": "I want to learn",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": null,
+          "target1_audio_id": "29b8413f-b9bb-4b85-9459-1192b3a76583",
+          "target2_audio_id": "22d1ecf6-d6e1-47d7-a431-029b0a5ff196"
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "29b8413f-b9bb-4b85-9459-1192b3a76583",
+            "s3_key": "mastered/4190FCF0-1246-4539-8CA8-3030C6681F88.mp3",
+            "bytes": 18432,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "22d1ecf6-d6e1-47d7-a431-029b0a5ff196",
+            "s3_key": "mastered/724FE421-17F3-4964-B53F-53B0E735D89F.mp3",
+            "bytes": 28800,
+            "voice_id": "azure_en-GB-RyanNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target1_audio_id=null, target2_audio_id=null where id='eng_for_por:S0002L01B01';",
+        "after_actual": {
+          "known_audio_id": null,
+          "target1_audio_id": "29b8413f-b9bb-4b85-9459-1192b3a76583",
+          "target2_audio_id": "22d1ecf6-d6e1-47d7-a431-029b0a5ff196"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_por:S0028L01B01",
+        "known_text": "o mais cedo possível",
+        "target_text": "as soon as possible",
+        "before": {
+          "known_audio_id": "840df372-500c-4544-9a6c-aa1d16661d69",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "840df372-500c-4544-9a6c-aa1d16661d69",
+          "target1_audio_id": "ca7e1671-049b-4fba-a13b-2eaf1cf0e705",
+          "target2_audio_id": "d4f00041-0c3c-444c-94c5-7ca69a94a7bb"
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "ca7e1671-049b-4fba-a13b-2eaf1cf0e705",
+            "s3_key": "mastered/66AA93E5-A358-4238-A407-1753283E2BB6.mp3",
+            "bytes": 22752,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "d4f00041-0c3c-444c-94c5-7ca69a94a7bb",
+            "s3_key": "mastered/0216C19B-9A32-491F-B703-31BC3334A15E.mp3",
+            "bytes": 26496,
+            "voice_id": "azure_en-GB-RyanNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target1_audio_id=null, target2_audio_id=null where id='eng_for_por:S0028L01B01';",
+        "after_actual": {
+          "known_audio_id": "840df372-500c-4544-9a6c-aa1d16661d69",
+          "target1_audio_id": "ca7e1671-049b-4fba-a13b-2eaf1cf0e705",
+          "target2_audio_id": "d4f00041-0c3c-444c-94c5-7ca69a94a7bb"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_por:S0028L01U01",
+        "known_text": "começar a falar o mais cedo possível",
+        "target_text": "to start talking as soon as possible",
+        "before": {
+          "known_audio_id": "8ba57381-4f27-4ec8-b88e-a51c7c2d54a5",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "8ba57381-4f27-4ec8-b88e-a51c7c2d54a5",
+          "target1_audio_id": "760a166c-6d77-49f8-a42f-f13e8f9bd2c0",
+          "target2_audio_id": "4f50a42c-236e-4517-8f1c-223eaad8a28b"
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "760a166c-6d77-49f8-a42f-f13e8f9bd2c0",
+            "s3_key": "mastered/A1DADD2C-4064-4DA2-9EFD-A54579C67519.mp3",
+            "bytes": 33408,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "4f50a42c-236e-4517-8f1c-223eaad8a28b",
+            "s3_key": "mastered/F6DD5C5C-1BCD-4F18-B8B3-5A88CF8B4436.mp3",
+            "bytes": 36576,
+            "voice_id": "azure_en-GB-RyanNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target1_audio_id=null, target2_audio_id=null where id='eng_for_por:S0028L01U01';",
+        "after_actual": {
+          "known_audio_id": "8ba57381-4f27-4ec8-b88e-a51c7c2d54a5",
+          "target1_audio_id": "760a166c-6d77-49f8-a42f-f13e8f9bd2c0",
+          "target2_audio_id": "4f50a42c-236e-4517-8f1c-223eaad8a28b"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_por:S0028L02B04",
+        "known_text": "é útil aprender o mais cedo possível",
+        "target_text": "it's useful to learn as soon as possible",
+        "before": {
+          "known_audio_id": "a18d0b0f-f2ef-4811-84e2-056366350dd5",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "a18d0b0f-f2ef-4811-84e2-056366350dd5",
+          "target1_audio_id": "3802b348-281c-4237-b1b0-ae9be378e393",
+          "target2_audio_id": "d27f6a2f-37c9-453d-a415-643c2ac17a91"
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "3802b348-281c-4237-b1b0-ae9be378e393",
+            "s3_key": "mastered/FA72388D-DBD0-4308-8DA6-DFCD0C6BCD6D.mp3",
+            "bytes": 36576,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "d27f6a2f-37c9-453d-a415-643c2ac17a91",
+            "s3_key": "mastered/709A9406-9332-41BA-AA1C-1E7C66026F99.mp3",
+            "bytes": 38592,
+            "voice_id": "azure_en-GB-RyanNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target1_audio_id=null, target2_audio_id=null where id='eng_for_por:S0028L02B04';",
+        "after_actual": {
+          "known_audio_id": "a18d0b0f-f2ef-4811-84e2-056366350dd5",
+          "target1_audio_id": "3802b348-281c-4237-b1b0-ae9be378e393",
+          "target2_audio_id": "d27f6a2f-37c9-453d-a415-643c2ac17a91"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "eng_for_por:S0029L02C02",
+        "known_text": "o mais cedo possível",
+        "target_text": "as soon as possible",
+        "before": {
+          "known_audio_id": "840df372-500c-4544-9a6c-aa1d16661d69",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "840df372-500c-4544-9a6c-aa1d16661d69",
+          "target1_audio_id": "ca7e1671-049b-4fba-a13b-2eaf1cf0e705",
+          "target2_audio_id": "d4f00041-0c3c-444c-94c5-7ca69a94a7bb"
+        },
+        "verified_clips": [
+          {
+            "role": "target1",
+            "col": "target1_audio_id",
+            "clip_id": "ca7e1671-049b-4fba-a13b-2eaf1cf0e705",
+            "s3_key": "mastered/66AA93E5-A358-4238-A407-1753283E2BB6.mp3",
+            "bytes": 22752,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          },
+          {
+            "role": "target2",
+            "col": "target2_audio_id",
+            "clip_id": "d4f00041-0c3c-444c-94c5-7ca69a94a7bb",
+            "s3_key": "mastered/0216C19B-9A32-491F-B703-31BC3334A15E.mp3",
+            "bytes": 26496,
+            "voice_id": "azure_en-GB-RyanNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set target1_audio_id=null, target2_audio_id=null where id='eng_for_por:S0029L02C02';",
+        "after_actual": {
+          "known_audio_id": "840df372-500c-4544-9a6c-aa1d16661d69",
+          "target1_audio_id": "ca7e1671-049b-4fba-a13b-2eaf1cf0e705",
+          "target2_audio_id": "d4f00041-0c3c-444c-94c5-7ca69a94a7bb"
+        },
+        "outcome": "relinked"
+      }
+    ]
+  },
+  {
+    "course_code": "por_for_eng",
+    "candidates": 5,
+    "relinked": 5,
+    "refused_no_file": 0,
+    "refused_not_null": 0,
+    "failed_verify": 0,
+    "rows": [
+      {
+        "table": "course_practice_phrases",
+        "id": "por_for_eng:S0059L01U09",
+        "known_text": "I don't know his name",
+        "target_text": "não sei o nome dele",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "a944432c-0348-4bb5-b922-ecddad626609",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "a944432c-0348-4bb5-b922-ecddad626609",
+            "s3_key": "mastered/964EECE9-4BDF-4EDB-9BAB-39DACAEBBD0F.mp3",
+            "bytes": 22752,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='por_for_eng:S0059L01U09';",
+        "after_actual": {
+          "known_audio_id": "a944432c-0348-4bb5-b922-ecddad626609",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "por_for_eng:S0059L01U10",
+        "known_text": "I don't know her name",
+        "target_text": "não sei o nome dela",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "1e00d211-dd45-4ec3-89a0-73a553987d1a",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "1e00d211-dd45-4ec3-89a0-73a553987d1a",
+            "s3_key": "mastered/A9100AF2-E9A0-47E2-93F9-FD314A63D851.mp3",
+            "bytes": 21312,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='por_for_eng:S0059L01U10';",
+        "after_actual": {
+          "known_audio_id": "1e00d211-dd45-4ec3-89a0-73a553987d1a",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "por_for_eng:S0139L03B03",
+        "known_text": "I'm sorry that I need to leave",
+        "target_text": "lamento que precise de sair",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": "4c1b1c8a-01bc-4b3f-9e1a-0f537c996782",
+          "target2_audio_id": "b5b97395-0c01-4577-bfbf-0768bde38ba1"
+        },
+        "after_intended": {
+          "known_audio_id": "194829e5-85a2-4412-b29f-4556f1704bcf",
+          "target1_audio_id": "4c1b1c8a-01bc-4b3f-9e1a-0f537c996782",
+          "target2_audio_id": "b5b97395-0c01-4577-bfbf-0768bde38ba1"
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "194829e5-85a2-4412-b29f-4556f1704bcf",
+            "s3_key": "mastered/6EABDF4B-D0FC-482C-A08F-E7C4CC34C2E8.mp3",
+            "bytes": 28800,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='por_for_eng:S0139L03B03';",
+        "after_actual": {
+          "known_audio_id": "194829e5-85a2-4412-b29f-4556f1704bcf",
+          "target1_audio_id": "4c1b1c8a-01bc-4b3f-9e1a-0f537c996782",
+          "target2_audio_id": "b5b97395-0c01-4577-bfbf-0768bde38ba1"
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "por_for_eng:S0347L01U09",
+        "known_text": "he wanted to know what your name is",
+        "target_text": "ele queria saber como te chamas",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "501cbda2-1d5a-4bef-9ff9-9f51dafc2689",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "501cbda2-1d5a-4bef-9ff9-9f51dafc2689",
+            "s3_key": "mastered/A1FD1C5B-D1ED-4678-A9F9-2024214C2241.mp3",
+            "bytes": 29952,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='por_for_eng:S0347L01U09';",
+        "after_actual": {
+          "known_audio_id": "501cbda2-1d5a-4bef-9ff9-9f51dafc2689",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "por_for_eng:S0486L03U06",
+        "known_text": "I think we need to change",
+        "target_text": "eu acho que nós precisamos de mudar",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "5eb1e96c-ceed-43ab-9aaf-6f9739e057a8",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "5eb1e96c-ceed-43ab-9aaf-6f9739e057a8",
+            "s3_key": "mastered/76A2A055-7320-4A3F-A4AC-95ED22DFEB9E.mp3",
+            "bytes": 25632,
+            "voice_id": "azure_en-GB-SoniaNeural"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='por_for_eng:S0486L03U06';",
+        "after_actual": {
+          "known_audio_id": "5eb1e96c-ceed-43ab-9aaf-6f9739e057a8",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      }
+    ]
+  },
+  {
+    "course_code": "ita_for_eng",
+    "candidates": 2,
+    "relinked": 2,
+    "refused_no_file": 0,
+    "refused_not_null": 0,
+    "failed_verify": 0,
+    "rows": [
+      {
+        "table": "course_practice_phrases",
+        "id": "ita_for_eng:S0281L04B03",
+        "known_text": "before you start",
+        "target_text": "prima che tu cominci",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "0500baf9-bf18-424e-b780-2952b94024b4",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "0500baf9-bf18-424e-b780-2952b94024b4",
+            "s3_key": "mastered/C1CA6841-6FB2-466B-AFC3-130D4DA8D922.mp3",
+            "bytes": 14976,
+            "voice_id": "xai_eve"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='ita_for_eng:S0281L04B03';",
+        "after_actual": {
+          "known_audio_id": "0500baf9-bf18-424e-b780-2952b94024b4",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "ita_for_eng:S0460L01U06",
+        "known_text": "I want to find my keys",
+        "target_text": "voglio trovare le mie chiavi",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "59573dd2-3d4f-432b-beee-5a138c9f0965",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "59573dd2-3d4f-432b-beee-5a138c9f0965",
+            "s3_key": "mastered/A1D8955E-ACC2-48F1-A055-DB4438632B1B.mp3",
+            "bytes": 14400,
+            "voice_id": "xai_eve"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='ita_for_eng:S0460L01U06';",
+        "after_actual": {
+          "known_audio_id": "59573dd2-3d4f-432b-beee-5a138c9f0965",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      }
+    ]
+  },
+  {
+    "course_code": "fra_for_eng",
+    "candidates": 2,
+    "relinked": 2,
+    "refused_no_file": 0,
+    "refused_not_null": 0,
+    "failed_verify": 0,
+    "rows": [
+      {
+        "table": "course_practice_phrases",
+        "id": "fra_for_eng:S0588L01U04",
+        "known_text": "I wanted to leave home",
+        "target_text": "je voulais quitter la maison",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "19391b4d-0f1f-4386-bf1f-4438514ba562",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "19391b4d-0f1f-4386-bf1f-4438514ba562",
+            "s3_key": "mastered/FC529F1E-29A9-4BA4-9D95-F12309EFF08B.mp3",
+            "bytes": 19008,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='fra_for_eng:S0588L01U04';",
+        "after_actual": {
+          "known_audio_id": "19391b4d-0f1f-4386-bf1f-4438514ba562",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      },
+      {
+        "table": "course_practice_phrases",
+        "id": "fra_for_eng:S0588L01U05",
+        "known_text": "she wanted to leave home",
+        "target_text": "elle voulait quitter la maison",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "8f4dd52c-9778-4df5-b42e-e0615f1c125a",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "8f4dd52c-9778-4df5-b42e-e0615f1c125a",
+            "s3_key": "mastered/039C9BD2-E846-4A69-8CF9-C15E256E31BC.mp3",
+            "bytes": 19584,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='fra_for_eng:S0588L01U05';",
+        "after_actual": {
+          "known_audio_id": "8f4dd52c-9778-4df5-b42e-e0615f1c125a",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      }
+    ]
+  },
+  {
+    "course_code": "por_br_for_eng",
+    "candidates": 1,
+    "relinked": 1,
+    "refused_no_file": 0,
+    "refused_not_null": 0,
+    "failed_verify": 0,
+    "rows": [
+      {
+        "table": "course_practice_phrases",
+        "id": "por_br_for_eng:S0195L01B01",
+        "known_text": "I want the dog",
+        "target_text": "quero o cachorro",
+        "before": {
+          "known_audio_id": null,
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "after_intended": {
+          "known_audio_id": "7144f0dd-4d5f-41b6-bf24-295cdb1f41f8",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "verified_clips": [
+          {
+            "role": "known",
+            "col": "known_audio_id",
+            "clip_id": "7144f0dd-4d5f-41b6-bf24-295cdb1f41f8",
+            "s3_key": "mastered/C9D9A31E-171C-4495-B813-8170BACAB17B.mp3",
+            "bytes": 12672,
+            "voice_id": "xai_gfzdpspr5fdp"
+          }
+        ],
+        "rollback": "update course_practice_phrases set known_audio_id=null where id='por_br_for_eng:S0195L01B01';",
+        "after_actual": {
+          "known_audio_id": "7144f0dd-4d5f-41b6-bf24-295cdb1f41f8",
+          "target1_audio_id": null,
+          "target2_audio_id": null
+        },
+        "outcome": "relinked"
+      }
+    ]
+  }
+]

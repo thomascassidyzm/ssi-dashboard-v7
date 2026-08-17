@@ -18,30 +18,47 @@ const logger = createLogger('AudioPassQueue')
 
 /**
  * Queue (or touch) the pending audio-pass request for a course.
- * Idempotent: one pending row per course; a repeat call updates reason/metadata.
+ * Idempotent: one pending row per course; a repeat call APPENDS to reason and
+ * merges metadata.
  * Never throws — a content pass must not fail because the queue write did.
  */
 async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null, metadata = {} }) {
   try {
     const { data: existing } = await supabase
       .from('audio_pass_requests')
-      .select('id, metadata')
+      .select('id, metadata, reason')
       .eq('course_code', courseCode)
       .eq('status', 'pending')
       .maybeSingle()
 
     if (existing) {
+      // Append rather than replace. There is one pending row per course, and every
+      // content pass is supposed to end by queueing a request — so two passes on the
+      // same course collide by construction, and this used to overwrite silently
+      // (it did not even SELECT reason, so it could not know what it destroyed).
+      // On 2026-08-17 a Deborah-findings pass wiped eng_for_por's pod-0 fresh-build
+      // reason; it was only recovered because the agent happened to check.
+      // The reason text is the sole record of WHY a course owes a pass, and whoever
+      // approves it reads that text to decide scope.
+      const merged = !existing.reason
+        ? reason
+        : existing.reason.includes(reason)
+          ? existing.reason              // already recorded — don't duplicate on retry
+          : `${existing.reason} || ${reason}`
       const { error } = await supabase
         .from('audio_pass_requests')
         .update({
-          reason,
+          reason: merged,
+          // requested_by is deliberately left as last-writer-wins: who to ask about
+          // the most recent addition is at least as useful as who asked first, and
+          // changing it is a behaviour choice rather than a bug fix.
           requested_by: requestedBy,
           metadata: { ...existing.metadata, ...metadata },
           updated_at: new Date().toISOString()
         })
         .eq('id', existing.id)
       if (error) throw error
-      logger.info(`Touched pending audio-pass request for ${courseCode} (${reason})`)
+      logger.info(`Touched pending audio-pass request for ${courseCode} (${merged})`)
       return { queued: false, touched: true, id: existing.id }
     }
 

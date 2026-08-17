@@ -135,3 +135,139 @@ semantics.
 - Courses whose silent slots are a *majority* of their rows are excluded as never-built,
   not damaged: `ara_lb_for_eng` (6,506 of 12,333) is the clearest, and Deborah has only
   just started it.
+
+---
+
+# APPLIED — the 319 free relinks, per Tom's authorisation of 2026-08-17
+
+**319 of 319 relinked. Zero failures. Zero spend. No text edited, so no trigger
+interaction at all.** Tool: `tools/deborah/relink-silent-slots.cjs`. Logs:
+`relink-2026-08-17-applied-spa_mx.json`, `relink-2026-08-17-applied-rest.json`
+(every row carries its before-image and a one-line rollback).
+
+| Course | Relinked slots | Rows |
+|---|---|---|
+| `spa_mx_for_eng` (proving batch) | **256** | 129 |
+| `eng_for_mar` | 14 | 9 |
+| `fra_ca_for_eng` | 11 | 9 |
+| `zho_for_eng` | 10 | 11 |
+| `eng_for_por` | 10 | 6 |
+| `por_for_eng` | 5 | 5 |
+| `ita_for_eng` | 2 | 2 |
+| `fra_for_eng` | 2 | 2 |
+| `por_br_for_eng` | 1 | 1 |
+| **TOTAL** | **319** | **174** |
+
+Every link: pointer was NULL first (never an overwrite), the clip's voice_id matched
+the course's configured voice for that role exactly, the S3 object was **HEAD-checked
+alive before the pointer moved**, and the row was re-read afterwards to confirm the
+pointer resolves to a live `s3_key`.
+
+## Proving batch verified through the production endpoint
+
+Six sampled clips fetched from the live learner endpoint
+(`ssi-learning-app.vercel.app/api/audio/<id>`):
+
+| Result | Detail |
+|---|---|
+| HTTP | **200 on all six** |
+| Bytes | 21,888 / 23,904 / 23,040 / 24,480 / 24,480 / 24,768 — **exactly matching the S3 HEAD sizes in the log** |
+| Content | `fffb…` MP3 frame sync; `ffprobe` → `format_name=mp3`, `duration=1.764` |
+
+Real audio, served live, byte-identical to what was verified before the write.
+
+## ⚠ Read this before counting the 319 as a learner win
+
+**It mostly isn't one, and I would rather say so than let the number flatter the work.**
+
+Of the 174 rows restored, by `phrase_role`:
+
+| | Rows |
+|---|---|
+| `build` / `use` — drilled by the bundle, learner-audible | **38** |
+| `component` — **never drilled by the bundle** | 131 |
+| LEGO rows — always learner-facing | 5 |
+
+**So roughly 43 of 174 rows are learner-reachable.** And the proving batch is the worst
+case: **all 129 `spa_mx_for_eng` rows are `component` rows**, so its headline "256 slots,
+84% free" is entirely data-integrity repair with **no audible change for any learner**.
+Correct to have done — a NULL pointer is a real defect, it corrupts every future census
+(it inflated my own), and component rows do feed component intros — but it is not 256
+restored learner slots and should not be reported as such.
+
+The learner-audible restorations are the 38 build/use rows and 5 LEGOs, in
+`eng_for_mar`, `zho_for_eng`, `fra_ca_for_eng`, `eng_for_por`, `por_for_eng`,
+`ita_for_eng`, `fra_for_eng` and `por_br_for_eng`. One of them is
+`eng_for_por` **S0028L01 "as soon as possible"** — Deborah's own item 7 — now live on
+all three roles.
+
+## A bug in my own verification, disclosed
+
+The first estate run reported **8 verify-failures**. They were false: my after-write read
+used `.eq('lego_id', …).maybeSingle()` **without `course_code`**, and `lego_id` is not
+unique across courses (every course has an `S0028L01`), so the read matched many rows and
+returned nothing. The *writes* were correctly scoped; only the check was wrong. I
+confirmed all five rows directly — every one is live on all three roles — and fixed the
+tool. **The final 319/319 includes them.** Worth stating plainly: a verification that is
+broken in the *lenient* direction would have reported success; this one broke loudly.
+
+---
+
+# THE RENDER BILL — costed two ways, and it is small
+
+**~2,386 renders, 88,883 characters, mean 37 characters per render.**
+
+| Method | Basis | Total |
+|---|---|---|
+| A — measured per-render | today's Sinhala job: 81 renders for $0.014 → $0.00017/render | **$0.41** |
+| B — per-character | Azure neural standard, $16/1M chars | **$1.42** |
+| B (upper bound) | Azure neural **HD**, $30/1M chars | **$2.67** |
+
+**Say it plainly: the entire render bill for all 2,386 silent slots is about $1.40, and
+under $3 on the worst assumption.** Method B is the one to quote — Azure prices per
+character, and the Sinhala job's texts were likely shorter than these. This is an
+afternoon's spend decision, not a programme.
+
+Per course (at $16/1M): `spa_for_eng` **$0.85** (1,067 slots — 60% of the whole bill),
+`zho_for_eng` $0.11, `ita_for_eng` $0.09, `kor_for_eng` $0.06, `por_br_for_eng` $0.07,
+`fra_ca_for_eng` $0.06, `por_for_eng` $0.04, `eng_for_mar` $0.03, `eng_for_por` $0.03,
+`ara_for_eng` $0.02, `spa_mx_for_eng` $0.02, `cym_s_for_eng` $0.01, and nine courses at
+under a cent each. **`eus_for_eng` — Deborah's course, the one she is re-doing by hand —
+is $0.006.**
+
+---
+
+# THE 108 VOICE-MISMATCH — held, and they are four different things
+
+Tom held these, and he was right to. But they are not one class, and treating them as one
+would get three of the four wrong.
+
+| Class | Slots | Courses | What it actually is |
+|---|---|---|---|
+| **(a) Same voice, different id PREFIX** | **21** | `eng_for_mar` 18, `fra_ca_for_eng` 2, `spa_mx_for_eng` 1 | **Not a mismatch at all.** `bedd6226` and `xai_bedd6226` are the same voice; my exact-string test rejected them on a prefix. **These are free.** |
+| (b) Course has **no configured voice** for the role | 11 | `cym_s_for_eng` 11 | `voice_config` has no `known` voice, so there is nothing to match against. A **config defect**, to fix before any repair. |
+| (c) Genuine different voice or accent | **72** | `fra_for_eng` 18, `spa_mx_for_eng` 13, `spa_for_eng` 9, `zho_for_eng` 7, `ita_for_eng` 7, `kor_for_eng` 4, `por_br_for_eng` 5, others | The real decision. Includes true region swaps — `spa_mx` wants `es-MX-Carlota`, has `es-ES-Elvira`; `por_br` wants `pt-BR`, has `pt-PT`. |
+| **(d) Cross-LANGUAGE candidate** | **4** | `zho_for_eng` 3, `kor_for_eng` 1 | **Must never be linked.** A Chinese and a Korean slot each have a candidate under `xai_ara` — an *Arabic* voice id. This is the cross-language mislink family, and it is a finding in its own right. |
+
+**One word from you converts class (a) — 21 slots — to free.** I did not apply them: they
+are exact-voice in substance but not in string, and on the day whose whole theme is
+"never silently change a learner's voice", stretching your authorisation from
+exact-match to prefix-equivalent is not mine to do.
+
+**Disclosure on the (c) evidence:** my candidate lookup filtered by role but **not by
+language**, so for very short texts the "available voices" lists cross languages — French
+`un` shows candidates on Spanish, Galician, Latvian, Italian, Catalan and Romanian voices,
+because `un` is a word in all of them. That does **not** affect any relinkable or applied
+count (those required an exact voice match, which implies the right language), but it does
+mean the class (c) lists are noisier than they look, and class (d) was found *because* of
+that noise rather than by design.
+
+---
+
+# Also applied: the queueAudioPass reason-append fix
+
+Per Tom's ruling 4. `services/shared/audio-pass-queue.cjs` now appends with ` || ` instead
+of overwriting, de-duplicates on retry, selects `reason` so it can see what it is merging,
+and logs the merged text. `requested_by` is left last-writer-wins with a comment saying
+why that is a choice and not a bug. Merge logic unit-tested 6/6 (null, empty, new, repeat,
+already-present-in-list, third addition); module loads clean.
