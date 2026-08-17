@@ -147,12 +147,34 @@ course_audio: veracity_pass=t, veracity_checker=phase8-regenerate-single, veraci
 
 `ALWAYS_SAMPLER` did what it says: one clip, checked.
 
+**Every wired path proved live, not assumed.** After finding the §5 bug by exercising rather than reading,
+I exercised all of them:
+
+| Route | Result | `veracity_checker` on the clip |
+|---|---|---|
+| `/regenerate-single` | success | `phase8-regenerate-single`, pass=`t` |
+| `/regenerate-phrase` | success | `phase8-regenerate-phrase`, pass=`t` |
+| `/regenerate-lego` | success | `phase8-regenerate-lego`, pass=`t` |
+| `/regenerate-presentation` | success | `phase8-regenerate-presentation`, pass=`t` |
+| `/generate-pods` (`fra_ca_for_eng`, sample 2) | 2 generated | `phase8-generate-pods`, 1 checked / 1 not sampled |
+| `/generate-pods` (`ara_sy_for_eng`, sample 2) | 2 generated | **1 checked, 1 RE-RENDERED** |
+
+That last row is the best single piece of evidence in this job. `ara_sy_for_eng` published a clip with
+`veracity_attempts = 3, veracity_pass = t`: the gate **failed the first two renders and the third passed**.
+That is the pod closure doing exactly what it was restructured to do — a real re-render through TTS and the
+provider fallback, not a re-master of the same bad bytes — and the defective renders were never published.
+The A-109 text-approval gate also still fired alongside it (`blocked_unapproved_target: 1`).
+
+The pod restructure was also exercised on its failure paths: on `fin_for_eng` the xAI→Azure fallback ran
+*inside* the closure and the error propagated with its `[STAGE=…]` tag intact, and `cym_s_for_eng` was
+correctly refused as a human-voice course.
+
 **Nothing shipped was mutated or deleted.** `dan_for_eng` went from 19,235 existing / 56 missing to 19,248
 existing / 43 missing — 13 new rows (3 shakedown + 10 acceptance), purely additive. The regenerate wrote a
 **new** S3 key and left the old object in place. `TAIL_REPAIR_MODE=flag` held throughout; the log shows
 tail suspects flagged with *"Clip shipped exactly as rendered"* and no mutation.
 
-**Spend: 19 short English Azure clips across all runs — a fraction of a cent.** Well inside the
+**Spend: ~26 short clips across every run — a fraction of a cent.** Well inside the
 verification allowance, and no bulk render was performed.
 
 ---
