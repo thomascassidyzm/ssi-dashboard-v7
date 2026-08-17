@@ -143,9 +143,31 @@ async function collisions(c, courseFilter) {
   `, params);
 }
 
-// Links on all three content tables. If the backfill is what it claims to be —
-// one fingerprint column — not one of these numbers may move.
-async function linkFingerprint(c) {
+// Links on all three content tables, FOR ONE COURSE. If the backfill is what it
+// claims to be — one fingerprint column — not one of these numbers may move.
+//
+// ── WHY THIS IS SCOPED TO A COURSE AND NOT THE ESTATE ───────────────────────
+//
+// It was estate-wide, and that made it unusable: it reports "AUDIO LINKS MOVED"
+// whenever ANY other agent writes a link ANYWHERE during the run, which on this
+// estate is most of the time. Observed for real on 2026-08-17: a fin_for_eng
+// backfill aborted on `course_practice_phrases`, and the audit log showed the
+// mover was a concurrent audio-linking campaign on spa_mx_for_eng / eng_for_mar /
+// eng_for_por / fra_ca_for_eng — 146 UPDATEs, 141 of them moving target1_audio_id,
+// and `text_changed = 0`. Nothing to do with the backfill, which had touched no
+// content row in any course at all.
+//
+// A check that cries wolf on other people's legitimate work does not add safety;
+// it trains the operator to pass --force. Scoping it loses NO real detection
+// power, because the backfill's write is
+// `UPDATE course_audio SET text = text WHERE id = ANY(<ids all from one course>)`
+// and the only triggers that fire on a course_audio UPDATE are
+// trg_course_audio_normalize (the intended one), course_audio_audit and
+// course_audio_touch_content_stamp. None of them writes an audio_id on any
+// content table, and audio_autolink — the one that does — is AFTER INSERT only.
+// So a link this backfill could move would have to be in the course it is
+// touching, which is exactly what is still checked.
+async function linkFingerprint(c, course) {
   const rows = await q(c, `
     SELECT 'course_seeds' AS t,
            count(known_audio_id)::bigint k, count(target1_audio_id)::bigint t1,
@@ -153,22 +175,22 @@ async function linkFingerprint(c) {
            coalesce(md5(string_agg(
              coalesce(known_audio_id::text,'') || coalesce(target1_audio_id::text,'') ||
              coalesce(target2_audio_id::text,''), '|' ORDER BY id)), '') AS digest
-      FROM course_seeds
+      FROM course_seeds WHERE course_code = $1
     UNION ALL
     SELECT 'course_legos',
            count(known_audio_id), count(target1_audio_id), count(target2_audio_id),
            coalesce(md5(string_agg(
              coalesce(known_audio_id::text,'') || coalesce(target1_audio_id::text,'') ||
              coalesce(target2_audio_id::text,'') || coalesce(presentation_audio_id,''), '|' ORDER BY id)), '')
-      FROM course_legos
+      FROM course_legos WHERE course_code = $1
     UNION ALL
     SELECT 'course_practice_phrases',
            count(known_audio_id), count(target1_audio_id), count(target2_audio_id),
            coalesce(md5(string_agg(
              coalesce(known_audio_id::text,'') || coalesce(target1_audio_id::text,'') ||
              coalesce(target2_audio_id::text,''), '|' ORDER BY id)), '')
-      FROM course_practice_phrases
-  `);
+      FROM course_practice_phrases WHERE course_code = $1
+  `, [course]);
   return Object.fromEntries(rows.map(r => [r.t, r.digest + ':' + r.k + '/' + r.t1 + '/' + r.t2]));
 }
 
@@ -190,7 +212,7 @@ async function backfillCourse(c, course, { batch, commit, excludeIds }) {
   result.skipped_colliding = excludeIds.filter(Boolean).length;
   if (!commit || !targets.length) return result;
 
-  const before = await linkFingerprint(c);
+  const before = await linkFingerprint(c, course);
 
   for (let i = 0; i < targets.length; i += batch) {
     const slice = targets.slice(i, i + batch);
@@ -218,7 +240,7 @@ async function backfillCourse(c, course, { batch, commit, excludeIds }) {
   process.stdout.write('\n');
 
   // The claim "no learner impact" is proved here, not asserted.
-  const after = await linkFingerprint(c);
+  const after = await linkFingerprint(c, course);
   const moved = Object.keys(before).filter(k => before[k] !== after[k]);
   result.links_moved = moved;
   if (moved.length) {
@@ -233,6 +255,14 @@ async function backfillCourse(c, course, { batch, commit, excludeIds }) {
   const commit = !!a.commit;
   const c = new Client({ connectionString: databaseUrl(), ssl: { rejectUnauthorized: false } });
   await c.connect();
+  // The link fingerprint md5-aggregates three whole content tables, and the
+  // stale predicate re-runs normalize_text() over 2.5M course_audio rows. Both
+  // blow the server's default statement_timeout — observed for real on the first
+  // --commit run (tur_for_eng, 2026-08-17): every batch committed and then the
+  // AFTER fingerprint was cancelled, leaving the run reported as FAILED with the
+  // writes already done. A read that proves safety must not be the thing that
+  // times out.
+  await c.query(`SET statement_timeout = '1800s'`);
   const report = { tool: 'backfill-text-normalized', generated_at: new Date().toISOString(), commit };
   try {
     console.log('\n  Measuring against the LIVE normalize_text() — not against a remembered number.\n');

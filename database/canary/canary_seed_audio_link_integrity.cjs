@@ -311,6 +311,17 @@ const dropsFor = async (c, id) =>
     const realDrops = await q(c, `SELECT reason FROM content_audio_link_drops WHERE row_id=$1`, [realSeed.id]);
     assert('LIVEPATHS a trailing-space edit on a real seed changes no link',
       realDrops.length === 0, `drops=${realDrops.length}, link=${realAfter[0].known_audio_id ? 'kept' : 'null'}`);
+    // ...and now actually undo it. The comment above used to claim the undo
+    // happened "inside the txn" and no statement did it — harmless on a dry run,
+    // but --commit COMMITS the txn, so the 2026-08-17 apply left a real trailing
+    // space on eng_for_sin seed 1 (found and reverted the same session). Restore
+    // the stored text explicitly rather than relying on the rollback.
+    await c.query(`UPDATE course_seeds SET known_text=$2 WHERE id=$1`,
+      [realSeed.id, realSeed.known_text]);
+    const realRestored = (await q(c, `SELECT known_text FROM course_seeds WHERE id=$1`,
+      [realSeed.id]))[0];
+    assert('LIVEPATHS the real seed is left exactly as it was found',
+      realRestored.known_text === realSeed.known_text);
 
     // ── Verdict ─────────────────────────────────────────────────────────────
     const failed = checks.filter(x => !x.ok);

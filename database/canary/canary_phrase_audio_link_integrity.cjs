@@ -98,17 +98,25 @@ async function mkPhrase(c, seedNumber, known, target, links = {}) {
   await c.query(`
     INSERT INTO course_seeds (course_code, seed_number, known_text, target_text)
     VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING`, [COURSE, seedNumber, known, target]);
+  // course_legos.id is a uuid with a gen_random_uuid() default — NOT the text key
+  // course_practice_phrases.id uses. Let the default assign it: the FK that makes
+  // this fixture row necessary is fk_course_practice_phrases_lego, which is on
+  // (course_code, seed_number, lego_index) and never looks at id.
   await c.query(`
-    INSERT INTO course_legos (id, course_code, seed_number, lego_index, type, is_new, known_text, target_text)
-    VALUES ($1, $2, $3, $4, 'M', true, $5, $6) ON CONFLICT DO NOTHING`,
-    [`${COURSE}:S${String(seedNumber).padStart(4, '0')}L01`, COURSE, seedNumber, legoIndex, known, target]);
+    INSERT INTO course_legos (course_code, seed_number, lego_index, type, is_new, known_text, target_text)
+    VALUES ($1, $2, $3, 'M', true, $4, $5) ON CONFLICT DO NOTHING`,
+    [COURSE, seedNumber, legoIndex, known, target]);
   const id = `${COURSE}:S${String(seedNumber).padStart(4, '0')}L01U${String(legoSeq).padStart(2, '0')}`;
   await c.query(`
     INSERT INTO course_practice_phrases
       (id, course_code, seed_number, lego_index, position, known_text, target_text,
+       word_count, lego_count,
        phrase_role, known_audio_id, target1_audio_id, target2_audio_id)
-    VALUES ($1,$2,$3,$4,$5,$6,$7,'use',$8,$9,$10)`,
+    VALUES ($1,$2,$3,$4,$5,$6,$7,$8,1,'use',$9,$10,$11)`,
     [id, COURSE, seedNumber, legoIndex, legoSeq, known, target,
+     // word_count and lego_count are NOT NULL with no default; the real writer
+     // (seed-translate.cjs) carries them across from target_phrases.
+     target.trim().split(/\s+/).length,
      links.known || null, links.t1 || null, links.t2 || null]);
   return id;
 }
@@ -348,6 +356,15 @@ const dropsFor = async (c, id) =>
     const realDrops = await dropsFor(c, realPhrase.id);
     assert('LIVEPATHS a trailing-space edit on a real phrase changes no link',
       realDrops.length === 0, `drops=${realDrops.length}`);
+    // Undo it. On --commit this transaction is COMMITTED, so without this the
+    // probe leaves a real trailing space on a live phrase — which is exactly what
+    // the 2026-08-17 apply did to eng_for_sin:S0001L01B01 before it was reverted.
+    await c.query(`UPDATE course_practice_phrases SET known_text=$2 WHERE id=$1`,
+      [realPhrase.id, realPhrase.known_text]);
+    const realRestored = (await q(c, `SELECT known_text FROM course_practice_phrases WHERE id=$1`,
+      [realPhrase.id]))[0];
+    assert('LIVEPATHS the real phrase is left exactly as it was found',
+      realRestored.known_text === realPhrase.known_text);
 
     // ── Verdict ─────────────────────────────────────────────────────────────
     const failed = checks.filter(x => !x.ok);

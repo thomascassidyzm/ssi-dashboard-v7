@@ -102,8 +102,14 @@ $dep$;
 -- (services/course-builder/routes/seed-translate.cjs). Left as uuid, this table
 -- could not record a single phrase drop — every phrase text edit would abort
 -- with a type error, which is worse than the bug being fixed: it would BLOCK
--- legitimate edits rather than merely mis-link them. course_legos.id is text too,
--- so this is also what a future lego migration needs.
+-- legitimate edits rather than merely mis-link them.
+--
+-- (Correction, verified against information_schema on 2026-08-17: course_legos.id
+-- is a `uuid` with a gen_random_uuid() default, NOT a text key — an earlier draft
+-- of this comment said otherwise. It does not change anything here: text accepts a
+-- uuid by assignment cast, so a future lego migration still needs row_id to be
+-- text, and this widening still serves it. Only the reason is different — text is
+-- required by course_practice_phrases alone, and merely tolerated by the other two.)
 --
 -- Widening uuid -> text is lossless and index-preserving-by-rebuild. The seed
 -- trigger's own INSERT is unchanged and still correct: a cast from any type TO a
