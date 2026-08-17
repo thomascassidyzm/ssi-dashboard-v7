@@ -613,6 +613,46 @@ const EOS_DECAY_MS = 250;
 const EOS_MAX_TRIM_FRAC = 0.40;
 const EOS_MAX_TRIM_MS = 2000;
 
+// ── The trailing-artefact rule (A-133 iteration 2, Tom-approved 2026-08-17) ──
+//
+// The detector above asks one question of a trailing event: "is it long enough
+// to be speech?" Noor's clicks carry 35-50ms and sit exactly on the 40ms line,
+// so on 2 of her 5 lines they read as SPEECH — end-of-speech moves out past
+// them, the chain then protects them, and pads a further 250ms beyond. Once a
+// trailing artefact is long enough to be mistaken for speech, it is protected,
+// and so is every artefact in front of it.
+//
+// So ask the question the detector is missing: DOES ANYTHING REAL PRECEDE IT?
+// Take the speech BODY — the last event carrying >= EOS_BODY_MS of energy. If
+// everything after the body is short AND the cluster starts >= EOS_MIN_CLEAR_MS
+// after the body ends, the whole trailing cluster is artefact, whatever the
+// individual event lengths say.
+//
+// THE CLUSTER FORM IS LOAD-BEARING, and I only know that because the pairwise
+// form failed. Testing each trailing event against its immediate PREDECESSOR
+// leaves Noor p1 untouched: her two artefacts are only 100ms apart, so they
+// protect each other. Measuring the cluster against the speech body fixes it.
+//
+// THE ONE THING THIS COULD GET WRONG, stated rather than smoothed over: a line
+// that genuinely ends in a short tag after a pause — "..., toch?", "..., hè?" —
+// has the same shape to this rule as an artefact cluster. That is why the tag
+// case is rendered fresh and ASR-checked in the validation batch, not asserted
+// safe. The numbers below are set from that batch: real tags measured 150-430ms
+// of energy, artefacts 35-50ms, and the 120ms line sits in the gap.
+const EOS_BODY_MS = 150;          // what counts as the main speech body
+const EOS_MAX_ARTEFACT_MS = 120;  // a trailing event longer than this is never dropped
+const EOS_MIN_CLEAR_MS = 200;     // clearance the whole cluster needs from the body
+// Companion rule, which Noor p3 needs on its own: NEVER PAD INTO A DETECTED
+// ARTEFACT. p3's 45dB click at 2711ms sits inside the 250ms pad measured from a
+// corrected end-of-speech at 2480ms, so a correct end-of-speech alone does not
+// save it — the pad has to stop short of the artefact onset too.
+//
+// The clamp CANNOT amputate, and that is arithmetic rather than luck: the rule
+// only fires when the cluster stands >= EOS_MIN_CLEAR_MS clear of end-of-speech,
+// so the retained decay is never less than 200 - 10 = 190ms. Measured over the
+// 55-clip sweep the tightest it ever went was 206ms.
+const EOS_ARTEFACT_GUARD_MS = 10;
+
 /** Decode to mono 16-bit PCM at EOS_SR. Streamed — no execSync buffer ceiling. */
 function decodePcmMono(inputPath) {
   return new Promise((resolve, reject) => {
@@ -679,6 +719,42 @@ function endOfSpeech(env) {
   return sp.length ? sp[sp.length - 1].end : null;
 }
 
+/**
+ * End of speech, WITH the trailing-artefact rule applied.
+ *
+ * Returns the plain end-of-speech unchanged unless a trailing artefact cluster
+ * is detected, in which case end-of-speech becomes the end of the speech body
+ * and `artefactStart` marks where the pad must stop. Never moves end-of-speech
+ * LATER, and never returns an eos the plain detector would not have reached.
+ *
+ * @param {Array} env - the 5ms envelope
+ * @returns {{eos: number|null, artefactStart: number|null, dropped: Array}}
+ */
+function endOfSpeechWithArtefacts(env) {
+  const evs = eosEvents(env);
+  const sp = evs.filter(e => e.kind === 'speech');
+  const plain = sp.length ? sp[sp.length - 1].end : null;
+  const none = { eos: plain, artefactStart: null, dropped: [] };
+  if (plain === null) return none;
+
+  // The speech body: the last event carrying real, sustained energy.
+  const bodies = evs.filter(e => e.aboveMs >= EOS_BODY_MS);
+  if (!bodies.length) return none;          // nothing substantial to measure against
+  const body = bodies[bodies.length - 1];
+
+  const after = evs.filter(e => e.start >= body.end);
+  if (!after.length) return none;           // the body IS the ending
+
+  // Everything after the body must be short, and the FIRST of them must stand
+  // clear of the body. Measured against the body, not against each other —
+  // that is what stops two adjacent artefacts protecting one another.
+  if (!after.every(e => e.aboveMs <= EOS_MAX_ARTEFACT_MS)) return none;
+  const clearMs = (after[0].start - body.end) / EOS_SR * 1000;
+  if (clearMs < EOS_MIN_CLEAR_MS) return none;
+
+  return { eos: body.end, artefactStart: after[0].start, dropped: after };
+}
+
 /** Write mono 16-bit PCM as a WAV file. */
 async function writeMonoWav(file, s, n) {
   const data = Buffer.alloc(n * 2);
@@ -722,10 +798,16 @@ async function trimToEndOfSpeech(inputPath, outputPath) {
     // GUARD 1 — nothing in this clip reads as sustained speech. Could be a very
     // short take, a whisper, a decode we do not understand. We do not cut what
     // we cannot see.
-    const eos = endOfSpeech(env);
+    const { eos, artefactStart, dropped } = endOfSpeechWithArtefacts(env);
     if (eos === null) return untouched('no sustained speech event detected — refused, kept untrimmed', { durationMs });
 
-    const want = Math.min(n, eos + Math.round(EOS_SR * EOS_DECAY_MS / 1000));
+    let want = Math.min(n, eos + Math.round(EOS_SR * EOS_DECAY_MS / 1000));
+    // NEVER PAD INTO A DETECTED ARTEFACT. The pad stops 10ms short of the
+    // artefact onset even when that is tighter than the 250ms it wants.
+    if (artefactStart !== null) {
+      want = Math.min(want, artefactStart - Math.round(EOS_SR * EOS_ARTEFACT_GUARD_MS / 1000));
+    }
+    want = Math.max(want, eos);
     const removed = n - want;
     const eosMs = Math.round(eos / EOS_SR * 1000);
     if (removed <= 0) return untouched(null, { durationMs, eosMs });   // already ends tight — no cut needed, not a refusal
@@ -744,9 +826,15 @@ async function trimToEndOfSpeech(inputPath, outputPath) {
     // Never end before the detected end of speech, whatever the arithmetic says.
     const end = Math.max(want, eos);
     // GUARD 4 — independent assertion on the finished plan: whatever we are
-    // about to drop must contain no speech event. By construction it cannot, so
-    // this firing means the detector disagrees with itself. Keep the take.
-    if (eosEvents(env).some(e => e.kind === 'speech' && e.end > end)) {
+    // about to drop must contain no speech event OTHER than the trailing
+    // artefacts the rule has just ruled on. Without that exemption this guard
+    // would veto the whole iteration, because dropping a 40ms burst the length
+    // rule miscalled "speech" IS the fix. Everything in front of the artefact
+    // cluster is still fully protected: an event that starts before
+    // `artefactStart` and ends past the cut still refuses, exactly as before.
+    const speechOutside = eosEvents(env).some(e =>
+      e.kind === 'speech' && e.end > end && (artefactStart === null || e.start < artefactStart));
+    if (speechOutside) {
       return untouched('planned cut would remove a speech event — refused, kept untrimmed', { durationMs, eosMs });
     }
 
@@ -754,6 +842,14 @@ async function trimToEndOfSpeech(inputPath, outputPath) {
     return {
       trimmed: true, path: outputPath, refused: null,
       removedMs: Math.round((n - end) / EOS_SR * 1000), durationMs, eosMs,
+      // What the trailing-artefact rule ruled on, so a caller can report the
+      // decision rather than infer it from the durations.
+      artefacts: dropped.map(e => ({
+        startMs: Math.round(e.start / EOS_SR * 1000),
+        aboveMs: e.aboveMs,
+        peakDb: +e.peakDb.toFixed(1),
+        calledSpeechByLength: e.kind === 'speech',
+      })),
     };
   } catch (error) {
     // FAIL OPEN. A trim we could not compute is a trim we do not do.
@@ -1216,7 +1312,16 @@ module.exports = {
   // open on every guard — read the block above trimToEndOfSpeech before reusing.
   trimToEndOfSpeech,
   endOfSpeech,
+  endOfSpeechWithArtefacts,
+  // Exported so a validation tool measures with the CHAIN'S detector rather
+  // than a second copy of it that can agree with itself while the chain differs.
+  eosEnvelope,
+  eosEvents,
   EOS_DECAY_MS,
+  EOS_BODY_MS,
+  EOS_MAX_ARTEFACT_MS,
+  EOS_MIN_CLEAR_MS,
+  EOS_ARTEFACT_GUARD_MS,
   checkSoxInstalled,
   getAudioDuration,
   checkMp3Format,
