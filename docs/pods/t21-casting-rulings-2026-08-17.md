@@ -24,6 +24,12 @@ This file is the running record. The next worker on the next language **appends 
 6. **Lock the pool FIRST, record the approval SECOND.** `tools/pod-approve-voices.cjs` fingerprints
    the live cast and self-invalidates when it moves; approving before the pool edit bakes in an
    approval against the wrong cast.
+8. **RENDER HOLD — A-132, 2026-08-17.** The end-click fix candidate **FAILED Tom's ear**: only the
+   original take is clean, and the compressor-removed render still clicks. **All bulk rendering of
+   locked T-21 languages is PAUSED** until the click-diagnosis job reports a render Tom has passed by
+   ear. Locking casts, label fixes and small sample/verification slices continue unaffected — it is
+   *bulk clip production* that stops. This supersedes the earlier reading that Azure-cast languages
+   were unaffected: the hold is on the render, not on a provider.
 7. **Every lock carries its confidence.** A lock is either **ear-verified** (Tom listened and ruled)
    or **unverified** (locked to avoid churn, pending a native-speaker or learner listen). Tom cannot
    personally referee all 41 languages, so `unverified` is a normal, first-class state — not a
@@ -102,16 +108,16 @@ slice of rows. Read the real voice from `course_audio`, never `listening_pods.sp
 | Finnish | `fin` | APPROVED | Harri (m, azure) + Selma (f, azure) | ear-verified | Approved as sampled, 2026-08-17. Single Azure pool pair, no production fork. |
 | French | `fra` | APPROVED — locked, **full render HELD** | Henri (m, azure) + Celeste (f, azure) | **needs one-word confirm** | Approved as sampled 2026-08-17, but `fra` carries a pool-vs-production fork and the ruling did not say which side. Default = the official pool. 284 existing clips make a wrong-cast render expensive, so only the verification slice renders until Tom confirms. |
 | French — Quebecois | `fra_ca` | APPROVED | Antoine (m, azure) + Sylvie (f, azure) | **unverified — pending a native/learner listen** | Locked 2026-08-17. Tom cannot judge Québécois authenticity by ear ("no idea"), so the pool cast stands rather than churning. It is a LOCK, not a deferral: it renders with everything else. Also the only complete pair available — production has one voice, Jean (azure, 34 clips), and no female at all. |
-| German | `deu` | PENDING his listen — **next up** | — | — | Labels pre-corrected before his listen: production pair is `41321eb41295` = Moritz (m) and `3a7889066fa2` = **Lena (f)**, which the doc shows as two males. Official pool Felix (m, xai) + Sonja (f, xai). |
-| German — Austrian | `deu_at` | PENDING his listen | — | — | Not yet listened. |
-| Greek | `ell` | PENDING his listen | — | — | Not yet listened. |
-| Hebrew | `heb` | PENDING his listen | — | — | Not yet listened. |
-| Hindi | `hin` | PENDING his listen | — | — | Not yet listened. |
-| Icelandic | `isl` | PENDING his listen | — | — | Not yet listened. |
-| Irish | `gle` | PENDING his listen | — | — | Not yet listened. |
-| Italian | `ita` | PENDING his listen | — | — | Not yet listened. |
-| Japanese | `jpn` | PENDING his listen | — | — | Not yet listened. |
-| Korean | `kor` | PENDING his listen | — | — | Not yet listened. |
+| German | `deu` | APPROVED — **pool lock BLOCKED** | Moritz `41321eb41295` (m) + Lena `3a7889066fa2` (f) | ear-verified | Production pair kept, 2026-08-17; official pool Felix/Sonja NOT picked. Lena was the mislabel he'd have been shown as male. **Cannot lock: `deu_at` shares pool key `deu` and wants the opposite side of the fork.** |
+| German — Austrian | `deu_at` | APPROVED as sampled — **pool lock BLOCKED** | Felix (m, xai) + Sonja (f, xai) | ear-verified | Approved as sampled 2026-08-17 (single pool pair, no fork). **Cannot lock: shares pool key `deu` with German, which wants the production pair instead.** |
+| Greek | `ell` | APPROVED | Nestoras (m, azure) + Athina (f, azure) | ear-verified | Approved as sampled 2026-08-17. Already index 0 — **no pool edit needed.** |
+| Hebrew | `heb` | APPROVED | Avri (m, azure) + Hila (f, azure) | ear-verified | Approved as sampled 2026-08-17. Already index 0 — **no pool edit needed.** |
+| Hindi | `hin` | APPROVED | Karan `89q2pnko` (m, xai) + Ara `ara` (f, xai) | ear-verified | Production pair kept, 2026-08-17; pool Vihaan/Priya NOT picked. `ara` is the VOICE id. **Pool edit applied.** |
+| Icelandic | `isl` | APPROVED | Gunnar (m, azure) + Gudrun (f, azure) | ear-verified | Approved as sampled 2026-08-17. Already index 0 — **no pool edit needed.** |
+| Irish | `gle` | APPROVED | Colm (m, azure) + Orla (f, azure) | ear-verified | Approved as sampled 2026-08-17. Already index 0 — **no pool edit needed.** |
+| Italian | `ita` | APPROVED | Leon (m, xai) + Giulia (f, xai) | ear-verified | **Official pool** kept 2026-08-17; production `x7avnu1k` + `eve` REJECTED. Already index 0 — **no pool edit needed.** |
+| Japanese | `jpn` | APPROVED | Naoki (m, azure) + Mayu (f, azure) | ear-verified | **Official pool** kept 2026-08-17; production `b1a7441b97a1` + `ara` REJECTED. Already index 0 — **no pool edit needed.** |
+| Korean | `kor` | APPROVED | Jun-seo `bf9fe5b5f981` (m, xai, production) + YuJin (f, azure, pool) | ear-verified | Cross-block pick 2026-08-17, like Chinese. Pool male Hyun-woo NOT picked; production `23be42535a45` (**Ji-yeon, female**) NOT picked. **Pool edit applied.** |
 | Latvian | `lav` | PENDING his listen | — | — | Not yet listened. |
 | Lithuanian | `lit` | PENDING his listen | — | — | Not yet listened. |
 | Nepali | `nep` | PENDING his listen | — | — | Not yet listened. |
@@ -689,3 +695,76 @@ is exactly why that block prints raw ids and why its gender had to be looked up,
 This also settles the naming puzzle: `pod_voice_pools` is the curated **casting pool**;
 `pod-voices-xai.json` is the xAI **catalogue**. Different inventories, different memberships, and
 only the pools carry Azure entries. Neither is wrong.
+
+## 2026-08-17 — the German-to-Korean span, and the A-132 render hold
+
+### THE RENDER HOLD (A-132) — read before touching any render
+
+The end-click fix candidate **failed Tom's ear**. Only the original take is clean; the
+compressor-removed render **still clicks**. **All bulk rendering of locked T-21 languages is
+PAUSED** until the click-diagnosis job reports a render he has passed by ear.
+
+Locking casts, label fixes and small sample/verification slices continue. It is **bulk clip
+production** that stops.
+
+**This corrects an inference made earlier in this ledger.** The Armenian/Basque/Bulgarian/Estonian
+render measured clean tails at −91 dB and concluded Azure-cast languages were not exposed to the
+click. Tom's ear now says the click survives a render that measurement called clean, so **the
+measurement is not a sufficient release test and the hold is on the render, not on a provider.**
+The 435 clips already rendered stand; nothing further is produced.
+
+### The six screenshots, matched to languages
+
+Tom sent six screenshots of the exact voices to keep. Each is matched below **by clip count and pool
+membership against the doc**, not by recall. Every one resolves to exactly one language — **no id
+was ambiguous, so nothing here is a guess.**
+
+| # | What the screenshot showed | Matched to | How it was matched unambiguously |
+|---|---|---|---|
+| 1 | `41321eb41295` (m, 133 clips) + `3a7889066fa2` (130 clips) | **German `deu`** | Only language whose production pair has 133/130 clips |
+| 2 | `89q2pnko` (m, xai, 99) + `ara` (65) | **Hindi `hin`** | Only production pair with 99/65 clips |
+| 3 | Pool **Leon** (m, xai) + **Giulia** (f, xai) | **Italian `ita`** | Only pool pair named Leon/Giulia |
+| 4 | Pool **Naoki** (m, azure) + **Mayu** (f, azure) | **Japanese `jpn`** | Only pool pair named Naoki/Mayu |
+| 5 | `bf9fe5b5f981` (m, xai, 87 clips) | **Korean `kor`** | Only production voice with 87 clips |
+| 6 | **YuJin** (f, azure), shown above the In-production header | **Korean `kor`** | `kor` is the only language whose *pool* female is YuJin (azure) |
+
+**Screenshots 5 and 6 are the same language and together give Korean a complete pair** — Jun-seo
+(production male) + YuJin (pool female). A cross-block pick, exactly like Chinese. **No gender is
+left open by these six screenshots.**
+
+Rejected alongside them, explicitly: German's pool Felix/Sonja; Hindi's pool Vihaan/Priya; Italian's
+production `x7avnu1k` + `eve`; Japanese's production `b1a7441b97a1` + `ara`; Korean's pool male
+Hyun-woo and production `23be42535a45` (**Ji-yeon — the female mislabel found earlier**).
+
+### Approved as sampled, not contradicted by any screenshot
+
+The span runs German → Korean inclusive. Five languages carry no screenshot and no fork, so their
+single pool pair stands:
+
+| Language | Code | Male | Female | Azure gender check |
+|---|---|---|---|---|
+| German — Austrian | `deu_at` | Felix (xai) | Sonja (xai) | pool key structural |
+| Greek | `ell` | Nestoras (azure) | Athina (azure) | Male / Female ✓ |
+| Hebrew | `heb` | Avri (azure) | Hila (azure) | Male / Female ✓ |
+| Icelandic | `isl` | Gunnar (azure) | Gudrun (azure) | Male / Female ✓ |
+| Irish | `gle` | Colm (azure) | Orla (azure) | Male / Female ✓ |
+
+Every Azure gender re-verified against Azure's own live voice list before locking, per the standing
+ordering. Naoki/Mayu and YuJin were checked the same way: **Male / Female / Female ✓**.
+
+### The German ↔ Austrian collision — the predicted one, now real
+
+`deu_at_for_eng` carries `target_lang = 'deu'` and **`deu_at` has no pool key of its own**, so both
+courses cast from the single `deu` pool. Tom has now ruled:
+
+- **German** = the **production** pair, Moritz + Lena
+- **Austrian German** = the **pool** pair, Felix + Sonja
+
+**These are opposite sides of one fork sharing one index-0 seat.** Locking German's choice into the
+`deu` pool would recast Austrian German onto Moritz + Lena, and vice versa. This is the third
+instance of the shared-pool-key blocker (after the Arabic family and French/Québécois) and it was
+predicted in this ledger before German was ruled.
+
+**Nothing was written to the `deu` pool.** Both rulings are recorded; neither is enforced. The fix is
+the structural one already costed for Tom — give regional variants their own `target_lang`, or
+persist the overrides — and it is his call.
