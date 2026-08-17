@@ -25,7 +25,7 @@ probe** — `set -a && . ./.env.psql && set +a; export PATH=$PATH:~/.local/pg17/
 timeout 20 psql "${DATABASE_URL}?connect_timeout=8" -P pager=off -tAc "select 1"`. If it fails,
 do NOT burn time retrying: work entirely from the evidence file and say in your report that you
 worked from the snapshot. If it succeeds, use it to spot-check the snapshot and to fill the gaps
-listed in the file's §7 — especially the uncounted `විමසන්න` frequency.
+listed in the file's §8 — especially the uncounted `විමසන්න` frequency.
 
 Course orientation: `eng_for_sin` teaches English TO Sinhala speakers. **Sinhala is the known /
 prompt side; English is what the learner produces.** The ambiguity is in the prompt.
@@ -70,7 +70,7 @@ context — and that the ablative is an epiphenomenon riding along with it.
 that this is **not** a preferred route: the distinct-word and expanded-context options have
 **equal standing**, and he has endorsed the ablative-context route in principle for this case. So
 you are no longer arguing that `විමසන්න` *should* have won. Test it as an **option** only: count
-its attestations across seeds, legos and phrases (§7 admits I never did), and say whether it
+its attestations across seeds, legos and phrases (§8 admits I never did), and say whether it
 would be *cleaner* in the 380/381/382 frames — it needs no addressee on either side and no
 English change beyond the verb. If it is clearly cleaner, say so; the route is endorsed, not
 mandated. Note also that seed 99 means the course **already** uses a distinct word for one ASK

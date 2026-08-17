@@ -362,7 +362,72 @@ Not yet costed: how many practice phrases course-wide tile through these legos. 
 
 ---
 
-## 7. What is NOT established here
+## 7. Trigger fates — established from source, no DB needed
+
+From `database/migrations/20260806_audio_link_integrity.sql`, read directly. This **corrects the
+brief I wrote** and the standing note I was working from.
+
+| table | on a text edit |
+|---|---|
+| `course_legos` | **re-resolves** `known_audio_id`, `target1/2_audio_id`, **and `presentation_audio_id`** — all via `audio_id_for_text()`. It does **not** null presentation. |
+| `course_practice_phrases` | **re-resolves** the three audio ids; `presentation_audio_id` is *deliberately* left untouched, per the migration's own comment — so it goes **stale**, not silent. |
+| `course_seeds` | **nothing.** No audio trigger exists. Links keep pointing at the clip for the **old sentence**, with no NULL for any sweep to find. |
+
+The lego presentation body:
+
+```sql
+IF NEW.known_text IS DISTINCT FROM OLD.known_text
+   OR NEW.target_text IS DISTINCT FROM OLD.target_text THEN
+  NEW.presentation_audio_id :=
+    audio_id_for_text(NEW.course_code, NEW.target_text, 'presentation')::text;
+END IF;
+```
+
+"It nulls presentation" was true **before 2026-08-06** and is the reading I carried in. The
+outcome is *usually* still NULL, because `audio_id_for_text` returns NULL when nothing matches —
+which is exactly why the stale belief survived. The trap is the case where something **does**
+match.
+
+### The headline hazard, provable from source
+
+```sql
+CREATE OR REPLACE FUNCTION public.audio_id_for_text(p_course text, p_text text, p_role text)
+RETURNS uuid LANGUAGE sql STABLE AS $function$
+  SELECT a.id FROM course_audio a
+   WHERE a.course_code = p_course
+     AND a.role = p_role
+     AND a.s3_key IS NOT NULL
+     AND a.text_normalized = normalize_text(p_text)
+   ORDER BY (a.origin = 'human') DESC, a.created_at DESC, a.id::text DESC
+   LIMIT 1;
+$function$;
+```
+
+It constrains `course_code`, `role`, `s3_key` and `text_normalized`. **It does not constrain
+`voice_id` or `language`.** So every re-resolve this repair triggers — on the legos, and on the
+practice phrases of seeds 380/381/382/415/465 — can silently land the row on a **different
+voice**, with no error anywhere. The `(origin = 'human') DESC` ordering means it will actively
+*prefer* a human take, in whatever voice that human happened to be.
+
+That is the make-before-break hazard for this repair, and it is structural: it does not depend on
+what any particular row's audio currently is.
+
+A staged migration (`database/migrations/20260817_seed_audio_link_integrity.sql`, in the
+`edit-impact` worktree) gives `course_seeds` a same-voice-or-null rule with a drop log. It is
+canary-tested 26/26 green and **deliberately not applied** — held because a fleet was mid-edit on
+`eng_for_sin` when it was written. The same "is anyone else live on this course" check applies
+before applying it, and applying it *before* this repair would make the three seed edits safe
+rather than silent.
+
+Also confirmed from source: the **compressor-free render chain** (`667a6e09`) is the current
+default — `masterAudio()` calls `normalizeAudioClean()` unconditionally, so nothing needs setting
+to get it. And bumping `courses.audio_stamp` after a relink is established convention, so the
+answer to "would it need bumping" is **yes, if anything relinks** — though `eng_for_sin`'s current
+stamp value is a live fact I do not have.
+
+---
+
+## 8. What is NOT established here
 
 Reported as gaps rather than papered over:
 
