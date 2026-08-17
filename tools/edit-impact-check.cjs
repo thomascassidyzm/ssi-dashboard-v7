@@ -1061,6 +1061,14 @@ async function main() {
         const spec = p.table || (p.id ? 'course_practice_phrases' : p.lego_index != null ? 'course_legos' : 'course_seeds');
         const e = { table: spec, seed_number: p.seed ?? p.seed_number, lego_index: p.lego_index, id: p.id, known: p.known ?? p.known_text, target: p.target ?? p.target_text };
         const r = await resolveRow(c, courseCode, e);
+        // A phrase is addressed by id alone, so a plan entry legitimately carries
+        // no seed — and without this backfill every batched phrase edit ran with
+        // seed_number undefined. That is not cosmetic: the taught-late/used-early
+        // check and the tiling blast radius are both anchored on the edited seed,
+        // and the same-text-elsewhere self-exclusion is keyed on it. The single
+        // --phrase path already did this; the --plan path is the one real work
+        // goes through, and it did not.
+        if (e.seed_number == null && r.row.seed_number != null) e.seed_number = r.row.seed_number;
         edits.push({ ...e, ...r });
       }
     } else {
