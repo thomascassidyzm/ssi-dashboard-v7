@@ -152,7 +152,8 @@
       "rerecord_wanted": null,
       "original_lego_id": "S0181L03",
       "archived_lego_id": "ARCHIVED_ORPHAN_2026-08-17_S0181L03",
-      "s3_object_deleted": false
+      "s3_object_deleted": false,
+      "s3_head_check_at_apply": "EXISTS, byte count confirmed"
     },
     {
       "id": "c4937825-2c14-4842-9188-7154c49579b3",
@@ -283,7 +284,8 @@
       "rerecord_wanted": null,
       "original_lego_id": "S0181L04",
       "archived_lego_id": "ARCHIVED_ORPHAN_2026-08-17_S0181L04",
-      "s3_object_deleted": false
+      "s3_object_deleted": false,
+      "s3_head_check_at_apply": "EXISTS, byte count confirmed"
     },
     {
       "id": "7d70e86c-ad79-43b4-b24b-42e1b47d9caf",
@@ -444,7 +446,8 @@
       "rerecord_wanted": null,
       "original_lego_id": "S0197L03",
       "archived_lego_id": "ARCHIVED_ORPHAN_2026-08-17_S0197L03",
-      "s3_object_deleted": false
+      "s3_object_deleted": false,
+      "s3_head_check_at_apply": "EXISTS, byte count confirmed"
     },
     {
       "id": "9a179777-4fa9-4d4b-bbb6-8e01a46e0c6c",
@@ -615,7 +618,8 @@
       "rerecord_wanted": null,
       "original_lego_id": "S0198L03",
       "archived_lego_id": "ARCHIVED_ORPHAN_2026-08-17_S0198L03",
-      "s3_object_deleted": false
+      "s3_object_deleted": false,
+      "s3_head_check_at_apply": "EXISTS, byte count confirmed"
     },
     {
       "id": "1b7796d6-ed4a-4913-b421-9bc6860b4f00",
@@ -776,7 +780,8 @@
       "rerecord_wanted": null,
       "original_lego_id": "S0202L03",
       "archived_lego_id": "ARCHIVED_ORPHAN_2026-08-17_S0202L03",
-      "s3_object_deleted": false
+      "s3_object_deleted": false,
+      "s3_head_check_at_apply": "EXISTS, byte count confirmed"
     },
     {
       "id": "3eade834-d625-4ba7-8392-0abf5936c35c",
@@ -912,7 +917,8 @@
       "rerecord_wanted": null,
       "original_lego_id": "S0204L02",
       "archived_lego_id": "ARCHIVED_ORPHAN_2026-08-17_S0204L02",
-      "s3_object_deleted": false
+      "s3_object_deleted": false,
+      "s3_head_check_at_apply": "EXISTS, byte count confirmed"
     }
   ],
   "reversal_sql": [
@@ -930,5 +936,28 @@
     "UPDATE course_audio SET lego_id = 'ARCHIVED_ORPHAN_2026-08-17_S0198L03' WHERE id = '9a179777-4fa9-4d4b-bbb6-8e01a46e0c6c';",
     "UPDATE course_audio SET lego_id = 'ARCHIVED_ORPHAN_2026-08-17_S0202L03' WHERE id = '1b7796d6-ed4a-4913-b421-9bc6860b4f00';",
     "UPDATE course_audio SET lego_id = 'ARCHIVED_ORPHAN_2026-08-17_S0204L02' WHERE id = '3eade834-d625-4ba7-8392-0abf5936c35c';"
-  ]
+  ],
+  "post_apply_verification": {
+    "applied_at": "2026-08-17",
+    "db_update_result": "6/6 rows updated (rowCount=1 each, matched on id AND prior lego_id to avoid double-apply)",
+    "s3_head_check": {
+      "mastered/04E2C7C1-B9C6-4649-BCFE-ED23E76DC18F.mp3": "EXISTS 90432 bytes",
+      "mastered/C3178B51-593C-489D-960F-406FF0397042.mp3": "EXISTS 87552 bytes",
+      "mastered/0CDD6A71-7F7E-483A-8DB7-BC01AF7C9CBA.mp3": "EXISTS 91296 bytes",
+      "mastered/55477201-B035-4445-BB4B-D3C8DECA364A.mp3": "EXISTS 99648 bytes",
+      "mastered/A1A79699-D44A-40F0-8DF4-2832085AB218.mp3": "EXISTS 97056 bytes",
+      "mastered/8575875C-020F-49E0-BBA9-920E11D7B77F.mp3": "EXISTS 86112 bytes"
+    },
+    "columns_confirmed_unchanged": [
+      "role",
+      "text",
+      "text_normalized",
+      "s3_key",
+      "duration_ms",
+      "voice_id",
+      "language",
+      "word_boundaries"
+    ],
+    "only_column_changed": "lego_id"
+  }
 }

@@ -127,3 +127,17 @@ auto-relinks a `lego_id` value back into a card.
 2. Committed doc + JSON to this branch **before** touching any row.
 3. Ran the 6 `UPDATE` statements above.
 4. Re-verified post-change (see below).
+
+## Post-apply verification
+
+- All 6 `UPDATE`s returned `rowCount: 1` (matched on `id AND` the prior `lego_id`, so a
+  re-run would no-op rather than double-apply).
+- Re-selected all 6 rows post-change: `role`, `text`, `text_normalized`, `s3_key`,
+  `duration_ms`, `voice_id`, `language`, `word_boundaries` all confirmed byte-identical to
+  the pre-change dump. Only `lego_id` changed.
+- `HeadObjectCommand` against S3 (`bucket ssi-audio-stage`) for all 6 `s3_key`s: **all 6
+  EXIST**, byte counts unchanged (90432 / 87552 / 91296 / 99648 / 97056 / 86112 bytes for
+  S0181L03 / S0181L04 / S0197L03 / S0198L03 / S0202L03 / S0204L02 respectively). No S3
+  object was deleted or modified.
+
+Full post-apply detail recorded in `orphan-archive.json` → `post_apply_verification`.
