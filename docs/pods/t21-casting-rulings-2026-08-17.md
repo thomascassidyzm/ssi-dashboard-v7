@@ -595,3 +595,97 @@ Spot-checked eight clips across the four languages: all HTTP 200, all real audio
    **A-109 text-approval gate** (`targetTextRenderable`), which refuses to render unproofread target
    text. It is small here (1–4 sentences per course) but it is a real, independent blocker on any
    T-21 render, and a voice approval does not open it.
+
+## The label defect — RESOLVED: it was the GENERATOR, not the store (#804)
+
+Full finding: <https://watson-1.tail4968cb.ts.net/d/90603dde>. Read-and-diagnose only; nothing
+written, no audio generated.
+
+**The store is correct. Every store is correct. The generator printed "male" without asking any of
+them.**
+
+The canonical voice-metadata store is the **`voices` table** — 302 rows, a `gender` column under
+`CHECK (gender IN ('f','m'))`, filled 2026-08-11 straight from xAI's own API
+(`metadata_source = 'xai:GET /v1/tts/voices/{id}'`). Queried on both spellings, it records
+`ara`, `eve`, Noor, Lena, Ji-yeon and Aleksandra all as **`f`**. Three further stores agree
+(`pod-voices-xai.json`, `pod_voice_pools`, and `listening_pods.speakers`, which literally stores
+Lena as `{name:"Lena", gender:"f"}`). **No store anywhere records these voices as male.**
+
+Four facts pin it to the generator rather than any store:
+
+1. **`course_audio` has no gender column.** The production block is derived from `course_audio`, so
+   the generator had *no* gender to carry through and had to look one up. It did not.
+2. **The official-pool block on the same page is 100% correct** — because there gender is the pool's
+   `f`/`m` *key*, i.e. structural. Where gender was structural the page is right; where it needed a
+   lookup it is uniformly "male". **That is a defaulting signature.**
+3. **41 of 41 with no exceptions**, including a voice whose friendly name the generator resolved
+   from a record that files her under `f`. A store defect would be patchy; this is categorical.
+4. The clip renderer `tools/pod-cast-sample-render.cjs` is **not** the culprit and needs no change.
+
+### EXPLICIT GAP — the generator is unrecoverable, so no code fix was possible
+
+Established by search, not assumed. The page was published from a markdown file committed as
+`2cd3a093` on branch `docs/pods-end-to-end-2026-08-14`; **that commit contains the markdown and
+nothing else** (one file, 1,009 insertions). The generator and its brief were never committed,
+`git log --all` finds no casting-page builder, and the 41-language brief and render log are gone.
+There is no deleted file to recover and no live code path repeating the defect
+(the one candidate ternary in `services/voice-engine/pods-cast.cjs:561` is unreachable for unknown
+genders). **No replacement was invented and no hunt beyond these repos was made.**
+
+**Requirement for any future build of this page:** resolve gender from the `voices` table (matching
+bare *and* `xai_`-prefixed spellings), fall back to `pod_voice_pools` / `pod-voices-xai.json`, and
+**render unknown as unknown, never as male** — Azure voices in `voices` currently carry a NULL
+gender, which is exactly the input that produced this defect.
+
+### The full mislabel list — 20 of 41 rows wrong, across SEVEN voices
+
+Tom caught four by ear. **Three more were found by this pass: Ji-yeon (Korean), Aleksandra (Polish)
+and Alba (Catalan).**
+
+| Voice id | Name | Doc said | Truth | Languages affected on the page |
+|---|---|---|---|---|
+| `ara` / `xai_ara` | Ara | male | **female** | ara, zho, dan, fra, hin, jpn, por_br, swe, tha, tur (10) |
+| `eve` / `xai_eve` | Eve | male | **female** | ara_eg, ita, por, spa, spa_mx (5) |
+| `247783ebdd51` | Noor | male | **female** | nld |
+| `3a7889066fa2` | Lena | male | **female** | deu |
+| `23be42535a45` | **Ji-yeon** | male | **female** | kor |
+| `1b12d5daee6b` | **Aleksandra** | male | **female** | pol |
+| `ca-ES-AlbaNeural` | **Alba** | male | **female** | cat |
+
+The other 21 rows (19 distinct voices) are correctly male. **Corrected, the page reads 21 male / 20
+female** — the near-clean pair-per-language you would expect, which is itself a check on the result.
+`sal` does not appear in the production block at all, so its known neutrality is not in play.
+
+### Blast radius is wider than the page shows
+
+The page lists only the top two pod voices per language. Estate-wide, counting both spellings:
+
+| Voice | Courses | Pod clips | All clips |
+|---|---|---|---|
+| `ara` (f) | 35 | 2,228 | 70,680 |
+| `eve` (f) | 37 | 1,742 | 162,906 |
+| `rex` (m) | 20 | 461 | 1,283 |
+| Noor (f) | 1 | 182 | 341 |
+| Lena (f) | 2 | 168 | 361 |
+| Ji-yeon (f) | 1 | 165 | 307 |
+| Aleksandra (f) | 1 | 144 | 284 |
+| Alba (f) | 2 | 78 | 5,692 |
+
+**Two female multilingual voices carry pod work in 35 and 37 courses.** Any casting decision taken
+from the page's male labels reasons about the wrong half of the estate.
+
+### The second inventory, identified
+
+**Official pool = the `pod_voice_pools` key in `app_config`** — 46 languages, `{f:[...], m:[...]}`,
+gender is the *key* not a field, so that block is correct by construction and has friendly names to
+print. **Verified, not assumed: all 82 official-pool rows checked, 0 gender mismatches, 0 provider
+mismatches**, corroborated independently by the 2026-08-11 xAI metadata pass (`pool_mismatch: 0`).
+The four rows with no own pool entry (`ara_eg` ×2, `deu_at` ×2) correctly inherit the parent
+language's pool — which is the same shared-key behaviour as the lock blocker above.
+
+**In production now = an aggregate over `course_audio`**, which stores no name and no gender. That
+is exactly why that block prints raw ids and why its gender had to be looked up, and was not.
+
+This also settles the naming puzzle: `pod_voice_pools` is the curated **casting pool**;
+`pod-voices-xai.json` is the xAI **catalogue**. Different inventories, different memberships, and
+only the pools carry Azure entries. Neither is wrong.
