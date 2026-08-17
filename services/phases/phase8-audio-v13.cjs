@@ -1200,7 +1200,18 @@ async function masterAudio(audioBuffer, ttsText, opts = {}) {
 
     // Normalize to the house -16 LUFS (broadcast standard) unless a caller asked
     // for another target — see opts.targetLufs above.
-    await audioProcessor.normalizeAudio(rawPath, masteredPath, targetLufs)
+    //
+    // COMPRESSOR-FREE since 2026-08-17 (Tom's ruling, A-131/A-132). The old
+    // normalizeAudio() chain opened with PRE_COMPRESS (8:1 below -24dB) plus a
+    // make-up gain, which lifts anything sitting in a clip's tail by roughly
+    // 12dB. A blind listening test that day proved the nld pod-0 xAI voice
+    // (xai_247783ebdd51) renders a click in the RAW provider bytes, with none of
+    // our processing on it — so the compressor was not the source of the click,
+    // it was the amplifier that made it audible. Same defect Tom heard from the
+    // other side as "that hissy mastering stuff" (2026-07-29), which is why
+    // normalizeAudioClean already existed. Pure subtraction: one stage removed,
+    // nothing added. Measured cost: output lands 0.8-1.7 LUFS quieter.
+    await audioProcessor.normalizeAudioClean(rawPath, masteredPath, targetLufs)
 
     // Tail-defect FLAG — read-only, never a repair (Tom's ruling 2026-08-05).
     //
