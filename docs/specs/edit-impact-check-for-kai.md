@@ -16,11 +16,25 @@ That's the shape of what happened on the Sinhala repairs today. The worker doing
 
 ---
 
-## What I built
+## Who runs it — your ruling, folded in
 
-A check you can run **before** an edit, that tells you everything it will touch. It only reads — it can't write, and it never makes audio.
+You said the check should go back to whoever proposed the change, not to a separate watcher. That's now the shape of it, and it changed the tool rather than just where it sits.
 
-For any edit, to any seed, lego or phrase, in any course, it tells you:
+The loop is: an agent has a change ready → it runs the check on itself before applying → it reads the answer → **the answer can change or cancel what it was about to do.**
+
+Which means the report can't just be *correct*, it has to be **decidable**. So every report now opens with one of three answers:
+
+- **Proceed** — nothing beyond the row you're editing. Go ahead.
+- **Proceed, with repairs** — safe to apply, but it isn't finished when the text lands. Here is the numbered list of what else you must do.
+- **Reconsider** — this edit damages other people's finished work. Revise it, narrow it, or decide to accept the cost on purpose.
+
+"Reconsider" is deliberately rare and specific: phrases breaking elsewhere in the course, a lego's own phrases no longer containing it, a seed needing rebuilding, a silent voice swap, or the edit using a word the course hasn't taught yet at that point. Everything else is a repair, not a rethink.
+
+It's advice, never a refusal. The agent still decides — it's the only one who knows *why* the edit was wanted in the first place.
+
+## What it tells you
+
+It only reads — it can't write, and it never makes audio. For any edit, to any seed, lego or phrase, in any course:
 
 - what happens to every audio clip attached — will it go silent, will it quietly swap to another voice, or will it be left pointing at the old recording
 - when a link is going stale, **which clip it should point at instead**, so the warning is also the fix
@@ -44,9 +58,9 @@ Anything that changes how edits get written. No new database rules, nothing that
 There are two pieces worth adding, and I'd do both:
 
 1. **Give seeds the same audio rule legos and phrases already have**, so a seed edit stops failing silently. Half a day. It will surface a backlog of missing audio that's currently hiding — that's the point, but it won't look tidy on day one.
-2. **Show this report automatically when someone saves an edit**, as information only — never blocking anyone.
+2. **Hand this answer straight back to whoever submits an edit** — through the dashboard or the API, the same loop-back you described, so it isn't only workers running a command who get it.
 
-There's a third option I'd leave alone: making it *refuse* an edit that looks dangerous. Blocking gates get switched off in a hurry when something's urgent, and then stay off.
+There's a third option I'd leave alone: making it *refuse* an edit that looks dangerous. Your ruling is the reason as much as the practicality is — looping the proposer back in works because they still hold the decision, and they're the only one who knows why the edit was wanted. A gate takes that away. It also gets switched off in a hurry when something's urgent, and then stays off.
 
 **My recommendation: yes to both. Fix the silent one, show the report, don't block anyone.**
 
