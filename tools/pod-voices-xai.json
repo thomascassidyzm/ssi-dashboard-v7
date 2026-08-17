@@ -23,7 +23,9 @@
     {
       "voice_id": "sal",
       "name": "Sal",
-      "gender": "m"
+      "gender": null,
+      "gender_reliable": false,
+      "note": "NOT RELIABLY GENDERED. xAI's own API states 'm' and the voices table records that provider word, but the estate cast metadata calls sal both f and m, and the T-21 acoustic measurement put it at 140.4 Hz median with an IQR of 111-186 Hz straddling the f/m boundary (docs/pods/t21-voice-gender-forensics-2026-08-17.md). This is a property of the voice, not a label defect. sal must never fill a gendered pod seat: tools/pod-voice-coverage.cjs enforces that via UNRELIABLE_GENDER, which overrides voices.gender."
     }
   ],
   "zh-CN": [
@@ -321,6 +323,18 @@
       "voice_id": "244e27b39200",
       "name": "Ruben",
       "gender": "m"
+    },
+    {
+      "voice_id": "18245f0d",
+      "name": "Bas",
+      "gender": "m",
+      "note": "Cast male at pod_voice_pools nld.m[0]; xAI's API states 'm' and voices.gender agrees. The T-21 casting listen measured Bas male by the NARROWEST margin of anyone in the set (141.6 Hz median) — it is male, but it is the male label most likely to fail Tom's ear. Recorded, not changed."
+    },
+    {
+      "voice_id": "cdb1cec8",
+      "name": "Lieke",
+      "gender": "f",
+      "note": "Cast female at pod_voice_pools nld.f[0]; xAI's API states 'f' and voices.gender agrees."
     }
   ],
   "pl": [

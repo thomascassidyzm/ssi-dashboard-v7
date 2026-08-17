@@ -32,6 +32,10 @@
  * gender the provider states; the JSON catalogues are only the fallback for a
  * voice the provider has stated nothing about.
  *
+ * The one exception is a voice whose gender is not reliably readable AT ALL —
+ * `sal` (T-21, 2026-08-17). See UNRELIABLE_GENDER below: such a voice is refused
+ * both gendered slots, and that refusal outranks `voices.gender`.
+ *
  * This file used to carry the opposite: a hard-coded "es and it natives are
  * all-male" belief, written into two comments and silently true in the data.
  * The 2026-08-11 metadata reconciliation proved it wrong — `hqxr4yub` (Luca,
@@ -54,6 +58,30 @@ const AZURE = require(path.join(__dirname, 'pod-voices-azure.json'))  // { <loca
 // KNOWN pool, so it is excluded here to avoid the same voice playing a target
 // character AND an English narration line (cross-track collision).
 const MULTI = (XAI.multilingual || []).filter(v => v.voice_id !== 'leo')
+
+// -----------------------------------------------------------------------------
+// Voices with NO reliable gender (T-21, 2026-08-17).
+//
+// The estate rule is "read gender off the target voice", and it holds for every
+// voice but one. `sal` is the hole: xAI's API states 'm' and `voices.gender`
+// faithfully records that, but the cast metadata calls sal both f and m and the
+// acoustic measurement put it at 140.4 Hz median with an IQR (111-186 Hz) that
+// straddles the boundary. That is a property of the voice, not a mislabel to
+// correct — so the provider's word is left standing where it is recorded, and
+// the voice is instead refused a gendered seat here.
+//
+// Declared in the catalogue as `"gender_reliable": false` so the record and the
+// guard cannot drift apart, and read as a set of ids so the refusal survives a
+// caller that hand-builds a voice list instead of passing the catalogue's own.
+// This beats `voices.gender`: a provider-stated gender is exactly the evidence
+// being ruled insufficient, so it must not be able to re-open the seat.
+// -----------------------------------------------------------------------------
+const UNRELIABLE_GENDER = new Set(
+  Object.values(XAI)
+    .flat()
+    .filter(v => v && v.gender_reliable === false)
+    .map(v => v.voice_id)
+)
 
 // -----------------------------------------------------------------------------
 // Provider-verified gender — `voices.gender`, the provider's own word.
@@ -101,8 +129,11 @@ function verifiedGenders() {
   return _verified
 }
 
-// The provider's word if we have it, else the catalogue label we shipped with.
+// The provider's word if we have it, else the catalogue label we shipped with —
+// unless the voice is one whose gender the estate has ruled unreliable, in which
+// case it has no gender here and `splitByGender` drops it from both slots.
 function genderOf(v, genders) {
+  if (UNRELIABLE_GENDER.has(v.voice_id) || v.gender_reliable === false) return null
   const g = genders && genders.get(v.voice_id)
   return g || v.gender
 }
@@ -351,5 +382,5 @@ function resolveExplainerLanguage(targetLang) {
 module.exports = {
   resolveTargetPool, resolveKnownPool, resolveExplainerLanguage, targetKey,
   loadVerifiedGenders, setVerifiedGenders, verifiedGenders,
-  TARGET, KNOWN_POOL, MULTI, XAI_EXPLAINER_LANGS,
+  TARGET, KNOWN_POOL, MULTI, XAI_EXPLAINER_LANGS, UNRELIABLE_GENDER,
 }
