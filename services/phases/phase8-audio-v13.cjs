@@ -3134,6 +3134,10 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
 // POST INSERT - Insert audio record (after TTS or recording)
 // =============================================================================
 
+// VERACITY-EXEMPT: registers a course_audio row for bytes the CALLER already
+// put in S3 (human recordings, imports). Nothing is synthesised here, so
+// there is no render for the gate to check — and a human recording is not
+// the gate's business.
 app.post('/insert', async (req, res) => {
   try {
     const {
@@ -3215,6 +3219,8 @@ app.post('/insert', async (req, res) => {
 // (skips silent particle components — e.g. 才). Safe on a live course.
 // POST /prepare-presentations-scoped/:courseCode { seeds:[80], dryRun:true }
 // =========================================================================
+// VERACITY-EXEMPT: authors presentation TEXT for a seed scope. No TTS here;
+// the audio for these rows is rendered by /generate, which is gated.
 app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -3293,6 +3299,9 @@ app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
   }
 })
 
+// VERACITY-EXEMPT: this route rewrites presentation TEXT only and renders no
+// audio (its `regenerateAudio` body param is destructured and never read).
+// The re-render happens later through /generate, which is gated.
 app.post('/regenerate-presentations/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -5898,6 +5907,11 @@ async function spliceAudio(parentAudioBuffer, startMs, endMs, paddingMs = 20) {
  * 5. Upload splice to S3, create course_audio record
  * 6. Link audio ID to the component phrase
  */
+// VERACITY-EXEMPT, deliberately. This route synthesises nothing: it downloads
+// clips that already passed the gate and cuts them on their own word
+// boundaries, so the bytes it writes are a slice of verified audio. Whisper
+// on a one-word slice is noise, not evidence — CER against a single token is
+// dominated by decode variance. The parent's verdict is the slice's warrant.
 app.post('/splice-components/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
