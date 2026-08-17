@@ -211,4 +211,33 @@ Nothing below has been done.
 
 ---
 
+---
+
+## 9. Addendum — the independent sweep (#938) landed. §5 holds.
+
+A second worker ran an independent estate-wide liveness and batch-signature sweep. **It converges with §5 by a completely different route:** it found **no genuine whole-sentence cross-course swap anywhere in the estate after 2026-05-03**. My evidence for "closed" was the trigger; theirs is the absence of later instances. Two independent routes, same answer.
+
+**Three of its claims I checked and am correcting:**
+
+1. **The 20 target-side zho links are NOT cross-course swaps.** The sweep reported donors `zho_for_jpn`/`zho_for_hin`/`zho_for_tam` and folded these into the incident. They are the edit-lag class the sweep itself correctly identified elsewhere. Verified directly:
+
+   | seed | zho_for_eng (edited) | zho_for_jpn | zho_for_hin | zho_for_tam |
+   |---|---|---|---|---|
+   | 537 | **但是**我错了 | 但我错了。 | 但我错了。 | 但我错了。 |
+   | 517 | **但是**他们是一起离开的 | 但他们是一起离开的。 | 但他们一起离开了。 | 但他们一起离开了。 |
+
+   Mandarin target text is shared across the "Mandarin for X" family by design. `zho_for_eng` was edited `但`→`但是`; its siblings were not. The clip therefore matches the siblings because it is the *pre-edit* text, not because it came from them. **§3 stands: 20 minor same-sentence links, held separately from the 236.**
+
+2. **`fra_ca_for_eng` is not an unreported new incident.** The sweep flagged its ~558 target-side rows as its headline discovery, *"not mentioned anywhere in the existing docs I can see."* It is: the pilot documents it at §3b as an unfinished Québécois conversion, and another worker is already on it — today's commit `6c1fd676` reads *"the repair is a relink — 556 of 572 clips already exist, 16 need rendering."* No action needed from this thread.
+
+3. **Course count is 19, not 29.** My own derivation of the same 1,071 links returns exactly 19 distinct courses and 674 seed rows.
+
+**Where it agrees and adds value:**
+
+- **Blast radius is contained to `course_seeds`.** zho_for_eng legos (1,190 known links) and practice phrases (11,741) are **0 stale**. Confirms the damage never propagated.
+- Phrase links to the May-3 batch: **4 links across 3 clips** (I counted clips, the sweep counted links — same underlying rows). All four have phrase text that *matches* the clip exactly, so they are legitimate reuse, not mislinks. Unchanged conclusion: check per clip before retiring any of the 237.
+- **A real open gap it surfaced:** ~40 large post-May-3 render batches with the same *shape* (`role='known'`, `lego_id` NULL, `veracity_pass` NULL, `mastered/` keys) were **not content-verified** — the largest being `eng_for_tam` 2026-08-02 (611 rows) and `fra_ca_for_eng` 2026-07-29 (2,118 rows). Shape alone is not a defect and its spot-checks came back clean, but this is the honest residue of the liveness question and it maps onto §7 item 6.
+
+---
+
 *Read-only throughout. Comparator reproduced independently before any claim; audio verified from the live learner endpoint on 6 rows; punctuation ruling applied by type, not as one class.*
