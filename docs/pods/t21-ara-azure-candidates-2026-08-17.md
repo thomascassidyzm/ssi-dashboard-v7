@@ -1,10 +1,52 @@
 # T-21 — where your casting decisions stand
 
-You've ruled on fourteen languages so far. This page shows you what's locked, what's rendering, what
-needs one word from you, and — for Arabic MSA, which you rejected — eight fresh Azure voices for
-your ear.
+You've now ruled as far as Korean — twenty-four languages. This page shows what's locked, what needs
+one word from you, and — for Arabic MSA, which you rejected — eight fresh Azure voices for your ear.
 
-**What needs you, in one place, at the bottom.** Everything above it is just the state of the board.
+**Rendering is stopped.** You told me the click fix failed your ear, so no bulk clip production is
+happening on any locked language until the click job gives you a render you pass. Locking carries on.
+
+**What needs you is in one place, at the bottom.** Everything above it is the state of the board.
+
+---
+
+## Your six screenshots — matched, and here's the full list to check
+
+You asked me to match the voices in your pictures to their languages and to list everything I locked
+so you can spot a mis-match at a glance. **All six matched to exactly one language each** — by clip
+count and by pool name, both unique in every case. **Nothing here is a guess.**
+
+| Your screenshot | Language | Locked as | What I rejected alongside it |
+|---|---|---|---|
+| `41321eb41295` + `3a7889066fa2` (133 + 130 clips) | **German** | Moritz (m) + **Lena (f)** | pool Felix + Sonja |
+| `89q2pnko` + `ara` (99 + 65 clips) | **Hindi** | Karan (m) + **Ara (f)** | pool Vihaan + Priya |
+| Leon + Giulia (pool) | **Italian** | Leon (m) + Giulia (f) | production `x7avnu1k` + Eve |
+| Naoki + Mayu (pool) | **Japanese** | Naoki (m) + Mayu (f) | production `b1a7441b97a1` + Ara |
+| `bf9fe5b5f981` (87 clips) | **Korean** | Jun-seo (m) | pool male Hyun-woo |
+| YuJin (pool female) | **Korean** | YuJin (f) | production Ji-yeon |
+
+**Your last two pictures are the same language.** Jun-seo and YuJin together give Korean a complete
+pair — male from production, female from the pool, crossing the two blocks exactly like Chinese did.
+So no gender is left open, and I didn't have to guess one.
+
+Both mislabelled voices you'd have been shown as male — **Lena** in German and **Ji-yeon** in Korean
+— behaved exactly as the label bug predicted. You picked Lena and rejected Ji-yeon, both on your ear.
+
+### The rest of that stretch, approved as sampled
+
+Five languages between German and Korean had no screenshot and no competing set of voices, so their
+single pool pair stands:
+
+| Language | Locked as |
+|---|---|
+| German — Austrian | Felix (m) + Sonja (f) |
+| Greek | Nestoras (m) + Athina (f) |
+| Hebrew | Avri (m) + Hila (f) |
+| Icelandic | Gunnar (m) + Gudrun (f) |
+| Irish | Colm (m) + Orla (f) |
+
+Every one of those genders was re-checked against Azure's own records before locking, not taken from
+the page you were shown.
 
 ---
 
@@ -129,41 +171,53 @@ Alba as the female. If he's good, Catalan locks as Enric + Alba and the audio ne
 
 ## The board
 
-Every lock now records **how it was established** — your ear, or locked-unverified pending someone
+Every lock records **how it was established** — your ear, or locked-unverified pending someone
 else's. You can't personally referee 41 languages, and that field is what lets an unverified lock be
 revisited later without anyone having to remember.
 
 | Language | Cast | State |
 |---|---|---|
-| Armenian | Hayk + Anahit | **locked, approved, RENDERED ✓** |
-| Basque | Ander + Ainhoa | **locked, approved, RENDERED ✓** |
-| Bulgarian | Borislav + Kalina | **locked, approved, RENDERED ✓** |
-| Estonian | Kert + Anu | **locked, approved, RENDERED ✓** |
-| Chinese | Wei + Ara | locked — needs a recast first, see below |
-| Danish | Kasper + Ara | locked — needs a recast first |
-| Croatian | Srecko + Gabrijela | locked — needs a recast first |
-| Finnish | Harri + Selma | locked — but its cast is unresolved, see below |
-| French — Québécois | Antoine + Sylvie | locked, **unverified by ear** (your "no idea" on Québécois) |
-| Dutch | Bas + Lieke | locked, **render deliberately held** behind the click bug |
-| French | Henri + Celeste | locked, **full render held — needs one word from you** |
-| Egyptian Arabic | Rex + Eve | **blocked** — see the collision below |
-| Syrian Arabic | Laith + Amany | **blocked** — same collision |
-| Arabic MSA | — | rejected, candidates above |
+| Armenian | Hayk + Anahit | locked, approved, **rendered** |
+| Basque | Ander + Ainhoa | locked, approved, **rendered** |
+| Bulgarian | Borislav + Kalina | locked, approved, **rendered** |
+| Estonian | Kert + Anu | locked, approved, **rendered** |
+| Greek | Nestoras + Athina | **locked, approved** — render held |
+| Hebrew | Avri + Hila | **locked, approved** — render held |
+| Icelandic | Gunnar + Gudrun | **locked, approved** — render held |
+| Irish | Colm + Orla | **locked, approved** — render held |
+| German — Austrian | Felix + Sonja | **locked, approved** — but see the German clash |
+| Hindi | Karan + Ara | **locked** — needs a tidy-up pass first |
+| Korean | Jun-seo + YuJin | **locked** — needs a tidy-up pass first |
+| Italian | Leon + Giulia | **locked** — needs a tidy-up pass first |
+| Japanese | Naoki + Mayu | **locked** — needs a tidy-up pass first |
+| Chinese | Wei + Ara | **locked** — needs a tidy-up pass first |
+| Danish | Kasper + Ara | **locked** — needs a tidy-up pass first |
+| Croatian | Srecko + Gabrijela | **locked** — needs a tidy-up pass first |
+| German | Moritz + Lena | ruled, **can't be locked yet** — clash below |
+| Finnish | Harri + Selma | locked — its cast is unresolved, see below |
+| French — Québécois | Antoine + Sylvie | locked, **unverified by ear** (your "no idea") |
+| Dutch | Bas + Lieke | locked, render held; A-131 clash below |
+| French | Henri + Celeste | locked, **needs one word from you** |
+| Egyptian Arabic | Rex + Eve | ruled, **can't be locked yet** — clash below |
+| Syrian Arabic | Laith + Amany | ruled, **can't be locked yet** — clash below |
+| Arabic MSA | — | rejected; Azure candidates above |
 | Catalan | Enric + Alba? | needs your ear on Enric |
 | Everything else | — | waiting for your listen |
 
-**Four languages are done — locked, approved and rendered.** 435 clips for about 28 cents. Every
-single clip is on exactly the pair you picked, with no stray voices leaking in.
+**Four languages are fully rendered** — 435 clips, about 28 cents, every clip on exactly your pair.
+That was done before you ruled on the click, and it stands.
 
-**I checked for your click before releasing any of it.** I rendered a handful first and measured the
-end of every clip: they finish in true silence, with no hard cut. No click. That fits what we already
-knew — the click is an xAI-and-compressor problem, and these four are Azure. Nothing was repaired,
-trimmed or patched; that lane stays abolished.
+**Nothing else will render until you pass a click.** I've stopped bulk production everywhere. The
+locks, the label fixes and small check-slices carry on, so no time is being lost.
 
-**Your Egyptian pair is confirmed.** Rex measures male, Eve measures female — exactly "the male and
-the female" you described. The old page calling them both male was the labelling bug, not your ear.
+I should correct something I told you earlier: I measured those first clips' endings and reported
+them clean, and I said that meant Azure languages were safe from the click. **Your ear says
+otherwise, so that measurement isn't a good enough release test.** The hold now covers everything,
+not just xAI.
 
----
+**"Needs a tidy-up pass" means:** the language is cast on three to six voices when a pod should have
+exactly two. Italian and Japanese don't currently use your chosen voices *at all*. It's mechanical
+work to converge them onto your pair — no decision needed from you.
 
 ## Three things that need you
 
