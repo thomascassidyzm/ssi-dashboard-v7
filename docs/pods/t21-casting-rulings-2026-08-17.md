@@ -768,3 +768,45 @@ predicted in this ledger before German was ruled.
 **Nothing was written to the `deu` pool.** Both rulings are recorded; neither is enforced. The fix is
 the structural one already costed for Tom — give regional variants their own `target_lang`, or
 persist the overrides — and it is his call.
+
+### Stored casts across the new span — what is ready and what needs a recast
+
+`--show` per course, target track only. Pods are one voice per gender by design, so extra voices are
+leakage to converge.
+
+| Course | Stored target cast | Verdict |
+|---|---|---|
+| `ell_for_eng` | Nestoras + Athina, clean pair | matches the ruling — **approved** |
+| `heb_for_eng` | Avri + Hila, clean pair | matches — **approved** |
+| `isl_for_eng` | Gunnar + Gudrun, clean pair | matches — **approved** |
+| `gle_for_eng` | Colm + Orla, clean pair | matches — **approved** |
+| `deu_at_for_eng` | Felix + Sonja, clean pair | matches — **approved** (and see the note below) |
+| `ita_for_eng` | `ara`, `bcs7l2c3`, `eve`, `hqxr4yub`, `x7avnu1k` — **five voices** | Leon and Giulia are **not cast at all**. Needs a recast. |
+| `jpn_for_eng` | `ara`, `b1a7441b97a1`, `d0cb9ff07d95`, `eve`, `rex` — **five voices, all xAI** | Naoki and Mayu (Azure) are **not cast at all**. Needs a recast. |
+| `kor_for_eng` | six voices incl. `bf9fe5b5f981` ✓ | YuJin not cast; Ji-yeon `23be42535a45` still present. Needs a recast. |
+| `hin_for_eng` | five voices incl. `89q2pnko` ✓ and `ara` ✓ | plus `eve`, `rex`, `73xd5dum` leakage. Needs a recast. |
+| `deu_for_eng` | six voices incl. `41321eb41295` ✓ and `3a7889066fa2` ✓ | plus four others. Needs a recast — but see the collision. |
+
+**A useful accident worth recording:** `deu_at`'s stored cast is *already* exactly Felix + Sonja,
+because pod-sync cast it while the shared `deu` pool still had them at index 0. That is a second,
+independent reason not to touch the `deu` pool — doing so would stomp a cast that is currently
+correct for Austrian German, and self-invalidate its approval.
+
+### Approvals recorded this pass
+
+| Course | Casting fingerprint |
+|---|---|
+| `ell_for_eng` | `b1d682e046bb2181` |
+| `heb_for_eng` | `36dbfea98c6c6919` |
+| `isl_for_eng` | `2baa867f285f9a79` |
+| `gle_for_eng` | `ad0a37421ff873c2` |
+| `deu_at_for_eng` | `e1044baa79e2f1f9` |
+
+**Each approval's note carries the A-132 render hold in capitals**, so anyone running
+`pod-approve-voices.cjs --list` sees the brake next to the permission. The approval records the
+**cast**; it does **not** authorise a bulk render while the hold stands. That is the cheapest
+enforcement available — the gate's own text — given the hold is a human instruction and not a code
+gate.
+
+`deu`, `hin`, `ita`, `jpn`, `kor` are **not approved**: their stored casts do not yet match the
+ruling, so approving would fingerprint the wrong cast.
