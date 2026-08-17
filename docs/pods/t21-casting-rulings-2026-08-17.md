@@ -24,6 +24,12 @@ This file is the running record. The next worker on the next language **appends 
 6. **Lock the pool FIRST, record the approval SECOND.** `tools/pod-approve-voices.cjs` fingerprints
    the live cast and self-invalidates when it moves; approving before the pool edit bakes in an
    approval against the wrong cast.
+7. **Every lock carries its confidence.** A lock is either **ear-verified** (Tom listened and ruled)
+   or **unverified** (locked to avoid churn, pending a native-speaker or learner listen). Tom cannot
+   personally referee all 41 languages, so `unverified` is a normal, first-class state — not a
+   deferral: an unverified language locks and renders like any other. The field is the durable
+   mechanism that lets such a lock be revisited later without anyone having to remember it was
+   unverified.
 
 ## The label defect (found 2026-08-17)
 
@@ -79,49 +85,50 @@ slice of rows. Read the real voice from `course_audio`, never `listening_pods.sp
 
 ## The lock table
 
-| Language | Code | Status | Cast Tom ruled | Note |
-|---|---|---|---|---|
-| Arabic (MSA) | `ara` | REJECTED | — | Tom, 2026-08-17, verbatim: "Arabic MSA - all bad to my ears. None sound authentic to me." |
-| Arabic — Egyptian | `ara_eg` | APPROVED | rex (m, xai) + eve (f, xai) | Approved as sampled, 2026-08-17. Production side of the fork. |
-| Arabic — Syrian | `ara_sy` | APPROVED | Laith (m, azure) + Amany (f, azure) | Approved as sampled, 2026-08-17. |
-| Armenian | `hye` | APPROVED | Hayk (m, azure) + Anahit (f, azure) | Approved as sampled, 2026-08-17. |
-| Basque | `eus` | APPROVED | Ander (m, azure) + Ainhoa (f, azure) | Approved as sampled, 2026-08-17. |
-| Bulgarian | `bul` | APPROVED | Borislav (m, azure) + Kalina (f, azure) | Approved as sampled, 2026-08-17. |
-| Catalan | `cat` | PENDING — xAI rejected | Alba (f, azure) confirmed; male half open | xAI pair Jordi/Mireia rejected 2026-08-17. Alba is female, mislabelled male in the doc. |
-| Chinese | `zho` | APPROVED | Wei (m, xai) + ara (f, xai) | Approved 2026-08-17. Pick crosses both blocks; Hui not picked. `ara` here is the VOICE id, not the language code. |
-| Croatian | `hrv` | APPROVED | Srecko (m, azure) + Gabrijela (f, azure) | Approved as sampled, 2026-08-17. |
-| Danish | `dan` | APPROVED | `0ih5oi34` (m, xai) + `ara` (f, xai) | Approved 2026-08-17. Production pair; official pool Mads/Astrid NOT picked. |
-| Dutch | `nld` | APPROVED — locked, **render BLOCKED** | Bas (m, xai) + Lieke (f, xai) | Official-pool pair approved 2026-08-17. Both production voices REJECTED. No re-render until #800 end-click is fixed and ear-verified — Tom's own instruction. A-131 collision open, see below. |
-| Estonian | `est` | PENDING his listen | — | Not yet listened. |
-| Finnish | `fin` | PENDING his listen | — | Not yet listened. |
-| French | `fra` | PENDING his listen | — | Not yet listened. |
-| French — Quebecois | `fra_ca` | PENDING his listen | — | Not yet listened. |
-| German | `deu` | PENDING his listen | — | Not yet listened. |
-| German — Austrian | `deu_at` | PENDING his listen | — | Not yet listened. |
-| Greek | `ell` | PENDING his listen | — | Not yet listened. |
-| Hebrew | `heb` | PENDING his listen | — | Not yet listened. |
-| Hindi | `hin` | PENDING his listen | — | Not yet listened. |
-| Icelandic | `isl` | PENDING his listen | — | Not yet listened. |
-| Irish | `gle` | PENDING his listen | — | Not yet listened. |
-| Italian | `ita` | PENDING his listen | — | Not yet listened. |
-| Japanese | `jpn` | PENDING his listen | — | Not yet listened. |
-| Korean | `kor` | PENDING his listen | — | Not yet listened. |
-| Latvian | `lav` | PENDING his listen | — | Not yet listened. |
-| Lithuanian | `lit` | PENDING his listen | — | Not yet listened. |
-| Nepali | `nep` | PENDING his listen | — | Not yet listened. |
-| Norwegian | `nor` | PENDING his listen | — | Not yet listened. |
-| Persian | `fas` | PENDING his listen | — | Not yet listened. |
-| Polish | `pol` | PENDING his listen | — | Not yet listened. |
-| Portuguese — Brazilian | `por_br` | PENDING his listen | — | Not yet listened. |
-| Portuguese — European | `por` | PENDING his listen | — | Not yet listened. |
-| Romanian | `ron` | PENDING his listen | — | Not yet listened. |
-| Spanish — Iberian | `spa` | PENDING his listen | — | Not yet listened. |
-| Spanish — Mexican | `spa_mx` | PENDING his listen | — | Not yet listened. |
-| Swahili | `swa` | PENDING his listen | — | Not yet listened. |
-| Swedish | `swe` | PENDING his listen | — | Not yet listened. |
-| Thai | `tha` | PENDING his listen | — | Not yet listened. |
-| Turkish | `tur` | PENDING his listen | — | Not yet listened. |
-| Ukrainian | `ukr` | PENDING his listen | — | Not yet listened. |
+| Language | Code | Status | Cast Tom ruled | Confidence | Note |
+|---|---|---|---|---|---|
+| Arabic (MSA) | `ara` | REJECTED | — | ear-verified (rejected) | Tom, 2026-08-17, verbatim: "Arabic MSA - all bad to my ears. None sound authentic to me." Azure candidates produced for his next listen. |
+| Arabic — Egyptian | `ara_eg` | APPROVED | rex (m, xai) + eve (f, xai) | ear-verified | Approved as sampled, 2026-08-17. Production side of the fork. |
+| Arabic — Syrian | `ara_sy` | APPROVED | Laith (m, azure) + Amany (f, azure) | ear-verified | Approved as sampled, 2026-08-17. Matches the A-120 recast and `pod-voices-azure.json` `ar-SY`. |
+| Armenian | `hye` | APPROVED | Hayk (m, azure) + Anahit (f, azure) | ear-verified | Approved as sampled, 2026-08-17. |
+| Basque | `eus` | APPROVED | Ander (m, azure) + Ainhoa (f, azure) | ear-verified | Approved as sampled, 2026-08-17. |
+| Bulgarian | `bul` | APPROVED | Borislav (m, azure) + Kalina (f, azure) | ear-verified | Approved as sampled, 2026-08-17. |
+| Catalan | `cat` | PENDING — xAI rejected | Alba (f, azure) confirmed; male half open | partial | xAI pair Jordi/Mireia rejected 2026-08-17. Alba is female, mislabelled male in the doc. Check Enric (azure, 229 clips) before spending on fresh renders. |
+| Chinese | `zho` | APPROVED | Wei (m, xai) + `ara` (f, xai) | ear-verified | Approved 2026-08-17. Pick crosses both blocks; Hui not picked. `ara` here is the VOICE id, not the language code. |
+| Croatian | `hrv` | APPROVED | Srecko (m, azure) + Gabrijela (f, azure) | ear-verified | Approved as sampled, 2026-08-17. |
+| Danish | `dan` | APPROVED | `0ih5oi34` (m, xai) + `ara` (f, xai) | ear-verified | Approved 2026-08-17. Production pair; official pool Mads/Astrid NOT picked. |
+| Dutch | `nld` | APPROVED — locked, **render BLOCKED** | Bas (m, xai) + Lieke (f, xai) | ear-verified | Official-pool pair approved 2026-08-17. Both production voices REJECTED. No re-render until #800 end-click is fixed and ear-verified — Tom's own instruction. A-131 collision open, see below. |
+| Estonian | `est` | APPROVED | Kert (m, azure) + Anu (f, azure) | ear-verified | Approved as sampled, 2026-08-17. Single Azure pool pair, no production fork. |
+| Finnish | `fin` | APPROVED | Harri (m, azure) + Selma (f, azure) | ear-verified | Approved as sampled, 2026-08-17. Single Azure pool pair, no production fork. |
+| French | `fra` | APPROVED — locked, **full render HELD** | Henri (m, azure) + Celeste (f, azure) | **needs one-word confirm** | Approved as sampled 2026-08-17, but `fra` carries a pool-vs-production fork and the ruling did not say which side. Default = the official pool. 284 existing clips make a wrong-cast render expensive, so only the verification slice renders until Tom confirms. |
+| French — Quebecois | `fra_ca` | APPROVED | Antoine (m, azure) + Sylvie (f, azure) | **unverified — pending a native/learner listen** | Locked 2026-08-17. Tom cannot judge Québécois authenticity by ear ("no idea"), so the pool cast stands rather than churning. It is a LOCK, not a deferral: it renders with everything else. Also the only complete pair available — production has one voice, Jean (azure, 34 clips), and no female at all. |
+| German | `deu` | PENDING his listen — **next up** | — | — | Labels pre-corrected before his listen: production pair is `41321eb41295` = Moritz (m) and `3a7889066fa2` = **Lena (f)**, which the doc shows as two males. Official pool Felix (m, xai) + Sonja (f, xai). |
+| German — Austrian | `deu_at` | PENDING his listen | — | — | Not yet listened. |
+| Greek | `ell` | PENDING his listen | — | — | Not yet listened. |
+| Hebrew | `heb` | PENDING his listen | — | — | Not yet listened. |
+| Hindi | `hin` | PENDING his listen | — | — | Not yet listened. |
+| Icelandic | `isl` | PENDING his listen | — | — | Not yet listened. |
+| Irish | `gle` | PENDING his listen | — | — | Not yet listened. |
+| Italian | `ita` | PENDING his listen | — | — | Not yet listened. |
+| Japanese | `jpn` | PENDING his listen | — | — | Not yet listened. |
+| Korean | `kor` | PENDING his listen | — | — | Not yet listened. |
+| Latvian | `lav` | PENDING his listen | — | — | Not yet listened. |
+| Lithuanian | `lit` | PENDING his listen | — | — | Not yet listened. |
+| Nepali | `nep` | PENDING his listen | — | — | Not yet listened. |
+| Norwegian | `nor` | PENDING his listen | — | — | Not yet listened. |
+| Persian | `fas` | PENDING his listen | — | — | Not yet listened. |
+| Polish | `pol` | PENDING his listen | — | — | Not yet listened. |
+| Portuguese — Brazilian | `por_br` | PENDING his listen | — | — | Not yet listened. |
+| Portuguese — European | `por` | PENDING his listen | — | — | Not yet listened. |
+| Romanian | `ron` | PENDING his listen | — | — | Not yet listened. |
+| Spanish — Iberian | `spa` | PENDING his listen | — | — | Not yet listened. |
+| Spanish — Mexican | `spa_mx` | PENDING his listen | — | — | Not yet listened. |
+| Swahili | `swa` | PENDING his listen | — | — | Not yet listened. |
+| Swedish | `swe` | PENDING his listen | — | — | Not yet listened. |
+| Thai | `tha` | PENDING his listen | — | — | Not yet listened. |
+| Turkish | `tur` | PENDING his listen | — | — | Not yet listened. |
+| Ukrainian | `ukr` | PENDING his listen | — | — | Not yet listened. |
+
 ## Ruling log
 
 ### 2026-08-17 — Arabic MSA (`ara`) — REJECTED
@@ -245,3 +252,75 @@ cast for the language), and either reading is defensible.
 **This is a genuine taste-fork and it is Tom's call.** Nothing about that clip has been touched — not
 deleted, not relinked, not queued. It is recorded here so the collision is visible **before** anyone
 renders Dutch, which is the whole reason the render must not start now.
+
+### 2026-08-17 — Estonian (`est`) and Finnish (`fin`) — APPROVED
+
+*Relayed, not verbatim.* Approved as sampled. The span ruled was "everything in doc order after
+Dutch, up to and including French" — **re-derived independently from the doc and confirmed: exactly
+three languages, Estonian, Finnish, French.**
+
+| Language | Code | Male | Female | Fork? |
+|---|---|---|---|---|
+| Estonian | `est` | Kert (azure) | Anu (azure) | none — single pool pair |
+| Finnish | `fin` | Harri (azure) | Selma (azure) | none — single pool pair |
+| French | `fra` | Henri (azure) | Celeste (azure) | **yes** — see below |
+
+Estonian and Finnish are unambiguous: one Azure pool pair each, no production fork. Locked and
+released.
+
+### 2026-08-17 — French (`fra`) — APPROVED, but the fork is ambiguous
+
+*Relayed, not verbatim.* French is the only language in that span carrying a fork, and "approved as
+sampled" does not say which side of it he meant:
+
+- Official pool: **Henri** (m, azure) + **Celeste** (f, azure)
+- In production: **`0p0rt7o1`** (161 clips) + **`ara`** (123 clips)
+
+**Default taken: lock the official pool pair, Henri + Celeste.** The reasoning, so it can be
+defended or overturned in one word: when Tom has meant the production voices he has said so
+explicitly (Danish, Chinese); when he has meant the pool he has said so explicitly (Dutch). A bare
+"approved as sampled" has so far only ever landed on languages whose *sole* candidate pair was the
+pool pair, so the pool is the reading consistent with every ruling to date.
+
+**The full French render is HELD** pending his one-word confirm. This is a deliberate, stated
+narrowing of "lock and release" for one language only: French carries 284 existing production clips,
+so rendering the whole slice on the wrong cast spends real money **and** creates a pile of clips
+needing make-before-break cleanup, whereas holding costs one question he answers in a word. Nothing
+else in the span is blocked.
+
+**Worth putting in front of him when he answers:** the French production pair is not what the doc
+says it is. `0p0rt7o1` is **Remi, male** and `ara` is **female** in `tools/pod-voices-xai.json` — so
+French's production side is a proper male/female pair that the doc presented to him as **two males**.
+If he was reading the production side when he approved, he was reading it wrong. Another reason to
+confirm rather than assume.
+
+### 2026-08-17 — French Québécois (`fra_ca`) — LOCKED, unverified by ear
+
+*Relayed, not verbatim.* **Keep the official pool as cast: Antoine (m, azure) + Sylvie (f, azure).**
+Tom's position: he cannot judge Québécois authenticity by ear — "no idea" — so the cast stands rather
+than churning, but it is marked **low-confidence / unverified-by-ear** so a native speaker or a
+learner listen can revisit it later without blocking anything.
+
+**This is a lock, not a deferral.** Québécois does not sit in the pending pile and waits for nobody;
+it renders with everything else. It is the first `unverified` entry in the confidence column
+(standing ruling 7) and there will be more — Tom cannot personally referee 41 languages.
+
+Supporting the ruling rather than complicating it: the pool pair is also the *only complete pair
+available*. The production side has a single voice, Jean (azure, 34 clips), with no female at all.
+
+### 2026-08-17 — German (`deu`) — pre-armed before his listen
+
+German is **next up** for Tom, and it is mislabelled in exactly the way that has already cost two
+mis-listens. Checked against `tools/pod-voices-xai.json` `de` block:
+
+| voice_id | name | record says | doc says |
+|---|---|---|---|
+| `41321eb41295` | Moritz | m | male ✓ |
+| `3a7889066fa2` | **Lena** | **f** | **male ✗** |
+
+**`3a7889066fa2` is Lena, female** — the **fourth** proven mislabel after `ara`, `eve` and Noor.
+German's production pair is **Moritz + Lena**, a proper male/female pair, which the doc is about to
+present to him as two male voices. That is precisely the trap he hit on Catalan and Chinese.
+
+The official pool is Felix (m, xai) + Sonja (f, xai); those names appear nowhere in the record's `de`
+block either (Clara, Moritz, Niklas, Lena) — the same two-inventory pattern.
