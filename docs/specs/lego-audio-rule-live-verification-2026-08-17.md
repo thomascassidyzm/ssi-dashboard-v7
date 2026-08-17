@@ -170,14 +170,31 @@ through, the worker that had been declared finished (#940) **came back to life**
 and began editing the same three files in the same shared worktree. Both workers
 were pointed at the same DDL apply.
 
-`/api/reply` rejected every message shape tried, so the collision could not be
-resolved by talking. What avoided a clobber was noticing it at all — a file mtime
-that had moved since it was read — and then going strictly read-only until the
-other worker's files went quiet and its commit landed. #940 got there first and
-applied it correctly; this became verification rather than application, which is
-the right outcome and not the briefed one.
+What avoided a clobber was noticing it at all — a file mtime that had moved since
+it was read — and then going strictly read-only until the other worker's files
+went quiet and its commit landed. #940 got there first and applied it correctly;
+this became verification rather than application, which is the right outcome and
+not the briefed one.
 
-The lesson is cheap to state and was nearly expensive: **before editing a file in
-a shared worktree, check whether its mtime has moved since you read it.** Two
-workers holding one DDL migration is not a merge conflict, it is a production
-apply race.
+**And a mistake of mine belongs in the record, because it is the more useful half
+of the lesson.** I tried to warn #940 off the apply and reported that
+`/api/reply` "rejected every shape tried". That was true of the four shapes I
+tried (`conv`, `id`, `conv_id`, `job` — all of which fail with an SQLite bind
+error) and false as an implication: the working payload is
+`{"jobId":"<uuid>","message":"..."}`, which was written down in my own operating
+notes and which I did not try. Tested afterwards, it binds and returns
+`{"ok":true}`.
+
+So the collision was **not** unresolvable by talking. #940 was still running at
+that moment, and one correctly-addressed message could have settled who owned the
+apply before either of us touched a file. Going read-only was the right instinct
+and it worked, but it was the fallback, not the fix.
+
+Two lessons, then, and the second is the one I got wrong:
+
+1. **Before editing a file in a shared worktree, check whether its mtime has
+   moved since you read it.** Two workers holding one DDL migration is not a merge
+   conflict, it is a production apply race.
+2. **When a coordination call fails, suspect your own payload before concluding
+   coordination is impossible** — and check your notes for the shape that works
+   before reporting the channel as dead.
