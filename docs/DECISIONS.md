@@ -737,3 +737,36 @@ owns a service during an incident.
 **Search width:** visible-options
 **Decided by:** agent — Tom's brief specified the migration; the watchdog line and the empty
 `dump.pm2` force-save are the agent's calls, both reversible.
+
+## 2026-08-17 — Dutch polite clips stay; the end click is ours
+
+**Move:** A-131 closed on Tom's ear — the original `nld_for_eng` pod-0 take stays live and the three
+re-rendered polite-form candidates are discarded permanently (live DB re-verified: still
+`mastered/E933BFD3-…`, revision 1, nothing queued to swap it). The end click Tom heard on the
+re-renders is diagnosed as a defect of our own mastering chain and is to be fixed by SUBTRACTION —
+removing `PRE_COMPRESS` from the render path — never by any repair, trim, pad or de-click step.
+
+**Better:** measured cause, not a guess — xAI returns a hard-cut tail (noise floor stops dead ~50ms
+before EOF) and `acompressor` + make-up gain lifts that floor 11.6–12.4 dB across three fresh raw
+takes, so the cut becomes an audible switch-off; removing the step removes the mechanism.
+**Simpler:** the replacement already exists and is already ruled on — `normalizeAudioClean()`, written
+for the founder ruling of 2026-07-29 about "that hissy mastering stuff", the same defect from the
+other side; one call site changes and one filter leaves the chain.
+**Cheaper (total):** no new code to maintain, no detector, no repair machinery to re-litigate; the
+whole diagnosis cost three xAI renders (~$0.002) and the measured loudness cost is 0.8–1.7 LUFS, not
+the 4–6 the code comment feared.
+
+**Searched & rejected:**
+- Repair the tail (fade/pad/trim/de-click) — failed *better*, and is banned: `repairTailDefect`
+  amputated taught words from 27 deu_for_eng clips and was deleted by ruling on 2026-08-05.
+- Gate renders on `detectTailClick` — failed *better*: 9% precision by ear (7/76), it would reject
+  good clips and is forbidden from acting.
+- Blame the limiter or a `silenceremove` trim — failed on the evidence: the limiter moves the tail
+  floor under 1 dB and no trim step exists in this path at all.
+- Ship the compressor removal on the agent's own listening — failed *better*: the loudness cost is a
+  house-taste call, so it is held for one word from Tom against a published A/B.
+
+**Search width:** component-redesign
+**Decided by:** Tom (the clips stay, verbatim ruling); the cause, the subtract-don't-repair framing
+and holding T-21 until the ear check are the agent's calls, all reversible — nothing was changed in
+the render chain yet.
