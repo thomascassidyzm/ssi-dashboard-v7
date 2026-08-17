@@ -1,0 +1,203 @@
+# The new chain, on every render path — audit, gaps closed, and a live proof
+
+2026-08-17. Commission: *"refactor the entire phase 8 audio gen pipeline with the new chain … I want to
+have the new whole pipeline including the whispr at sample frequency up and running and verified so that
+when he generates audio the old way in Popty, the new improved process is triggered."*
+
+**The headline: yes — the ordinary Popty path already had the full chain, and I proved it live. Five other
+render paths did not, and now do.**
+
+---
+
+## 1. The answer Kai needs
+
+**Yes. The ordinary Popty audio-generation path is safe to start big runs on.**
+
+"Generate Missing Audio" in the dashboard → `POST /api/production/:courseCode/audio-pipeline/start` →
+`POST /generate/:courseCode` on phase 8. That path already carried all three parts of the chain before I
+touched anything, and I verified it end-to-end on the deployed service, not by reading the code.
+
+One caveat, and it is a small one: the graduated sampler opens at **10% of the first course**, then halves
+per clean course down to a **0.2% floor**. On a multi-course run that is by design, but it means a course
+late in a long run may be sampled at the floor. I have **not** retuned it — the shipped rates are Tom's
+2026-08-13 decision and changing them for Kai's run is his call, not mine. See §6.
+
+---
+
+## 2. The audit
+
+Three things travel together. The **250ms end-of-speech tail pad** and the **trailing-artefact rule** both
+live inside `masterAudio`, so any path that calls `masterAudio` gets both for free. The **whisper veracity
+gate** needs an explicit `veracity.renderChecked()` wrap, and that is where the holes were.
+
+Audited against `/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod` at `fc88c72b` — verified byte-identical
+to what the running service executes.
+
+| Render path | Tail pad + artefact rule | Veracity gate | Verdict |
+|---|---|---|---|
+| `POST /generate/:courseCode` — **Kai's path** | yes | yes | already correct |
+| `POST /regenerate-role/:courseCode` | yes | yes | already correct |
+| `POST /generate-components/:courseCode` | yes | yes | already correct |
+| `reuseRenderClip` → `POST /reuse-apply/:courseCode` | yes | yes | already correct |
+| `generatePodAudio` → `POST /generate-pods/:courseCode` | yes | **no → wired** | **gap closed** |
+| `POST /regenerate-single/:courseCode/:audioUuid` | yes | **no → wired** | **gap closed** (+ see §5) |
+| `POST /regenerate-presentation/:courseCode/:legoId` | yes | **no → wired** | **gap closed** |
+| `POST /regenerate-phrase/:courseCode/:phraseId` | yes | **no → wired** | **gap closed** |
+| `POST /regenerate-lego/:courseCode/:legoId` | yes | **no → wired** | **gap closed** |
+| `pod-explainer-composite.cjs` | composite mastered: yes | **no → wired on the pieces** | **gap closed** |
+| `POST /insert` | n/a | n/a | **exempt** — registers a row for bytes the caller already put in S3 |
+| `POST /prepare-presentations-scoped/:courseCode` | n/a | n/a | **exempt** — authors text, renders nothing |
+| `POST /regenerate-presentations/:courseCode` | n/a | n/a | **exempt** — text only |
+| `POST /splice-components/:courseCode` | n/a | n/a | **exempt** — slices already-gated clips |
+| `services/audio-repair.cjs` | yes | calls `checkAudioVeracity` directly, 100%, behind a human `accept()` | **left alone** — a stricter posture than sampling, deliberately |
+| `tools/generators/phase8-generate-audio.cjs`, `phase8-audio-from-baskets.cjs`, `welcome-service.cjs` | — | — | **dormant** — zero requirers in the prod tree |
+| orchestrator `/api/voices/preview` | — | — | **exempt** — temp file, never persisted |
+
+Every exemption is now written **into the code** at the handler, one sentence each, not just into this
+report — an exemption that lives only in a document is how the next person "fixes" it.
+
+The interesting exemption is `/splice-components`: it does write new bytes, but they are a word-boundary
+slice of a clip that already passed the gate, and whisper on a one-word slice is decode variance, not
+evidence.
+
+---
+
+## 3. What I wired, and the two judgement calls inside it
+
+**Pods** (`generatePodAudio`, bulk). TTS + the xAI→Azure fallback + master lifted into one closure so a
+failed check re-renders *for real* rather than re-mastering the same bad bytes; each attempt re-reads the
+configured voice so one attempt's Azure fallback cannot pin every retry to Azure. `/generate-pods` calls
+`veracity.startCourse()`, so pods bank trust in the run alongside `/generate`.
+
+**The four repair routes** use a new `veracity.ALWAYS_SAMPLER` instead of the run sampler. Two reasons.
+Graduated sampling exists to make *bulk* affordable; at the 0.2% floor a one-clip regenerate is checked
+essentially never, which is exactly backwards on the path a human uses to *fix a clip they think is bad*.
+And calling `startCourse()` there would reset the every-Nth counter and bank a bogus clean course — so one
+person fixing a clip in ScriptViewer would silently corrupt the trust accounting of a bulk run in the same
+process. `ALWAYS_SAMPLER` holds no state and touches none. Cost is one whisper decode per button press.
+
+**Pod explainers**: the gate goes on the **piece**, not the assembled composite. The composite plays each
+target three times against a one-line text, so whisper against that text would report a wild CER on every
+healthy clip and the gate would be pure noise. The piece is one honest utterance and is where new TTS bytes
+actually enter. Pieces are cached per (voice, text), so the check runs once per distinct piece. Languages
+are now passed explicitly — checking an English gloss as the target language would have been a
+false-failure generator.
+
+No new feature flags on the chain. The tail-repair switch was itself the bug once (2026-08-05), and a
+default that must be set correctly in every unit file and cron leaks.
+
+---
+
+## 4. The live proof
+
+Not a unit test and not a direct call to `masterAudio` — the actual route, against a real course, on the
+restarted production service.
+
+Course: `dan_for_eng`, which had 56 genuinely missing clips, all English known-side (so whisper is on home
+ground). Filling them is useful work, not waste.
+
+**Acceptance run — `POST /api/production/dan_for_eng/audio-pipeline/start`, Kai's exact route,
+authenticated as a real dashboard admin, scoped with `{"options":{"limit":10}}`:**
+
+```
+status: completed | total 10, success 10, failed 0
+veracity: {"checked":1,"passed":1,"failed":0,"rerendered":0,"quarantined":0,"unchecked":0,"not_sampled":7}
+```
+
+Service log:
+
+```
+[audio-veracity] ON — unprimed whisper round-trip, model ggml-small.bin, CER threshold 0.3.
+  GRADUATED SAMPLING: 10% of the first course, 1% once that samples clean, relaxing to a 0.2% floor
+[audio-veracity] dan_for_eng: sampling 10.0% of clips (0 clean course(s) banked this run)
+[audio-veracity] dan_for_eng: veracity: 1 checked, 0 failed, 0 re-rendered, 0 quarantined,
+  0 UNCHECKED, 7 not sampled (graduated sampling at 10.0%, 0 clean course(s) banked)
+[audio-gate] dan_for_eng: 10 new clips, all clean
+```
+
+10 items = **8 rendered + 2 cross-course reuse** (their S3 objects are shared with `hye_for_eng` and
+`swe_for_eng` — no render happened, so correctly no gate and no verdict). 8 render decisions → 1 checked +
+7 not sampled at the every-10th rate. The arithmetic closes exactly.
+
+**The verdict travels with the clip.** `course_audio.veracity_pass` is `t` on the sampled clip and NULL on
+the not-sampled ones — the three-state rule, honestly "not checked" rather than a fabricated pass.
+
+**Tail pad, measured on the rendered bytes** (end-of-speech to file end, 20ms RMS envelope, speech = within
+35dB of peak):
+
+| | n | mean | min | max |
+|---|---|---|---|---|
+| **new clips (this run)** | 8 | **270ms** | 261ms | 285ms |
+| pre-chain clips, same course | 3 | 223ms | 167ms | 335ms |
+
+The new clips cluster tightly around the 250ms pad (plus ~20ms measurement hop); the old ones scatter.
+That consistency *is* the signature — it is what a deliberate pad looks like versus whatever the provider
+happened to leave behind.
+
+**Artefact rule in force on that path**: the running `services/audio-processor.cjs` carries the cluster
+constants — `EOS_BODY_MS = 150`, `EOS_MAX_ARTEFACT_MS = 120`, `EOS_MIN_CLEAR_MS = 200` — inside the same
+`trimToEndOfSpeech` the tail measurements prove ran.
+
+**Repair path proved separately**, after the fix in §5:
+
+```
+POST /regenerate-single/dan_for_eng/d2bf0a6b-… → {"success":true, …}
+course_audio: veracity_pass=t, veracity_checker=phase8-regenerate-single, veracity_attempts=1
+```
+
+`ALWAYS_SAMPLER` did what it says: one clip, checked.
+
+**Nothing shipped was mutated or deleted.** `dan_for_eng` went from 19,235 existing / 56 missing to 19,248
+existing / 43 missing — 13 new rows (3 shakedown + 10 acceptance), purely additive. The regenerate wrote a
+**new** S3 key and left the old object in place. `TAIL_REPAIR_MODE=flag` held throughout; the log shows
+tail suspects flagged with *"Clip shipped exactly as rendered"* and no mutation.
+
+**Spend: 19 short English Azure clips across all runs — a fraction of a cent.** Well inside the
+verification allowance, and no bulk render was performed.
+
+---
+
+## 5. A pre-existing bug, found by exercising rather than reading
+
+`POST /regenerate-single/:courseCode/:audioUuid` answered `{"error":"storedVoiceId is not defined"}` — and
+**always has**. Verified at `fc88c72b`, before any of my changes: the identifier is declared in
+`/regenerate-role` and `/regenerate-presentation`, neither of which is in scope there, and this route's
+`course_audio` update referenced it anyway.
+
+So the route has never once returned success. That also resolves the loose end in the UI trace — no
+dashboard code calls `/regenerate-single`, which is exactly what you would expect of a route that has never
+worked.
+
+The failure was at least safe: it threw at the DB write, so the old clip and its `s3_key` were untouched.
+It still burned a paid render on every call. Fixed in one line, computed the way the two sibling routes
+compute it, and then proved working.
+
+I only found this because I insisted on *exercising* a newly-wired route instead of trusting that it parsed.
+
+---
+
+## 6. For Tom — one genuine fork, no action taken
+
+**Sampling rates for a long multi-course run.** The sampler halves per clean course to a 0.2% floor. Across
+Kai's planned big runs that means the later courses are sampled at roughly one clip in five hundred. That
+is the policy working as designed and as you decided it on 2026-08-13, so I have **not** touched it. If you
+want a different posture for a long run, the honest lever is a floor raise for that run only. My read: leave
+it — the floor is a claim about *the renderer*, not about each course, and the failure-snap-back is what
+actually protects you. But it is your call and I am not making it silently.
+
+Everything else that came up resolved on better × simpler × cheaper and I decided it myself: the
+`ALWAYS_SAMPLER` posture on repair routes, gating explainer pieces rather than composites, and leaving the
+four text-only/splice paths exempt with the reason written into the code.
+
+---
+
+## 7. What failed
+
+Nothing, in the end. Two things went wrong along the way and both were caught:
+
+1. My first two dispatched workers were pointed at the shared working checkout, which sits on a stale
+   branch that predates the entire chain — `audio-veracity.cjs` was 755 lines short there. Every
+   "X does not call veracity" conclusion from that tree is a **false negative**. I caught it before either
+   worker reported, re-pointed both at the prod checkout, and both redid their file reading. Worth
+   remembering: the chain files in `ssi-dashboard-v7-clean` are not what runs.
+2. The `storedVoiceId` bug in §5 — pre-existing, now fixed.
