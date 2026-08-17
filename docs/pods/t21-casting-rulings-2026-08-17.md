@@ -810,3 +810,14 @@ gate.
 
 `deu`, `hin`, `ita`, `jpn`, `kor` are **not approved**: their stored casts do not yet match the
 ruling, so approving would fingerprint the wrong cast.
+
+### Two further notes from the forensics job, recorded for completeness
+
+- **Dutch pod leakage.** Beyond the two rejected voices, `nld_for_eng` pods also carry Femke, Ruben,
+  `ara`, `eve`, `ef4ce33e` and `sal`. Left alone deliberately — that is a **convergence** question
+  (pods are one voice per gender by design, so extra voices are leakage to converge), not a casting
+  question, and it does not change Tom's Bas + Lieke ruling. Note `sal` among them: it must not be
+  assigned to a gendered seat.
+- **The forensics worker hit the fan-out depth ceiling** as a depth-2 worker and therefore did all
+  four legs itself rather than routing around the cap. No work was dropped; recorded so the coverage
+  is not mistaken for a partition.

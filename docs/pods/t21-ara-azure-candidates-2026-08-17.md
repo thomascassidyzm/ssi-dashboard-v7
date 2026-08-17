@@ -142,9 +142,10 @@ expect and is itself a check that the answer is right.
 This matters more than a paperwork tidy: **Ara and Eve alone carry pod work across 35 and 37
 courses.** Judging voices off those male labels means reasoning about the wrong half of the estate.
 
-**German matters most, because it's next for you.** Its two production voices are **Moritz (male) and
-Lena (female)** — a proper pair — and the old page was about to show you two males. Same trap as
-Catalan and Chinese. Don't judge German off the old page.
+**German proved the point.** Its production pair is **Moritz (male) and Lena (female)** — and the
+old page showed you two males. You picked them anyway and called Lena female by ear, which is the
+third time your ear has beaten the paperwork. Korean was the same: you rejected Ji-yeon, who is the
+other voice that page mislabelled.
 
 **The honest gap: I couldn't fix the page's builder, because it doesn't exist any more.** It was
 never saved into the repo — only the page it produced was. There's nothing to recover and no other
