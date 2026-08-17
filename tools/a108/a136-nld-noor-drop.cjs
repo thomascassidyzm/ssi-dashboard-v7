@@ -211,6 +211,42 @@ function buildPlan () {
   return clips
 }
 
+// TTS cues are not speech: strip them before comparing a decode with the text.
+function asrText (t) {
+  return String(t).replace(/\[pause\]/gi, ' ').replace(/[…]|\.\.\./g, ' ')
+    .replace(/\s+/g, ' ').trim()
+}
+
+// Whisper writes numerals; the course text spells them out. "kamer 709" and
+// "kamer zevenhonderd negen" are the SAME utterance, but character-level CER
+// scores the difference at 0.26 — above the 0.25 threshold — so a perfectly
+// spoken clip is refused for the transcriber's notation. Expanding the decode's
+// digits into Dutch words compares like with like; the gate itself is untouched.
+const NL_UNITS = ['nul', 'een', 'twee', 'drie', 'vier', 'vijf', 'zes', 'zeven', 'acht', 'negen',
+  'tien', 'elf', 'twaalf', 'dertien', 'veertien', 'vijftien', 'zestien', 'zeventien', 'achttien', 'negentien']
+const NL_TENS = { 2: 'twintig', 3: 'dertig', 4: 'veertig', 5: 'vijftig', 6: 'zestig', 7: 'zeventig', 8: 'tachtig', 9: 'negentig' }
+function nlNumber (n) {
+  if (!isFinite(n) || n < 0 || n > 9999 || !Number.isInteger(n)) return String(n)
+  if (n < 20) return NL_UNITS[n]
+  if (n < 100) {
+    const u = n % 10
+    return (u ? NL_UNITS[u] + 'en' : '') + NL_TENS[Math.floor(n / 10)]
+  }
+  if (n < 1000) {
+    const h = Math.floor(n / 100); const rest = n % 100
+    return (h === 1 ? 'honderd' : NL_UNITS[h] + 'honderd') + (rest ? nlNumber(rest) : '')
+  }
+  const t = Math.floor(n / 1000); const rest = n % 1000
+  return (t === 1 ? 'duizend' : NL_UNITS[t] + 'duizend') + (rest ? nlNumber(rest) : '')
+}
+function spellNumbers (s) {
+  return String(s)
+    // "€7,70" is spoken "zeven euro zeventig" — the currency word sits between.
+    .replace(/[€]\s?(\d+)[.,](\d{2})/g, (_, a, b) => `${nlNumber(+a)} euro ${nlNumber(+b)}`)
+    .replace(/(\d+)[.,](\d{2})\b/g, (_, a, b) => `${nlNumber(+a)} ${nlNumber(+b)}`)
+    .replace(/\d+/g, m => nlNumber(+m))
+}
+
 function guardClip (c) {
   if (c.origin !== 'tts') throw new Error(`${c.id}: origin is ${c.origin} — a human recording is never overwritten`)
   if (!NOOR.includes(c.voice_id)) throw new Error(`${c.id}: voice is ${c.voice_id}, not Noor`)
@@ -250,9 +286,21 @@ async function swapOne (c, tmpDir) {
     add('decodable', probed > 0, `ffprobe ${probed}ms`)
     add('duration_agrees', Math.abs(probed - durationMs) <= Math.max(250, durationMs * 0.05),
       `ffprobe ${probed}ms vs mastered ${durationMs}ms`)
+    // Truncation is judged on the NEW clip's own terms, not against Noor's take.
+    // The superseded clip is not a duration reference: Noor reads "Wat
+    // interessant." in 3288ms where Femke needs 1176ms, and Noor's own
+    // "Pardon — heeft u ook iets glutenvrijs?" is 936ms, which is itself a
+    // truncated clip — so the cross-voice ratio refused correct renders and
+    // treated a defective take as the standard. The band below is measured from
+    // the 245 Femke renders this pass already accepted: 6.9 to 20.9 chars/sec.
+    // Outside 4-28 the render is either cut short or hung, and CER plus the
+    // last-word rule catch anything subtler.
+    const cps = c.chars / (durationMs / 1000)
+    add('speech_rate_plausible', cps >= 4 && cps <= 28,
+      `${cps.toFixed(1)} chars/sec (${durationMs}ms for ${c.chars} chars; accepted band 4-28, observed 6.9-20.9)`)
     const ratio = c.duration_ms ? durationMs / c.duration_ms : 1
-    add('not_truncated', ratio >= 0.6 && ratio <= 1.8,
-      `${durationMs}ms vs superseded ${c.duration_ms}ms (ratio ${ratio.toFixed(2)})`)
+    checks.push({ name: 'duration_vs_superseded', ok: true, advisory: true,
+      detail: `${durationMs}ms vs Noor's ${c.duration_ms}ms (ratio ${ratio.toFixed(2)}) — advisory only` })
 
     const tail = postSpeechImpulses(tmpFile)
     add('no_post_speech_impulse', tail.measured && (tail.impulses || []).length === 0,
@@ -261,12 +309,22 @@ async function swapOne (c, tmpDir) {
           (tail.impulses.length ? ` — ${JSON.stringify(tail.impulses)}` : '')
         : `NOT MEASURED (${tail.reason}) — unmeasured is not clean`)
 
-    const v = await veracity.checkAudioVeracity(tmpFile, c.text, c.language)
+    // The ASR gate compares what was HEARD with what should have been SPOKEN, and
+    // a pod line's `[pause]` / `…` markers are direction to the synthesiser, not
+    // speech. Left in, the literal word "pause" scores as a deletion every time —
+    // on "Ja, [pause] natuurlijk." that alone is CER 0.32 against a 0.25
+    // threshold, so 14 of these clips were being refused for saying exactly the
+    // right words. The clip is still RENDERED from the full cue text; only the
+    // comparison string drops the cues.
+    const v = await veracity.checkAudioVeracity(tmpFile, asrText(c.text), c.language)
     if (!v.checked) {
       add('asr_checked', false, `UNCHECKED (${v.reason}) — "could not verify" is not "verified"`)
     } else {
       add('asr_checked', true, JSON.stringify(v.decode))
-      add('asr_matches_text', v.cer < 0.25, `CER ${v.cer?.toFixed(3)}`)
+      const spelledCer = veracity.characterErrorRate(spellNumbers(asrText(c.text)), spellNumbers(v.decode))
+      const cer = Math.min(v.cer, spelledCer)
+      add('asr_matches_text', cer < 0.25,
+        `CER ${cer.toFixed(3)}` + (spelledCer < v.cer ? ` (raw ${v.cer.toFixed(3)}, ${spelledCer.toFixed(3)} with numerals spelled out)` : ''))
     }
 
     const a = { attempt, s3_key: newKey, duration_ms: durationMs, bytes: buffer.length,
@@ -535,7 +593,12 @@ function write (obj, kind) {
   // slices are disjoint by construction rather than by locking. Renders are
   // ~45s each against xAI and everything else in the loop is fast, so this is
   // the only lever that matters on a 300-clip batch.
-  let todo = sampleN ? rerender.slice(0, sampleN) : rerender
+  // A clip that has already burnt MAX_ATTEMPTS on a gate rejection stays in the
+  // plan (its live row is untouched, by design), so a resumed run would re-render
+  // it every round at full price. A136_SKIP_IDS parks those for separate triage.
+  const skipIds = new Set((process.env.A136_SKIP_IDS || '').split(/[,\s]+/).filter(Boolean))
+  let todo = (sampleN ? rerender.slice(0, sampleN) : rerender).filter(c => !skipIds.has(c.id))
+  if (skipIds.size) console.log(`  parked (A136_SKIP_IDS) ${rerender.length - todo.length} clip(s)`)
   const sliceArg = has('--slice') ? argv[argv.indexOf('--slice') + 1] : null
   if (sliceArg) {
     const [k, n] = sliceArg.split('/').map(Number)
