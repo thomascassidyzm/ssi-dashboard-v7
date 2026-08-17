@@ -20,7 +20,7 @@ const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
   checkLegoConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss,
-  loadPairContract, checkKnownSide, isKnownVocabBreach, compileKnownContract, stemKnownGloss, tokenizeKnown,
+  loadPairContract, checkKnownSide, isKnownVocabBreach, isMechanicalContract, compileKnownContract, stemKnownGloss, tokenizeKnown,
   checkBuildRecombination,
 } = require('../lib/validation.cjs');
 const { loadCourseVocab, addToCourseVocab, loadTranslationVocab, loadIntroducedLegoPairs, buildVocabInjection } = require('../lib/vocab-cache.cjs');
@@ -1482,9 +1482,33 @@ module.exports = function seedCompleteRoutes(ctx) {
       // must compose from introduced glosses + licensed constructions (Principle 1 in
       // both languages). Fires ONLY when a pair-contract exists AND its known language
       // matches — English machinery must not be applied to a non-English-known course.
+      //
+      // NO SILENT ALL-CLEAR (2026-08-17). Two ways this check used to report "clean"
+      // without having checked anything, and both now say so out loud:
+      //   (a) no contract for the pair, or the contract's known_lang doesn't match;
+      //   (b) a contract that is an AGENT BRIEF, not a mechanical config — the seven
+      //       eng_for_<Indic> contracts are prose by design (Tom: "no regex for
+      //       language"). Those still run, because a genuinely never-introduced word is
+      //       worth surfacing, but their findings are ADVISORY: the known languages are
+      //       agglutinative and exact-form matching cannot tell an inflected form of an
+      //       introduced word from a new one, so blocking on them would be wrong.
       {
         const contract = loadPairContract(course_code);
-        if (contract && (!contract.known_lang || contract.known_lang === knownLang)) {
+        const applies = contract && (!contract.known_lang || contract.known_lang === knownLang);
+        if (!applies) {
+          warnings.push({
+            type: 'known_side_gate_absent',
+            message: `Known-side vocabulary gate DID NOT RUN for ${course_code} (known language "${knownLang}"): ${contract ? `the contract is written for "${contract.known_lang}"` : 'no pair-contract exists for this pair'}. A pass here is not an all-clear on the known side.`,
+          });
+        }
+        if (applies) {
+          const mechanical = isMechanicalContract(contract);
+          if (!mechanical) {
+            warnings.push({
+              type: 'known_side_gate_advisory',
+              message: `Known-side gate for ${course_code} is running against an AGENT BRIEF, not a mechanical contract — its findings are advisory and do not block. Exact-form matching under ${knownLang} morphology produces false positives; a human/agent adjudicates.`,
+            });
+          }
           const knownCtx = await buildKnownSideSeedCtx(ctx.supabase, course_code, seed_number, legos, contract);
           for (const lego of legos) {
             const legoId = `${seedId}L${String(lego.idx).padStart(2, '0')}`;
@@ -1500,8 +1524,10 @@ module.exports = function seedCompleteRoutes(ctx) {
               // using a known-language word never introduced at this position forks
               // production exactly like a target-side vocab violation. Construction /
               // licensing advisories stay warnings (contracts are mostly unratified).
-              const breaches = probs.filter(isKnownVocabBreach);
-              const advisories = probs.filter(p => !isKnownVocabBreach(p));
+              // …but only under a MECHANICAL contract. Under an agent brief the same
+              // problem string is a lead, not a verdict (see the note above).
+              const breaches = mechanical ? probs.filter(isKnownVocabBreach) : [];
+              const advisories = mechanical ? probs.filter(p => !isKnownVocabBreach(p)) : probs;
               if (breaches.length) {
                 errors.push({
                   type: 'known_vocab',

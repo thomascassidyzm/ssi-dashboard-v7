@@ -805,7 +805,13 @@ function stemKnownGloss(tok) {
   // was introduced as a LEGO or a COMPONENT of an M-LEGO — exact form. Previously this stripped
   // ing/ed/s/e/d, which wrongly let any inflection through; that is expressly disallowed. Lowercase
   // + strip non-letters only. (Genuine glue/NPI stay free via the contract's freeGlue/npiTokens.)
-  return (tok || '').toLowerCase().replace(/[^a-z']/g, '');
+  // Unicode-aware since 2026-08-17 (see tokenizeKnown): the old [^a-z'] class deleted every
+  // non-ASCII letter, so a Tamil/Hindi/Japanese gloss stemmed to '' and was skipped entirely.
+  // \p{M} keeps combining marks attached (Yoruba tone, Devanagari matras, Hebrew points) —
+  // stripping them would silently merge distinct words. Digits stay excluded, exactly as before.
+  // NFC first so a precomposed é and a decomposed e+U+0301 hash to the same key on both
+  // sides of the comparison (a no-op for ASCII, and for scripts NFC leaves decomposed).
+  return (tok || '').normalize('NFC').toLowerCase().replace(/[^\p{L}\p{M}']/gu, '');
 }
 // Expand English contractions so the base word + function word are checked
 // separately (shouldn't → should not; that's → that is; I've → I have).
@@ -815,7 +821,48 @@ function expandContractions(s) {
     .replace(/['’]ve\b/g, ' have').replace(/['’]re\b/g, ' are').replace(/['’]m\b/g, ' am')
     .replace(/['’]ll\b/g, ' will').replace(/['’]d\b/g, ' would').replace(/['’]s\b/g, ' is');
 }
-const tokenizeKnown = (s) => expandContractions(s).split(/[^a-z']+/).filter(Boolean);
+// ─── Unicode-aware known-side tokenisation (2026-08-17) ───────────────
+// The class was `[^a-z']+` for its whole life. Two consequences, both measured before
+// this fix (docs/course-optimization/known-side-tokenizer-unicode-2026-08-17.md):
+//   1. A non-Latin known side tokenised to ZERO tokens, so checkKnownSide returned
+//      "no problems" for literally any input — a silent all-clear, not a check.
+//   2. A Latin known side WITH DIACRITICS was shredded, because the accented letter
+//      acted as a separator: "danışmaq istəyirəm" → dan|maq|ist|yir|m. Fragments can
+//      false-PASS (a fragment happens to match an introduced stem) and false-FAIL
+//      (a real word never matches anything), which is worse than the silence.
+// The class is now Unicode letters + combining marks, so every script tokenises.
+//
+// WHY NO \p{N}: digits were separators under the old class and stayed out of
+// stemKnownGloss, so "at 5 o'clock" never produced a token "5". Admitting \p{N} would
+// invent a new "unknown gloss \"5\"" breach on English courses that pass today, and a
+// numeral is not a gloss the learner has to have been given. Deliberately excluded.
+const SCRIPTLESS_RE = /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\u0e00-\u0e7f\u0e80-\u0eff\u1000-\u109f\u1780-\u17ff]/;
+const _segmenters = new Map();
+// Locale only steers dictionary choice; ICU segments CJK/Thai/Khmer/Lao/Burmese from the
+// text itself, so one 'und'-ish segmenter per script family is enough.
+function segmenterFor(text) {
+  const loc = /[\u3040-\u30ff]/.test(text) ? 'ja'
+    : /[\u0e00-\u0e7f]/.test(text) ? 'th'
+      : /[\u0e80-\u0eff]/.test(text) ? 'lo'
+        : /[\u1780-\u17ff]/.test(text) ? 'km'
+          : /[\u1000-\u109f]/.test(text) ? 'my' : 'zh';
+  if (!_segmenters.has(loc)) _segmenters.set(loc, new Intl.Segmenter(loc, { granularity: 'word' }));
+  return _segmenters.get(loc);
+}
+// SCRIPTS WITHOUT WORD SPACES (Japanese, Chinese, Thai, Lao, Khmer, Burmese): splitting on
+// non-letters is meaningless — the whole sentence is one letter-run, so the gate would report
+// exactly one bogus "unknown gloss <entire sentence>" for every prompt. We segment instead,
+// with Intl.Segmenter (built into Node's full-ICU build; NO new dependency). Segmentation is
+// morpheme-ish for Japanese (話し|たい|です), which is fine and is the POINT: the introduced-
+// gloss inventory is tokenised by this same function, so prompt and inventory are always
+// segmented on the same rule and compare like for like.
+const tokenizeKnown = (s) => {
+  const t = expandContractions(s);
+  if (SCRIPTLESS_RE.test(t)) {
+    return [...segmenterFor(t).segment(t)].filter((x) => x.isWordLike).map((x) => x.segment).filter(Boolean);
+  }
+  return t.split(/[^\p{L}\p{M}']+/u).filter(Boolean);
+};
 // English machinery tokens → governing construction id(s). Known-language-specific
 // (valid for *_for_eng; a non-English-known contract restates this).
 const KNOWN_GRAMMAR = {
@@ -828,13 +875,31 @@ const KNOWN_GRAMMAR = {
 // from an expanded contraction never trips do-support).
 const DO_AUX = new Set(['do', 'does', 'did']);
 
-// Position-independent free-class sets compiled from a contract.
+// TWO CONTRACT DIALECTS (found 2026-08-17 while fixing the tokenizer).
+// The *_for_eng contracts are MECHANICAL: freeGlue / npiTokens / negationWords /
+// negationMarkers / constructions[{id,test}] — regexes this gate executes.
+// The seven eng_for_<Indic> contracts are AGENT BRIEFS: freeClass / npi / negation /
+// knownConstructions[{id,marker,description}] + prose, written under Tom's rule
+// "no regex for language — this is the agent's reference knowledge, NOT a regex gate
+// config" (header of eng_for_tam.contract.cjs). compileKnownContract only ever read
+// the mechanical spellings, so a brief contract compiled to EMPTY sets — which, on top
+// of a tokenizer that returned zero tokens for those scripts, is how those courses got
+// a silent all-clear. We now read both spellings so the free class at least lands, and
+// isMechanicalContract() lets the caller refuse to hard-block on a brief.
+function isMechanicalContract(contract) {
+  return !!(contract && (contract.freeGlue || contract.negationMarkers
+    || (contract.constructions || []).some((c) => c.test)));
+}
 function compileKnownContract(contract) {
+  const glue = contract.freeGlue || contract.freeClass || [];
+  const npi = contract.npiTokens || contract.npi || [];
+  const neg = contract.negationWords || contract.negation || [];
   return {
     contract,
-    glue: new Set((contract.freeGlue || []).map(stemKnownGloss)),
-    npi: new Set((contract.npiTokens || []).map(stemKnownGloss)),
-    neg: new Set([...(contract.negationWords || []), ...(contract.negationWords || []).map(stemKnownGloss)]),
+    mechanical: isMechanicalContract(contract),
+    glue: new Set(glue.map(stemKnownGloss)),
+    npi: new Set(npi.map(stemKnownGloss)),
+    neg: new Set([...neg, ...neg.map(stemKnownGloss)]),
     grammar: KNOWN_GRAMMAR,
   };
 }
@@ -843,8 +908,13 @@ function compileKnownContract(contract) {
 function checkKnownSide(known, currentPos, ctx) {
   const C = ctx.contract;
   const probs = [];
-  const negRe = C.negationMarkers instanceof RegExp ? C.negationMarkers : new RegExp(C.negationMarkers, 'i');
-  const negated = negRe.test(known);
+  // A brief contract has no negationMarkers regex (and `new RegExp(undefined)` silently
+  // becomes /undefined/, which never matches) — fall back to substring-testing its
+  // negation list, which is the right test where negation is a bound suffix (Tamil -வில்லை).
+  const negRe = C.negationMarkers instanceof RegExp ? C.negationMarkers
+    : (C.negationMarkers ? new RegExp(C.negationMarkers, 'i') : null);
+  const negated = negRe ? negRe.test(known)
+    : [...ctx.neg].some((n) => n && known.includes(n));
   for (const con of C.constructions || []) {
     const test = con.test instanceof RegExp ? con.test : new RegExp(con.test, 'i');
     if (test.test(known)) {
@@ -1032,6 +1102,7 @@ module.exports = {
   compileKnownContract,
   checkKnownSide,
   isKnownVocabBreach,
+  isMechanicalContract,
   loadPairContract,
   checkPhraseComplexity,
   checkVocabViolations,
