@@ -90,19 +90,22 @@ module.exports = {
 
   // Free class — Marathi closed-class function words, corpus-derived from eng_for_mar phrase
   // prompts. Pronouns are listed in every case form the corpus actually attests, because Marathi
-  // case is fusional on pronouns and the matcher cannot relate मी to मला.
+  // case is fusional on pronouns and the matcher cannot relate मी to मला. EVERY entry below was
+  // checked to occur as a standalone token in this corpus (tokenizeKnown, lego+phrase rows);
+  // candidates that scored 0 — तू / तुला / तुझा / तुझी / तुझं, मात्र, जराही, त्यांची, त्यांच्या —
+  // were dropped rather than carried on intuition.
   freeClass: [
     // personal pronouns — nominative
-    'मी', 'आम्ही', 'आपण', 'तुम्ही', 'तो', 'ती', 'ते', 'त्या', 'तू',
+    'मी', 'आम्ही', 'आपण', 'तुम्ही', 'तो', 'ती', 'ते', 'त्या',
     // ergative (perfective agent) — same lexemes, -ने/-नी
-    'तिने', 'त्याने', 'त्यांनी', 'आम्ही', 'तुम्ही',
+    'तिने', 'त्याने', 'त्यांनी',
     // dative/accusative (-ला on the oblique stem)
-    'मला', 'आम्हाला', 'आपल्याला', 'तुम्हाला', 'तुम्हा', 'त्याला', 'तिला', 'त्यांना', 'मला',
+    'मला', 'आम्हाला', 'आपल्याला', 'तुम्हाला', 'तुम्हा', 'त्याला', 'तिला', 'त्यांना',
     // oblique / comitative / genitive-oblique
-    'माझ्या', 'तुमच्या', 'आमच्या', 'त्याच्या', 'तिच्या', 'त्यांच्या', 'माझ्याशी', 'तुमच्याशी',
+    'माझ्या', 'तुमच्या', 'आमच्या', 'त्याच्या', 'तिच्या', 'माझ्याशी', 'तुमच्याशी',
     // genitive, agreeing in gender/number with the possessum
-    'माझा', 'माझी', 'माझं', 'तुमचा', 'तुमची', 'तुमचं', 'आमचा', 'आमची', 'आमचं',
-    'त्याचा', 'त्याची', 'त्याचं', 'तिचा', 'तिची', 'तिचं', 'त्यांचा', 'त्यांची', 'त्यांचं',
+    'माझा', 'माझी', 'माझं', 'तुमचा', 'तुमची', 'तुमचं', 'आमचा', 'आमची', 'आमचं', 'आमचे',
+    'त्याचा', 'त्याची', 'त्याचं', 'तिचा', 'तिची', 'तिचं', 'त्यांचं',
     // demonstratives / deictics
     'हा', 'ही', 'हे', 'या', 'त्याच', 'तीच', 'असं', 'अशी', 'अशा',
     // copula — present, past (3 genders + 1sg), future, habitual

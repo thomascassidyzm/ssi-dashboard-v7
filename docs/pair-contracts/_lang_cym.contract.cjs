@@ -71,6 +71,19 @@
 // gate is FOR — a learner prompted with a word they were never given — is 0 out of 42. That is
 // the whole argument for advisory, in one number.
 //
+// ── POST-CONTRACT SWEEP, MEASURED WITH THIS FILE IN PLACE ────────────────────────────────────
+//   node tools/course-optimization/known-side-sweep.cjs ita_for_cym spa_for_cym
+//   · ita_for_cym  known=cym via lang:_lang_cym  triage  phrases=448  raw=38 (vocab 38, adv 0)
+//     distinct-unknown=9        →  0 CONFIRMED breaches, exit 0.
+//   · spa_for_cym  known=cym via lang:_lang_cym  triage  phrases= 26  raw= 0  distinct-unknown=0
+// All 38 are "unknown gloss"; there are no ordering findings and no NPI advisories. The nine
+// distinct types are exactly the nine classified above — ddeud:8, cofio'r:8, drio:7, ddysgu:4,
+// gofio:3, gofio'r:3, ddyfalu:2, ddod:2, esbonio'r:1 — i.e. 26 mutation hits and 12 fused-article
+// hits, and NOTHING ELSE. ('wyt' fell out of the count because the sweep checks 448 phrases rather
+// than all 465, its seed being past the last lego seed.) So with this contract in place the
+// Welsh known side reports 38 findings of which ZERO are a learner meeting an unknown word.
+// spa_for_cym reporting 0 is not a clean bill of health — it has 26 prompts and 11 word types.
+//
 // ── TOKENS I COULD NOT CONFIDENTLY CLASSIFY (left OUT of freeClass) ───────────────────────────
 // * 'ôl' (34) — bound inside 'yn ôl' ('back'/'according to') and never free; left to its carrier.
 // * 'nes ymlaen' (nes:17, ymlaen:17) — a two-word 'later'; 'nes' is also 'until' and a comparative
