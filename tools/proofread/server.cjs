@@ -74,8 +74,10 @@ async function fetchAll(table, columns, order, filter) {
 }
 
 let cache = null;
+let cacheFetchedAt = 0;
+const CACHE_TTL_MS = 60 * 1000;
 async function loadCourse(force) {
-  if (cache && !force) return cache;
+  if (cache && !force && Date.now() - cacheFetchedAt < CACHE_TTL_MS) return cache;
   const [seeds, legos, phrases] = await Promise.all([
     fetchAll('course_seeds', 'seed_number, known_text, target_text, approved_at, flagged_at', [['seed_number', {}]]),
     fetchAll('course_legos', 'seed_number, lego_index, known_text, target_text', [['seed_number', {}], ['lego_index', {}]]),
@@ -83,7 +85,8 @@ async function loadCourse(force) {
       ['seed_number', {}], ['lego_index', {}], ['position', {}],
     ], (q) => q.neq('phrase_role', 'component')),
   ]);
-  cache = { course: COURSE, seeds, legos, phrases };
+  cacheFetchedAt = Date.now();
+  cache = { course: COURSE, seeds, legos, phrases, fetchedAt: cacheFetchedAt };
   return cache;
 }
 
