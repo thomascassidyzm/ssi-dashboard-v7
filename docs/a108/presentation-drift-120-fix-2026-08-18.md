@@ -19,7 +19,7 @@ started, distribution matching the brief (spa 55, hrv 33, zho 19, por 6, Welsh 6
 | ruled NOT defects and discarded | **31** (26%) |
 | rows fixed | **86** |
 | of those, fixed by RE-LINKING at zero cost | **55** |
-| newly rendered | **31** |
+| newly rendered | **32** (31 fixes + 1 shared refinement clip) |
 | held for Kai's decision | **3** (1 card edit, 2 Welsh) |
 | total spend | **≈ $0.08** |
 
@@ -110,6 +110,18 @@ this clip say" was unanswerable without re-transcribing the estate.
 
 `courses.audio_stamp` was bumped on all five courses, so learners are not served cached old audio.
 
+### One refinement after the fact: the six Spanish `that` rows
+
+All six `spa_for_eng` rows whose card is exactly `that` (S90L3, S112L1, S127L2, S132L1, S151L1,
+S172L2) initially shared one clip carrying the example *"I heard that"*. That clip is **defensible** —
+`heard the truth` is taught at seed 71, before the earliest of the six — so this was not a
+controlled-language breach. But the example is itself a **later, different LEGO**: S364L3
+`I heard that` → *oí que*. A learner at seed 90 was being shown an English phrase that later carries
+a different Spanish form.
+
+A bare clip has no example to be wrong about at any of the six seeds (90→172). One 28-character
+render, verified by listening, now serves all six. Detector clean, served bytes confirmed live.
+
 ## Verification
 
 - **Detector**: `check-presentation-drift.cjs` at **100% coverage** on all five courses — **0 of the
@@ -153,6 +165,15 @@ Two need a decision:
 - **cym_s S148L1 — recommend leaving it.** Card `the young boy`, clip announces only `the boy`.
   `ifanc` was taught 83 seeds earlier, so the learner can build it; this is legacy partial
   introduction. Making it literal costs Aran or Catrin a take for no gain.
+
+**Four Spanish cards flagged but deliberately NOT changed** (S71L3, S116L2, S163L1, S505L2). In each,
+the card text does not tile onto its own seed's known sentence — e.g. seed 71 says `anyone` where the
+card reads `no one`; seed 116 says `make` where the cards read `to do`. The reviewer declined to
+re-card all four because downstream practice phrases are uniformly built on the current card text and
+re-carding would orphan them, and because the neighbouring sense is owned by a different lego
+(`anyone` = *cualquiera*). S163L1 is the closest call — the *que* in "I think that it's interesting"
+really is the conjunction the clip announces. These are flagged for your eye, not fixed; full
+reasoning per row in `scripts/pdrift120/rulings_spa_for_eng.json`.
 
 **Separate finding, unrelated to this job:** 6 of 10 `cym_n` seed-301 practice phrases are corrupt
 (`I find it easy to see` → *"y byddi di'n gorffen"*; hard/easy swapped twice). Needs its own pass.
