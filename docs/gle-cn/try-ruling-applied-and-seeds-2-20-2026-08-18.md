@@ -1,5 +1,37 @@
 # Connemara Irish — your "try" ruling is applied, and seeds 1–20 are banked
 
+> ## ADDENDUM, after your correction: "just ag iarracht"
+>
+> **Applied.** `iarracht a dhéanamh` and `ag déanamh iarracht` are now **0** across the whole
+> course, alongside `ag triail` which is also **0**. Seeds 46 and 47 now read
+> `Tá mé ag iarracht foghlaim` and `Tá mé ag iarracht cuimhneamh ar fhocal`.
+>
+> **Nothing banked had to be un-banked.** Seeds 1–20 contain no "try" at all — that is what
+> the delay bought — so the correction touched only the two undecomposed translations at 46
+> and 47. `ag iarracht` occurrences in seeds 1–20: **0**.
+>
+> **Separation: 45 seeds.** "want" debuts at seed 1, "try" at seed 46. You asked me to push
+> it further if my range would put `ag iarracht` near `ag iarraidh` — it does not, so I have
+> not. The stage-1 measurement that justifies 45: `ag iarraidh` already carries **189 rows**
+> across **19 of the 20** banked seeds, in six person-forms.
+>
+> **Your drilling requirement is written down and binding**, with a per-seed quota for
+> 46–70 and six same-phrase pairings that are provably buildable from banked vocabulary
+> today — including the minimal pair `Níl mé ag iarraidh stopadh` / `Níl mé ag iarracht
+> stopadh`. It is a separate document because the seeds that carry it are not built yet:
+> **`docs/gle-cn/try-want-contrast-plan-2026-08-18.md`**, published alongside this.
+>
+> **One thing is blocked and I did not paper over it.** `ag iarracht` is a progressive.
+> **14 of the 22 "try" seeds in the corpus fit it; 8 need a non-progressive "to try" that you
+> have not ruled** — and two of those eight, seeds **48** and **49**, sit inside the
+> introduction block. `Tá mé ag iarraidh ag iarracht…` ("I want to try") and
+> `Tá mé chun ag iarracht…` ("I'm going to try") are both ungrammatical. Their translations
+> are now **blank**: they carried the form you rejected, and inventing a replacement is your
+> call, not mine. Two ways forward are set out at the end of the plan document. Seed 48 is
+> the sharp one — it is the *ideal* contrast sentence, carrying both concepts natively, and
+> the one the sanctioned form cannot express.
+
+
 `gle_cn_for_eng`. **Audio spend: £0.00. Zero TTS was generated, no clip rendered, nothing
 deleted.** Your live `gle_for_eng` was not touched — its last content edit is still
 2026-07-28, and its 668 seeds / 943 legos / 5,975 phrases are byte-for-byte as they were.
@@ -28,12 +60,12 @@ onward keep their original number.** 48 seed rows were permuted, 620 were not.
 I chose 46–49 rather than an arbitrary "few tens later" because **seed 50 in the English
 corpus is already `I'm not trying to finish as quickly as possible`.** The concept now
 debuts four seeds before the corpus's own next demand for it, instead of 48 seeds before
-it. The delay is **44 seeds**.
+it. **The seed moved 44 places (2 → 46), which puts 45 seeds between "want" at seed 1 and
+"try" at seed 46.**
 
 **Why all four moved, not just the first.** Your ruling was that `ag triail` is out of the
-early course and that the *concept* is delayed. Seeds 7 and 8 already used the form you
-ruled for (`iarracht a dhéanamh`), but leaving them at 7 and 8 would have taught "try" in
-the opening stretch anyway — which is the thing you ruled against. So the concept leaves as
+early course and that the *concept* is delayed. Seeds 7 and 8 did not use `ag triail` at
+all, but leaving them at 7 and 8 would have taught "try" in the opening stretch anyway — which is the thing you ruled against. So the concept leaves as
 a block and returns as a block.
 
 **The two seeds that still said `ag triail` were retranslated on the spot**, so no landmine
@@ -41,26 +73,24 @@ is left sitting in the draft:
 
 | seed | known | now |
 |---|---|---|
-| 46 | I'm trying to learn | `Tá mé ag déanamh iarracht foghlaim` |
-| 47 | I'm trying to remember a word | `Tá mé ag déanamh iarracht cuimhneamh ar fhocal` |
-| 48 | I want to try as hard as I can today | `Tá mé ag iarraidh iarracht a dhéanamh chomh dian agus is féidir liom inniu` |
-| 49 | I'm going to try to explain what I mean | `Tá mé chun iarracht a dhéanamh céard atá i gceist agam a mhíniú` |
+| 46 | I'm trying to learn | `Tá mé ag iarracht foghlaim` |
+| 47 | I'm trying to remember a word | `Tá mé ag iarracht cuimhneamh ar fhocal` |
+| 48 | I want to try as hard as I can today | **blank — blocked on your ruling** |
+| 49 | I'm going to try to explain what I mean | **blank — blocked on your ruling** |
 
-`iarracht a dhéanamh` is the form, as you ruled; in the progressive it surfaces as
-`ag déanamh iarracht`, which is the same lexical item, not a second one. **Seeds 46–49 are
-translated but deliberately NOT decomposed** — the reintroduction is a later run, and the
-gloss decision belongs with it.
+`ag iarracht` is the form, as you corrected. **Seeds 46–49 are deliberately NOT decomposed** —
+the reintroduction is a later run, and the gloss decision belongs with it. 48 and 49 are
+blank because the progressive cannot express "I want to try" or "I'm going to try"; see the
+addendum at the top.
 
-**On your `ag iarraidh` / `iarracht` concern — it is real and it is now handleable.** With
-`ag triail` gone there is exactly one Irish form per English concept: "want" → `ag iarraidh`
-(taught seed 1), "try" → `iarracht a dhéanamh` (seed 46). One known prompt, one target, both
-ways. The separation in time is 45 seeds. That is the two-part handling you specified, and
-it means the reintroduced lego can be glossed plainly "to try" — the ambiguity that forced
-"to make an effort" only existed because two Irish forms were competing.
-
-**Seed 48 still puts them adjacent in one sentence** — `Tá mé ag iarraidh iarracht a
-dhéanamh…`. That is a real echo and it is on your list already as item 3. It is 28 seeds
-beyond anything banked here.
+**On your `ag iarraidh` / `ag iarracht` concern — it is real and it got sharper, not
+softer, with your correction.** Both forms are now `ag` + noun, one syllable apart, so
+there is no structural cue and **the 45-seed gap is the only thing protecting
+predictability**. The gloss lock is `want → ag iarraidh` (seed 1) against
+`trying → ag iarracht` (seed 46), each with the `-ing` kept on, so one known prompt maps to
+one target in both directions and ZUT holds. Gap plus gloss is the two-part handling you
+specified. The drilling that has to follow it is in
+`docs/gle-cn/try-want-contrast-plan-2026-08-18.md`.
 
 **The cost of the ruling, stated plainly.** Old seed 2 was the debut of `foghlaim` (to
 learn). Removing it took "learn" out of the opening, so the rebuilt seeds 2 and 3 lost every
